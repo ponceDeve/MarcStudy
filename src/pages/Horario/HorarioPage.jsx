@@ -1,11 +1,20 @@
 import { useState, useRef, useMemo, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { scheduleData, DIAS } from "../../data/schedule";
+import {
+  leerHorario,
+  guardarHorario,
+  hayHorarioConfigurado,
+  DIAS_SEMANA,
+} from "../../lib/scheduleStorage";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
+import AppHeader from "../../components/AppHeader";
+import SearchModal from "../../components/SearchModal";
+import StepsWelcomeModal from "../../components/StepsWelcomeModal";
+import ScheduleSetup from "./ScheduleSetup";
 
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
@@ -17,16 +26,31 @@ const NOMBRE_DIA = {
   jueves: "Jueves",
   viernes: "Viernes",
   sabado: "Sábado",
+  domingo: "Domingo",
 };
 
-const DIAS_FILA1 = ["lunes", "martes", "miercoles"];
-const DIAS_FILA2 = ["jueves", "viernes", "sabado"];
-
-function levelClass(level) {
-  if (level === "easy") return "level-easy";
-  if (level === "medium") return "level-medium";
-  return "level-hard";
-}
+const PASOS_BIENVENIDA = [
+  {
+    icon: "fa-solid fa-calendar-alt",
+    titulo: "¡Bienvenido al Pomodoro!",
+    texto: "Aquí armas tu propio horario de estudio con sesiones cronometradas.",
+  },
+  {
+    icon: "fa-solid fa-list-check",
+    titulo: "Tu horario, a tu medida",
+    texto: "Eliges qué días estudias y qué cursos ves cada día, con cuántos pomodoros cada uno.",
+  },
+  {
+    icon: "fa-solid fa-play",
+    titulo: "Sesiones de 25 minutos",
+    texto: "Cada pomodoro son 25 min de estudio seguidos de 5 min de descanso, hasta terminar los que elegiste.",
+  },
+  {
+    icon: "fa-solid fa-pen",
+    titulo: "¿Cambió tu horario?",
+    texto: "Toca 'Editar' arriba cuando quieras para rehacer tus días y cursos.",
+  },
+];
 
 function buildCourseTasks(course) {
   const tasks = [];
@@ -47,7 +71,12 @@ function progressKey(day, subject) {
 
 export default function HorarioPage() {
   const [searchParams] = useSearchParams();
-  const [selectedDay, setSelectedDay] = useState("lunes");
+
+  const [horario, setHorario] = useState(() => leerHorario() || {});
+  const [selectedDay, setSelectedDay] = useState(() => {
+    const configurados = DIAS_SEMANA.filter((d) => (leerHorario() || {})[d]);
+    return configurados[0] || "lunes";
+  });
   const [activeCourseIdx, setActiveCourseIdx] = useState(null);
   const [progress, setProgress] = useLocalStorage(
     "horario_task_progress_v1",
@@ -59,19 +88,31 @@ export default function HorarioPage() {
   const [temaModalOpen, setTemaModalOpen] = useState(false);
   const [courseCompleteOpen, setCourseCompleteOpen] = useState(false);
 
-  // Descanso manual (botones "Desc. 10" / "Desc. 30"): un cronómetro
-  // suelto, sin curso activo.
   const [manualBreak, setManualBreak] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Bienvenida → gate obligatorio de configuración → asistente de setup.
+  const [welcomeSeen, setWelcomeSeen] = useLocalStorage("horario_welcome_seen", false);
+  const [setupOpen, setSetupOpen] = useState(false);
+  const [setupEsEdicion, setSetupEsEdicion] = useState(false);
 
   const alarmRef = useRef(null);
 
-  const courses = scheduleData[selectedDay];
+  const courses = horario[selectedDay] || [];
+  const diasConfigurados = DIAS_SEMANA.filter((d) => horario[d] && horario[d].length > 0);
   const activeCourse =
     activeCourseIdx !== null ? courses[activeCourseIdx] : null;
   const activeTasks = useMemo(
     () => (activeCourse ? buildCourseTasks(activeCourse) : []),
     [activeCourse],
   );
+
+  const mostrarGate = welcomeSeen && !hayHorarioConfigurado() && !setupOpen;
+
+  useEffect(() => {
+    document.body.style.overflow = mostrarGate ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mostrarGate]);
 
   function getTaskIndex(day, subject) {
     return progress[progressKey(day, subject)] || 0;
@@ -84,14 +125,12 @@ export default function HorarioPage() {
   }
 
   function handleTaskComplete() {
-    // --- SOLUCIÓN APLICADA AQUÍ ---
     if (alarmRef.current) {
-      alarmRef.current.muted = false; // Fuerza a que no esté silenciado
-      alarmRef.current.volume = 1.0;  // Volumen al máximo
-      alarmRef.current.load();        // Recarga el audio para evitar el bloqueo del navegador
+      alarmRef.current.muted = false;
+      alarmRef.current.volume = 1.0;
+      alarmRef.current.load();
       alarmRef.current.play().catch(() => { });
     }
-    // ------------------------------
 
     if (!activeCourse) {
       setManualBreak(null);
@@ -106,7 +145,6 @@ export default function HorarioPage() {
       setPendingCourseComplete({
         subject: activeCourse.subject,
         day: selectedDay,
-        level: activeCourse.level,
       });
       setCourseCompleteOpen(true);
       setActiveCourseIdx(null);
@@ -176,6 +214,16 @@ export default function HorarioPage() {
     setTemaModalOpen(false);
   }
 
+  function terminarSetup(nuevoHorario) {
+    guardarHorario(nuevoHorario);
+    setHorario(nuevoHorario);
+    const configurados = DIAS_SEMANA.filter((d) => nuevoHorario[d] && nuevoHorario[d].length > 0);
+    setSelectedDay(configurados[0] || "lunes");
+    setActiveCourseIdx(null);
+    setSetupOpen(false);
+    setSetupEsEdicion(false);
+  }
+
   const activeTaskIdx = activeCourse
     ? getTaskIndex(selectedDay, activeCourse.subject)
     : 0;
@@ -185,16 +233,16 @@ export default function HorarioPage() {
     const temaParam = searchParams.get("tema");
     if (!cursoParam) return;
 
-    for (const dia of DIAS) {
-      const idx = scheduleData[dia].findIndex(
+    for (const dia of DIAS_SEMANA) {
+      const lista = horario[dia] || [];
+      const idx = lista.findIndex(
         (c) => c.subject.toLowerCase() === cursoParam.toLowerCase(),
       );
       if (idx !== -1) {
         setSelectedDay(dia);
         setTemaDesdeLink({ curso: cursoParam, tema: temaParam || "" });
-        const tasks = buildCourseTasks(scheduleData[dia][idx]);
-        const taskIdx =
-          progress[progressKey(dia, scheduleData[dia][idx].subject)] || 0;
+        const tasks = buildCourseTasks(lista[idx]);
+        const taskIdx = progress[progressKey(dia, lista[idx].subject)] || 0;
         setActiveCourseIdx(idx);
         if (taskIdx < tasks.length) reset(tasks[taskIdx].duration);
         break;
@@ -205,11 +253,11 @@ export default function HorarioPage() {
 
   return (
     <div className="horario">
-      <div className="horario__back">
-        <Link to="/" className="horario__back-link">
-          <i className="fas fa-arrow-left" /> Volver a Mi Estudio
-        </Link>
-      </div>
+      <AppHeader
+        showHome
+        onAbrirBuscador={() => setSearchOpen(true)}
+        onEditarHorario={() => { setSetupEsEdicion(true); setSetupOpen(true); }}
+      />
 
       <main className="horario__main">
         {/* Temporizador */}
@@ -263,22 +311,8 @@ export default function HorarioPage() {
         {/* Días + lista de cursos / desglose de pomodoros */}
         <section className="horario__side-section">
           <div className="horario__day-tabs">
-            <div className="horario__day-row">
-              {DIAS_FILA1.map((dia) => (
-                <button
-                  key={dia}
-                  onClick={() => {
-                    setSelectedDay(dia);
-                    setActiveCourseIdx(null);
-                  }}
-                  className={`horario__day-btn ${selectedDay === dia ? "is-active" : ""}`}
-                >
-                  {NOMBRE_DIA[dia]}
-                </button>
-              ))}
-            </div>
-            <div className="horario__day-row">
-              {DIAS_FILA2.map((dia) => (
+            <div className="horario__day-row" style={{ flexWrap: "wrap" }}>
+              {diasConfigurados.map((dia) => (
                 <button
                   key={dia}
                   onClick={() => {
@@ -306,11 +340,13 @@ export default function HorarioPage() {
                   <p className="horario__day-sub">
                     {activeCourse
                       ? `${activeCourse.subject} · ${getDonePomodoros(selectedDay, activeCourse.subject, activeCourse.pomodoros)}/${activeCourse.pomodoros} pomodoros`
-                      : "Elige un curso para empezar"}
+                      : courses.length > 0
+                        ? "Elige un curso para empezar"
+                        : "Sin cursos configurados este día"}
                   </p>
                 </div>
               </div>
-              {!activeCourse && (
+              {!activeCourse && courses.length > 0 && (
                 <button
                   onClick={() => {
                     const cleared = { ...progress };
@@ -333,7 +369,6 @@ export default function HorarioPage() {
                   const done = getDonePomodoros(selectedDay, c.subject, c.pomodoros);
                   const isComplete = done >= c.pomodoros;
                   const pct = Math.round((done / c.pomodoros) * 100);
-                  const lc = levelClass(c.level);
                   const statusText = isComplete
                     ? "Completado"
                     : done > 0
@@ -342,13 +377,12 @@ export default function HorarioPage() {
 
                   return (
                     <div
-                      key={c.subject}
+                      key={idx}
                       onClick={() => !isComplete && abrirCurso(idx)}
-                      className={`horario__course-item ${lc} ${isComplete ? "is-complete" : ""}`}
+                      className={`horario__course-item ${isComplete ? "is-complete" : ""}`}
                     >
                       <div className="horario__course-top">
                         <div className="horario__course-tags">
-                          <span className={`horario__level-badge ${lc}`}>{c.level}</span>
                           <h4 className="horario__course-name">{c.subject}</h4>
                         </div>
                         {isComplete ? (
@@ -359,7 +393,7 @@ export default function HorarioPage() {
                       </div>
                       <div className="horario__course-progress">
                         <div className="horario__mini-track">
-                          <div className={`horario__mini-fill ${lc}`} style={{ width: `${pct}%` }} />
+                          <div className="horario__mini-fill" style={{ width: `${pct}%` }} />
                         </div>
                         <span className="horario__course-count">{done}/{c.pomodoros} 🍅</span>
                       </div>
@@ -385,7 +419,6 @@ export default function HorarioPage() {
                 {activeTasks.map((task, index) => {
                   const isActive = index === activeTaskIdx;
                   const isPast = index < activeTaskIdx;
-                  const lc = levelClass(activeCourse.level);
 
                   if (task.type === "course") {
                     return (
@@ -402,7 +435,6 @@ export default function HorarioPage() {
                         >
                           <div className="horario__task-box-top">
                             <h4 className="horario__task-box-title">{activeCourse.subject}</h4>
-                            <span className={`horario__level-badge ${lc}`}>{activeCourse.level}</span>
                           </div>
                           <p className="horario__task-box-detail">{task.detail}</p>
                         </div>
@@ -426,14 +458,6 @@ export default function HorarioPage() {
           </div>
         </section>
       </main>
-
-      <div className="horario__repaso-link-wrap">
-        <div className="horario__repaso-link-wrap">
-          <a href={`${window.location.origin}/cont_crono/repaso`} target="_blank" rel="noopener noreferrer" className="horario__repaso-link">
-            <i className="bi bi-calendar-check" /> Ver mis repasos de hoy
-          </a>
-        </div>
-      </div>
 
       <audio ref={alarmRef} src="sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
 
@@ -461,6 +485,61 @@ export default function HorarioPage() {
         day={pendingCourseComplete?.day}
         onGuardar={guardarTema}
         onOmitir={omitirTema}
+      />
+
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        onSelect={(item) => {
+          setSearchOpen(false);
+          window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(item.nombre)}`;
+        }}
+      />
+
+      <StepsWelcomeModal
+        open={!welcomeSeen}
+        pasos={PASOS_BIENVENIDA}
+        labelFinal="Entendido"
+        onFinish={() => setWelcomeSeen(true)}
+      />
+
+      {mostrarGate && (
+        <div className="gate-overlay">
+          <style>{`
+            .gate-overlay {
+              position: fixed;
+              inset: 0;
+              z-index: 9999;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(4, 8, 12, 0.92);
+              backdrop-filter: blur(6px);
+            }
+            .gate-btn {
+              padding: 18px 32px;
+              border-radius: var(--radius-md);
+              border: none;
+              background: var(--primary);
+              color: #fff;
+              font-weight: 700;
+              font-size: 1.05rem;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+            }
+          `}</style>
+          <button className="gate-btn" onClick={() => setSetupOpen(true)}>
+            <i className="fa-solid fa-calendar-alt" /> Configurar Pomodoro
+          </button>
+        </div>
+      )}
+
+      <ScheduleSetup
+        open={setupOpen}
+        onComplete={terminarSetup}
+        onCancel={setupEsEdicion ? () => { setSetupOpen(false); setSetupEsEdicion(false); } : null}
       />
     </div>
   );

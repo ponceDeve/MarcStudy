@@ -99,6 +99,33 @@
   }
 }
 
+// X para cerrar el mapa de temas: fija justo debajo del header, así
+// el usuario no tiene que bajar hasta el botón "Cerrar mapa" del final
+// de la lista para salir.
+.levels-modal__close-fixed {
+  position: fixed;
+  top: 72px;
+  right: 16px;
+  z-index: 21;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+  }
+}
+
 .level-tema-banner {
   background: var(--bg);
   color: var(--accent);

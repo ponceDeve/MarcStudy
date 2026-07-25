@@ -4,13 +4,14 @@ import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import AppHeader from "../../components/AppHeader";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./GlossaryText";
 import TopBar from "./TopBar";
 import Hud from "./Hud";
 import LevelsModal from "./LevelsModal";
-import SearchModal from "./SearchModal";
+import SearchModal from "../../components/SearchModal";
 import WelcomeModal from "./WelcomeModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
@@ -142,7 +143,13 @@ export default function MiEstudioPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(item.archivo);
+      console.log("BASE_URL:", import.meta.env.BASE_URL);
+      console.log("Archivo:", item.archivo);
+
+      const ruta = `${import.meta.env.BASE_URL}${item.archivo.replace(/^\//, "")}`;
+      console.log("Ruta final:", ruta);
+
+      const res = await fetch(ruta);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
       const data = await res.json();
       const puntos = (data.theory || []).flatMap((seccion) =>
@@ -236,8 +243,7 @@ export default function MiEstudioPage() {
 
     // Limpia el parámetro de la URL para no reabrir en cada recarga.
     setSearchParams({}, { replace: true });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
     useArrowKeyList(resultsVisibles, seleccionarItem);
@@ -563,38 +569,49 @@ export default function MiEstudioPage() {
 
       <div className={wrapClass}>
         {!topicData && (
-          <div className="mi-estudio__intro">
-            <div>
-              <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
-              <h1 className="mi-estudio__intro-title">
-                {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
-              </h1>
-            </div>
-            <div className="home-search">
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onFocus={() => setBusquedaEnfocada(true)}
-                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar tema o curso..."
-                className="home-search-input"
-              />
-              {busquedaEnfocada && resultsVisibles.length > 0 && (
-                <div className="home-search-results">
-                  {resultsVisibles.map((r, i) => (
-                    <button
-                      key={r.nombre}
-                      onClick={() => seleccionarItem(r)}
-                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                    >
-                      <p>{r.nombre}</p>
-                    </button>
-                  ))}
+          <>
+            <AppHeader onAbrirBuscador={() => setSearchOpen(true)} />
+            <div className="mi-estudio__intro">
+              <div>
+                <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
+                <h1 className="mi-estudio__intro-title">
+                  {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
+                </h1>
+              </div>
+
+              {/* 👇 Pégalo aquí */}
+              {error && (
+                <div style={{ backgroundColor: "#fee2e2", color: "#ef4444", padding: "12px", borderRadius: "8px", marginBottom: "16px", textAlign: "center", fontWeight: "600" }}>
+                  {error}
                 </div>
               )}
+
+              <div className="home-search">
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onFocus={() => setBusquedaEnfocada(true)}
+                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                  onKeyDown={handleKeyDownInicial}
+                  placeholder="Buscar tema o curso..."
+                  className="home-search-input"
+                />
+                {busquedaEnfocada && resultsVisibles.length > 0 && (
+                  <div className="home-search-results">
+                    {resultsVisibles.map((r, i) => (
+                      <button
+                        key={r.nombre}
+                        onClick={() => seleccionarItem(r)}
+                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                      >
+                        <p>{r.nombre}</p>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
+          </>
         )}
 
         {topicData && (stage === "theory" || stage === "question") && current && (

@@ -1952,7 +1952,7 @@ a {
 .horario__mini-track {
   flex: 1;
   height: 6px;
-  background: rgba(45, 45, 45, 0.08);
+  background: #c7d3d896;
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -2218,51 +2218,54 @@ a {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 14px; 
   font-weight: 600;
   color: var(--ink-soft);
   background: var(--surface);
-  padding: 6px 12px;
+  padding: 8px 14px; 
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
+  transition: all 0.15s;
 }
 .repaso__nav-link:hover {
   color: var(--primary);
+  background: var(--surface-hover);
 }
 .repaso__header {
-  margin-bottom: 28px;
+  margin-bottom: 36px;
 }
 .repaso__title {
-  font-size: 22px;
+  font-size: 28px; 
   font-weight: 800;
   color: var(--ink);
   margin: 0;
 }
 .repaso__date {
-  font-size: 14px;
+  font-size: 16px; 
   color: var(--ink-soft);
-  margin: 4px 0 0;
+  margin: 8px 0 0;
 }
 .repaso__section {
-  margin-bottom: 36px;
+  margin-bottom: 48px;
 }
 .repaso__list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px; 
 }
 .repaso__item {
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 14px;
+  border-radius: var(--radius-lg); 
+  padding: 20px; 
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  transition: box-shadow 0.15s;
+  gap: 16px;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 .repaso__item:hover {
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 .repaso__item.interval-0 {
   background: var(--primary-bg);
@@ -2281,10 +2284,10 @@ a {
   border-color: var(--danger);
 }
 .repaso__badge {
-  font-size: 10px;
+  font-size: 12px; 
   font-weight: 700;
   color: #fff;
-  padding: 2px 8px;
+  padding: 4px 10px;
   border-radius: 6px;
 }
 .repaso__badge.interval-0 {
@@ -2300,8 +2303,8 @@ a {
   background: var(--danger);
 }
 .repaso__dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
   display: inline-block;
@@ -2325,55 +2328,65 @@ a {
 .repaso__item-tags {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 .repaso__item-day {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 .repaso__item-overdue {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--danger);
+  background: var(--danger-bg);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 .repaso__item-subject {
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.2;
+  font-weight: 800; 
+  font-size: 20px; 
+  line-height: 1.3;
   color: var(--ink);
   margin: 0;
 }
 .repaso__item-tema {
-  font-size: 12px;
+  font-size: 15px; 
   color: var(--ink-soft);
-  margin: 2px 0 0;
+  margin: 6px 0 0;
 }
 .repaso__item-meta {
-  font-size: 12px;
+  font-size: 14px; 
   color: var(--ink-faint);
-  margin: 4px 0 0;
+  margin: 8px 0 0;
 }
 .repaso__item-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--primary);
+  margin-top: 14px;
+  font-size: 14px; 
+  font-weight: 700;
+  color: var(--primary-light); 
+  background: var(--surface-alt);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  border: none;
+  cursor: pointer;
 }
 .repaso__item-link:hover {
-  color: var(--primary-dark);
+  background: var(--surface-hover);
+  color: #fff;
 }
 .repaso__check {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 44px; 
+  height: 44px;
   border-radius: 50%;
   border: 2px solid var(--border-strong);
   background: var(--surface);
@@ -2388,45 +2401,45 @@ a {
   border-color: var(--secondary);
   background: var(--secondary);
   color: #fff;
+  transform: scale(1.05);
 }
 .repaso__empty {
   text-align: center;
-  padding: 56px 16px;
+  padding: 64px 20px;
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
 .repaso__empty-emoji {
-  font-size: 44px;
-  margin-bottom: 12px;
+  font-size: 64px;
+  margin-bottom: 16px;
   opacity: 0.9;
 }
 .repaso__empty-title {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--ink);
-  font-size: 16px;
+  font-size: 20px; 
   margin: 0;
 }
 .repaso__empty-sub {
   color: var(--ink-soft);
-  font-size: 13px;
-  margin: 4px 0 0;
+  font-size: 15px; 
+  margin: 8px 0 0;
 }
-
 .repaso__proximos-title {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 20px; 
+  font-weight: 800;
   color: var(--ink);
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 .repaso__proximos-empty {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--ink-soft);
 }
 .repaso__proximos-list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px; 
 }
 .repaso__proximos-group {
   border: 1px solid var(--border);
@@ -2434,7 +2447,7 @@ a {
   overflow: hidden;
 }
 .repaso__proximos-group-header {
-  padding: 8px 14px;
+  padding: 12px 16px; 
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -2442,36 +2455,38 @@ a {
   align-items: center;
 }
 .repaso__proximos-fecha {
-  font-size: 11px;
+  font-size: 14px; 
   font-weight: 700;
   color: var(--ink);
 }
 .repaso__proximos-etiqueta {
-  font-size: 11px;
-  color: var(--ink-faint);
+  font-size: 13px; 
+  color: var(--ink-soft); 
 }
 .repaso__proximos-row {
-  padding: 10px 14px;
+  padding: 12px 16px; 
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px; 
   border-bottom: 1px solid var(--border);
+  background: var(--surface); 
 }
 .repaso__proximos-row:last-child {
   border-bottom: none;
 }
 .repaso__proximos-subject {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px; 
+  font-weight: 700;
   color: var(--ink);
 }
 .repaso__proximos-tema {
-  font-size: 12px;
+  font-size: 14px; 
   color: var(--ink-faint);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 /* ============================================================
    Escalado de tipografía para pantallas grandes (laptop 1920x1080+)

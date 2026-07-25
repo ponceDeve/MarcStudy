@@ -1,5 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import AppHeader from "../../components/AppHeader";
+import SearchModal from "../../components/SearchModal";
+import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import {
   leerLog,
   marcarRepasoHecho,
@@ -11,7 +15,28 @@ import {
   REPASO_INTERVALOS,
 } from "../../lib/repasoStorage";
 
+const PASOS_BIENVENIDA = [
+  {
+    icon: "fa-solid fa-brain",
+    titulo: "¡Bienvenido a Repasos!",
+    texto: "Aquí se guardan automáticamente los temas que vas terminando en Mi Estudio.",
+  },
+  {
+    icon: "fa-solid fa-calendar-day",
+    titulo: "Repetición espaciada",
+    texto: "Cada tema programa 4 repasos: al 1, 3, 7 y 21 días — así no se te olvida.",
+  },
+  {
+    icon: "fa-solid fa-check",
+    titulo: "Marca como hecho",
+    texto: "Toca el check de un repaso cuando ya lo repasaste, para avanzar al siguiente intervalo.",
+  },
+];
+
 export default function RepasoPage() {
+  const navigate = useNavigate();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [welcomeSeen, setWelcomeSeen] = useLocalStorage("repaso_welcome_seen", false);
   const [log, setLog] = useState(() => leerLog());
 
   const { repasosHoy, proximos } = useMemo(() => clasificarRepasos(log), [log]);
@@ -35,14 +60,7 @@ export default function RepasoPage() {
 
   return (
     <div className="repaso">
-      <div className="repaso__nav">
-        <Link to="/" className="repaso__nav-link">
-          <i className="bi bi-book" /> Mi Estudio
-        </Link>
-        <Link to="/pomodoro" className="repaso__nav-link">
-          <i className="bi bi-arrow-left" /> Volver al cronograma
-        </Link>
-      </div>
+      <AppHeader showHome onAbrirBuscador={() => setSearchOpen(true)} />
 
       <div className="repaso__header">
         <h1 className="repaso__title">Repasos de hoy</h1>
@@ -69,14 +87,12 @@ export default function RepasoPage() {
                     {REPASO_INTERVALOS[intervaloIdx]} día
                     {REPASO_INTERVALOS[intervaloIdx] > 1 ? "s" : ""}
                   </p>
-                  <a
-                    href={`${window.location.origin}/cont_crono/?q=${encodeURIComponent(entrada.tema || entrada.subject)}`}
-                    target="_blank"
-                    rel="noopener"
+                  <button
+                    onClick={() => navigate(`/?q=${encodeURIComponent(entrada.tema || entrada.subject)}`)}
                     className="repaso__item-link"
                   >
                     <i className="bi bi-book" /> Repasar en Mi Estudio
-                  </a>
+                  </button>
                 </div>
                 <button
                   onClick={() => marcar(entrada.id, intervaloIdx, entrada.repasosDone)}
@@ -134,6 +150,22 @@ export default function RepasoPage() {
             })}
         </div>
       </section>
+
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        onSelect={(item) => {
+          setSearchOpen(false);
+          navigate(`/?q=${encodeURIComponent(item.nombre)}`);
+        }}
+      />
+
+      <StepsWelcomeModal
+        open={!welcomeSeen}
+        pasos={PASOS_BIENVENIDA}
+        labelFinal="Entendido"
+        onFinish={() => setWelcomeSeen(true)}
+      />
     </div>
   );
 }
