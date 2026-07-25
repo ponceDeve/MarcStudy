@@ -593,7 +593,7 @@ export default function MiEstudioPage() {
                   onFocus={() => setBusquedaEnfocada(true)}
                   onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
                   onKeyDown={handleKeyDownInicial}
-                  placeholder="Buscar tema o curso..."
+                  placeholder="Buscar curso"
                   className="home-search-input"
                 />
                 {busquedaEnfocada && resultsVisibles.length > 0 && (

@@ -92,13 +92,6 @@ export default function TopicsModal({
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
     >
-      <button
-        onClick={onClose}
-        className="levels-modal__close-fixed"
-        aria-label="Cerrar mapa de temas"
-      >
-        <i className="fas fa-times" />
-      </button>
 
       <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title levels-modal__title--live">
