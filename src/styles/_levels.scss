@@ -32,6 +32,23 @@
     letter-spacing: 0.05em;
   }
 
+  // Variante usada por TopicsModal: el título queda fijo arriba de toda
+  // la pantalla (no solo del modal) mientras se hace scroll por la
+  // cuadrícula, y su texto se reemplaza por el nombre del tema al pasar
+  // el mouse o tocar un botón — así en celular no hay que subir para
+  // ver de qué tema se trata.
+  &__title--live {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: var(--bg);
+    padding: 16px;
+    margin: 0;
+    border-bottom: 2px solid var(--border);
+  }
+
   // Buscador de temas (arriba de la cuadrícula)
   &__search {
     margin: 0 auto 24px;

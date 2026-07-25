@@ -8,7 +8,7 @@ export default function TopBar({
   onAbrirBuscador,
   onTogglePomodoroMini,
   onAbrirTemas,
-  vidas = 5
+  onGuardarRepaso,
 }) {
   const [configOpen, setConfigOpen] = useState(false);
 
@@ -49,6 +49,12 @@ export default function TopBar({
       label: "Buscar",
       icon: "fa-solid fa-magnifying-glass",
       onClick: onAbrirBuscador
+    },
+    {
+      title: "Guardar este tema para repasarlo después",
+      label: "Guardar",
+      icon: "fa-solid fa-bookmark",
+      onClick: onGuardarRepaso
     },
   ];
 
@@ -103,17 +109,6 @@ export default function TopBar({
         </span>
       </div>
 
-      {/* CAJA 2: Los corazones */}
-      <div className="topbar__vidas" style={{ display: 'flex', gap: '3px', color: '#ff4d4f', fontSize: '0.8rem' }}>
-        {[...Array(5)].map((_, i) => (
-          <i
-            key={i}
-            className={i < vidas ? "fa-solid fa-heart" : "fa-regular fa-heart"}
-            style={{ opacity: i < vidas ? 1 : 0.3 }}
-          />
-        ))}
-      </div>
-
       {/* CAJA 3: Botones de escritorio (usando la clase original topbar__nav para ocultarse en móvil) + Engranaje con clase topbar__gear */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
         <div className="topbar__nav">
@@ -135,7 +130,7 @@ export default function TopBar({
               {botones.slice(0, 3).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
             <div className="topbar__overlay-row2">
-              {botones.slice(3, 5).map((b) => renderBoton(b, "topbar__overlay-btn"))}
+              {botones.slice(3, 6).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
           </div>
         </div>

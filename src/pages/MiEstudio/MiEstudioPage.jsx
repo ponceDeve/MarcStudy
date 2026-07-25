@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
@@ -84,54 +85,24 @@ export default function MiEstudioPage() {
   // en los mensajes de felicitación/derrota de toda la app.
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
 
+  const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
+
   const results = useMemo(() => {
     if (!query.trim()) return [];
     const q = query.trim().toLowerCase();
-
-    // Cursos cuyo nombre coincide directamente...
-    const cursosPorNombre = OPCIONES_BUSQUEDA.filter(
+    return OPCIONES_BUSQUEDA.filter(
       (item) => item.type === "curso" && item.nombre.toLowerCase().includes(q),
-    );
-
-    // ...más cursos que tienen algún tema que coincide (pero en la lista
-    // solo se muestra el curso, nunca el tema suelto).
-    const nombresCursosConTemaCoincidente = new Set(
-      OPCIONES_BUSQUEDA.filter(
-        (item) => item.type === "tema" && item.tema.toLowerCase().includes(q),
-      ).map((item) => item.curso),
-    );
-    const cursosPorTema = OPCIONES_BUSQUEDA.filter(
-      (item) =>
-        item.type === "curso" &&
-        nombresCursosConTemaCoincidente.has(item.nombre) &&
-        !item.nombre.toLowerCase().includes(q),
-    );
-
-    return [...cursosPorNombre, ...cursosPorTema].slice(0, 8);
+    ).slice(0, 8);
   }, [query]);
 
-  // Si lo que se escribió coincide con el nombre de un tema puntual,
-  // Enter debe llevar directo a ese tema (sin pasar por el mapa de
-  // temas del curso). Si no hay coincidencia de tema, Enter se comporta
-  // como siempre: selecciona el curso enfocado en la lista.
-  function manejarEnterBusqueda(e) {
-    if (e.key === "Enter") {
-      const q = query.trim().toLowerCase();
-      if (q) {
-        const temaMatch = OPCIONES_BUSQUEDA.find(
-          (item) => item.type === "tema" && item.tema.toLowerCase().includes(q),
-        );
-        if (temaMatch) {
-          e.preventDefault();
-          setCursoSeleccionado(temaMatch.curso);
-          abrirTema(temaMatch);
-          setQuery("");
-          return;
-        }
-      }
-    }
-    handleKeyDownInicial(e);
-  }
+  // Si no hay nada escrito pero el buscador está enfocado, se listan
+  // todos los cursos (igual que el buscador de temas dentro del mapa),
+  // para que el usuario no tenga que adivinar el nombre.
+  const todosLosCursos = useMemo(
+    () => OPCIONES_BUSQUEDA.filter((item) => item.type === "curso"),
+    [],
+  );
+  const resultsVisibles = query.trim() ? results : todosLosCursos;
 
   useEffect(() => {
     function onFullscreenChange() {
@@ -242,8 +213,34 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Si se llega con ?q=nombre-del-tema (ej. desde el link "Repasar en
+  // Mi Estudio" de la página de Repaso), se busca y abre directo.
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (!q) return;
+    const qLower = q.trim().toLowerCase();
+
+    const temaMatch = OPCIONES_BUSQUEDA.find(
+      (item) => item.type === "tema" && item.tema.toLowerCase() === qLower,
+    );
+    const cursoMatch = OPCIONES_BUSQUEDA.find(
+      (item) => item.type === "curso" && item.nombre.toLowerCase() === qLower,
+    );
+
+    if (temaMatch) {
+      seleccionarItem(temaMatch);
+    } else if (cursoMatch) {
+      seleccionarItem(cursoMatch);
+    }
+
+    // Limpia el parámetro de la URL para no reabrir en cada recarga.
+    setSearchParams({}, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
-    useArrowKeyList(results, seleccionarItem);
+    useArrowKeyList(resultsVisibles, seleccionarItem);
 
   function toggleStage() {
     setIsLevelMode(false);
@@ -323,6 +320,19 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Guardar el tema para repasarlo después SIN necesidad de terminarlo
+  // (por si el usuario se queda a medias pero igual lo quiere repasar).
+  const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
+  function guardarParaRepaso() {
+    if (!topicData) return;
+    registrarCursoCompletado({
+      subject: topicData.curso,
+      tema: topicData.tema,
+    });
+    setRepasoGuardadoMsg(true);
+    setTimeout(() => setRepasoGuardadoMsg(false), 2200);
+  }
+
   // NUEVA FUNCIÓN: Game Over y Limpieza de Disco
   function gameOver() {
     if (!topicData) return;
@@ -398,21 +408,24 @@ export default function MiEstudioPage() {
     } else {
       setWrongCount((w) => w + 1);
 
-      // NUEVA LÓGICA HARDCORE: Castigo por fallar
-      setVidas((prevVidas) => {
-        const nuevasVidas = prevVidas - 1;
+      // Las vidas son un mecanismo exclusivo del modo niveles (examen).
+      // Fallar durante la teoría ya no cuesta vidas.
+      if (isLevelMode) {
+        setVidas((prevVidas) => {
+          const nuevasVidas = prevVidas - 1;
 
-        if (nuevasVidas === 3) {
-          setAlertaVidas("tres");
-        } else if (nuevasVidas === 1) {
-          setAlertaVidas("una");
-        } else if (nuevasVidas <= 0) {
-          setAlertaVidas("cero");
-          gameOver();
-        }
+          if (nuevasVidas === 3) {
+            setAlertaVidas("tres");
+          } else if (nuevasVidas === 1) {
+            setAlertaVidas("una");
+          } else if (nuevasVidas <= 0) {
+            setAlertaVidas("cero");
+            gameOver();
+          }
 
-        return nuevasVidas;
-      });
+          return nuevasVidas;
+        });
+      }
     }
   }
 
@@ -486,12 +499,18 @@ export default function MiEstudioPage() {
         <TopBar
           tema={topicData.tema}
           curso={topicData.curso}
-          vidas={vidas}
           onAbrirNiveles={() => setLevelsOpen(true)}
           onAbrirBuscador={() => setSearchOpen(true)}
           onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
+          onGuardarRepaso={guardarParaRepaso}
         />
+      )}
+
+      {repasoGuardadoMsg && (
+        <div className="repaso-toast">
+          <i className="fas fa-bookmark" /> Guardado para repasar
+        </div>
       )}
 
       <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
@@ -555,13 +574,15 @@ export default function MiEstudioPage() {
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={manejarEnterBusqueda}
+                onFocus={() => setBusquedaEnfocada(true)}
+                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                onKeyDown={handleKeyDownInicial}
                 placeholder="Buscar tema o curso..."
                 className="home-search-input"
               />
-              {results.length > 0 && (
+              {busquedaEnfocada && resultsVisibles.length > 0 && (
                 <div className="home-search-results">
-                  {results.map((r, i) => (
+                  {resultsVisibles.map((r, i) => (
                     <button
                       key={r.nombre}
                       onClick={() => seleccionarItem(r)}
@@ -580,7 +601,7 @@ export default function MiEstudioPage() {
           <div className="mi-estudio__stage">
             {stage === "question" && isLevelMode && (
               <div className="mi-estudio__hud-wrap animate-fade-in">
-                <Hud current={nivelIndex + 1} total={examenPreguntas.length} correct={score} wrong={wrongCount} />
+                <Hud current={nivelIndex + 1} total={examenPreguntas.length} correct={score} wrong={wrongCount} vidas={vidas} />
               </div>
             )}
 

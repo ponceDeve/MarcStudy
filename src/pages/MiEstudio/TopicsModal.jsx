@@ -13,7 +13,6 @@ export default function TopicsModal({
   const [hasHover, setHasHover] = useState(false);
   const [busqueda, setBusqueda] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
-  const utteranceRef = useRef(null);
   const puntoInicioToque = useRef(null);
 
   // Si el dedo se movió más de esto entre el toque inicial y el click,
@@ -26,11 +25,7 @@ export default function TopicsModal({
     }
   }, []);
 
-  // "Calienta" el motor de voz apenas se abre el modal.
   useEffect(() => {
-    if (open && typeof window !== "undefined" && window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
-    }
     if (!open) {
       setBusqueda("");
       setActiveIndex(null);
@@ -41,30 +36,7 @@ export default function TopicsModal({
 
   if (!open) return null;
 
-  function leerNombre(item) {
-    if (typeof window !== "undefined" && window.speechSynthesis) {
-      const synth = window.speechSynthesis;
-      if (synth.speaking) synth.cancel();
-      const utterance = new SpeechSynthesisUtterance(item.tema);
-      utterance.lang = "es-ES";
-      utteranceRef.current = utterance;
-      synth.speak(utterance);
-    }
-  }
-
-  function detenerLectura() {
-    if (typeof window !== "undefined" && window.speechSynthesis && window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel();
-    }
-  }
-
   function manejarClickTema(item, index) {
-    if (hasHover && hoveredIndex === index) {
-      onSelectTema(item);
-      onClose();
-      return;
-    }
-
     if (activeIndex === index) {
       onSelectTema(item);
       onClose();
@@ -77,26 +49,19 @@ export default function TopicsModal({
 
   function manejarHover(item, index) {
     setHoveredIndex(index);
-    leerNombre(item);
   }
 
   function manejarSalidaHover() {
     setHoveredIndex(null);
   }
 
-  // Si el usuario empieza a scrollear, se corta la lectura en curso para
-  // que no siga leyendo un tema que ya quedó fuera de vista.
   function manejarScroll() {
     setActiveIndex(null);
     setHoveredIndex(null);
-    detenerLectura();
   }
 
   function manejarToqueInicial(item, e) {
     puntoInicioToque.current = { x: e.clientX, y: e.clientY };
-    if (!hasHover) {
-      leerNombre(item);
-    }
   }
 
   // Compara dónde empezó el toque (pointerdown) contra dónde terminó
@@ -116,6 +81,10 @@ export default function TopicsModal({
     )
     : temasConIndice;
 
+  // El título solo cambia con clic/toque (activeIndex), nunca con el
+  // simple hover — cambiar el header al pasar el mouse resultaba molesto.
+  const temaEnTitulo = activeIndex !== null ? listaTemas[activeIndex]?.tema : null;
+
   return (
     <div
       className="levels-modal"
@@ -123,8 +92,18 @@ export default function TopicsModal({
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
     >
-      <div className="levels-modal__inner" onClick={(e) => e.stopPropagation()}>
-        <h2 className="levels-modal__title">Temas de {curso}</h2>
+      <button
+        onClick={onClose}
+        className="levels-modal__close-fixed"
+        aria-label="Cerrar mapa de temas"
+      >
+        <i className="fas fa-times" />
+      </button>
+
+      <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
+        <h2 className="levels-modal__title levels-modal__title--live">
+          {temaEnTitulo || `Temas de ${curso}`}
+        </h2>
 
         <div className="home-search levels-modal__search" onClick={(e) => e.stopPropagation()}>
           <input

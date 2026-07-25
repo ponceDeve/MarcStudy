@@ -70,7 +70,7 @@ export default function RepasoPage() {
                     {REPASO_INTERVALOS[intervaloIdx] > 1 ? "s" : ""}
                   </p>
                   <a
-                    href={`/?q=${encodeURIComponent(entrada.tema || entrada.subject)}`}
+                    href={`${window.location.origin}/cont_crono/?q=${encodeURIComponent(entrada.tema || entrada.subject)}`}
                     target="_blank"
                     rel="noopener"
                     className="repaso__item-link"

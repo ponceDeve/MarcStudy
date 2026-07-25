@@ -1,0 +1,441 @@
+{
+  "curso": "Biología",
+  "tema": "Genética: Grupos Sanguíneos y Herencia del Sexo",
+  "glosario": {
+    "antígeno": "Sustancia en el glóbulo rojo que activa al sistema inmune.",
+    "alelo": "Cada variante posible de un mismo gen.",
+    "genotipo": "La combinación de alelos que tiene un individuo.",
+    "fenotipo": "La característica que se observa (ej: grupo sanguíneo).",
+    "donador universal": "Grupo O; su sangre no causa rechazo en nadie.",
+    "receptor universal": "Grupo AB; puede recibir sangre de cualquier grupo.",
+    "factor Rh": "Antígeno D presente o ausente en el glóbulo rojo.",
+    "eritroblastosis fetal": "Enfermedad del bebé por incompatibilidad de Rh.",
+    "herencia ligada al sexo": "Genes en el cromosoma X que causan enfermedad.",
+    "genes holándricos": "Genes propios del cromosoma Y, solo en hombres.",
+    "genes ginándricos": "Genes propios del cromosoma X."
+  },
+  "theory": [
+    {
+      "titulo": "Herencia sanguínea",
+      "puntos": [
+        {
+          "texto": "Trata sobre los genes que expresan antígenos en el glóbulo rojo",
+          "pregunta": {
+            "q": "¿Sobre qué tratan los genes de la herencia sanguínea?",
+            "opts": [
+              "Grupos musculares",
+              "Antígenos del glóbulo rojo",
+              "Color de ojos",
+              "Estatura"
+            ],
+            "correct": 1,
+            "explicacion": "El sistema ABO se basa en genes que determinan qué antígenos (marcadores) aparecen en la superficie de los glóbulos rojos, lo cual define el grupo sanguíneo de cada persona."
+          }
+        },
+        {
+          "texto": "Karl Landsteiner descubre los antígenos en 1901",
+          "pregunta": {
+            "q": "¿Quién descubrió los antígenos del sistema ABO?",
+            "opts": [
+              "Wiener",
+              "Karl Landsteiner",
+              "Mendel",
+              "Watson"
+            ],
+            "correct": 1,
+            "explicacion": "Karl Landsteiner identificó en 1901 que existían distintos tipos de sangre según los antígenos presentes, descubrimiento que hizo posibles las transfusiones seguras y le valió el Premio Nobel."
+          }
+        },
+        {
+          "texto": "Sistema ABO — alelos múltiples:",
+          "sub": [
+            "Alelo A",
+            "Alelo B",
+            "Alelo i (ausencia)"
+          ],
+          "pregunta": {
+            "q": "¿Cuáles son los alelos del sistema ABO?",
+            "opts": [
+              "X, Y, Z",
+              "A, B, i",
+              "R, r",
+              "D, d"
+            ],
+            "correct": 1,
+            "explicacion": "A diferencia de la mayoría de genes (con solo 2 alelos), el sistema ABO tiene alelos múltiples: A y B son codominantes entre sí, e i (ausencia) es recesivo frente a ambos."
+          }
+        },
+        {
+          "texto": "Grupo O: se considera donador universal",
+          "pregunta": {
+            "q": "¿Qué grupo sanguíneo es el donador universal?",
+            "opts": [
+              "A",
+              "B",
+              "AB",
+              "O"
+            ],
+            "correct": 3,
+            "explicacion": "El grupo O no tiene antígenos A ni B en sus glóbulos rojos, por lo que no provoca una reacción de rechazo al ser transfundido a personas de cualquier otro grupo."
+          }
+        },
+        {
+          "texto": "Grupo AB: se considera receptor universal",
+          "pregunta": {
+            "q": "¿Qué grupo sanguíneo es el receptor universal?",
+            "opts": [
+              "A",
+              "B",
+              "AB",
+              "O"
+            ],
+            "correct": 2,
+            "explicacion": "Al tener ambos antígenos (A y B) ya presentes, una persona con grupo AB no genera anticuerpos contra ninguno de los dos, por lo que puede recibir sangre de cualquier grupo sin rechazo."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla del Sistema ABO",
+      "puntos": [
+        {
+          "texto": "Grupo A:",
+          "sub": [
+            "Plasma con anticuerpo anti-B",
+            "Genotipo: IᴬIᴬ o Iᴬi"
+          ],
+          "pregunta": {
+            "q": "¿Qué anticuerpo tiene el plasma del grupo A?",
+            "opts": [
+              "Anti-A",
+              "Anti-B",
+              "Ambos",
+              "Ninguno"
+            ],
+            "correct": 1,
+            "explicacion": "El sistema inmune genera anticuerpos contra el antígeno que NO tiene la persona; como el grupo A no tiene antígeno B, produce anticuerpos anti-B en su plasma."
+          }
+        },
+        {
+          "texto": "Grupo B:",
+          "sub": [
+            "Plasma con anticuerpo anti-A",
+            "Genotipo: IᴮIᴮ o Iᴮi"
+          ],
+          "pregunta": {
+            "q": "¿Qué anticuerpo tiene el plasma del grupo B?",
+            "opts": [
+              "Anti-A",
+              "Anti-B",
+              "Ambos",
+              "Ninguno"
+            ],
+            "correct": 0,
+            "explicacion": "Por la misma lógica inversa, el grupo B no tiene antígeno A, así que su plasma contiene anticuerpos anti-A."
+          }
+        },
+        {
+          "texto": "Grupo AB:",
+          "sub": [
+            "Plasma sin anticuerpos A ni B",
+            "Genotipo: IᴬIᴮ"
+          ],
+          "pregunta": {
+            "q": "¿Qué anticuerpos tiene el plasma del grupo AB?",
+            "opts": [
+              "Anti-A",
+              "Anti-B",
+              "Ambos",
+              "Ninguno"
+            ],
+            "correct": 3,
+            "explicacion": "Al tener ambos antígenos (A y B), el sistema inmune no genera anticuerpos contra ninguno, ya que atacaría sus propias células."
+          }
+        },
+        {
+          "texto": "Grupo O:",
+          "sub": [
+            "Plasma con ambos anticuerpos (anti-A y anti-B)",
+            "Genotipo: ii"
+          ],
+          "pregunta": {
+            "q": "¿Cuál es el genotipo del grupo O?",
+            "opts": [
+              "IᴬIᴬ",
+              "IᴮIᴮ",
+              "IᴬIᴮ",
+              "ii"
+            ],
+            "correct": 3,
+            "explicacion": "Como el alelo i es recesivo, solo se expresa como grupo O cuando la persona tiene dos copias de ese alelo (una de cada padre); una sola copia con A o B haría dominar a esos alelos."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de cruce (ejemplo)",
+      "puntos": [
+        {
+          "texto": "Cruce: padre Iᴬi × madre Iᴮi",
+          "pregunta": {
+            "q": "En el cruce Iᴬi × Iᴮi, ¿qué genotipos SÍ pueden salir?",
+            "opts": [
+              "Solo ii",
+              "IᴬIᴮ, Iᴬi, Iᴮi, ii",
+              "Solo IᴬIᴮ",
+              "Ninguno"
+            ],
+            "correct": 1,
+            "explicacion": "Al combinar los alelos del padre (Iᴬ o i) con los de la madre (Iᴮ o i) en un cuadro de Punnett, resultan las cuatro combinaciones posibles: IᴬIᴮ, Iᴬi, Iᴮi e ii."
+          }
+        },
+        {
+          "texto": "Genotipos posibles en la descendencia:",
+          "sub": [
+            "IᴬIᴮ → grupo AB",
+            "Iᴬi → grupo A",
+            "Iᴮi → grupo B",
+            "ii → grupo O"
+          ],
+          "pregunta": {
+            "q": "En el cruce Iᴬi × Iᴮi, ¿qué genotipo NO puede salir?",
+            "opts": [
+              "IᴬIᴮ",
+              "ii",
+              "IᴬIᴬ",
+              "Iᴮi"
+            ],
+            "correct": 2,
+            "explicacion": "Para que salga IᴬIᴬ se necesitarían dos alelos A, pero la madre (Iᴮi) no tiene ningún alelo A para aportar, así que esa combinación es imposible en este cruce."
+          }
+        },
+        {
+          "texto": "Cada combinación tiene 25% de probabilidad",
+          "pregunta": {
+            "q": "¿Qué probabilidad tiene cada combinación en el cruce Iᴬi × Iᴮi?",
+            "opts": [
+              "10%",
+              "25%",
+              "50%",
+              "100%"
+            ],
+            "correct": 1,
+            "explicacion": "Al ser 4 combinaciones igualmente posibles en el cuadro de Punnett (2 alelos del padre × 2 de la madre = 4 casillas), cada una representa 1 de 4, es decir, 25% de probabilidad."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema Rh",
+      "puntos": [
+        {
+          "texto": "Descubierto por Landsteiner y Wiener",
+          "pregunta": {
+            "q": "¿Quiénes descubrieron el sistema Rh?",
+            "opts": [
+              "Landsteiner y Wiener",
+              "Mendel y Morgan",
+              "Watson y Crick",
+              "Darwin y Wallace"
+            ],
+            "correct": 0,
+            "explicacion": "Landsteiner y Wiener identificaron en 1940 (usando sangre de monos Rhesus, de ahí el nombre) un nuevo antígeno independiente del sistema ABO, que también debía considerarse en las transfusiones."
+          }
+        },
+        {
+          "texto": "El antígeno D es el factor Rh",
+          "pregunta": {
+            "q": "¿Qué antígeno define el factor Rh?",
+            "opts": [
+              "Antígeno A",
+              "Antígeno B",
+              "Antígeno D",
+              "Antígeno O"
+            ],
+            "correct": 2,
+            "explicacion": "La presencia o ausencia del antígeno D en la superficie del glóbulo rojo es lo que determina si una persona es Rh positivo o negativo."
+          }
+        },
+        {
+          "texto": "R → presencia del antígeno D · r → ausencia",
+          "pregunta": {
+            "q": "¿Qué significa el alelo 'r' en el sistema Rh?",
+            "opts": [
+              "Presencia del antígeno D",
+              "Ausencia del antígeno D",
+              "Grupo sanguíneo O",
+              "Grupo sanguíneo AB"
+            ],
+            "correct": 1,
+            "explicacion": "El alelo r es recesivo y representa la ausencia del antígeno D; solo con dos copias de este alelo (rr) una persona es Rh negativo."
+          }
+        },
+        {
+          "texto": "Rh+ : genotipo RR o Rr (sin anticuerpo anti-D)",
+          "pregunta": {
+            "q": "¿Cuál es el genotipo de una persona Rh+?",
+            "opts": [
+              "rr",
+              "RR o Rr",
+              "Solo RR",
+              "Solo Rr"
+            ],
+            "correct": 1,
+            "explicacion": "Como el alelo R (presencia de antígeno D) es dominante, basta con tener una sola copia para ser Rh positivo, ya sea RR o Rr."
+          }
+        },
+        {
+          "texto": "Rh- : genotipo rr (puede generar anticuerpo anti-D)",
+          "pregunta": {
+            "q": "¿Cuál es el genotipo de una persona Rh-?",
+            "opts": [
+              "RR",
+              "Rr",
+              "rr",
+              "Ri"
+            ],
+            "correct": 2,
+            "explicacion": "Al ser recesivo, solo se es Rh negativo si se heredan dos copias del alelo r, una de cada padre."
+          }
+        },
+        {
+          "texto": "Si una madre Rh- gesta un bebé Rh+, puede causarse eritroblastosis fetal, hidrops fetal o enfermedad hemolítica del recién nacido",
+          "pregunta": {
+            "q": "¿Qué puede causar la incompatibilidad Rh entre madre e hijo?",
+            "opts": [
+              "Daltonismo",
+              "Eritroblastosis fetal",
+              "Hemofilia",
+              "Hipertricosis"
+            ],
+            "correct": 1,
+            "explicacion": "Si una madre Rh- desarrolla anticuerpos contra el Rh+ de su bebé (generalmente en embarazos posteriores al primero), estos pueden atacar los glóbulos rojos del feto, causando anemia grave o eritroblastosis fetal."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Genes ginándricos (propios del X)",
+      "puntos": [
+        {
+          "texto": "Enfermedades recesivas ligadas al X:",
+          "sub": [
+            "Daltonismo",
+            "Hemofilia",
+            "Distrofia muscular"
+          ],
+          "pregunta": {
+            "q": "¿Cuál de estas es una enfermedad ligada al cromosoma X?",
+            "opts": [
+              "Síndrome del SRY",
+              "Hipertricosis auricular",
+              "Hemofilia",
+              "Síndrome de Sertoli"
+            ],
+            "correct": 2,
+            "explicacion": "La hemofilia es causada por un gen recesivo ubicado en el cromosoma X; como los hombres solo tienen una copia de X, basta un alelo defectuoso para que se manifieste la enfermedad."
+          }
+        },
+        {
+          "texto": "Se conoce como herencia ligada al sexo",
+          "pregunta": {
+            "q": "¿Cómo se le llama a la herencia de enfermedades del cromosoma X?",
+            "opts": [
+              "Herencia holándrica",
+              "Herencia ligada al sexo",
+              "Herencia autosómica",
+              "Herencia mitocondrial"
+            ],
+            "correct": 1,
+            "explicacion": "Se llama 'ligada al sexo' porque el gen responsable está en el cromosoma X, y por eso la enfermedad afecta con mayor frecuencia a los hombres (que solo tienen un X) que a las mujeres."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Genes holándricos (propios del Y)",
+      "puntos": [
+        {
+          "texto": "Enfermedades exclusivas del varón:",
+          "sub": [
+            "Hipertricosis auricular",
+            "Síndrome del SRY (disgenesia gonadal)",
+            "Síndrome de solo células de Sertoli (infertilidad)"
+          ],
+          "pregunta": {
+            "q": "¿Cuál de estas es una enfermedad de los genes holándricos (Y)?",
+            "opts": [
+              "Daltonismo",
+              "Hemofilia",
+              "Distrofia muscular",
+              "Hipertricosis auricular"
+            ],
+            "correct": 3,
+            "explicacion": "La hipertricosis auricular (exceso de vello en las orejas) es causada por un gen ubicado exclusivamente en el cromosoma Y, por lo que solo puede afectar a hombres y se hereda de padre a hijo varón."
+          }
+        },
+        {
+          "texto": "Se conoce como herencia restringida al sexo (solo de padre a hijo varón)",
+          "pregunta": {
+            "q": "¿Cómo se le llama a la herencia de los genes del cromosoma Y?",
+            "opts": [
+              "Herencia ligada al sexo",
+              "Herencia restringida al sexo",
+              "Herencia autosómica",
+              "Herencia recesiva"
+            ],
+            "correct": 1,
+            "explicacion": "Como el cromosoma Y solo pasa de padres a hijos varones, estas enfermedades tienen un patrón de herencia exclusivo y directo por esa línea, llamado 'restringido al sexo'."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Herencia del sexo",
+      "puntos": [
+        {
+          "texto": "Trata sobre los genes ubicados en el par cromosómico sexual",
+          "pregunta": {
+            "q": "¿Sobre qué trata la herencia del sexo?",
+            "opts": [
+              "Los genes del par cromosómico sexual",
+              "Los genes de la piel",
+              "Los genes musculares",
+              "Los genes del cerebro"
+            ],
+            "correct": 0,
+            "explicacion": "Determina cómo se hereda el sexo biológico de un individuo, según la combinación de cromosomas sexuales (XX o XY en humanos) que recibe de sus padres."
+          }
+        },
+        {
+          "texto": "En moscas (Drosophila melanogaster): es el par 4",
+          "pregunta": {
+            "q": "¿En qué par cromosómico está el sexo en Drosophila melanogaster?",
+            "opts": [
+              "Par 2",
+              "Par 4",
+              "Par 23",
+              "Par 8"
+            ],
+            "correct": 1,
+            "explicacion": "La mosca de la fruta, organismo muy usado en estudios de genética por su ciclo de vida corto, tiene 4 pares de cromosomas, siendo el par 4 el que determina su sexo."
+          }
+        },
+        {
+          "texto": "En humanos: es el par 23",
+          "pregunta": {
+            "q": "¿En qué par cromosómico está el sexo en humanos?",
+            "opts": [
+              "Par 4",
+              "Par 21",
+              "Par 23",
+              "Par 46"
+            ],
+            "correct": 2,
+            "explicacion": "De los 23 pares de cromosomas humanos, el par 23 es el que determina el sexo: XX en mujeres y XY en hombres."
+          }
+        }
+      ]
+    }
+  ]
+}
