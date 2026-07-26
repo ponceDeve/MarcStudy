@@ -13,6 +13,7 @@ import Hud from "./Hud";
 import LevelsModal from "./LevelsModal";
 import SearchModal from "../../components/SearchModal";
 import WelcomeModal from "./WelcomeModal";
+import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import 'katex/dist/katex.min.css';
@@ -86,6 +87,11 @@ export default function MiEstudioPage() {
   // en los mensajes de felicitación/derrota de toda la app.
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
 
+  // Modal "¿Quieres ver la teoría?": aparece ENCIMA del tema recién
+  // abierto (que ya carga y se ve de fondo), no antes de abrirlo.
+  const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
+  const [modoEstudio, setModoEstudio] = useState("completo"); // 'completo' | 'solo_preguntas'
+
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
 
   const results = useMemo(() => {
@@ -143,13 +149,7 @@ export default function MiEstudioPage() {
     setLoading(true);
     setError("");
     try {
-      console.log("BASE_URL:", import.meta.env.BASE_URL);
-      console.log("Archivo:", item.archivo);
-
-      const ruta = `${import.meta.env.BASE_URL}${item.archivo.replace(/^\//, "")}`;
-      console.log("Ruta final:", ruta);
-
-      const res = await fetch(ruta);
+      const res = await fetch(item.archivo);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
       const data = await res.json();
       const puntos = (data.theory || []).flatMap((seccion) =>
@@ -189,6 +189,7 @@ export default function MiEstudioPage() {
       setFlatPuntos(puntos);
       setCardIndex(0);
       setStage("theory");
+      setModoEstudio("completo");
       setIsLevelMode(false);
       setScore(0);
       setWrongCount(0);
@@ -201,8 +202,13 @@ export default function MiEstudioPage() {
       // Reset de vidas y alertas al iniciar
       setVidas(5);
       setAlertaVidas(null);
+
+      // El tema ya está abierto (se ve de fondo) — recién ahora se
+      // pregunta si quiere ver la teoría o saltar directo a preguntas.
+      setPreguntaModoAbierta(true);
     } catch (e) {
-      setError(`No pude cargar "${item.tema}".`);
+      console.error("Error en abrirTema:", e);
+      setError(`No pude cargar "${item.tema}". (${e.message})`);
     } finally {
       setLoading(false);
     }
@@ -216,7 +222,17 @@ export default function MiEstudioPage() {
       setQuery("");
     } else {
       setCursoSeleccionado(item.curso);
+      setTemasOpen(false);
       abrirTema(item);
+    }
+  }
+
+  function elegirModoEstudio(modo) {
+    setPreguntaModoAbierta(false);
+    if (modo === "solo_preguntas") {
+      setModoEstudio("solo_preguntas");
+      setStage("question");
+      setCountdown(0);
     }
   }
 
@@ -243,7 +259,8 @@ export default function MiEstudioPage() {
 
     // Limpia el parámetro de la URL para no reabrir en cada recarga.
     setSearchParams({}, { replace: true });
-  }, [searchParams, setSearchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
     useArrowKeyList(resultsVisibles, seleccionarItem);
@@ -282,7 +299,8 @@ export default function MiEstudioPage() {
     }
     if (cardIndex < flatPuntos.length - 1) {
       setCardIndex(cardIndex + 1);
-      setStage("theory");
+      const siguienteStage = modoEstudio === "solo_preguntas" ? "question" : "theory";
+      setStage(siguienteStage);
       setIsLevelMode(false);
       setQuestionResult(null);
       setAttemptKey(0);
@@ -303,7 +321,8 @@ export default function MiEstudioPage() {
     }
     if (cardIndex > 0) {
       setCardIndex(cardIndex - 1);
-      setStage("theory");
+      const anteriorStage = modoEstudio === "solo_preguntas" ? "question" : "theory";
+      setStage(anteriorStage);
       setIsLevelMode(false);
       setQuestionResult(null);
       setAttemptKey(0);
@@ -499,6 +518,7 @@ export default function MiEstudioPage() {
   return (
     <div className="mi-estudio">
       <WelcomeModal open={!nombreUsuario} onSubmit={(n) => setNombreUsuario(n)} />
+      <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
 
       {/* El TopBar solo se muestra si hay tema y NO estamos en modo niveles */}
       {topicData && !isLevelMode && (
@@ -577,15 +597,12 @@ export default function MiEstudioPage() {
                 <h1 className="mi-estudio__intro-title">
                   {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
                 </h1>
+                {error && (
+                  <p style={{ color: "var(--danger, #e74c3c)", fontWeight: 700, marginTop: "10px" }}>
+                    ⚠️ {error}
+                  </p>
+                )}
               </div>
-
-              {/* 👇 Pégalo aquí */}
-              {error && (
-                <div style={{ backgroundColor: "#fee2e2", color: "#ef4444", padding: "12px", borderRadius: "8px", marginBottom: "16px", textAlign: "center", fontWeight: "600" }}>
-                  {error}
-                </div>
-              )}
-
               <div className="home-search">
                 <input
                   value={query}
@@ -593,7 +610,7 @@ export default function MiEstudioPage() {
                   onFocus={() => setBusquedaEnfocada(true)}
                   onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
                   onKeyDown={handleKeyDownInicial}
-                  placeholder="Buscar curso"
+                  placeholder="Buscar tema o curso..."
                   className="home-search-input"
                 />
                 {busquedaEnfocada && resultsVisibles.length > 0 && (
@@ -601,7 +618,10 @@ export default function MiEstudioPage() {
                     {resultsVisibles.map((r, i) => (
                       <button
                         key={r.nombre}
-                        onClick={() => seleccionarItem(r)}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          seleccionarItem(r);
+                        }}
                         className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
                       >
                         <p>{r.nombre}</p>
@@ -692,7 +712,7 @@ export default function MiEstudioPage() {
                 <i className="fas fa-caret-left" />
               </button>
 
-              {!isLevelMode && (
+              {!isLevelMode && modoEstudio !== "solo_preguntas" && (
                 <button onClick={toggleStage} className="mi-estudio__nav-flip" title="Voltear Tarjeta">
                   <i className="fas fa-sync-alt" />
                 </button>
@@ -782,7 +802,7 @@ export default function MiEstudioPage() {
             abrirTema({
               curso: nombreCursoActivo,
               tema: temaItem.tema,
-              archivo: temaItem.archivo
+              archivo: temaItem.archivo,
             });
           }}
         />

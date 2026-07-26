@@ -15,6 +15,7 @@ import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
 import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import ScheduleSetup from "./ScheduleSetup";
+import ScheduleEditor from "./ScheduleEditor";
 
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
@@ -94,7 +95,7 @@ export default function HorarioPage() {
   // Bienvenida → gate obligatorio de configuración → asistente de setup.
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("horario_welcome_seen", false);
   const [setupOpen, setSetupOpen] = useState(false);
-  const [setupEsEdicion, setSetupEsEdicion] = useState(false);
+  const [editorOpen, setEditorOpen] = useState(false);
 
   const alarmRef = useRef(null);
 
@@ -256,7 +257,7 @@ export default function HorarioPage() {
       <AppHeader
         showHome
         onAbrirBuscador={() => setSearchOpen(true)}
-        onEditarHorario={() => { setSetupEsEdicion(true); setSetupOpen(true); }}
+        onEditarHorario={() => setEditorOpen(true)}
       />
 
       <main className="horario__main">
@@ -539,8 +540,25 @@ export default function HorarioPage() {
       <ScheduleSetup
         open={setupOpen}
         onComplete={terminarSetup}
-        onCancel={setupEsEdicion ? () => { setSetupOpen(false); setSetupEsEdicion(false); } : null}
+        onCancel={null}
       />
+
+      {editorOpen && (
+        <ScheduleEditor
+          open={editorOpen}
+          horarioInicial={horario}
+          onGuardar={(nuevoHorario) => {
+            guardarHorario(nuevoHorario);
+            setHorario(nuevoHorario);
+          }}
+          onCerrar={() => {
+            setEditorOpen(false);
+            const configurados = DIAS_SEMANA.filter((d) => horario[d] && horario[d].length > 0);
+            setSelectedDay((prev) => (horario[prev] ? prev : configurados[0] || "lunes"));
+            setActiveCourseIdx(null);
+          }}
+        />
+      )}
     </div>
   );
 }

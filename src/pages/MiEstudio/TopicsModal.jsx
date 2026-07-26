@@ -92,7 +92,6 @@ export default function TopicsModal({
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
     >
-
       <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title levels-modal__title--live">
           {temaEnTitulo || `Temas de ${curso}`}

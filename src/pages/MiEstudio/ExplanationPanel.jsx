@@ -74,7 +74,7 @@ export default function ExplanationPanel({
               Rendirse <i className="fas fa-flag" />
             </button>
             <button onClick={onReintentar} className="explanation-panel__btn is-neutral">
-              Intentar de nuevo <i className="fas fa-rotate-left" />
+              Repetir <i className="fas fa-rotate-left" />
             </button>
           </>
         )}
