@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
@@ -34,10 +33,16 @@ const PASOS_BIENVENIDA = [
 ];
 
 export default function RepasoPage() {
-  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("repaso_welcome_seen", false);
   const [log, setLog] = useState(() => leerLog());
+
+  // Navegación a Mi Estudio con ?q=. Se arma la URL a mano en vez de
+  // usar navigate() de React Router: con el basename "/cont_crono"
+  // configurado, navigate() duplicaba el prefijo (/cont_crono/cont_crono).
+  function irAMiEstudio(nombre) {
+    window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(nombre)}`;
+  }
 
   const { repasosHoy, proximos } = useMemo(() => clasificarRepasos(log), [log]);
 
@@ -88,7 +93,7 @@ export default function RepasoPage() {
                     {REPASO_INTERVALOS[intervaloIdx] > 1 ? "s" : ""}
                   </p>
                   <button
-                    onClick={() => navigate(`/?q=${encodeURIComponent(entrada.tema || entrada.subject)}`)}
+                    onClick={() => irAMiEstudio(entrada.tema || entrada.subject)}
                     className="repaso__item-link"
                   >
                     <i className="bi bi-book" /> Repasar en Mi Estudio
@@ -156,7 +161,7 @@ export default function RepasoPage() {
         onClose={() => setSearchOpen(false)}
         onSelect={(item) => {
           setSearchOpen(false);
-          navigate(`/?q=${encodeURIComponent(item.nombre)}`);
+          irAMiEstudio(item.nombre);
         }}
       />
 

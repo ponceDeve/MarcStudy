@@ -238,7 +238,7 @@ export default function MiEstudioPage() {
 
   // Si se llega con ?q=nombre-del-tema (ej. desde el link "Repasar en
   // Mi Estudio" de la página de Repaso), se busca y abre directo.
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   useEffect(() => {
     const q = searchParams.get("q");
     if (!q) return;
@@ -258,7 +258,10 @@ export default function MiEstudioPage() {
     }
 
     // Limpia el parámetro de la URL para no reabrir en cada recarga.
-    setSearchParams({}, { replace: true });
+    // Se usa el API nativo del navegador (no setSearchParams de React
+    // Router) porque ese, combinado con el basename "/cont_crono",
+    // dejaba la URL rota (duplicaba o perdía el prefijo).
+    window.history.replaceState(null, "", window.location.pathname);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -603,34 +606,34 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-              <div className="home-search">
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setBusquedaEnfocada(true)}
-                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                  onKeyDown={handleKeyDownInicial}
-                  placeholder="Buscar tema o curso..."
-                  className="home-search-input"
-                />
-                {busquedaEnfocada && resultsVisibles.length > 0 && (
-                  <div className="home-search-results">
-                    {resultsVisibles.map((r, i) => (
-                      <button
-                        key={r.nombre}
-                        onMouseDown={(e) => {
-                          e.preventDefault();
-                          seleccionarItem(r);
-                        }}
-                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                      >
-                        <p>{r.nombre}</p>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="home-search">
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => setBusquedaEnfocada(true)}
+                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                onKeyDown={handleKeyDownInicial}
+                placeholder="Buscar tema o curso..."
+                className="home-search-input"
+              />
+              {busquedaEnfocada && resultsVisibles.length > 0 && (
+                <div className="home-search-results">
+                  {resultsVisibles.map((r, i) => (
+                    <button
+                      key={r.nombre}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        seleccionarItem(r);
+                      }}
+                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                    >
+                      <p>{r.nombre}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+          </div>
           </>
         )}
 

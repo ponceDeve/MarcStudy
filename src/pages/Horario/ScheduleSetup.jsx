@@ -12,7 +12,7 @@ const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 // cantidad de pomodoros (máx. 4 por día, se puede omitir para cortar
 // antes). Al terminar el último día, entrega el horario armado.
 export default function ScheduleSetup({ open, onComplete, onCancel }) {
-  const [paso, setPaso] = useState("dias"); // dias | curso | pomodoros
+  const [paso, setPaso] = useState("dias"); // dias | curso
   const [diasSeleccionados, setDiasSeleccionados] = useState([]);
   const [diaIdx, setDiaIdx] = useState(0);
   const [horario, setHorario] = useState({});
@@ -44,11 +44,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   function agregarCurso() {
     const limpio = nombreCurso.trim();
     if (!limpio || nombreExcedido) return;
-    setPaso("pomodoros");
-  }
 
-  function confirmarPomodoros() {
-    const limpio = nombreCurso.trim();
     setHorario((prev) => {
       const listaActual = prev[diaActual] || [];
       return { ...prev, [diaActual]: [...listaActual, { subject: limpio, pomodoros }] };
@@ -59,8 +55,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
     const nuevaCantidad = cursosDelDia.length + 1;
     if (nuevaCantidad >= MAX_CURSOS_POR_DIA) {
       avanzarDia();
-    } else {
-      setPaso("curso");
     }
   }
 
@@ -281,6 +275,19 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 : `${nombreCurso.length}/${LIMITE_NOMBRE_CURSO}`}
             </p>
 
+            <p className="setup-sub" style={{ margin: 0 }}>¿Cuántos pomodoros?</p>
+            <div className="setup-pomo-grid">
+              {OPCIONES_POMODOROS.map((n) => (
+                <button
+                  key={n}
+                  className={`setup-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
+                  onClick={() => setPomodoros(n)}
+                >
+                  {n}
+                </button>
+              ))}
+            </div>
+
             <div className="setup-nav">
               {cursosDelDia.length > 0 && (
                 <button className="setup-btn is-ghost" onClick={avanzarDia}>
@@ -293,29 +300,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 onClick={agregarCurso}
               >
                 Agregar curso
-              </button>
-            </div>
-          </>
-        )}
-
-        {paso === "pomodoros" && (
-          <>
-            <h2 className="setup-titulo">¿Cuántos pomodoros?</h2>
-            <p className="setup-sub">Para "{nombreCurso.trim()}" en {DIA_LABELS[diaActual]}.</p>
-            <div className="setup-pomo-grid">
-              {OPCIONES_POMODOROS.map((n) => (
-                <button
-                  key={n}
-                  className={`setup-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
-                  onClick={() => setPomodoros(n)}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-            <div className="setup-nav">
-              <button className="setup-btn is-primary" onClick={confirmarPomodoros}>
-                Confirmar
               </button>
             </div>
           </>
