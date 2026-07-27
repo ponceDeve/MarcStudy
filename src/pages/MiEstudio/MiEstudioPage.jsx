@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
@@ -14,8 +14,10 @@ import LevelsModal from "./LevelsModal";
 import SearchModal from "../../components/SearchModal";
 import WelcomeModal from "./WelcomeModal";
 import ModoEstudioModal from "./ModoEstudioModal";
+import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
+import { leerPomodoroCompartido, guardarRetorno } from "../../lib/pomodoroShared";
 import 'katex/dist/katex.min.css';
 
 const OPCIONES_BUSQUEDA = [
@@ -91,6 +93,37 @@ export default function MiEstudioPage() {
   // abierto (que ya carga y se ve de fondo), no antes de abrirlo.
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
   const [modoEstudio, setModoEstudio] = useState("completo"); // 'completo' | 'solo_preguntas'
+
+  // Aviso de "se acabó el pomodoro": Pomodoro corre en su propia
+  // pestaña/página, así que acá se revisa cada segundo si ya terminó
+  // (comparando la hora de fin guardada en localStorage) para avisar
+  // sin depender de estar mirando esa otra pestaña.
+  const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] = useState(false);
+  const [pomodoroAlarmaLabel, setPomodoroAlarmaLabel] = useState("");
+  const pomodoroAlertadoRef = useRef(null);
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      const estado = leerPomodoroCompartido();
+      if (
+        estado &&
+        estado.running &&
+        Date.now() >= estado.endTimestamp &&
+        pomodoroAlertadoRef.current !== estado.endTimestamp
+      ) {
+        pomodoroAlertadoRef.current = estado.endTimestamp;
+        setPomodoroAlarmaLabel(estado.label || "");
+        setPomodoroAlarmaAbierta(true);
+      }
+    }, 1000);
+    return () => clearInterval(intervalo);
+  }, []);
+
+  function irAPomodoroDesdeAlarma() {
+    setPomodoroAlarmaAbierta(false);
+    if (topicData?.tema) guardarRetorno(topicData.tema);
+    window.location.href = `${window.location.origin}/cont_crono/pomodoro`;
+  }
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
 
@@ -522,6 +555,11 @@ export default function MiEstudioPage() {
     <div className="mi-estudio">
       <WelcomeModal open={!nombreUsuario} onSubmit={(n) => setNombreUsuario(n)} />
       <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
+      <PomodoroAlarmModal
+        open={pomodoroAlarmaAbierta}
+        label={pomodoroAlarmaLabel}
+        onIrAPomodoro={irAPomodoroDesdeAlarma}
+      />
 
       {/* El TopBar solo se muestra si hay tema y NO estamos en modo niveles */}
       {topicData && !isLevelMode && (

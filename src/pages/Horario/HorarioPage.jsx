@@ -2,13 +2,20 @@ import { useState, useRef, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import manifest from "../../data/manifest.json";
 import {
   leerHorario,
   guardarHorario,
   hayHorarioConfigurado,
   DIAS_SEMANA,
+  DIA_LABELS,
 } from "../../lib/scheduleStorage";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
+import {
+  guardarPomodoroCompartido,
+  limpiarPomodoroCompartido,
+  leerYLimpiarRetorno,
+} from "../../lib/pomodoroShared";
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
@@ -97,6 +104,12 @@ export default function HorarioPage() {
   const [setupOpen, setSetupOpen] = useState(false);
   const [editorOpen, setEditorOpen] = useState(false);
 
+  // Flujo "Escoge un curso" (desplegable al final de cada día): elegir
+  // curso real de Mi Estudio → elegir uno de sus temas → confirmar.
+  const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
+  const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
+  const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
+
   const alarmRef = useRef(null);
 
   const courses = horario[selectedDay] || [];
@@ -126,6 +139,8 @@ export default function HorarioPage() {
   }
 
   function handleTaskComplete() {
+    limpiarPomodoroCompartido();
+
     if (alarmRef.current) {
       alarmRef.current.muted = false;
       alarmRef.current.volume = 1.0;
@@ -166,6 +181,34 @@ export default function HorarioPage() {
     100,
   );
 
+  // Envuelve start()/pause() para que otras pestañas (Mi Estudio) puedan
+  // enterarse de cuándo termina el pomodoro, y para volver sola al tema
+  // de origen si es que se llegó acá desde el aviso de "se acabó el
+  // tiempo" de esa otra pestaña.
+  function iniciarConSync() {
+    start();
+    const label = activeCourse
+      ? `${activeCourse.subject} · ${activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]?.detail || ""}`
+      : manualBreak
+        ? `Descanso de ${manualBreak} min`
+        : "";
+    guardarPomodoroCompartido({
+      endTimestamp: Date.now() + secondsLeft * 1000,
+      running: true,
+      label,
+    });
+
+    const retorno = leerYLimpiarRetorno();
+    if (retorno) {
+      window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(retorno)}`;
+    }
+  }
+
+  function pausarConSync() {
+    pause();
+    limpiarPomodoroCompartido();
+  }
+
   function abrirCurso(idx) {
     const course = courses[idx];
     const tasks = buildCourseTasks(course);
@@ -181,6 +224,42 @@ export default function HorarioPage() {
     setActiveCourseIdx(null);
     setManualBreak(minutos);
     reset(minutos);
+  }
+
+  // Flujo del desplegable "Escoge un curso": arma el tema elegido y
+  // pide confirmación antes de agregarlo al día y salir hacia el tema.
+  function elegirCursoRapido(dia, nombreCurso) {
+    setCursoRapidoDia(dia);
+    setCursoRapidoNombre(nombreCurso);
+    setTemaRapidoElegido(null);
+  }
+
+  function cancelarCursoRapido() {
+    setCursoRapidoDia(null);
+    setCursoRapidoNombre("");
+    setTemaRapidoElegido(null);
+  }
+
+  function confirmarCursoRapido() {
+    if (!cursoRapidoDia || !cursoRapidoNombre || !temaRapidoElegido) return;
+
+    const nuevoHorario = { ...horario };
+    const listaActual = nuevoHorario[cursoRapidoDia] || [];
+    nuevoHorario[cursoRapidoDia] = [...listaActual, { subject: cursoRapidoNombre, pomodoros: 4 }];
+    guardarHorario(nuevoHorario);
+    setHorario(nuevoHorario);
+
+    // El cronómetro arranca corriendo de una vez, así al llegar al tema
+    // ya está en marcha sin tener que volver a apretar Iniciar.
+    guardarPomodoroCompartido({
+      endTimestamp: Date.now() + POMODORO_MIN * 60 * 1000,
+      running: true,
+      label: `${cursoRapidoNombre} · Pomodoro 1 de 4`,
+    });
+
+    const destino = temaRapidoElegido;
+    cancelarCursoRapido();
+    window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(destino)}`;
   }
 
   function cerrarCourseComplete() {
@@ -222,7 +301,6 @@ export default function HorarioPage() {
     setSelectedDay(configurados[0] || "lunes");
     setActiveCourseIdx(null);
     setSetupOpen(false);
-    setSetupEsEdicion(false);
   }
 
   const activeTaskIdx = activeCourse
@@ -285,14 +363,14 @@ export default function HorarioPage() {
             <div className="horario__timer-controls">
               <div className="horario__timer-btn-row">
                 <button
-                  onClick={start}
+                  onClick={iniciarConSync}
                   disabled={(!activeCourse && !manualBreak) || isRunning}
                   className="horario__btn is-start"
                 >
                   <i className="fas fa-play" /> Iniciar
                 </button>
                 <button
-                  onClick={pause}
+                  onClick={pausarConSync}
                   disabled={!isRunning}
                   className="horario__btn is-pause"
                 >
@@ -313,7 +391,7 @@ export default function HorarioPage() {
         <section className="horario__side-section">
           <div className="horario__day-tabs">
             <div className="horario__day-row" style={{ flexWrap: "wrap" }}>
-              {diasConfigurados.map((dia) => (
+              {DIAS_SEMANA.map((dia) => (
                 <button
                   key={dia}
                   onClick={() => {
@@ -322,7 +400,7 @@ export default function HorarioPage() {
                   }}
                   className={`horario__day-btn ${selectedDay === dia ? "is-active" : ""}`}
                 >
-                  {NOMBRE_DIA[dia]}
+                  {DIA_LABELS[dia]}
                 </button>
               ))}
             </div>
@@ -411,6 +489,37 @@ export default function HorarioPage() {
                     Desc. 30
                   </button>
                 </div>
+
+                <div style={{ marginTop: "14px" }}>
+                  <label style={{ display: "block", fontSize: "0.82rem", color: "var(--ink-soft)", marginBottom: "6px" }}>
+                    Escoge un curso
+                  </label>
+                  <select
+                    value=""
+                    onChange={(e) => {
+                      if (e.target.value) elegirCursoRapido(selectedDay, e.target.value);
+                    }}
+                    style={{
+                      width: "100%",
+                      boxSizing: "border-box",
+                      padding: "12px 14px",
+                      borderRadius: "var(--radius-md)",
+                      border: "1px solid var(--border-strong)",
+                      background: "var(--bg)",
+                      color: "var(--ink)",
+                      fontSize: "0.9rem",
+                    }}
+                  >
+                    <option value="" disabled>
+                      Selecciona un curso...
+                    </option>
+                    {manifest.cursos.map((c) => (
+                      <option key={c.nombre} value={c.nombre}>
+                        {c.nombre}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             )}
 
@@ -496,6 +605,64 @@ export default function HorarioPage() {
           window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(item.nombre)}`;
         }}
       />
+
+      <Modal open={!!cursoRapidoDia} onClose={cancelarCursoRapido}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
+          <h3 style={{ margin: 0 }}>{cursoRapidoNombre}</h3>
+          {!temaRapidoElegido ? (
+            <>
+              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
+                Elige el tema que vas a repasar en {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
+                {(manifest.cursos.find((c) => c.nombre === cursoRapidoNombre)?.temas || []).map((t) => (
+                  <button
+                    key={t.tema}
+                    onClick={() => setTemaRapidoElegido(t.tema)}
+                    style={{
+                      textAlign: "left",
+                      padding: "10px 12px",
+                      borderRadius: "var(--radius-sm)",
+                      border: "1px solid var(--border-strong)",
+                      background: "var(--surface-alt)",
+                      color: "var(--ink)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {t.tema}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={cancelarCursoRapido}
+                style={{ padding: "12px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+              >
+                Cancelar
+              </button>
+            </>
+          ) : (
+            <>
+              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
+                Vas a estudiar "{temaRapidoElegido}" ahora, con el pomodoro corriendo. ¿Confirmas?
+              </p>
+              <div style={{ display: "flex", gap: "10px" }}>
+                <button
+                  onClick={cancelarCursoRapido}
+                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={confirmarCursoRapido}
+                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--primary)", color: "#fff", fontWeight: 700, cursor: "pointer" }}
+                >
+                  Aceptar
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </Modal>
 
       <StepsWelcomeModal
         open={!welcomeSeen}
