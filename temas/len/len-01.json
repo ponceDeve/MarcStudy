@@ -1,196 +1,420 @@
 {
   "curso": "Lenguaje",
-  "tema": "Vicios del lenguaje",
+  "tema": "Semántica",
   "glosario": {
-    "Vicios del lenguaje": "Formas de construcción o empleo de vocabulario inadecuados que dificultan la interpretación correcta de un mensaje.",
-    "Barbarismo": "Vicio que consiste en pronunciar o escribir mal las palabras, o emplear vocablos impropios (como extranjerismos innecesarios).",
-    "Ambigüedad": "Vicio también conocido como anfibología, donde una expresión puede entenderse de más de una manera.",
-    "Cacofonía": "Vicio fonético que produce un efecto sonoro desagradable por la cercanía de sílabas o letras iguales.",
-    "Redundancia": "Pleonasmo vicioso; repetición inútil de un concepto para expresar una idea que ya está clara.",
-    "Solecismo": "Error en la sintaxis o en la conjugación verbal que atenta contra las reglas de concordancia o construcción.",
-    "Imprecisión léxica": "Uso de palabras de significado muy general (palabras baúl) en lugar de los términos específicos adecuados.",
-    "=": "es",
-    "→": "Produce",
-    "∈": "Pertenece a",
-    "+": "Combinación",
-    "⇒": "Causa"
+    "semiótica": "Ciencia que estudia los signos en general.",
+    "signo": "Todo aquello que otorga un significado.",
+    "indicio": "Signo natural con relación causa-efecto.",
+    "icono": "Signo artificial con relación de semejanza.",
+    "significado": "El concepto o idea mental que representa un signo.",
+    "significante": "La cadena de sonidos (fonemas) de un signo.",
+    "denotado": "Significado literal y objetivo de una palabra.",
+    "connotado": "Significado figurado, que requiere interpretación.",
+    "diacrónico": "Que cambia o se estudia a través del tiempo.",
+    "sema": "Rasgo mínimo de significado de una palabra."
   },
   "theory": [
     {
-      "titulo": "Definición general",
+      "titulo": "Semiótica",
       "puntos": [
         {
-          "texto": "Vicios del lenguaje = errores frecuentes → transgreden las normas lingüísticas.",
+          "texto": "Ciencia que estudia los signos en general",
           "pregunta": {
-            "q": "Según la definición planteada, ¿qué efecto principal tienen los vicios del lenguaje sobre la comunicación?",
+            "q": "¿Qué es la semiótica?",
             "opts": [
-              "Fomentan la evolución natural y el enriquecimiento de la lengua.",
-              "Transgreden las normas establecidas por el sistema lingüístico.",
-              "Mejoran la comprensión entre hablantes de diferentes dialectos."
+              "La ciencia que estudia los sonidos",
+              "La ciencia que estudia los signos en general",
+              "La rama que estudia la gramática",
+              "El estudio de la historia del lenguaje"
             ],
             "correct": 1,
-            "explicacion": "Los vicios del lenguaje se definen fundamentalmente como errores o alteraciones que van en contra de las normas gramaticales, ortográficas o semánticas de un idioma. Al transgredir estas normas, se dificulta la comunicación formal y se deteriora la claridad del mensaje."
+            "explicacion": "La semiótica es el marco general dentro del cual se estudian todos los tipos de signos: naturales (como el humo) y artificiales (como las palabras o las banderas), no solo el lenguaje."
+          }
+        },
+        {
+          "texto": "Signo: todo lo que otorga un significado",
+          "pregunta": {
+            "q": "¿Qué es un signo?",
+            "opts": [
+              "Solo una palabra escrita",
+              "Todo lo que otorga un significado",
+              "Un sonido cualquiera",
+              "Un dibujo artístico"
+            ],
+            "correct": 1,
+            "explicacion": "Un signo es cualquier elemento perceptible (un objeto, sonido, gesto) que activa en la mente una idea distinta a sí mismo; por ejemplo, ver una cruz no te hace pensar en dos líneas cruzadas, sino en la religión."
+          }
+        },
+        {
+          "texto": "Ejemplos: cruz → religión, negro → luto",
+          "pregunta": {
+            "q": "¿Qué representa la cruz como signo?",
+            "opts": [
+              "Paz",
+              "Religión",
+              "Ciencia",
+              "Deporte"
+            ],
+            "correct": 1,
+            "explicacion": "La cruz, como símbolo religioso extendido, remite culturalmente a la idea de religión (especialmente al cristianismo), aunque físicamente sea solo dos líneas que se cruzan."
           }
         }
       ]
     },
     {
-      "titulo": "Tipos de vicios del lenguaje",
+      "titulo": "Símbolo",
       "puntos": [
         {
-          "texto": "Barbarismo = uso incorrecto de una palabra o expresión.",
+          "texto": "Se establece por convención (acuerdo)",
           "pregunta": {
-            "q": "¿Cuál es la característica central del barbarismo?",
+            "q": "¿Cómo se establece un símbolo?",
             "opts": [
-              "El uso incorrecto de una palabra o expresión en el idioma.",
-              "La repetición innecesaria de ideas o conceptos evidentes.",
-              "El desorden sintáctico que impide hallar el sujeto."
-            ],
-            "correct": 0,
-            "explicacion": "El barbarismo ocurre cuando se atenta contra la correcta escritura o pronunciación de una palabra. Esto incluye escribir mal una palabra, acentuarla incorrectamente o utilizar extranjerismos (palabras de otros idiomas) cuando ya existe un término equivalente y adecuado en el propio idioma."
-          }
-        },
-        {
-          "texto": "Términos como vacea, patie, show o escases ∈ Barbarismos.",
-          "pregunta": {
-            "q": "¿A qué categoría de vicio del lenguaje pertenecen errores como 'vacea', 'patie' o usar el término 'show'?",
-            "opts": [
-              "Ambigüedad",
-              "Barbarismos",
-              "Solecismos"
+              "Por causa-efecto",
+              "Por convención (acuerdo)",
+              "Por semejanza física",
+              "Por azar"
             ],
             "correct": 1,
-            "explicacion": "Estos ejemplos ilustran diferentes formas de barbarismo. 'Vacea' y 'patie' son errores de conjugación (lo correcto es vacía y formatee/patee). 'Escases' es un error ortográfico (lo correcto es escasez). 'Show' es un anglicismo innecesario cuando existe el término 'espectáculo'."
+            "explicacion": "A diferencia del indicio (que surge naturalmente), el símbolo depende de que una comunidad se ponga de acuerdo en qué representa; por eso varía entre culturas."
           }
         },
         {
-          "texto": "Ambigüedad = oración con doble sentido + múltiples interpretaciones.",
+          "texto": "Ejemplos: bandera blanca → paz, el lápiz → partido político, un átomo → Newton",
           "pregunta": {
-            "q": "¿Qué elementos definen la presencia de una ambigüedad en un enunciado?",
+            "q": "¿Qué representa la bandera blanca como símbolo?",
             "opts": [
-              "La ausencia de un sujeto claro y verbos en infinitivo.",
-              "El choque de vocales idénticas que generan mal sonido.",
-              "El doble sentido combinado con múltiples interpretaciones posibles."
+              "Guerra",
+              "Paz",
+              "Peligro",
+              "Alegría"
+            ],
+            "correct": 1,
+            "explicacion": "La bandera blanca es un símbolo internacional aceptado por convención para señalar rendición o tregua, no porque el color blanco tenga una relación natural con la paz."
+          }
+        },
+        {
+          "texto": "Las palabras y el alfabeto son signo lingüístico",
+          "pregunta": {
+            "q": "¿Qué tipo de signo son las palabras y el alfabeto?",
+            "opts": [
+              "Icono",
+              "Indicio",
+              "Signo lingüístico",
+              "Símbolo natural"
             ],
             "correct": 2,
-            "explicacion": "La ambigüedad, también llamada anfibología, es un vicio que afecta la claridad semántica. Sucede cuando la forma en que se estructuran las palabras en una oración permite que el receptor entienda dos o más cosas distintas, generando confusión sobre el mensaje real que se quiso transmitir."
+            "explicacion": "Las palabras son signos lingüísticos: combinan un sonido/escritura (significante) con una idea (significado), unidos por convención social, no por una relación natural."
           }
-        },
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación del signo",
+      "puntos": [
         {
-          "texto": "La frase \"el perro de mi vecino\" ⇒ Ambigüedad.",
+          "texto": "Natural: el hombre no participa → indicio",
           "pregunta": {
-            "q": "¿Qué vicio del lenguaje se genera al enunciar la frase 'el perro de mi vecino'?",
+            "q": "¿Qué tipo de signo es el 'indicio'?",
             "opts": [
-              "Cacofonía",
-              "Ambigüedad",
-              "Imprecisión léxica"
+              "Artificial",
+              "Natural",
+              "Convencional",
+              "Lingüístico"
             ],
             "correct": 1,
-            "explicacion": "Esta frase clásica es ambigua porque su estructura permite dos interpretaciones válidas pero muy diferentes: puede referirse literalmente a la mascota canina que le pertenece al vecino, o puede ser un insulto calificando al vecino mismo como un 'perro'. El contexto es necesario para deshacer esta anfibología."
+            "explicacion": "El indicio es un signo natural porque surge sin que ningún ser humano lo haya diseñado con intención comunicativa; simplemente ocurre como consecuencia de un fenómeno."
           }
         },
         {
-          "texto": "Cacofonía = uso repetitivo de sonidos + disonancia acústica.",
+          "texto": "Artificial: el hombre participa con un fin comunicativo → icono, símbolo",
           "pregunta": {
-            "q": "Al definir la cacofonía, ¿qué factores se combinan para producirla?",
+            "q": "¿Qué caracteriza a un signo artificial?",
             "opts": [
-              "La alteración del orden lógico y la falta de pausas.",
-              "El uso repetitivo de sonidos y la disonancia acústica.",
-              "El empleo de palabras extranjeras y giros antiguos."
+              "El hombre no interviene",
+              "El hombre participa con un fin comunicativo",
+              "Ocurre en la naturaleza sin intención",
+              "Es siempre un sonido"
             ],
             "correct": 1,
-            "explicacion": "La cacofonía es un defecto puramente fonético. Se produce al pronunciar sílabas o letras iguales o muy similares en posiciones cercanas dentro de una misma frase, lo que resulta en un sonido desagradable, áspero o trabado (disonancia acústica) al oído del receptor."
+            "explicacion": "En los signos artificiales, alguien los crea deliberadamente para comunicar algo, a diferencia de los naturales que ocurren sin intención."
           }
-        },
+        }
+      ]
+    },
+    {
+      "titulo": "Indicio",
+      "puntos": [
         {
-          "texto": "Decir \"la águila\" por choque de vocales ⇒ Cacofonía.",
+          "texto": "Guarda una relación causa-efecto",
           "pregunta": {
-            "q": "¿Qué vicio del lenguaje se comete específicamente al decir 'la águila'?",
+            "q": "¿Qué tipo de relación guarda el indicio?",
             "opts": [
-              "Redundancia",
-              "Solecismo",
-              "Cacofonía"
+              "Semejanza",
+              "Convención",
+              "Causa-efecto",
+              "Ninguna relación"
             ],
             "correct": 2,
-            "explicacion": "La frase 'la águila' produce cacofonía por el choque de la vocal 'a' al final del artículo y el inicio tónico del sustantivo. Para evitar este sonido desagradable, la norma gramatical exige sustituir el artículo femenino 'la' por 'el' (el águila), aunque el sustantivo siga siendo femenino."
+            "explicacion": "El indicio funciona porque hay una conexión física real entre la causa y el efecto: el humo existe porque hay fuego, no por acuerdo social."
           }
         },
         {
-          "texto": "Redundancia = uso repetitivo + totalmente innecesario de palabras.",
+          "texto": "Ejemplos: nubes oscuras → tormenta, humo → incendio, fiebre → infección/síntomas",
           "pregunta": {
-            "q": "¿Qué característica hace que la redundancia sea considerada un vicio del lenguaje?",
+            "q": "¿Qué indica el humo como signo?",
             "opts": [
-              "El uso repetitivo y totalmente innecesario de palabras.",
-              "La falta de términos adecuados para expresar la idea.",
-              "El mal uso de los signos de puntuación al escribir."
-            ],
-            "correct": 0,
-            "explicacion": "La redundancia o pleonasmo vicioso consiste en añadir palabras que no aportan ninguna información nueva ni énfasis expresivo válido al mensaje, ya que su significado está implícito en los términos anteriores. Solo logra sobrecargar la oración de manera inútil."
-          }
-        },
-        {
-          "texto": "Frases como \"sube arriba\" o \"sal afuera\" ∈ Redundancia.",
-          "pregunta": {
-            "q": "¿A qué vicio del lenguaje pertenecen expresiones como 'sube arriba' o 'sal afuera'?",
-            "opts": [
-              "Barbarismo",
-              "Redundancia",
-              "Imprecisión léxica"
+              "Paz",
+              "Un incendio",
+              "Frío",
+              "Una tormenta"
             ],
             "correct": 1,
-            "explicacion": "En estas expresiones, la idea de dirección (arriba, afuera) ya está completamente contenida en el significado de los verbos 'subir' y 'salir'. Añadir los adverbios de lugar no aporta nada nuevo, por lo que constituyen ejemplos clásicos de redundancia."
+            "explicacion": "Vemos humo y automáticamente inferimos que hay fuego cerca, porque hay una relación de causa-efecto real y observable entre ambos."
           }
-        },
+        }
+      ]
+    },
+    {
+      "titulo": "Icono",
+      "puntos": [
         {
-          "texto": "Solecismo = estructura gramatical incorrecta + falta de concordancia.",
+          "texto": "Guarda una relación de semejanza",
           "pregunta": {
-            "q": "De acuerdo con el texto, ¿qué define fundamentalmente al solecismo?",
+            "q": "¿Qué tipo de relación guarda el icono?",
             "opts": [
-              "Estructura gramatical incorrecta y falta de concordancia.",
-              "La pobreza de vocabulario al redactar textos extensos.",
-              "El choque de sonidos iguales que produce disonancia."
-            ],
-            "correct": 0,
-            "explicacion": "El solecismo abarca los errores de sintaxis. Ocurre cuando se unen las palabras de forma que se violan las reglas de construcción de la oración. Esto incluye errores de concordancia (género y número entre sujeto/verbo o sustantivo/adjetivo) y el uso incorrecto de preposiciones o pronombres."
-          }
-        },
-        {
-          "texto": "La expresión \"estoy convencida que\" por omisión de preposición ⇒ Solecismo.",
-          "pregunta": {
-            "q": "¿Por qué la expresión 'estoy convencida que' causa un solecismo?",
-            "opts": [
-              "Por usar palabras de un idioma extranjero.",
-              "Por la omisión de una preposición necesaria.",
-              "Por repetir ideas que ya quedaron claras."
-            ],
-            "correct": 1,
-            "explicacion": "Este error específico se conoce como queísmo. Consiste en suprimir la preposición 'de' cuando es exigida por el verbo o el adjetivo antes de la conjunción 'que'. Lo correcto es decir 'estoy convencida DE que...', ya que uno se convence 'de' algo. Al omitirla, se quiebra la estructura gramatical correcta."
-          }
-        },
-        {
-          "texto": "Imprecisión léxica = uso de términos vagos al comunicarse.",
-          "pregunta": {
-            "q": "¿En qué consiste la imprecisión léxica según la teoría expuesta?",
-            "opts": [
-              "En utilizar términos vagos al momento de comunicarse.",
-              "En emplear anglicismos o galicismos en lugar de español.",
-              "En alterar el orden del sujeto, verbo y predicado."
-            ],
-            "correct": 0,
-            "explicacion": "La imprecisión léxica ocurre cuando el hablante recurre a palabras demasiado generales, conocidas como 'palabras baúl' o 'comodines' (como cosa, algo, hacer, tener, poner), en lugar de buscar el término exacto y específico que describe la acción o el objeto, empobreciendo así la comunicación."
-          }
-        },
-        {
-          "texto": "Decir \"hacer la torta\" en lugar de preparar ⇒ Imprecisión léxica.",
-          "pregunta": {
-            "q": "¿Qué vicio del lenguaje se evidencia al emplear la frase 'hacer la torta' en lugar de usar el verbo 'preparar'?",
-            "opts": [
-              "Ambigüedad",
-              "Solecismo",
-              "Imprecisión léxica"
+              "Causa-efecto",
+              "Convención",
+              "Semejanza",
+              "Ninguna"
             ],
             "correct": 2,
-            "explicacion": "El verbo 'hacer' es extremadamente general y se aplica a múltiples contextos. Al hablar de una torta (repostería/cocina), el verbo exacto y preciso es 'preparar' u 'hornear'. Usar 'hacer' demuestra falta de rigor en el vocabulario, cayendo en la imprecisión léxica. Lo mismo ocurre al decir 'tener tuberculosis' en lugar del verbo preciso 'padecer'."
+            "explicacion": "El icono representa algo porque se le parece visualmente o de alguna otra forma perceptible, a diferencia del símbolo (que es arbitrario) o el indicio (que es causal)."
+          }
+        },
+        {
+          "texto": "Ejemplos: Google Maps, fotografía, estatua, escultura",
+          "pregunta": {
+            "q": "¿Cuál de estos es un ejemplo de icono?",
+            "opts": [
+              "Una bandera blanca",
+              "Una fotografía",
+              "El humo",
+              "La fiebre"
+            ],
+            "correct": 1,
+            "explicacion": "Una fotografía es un icono porque se parece visualmente a lo que representa; a diferencia de una bandera blanca (símbolo) o el humo (indicio), no depende de convención ni de causalidad."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Signo Lingüístico",
+      "puntos": [
+        {
+          "texto": "Reúne el significado y el significante, ambos interdependientes",
+          "pregunta": {
+            "q": "¿Qué dos elementos reúne el signo lingüístico?",
+            "opts": [
+              "Icono e indicio",
+              "Significado y significante",
+              "Contexto y situación",
+              "Denotado y natural"
+            ],
+            "correct": 1,
+            "explicacion": "Según Saussure, el signo lingüístico no es solo una palabra, sino la unión inseparable de un concepto (significado) y su forma sonora (significante); uno no existe sin el otro."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura del Signo Lingüístico",
+      "puntos": [
+        {
+          "texto": "Significado/concepto ↔ Significante/cadena de sonido (fonemas)",
+          "pregunta": {
+            "q": "¿Cómo se relacionan significado y significante?",
+            "opts": [
+              "No se relacionan",
+              "De forma bidireccional",
+              "Solo el significado existe",
+              "Solo el significante existe"
+            ],
+            "correct": 1,
+            "explicacion": "Se representan con una flecha de doble sentido porque al escuchar el sonido evocas el concepto, y al pensar en el concepto puedes evocar su sonido; están unidos como las dos caras de una moneda."
+          }
+        },
+        {
+          "texto": "El significado se compone de semas (cuadrúpedo, felino, doméstico, carnívoro) y una imagen mental",
+          "pregunta": {
+            "q": "¿De qué se compone el significado de una palabra?",
+            "opts": [
+              "De fonemas",
+              "De semas e imagen mental",
+              "Solo de sonidos",
+              "De letras del alfabeto"
+            ],
+            "correct": 1,
+            "explicacion": "El significado de 'gato', por ejemplo, se arma con rasgos mínimos (semas) como 'cuadrúpedo', 'felino', 'doméstico', que en conjunto forman la imagen mental que tenemos del animal."
+          }
+        },
+        {
+          "texto": "El significante es la cadena sonora, ej: /gato/, y su imagen acústica",
+          "pregunta": {
+            "q": "¿Qué es el significante en el signo lingüístico?",
+            "opts": [
+              "El concepto mental",
+              "La cadena de sonido e imagen acústica",
+              "El objeto real",
+              "El contexto de uso"
+            ],
+            "correct": 1,
+            "explicacion": "El significante no es la palabra escrita en sí, sino la secuencia de sonidos (fonemas) que la forman y la imagen mental de ese sonido que guardamos al escucharla o pronunciarla."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Características del Signo Lingüístico",
+      "puntos": [
+        {
+          "texto": "Arbitrario: se establece por convención (ej: manzana / apple / pomme / mela)",
+          "pregunta": {
+            "q": "¿Qué característica explica que 'manzana' se diga distinto en cada idioma?",
+            "opts": [
+              "Es lineal",
+              "Es arbitrario",
+              "Es inmutable",
+              "Es connotado"
+            ],
+            "correct": 1,
+            "explicacion": "No hay ninguna razón natural para que el sonido 'manzana' represente esa fruta; es arbitrario, por eso cada idioma le puso un nombre distinto (apple, pomme, mela) para el mismo concepto."
+          }
+        },
+        {
+          "texto": "Lineal: un sonido tras otro, ej: /p-e-r̃-o/",
+          "pregunta": {
+            "q": "¿Qué característica indica que los sonidos de una palabra van uno tras otro?",
+            "opts": [
+              "Arbitrario",
+              "Mutable",
+              "Lineal",
+              "Denotado"
+            ],
+            "correct": 2,
+            "explicacion": "El habla ocurre en el tiempo: no podemos pronunciar todos los sonidos de una palabra a la vez, sino uno después de otro, en una secuencia lineal."
+          }
+        },
+        {
+          "texto": "Mutable: es diacrónico, puede cambiar con el tiempo (ej: forma → harina, taurus → toro, retrete → sala de espera/inodoro)",
+          "pregunta": {
+            "q": "¿Qué característica explica que 'retrete' haya cambiado de significado con el tiempo?",
+            "opts": [
+              "Inmutable",
+              "Mutable",
+              "Lineal",
+              "Arbitrario"
+            ],
+            "correct": 1,
+            "explicacion": "Como las lenguas evolucionan con el uso, una palabra puede cambiar de sentido (o de connotación) a lo largo de generaciones; 'retrete' pasó de sonar neutral a ser evitada, reemplazada por eufemismos como 'baño'."
+          }
+        },
+        {
+          "texto": "Inmutable: no puede cambiarse por decisión de un solo hablante en un momento dado",
+          "pregunta": {
+            "q": "¿Qué significa que el signo lingüístico sea inmutable?",
+            "opts": [
+              "Que siempre suena igual",
+              "Que un solo hablante no puede cambiarlo a su antojo",
+              "Que nunca cambia con el tiempo",
+              "Que no tiene significado"
+            ],
+            "correct": 1,
+            "explicacion": "Aunque el idioma cambia con el tiempo (mutable a largo plazo), en un momento dado ningún hablante individual puede decidir por sí solo cambiar el significado de una palabra; depende del acuerdo colectivo de toda la comunidad."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Denotado y Connotado",
+      "puntos": [
+        {
+          "texto": "Denotado: significado literal, objetivo, científico",
+          "pregunta": {
+            "q": "¿Qué es el significado denotado?",
+            "opts": [
+              "El significado figurado",
+              "El significado literal y objetivo",
+              "El significado emocional",
+              "El significado ambiguo"
+            ],
+            "correct": 1,
+            "explicacion": "El significado denotado es el que aparece en el diccionario: objetivo, directo, sin cargas emocionales ni interpretaciones adicionales."
+          }
+        },
+        {
+          "texto": "Connotado: significado figurado, requiere interpretación",
+          "pregunta": {
+            "q": "¿Qué es el significado connotado?",
+            "opts": [
+              "El significado literal",
+              "El significado figurado que requiere interpretación",
+              "El significado científico",
+              "El significado exacto del diccionario"
+            ],
+            "correct": 1,
+            "explicacion": "El significado connotado añade una capa subjetiva o cultural a la palabra; por ejemplo, 'invierno' denota una estación del año, pero puede connotar tristeza o soledad según el contexto."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Contexto y Situación",
+      "puntos": [
+        {
+          "texto": "Contexto: se entiende por el entorno lingüístico",
+          "pregunta": {
+            "q": "¿Cómo se entiende el contexto?",
+            "opts": [
+              "Por el entorno extralingüístico",
+              "Por el entorno lingüístico",
+              "Por la fecha del texto",
+              "Por el idioma original"
+            ],
+            "correct": 1,
+            "explicacion": "El contexto se refiere a las palabras que rodean a otra palabra dentro del mismo texto o discurso, lo cual ayuda a precisar su significado exacto."
+          }
+        },
+        {
+          "texto": "Situación: se entiende por el entorno extralingüístico (espacio-tiempo), genera ambigüedad",
+          "pregunta": {
+            "q": "¿Qué genera la situación (entorno extralingüístico)?",
+            "opts": [
+              "Claridad total",
+              "Ambigüedad",
+              "Un significado fijo",
+              "Ninguna interpretación posible"
+            ],
+            "correct": 1,
+            "explicacion": "Cuando el significado depende de dónde, cuándo o en qué circunstancia se dice algo (y no de las palabras que lo rodean), pueden surgir malentendidos si no se comparte esa misma situación."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Semántica (Definición)",
+      "puntos": [
+        {
+          "texto": "Es la rama de la lingüística que estudia el significado del signo lingüístico (palabras, frases, oraciones)",
+          "pregunta": {
+            "q": "¿Qué estudia la semántica?",
+            "opts": [
+              "Los sonidos del habla",
+              "El significado del signo lingüístico",
+              "Solo la escritura",
+              "La historia de las lenguas"
+            ],
+            "correct": 1,
+            "explicacion": "La semántica es la rama de la lingüística encargada específicamente de analizar cómo se construye y interpreta el significado, ya sea en palabras sueltas, frases u oraciones completas."
           }
         }
       ]
