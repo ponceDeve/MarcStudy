@@ -82,8 +82,17 @@ export default function HorarioPage() {
 
   const [horario, setHorario] = useState(() => leerHorario() || {});
   const [selectedDay, setSelectedDay] = useState(() => {
-    const configurados = DIAS_SEMANA.filter((d) => (leerHorario() || {})[d]);
-    return configurados[0] || "lunes";
+    const dias = [
+      "domingo",
+      "lunes",
+      "martes",
+      "miercoles",
+      "jueves",
+      "viernes",
+      "sabado",
+    ];
+
+    return dias[new Date().getDay()];
   });
   const [activeCourseIdx, setActiveCourseIdx] = useState(null);
   const [progress, setProgress] = useLocalStorage(
@@ -390,7 +399,14 @@ export default function HorarioPage() {
         {/* Días + lista de cursos / desglose de pomodoros */}
         <section className="horario__side-section">
           <div className="horario__day-tabs">
-            <div className="horario__day-row" style={{ flexWrap: "wrap" }}>
+            <div
+              className="horario__day-row"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: "8px",
+              }}
+            >
               {DIAS_SEMANA.map((dia) => (
                 <button
                   key={dia}

@@ -144,6 +144,7 @@ function OpcionMultiple({ pregunta, onRespondido }) {
           <input
             autoFocus
             value={typed}
+            onChange={(e) => setTyped(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
