@@ -1,0 +1,203 @@
+/* ============================================================
+   SearchModal.jsx (buscador flotante) + buscador inicial en MiEstudioPage
+   ============================================================ */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay);
+  backdrop-filter: blur(10px);
+  padding: 0 16px;
+}
+.search-box {
+  width: 100%;
+  max-width: 32rem;
+}
+.search-input {
+  width: 100%;
+  background: var(--surface);
+  color: var(--ink);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 16px 24px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: var(--shadow-lg);
+}
+.search-input:focus {
+  box-shadow:
+    var(--shadow-lg),
+    0 0 0 3px var(--primary-bg);
+}
+/* Contenedor de resultados */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+/* Base para cualquier item de la lista */
+.search-result-item {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 0; /* sin esquinas redondeadas: se leen como lista continua, no burbujas sueltas */
+}
+
+/* Estado de foco (navegación por teclado) */
+.search-result-item:hover,
+.search-result-item.is-focused {
+  background-color: var(--surface-hover);
+  outline: none;
+}
+
+/* 
+  JERARQUÍA: CURSO 
+  Color primario, fondo propio de la paleta oscura, sin margen izquierdo
+*/
+.search-result-item.is-curso {
+  background-color: var(--surface-alt);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2px; /* separación mínima, no un salto grande */
+}
+.search-result-item.is-curso:hover,
+.search-result-item.is-curso.is-focused {
+  background-color: var(--surface-hover);
+}
+
+/* 
+  JERARQUÍA: TEMA 
+  Indentación (margin-left) y un tinte casi imperceptible, no un fondo claro
+*/
+.search-result-item.is-tema {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.03
+  ); /* tinte muy sutil sobre el fondo oscuro */
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-left: 24px; /* <--- La indentación visual */
+  width: calc(100% - 24px); /* Ajuste de ancho por el margin */
+  border-left: 2px solid var(--border); /* línea guía discreta */
+}
+.search-result-item.is-tema:hover,
+.search-result-item.is-tema.is-focused {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.search-result-item__tema {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  margin: 0;
+}
+.search-result-item__curso {
+  font-size: 11px;
+  color: var(--primary);
+  margin: 0;
+}
+.search-empty {
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 16px 8px;
+  text-align: center;
+}
+
+/* Buscador inicial de MiEstudioPage (mismo look, sobre fondo claro) */
+.home-search {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+}
+.home-search-input {
+  width: 100%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+}
+.home-search-input:focus {
+  border-color: var(--primary);
+}
+.home-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 320px;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+}
+.home-search-result {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+}
+.home-search-result:last-child {
+  border-bottom: none;
+}
+.home-search-result:hover,
+.home-search-result.is-focused {
+  background: var(--primary-bg);
+}
+.home-search-result p:first-child {
+  font-weight: 700;
+  font-size: 13px;
+  margin: 0;
+  color: var(--ink);
+}
+
+/* JERARQUÍA: CURSO — fondo y color propios, sin indentación */
+.home-search-result.is-curso {
+  background-color: var(--surface-alt);
+}
+.home-search-result.is-curso p:first-child {
+  color: var(--primary);
+  font-weight: 700;
+}
+.home-search-result.is-curso:hover,
+.home-search-result.is-curso.is-focused {
+  background-color: var(--surface-hover);
+}
+
+/* JERARQUÍA: TEMA — tinte casi imperceptible, color de texto discreto */
+.home-search-result.is-tema {
+  background-color: rgba(255, 255, 255, 0.03);
+  padding-left: 40px; /* 16px base + 24px de indentación */
+  border-left: 2px solid var(--border);
+}
+.home-search-result.is-tema p:first-child {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.home-search-result.is-tema:hover,
+.home-search-result.is-tema.is-focused {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+

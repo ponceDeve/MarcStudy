@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faint);
+}
+
+@font-face {
+  font-family: "DSDigi";
+  src: url("/font/DS-DIGIB.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out;
+}
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* ── Contenedor "arcade" (tarjetas de teoría/pregunta) ───────────────── */
+.arcade-game-container {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+.arcade-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(61, 107, 140, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(61, 107, 140, 0.05) 1px, transparent 1px);
+  z-index: 0;
+}
+
+.timer-font {
+  font-family: "DSDigi", monospace;
+  margin: 0;
+}
+
+.arcade-big-btn {
+  transition:
+    filter 0.15s,
+    transform 0.1s;
+}
+.arcade-big-btn:hover {
+  filter: brightness(1.08);
+}
+.arcade-big-btn:active {
+  transform: translateY(1px);
+}
+
+/* ============================================================
+   Layout base compartido
+   ============================================================ */
+.app-shell {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.icon-btn {
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.icon-btn:hover {
+  color: var(--primary);
+}

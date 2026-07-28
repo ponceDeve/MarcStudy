@@ -7,7 +7,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
-import GlossaryText from "./GlossaryText";
+import GlossaryText from "./Glossarytext";
 import TopBar from "./TopBar";
 import Hud from "./Hud";
 import LevelsModal from "./LevelsModal";
@@ -17,7 +17,7 @@ import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
-import { leerPomodoroCompartido, guardarRetorno } from "../../lib/pomodoroShared";
+import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido } from "../../lib/pomodoroShared";
 import 'katex/dist/katex.min.css';
 
 const OPCIONES_BUSQUEDA = [
@@ -103,17 +103,28 @@ export default function MiEstudioPage() {
   const pomodoroAlertadoRef = useRef(null);
 
   useEffect(() => {
+    // Si el pomodoro terminó hace más de esto, ya no es un aviso útil:
+    // es basura vieja de una pestaña que se cerró sin pausar/terminar.
+    const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000; // 2 minutos
+
     const intervalo = setInterval(() => {
       const estado = leerPomodoroCompartido();
-      if (
-        estado &&
-        estado.running &&
-        Date.now() >= estado.endTimestamp &&
-        pomodoroAlertadoRef.current !== estado.endTimestamp
-      ) {
+      if (!estado || !estado.running) return;
+
+      const msDesdeQueTermino = Date.now() - estado.endTimestamp;
+      if (msDesdeQueTermino < 0) return; // todavía no termina
+
+      if (msDesdeQueTermino > UMBRAL_AVISO_VENCIDO_MS) {
+        // Estado abandonado de una sesión pasada: se descarta sin avisar.
+        limpiarPomodoroCompartido();
+        return;
+      }
+
+      if (pomodoroAlertadoRef.current !== estado.endTimestamp) {
         pomodoroAlertadoRef.current = estado.endTimestamp;
         setPomodoroAlarmaLabel(estado.label || "");
         setPomodoroAlarmaAbierta(true);
+        limpiarPomodoroCompartido();
       }
     }, 1000);
     return () => clearInterval(intervalo);
@@ -644,34 +655,34 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-            <div className="home-search">
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onFocus={() => setBusquedaEnfocada(true)}
-                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar tema o curso..."
-                className="home-search-input"
-              />
-              {busquedaEnfocada && resultsVisibles.length > 0 && (
-                <div className="home-search-results">
-                  {resultsVisibles.map((r, i) => (
-                    <button
-                      key={r.nombre}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        seleccionarItem(r);
-                      }}
-                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                    >
-                      <p>{r.nombre}</p>
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="home-search">
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onFocus={() => setBusquedaEnfocada(true)}
+                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                  onKeyDown={handleKeyDownInicial}
+                  placeholder="Buscar tema o curso..."
+                  className="home-search-input"
+                />
+                {busquedaEnfocada && resultsVisibles.length > 0 && (
+                  <div className="home-search-results">
+                    {resultsVisibles.map((r, i) => (
+                      <button
+                        key={r.nombre}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          seleccionarItem(r);
+                        }}
+                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                      >
+                        <p>{r.nombre}</p>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </>
         )}
 

@@ -1,0 +1,79 @@
+/* ============================================================
+   ExplanationPanel.jsx
+   ============================================================ */
+.explanation-panel {
+  margin-top: 16px;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background: var(--primary-bg);
+}
+.explanation-panel.is-correct {
+  border-left: 4px solid var(--success);
+}
+.explanation-panel.is-wrong {
+  border-left: 4px solid var(--danger);
+}
+.explanation-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0;
+}
+.explanation-panel__title.is-correct {
+  color: var(--success);
+}
+.explanation-panel__title.is-wrong {
+  color: var(--danger);
+}
+.explanation-panel__answer {
+  margin: 10px 0;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.explanation-panel__answer strong {
+  color: var(--accent-dark);
+}
+.explanation-panel__text {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.explanation-panel__actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.explanation-panel__btn {
+  padding: 8px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.explanation-panel__btn.is-next {
+  background: var(--primary);
+}
+.explanation-panel__btn.is-next:hover {
+  background: var(--primary-dark);
+}
+.explanation-panel__btn.is-neutral {
+  background: var(--surface-alt);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+}
+.explanation-panel__btn.is-neutral:hover {
+  background: var(--border-strong);
+}
+.explanation-panel__btn span {
+  opacity: 0.75;
+  font-weight: 400;
+}
+

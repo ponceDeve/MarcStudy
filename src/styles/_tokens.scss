@@ -1,0 +1,103 @@
+/* ============================================================
+   TOKENS — Sistema de diseño en modo claro (único tema)
+   ------------------------------------------------------------
+   Pensado para sesiones largas de estudio, evitando el blanco
+   puro (#fff) y el negro puro (#000): ambos generan el contraste
+   más extremo posible y son la causa más común de fatiga visual
+   en pantallas, sobre todo para ojos con astigmatismo.
+
+   Base: "oat/hueso" cálido, saturación < 15% → lee como neutro,
+   no como "papel fluorescente".
+   Acento principal: salvia (verde grisáceo) → asociado en teoría
+   del color con calma, enfoque y constancia; funciona bien en
+   apps de estudio/hábitos sin la carga de alerta que trae el rojo
+   o la sobreestimulación del naranja/amarillo saturado.
+   Acento secundario: azul grisáceo suave → estructura/confianza,
+   para estados informativos.
+   Acento cálido: terracota apagada → único color con más "peso",
+   reservado para like/CTA puntuales, nunca para fondos grandes.
+   ============================================================ */
+
+:root {
+  /* Fondos y superficies (oat cálido, nunca blanco puro) */
+  --bg: #f1ede4;
+  --surface: #faf8f2;
+  --surface-alt: #e9e3d4;
+  --surface-hover: #ded5bf;
+  --border: #ddd5c0;
+  --border-strong: #c3b89e;
+
+  /* Texto (carbón cálido, nunca negro puro) */
+  --ink: #34362d;
+  --ink-soft: #5c5d4f;
+  --ink-faint: #8b8a76;
+  --ink-on-primary: #ffffff;
+
+  /* Color primario — salvia (calma / enfoque) */
+  --primary: #5c8368;
+  --primary-dark: #46654f;
+  --primary-light: #8bab90;
+  --primary-bg: #e2ebe1;
+
+  /* Color secundario — azul grisáceo (estructura / confianza) */
+  --secondary: #5e85a6;
+  --secondary-dark: #47677f;
+  --secondary-bg: #dde7ee;
+
+  /* Acento — terracota apagada (uso puntual, nunca fondos grandes) */
+  --accent: #c47b5c;
+  --accent-dark: #a15f45;
+  --accent-bg: #f2e2d6;
+
+  /* Estado */
+  --danger: #b25c4d;
+  --danger-dark: #93493d;
+  --danger-bg: #f1ddd7;
+  --success: #5c8368;
+  --success-bg: #e2ebe1;
+  --warning: #b98c3f;
+  --warning-bg: #f2e6cd;
+
+  /* Overlay (tinte cálido, no negro puro) */
+  --overlay: rgba(52, 54, 45, 0.45);
+  --overlay-strong: rgba(52, 54, 45, 0.72);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+
+  /* Sombras suaves — mucho menos opacas que en modo oscuro,
+     porque sobre fondo claro una sombra fuerte se ve como mancha */
+  --shadow-sm: 0 1px 3px rgba(52, 54, 45, 0.08);
+  --shadow-md: 0 6px 16px rgba(52, 54, 45, 0.10);
+  --shadow-lg: 0 14px 36px rgba(52, 54, 45, 0.14);
+
+  --font-body: "Inter", sans-serif;
+  --font-display: "Baloo 2", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ============================================================
+   BREAKPOINTS — variables SCSS (no pueden ser custom properties
+   porque los media queries las necesitan en tiempo de compilación)
+   Se usan con el mixin respond() en vez de clamp(), para que cada
+   tamaño de pantalla tenga un valor explícito y fácil de ajustar,
+   en vez de una fórmula fluida difícil de razonar/depurar.
+   ============================================================ */
+$bp-sm: 480px;  // celulares grandes
+$bp-md: 768px;  // tablets
+$bp-lg: 1024px; // laptops
+$bp-xl: 1440px; // monitores grandes
+
+@mixin respond($bp) {
+  @if $bp == sm {
+    @media (min-width: $bp-sm) { @content; }
+  } @else if $bp == md {
+    @media (min-width: $bp-md) { @content; }
+  } @else if $bp == lg {
+    @media (min-width: $bp-lg) { @content; }
+  } @else if $bp == xl {
+    @media (min-width: $bp-xl) { @content; }
+  }
+}

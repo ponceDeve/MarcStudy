@@ -1,0 +1,647 @@
+/* ============================================================
+   HorarioPage.jsx
+   ============================================================ */
+.horario {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+.horario__back {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 200;
+}
+.horario__back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: color 0.15s;
+}
+.horario__back-link:hover {
+  color: var(--primary);
+}
+
+.horario__main {
+  display: grid;
+  gap: 16px;
+  padding: 8px;
+  max-width: 80rem;
+  margin: 40px auto 0;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .horario__main {
+    gap: 24px;
+    padding: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .horario__main {
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .horario__timer-section {
+    grid-column: span 8;
+  }
+  .horario__side-section {
+    grid-column: span 4;
+  }
+}
+.horario__timer-section,
+.horario__side-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.horario__timer-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 20px 16px;
+  box-shadow: var(--shadow-sm);
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (min-width: 640px) {
+  .horario__timer-card {
+    padding: 32px;
+    min-height: 480px;
+  }
+}
+.horario__timer-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.horario__timer-label {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.horario__timer-clock {
+  /* Tamaño por pasos explícitos en vez de una fórmula fluida:
+     cada rango de pantalla tiene un valor fijo, fácil de leer
+     y de ajustar sin tener que despejar una ecuación. */
+  font-size: 7.5rem;
+  letter-spacing: -0.02em;
+  user-select: none;
+  font-weight: 700;
+}
+@media (min-width: 480px) {
+  .horario__timer-clock {
+    font-size: 9rem;
+  }
+}
+@media (min-width: 768px) {
+  .horario__timer-clock {
+    font-size: 13rem;
+  }
+}
+@media (min-width: 1024px) {
+  .horario__timer-clock {
+    font-size: 17rem;
+  }
+}
+@media (min-width: 1440px) {
+  .horario__timer-clock {
+    font-size: 22rem;
+  }
+}
+
+.horario__progress-track {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto 20px;
+  height: 14px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+@media (min-width: 640px) {
+  .horario__progress-track {
+    margin-bottom: 32px;
+  }
+}
+.horario__progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s;
+  border-radius: var(--radius-full);
+}
+.horario__timer-controls {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.horario__timer-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+}
+@media (min-width: 640px) {
+  .horario__timer-btn-row {
+    gap: 12px;
+  }
+}
+.horario__btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+@media (min-width: 640px) {
+  .horario__btn {
+    padding: 12px;
+  }
+}
+.horario__btn.is-start {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.horario__btn.is-start:hover {
+  background: var(--primary-dark);
+}
+.horario__btn.is-start:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.horario__btn.is-pause {
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+.horario__btn.is-pause:hover {
+  background: var(--surface-hover);
+}
+.horario__btn.is-pause:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.horario__btn-reset {
+  padding: 10px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.horario__btn-reset:hover {
+  color: var(--ink);
+  background: var(--surface-alt);
+}
+
+.horario__day-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--surface);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.horario__day-row {
+  display: flex;
+}
+.horario__day-btn {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.horario__day-btn:hover {
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+.horario__day-btn.is-active {
+  background: var(--primary);
+  color: #fff;
+}
+.horario__day-btn.is-active:hover {
+  background: var(--primary);
+}
+
+.horario__courses-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+  min-height: 400px;
+}
+@media (min-width: 640px) {
+  .horario__courses-card {
+    padding: 16px;
+  }
+}
+.horario__courses-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.horario__courses-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.horario__back-course {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.horario__back-course:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+.horario__day-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  text-transform: capitalize;
+}
+.horario__day-sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 2px 0 0;
+}
+.horario__reset-link {
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.horario__reset-link:hover {
+  color: var(--ink);
+}
+
+.horario__course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.horario__course-item {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  transition: all 0.15s;
+}
+.horario__course-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+.horario__course-item.is-complete {
+  opacity: 0.65;
+}
+.horario__course-item.level-easy {
+  background: var(--primary-bg);
+  border-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+.horario__course-item.level-medium {
+  background: var(--secondary-bg);
+  border-color: var(--secondary);
+  color: var(--secondary-dark);
+}
+.horario__course-item.level-hard {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.horario__course-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.horario__course-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.horario__level-badge {
+  font-size: 10px;
+  font-weight: 500;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+.horario__level-badge.level-easy {
+  background: var(--primary);
+}
+.horario__level-badge.level-medium {
+  background: var(--secondary);
+}
+.horario__level-badge.level-hard {
+  background: var(--accent-dark);
+}
+.horario__course-name {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+
+.horario__course-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.horario__mini-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(45, 45, 45, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+.horario__mini-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s;
+}
+.horario__mini-fill.level-easy {
+  background: var(--primary);
+}
+.horario__mini-fill.level-medium {
+  background: var(--secondary);
+}
+.horario__mini-fill.level-hard {
+  background: var(--accent-dark);
+}
+.horario__course-count {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+.horario__course-status {
+  font-size: 11px;
+  margin: 8px 0 0;
+  opacity: 0.75;
+}
+.horario__check-icon {
+  color: var(--secondary);
+}
+.horario__chevron-icon {
+  opacity: 0.5;
+}
+.horario__task-check-icon {
+  font-size: 11px;
+}
+
+.horario__rest-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.horario__rest-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-strong);
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.horario__rest-btn:hover {
+  border-color: var(--ink-faint);
+  color: var(--ink);
+}
+
+.horario__task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  padding-left: 4px;
+  border-left: 2px solid var(--border);
+  margin-left: 15px;
+}
+.horario__task-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-left: -17px;
+}
+.horario__task-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink-faint);
+  font-size: 10px;
+  font-weight: 700;
+}
+.horario__task-dot.is-past {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+}
+.horario__task-box {
+  flex: 1;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  transition: all 0.2s;
+}
+.horario__task-box.is-past {
+  background: var(--secondary-bg);
+  border-color: var(--secondary);
+  color: var(--secondary-dark);
+}
+.horario__task-box.is-active {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+.horario__task-box.is-rest {
+  padding: 10px;
+}
+.horario__task-box-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.horario__task-box-title {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+}
+.horario__task-box-detail {
+  font-size: 12px;
+  opacity: 0.8;
+  margin: 0;
+}
+.horario__rest-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.horario__rest-box {
+  flex: 1;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 12px;
+}
+.horario__rest-box.is-past {
+  opacity: 0.6;
+}
+.horario__rest-box.is-active {
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.horario__repaso-link-wrap {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 8px 8px 32px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.horario__repaso-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.15s;
+}
+.horario__repaso-link:hover {
+  background: var(--primary-dark);
+}
+
+.horario__complete-modal {
+  text-align: center;
+  padding: 16px;
+}
+.horario__complete-emoji {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+@media (min-width: 640px) {
+  .horario__complete-emoji {
+    font-size: 68px;
+  }
+}
+.horario__complete-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+@media (min-width: 640px) {
+  .horario__complete-title {
+    font-size: 26px;
+  }
+}
+.horario__complete-sub {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.horario__complete-msg {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 28px;
+}
+.horario__complete-btn {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  border: none;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  font-size: 14px;
+}
+.horario__complete-btn:hover {
+  background: var(--primary-dark);
+}
+

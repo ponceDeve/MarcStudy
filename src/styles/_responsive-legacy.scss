@@ -1,0 +1,196 @@
+/* ============================================================
+   Escalado de tipografía para pantallas grandes (laptop 1920x1080+)
+   Los tamaños base están pensados para pantallas chicas/medianas;
+   en monitores grandes el texto se veía chico en proporción, así
+   que se sube el tamaño de todo lo que se lee de corrido.
+   ============================================================ */
+@media (min-width: 1280px) {
+  body {
+    font-size: 17px;
+  }
+
+  /* Mi Estudio: intro, teoría, preguntas, explicación */
+  .mi-estudio__intro-eyebrow {
+    font-size: 13px;
+  }
+  .mi-estudio__intro-title {
+    font-size: 38px;
+  }
+  .mi-estudio__theory-badge {
+    font-size: 12.5px;
+  }
+  .mi-estudio__theory-text {
+    font-size: 23px;
+  }
+  .mi-estudio__google-input,
+  .mi-estudio__google-btn {
+    font-size: 15px;
+  }
+  .mi-estudio__finished-title {
+    font-size: 30px;
+  }
+  .mi-estudio__finished-sub {
+    font-size: 16px;
+  }
+  .mi-estudio__finished-btn {
+    font-size: 16px;
+    padding: 16px 36px;
+  }
+
+  .question-card__q {
+    font-size: 21px;
+  }
+  .question-card__opt {
+    font-size: 15px;
+    padding: 16px 14px;
+  }
+  .question-card__input,
+  .question-card__submit {
+    font-size: 15px;
+  }
+
+  .explanation-panel__title {
+    font-size: 19px;
+  }
+  .explanation-panel__answer {
+    font-size: 16px;
+  }
+  .explanation-panel__text {
+    font-size: 14.5px;
+  }
+  .explanation-panel__btn {
+    font-size: 15px;
+  }
+
+  .hud {
+    font-size: 15px;
+  }
+  .topbar__tema {
+    font-size: 16px;
+  }
+  .topbar__curso {
+    font-size: 13px;
+  }
+  .topbar__nav-btn span {
+    font-size: 10.5px;
+  }
+
+  .search-input,
+  .home-search-input {
+    font-size: 17px;
+  }
+  .search-result-item__tema,
+  .home-search-result p:first-child {
+    font-size: 15px;
+  }
+  .search-result-item__curso,
+  .home-search-result p:last-child {
+    font-size: 12.5px;
+  }
+
+  .levels-modal__title {
+    font-size: 2.3rem;
+  }
+  .level-btn {
+    font-size: 30px;
+  }
+
+  /* Horario / Pomodoro */
+  .horario__timer-label {
+    font-size: 16px;
+  }
+  .horario__btn {
+    font-size: 15px;
+  }
+  .horario__day-btn {
+    font-size: 13px;
+  }
+  .horario__day-title {
+    font-size: 16px;
+  }
+  .horario__day-sub {
+    font-size: 13px;
+  }
+  .horario__course-name {
+    font-size: 15px;
+  }
+  .horario__level-badge {
+    font-size: 11px;
+  }
+  .horario__course-count {
+    font-size: 12px;
+  }
+  .horario__course-status {
+    font-size: 12.5px;
+  }
+  .horario__task-box-title {
+    font-size: 15px;
+  }
+  .horario__task-box-detail {
+    font-size: 13px;
+  }
+  .horario__rest-box {
+    font-size: 13px;
+  }
+  .horario__repaso-link {
+    font-size: 15px;
+  }
+  .horario__complete-title {
+    font-size: 28px;
+  }
+  .horario__complete-sub,
+  .horario__complete-msg {
+    font-size: 16px;
+  }
+
+  /* Repaso */
+  .repaso__title {
+    font-size: 26px;
+  }
+  .repaso__date {
+    font-size: 15px;
+  }
+  .repaso__item-subject {
+    font-size: 17px;
+  }
+  .repaso__item-tema {
+    font-size: 13px;
+  }
+  .repaso__item-meta {
+    font-size: 13px;
+  }
+  .repaso__item-link {
+    font-size: 13px;
+  }
+  .repaso__badge {
+    font-size: 11px;
+  }
+  .repaso__proximos-title {
+    font-size: 17px;
+  }
+  .repaso__proximos-subject {
+    font-size: 15px;
+  }
+  .repaso__proximos-tema {
+    font-size: 13px;
+  }
+  .repaso__empty-title {
+    font-size: 18px;
+  }
+  .repaso__empty-sub {
+    font-size: 14px;
+  }
+
+  /* Modales genéricos */
+  .tema-modal-title {
+    font-size: 16px;
+  }
+  .tema-modal-subtitle {
+    font-size: 13px;
+  }
+  .btn-outline,
+  .btn-solid {
+    font-size: 13px;
+  }
+}
+

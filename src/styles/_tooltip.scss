@@ -1,0 +1,115 @@
+/* ============================================================
+   SelectionTooltip.jsx
+   ============================================================ */
+.selection-tooltip {
+  display: flex;
+  position: absolute;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: #fff;
+  border: 2px solid var(--primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 100000;
+  align-items: center;
+  gap: 8px;
+}
+.selection-tooltip i {
+  color: var(--primary-light);
+  font-size: 16px;
+}
+
+/* ============================================================
+   PomodoroWidget.jsx
+   ============================================================ */
+.pomo-widget {
+  position: fixed;
+  width: 160px;
+  z-index: 100000;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  color: var(--ink);
+  user-select: none;
+}
+.pomo-widget__header {
+  background: var(--surface-alt);
+  padding: 6px 10px;
+  cursor: move;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pomo-widget__body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.pomo-widget__time {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+.pomo-widget__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: 100%;
+}
+.pomo-widget__min-btn {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 0;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.pomo-widget__min-btn:hover {
+  background: var(--surface-hover);
+}
+.pomo-widget__min-btn.is-active {
+  background: var(--primary);
+  border-color: var(--primary-dark);
+  color: #fff;
+}
+.pomo-widget__controls {
+  display: flex;
+  gap: 6px;
+}
+.pomo-widget__icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink);
+}
+.pomo-widget__icon-btn:hover {
+  background: var(--surface-hover);
+}
+.pomo-widget__icon-btn i {
+  font-size: 11px;
+}
+
