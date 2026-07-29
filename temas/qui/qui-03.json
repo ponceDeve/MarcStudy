@@ -1,165 +1,271 @@
 {
   "curso": "Química",
-  "tema": "Cálculos en Química: UMA, Peso Atómico y Peso Formular",
+  "tema": "Tipos de Átomos e Iones",
   "glosario": {
-    "UMA": "Unidad de Masa Atómica, equivalente a 1,66 x 10^-24 g.",
-    "Peso Atómico": "Masa promedio de los átomos que componen un elemento, considerando sus isótopos.",
-    "Peso Formular": "Masa expresada en uma de cualquier unidad estructural de la materia (átomos, moléculas, iones).",
-    "Isótopo": "Átomos del mismo elemento con igual número de protones pero diferente número de neutrones.",
-    "Unidad estructural": "La entidad mínima que representa la composición de una sustancia (átomo, molécula o fórmula química)."
+    "Isótopos": "Átomos del mismo elemento con diferente masa.",
+    "Hílidos": "Sinónimo químico para el término isótopos.",
+    "Isóbaros": "Átomos de diferentes elementos con igual masa.",
+    "Isótonos": "Átomos con igual cantidad de neutrones.",
+    "Iones": "Átomos con carga eléctrica neta.",
+    "Catión": "Ion con carga eléctrica positiva.",
+    "Anión": "Ion con carga eléctrica negativa.",
+    "Z": "Símbolo que representa el número atómico.",
+    "A": "Símbolo que representa la masa atómica.",
+    "=": "Define",
+    "✓": "Requiere",
+    "→": "Produce"
   },
   "theory": [
     {
-      "titulo": "Conceptos Básicos: UMA",
+      "titulo": "Isótopos o Hílidos",
       "puntos": [
         {
-          "texto": "La UMA (Unidad de Masa Atómica) es la unidad apropiada para expresar la masa a nivel de cuerpos diminutos como átomos, iones y moléculas.",
+          "texto": "\"Isótopos\" = átomos de un mismo elemento.",
           "pregunta": {
-            "q": "¿Qué unidad se utiliza para expresar la masa de partículas como átomos o moléculas?",
+            "q": "¿A qué clasificación de la tabla periódica pertenecen dos átomos que son isótopos entre sí?",
             "opts": [
-              "Kilogramo",
-              "UMA",
-              "Litro",
-              "Pascal"
+              "A elementos de transición",
+              "A elementos distintos",
+              "Al mismo elemento químico"
             ],
-            "correct": 1,
-            "explicacion": "La Unidad de Masa Atómica (uma) es necesaria porque las masas de los átomos son extremadamente pequeñas, del orden de 10^-24 gramos, haciendo que las unidades convencionales como el gramo o kilogramo sean imprácticas."
+            "correct": 2,
+            "explicacion": "Los isótopos, también conocidos como hílidos, son variaciones de un mismo elemento químico. Ocupan el mismo lugar (\"iso\" = mismo, \"topos\" = lugar) en la tabla periódica, siendo en esencia la misma sustancia con una leve variación interna."
           }
         },
         {
-          "texto": "Equivalencia fundamental → 1 UMA = 1,66 x 10^-24 g.",
+          "texto": "\"Isótopos\" ✓ igual número atómico.",
           "pregunta": {
-            "q": "¿Cuál es la equivalencia de 1 UMA en gramos?",
+            "q": "¿Qué parámetro fundamental del núcleo comparten obligatoriamente todos los isótopos?",
             "opts": [
-              "1,66 x 10^-24 g",
-              "1,66 x 10^-23 g",
-              "6,02 x 10^23 g",
-              "1 x 10^-24 g"
+              "El número atómico",
+              "El número de neutrones",
+              "El número de masa"
             ],
             "correct": 0,
-            "explicacion": "Esta equivalencia deriva de definir la uma como la doceava parte de la masa de un átomo de carbono-12, permitiendo estandarizar las masas atómicas relativas."
+            "explicacion": "El número atómico (Z), que representa la cantidad de protones, es idéntico en los isótopos. Esto es lógicamente indispensable, ya que la identidad de cualquier elemento químico está rígidamente definida por su cantidad de protones."
+          }
+        },
+        {
+          "texto": "\"Isótopos\" ✓ diferente número de masa.",
+          "pregunta": {
+            "q": "¿En qué característica física cuantitativa difieren estructuralmente los isótopos de un mismo elemento?",
+            "opts": [
+              "En su cantidad de protones",
+              "En su número atómico",
+              "En su número de masa"
+            ],
+            "correct": 2,
+            "explicacion": "Aunque mantienen intactos sus protones, los isótopos varían en su cantidad de neutrones. Esta diferencia de nucleones provoca que tengan distinto número de masa (A), originando versiones más \"pesadas\" o más \"livianas\" del mismo elemento."
+          }
+        },
+        {
+          "texto": "\"Isótopos\" → propiedades químicas semejantes.",
+          "pregunta": {
+            "q": "¿Cómo es el comportamiento de las propiedades químicas al comparar dos isótopos?",
+            "opts": [
+              "Son totalmente opuestas",
+              "Son semejantes",
+              "Dependen del peso"
+            ],
+            "correct": 1,
+            "explicacion": "Las propiedades y reacciones químicas de un átomo dependen de su nube electrónica. Al ser átomos del mismo elemento, los isótopos neutros poseen la misma cantidad y distribución de electrones, por lo que reaccionan de manera prácticamente idéntica."
+          }
+        },
+        {
+          "texto": "Ejemplo de \"isótopos\" → Ca-40 y Ca-44.",
+          "pregunta": {
+            "q": "Al analizar el tejido óseo, ¿qué variaciones del calcio podemos encontrar naturalmente?",
+            "opts": [
+              "Isótopos como Ca-40 y Ca-44",
+              "Isóbaros como Ca-40 y K-40",
+              "Aniones de carbono"
+            ],
+            "correct": 0,
+            "explicacion": "En la naturaleza, la mayoría de elementos existen como una mezcla de sus isótopos. Por ejemplo, en los huesos coexisten átomos de Calcio-40 y Calcio-44. Ambos cumplen idéntica función biológica porque químicamente son el mismo elemento."
           }
         }
       ]
     },
     {
-      "titulo": "Peso Atómico (P.A.)",
+      "titulo": "Isóbaros",
       "puntos": [
         {
-          "texto": "El Peso Atómico (P.A.) es la masa promedio de los átomos que componen un elemento, considerando la presencia de sus isótopos.",
+          "texto": "\"Isóbaros\" = átomos de diferentes elementos.",
           "pregunta": {
-            "q": "¿Qué factores se consideran para determinar el Peso Atómico de un elemento?",
+            "q": "¿Qué relación de identidad existe entre dos átomos considerados isóbaros?",
             "opts": [
-              "Solo el número de protones",
-              "La masa de sus isótopos y su abundancia relativa",
-              "El número de electrones de valencia",
-              "La densidad del elemento"
-            ],
-            "correct": 1,
-            "explicacion": "El Peso Atómico no es una masa fija, sino un promedio ponderado basado en la masa de cada isótopo natural del elemento y su abundancia porcentual en la naturaleza."
-          }
-        },
-        {
-          "texto": "Ejemplo Boro (B) → Muestra con 20% de B-10 (5 uma) y 80% de B-11 (5 uma).",
-          "pregunta": {
-            "q": "Si una muestra de Boro tiene 20% de B-10 y 80% de B-11, ¿cómo se calcula su peso atómico promedio?",
-            "opts": [
-              "(10*20 + 11*80) / 100",
-              "(10*80 + 11*20) / 100",
-              "(10+11) / 2",
-              "(10*0.2 + 11*0.8) * 100"
-            ],
-            "correct": 0,
-            "explicacion": "El promedio ponderado se obtiene multiplicando la masa de cada isótopo por su fracción de abundancia (o porcentaje dividido por 100) y sumando los resultados."
-          }
-        },
-        {
-          "texto": "Resultado del cálculo del P.A. del Boro → P.A.(B) = 10,8 uma, redondeado aproximadamente a 11 uma.",
-          "pregunta": {
-            "q": "¿Cuál es el valor aproximado del peso atómico del Boro basado en su abundancia isotópica?",
-            "opts": [
-              "10 uma",
-              "10,5 uma",
-              "11 uma",
-              "12 uma"
+              "Pertenecen al mismo elemento químico",
+              "Son exclusiones radiactivas del hidrógeno",
+              "Pertenecen a elementos químicos diferentes"
             ],
             "correct": 2,
-            "explicacion": "Aunque el cálculo exacto es 10,8, en cálculos químicos escolares se suele redondear a 11 para facilitar la operativa, al ser un valor cercano al isótopo más abundante (B-11)."
+            "explicacion": "A diferencia de los isótopos, los isóbaros relacionan átomos que pertenecen a elementos químicos completamente distintos. Al ser elementos diferentes, sus propiedades químicas, color, reactividad y estado físico no guardan relación alguna."
+          }
+        },
+        {
+          "texto": "\"Isóbaros\" ✓ igual número de masa.",
+          "pregunta": {
+            "q": "¿Qué propiedad física resulta numéricamente idéntica al comparar dos isóbaros?",
+            "opts": [
+              "La cantidad total de electrones",
+              "El número de masa",
+              "El número atómico"
+            ],
+            "correct": 1,
+            "explicacion": "Etimológicamente, \"iso\" significa igual y \"baros\" significa peso o masa. Los isóbaros son átomos que, por coincidencia matemática, coinciden en la suma total de sus nucleones (protones más neutrones), otorgándoles exactamente el mismo número de masa (A)."
+          }
+        },
+        {
+          "texto": "\"Isóbaros\" ✓ diferente número atómico.",
+          "pregunta": {
+            "q": "¿Qué valor debe ser obligatoriamente distinto para que dos átomos de igual masa sean isóbaros?",
+            "opts": [
+              "El número atómico",
+              "El total de nucleones",
+              "El número de masa"
+            ],
+            "correct": 0,
+            "explicacion": "Para que los isóbaros pertenezcan a elementos diferentes, es un requisito estricto que posean distinto número atómico (Z). Un cambio en los protones asegura que estamos comparando elementos distintos que lograron empatar en su peso total."
+          }
+        },
+        {
+          "texto": "Ejemplo de \"isóbaros\" → N-14 y C-14.",
+          "pregunta": {
+            "q": "Si comparamos específicamente al Nitrógeno-14 y al Carbono-14, ¿qué clasificación les corresponde?",
+            "opts": [
+              "Son isótonos",
+              "Son isótopos",
+              "Son isóbaros"
+            ],
+            "correct": 2,
+            "explicacion": "El Nitrógeno-14 (Z=7) y el Carbono-14 (Z=6) son átomos de elementos distintos. Sin embargo, ambos comparten la misma masa atómica (A=14), por lo que encajan perfectamente en el modelo conceptual de los isóbaros."
           }
         }
       ]
     },
     {
-      "titulo": "Peso Formular (P.F.)",
+      "titulo": "Isótonos",
       "puntos": [
         {
-          "texto": "El Peso Formular (P.F.) expresa la masa en uma de cualquier unidad estructural de la materia (átomos, iones o moléculas).",
+          "texto": "\"Isótonos\" = átomos de elementos diferentes.",
           "pregunta": {
-            "q": "¿Qué permite determinar el Peso Formular?",
+            "q": "¿A qué categoría identitaria corresponden los átomos clasificados teóricamente como isótonos?",
             "opts": [
-              "El número de electrones de un átomo",
-              "La masa de una unidad estructural de la materia",
-              "La velocidad de reacción química",
-              "La carga eléctrica de un ion"
+              "A elementos químicos diferentes",
+              "A elementos del mismo grupo covalente",
+              "A variaciones de un mismo elemento"
             ],
-            "correct": 1,
-            "explicacion": "El P.F. es un concepto general que engloba tanto a compuestos moleculares (donde coincide con el Peso Molecular) como a sustancias iónicas (donde se refiere a la fórmula mínima o unidad fórmula)."
+            "correct": 0,
+            "explicacion": "Al igual que ocurre con los isóbaros, la clasificación de isótonos se utiliza para comparar átomos que pertenecen a elementos químicos distintos (diferente Z), lo que garantiza que sus naturalezas químicas sean desiguales."
           }
         },
         {
-          "texto": "Regla para elementos (átomos) → P.F. = P.A.",
+          "texto": "\"Isótonos\" ✓ igual número de neutrones.",
           "pregunta": {
-            "q": "¿Cómo se calcula el Peso Formular de un elemento compuesto por átomos?",
+            "q": "¿Qué partícula subatómica se encuentra exactamente en la misma cantidad en los isótonos?",
             "opts": [
-              "Multiplicando el P.A. por dos",
-              "Es igual a su Peso Atómico (P.A.)",
-              "Sumando protones y neutrones",
-              "Dividiendo el P.A. entre el número atómico"
-            ],
-            "correct": 1,
-            "explicacion": "Para un elemento que existe como átomos individuales (como el Cobalto o el Azufre en ciertos estados), el peso de su unidad estructural es simplemente su peso atómico."
-          }
-        },
-        {
-          "texto": "Regla para compuestos (moléculas/unidad fórmula) → P.F. = suma de (átomos x P.A.).",
-          "pregunta": {
-            "q": "¿Cuál es el procedimiento general para calcular el Peso Formular de un compuesto químico?",
-            "opts": [
-              "Sumar los números atómicos de los elementos",
-              "Multiplicar los pesos atómicos",
-              "Sumar el producto de los subíndices de cada elemento por su peso atómico",
-              "Dividir el peso total entre el número de moléculas"
+              "Los electrones",
+              "Los protones",
+              "Los neutrones"
             ],
             "correct": 2,
-            "explicacion": "Se debe multiplicar el número de átomos de cada elemento (indicado por el subíndice en la fórmula) por el peso atómico respectivo de dicho elemento y luego sumar todos estos valores."
+            "explicacion": "La característica clave y definitoria de los isótonos es que alojan la misma cantidad de neutrones en sus respectivos núcleos. Dado que son de elementos distintos, su cantidad de protones y su masa final seguirán siendo diferentes."
           }
         },
         {
-          "texto": "Ejemplo P.F. del agua (H2O) → 2(H) + 1(O) = 2(1) + 1(16) = 18 uma.",
+          "texto": "Ejemplo de \"isótonos\" → K-39 y Ca-40.",
           "pregunta": {
-            "q": "¿Cuál es el Peso Formular del agua (H2O)? (Considerando P.A.(H)=1, P.A.(O)=16)",
+            "q": "Al restar la masa (A) menos los protones (Z) en el K-39 (Z=19) y Ca-40 (Z=20), ¿qué demostramos?",
             "opts": [
-              "17 uma",
-              "18 uma",
-              "32 uma",
-              "34 uma"
+              "Que ambos átomos son isóbaros",
+              "Que ambos tienen 20 neutrones",
+              "Que el calcio es un isótopo"
             ],
             "correct": 1,
-            "explicacion": "El cálculo es (2 átomos de H * 1 uma) + (1 átomo de O * 16 uma) = 2 + 16 = 18 uma."
+            "explicacion": "Para hallar los neutrones restamos A - Z. Para el Potasio: 39 - 19 = 20 neutrones. Para el Calcio: 40 - 20 = 20 neutrones. Al poseer ambos exactamente 20 neutrones, se catalogan químicamente como isótonos."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Iones",
+      "puntos": [
+        {
+          "texto": "\"Iones\" = especies con carga eléctrica.",
+          "pregunta": {
+            "q": "¿Cómo se define fundamentalmente a las especies químicas que denominamos iones?",
+            "opts": [
+              "Átomos sin protones nucleares",
+              "Átomos con carga eléctrica",
+              "Átomos neutros y estables"
+            ],
+            "correct": 1,
+            "explicacion": "Un ion es un átomo, o grupo de átomos, que ha perdido el equilibrio de su neutralidad eléctrica. Exhiben una carga neta medible debido a la asimetría entre sus cargas positivas (protones) y negativas (electrones)."
           }
         },
         {
-          "texto": "Observación importante → las sustancias covalentes poseen tanto peso formular como peso molecular, ya que se conforman de moléculas.",
+          "texto": "Formación de \"iones\" → altera cantidad de electrones.",
           "pregunta": {
-            "q": "¿Por qué las sustancias covalentes tienen tanto peso formular como peso molecular?",
+            "q": "¿Qué partícula del átomo se debe transferir para que se forme un ion?",
             "opts": [
-              "Porque contienen enlaces iónicos",
-              "Porque están formadas por moléculas",
-              "Porque son elementos puros",
-              "Porque su peso atómico cambia"
+              "Los protones del núcleo",
+              "Los neutrones del núcleo",
+              "Los electrones extranucleares"
+            ],
+            "correct": 2,
+            "explicacion": "Los iones se forman única y exclusivamente por la ganancia o pérdida de electrones en la periferia del átomo. Los protones jamás se alteran en estos procesos; intentar modificar el núcleo desencadenaría una reacción nuclear, no la formación de un simple ion."
+          }
+        },
+        {
+          "texto": "Pérdida de electrones → forma un \"catión\".",
+          "pregunta": {
+            "q": "¿Qué especie química surge cuando un átomo neutro cede o pierde sus electrones?",
+            "opts": [
+              "Un anión",
+              "Un catión",
+              "Un isótopo"
             ],
             "correct": 1,
-            "explicacion": "En las sustancias covalentes, la unidad estructural coincide con la molécula. Por tanto, el peso molecular es un tipo específico de peso formular."
+            "explicacion": "Al perder electrones (cargas negativas), el átomo experimenta un déficit de negatividad, quedando los protones del núcleo en superioridad numérica. El resultado es un ion que exhibe carga neta positiva, al cual llamamos catión."
+          }
+        },
+        {
+          "texto": "Ganancia de electrones → forma un \"anión\".",
+          "pregunta": {
+            "q": "¿Qué resultado produce la incorporación de electrones adicionales a la nube atómica?",
+            "opts": [
+              "Forma un anión",
+              "Forma un catión",
+              "Neutraliza la masa"
+            ],
+            "correct": 0,
+            "explicacion": "Cuando un átomo gana electrones del entorno, acumula un exceso de cargas negativas que superan a las cargas positivas de sus protones. Esta superioridad electrónica genera un ion de carga neta negativa, denominado anión."
+          }
+        },
+        {
+          "texto": "\"Catión monovalente\" = átomo que pierde 1 electrón.",
+          "pregunta": {
+            "q": "¿Qué proceso exacto sufrió un átomo para ser clasificado matemáticamente como un catión monovalente?",
+            "opts": [
+              "Perdió 2 electrones",
+              "Ganó 1 electrón",
+              "Perdió 1 electrón"
+            ],
+            "correct": 2,
+            "explicacion": "El prefijo \"mono\" indica la unidad (uno). La palabra \"catión\" nos señala que posee carga positiva, lo cual solo ocurre perdiendo electrones. Por lo tanto, un catión monovalente es aquel átomo que tiene un déficit de exactamente un electrón (ej: N+1)."
+          }
+        },
+        {
+          "texto": "\"Anión trivalente\" = átomo que gana 3 electrones.",
+          "pregunta": {
+            "q": "¿Cuántos electrones adicionales posee en su nube un átomo llamado anión trivalente?",
+            "opts": [
+              "Ganó 3 electrones",
+              "Perdió 3 electrones",
+              "Ganó 3 protones"
+            ],
+            "correct": 0,
+            "explicacion": "El prefijo \"tri\" indica tres unidades. Ser un \"anión\" (carga negativa) significa que el átomo ha capturado electrones extra superando a sus protones. Así, un anión trivalente es aquel que ha ganado exactamente 3 electrones (ej: N-3)."
           }
         }
       ]

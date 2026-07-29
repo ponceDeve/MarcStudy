@@ -1,223 +1,367 @@
 {
   "curso": "Química",
-  "tema": "Ácidos",
+  "tema": "La Materia: Clasificación y Cambios",
+  "glosario": {
+    "Materia": "Todo aquello que posee masa y volumen.",
+    "Sustancias puras": "Materia con composición definida y constante.",
+    "Sustancia simple": "Sustancia formada por un único elemento químico.",
+    "Sustancia compuesta": "Sustancia formada por elementos químicos distintos.",
+    "Mezcla": "Unión física de dos o más sustancias.",
+    "Mezcla homogénea": "Mezcla uniforme de una sola fase.",
+    "Mezcla heterogénea": "Mezcla no uniforme con fases visibles.",
+    "Salmuera": "Mezcla homogénea de agua y sal.",
+    "Electrólisis": "Separación de un compuesto mediante electricidad.",
+    "Pirólisis": "Descomposición química producida por altas temperaturas.",
+    "Fotólisis": "Ruptura de compuestos generada por la luz.",
+    "Catálisis": "Proceso químico modificado por un catalizador.",
+    "Tamizado": "Separación física de sólidos por distinto tamaño.",
+    "Destilación": "Separación de líquidos por sus puntos de ebullición.",
+    "Filtración": "Separación de partículas sólidas de un líquido.",
+    "Decantación": "Separación de fluidos basada en sus densidades.",
+    "=": "Define",
+    "✓": "Requiere",
+    "⊃": "Contiene",
+    "∈": "Pertenece",
+    "✗": "Carece",
+    "→": "Produce"
+  },
   "theory": [
     {
-      "titulo": "Definición",
+      "titulo": "Definición de Materia",
       "puntos": [
         {
-          "texto": "Compuestos de carácter covalente",
+          "texto": "\"Materia\" = todo aquello con lo cual interactuamos.",
           "pregunta": {
-            "q": "¿Qué tipo de compuesto es un ácido?",
-            "opts": ["Iónico", "Covalente", "Metálico", "Ninguno"],
-            "correct": 1,
-            "explicacion": "A diferencia de los hidróxidos (iónicos), los ácidos comparten electrones entre un no metal e hidrógeno, formando enlaces covalentes."
-          }
-        },
-        {
-          "texto": "Grupo funcional: el ión H⁺¹, llamado ión hidrógeno o protón",
-          "pregunta": {
-            "q": "¿Cuál es el grupo funcional de los ácidos?",
-            "opts": ["OH⁻¹", "H⁺¹", "O⁻²", "NH₄⁺¹"],
-            "correct": 1,
-            "explicacion": "Lo que hace ácida a una sustancia es su capacidad de liberar un ión H⁺ (protón) en solución; ese H⁺ es el que reacciona con las bases y define el comportamiento ácido."
-          }
-        },
-        {
-          "texto": "Se dividen en dos tipos: Hidrácidos y Ácidos oxácidos",
-          "pregunta": {
-            "q": "¿En qué dos tipos se dividen los ácidos?",
+            "q": "¿Cómo se define el concepto de materia en relación a nuestro entorno?",
             "opts": [
-              "Orgánicos e inorgánicos",
-              "Hidrácidos y oxácidos",
-              "Fuertes y débiles",
-              "Simples y compuestos"
+              "Es un concepto abstracto sin aplicación práctica",
+              "Es todo aquello con lo cual interactuamos",
+              "Es únicamente aquello visible al ojo humano"
             ],
             "correct": 1,
-            "explicacion": "Se distinguen según si contienen oxígeno o no: los hidrácidos (sin oxígeno, solo H y un no metal) y los oxácidos (con oxígeno, formados a partir de un anhídrido)."
+            "explicacion": "La materia abarca la totalidad del universo físico. Interactuamos con ella constantemente, ya sea de forma tangible y directa (como sostener un objeto) o sutil (como respirar los gases de la atmósfera)."
+          }
+        },
+        {
+          "texto": "\"Materia\" ✓ poseer masa y volumen.",
+          "pregunta": {
+            "q": "¿Cuáles son las dos propiedades fundamentales e imprescindibles que debe poseer la materia?",
+            "opts": [
+              "Masa y volumen",
+              "Peso exacto y densidad alta",
+              "Energía interna y temperatura"
+            ],
+            "correct": 0,
+            "explicacion": "Para que un componente del universo sea clasificado estrictamente como materia en la química clásica, debe cumplir dos condiciones obligatorias: poseer masa (la cantidad de materia) y volumen (ocupar un espacio físico)."
           }
         }
       ]
     },
     {
-      "titulo": "Hidrácidos",
+      "titulo": "Clasificación: Sustancias Puras",
       "puntos": [
         {
-          "texto": "Compuestos binarios cuyas unidades ácidas solo se disuelven en H₂O",
+          "texto": "\"Sustancias puras\" ✓ poseen representación química.",
           "pregunta": {
-            "q": "¿Qué son los hidrácidos?",
+            "q": "¿Qué característica propia en su escritura diferencia a las sustancias puras?",
             "opts": [
-              "Compuestos ternarios con oxígeno",
-              "Compuestos binarios que se disuelven en H₂O",
-              "Óxidos metálicos",
-              "Hidróxidos disueltos"
+              "Carecen de nomenclatura química",
+              "Poseen representación química",
+              "Se expresan únicamente en porcentajes"
             ],
             "correct": 1,
-            "explicacion": "Solo tienen dos elementos (H y un no metal), y su carácter ácido solo se manifiesta cuando están disueltos en agua; en estado gaseoso no se comportan como ácidos."
+            "explicacion": "Al tener una composición fija y constante, todas las sustancias puras se pueden representar formalmente. Se utilizan símbolos si se trata de elementos individuales, o fórmulas químicas estructuradas si se trata de compuestos."
           }
         },
         {
-          "texto": "Obtención: H⁺¹ + E⁻ˣ → HₓE",
+          "texto": "\"Sustancia simple\" = conformada por el mismo tipo de átomos.",
           "pregunta": {
-            "q": "¿Cuál es la fórmula general de obtención de un hidrácido?",
-            "opts": ["HₓE", "HₓEOᵧ", "EOₓ", "HₓOᵧ"],
+            "q": "¿Cómo está constituida la estructura atómica de una sustancia simple?",
+            "opts": [
+              "Por diferentes elementos químicos agrupados",
+              "Por el mismo tipo de átomos",
+              "Por iones positivos y negativos alternados"
+            ],
+            "correct": 1,
+            "explicacion": "Las sustancias simples (también llamadas elementos) están formadas exclusivamente por un único tipo de átomo. No importa la cantidad de estos átomos, mientras todos compartan exactamente el mismo número atómico e identidad química."
+          }
+        },
+        {
+          "texto": "Ejemplos de \"sustancias simples\" ⊃ Au, Ag, Cl2, O3.",
+          "pregunta": {
+            "q": "¿Qué grupo de especies químicas representa correctamente a las sustancias simples?",
+            "opts": [
+              "Cloruro de sodio (NaCl) y agua (H2O)",
+              "Oro (Au), plata (Ag), cloro (Cl2) y ozono (O3)",
+              "Ácido nítrico (HNO3) y metano (CH4)"
+            ],
+            "correct": 1,
+            "explicacion": "Metales como el oro (Au) y la plata (Ag), o gases como el cloro molecular (Cl2) y el ozono (O3), son sustancias simples porque están formados por átomos de un único elemento, sin la intromisión de elementos extraños en su estructura."
+          }
+        },
+        {
+          "texto": "\"Sustancia compuesta\" = conformada por elementos químicos diferentes.",
+          "pregunta": {
+            "q": "¿Qué condición estructural es necesaria para que exista una sustancia compuesta?",
+            "opts": [
+              "Estar conformada por elementos químicos diferentes",
+              "Unir átomos que sean exactamente de un mismo elemento",
+              "Tener exclusivamente elementos en estado gaseoso"
+            ],
             "correct": 0,
-            "explicacion": "El ión hidrógeno (H⁺) se combina directamente con el anión del no metal (con su estado de oxidación negativo) para formar el hidrácido."
+            "explicacion": "A diferencia de las simples, las sustancias compuestas requieren la unión química de por lo menos dos átomos de elementos totalmente distintos. Esta unión forma un compuesto nuevo con propiedades que difieren de las de sus elementos originarios."
           }
         },
         {
-          "texto": "No metales que los forman:",
-          "sub": [
-            "Grupo VI A: S, Se, Te (E.O. = -2)",
-            "Grupo VII A: F, Cl, Br, I (E.O. = -1)"
-          ],
+          "texto": "Ejemplos de \"sustancias compuestas\" ⊃ NaCl, H2O2, C6H12O6.",
           "pregunta": {
-            "q": "¿Qué elementos forman hidrácidos en el grupo VII A?",
-            "opts": ["S, Se, Te", "F, Cl, Br, I", "N, P, As", "Na, K, Li"],
-            "correct": 1,
-            "explicacion": "Los halógenos (F, Cl, Br, I) tienen estado de oxidación -1 y al combinarse con hidrógeno forman los hidrácidos más comunes, como el ácido clorhídrico (HCl)."
-          }
-        },
-        {
-          "texto": "N. clásica: ácido + raíz del no metal + hídrico (en disolución acuosa)",
-          "pregunta": {
-            "q": "¿Cómo se nombra un hidrácido en nomenclatura clásica?",
+            "q": "¿Qué moléculas son ejemplos clásicos de sustancias compuestas?",
             "opts": [
-              "Raíz + uro de hidrógeno",
-              "Ácido + raíz + hídrico",
-              "Óxido + raíz",
-              "Raíz + ico"
+              "El hierro (Fe) puro y el azufre molecular (S8)",
+              "El oxígeno gaseoso (O2) y el calcio (Ca)",
+              "La sal de mesa (NaCl), el peróxido (H2O2) y la glucosa (C6H12O6)"
             ],
-            "correct": 1,
-            "explicacion": "El sufijo '-hídrico' siempre indica que el compuesto está disuelto en agua y se comporta como ácido, a diferencia de su forma gaseosa."
-          }
-        },
-        {
-          "texto": "N. IUPAC: raíz del no metal + uro + de hidrógeno (fase gas, sin carácter ácido)",
-          "pregunta": {
-            "q": "¿Cómo se nombra un hidrácido en IUPAC?",
-            "opts": [
-              "Ácido + raíz + hídrico",
-              "Raíz + uro + de hidrógeno",
-              "Raíz + ico",
-              "Óxido + raíz"
-            ],
-            "correct": 1,
-            "explicacion": "En estado gaseoso (sin disolver en agua), el compuesto no tiene carácter ácido, por lo que se nombra como una sal binaria común: raíz + uro + de hidrógeno."
-          }
-        },
-        {
-          "texto": "Ejemplos:",
-          "sub": [
-            "H⁺¹ + Cl⁻¹ → HCl(ac) — clásica: ácido clorhídrico / IUPAC: cloruro de hidrógeno",
-            "H⁺¹ + S⁻² → H₂S(ac) — clásica: ácido sulfhídrico / IUPAC: sulfuro de hidrógeno"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es el nombre clásico de HCl(ac)?",
-            "opts": [
-              "Ácido clórico",
-              "Ácido clorhídrico",
-              "Cloruro de hidrógeno",
-              "Ácido hipocloroso"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando el cloruro de hidrógeno gaseoso se disuelve en agua, adquiere carácter ácido y pasa a llamarse ácido clorhídrico, el mismo ácido presente en el jugo gástrico humano."
+            "correct": 2,
+            "explicacion": "El NaCl, el H2O2 y el C6H12O6 son compuestos genuinos ya que sus fórmulas evidencian la participación de distintos elementos. En el NaCl participan sodio y cloro; en el H2O2, hidrógeno y oxígeno; y en el C6H12O6, carbono, hidrógeno y oxígeno."
           }
         }
       ]
     },
     {
-      "titulo": "Ácidos oxácidos",
+      "titulo": "Clasificación: Mezclas",
       "puntos": [
         {
-          "texto": "Compuestos ternarios: contienen oxígeno",
+          "texto": "\"Mezcla\" = unión de dos o más sustancias.",
           "pregunta": {
-            "q": "¿Qué son los ácidos oxácidos?",
+            "q": "¿Cuál es la definición fundamental de una mezcla en la química?",
             "opts": [
-              "Compuestos binarios",
-              "Compuestos ternarios con oxígeno",
-              "Hidróxidos",
-              "Sales"
+              "La destrucción química de un compuesto",
+              "La unión de dos o más sustancias",
+              "La transformación de energía en masa"
             ],
             "correct": 1,
-            "explicacion": "A diferencia de los hidrácidos, estos sí contienen oxígeno además de hidrógeno y el no metal, formando compuestos de tres elementos."
+            "explicacion": "Una mezcla se produce cuando se juntan dos o más sustancias puras sin que exista una reacción química entre ellas. Como resultado, cada sustancia individual conserva intactas sus propias propiedades químicas dentro de la mezcla."
           }
         },
         {
-          "texto": "Obtención: anhídrido (óxido no metálico) + H₂O → ácido oxácido",
+          "texto": "Componentes de una \"mezcla\" ∈ proporción variable.",
           "pregunta": {
-            "q": "¿Cómo se obtiene un ácido oxácido?",
+            "q": "¿En qué tipo de proporción participan los componentes al formar una mezcla?",
             "opts": [
-              "Metal + H₂O",
-              "Anhídrido + H₂O",
-              "Ácido + base",
-              "No metal + H₂"
+              "En proporción obligatoriamente fija y exacta",
+              "En proporción variable",
+              "En proporción de idénticos volúmenes"
             ],
             "correct": 1,
-            "explicacion": "Un anhídrido es un óxido no metálico; al reaccionar con agua, se transforma en el ácido oxácido correspondiente."
+            "explicacion": "A diferencia de los compuestos que obedecen leyes ponderales estrictas, las mezclas admiten cantidades libres. Por ejemplo, se puede preparar una mezcla de agua con azúcar utilizando muy poca o demasiada azúcar, y en ambos casos seguirá siendo la misma mezcla dulce."
           }
         },
         {
-          "texto": "Formulación general: HₓEᵧO_z (si los subíndices son número par, se simplifican)",
+          "texto": "\"Mezcla homogénea\" ✗ identificar componentes por microscopio.",
           "pregunta": {
-            "q": "¿Cuál es la fórmula general de un ácido oxácido?",
-            "opts": ["HₓEᵧOz", "HₓE", "EOₓ", "MOH"],
+            "q": "¿Es posible distinguir visualmente los componentes de una mezcla homogénea mediante el uso de un microscopio?",
+            "opts": [
+              "Sí, porque todos los componentes son muy grandes",
+              "No se pueden identificar componentes por microscopio",
+              "Solo si la mezcla es previamente congelada"
+            ],
+            "correct": 1,
+            "explicacion": "Las mezclas homogéneas presentan una distribución tan perfecta a nivel molecular o iónico que conforman una sola fase continua. Su uniformidad es tan alta que ni siquiera los microscopios ópticos potentes permiten diferenciar el soluto del solvente."
+          }
+        },
+        {
+          "texto": "Ejemplos de \"mezcla homogénea\" ⊃ salmuera, aire, gasolina.",
+          "pregunta": {
+            "q": "¿Qué conjunto de sustancias ejemplifica adecuadamente a las mezclas homogéneas?",
+            "opts": [
+              "Salmuera, aire y gasolina",
+              "Agua con arena y rocas sueltas",
+              "Petróleo crudo y ensalada de vegetales"
+            ],
             "correct": 0,
-            "explicacion": "La fórmula general HₓEᵧOz representa hidrógeno, el elemento no metálico central y oxígeno, en las proporciones que resulten del anhídrido de origen."
+            "explicacion": "La salmuera (sal disuelta en agua), el aire de la atmósfera (gases mezclados) y la gasolina comercial son sistemas monofásicos (homogéneos). A simple vista, y bajo el microscopio, todas sus partes lucen idénticas y uniformes."
           }
         },
         {
-          "texto": "Nomenclatura clásica — ácido + prefijo + raíz + sufijo, según el estado de oxidación del no metal:",
-          "sub": [
-            "Estado de oxidación menor: prefijo hipo- + sufijo -oso (ej: ácido hipocloroso)",
-            "Estado de oxidación intermedio-bajo: sufijo -oso (ej: ácido sulfuroso)",
-            "Estado de oxidación intermedio-alto: sufijo -ico (ej: ácido sulfúrico)",
-            "Estado de oxidación mayor: prefijo per- + sufijo -ico (ej: ácido perclórico)"
-          ],
+          "texto": "\"Mezcla heterogénea\" ✓ posible identificar componente por microscopio.",
           "pregunta": {
-            "q": "¿Qué prefijo corresponde al estado de oxidación mayor en un oxácido?",
-            "opts": ["Hipo-", "Per-", "Mono-", "Di-"],
-            "correct": 1,
-            "explicacion": "El sistema de prefijos y sufijos (hipo-oso, oso, ico, per-ico) ordena los ácidos según el estado de oxidación del no metal; el prefijo 'per-' siempre marca el estado más alto disponible."
-          }
-        },
-        {
-          "texto": "N. IUPAC: prefijo numérico + oxo + raíz + ato + (estado de oxidación) + de hidrógeno",
-          "pregunta": {
-            "q": "¿Qué ácido resulta de SO₃ + H₂O?",
-            "opts": ["H₂SO₃", "H₂SO₄", "H₂S", "HSO₄"],
-            "correct": 1,
-            "explicacion": "El azufre en SO₃ tiene su estado de oxidación más alto (+6), por lo que al reaccionar con agua forma el ácido sulfúrico, uno de los ácidos industriales más importantes."
-          }
-        },
-        {
-          "texto": "Ejemplos:",
-          "sub": [
-            "N₂O₃ + H₂O → HNO₂ — ácido nitroso / trioxonitrato (III) de hidrógeno",
-            "N₂O₅ + H₂O → HNO₃ — ácido nítrico / trioxonitrato (V) de hidrógeno",
-            "SO₂ + H₂O → H₂SO₃ — ácido sulfuroso / trioxosulfato (IV) de hidrógeno",
-            "SO₃ + H₂O → H₂SO₄ — ácido sulfúrico / tetraoxosulfato (VI) de hidrógeno",
-            "Cl₂O + H₂O → HClO — ácido hipocloroso",
-            "Cl₂O₇ + H₂O → HClO₄ — ácido perclórico"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es el nombre clásico de HCl(ac)?",
+            "q": "¿Qué característica microscópica permite definir a una mezcla como heterogénea?",
             "opts": [
-              "Ácido clórico",
-              "Ácido clorhídrico",
-              "Cloruro de hidrógeno",
-              "Ácido hipocloroso"
+              "Su incapacidad total de mostrar fases distintas",
+              "Es posible identificar el componente por microscopio",
+              "Se muestra como un solo color sólido siempre"
             ],
             "correct": 1,
-            "explicacion": "Cuando el cloruro de hidrógeno gaseoso se disuelve en agua, adquiere carácter ácido y pasa a llamarse ácido clorhídrico, el mismo ácido presente en el jugo gástrico humano."
+            "explicacion": "Las mezclas heterogéneas carecen de uniformidad. Presentan dos o más fases que no se integran completamente, lo que permite que sus componentes individuales sean claramente distinguibles, ya sea a simple vista o mediante un microscopio."
+          }
+        },
+        {
+          "texto": "Ejemplo de \"mezcla heterogénea\" ⊃ petróleo.",
+          "pregunta": {
+            "q": "¿Cuál de los siguientes materiales es un claro ejemplo de una mezcla heterogénea?",
+            "opts": [
+              "El aire limpio",
+              "El petróleo",
+              "El agua destilada"
+            ],
+            "correct": 1,
+            "explicacion": "El petróleo es una mezcla natural muy compleja que contiene hidrocarburos en diversos estados (sólidos, líquidos y gases disueltos), además de agua e impurezas que generan múltiples fases, haciéndola claramente heterogénea bajo análisis microscópico."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Cambios de la Materia",
+      "puntos": [
+        {
+          "texto": "\"Cambios físicos\" ✗ alteran la identidad de la materia.",
+          "pregunta": {
+            "q": "¿Qué ocurre con la identidad de un material cuando experimenta un cambio físico?",
+            "opts": [
+              "El cuerpo cambia de aspecto pero no de identidad",
+              "El cuerpo pierde totalmente su composición química",
+              "Se convierte en un elemento de la tabla periódica distinto"
+            ],
+            "correct": 0,
+            "explicacion": "Durante un fenómeno físico, únicamente cambian las propiedades externas de la materia, como su forma, tamaño, posición o estado de agregación. La estructura íntima y la identidad química de sus moléculas permanecen completamente intactas."
+          }
+        },
+        {
+          "texto": "Ejemplo de \"cambio físico\" = congelar agua.",
+          "pregunta": {
+            "q": "¿Cuál de los siguientes procesos es un ejemplo representativo de un cambio físico?",
+            "opts": [
+              "Quemar un trozo de madera o carbón",
+              "Congelar agua",
+              "Digerir los alimentos en el estómago"
+            ],
+            "correct": 1,
+            "explicacion": "Cuando el agua líquida se congela y se convierte en hielo, experimenta un drástico cambio de aspecto físico y temperatura. Sin embargo, la molécula sigue siendo H2O, probando que no hubo alteración en su identidad química (cambio físico)."
+          }
+        },
+        {
+          "texto": "\"Cambios químicos\" → involucra formación de nuevas sustancias.",
+          "pregunta": {
+            "q": "¿Cuál es la principal consecuencia directa que se produce al ocurrir un cambio químico?",
+            "opts": [
+              "Un cambio únicamente visual en el estado de agregación",
+              "Involucra la formación de nuevas sustancias",
+              "La destrucción total de todos los átomos involucrados"
+            ],
+            "correct": 1,
+            "explicacion": "Los cambios químicos ocurren debido a reacciones químicas donde los enlaces atómicos de las sustancias originales (reactivos) se rompen y se reorganizan. Esto genera productos completamente nuevos, con propiedades distintas a las que había al inicio."
+          }
+        },
+        {
+          "texto": "Ejemplo de \"cambio químico\" = oxidación de un metal.",
+          "pregunta": {
+            "q": "¿Qué evento cotidiano sirve para ilustrar el concepto de cambio químico?",
+            "opts": [
+              "La evaporación rápida del alcohol etílico",
+              "La oxidación de un metal",
+              "El proceso de colar café en las mañanas"
+            ],
+            "correct": 1,
+            "explicacion": "Cuando un metal, como el hierro, se expone al oxígeno y la humedad, se oxida formando una costra rojiza. Ese óxido es una sustancia diferente al hierro original, confirmando que la materia sufrió una transformación química profunda."
+          }
+        },
+        {
+          "texto": "\"Cambios nucleares\" = alteraciones a nivel del núcleo del átomo.",
+          "pregunta": {
+            "q": "¿A qué nivel de la estructura atómica suceden los cambios nucleares?",
+            "opts": [
+              "Únicamente en las nubes electrónicas externas",
+              "En los enlaces que unen a las moléculas",
+              "A nivel del núcleo del átomo"
+            ],
+            "correct": 2,
+            "explicacion": "Los cambios nucleares son los procesos más extremos y energéticos. Implican fisión (división) o fusión (unión) directa del núcleo atómico, lo que altera la cantidad de protones y transforma irrevocablemente un elemento en uno distinto."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Métodos de Separación",
+      "puntos": [
+        {
+          "texto": "Toda \"sustancia compuesta\" se separa por métodos químicos.",
+          "pregunta": {
+            "q": "¿Qué tipo de método es indispensable para separar los elementos que forman una sustancia compuesta?",
+            "opts": [
+              "Se separa mediante métodos físicos simples",
+              "Se separa en otras sustancias por métodos químicos",
+              "Se separa exclusivamente mediante reacciones nucleares"
+            ],
+            "correct": 1,
+            "explicacion": "Debido a que los elementos dentro de un compuesto están fuertemente unidos mediante enlaces químicos interatómicos, los procesos mecánicos o físicos no son suficientes para desligarlos. Se requiere la energía de un método químico para forzar esta separación."
+          }
+        },
+        {
+          "texto": "Separar compuesto NaCl ✓ método de \"electrólisis\".",
+          "pregunta": {
+            "q": "¿Qué proceso químico ejemplifica la separación del cloruro de sodio (NaCl) en sodio y cloro?",
+            "opts": [
+              "La decantación de líquidos",
+              "El método de tamizado manual",
+              "La electrólisis"
+            ],
+            "correct": 2,
+            "explicacion": "La electrólisis es un poderoso método de separación química que utiliza corriente eléctrica continua para inducir una reacción no espontánea. Al aplicarla al cloruro de sodio (NaCl), logra descomponerlo exitosamente en sodio metálico y gas cloro."
+          }
+        },
+        {
+          "texto": "Otros métodos químicos ⊃ fotólisis, pirrólisis, catálisis.",
+          "pregunta": {
+            "q": "Además de la electrólisis, ¿qué otros métodos son considerados de naturaleza química para separar compuestos?",
+            "opts": [
+              "Fotólisis, pirrólisis y catálisis",
+              "Filtración, tamizado y cristalización",
+              "Evaporación, condensación y sublimación"
+            ],
+            "correct": 0,
+            "explicacion": "La fotólisis y pirrólisis implican la ruptura (lisis) de enlaces utilizando energía luminosa y calor extremo, respectivamente. La catálisis interviene en reacciones químicas empleando sustancias aceleradoras, demostrando que son métodos químicos que afectan la estructura íntima."
+          }
+        },
+        {
+          "texto": "Toda \"mezcla\" se separa en componentes por métodos físicos.",
+          "pregunta": {
+            "q": "¿Qué naturaleza tienen los procedimientos requeridos para separar los componentes que integran una mezcla?",
+            "opts": [
+              "Requieren únicamente procesos de desintegración atómica",
+              "Se separan mediante métodos físicos",
+              "Exigen siempre reacciones químicas fuertes"
+            ],
+            "correct": 1,
+            "explicacion": "Dado que las sustancias de una mezcla solo están juntas físicamente y no unidas por enlaces químicos, no se requiere transformar su identidad para separarlas. Basta con aprovechar sus diferencias físicas (tamaño, densidad o punto de ebullición) aplicando métodos físicos."
+          }
+        },
+        {
+          "texto": "Separar arena y gránulos de arroz ✓ método de \"tamizado\".",
+          "pregunta": {
+            "q": "¿Qué método físico es el más indicado para separar una mezcla de arena y granos de arroz?",
+            "opts": [
+              "El método de tamizado",
+              "El proceso de destilación fraccionada",
+              "La técnica de cromatografía"
+            ],
+            "correct": 0,
+            "explicacion": "El tamizado es ideal para separar sólidos de diferentes diámetros. Al verter la mezcla (arena y arroz) a través de la malla de un tamiz, las partículas pequeñas (arena) pasan libremente, mientras que los gránulos grandes (arroz) quedan atrapados arriba."
+          }
+        },
+        {
+          "texto": "Otros métodos físicos ⊃ destilación, filtración, decantación.",
+          "pregunta": {
+            "q": "Aparte del tamizado, ¿qué otras técnicas pertenecen al conjunto de métodos de separación físicos?",
+            "opts": [
+              "Destilación, filtración y decantación",
+              "Electrólisis, pirólisis y combustión",
+              "Fusión, fisión y desintegración alfa"
+            ],
+            "correct": 0,
+            "explicacion": "Estos métodos clásicos de separación física se basan en distintas propiedades: la destilación aprovecha diferencias en los puntos de ebullición; la filtración separa sólidos de líquidos usando un filtro; y la decantación separa fluidos que tienen densidades diferentes."
           }
         }
       ]
     }
-  ],
-  "glosario": {
-    "anhídrido": "Óxido no metálico; con agua forma un ácido oxácido.",
-    "covalente": "Enlace donde los átomos comparten electrones.",
-    "protón": "Partícula con carga positiva; es el ión H⁺¹."
-  }
+  ]
 }
