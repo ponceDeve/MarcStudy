@@ -1,0 +1,543 @@
+{
+  "curso": "Geografía",
+  "tema": "Cartografía y Representaciones de la Tierra",
+  "glosario": {
+    "Cartografía": "Ciencia y técnica de representar la superficie terrestre.",
+    "Escala": "Proporción matemática entre el mapa y la realidad.",
+    "Latitud": "Distancia angular de un punto respecto al Ecuador.",
+    "Longitud": "Distancia angular respecto al meridiano de Greenwich.",
+    "Altitud": "Elevación vertical de un terreno respecto al mar.",
+    "Isohipsas": "Líneas topográficas que unen puntos de igual altitud.",
+    "Batimetría": "Estudio y medición de las profundidades acuáticas.",
+    "Tridimensional": "Representación que incluye latitud, longitud y altitud.",
+    "Bidimensional": "Representación plana que solo incluye latitud y longitud.",
+    "=": "Define",
+    "→": "Permite",
+    "✓": "Presenta",
+    "✗": "Carece",
+    "↑": "Aumenta"
+  },
+  "theory": [
+    {
+      "titulo": "Definición y Generalidades",
+      "puntos": [
+        {
+          "texto": "\"Cartografía\" = ciencia, técnica y arte.",
+          "pregunta": {
+            "q": "¿Qué disciplinas integran la naturaleza de la cartografía?",
+            "opts": [
+              "Solamente el arte y la estética.",
+              "La ciencia, técnica y arte.",
+              "Únicamente la técnica y la ingeniería."
+            ],
+            "correct": 1,
+            "explicacion": "La cartografía es una disciplina completa. Es ciencia porque usa fundamentos matemáticos (geodesia, geometría), es técnica porque emplea métodos estandarizados de medición, y es arte porque requiere de estética para que la representación visual sea comprensible y armoniosa."
+          }
+        },
+        {
+          "texto": "\"Cartografía\" → representar la superficie terrestre.",
+          "pregunta": {
+            "q": "¿Qué acción principal permite la cartografía?",
+            "opts": [
+              "Representar la superficie terrestre.",
+              "Modificar el relieve del suelo.",
+              "Predecir los fenómenos climáticos."
+            ],
+            "correct": 0,
+            "explicacion": "El objetivo y finalidad principal de la cartografía es permitir la representación gráfica de toda o una parte de la superficie de la Tierra, trasladando un espacio real tridimensional a diferentes soportes de estudio."
+          }
+        },
+        {
+          "texto": "Padre de la \"cartografía\" = Gerardo Mercator.",
+          "pregunta": {
+            "q": "¿A quién se le considera el padre de la cartografía?",
+            "opts": [
+              "Crates de Malos.",
+              "Gerardo Mercator.",
+              "Claudio Ptolomeo."
+            ],
+            "correct": 1,
+            "explicacion": "Gerardo Mercator es reconocido como el padre de la cartografía moderna debido a sus invaluables aportes en el siglo XVI, especialmente por idear la proyección cilíndrica que lleva su nombre y que revolucionó la navegación marítima."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "El Globo Terráqueo",
+      "puntos": [
+        {
+          "texto": "\"Globo terráqueo\" = mayor representación de la Tierra.",
+          "pregunta": {
+            "q": "¿Cómo es considerado el globo terráqueo respecto a la Tierra?",
+            "opts": [
+              "La representación más distorsionada.",
+              "La peor aproximación geométrica.",
+              "La mayor representación de la Tierra."
+            ],
+            "correct": 2,
+            "explicacion": "El globo terráqueo es considerado la representación más exacta de la Tierra porque conserva en gran medida la relación de área, forma y distancia de los continentes y océanos, evitando las grandes deformaciones que sufren los mapas planos."
+          }
+        },
+        {
+          "texto": "Primer \"globo terráqueo\" = Crates de Malos.",
+          "pregunta": {
+            "q": "¿Quién elaboró el primer globo terráqueo?",
+            "opts": [
+              "Gerardo Mercator.",
+              "Crates de Malos.",
+              "Eratóstenes."
+            ],
+            "correct": 1,
+            "explicacion": "En la antigua Grecia, el filósofo estoico y gramático Crates de Malos construyó el primer modelo tridimensional conocido de la Tierra (globo terráqueo) basándose en los cálculos de esfericidad planetaria de la época."
+          }
+        },
+        {
+          "texto": "\"Globo terráqueo\" ✓ escasa información.",
+          "pregunta": {
+            "q": "¿Cuál es una característica del globo terráqueo respecto a sus datos?",
+            "opts": [
+              "Presenta escasa información.",
+              "Muestra abundante información detallada.",
+              "Contiene todos los nombres de calles."
+            ],
+            "correct": 0,
+            "explicacion": "Debido a que representa a todo el planeta en una esfera de tamaño manejable, el globo terráqueo solo puede incluir elementos muy generales (continentes, países principales, grandes océanos), por lo que la información que presenta es bastante escasa."
+          }
+        },
+        {
+          "texto": "\"Globo terráqueo\" ✗ visión simultánea de hemisferios.",
+          "pregunta": {
+            "q": "¿De qué cualidad visual carece el globo terráqueo?",
+            "opts": [
+              "Visión de los océanos.",
+              "Visión simultánea de hemisferios.",
+              "Visión tridimensional del modelo."
+            ],
+            "correct": 1,
+            "explicacion": "Por su propia naturaleza esférica, es físicamente imposible observar todo el planeta al mismo tiempo en un globo terráqueo. Siempre habrá una cara oculta al observador, impidiendo ver puntos opuestos (antípodas) simultáneamente."
+          }
+        },
+        {
+          "texto": "\"Globo terráqueo\" ✓ escala pequeña.",
+          "pregunta": {
+            "q": "¿Qué tipo de escala se utiliza para crear un globo terráqueo?",
+            "opts": [
+              "Escala grande.",
+              "Escala pequeña.",
+              "Escala mediana."
+            ],
+            "correct": 1,
+            "explicacion": "Para poder representar algo tan inmenso como el planeta entero en un objeto pequeño, se requiere una reducción matemática extrema. Esto significa que utiliza una escala muy pequeña (con denominadores altísimos)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Mapas y sus Tipos",
+      "puntos": [
+        {
+          "texto": "\"Mapas\" ✓ áreas extensas.",
+          "pregunta": {
+            "q": "¿Qué magnitud de áreas se representan comúnmente en los mapas?",
+            "opts": [
+              "Áreas pequeñas como viviendas.",
+              "Áreas extensas.",
+              "Áreas medianas como provincias."
+            ],
+            "correct": 1,
+            "explicacion": "Los mapas geográficos clásicos están diseñados para plasmar territorios de gran extensión en un documento plano, abarcando desde continentes enteros, enormes océanos, hasta la totalidad de la superficie mundial (planisferios)."
+          }
+        },
+        {
+          "texto": "\"Mapas\" ✓ información generalizada.",
+          "pregunta": {
+            "q": "¿Cómo es la información que se muestra en los mapas?",
+            "opts": [
+              "Información altamente detallada.",
+              "Información generalizada.",
+              "Información exclusivamente minera."
+            ],
+            "correct": 1,
+            "explicacion": "Al abarcar áreas tan extensas, los mapas deben prescindir de los detalles minuciosos. Se enfocan en mostrar datos generales, simplificando la realidad para hacerla legible a simple vista."
+          }
+        },
+        {
+          "texto": "\"Mapas\" ✓ escala pequeña.",
+          "pregunta": {
+            "q": "¿Qué tipo de escala presentan los mapas generales?",
+            "opts": [
+              "Escala mediana.",
+              "Escala grande.",
+              "Escala pequeña."
+            ],
+            "correct": 2,
+            "explicacion": "Los mapas, al igual que los globos terráqueos, emplean escalas pequeñas (generalmente entre 1/250,000 a 1/1,000,000 o más). Esto implica una gran reducción de la realidad para que quepa en el papel."
+          }
+        },
+        {
+          "texto": "Mapas \"topográficos\" = representación tridimensional.",
+          "pregunta": {
+            "q": "¿Qué tipo de representación ofrecen los mapas topográficos?",
+            "opts": [
+              "Representación tridimensional.",
+              "Representación bidimensional.",
+              "Representación lineal simple."
+            ],
+            "correct": 0,
+            "explicacion": "Los mapas topográficos (o cartas) se diferencian porque nos brindan una lectura en 3D del espacio físico: no solo indican el largo y ancho (latitud y longitud), sino que también representan la altitud (relieve) mediante técnicas como las curvas de nivel."
+          }
+        },
+        {
+          "texto": "Mapas \"temáticos\" = representación bidimensional específica.",
+          "pregunta": {
+            "q": "¿Qué define a los mapas temáticos?",
+            "opts": [
+              "Son una representación tridimensional de relieves.",
+              "Son una representación de áreas muy pequeñas.",
+              "Son una representación bidimensional específica."
+            ],
+            "correct": 2,
+            "explicacion": "Los mapas temáticos se enfocan en un tema en particular (clima, población, economía) sobre una base geográfica bidimensional (solo latitud y longitud, 2D). No buscan mostrar el relieve, sino distribuir información específica."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de Mapas Temáticos",
+      "puntos": [
+        {
+          "texto": "Mapa \"político\" ✓ límites y divisiones.",
+          "pregunta": {
+            "q": "¿Qué elementos presenta un mapa político?",
+            "opts": [
+              "Tipos de rocas y fallas.",
+              "Límites y divisiones.",
+              "Rutas de transporte."
+            ],
+            "correct": 1,
+            "explicacion": "El mapa político es un tipo de mapa temático cuyo propósito exclusivo es mostrar la organización territorial humana, destacando las fronteras, los límites nacionales o internacionales, y las divisiones administrativas (departamentos, estados)."
+          }
+        },
+        {
+          "texto": "Mapa \"crenológico\" ✓ fuentes termales.",
+          "pregunta": {
+            "q": "¿Qué información específica presenta un mapa crenológico?",
+            "opts": [
+              "Fuentes termales.",
+              "Yacimientos petrolíferos.",
+              "Zonas de alta montaña."
+            ],
+            "correct": 0,
+            "explicacion": "En cartografía, un mapa crenológico se especializa en localizar y distribuir gráficamente los manantiales, las fuentes de aguas medicinales y las aguas termales dentro de una región geográfica."
+          }
+        },
+        {
+          "texto": "Mapa \"metalogénico\" ✓ minerales.",
+          "pregunta": {
+            "q": "¿Qué recurso presenta principalmente el mapa metalogénico?",
+            "opts": [
+              "Minerales.",
+              "Agricultura.",
+              "Tipos de suelo."
+            ],
+            "correct": 0,
+            "explicacion": "El mapa metalogénico está diseñado para el estudio minero y geológico; presenta la ubicación, extensión y distribución de los diferentes yacimientos de minerales (metálicos y no metálicos) en el subsuelo."
+          }
+        },
+        {
+          "texto": "Mapa \"edafológico\" ✓ suelos.",
+          "pregunta": {
+            "q": "¿Qué objeto de estudio presenta un mapa edafológico?",
+            "opts": [
+              "Los océanos.",
+              "Los suelos.",
+              "La vegetación."
+            ],
+            "correct": 1,
+            "explicacion": "La edafología es la ciencia que estudia el suelo. Por tanto, un mapa edafológico es aquel que clasifica, describe y presenta los diferentes tipos de suelos, su composición y su aptitud agrícola o forestal."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Cartas Topográficas",
+      "puntos": [
+        {
+          "texto": "\"Cartas topográficas\" ✓ áreas medianas.",
+          "pregunta": {
+            "q": "¿Qué extensión territorial abarcan las cartas topográficas?",
+            "opts": [
+              "Áreas medianas.",
+              "Áreas planetarias.",
+              "Áreas muy reducidas como casas."
+            ],
+            "correct": 0,
+            "explicacion": "Las cartas topográficas se elaboran para representar sectores intermedios de territorio. No abarcan continentes, pero tampoco se reducen a una sola calle; su área ideal son los países, provincias, departamentos o cuencas hidrográficas."
+          }
+        },
+        {
+          "texto": "\"Cartas topográficas\" ✓ regular información.",
+          "pregunta": {
+            "q": "¿Cuál es el nivel de información que presentan las cartas topográficas?",
+            "opts": [
+              "Escasa información.",
+              "Regular información.",
+              "Abundante información detallada."
+            ],
+            "correct": 1,
+            "explicacion": "Al abarcar áreas medianas, logran un equilibrio ofreciendo una cantidad de información regular. Muestran accidentes geográficos notables, ríos, lagos y altitudes importantes, pero sin el grado microscópico de un plano distrital."
+          }
+        },
+        {
+          "texto": "\"Cartas topográficas\" ✓ escala mediana.",
+          "pregunta": {
+            "q": "¿Qué tipo de escala emplean las cartas topográficas?",
+            "opts": [
+              "Escala grande.",
+              "Escala pequeña.",
+              "Escala mediana."
+            ],
+            "correct": 2,
+            "explicacion": "Utilizan escalas medianas (generalmente entre 1:25,000 a 1:200,000). Esta escala fraccional permite plasmar las irregularidades del terreno (relieve) de una provincia o región con buena legibilidad técnica."
+          }
+        },
+        {
+          "texto": "\"Cartas topográficas\" = representación tridimensional.",
+          "pregunta": {
+            "q": "¿Cómo se define espacialmente a las cartas topográficas?",
+            "opts": [
+              "Representación bidimensional.",
+              "Representación tridimensional.",
+              "Representación unidimensional."
+            ],
+            "correct": 1,
+            "explicacion": "La principal característica de una carta oficial o mapa topográfico es su naturaleza tridimensional (3D). Combina las coordenadas planas (latitud y longitud) con la altitud del relieve a través del trazado de líneas de nivel."
+          }
+        },
+        {
+          "texto": "\"Isohipsas\" = curvas de nivel positivas.",
+          "pregunta": {
+            "q": "¿Qué definen las isohipsas en una carta topográfica?",
+            "opts": [
+              "Coordenadas de latitud extremas.",
+              "Curvas de nivel positivas.",
+              "Líneas de profundidad oceánica."
+            ],
+            "correct": 1,
+            "explicacion": "En la cartografía del relieve, las isohipsas son líneas imaginarias que unen puntos terrestres situados a la misma altitud sobre el nivel del mar (curvas de nivel positivas o altimétricas), permitiendo visualizar montañas y valles."
+          }
+        },
+        {
+          "texto": "Curvas \"batimétricas\" = curvas de nivel negativas.",
+          "pregunta": {
+            "q": "¿Qué representan las curvas batimétricas?",
+            "opts": [
+              "Altitudes superiores a los nevados.",
+              "Líneas de alta temperatura.",
+              "Curvas de nivel negativas."
+            ],
+            "correct": 2,
+            "explicacion": "Las líneas o curvas batimétricas son el equivalente a las isohipsas pero bajo el agua. Definen el relieve submarino uniendo puntos de igual profundidad respecto al nivel del mar (curvas de nivel negativas)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Los Planos",
+      "puntos": [
+        {
+          "texto": "\"Planos\" ✓ áreas pequeñas.",
+          "pregunta": {
+            "q": "¿Para qué tamaño de áreas están diseñados los planos?",
+            "opts": [
+              "Para áreas globales.",
+              "Para áreas pequeñas.",
+              "Para áreas de tamaño nacional."
+            ],
+            "correct": 1,
+            "explicacion": "Los planos son documentos cartográficos elaborados expresamente para representar fracciones muy reducidas de la superficie terrestre, como una vivienda, una avenida, un barrio o como máximo el casco urbano de un distrito."
+          }
+        },
+        {
+          "texto": "\"Planos\" ✓ abundante información detallada.",
+          "pregunta": {
+            "q": "¿Qué cantidad de información presentan los planos?",
+            "opts": [
+              "Abundante información detallada.",
+              "Nula información urbana.",
+              "Escasa información general."
+            ],
+            "correct": 0,
+            "explicacion": "Debido a que el espacio real que muestran es muy pequeño, los planos no necesitan simplificar ni omitir cosas. Pueden presentar abundante información sumamente minuciosa: trazado de calles, lotes, veredas, semáforos o nombres de jirones."
+          }
+        },
+        {
+          "texto": "\"Planos\" ✓ escala grande.",
+          "pregunta": {
+            "q": "¿Qué categoría de escala se utiliza para los planos?",
+            "opts": [
+              "Escala grande.",
+              "Escala pequeña.",
+              "Escala mediana."
+            ],
+            "correct": 0,
+            "explicacion": "Los planos usan escalas grandes (usualmente de 1:1,000 hasta 1:20,000). A nivel matemático, el denominador es pequeño, lo que significa que la realidad ha sido reducida muy pocas veces, manteniendo así el gran nivel de detalle."
+          }
+        },
+        {
+          "texto": "\"Planos\" = representación bidimensional.",
+          "pregunta": {
+            "q": "¿Qué característica espacial define a un plano?",
+            "opts": [
+              "Representación de tres dimensiones.",
+              "Representación bidimensional.",
+              "Representación altimétrica estricta."
+            ],
+            "correct": 1,
+            "explicacion": "A diferencia de las cartas topográficas que estudian el relieve, un plano típico es un documento bidimensional (2D) que asume la superficie como si fuera totalmente llana, indicando únicamente el largo y el ancho (distancias y distribución) sin curvas de nivel."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Proyecciones Cartográficas",
+      "puntos": [
+        {
+          "texto": "\"Proyecciones\" = red de meridianos y paralelos.",
+          "pregunta": {
+            "q": "¿Cómo se define geométricamente una proyección cartográfica?",
+            "opts": [
+              "Red de meridianos y paralelos.",
+              "Red de altitudes y batimetrías.",
+              "Conjunto de fronteras políticas."
+            ],
+            "correct": 0,
+            "explicacion": "Una proyección cartográfica es un sistema matemático compuesto por una red estructurada de meridianos y paralelos. Esta malla sirve como base geométrica indispensable para dibujar cualquier mapa del mundo."
+          }
+        },
+        {
+          "texto": "\"Proyecciones\" → llevar superficie curva a plana.",
+          "pregunta": {
+            "q": "¿Qué finalidad técnica permite el uso de proyecciones?",
+            "opts": [
+              "Medir la profundidad exacta de los océanos.",
+              "Llevar una superficie curva a plana.",
+              "Aumentar la esfericidad del globo terráqueo."
+            ],
+            "correct": 1,
+            "explicacion": "El planeta es esférico, mientras que el papel del mapa es plano. La principal función matemática de las proyecciones es permitir el traslado organizado de los elementos de una superficie curva tridimensional hacia una superficie plana (mapa)."
+          }
+        },
+        {
+          "texto": "Proyección \"cilíndrica\" ✓ baja latitud.",
+          "pregunta": {
+            "q": "¿Qué sector latitudinal es óptimo para la proyección cilíndrica?",
+            "opts": [
+              "Alta latitud.",
+              "Mediana latitud.",
+              "Baja latitud."
+            ],
+            "correct": 2,
+            "explicacion": "La proyección cilíndrica (como la popular Mercator) es sumamente precisa en zonas de baja latitud, es decir, entre los 0° y 30°. Al desenrollar el cilindro imaginario, la zona que hace contacto directo y sin error es precisamente la línea del Ecuador."
+          }
+        },
+        {
+          "texto": "Proyección \"cilíndrica\" ✓ zona tropical.",
+          "pregunta": {
+            "q": "¿Para qué zona climática se presenta mejor la proyección cilíndrica?",
+            "opts": [
+              "Zona polar.",
+              "Zona tropical.",
+              "Zona templada."
+            ],
+            "correct": 1,
+            "explicacion": "Al ser recomendada para bajas latitudes (cercanas al Ecuador), la proyección cilíndrica representa con gran exactitud la zona tropical del planeta (países como Colombia, Ecuador, Venezuela o el Congo)."
+          }
+        },
+        {
+          "texto": "Proyección \"cilíndrica\" ↑ deformación en polos.",
+          "pregunta": {
+            "q": "¿Qué efecto sufre la proyección cilíndrica respecto a las áreas polares?",
+            "opts": [
+              "Mantiene la exactitud perfecta en los polos.",
+              "Reduce el tamaño de las zonas polares.",
+              "Aumenta la deformación en los polos."
+            ],
+            "correct": 2,
+            "explicacion": "El gran defecto de la proyección cilíndrica clásica es que, a medida que nos alejamos del Ecuador y subimos en latitud hacia los polos, el ensanchamiento necesario para mantener la forma rectangular del mapa aumenta drásticamente la deformación territorial (ejemplo visual: Groenlandia parece del tamaño de África)."
+          }
+        },
+        {
+          "texto": "Proyección \"cónica\" ✓ mediana latitud.",
+          "pregunta": {
+            "q": "¿Para qué rango de latitudes es recomendada la proyección cónica?",
+            "opts": [
+              "Baja latitud.",
+              "Mediana latitud.",
+              "Alta latitud."
+            ],
+            "correct": 1,
+            "explicacion": "La proyección cónica asume la forma de un cono apoyado sobre un sector de la Tierra. El punto de contacto ideal que carece de deformaciones ocurre en las medianas latitudes (generalmente entre los 30° y 60° Norte o Sur)."
+          }
+        },
+        {
+          "texto": "Proyección \"cónica\" ✓ zona templada.",
+          "pregunta": {
+            "q": "¿Qué zona geográfica es adecuadamente representada por la proyección cónica?",
+            "opts": [
+              "Zona templada.",
+              "Zona ecuatorial.",
+              "Zona polar ártica."
+            ],
+            "correct": 0,
+            "explicacion": "Dado que su mayor precisión matemática recae en la banda de medianas latitudes (30° a 60°), la proyección cónica es ideal para cartografiar los países ubicados en las zonas climáticas templadas (como Estados Unidos, Europa central, Argentina o Chile)."
+          }
+        },
+        {
+          "texto": "Proyección \"acimutal\" ✓ alta latitud.",
+          "pregunta": {
+            "q": "¿En qué rango latitudinal es más precisa la proyección acimutal?",
+            "opts": [
+              "Baja latitud (0° - 30°).",
+              "Alta latitud (60° - 90°).",
+              "Latitud media (30° - 60°)."
+            ],
+            "correct": 1,
+            "explicacion": "La proyección acimutal (o plana) consiste en proyectar la Tierra sobre un plano tangente a un punto, normalmente los polos. Por lo tanto, ofrece la máxima fidelidad y menor deformación en las altas latitudes (entre los 60° y 90°)."
+          }
+        },
+        {
+          "texto": "Proyección \"acimutal\" ✓ zona fría.",
+          "pregunta": {
+            "q": "¿Qué tipo de zona térmica presenta la proyección acimutal con mayor fidelidad?",
+            "opts": [
+              "Zona tropical.",
+              "Zona desértica.",
+              "Zona fría."
+            ],
+            "correct": 2,
+            "explicacion": "Al ser la proyección por excelencia para las altas latitudes polares, es el instrumento cartográfico perfecto para representar las zonas de clima muy frío (zonas polares o glaciales), abarcando territorios como la Antártida, Alaska, Canadá o Finlandia."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Simbología",
+      "puntos": [
+        {
+          "texto": "\"Simbología\" = conjunto de imágenes convencionales.",
+          "pregunta": {
+            "q": "¿Cómo se define a la simbología dentro de un mapa?",
+            "opts": [
+              "Conjunto de imágenes convencionales.",
+              "Cálculo matemático de las altitudes.",
+              "Proyección cilíndrica de paralelos."
+            ],
+            "correct": 0,
+            "explicacion": "La simbología (presente en la leyenda del mapa) se define como el conjunto estandarizado e internacional de signos, líneas, colores, puntos e imágenes convencionales que sirven para representar visualmente en el plano los elementos de la realidad (como una cruz para iglesias, banderas para escuelas o líneas cortadas para vías de ferrocarril)."
+          }
+        }
+      ]
+    }
+  ]
+}

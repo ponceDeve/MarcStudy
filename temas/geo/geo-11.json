@@ -1,0 +1,555 @@
+{
+  "curso": "Geografía",
+  "tema": "Clima I",
+  "glosario": {
+    "Tiempo meteorológico": "Estado de la atmósfera en momento específico.",
+    "Clima": "Condición atmosférica promedio a largo plazo.",
+    "Meteorología": "Ciencia que estudia el tiempo meteorológico.",
+    "Climatología": "Ciencia que estudia los climas terrestres.",
+    "Estaciones": "Periodos del año con clima específico.",
+    "Latitud": "Distancia angular respecto a línea ecuatorial.",
+    "Altitud": "Distancia vertical respecto al nivel del mar.",
+    "Oceanidad": "Efecto moderador térmico por cercanía al mar.",
+    "Continentalidad": "Efecto climático por lejanía del océano.",
+    "Soroche": "Mal de altura por baja presión atmosférica.",
+    "Radiación solar": "Energía emitida por el sol.",
+    "Insolación": "Cantidad de radiación solar en una superficie.",
+    "Heliógrafo": "Instrumento para medir la radiación solar.",
+    "Isohelia": "Línea que une puntos de igual insolación.",
+    "Temperatura": "Grado de calor del aire atmosférico.",
+    "Termómetro": "Instrumento que mide la temperatura atmosférica.",
+    "Isoterma": "Línea que une puntos de igual temperatura.",
+    "Humedad": "Vapor de agua presente en el aire.",
+    "Higrómetro": "Instrumento que mide la humedad del aire.",
+    "Isohídrica": "Línea que une puntos de igual humedad.",
+    "Precipitación": "Caída de agua líquida o sólida.",
+    "Pluviómetro": "Instrumento que mide la cantidad de lluvia.",
+    "Isoyeta": "Línea que une puntos de igual precipitación.",
+    "Advectiva": "Precipitación por desplazamiento horizontal del aire.",
+    "Convectiva": "Precipitación por ascenso de aire cálido.",
+    "Orográfica": "Precipitación por el ascenso sobre montañas.",
+    "=": "Define",
+    "→": "Produce",
+    "∈": "Pertenece",
+    "✓": "Requiere",
+    "⇒": "Causa"
+  },
+  "theory": [
+    {
+      "titulo": "Diferencias entre Tiempo Meteorológico y Clima",
+      "puntos": [
+        {
+          "texto": "\"Tiempo meteorológico\" = estado atmosférico actual.",
+          "pregunta": {
+            "q": "¿Qué característica principal define al tiempo meteorológico?",
+            "opts": [
+              "El estado atmosférico actual.",
+              "El promedio anual de temperaturas.",
+              "La suma de estaciones del año."
+            ],
+            "correct": 0,
+            "explicacion": "El tiempo meteorológico se refiere exclusivamente a las condiciones de la atmósfera (temperatura, humedad, nubosidad, etc.) en un lugar y momento muy específicos, siendo una fotografía del instante actual."
+          }
+        },
+        {
+          "texto": "\"Tiempo meteorológico\" → variación por horas.",
+          "pregunta": {
+            "q": "¿Cómo es la variación temporal del tiempo meteorológico?",
+            "opts": [
+              "Se mantiene estable por décadas.",
+              "Cambia a lo largo de las horas.",
+              "Se modifica cada treinta años."
+            ],
+            "correct": 1,
+            "explicacion": "A diferencia del clima que es estable a largo plazo, el tiempo meteorológico es altamente dinámico y puede cambiar drásticamente en cuestión de horas (por ejemplo, una mañana soleada que se transforma en una tarde lluviosa)."
+          }
+        },
+        {
+          "texto": "\"Tiempo meteorológico\" ∈ meteorología.",
+          "pregunta": {
+            "q": "¿A qué campo de estudio pertenece el análisis del tiempo meteorológico?",
+            "opts": [
+              "A la geología.",
+              "A la climatología.",
+              "A la meteorología."
+            ],
+            "correct": 2,
+            "explicacion": "La meteorología es la rama científica encargada de estudiar los fenómenos atmosféricos a corto plazo y de realizar los pronósticos del tiempo meteorológico diario."
+          }
+        },
+        {
+          "texto": "\"Clima\" = condición climática promedio.",
+          "pregunta": {
+            "q": "¿Cómo se define conceptualmente el clima?",
+            "opts": [
+              "Como el estado atmosférico del día.",
+              "Como una condición climática promedio.",
+              "Como la medición de la lluvia."
+            ],
+            "correct": 1,
+            "explicacion": "El clima es la síntesis o el promedio de las condiciones meteorológicas de una región, obtenidas mediante observaciones continuas durante un periodo prolongado, representando su comportamiento atmosférico habitual."
+          }
+        },
+        {
+          "texto": "\"Clima\" ✓ evaluación mínima de treinta años.",
+          "pregunta": {
+            "q": "¿Qué requisito temporal mínimo exige la determinación de un clima?",
+            "opts": [
+              "Un año de observación.",
+              "Una década de mediciones.",
+              "Una evaluación mínima de treinta años."
+            ],
+            "correct": 2,
+            "explicacion": "Según la Organización Meteorológica Mundial, para establecer el clima representativo de una región y filtrar las anomalías temporales, es indispensable recopilar y promediar datos meteorológicos durante al menos 30 años consecutivos."
+          }
+        },
+        {
+          "texto": "\"Clima\" ∈ climatología.",
+          "pregunta": {
+            "q": "¿Qué ciencia se encarga de estudiar el clima?",
+            "opts": [
+              "La climatología.",
+              "La edafología.",
+              "La meteorología."
+            ],
+            "correct": 0,
+            "explicacion": "La climatología es la disciplina geográfica y atmosférica dedicada al estudio de los climas de la Tierra, sus variaciones a largo plazo, su distribución y sus causas."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Factores Cósmicos del Clima",
+      "puntos": [
+        {
+          "texto": "Rotación terrestre ⇒ sucesión día y noche.",
+          "pregunta": {
+            "q": "¿Qué efecto directo tiene la rotación terrestre en las condiciones ambientales?",
+            "opts": [
+              "La formación de las nubes.",
+              "La sucesión del día y la noche.",
+              "El cambio de las estaciones."
+            ],
+            "correct": 1,
+            "explicacion": "El movimiento de rotación de la Tierra sobre su propio eje genera la alternancia entre el día (calentamiento solar) y la noche (enfriamiento), lo cual regula las temperaturas diarias de manera constante."
+          }
+        },
+        {
+          "texto": "Traslación terrestre ⇒ \"estaciones\" del año.",
+          "pregunta": {
+            "q": "¿Qué fenómeno climático es causado por la traslación terrestre?",
+            "opts": [
+              "La oceanidad.",
+              "Las corrientes marinas.",
+              "Las estaciones del año."
+            ],
+            "correct": 2,
+            "explicacion": "El movimiento de traslación alrededor del Sol, en conjunto con otros factores, permite que la Tierra reciba la energía solar de forma diferenciada a lo largo de los meses, originando las estaciones del año."
+          }
+        },
+        {
+          "texto": "Inclinación del eje terrestre ⇒ \"estaciones\" del año.",
+          "pregunta": {
+            "q": "¿Qué factor, además de la traslación, causa la existencia de las estaciones?",
+            "opts": [
+              "La inclinación del eje terrestre.",
+              "La forma de la órbita lunar.",
+              "El magnetismo del núcleo."
+            ],
+            "correct": 0,
+            "explicacion": "La inclinación del eje terrestre (aproximadamente 23.5°) es el factor determinante que provoca que los hemisferios norte y sur reciban luz solar directa en diferentes épocas del año, marcando el inicio del verano o invierno respectivamente."
+          }
+        },
+        {
+          "texto": "Forma terrestre ⇒ diferente incidencia solar.",
+          "pregunta": {
+            "q": "¿Qué consecuencia genera la forma de la Tierra respecto al Sol?",
+            "opts": [
+              "Una distribución idéntica de la humedad.",
+              "Una diferente incidencia solar.",
+              "El aumento uniforme de la temperatura."
+            ],
+            "correct": 1,
+            "explicacion": "Debido a que la Tierra tiene una forma geoide (esférica achatada en los polos), los rayos del sol no inciden con el mismo ángulo en toda su superficie, lo que genera zonas térmicas muy cálidas en el ecuador y frías en los polos."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Factores Geográficos: Latitud y Altitud",
+      "puntos": [
+        {
+          "texto": "Alta \"latitud\" ⇒ baja temperatura.",
+          "pregunta": {
+            "q": "¿Qué ocurre con la temperatura cuando existe una alta latitud (cerca de los polos)?",
+            "opts": [
+              "La temperatura es baja.",
+              "La temperatura es extremadamente alta.",
+              "La temperatura se mantiene invariable."
+            ],
+            "correct": 0,
+            "explicacion": "A mayor latitud (acercándose a los 90° en los polos), los rayos solares inciden de forma muy oblicua, perdiendo intensidad al atravesar más atmósfera, lo que resulta en temperaturas muy bajas."
+          }
+        },
+        {
+          "texto": "Baja \"latitud\" ⇒ alta humedad y nubosidad.",
+          "pregunta": {
+            "q": "¿Qué condiciones atmosféricas se presentan en áreas de baja latitud (cerca del ecuador)?",
+            "opts": [
+              "Alta presión y sequedad extrema.",
+              "Baja humedad y cielos despejados.",
+              "Alta humedad y nubosidad."
+            ],
+            "correct": 2,
+            "explicacion": "En latitudes bajas (0° o zona ecuatorial), la fuerte y constante insolación genera una alta evaporación de las masas de agua y transpiración vegetal, lo que se traduce en una gran concentración de humedad y abundante formación de nubes."
+          }
+        },
+        {
+          "texto": "Mayor \"altitud\" ⇒ menor temperatura y oxígeno.",
+          "pregunta": {
+            "q": "¿Qué sucede con la temperatura y el oxígeno al incrementarse la altitud?",
+            "opts": [
+              "Ambos aumentan proporcionalmente.",
+              "Ambos disminuyen.",
+              "La temperatura sube y el oxígeno baja."
+            ],
+            "correct": 1,
+            "explicacion": "Conforme se asciende sobre el nivel del mar, la atmósfera se vuelve menos densa. Esto reduce su capacidad para retener calor (disminuyendo la temperatura a razón de ~6.5°C por cada 1000m) y disminuye la cantidad de moléculas de oxígeno disponibles."
+          }
+        },
+        {
+          "texto": "Mayor \"altitud\" ⇒ menor presión atmosférica.",
+          "pregunta": {
+            "q": "¿Cuál es la relación de la presión atmosférica respecto a una mayor altitud?",
+            "opts": [
+              "Es mayor.",
+              "Es menor.",
+              "Permanece constante."
+            ],
+            "correct": 1,
+            "explicacion": "La presión atmosférica es el peso que ejerce la columna de aire sobre la superficie. A mayor altitud, hay menos cantidad de aire por encima, por lo que el peso y, en consecuencia, la presión atmosférica disminuyen."
+          }
+        },
+        {
+          "texto": "Baja presión atmosférica ⇒ \"soroche\".",
+          "pregunta": {
+            "q": "¿Qué afección es causada por la baja presión atmosférica en las alturas?",
+            "opts": [
+              "El asma crónico.",
+              "La insolación térmica.",
+              "El soroche."
+            ],
+            "correct": 2,
+            "explicacion": "El soroche, o mal de montaña, ocurre cuando las personas ascienden rápidamente a grandes altitudes. La baja presión atmosférica dificulta el ingreso del escaso oxígeno a los pulmones y al torrente sanguíneo, produciendo mareos, dolor de cabeza y fatiga."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Factores Geográficos: Oceanidad y Continentalidad",
+      "puntos": [
+        {
+          "texto": "\"Oceanidad\" = regulador térmico.",
+          "pregunta": {
+            "q": "¿Qué función climática principal cumple la oceanidad?",
+            "opts": [
+              "Aumenta la sequía del suelo.",
+              "Funciona como regulador térmico.",
+              "Inhibe la formación de nubes."
+            ],
+            "correct": 1,
+            "explicacion": "La oceanidad es la influencia que ejercen los grandes cuerpos de agua (océanos, mares, lagos) sobre el clima local. El agua tiene un alto calor específico, por lo que se calienta y enfría lentamente, regulando y suavizando las temperaturas de las zonas costeras."
+          }
+        },
+        {
+          "texto": "\"Continentalidad\" ⇒ mayor contraste térmico.",
+          "pregunta": {
+            "q": "¿Qué efecto provoca la continentalidad en las temperaturas de una región?",
+            "opts": [
+              "Temperaturas estables todo el año.",
+              "Mayor contraste térmico.",
+              "Disminución drástica de la altitud."
+            ],
+            "correct": 1,
+            "explicacion": "La continentalidad ocurre en zonas alejadas de la influencia del mar (tierra adentro). Dado que la tierra firme se calienta y enfría muy rápido, estas regiones experimentan días muy calurosos y noches muy frías, es decir, un alto contraste o amplitud térmica."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos del Clima: Radiación y Temperatura",
+      "puntos": [
+        {
+          "texto": "\"Radiación solar\" = grado de insolación.",
+          "pregunta": {
+            "q": "¿A qué concepto equivale la radiación solar en los elementos del clima?",
+            "opts": [
+              "Al grado de insolación.",
+              "A la presión atmosférica.",
+              "Al calor interno de la Tierra."
+            ],
+            "correct": 0,
+            "explicacion": "En climatología, la radiación solar recibida por una superficie terrestre durante un periodo determinado se cuantifica y se denomina grado de insolación, siendo la principal fuente de energía para los procesos atmosféricos."
+          }
+        },
+        {
+          "texto": "\"Heliógrafo\" = instrumento que mide insolación.",
+          "pregunta": {
+            "q": "¿Qué instrumento se utiliza para medir el grado de insolación?",
+            "opts": [
+              "El higrómetro.",
+              "El pluviómetro.",
+              "El heliógrafo."
+            ],
+            "correct": 2,
+            "explicacion": "El heliógrafo es el instrumento meteorológico diseñado para registrar la duración y la intensidad de la insolación o brillo solar a lo largo del día, quemando típicamente una banda de papel graduada."
+          }
+        },
+        {
+          "texto": "\"Isohelia\" = línea de igual insolación.",
+          "pregunta": {
+            "q": "¿Qué define a una isohelia en un mapa climático?",
+            "opts": [
+              "Línea de igual temperatura.",
+              "Línea de igual insolación.",
+              "Línea de igual humedad."
+            ],
+            "correct": 1,
+            "explicacion": "Las isolíneas son representaciones cartográficas que unen puntos con el mismo valor de un fenómeno. La isohelia es específicamente la línea que conecta los lugares que reciben exactamente la misma cantidad de horas de luz solar o insolación."
+          }
+        },
+        {
+          "texto": "\"Temperatura\" = grado de calor atmosférico.",
+          "pregunta": {
+            "q": "¿Qué es la temperatura atmosférica?",
+            "opts": [
+              "La cantidad de vapor de agua.",
+              "El grado de calor atmosférico.",
+              "El nivel de radiación ultravioleta."
+            ],
+            "correct": 1,
+            "explicacion": "La temperatura es el elemento del clima que indica la cantidad de energía cinética (calor) contenida en el aire de la atmósfera en un momento y lugar determinados."
+          }
+        },
+        {
+          "texto": "\"Termómetro\" = instrumento que mide temperatura.",
+          "pregunta": {
+            "q": "¿Qué instrumento se emplea para medir la temperatura?",
+            "opts": [
+              "El barómetro.",
+              "El termómetro.",
+              "El pirómetro."
+            ],
+            "correct": 1,
+            "explicacion": "El termómetro ambiental es el instrumento estándar empleado en las estaciones meteorológicas para medir el grado de calor del aire, usualmente graduado en grados Celsius o Fahrenheit."
+          }
+        },
+        {
+          "texto": "\"Isoterma\" = línea de igual temperatura.",
+          "pregunta": {
+            "q": "¿Qué puntos une una isoterma en los mapas meteorológicos?",
+            "opts": [
+              "Puntos de igual temperatura.",
+              "Puntos de diferente altitud.",
+              "Puntos de igual precipitación."
+            ],
+            "correct": 0,
+            "explicacion": "En la cartografía climática, la isoterma es la línea curva que se traza para unir todos los puntos geográficos de la Tierra que registran exactamente la misma temperatura media durante un periodo establecido."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos del Clima: Humedad y Precipitaciones",
+      "puntos": [
+        {
+          "texto": "\"Humedad\" = vapor de agua en el aire.",
+          "pregunta": {
+            "q": "¿Qué representa la humedad en el estudio del clima?",
+            "opts": [
+              "El agua líquida en los lagos.",
+              "El agua congelada en los glaciares.",
+              "El vapor de agua en el aire."
+            ],
+            "correct": 2,
+            "explicacion": "La humedad atmosférica es la cantidad de agua en estado gaseoso (vapor de agua) que se encuentra presente en las masas de aire de la atmósfera, proveniente de la evaporación y la transpiración."
+          }
+        },
+        {
+          "texto": "Humedad relativa ∈ porcentaje.",
+          "pregunta": {
+            "q": "¿En qué unidad se expresa la humedad relativa?",
+            "opts": [
+              "En porcentaje.",
+              "En gramos por metro cúbico.",
+              "En milímetros de mercurio."
+            ],
+            "correct": 0,
+            "explicacion": "La humedad relativa es la relación entre la cantidad de vapor de agua que tiene el aire y la máxima que podría contener a esa temperatura. Por ello, siempre se expresa como una proporción en porcentaje (%)."
+          }
+        },
+        {
+          "texto": "Humedad absoluta ∈ gramos por metro cúbico.",
+          "pregunta": {
+            "q": "¿En qué unidad se mide la humedad absoluta del aire?",
+            "opts": [
+              "En porcentaje.",
+              "En hectopascales.",
+              "En gramos por metro cúbico."
+            ],
+            "correct": 2,
+            "explicacion": "A diferencia de la relativa, la humedad absoluta es la medición directa de la masa real de vapor de agua contenida en un volumen de aire específico, por lo que se mide en gramos por metro cúbico (gr/m³)."
+          }
+        },
+        {
+          "texto": "\"Higrómetro\" = instrumento que mide humedad.",
+          "pregunta": {
+            "q": "¿Con qué instrumento se realiza la medición de la humedad?",
+            "opts": [
+              "Con el anemómetro.",
+              "Con el higrómetro.",
+              "Con el heliógrafo."
+            ],
+            "correct": 1,
+            "explicacion": "El higrómetro es el dispositivo meteorológico utilizado para medir el grado de humedad del aire o de otros gases, existiendo versiones mecánicas y digitales para calcular tanto la humedad relativa como la absoluta."
+          }
+        },
+        {
+          "texto": "\"Isohídrica\" = línea de igual humedad.",
+          "pregunta": {
+            "q": "¿Qué fenómeno climático representa una isolínea isohídrica?",
+            "opts": [
+              "Puntos de igual precipitación.",
+              "Puntos de igual presión atmosférica.",
+              "Puntos de igual humedad."
+            ],
+            "correct": 2,
+            "explicacion": "En climatología, las líneas isohídricas son aquellas que se dibujan en un mapa para conectar todas las zonas o puntos geográficos que presentan el mismo nivel de humedad atmosférica."
+          }
+        },
+        {
+          "texto": "\"Precipitaciones\" = retorno de agua atmosférica.",
+          "pregunta": {
+            "q": "¿Qué proceso define a las precipitaciones?",
+            "opts": [
+              "La evaporación del agua superficial.",
+              "El retorno de agua atmosférica.",
+              "La formación de humedad absoluta."
+            ],
+            "correct": 1,
+            "explicacion": "La precipitación es cualquier forma de hidrometeoro que cae de la atmósfera y llega a la superficie terrestre. Representa la fase del ciclo del agua donde el vapor condensado retorna a la tierra, ya sea en forma líquida (lluvia) o sólida (nieve, granizo)."
+          }
+        },
+        {
+          "texto": "\"Pluviómetro\" = instrumento que mide precipitaciones.",
+          "pregunta": {
+            "q": "¿Qué instrumento se encarga de medir las precipitaciones?",
+            "opts": [
+              "El higrómetro.",
+              "El pluviómetro.",
+              "El barómetro."
+            ],
+            "correct": 1,
+            "explicacion": "El pluviómetro es un recipiente cilíndrico graduado en milímetros (mm) que se utiliza en las estaciones meteorológicas para recolectar y medir la cantidad de agua caída (precipitación) en un lugar y tiempo determinados."
+          }
+        },
+        {
+          "texto": "\"Isoyetas\" = líneas de igual precipitación.",
+          "pregunta": {
+            "q": "¿Qué puntos geográficos une una isoyeta?",
+            "opts": [
+              "Líneas de igual radiación.",
+              "Líneas de igual precipitación.",
+              "Líneas de igual temperatura."
+            ],
+            "correct": 1,
+            "explicacion": "Las isoyetas son las curvas dibujadas en un mapa meteorológico que conectan los puntos de la superficie terrestre donde se ha registrado exactamente la misma cantidad de precipitación en un periodo de tiempo dado."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de Precipitaciones",
+      "puntos": [
+        {
+          "texto": "Precipitación advectiva ∈ costa centro-sur.",
+          "pregunta": {
+            "q": "¿En qué región del Perú es característica la precipitación advectiva?",
+            "opts": [
+              "En la selva.",
+              "En la costa centro-sur.",
+              "En la sierra norte."
+            ],
+            "correct": 1,
+            "explicacion": "Las precipitaciones advectivas ocurren por el desplazamiento horizontal de masas de aire frío y húmedo que se condensan. En Perú, son características de la costa centro y sur, donde el aire sobre la fría Corriente de Humboldt genera densas neblinas y garúas."
+          }
+        },
+        {
+          "texto": "Precipitación advectiva ✓ nubes \"estratos\".",
+          "pregunta": {
+            "q": "¿Qué tipo de nubes están asociadas a la precipitación advectiva?",
+            "opts": [
+              "Nubes estratos.",
+              "Nubes cúmulo nimbos.",
+              "Nubes cirros."
+            ],
+            "correct": 0,
+            "explicacion": "Las nubes estratos son capas nubosas bajas, uniformes y grises que suelen cubrir todo el cielo. Están directamente relacionadas con las masas de aire advectivas y son las responsables de producir la llovizna fina o garúa, muy común en la costa peruana central."
+          }
+        },
+        {
+          "texto": "Precipitación convectiva ∈ costa norte.",
+          "pregunta": {
+            "q": "¿En qué zona se da principalmente la precipitación convectiva según el material?",
+            "opts": [
+              "En la costa centro-sur.",
+              "En la región andina.",
+              "En la costa norte."
+            ],
+            "correct": 2,
+            "explicacion": "La precipitación convectiva se genera por el rápido ascenso de aire cálido y húmedo que se enfría en altura. Este fenómeno es típico de zonas cálidas como la costa norte del Perú, originando lluvias intensas de corta duración, como los chubascos."
+          }
+        },
+        {
+          "texto": "Precipitación orográfica ∈ región \"selva\".",
+          "pregunta": {
+            "q": "¿En qué región natural es frecuente la precipitación orográfica?",
+            "opts": [
+              "En la costa sur.",
+              "En la selva.",
+              "En los desiertos."
+            ],
+            "correct": 1,
+            "explicacion": "La precipitación orográfica se produce cuando una masa de aire húmedo choca contra una barrera montañosa, viéndose obligada a ascender y enfriarse. Es sumamente frecuente en la vertiente oriental de los Andes, originando las copiosas lluvias de la selva peruana."
+          }
+        },
+        {
+          "texto": "Precipitación orográfica ✓ nubes cúmulo nimbos.",
+          "pregunta": {
+            "q": "¿Qué tipo de nubes generan las intensas lluvias orográficas?",
+            "opts": [
+              "Nubes cirros y altostratos.",
+              "Nubes cúmulo nimbos.",
+              "Nubes estratos bajos."
+            ],
+            "correct": 1,
+            "explicacion": "El fuerte ascenso forzado del aire húmedo por la pendiente de las montañas propicia un gran desarrollo vertical de las nubes, formando gigantescos cúmulo nimbos. Estas nubes están cargadas de abundante humedad y producen lluvias torrenciales y tormentas eléctricas."
+          }
+        },
+        {
+          "texto": "Aire frío y cálido ⇒ precipitación frontal.",
+          "pregunta": {
+            "q": "¿Qué interacción de masas de aire origina la precipitación frontal?",
+            "opts": [
+              "El choque entre aire frío y cálido.",
+              "El ascenso vertical de aire caliente.",
+              "El choque de dos masas de aire frío."
+            ],
+            "correct": 0,
+            "explicacion": "La precipitación frontal ocurre exclusivamente en la zona de contacto (frente) donde colisionan dos masas de aire con diferentes temperaturas y densidades (una fría y una cálida). El aire frío actúa como cuña, obligando al aire cálido a ascender, enfriarse y condensarse en lluvias prolongadas."
+          }
+        }
+      ]
+    }
+  ]
+}
