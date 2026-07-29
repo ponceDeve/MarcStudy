@@ -1,13 +1,14 @@
 /* ============================================================
-   TOKENS — Sistema de diseño en modo claro (único tema)
+   TOKENS — Sistema de diseño en modo oscuro (único tema)
    ------------------------------------------------------------
-   Pensado para sesiones largas de estudio, evitando el blanco
-   puro (#fff) y el negro puro (#000): ambos generan el contraste
-   más extremo posible y son la causa más común de fatiga visual
-   en pantallas, sobre todo para ojos con astigmatismo.
+   Modo oscuro pero diseñado para astigmatismo: nunca negro puro
+   + texto blanco puro, porque esa combinación es la que más
+   "halación" produce (halos/glow en los bordes de las letras).
+   Se usa gris oscuro cálido (~#1a1815, rango Material/Apple
+   #121212-#1e1e1e) + texto hueso (~#e6e1d3, no #fff), y los
+   acentos van desaturados/aclarados para no vibrar sobre el
+   fondo oscuro.
 
-   Base: "oat/hueso" cálido, saturación < 15% → lee como neutro,
-   no como "papel fluorescente".
    Acento principal: salvia (verde grisáceo) → asociado en teoría
    del color con calma, enfoque y constancia; funciona bien en
    apps de estudio/hábitos sin la carga de alerta que trae el rojo
@@ -19,50 +20,54 @@
    ============================================================ */
 
 :root {
-  /* Fondos y superficies (oat cálido, nunca blanco puro, tono medio
-     -no bordeando el blanco- para no encandilar) */
-  --bg: #e8e2d3;
-  --surface: #efe9da;
-  --surface-alt: #ddd4bd;
-  --surface-hover: #d0c5a8;
-  --border: #cabb9c;
-  --border-strong: #b0a082;
+  /* Fondos y superficies — gris oscuro cálido, NUNCA negro puro:
+     el negro puro + texto blanco puro es la combinación que más
+     halación (halos/glow en los bordes) produce en astigmatismo.
+     Rango recomendado ~#121212-#1e1e1e (Material/Apple); aquí con
+     un tinte cálido en vez de gris frío. */
+  --bg: #1a1815;
+  --surface: #221f1b;
+  --surface-alt: #2c2822;
+  --surface-hover: #38332b;
+  --border: #453f35;
+  --border-strong: #5a5346;
 
-  /* Texto (carbón cálido, nunca negro puro) */
-  --ink: #2b2c25;
-  --ink-soft: #52534a;
-  --ink-faint: #7c7a68;
-  --ink-on-primary: #ffffff;
+  /* Texto hueso, NUNCA blanco puro (#fff bleed/glow sobre fondo
+     oscuro) — contraste alto (~15:1) pero no al máximo posible */
+  --ink: #e6e1d3;
+  --ink-soft: #b9b3a1;
+  --ink-faint: #8b8574;
+  --ink-on-primary: #17140f;
 
-  /* Color primario — salvia (calma / enfoque), más oscuro para que
-     el texto blanco tenga contraste real, no solo decorativo */
-  --primary: #4f7259;
-  --primary-dark: #3a5442;
-  --primary-light: #729278;
-  --primary-bg: #d7e1d3;
+  /* Color primario — salvia, aclarada y algo desaturada para que
+     se vea bien sobre fondo oscuro sin vibrar/quemar */
+  --primary: #7ea987;
+  --primary-dark: #628a6c;
+  --primary-light: #a3c4a9;
+  --primary-bg: #26362b;
 
   /* Color secundario — azul grisáceo (estructura / confianza) */
-  --secondary: #4d6f8c;
-  --secondary-dark: #385267;
-  --secondary-bg: #cddbe4;
+  --secondary: #7fa3bd;
+  --secondary-dark: #5f829c;
+  --secondary-bg: #24313b;
 
   /* Acento — terracota apagada (uso puntual, nunca fondos grandes) */
-  --accent: #b06a4d;
-  --accent-dark: #8f5138;
-  --accent-bg: #ecd7c7;
+  --accent: #cf9270;
+  --accent-dark: #b0724f;
+  --accent-bg: #3b2c22;
 
   /* Estado */
-  --danger: #a04e40;
-  --danger-dark: #833d32;
-  --danger-bg: #ecd2ca;
-  --success: #4f7259;
-  --success-bg: #d7e1d3;
-  --warning: #a67a30;
-  --warning-bg: #ecdcb8;
+  --danger: #c98676;
+  --danger-dark: #a8695a;
+  --danger-bg: #3a2622;
+  --success: #7ea987;
+  --success-bg: #26362b;
+  --warning: #cfab5f;
+  --warning-bg: #3a301c;
 
   /* Overlay (tinte cálido, no negro puro) */
-  --overlay: rgba(43, 44, 37, 0.5);
-  --overlay-strong: rgba(43, 44, 37, 0.78);
+  --overlay: rgba(10, 9, 7, 0.55);
+  --overlay-strong: rgba(10, 9, 7, 0.82);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -71,9 +76,9 @@
 
   /* Sombras suaves — mucho menos opacas que en modo oscuro,
      porque sobre fondo claro una sombra fuerte se ve como mancha */
-  --shadow-sm: 0 1px 3px rgba(43, 44, 37, 0.10);
-  --shadow-md: 0 6px 16px rgba(43, 44, 37, 0.13);
-  --shadow-lg: 0 14px 36px rgba(43, 44, 37, 0.18);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
 
   --font-body: "Inter", sans-serif;
   --font-display: "Baloo 2", sans-serif;
