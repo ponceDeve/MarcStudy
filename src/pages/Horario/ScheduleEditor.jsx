@@ -119,6 +119,11 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           display: flex;
           flex-direction: column;
           gap: 16px;
+          scrollbar-width: none; /* Oculta la barra */
+          -ms-overflow-style: none; /* IE y Edge antiguo */
+        }
+        .editor-card::-webkit-scrollbar {
+          display: none;
         }
         .editor-titulo-row {
           display: flex;

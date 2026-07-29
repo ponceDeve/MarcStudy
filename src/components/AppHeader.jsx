@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 // Header compacto compartido entre el inicio de Mi Estudio, Pomodoro y
 // Repaso. A diferencia del TopBar de dentro de un tema, este NO tiene
@@ -19,6 +20,7 @@ export default function AppHeader({
   onEditarHorario = null,
 }) {
   const [configOpen, setConfigOpen] = useState(false);
+  const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
 
   const botones = [
     ...(showHome
@@ -64,7 +66,7 @@ export default function AppHeader({
   return (
     <div className="topbar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 15px" }}>
       <a href={url("/")} className="topbar__title" style={{ display: "flex", flexDirection: "column", justifyContent: "center", textDecoration: "none" }}>
-        <span className="topbar__curso">Mi Estudio</span>
+        <span className="topbar__curso">{nombreUsuario || "Mi Estudio"}</span>
       </a>
 
       <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
