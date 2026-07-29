@@ -1,0 +1,557 @@
+{
+  "curso": "Geografía",
+  "tema": "Geodesia: Líneas imaginarias y coordenadas",
+  "glosario": {
+    "Geodesia": "Ciencia que estudia dimensiones mayores terrestres.",
+    "Eratóstenes": "Estudioso considerado padre de la Geodesia.",
+    "Eje terrestre": "Línea imaginaria de rotación del planeta.",
+    "Ecuador": "Círculo máximo perpendicular al eje terrestre.",
+    "Latitud": "Distancia angular desde el Ecuador terrestre.",
+    "Longitud": "Distancia angular desde el meridiano base.",
+    "Trópicos": "Paralelos de máxima incidencia solar vertical.",
+    "Solsticios": "Momentos de mayor inclinación del Sol.",
+    "Meridianos": "Semicírculos imaginarios trazados entre los polos.",
+    "Antimeridiano": "Meridiano opuesto al de Greenwich.",
+    "Coordenadas": "Puntos de intersección para ubicación geográfica.",
+    "Antecos": "Puntos situados en el mismo meridiano.",
+    "Periecos": "Puntos situados en el mismo paralelo.",
+    "Antípodas": "Puntos en extremos opuestos del planeta.",
+    "=": "Define",
+    "→": "Produce",
+    "↓": "Disminuye",
+    "≈": "Similar"
+  },
+  "theory": [
+    {
+      "titulo": "Definición de Geodesia",
+      "puntos": [
+        {
+          "texto": "\"Geodesia\" = estudia dimensiones terrestres mayores a 25 km.",
+          "pregunta": {
+            "q": "¿A partir de qué dimensión territorial entra al campo de estudio de la Geodesia?",
+            "opts": [
+              "Mayores a 10 km",
+              "Mayores a 25 km",
+              "Menores a 25 km"
+            ],
+            "correct": 1,
+            "explicacion": "La Geodesia se encarga del estudio y representación matemática de la forma y superficie de la Tierra. A diferencia de la Topografía, que asume la superficie terrestre como plana para distancias cortas, la Geodesia se aplica en levantamientos mayores a 25 km, pues a partir de esta magnitud es matemáticamente indispensable considerar la curvatura terrestre para evitar errores de medición."
+          }
+        },
+        {
+          "texto": "\"Geodesia\" → atribuida a \"Eratóstenes\".",
+          "pregunta": {
+            "q": "¿A qué personaje histórico se le atribuye el origen del estudio de la Geodesia?",
+            "opts": [
+              "Eratóstenes",
+              "Ptolomeo",
+              "Galileo Galilei"
+            ],
+            "correct": 0,
+            "explicacion": "Eratóstenes de Cirene es considerado el padre de la Geodesia. Fue el primero en calcular con notable precisión la circunferencia de la Tierra en la antigüedad (alrededor del 240 a.C.), utilizando la trigonometría y midiendo el ángulo de las sombras proyectadas por el Sol en dos ciudades distintas (Siena y Alejandría) durante el solsticio de verano."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "El Eje Terrestre",
+      "puntos": [
+        {
+          "texto": "\"Eje terrestre\" = línea imaginaria más importante.",
+          "pregunta": {
+            "q": "¿Cómo es considerado el eje terrestre dentro de las líneas imaginarias?",
+            "opts": [
+              "Una línea secundaria",
+              "La línea imaginaria más importante",
+              "Un paralelo menor"
+            ],
+            "correct": 1,
+            "explicacion": "El eje terrestre o eje polar es la línea imaginaria fundamental en Geodesia porque es el eje alrededor del cual la Tierra realiza su movimiento de rotación. Todas las demás líneas imaginarias (ecuador, paralelos, meridianos) se trazan tomando como referencia matemática la posición y la inclinación de este eje."
+          }
+        },
+        {
+          "texto": "\"Eje terrestre\" → pasa por el centro terrestre.",
+          "pregunta": {
+            "q": "¿Por qué sector de la estructura del planeta pasa el eje terrestre?",
+            "opts": [
+              "Solo por la corteza",
+              "Por el centro terrestre",
+              "Por la atmósfera externa"
+            ],
+            "correct": 1,
+            "explicacion": "Al ser el eje de rotación del planeta, esta línea recta imaginaria atraviesa todo el diámetro polar, pasando exactamente por el núcleo o centro geométrico de la Tierra, conectando ambos polos geográficos verdaderos."
+          }
+        },
+        {
+          "texto": "\"Eje terrestre\" → inclinación 23°27' respecto a vertical.",
+          "pregunta": {
+            "q": "¿Cuál es la inclinación del eje terrestre respecto a la línea vertical?",
+            "opts": [
+              "23°27'",
+              "66°33'",
+              "90°00'"
+            ],
+            "correct": 0,
+            "explicacion": "El eje de rotación de la Tierra no es completamente vertical. Presenta una inclinación constante de 23°27' (veintitrés grados con veintisiete minutos) respecto a la línea normal o vertical al plano de la órbita terrestre. Esta inclinación es la causa principal de que existan las estaciones del año."
+          }
+        },
+        {
+          "texto": "\"Eje terrestre\" → inclinación 66°33' respecto a eclíptica.",
+          "pregunta": {
+            "q": "¿Qué grado de inclinación presenta el eje terrestre respecto al plano de la eclíptica?",
+            "opts": [
+              "23°27'",
+              "45°00'",
+              "66°33'"
+            ],
+            "correct": 2,
+            "explicacion": "El plano de la eclíptica es la trayectoria geométrica que describe la Tierra en su movimiento de traslación alrededor del Sol. El eje terrestre forma un ángulo de 66°33' con este plano. Matemáticamente, este ángulo es el complemento de la inclinación respecto a la vertical (90° - 23°27' = 66°33')."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Paralelos Terrestres",
+      "puntos": [
+        {
+          "texto": "\"Paralelos\" = planos horizontales imaginarios.",
+          "pregunta": {
+            "q": "¿Qué orientación espacial tienen los paralelos?",
+            "opts": [
+              "Son planos horizontales",
+              "Son líneas verticales",
+              "Son diagonales oblicuas"
+            ],
+            "correct": 0,
+            "explicacion": "Los paralelos son círculos menores imaginarios que se trazan de forma perpendicular al eje de rotación terrestre. Por lo tanto, se representan como planos horizontales paralelos al Ecuador. Al ser círculos completos, cada uno abarca 360 grados."
+          }
+        },
+        {
+          "texto": "Tamaño de \"paralelos\" ↓ al acercarse a polos.",
+          "pregunta": {
+            "q": "¿Qué sucede con el diámetro de los paralelos al aproximarse a los polos?",
+            "opts": [
+              "Se mantiene constante",
+              "Aumenta",
+              "Disminuye"
+            ],
+            "correct": 2,
+            "explicacion": "Dado que la Tierra es una esfera achatada en los polos, el círculo máximo es el Ecuador. A medida que trazamos paralelos hacia el norte o el sur, la circunferencia del planeta se reduce, por lo que el tamaño de estos anillos imaginarios disminuye progresivamente hasta convertirse en un punto (0 km) en los polos geográficos."
+          }
+        },
+        {
+          "texto": "\"Paralelos\" → indican la \"latitud\".",
+          "pregunta": {
+            "q": "¿Qué coordenada geográfica permiten establecer los paralelos?",
+            "opts": [
+              "La altitud",
+              "La longitud",
+              "La latitud"
+            ],
+            "correct": 2,
+            "explicacion": "Los paralelos sirven como líneas de referencia para determinar la latitud de cualquier punto en la superficie terrestre. La latitud mide la distancia angular norte o sur desde el Ecuador (0°) hasta los polos (90°), facilitando la ubicación climática y geográfica."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "El Ecuador Terrestre",
+      "puntos": [
+        {
+          "texto": "\"Ecuador\" ≈ \"línea equinoccial\".",
+          "pregunta": {
+            "q": "¿Con qué otro nombre se le conoce al Ecuador terrestre?",
+            "opts": [
+              "Línea de los polos",
+              "Línea equinoccial",
+              "Línea de fecha"
+            ],
+            "correct": 1,
+            "explicacion": "Se le llama \"línea equinoccial\" porque durante los equinoccios (primavera y otoño), los rayos del Sol caen de manera completamente perpendicular sobre el Ecuador. En esas fechas, el día y la noche tienen exactamente la misma duración (12 horas) en casi todo el planeta."
+          }
+        },
+        {
+          "texto": "\"Ecuador\" → divide Tierra en dos hemisferios.",
+          "pregunta": {
+            "q": "¿Cuál es la función divisoria del Ecuador respecto a la Tierra?",
+            "opts": [
+              "La divide en occidente y oriente",
+              "La divide en dos hemisferios",
+              "La divide en cuatro cuadrantes"
+            ],
+            "correct": 1,
+            "explicacion": "El Ecuador actúa como un plano bisector que corta a la Tierra exactamente por la mitad, generando dos mitades iguales o hemisferios: el Hemisferio Norte (boreal o septentrional) y el Hemisferio Sur (austral o meridional)."
+          }
+        },
+        {
+          "texto": "\"Ecuador\" = paralelo de mayor extensión.",
+          "pregunta": {
+            "q": "¿Cuál es el paralelo más grande de la Tierra?",
+            "opts": [
+              "El Trópico de Cáncer",
+              "El Ecuador",
+              "El Círculo Polar Ártico"
+            ],
+            "correct": 1,
+            "explicacion": "Al trazarse en la zona más ensanchada de la Tierra, el Ecuador es el único paralelo que forma un círculo máximo, teniendo una longitud aproximada de 40,075 kilómetros. Todos los demás paralelos son círculos menores."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Paralelos Menores Importantes",
+      "puntos": [
+        {
+          "texto": "\"Trópicos\" = límite de incidencia solar vertical.",
+          "pregunta": {
+            "q": "¿Qué representan los trópicos en relación a la radiación solar?",
+            "opts": [
+              "El límite de incidencia solar vertical",
+              "Zonas donde el sol nunca se oculta",
+              "El punto de mínima temperatura global"
+            ],
+            "correct": 0,
+            "explicacion": "Los trópicos (Cáncer a 23°27' Norte y Capricornio a 23°27' Sur) marcan los límites extremos en la Tierra donde el Sol puede llegar a estar directamente en el cenit (es decir, incidir de manera totalmente vertical a 90°) al menos un día al año."
+          }
+        },
+        {
+          "texto": "\"Trópicos\" → determinan los \"solsticios\".",
+          "pregunta": {
+            "q": "¿Qué eventos astronómicos son determinados por la ubicación de los trópicos?",
+            "opts": [
+              "Los equinoccios",
+              "Los eclipses",
+              "Los solsticios"
+            ],
+            "correct": 2,
+            "explicacion": "Cuando los rayos solares caen perpendicularmente sobre el Trópico de Cáncer (en junio) o sobre el Trópico de Capricornio (en diciembre), se producen los solsticios. Estos eventos marcan el inicio del verano y del invierno respectivamente, y son los días de mayor desigualdad entre el día y la noche."
+          }
+        },
+        {
+          "texto": "\"Círculos polares\" → presentan \"Sol de medianoche\".",
+          "pregunta": {
+            "q": "¿Qué fenómeno característico se da en los círculos polares?",
+            "opts": [
+              "Clima tropical",
+              "Sol de medianoche",
+              "Ausencia de gravedad"
+            ],
+            "correct": 1,
+            "explicacion": "El \"Sol de medianoche\" es un fenómeno natural observable desde los círculos polares (66°33' N y S) hasta los polos. En verano, debido a la inclinación del eje terrestre, el Sol no se oculta bajo el horizonte durante al menos 24 horas continuas (como en regiones de Alaska, Noruega y Rusia)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Meridianos",
+      "puntos": [
+        {
+          "texto": "\"Meridianos\" = semicírculos verticales de polo a polo.",
+          "pregunta": {
+            "q": "¿Cómo se describen geométricamente los meridianos?",
+            "opts": [
+              "Semicírculos verticales de polo a polo",
+              "Círculos completos concéntricos",
+              "Planos horizontales secantes"
+            ],
+            "correct": 0,
+            "explicacion": "A diferencia de los paralelos que son círculos completos, un meridiano es solo un arco de 180 grados (un semicírculo). Nace en un polo geográfico, desciende verticalmente por la superficie del planeta, y termina en el polo opuesto."
+          }
+        },
+        {
+          "texto": "Todos los \"meridianos\" = igual tamaño.",
+          "pregunta": {
+            "q": "¿Qué característica de tamaño tienen los meridianos entre sí?",
+            "opts": [
+              "Disminuyen hacia el este",
+              "Son de igual tamaño",
+              "Aumentan hacia el ecuador"
+            ],
+            "correct": 1,
+            "explicacion": "Como todos los meridianos recorren la misma distancia desde el Polo Norte hasta el Polo Sur siguiendo la curvatura terrestre, todos tienen exactamente la misma longitud (aproximadamente 20,004 km cada uno), sin importar su ubicación."
+          }
+        },
+        {
+          "texto": "\"Meridianos\" → indican \"longitud\" y hora.",
+          "pregunta": {
+            "q": "¿Qué datos geográficos permiten establecer los meridianos?",
+            "opts": [
+              "Latitud y estaciones",
+              "Longitud y hora",
+              "Altitud y clima"
+            ],
+            "correct": 1,
+            "explicacion": "Los meridianos sirven para medir la Longitud (distancia en grados hacia el Este u Oeste desde el meridiano base). Además, debido al movimiento de rotación de la Tierra, los meridianos rigen los husos horarios; es decir, determinan la hora civil internacional de cada territorio."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Meridianos Principales",
+      "puntos": [
+        {
+          "texto": "\"Meridiano de Greenwich\" = meridiano base o cero.",
+          "pregunta": {
+            "q": "¿Qué grado le corresponde al Meridiano de Greenwich?",
+            "opts": [
+              "Meridiano de 180°",
+              "Meridiano cero o base",
+              "Meridiano de 90°"
+            ],
+            "correct": 1,
+            "explicacion": "El Meridiano de Greenwich ostenta la coordenada de 0° de longitud. Fue establecido internacionalmente en 1884 como la línea de referencia principal a partir de la cual se miden todas las longitudes hacia el hemisferio oriental u occidental del mundo."
+          }
+        },
+        {
+          "texto": "\"Meridiano de Greenwich\" → cruza Europa y África.",
+          "pregunta": {
+            "q": "¿Qué continentes son atravesados por el Meridiano de Greenwich según los apuntes?",
+            "opts": [
+              "Europa y África",
+              "América y Asia",
+              "Oceanía y Antártida"
+            ],
+            "correct": 0,
+            "explicacion": "En su recorrido de norte a sur, el Meridiano de Greenwich atraviesa países de Europa (como Reino Unido, Francia y España) y del continente africano (como Argelia, Malí y Ghana), hasta llegar al océano Antártico."
+          }
+        },
+        {
+          "texto": "\"Antimeridiano\" = meridiano de 180°.",
+          "pregunta": {
+            "q": "¿A qué grado corresponde la ubicación del Antimeridiano?",
+            "opts": [
+              "Meridiano de 0°",
+              "Meridiano de 90°",
+              "Meridiano de 180°"
+            ],
+            "correct": 2,
+            "explicacion": "El Antimeridiano es el semicírculo opuesto a Greenwich. Ambos forman un círculo completo. Al ubicarse a 180 grados de distancia del meridiano base, determina el límite máximo de la longitud este y oeste en el planeta."
+          }
+        },
+        {
+          "texto": "\"Antimeridiano\" → marca el cambio de fecha.",
+          "pregunta": {
+            "q": "¿Qué efecto temporal ocurre al cruzar el Antimeridiano?",
+            "opts": [
+              "El cambio de estación",
+              "El cambio de hora diurna",
+              "El cambio de fecha"
+            ],
+            "correct": 2,
+            "explicacion": "Conocida como la Línea Internacional de Cambio de Fecha, cruzar el antimeridiano implica un ajuste de un día calendario completo. Si se viaja cruzándolo hacia el este se \"gana\" o repite un día, y si se viaja hacia el oeste, se salta un día al futuro."
+          }
+        },
+        {
+          "texto": "\"Antimeridiano\" = línea desviada y quebrada.",
+          "pregunta": {
+            "q": "¿Cuál es la forma cartográfica del Antimeridiano?",
+            "opts": [
+              "Es perfectamente recta",
+              "Es una línea horizontal",
+              "Es una línea desviada y quebrada"
+            ],
+            "correct": 2,
+            "explicacion": "A diferencia de un meridiano matemático perfecto, la Línea Internacional de Cambio de Fecha se dibuja quebrada en los mapas políticos (desviándose al este o al oeste de los 180°) para no atravesar países o archipiélagos habitados, evitando así que un mismo territorio tenga dos fechas distintas simultáneamente (por ejemplo, en el estrecho de Bering)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Hemisferios Terrestres",
+      "puntos": [
+        {
+          "texto": "\"Hemisferio Norte\" ≈ boreal o septentrional.",
+          "pregunta": {
+            "q": "¿Qué otros nombres recibe el Hemisferio Norte?",
+            "opts": [
+              "Austral o meridional",
+              "Boreal o septentrional",
+              "Marítimo u occidental"
+            ],
+            "correct": 1,
+            "explicacion": "En geografía, los términos \"boreal\" y \"septentrional\" son sinónimos formales de \"Norte\". Estos términos se derivan del latín y el griego clásico referidos a los vientos del norte y a las siete estrellas (septem triones) de la Osa Mayor, visible en este hemisferio."
+          }
+        },
+        {
+          "texto": "\"Hemisferio Norte\" ≈ hemisferio continental.",
+          "pregunta": {
+            "q": "¿Por qué característica física se le conoce al Hemisferio Norte?",
+            "opts": [
+              "Por ser el hemisferio oceánico",
+              "Por ser el hemisferio continental",
+              "Por carecer de masa terrestre"
+            ],
+            "correct": 1,
+            "explicacion": "Se le llama \"hemisferio continental\" porque contiene la mayor cantidad de masa terrestre del planeta, agrupando a toda América del Norte, Europa, casi toda Asia y gran parte de África, concentrando allí la mayor parte de la población mundial."
+          }
+        },
+        {
+          "texto": "\"Hemisferio Sur\" ≈ austral o meridional.",
+          "pregunta": {
+            "q": "¿Cuáles son los términos equivalentes para el Hemisferio Sur?",
+            "opts": [
+              "Austral o meridional",
+              "Septentrional o boreal",
+              "Oriental o levante"
+            ],
+            "correct": 0,
+            "explicacion": "Los términos \"austral\" (del latín auster, el viento del sur) y \"meridional\" (referente al mediodía solar) son las nomenclaturas geográficas estándar para referirse a cualquier punto, región o hemisferio ubicado al sur del ecuador terrestre."
+          }
+        },
+        {
+          "texto": "\"Hemisferio Sur\" ≈ hemisferio marítimo.",
+          "pregunta": {
+            "q": "¿Con qué denominación descriptiva se conoce al Hemisferio Sur?",
+            "opts": [
+              "Hemisferio terrestre",
+              "Hemisferio marítimo",
+              "Hemisferio glaciar"
+            ],
+            "correct": 1,
+            "explicacion": "Se denomina \"hemisferio marítimo\" porque aproximadamente el 80% de su superficie está cubierta por océanos (Pacífico sur, Atlántico sur, Índico y Antártico), teniendo una proporción de masa de agua mucho mayor en comparación con la de los continentes (parte de Sudamérica, África, Oceanía y Antártida)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Zonas Térmicas",
+      "puntos": [
+        {
+          "texto": "\"Zona tropical\" = ubicada entre los \"trópicos\".",
+          "pregunta": {
+            "q": "¿Dónde se localiza geográficamente la zona tropical?",
+            "opts": [
+              "Entre el trópico y el polo",
+              "Solo en el hemisferio norte",
+              "Ubicada entre los trópicos"
+            ],
+            "correct": 2,
+            "explicacion": "La zona tropical o intertropical se ubica en la banda central de la Tierra, delimitada por el Trópico de Cáncer al norte y el Trópico de Capricornio al sur. Es la región que recibe la mayor cantidad de radiación solar directa durante todo el año, lo que genera climas cálidos."
+          }
+        },
+        {
+          "texto": "\"Zona templada\" = entre trópico y círculo polar.",
+          "pregunta": {
+            "q": "¿Qué líneas imaginarias delimitan la zona templada?",
+            "opts": [
+              "Entre el ecuador y el trópico",
+              "Entre un trópico y un círculo polar",
+              "Entre el círculo polar y el polo"
+            ],
+            "correct": 1,
+            "explicacion": "Existen dos zonas templadas en el mundo (norte y sur). Se extienden desde las latitudes de los trópicos (23°27') hasta los círculos polares (66°33'). Se caracterizan por presentar una marcada estacionalidad climática a lo largo del año (primavera, verano, otoño, invierno)."
+          }
+        },
+        {
+          "texto": "\"Zona fría\" = desde círculo polar a polos.",
+          "pregunta": {
+            "q": "¿Desde dónde abarca la extensión de la zona fría?",
+            "opts": [
+              "Desde el ecuador a los trópicos",
+              "Desde el círculo polar a los polos",
+              "Desde el meridiano cero hasta el antimeridiano"
+            ],
+            "correct": 1,
+            "explicacion": "Las zonas frías o glaciales son las regiones de altas latitudes que van desde el Círculo Polar Ártico (Norte) y el Círculo Polar Antártico (Sur) hasta sus respectivos polos geográficos a 90°. Debido a la oblicuidad de los rayos solares, son las regiones más gélidas del planeta."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Posiciones Geográficas",
+      "puntos": [
+        {
+          "texto": "\"Antecos\" = puntos en el mismo meridiano.",
+          "pregunta": {
+            "q": "¿Qué característica de ubicación comparten los puntos llamados antecos?",
+            "opts": [
+              "Están en el mismo meridiano",
+              "Están en el mismo paralelo",
+              "Están diametralmente opuestos"
+            ],
+            "correct": 0,
+            "explicacion": "En la geodesia, dos puntos son 'antecos' (del griego 'los que habitan enfrente') cuando se ubican exactamente sobre la misma línea longitudinal (mismo meridiano), pero en hemisferios opuestos y a la misma distancia de latitud (ej. 30° Norte y 30° Sur en el mismo meridiano)."
+          }
+        },
+        {
+          "texto": "\"Antecos\" → presentan la misma hora.",
+          "pregunta": {
+            "q": "¿Qué fenómeno temporal coincide en los lugares que son antecos?",
+            "opts": [
+              "Presentan la misma hora",
+              "Tienen doce horas de diferencia",
+              "Tienen diferentes días del año"
+            ],
+            "correct": 0,
+            "explicacion": "Debido a que comparten el mismo meridiano (la misma longitud), los puntos antecos se rigen por el mismo huso horario. Cuando la Tierra rota, el sol cruza el cenit para ambos puntos de manera simultánea, por lo que tienen exactamente la misma hora solar y civil."
+          }
+        },
+        {
+          "texto": "\"Periecos\" = puntos en el mismo paralelo.",
+          "pregunta": {
+            "q": "¿Cómo se denominan los puntos geográficos situados sobre el mismo paralelo?",
+            "opts": [
+              "Antecos",
+              "Antípodas",
+              "Periecos"
+            ],
+            "correct": 2,
+            "explicacion": "Los 'periecos' son dos puntos de la superficie terrestre que comparten exactamente la misma latitud (se ubican en el mismo anillo horizontal o paralelo), pero se encuentran diametralmente opuestos en sus longitudes (separados por 180 grados de longitud)."
+          }
+        },
+        {
+          "texto": "\"Periecos\" → presentan la misma estación.",
+          "pregunta": {
+            "q": "¿Qué coincidencia climática temporal existe entre lugares periecos?",
+            "opts": [
+              "Presentan diferente clima base",
+              "Presentan la misma estación",
+              "Tienen estaciones invertidas"
+            ],
+            "correct": 1,
+            "explicacion": "Dado que los periecos se encuentran en la misma latitud térmica (el mismo paralelo, en el mismo hemisferio respecto al ecuador), reciben los rayos solares con el mismo grado de inclinación anual. Por ende, experimentan simultáneamente las mismas estaciones del año (por ejemplo, ambos están en verano a la vez)."
+          }
+        },
+        {
+          "texto": "\"Antípodas\" = puntos diametralmente opuestos.",
+          "pregunta": {
+            "q": "¿Qué relación espacial tienen dos puntos geográficos que son antípodas?",
+            "opts": [
+              "Son puntos diametralmente opuestos",
+              "Son puntos paralelos próximos",
+              "Comparten un mismo huso horario"
+            ],
+            "correct": 0,
+            "explicacion": "Las antípodas son dos lugares en la superficie terrestre conectados matemáticamente por una línea recta imaginaria que pasa exactamente por el centro de la Tierra. Si cavaras un agujero recto a través del núcleo terrestre, saldrías en tus antípodas."
+          }
+        },
+        {
+          "texto": "\"Antípodas\" → tienen 12 horas de diferencia.",
+          "pregunta": {
+            "q": "¿Qué diferencia horaria existe entre dos lugares que son antípodas?",
+            "opts": [
+              "0 horas",
+              "12 horas",
+              "24 horas"
+            ],
+            "correct": 1,
+            "explicacion": "Puesto que están en extremos longitudinales opuestos del planeta (una diferencia exacta de 180 grados), cuando en un punto es pleno mediodía solar porque está de cara al Sol, en su antípoda es exactamente la medianoche, lo que resulta siempre en 12 horas de diferencia."
+          }
+        },
+        {
+          "texto": "Longitud de \"antípoda\" = 180° menos longitud inicial.",
+          "pregunta": {
+            "q": "¿Cómo se halla matemáticamente la longitud de una antípoda según los apuntes?",
+            "opts": [
+              "Sumando 180° a la latitud base",
+              "Calculando 180° menos longitud inicial",
+              "Dividiendo 360° entre la longitud"
+            ],
+            "correct": 1,
+            "explicacion": "Para calcular las coordenadas de una antípoda, la regla indica que la latitud se mantiene numéricamente igual pero se invierte el hemisferio (N a S). En cuanto a la longitud, se resta el valor de la longitud inicial a 180° y se invierte la dirección (de Este a Oeste o viceversa). Por ejemplo, la antípoda de 75° W es (180° - 75°) = 105° E."
+          }
+        }
+      ]
+    }
+  ]
+}
