@@ -129,7 +129,7 @@ export default function TopBar({
             <div className="topbar__overlay-row1">
               {botones.slice(0, 3).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
-            <div className="topbar__overlay-row2">
+            <div className="topbar__overlay-row1">
               {botones.slice(3, 6).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
           </div>
