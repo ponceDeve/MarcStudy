@@ -110,8 +110,7 @@ export default function StepsWelcomeModal({ open, pasos, onFinish, labelFinal = 
           color: var(--ink-soft);
         }
         .welcome-btn.is-next {
-          background: var(--primary);
-          color: #fff;
+          /* background y color ahora vienen de .btn-primary (styles/_base.scss) */
         }
       `}</style>
 
@@ -134,7 +133,7 @@ export default function StepsWelcomeModal({ open, pasos, onFinish, labelFinal = 
               <i className="fa-solid fa-caret-left" />
             </button>
           )}
-          <button className="welcome-btn is-next" onClick={siguiente}>
+          <button className="welcome-btn is-next btn-primary" onClick={siguiente}>
             {esUltimo ? labelFinal : "Siguiente"}
           </button>
         </div>

@@ -256,9 +256,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           cursor: pointer;
         }
         .editor-pomo-btn.is-on {
-          background: var(--primary);
           border-color: var(--primary);
-          color: #fff;
         }
         .editor-nav {
           display: flex;
@@ -272,10 +270,6 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           font-weight: 700;
           font-size: 0.95rem;
           cursor: pointer;
-        }
-        .editor-btn.is-primary {
-          background: var(--primary);
-          color: #fff;
         }
         .editor-btn.is-primary:disabled {
           opacity: 0.4;
@@ -372,7 +366,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
                     {OPCIONES_POMODOROS.map((n) => (
                       <button
                         key={n}
-                        className={`editor-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
+                        className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
                         onClick={() => setPomodoros(n)}
                       >
                         {n}
@@ -384,7 +378,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
                       Cancelar
                     </button>
                     <button
-                      className="editor-btn is-primary"
+                      className="editor-btn is-primary btn-primary"
                       disabled={!nombreCurso.trim() || nombreExcedido}
                       onClick={guardarEdicionCurso}
                     >
@@ -444,7 +438,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
               {OPCIONES_POMODOROS.map((n) => (
                 <button
                   key={n}
-                  className={`editor-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
+                  className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
                   onClick={() => setPomodoros(n)}
                 >
                   {n}
@@ -452,7 +446,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
               ))}
             </div>
             <button
-              className="editor-btn is-primary"
+              className="editor-btn is-primary btn-primary"
               disabled={!nombreCurso.trim() || nombreExcedido}
               onClick={confirmarAgregarCurso}
             >

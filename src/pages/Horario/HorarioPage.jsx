@@ -697,24 +697,19 @@ export default function HorarioPage() {
               display: flex;
               align-items: center;
               justify-content: center;
-              background: rgba(4, 8, 12, 0.92);
+              background: var(--overlay-strong);
               backdrop-filter: blur(6px);
             }
             .gate-btn {
               padding: 18px 32px;
               border-radius: var(--radius-md);
-              border: none;
-              background: var(--primary);
-              color: #fff;
-              font-weight: 700;
               font-size: 1.05rem;
-              cursor: pointer;
               display: flex;
               align-items: center;
               gap: 10px;
             }
           `}</style>
-          <button className="gate-btn" onClick={() => setSetupOpen(true)}>
+          <button className="gate-btn btn-primary" onClick={() => setSetupOpen(true)}>
             <i className="fa-solid fa-calendar-alt" /> Configurar Pomodoro
           </button>
         </div>

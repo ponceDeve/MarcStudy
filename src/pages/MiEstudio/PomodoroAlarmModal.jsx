@@ -13,7 +13,7 @@ export default function PomodoroAlarmModal({ open, label, onIrAPomodoro }) {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: rgba(0,0,0,0.4); /* opcional: fondo semitransparente */
+          background: var(--overlay-strong);
           z-index: 9999;
         }
         .pomo-alarm-card {
@@ -38,28 +38,24 @@ export default function PomodoroAlarmModal({ open, label, onIrAPomodoro }) {
           font-weight: 700;
           color: var(--ink);
         }
+        .pomo-alarm-label {
+          margin: 0;
+          color: var(--ink-soft);
+          font-size: 0.9rem;
+        }
         .pomo-alarm-btn {
           width: 100%;
           padding: 14px;
           border-radius: var(--radius-md);
-          border: none;
-          background: var(--primary);
-          color: #fff;
-          font-weight: 700;
           font-size: 0.95rem;
-          cursor: pointer;
         }
       `}</style>
 
       <div className="pomo-alarm-card">
         <i className="fa-solid fa-bell pomo-alarm-icon" />
         <h2 className="pomo-alarm-titulo">¡Se acabó el tiempo!</h2>
-        {label && (
-          <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-            {label}
-          </p>
-        )}
-        <button className="pomo-alarm-btn" onClick={onIrAPomodoro}>
+        {label && <p className="pomo-alarm-label">{label}</p>}
+        <button className="pomo-alarm-btn btn-primary" onClick={onIrAPomodoro}>
           Ir a Pomodoro
         </button>
       </div>

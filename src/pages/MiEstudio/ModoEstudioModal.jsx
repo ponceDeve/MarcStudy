@@ -47,10 +47,6 @@ export default function ModoEstudioModal({ open, onElegir }) {
           font-size: 0.95rem;
           cursor: pointer;
         }
-        .modo-estudio-btn.is-mostrar {
-          background: var(--primary);
-          color: #fff;
-        }
         .modo-estudio-btn.is-omitir {
           background: var(--surface-alt);
           color: var(--ink-soft);
@@ -64,7 +60,7 @@ export default function ModoEstudioModal({ open, onElegir }) {
           <button className="modo-estudio-btn is-omitir" onClick={() => onElegir("solo_preguntas")}>
             Omitir
           </button>
-          <button className="modo-estudio-btn is-mostrar" onClick={() => onElegir("completo")}>
+          <button className="modo-estudio-btn is-mostrar btn-primary" onClick={() => onElegir("completo")}>
             Mostrar
           </button>
         </div>

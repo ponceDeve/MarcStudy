@@ -123,9 +123,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           cursor: pointer;
         }
         .setup-dia-btn.is-on {
-          background: var(--primary);
           border-color: var(--primary);
-          color: #fff;
         }
         .setup-input {
           width: 100%;
@@ -180,9 +178,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           cursor: pointer;
         }
         .setup-pomo-btn.is-on {
-          background: var(--primary);
           border-color: var(--primary);
-          color: #fff;
         }
         .setup-nav {
           display: flex;
@@ -196,10 +192,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           font-weight: 700;
           font-size: 0.95rem;
           cursor: pointer;
-        }
-        .setup-btn.is-primary {
-          background: var(--primary);
-          color: #fff;
         }
         .setup-btn.is-primary:disabled {
           opacity: 0.4;
@@ -220,7 +212,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               {DIAS_SEMANA.map((dia) => (
                 <button
                   key={dia}
-                  className={`setup-dia-btn ${diasSeleccionados.includes(dia) ? "is-on" : ""}`}
+                  className={`setup-dia-btn ${diasSeleccionados.includes(dia) ? "is-on btn-primary" : ""}`}
                   onClick={() => toggleDia(dia)}
                 >
                   {DIA_LABELS[dia]}
@@ -234,7 +226,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 </button>
               )}
               <button
-                className="setup-btn is-primary"
+                className="setup-btn is-primary btn-primary"
                 disabled={diasSeleccionados.length === 0}
                 onClick={empezarConfiguracionCursos}
               >
@@ -280,7 +272,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               {OPCIONES_POMODOROS.map((n) => (
                 <button
                   key={n}
-                  className={`setup-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
+                  className={`setup-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
                   onClick={() => setPomodoros(n)}
                 >
                   {n}
@@ -295,7 +287,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 </button>
               )}
               <button
-                className="setup-btn is-primary"
+                className="setup-btn is-primary btn-primary"
                 disabled={!nombreCurso.trim() || nombreExcedido}
                 onClick={agregarCurso}
               >

@@ -173,10 +173,6 @@ export default function WelcomeModal({ open, onSubmit }) {
           background: var(--surface-alt);
           color: var(--ink-soft);
         }
-        .welcome-btn.is-next {
-          background: var(--primary);
-          color: #fff;
-        }
         .welcome-btn.is-next:disabled {
           opacity: 0.4;
           cursor: not-allowed;
@@ -223,7 +219,7 @@ export default function WelcomeModal({ open, onSubmit }) {
             </button>
           )}
           <button
-            className="welcome-btn is-next"
+            className="welcome-btn is-next btn-primary"
             onClick={siguiente}
             disabled={actual.nombre && !nombre.trim()}
           >
