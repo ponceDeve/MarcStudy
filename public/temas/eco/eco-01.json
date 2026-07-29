@@ -1,290 +1,358 @@
 {
   "curso": "Economía",
-  "tema": "Demanda",
+  "tema": "Economía y Economía Política",
   "glosario": {
-    "demanda": "Deseo y capacidad de adquirir bienes y servicios a distintos precios.",
-    "ceteris paribus": "Expresión latina: 'todo lo demás constante'.",
-    "sustitutos": "Bienes que compiten entre sí (uno reemplaza al otro).",
-    "complementarios": "Bienes que se usan juntos (uno depende del otro).",
-    "demanda autónoma": "Cantidad demandada cuando el precio es cero."
+    "Economía": "Administración de recursos escasos.",
+    "Referente teórico": "Conceptos que fundamentan investigaciones.",
+    "Obra cumbre": "Creación principal del autor.",
+    "Plusvalía": "Exceso de valor extraído.",
+    "Empresario": "Propietario del medio productivo.",
+    "Obrero": "Dueño de fuerza laboral.",
+    "=": "Define",
+    "✓": "Requiere",
+    "→": "Produce",
+    "⊃": "Contiene",
+    "+": "Combina"
   },
   "theory": [
     {
-      "titulo": "Demanda (Dx): Definición",
+      "titulo": "La economía como ciencia",
       "puntos": [
         {
-          "texto": "Expresa la conducta del consumidor",
+          "texto": "\"Economía\" = ciencia social.",
           "pregunta": {
-            "q": "¿Qué expresa la demanda?",
+            "q": "¿A qué campo general del conocimiento pertenece la economía?",
             "opts": [
-              "La conducta del productor",
-              "La conducta del consumidor",
-              "El costo de producción",
-              "La oferta del mercado"
+              "Ciencias formales",
+              "Ciencias naturales",
+              "Ciencias sociales"
+            ],
+            "correct": 2,
+            "explicacion": "La economía se clasifica como una ciencia social porque su objeto de estudio es el comportamiento de los seres humanos y las sociedades en la toma de decisiones."
+          }
+        },
+        {
+          "texto": "\"Economía\" ✓ administración de recursos escasos.",
+          "pregunta": {
+            "q": "¿Cuál es la condición fundamental que justifica el estudio económico?",
+            "opts": [
+              "La abundancia de capital",
+              "La administración de recursos escasos",
+              "La eliminación del dinero"
             ],
             "correct": 1,
-            "explicacion": "La demanda es un concepto centrado en quien compra: describe cómo actúan los consumidores frente a distintos precios, a diferencia de la oferta, que describe la conducta de los productores."
+            "explicacion": "El problema económico central es la escasez. La economía existe porque requiere organizar recursos limitados para satisfacer necesidades humanas ilimitadas."
           }
         },
         {
-          "texto": "Es el deseo y la capacidad de adquirir bienes y servicios (Bs y Ss) a diferentes precios",
+          "texto": "\"Economía\" → satisfacción de necesidades humanas.",
           "pregunta": {
-            "q": "¿Qué es la demanda?",
+            "q": "¿Cuál es el resultado esperado de la actividad económica?",
             "opts": [
-              "Solo el deseo de comprar",
-              "El deseo y capacidad de adquirir bienes a distintos precios",
-              "La cantidad producida",
-              "El precio fijo de un bien"
-            ],
-            "correct": 1,
-            "explicacion": "No basta con querer algo (deseo); la demanda exige también tener el dinero para comprarlo (capacidad), y varía según el precio: a menor precio, se desea/puede comprar más."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Cantidad Demandada",
-      "puntos": [
-        {
-          "texto": "Es la cantidad que un consumidor único adquiere a un precio ($P_x$) determinado",
-          "pregunta": {
-            "q": "¿Qué es la cantidad demandada?",
-            "opts": [
-              "Lo que produce una empresa",
-              "Lo que un consumidor adquiere a un precio determinado",
-              "El precio de mercado",
-              "El total de bienes disponibles"
-            ],
-            "correct": 1,
-            "explicacion": "Es un punto específico: cuánto compra un solo consumidor a un precio exacto, no la relación completa entre precio y cantidad (eso sería la demanda en general)."
-          }
-        },
-        {
-          "texto": "Tabla de demanda: cuando $P_x = 0.80$, $Q^d_x = 10$",
-          "pregunta": {
-            "q": "Según la tabla, si Px = 0.80, ¿cuánto es Qdx?",
-            "opts": ["8", "10", "5", "3"],
-            "correct": 1,
-            "explicacion": "Al precio más bajo de la tabla (0.80), la cantidad demandada es la más alta (10), reflejando la ley de la demanda: menor precio, mayor cantidad demandada."
-          }
-        },
-        {
-          "texto": "Cuando $P_x = 2.0$, $Q^d_x = 3$",
-          "pregunta": {
-            "q": "Según la tabla, si Px = 2.0, ¿cuánto es Qdx?",
-            "opts": ["10", "8", "5", "3"],
-            "correct": 3,
-            "explicacion": "Al precio más alto de la tabla (2.0), la cantidad demandada cae a su valor más bajo (3), consistente con la relación inversa entre precio y cantidad."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Precio de bienes relacionados",
-      "puntos": [
-        {
-          "texto": "Sustitutos (ej: pollo/pescado): $\\uparrow P_x \\text{ pollo} \\rightarrow \\downarrow Q^d \\text{ pollo} \\rightarrow \\uparrow D_x \\text{ pescado}$. Relación directa",
-          "pregunta": {
-            "q": "¿Qué tipo de relación hay entre bienes sustitutos como pollo y pescado?",
-            "opts": ["Inversa", "Directa", "Nula", "Ambigua"],
-            "correct": 1,
-            "explicacion": "Si sube el precio del pollo, la gente compra menos pollo y más pescado en su lugar; por eso el precio de un sustituto y la demanda del otro bien se mueven en la misma dirección (relación directa)."
-          }
-        },
-        {
-          "texto": "Complementarios (ej: auto/combustible): $\\uparrow P_{\\text{autos}} \\rightarrow \\downarrow Q^d \\text{ autos} \\rightarrow \\downarrow D_x \\text{ combustible}$. Relación inversa",
-          "pregunta": {
-            "q": "¿Qué tipo de relación hay entre bienes complementarios como auto y combustible?",
-            "opts": ["Directa", "Inversa", "Nula", "Constante"],
-            "correct": 1,
-            "explicacion": "Auto y combustible se usan juntos; si sube el precio de los autos, se compran menos autos, y por lo tanto también baja la demanda de combustible — se mueven en direcciones opuestas (relación inversa)."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Función de demanda",
-      "puntos": [
-        {
-          "texto": "Fórmula general: $D_x = f(P_x, I_c, g, y, P_s, M_d, P_b, \\dots)$ ceteris paribus",
-          "pregunta": {
-            "q": "¿Qué expresa la función de demanda?",
-            "opts": [
-              "Solo el precio del bien",
-              "La relación entre Dx y todos sus factores",
-              "El costo de producción",
-              "La oferta total"
-            ],
-            "correct": 1,
-            "explicacion": "A diferencia de mirar solo el precio, la función de demanda reconoce que la cantidad comprada depende de varios factores a la vez (precio, ingreso, gustos, moda, precios de otros bienes, etc.)."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Factores que determinan Dx",
-      "puntos": [
-        {
-          "texto": "Precio del bien ($P_x$): $\\uparrow P_x \\rightarrow \\downarrow Q^d_x$. Relación inversa",
-          "pregunta": {
-            "q": "¿Qué relación tiene el precio del bien con la cantidad demandada?",
-            "opts": ["Directa", "Inversa", "Nula", "Exponencial"],
-            "correct": 1,
-            "explicacion": "Este es el factor más directo: cuando el precio de un bien sube, los consumidores compran menos de ese mismo bien, manteniendo todo lo demás igual."
-          }
-        },
-        {
-          "texto": "Ingreso del consumidor ($I_c$): $\\uparrow I_c \\rightarrow \\uparrow D_x$. Relación directa",
-          "pregunta": {
-            "q": "¿Qué relación tiene el ingreso del consumidor con la demanda?",
-            "opts": ["Inversa", "Directa", "Nula", "No tiene relación"],
-            "correct": 1,
-            "explicacion": "Para bienes normales, cuando el consumidor gana más dinero, tiende a comprar más de ese bien, aumentando la demanda."
-          }
-        },
-        {
-          "texto": "Gustos y preferencias (g y p): relación directa",
-          "pregunta": {
-            "q": "¿Qué relación tienen los gustos y preferencias con la demanda?",
-            "opts": ["Inversa", "Directa", "Nula", "Negativa"],
-            "correct": 1,
-            "explicacion": "Si un bien se pone más de moda o gusta más a los consumidores, la demanda por ese bien aumenta, independientemente de su precio."
-          }
-        },
-        {
-          "texto": "Moda ($M_d$): relación directa",
-          "pregunta": {
-            "q": "¿Qué relación tiene la moda con la demanda?",
-            "opts": ["Inversa", "Directa", "Nula", "Aleatoria"],
-            "correct": 1,
-            "explicacion": "Cuando algo está de moda, más personas quieren comprarlo sin importar que el precio no haya cambiado, aumentando la demanda."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Función Reducida",
-      "puntos": [
-        {
-          "texto": "Fórmula: $Q^d_x = F_x(P_x)$ ceteris paribus",
-          "pregunta": {
-            "q": "¿Qué representa la función reducida de la demanda?",
-            "opts": [
-              "Qdx en función solo del precio, todo lo demás constante",
-              "Qdx en función del ingreso",
-              "El total de la oferta",
-              "El precio de equilibrio"
+              "La satisfacción de necesidades humanas",
+              "El agotamiento de los recursos",
+              "La acumulación de bienes sin uso"
             ],
             "correct": 0,
-            "explicacion": "Se le llama 'reducida' porque simplifica la función completa (que depende de muchos factores) a solo una variable: el precio, manteniendo todo lo demás constante (ceteris paribus)."
+            "explicacion": "El propósito final de administrar los recursos y realizar actividades económicas es lograr satisfacer las múltiples necesidades que tienen las personas en una sociedad."
+          }
+        },
+        {
+          "texto": "\"Adam Smith\" = padre de la economía.",
+          "pregunta": {
+            "q": "¿Quién es considerado el fundador de la economía moderna?",
+            "opts": [
+              "Karl Marx",
+              "David Ricardo",
+              "Adam Smith"
+            ],
+            "correct": 2,
+            "explicacion": "Adam Smith es reconocido históricamente como el padre de la economía moderna gracias a sus aportes sistemáticos sobre el libre mercado y la división del trabajo."
+          }
+        },
+        {
+          "texto": "\"Obra cumbre\" de Smith = La riqueza de las naciones.",
+          "pregunta": {
+            "q": "¿Cuál es el título del trabajo más importante de Adam Smith?",
+            "opts": [
+              "El capital",
+              "La riqueza de las naciones",
+              "Teoría de los sentimientos morales"
+            ],
+            "correct": 1,
+            "explicacion": "Publicada en 1776, \"Una investigación sobre la naturaleza y causa de la riqueza de las naciones\" es el pilar teórico que fundó la economía clásica."
           }
         }
       ]
     },
     {
-      "titulo": "Función de la Demanda (lineal)",
+      "titulo": "El proceso económico",
       "puntos": [
         {
-          "texto": "Fórmula: $Q^d_x = a - b(P_x)$, donde $a$ es la demanda autónoma y $b$ la variación, con pendiente negativa",
+          "texto": "\"Proceso económico\" ⊃ producción y circulación.",
           "pregunta": {
-            "q": "¿Qué representa 'a' en la función Qdx = a - b(Px)?",
+            "q": "¿Qué fases iniciales forman parte del proceso económico?",
             "opts": [
-              "El precio",
-              "La demanda autónoma",
-              "La variación",
-              "La elasticidad"
+              "Ahorro y gasto",
+              "Producción y circulación",
+              "Consumo y desecho"
             ],
             "correct": 1,
-            "explicacion": "'a' es la cantidad que se demandaría si el precio fuera cero; representa el punto de partida de la curva antes de que el precio empiece a restar cantidad."
+            "explicacion": "El proceso económico inicia con la producción (creación de bienes) y es seguida por la circulación (traslado a los mercados para su intercambio)."
           }
         },
         {
-          "texto": "Ejemplo anotado: $60 - 3(P_x)$",
+          "texto": "\"Proceso económico\" ⊃ distribución, consumo e inversión.",
           "pregunta": {
-            "q": "En el ejemplo Qdx = 60 - 3(Px), ¿cuál es la demanda autónoma?",
-            "opts": ["3", "60", "-3", "0"],
-            "correct": 1,
-            "explicacion": "El número que no está multiplicado por el precio (60) es la demanda autónoma; el 3 es la pendiente que indica cuánto baja la cantidad por cada unidad que sube el precio."
+            "q": "¿Qué etapas completan el ciclo del proceso económico?",
+            "opts": [
+              "Extracción, diseño y venta",
+              "Planificación, ejecución y control",
+              "Distribución, consumo e inversión"
+            ],
+            "correct": 2,
+            "explicacion": "Tras circular, la riqueza se reparte (distribución), se utilizan los bienes (consumo) y se destina parte del excedente a un nuevo ciclo (inversión)."
           }
         }
       ]
     },
     {
-      "titulo": "Ley de la Demanda",
+      "titulo": "Metodología y finalidad",
       "puntos": [
         {
-          "texto": "La cantidad y el precio varían en relación inversa: $\\uparrow P_x \\rightarrow \\downarrow Q^d_x$ y $\\downarrow P_x \\rightarrow \\uparrow Q^d_x$",
+          "texto": "\"Métodos de estudio\" ⊃ inductivo y deductivo.",
           "pregunta": {
-            "q": "¿Qué establece la Ley de la Demanda?",
+            "q": "¿Qué métodos lógicos clásicos emplea la economía?",
             "opts": [
-              "Precio y cantidad varían igual",
-              "Precio y cantidad varían en relación inversa",
-              "El precio siempre sube",
-              "La cantidad nunca cambia"
-            ],
-            "correct": 1,
-            "explicacion": "Esta ley es la base de todo el tema: a medida que el precio de un bien sube, los consumidores compran menos de él, y viceversa, manteniendo todo lo demás constante."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Variación de cantidad vs. Desplazamiento de la curva",
-      "puntos": [
-        {
-          "texto": "Variación de cantidad: el $P_x$ cambia (ceteris paribus se mantiene), hay deslizamiento en la misma curva",
-          "pregunta": {
-            "q": "¿Qué causa un deslizamiento sobre la misma curva de demanda?",
-            "opts": [
-              "Un cambio en el ingreso",
-              "Un cambio en el precio del bien mismo",
-              "Un cambio en la moda",
-              "Un cambio en los gustos"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando solo cambia el precio del bien (y todo lo demás se mantiene constante), el consumidor simplemente se mueve a otro punto de la misma curva ya existente, no se crea una curva nueva."
-          }
-        },
-        {
-          "texto": "Desplazamiento de la curva: el $P_x$ no cambia, se rompe el ceteris paribus (influyen otros factores como ingreso, gustos, moda)",
-          "pregunta": {
-            "q": "¿Qué causa que toda la curva de demanda se desplace?",
-            "opts": [
-              "Un cambio en el precio del bien mismo",
-              "Un cambio en factores como ingreso, gustos o moda",
-              "Nada la desplaza",
-              "Solo el paso del tiempo"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando cambia algo distinto al precio del bien mismo (como el ingreso, los gustos o la moda), la relación completa entre precio y cantidad cambia, y por eso toda la curva se mueve a una posición nueva."
-          }
-        },
-        {
-          "texto": "Expansión de la demanda: aumentan ingreso, gustos, moda, bienes relacionados",
-          "pregunta": {
-            "q": "¿Qué es una expansión de la demanda?",
-            "opts": [
-              "La curva se desplaza a la derecha por factores favorables",
-              "La curva se desplaza a la izquierda",
-              "El precio baja",
-              "La cantidad no cambia"
+              "Inductivo y deductivo",
+              "Histórico y descriptivo",
+              "Experimental y clínico"
             ],
             "correct": 0,
-            "explicacion": "Cuando factores como el ingreso o los gustos mejoran a favor del bien, los consumidores están dispuestos a comprar más a cualquier precio, desplazando toda la curva hacia la derecha."
+            "explicacion": "La economía utiliza el método inductivo (de lo particular a lo general) y el deductivo (de lo general a lo particular) para formular sus leyes."
           }
         },
         {
-          "texto": "Contracción de la demanda: disminuyen ingreso, gustos, moda, bienes relacionados",
+          "texto": "\"Métodos de estudio\" ⊃ matemático, estadístico y geográfico.",
           "pregunta": {
-            "q": "¿Qué es una contracción de la demanda?",
+            "q": "¿Qué otras herramientas metodológicas apoyan el análisis económico?",
             "opts": [
-              "La curva se desplaza a la derecha",
-              "La curva se desplaza a la izquierda por factores desfavorables",
-              "El precio sube",
-              "La cantidad aumenta"
+              "Psicológico y biológico",
+              "Matemático, estadístico y geográfico",
+              "Filosófico y ético"
             ],
             "correct": 1,
-            "explicacion": "Cuando factores como el ingreso o los gustos empeoran para el bien, los consumidores compran menos a cualquier precio, desplazando toda la curva hacia la izquierda."
+            "explicacion": "Para sustentar sus teorías con datos objetivos y modelos precisos, la economía se apoya fuertemente en las matemáticas, la estadística y la geografía."
+          }
+        },
+        {
+          "texto": "\"Finalidad teórica\" = comprender la realidad económica.",
+          "pregunta": {
+            "q": "¿Cuál es el objetivo teórico principal de la economía?",
+            "opts": [
+              "Comprender la realidad económica",
+              "Eliminar las clases sociales",
+              "Acumular oro y plata"
+            ],
+            "correct": 0,
+            "explicacion": "En su dimensión teórica, la economía busca elaborar modelos, conceptos y teorías que permitan explicar y entender cómo funciona la realidad de los mercados."
+          }
+        },
+        {
+          "texto": "\"Finalidad práctica\" = lograr el bienestar general.",
+          "pregunta": {
+            "q": "¿Qué busca lograr la economía en su aplicación práctica?",
+            "opts": [
+              "El monopolio de empresas",
+              "La reducción del comercio",
+              "El bienestar general de la sociedad"
+            ],
+            "correct": 2,
+            "explicacion": "Con un carácter objetivo, la finalidad práctica de la economía es solucionar problemas concretos de la sociedad para alcanzar un mayor nivel de bienestar general."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "La Economía Política",
+      "puntos": [
+        {
+          "texto": "\"Economía política\" = analiza relaciones sociales de producción.",
+          "pregunta": {
+            "q": "¿Qué aspecto central estudia la economía política?",
+            "opts": [
+              "Las relaciones sociales de producción",
+              "La psicología del consumidor",
+              "El comportamiento de los precios"
+            ],
+            "correct": 0,
+            "explicacion": "A diferencia de la economía pura, la economía política se enfoca en cómo los individuos se interrelacionan y estructuran durante el proceso productivo."
+          }
+        },
+        {
+          "texto": "\"Karl Marx\" = padre de la economía política.",
+          "pregunta": {
+            "q": "¿Quién es el principal referente teórico de la economía política?",
+            "opts": [
+              "Adam Smith",
+              "Karl Marx",
+              "John Maynard Keynes"
+            ],
+            "correct": 1,
+            "explicacion": "Karl Marx es considerado el padre y principal referente de la economía política por su análisis crítico de las relaciones de poder en la producción."
+          }
+        },
+        {
+          "texto": "\"Obra cumbre\" de Marx = El capital.",
+          "pregunta": {
+            "q": "¿Cuál es el nombre del trabajo más representativo de Karl Marx?",
+            "opts": [
+              "El capital",
+              "La riqueza de las naciones",
+              "Tratado de economía"
+            ],
+            "correct": 0,
+            "explicacion": "\"El capital\" es la obra máxima de Marx, donde disecciona el funcionamiento del sistema capitalista y sus contradicciones internas."
+          }
+        },
+        {
+          "texto": "\"El capital\" examina desarrollo mediante métodos de producción.",
+          "pregunta": {
+            "q": "¿A través de qué elemento examina \"El capital\" el desarrollo social?",
+            "opts": [
+              "La cultura y religión",
+              "Los métodos de producción",
+              "Las guerras militares"
+            ],
+            "correct": 1,
+            "explicacion": "Marx plantea en su obra que la historia y el desarrollo de las sociedades humanas están determinados fundamentalmente por sus métodos y estructuras de producción."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Evolución de los modos de producción",
+      "puntos": [
+        {
+          "texto": "\"Modos de producción\" ⊃ esclavismo y feudalismo.",
+          "pregunta": {
+            "q": "¿Cuáles son dos de los modos de producción históricos mencionados?",
+            "opts": [
+              "Comunismo y socialismo",
+              "Mercantilismo y fisiocracia",
+              "Esclavismo y feudalismo"
+            ],
+            "correct": 2,
+            "explicacion": "Históricamente, la sociedad se ha dividido según su estructura económica predominante, transitando por etapas como el esclavismo en la antigüedad y el feudalismo en la Edad Media."
+          }
+        },
+        {
+          "texto": "\"Capitalismo\" = sistema desigualitario.",
+          "pregunta": {
+            "q": "¿Cómo se caracteriza estructuralmente al sistema capitalista?",
+            "opts": [
+              "Como un sistema desigualitario",
+              "Como un sistema equitativo",
+              "Como un sistema de trueque"
+            ],
+            "correct": 0,
+            "explicacion": "Desde la perspectiva de la economía política marxista, el capitalismo se define por generar profundas brechas y desigualdades estructurales entre las clases sociales."
+          }
+        },
+        {
+          "texto": "\"Capitalismo\" ✓ explotación del hombre por el hombre.",
+          "pregunta": {
+            "q": "¿En qué dinámica se basa el capitalismo según la teoría marxista?",
+            "opts": [
+              "La cooperación mutua y solidaria",
+              "La explotación del hombre por el hombre",
+              "El intercambio equivalente de bienes"
+            ],
+            "correct": 1,
+            "explicacion": "El capitalismo requiere y se sustenta en la explotación del trabajador asalariado por parte de los propietarios del capital para poder generar acumulación."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Análisis del capitalismo",
+      "puntos": [
+        {
+          "texto": "\"Objeto de estudio\" = relaciones entre empresario y obrero.",
+          "pregunta": {
+            "q": "¿Qué relación específica es el objeto de estudio al analizar el capitalismo?",
+            "opts": [
+              "La relación entre el empresario y el obrero",
+              "La relación entre el Estado y el mercado",
+              "La relación entre bancos y consumidores"
+            ],
+            "correct": 0,
+            "explicacion": "El núcleo del análisis capitalista en esta teoría es la interacción social y laboral entre quienes poseen los medios de producción y quienes venden su trabajo."
+          }
+        },
+        {
+          "texto": "\"Empresario\" = propietario.",
+          "pregunta": {
+            "q": "¿Qué rol asume el empresario en la estructura capitalista?",
+            "opts": [
+              "Consumidor",
+              "Propietario",
+              "Fuerza de trabajo"
+            ],
+            "correct": 1,
+            "explicacion": "El empresario es el propietario de los medios de producción (fábricas, tierras, capital), lo que le otorga el poder de dirección sobre el proceso productivo."
+          }
+        },
+        {
+          "texto": "\"Obrero\" = fuerza de trabajo.",
+          "pregunta": {
+            "q": "¿Qué elemento aporta el obrero a la relación de producción?",
+            "opts": [
+              "El capital financiero",
+              "Los medios de producción",
+              "La fuerza de trabajo"
+            ],
+            "correct": 2,
+            "explicacion": "Al no poseer medios de producción propios, el obrero debe vender su capacidad física e intelectual (su fuerza de trabajo) a cambio de un salario."
+          }
+        },
+        {
+          "texto": "\"Plusvalía\" = pago necesario solo para subsistir.",
+          "pregunta": {
+            "q": "¿Qué característica define el salario en el concepto de plusvalía?",
+            "opts": [
+              "Es el pago necesario solo para subsistir",
+              "Es igual al valor total producido",
+              "Es un excedente voluntario"
+            ],
+            "correct": 0,
+            "explicacion": "La teoría de la plusvalía sostiene que al obrero no se le paga el valor total de lo que produce, sino apenas lo mínimo necesario para que pueda subsistir y seguir trabajando."
+          }
+        },
+        {
+          "texto": "\"Plusvalía\" → extracción del exceso de valor.",
+          "pregunta": {
+            "q": "¿Qué acción fundamental define a la plusvalía?",
+            "opts": [
+              "La redistribución de ganancias",
+              "La extracción del exceso de valor",
+              "La fijación de precios justos"
+            ],
+            "correct": 1,
+            "explicacion": "El trabajador genera un valor superior al salario que recibe; la plusvalía es precisamente ese \"exceso de valor\" no remunerado que el sistema extrae del trabajo obrero."
+          }
+        },
+        {
+          "texto": "\"Exceso de valor\" → beneficio del capitalista.",
+          "pregunta": {
+            "q": "¿Hacia quién se dirige el exceso de valor extraído en la plusvalía?",
+            "opts": [
+              "Al beneficio del capitalista",
+              "Al ahorro del obrero",
+              "A los impuestos del Estado"
+            ],
+            "correct": 0,
+            "explicacion": "El trabajo no remunerado o exceso de valor se convierte en la ganancia directa o beneficio que acumula el capitalista, siendo la base de la riqueza en este sistema."
           }
         }
       ]

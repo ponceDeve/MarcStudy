@@ -1,145 +1,453 @@
 {
   "curso": "Economía",
-  "tema": "Elasticidad de la Demanda",
+  "tema": "Conceptos Básicos, Objeto y Métodos",
   "glosario": {
-    "elasticidad": "Coeficiente que mide qué tanto cambia la cantidad demandada ante un cambio en el precio.",
-    "elástica": "La cantidad reacciona más que proporcionalmente al precio.",
-    "inelástica": "La cantidad reacciona menos que proporcionalmente al precio.",
-    "unitaria": "La cantidad reacciona en la misma proporción que el precio."
+    "Oikos": "Casa o hacienda en griego antiguo.",
+    "Nomos": "Administración, arreglo o normas.",
+    "Politike": "Relativo al Estado o la sociedad.",
+    "Escasez": "Insuficiencia de recursos disponibles.",
+    "Síntesis": "Comprobación y formulación de una ley.",
+    "=": "Define",
+    "→": "Produce",
+    "⊃": "Contiene",
+    "vs": "Enfrenta",
+    "+": "Combina"
   },
   "theory": [
     {
-      "titulo": "Elasticidad: Definición",
+      "titulo": "Etimología",
       "puntos": [
         {
-          "texto": "Es un coeficiente que mide el grado de variación: el cambio porcentual de $Q^d_x$ (en valor absoluto) respecto al cambio porcentual en el precio",
+          "texto": "\"Economía\" = derivado de voces griegas.",
           "pregunta": {
-            "q": "¿Qué mide la elasticidad de la demanda?",
+            "q": "¿De qué idioma antiguo provienen las raíces etimológicas de la palabra economía?",
             "opts": [
-              "El precio de equilibrio",
-              "Cuánto cambia la cantidad demandada ante un cambio de precio",
-              "La oferta total",
-              "El ingreso del consumidor"
+              "Latín",
+              "Griego",
+              "Sumerio"
             ],
             "correct": 1,
-            "explicacion": "La elasticidad no mide el precio ni la cantidad por separado, sino qué tan sensible es la cantidad demandada frente a cambios en el precio: si un pequeño cambio de precio genera un gran cambio en la cantidad, o casi ninguno."
+            "explicacion": "El término economía tiene sus raíces en la antigua Grecia, siendo el filósofo Jenofonte uno de los primeros en utilizarlo alrededor del año 325 a.C.."
           }
         },
         {
-          "texto": "Influye la cantidad de sustitutos que tenga el bien",
+          "texto": "\"Oikos\" = casa.",
           "pregunta": {
-            "q": "¿Qué factor influye directamente en la elasticidad de un bien?",
+            "q": "¿Qué significa literalmente el vocablo griego \"Oikos\"?",
             "opts": [
-              "Su color",
-              "La cantidad de sustitutos que tenga",
-              "Su nombre",
-              "El clima"
-            ],
-            "correct": 1,
-            "explicacion": "Mientras más sustitutos tenga un bien, más fácil es para el consumidor cambiarse a otra opción si el precio sube, haciendo que la demanda sea más elástica (sensible al precio)."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Cálculo de la Elasticidad Precio (Ep)",
-      "puntos": [
-        {
-          "texto": "Fórmula 1: $EP = \\dfrac{\\Delta\\% Q^d_x}{\\Delta\\% P_x}$ (ejemplo: $\\dfrac{20\\%}{50\\%} = 0.4$)",
-          "pregunta": {
-            "q": "¿Cómo se calcula la elasticidad precio con la fórmula porcentual?",
-            "opts": [
-              "Cambio % de precio ÷ cambio % de cantidad",
-              "Cambio % de cantidad ÷ cambio % de precio",
-              "Cambio de cantidad × cambio de precio",
-              "Precio ÷ cantidad"
-            ],
-            "correct": 1,
-            "explicacion": "Se compara qué tanto varió porcentualmente la cantidad demandada frente a qué tanto varió porcentualmente el precio; si la cantidad varía más que el precio, el resultado es mayor a 1 (elástica)."
-          }
-        },
-        {
-          "texto": "Fórmula 2: $EP = \\left(\\dfrac{\\Delta Q^d_x}{\\Delta P_x}\\right) \\cdot \\dfrac{P_x}{Q^d_x}$",
-          "pregunta": {
-            "q": "En la fórmula 2 de elasticidad, ¿qué se multiplica por (ΔQd/ΔP)?",
-            "opts": ["Px/Qdx", "Qdx/Px", "ΔP/ΔQ", "Solo Px"],
-            "correct": 0,
-            "explicacion": "Esta versión de la fórmula convierte los cambios absolutos en un valor comparable, multiplicando la tasa de cambio (ΔQd/ΔP) por la razón entre el precio y la cantidad iniciales (Px/Qdx)."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Tipos de Elasticidad de la Demanda",
-      "puntos": [
-        {
-          "texto": "Elástica: $|EP| > 1$. Se presenta en bienes con varios sustitutos. Gráfica con pendiente relativamente plana",
-          "pregunta": {
-            "q": "¿Cuándo la demanda es elástica?",
-            "opts": [
-              "Cuando |EP| < 1",
-              "Cuando |EP| > 1",
-              "Cuando |EP| = 0",
-              "Cuando |EP| = 1"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando el valor absoluto de la elasticidad supera 1, significa que la cantidad demandada cambia proporcionalmente más que el precio — pequeños cambios de precio generan grandes cambios en las ventas."
-          }
-        },
-        {
-          "texto": "Inelástica: $|EP| < 1$. Productos con pocos sustitutos. Gráfica con pendiente más pronunciada",
-          "pregunta": {
-            "q": "¿Cuándo la demanda es inelástica?",
-            "opts": [
-              "Cuando |EP| > 1",
-              "Cuando |EP| < 1",
-              "Cuando |EP| = ∞",
-              "Cuando |EP| = 1"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando el valor absoluto de la elasticidad es menor a 1, la cantidad demandada cambia poco aunque el precio varíe bastante — típico de bienes necesarios sin muchos sustitutos."
-          }
-        },
-        {
-          "texto": "Perfectamente inelástica: $|EP| = 0$. No tiene sustituto alguno. Gráfica vertical",
-          "pregunta": {
-            "q": "¿Qué caracteriza a la demanda perfectamente inelástica?",
-            "opts": [
-              "|EP| = 1, gráfica hiperbólica",
-              "|EP| = 0, gráfica vertical, sin sustitutos",
-              "|EP| = ∞, gráfica horizontal",
-              "|EP| > 1, gráfica plana"
-            ],
-            "correct": 1,
-            "explicacion": "Es el caso extremo donde la cantidad demandada no cambia nada sin importar cuánto suba el precio (por ejemplo, medicamentos vitales sin sustituto), por eso su gráfica es una línea vertical."
-          }
-        },
-        {
-          "texto": "Unitaria: $|EP| = 1$. Caso teórico. Gráfica hiperbólica",
-          "pregunta": {
-            "q": "¿Qué caracteriza a la demanda unitaria?",
-            "opts": [
-              "|EP| = 0",
-              "|EP| = 1, caso teórico, gráfica hiperbólica",
-              "|EP| > 1",
-              "|EP| = ∞"
-            ],
-            "correct": 1,
-            "explicacion": "Es un caso límite teórico donde el cambio porcentual en cantidad es exactamente igual al cambio porcentual en precio; en la práctica es difícil encontrar un bien real que cumpla esto exactamente."
-          }
-        },
-        {
-          "texto": "Perfectamente elástica: $|EP| = \\infty$. Con sustitutos infinitos. Gráfica horizontal",
-          "pregunta": {
-            "q": "¿Qué caracteriza a la demanda perfectamente elástica?",
-            "opts": [
-              "|EP| = 0, gráfica vertical",
-              "|EP| = 1, gráfica hiperbólica",
-              "|EP| = ∞, gráfica horizontal, sustitutos infinitos",
-              "|EP| < 1, gráfica pronunciada"
+              "Mercado",
+              "Estado",
+              "Casa"
             ],
             "correct": 2,
-            "explicacion": "Es el otro extremo: cualquier pequeño aumento de precio hace que la cantidad demandada caiga a cero, porque existen sustitutos perfectos disponibles; se grafica como una línea horizontal."
+            "explicacion": "En la etimología de la economía, la palabra \"Oikos\" se traduce como casa o hacienda, refiriéndose al patrimonio familiar."
+          }
+        },
+        {
+          "texto": "\"Nomos\" = administración o arreglo.",
+          "pregunta": {
+            "q": "¿Cuál es el significado de la raíz griega \"Nomos\"?",
+            "opts": [
+              "Administración o arreglo",
+              "Dinero o moneda",
+              "Intercambio o comercio"
+            ],
+            "correct": 0,
+            "explicacion": "El vocablo \"Nomos\" significa administración, arreglo o ley. Al juntarlo con \"Oikos\", se forma la idea de la administración de la casa."
+          }
+        },
+        {
+          "texto": "\"Aristóteles\" → añade término \"Politike\".",
+          "pregunta": {
+            "q": "¿Qué filósofo amplió el concepto etimológico añadiendo la palabra \"Politike\"?",
+            "opts": [
+              "Platón",
+              "Jenofonte",
+              "Aristóteles"
+            ],
+            "correct": 2,
+            "explicacion": "Aristóteles expandió el concepto básico de economía al introducir el término \"Politike\", llevando la idea de la administración familiar hacia el ámbito público."
+          }
+        },
+        {
+          "texto": "\"Politike\" = Estado.",
+          "pregunta": {
+            "q": "¿Qué representa el término griego \"Politike\" en este contexto?",
+            "opts": [
+              "Estado",
+              "Ciudadano",
+              "Dinero"
+            ],
+            "correct": 0,
+            "explicacion": "Al sumar \"Politike\" (que significa Estado), la economía política pasó a entenderse como la administración de la riqueza de toda la sociedad o Estado."
+          }
+        },
+        {
+          "texto": "\"Aristóteles\" = padre de economía antigua.",
+          "pregunta": {
+            "q": "¿Quién es considerado el padre de la economía antigua?",
+            "opts": [
+              "Aristóteles",
+              "Adam Smith",
+              "Karl Marx"
+            ],
+            "correct": 0,
+            "explicacion": "Por sus primeros análisis sobre el valor, el interés (el cual condenaba) y la defensa de la propiedad privada, Aristóteles es reconocido como el padre de la economía antigua."
+          }
+        },
+        {
+          "texto": "\"Adam Smith\" = padre de economía.",
+          "pregunta": {
+            "q": "¿A qué pensador del año 1776 se le atribuye ser el padre de la economía?",
+            "opts": [
+              "David Ricardo",
+              "John Maynard Keynes",
+              "Adam Smith"
+            ],
+            "correct": 2,
+            "explicacion": "Adam Smith es el padre de la economía moderna gracias a su obra fundamental de 1776, la cual sistematizó el conocimiento económico."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Definición y Problema Económico",
+      "puntos": [
+        {
+          "texto": "\"Economía\" = ciencia social.",
+          "pregunta": {
+            "q": "¿Qué tipo de ciencia es la economía según su definición clásica?",
+            "opts": [
+              "Ciencia natural",
+              "Ciencia social",
+              "Ciencia exacta"
+            ],
+            "correct": 1,
+            "explicacion": "La economía se define fundamentalmente como una ciencia social, ya que su objeto principal de estudio es el comportamiento y las decisiones del hombre."
+          }
+        },
+        {
+          "texto": "\"Hombre\" → usa recursos escasos.",
+          "pregunta": {
+            "q": "¿Qué tipo de recursos utiliza el ser humano en su actividad económica?",
+            "opts": [
+              "Recursos infinitos",
+              "Recursos escasos",
+              "Recursos inagotables"
+            ],
+            "correct": 1,
+            "explicacion": "La base del estudio económico radica en cómo la humanidad administra y utiliza recursos que, por naturaleza, son limitados o escasos."
+          }
+        },
+        {
+          "texto": "\"Economía\" → busca satisfacer necesidades infinitas.",
+          "pregunta": {
+            "q": "¿Cuál es el propósito final del uso de los recursos en la economía?",
+            "opts": [
+              "Acaparar bienes",
+              "Satisfacer necesidades infinitas",
+              "Destruir la naturaleza"
+            ],
+            "correct": 1,
+            "explicacion": "El objetivo de administrar recursos escasos es lograr satisfacer las necesidades de las personas, las cuales se caracterizan por ser ilimitadas o infinitas."
+          }
+        },
+        {
+          "texto": "\"Problema económico\" = recursos escasos vs necesidades ilimitadas.",
+          "pregunta": {
+            "q": "¿Cuáles son los dos elementos que entran en conflicto para formar el problema económico?",
+            "opts": [
+              "Recursos escasos vs necesidades ilimitadas",
+              "Oferta excesiva vs demanda nula",
+              "Estado controlador vs libre mercado"
+            ],
+            "correct": 0,
+            "explicacion": "El conflicto fundamental de la economía se da por la contraposición entre recursos que se agotan (escasos) frente a necesidades humanas que nunca terminan (ilimitadas)."
+          }
+        },
+        {
+          "texto": "\"Escasez\" = insuficiencia.",
+          "pregunta": {
+            "q": "¿Cómo se define brevemente el concepto de escasez en el problema económico?",
+            "opts": [
+              "Abundancia",
+              "Insuficiencia",
+              "Equilibrio"
+            ],
+            "correct": 1,
+            "explicacion": "La escasez representa una insuficiencia; significa que no hay recursos suficientes para producir todos los bienes y servicios (alimentos, vivienda, transporte) que la sociedad requiere."
+          }
+        },
+        {
+          "texto": "\"¿Qué producir?\" = interrogante económica.",
+          "pregunta": {
+            "q": "¿Qué tipo de naturaleza tiene la pregunta \"¿Qué producir?\"?",
+            "opts": [
+              "Económica",
+              "Técnica",
+              "Social"
+            ],
+            "correct": 0,
+            "explicacion": "Decidir qué bienes se van a generar con los recursos limitados disponibles es una decisión puramente económica de asignación."
+          }
+        },
+        {
+          "texto": "\"¿Cómo producir?\" = interrogante técnica.",
+          "pregunta": {
+            "q": "¿Con qué ámbito se relaciona la pregunta \"¿Cómo producir?\"?",
+            "opts": [
+              "Económico",
+              "Técnico",
+              "Social"
+            ],
+            "correct": 1,
+            "explicacion": "La manera en que se combinan los factores de producción y la tecnología a utilizar responde a una interrogante de carácter técnico."
+          }
+        },
+        {
+          "texto": "\"¿Para quién producir?\" = interrogante social.",
+          "pregunta": {
+            "q": "¿A qué dimensión corresponde la pregunta \"¿Para quién producir?\"?",
+            "opts": [
+              "Económica",
+              "Técnica",
+              "Social"
+            ],
+            "correct": 2,
+            "explicacion": "Determinar quiénes serán los beneficiarios finales de los bienes producidos aborda problemas de distribución y equidad, lo cual es una interrogante social."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Costo de Oportunidad",
+      "puntos": [
+        {
+          "texto": "\"Costo de oportunidad\" = alternativa sacrificada.",
+          "pregunta": {
+            "q": "¿Qué representa el costo de oportunidad?",
+            "opts": [
+              "El precio monetario de un bien",
+              "La alternativa sacrificada",
+              "El costo de producción"
+            ],
+            "correct": 1,
+            "explicacion": "El costo de oportunidad se define como aquella alternativa que no fue tomada; es la mejor opción que se sacrifica al momento de tomar una decisión económica."
+          }
+        },
+        {
+          "texto": "\"Alternativa no tomada\" → permite satisfacer otras necesidades.",
+          "pregunta": {
+            "q": "¿Para qué se sacrifica una alternativa en el costo de oportunidad?",
+            "opts": [
+              "Para ahorrar dinero",
+              "Para satisfacer otras necesidades",
+              "Para evadir impuestos"
+            ],
+            "correct": 1,
+            "explicacion": "Debido a la escasez, elegir satisfacer una necesidad específica implica inevitablemente dejar de lado otra alternativa que también deseábamos satisfacer."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Objeto de Estudio",
+      "puntos": [
+        {
+          "texto": "\"Objeto de estudio\" = proceso económico.",
+          "pregunta": {
+            "q": "¿Cuál es el objeto formal de estudio de la economía?",
+            "opts": [
+              "La naturaleza",
+              "El proceso económico",
+              "El sistema planetario"
+            ],
+            "correct": 1,
+            "explicacion": "El objeto central que estudia la economía moderna es el proceso económico en su totalidad, que abarca las distintas fases de la actividad humana."
+          }
+        },
+        {
+          "texto": "\"Proceso económico\" ⊃ producción, circulación y distribución.",
+          "pregunta": {
+            "q": "¿Qué fases iniciales e intermedias componen el proceso económico?",
+            "opts": [
+              "Ahorro, gasto y crédito",
+              "Producción, circulación y distribución",
+              "Extracción, diseño y reciclaje"
+            ],
+            "correct": 1,
+            "explicacion": "El ciclo económico inicia con la creación de bienes (producción), su traslado a los mercados (circulación) y el pago a los factores productivos (distribución)."
+          }
+        },
+        {
+          "texto": "\"Proceso económico\" ⊃ consumo e inversión.",
+          "pregunta": {
+            "q": "¿Con qué etapas finaliza y se reinicia el proceso económico?",
+            "opts": [
+              "Consumo e inversión",
+              "Exportación e importación",
+              "Depreciación y devaluación"
+            ],
+            "correct": 0,
+            "explicacion": "Después de distribuir la riqueza, las familias utilizan los bienes (consumo) y las empresas destinan recursos para iniciar un nuevo ciclo (inversión)."
+          }
+        },
+        {
+          "texto": "\"Proceso económico\" = vida económica del hombre.",
+          "pregunta": {
+            "q": "¿Qué representa conceptualmente el proceso económico?",
+            "opts": [
+              "La vida económica del hombre",
+              "El fin del mercado libre",
+              "Una teoría descartada"
+            ],
+            "correct": 0,
+            "explicacion": "El conjunto de todas estas fases productivas y de consumo conforman lo que se conoce como la vida económica activa del ser humano en sociedad."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Métodos de Estudio",
+      "puntos": [
+        {
+          "texto": "\"Método inductivo\" = casos particulares → ley.",
+          "pregunta": {
+            "q": "¿En qué consiste la dirección del método inductivo?",
+            "opts": [
+              "De la ley a casos particulares",
+              "De casos particulares a la ley",
+              "De la ley a una hipótesis"
+            ],
+            "correct": 1,
+            "explicacion": "El método inductivo parte de la observación de fenómenos analíticos o casos particulares para llegar, mediante la comprobación y síntesis, a formular una ley general."
+          }
+        },
+        {
+          "texto": "\"Método deductivo\" = ley → casos particulares.",
+          "pregunta": {
+            "q": "¿Cuál es el sentido lógico del método deductivo?",
+            "opts": [
+              "De la ley a casos particulares",
+              "De casos particulares a la ley",
+              "De una observación a otra observación"
+            ],
+            "correct": 0,
+            "explicacion": "De forma inversa al inductivo, el método deductivo parte de un principio general o ley ya establecida para explicar o predecir casos particulares específicos."
+          }
+        },
+        {
+          "texto": "\"Métodos auxiliares\" ⊃ matemático y geográfico.",
+          "pregunta": {
+            "q": "¿Cuáles son dos de los métodos auxiliares utilizados en economía?",
+            "opts": [
+              "Físico y químico",
+              "Matemático y geográfico",
+              "Biológico y astrológico"
+            ],
+            "correct": 1,
+            "explicacion": "Para sustentar sus investigaciones, la economía se apoya en otras disciplinas utilizando métodos como el matemático (para cálculos y modelos) y el geográfico (para ubicación de recursos)."
+          }
+        },
+        {
+          "texto": "\"Métodos auxiliares\" ⊃ estadístico e histórico.",
+          "pregunta": {
+            "q": "¿Qué otras herramientas metodológicas apoyan el estudio económico?",
+            "opts": [
+              "Estadístico e histórico",
+              "Filosófico y ético",
+              "Literario y artístico"
+            ],
+            "correct": 0,
+            "explicacion": "El método estadístico permite analizar datos y tendencias masivas, mientras que el método histórico ayuda a comprender la evolución de los fenómenos económicos a través del tiempo."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Finalidad",
+      "puntos": [
+        {
+          "texto": "\"Finalidad teórica\" = crear teorías, métodos y leyes.",
+          "pregunta": {
+            "q": "¿En qué consiste el objetivo teórico de la economía?",
+            "opts": [
+              "Repartir dinero a la población",
+              "Crear teorías, métodos y leyes",
+              "Prohibir el comercio internacional"
+            ],
+            "correct": 1,
+            "explicacion": "En su dimensión científica abstracta, la finalidad teórica de la economía es formular herramientas intelectuales, como teorías, métodos y leyes formales."
+          }
+        },
+        {
+          "texto": "\"Teorías y leyes\" → comprender fenómenos económicos.",
+          "pregunta": {
+            "q": "¿Para qué sirven las teorías y leyes creadas por la economía?",
+            "opts": [
+              "Para evadir responsabilidades legales",
+              "Para comprender fenómenos económicos",
+              "Para aumentar la inflación"
+            ],
+            "correct": 1,
+            "explicacion": "La creación de leyes teóricas tiene como propósito final entender, explicar y predecir el comportamiento de los fenómenos económicos que ocurren en la realidad."
+          }
+        },
+        {
+          "texto": "\"Finalidad práctica\" = lograr bienestar general.",
+          "pregunta": {
+            "q": "¿Cuál es la meta suprema de la economía en su aplicación práctica?",
+            "opts": [
+              "Enriquecer solo al Estado",
+              "Lograr bienestar general",
+              "Eliminar la moneda circulante"
+            ],
+            "correct": 1,
+            "explicacion": "A nivel aplicado, la economía busca resolver los problemas de escasez de la sociedad para alcanzar la mejora del nivel de vida o bienestar general de la población."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas Económicos",
+      "puntos": [
+        {
+          "texto": "\"Planificación central\" = Estado planifica.",
+          "pregunta": {
+            "q": "¿Quién toma las decisiones económicas en un sistema de planificación central?",
+            "opts": [
+              "El mercado",
+              "Los consumidores",
+              "El Estado"
+            ],
+            "correct": 2,
+            "explicacion": "En un sistema de planificación central, el Estado tiene el control absoluto y es el encargado de planificar qué, cómo y para quién se produce en la economía."
+          }
+        },
+        {
+          "texto": "\"Libre mercado\" = fuerza de oferta y demanda.",
+          "pregunta": {
+            "q": "¿Qué fuerzas rigen el funcionamiento del sistema de libre mercado?",
+            "opts": [
+              "Fuerza de oferta y demanda",
+              "Las leyes gubernamentales",
+              "Los sindicatos de trabajadores"
+            ],
+            "correct": 0,
+            "explicacion": "En una economía de libre mercado puro, las decisiones productivas y los precios se determinan espontáneamente por la interacción entre la fuerza de la oferta y la demanda."
+          }
+        },
+        {
+          "texto": "\"Sistema mixto\" = Estado + libre mercado.",
+          "pregunta": {
+            "q": "¿Qué elementos se combinan en un sistema económico mixto?",
+            "opts": [
+              "Feudalismo y esclavismo",
+              "Estado y libre mercado",
+              "Monopolio y oligopolio"
+            ],
+            "correct": 1,
+            "explicacion": "El sistema económico mixto busca un equilibrio combinando la libre actuación del mercado (oferta y demanda) con la intervención regulatoria del Estado para corregir fallos."
           }
         }
       ]
