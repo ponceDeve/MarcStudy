@@ -1,438 +1,559 @@
 {
   "curso": "Biología",
-  "tema": "Genética: Grupos Sanguíneos y Herencia del Sexo",
+  "tema": "Introducción y Método Científico",
   "glosario": {
-    "antígeno": "Sustancia en el glóbulo rojo que activa al sistema inmune.",
-    "alelo": "Cada variante posible de un mismo gen.",
-    "genotipo": "La combinación de alelos que tiene un individuo.",
-    "fenotipo": "La característica que se observa (ej: grupo sanguíneo).",
-    "donador universal": "Grupo O; su sangre no causa rechazo en nadie.",
-    "receptor universal": "Grupo AB; puede recibir sangre de cualquier grupo.",
-    "factor Rh": "Antígeno D presente o ausente en el glóbulo rojo.",
-    "eritroblastosis fetal": "Enfermedad del bebé por incompatibilidad de Rh.",
-    "herencia ligada al sexo": "Genes en el cromosoma X que causan enfermedad.",
-    "genes holándricos": "Genes propios del cromosoma Y, solo en hombres.",
-    "genes ginándricos": "Genes propios del cromosoma X."
+    "Bios": "Raíz griega que significa vida.",
+    "Logos": "Raíz griega que significa estudio.",
+    "Biología": "Ciencia natural que estudia los seres vivos.",
+    "Conjetura": "Suposición basada en indicios preliminares.",
+    "Entomología": "Estudio científico de los insectos.",
+    "Refutable": "Que puede ser sometido a falsación.",
+    "=": "Define",
+    "→": "Estudia",
+    "⇒": "Genera",
+    "✓": "Posee",
+    "✗": "Carece",
+    "⊃": "Contiene"
   },
   "theory": [
     {
-      "titulo": "Herencia sanguínea",
+      "titulo": "Etimología y Origen del Término",
       "puntos": [
         {
-          "texto": "Trata sobre los genes que expresan antígenos en el glóbulo rojo",
+          "texto": "\"Bios\" = vida.",
           "pregunta": {
-            "q": "¿Sobre qué tratan los genes de la herencia sanguínea?",
+            "q": "En la etimología de la palabra biología, ¿cuál es el significado del término \"Bios\"?",
             "opts": [
-              "Grupos musculares",
-              "Antígenos del glóbulo rojo",
-              "Color de ojos",
-              "Estatura"
+              "Naturaleza",
+              "Vida",
+              "Tratado"
             ],
             "correct": 1,
-            "explicacion": "El sistema ABO se basa en genes que determinan qué antígenos (marcadores) aparecen en la superficie de los glóbulos rojos, lo cual define el grupo sanguíneo de cada persona."
+            "explicacion": "La palabra biología proviene del griego. La raíz \"Bios\" significa literalmente \"vida\", sentando la base para comprender el objeto de estudio de esta ciencia."
           }
         },
         {
-          "texto": "Karl Landsteiner descubre los antígenos en 1901",
+          "texto": "\"Logos\" = estudio.",
           "pregunta": {
-            "q": "¿Quién descubrió los antígenos del sistema ABO?",
+            "q": "¿Qué significa la raíz griega \"Logos\" en la conformación de la palabra biología?",
             "opts": [
-              "Wiener",
-              "Karl Landsteiner",
-              "Mendel",
-              "Watson"
-            ],
-            "correct": 1,
-            "explicacion": "Karl Landsteiner identificó en 1901 que existían distintos tipos de sangre según los antígenos presentes, descubrimiento que hizo posibles las transfusiones seguras y le valió el Premio Nobel."
-          }
-        },
-        {
-          "texto": "Sistema ABO — alelos múltiples:",
-          "sub": [
-            "Alelo A",
-            "Alelo B",
-            "Alelo i (ausencia)"
-          ],
-          "pregunta": {
-            "q": "¿Cuáles son los alelos del sistema ABO?",
-            "opts": [
-              "X, Y, Z",
-              "A, B, i",
-              "R, r",
-              "D, d"
-            ],
-            "correct": 1,
-            "explicacion": "A diferencia de la mayoría de genes (con solo 2 alelos), el sistema ABO tiene alelos múltiples: A y B son codominantes entre sí, e i (ausencia) es recesivo frente a ambos."
-          }
-        },
-        {
-          "texto": "Grupo O: se considera donador universal",
-          "pregunta": {
-            "q": "¿Qué grupo sanguíneo es el donador universal?",
-            "opts": [
-              "A",
-              "B",
-              "AB",
-              "O"
-            ],
-            "correct": 3,
-            "explicacion": "El grupo O no tiene antígenos A ni B en sus glóbulos rojos, por lo que no provoca una reacción de rechazo al ser transfundido a personas de cualquier otro grupo."
-          }
-        },
-        {
-          "texto": "Grupo AB: se considera receptor universal",
-          "pregunta": {
-            "q": "¿Qué grupo sanguíneo es el receptor universal?",
-            "opts": [
-              "A",
-              "B",
-              "AB",
-              "O"
-            ],
-            "correct": 2,
-            "explicacion": "Al tener ambos antígenos (A y B) ya presentes, una persona con grupo AB no genera anticuerpos contra ninguno de los dos, por lo que puede recibir sangre de cualquier grupo sin rechazo."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Tabla del Sistema ABO",
-      "puntos": [
-        {
-          "texto": "Grupo A:",
-          "sub": [
-            "Plasma con anticuerpo anti-B",
-            "Genotipo: IᴬIᴬ o Iᴬi"
-          ],
-          "pregunta": {
-            "q": "¿Qué anticuerpo tiene el plasma del grupo A?",
-            "opts": [
-              "Anti-A",
-              "Anti-B",
-              "Ambos",
-              "Ninguno"
-            ],
-            "correct": 1,
-            "explicacion": "El sistema inmune genera anticuerpos contra el antígeno que NO tiene la persona; como el grupo A no tiene antígeno B, produce anticuerpos anti-B en su plasma."
-          }
-        },
-        {
-          "texto": "Grupo B:",
-          "sub": [
-            "Plasma con anticuerpo anti-A",
-            "Genotipo: IᴮIᴮ o Iᴮi"
-          ],
-          "pregunta": {
-            "q": "¿Qué anticuerpo tiene el plasma del grupo B?",
-            "opts": [
-              "Anti-A",
-              "Anti-B",
-              "Ambos",
-              "Ninguno"
+              "Estudio",
+              "Estructura",
+              "Función"
             ],
             "correct": 0,
-            "explicacion": "Por la misma lógica inversa, el grupo B no tiene antígeno A, así que su plasma contiene anticuerpos anti-A."
+            "explicacion": "En el contexto etimológico, \"Logos\" se traduce como estudio o tratado. Unido a \"Bios\", forma el concepto de \"estudio de la vida\"."
           }
         },
         {
-          "texto": "Grupo AB:",
-          "sub": [
-            "Plasma sin anticuerpos A ni B",
-            "Genotipo: IᴬIᴮ"
-          ],
+          "texto": "\"Lamarck\" y \"Treviranus\" ⇒ término \"Biología\".",
           "pregunta": {
-            "q": "¿Qué anticuerpos tiene el plasma del grupo AB?",
+            "q": "¿Qué personajes históricos fueron los encargados de generar o proponer el término \"Biología\"?",
             "opts": [
-              "Anti-A",
-              "Anti-B",
-              "Ambos",
-              "Ninguno"
-            ],
-            "correct": 3,
-            "explicacion": "Al tener ambos antígenos (A y B), el sistema inmune no genera anticuerpos contra ninguno, ya que atacaría sus propias células."
-          }
-        },
-        {
-          "texto": "Grupo O:",
-          "sub": [
-            "Plasma con ambos anticuerpos (anti-A y anti-B)",
-            "Genotipo: ii"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es el genotipo del grupo O?",
-            "opts": [
-              "IᴬIᴬ",
-              "IᴮIᴮ",
-              "IᴬIᴮ",
-              "ii"
-            ],
-            "correct": 3,
-            "explicacion": "Como el alelo i es recesivo, solo se expresa como grupo O cuando la persona tiene dos copias de ese alelo (una de cada padre); una sola copia con A o B haría dominar a esos alelos."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Problema de cruce (ejemplo)",
-      "puntos": [
-        {
-          "texto": "Cruce: padre Iᴬi × madre Iᴮi",
-          "pregunta": {
-            "q": "En el cruce Iᴬi × Iᴮi, ¿qué genotipos SÍ pueden salir?",
-            "opts": [
-              "Solo ii",
-              "IᴬIᴮ, Iᴬi, Iᴮi, ii",
-              "Solo IᴬIᴮ",
-              "Ninguno"
-            ],
-            "correct": 1,
-            "explicacion": "Al combinar los alelos del padre (Iᴬ o i) con los de la madre (Iᴮ o i) en un cuadro de Punnett, resultan las cuatro combinaciones posibles: IᴬIᴮ, Iᴬi, Iᴮi e ii."
-          }
-        },
-        {
-          "texto": "Genotipos posibles en la descendencia:",
-          "sub": [
-            "IᴬIᴮ → grupo AB",
-            "Iᴬi → grupo A",
-            "Iᴮi → grupo B",
-            "ii → grupo O"
-          ],
-          "pregunta": {
-            "q": "En el cruce Iᴬi × Iᴮi, ¿qué genotipo NO puede salir?",
-            "opts": [
-              "IᴬIᴮ",
-              "ii",
-              "IᴬIᴬ",
-              "Iᴮi"
+              "Aristóteles y Platón",
+              "Darwin y Wallace",
+              "Lamarck y Treviranus"
             ],
             "correct": 2,
-            "explicacion": "Para que salga IᴬIᴬ se necesitarían dos alelos A, pero la madre (Iᴮi) no tiene ningún alelo A para aportar, así que esa combinación es imposible en este cruce."
+            "explicacion": "Jean-Baptiste Lamarck y Gottfried Reinhold Treviranus propusieron de manera independiente el término \"Biología\" en el año 1802 para englobar el estudio de los seres vivos."
           }
         },
         {
-          "texto": "Cada combinación tiene 25% de probabilidad",
+          "texto": "\"Aristóteles\" = padre de la \"Biología\".",
           "pregunta": {
-            "q": "¿Qué probabilidad tiene cada combinación en el cruce Iᴬi × Iᴮi?",
+            "q": "¿A quién se le define clásicamente como el padre de la biología?",
             "opts": [
-              "10%",
-              "25%",
-              "50%",
-              "100%"
+              "Lamarck",
+              "Aristóteles",
+              "Treviranus"
             ],
             "correct": 1,
-            "explicacion": "Al ser 4 combinaciones igualmente posibles en el cuadro de Punnett (2 alelos del padre × 2 de la madre = 4 casillas), cada una representa 1 de 4, es decir, 25% de probabilidad."
+            "explicacion": "Aristóteles es considerado el padre de la biología debido a que fue uno de los primeros en describir y clasificar a los animales de manera sistemática en la antigüedad."
           }
         }
       ]
     },
     {
-      "titulo": "Sistema Rh",
+      "titulo": "Definición de Biología",
       "puntos": [
         {
-          "texto": "Descubierto por Landsteiner y Wiener",
+          "texto": "\"Biología\" → \"seres vivos\".",
           "pregunta": {
-            "q": "¿Quiénes descubrieron el sistema Rh?",
+            "q": "¿Cuál es el objeto de estudio principal de la biología?",
             "opts": [
-              "Landsteiner y Wiener",
-              "Mendel y Morgan",
-              "Watson y Crick",
-              "Darwin y Wallace"
+              "Los seres vivos",
+              "Los fenómenos físicos",
+              "La materia inorgánica"
             ],
             "correct": 0,
-            "explicacion": "Landsteiner y Wiener identificaron en 1940 (usando sangre de monos Rhesus, de ahí el nombre) un nuevo antígeno independiente del sistema ABO, que también debía considerarse en las transfusiones."
-          }
-        },
-        {
-          "texto": "El antígeno D es el factor Rh",
-          "pregunta": {
-            "q": "¿Qué antígeno define el factor Rh?",
-            "opts": [
-              "Antígeno A",
-              "Antígeno B",
-              "Antígeno D",
-              "Antígeno O"
-            ],
-            "correct": 2,
-            "explicacion": "La presencia o ausencia del antígeno D en la superficie del glóbulo rojo es lo que determina si una persona es Rh positivo o negativo."
-          }
-        },
-        {
-          "texto": "R → presencia del antígeno D · r → ausencia",
-          "pregunta": {
-            "q": "¿Qué significa el alelo 'r' en el sistema Rh?",
-            "opts": [
-              "Presencia del antígeno D",
-              "Ausencia del antígeno D",
-              "Grupo sanguíneo O",
-              "Grupo sanguíneo AB"
-            ],
-            "correct": 1,
-            "explicacion": "El alelo r es recesivo y representa la ausencia del antígeno D; solo con dos copias de este alelo (rr) una persona es Rh negativo."
-          }
-        },
-        {
-          "texto": "Rh+ : genotipo RR o Rr (sin anticuerpo anti-D)",
-          "pregunta": {
-            "q": "¿Cuál es el genotipo de una persona Rh+?",
-            "opts": [
-              "rr",
-              "RR o Rr",
-              "Solo RR",
-              "Solo Rr"
-            ],
-            "correct": 1,
-            "explicacion": "Como el alelo R (presencia de antígeno D) es dominante, basta con tener una sola copia para ser Rh positivo, ya sea RR o Rr."
-          }
-        },
-        {
-          "texto": "Rh- : genotipo rr (puede generar anticuerpo anti-D)",
-          "pregunta": {
-            "q": "¿Cuál es el genotipo de una persona Rh-?",
-            "opts": [
-              "RR",
-              "Rr",
-              "rr",
-              "Ri"
-            ],
-            "correct": 2,
-            "explicacion": "Al ser recesivo, solo se es Rh negativo si se heredan dos copias del alelo r, una de cada padre."
-          }
-        },
-        {
-          "texto": "Si una madre Rh- gesta un bebé Rh+, puede causarse eritroblastosis fetal, hidrops fetal o enfermedad hemolítica del recién nacido",
-          "pregunta": {
-            "q": "¿Qué puede causar la incompatibilidad Rh entre madre e hijo?",
-            "opts": [
-              "Daltonismo",
-              "Eritroblastosis fetal",
-              "Hemofilia",
-              "Hipertricosis"
-            ],
-            "correct": 1,
-            "explicacion": "Si una madre Rh- desarrolla anticuerpos contra el Rh+ de su bebé (generalmente en embarazos posteriores al primero), estos pueden atacar los glóbulos rojos del feto, causando anemia grave o eritroblastosis fetal."
+            "explicacion": "La biología es la ciencia natural que se encarga del estudio exclusivo de los seres vivos, abarcando desde su composición química más básica hasta los ecosistemas complejos."
           }
         }
       ]
     },
     {
-      "titulo": "Genes ginándricos (propios del X)",
+      "titulo": "El Método Científico y sus Características",
       "puntos": [
         {
-          "texto": "Enfermedades recesivas ligadas al X:",
-          "sub": [
-            "Daltonismo",
-            "Hemofilia",
-            "Distrofia muscular"
-          ],
+          "texto": "\"Método científico\" ⇒ nuevos \"conocimientos\".",
           "pregunta": {
-            "q": "¿Cuál de estas es una enfermedad ligada al cromosoma X?",
+            "q": "¿Qué se genera al aplicar los procedimientos del método científico?",
             "opts": [
-              "Síndrome del SRY",
-              "Hipertricosis auricular",
-              "Hemofilia",
-              "Síndrome de Sertoli"
-            ],
-            "correct": 2,
-            "explicacion": "La hemofilia es causada por un gen recesivo ubicado en el cromosoma X; como los hombres solo tienen una copia de X, basta un alelo defectuoso para que se manifieste la enfermedad."
-          }
-        },
-        {
-          "texto": "Se conoce como herencia ligada al sexo",
-          "pregunta": {
-            "q": "¿Cómo se le llama a la herencia de enfermedades del cromosoma X?",
-            "opts": [
-              "Herencia holándrica",
-              "Herencia ligada al sexo",
-              "Herencia autosómica",
-              "Herencia mitocondrial"
-            ],
-            "correct": 1,
-            "explicacion": "Se llama 'ligada al sexo' porque el gen responsable está en el cromosoma X, y por eso la enfermedad afecta con mayor frecuencia a los hombres (que solo tienen un X) que a las mujeres."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Genes holándricos (propios del Y)",
-      "puntos": [
-        {
-          "texto": "Enfermedades exclusivas del varón:",
-          "sub": [
-            "Hipertricosis auricular",
-            "Síndrome del SRY (disgenesia gonadal)",
-            "Síndrome de solo células de Sertoli (infertilidad)"
-          ],
-          "pregunta": {
-            "q": "¿Cuál de estas es una enfermedad de los genes holándricos (Y)?",
-            "opts": [
-              "Daltonismo",
-              "Hemofilia",
-              "Distrofia muscular",
-              "Hipertricosis auricular"
-            ],
-            "correct": 3,
-            "explicacion": "La hipertricosis auricular (exceso de vello en las orejas) es causada por un gen ubicado exclusivamente en el cromosoma Y, por lo que solo puede afectar a hombres y se hereda de padre a hijo varón."
-          }
-        },
-        {
-          "texto": "Se conoce como herencia restringida al sexo (solo de padre a hijo varón)",
-          "pregunta": {
-            "q": "¿Cómo se le llama a la herencia de los genes del cromosoma Y?",
-            "opts": [
-              "Herencia ligada al sexo",
-              "Herencia restringida al sexo",
-              "Herencia autosómica",
-              "Herencia recesiva"
-            ],
-            "correct": 1,
-            "explicacion": "Como el cromosoma Y solo pasa de padres a hijos varones, estas enfermedades tienen un patrón de herencia exclusivo y directo por esa línea, llamado 'restringido al sexo'."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Herencia del sexo",
-      "puntos": [
-        {
-          "texto": "Trata sobre los genes ubicados en el par cromosómico sexual",
-          "pregunta": {
-            "q": "¿Sobre qué trata la herencia del sexo?",
-            "opts": [
-              "Los genes del par cromosómico sexual",
-              "Los genes de la piel",
-              "Los genes musculares",
-              "Los genes del cerebro"
+              "Nuevos conocimientos",
+              "Leyes inmutables",
+              "Suposiciones sin fundamento"
             ],
             "correct": 0,
-            "explicacion": "Determina cómo se hereda el sexo biológico de un individuo, según la combinación de cromosomas sexuales (XX o XY en humanos) que recibe de sus padres."
+            "explicacion": "El método científico funciona como una herramienta metodológica (un conjunto de procedimientos) diseñada específicamente para generar nuevos conocimientos válidos en torno a fenómenos de la naturaleza."
           }
         },
         {
-          "texto": "En moscas (Drosophila melanogaster): es el par 4",
+          "texto": "\"Método científico\" ✓ pasos sistemáticos.",
           "pregunta": {
-            "q": "¿En qué par cromosómico está el sexo en Drosophila melanogaster?",
+            "q": "¿Qué característica posee el método científico respecto a su estructura?",
             "opts": [
-              "Par 2",
-              "Par 4",
-              "Par 23",
-              "Par 8"
+              "Es caótico",
+              "Posee pasos sistemáticos",
+              "Es puramente intuitivo"
             ],
             "correct": 1,
-            "explicacion": "La mosca de la fruta, organismo muy usado en estudios de genética por su ciclo de vida corto, tiene 4 pares de cromosomas, siendo el par 4 el que determina su sexo."
+            "explicacion": "Una de las características fundamentales del método científico es que es sistemático, lo que significa que sigue una secuencia ordenada de pasos preestablecidos para evitar errores en la investigación."
           }
         },
         {
-          "texto": "En humanos: es el par 23",
+          "texto": "\"Método científico\" ✓ objetivo.",
           "pregunta": {
-            "q": "¿En qué par cromosómico está el sexo en humanos?",
+            "q": "En cuanto a la neutralidad del investigador, ¿qué característica posee el método científico?",
             "opts": [
-              "Par 4",
-              "Par 21",
-              "Par 23",
-              "Par 46"
+              "Es subjetivo",
+              "Es relativo",
+              "Es objetivo"
             ],
             "correct": 2,
-            "explicacion": "De los 23 pares de cromosomas humanos, el par 23 es el que determina el sexo: XX en mujeres y XY en hombres."
+            "explicacion": "El método científico es objetivo; esto implica que los resultados deben basarse en los hechos y evidencias observadas, sin que intervengan las creencias, sentimientos o prejuicios del investigador."
+          }
+        },
+        {
+          "texto": "\"Método científico\" ✓ riguroso.",
+          "pregunta": {
+            "q": "¿Qué cualidad de exigencia posee el método científico?",
+            "opts": [
+              "Es flexible",
+              "Es riguroso",
+              "Es improvisado"
+            ],
+            "correct": 1,
+            "explicacion": "El rigor científico garantiza que la investigación se realice de forma precisa y exacta, controlando todas las variables posibles para que los resultados sean confiables."
+          }
+        },
+        {
+          "texto": "\"Método científico\" ✓ refutable.",
+          "pregunta": {
+            "q": "¿Qué característica indica que las conclusiones del método científico pueden ser cuestionadas?",
+            "opts": [
+              "Es dogmático",
+              "Es definitivo",
+              "Es refutable"
+            ],
+            "correct": 2,
+            "explicacion": "El método científico es refutable. Ninguna verdad en ciencia es absoluta; si aparecen nuevas evidencias que contradicen una teoría, esta puede y debe ser modificada o descartada."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Etapas del Método Científico",
+      "puntos": [
+        {
+          "texto": "\"Observación\" = identificar \"fenómeno\" natural.",
+          "pregunta": {
+            "q": "¿Qué acción define a la etapa de observación?",
+            "opts": [
+              "Identificar un fenómeno natural",
+              "Diseñar un ensayo de laboratorio",
+              "Afirmar si una idea es verdadera"
+            ],
+            "correct": 0,
+            "explicacion": "La observación es la primera etapa y consiste en identificar un problema o fenómeno de la naturaleza usando los sentidos para recopilar información preliminar."
+          }
+        },
+        {
+          "texto": "\"Observación\" ⊃ describir datos percibidos.",
+          "pregunta": {
+            "q": "¿Qué actividad se incluye dentro de la fase de observación?",
+            "opts": [
+              "Sacar la conclusión final",
+              "Describir datos percibidos",
+              "Alterar las variables del entorno"
+            ],
+            "correct": 1,
+            "explicacion": "Parte de observar correctamente es describir de manera detallada los datos percibidos, como anotar si hay humedad o un olor putrefacto en el caso de un alimento descompuesto."
+          }
+        },
+        {
+          "texto": "\"Hipótesis\" = posible respuesta al \"problema\".",
+          "pregunta": {
+            "q": "¿Qué define correctamente a una hipótesis?",
+            "opts": [
+              "El resultado innegable del ensayo",
+              "La comprobación matemática de los datos",
+              "Una posible respuesta al problema"
+            ],
+            "correct": 2,
+            "explicacion": "La hipótesis es una conjetura o suposición educada. Sirve como una posible respuesta temporal a la pregunta planteada, la cual deberá ser probada luego en la experimentación."
+          }
+        },
+        {
+          "texto": "\"Experimentación\" = diseño para comprobar \"hipótesis\".",
+          "pregunta": {
+            "q": "¿Cuál es el propósito del diseño en la etapa de experimentación?",
+            "opts": [
+              "Comprobar la hipótesis",
+              "Plantear un nuevo problema",
+              "Evitar la observación de datos"
+            ],
+            "correct": 0,
+            "explicacion": "La experimentación consiste en diseñar un ensayo o prueba controlada con el único fin de comprobar si la hipótesis planteada inicialmente es verdadera o falsa."
+          }
+        },
+        {
+          "texto": "\"Grupo control\" ✗ aplicación de variable.",
+          "pregunta": {
+            "q": "¿De qué carece el grupo control en un experimento?",
+            "opts": [
+              "De sujetos de prueba",
+              "De medición de resultados",
+              "De la aplicación de la variable"
+            ],
+            "correct": 2,
+            "explicacion": "El grupo control sirve como punto de comparación natural, por lo tanto carece de la aplicación de la variable experimental (por ejemplo, dejar un pan seco sin añadir agua)."
+          }
+        },
+        {
+          "texto": "\"Grupo experimental\" ✓ aplicación de variable.",
+          "pregunta": {
+            "q": "¿Qué posee o recibe el grupo experimental durante un ensayo?",
+            "opts": [
+              "Condiciones idénticas al grupo control",
+              "La aplicación de la variable",
+              "Ningún tipo de estímulo"
+            ],
+            "correct": 1,
+            "explicacion": "A diferencia del grupo control, el grupo experimental sí posee o se expone a la variable independiente (como añadir gotas de agua a un pan para ver si crece moho)."
+          }
+        },
+        {
+          "texto": "\"Conclusión\" = afirma o niega \"hipótesis\".",
+          "pregunta": {
+            "q": "¿Qué define a la conclusión en el método científico?",
+            "opts": [
+              "Afirma o niega la hipótesis",
+              "Genera el problema de investigación",
+              "Diseña el ensayo de campo"
+            ],
+            "correct": 0,
+            "explicacion": "La conclusión es la parte final de la investigación. Tras analizar los resultados de la experimentación, el investigador dictamina y define si se afirma o se niega la validez de la hipótesis."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Dominios de la Biología: Zoología",
+      "puntos": [
+        {
+          "texto": "\"Entomología\" → insectos.",
+          "pregunta": {
+            "q": "¿Qué estudia la entomología?",
+            "opts": [
+              "Insectos",
+              "Gusanos",
+              "Aves"
+            ],
+            "correct": 0,
+            "explicacion": "La entomología es la subdisciplina de la zoología que se enfoca en el estudio exclusivo de los insectos y sus características biológicas."
+          }
+        },
+        {
+          "texto": "\"Ornitología\" → aves.",
+          "pregunta": {
+            "q": "¿Qué organismos estudia la ornitología?",
+            "opts": [
+              "Mamíferos",
+              "Aves",
+              "Reptiles"
+            ],
+            "correct": 1,
+            "explicacion": "La ornitología es la rama zoológica dedicada al estudio, comportamiento y clasificación de las aves."
+          }
+        },
+        {
+          "texto": "\"Ictiología\" → peces.",
+          "pregunta": {
+            "q": "¿Cuál es el objeto de estudio de la ictiología?",
+            "opts": [
+              "Peces",
+              "Anfibios",
+              "Moluscos"
+            ],
+            "correct": 0,
+            "explicacion": "La ictiología se encarga de estudiar a los peces, abarcando su anatomía, fisiología, distribución y ecología acuática."
+          }
+        },
+        {
+          "texto": "\"Malacología\" → moluscos.",
+          "pregunta": {
+            "q": "¿Qué grupo de animales estudia la malacología?",
+            "opts": [
+              "Crustáceos",
+              "Arácnidos",
+              "Moluscos"
+            ],
+            "correct": 2,
+            "explicacion": "La malacología es el estudio de los moluscos, el cual incluye animales como caracoles, pulpos, calamares y bivalvos."
+          }
+        },
+        {
+          "texto": "\"Herpetología\" → reptiles y anfibios.",
+          "pregunta": {
+            "q": "¿Qué estudia la herpetología?",
+            "opts": [
+              "Únicamente reptiles",
+              "Reptiles y anfibios",
+              "Reptiles y peces"
+            ],
+            "correct": 1,
+            "explicacion": "La herpetología abarca el estudio de dos grandes grupos de vertebrados de sangre fría: los reptiles (como serpientes y lagartos) y los anfibios (como ranas y sapos)."
+          }
+        },
+        {
+          "texto": "\"Helmintología\" → gusanos.",
+          "pregunta": {
+            "q": "¿Cuál es el foco de estudio de la helmintología?",
+            "opts": [
+              "Insectos rastreros",
+              "Bacterias",
+              "Gusanos"
+            ],
+            "correct": 2,
+            "explicacion": "La helmintología es la ciencia que estudia a los gusanos, particularmente los que son de naturaleza parasitaria y afectan a humanos y animales."
+          }
+        },
+        {
+          "texto": "\"Mastozoología\" → mamíferos.",
+          "pregunta": {
+            "q": "¿Qué estudia la mastozoología?",
+            "opts": [
+              "Mamíferos",
+              "Reptiles prehistóricos",
+              "Aves rapaces"
+            ],
+            "correct": 0,
+            "explicacion": "La mastozoología, también conocida como teriología, es la rama de la zoología que se dedica al estudio científico de los mamíferos."
+          }
+        },
+        {
+          "texto": "\"Etología\" → comportamiento animal.",
+          "pregunta": {
+            "q": "¿Qué estudia específicamente la etología?",
+            "opts": [
+              "El comportamiento animal",
+              "El desarrollo embrionario",
+              "La anatomía interna"
+            ],
+            "correct": 0,
+            "explicacion": "La etología no estudia la estructura física, sino que se centra en estudiar el comportamiento animal en sus ambientes naturales, analizando sus instintos, formas de comunicación y adaptación."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Dominios de la Biología: Botánica y Microbiología",
+      "puntos": [
+        {
+          "texto": "\"Criptogamia\" → plantas inferiores.",
+          "pregunta": {
+            "q": "¿Qué tipo de organismos estudia la criptogamia?",
+            "opts": [
+              "Plantas con flores",
+              "Plantas inferiores",
+              "Árboles frutales"
+            ],
+            "correct": 1,
+            "explicacion": "La criptogamia se dedica a estudiar las plantas inferiores o criptógamas, las cuales se caracterizan por carecer de flores y semillas, reproduciéndose mediante esporas (ej. musgos y helechos)."
+          }
+        },
+        {
+          "texto": "\"Palinología\" → esporas y polen.",
+          "pregunta": {
+            "q": "¿Cuál es el objeto de estudio de la palinología?",
+            "opts": [
+              "Las raíces y los tallos",
+              "Las esporas y el polen",
+              "Los frutos carnosos"
+            ],
+            "correct": 1,
+            "explicacion": "La palinología es una disciplina botánica muy especializada que estudia únicamente los granos de polen y las esporas, tanto actuales como fósiles."
+          }
+        },
+        {
+          "texto": "\"Fitopatología\" → enfermedades vegetales.",
+          "pregunta": {
+            "q": "¿Qué estudia la fitopatología?",
+            "opts": [
+              "Enfermedades vegetales",
+              "Crecimiento celular en plantas",
+              "Proceso de fotosíntesis"
+            ],
+            "correct": 0,
+            "explicacion": "La fitopatología analiza las enfermedades de los vegetales, investigando los patógenos (hongos, virus, bacterias) y las condiciones ambientales que las causan."
+          }
+        },
+        {
+          "texto": "\"Ficología\" → algas.",
+          "pregunta": {
+            "q": "¿Qué organismos son el foco de estudio de la ficología?",
+            "opts": [
+              "Musgos",
+              "Algas",
+              "Líquenes"
+            ],
+            "correct": 1,
+            "explicacion": "La ficología, también conocida como algología, es la rama de la botánica dedicada integralmente al estudio de las algas."
+          }
+        },
+        {
+          "texto": "\"Bacteriología\" → bacteria.",
+          "pregunta": {
+            "q": "¿Qué estudia la bacteriología?",
+            "opts": [
+              "Células eucariotas",
+              "Bacteria",
+              "Microorganismos fúngicos"
+            ],
+            "correct": 1,
+            "explicacion": "Dentro de la microbiología, la bacteriología se enfoca exclusivamente en la morfología, ecología, genética y bioquímica de las bacterias."
+          }
+        },
+        {
+          "texto": "\"Virología\" → virus.",
+          "pregunta": {
+            "q": "¿Qué entidad biológica estudia la virología?",
+            "opts": [
+              "Bacterias esporuladas",
+              "Células madre",
+              "Virus"
+            ],
+            "correct": 2,
+            "explicacion": "La virología es el estudio de los virus y agentes subvirales. Analiza su estructura, clasificación y las formas en que infectan y explotan a las células huésped."
+          }
+        },
+        {
+          "texto": "\"Protozoología\" → protozoarios.",
+          "pregunta": {
+            "q": "¿Qué estudia la protozoología?",
+            "opts": [
+              "Protozoarios",
+              "Bacterias flageladas",
+              "Gusanos microscópicos"
+            ],
+            "correct": 0,
+            "explicacion": "La protozoología es la rama encargada del estudio de los protozoarios, los cuales son organismos microscópicos eucariotas unicelulares, muchos de ellos de vida libre y otros parásitos."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Ramas Generales de la Biología",
+      "puntos": [
+        {
+          "texto": "\"Citología\" → célula.",
+          "pregunta": {
+            "q": "¿Qué estructura biológica estudia la citología?",
+            "opts": [
+              "El tejido",
+              "La célula",
+              "El órgano"
+            ],
+            "correct": 1,
+            "explicacion": "La citología, o biología celular, estudia a la célula en cuanto a sus propiedades, estructura, funciones, organelos que contienen, su interacción con el ambiente y su ciclo vital."
+          }
+        },
+        {
+          "texto": "\"Histología\" → tejidos corporales.",
+          "pregunta": {
+            "q": "¿Qué estudia la histología?",
+            "opts": [
+              "Las células aisladas",
+              "Los tejidos corporales",
+              "Los sistemas de órganos"
+            ],
+            "correct": 1,
+            "explicacion": "La histología es el estudio microscópico de los tejidos corporales (agrupaciones de células con una función común) tanto en animales como en plantas."
+          }
+        },
+        {
+          "texto": "\"Genética\" → genes y herencia.",
+          "pregunta": {
+            "q": "¿Qué conceptos biológicos estudia la genética?",
+            "opts": [
+              "Genes y herencia",
+              "Fecundación y desarrollo",
+              "Tejidos y órganos"
+            ],
+            "correct": 0,
+            "explicacion": "La genética estudia cómo las características físicas, bioquímicas y conductuales se transmiten de generación en generación a través de los genes y la herencia."
+          }
+        },
+        {
+          "texto": "\"Taxonomía\" → clasificación biológica.",
+          "pregunta": {
+            "q": "¿De qué se encarga la taxonomía?",
+            "opts": [
+              "Del funcionamiento de los órganos",
+              "De la clasificación biológica",
+              "De la composición química"
+            ],
+            "correct": 1,
+            "explicacion": "La taxonomía es la ciencia de la clasificación biológica. Se encarga de ordenar, nombrar y clasificar a los seres vivos basándose en sus relaciones evolutivas y características compartidas."
+          }
+        },
+        {
+          "texto": "\"Anatomía\" → estructuras biológicas.",
+          "pregunta": {
+            "q": "¿Qué estudia la anatomía en los seres vivos?",
+            "opts": [
+              "Su comportamiento externo",
+              "Sus estructuras biológicas",
+              "Su fisiología celular"
+            ],
+            "correct": 1,
+            "explicacion": "La anatomía se enfoca en estudiar las estructuras biológicas macroscópicas de los organismos, analizando la forma, ubicación y disposición de los órganos corporales."
+          }
+        },
+        {
+          "texto": "\"Fisiología\" → función de estructuras.",
+          "pregunta": {
+            "q": "¿Qué aspecto de las estructuras corporales estudia la fisiología?",
+            "opts": [
+              "Su función",
+              "Su origen embrionario",
+              "Su clasificación evolutiva"
+            ],
+            "correct": 0,
+            "explicacion": "Mientras que la anatomía estudia la forma de las estructuras, la fisiología se encarga de estudiar la función de dichas estructuras, es decir, cómo operan y realizan sus procesos vitales."
+          }
+        },
+        {
+          "texto": "\"Ecología\" → interacción seres vivos e entorno.",
+          "pregunta": {
+            "q": "¿Qué relaciones estudia la ecología?",
+            "opts": [
+              "Interacción entre moléculas orgánicas",
+              "Interacción de los seres vivos con su entorno",
+              "Interacción celular interna"
+            ],
+            "correct": 1,
+            "explicacion": "La ecología estudia las interacciones que existen entre los seres vivos y su entorno (o medio ambiente), incluyendo cómo estas relaciones afectan su distribución y abundancia."
           }
         }
       ]
