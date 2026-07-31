@@ -1,0 +1,450 @@
+{
+  "curso": "Biología",
+  "tema": "Fotosíntesis",
+  "glosario": {
+    "Fotosíntesis": "Proceso de formación de compuestos orgánicos usando luz.",
+    "Anabólico": "Síntesis de moléculas complejas a partir de simples.",
+    "Endergónico": "Reacción que absorbe y requiere energía.",
+    "Oxigénica": "Proceso fotosintético que libera oxígeno molecular.",
+    "Anoxigénica": "Proceso fotosintético que no libera oxígeno.",
+    "Biomasa": "Materia orgánica producida en un proceso biológico.",
+    "Clorénquima": "Tejido vegetal con células ricas en cloroplastos.",
+    "Estoma": "Poro epidérmico que permite el intercambio gaseoso.",
+    "Cloroplasto": "Organela celular donde se realiza la fotosíntesis.",
+    "Estroma": "Medio acuoso o coloide interno del cloroplasto.",
+    "Grana": "Estructura formada por un apilamiento de tilacoides.",
+    "Tilacoide": "Saco membranoso aplanado que contiene los fotosistemas.",
+    "ATPasa": "Enzima transmembranal que sintetiza moléculas de ATP.",
+    "Fotólisis": "Ruptura de enlaces químicos mediante energía luminosa.",
+    "∈": "Pertenece",
+    "→": "Produce",
+    "✓": "Requiere",
+    "✗": "Carece",
+    "↑": "Aumenta",
+    "↓": "Disminuye",
+    "=": "Define",
+    "⊃": "Contiene"
+  },
+  "theory": [
+    {
+      "titulo": "Definición y Características de la Fotosíntesis",
+      "puntos": [
+        {
+          "texto": "\"Fotosíntesis\" ∈ proceso metabólico anabólico.",
+          "pregunta": {
+            "q": "¿A qué tipo de proceso metabólico pertenece la fotosíntesis?",
+            "opts": [
+              "Proceso catabólico.",
+              "Proceso anabólico.",
+              "Proceso de degradación."
+            ],
+            "correct": 1,
+            "explicacion": "La fotosíntesis es un proceso de construcción (anabolismo) porque a partir de moléculas inorgánicas simples se sintetizan moléculas orgánicas complejas que almacenan energía."
+          }
+        },
+        {
+          "texto": "\"Fotosíntesis\" ∈ proceso químico endergónico.",
+          "pregunta": {
+            "q": "¿Qué característica energética define a la fotosíntesis?",
+            "opts": [
+              "Es un proceso exergónico.",
+              "Es un proceso espontáneo.",
+              "Es un proceso endergónico."
+            ],
+            "correct": 2,
+            "explicacion": "Al ser un proceso endergónico, la fotosíntesis requiere un aporte continuo de energía externa (en este caso, la energía luminosa del sol) para poder llevarse a cabo y formar nuevos enlaces químicos."
+          }
+        },
+        {
+          "texto": "\"Fotosíntesis\" → crea glucosa usando biomoléculas inorgánicas.",
+          "pregunta": {
+            "q": "¿Qué molécula orgánica principal produce la fotosíntesis a partir de precursores inorgánicos?",
+            "opts": [
+              "Glucosa.",
+              "Proteína.",
+              "Lípido."
+            ],
+            "correct": 0,
+            "explicacion": "El objetivo principal del proceso fotosintético es sintetizar carbohidratos, típicamente representados por la glucosa, utilizando como materia prima moléculas inorgánicas simples como el agua (H2O), el dióxido de carbono (CO2) o el sulfuro de hidrógeno (H2S)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de Fotosíntesis",
+      "puntos": [
+        {
+          "texto": "Fotosíntesis \"oxigénica\" → libera oxígeno gaseoso.",
+          "pregunta": {
+            "q": "¿Qué gas se libera al medio ambiente como producto de la fotosíntesis oxigénica?",
+            "opts": [
+              "Dióxido de carbono.",
+              "Oxígeno gaseoso.",
+              "Metano."
+            ],
+            "correct": 1,
+            "explicacion": "La fotosíntesis oxigénica se caracteriza por producir y liberar oxígeno molecular (O2) como subproducto, lo cual es vital para el sostenimiento de la vida aeróbica en el planeta."
+          }
+        },
+        {
+          "texto": "Fotosíntesis \"oxigénica\" ✓ utiliza moléculas de agua.",
+          "pregunta": {
+            "q": "¿Qué molécula es fundamental para que ocurra la fotosíntesis oxigénica?",
+            "opts": [
+              "Moléculas de agua.",
+              "Sulfuro de hidrógeno.",
+              "Amoniaco."
+            ],
+            "correct": 0,
+            "explicacion": "En la variante oxigénica, el agua (H2O) actúa como el donador primario de electrones. Al romperse esta molécula durante la fase luminosa, se liberan los electrones necesarios para el proceso."
+          }
+        },
+        {
+          "texto": "Plantas y algas ∈ organismos fotosintéticos \"oxigénicos\".",
+          "pregunta": {
+            "q": "¿Qué grupo de organismos realiza de forma característica la fotosíntesis oxigénica?",
+            "opts": [
+              "Bacterias púrpuras y verdes.",
+              "Plantas y algas.",
+              "Hongos y protozoarios heterótrofos."
+            ],
+            "correct": 1,
+            "explicacion": "Las plantas, las algas (y también las cianobacterias) poseen la maquinaria enzimática necesaria para oxidar el agua y liberar oxígeno, clasificándose como organismos fotosintéticos oxigénicos."
+          }
+        },
+        {
+          "texto": "Fotosíntesis \"anoxigénica\" ✗ libera oxígeno gaseoso.",
+          "pregunta": {
+            "q": "¿Qué rasgo distingue a la fotosíntesis anoxigénica respecto a la producción de gases?",
+            "opts": [
+              "Carece de liberación de oxígeno gaseoso.",
+              "Produce un exceso de oxígeno gaseoso.",
+              "Libera ozono en lugar de oxígeno."
+            ],
+            "correct": 0,
+            "explicacion": "A diferencia de la oxigénica, la fotosíntesis anoxigénica no produce oxígeno como subproducto porque no utiliza agua como fuente de electrones, siendo un proceso más primitivo evolutivamente."
+          }
+        },
+        {
+          "texto": "Fotosíntesis \"anoxigénica\" ✓ utiliza sulfuro de hidrógeno.",
+          "pregunta": {
+            "q": "¿Qué compuesto químico suele donar los electrones en la fotosíntesis anoxigénica?",
+            "opts": [
+              "Moléculas de agua.",
+              "Dióxido de nitrógeno.",
+              "Sulfuro de hidrógeno."
+            ],
+            "correct": 2,
+            "explicacion": "En lugar de agua, la fotosíntesis anoxigénica emplea compuestos como el sulfuro de hidrógeno (H2S). Al oxidarse, este compuesto no libera oxígeno, sino otros elementos como azufre sólido."
+          }
+        },
+        {
+          "texto": "Bacterias púrpuras y verdes ∈ organismos fotosintéticos \"anoxigénicos\".",
+          "pregunta": {
+            "q": "¿Qué tipo de bacterias son representativas de la fotosíntesis anoxigénica?",
+            "opts": [
+              "Cianobacterias.",
+              "Bacterias púrpuras y verdes.",
+              "Bacterias lácticas."
+            ],
+            "correct": 1,
+            "explicacion": "Las bacterias púrpuras y verdes (sulfurosas y no sulfurosas) habitan a menudo en ambientes anaeróbicos donde hay H2S disponible, realizando un proceso fotosintético que no genera oxígeno."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia de la Fotosíntesis",
+      "puntos": [
+        {
+          "texto": "\"Fotosíntesis\" → libera oxígeno necesario para respiración celular.",
+          "pregunta": {
+            "q": "¿Cuál es un impacto directo de la liberación de oxígeno por la fotosíntesis?",
+            "opts": [
+              "Es necesario para la respiración celular.",
+              "Reduce la capa de ozono.",
+              "Detiene la cadena alimenticia."
+            ],
+            "correct": 0,
+            "explicacion": "El oxígeno molecular liberado a la atmósfera por los organismos fotosintéticos oxigénicos es captado por otros seres vivos (incluyéndonos) para realizar la respiración celular aeróbica y obtener energía."
+          }
+        },
+        {
+          "texto": "Absorción de CO2 ↓ calentamiento global terrestre.",
+          "pregunta": {
+            "q": "¿Qué problema medioambiental se mitiga mediante la absorción de CO2 fotosintética?",
+            "opts": [
+              "El oscurecimiento global.",
+              "La lluvia ácida.",
+              "El calentamiento global terrestre."
+            ],
+            "correct": 2,
+            "explicacion": "El dióxido de carbono (CO2) es un importante gas de efecto invernadero (G.E.I). Al absorberlo masivamente de la atmósfera para sintetizar azúcares, las plantas ayudan a reducir su concentración y, por ende, el calentamiento global."
+          }
+        },
+        {
+          "texto": "\"Fotosíntesis\" ↑ aumento de biomasa en ecosistemas.",
+          "pregunta": {
+            "q": "¿Qué efecto tiene la fotosíntesis sobre la cantidad de materia orgánica en un ecosistema?",
+            "opts": [
+              "Aumenta la biomasa.",
+              "Disminuye la biomasa.",
+              "No altera la biomasa."
+            ],
+            "correct": 0,
+            "explicacion": "Al convertir materia inorgánica en materia orgánica (carbohidratos, lípidos, proteínas), la fotosíntesis incrementa la masa total de tejido biológico (biomasa) disponible en los ecosistemas."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Ubicación de la Fotosíntesis",
+      "puntos": [
+        {
+          "texto": "\"Cianobacterias\" ⊃ laminillas fotosintéticas con clorofila.",
+          "pregunta": {
+            "q": "¿Dónde se localiza el pigmento clorofila en las cianobacterias?",
+            "opts": [
+              "En el núcleo.",
+              "En laminillas fotosintéticas.",
+              "En las mitocondrias."
+            ],
+            "correct": 1,
+            "explicacion": "Las cianobacterias son procariotas y no tienen organelas membranosas como los cloroplastos. Su clorofila y demás maquinaria fotosintética se encuentran insertas en invaginaciones de su propia membrana llamadas laminillas."
+          }
+        },
+        {
+          "texto": "Hoja vegetal ⊃ tejido \"parénquima clorofiliano\".",
+          "pregunta": {
+            "q": "¿Qué tejido específico de la hoja es el encargado de la fotosíntesis?",
+            "opts": [
+              "Epidermis protectora.",
+              "Parénquima clorofiliano.",
+              "Tejido vascular."
+            ],
+            "correct": 1,
+            "explicacion": "Dentro de la hoja o tallo verde, el tejido principal donde ocurre la fotosíntesis es el parénquima clorofiliano (o clorénquima), el cual está adaptado especialmente para captar la luz."
+          }
+        },
+        {
+          "texto": "\"Clorénquima\" ⊃ células vegetales ricas en cloroplastos.",
+          "pregunta": {
+            "q": "¿Qué organela abunda en las células que conforman el clorénquima?",
+            "opts": [
+              "Vacuolas contráctiles.",
+              "Cloroplastos.",
+              "Lisosomas."
+            ],
+            "correct": 1,
+            "explicacion": "El clorénquima se distingue por estar formado por células que contienen una gran cantidad de cloroplastos, las organelas especializadas en llevar a cabo todo el proceso fotosintético en eucariotas."
+          }
+        },
+        {
+          "texto": "\"Estoma\" = poro epidérmico formado por células oclusivas.",
+          "pregunta": {
+            "q": "¿Qué estructura celular conforma y delimita el poro llamado estoma?",
+            "opts": [
+              "Células del mesófilo.",
+              "Células oclusivas.",
+              "Células de la cofia."
+            ],
+            "correct": 1,
+            "explicacion": "El estoma actúa como la \"boca\" de la hoja. Es un poro microscópico en la epidermis delimitado por dos células especializadas llamadas células oclusivas (o guarda), las cuales regulan su apertura para el paso de CO2 y O2."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura del Cloroplasto",
+      "puntos": [
+        {
+          "texto": "\"Cloroplasto\" ⊃ molécula de ADN y ribosomas propios.",
+          "pregunta": {
+            "q": "¿Qué material genético y de síntesis proteica contiene internamente el cloroplasto?",
+            "opts": [
+              "ARN mensajero del núcleo.",
+              "Molécula de ADN y ribosomas propios.",
+              "Solo enzimas degradativas."
+            ],
+            "correct": 1,
+            "explicacion": "De acuerdo con la teoría endosimbiótica, los cloroplastos tienen su propio ADN (circular) y sus propios ribosomas, lo que les permite sintetizar parte de las proteínas que necesitan para funcionar independientemente del núcleo de la célula."
+          }
+        },
+        {
+          "texto": "\"Estroma\" = fase coloidal interna del cloroplasto.",
+          "pregunta": {
+            "q": "¿Qué término define al fluido o coloide que rellena el interior del cloroplasto?",
+            "opts": [
+              "Estroma.",
+              "Citoplasma.",
+              "Cariolinfa."
+            ],
+            "correct": 0,
+            "explicacion": "El estroma es el espacio acuoso interno del cloroplasto que rodea a los tilacoides. Es equivalente a la matriz mitocondrial y en él se disuelven enzimas importantes para la fase oscura de la fotosíntesis."
+          }
+        },
+        {
+          "texto": "\"Tilacoides\" ⊃ discos membranosos que contienen la clorofila.",
+          "pregunta": {
+            "q": "¿En qué estructuras en forma de disco se encuentra localizada la clorofila dentro del cloroplasto?",
+            "opts": [
+              "En los cromosomas.",
+              "En los dictiosomas.",
+              "En los tilacoides."
+            ],
+            "correct": 2,
+            "explicacion": "Los tilacoides son compartimentos en forma de sacos aplanados o discos. Es en la membrana de estos tilacoides donde se anclan los pigmentos fotosintéticos, principalmente la clorofila, para captar la luz."
+          }
+        },
+        {
+          "texto": "\"Grana\" = agrupación de tilacoides apilados.",
+          "pregunta": {
+            "q": "¿Qué nombre recibe el conjunto o paquete formado por varios tilacoides apilados?",
+            "opts": [
+              "Grana.",
+              "Nucleolo.",
+              "Cisterna."
+            ],
+            "correct": 0,
+            "explicacion": "Para maximizar la superficie de absorción de luz, los tilacoides se disponen apilados unos sobre otros como monedas. Cada pila de tilacoides recibe el nombre botánico de \"grana\" (plural: granum)."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Fase Luminosa (Reacciones de Hill)",
+      "puntos": [
+        {
+          "texto": "\"Fase luminosa\" ∈ membrana del tilacoide.",
+          "pregunta": {
+            "q": "¿En qué región exacta del cloroplasto se desarrolla la fase luminosa?",
+            "opts": [
+              "Membrana del tilacoide.",
+              "Membrana externa.",
+              "Interior del estroma."
+            ],
+            "correct": 0,
+            "explicacion": "La primera etapa de la fotosíntesis (fase dependiente de la luz) ocurre exclusivamente en las membranas tilacoidales, ya que allí se ubican los fotosistemas y las cadenas de transporte electrónico."
+          }
+        },
+        {
+          "texto": "\"Fase luminosa\" ✓ requiere fotones de luz solar.",
+          "pregunta": {
+            "q": "¿Qué elemento físico es indispensable para que inicie la fase luminosa?",
+            "opts": [
+              "Moléculas de glucosa.",
+              "Fotones de luz solar.",
+              "Oscuridad total."
+            ],
+            "correct": 1,
+            "explicacion": "Esta fase se llama \"luminosa\" (o fotoquímica) justamente porque depende de la captura de energía radiante o fotones provenientes de la luz solar para excitar los electrones de la clorofila."
+          }
+        },
+        {
+          "texto": "\"Fase luminosa\" → produce moléculas de ATP y NADPH.",
+          "pregunta": {
+            "q": "¿Cuáles son los productos finales útiles generados durante la fase luminosa?",
+            "opts": [
+              "Glucosa y oxígeno.",
+              "Agua y dióxido de carbono.",
+              "Moléculas de ATP y NADPH."
+            ],
+            "correct": 2,
+            "explicacion": "La fase luminosa transforma la energía solar en energía química temporal (ATP) y poder reductor (NADPH, que es la forma reducida que lleva electrones). Ambos productos serán utilizados posteriormente en la fase oscura para fabricar glucosa."
+          }
+        },
+        {
+          "texto": "\"Clorofila\" → capta los fotones lumínicos incidentes.",
+          "pregunta": {
+            "q": "¿Qué función principal desempeña la molécula de clorofila al recibir luz?",
+            "opts": [
+              "Fijar el carbono ambiental.",
+              "Romper la membrana celular.",
+              "Captar los fotones lumínicos incidentes."
+            ],
+            "correct": 2,
+            "explicacion": "Ubicada en los fotosistemas (PSI y PSII), la clorofila es el principal pigmento fotorreceptor. Su función es absorber la energía de los fotones de luz y transferirla hacia un centro de reacción para desencadenar el flujo de electrones."
+          }
+        },
+        {
+          "texto": "\"Proteína Z\" → destruye moléculas de agua mediante fotólisis.",
+          "pregunta": {
+            "q": "¿Qué acción realiza la Proteína Z durante la fase luminosa?",
+            "opts": [
+              "Destruye moléculas de agua mediante fotólisis.",
+              "Une moléculas de glucosa.",
+              "Absorbe fotones infrarrojos."
+            ],
+            "correct": 0,
+            "explicacion": "La Proteína Z, asociada al Fotosistema II (PSII), es el complejo que cataliza la fotólisis del agua. Al destruir o romper el H2O, extrae los electrones perdidos por la clorofila y libera oxígeno molecular junto con protones (H+)."
+          }
+        },
+        {
+          "texto": "\"Proteína Z\" ✓ requiere ión manganeso para funcionar.",
+          "pregunta": {
+            "q": "¿Qué ión metálico es necesario para la actividad de la Proteína Z en el rompimiento del agua?",
+            "opts": [
+              "Ión magnesio (Mg+2).",
+              "Ión manganeso (Mn+2).",
+              "Ión hierro (Fe+2)."
+            ],
+            "correct": 1,
+            "explicacion": "El complejo liberador de oxígeno (Proteína Z) tiene un núcleo catalítico que depende fundamentalmente del ión manganeso (Mn+2). Este metal sufre cambios en su estado de oxidación para poder arrancar electrones al agua."
+          }
+        },
+        {
+          "texto": "\"Membrana tilacoidal\" ⊃ cadena transportadora de electrones excitados.",
+          "pregunta": {
+            "q": "¿Qué sistema de conducción se encuentra incrustado en la membrana tilacoidal?",
+            "opts": [
+              "Cadena transportadora de electrones excitados.",
+              "Ciclo de Calvin completo.",
+              "Bomba de sodio y potasio."
+            ],
+            "correct": 0,
+            "explicacion": "Los electrones excitados por la luz no quedan libres; viajan a lo largo de una \"cadena transportadora\" conformada por proteínas incrustadas en el tilacoide (como plastoquinona, citocromos y plastocianina) que se pasan los electrones en cascada."
+          }
+        },
+        {
+          "texto": "\"NADP\" = último aceptor biológico de electrones.",
+          "pregunta": {
+            "q": "¿Qué molécula actúa como el destino final de los electrones en la fase luminosa?",
+            "opts": [
+              "Oxígeno molecular.",
+              "Clorofila a.",
+              "NADP."
+            ],
+            "correct": 2,
+            "explicacion": "Al final de la cadena de transporte electrónico que parte desde el agua, los electrones son transferidos a la molécula NADP+. Al recibir estos electrones (junto con protones del medio), se reduce convirtiéndose en NADPH."
+          }
+        },
+        {
+          "texto": "Salida de protones → activa enzima \"ATPasa\" tilacoidal.",
+          "pregunta": {
+            "q": "¿Qué evento dinámico provoca la activación de la enzima ATPasa en el cloroplasto?",
+            "opts": [
+              "Ingreso masivo de electrones.",
+              "Salida de protones.",
+              "Ruptura de la clorofila."
+            ],
+            "correct": 1,
+            "explicacion": "Durante el transporte de electrones se acumulan protones (H+) dentro del espacio intratilacoidal. Al salir de regreso hacia el estroma por gradiente, pasan a través de la enzima ATPasa, actuando como un \"motor\" que la activa."
+          }
+        },
+        {
+          "texto": "\"ATPasa\" → fosforila ADP para generar nuevo ATP.",
+          "pregunta": {
+            "q": "¿Qué reacción química cataliza la enzima ATPasa al ser activada?",
+            "opts": [
+              "Oxida glucosa para crear piruvato.",
+              "Reduce NADP a NADPH.",
+              "Fosforila ADP para generar nuevo ATP."
+            ],
+            "correct": 2,
+            "explicacion": "Aprovechando la energía cinética del flujo de protones, la ATPasa une un grupo fosfato inorgánico (Pi) a una molécula de Adenosín Difosfato (ADP). Este proceso de fosforilación genera ATP, la moneda energética celular."
+          }
+        }
+      ]
+    }
+  ]
+}
