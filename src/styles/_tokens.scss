@@ -1,13 +1,10 @@
 /* ============================================================
-   TOKENS — Sistema de diseño en modo oscuro (único tema)
+   TOKENS — Sistema de diseño con selector claro/oscuro
    ------------------------------------------------------------
-   Modo oscuro pero diseñado para astigmatismo: nunca negro puro
-   + texto blanco puro, porque esa combinación es la que más
-   "halación" produce (halos/glow en los bordes de las letras).
-   Se usa gris oscuro cálido (~#1a1815, rango Material/Apple
-   #121212-#1e1e1e) + texto hueso (~#e6e1d3, no #fff), y los
-   acentos van desaturados/aclarados para no vibrar sobre el
-   fondo oscuro.
+   Neutros en gris/negro (sin tinte cálido). Se evita el blanco
+   100% puro y el negro 100% puro por el tema de "halación"
+   (halos/glow en bordes de letras, más notorio con astigmatismo),
+   pero manteniéndose dentro de gris/negro real, no un tono cálido.
 
    Acento principal: salvia (verde grisáceo) → asociado en teoría
    del color con calma, enfoque y constancia; funciona bien en
@@ -19,25 +16,22 @@
    reservado para like/CTA puntuales, nunca para fondos grandes.
    ============================================================ */
 
-:root {
-  /* Fondos y superficies — gris oscuro cálido, NUNCA negro puro:
-     el negro puro + texto blanco puro es la combinación que más
-     halación (halos/glow en los bordes) produce en astigmatismo.
-     Rango recomendado ~#121212-#1e1e1e (Material/Apple); aquí con
-     un tinte cálido en vez de gris frío. */
-  --bg: #1a1815;
-  --surface: #221f1b;
-  --surface-alt: #2c2822;
-  --surface-hover: #38332b;
-  --border: #453f35;
-  --border-strong: #5a5346;
+:root,
+[data-theme="oscuro"] {
+  /* Gris/negro neutro (sin tinte cálido) — negro no 100% puro para
+     no generar halación, pero sí gris oscuro/negro de verdad. */
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --surface-alt: #2a2a2a;
+  --surface-hover: #363636;
+  --border: #262626;
+  --border-strong: #454545;
 
-  /* Texto hueso, NUNCA blanco puro (#fff bleed/glow sobre fondo
-     oscuro) — contraste alto (~15:1) pero no al máximo posible */
-  --ink: #e6e1d3;
-  --ink-soft: #b9b3a1;
-  --ink-faint: #8b8574;
-  --ink-on-primary: #17140f;
+  /* Blanco no tan blanco */
+  --ink: #ececec;
+  --ink-soft: #b8b8b8;
+  --ink-faint: #8a8a8a;
+  --ink-on-primary: #121212;
 
   /* Color primario — salvia, aclarada y algo desaturada para que
      se vea bien sobre fondo oscuro sin vibrar/quemar */
@@ -65,20 +59,63 @@
   --warning: #cfab5f;
   --warning-bg: #3a301c;
 
-  /* Overlay (tinte cálido, no negro puro) */
-  --overlay: rgba(10, 9, 7, 0.55);
-  --overlay-strong: rgba(10, 9, 7, 0.82);
+  /* Overlay */
+  --overlay: rgba(0, 0, 0, 0.55);
+  --overlay-strong: rgba(0, 0, 0, 0.82);
 
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
+}
+
+[data-theme="claro"] {
+  /* Gris neutro (sin tinte cálido) + negro no 100% puro. */
+  --bg: #e9e9e9;
+  --surface: #f4f4f4;
+  --surface-alt: #dcdcdc;
+  --surface-hover: #cfcfcf;
+  --border: #dcdcdc;
+  --border-strong: #b8b8b8;
+
+  --ink: #1c1c1c;
+  --ink-soft: #4a4a4a;
+  --ink-faint: #767676;
+  --ink-on-primary: #ffffff;
+
+  --primary: #4f7259;
+  --primary-dark: #3a5442;
+  --primary-light: #729278;
+  --primary-bg: #d7e1d3;
+
+  --secondary: #4d6f8c;
+  --secondary-dark: #385267;
+  --secondary-bg: #cddbe4;
+
+  --accent: #b06a4d;
+  --accent-dark: #8f5138;
+  --accent-bg: #ecd7c7;
+
+  --danger: #a04e40;
+  --danger-dark: #833d32;
+  --danger-bg: #ecd2ca;
+  --success: #4f7259;
+  --success-bg: #d7e1d3;
+  --warning: #a67a30;
+  --warning-bg: #ecdcb8;
+
+  --overlay: rgba(0, 0, 0, 0.5);
+  --overlay-strong: rgba(0, 0, 0, 0.78);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.13);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.18);
+}
+
+:root {
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-full: 999px;
-
-  /* Sombras suaves — mucho menos opacas que en modo oscuro,
-     porque sobre fondo claro una sombra fuerte se ve como mancha */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
 
   --font-body: "Inter", sans-serif;
   --font-display: "Baloo 2", sans-serif;

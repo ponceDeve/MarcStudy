@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useTheme } from "../hooks/useTheme";
 
 // Header compacto compartido entre el inicio de Mi Estudio, Pomodoro y
 // Repaso. A diferencia del TopBar de dentro de un tema, este NO tiene
@@ -21,6 +22,7 @@ export default function AppHeader({
 }) {
   const [configOpen, setConfigOpen] = useState(false);
   const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const { tema, alternarTema } = useTheme();
 
   const botones = [
     ...(showHome
@@ -73,6 +75,14 @@ export default function AppHeader({
         <div className="topbar__nav">
           {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
         </div>
+
+        <button
+          onClick={alternarTema}
+          title={tema === "oscuro" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+          className="topbar__theme-btn"
+        >
+          <i className={`fa-solid ${tema === "oscuro" ? "fa-sun" : "fa-moon"}`} />
+        </button>
 
         <button onClick={() => setConfigOpen(true)} title="Opciones" className="topbar__gear">
           <i className="fa-solid fa-gear" />

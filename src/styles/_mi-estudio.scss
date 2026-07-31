@@ -35,10 +35,10 @@
   gap: 32px;
 }
 .mi-estudio__intro-eyebrow {
-  font-size: 12px;
+  font-size: 13.5px;
   font-family: var(--font-mono);
   letter-spacing: 0.15em;
-  color: var(--primary);
+  color: var(--ink-faint);
   text-transform: uppercase;
   text-align: center;
   margin: 0;
@@ -65,7 +65,7 @@
   width: 100%;
 }
 .mi-estudio__hud-wrap {
-  margin-bottom: 60px;
+  margin-bottom: 24px;
   width: 100%;
   max-width: 48rem;
   margin-left: auto;
@@ -99,10 +99,9 @@
   text-align: center;
 }
 .mi-estudio__theory-badge {
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--primary);
   margin-bottom: 20px;
   font-weight: 700;
   background: var(--primary-bg);
@@ -163,7 +162,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #fff;
+  color: var(--ink-on-primary);
 }
 .mi-estudio__google-btn:hover {
   background: var(--primary-dark);
@@ -235,7 +234,7 @@
 .mi-estudio__nav-btn.is-active {
   background: var(--primary);
   border-bottom-color: var(--primary-dark);
-  color: #fff;
+  color: var(--ink-on-primary);
 }
 .mi-estudio__nav-btn.is-active:hover {
   background: var(--primary-light);
@@ -257,7 +256,7 @@
   background: var(--secondary);
   border: none;
   border-bottom: 3px solid var(--secondary-dark);
-  color: #fff;
+  color: var(--ink-on-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,8 +284,8 @@
   white-space: normal;
   text-align: center;
   background: var(--danger);
-  color: #fff;
-  font-size: 12px;
+  color: var(--ink-on-primary);
+  font-size: 13.5px;
   font-weight: 700;
   padding: 6px 12px;
   border-radius: var(--radius-sm);
@@ -328,7 +327,7 @@
   background: var(--primary);
   border: none;
   border-bottom: 4px solid var(--primary-dark);
-  color: #fff;
+  color: var(--ink-on-primary);
   font-weight: 800;
   border-radius: var(--radius-lg);
   cursor: pointer;
@@ -357,7 +356,7 @@
   position: absolute;
   top: 40px;
   background: var(--danger);
-  color: #fff;
+  color: var(--ink-on-primary);
   font-weight: 700;
   padding: 12px 24px;
   border-radius: var(--radius-md);
@@ -385,7 +384,7 @@
   align-items: center;
   justify-content: center;
   font-size: 32px;
-  color: #fff;
+  color: var(--ink-on-primary);
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -417,7 +416,7 @@
   font-weight: 700;
   border: none;
   border-radius: var(--radius-md);
-  color: #fff;
+  color: var(--ink-on-primary);
   cursor: pointer;
 }
 .vidas-alert__btn:active {
@@ -434,7 +433,7 @@
 }
 .config-overlay__label {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--ink);
   font-weight: 700;
   background: var(--surface);
@@ -443,4 +442,3 @@
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
 }
-

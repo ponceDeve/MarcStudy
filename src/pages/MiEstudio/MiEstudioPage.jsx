@@ -321,6 +321,8 @@ export default function MiEstudioPage() {
       setStage("question");
     } else {
       setCountdown(0);
+      setQuestionResult(null);
+      setAttemptKey((k) => k + 1);
       setStage("theory");
     }
   }
@@ -657,34 +659,34 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-            <div className="home-search">
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onFocus={() => setBusquedaEnfocada(true)}
-                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar tema o curso..."
-                className="home-search-input"
-              />
-              {busquedaEnfocada && resultsVisibles.length > 0 && (
-                <div className="home-search-results">
-                  {resultsVisibles.map((r, i) => (
-                    <button
-                      key={r.nombre}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        seleccionarItem(r);
-                      }}
-                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                    >
-                      <p>{r.nombre}</p>
-                    </button>
-                  ))}
-                </div>
-              )}
+              <div className="home-search">
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onFocus={() => setBusquedaEnfocada(true)}
+                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                  onKeyDown={handleKeyDownInicial}
+                  placeholder="Buscar tema o curso..."
+                  className="home-search-input"
+                />
+                {busquedaEnfocada && resultsVisibles.length > 0 && (
+                  <div className="home-search-results">
+                    {resultsVisibles.map((r, i) => (
+                      <button
+                        key={r.nombre}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          seleccionarItem(r);
+                        }}
+                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                      >
+                        <p>{r.nombre}</p>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </>
         )}
 

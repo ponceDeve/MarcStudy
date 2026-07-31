@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function TopBar({
   tema,
@@ -11,6 +12,7 @@ export default function TopBar({
   onGuardarRepaso,
 }) {
   const [configOpen, setConfigOpen] = useState(false);
+  const { tema: modoColor, alternarTema } = useTheme();
 
   // Construir las URLs absolutas usando el origen actual
   const baseUrl = window.location.origin;
@@ -115,6 +117,14 @@ export default function TopBar({
           {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
         </div>
 
+        <button
+          onClick={alternarTema}
+          title={modoColor === "oscuro" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+          className="topbar__theme-btn"
+        >
+          <i className={`fa-solid ${modoColor === "oscuro" ? "fa-sun" : "fa-moon"}`} />
+        </button>
+
         <button onClick={() => setConfigOpen(true)} title="Opciones" className="topbar__gear">
           <i className="fa-solid fa-gear" />
         </button>
@@ -129,7 +139,7 @@ export default function TopBar({
             <div className="topbar__overlay-row1">
               {botones.slice(0, 3).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
-            <div className="topbar__overlay-row1">
+            <div className="topbar__overlay-row2">
               {botones.slice(3, 6).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
           </div>

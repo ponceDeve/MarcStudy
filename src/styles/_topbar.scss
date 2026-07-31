@@ -30,8 +30,8 @@
   text-overflow: ellipsis;
 }
 .topbar__curso {
-  font-size: 12px;
-  color: var(--primary);
+  font-size: 13.5px;
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,7 +64,7 @@
 }
 .topbar__nav-btn span {
   font-weight: 500;
-  font-size: 9px;
+  font-size: 13.5px;
 }
 .topbar__gear {
   display: none;
@@ -77,6 +77,24 @@
   width: 36px;
   height: 36px;
   flex-shrink: 0;
+}
+/* A diferencia de .topbar__gear (solo mobile, abre el menú "..."),
+   este botón siempre se ve, en cualquier tamaño de pantalla — es
+   para acciones que queremos accesibles siempre, como el tema. */
+.topbar__theme-btn {
+  display: flex;
+  color: var(--ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+.topbar__theme-btn i {
+  font-size: 18px;
 }
 .topbar__overlay {
   position: fixed;
@@ -129,7 +147,7 @@
   font-size: 30px;
 }
 .topbar__overlay-btn span {
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .topbar__gear i {
@@ -183,8 +201,8 @@
 /* Flechita sutil para indicar que se abre un menú/modal */
 .topbar__title-btn .topbar__tema::after {
   content: "▼";
-  font-size: 10px;
-  color: var(--primary);
+  font-size: 14px;
+  color: var(--ink-faint);
   opacity: 0.8;
 }
 
@@ -218,7 +236,7 @@
   background-color: #1f2937; /* Gris oscuro/negro */
   color: #f9fafb;
   border-radius: 6px;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 400;
   z-index: 50; /* Asegura que flote por encima de otros elementos */
   pointer-events: none; /* Evita que el tooltip interfiera con el ratón */
