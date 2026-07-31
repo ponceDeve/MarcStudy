@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { buscarConPuntaje } from "../../lib/buscador";
 
 export default function TopicsModal({
   open,
@@ -76,9 +77,7 @@ export default function TopicsModal({
 
   const temasConIndice = listaTemas.map((item, index) => ({ item, index }));
   const temasFiltrados = busqueda.trim()
-    ? temasConIndice.filter(({ item }) =>
-      item.tema.toLowerCase().includes(busqueda.trim().toLowerCase())
-    )
+    ? buscarConPuntaje(temasConIndice, busqueda, ({ item }) => item.tema)
     : temasConIndice;
 
   // El título solo cambia con clic/toque (activeIndex), nunca con el

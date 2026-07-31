@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { buscarConPuntaje } from "../../lib/buscador";
 
 export default function LevelsModal({
   open,
@@ -44,7 +45,7 @@ export default function LevelsModal({
 
   const indices = Array.from({ length: total }, (_, i) => i);
   const indicesFiltrados = busqueda.trim()
-    ? indices.filter((i) => previewNivel(i).toLowerCase().includes(busqueda.trim().toLowerCase()))
+    ? buscarConPuntaje(indices, busqueda, (i) => previewNivel(i))
     : indices;
 
   return (

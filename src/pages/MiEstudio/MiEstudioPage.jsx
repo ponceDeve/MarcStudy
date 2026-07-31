@@ -18,6 +18,7 @@ import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido } from "../../lib/pomodoroShared";
+import { buscarConPuntaje } from "../../lib/buscador";
 import 'katex/dist/katex.min.css';
 
 const OPCIONES_BUSQUEDA = [
@@ -140,9 +141,10 @@ export default function MiEstudioPage() {
 
   const results = useMemo(() => {
     if (!query.trim()) return [];
-    const q = query.trim().toLowerCase();
-    return OPCIONES_BUSQUEDA.filter(
-      (item) => item.type === "curso" && item.nombre.toLowerCase().includes(q),
+    return buscarConPuntaje(
+      OPCIONES_BUSQUEDA.filter((item) => item.type === "curso"),
+      query,
+      (item) => item.nombre,
     ).slice(0, 8);
   }, [query]);
 
@@ -655,34 +657,34 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-              <div className="home-search">
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setBusquedaEnfocada(true)}
-                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                  onKeyDown={handleKeyDownInicial}
-                  placeholder="Buscar tema o curso..."
-                  className="home-search-input"
-                />
-                {busquedaEnfocada && resultsVisibles.length > 0 && (
-                  <div className="home-search-results">
-                    {resultsVisibles.map((r, i) => (
-                      <button
-                        key={r.nombre}
-                        onMouseDown={(e) => {
-                          e.preventDefault();
-                          seleccionarItem(r);
-                        }}
-                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                      >
-                        <p>{r.nombre}</p>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="home-search">
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => setBusquedaEnfocada(true)}
+                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                onKeyDown={handleKeyDownInicial}
+                placeholder="Buscar tema o curso..."
+                className="home-search-input"
+              />
+              {busquedaEnfocada && resultsVisibles.length > 0 && (
+                <div className="home-search-results">
+                  {resultsVisibles.map((r, i) => (
+                    <button
+                      key={r.nombre}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        seleccionarItem(r);
+                      }}
+                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                    >
+                      <p>{r.nombre}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+          </div>
           </>
         )}
 

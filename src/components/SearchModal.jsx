@@ -1,18 +1,21 @@
 import { useState, useMemo, useEffect } from "react";
 import manifest from "../data/manifest.json";
 import { useArrowKeyList } from "../hooks/useArrowKeyList";
+import { buscarConPuntaje } from "../lib/buscador";
+
+const OPCIONES = manifest.cursos.map((c) => ({ type: "curso", nombre: c.nombre }));
+
+function textoDeItem(item) {
+  return item.nombre;
+}
 
 export default function SearchModal({ open, onClose, onSelect }) {
   const [query, setQuery] = useState("");
 
-  const results = useMemo(() => {
-    if (!query.trim()) return [];
-    const q = query.trim().toLowerCase();
-    return manifest.cursos
-      .filter((c) => c.nombre.toLowerCase().includes(q))
-      .map((c) => ({ type: "curso", nombre: c.nombre }))
-      .slice(0, 15);
-  }, [query]);
+  const results = useMemo(
+    () => buscarConPuntaje(OPCIONES, query, textoDeItem).slice(0, 15),
+    [query],
+  );
 
   const { focusedIdx, handleKeyDown } = useArrowKeyList(results, (item) => {
     onSelect(item);
