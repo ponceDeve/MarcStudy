@@ -107,11 +107,26 @@ function OpcionMultiple({ pregunta, onRespondido }) {
     resolver(correct, correct ? idxCorrecta : null);
   }
 
+  const lineasQ = pregunta.q.split("\n").filter((l) => l.trim() !== "");
+  const introQ = lineasQ[0] || "";
+  const restoQ = lineasQ.slice(1);
+
   return (
     <>
-      <h3 className="question-card__q">
-        <Latex>{pregunta.q}</Latex>
-      </h3>
+      <div className="question-card__q">
+        <p className="question-card__q-intro">
+          <Latex>{introQ}</Latex>
+        </p>
+        {restoQ.length > 0 && (
+          <div className="question-card__q-props">
+            {restoQ.map((linea, i) => (
+              <p key={i} className="question-card__q-prop">
+                <Latex>{linea}</Latex>
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="question-card__options">
         {shuffled.map((opt, i) => {
@@ -207,17 +222,17 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
         </h3>
       )}
 
-      <div className="question-card__vf-list">
+      <ol className="question-card__vf-list">
         {proposiciones.map((prop, i) => {
           const propAcertada = answered && respuestas[i] === prop.correct;
           const propFallada = answered && respuestas[i] !== prop.correct;
           return (
-            <div
+            <li
               key={i}
               className={`question-card__vf-row ${propAcertada ? "is-correct" : ""} ${propFallada ? "is-wrong" : ""}`}
             >
               <span className="question-card__vf-texto">
-                {i + 1}. <Latex>{prop.texto}</Latex>
+                <Latex>{prop.texto}</Latex>
               </span>
               <div className="question-card__vf-btns">
                 <button
@@ -240,10 +255,10 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
                   Incorrecto — inténtalo de nuevo
                 </span>
               )}
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ol>
 
       {!answered && (
         <button

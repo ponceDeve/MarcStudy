@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
 
 export default function LevelsModal({
   open,
@@ -8,30 +7,14 @@ export default function LevelsModal({
   maxUnlocked,
   current,
   onSelect,
-  levelCompletions = {},
 }) {
-  const [hoveredIdx, setHoveredIdx] = useState(null);
-  const [activeIdx, setActiveIdx] = useState(null);
-  const [hasHover, setHasHover] = useState(false);
   const [busqueda, setBusqueda] = useState("");
-  const { pos, mostrarEn, ocultar } = useFloatingTooltip(220);
   const puntoInicioToque = useRef(null);
   const UMBRAL_ARRASTRE = 10;
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia) {
-      setHasHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!open) {
-      setActiveIdx(null);
-      setHoveredIdx(null);
-      setBusqueda("");
-      ocultar();
-    }
-  }, [open, ocultar]);
+    if (!open) setBusqueda("");
+  }, [open]);
 
   if (!open) return null;
 
@@ -40,7 +23,7 @@ export default function LevelsModal({
   function previewNivel(i) {
     const levelData = flatPuntos[i] || {};
     const textoBase = levelData.tema || levelData.nombre || levelData.q || levelData.textoConEspacios || "";
-    return textoBase.length > 42 ? `${textoBase.slice(0, 42).trim()}…` : textoBase || `Nivel ${i + 1}`;
+    return textoBase || `Nivel ${i + 1}`;
   }
 
   // Compara dónde empezó el toque (pointerdown) contra dónde terminó
@@ -53,46 +36,10 @@ export default function LevelsModal({
     return Math.sqrt(dx * dx + dy * dy) > UMBRAL_ARRASTRE;
   }
 
-  function manejarClick(i, locked, el) {
+  function seleccionar(i, locked) {
     if (locked) return;
-
-    if (hasHover && hoveredIdx === i) {
-      onSelect(i);
-      onClose();
-      return;
-    }
-
-    if (activeIdx === i) {
-      onSelect(i);
-      onClose();
-      setActiveIdx(null);
-      ocultar();
-      return;
-    }
-
-    setActiveIdx(i);
-    mostrarEn(el);
-  }
-
-  function manejarHover(i, locked, el) {
-    if (locked) return;
-    setHoveredIdx(i);
-    mostrarEn(el);
-  }
-
-  function manejarSalidaHover() {
-    setHoveredIdx(null);
-    if (activeIdx === null) ocultar();
-  }
-
-  // Si el usuario empieza a scrollear, el tooltip/preview que estaba
-  // anclado a un botón queda "huérfano" (el botón se mueve, el tooltip
-  // no, porque es position:fixed) y se ve roto. Se oculta apenas
-  // detecta scroll dentro del modal.
-  function manejarScroll() {
-    setActiveIdx(null);
-    setHoveredIdx(null);
-    ocultar();
+    onSelect(i);
+    onClose();
   }
 
   const indices = Array.from({ length: total }, (_, i) => i);
@@ -100,17 +47,8 @@ export default function LevelsModal({
     ? indices.filter((i) => previewNivel(i).toLowerCase().includes(busqueda.trim().toLowerCase()))
     : indices;
 
-  const idxVisible = hoveredIdx !== null ? hoveredIdx : activeIdx;
-
   return (
-    <div
-      className="levels-modal"
-      onClick={() => {
-        setActiveIdx(null);
-        ocultar();
-      }}
-      onScroll={manejarScroll}
-    >
+    <div className="levels-modal" onClick={onClose}>
       <div className="levels-modal__inner" onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title">Seleccionar Nivel</h2>
 
@@ -122,20 +60,6 @@ export default function LevelsModal({
             className="home-search-input"
           />
         </div>
-
-        {pos && idxVisible !== null && (
-          <div
-            className="level-tooltip is-visible"
-            style={{ position: "fixed", top: pos.top, left: pos.left, transform: "translate(-50%, -100%)" }}
-          >
-            {previewNivel(idxVisible)}
-            {(levelCompletions[idxVisible] || 0) > 0 && (
-              <div style={{ marginTop: "4px", fontSize: "0.85em" }}>
-                ✓ Completado {levelCompletions[idxVisible]} {levelCompletions[idxVisible] === 1 ? "vez" : "veces"}
-              </div>
-            )}
-          </div>
-        )}
 
         <div className="levels-modal__grid">
           {indicesFiltrados.map((i) => {
@@ -152,10 +76,8 @@ export default function LevelsModal({
                   onClick={(e) => {
                     e.stopPropagation();
                     if (fueArrastre(e)) return;
-                    manejarClick(i, locked, e.currentTarget);
+                    seleccionar(i, locked);
                   }}
-                  onMouseOver={(e) => manejarHover(i, locked, e.currentTarget)}
-                  onMouseOut={manejarSalidaHover}
                   className={`level-btn ${isCurrent ? "is-current" : ""}`}
                 >
                   {locked ? <i className="fas fa-lock" /> : i + 1}

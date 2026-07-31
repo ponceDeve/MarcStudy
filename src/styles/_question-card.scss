@@ -13,11 +13,30 @@
   margin: 0 auto;
 }
 .question-card__q {
+  margin: 10px 0 32px;
+  color: var(--ink);
+}
+.question-card__q-intro {
   font-size: 18px;
   font-weight: 600;
-  margin: 10px 0 32px;
   text-align: center;
-  color: var(--ink);
+  margin: 0 0 14px;
+}
+.question-card__q-props {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.question-card__q-prop {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
 }
 .question-card__options {
   display: flex;
@@ -32,7 +51,7 @@
   }
 }
 .question-card__opt {
-  font-size: 13px;
+  font-size: 14px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 14px 12px;
@@ -92,7 +111,7 @@
   max-width: 28rem;
   padding: 10px;
   background: var(--primary);
-  color: #fff;
+  color: var(--ink-on-primary);
   border: none;
   border-radius: var(--radius-md);
   font-size: 14px;
@@ -109,7 +128,7 @@
 }
 .question-card__explicacion {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink-soft);
 }
 
@@ -120,6 +139,9 @@
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
+  list-style: none;
+  padding: 0;
+  counter-reset: proposicion;
 }
 .question-card__vf-row {
   display: flex;
@@ -130,6 +152,13 @@
   border-radius: var(--radius-md);
   background: var(--surface-alt);
   padding: 10px 14px;
+  counter-increment: proposicion;
+}
+.question-card__vf-row::before {
+  content: counter(proposicion) ".";
+  font-weight: 700;
+  color: var(--ink-soft);
+  flex-shrink: 0;
 }
 .question-card__vf-row.is-correct {
   border-color: var(--success);
@@ -141,7 +170,7 @@
 }
 .question-card__vf-texto {
   flex: 1 1 200px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--ink);
   text-align: left;
 }
@@ -166,14 +195,14 @@
 .question-card__vf-btn.is-selected {
   background: var(--primary);
   border-color: var(--primary);
-  color: #fff;
+  color: var(--ink-on-primary);
 }
 .question-card__vf-btn:disabled {
   cursor: default;
 }
 .question-card__vf-correcta {
   width: 100%;
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--danger);
 }
 
@@ -207,8 +236,7 @@
   color: var(--danger);
 }
 .question-card__cloze-correctas {
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--danger);
   margin-bottom: 12px;
 }
-
