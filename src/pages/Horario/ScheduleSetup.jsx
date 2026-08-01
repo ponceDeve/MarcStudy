@@ -5,6 +5,8 @@ import {
   MAX_CURSOS_POR_DIA,
   LIMITE_NOMBRE_CURSO,
 } from "../../lib/scheduleStorage";
+import manifest from "../../data/manifest.json";
+import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
@@ -25,6 +27,13 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   const cursosDelDia = horario[diaActual] || [];
   const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
 
+  const sugerencias = nombreCurso.trim()
+    ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
+    : [];
+  const coincideExacto = manifest.cursos.some(
+    (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
+  );
+
   function toggleDia(dia) {
     setDiasSeleccionados((prev) =>
       prev.includes(dia) ? prev.filter((d) => d !== dia) : [...prev, dia],
@@ -43,11 +52,14 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
 
   function agregarCurso() {
     const limpio = nombreCurso.trim();
-    if (!limpio || nombreExcedido) return;
+    const cursoReal = manifest.cursos.find(
+      (c) => normalizarTexto(c.nombre) === normalizarTexto(limpio),
+    );
+    if (!cursoReal || nombreExcedido) return;
 
     setHorario((prev) => {
       const listaActual = prev[diaActual] || [];
-      return { ...prev, [diaActual]: [...listaActual, { subject: limpio, pomodoros }] };
+      return { ...prev, [diaActual]: [...listaActual, { subject: cursoReal.nombre, pomodoros }] };
     });
     setNombreCurso("");
     setPomodoros(4);
@@ -139,10 +151,39 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           border-color: var(--danger);
         }
         .setup-char-count {
-          font-size: 0.78rem;
+          font-size: 0.875rem;
           text-align: right;
           color: var(--ink-soft);
           margin: -10px 2px 0 0;
+        }
+        .setup-input-wrap {
+          position: relative;
+        }
+        .setup-sugerencias {
+          position: absolute;
+          top: calc(100% + 4px);
+          left: 0;
+          right: 0;
+          z-index: 20;
+          max-height: 220px;
+          overflow-y: auto;
+          background: var(--surface);
+          border: 1px solid var(--border-strong);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-md);
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding: 6px;
+        }
+        .setup-sugerencia-item {
+          text-align: left;
+          padding: 8px 12px;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border);
+          background: var(--surface-alt);
+          color: var(--ink);
+          font-size: 0.9rem;
         }
         .setup-char-count.is-error {
           color: var(--danger);
@@ -254,13 +295,33 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               </div>
             )}
 
-            <input
-              autoFocus
-              value={nombreCurso}
-              onChange={(e) => setNombreCurso(e.target.value)}
-              placeholder="Nombre del curso..."
-              className={`setup-input ${nombreExcedido ? "is-error" : ""}`}
-            />
+            <div className="setup-input-wrap">
+              <input
+                autoFocus
+                value={nombreCurso}
+                onChange={(e) => setNombreCurso(e.target.value)}
+                placeholder="Escribe el nombre del curso..."
+                className={`setup-input ${nombreExcedido ? "is-error" : ""}`}
+              />
+              {sugerencias.length > 0 && !coincideExacto && (
+                <div className="setup-sugerencias">
+                  {sugerencias.map((c) => (
+                    <button
+                      key={c.nombre}
+                      className="setup-sugerencia-item"
+                      onClick={() => setNombreCurso(c.nombre)}
+                    >
+                      {c.nombre}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            {nombreCurso.trim() && sugerencias.length === 0 && (
+              <p className="setup-sub" style={{ margin: 0, color: "var(--danger)" }}>
+                Ningún curso tuyo coincide con "{nombreCurso}". Configúralo primero en Mi Estudio.
+              </p>
+            )}
             <p className={`setup-char-count ${nombreExcedido ? "is-error" : ""}`}>
               {nombreExcedido
                 ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
@@ -288,7 +349,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               )}
               <button
                 className="setup-btn is-primary btn-primary"
-                disabled={!nombreCurso.trim() || nombreExcedido}
+                disabled={!coincideExacto || nombreExcedido}
                 onClick={agregarCurso}
               >
                 Agregar curso

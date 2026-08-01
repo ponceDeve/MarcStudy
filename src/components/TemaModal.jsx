@@ -9,7 +9,10 @@ export default function TemaModal({ open, subject, day, onGuardar, onOmitir }) {
   }, [open]);
 
   return (
-    <Modal open={open}>
+    <Modal open={open} onClose={onOmitir}>
+      <button onClick={onOmitir} className="modal-close-x" aria-label="Cerrar">
+        <i className="fa-solid fa-times" />
+      </button>
       <h3 className="tema-modal-title">¿Qué tema viste?</h3>
       <p className="tema-modal-subtitle">
         {subject} {day ? `· ${day}` : ""}

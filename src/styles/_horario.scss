@@ -405,7 +405,7 @@
 .horario__mini-track {
   flex: 1;
   height: 6px;
-  background: rgba(45, 45, 45, 0.08);
+  background: rgba(255, 255, 255, 0.205);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -666,3 +666,38 @@
 .horario__complete-btn:hover {
   background: var(--primary-dark);
 }
+
+.curso-rapido__temas {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE y Edge antiguo */
+}
+
+.curso-rapido__temas::-webkit-scrollbar {
+  display: none;              /* Chrome, Edge y Safari */
+}
+
+.curso-rapido__tema-btn {
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.curso-rapido__tema-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+

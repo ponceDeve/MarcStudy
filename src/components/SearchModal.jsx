@@ -9,19 +9,34 @@ function textoDeItem(item) {
   return item.nombre;
 }
 
+// A diferencia del buscador de inicio (que sí busca en vivo mientras
+// escribes), este busca recién al presionar Enter — para no mostrar
+// resultados cambiando todo el tiempo mientras tipeas.
 export default function SearchModal({ open, onClose, onSelect }) {
   const [query, setQuery] = useState("");
+  const [submittedQuery, setSubmittedQuery] = useState("");
+  const yaBuscado = submittedQuery.trim() !== "" && submittedQuery === query;
 
   const results = useMemo(
-    () => buscarConPuntaje(OPCIONES, query, textoDeItem).slice(0, 15),
-    [query],
+    () => (yaBuscado ? buscarConPuntaje(OPCIONES, submittedQuery, textoDeItem).slice(0, 15) : []),
+    [submittedQuery, yaBuscado],
   );
 
   const { focusedIdx, handleKeyDown } = useArrowKeyList(results, (item) => {
     onSelect(item);
     setQuery("");
+    setSubmittedQuery("");
     onClose();
   });
+
+  function onKeyDownInput(e) {
+    if (e.key === "Enter" && !yaBuscado) {
+      e.preventDefault();
+      setSubmittedQuery(query);
+      return;
+    }
+    handleKeyDown(e);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -40,14 +55,27 @@ export default function SearchModal({ open, onClose, onSelect }) {
       className="search-overlay"
     >
       <div className="search-box">
-        <input
-          autoFocus
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Buscar tema o curso..."
-          className="search-input"
-        />
+        <button onClick={onClose} className="modal-close-x" aria-label="Cerrar">
+          <i className="fa-solid fa-times" />
+        </button>
+        <div className="search-input-row">
+          <input
+            autoFocus
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={onKeyDownInput}
+            placeholder="Buscar tema o curso..."
+            className="search-input"
+          />
+          <button
+            onClick={() => setSubmittedQuery(query)}
+            className="search-input-lupa"
+            aria-label="Buscar"
+            title="Buscar"
+          >
+            <i className="fa-solid fa-magnifying-glass" />
+          </button>
+        </div>
 
         {results.length > 0 && (
           <div className="search-results">
@@ -60,6 +88,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
                   onClick={() => {
                     onSelect(r);
                     setQuery("");
+                    setSubmittedQuery("");
                     onClose();
                   }}
                   className={`search-result-item is-curso ${isFocused ? "is-focused" : ""}`}
@@ -71,8 +100,8 @@ export default function SearchModal({ open, onClose, onSelect }) {
           </div>
         )}
 
-        {query.trim() && results.length === 0 && (
-          <p className="search-empty">Sin resultados para "{query}"</p>
+        {yaBuscado && results.length === 0 && (
+          <p className="search-empty">Sin resultados para "{submittedQuery}"</p>
         )}
       </div>
     </div>

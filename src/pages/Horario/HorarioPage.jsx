@@ -11,6 +11,7 @@ import {
   DIA_LABELS,
 } from "../../lib/scheduleStorage";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
+import { normalizarTexto } from "../../lib/buscador";
 import {
   guardarPomodoroCompartido,
   limpiarPomodoroCompartido,
@@ -222,6 +223,13 @@ export default function HorarioPage() {
       return;
     }
 
+    // Se llegó acá con "Pomo" desde un tema (?curso=&tema=): al
+    // presionar Iniciar, vuelve a ese mismo tema.
+    if (temaDesdeLink) {
+      window.open(`${window.location.origin}/cont_crono/?q=${encodeURIComponent(temaDesdeLink.tema)}`, "_blank");
+      return;
+    }
+
     const retorno = leerYLimpiarRetorno();
     if (retorno) {
       window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(retorno)}`;
@@ -354,7 +362,7 @@ export default function HorarioPage() {
     for (const dia of DIAS_SEMANA) {
       const lista = horario[dia] || [];
       const idx = lista.findIndex(
-        (c) => c.subject.toLowerCase() === cursoParam.toLowerCase(),
+        (c) => normalizarTexto(c.subject) === normalizarTexto(cursoParam),
       );
       if (idx !== -1) {
         setSelectedDay(dia);
@@ -625,7 +633,10 @@ export default function HorarioPage() {
 
       <audio ref={alarmRef} src="sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
 
-      <Modal open={courseCompleteOpen} wide>
+      <Modal open={courseCompleteOpen} onClose={cerrarCourseComplete} wide>
+        <button onClick={cerrarCourseComplete} className="modal-close-x" aria-label="Cerrar">
+          <i className="fa-solid fa-times" />
+        </button>
         <div className="horario__complete-modal">
           <div className="horario__complete-emoji">🎉</div>
           <h2 className="horario__complete-title">¡Felicidades!</h2>
@@ -661,6 +672,9 @@ export default function HorarioPage() {
       />
 
       <Modal open={eligiendoTemaIdx !== null} onClose={omitirTemaDeCurso}>
+        <button onClick={omitirTemaDeCurso} className="modal-close-x" aria-label="Cerrar">
+          <i className="fa-solid fa-times" />
+        </button>
         <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
           <h3 style={{ margin: 0 }}>
             {eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""}
@@ -670,7 +684,9 @@ export default function HorarioPage() {
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
             {(manifest.cursos.find(
-              (c) => c.nombre === (eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""),
+              (c) =>
+                normalizarTexto(c.nombre) ===
+                normalizarTexto(eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""),
             )?.temas || []).map((t) => (
               <button
                 key={t.tema}
@@ -698,6 +714,9 @@ export default function HorarioPage() {
       </Modal>
 
       <Modal open={!!cursoRapidoDia} onClose={cancelarCursoRapido}>
+        <button onClick={cancelarCursoRapido} className="modal-close-x" aria-label="Cerrar">
+          <i className="fa-solid fa-times" />
+        </button>
         <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
           <h3 style={{ margin: 0 }}>{cursoRapidoNombre}</h3>
           {!temaRapidoElegido ? (
@@ -706,7 +725,7 @@ export default function HorarioPage() {
                 Elige el tema que vas a repasar en {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
-                {(manifest.cursos.find((c) => c.nombre === cursoRapidoNombre)?.temas || []).map((t) => (
+                {(manifest.cursos.find((c) => normalizarTexto(c.nombre) === normalizarTexto(cursoRapidoNombre))?.temas || []).map((t) => (
                   <button
                     key={t.tema}
                     onClick={() => setTemaRapidoElegido(t.tema)}

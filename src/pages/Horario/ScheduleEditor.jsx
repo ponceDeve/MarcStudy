@@ -5,6 +5,8 @@ import {
   MAX_CURSOS_POR_DIA,
   LIMITE_NOMBRE_CURSO,
 } from "../../lib/scheduleStorage";
+import manifest from "../../data/manifest.json";
+import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 
 const NOMBRE_DIA = {
   lunes: "Lunes",
@@ -35,6 +37,12 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
   const diasDisponibles = DIAS_SEMANA.filter((d) => !diasConfigurados.includes(d));
   const cursosDelDia = diaEditando ? horario[diaEditando] || [] : [];
   const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
+  const sugerencias = nombreCurso.trim()
+    ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
+    : [];
+  const coincideExacto = manifest.cursos.some(
+    (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
+  );
 
   function actualizar(nuevoHorario) {
     setHorario(nuevoHorario);
@@ -60,10 +68,12 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
   }
 
   function confirmarAgregarCurso() {
-    const limpio = nombreCurso.trim();
-    if (!limpio || nombreExcedido) return;
+    const cursoReal = manifest.cursos.find(
+      (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
+    );
+    if (!cursoReal || nombreExcedido) return;
     const listaActual = horario[diaEditando] || [];
-    actualizar({ ...horario, [diaEditando]: [...listaActual, { subject: limpio, pomodoros }] });
+    actualizar({ ...horario, [diaEditando]: [...listaActual, { subject: cursoReal.nombre, pomodoros }] });
     setVista("dia");
   }
 
@@ -75,10 +85,12 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
   }
 
   function guardarEdicionCurso() {
-    const limpio = nombreCurso.trim();
-    if (!limpio || nombreExcedido) return;
+    const cursoReal = manifest.cursos.find(
+      (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
+    );
+    if (!cursoReal || nombreExcedido) return;
     const listaActual = [...cursosDelDia];
-    listaActual[editIdx] = { subject: limpio, pomodoros };
+    listaActual[editIdx] = { subject: cursoReal.nombre, pomodoros };
     actualizar({ ...horario, [diaEditando]: listaActual });
     setEditIdx(null);
   }
@@ -96,7 +108,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
   }
 
   return (
-    <div className="editor-overlay">
+    <div className="editor-overlay" onClick={(e) => e.target === e.currentTarget && onCerrar && onCerrar()}>
       <style>{`
         .editor-overlay {
           position: fixed;
@@ -119,11 +131,6 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           display: flex;
           flex-direction: column;
           gap: 16px;
-          scrollbar-width: none; /* Oculta la barra */
-          -ms-overflow-style: none; /* IE y Edge antiguo */
-        }
-        .editor-card::-webkit-scrollbar {
-          display: none;
         }
         .editor-titulo-row {
           display: flex;
@@ -165,7 +172,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           gap: 2px;
         }
         .editor-dia-sub {
-          font-size: 0.78rem;
+          font-size: 0.875rem;
           font-weight: 400;
           color: var(--ink-soft);
         }
@@ -237,7 +244,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
           border-color: var(--danger);
         }
         .editor-char-count {
-          font-size: 0.78rem;
+          font-size: 0.875rem;
           text-align: right;
           color: var(--ink-soft);
           margin: -8px 2px 0 0;
@@ -245,6 +252,35 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
         .editor-char-count.is-error {
           color: var(--danger);
           font-weight: 700;
+        }
+        .editor-input-wrap {
+          position: relative;
+        }
+        .setup-sugerencias {
+          position: absolute;
+          top: calc(100% + 4px);
+          left: 0;
+          right: 0;
+          z-index: 20;
+          max-height: 220px;
+          overflow-y: auto;
+          background: var(--surface);
+          border: 1px solid var(--border-strong);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-md);
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding: 6px;
+        }
+        .setup-sugerencia-item {
+          text-align: left;
+          padding: 8px 12px;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border);
+          background: var(--surface-alt);
+          color: var(--ink);
+          font-size: 0.9rem;
         }
         .editor-pomo-grid {
           display: grid;
@@ -356,12 +392,32 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
             {cursosDelDia.map((c, idx) =>
               editIdx === idx ? (
                 <div key={idx} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <input
-                    autoFocus
-                    value={nombreCurso}
-                    onChange={(e) => setNombreCurso(e.target.value)}
-                    className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
-                  />
+                  <div className="editor-input-wrap">
+                    <input
+                      autoFocus
+                      value={nombreCurso}
+                      onChange={(e) => setNombreCurso(e.target.value)}
+                      className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
+                    />
+                    {sugerencias.length > 0 && !coincideExacto && (
+                      <div className="setup-sugerencias">
+                        {sugerencias.map((c) => (
+                          <button
+                            key={c.nombre}
+                            className="setup-sugerencia-item"
+                            onClick={() => setNombreCurso(c.nombre)}
+                          >
+                            {c.nombre}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {nombreCurso.trim() && sugerencias.length === 0 && (
+                    <p className="editor-char-count" style={{ color: "var(--danger)", textAlign: "left" }}>
+                      Ningún curso tuyo coincide con "{nombreCurso}".
+                    </p>
+                  )}
                   <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
                     {nombreExcedido
                       ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
@@ -384,7 +440,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
                     </button>
                     <button
                       className="editor-btn is-primary btn-primary"
-                      disabled={!nombreCurso.trim() || nombreExcedido}
+                      disabled={!coincideExacto || nombreExcedido}
                       onClick={guardarEdicionCurso}
                     >
                       Guardar
@@ -426,13 +482,33 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
                 <i className="fa-solid fa-times" />
               </button>
             </div>
-            <input
-              autoFocus
-              value={nombreCurso}
-              onChange={(e) => setNombreCurso(e.target.value)}
-              placeholder="Nombre del curso..."
-              className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
-            />
+            <div className="editor-input-wrap">
+              <input
+                autoFocus
+                value={nombreCurso}
+                onChange={(e) => setNombreCurso(e.target.value)}
+                placeholder="Escribe el nombre del curso..."
+                className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
+              />
+              {sugerencias.length > 0 && !coincideExacto && (
+                <div className="setup-sugerencias">
+                  {sugerencias.map((c) => (
+                    <button
+                      key={c.nombre}
+                      className="setup-sugerencia-item"
+                      onClick={() => setNombreCurso(c.nombre)}
+                    >
+                      {c.nombre}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            {nombreCurso.trim() && sugerencias.length === 0 && (
+              <p className="editor-char-count" style={{ color: "var(--danger)", textAlign: "left" }}>
+                Ningún curso tuyo coincide con "{nombreCurso}". Configúralo primero en Mi Estudio.
+              </p>
+            )}
             <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
               {nombreExcedido
                 ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
@@ -452,7 +528,7 @@ export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerr
             </div>
             <button
               className="editor-btn is-primary btn-primary"
-              disabled={!nombreCurso.trim() || nombreExcedido}
+              disabled={!coincideExacto || nombreExcedido}
               onClick={confirmarAgregarCurso}
             >
               Agregar

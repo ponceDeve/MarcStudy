@@ -9,6 +9,7 @@ import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
 import TopBar from "./TopBar";
+import TheorySearchModal from "./TheorySearchModal";
 import Hud from "./Hud";
 import LevelsModal from "./LevelsModal";
 import SearchModal from "../../components/SearchModal";
@@ -18,7 +19,7 @@ import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido } from "../../lib/pomodoroShared";
-import { buscarConPuntaje } from "../../lib/buscador";
+import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import 'katex/dist/katex.min.css';
 
 const OPCIONES_BUSQUEDA = [
@@ -72,6 +73,7 @@ export default function MiEstudioPage() {
 
   const [levelsOpen, setLevelsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [theorySearchOpen, setTheorySearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
 
@@ -166,6 +168,13 @@ export default function MiEstudioPage() {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
+  // Recuerda en qué tarjeta de teoría te quedaste en este tema, para
+  // retomarla ahí la próxima vez (en vez de reiniciar siempre en la 0).
+  useEffect(() => {
+    if (!topicData || stage !== "theory") return;
+    localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex);
+  }, [topicData, stage, cardIndex]);
+
   // EFECTO PARA EL CRONÓMETRO
   useEffect(() => {
     let timer = null;
@@ -231,9 +240,13 @@ export default function MiEstudioPage() {
       setExamenPreguntas(examenList);
       setNivelIndex(0);
 
+      const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
+      const storedUltimaCard = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
+      const cardInicial = Math.min(Math.max(storedUltimaCard, 0), Math.max(puntos.length - 1, 0));
+
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
-      setCardIndex(0);
+      setCardIndex(cardInicial);
       setStage("theory");
       setModoEstudio("completo");
       setIsLevelMode(false);
@@ -288,13 +301,13 @@ export default function MiEstudioPage() {
   useEffect(() => {
     const q = searchParams.get("q");
     if (!q) return;
-    const qLower = q.trim().toLowerCase();
+    const qNorm = normalizarTexto(q);
 
     const temaMatch = OPCIONES_BUSQUEDA.find(
-      (item) => item.type === "tema" && item.tema.toLowerCase() === qLower,
+      (item) => item.type === "tema" && normalizarTexto(item.tema) === qNorm,
     );
     const cursoMatch = OPCIONES_BUSQUEDA.find(
-      (item) => item.type === "curso" && item.nombre.toLowerCase() === qLower,
+      (item) => item.type === "curso" && normalizarTexto(item.nombre) === qNorm,
     );
 
     if (temaMatch) {
@@ -418,6 +431,7 @@ export default function MiEstudioPage() {
     localStorage.removeItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
+    localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
 
     // 2. Limpiar estados para forzar inicio en nivel 1
     setLevelCompletions({});
@@ -523,12 +537,15 @@ export default function MiEstudioPage() {
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
   const preguntaActual = isLevelMode ? current : current ? current.pregunta : null;
-  const canAdvance = isLevelMode ? nivelIndex < nivelMaxUnlocked : cardIndex < maxUnlocked;
+  // En el estudio normal (no en modo nivel/examen) se puede avanzar
+  // libremente sin haber respondido — el examen por niveles sí exige
+  // ir superando cada pregunta para desbloquear la siguiente.
+  const canAdvance = isLevelMode ? nivelIndex < nivelMaxUnlocked : true;
 
   useEffect(() => {
     function onKeyDown(e) {
       if (document.activeElement && document.activeElement.tagName === "INPUT") return;
-      if (levelsOpen || searchOpen || configOpen || temasOpen || !topicData) return;
+      if (levelsOpen || searchOpen || theorySearchOpen || configOpen || temasOpen || !topicData) return;
 
       // Ignorar teclas si el cronómetro está activo
       if (stage === "question" && countdown > 0) return;
@@ -558,7 +575,7 @@ export default function MiEstudioPage() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [stage, questionResult, levelsOpen, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown]);
+  }, [stage, questionResult, levelsOpen, searchOpen, theorySearchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown]);
 
   const wrapClass = ["mi-estudio__wrap", topicData && !isLevelMode ? "has-topbar" : ""].join(" ");
 
@@ -574,6 +591,7 @@ export default function MiEstudioPage() {
         open={pomodoroAlarmaAbierta}
         label={pomodoroAlarmaLabel}
         onIrAPomodoro={irAPomodoroDesdeAlarma}
+        onClose={() => setPomodoroAlarmaAbierta(false)}
       />
 
       {/* El TopBar solo se muestra si hay tema y NO estamos en modo niveles */}
@@ -659,34 +677,34 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-              <div className="home-search">
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setBusquedaEnfocada(true)}
-                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                  onKeyDown={handleKeyDownInicial}
-                  placeholder="Buscar tema o curso..."
-                  className="home-search-input"
-                />
-                {busquedaEnfocada && resultsVisibles.length > 0 && (
-                  <div className="home-search-results">
-                    {resultsVisibles.map((r, i) => (
-                      <button
-                        key={r.nombre}
-                        onMouseDown={(e) => {
-                          e.preventDefault();
-                          seleccionarItem(r);
-                        }}
-                        className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                      >
-                        <p>{r.nombre}</p>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+            <div className="home-search">
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => setBusquedaEnfocada(true)}
+                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                onKeyDown={handleKeyDownInicial}
+                placeholder="Buscar tema o curso..."
+                className="home-search-input"
+              />
+              {busquedaEnfocada && resultsVisibles.length > 0 && (
+                <div className="home-search-results">
+                  {resultsVisibles.map((r, i) => (
+                    <button
+                      key={r.nombre}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        seleccionarItem(r);
+                      }}
+                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
+                    >
+                      <p>{r.nombre}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+          </div>
           </>
         )}
 
@@ -846,6 +864,19 @@ export default function MiEstudioPage() {
       )}
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
+
+      <TheorySearchModal
+        open={theorySearchOpen}
+        onClose={() => setTheorySearchOpen(false)}
+        flatPuntos={flatPuntos}
+        onSelect={(index) => {
+          setIsLevelMode(false);
+          setStage("theory");
+          setCardIndex(index);
+          setQuestionResult(null);
+          setAttemptKey((k) => k + 1);
+        }}
+      />
 
       {nombreCursoActivo && (
         <TopicsModal

@@ -41,18 +41,17 @@ a {
   text-decoration: none;
 }
 
+/* Se oculta la barra visual del scroll en toda la app — el scroll en
+   sí sigue funcionando igual (con rueda, arrastre, flechas, touch),
+   solo no se dibuja la barra. */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* versiones viejas de Edge/IE */
+}
 ::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--surface-alt);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ink-faint);
+  width: 0;
+  height: 0;
+  display: none; /* Chrome/Safari/Edge modernos */
 }
 
 @font-face {
