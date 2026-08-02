@@ -724,57 +724,76 @@ export default function HorarioPage() {
       </Modal>
 
       <Modal open={!!cursoRapidoDia} onClose={cancelarCursoRapido}>
-        <button onClick={cancelarCursoRapido} className="modal-close-x" aria-label="Cerrar">
+        <button
+          onClick={cancelarCursoRapido}
+          className="modal-close-x"
+          aria-label="Cerrar"
+        >
           <i className="fa-solid fa-times" />
         </button>
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
-          <h3 style={{ margin: 0 }}>{cursoRapidoNombre}</h3>
+
+        <div className="tema-modal">
+          <h3 className="tema-modal__title">
+            {cursoRapidoNombre}
+          </h3>
+
           {!temaRapidoElegido ? (
             <>
-              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-                Elige el tema que vas a repasar en {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
+              <p className="tema-modal__text">
+                Elige el tema que vas a repasar en{" "}
+                {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
-                {(manifest.cursos.find((c) => normalizarTexto(c.nombre) === normalizarTexto(cursoRapidoNombre))?.temas || []).map((t) => (
+
+              <div className="tema-modal__list">
+                {(manifest.cursos.find(
+                  (c) =>
+                    normalizarTexto(c.nombre) ===
+                    normalizarTexto(cursoRapidoNombre)
+                )?.temas || []).map((t) => (
                   <button
                     key={t.tema}
                     onClick={() => setTemaRapidoElegido(t.tema)}
-                    style={{
-                      textAlign: "left",
-                      padding: "10px 12px",
-                      borderRadius: "var(--radius-sm)",
-                      border: "1px solid var(--border-strong)",
-                      background: "var(--surface-alt)",
-                      color: "var(--ink)",
-                      cursor: "pointer",
-                    }}
+                    className="tema-modal__item"
                   >
                     {t.tema}
                   </button>
                 ))}
               </div>
+
               <button
                 onClick={cancelarCursoRapido}
-                style={{ padding: "12px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+                className="tema-modal__skip"
               >
                 Cancelar
               </button>
             </>
           ) : (
             <>
-              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-                Vas a estudiar "{temaRapidoElegido}" ahora. ¿Confirmas para preparar el cronómetro?
+              <p className="tema-modal__text">
+                Vas a estudiar <strong>"{temaRapidoElegido}"</strong>.
+                <br />
+                ¿Deseas preparar el cronómetro?
               </p>
-              <div style={{ display: "flex", gap: "10px" }}>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "8px",
+                }}
+              >
                 <button
-                  onClick={cancelarCursoRapido}
-                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+                  onClick={() => setTemaRapidoElegido(null)}
+                  className="tema-modal__skip"
+                  style={{ flex: 1 }}
                 >
-                  Cancelar
+                  Volver
                 </button>
+
                 <button
                   onClick={confirmarCursoRapido}
-                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--primary)", color: "var(--ink-on-primary)", fontWeight: 700, cursor: "pointer" }}
+                  className="horario__complete-btn"
+                  style={{ flex: 1 }}
                 >
                   Preparar
                 </button>
