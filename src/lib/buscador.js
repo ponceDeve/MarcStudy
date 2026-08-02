@@ -51,8 +51,19 @@ function puntajeSubsecuencia(texto, query) {
 function puntajeMatch(textoNorm, queryNorm) {
   if (!queryNorm) return 0;
   if (textoNorm === queryNorm) return 1000;
-  if (textoNorm.startsWith(queryNorm)) return 800;
-  if (textoNorm.includes(queryNorm)) return 600;
+  if (textoNorm.startsWith(queryNorm)) return 900;
+
+  if (textoNorm.includes(queryNorm)) {
+    const idx = textoNorm.indexOf(queryNorm);
+    // Si la coincidencia empieza justo al inicio de una palabra
+    // (después de un espacio, o al inicio del texto) vale más que si
+    // aparece enterrada a mitad de otra palabra/frase — y mientras
+    // antes aparezca en el texto, mejor.
+    const inicioDePalabra = idx === 0 || /\s/.test(textoNorm[idx - 1]);
+    const base = inicioDePalabra ? 750 : 550;
+    const penalizacion = Math.min(idx, 300) * 0.5;
+    return base - penalizacion;
+  }
 
   // Varias palabras: basta con que todas aparezcan (en cualquier
   // orden) — ej. "civica organizaciones" encuentra
@@ -118,10 +129,7 @@ export function buscarConPuntaje(items, query, getTexto) {
   if (!queryNorm) return [];
 
   return items
-    .map((item) => ({
-      item,
-      score: puntajeMatch(normalizarTexto(getTexto(item)), queryNorm),
-    }))
+    .map((item) => ({ item, score: puntajeMatch(normalizarTexto(getTexto(item)), queryNorm) }))
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((r) => r.item);

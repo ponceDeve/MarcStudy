@@ -9,7 +9,7 @@ import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
 import TopBar from "./TopBar";
-import TheorySearchModal from "./TheorySearchModal";
+import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
 import LevelsModal from "./LevelsModal";
 import SearchModal from "../../components/SearchModal";
@@ -73,7 +73,6 @@ export default function MiEstudioPage() {
 
   const [levelsOpen, setLevelsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [theorySearchOpen, setTheorySearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
 
@@ -545,7 +544,7 @@ export default function MiEstudioPage() {
   useEffect(() => {
     function onKeyDown(e) {
       if (document.activeElement && document.activeElement.tagName === "INPUT") return;
-      if (levelsOpen || searchOpen || theorySearchOpen || configOpen || temasOpen || !topicData) return;
+      if (levelsOpen || searchOpen || configOpen || temasOpen || !topicData) return;
 
       // Ignorar teclas si el cronómetro está activo
       if (stage === "question" && countdown > 0) return;
@@ -575,7 +574,7 @@ export default function MiEstudioPage() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [stage, questionResult, levelsOpen, searchOpen, theorySearchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown]);
+  }, [stage, questionResult, levelsOpen, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown]);
 
   const wrapClass = ["mi-estudio__wrap", topicData && !isLevelMode ? "has-topbar" : ""].join(" ");
 
@@ -684,7 +683,7 @@ export default function MiEstudioPage() {
                 onFocus={() => setBusquedaEnfocada(true)}
                 onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
                 onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar tema o curso..."
+                placeholder="Buscar curso..."
                 className="home-search-input"
               />
               {busquedaEnfocada && resultsVisibles.length > 0 && (
@@ -714,6 +713,17 @@ export default function MiEstudioPage() {
               <div className="mi-estudio__hud-wrap animate-fade-in">
                 <Hud current={nivelIndex + 1} total={examenPreguntas.length} correct={score} wrong={wrongCount} vidas={vidas} />
               </div>
+            )}
+
+            {stage === "theory" && (
+              <TheorySearchBar
+                flatPuntos={flatPuntos}
+                onSelect={(index) => {
+                  setCardIndex(index);
+                  setQuestionResult(null);
+                  setAttemptKey((k) => k + 1);
+                }}
+              />
             )}
 
             {stage === "theory" && (
@@ -864,19 +874,6 @@ export default function MiEstudioPage() {
       )}
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
-
-      <TheorySearchModal
-        open={theorySearchOpen}
-        onClose={() => setTheorySearchOpen(false)}
-        flatPuntos={flatPuntos}
-        onSelect={(index) => {
-          setIsLevelMode(false);
-          setStage("theory");
-          setCardIndex(index);
-          setQuestionResult(null);
-          setAttemptKey((k) => k + 1);
-        }}
-      />
 
       {nombreCursoActivo && (
         <TopicsModal

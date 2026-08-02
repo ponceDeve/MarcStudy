@@ -102,6 +102,7 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  color: var(--primary);
   margin-bottom: 20px;
   font-weight: 700;
   background: var(--primary-bg);
@@ -443,18 +444,71 @@
   box-shadow: var(--shadow-sm);
 }
 
-.levels-modal__result-section {
-  margin: 0 0 2px;
-  font-size: 12.5px;
+
+/* ============================================================
+   TheorySearchBar.jsx — buscador discreto dentro de un tema
+   ============================================================ */
+.theory-search {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 0;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.theory-search__toggle-btn {
+  display: none;
+}
+.theory-search__wrap {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+}
+.theory-search__input {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-size: 14px;
+}
+.theory-search__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  max-height: 260px;
+  overflow-y: auto;
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+.theory-search__item {
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
+  color: var(--ink);
+  font-size: 13.5px;
+}
+.theory-search__item-seccion {
+  display: block;
+  font-size: 11px;
   color: var(--ink-faint);
+  margin-bottom: 2px;
 }
 
-.levels-modal__result-text {
-  margin: 0;
-}
-
-.levels-modal__no-results {
-  color: var(--ink-soft);
-  margin: 0;
-  text-align: center;
+@media (max-width: 640px) {
+  .theory-search__wrap {
+    max-width: 100%;
+  }
 }

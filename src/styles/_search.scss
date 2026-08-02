@@ -15,7 +15,7 @@
 .search-box {
   position: relative;
   width: 100%;
-  max-width: 32rem;
+  max-width: 42rem;
 }
 .search-input {
   flex: 1;
@@ -51,9 +51,7 @@
   right: 0;
 }
 .search-input:focus {
-  box-shadow:
-    var(--shadow-lg),
-    0 0 0 3px var(--primary-bg);
+  box-shadow: var(--shadow-lg);
 }
 /* Contenedor de resultados */
 .search-results {
@@ -143,7 +141,7 @@
 .home-search {
   position: relative;
   width: 100%;
-  max-width: 32rem;
+  max-width: 42rem;
 }
 .home-search-input {
   width: 100%;
@@ -154,6 +152,9 @@
   font-size: 14px;
   color: var(--ink);
   outline: none;
+}
+.home-search-input:focus {
+  border-color: var(--primary);
 }
 .home-search-results {
   position: absolute;

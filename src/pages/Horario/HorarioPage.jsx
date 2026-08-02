@@ -295,18 +295,30 @@ export default function HorarioPage() {
   function confirmarCursoRapido() {
     if (!cursoRapidoDia || !cursoRapidoNombre || !temaRapidoElegido) return;
 
-    // Ojo: esto NO se guarda en el horario configurado — es solo un
-    // pomodoro puntual para hoy, no debe aparecer luego como curso
-    // agendado ese día.
-    guardarPomodoroCompartido({
-      endTimestamp: Date.now() + POMODORO_MIN * 60 * 1000,
-      running: true,
-      label: `${cursoRapidoNombre} · Pomodoro 1 de 4`,
-    });
+    // 1. Creamos el curso temporal con 4 pomodoros (según tu diseño original)
+    const nuevoCursoTemporal = { subject: cursoRapidoNombre, pomodoros: 4 };
 
-    const destino = temaRapidoElegido;
+    // 2. Lo agregamos al horario actual SOLO visualmente (no daña tu configuración guardada)
+    const nuevoHorario = { ...horario };
+    const cursosDelDia = nuevoHorario[cursoRapidoDia] ? [...nuevoHorario[cursoRapidoDia]] : [];
+    cursosDelDia.push(nuevoCursoTemporal);
+    nuevoHorario[cursoRapidoDia] = cursosDelDia;
+
+    setHorario(nuevoHorario);
+
+    // 3. Obtenemos el índice de este nuevo curso para seleccionarlo
+    const nuevoIndex = cursosDelDia.length - 1;
+
+    // 4. Preparamos el tema elegido y lo cargamos en el cronómetro principal
+    setTemaElegidoParaCurso(temaRapidoElegido);
+    setActiveCourseIdx(nuevoIndex);
+    setManualBreak(null);
+
+    // 5. Reiniciamos visualmente el reloj para asegurarnos de que empiece en 25 min
+    reset(POMODORO_MIN);
+
+    // 6. Cerramos la ventana modal
     cancelarCursoRapido();
-    window.open(`${window.location.origin}/cont_crono/?q=${encodeURIComponent(destino)}`, "_blank");
   }
 
   function cerrarCourseComplete() {
@@ -675,38 +687,36 @@ export default function HorarioPage() {
         <button onClick={omitirTemaDeCurso} className="modal-close-x" aria-label="Cerrar">
           <i className="fa-solid fa-times" />
         </button>
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
-          <h3 style={{ margin: 0 }}>
+        <div className="tema-modal">
+          <h3 className="tema-modal__title">
             {eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""}
           </h3>
-          <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
+
+          <p className="tema-modal__text">
             Elige el tema que vas a estudiar:
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
+
+          <div className="tema-modal__list">
             {(manifest.cursos.find(
               (c) =>
                 normalizarTexto(c.nombre) ===
-                normalizarTexto(eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""),
+                normalizarTexto(
+                  eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : "",
+                ),
             )?.temas || []).map((t) => (
               <button
                 key={t.tema}
                 onClick={() => elegirTemaDeCurso(t.tema)}
-                style={{
-                  textAlign: "left",
-                  padding: "10px 12px",
-                  borderRadius: "var(--radius-sm)",
-                  border: "1px solid var(--border-strong)",
-                  background: "var(--surface-alt)",
-                  color: "var(--ink)",
-                }}
+                className="tema-modal__item"
               >
                 {t.tema}
               </button>
             ))}
           </div>
+
           <button
             onClick={omitirTemaDeCurso}
-            style={{ padding: "12px", borderRadius: "var(--radius-md)", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700 }}
+            className="tema-modal__skip"
           >
             Omitir por ahora
           </button>
@@ -753,7 +763,7 @@ export default function HorarioPage() {
           ) : (
             <>
               <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-                Vas a estudiar "{temaRapidoElegido}" ahora, con el pomodoro corriendo. ¿Confirmas?
+                Vas a estudiar "{temaRapidoElegido}" ahora. ¿Confirmas para preparar el cronómetro?
               </p>
               <div style={{ display: "flex", gap: "10px" }}>
                 <button
@@ -766,7 +776,7 @@ export default function HorarioPage() {
                   onClick={confirmarCursoRapido}
                   style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--primary)", color: "var(--ink-on-primary)", fontWeight: 700, cursor: "pointer" }}
                 >
-                  Iniciar
+                  Preparar
                 </button>
               </div>
             </>

@@ -64,7 +64,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={onKeyDownInput}
-            placeholder="Buscar tema o curso..."
+            placeholder="Buscar curso..."
             className="search-input"
           />
           <button
