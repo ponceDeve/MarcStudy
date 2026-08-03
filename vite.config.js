@@ -14,7 +14,8 @@ export default defineConfig({
       manifest: {
         name: "Mi Estudio · Pomodoro",
         short_name: "Mi Estudio",
-        description: "Aplicación optimizada con soporte completo sin conexión a internet",
+        description:
+          "Aplicación optimizada con soporte completo sin conexión a internet",
         theme_color: "#1a1815",
         background_color: "#1a1815",
         display: "standalone",
@@ -22,8 +23,13 @@ export default defineConfig({
         scope: "/cont_crono/",
         icons: [
           {
-            src: "/cont_crono/icon.png", // ← aquí va tu icon.png
-            sizes: "512x512",            // ajusta al tamaño real de tu icono
+            src: "/cont_crono/icon.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/cont_crono/icon.png",
+            sizes: "512x512",
             type: "image/png",
           },
         ],
