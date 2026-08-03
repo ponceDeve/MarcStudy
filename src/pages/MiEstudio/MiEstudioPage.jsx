@@ -731,7 +731,7 @@ export default function MiEstudioPage() {
                 <div className="arcade-grid" />
                 <div className="mi-estudio__theory-inner">
                   <p className="mi-estudio__theory-badge">
-                    Nivel {cardIndex + 1}: {current.seccionTitulo}
+                    {current.seccionTitulo}
                   </p>
                   <p className="mi-estudio__theory-text">
                     <GlossaryText text={current.texto} glosario={topicData?.glosario} />
