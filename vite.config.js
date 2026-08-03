@@ -17,20 +17,31 @@ export default defineConfig({
 
       // MANIFEST: Configuración de la aplicación para el navegador y dispositivos móviles
       manifest: {
-        name: "Mi Aplicación Web",
-        short_name: "AppOffline",
+        name: "Mi Estudio · Pomodoro",
+        short_name: "Mi Estudio",
         description:
           "Aplicación optimizada con soporte completo sin conexión a internet",
-        theme_color: "#1a1a1a",
-        background_color: "#1a1a1a",
+        theme_color: "#1a1815",
+        background_color: "#1a1815",
         display: "standalone",
         start_url: "/cont_crono/",
         scope: "/cont_crono/",
         icons: [
           {
-            src: "/cont_crono/icon.svg",
+            src: "/cont_crono/icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/cont_crono/icon-512.png",
             sizes: "512x512",
-            type: "image/svg+xml",
+            type: "image/png",
+          },
+          {
+            src: "/cont_crono/icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },

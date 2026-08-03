@@ -118,7 +118,14 @@
   justify-items: center;
   margin-bottom: 16px;
 }
-
+.topbar__overlay-row2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  justify-items: center;
+  max-width: 70%;
+  margin: 0 auto;
+}
 .topbar__overlay-btn {
   color: #fff;
   background: none;
@@ -206,36 +213,33 @@
 
 /* Estilo para que el usuario sepa que la palabra es interactiva */
 .glossary-term {
-  color: #3b82f6; /* Color azul (puedes cambiarlo al tema de tu app) */
+  color: var(--secondary);
   text-decoration: underline dotted; /* Subrayado punteado clásico de glosarios */
-  cursor: default; /* Cambia el cursor a un signo de interrogación */
+  cursor: default;
   font-weight: 600;
   transition: color 0.2s;
 }
 
 .glossary-term:hover {
-  color: #2563eb; /* Azul más oscuro al pasar el ratón */
+  color: var(--secondary-dark);
 }
 
-/* La burbuja flotante con la definición */
+/* La burbuja flotante con la definición — la posición (top/left) la
+   calcula JS (useFloatingTooltip) y llega por style inline, recortada
+   al viewport para que nunca se corte en el borde de la pantalla,
+   sobre todo en celulares. Acá solo el look. */
 .glossary-tooltip {
-  position: absolute;
   max-width: min(280px, 85vw);
-  padding: 5px 7px;
+  padding: 6px 10px;
   width: max-content;
-  bottom: 130%; /* La posiciona justo encima de la palabra */
-  left: 50%;
-  transform: translateX(-50%); /* Centra la burbuja horizontalmente */
-  background-color: #1f2937; /* Gris oscuro/negro */
-  color: #f9fafb;
+  background-color: var(--ink);
+  color: var(--bg);
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 400;
-  z-index: 50; /* Asegura que flote por encima de otros elementos */
-  pointer-events: none; /* Evita que el tooltip interfiera con el ratón */
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 50;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
   animation: fadeIn 0.2s ease-in-out;
 }
 
@@ -243,12 +247,12 @@
 .glossary-tooltip::after {
   content: "";
   position: absolute;
-  top: 100%; /* Justo debajo de la caja principal */
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
-  border-color: #1f2937 transparent transparent transparent; /* El color superior debe coincidir con el background del tooltip */
+  border-color: var(--ink) transparent transparent transparent;
 }
 
 /* Pequeña animación de entrada */

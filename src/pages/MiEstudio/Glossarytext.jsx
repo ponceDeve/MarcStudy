@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
+import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -44,11 +45,17 @@ function partirPorGlosario(texto, glosario) {
 
 export default function GlossaryText({ text, glosario = {} }) {
   const [activo, setActivo] = useState(null);
+  const { pos, mostrarEn, ocultar } = useFloatingTooltip(280);
 
   const partes = useMemo(() => partirPorGlosario(text, glosario), [text, glosario]);
 
   return (
-    <span onClick={() => setActivo(null)}>
+    <span
+      onClick={() => {
+        setActivo(null);
+        ocultar();
+      }}
+    >
       {partes.map((parte, i) => {
         if (parte.tipo === "texto") {
           return (
@@ -63,17 +70,38 @@ export default function GlossaryText({ text, glosario = {} }) {
           <span key={i} className="glossary-term-wrap">
             <span
               className="glossary-term"
-              onMouseEnter={() => setActivo(i)}
-              onMouseLeave={() => setActivo((cur) => (cur === i ? null : cur))}
+              onMouseEnter={(e) => {
+                setActivo(i);
+                mostrarEn(e.currentTarget);
+              }}
+              onMouseLeave={() => {
+                setActivo((cur) => (cur === i ? null : cur));
+                ocultar();
+              }}
               onClick={(e) => {
                 e.stopPropagation();
-                setActivo((cur) => (cur === i ? null : i));
+                if (activo === i) {
+                  setActivo(null);
+                  ocultar();
+                } else {
+                  setActivo(i);
+                  mostrarEn(e.currentTarget);
+                }
               }}
             >
               <Latex>{parte.valor}</Latex>
             </span>
-            {visible && (
-              <span className="glossary-tooltip">
+            {visible && pos && (
+              <span
+                className="glossary-tooltip"
+                style={{
+                  position: "fixed",
+                  top: pos.top,
+                  left: pos.left,
+                  transform: "translate(-50%, -100%)",
+                  bottom: "auto",
+                }}
+              >
                 <Latex>{glosario[parte.key]}</Latex>
               </span>
             )}

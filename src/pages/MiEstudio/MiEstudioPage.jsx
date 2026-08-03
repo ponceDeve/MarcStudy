@@ -683,7 +683,7 @@ export default function MiEstudioPage() {
                 onFocus={() => setBusquedaEnfocada(true)}
                 onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
                 onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar curso..."
+                placeholder="Buscar tema o curso..."
                 className="home-search-input"
               />
               {busquedaEnfocada && resultsVisibles.length > 0 && (
@@ -769,7 +769,7 @@ export default function MiEstudioPage() {
                 {/* LOGICA DE RENDERIZADO DEL CRONOMETRO ESTRICTO */}
                 {countdown > 0 ? (
                   <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, minHeight: '300px' }}>
-                    <h2 style={{ fontSize: '5rem', margin: '0', color: 'var(--primary-color, #fff)' }}>{countdown}</h2>
+                    <h2 style={{ fontSize: '5rem', margin: '0', color: 'var(--ink)' }}>{countdown}</h2>
                     <p style={{ fontSize: '1.2rem', opacity: 0.8, marginTop: '10px', textAlign: 'center' }}>
                       Intenta recordar la teoría antes de ver la pregunta...
                     </p>

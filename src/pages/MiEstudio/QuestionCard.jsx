@@ -157,7 +157,6 @@ function OpcionMultiple({ pregunta, onRespondido }) {
       {!answered && (
         <div className="question-card__type-wrap">
           <input
-            autoFocus
             value={typed}
             onChange={(e) => setTyped(e.target.value)}
             onKeyDown={(e) => {

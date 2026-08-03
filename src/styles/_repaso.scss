@@ -287,20 +287,20 @@
 /* Botón de eliminar en la esquina de la caja de hoy */
 .repaso__item-btn-delete {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: -8px;
+  right: 0px;
   background: transparent;
-  color: #ff4d4f;
+  color: #fe9697cb;
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
   cursor: pointer;
   z-index: 2;
-  transition: background-color 0.2s;
 }
 
 .repaso__item-btn-delete:hover {
-  background-color: rgba(255, 77, 79, 0.1);
+  color: #cc0000;
+  transition: color 0.2s;
 }
 
 /* Para los elementos de la lista de próximos repasos */
@@ -315,7 +315,7 @@
   right: 0;
   transform: translateY(-50%);
   background: transparent;
-  color: #ff4d4f;
+  color: rgba(254, 150, 151, 0.796);
   border: none;
   cursor: pointer;
   padding: 0.25rem;
