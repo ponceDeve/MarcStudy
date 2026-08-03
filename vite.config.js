@@ -26,7 +26,13 @@ export default defineConfig({
         display: "standalone",
         start_url: "/cont_crono/",
         scope: "/cont_crono/",
-        icons: [],
+        icons: [
+          {
+            src: "/cont_crono/icon.svg",
+            sizes: "512x512",
+            type: "image/svg+xml",
+          },
+        ],
       },
     }),
   ],
