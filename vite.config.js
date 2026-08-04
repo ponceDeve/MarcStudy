@@ -33,14 +33,20 @@ export default defineConfig({
 
         icons: [
           {
-            src: "/cont_crono/icon.svg",
+            src: "/cont_crono/icon.png",
             sizes: "192x192",
-            type: "image/svg+xml",
+            type: "image/png",
           },
           {
-            src: "/cont_crono/icon.svg",
+            src: "/cont_crono/icon.png",
             sizes: "512x512",
-            type: "image/svg+xml",
+            type: "image/png",
+          },
+          {
+            src: "/cont_crono/icon.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
         ],
       },
