@@ -822,3 +822,116 @@
   transform: scale(.98);
   box-shadow: none;
 }
+
+.tema-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 6px;
+}
+
+.tema-selector__titulo {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--secondary);
+  line-height: 1.2;
+}
+
+.tema-selector__descripcion {
+  margin: -4px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.tema-selector__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;          /* más separación entre botones */
+  padding: 15px 0;     /* más aire arriba y abajo */
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.tema-selector__boton {
+  width: 100%;
+  text-align: left;
+  padding: 9px 12px;  /* menos padding interno */
+  border: 3px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.tema-selector__boton:hover {
+  background: var(--surface-hover);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.tema-selector__boton:active {
+  transform: scale(0.98);
+  background: var(--primary-bg);
+}
+
+.tema-selector__omitir {
+  align-self: center;
+  margin-top: 2px;
+  padding: 6px 14px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-full);
+  background: var(--danger);
+  color: var(--ink-on-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.tema-selector__omitir:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.tema-selector__omitir:active {
+  background: var(--danger-dark);
+  color: var(--ink-on-primary);
+}
+
+.tema-selector__acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.tema-selector__accion {
+  flex: 1;
+  justify-content: center;
+}
+
+.tema-selector__iniciar {
+  padding: 6px 14px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.tema-selector__iniciar:hover {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.tema-selector__iniciar:active {
+  background: var(--primary-dark);
+  color: var(--ink-on-primary);
+}

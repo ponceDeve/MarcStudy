@@ -13,6 +13,7 @@ import {
   fechaHoy,
   diffDias,
   REPASO_INTERVALOS,
+  eliminarRepaso
 } from "../../lib/repasoStorage";
 
 const PASOS_BIENVENIDA = [
@@ -38,10 +39,9 @@ export default function RepasoPage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("repaso_welcome_seen", false);
   const [log, setLog] = useState(() => leerLog());
+  
+  const [deleteState, setDeleteState] = useState({ isOpen: false, id: null, phase: 1 });
 
-  // Navegación a Mi Estudio con ?q=. Se arma la URL a mano en vez de
-  // usar navigate() de React Router: con el basename "/cont_crono"
-  // configurado, navigate() duplicaba el prefijo (/cont_crono/cont_crono).
   function irAMiEstudio(nombre) {
     navigate(`/?q=${encodeURIComponent(nombre)}`);
   }
@@ -54,6 +54,23 @@ export default function RepasoPage() {
       : [];
     if (!repasosDone.includes(intervaloIdx)) repasosDone.push(intervaloIdx);
     setLog(marcarRepasoHecho(id, repasosDone));
+  }
+
+  function iniciarBorrado(id) {
+    setDeleteState({ isOpen: true, id, phase: 1 });
+  }
+
+  function confirmarBorrado() {
+    if (deleteState.phase === 1) {
+      setDeleteState({ ...deleteState, phase: 2 });
+    } else {
+      setLog(eliminarRepaso(deleteState.id));
+      setDeleteState({ isOpen: false, id: null, phase: 1 });
+    }
+  }
+
+  function cancelarBorrado() {
+    setDeleteState({ isOpen: false, id: null, phase: 1 });
   }
 
   const porFecha = useMemo(() => {
@@ -101,6 +118,7 @@ export default function RepasoPage() {
                     <i className="bi bi-book" /> Repasar en Mi Estudio
                   </button>
                 </div>
+                
                 <button
                   onClick={() => marcar(entrada.id, intervaloIdx, entrada.repasosDone)}
                   className="repaso__check"
@@ -108,6 +126,13 @@ export default function RepasoPage() {
                   <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2.5" width="16" height="16">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                   </svg>
+                </button>
+                
+                <button
+                  onClick={() => iniciarBorrado(entrada.id)}
+                  className="repaso__trash"
+                >
+                  <i className="fa-solid fa-trash" />
                 </button>
               </div>
             );
@@ -144,11 +169,19 @@ export default function RepasoPage() {
                   <div>
                     {grupo.map(({ entrada, intervaloIdx }) => (
                       <div key={entrada.id} className="repaso__proximos-row">
-                        <span className={`repaso__dot ${intervaloClasses(intervaloIdx).badge}`} />
-                        <span className="repaso__proximos-subject">{entrada.subject}</span>
-                        {entrada.tema && (
-                          <span className="repaso__proximos-tema">— {entrada.tema}</span>
-                        )}
+                        <div className="repaso__proximos-row-content">
+                          <span className={`repaso__dot ${intervaloClasses(intervaloIdx).badge}`} />
+                          <span className="repaso__proximos-subject">
+                            {entrada.subject}
+                            {entrada.tema && <span className="repaso__proximos-tema"> — {entrada.tema}</span>}
+                          </span>
+                        </div>
+                        <button 
+                          onClick={() => iniciarBorrado(entrada.id)}
+                          className="repaso__proximos-trash"
+                        >
+                           <i className="fa-solid fa-trash" />
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -173,6 +206,37 @@ export default function RepasoPage() {
         labelFinal="Entendido"
         onFinish={() => setWelcomeSeen(true)}
       />
+
+      {deleteState.isOpen && (
+        <div className="delete-modal-overlay">
+          <div className="delete-modal-content">
+            <div className="delete-modal-icon">
+              <i className="fa-solid fa-triangle-exclamation" />
+            </div>
+            <h3 className="delete-modal-title">¿Eliminar este repaso?</h3>
+            <p className="delete-modal-text">
+              {deleteState.phase === 1 
+                ? "Esta acción requiere confirmación. Selecciona Aceptar para continuar." 
+                : "¡Atención! ¿Estás completamente seguro de borrarlo?"}
+            </p>
+            
+            <div className={`delete-modal-buttons ${deleteState.phase === 2 ? "delete-modal-buttons--reverse" : ""}`}>
+              <button 
+                onClick={confirmarBorrado}
+                className={`btn-confirm ${deleteState.phase === 1 ? "btn-confirm--phase1" : "btn-confirm--phase2"}`}
+              >
+                {deleteState.phase === 1 ? "Aceptar" : "Sí, borrar"}
+              </button>
+              <button 
+                onClick={cancelarBorrado}
+                className="btn-cancel"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

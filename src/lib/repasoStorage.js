@@ -84,6 +84,13 @@ export function marcarRepasoHecho(id, repasosDoneActual) {
   return log;
 }
 
+export function eliminarRepaso(id) {
+  const log = leerLog();
+  const nuevoLog = log.filter((e) => e.id !== id);
+  guardarLog(nuevoLog);
+  return nuevoLog;
+}
+
 // ── Cálculo de próximo repaso ───────────────────────────────────────────
 
 export function proximoRepaso(entrada) {

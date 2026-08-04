@@ -705,38 +705,36 @@ export default function HorarioPage() {
         <button onClick={omitirTemaDeCurso} className="modal-close-x" aria-label="Cerrar">
           <i className="fa-solid fa-times" />
         </button>
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
-          <h3 style={{ margin: 0 }}>
+        <div className="tema-selector">
+          <h3 className="tema-selector__titulo">
             {eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""}
           </h3>
-          <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
+
+          <p className="tema-selector__descripcion">
             Elige el tema que vas a estudiar:
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
+
+          <div className="tema-selector__lista">
             {(manifest.cursos.find(
               (c) =>
                 normalizarTexto(c.nombre) ===
-                normalizarTexto(eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""),
+                normalizarTexto(
+                  eligiendoTemaIdx !== null ? courses[eligiendoTemaIdx]?.subject : ""
+                ),
             )?.temas || []).map((t) => (
               <button
                 key={t.tema}
                 onClick={() => elegirTemaDeCurso(t.tema)}
-                style={{
-                  textAlign: "left",
-                  padding: "10px 12px",
-                  borderRadius: "var(--radius-sm)",
-                  border: "1px solid var(--border-strong)",
-                  background: "var(--surface-alt)",
-                  color: "var(--ink)",
-                }}
+                className="tema-selector__boton"
               >
                 {t.tema}
               </button>
             ))}
           </div>
+
           <button
             onClick={omitirTemaDeCurso}
-            style={{ padding: "12px", borderRadius: "var(--radius-md)", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700 }}
+            className="tema-selector__omitir"
           >
             Omitir por ahora
           </button>
@@ -747,54 +745,55 @@ export default function HorarioPage() {
         <button onClick={cancelarCursoRapido} className="modal-close-x" aria-label="Cerrar">
           <i className="fa-solid fa-times" />
         </button>
-        <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "8px" }}>
-          <h3 style={{ margin: 0 }}>{cursoRapidoNombre}</h3>
+        <div className="tema-selector">
+          <h3 className="tema-selector__titulo">{cursoRapidoNombre}</h3>
+
           {!temaRapidoElegido ? (
             <>
-              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-                Elige el tema que vas a repasar en {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
+              <p className="tema-selector__descripcion">
+                Elige el tema que vas a repasar en{" "}
+                {cursoRapidoDia && DIA_LABELS[cursoRapidoDia]}:
               </p>
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px", maxHeight: "280px", overflowY: "auto" }}>
-                {(manifest.cursos.find((c) => normalizarTexto(c.nombre) === normalizarTexto(cursoRapidoNombre))?.temas || []).map((t) => (
+
+              <div className="tema-selector__lista">
+                {(manifest.cursos.find(
+                  (c) => normalizarTexto(c.nombre) === normalizarTexto(cursoRapidoNombre)
+                )?.temas || []).map((t) => (
                   <button
                     key={t.tema}
                     onClick={() => setTemaRapidoElegido(t.tema)}
-                    style={{
-                      textAlign: "left",
-                      padding: "10px 12px",
-                      borderRadius: "var(--radius-sm)",
-                      border: "1px solid var(--border-strong)",
-                      background: "var(--surface-alt)",
-                      color: "var(--ink)",
-                      cursor: "pointer",
-                    }}
+                    className="tema-selector__boton"
                   >
                     {t.tema}
                   </button>
                 ))}
               </div>
+
               <button
                 onClick={cancelarCursoRapido}
-                style={{ padding: "12px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+                className="tema-selector__omitir"
               >
                 Cancelar
               </button>
             </>
           ) : (
             <>
-              <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.9rem" }}>
-                Vas a estudiar "{temaRapidoElegido}" ahora, con el pomodoro corriendo. ¿Confirmas?
+              <p className="tema-selector__descripcion">
+                Vas a estudiar "{temaRapidoElegido}" ahora, con el pomodoro corriendo.
+                ¿Confirmas?
               </p>
-              <div style={{ display: "flex", gap: "10px" }}>
+
+              <div className="tema-selector__acciones">
                 <button
                   onClick={cancelarCursoRapido}
-                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--surface-alt)", color: "var(--ink-soft)", fontWeight: 700, cursor: "pointer" }}
+                  className="tema-selector__accion tema-selector__omitir"
                 >
                   Cancelar
                 </button>
+
                 <button
                   onClick={confirmarCursoRapido}
-                  style={{ flex: 1, padding: "13px", borderRadius: "var(--radius-md)", border: "none", background: "var(--primary)", color: "var(--ink-on-primary)", fontWeight: 700, cursor: "pointer" }}
+                  className="tema-selector__accion tema-selector__iniciar"
                 >
                   Iniciar
                 </button>
