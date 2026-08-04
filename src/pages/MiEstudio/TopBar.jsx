@@ -14,10 +14,10 @@ export default function TopBar({
   const [configOpen, setConfigOpen] = useState(false);
   const { tema: modoColor, alternarTema } = useTheme();
 
-  // Construir las URLs absolutas usando el origen actual
-  const baseUrl = window.location.origin;
-  const pomodoroHref = `${baseUrl}/cont_crono/pomodoro?curso=${encodeURIComponent(curso)}&tema=${encodeURIComponent(tema)}`;
-  const repasoHref = `${baseUrl}/cont_crono/repaso`;
+  // Rutas internas (react-router) — sin recargar el navegador, así el
+  // pomodoro que quede corriendo sigue vivo al navegar entre pantallas.
+  const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(curso)}&tema=${encodeURIComponent(tema)}`;
+  const repasoTo = `/repaso`;
 
   const botones = [
     {
@@ -36,15 +36,13 @@ export default function TopBar({
       title: "Ir al Pomodoro de este curso",
       label: "Pomo",
       icon: "fa-solid fa-calendar-alt",
-      href: pomodoroHref,
-      target: "_blank"
+      to: pomodoroTo
     },
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
       icon: "fa-solid fa-brain",
-      href: repasoHref,
-      target: "_blank"
+      to: repasoTo
     },
     {
       title: "Buscar otro tema",
@@ -139,7 +137,7 @@ export default function TopBar({
             <div className="topbar__overlay-row1">
               {botones.slice(0, 3).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
-            <div className="topbar__overlay-row1">
+            <div className="topbar__overlay-row2">
               {botones.slice(3, 6).map((b) => renderBoton(b, "topbar__overlay-btn"))}
             </div>
           </div>

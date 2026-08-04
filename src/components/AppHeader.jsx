@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useTheme } from "../hooks/useTheme";
 
@@ -6,15 +7,11 @@ import { useTheme } from "../hooks/useTheme";
 // Repaso. A diferencia del TopBar de dentro de un tema, este NO tiene
 // Niveles, Timer ni Guardar — solo navegación entre páginas + buscador.
 //
-// Usa <a href> con URL absoluta en vez de <Link> de React Router: con el
-// basename "/cont_crono" configurado, la navegación de React Router
-// duplicaba el prefijo (/cont_crono/cont_crono) al ir de una página
-// anidada (/pomodoro, /repaso) de vuelta a "/". Con <a> normal no hay
-// ese problema, aunque implica una recarga completa de la página.
-function url(path) {
-  return `${window.location.origin}/cont_crono${path}`;
-}
-
+// Usa <Link> de react-router (navegación interna, sin recargar la
+// página) — importante para que el pomodoro siga corriendo al navegar
+// entre pantallas. Ojo: la ruta que se le pasa a <Link to=""> NO debe
+// incluir el basename "/cont_crono" (react-router ya lo antepone
+// solo); ponerlo a mano lo duplica (/cont_crono/cont_crono).
 export default function AppHeader({
   onAbrirBuscador,
   showHome = false,
@@ -26,11 +23,11 @@ export default function AppHeader({
 
   const botones = [
     ...(showHome
-      ? [{ title: "Ir a Mi Estudio", label: "Inicio", icon: "fa-solid fa-house", href: url("/") }]
+      ? [{ title: "Ir a Mi Estudio", label: "Inicio", icon: "fa-solid fa-house", to: "/" }]
       : []),
     { title: "Buscar curso o tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
-    { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", href: url("/pomodoro") },
-    { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", href: url("/repaso") },
+    { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
+    { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: "/repaso" },
     ...(onEditarHorario
       ? [{ title: "Editar horario", label: "Editar", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
       : []),
@@ -43,11 +40,11 @@ export default function AppHeader({
         <span>{b.label}</span>
       </>
     );
-    if (b.href) {
+    if (b.to) {
       return (
-        <a key={b.title} href={b.href} title={b.title} className={cls}>
+        <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={() => setConfigOpen(false)}>
           {content}
-        </a>
+        </Link>
       );
     }
     return (
@@ -67,9 +64,9 @@ export default function AppHeader({
 
   return (
     <div className="topbar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 15px" }}>
-      <a href={url("/")} className="topbar__title" style={{ display: "flex", flexDirection: "column", justifyContent: "center", textDecoration: "none" }}>
+      <Link to="/" className="topbar__title" style={{ display: "flex", flexDirection: "column", justifyContent: "center", textDecoration: "none" }}>
         <span className="topbar__curso">{nombreUsuario || "Mi Estudio"}</span>
-      </a>
+      </Link>
 
       <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
         <div className="topbar__nav">

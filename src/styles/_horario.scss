@@ -81,6 +81,29 @@
     min-height: 480px;
   }
 }
+.horario__btn-volver-tema {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--surface-soft, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  color: var(--ink-soft);
+  font-size: 13px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.horario__btn-volver-tema:hover {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
 .horario__timer-center {
   text-align: center;
   display: flex;

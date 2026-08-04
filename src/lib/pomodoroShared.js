@@ -45,6 +45,17 @@ export function guardarRetorno(temaNombre) {
   }
 }
 
+// Igual que leerYLimpiarRetorno, pero sin borrar el valor: sirve para
+// mostrar un botón persistente de "volver al tema" que no se pierda
+// la primera vez que se lee.
+export function leerRetorno() {
+  try {
+    return localStorage.getItem(POMO_RETORNO_KEY);
+  } catch {
+    return null;
+  }
+}
+
 export function leerYLimpiarRetorno() {
   try {
     const v = localStorage.getItem(POMO_RETORNO_KEY);

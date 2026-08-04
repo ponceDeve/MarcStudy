@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
@@ -33,15 +34,16 @@ const PASOS_BIENVENIDA = [
 ];
 
 export default function RepasoPage() {
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("repaso_welcome_seen", false);
   const [log, setLog] = useState(() => leerLog());
-  
-  // Estado para manejar qué elemento se borra y en qué paso de confirmación va
-  const [deleteData, setDeleteData] = useState({ stage: 0, id: null });
 
+  // Navegación a Mi Estudio con ?q=. Se arma la URL a mano en vez de
+  // usar navigate() de React Router: con el basename "/cont_crono"
+  // configurado, navigate() duplicaba el prefijo (/cont_crono/cont_crono).
   function irAMiEstudio(nombre) {
-    window.location.href = `${window.location.origin}/cont_crono/?q=${encodeURIComponent(nombre)}`;
+    navigate(`/?q=${encodeURIComponent(nombre)}`);
   }
 
   const { repasosHoy, proximos } = useMemo(() => clasificarRepasos(log), [log]);
@@ -52,12 +54,6 @@ export default function RepasoPage() {
       : [];
     if (!repasosDone.includes(intervaloIdx)) repasosDone.push(intervaloIdx);
     setLog(marcarRepasoHecho(id, repasosDone));
-  }
-
-  // Elimina la entrada completa del historial (borra el de hoy y los próximos)
-  function handleEliminarRepaso() {
-    setLog((prev) => prev.filter((item) => item.id !== deleteData.id));
-    setDeleteData({ stage: 0, id: null });
   }
 
   const porFecha = useMemo(() => {
@@ -71,31 +67,6 @@ export default function RepasoPage() {
 
   return (
     <div className="repaso">
-      {/* Modal de confirmación global */}
-      {deleteData.stage > 0 && (
-        <div className="repaso__delete-overlay">
-          <div className="repaso__delete-modal">
-            {deleteData.stage === 1 ? (
-              <>
-                <p>¿Eliminar este repaso y sus próximas repeticiones?</p>
-                <div className="repaso__delete-actions">
-                  <button onClick={() => setDeleteData({ stage: 0, id: null })}>Cancelar</button>
-                  <button onClick={() => setDeleteData({ ...deleteData, stage: 2 })}>Aceptar</button>
-                </div>
-              </>
-            ) : (
-              <>
-                <p>¿Estás seguro? Confirma nuevamente.</p>
-                <div className="repaso__delete-actions swapped">
-                  <button onClick={handleEliminarRepaso}>Aceptar</button>
-                  <button onClick={() => setDeleteData({ stage: 0, id: null })}>Cancelar</button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-
       <AppHeader showHome onAbrirBuscador={() => setSearchOpen(true)} />
 
       <div className="repaso__header">
@@ -110,14 +81,6 @@ export default function RepasoPage() {
             const numRepaso = intervaloIdx + 1;
             return (
               <div key={entrada.id} className={`repaso__item ${lc.box}`}>
-                {/* Botón de eliminar en la esquina de esta caja */}
-                <button 
-                  className="repaso__item-btn-delete"
-                  onClick={() => setDeleteData({ stage: 1, id: entrada.id })}
-                >
-                  <i className="fa-solid fa-trash"></i>
-                </button>
-
                 <div className="repaso__item-body">
                   <div className="repaso__item-tags">
                     <span className={`repaso__badge ${lc.badge}`}>Repaso {numRepaso}</span>
@@ -186,13 +149,6 @@ export default function RepasoPage() {
                         {entrada.tema && (
                           <span className="repaso__proximos-tema">— {entrada.tema}</span>
                         )}
-                        {/* Botón de eliminar también en la lista de próximos */}
-                        <button 
-                          className="repaso__proximos-btn-delete"
-                          onClick={() => setDeleteData({ stage: 1, id: entrada.id })}
-                        >
-                          <i className="fa-solid fa-trash"></i>
-                        </button>
                       </div>
                     ))}
                   </div>

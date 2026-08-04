@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
@@ -135,7 +135,7 @@ export default function MiEstudioPage() {
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
     if (topicData?.tema) guardarRetorno(topicData.tema);
-    window.location.href = `${window.location.origin}/cont_crono/pomodoro`;
+    navigate("/pomodoro");
   }
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
@@ -203,7 +203,7 @@ export default function MiEstudioPage() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(item.archivo);
+      const res = await fetch(import.meta.env.BASE_URL + item.archivo);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
       const data = await res.json();
       const puntos = (data.theory || []).flatMap((seccion) =>
@@ -297,6 +297,7 @@ export default function MiEstudioPage() {
   // Si se llega con ?q=nombre-del-tema (ej. desde el link "Repasar en
   // Mi Estudio" de la página de Repaso), se busca y abre directo.
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   useEffect(() => {
     const q = searchParams.get("q");
     if (!q) return;
@@ -731,7 +732,7 @@ export default function MiEstudioPage() {
                 <div className="arcade-grid" />
                 <div className="mi-estudio__theory-inner">
                   <p className="mi-estudio__theory-badge">
-                    {current.seccionTitulo}
+                    Nivel {cardIndex + 1}: {current.seccionTitulo}
                   </p>
                   <p className="mi-estudio__theory-text">
                     <GlossaryText text={current.texto} glosario={topicData?.glosario} />

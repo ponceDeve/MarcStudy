@@ -1,15 +1,35 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
-// Cuenta regresiva reutilizable. El mismo hook alimenta:
-//  - el reloj grande de horario_estudio (Pomodoro)
-//  - el widget flotante mini-Pomodoro dentro de mi-estudio
-// (Mejorado con sincronización de tiempo absoluto para evitar congelamientos en segundo plano)
+const STORAGE_KEY = "pomodoro_countdown_backup";
+
 export function useCountdown(initialMinutes, onComplete) {
-  const [secondsLeft, setSecondsLeft] = useState(initialMinutes * 60);
-  const [isRunning, setIsRunning] = useState(false);
+  // 1. Inicializar leyendo de localStorage (sobrevive al cambio de pantalla)
+  const [secondsLeft, setSecondsLeft] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const { endTime, pausedLeft } = JSON.parse(saved);
+      // Si estaba corriendo, calculamos cuánto falta
+      if (endTime) {
+        const remaining = Math.round((endTime - Date.now()) / 1000);
+        return remaining > 0 ? remaining : 0;
+      }
+      // Si estaba pausado, recuperamos donde se quedó
+      if (pausedLeft) return pausedLeft;
+    }
+    return initialMinutes * 60;
+  });
+
+  const [isRunning, setIsRunning] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const { endTime } = JSON.parse(saved);
+      return endTime && endTime > Date.now();
+    }
+    return false;
+  });
 
   const intervalRef = useRef(null);
-  const endTimeRef = useRef(null); // NUEVO: Guarda la meta exacta en el tiempo
+  const endTimeRef = useRef(null); 
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
@@ -20,7 +40,6 @@ export function useCountdown(initialMinutes, onComplete) {
     }
   }, []);
 
-  // NUEVO: Función centralizada que calcula el tiempo restante matemático
   const tick = useCallback(() => {
     if (!endTimeRef.current) return;
     const now = Date.now();
@@ -30,6 +49,7 @@ export function useCountdown(initialMinutes, onComplete) {
       clear();
       setIsRunning(false);
       setSecondsLeft(0);
+      localStorage.removeItem(STORAGE_KEY); // Limpiar al terminar
       onCompleteRef.current && onCompleteRef.current();
     } else {
       setSecondsLeft(remaining);
@@ -40,8 +60,11 @@ export function useCountdown(initialMinutes, onComplete) {
     if (intervalRef.current) return;
 
     setIsRunning(true);
-    // NUEVO: Proyectamos la hora exacta en la que debe acabar
-    endTimeRef.current = Date.now() + secondsLeft * 1000;
+    const end = Date.now() + secondsLeft * 1000;
+    endTimeRef.current = end;
+    
+    // Guardamos la meta en el almacenamiento del celular
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ endTime: end }));
 
     intervalRef.current = setInterval(tick, 1000);
   }, [secondsLeft, tick]);
@@ -49,8 +72,10 @@ export function useCountdown(initialMinutes, onComplete) {
   const pause = useCallback(() => {
     clear();
     setIsRunning(false);
-    endTimeRef.current = null; // Al pausar, borramos la meta final
-  }, [clear]);
+    endTimeRef.current = null;
+    // Guardamos los segundos restantes para cuando regrese
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ pausedLeft: secondsLeft }));
+  }, [clear, secondsLeft]);
 
   const reset = useCallback(
     (minutes) => {
@@ -58,6 +83,7 @@ export function useCountdown(initialMinutes, onComplete) {
       setIsRunning(false);
       endTimeRef.current = null;
       setSecondsLeft((minutes ?? initialMinutes) * 60);
+      localStorage.removeItem(STORAGE_KEY); // Limpiamos la memoria
     },
     [clear, initialMinutes],
   );
@@ -68,13 +94,24 @@ export function useCountdown(initialMinutes, onComplete) {
       setIsRunning(false);
       endTimeRef.current = null;
       setSecondsLeft(minutes * 60);
+      localStorage.removeItem(STORAGE_KEY);
     },
     [clear],
   );
 
-  useEffect(() => clear, [clear]);
+  // 2. Auto-arrancar el intervalo si detecta que había un timer activo al montar la pantalla
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const { endTime } = JSON.parse(saved);
+      if (endTime && endTime > Date.now()) {
+        endTimeRef.current = endTime;
+        intervalRef.current = setInterval(tick, 1000);
+      }
+    }
+    return clear;
+  }, [clear, tick]);
 
-  // NUEVO: Si cambiaste de pestaña y vuelves, actualiza el reloj instantáneamente
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible" && isRunning) {
