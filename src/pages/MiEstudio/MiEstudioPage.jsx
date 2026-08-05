@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import AppHeader from "../../components/AppHeader";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
@@ -21,20 +22,13 @@ import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido } fro
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import 'katex/dist/katex.min.css';
 
-const OPCIONES_BUSQUEDA = [
-  ...manifest.cursos.map((c) => ({
-    type: "curso",
-    nombre: c.nombre
-  })),
-  ...manifest.cursos.flatMap((c) =>
-    c.temas.map((t) => ({
-      type: "tema",
-      curso: c.nombre,
-      tema: t.tema,
-      archivo: t.archivo
-    }))
-  ),
-];
+const CURSOS_ITEMS = manifest.cursos.map((c) => ({ type: "curso", nombre: c.nombre }));
+const TEMAS_ITEMS = manifest.cursos.flatMap((c) =>
+  c.temas.map((t) => ({ type: "tema", curso: c.nombre, tema: t.tema, archivo: t.archivo })),
+);
+// Se mantiene por compatibilidad con el resto del archivo (ej. para
+// encontrar un ítem puntual por nombre/tema al llegar con ?q=).
+const OPCIONES_BUSQUEDA = [...CURSOS_ITEMS, ...TEMAS_ITEMS];
 
 function shuffle(arr) {
   const a = [...arr];
@@ -43,6 +37,45 @@ function shuffle(arr) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+// Busca cursos y temas por separado, solo con matches "fuertes"
+// (empieza con / contiene / todas las palabras) — sin la red de
+// letras sueltas o typos: si no hay una coincidencia real, no
+// aparece nada ("flo" no encuentra "Filosofía").
+function buscarFuertes(query) {
+  const cursos = buscarConPuntaje(CURSOS_ITEMS, query, (c) => c.nombre, { minScore: 400 });
+  const temas = buscarConPuntaje(TEMAS_ITEMS, query, (t) => t.tema, { minScore: 400 });
+  return { cursos, temas };
+}
+
+// Arma los grupos a mostrar en la lista: un grupo por curso.
+// - Si el curso matcheó por su propio nombre, se listan TODOS sus temas.
+// - Si no, pero alguno de sus temas matcheó puntualmente, se listan
+//   solo esos temas (no el resto del curso).
+function agruparResultados({ cursos, temas }) {
+  const nombresCursosFuertes = new Set(cursos.map((c) => c.nombre));
+  const grupos = cursos.map((c) => ({
+    curso: c.nombre,
+    temas: manifest.cursos.find((x) => x.nombre === c.nombre).temas.map((t) => ({
+      type: "tema",
+      curso: c.nombre,
+      tema: t.tema,
+      archivo: t.archivo,
+    })),
+  }));
+
+  const temasPorCurso = new Map();
+  for (const t of temas) {
+    if (nombresCursosFuertes.has(t.curso)) continue; // ya se listan todos arriba
+    if (!temasPorCurso.has(t.curso)) temasPorCurso.set(t.curso, []);
+    temasPorCurso.get(t.curso).push(t);
+  }
+  for (const [curso, temasDelCurso] of temasPorCurso) {
+    grupos.push({ curso, temas: temasDelCurso });
+  }
+
+  return grupos;
 }
 
 export default function MiEstudioPage() {
@@ -141,21 +174,32 @@ export default function MiEstudioPage() {
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
 
-  // Igual que el buscador de la lupa (SearchModal): no busca en vivo
-  // mientras se tipea, recién al Enter. Busca cursos Y temas, y solo
-  // se queda con la mejor coincidencia (no toda la lista).
-  const [submittedQuery, setSubmittedQuery] = useState("");
-  const yaBuscado = submittedQuery.trim() !== "" && submittedQuery === query;
+  // Búsqueda en vivo: se recalcula con cada letra, sin esperar Enter.
+  // Si hay una sola coincidencia (curso o tema) va directo a abrirla
+  // apenas converge a esa única opción; si hay más de una, se muestra
+  // la lista agrupada por curso.
+  const hayQuery = query.trim() !== "";
 
-  const resultadoBusqueda = useMemo(() => {
-    if (!yaBuscado) return null;
-    const encontrados = buscarConPuntaje(
-      OPCIONES_BUSQUEDA,
-      submittedQuery,
-      (item) => (item.type === "curso" ? item.nombre : item.tema),
-    );
-    return encontrados[0] || null;
-  }, [submittedQuery, yaBuscado]);
+  const fuertes = useMemo(() => {
+    if (!hayQuery) return { cursos: [], temas: [] };
+    return buscarFuertes(query);
+  }, [query, hayQuery]);
+
+  const grupos = useMemo(() => agruparResultados(fuertes), [fuertes]);
+
+  // Para navegar con flechas hace falta una lista plana (curso + sus
+  // temas, en orden de aparición); el click/Enter selecciona ese ítem.
+  const itemsPlanos = useMemo(
+    () => grupos.flatMap((g) => [{ type: "curso", nombre: g.curso }, ...g.temas]),
+    [grupos],
+  );
+
+  useEffect(() => {
+    if (!busquedaEnfocada) return;
+    const total = fuertes.cursos.length + fuertes.temas.length;
+    if (total === 1) seleccionarItem(fuertes.cursos[0] || fuertes.temas[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fuertes, busquedaEnfocada]);
 
   useEffect(() => {
     function onFullscreenChange() {
@@ -275,7 +319,6 @@ export default function MiEstudioPage() {
 
   function seleccionarItem(item) {
     setQuery("");
-    setSubmittedQuery("");
     if (item.type === "curso") {
       setCursoSeleccionado(item.nombre);
       setTemasOpen(true);
@@ -332,17 +375,8 @@ export default function MiEstudioPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Con una sola sugerencia mostrada (no lista), el Enter primero
-  // dispara la búsqueda y, si ya hay un resultado, lo abre directo.
-  function handleKeyDownInicial(e) {
-    if (e.key !== "Enter") return;
-    e.preventDefault();
-    if (!yaBuscado) {
-      setSubmittedQuery(query);
-      return;
-    }
-    if (resultadoBusqueda) seleccionarItem(resultadoBusqueda);
-  }
+  const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
+    useArrowKeyList(itemsPlanos, seleccionarItem);
 
   function toggleStage() {
     setIsLevelMode(false);
@@ -707,7 +741,7 @@ export default function MiEstudioPage() {
       <div className={wrapClass}>
         {!topicData && (
           <>
-            <AppHeader onAbrirBuscador={() => setSearchOpen(true)} />
+            <AppHeader />
             <div className="mi-estudio__intro">
               <div>
                 <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
@@ -721,31 +755,61 @@ export default function MiEstudioPage() {
                 )}
               </div>
             <div className="home-search">
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onFocus={() => setBusquedaEnfocada(true)}
-                onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                onKeyDown={handleKeyDownInicial}
-                placeholder="Buscar tema o curso..."
-                className="home-search-input"
-              />
-              {busquedaEnfocada && yaBuscado && resultadoBusqueda && (
-                <div className="home-search-results">
-                  <button
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      seleccionarItem(resultadoBusqueda);
-                    }}
-                    className={`home-search-result ${resultadoBusqueda.type === "curso" ? "is-curso" : "is-tema"}`}
-                  >
-                    <p>{resultadoBusqueda.type === "curso" ? resultadoBusqueda.nombre : resultadoBusqueda.tema}</p>
-                  </button>
+              <div className="search-input-row">
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onFocus={() => setBusquedaEnfocada(true)}
+                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                  onKeyDown={handleKeyDownInicial}
+                  placeholder="Buscar tema o curso..."
+                  className="search-input"
+                />
+                <div className="search-input-lupa">
+                  <i className="fa-solid fa-magnifying-glass" />
                 </div>
-              )}
-              {busquedaEnfocada && yaBuscado && !resultadoBusqueda && (
-                <div className="home-search-results">
-                  <p className="home-search-empty">Sin resultados para "{submittedQuery}"</p>
+              </div>
+              {busquedaEnfocada && hayQuery && grupos.length > 0 && (() => {
+                let idx = -1;
+                return (
+                  <div className="home-search-results search-results">
+                    {grupos.map((g) => {
+                      const idxCurso = ++idx;
+                      return (
+                        <div key={`grupo-${g.curso}`} className="">
+                          <button
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              seleccionarItem({ type: "curso", nombre: g.curso });
+                            }}
+                            className={`search-result-item is-curso ${idxCurso === focusedInicial ? "is-focused" : ""}`}
+                          >
+                            <span className="curso-title">{g.curso}</span>
+                          </button>
+                          {g.temas.map((t) => {
+                            const idxTema = ++idx;
+                            return (
+                              <button
+                                key={`tema-${t.curso}-${t.tema}`}
+                                onMouseDown={(e) => {
+                                  e.preventDefault();
+                                  seleccionarItem(t);
+                                }}
+                                className={`search-result-item is-tema ${idxTema === focusedInicial ? "is-focused" : ""}`}
+                              >
+                                <p className="search-result-item__tema">{t.tema}</p>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
+              {busquedaEnfocada && hayQuery && grupos.length === 0 && (
+                <div className="home-search-results search-results">
+                  <p className="search-empty">Sin resultados para "{query}"</p>
                 </div>
               )}
             </div>

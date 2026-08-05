@@ -124,13 +124,20 @@ function levenshtein(a, b, maximo) {
 // Busca "query" contra una lista de items, usando getTexto(item) para
 // saber qué texto de cada item comparar. Devuelve solo los que tienen
 // algún puntaje > 0, ordenados de mejor a peor match.
-export function buscarConPuntaje(items, query, getTexto) {
+//
+// minScore (opcional): sube el piso de puntaje aceptado. Los buscadores
+// globales (inicio y lupa) lo usan en 400 para descartar los matches
+// "débiles" (typos y letras sueltas fuera de orden/seguidas) — esos
+// solo tienen sentido cuando el universo de búsqueda es chico (un
+// tema ya abierto); contra los ~300 cursos+temas juntos, generan
+// ruido (ej. "incas" encontrando temas que ni empiezan así).
+export function buscarConPuntaje(items, query, getTexto, { minScore = 0 } = {}) {
   const queryNorm = normalizarTexto(query);
   if (!queryNorm) return [];
 
   return items
     .map((item) => ({ item, score: puntajeMatch(normalizarTexto(getTexto(item)), queryNorm) }))
-    .filter((r) => r.score > 0)
+    .filter((r) => r.score > 0 && r.score >= minScore)
     .sort((a, b) => b.score - a.score)
     .map((r) => r.item);
 }

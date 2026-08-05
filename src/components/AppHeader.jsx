@@ -25,7 +25,12 @@ export default function AppHeader({
     ...(showHome
       ? [{ title: "Ir a Mi Estudio", label: "Inicio", icon: "fa-solid fa-house", to: "/" }]
       : []),
-    { title: "Buscar curso o tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
+    // Solo se agrega si onAbrirBuscador viene definido — en la
+    // pantalla de inicio de Mi Estudio no hace falta, porque ahí ya
+    // hay un buscador principal en el propio cuerpo de la página.
+    ...(onAbrirBuscador
+      ? [{ title: "Buscar curso o tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
+      : []),
     { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
     { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: "/repaso" },
     ...(onEditarHorario
