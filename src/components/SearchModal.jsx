@@ -1,41 +1,52 @@
 import { useState, useMemo, useEffect } from "react";
 import manifest from "../data/manifest.json";
-import { useArrowKeyList } from "../hooks/useArrowKeyList";
 import { buscarConPuntaje } from "../lib/buscador";
 
-const OPCIONES = manifest.cursos.map((c) => ({ type: "curso", nombre: c.nombre }));
+const OPCIONES = [
+  ...manifest.cursos.map((c) => ({ type: "curso", nombre: c.nombre })),
+  ...manifest.cursos.flatMap((c) =>
+    c.temas.map((t) => ({
+      type: "tema",
+      curso: c.nombre,
+      tema: t.tema,
+      archivo: t.archivo,
+    })),
+  ),
+];
 
 function textoDeItem(item) {
-  return item.nombre;
+  return item.type === "curso" ? item.nombre : item.tema;
 }
 
-// A diferencia del buscador de inicio (que sí busca en vivo mientras
-// escribes), este busca recién al presionar Enter — para no mostrar
-// resultados cambiando todo el tiempo mientras tipeas.
+// Igual que el buscador de inicio: no busca en vivo mientras escribes
+// (recién al presionar Enter o la lupa), busca cursos Y temas, y solo
+// se queda con la mejor coincidencia.
 export default function SearchModal({ open, onClose, onSelect }) {
   const [query, setQuery] = useState("");
   const [submittedQuery, setSubmittedQuery] = useState("");
   const yaBuscado = submittedQuery.trim() !== "" && submittedQuery === query;
 
-  const results = useMemo(
-    () => (yaBuscado ? buscarConPuntaje(OPCIONES, submittedQuery, textoDeItem).slice(0, 15) : []),
-    [submittedQuery, yaBuscado],
-  );
+  const resultado = useMemo(() => {
+    if (!yaBuscado) return null;
+    const encontrados = buscarConPuntaje(OPCIONES, submittedQuery, textoDeItem);
+    return encontrados[0] || null;
+  }, [submittedQuery, yaBuscado]);
 
-  const { focusedIdx, handleKeyDown } = useArrowKeyList(results, (item) => {
+  function elegir(item) {
     onSelect(item);
     setQuery("");
     setSubmittedQuery("");
     onClose();
-  });
+  }
 
   function onKeyDownInput(e) {
-    if (e.key === "Enter" && !yaBuscado) {
-      e.preventDefault();
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    if (!yaBuscado) {
       setSubmittedQuery(query);
       return;
     }
-    handleKeyDown(e);
+    if (resultado) elegir(resultado);
   }
 
   useEffect(() => {
@@ -64,7 +75,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={onKeyDownInput}
-            placeholder="Buscar curso..."
+            placeholder="Buscar curso o tema..."
             className="search-input"
           />
           <button
@@ -77,30 +88,25 @@ export default function SearchModal({ open, onClose, onSelect }) {
           </button>
         </div>
 
-        {results.length > 0 && (
+        {resultado && (
           <div className="search-results">
-            {results.map((r, i) => {
-              const isFocused = i === focusedIdx;
-
-              return (
-                <button
-                  key={`curso-${r.nombre}`}
-                  onClick={() => {
-                    onSelect(r);
-                    setQuery("");
-                    setSubmittedQuery("");
-                    onClose();
-                  }}
-                  className={`search-result-item is-curso ${isFocused ? "is-focused" : ""}`}
-                >
-                  <span className="curso-title">{r.nombre}</span>
-                </button>
-              );
-            })}
+            <button
+              onClick={() => elegir(resultado)}
+              className={`search-result-item ${resultado.type === "curso" ? "is-curso" : "is-tema"}`}
+            >
+              {resultado.type === "curso" ? (
+                <span className="curso-title">{resultado.nombre}</span>
+              ) : (
+                <>
+                  <p className="search-result-item__tema">{resultado.tema}</p>
+                  <p className="search-result-item__curso">{resultado.curso}</p>
+                </>
+              )}
+            </button>
           </div>
         )}
 
-        {yaBuscado && results.length === 0 && (
+        {yaBuscado && !resultado && (
           <p className="search-empty">Sin resultados para "{submittedQuery}"</p>
         )}
       </div>

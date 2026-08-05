@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
-import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import QuestionCard from "./QuestionCard";
@@ -54,6 +53,8 @@ export default function MiEstudioPage() {
   const [error, setError] = useState("");
   const [flatPuntos, setFlatPuntos] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
+  const [ordenPreguntas, setOrdenPreguntas] = useState([]); // orden aleatorio de índices cuando se omite la teoría
+  const [posOrden, setPosOrden] = useState(0); // posición actual dentro de ordenPreguntas
   const [maxUnlocked, setMaxUnlocked] = useState(0);
   const [stage, setStage] = useState("theory"); // 'theory' | 'question' | 'finished'
   const [isLevelMode, setIsLevelMode] = useState(false);
@@ -140,23 +141,21 @@ export default function MiEstudioPage() {
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
 
-  const results = useMemo(() => {
-    if (!query.trim()) return [];
-    return buscarConPuntaje(
-      OPCIONES_BUSQUEDA.filter((item) => item.type === "curso"),
-      query,
-      (item) => item.nombre,
-    ).slice(0, 8);
-  }, [query]);
+  // Igual que el buscador de la lupa (SearchModal): no busca en vivo
+  // mientras se tipea, recién al Enter. Busca cursos Y temas, y solo
+  // se queda con la mejor coincidencia (no toda la lista).
+  const [submittedQuery, setSubmittedQuery] = useState("");
+  const yaBuscado = submittedQuery.trim() !== "" && submittedQuery === query;
 
-  // Si no hay nada escrito pero el buscador está enfocado, se listan
-  // todos los cursos (igual que el buscador de temas dentro del mapa),
-  // para que el usuario no tenga que adivinar el nombre.
-  const todosLosCursos = useMemo(
-    () => OPCIONES_BUSQUEDA.filter((item) => item.type === "curso"),
-    [],
-  );
-  const resultsVisibles = query.trim() ? results : todosLosCursos;
+  const resultadoBusqueda = useMemo(() => {
+    if (!yaBuscado) return null;
+    const encontrados = buscarConPuntaje(
+      OPCIONES_BUSQUEDA,
+      submittedQuery,
+      (item) => (item.type === "curso" ? item.nombre : item.tema),
+    );
+    return encontrados[0] || null;
+  }, [submittedQuery, yaBuscado]);
 
   useEffect(() => {
     function onFullscreenChange() {
@@ -246,6 +245,8 @@ export default function MiEstudioPage() {
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
       setCardIndex(cardInicial);
+      setOrdenPreguntas([]);
+      setPosOrden(0);
       setStage("theory");
       setModoEstudio("completo");
       setIsLevelMode(false);
@@ -273,11 +274,12 @@ export default function MiEstudioPage() {
   }
 
   function seleccionarItem(item) {
+    setQuery("");
+    setSubmittedQuery("");
     if (item.type === "curso") {
       setCursoSeleccionado(item.nombre);
       setTemasOpen(true);
       setSearchOpen(false);
-      setQuery("");
     } else {
       setCursoSeleccionado(item.curso);
       setTemasOpen(false);
@@ -288,6 +290,12 @@ export default function MiEstudioPage() {
   function elegirModoEstudio(modo) {
     setPreguntaModoAbierta(false);
     if (modo === "solo_preguntas") {
+      // Preguntas en orden aleatorio, arrancando siempre desde la
+      // posición 0 (sin importar en qué tarjeta de teoría te quedaste).
+      const orden = shuffle(flatPuntos.map((_, i) => i));
+      setOrdenPreguntas(orden);
+      setPosOrden(0);
+      setCardIndex(orden[0] ?? 0);
       setModoEstudio("solo_preguntas");
       setStage("question");
       setCountdown(0);
@@ -324,8 +332,17 @@ export default function MiEstudioPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
-    useArrowKeyList(resultsVisibles, seleccionarItem);
+  // Con una sola sugerencia mostrada (no lista), el Enter primero
+  // dispara la búsqueda y, si ya hay un resultado, lo abre directo.
+  function handleKeyDownInicial(e) {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    if (!yaBuscado) {
+      setSubmittedQuery(query);
+      return;
+    }
+    if (resultadoBusqueda) seleccionarItem(resultadoBusqueda);
+  }
 
   function toggleStage() {
     setIsLevelMode(false);
@@ -361,10 +378,24 @@ export default function MiEstudioPage() {
       }
       return;
     }
+    if (modoEstudio === "solo_preguntas") {
+      if (posOrden < ordenPreguntas.length - 1) {
+        const siguientePos = posOrden + 1;
+        setPosOrden(siguientePos);
+        setCardIndex(ordenPreguntas[siguientePos]);
+        setStage("question");
+        setIsLevelMode(false);
+        setQuestionResult(null);
+        setAttemptKey(0);
+        setCountdown(0);
+      } else {
+        finalizarTema();
+      }
+      return;
+    }
     if (cardIndex < flatPuntos.length - 1) {
       setCardIndex(cardIndex + 1);
-      const siguienteStage = modoEstudio === "solo_preguntas" ? "question" : "theory";
-      setStage(siguienteStage);
+      setStage("theory");
       setIsLevelMode(false);
       setQuestionResult(null);
       setAttemptKey(0);
@@ -383,10 +414,22 @@ export default function MiEstudioPage() {
       }
       return;
     }
+    if (modoEstudio === "solo_preguntas") {
+      if (posOrden > 0) {
+        const anteriorPos = posOrden - 1;
+        setPosOrden(anteriorPos);
+        setCardIndex(ordenPreguntas[anteriorPos]);
+        setStage("question");
+        setIsLevelMode(false);
+        setQuestionResult(null);
+        setAttemptKey(0);
+        setCountdown(0);
+      }
+      return;
+    }
     if (cardIndex > 0) {
       setCardIndex(cardIndex - 1);
-      const anteriorStage = modoEstudio === "solo_preguntas" ? "question" : "theory";
-      setStage(anteriorStage);
+      setStage("theory");
       setIsLevelMode(false);
       setQuestionResult(null);
       setAttemptKey(0);
@@ -575,7 +618,7 @@ export default function MiEstudioPage() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [stage, questionResult, levelsOpen, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown]);
+  }, [stage, questionResult, levelsOpen, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden]);
 
   const wrapClass = ["mi-estudio__wrap", topicData && !isLevelMode ? "has-topbar" : ""].join(" ");
 
@@ -687,20 +730,22 @@ export default function MiEstudioPage() {
                 placeholder="Buscar tema o curso..."
                 className="home-search-input"
               />
-              {busquedaEnfocada && resultsVisibles.length > 0 && (
+              {busquedaEnfocada && yaBuscado && resultadoBusqueda && (
                 <div className="home-search-results">
-                  {resultsVisibles.map((r, i) => (
-                    <button
-                      key={r.nombre}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        seleccionarItem(r);
-                      }}
-                      className={`home-search-result is-curso ${i === focusedInicial ? "is-focused" : ""}`}
-                    >
-                      <p>{r.nombre}</p>
-                    </button>
-                  ))}
+                  <button
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      seleccionarItem(resultadoBusqueda);
+                    }}
+                    className={`home-search-result ${resultadoBusqueda.type === "curso" ? "is-curso" : "is-tema"}`}
+                  >
+                    <p>{resultadoBusqueda.type === "curso" ? resultadoBusqueda.nombre : resultadoBusqueda.tema}</p>
+                  </button>
+                </div>
+              )}
+              {busquedaEnfocada && yaBuscado && !resultadoBusqueda && (
+                <div className="home-search-results">
+                  <p className="home-search-empty">Sin resultados para "{submittedQuery}"</p>
                 </div>
               )}
             </div>
