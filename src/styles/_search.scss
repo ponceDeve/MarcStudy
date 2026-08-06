@@ -32,9 +32,15 @@
   align-items: center;
   background: var(--surface);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-lg);
   padding-right: 6px;
+  transition: outline 0.2s ease;
 }
+
+.search-input-row:focus-within {
+  outline: 1px solid var(--ink-soft);
+  outline-offset: 2px;
+}
+
 .search-input-lupa {
   flex-shrink: 0;
   width: 40px;
@@ -51,7 +57,7 @@
   right: 0;
 }
 .search-input:focus {
-  box-shadow: var(--shadow-lg);
+  outline: none;
 }
 /* Contenedor de resultados */
 .search-results {
@@ -71,7 +77,7 @@
   background: transparent;
   padding: 10px 16px;
   cursor: pointer;
-  border-radius: 0; /* sin esquinas redondeadas: se leen como lista continua, no burbujas sueltas */
+  border-radius: 0;
 }
 
 /* Estado de foco (navegación por teclado) */
@@ -90,7 +96,7 @@
   color: var(--ink);
   font-weight: 700;
   font-size: 1rem;
-  margin-bottom: 2px; /* separación mínima, no un salto grande */
+  margin-bottom: 2px;
 }
 .search-result-item.is-curso:hover,
 .search-result-item.is-curso.is-focused {
@@ -107,12 +113,12 @@
     255,
     255,
     0.03
-  ); /* tinte muy sutil sobre el fondo oscuro */
+  );
   color: var(--ink-soft);
   font-size: 0.95rem;
-  margin-left: 24px; /* <--- La indentación visual */
-  width: calc(100% - 24px); /* Ajuste de ancho por el margin */
-  border-left: 2px solid var(--border); /* línea guía discreta */
+  margin-left: 24px;
+  width: calc(100% - 24px);
+  border-left: 2px solid var(--border);
 }
 .search-result-item.is-tema:hover,
 .search-result-item.is-tema.is-focused {
@@ -157,4 +163,102 @@
   overflow-y: auto;
   max-height: 320px;
   z-index: 10;
+}
+
+/* ============================================================
+   BUSCADOR DEL MODAL DE NIVELES (INPUT + RESULTADOS)
+   ============================================================ */
+
+/* 1. Contenedor relativo para que los resultados floten correctamente debajo */
+.levels-modal__search {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+/* 2. ESTILO DEL INPUT */
+.levels-modal__search .home-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s ease, outline 0.2s ease;
+}
+
+/* Placeholder del input */
+.levels-modal__search .home-search-input::placeholder {
+  color: var(--ink-faint);
+}
+
+/* Efecto al hacer click en el input */
+.levels-modal__search .home-search-input:focus {
+  border-color: var(--primary);
+  outline: 2px solid var(--ink-soft);
+  outline-offset: 2px;
+}
+
+/* 3. CONTENEDOR DE LA LISTA DESPLEGABLE */
+.levels-modal__search .home-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 8px;
+  z-index: 100;
+  background-color: var(--surface-alt); 
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md); 
+  padding: 8px;
+  max-height: 250px; 
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Barra de scroll adaptada a tus colores */
+.levels-modal__search .home-search-results::-webkit-scrollbar {
+  width: 6px;
+}
+.levels-modal__search .home-search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+.levels-modal__search .home-search-results::-webkit-scrollbar-thumb {
+  background-color: var(--border-strong);
+  border-radius: var(--radius-full);
+}
+
+/* 4. BOTONES DE RESULTADO (CADA TEMA) */
+.levels-modal__search .home-search-result {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-body);
+  color: var(--ink);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* 5. DISEÑO AL PASAR EL RATÓN O SELECCIONAR */
+.levels-modal__search .home-search-result:hover,
+.levels-modal__search .home-search-result.is-focused {
+  background-color: var(--surface-hover);
+}
+
+/* Textos dentro del botón */
+.levels-modal__search .home-search-result p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }

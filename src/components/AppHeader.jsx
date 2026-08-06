@@ -23,18 +23,18 @@ export default function AppHeader({
 
   const botones = [
     ...(showHome
-      ? [{ title: "Ir a Mi Estudio", label: "Inicio", icon: "fa-solid fa-house", to: "/" }]
+      ? [{ title: "Ir a Mi Estudio", label: "Home", icon: "fa-solid fa-house", to: "/" }]
       : []),
     // Solo se agrega si onAbrirBuscador viene definido — en la
     // pantalla de inicio de Mi Estudio no hace falta, porque ahí ya
     // hay un buscador principal en el propio cuerpo de la página.
     ...(onAbrirBuscador
-      ? [{ title: "Buscar curso o tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
+      ? [{ title: "Buscar curso o tema", label: "Busc", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
       : []),
     { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
-    { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: "/repaso" },
+    { title: "Ir a Mis Repasos", label: "Repa", icon: "fa-solid fa-brain", to: "/repaso" },
     ...(onEditarHorario
-      ? [{ title: "Editar horario", label: "Editar", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
+      ? [{ title: "Editar horario", label: "Edit", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
       : []),
   ];
 

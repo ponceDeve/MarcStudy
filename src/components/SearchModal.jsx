@@ -70,7 +70,8 @@ export default function SearchModal({ open, onClose, onSelect }) {
   useEffect(() => {
     if (!open) return;
     const total = fuertes.cursos.length + fuertes.temas.length;
-    if (total === 1) elegir(fuertes.cursos[0] || fuertes.temas[0]);
+    // LÍNEA COMENTADA: Ya no saltará automáticamente al detectar una única opción.
+    // if (total === 1) elegir(fuertes.cursos[0] || fuertes.temas[0]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fuertes, open]);
 
