@@ -278,38 +278,38 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
 /* ---------- Tipo 3: completar (texto con espacios en blanco) ---------- */
 
 function Completar({ pregunta, onRespondido }) {
-  const respuestasCorrectas = pregunta.respuestas || [];
   const partes = useMemo(
     () => partirEnEspacios(pregunta.textoConEspacios || ""),
     [pregunta],
   );
-  const [valores, setValores] = useState(() => Array(respuestasCorrectas.length).fill(""));
   const [answered, setAnswered] = useState(false);
+  const [chosenIdx, setChosenIdx] = useState(null);
+  const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
 
   useLecturaVoz(pregunta.q || "Completa los espacios en blanco.");
 
-  function actualizar(i, valor) {
-    if (answered) return;
-    setValores((prev) => {
-      const copia = [...prev];
-      copia[i] = valor;
-      return copia;
-    });
-  }
+  // Cada alternativa es un combo completo (una palabra por espacio),
+  // igual que en opción múltiple pero con arrays en vez de strings.
+  const shuffled = useMemo(
+    () => shuffle(pregunta.opts.map((palabras, originalIndex) => ({ palabras, originalIndex }))),
+    [pregunta],
+  );
 
-  function calificar() {
-    if (answered || valores.some((v) => !v.trim())) return;
-    const correcto = valores.every((v, i) => respuestaSeParece(v, respuestasCorrectas[i]));
+  function elegirOpcion(i) {
+    if (answered) return;
+    const correct = shuffled[i].originalIndex === pregunta.correct;
+    setChosenIdx(i);
+    setWasCorrect(correct);
     setAnswered(true);
-    if (correcto && hurraRef.current) {
+    if (correct && hurraRef.current) {
       hurraRef.current.currentTime = 0;
       hurraRef.current.play().catch(() => { });
     }
-    onRespondido(correcto);
+    onRespondido(correct);
   }
 
-  const todosLlenos = valores.every((v) => v.trim());
+  const palabrasElegidas = answered && chosenIdx !== null ? shuffled[chosenIdx].palabras : null;
   let espacioIdx = -1;
 
   return (
@@ -332,38 +332,43 @@ function Completar({ pregunta, onRespondido }) {
 
           espacioIdx += 1;
           const idx = espacioIdx;
-          const esCorrecto = answered && respuestaSeParece(valores[idx], respuestasCorrectas[idx]);
-          const esIncorrecto = answered && !esCorrecto;
+          const texto = palabrasElegidas ? palabrasElegidas[idx] : "";
 
           return (
-            <input
+            <span
               key={i}
-              value={valores[idx] || ""}
-              onChange={(e) => actualizar(idx, e.target.value)}
-              disabled={answered}
-              className={`question-card__cloze-input ${esCorrecto ? "is-correct" : ""} ${esIncorrecto ? "is-wrong" : ""}`}
-              placeholder={`${idx + 1}`}
-            />
+              className={`question-card__cloze-input ${texto ? "" : "is-empty"} ${answered ? (wasCorrect ? "is-correct" : "is-wrong") : ""}`}
+            >
+              {texto ? <Latex>{texto}</Latex> : "···"}
+            </span>
           );
         })}
       </p>
 
-      {answered && respuestasCorrectas.some((_, i) => !respuestaSeParece(valores[i], respuestasCorrectas[i])) && (
-        <p className="question-card__cloze-correctas">
-          Alguna respuesta no es correcta. Inténtalo de nuevo.
-        </p>
-      )}
-
-      {!answered && (
-        <button
-          onClick={calificar}
-          disabled={!todosLlenos}
-          className="question-card__submit"
-        >
-          Calificar
-        </button>
-      )}
-
+      <div className="question-card__options">
+        {shuffled.map((opt, i) => {
+          const isChosen = answered && chosenIdx === i;
+          // Igual que en opción múltiple: solo se revela cuál era la
+          // correcta si el usuario acertó.
+          const isTheCorrectOne = answered && wasCorrect && opt.originalIndex === pregunta.correct;
+          let cls = "";
+          if (answered) {
+            if (isTheCorrectOne) cls = "is-correct";
+            else if (isChosen) cls = "is-wrong";
+            else cls = "is-muted";
+          }
+          return (
+            <button
+              key={i}
+              onClick={() => elegirOpcion(i)}
+              disabled={answered}
+              className={`question-card__opt ${cls}`}
+            >
+              <Latex>{opt.palabras.join(" · ")}</Latex>
+            </button>
+          );
+        })}
+      </div>
 
       <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
     </>

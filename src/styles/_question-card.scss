@@ -220,7 +220,10 @@
   color: var(--ink);
   font-size: 15px;
   text-align: center;
-  outline: none;
+}
+.question-card__cloze-input.is-empty {
+  color: var(--ink-soft);
+  border-bottom-style: dashed;
 }
 .question-card__cloze-input.is-correct {
   border-bottom-color: var(--success);

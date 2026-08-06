@@ -4,7 +4,7 @@ import Latex from 'react-latex-next';
 
 function respuestaCorrectaTexto(pregunta) {
   if (pregunta.tipo === "verdadero_falso") return null; // ya se detalla proposición por proposición en la card
-  if (pregunta.tipo === "completar") return (pregunta.respuestas || []).join(" · ");
+  if (pregunta.tipo === "completar") return (pregunta.opts[pregunta.correct] || []).join(" · ");
   return pregunta.opts[pregunta.correct];
 }
 
