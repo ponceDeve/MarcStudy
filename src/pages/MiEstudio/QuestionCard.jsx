@@ -337,9 +337,9 @@ function Completar({ pregunta, onRespondido }) {
           return (
             <span
               key={i}
-              className={`question-card__cloze-input ${texto ? "" : "is-empty"} ${answered ? (wasCorrect ? "is-correct" : "is-wrong") : ""}`}
+              className={`question-card__cloze-input ${answered ? (wasCorrect ? "is-correct" : "is-wrong") : ""}`}
             >
-              {texto ? <Latex>{texto}</Latex> : "···"}
+              {texto ? <Latex>{texto}</Latex> : "_________"}
             </span>
           );
         })}

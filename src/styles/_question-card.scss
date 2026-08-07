@@ -210,31 +210,13 @@
   margin-bottom: 16px;
 }
 .question-card__cloze-input {
-  display: inline-block;
-  width: 110px;
-  margin: 0 4px;
-  padding: 4px 8px;
-  border: none;
-  border-bottom: 2px solid var(--primary);
-  background: transparent;
-  color: var(--ink);
-  font-size: 15px;
-  text-align: center;
-}
-.question-card__cloze-input.is-empty {
-  color: var(--ink-soft);
-  border-bottom-style: dashed;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 2px;
 }
 .question-card__cloze-input.is-correct {
-  border-bottom-color: var(--success);
   color: var(--success);
 }
 .question-card__cloze-input.is-wrong {
-  border-bottom-color: var(--danger);
   color: var(--danger);
-}
-.question-card__cloze-correctas {
-  font-size: 13.5px;
-  color: var(--danger);
-  margin-bottom: 12px;
 }
