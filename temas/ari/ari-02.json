@@ -1,175 +1,479 @@
 {
   "curso": "Aritmética",
-  "tema": "Lógica proposicional y conectivos lógicos",
+  "tema": "Razones",
   "glosario": {
-    "Proposición": "Enunciado con valor de verdad único (verdadero o falso).",
-    "Enunciado abierto": "Expresión con variables que no posee valor de verdad definido hasta asignarle constantes.",
-    "Tautología": "Esquema lógico cuya matriz principal resulta verdadera para todas sus combinaciones.",
-    "Contradicción": "Esquema lógico cuya matriz principal resulta falsa para todas sus combinaciones.",
-    "Contingencia": "Esquema lógico con al menos un valor verdadero y uno falso en su matriz principal.",
-    "Contraposición": "Equivalencia que invierte el sentido de la condicional negando sus componentes (p → q ≡ ~q → ~p).",
-    "Absorción": "Leyes lógicas que simplifican expresiones reduciendo variables repetidas de forma distributiva."
+    "Razón": "Comparación matemática entre dos cantidades.",
+    "Magnitud": "Propiedad que puede ser medida.",
+    "Antecedente": "Primer término de una razón.",
+    "Consecuente": "Segundo término de una razón.",
+    "RA": "Abreviatura de Razón Aritmética.",
+    "RG": "Abreviatura de Razón Geométrica.",
+    "=": "Define",
+    "∈": "Pertenece",
+    "→": "Produce",
+    "+": "Combina"
   },
   "theory": [
     {
-      "titulo": "Definición y Clasificación de Enunciados",
+      "titulo": "Definición de Razón",
       "puntos": [
         {
-          "texto": "Proposición lógica: Enunciado que obligatoriamente posee un único valor de verdad (V o F).",
+          "texto": "\"Razón\" = comparación de dos cantidades.",
           "pregunta": {
-            "q": "¿Cuál de los siguientes enunciados se clasifica formalmente como una proposición lógica?",
+            "q": "¿Qué concepto matemático se basa en el proceso de evaluar dos valores numéricos para determinar cómo se relacionan entre sí?",
             "opts": [
-              "¡Qué excelente oportunidad para aprender!",
-              "El número 137 es un número primo.",
-              "x² - 5x + 6 = 0",
-              "Por favor, resuelve este ejercicio de lógica."
+              "La comparación entre dos cantidades que forma una razón",
+              "La suma reiterada de varios valores continuos",
+              "La aproximación de un número decimal a un entero"
             ],
-            "correct": 1,
-            "explicacion": "Los enunciados imperativos e impero-exclamativos carecen de valor de verdad determinado. El enunciado 'x² - 5x + 6 = 0' es un enunciado abierto porque su verdad depende del valor que tome la variable x. 'El número 137 es un número primo' es una aseveración matemática con valor de verdad bien definido (verdadero), lo que la define rigurosamente como proposición."
+            "correct": 0,
+            "explicacion": "En matemáticas, una razón se define fundamentalmente como la comparación de dos cantidades. Esta comparación nos permite establecer una relación de tamaño o proporción entre ambas, ya sea determinando en cuánto excede una a la otra o cuántas veces la contiene."
           }
         },
         {
-          "texto": "Enunciado abierto: Expresión que contiene variables y carece de valor de verdad hasta ser evaluada o cuantificada.",
+          "texto": "Cantidades comparadas ∈ misma magnitud.",
           "pregunta": {
-            "q": "Dada la expresión P(x): 'x/2 es un número entero'. ¿Bajo qué condición precisa P(x) se convierte en una proposición lógica?",
+            "q": "¿Qué condición estricta deben cumplir dos valores para poder ser comparados válidamente mediante una razón matemática?",
             "opts": [
-              "Cuando se especifica que x pertenece a un conjunto genérico sin definir elementos.",
-              "Cuando se asigna a x un valor constante del universo de discurso.",
-              "Cuando se elimina la variable para simplificar la expresión matemática.",
-              "Nunca puede convertirse en proposición lógica por su naturaleza indeterminada."
+              "Deben pertenecer obligatoriamente a la misma magnitud",
+              "Deben ser representados únicamente por números enteros",
+              "Deben poseer diferentes unidades de medida incompatibles"
             ],
-            "correct": 1,
-            "explicacion": "Una función proposicional o enunciado abierto P(x) adquiere la propiedad de ser proposición (con un valor de verdad definido como verdadero o falso) solo cuando su variable es reemplazada por una constante específica del universo de discurso o cuando se ve afectada por un cuantificador lógico."
+            "correct": 0,
+            "explicacion": "Para que la comparación tenga sentido lógico y matemático, las dos cantidades deben pertenecer a la misma magnitud (por ejemplo, comparar longitud con longitud, o peso con peso). No se puede establecer una razón directa entre cantidades de naturaleza distinta, como litros y metros."
           }
         }
       ]
     },
     {
-      "titulo": "Operaciones Lógicas y Conectivos",
+      "titulo": "Razón Aritmética",
       "puntos": [
         {
-          "texto": "Condicional directo vs. inverso: Sentido de implicación determinado por la sintaxis verbal (causa → efecto).",
+          "texto": "\"Razón Aritmética\" = comparación mediante resta.",
           "pregunta": {
-            "q": "Identifique la estructura lógica de la proposición compuesta: 'Lloverá mañana si la presión atmosférica desciende drásticamente'.",
+            "q": "¿Qué operación matemática fundamental caracteriza el cálculo de una razón aritmética?",
             "opts": [
-              "Presión desciende → Lloverá",
-              "Lloverá → Presión desciende",
-              "Presión desciende ∧ Lloverá",
-              "Lloverá ↔ Presión desciende"
-            ],
-            "correct": 0,
-            "explicacion": "La partícula 'si' actúa como un conector de condicional inversa (p si q), donde q (la presión desciende) es el antecedente o causa, y p (lloverá mañana) es el consecuente o efecto. Formalmente, esto se representa como q → p."
-          }
-        },
-        {
-          "texto": "Condición necesaria y suficiente: En p → q, 'p' es condición suficiente para 'q', y 'q' es condición necesaria para 'p'.",
-          "pregunta": {
-            "q": "Si es verdadera la proposición: 'Para ingresar a la universidad es necesario aprobar el examen de admisión'. ¿Cuál es su representación formal si p: 'Ingresar a la universidad' y q: 'Aprobar el examen de admisión'?",
-            "opts": [
-              "q → p",
-              "p → q",
-              "p ↔ q",
-              "p ∧ q"
+              "La división del valor mayor entre el menor",
+              "La sustracción o resta entre las cantidades",
+              "La multiplicación sucesiva de sus factores"
             ],
             "correct": 1,
-            "explicacion": "La frase 'es necesario q para p' establece que q es la condición obligatoria o necesaria para que ocurra p, colocándola sintácticamente como consecuente de la implicación. Así, p → q expresa formalmente que si se ingresa, se debió aprobar el examen."
+            "explicacion": "La razón aritmética compara dos cantidades determinando en cuánto excede una a la otra. Para hallar esta diferencia o exceso, se emplea la operación matemática de la sustracción o resta."
           }
         },
         {
-          "texto": "Disyunción fuerte (Δ) vs. inclusiva (∨): La fuerte excluye la verdad simultánea; la inclusiva la permite.",
+          "texto": "\"RA\" = a - b = r.",
           "pregunta": {
-            "q": "Sean las proposiciones p: 'El paciente está vivo' y q: 'El paciente está muerto'. ¿Qué conectivo lógico modela con total precisión esta situación real?",
+            "q": "De acuerdo con su estructura teórica, ¿cómo se representa formalmente la fórmula general de la razón aritmética?",
             "opts": [
-              "Disyunción inclusiva (p ∨ q)",
-              "Disyunción exclusiva (p Δ q)",
-              "Conjunción (p ∧ q)",
-              "Bicondicional (p ↔ q)"
-            ],
-            "correct": 1,
-            "explicacion": "Dado que es físicamente imposible que un ser humano esté vivo y muerto al mismo tiempo (exclusión mutua), pero obligatoriamente debe estar en uno de los dos estados, se requiere una disyunción exclusiva o fuerte (p Δ q), la cual es verdadera únicamente cuando sus términos difieren en valor de verdad."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Leyes de Equivalencia Proposicional",
-      "puntos": [
-        {
-          "texto": "Definición de la condicional: Equivalencia fundamental p → q ≡ ~p ∨ q.",
-          "pregunta": {
-            "q": "¿Cuál es el equivalente lógico de la proposición: 'Si no guardas silencio, te retirarás de la sala de lectura'?",
-            "opts": [
-              "Guardas silencio o te retirarás de la sala de lectura.",
-              "No guardas silencio y te retirarás de la sala de lectura.",
-              "Guardas silencio y te retirarás de la sala de lectura.",
-              "No guardas silencio o te retirarás de la sala de lectura."
-            ],
-            "correct": 0,
-            "explicacion": "Definiendo p: 'Guardas silencio' y q: 'Te retirarás...', la expresión se formaliza como ~p → q. Por definición del condicional (A → B ≡ ~A ∨ B), esto equivale a ~(~p) ∨ q, lo cual por doble negación resulta en p ∨ q ('Guardas silencio o te retirarás')."
-          }
-        },
-        {
-          "texto": "Contraposición: Equivalencia formal del condicional dada por p → q ≡ ~q → ~p.",
-          "pregunta": {
-            "q": "Determine la contrapositiva recíproca de la proposición: 'Si un triángulo es equilátero, entonces es acutángulo'.",
-            "opts": [
-              "Si un triángulo es acutángulo, entonces es equilátero.",
-              "Si un triángulo no es acutángulo, entonces no es equilátero.",
-              "Si un triángulo no es equilátero, entonces no es acutángulo.",
-              "Un triángulo es acutángulo o no es equilátero."
-            ],
-            "correct": 1,
-            "explicacion": "La ley de contraposición demuestra que toda condicional p → q equivale lógicamente a ~q → ~p. Negando el consecuente ('no es acutángulo') para usarlo de antecedente, y negando el antecedente original ('no es equilátero') como nuevo consecuente, obtenemos una proposición con idéntico valor de verdad."
-          }
-        },
-        {
-          "texto": "Leyes de absorción: Fórmulas de simplificación directa p ∧ (p ∨ q) ≡ p y p ∧ (~p ∨ q) ≡ p ∧ q.",
-          "pregunta": {
-            "q": "Al simplificar la proposición compleja: ~p ∧ (~p ∨ q), ¿cuál es el resultado simplificado por leyes de absorción?",
-            "opts": [
-              "~p",
-              "q",
-              "~p ∧ q",
-              "~p ∨ q"
-            ],
-            "correct": 0,
-            "explicacion": "De acuerdo con la primera ley de absorción en su forma general A ∧ (A ∨ B) ≡ A, al tener la variable externa ~p igual al primer término de la disyunción interna, todo el esquema se absorbe y reduce sencillamente al valor de la variable externa, es decir, ~p."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Análisis de Matrices de Verdad",
-      "puntos": [
-        {
-          "texto": "Matriz principal y tablas de verdad: El tamaño total de la tabla de verdad es 2^n filas para n proposiciones atómicas.",
-          "pregunta": {
-            "q": "Si un esquema proposicional compuesto por las variables p, q y r presenta una matriz principal donde todos sus valores de verdad resultan falsos, ¿cómo se le clasifica formalmente?",
-            "opts": [
-              "Tautología",
-              "Contingencia",
-              "Contradicción",
-              "Enunciado abierto consistente"
+              "RA = a / b = r",
+              "RA = a + b = r",
+              "RA = a - b = r"
             ],
             "correct": 2,
-            "explicacion": "Cualquier fórmula proposicional compuesta cuya evaluación final en la tabla de verdad resulte en un valor falso (F) para cada una de las 2^n combinaciones lógicas de sus variables recibe la clasificación estricta de Contradicción."
-          }
-        },
-        {
-          "texto": "Bicondicional (↔): Verdadera únicamente si ambas proposiciones tienen idéntico valor de verdad.",
-          "pregunta": {
-            "q": "Si se sabe que la proposición compuesta p ↔ q es falsa, ¿qué conclusión se puede inferir con total certeza matemática?",
-            "opts": [
-              "p y q son ambas tautologías.",
-              "p y q tienen valores de verdad opuestos.",
-              "p y q son ambas falsas.",
-              "p implica lógicamente a q."
-            ],
-            "correct": 1,
-            "explicacion": "El operador bicondicional (↔) actúa como un igualador de verdad. Si el resultado es falso (F), significa que las proposiciones componentes difieren necesariamente en su valor de verdad; es decir, una de ellas es verdadera y la otra falsa."
+            "explicacion": "La fórmula de la razón aritmética se denota como 'a - b = r', donde al primer elemento se le resta el segundo, dando como resultado un valor 'r' que indica la diferencia absoluta o el exceso de una cantidad sobre la otra."
           }
         }
       ]
+    },
+    {
+      "titulo": "Razón Geométrica",
+      "puntos": [
+        {
+          "texto": "\"Razón Geométrica\" = comparación mediante división.",
+          "pregunta": {
+            "q": "¿Cuál es el método operativo establecido para determinar la razón geométrica entre dos números?",
+            "opts": [
+              "Calculando el cociente mediante una división",
+              "Encontrando la diferencia mediante una resta",
+              "Evaluando el producto mediante la multiplicación"
+            ],
+            "correct": 0,
+            "explicacion": "A diferencia de la razón aritmética, la razón geométrica busca averiguar cuántas veces contiene una cantidad a la otra. Para lograr esto, se recurre a la división matemática, generando un cociente que representa dicha proporción."
+          }
+        },
+        {
+          "texto": "\"RG\" = a / b = k.",
+          "pregunta": {
+            "q": "¿Qué expresión algebraica describe correctamente la relación de la razón geométrica?",
+            "opts": [
+              "RG = a / b = k",
+              "RG = a - b = k",
+              "RG = a * b = k"
+            ],
+            "correct": 0,
+            "explicacion": "La expresión algebraica que define a la razón geométrica es 'a / b = k'. En esta fórmula, la división de los términos genera una constante de proporcionalidad conocida como 'k', la cual es fundamental para resolver ejercicios de fracciones equivalentes."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos de la Razón",
+      "puntos": [
+        {
+          "texto": "\"a\" = antecedente.",
+          "pregunta": {
+            "q": "Tanto en una resta como en una fracción que forman una razón, ¿qué nombre técnico recibe el primer término (a)?",
+            "opts": [
+              "Dividendo",
+              "Antecedente",
+              "Consecuente"
+            ],
+            "correct": 1,
+            "explicacion": "En el estudio de las razones y proporciones, el primer término que se menciona o escribe, representado habitualmente por la variable 'a', recibe el nombre técnico de 'antecedente', debido a que es el número que antecede o precede al operador lógico."
+          }
+        },
+        {
+          "texto": "\"b\" = consecuente.",
+          "pregunta": {
+            "q": "¿Cómo se denomina formalmente al segundo término de una razón, comúnmente asociado a la variable 'b'?",
+            "opts": [
+              "Consecuente",
+              "Antecesor",
+              "Sustraendo"
+            ],
+            "correct": 0,
+            "explicacion": "El término que sigue al antecedente se llama 'consecuente'. Es el segundo término de la razón y es contra el cual se compara el primer término (ya sea restándolo del antecedente en la RA, o usándolo como divisor en la RG)."
+          }
+        },
+        {
+          "texto": "\"r\" o \"k\" = valor de la razón.",
+          "pregunta": {
+            "q": "¿Qué significado tienen físicamente en el contexto del tema las variables 'r' o 'k' tras operar 'a' y 'b'?",
+            "opts": [
+              "Representan las variables iniciales desconocidas",
+              "Representan los factores de multiplicación de las magnitudes",
+              "Representan el valor final numérico de la razón"
+            ],
+            "correct": 2,
+            "explicacion": "Las variables 'r' (para la aritmética) y 'k' (para la geométrica) indican el 'valor de la razón'. Es decir, son el resultado numérico exacto que se obtiene luego de haber realizado la comparación por resta o división, respectivamente."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Planteamiento con Constantes",
+      "puntos": [
+        {
+          "texto": "Relación a/b = 7/3 → a=7k + b=3k.",
+          "pregunta": {
+            "q": "Si un enunciado estipula que dos números están 'en relación de 7 a 3', ¿cuál es el paso algebraico correcto para representarlos?",
+            "opts": [
+              "Asumir que sus valores absolutos son exactamente 7 y 3",
+              "Asignarles una constante de proporcionalidad como a=7k y b=3k",
+              "Plantear que la suma de ambas variables debe dar como resultado 10"
+            ],
+            "correct": 1,
+            "explicacion": "Cuando se indica que dos valores están en cierta relación o proporción (como 7 a 3), esto no significa que valgan exactamente 7 y 3, sino que son múltiplos de esos números. Por ello, se debe multiplicar cada término por una constante 'k' para trabajar las ecuaciones, quedando a=7k y b=3k."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Observaciones y Aplicaciones",
+      "puntos": [
+        {
+          "texto": "Aplicando \"edades\" → \"RA\" constante en el tiempo.",
+          "pregunta": {
+            "q": "Al analizar la evolución de las edades de dos personas entre el pasado y el futuro, ¿qué propiedad matemática se conserva?",
+            "opts": [
+              "La razón aritmética de las edades se mantiene constante",
+              "La razón geométrica de sus años de vida es inalterable",
+              "La suma total de sus edades permanece intacta con los años"
+            ],
+            "correct": 0,
+            "explicacion": "Una aplicación clásica de la razón aritmética es el problema de edades. Como el tiempo transcurre por igual para todas las personas, la diferencia de edad entre dos individuos (que es la razón aritmética) nunca cambia, manteniéndose constante en el pasado, presente y futuro."
+          }
+        },
+        {
+          "texto": "Aplicando \"mezclas\" → \"RG\" constante al extraer.",
+          "pregunta": {
+            "q": "Si se retira una porción de una mezcla líquida perfectamente homogénea, ¿qué ocurre con la proporción de los ingredientes restantes?",
+            "opts": [
+              "La razón aritmética de sus volúmenes tiende a cero progresivamente",
+              "La razón geométrica entre sus componentes se mantiene constante",
+              "La cantidad absoluta de cada elemento se mantiene intacta"
+            ],
+            "correct": 1,
+            "explicacion": "En problemas de mezclas homogéneas (como agua y vino), todos los ingredientes están distribuidos uniformemente. Si se extrae una cantidad de la mezcla total, la fracción extraída y lo que queda en el recipiente seguirán conservando exactamente la misma razón geométrica inicial de sus ingredientes."
+          }
+        },
+        {
+          "texto": "Aplicando \"móviles\" → relación velocidades = relación distancias.",
+          "pregunta": {
+            "q": "En un escenario donde dos móviles parten simultáneamente hasta encontrarse, ¿cómo se vinculan las velocidades con el espacio recorrido?",
+            "opts": [
+              "La razón de sus velocidades es igual a la razón de las distancias recorridas",
+              "La relación de sus velocidades es inversamente proporcional a sus distancias",
+              "La suma de ambas velocidades determina la diferencia de los recorridos"
+            ],
+            "correct": 0,
+            "explicacion": "Dado que el tiempo de encuentro es el mismo para ambos móviles (tiempo constante), el móvil más rápido recorrerá mayor distancia en la misma proporción exacta. Por lo tanto, se cumple que V1/V2 = D1/D2; la razón de velocidades equivale a la razón geométrica de sus respectivas distancias."
+          }
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos números están en relación de 5 a 2. Si su razón aritmética es 24, ¿cuál es la suma de ambos números?",
+      "opts": [
+        "40",
+        "16",
+        "56",
+        "32",
+        "64"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Al indicar que están en relación de 5 a 2, se debe asignarles una constante de proporcionalidad como a=5k y b=2k[cite: 1].\n\nPaso 2: La fórmula de la razón aritmética se denota como a - b = r[cite: 1]. Reemplazando: 5k - 2k = 24, lo que resulta en 3k = 24, obteniendo k = 8.\n\nPaso 3: Se pide la suma de los números: a + b = 5k + 2k = 7k. Evaluando: 7(8) = 56.\n\nResultado: La suma es 56.\n\nNota: Si solo se calcula el número mayor (5k), se obtiene erróneamente la alternativa A (40)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La razón geométrica de las edades actuales de Ana y Beto es de 3 a 5. Dentro de 10 años, dicha razón será de 2 a 3. ¿Cuál es la edad actual de Ana?",
+      "opts": [
+        "30",
+        "50",
+        "40",
+        "20",
+        "60"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Planteamos las edades actuales con una constante k[cite: 1]: Ana = 3k y Beto = 5k.\n\nPaso 2: Dentro de 10 años, las edades serán (3k + 10) y (5k + 10). La nueva razón geométrica es (3k + 10) / (5k + 10) = 2 / 3.\n\nPaso 3: Resolvemos multiplicando en aspa: 3(3k + 10) = 2(5k + 10). Esto nos da 9k + 30 = 10k + 20, de donde k = 10.\n\nPaso 4: La edad de Ana es 3k = 3(10) = 30.\n\nResultado: Ana tiene 30 años.\n\nNota: Si se calcula la edad de Beto en lugar de Ana, se marca incorrectamente la alternativa B (50)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un recipiente hay una mezcla de 60 litros compuesta por agua y vino en relación de 2 a 3. Si se extraen 15 litros de la mezcla, ¿cuántos litros de vino quedan en el recipiente?",
+      "opts": [
+        "36",
+        "27",
+        "9",
+        "18",
+        "15"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Hallamos los volúmenes iniciales. Agua = 2k, Vino = 3k. Total: 5k = 60, entonces k = 12. Inicialmente hay 24L de agua y 36L de vino.\n\nPaso 2: Al retirar una porción, la razón geométrica entre sus componentes se mantiene constante[cite: 1]. Los 15L extraídos también están en relación 2 a 3 (2m y 3m).\n\nPaso 3: 5m = 15, entonces m = 3. Se retiraron 3(3) = 9 litros de vino.\n\nPaso 4: Restamos el vino retirado al inicial: 36 - 9 = 27 litros.\n\nResultado: Quedan 27 litros de vino.\n\nNota: Si se marca la cantidad inicial de vino sin restar lo extraído, se obtiene la alternativa A (36)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos móviles parten simultáneamente uno al encuentro del otro con velocidades en razón de 4 a 3. Si la distancia que los separaba era de 140 km, ¿qué distancia recorrió el móvil más lento hasta el encuentro?",
+      "opts": [
+        "80 km",
+        "20 km",
+        "100 km",
+        "60 km",
+        "140 km"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Sabemos que en móviles la razón de sus velocidades es igual a la razón de las distancias recorridas[cite: 1]. Por lo tanto, las distancias están en relación de 4 a 3 (D1 = 4k, D2 = 3k).\n\nPaso 2: La suma de las distancias es el total que los separaba: 4k + 3k = 140. Resolviendo 7k = 140, obtenemos k = 20.\n\nPaso 3: El móvil más lento recorrió la menor distancia (D2 = 3k). Multiplicando: 3(20) = 60 km.\n\nResultado: El móvil más lento recorrió 60 km.\n\nNota: Si se calcula la distancia del más rápido (4k), se obtiene el distractor A (80 km)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La suma de dos números es 120 y su razón geométrica es 7/5. ¿Cuál será la nueva razón geométrica si a ambos números se les resta 10?",
+      "opts": [
+        "7/5",
+        "4/3",
+        "2/3",
+        "5/3",
+        "3/2"
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: Representamos la expresión algebraica de la razón geométrica a / b = k[cite: 1]. Sean los números 7k y 5k.\n\nPaso 2: Su suma es 7k + 5k = 120, lo que da 12k = 120, por ende k = 10. Los números son 70 y 50.\n\nPaso 3: Restamos 10 a cada uno: el primero queda en 60 y el segundo en 40.\n\nPaso 4: Calculamos la nueva razón geométrica: 60 / 40. Simplificando, obtenemos 3/2.\n\nResultado: La nueva razón geométrica es 3/2.\n\nNota: Si el alumno asume que la razón geométrica no cambia al restar la misma cantidad, caerá en el distractor A (7/5)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La razón aritmética de dos números es 45. Si se sabe que el menor es equivalente a los 2/5 del mayor, ¿cuál es el valor del número mayor?",
+      "opts": [
+        "75",
+        "30",
+        "15",
+        "105",
+        "45"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Expresamos la relación de los números. Si el menor es 2/5 del mayor, su razón geométrica es 2/5. Sean a = 5k y b = 2k.\n\nPaso 2: Planteamos la razón aritmética: a - b = r[cite: 1]. Entonces, 5k - 2k = 45.\n\nPaso 3: Resolvemos la ecuación: 3k = 45, de donde k = 15.\n\nPaso 4: El número mayor es 5k. Evaluando: 5(15) = 75.\n\nResultado: El número mayor es 75.\n\nNota: Si se calcula el valor del número menor (2k), se obtiene erróneamente la alternativa B (30)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos números están en razón de 3 a 4 y se sabe que su producto es 300. ¿Cuál es el valor de su razón aritmética?",
+      "opts": [
+        "25",
+        "15",
+        "5",
+        "20",
+        "10"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Planteamos los números con una constante k[cite: 1]: a = 3k y b = 4k.\n\nPaso 2: Multiplicamos ambos términos: (3k)(4k) = 12k^2. Igualamos al dato: 12k^2 = 300.\n\nPaso 3: Despejamos k^2: k^2 = 300 / 12 = 25. Sacando raíz cuadrada, k = 5.\n\nPaso 4: Nos piden la razón aritmética (exceso del mayor sobre el menor): 4k - 3k = k. Como k = 5, el resultado es 5.\n\nResultado: La razón aritmética es 5.\n\nNota: Es muy común olvidar sacar la raíz cuadrada en el Paso 3 y asumir erróneamente que k = 25 (distractor A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tres cantidades A, B y C son proporcionales a 2, 3 y 5 respectivamente. Si se cumple que A + C = 42, ¿cuál es el valor de B?",
+      "opts": [
+        "6",
+        "18",
+        "12",
+        "30",
+        "24"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Expresamos las variables en función de una constante: A = 2k, B = 3k, C = 5k.\n\nPaso 2: Reemplazamos en la condición dada: 2k + 5k = 42. Sumando obtenemos 7k = 42.\n\nPaso 3: Despejamos la constante k: k = 42 / 7 = 6.\n\nPaso 4: Hallamos la cantidad pedida B = 3k. Sustituyendo: 3(6) = 18.\n\nResultado: El valor de B es 18.\n\nNota: Si se olvida multiplicar por 3 en el último paso y se deja solo el valor de k, se marca la alternativa A (6)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La razón aritmética de las edades de dos hermanos es 12. Si hace 5 años la razón geométrica de sus edades era 3/2, ¿cuál es la suma de sus edades actuales?",
+      "opts": [
+        "60",
+        "12",
+        "50",
+        "70",
+        "80"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: La razón aritmética de las edades se mantiene constante en el tiempo[cite: 1]. Por lo tanto, la diferencia de edades hace 5 años también era 12.\n\nPaso 2: Planteamos las edades hace 5 años usando la razón geométrica: 3k y 2k. La diferencia es 3k - 2k = k = 12.\n\nPaso 3: Hallamos las edades en el pasado: 3(12) = 36 y 2(12) = 24. La suma en el pasado era 60.\n\nPaso 4: Para hallar las edades actuales, sumamos 5 años a cada uno (10 años en total). Suma actual = 60 + 10 = 70.\n\nResultado: La suma de sus edades actuales es 70.\n\nNota: Si se da como respuesta la suma de las edades en el pasado sin actualizar al presente, se elige la alternativa A (60)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La razón geométrica de dos números es 4/3 y la suma de sus cuadrados es 100. ¿Cuál es el valor de la razón aritmética de dichos números?",
+      "opts": [
+        "4",
+        "16",
+        "25",
+        "8",
+        "2"
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: Planteamos los números: a = 4k y b = 3k, provenientes de la razón geométrica[cite: 1].\n\nPaso 2: Elevamos ambos al cuadrado y los sumamos: (4k)^2 + (3k)^2 = 16k^2 + 9k^2 = 25k^2.\n\nPaso 3: Igualamos al dato y despejamos: 25k^2 = 100, entonces k^2 = 4, resultando k = 2.\n\nPaso 4: Hallamos la razón aritmética: 4k - 3k = k. Como k = 2, la diferencia es 2.\n\nResultado: La razón aritmética es 2.\n\nNota: Si un alumno asume que k^2 es el valor de k, obtendrá 4 (alternativa A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos números están en relación de 5 a 7. Si a ambos se les suma 16, la nueva relación es de 3 a 4. ¿Cuál es el valor del número menor original?",
+      "opts": [
+        "112",
+        "16",
+        "80",
+        "96",
+        "128"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Expresamos los números iniciales: 5k y 7k.\n\nPaso 2: Sumamos 16 a cada uno y lo igualamos a la nueva razón: (5k + 16) / (7k + 16) = 3 / 4.\n\nPaso 3: Multiplicamos en aspa: 4(5k + 16) = 3(7k + 16). Obtenemos 20k + 64 = 21k + 48.\n\nPaso 4: Despejamos k resolviendo la ecuación: 64 - 48 = 21k - 20k, entonces k = 16.\n\nPaso 5: El número menor es 5k. Calculando: 5(16) = 80.\n\nResultado: El número menor original es 80.\n\nNota: Si el alumno calcula el número mayor (7k) en lugar del menor, elegirá el distractor A (112)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se tienen tres cantidades A, B y C. La razón geométrica entre A y B es 2/3, y la razón geométrica entre B y C es 4/5. Si la razón aritmética entre C y A es 14, halla A + B + C.",
+      "opts": [
+        "35",
+        "70",
+        "16",
+        "30",
+        "75"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Homogeneizamos la variable B que se repite. Multiplicamos A/B = 2/3 por 4/4 obteniendo 8/12. Multiplicamos B/C = 4/5 por 3/3 obteniendo 12/15.\n\nPaso 2: Expresamos todo con una única constante: A = 8k, B = 12k, C = 15k.\n\nPaso 3: Usamos el dato de la razón aritmética[cite: 1]: C - A = 14. Sustituimos: 15k - 8k = 7k = 14, por lo que k = 2.\n\nPaso 4: Calculamos la suma total: A + B + C = 8k + 12k + 15k = 35k. Evaluando: 35(2) = 70.\n\nResultado: La suma total es 70.\n\nNota: Si el alumno olvida multiplicar por k al final, marcará 35 (alternativa A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un recipiente contiene 40 litros de vino y 10 litros de agua. ¿Cuántos litros de agua deben agregarse a la mezcla para que la razón geométrica entre el vino y el agua sea de 1 a 1?",
+      "opts": [
+        "10",
+        "20",
+        "40",
+        "30",
+        "50"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Para que la razón sea de 1 a 1, el volumen de vino debe ser igual al volumen de agua.\n\nPaso 2: La cantidad de vino actual es 40 litros y se mantiene constante porque solo agregaremos agua.\n\nPaso 3: El agua actual es de 10 litros. Necesitamos que alcance los 40 litros para igualar al vino.\n\nPaso 4: Restamos: 40 (requerido) - 10 (actual) = 30 litros a agregar.\n\nResultado: Se deben agregar 30 litros de agua.\n\nNota: Si el estudiante asume que la cantidad final a alcanzar es la respuesta sin restar lo que ya había, elegirá 40 (distractor C)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La razón geométrica de dos números enteros positivos es de 3 a 1. Si la diferencia de los cuadrados de ambos números es 72, halla su razón aritmética.",
+      "opts": [
+        "6",
+        "3",
+        "9",
+        "72",
+        "8"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Planteamos los números: 3k y k.\n\nPaso 2: Armamos la diferencia de cuadrados: (3k)^2 - k^2 = 72.\n\nPaso 3: Desarrollamos: 9k^2 - k^2 = 8k^2 = 72. Dividiendo, k^2 = 9, de donde k = 3.\n\nPaso 4: Se pide la razón aritmética[cite: 1] que es la resta: 3k - k = 2k. Evaluando: 2(3) = 6.\n\nResultado: La razón aritmética es 6.\n\nNota: Un error común es marcar directamente el valor de k (3) olvidando que la razón aritmética solicitada equivale a 2k."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una razón aritmética, se sabe que el consecuente es 18 y el valor de la razón es 14. ¿Cuál es la razón geométrica entre el antecedente y el consecuente?",
+      "opts": [
+        "9/16",
+        "7/9",
+        "14/18",
+        "9/7",
+        "16/9"
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: Recordamos la estructura de la razón aritmética: Antecedente - Consecuente = Valor[cite: 1]. Es decir, a - b = r.\n\nPaso 2: Reemplazamos los datos donde el consecuente (b) es 18 y el valor (r) es 14: a - 18 = 14.\n\nPaso 3: Despejamos el antecedente (a): a = 14 + 18 = 32.\n\nPaso 4: Armamos la razón geométrica pedida (a / b): 32 / 18. Simplificando mitades obtenemos 16/9.\n\nResultado: La razón geométrica es 16/9.\n\nNota: Si se confunden los términos y se divide el consecuente entre el antecedente, se halla erróneamente 9/16 (distractor A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La edad de Juan y Pedro están en razón de 2 a 1. Si hace 15 años dicha relación era de 3 a 1, ¿cuál es la edad actual de Juan?",
+      "opts": [
+        "30",
+        "15",
+        "60",
+        "45",
+        "75"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Planteamos las edades actuales: Juan = 2k y Pedro = k.\n\nPaso 2: Hace 15 años, sus edades eran (2k - 15) y (k - 15). Su razón era de 3 a 1, es decir: (2k - 15) = 3(k - 15).\n\nPaso 3: Desarrollamos la ecuación: 2k - 15 = 3k - 45. Al trasponer términos, obtenemos k = 30.\n\nPaso 4: La edad actual de Juan es 2k. Multiplicamos: 2(30) = 60.\n\nResultado: Juan tiene 60 años.\n\nNota: Si se da como respuesta el valor de k, se estará hallando la edad de Pedro (distractor A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La suma de dos números y su diferencia están en relación de 5 a 2. ¿Cuál es la razón geométrica entre el número mayor y el menor?",
+      "opts": [
+        "3/7",
+        "7/3",
+        "5/2",
+        "2/5",
+        "7/5"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Planteamos la proporción dada: (A + B) / (A - B) = 5 / 2.\n\nPaso 2: Multiplicamos en aspa para despejar variables: 2(A + B) = 5(A - B).\n\nPaso 3: Distribuimos: 2A + 2B = 5A - 5B. Agrupando variables semejantes: 7B = 3A.\n\nPaso 4: Expresamos como razón geométrica entre el mayor (A) y el menor (B): A / B = 7 / 3.\n\nResultado: La razón geométrica es 7/3.\n\nNota: Si se despeja mal las variables intercambiando los lados, se obtendrá la relación inversa 3/7 (distractor A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se tienen cuatro números enteros a, b, c, d donde a/b = b/c = c/d = 2. Si se cumple que a + d = 36, ¿cuál es el valor de b + c?",
+      "opts": [
+        "12",
+        "18",
+        "36",
+        "24",
+        "4"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Planteamos partiendo del último término asignando d = k.\n\nPaso 2: Sabiendo que la razón es 2[cite: 1], deducimos consecutivamente multiplicando por 2: c = 2k, b = 4k, a = 8k.\n\nPaso 3: Usamos el dato de la suma de extremos: a + d = 8k + k = 9k. Igualando a 36, tenemos k = 4.\n\nPaso 4: Nos piden b + c. Sabemos que 4k + 2k = 6k. Evaluando: 6(4) = 24.\n\nResultado: La suma de b y c es 24.\n\nNota: Si en lugar de calcular 6k, el estudiante asume que debe hallar solo el valor de k, marcará 4 (distractor E)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una carrera de velocidad, dos competidores tienen rapideces proporcionales a 5 y 7. Si ambos parten simultáneamente y el más veloz le saca una ventaja de 40 metros al otro al llegar a la meta, ¿cuál fue la longitud total de la carrera?",
+      "opts": [
+        "100 m",
+        "40 m",
+        "70 m",
+        "200 m",
+        "140 m"
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: La razón de las distancias es igual a la razón de las velocidades[cite: 1]. Así que las distancias recorridas están en relación de 7k (más veloz) y 5k (más lento).\n\nPaso 2: La longitud de la carrera completa es la distancia que recorrió el que llegó a la meta, es decir, 7k.\n\nPaso 3: La ventaja se expresa mediante la razón aritmética: 7k - 5k = 2k. Igualamos a 40: 2k = 40, entonces k = 20.\n\nPaso 4: Hallamos la longitud de la carrera: 7(20) = 140 metros.\n\nResultado: La carrera tiene una longitud de 140 metros.\n\nNota: Si se calcula la distancia del competidor perdedor (5k) se halla erróneamente 100 m (distractor A)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un barril de 100 litros contiene alcohol y agua en relación de 3 a 2. Si se extraen 20 litros de la mezcla y se reemplazan por agua pura, ¿cuál es la nueva razón geométrica del alcohol respecto al agua?",
+      "opts": [
+        "12/13",
+        "3/2",
+        "13/12",
+        "12/25",
+        "6/5"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Volumen inicial: 5k = 100, k=20. Hay 60L de alcohol y 40L de agua.\n\nPaso 2: Al extraer 20L (1/5 del total), la razón geométrica de lo retirado y lo que queda se mantiene constante[cite: 1]. Se extrae 12L de alcohol y 8L de agua. \n\nPaso 3: Lo que queda es: Alcohol = 60 - 12 = 48L; Agua = 40 - 8 = 32L.\n\nPaso 4: Se añaden 20L de agua pura. Nueva cantidad de agua = 32 + 20 = 52L.\n\nPaso 5: La nueva razón es 48 / 52. Simplificando sacando cuarta a ambos términos obtenemos 12/13.\n\nResultado: La nueva relación es 12/13.\n\nNota: Si se invierte el orden del antecedente y el consecuente, el alumno marcará el distractor C (13/12)."
     }
   ]
 }
