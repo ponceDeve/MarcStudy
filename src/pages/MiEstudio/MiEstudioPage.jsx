@@ -622,7 +622,13 @@ export default function MiEstudioPage() {
 
   useEffect(() => {
     function onKeyDown(e) {
-      if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+      // Si el foco está en un <button> (ej. "Siguiente" del panel de
+      // explicación), el navegador ya dispara su onClick solo con
+      // Enter/Espacio — sin este chequeo, este listener global VOLVÍA
+      // a llamar avanzarCard() para la misma tecla, duplicando el
+      // registro de repaso cada vez que se presionaba Enter ahí.
+      const tagActivo = document.activeElement && document.activeElement.tagName;
+      if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (levelsOpen || searchOpen || configOpen || temasOpen || !topicData) return;
 
       // Ignorar teclas si el cronómetro está activo
