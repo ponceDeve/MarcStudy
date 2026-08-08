@@ -27,6 +27,10 @@ export default function ScheduleEditor({
   const [pomodoros, setPomodoros] = useState(4);
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
 
+  const cursosDelDia = horario[diaActivo] || [];
+  const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
+  const puedeAgregarMas = cursosDelDia.length < MAX_CURSOS_POR_DIA;
+
   useEffect(() => {
     if (open) {
       setHorario(JSON.parse(JSON.stringify(horarioInicial || {})));
@@ -42,11 +46,77 @@ export default function ScheduleEditor({
     }
   }, [open, horarioInicial]);
 
-  if (!open) return null;
+  // ==========================================
+  // ATAJOS DE TECLADO GLOBALES
+  // ==========================================
+  useEffect(() => {
+    if (!open) return;
 
-  const cursosDelDia = horario[diaActivo] || [];
-  const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
-  const puedeAgregarMas = cursosDelDia.length < MAX_CURSOS_POR_DIA;
+    const handleKeyDown = (e) => {
+      // 1. Esc: Cerrar formulario actual o cerrar el modal
+      if (e.key === "Escape") {
+        e.preventDefault();
+        if (showForm) {
+          setShowForm(false);
+        } else {
+          onCerrar();
+        }
+        return;
+      }
+
+      // 2. Ctrl + S (o Cmd + S): Guardar y salir
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+        e.preventDefault();
+        onGuardar(horario);
+        onCerrar();
+        return;
+      }
+
+      // 3. Alt + N: Nuevo curso (Evita el choque con Ctrl+N del navegador)
+      if (e.altKey && e.key.toLowerCase() === "n") {
+        e.preventDefault();
+        if (!showForm && puedeAgregarMas) {
+          abrirFormulario();
+        }
+        return;
+      }
+
+      // 4. Alt + Flechas: Cambiar de día (Pestañas)
+      if (e.altKey && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+        e.preventDefault();
+        const currentIndex = DIAS_SEMANA.indexOf(diaActivo);
+        if (e.key === "ArrowLeft") {
+          const prevIndex = (currentIndex - 1 + DIAS_SEMANA.length) % DIAS_SEMANA.length;
+          cambiarDia(DIAS_SEMANA[prevIndex]);
+        } else {
+          const nextIndex = (currentIndex + 1) % DIAS_SEMANA.length;
+          cambiarDia(DIAS_SEMANA[nextIndex]);
+        }
+        return;
+      }
+
+      // 5. Alt + 1-6: Seleccionar pomodoros rápidamente
+      if (showForm && e.altKey && e.key >= "1" && e.key <= "6") {
+        e.preventDefault();
+        setPomodoros(parseInt(e.key, 10));
+        return;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [
+    open,
+    showForm,
+    horario,
+    diaActivo,
+    puedeAgregarMas,
+    onGuardar,
+    onCerrar,
+  ]);
+  // ==========================================
+
+  if (!open) return null;
 
   const sugerencias = nombreCurso.trim()
     ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
@@ -136,7 +206,12 @@ export default function ScheduleEditor({
       <div className="editor-card">
         <div className="editor-header">
           <h2 className="editor-titulo">Editar Horario</h2>
-          <button className="editor-cerrar" onClick={onCerrar} aria-label="Cerrar modal">
+          <button 
+            className="editor-cerrar" 
+            onClick={onCerrar} 
+            title="Cerrar (Esc)"
+            aria-label="Cerrar modal"
+          >
             <i className="fa-solid fa-times" />
           </button>
         </div>
@@ -147,6 +222,7 @@ export default function ScheduleEditor({
               key={dia}
               className={`editor-tab-btn ${diaActivo === dia ? "is-active" : ""}`}
               onClick={() => cambiarDia(dia)}
+              title={`Ver ${DIA_LABELS[dia]} (Alt + ⬅️/➡️)`}
             >
               {DIA_LABELS[dia].substring(0, 3)}
             </button>
@@ -245,7 +321,7 @@ export default function ScheduleEditor({
               </div>
 
               <p className="editor-pomo-label">
-                Cantidad de pomodoros
+                Cantidad de pomodoros (Usa Alt + 1-6)
               </p>
 
               <div
@@ -267,6 +343,7 @@ export default function ScheduleEditor({
                     tabIndex={-1}
                     className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
                     onClick={() => setPomodoros(n)}
+                    title={`Seleccionar ${n} pomodoros (Alt + ${n})`}
                   >
                     {n}
                   </button>
@@ -278,12 +355,14 @@ export default function ScheduleEditor({
                   className="editor-btn-add is-primary btn-primary"
                   disabled={!coincideExacto || nombreExcedido}
                   onClick={guardarCursoFormulario}
+                  title="Guardar curso (Enter)"
                 >
                   {editingIdx !== null ? "Guardar cambios" : "Añadir curso"}
                 </button>
                 <button
                   className="editor-btn-add editor-btn-outline"
                   onClick={() => setShowForm(false)}
+                  title="Cancelar edición (Esc)"
                 >
                   Cancelar
                 </button>
@@ -299,7 +378,7 @@ export default function ScheduleEditor({
               className="editor-btn-outline icon-only-btn"
               onClick={() => abrirFormulario()}
               disabled={!puedeAgregarMas}
-              title={!puedeAgregarMas ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado` : "Agregar curso"}
+              title={!puedeAgregarMas ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado` : "Agregar curso (Alt + N)"}
               aria-label="Agregar curso"
             >
               <i className="fa-solid fa-plus" />Agregar
@@ -307,6 +386,7 @@ export default function ScheduleEditor({
             <button
               className="editor-btn-outline icon-only-btn"
               onClick={onCerrar}
+              title="Cancelar (Esc)"
             >
               Cancelar
             </button>
@@ -316,7 +396,7 @@ export default function ScheduleEditor({
                 onGuardar(horario);
                 onCerrar();
               }}
-              title="Guardar Cambios"
+              title="Guardar Todo (Ctrl + S)"
               aria-label="Guardar Cambios"
             >
               <i className="fa-solid fa-floppy-disk" /> 
