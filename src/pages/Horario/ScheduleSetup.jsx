@@ -20,6 +20,9 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   const [horario, setHorario] = useState({});
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
+  
+  // NUEVO: Estado para saber qué sugerencia está seleccionada con las flechas
+  const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
 
   if (!open) return null;
 
@@ -63,6 +66,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
     });
     setNombreCurso("");
     setPomodoros(4);
+    setSugerenciaActiva(-1);
 
     const nuevaCantidad = cursosDelDia.length + 1;
     if (nuevaCantidad >= MAX_CURSOS_POR_DIA) {
@@ -73,11 +77,39 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   function avanzarDia() {
     setNombreCurso("");
     setPomodoros(4);
+    setSugerenciaActiva(-1);
     if (diaIdx + 1 < diasSeleccionados.length) {
       setDiaIdx((i) => i + 1);
       setPaso("curso");
     } else {
       onComplete(horario);
+    }
+  }
+
+  // NUEVO: Función para manejar las flechas y el Enter en el input
+  function handleInputKeyDown(e) {
+    if (sugerencias.length === 0) {
+      if (e.key === "Enter" && coincideExacto && !nombreExcedido) {
+        e.preventDefault();
+        agregarCurso();
+      }
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSugerenciaActiva((prev) => (prev < sugerencias.length - 1 ? prev + 1 : prev));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSugerenciaActiva((prev) => (prev > 0 ? prev - 1 : 0));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (sugerenciaActiva >= 0 && sugerenciaActiva < sugerencias.length) {
+        setNombreCurso(sugerencias[sugerenciaActiva].nombre);
+        setSugerenciaActiva(-1);
+      } else if (coincideExacto && !nombreExcedido) {
+        agregarCurso();
+      }
     }
   }
 
@@ -185,6 +217,11 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           color: var(--ink);
           font-size: 0.9rem;
         }
+        /* ESTILO NUEVO: Sugerencia resaltada con teclado */
+        .setup-sugerencia-item.is-active {
+          background: var(--primary-light, #e0f2fe);
+          border-color: var(--primary);
+        }
         .setup-char-count.is-error {
           color: var(--danger);
           font-weight: 700;
@@ -208,6 +245,12 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           display: grid;
           grid-template-columns: repeat(6, 1fr);
           gap: 6px;
+        }
+        /* ESTILO NUEVO: Para que se note cuando el grid de pomodoros tiene el foco */
+        .setup-pomo-grid:focus {
+          outline: 2px solid var(--primary);
+          outline-offset: 2px;
+          border-radius: var(--radius-sm);
         }
         .setup-pomo-btn {
           padding: 10px 0;
@@ -299,17 +342,24 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               <input
                 autoFocus
                 value={nombreCurso}
-                onChange={(e) => setNombreCurso(e.target.value)}
+                onChange={(e) => {
+                  setNombreCurso(e.target.value);
+                  setSugerenciaActiva(-1); // Resetea selección de flechas al escribir
+                }}
+                onKeyDown={handleInputKeyDown}
                 placeholder="Escribe el nombre del curso..."
                 className={`setup-input ${nombreExcedido ? "is-error" : ""}`}
               />
               {sugerencias.length > 0 && !coincideExacto && (
                 <div className="setup-sugerencias">
-                  {sugerencias.map((c) => (
+                  {sugerencias.map((c, index) => (
                     <button
                       key={c.nombre}
-                      className="setup-sugerencia-item"
-                      onClick={() => setNombreCurso(c.nombre)}
+                      className={`setup-sugerencia-item ${sugerenciaActiva === index ? "is-active" : ""}`}
+                      onClick={() => {
+                        setNombreCurso(c.nombre);
+                        setSugerenciaActiva(-1);
+                      }}
                     >
                       {c.nombre}
                     </button>
@@ -329,10 +379,24 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
             </p>
 
             <p className="setup-sub" style={{ margin: 0 }}>¿Cuántos pomodoros?</p>
-            <div className="setup-pomo-grid">
+            {/* NUEVO: El grid de pomodoros ahora responde a las flechas */}
+            <div 
+              className="setup-pomo-grid"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowRight") {
+                  e.preventDefault();
+                  setPomodoros((p) => Math.min(6, p + 1));
+                } else if (e.key === "ArrowLeft") {
+                  e.preventDefault();
+                  setPomodoros((p) => Math.max(1, p - 1));
+                }
+              }}
+            >
               {OPCIONES_POMODOROS.map((n) => (
                 <button
                   key={n}
+                  tabIndex={-1} // Evita que cada botón gane foco individualmente, el div padre lo controla
                   className={`setup-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
                   onClick={() => setPomodoros(n)}
                 >

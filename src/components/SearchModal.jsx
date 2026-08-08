@@ -102,11 +102,32 @@ export default function SearchModal({ open, onClose, onSelect }) {
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => {
+              // Interceptamos el Enter si no se ha bajado con las flechas
+              if (e.key === "Enter" && hayQuery && focusedIdx <= 0) {
+                e.preventDefault();
+                const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                if (mejorOpcion) {
+                  elegir(mejorOpcion);
+                  return;
+                }
+              }
+              handleKeyDown(e);
+            }}
             placeholder="Buscar curso o tema..."
             className="search-input"
           />
-          <div className="search-input-lupa">
+          <div 
+            className="search-input-lupa"
+            onMouseDown={(e) => {
+              e.preventDefault();
+              if (hayQuery) {
+                const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                if (mejorOpcion) elegir(mejorOpcion);
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
             <i className="fa-solid fa-magnifying-glass" />
           </div>
         </div>

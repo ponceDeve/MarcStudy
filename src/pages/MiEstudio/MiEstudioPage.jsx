@@ -762,11 +762,34 @@ export default function MiEstudioPage() {
                   onChange={(e) => setQuery(e.target.value)}
                   onFocus={() => setBusquedaEnfocada(true)}
                   onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                  onKeyDown={handleKeyDownInicial}
+                  onKeyDown={(e) => {
+                    // INTERCEPTAMOS EL ENTER: Si estás escribiendo y das Enter directo
+                    // sin bajar con las flechitas (focusedInicial <= 0), te manda 
+                    // directo al mejor resultado (curso o tema) igual que la lupa.
+                    if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
+                      e.preventDefault();
+                      const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                      if (mejorOpcion) {
+                        seleccionarItem(mejorOpcion);
+                        return;
+                      }
+                    }
+                    handleKeyDownInicial(e);
+                  }}
                   placeholder="Buscar tema o curso..."
                   className="search-input"
                 />
-                <div className="search-input-lupa">
+                <div 
+                  className="search-input-lupa"
+                  onMouseDown={(e) => {
+                    e.preventDefault(); 
+                    if (hayQuery) {
+                      const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                      if (mejorOpcion) seleccionarItem(mejorOpcion);
+                    }
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
                   <i className="fa-solid fa-magnifying-glass" />
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DIAS_SEMANA,
   DIA_LABELS,
@@ -8,532 +8,321 @@ import {
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 
-const NOMBRE_DIA = {
-  lunes: "Lunes",
-  martes: "Martes",
-  miercoles: "Miércoles",
-  jueves: "Jueves",
-  viernes: "Viernes",
-  sabado: "Sábado",
-  domingo: "Domingo",
-};
-
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
-// Editor completo del horario: lista de días configurados (se pueden
-// eliminar), botón "+" para agregar un día nuevo, y al tocar un día se
-// entra a editar sus cursos (agregar, editar, eliminar).
-export default function ScheduleEditor({ open, horarioInicial, onGuardar, onCerrar }) {
-  const [horario, setHorario] = useState(horarioInicial || {});
-  const [vista, setVista] = useState("lista"); // lista | elegir_dia_nuevo | dia | agregar_curso
-  const [diaEditando, setDiaEditando] = useState(null);
-  const [editIdx, setEditIdx] = useState(null);
+export default function ScheduleEditor({
+  open,
+  horarioInicial,
+  onGuardar,
+  onCerrar,
+}) {
+  const [horario, setHorario] = useState({});
+  const [diaActivo, setDiaActivo] = useState("lunes");
+
+  // Estado para el formulario (Agregar/Editar)
+  const [showForm, setShowForm] = useState(false);
+  const [editingIdx, setEditingIdx] = useState(null);
+
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
+  const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
+
+  useEffect(() => {
+    if (open) {
+      setHorario(JSON.parse(JSON.stringify(horarioInicial || {})));
+      const configurados = DIAS_SEMANA.filter(
+        (d) => horarioInicial[d] && horarioInicial[d].length > 0
+      );
+      setDiaActivo(configurados[0] || "lunes");
+      setShowForm(false);
+      setEditingIdx(null);
+      setNombreCurso("");
+      setPomodoros(4);
+      setSugerenciaActiva(-1);
+    }
+  }, [open, horarioInicial]);
 
   if (!open) return null;
 
-  const diasConfigurados = DIAS_SEMANA.filter((d) => horario[d] && horario[d].length > 0);
-  const diasDisponibles = DIAS_SEMANA.filter((d) => !diasConfigurados.includes(d));
-  const cursosDelDia = diaEditando ? horario[diaEditando] || [] : [];
+  const cursosDelDia = horario[diaActivo] || [];
   const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
+  const puedeAgregarMas = cursosDelDia.length < MAX_CURSOS_POR_DIA;
+
   const sugerencias = nombreCurso.trim()
     ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
     : [];
   const coincideExacto = manifest.cursos.some(
-    (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
+    (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso)
   );
 
-  function actualizar(nuevoHorario) {
-    setHorario(nuevoHorario);
-    onGuardar(nuevoHorario);
-  }
-
-  function eliminarDia(dia) {
-    const copia = { ...horario };
-    delete copia[dia];
-    actualizar(copia);
-  }
-
-  function abrirDia(dia) {
-    setDiaEditando(dia);
-    setVista("dia");
-  }
-
-  function empezarAgregarCurso() {
-    setNombreCurso("");
-    setPomodoros(4);
-    setEditIdx(null);
-    setVista("agregar_curso");
-  }
-
-  function confirmarAgregarCurso() {
-    const cursoReal = manifest.cursos.find(
-      (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
-    );
-    if (!cursoReal || nombreExcedido) return;
-    const listaActual = horario[diaEditando] || [];
-    actualizar({ ...horario, [diaEditando]: [...listaActual, { subject: cursoReal.nombre, pomodoros }] });
-    setVista("dia");
-  }
-
-  function empezarEditarCurso(idx) {
-    const curso = cursosDelDia[idx];
-    setNombreCurso(curso.subject);
-    setPomodoros(curso.pomodoros);
-    setEditIdx(idx);
-  }
-
-  function guardarEdicionCurso() {
-    const cursoReal = manifest.cursos.find(
-      (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
-    );
-    if (!cursoReal || nombreExcedido) return;
-    const listaActual = [...cursosDelDia];
-    listaActual[editIdx] = { subject: cursoReal.nombre, pomodoros };
-    actualizar({ ...horario, [diaEditando]: listaActual });
-    setEditIdx(null);
+  function cambiarDia(dia) {
+    setDiaActivo(dia);
+    setShowForm(false);
   }
 
   function eliminarCurso(idx) {
-    const listaActual = cursosDelDia.filter((_, i) => i !== idx);
-    if (listaActual.length === 0) {
-      const copia = { ...horario };
-      delete copia[diaEditando];
-      actualizar(copia);
-      setVista("lista");
+    setHorario((prev) => {
+      const lista = [...(prev[diaActivo] || [])];
+      lista.splice(idx, 1);
+      return { ...prev, [diaActivo]: lista };
+    });
+  }
+
+  function abrirFormulario(idx = null) {
+    if (idx !== null) {
+      setEditingIdx(idx);
+      setNombreCurso(cursosDelDia[idx].subject);
+      setPomodoros(cursosDelDia[idx].pomodoros);
     } else {
-      actualizar({ ...horario, [diaEditando]: listaActual });
+      setEditingIdx(null);
+      setNombreCurso("");
+      setPomodoros(4);
+    }
+    setSugerenciaActiva(-1);
+    setShowForm(true);
+  }
+
+  function guardarCursoFormulario() {
+    const limpio = nombreCurso.trim();
+    const cursoReal = manifest.cursos.find(
+      (c) => normalizarTexto(c.nombre) === normalizarTexto(limpio)
+    );
+    if (!cursoReal || nombreExcedido) return;
+
+    setHorario((prev) => {
+      const listaActual = [...(prev[diaActivo] || [])];
+
+      if (editingIdx !== null) {
+        listaActual[editingIdx] = { subject: cursoReal.nombre, pomodoros };
+      } else {
+        if (!puedeAgregarMas) return prev;
+        listaActual.push({ subject: cursoReal.nombre, pomodoros });
+      }
+
+      return { ...prev, [diaActivo]: listaActual };
+    });
+
+    setShowForm(false);
+  }
+
+  function handleInputKeyDown(e) {
+    if (sugerencias.length === 0) {
+      if (e.key === "Enter" && coincideExacto && !nombreExcedido) {
+        e.preventDefault();
+        guardarCursoFormulario();
+      }
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSugerenciaActiva((prev) => (prev < sugerencias.length - 1 ? prev + 1 : prev));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSugerenciaActiva((prev) => (prev > 0 ? prev - 1 : 0));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (sugerenciaActiva >= 0 && sugerenciaActiva < sugerencias.length) {
+        setNombreCurso(sugerencias[sugerenciaActiva].nombre);
+        setSugerenciaActiva(-1);
+      } else if (coincideExacto && !nombreExcedido) {
+        guardarCursoFormulario();
+      }
     }
   }
 
   return (
-    <div className="editor-overlay" onClick={(e) => e.target === e.currentTarget && onCerrar && onCerrar()}>
-      <style>{`
-        .editor-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 10000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(4, 8, 12, 0.9);
-          padding: 16px;
-        }
-        .editor-card {
-          width: min(480px, 100%);
-          max-height: 90vh;
-          overflow-y: auto;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          padding: 26px 22px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-        .editor-titulo-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .editor-titulo {
-          margin: 0;
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: var(--ink);
-        }
-        .editor-cerrar {
-          background: none;
-          border: none;
-          color: var(--ink-soft);
-          font-size: 1.2rem;
-          cursor: pointer;
-        }
-        .editor-dia-row {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 14px 14px;
-          background: var(--surface-alt);
-          border-radius: var(--radius-md);
-        }
-        .editor-dia-main {
-          flex: 1;
-          background: none;
-          border: none;
-          text-align: left;
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: var(--ink);
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-        .editor-dia-sub {
-          font-size: 0.875rem;
-          font-weight: 400;
-          color: var(--ink-soft);
-        }
-        .editor-icon-btn {
-          background: none;
-          border: none;
-          color: var(--ink-soft);
-          font-size: 1rem;
-          cursor: pointer;
-          padding: 6px;
-        }
-        .editor-icon-btn.is-danger:hover {
-          color: var(--danger);
-        }
-        .editor-agregar-dia {
-          padding: 14px;
-          border-radius: var(--radius-md);
-          border: 1px dashed var(--border-strong);
-          background: none;
-          color: var(--primary);
-          font-weight: 700;
-          cursor: pointer;
-        }
-        .editor-vacio {
-          color: var(--ink-soft);
-          font-size: 0.9rem;
-          text-align: center;
-          padding: 12px 0;
-        }
-        .editor-dias-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 8px;
-        }
-        .editor-dia-pick-btn {
-          padding: 12px 4px;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--border-strong);
-          background: var(--surface-alt);
-          color: var(--ink);
-          font-weight: 700;
-          font-size: 0.85rem;
-          cursor: pointer;
-        }
-        .editor-curso-row {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 12px;
-          background: var(--surface-alt);
-          border-radius: var(--radius-sm);
-        }
-        .editor-curso-info {
-          flex: 1;
-          font-size: 0.88rem;
-          color: var(--ink);
-        }
-        .editor-input {
-          width: 100%;
-          box-sizing: border-box;
-          padding: 12px 14px;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--border-strong);
-          background: var(--bg);
-          color: var(--ink);
-          font-size: 1rem;
-        }
-        .editor-input.is-error {
-          border-color: var(--danger);
-        }
-        .editor-char-count {
-          font-size: 0.875rem;
-          text-align: right;
-          color: var(--ink-soft);
-          margin: -8px 2px 0 0;
-        }
-        .editor-char-count.is-error {
-          color: var(--danger);
-          font-weight: 700;
-        }
-        .editor-input-wrap {
-          position: relative;
-        }
-        .setup-sugerencias {
-          position: absolute;
-          top: calc(100% + 4px);
-          left: 0;
-          right: 0;
-          z-index: 20;
-          max-height: 220px;
-          overflow-y: auto;
-          background: var(--surface);
-          border: 1px solid var(--border-strong);
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-md);
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          padding: 6px;
-        }
-        .setup-sugerencia-item {
-          text-align: left;
-          padding: 8px 12px;
-          border-radius: var(--radius-sm);
-          border: 1px solid var(--border);
-          background: var(--surface-alt);
-          color: var(--ink);
-          font-size: 0.9rem;
-        }
-        .editor-pomo-grid {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 6px;
-        }
-        .editor-pomo-btn {
-          padding: 10px 0;
-          border-radius: var(--radius-sm);
-          border: 1px solid var(--border-strong);
-          background: var(--surface-alt);
-          color: var(--ink);
-          font-weight: 700;
-          cursor: pointer;
-        }
-        .editor-pomo-btn.is-on {
-          border-color: var(--primary);
-        }
-        .editor-nav {
-          display: flex;
-          gap: 10px;
-        }
-        .editor-btn {
-          flex: 1;
-          padding: 13px;
-          border-radius: var(--radius-md);
-          border: none;
-          font-weight: 700;
-          font-size: 0.95rem;
-          cursor: pointer;
-        }
-        .editor-btn.is-primary:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-        .editor-btn.is-ghost {
-          background: var(--surface-alt);
-          color: var(--ink-soft);
-        }
-      `}</style>
-
+    <div className="editor-overlay">
       <div className="editor-card">
-        {vista === "lista" && (
-          <>
-            <div className="editor-titulo-row">
-              <h2 className="editor-titulo">Tu horario</h2>
-              <button className="editor-cerrar" onClick={onCerrar}>
-                <i className="fa-solid fa-times" />
-              </button>
-            </div>
+        <div className="editor-header">
+          <h2 className="editor-titulo">Editar Horario</h2>
+          <button className="editor-cerrar" onClick={onCerrar} aria-label="Cerrar modal">
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
 
-            {diasConfigurados.length === 0 && (
-              <p className="editor-vacio">Todavía no tienes días configurados.</p>
-            )}
+        <div className="editor-tabs">
+          {DIAS_SEMANA.map((dia) => (
+            <button
+              key={dia}
+              className={`editor-tab-btn ${diaActivo === dia ? "is-active" : ""}`}
+              onClick={() => cambiarDia(dia)}
+            >
+              {DIA_LABELS[dia].substring(0, 3)}
+            </button>
+          ))}
+        </div>
 
-            {diasConfigurados.map((dia) => (
-              <div key={dia} className="editor-dia-row">
-                <button className="editor-dia-main" onClick={() => abrirDia(dia)}>
-                  {NOMBRE_DIA[dia]}
-                  <span className="editor-dia-sub">
-                    {horario[dia].length} curso{horario[dia].length !== 1 ? "s" : ""}
-                  </span>
-                </button>
-                <button className="editor-icon-btn is-danger" onClick={() => eliminarDia(dia)} title="Eliminar día">
-                  <i className="fa-solid fa-trash" />
-                </button>
-              </div>
-            ))}
+        <div className="editor-body">
+          <h3 className="editor-seccion-titulo">Cursos para el {DIA_LABELS[diaActivo]}</h3>
 
-            {diasDisponibles.length > 0 && (
-              <button className="editor-agregar-dia" onClick={() => setVista("elegir_dia_nuevo")}>
-                <i className="fa-solid fa-plus" /> Agregar día
-              </button>
-            )}
-          </>
-        )}
-
-        {vista === "elegir_dia_nuevo" && (
-          <>
-            <div className="editor-titulo-row">
-              <h2 className="editor-titulo">¿Qué día agregas?</h2>
-              <button className="editor-cerrar" onClick={() => setVista("lista")}>
-                <i className="fa-solid fa-times" />
-              </button>
-            </div>
-            <div className="editor-dias-grid">
-              {diasDisponibles.map((dia) => (
-                <button key={dia} className="editor-dia-pick-btn" onClick={() => abrirDia(dia)}>
-                  {DIA_LABELS[dia]}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
-
-        {vista === "dia" && (
-          <>
-            <div className="editor-titulo-row">
-              <h2 className="editor-titulo">{NOMBRE_DIA[diaEditando]}</h2>
-              <button className="editor-cerrar" onClick={() => { setVista("lista"); setEditIdx(null); }}>
-                <i className="fa-solid fa-times" />
-              </button>
-            </div>
-
-            {cursosDelDia.length === 0 && (
-              <p className="editor-vacio">Sin cursos este día.</p>
-            )}
-
-            {cursosDelDia.map((c, idx) =>
-              editIdx === idx ? (
-                <div key={idx} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <div className="editor-input-wrap">
-                    <input
-                      autoFocus
-                      value={nombreCurso}
-                      onChange={(e) => setNombreCurso(e.target.value)}
-                      className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
-                    />
-                    {sugerencias.length > 0 && !coincideExacto && (
-                      <div className="setup-sugerencias">
-                        {sugerencias.map((c) => (
-                          <button
-                            key={c.nombre}
-                            className="setup-sugerencia-item"
-                            onClick={() => setNombreCurso(c.nombre)}
-                          >
-                            {c.nombre}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  {nombreCurso.trim() && sugerencias.length === 0 && (
-                    <p className="editor-char-count" style={{ color: "var(--danger)", textAlign: "left" }}>
-                      Ningún curso tuyo coincide con "{nombreCurso}".
-                    </p>
-                  )}
-                  <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
-                    {nombreExcedido
-                      ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
-                      : `${nombreCurso.length}/${LIMITE_NOMBRE_CURSO}`}
-                  </p>
-                  <div className="editor-pomo-grid">
-                    {OPCIONES_POMODOROS.map((n) => (
-                      <button
-                        key={n}
-                        className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
-                        onClick={() => setPomodoros(n)}
-                      >
-                        {n}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="editor-nav">
-                    <button className="editor-btn is-ghost" onClick={() => setEditIdx(null)}>
-                      Cancelar
-                    </button>
-                    <button
-                      className="editor-btn is-primary btn-primary"
-                      disabled={!coincideExacto || nombreExcedido}
-                      onClick={guardarEdicionCurso}
-                    >
-                      Guardar
-                    </button>
-                  </div>
-                </div>
+          {/* VISTA 1: Lista de Cursos */}
+          {!showForm && (
+            <>
+              {cursosDelDia.length === 0 ? (
+                <p className="editor-texto-vacio">
+                  Día libre. No hay cursos agregados.
+                </p>
               ) : (
-                <div key={idx} className="editor-curso-row">
-                  <span className="editor-curso-info">{c.subject} · {c.pomodoros} 🍅</span>
-                  <button className="editor-icon-btn" onClick={() => empezarEditarCurso(idx)} title="Editar">
-                    <i className="fa-solid fa-pen" />
-                  </button>
-                  <button className="editor-icon-btn is-danger" onClick={() => eliminarCurso(idx)} title="Eliminar">
-                    <i className="fa-solid fa-trash" />
-                  </button>
-                </div>
-              ),
-            )}
-
-            {editIdx === null && cursosDelDia.length < MAX_CURSOS_POR_DIA && (
-              <button className="editor-agregar-dia" onClick={empezarAgregarCurso}>
-                <i className="fa-solid fa-plus" /> Agregar curso
-              </button>
-            )}
-
-            {editIdx === null && (
-              <button className="editor-btn is-ghost" onClick={() => setVista("lista")}>
-                Volver a mis días
-              </button>
-            )}
-          </>
-        )}
-
-        {vista === "agregar_curso" && (
-          <>
-            <div className="editor-titulo-row">
-              <h2 className="editor-titulo">Nuevo curso — {NOMBRE_DIA[diaEditando]}</h2>
-              <button className="editor-cerrar" onClick={() => setVista("dia")}>
-                <i className="fa-solid fa-times" />
-              </button>
-            </div>
-            <div className="editor-input-wrap">
-              <input
-                autoFocus
-                value={nombreCurso}
-                onChange={(e) => setNombreCurso(e.target.value)}
-                placeholder="Escribe el nombre del curso..."
-                className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
-              />
-              {sugerencias.length > 0 && !coincideExacto && (
-                <div className="setup-sugerencias">
-                  {sugerencias.map((c) => (
-                    <button
-                      key={c.nombre}
-                      className="setup-sugerencia-item"
-                      onClick={() => setNombreCurso(c.nombre)}
-                    >
-                      {c.nombre}
-                    </button>
+                <div className="editor-lista">
+                  {cursosDelDia.map((c, i) => (
+                    <div key={i} className="editor-item">
+                      <div className="editor-item-info">
+                        <span className="editor-item-nombre">{c.subject}</span>
+                        <span className="editor-item-pomo">{c.pomodoros} pomodoros ({(c.pomodoros * 30)} min)</span>
+                      </div>
+                      <div className="editor-acciones-item">
+                        <button
+                          className="editor-icon-btn"
+                          onClick={() => abrirFormulario(i)}
+                          title="Editar curso"
+                        >
+                          <i className="fa-solid fa-pen" />
+                        </button>
+                        <button
+                          className="editor-icon-btn is-danger"
+                          onClick={() => eliminarCurso(i)}
+                          title="Eliminar curso"
+                        >
+                          <i className="fa-solid fa-trash-can" />
+                        </button>
+                      </div>
+                    </div>
                   ))}
                 </div>
               )}
-            </div>
-            {nombreCurso.trim() && sugerencias.length === 0 && (
-              <p className="editor-char-count" style={{ color: "var(--danger)", textAlign: "left" }}>
-                Ningún curso tuyo coincide con "{nombreCurso}". Configúralo primero en Mi Estudio.
+            </>
+          )}
+
+          {/* VISTA 2: Formulario de Agregar / Editar */}
+          {showForm && (
+            <div className="editor-add-box">
+              <h4 className="editor-form-titulo">
+                {editingIdx !== null ? "Editar curso" : "Agregar un curso nuevo"}
+              </h4>
+
+              <div className="editor-input-wrap">
+                <input
+                  autoFocus
+                  value={nombreCurso}
+                  onChange={(e) => {
+                    setNombreCurso(e.target.value);
+                    setSugerenciaActiva(-1);
+                  }}
+                  onKeyDown={handleInputKeyDown}
+                  placeholder="Escribe el nombre..."
+                  className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
+                />
+                {sugerencias.length > 0 && !coincideExacto && (
+                  <div className="editor-sugerencias">
+                    {sugerencias.map((c, index) => (
+                      <button
+                        key={c.nombre}
+                        className={`editor-sugerencia-item ${sugerenciaActiva === index ? "is-active" : ""}`}
+                        onClick={() => {
+                          setNombreCurso(c.nombre);
+                          setSugerenciaActiva(-1);
+                        }}
+                      >
+                        {c.nombre}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="editor-feedback-container">
+                {nombreCurso.trim() && sugerencias.length === 0 && !coincideExacto ? (
+                  <p className="editor-error-msg">
+                    Curso no encontrado
+                  </p>
+                ) : (
+                  <span />
+                )}
+                <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
+                  {nombreCurso.length}/{LIMITE_NOMBRE_CURSO}
+                </p>
+              </div>
+
+              <p className="editor-pomo-label">
+                Cantidad de pomodoros
               </p>
-            )}
-            <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
-              {nombreExcedido
-                ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
-                : `${nombreCurso.length}/${LIMITE_NOMBRE_CURSO}`}
-            </p>
-            <p style={{ margin: 0, fontSize: "0.85rem", color: "var(--ink-soft)" }}>¿Cuántos pomodoros?</p>
-            <div className="editor-pomo-grid">
-              {OPCIONES_POMODOROS.map((n) => (
+
+              <div
+                className="editor-pomo-grid"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowRight") {
+                    e.preventDefault();
+                    setPomodoros((p) => Math.min(6, p + 1));
+                  } else if (e.key === "ArrowLeft") {
+                    e.preventDefault();
+                    setPomodoros((p) => Math.max(1, p - 1));
+                  }
+                }}
+              >
+                {OPCIONES_POMODOROS.map((n) => (
+                  <button
+                    key={n}
+                    tabIndex={-1}
+                    className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
+                    onClick={() => setPomodoros(n)}
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+
+              <div className="editor-form-acciones">
                 <button
-                  key={n}
-                  className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
-                  onClick={() => setPomodoros(n)}
+                  className="editor-btn-add is-primary btn-primary"
+                  disabled={!coincideExacto || nombreExcedido}
+                  onClick={guardarCursoFormulario}
                 >
-                  {n}
+                  {editingIdx !== null ? "Guardar cambios" : "Añadir curso"}
                 </button>
-              ))}
+                <button
+                  className="editor-btn-add editor-btn-outline"
+                  onClick={() => setShowForm(false)}
+                >
+                  Cancelar
+                </button>
+              </div>
             </div>
+          )}
+        </div>
+
+        {/* FOOTER PRINCIPAL: Iconos de Agregar y Guardar */}
+        {!showForm && (
+          <div className="editor-footer">
             <button
-              className="editor-btn is-primary btn-primary"
-              disabled={!coincideExacto || nombreExcedido}
-              onClick={confirmarAgregarCurso}
+              className="editor-btn-outline icon-only-btn"
+              onClick={() => abrirFormulario()}
+              disabled={!puedeAgregarMas}
+              title={!puedeAgregarMas ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado` : "Agregar curso"}
+              aria-label="Agregar curso"
             >
-              Agregar
+              <i className="fa-solid fa-plus" />Agregar
             </button>
-          </>
+            <button
+              className="editor-btn-outline icon-only-btn"
+              onClick={onCerrar}
+            >
+              Cancelar
+            </button>
+            <button
+              className="editor-btn-save btn-primary icon-only-btn"
+              onClick={() => {
+                onGuardar(horario);
+                onCerrar();
+              }}
+              title="Guardar Cambios"
+              aria-label="Guardar Cambios"
+            >
+              <i className="fa-solid fa-floppy-disk" /> 
+              Guardar
+            </button>
+          </div>
         )}
       </div>
     </div>

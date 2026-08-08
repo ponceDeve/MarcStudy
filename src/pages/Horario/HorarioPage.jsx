@@ -117,20 +117,14 @@ export default function HorarioPage() {
   const [manualBreak, setManualBreak] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // Bienvenida → gate obligatorio de configuración → asistente de setup.
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("horario_welcome_seen", false);
   const [setupOpen, setSetupOpen] = useState(false);
   const [editorOpen, setEditorOpen] = useState(false);
 
-  // Flujo "Escoge un curso" (desplegable al final de cada día): elegir
-  // curso real de Mi Estudio → elegir uno de sus temas → confirmar.
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
   const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
   const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
 
-  // Curso YA agendado del día: al tocarlo, primero se elige el tema a
-  // estudiar; recién al presionar "Iniciar" el cronómetro se abre ese
-  // tema en una pestaña nueva (no antes, no automático).
   const [eligiendoTemaIdx, setEligiendoTemaIdx] = useState(null);
   const [temaElegidoParaCurso, setTemaElegidoParaCurso] = useState(null);
 
@@ -161,6 +155,73 @@ export default function HorarioPage() {
     const idx = getTaskIndex(day, subject);
     return tasks.slice(0, idx).filter((t) => t.type === "course").length;
   }
+
+  const pomodoro = usePomodoro();
+  const { formatted, secondsLeft, isRunning } = pomodoro;
+  const reset = pomodoro.reiniciar;
+
+  const currentTaskDuration = activeCourse
+    ? activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]?.duration ||
+    POMODORO_MIN
+    : manualBreak || POMODORO_MIN;
+  const progressPct = Math.round(
+    ((currentTaskDuration * 60 - secondsLeft) / (currentTaskDuration * 60)) *
+    100,
+  );
+
+  function iniciarConSync() {
+    const label = activeCourse
+      ? `${activeCourse.subject} · ${activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]?.detail || ""}`
+      : manualBreak
+        ? `Descanso de ${manualBreak} min`
+        : "";
+    pomodoro.iniciar(null, label, activeCourse ? activeCourse.subject : "");
+
+    if (temaElegidoParaCurso) {
+      navigate(`/?q=${encodeURIComponent(temaElegidoParaCurso)}`);
+      setTemaElegidoParaCurso(null);
+      return;
+    }
+
+    if (temaDesdeLink) {
+      navigate(`/?q=${encodeURIComponent(temaDesdeLink.tema)}`);
+      return;
+    }
+
+    const retorno = leerYLimpiarRetorno();
+    if (retorno) {
+      navigate(`/?q=${encodeURIComponent(retorno)}`);
+    }
+  }
+
+  function pausarConSync() {
+    pomodoro.pausar();
+  }
+
+  // NUEVO: Atajo global de teclado para iniciar/pausar con la barra espaciadora
+  useEffect(() => {
+    function handleGlobalKeyDown(e) {
+      // Evitar que salte la alerta o accione si hay modales abiertos
+      if (searchOpen || setupOpen || editorOpen || eligiendoTemaIdx !== null || cursoRapidoDia || temaModalOpen || courseCompleteOpen) return;
+
+      const activeTag = document.activeElement ? document.activeElement.tagName : "";
+      
+      // Ignorar si el usuario está escribiendo o el foco ya está en un botón
+      if (["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(activeTag)) return;
+
+      if (e.code === "Space") {
+        e.preventDefault(); // Evita que la página haga scroll
+        if (isRunning) {
+          pausarConSync();
+        } else if (activeCourse || manualBreak) {
+          iniciarConSync();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, [isRunning, activeCourse, manualBreak, searchOpen, setupOpen, editorOpen, eligiendoTemaIdx, cursoRapidoDia, temaModalOpen, courseCompleteOpen]);
 
   function handleTaskComplete() {
     limpiarPomodoroCompartido();
@@ -193,58 +254,6 @@ export default function HorarioPage() {
     }
   }
 
-  const pomodoro = usePomodoro();
-  const { formatted, secondsLeft, isRunning } = pomodoro;
-  const reset = pomodoro.reiniciar;
-
-  const currentTaskDuration = activeCourse
-    ? activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]?.duration ||
-    POMODORO_MIN
-    : manualBreak || POMODORO_MIN;
-  const progressPct = Math.round(
-    ((currentTaskDuration * 60 - secondsLeft) / (currentTaskDuration * 60)) *
-    100,
-  );
-
-  // "iniciarConSync" ya no necesita sincronizar nada a mano (el
-  // contexto global se encarga de guardar el estado compartido) — y
-  // ahora navega DENTRO de la misma pestaña (react-router), así el
-  // cronómetro sigue vivo y corriendo mientras ves el tema, en vez de
-  // morir al recargar en una pestaña nueva.
-  function iniciarConSync() {
-    const label = activeCourse
-      ? `${activeCourse.subject} · ${activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]?.detail || ""}`
-      : manualBreak
-        ? `Descanso de ${manualBreak} min`
-        : "";
-    pomodoro.iniciar(null, label, activeCourse ? activeCourse.subject : "");
-
-    // Si se eligió un tema para el curso activo, recién ahora (al
-    // presionar Iniciar) navega ahí — misma pestaña, el cronómetro
-    // sigue corriendo de fondo gracias al contexto global.
-    if (temaElegidoParaCurso) {
-      navigate(`/?q=${encodeURIComponent(temaElegidoParaCurso)}`);
-      setTemaElegidoParaCurso(null);
-      return;
-    }
-
-    // Se llegó acá con "Pomo" desde un tema (?curso=&tema=): al
-    // presionar Iniciar, vuelve a ese mismo tema.
-    if (temaDesdeLink) {
-      navigate(`/?q=${encodeURIComponent(temaDesdeLink.tema)}`);
-      return;
-    }
-
-    const retorno = leerYLimpiarRetorno();
-    if (retorno) {
-      navigate(`/?q=${encodeURIComponent(retorno)}`);
-    }
-  }
-
-  function pausarConSync() {
-    pomodoro.pausar();
-  }
-
   function abrirCurso(idx) {
     const course = courses[idx];
     const tasks = buildCourseTasks(course);
@@ -256,8 +265,6 @@ export default function HorarioPage() {
     }
   }
 
-  // Al tocar un curso ya agendado del día: primero se elige el tema
-  // (modal), y solo después se activa el cronómetro para ese curso.
   function pedirTemaYAbrirCurso(idx) {
     setEligiendoTemaIdx(idx);
   }
@@ -282,8 +289,6 @@ export default function HorarioPage() {
     reset(minutos);
   }
 
-  // Flujo del desplegable "Escoge un curso": arma el tema elegido y
-  // pide confirmación antes de agregarlo al día y salir hacia el tema.
   function elegirCursoRapido(dia, nombreCurso) {
     setCursoRapidoDia(dia);
     setCursoRapidoNombre(nombreCurso);
@@ -299,9 +304,6 @@ export default function HorarioPage() {
   function confirmarCursoRapido() {
     if (!cursoRapidoDia || !cursoRapidoNombre || !temaRapidoElegido) return;
 
-    // Ojo: esto NO se guarda en el horario configurado — es solo un
-    // pomodoro puntual para hoy, no debe aparecer luego como curso
-    // agendado ese día.
     pomodoro.iniciar(POMODORO_MIN, `${cursoRapidoNombre} · Pomodoro 1 de 4`, cursoRapidoNombre);
 
     const destino = temaRapidoElegido;
@@ -358,9 +360,6 @@ export default function HorarioPage() {
     const cursoParam = searchParams.get("curso");
     const temaParam = searchParams.get("tema");
 
-    // Curso a abrir: el de la URL (llegaste con el botón "Pomo" desde
-    // un tema) o, si no vino en la URL, el del pomodoro que ya está
-    // corriendo (llegaste con el botón genérico "Pomodoro" del header).
     const cursoObjetivo = cursoParam || (isRunning ? pomodoro.subject : null);
     if (!cursoObjetivo) return;
 
@@ -381,9 +380,6 @@ export default function HorarioPage() {
           }
         }
 
-        // Si el pomodoro que ya está corriendo es de este mismo curso,
-        // lo dejamos seguir tal cual (no lo reiniciamos a 25:00). Si es
-        // de un curso distinto (o no hay nada corriendo), sí se reinicia.
         const mismoCursoCorriendo =
           isRunning &&
           normalizarTexto(pomodoro.subject || "") === normalizarTexto(cursoObjetivo);
@@ -396,7 +392,6 @@ export default function HorarioPage() {
         break;
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -541,7 +536,16 @@ export default function HorarioPage() {
                   return (
                     <div
                       key={idx}
+                      role="button"
+                      tabIndex={isComplete ? -1 : 0}
                       onClick={() => !isComplete && pedirTemaYAbrirCurso(idx)}
+                      onKeyDown={(e) => {
+                        // NUEVO: Permite abrir el curso usando Enter o Espacio
+                        if (!isComplete && (e.key === "Enter" || e.key === " ")) {
+                          e.preventDefault();
+                          pedirTemaYAbrirCurso(idx);
+                        }
+                      }}
                       className={`horario__course-item ${isComplete ? "is-complete" : ""}`}
                     >
                       <div className="horario__course-top">
