@@ -5,7 +5,6 @@ import { useTheme } from "../../hooks/useTheme";
 export default function TopBar({
   tema,
   curso,
-  onAbrirNiveles,
   onAbrirBuscador,
   onTogglePomodoroMini,
   onAbrirTemas,
@@ -20,12 +19,6 @@ export default function TopBar({
   const repasoTo = `/repaso`;
 
   const botones = [
-    {
-      title: "Niveles",
-      label: "Nvl",
-      icon: "fa-solid fa-flag-checkered",
-      onClick: onAbrirNiveles
-    },
     {
       title: "Mini cronómetro",
       label: "Timer",

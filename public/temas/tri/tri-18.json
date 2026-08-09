@@ -2,10 +2,6 @@
   "curso": "Trigonometría",
   "tema": "Identidades del Ángulo Doble",
   "glosario": {
-    "Sen": "Función trigonométrica Seno",
-    "Cos": "Función trigonométrica Coseno",
-    "Tan": "Función trigonométrica Tangente",
-    "Degradación": "Técnica para reducir la potencia de una razón trigonométrica expresándola en función del ángulo doble",
     "=": "Equivale a",
     "→": "Conduce a / Se despeja como"
   },
@@ -14,108 +10,36 @@
       "titulo": "Identidades Trigonométricas Fundamentales",
       "puntos": [
         {
-          "texto": "$\\sin(2x)=2\\sin(x)\\cos(x)$",
-          "pregunta": {
-            "q": "¿Cuál es el desarrollo fundamental de $\\sin(2x)$?",
-            "opts": [
-              "$2\\sin(x)\\cos(x)$",
-              "$\\sin^2(x)-\\cos^2(x)$",
-              "$1-2\\sin(x)$"
-            ],
-            "correct": 0,
-            "explicacion": "La identidad principal del seno del ángulo doble se expresa como el doble del producto del seno por el coseno del ángulo simple."
-          }
+          "texto": "\\(\\sin(2x)=2\\sin(x)\\cos(x)\\)",
+          "explicacion": "La identidad fundamental del seno del ángulo doble establece que el seno de un ángulo duplicado equivale al doble del producto entre el seno y el coseno del ángulo simple."
         },
         {
-          "texto": "$\\text{Sen}(2x) = 2\\text{Sen}(x)\\text{Cos}(x) \\rightarrow \\text{Cos}(x) = \\frac{\\text{Sen}(2x)}{2\\text{Sen}(x)}$",
-          "pregunta": {
-            "q": "Al despejar $\\text{Cos}(x)$ de la identidad del seno doble, ¿qué expresión se obtiene?",
-            "opts": [
-              "$\\frac{\\text{Sen}(2x)}{\\text{Cos}(x)}$",
-              "$\\frac{\\text{Sen}(2x)}{2\\text{Sen}(x)}$",
-              "$\\frac{2\\text{Sen}(x)}{\\text{Sen}(2x)}$"
-            ],
-            "correct": 1,
-            "explicacion": "Pasando a dividir el término $2\\text{Sen}(x)$ al otro lado de la igualdad, se logra despejar el $\\text{Cos}(x)$."
-          }
+          "texto": "\\(\\sin(2x)=2\\sin(x)\\cos(x) \\rightarrow \\cos(x)=\\frac{\\sin(2x)}{2\\sin(x)}\\)",
+          "explicacion": "Al despejar el coseno de la identidad del seno doble, se divide ambos lados entre \\(2\\sin(x)\\), siempre que \\(\\sin(x)\\neq0\\)."
         },
         {
-          "texto": "$\\text{Cos}(2x) = \\text{Cos}^2(x) - \\text{Sen}^2(x)$",
-          "pregunta": {
-            "q": "¿Cuál es la forma base de la identidad del coseno del ángulo doble?",
-            "opts": [
-              "$\\text{Cos}^2(x) + \\text{Sen}^2(x)$",
-              "$\\text{Sen}^2(x) - \\text{Cos}^2(x)$",
-              "$\\text{Cos}^2(x) - \\text{Sen}^2(x)$"
-            ],
-            "correct": 2,
-            "explicacion": "La forma base del coseno doble es una diferencia de cuadrados empezando siempre por el coseno cuadrado."
-          }
+          "texto": "\\(\\cos(2x)=\\cos^2(x)-\\sin^2(x)\\)",
+          "explicacion": "Esta es la forma fundamental del coseno del ángulo doble. Expresa el coseno de \\(2x\\) como la diferencia entre el cuadrado del coseno y el cuadrado del seno del ángulo simple."
         },
         {
-          "texto": "$\\text{Cos}(2x) = 1 - 2\\text{Sen}^2(x)$",
-          "pregunta": {
-            "q": "¿Cómo se expresa el $\\text{Cos}(2x)$ utilizando únicamente la función seno?",
-            "opts": [
-              "$1 - 2\\text{Sen}^2(x)$",
-              "$2\\text{Sen}^2(x) - 1$",
-              "$1 + 2\\text{Sen}^2(x)$"
-            ],
-            "correct": 0,
-            "explicacion": "Reemplazando el coseno cuadrado en la fórmula original, el coseno doble queda en función exclusiva del seno."
-          }
+          "texto": "\\(\\cos(2x)=1-2\\sin^2(x)\\)",
+          "explicacion": "Esta forma del coseno doble utiliza únicamente la función seno. Se obtiene a partir de la identidad fundamental sustituyendo \\(\\cos^2(x)\\) por \\(1-\\sin^2(x)\\)."
         },
         {
-          "texto": "$\\text{Degradación} \\rightarrow 2\\text{Sen}^2(x) = 1 - \\text{Cos}(2x)$",
-          "pregunta": {
-            "q": "¿A qué equivale la expresión degradada de $2\\text{Sen}^2(x)$?",
-            "opts": [
-              "$1 + \\text{Cos}(2x)$",
-              "$1 - \\text{Cos}(2x)$",
-              "$\\text{Cos}(2x) - 1$"
-            ],
-            "correct": 1,
-            "explicacion": "Esta fórmula de degradación permite eliminar el exponente cuadrático del seno transformándolo en una expresión con coseno doble."
-          }
+          "texto": "\\(\\text{Degradación}\\rightarrow2\\sin^2(x)=1-\\cos(2x)\\)",
+          "explicacion": "La degradación permite transformar el cuadrado del seno en una expresión que contiene el coseno del ángulo doble. Esta forma resulta útil cuando se necesita reducir una potencia trigonométrica."
         },
         {
-          "texto": "$\\text{Cos}(2x) = \\text{Cos}^4(x) - \\text{Sen}^4(x)$",
-          "pregunta": {
-            "q": "¿Qué relación existe entre el $\\text{Cos}(2x)$ y las potencias cuartas?",
-            "opts": [
-              "$\\text{Cos}^4(x) + \\text{Sen}^4(x)$",
-              "$\\text{Sen}^4(x) - \\text{Cos}^4(x)$",
-              "$\\text{Cos}^4(x) - \\text{Sen}^4(x)$"
-            ],
-            "correct": 2,
-            "explicacion": "Por diferencia de cuadrados, la resta de cuartas potencias es equivalente a la identidad base del coseno doble."
-          }
+          "texto": "\\(\\cos^4(x)-\\sin^4(x)=\\cos(2x)\\)",
+          "explicacion": "La diferencia de cuartas potencias puede factorizarse como \\((\\cos^2(x)-\\sin^2(x))(\\cos^2(x)+\\sin^2(x))\\). Como \\(\\cos^2(x)+\\sin^2(x)=1\\), la expresión se reduce a \\(\\cos(2x)\\)."
         },
         {
-          "texto": "$\\text{Cos}(2x) = 2\\text{Cos}^2(x) - 1$",
-          "pregunta": {
-            "q": "¿Cuál es la expresión del $\\text{Cos}(2x)$ en función exclusiva del coseno simple?",
-            "opts": [
-              "$1 - 2\\text{Cos}^2(x)$",
-              "$2\\text{Cos}^2(x) - 1$",
-              "$\\text{Cos}^2(x) - 1$"
-            ],
-            "correct": 1,
-            "explicacion": "Se obtiene reemplazando el seno cuadrado por su equivalente, logrando una identidad que solo depende del coseno."
-          }
+          "texto": "\\(\\cos(2x)=2\\cos^2(x)-1\\)",
+          "explicacion": "Esta forma del coseno doble utiliza únicamente la función coseno. Se obtiene sustituyendo \\(\\sin^2(x)\\) por \\(1-\\cos^2(x)\\) en la identidad fundamental."
         },
         {
-          "texto": "$\\text{Degradación} \\rightarrow 2\\text{Cos}^2(x) = 1 + \\text{Cos}(2x)$",
-          "pregunta": {
-            "q": "¿Cuál es la identidad de degradación para el $2\\text{Cos}^2(x)$?",
-            "opts": [
-              "$1 - \\text{Cos}(2x)$",
-              "$1 + \\text{Cos}(2x)$",
-              "$\\text{Cos}(2x) - 1$"
-            ],
-            "correct": 1,
-            "explicacion": "La degradación del coseno cuadrado se diferencia de la del seno por tener un signo positivo en la suma con el coseno doble."
-          }
+          "texto": "\\(\\text{Degradación}\\rightarrow2\\cos^2(x)=1+\\cos(2x)\\)",
+          "explicacion": "La degradación del coseno cuadrado permite transformar \\(2\\cos^2(x)\\) en una expresión que contiene el coseno del ángulo doble. Se diferencia de la degradación del seno por el signo positivo."
         }
       ]
     },
@@ -123,314 +47,18 @@
       "titulo": "Triángulo de Ángulo Doble",
       "puntos": [
         {
-          "texto": "$\\text{Triángulo ángulo doble} \\rightarrow \\text{Sen}(2x) = \\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$",
-          "pregunta": {
-            "q": "¿A qué es igual el $\\text{Sen}(2x)$ cuando se expresa mediante el triángulo en función de la tangente?",
-            "opts": [
-              "$\\frac{1 - \\text{Tan}^2(x)}{1 + \\text{Tan}^2(x)}$",
-              "$\\frac{2\\text{Tan}(x)}{1 - \\text{Tan}^2(x)}$",
-              "$\\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$"
-            ],
-            "correct": 2,
-            "explicacion": "En el triángulo rectángulo del ángulo doble, el seno se forma dividiendo el cateto opuesto ($2\\text{Tan}(x)$) entre la hipotenusa ($1+\\text{Tan}^2(x)$)."
-          }
+          "texto": "\\(\\sin(2x)=\\frac{2\\tan(x)}{1+\\tan^2(x)}\\)",
+          "explicacion": "El seno del ángulo doble puede expresarse únicamente mediante la tangente. La expresión resulta del cociente entre \\(2\\tan(x)\\) y \\(1+\\tan^2(x)\\)."
         },
         {
-          "texto": "$\\text{Triángulo ángulo doble} \\rightarrow \\text{Cos}(2x) = \\frac{1 - \\text{Tan}^2(x)}{1 + \\text{Tan}^2(x)}$",
-          "pregunta": {
-            "q": "Usando el triángulo del ángulo doble, ¿cómo se define el $\\text{Cos}(2x)$?",
-            "opts": [
-              "$\\frac{1 - \\text{Tan}^2(x)}{1 + \\text{Tan}^2(x)}$",
-              "$\\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$",
-              "$\\frac{1 + \\text{Tan}^2(x)}{1 - \\text{Tan}^2(x)}$"
-            ],
-            "correct": 0,
-            "explicacion": "El coseno se define como el cateto adyacente ($1-\\text{Tan}^2(x)$) sobre la hipotenusa ($1+\\text{Tan}^2(x)$)."
-          }
+          "texto": "\\(\\cos(2x)=\\frac{1-\\tan^2(x)}{1+\\tan^2(x)}\\)",
+          "explicacion": "El coseno del ángulo doble puede expresarse mediante la tangente. El numerador corresponde a \\(1-\\tan^2(x)\\) y el denominador a \\(1+\\tan^2(x)\\)."
         },
         {
-          "texto": "$\\text{Triángulo ángulo doble} \\rightarrow \\text{Tan}(2x) = \\frac{2\\text{Tan}(x)}{1 - \\text{Tan}^2(x)}$",
-          "pregunta": {
-            "q": "¿Cuál es la identidad de la $\\text{Tan}(2x)$ derivada del triángulo?",
-            "opts": [
-              "$\\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$",
-              "$\\frac{2\\text{Tan}(x)}{1 - \\text{Tan}^2(x)}$",
-              "$\\frac{1 - \\text{Tan}^2(x)}{2\\text{Tan}(x)}$"
-            ],
-            "correct": 1,
-            "explicacion": "La tangente relaciona el cateto opuesto con el adyacente, resultando en esta fracción sin la hipotenusa."
-          }
+          "texto": "\\(\\tan(2x)=\\frac{2\\tan(x)}{1-\\tan^2(x)}\\)",
+          "explicacion": "La tangente del ángulo doble se obtiene dividiendo el doble de \\(\\tan(x)\\) entre \\(1-\\tan^2(x)\\). Esta expresión es válida cuando el denominador es distinto de cero."
         }
       ]
-    }
-  ],
-  "examen": [
-    {
-      "tipo": "opcion_multiple",
-      "q": "Al simplificar la expresión $E = \\frac{\\text{Sen}(2x)}{1 + \\text{Cos}(2x)}$, donde el denominador es distinto de cero, se obtiene:",
-      "opts": [
-        "$\\text{Tan}(x)$",
-        "$\\text{Cot}(x)$",
-        "$\\text{Sen}(x)$",
-        "$\\text{Cos}(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "Se reemplaza $\\text{Sen}(2x)$ por $2\\text{Sen}(x)\\text{Cos}(x)$ y, por la fórmula de degradación, $1 + \\text{Cos}(2x)$ equivale a $2\\text{Cos}^2(x)$. Al dividir $\\frac{2\\text{Sen}(x)\\text{Cos}(x)}{2\\text{Cos}^2(x)}$, se simplifica el $2$ y un $\\text{Cos}(x)$, quedando $\\frac{\\text{Sen}(x)}{\\text{Cos}(x)}$, que es igual a $\\text{Tan}(x)$."
-    },
-    {
-      "tipo": "completar",
-      "q": "Complete los espacios en blanco sobre la aplicación de las fórmulas para reducir expresiones:",
-      "textoConEspacios": "Para reducir la expresión $4\\text{Sen}^2(x)\\text{Cos}^2(x)$, podemos agrupar los términos como el cuadrado de 1. Al aplicar la identidad fundamental, esto resulta equivalente a elevar al cuadrado la función 2.",
-      "respuestas": [
-        "$2\\text{Sen}(x)\\text{Cos}(x)$",
-        "$\\text{Sen}(2x)$"
-      ],
-      "explicacion": "El término $4\\text{Sen}^2(x)\\text{Cos}^2(x)$ es el desarrollo algebraico de $(2\\text{Sen}(x)\\text{Cos}(x))^2$, lo que por identidad fundamental corresponde directamente al cuadrado de $\\text{Sen}(2x)$, es decir, $\\text{Sen}^2(2x)$."
-    },
-    {
-      "tipo": "verdadero_falso",
-      "q": "Indica si cada proposición sobre el cálculo de identidades del ángulo doble es verdadera o falsa:",
-      "proposiciones": [
-        {
-          "texto": "La expresión algebraica $\\text{Cos}^4(x) - \\text{Sen}^4(x)$ es equivalente a $\\text{Cos}(2x)$.",
-          "correct": true
-        },
-        {
-          "texto": "Si $\\text{Tan}(x) = \\frac{1}{2}$, entonces el valor numérico de $\\text{Tan}(2x)$ es $\\frac{4}{3}$.",
-          "correct": true
-        },
-        {
-          "texto": "La tangente del ángulo doble se expresa en el triángulo rectángulo como el cociente $\\frac{1 - \\text{Tan}^2(x)}{2\\text{Tan}(x)}$.",
-          "correct": false
-        }
-      ],
-      "explicacion": "La primera es verdadera: $\\text{Cos}^4(x) - \\text{Sen}^4(x)$ se factoriza por diferencia de cuadrados resultando en $1\\cdot \\text{Cos}(2x)$. La segunda es verdadera: $\\text{Tan}(2x) = \\frac{2(1/2)}{1 - (1/2)^2} = \\frac{1}{3/4} = \\frac{4}{3}$. La tercera es falsa porque esa relación está invertida, la identidad correcta es $\\frac{2\\text{Tan}(x)}{1 - \\text{Tan}^2(x)}$."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si se sabe que $\\text{Cos}(x) = \\frac{1}{3}$ y que el ángulo pertenece al primer cuadrante, determine el valor de $\\text{Cos}(2x)$.",
-      "opts": [
-        "$\\frac{7}{9}$",
-        "$\\frac{2}{9}$",
-        "$-\\frac{7}{9}$",
-        "$-\\frac{2}{9}$"
-      ],
-      "correct": 2,
-      "explicacion": "Se utiliza la identidad que depende solo del coseno: $\\text{Cos}(2x) = 2\\text{Cos}^2(x) - 1$. Sustituyendo, tenemos $2(\\frac{1}{3})^2 - 1 = 2(\\frac{1}{9}) - 1 = \\frac{2}{9} - 1 = -\\frac{7}{9}$."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Identifique a qué suma de identidades corresponde la siguiente expresión fraccionaria deducida del triángulo del ángulo doble: $\\frac{1 - \\text{Tan}^2(x)}{1 + \\text{Tan}^2(x)} + \\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$",
-      "opts": [
-        "$\\text{Sen}(2x) - \\text{Cos}(2x)$",
-        "$\\text{Cos}(2x) + \\text{Sen}(2x)$",
-        "$\\text{Tan}(2x) + 1$",
-        "$\\text{Cos}(x) + \\text{Sen}(x)$"
-      ],
-      "correct": 1,
-      "explicacion": "El primer término $\\frac{1 - \\text{Tan}^2(x)}{1 + \\text{Tan}^2(x)}$ representa exactamente la definición de $\\text{Cos}(2x)$ (cateto adyacente sobre hipotenusa), mientras que el segundo término $\\frac{2\\text{Tan}(x)}{1 + \\text{Tan}^2(x)}$ representa al $\\text{Sen}(2x)$ (cateto opuesto sobre hipotenusa). La expresión equivale a la suma de ambos."
-    },
-    {
-      "tipo": "completar",
-      "q": "Complete los espacios en blanco sobre la elección de la variante correcta del coseno doble en la resolución de ecuaciones:",
-      "textoConEspacios": "La identidad del coseno doble tiene tres formas. Si se requiere simplificar una ecuación transformándola únicamente en función del seno, se emplea la expresión 1, mientras que si la expresión inicial es una diferencia de cuartas potencias, esta se factoriza originando la forma base 2.",
-      "respuestas": [
-        "$1 - 2\\text{Sen}^2(x)$",
-        "$\\text{Cos}^2(x) - \\text{Sen}^2(x)$"
-      ],
-      "explicacion": "Para dejar una ecuación solo con función seno, el $\\text{Cos}(2x)$ se reemplaza por $1 - 2\\text{Sen}^2(x)$. Por otro lado, la diferencia de cuartas potencias $\\text{Cos}^4(x) - \\text{Sen}^4(x)$ se reduce algebraicamente a su forma base $\\text{Cos}^2(x) - \\text{Sen}^2(x)$."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "La identidad del ángulo doble para el seno indica que $Sen(2x)$ es igual a:",
-      "opts": [
-        "$2Sen(x)Cos(x)$",
-        "$Cos^2(x)-Sen^2(x)$",
-        "$2Cos^2(x)-1$",
-        "$1-2Sen^2(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "Según la identidad fundamental, el seno del ángulo doble se expresa como el doble del producto entre seno y coseno del ángulo simple."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si se despeja $Sen(x)$ en la identidad $Sen(2x)=2Sen(x)Cos(x)$, se obtiene:",
-      "opts": [
-        "$\\frac{Sen(2x)}{2Cos(x)}$",
-        "$\\frac{2Cos(x)}{Sen(2x)}$",
-        "$\\frac{Sen(2x)}{Cos(x)}$",
-        "$2Sen(2x)Cos(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "Al dividir ambos lados entre $2Cos(x)$ se despeja el término $Sen(x)$."
-    },
-    {
-      "tipo": "verdadero_falso",
-      "q": "Determine si las siguientes afirmaciones son verdaderas o falsas:",
-      "proposiciones": [
-        {
-          "texto": "$Cos(2x)=Cos^2(x)-Sen^2(x)$ es una identidad del coseno doble.",
-          "correct": true
-        },
-        {
-          "texto": "$Cos(2x)=Cos^2(x)+Sen^2(x)$ representa la forma base del coseno doble.",
-          "correct": false
-        },
-        {
-          "texto": "$Cos(2x)=2Cos^2(x)-1$ es una forma del coseno doble.",
-          "correct": true
-        }
-      ],
-      "explicacion": "La teoría presenta tres formas del coseno doble: diferencia de cuadrados, función seno y función coseno."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "¿Cuál es la forma del $Cos(2x)$ expresada únicamente mediante el seno?",
-      "opts": [
-        "$1-2Sen^2(x)$",
-        "$2Sen^2(x)-1$",
-        "$1+2Sen^2(x)$",
-        "$Sen^2(x)-1$"
-      ],
-      "correct": 0,
-      "explicacion": "La teoría indica que una forma del coseno doble es $Cos(2x)=1-2Sen^2(x)$."
-    },
-    {
-      "tipo": "completar",
-      "q": "Complete la identidad de degradación:",
-      "textoConEspacios": "$2Cos^2(x)=1+_____ $",
-      "respuestas": [
-        "$Cos(2x)$"
-      ],
-      "explicacion": "La degradación del coseno cuadrado permite expresar $2Cos^2(x)$ usando el coseno del ángulo doble."
-    },
-    {
-      "tipo": "completar",
-      "q": "Complete la identidad de degradación:",
-      "textoConEspacios": "$2Sen^2(x)=1-_____ $",
-      "respuestas": [
-        "$Cos(2x)$"
-      ],
-      "explicacion": "La degradación del seno cuadrado se transforma en una expresión con coseno doble."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "La expresión $Cos^4(x)-Sen^4(x)$ puede relacionarse con:",
-      "opts": [
-        "$Cos(2x)$",
-        "$Sen(2x)$",
-        "$Tan(2x)$",
-        "$2Cos^2(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "La teoría presenta la relación $Cos(2x)=Cos^4(x)-Sen^4(x)$."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "En el triángulo del ángulo doble, la expresión correspondiente al seno es:",
-      "opts": [
-        "$\\frac{2Tan(x)}{1+Tan^2(x)}$",
-        "$\\frac{1-Tan^2(x)}{1+Tan^2(x)}$",
-        "$\\frac{2Tan(x)}{1-Tan^2(x)}$",
-        "$\\frac{1+Tan^2(x)}{2Tan(x)}$"
-      ],
-      "correct": 0,
-      "explicacion": "La teoría define $Sen(2x)$ mediante la relación del cateto opuesto y la hipotenusa del triángulo."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "En el triángulo del ángulo doble, la expresión del coseno es:",
-      "opts": [
-        "$\\frac{1-Tan^2(x)}{1+Tan^2(x)}$",
-        "$\\frac{2Tan(x)}{1+Tan^2(x)}$",
-        "$\\frac{1+Tan^2(x)}{1-Tan^2(x)}$",
-        "$\\frac{Tan^2(x)-1}{2Tan(x)}$"
-      ],
-      "correct": 0,
-      "explicacion": "El coseno doble usando tangente se expresa como la diferencia sobre la suma de cuadrados."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "La identidad del triángulo del ángulo doble para la tangente es:",
-      "opts": [
-        "$\\frac{2Tan(x)}{1-Tan^2(x)}$",
-        "$\\frac{1-Tan^2(x)}{2Tan(x)}$",
-        "$\\frac{2Tan(x)}{1+Tan^2(x)}$",
-        "$1+Tan^2(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "La teoría indica que $Tan(2x)$ se obtiene dividiendo $2Tan(x)$ entre $1-Tan^2(x)$."
-    },
-    {
-      "tipo": "verdadero_falso",
-      "q": "Determine si las proposiciones son verdaderas o falsas:",
-      "proposiciones": [
-        {
-          "texto": "$2Cos^2(x)=1+Cos(2x)$ corresponde a una degradación.",
-          "correct": true
-        },
-        {
-          "texto": "$2Sen^2(x)=1+Cos(2x)$ corresponde a una degradación.",
-          "correct": false
-        },
-        {
-          "texto": "$Tan(2x)$ utiliza $1-Tan^2(x)$ en su denominador.",
-          "correct": true
-        }
-      ],
-      "explicacion": "Las identidades deben coincidir con las fórmulas establecidas en la teoría."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "¿Cuál expresión representa una forma del coseno doble?",
-      "opts": [
-        "$2Cos^2(x)-1$",
-        "$2Cos(x)-1$",
-        "$Cos(x)^3-Sen(x)$",
-        "$1+2Cos^2(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "Una de las formas del coseno doble es $Cos(2x)=2Cos^2(x)-1$."
-    },
-    {
-      "tipo": "completar",
-      "q": "Complete la fórmula del triángulo del ángulo doble:",
-      "textoConEspacios": "$Tan(2x)=\\frac{2Tan(x)}{_____}$",
-      "respuestas": [
-        "$1-Tan^2(x)$"
-      ],
-      "explicacion": "El denominador de la tangente del ángulo doble contiene la resta de uno y la tangente al cuadrado."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si una expresión contiene $Cos^2(x)-Sen^2(x)$, puede transformarse directamente en:",
-      "opts": [
-        "$Cos(2x)$",
-        "$Sen(2x)$",
-        "$Tan(2x)$",
-        "$2Sen^2(x)$"
-      ],
-      "correct": 0,
-      "explicacion": "La forma base del coseno doble está definida como la diferencia entre coseno cuadrado y seno cuadrado."
-    },
-    {
-      "tipo": "verdadero_falso",
-      "q": "Analice las siguientes afirmaciones:",
-      "proposiciones": [
-        {
-          "texto": "$Sen(2x)$ depende del producto entre $Sen(x)$ y $Cos(x)$.",
-          "correct": true
-        },
-        {
-          "texto": "$Cos(2x)$ solo tiene una única forma posible.",
-          "correct": false
-        },
-        {
-          "texto": "La degradación permite reducir potencias trigonométricas.",
-          "correct": true
-        }
-      ],
-      "explicacion": "La teoría menciona diferentes formas del coseno doble y define la degradación como una técnica para reducir potencias."
     }
   ]
 }

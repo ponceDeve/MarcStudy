@@ -11,7 +11,7 @@ import GlossaryText from "./Glossarytext";
 import TopBar from "./TopBar";
 import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
-import LevelsModal from "./LevelsModal";
+import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
 import WelcomeModal from "./WelcomeModal";
 import ModoEstudioModal from "./ModoEstudioModal";
@@ -105,7 +105,20 @@ export default function MiEstudioPage() {
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
   const [nivelCompletions, setNivelCompletions] = useState({});
 
-  const [levelsOpen, setLevelsOpen] = useState(false);
+  // Modo "voltear" (ventana móvil): al presionar el botón de voltear en
+  // teoría, se generan preguntas de examen solo del bloque de tarjetas
+  // recién visto (desde ultimoFlipIndex hasta cardIndex), en orden
+  // aleatorio. isFlipQuiz indica que estamos dentro de ese mini-lote.
+  const [ultimoFlipIndex, setUltimoFlipIndex] = useState(0);
+  const [isFlipQuiz, setIsFlipQuiz] = useState(false);
+  const [quizBatch, setQuizBatch] = useState([]); // [{ puntoIndex, pregunta }]
+  const [quizPos, setQuizPos] = useState(0);
+
+  // Registro de qué preguntas (por índice de punto) ya se respondieron
+  // al menos una vez, para el botón "Ver preguntas vistas".
+  const [preguntasVistas, setPreguntasVistas] = useState({});
+  const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
+
   const [searchOpen, setSearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
@@ -211,13 +224,6 @@ export default function MiEstudioPage() {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
-  // Recuerda en qué tarjeta de teoría te quedaste en este tema, para
-  // retomarla ahí la próxima vez (en vez de reiniciar siempre en la 0).
-  useEffect(() => {
-    if (!topicData || stage !== "theory") return;
-    localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex);
-  }, [topicData, stage, cardIndex]);
-
   // EFECTO PARA EL CRONÓMETRO
   useEffect(() => {
     let timer = null;
@@ -283,13 +289,23 @@ export default function MiEstudioPage() {
       setExamenPreguntas(examenList);
       setNivelIndex(0);
 
-      const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
-      const storedUltimaCard = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
-      const cardInicial = Math.min(Math.max(storedUltimaCard, 0), Math.max(puntos.length - 1, 0));
+      // La teoría siempre empieza desde la primera tarjeta (no se retoma
+      // desde la última posición guardada).
+      const cardInicial = 0;
+
+      const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
+      const storedPreguntasVistas = JSON.parse(
+        localStorage.getItem(storagePreguntasVistasKey) || "{}",
+      );
+      setPreguntasVistas(storedPreguntasVistas);
 
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
       setCardIndex(cardInicial);
+      setUltimoFlipIndex(cardInicial);
+      setIsFlipQuiz(false);
+      setQuizBatch([]);
+      setQuizPos(0);
       setOrdenPreguntas([]);
       setPosOrden(0);
       setStage("theory");
@@ -334,14 +350,17 @@ export default function MiEstudioPage() {
   function elegirModoEstudio(modo) {
     setPreguntaModoAbierta(false);
     if (modo === "solo_preguntas") {
-      // Preguntas en orden aleatorio, arrancando siempre desde la
-      // posición 0 (sin importar en qué tarjeta de teoría te quedaste).
-      const orden = shuffle(flatPuntos.map((_, i) => i));
+      // Preguntas de examen en orden aleatorio, arrancando siempre desde
+      // la posición 0 (sin importar en qué tarjeta de teoría te quedaste).
+      // La cantidad de preguntas de examen es 1 a 1 con flatPuntos.
+      const totalPreguntas = examenPreguntas.length || flatPuntos.length;
+      const orden = shuffle(Array.from({ length: totalPreguntas }, (_, i) => i));
       setOrdenPreguntas(orden);
       setPosOrden(0);
       setCardIndex(orden[0] ?? 0);
       setModoEstudio("solo_preguntas");
       setStage("question");
+      setIsFlipQuiz(false);
       setCountdown(0);
     }
   }
@@ -382,24 +401,33 @@ export default function MiEstudioPage() {
   function toggleStage() {
     setIsLevelMode(false);
     if (stage === "theory") {
+      // Ventana móvil: las tarjetas vistas desde el último "voltear"
+      // (ultimoFlipIndex) hasta la tarjeta actual (cardIndex), ambas
+      // incluidas. Cada una trae su pregunta de examen, 1 a 1 por
+      // índice con flatPuntos.
+      const desde = Math.min(ultimoFlipIndex, cardIndex);
+      const hasta = Math.max(ultimoFlipIndex, cardIndex);
+      const lote = [];
+      for (let i = desde; i <= hasta; i++) {
+        const pregunta = examenPreguntas[i] || null;
+        if (pregunta) lote.push({ puntoIndex: i, pregunta });
+      }
+      if (lote.length === 0) return; // nada que preguntar todavía
+
+      setQuizBatch(shuffle(lote));
+      setQuizPos(0);
+      setIsFlipQuiz(true);
+      setQuestionResult(null);
+      setAttemptKey(0);
       setCountdown(10); // Iniciamos el cronómetro estricto
       setStage("question");
     } else {
+      setIsFlipQuiz(false);
       setCountdown(0);
       setQuestionResult(null);
       setAttemptKey((k) => k + 1);
       setStage("theory");
     }
-  }
-
-  function irANivel(idx) {
-    setNivelIndex(idx);
-    setIsLevelMode(true);
-    setStage("question");
-    setQuestionResult(null);
-    setAttemptKey(0);
-    setLevelsOpen(false);
-    setCountdown(0);
   }
 
   function avanzarCard() {
@@ -410,6 +438,28 @@ export default function MiEstudioPage() {
         setAttemptKey(0);
       } else {
         finalizarTema();
+      }
+      return;
+    }
+    if (isFlipQuiz) {
+      if (quizPos < quizBatch.length - 1) {
+        setQuizPos(quizPos + 1);
+        setQuestionResult(null);
+        setAttemptKey((k) => k + 1);
+      } else {
+        // Se acabó el lote: la próxima ventana empieza en la tarjeta
+        // siguiente a la actual.
+        setIsFlipQuiz(false);
+        setUltimoFlipIndex(cardIndex + 1);
+        setQuestionResult(null);
+        setAttemptKey((k) => k + 1);
+        setCountdown(0);
+        if (cardIndex < flatPuntos.length - 1) {
+          setCardIndex(cardIndex + 1);
+          setStage("theory");
+        } else {
+          finalizarTema();
+        }
       }
       return;
     }
@@ -446,6 +496,14 @@ export default function MiEstudioPage() {
         setNivelIndex(nivelIndex - 1);
         setQuestionResult(null);
         setAttemptKey(0);
+      }
+      return;
+    }
+    if (isFlipQuiz) {
+      if (quizPos > 0) {
+        setQuizPos(quizPos - 1);
+        setQuestionResult(null);
+        setAttemptKey((k) => k + 1);
       }
       return;
     }
@@ -531,6 +589,22 @@ export default function MiEstudioPage() {
 
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto });
+
+    // Se registra como "vista" apenas se contesta, sin importar si fue
+    // bien o mal, para el listado de "Ver preguntas vistas".
+    const puntoIndexActual = isFlipQuiz ? quizBatch[quizPos]?.puntoIndex : cardIndex;
+    if (puntoIndexActual != null && topicData) {
+      setPreguntasVistas((prev) => {
+        if (prev[puntoIndexActual]) return prev;
+        const next = { ...prev, [puntoIndexActual]: true };
+        localStorage.setItem(
+          `preguntasVistas_${topicData.curso}_${topicData.tema}`,
+          JSON.stringify(next),
+        );
+        return next;
+      });
+    }
+
     if (correcto) {
       setScore((s) => s + 1);
 
@@ -597,11 +671,37 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Vuelve a la primera tarjeta de teoría del tema (posición 0), sin
+  // borrar el historial de preguntas ya vistas.
+  function reiniciarTarjetas() {
+    setCardIndex(0);
+    setUltimoFlipIndex(0);
+    setIsFlipQuiz(false);
+    setQuizBatch([]);
+    setQuizPos(0);
+    setStage("theory");
+    setQuestionResult(null);
+    setAttemptKey(0);
+    setCountdown(0);
+    setConfigOpen(false);
+    setConfirmLeave(false);
+  }
+
+  function verPreguntasVistas() {
+    setConfigOpen(false);
+    setConfirmLeave(false);
+    setSeenQuestionsOpen(true);
+  }
+
   function abandonarJuego() {
-    // Si estamos en modo niveles, al abandonar regresamos a la teoría inicial del tema (cardIndex 0)
+    // Abandonar cierra el tema por completo y vuelve a la pantalla de
+    // inicio (antes solo reseteaba a la teoría del mismo tema).
+    setTopicData(null);
     setStage("theory");
     setIsLevelMode(false);
     setCardIndex(0);
+    setQuestionResult(null);
+    setAttemptKey(0);
     setConfigOpen(false);
     setConfirmLeave(false);
     setCountdown(0);
@@ -614,11 +714,18 @@ export default function MiEstudioPage() {
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-  const preguntaActual = isLevelMode ? current : current ? current.pregunta : null;
-  // En el estudio normal (no en modo nivel/examen) se puede avanzar
-  // libremente sin haber respondido — el examen por niveles sí exige
-  // ir superando cada pregunta para desbloquear la siguiente.
-  const canAdvance = isLevelMode ? nivelIndex < nivelMaxUnlocked : true;
+  const preguntaActual = isLevelMode
+    ? current
+    : isFlipQuiz
+      ? quizBatch[quizPos]?.pregunta || null
+      : modoEstudio === "solo_preguntas"
+        ? examenPreguntas[cardIndex] || null
+        : null;
+  // Para avanzar a la siguiente pregunta hay que haberla superado
+  // primero — aplica siempre, sin importar el modo (teoría normal,
+  // volteo de tarjeta, u "Omitir teoría"). Si no estamos parados en
+  // una pregunta (ej. viendo teoría), no hay nada que bloquee.
+  const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -629,7 +736,7 @@ export default function MiEstudioPage() {
       // registro de repaso cada vez que se presionaba Enter ahí.
       const tagActivo = document.activeElement && document.activeElement.tagName;
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
-      if (levelsOpen || searchOpen || configOpen || temasOpen || !topicData) return;
+      if (searchOpen || configOpen || temasOpen || !topicData) return;
 
       // Ignorar teclas si el cronómetro está activo
       if (stage === "question" && countdown > 0) return;
@@ -659,9 +766,22 @@ export default function MiEstudioPage() {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [stage, questionResult, levelsOpen, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden]);
+  }, [stage, questionResult, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden, isFlipQuiz, quizBatch, quizPos]);
 
-  const wrapClass = ["mi-estudio__wrap", topicData && !isLevelMode ? "has-topbar" : ""].join(" ");
+  const wrapClass = [
+    "mi-estudio__wrap",
+    stage === "question" ? "is-question" : topicData ? "has-topbar" : "",
+  ].join(" ");
+
+  // Progreso a mostrar en la barra chica de preguntas (corazones +
+  // contestadas/total), según el sub-modo activo dentro de "question".
+  const progresoPregunta = isLevelMode
+    ? { current: nivelIndex + 1, total: examenPreguntas.length }
+    : isFlipQuiz
+      ? { current: quizPos + 1, total: quizBatch.length }
+      : modoEstudio === "solo_preguntas"
+        ? { current: posOrden + 1, total: ordenPreguntas.length }
+        : { current: cardIndex + 1, total: flatPuntos.length };
 
   const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
   const cursoEncontrado = manifest.cursos.find(c => c.nombre === nombreCursoActivo);
@@ -678,12 +798,11 @@ export default function MiEstudioPage() {
         onClose={() => setPomodoroAlarmaAbierta(false)}
       />
 
-      {/* El TopBar solo se muestra si hay tema y NO estamos en modo niveles */}
-      {topicData && !isLevelMode && (
+      {/* El TopBar solo se muestra si hay tema y NO estamos en una pregunta */}
+      {topicData && stage !== "question" && (
         <TopBar
           tema={topicData.tema}
           curso={topicData.curso}
-          onAbrirNiveles={() => setLevelsOpen(true)}
           onAbrirBuscador={() => setSearchOpen(true)}
           onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
@@ -710,28 +829,6 @@ export default function MiEstudioPage() {
             <div className="config-overlay__item">
               <button
                 onClick={() => {
-                  if (confirmLeave) abandonarJuego();
-                  else setConfirmLeave(true);
-                }}
-                className="config-overlay__btn is-danger"
-              >
-                <i className="fas fa-door-open" />
-              </button>
-              <span className="config-overlay__label">Abandonar</span>
-            </div>
-
-            <div className="config-overlay__item">
-              <button onClick={toggleFullscreen} className="config-overlay__btn is-primary">
-                <i className={`fas ${isFullscreen ? "fa-compress" : "fa-expand"}`} />
-              </button>
-              <span className="config-overlay__label">
-                {isFullscreen ? "Minimizar" : "Pantalla Completa"}
-              </span>
-            </div>
-
-            <div className="config-overlay__item">
-              <button
-                onClick={() => {
                   setConfigOpen(false);
                   setConfirmLeave(false);
                 }}
@@ -740,6 +837,42 @@ export default function MiEstudioPage() {
                 <i className="fas fa-play" />
               </button>
               <span className="config-overlay__label">Continuar</span>
+            </div>
+
+            <div className="config-overlay__item">
+              <button onClick={toggleFullscreen} className="config-overlay__btn is-neutral">
+                <i className={`fas ${isFullscreen ? "fa-compress" : "fa-expand"}`} />
+              </button>
+              <span className="config-overlay__label">
+                {isFullscreen ? "Minimizar" : "Pantalla Completa"}
+              </span>
+            </div>
+
+            <div className="config-overlay__item">
+              <button onClick={verPreguntasVistas} className="config-overlay__btn is-info">
+                <i className="fas fa-list-check" />
+              </button>
+              <span className="config-overlay__label">Repasar</span>
+            </div>
+
+            <div className="config-overlay__item">
+              <button
+                onClick={() => {
+                  if (confirmLeave) abandonarJuego();
+                  else setConfirmLeave(true);
+                }}
+                className="config-overlay__btn is-warning"
+              >
+                <i className="fas fa-door-open" />
+              </button>
+              <span className="config-overlay__label">Abandonar</span>
+            </div>
+
+            <div className="config-overlay__item">
+              <button onClick={reiniciarTarjetas} className="config-overlay__btn is-danger">
+                <i className="fas fa-rotate-left" />
+              </button>
+              <span className="config-overlay__label">Reiniciar</span>
             </div>
           </div>
         </div>
@@ -849,9 +982,15 @@ export default function MiEstudioPage() {
 
         {topicData && (stage === "theory" || stage === "question") && current && (
           <div className="mi-estudio__stage">
-            {stage === "question" && isLevelMode && (
+            {stage === "question" && (
               <div className="mi-estudio__hud-wrap animate-fade-in">
-                <Hud current={nivelIndex + 1} total={examenPreguntas.length} correct={score} wrong={wrongCount} vidas={vidas} />
+                <Hud
+                  current={progresoPregunta.current}
+                  total={progresoPregunta.total}
+                  correct={score}
+                  wrong={wrongCount}
+                  vidas={vidas}
+                />
               </div>
             )}
 
@@ -867,7 +1006,16 @@ export default function MiEstudioPage() {
             )}
 
             {stage === "theory" && (
-              <div className="arcade-game-container mi-estudio__theory">
+              <div className="mi-estudio__theory-wrap">
+                <button
+                  onClick={() => { setConfigOpen(true); setConfirmLeave(false); }}
+                  className="mi-estudio__config-btn"
+                  title="Opciones"
+                >
+                  <i className="fas fa-cog" />
+                </button>
+
+                <div className="arcade-game-container mi-estudio__theory">
                 <div className="arcade-grid" />
                 <div className="mi-estudio__theory-inner">
                   <p className="mi-estudio__theory-badge">
@@ -876,6 +1024,12 @@ export default function MiEstudioPage() {
                   <p className="mi-estudio__theory-text">
                     <GlossaryText text={current.texto} glosario={topicData?.glosario} />
                   </p>
+
+                  {current.explicacion && (
+                    <div className="mi-estudio__theory-explicacion">
+                      <GlossaryText text={current.explicacion} glosario={topicData?.glosario} />
+                    </div>
+                  )}
 
                   <div className="mi-estudio__google">
                     <div className="mi-estudio__google-input-wrap">
@@ -892,19 +1046,19 @@ export default function MiEstudioPage() {
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             )}
 
             {stage === "question" && (
               <div className="mi-estudio__question-stage">
-                {isLevelMode && (
-                  <button
-                    onClick={() => { setConfigOpen(true); setConfirmLeave(false); }}
-                    className="mi-estudio__config-btn"
-                  >
-                    <i className="fas fa-cog" />
-                  </button>
-                )}
+                <button
+                  onClick={() => { setConfigOpen(true); setConfirmLeave(false); }}
+                  className="mi-estudio__config-btn"
+                  title="Opciones"
+                >
+                  <i className="fas fa-cog" />
+                </button>
 
                 {/* LOGICA DE RENDERIZADO DEL CRONOMETRO ESTRICTO */}
                 {countdown > 0 ? (
@@ -917,7 +1071,13 @@ export default function MiEstudioPage() {
                 ) : (
                   <div className="mi-estudio__question-inner animate-fade-in">
                     <QuestionCard
-                      key={`${isLevelMode ? "nivel-" + nivelIndex : "teoria-" + cardIndex}-${attemptKey}`}
+                      key={`${
+                        isLevelMode
+                          ? "nivel-" + nivelIndex
+                          : isFlipQuiz
+                            ? "flip-" + cardIndex + "-" + quizPos
+                            : "teoria-" + cardIndex
+                      }-${attemptKey}`}
                       pregunta={preguntaActual}
                       onRespondido={manejarRespuesta}
                     />
@@ -929,8 +1089,8 @@ export default function MiEstudioPage() {
             <div className="mi-estudio__nav">
               <button
                 onClick={retrocederCard}
-                disabled={isLevelMode ? nivelIndex === 0 : cardIndex === 0}
-                className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : cardIndex === 0) ? "" : "is-active"}`}
+                disabled={isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0}
+                className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"}`}
                 title="Anterior"
               >
                 <i className="fas fa-caret-left" />
@@ -946,7 +1106,9 @@ export default function MiEstudioPage() {
                 {(() => {
                   const esUltimo = isLevelMode
                     ? nivelIndex === examenPreguntas.length - 1
-                    : cardIndex === flatPuntos.length - 1;
+                    : isFlipQuiz
+                      ? quizPos === quizBatch.length - 1
+                      : cardIndex === flatPuntos.length - 1;
                   const bloqueado = !canAdvance || esUltimo;
                   return (
                     <>
@@ -1002,14 +1164,11 @@ export default function MiEstudioPage() {
       </div>
 
       {topicData && (
-        <LevelsModal
-          open={levelsOpen}
-          onClose={() => setLevelsOpen(false)}
-          flatPuntos={examenPreguntas}
-          maxUnlocked={nivelMaxUnlocked}
-          current={nivelIndex}
-          levelCompletions={nivelCompletions}
-          onSelect={irANivel}
+        <SeenQuestionsModal
+          open={seenQuestionsOpen}
+          onClose={() => setSeenQuestionsOpen(false)}
+          preguntasVistas={preguntasVistas}
+          flatPuntos={flatPuntos}
         />
       )}
 

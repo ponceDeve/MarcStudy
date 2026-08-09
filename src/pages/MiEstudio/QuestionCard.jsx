@@ -156,19 +156,6 @@ function OpcionMultiple({ pregunta, onRespondido }) {
 
       {!answered && (
         <div className="question-card__type-wrap">
-          <input
-            value={typed}
-            onChange={(e) => setTyped(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-                e.stopPropagation();
-                responderTexto();
-              }
-            }}
-            placeholder="Respuesta"
-            className="question-card__input"
-          />
           <button onClick={responderTexto} className="question-card__submit">
             Responder
           </button>
@@ -375,12 +362,98 @@ function Completar({ pregunta, onRespondido }) {
   );
 }
 
+/* ---------- Tipo 4: relacionar (dos columnas para emparejar) ---------- */
+
+function Relacionar({ pregunta, onRespondido }) {
+  const [answered, setAnswered] = useState(false);
+  const [chosenIdx, setChosenIdx] = useState(null);
+  const [wasCorrect, setWasCorrect] = useState(false);
+  const hurraRef = useRef(null);
+
+  useLecturaVoz(pregunta.q || "Relaciona ambas columnas.");
+
+  // Igual que en completar: cada alternativa es un combo completo de
+  // emparejamientos (ej. "Ia, IIb, IIIc"), no una opción independiente.
+  const shuffled = useMemo(
+    () => shuffle(pregunta.opts.map((combo, originalIndex) => ({ combo, originalIndex }))),
+    [pregunta],
+  );
+
+  function elegirOpcion(i) {
+    if (answered) return;
+    const correct = shuffled[i].originalIndex === pregunta.correct;
+    setChosenIdx(i);
+    setWasCorrect(correct);
+    setAnswered(true);
+    if (correct && hurraRef.current) {
+      hurraRef.current.currentTime = 0;
+      hurraRef.current.play().catch(() => { });
+    }
+    onRespondido(correct);
+  }
+
+  return (
+    <>
+      {pregunta.q && (
+        <h3 className="question-card__q">
+          <Latex>{pregunta.q}</Latex>
+        </h3>
+      )}
+
+      <div className="question-card__match">
+        <ul className="question-card__match-col">
+          {(pregunta.columnaA || []).map((item, i) => (
+            <li key={i}>
+              <Latex>{item}</Latex>
+            </li>
+          ))}
+        </ul>
+        <ul className="question-card__match-col">
+          {(pregunta.columnaB || []).map((item, i) => (
+            <li key={i}>
+              <Latex>{item}</Latex>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="question-card__options">
+        {shuffled.map((opt, i) => {
+          const isChosen = answered && chosenIdx === i;
+          // Igual que en opción múltiple/completar: solo se revela cuál
+          // era la correcta si el usuario acertó.
+          const isTheCorrectOne = answered && wasCorrect && opt.originalIndex === pregunta.correct;
+          let cls = "";
+          if (answered) {
+            if (isTheCorrectOne) cls = "is-correct";
+            else if (isChosen) cls = "is-wrong";
+            else cls = "is-muted";
+          }
+          return (
+            <button
+              key={i}
+              onClick={() => elegirOpcion(i)}
+              disabled={answered}
+              className={`question-card__opt ${cls}`}
+            >
+              {opt.combo}
+            </button>
+          );
+        })}
+      </div>
+
+      <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
+    </>
+  );
+}
+
 /* ---------- Selector de tipo ---------- */
 
 export default function QuestionCard({ pregunta, onRespondido }) {
   let Contenido = OpcionMultiple;
   if (pregunta.tipo === "verdadero_falso") Contenido = VerdaderoFalso;
   else if (pregunta.tipo === "completar") Contenido = Completar;
+  else if (pregunta.tipo === "relacionar") Contenido = Relacionar;
 
   return (
     <div className="arcade-game-container question-card">

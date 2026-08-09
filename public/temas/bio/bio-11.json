@@ -2,19 +2,19 @@
   "curso": "Biología",
   "tema": "Núcleo Celular y Replicación del ADN",
   "glosario": {
-    "Eucariota": "Célula evolucionada que posee un núcleo verdadero.",
-    "Carioteca": "Envoltura membranosa que delimita el núcleo celular.",
-    "Carioplasma": "Medio acuoso coloidal del interior del núcleo.",
-    "Nucléolo": "Estructura densa encargada de formar los ribosomas.",
-    "Cromatina": "Complejo molecular formado por ADN e histonas.",
-    "Nucleosoma": "Unidad básica de empaquetamiento de la cromatina.",
-    "Histonas": "Proteínas básicas que compactan el ADN celular.",
-    "Interfase": "Etapa celular donde ocurre la replicación genética.",
-    "Helicasa": "Enzima que separa las hebras de ADN.",
-    "Topoisomerasa": "Enzima que altera el superenrollamiento del ADN.",
-    "Ligasa": "Enzima que une los fragmentos de Okazaki.",
-    "Okazaki": "Fragmentos cortos de ADN en hebra rezagada.",
-    "Cebador": "Secuencia corta de ARN para iniciar replicación.",
+    "Eucariota": "Célula evolucionada con núcleo verdadero.",
+    "Carioteca": "Envoltura membranosa nuclear.",
+    "Carioplasma": "Medio coloidal nuclear.",
+    "Nucléolo": "Formador de ribosomas.",
+    "Cromatina": "Complejo de ADN e histonas.",
+    "Nucleosoma": "Unidad de cromatina.",
+    "Histonas": "Proteínas de empaquetamiento.",
+    "Interfase": "Etapa de replicación celular.",
+    "Helicasa": "Enzima desenrolladora.",
+    "Topoisomerasa": "Regula tensión de torsión.",
+    "Ligasa": "Enzima selladora.",
+    "Okazaki": "Fragmentos de cadena rezagada.",
+    "Cebador": "Iniciador de ARN.",
     "∈": "Pertenece",
     "=": "Define",
     "⊃": "Contiene",
@@ -30,95 +30,32 @@
       "titulo": "Características Generales del Núcleo",
       "puntos": [
         {
-          "texto": "\"Núcleo celular\" ∈ células eucariotas.",
-          "pregunta": {
-            "q": "¿Qué tipo de organización celular posee de manera exclusiva un núcleo definido?",
-            "opts": [
-              "Células procariotas",
-              "Células eucariotas",
-              "Bacterias"
-            ],
-            "correct": 1,
-            "explicacion": "El núcleo celular es la organela distintiva de las células eucariotas (animales, plantas, hongos y protistas), sirviendo como compartimento especializado para resguardar el material genético separado del citoplasma."
-          }
+          "texto": "\"Núcleo celular\" ∈ \"células eucariotas\".",
+          "explicacion": "El núcleo celular es una estructura exclusiva de las células eucariotas. Su función principal es albergar y proteger el material hereditario separado del entorno citoplasmático."
         },
         {
-          "texto": "\"Núcleo celular\" = forma esferoidal.",
-          "pregunta": {
-            "q": "¿Qué morfología presenta generalmente el núcleo dentro de la célula?",
-            "opts": [
-              "Forma cúbica",
-              "Forma aplanada",
-              "Forma esferoidal"
-            ],
-            "correct": 2,
-            "explicacion": "Aunque la forma del núcleo puede adaptarse al tipo de célula, su estructura predeterminada y más común en la mayoría de tejidos es esferoidal u ovoide."
-          }
+          "texto": "\"Núcleo celular\" = \"forma esferoidal\".",
+          "explicacion": "La morfología más común del núcleo en la gran mayoría de células es de tipo esferoidal u ovoide, adaptándose al espacio disponible dentro de la estructura celular."
         },
         {
-          "texto": "\"Células eucariotas\" ⊃ un núcleo.",
-          "pregunta": {
-            "q": "¿Cuál es la cantidad estándar de núcleos que presenta una célula eucariota típica?",
-            "opts": [
-              "Un núcleo",
-              "Dos núcleos",
-              "Múltiples núcleos"
-            ],
-            "correct": 0,
-            "explicacion": "Por regla general, la mayoría de las células eucariotas son mononucleadas, es decir, contienen un solo núcleo que centraliza y controla todas las funciones de esa célula específica."
-          }
+          "texto": "\"Células eucariotas\" ⊃ \"un núcleo\".",
+          "explicacion": "Por regla general, las células eucariotas son mononucleadas, conteniendo un solo centro de control genético encargado de dirigir todas las funciones metabólicas."
         },
         {
-          "texto": "\"Miocitos\" ⊃ varios núcleos.",
-          "pregunta": {
-            "q": "¿Qué tipo de célula animal representa una excepción al poseer múltiples núcleos?",
-            "opts": [
-              "Neuronas",
-              "Eritrocitos",
-              "Miocitos"
-            ],
-            "correct": 2,
-            "explicacion": "Los miocitos, específicamente las fibras del músculo esquelético y cardíaco, son células multinucleadas (sincitios) debido a la fusión de varias células precursoras durante su desarrollo embrionario."
-          }
+          "texto": "\"Miocitos\" ⊃ \"varios núcleos\".",
+          "explicacion": "Existen excepciones celulares como los miocitos o fibras musculares esqueléticas, las cuales son multinucleadas debido a la fusión de múltiples células durante el desarrollo."
         },
         {
-          "texto": "\"Paramecio\" ⊃ varios núcleos.",
-          "pregunta": {
-            "q": "¿Qué microorganismo eucariota se caracteriza excepcionalmente por tener más de un núcleo?",
-            "opts": [
-              "Paramecio",
-              "Ameba",
-              "Levadura"
-            ],
-            "correct": 0,
-            "explicacion": "Dentro de los protozoarios, el paramecio es una notable excepción biológica, ya que posee un macronúcleo (para funciones metabólicas) y uno o más micronúcleos (para la reproducción sexual)."
-          }
+          "texto": "\"Paramecio\" ⊃ \"varios núcleos\".",
+          "explicacion": "Algunos protozoarios ciliados como el paramecio poseen más de un núcleo, diferenciando un macronúcleo para funciones vegetativas y un micronúcleo para la reproducción sexual."
         },
         {
           "texto": "\"Núcleo celular\" = almacena \"ADN\".",
-          "pregunta": {
-            "q": "¿Cuál es la macromolécula fundamental que se encuentra almacenada dentro del núcleo?",
-            "opts": [
-              "Glucógeno",
-              "ADN",
-              "Lípidos"
-            ],
-            "correct": 1,
-            "explicacion": "La función primordial del núcleo es servir como bóveda de seguridad para el ADN (Ácido Desoxirribonucleico), protegiendo la valiosa información genética de posibles daños en el entorno citoplasmático."
-          }
+          "explicacion": "El núcleo actúa como el compartimento de seguridad para el ácido desoxirribonucleico, resguardando la información genética frente a posibles daños químicos en el citoplasma."
         },
         {
-          "texto": "\"Núcleo celular\" = centro de control.",
-          "pregunta": {
-            "q": "¿Cómo se define funcionalmente al núcleo dentro de la dinámica celular?",
-            "opts": [
-              "Centro de control",
-              "Generador de energía",
-              "Centro de digestión"
-            ],
-            "correct": 0,
-            "explicacion": "Al contener las instrucciones genéticas para la síntesis de todas las proteínas, el núcleo actúa como el cerebro o 'centro de control celular', dirigiendo el metabolismo, crecimiento y reproducción celular."
-          }
+          "texto": "\"Núcleo celular\" = \"centro de control\".",
+          "explicacion": "Funciona como el centro de control de la célula porque contiene las directrices moleculares para la síntesis de proteínas y la regulación de todas las actividades metabólicas."
         }
       ]
     },
@@ -126,108 +63,36 @@
       "titulo": "Estructura: Carioteca",
       "puntos": [
         {
-          "texto": "\"Carioteca\" = envoltura nuclear.",
-          "pregunta": {
-            "q": "¿Qué nombre técnico recibe la envoltura que aísla al núcleo del citoplasma?",
-            "opts": [
-              "Carioplasma",
-              "Carioteca",
-              "Cromatina"
-            ],
-            "correct": 1,
-            "explicacion": "La carioteca (del griego 'karyon' que significa núcleo y 'theke' caja) es la envoltura nuclear que estructura y delimita físicamente el espacio del núcleo celular."
-          }
+          "texto": "\"Carioteca\" = \"envoltura nuclear\".",
+          "explicacion": "La carioteca es la membrana especializada que delimita físicamente el núcleo celular, separando el material genético del medio acuoso del citoplasma."
         },
         {
-          "texto": "\"Carioteca\" ⊃ dos membranas.",
-          "pregunta": {
-            "q": "¿Cuántas capas lipídicas conforman estructuralmente a la envoltura nuclear?",
-            "opts": [
-              "Una membrana",
-              "Dos membranas",
-              "Tres membranas"
-            ],
-            "correct": 1,
-            "explicacion": "A diferencia de la membrana plasmática celular que es sencilla, la carioteca es una doble membrana concéntrica, separada en una membrana nuclear externa y otra interna."
-          }
+          "texto": "\"Carioteca\" ⊃ \"dos membranas\".",
+          "explicacion": "A diferencia de otras estructuras celulares, la carioteca está compuesta por una doble membrana concéntrica, dividida en una capa interna y una capa externa."
         },
         {
-          "texto": "\"Carioteca\" ⊃ espacio perinuclear.",
-          "pregunta": {
-            "q": "¿Cómo se denomina a la separación física entre la membrana externa e interna del núcleo?",
-            "opts": [
-              "Espacio intermembranoso",
-              "Espacio perinuclear",
-              "Luz del retículo"
-            ],
-            "correct": 1,
-            "explicacion": "El pequeño hueco o cisterna que queda atrapado entre la membrana nuclear interna y la externa recibe el nombre de espacio perinuclear, aislando aún más ambos entornos."
-          }
+          "texto": "\"Carioteca\" ⊃ \"espacio perinuclear\".",
+          "explicacion": "El espacio perinuclear es la cisterna o pequeña separación física que existe entre la membrana nuclear interna y la membrana nuclear externa."
         },
         {
           "texto": "\"Membrana externa\" ⊃ \"ribosomas\".",
-          "pregunta": {
-            "q": "¿Qué organelas se encuentran adheridas a la superficie de la membrana nuclear externa?",
-            "opts": [
-              "Lisosomas",
-              "Mitocondrias",
-              "Ribosomas"
-            ],
-            "correct": 2,
-            "explicacion": "La membrana nuclear externa se caracteriza por tener ribosomas incrustados en su superficie orientada al citoplasma, y de hecho se continúa físicamente con las membranas del retículo endoplasmático rugoso."
-          }
+          "explicacion": "La superficie de la membrana nuclear externa se encuentra tachonada de ribosomas y se conecta de manera directa con las membranas del retículo endoplasmático rugoso."
         },
         {
-          "texto": "\"Carioteca\" ⊃ poros nucleares.",
-          "pregunta": {
-            "q": "¿Qué estructuras perforan la carioteca para conectar el interior del núcleo con el citoplasma?",
-            "opts": [
-              "Poros nucleares",
-              "Canales iónicos",
-              "Plasmodesmos"
-            ],
-            "correct": 0,
-            "explicacion": "La envoltura nuclear no es totalmente hermética; está perforada por numerosos poros nucleares, que son complejos proteicos gigantes que atraviesan ambas membranas simultáneamente."
-          }
+          "texto": "\"Carioteca\" ⊃ \"poros nucleares\".",
+          "explicacion": "La envoltura nuclear está perforada por complejos proteicos denominados poros nucleares, los cuales actúan como canales de comunicación selectiva."
         },
         {
-          "texto": "\"Poros nucleares\" → intercambio de sustancias.",
-          "pregunta": {
-            "q": "¿Cuál es la función específica de los poros presentes en la carioteca?",
-            "opts": [
-              "Evitar la salida del ADN",
-              "Permitir intercambio de sustancias",
-              "Producir ribosomas"
-            ],
-            "correct": 1,
-            "explicacion": "Los poros actúan como aduanas altamente selectivas que permiten el intercambio regulado de sustancias (como la salida del ARN mensajero y la entrada de proteínas y nucleótidos) entre el carioplasma y el citoplasma."
-          }
+          "texto": "\"Poros nucleares\" → \"intercambio de sustancias\".",
+          "explicacion": "Los poros permiten el flujo regulado de moléculas esenciales, facilitando la salida de ARN mensajero hacia el citoplasma y la entrada de proteínas sintetizadas."
         },
         {
-          "texto": "\"Membrana interna\" ✓ lámina nuclear.",
-          "pregunta": {
-            "q": "¿A qué estructura de soporte se asocia directamente la membrana nuclear interna?",
-            "opts": [
-              "Al nucléolo",
-              "A los ribosomas",
-              "A la lámina nuclear"
-            ],
-            "correct": 2,
-            "explicacion": "En su cara interna, la membrana nuclear se apoya sobre la lámina nuclear, una red de filamentos proteicos que le da rigidez mecánica al núcleo y mantiene su forma esferoidal."
-          }
+          "texto": "\"Membrana interna\" ✓ \"lámina nuclear\".",
+          "explicacion": "La cara interna de la membrana nuclear se apoya firmemente sobre la lámina nuclear, una red de filamentos de proteína que otorga soporte estructural."
         },
         {
           "texto": "\"Lámina nuclear\" + \"cromatina\".",
-          "pregunta": {
-            "q": "¿Qué material genético se encuentra anclado o asociado a la lámina nuclear?",
-            "opts": [
-              "ARN ribosomal",
-              "Cromatina",
-              "Cebadores"
-            ],
-            "correct": 1,
-            "explicacion": "Además de dar soporte, la lámina nuclear sirve como un punto de anclaje periférico para la cromatina (el ADN empaquetado), ayudando a organizar espacialmente los cromosomas dentro del núcleo."
-          }
+          "explicacion": "La lámina nuclear no solo da soporte mecánico al núcleo, sino que también sirve como superficie de anclaje periférico para organizar las fibras de cromatina."
         }
       ]
     },
@@ -235,82 +100,28 @@
       "titulo": "Carioplasma y Nucléolo",
       "puntos": [
         {
-          "texto": "\"Carioplasma\" = sustancia coloidal.",
-          "pregunta": {
-            "q": "¿Qué estado físico describe al medio acuoso del interior del núcleo?",
-            "opts": [
-              "Sustancia coloidal",
-              "Estado sólido",
-              "Solución cristalina"
-            ],
-            "correct": 0,
-            "explicacion": "El carioplasma (también llamado nucleoplasma o jugo nuclear) es una sustancia coloidal, similar a un gel acuoso, que llena el interior del núcleo y donde flotan todos sus componentes."
-          }
+          "texto": "\"Carioplasma\" = \"sustancia coloidal\".",
+          "explicacion": "El carioplasma, o nucleoplasma, es el medio interno de consistencia gelatinosa o coloidal donde se encuentran suspendidos los componentes del núcleo celular."
         },
         {
-          "texto": "\"Carioplasma\" ⊃ enzimas nucleares.",
-          "pregunta": {
-            "q": "¿Qué tipo de moléculas biológicas importantes se encuentran dispersas en el carioplasma?",
-            "opts": [
-              "Fosfolípidos",
-              "Enzimas nucleares",
-              "Hormonas esteroideas"
-            ],
-            "correct": 1,
-            "explicacion": "Flotando libres en el carioplasma se hallan abundantes enzimas esenciales para las funciones nucleares, como la ARN polimerasa (para la transcripción), la ADN polimerasa (para la replicación), y miles de nucleótidos sueltos listos para ser ensamblados."
-          }
+          "texto": "\"Carioplasma\" ⊃ \"enzimas nucleares\".",
+          "explicacion": "En el interior del carioplasma flotan libremente numerosas enzimas y nucleótidos indispensables para llevar a cabo procesos como la transcripción y la replicación."
         },
         {
-          "texto": "\"Nucléolo\" = asociación supramolecular.",
-          "pregunta": {
-            "q": "¿Qué nivel de organización biológica corresponde a la estructura del nucléolo?",
-            "opts": [
-              "Organela membranosa",
-              "Asociación supramolecular",
-              "Tejido celular"
-            ],
-            "correct": 1,
-            "explicacion": "El nucléolo no es una organela porque carece de membrana propia que lo envuelva; es simplemente una densa asociación supramolecular (una aglomeración visible de macromoléculas) flotando en el carioplasma."
-          }
+          "texto": "\"Nucléolo\" = \"asociación supramolecular\".",
+          "explicacion": "El nucléolo carece de una membrana biológica que lo delimite; se trata de una densa agregación macromolecular concentrada en el interior del núcleo."
         },
         {
-          "texto": "\"Nucléolo\" ⊃ ARN + \"ADN\" + proteínas.",
-          "pregunta": {
-            "q": "¿De qué macromoléculas fundamentales está constituida la masa del nucléolo?",
-            "opts": [
-              "Lípidos, glúcidos y proteínas",
-              "ARN, ADN y proteínas",
-              "Solamente por ADN"
-            ],
-            "correct": 1,
-            "explicacion": "Esta agrupación supramolecular está conformada por bucles específicos de ADN (que tienen las instrucciones), el ARN que se está copiando activamente, y proteínas asociadas."
-          }
+          "texto": "\"Nucléolo\" ⊃ \"ARN\" + \"ADN\" + proteínas.",
+          "explicacion": "Esta estructura densa está compuesta fundamentalmente por bucles de ADN ribosomal, cadenas de ARN en síntesis activa y un conjunto complejo de proteínas."
         },
         {
-          "texto": "\"Nucléolo\" → síntesis de \"ARNr\".",
-          "pregunta": {
-            "q": "¿Qué tipo específico de ácido nucleico se fabrica masivamente dentro del nucléolo?",
-            "opts": [
-              "ARNm (mensajero)",
-              "ARNt (de transferencia)",
-              "ARNr (ribosomal)"
-            ],
-            "correct": 2,
-            "explicacion": "La función principal de esta zona densa del núcleo es transcribir sin parar los genes que codifican para el ARN ribosomal (ARNr), un componente estructural indispensable para la célula."
-          }
+          "texto": "\"Nucléolo\" → \"síntesis de ARNr\".",
+          "explicacion": "La función biológica principal del nucléolo es transcribir intensamente las regiones de ADN destinadas a producir el ácido ribonucleico ribosomal (ARNr)."
         },
         {
-          "texto": "\"ARNr\" → forma \"ribosomas\".",
-          "pregunta": {
-            "q": "¿Qué organela celular es ensamblada a partir del ARNr producido por el nucléolo?",
-            "opts": [
-              "Ribosomas",
-              "Lisosomas",
-              "Centríolos"
-            ],
-            "correct": 0,
-            "explicacion": "El ARN ribosomal (ARNr) fabricado en el nucléolo se asocia con proteínas para ensamblar las subunidades de los ribosomas, los cuales luego saldrán por los poros nucleares para fabricar proteínas en el citoplasma."
-          }
+          "texto": "\"ARNr\" → \"forma ribosomas\".",
+          "explicacion": "El ARN ribosomal sintetizado en el nucléolo se combina con proteínas específicas para ensamblar las subunidades que posteriormente formarán los ribosomas funcionales."
         }
       ]
     },
@@ -319,107 +130,35 @@
       "puntos": [
         {
           "texto": "\"Cromatina\" = \"ADN\" + histonas.",
-          "pregunta": {
-            "q": "¿Cuál es la composición bioquímica de la cromatina en el núcleo celular?",
-            "opts": [
-              "ADN y ARN",
-              "ADN e histonas",
-              "ARN e histonas"
-            ],
-            "correct": 1,
-            "explicacion": "La cromatina es la forma en que se presenta el material genético en el núcleo eucariota en estado de reposo, conformada por una larga molécula de ácido nucleico (ADN) fuertemente asociada a proteínas estructurales llamadas histonas."
-          }
+          "explicacion": "La cromatina es el complejo macromolecular constituido por la larga hebra de ADN unida íntimamente a proteínas estructurales de carácter básico llamadas histonas."
         },
         {
-          "texto": "\"ADN\" = carga negativa.",
-          "pregunta": {
-            "q": "¿Qué tipo de carga eléctrica posee el ADN de manera natural?",
-            "opts": [
-              "Carga positiva",
-              "Carga neutra",
-              "Carga negativa"
-            ],
-            "correct": 2,
-            "explicacion": "Debido a la presencia constante de los grupos fosfato en su columna vertebral molecular, la hebra larga de ADN tiene una naturaleza netamente ácida y una fuerte carga eléctrica negativa."
-          }
+          "texto": "\"ADN\" = \"carga negativa\".",
+          "explicacion": "Debido a la presencia constante de los grupos fosfato en su estructura molecular, la cadena de ADN posee una naturaleza ácida y una marcada carga eléctrica negativa."
         },
         {
-          "texto": "\"Histonas\" = proteínas básicas.",
-          "pregunta": {
-            "q": "¿Qué característica química presentan las proteínas histonas para contrarrestar la acidez del ADN?",
-            "opts": [
-              "Son proteínas ácidas",
-              "Son proteínas básicas",
-              "Son lípidos neutros"
-            ],
-            "correct": 1,
-            "explicacion": "Las histonas son ricas en aminoácidos de carácter básico, lo que les permite contrarrestar y neutralizar el ambiente fuertemente ácido que genera la macromolécula de ADN."
-          }
+          "texto": "\"Histonas\" = \"proteínas básicas\".",
+          "explicacion": "Las histonas son proteínas nucleares caracterizadas por una alta proporción de aminoácidos básicos, lo que les permite neutralizar la acidez natural del ADN."
         },
         {
-          "texto": "\"Histonas\" = carga positiva.",
-          "pregunta": {
-            "q": "¿Qué carga eléctrica ostentan las histonas, permitiendo su fuerte unión magnética al ADN?",
-            "opts": [
-              "Carga neutra",
-              "Carga negativa",
-              "Carga positiva"
-            ],
-            "correct": 2,
-            "explicacion": "Al ser proteínas de carácter básico, adquieren una fuerte carga eléctrica positiva. Por atracción electrostática pura, las histonas (+) se adhieren firmemente como imanes al ADN (-), logrando así su empaquetamiento compacto."
-          }
+          "texto": "\"Histonas\" = \"carga positiva\".",
+          "explicacion": "Gracias a su basicidad, las histonas adquieren una fuerte carga eléctrica positiva que facilita su unión espontánea al ADN negativo mediante atracción electrostática."
         },
         {
           "texto": "\"Nucleosoma\" = octámero + \"ADN\".",
-          "pregunta": {
-            "q": "¿Qué nombre recibe el complejo estructural formado por ADN enrollado alrededor de un octámero de histonas?",
-            "opts": [
-              "Cromosoma",
-              "Nucléolo",
-              "Nucleosoma"
-            ],
-            "correct": 2,
-            "explicacion": "El nucleosoma es el primer nivel de empaquetamiento del ADN. Se ve como una 'cuenta de collar', donde un segmento de la hebra de ADN da aproximadamente dos vueltas sobre un disco compuesto por ocho proteínas histonas (octámero)."
-          }
+          "explicacion": "El nucleosoma es la unidad fundamental de empaquetamiento, formada cuando un segmento de ADN da aproximadamente dos vueltas alrededor de un núcleo de ocho histonas."
         },
         {
-          "texto": "\"Octámero\" ⊃ cuatro pares de histonas.",
-          "pregunta": {
-            "q": "¿De qué subtipos específicos de histonas se compone el núcleo del octámero del nucleosoma?",
-            "opts": [
-              "Dos copias de H1, H2, H3 y H4",
-              "Dos copias de H2A, H2B, H3 y H4",
-              "Una copia de H1 y un ARN"
-            ],
-            "correct": 1,
-            "explicacion": "La estructura central del nucleosoma se denomina octámero porque está compuesto por exactamente 8 proteínas: dos copias de H2A, dos de H2B, dos de H3 y dos de H4, formando el carrete sobre el que se enrolla el ADN."
-          }
+          "texto": "\"Octámero\" ⊃ \"cuatro pares de histonas\".",
+          "explicacion": "El núcleo proteico del nucleosoma es un octámero integrado por dos copias de cada una de las histonas centrales: H2A, H2B, H3 y H4."
         },
         {
-          "texto": "\"ADN linker\" + histona H1.",
-          "pregunta": {
-            "q": "¿Qué proteína estabiliza el ADN que conecta un nucleosoma con otro (ADN linker o espaciador)?",
-            "opts": [
-              "La histona H1",
-              "La helicasa",
-              "El citocromo C"
-            ],
-            "correct": 0,
-            "explicacion": "El segmento de ADN espaciador (linker) que une las 'cuentas' o nucleosomas adyacentes no queda suelto, sino que es abrazado y estabilizado por la histona H1, la cual sella el nucleosoma para evitar que el ADN se desenrolle."
-          }
+          "texto": "\"ADN linker\" + \"histona H1\".",
+          "explicacion": "El ADN espaciador o linker que conecta a los nucleosoma sucesivos se estabiliza mediante la acción de la histona H1, compactando aún más la fibra."
         },
         {
-          "texto": "\"Histona H1\" → estudios de filogenia.",
-          "pregunta": {
-            "q": "¿Para qué tipo de investigaciones científicas es particularmente útil el análisis de la histona H1?",
-            "opts": [
-              "Estudios de fotosíntesis",
-              "Estudios de filogenia",
-              "Estudios de nutrición"
-            ],
-            "correct": 1,
-            "explicacion": "La histona H1 presenta mayor variación evolutiva entre las distintas especies comparada con las histonas centrales. Por ello, las variaciones en su secuencia son muy útiles en biología molecular para realizar estudios de filogenia y trazar parentescos evolutivos."
-          }
+          "texto": "\"Histona H1\" → \"estudios de filogenia\".",
+          "explicacion": "Debido a que la histona H1 presenta mayor variabilidad evolutiva en comparación con las demás histonas, su análisis molecular es útil para estudios filogenéticos."
         }
       ]
     },
@@ -427,108 +166,36 @@
       "titulo": "Tipos de Cromatina",
       "puntos": [
         {
-          "texto": "\"Heterocromatina\" = muy enrollada.",
-          "pregunta": {
-            "q": "¿Cuál es la característica estructural principal que define a la heterocromatina?",
-            "opts": [
-              "Es ADN libre y desenrollado",
-              "Está muy enrollada y compacta",
-              "Es circular y pequeña"
-            ],
-            "correct": 1,
-            "explicacion": "Dentro del núcleo, el ADN no se empaqueta de forma homogénea. Las zonas de la cromatina que se encuentran intensamente compactadas, densas y superenrolladas reciben el nombre de heterocromatina."
-          }
+          "texto": "\"Heterocromatina\" = \"muy enrollada\".",
+          "explicacion": "La heterocromatina corresponde a las regiones de la cromatina que se encuentran altamente compactadas, densas y fuertemente superenrolladas dentro del núcleo."
         },
         {
-          "texto": "\"Heterocromatina\" + carioteca.",
-          "pregunta": {
-            "q": "¿Hacia qué región física del núcleo suele agruparse preferentemente la heterocromatina?",
-            "opts": [
-              "En el centro exacto",
-              "Unida a la carioteca",
-              "Flotando en el citoplasma"
-            ],
-            "correct": 1,
-            "explicacion": "Físicamente, la heterocromatina tiende a marginarse y agruparse en la periferia del núcleo, manteniéndose fuertemente asociada a la lámina nuclear y la membrana interna de la carioteca."
-          }
+          "texto": "\"Heterocromatina\" + \"carioteca\".",
+          "explicacion": "Físicamente, la heterocromatina tiende a ubicarse preferentemente en la periferia nuclear, manteniéndose asociada a la lámina nuclear y la membrana interna."
         },
         {
-          "texto": "\"Heterocromatina\" ✗ transcripción fácil.",
-          "pregunta": {
-            "q": "¿Cómo afecta el nivel de empaquetamiento de la heterocromatina a su función genética?",
-            "opts": [
-              "Facilita la transcripción de sus genes",
-              "Hace muy difícil su transcripción",
-              "Aumenta su velocidad de replicación"
-            ],
-            "correct": 1,
-            "explicacion": "Debido a que está tan densamente enrollada, la maquinaria enzimática (como la ARN polimerasa) no puede ingresar a leer los genes. Por lo tanto, la heterocromatina representa las partes del ADN que son difíciles o imposibles de transcribir."
-          }
+          "texto": "\"Heterocromatina\" ✗ \"transcripción fácil\".",
+          "explicacion": "Debido a su alto grado de compactación, las enzimas de transcripción no pueden acceder a la secuencia, por lo que la heterocromatina permanece genéticamente inactiva."
         },
         {
-          "texto": "\"Heterocromatina constitutiva\" ✗ transcripción.",
-          "pregunta": {
-            "q": "¿Qué variante de heterocromatina permanece siempre compactada y no se transcribe nunca?",
-            "opts": [
-              "Heterocromatina facultativa",
-              "Eucromatina periférica",
-              "Heterocromatina constitutiva"
-            ],
-            "correct": 2,
-            "explicacion": "La heterocromatina constitutiva contiene secuencias de ADN estructurales (como los centrómeros o telómeros) que bajo ninguna circunstancia celular se van a expresar o transcribir, permaneciendo perpetuamente silenciadas y compactas."
-          }
+          "texto": "\"Heterocromatina constitutiva\" ✗ \"transcripción\".",
+          "explicacion": "Esta variante permanece permanentemente compactada en todos los tipos celulares y en cualquier etapa, abarcando regiones estructurales como centrómeros y telómeros."
         },
         {
-          "texto": "\"Heterocromatina facultativa\" → transforma en eucromatina.",
-          "pregunta": {
-            "q": "¿Qué particularidad distingue a la heterocromatina facultativa según la necesidad de la célula?",
-            "opts": [
-              "Se puede transformar en eucromatina",
-              "Se expulsa hacia el citoplasma",
-              "Muta constantemente su secuencia"
-            ],
-            "correct": 0,
-            "explicacion": "La heterocromatina facultativa contiene genes normales que están apagados (compactados) en un determinado tejido celular, pero que dependiendo de la etapa de desarrollo o necesidad metabólica, pueden desenrollarse y transformarse temporalmente en eucromatina activa."
-          }
+          "texto": "\"Heterocromatina facultativa\" → \"transforma en eucromatina\".",
+          "explicacion": "Contiene genes regulados que pueden descondensarse y transformarse en eucromatina activa dependiendo del tipo de tejido o del momento del desarrollo celular."
         },
         {
-          "texto": "\"Eucromatina\" = zona central.",
-          "pregunta": {
-            "q": "¿En qué región del volumen nuclear tiende a concentrarse mayormente la eucromatina?",
-            "opts": [
-              "En la membrana externa",
-              "En la zona central",
-              "Pegada a la carioteca"
-            ],
-            "correct": 1,
-            "explicacion": "A diferencia de la densa heterocromatina marginada en los bordes, la eucromatina, al estar suelta y activa, tiende a esparcirse y ocupar ampliamente la zona central y el volumen general del carioplasma."
-          }
+          "texto": "\"Eucromatina\" = \"zona central\".",
+          "explicacion": "A diferencia de la heterocromatina periférica, la eucromatina se encuentra descondensada y ocupa principalmente la zona central del carioplasma."
         },
         {
-          "texto": "\"Eucromatina\" = menos enrollada.",
-          "pregunta": {
-            "q": "¿Cuál es el estado de compactación física que caracteriza a la eucromatina?",
-            "opts": [
-              "Es la porción más enrollada",
-              "Es un estado de máxima compactación",
-              "Es la zona menos enrollada"
-            ],
-            "correct": 2,
-            "explicacion": "La eucromatina (eu=verdadero) representa el estado relajado de la cromatina. Al estar mucho menos enrollada y más distendida, la hebra de ADN queda físicamente accesible al medio acuoso."
-          }
+          "texto": "\"Eucromatina\" = \"menos enrollada\".",
+          "explicacion": "La eucromatina representa el estado relajado y distendido de la cromatina, lo que permite que las fibras de ADN queden expuestas hacia el medio nuclear."
         },
         {
-          "texto": "\"Eucromatina\" ✓ transcripción fácil.",
-          "pregunta": {
-            "q": "¿Qué ventaja funcional otorga el estado distendido de la eucromatina al metabolismo celular?",
-            "opts": [
-              "Facilita la transcripción de sus genes",
-              "Aumenta la fuerza de las histonas",
-              "Evita el consumo de energía"
-            ],
-            "correct": 0,
-            "explicacion": "Al estar desplegada, las enzimas transcripcionales (ARN polimerasa) tienen total libertad y espacio para unirse al ADN y leer sus secuencias. Por ello, la eucromatina es la porción genéticamente activa donde ocurre la transcripción de manera fácil y continua."
-          }
+          "texto": "\"Eucromatina\" ✓ \"transcripción fácil\".",
+          "explicacion": "Al estar desplegada y accesible, la eucromatina facilita la unión de la ARN polimerasa, constituyendo la fracción del genoma con alta actividad transcripcional."
         }
       ]
     },
@@ -536,69 +203,24 @@
       "titulo": "Replicación del ADN: Características Generales",
       "puntos": [
         {
-          "texto": "\"Replicación\" = formación de \"ADN\".",
-          "pregunta": {
-            "q": "¿Cuál es el resultado fundamental del proceso biológico conocido como replicación?",
-            "opts": [
-              "Formación de una nueva cadena de ARN",
-              "Formación de una nueva cadena de ADN",
-              "Formación de proteínas estructurales"
-            ],
-            "correct": 1,
-            "explicacion": "La replicación es el proceso bioquímico mediante el cual la maquinaria enzimática de la célula copia exactamente la molécula original de ADN para generar nuevas cadenas idénticas, garantizando la herencia del material genético a las células hijas."
-          }
+          "texto": "\"Replicación\" = \"formación de ADN\".",
+          "explicacion": "La replicación es el mecanismo molecular mediante el cual se sintetizan copias idénticas de la molécula de ADN, asegurando la transmisión fiel de la información genética."
         },
         {
-          "texto": "\"Replicación\" ∈ interfase celular.",
-          "pregunta": {
-            "q": "¿En qué fase específica del ciclo de vida de la célula ocurre la replicación del ADN?",
-            "opts": [
-              "En la profase mitótica",
-              "En la interfase",
-              "En la citocinesis"
-            ],
-            "correct": 1,
-            "explicacion": "La replicación del material genético no ocurre durante la división celular (mitosis o meiosis), sino en la fase preparatoria y de crecimiento previo conocida como interfase (específicamente en su fase S o de síntesis), donde la cromatina aún está relajada."
-          }
+          "texto": "\"Replicación\" ∈ \"interfase celular\".",
+          "explicacion": "Este proceso de duplicación genética ocurre de manera estricta durante la fase S (síntesis) de la interfase, previa a la división celular por mitosis o meiosis."
         },
         {
-          "texto": "\"Replicación\" = proceso semiconservativo.",
-          "pregunta": {
-            "q": "¿Por qué se describe a la replicación del ADN celular como un proceso semiconservativo?",
-            "opts": [
-              "Conserva la mitad de las histonas originales",
-              "Las nuevas hélices retienen una cadena vieja y una nueva",
-              "Solo copia la mitad de los genes activos"
-            ],
-            "correct": 1,
-            "explicacion": "Se denomina modelo semiconservativo porque al separarse las hebras originales, cada una sirve como molde. Al final, las dos nuevas moléculas de ADN conservan exactamente una cadena 'vieja' (de la madre) ensamblada con una cadena totalmente 'nueva' (recién sintetizada)."
-          }
+          "texto": "\"Replicación\" = \"proceso semiconservativo\".",
+          "explicacion": "Es semiconservativo porque cada molécula de ADN hija conserva una de las hebras originales de la molécula madre y una hebra de síntesis completamente nueva."
         },
         {
-          "texto": "\"Replicación\" = proceso semidiscontinuo.",
-          "pregunta": {
-            "q": "¿Qué característica de la replicación refleja el hecho de que una cadena se copia a trozos?",
-            "opts": [
-              "Proceso mutagénico",
-              "Proceso semidiscontinuo",
-              "Proceso semiconservativo"
-            ],
-            "correct": 1,
-            "explicacion": "Debido a la estricta direccionalidad de las enzimas, mientras una hebra nueva se construye de manera rápida y continua, la otra cadena (la hebra rezagada) debe construirse a saltos, por segmentos cortos. A esta dinámica mixta se le llama semidiscontinua."
-          }
+          "texto": "\"Replicación\" = \"proceso semidiscontinuo\".",
+          "explicacion": "Se denomina semidiscontinuo porque mientras una de las hebras se sintetiza de forma continua, la otra debe construirse por fragmentos cortos debido a la direccionalidad enzimática."
         },
         {
-          "texto": "\"Replicación\" = proceso bidireccional.",
-          "pregunta": {
-            "q": "¿Cómo avanza físicamente la maquinaria enzimática copiadora una vez que se abre el ADN?",
-            "opts": [
-              "Es unidireccional desde un extremo",
-              "Es aleatorio en múltiples puntos",
-              "Es un proceso bidireccional"
-            ],
-            "correct": 2,
-            "explicacion": "Una vez que la hélice original se abre formando una 'burbuja de replicación', las enzimas lectoras y copiadoras avanzan y copian el ADN simultáneamente hacia ambos lados u opuestos geográficos del anillo. Por eso la replicación es bidireccional."
-          }
+          "texto": "\"Replicación\" = \"proceso bidireccional\".",
+          "explicacion": "A partir de los puntos de origen, la maquinaria enzimática avanza replicando el material genético simultáneamente hacia ambos extremos opuestos de la burbuja."
         }
       ]
     },
@@ -606,95 +228,32 @@
       "titulo": "Replicación del ADN: Etapas y Enzimas",
       "puntos": [
         {
-          "texto": "\"Helicasa\" → desenrolla \"ADN\".",
-          "pregunta": {
-            "q": "¿Cuál es la enzima número 1 encargada de iniciar la manipulación mecánica de la doble hélice?",
-            "opts": [
-              "Topoisomerasa",
-              "ARN primasa",
-              "Helicasa"
-            ],
-            "correct": 2,
-            "explicacion": "La primera enzima protagonista es la helicasa. Su función mecánica es desenrollar la apretada doble hélice original para poder acceder a las bases nitrogenadas ocultas en el interior de la estructura."
-          }
+          "texto": "\"Helicasa\" → \"desenrolla ADN\".",
+          "explicacion": "La helicasa es la enzima encargada de separar las dos cadenas de la doble hélice para permitir que la maquinaria copiadora acceda a las bases nitrogenadas."
         },
         {
-          "texto": "\"Helicasa\" → corta puentes de hidrógeno.",
-          "pregunta": {
-            "q": "¿Qué enlaces químicos específicos destruye la helicasa para separar definitivamente las hebras?",
-            "opts": [
-              "Enlaces fosfodiéster",
-              "Enlaces peptídicos",
-              "Puentes de hidrógeno"
-            ],
-            "correct": 2,
-            "explicacion": "Para abrir el ADN como si fuera un cierre o cremallera, la helicasa rompe violentamente los frágiles puentes de hidrógeno (p.h.) que mantienen unidos los pares de bases nitrogenadas enfrentados entre las dos hebras."
-          }
+          "texto": "\"Helicasa\" → \"corta puentes de hidrógeno\".",
+          "explicacion": "Para lograr la apertura de la doble hélice, la helicasa rompe de forma específica los puentes de hidrógeno que unen los pares de bases nitrogenadas complementarias."
         },
         {
-          "texto": "\"Topoisomerasa inicial\" ↓ fuerza de torsión.",
-          "pregunta": {
-            "q": "¿Qué enzima interviene preventivamente para evitar que el ADN se rompa por exceso de enrollamiento?",
-            "opts": [
-              "Helicasa",
-              "Topoisomerasa",
-              "Ligasa"
-            ],
-            "correct": 1,
-            "explicacion": "Al abrir agresivamente la cadena, la helicasa genera una gran tensión física por delante (fuerza de torsión o superenrollamiento). La enzima topoisomerasa actúa haciendo cortes estratégicos para reducir esa tensión y evitar que el ADN colapse o se rompa."
-          }
+          "texto": "\"Topoisomerasa inicial\" ↓ \"fuerza de torsión\".",
+          "explicacion": "La apertura de la doble hélice genera tensión mecánica y superenrollamiento; la topoisomerasa realiza cortes temporales para aliviar dicha tensión acumulada."
         },
         {
-          "texto": "\"ARN primasa\" → coloca \"cebadores\".",
-          "pregunta": {
-            "q": "¿Cuál es la función de la enzima ARN primasa en el arranque de la replicación?",
-            "opts": [
-              "Colocar las histonas faltantes",
-              "Colocar secuencias iniciadoras",
-              "Degradar el ARN viejo"
-            ],
-            "correct": 1,
-            "explicacion": "La enzima copiadora principal (ADN polimerasa) es ciega y no puede empezar a fabricar ADN desde cero. Necesita un ancla inicial. La ARN primasa fabrica y coloca pequeñas secuencias iniciadoras de ARN llamadas primers o cebadores, dando el punto de partida."
-          }
+          "texto": "\"ARN primasa\" → \"coloca cebadores\".",
+          "explicacion": "La ARN primasa sintetiza y coloca pequeños fragmentos iniciadores de ARN, conocidos como cebadores, que sirven de anclaje para que actúe la ADN polimerasa."
         },
         {
-          "texto": "\"ADN polimerasa\" → crea secuencias \"ADN\".",
-          "pregunta": {
-            "q": "¿Cuál es la enzima principal encargada de construir realmente las hebras nuevas de ADN?",
-            "opts": [
-              "ADN polimerasa",
-              "ARN primasa",
-              "Helicasa"
-            ],
-            "correct": 0,
-            "explicacion": "La ADN polimerasa es la verdadera constructora del proceso. Lee la cadena vieja molde y comienza a colocar, emparejar y unir químicamente los nuevos nucleótidos complementarios, creando secuencias formales y largas de ADN nuevo."
-          }
+          "texto": "\"ADN polimerasa\" → \"crea secuencias ADN\".",
+          "explicacion": "Es la enzima principal responsable de elongar la nueva cadena, leyendo la hebra molde y uniendo covalentemente los nucleótidos complementarios correspondientes."
         },
         {
-          "texto": "\"Ligasa\" → une fragmentos de Okazaki.",
-          "pregunta": {
-            "q": "¿Qué acción reparadora ejecuta la enzima ligasa en la cadena de ADN de síntesis rezagada?",
-            "opts": [
-              "Separa los fragmentos de ARN",
-              "Une los fragmentos de Okazaki",
-              "Rompe los puentes de hidrógeno"
-            ],
-            "correct": 1,
-            "explicacion": "En la cadena que se copia de forma discontinua o rezagada, el ADN queda fabricado en pedazos cortos separados llamados fragmentos de Okazaki. La enzima ADN Ligasa actúa como pegamento molecular, uniendo todos estos elementos sueltos para formar una cadena nueva sólida."
-          }
+          "texto": "\"Ligasa\" → \"une fragmentos de Okazaki\".",
+          "explicacion": "En la hebra rezagada, la enzima ligasa actúa como un pegamento molecular para unir los fragmentos de Okazaki y consolidar una cadena de ADN continua."
         },
         {
-          "texto": "\"Topoisomerasa final\" → enrolla cadenas formadas.",
-          "pregunta": {
-            "q": "¿Qué enzima participa en la fase final de maduración enrollando nuevamente las hélices recién formadas?",
-            "opts": [
-              "Ligasa final",
-              "Topoisomerasa",
-              "ARN primasa final"
-            ],
-            "correct": 1,
-            "explicacion": "Al finalizar el ensamblaje de bases, una acción topoisomerasa interviene para girar y superenrollar adecuadamente a las dos nuevas moléculas hijas de ADN bicatenario, devolviéndoles su morfología helicoidal estable y compacta en el medio nuclear."
-          }
+          "texto": "\"Topoisomerasa final\" → \"enrolla cadenas formadas\".",
+          "explicacion": "En la etapa final, la acción de la topoisomerasa permite que las nuevas moléculas bicatenarias recuperen su estructura helicoidal estable y compacta."
         }
       ]
     }

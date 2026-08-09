@@ -2,15 +2,15 @@
   "curso": "Economía",
   "tema": "Producción, Productividad y Sectores Productivos",
   "glosario": {
-    "Producción": "Creación de bienes y servicios con valor.",
-    "Factores": "Recursos utilizados para generar nuevos bienes.",
-    "PMe": "Productividad media o rendimiento promedio.",
-    "PMg": "Productividad marginal o rendimiento adicional.",
-    "Turgot": "Economista autor de rendimientos decrecientes.",
-    "Óptimo": "Punto de mayor eficiencia promedio.",
-    "Valor agregado": "Utilidad extra que adquiere un bien transformado.",
+    "Producción": "Creación de bienes con valor agregado.",
+    "Factores": "Insumos combinados para generar productos.",
+    "PMe": "Rendimiento promedio por factor de producción.",
+    "PMg": "Rendimiento adicional por factor incrementado.",
+    "Turgot": "Economista formulador de rendimientos decrecientes.",
+    "Óptimo": "Punto de máxima eficiencia productiva promedio.",
+    "Valor agregado": "Utilidad incremental adquirida mediante transformación.",
     "=": "Define",
-    "→": "Genera",
+    "→": "Produce",
     "∈": "Pertenece",
     "⇒": "Causa",
     "↓": "Disminuye",
@@ -21,43 +21,16 @@
       "titulo": "Definición y Función de la Producción",
       "puntos": [
         {
-          "texto": "\"Producción\" = fase de combinación y transformación de factores.",
-          "pregunta": {
-            "q": "¿Qué acción principal define a la fase de producción?",
-            "opts": [
-              "El consumo directo de las materias primas.",
-              "La combinación y transformación de factores.",
-              "El reparto equitativo de los bienes generados."
-            ],
-            "correct": 1,
-            "explicacion": "La producción es la primera fase del proceso económico real, la cual consiste fundamentalmente en reunir, combinar y transformar los factores productivos (naturaleza, trabajo, capital) para crear nuevos productos."
-          }
+          "texto": "\"Producción\" = fase de combinación de factores.",
+          "explicacion": "La producción es la etapa inicial del proceso económico donde se reúnen y transforman los factores productivos. Su objetivo central es adaptar la materia prima para satisfacer las necesidades humanas."
         },
         {
-          "texto": "Proceso de \"producción\" → bienes y servicios con valor agregado.",
-          "pregunta": {
-            "q": "¿Qué resultado final se obtiene del proceso de producción?",
-            "opts": [
-              "Únicamente el desgaste de la naturaleza.",
-              "La destrucción del valor de las materias.",
-              "Bienes y servicios con valor agregado."
-            ],
-            "correct": 2,
-            "explicacion": "Al transformar los factores productivos, el proceso genera bienes y servicios que adquieren un 'valor agregado', es decir, una utilidad superior a la que tenían las materias primas originalmente."
-          }
+          "texto": "Proceso de \"producción\" → bienes con valor agregado.",
+          "explicacion": "Al someter los insumos a procesos de transformación, la actividad productiva incrementa la utilidad de los bienes. Este incremento de utilidad respecto a los insumos originales constituye el valor agregado."
         },
         {
-          "texto": "\"Función de producción\" = relaciona cantidad producida con factores determinantes.",
-          "pregunta": {
-            "q": "¿Qué vincula matemáticamente la función de producción?",
-            "opts": [
-              "Relaciona la cantidad producida con los factores determinantes.",
-              "Compara el precio de venta con los impuestos.",
-              "Mide el nivel de ahorro de los trabajadores."
-            ],
-            "correct": 0,
-            "explicacion": "La función de producción (Q = f(N, T, K...)) es una relación técnica que expresa cómo la cantidad producida (Q) depende de las cantidades de factores productivos utilizados."
-          }
+          "texto": "\"Función de producción\" = relación entre cantidad e insumos.",
+          "explicacion": "La función de producción expresa la relación técnica existente entre el volumen total de bienes producidos y la cantidad de factores aplicados. Permite analizar la eficiencia matemática del proceso productivo."
         }
       ]
     },
@@ -65,69 +38,24 @@
       "titulo": "Factores Productivos Clásicos",
       "puntos": [
         {
-          "texto": "Factor \"Naturaleza\" ∈ factores productivos originarios clásicos.",
-          "pregunta": {
-            "q": "¿A qué grupo pertenece el factor naturaleza según el enfoque clásico?",
-            "opts": [
-              "A los factores derivados modernos.",
-              "A los factores productivos originarios clásicos.",
-              "A los factores exclusivamente estatales."
-            ],
-            "correct": 1,
-            "explicacion": "En la teoría clásica, la naturaleza y el trabajo son factores originarios, ya que preexisten a la producción y no requieren de un proceso económico previo para existir."
-          }
+          "texto": "Factor \"Naturaleza\" ∈ factores originarios clásicos.",
+          "explicacion": "En la teoría económica clásica, la naturaleza se considera un factor originario porque preexiste al proceso económico humano. Abarca todos los recursos naturales disponibles en la superficie o el subsuelo."
         },
         {
-          "texto": "Factor \"Naturaleza\" = cumple rol pasivo y condicionante.",
-          "pregunta": {
-            "q": "¿Cuál es el rol que desempeña el factor naturaleza en la producción?",
-            "opts": [
-              "Cumple un rol pasivo y condicionante.",
-              "Actúa como organizador de la empresa.",
-              "Tiene una función activa y determinante."
-            ],
-            "correct": 0,
-            "explicacion": "La naturaleza es pasiva porque requiere ser transformada por el hombre, y es condicionante porque la cantidad y calidad de recursos naturales limitan las posibilidades productivas de una región."
-          }
+          "texto": "Factor \"Naturaleza\" = cumple rol pasivo condicionante.",
+          "explicacion": "El factor naturaleza desempeña un rol pasivo porque requiere del trabajo humano para ser transformado. Asimismo, es condicionante pues sus límites físicos determinan la oferta productiva territorial."
         },
         {
-          "texto": "Factor \"Trabajo\" ∈ factores productivos originarios clásicos.",
-          "pregunta": {
-            "q": "¿Cómo se clasifica el factor trabajo en la teoría económica clásica?",
-            "opts": [
-              "Como un factor derivado del capital.",
-              "Como un factor regulador externo.",
-              "Como un factor productivo originario."
-            ],
-            "correct": 2,
-            "explicacion": "Al igual que la naturaleza, el trabajo es un factor originario clásico porque representa el esfuerzo humano innato, indispensable desde los inicios de la historia económica para transformar el entorno."
-          }
+          "texto": "Factor \"Trabajo\" ∈ factores originarios clásicos.",
+          "explicacion": "El trabajo es un factor originario al ser inherente a la actividad física y mental del ser humano. Constituye el esfuerzo consciente indispensable para modificar el entorno desde los orígenes sociales."
         },
         {
-          "texto": "Factor \"Trabajo\" = cumple rol activo y determinante.",
-          "pregunta": {
-            "q": "¿Qué papel asume el factor trabajo dentro del proceso productivo?",
-            "opts": [
-              "Cumple un rol activo y determinante.",
-              "Es un elemento puramente pasivo.",
-              "Asume la función de regulador estatal."
-            ],
-            "correct": 0,
-            "explicacion": "El trabajo es el factor dinámico por excelencia. Es activo porque ejecuta la transformación de la naturaleza y determinante porque sin la intervención humana no puede haber producción."
-          }
+          "texto": "Factor \"Trabajo\" = cumple rol activo determinante.",
+          "explicacion": "El trabajo ejerce el rol activo al poner en marcha las herramientas sobre la naturaleza. Es un elemento determinante debido a que sin intervención humana directa no es posible ejecutar la transformación de recursos."
         },
         {
-          "texto": "Factor \"Capital\" ∈ factor productivo derivado clásico.",
-          "pregunta": {
-            "q": "¿Qué tipo de factor es el capital según la escuela clásica?",
-            "opts": [
-              "Un factor originario de la naturaleza.",
-              "Un factor productivo derivado clásico.",
-              "Un factor organizador moderno."
-            ],
-            "correct": 1,
-            "explicacion": "El capital (herramientas, máquinas, dinero) es un factor derivado porque es el resultado de la interacción previa entre la naturaleza y el trabajo (T + N = K). No preexiste por sí solo."
-          }
+          "texto": "Factor \"Capital\" ∈ factores derivados clásicos.",
+          "explicacion": "El capital es calificado como un factor derivado porque surge de la combinación previa del trabajo sobre los recursos naturales. Representa bienes elaborados cuya finalidad es producir otros bienes."
         }
       ]
     },
@@ -135,56 +63,20 @@
       "titulo": "Factores Productivos Modernos",
       "puntos": [
         {
-          "texto": "Factor \"Empresa\" ∈ factores productivos modernos neoclásicos.",
-          "pregunta": {
-            "q": "¿A qué corriente económica pertenece la inclusión de la empresa como factor?",
-            "opts": [
-              "A la escuela clásica originaria.",
-              "A los factores productivos modernos neoclásicos.",
-              "Al enfoque fisiócrata agrícola."
-            ],
-            "correct": 1,
-            "explicacion": "Los economistas neoclásicos introdujeron a la empresa como un cuarto factor indispensable, argumentando que se requiere una entidad que coordine a los demás factores en el mercado."
-          }
+          "texto": "Factor \"Empresa\" ∈ factores productivos neoclásicos.",
+          "explicacion": "La corriente neoclásica incorporó a la empresa como un factor productivo moderno. Su introducción responde a la necesidad teórica de un ente organizado formalmente dentro de la economía de mercado."
         },
         {
-          "texto": "Factor \"Empresa\" = asume rol organizador del proceso.",
-          "pregunta": {
-            "q": "¿Qué rol fundamental ejerce la empresa en la producción?",
-            "opts": [
-              "Asume el rol organizador del proceso.",
-              "Regula las leyes laborales y tributos.",
-              "Aporta esfuerzo físico pasivo."
-            ],
-            "correct": 0,
-            "explicacion": "La empresa reúne, gestiona y organiza a la naturaleza, el trabajo y el capital, asumiendo los riesgos económicos con el fin de maximizar la eficiencia y generar utilidades."
-          }
+          "texto": "Factor \"Empresa\" = asume rol organizador.",
+          "explicacion": "La empresa ejerce el rol de coordinación dentro del circuito económico al articular la naturaleza, el trabajo y el capital. Asume el riesgo operativo buscando optimizar beneficios."
         },
         {
-          "texto": "Factor \"Estado\" ∈ factores productivos modernos keynesianos.",
-          "pregunta": {
-            "q": "¿Qué escuela económica destaca al Estado como factor productivo?",
-            "opts": [
-              "Los enfoques clásicos antiguos.",
-              "La teoría monetarista estricta.",
-              "Los factores productivos modernos keynesianos."
-            ],
-            "correct": 2,
-            "explicacion": "El keynesianismo reconoció al Estado como un factor productivo moderno esencial, argumentando que su intervención es necesaria para garantizar la estabilidad económica y proveer infraestructura."
-          }
+          "texto": "Factor \"Estado\" ∈ factores productivos keynesianos.",
+          "explicacion": "La escuela keynesiana reconoció al Estado como un factor clave para regular el ciclo económico. Su inclusión responde a la necesidad de estabilizar las crisis mediante el gasto e infraestructura pública."
         },
         {
-          "texto": "Factor \"Estado\" = asume rol regulador de la economía.",
-          "pregunta": {
-            "q": "¿Cuál es la función del Estado como factor de producción?",
-            "opts": [
-              "Proveer materias primas vírgenes.",
-              "Asumir el rol regulador de la economía.",
-              "Organizar directamente todas las empresas."
-            ],
-            "correct": 1,
-            "explicacion": "El Estado participa estableciendo el marco legal, emitiendo normativas, cobrando tributos y garantizando el orden y la infraestructura (carreteras, puertos) que permite a las empresas producir."
-          }
+          "texto": "Factor \"Estado\" = asume rol regulador.",
+          "explicacion": "El Estado cumple un papel tutelar al dictar leyes tributarias, laborales y comerciales. A través de este marco institucional, garantiza el funcionamiento adecuado de las actividades productivas."
         }
       ]
     },
@@ -192,43 +84,16 @@
       "titulo": "Productividad Media y Marginal",
       "puntos": [
         {
-          "texto": "\"Productividad\" = mide el rendimiento de los factores productivos.",
-          "pregunta": {
-            "q": "¿Qué evalúa específicamente la productividad?",
-            "opts": [
-              "La cantidad de impuestos pagados al Estado.",
-              "El precio final de venta al consumidor.",
-              "Mide el rendimiento de los factores productivos."
-            ],
-            "correct": 2,
-            "explicacion": "La productividad es un indicador de eficiencia. Evalúa cuánto rendimiento o cantidad de bienes se logra generar utilizando una cantidad específica de factores productivos."
-          }
+          "texto": "\"Productividad\" = mide rendimiento de factores.",
+          "explicacion": "La productividad es un indicador de eficiencia técnica que evalúa la producción obtenida por cada unidad de factor empleada. Refleja qué tan bien se aprovechan los recursos en una fábrica o industria."
         },
         {
-          "texto": "\"Productividad media\" = rendimiento promedio por cada factor utilizado.",
-          "pregunta": {
-            "q": "¿Qué representa la productividad media (PMe)?",
-            "opts": [
-              "El rendimiento promedio por cada factor utilizado.",
-              "La ganancia total de la empresa en un año.",
-              "El último trabajador contratado en la fábrica."
-            ],
-            "correct": 0,
-            "explicacion": "La PMe se halla dividiendo la producción total (Q) entre la cantidad del factor utilizado (ej. número de trabajadores). Indica, en promedio, cuánto aportó cada unidad del factor."
-          }
+          "texto": "\"Productividad media\" = rendimiento promedio por factor.",
+          "explicacion": "La productividad media (PMe) se obtiene al dividir el total producido entre la cantidad del factor variable utilizado. Muestra la aportación promedio global que genera individualmente cada insumo."
         },
         {
-          "texto": "\"Productividad marginal\" = rendimiento generado por el último factor adicionado.",
-          "pregunta": {
-            "q": "¿Cómo se define la productividad marginal (PMg)?",
-            "opts": [
-              "Como el costo total de los insumos fijos.",
-              "Como el rendimiento generado por el último factor adicionado.",
-              "Como el promedio exacto de todos los trabajadores."
-            ],
-            "correct": 1,
-            "explicacion": "La PMg mide cuánto aumenta la producción total cuando se agrega una unidad extra del factor variable (ej. contratar un trabajador más). Se calcula con la variación de Q entre la variación del factor."
-          }
+          "texto": "\"Productividad marginal\" = rendimiento del último factor.",
+          "explicacion": "La productividad marginal (PMg) expresa la variación en la producción total provocada al incorporar una unidad adicional de factor variable. Refleja el aporte incremental concreto del último trabajador o insumo."
         }
       ]
     },
@@ -236,82 +101,28 @@
       "titulo": "Ley de Rendimientos Decrecientes",
       "puntos": [
         {
-          "texto": "Ley de \"Turgot\" = plantea los rendimientos marginales decrecientes.",
-          "pregunta": {
-            "q": "¿Qué principio económico formuló Turgot?",
-            "opts": [
-              "Plantea los rendimientos marginales decrecientes.",
-              "La teoría de las ventajas comparativas.",
-              "El concepto de la mano invisible."
-            ],
-            "correct": 0,
-            "explicacion": "Anne Robert Jacques Turgot fue uno de los primeros en observar y formular que al aumentar unidades de un factor variable a un factor fijo (como la tierra), los incrementos de producción terminan siendo cada vez menores."
-          }
+          "texto": "Ley de \"Turgot\" = rige rendimientos decrecientes.",
+          "explicacion": "Formulada originalmente por el economista Anne Robert Jacques Turgot, esta ley sostiene que añadir insumos variables a un espacio o factor fijo produce incrementos progresivamente menores."
         },
         {
           "texto": "Etapa I de producción ⇒ \"PMg\" > \"PMe\".",
-          "pregunta": {
-            "q": "¿Qué relación existe entre las productividades en la Etapa I?",
-            "opts": [
-              "La productividad media supera a la marginal.",
-              "Ambas productividades son exactamente cero.",
-              "La productividad marginal supera a la media."
-            ],
-            "correct": 2,
-            "explicacion": "En la primera etapa de producción, la empresa está subutilizando su factor fijo. Al añadir factor variable, la producción crece aceleradamente, provocando que la PMg esté por encima de la PMe."
-          }
+          "explicacion": "En la primera etapa de producción, el factor fijo se encuentra subutilizado, por lo que cada insumo variable adicional genera un incremento de producción acelerado, haciendo que la PMg supere a la PMe."
         },
         {
-          "texto": "\"Óptimo técnico\" = punto donde se maximiza la \"PMe\".",
-          "pregunta": {
-            "q": "¿Qué hito marca el llamado óptimo técnico?",
-            "opts": [
-              "El nivel donde la producción total es negativa.",
-              "El punto donde se maximiza la productividad media.",
-              "El despido masivo de trabajadores variables."
-            ],
-            "correct": 1,
-            "explicacion": "El óptimo técnico se alcanza al final de la Etapa I y principio de la Etapa II. Es el momento de mayor eficiencia promedio, donde la PMe alcanza su punto más alto e iguala a la PMg."
-          }
+          "texto": "\"Óptimo técnico\" = punto de máxima \"PMe\".",
+          "explicacion": "El óptimo técnico marca el punto donde la productividad media alcanza su valor más alto e iguala a la productividad marginal. Representa el nivel ideal de eficiencia promedio para el uso del factor variable."
         },
         {
-          "texto": "\"Máximo técnico\" = nivel donde la \"PMg\" es cero.",
-          "pregunta": {
-            "q": "¿Qué ocurre exactamente en el punto del máximo técnico?",
-            "opts": [
-              "La productividad marginal llega a cero.",
-              "La productividad media empieza a crecer infinitamente.",
-              "La empresa decide cerrar todas sus fábricas."
-            ],
-            "correct": 0,
-            "explicacion": "El máximo técnico marca el límite de la Etapa II. Es el punto donde la producción total (Q) ha llegado a su tope máximo posible; por ende, un trabajador adicional aporta cero a la producción (PMg = 0)."
-          }
+          "texto": "\"Máximo técnico\" = punto de \"PMg\" igual cero.",
+          "explicacion": "El máximo técnico se alcanza cuando la producción total llega a su límite superior posible. En este punto la productividad marginal cae a cero, indicando que un insumo extra ya no añade volumen extra."
         },
         {
-          "texto": "Etapa III de producción ⇒ \"PMg\" adquiere valores negativos.",
-          "pregunta": {
-            "q": "¿Qué caracteriza a la productividad marginal en la Etapa III?",
-            "opts": [
-              "Se iguala siempre a la productividad media.",
-              "Crece de manera exponencial sin límites.",
-              "Adquiere valores negativos."
-            ],
-            "correct": 2,
-            "explicacion": "En la tercera etapa, hay un exceso de factor variable (ej. demasiados trabajadores estorbándose en un espacio fijo), lo que ocasiona que cada nuevo factor no solo no aporte, sino que reste, haciendo la PMg negativa."
-          }
+          "texto": "Etapa III de producción ⇒ \"PMg\" negativa.",
+          "explicacion": "En la tercera etapa existe un exceso desproporcionado del factor variable respecto al factor fijo. La saturación genera estorbos operativos, provocando que la productividad marginal adopte valores negativos."
         },
         {
           "texto": "\"PMg\" negativa ⇒ producción total ↓.",
-          "pregunta": {
-            "q": "¿Qué consecuencia genera tener una productividad marginal negativa?",
-            "opts": [
-              "La producción total se mantiene constante.",
-              "La producción total disminuye.",
-              "Los precios de mercado caen drásticamente."
-            ],
-            "correct": 1,
-            "explicacion": "Como el factor adicional está estorbando el proceso productivo (PMg < 0), la cantidad total de bienes producidos (Q) empieza a caer. Ninguna empresa racional produce en esta etapa."
-          }
+          "explicacion": "Cuando la productividad marginal se vuelve negativa, el volumen total de producción empieza a declinar. Esto invalida económicamente la incorporación de nuevos insumos en esta fase de saturación."
         }
       ]
     },
@@ -319,43 +130,16 @@
       "titulo": "Sectores Productivos",
       "puntos": [
         {
-          "texto": "Sector \"primario\" = extrae recursos directamente de la naturaleza.",
-          "pregunta": {
-            "q": "¿En qué consiste la actividad del sector primario?",
-            "opts": [
-              "Extrae recursos directamente de la naturaleza.",
-              "Transforma minerales en herramientas complejas.",
-              "Comercializa bienes manufacturados importados."
-            ],
-            "correct": 0,
-            "explicacion": "El sector primario (o extractivo) engloba las actividades dedicadas a obtener materias primas sin mayor transformación, como la agricultura, minería, pesca y tala."
-          }
+          "texto": "Sector \"primario\" = extrae recursos de naturaleza.",
+          "explicacion": "El sector primario comprende aquellas actividades económicas abocadas a la obtención directa de materias primas naturales. Incluye ramas como la minería, la agricultura, la pesca y la tala forestal."
         },
         {
-          "texto": "Sector \"secundario\" = transforma materias primas en productos manufacturados.",
-          "pregunta": {
-            "q": "¿Cuál es la función del sector secundario?",
-            "opts": [
-              "Brindar atención médica en hospitales públicos.",
-              "Transformar materias primas en productos manufacturados.",
-              "Extraer peces directamente del océano."
-            ],
-            "correct": 1,
-            "explicacion": "El sector secundario (o transformativo) abarca a la industria y la construcción. Utiliza las materias primas del sector primario y les aplica procesos físicos o químicos para crear bienes de consumo o de capital."
-          }
+          "texto": "Sector \"secundario\" = transforma materias primas.",
+          "explicacion": "El sector secundario engloba la actividad industrial y manufacturera. Se encarga de procesar los insumos generados por el sector primario para fabricar productos semielaborados o bienes finales."
         },
         {
-          "texto": "Sector \"terciario\" = dedicado a la prestación de servicios.",
-          "pregunta": {
-            "q": "¿Qué tipo de bienes o actividades ofrece el sector terciario?",
-            "opts": [
-              "Está dedicado a la prestación de servicios.",
-              "Produce únicamente maquinaria industrial pesada.",
-              "Cultiva alimentos para exportación masiva."
-            ],
-            "correct": 0,
-            "explicacion": "El sector terciario (o de servicios) no produce bienes tangibles, sino que provee servicios que facilitan la vida de las personas y empresas, abarcando el comercio, transporte, educación, salud y turismo."
-          }
+          "texto": "Sector \"terciario\" = presta servicios intangibles.",
+          "explicacion": "El sector terciario abarca las actividades no destinadas a crear bienes físicos, sino a proveer servicios indispensables para la sociedad. Incluye áreas como el comercio, transporte, salud y educación."
         }
       ]
     }
