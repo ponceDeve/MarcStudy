@@ -3,14 +3,14 @@
   "tema": "Escala Cartográfica",
   "glosario": {
     "Escala": "Proporción entre el mapa y la realidad.",
-    "Plano": "Representación detallada de un área muy pequeña.",
-    "Carta": "Documento cartográfico de áreas de tamaño mediano.",
-    "Mapa": "Representación geográfica de superficies muy extensas.",
+    "Plano": "Representación detallada de área pequeña.",
+    "Carta": "Documento cartográfico de áreas medianas.",
+    "Mapa": "Representación de superficies muy extensas.",
     "IGN": "Instituto Geográfico Nacional del Perú.",
-    "Talón": "Parte izquierda de una escala gráfica.",
-    "Cuerpo": "Parte derecha principal de la escala gráfica.",
+    "Talón": "Parte izquierda de escala gráfica.",
+    "Cuerpo": "Parte derecha de escala gráfica.",
     "=": "Define",
-    "→": "Implica",
+    "→": "Produce",
     "⊃": "Contiene",
     "+": "Combina"
   },
@@ -20,16 +20,7 @@
       "puntos": [
         {
           "texto": "\"Escala cartográfica\" = proporción entre distancia mapa + distancia real",
-          "pregunta": {
-            "q": "¿Qué elementos relaciona directamente la proporción de la escala cartográfica?",
-            "opts": [
-              "La distancia en el mapa y la distancia real",
-              "El tamaño del papel y las coordenadas geográficas",
-              "La altitud del terreno y la latitud"
-            ],
-            "correct": 0,
-            "explicacion": "La escala es fundamentalmente una relación matemática (proporción) que nos indica cuántas veces se ha reducido la realidad para poder ser dibujada en un documento cartográfico (mapa, carta o plano)."
-          }
+          "explicacion": "La escala cartográfica expresa una relación matemática de proporción entre las dimensiones representadas en un documento gráfico y la distancia real del terreno. Esta métrica determina cuántas veces se ha reducido la realidad para plasmarla en el mapa."
         }
       ]
     },
@@ -38,120 +29,39 @@
       "puntos": [
         {
           "texto": "\"Escala grande\" → áreas pequeñas",
-          "pregunta": {
-            "q": "¿Qué tipo de áreas geográficas se representan utilizando una escala grande?",
-            "opts": [
-              "Áreas pequeñas",
-              "Áreas de tamaño mundial",
-              "Áreas medianas"
-            ],
-            "correct": 0,
-            "explicacion": "Existe una relación inversamente proporcional entre el denominador de la escala y el nivel de detalle. Una escala grande (con un denominador pequeño, ej. 1:1000) permite mostrar mucho detalle, por lo que es ideal para áreas pequeñas como un distrito o vivienda."
-          }
+          "explicacion": "Las escalas grandes presentan un denominador pequeño, por lo que reducen muy poco la realidad. Esto permite abarcar áreas geográficas de reducida extensión territorial, pero con un nivel de detalle visual muy elevado."
         },
         {
           "texto": "\"Escala grande\" = usada en \"planos\"",
-          "pregunta": {
-            "q": "¿En qué tipo de documento cartográfico se utiliza la escala grande?",
-            "opts": [
-              "En los mapas oficiales",
-              "En los planos",
-              "En las cartas topográficas"
-            ],
-            "correct": 1,
-            "explicacion": "Los planos (como los de una casa o el tendido eléctrico de un barrio) requieren el máximo nivel de detalle posible, por ello siempre emplean escalas grandes."
-          }
+          "explicacion": "Los planos son representaciones cartográficas que requieren mostrar con máxima exactitud elementos como viviendas, calles o distritos. Por ello, utilizan siempre escalas grandes para conservar una alta precisión de los detalles."
         },
         {
-          "texto": "\"Escala grande\" = rangos 1:1000 a 1:20000",
-          "pregunta": {
-            "q": "¿Cuál es el rango numérico que caracteriza a una escala grande?",
-            "opts": [
-              "De 1:1000 a 1:20000",
-              "De 1:25000 a 1:200000",
-              "Mayor a 1:1000000"
-            ],
-            "correct": 0,
-            "explicacion": "En cartografía general, se considera escala grande a aquellas fracciones cuyo denominador es menor o igual a 20,000. Mientras menor sea este número, más grande es la escala."
-          }
+          "texto": "\"Escala grande\" = rango 1:1000 a 1:20000",
+          "explicacion": "El rango numérico de una escala grande abarca denominadores desde 1:1000 hasta 1:20000. Cuanto menor sea el número del denominador en la fracción, mayor será la escala y el detalle del terreno."
         },
         {
           "texto": "\"Escala mediana\" → áreas medianas",
-          "pregunta": {
-            "q": "¿Qué dimensión de territorio se dibuja utilizando una escala mediana?",
-            "opts": [
-              "Continentes enteros",
-              "Distritos muy pequeños",
-              "Áreas medianas"
-            ],
-            "correct": 2,
-            "explicacion": "La escala mediana sirve como punto intermedio para representar regiones o provincias, logrando un balance entre el área cubierta y el detalle tridimensional del relieve."
-          }
+          "explicacion": "La escala mediana logra un balance intermedio entre el área territorial abarcada y el nivel de detalle visual. Se utiliza para representar regiones, provincias o zonas de extensión intermedia."
         },
         {
           "texto": "\"Escala mediana\" = usada en \"cartas\"",
-          "pregunta": {
-            "q": "¿Qué documento cartográfico es el representativo de la escala mediana?",
-            "opts": [
-              "Las cartas",
-              "Los planos urbanos",
-              "Los mapamundis"
-            ],
-            "correct": 0,
-            "explicacion": "Las cartas geográficas o topográficas emplean escalas medianas. Son documentos tridimensionales (usan curvas de nivel) ideales para ingeniería, minería o planeamiento regional."
-          }
+          "explicacion": "Las cartas topográficas emplean escalas medianas porque necesitan proyectar la tridimensionalidad del relieve mediante curvas de nivel. Son herramientas esenciales para proyectos de ingeniería, minería y planificación territorial."
         },
         {
-          "texto": "\"Escala mediana\" = rangos 1:25000 a 1:200000",
-          "pregunta": {
-            "q": "¿Qué rango numérico corresponde a una escala mediana?",
-            "opts": [
-              "1:250000 a 1:1000000",
-              "1:25000 a 1:200000",
-              "1:1000 a 1:20000"
-            ],
-            "correct": 1,
-            "explicacion": "Cualquier documento cuya escala se encuentre entre 1:25 000 y 1:200 000 se clasifica como de escala mediana. En Perú, la Carta Nacional (1:100 000) entra exactamente en esta categoría."
-          }
+          "texto": "\"Escala mediana\" = rango 1:25000 a 1:200000",
+          "explicacion": "Las escalas medianas quedan definidas numéricamente por denominadores comprendidos en el intervalo de 1:25000 a 1:200000. Dentro de este grupo se halla la Carta Nacional del Perú."
         },
         {
           "texto": "\"Escala pequeña\" → áreas grandes",
-          "pregunta": {
-            "q": "¿Qué tamaño de superficie se representa con una escala pequeña?",
-            "opts": [
-              "Áreas pequeñas como viviendas",
-              "Áreas grandes",
-              "Solamente regiones medianas"
-            ],
-            "correct": 1,
-            "explicacion": "Una escala pequeña reduce muchísimo la realidad (denominador muy grande). Esto sacrifica el detalle visual, pero permite abarcar superficies inmensas como países o continentes completos."
-          }
+          "explicacion": "Las escalas pequeñas poseen denominadores numéricos de gran tamaño, lo que significa que la realidad ha sido reducida significativamente. Sacrifican el detalle para lograr abarcar enormes extensiones como continentes o el planeta."
         },
         {
           "texto": "\"Escala pequeña\" = usada en \"mapas\"",
-          "pregunta": {
-            "q": "¿Qué representación geográfica hace uso típico de las escalas pequeñas?",
-            "opts": [
-              "Los mapas",
-              "Las cartas topográficas",
-              "Los planos catastrales"
-            ],
-            "correct": 0,
-            "explicacion": "Los mapas (nacionales, continentales o mundiales) son bidimensionales, abarcan mucho territorio y por necesidad de espacio en el papel, deben usar escalas pequeñas."
-          }
+          "explicacion": "Los mapas son representaciones bidimensionales diseñadas para mostrar países o hemisferios enteros. Por la gran extensión territorial que abarcan en un espacio físico reducido, emplean obligatoriamente escalas pequeñas."
         },
         {
-          "texto": "\"Escala pequeña\" = rangos 1:250000 a 1:1000000",
-          "pregunta": {
-            "q": "¿En qué rango de valores se sitúa la escala pequeña?",
-            "opts": [
-              "1:1000 a 1:25000",
-              "1:25000 a 1:200000",
-              "1:250000 a 1:1000000"
-            ],
-            "correct": 2,
-            "explicacion": "Se consideran escalas pequeñas aquellas que superan el denominador de 250,000, siendo comunes en mapas de países, hemisferios o planisferios mundiales."
-          }
+          "texto": "\"Escala pequeña\" = rango 1:250000 a 1:1000000",
+          "explicacion": "Se clasifican como escalas pequeñas aquellas representaciones cuya proporción numérica se sitúa entre 1:250000 y 1:1000000 o denominadores superiores. Son típicas de los atlas y planisferios."
         }
       ]
     },
@@ -160,81 +70,27 @@
       "puntos": [
         {
           "texto": "\"Escala numérica\" = fracción matemática",
-          "pregunta": {
-            "q": "¿Cómo se expresa visualmente la escala numérica?",
-            "opts": [
-              "Como una barra pintada",
-              "Como una fracción matemática",
-              "Como una descripción textual larga"
-            ],
-            "correct": 1,
-            "explicacion": "La escala numérica se representa como una fracción (ej. 1/100000) o proporción (1:100000). El numerador (1) siempre es el mapa y el denominador la realidad."
-          }
+          "explicacion": "La escala numérica expresa la relación de reducción mediante una fracción matemática o razón aritmética. El numerador representa siempre la medida en el papel y el denominador la distancia equivalente en el terreno."
         },
         {
-          "texto": "Fórmula = 1 / E = l / L",
-          "pregunta": {
-            "q": "¿Cuál es la fórmula general para calcular problemas de escala cartográfica?",
-            "opts": [
-              "1 / l = E / L",
-              "E / 1 = L / l",
-              "1 / E = l / L"
-            ],
-            "correct": 2,
-            "explicacion": "Esta es la regla de tres simple estandarizada: 1 sobre la Escala (E) es igual a la longitud en el mapa (l) dividida por la Longitud real (L)."
-          }
+          "texto": "Fórmula = $\\frac{1}{E} = \\frac{l}{L}$",
+          "explicacion": "Esta es la ecuación fundamental de la cartografía expresada en notación matemática. Relaciona la escala ($\\frac{1}{E}$) con la distancia en el documento o mapa (l) y la distancia equivalente en el terreno real (L)."
         },
         {
           "texto": "\"l\" minúscula = longitud en el mapa",
-          "pregunta": {
-            "q": "¿Qué representa la variable 'l' (minúscula) en la fórmula de la escala?",
-            "opts": [
-              "El largo total del terreno",
-              "La longitud real medida en kilómetros",
-              "La longitud trazada en el mapa"
-            ],
-            "correct": 2,
-            "explicacion": "En la fórmula cartográfica, las minúsculas suelen asociarse al documento. 'l' suele medirse en centímetros (cm) o milímetros (mm) porque representa el trazo en el papel."
-          }
+          "explicacion": "En la fórmula cartográfica, la variable l representa la longitud medida directamente sobre el mapa o plano. Por convención práctica, esta distancia se expresa en unidades de centímetros o milímetros."
         },
         {
           "texto": "\"L\" mayúscula = longitud real",
-          "pregunta": {
-            "q": "¿A qué hace referencia la variable 'L' (mayúscula) al aplicar la fórmula?",
-            "opts": [
-              "A la longitud real del terreno",
-              "A la latitud geográfica",
-              "Al lado menor del plano"
-            ],
-            "correct": 0,
-            "explicacion": "La 'L' representa la distancia verdadera en el terreno físico. Para resolver problemas cartográficos, usualmente se expresa en metros (m) o kilómetros (km)."
-          }
+          "explicacion": "La variable L dentro de la fórmula matemática corresponde a la dimensión verdadera o distancia lineal en el terreno físico. Para resolver ejercicios cartográficos suele convertirse a metros o kilómetros."
         },
         {
           "texto": "\"Escala gráfica\" = barra segmentada",
-          "pregunta": {
-            "q": "¿Qué forma geométrica adopta la escala gráfica?",
-            "opts": [
-              "Una barra segmentada",
-              "Un círculo dividido en grados",
-              "Una línea curva de nivel"
-            ],
-            "correct": 0,
-            "explicacion": "La escala gráfica es un dibujo, específicamente una recta dividida en segmentos iguales, similar a una regla. Su gran ventaja es que si el mapa se amplía o reduce en una fotocopia, la barra se deforma en la misma proporción, manteniendo su validez."
-          }
+          "explicacion": "La escala gráfica es una regla graduada o línea recta dividida en segmentos de igual longitud. Permite medir distancias reales directamente sobre el mapa sin necesidad de realizar cálculos matemáticos complejos."
         },
         {
           "texto": "\"Escala gráfica\" ⊃ \"talón\" + \"cuerpo\"",
-          "pregunta": {
-            "q": "¿Cuáles son las dos partes principales que componen a una escala gráfica?",
-            "opts": [
-              "El numerador y el denominador",
-              "El talón y el cuerpo",
-              "El plano y la carta"
-            ],
-            "correct": 1,
-            "explicacion": "La escala gráfica se divide desde el cero. A la derecha del cero se encuentra el 'cuerpo' (unidades enteras mayores) y a la izquierda el 'talón' (fracciones menores para mediciones más precisas)."
-          }
+          "explicacion": "Estructuralmente, la escala gráfica consta de dos partes a partir de la subdivisión del origen cero. El talón se ubica a la izquierda para lecturas de máxima precisión, mientras que el cuerpo se extiende a la derecha en unidades enteras."
         }
       ]
     },
@@ -243,68 +99,23 @@
       "puntos": [
         {
           "texto": "\"IGN\" = Instituto Geográfico Nacional",
-          "pregunta": {
-            "q": "¿Qué significan las siglas de la entidad encargada de la cartografía en Perú?",
-            "opts": [
-              "Instituto Geofísico Nacional",
-              "Instituto Geológico Nacional",
-              "Instituto Geográfico Nacional"
-            ],
-            "correct": 2,
-            "explicacion": "El IGN es el organismo público peruano responsable de elaborar, actualizar y publicar la cartografía oficial del país, incluyendo la Carta Nacional y el Mapa Oficial."
-          }
+          "explicacion": "El Instituto Geográfico Nacional es el organismo rector descentralizado encargado de elaborar, actualizar y publicar la cartografía oficial del territorio peruano, garantizando el levantamiento topográfico nacional."
         },
         {
           "texto": "\"Carta nacional\" = escala 1:100000",
-          "pregunta": {
-            "q": "¿Cuál es la escala oficial a la que está elaborada la Carta Nacional del Perú?",
-            "opts": [
-              "1:1000000",
-              "1:100000",
-              "1:25000"
-            ],
-            "correct": 1,
-            "explicacion": "La Carta Nacional del Perú es un documento a escala mediana (1:100 000). Es la base del levantamiento topográfico del país."
-          }
+          "explicacion": "La Carta Nacional del Perú es el documento topográfico oficial elaborado a una escala mediana de 1:100000. Sirve como base para el desarrollo técnico y la planificación de obras públicas en el país."
         },
         {
           "texto": "\"Carta nacional\" → 1 cm = 1 km",
-          "pregunta": {
-            "q": "¿Cuál es la equivalencia práctica de 1 cm en la Carta Nacional peruana?",
-            "opts": [
-              "Representa 1 kilómetro real",
-              "Representa 10 kilómetros reales",
-              "Representa 100 metros reales"
-            ],
-            "correct": 0,
-            "explicacion": "Al tener una escala de 1:100,000, 1 cm en el papel equivale a 100,000 cm en la realidad. Si convertimos esos centímetros, el resultado exacto es 1 kilómetro lineal."
-          }
+          "explicacion": "Debido a su proporción de 1:100000, cada centímetro medido en la Carta Nacional equivale exactamente a 100000 cm reales en el terreno, lo que simplificado representa 1 km lineal."
         },
         {
           "texto": "\"Mapa oficial\" = escala 1:1000000",
-          "pregunta": {
-            "q": "¿A qué escala se encuentra trazado el Mapa Oficial del Perú?",
-            "opts": [
-              "1:100000",
-              "1:1000000",
-              "1:500000"
-            ],
-            "correct": 1,
-            "explicacion": "El Mapa Oficial, al tener que mostrar todo el país completo en un solo pliego estándar, recurre a una escala pequeña de 1 en un millón."
-          }
+          "explicacion": "El Mapa Oficial del Perú es la representación gráfica integral del Estado a escala pequeña de 1:1000000. Muestra la totalidad de los límites territoriales y fronterizos en un solo pliego."
         },
         {
           "texto": "\"Mapa oficial\" → 1 cm = 10 km",
-          "pregunta": {
-            "q": "¿Qué distancia real equivale a 1 cm medido en el Mapa Oficial del Perú?",
-            "opts": [
-              "1 kilómetro",
-              "10 kilómetros",
-              "100 kilómetros"
-            ],
-            "correct": 1,
-            "explicacion": "Dado que la escala es 1:1,000,000; 1 cm en el documento representa un millón de centímetros en el terreno. Al hacer la conversión dividiendo entre 100,000, obtenemos que 1 cm es igual a 10 km."
-          }
+          "explicacion": "En el Mapa Oficial del Perú, la relación dimensional establece que 1 cm en el papel equivale a 1000000 cm en la superficie terrestre, es decir, 10 km reales de distancia."
         }
       ]
     },
@@ -313,42 +124,15 @@
       "puntos": [
         {
           "texto": "Convertir cm a km → dividir entre 100000",
-          "pregunta": {
-            "q": "¿Qué operación matemática rápida permite pasar de centímetros a kilómetros?",
-            "opts": [
-              "Multiplicar por 1000",
-              "Dividir entre 100000",
-              "Multiplicar por 100000"
-            ],
-            "correct": 1,
-            "explicacion": "Un kilómetro tiene 1000 metros, y cada metro tiene 100 centímetros. Por lo tanto, 1 km = 100,000 cm. Para transformar un valor dado en cm a km, basta con tachar 5 ceros (dividir entre 100,000)."
-          }
+          "explicacion": "Dado que un kilómetro equivale a 100000 cm (100 m por 1000), para transformar una cifra dada en centímetros a kilómetros se debe dividir dicho valor numérico entre 100000 o simplificar cinco ceros."
         },
         {
           "texto": "Convertir km a cm → multiplicar por 100000",
-          "pregunta": {
-            "q": "¿Qué acción permite convertir directamente un dato de kilómetros a centímetros?",
-            "opts": [
-              "Multiplicar por 100000",
-              "Dividir entre 100000",
-              "Dividir entre 100"
-            ],
-            "correct": 0,
-            "explicacion": "Es el proceso inverso al anterior. Al conocer una distancia en la realidad en kilómetros (ej. 5 km) y querer llevarla a la fórmula (que se trabaja en cm), se agregan 5 ceros (se multiplica por 100,000)."
-          }
+          "explicacion": "Para realizar la conversión inversa de kilómetros a centímetros se efectúa la multiplicación del valor por 100000. Esto permite homogenizar las unidades de medida al reemplazarlas en la ecuación de escala."
         },
         {
-          "texto": "Aplicando \"fórmula\" (1/E = l/L) → resolver distancia real",
-          "pregunta": {
-            "q": "¿Para qué sirve aplicar la fórmula general 1/E = l/L en un problema tipo?",
-            "opts": [
-              "Para calcular exclusivamente el tamaño del talón",
-              "Para determinar el tipo de documento",
-              "Para resolver incógnitas como la distancia real"
-            ],
-            "correct": 2,
-            "explicacion": "La regla de tres de la escala sirve como ecuación base. Si un problema nos da la escala (1/20000) y la distancia en el mapa (15cm), podemos despejar 'L' para encontrar que la distancia real es 300,000 cm (3 km)."
-          }
+          "texto": "Aplicando \"fórmula\" ($\\frac{1}{E} = \\frac{l}{L}$) → resolver distancia real",
+          "explicacion": "Para calcular la distancia real (L) ante un ejercicio cartográfico, se despeja la fórmula general igualando $\\frac{1}{E} = \\frac{l}{L}$. Sustituyendo la escala dada y la medida del mapa, se obtiene el valor correspondiente en el terreno."
         }
       ]
     }

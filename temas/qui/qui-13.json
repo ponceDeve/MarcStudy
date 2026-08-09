@@ -2,16 +2,21 @@
   "curso": "Química",
   "tema": "Nomenclatura Inorgánica y Estado de Oxidación",
   "glosario": {
-    "Nomenclatura inorgánica": "Reglas para nombrar y formular sustancias químicas.",
-    "Valencia": "Capacidad de combinación establecida por electrones requeridos.",
-    "Estado de oxidación": "Carga real o aparente asignada a un átomo.",
-    "Elemento libre": "Sustancia pura no combinada con E.O. cero.",
-    "Ión poliatómico": "Conjunto de átomos unidos con carga neta.",
-    "Anfóteros": "Elementos con comportamiento metálico y no metálico.",
+    "Nomenclatura inorgánica": "Reglas oficiales IUPAC para nombrar compuestos.",
+    "Valencia": "Capacidad de combinación según electrones requeridos.",
+    "Estado de oxidación": "Carga real o aparente en átomo.",
+    "Elemento libre": "Sustancia pura no combinada.",
+    "Ión poliatómico": "Conjunto de átomos con carga.",
+    "Hidrógeno": "Elemento químico gas más liviano.",
+    "Hidruros": "Compuestos binarios con hidrógeno.",
+    "Oxígeno": "Elemento no metálico altamente electronegativo.",
+    "Peróxidos": "Compuestos con enlace oxígeno-oxígeno.",
+    "Flúor": "Halógeno de máxima electronegatividad.",
+    "Boro": "Elemento metaloide del grupo IIIA.",
+    "Carbono": "No metal con tetravalencia característica.",
     "=": "Define",
     "→": "Produce",
-    "∑": "Suma",
-    "0": "Cero"
+    "⇒": "Causa"
   },
   "theory": [
     {
@@ -19,42 +24,15 @@
       "puntos": [
         {
           "texto": "\"Nomenclatura inorgánica\" = reglas y criterios IUPAC para nombrar compuestos.",
-          "pregunta": {
-            "q": "¿Cuál es la función principal de la nomenclatura inorgánica según la IUPAC?",
-            "opts": [
-              "Establecer la masa atómica de los elementos en estado gaseoso",
-              "Proveer reglas y criterios para nombrar y formular sustancias",
-              "Medir la velocidad de reacción entre compuestos moleculares"
-            ],
-            "correct": 1,
-            "explicacion": "La nomenclatura inorgánica agrupa el conjunto de reglas y criterios establecidos por la IUPAC con la finalidad de estandarizar la manera en que se nombran y formulan las sustancias químicas en todo el mundo."
-          }
+          "explicacion": "La nomenclatura inorgánica agrupa el conjunto de reglas y criterios establecidos por la IUPAC para estandarizar la formulación y denominación de sustancias químicas. Permite que la comunidad científica identifique inequívocamente cada compuesto según su composición y estructura."
         },
         {
           "texto": "\"Valencia\" = capacidad de combinación según electrones requeridos.",
-          "pregunta": {
-            "q": "¿Cómo se define conceptualmente la valencia de un átomo?",
-            "opts": [
-              "Como su carga eléctrica neta en un ión complejo",
-              "Como la capacidad de combinación según los electrones requeridos",
-              "Como el peso total de sus isótopos estables"
-            ],
-            "correct": 1,
-            "explicacion": "La valencia representa la capacidad de combinación que poseen los átomos, la cual se establece en función al número de electrones requeridos por el átomo para alcanzar su estabilidad."
-          }
+          "explicacion": "La valencia representa la capacidad de combinación que poseen los átomos de un elemento químico. Esta propiedad se establece en función al número de electrones que el átomo requiere ganar, perder o compartir para alcanzar su estabilidad."
         },
         {
           "texto": "\"Estado de oxidación\" = carga real o aparente en un átomo.",
-          "pregunta": {
-            "q": "¿Qué representa el estado de oxidación (E.O.) en química?",
-            "opts": [
-              "Una carga real o aparente (positiva o negativa) en el átomo",
-              "La cantidad exacta de neutrones presentes en el núcleo",
-              "La energía total liberada durante un enlace covalente"
-            ],
-            "correct": 0,
-            "explicacion": "El estado de oxidación es un número entero o fraccionario que representa la carga eléctrica real o aparente que se debe a la pérdida, ganancia o compartición no equitativa de electrones."
-          }
+          "explicacion": "El estado de oxidación es un número entero o fraccionario que denota la carga eléctrica real o aparente asignada a un átomo. Esta carga surge debido a la pérdida, ganancia o distribución no equitativa de los electrones de enlace."
         }
       ]
     },
@@ -62,108 +40,36 @@
       "titulo": "Reglas Prácticas para el Cálculo del Estado de Oxidación",
       "puntos": [
         {
-          "texto": "\"Elemento libre\" (no combinado) ⇒ E.O. = 0.",
-          "pregunta": {
-            "q": "¿Qué valor de estado de oxidación se le asigna por regla a todo elemento libre?",
-            "opts": [
-              "Un valor constante igual a más uno",
-              "Un valor obligatorio igual a cero",
-              "Un valor fraccionario variable"
-            ],
-            "correct": 1,
-            "explicacion": "Todo elemento que se encuentre en estado libre o sin combinar (como un metal puro o un gas diatómico en su forma elemental) tiene asignado por convención un estado de oxidación igual a cero."
-          }
+          "texto": "\"Elemento libre\" ⇒ E.O. cero.",
+          "explicacion": "Un elemento libre es aquel que no se encuentra combinado químicamente con otros elementos diferentes, como los metales puros o gases diatómicos elementales. Por convención universal, su estado de oxidación en esta forma pura siempre es igual a cero."
         },
         {
-          "texto": "En todo \"compuesto\" químico ⇒ ∑ E.O. átomos = 0.",
-          "pregunta": {
-            "q": "¿Cuál es la regla para la suma de estados de oxidación en un compuesto neutro?",
-            "opts": [
-              "La suma total debe ser igual a cero",
-              "La suma de cargas debe ser igual a la carga del electrón",
-              "El resultado siempre debe ser un número negativo"
-            ],
-            "correct": 0,
-            "explicacion": "En toda sustancia neutra o compuesto químico, la suma algebraica de los estados de oxidación de todos sus átomos multiplicados por su atomicidad debe dar como resultado cero."
-          }
+          "texto": "Compuesto químico ⇒ ∑ E.O. cero.",
+          "explicacion": "Un compuesto químico es una sustancia neutra formada por la unión de dos o más elementos. Por principio de electroneutralidad, la suma algebraica de los estados de oxidación de todos sus átomos multiplicados por su atomicidad siempre da cero."
         },
         {
-          "texto": "En todo \"ión poliatómico\" ⇒ ∑ E.O. = carga del ión.",
-          "pregunta": {
-            "q": "¿A qué debe ser igual la sumatoria de los estados de oxidación en un ión poliatómico?",
-            "opts": [
-              "Al valor absoluto del número atómico del elemento central",
-              "A la carga total del ión poliatómico",
-              "Siempre a cero, al igual que los compuestos neutros"
-            ],
-            "correct": 1,
-            "explicacion": "Para cualquier ión poliatómico, la suma algebraica de los estados de oxidación de sus átomos constituyentes debe ser estrictamente igual a la carga neta que presenta dicho ión."
-          }
+          "texto": "\"Ión poliatómico\" = ∑ E.O. ión.",
+          "explicacion": "Un ión poliatómico es un conjunto de átomos unidos covalentemente que poseen una carga eléctrica neta. La sumatoria algebraica de los estados de oxidación de sus átomos constituyentes debe ser estrictamente igual a la carga total del ión."
         },
         {
-          "texto": "En general, \"hidrógeno\" (H) → E.O. = +1.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación presenta por lo general el hidrógeno en sus compuestos?",
-            "opts": [
-              "Menos uno",
-              "Cero",
-              "Más uno"
-            ],
-            "correct": 2,
-            "explicacion": "De manera general, el hidrógeno actúa con estado de oxidación +1 cuando se encuentra formando compuestos químicos con elementos no metálicos."
-          }
+          "texto": "\"Hidrógeno\" (H) → E.O. +1.",
+          "explicacion": "El hidrógeno es un elemento no metálico que, al combinarse de manera general con otros no metales, actúa con un estado de oxidación positivo de +1 al ceder densidad electrónica en enlaces polares."
         },
         {
-          "texto": "Para los \"hidruros\" metálicos, H → E.O. = -1.",
-          "pregunta": {
-            "q": "¿Qué valor toma el estado de oxidación del hidrógeno al formar hidruros con metales?",
-            "opts": [
-              "Menos uno",
-              "Más uno",
-              "Más dos"
-            ],
-            "correct": 0,
-            "explicacion": "En los hidruros metálicos (combinaciones de hidrógeno con un metal activo), el hidrógeno es más electronegativo que el metal, por lo que adopta un estado de oxidación de -1."
-          }
+          "texto": "\"Hidruros\" metálicos → H E.O. -1.",
+          "explicacion": "Los hidruros metálicos son compuestos binarios formados por la unión de un metal activo y el hidrógeno. En este contexto específico, el hidrógeno es más electronegativo que el metal, adoptando un estado de oxidación negativo de -1."
         },
         {
-          "texto": "En general, \"oxígeno\" (O) → E.O. = -2.",
-          "pregunta": {
-            "q": "Por regla general, ¿cuál es el estado de oxidación del oxígeno en los compuestos?",
-            "opts": [
-              "Menos dos",
-              "Más dos",
-              "Menos uno"
-            ],
-            "correct": 0,
-            "explicacion": "El oxígeno mantiene de forma general un estado de oxidación de -2 en la gran mayoría de sus óxidos y compuestos oxigenados."
-          }
+          "texto": "\"Oxígeno\" (O) → E.O. -2.",
+          "explicacion": "El oxígeno es un elemento no metálico muy electronegativo que actúa fundamentalmente con estado de oxidación -2 en la gran mayoría de sus óxidos y compuestos oxigenados al atraer electrones del enlace."
         },
         {
-          "texto": "Frente al \"flúor\" (F), oxígeno (O) → E.O. = +2.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación adopta el oxígeno cuando se combina directamente con el flúor?",
-            "opts": [
-              "Menos dos",
-              "Más dos",
-              "Cero"
-            ],
-            "correct": 1,
-            "explicacion": "Debido a que el flúor es el elemento más electronegativo de la tabla periódica, al enlazarse con él, el oxígeno cede virtualmente densidad electrónica, adquiriendo un estado de oxidación excepcional de +2."
-          }
+          "texto": "\"Oxígeno\" frente al flúor → E.O. +2.",
+          "explicacion": "El flúor es el elemento con mayor electronegatividad en la tabla periódica. Cuando el oxígeno se enlaza directamente con él, cede densidad electrónica frente a la alta atracción del flúor, adquiriendo un estado de oxidación excepcional de +2."
         },
         {
-          "texto": "Para los \"peróxidos\", oxígeno (O) → E.O. = -1.",
-          "pregunta": {
-            "q": "¿Cuál es el estado de oxidación del oxígeno específicamente en los compuestos peróxidos?",
-            "opts": [
-              "Menos uno",
-              "Más uno",
-              "Menos dos"
-            ],
-            "correct": 0,
-            "explicacion": "En la estructura de los peróxidos existe un enlace covalente simple entre átomos de oxígeno (puente de oxígeno-oxígeno), lo que determina que cada átomo de oxígeno actúe con un estado de oxidación de -1."
-          }
+          "texto": "\"Peróxidos\" → oxígeno E.O. -1.",
+          "explicacion": "Los peróxidos son compuestos oxigenados que contienen un enlace covalente simple entre dos átomos de oxígeno (puente peroxo). Esta estructura particular determina que cada átomo de oxígeno actúe con un estado de oxidación de -1."
         }
       ]
     },
@@ -171,82 +77,28 @@
       "titulo": "Valores Frecuentes y Estados de Oxidación de Metales y No Metales",
       "puntos": [
         {
-          "texto": "Grupo IA (Na, K, Li) → E.O. = +1.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación caracteriza a los elementos alcalinos del Grupo IA?",
-            "opts": [
-              "Más dos",
-              "Más uno",
-              "Menos uno"
-            ],
-            "correct": 1,
-            "explicacion": "Los metales alcalinos (como sodio, potasio y litio) poseen un único electrón de valencia que ceden fácilmente al combinarse, presentando un estado de oxidación fijo de +1."
-          }
+          "texto": "Grupo IA (Na, K, Li) → E.O. +1.",
+          "explicacion": "Los metales alcalinos ubicados en el Grupo IA de la tabla periódica, como el sodio, potasio y litio, poseen un único electrón de valencia que ceden fácilmente, mostrando un estado de oxidación fijo de +1."
         },
         {
-          "texto": "Grupo IIA (Mg, Ca, Sr) → E.O. = +2.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación presentan los metales alcalinotérreos del Grupo IIA?",
-            "opts": [
-              "Más uno",
-              "Más dos",
-              "Más tres"
-            ],
-            "correct": 1,
-            "explicacion": "Los metales alcalinotérreos (como magnesio, calcio y estroncio) pertenecen al Grupo IIA, por lo que tienen dos electrones de valencia que ceden, mostrando un E.O. fijo de +2."
-          }
+          "texto": "Grupo IIA (Mg, Ca, Sr) → E.O. +2.",
+          "explicacion": "Los metales alcalinotérreos del Grupo IIA, que incluyen al magnesio, calcio y estroncio, se caracterizan por poseer dos electrones de valencia que ceden en las reacciones, presentando un estado de oxidación fijo de +2."
         },
         {
-          "texto": "Grupo IIIA (Al, Ga, In) → E.O. = +3.",
-          "pregunta": {
-            "q": "¿Cuál es el estado de oxidación característico de los elementos del Grupo IIIA como el aluminio?",
-            "opts": [
-              "Más tres",
-              "Más dos",
-              "Más uno"
-            ],
-            "correct": 0,
-            "explicacion": "Los elementos del Grupo IIIA, destacando el aluminio (Al), presentan un estado de oxidación principal y fijo de +3 en sus compuestos inorgánicos."
-          }
+          "texto": "Grupo IIIA (Al, Ga, In) → E.O. +3.",
+          "explicacion": "Los elementos metálicos y térreos del Grupo IIIA, destacando primordialmente al aluminio, exhiben un estado de oxidación principal y constante de +3 al formar parte de compuestos inorgánicos estables."
         },
         {
-          "texto": "Flúor (F) → E.O. = -1.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación presenta el flúor en todos sus compuestos químicos?",
-            "opts": [
-              "Más uno",
-              "Menos uno",
-              "Cero"
-            ],
-            "correct": 1,
-            "explicacion": "Al ser el elemento con mayor electronegatividad de toda la tabla periódica, el flúor siempre actúa con un estado de oxidación único e invariable de -1."
-          }
+          "texto": "\"Flúor\" (F) → E.O. -1.",
+          "explicacion": "El flúor es un halógeno que posee la máxima electronegatividad de toda la tabla periódica. Debido a esta propiedad única, siempre actúa con un estado de oxidación invariable de -1 en cualquier compuesto."
         },
         {
-          "texto": "Boro (B) → E.O. = +3.",
-          "pregunta": {
-            "q": "¿Qué estado de oxidación manifiesta habitualmente el boro como no metal o elemento anfótero?",
-            "opts": [
-              "Más tres",
-              "Más dos",
-              "Menos tres"
-            ],
-            "correct": 0,
-            "explicacion": "El boro (B), ubicado en los primeros elementos del bloque p, presenta de manera característica un estado de oxidación de +3 en sus combinaciones."
-          }
+          "texto": "\"Boro\" (B) → E.O. +3.",
+          "explicacion": "El boro es un elemento metaloide ubicado en el bloque p que presenta de manera característica un estado de oxidación constante de +3 en sus diferentes combinaciones químicas inorgánicas."
         },
         {
-          "texto": "Carbono (C) → E.O. = +2, +4 (en no metales).",
-          "pregunta": {
-            "q": "¿Qué estados de oxidación característicos presenta el carbono al actuar como no metal?",
-            "opts": [
-              "Más uno y más tres",
-              "Más dos y más cuatro",
-              "Menos dos y menos cuatro"
-            ],
-            "correct": 1,
-            "explicacion": "Cuando el carbono forma parte de compuestos covalentes no metálicos u óxidos, sus estados de oxidación más frecuentes son +2 y +4."
-          }
+          "texto": "\"Carbono\" (no metal) → E.O. +2 y +4.",
+          "explicacion": "El carbono es un elemento no metálico fundamental que, al formar enlaces covalentes en óxidos y compuestos orgánicos o inorgánicos sencillos, manifiesta con mayor frecuencia estados de oxidación de +2 y +4."
         }
       ]
     }

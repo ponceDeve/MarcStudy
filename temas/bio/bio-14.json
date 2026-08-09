@@ -1,381 +1,93 @@
 {
   "curso": "Biología",
-  "tema": "Genética y Leyes de Mendel",
+  "tema": "Herencia Post-Mendeliana e Interacciones Alélicas",
   "glosario": {
-    "Gen": "Fragmento de ADN que determina una característica.",
-    "Genoma": "Totalidad de genes de una especie.",
-    "Alelo": "Cada variante que presenta un gen.",
-    "Genotipo": "Conjunto de alelos de un organismo.",
-    "Fenotipo": "Expresión física y observable del genotipo.",
-    "Homocigoto": "Individuo con alelos iguales para un gen.",
-    "Heterocigoto": "Individuo con alelos distintos para un gen.",
-    "Gametos": "Células reproductivas que portan los alelos.",
+    "Codominancia": "Expresión simultánea de ambos alelos sin mezclarse.",
+    "Dominancia incompleta": "Alelos que generan un fenotipo intermediario mezclado.",
+    "Alelos múltiples": "Existencia de más de dos alelos para un gen.",
+    "Herencia poligénica": "Rasgos determinados por la acción de múltiples genes.",
+    "Pleiotropía": "Un solo gen afecta múltiples características fenotípicas.",
+    "Epistasis": "Un gen enmascara la expresión de otro gen.",
     "=": "Define",
     "→": "Produce",
     "⊃": "Contiene",
+    "≠": "Diferente",
     "✓": "Requiere"
   },
   "theory": [
     {
-      "titulo": "Conceptos Básicos de Genética",
+      "titulo": "Dominancia Incompleta",
       "puntos": [
         {
-          "texto": "\"Genética\" = rama biológica que estudia la herencia.",
-          "pregunta": {
-            "q": "¿Qué estudia principalmente la disciplina de la genética?",
-            "opts": [
-              "La herencia biológica",
-              "La evolución de las especies",
-              "El comportamiento animal"
-            ],
-            "correct": 0,
-            "explicacion": "La genética se define fundamentalmente como la rama de la biología dedicada a comprender cómo se transmiten las características de una generación a otra mediante la herencia."
-          }
+          "texto": "\"Dominancia incompleta\" = heterocigoto muestra fenotipo intermedio.",
+          "explicacion": "La dominancia incompleta es un tipo de herencia donde ninguno de los alelos es completamente dominante. El individuo heterocigoto manifiesta una condición intermedia que mezcla las características de ambos progenitores."
         },
         {
-          "texto": "\"Gen\" = fragmento de ADN para una característica.",
-          "pregunta": {
-            "q": "¿Qué es exactamente un gen según los conceptos genéticos?",
-            "opts": [
-              "Una célula reproductiva completa",
-              "Un fragmento de ADN que determina un rasgo",
-              "El conjunto total de cromosomas"
-            ],
-            "correct": 1,
-            "explicacion": "Un gen es una porción específica de la cadena de ADN que almacena la información necesaria para expresar una característica biológica particular en el individuo."
-          }
+          "texto": "Cruce flor roja (RR) x flor blanca (BB) → \"F1\" rosada (RB).",
+          "explicacion": "Al cruzar una planta de flores rojas homocigotas con una blanca homocigota, la primera generación filial no muestra el rojo dominante, sino una fusión tonal expresada como flores de color rosado en estado heterocigoto."
         },
         {
-          "texto": "\"Herencia\" = transmisión de genes a la descendencia.",
-          "pregunta": {
-            "q": "¿A qué proceso se le denomina herencia?",
-            "opts": [
-              "A la mutación de los genes en el ambiente",
-              "A la transmisión de genes hacia la siguiente generación",
-              "Al intercambio de ADN entre especies distintas"
-            ],
-            "correct": 1,
-            "explicacion": "La herencia es el proceso biológico mediante el cual los progenitores transmiten sus genes a sus descendientes, asegurando la continuidad de las características familiares."
-          }
-        },
-        {
-          "texto": "\"Genoma\" = conjunto de genes de una especie.",
-          "pregunta": {
-            "q": "¿Qué término describe a la totalidad de genes de una especie?",
-            "opts": [
-              "Fenotipo",
-              "Alelo",
-              "Genoma"
-            ],
-            "correct": 2,
-            "explicacion": "El genoma representa el catálogo completo de información genética (conjunto de genes) que caracteriza a una especie en particular, como en el caso del proyecto genoma humano."
-          }
-        },
-        {
-          "texto": "\"Alelos\" = variantes de un gen específico.",
-          "pregunta": {
-            "q": "¿Qué nombre reciben las diferentes formas que puede tomar un gen?",
-            "opts": [
-              "Alelos",
-              "Cromatinas",
-              "Locus"
-            ],
-            "correct": 0,
-            "explicacion": "Los alelos son las distintas alternativas o variantes que existen para un mismo gen, las cuales determinarán las diferentes formas en que puede expresarse una misma característica (por ejemplo, cabello lacio o crespo)."
-          }
-        },
-        {
-          "texto": "Alelos distintos determinan una misma característica.",
-          "pregunta": {
-            "q": "¿Qué tienen en común los distintos alelos de un mismo gen?",
-            "opts": [
-              "Determinan características totalmente diferentes",
-              "Están presentes solo en organismos vegetales",
-              "Determinan una misma característica biológica"
-            ],
-            "correct": 2,
-            "explicacion": "Aunque sean variantes (como A o a), todos los alelos de un gen específico codifican siempre para la misma característica fundamental, por ejemplo, la textura del cabello."
-          }
+          "texto": "Cruce F1 (RB x RB) → proporción fenotípica 1 rojo : 2 rosados : 1 blanco.",
+          "explicacion": "Al autofecundar la generación F1 de dominancia incompleta, la proporción fenotípica coincide exactamente con la genotípica (1:2:1), debido a que los heterocigotos conservan un fenotipo único diferenciado de los homocigotos."
         }
       ]
     },
     {
-      "titulo": "Genotipo y Fenotipo",
+      "titulo": "Codominancia",
       "puntos": [
         {
-          "texto": "\"Genotipo\" = conjunto de alelos heredados.",
-          "pregunta": {
-            "q": "¿Qué constituye el genotipo de un organismo?",
-            "opts": [
-              "Sus características físicas observables",
-              "El conjunto de alelos que ha heredado",
-              "Las proteínas producidas por su cuerpo"
-            ],
-            "correct": 1,
-            "explicacion": "El genotipo es la composición genética exacta de un individuo, formada por el conjunto de alelos que ha heredado de sus progenitores."
-          }
+          "texto": "\"Codominancia\" = alelos se expresan simultáneamente por igual.",
+          "explicacion": "En la codominancia, ambos alelos presentes en el heterocigoto se manifiestan de manera independiente y completa en el fenotipo, sin mezclarse ni eclipsarse el uno al otro."
         },
         {
-          "texto": "Genotipo ⊃ alelos paternos + alelos maternos.",
-          "pregunta": {
-            "q": "¿De dónde provienen los alelos que conforman el genotipo?",
-            "opts": [
-              "Solo de la madre",
-              "Solo del padre",
-              "De los alelos paternos y maternos combinados"
-            ],
-            "correct": 2,
-            "explicacion": "En organismos diploides, el genotipo se forma mediante la combinación funcional de los alelos aportados por el gameto paterno y el gameto materno."
-          }
+          "texto": "Ejemplo: Ganado shorthorn → alelo rojo + alelo blanco = pelaje \"roano\".",
+          "explicacion": "El ganado shorthorn ilustra la codominancia mediante el pelaje roano, donde coexisten de forma visible pelos completamente rojos y pelos completamente blancos distribuidos en el cuerpo del animal."
         },
         {
-          "texto": "\"Homocigoto dominante\" = dos alelos dominantes iguales (AA).",
-          "pregunta": {
-            "q": "¿Cómo se representa un organismo homocigoto dominante?",
-            "opts": [
-              "Con dos alelos diferentes (Aa)",
-              "Con dos alelos recesivos iguales (aa)",
-              "Con dos alelos dominantes iguales (AA)"
-            ],
-            "correct": 2,
-            "explicacion": "Un genotipo homocigoto dominante ocurre cuando el individuo hereda el mismo alelo dominante de ambos progenitores, representándose clásicamente con dos letras mayúsculas (AA)."
-          }
+          "texto": "Sistema ABO ⊃ alelos IA, IB y i.",
+          "explicacion": "El sistema de grupos sanguíneos humanos ABO funciona mediante alelos múltiples, donde conviven tres variantes alélicas distintas que determinan la presencia de antígenos en los glóbulos rojos."
         },
         {
-          "texto": "\"Heterocigoto híbrido\" = dos alelos diferentes (Aa).",
-          "pregunta": {
-            "q": "¿Qué caracteriza a un genotipo heterocigoto o híbrido?",
-            "opts": [
-              "Poseer dos alelos iguales",
-              "Poseer dos alelos diferentes",
-              "Carecer de alelos funcionales"
-            ],
-            "correct": 1,
-            "explicacion": "El estado heterocigoto, también llamado híbrido, se presenta cuando el organismo porta dos alelos distintos para un mismo gen (un dominante y un recesivo, Aa)."
-          }
-        },
-        {
-          "texto": "\"Homocigoto recesivo\" = dos alelos recesivos iguales (aa).",
-          "pregunta": {
-            "q": "¿Qué estructura alélica define al homocigoto recesivo?",
-            "opts": [
-              "Dos alelos dominantes iguales",
-              "Dos alelos diferentes",
-              "Dos alelos recesivos iguales"
-            ],
-            "correct": 2,
-            "explicacion": "Un organismo es homocigoto recesivo para un rasgo cuando hereda dos copias idénticas del alelo recesivo (aa), siendo la única forma en que este rasgo se expresa físicamente."
-          }
-        },
-        {
-          "texto": "\"Fenotipo\" = expresión física del genotipo.",
-          "pregunta": {
-            "q": "¿Qué relación existe entre fenotipo y genotipo?",
-            "opts": [
-              "El genotipo es la expresión física del fenotipo",
-              "El fenotipo es la manifestación visible del genotipo",
-              "Ambos son fragmentos de ADN idénticos"
-            ],
-            "correct": 1,
-            "explicacion": "El fenotipo comprende todos los rasgos observables o físicos de un organismo, los cuales son el resultado directo de la expresión de la información contenida en su genotipo."
-          }
-        },
-        {
-          "texto": "Alelo dominante (A) → impone su expresión física.",
-          "pregunta": {
-            "q": "¿Qué efecto tiene un alelo dominante en la expresión de un rasgo?",
-            "opts": [
-              "Impone su expresión física sobre otros alelos",
-              "Se oculta frente a alelos recesivos",
-              "Impide la formación del genotipo"
-            ],
-            "correct": 0,
-            "explicacion": "El alelo dominante se caracteriza por manifestar su rasgo fenotípico siempre que está presente (sea en estado homocigoto o heterocigoto), enmascarando al alelo recesivo."
-          }
-        },
-        {
-          "texto": "Fenotipo recesivo ✓ requiere estado homocigoto (aa).",
-          "pregunta": {
-            "q": "¿Bajo qué condición única puede manifestarse el fenotipo recesivo?",
-            "opts": [
-              "Solo si existe un alelo dominante presente",
-              "Requiere estar en estado homocigoto (aa)",
-              "Cuando se combina con un alelo heterocigoto"
-            ],
-            "correct": 1,
-            "explicacion": "Debido a que el alelo dominante oculta al recesivo, la única manera de que un rasgo recesivo (como el cabello lacio en este ejemplo) sea visible, es que el organismo posea exclusivamente dos alelos recesivos (aa)."
-          }
+          "texto": "Alelos IA = IB ⇒ grupo sanguíneo \"AB\".",
+          "explicacion": "Los alelos para los tipos sanguíneos A y B son codominantes entre sí. Cuando una persona hereda ambos alelos (IAIB), sus glóbulos rojos expresan ambos antígenos simultáneamente, configurando el grupo sanguíneo AB."
         }
       ]
     },
     {
-      "titulo": "Caracteres Estudiados en la Arveja",
+      "titulo": "Alelos Múltiples",
       "puntos": [
         {
-          "texto": "Semilla color amarillo → rasgo dominante.",
-          "pregunta": {
-            "q": "¿Qué tipo de rasgo representa el color amarillo en la semilla de arveja?",
-            "opts": [
-              "Un rasgo recesivo",
-              "Un rasgo dominante",
-              "Un rasgo codominante"
-            ],
-            "correct": 1,
-            "explicacion": "En los estudios clásicos de genética, el color amarillo de la semilla de la planta de arveja se manifiesta como un carácter dominante sobre el color verde."
-          }
+          "texto": "\"Alelos múltiples\" = población posee más de dos variantes génicas.",
+          "explicacion": "Aunque un organismo diploide solo hereda dos alelos por locus, a nivel poblacional existen más de dos opciones posibles para un mismo gen, ampliando la variedad de combinaciones genotípicas."
         },
         {
-          "texto": "Semilla color verde → rasgo recesivo.",
-          "pregunta": {
-            "q": "¿Cómo se clasifica el rasgo de color verde en la semilla de arveja?",
-            "opts": [
-              "Rasgo recesivo",
-              "Rasgo dominante",
-              "Rasgo mutante letal"
-            ],
-            "correct": 0,
-            "explicacion": "El color verde en la semilla de la arveja es un carácter recesivo, lo que significa que solo se expresa fenotípicamente si la planta es homocigota recesiva para este gen."
-          }
+          "texto": "Individuo diploide ✓ hereda solo dos alelos.",
+          "explicacion": "A pesar de la existencia de múltiples alelos en el fondo genético de una especie, cada individuo diploide mantiene el límite estructural de portar únicamente dos alelos por gen, uno de origen paterno y otro materno."
         },
         {
-          "texto": "Tallo tamaño alto → rasgo dominante.",
-          "pregunta": {
-            "q": "¿Cuál es la dominancia del tamaño alto del tallo en las arvejas?",
-            "opts": [
-              "Es un rasgo recesivo",
-              "No tiene dominancia clara",
-              "Es un rasgo dominante"
-            ],
-            "correct": 2,
-            "explicacion": "La característica de tallo alto es dominante frente a la característica de tallo bajo en la planta de arveja, expresándose tanto en homocigotos dominantes como en heterocigotos."
-          }
-        },
-        {
-          "texto": "Tallo tamaño bajo → rasgo recesivo.",
-          "pregunta": {
-            "q": "¿Qué condición genética representa el tallo de tamaño bajo en las arvejas?",
-            "opts": [
-              "Es un rasgo recesivo",
-              "Es un rasgo dominante",
-              "Depende exclusivamente del ambiente"
-            ],
-            "correct": 0,
-            "explicacion": "El tallo bajo o enano en la planta de arveja actúa como un rasgo recesivo, siendo enmascarado cuando el alelo para tallo alto está presente."
-          }
+          "texto": "Grupo sanguíneo \"O\" ✓ requiere alelos recesivos (ii).",
+          "explicacion": "El grupo sanguíneo O carece de los antígenos A y B en la superficie celular. Genéticamente se manifiesta únicamente cuando el individuo es homocigoto para el alelo recesivo i (ii)."
         }
       ]
     },
     {
-      "titulo": "Primera Ley de Mendel",
+      "titulo": "Herencia Ligada al Sexo",
       "puntos": [
         {
-          "texto": "Cruce progenitor homocigoto dominante + progenitor homocigoto recesivo.",
-          "pregunta": {
-            "q": "¿Qué tipos de progenitores se cruzan en el primer experimento de Mendel?",
-            "opts": [
-              "Dos organismos heterocigotos",
-              "Un homocigoto dominante y un homocigoto recesivo",
-              "Dos organismos homocigotos recesivos"
-            ],
-            "correct": 1,
-            "explicacion": "El primer experimento clásico de Mendel inicia cruzando líneas puras contrastantes: un individuo homocigoto dominante (ej. tallo alto AA) con un individuo homocigoto recesivo (ej. tallo bajo aa)."
-          }
+          "texto": "Cromosomas sexuales ⊃ par \"XX\" (mujer) y par \"XY\" (varón).",
+          "explicacion": "La determinación sexual en humanos se rige por cromosomas específicos. Las mujeres poseen dos cromosomas X homólogos, mientras que los varones presentan un cromosoma X y un cromosoma Y de menor tamaño."
         },
         {
-          "texto": "Cruce (AA) x (aa) → descendencia F1 heterocigota (Aa).",
-          "pregunta": {
-            "q": "¿Cuál es el genotipo resultante en la F1 al cruzar AA con aa?",
-            "opts": [
-              "Descendencia homocigota dominante (AA)",
-              "Descendencia heterocigota (Aa)",
-              "Descendencia homocigota recesiva (aa)"
-            ],
-            "correct": 1,
-            "explicacion": "Al cruzar una línea pura dominante con una recesiva, todos los descendientes de la primera generación filial (F1) heredan un alelo A y un alelo a, resultando en un genotipo 100% heterocigoto (Aa)."
-          }
+          "texto": "Herencia ligada al X → genes ubicados en cromosoma sexual X.",
+          "explicacion": "Los caracteres ligados al cromosoma X se heredan de manera particular porque los varones, al poseer un solo cromosoma X (XY), expresarán cualquier alelo presente en él, sea dominante o recesivo."
         },
         {
-          "texto": "\"Principio de uniformidad\" = F1 expresa 100% fenotipo dominante.",
-          "pregunta": {
-            "q": "¿Qué establece el principio de uniformidad respecto al fenotipo de la F1?",
-            "opts": [
-              "Que el 50% expresa el rasgo dominante y 50% el recesivo",
-              "Que el 100% expresa el fenotipo dominante",
-              "Que el 100% expresa el fenotipo recesivo"
-            ],
-            "correct": 1,
-            "explicacion": "El principio de uniformidad, o primera ley de Mendel, dicta que al cruzar dos líneas puras distintas, el 100% de la primera generación (F1) será idéntica entre sí y mostrará únicamente el fenotipo del progenitor dominante."
-          }
-        }
-      ]
-    },
-    {
-      "titulo": "Segunda Ley de Mendel",
-      "puntos": [
-        {
-          "texto": "Segundo experimento ✓ cruza individuos de la F1 (Aa x Aa).",
-          "pregunta": {
-            "q": "¿Qué individuos se utilizan para realizar el segundo experimento de Mendel?",
-            "opts": [
-              "Individuos homocigotos dominantes entre sí",
-              "Individuos heterocigotos de la F1",
-              "Individuos de la generación parental"
-            ],
-            "correct": 1,
-            "explicacion": "Para observar la segunda ley, Mendel tomó a los individuos heterocigotos obtenidos en la primera generación filial (F1) y los cruzó entre sí (Aa x Aa)."
-          }
+          "texto": "Daltonismo ∨ Hemofilia ⇒ condiciones recesivas ligadas al X.",
+          "explicacion": "Enfermedades genéticas como el daltonismo y la hemofilia son causadas por genes defectuosos en el cromosoma X. Por esta razón, afectan con mayor frecuencia a los varones, quienes solo necesitan una copia para manifestarlas."
         },
         {
-          "texto": "\"Ley de segregación\" = separación de alelos hacia los gametos.",
-          "pregunta": {
-            "q": "¿En qué consiste la Ley de Segregación según la deducción de Mendel?",
-            "opts": [
-              "En la separación de los alelos al momento de formar gametos",
-              "En la unión permanente de dos alelos diferentes",
-              "En la destrucción del alelo recesivo durante el cruce"
-            ],
-            "correct": 0,
-            "explicacion": "La segunda ley o Ley de Segregación establece que durante la formación de las células sexuales (gametos), los dos alelos de un gen se separan o segregan, de modo que cada gameto recibe solo un alelo de cada par."
-          }
-        },
-        {
-          "texto": "Cruce F1 (Aa x Aa) → reaparición del fenotipo recesivo.",
-          "pregunta": {
-            "q": "¿Qué fenómeno importante ocurre tras cruzar individuos de la F1 (Aa x Aa)?",
-            "opts": [
-              "La reaparición del fenotipo recesivo",
-              "La desaparición total del fenotipo dominante",
-              "La creación de una nueva especie de planta"
-            ],
-            "correct": 0,
-            "explicacion": "Al cruzar dos heterocigotos, los alelos recesivos ocultos en la F1 tienen la oportunidad de encontrarse nuevamente, provocando que el fenotipo recesivo reaparezca en la segunda generación (F2)."
-          }
-        },
-        {
-          "texto": "Descendencia F2 ⊃ proporción 3/4 fenotipo dominante.",
-          "pregunta": {
-            "q": "¿Qué proporción de la descendencia F2 mostrará el fenotipo dominante?",
-            "opts": [
-              "1/4",
-              "2/4",
-              "3/4"
-            ],
-            "correct": 2,
-            "explicacion": "En un cruce heterocigoto (Aa x Aa), las combinaciones genotípicas AA y Aa producen el rasgo dominante, lo que suma un 75% o 3/4 del total de la descendencia F2 mostrando este fenotipo (ej. tallo alto)."
-          }
-        },
-        {
-          "texto": "Descendencia F2 ⊃ proporción 1/4 fenotipo recesivo.",
-          "pregunta": {
-            "q": "¿Qué fracción de la descendencia F2 expresa el rasgo recesivo?",
-            "opts": [
-              "1/4",
-              "3/4",
-              "Ninguna"
-            ],
-            "correct": 0,
-            "explicacion": "De las cuatro combinaciones posibles en el cruce Aa x Aa, solo una resulta en homocigosis recesiva (aa). Por lo tanto, solo 1/4 (25%) de la descendencia exhibirá el fenotipo recesivo (ej. tallo bajo)."
-          }
+          "texto": "Mujer portadora ✓ heterocigota para alelo recesivo ligado al X.",
+          "explicacion": "Una mujer con un alelo normal y uno afectado en sus cromosomas X (XHXh) no padece la enfermedad debido a la dominancia del alelo sano, pero actúa como portadora transmitiéndolo a su descendencia."
         }
       ]
     }

@@ -1,695 +1,142 @@
 {
-  "curso": "Aritmética / Álgebra",
-  "tema": "Operaciones básicas y ley de signos",
+  "curso": "Aritmética y Álgebra Básica",
+  "tema": "Operaciones Básicas en Reales, Leyes de Signos y Algoritmo de la División",
   "glosario": {
-    "Multiplicación": "Operación de sumar un número tantas veces.",
-    "División": "Operación inversa a multiplicar para repartir.",
-    "Signos": "Símbolos positivos o negativos de un número.",
-    "=": "Define",
-    "→": "Produce",
-    "✓": "Requiere",
-    "≠": "Diferente"
+    "Adición": "Operación que combina dos números en una suma.",
+    "Sustracción": "Operación matemática que consiste en restar cantidades.",
+    "Multiplicación": "Operación equivalente a sumar un número varias veces.",
+    "División": "Operación aritmética de descomposición, inversa a la multiplicación.",
+    "Valor_Absoluto": "Distancia de un número al origen o cero.",
+    "Dividendo": "Cantidad total que se va a dividir.",
+    "Divisor": "Cantidad de partes iguales a repartir.",
+    "Residuo": "Cantidad sobrante en una división entera inexacta.",
+    "Cociente": "Resultado obtenido al realizar una división.",
+    "PEMDAS": "Orden estricto: Paréntesis, Exponentes, Multiplicar, Dividir, Sumar, Restar."
   },
   "theory": [
     {
-      "titulo": "Ley de signos en multiplicación y división",
+      "titulo": "1. Leyes de Signos: Adición y Sustracción",
       "puntos": [
         {
-          "texto": "\"Multiplicar\" signos iguales → resultado \"positivo\".",
-          "pregunta": {
-            "q": "¿Qué signo resulta al multiplicar dos números negativos?",
-            "opts": [
-              "Positivo",
-              "Negativo",
-              "Cero"
-            ],
-            "correct": 0,
-            "explicacion": "Al multiplicar dos números con el mismo signo, ya sea ambos positivos (+)(+) o ambos negativos (-)(-), el signo del producto siempre es positivo."
-          }
+          "texto": "Signos iguales ⇒ Se suman + conserva su signo",
+          "explicacion": "En la prueba de la UNMSM, un error fatal es confundir la suma de negativos con la multiplicación. Si tenemos la operación $+15 + 30$, ambos son positivos y suman $+45$. Del mismo modo, dos números negativos como $-10 - 20$ se suman en valor absoluto ($10+20=30$) y mantienen su signo, resultando $-30$. La regla del \"menos por menos\" no aplica aquí."
         },
         {
-          "texto": "\"Multiplicar\" signos diferentes → resultado \"negativo\".",
-          "pregunta": {
-            "q": "¿Qué signo se obtiene si multiplicas un positivo por un negativo?",
-            "opts": [
-              "Positivo",
-              "Negativo",
-              "Depende del mayor"
-            ],
-            "correct": 1,
-            "explicacion": "La regla de los signos establece que el producto de signos opuestos (+)(-) o (-)(+) da como resultado un número con signo negativo."
-          }
-        },
-        {
-          "texto": "\"Dividir\" signos iguales → resultado \"positivo\".",
-          "pregunta": {
-            "q": "Si divides dos números negativos, ¿qué signo tendrá el cociente?",
-            "opts": [
-              "Negativo",
-              "Positivo",
-              "Nulo"
-            ],
-            "correct": 1,
-            "explicacion": "De forma análoga a la multiplicación, en la división si el dividendo y el divisor poseen signos iguales (-)/(-) o (+)/(+), el resultado siempre es positivo."
-          }
-        },
-        {
-          "texto": "\"Dividir\" signos diferentes → resultado \"negativo\".",
-          "pregunta": {
-            "q": "¿Cuál es el signo del cociente si divides un positivo entre un negativo?",
-            "opts": [
-              "Negativo",
-              "Positivo",
-              "Indeterminado"
-            ],
-            "correct": 0,
-            "explicacion": "Cuando el dividendo y el divisor tienen signos opuestos (+)/(-) o (-)/(+), el resultado de la división es obligatoriamente negativo."
-          }
-        },
-        {
-          "texto": "Aplicando \"ley de signos\" → -48 / -6 = 8.",
-          "pregunta": {
-            "q": "¿Cuál es el cociente de dividir -48 entre -6?",
-            "opts": [
-              "-8",
-              "8",
-              "6"
-            ],
-            "correct": 1,
-            "explicacion": "Al dividir -48 entre -6 se opera primero la parte numérica (48 entre 6 da 8) y luego se aplica la regla de signos iguales (-)/(-) = (+), obteniéndose +8."
-          }
-        },
-        {
-          "texto": "Aplicando \"ley de signos\" → -40 / 5 = -8.",
-          "pregunta": {
-            "q": "¿Qué resultado se obtiene al operar -40 / 5?",
-            "opts": [
-              "8",
-              "-8",
-              "-35"
-            ],
-            "correct": 1,
-            "explicacion": "Se divide 40 entre 5 para obtener 8. Al tener signos distintos (-)/(+) la ley de signos indica que el resultado es negativo, siendo -8."
-          }
-        },
-        {
-          "texto": "Aplicando \"ley de signos\" → (-7)(-10) = 70.",
-          "pregunta": {
-            "q": "¿Cuál es el producto de (-7)(-10)?",
-            "opts": [
-              "-70",
-              "70",
-              "-17"
-            ],
-            "correct": 1,
-            "explicacion": "Se multiplican los valores absolutos (7 por 10 es 70). Por la regla de signos, negativo por negativo resulta en positivo (+70)."
-          }
-        },
-        {
-          "texto": "Aplicando \"ley de signos\" → (+9)(-6) = -54.",
-          "pregunta": {
-            "q": "¿Cuánto es el producto de (+9) por (-6)?",
-            "opts": [
-              "54",
-              "-54",
-              "-15"
-            ],
-            "correct": 1,
-            "explicacion": "Se multiplican los números (9 por 6 es 54) y como los signos son diferentes (+ por -), el producto adquiere el signo negativo (-54)."
-          }
+          "texto": "Signos diferentes ⇒ Se restan + signo del mayor",
+          "explicacion": "Cuando agrupamos cantidades opuestas, la operación se convierte en una sustracción de sus valores absolutos. Por ejemplo, en el apunte se muestra $-8 + 4$. Restamos los valores ($8 - 4 = 4$) y, como el número $-8$ tiene un mayor valor absoluto ($|-8| > |4|$), el resultado hereda su signo negativo: $-4$. Como \"truco de examen\", asocia siempre los positivos y negativos por separado antes de realizar la resta final."
         }
       ]
     },
     {
-      "titulo": "Adición y sustracción con signos",
+      "titulo": "2. Leyes de Signos: Multiplicación",
       "puntos": [
         {
-          "texto": "\"Signos diferentes\" = restar + signo del \"mayor\".",
-          "pregunta": {
-            "q": "¿Qué se debe hacer cuando sumas o restas dos números con signos diferentes?",
-            "opts": [
-              "Sumar los valores y poner signo positivo",
-              "Restar los valores y colocar el signo del mayor",
-              "Restar y poner siempre signo negativo"
-            ],
-            "correct": 1,
-            "explicacion": "En la adición o sustracción de números enteros con diferente signo, se calcula la diferencia entre sus valores absolutos y al resultado se le asigna el signo del número con mayor valor absoluto."
-          }
+          "texto": "Factores con signos iguales ⇒ Producto positivo",
+          "explicacion": "El producto de dos números con el mismo signo siempre generará un número positivo absoluto, sin excepciones. Esto incluye tanto $(+) \\cdot (+) = (+)$ como $(-) \\cdot (-) = (+)$. Como se ve en tus ejercicios, el cálculo de $(-7)(-10)$ se resuelve multiplicando $7 \\times 10 = 70$, y al tener ambos el signo negativo, el resultado final es un $+70$ rotundo."
         },
         {
-          "texto": "Aplicando \"regla de sustracción\" → -8 + 4 = -4.",
-          "pregunta": {
-            "q": "¿Cuál es el valor resultante de la operación -8 + 4?",
-            "opts": [
-              "12",
-              "-4",
-              "4"
-            ],
-            "correct": 1,
-            "explicacion": "Al tener signos contrarios se restan los valores absolutos: 8 menos 4 es 4. Como -8 tiene mayor valor absoluto, el resultado conserva su signo negativo (-4)."
-          }
-        },
-        {
-          "texto": "\"Signos iguales\" = sumar + mantener \"signo\".",
-          "pregunta": {
-            "q": "Si operas dos números que poseen signos iguales, ¿cómo se determina el signo del resultado?",
-            "opts": [
-              "Se suma y se mantiene el mismo signo",
-              "Se suma y siempre es positivo",
-              "Se resta y se toma el signo del mayor"
-            ],
-            "correct": 0,
-            "explicacion": "Cuando dos términos tienen el mismo signo (ambos positivos o ambos negativos), se suman sus valores absolutos y el resultado mantiene ese mismo signo en común."
-          }
-        },
-        {
-          "texto": "Aplicando \"signos iguales\" → +15 + 30 = +45.",
-          "pregunta": {
-            "q": "¿Cuánto resulta al operar +15 + 30?",
-            "opts": [
-              "+45",
-              "-45",
-              "+15"
-            ],
-            "correct": 0,
-            "explicacion": "Ambos enteros son positivos, por lo tanto se suman sus valores (15 + 30 = 45) y se conserva el signo positivo del conjunto (+45)."
-          }
+          "texto": "Factores con signos diferentes ⇒ Producto negativo",
+          "explicacion": "Al multiplicar cantidades con signos opuestos, la positividad se rompe invariablemente, es decir, $(+) \\cdot (-) = (-)$ o $(-) \\cdot (+) = (-)$. Tomando el ejemplo de tu cuaderno, si multiplicamos $(+9)(-6)$, primero operamos los números $9 \\times 6 = 54$, y por la diferencia de signos, el resultado final es $-54$. Una regla de oro extendida: si multiplicas varios factores, una cantidad impar de signos negativos siempre dará un producto negativo."
         }
       ]
     },
     {
-      "titulo": "Problemas de aplicación en operaciones básicas",
+      "titulo": "3. Leyes de Signos: División",
       "puntos": [
         {
-          "texto": "Aplicando \"sumas sucesivas\" → 21 + 29 + 16 = 66.",
-          "pregunta": {
-            "q": "En el problema 1, si D = 21, E = 29 y F = 16, ¿cuál es la suma total?",
-            "opts": [
-              "66",
-              "56",
-              "76"
-            ],
-            "correct": 0,
-            "explicacion": "Al sumar paso a paso los valores obtenidos de D (21), E (21+8=29) y F (21-5=16), obtenemos 21 + 29 + 16 = 66."
-          }
+          "texto": "Dividendo y divisor iguales ⇒ Cociente positivo",
+          "explicacion": "La división respeta la misma lógica simétrica que la multiplicación para los signos idénticos: $\\frac{(+)}{(+)} = (+)$ y $\\frac{(-)}{(-)} = (+)$. Al analizar la fracción $\\frac{-48}{-6}$, vemos un doble negativo. Al dividir $48 \\div 6 = 8$, los signos negativos se neutralizan creando el \"1 encubierto\", dejando el resultado como $+8$. Esto es vital al simplificar fracciones algebraicas."
         },
         {
-          "texto": "Aplicando \"multiplicación\" → 1,5(10) = 15.",
-          "pregunta": {
-            "q": "¿Cuál es el producto de multiplicar 1,5 por 10 en el problema 2?",
-            "opts": [
-              "1,50",
-              "15",
-              "150"
-            ],
-            "correct": 1,
-            "explicacion": "Al multiplicar un número decimal por 10, la coma decimal se desplaza una posición hacia la derecha, por lo que 1,5 por 10 es igual a 15."
-          }
-        },
-        {
-          "texto": "Aplicando \"multiplicación\" → 2(12)(5) = 120.",
-          "pregunta": {
-            "q": "¿Cuánto es el resultado del producto 2 por 12 por 5?",
-            "opts": [
-              "120",
-              "100",
-              "60"
-            ],
-            "correct": 0,
-            "explicacion": "Aplicando la propiedad asociativa: podemos multiplicar 2 por 5 primero para obtener 10, y luego multiplicarlo por 12 para resultar en 120."
-          }
-        },
-        {
-          "texto": "Aplicando \"multiplicación\" → 20(10) = 200.",
-          "pregunta": {
-            "q": "¿Cuál es el producto de multiplicar 20 por 10?",
-            "opts": [
-              "200",
-              "20",
-              "2000"
-            ],
-            "correct": 0,
-            "explicacion": "Para multiplicar por 10 un número entero, basta con agregar un cero a la derecha del valor original, dando 200."
-          }
-        },
-        {
-          "texto": "Aplicando \"suma total\" → 200 + 15 + 120 = 335.",
-          "pregunta": {
-            "q": "¿Cuánto es la suma final del problema 2 (200 + 15 + 120)?",
-            "opts": [
-              "335",
-              "325",
-              "345"
-            ],
-            "correct": 0,
-            "explicacion": "Sumando las tres cantidades obtenidas previamente: 200 más 120 resulta en 320, y sumándole 15 obtenemos el total de 335."
-          }
-        },
-        {
-          "texto": "Aplicando \"división entera\" → 820 / 72 ≈ 11.",
-          "pregunta": {
-            "q": "En el problema 4, al dividir 820 entre 72, ¿cuál es el cociente entero aproximado?",
-            "opts": [
-              "11",
-              "12",
-              "10"
-            ],
-            "correct": 0,
-            "explicacion": "Al dividir 820 entre 72 se obtiene un cociente entero igual a 11 (ya que 72 por 11 es 792) dejando un residuo menor que el divisor."
-          }
-        },
-        {
-          "texto": "Aplicando \"división exacta\" → 1440 / 120 = 12.",
-          "pregunta": {
-            "q": "En el problema 3, ¿qué cociente da la división 1440 / 120?",
-            "opts": [
-              "12",
-              "11",
-              "14"
-            ],
-            "correct": 0,
-            "explicacion": "Al simplificar el cero final en dividendo y divisor, la operación equivale a dividir 144 entre 12, lo cual resulta exactamente en 12."
-          }
-        },
-        {
-          "texto": "Aplicando \"división exacta\" → 1310 / 10 = 131.",
-          "pregunta": {
-            "q": "¿Cuál es el resultado de dividir 1310 entre 10?",
-            "opts": [
-              "131",
-              "13",
-              "1310"
-            ],
-            "correct": 0,
-            "explicacion": "Para dividir un entero acabado en ceros entre 10, simplemente se retira un cero de la derecha del número, obteniéndose 131."
-          }
-        },
-        {
-          "texto": "Aplicando \"diferencia\" → 131 - 120 = 11.",
-          "pregunta": {
-            "q": "En el problema 3, ¿cuál es la diferencia final entre 131 y 120?",
-            "opts": [
-              "11",
-              "10",
-              "12"
-            ],
-            "correct": 0,
-            "explicacion": "Al restar el segundo cociente (120) del primero (131), la diferencia directa es 11."
-          }
+          "texto": "Dividendo y divisor diferentes ⇒ Cociente negativo",
+          "explicacion": "Si el numerador y el denominador tienen signos contrarios, la fracción resultante representará un número negativo: $\\frac{(+)}{(-)} = (-)$ o $\\frac{(-)}{(+)} = (-)$. En el caso de $\\frac{-40}{5}$, el $5$ se asume tácitamente como $+5$. Al efectuar la división $40 \\div 5 = 8$, el choque de signos distintos genera un cociente de $-8$. El signo negativo puede escribirse en el numerador, denominador o en medio de la fracción indistintamente."
         }
       ]
-    }
-  ],
-  "examen": [
-    {
-      "tipo": "opcion_multiple",
-      "q": "Determine el valor de la expresión combinada: M = (-4)(+5)(-2) / (-8).",
-      "opts": [
-        "-5",
-        "5",
-        "-10",
-        "10",
-        "-40"
-      ],
-      "correct": 0,
-      "explicacion": "En el numerador, al multiplicar (-4)(+5) obtenemos -20, y al multiplicar por (-2) obtenemos +40. Al dividir +40 entre -8, por tener signos diferentes, el cociente es -5."
     },
     {
-      "tipo": "opcion_multiple",
-      "q": "Si P = (-12) / (+3) y Q = (+20) / (-5), halle el valor de P - Q.",
-      "opts": [
-        "-8",
-        "0",
-        "8",
-        "-16",
-        "16"
-      ],
-      "correct": 1,
-      "explicacion": "Calculamos P = -4 y Q = -4. Al restar P - Q, tenemos -4 - (-4), que se convierte en -4 + 4, cuyo resultado es 0."
+      "titulo": "Sumatorias notables básicas (Desde 1)",
+      "puntos": [
+        {
+          "texto": "\"Suma de naturales\" = n(n + 1) ÷ 2",
+          "explicacion": "Suma de los primeros números enteros consecutivos desde 1 hasta n. Por ejemplo, para calcular el número total de asientos numerados del 1 al 10 en una fila especial, se opera 10(11) ÷ 2, obteniendo 55 asientos en total."
+        },
+        {
+          "texto": "\"Suma de pares\" = n(n + 1)",
+          "explicacion": "Suma de los primeros números pares consecutivos desde 2 hasta 2n. Por ejemplo, para calcular la suma de las páginas pares leídas 2 + 4 + 6 + 8 + 10 (donde n = 5), se opera 5(6), resultando 30."
+        },
+        {
+          "texto": "\"Suma de impares\" = n²",
+          "explicacion": "Suma de los primeros números impares consecutivos desde 1. Por ejemplo, si un cultivo de bacterias se incrementa en secuencias de 1, 3, 5 y 7 especímenes por hora (4 términos), el acumulado total se calcula directamente como 4², es decir, 16 bacterias."
+        },
+        {
+          "texto": "\"Suma de cuadrados\" = n(n + 1)(2n + 1) ÷ 6",
+          "explicacion": "Suma de los cuadrados de los primeros números naturales consecutivos. Por ejemplo, al apilar cajas en plataformas cuadradas cuyas áreas de base son 1², 2² y 3² metros cuadrados, el espacio total ocupado se calcula como 3(4)(7) ÷ 6 = 14 metros cuadrados."
+        },
+        {
+          "texto": "\"Suma de cubos\" = [n(n + 1) ÷ 2]²",
+          "explicacion": "Suma de los cubos de los primeros números naturales consecutivos. Por ejemplo, para calcular el volumen total de 3 bloques cúbicos cuyas aristas miden 1, 2 y 3 unidades (1³ + 2³ + 3³), se eleva al cuadrado la suma natural de 3 términos: [3(4) ÷ 2]², obteniendo 36."
+        }
+      ]
     },
     {
-      "tipo": "opcion_multiple",
-      "q": "Un submarino desciende 150 metros, luego asciende 80 metros y finalmente desciende 120 metros. Representando los descensos como negativos, determine la profundidad final.",
-      "opts": [
-        "-190 metros",
-        "-350 metros",
-        "+190 metros",
-        "-110 metros",
-        "+110 metros"
-      ],
-      "correct": 0,
-      "explicacion": "La operación es -150 + 80 - 120. Sumando los negativos tenemos -270. Operando con el positivo: -270 + 80 = -190. Se restan y se coloca el signo del mayor absoluto."
+      "titulo": "Progresión Aritmética (Cualquier inicio)",
+      "puntos": [
+        {
+          "texto": "\"Termino enésimo\" = t₁ + (n - 1)r",
+          "explicacion": "Permite calcular cualquier término de una sucesión lineal con razón constante. Por ejemplo, si un obrero ahorra 3 soles el primer día y aumenta su ahorro en 4 soles cada día, al cabo del cuarto día tendrá ahorrados 3 + (4 - 1)4 = 15 soles."
+        },
+        {
+          "texto": "\"Número de términos\" = (t_n - t₁) ÷ r + 1",
+          "explicacion": "Calcula la cantidad total de elementos en una progresión aritmética finita. Por ejemplo, si un paciente toma una pastilla el día 5 del mes y luego los días 8, 11... hasta el día 17, el número total de tomas es (17 - 5) ÷ 3 + 1 = 5 días."
+        },
+        {
+          "texto": "\"Suma total P.A.\" = [(t₁ + t_n) ÷ 2] × n",
+          "explicacion": "Calcula la suma de cualquier progresión aritmética que no empieza en uno. Por ejemplo, para calcular las ventas acumuladas de tres días que empiezan en 4, continúan con 7 y terminan en 10 unidades, se opera [(4 + 10) ÷ 2] × 3 = 21 unidades."
+        }
+      ]
     },
     {
-      "tipo": "opcion_multiple",
-      "q": "Resuelva la siguiente situación: A la diferencia entre -30 y -10, multiplíquela por el cociente de -100 entre +25.",
-      "opts": [
-        "160",
-        "-160",
-        "80",
-        "-80",
-        "120"
-      ],
-      "correct": 2,
-      "explicacion": "La diferencia es -30 - (-10) = -30 + 10 = -20. El cociente es -100 / 25 = -4. Multiplicando ambos resultados: (-20)(-4) = +80. Signos iguales al multiplicar dan positivo."
+      "titulo": "Series geométricas",
+      "puntos": [
+        {
+          "texto": "\"Suma geométrica finita\" = t₁ (rⁿ - 1) ÷ (r - 1)",
+          "explicacion": "Calcula la suma de una progresión geométrica con una cantidad finita de términos. Por ejemplo, si una cadena de contagio viral empieza con 2 infectados y triplica su cantidad cada hora durante 3 horas, el total de afectados se calcula como 2(3³ - 1) ÷ (3 - 1) = 26 personas."
+        },
+        {
+          "texto": "\"Suma geométrica infinita\" = t₁ ÷ (1 - r)",
+          "explicacion": "Calcula la suma límite de una serie geométrica decreciente infinita donde la razón tiene un valor absoluto menor que uno. Por ejemplo, si una pelota rebota perdiendo siempre la mitad de su altura anterior iniciando en 4 metros, la distancia vertical total que recorre hasta detenerse es 4 ÷ (1 - 0.5) = 8 metros."
+        }
+      ]
     },
     {
-      "tipo": "opcion_multiple",
-      "q": "Si el producto de tres enteros es -42, y dos de ellos son -2 y -7, ¿cuál es el tercer número?",
-      "opts": [
-        "-3",
-        "3",
-        "-6",
-        "6",
-        "-14"
-      ],
-      "correct": 0,
-      "explicacion": "El producto de los dos primeros es (-2)(-7) = +14. Para que el producto final sea -42, el tercer número debe ser negativo: -42 / 14 = -3."
+      "titulo": "4. Algoritmo de la División Entera Inexacta",
+      "puntos": [
+        {
+          "texto": "D = d(q) + r",
+          "explicacion": "Este es el Teorema Fundamental de la División o Algoritmo de Euclides, donde el Dividendo ($D$) iguala al divisor ($d$) por el cociente ($q$) más el residuo ($r$). En tu problema 4, al dividir $820$ entre $72$, hallamos el cociente $11$. Aplicando la fórmula: $820 = 72(11) + a$. Como $72 \\times 11 = 792$, el residuo $a$ se calcula restando $820 - 792 = 28$. Este principio se explota constantemente en problemas de divisibilidad."
+        },
+        {
+          "texto": "Residuo r ⇒ Siempre positivo + menor al divisor",
+          "explicacion": "En una división entera clásica, el residuo por defecto tiene restricciones críticas que los examinadores usan como \"trampa\". El residuo nunca puede ser negativo ni mayor o igual que el divisor. Si tu residuo es igual a $d$, significa que cabe una vez más y tu cociente $q$ debe ser incrementado. El residuo máximo posible que te pueden pedir en admisión siempre se formula como $d - 1$."
+        }
+      ]
     },
     {
-      "tipo": "opcion_multiple",
-      "q": "Una cuenta bancaria muestra -250 soles. Se realiza un depósito de 400 soles y luego un retiro de 300 soles. ¿Cuál es el saldo final usando operaciones enteras?",
-      "opts": [
-        "-150 soles",
-        "+150 soles",
-        "-550 soles",
-        "+450 soles",
-        "-350 soles"
-      ],
-      "correct": 0,
-      "explicacion": "El saldo inicial es -250. El depósito es +400 y el retiro -300. Operación: -250 + 400 - 300. Agrupando negativos: -550. Sumando el positivo: -550 + 400 = -150. Se restan y se coloca el signo del mayor absoluto."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si al cuádruple de -6 se le resta el triple de -8, ¿qué valor numérico se obtiene?",
-      "opts": [
-        "-48",
-        "0",
-        "48",
-        "-24",
-        "24"
-      ],
-      "correct": 1,
-      "explicacion": "El cuádruple de -6 es 4(-6) = -24. El triple de -8 es 3(-8) = -24. Nos piden restar ambos: -24 - (-24). El doble negativo se hace positivo: -24 + 24 = 0."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Calcule el valor de E = [ (-1) + (-2) + (-3) ] / [ (+1) * (-2) * (+3) ].",
-      "opts": [
-        "-1",
-        "1",
-        "-6",
-        "6",
-        "0"
-      ],
-      "correct": 1,
-      "explicacion": "El numerador es una suma de signos iguales: -1 - 2 - 3 = -6. El denominador es un producto: 1 * -2 * 3 = -6. La división final es -6 / -6, que por tener signos iguales da +1."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Halle el resultado de la siguiente secuencia: 12 - 15 + 8 - 10 + 3 - 5.",
-      "opts": [
-        "-3",
-        "-7",
-        "-13",
-        "7",
-        "3"
-      ],
-      "correct": 1,
-      "explicacion": "Agrupamos positivos: 12 + 8 + 3 = 23. Agrupamos negativos: -15 - 10 - 5 = -30. Sumamos ambos totales: 23 - 30. Signos diferentes se restan y manda el del mayor absoluto, quedando -7."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Determine el valor de la expresión matemática combinada: E = [ (-3)(-4)(-5)(-2) ] / [ (-2)(-5) ].",
-      "opts": [
-        "-12",
-        "12",
-        "-10",
-        "10",
-        "14"
-      ],
-      "correct": 1,
-      "explicacion": "Al aplicar la ley de signos en el numerador, la multiplicación de cuatro factores negativos resulta positiva (120). En el denominador, el producto de dos negativos también es positivo (10). La división de dos cantidades con igual signo positivo (120 / 10) arroja un cociente positivo de 12."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Se definen las variables operacionales A = (-7)(+8) y B = (+6)(-9). Calcule el valor de la diferencia A - B.",
-      "opts": [
-        "-110",
-        "110",
-        "-2",
-        "2",
-        "-4"
-      ],
-      "correct": 2,
-      "explicacion": "Primero se resuelve cada producto considerando signos diferentes: A resulta en -56 y B resulta en -54. Al plantear la resta A - B, se tiene -56 - (-54). El doble signo negativo se convierte en positivo, quedando -56 + 54. Por ser signos distintos se restan y se coloca el signo del mayor valor absoluto, resultando -2."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Reduzca la siguiente expresión, respetando la regla de signos para la división: K = (-144 / -12) + (-200 / -10) - (-45 / -3).",
-      "opts": [
-        "17",
-        "-17",
-        "47",
-        "-47",
-        "7"
-      ],
-      "correct": 0,
-      "explicacion": "Al dividir pares de números con signos iguales, todos los cocientes parciales serán positivos: 12, 20 y 15 respectivamente. La expresión se reduce a 12 + 20 - 15. Realizando las sumas y restas con signos distintos obtenemos 32 - 15 = 17."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Halle el resultado de la siguiente operación compuesta: W = (-480 / +12) / (+80 / -2).",
-      "opts": [
-        "-1",
-        "0",
-        "10",
-        "1",
-        "-10"
-      ],
-      "correct": 3,
-      "explicacion": "Los dividendos y divisores iniciales tienen signos diferentes, por lo que arrojan cocientes negativos: (-480 / +12) = -40 y (+80 / -2) = -40. Al reemplazar en W, queda la división final -40 / -40. Como ahora los signos son iguales, el cociente final es +1."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si a la suma de -45 y -35 se le divide entre la suma de -2 y -2, ¿qué resultado se obtiene aplicando secuencialmente las leyes de signos?",
-      "opts": [
-        "-20",
-        "-16",
-        "24",
-        "16",
-        "20"
-      ],
-      "correct": 4,
-      "explicacion": "En el numerador, al sumar dos números con el mismo signo se suman sus valores y se conserva el signo, obteniendo -80. En el denominador se aplica la misma regla obteniendo -4. Finalmente, se divide -80 entre -4; por tener signos iguales, el cociente es el número positivo 20."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "El cociente de dos números enteros negativos es 8. Si se sabe que el dividendo es -48, halle la suma del dividendo, el divisor y el cociente.",
-      "opts": [
-        "-46",
-        "-54",
-        "-62",
-        "46",
-        "54"
-      ],
-      "correct": 0,
-      "explicacion": "Si el dividendo es -48 y el cociente es 8 positivo (debido a la división de signos iguales), el divisor debe ser -6 (ya que -48 / -6 = 8). Se nos pide la suma de los tres elementos: -48 + (-6) + 8 = -54 + 8. Al tener signos diferentes se restan, colocando el signo del mayor absoluto, dando -46."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "En una operación de división exacta, el dividendo es -40 y el divisor es 5. Si al cociente obtenido se le multiplica por la diferencia geométrica entre el divisor y el cociente, ¿cuál es el resultado final?",
-      "opts": [
-        "104",
-        "-104",
-        "-24",
-        "24",
-        "-144"
-      ],
-      "correct": 1,
-      "explicacion": "Al dividir signos distintos (-40 / 5) el cociente es -8. La diferencia entre divisor y cociente es 5 - (-8), lo que equivale a 5 + 8 = 13. Finalmente, se multiplica el cociente por esta diferencia: (-8)(13). Por tener signos distintos, el producto final es -104."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "El producto de dos factores con el mismo signo es 70. Si se sabe que ambos son enteros negativos y uno de los factores es -7, calcule el cubo del otro factor.",
-      "opts": [
-        "1000",
-        "-100",
-        "100",
-        "-1000",
-        "-700"
-      ],
-      "correct": 3,
-      "explicacion": "Sabemos por regla que (-)(-) = (+). Si el producto es 70 y un factor es -7, el otro factor debe ser obligatoriamente -10 para mantener la igualdad (-7 * -10 = 70). El cubo de -10 es (-10) * (-10) * (-10), lo que resulta en -1000."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Al multiplicar un número positivo (+9) por un factor desconocido 'X' se obtiene -54. Determine el valor numérico de la expresión: X² - 3X + 1.",
-      "opts": [
-        "19",
-        "-17",
-        "55",
-        "37",
-        "-55"
-      ],
-      "correct": 2,
-      "explicacion": "Al tener un producto negativo a partir de un factor positivo, el factor 'X' debe ser negativo: X = -54 / 9 = -6. Sustituyendo en la expresión cuadrática, tenemos (-6)² - 3(-6) + 1. El cuadrado de un negativo es positivo (36), y la multiplicación de negativos es positiva (+18). Quedando 36 + 18 + 1 = 55."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Teniendo en cuenta la regla de adición de signos diferentes donde -8 + 4 = -4, evalúe y halle el valor de P en la expresión: P = (-8 + 4)(-8 - 4) / (-4 + 8).",
-      "opts": [
-        "-12",
-        "12",
-        "-16",
-        "16",
-        "8"
-      ],
-      "correct": 1,
-      "explicacion": "Resolvemos cada paréntesis: (-8 + 4) = -4; (-8 - 4) = -12 por tener signos iguales; (-4 + 8) = 4 positivo. Reemplazando tenemos P = (-4)(-12) / 4. En el numerador multiplicamos iguales dando +48. Finalmente dividimos 48 / 4 para obtener 12."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Considerando la suma de enteros con signos iguales +15 + 30 = +45, determine el valor de 'Y' en la siguiente ecuación: Y = (+15 + 30) / (-5) - (-15 - 30) / (+9).",
-      "opts": [
-        "-14",
-        "14",
-        "4",
-        "-9",
-        "-4"
-      ],
-      "correct": 4,
-      "explicacion": "Reemplazamos las sumas en los numeradores: Y = (+45) / (-5) - (-45) / (+9). Realizamos las divisiones con signos diferentes obteniendo negativos: Y = (-9) - (-5). Al operar los signos de la resta el doble negativo se vuelve suma, quedando Y = -9 + 5. Signos diferentes se restan conservando el signo del mayor absoluto, resultando -4."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Dada la secuencia de operaciones 21 + 8 = 29 y 29 - 13 = 16. Si multiplicamos el resultado final por -4 y le sumamos el triple del valor inicial (21), ¿qué número se obtiene?",
-      "opts": [
-        "-1",
-        "1",
-        "-127",
-        "127",
-        "0"
-      ],
-      "correct": 0,
-      "explicacion": "El resultado final de la secuencia dada es 16. Multiplicando esto por -4 obtenemos -64 (ley de signos opuestos). El triple del valor inicial 21 es 3 * 21 = 63. Sumando ambos términos tenemos -64 + 63. Como poseen signos diferentes, se restan y manda el signo del mayor absoluto, originando -1."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Al resolver la secuencia de sumas 200 + 15 + 120 obtenemos un total 'T'. Calcule el resultado de multiplicar (T - 335) por un entero negativo 'k' y sumarle el valor de (-1)³.",
-      "opts": [
-        "0",
-        "1",
-        "-1",
-        "334",
-        "-335"
-      ],
-      "correct": 2,
-      "explicacion": "El total 'T' de la suma es exactamente 335. En la expresión pedida, el primer factor es (335 - 335) que equivale a 0. Todo número (incluido 'k') multiplicado por 0 se anula. Sólo queda sumarle el cubo de -1. Un número negativo elevado a un exponente impar sigue siendo negativo, por lo que el resultado definitivo es -1."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Calcule el valor de la expresión: M = 2 - [ -3 + 4 - (5 - 6) ].",
-      "opts": [
-        "-2",
-        "2",
-        "0",
-        "4",
-        "-4"
-      ],
-      "correct": 2,
-      "explicacion": "Resolvemos primero el paréntesis más interno: (5 - 6) = -1. Sustituimos en la expresión: M = 2 - [ -3 + 4 - (-1) ]. El doble signo se vuelve suma: M = 2 - [ -3 + 4 + 1 ]. Operamos dentro del corchete: M = 2 - [ 2 ]. Finalmente, 2 - 2 = 0."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Determine la alternativa que presenta un resultado INCORRECTO de acuerdo con la ley de signos.",
-      "opts": [
-        "(-8) + (-5) = -13",
-        "(-7)(-6) = 42",
-        "(+40) / (-8) = -5",
-        "(-12) - (-9) = 3",
-        "(+6) + (-10) = -4"
-      ],
-      "correct": 3,
-      "explicacion": "La alternativa incorrecta es (-12) - (-9) = 3. Al operar los signos queda -12 + 9, y por tener signos distintos se restan colocando el signo del mayor valor absoluto, lo que debería resultar en -3, no en 3 positivo."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Evalúe las siguientes proposiciones referidas a operaciones básicas y seleccione la alternativa correcta:\nI. El producto de un número negativo por cero es positivo.\nII. Dividir un número negativo entre otro negativo arroja un cociente positivo.\nIII. La suma de dos números negativos siempre es un número negativo.",
-      "opts": [
-        "Solo I",
-        "Solo II y III",
-        "Solo I y III",
-        "Solo II",
-        "I, II y III"
-      ],
-      "correct": 1,
-      "explicacion": "La proposición I es falsa porque el cero no tiene signo. La proposición II es verdadera según la ley de signos (menos entre menos es más). La proposición III es verdadera; al sumar signos iguales, estos se suman y conservan su signo negativo."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Dada la operación combinada J = 5 - 3(2 - 7) + 12 / (-3). Halle el valor numérico final.",
-      "opts": [
-        "12",
-        "16",
-        "24",
-        "-4",
-        "6"
-      ],
-      "correct": 1,
-      "explicacion": "Primero operamos el paréntesis: (2 - 7) = -5. Sustituimos: J = 5 - 3(-5) + 12 / (-3). Luego, las multiplicaciones y divisiones: -3(-5) = +15, y 12 / (-3) = -4. Queda: J = 5 + 15 - 4. Operando de izquierda a derecha: 20 - 4 = 16."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "En un examen, cada respuesta correcta suma +4 puntos y cada incorrecta suma -1 punto. Si un alumno acertó 15 preguntas y falló 10, ¿cuál es su puntaje final?",
-      "opts": [
-        "70",
-        "60",
-        "50",
-        "40",
-        "45"
-      ],
-      "correct": 2,
-      "explicacion": "Multiplicamos los aciertos por su valor: 15 * (+4) = +60. Multiplicamos las incorrectas por su valor: 10 * (-1) = -10. Sumamos ambos puntajes: +60 + (-10). Signos diferentes se restan, resultando en un puntaje final de 50."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Si se sabe que x + y = -15 y que x = -9, determine el valor de (y / 2) - 3.",
-      "opts": [
-        "-6",
-        "6",
-        "-3",
-        "0",
-        "-9"
-      ],
-      "correct": 0,
-      "explicacion": "Al reemplazar x, tenemos -9 + y = -15. Despejando 'y' (el -9 pasa sumando): y = -15 + 9, por lo que y = -6. Nos piden (y / 2) - 3. Reemplazamos: (-6 / 2) - 3. Esto resulta en -3 - 3. Signos iguales se suman y conservan signo: -6."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "Halle la suma de todos los factores de la siguiente expresión luego de ser evaluada: (-2)³ + (-5)² - (-4)³.",
-      "opts": [
-        "81",
-        "-47",
-        "17",
-        "53",
-        "-53"
-      ],
-      "correct": 0,
-      "explicacion": "El primer término (-2)³ resulta en -8 (base negativa, exponente impar). El segundo (-5)² resulta en +25 (base negativa, exponente par). El tercero (-4)³ resulta en -64. Sustituyendo: -8 + 25 - (-64). Eliminando el doble signo: -8 + 25 + 64. Sumando positivos: 89. Restando el negativo: 89 - 8 = 81."
-    },
-    {
-      "tipo": "opcion_multiple",
-      "q": "¿Qué número se debe restar a -15 para que la diferencia algebraica final sea +20?",
-      "opts": [
-        "5",
-        "-5",
-        "35",
-        "-35",
-        "-15"
-      ],
-      "correct": 3,
-      "explicacion": "Planteamos la ecuación: -15 - X = 20. Despejando la X, la pasamos al otro lado positiva y traemos el 20 restando: -15 - 20 = X. Al ser signos iguales se suman sus magnitudes y conservan el signo, por lo tanto X = -35. Comprobación: -15 - (-35) = -15 + 35 = +20."
+      "titulo": "5. Propiedades Adicionales y Estrategias Operativas",
+      "puntos": [
+        {
+          "texto": "a(b+c) = ab + ac",
+          "explicacion": "La Ley Distributiva es el mecanismo inverso a la factorización por factor común, esencial para desarmar paréntesis. Cuando en tu cuaderno multiplicas el área separada en rectángulos, estás distribuyendo. Si te enfrentas a un $2(x - 5)$, debes asegurar que el $2$ multiplique a ambos términos con sus signos, quedando $2x - 10$. No distribuir el segundo término es el error más recurrente en simulacros."
+        },
+        {
+          "texto": "Multiplicación por base 10 ⇒ Desplazar coma decimal",
+          "explicacion": "Multiplicar por potencias de diez no requiere usar algoritmos verticales que consumen tiempo valioso. Si analizamos tu apunte con $1.5(10) = 15$, la coma simplemente saltó una posición a la derecha porque el $10$ tiene un cero. Si tuvieras $1.5(100)$, saltaría dos posiciones, rellenando con ceros si es necesario, resultando en $150$. Aplica este atajo mental siempre que veas factores terminados en cero."
+        },
+        {
+          "texto": "Jerarquía operativa ⇒ Aplica ley PEMDAS estrictamente",
+          "explicacion": "Si las operaciones básicas aparecen mezcladas en un solo bloque, existe un orden universal inquebrantable. Primero se atacan los Paréntesis o corchetes de adentro hacia afuera, luego Exponentes o raíces, seguido de Multiplicaciones o divisiones (de izquierda a derecha), y por último Sumas o restas. Ejemplo trampa: $10 - 2 \\times 3$. Si restas primero obtendrás $24$ (Incorrecto ✗), debes multiplicar primero $2 \\times 3 = 6$ para obtener $10 - 6 = 4$ (Correcto ✓)."
+        }
+      ]
     }
   ]
 }
