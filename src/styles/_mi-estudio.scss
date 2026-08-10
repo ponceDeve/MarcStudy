@@ -65,7 +65,7 @@
   width: 100%;
 }
 .mi-estudio__hud-wrap {
-  margin-bottom: 24px;
+  margin-bottom: 60px;
   width: 100%;
   max-width: 48rem;
   margin-left: auto;
@@ -361,6 +361,15 @@
   border-bottom-width: 0;
   transform: translateY(1px);
 }
+.mi-estudio__finished-btn.is-outline {
+  background: transparent;
+  border: 2px solid var(--border-strong);
+  border-bottom: 2px solid var(--border-strong);
+  color: var(--ink-soft);
+}
+.mi-estudio__finished-btn.is-outline:hover {
+  background: var(--surface-hover);
+}
 
 /* Menú "config" a pantalla completa (abandonar / fullscreen / continuar) */
 .config-overlay {
@@ -422,22 +431,8 @@
   border-bottom-color: var(--primary-dark);
 }
 .config-overlay__btn.is-success {
-  background: var(--primary);
-  border-bottom-color: var(--primary-dark);
-}
-.config-overlay__btn.is-info {
   background: var(--secondary);
   border-bottom-color: var(--secondary-dark);
-}
-.config-overlay__btn.is-warning {
-  background: var(--warning);
-  border-bottom-color: color-mix(in srgb, var(--warning) 70%, black);
-  color: var(--bg);
-}
-.config-overlay__btn.is-neutral {
-  background: var(--surface-alt);
-  border-bottom-color: var(--border-strong);
-  color: var(--ink-soft);
 }
 .vidas-alert {
   width: min(340px, 90vw);
@@ -498,7 +493,6 @@
   position: relative;
   width: 100%;
   max-width: 620px;
-  margin-bottom: 30px;
 }
 .theory-search__input {
   width: 100%;

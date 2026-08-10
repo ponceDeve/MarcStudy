@@ -349,12 +349,26 @@ export default function MiEstudioPage() {
 
   function elegirModoEstudio(modo) {
     setPreguntaModoAbierta(false);
+
     if (modo === "solo_preguntas") {
-      // Preguntas de examen en orden aleatorio, arrancando siempre desde
-      // la posición 0 (sin importar en qué tarjeta de teoría te quedaste).
-      // La cantidad de preguntas de examen es 1 a 1 con flatPuntos.
-      const totalPreguntas = examenPreguntas.length || flatPuntos.length;
-      const orden = shuffle(Array.from({ length: totalPreguntas }, (_, i) => i));
+      // Si no hay preguntas de examen, mostrar el toast
+      if (examenPreguntas.length === 0) {
+        reproducirSonidoAlerta(); // 🔊
+
+        setSinPreguntaAlerta(true);
+
+        setTimeout(() => {
+          setSinPreguntaAlerta(false);
+        }, 4000);
+
+        return;
+      }
+
+      const totalPreguntas = examenPreguntas.length;
+      const orden = shuffle(
+        Array.from({ length: totalPreguntas }, (_, i) => i)
+      );
+
       setOrdenPreguntas(orden);
       setPosOrden(0);
       setCardIndex(orden[0] ?? 0);
@@ -412,7 +426,16 @@ export default function MiEstudioPage() {
         const pregunta = examenPreguntas[i] || null;
         if (pregunta) lote.push({ puntoIndex: i, pregunta });
       }
-      if (lote.length === 0) return; // nada que preguntar todavía
+      if (lote.length === 0) {
+        reproducirSonidoAlerta(); // 🔊
+        setSinPreguntaAlerta(true);
+
+        setTimeout(() => {
+          setSinPreguntaAlerta(false);
+        }, 4000);
+
+        return;
+      }
 
       setQuizBatch(shuffle(lote));
       setQuizPos(0);
@@ -537,17 +560,41 @@ export default function MiEstudioPage() {
 
   function finalizarTema() {
     setStage("finished");
-    if (topicData) {
+    // Ya no se guarda en repasos automáticamente al llegar al final —
+    // se le pregunta al usuario primero (ver confirmGuardarRepasoFinal),
+    // porque si entraba y salía del tema repetidas veces se guardaba
+    // una entrada nueva cada vez, sin que lo pidiera.
+    setConfirmGuardarRepasoFinal(true);
+  }
+
+  function confirmarGuardarRepasoFinal(guardar) {
+    if (guardar && topicData) {
       registrarCursoCompletado({
         subject: topicData.curso,
         tema: topicData.tema,
       });
     }
+    setConfirmGuardarRepasoFinal(false);
   }
 
   // Guardar el tema para repasarlo después SIN necesidad de terminarlo
   // (por si el usuario se queda a medias pero igual lo quiere repasar).
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
+  const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
+  const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
+  function reproducirSonidoAlerta() {
+    const audio = new Audio(
+      `${import.meta.env.BASE_URL}sonidos/notificacion.mp3`
+    );
+
+    audio.volume = 0.7;
+    audio.currentTime = 0;
+
+    audio.play().catch((error) => {
+      console.warn("No se pudo reproducir el sonido de notificación:", error);
+    });
+  }
+
   function guardarParaRepaso() {
     if (!topicData) return;
     registrarCursoCompletado({
@@ -685,6 +732,7 @@ export default function MiEstudioPage() {
     setCountdown(0);
     setConfigOpen(false);
     setConfirmLeave(false);
+    setConfirmGuardarRepasoFinal(false);
   }
 
   function verPreguntasVistas() {
@@ -704,6 +752,7 @@ export default function MiEstudioPage() {
     setAttemptKey(0);
     setConfigOpen(false);
     setConfirmLeave(false);
+    setConfirmGuardarRepasoFinal(false);
     setCountdown(0);
   }
 
@@ -798,6 +847,21 @@ export default function MiEstudioPage() {
         onClose={() => setPomodoroAlarmaAbierta(false)}
       />
 
+      {/* NOTIFICACIONES FLOTANTES SUPERIORES */}
+      <div className="mi-estudio__alerts-container">
+        {repasoGuardadoMsg && (
+          <div className="repaso-toast">
+            <i className="fas fa-bookmark" /> Guardado para repasar
+          </div>
+        )}
+
+        {sinPreguntaAlerta && (
+          <div className="repaso-toast">
+            <i className="fas fa-circle-info" /> No hay pregunta por el momento de este tema
+          </div>
+        )}
+      </div>
+
       {/* El TopBar solo se muestra si hay tema y NO estamos en una pregunta */}
       {topicData && stage !== "question" && (
         <TopBar
@@ -808,12 +872,6 @@ export default function MiEstudioPage() {
           onAbrirTemas={() => setTemasOpen(true)}
           onGuardarRepaso={guardarParaRepaso}
         />
-      )}
-
-      {repasoGuardadoMsg && (
-        <div className="repaso-toast">
-          <i className="fas fa-bookmark" /> Guardado para repasar
-        </div>
       )}
 
       <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
@@ -894,89 +952,89 @@ export default function MiEstudioPage() {
                   </p>
                 )}
               </div>
-            <div className="home-search">
-              <div className="search-input-row">
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  onFocus={() => setBusquedaEnfocada(true)}
-                  onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                  onKeyDown={(e) => {
-                    // INTERCEPTAMOS EL ENTER: Si estás escribiendo y das Enter directo
-                    // sin bajar con las flechitas (focusedInicial <= 0), te manda 
-                    // directo al mejor resultado (curso o tema) igual que la lupa.
-                    if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
-                      e.preventDefault();
-                      const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-                      if (mejorOpcion) {
-                        seleccionarItem(mejorOpcion);
-                        return;
+              <div className="home-search">
+                <div className="search-input-row">
+                  <input
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onFocus={() => setBusquedaEnfocada(true)}
+                    onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                    onKeyDown={(e) => {
+                      // INTERCEPTAMOS EL ENTER: Si estás escribiendo y das Enter directo
+                      // sin bajar con las flechitas (focusedInicial <= 0), te manda 
+                      // directo al mejor resultado (curso o tema) igual que la lupa.
+                      if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
+                        e.preventDefault();
+                        const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                        if (mejorOpcion) {
+                          seleccionarItem(mejorOpcion);
+                          return;
+                        }
                       }
-                    }
-                    handleKeyDownInicial(e);
-                  }}
-                  placeholder="Buscar tema o curso..."
-                  className="search-input"
-                />
-                <div 
-                  className="search-input-lupa"
-                  onMouseDown={(e) => {
-                    e.preventDefault(); 
-                    if (hayQuery) {
-                      const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-                      if (mejorOpcion) seleccionarItem(mejorOpcion);
-                    }
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <i className="fa-solid fa-magnifying-glass" />
-                </div>
-              </div>
-              {busquedaEnfocada && hayQuery && grupos.length > 0 && (() => {
-                let idx = -1;
-                return (
-                  <div className="home-search-results search-results">
-                    {grupos.map((g) => {
-                      const idxCurso = ++idx;
-                      return (
-                        <div key={`grupo-${g.curso}`} className="">
-                          <button
-                            onMouseDown={(e) => {
-                              e.preventDefault();
-                              seleccionarItem({ type: "curso", nombre: g.curso });
-                            }}
-                            className={`search-result-item is-curso ${idxCurso === focusedInicial ? "is-focused" : ""}`}
-                          >
-                            <span className="curso-title">{g.curso}</span>
-                          </button>
-                          {g.temas.map((t) => {
-                            const idxTema = ++idx;
-                            return (
-                              <button
-                                key={`tema-${t.curso}-${t.tema}`}
-                                onMouseDown={(e) => {
-                                  e.preventDefault();
-                                  seleccionarItem(t);
-                                }}
-                                className={`search-result-item is-tema ${idxTema === focusedInicial ? "is-focused" : ""}`}
-                              >
-                                <p className="search-result-item__tema">{t.tema}</p>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      );
-                    })}
+                      handleKeyDownInicial(e);
+                    }}
+                    placeholder="Buscar tema o curso..."
+                    className="search-input"
+                  />
+                  <div
+                    className="search-input-lupa"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      if (hayQuery) {
+                        const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                        if (mejorOpcion) seleccionarItem(mejorOpcion);
+                      }
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <i className="fa-solid fa-magnifying-glass" />
                   </div>
-                );
-              })()}
-              {busquedaEnfocada && hayQuery && grupos.length === 0 && (
-                <div className="home-search-results search-results">
-                  <p className="search-empty">Sin resultados para "{query}"</p>
                 </div>
-              )}
+                {busquedaEnfocada && hayQuery && grupos.length > 0 && (() => {
+                  let idx = -1;
+                  return (
+                    <div className="home-search-results search-results">
+                      {grupos.map((g) => {
+                        const idxCurso = ++idx;
+                        return (
+                          <div key={`grupo-${g.curso}`} className="">
+                            <button
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                seleccionarItem({ type: "curso", nombre: g.curso });
+                              }}
+                              className={`search-result-item is-curso ${idxCurso === focusedInicial ? "is-focused" : ""}`}
+                            >
+                              <span className="curso-title">{g.curso}</span>
+                            </button>
+                            {g.temas.map((t) => {
+                              const idxTema = ++idx;
+                              return (
+                                <button
+                                  key={`tema-${t.curso}-${t.tema}`}
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    seleccionarItem(t);
+                                  }}
+                                  className={`search-result-item is-tema ${idxTema === focusedInicial ? "is-focused" : ""}`}
+                                >
+                                  <p className="search-result-item__tema">{t.tema}</p>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+                {busquedaEnfocada && hayQuery && grupos.length === 0 && (
+                  <div className="home-search-results search-results">
+                    <p className="search-empty">Sin resultados para "{query}"</p>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
           </>
         )}
 
@@ -1016,36 +1074,36 @@ export default function MiEstudioPage() {
                 </button>
 
                 <div className="arcade-game-container mi-estudio__theory">
-                <div className="arcade-grid" />
-                <div className="mi-estudio__theory-inner">
-                  <p className="mi-estudio__theory-badge">
-                    {current.seccionTitulo}
-                  </p>
-                  <p className="mi-estudio__theory-text">
-                    <GlossaryText text={current.texto} glosario={topicData?.glosario} />
-                  </p>
+                  <div className="arcade-grid" />
+                  <div className="mi-estudio__theory-inner">
+                    <p className="mi-estudio__theory-badge">
+                      {current.seccionTitulo}
+                    </p>
+                    <p className="mi-estudio__theory-text">
+                      <GlossaryText text={current.texto} glosario={topicData?.glosario} />
+                    </p>
 
-                  {current.explicacion && (
-                    <div className="mi-estudio__theory-explicacion">
-                      <GlossaryText text={current.explicacion} glosario={topicData?.glosario} />
-                    </div>
-                  )}
+                    {current.explicacion && (
+                      <div className="mi-estudio__theory-explicacion">
+                        <GlossaryText text={current.explicacion} glosario={topicData?.glosario} />
+                      </div>
+                    )}
 
-                  <div className="mi-estudio__google">
-                    <div className="mi-estudio__google-input-wrap">
-                      <input
-                        value={googleQuery}
-                        onChange={(e) => setGoogleQuery(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
-                        placeholder="Pregúntale a Google..."
-                        className="mi-estudio__google-input"
-                      />
-                      <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
-                        <i className="fab fa-google" />
-                      </button>
+                    <div className="mi-estudio__google">
+                      <div className="mi-estudio__google-input-wrap">
+                        <input
+                          value={googleQuery}
+                          onChange={(e) => setGoogleQuery(e.target.value)}
+                          onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
+                          placeholder="Pregúntale a Google..."
+                          className="mi-estudio__google-input"
+                        />
+                        <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
+                          <i className="fab fa-google" />
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </div>
               </div>
             )}
@@ -1071,13 +1129,12 @@ export default function MiEstudioPage() {
                 ) : (
                   <div className="mi-estudio__question-inner animate-fade-in">
                     <QuestionCard
-                      key={`${
-                        isLevelMode
-                          ? "nivel-" + nivelIndex
-                          : isFlipQuiz
-                            ? "flip-" + cardIndex + "-" + quizPos
-                            : "teoria-" + cardIndex
-                      }-${attemptKey}`}
+                      key={`${isLevelMode
+                        ? "nivel-" + nivelIndex
+                        : isFlipQuiz
+                          ? "flip-" + cardIndex + "-" + quizPos
+                          : "teoria-" + cardIndex
+                        }-${attemptKey}`}
                       pregunta={preguntaActual}
                       onRespondido={manejarRespuesta}
                     />
@@ -1151,14 +1208,42 @@ export default function MiEstudioPage() {
 
         {stage === "finished" && (
           <div className="mi-estudio__finished">
-            <div className="mi-estudio__finished-emoji animate-bounce">🏆</div>
-            <h2 className="mi-estudio__finished-title">
-              {nombreUsuario ? `¡Tema completado, ${nombreUsuario}!` : "¡Tema completado!"}
-            </h2>
-            <p className="mi-estudio__finished-sub">Excelente trabajo leyendo toda la teoría.</p>
-            <button onClick={() => setSearchOpen(true)} className="mi-estudio__finished-btn">
-              Elegir otro tema
-            </button>
+            {confirmGuardarRepasoFinal ? (
+              <>
+                <div className="mi-estudio__finished-emoji animate-bounce">📌</div>
+                <h2 className="mi-estudio__finished-title">¿Guardar este tema en tus repasos?</h2>
+                <p className="mi-estudio__finished-sub">
+                  Así te va a aparecer en la sección de Repasos para reforzarlo más adelante.
+                </p>
+                <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
+                  <button
+                    onClick={() => confirmarGuardarRepasoFinal(true)}
+                    className="mi-estudio__finished-btn"
+                    style={{ marginTop: 0 }}
+                  >
+                    Sí, guardar
+                  </button>
+                  <button
+                    onClick={() => confirmarGuardarRepasoFinal(false)}
+                    className="mi-estudio__finished-btn is-outline"
+                    style={{ marginTop: 0 }}
+                  >
+                    No, gracias
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mi-estudio__finished-emoji animate-bounce">🏆</div>
+                <h2 className="mi-estudio__finished-title">
+                  {nombreUsuario ? `¡Tema completado, ${nombreUsuario}!` : "¡Tema completado!"}
+                </h2>
+                <p className="mi-estudio__finished-sub">Excelente trabajo leyendo toda la teoría.</p>
+                <button onClick={() => setTemasOpen(true)} className="mi-estudio__finished-btn">
+                  Elegir otro tema
+                </button>
+              </>
+            )}
           </div>
         )}
       </div>

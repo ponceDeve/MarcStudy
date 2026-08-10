@@ -16,6 +16,11 @@
   margin: 10px 0 32px;
   color: var(--ink);
 }
+.question-card__q span {
+  font-size: 12px;
+  line-height: -10px;
+  color: red;
+}
 .question-card__q-intro {
   font-size: 18px;
   font-weight: 600;
@@ -50,12 +55,12 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 14px 12px;
-  background: var(--surface-alt);
   color: var(--ink);
   cursor: pointer;
   transition:
     border-color 0.15s,
     background 0.15s;
+  text-align: start;
 }
 @media (min-width: 640px) {
   .question-card__opt {
@@ -208,6 +213,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 20px;
+  width: 100%;
 }
 .question-card__match-col {
   display: flex;
@@ -217,7 +223,6 @@
   padding: 0;
   margin: 0;
   flex: 1 1 160px;
-  max-width: 220px;
 }
 .question-card__match-col li {
   border: 1px solid var(--border-strong);
