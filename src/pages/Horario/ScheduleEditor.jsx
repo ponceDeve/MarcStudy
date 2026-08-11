@@ -278,7 +278,7 @@ export default function ScheduleEditor({
               </h4>
 
               <div className="editor-input-wrap">
-                <input
+                <input autoComplete="off"
                   autoFocus
                   value={nombreCurso}
                   onChange={(e) => {

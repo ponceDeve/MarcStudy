@@ -97,7 +97,7 @@ export default function TopicsModal({
         </h2>
 
         <div className="home-search levels-modal__search" onClick={(e) => e.stopPropagation()}>
-          <input
+          <input autoComplete="off"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             onFocus={() => setInputEnfocado(true)}

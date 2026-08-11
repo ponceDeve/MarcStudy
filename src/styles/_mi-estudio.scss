@@ -12,7 +12,7 @@
 .mi-estudio__wrap {
   max-width: 56rem;
   margin: 0 auto;
-  padding: 0 16px 48px;
+  padding: 0 10px 32px;
   width: 100%;
   flex: 1;
   display: flex;
@@ -65,11 +65,14 @@
   width: 100%;
 }
 .mi-estudio__hud-wrap {
-  margin-bottom: 60px;
+  margin-top: 60px;
+  margin-bottom: 24px;
   width: 100%;
   max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
+  display: block;
+  visibility: visible;
 }
 .mi-estudio__explanation-wrap {
   margin-top: 16px;
@@ -86,13 +89,13 @@
 }
 .mi-estudio__theory {
   width: 100%;
-  padding: 32px 20px;
+  padding: 20px 14px;
   min-height: 260px;
   position: relative;
 }
 @media (min-width: 640px) {
   .mi-estudio__theory {
-    padding: 45px 30px;
+    padding: 32px 24px;
   }
 }
 .mi-estudio__theory-inner {
@@ -201,11 +204,11 @@
 }
 .mi-estudio__config-btn {
   position: absolute;
-  top: -48px;
-  right: 0;
+  top: 10px;
+  right: 10px;
   z-index: 500;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-bottom-width: 3px;
@@ -371,7 +374,6 @@
   background: var(--surface-hover);
 }
 
-/* Menú "config" a pantalla completa (abandonar / fullscreen / continuar) */
 .config-overlay {
   position: fixed;
   inset: 0;
@@ -405,16 +407,17 @@
   align-items: center;
 }
 .config-overlay__btn {
-  width: 80px;
-  height: 80px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-lg);
   border: none;
-  border-bottom: 4px solid transparent;
+  border-bottom: 3px solid var(--border-strong);
+  background: var(--surface-alt);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  color: var(--ink-on-primary);
+  font-size: 22px;
+  color: var(--ink-soft);
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -422,17 +425,10 @@
   border-bottom-width: 0;
   transform: translateY(1px);
 }
-.config-overlay__btn.is-danger {
-  background: var(--danger);
-  border-bottom-color: var(--danger-dark);
-}
-.config-overlay__btn.is-primary {
+.config-overlay__btn.is-armado {
   background: var(--primary);
   border-bottom-color: var(--primary-dark);
-}
-.config-overlay__btn.is-success {
-  background: var(--secondary);
-  border-bottom-color: var(--secondary-dark);
+  color: var(--ink-on-primary);
 }
 .vidas-alert {
   width: min(340px, 90vw);
@@ -473,10 +469,6 @@
   box-shadow: var(--shadow-sm);
 }
 
-
-/* ============================================================
-   TheorySearchBar.jsx — buscador discreto dentro de un tema
-   ============================================================ */
 .theory-search {
   position: relative;
   z-index: 5;
@@ -540,4 +532,28 @@
   .theory-search__wrap {
     max-width: 100%;
   }
+}
+
+.sin-pregunta-alerta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sin-pregunta-alerta__contenido {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sin-pregunta-alerta__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
 }

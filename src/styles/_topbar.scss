@@ -1,6 +1,13 @@
-/* ============================================================
-   TopBar.jsx
-   ============================================================ */
+// ============================================================
+// TopBar.scss
+// ============================================================
+
+@use "./tokens" as *;
+
+// ============================================================
+// TOPBAR (Contenedor Principal)
+// ============================================================
+
 .topbar {
   position: fixed;
   top: 0;
@@ -8,94 +15,308 @@
   right: 0;
   z-index: 998;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
+  justify-content: space-between;
+  padding: 8px 16px;
+  box-sizing: border-box;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
-.topbar__title {
+
+// ============================================================
+// CAJA 1 — TÍTULO DEL CURSO / TEMA
+// ============================================================
+
+.topbar__title-box {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
   min-width: 0;
+  flex: 1;
+  margin-right: 16px;
+  overflow: hidden;
 }
+
+.topbar__title-btn {
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 10px;
+  margin-left: -10px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+}
+
+.topbar__tema-wrapper {
+  width: 100%;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &::after {
+    content: "▼";
+    flex-shrink: 0;
+    margin-left: 6px;
+    font-size: 14px;
+    color: var(--ink-faint);
+    opacity: 0.8;
+  }
+}
+
 .topbar__tema {
+  display: inline-block;
   font-size: 14px;
   font-weight: 700;
   color: var(--ink);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  &--marquee {
+    animation: marqueeOneWay 12s linear infinite;
+  }
 }
+
+@keyframes marqueeOneWay {
+  0%, 10% { transform: translateX(0); }
+  85%, 95% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 1; }
+  96%, 100% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 0; }
+}
+
 .topbar__curso {
+  max-width: 100%;
   font-size: 13.5px;
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &--clickable {
+    cursor: pointer;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
 }
+
+// ============================================================
+// CAJA 2 — NAVEGACIÓN PRINCIPAL
+// ============================================================
+
 .topbar__nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 8px;
   flex-shrink: 0;
 }
+
 .topbar__nav-btn {
-  color: var(--ink);
-  background: none;
-  border: none;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  width: 48px;
-  height: 48px;
-  transition: color 0.15s;
-}
-.topbar__nav-btn:hover {
-  color: var(--primary);
-}
-.topbar__nav-btn i {
-  font-size: 16px;
-}
-.topbar__nav-btn span {
-  font-size: 13.5px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.topbar__gear {
-  display: none;
-  color: var(--ink);
-  background: none;
+  gap: 4px;
+  min-width: 0;
+  padding: 4px 8px;
+  margin: 0;
+  background: transparent;
   border: none;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-}
-/* A diferencia de .topbar__gear (solo mobile, abre el menú "..."),
-   este botón siempre se ve, en cualquier tamaño de pantalla — es
-   para acciones que queremos accesibles siempre, como el tema. */
-.topbar__theme-btn {
-  display: flex;
+  border-radius: 6px;
   color: var(--ink);
-  background: none;
-  border: none;
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+    color: var(--primary);
+  }
 }
-.topbar__theme-btn i {
+
+.topbar__btn-icon {
+  display: block;
   font-size: 18px;
+  line-height: 1;
 }
+
+.topbar__btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.topbar__btn-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: var(--font-display);
+  color: inherit;
+  text-align: center;
+}
+
+// ============================================================
+// CAJA 3 — CONTROLES DERECHOS
+// ============================================================
+
+.topbar__controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topbar__control-btn,
+.topbar__gear,
+.topbar__theme-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+    color: var(--primary);
+  }
+
+  i {
+    font-size: 18px;
+  }
+}
+
+.topbar__control-btn--menu {
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--primary-dark);
+    opacity: 0.95;
+  }
+}
+
+.topbar__hamburger {
+  display: none;
+}
+
+// ============================================================
+// BREAKPOINTS - NAVBAR
+// ============================================================
+
+@include respond(md) {
+  .topbar__nav {
+    display: flex !important;
+    gap: 12px;
+  }
+  .topbar__hamburger {
+    display: none !important;
+  }
+}
+
+@include respond(lg) {
+  .topbar__nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar__nav-btn {
+    padding: 5px 10px;
+  }
+  .topbar__btn-icon {
+    font-size: 20px;
+  }
+  .topbar__btn-title {
+    font-size: 14px;
+  }
+  .topbar__controls {
+    gap: 12px;
+  }
+  .topbar__control-btn,
+  .topbar__gear,
+  .topbar__theme-btn {
+    width: 44px;
+    height: 44px;
+    i { font-size: 21px; }
+  }
+}
+
+@include respond(xl) {
+  .topbar {
+    padding: 10px 22px;
+  }
+  .topbar__tema {
+    font-size: 16px;
+  }
+  .topbar__curso {
+    font-size: 14px;
+  }
+  .topbar__nav {
+    gap: 24px;
+  }
+  .topbar__nav-btn {
+    padding: 6px 12px;
+  }
+  .topbar__btn-icon {
+    font-size: 22px;
+  }
+  .topbar__btn-title {
+    font-size: 15px;
+  }
+  .topbar__controls {
+    gap: 18px;
+  }
+  .topbar__control-btn,
+  .topbar__gear,
+  .topbar__theme-btn {
+    width: 48px;
+    height: 48px;
+    i { font-size: 23px; }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar__nav {
+    display: none !important;
+  }
+  .topbar__hamburger {
+    display: flex !important;
+  }
+}
+
+// ============================================================
+// OVERLAY (Menú y Configuración)
+// ============================================================
+
 .topbar__overlay {
   position: fixed;
   inset: 0;
@@ -103,159 +324,172 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 16px;
   background: var(--overlay-strong);
   backdrop-filter: blur(4px);
+  overflow: auto;
 }
+
 .topbar__overlay-inner {
-  width: 100%;
-  max-width: 20rem;
-  padding: 0 32px;
-}
-.topbar__overlay-row1 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  justify-items: center;
-  margin-bottom: 16px;
-}
-.topbar__overlay-btn {
-  color: #fff;
-  background: none;
-  border: none;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 24px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+}
+
+.topbar__overlay-title {
+  color: var(--ink);
+  font-size: 20px;
+  margin: 0 0 16px 0;
+  font-family: var(--font-display);
+}
+
+.topbar__overlay-row1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
   width: 100%;
-  height: 64px;
-  transition: color 0.15s;
-}
-.topbar__overlay-btn:hover {
-  color: var(--accent);
-}
-.topbar__overlay-btn i {
-  font-size: 30px;
-}
-.topbar__overlay-btn span {
-  font-size: 14px;
+  max-width: 320px;
+  justify-items: center;
 }
 
-.topbar__gear i {
-  font-size: 18px;
-}
-@media (min-width: 640px) {
-  .topbar__nav {
-    display: flex;
-  }
-  .topbar__gear {
-    display: none;
-  }
-}
-@media (max-width: 639px) {
-  .topbar__nav {
-    display: none;
-  }
-  .topbar__gear {
-    display: flex;
-  }
-}
-
-/* ============================================================
-   Boton en el Topbar (Indicador de Modal de Temas)
-   Convierte el bloque del título en un botón interactivo
-   ============================================================ */
-.topbar__title-btn {
-  background: transparent;
-  border: none;
-  padding: 6px 10px;
-  margin-left: -10px; /* Para mantener la alineación original */
-  border-radius: var(--radius-sm);
-  cursor: pointer;
+.topbar__overlay-btn {
+  width: 120px;
+  height: 120px;
+  flex: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  transition: background 0.15s;
-}
-
-.topbar__title-btn:hover {
-  background: var(--surface-hover);
-}
-
-.topbar__title-btn .topbar__tema {
-  display: flex;
   align-items: center;
-  gap: 6px;
-}
+  justify-content: center;
+  gap: 10px;
+  background: var(--surface-alt);
+  border: none;
+  border-bottom: 4px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
 
-/* Flechita sutil para indicar que se abre un menú/modal */
-.topbar__title-btn .topbar__tema::after {
-  content: "▼";
-  font-size: 14px;
-  color: var(--ink-faint);
-  opacity: 0.8;
-}
-
-.glossary-term-wrap {
-  position: relative;
-  display: inline-block;
-}
-
-/* Estilo para que el usuario sepa que la palabra es interactiva */
-.glossary-term {
-  color: var(--secondary);
-  text-decoration: underline dotted; /* Subrayado punteado clásico de glosarios */
-  cursor: default;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.glossary-term:hover {
-  color: var(--secondary-dark);
-}
-
-/* La burbuja flotante con la definición — la posición (top/left) la
-   calcula JS (useFloatingTooltip) y llega por style inline, recortada
-   al viewport para que nunca se corte en el borde de la pantalla,
-   sobre todo en celulares. Acá solo el look. */
-.glossary-tooltip {
-  max-width: min(280px, 85vw);
-  padding: 6px 10px;
-  width: max-content;
-  background-color: var(--ink);
-  color: var(--bg);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 400;
-  z-index: 50;
-  pointer-events: none;
-  box-shadow: var(--shadow-md);
-  animation: fadeIn 0.2s ease-in-out;
-}
-
-/* Triángulo decorativo apuntando hacia abajo */
-.glossary-tooltip::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: var(--ink) transparent transparent transparent;
-}
-
-/* Pequeña animación de entrada */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 5px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
+  &:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
+  &:active {
+    border-bottom-width: 0;
+    transform: translateY(2px);
+  }
+
+  .topbar__btn-icon {
+    font-size: 38px;
+    color: inherit;
+  }
+
+  .topbar__btn-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: inherit;
+    font-family: var(--font-display);
+  }
+}
+
+// ============================================================
+// BREAKPOINTS - OVERLAY
+// ============================================================
+
+@media (min-width: 600px) {
+  .topbar__overlay-row1 {
+    grid-template-columns: repeat(3, auto);
+    max-width: none;
+  }
+}
+
+@include respond(lg) {
+  .topbar__overlay-inner {
+    gap: 30px;
+    max-width: calc(100vw - 40px);
+  }
+  
+  .topbar__overlay-row1 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 42px;
+    width: max-content !important;
+  }
+
+  .topbar__overlay-btn {
+    width: 130px;
+    height: 130px;
+    flex: 0 0 130px !important;
+
+    .topbar__btn-icon { font-size: 42px; }
+    .topbar__btn-title { font-size: 17px; }
+  }
+}
+
+@include respond(xl) {
+  .topbar__overlay-inner {
+    gap: 38px;
+  }
+  .topbar__overlay-row1 {
+    gap: 64px;
+  }
+  .topbar__overlay-btn {
+    width: 150px;
+    height: 150px;
+    flex: 0 0 150px !important;
+    gap: 14px;
+
+    .topbar__btn-icon { font-size: 48px; }
+    .topbar__btn-title { font-size: 19px; }
+  }
+}
+
+@media (min-width: 1920px) {
+  .topbar__overlay-row1 {
+    gap: 80px;
+  }
+  .topbar__overlay-btn {
+    width: 160px;
+    height: 160px;
+    flex: 0 0 160px !important;
+
+    .topbar__btn-icon { font-size: 52px; }
+    .topbar__btn-title { font-size: 20px; }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar__overlay-inner {
+    width: 100%;
+    max-width: 100%;
+    gap: 20px;
+  }
+  .topbar__overlay-row1 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    gap: 14px;
+  }
+  .topbar__overlay-btn {
+    width: 120px;
+    height: 105px;
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 105px;
+    max-height: 105px;
+    flex: none !important;
+
+    .topbar__btn-icon { font-size: 32px; }
+    .topbar__btn-title { font-size: 14px; }
+  }
 }

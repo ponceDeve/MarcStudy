@@ -54,7 +54,7 @@ export default function LevelsModal({
         <h2 className="levels-modal__title">Seleccionar Nivel</h2>
 
         <div className="home-search levels-modal__search" onClick={(e) => e.stopPropagation()}>
-          <input
+          <input autoComplete="off"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
             placeholder="Buscar nivel..."

@@ -98,7 +98,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
           <i className="fa-solid fa-times" />
         </button>
         <div className="search-input-row">
-          <input
+          <input autoComplete="off"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}

@@ -193,7 +193,7 @@ export default function WelcomeModal({ open, onSubmit }) {
             </div>
             <h2 className="welcome-titulo">¿Cómo te llamas?</h2>
             <p className="welcome-texto">Lo usamos para saludarte y en tus resultados.</p>
-            <input
+            <input autoComplete="off"
               autoFocus
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}

@@ -339,7 +339,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
             )}
 
             <div className="setup-input-wrap">
-              <input
+              <input autoComplete="off"
                 autoFocus
                 value={nombreCurso}
                 onChange={(e) => {

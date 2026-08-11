@@ -17,7 +17,7 @@ export default function TemaModal({ open, subject, day, onGuardar, onOmitir }) {
       <p className="tema-modal-subtitle">
         {subject} {day ? `· ${day}` : ""}
       </p>
-      <input
+      <input autoComplete="off"
         autoFocus
         value={tema}
         onChange={(e) => setTema(e.target.value)}

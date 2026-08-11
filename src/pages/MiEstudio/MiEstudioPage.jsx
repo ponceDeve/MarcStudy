@@ -26,8 +26,6 @@ const CURSOS_ITEMS = manifest.cursos.map((c) => ({ type: "curso", nombre: c.nomb
 const TEMAS_ITEMS = manifest.cursos.flatMap((c) =>
   c.temas.map((t) => ({ type: "tema", curso: c.nombre, tema: t.tema, archivo: t.archivo })),
 );
-// Se mantiene por compatibilidad con el resto del archivo (ej. para
-// encontrar un ítem puntual por nombre/tema al llegar con ?q=).
 const OPCIONES_BUSQUEDA = [...CURSOS_ITEMS, ...TEMAS_ITEMS];
 
 function shuffle(arr) {
@@ -39,20 +37,12 @@ function shuffle(arr) {
   return a;
 }
 
-// Busca cursos y temas por separado, solo con matches "fuertes"
-// (empieza con / contiene / todas las palabras) — sin la red de
-// letras sueltas o typos: si no hay una coincidencia real, no
-// aparece nada ("flo" no encuentra "Filosofía").
 function buscarFuertes(query) {
   const cursos = buscarConPuntaje(CURSOS_ITEMS, query, (c) => c.nombre, { minScore: 400 });
   const temas = buscarConPuntaje(TEMAS_ITEMS, query, (t) => t.tema, { minScore: 400 });
   return { cursos, temas };
 }
 
-// Arma los grupos a mostrar en la lista: un grupo por curso.
-// - Si el curso matcheó por su propio nombre, se listan TODOS sus temas.
-// - Si no, pero alguno de sus temas matcheó puntualmente, se listan
-//   solo esos temas (no el resto del curso).
 function agruparResultados({ cursos, temas }) {
   const nombresCursosFuertes = new Set(cursos.map((c) => c.nombre));
   const grupos = cursos.map((c) => ({
@@ -67,7 +57,7 @@ function agruparResultados({ cursos, temas }) {
 
   const temasPorCurso = new Map();
   for (const t of temas) {
-    if (nombresCursosFuertes.has(t.curso)) continue; // ya se listan todos arriba
+    if (nombresCursosFuertes.has(t.curso)) continue;
     if (!temasPorCurso.has(t.curso)) temasPorCurso.set(t.curso, []);
     temasPorCurso.get(t.curso).push(t);
   }
@@ -86,36 +76,30 @@ export default function MiEstudioPage() {
   const [error, setError] = useState("");
   const [flatPuntos, setFlatPuntos] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
-  const [ordenPreguntas, setOrdenPreguntas] = useState([]); // orden aleatorio de índices cuando se omite la teoría
-  const [posOrden, setPosOrden] = useState(0); // posición actual dentro de ordenPreguntas
+  const [ordenPreguntas, setOrdenPreguntas] = useState([]);
+  const [posOrden, setPosOrden] = useState(0);
   const [maxUnlocked, setMaxUnlocked] = useState(0);
-  const [stage, setStage] = useState("theory"); // 'theory' | 'question' | 'finished'
+  const [stage, setStage] = useState("theory");
   const [isLevelMode, setIsLevelMode] = useState(false);
 
-  // ESTADO PARA EL CRONÓMETRO
   const [countdown, setCountdown] = useState(0);
 
-  // ESTADOS DEL MODO HARDCORE
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
+  const vidaPerderRef = useRef(null);
+  const ceroVidasRef = useRef(null);
+  const alertaNotificacionRef = useRef(null);
 
-  // Niveles de examen: independientes de las tarjetas de teoría (flatPuntos)
   const [examenPreguntas, setExamenPreguntas] = useState([]);
   const [nivelIndex, setNivelIndex] = useState(0);
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
   const [nivelCompletions, setNivelCompletions] = useState({});
 
-  // Modo "voltear" (ventana móvil): al presionar el botón de voltear en
-  // teoría, se generan preguntas de examen solo del bloque de tarjetas
-  // recién visto (desde ultimoFlipIndex hasta cardIndex), en orden
-  // aleatorio. isFlipQuiz indica que estamos dentro de ese mini-lote.
   const [ultimoFlipIndex, setUltimoFlipIndex] = useState(0);
   const [isFlipQuiz, setIsFlipQuiz] = useState(false);
-  const [quizBatch, setQuizBatch] = useState([]); // [{ puntoIndex, pregunta }]
+  const [quizBatch, setQuizBatch] = useState([]);
   const [quizPos, setQuizPos] = useState(0);
 
-  // Registro de qué preguntas (por índice de punto) ya se respondieron
-  // al menos una vez, para el botón "Ver preguntas vistas".
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
 
@@ -134,37 +118,26 @@ export default function MiEstudioPage() {
   const [configOpen, setConfigOpen] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
 
-  // Nombre del usuario, pedido una sola vez en WelcomeModal y reutilizado
-  // en los mensajes de felicitación/derrota de toda la app.
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
 
-  // Modal "¿Quieres ver la teoría?": aparece ENCIMA del tema recién
-  // abierto (que ya carga y se ve de fondo), no antes de abrirlo.
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
-  const [modoEstudio, setModoEstudio] = useState("completo"); // 'completo' | 'solo_preguntas'
+  const [modoEstudio, setModoEstudio] = useState("completo");
 
-  // Aviso de "se acabó el pomodoro": Pomodoro corre en su propia
-  // pestaña/página, así que acá se revisa cada segundo si ya terminó
-  // (comparando la hora de fin guardada en localStorage) para avisar
-  // sin depender de estar mirando esa otra pestaña.
   const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] = useState(false);
   const [pomodoroAlarmaLabel, setPomodoroAlarmaLabel] = useState("");
   const pomodoroAlertadoRef = useRef(null);
 
   useEffect(() => {
-    // Si el pomodoro terminó hace más de esto, ya no es un aviso útil:
-    // es basura vieja de una pestaña que se cerró sin pausar/terminar.
-    const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000; // 2 minutos
+    const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000;
 
     const intervalo = setInterval(() => {
       const estado = leerPomodoroCompartido();
       if (!estado || !estado.running) return;
 
       const msDesdeQueTermino = Date.now() - estado.endTimestamp;
-      if (msDesdeQueTermino < 0) return; // todavía no termina
+      if (msDesdeQueTermino < 0) return;
 
       if (msDesdeQueTermino > UMBRAL_AVISO_VENCIDO_MS) {
-        // Estado abandonado de una sesión pasada: se descarta sin avisar.
         limpiarPomodoroCompartido();
         return;
       }
@@ -186,11 +159,19 @@ export default function MiEstudioPage() {
   }
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
+  const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
+  const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
+  const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
 
-  // Búsqueda en vivo: se recalcula con cada letra, sin esperar Enter.
-  // Si hay una sola coincidencia (curso o tema) va directo a abrirla
-  // apenas converge a esa única opción; si hay más de una, se muestra
-  // la lista agrupada por curso.
+  useEffect(() => {
+    if (sinPreguntaAlerta && alertaNotificacionRef.current) {
+      alertaNotificacionRef.current.currentTime = 0;
+      alertaNotificacionRef.current.play().catch((err) => {
+        console.error("Error al reproducir sonido de alerta:", err);
+      });
+    }
+  }, [sinPreguntaAlerta]);
+
   const hayQuery = query.trim() !== "";
 
   const fuertes = useMemo(() => {
@@ -200,20 +181,10 @@ export default function MiEstudioPage() {
 
   const grupos = useMemo(() => agruparResultados(fuertes), [fuertes]);
 
-  // Para navegar con flechas hace falta una lista plana (curso + sus
-  // temas, en orden de aparición); el click/Enter selecciona ese ítem.
   const itemsPlanos = useMemo(
     () => grupos.flatMap((g) => [{ type: "curso", nombre: g.curso }, ...g.temas]),
     [grupos],
   );
-
-  useEffect(() => {
-    if (!busquedaEnfocada) return;
-    const total = fuertes.cursos.length + fuertes.temas.length;
-    // LÍNEA COMENTADA: Ya no saltará automáticamente al detectar una única opción.
-    // if (total === 1) seleccionarItem(fuertes.cursos[0] || fuertes.temas[0]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fuertes, busquedaEnfocada]);
 
   useEffect(() => {
     function onFullscreenChange() {
@@ -224,7 +195,6 @@ export default function MiEstudioPage() {
       document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
-  // EFECTO PARA EL CRONÓMETRO
   useEffect(() => {
     let timer = null;
     if (stage === "question" && countdown > 0) {
@@ -289,8 +259,6 @@ export default function MiEstudioPage() {
       setExamenPreguntas(examenList);
       setNivelIndex(0);
 
-      // La teoría siempre empieza desde la primera tarjeta (no se retoma
-      // desde la última posición guardada).
       const cardInicial = 0;
 
       const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
@@ -319,12 +287,10 @@ export default function MiEstudioPage() {
       setSearchOpen(false);
       setCountdown(0);
 
-      // Reset de vidas y alertas al iniciar
       setVidas(5);
       setAlertaVidas(null);
+      setSinPreguntaAlerta(false);
 
-      // El tema ya está abierto (se ve de fondo) — recién ahora se
-      // pregunta si quiere ver la teoría o saltar directo a preguntas.
       setPreguntaModoAbierta(true);
     } catch (e) {
       console.error("Error en abrirTema:", e);
@@ -349,26 +315,12 @@ export default function MiEstudioPage() {
 
   function elegirModoEstudio(modo) {
     setPreguntaModoAbierta(false);
-
     if (modo === "solo_preguntas") {
-      // Si no hay preguntas de examen, mostrar el toast
       if (examenPreguntas.length === 0) {
-        reproducirSonidoAlerta(); // 🔊
-
         setSinPreguntaAlerta(true);
-
-        setTimeout(() => {
-          setSinPreguntaAlerta(false);
-        }, 4000);
-
         return;
       }
-
-      const totalPreguntas = examenPreguntas.length;
-      const orden = shuffle(
-        Array.from({ length: totalPreguntas }, (_, i) => i)
-      );
-
+      const orden = shuffle(Array.from({ length: examenPreguntas.length }, (_, i) => i));
       setOrdenPreguntas(orden);
       setPosOrden(0);
       setCardIndex(orden[0] ?? 0);
@@ -379,8 +331,6 @@ export default function MiEstudioPage() {
     }
   }
 
-  // Si se llega con ?q=nombre-del-tema (ej. desde el link "Repasar en
-  // Mi Estudio" de la página de Repaso), se busca y abre directo.
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -401,12 +351,7 @@ export default function MiEstudioPage() {
       seleccionarItem(cursoMatch);
     }
 
-    // Limpia el parámetro de la URL para no reabrir en cada recarga.
-    // Se usa el API nativo del navegador (no setSearchParams de React
-    // Router) porque ese, combinado con el basename "/cont_crono",
-    // dejaba la URL rota (duplicaba o perdía el prefijo).
     window.history.replaceState(null, "", window.location.pathname);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { focusedIdx: focusedInicial, handleKeyDown: handleKeyDownInicial } =
@@ -415,10 +360,6 @@ export default function MiEstudioPage() {
   function toggleStage() {
     setIsLevelMode(false);
     if (stage === "theory") {
-      // Ventana móvil: las tarjetas vistas desde el último "voltear"
-      // (ultimoFlipIndex) hasta la tarjeta actual (cardIndex), ambas
-      // incluidas. Cada una trae su pregunta de examen, 1 a 1 por
-      // índice con flatPuntos.
       const desde = Math.min(ultimoFlipIndex, cardIndex);
       const hasta = Math.max(ultimoFlipIndex, cardIndex);
       const lote = [];
@@ -427,13 +368,7 @@ export default function MiEstudioPage() {
         if (pregunta) lote.push({ puntoIndex: i, pregunta });
       }
       if (lote.length === 0) {
-        reproducirSonidoAlerta(); // 🔊
         setSinPreguntaAlerta(true);
-
-        setTimeout(() => {
-          setSinPreguntaAlerta(false);
-        }, 4000);
-
         return;
       }
 
@@ -442,7 +377,7 @@ export default function MiEstudioPage() {
       setIsFlipQuiz(true);
       setQuestionResult(null);
       setAttemptKey(0);
-      setCountdown(10); // Iniciamos el cronómetro estricto
+      setCountdown(10);
       setStage("question");
     } else {
       setIsFlipQuiz(false);
@@ -470,8 +405,6 @@ export default function MiEstudioPage() {
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
       } else {
-        // Se acabó el lote: la próxima ventana empieza en la tarjeta
-        // siguiente a la actual.
         setIsFlipQuiz(false);
         setUltimoFlipIndex(cardIndex + 1);
         setQuestionResult(null);
@@ -560,10 +493,6 @@ export default function MiEstudioPage() {
 
   function finalizarTema() {
     setStage("finished");
-    // Ya no se guarda en repasos automáticamente al llegar al final —
-    // se le pregunta al usuario primero (ver confirmGuardarRepasoFinal),
-    // porque si entraba y salía del tema repetidas veces se guardaba
-    // una entrada nueva cada vez, sin que lo pidiera.
     setConfirmGuardarRepasoFinal(true);
   }
 
@@ -577,22 +506,15 @@ export default function MiEstudioPage() {
     setConfirmGuardarRepasoFinal(false);
   }
 
-  // Guardar el tema para repasarlo después SIN necesidad de terminarlo
-  // (por si el usuario se queda a medias pero igual lo quiere repasar).
-  const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
-  const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
-  const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
-  function reproducirSonidoAlerta() {
-    const audio = new Audio(
-      `${import.meta.env.BASE_URL}sonidos/notificacion.mp3`
-    );
+  const [botonArmado, setBotonArmado] = useState(null);
 
-    audio.volume = 0.7;
-    audio.currentTime = 0;
-
-    audio.play().catch((error) => {
-      console.warn("No se pudo reproducir el sonido de notificación:", error);
-    });
+  function manejarBotonConfig(key, accion) {
+    if (botonArmado === key) {
+      accion();
+      setBotonArmado(null);
+    } else {
+      setBotonArmado(key);
+    }
   }
 
   function guardarParaRepaso() {
@@ -602,21 +524,17 @@ export default function MiEstudioPage() {
       tema: topicData.tema,
     });
     setRepasoGuardadoMsg(true);
-    setTimeout(() => setRepasoGuardadoMsg(false), 2200);
   }
 
-  // NUEVA FUNCIÓN: Game Over y Limpieza de Disco
   function gameOver() {
     if (!topicData) return;
 
-    // 1. Borrar progreso del localStorage
     localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
 
-    // 2. Limpiar estados para forzar inicio en nivel 1
     setLevelCompletions({});
     setMaxUnlocked(0);
     setNivelCompletions({});
@@ -624,7 +542,6 @@ export default function MiEstudioPage() {
     setCardIndex(0);
     setNivelIndex(0);
 
-    // 3. Regresar a la pantalla de teoría y reiniciar variables de intento
     setStage("theory");
     setIsLevelMode(false);
     setScore(0);
@@ -637,8 +554,6 @@ export default function MiEstudioPage() {
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto });
 
-    // Se registra como "vista" apenas se contesta, sin importar si fue
-    // bien o mal, para el listado de "Ver preguntas vistas".
     const puntoIndexActual = isFlipQuiz ? quizBatch[quizPos]?.puntoIndex : cardIndex;
     if (puntoIndexActual != null && topicData) {
       setPreguntasVistas((prev) => {
@@ -697,29 +612,32 @@ export default function MiEstudioPage() {
     } else {
       setWrongCount((w) => w + 1);
 
-      // Las vidas son un mecanismo exclusivo del modo niveles (examen).
-      // Fallar durante la teoría ya no cuesta vidas.
-      if (isLevelMode) {
-        setVidas((prevVidas) => {
-          const nuevasVidas = prevVidas - 1;
+      setVidas((prevVidas) => {
+        const nuevasVidas = prevVidas - 1;
 
-          if (nuevasVidas === 3) {
-            setAlertaVidas("tres");
-          } else if (nuevasVidas === 1) {
-            setAlertaVidas("una");
-          } else if (nuevasVidas <= 0) {
-            setAlertaVidas("cero");
-            gameOver();
+        if (nuevasVidas === 3) {
+          setAlertaVidas("tres");
+        } else if (nuevasVidas === 1) {
+          setAlertaVidas("una");
+        } else if (nuevasVidas <= 0) {
+          setAlertaVidas("cero");
+          if (ceroVidasRef.current) {
+            ceroVidasRef.current.currentTime = 0;
+            ceroVidasRef.current.play().catch(() => { });
           }
+          gameOver();
+        }
 
-          return nuevasVidas;
-        });
-      }
+        if (nuevasVidas > 0 && vidaPerderRef.current) {
+          vidaPerderRef.current.currentTime = 0;
+          vidaPerderRef.current.play().catch(() => { });
+        }
+
+        return nuevasVidas;
+      });
     }
   }
 
-  // Vuelve a la primera tarjeta de teoría del tema (posición 0), sin
-  // borrar el historial de preguntas ya vistas.
   function reiniciarTarjetas() {
     setCardIndex(0);
     setUltimoFlipIndex(0);
@@ -733,6 +651,7 @@ export default function MiEstudioPage() {
     setConfigOpen(false);
     setConfirmLeave(false);
     setConfirmGuardarRepasoFinal(false);
+    setBotonArmado(null);
   }
 
   function verPreguntasVistas() {
@@ -742,8 +661,6 @@ export default function MiEstudioPage() {
   }
 
   function abandonarJuego() {
-    // Abandonar cierra el tema por completo y vuelve a la pantalla de
-    // inicio (antes solo reseteaba a la teoría del mismo tema).
     setTopicData(null);
     setStage("theory");
     setIsLevelMode(false);
@@ -753,6 +670,7 @@ export default function MiEstudioPage() {
     setConfigOpen(false);
     setConfirmLeave(false);
     setConfirmGuardarRepasoFinal(false);
+    setBotonArmado(null);
     setCountdown(0);
   }
 
@@ -770,24 +688,14 @@ export default function MiEstudioPage() {
       : modoEstudio === "solo_preguntas"
         ? examenPreguntas[cardIndex] || null
         : null;
-  // Para avanzar a la siguiente pregunta hay que haberla superado
-  // primero — aplica siempre, sin importar el modo (teoría normal,
-  // volteo de tarjeta, u "Omitir teoría"). Si no estamos parados en
-  // una pregunta (ej. viendo teoría), no hay nada que bloquee.
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
     function onKeyDown(e) {
-      // Si el foco está en un <button> (ej. "Siguiente" del panel de
-      // explicación), el navegador ya dispara su onClick solo con
-      // Enter/Espacio — sin este chequeo, este listener global VOLVÍA
-      // a llamar avanzarCard() para la misma tecla, duplicando el
-      // registro de repaso cada vez que se presionaba Enter ahí.
       const tagActivo = document.activeElement && document.activeElement.tagName;
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (searchOpen || configOpen || temasOpen || !topicData) return;
 
-      // Ignorar teclas si el cronómetro está activo
       if (stage === "question" && countdown > 0) return;
 
       if (e.key === "Enter") {
@@ -822,8 +730,6 @@ export default function MiEstudioPage() {
     stage === "question" ? "is-question" : topicData ? "has-topbar" : "",
   ].join(" ");
 
-  // Progreso a mostrar en la barra chica de preguntas (corazones +
-  // contestadas/total), según el sub-modo activo dentro de "question".
   const progresoPregunta = isLevelMode
     ? { current: nivelIndex + 1, total: examenPreguntas.length }
     : isFlipQuiz
@@ -847,31 +753,48 @@ export default function MiEstudioPage() {
         onClose={() => setPomodoroAlarmaAbierta(false)}
       />
 
-      {/* NOTIFICACIONES FLOTANTES SUPERIORES */}
-      <div className="mi-estudio__alerts-container">
-        {repasoGuardadoMsg && (
-          <div className="repaso-toast">
-            <i className="fas fa-bookmark" /> Guardado para repasar
-          </div>
-        )}
-
-        {sinPreguntaAlerta && (
-          <div className="repaso-toast">
-            <i className="fas fa-circle-info" /> No hay pregunta por el momento de este tema
-          </div>
-        )}
-      </div>
-
-      {/* El TopBar solo se muestra si hay tema y NO estamos en una pregunta */}
-      {topicData && stage !== "question" && (
+      {topicData && (
         <TopBar
+          stage={stage}
           tema={topicData.tema}
           curso={topicData.curso}
           onAbrirBuscador={() => setSearchOpen(true)}
           onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
           onGuardarRepaso={guardarParaRepaso}
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={toggleFullscreen}
+          onVerPreguntasVistas={verPreguntasVistas}
+          onAbandonar={abandonarJuego}
+          onReiniciarTarjetas={reiniciarTarjetas}
         />
+      )}
+
+      {repasoGuardadoMsg && (
+        <div className="repaso-toast">
+          <i className="fas fa-bookmark" /> Guardado para repasar
+        </div>
+      )}
+
+      {sinPreguntaAlerta && (
+        <div className="repaso-toast is-top sin-pregunta-alerta">
+          <div className="sin-pregunta-alerta__contenido">
+            <i className="fas fa-circle-info" />
+            <span>
+              No hay preguntas de "{topicData?.tema || "este tema"}"
+            </span>
+          </div>
+
+          <button
+            type="button"
+            className="sin-pregunta-alerta__close"
+            onClick={() => setSinPreguntaAlerta(false)}
+            aria-label="Cerrar"
+            title="Cerrar"
+          >
+            <i className="fas fa-xmark" />
+          </button>
+        </div>
       )}
 
       <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
@@ -886,31 +809,46 @@ export default function MiEstudioPage() {
           <div className="config-overlay__row">
             <div className="config-overlay__item">
               <button
-                onClick={() => {
-                  setConfigOpen(false);
-                  setConfirmLeave(false);
-                }}
-                className="config-overlay__btn is-success"
+                onClick={() =>
+                  manejarBotonConfig("continuar", () => {
+                    setConfigOpen(false);
+                    setConfirmLeave(false);
+                    setBotonArmado(null);
+                  })
+                }
+                className={`config-overlay__btn ${botonArmado === "continuar" ? "is-armado" : ""}`}
               >
                 <i className="fas fa-play" />
               </button>
-              <span className="config-overlay__label">Continuar</span>
+              {botonArmado === "continuar" && (
+                <span className="config-overlay__label">Continuar</span>
+              )}
             </div>
 
             <div className="config-overlay__item">
-              <button onClick={toggleFullscreen} className="config-overlay__btn is-neutral">
+              <button
+                onClick={() => manejarBotonConfig("pantalla", toggleFullscreen)}
+                className={`config-overlay__btn ${botonArmado === "pantalla" ? "is-armado" : ""}`}
+              >
                 <i className={`fas ${isFullscreen ? "fa-compress" : "fa-expand"}`} />
               </button>
-              <span className="config-overlay__label">
-                {isFullscreen ? "Minimizar" : "Pantalla Completa"}
-              </span>
+              {botonArmado === "pantalla" && (
+                <span className="config-overlay__label">
+                  {isFullscreen ? "Minimizar" : "Pantalla Completa"}
+                </span>
+              )}
             </div>
 
             <div className="config-overlay__item">
-              <button onClick={verPreguntasVistas} className="config-overlay__btn is-info">
+              <button
+                onClick={() => manejarBotonConfig("repasar", verPreguntasVistas)}
+                className={`config-overlay__btn ${botonArmado === "repasar" ? "is-armado" : ""}`}
+              >
                 <i className="fas fa-list-check" />
               </button>
-              <span className="config-overlay__label">Repasar</span>
+              {botonArmado === "repasar" && (
+                <span className="config-overlay__label">Repasar</span>
+              )}
             </div>
 
             <div className="config-overlay__item">
@@ -919,18 +857,23 @@ export default function MiEstudioPage() {
                   if (confirmLeave) abandonarJuego();
                   else setConfirmLeave(true);
                 }}
-                className="config-overlay__btn is-warning"
+                className={`config-overlay__btn ${confirmLeave ? "is-armado" : ""}`}
               >
                 <i className="fas fa-door-open" />
               </button>
-              <span className="config-overlay__label">Abandonar</span>
+              {confirmLeave && <span className="config-overlay__label">Abandonar</span>}
             </div>
 
             <div className="config-overlay__item">
-              <button onClick={reiniciarTarjetas} className="config-overlay__btn is-danger">
+              <button
+                onClick={() => manejarBotonConfig("reiniciar", reiniciarTarjetas)}
+                className={`config-overlay__btn ${botonArmado === "reiniciar" ? "is-armado" : ""}`}
+              >
                 <i className="fas fa-rotate-left" />
               </button>
-              <span className="config-overlay__label">Reiniciar</span>
+              {botonArmado === "reiniciar" && (
+                <span className="config-overlay__label">Reiniciar</span>
+              )}
             </div>
           </div>
         </div>
@@ -948,21 +891,18 @@ export default function MiEstudioPage() {
                 </h1>
                 {error && (
                   <p style={{ color: "var(--danger, #e74c3c)", fontWeight: 700, marginTop: "10px" }}>
-                    ⚠️ {error}
+                    <i className="fas fa-triangle-exclamation" /> {error}
                   </p>
                 )}
               </div>
               <div className="home-search">
                 <div className="search-input-row">
-                  <input
+                  <input autoComplete="off"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => setBusquedaEnfocada(true)}
                     onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
                     onKeyDown={(e) => {
-                      // INTERCEPTAMOS EL ENTER: Si estás escribiendo y das Enter directo
-                      // sin bajar con las flechitas (focusedInicial <= 0), te manda 
-                      // directo al mejor resultado (curso o tema) igual que la lupa.
                       if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
                         e.preventDefault();
                         const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
@@ -1038,10 +978,10 @@ export default function MiEstudioPage() {
           </>
         )}
 
-        {topicData && (stage === "theory" || stage === "question") && current && (
+        {topicData && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage">
             {stage === "question" && (
-              <div className="mi-estudio__hud-wrap animate-fade-in">
+              <div className="mi-estudio__hud-wrap animate-fade-in" style={{ display: 'block', visibility: 'visible', width: '100%', marginBottom: '15px' }}>
                 <Hud
                   current={progresoPregunta.current}
                   total={progresoPregunta.total}
@@ -1052,7 +992,7 @@ export default function MiEstudioPage() {
               </div>
             )}
 
-            {stage === "theory" && (
+            {stage === "theory" && current && (
               <TheorySearchBar
                 flatPuntos={flatPuntos}
                 onSelect={(index) => {
@@ -1063,16 +1003,8 @@ export default function MiEstudioPage() {
               />
             )}
 
-            {stage === "theory" && (
+            {stage === "theory" && current && (
               <div className="mi-estudio__theory-wrap">
-                <button
-                  onClick={() => { setConfigOpen(true); setConfirmLeave(false); }}
-                  className="mi-estudio__config-btn"
-                  title="Opciones"
-                >
-                  <i className="fas fa-cog" />
-                </button>
-
                 <div className="arcade-game-container mi-estudio__theory">
                   <div className="arcade-grid" />
                   <div className="mi-estudio__theory-inner">
@@ -1091,7 +1023,7 @@ export default function MiEstudioPage() {
 
                     <div className="mi-estudio__google">
                       <div className="mi-estudio__google-input-wrap">
-                        <input
+                        <input autoComplete="off"
                           value={googleQuery}
                           onChange={(e) => setGoogleQuery(e.target.value)}
                           onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
@@ -1110,15 +1042,6 @@ export default function MiEstudioPage() {
 
             {stage === "question" && (
               <div className="mi-estudio__question-stage">
-                <button
-                  onClick={() => { setConfigOpen(true); setConfirmLeave(false); }}
-                  className="mi-estudio__config-btn"
-                  title="Opciones"
-                >
-                  <i className="fas fa-cog" />
-                </button>
-
-                {/* LOGICA DE RENDERIZADO DEL CRONOMETRO ESTRICTO */}
                 {countdown > 0 ? (
                   <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, minHeight: '300px' }}>
                     <h2 style={{ fontSize: '5rem', margin: '0', color: 'var(--ink)' }}>{countdown}</h2>
@@ -1210,7 +1133,7 @@ export default function MiEstudioPage() {
           <div className="mi-estudio__finished">
             {confirmGuardarRepasoFinal ? (
               <>
-                <div className="mi-estudio__finished-emoji animate-bounce">📌</div>
+                <div className="mi-estudio__finished-emoji animate-bounce"><i className="fas fa-thumbtack" /></div>
                 <h2 className="mi-estudio__finished-title">¿Guardar este tema en tus repasos?</h2>
                 <p className="mi-estudio__finished-sub">
                   Así te va a aparecer en la sección de Repasos para reforzarlo más adelante.
@@ -1234,7 +1157,7 @@ export default function MiEstudioPage() {
               </>
             ) : (
               <>
-                <div className="mi-estudio__finished-emoji animate-bounce">🏆</div>
+                <div className="mi-estudio__finished-emoji animate-bounce"><i className="fas fa-trophy" /></div>
                 <h2 className="mi-estudio__finished-title">
                   {nombreUsuario ? `¡Tema completado, ${nombreUsuario}!` : "¡Tema completado!"}
                 </h2>
@@ -1276,11 +1199,14 @@ export default function MiEstudioPage() {
         />
       )}
 
-      {/* ================= MODALES HARDCORE ================= */}
+      <audio ref={vidaPerderRef} src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`} preload="auto" />
+      <audio ref={ceroVidasRef} src={`${import.meta.env.BASE_URL}sonidos/cero-vidas.mp3`} preload="auto" />
+      <audio ref={alertaNotificacionRef} src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`} preload="auto" />
+
       {alertaVidas === "tres" && (
         <div className="config-overlay animate-fade-in" style={{ zIndex: 9999 }}>
           <div className="config-overlay__row vidas-alert" style={{ flexDirection: 'column', gap: '20px', background: '#222', padding: '30px', borderRadius: '15px', border: '2px solid #f39c12' }}>
-            <h2 style={{ color: '#f39c12', margin: 0, fontSize: '2rem' }}>⚠️ 3 vidas</h2>
+            <h2 style={{ color: '#f39c12', margin: 0, fontSize: '2rem' }}><i className="fas fa-triangle-exclamation" /> 3 vidas</h2>
             <p style={{ color: '#fff', fontSize: '1rem', textAlign: 'center' }}>No te confíes.</p>
             <button className="vidas-alert__btn is-warning" onClick={() => setAlertaVidas(null)}>
               Continuar
@@ -1292,7 +1218,7 @@ export default function MiEstudioPage() {
       {alertaVidas === "una" && (
         <div className="config-overlay animate-fade-in" style={{ zIndex: 9999 }}>
           <div className="config-overlay__row vidas-alert" style={{ flexDirection: 'column', gap: '20px', background: '#331111', padding: '30px', borderRadius: '15px', border: '2px solid #e74c3c' }}>
-            <h2 style={{ color: '#e74c3c', margin: 0, fontSize: '2rem', animation: 'pulse 1s infinite' }}>🔥 1 vida</h2>
+            <h2 style={{ color: '#e74c3c', margin: 0, fontSize: '2rem', animation: 'pulse 1s infinite' }}><i className="fas fa-fire" /> 1 vida</h2>
             <p style={{ color: '#fff', fontSize: '1rem', textAlign: 'center' }}>Última oportunidad.</p>
             <button className="vidas-alert__btn is-danger" onClick={() => setAlertaVidas(null)}>
               Entendido

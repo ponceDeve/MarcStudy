@@ -156,6 +156,19 @@ function OpcionMultiple({ pregunta, onRespondido }) {
 
       {!answered && (
         <div className="question-card__type-wrap">
+          <input
+            value={typed}
+            onChange={(e) => setTyped(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                e.stopPropagation();
+                responderTexto();
+              }
+            }}
+            placeholder="Respuesta"
+            className="question-card__input"
+          />
           <button onClick={responderTexto} className="question-card__submit">
             Responder
           </button>
@@ -163,7 +176,7 @@ function OpcionMultiple({ pregunta, onRespondido }) {
       )}
 
 
-      <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
+      <audio ref={hurraRef} src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`} preload="auto" />
     </>
   );
 }
@@ -257,7 +270,7 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
       )}
 
 
-      <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
+      <audio ref={hurraRef} src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`} preload="auto" />
     </>
   );
 }
@@ -357,7 +370,7 @@ function Completar({ pregunta, onRespondido }) {
         })}
       </div>
 
-      <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
+      <audio ref={hurraRef} src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`} preload="auto" />
     </>
   );
 }
@@ -442,7 +455,7 @@ function Relacionar({ pregunta, onRespondido }) {
         })}
       </div>
 
-      <audio ref={hurraRef} src="/sonidos/hurra-bob-esponja.mp3" preload="auto" />
+      <audio ref={hurraRef} src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`} preload="auto" />
     </>
   );
 }

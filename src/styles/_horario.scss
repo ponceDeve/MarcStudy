@@ -862,8 +862,8 @@
   background: var(--surface);
   color: var(--ink);
   font-size: 0.95rem;
-  font-weight: 600;
   cursor: pointer;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   transition: background .2s ease, color .2s ease, border-color .2s ease, transform .15s ease;
 }
 
@@ -876,6 +876,50 @@
 .tema-selector__boton:active {
   transform: scale(0.98);
   background: var(--primary-bg);
+}
+
+.tema-selector__boton.is-selected {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.tema-selector__confirm-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.tema-selector__confirm-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+.tema-selector__confirm-btn.is-cancelar {
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--ink);
+}
+.tema-selector__confirm-btn.is-cancelar:hover {
+  background: var(--surface-hover);
+}
+
+.tema-selector__confirm-btn.is-aceptar {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--ink-on-primary);
+}
+.tema-selector__confirm-btn.is-aceptar:hover {
+  background: var(--primary-dark);
+}
+.tema-selector__confirm-btn.is-aceptar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .tema-selector__omitir {

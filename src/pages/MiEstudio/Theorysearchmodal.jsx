@@ -19,7 +19,7 @@ export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSe
         <h2 className="levels-modal__title">Buscar en este tema</h2>
 
         <div className="home-search levels-modal__search" onClick={(e) => e.stopPropagation()}>
-          <input
+          <input autoComplete="off"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}

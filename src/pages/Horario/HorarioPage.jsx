@@ -126,6 +126,7 @@ export default function HorarioPage() {
   const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
 
   const [eligiendoTemaIdx, setEligiendoTemaIdx] = useState(null);
+  const [temaSeleccionadoTmp, setTemaSeleccionadoTmp] = useState(null);
   const [temaElegidoParaCurso, setTemaElegidoParaCurso] = useState(null);
 
   const alarmRef = useRef(null);
@@ -267,18 +268,28 @@ export default function HorarioPage() {
 
   function pedirTemaYAbrirCurso(idx) {
     setEligiendoTemaIdx(idx);
+    setTemaSeleccionadoTmp(null);
   }
 
-  function elegirTemaDeCurso(tema) {
+  // Solo marca el tema tocado, todavía no lo aplica — hace falta
+  // presionar "Aceptar" para confirmarlo.
+  function marcarTemaTmp(tema) {
+    setTemaSeleccionadoTmp(tema);
+  }
+
+  function aceptarTemaDeCurso() {
+    if (!temaSeleccionadoTmp) return;
     const idx = eligiendoTemaIdx;
     setEligiendoTemaIdx(null);
-    setTemaElegidoParaCurso(tema);
+    setTemaElegidoParaCurso(temaSeleccionadoTmp);
+    setTemaSeleccionadoTmp(null);
     abrirCurso(idx);
   }
 
   function omitirTemaDeCurso() {
     const idx = eligiendoTemaIdx;
     setEligiendoTemaIdx(null);
+    setTemaSeleccionadoTmp(null);
     setTemaElegidoParaCurso(null);
     abrirCurso(idx);
   }
@@ -728,20 +739,29 @@ export default function HorarioPage() {
             )?.temas || []).map((t) => (
               <button
                 key={t.tema}
-                onClick={() => elegirTemaDeCurso(t.tema)}
-                className="tema-selector__boton"
+                onClick={() => marcarTemaTmp(t.tema)}
+                className={`tema-selector__boton ${temaSeleccionadoTmp === t.tema ? "is-selected" : ""}`}
               >
                 {t.tema}
               </button>
             ))}
           </div>
 
-          <button
-            onClick={omitirTemaDeCurso}
-            className="tema-selector__omitir"
-          >
-            Omitir por ahora
-          </button>
+          <div className="tema-selector__confirm-row">
+            <button
+              onClick={omitirTemaDeCurso}
+              className="tema-selector__confirm-btn is-cancelar"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={aceptarTemaDeCurso}
+              disabled={!temaSeleccionadoTmp}
+              className="tema-selector__confirm-btn is-aceptar"
+            >
+              Aceptar
+            </button>
+          </div>
         </div>
       </Modal>
 

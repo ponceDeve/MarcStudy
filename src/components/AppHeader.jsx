@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useTheme } from "../hooks/useTheme";
@@ -6,18 +5,11 @@ import { useTheme } from "../hooks/useTheme";
 // Header compacto compartido entre el inicio de Mi Estudio, Pomodoro y
 // Repaso. A diferencia del TopBar de dentro de un tema, este NO tiene
 // Niveles, Timer ni Guardar — solo navegación entre páginas + buscador.
-//
-// Usa <Link> de react-router (navegación interna, sin recargar la
-// página) — importante para que el pomodoro siga corriendo al navegar
-// entre pantallas. Ojo: la ruta que se le pasa a <Link to=""> NO debe
-// incluir el basename "/cont_crono" (react-router ya lo antepone
-// solo); ponerlo a mano lo duplica (/cont_crono/cont_crono).
 export default function AppHeader({
   onAbrirBuscador,
   showHome = false,
   onEditarHorario = null,
 }) {
-  const [configOpen, setConfigOpen] = useState(false);
   const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
   const { tema, alternarTema } = useTheme();
 
@@ -25,9 +17,6 @@ export default function AppHeader({
     ...(showHome
       ? [{ title: "Ir a Mi Estudio", label: "Home", icon: "fa-solid fa-house", to: "/" }]
       : []),
-    // Solo se agrega si onAbrirBuscador viene definido — en la
-    // pantalla de inicio de Mi Estudio no hace falta, porque ahí ya
-    // hay un buscador principal en el propio cuerpo de la página.
     ...(onAbrirBuscador
       ? [{ title: "Buscar curso o tema", label: "Busc", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
       : []),
@@ -47,7 +36,7 @@ export default function AppHeader({
     );
     if (b.to) {
       return (
-        <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={() => setConfigOpen(false)}>
+        <Link key={b.title} to={b.to} title={b.title} className={cls}>
           {content}
         </Link>
       );
@@ -55,10 +44,7 @@ export default function AppHeader({
     return (
       <button
         key={b.title}
-        onClick={() => {
-          b.onClick();
-          setConfigOpen(false);
-        }}
+        onClick={b.onClick}
         title={b.title}
         className={cls}
       >
@@ -85,24 +71,7 @@ export default function AppHeader({
         >
           <i className={`fa-solid ${tema === "oscuro" ? "fa-sun" : "fa-moon"}`} />
         </button>
-
-        <button onClick={() => setConfigOpen(true)} title="Opciones" className="topbar__gear">
-          <i className="fa-solid fa-gear" />
-        </button>
       </div>
-
-      {configOpen && (
-        <div
-          onClick={(e) => e.target === e.currentTarget && setConfigOpen(false)}
-          className="topbar__overlay"
-        >
-          <div className="topbar__overlay-inner">
-            <div className="topbar__overlay-row1">
-              {botones.map((b) => renderBoton(b, "topbar__overlay-btn"))}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
