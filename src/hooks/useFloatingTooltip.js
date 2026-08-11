@@ -1,28 +1,45 @@
-import { useCallback, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
 
-// Calcula una posición fija (position: fixed) para un tooltip, centrada
-// horizontalmente respecto al elemento que la dispara PERO recortada
-// (clamp) para que nunca se salga del viewport, sin importar qué tan
-// cerca del borde de la pantalla esté ese elemento.
-export function useFloatingTooltip(maxWidth = 220) {
-  const [pos, setPos] = useState(null); // { top, left } en coordenadas de viewport
+export function useFloatingTooltip() {
+  const [visible, setVisible] = useState(false);
+  const [placement, setPlacement] = useState("center");
 
-  const mostrarEn = useCallback(
-    (el) => {
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const halfWidth = maxWidth / 2 + 8; // margen de seguridad
-      const minLeft = halfWidth;
-      const maxLeft = window.innerWidth - halfWidth;
-      const centerX = rect.left + rect.width / 2;
-      const left = Math.min(Math.max(centerX, minLeft), maxLeft);
-      const top = rect.top - 10; // justo encima del elemento
-      setPos({ top, left });
-    },
-    [maxWidth],
-  );
+  const mostrarEn = useCallback(() => {
+    setVisible(true);
+  }, []);
 
-  const ocultar = useCallback(() => setPos(null), []);
+  const ocultar = useCallback(() => {
+    setVisible(false);
+    setPlacement("center");
+  }, []);
 
-  return { pos, mostrarEn, ocultar };
+  const ajustarPosicion = useCallback((trigger, tooltip) => {
+    if (!trigger || !tooltip) return;
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const margen = 14;
+
+    const centro = triggerRect.left + triggerRect.width / 2;
+    const mitadTooltip = tooltipRect.width / 2;
+
+    const izquierda = centro - mitadTooltip;
+    const derecha = centro + mitadTooltip;
+
+    if (izquierda < margen) {
+      setPlacement("left");
+    } else if (derecha > window.innerWidth - margen) {
+      setPlacement("right");
+    } else {
+      setPlacement("center");
+    }
+  }, []);
+
+  return {
+    visible,
+    placement,
+    mostrarEn,
+    ocultar,
+    ajustarPosicion
+  };
 }

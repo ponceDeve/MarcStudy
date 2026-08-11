@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
@@ -7,9 +7,6 @@ function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-/**
- * Renderiza una expresión LaTeX utilizando KaTeX.
- */
 function renderFormula(formula, key, displayMode = false) {
   try {
     return (
@@ -18,8 +15,8 @@ function renderFormula(formula, key, displayMode = false) {
         dangerouslySetInnerHTML={{
           __html: katex.renderToString(formula, {
             throwOnError: false,
-            displayMode,
-          }),
+            displayMode
+          })
         }}
       />
     );
@@ -28,31 +25,11 @@ function renderFormula(formula, key, displayMode = false) {
   }
 }
 
-/**
- * Detecta fórmulas LaTeX:
- *
- * $...$
- * $$...$$
- * \(...\)
- * \[...\]
- *
- * También detecta expresiones LaTeX escritas directamente,
- * por ejemplo:
- *
- * \frac{1}{4} - \frac{1}{5} = \frac{1}{20}
- * \sin(2x)=2\sin(x)\cos(x)
- * x^2 + y^2 = z^2
- */
 function renderLatex(text) {
   if (!text) return "";
 
-  /*
-   * Primero buscamos expresiones delimitadas explícitamente.
-   * Esto tiene prioridad porque permite que el usuario escriba
-   * cualquier expresión LaTeX sin depender del detector automático.
-   */
   const delimitadoresRegex =
-    /(\\[[\s\S]*?\\]|\\([\s\S]*?\\)|\$\$[\s\S]*?\$\$|\$[^$]*\$)/g;
+    /\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$|\$[^$]*?\$/g;
 
   const partes = [];
   let ultimo = 0;
@@ -62,7 +39,7 @@ function renderLatex(text) {
     if (match.index > ultimo) {
       partes.push({
         tipo: "texto",
-        valor: text.slice(ultimo, match.index),
+        valor: text.slice(ultimo, match.index)
       });
     }
 
@@ -84,7 +61,7 @@ function renderLatex(text) {
     partes.push({
       tipo: "formula",
       valor: formula,
-      displayMode,
+      displayMode
     });
 
     ultimo = match.index + match[0].length;
@@ -93,18 +70,14 @@ function renderLatex(text) {
   if (ultimo < text.length) {
     partes.push({
       tipo: "texto",
-      valor: text.slice(ultimo),
+      valor: text.slice(ultimo)
     });
   }
 
-  /*
-   * Si no encontramos delimitadores, todo el contenido pasa
-   * por el detector automático de LaTeX.
-   */
   if (partes.length === 0) {
     partes.push({
       tipo: "texto",
-      valor: text,
+      valor: text
     });
   }
 
@@ -122,26 +95,8 @@ function renderLatex(text) {
       return;
     }
 
-    /*
-     * Detecta expresiones LaTeX que están escritas directamente
-     * en el texto, sin $...$.
-     *
-     * Ejemplos:
-     *
-     * \frac{1}{4}
-     * \frac{a}{b}
-     * \sin(x)
-     * \cos(x)
-     * \tan(x)
-     * \sqrt{x}
-     * x^2
-     * x_1
-     * \log(x)
-     * \ln(x)
-     * \sum_{i=1}^{n}
-     */
     const formulaRegex =
-      /(?:\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|begin|end)\b(?:\s*(?:\{(?:[^{}]|\{[^{}]*\})*\}|\[[^\]]*\]|\([^)]*\)))*)|(?:[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|_\{[^{}]+\}|_[A-Za-z0-9]+)+)/g;
+      /(?:\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|begin|end)\b(?:\s*(?:\{(?:[^{}]|\{[^{}]*\})*\}|\[[^\]]*\]|\([^)]*\)))*)|(?:[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|\_\{[^{}]+\}|_[A-Za-z0-9]+)+)/g;
 
     const subPartes = [];
     let ultimoFormula = 0;
@@ -152,23 +107,21 @@ function renderLatex(text) {
     ) {
       const formula = formulaMatch[0];
 
-      /*
-       * Evita intentar convertir una palabra normal que no sea
-       * realmente una expresión matemática.
-       */
-      const esComandoLatex =
-        formula.includes("\\") ||
-        formula.includes("^") ||
-        formula.includes("_");
-
-      if (!esComandoLatex) {
+      if (
+        !formula.includes("\\") &&
+        !formula.includes("^") &&
+        !formula.includes("_")
+      ) {
         continue;
       }
 
       if (formulaMatch.index > ultimoFormula) {
         subPartes.push(
           <span key={`${indice}-text-${ultimoFormula}`}>
-            {parte.valor.slice(ultimoFormula, formulaMatch.index)}
+            {parte.valor.slice(
+              ultimoFormula,
+              formulaMatch.index
+            )}
           </span>
         );
       }
@@ -176,8 +129,7 @@ function renderLatex(text) {
       subPartes.push(
         renderFormula(
           formula,
-          `${indice}-latex-${formulaMatch.index}`,
-          false
+          `${indice}-latex-${formulaMatch.index}`
         )
       );
 
@@ -193,19 +145,11 @@ function renderLatex(text) {
       );
     }
 
-    if (subPartes.length > 0) {
-      resultado.push(
-        <span key={`texto-${indice}`}>
-          {subPartes}
-        </span>
-      );
-    } else {
-      resultado.push(
-        <span key={`texto-${indice}`}>
-          {parte.valor}
-        </span>
-      );
-    }
+    resultado.push(
+      <span key={`texto-${indice}`}>
+        {subPartes.length > 0 ? subPartes : parte.valor}
+      </span>
+    );
   });
 
   return resultado;
@@ -247,7 +191,7 @@ function partirPorGlosario(texto, glosario) {
         valor: texto.slice(
           ultimoIndex,
           match.index
-        ),
+        )
       });
     }
 
@@ -262,21 +206,21 @@ function partirPorGlosario(texto, glosario) {
     partes.push({
       tipo: "termino",
       valor: encontrado,
-      key: keyOriginal,
+      key: keyOriginal
     });
 
     ultimoIndex =
       match.index + encontrado.length;
 
     if (match.index === regex.lastIndex) {
-      regex.lastIndex += 1;
+      regex.lastIndex++;
     }
   }
 
   if (ultimoIndex < texto.length) {
     partes.push({
       tipo: "texto",
-      valor: texto.slice(ultimoIndex),
+      valor: texto.slice(ultimoIndex)
     });
   }
 
@@ -285,20 +229,42 @@ function partirPorGlosario(texto, glosario) {
 
 export default function GlossaryText({
   text,
-  glosario = {},
+  glosario = {}
 }) {
   const [activo, setActivo] = useState(null);
 
+  const triggerRefs = useRef({});
+  const tooltipRefs = useRef({});
+
   const {
-    pos,
+    visible,
+    placement,
     mostrarEn,
     ocultar,
-  } = useFloatingTooltip(280);
+    ajustarPosicion
+  } = useFloatingTooltip();
 
   const partes = useMemo(
     () => partirPorGlosario(text, glosario),
     [text, glosario]
   );
+
+  const mostrarTooltip = (i) => {
+    setActivo(i);
+    mostrarEn();
+
+    requestAnimationFrame(() => {
+      ajustarPosicion(
+        triggerRefs.current[i],
+        tooltipRefs.current[i]
+      );
+    });
+  };
+
+  const ocultarTooltip = () => {
+    setActivo(null);
+    ocultar();
+  };
 
   return (
     <span
@@ -308,10 +274,6 @@ export default function GlossaryText({
       }}
     >
       {partes.map((parte, i) => {
-        /*
-         * Texto normal:
-         * aquí también se procesa LaTeX.
-         */
         if (parte.tipo === "texto") {
           return (
             <span key={i}>
@@ -320,55 +282,46 @@ export default function GlossaryText({
           );
         }
 
-        const visible = activo === i;
+        const esVisible =
+          visible && activo === i;
 
         return (
           <span
             key={i}
             className="glossary-term-wrap"
+            onMouseEnter={() => {
+              mostrarTooltip(i);
+            }}
+            onMouseLeave={() => {
+              ocultarTooltip();
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+
+              if (activo === i) {
+                ocultarTooltip();
+              } else {
+                mostrarTooltip(i);
+              }
+            }}
           >
             <span
+              ref={(el) => {
+                triggerRefs.current[i] = el;
+              }}
               className="glossary-term"
-              onMouseEnter={(e) => {
-                setActivo(i);
-                mostrarEn(e.currentTarget);
-              }}
-              onMouseLeave={() => {
-                setActivo((cur) =>
-                  cur === i ? null : cur
-                );
-                ocultar();
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-
-                if (activo === i) {
-                  setActivo(null);
-                  ocultar();
-                } else {
-                  setActivo(i);
-                  mostrarEn(e.currentTarget);
-                }
-              }}
             >
               {renderLatex(parte.valor)}
             </span>
 
-            {visible && pos && (
+            {esVisible && (
               <span
-                className="glossary-tooltip"
-                style={{
-                  position: "fixed",
-                  top: pos.top,
-                  left: pos.left,
-                  transform:
-                    "translate(-50%, -100%)",
-                  bottom: "auto",
+                ref={(el) => {
+                  tooltipRefs.current[i] = el;
                 }}
+                className={`glossary-tooltip glossary-tooltip--${placement}`}
               >
-                {renderLatex(
-                  glosario[parte.key]
-                )}
+                {renderLatex(glosario[parte.key])}
               </span>
             )}
           </span>
