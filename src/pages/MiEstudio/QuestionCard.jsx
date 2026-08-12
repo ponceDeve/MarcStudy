@@ -309,7 +309,10 @@ function Completar({ pregunta, onRespondido }) {
     onRespondido(correct);
   }
 
-  const palabrasElegidas = answered && chosenIdx !== null ? shuffled[chosenIdx].palabras : null;
+  // Igual que en el resto de tipos de pregunta: si falla, el espacio
+  // se queda en blanco (solo coloreado en rojo como aviso), no se
+  // rellena con la palabra incorrecta que eligió.
+  const palabrasElegidas = answered && wasCorrect && chosenIdx !== null ? shuffled[chosenIdx].palabras : null;
   let espacioIdx = -1;
 
   return (

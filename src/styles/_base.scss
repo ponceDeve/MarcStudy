@@ -23,6 +23,22 @@ input {
   font-family: inherit;
 }
 
+/* Los inputs de búsqueda usan type="search" (para que el teléfono no
+   ofrezca autocompletar con contraseñas/tarjetas/direcciones), pero
+   eso hace que Safari/Chrome les apliquen su propio estilo nativo
+   (bordes redondeados, relleno distinto). Lo anulamos para que se
+   vean igual que el resto de inputs de la app. */
+input[type="search"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Reset global de botones: sin esto, cualquier <button> sin clase
    completa (background/border/padding) muestra el estilo nativo
    del navegador (gris, con borde) en vez del diseño de la app. */

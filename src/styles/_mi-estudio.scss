@@ -431,32 +431,69 @@
   border-bottom-color: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-.vidas-alert {
+/* Avisos de vidas (3 vidas / 1 vida / game over): pantalla completa
+   en negro, sin tarjeta ni recuadro, todo centrado. */
+.vidas-fullscreen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.vidas-fullscreen__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   width: min(340px, 90vw);
   box-sizing: border-box;
 }
-.vidas-alert__btn {
-  width: 100%;
+.vidas-fullscreen__hearts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 2rem;
+}
+.vidas-fullscreen__heart.is-full {
+  color: #e74c3c;
+}
+.vidas-fullscreen__heart.is-a-punto {
+  color: #e74c3c;
+  animation: vidas-heart-shake 0.35s ease-in-out infinite;
+}
+.vidas-fullscreen__heart.is-roto {
+  color: #7f8c8d;
+  animation: vidas-heart-break-in 0.3s ease-out;
+}
+@keyframes vidas-heart-shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+@keyframes vidas-heart-break-in {
+  0% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.vidas-alert {
+  width: min(340px, 90vw);
   box-sizing: border-box;
-  padding: 13px 24px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: var(--radius-md);
-  color: var(--ink-on-primary);
-  cursor: pointer;
-}
-.vidas-alert__btn:active {
-  transform: translateY(1px);
-}
-.vidas-alert__btn.is-warning {
-  background: #f39c12;
-}
-.vidas-alert__btn.is-danger {
-  background: #e74c3c;
-}
-.vidas-alert__btn.is-critical {
-  background: #b91c1c;
 }
 .config-overlay__label {
   margin-top: 10px;

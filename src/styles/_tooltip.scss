@@ -127,6 +127,10 @@
   text-decoration-style: dotted;
   text-underline-offset: 3px;
   transition: color 0.15s ease;
+  /* Evita que un término de varias palabras se parta a la mitad entre
+     dos líneas: si no entra en el espacio que queda, salta completo
+     a la siguiente línea (como una sola "palabra"). */
+  white-space: nowrap;
 }
 
 .glossary-term:hover {

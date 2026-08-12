@@ -53,11 +53,10 @@ export default function TopBar({
   const configButtons = [
     { icon: "fas fa-play", label: "Continuar", onClick: () => { if (repasoQuizActivo) onSalirDeRepaso(); } },
     { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", onClick: onToggleFullscreen },
-    // "Repasar" solo tiene sentido en pregunta (muestra inline las
-    // preguntas ya vistas, mezcladas) — en teoría no aplica.
-    ...(stage === "question"
-      ? [{ icon: "fas fa-list-check", label: "Repasar", onClick: onVerPreguntasVistas }]
-      : []),
+    // "Repasar" muestra las preguntas ya vistas de este tema, mezcladas.
+    // Se puede abrir desde teoría o desde pregunta; MiEstudioPage se
+    // encarga de cambiar a la vista de pregunta y volver si hace falta.
+    { icon: "fas fa-list-check", label: "Repasar", onClick: onVerPreguntasVistas },
     { icon: "fas fa-rotate-left", label: "Reiniciar", onClick: onReiniciarTarjetas },
     { icon: "fas fa-door-open", label: "Abandonar", onClick: onAbandonar }
   ];

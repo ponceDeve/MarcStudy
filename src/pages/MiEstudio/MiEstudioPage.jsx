@@ -90,6 +90,53 @@ export default function MiEstudioPage() {
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
 
+  // El aviso de vidas se cierra solo (no tiene botón): se queda en
+  // pantalla el tiempo justo para ver el corazón romperse y luego
+  // desaparece. En "cero" además reinicia las vidas a 5 al cerrar.
+  useEffect(() => {
+    if (!alertaVidas) return;
+    const delay = alertaVidas === "cero" ? 4200 : 3200;
+    const t = setTimeout(() => {
+      setAlertaVidas(null);
+      if (alertaVidas === "cero") setVidas(5);
+    }, delay);
+    return () => clearTimeout(t);
+  }, [alertaVidas]);
+
+  // El corazón recién perdido tiembla un momento y luego se rompe
+  // (cambia a bi-heartbreak) exactamente al mismo tiempo que los
+  // corazones ya perdidos antes, que se muestran rotos desde el inicio.
+  const [corazonRoto, setCorazonRoto] = useState(false);
+  useEffect(() => {
+    if (!alertaVidas) {
+      setCorazonRoto(false);
+      return;
+    }
+    const t = setTimeout(() => setCorazonRoto(true), 700);
+    return () => clearTimeout(t);
+  }, [alertaVidas]);
+
+  function renderCorazonesVidas() {
+    return (
+      <div className="vidas-fullscreen__hearts">
+        {Array.from({ length: 5 }).map((_, i) => {
+          if (i < vidas) {
+            return <i key={i} className="bi bi-heart-fill vidas-fullscreen__heart is-full" />;
+          }
+          if (i === vidas) {
+            return (
+              <i
+                key={i}
+                className={`vidas-fullscreen__heart ${corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"}`}
+              />
+            );
+          }
+          return <i key={i} className="bi bi-heartbreak vidas-fullscreen__heart is-roto" />;
+        })}
+      </div>
+    );
+  }
+
   const [examenPreguntas, setExamenPreguntas] = useState([]);
   const [nivelIndex, setNivelIndex] = useState(0);
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
@@ -102,12 +149,14 @@ export default function MiEstudioPage() {
 
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-  // "Repasar" en pregunta: muestra inline (no modal) las preguntas ya
-  // vistas de este tema, mezcladas. No toca cardIndex/stage/isFlipQuiz —
-  // al salir con "Continuar" simplemente revela lo que ya estaba debajo.
+  // "Repasar" muestra inline (no modal) las preguntas ya vistas de este
+  // tema, mezcladas. Ahora también se puede abrir desde teoría: en ese
+  // caso se recuerda con repasoDesdeTeoria para volver a "theory" al
+  // salir (si ya se abrió estando en pregunta, no se toca el stage).
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
+  const [repasoDesdeTeoria, setRepasoDesdeTeoria] = useState(false);
 
   const [searchOpen, setSearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
@@ -603,11 +652,35 @@ export default function MiEstudioPage() {
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto });
 
-    const puntoIndexActual = isFlipQuiz ? quizBatch[quizPos]?.puntoIndex : cardIndex;
-    if (puntoIndexActual != null && topicData) {
+    // "Repasar" necesita guardar la pregunta real que se respondió, no
+    // solo un índice: según el modo, cardIndex/nivelIndex apuntan a
+    // arrays distintos (flatPuntos vs examenPreguntas), así que antes
+    // se guardaba el índice equivocado y "Repasar" no encontraba nada
+    // en flatPuntos (mostraba "no hay preguntas" aunque sí las hubiera).
+    let vistaKey = null;
+    let vistaPregunta = null;
+
+    if (isFlipQuiz) {
+      const item = quizBatch[quizPos];
+      if (item) {
+        vistaKey = `pt-${item.puntoIndex}`;
+        vistaPregunta = flatPuntos[item.puntoIndex]?.pregunta || null;
+      }
+    } else if (isLevelMode) {
+      vistaKey = `ex-${nivelIndex}`;
+      vistaPregunta = examenPreguntas[nivelIndex] || null;
+    } else if (modoEstudio === "solo_preguntas") {
+      vistaKey = `ex-${cardIndex}`;
+      vistaPregunta = examenPreguntas[cardIndex] || null;
+    } else {
+      vistaKey = `pt-${cardIndex}`;
+      vistaPregunta = flatPuntos[cardIndex]?.pregunta || null;
+    }
+
+    if (vistaKey && vistaPregunta && topicData) {
       setPreguntasVistas((prev) => {
-        if (prev[puntoIndexActual]) return prev;
-        const next = { ...prev, [puntoIndexActual]: true };
+        if (prev[vistaKey]) return prev;
+        const next = { ...prev, [vistaKey]: { pregunta: vistaPregunta } };
         localStorage.setItem(
           `preguntasVistas_${topicData.curso}_${topicData.tema}`,
           JSON.stringify(next),
@@ -704,10 +777,20 @@ export default function MiEstudioPage() {
   }
 
   function verPreguntasVistas() {
-    const indices = Object.keys(preguntasVistas).map(Number);
-    const lote = indices
-      .map((i) => ({ puntoIndex: i, pregunta: flatPuntos[i]?.pregunta }))
-      .filter((x) => x.pregunta);
+    const lote = Object.entries(preguntasVistas)
+      .map(([key, val]) => {
+        // Formato nuevo: guarda la pregunta directamente.
+        if (val && typeof val === "object" && val.pregunta) {
+          return { key, pregunta: val.pregunta };
+        }
+        // Formato antiguo (antes de este arreglo): solo `true`, guardado
+        // con un índice que a veces era de flatPuntos y a veces no.
+        // Se intenta igual por compatibilidad con lo ya guardado.
+        const i = Number(key);
+        const pregunta = flatPuntos[i]?.pregunta;
+        return pregunta ? { key, pregunta } : null;
+      })
+      .filter(Boolean);
 
     if (lote.length === 0) {
       sinPreguntaTimers.current.forEach(clearTimeout);
@@ -728,12 +811,23 @@ export default function MiEstudioPage() {
     setRepasoQuizActivo(true);
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
+
+    if (stage !== "question") {
+      setRepasoDesdeTeoria(true);
+      setStage("question");
+    } else {
+      setRepasoDesdeTeoria(false);
+    }
   }
 
   function salirDeRepaso() {
     setRepasoQuizActivo(false);
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
+    if (repasoDesdeTeoria) {
+      setStage("theory");
+      setRepasoDesdeTeoria(false);
+    }
   }
 
   function abandonarJuego() {
@@ -981,13 +1075,9 @@ export default function MiEstudioPage() {
               </div>
               <div className="home-search">
                 <div className="search-input-row">
-                  <input
+                  <input autoComplete="off"
                     type="search"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    autoCapitalize="none"
-                    spellCheck={false}
-                    inputMode="search"
+                    name="buscar-inicio"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => setBusquedaEnfocada(true)}
@@ -996,13 +1086,11 @@ export default function MiEstudioPage() {
                       if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
                         e.preventDefault();
                         const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-
                         if (mejorOpcion) {
                           seleccionarItem(mejorOpcion);
                           return;
                         }
                       }
-
                       handleKeyDownInicial(e);
                     }}
                     placeholder="Buscar tema o curso..."
@@ -1116,6 +1204,8 @@ export default function MiEstudioPage() {
                     <div className="mi-estudio__google">
                       <div className="mi-estudio__google-input-wrap">
                         <input autoComplete="off"
+                          type="search"
+                          name="buscar-google"
                           value={googleQuery}
                           onChange={(e) => setGoogleQuery(e.target.value)}
                           onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
@@ -1300,37 +1390,31 @@ export default function MiEstudioPage() {
       <audio ref={alertaNotificacionRef} src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`} preload="auto" />
 
       {alertaVidas === "tres" && (
-        <div className="config-overlay animate-fade-in" style={{ zIndex: 9999 }}>
-          <div className="config-overlay__row vidas-alert" style={{ flexDirection: 'column', gap: '20px', background: '#222', padding: '30px', borderRadius: '15px', border: '2px solid #f39c12' }}>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
             <h2 style={{ color: '#f39c12', margin: 0, fontSize: '2rem' }}><i className="fas fa-triangle-exclamation" /> 3 vidas</h2>
-            <p style={{ color: '#fff', fontSize: '1rem', textAlign: 'center' }}>No te confíes.</p>
-            <button className="vidas-alert__btn is-warning" onClick={() => setAlertaVidas(null)}>
-              Continuar
-            </button>
+            {renderCorazonesVidas()}
+            <p style={{ color: '#fff', fontSize: '1rem' }}>No te confíes.</p>
           </div>
         </div>
       )}
 
       {alertaVidas === "una" && (
-        <div className="config-overlay animate-fade-in" style={{ zIndex: 9999 }}>
-          <div className="config-overlay__row vidas-alert" style={{ flexDirection: 'column', gap: '20px', background: '#331111', padding: '30px', borderRadius: '15px', border: '2px solid #e74c3c' }}>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
             <h2 style={{ color: '#e74c3c', margin: 0, fontSize: '2rem', animation: 'pulse 1s infinite' }}><i className="fas fa-fire" /> 1 vida</h2>
-            <p style={{ color: '#fff', fontSize: '1rem', textAlign: 'center' }}>Última oportunidad.</p>
-            <button className="vidas-alert__btn is-danger" onClick={() => setAlertaVidas(null)}>
-              Entendido
-            </button>
+            {renderCorazonesVidas()}
+            <p style={{ color: '#fff', fontSize: '1rem' }}>Última oportunidad.</p>
           </div>
         </div>
       )}
 
       {alertaVidas === "cero" && (
-        <div className="config-overlay animate-fade-in" style={{ zIndex: 9999 }}>
-          <div className="config-overlay__row vidas-alert" style={{ flexDirection: 'column', gap: '20px', background: '#000', padding: '40px', borderRadius: '15px', border: '3px solid red' }}>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
             <h1 style={{ color: 'red', margin: 0, fontSize: '3rem', textShadow: '0 0 10px red' }}>GAME OVER</h1>
-            <p style={{ color: '#aaa', fontSize: '1rem', textAlign: 'center' }}>Progreso reiniciado.</p>
-            <button className="vidas-alert__btn is-critical" onClick={() => { setAlertaVidas(null); setVidas(5); }} style={{ marginTop: '10px' }}>
-              Reiniciar desde cero
-            </button>
+            {renderCorazonesVidas()}
+            <p style={{ color: '#aaa', fontSize: '1rem' }}>Progreso reiniciado.</p>
           </div>
         </div>
       )}

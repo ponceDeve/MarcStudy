@@ -98,14 +98,9 @@ export default function SearchModal({ open, onClose, onSelect }) {
           <i className="fa-solid fa-times" />
         </button>
         <div className="search-input-row">
-          <input
+          <input autoComplete="off"
             type="search"
-            name="search"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="none"
-            spellCheck={false}
-            inputMode="search"
+            name="buscar-curso-tema"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -113,21 +108,18 @@ export default function SearchModal({ open, onClose, onSelect }) {
               // Interceptamos el Enter si no se ha bajado con las flechas
               if (e.key === "Enter" && hayQuery && focusedIdx <= 0) {
                 e.preventDefault();
-
                 const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-
                 if (mejorOpcion) {
                   elegir(mejorOpcion);
                   return;
                 }
               }
-
               handleKeyDown(e);
             }}
             placeholder="Buscar curso o tema..."
             className="search-input"
           />
-          <div
+          <div 
             className="search-input-lupa"
             onMouseDown={(e) => {
               e.preventDefault();

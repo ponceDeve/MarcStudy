@@ -21,14 +21,9 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
   return (
     <div className="theory-search">
       <div className="theory-search__wrap">
-        <input
+        <input autoComplete="off"
           type="search"
-          name="search"
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="none"
-          spellCheck={false}
-          inputMode="search"
+          name="buscar-teoria"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Buscar en este tema..."
