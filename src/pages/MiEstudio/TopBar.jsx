@@ -6,7 +6,8 @@ export default function TopBar({
   tema, curso, stage,
   onAbrirBuscador, onTogglePomodoroMini, onAbrirTemas,
   onGuardarRepaso, isFullscreen, onToggleFullscreen,
-  onVerPreguntasVistas, onAbandonar, onReiniciarTarjetas
+  onVerPreguntasVistas, onAbandonar, onReiniciarTarjetas,
+  repasoQuizActivo, onSalirDeRepaso
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
@@ -40,7 +41,6 @@ export default function TopBar({
   const repasoTo = "/repaso";
 
   const botonesPrincipales = [
-    { title: "Inicio", label: "Inicio", icon: "fa-solid fa-house", to: "/" },
     { title: "Mini cronómetro", label: "Timer", icon: "fa-solid fa-clock", onClick: onTogglePomodoroMini },
     { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: pomodoroTo },
     { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: repasoTo },
@@ -51,8 +51,13 @@ export default function TopBar({
   const botonesVisibles = stage === "question" ? [] : botonesPrincipales;
 
   const configButtons = [
+    { icon: "fas fa-play", label: "Continuar", onClick: () => { if (repasoQuizActivo) onSalirDeRepaso(); } },
     { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", onClick: onToggleFullscreen },
-    { icon: "fas fa-list-check", label: "Repasar", onClick: onVerPreguntasVistas },
+    // "Repasar" solo tiene sentido en pregunta (muestra inline las
+    // preguntas ya vistas, mezcladas) — en teoría no aplica.
+    ...(stage === "question"
+      ? [{ icon: "fas fa-list-check", label: "Repasar", onClick: onVerPreguntasVistas }]
+      : []),
     { icon: "fas fa-rotate-left", label: "Reiniciar", onClick: onReiniciarTarjetas },
     { icon: "fas fa-door-open", label: "Abandonar", onClick: onAbandonar }
   ];

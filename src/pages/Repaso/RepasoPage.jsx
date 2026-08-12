@@ -196,7 +196,7 @@ export default function RepasoPage() {
         onClose={() => setSearchOpen(false)}
         onSelect={(item) => {
           setSearchOpen(false);
-          irAMiEstudio(item.nombre);
+          irAMiEstudio(item.type === "curso" ? item.nombre : item.tema);
         }}
       />
 

@@ -1,0 +1,124 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Identidades del Ángulo Doble y Auxiliares",
+  "glosario": {
+    "Ángulo Doble": "Identidades para razones trigonométricas del ángulo $2x$.",
+    "Identidad Auxiliar": "Fórmula derivada para simplificar cálculos largos rápidamente.",
+    "Degradación": "Reducir el exponente de una razón trigonométrica.",
+    "Bisectriz": "Rayo que divide un ángulo en dos iguales.",
+    "Identidades Pitagóricas": "Relaciones cuadráticas basadas en el teorema de Pitágoras.",
+    "Ceviana": "Segmento desde un vértice hacia el lado opuesto."
+  },
+  "theory": [
+    {
+      "titulo": "Identidades Fundamentales del Ángulo Doble",
+      "puntos": [
+        {
+          "texto": "Seno del doble = $2\\sin(x)\\cos(x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Útil cuando conoces el seno y coseno del ángulo simple y necesitas el doble. EJEMPLO REAL: Hallar $\\sin(74^\\circ)$. Sabemos que $74^\\circ = 2(37^\\circ)$. $\\sin(74^\\circ) = 2\\sin(37^\\circ)\\cos(37^\\circ) = 2(3/5)(4/5) = 24/25$. TRUCO UNMSM: Frecuentemente el \"$2$\" está oculto; si ves $\\sin(x)\\cos(x)$, multiplícalo por $2$ y divídelo entre $2$ para formar la identidad."
+        },
+        {
+          "texto": "Coseno del doble = $\\cos^2(x) - \\sin^2(x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Base para la degradación de potencias cuadráticas. EJEMPLO REAL: Simplificar $\\cos^2(15^\\circ) - \\sin^2(15^\\circ)$. Aplicando directo: $\\cos(2 \\cdot 15^\\circ) = \\cos(30^\\circ) = \\sqrt{3}/2$. VARIACIÓN: Existen dos formas más: $1 - 2\\sin^2(x)$ y $2\\cos^2(x) - 1$, indispensables para eliminar raíces cuadradas en integrales o simplificaciones."
+        },
+        {
+          "texto": "Tangente del doble = $\\frac{2\\tan(x)}{1-\\tan^2(x)}$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Se usa cuando solo se tiene la tangente como dato. EJEMPLO REAL: Si $\\tan(x) = 1/2$, hallar $\\tan(2x)$. $\\tan(2x) = \\frac{2(1/2)}{1-(1/2)^2} = \\frac{1}{1-1/4} = 4/3$. CASO ESPECIAL: Si $\\tan(x) = 1$, el denominador se vuelve cero, lo que implica que $\\tan(2x) = \\infty$ (ángulo de $90^\\circ$)."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades Auxiliares - Binomios al Cuadrado",
+      "puntos": [
+        {
+          "texto": "$(\\sin x + \\cos x)^2 = 1 + \\sin(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Sirve para elevar ecuaciones condicionales al cuadrado y encontrar el ángulo doble. EJEMPLO REAL: Si $\\sin x + \\cos x = \\frac{1}{2}$, hallar $\\sin 2x$. Elevamos al cuadrado: $(\\sin x + \\cos x)^2 = 1/4 \\Rightarrow 1 + \\sin 2x = 1/4 \\Rightarrow \\sin 2x = -3/4$. TRUCO UNMSM: Esta es la identidad auxiliar más evaluada en admisión para sistemas de ecuaciones trigonométricas."
+        },
+        {
+          "texto": "$(\\sin x - \\cos x)^2 = 1 - \\sin(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Análogo al binomio suma, útil para encontrar el doble de un ángulo a partir de una resta. EJEMPLO REAL: Simplificar $\\sqrt{1 - \\sin 2x}$ en el primer cuadrante. Usando la identidad, equivale a $\\sqrt{(\\sin x - \\cos x)^2} = |\\sin x - \\cos x|$. CASO ESPECIAL: El valor absoluto depende de quién es mayor en el cuadrante dado."
+        },
+        {
+          "texto": "$(\\sin x + \\cos x + 1)(\\sin x + \\cos x - 1) = \\sin 2x$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Es una diferencia de cuadrados camuflada que agiliza el cálculo algebraico. EJEMPLO REAL: Reducir $E = (\\sin x + \\cos x + 1)(\\sin x + \\cos x - 1) - \\sin 2x$. La primera parte es $(\\sin x + \\cos x)^2 - 1^2$, que se expande a $1 + \\sin 2x - 1 = \\sin 2x$. Entonces $E = \\sin 2x - \\sin 2x = 0$. TRUCO: Viene directamente del apunte fotográfico y es clave para evitar multiplicar término a término."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades Auxiliares - Sumas de Cuartas y Sextas",
+      "puntos": [
+        {
+          "texto": "$\\sin^4 x + \\cos^4 x = 1 - \\frac{1}{2}\\sin^2(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Forma estándar y más usada para simplificar polinomios trigonométricos. EJEMPLO REAL: Si $\\sin 2x = 1/2$, hallar $\\sin^4 x + \\cos^4 x$. Reemplazando: $1 - \\frac{1}{2}(1/2)^2 = 1 - 1/8 = 7/8$. TRUCO UNMSM: Memorizar esta forma general antes de pasar a la degradación con $\\cos 4x$."
+        },
+        {
+          "texto": "$\\sin^4 x + \\cos^4 x = \\frac{3}{4} + \\frac{1}{4}\\cos(4x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Útil para integrales o cuando las alternativas están en función de $\\cos 4x$. EJEMPLO REAL: Simplificar multiplicando por $4$: $4(\\sin^4 x + \\cos^4 x) = 3 + \\cos(4x)$. Si el problema pide el máximo valor, al ser $\\cos(4x) \\le 1$, el máximo de la expresión es $1$. CASO ESPECIAL: Extraída directamente del cuaderno del estudiante."
+        },
+        {
+          "texto": "$\\sin^6 x + \\cos^6 x = 1 - \\frac{3}{4}\\sin^2(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Viene de elevar al cubo la identidad pitagórica $\\sin^2 x + \\cos^2 x = 1$. EJEMPLO REAL: Si $\\sin 2x = 2/3$, hallar $\\sin^6 x + \\cos^6 x$. Reemplazo: $1 - \\frac{3}{4}(2/3)^2 = 1 - \\frac{3}{4}(4/9) = 1 - 1/3 = 2/3$. VARIACIÓN: Si el problema incluye variables mixtas, usar esta forma suele cancelar términos medios."
+        },
+        {
+          "texto": "$\\sin^6 x + \\cos^6 x = \\frac{5}{8} + \\frac{3}{8}\\cos(4x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Forma linealizada suprema para análisis matemático y rangos de funciones. EJEMPLO REAL: Encontrar el rango de $f(x) = \\sin^6 x + \\cos^6 x$. Como $-1 \\le \\cos 4x \\le 1$, el mínimo es $5/8 - 3/8 = 1/4$ y el máximo es $5/8 + 3/8 = 1$. TRUCO UNMSM: Esta identidad del apunte evita hacer el análisis de la derivada."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades Auxiliares de Tangente, Cotangente y Secante",
+      "puntos": [
+        {
+          "texto": "$\\cot x + \\tan x = 2\\csc(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Convierte suma de recíprocas en un solo término. EJEMPLO REAL: Simplificar $E = \\frac{1}{2}(\\cot x + \\tan x)\\sin 2x$. Reemplazamos: $E = \\frac{1}{2}(2\\csc 2x)\\sin 2x = \\csc 2x \\cdot \\sin 2x = 1$. TRUCO UNMSM: \"Jamás sumes fracciones de senos y cosenos; usa de frente la cosecante del doble\"."
+        },
+        {
+          "texto": "$\\cot x - \\tan x = 2\\cot(2x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Transforma la resta en una sola cotangente del doble. EJEMPLO REAL: Si $\\cot x - \\tan x = 4$, hallar $\\tan 2x$. Sabemos que $2\\cot 2x = 4 \\Rightarrow \\cot 2x = 2$. Luego, invirtiendo, $\\tan 2x = 1/2$. VARIACIÓN: Al sumar la identidad de suma y de resta se deduce que $4\\cot 2x = \\dots$, generando un sistema simple."
+        },
+        {
+          "texto": "$\\sec(2x) + 1 = \\tan(2x)\\cot(x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Ideal para factorizar expresiones racionales trigonométricas o crear un producto a partir de una suma. EJEMPLO REAL: Reducir $\\frac{\\sec 2x + 1}{\\tan 2x}$. Por identidad: $\\frac{\\tan 2x \\cot x}{\\tan 2x} = \\cot x$. TRUCO: Es una identidad auxiliar clásica en el cuaderno, muy frecuente en problemas de simplificación en bloque."
+        },
+        {
+          "texto": "$\\sec(2x) - 1 = \\tan(2x)\\tan(x)$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Similar a la anterior, transforma resta en producto. EJEMPLO REAL: Evaluar $M = \\frac{\\sec 40^\\circ - 1}{\\tan 40^\\circ \\tan 20^\\circ}$. Identificamos $x = 20^\\circ$, $2x = 40^\\circ$. Reemplazando el numerador: $\\frac{\\tan 40^\\circ \\tan 20^\\circ}{\\tan 40^\\circ \\tan 20^\\circ} = 1$. CASO ESPECIAL: Cuidado con confundirla con las identidades de mitad de ángulo; esto es exclusivamente del doble."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad Geométrica - Bisectriz y Ángulo Doble",
+      "puntos": [
+        {
+          "texto": "Bisectriz interior ✓ Requiere identidades doble",
+          "explicacion": "MÉTODO DE SOLUCIÓN: En un triángulo rectángulo con una bisectriz que divide el ángulo en $\\theta$ y $\\theta$, las relaciones trigonométricas se conectan por la tangente del doble. EJEMPLO REAL: Triángulo donde el cateto adyacente es $x$ y el opuesto se parte en $a$ y $b$. La tangente total es $\\frac{a+b}{x}$ y la de la mitad es $\\frac{b}{x}$. Al usar $\\tan 2\\theta = \\frac{2\\tan\\theta}{1-\\tan^2\\theta}$, se deriva la fórmula."
+        },
+        {
+          "texto": "$x = b\\sqrt{\\frac{a+b}{a-b}}$",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Fórmula directa mostrada en la imagen para hallar el cateto adyacente $x$ sin hacer el proceso trigonométrico largo. EJEMPLO REAL: Si los segmentos del cateto opuesto son $a=5$ y $b=3$, calcular $x$. Aplicando fórmula: $x = 3\\sqrt{\\frac{5+3}{5-3}} = 3\\sqrt{\\frac{8}{2}} = 3\\sqrt{4} = 6$. TRUCO UNMSM: Esta es la \"fórmula secreta\" para ganar minutos vitales en geometría y trigonometría."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelos de Problemas Clásicos UNMSM (Nivel Avanzado)",
+      "puntos": [
+        {
+          "texto": "Condición algebraica → Hallar razón trigonométrica",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Si dan $3\\sin x = 4\\cos x$, piden funciones del ángulo doble. Primero se halla la tangente: $\\tan x = 4/3$. EJEMPLO REAL: Calcular $\\sin 2x$. Usamos $\\sin 2x = 2\\sin x \\cos x$ (o en función de tangente). Por triángulo rectángulo de $3, 4, 5$, $\\sin x = 4/5$, $\\cos x = 3/5$. Por tanto, $\\sin 2x = 2(4/5)(3/5) = 24/25$. VARIACIÓN: Si es segundo cuadrante, los signos cambian."
+        },
+        {
+          "texto": "Expresiones anidadas ✓ Degradación múltiple",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Cuando se tiene raíces dentro de raíces como $\\sqrt{2 + \\sqrt{2 + 2\\cos 4x}}$, usar la degradación inversa: $1 + \\cos 2\\theta = 2\\cos^2\\theta$. EJEMPLO REAL: $\\sqrt{2 + \\sqrt{2(1+\\cos 4x)}} = \\sqrt{2 + \\sqrt{2(2\\cos^2 2x)}} = \\sqrt{2 + 2\\cos 2x} = \\sqrt{2(1+\\cos 2x)} = \\sqrt{4\\cos^2 x} = 2\\cos x$. TRUCO: Siempre asumir ángulos agudos a menos que se indique el cuadrante."
+        },
+        {
+          "texto": "Minimizar función polinómica ✓ Usar formas del coseno",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Reducir $\\sin^4 x + \\cos^4 x$ o grado $6$ a una expresión lineal de $\\cos 4x$ (ver sección 3). EJEMPLO REAL: Minimizar $f(x) = \\sin^6 x + \\cos^6 x + \\sin^4 x + \\cos^4 x$. Convertimos todo: $(\\frac{5}{8} + \\frac{3}{8}\\cos 4x) + (\\frac{3}{4} + \\frac{1}{4}\\cos 4x) = \\frac{11}{8} + \\frac{5}{8}\\cos 4x$. El mínimo ocurre cuando $\\cos 4x = -1$. El mínimo es $\\frac{11}{8} - \\frac{5}{8} = \\frac{6}{8} = 3/4$."
+        },
+        {
+          "texto": "Sistemas de ecuaciones trignométricas → Uso de auxiliares",
+          "explicacion": "MÉTODO DE SOLUCIÓN: Usar las identidades auxiliares como puente algebraico para encontrar el valor de $2x$. EJEMPLO REAL: Sistema: $1) \\tan x + \\cot x = m$, $2) \\sec 2x - 1 = n$. De $1)$ tenemos $2\\csc 2x = m$. De $2)$ tenemos $\\tan 2x \\tan x = n$, lo cual puede cruzarse con la identidad de suma/resta. TRUCO UNMSM: Al dividir identidades se cancelan términos; por ejemplo, $\\frac{\\cot x + \\tan x}{\\cot x - \\tan x} = \\frac{2\\csc 2x}{2\\cot 2x} = \\sec 2x$."
+        }
+      ]
+    }
+  ]
+}

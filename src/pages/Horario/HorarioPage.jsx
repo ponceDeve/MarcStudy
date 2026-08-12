@@ -712,7 +712,7 @@ export default function HorarioPage() {
         onClose={() => setSearchOpen(false)}
         onSelect={(item) => {
           setSearchOpen(false);
-          navigate(`/?q=${encodeURIComponent(item.nombre)}`);
+          navigate(`/?q=${encodeURIComponent(item.type === "curso" ? item.nombre : item.tema)}`);
         }}
       />
 

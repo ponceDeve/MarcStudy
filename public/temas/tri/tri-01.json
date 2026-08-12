@@ -1,344 +1,113 @@
 {
   "curso": "Trigonometría",
-  "tema": "Reducción al Primer Cuadrante",
+  "tema": "Sistemas de Medición Angular",
   "glosario": {
-    "cuadrante": "Cada una de las cuatro regiones del plano cartesiano.",
-    "co-función": "Función trigonométrica complementaria (ej: seno y coseno).",
-    "razón trigonométrica": "Relación entre los lados de un triángulo rectángulo.",
-    "ángulo positivo": "Ángulo generado en sentido antihorario."
+    "Ángulo": "Rotación de un rayo sobre un vértice.",
+    "Sexagesimal": "Sistema inglés que divide vuelta en 360.",
+    "Centesimal": "Sistema francés que divide vuelta en 400.",
+    "Radián": "Ángulo donde arco es igual al radio.",
+    "Proporcionalidad": "Relación constante entre dos o más magnitudes.",
+    "Conversión": "Transformación entre distintos sistemas de medición."
   },
   "theory": [
     {
-      "titulo": "Primer Caso: Para ángulos positivos y menores a una vuelta",
+      "titulo": "Sistema Sexagesimal (Inglés) y Propiedades Ocultas",
       "puntos": [
-        "El plano cartesiano se divide en cuatro cuadrantes con signos específicos para cada R.T.",
         {
-          "texto": "En el primer cuadrante ($I_C$), todas las razones trigonométricas son positivas (+).",
-          "pregunta": {
-            "q": "¿Qué razones trigonométricas son positivas en el primer cuadrante ($I_C$)?",
-            "opts": [
-              "Solo el seno y la cosecante",
-              "Todas las razones trigonométricas",
-              "Solo la tangente y cotangente",
-              "Solo el coseno y la secante"
-            ],
-            "correct": 1,
-            "explicacion": "Por definición en el círculo trigonométrico, todas las coordenadas del primer cuadrante son positivas, lo que hace que todas las razones resulten con signo positivo."
-          }
+          "texto": "$1^\\circ = 60'$",
+          "explicacion": "En el sistema inglés, una vuelta completa mide $360^\\circ$. Para reducir la notación $a^\\circ b' c''$, debes aplicar la suma algebraica $a^\\circ + b' + c''$. Ejemplo: Convertir $2^\\circ 15'$ a minutos requiere multiplicar $2 \\times 60$ y sumar 15, obteniendo $135'$."
         },
         {
-          "texto": "En el segundo cuadrante ($II_C$), el $\\operatorname{sen}$ y la $\\csc$ son positivos (+).",
-          "pregunta": {
-            "q": "¿Cuáles son las únicas razones trigonométricas positivas en el segundo cuadrante?",
-            "opts": [
-              "Coseno y secante",
-              "Tangente y cotangente",
-              "Seno y cosecante",
-              "Seno y coseno"
-            ],
-            "correct": 2,
-            "explicacion": "En el segundo cuadrante, el eje Y es positivo (ordenada) y la hipotenusa siempre es positiva, por lo que el seno y su recíproca, la cosecante, conservan signo positivo."
-          }
+          "texto": "$1' = 60''$",
+          "explicacion": "Cada minuto sexagesimal contiene 60 segundos. Para transformar grados directamente a segundos, el factor de conversión es $3600$. Por lo tanto, un ángulo escrito como $1^\\circ 1' 1''$ equivale a $3600'' + 60'' + 1'' = 3661''$."
         },
         {
-          "texto": "En el tercer cuadrante ($III_C$), la $\\tan$ y la $\\cot$ son positivas (+).",
-          "pregunta": {
-            "q": "¿Qué razones trigonométricas tienen signo positivo en el tercer cuadrante?",
-            "opts": [
-              "Tangente y cotangente",
-              "Seno y cosecante",
-              "Coseno y secante",
-              "Todas son negativas"
-            ],
-            "correct": 0,
-            "explicacion": "En el tercer cuadrante tanto la abscisa (X) como la ordenada (Y) son negativas. Al dividirlas para hallar la tangente o cotangente, por ley de signos (-/-) resulta positivo."
-          }
+          "texto": "Subunidades S ↓ 60",
+          "explicacion": "En la notación sexagesimal pura, los minutos y segundos jamás deben igualar o superar 60. Si al sumar obtienes un resultado como $45^\\circ 75'$, debes transformarlo extrayendo grupos de 60: $75' = 1^\\circ 15'$, quedando el ángulo correcto en $46^\\circ 15'$."
         },
         {
-          "texto": "En el cuarto cuadrante ($IV_C$), el $\\cos$ y la $\\sec$ son positivos (+).",
-          "pregunta": {
-            "q": "¿Qué razones trigonométricas son positivas en el cuarto cuadrante ($IV_C$)?",
-            "opts": [
-              "Seno y cosecante",
-              "Tangente y cotangente",
-              "Todas son positivas",
-              "Coseno y secante"
-            ],
-            "correct": 3,
-            "explicacion": "En el cuarto cuadrante, el valor de la abscisa (X) vuelve a ser positivo, lo que determina que el coseno y la secante sean las únicas razones positivas."
-          }
-        },
-        {
-          "texto": "Gráfico del círculo trigonométrico y los ángulos cuadrantales correspondientes.",
-          "img": "PENDIENTE",
-          "pregunta": {
-            "q": "¿Cuáles son los valores límite en grados para el segundo cuadrante?",
-            "opts": [
-              "Entre $0^\\circ$ y $90^\\circ$",
-              "Entre $90^\\circ$ y $180^\\circ$",
-              "Entre $180^\\circ$ y $270^\\circ$",
-              "Entre $270^\\circ$ y $360^\\circ$"
-            ],
-            "correct": 1,
-            "explicacion": "El segundo cuadrante inicia inmediatamente después del ángulo recto de $90^\\circ$ ($\\pi/2$) y se extiende hasta el ángulo llano de $180^\\circ$ ($\\pi$)."
-          }
+          "texto": "Total Minutos S = 60S",
+          "explicacion": "Fórmula clave para \\\"trucos de examen\\\". Si un problema menciona el \\\"número de minutos sexagesimales\\\", se representa algebraicamente como $60S$. Si menciona segundos, es $3600S$. Ejemplo: \\\"Sus minutos sexagesimales son 120\\\". Resolviendo: $60S = 120 \\Rightarrow S = 2^\\circ$."
         }
       ]
     },
     {
-      "titulo": "Reglas de reducción en el eje horizontal y vertical",
+      "titulo": "Sistema Centesimal (Francés) y Subunidades",
       "puntos": [
         {
-          "texto": "Fórmulas de reducción utilizando el eje horizontal:",
-          "sub": [
-            "$\\text{R.T.}(180^\\circ \\pm \\theta) = \\pm \\text{R.T.}(\\theta)$",
-            "$\\text{R.T.}(360^\\circ - \\theta) = \\pm \\text{R.T.}(\\theta)$"
-          ],
-          "pregunta": {
-            "q": "¿Qué sucede con la razón trigonométrica al reducir usando los ángulos del eje horizontal ($180^\\circ$ o $360^\\circ$)?",
-            "opts": [
-              "Cambia a su co-función",
-              "Se mantiene la misma razón trigonométrica",
-              "Siempre se vuelve negativa",
-              "Se invierte de forma recíproca"
-            ],
-            "correct": 1,
-            "explicacion": "Al usar los ángulos cuadrantales del eje horizontal ($180^\\circ$ o $360^\\circ$), la función original no cambia; solo se debe determinar el signo $\\pm$ según el cuadrante del ángulo original."
-          }
+          "texto": "$1^g = 100^m$",
+          "explicacion": "En el sistema centesimal (francés), la vuelta se divide en $400^g$. La notación conjunta $x^g y^m z^s$ equivale a $x^g + y^m + z^s$. Ejemplo práctico: Transformar $3^g 40^m$ a minutos requiere multiplicar $3 \\times 100$ y sumar 40, dando como resultado total $340^m$."
         },
         {
-          "texto": "Fórmulas de reducción utilizando el eje vertical:",
-          "sub": [
-            "$\\text{R.T.}(90^\\circ \\pm \\alpha) = \\pm \\text{Co-R.T.}(\\alpha)$",
-            "$\\text{R.T.}(270^\\circ \\pm \\alpha) = \\pm \\text{Co-R.T.}(\\alpha)$"
-          ],
-          "pregunta": {
-            "q": "¿Qué cambio ocurre en la razón al reducir un ángulo con los cuadrantales del eje vertical ($90^\\circ$ o $270^\\circ$)?",
-            "opts": [
-              "Mantiene la misma razón",
-              "Cambia a su co-razón trigonométrica correspondiente",
-              "Se transforma en su inversa recíproca",
-              "El signo siempre es positivo"
-            ],
-            "correct": 1,
-            "explicacion": "Los ángulos basados en el eje vertical cambian la R.T. a su co-razón (por ejemplo, de seno a coseno, o de tangente a cotangente), analizando de igual forma el signo final según el cuadrante."
-          }
+          "texto": "$1^m = 100^s$",
+          "explicacion": "Un grado centesimal equivale a $10000^s$. Este sistema de base 10 facilita las conversiones directas con decimales. Por ejemplo, $2,4532^g$ se puede leer automáticamente como $2^g 45^m 32^s$ sin cálculos engorrosos, un \\\"truco\\\" vital para ganar tiempo en la UNMSM."
+        },
+        {
+          "texto": "Subunidades C ↓ 100",
+          "explicacion": "En este sistema, los sufijos $m$ (minutos) y $s$ (segundos) están estrictamente limitados a 99. Si un cálculo arroja $5^g 120^m$, se debe simplificar extrayendo $100^m$ como $1^g$, resultando en la expresión simplificada y correcta de $6^g 20^m$."
+        },
+        {
+          "texto": "Total Minutos C = 100C",
+          "explicacion": "Análogo al sistema inglés, si en la UNMSM te piden trabajar con el \\\"número de minutos centesimales\\\", reemplázalo por la expresión $100C$. Para segundos centesimales, usa $10000C$. Esto evita trabajar con decimales o fracciones innecesarias desde el inicio del planteamiento."
         }
       ]
     },
     {
-      "titulo": "Observación para ángulos suplementarios y complementarios",
+      "titulo": "Sistema Radial, Equivalencias Exactas y Aproximadas",
       "puntos": [
         {
-          "texto": "Propiedades si dos ángulos suman $180^\\circ$ ($x + y = 180^\\circ$):",
-          "sub": [
-            "$\\operatorname{sen} x = \\operatorname{sen} y$",
-            "$\\cos x = -\\cos y$",
-            "$\\tan x = -\\tan y$",
-            "$\\csc x = \\csc y$",
-            "$\\sec x = -\\sec y$",
-            "$\\cot x = -\\cot y$"
-          ],
-          "pregunta": {
-            "q": "Si dos ángulos son suplementarios ($x+y=180^\\circ$), ¿cuál de las siguientes igualdades es correcta?",
-            "opts": [
-              "$\\cos x = \\cos y$",
-              "$\\tan x = \\tan y$",
-              "$\\operatorname{sen} x = \\operatorname{sen} y$",
-              "$\\sec x = \\sec y$"
-            ],
-            "correct": 2,
-            "explicacion": "Para ángulos suplementarios, el seno del ángulo del segundo cuadrante es igual al seno de su suplemento en el primer cuadrante porque el seno es positivo en ambos cuadrantes."
-          }
+          "texto": "$\\pi$ rad = $180^\\circ$",
+          "explicacion": "Equivalencia fundamental de media vuelta. Se utiliza constantemente para crear factores de conversión unitarios, tales como $\\frac{\\pi \\text{ rad}}{180^\\circ}$. Sirve para transformar rápidamente cualquier ángulo sexagesimal a radianes mediante una multiplicación directa."
         },
         {
-          "texto": "Propiedades si dos ángulos suman $270^\\circ$ ($x + y = 270^\\circ$):",
-          "sub": [
-            "$\\operatorname{sen} x = -\\cos y$",
-            "$\\cos x = -\\operatorname{sen} y$",
-            "$\\tan x = \\cot y$",
-            "$\\csc x = -\\sec y$",
-            "$\\sec x = -\\csc y$",
-            "$\\cot x = \\tan y$"
-          ],
-          "pregunta": {
-            "q": "Si $x + y = 270^\\circ$, ¿a qué es equivalente $\\tan x$?",
-            "opts": ["$-\\tan y$", "$\\cot y$", "$-\\cot y$", "$\\tan y$"],
-            "correct": 1,
-            "explicacion": "Al sumar $270^\\circ$, se trabaja sobre el eje vertical, lo que transforma la tangente en su co-función cotangente. El signo depende de la posición relativa de los ángulos."
-          }
+          "texto": "$\\pi$ rad = $200^g$",
+          "explicacion": "Factor equivalente de media vuelta para el sistema francés. Combinado con el sistema inglés, establece la relación directa y fundamental $180^\\circ = 200^g$, de la cual se derivan todas las fórmulas simplificadas de proporción utilizadas en admisión."
         },
         {
-          "texto": "Propiedades si dos ángulos suman $360^\\circ$ ($x + y = 360^\\circ$):",
-          "sub": [
-            "$\\operatorname{sen} x = -\\operatorname{sen} y$",
-            "$\\cos x = \\cos y$",
-            "$\\tan x = -\\tan y$",
-            "$\\csc x = -\\csc y$",
-            "$\\sec x = \\sec y$",
-            "$\\cot x = -\\cot y$"
-          ],
-          "pregunta": {
-            "q": "Cuando dos ángulos suman una vuelta completa ($360^\\circ$), ¿qué razón trigonométrica mantiene el mismo valor y signo?",
-            "opts": ["El seno", "La tangente", "El coseno", "La cotangente"],
-            "correct": 2,
-            "explicacion": "El coseno de un ángulo en el cuarto cuadrante tiene el mismo valor y signo positivo que el coseno de su ángulo conjugado en el primer cuadrante."
-          }
+          "texto": "1 rad ≈ $57^\\circ$",
+          "explicacion": "Un radián es exactamente $57^\\circ 17' 44''$. En problemas teóricos de desigualdades angulares, recuerda siempre el orden de magnitud: para un mismo ángulo positivo, el número en centesimales es mayor al sexagesimal. Pero en unidad absoluta: $1 \\text{ rad} > 1^\\circ > 1^g$."
+        },
+        {
+          "texto": "27' = $50^m$",
+          "explicacion": "Equivalencia directa para subunidades. Nace de simplificar la relación $\\frac{9 \\times 60'}{10 \\times 100^m}$. Es vital en la UNMSM para convertir minutos sexagesimales a centesimales rápidamente, saltándose el paso intermedio de convertirlos primero a grados enteros."
         }
       ]
     },
     {
-      "titulo": "Problemas de Clase - Parte 1",
+      "titulo": "Fórmulas Generales de Proporcionalidad Trigonométrica",
       "puntos": [
         {
-          "texto": "Resolución del Problema 1: Expresión $M = \\frac{\\operatorname{sen} 150^\\circ \\cdot \\cos 240^\\circ}{\\tan 217^\\circ}$",
-          "sub": [
-            "$\\operatorname{sen} 150^\\circ = \\operatorname{sen}(180^\\circ - 30^\\circ) = \\operatorname{sen} 30^\\circ = \\frac{1}{2}$",
-            "$\\cos 240^\\circ = \\cos(180^\\circ + 60^\\circ) = -\\cos 60^\\circ = -\\frac{1}{2}$",
-            "$\\tan 217^\\circ$ planteado en desarrollo como $\\tan(180^\\circ + 37^\\circ) = \\tan 37^\\circ = \\frac{3}{4}$",
-            "Resultado final: $M = \\frac{\\frac{1}{2} \\cdot (-\\frac{1}{2})}{\\frac{3}{4}} = -\\frac{1}{3}$"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es el valor reducido de $\\cos 240^\\circ$ empleado en el Problema 1?",
-            "opts": [
-              "$\\frac{1}{2}$",
-              "$-\\frac{1}{2}$",
-              "$\\frac{\\sqrt{3}}{2}$",
-              "$-\\frac{\\sqrt{3}}{2}$"
-            ],
-            "correct": 1,
-            "explicacion": "Como $240^\\circ$ está en el tercer cuadrante ($III_C$), el coseno es negativo. Al expresarlo como $180^\\circ + 60^\\circ$, obtenemos $-\\cos 60^\\circ = -1/2$."
-          }
+          "texto": "Formula General ⇒ Proporcion K",
+          "explicacion": "La igualdad universal $\\frac{S}{180} = \\frac{C}{200} = \\frac{R}{\\pi} = K$ es obligatoria cuando los problemas involucran variables elevadas a exponentes, radicales complejos o cuando la constante $\\pi$ aparece explícitamente restando o sumando en los numeradores de la ecuación propuesta."
         },
         {
-          "texto": "Resolución del Problema 2: Sistema con $\\operatorname{sen}(270^\\circ + \\alpha) = \\frac{2}{x}$ y $\\sec(180^\\circ - \\alpha) = \\frac{x^2}{12}$.",
-          "sub": [
-            "$\\operatorname{sen}(270^\\circ + \\alpha) = -\\cos \\alpha \\Rightarrow \\cos \\alpha = -\\frac{2}{x}$",
-            "$\\sec(180^\\circ - \\alpha) = -\\sec \\alpha \\Rightarrow \\sec \\alpha = -\\frac{x^2}{12}$",
-            "Identidad recíproca: $\\cos \\alpha \\cdot \\sec \\alpha = 1$",
-            "Sustitución: $(-\\frac{2}{x}) \\cdot (-\\frac{x^2}{12}) = 1 \\Rightarrow \\frac{x}{6} = 1 \\Rightarrow x = 6$"
-          ],
-          "pregunta": {
-            "q": "En el Problema 2, ¿qué identidad trigonométrica fundamental permite despejar la variable $x$?",
-            "opts": [
-              "$\\operatorname{sen}^2 \\alpha + \\cos^2 \\alpha = 1$",
-              "$\\tan \\alpha \\cdot \\cot \\alpha = 1$",
-              "$\\cos \\alpha \\cdot \\sec \\alpha = 1$",
-              "$\\sec^2 \\alpha - \\tan^2 \\alpha = 1$"
-            ],
-            "correct": 2,
-            "explicacion": "Se utiliza la identidad de las razones recíprocas, donde el producto del coseno de un ángulo por su secante es siempre igual a la unidad ($1$)."
-          }
+          "texto": "Formula Simplificada ⇒ k",
+          "explicacion": "La versión reducida $\\frac{S}{9} = \\frac{C}{10} = \\frac{20R}{\\pi} = k$ es la herramienta más usada en exámenes. Permite parametrizar rápidamente los datos: $S=9k$, $C=10k$, $R=\\frac{\\pi k}{20}$. Solo debe usarse cuando no haya interferencias de fracciones con $\\pi$ en el dato inicial."
         }
       ]
     },
     {
-      "titulo": "Problemas de Clase - Parte 2",
+      "titulo": "Modelos Avanzados de Resolución de Problemas UNMSM",
       "puntos": [
         {
-          "texto": "Problema 3: Reducción de la expresión $M = \\frac{P(90^\\circ - x) + P(180^\\circ + x)}{\\operatorname{sen} x - \\cos x}$ donde $P(x) = \\operatorname{sen} x$.",
-          "sub": [
-            "$P(90^\\circ - x) = \\operatorname{sen}(90^\\circ - x) = \\cos x$",
-            "$P(180^\\circ + x) = \\operatorname{sen}(180^\\circ + x) = -\\operatorname{sen} x$",
-            "Expresión: $M = \\frac{\\cos x - \\operatorname{sen} x}{\\operatorname{sen} x - \\cos x} = -1$"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es el resultado final simplificado para la expresión $M$ del Problema 3?",
-            "opts": ["$1$", "$-1$", "$0$", "$2$"],
-            "correct": 1,
-            "explicacion": "El numerador $(\\cos x - \\operatorname{sen} x)$ es el opuesto exacto del denominador $(\\operatorname{sen} x - \\cos x)$. Al dividirlos, el resultado es $-1$."
-          }
+          "texto": "Modelo Suma ⇒ 19k",
+          "explicacion": "**Tipo de problema:** \\\"La suma del número de grados S y C es 76\\\". **Método de solución:** Plantear $S+C = 76$. Reemplazar la fórmula simplificada: $9k + 10k = 76 \\Rightarrow 19k = 76 \\Rightarrow k=4$. Finalmente, hallar el ángulo en radianes sustituyendo: $R = \\frac{\\pi(4)}{20} = \\frac{\\pi}{5}$ rad."
         },
         {
-          "texto": "Problema 4: Triángulo rectángulo con ángulo en posición no estándar y cálculo de cotangentes.",
-          "img": "PENDIENTE",
-          "pregunta": {
-            "q": "Si en el gráfico del problema 4 se establece que $\\alpha + \\theta = 360^\\circ$, ¿cuál es la relación entre sus cotangentes?",
-            "opts": [
-              "$\\cot \\alpha = \\cot \\theta$",
-              "$\\cot \\alpha = -\\cot \\theta$",
-              "$\\cot \\alpha \\cdot \\cot \\theta = 1$",
-              "$\\cot \\alpha = 2\\cot \\theta$"
-            ],
-            "correct": 1,
-            "explicacion": "Al sumar una vuelta completa ($360^\\circ$), la cotangente de uno de los ángulos es igual al negativo de la cotangente del otro ángulo conjugado."
-          }
+          "texto": "Modelo Diferencia ⇒ k",
+          "explicacion": "**Tipo de problema:** Relaciones de resta o exceso. Si el problema indica que el exceso de C sobre S es 5, planteas $C - S = 5$. Reemplazando variables: $10k - 9k = 5 \\Rightarrow k = 5$. Si te piden el ángulo en sexagesimales, reemplazas: $S = 9(5) = 45^\\circ$."
         },
         {
-          "texto": "Problema 5: Calcular el valor de $M = \\frac{\\operatorname{sen} 120^\\circ \\cdot \\tan 225^\\circ}{\\cos 60^\\circ}$.",
-          "sub": [
-            "$\\operatorname{sen} 120^\\circ = \\operatorname{sen}(180^\\circ - 60^\\circ) = \\operatorname{sen} 60^\\circ = \\frac{\\sqrt{3}}{2}$",
-            "$\\tan 225^\\circ = \\tan(180^\\circ + 45^\\circ) = \\tan 45^\\circ = 1$",
-            "$\\cos 60^\\circ = \\frac{1}{2}$",
-            "Operación: $M = \\frac{\\frac{\\sqrt{3}}{2} \\cdot 1}{\\frac{1}{2}} = \\sqrt{3}$"
-          ],
-          "pregunta": {
-            "q": "¿Qué valor se obtiene al simplificar la expresión del Problema 5?",
-            "opts": [
-              "$\\frac{\\sqrt{3}}{2}$",
-              "$\\sqrt{3}$",
-              "$1$",
-              "$2\\sqrt{3}$"
-            ],
-            "correct": 1,
-            "explicacion": "Al reemplazar los valores notables, las fracciones correspondientes a los medios se simplifican de forma directa, dejando únicamente la raíz de 3 en el numerador."
-          }
+          "texto": "Modelo Inversas ⇒ Fracciones",
+          "explicacion": "**Tipo de problema:** Suma de fracciones algebraicas. Ejemplo: $\\frac{1}{S} + \\frac{1}{C} = \\frac{19}{90}$. **Método de solución:** Reemplazar por $9k$ y $10k$ en los denominadores: $\\frac{1}{9k} + \\frac{1}{10k} = \\frac{19}{90k}$. Igualando resultados, $\\frac{19}{90k} = \\frac{19}{90}$, por ende se deduce que $k=1$."
         },
         {
-          "texto": "Problema 6: Ecuación trigonométrica $\\cos(360^\\circ - \\alpha) = \\frac{n}{30} \\cdot \\sec \\alpha = 4$.",
-          "sub": [
-            "$\\cos(360^\\circ - \\alpha) = \\cos \\alpha$",
-            "La ecuación es $\\cos \\alpha \\cdot \\sec \\alpha \\cdot \\frac{n}{30} = 4$",
-            "Como $\\cos \\alpha \\cdot \\sec \\alpha = 1 \\Rightarrow \\frac{n}{30} = 4 \\Rightarrow n = 120$"
-          ],
-          "pregunta": {
-            "q": "Sabiendo que $\\cos(360^\\circ - \\alpha) = \\cos \\alpha$, ¿cuánto vale el producto $\\cos(360^\\circ - \\alpha) \\cdot \\sec \\alpha$?",
-            "opts": ["$0$", "$1$", "$-1$", "$\\cos^2 \\alpha$"],
-            "correct": 1,
-            "explicacion": "Dado que $\\cos(360^\\circ - \\alpha)$ se reduce a $\\cos \\alpha$, multiplicar este término por la secante del mismo ángulo da como resultado $1$ por propiedad de recíprocas."
-          }
+          "texto": "Modelo Cuadrados ⇒ $181k^2$",
+          "explicacion": "**Tipo de problema:** Ecuaciones de grado 2 con raíces. Ejemplo: $\\sqrt{S^2 + C^2} = \\sqrt{181}$. **Método de solución:** Introducir proporciones directamente: $(9k)^2 + (10k)^2 = 81k^2 + 100k^2 = 181k^2$. La raíz cuadrada extraída queda $k\\sqrt{181} = \\sqrt{181} \\Rightarrow k=1$."
         },
         {
-          "texto": "Problema 7: Simplificar la función $E = \\frac{2 M(270^\\circ + x) + \\cos x}{M(180^\\circ - x)}$ sabiendo que $M(x) = \\operatorname{sen} x$.",
-          "sub": [
-            "$M(270^\\circ + x) = \\operatorname{sen}(270^\\circ + x) = -\\cos x$",
-            "$M(180^\\circ - x) = \\operatorname{sen}(180^\\circ - x) = \\operatorname{sen} x$",
-            "Sustitución: $E = \\frac{2(-\\cos x) + \\cos x}{\\operatorname{sen} x} = \\frac{-\\cos x}{\\operatorname{sen} x} = -\\cot x$"
-          ],
-          "pregunta": {
-            "q": "¿A qué expresión reducida equivale $E$ en el Problema 7?",
-            "opts": ["$-\\tan x$", "$-\\cot x$", "$\\cot x$", "$-\\cos x$"],
-            "correct": 1,
-            "explicacion": "El numerador se simplifica a $-\\cos x$. Al dividirlo entre el denominador $\\operatorname{sen} x$, se obtiene por cociente la función $-\\cot x$."
-          }
-        },
-        {
-          "texto": "Problema 8: Simplificación analítica de la expresión para $M$.",
-          "sub": [
-            "$M = \\frac{5\\operatorname{sen}(180^\\circ - x) + \\operatorname{sen}(180^\\circ + x)}{\\cot(90^\\circ + x)}$",
-            "$M = \\frac{5\\operatorname{sen} x - \\operatorname{sen} x}{-\\tan x} = \\frac{4\\operatorname{sen} x}{-\\frac{\\operatorname{sen} x}{\\cos x}} = -4\\cos x$"
-          ],
-          "pregunta": {
-            "q": "¿Cuál es la reducción correcta de $\\cot(90^\\circ + x)$ usada en el denominador del problema 8?",
-            "opts": ["$\\tan x$", "$-\\tan x$", "$\\cot x$", "$-\\cot x$"],
-            "correct": 1,
-            "explicacion": "El ángulo $90^\\circ + x$ pertenece al segundo cuadrante, donde la cotangente es negativa. Al usar el eje vertical, cambia a su co-función, resultando $-\\tan x$."
-          }
-        },
-        {
-          "texto": "Problemas 9 y 10: Aplicaciones gráficas con ángulos geométricos y coordenadas cartesianas.",
-          "img": "PENDIENTE",
-          "pregunta": {
-            "q": "En el contexto de ángulos en posición normal, ¿cómo se define el signo de las razones para un punto $(-2, 3)$?",
-            "opts": [
-              "X es negativo, Y es positivo",
-              "X es positivo, Y es negativo",
-              "Ambos son positivos",
-              "Ambos son negativos"
-            ],
-            "correct": 0,
-            "explicacion": "El punto $(-2, 3)$ está situado en el segundo cuadrante, donde los valores de las abscisas (X) son negativos y las ordenadas (Y) son positivas."
-          }
+          "texto": "Modelo Mix ⇒ $1540k$",
+          "explicacion": "**Tipo de problema:** Combinación de subunidades. \\\"La suma de minutos S y C de un ángulo es 1540\\\". **Método de solución:** Aplicar fórmulas de cantidad de minutos totales. $60S + 100C = 1540$. Usando la constante k: $60(9k) + 100(10k) = 1540 \\Rightarrow 540k + 1000k = 1540 \\Rightarrow k=1$."
         }
       ]
     }
