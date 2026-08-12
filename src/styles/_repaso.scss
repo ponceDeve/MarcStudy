@@ -56,42 +56,77 @@
 .repaso__list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 25px;
 }
+
+/* ============================================================
+   TARJETAS DE INTERVALO (Con fondo de color y alto contraste forzado)
+   ============================================================ */
 .repaso__item {
-  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 14px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
   transition: box-shadow 0.15s;
+  position: relative;
 }
 .repaso__item:hover {
   box-shadow: var(--shadow-sm);
 }
+
 .repaso__item.interval-0 {
   background: var(--primary-bg);
-  border-color: var(--primary-light);
+  border: 1px solid var(--primary-light);
 }
 .repaso__item.interval-1 {
   background: var(--secondary-bg);
-  border-color: var(--secondary);
+  border: 1px solid var(--secondary);
 }
 .repaso__item.interval-2 {
   background: var(--accent-bg);
-  border-color: var(--accent);
+  border: 1px solid var(--accent);
 }
 .repaso__item.interval-3 {
   background: var(--danger-bg);
-  border-color: var(--danger);
+  border: 1px solid var(--danger);
 }
+
+/* Forzar contraste óptimo en los textos dentro de las tarjetas de colores */
+.repaso__item.interval-0,
+.repaso__item.interval-1,
+.repaso__item.interval-2,
+.repaso__item.interval-3 {
+  color: var(--ink);
+}
+
+.repaso__item.interval-0 .repaso__item-subject,
+.repaso__item.interval-1 .repaso__item-subject,
+.repaso__item.interval-2 .repaso__item-subject,
+.repaso__item.interval-3 .repaso__item-subject {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.repaso__item.interval-0 .repaso__item-tema,
+.repaso__item.interval-1 .repaso__item-tema,
+.repaso__item.interval-2 .repaso__item-tema,
+.repaso__item.interval-3 .repaso__item-tema,
+.repaso__item.interval-0 .repaso__item-meta,
+.repaso__item.interval-1 .repaso__item-meta,
+.repaso__item.interval-2 .repaso__item-meta,
+.repaso__item.interval-3 .repaso__item-meta {
+  color: var(--ink);
+  opacity: 0.85; /* Asegura visibilidad clara sin perder jerarquía */
+}
+
+/* Badges (Etiquetas) con alto contraste */
 .repaso__badge {
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink-on-primary);
   padding: 2px 8px;
   border-radius: 6px;
+  color: var(--ink-on-primary);
 }
 .repaso__badge.interval-0 {
   background: var(--primary);
@@ -105,6 +140,8 @@
 .repaso__badge.interval-3 {
   background: var(--danger);
 }
+
+/* Puntos de los próximos repasos */
 .repaso__dot {
   width: 8px;
   height: 8px;
@@ -124,9 +161,14 @@
 .repaso__dot.interval-3 {
   background: var(--danger);
 }
+
 .repaso__item-body {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
 }
 .repaso__item-tags {
   display: flex;
@@ -138,7 +180,8 @@
 .repaso__item-day {
   font-size: 16px;
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--ink);
+  opacity: 0.7;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -161,7 +204,6 @@
 }
 .repaso__item-meta {
   font-size: 15px;
-  color: var(--ink-faint);
   margin: 4px 0 0;
 }
 .repaso__item-link {
@@ -172,8 +214,8 @@
   padding: 7px 12px;
   border: 1px solid var(--primary);
   border-radius: var(--radius-full);
-  background: var(--primary-bg);
-  color: var(--primary);
+  background: var(--primary);
+  color: var(--bg);
   font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
@@ -186,7 +228,7 @@
 }
 
 .repaso__item-link:hover {
-  background: var(--primary);
+  background: var(--primary-light);
   color: var(--ink-on-primary);
 }
 
@@ -281,6 +323,7 @@
   align-items: center;
   gap: 8px;
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
 .repaso__proximos-row:last-child {
   border-bottom: none;
@@ -298,12 +341,7 @@
   text-overflow: ellipsis;
 }
 
-/* Aseguramos que la caja principal sea relative para el position absolute del botón */
-.repaso__item {
-  position: relative;
-}
-
-/* Botón de eliminar en la esquina de la caja de hoy */
+/* Botones de eliminar y modales */
 .repaso__item-btn-delete {
   position: absolute;
   bottom: -8px;
@@ -322,11 +360,6 @@
   transition: color 0.2s;
 }
 
-/* Para los elementos de la lista de próximos repasos */
-.repaso__proximos-row {
-  position: relative;
-}
-
 .repaso__proximos-btn-delete {
   position: absolute;
   top: 50%;
@@ -343,7 +376,6 @@
   color: #cc0000;
 }
 
-/* Estilos del modal superpuesto */
 .repaso__delete-overlay {
   position: fixed;
   top: 0;
@@ -372,7 +404,6 @@
   font-size: 1rem;
 }
 
-/* Contenedor de los botones del modal */
 .repaso__delete-actions {
   display: flex;
   gap: 1rem;
@@ -392,7 +423,6 @@
   opacity: 0.9;
 }
 
-/* Primera confirmación: [Cancelar] [Aceptar] */
 .repaso__delete-actions button:first-child {
   background-color: #e5e7eb;
   color: #374151;
@@ -403,7 +433,6 @@
   color: white;
 }
 
-/* Segunda confirmación intercambiada (Swapped): [Aceptar] [Cancelar] */
 .repaso__delete-actions.swapped button:first-child {
   background-color: #ff4d4f;
   color: white;
@@ -412,10 +441,6 @@
 .repaso__delete-actions.swapped button:last-child {
   background-color: #e5e7eb;
   color: #374151;
-}
-
-.repaso__item {
-  position: relative;
 }
 
 .repaso__trash {

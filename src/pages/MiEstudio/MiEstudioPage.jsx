@@ -166,7 +166,11 @@ export default function MiEstudioPage() {
 
   const [busquedaEnfocada, setBusquedaEnfocada] = useState(false);
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
+  const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] = useState(false);
+  const repasoGuardadoTimers = useRef([]);
   const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
+  const [sinPreguntaSaliendo, setSinPreguntaSaliendo] = useState(false);
+  const sinPreguntaTimers = useRef([]);
   const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
 
   useEffect(() => {
@@ -177,6 +181,15 @@ export default function MiEstudioPage() {
       });
     }
   }, [sinPreguntaAlerta]);
+
+  // Limpia los temporizadores de los toasts al desmontar, para no llamar
+  // setState sobre un componente que ya no está montado.
+  useEffect(() => {
+    return () => {
+      repasoGuardadoTimers.current.forEach(clearTimeout);
+      sinPreguntaTimers.current.forEach(clearTimeout);
+    };
+  }, []);
 
   const hayQuery = query.trim() !== "";
 
@@ -546,7 +559,20 @@ export default function MiEstudioPage() {
       subject: topicData.curso,
       tema: topicData.tema,
     });
+
+    // Reinicia el temporizador si se guarda de nuevo mientras el aviso
+    // anterior sigue en pantalla, para que no desaparezca antes de tiempo.
+    repasoGuardadoTimers.current.forEach(clearTimeout);
+    setRepasoGuardadoSaliendo(false);
     setRepasoGuardadoMsg(true);
+
+    repasoGuardadoTimers.current = [
+      setTimeout(() => setRepasoGuardadoSaliendo(true), 1800),
+      setTimeout(() => {
+        setRepasoGuardadoMsg(false);
+        setRepasoGuardadoSaliendo(false);
+      }, 2100),
+    ];
   }
 
   function gameOver() {
@@ -684,8 +710,16 @@ export default function MiEstudioPage() {
       .filter((x) => x.pregunta);
 
     if (lote.length === 0) {
+      sinPreguntaTimers.current.forEach(clearTimeout);
+      setSinPreguntaSaliendo(false);
       setSinPreguntaAlerta(true);
-      setTimeout(() => setSinPreguntaAlerta(false), 2200);
+      sinPreguntaTimers.current = [
+        setTimeout(() => setSinPreguntaSaliendo(true), 1950),
+        setTimeout(() => {
+          setSinPreguntaAlerta(false);
+          setSinPreguntaSaliendo(false);
+        }, 2250),
+      ];
       return;
     }
 
@@ -703,10 +737,8 @@ export default function MiEstudioPage() {
   }
 
   function abandonarJuego() {
-    setTopicData(null);
     setStage("theory");
     setIsLevelMode(false);
-    setCardIndex(0);
     setQuestionResult(null);
     setAttemptKey(0);
     setConfigOpen(false);
@@ -819,13 +851,13 @@ export default function MiEstudioPage() {
       )}
 
       {repasoGuardadoMsg && (
-        <div className="repaso-toast">
+        <div className={`repaso-toast is-success${repasoGuardadoSaliendo ? " is-saliendo" : ""}`}>
           <i className="fas fa-bookmark" /> Guardado para repasar
         </div>
       )}
 
       {sinPreguntaAlerta && (
-        <div className="repaso-toast is-top sin-pregunta-alerta">
+        <div className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo ? " is-saliendo" : ""}`}>
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
             <span>
@@ -836,7 +868,11 @@ export default function MiEstudioPage() {
           <button
             type="button"
             className="sin-pregunta-alerta__close"
-            onClick={() => setSinPreguntaAlerta(false)}
+            onClick={() => {
+              sinPreguntaTimers.current.forEach(clearTimeout);
+              setSinPreguntaSaliendo(false);
+              setSinPreguntaAlerta(false);
+            }}
             aria-label="Cerrar"
             title="Cerrar"
           >

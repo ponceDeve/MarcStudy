@@ -238,7 +238,7 @@ export default function GlossaryText({
 
   const {
     visible,
-    placement,
+    shift,
     mostrarEn,
     ocultar,
     ajustarPosicion
@@ -319,8 +319,10 @@ export default function GlossaryText({
                 ref={(el) => {
                   tooltipRefs.current[i] = el;
                 }}
-                className={`glossary-tooltip glossary-tooltip--${placement}`}
+                className="glossary-tooltip"
+                style={{ "--tt-shift": `${shift}px` }}
               >
+                <span className="glossary-tooltip__arrow" />
                 {renderLatex(glosario[parte.key])}
               </span>
             )}

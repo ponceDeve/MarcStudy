@@ -41,6 +41,30 @@ a {
   text-decoration: none;
 }
 
+/* Foco visible solo cuando se navega con teclado (no al hacer click/tap),
+   para que quien usa el mouse o el dedo no vea un anillo de foco, pero
+   quien navega con Tab sí sepa siempre dónde está. */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Respeta la preferencia del sistema de reducir animaciones. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Se oculta la barra visual del scroll en toda la app — el scroll en
    sí sigue funcionando igual (con rueda, arrastre, flechas, touch),
    solo no se dibuja la barra. */

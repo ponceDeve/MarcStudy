@@ -133,9 +133,14 @@
   color: var(--primary-light);
 }
 
+/* --tt-shift es un offset en px (calculado en JS con el ancho real del
+   viewport) que corrige la posición centrada para que el tooltip nunca
+   se salga de la pantalla, sin importar dónde caiga el término dentro
+   del texto. Ver useFloatingTooltip.js. */
 .glossary-tooltip {
   position: absolute;
   bottom: calc(100% + 12px);
+  left: 50%;
   width: max-content;
   max-width: min(300px, calc(100vw - 24px));
   box-sizing: border-box;
@@ -160,33 +165,20 @@
 
   z-index: 1000;
   pointer-events: none;
+
+  transform: translateX(calc(-50% + var(--tt-shift, 0px)));
+  animation: glossary-tooltip-in 0.12s ease-out;
 }
 
-.glossary-tooltip--center {
-  left: 50%;
-  transform: translateX(-50%);
-  animation: glossary-tooltip-center 0.12s ease-out;
-}
-
-.glossary-tooltip--left {
-  left: 0;
-  transform: translateX(0);
-  animation: glossary-tooltip-left 0.12s ease-out;
-}
-
-.glossary-tooltip--right {
-  right: 0;
-  left: auto;
-  transform: translateX(0);
-  animation: glossary-tooltip-right 0.12s ease-out;
-}
-
-.glossary-tooltip::before {
+/* La flechita sigue apuntando al término aunque el cuerpo del tooltip
+   se haya desplazado para no salirse de la pantalla; clamp() evita que
+   la flecha misma quede pegada a una esquina redondeada. */
+.glossary-tooltip__arrow {
   content: "";
   position: absolute;
 
   bottom: -8px;
-  left: 50%;
+  left: clamp(14px, calc(50% - var(--tt-shift, 0px)), calc(100% - 14px));
 
   width: 14px;
   height: 14px;
@@ -199,56 +191,21 @@
   transform: translateX(-50%) rotate(45deg);
 }
 
-.glossary-tooltip--left::before {
-  left: 18px;
-  transform: rotate(45deg);
-}
-
-.glossary-tooltip--right::before {
-  right: 18px;
-  left: auto;
-  transform: rotate(45deg);
-}
-
 .glossary-tooltip .katex {
   color: var(--ink);
   font-size: 1em;
   font-weight: 400;
 }
 
-@keyframes glossary-tooltip-center {
+@keyframes glossary-tooltip-in {
   from {
     opacity: 0;
-    transform: translateX(-50%) scale(0.97);
+    transform: translateX(calc(-50% + var(--tt-shift, 0px))) scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateX(-50%) scale(1);
-  }
-}
-
-@keyframes glossary-tooltip-left {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes glossary-tooltip-right {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
+    transform: translateX(calc(-50% + var(--tt-shift, 0px))) scale(1);
   }
 }
 
@@ -257,14 +214,6 @@
     max-width: calc(100vw - 24px);
     padding: 10px 13px;
     font-size: 0.88rem;
-  }
-
-  .glossary-tooltip--left {
-    left: 0;
-  }
-
-  .glossary-tooltip--right {
-    right: 0;
   }
 }
 

@@ -89,6 +89,17 @@
   }
 }
 
+/* El marquee no es decorativo: es la única forma de leer el título del
+   tema cuando no entra en el ancho disponible. Se excluye de la regla
+   global de "reducir movimiento" (_base.scss) para que quien tenga esa
+   preferencia del sistema activada igual pueda leer el texto completo. */
+@media (prefers-reduced-motion: reduce) {
+  .topbar__tema--marquee {
+    animation-duration: 12s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
 @keyframes marqueeOneWay {
   0%, 10% { transform: translateX(0); }
   85%, 95% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 1; }
@@ -189,8 +200,8 @@
 .topbar__control-btn,
 .topbar__gear,
 .topbar__theme-btn {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,11 +210,15 @@
   border-radius: 50%;
   color: var(--ink);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
 
   &:hover {
     background: var(--surface-hover);
     color: var(--primary);
+  }
+
+  &:active {
+    transform: scale(0.93);
   }
 
   i {

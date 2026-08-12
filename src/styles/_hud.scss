@@ -34,6 +34,9 @@
   color: #ff4d4f;
   font-size: 0.85rem;
 }
+/* Toast base: solo estructura/posición. El color lo da la variante
+   (.is-success para "guardado", el default de abajo para "sin preguntas") —
+   antes ambos avisos compartían el mismo rojo, pensado solo para alertas. */
 .repaso-toast {
   width: max-content;
 
@@ -43,9 +46,9 @@
   transform: translateX(-50%);
   z-index: 10000;
 
-  background: #fde8e8;
-  border: 2px solid #f5a3a3;
-  color: #a33a3a;
+  background: var(--danger-bg);
+  border: 2px solid var(--danger);
+  color: var(--danger-dark);
 
   padding: 14px 22px;
   box-sizing: border-box;
@@ -59,15 +62,31 @@
   gap: 10px;
   justify-content: center;
 
-  box-shadow: 0 6px 20px rgba(180, 60, 60, 0.18);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
 
   animation: repasoToastEntrada 0.25s ease-out;
 }
 
 .repaso-toast i {
-  color: #d9534f;
+  color: var(--danger);
   font-size: 18px;
   flex-shrink: 0;
+}
+
+/* Variante de éxito — usada por "Guardado para repasar" */
+.repaso-toast.is-success {
+  background: var(--success-bg);
+  border-color: var(--success);
+  color: var(--primary-dark);
+}
+.repaso-toast.is-success i {
+  color: var(--success);
+}
+
+/* Se agrega justo antes de desmontar el toast, para que el fundido de
+   salida se vea en vez de que el aviso desaparezca de golpe. */
+.repaso-toast.is-saliendo {
+  animation: repasoToastSalida 0.3s ease-in forwards;
 }
 
 @media (max-width: 600px) {
@@ -85,5 +104,24 @@
   to {
     opacity: 1;
     transform: translate(-50%, 0);
+  }
+}
+
+@keyframes repasoToastSalida {
+  from {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -15px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repaso-toast,
+  .repaso-toast.is-saliendo {
+    animation: none;
   }
 }
