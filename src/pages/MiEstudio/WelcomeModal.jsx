@@ -198,13 +198,24 @@ export default function WelcomeModal({ open, onSubmit }) {
               name="name"
               autoComplete="off"
               autoCorrect="off"
-              autoCapitalize="words"
+              autoCapitalize="characters"
               spellCheck={false}
               autoFocus
+              maxLength={30}
               value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && siguiente()}
-              placeholder="Tu nombre..."
+              onChange={(e) => {
+                const valor = e.target.value
+                  .replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, "")
+                  .toUpperCase();
+
+                setNombre(valor);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  siguiente();
+                }
+              }}
+              placeholder="TU NOMBRE..."
               className="welcome-input"
             />
           </>
