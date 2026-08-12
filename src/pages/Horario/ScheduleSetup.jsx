@@ -20,7 +20,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   const [horario, setHorario] = useState({});
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
-  
+
   // NUEVO: Estado para saber qué sugerencia está seleccionada con las flechas
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
 
@@ -339,7 +339,14 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
             )}
 
             <div className="setup-input-wrap">
-              <input autoComplete="off"
+              <input
+                type="search"
+                name="search"
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                spellCheck={false}
+                inputMode="search"
                 autoFocus
                 value={nombreCurso}
                 onChange={(e) => {
@@ -380,7 +387,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
 
             <p className="setup-sub" style={{ margin: 0 }}>¿Cuántos pomodoros?</p>
             {/* NUEVO: El grid de pomodoros ahora responde a las flechas */}
-            <div 
+            <div
               className="setup-pomo-grid"
               tabIndex={0}
               onKeyDown={(e) => {

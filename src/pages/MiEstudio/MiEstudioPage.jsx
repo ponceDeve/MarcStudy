@@ -981,7 +981,13 @@ export default function MiEstudioPage() {
               </div>
               <div className="home-search">
                 <div className="search-input-row">
-                  <input autoComplete="off"
+                  <input
+                    type="search"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    inputMode="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onFocus={() => setBusquedaEnfocada(true)}
@@ -990,11 +996,13 @@ export default function MiEstudioPage() {
                       if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
                         e.preventDefault();
                         const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+
                         if (mejorOpcion) {
                           seleccionarItem(mejorOpcion);
                           return;
                         }
                       }
+
                       handleKeyDownInicial(e);
                     }}
                     placeholder="Buscar tema o curso..."

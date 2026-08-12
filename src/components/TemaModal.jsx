@@ -17,11 +17,17 @@ export default function TemaModal({ open, subject, day, onGuardar, onOmitir }) {
       <p className="tema-modal-subtitle">
         {subject} {day ? `· ${day}` : ""}
       </p>
-      <input autoComplete="off"
+      <input
+        type="search"
+        name="search"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="none"
+        spellCheck={false}
+        inputMode="search"
         autoFocus
         value={tema}
         onChange={(e) => setTema(e.target.value)}
-        type="text"
         placeholder="Ej: Fracciones, Segunda Guerra Mundial..."
         className="tema-modal-input"
       />
