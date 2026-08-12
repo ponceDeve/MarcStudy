@@ -845,7 +845,10 @@ export default function MiEstudioPage() {
   function buscarEnGoogle() {
     const q = googleQuery.trim();
     if (!q) return;
+
     window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, "_blank");
+
+    setGoogleQuery("");
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
