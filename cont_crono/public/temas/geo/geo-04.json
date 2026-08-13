@@ -1,0 +1,135 @@
+{
+  "curso": "Geografía",
+  "tema": "Hora Internacional",
+  "glosario": {
+    "Hora internacional": "Tiempo establecido para regular actividades humanas.",
+    "Huso horario": "Franja longitudinal de 15 grados.",
+    "Oeste": "Hemisferio occidental o punto del poniente.",
+    "Este": "Hemisferio oriental o punto del levante.",
+    "Diferencia horaria": "Horas de separación entre dos puntos.",
+    "=": "Define",
+    "→": "Produce",
+    "↑": "Aumenta",
+    "↓": "Disminuye",
+    "✓": "Requiere"
+  },
+  "theory": [
+    {
+      "titulo": "Definiciones y Conceptos Básicos",
+      "puntos": [
+        {
+          "texto": "Hora internacional = tiempo establecido por el hombre.",
+          "explicacion": "La hora internacional es un sistema convencional organizado e implementado por la sociedad humana. Su objetivo es estandarizar la medición del tiempo para facilitar las actividades civiles, comerciales y de transporte a escala global."
+        },
+        {
+          "texto": "Huso horario = franja de 15 grados.",
+          "explicacion": "Un huso horario es un sector o franja geográfica limitada por dos meridianos separados por una distancia angular de 15 grados. La esfera terrestre comprende un total de 24 husos horarios repartidos en sus 360 grados de superficie."
+        },
+        {
+          "texto": "Franja de 15 grados = 1 hora local.",
+          "explicacion": "Como la Tierra completa su rotación de 360 grados en 24 horas, cada franja de 15 grados equivale exactamente al recorrido que realiza el Sol en una hora. Por esta razón, los puntos situados dentro del mismo huso comparten la misma hora oficial."
+        }
+      ]
+    },
+    {
+      "titulo": "Orientación, Direcciones y Variación de Horas",
+      "puntos": [
+        {
+          "texto": "Oeste = occidente o poniente.",
+          "explicacion": "El Oeste es uno de los cuatro puntos cardinales y recibe tradicionalmente las denominaciones de occidente y poniente. Dichos términos hacen referencia a la dirección por donde el Sol parece ocultarse al finalizar el día."
+        },
+        {
+          "texto": "Este = oriente o levante.",
+          "explicacion": "El Este corresponde a la dirección cardinal oriental o de levante. Recibe estos nombres porque representa el punto por donde se observa el amanecer o la salida aparente del Sol debido al sentido de rotación de la Tierra."
+        },
+        {
+          "texto": "Ir hacia el Este ↑ la hora.",
+          "explicacion": "Al desplazarse hacia una ubicación situada más al Este, las horas deben sumarse a la hora base. Esto ocurre porque la Tierra rota de oeste a este, provocando que las regiones orientales reciban la luz solar antes."
+        },
+        {
+          "texto": "Ir hacia el Oeste ↓ la hora.",
+          "explicacion": "Cuando la dirección del cálculo se dirige hacia el Oeste, la hora local disminuye y por ello se deben restar horas. Las regiones occidentales tardan más tiempo en registrar el paso del Sol en comparación con las del oriente."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalencias del Tiempo y Longitud",
+      "puntos": [
+        {
+          "texto": "360° = 24 horas.",
+          "explicacion": "Esta relación constituye la base fundamental del sistema geográfico del tiempo. Representa la equivalencia entre el giro completo de la Tierra sobre su propio eje, correspondiente a $360^\\circ$, y la duración del día solar de 24 horas."
+        },
+        {
+          "texto": "15° = 60 minutos.",
+          "explicacion": "Esta equivalencia expresa la conversión del ancho angular de un huso horario a unidades de tiempo. Al dividir los 60 minutos de una hora entre los 15 grados de la franja, se establece la proporción básica de paso del tiempo por grado."
+        },
+        {
+          "texto": "1° = 4 minutos.",
+          "explicacion": "Esta constante indica el tiempo necesario para que la Tierra gire una distancia angular de un grado de longitud. Se obtiene dividiendo 60 minutos de tiempo entre los $15^\\circ$ que integran un huso horario completo."
+        },
+        {
+          "texto": "1' sexagesimal = 4 segundos.",
+          "explicacion": "Un grado longitudinal se divide en 60 minutos sexagesimales ($1^\\circ = 60'$). Manteniendo la proporción matemática, el desplazamiento aparente del Sol a través de $1'$ angular requiere un intervalo temporal equivalente a 4 segundos."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos para Calcular la Hora Internacional",
+      "puntos": [
+        {
+          "texto": "Hemisferios diferentes ✓ sumar los grados.",
+          "explicacion": "Si las dos ubicaciones a evaluar se encuentran en hemisferios opuestos (una en el Este y otra en el Oeste), sus distancias angulares respecto al meridiano base ($0^\\circ$) se deben sumar para hallar la separación total entre ambas."
+        },
+        {
+          "texto": "Hemisferios iguales ✓ restar los grados.",
+          "explicacion": "Cuando dos ciudades comparten el mismo hemisferio (ambas en el Este o ambas en el Oeste), la distancia entre ellas se calcula restando la longitud menor de la mayor para determinar la brecha angular existente."
+        },
+        {
+          "texto": "Resultado de grados ✓ dividir entre 15.",
+          "explicacion": "Luego de calcular la distancia angular total en grados entre los dos puntos, dicho valor se divide entre 15. Este procedimiento permite convertir los grados de longitud geográfica en unidades de tiempo o husos horarios."
+        },
+        {
+          "texto": "División entre 15 = diferencia horaria.",
+          "explicacion": "El cociente resultante de dividir la distancia angular total entre 15 representa la cantidad exacta de horas que separan a ambas ciudades. Este dato es indispensable para efectuar el ajuste final del reloj."
+        },
+        {
+          "texto": "Paso final ✓ sumar o restar horas.",
+          "explicacion": "Una vez hallada la diferencia horaria, se aplica sobre la hora conocida. Se debe sumar el valor si la ciudad cuyo horario se busca está hacia el Este, o restarlo si se ubica en dirección al Oeste."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios de Aplicación Matemática",
+      "puntos": [
+        {
+          "texto": "Aplicando sumar grados ✓ $75^\\circ\\text{W}$ y $120^\\circ\\text{E}$.",
+          "explicacion": "Al aplicar la regla para hemisferios distintos entre $75^\\circ\\text{W}$ y $120^\\circ\\text{E}$, se efectúa la suma $75 + 120 = 195^\\circ$. Esta operación determina que la separación angular total entre ambas localidades es de $195^\\circ$."
+        },
+        {
+          "texto": "Aplicando dividir grados ✓ $195^\\circ \\div 15$.",
+          "explicacion": "Siguiendo el procedimiento para calcular la diferencia horaria, se toma el total de $195^\\circ$ y se divide entre la constante 15 ($195 \\div 15 = 13$). El resultado obtenido equivale a 13 horas de separación."
+        },
+        {
+          "texto": "Aplicando sumar horas ✓ $\\text{8:00 a.m.} + 13\\text{ h}$.",
+          "explicacion": "Para encontrar la hora final de una ciudad ubicada al Este, se aplica la regla de avance sumando la diferencia horaria a la hora de origen: $\\text{8:00 a.m.} + 13\\text{ h} = \\text{21:00 h}$ (o $\\text{9:00 p.m.}$). "
+        },
+        {
+          "texto": "Aplicando sumar grados ✓ $15^\\circ\\text{E}$ y $120^\\circ\\text{W}$.",
+          "explicacion": "Para resolver el problema planteado desde Roma ($15^\\circ\\text{E}$) hacia un punto a $120^\\circ\\text{W}$, se identifican hemisferios opuestos. Se aplica la suma directa de sus valores angulares: $15 + 120 = 135^\\circ$."
+        },
+        {
+          "texto": "Aplicando dividir grados ✓ $135^\\circ \\div 15$.",
+          "explicacion": "Con la distancia de $135^\\circ$ establecida entre Roma y el punto de destino, se realiza la conversión a horas dividiendo entre el ancho del huso: $135 \\div 15 = 9\\text{ horas}$ de diferencia."
+        },
+        {
+          "texto": "Calculando hora anterior ✓ sumar $24\\text{ h}$ previas.",
+          "explicacion": "Cuando al restar la diferencia de horas el valor resulta menor a cero, se aplica un préstamo de un día completo sumando $24\\text{ horas}$ a la hora inicial (convertida en este caso de $\\text{7:30 a.m.}$ a $\\text{31:30 h}$)."
+        },
+        {
+          "texto": "Aplicando restar horas ✓ $\\text{31:30 h} - 9\\text{ h}$.",
+          "explicacion": "Tras añadir las $24\\text{ horas}$ del día anterior para viabilizar el cálculo hacia el Oeste, se descuenta la diferencia hallada: $\\text{31:30} - 9\\text{ h} = \\text{22:30 h}$ ($\\text{10:30 p.m.}$ del día anterior)."
+        }
+      ]
+    }
+  ]
+}

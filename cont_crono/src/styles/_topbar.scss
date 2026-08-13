@@ -1,0 +1,486 @@
+// ============================================================
+// TopBar.scss
+// ============================================================
+
+@use "./tokens" as *;
+
+// ============================================================
+// TOPBAR (Contenedor Principal)
+// ============================================================
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+// ============================================================
+// CAJA 1 — TÍTULO DEL CURSO / TEMA
+// ============================================================
+
+.topbar__title-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  min-width: 0;
+  flex: 1;
+  margin-right: 16px;
+  overflow: hidden;
+}
+
+.topbar__title-btn {
+  width: fit-content;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 6px 10px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+}
+
+.topbar__tema-wrapper {
+  width: 100%;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &::after {
+    content: "▼";
+    flex-shrink: 0;
+    margin-left: 6px;
+    font-size: 14px;
+    color: var(--ink-faint);
+    opacity: 0.8;
+  }
+}
+
+.topbar__tema {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+
+  &--marquee {
+    animation: marqueeOneWay 12s linear infinite;
+  }
+}
+
+/* El marquee no es decorativo: es la única forma de leer el título del
+   tema cuando no entra en el ancho disponible. Se excluye de la regla
+   global de "reducir movimiento" (_base.scss) para que quien tenga esa
+   preferencia del sistema activada igual pueda leer el texto completo. */
+@media (prefers-reduced-motion: reduce) {
+  .topbar__tema--marquee {
+    animation-duration: 12s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
+@keyframes marqueeOneWay {
+  0%, 10% { transform: translateX(0); }
+  85%, 95% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 1; }
+  96%, 100% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 0; }
+}
+
+.topbar__curso {
+  max-width: 100%;
+  font-size: 13.5px;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &--clickable {
+    cursor: pointer;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+// ============================================================
+// CAJA 2 — NAVEGACIÓN PRINCIPAL
+// ============================================================
+
+.topbar__nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+
+
+.topbar__btn-icon {
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.topbar__btn-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.topbar__btn-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-family: var(--font-display);
+  color: inherit;
+  text-align: center;
+}
+
+// ============================================================
+// CAJA 3 — CONTROLES DERECHOS
+// ============================================================
+
+.topbar__controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.topbar__control-btn,
+.topbar__gear,
+.topbar__theme-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+    color: var(--primary);
+  }
+
+  &:active {
+    transform: scale(0.93);
+  }
+
+  i {
+    font-size: 18px;
+  }
+}
+
+.topbar__control-btn--menu {
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background: var(--primary-dark);
+    opacity: 0.95;
+  }
+}
+
+.topbar__hamburger {
+  display: none;
+}
+
+// ============================================================
+// BREAKPOINTS - NAVBAR
+// ============================================================
+
+@include respond(md) {
+  .topbar__nav {
+    display: flex !important;
+    gap: 12px;
+  }
+  .topbar__hamburger {
+    display: none !important;
+  }
+}
+
+@include respond(lg) {
+  .topbar__nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar__nav-btn {
+    padding: 5px 10px;
+  }
+  .topbar__btn-icon {
+    font-size: 20px;
+  }
+  .topbar__btn-title {
+    font-size: 14px;
+  }
+  .topbar__controls {
+    gap: 12px;
+  }
+  .topbar__control-btn,
+  .topbar__gear,
+  .topbar__theme-btn {
+    width: 44px;
+    height: 44px;
+    i { font-size: 21px; }
+  }
+}
+
+@include respond(xl) {
+  .topbar {
+    padding: 10px 22px;
+  }
+  .topbar__tema {
+    font-size: 16px;
+  }
+  .topbar__curso {
+    font-size: 14px;
+  }
+  .topbar__nav {
+    gap: 24px;
+  }
+
+  .topbar__btn-icon {
+    font-size: 22px;
+  }
+  .topbar__btn-title {
+    font-size: 15px;
+  }
+  .topbar__controls {
+    gap: 18px;
+  }
+  .topbar__control-btn,
+  .topbar__gear,
+  .topbar__theme-btn {
+    width: 48px;
+    height: 48px;
+    i { font-size: 23px; }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar__nav {
+    display: none !important;
+  }
+  .topbar__hamburger {
+    display: flex !important;
+  }
+}
+
+// ============================================================
+// OVERLAY (Menú y Configuración)
+// ============================================================
+
+.topbar__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--overlay-strong);
+  backdrop-filter: blur(4px);
+  overflow: auto;
+}
+
+.topbar__overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+}
+
+.topbar__overlay-title {
+  color: var(--ink);
+  font-size: 30px;
+  margin: 0 0 16px 0;
+  font-family: var(--font-display);
+}
+
+.topbar__overlay-row1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+  justify-items: center;
+}
+
+.topbar__overlay-btn {
+  width: 120px;
+  height: 120px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--surface-alt);
+  border: none;
+  border-bottom: 4px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--ink-soft);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  &:active {
+    border-bottom-width: 0;
+    transform: translateY(2px);
+  }
+
+  .topbar__btn-icon {
+    font-size: 38px;
+    color: inherit;
+  }
+
+  .topbar__btn-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: inherit;
+    font-family: var(--font-display);
+  }
+}
+
+// ============================================================
+// BREAKPOINTS - OVERLAY
+// ============================================================
+
+@media (min-width: 600px) {
+  .topbar__overlay-row1 {
+    grid-template-columns: repeat(3, auto);
+    max-width: none;
+  }
+}
+
+@include respond(lg) {
+  .topbar__overlay-inner {
+    gap: 30px;
+    max-width: calc(100vw - 40px);
+  }
+  
+  .topbar__overlay-row1 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 42px;
+    width: max-content !important;
+  }
+
+  .topbar__overlay-btn {
+    width: 130px;
+    height: 130px;
+    flex: 0 0 130px !important;
+
+    .topbar__btn-icon { font-size: 42px; }
+    .topbar__btn-title { font-size: 17px; }
+  }
+}
+
+@include respond(xl) {
+  .topbar__overlay-inner {
+    gap: 38px;
+  }
+  .topbar__overlay-row1 {
+    gap: 64px;
+  }
+  .topbar__overlay-btn {
+    width: 150px;
+    height: 150px;
+    flex: 0 0 150px !important;
+    gap: 14px;
+
+    .topbar__btn-icon { font-size: 48px; }
+    .topbar__btn-title { font-size: 19px; }
+  }
+}
+
+@media (min-width: 1920px) {
+  .topbar__overlay-row1 {
+    gap: 80px;
+  }
+  .topbar__overlay-btn {
+    width: 160px;
+    height: 160px;
+    flex: 0 0 160px !important;
+
+    .topbar__btn-icon { font-size: 52px; }
+    .topbar__btn-title { font-size: 20px; }
+  }
+}
+
+@media (max-width: 767px) {
+  .topbar__overlay-inner {
+    width: 100%;
+    max-width: 100%;
+    gap: 20px;
+  }
+  .topbar__overlay-row1 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    gap: 14px;
+  }
+  .topbar__overlay-btn {
+    width: 120px;
+    height: 105px;
+    min-width: 120px;
+    max-width: 120px;
+    min-height: 105px;
+    max-height: 105px;
+    flex: none !important;
+
+    .topbar__btn-icon { font-size: 32px; }
+    .topbar__btn-title { font-size: 14px; }
+  }
+}
+

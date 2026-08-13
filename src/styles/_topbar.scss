@@ -142,7 +142,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   min-width: 0;
   padding: 4px 8px;
   margin: 0;
@@ -154,6 +153,7 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease;
+  gap: 5px;
 
   &:hover {
     color: var(--primary);
@@ -162,7 +162,7 @@
 
 .topbar__btn-icon {
   display: block;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1;
 }
 
@@ -261,9 +261,6 @@
     flex-direction: row;
     align-items: center;
     gap: 16px;
-  }
-  .topbar__nav-btn {
-    padding: 5px 10px;
   }
   .topbar__btn-icon {
     font-size: 20px;

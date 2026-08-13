@@ -1,0 +1,489 @@
+/* ============================================================
+   SCHEDULE EDITOR (SCSS)
+   ============================================================ */
+
+.editor-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-strong);
+  padding: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.editor-card {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-lg);
+
+  @media (min-width: 768px) {
+    padding: 18px;
+    gap: 14px;
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* --- HEADER --- */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-titulo {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.editor-cerrar {
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+
+  &:hover {
+    color: var(--danger);
+    background: var(--surface-hover);
+  }
+}
+
+/* --- TABS (DÍAS DE LA SEMANA) --- */
+.editor-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+.editor-tab-btn {
+  min-width: 0;
+  padding: 6px 10px;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  @media (min-width: 768px) {
+    padding: 6px 0;
+  }
+
+  &:hover {
+    background: var(--surface-hover);
+    color: var(--ink-soft);
+  }
+
+  &.is-active {
+    background: var(--surface-alt);
+    color: var(--primary);
+  }
+}
+
+/* --- CONTENIDO / LISTA DE CURSOS --- */
+.editor-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editor-seccion-titulo {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.editor-texto-vacio {
+  color: var(--ink-faint);
+  font-size: 13.5px;
+  margin: 0;
+  text-align: center;
+  padding: 18px 0;
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-strong);
+}
+
+.editor-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.editor-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.editor-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.editor-item-nombre {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.editor-item-pomo {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.editor-acciones-item {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.editor-icon-btn {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+
+  @media (min-width: 768px) {
+    background: transparent;
+    border: none;
+    padding: 6px;
+  }
+
+  &:hover {
+    color: var(--primary);
+    background: var(--surface-hover);
+    border-color: var(--primary-light);
+  }
+
+  &.is-danger:hover {
+    color: var(--danger);
+    background: var(--danger-bg);
+    border-color: var(--danger);
+  }
+}
+
+/* --- FORMULARIO AÑADIR/EDITAR --- */
+.editor-add-box {
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.editor-form-titulo {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.editor-input-wrap {
+  position: relative;
+}
+
+.editor-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  &.is-error {
+    border-color: var(--danger);
+  }
+}
+
+.editor-sugerencias {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+
+.editor-sugerencia-item {
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+
+  &.is-active {
+    background: var(--primary-bg);
+    border: 1px solid var(--primary);
+    color: var(--ink);
+  }
+}
+
+.editor-feedback-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 18px;
+}
+
+.editor-error-msg {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+
+.editor-char-count {
+  font-size: 12.5px;
+  text-align: right;
+  color: var(--ink-soft);
+  margin: 0 0 0 auto;
+
+  &.is-error {
+    color: var(--danger);
+    font-weight: 700;
+  }
+}
+
+/* Grid de pomodoros */
+.editor-pomo-label {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.editor-pomo-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(6, 1fr);
+    
+    .editor-pomo-btn:nth-child(7) {
+      grid-column: 2;
+    }
+
+    .editor-pomo-btn:nth-child(8) {
+      grid-column: 3;
+    }
+
+    .editor-pomo-btn:nth-child(9) {
+      grid-column: 4;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+}
+
+.editor-pomo-btn {
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+
+  &.is-on {
+    background: var(--primary-bg);
+    border-color: var(--primary);
+    color: var(--ink-on-primary);
+  }
+}
+
+.editor-form-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+
+  @media (min-width: 480px) {
+    flex-direction: row;
+  }
+}
+
+.editor-btn-add {
+  padding: 10px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  flex: 1;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Estilos de botones genéricos */
+.btn-primary {
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  border: 1px solid var(--primary-dark);
+
+  &:hover:not(:disabled) {
+    background: var(--primary-light);
+  }
+}
+
+.editor-btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+
+  &:hover:not(:disabled) {
+    background: var(--surface-hover);
+  }
+}
+
+/* --- FOOTER PRINCIPAL --- */
+.editor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.editor-footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-only-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap : 6px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.editor-footer-right .editor-btn-outline {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+@media screen and (max-width: 480px) {
+  .editor-footer { 
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .editor-footer button {
+    width: 100%;
+  }
+}

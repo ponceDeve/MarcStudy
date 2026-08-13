@@ -119,9 +119,12 @@
   --radius-lg: 18px;
   --radius-full: 999px;
 
-  --font-body: "Inter", sans-serif;
-  --font-display: "Baloo 2", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  // Solo dos fuentes en toda la app (aparte de la del cronómetro,
+  // que es "DSDigi" y vive aparte en _base.scss): --font-display para
+  // lo importante (títulos, números destacados) y --font-body para
+  // todo lo secundario (texto de lectura, etiquetas, UI).
+  --font-body: "Lato", sans-serif;
+--font-display: "Raleway", sans-serif;
 }
 
 /* ============================================================

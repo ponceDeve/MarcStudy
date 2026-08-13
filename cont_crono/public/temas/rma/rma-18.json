@@ -1,0 +1,649 @@
+{
+  "curso": "Razonamiento Matemático",
+  "tema": "Relación de Tiempo y Calendarios",
+  "glosario": {
+    "Nudillo": "Parte sobresaliente de la mano usada para recordar meses de 31 días.",
+    "Hendidura": "Espacio entre los nudillos usado para recordar meses de menos de 31 días.",
+    "=": "Equivale a / Es igual a",
+    "→": "Produce / Conduce a / Implica",
+    "+": "Avance en el tiempo / Suma",
+    "-": "Retroceso en el tiempo / Resta"
+  },
+  "theory": [
+    {
+      "titulo": "Equivalencias Numéricas de Días Básicos",
+      "puntos": [
+        {
+          "texto": "Hoy = 0.",
+          "pregunta": {
+            "q": "¿Qué valor numérico representa al día de hoy?",
+            "opts": [
+              "-1",
+              "0",
+              "+1"
+            ],
+            "correct": 1,
+            "explicacion": "El día actual o 'hoy' se toma como el punto de referencia cero en la recta numérica del tiempo."
+          }
+        },
+        {
+          "texto": "Ayer = -1.",
+          "pregunta": {
+            "q": "¿A qué equivale numéricamente el ayer?",
+            "opts": [
+              "-2",
+              "-1",
+              "0"
+            ],
+            "correct": 1,
+            "explicacion": "Al retroceder un día desde hoy (0), obtenemos -1, que corresponde a ayer."
+          }
+        },
+        {
+          "texto": "Anteayer = -2.",
+          "pregunta": {
+            "q": "¿Qué número corresponde al término anteayer?",
+            "opts": [
+              "-1",
+              "-3",
+              "-2"
+            ],
+            "correct": 2,
+            "explicacion": "Anteayer significa retroceder dos días respecto al día de hoy, por lo que su valor es -2."
+          }
+        },
+        {
+          "texto": "Mañana = +1.",
+          "pregunta": {
+            "q": "¿Qué número se usa para representar el mañana?",
+            "opts": [
+              "+1",
+              "+2",
+              "0"
+            ],
+            "correct": 0,
+            "explicacion": "Mañana representa avanzar un día en el tiempo desde hoy, asignándole el valor de +1."
+          }
+        },
+        {
+          "texto": "Pasado mañana = +2.",
+          "pregunta": {
+            "q": "¿Cuál es la equivalencia de pasado mañana?",
+            "opts": [
+              "+1",
+              "+2",
+              "+3"
+            ],
+            "correct": 1,
+            "explicacion": "Pasado mañana implica avanzar dos días completos en el futuro, por lo que se representa como +2."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Sinónimos Frecuentes en Variación de Días",
+      "puntos": [
+        {
+          "texto": "Precede = -1.",
+          "pregunta": {
+            "q": "¿Qué valor se le asigna a la palabra 'precede'?",
+            "opts": [
+              "+1",
+              "-1",
+              "0"
+            ],
+            "correct": 1,
+            "explicacion": "El término precede indica el día inmediatamente anterior, equivalente a ayer o -1."
+          }
+        },
+        {
+          "texto": "Posterior = +1.",
+          "pregunta": {
+            "q": "¿Qué valor tiene el término 'posterior'?",
+            "opts": [
+              "-1",
+              "+1",
+              "+2"
+            ],
+            "correct": 1,
+            "explicacion": "El día posterior es el que sigue inmediatamente a hoy, lo que equivale a mañana o +1."
+          }
+        },
+        {
+          "texto": "Subsiguiente = +2.",
+          "pregunta": {
+            "q": "¿A qué valor numérico equivale 'subsiguiente'?",
+            "opts": [
+              "+2",
+              "+1",
+              "-2"
+            ],
+            "correct": 0,
+            "explicacion": "Subsiguiente se refiere al día que sigue al de mañana, es decir, pasado mañana o +2."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Avance del Tiempo y Múltiplos de 7",
+      "puntos": [
+        {
+          "texto": "Sumar múltiplo de 7 → mismo día.",
+          "pregunta": {
+            "q": "¿Qué resulta de sumar un múltiplo de 7 a un día específico?",
+            "opts": [
+              "Avanza un día",
+              "Retrocede un día",
+              "Cae el mismo día"
+            ],
+            "correct": 2,
+            "explicacion": "Dado que la semana tiene 7 días, avanzar cualquier cantidad de días que sea múltiplo de 7 nos devuelve al mismo día de la semana."
+          }
+        },
+        {
+          "texto": "Aplicando múltiplo de 7 → avanzar 100 días = +2.",
+          "pregunta": {
+            "q": "Según el método de múltiplos, ¿a cuánto equivale avanzar 100 días?",
+            "opts": [
+              "Avanzar 2 días",
+              "Avanzar 4 días",
+              "Avanzar 0 días"
+            ],
+            "correct": 0,
+            "explicacion": "100 días equivalen a un múltiplo de 7 (98) más 2 días de residuo, por lo que el avance neto es de 2 días."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Análisis de Días en Meses Específicos",
+      "puntos": [
+        {
+          "texto": "Mes 28 días → todos los días aparecen 4 veces.",
+          "pregunta": {
+            "q": "¿Cuántas veces aparece cada día de la semana en un mes de 28 días?",
+            "opts": [
+              "4 veces",
+              "5 veces",
+              "3 veces"
+            ],
+            "correct": 0,
+            "explicacion": "Al ser 28 un múltiplo exacto de 7 (4 semanas completas), cada uno de los 7 días de la semana aparece exactamente 4 veces."
+          }
+        },
+        {
+          "texto": "Mes 28 días inicia X → culmina X - 1.",
+          "pregunta": {
+            "q": "¿En qué día culmina un mes de 28 días que inicia en el día X?",
+            "opts": [
+              "X + 1",
+              "X",
+              "X - 1"
+            ],
+            "correct": 2,
+            "explicacion": "Dado que consta de 4 semanas exactas, el último día del mes retrocede una posición respecto al día inicial de la primera semana."
+          }
+        },
+        {
+          "texto": "Mes 29 días → 1 día aparece 5 veces.",
+          "pregunta": {
+            "q": "En un mes de 29 días, ¿cuántos días aparecen 5 veces?",
+            "opts": [
+              "Ninguno",
+              "1 día",
+              "2 días"
+            ],
+            "correct": 1,
+            "explicacion": "Un mes de 29 días tiene 4 semanas exactas más 1 día extra, lo que hace que un solo día de la semana se repita 5 veces."
+          }
+        },
+        {
+          "texto": "Mes 29 días inicia X → culmina X.",
+          "pregunta": {
+            "q": "Si un mes de 29 días inicia el día X, ¿en qué día termina?",
+            "opts": [
+              "Día X",
+              "Día X + 1",
+              "Día X - 1"
+            ],
+            "correct": 0,
+            "explicacion": "El día sobrante después de las 4 semanas exactas cae el mismo día que inició el mes."
+          }
+        },
+        {
+          "texto": "Mes 30 días → 2 días consecutivos aparecen 5 veces.",
+          "pregunta": {
+            "q": "¿Qué ocurre con la repetición de días en un mes de 30 días?",
+            "opts": [
+              "Todos aparecen 4 veces",
+              "2 días consecutivos aparecen 5 veces",
+              "3 días consecutivos aparecen 5 veces"
+            ],
+            "correct": 1,
+            "explicacion": "Los 2 días de residuo tras las 4 semanas provocan que dos días consecutivos del calendario se repitan una quinta vez."
+          }
+        },
+        {
+          "texto": "Mes 30 días inicia X → culmina X + 1.",
+          "pregunta": {
+            "q": "¿Cuál es el día final de un mes de 30 días si comienza en X?",
+            "opts": [
+              "X + 2",
+              "X + 1",
+              "X"
+            ],
+            "correct": 1,
+            "explicacion": "Debido a los dos días sobrantes, el mes culmina en el día consecutivo al día en que inició."
+          }
+        },
+        {
+          "texto": "Mes 31 días → 3 días consecutivos aparecen 5 veces.",
+          "pregunta": {
+            "q": "¿Cuántos días consecutivos se repiten 5 veces en un mes de 31 días?",
+            "opts": [
+              "2 días",
+              "3 días",
+              "4 días"
+            ],
+            "correct": 1,
+            "explicacion": "El residuo de 3 días sobre las 4 semanas exactas genera que un bloque de tres días seguidos aparezca cinco veces."
+          }
+        },
+        {
+          "texto": "Mes 31 días inicia X → culmina X + 2.",
+          "pregunta": {
+            "q": "¿En qué día termina un mes de 31 días que inicia en el día X?",
+            "opts": [
+              "X + 3",
+              "X + 2",
+              "X + 1"
+            ],
+            "correct": 1,
+            "explicacion": "Al tener un residuo de tres días, el mes termina dos días después del día de la semana en que comenzó."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de los Nudillos y Avances Netos",
+      "puntos": [
+        {
+          "texto": "Regla nudillos → Nudillo = 31 días.",
+          "pregunta": {
+            "q": "En la regla de los nudillos, ¿cuántos días tiene el mes si cae en un nudillo?",
+            "opts": [
+              "30 días",
+              "28 días",
+              "31 días"
+            ],
+            "correct": 2,
+            "explicacion": "La regla mnemotécnica asigna los meses largos (31 días) a las partes prominentes o nudillos de las manos."
+          }
+        },
+        {
+          "texto": "Regla nudillos → Hendidura = 28, 29 o 30 días.",
+          "pregunta": {
+            "q": "¿Qué cantidad de días representa una hendidura en la regla de los nudillos?",
+            "opts": [
+              "Solo 30 días",
+              "28, 29 o 30 días",
+              "31 días"
+            ],
+            "correct": 1,
+            "explicacion": "Las hendiduras o espacios entre nudillos corresponden a febrero (28/29 días) y los meses cortos de 30 días."
+          }
+        },
+        {
+          "texto": "Avance mes 28 días = +0.",
+          "pregunta": {
+            "q": "¿Cuántos días netos de la semana se avanza tras un mes de 28 días?",
+            "opts": [
+              "+1",
+              "+0",
+              "+2"
+            ],
+            "correct": 1,
+            "explicacion": "Como 28 es múltiplo de 7 con residuo cero, el avance neto en la semana es de cero días."
+          }
+        },
+        {
+          "texto": "Avance mes 29 días = +1.",
+          "pregunta": {
+            "q": "¿Cuál es el desplazamiento en la semana al pasar un mes de 29 días?",
+            "opts": [
+              "+1",
+              "+2",
+              "+0"
+            ],
+            "correct": 0,
+            "explicacion": "El residuo de dividir 29 entre 7 es 1, lo que significa un desplazamiento de un día en la semana."
+          }
+        },
+        {
+          "texto": "Avance mes 30 días = +2.",
+          "pregunta": {
+            "q": "¿Cuántos días avanza la fecha tras un mes de 30 días?",
+            "opts": [
+              "+1",
+              "+3",
+              "+2"
+            ],
+            "correct": 2,
+            "explicacion": "Un mes de 30 días deja un residuo de 2 al dividir por 7, generando un avance neto de 2 días."
+          }
+        },
+        {
+          "texto": "Avance mes 31 días = +3.",
+          "pregunta": {
+            "q": "¿Cuál es el avance neto en días de la semana al pasar 31 días?",
+            "opts": [
+              "+1",
+              "+2",
+              "+3"
+            ],
+            "correct": 2,
+            "explicacion": "Dado que 31 dividido entre 7 deja un resto de 3, el calendario avanza 3 días netos en la semana."
+          }
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si el día que precede al ayer del pasado mañana es lunes, ¿qué día será el subsiguiente día al de mañana?",
+      "opts": [
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes"
+      ],
+      "correct": 2,
+      "explicacion": "Planteando la ecuación con equivalencias: precede (-1) + ayer (-1) + pasado mañana (+2) = 0. Esto significa que hoy (0) es lunes. Nos piden el subsiguiente día (+2) al de mañana (+1), lo que suma +3. Si hoy es lunes, al sumar 3 días obtenemos jueves."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Indique el valor de verdad de las siguientes afirmaciones sobre la cantidad de días en los meses:",
+      "proposiciones": [
+        {
+          "texto": "En un mes de 31 días, exactamente tres días de la semana aparecen cinco veces.",
+          "correct": true
+        },
+        {
+          "texto": "Si un mes tiene 30 días e inicia un martes, culminará un miércoles.",
+          "correct": true
+        },
+        {
+          "texto": "Un mes bisiesto de 29 días genera un avance neto de dos días en el calendario.",
+          "correct": false
+        },
+        {
+          "texto": "En un mes de 28 días, el último día coincide con el mismo día de la semana en que inició.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Las dos primeras son verdaderas porque 31 días dejan un residuo de 3 (tres días se repiten 5 veces) y 30 días generan un avance de un día respecto al inicio (martes a miércoles). La tercera es falsa porque 29 días solo dejan un residuo de 1, generando un avance de +1. La cuarta es falsa porque un mes de 28 días culmina un día antes del día en que inició (X-1)."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Según la regla mnemotécnica, los meses que caen en un 1 avanzan 3 días en la semana, mientras que un mes regular de febrero cae en una 2 y su avance neto es de 3 días.",
+      "respuestas": [
+        "nudillo",
+        "hendidura",
+        "cero"
+      ],
+      "explicacion": "Los nudillos representan meses de 31 días, cuyo residuo tras dividir entre 7 es 3 (avance de 3 días). Febrero regular (28 días) cae en una hendidura y al ser múltiplo exacto de 7, su avance neto en la semana es cero."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si hoy es miércoles, ¿qué día de la semana será exactamente dentro de 100 días?",
+      "opts": [
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo"
+      ],
+      "correct": 1,
+      "explicacion": "Para calcular variaciones grandes, se divide entre 7 buscando el residuo. 100 días equivalen a un múltiplo de 7 (98 días, que caería el mismo día miércoles) más un residuo de 2 días. Miércoles + 2 días nos da viernes."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Señale la alternativa INCORRECTA respecto al día de inicio y culminación de los diferentes meses.",
+      "opts": [
+        "Un mes de 29 días inicia y culmina en el mismo día de la semana.",
+        "Un mes de 30 días termina un día de la semana después de su inicio.",
+        "Un mes de 31 días culmina exactamente tres días después del día en que inició.",
+        "Un mes de 28 días culmina un día antes del día de la semana en que comenzó."
+      ],
+      "correct": 2,
+      "explicacion": "La alternativa incorrecta es la tercera. Un mes de 31 días tiene un avance neto de 3 días para el mes siguiente, pero en cuanto a su culminación, termina exactamente dos días después del día en que inició (X + 2), no tres."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Evalúe las siguientes relaciones de tiempo según sus equivalencias numéricas:",
+      "proposiciones": [
+        {
+          "texto": "El término 'posterior' equivale numéricamente a sumar dos días al día actual.",
+          "correct": false
+        },
+        {
+          "texto": "El término 'subsiguiente' representa el mismo desplazamiento en el tiempo que 'pasado mañana'.",
+          "correct": true
+        },
+        {
+          "texto": "Sumar cualquier múltiplo de siete a una fecha siempre nos ubica en el mismo día de la semana.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La primera es falsa porque 'posterior' equivale al mañana (+1), no a dos días. Las otras son verdaderas: 'subsiguiente' y 'pasado mañana' valen ambos +2, y los múltiplos de 7 completan semanas exactas regresando al punto de partida."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "En un mes no bisiesto de 1 días, todos los días de la semana aparecen exactamente 2 veces, sin que ningún día se repita una quinta vez.",
+      "respuestas": [
+        "veintiocho",
+        "cuatro"
+      ],
+      "explicacion": "El mes de 28 días es el único que contiene exactamente 4 semanas completas (28 = 7 x 4), por lo que sus 7 días de la semana aparecen de manera uniforme 4 veces cada uno, sin residuos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dadas las siguientes proposiciones sobre el avance neto de días al cambiar de mes:\nI. Transcurrir un mes de 30 días equivale a un avance neto de 2 días.\nII. Un mes de 31 días genera un avance de 3 días en la semana.\nIII. Un mes de 29 días no produce ningún avance neto.\nSon correctas:",
+      "opts": [
+        "Solo I",
+        "Solo II",
+        "I y II",
+        "I, II y III"
+      ],
+      "correct": 2,
+      "explicacion": "Las proposiciones I y II son correctas porque 30 y 31 dejan residuos de 2 y 3 respectivamente al dividirse entre 7. La III es incorrecta porque un mes de 29 días deja un residuo de 1, generando un avance neto de +1, no cero."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "En la recta numérica del tiempo, si al 'hoy' se le asigna el valor cero, el 'ayer' corresponde al valor 1 y el 'mañana' se representa matemáticamente como 2.",
+      "respuestas": [
+        "-1",
+        "+1"
+      ],
+      "explicacion": "Estas son las equivalencias básicas de variación de días: todo día pasado se resta (ayer es -1) y todo día futuro se suma (mañana es +1) a partir del punto de referencia 0 que es hoy."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si en un mes de 30 días hay más jueves y viernes que otros días de la semana, ¿qué día de la semana fue el 15 de dicho mes?",
+      "opts": [
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+      ],
+      "correct": 1,
+      "explicacion": "Un mes de 30 días hace que exactamente dos días consecutivos se repitan 5 veces. Si son jueves y viernes, el mes necesariamente inició un jueves (día 1). El día 15 equivale a 1 + 14 (múltiplo de 7), por lo que cae el mismo día de la semana que el día 1, es decir, jueves."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "",
+      "proposiciones": [
+        {
+          "texto": "Según la regla de los nudillos, dos meses consecutivos en el calendario pueden tener 31 días.",
+          "correct": true
+        },
+        {
+          "texto": "Si un mes tiene 30 días, es imposible que inicie y termine en el mismo día de la semana.",
+          "correct": true
+        },
+        {
+          "texto": "Si un mes inicia un lunes y termina un martes, podemos afirmar que tuvo 31 días.",
+          "correct": false
+        }
+      ],
+      "explicacion": "La primera es verdadera (ej. julio y agosto caen en nudillos contiguos al cambiar de mano). La segunda es verdadera, ya que 30 días implica terminar en X+1, no en X. La tercera es falsa: si inicia lunes (X) y termina martes (X+1), el mes tuvo 30 días, no 31 (que terminaría en X+2, miércoles)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si el día que precede al subsiguiente día del anteayer de mañana es lunes, ¿qué día será el pasado mañana?",
+      "opts": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves"
+      ],
+      "correct": 2,
+      "explicacion": "Ecuación: precede (-1) + subsiguiente (+2) + anteayer (-2) + mañana (+1) = 0. Esto significa que 'hoy' (0) es lunes. La pregunta pide determinar qué día será el 'pasado mañana' (+2). Sumando 2 días al lunes, el resultado es miércoles."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si hoy representa el valor 0 en la recta del tiempo, ¿qué valor representa tres días antes de hoy?",
+      "opts": [
+        "-1",
+        "-2",
+        "-3",
+        "+3"
+      ],
+      "correct": 2,
+      "explicacion": "Los días anteriores a hoy se representan con valores negativos. Al retroceder tres días desde 0 se obtiene -3."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si mañana equivale a +1, ¿qué valor representa el día que ocurre cuatro días después de hoy?",
+      "opts": [
+        "+2",
+        "+3",
+        "+4",
+        "-4"
+      ],
+      "correct": 2,
+      "explicacion": "Los días posteriores a hoy se expresan con valores positivos. Cuatro días después corresponde a +4."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Determine la verdad de las siguientes afirmaciones sobre equivalencias de tiempo:",
+      "proposiciones": [
+        {
+          "texto": "Anteayer representa un retroceso de dos días respecto a hoy.",
+          "correct": true
+        },
+        {
+          "texto": "Posterior tiene el mismo valor que subsiguiente.",
+          "correct": false
+        },
+        {
+          "texto": "Precede representa avanzar un día en el tiempo.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Anteayer equivale a -2. Posterior equivale a +1, mientras que subsiguiente equivale a +2. Precede indica retroceso y equivale a -1."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un mes de 29 días comienza en viernes, ¿en qué día culminará?",
+      "opts": [
+        "Jueves",
+        "Viernes",
+        "Sábado",
+        "Domingo"
+      ],
+      "correct": 1,
+      "explicacion": "Un mes de 29 días culmina en el mismo día en que inicia (X). Si inicia viernes, termina viernes."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un mes de 30 días inicia en domingo. ¿Qué día de la semana será el último día del mes?",
+      "opts": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Domingo"
+      ],
+      "correct": 0,
+      "explicacion": "Un mes de 30 días culmina en X+1. Si inicia domingo, termina lunes."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Un mes de 31 días tiene semanas completas y días sobrantes. Debido a estos días sobrantes, exactamente ___ días consecutivos aparecen ___ veces durante el mes.",
+      "respuestas": [
+        "tres",
+        "cinco"
+      ],
+      "explicacion": "31 días equivalen a 4 semanas completas más 3 días adicionales. Estos tres días se repiten una quinta vez."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál es el avance neto de la semana después de transcurrir 29 días?",
+      "opts": [
+        "+0",
+        "+1",
+        "+2",
+        "+3"
+      ],
+      "correct": 1,
+      "explicacion": "29 dividido entre 7 deja residuo 1, por lo tanto el avance neto es de +1 día."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Analice las siguientes afirmaciones sobre avances netos:",
+      "proposiciones": [
+        {
+          "texto": "Un mes de 28 días no genera desplazamiento en el día de la semana.",
+          "correct": true
+        },
+        {
+          "texto": "Un mes de 30 días genera un avance neto de tres días.",
+          "correct": false
+        },
+        {
+          "texto": "Un mes de 31 días tiene un avance neto de tres días.",
+          "correct": true
+        }
+      ],
+      "explicacion": "28 días es múltiplo de 7 y genera +0. Los meses de 30 y 31 días generan +2 y +3 respectivamente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Según la regla de los nudillos, si un mes cae sobre un nudillo, ¿qué cantidad de días tiene normalmente?",
+      "opts": [
+        "28 días",
+        "29 días",
+        "30 días",
+        "31 días"
+      ],
+      "correct": 3,
+      "explicacion": "En la regla de los nudillos, los nudillos representan meses largos de 31 días."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Según la regla de los nudillos, ¿qué representa una hendidura?",
+      "opts": [
+        "Meses de 31 días únicamente",
+        "Meses de 28, 29 o 30 días",
+        "Solo meses de febrero",
+        "Meses con semanas completas"
+      ],
+      "correct": 1,
+      "explicacion": "Las hendiduras representan meses que no tienen 31 días: febrero con 28 o 29 días y meses de 30 días."
+    }
+  ]
+}

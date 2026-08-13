@@ -1,0 +1,103 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos en Posición Normal, Cuadrantales y Coterminales",
+  "glosario": {
+    "Posición normal": "Vértice en el origen y lado inicial coincidente con eje X positivo.",
+    "Radio vector (r)": "Distancia desde el origen hasta un punto del lado final.",
+    "Cuadrante": "Cada una de las cuatro regiones en que se divide el plano cartesiano.",
+    "Ángulo cuadrantal": "Su lado final coincide con un semieje coordenado (múltiplo de 90°).",
+    "Coterminales": "Ángulos distintos que comparten exactamente el mismo lado inicial y final.",
+    "Razón Indefinida": "Cálculo trigonométrico que resulta en división por cero (N.D.)."
+  },
+  "theory": [
+    {
+      "titulo": "Definiciones Básicas y Radio Vector",
+      "puntos": [
+        {
+          "texto": "Radio vector r = \\sqrt{x^2+y^2}",
+          "explicacion": "Esta fórmula se utiliza para calcular la distancia desde el origen hasta un punto $P(x, y)$ que pertenece al lado final del ángulo. Los pasos consisten en identificar las coordenadas y aplicar el teorema de Pitágoras, recordando que $r$ siempre es positivo. Ejemplo: Si el punto $P(-3, 4)$ está en el lado final, entonces $r = \\sqrt{(-3)^2 + 4^2} = 5$. Truco UNMSM: Memoriza los triángulos pitagóricos notables como $(3,4,5)$ o $(5,12,13)$ para evitar cálculos innecesarios."
+        },
+        {
+          "texto": "Sen(\\theta) = y/r",
+          "explicacion": "Esta definición es la base para resolver problemas donde te dan un punto en el plano cartesiano y te piden la razón seno. Se resuelve dividiendo la ordenada del punto entre el radio vector previamente calculado. Ejemplo: Para el punto $P(-3, 4)$ con $r=5$, calculamos $\\sin(\\theta) = \\frac{4}{5}$. Un error común en exámenes es confundir la abscisa con la ordenada; recuerda siempre que el seno se asocia con el eje Y."
+        },
+        {
+          "texto": "Cos(\\theta) = x/r",
+          "explicacion": "Similar al seno, esta fórmula permite hallar el coseno dividiendo la abscisa entre el radio vector. En problemas de admisión, a menudo ocultan el valor de $x$ dando el seno y el cuadrante. Ejemplo: Si $P(-3, 4)$, el coseno es $\\cos(\\theta) = \\frac{-3}{5}$. Truco de examen: Si el ángulo está en el segundo o tercer cuadrante, la coordenada $x$ es obligatoriamente negativa, lo que define el signo del coseno."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos de las Razones en los Cuadrantes",
+      "puntos": [
+        {
+          "texto": "Cuadrante II ⇒ Sen(+) Csc(+)",
+          "explicacion": "Permite determinar rápidamente el signo de las expresiones trigonométricas evaluando dónde cae el lado final del ángulo. En el segundo cuadrante, únicamente el seno y su inversa geométrica, la cosecante, tienen valores positivos. Ejemplo: Evaluar el signo de $\\sin(150^\\circ)$. Como $150^\\circ$ pertenece al II cuadrante, su signo es positivo $(+)$. Regla mnemotécnica útil: Usa la frase \"Todas Sin Tacos\" para recordar Todas, Seno, Tangente, Coseno en orden I a IV."
+        },
+        {
+          "texto": "Cuadrante III ⇒ Tan(+) Cot(+)",
+          "explicacion": "Se aplica en problemas de inecuaciones trigonométricas para restringir el dominio del ángulo. Aquí, la abscisa y ordenada son negativas, por lo que su división genera una tangente y cotangente positivas. Ejemplo: Si $\\tan(\\theta) = \\frac{3}{4}$ y $\\sin(\\theta) < 0$, $\\theta$ debe estar obligatoriamente en el tercer cuadrante. Variación clásica UNMSM: Te piden evaluar el signo de un producto como $\\tan(200^\\circ) \\cdot \\cos(200^\\circ)$, resultando $(+) \\cdot (-) = (-)$."
+        },
+        {
+          "texto": "Cuadrante IV ⇒ Cos(+) Sec(+)",
+          "explicacion": "Sirve para discriminar raíces espurias al despejar ecuaciones cuadráticas trigonométricas. En el cuarto cuadrante, la abscisa es positiva y la ordenada es negativa, favoreciendo solo al coseno y secante. Ejemplo: Sabiendo que $\\sec(\\theta) = 2$ y el ángulo está en el IVC, se deduce que $\\sin(\\theta)$ será negativo. Truco: Si te dan un ángulo negativo pequeño como $-30^\\circ$, tráatalo directamente como un ángulo del cuarto cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos Cuadrantales y sus Razones",
+      "puntos": [
+        {
+          "texto": "Ángulo cuadrantal = 90^\\circ k",
+          "explicacion": "Esta es la forma general para identificar si un ángulo es cuadrantal, lo que simplifica enormemente su cálculo trigonométrico. Se resuelve igualando la expresión del ángulo a $90^\\circ \\cdot k$ (o $\\frac{\\pi}{2} \\cdot k$ en radianes) y verificando que $k$ sea un número entero. Ejemplo: Si $\\theta = 450^\\circ$, al dividir $450/90 = 5$, que es entero, confirmamos que es cuadrantal. Caso especial: Los ángulos cuadrantales no pertenecen a ningún cuadrante específico, son las fronteras."
+        },
+        {
+          "texto": "0,90,180,270 → OIONIN",
+          "explicacion": "Esta palabra mnemotécnica salva mucho tiempo en el examen para recordar las tablas de razones de los ángulos $0^\\circ, 90^\\circ, 180^\\circ y 270^\\circ$. Las vocales \"O\" e \"I\" representan $0$ y $1$ (o $-1$), y la letra \"N\" representa No Definido. Ejemplo: Para hallar rápidamente $\\cos(180^\\circ)$, usas la regla y obtienes $-1$. Truco: Combina esto con la posición en los ejes; los ejes izquierdos y de abajo ($180^\\circ, 270^\\circ$) siempre llevan el signo negativo al valor de $1$."
+        },
+        {
+          "texto": "Denominador nulo ⇒ Razón N.D.",
+          "explicacion": "Aplicable cuando se evalúan funciones como tangente o secante en $90^\\circ$ o $270^\\circ$, donde la coordenada $x$ es cero. En un problema de admisión, si una ecuación contiene un término N.D., el conjunto solución excluye ese ángulo. Ejemplo: Resolver la función $f(x) = \\tan(x) + 5$; aquí $x \\neq 90^\\circ$ porque $\\tan(90^\\circ) = \\frac{1}{0}$, lo cual es No Definido (N.D.). Trampa UNMSM: Muchas veces ponen identidades que parecen válidas pero fallan en los cuadrantales por generar N.D."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de Ángulos Coterminales",
+      "puntos": [
+        {
+          "texto": "\\alpha - \\beta = 360^\\circ n",
+          "explicacion": "Es la condición necesaria y suficiente para demostrar analíticamente que dos ángulos son coterminales. Se aplica restando el ángulo menor del mayor; si el resultado es múltiplo exacto de $360^\\circ$ (o $2\\pi$), son coterminales. Ejemplo: Verificar si $400^\\circ$ y $40^\\circ$ son coterminales calculando $400^\\circ - 40^\\circ = 360^\\circ$, como $360^\\circ = 360^\\circ(1)$, sí lo son. Truco: En radianes, la diferencia siempre debe ser un múltiplo par de $\\pi$ (ej. $2\\pi, 4\\pi, -6\\pi$)."
+        },
+        {
+          "texto": "R.T.(\\alpha) = R.T.(\\beta)",
+          "explicacion": "Si dos ángulos son coterminales, cualquier razón trigonométrica evaluada en ellos será exactamente la misma. Esto se usa para reducir ángulos gigantes a su primera vuelta positiva antes de calcular el seno o coseno. Ejemplo: Calcular $\\sin(750^\\circ)$. Como $750^\\circ - 390^\\circ = 360^\\circ$, y $390^\\circ - 30^\\circ = 360^\\circ$, sabemos que $750^\\circ$ es coterminal con $30^\\circ$, entonces $\\sin(750^\\circ) = \\sin(30^\\circ) = \\frac{1}{2}$. Esto es clave en simplificación de expresiones largas."
+        },
+        {
+          "texto": "Vueltas = (\\alpha-\\beta)/360^\\circ",
+          "explicacion": "Fórmula práctica para determinar el número exacto de rotaciones completas que separan a dos ángulos coterminales. Es vital en problemas de cinemática circular mezclados con trigonometría. Ejemplo: Si una rueda gira un ángulo $\\alpha = 1840^\\circ$ y se detiene en una posición coterminal $\\beta = 40^\\circ$, ha dado $\\frac{1840 - 40}{360} = 5$ vueltas. Si la división te da un decimal, significa que has cometido un error o los ángulos no son coterminales."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelos Avanzados de Resolución UNMSM",
+      "puntos": [
+        {
+          "texto": "|\\sin(x)| = -\\sin(x)",
+          "explicacion": "Este tipo de condición aparece en problemas de máximo nivel para ocultar el cuadrante usando propiedades del valor absoluto. Si el valor absoluto de un número es igual a su negativo, significa que la expresión interior es menor o igual a cero. Ejemplo: Si $|\\sin(x)| = -\\sin(x)$, concluimos que $\\sin(x) \\le 0$, por lo tanto, el ángulo $x$ pertenece al III o IV cuadrante. Truco: Combina este dato con otro (ej. $\\cos(x)>0$) para acorralar el ángulo exacto a un solo cuadrante."
+        },
+        {
+          "texto": "\\sqrt{x^2} = |x|",
+          "explicacion": "Una trampa algebraica mortífera al calcular el radio vector y sus componentes. Cuando despejes variables de un radio vector al cuadrado, jamás asumas directamente el signo positivo sin evaluar el cuadrante. Ejemplo: Si $\\cos^2(\\theta) = \\frac{9}{25}$ y $\\theta \\in IIC$, al sacar raíz obtienes $|\\cos(\\theta)| = \\frac{3}{5}$, pero por ser el segundo cuadrante el coseno es negativo, resultando $\\cos(\\theta) = -\\frac{3}{5}$. No aplicar valor absoluto arruina la respuesta completa."
+        },
+        {
+          "texto": "Ángulo > 360^\\circ → Dividir",
+          "explicacion": "Método sistemático para la reducción al primer cuadrante (o primera vuelta) de ángulos muy grandes. El procedimiento requiere realizar una división euclidiana del ángulo entre $360$ y usar el residuo como el nuevo ángulo coterminal operativo. Ejemplo: Reducir $\\tan(1200^\\circ)$. Al dividir $1200 / 360$, el cociente es $3$ y el residuo es $120$. Entonces, $\\tan(1200^\\circ) = \\tan(120^\\circ) = -\\sqrt{3}$. Truco: Si el ángulo es negativo, añádele múltiplos de $360$ hasta que el residuo sea positivo."
+        },
+        {
+          "texto": "F(x) = a^{\\sin(90^\\circ)} + b",
+          "explicacion": "Modelo de problema que fusiona álgebra (leyes de exponentes o polinomios) con ángulos cuadrantales. El estudiante debe evaluar el valor exacto de la razón cuadrantal y luego operar algebraicamente la expresión resultante. Ejemplo: Evaluar $M = (a+b)^{\\sin(90^\\circ)} + (a-b)^{\\cos(180^\\circ)}$. Sabiendo que $\\sin(90^\\circ)=1$ y $\\cos(180^\\circ)=-1$, reemplazamos: $M = (a+b)^1 + (a-b)^{-1} = a + b + \\frac{1}{a-b}$. Asegúrate de dominar bien tus leyes de exponentes inversos."
+        }
+      ]
+    }
+  ]
+}
