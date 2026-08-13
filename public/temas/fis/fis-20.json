@@ -1,0 +1,108 @@
+{
+  "curso": "Física",
+  "tema": "Movimiento Armónico Simple (M.A.S.)",
+  "glosario": {
+    "Oscilación": "Movimiento completo de ida y vuelta.",
+    "Amplitud": "Máxima elongación desde la posición de equilibrio.",
+    "Elongación": "Distancia desde el centro hasta la posición actual.",
+    "Frecuencia": "Número de oscilaciones completadas en un segundo.",
+    "Periodo": "Tiempo necesario para completar una oscilación.",
+    "Fase Inicial": "Ángulo que determina la posición de partida.",
+    "Fuerza Recuperadora": "Fuerza que devuelve la masa al equilibrio."
+  },
+  "theory": [
+    {
+      "titulo": "Conceptos Básicos y Características del M.A.S.",
+      "puntos": [
+        {
+          "texto": "$M.A.S. \\supset \\text{Rectil\\acute{\\imath}neo, Oscilatorio, Peri\\acute{o}dico}$",
+          "explicacion": "El M.A.S. se caracteriza por ocurrir en línea recta, ser de vaivén y repetirse en intervalos de tiempo iguales. Sirve para modelar sistemas sin fricción como bloques atados a resortes ideales. Ejemplo: Si una partícula hace $10$ ciclos exactos en $20 \\text{ s}$, su movimiento es periódico y su periodo es $T = 2 \\text{ s}$."
+        },
+        {
+          "texto": "$F_{rec} = -Kx$",
+          "explicacion": "El movimiento está gobernado por una fuerza recuperadora proporcional a la deformación y opuesta al desplazamiento. Es la base dinámica del sistema. Ejemplo: Un bloque desplazado $x = 0.2 \\text{ m}$ de un resorte con $K = 50 \\text{ N/m}$ experimenta una fuerza de restitución de magnitud $F = 50 \\cdot 0.2 = 10 \\text{ N}$ apuntando hacia la posición de equilibrio."
+        },
+        {
+          "texto": "$1 \\text{ oscilaci\\acute{o}n} = 4A$",
+          "explicacion": "En una oscilación completa de ida y vuelta, la partícula recorre una distancia escalar equivalente a cuatro veces la amplitud $A$. Es útil para hallar distancias totales en función del número de ciclos. Ejemplo: Si la amplitud es $A = 3 \\text{ cm}$, en una oscilación el móvil recorre $12 \\text{ cm}$. Si da $5$ oscilaciones, la distancia total recorrida es $60 \\text{ cm}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Parámetros Temporales y Cinemáticos",
+      "puntos": [
+        {
+          "texto": "$T = \\frac{2\\pi}{\\omega}$",
+          "explicacion": "El periodo $T$ es el tiempo de una oscilación completa y se relaciona inversamente con la frecuencia angular $\\omega$. Además, es la inversa de la frecuencia $f$. Ejemplo: Si la frecuencia angular es $\\omega = 4\\pi \\text{ rad/s}$, el periodo del sistema es $T = \\frac{2\\pi}{4\\pi} = 0.5 \\text{ s}$."
+        },
+        {
+          "texto": "$\\omega = \\sqrt{\\frac{K}{m}}$",
+          "explicacion": "La frecuencia angular $\\omega$ (en $\\text{rad/s}$) depende exclusivamente de la constante de rigidez $K$ y de la masa $m$. Conecta las propiedades físicas con el movimiento. Ejemplo: Para una masa $m = 4 \\text{ kg}$ acoplada a un resorte con $K = 100 \\text{ N/m}$, se calcula $\\omega = \\sqrt{\\frac{100}{4}} = \\sqrt{25} = 5 \\text{ rad/s}$."
+        },
+        {
+          "texto": "$V_{m\\acute{a}x} = \\omega A$",
+          "explicacion": "La rapidez máxima se alcanza en la posición de equilibrio ($x = 0$) donde la aceleración es nula. Fundamental para análisis de energía cinética máxima. Ejemplo: Un sistema oscila con $A = 0.5 \\text{ m}$ y $\\omega = 10 \\text{ rad/s}$. Al pasar por el centro, su rapidez será máxima y de valor $V_{m\\acute{a}x} = 10 \\cdot 0.5 = 5.0 \\text{ m/s}$."
+        },
+        {
+          "texto": "$a_{m\\acute{a}x} = \\omega^2 A$",
+          "explicacion": "La aceleración máxima ocurre en los puntos de retorno (elongación máxima $x = A$), justo cuando la velocidad es $0$. Ejemplo: Con $\\omega = 2 \\text{ rad/s}$ y $A = 0.4 \\text{ m}$, evaluamos el extremo de la trayectoria, obteniendo $a_{m\\acute{a}x} = (2)^2 \\cdot 0.4 = 1.6 \\text{ m/s}^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones del Movimiento y Fase Inicial",
+      "puntos": [
+        {
+          "texto": "$X = A \\text{Sen}(\\omega t + \\alpha)$",
+          "explicacion": "Esta es la ecuación general de la posición, donde $\\alpha$ (fase inicial) se define por las condiciones en $t=0$. Se usa para predecir dónde estará el móvil en cualquier instante. Ejemplo: Para $X = 5 \\text{Sen}(\\pi t + \\frac{\\pi}{2}) \\text{ m}$, si queremos la posición en $t=2 \\text{ s}$, evaluamos $X = 5 \\text{Sen}(2\\pi + \\frac{\\pi}{2}) = 5 \\text{ m}$."
+        },
+        {
+          "texto": "$V = \\omega \\sqrt{A^2 - x^2}$",
+          "explicacion": "Fórmula cinemática que permite calcular la velocidad en función de la posición $x$ sin usar el tiempo. Es clave para cruzar datos espaciales con rapidez. Ejemplo: Si $A = 10 \\text{ m}$, $\\omega = 2 \\text{ rad/s}$ y el bloque está en $x = 6 \\text{ m}$. Su rapidez es $V = 2 \\sqrt{10^2 - 6^2} = 2 \\sqrt{64} = 16 \\text{ m/s}$."
+        },
+        {
+          "texto": "$\\text{Inicio P.E.} \\Rightarrow \\alpha = 0$",
+          "explicacion": "Si el objeto comienza su movimiento desde el origen de coordenadas ($x=0$) desplazándose hacia la derecha, su ángulo de fase inicial $\\alpha$ es $0$. Facilita escribir la ecuación de onda rápidamente. Ejemplo: Si $A = 4 \\text{ m}$, $\\omega = 2\\pi \\text{ rad/s}$ y parte del equilibrio, su ecuación es simplemente $X = 4 \\text{Sen}(2\\pi t)$."
+        },
+        {
+          "texto": "$\\text{Inicio en } +A \\Rightarrow \\alpha = \\frac{\\pi}{2}$",
+          "explicacion": "Cuando el sistema es liberado desde su máxima deformación positiva ($x = A$), su fase inicial corresponde a $\\frac{\\pi}{2}$ radianes. Ejemplo: Se estira un resorte $2 \\text{ m}$ y se suelta. Aquí $A = 2 \\text{ m}$ y $\\alpha = 90^\\circ$ o $\\frac{\\pi}{2}$. La ecuación será $X = 2 \\text{Sen}(\\omega t + \\frac{\\pi}{2})$, que por trigonometría es equivalente a $X = 2 \\text{Cos}(\\omega t)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dinámica y Energía del Oscilador Armónico",
+      "puntos": [
+        {
+          "texto": "$E_m = \\frac{1}{2} K A^2$",
+          "explicacion": "En un oscilador ideal (sin fricción), la energía mecánica $E_m$ es constante y es numéricamente igual a la energía potencial elástica en su punto de máxima deformación. Paso fundamental para aplicar conservación de energía. Ejemplo: Un bloque en un resorte de $K = 200 \\text{ N/m}$ oscila con amplitud $A = 0.5 \\text{ m}$. La energía del sistema es $E_m = 0.5 \\cdot 200 \\cdot (0.5)^2 = 100 \\cdot 0.25 = 25 \\text{ J}$."
+        },
+        {
+          "texto": "$\\text{Energ\\acute{\\imath}a Constante} \\Rightarrow E_k + E_{pe}$",
+          "explicacion": "Durante la oscilación, la energía cambia de cinética ($E_k$) a potencial elástica ($E_{pe}$), pero la suma se mantiene. Permite resolver problemas de velocidad por métodos energéticos. Ejemplo: Si $E_m = 50 \\text{ J}$, y en la posición $x = 2 \\text{ m}$ sabemos que la energía potencial elástica es $20 \\text{ J}$, entonces la energía cinética instantánea debe ser $50 - 20 = 30 \\text{ J}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resolución de Problemas Complejos y Casos UNMSM",
+      "puntos": [
+        {
+          "texto": "$\\omega_{p\\acute{e}ndulo} = \\sqrt{\\frac{g}{L}}$",
+          "explicacion": "Un péndulo simple realiza M.A.S. solo para ángulos menores a $10^\\circ$. Su frecuencia angular depende de la gravedad $g$ y la longitud $L$. Regla de examen: a mayor longitud, mayor periodo (más lento oscila). Ejemplo: Péndulo de longitud $L = 2.5 \\text{ m}$, y $g = 10 \\text{ m/s}^2$. $\\omega = \\sqrt{\\frac{10}{2.5}} = \\sqrt{4} = 2 \\text{ rad/s}$. Su periodo será $T = \\frac{2\\pi}{2} = \\pi \\text{ segundos}$."
+        },
+        {
+          "texto": "$K_{serie} = \\frac{K_1 K_2}{K_1 + K_2}$",
+          "explicacion": "Cuando dos o más resortes se ensamblan uno a continuación del otro (en serie), el sistema resultante es más \"suave\" y la constante equivalente disminuye. Paso 1: Aplicar producto sobre suma. Paso 2: Calcular nueva $\\omega$. Ejemplo: Resortes de $100 \\text{ N/m}$ y $400 \\text{ N/m}$ en serie dan un $K_{eq} = \\frac{100 \\cdot 400}{100 + 400} = \\frac{40000}{500} = 80 \\text{ N/m}$."
+        },
+        {
+          "texto": "$K_{paralelo} = K_1 + K_2$",
+          "explicacion": "Si los resortes están en paralelo (ambos soportan la misma masa simultáneamente), el sistema es más rígido y las constantes se suman directamente. Truco: El periodo $T$ será menor. Ejemplo: Dos resortes idénticos de $K = 150 \\text{ N/m}$ sosteniendo un bloque de $3 \\text{ kg}$ en paralelo. $K_{eq} = 150 + 150 = 300 \\text{ N/m}$. Frecuencia $\\omega = \\sqrt{\\frac{300}{3}} = 10 \\text{ rad/s}$."
+        },
+        {
+          "texto": "$V_{x=A/2} = \\frac{\\sqrt{3}}{2} V_{m\\acute{a}x}$",
+          "explicacion": "Pregunta típica de admisión: ¿Cuál es la velocidad cuando el bloque pasa por la mitad de su amplitud? Se demuestra reemplazando $x = \\frac{A}{2}$ en la ecuación $V = \\omega \\sqrt{A^2 - x^2}$. Ejemplo: Si un oscilador tiene una velocidad máxima $V_{m\\acute{a}x} = 20 \\text{ m/s}$ en su paso por el centro, al llegar a la mitad de su recorrido ($x = \\frac{A}{2}$), su velocidad será $V = 10\\sqrt{3} \\text{ m/s}$."
+        }
+      ]
+    }
+  ]
+}

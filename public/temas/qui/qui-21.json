@@ -1,0 +1,111 @@
+{
+  "curso": "Química",
+  "tema": "Estado Gaseoso: Ecuación Universal y Condiciones Normales",
+  "glosario": {
+    "Gas Ideal": "Modelo teórico de gas sin fuerzas intermoleculares.",
+    "Condiciones Normales": "Estado del gas a $1 \\text{ atm}$ y $273 \\text{ K}$.",
+    "Masa Molar": "Masa correspondiente a un mol de sustancia ($\\text{g/mol}$).",
+    "Presión Absoluta": "Suma de la presión manométrica y la presión atmosférica.",
+    "Volumen Molar": "Volumen que ocupa un mol de gas bajo C.N."
+  },
+  "theory": [
+    {
+      "titulo": "Fundamentos y Ecuación Universal",
+      "puntos": [
+        {
+          "texto": "Parámetros de estado ✓ $P, V, T$",
+          "explicacion": "La ecuación universal relaciona las funciones de estado $P$, $V$ y $T$ con la cantidad del gas medida en moles $n$. En problemas de examen de admisión, tu primer paso siempre será identificar estas tres variables antes de operar matemáticamente."
+        },
+        {
+          "texto": "$P \\cdot V = R \\cdot T \\cdot n$",
+          "explicacion": "Conocida en nemotecnia como \"pavo ratón\", se expresa matemáticamente como la igualdad entre $P \\cdot V$ y el producto $R \\cdot T \\cdot n$. Ejemplo: Para hallar el volumen de $2 \\text{ mol}$ de gas a $2 \\text{ atm}$ y $300 \\text{ K}$, planteas $V = \\frac{0.082 \\cdot 300 \\cdot 2}{2}$, obteniendo $24.6 \\text{ L}$."
+        },
+        {
+          "texto": "$T \\in \\text{Kelvin}$",
+          "explicacion": "La temperatura en cualquier ecuación de gases ideales siempre debe ser temperatura absoluta, es decir, expresada en grados Kelvin. La trampa clásica es dar el dato en grados Celsius. Ejemplo: Si el gas está a $7^\\circ\\text{C}$, debes sumar $273$ para obtener $280 \\text{ K}$, tal como en el cálculo del nitrógeno."
+        }
+      ]
+    },
+    {
+      "titulo": "Constante Universal de Gases (R)",
+      "puntos": [
+        {
+          "texto": "$R = 0.082 \\text{ atm}\\cdot\\text{L}/(\\text{mol}\\cdot\\text{K})$",
+          "explicacion": "El valor de la constante $R$ depende exclusivamente de la unidad de presión. Si la presión del sistema se mide en atmósferas ($\\text{atm}$), obligatoriamente usarás $0.082$. Ejemplo: En un gas sometido a $0.82 \\text{ atm}$, usar esta constante simplifica drásticamente el cálculo aritmético."
+        },
+        {
+          "texto": "$R = 62.4 \\text{ mmHg}\\cdot\\text{L}/(\\text{mol}\\cdot\\text{K})$",
+          "explicacion": "Si el problema presenta la presión en milímetros de mercurio ($\\text{mmHg}$) o en $\\text{Torr}$, el valor de la constante asume $62.4$. Es un error frecuente no realizar esta conversión. Ejemplo: Si tienes un gas a $760 \\text{ mmHg}$, aplicas este valor para garantizar que el volumen resultante esté en litros."
+        },
+        {
+          "texto": "$R = 8.314 \\text{ J}/(\\text{mol}\\cdot\\text{K})$",
+          "explicacion": "Este es el valor de $R$ en el Sistema Internacional (SI) y se emplea cuando la presión está en Pascales ($\\text{Pa}$) y el volumen en $\\text{m}^3$. En química preuniversitaria se utiliza mayormente en termodinámica para calcular la energía cinética media de las moléculas gaseosas."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas Derivadas y Aplicaciones",
+      "puntos": [
+        {
+          "texto": "$n = \\frac{m}{\\bar{M}}$",
+          "explicacion": "El número de moles $n$ equivale a la masa del gas dividida por su masa molar $\\bar{M}$. Sustituir esta expresión en la ecuación universal abre la puerta a calcular propiedades intensivas. Ejemplo: Para una muestra de $320 \\text{ g}$ de metano ($CH_4$), donde la masa molar es $16 \\text{ g/mol}$, calculamos $n = 20 \\text{ mol}$."
+        },
+        {
+          "texto": "$P \\cdot \\bar{M} = D \\cdot R \\cdot T$",
+          "explicacion": "Derivación matemática conocida por la nemotecnia \"puma doroteo\", se emplea para conocer directamente la identidad ($\\bar{M}$) y la densidad del gas ($D$). Ejemplo: Para determinar la densidad del $N_2$ ($\\bar{M}=28$) a $0.82 \\text{ atm}$ y $280 \\text{ K}$, despejamos $D = \\frac{0.82 \\cdot 28}{0.082 \\cdot 280}$, resultando en $1 \\text{ g/L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones Normales (C.N.)",
+      "puntos": [
+        {
+          "texto": "Valores C.N. ✓ $1 \\text{ atm}$, $273 \\text{ K}$",
+          "explicacion": "Todo gas se encuentra en condiciones normales cuando su presión se estabiliza en $1 \\text{ atm}$ (o $760 \\text{ mmHg}$) y su temperatura en $0^\\circ\\text{C}$ equivalentes a $273 \\text{ K}$. Si un problema dice \"sometido a C.N.\", te está proporcionando estos dos datos críticos de forma implícita."
+        },
+        {
+          "texto": "$1 \\text{ mol a C.N.} = 22.4 \\text{ L}$",
+          "explicacion": "Se establece rigurosamente que $1 \\text{ mol}$ de cualquier gas ideal en condiciones normales ocupa un volumen molar de $22.4 \\text{ L}$. Esto actúa como un factor de conversión infalible. Ejemplo: Sabiendo que tienes $20 \\text{ mol}$ de metano en C.N., aplicas regla de tres para descubrir que ocuparán $448 \\text{ L}$."
+        },
+        {
+          "texto": "Volumen Molar ✓ $22.4 \\text{ L/mol}$",
+          "explicacion": "El volumen molar es el espacio que ocupa un mol de gas. Al permanecer constantes $P$ y $T$ (en C.N.), el volumen depende solo de la cantidad de materia (Ley de Avogadro). No intentes usar $PV=nRT$ si solo te piden el volumen en C.N. teniendo los moles, pues multiplicar por $22.4 \\text{ L/mol}$ es directo."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes Empíricas y Ecuación General",
+      "puntos": [
+        {
+          "texto": "$P_1 \\cdot V_1 = P_2 \\cdot V_2$",
+          "explicacion": "Conocida como Ley de \"Boyle\", aplica en transformaciones isotérmicas donde la temperatura es constante. En estos casos, la presión es inversamente proporcional al volumen. Ejemplo: Si comprimes un gas ideal reduciendo su volumen a la tercera parte, su presión interna automáticamente se triplicará."
+        },
+        {
+          "texto": "$\\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}$",
+          "explicacion": "Esta es la Ecuación General de los Gases Ideales. Se aplica cuando una misma muestra (masa constante) cambia de un estado $1$ a un estado $2$. Truco UNMSM: Si un recipiente es cerrado y rígido, asume volumen constante y cancela $V_1$ y $V_2$, transformándola en la Ley de Gay-Lussac."
+        }
+      ]
+    },
+    {
+      "titulo": "Metodología y Resolución de Problemas",
+      "puntos": [
+        {
+          "texto": "Paso inicial ✓ Homogeneizar unidades",
+          "explicacion": "Antes de plasmar las fórmulas, verifica estrictamente que $V$ esté en litros ($\\text{L}$), $T$ en Kelvin ($\\text{K}$) y que $P$ comparta el sistema de unidades de $R$. Si no te dan la masa molar, calcúlala sumando los pesos atómicos, por ejemplo para $N_2$ es $2 \\cdot 14 = 28 \\text{ g/mol}$."
+        },
+        {
+          "texto": "Identificar gas ✓ Usar densidad",
+          "explicacion": "Si un problema clásico te pide descubrir de qué gas se trata, tu objetivo matemático es hallar su masa molar ($\\bar{M}$). Para ello, utiliza la derivación $P \\cdot \\bar{M} = D \\cdot R \\cdot T$. Si el cálculo arroja $\\bar{M} = 16$, puedes afirmar con seguridad que se trata del metano ($CH_4$)."
+        },
+        {
+          "texto": "Ley Dalton ✓ Sumar presiones",
+          "explicacion": "En problemas de mezclas gaseosas, analiza cada gas como si ocupara todo el volumen del recipiente. La presión total será la suma de las presiones parciales: $P_T = P_1 + P_2$. Un método avanzado es usar la fracción molar ($X_i$) para hallar la presión parcial rápidamente: $P_i = X_i \\cdot P_T$."
+        },
+        {
+          "texto": "Estequiometría en C.N. ✓ Usar $22.4 \\text{ L}$",
+          "explicacion": "En reacciones químicas, si un gas producto o reactante se encuentra a C.N., evita el uso largo de $PV=nRT$. Usa directamente la relación volumétrica de Avogadro. Ejemplo: Si una combustión genera $44.8 \\text{ L}$ de dióxido de carbono ($CO_2$) a C.N., deduces instantáneamente que se formaron $2 \\text{ mol}$ de gas."
+        }
+      ]
+    }
+  ]
+}

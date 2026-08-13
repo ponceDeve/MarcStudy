@@ -1,0 +1,118 @@
+{
+  "curso": "Química",
+  "tema": "Gases Ideales y Leyes Volumétricas",
+  "glosario": {
+    "E.G.G.I.": "Ecuación general de gases ideales para masa constante.",
+    "Proceso Isotérmico": "Transformación gaseosa realizada a temperatura constante.",
+    "Proceso Isobárico": "Transformación gaseosa donde la presión se mantiene fija.",
+    "Proceso Isócoro": "Transformación de un gas a volumen constante.",
+    "Condiciones Normales": "Estado estandarizado a $1 \\text{ atm}$ y $273 \\text{ K}$.",
+    "Gas Ideal": "Modelo teórico de gas sin fuerzas de atracción intermolecular.",
+    "Fracción Molar": "Relación entre moles de un componente y moles totales.",
+    "Efusión": "Paso de un gas a través de un orificio pequeño."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación Universal de Gases Ideales",
+      "puntos": [
+        {
+          "texto": "Ecuación universal: $P \\cdot V = R \\cdot T \\cdot n$",
+          "explicacion": "Esta es la ecuación fundamental del estado gaseoso ideal, conocida nemotécnicamente como \"Pavo Ratón\". Se utiliza para definir el estado de un gas en un instante único y aislar cualquiera de sus variables. Ejemplo numérico: Para hallar las moles de $O_2$ en un recipiente de $41 \\text{ L}$ a $127 ^\\circ\\text{C}$ y $4 \\text{ atm}$, primero pasamos a Kelvin ($400 \\text{ K}$). Luego aplicamos $n = \\frac{4 \\text{ atm} \\cdot 41 \\text{ L}}{0.082 \\frac{\\text{atm} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}} \\cdot 400 \\text{ K}}$, lo que resulta en $n = 5 \\text{ mol}$."
+        },
+        {
+          "texto": "Constante en atm: $R = 0.082 \\frac{\\text{atm} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}}$",
+          "explicacion": "El valor de la constante universal $R$ depende estrictamente de las unidades de presión en el problema. Este valor numérico se usa de forma exclusiva cuando la presión está dada en atmósferas. Ejemplo numérico: Si un problema de \"UNMSM\" indica que un globo soporta $2 \\text{ atm}$ a $300 \\text{ K}$ ocupando $8.2 \\text{ L}$, debes obligatoriamente usar $R = 0.082$. Resolviendo: $n = \\frac{2 \\cdot 8.2}{0.082 \\cdot 300} = \\frac{16.4}{24.6} = 0.66 \\text{ mol}$."
+        },
+        {
+          "texto": "Constante en mmHg: $R = 62.4 \\frac{\\text{mmHg} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}}$",
+          "explicacion": "Si el examen proporciona la presión en milímetros de mercurio (o Torricelli), usar este valor te evita perder tiempo convirtiendo a atmósferas. Ejemplo numérico: Un gas ideal a $624 \\text{ mmHg}$ y $300 \\text{ K}$ ocupa $10 \\text{ L}$. Para calcular las moles aplicamos $n = \\frac{624 \\cdot 10}{62.4 \\cdot 300}$. Resolviendo directamente sin conversiones extras, obtenemos $n = \\frac{6240}{18720} = 0.33 \\text{ mol}$."
+        },
+        {
+          "texto": "Temperatura absoluta: $T = ^\\circ\\text{C} + 273$",
+          "explicacion": "En el estudio de gases, la temperatura siempre debe trabajarse en la escala absoluta de \"Kelvin\". Una trampa clásica es dar datos y pedir respuestas en Celsius para provocar errores operativos. Ejemplo numérico: Un cilindro metálico contiene metano a $27 ^\\circ\\text{C}$. Su temperatura real para cualquier fórmula química será $T = 27 + 273 = 300 \\text{ K}$. Si luego dicen que la temperatura absoluta se duplica, debe subir a $600 \\text{ K}$, no a $54 ^\\circ\\text{C}$."
+        },
+        {
+          "texto": "Cálculo de moles: $n = \\frac{m}{\\overline{M}}$",
+          "explicacion": "Permite relacionar la masa en gramos $m$ con la masa molar $\\overline{M}$ del gas. Es vital cuando los ejercicios te piden hallar peso en vez de volumen o moles. Ejemplo numérico: Calcular el volumen de $320 \\text{ g}$ de gas metano $CH_4$ ($\\overline{M} = 16 \\text{ g/mol}$) a $2 \\text{ atm}$ y $400 \\text{ K}$. Primero hallamos moles: $n = \\frac{320}{16} = 20 \\text{ mol}$. Usando la ecuación universal: $V = \\frac{20 \\cdot 0.082 \\cdot 400}{2} = 328 \\text{ L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación General de los Gases (E.G.G.I)",
+      "puntos": [
+        {
+          "texto": "Ley general: \\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}",
+          "explicacion": "La \"E.G.G.I.\" se aplica cuando una masa fija de gas evoluciona de un estado inicial (1) a uno final (2) sin fugas ni adiciones. Sirve para analizar procesos donde varían múltiples condiciones a la vez. Ejemplo numérico: Un tanque tiene gas a $1 \\text{ atm}$ y $300 \\text{ K}$ ocupando $10 \\text{ L}$. Si se comprime a $5 \\text{ L}$ y se calienta a $600 \\text{ K}$, calculamos la presión final. Reemplazamos: $\\frac{1 \\cdot 10}{300} = \\frac{P_2 \\cdot 5}{600}$. Despejando $P_2 = \\frac{10 \\cdot 600}{5 \\cdot 300} = 4 \\text{ atm}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Procesos Restringidos y Leyes Empíricas",
+      "puntos": [
+        {
+          "texto": "Ley de Boyle: P_1 \\cdot V_1 = P_2 \\cdot V_2",
+          "explicacion": "Describe un proceso \"isotérmico\" donde la temperatura se mantiene constante, demostrando que la presión y el volumen son inversamente proporcionales. Truco de examen: si el texto dice que el proceso es \"lento\", asume temperatura constante. Ejemplo numérico: Un globo con $2 \\text{ L}$ de aire a $1 \\text{ atm}$ es aplastado isotérmicamente hasta reducirse a $0.5 \\text{ L}$. Aplicamos la ley: $1 \\cdot 2 = P_2 \\cdot 0.5$, de donde deducimos que la nueva presión será $P_2 = 4 \\text{ atm}$."
+        },
+        {
+          "texto": "Ley de Charles: \\frac{V_1}{T_1} = \\frac{V_2}{T_2}",
+          "explicacion": "Aplica para un proceso \"isobárico\" (presión constante). El volumen de una masa de gas es directamente proporcional a su temperatura absoluta. Un indicio clásico es mencionar un \"émbolo libre\" o móvil. Ejemplo numérico: Un cilindro con émbolo móvil encierra $300 \\text{ mL}$ a $300 \\text{ K}$. Si calentamos el gas hasta $400 \\text{ K}$, su volumen será $V_2$. Aplicamos $\\frac{300}{300} = \\frac{V_2}{400}$. El resultado es una expansión hasta $V_2 = 400 \\text{ mL}$."
+        },
+        {
+          "texto": "Ley de Gay-Lussac: \\frac{P_1}{T_1} = \\frac{P_2}{T_2}",
+          "explicacion": "Modela un proceso \"isócoro\" (volumen constante), muy común en recipientes rígidos de acero o vidrio hermético. Muestra que al subir la temperatura, la presión aumenta proporcionalmente. Ejemplo numérico: Una botella indeformable tiene gas a $2 \\text{ atm}$ y $200 \\text{ K}$. Si la echamos al fuego y llega a $500 \\text{ K}$, hallamos la presión interna aplicando $\\frac{2}{200} = \\frac{P_2}{500}$. Despejando, $P_2 = \\frac{1000}{200} = 5 \\text{ atm}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Densidad y Masa Molar de un Gas",
+      "puntos": [
+        {
+          "texto": "Fórmula de densidad: P \\cdot \\overline{M} = D \\cdot R \\cdot T",
+          "explicacion": "Nemotécnicamente conocida como \"Puma Doroteo\", esta variación de la ley ideal relaciona de forma directa la presión, masa molar $\\overline{M}$ y densidad $D$ del gas. Es muy útil cuando no se proporciona ni masa ni volumen. Ejemplo numérico: Determinar la densidad del gas $O_2$ ($\\overline{M} = 32 \\text{ g/mol}$) a $2 \\text{ atm}$ y $300 \\text{ K}$. Aplicamos la fórmula: $2 \\cdot 32 = D \\cdot 0.082 \\cdot 300$. Resolviendo: $64 = D \\cdot 24.6$, obtenemos una densidad $D = 2.60 \\text{ g/L}$."
+        },
+        {
+          "texto": "Variación de densidad: \\frac{D_1 \\cdot T_1}{P_1} = \\frac{D_2 \\cdot T_2}{P_2}",
+          "explicacion": "Cuando el mismo gas experimenta un cambio de estado, su masa molar constante permite igualar las relaciones entre densidad, temperatura y presión. Ejemplo numérico: Un gas a $1 \\text{ atm}$ y $300 \\text{ K}$ tiene densidad de $1.5 \\text{ g/L}$. Si la presión sube a $4 \\text{ atm}$ y la temperatura a $600 \\text{ K}$, calculamos la nueva densidad. $\\frac{1.5 \\cdot 300}{1} = \\frac{D_2 \\cdot 600}{4}$. Simplificando: $450 = D_2 \\cdot 150 \\Rightarrow D_2 = 3 \\text{ g/L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones Normales (C.N.) y Volumen Molar",
+      "puntos": [
+        {
+          "texto": "Presión en C.N.: P = 1 \\text{ atm}",
+          "explicacion": "Las \"Condiciones Normales\" asumen implícitamente valores definidos que el problema no dictará directamente. Si un texto dice \"gas sometido a C.N.\", la presión del sistema es automáticamente estandarizada. Este valor corresponde a nivel del mar y se puede usar como $760 \\text{ mmHg}$ si conviene más para calcular. Identificar esta pista ahorra datos faltantes y asegura un puntaje directo en preguntas teóricas."
+        },
+        {
+          "texto": "Temperatura en C.N.: T = 273 \\text{ K}",
+          "explicacion": "En conjunto con la presión, la temperatura bajo \"Condiciones Normales\" es siempre de $0 ^\\circ\\text{C}$, equivalente al valor absoluto requerido por las fórmulas termodinámicas. Ejemplo numérico: Hallar la densidad del gas Helio $He$ ($\\overline{M} = 4 \\text{ g/mol}$) puro en \"C.N.\". Usando los valores fijos, aplicamos $1 \\cdot 4 = D \\cdot 0.082 \\cdot 273$, lo que genera $4 = D \\cdot 22.4$. Despejamos la densidad: $D = 0.178 \\text{ g/L}$."
+        },
+        {
+          "texto": "Volumen molar estandar: V_{molar} = 22.4 \\text{ L}",
+          "explicacion": "Indica que $1 \\text{ mol}$ de cualquier gas ideal en \"C.N.\" ocupará sistemáticamente el mismo volumen. Es el atajo principal para ejercicios de estequiometría de gases en admisión. Ejemplo numérico: Se pide calcular el volumen que ocuparán $88 \\text{ g}$ de gas carbónico $CO_2$ ($\\overline{M} = 44 \\text{ g/mol}$) en \"C.N.\". Primero dividimos la masa entre masa molar: $n = \\frac{88}{44} = 2 \\text{ mol}$. Si un mol ocupa $22.4 \\text{ L}$, el volumen final será $V = 2 \\cdot 22.4 \\text{ L} = 44.8 \\text{ L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Mezcla de Gases y Dinámica",
+      "puntos": [
+        {
+          "texto": "Ley de Dalton: P_{total} = \\sum P_i",
+          "explicacion": "La presión total de una mezcla gaseosa es igual a la suma de las presiones parciales individuales, actuando como si cada gas estuviera solo en el recipiente. Ejemplo numérico: En un tanque de buceo cerrado, se mezclan tres gases puros que por separado ejercerían: $O_2$ ($2 \\text{ atm}$), $N_2$ ($5 \\text{ atm}$) y $He$ ($1 \\text{ atm}$). La presión final reportada por el manómetro será simplemente $P_{total} = 2 + 5 + 1 = 8 \\text{ atm}$."
+        },
+        {
+          "texto": "Presión parcial: P_i = X_i \\cdot P_{total}",
+          "explicacion": "Para hallar la presión individual de un solo gas en una mezcla, se multiplica la presión total por la fracción molar $X_i$ del gas específico. Ejemplo numérico: Un balón a presión total de $10 \\text{ atm}$ encierra una mezcla con $2 \\text{ mol}$ de Helio y $3 \\text{ mol}$ de Argón. Totalizamos $5 \\text{ mol}$. La fracción del Helio es $X_{He} = \\frac{2}{5} = 0.4$. Su presión parcial dentro del balón será $P_{He} = 0.4 \\cdot 10 \\text{ atm} = 4 \\text{ atm}$."
+        },
+        {
+          "texto": "Ley de Graham: \\frac{v_1}{v_2} = \\sqrt{\\frac{\\overline{M}_2}{\\overline{M}_1}}",
+          "explicacion": "Establece que las velocidades de difusión y efusión de los gases son inversamente proporcionales a la raíz cuadrada de sus masas molares. Un gas ligero viaja más rápido que uno pesado. Ejemplo numérico: Comparar la velocidad del $H_2$ ($\\overline{M} = 2 \\text{ g/mol}$) contra el $O_2$ ($\\overline{M} = 32 \\text{ g/mol}$). Calculamos: $\\frac{v_{H2}}{v_{O2}} = \\sqrt{\\frac{32}{2}} = \\sqrt{16} = 4$. Concluimos que el gas de hidrógeno difunde $4$ veces más rápido."
+        },
+        {
+          "texto": "Mezcla por válvula: n_{final} = \\sum n_i",
+          "explicacion": "Problema nivel avanzado \"UNMSM\": Cuando dos balones separados a distinta presión se conectan abriendo una válvula, los moles se conservan y la temperatura suele ser constante. Derivación útil: $P_{eq} \\cdot V_{total} = P_1 \\cdot V_1 + P_2 \\cdot V_2$. Ejemplo numérico: Balón A ($2 \\text{ L}$, $3 \\text{ atm}$) se conecta a Balón B ($3 \\text{ L}$, $8 \\text{ atm}$). Al abrirse: $P_{eq} \\cdot (2+3) = 3 \\cdot 2 + 8 \\cdot 3$. Resolvemos: $5 \\cdot P_{eq} = 6 + 24 \\Rightarrow P_{eq} = 6 \\text{ atm}$."
+        }
+      ]
+    }
+  ]
+}
