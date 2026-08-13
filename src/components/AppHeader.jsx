@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useTheme } from "../hooks/useTheme";
 
-// Header compacto compartido entre el inicio de Mi Estudio, Pomodoro y
-// Repaso. A diferencia del TopBar de dentro de un tema, este NO tiene
-// Niveles, Timer ni Guardar — solo navegación entre páginas + buscador.
 export default function AppHeader({
   onAbrirBuscador,
   showHome = false,
@@ -24,12 +21,9 @@ export default function AppHeader({
       : []),
     { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
     { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: "/repaso" },
-    ...(onEditarHorario
-      ? [{ title: "Editar horario", label: "Editar", fullLabel: "Editar horario", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
-      : []),
+    { title: "Editar horario", label: "Editar", fullLabel: "Editar horario", icon: "fa-solid fa-pen", to: "/editar", onClick: onEditarHorario },
   ];
 
-  // Renderizador para los botones de la barra superior (usa nombre corto 'label')
   function renderBoton(b, cls, closeFn = () => {}) {
     const content = (
       <>
@@ -43,7 +37,7 @@ export default function AppHeader({
     };
     if (b.to) {
       return (
-        <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={closeFn}>
+        <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={handleClick}>
           {content}
         </Link>
       );
@@ -55,7 +49,6 @@ export default function AppHeader({
     );
   }
 
-  // Componente reutilizable para el panel lateral
   const SideDrawer = ({ title, isOpen, onClose, children }) => (
     <div
       className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
@@ -76,7 +69,6 @@ export default function AppHeader({
     </div>
   );
 
-  // Renderizador para las filas del panel lateral (usa nombre largo 'fullLabel')
   const renderFila = (b, closeFn = () => {}) => {
     const content = (
       <>
@@ -91,7 +83,7 @@ export default function AppHeader({
     };
 
     return b.to ? (
-      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>
+      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={handleClick}>{content}</Link>
     ) : (
       <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
     );

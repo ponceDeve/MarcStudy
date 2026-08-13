@@ -25,7 +25,6 @@ import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
 import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import ScheduleSetup from "./ScheduleSetup";
-import ScheduleEditor from "./ScheduleEditor";
 
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
@@ -120,7 +119,6 @@ export default function HorarioPage() {
 
   const [welcomeSeen, setWelcomeSeen] = useLocalStorage("horario_welcome_seen", false);
   const [setupOpen, setSetupOpen] = useState(false);
-  const [editorOpen, setEditorOpen] = useState(false);
 
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
   const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
@@ -133,7 +131,6 @@ export default function HorarioPage() {
   const alarmRef = useRef(null);
 
   const courses = horario[selectedDay] || [];
-  const diasConfigurados = DIAS_SEMANA.filter((d) => horario[d] && horario[d].length > 0);
   const activeCourse =
     activeCourseIdx !== null ? courses[activeCourseIdx] : null;
   const activeTasks = useMemo(
@@ -200,19 +197,17 @@ export default function HorarioPage() {
     pomodoro.pausar();
   }
 
-  // NUEVO: Atajo global de teclado para iniciar/pausar con la barra espaciadora
+  // Atajo global de teclado para iniciar/pausar con la barra espaciadora
   useEffect(() => {
     function handleGlobalKeyDown(e) {
-      // Evitar que salte la alerta o accione si hay modales abiertos
-      if (searchOpen || setupOpen || editorOpen || eligiendoTemaIdx !== null || cursoRapidoDia || temaModalOpen || courseCompleteOpen) return;
+      if (searchOpen || setupOpen || eligiendoTemaIdx !== null || cursoRapidoDia || temaModalOpen || courseCompleteOpen) return;
 
       const activeTag = document.activeElement ? document.activeElement.tagName : "";
       
-      // Ignorar si el usuario está escribiendo o el foco ya está en un botón
       if (["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(activeTag)) return;
 
       if (e.code === "Space") {
-        e.preventDefault(); // Evita que la página haga scroll
+        e.preventDefault();
         if (isRunning) {
           pausarConSync();
         } else if (activeCourse || manualBreak) {
@@ -223,16 +218,8 @@ export default function HorarioPage() {
 
     window.addEventListener("keydown", handleGlobalKeyDown);
     return () => window.removeEventListener("keydown", handleGlobalKeyDown);
-  }, [isRunning, activeCourse, manualBreak, searchOpen, setupOpen, editorOpen, eligiendoTemaIdx, cursoRapidoDia, temaModalOpen, courseCompleteOpen]);
+  }, [isRunning, activeCourse, manualBreak, searchOpen, setupOpen, eligiendoTemaIdx, cursoRapidoDia, temaModalOpen, courseCompleteOpen]);
 
-  // Antes esta función nunca se llamaba (se perdió su conexión al migrar
-  // el cronómetro a PomodoroContext), así que ningún pomodoro se
-  // marcaba como completado. Ahora el AVANCE REAL del progreso ya pasa
-  // en PomodoroContext (tick()) apenas el tiempo llega a 0, sin importar
-  // qué pantalla esté montada. Esta función se registra como callback
-  // (más abajo) solo para reaccionar EN CASO de que el usuario siga
-  // viendo esta pantalla: sincroniza el estado local, suena la alarma y
-  // muestra el aviso de curso completado si corresponde.
   function handleTaskComplete({ day, subject, completado } = {}) {
     limpiarPomodoroCompartido();
 
@@ -244,15 +231,10 @@ export default function HorarioPage() {
     }
 
     if (!subject) {
-      // No era un pomodoro de curso (fue un descanso manual desde el
-      // botón suelto) — no hay progreso que tocar.
       setManualBreak(null);
       return;
     }
 
-    // El progreso ya quedó guardado en localStorage desde
-    // PomodoroContext; acá solo sincronizamos el estado local para que
-    // se refleje sin necesidad de recargar la página.
     setProgress(leerProgresoHorario());
 
     if (completado) {
@@ -262,18 +244,12 @@ export default function HorarioPage() {
       return;
     }
 
-    // Si seguimos viendo el mismo curso/día que acaba de avanzar,
-    // pasamos directo a la siguiente tarea (descanso o pomodoro).
     if (activeCourse && activeCourse.subject === subject && selectedDay === day) {
       const idx = getTaskIndex(day, subject);
       if (activeTasks[idx]) reset(activeTasks[idx].duration);
     }
   }
 
-  // Registra handleTaskComplete en el cronómetro global. Sin dependencias
-  // para que siempre quede la versión más reciente (con el activeCourse
-  // y selectedDay actuales) — registrarOnComplete solo reemplaza una
-  // referencia, así que hacerlo en cada render es barato.
   useEffect(() => {
     pomodoro.registrarOnComplete(handleTaskComplete);
     return () => pomodoro.registrarOnComplete(null);
@@ -295,8 +271,6 @@ export default function HorarioPage() {
     setTemaSeleccionadoTmp(null);
   }
 
-  // Solo marca el tema tocado, todavía no lo aplica — hace falta
-  // presionar "Aceptar" para confirmarlo.
   function marcarTemaTmp(tema) {
     setTemaSeleccionadoTmp(tema);
   }
@@ -434,7 +408,7 @@ export default function HorarioPage() {
       <AppHeader
         showHome
         onAbrirBuscador={() => setSearchOpen(true)}
-        onEditarHorario={() => setEditorOpen(true)}
+        onEditarHorario={() => navigate("/editar")}
       />
 
       <main className="horario__main">
@@ -575,7 +549,6 @@ export default function HorarioPage() {
                       tabIndex={isComplete ? -1 : 0}
                       onClick={() => !isComplete && pedirTemaYAbrirCurso(idx)}
                       onKeyDown={(e) => {
-                        // NUEVO: Permite abrir el curso usando Enter o Espacio
                         if (!isComplete && (e.key === "Enter" || e.key === " ")) {
                           e.preventDefault();
                           pedirTemaYAbrirCurso(idx);
@@ -891,23 +864,6 @@ export default function HorarioPage() {
         onComplete={terminarSetup}
         onCancel={null}
       />
-
-      {editorOpen && (
-        <ScheduleEditor
-          open={editorOpen}
-          horarioInicial={horario}
-          onGuardar={(nuevoHorario) => {
-            guardarHorario(nuevoHorario);
-            setHorario(nuevoHorario);
-          }}
-          onCerrar={() => {
-            setEditorOpen(false);
-            const configurados = DIAS_SEMANA.filter((d) => horario[d] && horario[d].length > 0);
-            setSelectedDay((prev) => (horario[prev] ? prev : configurados[0] || "lunes"));
-            setActiveCourseIdx(null);
-          }}
-        />
-      )}
     </div>
   );
 }

@@ -1,25 +1,33 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   DIAS_SEMANA,
   DIA_LABELS,
   MAX_CURSOS_POR_DIA,
   LIMITE_NOMBRE_CURSO,
+  leerHorario,
+  guardarHorario,
 } from "../../lib/scheduleStorage";
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
+import AppHeader from "../../components/AppHeader"; // <-- IMPORTAR EL HEADER
 
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
-export default function ScheduleEditor({
-  open,
-  horarioInicial,
-  onGuardar,
-  onCerrar,
-}) {
+export default function ScheduleEditor() {
   const navigate = useNavigate();
-  const [horario, setHorario] = useState({});
-  const [diaActivo, setDiaActivo] = useState("lunes");
+  const location = useLocation();
+
+  // Cargar horario directamente desde storage
+  const [horarioInicial, setHorarioInicial] = useState(() => leerHorario() || {});
+  const [horario, setHorario] = useState(() => leerHorario() || {});
+  const [diaActivo, setDiaActivo] = useState(() => {
+    const hor = leerHorario() || {};
+    const configurados = DIAS_SEMANA.filter(
+      (d) => hor[d] && hor[d].length > 0
+    );
+    return configurados[0] || "lunes";
+  });
 
   const [showForm, setShowForm] = useState(false);
   const [editingIdx, setEditingIdx] = useState(null);
@@ -28,7 +36,7 @@ export default function ScheduleEditor({
   const [pomodoros, setPomodoros] = useState(4);
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
   const [confirmandoBorrar, setConfirmandoBorrar] = useState(null);
-  
+
   const [salidaPendiente, setSalidaPendiente] = useState(null);
 
   const hayCambiosSinGuardar =
@@ -38,31 +46,30 @@ export default function ScheduleEditor({
     if (hayCambiosSinGuardar) {
       setSalidaPendiente("cerrar");
     } else {
-      onCerrar();
+      navigate("/pomodoro");
     }
   }
 
-  // CORRECCIÓN: Ejecutamos el cierre de esta pantalla y la navegación a la vez
   function intentarIrA(ruta) {
     if (hayCambiosSinGuardar) {
       setSalidaPendiente(ruta);
     } else {
-      onCerrar(); // Le avisa al componente padre que oculte el editor
-      navigate(ruta); // Carga la nueva pantalla
+      navigate(ruta);
     }
   }
 
-  // CORRECCIÓN: Aplicamos lo mismo al resolver la salida si el usuario decide guardar/descartar
   function resolverSalida(guardarAntes) {
-    if (guardarAntes) onGuardar(horario);
-    
-    if (salidaPendiente === "cerrar") {
-      onCerrar();
-    } else if (salidaPendiente) {
-      onCerrar();
-      navigate(salidaPendiente);
+    if (guardarAntes) {
+      guardarHorario(horario);
     }
+
+    const destino =
+      salidaPendiente === "cerrar" || !salidaPendiente
+        ? "/pomodoro"
+        : salidaPendiente;
+
     setSalidaPendiente(null);
+    navigate(destino);
   }
 
   const cursosDelDia = horario[diaActivo] || [];
@@ -70,24 +77,6 @@ export default function ScheduleEditor({
   const puedeAgregarMas = cursosDelDia.length < MAX_CURSOS_POR_DIA;
 
   useEffect(() => {
-    if (open) {
-      setHorario(JSON.parse(JSON.stringify(horarioInicial || {})));
-      const configurados = DIAS_SEMANA.filter(
-        (d) => horarioInicial[d] && horarioInicial[d].length > 0
-      );
-      setDiaActivo(configurados[0] || "lunes");
-      setShowForm(false);
-      setEditingIdx(null);
-      setNombreCurso("");
-      setPomodoros(4);
-      setSugerenciaActiva(-1);
-      setConfirmandoBorrar(null);
-    }
-  }, [open, horarioInicial]);
-
-  useEffect(() => {
-    if (!open) return;
-
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         e.preventDefault();
@@ -105,8 +94,9 @@ export default function ScheduleEditor({
 
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
         e.preventDefault();
-        onGuardar(horario);
-        onCerrar();
+        guardarHorario(horario);
+        setHorarioInicial(horario);
+        navigate("/pomodoro");
         return;
       }
 
@@ -122,7 +112,8 @@ export default function ScheduleEditor({
         e.preventDefault();
         const currentIndex = DIAS_SEMANA.indexOf(diaActivo);
         if (e.key === "ArrowLeft") {
-          const prevIndex = (currentIndex - 1 + DIAS_SEMANA.length) % DIAS_SEMANA.length;
+          const prevIndex =
+            (currentIndex - 1 + DIAS_SEMANA.length) % DIAS_SEMANA.length;
           cambiarDia(DIAS_SEMANA[prevIndex]);
         } else {
           const nextIndex = (currentIndex + 1) % DIAS_SEMANA.length;
@@ -141,19 +132,14 @@ export default function ScheduleEditor({
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [
-    open,
     showForm,
     horario,
     diaActivo,
     puedeAgregarMas,
-    onGuardar,
-    onCerrar,
     confirmandoBorrar,
     salidaPendiente,
     hayCambiosSinGuardar,
   ]);
-
-  if (!open) return null;
 
   const sugerencias = nombreCurso.trim()
     ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
@@ -241,260 +227,265 @@ export default function ScheduleEditor({
   }
 
   return (
-    <div className="editor-page">
-      <div className="editor-card">
-        <div className="editor-header">
-          <h2 className="editor-titulo">Editar Horario</h2>
-          <div className="editor-header-nav">
-            <button className="editor-nav-btn" onClick={() => intentarIrA("/")} title="Ir a Mi Estudio">
-              <i className="fa-solid fa-house" />
-            </button>
-            
-            {/* CORRECCIÓN: Botón configurado para apuntar a la página de pomodoro y ocultar el editor */}
-            <button className="editor-nav-btn" onClick={() => intentarIrA("/pomodoro")} title="Ir al Pomodoro">
-              <i className="fa-solid fa-calendar-alt" />
-            </button>
+    <>
+      {/* AGREGADO EL HEADER AQUÍ */}
+      <AppHeader showHome />
 
-            <button className="editor-nav-btn" onClick={() => intentarIrA("/repaso")} title="Ir a Mis Repasos">
-              <i className="fa-solid fa-brain" />
-            </button>
-            <button 
-              className="editor-cerrar" 
-              onClick={intentarCerrar} 
-              title="Cerrar (Esc)"
-              aria-label="Cerrar"
-            >
-              <i className="fa-solid fa-times" />
-            </button>
+      <div className="editor-page">
+        <div className="editor-card">
+          <div className="editor-header">
+            <h2 className="editor-titulo">Editar Horario</h2>
+            <div className="editor-header-nav">
+              <button className="editor-nav-btn" onClick={() => intentarIrA("/")} title="Ir a Mi Estudio">
+                <i className="fa-solid fa-house" />
+              </button>
+              
+              <button className="editor-nav-btn" onClick={() => intentarIrA("/pomodoro")} title="Ir al Pomodoro">
+                <i className="fa-solid fa-calendar-alt" />
+              </button>
+
+              <button className="editor-nav-btn" onClick={() => intentarIrA("/repaso")} title="Ir a Mis Repasos">
+                <i className="fa-solid fa-brain" />
+              </button>
+              <button 
+                className="editor-cerrar" 
+                onClick={intentarCerrar} 
+                title="Cerrar (Esc)"
+                aria-label="Cerrar"
+              >
+                <i className="fa-solid fa-times" />
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="editor-tabs">
-          {DIAS_SEMANA.map((dia) => (
-            <button
-              key={dia}
-              className={`editor-tab-btn ${diaActivo === dia ? "is-active" : ""}`}
-              onClick={() => cambiarDia(dia)}
-              title={`Ver ${DIA_LABELS[dia]} (Alt + ⬅️/➡️)`}
-            >
-              {DIA_LABELS[dia].substring(0, 3)}
-            </button>
-          ))}
-        </div>
+          <div className="editor-tabs">
+            {DIAS_SEMANA.map((dia) => (
+              <button
+                key={dia}
+                className={`editor-tab-btn ${diaActivo === dia ? "is-active" : ""}`}
+                onClick={() => cambiarDia(dia)}
+                title={`Ver ${DIA_LABELS[dia]} (Alt + ⬅️/➡️)`}
+              >
+                {DIA_LABELS[dia].substring(0, 3)}
+              </button>
+            ))}
+          </div>
 
-        <div className="editor-body">
-          <h3 className="editor-seccion-titulo">Cursos para el {DIA_LABELS[diaActivo]}</h3>
+          <div className="editor-body">
+            <h3 className="editor-seccion-titulo">Cursos para el {DIA_LABELS[diaActivo]}</h3>
 
-          {!showForm && (
-            <>
-              {cursosDelDia.length === 0 ? (
-                <p className="editor-texto-vacio">
-                  Día libre. No hay cursos agregados.
-                </p>
-              ) : (
-                <div className="editor-lista">
-                  {cursosDelDia.map((c, i) => (
-                    <div key={i} className="editor-item">
-                      <div className="editor-item-info">
-                        <span className="editor-item-nombre">{c.subject}</span>
-                        <span className="editor-item-pomo">{c.pomodoros} pomodoros ({(c.pomodoros * 30)} min)</span>
+            {!showForm && (
+              <>
+                {cursosDelDia.length === 0 ? (
+                  <p className="editor-texto-vacio">
+                    Día libre. No hay cursos agregados.
+                  </p>
+                ) : (
+                  <div className="editor-lista">
+                    {cursosDelDia.map((c, i) => (
+                      <div key={i} className="editor-item">
+                        <div className="editor-item-info">
+                          <span className="editor-item-nombre">{c.subject}</span>
+                          <span className="editor-item-pomo">{c.pomodoros} pomodoros ({(c.pomodoros * 30)} min)</span>
+                        </div>
+                        <div className="editor-acciones-item">
+                          <button
+                            className="editor-icon-btn"
+                            onClick={() => abrirFormulario(i)}
+                            title="Editar curso"
+                          >
+                            <i className="fa-solid fa-pen" />
+                          </button>
+                          <button
+                            className="editor-icon-btn is-danger"
+                            onClick={() => setConfirmandoBorrar(i)}
+                            title="Eliminar curso"
+                          >
+                            <i className="fa-solid fa-trash-can" />
+                          </button>
+                        </div>
                       </div>
-                      <div className="editor-acciones-item">
-                        <button
-                          className="editor-icon-btn"
-                          onClick={() => abrirFormulario(i)}
-                          title="Editar curso"
-                        >
-                          <i className="fa-solid fa-pen" />
-                        </button>
-                        <button
-                          className="editor-icon-btn is-danger"
-                          onClick={() => setConfirmandoBorrar(i)}
-                          title="Eliminar curso"
-                        >
-                          <i className="fa-solid fa-trash-can" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-
-          {showForm && (
-            <div className="editor-add-box">
-              <h4 className="editor-form-titulo">
-                {editingIdx !== null ? "Editar curso" : "Agregar un curso nuevo"}
-              </h4>
-
-              <div className="editor-input-wrap">
-                <input autoComplete="off"
-                  autoFocus
-                  value={nombreCurso}
-                  onChange={(e) => {
-                    setNombreCurso(e.target.value);
-                    setSugerenciaActiva(-1);
-                  }}
-                  onKeyDown={handleInputKeyDown}
-                  placeholder="Escribe el nombre..."
-                  className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
-                />
-                {sugerencias.length > 0 && !coincideExacto && (
-                  <div className="editor-sugerencias">
-                    {sugerencias.map((c, index) => (
-                      <button
-                        key={c.nombre}
-                        className={`editor-sugerencia-item ${sugerenciaActiva === index ? "is-active" : ""}`}
-                        onClick={() => {
-                          setNombreCurso(c.nombre);
-                          setSugerenciaActiva(-1);
-                        }}
-                      >
-                        {c.nombre}
-                      </button>
                     ))}
                   </div>
                 )}
-              </div>
+              </>
+            )}
 
-              <div className="editor-feedback-container">
-                {nombreCurso.trim() && sugerencias.length === 0 && !coincideExacto ? (
-                  <p className="editor-error-msg">
-                    Curso no encontrado
+            {showForm && (
+              <div className="editor-add-box">
+                <h4 className="editor-form-titulo">
+                  {editingIdx !== null ? "Editar curso" : "Agregar un curso nuevo"}
+                </h4>
+
+                <div className="editor-input-wrap">
+                  <input
+                    autoComplete="off"
+                    autoFocus
+                    value={nombreCurso}
+                    onChange={(e) => {
+                      setNombreCurso(e.target.value);
+                      setSugerenciaActiva(-1);
+                    }}
+                    onKeyDown={handleInputKeyDown}
+                    placeholder="Escribe el nombre..."
+                    className={`editor-input ${nombreExcedido ? "is-error" : ""}`}
+                  />
+                  {sugerencias.length > 0 && !coincideExacto && (
+                    <div className="editor-sugerencias">
+                      {sugerencias.map((c, index) => (
+                        <button
+                          key={c.nombre}
+                          className={`editor-sugerencia-item ${sugerenciaActiva === index ? "is-active" : ""}`}
+                          onClick={() => {
+                            setNombreCurso(c.nombre);
+                            setSugerenciaActiva(-1);
+                          }}
+                        >
+                          {c.nombre}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="editor-feedback-container">
+                  {nombreCurso.trim() && sugerencias.length === 0 && !coincideExacto ? (
+                    <p className="editor-error-msg">
+                      Curso no encontrado
+                    </p>
+                  ) : (
+                    <span />
+                  )}
+                  <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
+                    {nombreCurso.length}/{LIMITE_NOMBRE_CURSO}
                   </p>
-                ) : (
-                  <span />
-                )}
-                <p className={`editor-char-count ${nombreExcedido ? "is-error" : ""}`}>
-                  {nombreCurso.length}/{LIMITE_NOMBRE_CURSO}
+                </div>
+
+                <p className="editor-pomo-label">
+                  Cantidad de pomodoros
                 </p>
-              </div>
 
-              <p className="editor-pomo-label">
-                Cantidad de pomodoros (Usa Alt + 1-6)
-              </p>
+                <div
+                  className="editor-pomo-grid"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowRight") {
+                      e.preventDefault();
+                      setPomodoros((p) => Math.min(6, p + 1));
+                    } else if (e.key === "ArrowLeft") {
+                      e.preventDefault();
+                      setPomodoros((p) => Math.max(1, p - 1));
+                    }
+                  }}
+                >
+                  {OPCIONES_POMODOROS.map((n) => (
+                    <button
+                      key={n}
+                      tabIndex={-1}
+                      className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
+                      onClick={() => setPomodoros(n)}
+                      title={`Seleccionar ${n} pomodoros (Alt + ${n})`}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
 
-              <div
-                className="editor-pomo-grid"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "ArrowRight") {
-                    e.preventDefault();
-                    setPomodoros((p) => Math.min(6, p + 1));
-                  } else if (e.key === "ArrowLeft") {
-                    e.preventDefault();
-                    setPomodoros((p) => Math.max(1, p - 1));
-                  }
-                }}
-              >
-                {OPCIONES_POMODOROS.map((n) => (
+                <div className="editor-form-acciones">
                   <button
-                    key={n}
-                    tabIndex={-1}
-                    className={`editor-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
-                    onClick={() => setPomodoros(n)}
-                    title={`Seleccionar ${n} pomodoros (Alt + ${n})`}
+                    className="editor-btn-add is-primary btn-primary"
+                    disabled={!coincideExacto || nombreExcedido}
+                    onClick={guardarCursoFormulario}
+                    title="Guardar curso (Enter)"
                   >
-                    {n}
+                    {editingIdx !== null ? "Guardar cambios" : "Añadir curso"}
                   </button>
-                ))}
+                  <button
+                    className="editor-btn-add editor-btn-outline"
+                    onClick={() => setShowForm(false)}
+                    title="Cancelar edición (Esc)"
+                  >
+                    Cancelar
+                  </button>
+                </div>
               </div>
+            )}
+          </div>
 
-              <div className="editor-form-acciones">
-                <button
-                  className="editor-btn-add is-primary btn-primary"
-                  disabled={!coincideExacto || nombreExcedido}
-                  onClick={guardarCursoFormulario}
-                  title="Guardar curso (Enter)"
-                >
-                  {editingIdx !== null ? "Guardar cambios" : "Añadir curso"}
-                </button>
-                <button
-                  className="editor-btn-add editor-btn-outline"
-                  onClick={() => setShowForm(false)}
-                  title="Cancelar edición (Esc)"
-                >
-                  Cancelar
-                </button>
-              </div>
+          {!showForm && (
+            <div className="editor-footer">
+              <button
+                className="editor-btn-outline icon-only-btn"
+                onClick={() => abrirFormulario()}
+                disabled={!puedeAgregarMas}
+                title={!puedeAgregarMas ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado` : "Agregar curso (Alt + N)"}
+                aria-label="Agregar curso"
+              >
+                <i className="fa-solid fa-plus" />Agregar
+              </button>
+              <button
+                className="editor-btn-outline icon-only-btn"
+                onClick={intentarCerrar}
+                title="Cancelar (Esc)"
+              >
+                Cancelar
+              </button>
+              <button
+                className="editor-btn-save btn-primary icon-only-btn"
+                onClick={() => {
+                  guardarHorario(horario);
+                  navigate("/pomodoro");
+                }}
+                title="Guardar Todo (Ctrl + S)"
+                aria-label="Guardar Cambios"
+              >
+                <i className="fa-solid fa-floppy-disk" /> 
+                Guardar
+              </button>
             </div>
           )}
         </div>
 
-        {!showForm && (
-          <div className="editor-footer">
-            <button
-              className="editor-btn-outline icon-only-btn"
-              onClick={() => abrirFormulario()}
-              disabled={!puedeAgregarMas}
-              title={!puedeAgregarMas ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado` : "Agregar curso (Alt + N)"}
-              aria-label="Agregar curso"
-            >
-              <i className="fa-solid fa-plus" />Agregar
-            </button>
-            <button
-              className="editor-btn-outline icon-only-btn"
-              onClick={intentarCerrar}
-              title="Cancelar (Esc)"
-            >
-              Cancelar
-            </button>
-            <button
-              className="editor-btn-save btn-primary icon-only-btn"
-              onClick={() => {
-                onGuardar(horario);
-                onCerrar();
-              }}
-              title="Guardar Todo (Ctrl + S)"
-              aria-label="Guardar Cambios"
-            >
-              <i className="fa-solid fa-floppy-disk" /> 
-              Guardar
-            </button>
+        {confirmandoBorrar !== null && cursosDelDia[confirmandoBorrar] && (
+          <div className="editor-confirm-backdrop" onClick={() => setConfirmandoBorrar(null)}>
+            <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
+              <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
+              <p className="editor-confirm-texto">
+                ¿Eliminar <strong>{cursosDelDia[confirmandoBorrar].subject}</strong>?
+              </p>
+              <div className="editor-confirm-acciones">
+                <button className="editor-btn-outline" onClick={() => setConfirmandoBorrar(null)}>
+                  No
+                </button>
+                <button className="editor-confirm-btn-si" onClick={() => eliminarCurso(confirmandoBorrar)}>
+                  Sí, eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {salidaPendiente !== null && (
+          <div className="editor-confirm-backdrop" onClick={() => setSalidaPendiente(null)}>
+            <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
+              <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
+              <p className="editor-confirm-texto">
+                Tienes cambios sin guardar. Si sales ahora, se van a perder.
+              </p>
+              <div className="editor-confirm-acciones">
+                <button className="editor-btn-outline" onClick={() => setSalidaPendiente(null)}>
+                  Seguir editando
+                </button>
+                <button className="editor-confirm-btn-si" onClick={() => resolverSalida(false)}>
+                  Salir sin guardar
+                </button>
+              </div>
+              <button className="editor-confirm-guardar-tambien" onClick={() => resolverSalida(true)}>
+                <i className="fa-solid fa-floppy-disk" /> Mejor guardar y salir
+              </button>
+            </div>
           </div>
         )}
       </div>
-
-      {confirmandoBorrar !== null && cursosDelDia[confirmandoBorrar] && (
-        <div className="editor-confirm-backdrop" onClick={() => setConfirmandoBorrar(null)}>
-          <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
-            <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
-            <p className="editor-confirm-texto">
-              ¿Eliminar <strong>{cursosDelDia[confirmandoBorrar].subject}</strong>?
-            </p>
-            <div className="editor-confirm-acciones">
-              <button className="editor-btn-outline" onClick={() => setConfirmandoBorrar(null)}>
-                No
-              </button>
-              <button className="editor-confirm-btn-si" onClick={() => eliminarCurso(confirmandoBorrar)}>
-                Sí, eliminar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-      {salidaPendiente !== null && (
-        <div className="editor-confirm-backdrop" onClick={() => setSalidaPendiente(null)}>
-          <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
-            <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
-            <p className="editor-confirm-texto">
-              Tienes cambios sin guardar. Si sales ahora, se van a perder.
-            </p>
-            <div className="editor-confirm-acciones">
-              <button className="editor-btn-outline" onClick={() => setSalidaPendiente(null)}>
-                Seguir editando
-              </button>
-              <button className="editor-confirm-btn-si" onClick={() => resolverSalida(false)}>
-                Salir sin guardar
-              </button>
-            </div>
-            <button className="editor-confirm-guardar-tambien" onClick={() => resolverSalida(true)}>
-              <i className="fa-solid fa-floppy-disk" /> Mejor guardar y salir
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 }
