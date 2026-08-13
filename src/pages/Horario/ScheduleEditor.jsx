@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   DIAS_SEMANA,
   DIA_LABELS,
@@ -16,16 +17,53 @@ export default function ScheduleEditor({
   onGuardar,
   onCerrar,
 }) {
+  const navigate = useNavigate();
   const [horario, setHorario] = useState({});
   const [diaActivo, setDiaActivo] = useState("lunes");
 
-  // Estado para el formulario (Agregar/Editar)
   const [showForm, setShowForm] = useState(false);
   const [editingIdx, setEditingIdx] = useState(null);
 
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
+  const [confirmandoBorrar, setConfirmandoBorrar] = useState(null);
+  
+  const [salidaPendiente, setSalidaPendiente] = useState(null);
+
+  const hayCambiosSinGuardar =
+    JSON.stringify(horario) !== JSON.stringify(horarioInicial || {});
+
+  function intentarCerrar() {
+    if (hayCambiosSinGuardar) {
+      setSalidaPendiente("cerrar");
+    } else {
+      onCerrar();
+    }
+  }
+
+  // CORRECCIÓN: Ejecutamos el cierre de esta pantalla y la navegación a la vez
+  function intentarIrA(ruta) {
+    if (hayCambiosSinGuardar) {
+      setSalidaPendiente(ruta);
+    } else {
+      onCerrar(); // Le avisa al componente padre que oculte el editor
+      navigate(ruta); // Carga la nueva pantalla
+    }
+  }
+
+  // CORRECCIÓN: Aplicamos lo mismo al resolver la salida si el usuario decide guardar/descartar
+  function resolverSalida(guardarAntes) {
+    if (guardarAntes) onGuardar(horario);
+    
+    if (salidaPendiente === "cerrar") {
+      onCerrar();
+    } else if (salidaPendiente) {
+      onCerrar();
+      navigate(salidaPendiente);
+    }
+    setSalidaPendiente(null);
+  }
 
   const cursosDelDia = horario[diaActivo] || [];
   const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
@@ -43,28 +81,28 @@ export default function ScheduleEditor({
       setNombreCurso("");
       setPomodoros(4);
       setSugerenciaActiva(-1);
+      setConfirmandoBorrar(null);
     }
   }, [open, horarioInicial]);
 
-  // ==========================================
-  // ATAJOS DE TECLADO GLOBALES
-  // ==========================================
   useEffect(() => {
     if (!open) return;
 
     const handleKeyDown = (e) => {
-      // 1. Esc: Cerrar formulario actual o cerrar el modal
       if (e.key === "Escape") {
         e.preventDefault();
-        if (showForm) {
+        if (salidaPendiente !== null) {
+          setSalidaPendiente(null);
+        } else if (confirmandoBorrar !== null) {
+          setConfirmandoBorrar(null);
+        } else if (showForm) {
           setShowForm(false);
         } else {
-          onCerrar();
+          intentarCerrar();
         }
         return;
       }
 
-      // 2. Ctrl + S (o Cmd + S): Guardar y salir
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
         e.preventDefault();
         onGuardar(horario);
@@ -72,7 +110,6 @@ export default function ScheduleEditor({
         return;
       }
 
-      // 3. Alt + N: Nuevo curso (Evita el choque con Ctrl+N del navegador)
       if (e.altKey && e.key.toLowerCase() === "n") {
         e.preventDefault();
         if (!showForm && puedeAgregarMas) {
@@ -81,7 +118,6 @@ export default function ScheduleEditor({
         return;
       }
 
-      // 4. Alt + Flechas: Cambiar de día (Pestañas)
       if (e.altKey && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
         e.preventDefault();
         const currentIndex = DIAS_SEMANA.indexOf(diaActivo);
@@ -95,7 +131,6 @@ export default function ScheduleEditor({
         return;
       }
 
-      // 5. Alt + 1-6: Seleccionar pomodoros rápidamente
       if (showForm && e.altKey && e.key >= "1" && e.key <= "6") {
         e.preventDefault();
         setPomodoros(parseInt(e.key, 10));
@@ -113,8 +148,10 @@ export default function ScheduleEditor({
     puedeAgregarMas,
     onGuardar,
     onCerrar,
+    confirmandoBorrar,
+    salidaPendiente,
+    hayCambiosSinGuardar,
   ]);
-  // ==========================================
 
   if (!open) return null;
 
@@ -128,6 +165,7 @@ export default function ScheduleEditor({
   function cambiarDia(dia) {
     setDiaActivo(dia);
     setShowForm(false);
+    setConfirmandoBorrar(null);
   }
 
   function eliminarCurso(idx) {
@@ -136,6 +174,7 @@ export default function ScheduleEditor({
       lista.splice(idx, 1);
       return { ...prev, [diaActivo]: lista };
     });
+    setConfirmandoBorrar(null);
   }
 
   function abrirFormulario(idx = null) {
@@ -202,18 +241,32 @@ export default function ScheduleEditor({
   }
 
   return (
-    <div className="editor-overlay">
+    <div className="editor-page">
       <div className="editor-card">
         <div className="editor-header">
           <h2 className="editor-titulo">Editar Horario</h2>
-          <button 
-            className="editor-cerrar" 
-            onClick={onCerrar} 
-            title="Cerrar (Esc)"
-            aria-label="Cerrar modal"
-          >
-            <i className="fa-solid fa-times" />
-          </button>
+          <div className="editor-header-nav">
+            <button className="editor-nav-btn" onClick={() => intentarIrA("/")} title="Ir a Mi Estudio">
+              <i className="fa-solid fa-house" />
+            </button>
+            
+            {/* CORRECCIÓN: Botón configurado para apuntar a la página de pomodoro y ocultar el editor */}
+            <button className="editor-nav-btn" onClick={() => intentarIrA("/pomodoro")} title="Ir al Pomodoro">
+              <i className="fa-solid fa-calendar-alt" />
+            </button>
+
+            <button className="editor-nav-btn" onClick={() => intentarIrA("/repaso")} title="Ir a Mis Repasos">
+              <i className="fa-solid fa-brain" />
+            </button>
+            <button 
+              className="editor-cerrar" 
+              onClick={intentarCerrar} 
+              title="Cerrar (Esc)"
+              aria-label="Cerrar"
+            >
+              <i className="fa-solid fa-times" />
+            </button>
+          </div>
         </div>
 
         <div className="editor-tabs">
@@ -232,7 +285,6 @@ export default function ScheduleEditor({
         <div className="editor-body">
           <h3 className="editor-seccion-titulo">Cursos para el {DIA_LABELS[diaActivo]}</h3>
 
-          {/* VISTA 1: Lista de Cursos */}
           {!showForm && (
             <>
               {cursosDelDia.length === 0 ? (
@@ -257,7 +309,7 @@ export default function ScheduleEditor({
                         </button>
                         <button
                           className="editor-icon-btn is-danger"
-                          onClick={() => eliminarCurso(i)}
+                          onClick={() => setConfirmandoBorrar(i)}
                           title="Eliminar curso"
                         >
                           <i className="fa-solid fa-trash-can" />
@@ -270,7 +322,6 @@ export default function ScheduleEditor({
             </>
           )}
 
-          {/* VISTA 2: Formulario de Agregar / Editar */}
           {showForm && (
             <div className="editor-add-box">
               <h4 className="editor-form-titulo">
@@ -371,7 +422,6 @@ export default function ScheduleEditor({
           )}
         </div>
 
-        {/* FOOTER PRINCIPAL: Iconos de Agregar y Guardar */}
         {!showForm && (
           <div className="editor-footer">
             <button
@@ -385,7 +435,7 @@ export default function ScheduleEditor({
             </button>
             <button
               className="editor-btn-outline icon-only-btn"
-              onClick={onCerrar}
+              onClick={intentarCerrar}
               title="Cancelar (Esc)"
             >
               Cancelar
@@ -405,6 +455,46 @@ export default function ScheduleEditor({
           </div>
         )}
       </div>
+
+      {confirmandoBorrar !== null && cursosDelDia[confirmandoBorrar] && (
+        <div className="editor-confirm-backdrop" onClick={() => setConfirmandoBorrar(null)}>
+          <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
+            <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
+            <p className="editor-confirm-texto">
+              ¿Eliminar <strong>{cursosDelDia[confirmandoBorrar].subject}</strong>?
+            </p>
+            <div className="editor-confirm-acciones">
+              <button className="editor-btn-outline" onClick={() => setConfirmandoBorrar(null)}>
+                No
+              </button>
+              <button className="editor-confirm-btn-si" onClick={() => eliminarCurso(confirmandoBorrar)}>
+                Sí, eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {salidaPendiente !== null && (
+        <div className="editor-confirm-backdrop" onClick={() => setSalidaPendiente(null)}>
+          <div className="editor-confirm-box" onClick={(e) => e.stopPropagation()}>
+            <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
+            <p className="editor-confirm-texto">
+              Tienes cambios sin guardar. Si sales ahora, se van a perder.
+            </p>
+            <div className="editor-confirm-acciones">
+              <button className="editor-btn-outline" onClick={() => setSalidaPendiente(null)}>
+                Seguir editando
+              </button>
+              <button className="editor-confirm-btn-si" onClick={() => resolverSalida(false)}>
+                Salir sin guardar
+              </button>
+            </div>
+            <button className="editor-confirm-guardar-tambien" onClick={() => resolverSalida(true)}>
+              <i className="fa-solid fa-floppy-disk" /> Mejor guardar y salir
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
