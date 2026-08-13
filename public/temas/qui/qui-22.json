@@ -1,118 +1,1237 @@
 {
   "curso": "Química",
-  "tema": "Gases Ideales y Leyes Volumétricas",
+  "tema": "Estado Gaseoso: Ecuación General y Gases Ideales",
   "glosario": {
-    "E.G.G.I.": "Ecuación general de gases ideales para masa constante.",
-    "Proceso Isotérmico": "Transformación gaseosa realizada a temperatura constante.",
-    "Proceso Isobárico": "Transformación gaseosa donde la presión se mantiene fija.",
-    "Proceso Isócoro": "Transformación de un gas a volumen constante.",
-    "Condiciones Normales": "Estado estandarizado a $1 \\text{ atm}$ y $273 \\text{ K}$.",
-    "Gas Ideal": "Modelo teórico de gas sin fuerzas de atracción intermolecular.",
-    "Fracción Molar": "Relación entre moles de un componente y moles totales.",
-    "Efusión": "Paso de un gas a través de un orificio pequeño."
+    "E.G.G.I.": "Ecuación General de los Gases Ideales.",
+    "Isotérmico": "Proceso termodinámico que ocurre a temperatura constante (Ley de Boyle).",
+    "Isobárico": "Proceso termodinámico que ocurre a presión constante (Ley de Charles).",
+    "Isócoro": "Proceso termodinámico que ocurre a volumen constante (Ley de Gay-Lussac).",
+    "Gas Ideal": "Modelo teórico de gas compuesto por partículas sin interacciones intermoleculares.",
+    "Trasvase": "Acción de pasar un gas de un recipiente a otros de diferente capacidad."
   },
   "theory": [
     {
-      "titulo": "Ecuación Universal de Gases Ideales",
+      "titulo": "1. Introducción a la E.G.G.I. (Contenido Base)",
       "puntos": [
         {
-          "texto": "Ecuación universal: $P \\cdot V = R \\cdot T \\cdot n$",
-          "explicacion": "Esta es la ecuación fundamental del estado gaseoso ideal, conocida nemotécnicamente como \"Pavo Ratón\". Se utiliza para definir el estado de un gas en un instante único y aislar cualquiera de sus variables. Ejemplo numérico: Para hallar las moles de $O_2$ en un recipiente de $41 \\text{ L}$ a $127 ^\\circ\\text{C}$ y $4 \\text{ atm}$, primero pasamos a Kelvin ($400 \\text{ K}$). Luego aplicamos $n = \\frac{4 \\text{ atm} \\cdot 41 \\text{ L}}{0.082 \\frac{\\text{atm} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}} \\cdot 400 \\text{ K}}$, lo que resulta en $n = 5 \\text{ mol}$."
+          "texto": "Tema ⊃ Ecuación General de Gases Ideales",
+          "explicacion": "El acrónimo E.G.G.I. escrito en la pizarra hace referencia a la ecuación que gobierna el comportamiento de los gases ideales cuando cambian sus variables de estado."
         },
         {
-          "texto": "Constante en atm: $R = 0.082 \\frac{\\text{atm} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}}$",
-          "explicacion": "El valor de la constante universal $R$ depende estrictamente de las unidades de presión en el problema. Este valor numérico se usa de forma exclusiva cuando la presión está dada en atmósferas. Ejemplo numérico: Si un problema de \"UNMSM\" indica que un globo soporta $2 \\text{ atm}$ a $300 \\text{ K}$ ocupando $8.2 \\text{ L}$, debes obligatoriamente usar $R = 0.082$. Resolviendo: $n = \\frac{2 \\cdot 8.2}{0.082 \\cdot 300} = \\frac{16.4}{24.6} = 0.66 \\text{ mol}$."
+          "texto": "Condición ⊃ gas pasa a estado final",
+          "explicacion": "En la pizarra se describe textualmente que la ecuación se establece cuando un gas pasa de una condición inicial (1) a una nueva condición final (2). Esto implica un cambio físico."
         },
         {
-          "texto": "Constante en mmHg: $R = 62.4 \\frac{\\text{mmHg} \\cdot \\text{L}}{\\text{mol} \\cdot \\text{K}}$",
-          "explicacion": "Si el examen proporciona la presión en milímetros de mercurio (o Torricelli), usar este valor te evita perder tiempo convirtiendo a atmósferas. Ejemplo numérico: Un gas ideal a $624 \\text{ mmHg}$ y $300 \\text{ K}$ ocupa $10 \\text{ L}$. Para calcular las moles aplicamos $n = \\frac{624 \\cdot 10}{62.4 \\cdot 300}$. Resolviendo directamente sin conversiones extras, obtenemos $n = \\frac{6240}{18720} = 0.33 \\text{ mol}$."
+          "texto": "Requisito ⊃ mantener masa constante",
+          "explicacion": "Aunque la frase en la pizarra se corta en 'manteniendo su...', termodinámicamente se completa como 'manteniendo su masa constante'. Para que la E.G.G.I. funcione, no debe ingresar ni escapar gas del sistema cerrado."
         },
         {
-          "texto": "Temperatura absoluta: $T = ^\\circ\\text{C} + 273$",
-          "explicacion": "En el estudio de gases, la temperatura siempre debe trabajarse en la escala absoluta de \"Kelvin\". Una trampa clásica es dar datos y pedir respuestas en Celsius para provocar errores operativos. Ejemplo numérico: Un cilindro metálico contiene metano a $27 ^\\circ\\text{C}$. Su temperatura real para cualquier fórmula química será $T = 27 + 273 = 300 \\text{ K}$. Si luego dicen que la temperatura absoluta se duplica, debe subir a $600 \\text{ K}$, no a $54 ^\\circ\\text{C}$."
+          "texto": "Esquema ⊃ cilindro inicial con $O_2$",
+          "explicacion": "La gráfica 'VEAMOS' muestra un estado inicial (Condición 1) con un cilindro provisto de un pistón móvil, encerrando gas oxígeno ($O_2$) definido por las variables $V_1$, $T_1$ y $P_1$."
         },
         {
-          "texto": "Cálculo de moles: $n = \\frac{m}{\\overline{M}}$",
-          "explicacion": "Permite relacionar la masa en gramos $m$ con la masa molar $\\overline{M}$ del gas. Es vital cuando los ejercicios te piden hallar peso en vez de volumen o moles. Ejemplo numérico: Calcular el volumen de $320 \\text{ g}$ de gas metano $CH_4$ ($\\overline{M} = 16 \\text{ g/mol}$) a $2 \\text{ atm}$ y $400 \\text{ K}$. Primero hallamos moles: $n = \\frac{320}{16} = 20 \\text{ mol}$. Usando la ecuación universal: $V = \\frac{20 \\cdot 0.082 \\cdot 400}{2} = 328 \\text{ L}$."
+          "texto": "Proceso ⊃ calentamiento del sistema",
+          "explicacion": "El esquema indica la acción de 'calentar', añadiendo energía térmica con un mechero. Esto provoca que el gas se expanda hacia la Condición 2, estableciendo nuevas variables de estado $V_2$, $T_2$ y $P_2$."
         }
       ]
     },
     {
-      "titulo": "Ecuación General de los Gases (E.G.G.I)",
+      "titulo": "2. Deducción Matemática de la E.G.G.I. (Contenido Base)",
       "puntos": [
         {
-          "texto": "Ley general: \\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}",
-          "explicacion": "La \"E.G.G.I.\" se aplica cuando una masa fija de gas evoluciona de un estado inicial (1) a uno final (2) sin fugas ni adiciones. Sirve para analizar procesos donde varían múltiples condiciones a la vez. Ejemplo numérico: Un tanque tiene gas a $1 \\text{ atm}$ y $300 \\text{ K}$ ocupando $10 \\text{ L}$. Si se comprime a $5 \\text{ L}$ y se calienta a $600 \\text{ K}$, calculamos la presión final. Reemplazamos: $\\frac{1 \\cdot 10}{300} = \\frac{P_2 \\cdot 5}{600}$. Despejando $P_2 = \\frac{10 \\cdot 600}{5 \\cdot 300} = 4 \\text{ atm}$."
+          "texto": "$P_1 \\cdot V_1 = R \\cdot T_1 \\cdot n_1$",
+          "explicacion": "Ecuación universal planteada en pizarra para la Condición 1. El profesor tacha $R$ y $n_1$ porque son valores constantes: la constante universal y los moles de gas encerrado no cambian."
+        },
+        {
+          "texto": "$P_2 \\cdot V_2 = R \\cdot T_2 \\cdot n_2$",
+          "explicacion": "Ecuación universal para la Condición 2. Nuevamente se tachan $R$ y $n_2$ porque son idénticos a los del estado inicial, permitiendo igualar las ecuaciones tras despejar las constantes."
+        },
+        {
+          "texto": "$\\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}$",
+          "explicacion": "Es la E.G.G.I. obtenida de igualar ambos estados. Paso 1: Aplicamos $\\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}$ porque un gas ideal sufre un proceso manteniendo su masa fija.\nPaso 2: Reemplazamos datos, asumiendo $P_1=1$ atm, $V_1=2$ L, $T_1=300$ K, $P_2=2$ atm y $T_2=600$ K.\nPaso 3: Despejamos volumen final $V_2 = \\frac{1 \\cdot 2 \\cdot 600}{300 \\cdot 2}$, obteniendo $V_2 = 2$ L."
         }
       ]
     },
     {
-      "titulo": "Procesos Restringidos y Leyes Empíricas",
+      "titulo": "3. Problema: Comparación de Gases y Moles (Contenido Base)",
       "puntos": [
         {
-          "texto": "Ley de Boyle: P_1 \\cdot V_1 = P_2 \\cdot V_2",
-          "explicacion": "Describe un proceso \"isotérmico\" donde la temperatura se mantiene constante, demostrando que la presión y el volumen son inversamente proporcionales. Truco de examen: si el texto dice que el proceso es \"lento\", asume temperatura constante. Ejemplo numérico: Un globo con $2 \\text{ L}$ de aire a $1 \\text{ atm}$ es aplastado isotérmicamente hasta reducirse a $0.5 \\text{ L}$. Aplicamos la ley: $1 \\cdot 2 = P_2 \\cdot 0.5$, de donde deducimos que la nueva presión será $P_2 = 4 \\text{ atm}$."
+          "texto": "Datos Metano ⊃ 40 g en 30 L",
+          "explicacion": "El problema en la pizarra compara dos recipientes. El primero contiene 40 g de metano ($CH_4$), el cual ocupa un volumen de 30 L a una presión $P$ y temperatura $T$ específicas."
         },
         {
-          "texto": "Ley de Charles: \\frac{V_1}{T_1} = \\frac{V_2}{T_2}",
-          "explicacion": "Aplica para un proceso \"isobárico\" (presión constante). El volumen de una masa de gas es directamente proporcional a su temperatura absoluta. Un indicio clásico es mencionar un \"émbolo libre\" o móvil. Ejemplo numérico: Un cilindro con émbolo móvil encierra $300 \\text{ mL}$ a $300 \\text{ K}$. Si calentamos el gas hasta $400 \\text{ K}$, su volumen será $V_2$. Aplicamos $\\frac{300}{300} = \\frac{V_2}{400}$. El resultado es una expansión hasta $V_2 = 400 \\text{ mL}$."
+          "texto": "Datos Nitrógeno ⊃ 2 mol de gas",
+          "explicacion": "El segundo recipiente contiene nitrógeno ($N_2$). La pizarra muestra que se tienen $1.2 \\times 10^{24}$ moléculas, lo que equivale a 2 mol exactos tras dividir entre el número de Avogadro ($6 \\times 10^{23}$)."
         },
         {
-          "texto": "Ley de Gay-Lussac: \\frac{P_1}{T_1} = \\frac{P_2}{T_2}",
-          "explicacion": "Modela un proceso \"isócoro\" (volumen constante), muy común en recipientes rígidos de acero o vidrio hermético. Muestra que al subir la temperatura, la presión aumenta proporcionalmente. Ejemplo numérico: Una botella indeformable tiene gas a $2 \\text{ atm}$ y $200 \\text{ K}$. Si la echamos al fuego y llega a $500 \\text{ K}$, hallamos la presión interna aplicando $\\frac{2}{200} = \\frac{P_2}{500}$. Despejando, $P_2 = \\frac{1000}{200} = 5 \\text{ atm}$."
+          "texto": "Restricción ⊃ presión y temperatura idénticas",
+          "explicacion": "Debajo de los recipientes, el profesor iguala $P / T = P / T$, indicando que ambos gases se encuentran sometidos a las mismas condiciones de presión y temperatura, fundamento del Principio de Avogadro."
+        },
+        {
+          "texto": "Principio base ⊃ Ecuación Universal",
+          "explicacion": "A partir de la ecuación universal ($PV=nRT$), al estar $P$, $R$ y $T$ constantes en ambos globos (por ello se tachan en la deducción de la pizarra), la relación volumen/moles debe ser constante."
+        },
+        {
+          "texto": "$\\frac{V_1}{n_1} = \\frac{V_2}{n_2}$",
+          "explicacion": "Fórmula resultante conocida como Ley de Avogadro. Se aplica al comparar gases distintos bajo condiciones idénticas de presión y temperatura. Paso 1: Aplicamos $\\frac{V_1}{n_1} = \\frac{V_2}{n_2}$ porque $P$ y $T$ son constantes.\nPaso 2: Relacionamos matemáticamente la proporcionalidad directa entre volumen y número de moles."
+        },
+        {
+          "texto": "$\\frac{30}{2.5} = \\frac{V}{2}$",
+          "explicacion": "Cálculo final del problema. Los 2.5 mol de la izquierda provienen de dividir 40 g de $CH_4$ entre su masa molar de 16 g/mol. Paso 1: Aplicamos la proporción hallada $\\frac{30}{2.5} = \\frac{V}{2}$.\nPaso 2: Despejamos $V = \\frac{30 \\cdot 2}{2.5}$, obteniendo $V = 24$ L para el volumen del recipiente de nitrógeno."
         }
       ]
     },
     {
-      "titulo": "Densidad y Masa Molar de un Gas",
+      "titulo": "4. Problema: Trasvase de Gases de Tanque a Cilindros (Contenido Base)",
       "puntos": [
         {
-          "texto": "Fórmula de densidad: P \\cdot \\overline{M} = D \\cdot R \\cdot T",
-          "explicacion": "Nemotécnicamente conocida como \"Puma Doroteo\", esta variación de la ley ideal relaciona de forma directa la presión, masa molar $\\overline{M}$ y densidad $D$ del gas. Es muy útil cuando no se proporciona ni masa ni volumen. Ejemplo numérico: Determinar la densidad del gas $O_2$ ($\\overline{M} = 32 \\text{ g/mol}$) a $2 \\text{ atm}$ y $300 \\text{ K}$. Aplicamos la fórmula: $2 \\cdot 32 = D \\cdot 0.082 \\cdot 300$. Resolviendo: $64 = D \\cdot 24.6$, obtenemos una densidad $D = 2.60 \\text{ g/L}$."
+          "texto": "Fenómeno ⊃ trasvase de oxígeno",
+          "explicacion": "El problema en pizarra muestra un gran tanque esférico de $O_2$ del cual se transfiere el gas hacia recipientes más pequeños llamados cilindros. Es un clásico problema de conservación de materia."
         },
         {
-          "texto": "Variación de densidad: \\frac{D_1 \\cdot T_1}{P_1} = \\frac{D_2 \\cdot T_2}{P_2}",
-          "explicacion": "Cuando el mismo gas experimenta un cambio de estado, su masa molar constante permite igualar las relaciones entre densidad, temperatura y presión. Ejemplo numérico: Un gas a $1 \\text{ atm}$ y $300 \\text{ K}$ tiene densidad de $1.5 \\text{ g/L}$. Si la presión sube a $4 \\text{ atm}$ y la temperatura a $600 \\text{ K}$, calculamos la nueva densidad. $\\frac{1.5 \\cdot 300}{1} = \\frac{D_2 \\cdot 600}{4}$. Simplificando: $450 = D_2 \\cdot 150 \\Rightarrow D_2 = 3 \\text{ g/L}$."
+          "texto": "Volumen tanque ⊃ 4000 L",
+          "explicacion": "El volumen inicial del tanque de la izquierda se da en metros cúbicos (4 m³). Para usar correctamente la constante $R=0.082$, el profesor multiplica por 1000 para transformarlo a 4000 L."
+        },
+        {
+          "texto": "Datos Tanque ⊃ 12 atm y 300 K",
+          "explicacion": "Se presentan las condiciones del gas en el tanque original: presión de 12 atm y temperatura de 27°C. Sumando 273, la temperatura absoluta usada en el cálculo es de 300 K."
+        },
+        {
+          "texto": "Datos Cilindros ⊃ 3 L a 290 K",
+          "explicacion": "El gas a envasar ocupará un volumen final de 3 L por cilindro, bajo una presión máxima de 4 atm y una temperatura de 17°C, lo que equivale a 290 K."
+        },
+        {
+          "texto": "$n_{\\text{tanque}} = \\frac{12 \\cdot 4000}{0.082 \\cdot 300}$",
+          "explicacion": "Cálculo de los moles totales contenidos en el tanque grande. Paso 1: Despejamos los moles de la ecuación universal $n = \\frac{P \\cdot V}{R \\cdot T}$.\nPaso 2: Reemplazamos los datos del tanque para hallar la cantidad de materia total a envasar."
+        },
+        {
+          "texto": "Moles totales ⊃ 1951 mol",
+          "explicacion": "Resultado del cálculo del tanque en la pizarra. Esta es la cantidad de materia total disponible. El número entero 1951 indica un redondeo clásico en problemas preuniversitarios para simplificar operaciones."
+        },
+        {
+          "texto": "$n_{\\text{cilindro}} = \\frac{4 \\cdot 3}{0.082 \\cdot 290}$",
+          "explicacion": "Cálculo de la capacidad en moles que soporta un solo cilindro. Paso 1: Aplicamos nuevamente $n = \\frac{P \\cdot V}{R \\cdot T}$ con las condiciones del envase.\nPaso 2: Reemplazamos los datos de 3 L, 4 atm y 290 K."
+        },
+        {
+          "texto": "Capacidad unitaria ⊃ 0.5 mol",
+          "explicacion": "El cálculo del cilindro en la pizarra arroja 0.5 mol. Esto significa que cada envase pequeño alberga exactamente medio mol de oxígeno bajo sus propias condiciones de presión y temperatura."
+        },
+        {
+          "texto": "Total cilindros ⊃ 3902 unidades",
+          "explicacion": "El paso final es dividir el total de moles entre la capacidad por envase para hallar la cantidad de balones. Paso 1: Planteamos la proporción, si 1 cilindro lleva 0.5 mol, $X$ cilindros llevan 1951 mol.\nPaso 2: Operamos $X = \\frac{1951}{0.5}$, obteniendo $X = 3902$ cilindros llenos."
         }
       ]
     },
     {
-      "titulo": "Condiciones Normales (C.N.) y Volumen Molar",
+      "titulo": "5. Teoría Ampliada: Ecuación Universal y Constantes (Expansión)",
       "puntos": [
         {
-          "texto": "Presión en C.N.: P = 1 \\text{ atm}",
-          "explicacion": "Las \"Condiciones Normales\" asumen implícitamente valores definidos que el problema no dictará directamente. Si un texto dice \"gas sometido a C.N.\", la presión del sistema es automáticamente estandarizada. Este valor corresponde a nivel del mar y se puede usar como $760 \\text{ mmHg}$ si conviene más para calcular. Identificar esta pista ahorra datos faltantes y asegura un puntaje directo en preguntas teóricas."
+          "texto": "$P \\cdot V = n \\cdot R \\cdot T$",
+          "explicacion": "Ecuación Universal de los Gases Ideales (Pavo = Ratón). Se utiliza para evaluar un gas en un único estado. Paso 1: Aplicamos $PV=nRT$ porque se analiza un gas estático sin transformaciones.\nPaso 2: Despejamos volumen $V = \\frac{nRT}{P}$ y reemplazamos datos como $n=2$ mol, $R=0.082$, $T=300$ K, $P=1$ atm, obteniendo $V=49.2$ L."
         },
         {
-          "texto": "Temperatura en C.N.: T = 273 \\text{ K}",
-          "explicacion": "En conjunto con la presión, la temperatura bajo \"Condiciones Normales\" es siempre de $0 ^\\circ\\text{C}$, equivalente al valor absoluto requerido por las fórmulas termodinámicas. Ejemplo numérico: Hallar la densidad del gas Helio $He$ ($\\overline{M} = 4 \\text{ g/mol}$) puro en \"C.N.\". Usando los valores fijos, aplicamos $1 \\cdot 4 = D \\cdot 0.082 \\cdot 273$, lo que genera $4 = D \\cdot 22.4$. Despejamos la densidad: $D = 0.178 \\text{ g/L}$."
+          "texto": "Valor R atmósferas ⊃ 0.082",
+          "explicacion": "El valor de la constante universal de los gases se rige por la unidad de presión. Paso 1: Identificamos en el problema que la presión está dada en atmósferas (atm).\nPaso 2: Reemplazamos $R$ obligatoriamente por 0.082 atm·L/(mol·K)."
         },
         {
-          "texto": "Volumen molar estandar: V_{molar} = 22.4 \\text{ L}",
-          "explicacion": "Indica que $1 \\text{ mol}$ de cualquier gas ideal en \"C.N.\" ocupará sistemáticamente el mismo volumen. Es el atajo principal para ejercicios de estequiometría de gases en admisión. Ejemplo numérico: Se pide calcular el volumen que ocuparán $88 \\text{ g}$ de gas carbónico $CO_2$ ($\\overline{M} = 44 \\text{ g/mol}$) en \"C.N.\". Primero dividimos la masa entre masa molar: $n = \\frac{88}{44} = 2 \\text{ mol}$. Si un mol ocupa $22.4 \\text{ L}$, el volumen final será $V = 2 \\cdot 22.4 \\text{ L} = 44.8 \\text{ L}$."
+          "texto": "Valor R milímetros ⊃ 62.4",
+          "explicacion": "Variante de la constante cuando la presión usa otras unidades. Paso 1: Identificamos que la presión se brinda en milímetros de mercurio (mmHg) o Torr.\nPaso 2: Usamos el valor 62.4 mmHg·L/(mol·K) directo, evitando la lenta conversión a atmósferas."
+        },
+        {
+          "texto": "Condiciones Normales ⊃ presión estándar a 273 K",
+          "explicacion": "Estado de referencia estándar (C.N.). Cuando un problema menciona 'un gas a C.N.', implícitamente indica que la presión es de 1 atm (o 760 mmHg) y la temperatura es 0°C (273 K)."
+        },
+        {
+          "texto": "Volumen molar C.N. ⊃ 22.4 L",
+          "explicacion": "Atajo estequiométrico que indica que exactamente un mol de CUALQUIER gas ideal a Condiciones Normales ocupará 22.4 L. Permite evitar el uso de $PV=nRT$ si las condiciones son ideales y estándar."
         }
       ]
     },
     {
-      "titulo": "Mezcla de Gases y Dinámica",
+      "titulo": "6. Teoría Ampliada: Procesos Restringidos y Leyes Empíricas (Expansión)",
       "puntos": [
         {
-          "texto": "Ley de Dalton: P_{total} = \\sum P_i",
-          "explicacion": "La presión total de una mezcla gaseosa es igual a la suma de las presiones parciales individuales, actuando como si cada gas estuviera solo en el recipiente. Ejemplo numérico: En un tanque de buceo cerrado, se mezclan tres gases puros que por separado ejercerían: $O_2$ ($2 \\text{ atm}$), $N_2$ ($5 \\text{ atm}$) y $He$ ($1 \\text{ atm}$). La presión final reportada por el manómetro será simplemente $P_{total} = 2 + 5 + 1 = 8 \\text{ atm}$."
+          "texto": "$P_1 \\cdot V_1 = P_2 \\cdot V_2$",
+          "explicacion": "Ley de Boyle-Mariotte (Proceso Isotérmico). Volumen y presión son inversamente proporcionales. Paso 1: Aplicamos $P_1V_1=P_2V_2$ porque el texto indica 'temperatura constante'.\nPaso 2: Reemplazamos datos, ej. $P_1=2$ atm, $V_1=10$ L, $P_2=4$ atm.\nPaso 3: Despejamos incógnita $V_2 = \\frac{2 \\cdot 10}{4}$, obteniendo $V_2 = 5$ L."
         },
         {
-          "texto": "Presión parcial: P_i = X_i \\cdot P_{total}",
-          "explicacion": "Para hallar la presión individual de un solo gas en una mezcla, se multiplica la presión total por la fracción molar $X_i$ del gas específico. Ejemplo numérico: Un balón a presión total de $10 \\text{ atm}$ encierra una mezcla con $2 \\text{ mol}$ de Helio y $3 \\text{ mol}$ de Argón. Totalizamos $5 \\text{ mol}$. La fracción del Helio es $X_{He} = \\frac{2}{5} = 0.4$. Su presión parcial dentro del balón será $P_{He} = 0.4 \\cdot 10 \\text{ atm} = 4 \\text{ atm}$."
+          "texto": "$\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$",
+          "explicacion": "Ley de Charles (Proceso Isobárico). Volumen y temperatura son directamente proporcionales. Paso 1: Aplicamos $\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$ porque el problema indica 'presión constante'.\nPaso 2: Reemplazamos datos, ej. $V_1=5$ L, $T_1=300$ K, $V_2=15$ L.\nPaso 3: Despejamos incógnita $T_2 = \\frac{15 \\cdot 300}{5}$, obteniendo una temperatura final $T_2 = 900$ K."
         },
         {
-          "texto": "Ley de Graham: \\frac{v_1}{v_2} = \\sqrt{\\frac{\\overline{M}_2}{\\overline{M}_1}}",
-          "explicacion": "Establece que las velocidades de difusión y efusión de los gases son inversamente proporcionales a la raíz cuadrada de sus masas molares. Un gas ligero viaja más rápido que uno pesado. Ejemplo numérico: Comparar la velocidad del $H_2$ ($\\overline{M} = 2 \\text{ g/mol}$) contra el $O_2$ ($\\overline{M} = 32 \\text{ g/mol}$). Calculamos: $\\frac{v_{H2}}{v_{O2}} = \\sqrt{\\frac{32}{2}} = \\sqrt{16} = 4$. Concluimos que el gas de hidrógeno difunde $4$ veces más rápido."
-        },
-        {
-          "texto": "Mezcla por válvula: n_{final} = \\sum n_i",
-          "explicacion": "Problema nivel avanzado \"UNMSM\": Cuando dos balones separados a distinta presión se conectan abriendo una válvula, los moles se conservan y la temperatura suele ser constante. Derivación útil: $P_{eq} \\cdot V_{total} = P_1 \\cdot V_1 + P_2 \\cdot V_2$. Ejemplo numérico: Balón A ($2 \\text{ L}$, $3 \\text{ atm}$) se conecta a Balón B ($3 \\text{ L}$, $8 \\text{ atm}$). Al abrirse: $P_{eq} \\cdot (2+3) = 3 \\cdot 2 + 8 \\cdot 3$. Resolvemos: $5 \\cdot P_{eq} = 6 + 24 \\Rightarrow P_{eq} = 6 \\text{ atm}$."
+          "texto": "$\\frac{P_1}{T_1} = \\frac{P_2}{T_2}$",
+          "explicacion": "Ley de Gay-Lussac (Proceso Isócoro). Presión y temperatura son directamente proporcionales. Paso 1: Aplicamos $\\frac{P_1}{T_1} = \\frac{P_2}{T_2}$ porque el gas está en un 'recipiente rígido y cerrado'.\nPaso 2: Reemplazamos datos, ej. $P_1=3$ atm, $T_1=200$ K, $T_2=400$ K.\nPaso 3: Despejamos incógnita $P_2 = \\frac{3 \\cdot 400}{200}$, obteniendo una presión final $P_2 = 6$ atm."
         }
       ]
+    },
+    {
+      "titulo": "7. Metodología de Resolución: Problemas Típicos UNMSM (Expansión)",
+      "puntos": [
+        {
+          "texto": "Paso 1 ⊃ conversión estricta a Kelvin",
+          "explicacion": "El error más común en examen de admisión es operar con Celsius. Regla de oro: toda temperatura mostrada en un problema DEBE sumarse con 273 para transformarse obligatoriamente a Kelvin absoluto."
+        },
+        {
+          "texto": "Paso 2 ⊃ identificación de estado",
+          "explicacion": "Si el texto relata una evolución cronológica ('se comprime un gas', 'luego se calienta'), usa la E.G.G.I. Si el problema describe el gas en una sola foto estática y pide su densidad, usa la Ecuación Universal ($PV=nRT$)."
+        },
+        {
+          "texto": "Paso 3 ⊃ cancelación de variables fijas",
+          "explicacion": "Al aplicar la E.G.G.I., busca palabras clave: 'recipiente rígido' elimina el volumen de la ecuación, 'proceso isobárico' elimina la presión y 'proceso isotérmico' elimina la temperatura. Así la ecuación se simplifica drásticamente."
+        },
+        {
+          "texto": "Paso 4 ⊃ verificación de estequiometría",
+          "explicacion": "Cuando el problema brinda como dato una masa directa en gramos (ej. 80 g de metano), el paso obligatorio previo a usar fórmulas de gases es dividir esa masa entre el peso molecular ($M$) para convertirlo a moles ($n$)."
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el contexto de la química de gases, ¿a qué hace referencia la sigla E.G.G.I. escrita en la pizarra?",
+      "opts": [
+        "Ecuación Global de los Gases Inertes",
+        "Energía General de los Gases Ideales",
+        "Ecuación General de los Gases Ideales",
+        "Estado General de los Gases Isotérmicos",
+        "Ecuación General de los Gases Isobáricos"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Identificamos el acrónimo.\nPaso 2: E.G.G.I. significa Ecuación General de los Gases Ideales, la cual gobierna su comportamiento ante cambios de estado."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Determine el valor de verdad sobre la aplicabilidad de la E.G.G.I. en un sistema termodinámico:",
+      "proposiciones": [
+        {
+          "texto": "Aplica cuando un gas pasa por un cambio químico formando nuevas sustancias.",
+          "correct": false
+        },
+        {
+          "texto": "Gobierna el comportamiento del gas exclusivamente al pasar de un estado físico inicial a uno final.",
+          "correct": true
+        },
+        {
+          "texto": "Se usa para medir un solo estado estático sin cambios en sus variables.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Evaluamos el uso de la E.G.G.I.\nPaso 2: Esta ecuación se aplica estrictamente a cambios físicos (condición inicial a final), no químicos ni estados estáticos (donde se usa la Ecuación Universal)."
+    },
+    {
+      "tipo": "completar",
+      "q": "La E.G.G.I. se establece cuando un gas pasa de una condición inicial a una final. Esto implica obligatoriamente un cambio 1.",
+      "textoConEspacios": "El proceso descrito corresponde a un cambio 1 donde se modifican las variables de estado.",
+      "opts": [
+        [
+          "físico",
+          "químico"
+        ],
+        [
+          "nuclear",
+          "atómico"
+        ],
+        [
+          "estático",
+          "dinámico"
+        ],
+        [
+          "irreversible",
+          "reversible"
+        ],
+        [
+          "isócoro",
+          "isobárico"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Definimos el tipo de transformación.\nPaso 2: Pasar de un estado termodinámico a otro sin alterar la identidad del gas es un cambio físico."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa que un gas experimenta un proceso desde un volumen $V_1$ a un $V_2$, cambiando su presión y temperatura. ¿Cuál es el requisito termodinámico indispensable para que la E.G.G.I. se cumpla correctamente?",
+      "opts": [
+        "Mantener la presión constante",
+        "Mantener el volumen constante",
+        "Mantener la temperatura constante",
+        "Mantener su masa constante",
+        "Mantener la densidad constante"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Recordamos los fundamentos de la ley combinada.\nPaso 2: Para igualar $\\frac{P \\cdot V}{T}$, el número de moles (y por ende, la masa) no debe cambiar; el sistema debe ser cerrado."
+    },
+    {
+      "tipo": "completar",
+      "q": "Para que la E.G.G.I. sea aplicable, el sistema debe ser cerrado. Si existe una 1 en el recipiente, la ley se invalida porque 2 varía.",
+      "textoConEspacios": "La presencia de una 1 provoca que la 2 del gas no se mantenga constante.",
+      "opts": [
+        [
+          "fuga",
+          "masa"
+        ],
+        [
+          "fuga",
+          "presión"
+        ],
+        [
+          "reacción",
+          "temperatura"
+        ],
+        [
+          "expansión",
+          "densidad"
+        ],
+        [
+          "fricción",
+          "velocidad"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Relacionamos sistema cerrado con masa constante.\nPaso 2: Una fuga permite el escape de gas, alterando los moles y la masa, invalidando la ecuación."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "En el esquema del cilindro con pistón móvil, asocie cada variable con su descripción en el estado inicial:",
+      "columnaA": [
+        "I. $P_1$",
+        "II. $V_1$",
+        "III. $T_1$"
+      ],
+      "columnaB": [
+        "a. Espacio ocupado por el $O_2$",
+        "b. Grado de agitación molecular",
+        "c. Fuerza ejercida sobre las paredes"
+      ],
+      "opts": [
+        "Ic, IIa, IIIb",
+        "Ia, IIb, IIIc",
+        "Ib, IIc, IIIa",
+        "Ic, IIb, IIIa",
+        "Ia, IIc, IIIb"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Definimos las variables de estado.\nPaso 2: $P$ (Presión) es fuerza (c), $V$ (Volumen) es el espacio (a), $T$ (Temperatura) mide agitación (b)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En un globo de gas estático sin variaciones de estado, determine la veracidad de las siguientes afirmaciones:",
+      "proposiciones": [
+        {
+          "texto": "Se debe aplicar la E.G.G.I. para hallar sus variables.",
+          "correct": false
+        },
+        {
+          "texto": "Sus variables de estado $P, V, T$ están relacionadas por la ecuación universal.",
+          "correct": true
+        },
+        {
+          "texto": "El volumen no depende de la temperatura mientras esté estático.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Diferenciamos gas estático de proceso dinámico.\nPaso 2: Un solo estado usa la ecuación universal ($PV=nRT$), no la E.G.G.I."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el cilindro del esquema, se procede a añadir energía térmica al sistema cerrado mediante un mechero. ¿Qué sucede con las variables de estado del gas $O_2$?",
+      "opts": [
+        "El gas se expande hacia una Condición 2, cambiando $V, T, P$.",
+        "El gas se condensa, reduciendo $V_1$ y $P_1$.",
+        "La masa del gas aumenta proporcionalmente a $T_2$.",
+        "El pistón se inmoviliza y solo aumenta $P_1$.",
+        "El $O_2$ reacciona químicamente por el calor."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Analizamos el efecto del calor en gases.\nPaso 2: El calentamiento provoca un proceso de expansión, cambiando al menos dos variables de estado ($V_2, T_2, P_2$)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se calienta un gas ideal en un recipiente provisto de un pistón muy ligero y sin fricción (presión constante). ¿Qué ocurre con el volumen al incrementar la temperatura absoluta al doble?",
+      "opts": [
+        "Se reduce a la mitad",
+        "Se cuadruplica",
+        "Permanece constante",
+        "Se duplica",
+        "Aumenta en 273 L"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Aplicamos relación directa por Ley de Charles.\nPaso 2: A presión constante, $V$ y $T$ son directamente proporcionales. Si $T$ se duplica, $V$ también."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En la deducción matemática de la E.G.G.I., partimos de la ecuación inicial $P_1 \\cdot V_1 = R \\cdot T_1 \\cdot n_1$. El profesor tacha algunas variables. ¿Cuáles son y por qué?",
+      "opts": [
+        "$P_1$ y $T_1$, porque el proceso es isobárico e isotérmico.",
+        "$R$ y $n_1$, porque son constantes en un sistema cerrado.",
+        "$V_1$ y $n_1$, porque el volumen y los moles no cambian.",
+        "$R$ y $P_1$, porque la constante universal se cancela con la presión.",
+        "$T_1$ y $n_1$, porque el calentamiento anula la masa."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Identificamos los valores invariables en un proceso de un sistema cerrado.\nPaso 2: La masa (y moles $n$) es fija y $R$ es la constante universal. Ambas se tachan al ser idénticas en cualquier estado."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un globo contiene helio a $P_1 = 2$ atm, $V_1 = 10$ L y $T_1 = 300$ K. Utilizando la ecuación $P_1 \\cdot V_1 = R \\cdot T_1 \\cdot n_1$ y sabiendo que $R = 0.082$, ¿cuántos moles de gas inicial hay aproximadamente?",
+      "opts": [
+        "0.81 mol",
+        "1.25 mol",
+        "2.45 mol",
+        "0.45 mol",
+        "8.10 mol"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Despejamos $n_1 = \\frac{P_1 \\cdot V_1}{R \\cdot T_1}$.\nPaso 2: Reemplazamos $n_1 = \\frac{2 \\cdot 10}{0.082 \\cdot 300} = \\frac{20}{24.6} = 0.813$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al plantear la ecuación para el estado final $P_2 \\cdot V_2 = R \\cdot T_2 \\cdot n_2$, ¿qué permite matemáticamente igualarla con la ecuación del estado inicial?",
+      "opts": [
+        "Que $P_1 = P_2$ siempre.",
+        "Que los productos $R \\cdot n_1$ y $R \\cdot n_2$ son idénticos.",
+        "Que la temperatura final es el doble de la inicial.",
+        "Que la presión se tacha en ambos lados.",
+        "Que el volumen no depende de la masa."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Revisamos el despeje en pizarra.\nPaso 2: Al ser $R$ constante universal y $n_1 = n_2$ por ser sistema cerrado, el término $Rn$ es constante, permitiendo igualar $\\frac{PV}{T}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un gas ideal alcanza un estado final con $P_2 = 4$ atm y $T_2 = 600$ K, manteniendo $n_2 = 5$ mol. Calcule el volumen final $V_2$ usando $R = 0.082$.",
+      "opts": [
+        "12.3 L",
+        "24.6 L",
+        "61.5 L",
+        "30.5 L",
+        "15.0 L"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Usamos $V_2 = \\frac{n_2 \\cdot R \\cdot T_2}{P_2}$.\nPaso 2: $V_2 = \\frac{5 \\cdot 0.082 \\cdot 600}{4} = \\frac{246}{4} = 61.5$ L."
+    },
+    {
+      "tipo": "completar",
+      "q": "La fórmula de la E.G.G.I. es $\\frac{P_1 \\cdot V_1}{T_1} = \\frac{P_2 \\cdot V_2}{T_2}$. Se obtiene tras 1 los valores de 2 en ambos estados del sistema.",
+      "textoConEspacios": "La deducción se logra al 1 las variables constantes como 2.",
+      "opts": [
+        [
+          "despejar",
+          "R y n"
+        ],
+        [
+          "multiplicar",
+          "P y V"
+        ],
+        [
+          "sumar",
+          "R y T"
+        ],
+        [
+          "despejar",
+          "V y T"
+        ],
+        [
+          "dividir",
+          "P y n"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Recordamos la deducción matemática.\nPaso 2: Se despejan e igualan las constantes $R$ y $n$ para formar la razón $\\frac{PV}{T}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un gas ideal en un cilindro pasa de un estado inicial de 1 atm, 2 L y 300 K a un estado final de 2 atm y 600 K. Determine el volumen final $V_2$.",
+      "opts": [
+        "4 L",
+        "1 L",
+        "2 L",
+        "3 L",
+        "8 L"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos E.G.G.I: $\\frac{1 \\cdot 2}{300} = \\frac{2 \\cdot V_2}{600}$.\nPaso 2: Despejamos $V_2 = \\frac{1 \\cdot 2 \\cdot 600}{300 \\cdot 2} = 2$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el problema del primer recipiente, se tienen 40 g de metano ($CH_4$). Sabiendo que la masa molar del $CH_4$ es 16 g/mol, ¿cuántos moles hay en el recipiente?",
+      "opts": [
+        "2.0 mol",
+        "2.5 mol",
+        "4.0 mol",
+        "1.5 mol",
+        "3.0 mol"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos fórmula de moles $n = \\frac{m}{M}$.\nPaso 2: $n = \\frac{40}{16} = 2.5$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si esos mismos 40 g de metano (2.5 mol) experimentan un cambio de condiciones y ahora ocupan 60 L manteniendo constante la presión y temperatura en un nuevo ambiente ideal, ¿cuál será la masa total si el volumen aumenta a 120 L por ingreso de más gas?",
+      "opts": [
+        "40 g",
+        "80 g",
+        "120 g",
+        "20 g",
+        "160 g"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: A $P$ y $T$ constantes, masa y volumen son proporcionales (Ley de Avogadro).\nPaso 2: Si el volumen se duplica (de 60 L a 120 L), la masa se duplica de 40 g a 80 g."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El segundo recipiente contiene nitrógeno ($N_2$). Si la pizarra indica $1.2 \\times 10^{24}$ moléculas, ¿cómo se determina que equivale exactamente a 2 mol de gas?",
+      "opts": [
+        "Multiplicando por la masa molar del nitrógeno (28 g/mol).",
+        "Dividiendo entre el volumen molar de 22.4 L.",
+        "Dividiendo entre el número de Avogadro ($6 \\times 10^{23}$).",
+        "Sumando la constante universal de los gases.",
+        "Multiplicando por la temperatura en Kelvin."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Relación moles y moléculas.\nPaso 2: $n = \\frac{\\text{Moléculas}}{N_A} = \\frac{1.2 \\times 10^{24}}{0.6 \\times 10^{24}} = 2$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Calcule la cantidad de moléculas presentes en 3 mol de oxígeno gas ($O_2$). Considere $N_A = 6 \\times 10^{23}$.",
+      "opts": [
+        "$1.8 \\times 10^{24}$ moléculas",
+        "$1.2 \\times 10^{23}$ moléculas",
+        "$3.6 \\times 10^{24}$ moléculas",
+        "$1.8 \\times 10^{23}$ moléculas",
+        "$9.0 \\times 10^{23}$ moléculas"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos relación inversa $N = n \\cdot N_A$.\nPaso 2: $N = 3 \\cdot 6 \\times 10^{23} = 18 \\times 10^{23} = 1.8 \\times 10^{24}$ moléculas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al comparar los recipientes de metano y nitrógeno, el profesor iguala $P/T = P/T$. ¿Qué principio fundamental establece esta restricción de condiciones idénticas?",
+      "opts": [
+        "Ley de Boyle",
+        "Ley de Charles",
+        "Principio de Avogadro",
+        "Ley de Graham",
+        "Ley de Dalton"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Analizamos la igualación de condiciones.\nPaso 2: El Principio de Avogadro se aplica cuando diferentes gases están sometidos a idénticas condiciones de presión y temperatura."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Dos globos idénticos, uno con Helio y otro con Argón, se encuentran en la misma habitación sellada. Determine la verdad o falsedad:",
+      "proposiciones": [
+        {
+          "texto": "Ambos gases están sometidos a la misma presión y temperatura.",
+          "correct": true
+        },
+        {
+          "texto": "Ambos gases deben tener necesariamente la misma masa en gramos.",
+          "correct": false
+        },
+        {
+          "texto": "Si tienen el mismo volumen, tienen diferente número de moles.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Aplicación práctica del Principio de Avogadro.\nPaso 2: Al estar en la misma habitación, $P$ y $T$ son iguales. Masas difieren por las masas molares, pero si los volúmenes son iguales, los moles son iguales."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Según el principio base explicado, a partir de la ecuación universal $PV=nRT$, ¿cuál debe ser la relación constante si se evalúan dos gases distintos a la misma presión y temperatura?",
+      "opts": [
+        "Volumen por temperatura ($V \\cdot T$)",
+        "Presión por volumen ($P \\cdot V$)",
+        "Volumen entre número de moles ($V / n$)",
+        "Temperatura entre volumen ($T / V$)",
+        "Masa entre presión ($m / P$)"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Partimos de $PV=nRT$.\nPaso 2: Agrupamos constantes: $V/n = RT/P$. Como $R, T, P$ son constantes, la relación $V/n$ debe ser constante."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relacione las variables que se mantienen constantes con la ley o principio que se genera a partir de la ecuación ideal:",
+      "columnaA": [
+        "I. $P$ y $T$ constantes",
+        "II. $T$ y $n$ constantes",
+        "III. $P$ y $n$ constantes"
+      ],
+      "columnaB": [
+        "a. Ley de Boyle ($PV = k$)",
+        "b. Ley de Charles ($V/T = k$)",
+        "c. Principio de Avogadro ($V/n = k$)"
+      ],
+      "opts": [
+        "Ic, IIa, IIIb",
+        "Ia, IIb, IIIc",
+        "Ib, IIa, IIIc",
+        "Ic, IIb, IIIa",
+        "Ia, IIc, IIIb"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Identificamos restricciones termodinámicas.\nPaso 2: $P, T$ fija -> Avogadro (c). $T, n$ fija -> Boyle (a). $P, n$ fija -> Charles (b)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Deducida la relación $V/n = k$, se obtiene la fórmula $\\frac{V_1}{n_1} = \\frac{V_2}{n_2}$. ¿Bajo qué condiciones específicas se aplica esta fórmula al comparar dos gases?",
+      "opts": [
+        "Condiciones idénticas de presión y volumen.",
+        "Condiciones idénticas de masa y temperatura.",
+        "Condiciones idénticas de presión y temperatura.",
+        "Cuando ambos gases tienen la misma masa molar.",
+        "Cuando sufren un proceso isócoro cerrado."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Verificamos los fundamentos de la Ley de Avogadro.\nPaso 2: Requiere que $P$ y $T$ sean constantes para establecer la proporcionalidad directa entre volumen y moles."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un Globo 1 contiene 5 L de gas equivalente a 1 mol. Un Globo 2 en la misma habitación contiene 3 mol del mismo gas. Aplicando $\\frac{V_1}{n_1} = \\frac{V_2}{n_2}$, calcule $V_2$.",
+      "opts": [
+        "1.6 L",
+        "15 L",
+        "8 L",
+        "5 L",
+        "10 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Reemplazamos en la Ley de Avogadro: $\\frac{5}{1} = \\frac{V_2}{3}$.\nPaso 2: Despejamos $V_2 = 5 \\cdot 3 = 15$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el problema comparativo de la pizarra, se plantea la proporción $\\frac{30}{2.5} = \\frac{V}{2}$ para hallar el volumen del nitrógeno. ¿Cuál es el resultado de despejar $V$?",
+      "opts": [
+        "20 L",
+        "24 L",
+        "15 L",
+        "30 L",
+        "12 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos el despeje: $V = \\frac{30 \\cdot 2}{2.5}$.\nPaso 2: $V = \\frac{60}{2.5} = 24$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos recipientes A y B a igual presión y temperatura. El recipiente A tiene 20 L con 2 mol de gas. El B tiene 4 mol de gas. Calcule el volumen de B.",
+      "opts": [
+        "10 L",
+        "40 L",
+        "80 L",
+        "20 L",
+        "30 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Usamos $\\frac{V_A}{n_A} = \\frac{V_B}{n_B} \\Rightarrow \\frac{20}{2} = \\frac{V_B}{4}$.\nPaso 2: Despejamos $V_B = 10 \\cdot 4 = 40$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El trasvase de oxígeno de un tanque grande a cilindros más pequeños se rige por un principio físico fundamental. ¿Cuál es?",
+      "opts": [
+        "Conservación del volumen",
+        "Conservación de la temperatura",
+        "Conservación de la materia (moles)",
+        "Conservación de la presión",
+        "Aumento de la energía cinética"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Analizamos el fenómeno de trasvase.\nPaso 2: La cantidad total de gas (masa o moles) que sale del tanque es exactamente la misma que se distribuye en los cilindros."
+    },
+    {
+      "tipo": "completar",
+      "q": "Durante un trasvase de un tanque esférico de alta presión a cilindros, la 1 total de gas no se altera, aunque la 2 de los envases finales sea mucho menor que la del tanque.",
+      "textoConEspacios": "La 1 total se mantiene constante a pesar de que la 2 de cada envase es distinta.",
+      "opts": [
+        [
+          "masa",
+          "presión"
+        ],
+        [
+          "temperatura",
+          "masa"
+        ],
+        [
+          "presión",
+          "densidad"
+        ],
+        [
+          "velocidad",
+          "fuerza"
+        ],
+        [
+          "densidad",
+          "energía"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Contextualizamos el trasvase.\nPaso 2: La materia (masa) se conserva; la presión de llenado es un parámetro que cambia."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El tanque original tiene un volumen de 4 m³. Para usar correctamente la constante $R=0.082$ en la ecuación universal, ¿a cuánto equivale este volumen en la unidad requerida?",
+      "opts": [
+        "40 L",
+        "400 L",
+        "4000 L",
+        "40000 L",
+        "0.004 L"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Relacionamos unidades de volumen.\nPaso 2: Sabiendo que 1 m³ = 1000 L, multiplicamos $4 \\cdot 1000 = 4000$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un tanque industrial indica un volumen de 15 m³, determine el volumen en litros para aplicar la constante de los gases ideales $R=0.082$.",
+      "opts": [
+        "150 L",
+        "1500 L",
+        "15000 L",
+        "1.5 L",
+        "15 L"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Conversión directa m3 a Litros.\nPaso 2: $15 \\cdot 1000 = 15000$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Las condiciones del tanque original son 12 atm y 27°C. Para realizar cálculos estequiométricos con gases, ¿cuál es el valor correcto de la temperatura a utilizar?",
+      "opts": [
+        "27 K",
+        "273 K",
+        "300 K",
+        "246 K",
+        "290 K"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Regla obligatoria de gases: sumar 273.\nPaso 2: $T = 27 + 273 = 300$ K."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Al analizar las condiciones 12 atm y 27°C de un gas antes de ser envasado, determine si las proposiciones son correctas:",
+      "proposiciones": [
+        {
+          "texto": "Representan el estado termodinámico final del sistema.",
+          "correct": false
+        },
+        {
+          "texto": "Sirven para calcular la materia total inicial disponible usando $PV=nRT$.",
+          "correct": true
+        },
+        {
+          "texto": "Se deben usar los 27°C de forma directa sin conversión por ser condiciones ambientales.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Evaluamos el rol de los datos del tanque.\nPaso 2: Representan el estado inicial y deben convertirse a Kelvin; sirven para hallar la materia total."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El gas envasado ocupará 3 L por cilindro a una temperatura de 17°C. ¿A qué temperatura en la escala absoluta equivale?",
+      "opts": [
+        "290 K",
+        "17 K",
+        "317 K",
+        "273 K",
+        "256 K"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Realizamos la conversión Celsius a Kelvin.\nPaso 2: $T = 17 + 273 = 290$ K."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un problema señala que el cilindro final soporta 4 atm y 17°C, ¿qué error es común cometer al despejar los moles usando $n=PV/RT$?",
+      "opts": [
+        "Usar $R = 62.4$ en lugar de $0.082$.",
+        "Dividir entre la temperatura en Celsius (17) directamente.",
+        "Convertir los 3 L a mililitros.",
+        "Restar 273 a los 17°C.",
+        "Asumir que la presión está en milímetros de mercurio."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Identificamos distractores comunes en admisión.\nPaso 2: Operar directamente con grados Celsius sin pasarlos a Kelvin (290 K) arruina el cálculo estequiométrico."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para el cálculo de los moles totales en el tanque grande, la pizarra muestra $n_{\\text{tanque}} = \\frac{12 \\cdot 4000}{0.082 \\cdot 300}$. ¿De qué ecuación original proviene este despeje?",
+      "opts": [
+        "E.G.G.I. ($\\frac{P_1 V_1}{T_1} = \\frac{P_2 V_2}{T_2}$)",
+        "Ley de Charles ($\\frac{V}{T} = k$)",
+        "Ecuación Universal de Gases Ideales ($PV = nRT$)",
+        "Ley de Avogadro ($\\frac{V}{n} = k$)",
+        "Ecuación de Van der Waals"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Observamos el despeje.\nPaso 2: Al despejar $n$ de la Ecuación Universal, queda $n = \\frac{PV}{RT}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se tiene un tanque industrial de 2000 L de nitrógeno a 8 atm y 400 K. Calcule los moles totales contenidos (Use $R = 0.082$).",
+      "opts": [
+        "243.9 mol",
+        "487.8 mol",
+        "121.9 mol",
+        "390.2 mol",
+        "800.0 mol"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Usamos $n = \\frac{P \\cdot V}{R \\cdot T}$.\nPaso 2: $n = \\frac{8 \\cdot 2000}{0.082 \\cdot 400} = \\frac{16000}{32.8} \\approx 487.8$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El resultado en pizarra indica que el tanque contenía 1951 mol de oxígeno. ¿Qué representa conceptualmente este valor en el problema de trasvase?",
+      "opts": [
+        "El número de cilindros a llenar.",
+        "La capacidad máxima de un solo cilindro.",
+        "La cantidad de materia total disponible para ser envasada.",
+        "La masa en gramos del oxígeno.",
+        "El volumen perdido durante el trasvase."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Contexto de moles en trasvase.\nPaso 2: Representa el inventario de materia ($n_{\\text{total}}$) que se va a distribuir sin sufrir pérdidas."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "El profesor redondeó el resultado del cálculo $12 \\cdot 4000 / (0.082 \\cdot 300)$ a 1951. Sobre estas prácticas numéricas en exámenes de admisión:",
+      "proposiciones": [
+        {
+          "texto": "Se utilizan para forzar errores en los postulantes.",
+          "correct": false
+        },
+        {
+          "texto": "Son comunes para simplificar operaciones operativas y obtener números enteros tratables.",
+          "correct": true
+        },
+        {
+          "texto": "Alteran drásticamente las leyes fundamentales de la química.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Consideramos las pautas preuniversitarias.\nPaso 2: Redondeos de décimas en valores altos simplifican el tiempo sin invalidar la metodología del problema."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La capacidad de cada cilindro se calcula con $n_{\\text{cilindro}} = \\frac{4 \\cdot 3}{0.082 \\cdot 290}$. ¿A qué variables corresponden los valores 4 y 3 respectivamente?",
+      "opts": [
+        "Volumen en litros y temperatura en Kelvin.",
+        "Presión en atmósferas y volumen en litros.",
+        "Masa en gramos y volumen en mililitros.",
+        "Constante universal y presión en atmósferas.",
+        "Presión en atmósferas y moles."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Identificamos los datos de la expresión.\nPaso 2: 4 es la Presión (4 atm) y 3 es el Volumen (3 L)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un cilindro individual alberga argón a 2 atm, con un volumen de 5 L y temperatura de 300 K. Calcule los moles en su interior usando $R = 0.082$.",
+      "opts": [
+        "0.81 mol",
+        "0.40 mol",
+        "2.46 mol",
+        "0.20 mol",
+        "1.23 mol"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos $n = \\frac{P \\cdot V}{R \\cdot T}$.\nPaso 2: $n = \\frac{2 \\cdot 5}{0.082 \\cdot 300} = \\frac{10}{24.6} = 0.406$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El cálculo para un cilindro resulta en 0.5 mol. ¿Qué significa físicamente este resultado unitario?",
+      "opts": [
+        "Que el cilindro pesa 0.5 g.",
+        "Que el cilindro solo puede llenarse hasta la mitad de su volumen físico.",
+        "Que cada envase alberga exactamente medio mol de gas a sus condiciones máximas.",
+        "Que se pierde 0.5 mol en cada trasvase.",
+        "Que la temperatura disminuye medio grado Kelvin."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Interpretamos $n_{\\text{cilindro}}$.\nPaso 2: Indica la capacidad estequiométrica del envase para sostener esas condiciones de $P, V, T$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si por cambios de diseño el cálculo indicara que el envase soporta solo 0.25 mol, manteniendo la misma cantidad total del tanque (1951 mol), ¿qué pasaría con la cantidad de cilindros a usar?",
+      "opts": [
+        "Se reduciría a la mitad.",
+        "Permanecería igual.",
+        "Se duplicaría, al entrar menos gas en cada uno.",
+        "Depende de la masa del gas.",
+        "Los cilindros explotarían."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Analizamos la relación Total = Cantidad x Capacidad.\nPaso 2: Si la capacidad se reduce a la mitad (de 0.5 a 0.25), se requiere el doble de envases para abarcar todo el gas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El último paso en pizarra indica dividir 1951 (moles totales) entre 0.5 (moles por cilindro). ¿Por qué se realiza esta operación matemática?",
+      "opts": [
+        "Para hallar la densidad del gas.",
+        "Para transformar la masa en volumen.",
+        "Para calcular el número exacto de balones o unidades llenas.",
+        "Para encontrar la presión final del tanque.",
+        "Para cancelar la constante $R$ del sistema."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Fundamento del trasvase.\nPaso 2: Número de cilindros = $\\frac{\\text{Moles totales}}{\\text{Moles por cilindro}}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se dispone de un suministro industrial de 1000 mol de metano. Cada tanque estándar requiere envasar 2 mol. ¿Cuántos tanques completos se obtendrán?",
+      "opts": [
+        "1000 tanques",
+        "2000 tanques",
+        "500 tanques",
+        "250 tanques",
+        "400 tanques"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Planteamos la proporción.\nPaso 2: $\\text{Total} = \\frac{1000}{2} = 500$ tanques."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La Ecuación Universal de los Gases Ideales se expresa comúnmente como $P \\cdot V = n \\cdot R \\cdot T$. ¿Para qué situación específica se utiliza en lugar de la E.G.G.I.?",
+      "opts": [
+        "Para evaluar un gas en un único estado estático sin procesos de cambio.",
+        "Para medir las variables iniciales y finales tras una reacción química.",
+        "Para comparar dos gases a diferente temperatura pero igual masa.",
+        "Exclusivamente en procesos isobáricos.",
+        "Solo cuando la temperatura está en grados Celsius."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Diferencia de aplicación.\nPaso 2: Pavo = Ratón ($PV=nRT$) es la fotografía de un gas en un momento estático, sin evaluar variaciones cronológicas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Calcule el volumen ocupado por 2 mol de un gas ideal bajo una presión de 1 atm y una temperatura de 300 K ($R = 0.082$).",
+      "opts": [
+        "49.2 L",
+        "24.6 L",
+        "12.3 L",
+        "98.4 L",
+        "60.0 L"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Despejamos volumen $V = \\frac{nRT}{P}$.\nPaso 2: $V = \\frac{2 \\cdot 0.082 \\cdot 300}{1} = 49.2$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el uso de la ecuación universal, ¿qué parámetro determina el valor numérico obligatorio que debe tomar la constante $R$?",
+      "opts": [
+        "La temperatura, si está en Kelvin o Celsius.",
+        "El volumen, si está en Litros o mililitros.",
+        "La presión, dependiendo de la unidad en la que se exprese (atm, mmHg, etc.).",
+        "La masa del gas, según la naturaleza de la sustancia.",
+        "El número de moles totales."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Análisis dimensional de $R$.\nPaso 2: La unidad de presión rige el valor: si es atm, $R=0.082$; si es mmHg, $R=62.4$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un alumno intenta calcular el volumen de 1 mol de gas a 5 atm y 300 K, y utiliza $R = 62.4$. ¿Cuál será la consecuencia directa de este error conceptual?",
+      "opts": [
+        "El resultado será correcto porque $R$ es una constante universal.",
+        "Obtendrá un volumen sobrestimado y físicamente incorrecto al mezclar unidades.",
+        "El volumen resultará negativo.",
+        "La presión cambiará espontáneamente a mmHg.",
+        "No hay error, ambos valores de $R$ son intercambiables."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Verificamos coherencia de unidades.\nPaso 2: Usar $R=62.4$ asume que la presión está en mmHg. Al aplicarlo con 5 atm, el cálculo es dimensionalmente erróneo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se tiene un gas sometido a una presión de 760 mmHg y 300 K, ocupando 10 L. ¿Qué valor de la constante $R$ permite hacer un cálculo directo sin convertir la presión?",
+      "opts": [
+        "0.082 atm·L/(mol·K)",
+        "8.314 J/(mol·K)",
+        "62.4 mmHg·L/(mol·K)",
+        "1.987 cal/(mol·K)",
+        "$6.022 \\times 10^{23}$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Observamos que $P$ está en mmHg.\nPaso 2: Emplear 62.4 evita convertir 760 mmHg a 1 atm."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Determine los moles de un gas confinado en 10 L a 760 mmHg y 300 K, usando el valor de $R=62.4$.",
+      "opts": [
+        "0.81 mol",
+        "0.40 mol",
+        "1.20 mol",
+        "2.05 mol",
+        "0.50 mol"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos $n = \\frac{P \\cdot V}{R \\cdot T}$.\nPaso 2: $n = \\frac{760 \\cdot 10}{62.4 \\cdot 300} = \\frac{7600}{18720} = 0.406$ mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Cuando un problema de química de gases indica que un sistema se encuentra en 'Condiciones Normales' (C.N.), ¿qué valores asumen implícitamente la presión y la temperatura?",
+      "opts": [
+        "1 atm y 25°C",
+        "760 mmHg y 0 K",
+        "1 atm y 0°C (273 K)",
+        "10 atm y 273 K",
+        "0.082 atm y 300 K"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Definición estándar en C.N.\nPaso 2: Condición Normal significa Presión de 1 atm (760 mmHg) y Temperatura de 0°C (273 K)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Respecto a los valores referenciales en problemas de química, defina el valor de verdad:",
+      "proposiciones": [
+        {
+          "texto": "Las 'Condiciones Normales' equivalen a la temperatura ambiente común de 25°C.",
+          "correct": false
+        },
+        {
+          "texto": "En C.N., la presión siempre corresponde al nivel del mar (1 atm).",
+          "correct": true
+        },
+        {
+          "texto": "En C.N., el volumen de cualquier gas depende exclusivamente de su masa molar y no del número de moles.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: Discriminamos C.N. de T.A.P. (Condiciones ambientales).\nPaso 2: C.N. es 0°C, no 25°C. El volumen sí depende de los moles y no de la masa molar (por el volumen molar fijo)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Bajo Condiciones Normales (C.N.), ¿qué atajo estequiométrico permite determinar el volumen que ocupa exactamente un mol de cualquier gas ideal sin aplicar la fórmula $PV=nRT$?",
+      "opts": [
+        "Siempre ocupa 10 L.",
+        "Siempre ocupa 22.4 L.",
+        "Siempre ocupa 0.082 L.",
+        "Depende del peso atómico del gas.",
+        "Siempre ocupa 1000 cm³."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Reconocimiento del Volumen Molar.\nPaso 2: Todo gas ideal a 1 atm y 273 K cumple que 1 mol = 22.4 L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se requieren almacenar 3 mol de gas cloro ($Cl_2$) en Condiciones Normales. Determine el volumen del tanque necesario evitando el cálculo largo con la ecuación universal.",
+      "opts": [
+        "22.4 L",
+        "67.2 L",
+        "44.8 L",
+        "11.2 L",
+        "89.6 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos atajo $V = n \\cdot 22.4$.\nPaso 2: $V = 3 \\cdot 22.4 = 67.2$ L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La fórmula reducida $P_1 \\cdot V_1 = P_2 \\cdot V_2$ describe que el volumen y la presión son inversamente proporcionales. ¿A qué ley empírica y tipo de proceso corresponde?",
+      "opts": [
+        "Ley de Charles - Proceso Isobárico",
+        "Ley de Gay-Lussac - Proceso Isócoro",
+        "Ley de Boyle-Mariotte - Proceso Isotérmico",
+        "Principio de Le Chatelier - Proceso Adiabático",
+        "Ley de Dalton - Mezcla de gases"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Identificamos variable constante.\nPaso 2: Si $T$ no aparece, es constante (Proceso Isotérmico), lo que define a la Ley de Boyle-Mariotte."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se comprime de manera isotérmica un gas desde un volumen de 10 L a 2 atm hasta reducirse a 5 L. Determine la presión final del sistema.",
+      "opts": [
+        "1 atm",
+        "2 atm",
+        "4 atm",
+        "8 atm",
+        "5 atm"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos $P_1V_1=P_2V_2$ porque es isotérmico.\nPaso 2: $2 \\cdot 10 = P_2 \\cdot 5 \\Rightarrow P_2 = 4$ atm."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La fórmula $\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$ evidencia que el volumen y la temperatura absoluta son directamente proporcionales. ¿Cuál es el nombre de esta ley empírica?",
+      "opts": [
+        "Ley de Boyle",
+        "Ley de Gay-Lussac",
+        "Ley de Graham",
+        "Ley de Charles (Proceso Isobárico)",
+        "Ley de Avogadro"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Identificamos ausencia de variable $P$.\nPaso 2: Al ser la presión constante, el proceso es Isobárico y la relación $V/T$ se conoce como Ley de Charles."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un globo flexible a presión atmosférica constante contiene gas ocupando 5 L a 300 K. Si se somete a calentamiento y el globo se expande hasta los 15 L, ¿cuál es su temperatura final?",
+      "opts": [
+        "100 K",
+        "600 K",
+        "900 K",
+        "300 K",
+        "150 K"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos $\\frac{V_1}{T_1} = \\frac{V_2}{T_2}$.\nPaso 2: $\\frac{5}{300} = \\frac{15}{T_2} \\Rightarrow T_2 = \\frac{15 \\cdot 300}{5} = 900$ K."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un proceso en un recipiente 'rígido y cerrado' se rige matemáticamente por $\\frac{P_1}{T_1} = \\frac{P_2}{T_2}$. ¿Qué nombre recibe este proceso?",
+      "opts": [
+        "Proceso Isobárico",
+        "Proceso Isotérmico",
+        "Proceso Isócoro (Ley de Gay-Lussac)",
+        "Proceso Isoentálpico",
+        "Proceso Reversible"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Vinculamos 'rígido' con variable constante.\nPaso 2: Recipiente rígido significa Volumen constante (Isócoro), y la ley $P/T$ es la de Gay-Lussac."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una olla a presión (recipiente rígido) contiene gas a 3 atm y 200 K. Si la temperatura se incrementa a 400 K, ¿cuál es la nueva presión del gas?",
+      "opts": [
+        "1.5 atm",
+        "6 atm",
+        "9 atm",
+        "4.5 atm",
+        "12 atm"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos $\\frac{P_1}{T_1} = \\frac{P_2}{T_2}$.\nPaso 2: $\\frac{3}{200} = \\frac{P_2}{400} \\Rightarrow P_2 = \\frac{3 \\cdot 400}{200} = 6$ atm."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el examen de admisión, el error más común es trabajar la temperatura de un enunciado con la unidad brindada. ¿Cuál es la regla metodológica de oro para evitarlo?",
+      "opts": [
+        "Toda temperatura mostrada DEBE sumarse con 273 para convertirse a Kelvin absoluto.",
+        "Toda temperatura debe restarse con 273.",
+        "Toda temperatura debe multiplicarse por la constante $R$.",
+        "Las temperaturas bajas se usan en Celsius y las altas en Kelvin.",
+        "Solo se usa Kelvin si el problema lo especifica, de lo contrario se usa Celsius."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Reconocimiento de escalas de T.\nPaso 2: Las fórmulas de los gases ideales únicamente son válidas con temperaturas en la escala absoluta de Kelvin."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un gas se calienta de 27°C a 127°C manteniendo su volumen constante, se calculará erróneamente la presión final si se usa $\\frac{P_1}{27} = \\frac{P_2}{127}$. ¿Cuál es el cálculo de temperaturas correcto a emplear?",
+      "opts": [
+        "273 K inicial, 373 K final",
+        "300 K inicial, 400 K final",
+        "300 K inicial, 127 K final",
+        "0 K inicial, 100 K final",
+        "246 K inicial, 146 K final"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Convertimos ambas temperaturas sumando 273.\nPaso 2: $T_1 = 27+273 = 300$ K y $T_2 = 127+273 = 400$ K."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al enfrentarse a un problema, ¿cómo discrimina el postulante cuándo usar la E.G.G.I. y cuándo la Ecuación Universal ($PV=nRT$)?",
+      "opts": [
+        "Usa la E.G.G.I. si le piden densidad y $PV=nRT$ si relata una cronología.",
+        "Usa la E.G.G.I. si el texto relata un cambio o evolución cronológica ('se comprime', 'luego se calienta'), y $PV=nRT$ para una foto estática.",
+        "Ambas son intercambiables en cualquier contexto sin afectar el resultado.",
+        "La E.G.G.I. es para mezclas, $PV=nRT$ para gases puros.",
+        "Depende exclusivamente de si el volumen es mayor a 22.4 L."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Metodología de identificación de estados.\nPaso 2: Procesos con estado 1 y 2 exigen igualaciones (E.G.G.I.), cálculos de un solo instante exigen estado de ecuación ($PV=nRT$)."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relacione las palabras clave de un enunciado típico de admisión con la herramienta matemática a usar:",
+      "columnaA": [
+        "I. 'Un gas a presión de...' pide hallar su densidad",
+        "II. 'Se calienta un gas provocando su expansión'"
+      ],
+      "columnaB": [
+        "a. Aplicar E.G.G.I.",
+        "b. Aplicar Ecuación Universal ($PV=nRT$)"
+      ],
+      "opts": [
+        "Ia, IIb",
+        "Ib, IIa",
+        "Ia, IIa",
+        "Ib, IIb",
+        "No hay relación posible"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Evaluamos el contexto semántico.\nPaso 2: Una condición estática (hallar densidad en un punto) es Ecuación Universal (Ib). Un cambio cronológico (expansión) es E.G.G.I (IIa)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al plantear la E.G.G.I., el paso 3 sugiere la cancelación de variables fijas buscando palabras clave en el texto. ¿Qué variable desaparece de la fórmula si el enunciado dice 'recipiente rígido'?",
+      "opts": [
+        "La masa",
+        "La presión",
+        "La temperatura",
+        "El volumen",
+        "La densidad"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Asociamos palabras clave físicas.\nPaso 2: 'Rígido' implica paredes que no se mueven, por lo tanto, el Volumen es el mismo en estado 1 y 2, cancelándose de la E.G.G.I."
+    },
+    {
+      "tipo": "completar",
+      "q": "Si en la lectura rápida del problema descubrimos la frase 'proceso isobárico', podemos eliminar automáticamente la 1 de la E.G.G.I., dejando una relación directa entre el 2 y la 3.",
+      "textoConEspacios": "Un proceso isobárico elimina la 1, dejando la relación $V/T$.",
+      "opts": [
+        [
+          "presión",
+          "volumen",
+          "temperatura"
+        ],
+        [
+          "temperatura",
+          "presión",
+          "volumen"
+        ],
+        [
+          "masa",
+          "presión",
+          "temperatura"
+        ],
+        [
+          "volumen",
+          "presión",
+          "temperatura"
+        ],
+        [
+          "densidad",
+          "masa",
+          "presión"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Asociación de ley empírica.\nPaso 2: Isobárico significa $P_1=P_2$, se tacha $P$ y sobrevive la Ley de Charles ($V/T$)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Cuando el problema brinda como dato inicial una masa directa en gramos (ej. 80 g de metano) y pide calcular la presión, ¿cuál es el paso de estequiometría OBLIGATORIO previo a usar la fórmula $PV=nRT$?",
+      "opts": [
+        "Multiplicar los gramos por 22.4 L.",
+        "Dividir la masa entre el peso molecular ($M$) para convertirlo a moles ($n$).",
+        "Convertir los gramos a kilogramos para unificar al Sistema Internacional.",
+        "Asumir que un gramo equivale a un mol.",
+        "Dividir los gramos por la constante $R$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Regla de masas en gases.\nPaso 2: Las fórmulas de los gases operan estrictamente con la cantidad de materia en moles, exigiendo aplicar $n = m / M$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se introducen 80 g de metano ($CH_4$, masa molar $= 16$ g/mol) en un recipiente de 10 L a 300 K. ¿Cuál es la cantidad de materia ($n$) real que se debe introducir en la fórmula $PV=nRT$?",
+      "opts": [
+        "80 mol",
+        "1.25 mol",
+        "5.0 mol",
+        "12.8 mol",
+        "0.2 mol"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Ejecutamos el paso obligatorio $n = m / M$.\nPaso 2: $n = \\frac{80}{16} = 5.0$ mol."
     }
   ]
 }
