@@ -70,12 +70,8 @@ export default function TopBar({
       </>
     );
 
-    const handleClick = (e) => {
-      // Pasamos el evento para que botones como "Mini cronómetro" puedan
-      // saber en qué posición de la pantalla se hizo clic (y así abrir
-      // el widget justo debajo, sin importar si el botón está en la
-      // barra de escritorio o dentro del menú móvil).
-      if (b.onClick) b.onClick(e);
+    const handleClick = () => {
+      if (b.onClick) b.onClick();
       closeFn();
     };
 
@@ -86,19 +82,47 @@ export default function TopBar({
     );
   };
 
-  // Componente reutilizable para los modales (Overlays)
-  const OverlayMenu = ({ title, isOpen, onClose, children }) => {
-    if (!isOpen) return null;
-    return (
-      <div className="topbar__overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-        <div className="topbar__overlay-inner">
-          <h3 className="topbar__overlay-title">{title}</h3>
-          {/* AQUÍ ESTABA EL ERROR: Cambié topbar__overlay-row a topbar__overlay-row1 para que coincida con tu SCSS */}
-          <div className="topbar__overlay-row1">
-            {children}
-          </div>
+  // Componente reutilizable para los paneles laterales (Configuración
+  // y Menú): un drawer que entra desde la derecha, con cada opción en
+  // una fila completa (texto a la izquierda, ícono a la derecha), no
+  // en tarjetas cuadradas centradas.
+  const SideDrawer = ({ title, isOpen, onClose, children }) => (
+    <div
+      className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      aria-hidden={!isOpen}
+    >
+      <div className="topbar__drawer">
+        <div className="topbar__drawer-header">
+          <h3 className="topbar__drawer-title">{title}</h3>
+          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+        <div className="topbar__drawer-list">
+          {children}
         </div>
       </div>
+    </div>
+  );
+
+  const renderFila = (b, closeFn = () => {}) => {
+    const content = (
+      <>
+        <span className="topbar__drawer-item-label">{b.label}</span>
+        <i className={`${b.icon} topbar__drawer-item-icon`} />
+      </>
+    );
+
+    const handleClick = () => {
+      if (b.onClick) b.onClick();
+      closeFn();
+    };
+
+    return b.to ? (
+      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>
+    ) : (
+      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
     );
   };
 
@@ -139,17 +163,17 @@ export default function TopBar({
         )}
       </div>
 
-      {/* OVERLAY DEL MENÚ MÓVIL */}
+      {/* PANEL DEL MENÚ MÓVIL */}
       {botonesVisibles.length > 0 && (
-        <OverlayMenu title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
-          {botonesVisibles.map((b) => renderBoton(b, "topbar__overlay-btn", () => setMenuMobileOpen(false)))}
-        </OverlayMenu>
+        <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
+          {botonesVisibles.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+        </SideDrawer>
       )}
 
-      {/* OVERLAY DE CONFIGURACIÓN */}
-      <OverlayMenu title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
-        {configButtons.map((b) => renderBoton(b, "topbar__overlay-btn", () => setConfigOpen(false)))}
-      </OverlayMenu>
+      {/* PANEL DE CONFIGURACIÓN */}
+      <SideDrawer title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
+        {configButtons.map((b) => renderFila(b, () => setConfigOpen(false)))}
+      </SideDrawer>
     </div>
   );
 }

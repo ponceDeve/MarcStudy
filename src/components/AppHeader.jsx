@@ -17,18 +17,19 @@ export default function AppHeader({
 
   const botones = [
     ...(showHome
-      ? [{ title: "Ir a Mi Estudio", label: "Home", icon: "fa-solid fa-house", to: "/" }]
+      ? [{ title: "Ir a Mi Estudio", label: "Home", fullLabel: "Inicio", icon: "fa-solid fa-house", to: "/" }]
       : []),
     ...(onAbrirBuscador
-      ? [{ title: "Buscar curso o tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
+      ? [{ title: "Buscar curso o tema", label: "Buscar", fullLabel: "Buscar curso o tema", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
       : []),
-    { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
-    { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: "/repaso" },
+    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
+    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: "/repaso" },
     ...(onEditarHorario
-      ? [{ title: "Editar horario", label: "Editar", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
+      ? [{ title: "Editar horario", label: "Editar", fullLabel: "Editar horario", icon: "fa-solid fa-pen", onClick: onEditarHorario }]
       : []),
   ];
 
+  // Renderizador para los botones de la barra superior (usa nombre corto 'label')
   function renderBoton(b, cls, closeFn = () => {}) {
     const content = (
       <>
@@ -53,6 +54,48 @@ export default function AppHeader({
       </button>
     );
   }
+
+  // Componente reutilizable para el panel lateral
+  const SideDrawer = ({ title, isOpen, onClose, children }) => (
+    <div
+      className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      aria-hidden={!isOpen}
+    >
+      <div className="topbar__drawer">
+        <div className="topbar__drawer-header">
+          <h3 className="topbar__drawer-title">{title}</h3>
+          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+        <div className="topbar__drawer-list">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+
+  // Renderizador para las filas del panel lateral (usa nombre largo 'fullLabel')
+  const renderFila = (b, closeFn = () => {}) => {
+    const content = (
+      <>
+        <span className="topbar__drawer-item-label">{b.fullLabel || b.label}</span>
+        <i className={`${b.icon} topbar__drawer-item-icon`} />
+      </>
+    );
+
+    const handleClick = () => {
+      if (b.onClick) b.onClick();
+      closeFn();
+    };
+
+    return b.to ? (
+      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>
+    ) : (
+      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
+    );
+  };
 
   return (
     <div className="topbar">
@@ -84,19 +127,9 @@ export default function AppHeader({
         </button>
       </div>
 
-      {menuMobileOpen && (
-        <div
-          className="topbar__overlay"
-          onClick={(e) => e.target === e.currentTarget && setMenuMobileOpen(false)}
-        >
-          <div className="topbar__overlay-inner">
-            <h3 className="topbar__overlay-title">Menú</h3>
-            <div className="topbar__overlay-row1">
-              {botones.map((b) => renderBoton(b, "topbar__overlay-btn", () => setMenuMobileOpen(false)))}
-            </div>
-          </div>
-        </div>
-      )}
+      <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
+        {botones.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+      </SideDrawer>
     </div>
   );
 }

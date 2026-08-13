@@ -18,7 +18,7 @@ import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
-import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido, guardarPosicionEstudio, leerPosicionEstudio } from "../../lib/pomodoroShared";
+import { leerPomodoroCompartido, guardarRetorno, limpiarPomodoroCompartido } from "../../lib/pomodoroShared";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import 'katex/dist/katex.min.css';
 
@@ -66,6 +66,89 @@ function agruparResultados({ cursos, temas }) {
   }
 
   return grupos;
+}
+
+// Quita delimitadores de LaTeX ($...$, \(...\), \[...\]) antes de leer en
+// voz alta, para que no lea de más los símbolos de fórmula tal cual.
+function limpiarParaVoz(texto) {
+  if (!texto) return "";
+  return texto
+    .replace(/\\\[|\\\]|\\\(|\\\)|\$\$|\$/g, "")
+    .replace(/\\[a-zA-Z]+/g, "")
+    .replace(/[{}^_]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Las voces de speechSynthesis se cargan de forma asíncrona en varios
+// navegadores (la primera llamada a getVoices() puede devolver []).
+// Sin esto, la primera card intenta leer antes de que la lista de
+// voces esté lista y termina usando la voz por defecto (a veces
+// femenina) — las siguientes cards ya salían bien porque para
+// entonces la lista ya había cargado.
+let vocesListasPromise = null;
+function obtenerVocesListas() {
+  if (vocesListasPromise) return vocesListasPromise;
+  vocesListasPromise = new Promise((resolve) => {
+    const voces = window.speechSynthesis.getVoices();
+    if (voces.length > 0) {
+      resolve(voces);
+      return;
+    }
+    window.speechSynthesis.onvoiceschanged = () => {
+      resolve(window.speechSynthesis.getVoices());
+    };
+    // Por si el navegador nunca dispara el evento (pasa en algunos):
+    // no te quedes esperando para siempre, sigue con lo que haya.
+    setTimeout(() => resolve(window.speechSynthesis.getVoices()), 1200);
+  });
+  return vocesListasPromise;
+}
+
+// Lee la teoría en voz alta: espera 1 segundo antes de empezar (para no
+// arrancar de golpe apenas cambia la card) y usa un tono grave y un
+// ritmo pausado/firme ("voz de macho alfa"). Al cambiar de card o salir
+// de teoría, el cleanup del efecto corta la lectura al instante — así
+// que si vas cambiando de card rápido, no se van acumulando lecturas
+// encima de otras (cada card cancela la anterior).
+function useLecturaTeoriaVoz(texto, activo) {
+  useEffect(() => {
+    if (!activo || !texto || !("speechSynthesis" in window)) return;
+
+    let cancelado = false;
+    const timer = setTimeout(() => {
+      if (cancelado) return;
+      window.speechSynthesis.cancel();
+
+      obtenerVocesListas().then((voces) => {
+        if (cancelado) return;
+
+        const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
+        utter.lang = "es-PE";
+        // Grave y pausado a propósito, para que suene firme/seguro en
+        // vez de la voz aguda y rápida por defecto.
+        utter.pitch = 0.55;
+        utter.rate = 0.92;
+
+        const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
+        const vozGrave =
+          voces.find(
+            (v) =>
+              v.lang?.toLowerCase().startsWith("es") &&
+              nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n)),
+          ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
+        if (vozGrave) utter.voice = vozGrave;
+
+        window.speechSynthesis.speak(utter);
+      });
+    }, 2500);
+
+    return () => {
+      cancelado = true;
+      clearTimeout(timer);
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+    };
+  }, [texto, activo]);
 }
 
 export default function MiEstudioPage() {
@@ -160,10 +243,6 @@ export default function MiEstudioPage() {
 
   const [searchOpen, setSearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
-  // Posición del botón "Timer" en el momento del clic, para que el
-  // widget del pomodoro se abra justo debajo de él (después el usuario
-  // ya lo puede arrastrar libremente, eso lo maneja PomodoroWidget).
-  const [pomodoroAnchorRect, setPomodoroAnchorRect] = useState(null);
   const [temasOpen, setTemasOpen] = useState(false);
 
   const [score, setScore] = useState(0);
@@ -331,33 +410,7 @@ export default function MiEstudioPage() {
       setExamenPreguntas(examenList);
       setNivelIndex(0);
 
-      // Si el usuario ya estaba en este mismo tema (curso+tema iguales)
-      // en modo "completo" (teoría + preguntas, sin estar en niveles),
-      // retomamos en la misma card y stage donde se quedó, y NO
-      // volvemos a preguntar "¿Quieres ver la teoría?" — eso solo tiene
-      // sentido la primera vez que se abre el tema.
-      let cardInicial = 0;
-      let stageInicial = "theory";
-      let modoInicial = "completo";
-      let preguntarModo = true;
-
-      const posicionGuardada = leerPosicionEstudio();
-      if (
-        posicionGuardada &&
-        posicionGuardada.curso === item.curso &&
-        posicionGuardada.tema === item.tema &&
-        !posicionGuardada.isLevelMode &&
-        posicionGuardada.modoEstudio === "completo" &&
-        (posicionGuardada.stage === "theory" || posicionGuardada.stage === "question") &&
-        typeof posicionGuardada.cardIndex === "number" &&
-        posicionGuardada.cardIndex >= 0 &&
-        posicionGuardada.cardIndex < puntos.length
-      ) {
-        cardInicial = posicionGuardada.cardIndex;
-        stageInicial = posicionGuardada.stage;
-        modoInicial = posicionGuardada.modoEstudio;
-        preguntarModo = false;
-      }
+      const cardInicial = 0;
 
       const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
       const storedPreguntasVistas = JSON.parse(
@@ -374,8 +427,8 @@ export default function MiEstudioPage() {
       setQuizPos(0);
       setOrdenPreguntas([]);
       setPosOrden(0);
-      setStage(stageInicial);
-      setModoEstudio(modoInicial);
+      setStage("theory");
+      setModoEstudio("completo");
       setIsLevelMode(false);
       setScore(0);
       setWrongCount(0);
@@ -389,7 +442,7 @@ export default function MiEstudioPage() {
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
 
-      setPreguntaModoAbierta(preguntarModo);
+      setPreguntaModoAbierta(true);
     } catch (e) {
       console.error("Error en abrirTema:", e);
       setError(`No pude cargar "${item.tema}". (${e.message})`);
@@ -397,22 +450,6 @@ export default function MiEstudioPage() {
       setLoading(false);
     }
   }
-
-  // Guarda en qué card/stage/modo está el usuario mientras navega un
-  // tema, para que al volver (por ejemplo desde Pomodoro con el botón
-  // "Volver a [tema]") abrirTema() pueda retomar ahí mismo en vez de
-  // reiniciar desde la card 0 y volver a preguntar si mostrar la teoría.
-  useEffect(() => {
-    if (!topicData) return;
-    guardarPosicionEstudio({
-      curso: topicData.curso,
-      tema: topicData.tema,
-      stage,
-      cardIndex,
-      modoEstudio,
-      isLevelMode,
-    });
-  }, [topicData, stage, cardIndex, modoEstudio, isLevelMode]);
 
   function seleccionarItem(item) {
     setQuery("");
@@ -891,13 +928,15 @@ export default function MiEstudioPage() {
   function buscarEnGoogle() {
     const q = googleQuery.trim();
     if (!q) return;
-
     window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, "_blank");
-
-    setGoogleQuery("");
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
+
+  useLecturaTeoriaVoz(
+    stage === "theory" && !isLevelMode ? current?.texto : null,
+    stage === "theory" && !isLevelMode,
+  );
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -980,11 +1019,7 @@ export default function MiEstudioPage() {
           tema={topicData.tema}
           curso={topicData.curso}
           onAbrirBuscador={() => setSearchOpen(true)}
-          onTogglePomodoroMini={(e) => {
-            const rect = e?.currentTarget?.getBoundingClientRect?.();
-            if (rect) setPomodoroAnchorRect({ top: rect.bottom, left: rect.left });
-            setPomodoroMiniOpen((o) => !o);
-          }}
+          onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
           onGuardarRepaso={guardarParaRepaso}
           isFullscreen={isFullscreen}
@@ -1028,11 +1063,7 @@ export default function MiEstudioPage() {
         </div>
       )}
 
-      <PomodoroWidget
-        open={pomodoroMiniOpen}
-        onClose={() => setPomodoroMiniOpen(false)}
-        anchorRect={pomodoroAnchorRect}
-      />
+      <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
 
       {configOpen && (
         <div className="config-overlay">

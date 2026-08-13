@@ -89,10 +89,6 @@
   }
 }
 
-/* El marquee no es decorativo: es la única forma de leer el título del
-   tema cuando no entra en el ancho disponible. Se excluye de la regla
-   global de "reducir movimiento" (_base.scss) para que quien tenga esa
-   preferencia del sistema activada igual pueda leer el texto completo. */
 @media (prefers-reduced-motion: reduce) {
   .topbar__tema--marquee {
     animation-duration: 12s !important;
@@ -137,7 +133,28 @@
   flex-shrink: 0;
 }
 
+.topbar__nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  padding: 4px 8px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
 
+  &:hover {
+    color: var(--primary);
+  }
+}
 
 .topbar__btn-icon {
   display: block;
@@ -211,7 +228,6 @@
   box-shadow: var(--shadow-sm);
 
   &:hover {
-    background: var(--primary-dark);
     opacity: 0.95;
   }
 }
@@ -275,7 +291,9 @@
   .topbar__nav {
     gap: 24px;
   }
-
+  .topbar__nav-btn {
+    padding: 6px 12px;
+  }
   .topbar__btn-icon {
     font-size: 22px;
   }
@@ -304,183 +322,137 @@
 }
 
 // ============================================================
-// OVERLAY (Menú y Configuración)
+// ============================================================
+// PANEL LATERAL (Menú y Configuración)
 // ============================================================
 
+// El fondo oscurecido que cubre todo
 .topbar__overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: var(--overlay-strong);
-  backdrop-filter: blur(4px);
-  overflow: auto;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.25s ease;
+
+  &.is-open {
+    background: var(--overlay-strong);
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+  }
 }
 
+// El contenedor blanco/gris que entra por la derecha
 .topbar__overlay-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(320px, 85vw);
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: transform;
+}
+
+// Abre el panel interior si el fondo tiene is-open
+.topbar__overlay.is-open .topbar__overlay-inner {
+  transform: translateX(0);
+}
+
+.topbar__overlay-header {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
-  width: max-content;
-  max-width: calc(100vw - 32px);
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
 }
 
 .topbar__overlay-title {
   color: var(--ink);
-  font-size: 30px;
-  margin: 0 0 16px 0;
+  font-size: 22px;
+  margin: 0;
   font-family: var(--font-display);
 }
 
-.topbar__overlay-row1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  width: 100%;
-  max-width: 320px;
-  justify-items: center;
+.topbar__overlay-close {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+
+  &:hover {
+    color: var(--ink);
+  }
 }
 
-.topbar__overlay-btn {
-  width: 120px;
-  height: 120px;
-  flex: none;
+.topbar__overlay-list {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.topbar__overlay-item {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--surface-alt);
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 14px;
+  background: none;
   border: none;
-  border-bottom: 4px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  color: var(--ink-soft);
-  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.15s ease;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   &:hover {
     background: var(--surface-hover);
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
   }
 
   &:active {
-    border-bottom-width: 0;
-    transform: translateY(2px);
+    background: var(--surface-alt);
   }
+}
 
-  .topbar__btn-icon {
-    font-size: 38px;
-    color: inherit;
-  }
+.topbar__overlay-item-label {
+  color: inherit;
+}
 
-  .topbar__btn-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: inherit;
-    font-family: var(--font-display);
-  }
+.topbar__overlay-item-icon {
+  color: var(--ink-soft);
+  font-size: 18px;
+  flex: none;
 }
 
 // ============================================================
-// BREAKPOINTS - OVERLAY
+// BREAKPOINTS - PANEL LATERAL
 // ============================================================
 
-@media (min-width: 600px) {
-  .topbar__overlay-row1 {
-    grid-template-columns: repeat(3, auto);
-    max-width: none;
-  }
-}
-
-@include respond(lg) {
+@media (min-width: 1024px) {
   .topbar__overlay-inner {
-    gap: 30px;
-    max-width: calc(100vw - 40px);
+    width: 360px;
   }
-  
-  .topbar__overlay-row1 {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 42px;
-    width: max-content !important;
-  }
-
-  .topbar__overlay-btn {
-    width: 130px;
-    height: 130px;
-    flex: 0 0 130px !important;
-
-    .topbar__btn-icon { font-size: 42px; }
-    .topbar__btn-title { font-size: 17px; }
+  .topbar__overlay-item {
+    padding: 18px 16px;
+    font-size: 17px;
   }
 }
-
-@include respond(xl) {
-  .topbar__overlay-inner {
-    gap: 38px;
-  }
-  .topbar__overlay-row1 {
-    gap: 64px;
-  }
-  .topbar__overlay-btn {
-    width: 150px;
-    height: 150px;
-    flex: 0 0 150px !important;
-    gap: 14px;
-
-    .topbar__btn-icon { font-size: 48px; }
-    .topbar__btn-title { font-size: 19px; }
-  }
-}
-
-@media (min-width: 1920px) {
-  .topbar__overlay-row1 {
-    gap: 80px;
-  }
-  .topbar__overlay-btn {
-    width: 160px;
-    height: 160px;
-    flex: 0 0 160px !important;
-
-    .topbar__btn-icon { font-size: 52px; }
-    .topbar__btn-title { font-size: 20px; }
-  }
-}
-
-@media (max-width: 767px) {
-  .topbar__overlay-inner {
-    width: 100%;
-    max-width: 100%;
-    gap: 20px;
-  }
-  .topbar__overlay-row1 {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    width: 100% !important;
-    max-width: 280px !important;
-    gap: 14px;
-  }
-  .topbar__overlay-btn {
-    width: 120px;
-    height: 105px;
-    min-width: 120px;
-    max-width: 120px;
-    min-height: 105px;
-    max-height: 105px;
-    flex: none !important;
-
-    .topbar__btn-icon { font-size: 32px; }
-    .topbar__btn-title { font-size: 14px; }
-  }
-}
-

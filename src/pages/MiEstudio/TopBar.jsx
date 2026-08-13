@@ -40,28 +40,30 @@ export default function TopBar({
   const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(curso)}&tema=${encodeURIComponent(tema)}`;
   const repasoTo = "/repaso";
 
+  // Agregamos 'fullLabel' para que se vea el nombre completo en el celular
   const botonesPrincipales = [
-    { title: "Mini cronómetro", label: "Timer", icon: "fa-solid fa-clock", onClick: onTogglePomodoroMini },
-    { title: "Ir al Pomodoro", label: "Pomo", icon: "fa-solid fa-calendar-alt", to: pomodoroTo },
-    { title: "Ir a Mis Repasos", label: "Repaso", icon: "fa-solid fa-brain", to: repasoTo },
-    { title: "Buscar otro tema", label: "Buscar", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
-    { title: "Guardar", label: "Guardar", icon: "fa-solid fa-bookmark", onClick: onGuardarRepaso }
+    { title: "Mini cronómetro", label: "Timer", fullLabel: "Mini cronómetro", icon: "fa-solid fa-clock", onClick: onTogglePomodoroMini },
+    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: pomodoroTo },
+    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: repasoTo },
+    { title: "Buscar otro tema", label: "Buscar", fullLabel: "Buscar tema", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
+    { title: "Guardar", label: "Guardar", fullLabel: "Guardar progreso", icon: "fa-solid fa-bookmark", onClick: onGuardarRepaso }
   ];
 
   const botonesVisibles = stage === "question" ? [] : botonesPrincipales;
 
+  // Agregamos 'fullLabel' a las opciones de configuración también
   const configButtons = [
-    { icon: "fas fa-play", label: "Continuar", onClick: () => { if (repasoQuizActivo) onSalirDeRepaso(); } },
-    { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", onClick: onToggleFullscreen },
+    { icon: "fas fa-play", label: "Continuar", fullLabel: "Continuar repaso", onClick: () => { if (repasoQuizActivo) onSalirDeRepaso(); } },
+    { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", fullLabel: isFullscreen ? "Minimizar pantalla" : "Pantalla completa", onClick: onToggleFullscreen },
     // "Repasar" muestra las preguntas ya vistas de este tema, mezcladas.
     // Se puede abrir desde teoría o desde pregunta; MiEstudioPage se
     // encarga de cambiar a la vista de pregunta y volver si hace falta.
-    { icon: "fas fa-list-check", label: "Repasar", onClick: onVerPreguntasVistas },
-    { icon: "fas fa-rotate-left", label: "Reiniciar", onClick: onReiniciarTarjetas },
-    { icon: "fas fa-door-open", label: "Abandonar", onClick: onAbandonar }
+    { icon: "fas fa-list-check", label: "Repasar", fullLabel: "Ver preguntas vistas", onClick: onVerPreguntasVistas },
+    { icon: "fas fa-rotate-left", label: "Reiniciar", fullLabel: "Reiniciar tarjetas", onClick: onReiniciarTarjetas },
+    { icon: "fas fa-door-open", label: "Abandonar", fullLabel: "Abandonar sesión", onClick: onAbandonar }
   ];
 
-  // Renderizadores de UI
+  // Renderizadores de UI para la barra (usa 'label' corto)
   const renderBoton = (b, cls, closeFn = () => {}) => {
     const content = (
       <>
@@ -70,12 +72,8 @@ export default function TopBar({
       </>
     );
 
-    const handleClick = (e) => {
-      // Pasamos el evento para que botones como "Mini cronómetro" puedan
-      // saber en qué posición de la pantalla se hizo clic (y así abrir
-      // el widget justo debajo, sin importar si el botón está en la
-      // barra de escritorio o dentro del menú móvil).
-      if (b.onClick) b.onClick(e);
+    const handleClick = () => {
+      if (b.onClick) b.onClick();
       closeFn();
     };
 
@@ -86,19 +84,45 @@ export default function TopBar({
     );
   };
 
-  // Componente reutilizable para los modales (Overlays)
-  const OverlayMenu = ({ title, isOpen, onClose, children }) => {
-    if (!isOpen) return null;
-    return (
-      <div className="topbar__overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
-        <div className="topbar__overlay-inner">
-          <h3 className="topbar__overlay-title">{title}</h3>
-          {/* AQUÍ ESTABA EL ERROR: Cambié topbar__overlay-row a topbar__overlay-row1 para que coincida con tu SCSS */}
-          <div className="topbar__overlay-row1">
-            {children}
-          </div>
+  // Componente reutilizable para los paneles laterales
+  const SideDrawer = ({ title, isOpen, onClose, children }) => (
+    <div
+      className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+      aria-hidden={!isOpen}
+    >
+      <div className="topbar__drawer">
+        <div className="topbar__drawer-header">
+          <h3 className="topbar__drawer-title">{title}</h3>
+          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+        <div className="topbar__drawer-list">
+          {children}
         </div>
       </div>
+    </div>
+  );
+
+  // Renderizador para las filas del panel móvil (usa 'fullLabel')
+  const renderFila = (b, closeFn = () => {}) => {
+    const content = (
+      <>
+        <span className="topbar__drawer-item-label">{b.fullLabel || b.label}</span>
+        <i className={`${b.icon} topbar__drawer-item-icon`} />
+      </>
+    );
+
+    const handleClick = () => {
+      if (b.onClick) b.onClick();
+      closeFn();
+    };
+
+    return b.to ? (
+      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>
+    ) : (
+      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
     );
   };
 
@@ -139,17 +163,17 @@ export default function TopBar({
         )}
       </div>
 
-      {/* OVERLAY DEL MENÚ MÓVIL */}
+      {/* PANEL DEL MENÚ MÓVIL */}
       {botonesVisibles.length > 0 && (
-        <OverlayMenu title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
-          {botonesVisibles.map((b) => renderBoton(b, "topbar__overlay-btn", () => setMenuMobileOpen(false)))}
-        </OverlayMenu>
+        <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
+          {botonesVisibles.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+        </SideDrawer>
       )}
 
-      {/* OVERLAY DE CONFIGURACIÓN */}
-      <OverlayMenu title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
-        {configButtons.map((b) => renderBoton(b, "topbar__overlay-btn", () => setConfigOpen(false)))}
-      </OverlayMenu>
+      {/* PANEL DE CONFIGURACIÓN */}
+      <SideDrawer title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
+        {configButtons.map((b) => renderFila(b, () => setConfigOpen(false)))}
+      </SideDrawer>
     </div>
   );
 }

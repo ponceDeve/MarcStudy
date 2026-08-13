@@ -142,6 +142,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   min-width: 0;
   padding: 4px 8px;
   margin: 0;
@@ -153,7 +154,6 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s ease, color 0.2s ease;
-  gap: 5px;
 
   &:hover {
     color: var(--primary);
@@ -162,7 +162,7 @@
 
 .topbar__btn-icon {
   display: block;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1;
 }
 
@@ -262,6 +262,9 @@
     align-items: center;
     gap: 16px;
   }
+  .topbar__nav-btn {
+    padding: 5px 10px;
+  }
   .topbar__btn-icon {
     font-size: 20px;
   }
@@ -324,183 +327,132 @@
 }
 
 // ============================================================
-// OVERLAY (Menú y Configuración)
+// ============================================================
+// PANEL LATERAL (Menú y Configuración) — entra deslizando desde
+// la derecha, cada opción en una fila: texto a la izquierda,
+// ícono a la derecha.
 // ============================================================
 
-.topbar__overlay {
+.topbar__drawer-backdrop {
   position: fixed;
   inset: 0;
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: var(--overlay-strong);
-  backdrop-filter: blur(4px);
-  overflow: auto;
+  background: transparent;
+  pointer-events: none;
+  transition: background 0.25s ease;
+
+  &.is-open {
+    background: var(--overlay-strong);
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+  }
 }
 
-.topbar__overlay-inner {
+.topbar__drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(320px, 85vw);
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  width: max-content;
-  max-width: calc(100vw - 32px);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+
+  .topbar__drawer-backdrop.is-open & {
+    transform: translateX(0);
+  }
 }
 
-.topbar__overlay-title {
+.topbar__drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  flex: none;
+}
+
+.topbar__drawer-title {
   color: var(--ink);
-  font-size: 30px;
-  margin: 0 0 16px 0;
+  font-size: 22px;
+  margin: 0;
   font-family: var(--font-display);
 }
 
-.topbar__overlay-row1 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  width: 100%;
-  max-width: 320px;
-  justify-items: center;
+.topbar__drawer-close {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+
+  &:hover {
+    color: var(--ink);
+  }
 }
 
-.topbar__overlay-btn {
-  width: 120px;
-  height: 120px;
-  flex: none;
+.topbar__drawer-list {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.topbar__drawer-item {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--surface-alt);
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 14px;
+  background: none;
   border: none;
-  border-bottom: 4px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  color: var(--ink-soft);
-  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.15s ease;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   &:hover {
     background: var(--surface-hover);
-    border-color: var(--primary);
-    color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
   }
 
   &:active {
-    border-bottom-width: 0;
-    transform: translateY(2px);
+    background: var(--surface-alt);
   }
+}
 
-  .topbar__btn-icon {
-    font-size: 38px;
-    color: inherit;
-  }
+.topbar__drawer-item-label {
+  color: inherit;
+}
 
-  .topbar__btn-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: inherit;
-    font-family: var(--font-display);
-  }
+.topbar__drawer-item-icon {
+  color: var(--ink-soft);
+  font-size: 18px;
+  flex: none;
 }
 
 // ============================================================
-// BREAKPOINTS - OVERLAY
+// BREAKPOINTS - PANEL LATERAL
 // ============================================================
 
-@media (min-width: 600px) {
-  .topbar__overlay-row1 {
-    grid-template-columns: repeat(3, auto);
-    max-width: none;
+@media (min-width: 1024px) {
+  .topbar__drawer {
+    width: 360px;
+  }
+  .topbar__drawer-item {
+    padding: 18px 16px;
+    font-size: 17px;
   }
 }
-
-@include respond(lg) {
-  .topbar__overlay-inner {
-    gap: 30px;
-    max-width: calc(100vw - 40px);
-  }
-  
-  .topbar__overlay-row1 {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 42px;
-    width: max-content !important;
-  }
-
-  .topbar__overlay-btn {
-    width: 130px;
-    height: 130px;
-    flex: 0 0 130px !important;
-
-    .topbar__btn-icon { font-size: 42px; }
-    .topbar__btn-title { font-size: 17px; }
-  }
-}
-
-@include respond(xl) {
-  .topbar__overlay-inner {
-    gap: 38px;
-  }
-  .topbar__overlay-row1 {
-    gap: 64px;
-  }
-  .topbar__overlay-btn {
-    width: 150px;
-    height: 150px;
-    flex: 0 0 150px !important;
-    gap: 14px;
-
-    .topbar__btn-icon { font-size: 48px; }
-    .topbar__btn-title { font-size: 19px; }
-  }
-}
-
-@media (min-width: 1920px) {
-  .topbar__overlay-row1 {
-    gap: 80px;
-  }
-  .topbar__overlay-btn {
-    width: 160px;
-    height: 160px;
-    flex: 0 0 160px !important;
-
-    .topbar__btn-icon { font-size: 52px; }
-    .topbar__btn-title { font-size: 20px; }
-  }
-}
-
-@media (max-width: 767px) {
-  .topbar__overlay-inner {
-    width: 100%;
-    max-width: 100%;
-    gap: 20px;
-  }
-  .topbar__overlay-row1 {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    width: 100% !important;
-    max-width: 280px !important;
-    gap: 14px;
-  }
-  .topbar__overlay-btn {
-    width: 120px;
-    height: 105px;
-    min-width: 120px;
-    max-width: 120px;
-    min-height: 105px;
-    max-height: 105px;
-    flex: none !important;
-
-    .topbar__btn-icon { font-size: 32px; }
-    .topbar__btn-title { font-size: 14px; }
-  }
-}
-
