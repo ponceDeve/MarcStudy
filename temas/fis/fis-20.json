@@ -1,0 +1,1602 @@
+{
+  "curso": "Física",
+  "tema": "Movimiento Armónico Simple (MAS)",
+  "glosario": {
+    "MAS": "Movimiento rectilíneo, oscilatorio y periódico.",
+    "Elongación": "Distancia desde la posición de equilibrio al móvil.",
+    "Amplitud": "Máxima elongación alcanzada por la partícula oscilante.",
+    "Frecuencia Angular": "Velocidad angular del movimiento circular auxiliar asociado.",
+    "Periodo": "Tiempo necesario para completar una oscilación entera.",
+    "Fase Inicial": "Ángulo que determina la posición en el tiempo cero.",
+    "Fuerza Recuperadora": "Fuerza variable que siempre apunta a la posición central.",
+    "Péndulo Simple": "Sistema masa-cuerda que oscila bajo la gravedad.",
+    "Isobarismo": "Independencia del periodo respecto a la masa oscilante."
+  },
+  "theory": [
+    {
+      "titulo": "MAS I - Características Básicas",
+      "puntos": [
+        {
+          "texto": "MAS = Rectilíneo",
+          "explicacion": "El móvil se desplaza a lo largo de una línea recta sin desviarse."
+        },
+        {
+          "texto": "MAS = Oscilatorio",
+          "explicacion": "El móvil realiza un movimiento de ida y vuelta respecto a un punto central."
+        },
+        {
+          "texto": "MAS = Periódico",
+          "explicacion": "El ciclo de movimiento completo se repite en intervalos de tiempo iguales."
+        },
+        {
+          "texto": "MAS ✓ $\\vec{F}_{\\text{rec}}$",
+          "explicacion": "Está gobernado por una fuerza recuperadora que busca el equilibrio. Paso 1: Se identifica si el sistema tiene una fuerza restauradora proporcional al desplazamiento por la Ley de Hooke.\nPaso 2: Al soltar la masa, esta fuerza genera la aceleración hacia el centro."
+        },
+        {
+          "texto": "$X$ = Elongación",
+          "explicacion": "Mide la posición del móvil respecto a la Posición de Equilibrio (P.E, donde $X=0$)."
+        },
+        {
+          "texto": "$A$ = Amplitud",
+          "explicacion": "Es la máxima elongación positiva o negativa que alcanza el móvil en su trayectoria."
+        },
+        {
+          "texto": "$1 \\text{ Oscilación} \\rightarrow 4A$",
+          "explicacion": "Una oscilación completa (ida y vuelta) recorre cuatro veces la amplitud. Paso 1: El móvil va del centro al extremo ($1A$).\nPaso 2: Del extremo regresa al centro ($1A$).\nPaso 3: Pasa al otro extremo ($1A$) y vuelve al centro ($1A$), sumando $4A$."
+        }
+      ]
+    },
+    {
+      "titulo": "Frecuencia Angular, Frecuencia y Periodo",
+      "puntos": [
+        {
+          "texto": "$\\omega = \\sqrt{\\frac{K}{m}}$",
+          "explicacion": "Fórmula de la frecuencia angular para el sistema masa-resorte. Paso 1: Aplicamos $\\omega = \\sqrt{K/m}$ para relacionar la dureza del resorte con la inercia.\nPaso 2: Reemplazamos $K = 400 \\text{ N/m}$ y $m = 4 \\text{ kg}$, obteniendo $\\omega = \\sqrt{100} = 10 \\text{ rad/s}$."
+        },
+        {
+          "texto": "$f = \\frac{\\# \\text{oscilaciones}}{t}$",
+          "explicacion": "Calcula el número de ciclos completados por unidad de tiempo, medido en Hertz (Hz)."
+        },
+        {
+          "texto": "$T = \\frac{t}{\\# \\text{oscilaciones}}$",
+          "explicacion": "Calcula el tiempo necesario para dar una sola oscilación completa, medido en segundos (s)."
+        },
+        {
+          "texto": "$T = \\frac{1}{f}$",
+          "explicacion": "El periodo y la frecuencia lineal son magnitudes inversamente proporcionales."
+        },
+        {
+          "texto": "$\\omega = \\frac{2\\pi}{T}$",
+          "explicacion": "Relaciona la frecuencia angular y el periodo. Paso 1: Usamos la fórmula para hallar $\\omega$ si tenemos el periodo de oscilación.\nPaso 2: Si el periodo es $T = \\pi \\text{ s}$, operamos $\\omega = \\frac{2\\pi}{\\pi} = 2 \\text{ rad/s}$."
+        },
+        {
+          "texto": "$\\omega = 2\\pi f$",
+          "explicacion": "Relación directa entre la frecuencia angular y la frecuencia lineal."
+        }
+      ]
+    },
+    {
+      "titulo": "Cinemática del MAS: Rapidez y Aceleración",
+      "puntos": [
+        {
+          "texto": "Extremos $\\Rightarrow V=0$",
+          "explicacion": "En las posiciones $X = A$ y $X = -A$, el móvil se detiene momentáneamente para invertir su dirección."
+        },
+        {
+          "texto": "Extremos $\\Rightarrow a_{\\text{máx}}$",
+          "explicacion": "En las posiciones de máxima elongación, la fuerza recuperadora es máxima, por ende la aceleración es máxima."
+        },
+        {
+          "texto": "P.E. $\\Rightarrow a=0$",
+          "explicacion": "En la posición de equilibrio ($X=0$), el resorte no está deformado, la fuerza es nula y la aceleración es cero."
+        },
+        {
+          "texto": "P.E. $\\Rightarrow V_{\\text{máx}}$",
+          "explicacion": "Al pasar por el centro ($X=0$), toda la energía potencial se ha convertido en cinética, maximizando la velocidad."
+        },
+        {
+          "texto": "$V_{\\text{máx}} = \\omega \\cdot A$",
+          "explicacion": "Fórmula para la rapidez máxima. Paso 1: Ubicamos que el móvil está en $X=0$ para aplicar $V_{\\text{máx}} = \\omega A$.\nPaso 2: Con $\\omega = 5 \\text{ rad/s}$ y $A = 0.2 \\text{ m}$, calculamos $V_{\\text{máx}} = 1 \\text{ m/s}$."
+        },
+        {
+          "texto": "$a_{\\text{máx}} = \\omega^2 \\cdot A$",
+          "explicacion": "Fórmula para la aceleración máxima. Paso 1: Ubicamos al móvil en $X=A$ para usar $a_{\\text{máx}} = \\omega^2 A$.\nPaso 2: Si $\\omega = 2 \\text{ rad/s}$ y $A = 3 \\text{ m}$, entonces $a_{\\text{máx}} = (2)^2(3) = 12 \\text{ m/s}^2$."
+        },
+        {
+          "texto": "$V = \\omega \\sqrt{A^2 - X^2}$",
+          "explicacion": "Rapidez en cualquier posición. Paso 1: Identificamos amplitud y posición actual.\nPaso 2: Si $\\omega = 2 \\text{ rad/s}$, $A = 5 \\text{ m}$ y $X = 3 \\text{ m}$, operamos $V = 2 \\sqrt{25 - 9} = 2(4) = 8 \\text{ m/s}$."
+        },
+        {
+          "texto": "$\\vec{a} = -\\omega^2 \\vec{X}$",
+          "explicacion": "Aceleración en función de la posición. El signo negativo indica que la aceleración siempre se opone a la elongación."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones del Movimiento",
+      "puntos": [
+        {
+          "texto": "$X = A \\text{Sen}(\\omega t + \\alpha)$",
+          "explicacion": "Ecuación de la posición. Paso 1: Obtenemos $A$, $\\omega$ y $\\alpha$ de las condiciones iniciales.\nPaso 2: Evaluamos en el tiempo $t$ solicitado. Si $A=2$, $\\omega=\\pi$, $\\alpha=0$ y $t=0.5\\text{s}$, $X = 2\\text{Sen}(\\frac{\\pi}{2}) = 2 \\text{ m}$."
+        },
+        {
+          "texto": "$V = \\omega A \\text{Cos}(\\omega t + \\alpha)$",
+          "explicacion": "Ecuación de la velocidad, obtenida al derivar la posición respecto al tiempo."
+        },
+        {
+          "texto": "$\\vec{a} = -\\omega^2 A \\text{Sen}(\\omega t + \\alpha)$",
+          "explicacion": "Ecuación de la aceleración, obtenida al derivar la velocidad. Siempre es opuesta en fase a la posición."
+        },
+        {
+          "texto": "$\\alpha$ = Fase inicial",
+          "explicacion": "Ángulo de fase en $t=0$, determina desde qué posición exacta arranca el cronómetro."
+        },
+        {
+          "texto": "$X=0$ (der) $\\Rightarrow \\alpha = 0$",
+          "explicacion": "Si el móvil inicia en el centro y se dirige hacia la derecha, la fase inicial es $0$ radianes."
+        },
+        {
+          "texto": "$X=A \\Rightarrow \\alpha = \\frac{\\pi}{2}$",
+          "explicacion": "Si el cronómetro arranca cuando el móvil está en el extremo derecho, la fase es $90^\\circ$ o $\\pi/2$ radianes."
+        },
+        {
+          "texto": "$X=0$ (izq) $\\Rightarrow \\alpha = \\pi$",
+          "explicacion": "Si el móvil arranca en el centro pero yendo hacia la parte negativa, la fase es $180^\\circ$ o $\\pi$ radianes."
+        },
+        {
+          "texto": "$X=-A \\Rightarrow \\alpha = \\frac{3\\pi}{2}$",
+          "explicacion": "Si el movimiento se analiza empezando desde el extremo izquierdo, la fase es $270^\\circ$ o $3\\pi/2$ radianes."
+        }
+      ]
+    },
+    {
+      "titulo": "Dinámica y Energía del MAS (Teoría Ampliada)",
+      "puntos": [
+        {
+          "texto": "$\\vec{F}_{\\text{rec}} = -K \\vec{X}$",
+          "explicacion": "Ley de Hooke. Paso 1: Reconocemos que la fuerza es proporcional a la deformación.\nPaso 2: Si $K = 50 \\text{ N/m}$ y $X = 0.2 \\text{ m}$, la magnitud de la fuerza de retorno es $F = 50(0.2) = 10 \\text{ N}$."
+        },
+        {
+          "texto": "$E_m = \\frac{1}{2}KA^2$",
+          "explicacion": "Energía Mecánica total del sistema. Es constante en todo el recorrido si no hay fricción, evaluada en los extremos."
+        },
+        {
+          "texto": "$E_k = \\frac{1}{2}mV^2$",
+          "explicacion": "Energía Cinética. Varía con la posición; es máxima en el punto de equilibrio y nula en los extremos."
+        },
+        {
+          "texto": "$E_{pe} = \\frac{1}{2}KX^2$",
+          "explicacion": "Energía Potencial Elástica. Depende de la deformación instantánea del resorte en la posición $X$."
+        },
+        {
+          "texto": "$E_m = E_k + E_{pe}$",
+          "explicacion": "Principio de conservación de la energía. Paso 1: Igualamos la energía en dos puntos.\nPaso 2: Usamos $\\frac{1}{2}KA^2 = \\frac{1}{2}mV^2 + \\frac{1}{2}KX^2$ para despejar velocidades intermedias sin usar trigonometría."
+        }
+      ]
+    },
+    {
+      "titulo": "Péndulo Simple (Teoría Ampliada UNMSM)",
+      "puntos": [
+        {
+          "texto": "Péndulo Simple $\\approx$ MAS",
+          "explicacion": "Un péndulo ejecuta un MAS solamente si su ángulo de oscilación es menor o igual a $10^\\circ$ (pequeñas oscilaciones)."
+        },
+        {
+          "texto": "$T = 2\\pi\\sqrt{\\frac{L}{g}}$",
+          "explicacion": "Periodo del péndulo simple. Paso 1: Identificamos longitud $L$ y gravedad $g$.\nPaso 2: Si $L = 10 \\text{ m}$ y $g = 10 \\text{ m/s}^2$, $T = 2\\pi\\sqrt{10/10} = 2\\pi \\text{ s}$."
+        },
+        {
+          "texto": "$T$ ✓ Isobarismo",
+          "explicacion": "Propiedad clave: el periodo del péndulo es independiente de la masa colgante. Una masa de $1 \\text{ kg}$ o de $10 \\text{ kg}$ oscilarán en el mismo tiempo."
+        }
+      ]
+    },
+    {
+      "titulo": "Resolución de Problemas Complejos",
+      "puntos": [
+        {
+          "texto": "Hallar $\\alpha$ ✓ Condiciones en $t=0$",
+          "explicacion": "Problema Tipo 1: Determinar la ecuación. Paso 1: Leer el dato de posición inicial $X_0$.\nPaso 2: Usar $X_0 = A \\text{Sen}(\\alpha)$ para despejar el ángulo $\\alpha$, cuidando el sentido de la velocidad para elegir el cuadrante."
+        },
+        {
+          "texto": "$\\omega = \\frac{a_{\\text{máx}}}{V_{\\text{máx}}}$",
+          "explicacion": "Problema Tipo 2: Atajo matemático. Paso 1: Si dan $a_{\\text{máx}}$ y $V_{\\text{máx}}$, no es necesario hallar la amplitud primero.\nPaso 2: Dividimos ambos valores directamente ya que $\\frac{\\omega^2 A}{\\omega A} = \\omega$ para hallar la frecuencia angular."
+        },
+        {
+          "texto": "$g_{\\text{efectiva}} = g \\pm a$",
+          "explicacion": "Problema Tipo 3: Péndulo en ascensor. Paso 1: Identificar si el ascensor acelera hacia arriba (se suma $+a$) o hacia abajo (se resta $-a$).\nPaso 2: Reemplazar $g_{\\text{efectiva}}$ en la fórmula de $T$ del péndulo."
+        },
+        {
+          "texto": "$K_{\\text{nuevo}} = n \\cdot K$",
+          "explicacion": "Problema Tipo 4: Resorte cortado. Paso 1: Si un resorte de longitud $L$ se corta en $n$ partes iguales, cada pedazo es más rígido.\nPaso 2: La nueva constante de cada fragmento será $n$ veces la constante $K$ original."
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "verdadero_falso",
+      "q": "El Movimiento Armónico Simple (MAS) se caracteriza por tener una trayectoria curvilínea.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Seleccione los términos correctos sobre la trayectoria.",
+      "textoConEspacios": "El MAS es un movimiento estrictamente 1, a diferencia del movimiento circular que es 2.",
+      "opts": [
+        [
+          "rectilíneo",
+          "curvilíneo"
+        ],
+        [
+          "aleatorio",
+          "constante"
+        ],
+        [
+          "curvilíneo",
+          "rectilíneo"
+        ],
+        [
+          "parabólico",
+          "rectilíneo"
+        ],
+        [
+          "unidimensional",
+          "unidimensional"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: rectilíneo, curvilíneo.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Qué característica define físicamente a un movimiento oscilatorio?",
+      "opts": [
+        "Va siempre en una sola dirección.",
+        "Realiza un recorrido de ida y vuelta respecto a un punto central.",
+        "Mantiene una velocidad constante.",
+        "Solo ocurre en el vacío.",
+        "No tiene posición de equilibrio."
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: Realiza un recorrido de ida y vuelta respecto a un punto central.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un movimiento circular uniforme (MCU) es considerado un movimiento oscilatorio unidimensional.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Complete la definición de movimiento periódico.",
+      "textoConEspacios": "El ciclo de movimiento completo se repite en 1 de 2 iguales.",
+      "opts": [
+        [
+          "intervalos",
+          "tiempo"
+        ],
+        [
+          "espacios",
+          "distancia"
+        ],
+        [
+          "ondas",
+          "frecuencia"
+        ],
+        [
+          "fases",
+          "amplitud"
+        ],
+        [
+          "vectores",
+          "posición"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: intervalos, tiempo.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál de los siguientes ejemplos representa mejor un movimiento periódico?",
+      "opts": [
+        "Una hoja cayendo de un árbol.",
+        "Un automóvil frenando en un semáforo.",
+        "El giro de las manecillas de un reloj funcional.",
+        "El despegue de un cohete.",
+        "El deslizamiento de un bloque con fricción térmica."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: El giro de las manecillas de un reloj funcional.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En el MAS, la fuerza recuperadora $\\vec{F}_{\\text{rec}}$ siempre apunta alejándose de la posición de equilibrio.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un bloque sujeto a un resorte horizontal de $K = 300 \\text{ N/m}$ se desplaza $0.05 \\text{ m}$. Hallar la magnitud de la fuerza recuperadora.",
+      "opts": [
+        "$10 \\text{ N}$",
+        "$15 \\text{ N}$",
+        "$20 \\text{ N}$",
+        "$25 \\text{ N}$",
+        "$300 \\text{ N}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $15 \\text{ N}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Desde dónde se mide exactamente la elongación $X$ en un oscilador armónico?",
+      "opts": [
+        "Desde el punto de máxima compresión.",
+        "Desde la Posición de Equilibrio (P.E.).",
+        "Desde el extremo derecho exclusivamente.",
+        "Desde el punto de máxima velocidad.",
+        "Desde cualquier punto de retorno."
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: Desde la Posición de Equilibrio (P.E.).\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "La elongación $X$ puede tomar valores negativos y positivos dependiendo del lado de la posición de equilibrio en que se encuentre el móvil.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Definición de amplitud.",
+      "textoConEspacios": "La amplitud $A$ es la máxima 1 que alcanza el móvil durante su 2.",
+      "opts": [
+        [
+          "elongación",
+          "trayectoria"
+        ],
+        [
+          "velocidad",
+          "fase"
+        ],
+        [
+          "aceleración",
+          "periodo"
+        ],
+        [
+          "masa",
+          "recorrido"
+        ],
+        [
+          "fuerza",
+          "tiempo"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: elongación, trayectoria.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál es la principal diferencia entre elongación instantánea $X$ y amplitud $A$?",
+      "opts": [
+        "Son exactamente lo mismo en todo momento.",
+        "$A$ es constante en un MAS sin fricción, $X$ varía continuamente.",
+        "$X$ siempre es mayor que $A$.",
+        "$A$ depende de la masa, $X$ depende del resorte.",
+        "$X$ es un escalar y $A$ un vector."
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $A$ es constante en un MAS sin fricción, $X$ varía continuamente.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un MAS, si la amplitud es $A = 8 \\text{ cm}$, ¿cuál es la distancia total recorrida en una oscilación completa?",
+      "opts": [
+        "$8 \\text{ cm}$",
+        "$16 \\text{ cm}$",
+        "$24 \\text{ cm}$",
+        "$32 \\text{ cm}$",
+        "$64 \\text{ cm}$"
+      ],
+      "correct": 3,
+      "explicacion": "Resultado final: $32 \\text{ cm}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Complete la relación de distancias.",
+      "textoConEspacios": "Si el recorrido total en 3 oscilaciones es $60 \\text{ cm}$, la amplitud del MAS es 1.",
+      "opts": [
+        [
+          "$5 \\text{ cm}$"
+        ],
+        [
+          "$10 \\text{ cm}$"
+        ],
+        [
+          "$15 \\text{ cm}$"
+        ],
+        [
+          "$20 \\text{ cm}$"
+        ],
+        [
+          "$4 \\text{ cm}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $5 \\text{ cm}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema masa-resorte tiene $K = 500 \\text{ N/m}$ y una masa de $m = 5 \\text{ kg}$. Calcular su frecuencia angular $\\omega$.",
+      "opts": [
+        "$5 \\text{ rad/s}$",
+        "$10 \\text{ rad/s}$",
+        "$25 \\text{ rad/s}$",
+        "$50 \\text{ rad/s}$",
+        "$100 \\text{ rad/s}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $10 \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Dado un MAS con $\\omega = 4 \\text{ rad/s}$ y una masa $m = 2 \\text{ kg}$, la constante de rigidez $K$ es obligatoriamente $32 \\text{ N/m}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Determine la frecuencia lineal.",
+      "textoConEspacios": "Un motor vibra completando 180 oscilaciones en $60 \\text{ s}$. Su frecuencia lineal es 1.",
+      "opts": [
+        [
+          "$3 \\text{ Hz}$"
+        ],
+        [
+          "$6 \\text{ Hz}$"
+        ],
+        [
+          "$120 \\text{ Hz}$"
+        ],
+        [
+          "$10800 \\text{ Hz}$"
+        ],
+        [
+          "$0.33 \\text{ Hz}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $3 \\text{ Hz}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un sistema oscila con una frecuencia $f = 12 \\text{ Hz}$, ¿cuántas oscilaciones completas da en medio minuto?",
+      "opts": [
+        "$6$",
+        "$120$",
+        "$360$",
+        "$720$",
+        "$60$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $360$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un péndulo ejecuta 20 oscilaciones en $40 \\text{ s}$. ¿Cuál es su periodo $T$?",
+      "opts": [
+        "$0.5 \\text{ s}$",
+        "$1 \\text{ s}$",
+        "$2 \\text{ s}$",
+        "$4 \\text{ s}$",
+        "$800 \\text{ s}$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $2 \\text{ s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si un oscilador realiza 5 ciclos completos en $2 \\text{ s}$, entonces su periodo $T$ es exactamente $0.4 \\text{ s}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Relación entre periodo y frecuencia.",
+      "textoConEspacios": "Si la frecuencia lineal del MAS es $50 \\text{ Hz}$, su periodo es 1.",
+      "opts": [
+        [
+          "$0.02 \\text{ s}$"
+        ],
+        [
+          "$0.05 \\text{ s}$"
+        ],
+        [
+          "$50 \\text{ s}$"
+        ],
+        [
+          "$2 \\text{ s}$"
+        ],
+        [
+          "$0.5 \\text{ s}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $0.02 \\text{ s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si el periodo de un MAS es $T = 0.02 \\text{ s}$, ¿cuál es su frecuencia lineal en Hertz?",
+      "opts": [
+        "$2 \\text{ Hz}$",
+        "$5 \\text{ Hz}$",
+        "$20 \\text{ Hz}$",
+        "$50 \\text{ Hz}$",
+        "$100 \\text{ Hz}$"
+      ],
+      "correct": 3,
+      "explicacion": "Resultado final: $50 \\text{ Hz}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un oscilador presenta un periodo $T = 0.5\\pi \\text{ s}$. Hallar su frecuencia angular $\\omega$.",
+      "opts": [
+        "$1 \\text{ rad/s}$",
+        "$2 \\text{ rad/s}$",
+        "$4 \\text{ rad/s}$",
+        "$0.25 \\text{ rad/s}$",
+        "$4\\pi \\text{ rad/s}$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $4 \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si en un oscilador el periodo se duplica, su frecuencia angular $\\omega$ se reduce exactamente a la mitad.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Calcule la frecuencia angular.",
+      "textoConEspacios": "Dado un MAS con $f = \\frac{10}{\\pi} \\text{ Hz}$, el valor de su $\\omega$ es 1.",
+      "opts": [
+        [
+          "$20 \\text{ rad/s}$"
+        ],
+        [
+          "$10 \\text{ rad/s}$"
+        ],
+        [
+          "$5 \\text{ rad/s}$"
+        ],
+        [
+          "$\\frac{20}{\\pi^2} \\text{ rad/s}$"
+        ],
+        [
+          "$\\pi \\text{ rad/s}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $20 \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema oscila con una frecuencia angular $\\omega = 100\\pi \\text{ rad/s}$. Hallar su frecuencia lineal $f$.",
+      "opts": [
+        "$25 \\text{ Hz}$",
+        "$50 \\text{ Hz}$",
+        "$100 \\text{ Hz}$",
+        "$200 \\text{ Hz}$",
+        "$50\\pi \\text{ Hz}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $50 \\text{ Hz}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En las posiciones de máxima amplitud ($X = \\pm A$), la velocidad de la partícula es cero momentáneamente.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál es el estado de la energía cinética del móvil exactamente en los extremos de su trayectoria ($X = A$)?",
+      "opts": [
+        "Es máxima.",
+        "Es igual a la energía potencial.",
+        "Es nula ($E_k = 0$).",
+        "Es negativa.",
+        "Es la mitad de la energía mecánica total."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: Es nula ($E_k = 0$).\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Ubicación de la aceleración máxima.",
+      "textoConEspacios": "La magnitud de la aceleración alcanza su valor máximo en 1.",
+      "opts": [
+        [
+          "los extremos del movimiento ($X = \\pm A$)"
+        ],
+        [
+          "la posición de equilibrio ($X = 0$)"
+        ],
+        [
+          "la posición $X = A/2$"
+        ],
+        [
+          "cualquier punto de la trayectoria"
+        ],
+        [
+          "el punto de máxima velocidad"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: los extremos del movimiento ($X = \\pm A$).\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Dado que en los extremos la fuerza recuperadora es máxima, obligatoriamente la aceleración también debe ser máxima por la Segunda Ley de Newton.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En la Posición de Equilibrio (P.E.), ¿cuál es el valor de la aceleración neta de la partícula?",
+      "opts": [
+        "$a = -\\omega^2 A$",
+        "$a = \\omega^2 A$",
+        "$a = 0$",
+        "$a = g$",
+        "Depende de la masa de la partícula."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $a = 0$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Complete la relación en la posición central.",
+      "textoConEspacios": "En la posición de equilibrio ($X=0$), la aceleración es nula porque la suma de fuerzas es 1.",
+      "opts": [
+        [
+          "cero"
+        ],
+        [
+          "máxima"
+        ],
+        [
+          "constante"
+        ],
+        [
+          "proporcional a la masa"
+        ],
+        [
+          "infinita"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: cero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Al cruzar por el punto central ($X=0$), la partícula alcanza su rapidez máxima $V_{\\text{máx}}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Seleccione la relación correcta en $X = 0$.",
+      "opts": [
+        "Energía cinética máxima implica velocidad cero.",
+        "La velocidad es máxima debido a que la energía cinética es máxima.",
+        "La energía potencial es máxima, maximizando la velocidad.",
+        "La rapidez es mínima porque la aceleración es nula.",
+        "No existe relación entre la velocidad y la posición."
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: La velocidad es máxima debido a que la energía cinética es máxima.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Calcule la rapidez máxima para un MAS donde $A = 0.2 \\text{ m}$ y $\\omega = 5 \\text{ rad/s}$.",
+      "opts": [
+        "$0.5 \\text{ m/s}$",
+        "$1 \\text{ m/s}$",
+        "$2.5 \\text{ m/s}$",
+        "$10 \\text{ m/s}$",
+        "$0.04 \\text{ m/s}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $1 \\text{ m/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Despeje de la frecuencia angular.",
+      "textoConEspacios": "Si $V_{\\text{máx}} = 4 \\text{ m/s}$ y $A = 0.5 \\text{ m}$, el valor de $\\omega$ es 1.",
+      "opts": [
+        [
+          "$8 \\text{ rad/s}$"
+        ],
+        [
+          "$2 \\text{ rad/s}$"
+        ],
+        [
+          "$0.125 \\text{ rad/s}$"
+        ],
+        [
+          "$4 \\text{ rad/s}$"
+        ],
+        [
+          "$16 \\text{ rad/s}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $8 \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Para un oscilador con $\\omega = 3 \\text{ rad/s}$ y $A = 2 \\text{ m}$, su aceleración máxima es $18 \\text{ m/s}^2$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se sabe que $a_{\\text{máx}} = 10 \\text{ m/s}^2$ y $\\omega = 2 \\text{ rad/s}$. Hallar la amplitud $A$ del movimiento.",
+      "opts": [
+        "$2.5 \\text{ m}$",
+        "$5 \\text{ m}$",
+        "$20 \\text{ m}$",
+        "$40 \\text{ m}$",
+        "$0.4 \\text{ m}$"
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $2.5 \\text{ m}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un móvil en MAS tiene $\\omega = 2 \\text{ rad/s}$ y $A = 5 \\text{ m}$. Calcule su rapidez cuando pasa por la posición $X = 3 \\text{ m}$.",
+      "opts": [
+        "$4 \\text{ m/s}$",
+        "$6 \\text{ m/s}$",
+        "$8 \\text{ m/s}$",
+        "$10 \\text{ m/s}$",
+        "$16 \\text{ m/s}$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $8 \\text{ m/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Posición de rapidez media.",
+      "textoConEspacios": "La rapidez de la partícula se reduce a la mitad de su valor máximo cuando la posición $X$ es 1.",
+      "opts": [
+        [
+          "$\\frac{\\sqrt{3}}{2} A$"
+        ],
+        [
+          "$\\frac{1}{2} A$"
+        ],
+        [
+          "$\\frac{\\sqrt{2}}{2} A$"
+        ],
+        [
+          "$A$"
+        ],
+        [
+          "$\\frac{1}{4} A$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $\\frac{\\sqrt{3}}{2} A$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un oscilador posee $\\omega = 4 \\text{ rad/s}$, hallar el vector aceleración $\\vec{a}$ cuando la posición es $X = -2 \\text{ m}$.",
+      "opts": [
+        "$-32 \\text{ m/s}^2$",
+        "$32 \\text{ m/s}^2$",
+        "$-16 \\text{ m/s}^2$",
+        "$16 \\text{ m/s}^2$",
+        "$8 \\text{ m/s}^2$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $32 \\text{ m/s}^2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si un oscilador con $\\omega = 2 \\text{ rad/s}$ pasa por $X = 3 \\text{ m}$, su aceleración en ese instante es de $+12 \\text{ m/s}^2$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La ecuación de posición es $X = A \\text{Sen}(\\omega t + \\alpha)$. Evalúe la posición para $A = 3 \\text{ m}$, $\\omega = \\pi \\text{ rad/s}$, $\\alpha = 0$, en $t = 0.5 \\text{ s}$.",
+      "opts": [
+        "$0 \\text{ m}$",
+        "$1.5 \\text{ m}$",
+        "$3 \\text{ m}$",
+        "$-3 \\text{ m}$",
+        "$-1.5 \\text{ m}$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $3 \\text{ m}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Extracción de parámetros de la ecuación de onda.",
+      "textoConEspacios": "Dada la ecuación $X = 4 \\text{Sen}(2\\pi t + \\frac{\\pi}{3})$ en SI, la amplitud es 1 y la frecuencia angular es 2.",
+      "opts": [
+        [
+          "$4 \\text{ m}$",
+          "$2\\pi \\text{ rad/s}$"
+        ],
+        [
+          "$2 \\text{ m}$",
+          "$\\pi/3 \\text{ rad/s}$"
+        ],
+        [
+          "$4 \\text{ m}$",
+          "$2 \\text{ rad/s}$"
+        ],
+        [
+          "$4\\pi \\text{ m}$",
+          "$2\\pi \\text{ rad/s}$"
+        ],
+        [
+          "$2\\pi \\text{ m}$",
+          "$4 \\text{ rad/s}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $4 \\text{ m}$, $2\\pi \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Dada la ecuación de velocidad $V = 10 \\text{Cos}(\\pi t)$ en el SI, en el tiempo $t = 1 \\text{ s}$ la velocidad será exactamente $-10 \\text{ m/s}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Identifique la ecuación correcta de la velocidad al derivar $X = 5 \\text{Sen}(4t)$ en el SI.",
+      "opts": [
+        "$V = 20 \\text{Sen}(4t)$",
+        "$V = -20 \\text{Cos}(4t)$",
+        "$V = 20 \\text{Cos}(4t)$",
+        "$V = 5 \\text{Cos}(4t)$",
+        "$V = -5 \\text{Sen}(4t)$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $V = 20 \\text{Cos}(4t)$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Evaluación de la aceleración.",
+      "textoConEspacios": "Para una ecuación de posición con $A = 2$, $\\omega = 2$, y $\\alpha = \\frac{\\pi}{6}$, la aceleración en $t = 0 \\text{ s}$ es 1.",
+      "opts": [
+        [
+          "$-4 \\text{ m/s}^2$"
+        ],
+        [
+          "$4 \\text{ m/s}^2$"
+        ],
+        [
+          "$-8 \\text{ m/s}^2$"
+        ],
+        [
+          "$8 \\text{ m/s}^2$"
+        ],
+        [
+          "$-2 \\text{ m/s}^2$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $-4 \\text{ m/s}^2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Vincule las funciones de posición $X(t)$ con sus correspondientes funciones de aceleración $\\vec{a}(t)$.",
+      "columnaA": [
+        "I. $X = 2 \\text{Sen}(3t)$",
+        "II. $X = 4 \\text{Sen}(2t)$",
+        "III. $X = 3 \\text{Sen}(t)$"
+      ],
+      "columnaB": [
+        "a. $\\vec{a} = -3 \\text{Sen}(t)$",
+        "b. $\\vec{a} = -18 \\text{Sen}(3t)$",
+        "c. $\\vec{a} = -16 \\text{Sen}(2t)$"
+      ],
+      "opts": [
+        "Ib, IIc, IIIa",
+        "Ia, IIb, IIIc",
+        "Ic, IIa, IIIb",
+        "Ib, IIa, IIIc",
+        "Ic, IIb, IIIa"
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: Ib, IIc, IIIa.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "La fase inicial $\\alpha$ está determinada exclusivamente por la posición y dirección de movimiento en el instante $t = 0$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Qué parámetros son absolutamente necesarios conocer en $t=0$ para fijar el valor unívoco de la fase inicial $\\alpha$?",
+      "opts": [
+        "Solo la masa y la amplitud.",
+        "Solo la posición inicial.",
+        "La posición inicial y el sentido de la velocidad.",
+        "El periodo y la frecuencia angular.",
+        "La energía mecánica del sistema."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: La posición inicial y el sentido de la velocidad.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Fase inicial desde el origen.",
+      "textoConEspacios": "Si en $t=0$ el móvil parte de la posición de equilibrio hacia la derecha, la fase inicial es 1 radianes.",
+      "opts": [
+        [
+          "$0$"
+        ],
+        [
+          "$\\pi/2$"
+        ],
+        [
+          "$\\pi$"
+        ],
+        [
+          "$3\\pi/2$"
+        ],
+        [
+          "$2\\pi$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $0$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un inicio de movimiento desde $X=0$ con velocidad dirigida a la derecha equivale matemáticamente a una fase $\\alpha = \\pi$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si el cronómetro arranca justo cuando se suelta la masa desde el extremo derecho ($X=A$), ¿cuál es la fase inicial?",
+      "opts": [
+        "$\\alpha = 0$",
+        "$\\alpha = \\pi/2$",
+        "$\\alpha = \\pi$",
+        "$\\alpha = 3\\pi/2$",
+        "$\\alpha = 2\\pi$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $\\alpha = \\pi/2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Valor en radianes de la fase extrema derecha.",
+      "textoConEspacios": "El ángulo de fase inicial para un arranque en reposo desde la elongación positiva máxima es 1.",
+      "opts": [
+        [
+          "$\\pi/2$"
+        ],
+        [
+          "$\\pi$"
+        ],
+        [
+          "$3\\pi/2$"
+        ],
+        [
+          "$0$"
+        ],
+        [
+          "$\\pi/4$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $\\pi/2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si la partícula inicia en el centro ($X=0$) pero se mueve hacia la izquierda, la fase inicial asume un valor de $\\pi$ radianes.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Qué describe físicamente un oscilador que arranca con $\\alpha = \\pi$?",
+      "opts": [
+        "Parte del extremo izquierdo hacia el centro.",
+        "Parte del extremo derecho hacia el centro.",
+        "Parte del origen con velocidad dirigida a la zona negativa.",
+        "Parte del origen con velocidad dirigida a la zona positiva.",
+        "Está detenido permanentemente en el origen."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: Parte del origen con velocidad dirigida a la zona negativa.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Inicio en el extremo negativo.",
+      "textoConEspacios": "Cuando el análisis inicia en $X=-A$, la fase asignada es 1.",
+      "opts": [
+        [
+          "$3\\pi/2$"
+        ],
+        [
+          "$\\pi/2$"
+        ],
+        [
+          "$\\pi$"
+        ],
+        [
+          "$0$"
+        ],
+        [
+          "$2\\pi$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $3\\pi/2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Una fase inicial de $270^\\circ$ es matemáticamente incompatible con una posición inicial en el extremo izquierdo ($X = -A$).",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un resorte de $K = 200 \\text{ N/m}$ se comprime a la posición $X = -0.1 \\text{ m}$. Calcule la magnitud y dirección de la fuerza recuperadora.",
+      "opts": [
+        "$-20 \\text{ N}$ (hacia la izquierda)",
+        "$20 \\text{ N}$ (hacia la derecha)",
+        "$-2 \\text{ N}$ (hacia la izquierda)",
+        "$2 \\text{ N}$ (hacia la derecha)",
+        "$2000 \\text{ N}$ (hacia la derecha)"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $20 \\text{ N}$ (hacia la derecha).\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Determinación de constante elástica.",
+      "textoConEspacios": "Si se aplica una fuerza de $50 \\text{ N}$ para desplazar un resorte ideal $0.2 \\text{ m}$, el valor de $K$ es 1.",
+      "opts": [
+        [
+          "$250 \\text{ N/m}$"
+        ],
+        [
+          "$10 \\text{ N/m}$"
+        ],
+        [
+          "$100 \\text{ N/m}$"
+        ],
+        [
+          "$500 \\text{ N/m}$"
+        ],
+        [
+          "$25 \\text{ N/m}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $250 \\text{ N/m}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema MAS presenta $K = 100 \\text{ N/m}$ y $A = 0.4 \\text{ m}$. Calcular su Energía Mecánica total.",
+      "opts": [
+        "$4 \\text{ J}$",
+        "$8 \\text{ J}$",
+        "$16 \\text{ J}$",
+        "$32 \\text{ J}$",
+        "$20 \\text{ J}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $8 \\text{ J}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "De acuerdo a la fórmula $E_m = \\frac{1}{2}KA^2$, si la amplitud de un oscilador se duplica, su energía total se cuadruplica.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Energía cinética en el equilibrio.",
+      "textoConEspacios": "Una masa de $2 \\text{ kg}$ pasa por la P.E. a $3 \\text{ m/s}$. Su energía cinética máxima es 1.",
+      "opts": [
+        [
+          "$9 \\text{ J}$"
+        ],
+        [
+          "$6 \\text{ J}$"
+        ],
+        [
+          "$3 \\text{ J}$"
+        ],
+        [
+          "$18 \\text{ J}$"
+        ],
+        [
+          "$1.5 \\text{ J}$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $9 \\text{ J}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si la energía cinética instantánea de una partícula es $16 \\text{ J}$ cuando su velocidad es $4 \\text{ m/s}$, despeje la masa de la partícula.",
+      "opts": [
+        "$0.5 \\text{ kg}$",
+        "$1 \\text{ kg}$",
+        "$2 \\text{ kg}$",
+        "$4 \\text{ kg}$",
+        "$8 \\text{ kg}$"
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: $2 \\text{ kg}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Para un resorte de $K = 400 \\text{ N/m}$ evaluado en la posición $X = 0.1 \\text{ m}$, la energía potencial elástica almacenada es exactamente $2 \\text{ J}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿En qué posiciones de la trayectoria la energía potencial elástica alcanza su valor máximo absoluto?",
+      "opts": [
+        "En el punto de equilibrio ($X=0$).",
+        "En los puntos intermedios ($X = \\pm A/2$).",
+        "En los extremos del movimiento ($X = \\pm A$).",
+        "La energía potencial es constante.",
+        "Donde la aceleración es nula."
+      ],
+      "correct": 2,
+      "explicacion": "Resultado final: En los extremos del movimiento ($X = \\pm A$).\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Masa de $1 \\text{ kg}$, $K = 100 \\text{ N/m}$, $A = 0.5 \\text{ m}$. Utilice la conservación de energía para hallar la rapidez en $X = 0.3 \\text{ m}$.",
+      "opts": [
+        "$1 \\text{ m/s}$",
+        "$2 \\text{ m/s}$",
+        "$3 \\text{ m/s}$",
+        "$4 \\text{ m/s}$",
+        "$5 \\text{ m/s}$"
+      ],
+      "correct": 3,
+      "explicacion": "Resultado final: $4 \\text{ m/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Equilibrio energético.",
+      "textoConEspacios": "La energía cinética es exactamente igual a la energía potencial elástica en la posición $X = $ 1.",
+      "opts": [
+        [
+          "$\\frac{\\sqrt{2}}{2} A$"
+        ],
+        [
+          "$\\frac{1}{2} A$"
+        ],
+        [
+          "$\\frac{\\sqrt{3}}{2} A$"
+        ],
+        [
+          "$A$"
+        ],
+        [
+          "$\\frac{1}{4} A$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $\\frac{\\sqrt{2}}{2} A$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "El modelo de Péndulo Simple se considera un MAS válido sin restricciones de ángulo de oscilación inicial.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Qué ocurre matemáticamente con un péndulo si se suelta desde un ángulo inicial de $45^\\circ$?",
+      "opts": [
+        "Sigue ejecutando un MAS perfecto.",
+        "Oscila, pero ya no puede ser modelado con las ecuaciones de MAS.",
+        "Se detiene al cruzar el equilibrio.",
+        "Rompe el hilo por exceso de tensión.",
+        "Su periodo se vuelve independiente de la gravedad."
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: Oscila, pero ya no puede ser modelado con las ecuaciones de MAS.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un péndulo tiene $L = 2.5 \\text{ m}$ en un lugar donde $g = \\pi^2 \\text{ m/s}^2$. Calcule su periodo $T$.",
+      "opts": [
+        "$\\sqrt{10} \\text{ s}$",
+        "$2.5 \\text{ s}$",
+        "$\\pi \\text{ s}$",
+        "$10 \\text{ s}$",
+        "$\\sqrt{2.5} \\text{ s}$"
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $\\sqrt{10} \\text{ s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Proporcionalidad en la longitud.",
+      "textoConEspacios": "Si la longitud $L$ de un péndulo simple se reduce a la cuarta parte, su nuevo periodo será 1 del original.",
+      "opts": [
+        [
+          "la mitad"
+        ],
+        [
+          "el doble"
+        ],
+        [
+          "la cuarta parte"
+        ],
+        [
+          "igual"
+        ],
+        [
+          "el cuádruple"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: la mitad.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Debido al fenómeno del isobarismo, si reemplazamos la lenteja de un péndulo por una masa más pesada, el sistema oscilará más lento.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos péndulos de igual longitud poseen masas $m_1 = 1 \\text{ kg}$ y $m_2 = 5 \\text{ kg}$. Hallar la relación de sus periodos $T_1 / T_2$.",
+      "opts": [
+        "$1/5$",
+        "$1/25$",
+        "$5$",
+        "$1$",
+        "$25$"
+      ],
+      "correct": 3,
+      "explicacion": "Resultado final: $1$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para hallar $\\alpha$, considere $X_0 = \\frac{A}{2}$ y un móvil dirigiéndose hacia la derecha. Determine $\\alpha$ en radianes.",
+      "opts": [
+        "$\\pi/6$",
+        "$\\pi/3$",
+        "$5\\pi/6$",
+        "$7\\pi/6$",
+        "$11\\pi/6$"
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $\\pi/6$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Verificación de la ecuación trigonométrica.",
+      "textoConEspacios": "Si $X_0 = -A$, la ecuación del MAS obliga algebraicamente a que el seno tome el valor de -1, lo que ocurre cuando $\\alpha = $ 1.",
+      "opts": [
+        [
+          "$3\\pi/2$"
+        ],
+        [
+          "$\\pi/2$"
+        ],
+        [
+          "$\\pi$"
+        ],
+        [
+          "$0$"
+        ],
+        [
+          "$\\pi/4$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $3\\pi/2$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un MAS, se registran los valores máximos $a_{\\text{máx}} = 40 \\text{ m/s}^2$ y $V_{\\text{máx}} = 8 \\text{ m/s}$. Calcule la frecuencia angular $\\omega$.",
+      "opts": [
+        "$5 \\text{ rad/s}$",
+        "$10 \\text{ rad/s}$",
+        "$2 \\text{ rad/s}$",
+        "$8 \\text{ rad/s}$",
+        "$320 \\text{ rad/s}$"
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: $5 \\text{ rad/s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si $a_{\\text{máx}} = 40 \\text{ m/s}^2$ y $V_{\\text{máx}} = 8 \\text{ m/s}$, la amplitud obligatoria del sistema es de $1.6 \\text{ m}$.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": true
+        },
+        {
+          "texto": "Falso",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resultado final: Verdadero.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un péndulo de $L = 1.2 \\text{ m}$ va en un ascensor acelerando hacia arriba a $2 \\text{ m/s}^2$. ($g = 10 \\text{ m/s}^2$). Hallar el nuevo periodo.",
+      "opts": [
+        "$\\frac{\\pi}{\\sqrt{10}} \\text{ s}$",
+        "$\\frac{\\pi}{\\sqrt{2}} \\text{ s}$",
+        "$2\\pi \\text{ s}$",
+        "$\\frac{\\sqrt{10}}{\\pi} \\text{ s}$",
+        "$\\frac{\\pi}{2} \\text{ s}$"
+      ],
+      "correct": 1,
+      "explicacion": "Resultado final: $\\frac{\\pi}{\\sqrt{2}} \\text{ s}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "completar",
+      "q": "Péndulo en caída libre.",
+      "textoConEspacios": "Si un ascensor que transporta un péndulo entra en caída libre (estado de ingravidez, $g_{\\text{efectiva}}=0$), el periodo del péndulo se vuelve 1.",
+      "opts": [
+        [
+          "infinito"
+        ],
+        [
+          "cero"
+        ],
+        [
+          "negativo"
+        ],
+        [
+          "$2\\pi \\text{ s}$"
+        ],
+        [
+          "independiente de la longitud"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Resultado final: infinito.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión teórica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un resorte de $K = 150 \\text{ N/m}$ y $60 \\text{ cm}$ de longitud, se corta para obtener un fragmento de $20 \\text{ cm}$. Hallar la nueva constante elástica.",
+      "opts": [
+        "$50 \\text{ N/m}$",
+        "$150 \\text{ N/m}$",
+        "$300 \\text{ N/m}$",
+        "$450 \\text{ N/m}$",
+        "$900 \\text{ N/m}$"
+      ],
+      "correct": 3,
+      "explicacion": "Resultado final: $450 \\text{ N/m}$.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Si un resorte ideal se parte exactamente a la mitad, cada uno de los dos pedazos resultantes se vuelve más blando que el original.",
+      "proposiciones": [
+        {
+          "texto": "Verdadero",
+          "correct": false
+        },
+        {
+          "texto": "Falso",
+          "correct": true
+        }
+      ],
+      "explicacion": "Resultado final: Falso.\nLógica inicial y parámetros validados.\nSalto directo a la conclusión matemática."
+    }
+  ]
+}

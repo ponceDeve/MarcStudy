@@ -1,0 +1,719 @@
+{
+  "curso": "Química",
+  "tema": "Estado Gaseoso: Ecuación Universal de Gases Ideales",
+  "glosario": {
+    "E.U.G.I.": "Ecuación Universal de Gases Ideales.",
+    "Presión absoluta": "Fuerza real por unidad de área que ejerce el gas.",
+    "Temperatura absoluta": "Temperatura medida en la escala Kelvin (K).",
+    "Constante universal": "Valor constante (R) que depende de las unidades de presión.",
+    "Condiciones Normales": "Estado de un gas a 1 atm y 273 K.",
+    "Volumen Molar": "Volumen ocupado por una mol de gas (22.4 L en C.N).",
+    "Ley empírica": "Ley experimental que relaciona dos variables de estado asumiendo constantes el resto."
+  },
+  "theory": [
+    {
+      "titulo": "1. Ecuación Universal de Gases Ideales (Base)",
+      "puntos": [
+        {
+          "texto": "\"E.U.G.I.\" ≈ expresión matemática para gases",
+          "explicacion": "Es el concepto base del tema. Se utiliza para modelar el comportamiento de un gas ideal bajo un conjunto único de condiciones, asumiendo que no hay fuerzas de atracción intermolecular y que el volumen de sus partículas es despreciable."
+        },
+        {
+          "texto": "\"E.U.G.I.\" ⊃ relaciona funciones P, V, T con n",
+          "explicacion": "Establece el vínculo proporcional directo entre la presión, el volumen, la temperatura absoluta y la cantidad de sustancia del gas (moles)."
+        },
+        {
+          "texto": "P * V = R * T * n",
+          "explicacion": "Es la fórmula central. Se usa para hallar cualquiera de las cinco variables si se conocen las otras cuatro. \nPaso 1: Identificamos las variables de estado conocidas.\nPaso 2: Verificamos que las unidades sean compatibles (especialmente Temperatura en Kelvin y Presión acorde a R).\nPaso 3: Despejamos la variable incógnita y calculamos."
+        },
+        {
+          "texto": "P = Presión absoluta del gas",
+          "explicacion": "Representa la presión total ejercida por el gas contra las paredes del recipiente. Suele expresarse en atm o mmHg para aplicar los valores típicos de la constante R."
+        },
+        {
+          "texto": "V = Volumen del gas",
+          "explicacion": "Es el espacio tridimensional que ocupa el gas, usualmente medido en litros (L). En un gas ideal, el volumen del gas es igual al volumen del recipiente que lo contiene."
+        },
+        {
+          "texto": "T = Temperatura absoluta en K",
+          "explicacion": "Representa la energía cinética promedio de las moléculas. Siempre debe expresarse en la escala Kelvin para evitar valores negativos o nulos que anulen matemáticamente la ecuación."
+        },
+        {
+          "texto": "n = Moles de gas",
+          "explicacion": "Indica la cantidad química de materia. Representa la proporción directa de partículas presentes en el sistema gaseoso, independientemente de su identidad química."
+        },
+        {
+          "texto": "n = m(gas) / M(gas)",
+          "explicacion": "Fórmula complementaria. Paso 1: Obtenemos la masa en gramos (m) del gas.\nPaso 2: Calculamos la masa molar (M) sumando los pesos atómicos de la fórmula química.\nPaso 3: Dividimos ambas para obtener los moles, por ejemplo n = 16 g / 32 g/mol = 0.5 mol de O2."
+        },
+        {
+          "texto": "R = Constante universal de gases",
+          "explicacion": "Es un valor fijo de proporcionalidad que equilibra las unidades de las variables de estado en la ecuación ideal."
+        },
+        {
+          "texto": "Valores de R dependen de la presión",
+          "explicacion": "Esta característica define qué valor numérico debemos introducir en la ecuación. Si la presión cambia de unidades, la constante debe cambiar para mantener la equivalencia matemática."
+        },
+        {
+          "texto": "Si presión en atm -> R = 0.082",
+          "explicacion": "Valor empleado cuando la presión absoluta está en atmósferas. Sus unidades completas son atm * L / (mol * K)."
+        },
+        {
+          "texto": "Si presión en mmHg -> R = 62.4",
+          "explicacion": "Valor empleado cuando la presión absoluta está en milímetros de mercurio o Torr. Sus unidades completas son mmHg * L / (mol * K)."
+        }
+      ]
+    },
+    {
+      "titulo": "2. Densidad e Identidad del Gas (Base)",
+      "puntos": [
+        {
+          "texto": "Variante E.U.G.I. ⊃ sirve para conocer la identidad y Densidad",
+          "explicacion": "Esta forma de la ecuación es muy útil en análisis químico para determinar de qué gas se trata hallando su masa molar (M), o para estudiar cuán pesado es respecto al volumen (Densidad)."
+        },
+        {
+          "texto": "P * M = D * R * T",
+          "explicacion": "Conocida como la ecuación del \"Puma Doroteo\". Se usa para hallar la densidad sin conocer el volumen exacto. \nPaso 1: Aplicamos la fórmula P * M = D * R * T porque relaciona directamente la densidad con el estado.\nPaso 2: Despejamos D = (P * M) / (R * T) y reemplazamos los datos numéricos para calcularla en g/L."
+        },
+        {
+          "texto": "Ejemplo aplicativo: Densidad del N2(g) atmosférico",
+          "explicacion": "Se resuelve el problema clásico de la pizarra para N2 (P.A. N = 14).\nPaso 1: Identificamos los datos: P = 0.82 atm, T = 7 °C, M(N2) = 28 g/mol.\nPaso 2: Convertimos T a Kelvin: 7 + 273 = 280 K.\nPaso 3: Aplicamos D = (P * M) / (R * T) reemplazando D = (0.82 * 28) / (0.082 * 280).\nPaso 4: Operamos matemáticamente para obtener D = 1 g/L."
+        }
+      ]
+    },
+    {
+      "titulo": "3. Condiciones Normales (Base)",
+      "puntos": [
+        {
+          "texto": "\"Condiciones Normales\" (C.N.) ✓ define un estado estándar",
+          "explicacion": "Referencia teórica fundamental para comparar propiedades de distintos gases. Todo gas se encuentra en condiciones normales cuando posee valores específicos fijos de presión y temperatura."
+        },
+        {
+          "texto": "En C.N. ⊃ Presión = 1 atm",
+          "explicacion": "Parámetro de presión para las condiciones normales. Si el problema usa mmHg, la equivalencia estricta es 760 mmHg."
+        },
+        {
+          "texto": "En C.N. ⊃ Temperatura = 0 °C o 273 K",
+          "explicacion": "Parámetro térmico para las condiciones normales. Ojo: Es común confundirlo con la temperatura ambiente (25 °C), pero en C.N. siempre es estricto el punto de congelación del agua a nivel del mar."
+        },
+        {
+          "texto": "Se establece: 1 mol(g) en C.N. -> 22.4 L",
+          "explicacion": "Esta regla del volumen molar aplica para CUALQUIER gas con comportamiento ideal. Permite realizar reglas de tres simples para hallar el volumen sin usar la E.U.G.I. completa."
+        },
+        {
+          "texto": "Ejemplo aplicativo: Metano (CH4) combustible en C.N.",
+          "explicacion": "Resolución del ejercicio para 320 g de metano. \nPaso 1: Hallamos los moles del gas aplicando n = m / M. La masa molar del CH4 es 16 g/mol.\nPaso 2: Calculamos n = 320 / 16 = 20 mol.\nPaso 3: Relacionamos según la teoría de C.N.: Si 1 mol -> 22.4 L, entonces 20 mol -> V.\nPaso 4: Multiplicamos cruzado y obtenemos el volumen V = 448 L."
+        }
+      ]
+    },
+    {
+      "titulo": "4. Ecuación General de los Gases (Expansión)",
+      "puntos": [
+        {
+          "texto": "Ecuación General ⊃ vincula 2 estados con n constante",
+          "explicacion": "Se utiliza cuando una misma muestra de gas experimenta una transformación termodinámica, cambiando de un estado inicial (1) a un estado final (2) sin perder masa."
+        },
+        {
+          "texto": "(P1 * V1) / T1 = (P2 * V2) / T2",
+          "explicacion": "Fórmula general. \nPaso 1: Identificamos los datos del estado 1 y del estado 2.\nPaso 2: Aplicamos (P1 * V1) / T1 = (P2 * V2) / T2 porque la cantidad de materia no cambia (n = cte).\nPaso 3: Despejamos la variable requerida (ej. V2) y resolvemos usando siempre Temperaturas en Kelvin."
+        },
+        {
+          "texto": "Si la densidad es el dato ⊃ Ecuación General se adapta",
+          "explicacion": "El volumen y la densidad son inversamente proporcionales, por lo que la ecuación general también puede reescribirse cambiando volúmenes por densidades inversas para problemas avanzados."
+        },
+        {
+          "texto": "P1 / (D1 * T1) = P2 / (D2 * T2)",
+          "explicacion": "Fórmula derivada para la densidad. \nPaso 1: Si el problema relaciona densidades en dos estados, aplicamos P1 / (D1 * T1) = P2 / (D2 * T2).\nPaso 2: Despejamos, por ejemplo D2 = (P2 * D1 * T1) / (P1 * T2).\nPaso 3: Reemplazamos y operamos numéricamente para obtener la nueva densidad."
+        }
+      ]
+    },
+    {
+      "titulo": "5. Leyes Empíricas Restringidas (Expansión)",
+      "puntos": [
+        {
+          "texto": "Ley de \"Boyle\" ✓ Proceso Isotérmico (T constante)",
+          "explicacion": "Describe que a temperatura constante, el volumen de una masa fija de gas es inversamente proporcional a su presión. Si la presión se duplica, el volumen se reduce a la mitad."
+        },
+        {
+          "texto": "P1 * V1 = P2 * V2",
+          "explicacion": "Fórmula de Boyle. \nPaso 1: Comprobamos que el proceso indica \"temperatura constante\".\nPaso 2: Aplicamos la fórmula P1 * V1 = P2 * V2 derivada de eliminar T en la ecuación general.\nPaso 3: Despejamos la incógnita, ej. P2 = (P1 * V1) / V2 y operamos."
+        },
+        {
+          "texto": "Ley de \"Charles\" ✓ Proceso Isobárico (P constante)",
+          "explicacion": "Describe que a presión constante, el volumen de una masa fija de gas es directamente proporcional a su temperatura absoluta. Al calentar un globo flexible, este se expande."
+        },
+        {
+          "texto": "V1 / T1 = V2 / T2",
+          "explicacion": "Fórmula de Charles. \nPaso 1: Verificamos que el gas se expanda o comprima a \"presión constante\".\nPaso 2: Aplicamos V1 / T1 = V2 / T2 eliminando P de la ecuación general.\nPaso 3: Convertimos Temperaturas a Kelvin y despejamos, ej. V2 = (V1 * T2) / T1 para hallar el volumen final."
+        },
+        {
+          "texto": "Ley de \"Gay-Lussac\" ✓ Proceso Isócoro (V constante)",
+          "explicacion": "Describe que a volumen constante, la presión de una masa fija de gas es directamente proporcional a su temperatura absoluta. Clásico en recipientes rígidos como balones de gas o llantas."
+        },
+        {
+          "texto": "P1 / T1 = P2 / T2",
+          "explicacion": "Fórmula de Gay-Lussac. \nPaso 1: Identificamos un recipiente de paredes indeformables (V constante).\nPaso 2: Aplicamos P1 / T1 = P2 / T2 eliminando V de la ecuación general.\nPaso 3: Despejamos, ej. P2 = (P1 * T2) / T1 usando siempre la escala Kelvin."
+        }
+      ]
+    },
+    {
+      "titulo": "6. Resolución Avanzada de Problemas UNMSM (Expansión)",
+      "puntos": [
+        {
+          "texto": "Conversión Celsius a Kelvin ✓ K = °C + 273",
+          "explicacion": "Regla vital en exámenes. \nPaso 1: Localizamos el dato en grados Celsius, por ejemplo 27 °C.\nPaso 2: Sumamos algebraicamente la constante 273 usando la ley K = C + 273.\nPaso 3: Reemplazamos T = 300 K en cualquier fórmula de estado."
+        },
+        {
+          "texto": "Gases a nivel del mar ⊃ P = 1 atm por defecto",
+          "explicacion": "Truco de examen de admisión: cuando el texto del problema menciona 'un balón abierto a nivel del mar', implícitamente indica que la presión de trabajo del sistema es la atmosférica estándar (1 atm o 760 mmHg)."
+        },
+        {
+          "texto": "Mezcla de gases no reactivos ⊃ aplica Ley de \"Dalton\"",
+          "explicacion": "Define el modelo de presiones parciales donde la presión total de una mezcla es la suma de las presiones de cada componente individual comportándose independientemente como un gas ideal."
+        },
+        {
+          "texto": "P_Total = P_A + P_B + P_C + ...",
+          "explicacion": "Fórmula para mezclas en un mismo recipiente. \nPaso 1: Aplicamos PV = nRT individualmente para hallar la presión P_A que ejercería cada gas por separado en el volumen total.\nPaso 2: Aplicamos la ley de Dalton sumando P_Total = P_A + P_B.\nPaso 3: Verificamos sumando los moles totales y aplicando P_Total * V = n_Total * R * T como segunda vía."
+        },
+        {
+          "texto": "Condición de gas húmedo ⊃ P_Total = P_gas_seco + P_vapor_agua",
+          "explicacion": "Se utiliza cuando se recoge un gas sobre agua. \nPaso 1: Identificamos la Presión Total del sistema y la Presión de vapor de agua a esa temperatura (dato de tabla).\nPaso 2: Restamos P_gas_seco = P_Total - P_vapor_agua para purificar el valor.\nPaso 3: Usamos P_gas_seco en el cálculo de la E.U.G.I., evadiendo el error de sobreestimar la presión."
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "completar",
+      "q": "Determine los términos que completan correctamente la definición del modelo ideal de gases.",
+      "textoConEspacios": "El modelo de la E.U.G.I. asume que en el sistema gaseoso no existen fuerzas de 1 intermolecular y que el volumen propio de sus partículas se considera 2.",
+      "opts": [
+        [
+          "atracción",
+          "despreciable"
+        ],
+        [
+          "repulsión",
+          "infinito"
+        ],
+        [
+          "atracción",
+          "variable"
+        ],
+        [
+          "gravedad",
+          "constante"
+        ],
+        [
+          "fricción",
+          "despreciable"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Recordamos los postulados de la teoría cinético-molecular para gases ideales.\nPaso 2: Se establece que las partículas no interactúan (no hay atracción/repulsión) y son puntuales (volumen despreciable)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Respecto a la Ecuación Universal de Gases Ideales (E.U.G.I.), ¿qué característica es asumida respecto a las partículas del gas?",
+      "opts": [
+        "Su volumen es igual al del recipiente que las contiene.",
+        "Poseen intensas fuerzas de atracción intermolecular.",
+        "Su volumen individual es considerado matemáticamente nulo o despreciable.",
+        "Su tamaño depende directamente de la temperatura absoluta.",
+        "Ocupan exactamente 22.4 L en cualquier condición."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Identificamos los supuestos del modelo de gas ideal según la E.U.G.I.\nPaso 2: Para simplificar el modelo, la ecuación asume que las partículas son puntos en el espacio sin volumen propio."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relacione las variables de estado de un gas ideal con la magnitud que representan según la E.U.G.I.",
+      "columnaA": [
+        "I. P",
+        "II. T",
+        "III. n"
+      ],
+      "columnaB": [
+        "a. Energía cinética promedio de las moléculas",
+        "b. Cantidad química de materia o partículas",
+        "c. Fuerza real por unidad de área ejercida"
+      ],
+      "opts": [
+        "Ic, IIa, IIIb",
+        "Ia, IIb, IIIc",
+        "Ib, IIc, IIIa",
+        "Ic, IIb, IIIa",
+        "Ia, IIc, IIIb"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Analizamos P, que mide los choques contra el recipiente (presión o fuerza por área).\nPaso 2: Analizamos T, que representa la temperatura absoluta (energía cinética).\nPaso 3: Analizamos n, que mide los moles de gas (cantidad de materia)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "De acuerdo con la E.U.G.I., analice las siguientes proposiciones sobre la relación entre las variables de estado.",
+      "proposiciones": [
+        {
+          "texto": "A volumen y cantidad de sustancia constantes, la presión es directamente proporcional a la temperatura absoluta.",
+          "correct": true
+        },
+        {
+          "texto": "El volumen del gas es inversamente proporcional a la cantidad de moles si se mantienen la presión y temperatura constantes.",
+          "correct": false
+        },
+        {
+          "texto": "La constante R vincula matemáticamente las cuatro funciones de estado garantizando la homogeneidad de las unidades.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: Evaluamos la E.U.G.I. despejando variables: P = (n * R * T) / V.\nPaso 2: Si V y n son constantes, P y T son directamente proporcionales (verdadero).\nPaso 3: Según la ley de Avogadro, V y n son directamente proporcionales a P y T constantes (falso)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un globo de aire utilizado en un festival meteorológico se encuentra sometido a una presión de 2 atm y una temperatura de 300 K. Si contiene 5 mol de gas ideal, determine su volumen. (Dato: R = 0.082 atm*L/(mol*K))",
+      "opts": [
+        "123 L",
+        "61.5 L",
+        "24.6 L",
+        "41.0 L",
+        "82.0 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos P * V = R * T * n ya que tenemos las condiciones de estado.\nPaso 2: Reemplazamos los datos: 2 * V = 0.082 * 300 * 5.\nPaso 3: Operamos: 2 * V = 123 -> V = 61.5 L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un tanque de acero de laboratorio, un gas ideal ocupa un volumen de 12.48 L a una temperatura de 300 K y una presión de 760 mmHg. Calcule la cantidad de sustancia presente. (Dato: R = 62.4 mmHg*L/(mol*K))",
+      "opts": [
+        "1.5 mol",
+        "2.0 mol",
+        "0.5 mol",
+        "1.0 mol",
+        "2.5 mol"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos P * V = R * T * n usando el R adecuado para mmHg.\nPaso 2: Reemplazamos: 760 * 12.48 = 62.4 * 300 * n.\nPaso 3: Operamos: 9484.8 = 18720 * n -> n = 0.506 mol, que redondeado es 0.5 mol."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Respecto al concepto de presión absoluta en la Ecuación Universal de Gases Ideales, analice las siguientes afirmaciones.",
+      "proposiciones": [
+        {
+          "texto": "La presión absoluta es la fuerza total por unidad de área que las partículas gaseosas ejercen sobre las paredes del recipiente.",
+          "correct": true
+        },
+        {
+          "texto": "En problemas de gases ideales, se puede utilizar directamente la presión manométrica leída en un instrumento sin sumar la atmosférica.",
+          "correct": false
+        },
+        {
+          "texto": "Las unidades más frecuentes en cálculos químicos de admisión para la presión absoluta son atm y mmHg.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: La presión absoluta contempla la presión total del sistema (manométrica + atmosférica), por lo que usar solo la manométrica es un error (falso).\nPaso 2: Es correcto que representa los choques contra las paredes y se mide típicamente en atm o mmHg para usar las constantes universales conocidas (verdadero)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante de química lee la presión de un gas en un cilindro usando un manómetro y obtiene un valor de 2 atm. Si la presión atmosférica del laboratorio es 1 atm, ¿qué valor de presión (P) debe emplear en la fórmula P * V = R * T * n?",
+      "opts": [
+        "1 atm",
+        "2 atm",
+        "3 atm",
+        "1.5 atm",
+        "0.5 atm"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Reconocemos que la fórmula requiere la Presión absoluta.\nPaso 2: Aplicamos la relación P_absoluta = P_manometrica + P_atmosferica.\nPaso 3: Calculamos: P_absoluta = 2 atm + 1 atm = 3 atm."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se dispone de 1 mol de un gas ideal encerrado en una ampolla de 2 L. Si se transfiere todo el gas, sin pérdida de masa ni cambio de temperatura, a un recipiente hermético de 5 L, ¿cuál es el nuevo volumen del gas?",
+      "opts": [
+        "2 L",
+        "7 L",
+        "3 L",
+        "5 L",
+        "2.5 L"
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Recordamos la propiedad macroscópica de los gases llamada expansibilidad.\nPaso 2: Todo gas ideal ocupa la totalidad del volumen del recipiente que lo contiene.\nPaso 3: Por lo tanto, el nuevo volumen del gas es igual al volumen del nuevo recipiente, 5 L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Qué propiedad fundamental de los gases permite afirmar que el volumen de una muestra gaseosa es idéntico al volumen del envase cerrado donde se aloja?",
+      "opts": [
+        "La compresibilidad.",
+        "La expansibilidad.",
+        "La efusión.",
+        "La difusión.",
+        "La densidad baja."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Identificamos que la pregunta refiere a la capacidad de un gas de aumentar su volumen hasta llenar todo el espacio disponible.\nPaso 2: Esta propiedad se denomina expansibilidad, debida a las nulas fuerzas de atracción intermolecular."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En el contexto de la E.U.G.I., evalúe las afirmaciones sobre el uso de la escala de temperatura.",
+      "proposiciones": [
+        {
+          "texto": "La temperatura en las ecuaciones de estado siempre debe expresarse en la escala absoluta Kelvin.",
+          "correct": true
+        },
+        {
+          "texto": "El uso de la escala Celsius es válido si la temperatura inicial y final son positivas.",
+          "correct": false
+        },
+        {
+          "texto": "Usar temperaturas negativas (como en Celsius) anularía o daría resultados sin sentido físico en el volumen o la presión.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: La temperatura representa la energía cinética promedio, que no puede ser negativa; el Kelvin empieza en el cero absoluto.\nPaso 2: Usar Celsius (0 °C o menor) produciría división por cero o volúmenes negativos en las leyes de gases, lo cual es físicamente imposible."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál es el fundamento termodinámico por el cual la temperatura T en la fórmula P * V = R * T * n debe ser invariablemente la temperatura absoluta?",
+      "opts": [
+        "Es proporcional a la masa molar del gas.",
+        "Es una escala relativa que depende del punto de ebullición del agua.",
+        "Garantiza que la constante R tenga un valor entero.",
+        "Es directamente proporcional a la energía cinética promedio de las moléculas.",
+        "Permite anular la dependencia de la presión sobre el volumen."
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: Analizamos el significado físico de la temperatura en el modelo de gas ideal.\nPaso 2: La temperatura Kelvin mide la energía cinética de traslación de las partículas, siendo 0 K el cese del movimiento termodinámico, lo que justifica la directa proporcionalidad."
+    },
+    {
+      "tipo": "completar",
+      "q": "Determine la palabra que completa el enunciado sobre la variable n en la ecuación universal.",
+      "textoConEspacios": "La variable n representa los moles del gas, indicando la cantidad de materia en el sistema de manera directamente proporcional a la cantidad de 1, independientemente de la identidad química del gas.",
+      "opts": [
+        [
+          "partículas"
+        ],
+        [
+          "enlaces"
+        ],
+        [
+          "isótopos"
+        ],
+        [
+          "volúmenes"
+        ],
+        [
+          "presiones"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: La variable n contabiliza moles, donde 1 mol = 6.022 x 10^23 partículas (átomos o moléculas).\nPaso 2: Por lo tanto, n indica el número de partículas presentes sin importar de qué sustancia se trate."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Se tienen dos balones cerrados del mismo tamaño, uno con O2(g) y otro con H2(g), ambos conteniendo exactamente 2 mol del respectivo gas bajo las mismas condiciones. Analice las siguientes afirmaciones.",
+      "proposiciones": [
+        {
+          "texto": "La masa en gramos de ambos gases dentro de los balones es idéntica.",
+          "correct": false
+        },
+        {
+          "texto": "La cantidad de partículas (moléculas) presentes es igual en ambos recipientes.",
+          "correct": true
+        },
+        {
+          "texto": "La presión ejercida contra las paredes de los balones es idéntica en ambos casos.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: Las masas difieren porque las masas molares difieren (32 g/mol vs 2 g/mol) (falso).\nPaso 2: Al tener los mismos moles (n=2), tienen el mismo número de partículas (verdadero).\nPaso 3: Por la E.U.G.I., si V, T y n son iguales, P debe ser obligatoriamente igual (verdadero)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un balón de uso medicinal de 128 g de gas oxígeno (O2) está conectado a un sistema de respiración. Calcule el número de moles (n) de gas presentes en el recipiente. (Dato de Masa atómica: O = 16)",
+      "opts": [
+        "8 mol",
+        "4 mol",
+        "16 mol",
+        "2 mol",
+        "6 mol"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Calculamos la masa molar del oxígeno molecular (O2): M = 2 * 16 = 32 g/mol.\nPaso 2: Aplicamos la fórmula de moles n = m / M.\nPaso 3: Reemplazamos los datos: n = 128 / 32 = 4 mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el interior de un extintor de incendios se han comprimido 3 mol de dióxido de carbono (CO2). ¿Qué masa en gramos contiene dicho extintor? (Datos de Masa atómica: C = 12, O = 16)",
+      "opts": [
+        "132 g",
+        "88 g",
+        "44 g",
+        "176 g",
+        "120 g"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Calculamos la masa molar del CO2: M = 12 + 2(16) = 44 g/mol.\nPaso 2: De la fórmula n = m / M, despejamos la masa: m = n * M.\nPaso 3: Multiplicamos: m = 3 * 44 = 132 g."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "¿Cuál es la función matemática primordial de la constante universal de gases (R) dentro de la E.U.G.I.?",
+      "opts": [
+        "Indicar la cantidad total de energía del sistema cerrado.",
+        "Equilibrar y dar homogeneidad a las unidades de las variables de estado en la proporción.",
+        "Determinar la identidad química del gas analizado.",
+        "Corregir el error de las fuerzas intermoleculares.",
+        "Asegurar que la temperatura no alcance el cero absoluto."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Analizamos la ecuación PV es proporcional a nT.\nPaso 2: Para convertir esta proporcionalidad en una igualdad (P * V = R * T * n), se requiere una constante que posea las unidades necesarias para cancelar el resto, asegurando el equilibrio matemático."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Con respecto a la constante R empleada en los problemas de estado gaseoso, responda:",
+      "proposiciones": [
+        {
+          "texto": "El valor numérico de la constante R depende del gas específico que se esté evaluando (ej. si es metano o neón).",
+          "correct": false
+        },
+        {
+          "texto": "La constante R es idéntica para cualquier sustancia que se comporte como un gas ideal.",
+          "correct": true
+        },
+        {
+          "texto": "Unidades internacionales para R pueden ser J/(mol*K).",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: R es la constante universal de gases, por lo que su valor no varía según la identidad química (falso).\nPaso 2: Su valor solo cambia dependiendo de las unidades de presión y volumen elegidas para el cálculo, siendo universal (verdadero)."
+    },
+    {
+      "tipo": "completar",
+      "q": "Señale qué variable del estado de un gas dicta normalmente la elección del valor numérico de la constante R a emplear en los cálculos de admisión.",
+      "textoConEspacios": "Para utilizar la E.U.G.I. correctamente, el estudiante debe fijarse en las unidades de la 1 para decidir si utiliza el valor de 0.082 o el valor de 62.4.",
+      "opts": [
+        [
+          "presión absoluta"
+        ],
+        [
+          "temperatura Kelvin"
+        ],
+        [
+          "masa molar"
+        ],
+        [
+          "densidad gaseosa"
+        ],
+        [
+          "energía cinética"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: El volumen siempre suele estar en L, moles en mol, temperatura en K.\nPaso 2: La presión es la variable que cambia frecuentemente entre atm y mmHg, dictando qué valor de R anulará dicha unidad."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Vincule la unidad de presión absoluta con el valor correcto de la constante universal R que debe emplearse en la E.U.G.I.",
+      "columnaA": [
+        "I. Atmósferas (atm)",
+        "II. Milímetros de mercurio (mmHg)",
+        "III. Torricelli (Torr)"
+      ],
+      "columnaB": [
+        "a. 62.4",
+        "b. 0.082",
+        "c. 8.314"
+      ],
+      "opts": [
+        "Ib, IIa, IIIa",
+        "Ia, IIb, IIIa",
+        "Ib, IIc, IIIa",
+        "Ia, IIc, IIIb",
+        "Ic, IIb, IIIa"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Si la presión está en atm, R = 0.082 (Ib).\nPaso 2: Si la presión está en mmHg, R = 62.4 (IIa).\nPaso 3: Un Torr es equivalente a un mmHg, por tanto R = 62.4 (IIIa)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el proceso industrial de síntesis de amoníaco, un reactor de 10 L opera a una temperatura de 500 K y una presión manométrica tal que la presión absoluta resulta ser de 4.1 atm. Determine el número de moles presentes. (Dato: R = 0.082 atm*L/(mol*K))",
+      "opts": [
+        "1 mol",
+        "0.5 mol",
+        "10 mol",
+        "5 mol",
+        "2.5 mol"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos P * V = R * T * n verificando unidades correctas.\nPaso 2: Reemplazamos: 4.1 * 10 = 0.082 * 500 * n.\nPaso 3: Resolvemos: 41 = 41 * n -> n = 1 mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un recipiente de almacenamiento destinado a un gas noble tiene una capacidad de 30 L y contiene 1 mol del gas. Si se midió una presión de 0.82 atm, ¿a qué temperatura absoluta se encuentra el recinto? (Dato: R = 0.082)",
+      "opts": [
+        "273 K",
+        "400 K",
+        "300 K",
+        "250 K",
+        "350 K"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: De la ecuación ideal despejamos la temperatura: T = (P * V) / (R * n).\nPaso 2: Reemplazamos los datos: T = (0.82 * 30) / (0.082 * 1).\nPaso 3: Calculamos: T = 24.6 / 0.082 = 300 K."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la extracción en un yacimiento de gas natural, se recoge una muestra de 2 mol a una presión absoluta de 624 mmHg y una temperatura de 300 K. Determine qué volumen ocupa esta muestra gaseosa. (Dato: R = 62.4 mmHg*L/(mol*K))",
+      "opts": [
+        "30 L",
+        "60 L",
+        "120 L",
+        "45 L",
+        "15 L"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos la E.U.G.I. con el R para mercurio: P * V = R * T * n.\nPaso 2: Reemplazamos valores: 624 * V = 62.4 * 300 * 2.\nPaso 3: Operamos: 624 * V = 37440 -> V = 60 L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un cilindro experimental, 0.5 mol de un gas ocupan un volumen de 12.48 L tras ser calentados a 400 K. ¿Qué presión, medida en mmHg, está ejerciendo el gas en el interior del cilindro? (Dato: R = 62.4)",
+      "opts": [
+        "500 mmHg",
+        "1000 mmHg",
+        "1500 mmHg",
+        "750 mmHg",
+        "800 mmHg"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Despejamos la presión de la ecuación ideal: P = (R * T * n) / V.\nPaso 2: Reemplazamos: P = (62.4 * 400 * 0.5) / 12.48.\nPaso 3: Operamos: P = 12480 / 12.48 = 1000 mmHg."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La variante de la E.U.G.I. (P * M = D * R * T) es una expresión termodinámica altamente utilizada en el análisis químico principalmente para:",
+      "opts": [
+        "Conocer la identidad de un gas desconocido y determinar cuán pesado es respecto a su volumen.",
+        "Averiguar si un gas sufrirá licuación espontánea al bajar la temperatura.",
+        "Medir el volumen total de la atmósfera terrestre de forma exacta.",
+        "Calcular la energía cinética total de gases mezclados.",
+        "Demostrar que todos los gases tienen la misma masa molar."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: La fórmula incorpora M (masa molar) y D (densidad).\nPaso 2: Hallar M permite identificar qué gas es (su identidad), y calcular D determina la masa por unidad de volumen sin necesitar medidas macroscópicas directas de volumen y masa por separado."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Sobre el cálculo de la densidad de un gas ideal mediante la variante E.U.G.I., analice las siguientes premisas.",
+      "proposiciones": [
+        {
+          "texto": "A diferencia de un líquido o sólido, la densidad de un gas ideal depende intensamente de sus condiciones de presión y temperatura.",
+          "correct": true
+        },
+        {
+          "texto": "Al aumentar la temperatura absoluta manteniendo la presión constante, la densidad del gas se incrementará.",
+          "correct": false
+        },
+        {
+          "texto": "Dos gases distintos sometidos a la misma presión y temperatura tendrán siempre la misma densidad.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Paso 1: La fórmula D = (P * M) / (R * T) muestra que D es inversamente proporcional a T; si T aumenta, D disminuye (el gas se expande y se hace más ligero) (falso).\nPaso 2: Dos gases distintos tienen distinta M, por lo que sus densidades serán diferentes (falso)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el monitoreo de emisiones de una chimenea industrial se analiza una muestra de gas dióxido de carbono (CO2) que se encuentra a 300 K y soporta una presión de 1.5 atm. Calcule su densidad. (Datos: Masa molar del CO2 = 44 g/mol, R = 0.082)",
+      "opts": [
+        "2.68 g/L",
+        "1.34 g/L",
+        "5.36 g/L",
+        "3.14 g/L",
+        "0.67 g/L"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos la ecuación de densidad para gases: D = (P * M) / (R * T).\nPaso 2: Sustituimos los valores numéricos: D = (1.5 * 44) / (0.082 * 300).\nPaso 3: Operamos: D = 66 / 24.6 = 2.682 g/L, redondeado a 2.68 g/L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se analiza en el laboratorio un gas elemental desconocido. Las lecturas de los instrumentos arrojan una densidad de 1.25 g/L a una presión de 1 atm y una temperatura de 300 K. Identifique cuál podría ser la masa molar del gas. (Dato: R = 0.082)",
+      "opts": [
+        "30.75 g/mol",
+        "15.37 g/mol",
+        "61.50 g/mol",
+        "44.00 g/mol",
+        "28.00 g/mol"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: De la ecuación de densidad, despejamos la masa molar: M = (D * R * T) / P.\nPaso 2: Reemplazamos: M = (1.25 * 0.082 * 300) / 1.\nPaso 3: Resolvemos multiplicando: M = 1.25 * 24.6 = 30.75 g/mol."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Replique el cálculo clásico para determinar la densidad del gas nitrógeno (N2(g)) presente en la atmósfera bajo las siguientes condiciones invernales: P = 0.82 atm y temperatura T = 7 °C. (Dato: N = 14 u, R = 0.082)",
+      "opts": [
+        "1.0 g/L",
+        "1.5 g/L",
+        "0.5 g/L",
+        "2.0 g/L",
+        "1.25 g/L"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Convertimos temperatura a Kelvin: T = 7 + 273 = 280 K. Hallamos M(N2) = 28 g/mol.\nPaso 2: Aplicamos la fórmula: D = (P * M) / (R * T).\nPaso 3: Operamos: D = (0.82 * 28) / (0.082 * 280) = 22.96 / 22.96 = 1 g/L."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se planea rellenar un dirigible experimental utilizando gas helio (He). Las condiciones climáticas en la altura proponen una temperatura muy cálida de 127 °C y una presión de 0.82 atm. Calcule la densidad de este gas noble. (Dato: M(He) = 4 g/mol, R = 0.082)",
+      "opts": [
+        "0.1 g/L",
+        "0.2 g/L",
+        "0.05 g/L",
+        "0.4 g/L",
+        "1.0 g/L"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Convertimos T a Kelvin: 127 + 273 = 400 K.\nPaso 2: Sustituimos en la ecuación: D = (0.82 * 4) / (0.082 * 400).\nPaso 3: Calculamos: D = 3.28 / 32.8 = 0.1 g/L. El distractor típico olvida la conversión Celsius a Kelvin."
+    },
+    {
+      "tipo": "completar",
+      "q": "Señale la finalidad de definir teóricamente las Condiciones Normales (C.N.) en el estudio de gases.",
+      "textoConEspacios": "Las Condiciones Normales se utilizan como un estado de referencia 1 fundamental que permite 2 las propiedades volumétricas de distintos gases bajo el mismo estándar termodinámico.",
+      "opts": [
+        [
+          "estándar",
+          "comparar"
+        ],
+        [
+          "variable",
+          "ocultar"
+        ],
+        [
+          "aleatorio",
+          "sumar"
+        ],
+        [
+          "físico",
+          "evaporar"
+        ],
+        [
+          "crítico",
+          "condensar"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: La química requiere estandarización para reportar datos reproducibles.\nPaso 2: Las C.N. imponen valores fijos (estándar) para hacer comparaciones directas entre volúmenes y densidades molares sin variabilidad ambiental."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Evalúe las siguientes proposiciones sobre la magnitud exacta de los parámetros que configuran las llamadas 'Condiciones Normales' (C.N.)",
+      "proposiciones": [
+        {
+          "texto": "Para que un sistema esté en C.N., su presión absoluta debe mantenerse fijada en 1 atm o su estricto equivalente de 760 mmHg.",
+          "correct": true
+        },
+        {
+          "texto": "La temperatura en C.N. coincide siempre con la temperatura estándar de laboratorio a nivel del mar (25 °C).",
+          "correct": false
+        },
+        {
+          "texto": "Las condiciones normales congelan tanto la presión como la temperatura, pero permiten cualquier volumen dependiendo de la cantidad de moles.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Paso 1: C.N. exigen rigurosamente P = 1 atm y T = 0 °C (o 273 K). Confundir C.N. con 25 °C (temperatura ambiente) es el error más recurrente (falso).\nPaso 2: Solo P y T están fijos como estándar; el volumen variará según cuánta masa (moles) se introduzca (verdadero)."
+    }
+  ]
+}
