@@ -1263,6 +1263,7 @@ export default function MiEstudioPage() {
                 flatPuntos={flatPuntos}
                 onSelect={(index) => {
                   setCardIndex(index);
+                  setUltimoFlipIndex(index);
                   setQuestionResult(null);
                   setAttemptKey((k) => k + 1);
                 }}
