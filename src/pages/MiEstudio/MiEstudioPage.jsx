@@ -68,8 +68,6 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
-// Quita delimitadores de LaTeX ($...$, \(...\), \[...\]) antes de leer en
-// voz alta, para que no lea de más los símbolos de fórmula tal cual.
 function limpiarParaVoz(texto) {
   if (!texto) return "";
   return texto
@@ -80,12 +78,6 @@ function limpiarParaVoz(texto) {
     .trim();
 }
 
-// Las voces de speechSynthesis se cargan de forma asíncrona en varios
-// navegadores (la primera llamada a getVoices() puede devolver []).
-// Sin esto, la primera card intenta leer antes de que la lista de
-// voces esté lista y termina usando la voz por defecto (a veces
-// femenina) — las siguientes cards ya salían bien porque para
-// entonces la lista ya había cargado.
 let vocesListasPromise = null;
 function obtenerVocesListas() {
   if (vocesListasPromise) return vocesListasPromise;
@@ -98,19 +90,11 @@ function obtenerVocesListas() {
     window.speechSynthesis.onvoiceschanged = () => {
       resolve(window.speechSynthesis.getVoices());
     };
-    // Por si el navegador nunca dispara el evento (pasa en algunos):
-    // no te quedes esperando para siempre, sigue con lo que haya.
     setTimeout(() => resolve(window.speechSynthesis.getVoices()), 1200);
   });
   return vocesListasPromise;
 }
 
-// Lee la teoría en voz alta: espera 1 segundo antes de empezar (para no
-// arrancar de golpe apenas cambia la card) y usa un tono grave y un
-// ritmo pausado/firme ("voz de macho alfa"). Al cambiar de card o salir
-// de teoría, el cleanup del efecto corta la lectura al instante — así
-// que si vas cambiando de card rápido, no se van acumulando lecturas
-// encima de otras (cada card cancela la anterior).
 function useLecturaTeoriaVoz(texto, activo) {
   useEffect(() => {
     if (!activo || !texto || !("speechSynthesis" in window)) return;
@@ -125,8 +109,6 @@ function useLecturaTeoriaVoz(texto, activo) {
 
         const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
         utter.lang = "es-PE";
-        // Grave y pausado a propósito, para que suene firme/seguro en
-        // vez de la voz aguda y rápida por defecto.
         utter.pitch = 0.55;
         utter.rate = 0.92;
 
@@ -173,9 +155,6 @@ export default function MiEstudioPage() {
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
 
-  // El aviso de vidas se cierra solo (no tiene botón): se queda en
-  // pantalla el tiempo justo para ver el corazón romperse y luego
-  // desaparece. En "cero" además reinicia las vidas a 5 al cerrar.
   useEffect(() => {
     if (!alertaVidas) return;
     const delay = alertaVidas === "cero" ? 4200 : 3200;
@@ -186,9 +165,6 @@ export default function MiEstudioPage() {
     return () => clearTimeout(t);
   }, [alertaVidas]);
 
-  // El corazón recién perdido tiembla un momento y luego se rompe
-  // (cambia a bi-heartbreak) exactamente al mismo tiempo que los
-  // corazones ya perdidos antes, que se muestran rotos desde el inicio.
   const [corazonRoto, setCorazonRoto] = useState(false);
   useEffect(() => {
     if (!alertaVidas) {
@@ -232,10 +208,7 @@ export default function MiEstudioPage() {
 
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-  // "Repasar" muestra inline (no modal) las preguntas ya vistas de este
-  // tema, mezcladas. Ahora también se puede abrir desde teoría: en ese
-  // caso se recuerda con repasoDesdeTeoria para volver a "theory" al
-  // salir (si ya se abrió estando en pregunta, no se toca el stage).
+  
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
@@ -284,7 +257,6 @@ export default function MiEstudioPage() {
         pomodoroAlertadoRef.current = estado.endTimestamp;
         setPomodoroAlarmaLabel(estado.label || "");
         setPomodoroAlarmaAbierta(true);
-        limpiarPomodoroCompartido();
       }
     }, 1000);
     return () => clearInterval(intervalo);
@@ -292,6 +264,7 @@ export default function MiEstudioPage() {
 
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
+    limpiarPomodoroCompartido(); 
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
@@ -314,8 +287,6 @@ export default function MiEstudioPage() {
     }
   }, [sinPreguntaAlerta]);
 
-  // Limpia los temporizadores de los toasts al desmontar, para no llamar
-  // setState sobre un componente que ya no está montado.
   useEffect(() => {
     return () => {
       repasoGuardadoTimers.current.forEach(clearTimeout);
@@ -357,6 +328,13 @@ export default function MiEstudioPage() {
       if (timer) clearInterval(timer);
     };
   }, [stage, countdown]);
+
+  // NUEVO EFFECT: Guardar el progreso de la tarjeta automáticamente en localStorage
+  useEffect(() => {
+    if (topicData) {
+      localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex.toString());
+    }
+  }, [cardIndex, topicData]);
 
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
@@ -410,7 +388,14 @@ export default function MiEstudioPage() {
       setExamenPreguntas(examenList);
       setNivelIndex(0);
 
-      const cardInicial = 0;
+      // MODIFICACIÓN: Leer la última card visitada desde localStorage
+      const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
+      let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
+      
+      // Validación: Si el JSON cambió y el número guardado supera la cantidad de puntos, lo regresamos a 0
+      if (cardInicial >= puntos.length) {
+        cardInicial = 0;
+      }
 
       const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
       const storedPreguntasVistas = JSON.parse(
@@ -420,6 +405,8 @@ export default function MiEstudioPage() {
 
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
+      
+      // Inicializar en la card recuperada en lugar de siempre en 0
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
       setIsFlipQuiz(false);
@@ -546,7 +533,6 @@ export default function MiEstudioPage() {
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
       }
-      // En la última no hace nada — se sale con "Continuar".
       return;
     }
     if (isLevelMode) {
@@ -692,8 +678,6 @@ export default function MiEstudioPage() {
       tema: topicData.tema,
     });
 
-    // Reinicia el temporizador si se guarda de nuevo mientras el aviso
-    // anterior sigue en pantalla, para que no desaparezca antes de tiempo.
     repasoGuardadoTimers.current.forEach(clearTimeout);
     setRepasoGuardadoSaliendo(false);
     setRepasoGuardadoMsg(true);
@@ -735,19 +719,14 @@ export default function MiEstudioPage() {
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto });
 
-    // "Repasar" necesita guardar la pregunta real que se respondió, no
-    // solo un índice: según el modo, cardIndex/nivelIndex apuntan a
-    // arrays distintos (flatPuntos vs examenPreguntas), así que antes
-    // se guardaba el índice equivocado y "Repasar" no encontraba nada
-    // en flatPuntos (mostraba "no hay preguntas" aunque sí las hubiera).
     let vistaKey = null;
     let vistaPregunta = null;
 
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKey = `pt-${item.puntoIndex}`;
-        vistaPregunta = flatPuntos[item.puntoIndex]?.pregunta || null;
+        vistaKey = `ex-${item.puntoIndex}`; 
+        vistaPregunta = item.pregunta; 
       }
     } else if (isLevelMode) {
       vistaKey = `ex-${nivelIndex}`;
@@ -862,13 +841,9 @@ export default function MiEstudioPage() {
   function verPreguntasVistas() {
     const lote = Object.entries(preguntasVistas)
       .map(([key, val]) => {
-        // Formato nuevo: guarda la pregunta directamente.
         if (val && typeof val === "object" && val.pregunta) {
           return { key, pregunta: val.pregunta };
         }
-        // Formato antiguo (antes de este arreglo): solo `true`, guardado
-        // con un índice que a veces era de flatPuntos y a veces no.
-        // Se intenta igual por compatibilidad con lo ya guardado.
         const i = Number(key);
         const pregunta = flatPuntos[i]?.pregunta;
         return pregunta ? { key, pregunta } : null;
@@ -937,6 +912,7 @@ export default function MiEstudioPage() {
     stage === "theory" && !isLevelMode ? current?.texto : null,
     stage === "theory" && !isLevelMode,
   );
+  
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -946,6 +922,7 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
+          
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
@@ -1010,7 +987,10 @@ export default function MiEstudioPage() {
         open={pomodoroAlarmaAbierta}
         label={pomodoroAlarmaLabel}
         onIrAPomodoro={irAPomodoroDesdeAlarma}
-        onClose={() => setPomodoroAlarmaAbierta(false)}
+        onClose={() => {
+          setPomodoroAlarmaAbierta(false);
+          limpiarPomodoroCompartido();
+        }}
       />
 
       {topicData && (
