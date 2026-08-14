@@ -4,7 +4,8 @@
   "glosario": {
     "Sinonimia": "Relación semántica de semejanza entre significados.",
     "Antonimia": "Relación semántica de significados opuestos.",
-    "Conectores": "Palabras que unen proposiciones lógicamente.",
+    "Sema": "Rasgo mínimo de significado de una palabra.",
+    "Conector lógico": "Palabra que une proposiciones lógicamente.",
     "=": "Define",
     "→": "Produce",
     "⊃": "Contiene",
@@ -22,72 +23,120 @@
     {
       "titulo": "Sinonimia Definición",
       "puntos": [
-        { "texto": "Sinonimia = relación semántica entre 2 términos", "explicacion": "Vincula palabras de significado equivalente y misma categoría gramatical. Ej: \"pusilánime\" = \"cobarde\", no \"valiente\"." },
-        { "texto": "Sinonimia → busca semejanza entre significados", "explicacion": "Se identifica reemplazando la palabra en la oración: si el sentido no cambia, son sinónimos. Ej: \"inexorable\" ≈ \"inevitable\"." }
+        {
+          "texto": "\"Sinonimia\" = relación semántica ≈ significados entre 2 términos.",
+          "explicacion": "La \"sinonimia\" es la relación que se establece entre dos o más palabras cuando comparten un significado equivalente y pertenecen a la misma categoría gramatical, por ejemplo dos sustantivos o dos verbos. Esta relación permite que un término pueda reemplazar a otro en una oración sin alterar de forma radical el mensaje. Se basa en compartir \"semas\", que son los rasgos mínimos de significado de una palabra."
+        },
+        {
+          "texto": "Sinonimia → busca semejanza entre significados, no identidad.",
+          "explicacion": "El objetivo de la sinonimia es lograr una semejanza de sentido, no una identidad absoluta entre las palabras. Por eso, aunque dos términos compartan varios \"semas\" (rasgos de significado), pueden diferir en matices de intensidad, formalidad o uso regional. Esta diferencia explica por qué el sinónimo correcto en un examen depende del contexto exacto de la oración."
+        }
       ]
     },
     {
       "titulo": "Tipos de Sinonimia",
       "puntos": [
-        { "texto": "Sinonimia total = intercambiables en cualquier contexto", "explicacion": "Funcionan igual en cualquier oración, sin cambio de matiz. Ej: \"médico\" / \"doctor\". Es un caso poco frecuente." },
-        { "texto": "Sinonimia parcial = depende del contexto", "explicacion": "El sinónimo correcto cambia según el contexto. Ej: \"claro\" = \"transparente\" (agua) o \"comprensible\" (explicación). Es la más evaluada en la UNMSM." },
-        { "texto": "Sinonimia de grado = se reconoce por intensidad", "explicacion": "Los sinónimos tienen distinta intensidad de la misma idea. Ej: \"molesto\" (bajo) vs. \"furioso\" (alto), ambos de \"enojado\"." }
+        {
+          "texto": "\"Sinonimia total\" = intercambiable en cualquier contexto.",
+          "explicacion": "La \"sinonimia total\" ocurre cuando dos términos poseen exactamente el mismo significado en todos los contextos posibles, sin diferencia de matiz ni de registro. Un ejemplo es el par \"médico\" y \"doctor\" en el habla cotidiana, donde ambos se usan indistintamente. En la lengua natural este tipo de sinonimia es poco frecuente, porque casi siempre existe alguna diferencia sutil de uso."
+        },
+        {
+          "texto": "\"Sinonimia parcial\" = validez del reemplazo depende del contexto.",
+          "explicacion": "La \"sinonimia parcial\" es la más común en español: los términos comparten \"semas\" básicos, pero solo pueden intercambiarse en ciertos contextos comunicativos. Por ejemplo, \"claro\" puede reemplazarse por \"transparente\" al hablar de un líquido, pero por \"comprensible\" al hablar de una explicación. Identificar el contexto exacto es clave para resolver correctamente este tipo de ítem en el examen."
+        },
+        {
+          "texto": "\"Sinonimia de grado\" → se distingue por intensidad de la idea.",
+          "explicacion": "La \"sinonimia de grado\" agrupa palabras que expresan la misma idea general pero con distinta intensidad o escala. Por ejemplo, \"molesto\" y \"furioso\" son ambos sinónimos de \"enojado\", pero el segundo representa un grado mucho más intenso. Para resolver este tipo de pregunta hay que ordenar mentalmente las opciones según su fuerza expresiva antes de elegir la que coincide con el grado que pide el enunciado."
+        }
       ]
     },
     {
       "titulo": "Antonimia Definición",
       "puntos": [
-        { "texto": "Antonimia = relación semántica de significados opuestos", "explicacion": "Identifica primero el sentido exacto de la palabra base (suele ser polisémica) antes de buscar su opuesto. Ej: \"claro\" (líquido) ≠ \"turbio\"; \"claro\" (evidente) ≠ \"confuso\"." }
+        {
+          "texto": "\"Antonimia\" = relación semántica de significados opuestos.",
+          "explicacion": "La \"antonimia\" vincula dos palabras cuyos significados se contraponen dentro de la misma categoría gramatical, expresando ideas contrarias. Muchas palabras son polisémicas, es decir, tienen más de un significado según el contexto, por lo que su antónimo también cambia. Por ejemplo, el antónimo de \"claro\" referido a un líquido es \"turbio\", mientras que el antónimo de \"claro\" referido a una idea es \"confuso\"."
+        }
       ]
     },
     {
       "titulo": "Tipos de Antónimos y Casos Especiales",
       "puntos": [
-        { "texto": "Complementarios = se necesitan para poder existir", "explicacion": "No admiten término medio: uno excluye al otro. Ej: \"vivo\"/\"muerto\", \"comprar\"/\"vender\"." },
-        { "texto": "Antónimos de grado = admiten escala intermedia", "explicacion": "Sí admiten término medio entre los extremos. Ej: \"frío\" — \"tibio\" — \"caliente\"." }
+        {
+          "texto": "\"Antónimos complementarios\" ✗ admiten término medio entre ambos.",
+          "explicacion": "Los \"antónimos complementarios\" son pares de palabras donde afirmar una excluye totalmente a la otra, sin que exista una zona intermedia entre ambas. Por ejemplo, \"vivo\" y \"muerto\" no admiten un estado a medio camino. Un caso especial son \"comprar\" y \"vender\": son complementarios porque la existencia de un acto presupone necesariamente la del otro."
+        },
+        {
+          "texto": "\"Antónimos de grado\" ✓ admiten escala intermedia entre extremos.",
+          "explicacion": "Los \"antónimos de grado\" son pares de palabras opuestas que sí permiten matices intermedios entre ambos extremos. Por ejemplo, entre \"frío\" y \"caliente\" existe el término intermedio \"tibio\". Para diferenciarlos de los complementarios, basta con preguntarse si existe realmente un punto medio posible entre las dos palabras."
+        }
       ]
     },
     {
       "titulo": "Conectores Lógicos Definición",
       "puntos": [
-        { "texto": "Conectores lógicos = palabras que unen proposiciones", "explicacion": "Antes de elegir el conector, parafrasea la relación entre las dos ideas: ¿se oponen, una causa a la otra, o se suman?" }
+        {
+          "texto": "\"Conector lógico\" = palabra que une proposiciones del texto.",
+          "explicacion": "Un \"conector lógico\" es una palabra o frase que actúa como nexo entre dos proposiciones, estableciendo un vínculo de significado entre ellas, como causa, oposición o adición. Estos conectores guían al lector para interpretar correctamente cómo se relacionan las ideas de un texto. Para resolver un ejercicio de conectores conviene primero identificar mentalmente qué relación lógica existe entre las dos proposiciones, antes de revisar las opciones."
+        }
       ]
     },
     {
       "titulo": "Clases de Conectores Lógicos",
       "puntos": [
-        { "texto": "Adición → agregar información acumulativa", "explicacion": "Suma información en la misma dirección, sin contradecir. Ej: \"además\", \"asimismo\"." },
-        { "texto": "Contraste → oposición de ideas", "explicacion": "Introduce una objeción o límite a lo dicho antes. Ej: \"pero\", \"sin embargo\"." },
-        { "texto": "Causa ⇒ motivo o razón del evento", "explicacion": "Introduce el motivo de un hecho. Ej: \"porque\", \"ya que\"." },
-        { "texto": "Consecuencia → efecto resultante", "explicacion": "Introduce el efecto derivado de una causa previa. Ej: \"por lo tanto\", \"en consecuencia\"." },
-        { "texto": "Evidencia → información obvia incuestionable", "explicacion": "Confirma algo ya esperado, sin aportar dato nuevo. Ej: \"en efecto\", \"obviamente\"." },
-        { "texto": "Equivalencia = parafrasear en otros términos", "explicacion": "Reformula la misma idea con otras palabras. Ej: \"es decir\", \"o sea\"." },
-        { "texto": "Orden → enumerar ideas secuencialmente", "explicacion": "Organiza ideas en secuencia temporal o de importancia. Ej: \"primero\", \"luego\", \"finalmente\"." }
+        {
+          "texto": "Conectores de \"adición\" → agregan información acumulativa.",
+          "explicacion": "Los conectores de \"adición\", como \"además\" o \"asimismo\", suman información complementaria a la ya expuesta, sin contradecirla ni cambiar de dirección argumentativa. Se usan cuando la segunda proposición refuerza la idea de la primera con un dato nuevo del mismo sentido. Por ejemplo: \"El proyecto es viable; además, cuenta con financiamiento asegurado\"."
+        },
+        {
+          "texto": "Conectores de \"contraste\" → oponen o limitan una idea previa.",
+          "explicacion": "Los conectores de \"contraste\" o adversativos, como \"pero\" o \"sin embargo\", introducen una objeción, límite o contraposición frente a lo dicho antes. Se reconocen porque la segunda proposición matiza o contradice parcialmente a la primera. Por ejemplo: \"Tiene talento, pero le falta disciplina\"."
+        },
+        {
+          "texto": "Conectores de \"causa\" ⇒ indican el motivo de un evento.",
+          "explicacion": "Los conectores de \"causa\", como \"porque\" o \"ya que\", señalan el motivo o razón que origina un hecho expresado en la otra proposición. Para identificarlos, hay que reconocer cuál de las dos ideas es el efecto y cuál es su motivo. Por ejemplo: \"No salió a correr porque llovía toda la mañana\"."
+        },
+        {
+          "texto": "Conectores de \"consecuencia\" → introducen el efecto resultante.",
+          "explicacion": "Los conectores de \"consecuencia\", como \"por lo tanto\" o \"en consecuencia\", introducen el resultado o la deducción lógica que se desprende de una causa mencionada antes. A diferencia de los conectores causales, aquí primero aparece la causa y luego el efecto. Por ejemplo: \"Llovió toda la noche; por lo tanto, las calles amanecieron inundadas\"."
+        },
+        {
+          "texto": "Conectores de \"evidencia\" → confirman información obvia o esperada.",
+          "explicacion": "Los conectores de \"evidencia\", como \"en efecto\" u \"obviamente\", recalcan una información que resulta innegable o esperable dentro del contexto, sin aportar un dato nuevo. Se diferencian de los de consecuencia porque no introducen un resultado, sino que ratifican una idea ya sugerida. Por ejemplo: \"El acusado tenía coartada; en efecto, fue declarado inocente\"."
+        },
+        {
+          "texto": "Conectores de \"equivalencia\" = reformulan la idea en otros términos.",
+          "explicacion": "Los conectores de \"equivalencia\", como \"es decir\" u \"o sea\", permiten reformular o aclarar la misma idea usando palabras distintas, sin agregar información nueva. Se usan cuando el emisor quiere asegurar que el receptor comprenda un término o concepto previo. Por ejemplo: \"Es un políglota, es decir, domina varios idiomas\"."
+        },
+        {
+          "texto": "Conectores de \"orden\" → enumeran ideas de forma secuencial.",
+          "explicacion": "Los conectores de \"orden\", como \"primero\", \"luego\" o \"finalmente\", organizan el discurso indicando la posición temporal o de importancia de cada parte dentro de una secuencia o proceso. Ayudan al lector a seguir la estructura lógica de un texto que describe pasos o etapas. Por ejemplo: \"Primero se mezclan los ingredientes; luego se hornea la masa\"."
+        }
       ]
     },
     {
       "titulo": "Ejercicios",
       "puntos": [
-        { "texto": "Ejercicio 1", "explicacion": "Sinónimo de \"pusilánime\" en \"actitud pusilánime\": a) valiente b) cobarde c) serena d) indiferente. Resp: b, mismo sema de falta de valor." },
-        { "texto": "Ejercicio 2", "explicacion": "Antónimo de \"escaso\" en \"recursos escasos\": a) abundantes b) reducidos c) limitados d) mínimos. Resp: a, opuesto directo de cantidad." },
-        { "texto": "Ejercicio 3", "explicacion": "\"El informe fue exhaustivo; ___, cubrió todos los aspectos\": a) sin embargo b) es decir c) porque d) además. Resp: b, reformula lo anterior." },
-        { "texto": "Ejercicio 4", "explicacion": "\"vivo\"/\"muerto\": ¿complementarios o de grado? Resp: complementarios, no admiten término medio." },
-        { "texto": "Ejercicio 5", "explicacion": "Sinónimo de \"claro\" en \"explicación clara\": a) transparente b) comprensible c) luminoso d) evidente. Resp: b, por el contexto de entendimiento." },
-        { "texto": "Ejercicio 6", "explicacion": "\"No hizo ejercicio ___ comió en exceso\": a) sin embargo b) y c) es decir d) aunque. Resp: b, dos causas que se suman." },
-        { "texto": "Ejercicio 7", "explicacion": "\"médico\"/\"doctor\" en habla común: ¿qué tipo de sinonimia? Resp: total, intercambiables en casi cualquier contexto." },
-        { "texto": "Ejercicio 8", "explicacion": "\"El puente colapsó ___ la sobrecarga\": a) por lo tanto b) debido a c) es decir d) sin embargo. Resp: b, indica la causa." },
-        { "texto": "Ejercicio 9", "explicacion": "Antónimo de grado de \"caliente\": a) frío b) hirviendo c) helado d) congelado. Resp: a, admite \"tibio\" como término medio." },
-        { "texto": "Ejercicio 10", "explicacion": "\"El equipo perdió; ___, quedó eliminado\": a) en consecuencia b) en efecto c) además d) aunque. Resp: a, la eliminación es efecto de perder." },
-        { "texto": "Ejercicio 11", "explicacion": "\"comprar\"/\"vender\": ¿complementarios o de grado? Resp: complementarios, uno presupone al otro." },
-        { "texto": "Ejercicio 12", "explicacion": "Sinónimo de \"inexorable\": a) evitable b) inevitable c) agradable d) distante. Resp: b, mismo sema de \"no se puede evitar\"." },
-        { "texto": "Ejercicio 13", "explicacion": "\"Presentó pruebas contundentes; ___, fue absuelto\": a) en efecto b) sin embargo c) o sea d) primero. Resp: a, confirma lo esperado." },
-        { "texto": "Ejercicio 14", "explicacion": "\"___ se mezclan los ingredientes; ___ se hornea\": a) primero/finalmente b) sin embargo/además c) porque/por lo tanto d) es decir/aunque. Resp: a, orden secuencial." },
-        { "texto": "Ejercicio 15", "explicacion": "Antónimo de \"claro\" (agua): a) confuso b) turbio c) oscuro d) opaco. Resp: b, opuesto en el campo de líquidos." },
-        { "texto": "Ejercicio 16", "explicacion": "\"Es un texto ambiguo, ___, admite más de una interpretación\": a) es decir b) por lo tanto c) sin embargo d) además. Resp: a, reformula \"ambiguo\"." },
-        { "texto": "Ejercicio 17", "explicacion": "Sinónimo de mayor grado de \"molesto\": a) incómodo b) furioso c) contrariado d) fastidiado. Resp: b, mayor intensidad." },
-        { "texto": "Ejercicio 18", "explicacion": "\"El estudio fue riguroso, ___, careció de muestra representativa\": a) además b) sin embargo c) es decir d) en efecto. Resp: b, contraste con lo dicho antes." },
-        { "texto": "Ejercicio 19", "explicacion": "\"gigante\"/\"enano\": ¿de grado o complementarios? Resp: de grado, admite términos intermedios (\"alto\", \"mediano\")." },
-        { "texto": "Ejercicio 20", "explicacion": "\"Se implementaron políticas; ___, redujeron costos\": a) en consecuencia b) no obstante c) es decir d) primero. Resp: a, efecto directo." }
+        { "texto": "Ejercicio 1", "explicacion": "Marca el sinónimo de \"pusilánime\" en: \"Su actitud pusilánime le impidió defender su postura\". Opciones: a) valiente b) cobarde c) serena d) indiferente. Resolución: \"pusilánime\" significa falto de ánimo o valor, por lo que comparte el mismo sema que \"cobarde\"; las demás opciones expresan lo contrario o un matiz distinto. Respuesta: b) cobarde." },
+        { "texto": "Ejercicio 2", "explicacion": "Identifica el antónimo de \"escaso\" en \"recursos escasos para el proyecto\". Opciones: a) abundantes b) reducidos c) limitados d) mínimos. Resolución: \"escaso\" indica poca cantidad, y su opuesto directo dentro del mismo campo semántico de cantidad es \"abundantes\"; las otras opciones son sinónimos o cuasi-sinónimos de \"escaso\". Respuesta: a) abundantes." },
+        { "texto": "Ejercicio 3", "explicacion": "Completa: \"El informe fue exhaustivo; ___, cubrió todos los aspectos del problema\". Opciones: a) sin embargo b) es decir c) porque d) además. Resolución: la segunda proposición no aporta un dato nuevo, solo reformula el significado de \"exhaustivo\", por lo que corresponde un conector de equivalencia. Respuesta: b) es decir." },
+        { "texto": "Ejercicio 4", "explicacion": "Clasifica la relación entre \"vivo\" y \"muerto\": ¿antónimos complementarios o de grado? Resolución: no existe un estado intermedio real entre ambos términos, ya que afirmar uno excluye totalmente al otro; esto es justamente lo que define a los antónimos complementarios. Respuesta: complementarios." },
+        { "texto": "Ejercicio 5", "explicacion": "Marca el sinónimo contextual de \"claro\" en \"una explicación clara\". Opciones: a) transparente b) comprensible c) luminoso d) evidente. Resolución: en el contexto de una explicación, \"claro\" activa el sema de \"fácil de entender\", no el de transparencia física propio de los líquidos. Respuesta: b) comprensible." },
+        { "texto": "Ejercicio 6", "explicacion": "Completa: \"No hizo ejercicio ___ comió en exceso, por eso subió de peso\". Opciones: a) sin embargo b) y c) es decir d) aunque. Resolución: ambas proposiciones funcionan como causas que se suman hacia el mismo efecto, sin oponerse entre sí, por lo que corresponde un conector de adición. Respuesta: b) y." },
+        { "texto": "Ejercicio 7", "explicacion": "Identifica el tipo de sinonimia entre \"médico\" y \"doctor\" en el habla general. Resolución: ambos términos pueden intercambiarse en prácticamente cualquier contexto cotidiano sin alterar el sentido ni el registro de la oración, lo cual es la característica definitoria de la sinonimia total. Respuesta: sinonimia total." },
+        { "texto": "Ejercicio 8", "explicacion": "Completa: \"El puente colapsó ___ la sobrecarga de vehículos\". Opciones: a) por lo tanto b) debido a c) es decir d) sin embargo. Resolución: se pide el motivo del colapso, es decir la causa del hecho, por lo que corresponde el conector causal \"debido a\". Respuesta: b) debido a." },
+        { "texto": "Ejercicio 9", "explicacion": "Marca el antónimo de \"caliente\" que admita un término medio. Opciones: a) frío b) hirviendo c) helado d) congelado. Resolución: entre \"caliente\" y \"frío\" existe el término intermedio \"tibio\", lo que confirma que se trata de antonimia de grado y no complementaria. Respuesta: a) frío." },
+        { "texto": "Ejercicio 10", "explicacion": "Completa: \"El equipo perdió el partido; ___, quedó eliminado del torneo\". Opciones: a) en consecuencia b) en efecto c) además d) aunque. Resolución: la eliminación del torneo es el efecto directo de perder el partido, por lo que corresponde un conector de consecuencia. Respuesta: a) en consecuencia." },
+        { "texto": "Ejercicio 11", "explicacion": "Determina si \"comprar\" y \"vender\" son antónimos complementarios o de grado. Resolución: un acto presupone necesariamente al otro, ya que no puede existir una venta sin una compra correspondiente, y no admiten grados intermedios entre ellos. Respuesta: complementarios." },
+        { "texto": "Ejercicio 12", "explicacion": "Marca el sinónimo de \"inexorable\" en \"un destino inexorable\". Opciones: a) evitable b) inevitable c) agradable d) distante. Resolución: \"inexorable\" significa que no se puede evitar o detener, por lo que comparte ese sema con \"inevitable\"; las demás opciones no coinciden con esa idea. Respuesta: b) inevitable." },
+        { "texto": "Ejercicio 13", "explicacion": "Completa: \"El acusado presentó pruebas contundentes; ___, el juez lo absolvió\". Opciones: a) en efecto b) sin embargo c) o sea d) primero. Resolución: la absolución confirma lo esperable dado que las pruebas eran contundentes, sin aportar un dato nuevo, por lo que corresponde un conector de evidencia. Respuesta: a) en efecto." },
+        { "texto": "Ejercicio 14", "explicacion": "Identifica los conectores de secuencia correctos para: \"___ se mezclan los ingredientes; ___ se hornea la masa\". Opciones: a) primero / finalmente b) sin embargo / además c) porque / por lo tanto d) es decir / aunque. Resolución: el enunciado describe pasos de un proceso en orden temporal, por lo que corresponden conectores de orden. Respuesta: a) primero / finalmente." },
+        { "texto": "Ejercicio 15", "explicacion": "Marca el antónimo de \"claro\" en el sentido de \"agua clara\". Opciones: a) confuso b) turbio c) oscuro d) opaco. Resolución: en el contexto de un líquido, \"claro\" se opone a \"turbio\" (con sedimentos o impurezas); \"confuso\" correspondería al sentido de comprensión, no al de transparencia. Respuesta: b) turbio." },
+        { "texto": "Ejercicio 16", "explicacion": "Completa: \"Es un texto ambiguo, ___, admite más de una interpretación\". Opciones: a) es decir b) por lo tanto c) sin embargo d) además. Resolución: la segunda proposición reformula el significado de \"ambiguo\" sin agregar información nueva, por lo que corresponde un conector de equivalencia. Respuesta: a) es decir." },
+        { "texto": "Ejercicio 17", "explicacion": "Marca el sinónimo de mayor grado de \"molesto\" entre las opciones. Opciones: a) incómodo b) furioso c) contrariado d) fastidiado. Resolución: de las opciones, \"furioso\" representa el grado más alto de enojo, mientras que las demás corresponden a grados similares o más bajos que \"molesto\". Respuesta: b) furioso." },
+        { "texto": "Ejercicio 18", "explicacion": "Completa: \"El estudio fue riguroso, ___, careció de una muestra representativa\". Opciones: a) además b) sin embargo c) es decir d) en efecto. Resolución: se presenta una limitación que contrasta con lo positivo mencionado antes (riguroso), por lo que corresponde un conector de contraste. Respuesta: b) sin embargo." },
+        { "texto": "Ejercicio 19", "explicacion": "Determina si \"gigante\" y \"enano\" son antónimos de grado o complementarios. Resolución: entre ambos extremos existen términos intermedios como \"alto\", \"mediano\" o \"bajo\", lo que confirma que se trata de antonimia de grado y no complementaria. Respuesta: antónimos de grado." },
+        { "texto": "Ejercicio 20", "explicacion": "Completa: \"Se implementaron nuevas políticas; ___, redujeron los costos operativos\". Opciones: a) en consecuencia b) no obstante c) es decir d) primero. Resolución: la reducción de costos es el efecto directo de implementar las políticas, por lo que corresponde un conector de consecuencia. Respuesta: a) en consecuencia." }
       ]
     }
   ]
