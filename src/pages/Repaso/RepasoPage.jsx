@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
+import AppFooter from "../../components/AppFooter";
 import SearchModal from "../../components/SearchModal";
 import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import {
@@ -190,6 +191,8 @@ export default function RepasoPage() {
             })}
         </div>
       </section>
+
+      <AppFooter />
 
       <SearchModal
         open={searchOpen}

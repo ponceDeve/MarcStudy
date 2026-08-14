@@ -5,6 +5,8 @@ import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import AppHeader from "../../components/AppHeader";
+import AppFooter from "../../components/AppFooter";
+import WelcomeSection from "../../components/WelcomeSection";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
@@ -1223,6 +1225,8 @@ export default function MiEstudioPage() {
                 )}
               </div>
             </div>
+            <WelcomeSection onSelectTema={seleccionarItem} />
+            <AppFooter />
           </>
         )}
 

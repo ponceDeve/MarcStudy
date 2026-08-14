@@ -1,0 +1,239 @@
+/* ============================================================
+   WELCOME SECTION — bienvenida (cursos) + FAQ del inicio
+   ============================================================ */
+.welcome-section {
+  max-width: 720px;
+  margin: 40px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 640px) {
+  .welcome-section {
+    max-width: 860px;
+    margin-top: 56px;
+    gap: 48px;
+  }
+}
+
+.welcome-section__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__title {
+    font-size: 1.35rem;
+  }
+}
+
+.welcome-section__lead {
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 20px;
+
+  strong {
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 640px) {
+  .welcome-section__lead {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    max-width: 640px;
+  }
+}
+
+/* ---- Lista de cursos ---- */
+.welcome-section__cursos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__cursos {
+    gap: 12px;
+  }
+}
+
+.welcome-section__curso {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__curso {
+    border-radius: 14px;
+  }
+}
+
+.welcome-section__curso-details > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  display: block;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .welcome-section__curso-details > summary {
+    padding: 20px 24px;
+  }
+}
+
+.welcome-section__curso-details[open] > summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.welcome-section__curso-info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.welcome-section__curso-nombre {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+@media (min-width: 640px) {
+  .welcome-section__curso-nombre {
+    font-size: 1.08rem;
+  }
+}
+
+.welcome-section__curso-count {
+  font-size: 0.8rem;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.welcome-section__curso-desc {
+  margin: 4px 0 0;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__curso-desc {
+    font-size: 0.94rem;
+    margin-top: 6px;
+  }
+}
+
+/* Lista de temas: alto fijo con scroll — un curso con 40 temas no
+   debe estirar la tarjeta hasta el infinito. */
+.welcome-section__temas {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__temas {
+    max-height: 320px;
+    padding: 8px;
+  }
+}
+
+.welcome-section__temas::-webkit-scrollbar {
+  width: 6px;
+}
+
+.welcome-section__temas::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.welcome-section__temas::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+.welcome-section__tema-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--surface-hover);
+    color: var(--ink);
+  }
+}
+
+@media (min-width: 640px) {
+  .welcome-section__tema-btn {
+    padding: 11px 14px;
+    font-size: 0.94rem;
+  }
+}
+
+/* ---- FAQ ---- */
+.welcome-section__faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.welcome-section__faq-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 4px 16px;
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 0;
+    font-weight: 600;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "+";
+      color: var(--ink-faint);
+      font-weight: 400;
+      font-size: 1.1rem;
+    }
+  }
+
+  &[open] summary::after {
+    content: "–";
+  }
+
+  p {
+    margin: 0 0 14px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}

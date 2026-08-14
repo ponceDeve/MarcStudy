@@ -15,6 +15,7 @@ import { leerProgresoHorario } from "../../lib/horarioProgress";
 import { normalizarTexto } from "../../lib/buscador";
 import {
   limpiarPomodoroCompartido,
+  leerPomodoroCompartido,
   leerYLimpiarRetorno,
   leerRetorno,
   guardarRetorno,
@@ -22,6 +23,7 @@ import {
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
+import AppFooter from "../../components/AppFooter";
 import SearchModal from "../../components/SearchModal";
 import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import ScheduleSetup from "./ScheduleSetup";
@@ -61,6 +63,12 @@ const PASOS_BIENVENIDA = [
     texto: "Toca 'Editar' arriba cuando quieras para rehacer tus días y cursos.",
   },
 ];
+
+// Solo estos descansos activan el bloqueo de pantalla (y por lo
+// tanto se guardan en localStorage vía isLocked): el de 5 min entre
+// pomodoros de un curso, y los manuales de 10 y 30. Cualquier otra
+// duración de descanso arranca normal, sin bloquear la pantalla.
+const RESTS_BLOQUEABLES = [5, 10, 30];
 
 function buildCourseTasks(course) {
   const tasks = [];
@@ -148,6 +156,8 @@ export default function HorarioPage() {
   const [isLocked, setIsLocked] = useLocalStorage("horario_rest_locked", false);
   const [lockConfirmOpen, setLockConfirmOpen] = useState(false);
 
+  const [cursoRapidoPreparado, setCursoRapidoPreparado] = useState(null);
+
   const alarmRef = useRef(null);
 
   const courses = horario[selectedDay] || [];
@@ -200,13 +210,31 @@ export default function HorarioPage() {
     100,
   );
 
-  // Sistema de failsafe en caso de que la app se recargue y se quede bloqueada
-  // estando el cronómetro detenido.
+  // Sistema de failsafe en caso de que la app se recargue y se quede
+  // bloqueada estando el cronómetro detenido.
+  //
+  // OJO CON LA CARRERA: al recargar la página, este efecto puede
+  // correr ANTES de que PomodoroContext termine de retomar el
+  // cronómetro guardado (su propio useEffect de resume-on-mount) —
+  // en ese instante "isRunning" todavía marca false aunque en
+  // realidad SÍ había un descanso corriendo. Por eso no confiamos
+  // solo en "isRunning": si da false, chequeamos directo el
+  // localStorage compartido (lectura síncrona, sin ese problema de
+  // carrera) antes de decidir desbloquear. Así, si de verdad había
+  // un descanso vigente, se mantiene bloqueado con el tiempo real
+  // corriendo; si no hay nada guardado o ya venció, recién ahí se
+  // desbloquea.
   useEffect(() => {
-    if (isLocked && !isRunning && secondsLeft === 0) {
+    if (!isLocked || isRunning) return;
+
+    const guardado = leerPomodoroCompartido();
+    const sigueVigente =
+      guardado && guardado.running && guardado.endTimestamp > Date.now();
+
+    if (!sigueVigente) {
       setIsLocked(false);
     }
-  }, [isLocked, isRunning, secondsLeft, setIsLocked]);
+  }, [isLocked, isRunning, setIsLocked]);
 
   function iniciarConSync() {
     const taskIndex = activeCourse
@@ -222,20 +250,35 @@ export default function HorarioPage() {
       (!activeCourse && manualBreak);
 
     if (isRestTask) {
-      setLockConfirmOpen(true);
-      return;
+      const duracionDescanso = activeCourse
+        ? activeTasks[taskIndex]?.duration
+        : manualBreak;
+
+      if (RESTS_BLOQUEABLES.includes(duracionDescanso)) {
+        setLockConfirmOpen(true);
+        return;
+      }
+      // Descanso de una duración fuera de la lista: arranca directo,
+      // sin pasar por el bloqueo de pantalla ni guardarse en
+      // localStorage.
     }
 
     const label = activeCourse
       ? `${activeCourse.subject} · ${activeTasks[taskIndex]?.detail || ""}`
-      : "";
+      : cursoRapidoPreparado
+        ? `${cursoRapidoPreparado} · Pomodoro 1 de 4`
+        : "";
 
     pomodoro.iniciar(
       null,
       label,
-      activeCourse ? activeCourse.subject : "",
-      activeCourse ? selectedDay : "",
+      activeCourse
+        ? activeCourse.subject
+        : cursoRapidoPreparado || "",
+      activeCourse ? selectedDay : cursoRapidoPreparado ? selectedDay : "",
     );
+
+    if (cursoRapidoPreparado) setCursoRapidoPreparado(null);
 
     if (temaElegidoParaCurso) {
       navigate(`/?q=${encodeURIComponent(temaElegidoParaCurso)}`);
@@ -451,16 +494,13 @@ export default function HorarioPage() {
       return;
     }
 
-    pomodoro.iniciar(
-      POMODORO_MIN,
-      `${cursoRapidoNombre} · Pomodoro 1 de 4`,
-      cursoRapidoNombre,
-    );
-
-    const destino = temaRapidoElegido;
+    setActiveCourseIdx(null);
+    setManualBreak(null);
+    setCursoRapidoPreparado(cursoRapidoNombre);
+    setTemaElegidoParaCurso(temaRapidoElegido);
+    reset(POMODORO_MIN);
 
     cancelarCursoRapido();
-    navigate(`/?q=${encodeURIComponent(destino)}`);
   }
 
   function cerrarCourseComplete() {
@@ -637,6 +677,12 @@ export default function HorarioPage() {
                 </p>
               )}
 
+              {!activeCourse && !manualBreak && cursoRapidoPreparado && (
+                <p className="horario__timer-label">
+                  {cursoRapidoPreparado} · Pomodoro 1 de 4
+                </p>
+              )}
+
               <h2 className="timer-font horario__timer-clock">
                 {formatted}
               </h2>
@@ -653,7 +699,7 @@ export default function HorarioPage() {
               <div className="horario__timer-btn-row">
                 <button
                   onClick={iniciarConSync}
-                  disabled={(!activeCourse && !manualBreak) || isRunning}
+                  disabled={(!activeCourse && !manualBreak && !cursoRapidoPreparado) || isRunning}
                   className="horario__btn is-start"
                 >
                   <i className="fas fa-play" /> Iniciar
@@ -949,6 +995,8 @@ export default function HorarioPage() {
         </section>
       </main>
 
+      <AppFooter />
+
       <audio
         ref={alarmRef}
         src="sonidos/loud-alarm-ringtones-annoying.mp3"
@@ -1183,9 +1231,8 @@ export default function HorarioPage() {
           ) : (
             <>
               <p className="tema-selector__descripcion">
-                Vas a estudiar "{temaRapidoElegido}"
-                ahora, con el pomodoro corriendo.
-                ¿Confirmas?
+                Vas a preparar el pomodoro de "{temaRapidoElegido}".
+                Después presionas Iniciar tú mismo. ¿Confirmas?
               </p>
 
               <div className="tema-selector__acciones">
@@ -1200,7 +1247,7 @@ export default function HorarioPage() {
                   onClick={confirmarCursoRapido}
                   className="tema-selector__accion tema-selector__iniciar"
                 >
-                  Iniciar
+                  Confirmar
                 </button>
               </div>
             </>

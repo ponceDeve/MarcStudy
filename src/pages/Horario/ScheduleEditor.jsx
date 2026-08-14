@@ -11,6 +11,8 @@ import {
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import AppHeader from "../../components/AppHeader"; // <-- IMPORTAR EL HEADER
+import AppFooter from "../../components/AppFooter";
+import SearchModal from "../../components/SearchModal";
 
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
@@ -31,6 +33,7 @@ export default function ScheduleEditor() {
 
   const [showForm, setShowForm] = useState(false);
   const [editingIdx, setEditingIdx] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
@@ -80,7 +83,9 @@ export default function ScheduleEditor() {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        if (salidaPendiente !== null) {
+        if (searchOpen) {
+          setSearchOpen(false);
+        } else if (salidaPendiente !== null) {
           setSalidaPendiente(null);
         } else if (confirmandoBorrar !== null) {
           setConfirmandoBorrar(null);
@@ -139,6 +144,7 @@ export default function ScheduleEditor() {
     confirmandoBorrar,
     salidaPendiente,
     hayCambiosSinGuardar,
+    searchOpen,
   ]);
 
   const sugerencias = nombreCurso.trim()
@@ -229,7 +235,7 @@ export default function ScheduleEditor() {
   return (
     <>
       {/* AGREGADO EL HEADER AQUÍ */}
-      <AppHeader showHome />
+      <AppHeader showHome onAbrirBuscador={() => setSearchOpen(true)} />
 
       <div className="editor-page">
         <div className="editor-card">
@@ -445,6 +451,21 @@ export default function ScheduleEditor() {
             </div>
           )}
         </div>
+
+        <AppFooter />
+
+        <SearchModal
+          open={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          onSelect={(item) => {
+            setSearchOpen(false);
+            navigate(
+              `/?q=${encodeURIComponent(
+                item.type === "curso" ? item.nombre : item.tema,
+              )}`,
+            );
+          }}
+        />
 
         {confirmandoBorrar !== null && cursosDelDia[confirmandoBorrar] && (
           <div className="editor-confirm-backdrop" onClick={() => setConfirmandoBorrar(null)}>
