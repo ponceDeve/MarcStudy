@@ -102,34 +102,30 @@ function useLecturaTeoriaVoz(texto, activo) {
     if (!activo || !texto || !("speechSynthesis" in window)) return;
 
     let cancelado = false;
-    const timer = setTimeout(() => {
+    window.speechSynthesis.cancel();
+
+    obtenerVocesListas().then((voces) => {
       if (cancelado) return;
-      window.speechSynthesis.cancel();
 
-      obtenerVocesListas().then((voces) => {
-        if (cancelado) return;
+      const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
+      utter.lang = "es-PE";
+      utter.pitch = 0.55;
+      utter.rate = 0.92;
 
-        const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
-        utter.lang = "es-PE";
-        utter.pitch = 0.55;
-        utter.rate = 0.92;
+      const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
+      const vozGrave =
+        voces.find(
+          (v) =>
+            v.lang?.toLowerCase().startsWith("es") &&
+            nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n)),
+        ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
+      if (vozGrave) utter.voice = vozGrave;
 
-        const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
-        const vozGrave =
-          voces.find(
-            (v) =>
-              v.lang?.toLowerCase().startsWith("es") &&
-              nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n)),
-          ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
-        if (vozGrave) utter.voice = vozGrave;
-
-        window.speechSynthesis.speak(utter);
-      });
-    }, 2500);
+      window.speechSynthesis.speak(utter);
+    });
 
     return () => {
       cancelado = true;
-      clearTimeout(timer);
       if (window.speechSynthesis) window.speechSynthesis.cancel();
     };
   }, [texto, activo]);
@@ -910,11 +906,24 @@ export default function MiEstudioPage() {
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
 
+  // Lectura de voz manual: el usuario la enciende con un botón dentro
+  // de la teoría. Se mantiene activa mientras avanza dentro del MISMO
+  // tema, pero se apaga sola al cambiar de tema.
+  const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
+  useEffect(() => {
+    setLecturaTeoriaOn(false);
+  }, [topicData?.tema, topicData?.curso]);
+
+  const textoCompletoTeoria =
+    stage === "theory" && !isLevelMode && current
+      ? [current.seccionTitulo, current.texto, current.explicacion].filter(Boolean).join(". ")
+      : null;
+
   useLecturaTeoriaVoz(
-    stage === "theory" && !isLevelMode ? current?.texto : null,
-    stage === "theory" && !isLevelMode,
+    textoCompletoTeoria,
+    lecturaTeoriaOn && stage === "theory" && !isLevelMode,
   );
-  
+
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -964,7 +973,7 @@ export default function MiEstudioPage() {
 
   const wrapClass = [
     "mi-estudio__wrap",
-    stage === "question" ? "is-question" : topicData ? "has-topbar" : "",
+    stage === "question" ? "is-question" : topicData ? "has-topbar" : "is-home",
   ].join(" ");
 
   const progresoPregunta = repasoQuizActivo
@@ -1131,102 +1140,107 @@ export default function MiEstudioPage() {
         {!topicData && (
           <>
             <AppHeader />
-            <div className="mi-estudio__intro">
-              <div>
-                <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
-                <h1 className="mi-estudio__intro-title">
-                  {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
-                </h1>
-                {error && (
-                  <p style={{ color: "var(--danger, #e74c3c)", fontWeight: 700, marginTop: "10px" }}>
-                    <i className="fas fa-triangle-exclamation" /> {error}
-                  </p>
-                )}
-              </div>
-              <div className="home-search">
-                <div className="search-input-row">
-                  <input autoComplete="off"
-                    type="search"
-                    name="buscar-inicio"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onFocus={() => setBusquedaEnfocada(true)}
-                    onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
-                        e.preventDefault();
-                        const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-                        if (mejorOpcion) {
-                          seleccionarItem(mejorOpcion);
-                          return;
-                        }
-                      }
-                      handleKeyDownInicial(e);
-                    }}
-                    placeholder="Buscar tema o curso..."
-                    className="search-input"
-                  />
-                  <div
-                    className="search-input-lupa"
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      if (hayQuery) {
-                        const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
-                        if (mejorOpcion) seleccionarItem(mejorOpcion);
-                      }
-                    }}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <i className="fa-solid fa-magnifying-glass" />
-                  </div>
+            <div className="mi-estudio__home-screen">
+              <div className="mi-estudio__intro">
+                <div>
+                  <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
+                  <h1 className="mi-estudio__intro-title">
+                    {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
+                  </h1>
+                  {error && (
+                    <p style={{ color: "var(--danger, #e74c3c)", fontWeight: 700, marginTop: "10px" }}>
+                      <i className="fas fa-triangle-exclamation" /> {error}
+                    </p>
+                  )}
                 </div>
-                {busquedaEnfocada && hayQuery && grupos.length > 0 && (() => {
-                  let idx = -1;
-                  return (
-                    <div className="home-search-results search-results">
-                      {grupos.map((g) => {
-                        const idxCurso = ++idx;
-                        return (
-                          <div key={`grupo-${g.curso}`} className="">
-                            <button
-                              onMouseDown={(e) => {
-                                e.preventDefault();
-                                seleccionarItem({ type: "curso", nombre: g.curso });
-                              }}
-                              className={`search-result-item is-curso ${idxCurso === focusedInicial ? "is-focused" : ""}`}
-                            >
-                              <span className="curso-title">{g.curso}</span>
-                            </button>
-                            {g.temas.map((t) => {
-                              const idxTema = ++idx;
-                              return (
-                                <button
-                                  key={`tema-${t.curso}-${t.tema}`}
-                                  onMouseDown={(e) => {
-                                    e.preventDefault();
-                                    seleccionarItem(t);
-                                  }}
-                                  className={`search-result-item is-tema ${idxTema === focusedInicial ? "is-focused" : ""}`}
-                                >
-                                  <p className="search-result-item__tema">{t.tema}</p>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        );
-                      })}
+                <div className="home-search">
+                  <div className="search-input-row">
+                    <input autoComplete="off"
+                      type="search"
+                      name="buscar-inicio"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      onFocus={() => setBusquedaEnfocada(true)}
+                      onBlur={() => setTimeout(() => setBusquedaEnfocada(false), 150)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && hayQuery && focusedInicial <= 0) {
+                          e.preventDefault();
+                          const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                          if (mejorOpcion) {
+                            seleccionarItem(mejorOpcion);
+                            return;
+                          }
+                        }
+                        handleKeyDownInicial(e);
+                      }}
+                      placeholder="Buscar tema o curso..."
+                      className="search-input"
+                    />
+                    <div
+                      className="search-input-lupa"
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        if (hayQuery) {
+                          const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+                          if (mejorOpcion) seleccionarItem(mejorOpcion);
+                        }
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <i className="fa-solid fa-magnifying-glass" />
                     </div>
-                  );
-                })()}
-                {busquedaEnfocada && hayQuery && grupos.length === 0 && (
-                  <div className="home-search-results search-results">
-                    <p className="search-empty">Sin resultados para "{query}"</p>
                   </div>
-                )}
+                  {busquedaEnfocada && hayQuery && grupos.length > 0 && (() => {
+                    let idx = -1;
+                    return (
+                      <div className="home-search-results search-results">
+                        {grupos.map((g) => {
+                          const idxCurso = ++idx;
+                          return (
+                            <div key={`grupo-${g.curso}`} className="">
+                              <button
+                                onMouseDown={(e) => {
+                                  e.preventDefault();
+                                  seleccionarItem({ type: "curso", nombre: g.curso });
+                                }}
+                                className={`search-result-item is-curso ${idxCurso === focusedInicial ? "is-focused" : ""}`}
+                              >
+                                <span className="curso-title">{g.curso}</span>
+                              </button>
+                              {g.temas.map((t) => {
+                                const idxTema = ++idx;
+                                return (
+                                  <button
+                                    key={`tema-${t.curso}-${t.tema}`}
+                                    onMouseDown={(e) => {
+                                      e.preventDefault();
+                                      seleccionarItem(t);
+                                    }}
+                                    className={`search-result-item is-tema ${idxTema === focusedInicial ? "is-focused" : ""}`}
+                                  >
+                                    <p className="search-result-item__tema">{t.tema}</p>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                  {busquedaEnfocada && hayQuery && grupos.length === 0 && (
+                    <div className="home-search-results search-results">
+                      <p className="search-empty">Sin resultados para "{query}"</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-            <WelcomeSection onSelectTema={seleccionarItem} />
-            <AppFooter />
+
+            <div className="mi-estudio__below">
+              <WelcomeSection onSelectTema={seleccionarItem} />
+              <AppFooter />
+            </div>
           </>
         )}
 
@@ -1257,6 +1271,15 @@ export default function MiEstudioPage() {
 
             {stage === "theory" && current && (
               <div className="mi-estudio__theory-wrap">
+                <button
+                  type="button"
+                  onClick={() => setLecturaTeoriaOn((v) => !v)}
+                  className={`mi-estudio__voz-btn ${lecturaTeoriaOn ? "is-on" : "is-off"}`}
+                  title={lecturaTeoriaOn ? "Desactivar lectura en voz" : "Leer teoría en voz alta"}
+                  aria-pressed={lecturaTeoriaOn}
+                >
+                  <i className={`fa-solid ${lecturaTeoriaOn ? "fa-volume-high" : "fa-volume-xmark"}`} />
+                </button>
                 <div className="arcade-game-container mi-estudio__theory">
                   <div className="arcade-grid" />
                   <div className="mi-estudio__theory-inner">

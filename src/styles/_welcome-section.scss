@@ -2,17 +2,18 @@
    WELCOME SECTION — bienvenida (cursos) + FAQ del inicio
    ============================================================ */
 .welcome-section {
-  max-width: 720px;
+  max-width: 100%;
   margin: 40px auto 0;
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex: 1;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
   .welcome-section {
-    max-width: 860px;
     margin-top: 56px;
     gap: 48px;
   }
@@ -49,106 +50,175 @@
   }
 }
 
-/* ---- Lista de cursos ---- */
-.welcome-section__cursos {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* ---- Grid de cursos ---- */
+.welcome-section__grid {
+  display: grid;
+  grid-template-columns: 1fr; /* celulares chicos: 1 columna */
+  gap: 12px;
+  align-items: start; /* clave: evita que abrir una tarjeta estire a sus vecinas de fila */
+}
+
+@media (min-width: 480px) {
+  .welcome-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 640px) {
-  .welcome-section__cursos {
-    gap: 12px;
+  .welcome-section__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
 
 .welcome-section__curso {
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  /* naranja suave desde el inicio (no negro/blanco), más intenso recién
+     en hover/abierto */
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
+  border-top: 5px solid color-mix(in srgb, var(--accent), transparent 65%);
+  border-radius: 14px;
   background: var(--surface);
-  overflow: hidden;
+  transition: box-shadow 1s ease, border-color 1.2s ease;
+}
+
+.welcome-section__curso:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.welcome-section__curso.is-open {
+  z-index: 10;
+  border-color: var(--accent);
+  /* se "funde" con la lista de abajo: sin borde ni esquinas redondeadas
+     en la base, para que card + lista se vean como una sola caja.
+     box-shadow explícito en none: si no, la sombra del :hover se queda
+     puesta porque esta regla nunca la pisaba. */
+  border-bottom-color: transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: none;
+}
+
+.welcome-section__curso-top {
+  padding: 16px 16px 4px;
 }
 
 @media (min-width: 640px) {
-  .welcome-section__curso {
-    border-radius: 14px;
+  .welcome-section__curso-top {
+    padding: 22px 22px 6px;
   }
-}
-
-.welcome-section__curso-details > summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  display: block;
-
-  &::-webkit-details-marker {
-    display: none;
-  }
-}
-
-@media (min-width: 640px) {
-  .welcome-section__curso-details > summary {
-    padding: 20px 24px;
-  }
-}
-
-.welcome-section__curso-details[open] > summary {
-  border-bottom: 1px solid var(--border);
 }
 
 .welcome-section__curso-info {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .welcome-section__curso-nombre {
   font-weight: 700;
   color: var(--ink);
+  font-size: 1rem;
 }
 
 @media (min-width: 640px) {
   .welcome-section__curso-nombre {
-    font-size: 1.08rem;
+    font-size: 1.12rem;
   }
 }
 
 .welcome-section__curso-count {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--primary);
-  white-space: nowrap;
+  background: var(--primary-bg);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  width: fit-content;
 }
 
 .welcome-section__curso-desc {
-  margin: 4px 0 0;
+  margin: 10px 0 0;
   color: var(--ink-faint);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
 }
 
 @media (min-width: 640px) {
   .welcome-section__curso-desc {
-    font-size: 0.94rem;
-    margin-top: 6px;
+    font-size: 0.92rem;
   }
 }
 
-/* Lista de temas: alto fijo con scroll — un curso con 40 temas no
-   debe estirar la tarjeta hasta el infinito. */
+/* ---- Botón "Ver temas" ---- */
+.welcome-section__ver-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: calc(100% - 32px);
+  margin: 14px 16px 16px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__ver-btn {
+    width: calc(100% - 44px);
+    margin: 16px 22px 22px;
+  }
+}
+
+.welcome-section__ver-btn:hover {
+  background: var(--primary-bg);
+}
+
+.welcome-section__ver-btn:active {
+  transform: scale(0.97);
+}
+
+.welcome-section__ver-btn-icon {
+  font-size: 0.72rem;
+  transition: transform 0.2s;
+}
+
+.welcome-section__ver-btn-icon.is-open {
+  transform: rotate(180deg);
+}
+
+/* Lista de temas: se despliega en position absolute, pegada al mismo
+   lugar donde estaba en flujo normal, para que quede "unida" a la
+   tarjeta pero flote por encima de las tarjetas de abajo sin empujar
+   el layout ni romper el viewport cuando el curso tiene muchos temas. */
 .welcome-section__temas {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  right: -1px;
   list-style: none;
   margin: 0;
   padding: 6px;
   max-height: 260px;
   overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  box-shadow: var(--shadow-md);
 }
 
 @media (min-width: 640px) {
   .welcome-section__temas {
-    max-height: 320px;
+    max-height: 300px;
     padding: 8px;
   }
 }
@@ -174,20 +244,24 @@
   padding: 10px 12px;
   border-radius: 8px;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
 
   &:hover {
-    background: var(--surface-hover);
+    background: var(--primary-bg);
     color: var(--ink);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
 
 @media (min-width: 640px) {
   .welcome-section__tema-btn {
     padding: 11px 14px;
-    font-size: 0.94rem;
+    font-size: 0.92rem;
   }
 }
 
@@ -203,19 +277,27 @@
   border-radius: 10px;
   background: var(--surface);
   padding: 4px 16px;
+  transition: border-color 0.15s;
 
   summary {
     list-style: none;
     cursor: pointer;
-    padding: 12px 0;
+    padding: 12px 8px;
+    margin: 0 -8px;
+    border-radius: 8px;
     font-weight: 600;
     color: var(--ink);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: background 0.15s, color 0.15s;
 
     &::-webkit-details-marker {
       display: none;
+    }
+
+    &:hover {
+      background: var(--surface-hover);
     }
 
     &::after {
@@ -223,11 +305,25 @@
       color: var(--ink-faint);
       font-weight: 400;
       font-size: 1.1rem;
+      transition: color 0.15s;
     }
+  }
+
+  &[open] {
+    border-color: var(--primary);
+  }
+
+  &[open] summary {
+    color: var(--primary);
+  }
+
+  &[open] summary:hover {
+    background: var(--primary-bg);
   }
 
   &[open] summary::after {
     content: "–";
+    color: var(--primary);
   }
 
   p {

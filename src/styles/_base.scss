@@ -69,14 +69,16 @@ a {
   border-radius: var(--radius-sm);
 }
 
-/* Respeta la preferencia del sistema de reducir animaciones. */
+/* Respeta la preferencia del sistema de reducir animaciones (solo
+   animaciones tipo @keyframes; las transiciones de UI, como el panel
+   lateral, quedan fuera para no perder la señal visual de apertura/
+   cierre). */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -230,7 +232,10 @@ a {
   padding: 24px 16px 32px;
   text-align: center;
   border-top: 1px solid var(--border);
-  color: var(--ink-faint);
+  /* Negro suave en modo claro, blanco suave en modo oscuro: se apoya
+     en --ink (que ya invierte solo entre temas) atenuado, en vez de
+     un gris fijo que no distingue tema. */
+  color: color-mix(in srgb, var(--ink) 55%, transparent);
   font-size: 0.85rem;
 
   p {
@@ -238,7 +243,7 @@ a {
   }
 
   strong {
-    color: var(--ink-soft);
+    color: color-mix(in srgb, var(--ink) 75%, transparent);
     font-weight: 600;
   }
 }

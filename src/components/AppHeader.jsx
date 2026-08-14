@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useTheme } from "../hooks/useTheme";
@@ -11,6 +11,22 @@ export default function AppHeader({
   const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
   const { tema, alternarTema } = useTheme();
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+  const headerRef = useRef(null);
+
+  // Mide el alto real del header (varía según breakpoint/contenido) y lo
+  // expone como variable CSS global, para que cualquier pantalla pueda
+  // calcular su espaciado en base a esto en vez de un número fijo.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const setHeaderVar = () => {
+      document.documentElement.style.setProperty("--app-header-h", `${el.offsetHeight}px`);
+    };
+    setHeaderVar();
+    const ro = new ResizeObserver(setHeaderVar);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const botones = [
     ...(showHome
@@ -90,7 +106,7 @@ export default function AppHeader({
   };
 
   return (
-    <div className="topbar">
+    <div className="topbar" ref={headerRef}>
       <Link to="/" className="topbar__title-btn" title="Mi Estudio">
         <span className="topbar__curso topbar__curso--clickable">{nombreUsuario || "Mi Estudio"}</span>
       </Link>

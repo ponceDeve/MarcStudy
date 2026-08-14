@@ -1,26 +1,28 @@
+import { useState } from "react";
 import manifest from "../data/manifest.json";
 
-// Descripciones breves por curso, escritas a mano a partir de lo que
-// realmente cubre cada uno (sin inventar cifras, alumnos ni respaldos
-// que no se puedan verificar).
+// Descripciones con un poco de gancho, basadas en lo que cada curso
+// realmente cubre (sin inventar cifras, alumnos ni respaldos). Todas
+// tienen exactamente la misma cantidad de caracteres (90) para que
+// las tarjetas de la grilla se vean parejas.
 const DESCRIPCIONES_CURSO = {
-  CIV: "Normas, Constitución, derechos humanos, ciudadanía y democracia.",
-  FIL: "Origen del pensamiento filosófico, corrientes y grandes autores.",
-  HIS: "Desde la prehistoria hasta la historia contemporánea del Perú y el mundo.",
-  LEN: "Comunicación, gramática y uso correcto del lenguaje.",
-  LIT: "Géneros, figuras literarias y autores clave de la literatura peruana y universal.",
-  RVE: "Comprensión lectora, sinonimia, antonimia y conectores lógicos.",
-  BIO: "Célula, seres vivos, genética y los grandes sistemas del cuerpo.",
-  ECO: "Conceptos económicos básicos, mercado, producción y política económica.",
-  FIS: "Fenómenos físicos y su análisis, como el movimiento armónico simple.",
-  GEO: "Geografía del Perú y del mundo: relieve, clima y dinámica terrestre.",
-  PSI: "Procesos psicológicos, personalidad y orientación vocacional.",
-  QUI: "Materia, átomos, reacciones y compuestos químicos.",
-  ALG: "Fundamentos y ejercicios de álgebra.",
-  ARI: "Razones, proporciones y problemas clásicos de aritmética.",
-  GEM: "Fundamentos y ejercicios de geometría.",
-  RMA: "Problemas de lógica, tiempo y razonamiento matemático aplicado.",
-  TRI: "Ángulos, razones trigonométricas y triángulos notables.",
+  CIV: "Entiende cómo funciona el país en el que vives: leyes, derechos y tu rol de ciudadano hoy.",
+  FIL: "Las preguntas que la humanidad lleva siglos haciéndose, contadas por quienes las plantean.",
+  HIS: "Un recorrido desde los primeros pueblos hasta el mundo actual, para entender cómo llegamos",
+  LEN: "Domina las reglas del idioma que usas todos los días, pero que nunca te enseñaron bien hoy",
+  LIT: "Historias, autores y estilos que marcaron la forma de contar y de leer el mundo hasta hoy.",
+  RVE: "Entrena tu lectura crítica: comprender rápido, deducir mejor y no caer en trampas de exame",
+  BIO: "De la célula al cuerpo humano completo: cómo funciona la vida por dentro, paso a paso hoy.",
+  ECO: "Por qué suben los precios, cómo se mueve el mercado y qué hay detrás de cada decisión hoy.",
+  FIS: "El movimiento, la energía y las leyes invisibles que rigen todo lo que pasa a tu alrededor",
+  GEO: "El relieve, el clima y la geografía que moldean al Perú, sus regiones y todo el mundo hoy.",
+  PSI: "Cómo pensamos, sentimos y actuamos, explicado con lógica, evidencia y ejemplos cotidianos.",
+  QUI: "Átomos, reacciones y compuestos: la química que está detrás de todo lo que tocas y respira",
+  ALG: "Fundamentos y ejercicios de álgebra para resolver problemas paso a paso, sin complicaciones",
+  ARI: "Razones, proporciones y esos problemas clásicos que casi siempre caen en el examen de hoy.",
+  GEM: "Ángulos, figuras y áreas: la geometría que explica las formas que ves todos los días, hoy.",
+  RMA: "Problemas de lógica y tiempo que ponen a prueba cómo piensas, no solo cuánto memorizas hoy",
+  TRI: "Ángulos, razones trigonométricas y los triángulos que no te dejan tranquilo hasta dominar.",
 };
 
 const FAQS = [
@@ -31,6 +33,14 @@ const FAQS = [
   {
     q: '¿Qué es "Repaso"?',
     a: "Es una sección que te recuerda qué temas conviene repasar según cuándo los estudiaste, para que no se te olviden con el tiempo.",
+  },
+  {
+    q: "¿Cómo se guarda mi Repaso exactamente?",
+    a: "Cada vez que estudias un tema, la fecha queda guardada localmente en tu dispositivo. Con eso, Repaso calcula cuándo te conviene volver a verlo.",
+  },
+  {
+    q: "¿Puedo quitar un tema de mis repasos pendientes?",
+    a: "Sí, desde la lista de próximos repasos puedes eliminar cualquier tema que ya no quieras seguir repasando.",
   },
   {
     q: '¿Qué son las "vidas"?',
@@ -46,7 +56,7 @@ const FAQS = [
   },
   {
     q: "¿Puedo escuchar la teoría en vez de leerla?",
-    a: "Sí, la teoría cuenta con lectura en voz alta para repasar sin necesidad de tener la vista fija en la pantalla.",
+    a: "Sí, dentro de cada tema hay un botón para activar la lectura en voz alta de la teoría, por si prefieres escucharla en vez de leerla.",
   },
   {
     q: "¿Qué son las palabras subrayadas en la teoría?",
@@ -92,9 +102,18 @@ const FAQS = [
     q: "¿Por qué suena una alarma al terminar el Pomodoro? / ¿Puedo silenciarla?",
     a: "La alarma avisa que terminó el bloque de tiempo para que tomes tu descanso o sigas con el siguiente curso; puedes silenciarla o cambiarla desde las opciones de sonido.",
   },
+  {
+    q: "¿Por qué me pide mi nombre al entrar?",
+    a: "Solo para personalizar los mensajes de la app (por ejemplo, saludarte por tu nombre). No necesitas crear una cuenta ni ingresar más datos.",
+  },
+  {
+    q: "¿Hay niveles dentro de un tema?",
+    a: "Sí, algunos temas están organizados en niveles progresivos: al avanzar en uno se desbloquea el siguiente.",
+  },
 ];
 
 export default function WelcomeSection({ onSelectTema }) {
+  const [cursoAbierto, setCursoAbierto] = useState(null);
   const cursosConTemas = manifest.cursos.filter((c) => c.temas.length > 0);
   const totalTemas = cursosConTemas.reduce((acc, c) => acc + c.temas.length, 0);
 
@@ -109,11 +128,15 @@ export default function WelcomeSection({ onSelectTema }) {
           <strong>{totalTemas} temas</strong> disponibles.
         </p>
 
-        <ul className="welcome-section__cursos">
-          {cursosConTemas.map((c) => (
-            <li key={c.codigo} className="welcome-section__curso">
-              <details className="welcome-section__curso-details">
-                <summary className="welcome-section__curso-summary">
+        <div className="welcome-section__grid">
+          {cursosConTemas.map((c, i) => {
+            const abierto = cursoAbierto === i;
+            return (
+              <div
+                key={c.codigo}
+                className={`welcome-section__curso ${abierto ? "is-open" : ""}`}
+              >
+                <div className="welcome-section__curso-top">
                   <div className="welcome-section__curso-info">
                     <span className="welcome-section__curso-nombre">{c.nombre}</span>
                     <span className="welcome-section__curso-count">
@@ -123,32 +146,44 @@ export default function WelcomeSection({ onSelectTema }) {
                   <p className="welcome-section__curso-desc">
                     {DESCRIPCIONES_CURSO[c.codigo] || "Temario disponible para repasar."}
                   </p>
-                </summary>
+                </div>
 
-                <ul className="welcome-section__temas">
-                  {c.temas.map((t) => (
-                    <li key={t.archivo}>
-                      <button
-                        type="button"
-                        className="welcome-section__tema-btn"
-                        onClick={() =>
-                          onSelectTema?.({
-                            type: "tema",
-                            curso: c.nombre,
-                            tema: t.tema,
-                            archivo: t.archivo,
-                          })
-                        }
-                      >
-                        {t.tema}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </li>
-          ))}
-        </ul>
+                <button
+                  type="button"
+                  className="welcome-section__ver-btn"
+                  aria-expanded={abierto}
+                  onClick={() => setCursoAbierto(abierto ? null : i)}
+                >
+                  {abierto ? "Ocultar temas" : "Ver temas"}
+                  <i className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${abierto ? "is-open" : ""}`} />
+                </button>
+
+                {abierto && (
+                  <ul className="welcome-section__temas">
+                    {c.temas.map((t) => (
+                      <li key={t.archivo}>
+                        <button
+                          type="button"
+                          className="welcome-section__tema-btn"
+                          onClick={() =>
+                            onSelectTema?.({
+                              type: "tema",
+                              curso: c.nombre,
+                              tema: t.tema,
+                              archivo: t.archivo,
+                            })
+                          }
+                        >
+                          {t.tema}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className="welcome-section__faq">
