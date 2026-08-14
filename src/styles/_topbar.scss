@@ -339,7 +339,6 @@
   z-index: 999;
   background: transparent;
   pointer-events: none;
-  transition: background 0.25s ease;
 
   &.is-open {
     background: var(--overlay-strong);
@@ -349,26 +348,26 @@
 }
 
 .topbar__drawer {
-  --drawer-w: min(320px, 85vw);
-  position: absolute;
+  position: fixed;
   top: 0;
-  /* arranca en posición negativa (fuera de la pantalla, a la derecha)
-     y se desliza a la posición normal (right: 0) al abrir. Se usa la
-     misma variable --drawer-w para el ancho y para el offset cerrado,
-     así en pantallas grandes (donde el ancho pasa a 360px) no queda
-     un pedazo del panel asomando. */
-  right: calc(-1 * var(--drawer-w));
+  right: 0;
+  width: 300px;
   height: 100%;
-  width: var(--drawer-w);
   background: var(--surface);
   border-left: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
-  transition: right 6s ease;
+  transform: translateX(100%);
 
   .topbar__drawer-backdrop.is-open & {
-    right: 0;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar__drawer {
+    width: 90%;
   }
 }
 
@@ -454,7 +453,7 @@
 
 @media (min-width: 1024px) {
   .topbar__drawer {
-    --drawer-w: 360px;
+    width: 360px;
   }
   .topbar__drawer-item {
     padding: 18px 16px;
