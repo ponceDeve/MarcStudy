@@ -23,7 +23,7 @@
 .question-card__q-intro {
   font-size: 18px;
   font-weight: 600;
-  text-align: center;
+  text-align: start;
   margin: 0 0 14px;
 }
 .question-card__q-props {
@@ -67,8 +67,8 @@
   }
 }
 .question-card__opt:hover:not(:disabled) {
-  border-color: var(--primary);
-  background: var(--primary-bg);
+  background: var(--border-strong);
+  box-shadow: 0 0 10px var(--border-strong)
 }
 .question-card__opt:disabled {
   cursor: default;
@@ -238,8 +238,9 @@
   font-size: 15px;
   line-height: 2.2;
   color: var(--ink);
-  text-align: center;
+  text-align: start;
   margin-bottom: 16px;
+  line-height: 1.5;
 }
 .question-card__cloze-input {
   font-weight: 700;
