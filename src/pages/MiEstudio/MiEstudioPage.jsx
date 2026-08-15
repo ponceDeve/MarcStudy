@@ -206,7 +206,7 @@ export default function MiEstudioPage() {
 
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-  
+
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
@@ -262,7 +262,7 @@ export default function MiEstudioPage() {
 
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
-    limpiarPomodoroCompartido(); 
+    limpiarPomodoroCompartido();
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
@@ -389,7 +389,7 @@ export default function MiEstudioPage() {
       // MODIFICACIÓN: Leer la última card visitada desde localStorage
       const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
       let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
-      
+
       // Validación: Si el JSON cambió y el número guardado supera la cantidad de puntos, lo regresamos a 0
       if (cardInicial >= puntos.length) {
         cardInicial = 0;
@@ -403,7 +403,7 @@ export default function MiEstudioPage() {
 
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
-      
+
       // Inicializar en la card recuperada en lugar de siempre en 0
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
@@ -723,8 +723,8 @@ export default function MiEstudioPage() {
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKey = `ex-${item.puntoIndex}`; 
-        vistaPregunta = item.pregunta; 
+        vistaKey = `ex-${item.puntoIndex}`;
+        vistaPregunta = item.pregunta;
       }
     } else if (isLevelMode) {
       vistaKey = `ex-${nivelIndex}`;
@@ -898,11 +898,14 @@ export default function MiEstudioPage() {
     setCountdown(0);
   }
 
-  function buscarEnGoogle() {
-    const q = googleQuery.trim();
-    if (!q) return;
-    window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, "_blank");
-  }
+  const buscarEnGoogle = () => {
+    if (!googleQuery.trim()) return;
+    window.open(
+      `https://www.google.com/search?q=${encodeURIComponent(googleQuery)}`,
+      "_blank"
+    );
+    setGoogleQuery("");
+  };
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
 
@@ -933,7 +936,7 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
-          
+
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
@@ -1299,7 +1302,8 @@ export default function MiEstudioPage() {
 
                     <div className="mi-estudio__google">
                       <div className="mi-estudio__google-input-wrap">
-                        <input autoComplete="off"
+                        <input
+                          autoComplete="off"
                           type="search"
                           name="buscar-google"
                           value={googleQuery}
@@ -1308,7 +1312,11 @@ export default function MiEstudioPage() {
                           placeholder="Pregúntale a Google..."
                           className="mi-estudio__google-input"
                         />
-                        <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
+
+                        <button
+                          onClick={buscarEnGoogle}
+                          className="mi-estudio__google-btn"
+                        >
                           <i className="fab fa-google" />
                         </button>
                       </div>
