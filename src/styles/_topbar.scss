@@ -339,6 +339,7 @@
   z-index: 999;
   background: transparent;
   pointer-events: none;
+  transition: background 0.25s ease;
 
   &.is-open {
     background: var(--overlay-strong);
@@ -348,26 +349,21 @@
 }
 
 .topbar__drawer {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
-  width: 300px;
   height: 100%;
+  width: min(320px, 85vw);
   background: var(--surface);
   border-left: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
+  transition: transform 0.3s ease;
 
   .topbar__drawer-backdrop.is-open & {
     transform: translateX(0);
-  }
-}
-
-@media (max-width: 480px) {
-  .topbar__drawer {
-    width: 90%;
   }
 }
 

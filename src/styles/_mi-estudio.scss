@@ -28,6 +28,7 @@
 }
 .mi-estudio__wrap.is-home {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .mi-estudio__home-screen {
@@ -36,11 +37,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   /* Espaciado calculado en base al alto real del header (medido por
      AppHeader vía ResizeObserver) — nunca queda pegado ni tampoco
      centrado a mitad de pantalla. 96px de fallback por si la variable
      aún no se midió en el primer render. */
-  padding-top: calc(var(--app-header-h, 64px) + 56px);
   padding-bottom: 40px;
   box-sizing: border-box;
 }

@@ -69,16 +69,14 @@ a {
   border-radius: var(--radius-sm);
 }
 
-/* Respeta la preferencia del sistema de reducir animaciones (solo
-   animaciones tipo @keyframes; las transiciones de UI, como el panel
-   lateral, quedan fuera para no perder la señal visual de apertura/
-   cierre). */
+/* Respeta la preferencia del sistema de reducir animaciones. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -229,21 +227,31 @@ a {
    FOOTER — pie de página global de la app
    ============================================================ */
 .app-footer {
-  padding: 24px 16px 32px;
+  padding: 18px 16px;
   text-align: center;
-  border-top: 1px solid var(--border);
-  /* Negro suave en modo claro, blanco suave en modo oscuro: se apoya
-     en --ink (que ya invierte solo entre temas) atenuado, en vez de
-     un gris fijo que no distingue tema. */
-  color: color-mix(in srgb, var(--ink) 55%, transparent);
+  margin-top: 50px; /* lo empuja al fondo cuando el contenido es corto */
+  /* Fondo invertido respecto a la página: en modo claro (fondo claro)
+     el footer queda oscuro; en modo oscuro (fondo oscuro) el footer
+     queda claro. --ink ya es el color opuesto al fondo en ambos temas,
+     así que usarlo como background logra la inversión automática. */
+  background: var(--ink);
+  color: color-mix(in srgb, var(--bg) 65%, transparent);
   font-size: 0.85rem;
+
+  /* Full-bleed: sin esto, el footer hereda el ancho/padding del
+     contenedor donde le toque vivir y queda "atrapado" angosto en
+     vez de ocupar todo el viewport de lado a lado. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  box-sizing: border-box;
 
   p {
     margin: 0;
   }
 
   strong {
-    color: color-mix(in srgb, var(--ink) 75%, transparent);
+    color: var(--bg);
     font-weight: 600;
   }
 }

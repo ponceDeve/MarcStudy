@@ -995,8 +995,6 @@ export default function HorarioPage() {
         </section>
       </main>
 
-      <AppFooter />
-
       <audio
         ref={alarmRef}
         src="sonidos/loud-alarm-ringtones-annoying.mp3"

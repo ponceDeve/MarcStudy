@@ -192,8 +192,6 @@ export default function RepasoPage() {
         </div>
       </section>
 
-      <AppFooter />
-
       <SearchModal
         open={searchOpen}
         onClose={() => setSearchOpen(false)}

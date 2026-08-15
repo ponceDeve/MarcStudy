@@ -4,8 +4,11 @@
 .repaso {
   max-width: 48rem;
   margin: 0 auto;
-  padding: 64px 16px;
+  padding: 64px 16px 0;
   color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 @media (min-width: 640px) {
   .repaso {

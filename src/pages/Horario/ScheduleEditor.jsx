@@ -452,8 +452,6 @@ export default function ScheduleEditor() {
           )}
         </div>
 
-        <AppFooter />
-
         <SearchModal
           open={searchOpen}
           onClose={() => setSearchOpen(false)}

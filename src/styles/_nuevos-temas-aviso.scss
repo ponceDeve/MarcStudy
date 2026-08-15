@@ -1,0 +1,72 @@
+/* ============================================================
+   NUEVOS TEMAS AVISO — alerta flotante de "se agregaron temas nuevos"
+   ============================================================ */
+
+.nuevos-temas-aviso {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  max-width: 640px;
+  width: calc(100% - 40px);
+
+  margin: 0;
+  padding: 12px 14px;
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--success);
+  background: var(--success-bg);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  animation: fade-in 0.25s ease-out;
+
+  z-index: 9999;
+}
+
+.nuevos-temas-aviso__icon {
+  color: var(--success);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.nuevos-temas-aviso__texto {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.nuevos-temas-aviso__texto strong {
+  color: var(--success);
+}
+
+.nuevos-temas-aviso__cerrar {
+  flex-shrink: 0;
+
+  border: none;
+  background: none;
+
+  color: var(--ink-faint);
+  cursor: pointer;
+
+  padding: 4px;
+  border-radius: 6px;
+
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.nuevos-temas-aviso__cerrar:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}

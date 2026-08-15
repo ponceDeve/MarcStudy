@@ -6,7 +6,9 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
+import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "../../components/WelcomeSection";
+import NuevosTemasAviso from "../../components/NuevosTemasAviso";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
@@ -145,6 +147,16 @@ export default function MiEstudioPage() {
   const [stage, setStage] = useState("theory");
   const [isLevelMode, setIsLevelMode] = useState(false);
 
+  // El footer global no debe verse mientras se está estudiando (teoría
+  // o preguntas de un tema abierto); en el menú inicial y en cualquier
+  // otra pantalla sí se muestra normalmente.
+  const { setFooterHidden } = useFooterVisibility();
+  useEffect(() => {
+    const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
+    setFooterHidden(ocultar);
+    return () => setFooterHidden(false);
+  }, [topicData, stage, setFooterHidden]);
+
   const [countdown, setCountdown] = useState(0);
 
   const [vidas, setVidas] = useState(5);
@@ -206,7 +218,7 @@ export default function MiEstudioPage() {
 
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-
+  
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
@@ -262,7 +274,7 @@ export default function MiEstudioPage() {
 
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
-    limpiarPomodoroCompartido();
+    limpiarPomodoroCompartido(); 
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
@@ -389,7 +401,7 @@ export default function MiEstudioPage() {
       // MODIFICACIÓN: Leer la última card visitada desde localStorage
       const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
       let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
-
+      
       // Validación: Si el JSON cambió y el número guardado supera la cantidad de puntos, lo regresamos a 0
       if (cardInicial >= puntos.length) {
         cardInicial = 0;
@@ -403,7 +415,7 @@ export default function MiEstudioPage() {
 
       setTopicData({ ...data, curso: item.curso, tema: item.tema });
       setFlatPuntos(puntos);
-
+      
       // Inicializar en la card recuperada en lugar de siempre en 0
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
@@ -496,19 +508,15 @@ export default function MiEstudioPage() {
   function toggleStage() {
     setIsLevelMode(false);
     if (stage === "theory") {
-      const desde = Math.min(ultimoFlipIndex, cardIndex);
-      const hasta = Math.max(ultimoFlipIndex, cardIndex);
-      const lote = [];
-      for (let i = desde; i <= hasta; i++) {
-        const pregunta = examenPreguntas[i] || null;
-        if (pregunta) lote.push({ puntoIndex: i, pregunta });
-      }
-      if (lote.length === 0) {
+      // Al voltear, solo debe salir la pregunta de ESTA tarjeta de
+      // teoría (cardIndex), nunca un lote acumulado de varias tarjetas.
+      const pregunta = examenPreguntas[cardIndex] || null;
+      if (!pregunta) {
         setSinPreguntaAlerta(true);
         return;
       }
 
-      setQuizBatch(shuffle(lote));
+      setQuizBatch([{ puntoIndex: cardIndex, pregunta }]);
       setQuizPos(0);
       setIsFlipQuiz(true);
       setQuestionResult(null);
@@ -530,6 +538,12 @@ export default function MiEstudioPage() {
         setRepasoQuizPos(repasoQuizPos + 1);
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
+      } else {
+        // Se respondió la última pregunta vista: cerrar el repaso y
+        // volver a donde estaba (reinicia para la próxima vez que se
+        // abra, porque verPreguntasVistas() siempre arma el lote de
+        // nuevo desde cero).
+        salirDeRepaso();
       }
       return;
     }
@@ -723,8 +737,8 @@ export default function MiEstudioPage() {
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKey = `ex-${item.puntoIndex}`;
-        vistaPregunta = item.pregunta;
+        vistaKey = `ex-${item.puntoIndex}`; 
+        vistaPregunta = item.pregunta; 
       }
     } else if (isLevelMode) {
       vistaKey = `ex-${nivelIndex}`;
@@ -898,14 +912,11 @@ export default function MiEstudioPage() {
     setCountdown(0);
   }
 
-  const buscarEnGoogle = () => {
-    if (!googleQuery.trim()) return;
-    window.open(
-      `https://www.google.com/search?q=${encodeURIComponent(googleQuery)}`,
-      "_blank"
-    );
-    setGoogleQuery("");
-  };
+  function buscarEnGoogle() {
+    const q = googleQuery.trim();
+    if (!q) return;
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(q)}`, "_blank");
+  }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
 
@@ -936,7 +947,7 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
-
+          
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
@@ -1144,6 +1155,7 @@ export default function MiEstudioPage() {
           <>
             <AppHeader />
             <div className="mi-estudio__home-screen">
+              <NuevosTemasAviso />
               <div className="mi-estudio__intro">
                 <div>
                   <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>
@@ -1242,7 +1254,6 @@ export default function MiEstudioPage() {
 
             <div className="mi-estudio__below">
               <WelcomeSection onSelectTema={seleccionarItem} />
-              <AppFooter />
             </div>
           </>
         )}
@@ -1266,7 +1277,6 @@ export default function MiEstudioPage() {
                 flatPuntos={flatPuntos}
                 onSelect={(index) => {
                   setCardIndex(index);
-                  setUltimoFlipIndex(index);
                   setQuestionResult(null);
                   setAttemptKey((k) => k + 1);
                 }}
@@ -1302,8 +1312,7 @@ export default function MiEstudioPage() {
 
                     <div className="mi-estudio__google">
                       <div className="mi-estudio__google-input-wrap">
-                        <input
-                          autoComplete="off"
+                        <input autoComplete="off"
                           type="search"
                           name="buscar-google"
                           value={googleQuery}
@@ -1312,11 +1321,7 @@ export default function MiEstudioPage() {
                           placeholder="Pregúntale a Google..."
                           className="mi-estudio__google-input"
                         />
-
-                        <button
-                          onClick={buscarEnGoogle}
-                          className="mi-estudio__google-btn"
-                        >
+                        <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
                           <i className="fab fa-google" />
                         </button>
                       </div>

@@ -1,10 +1,14 @@
 import { useState } from "react";
 import manifest from "../data/manifest.json";
 
-// Descripciones con un poco de gancho, basadas en lo que cada curso
-// realmente cubre (sin inventar cifras, alumnos ni respaldos). Todas
-// tienen exactamente la misma cantidad de caracteres (90) para que
-// las tarjetas de la grilla se vean parejas.
+/**
+ * DESCRIPCIONES_CURSO
+ * --------------------------------------------------------------
+ * Un texto corto de "gancho" por cada curso, escrito a mano (no se
+ * genera solo). Todas las frases tienen EXACTAMENTE 90 caracteres,
+ * a propósito: así las tarjetas de la grilla quedan parejas en alto,
+ * sin que un curso con descripción larga se vea más grande que otro.
+ */
 const DESCRIPCIONES_CURSO = {
   CIV: "Entiende cómo funciona el país en el que vives: leyes, derechos y tu rol de ciudadano hoy.",
   FIL: "Las preguntas que la humanidad lleva siglos haciéndose, contadas por quienes las plantean.",
@@ -25,126 +29,202 @@ const DESCRIPCIONES_CURSO = {
   TRI: "Ángulos, razones trigonométricas y los triángulos que no te dejan tranquilo hasta dominar.",
 };
 
+/**
+ * FAQS
+ * --------------------------------------------------------------
+ * Preguntas frecuentes sobre CÓMO USAR la app, escritas para
+ * cualquier persona (sin vocabulario técnico ni de programación).
+ * Cada pregunta trae su propio ícono (FontAwesome) para que se
+ * reconozca de un vistazo de qué tema trata, incluso antes de leerla.
+ */
 const FAQS = [
   {
+    icon: "fa-graduation-cap",
     q: "¿Cómo funciona el modo estudio?",
     a: "Eliges un curso o tema, primero puedes leer la teoría y luego responder preguntas relacionadas para reforzar lo aprendido.",
   },
   {
+    icon: "fa-rotate",
     q: '¿Qué es "Repaso"?',
     a: "Es una sección que te recuerda qué temas conviene repasar según cuándo los estudiaste, para que no se te olviden con el tiempo.",
   },
   {
+    icon: "fa-clock",
     q: "¿Cómo se guarda mi Repaso exactamente?",
-    a: "Cada vez que estudias un tema, la fecha queda guardada localmente en tu dispositivo. Con eso, Repaso calcula cuándo te conviene volver a verlo.",
+    a: "Cada vez que estudias un tema, la app recuerda cuándo lo hiciste. Con eso, Repaso te avisa el momento justo para volver a verlo.",
   },
   {
+    icon: "fa-trash",
     q: "¿Puedo quitar un tema de mis repasos pendientes?",
     a: "Sí, desde la lista de próximos repasos puedes eliminar cualquier tema que ya no quieras seguir repasando.",
   },
   {
+    icon: "fa-heart",
     q: '¿Qué son las "vidas"?',
     a: "Representan tus intentos disponibles al responder preguntas dentro de un tema. Se van descontando si fallas y te indican cuánto margen de error tienes en esa sesión.",
   },
   {
+    icon: "fa-hourglass-half",
     q: "¿Qué es el Pomodoro y cómo se relaciona con los cursos?",
     a: "Es un temporizador de estudio por bloques (trabajo/descanso). Puedes armar tu horario semanal asignando cursos a cada bloque de Pomodoro.",
   },
   {
+    icon: "fa-floppy-disk",
     q: "¿Se guarda mi progreso?",
-    a: "Sí, tu progreso, horario y preguntas vistas se guardan localmente en tu navegador o dispositivo.",
+    a: "Sí, tu progreso, horario y preguntas vistas se guardan automáticamente en el celular o la computadora que estés usando.",
   },
   {
+    icon: "fa-volume-high",
     q: "¿Puedo escuchar la teoría en vez de leerla?",
     a: "Sí, dentro de cada tema hay un botón para activar la lectura en voz alta de la teoría, por si prefieres escucharla en vez de leerla.",
   },
   {
+    icon: "fa-circle-info",
     q: "¿Qué son las palabras subrayadas en la teoría?",
     a: "Son términos con una explicación adicional: al interactuar con ellas puedes ver su definición sin salir de la página.",
   },
   {
+    icon: "fa-list-check",
     q: "¿Puedo estudiar solo preguntas, sin repasar la teoría primero?",
     a: "Sí, puedes elegir el modo de estudio que prefieras al entrar a un tema, incluyendo ir directo a las preguntas.",
   },
   {
+    icon: "fa-magnifying-glass",
     q: "¿Cómo busco un curso o tema específico?",
     a: "Usa el buscador disponible en la parte superior de las páginas principales: escribe el nombre y selecciona el resultado para ir directo a él.",
   },
   {
+    icon: "fa-calendar-days",
     q: "¿Cómo edito mi horario de estudio?",
     a: "Desde la sección de Pomodoro puedes entrar al editor de horario, donde agregas o quitas cursos por día y defines cuántos Pomodoros le dedicas a cada uno.",
   },
   {
+    icon: "fa-pause",
     q: "¿Qué pasa si cierro la página a mitad de un Pomodoro?",
-    a: "El estado del Pomodoro se guarda, así que al volver a abrir la app puede continuar desde donde lo dejaste.",
+    a: "No pasa nada: el Pomodoro sigue contando donde lo dejaste la próxima vez que entres.",
   },
   {
+    icon: "fa-mobile-screen",
     q: "¿Se puede usar desde el celular?",
-    a: "Sí, la interfaz está pensada para adaptarse a pantallas de celular además de computadora.",
+    a: "Sí, la app está pensada para verse bien tanto en el celular como en la computadora.",
   },
   {
+    icon: "fa-moon",
     q: "¿Tiene modo oscuro/claro?",
     a: "Sí, puedes cambiar entre tema oscuro y claro según tu preferencia.",
   },
   {
+    icon: "fa-heart-crack",
     q: "¿Qué pasa cuando me quedo sin vidas?",
     a: "Se te indica que agotaste tus intentos en esa sesión de preguntas, para que retomes el tema más adelante con calma.",
   },
   {
+    icon: "fa-shield-halved",
     q: "¿Se guarda mi progreso si cierro el navegador?",
-    a: "Sí, al guardarse localmente en tu dispositivo, tu progreso sigue ahí la próxima vez que entres, mientras no borres los datos del navegador.",
+    a: "Sí, tu progreso queda guardado en tu celular o computadora y sigue ahí la próxima vez que entres, mientras no borres el historial o los datos de la app.",
   },
   {
+    icon: "fa-circle-question",
     q: "¿De qué tipo son las preguntas del examen?",
     a: "Son preguntas de opción múltiple, ligadas directamente al tema y la teoría que acabas de revisar.",
   },
   {
+    icon: "fa-bell",
     q: "¿Por qué suena una alarma al terminar el Pomodoro? / ¿Puedo silenciarla?",
     a: "La alarma avisa que terminó el bloque de tiempo para que tomes tu descanso o sigas con el siguiente curso; puedes silenciarla o cambiarla desde las opciones de sonido.",
   },
   {
+    icon: "fa-user",
     q: "¿Por qué me pide mi nombre al entrar?",
     a: "Solo para personalizar los mensajes de la app (por ejemplo, saludarte por tu nombre). No necesitas crear una cuenta ni ingresar más datos.",
   },
   {
+    icon: "fa-layer-group",
     q: "¿Hay niveles dentro de un tema?",
     a: "Sí, algunos temas están organizados en niveles progresivos: al avanzar en uno se desbloquea el siguiente.",
   },
 ];
 
+// Colores de acento que van rotando entre las tarjetas de curso.
+const ACCENTS = ["primary", "secondary", "accent", "warning"];
+
 export default function WelcomeSection({ onSelectTema }) {
+  // Índice del curso actualmente desplegado.
+  // Solo uno puede estar abierto a la vez.
   const [cursoAbierto, setCursoAbierto] = useState(null);
-  const cursosConTemas = manifest.cursos.filter((c) => c.temas.length > 0);
-  const totalTemas = cursosConTemas.reduce((acc, c) => acc + c.temas.length, 0);
+  
+  // Índice de la pregunta frecuente (FAQ) abierta actualmente.
+  const [faqAbierto, setFaqAbierto] = useState(null);
+
+  const cursosConTemas = manifest.cursos.filter(
+    (c) => c.temas.length > 0
+  );
+
+  const totalTemas = cursosConTemas.reduce(
+    (acc, c) => acc + c.temas.length,
+    0
+  );
+
+  function alternarCurso(i) {
+    setCursoAbierto((actual) => (actual === i ? null : i));
+  }
+
+  function manejarClickTema(curso, tema) {
+    onSelectTema?.({
+      type: "tema",
+      curso: curso.nombre,
+      tema: tema.tema,
+      archivo: tema.archivo,
+    });
+  }
 
   return (
     <div className="welcome-section">
+      {/* ---------------------------------------------------------
+          SECCIÓN 1: Bienvenida + grilla de cursos
+      --------------------------------------------------------- */}
       <section className="welcome-section__intro">
-        <h2 className="welcome-section__title">Qué encontrarás en Mi Estudio</h2>
+        <h2 className="welcome-section__title">
+          Qué encontrarás en Mi Estudio
+        </h2>
+
         <p className="welcome-section__lead">
-          Una plataforma para preparar tus exámenes: teoría organizada por temas,
-          preguntas de práctica, repaso espaciado y un Pomodoro para armar tu
-          horario de estudio. En total hay <strong>{cursosConTemas.length} cursos</strong> con{" "}
+          Una plataforma para preparar tus exámenes: teoría organizada por
+          temas, preguntas de práctica, repaso espaciado y un Pomodoro para
+          armar tu horario de estudio. En total hay{" "}
+          <strong>{cursosConTemas.length} cursos</strong> con{" "}
           <strong>{totalTemas} temas</strong> disponibles.
         </p>
 
         <div className="welcome-section__grid">
-          {cursosConTemas.map((c, i) => {
+          {cursosConTemas.map((curso, i) => {
             const abierto = cursoAbierto === i;
+            const accent = ACCENTS[i % ACCENTS.length];
+
             return (
               <div
-                key={c.codigo}
+                key={curso.codigo}
                 className={`welcome-section__curso ${abierto ? "is-open" : ""}`}
+                style={{
+                  "--curso-accent": `var(--${accent})`,
+                  "--curso-accent-bg": `var(--${accent}-bg)`,
+                }}
               >
                 <div className="welcome-section__curso-top">
                   <div className="welcome-section__curso-info">
-                    <span className="welcome-section__curso-nombre">{c.nombre}</span>
+                    <span className="welcome-section__curso-nombre">
+                      {curso.nombre}
+                    </span>
+
                     <span className="welcome-section__curso-count">
-                      {c.temas.length} tema{c.temas.length !== 1 ? "s" : ""}
+                      {curso.temas.length} tema
+                      {curso.temas.length !== 1 ? "s" : ""}
                     </span>
                   </div>
+
                   <p className="welcome-section__curso-desc">
-                    {DESCRIPCIONES_CURSO[c.codigo] || "Temario disponible para repasar."}
+                    {DESCRIPCIONES_CURSO[curso.codigo] ||
+                      "Temario disponible para repasar."}
                   </p>
                 </div>
 
@@ -152,29 +232,27 @@ export default function WelcomeSection({ onSelectTema }) {
                   type="button"
                   className="welcome-section__ver-btn"
                   aria-expanded={abierto}
-                  onClick={() => setCursoAbierto(abierto ? null : i)}
+                  onClick={() => alternarCurso(i)}
                 >
                   {abierto ? "Ocultar temas" : "Ver temas"}
-                  <i className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${abierto ? "is-open" : ""}`} />
+
+                  <i
+                    className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${
+                      abierto ? "is-open" : ""
+                    }`}
+                  />
                 </button>
 
                 {abierto && (
                   <ul className="welcome-section__temas">
-                    {c.temas.map((t) => (
-                      <li key={t.archivo}>
+                    {curso.temas.map((tema) => (
+                      <li key={tema.archivo}>
                         <button
                           type="button"
                           className="welcome-section__tema-btn"
-                          onClick={() =>
-                            onSelectTema?.({
-                              type: "tema",
-                              curso: c.nombre,
-                              tema: t.tema,
-                              archivo: t.archivo,
-                            })
-                          }
+                          onClick={() => manejarClickTema(curso, tema)}
                         >
-                          {t.tema}
+                          {tema.tema}
                         </button>
                       </li>
                     ))}
@@ -186,12 +264,34 @@ export default function WelcomeSection({ onSelectTema }) {
         </div>
       </section>
 
+      {/* ---------------------------------------------------------
+          SECCIÓN 2: Preguntas frecuentes
+          Acordeón exclusivo controlado por el estado de React
+      --------------------------------------------------------- */}
       <section className="welcome-section__faq">
         <h2 className="welcome-section__title">Preguntas frecuentes</h2>
+
         <div className="welcome-section__faq-list">
           {FAQS.map((item, i) => (
-            <details key={i} className="welcome-section__faq-item">
-              <summary>{item.q}</summary>
+            <details
+              key={i}
+              className="welcome-section__faq-item"
+              open={faqAbierto === i}
+            >
+              <summary
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Alterna entre abrir este FAQ o cerrar todo
+                  setFaqAbierto(faqAbierto === i ? null : i);
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <span className="welcome-section__faq-summary-text">
+                  <i className={`fa-solid ${item.icon} welcome-section__faq-icon`} />
+                  {item.q}
+                </span>
+              </summary>
+
               <p>{item.a}</p>
             </details>
           ))}
