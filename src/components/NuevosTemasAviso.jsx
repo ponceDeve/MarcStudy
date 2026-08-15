@@ -2,48 +2,29 @@ import { useState, useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import manifest from "../data/manifest.json";
 
-/**
- * NuevosTemasAviso
- * --------------------------------------------------------------
- * Al abrir la app, compara la cantidad de temas por curso contra la
- * última vez que este mismo dispositivo la abrió (guardado en el
- * celular/computadora del usuario, no en un servidor). Si algún
- * curso tiene más temas que antes, muestra un aviso con los nombres
- * de esos cursos.
- *
- * No es una notificación push (no llega con la app cerrada): solo
- * aparece cuando el usuario efectivamente entra a la app.
- */
 export default function NuevosTemasAviso() {
-  // "Foto" de cuántos temas tenía cada curso la última vez que este
-  // usuario abrió la app. La primera vez que alguien entra, no hay
-  // nada guardado todavía (snapshot === null).
   const [snapshot, setSnapshot] = useLocalStorage(
     "miEstudio_temasSnapshot",
     null
   );
 
-  // Cursos que recibieron temas nuevos desde la última visita,
-  // calculado una sola vez al montar el componente.
   const [cursosConNovedades, setCursosConNovedades] = useState([]);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Conteo actual de temas por curso (solo los que tienen contenido).
+    // 1. Conteo actual de temas por curso
     const conteoActual = {};
-
     manifest.cursos.forEach((c) => {
       if (c.temas.length > 0) {
         conteoActual[c.codigo] = c.temas.length;
       }
     });
 
-    if (snapshot) {
-      // Ya había una visita anterior: comparamos curso por curso.
+    // 2. Si ya existía un snapshot anterior, comparamos
+    if (snapshot !== null) {
       const nuevos = manifest.cursos.filter((c) => {
         const antes = snapshot[c.codigo] || 0;
         const ahora = conteoActual[c.codigo] || 0;
-
         return ahora > antes;
       });
 
@@ -51,14 +32,17 @@ export default function NuevosTemasAviso() {
         setCursosConNovedades(nuevos.map((c) => c.nombre));
         setVisible(true);
       }
+      
+      // Opcional: Si quieres actualizar el snapshot inmediatamente o al cerrar el aviso.
+      // Lo seguro es actualizarlo aquí para que la próxima vez compare contra este momento,
+      // PERO asegurándonos de haber hecho la comparación con el snapshot *viejo* primero.
     }
 
-    // Guardamos la foto actual para la próxima visita, sea la primera
-    // vez (solo establece la base, sin avisar nada) o no.
+    // 3. Guardamos el conteo actual para la *siguiente* visita
     setSnapshot(conteoActual);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Solo se calcula una vez, al entrar a la app.
+  }, []);
 
   // Cierre automático después de 5 segundos.
   useEffect(() => {
@@ -68,7 +52,6 @@ export default function NuevosTemasAviso() {
       setVisible(false);
     }, 5000);
 
-    // Si se cierra manualmente con la X, limpiamos el temporizador.
     return () => clearTimeout(timer);
   }, [visible]);
 
