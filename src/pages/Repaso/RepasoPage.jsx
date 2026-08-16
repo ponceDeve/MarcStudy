@@ -1,8 +1,7 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
-import AppFooter from "../../components/AppFooter";
 import SearchModal from "../../components/SearchModal";
 import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import {
@@ -38,58 +37,124 @@ const PASOS_BIENVENIDA = [
 export default function RepasoPage() {
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
-  const [welcomeSeen, setWelcomeSeen] = useLocalStorage("repaso_welcome_seen", false);
+  const [welcomeSeen, setWelcomeSeen] = useLocalStorage(
+    "repaso_welcome_seen",
+    false
+  );
   const [log, setLog] = useState(() => leerLog());
-  
-  const [deleteState, setDeleteState] = useState({ isOpen: false, id: null, phase: 1 });
+
+  const [deleteState, setDeleteState] = useState({
+    isOpen: false,
+    id: null,
+    phase: 1
+  });
 
   function irAMiEstudio(nombre) {
     navigate(`/?q=${encodeURIComponent(nombre)}`);
   }
 
-  const { repasosHoy, proximos } = useMemo(() => clasificarRepasos(log), [log]);
+  const { repasosHoy, proximos } = useMemo(
+    () => clasificarRepasos(log),
+    [log]
+  );
 
   function marcar(id, intervaloIdx, repasosDoneActual) {
     const repasosDone = Array.isArray(repasosDoneActual)
       ? [...repasosDoneActual]
       : [];
-    if (!repasosDone.includes(intervaloIdx)) repasosDone.push(intervaloIdx);
+
+    if (!repasosDone.includes(intervaloIdx)) {
+      repasosDone.push(intervaloIdx);
+    }
+
     setLog(marcarRepasoHecho(id, repasosDone));
   }
 
   function iniciarBorrado(id) {
-    setDeleteState({ isOpen: true, id, phase: 1 });
+    setDeleteState({
+      isOpen: true,
+      id,
+      phase: 1
+    });
   }
 
   function confirmarBorrado() {
     if (deleteState.phase === 1) {
-      setDeleteState({ ...deleteState, phase: 2 });
+      setDeleteState({
+        ...deleteState,
+        phase: 2
+      });
     } else {
       setLog(eliminarRepaso(deleteState.id));
-      setDeleteState({ isOpen: false, id: null, phase: 1 });
+      setDeleteState({
+        isOpen: false,
+        id: null,
+        phase: 1
+      });
     }
   }
 
   function cancelarBorrado() {
-    setDeleteState({ isOpen: false, id: null, phase: 1 });
+    setDeleteState({
+      isOpen: false,
+      id: null,
+      phase: 1
+    });
   }
 
   const porFecha = useMemo(() => {
     const map = {};
+
     proximos.forEach((item) => {
-      if (!map[item.fecha]) map[item.fecha] = [];
+      if (!map[item.fecha]) {
+        map[item.fecha] = [];
+      }
+
       map[item.fecha].push(item);
     });
+
     return map;
   }, [proximos]);
 
   return (
     <div className="repaso">
-      <AppHeader showHome onAbrirBuscador={() => setSearchOpen(true)} />
+      <AppHeader
+        showHome
+        onAbrirBuscador={() => setSearchOpen(true)}
+      />
 
       <div className="repaso__header">
         <h1 className="repaso__title">Repasos de hoy</h1>
-        <p className="repaso__date">{formatearFecha(fechaHoy())}</p>
+        <p className="repaso__date">
+          {formatearFecha(fechaHoy())}
+        </p>
+      </div>
+
+      <div className="repaso__instruction">
+        <div className="repaso__instruction-book">
+          <i className="bi bi-book" />
+        </div>
+
+        <p>
+          Primero repasa el tema en <strong>Mi Estudio</strong> y luego pulsa
+          <span className="repaso__instruction-check">
+            <svg
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fill="none"
+              strokeWidth="2.5"
+              width="16"
+              height="16"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m4.5 12.75 6 6 9-13.5"
+              />
+            </svg>
+          </span>
+          para marcar el repaso como realizado.
+        </p>
       </div>
 
       <section className="repaso__section">
@@ -97,41 +162,98 @@ export default function RepasoPage() {
           {repasosHoy.map(({ entrada, intervaloIdx, vencido }) => {
             const lc = intervaloClasses(intervaloIdx);
             const numRepaso = intervaloIdx + 1;
+
             return (
-              <div key={entrada.id} className={`repaso__item ${lc.box}`}>
+              <div
+                key={entrada.id}
+                className={`repaso__item ${lc.box}`}
+              >
                 <div className="repaso__item-body">
                   <div className="repaso__item-tags">
-                    <span className={`repaso__badge ${lc.badge}`}>Repaso {numRepaso}</span>
-                    {entrada.day && <span className="repaso__item-day">{entrada.day}</span>}
-                    {vencido && <span className="repaso__item-overdue">Vencido</span>}
+                    <span
+                      className={`repaso__badge ${lc.badge}`}
+                    >
+                      Repaso {numRepaso}
+                    </span>
+
+                    {entrada.day && (
+                      <span className="repaso__item-day">
+                        {entrada.day}
+                      </span>
+                    )}
+
+                    {vencido && (
+                      <span className="repaso__item-overdue">
+                        Vencido
+                      </span>
+                    )}
                   </div>
-                  <h3 className="repaso__item-subject">{entrada.subject}</h3>
-                  {entrada.tema && <p className="repaso__item-tema">Tema: {entrada.tema}</p>}
+
+                  <h3 className="repaso__item-subject">
+                    {entrada.subject}
+                  </h3>
+
+                  {entrada.tema && (
+                    <p className="repaso__item-tema">
+                      Tema: {entrada.tema}
+                    </p>
+                  )}
+
                   <p className="repaso__item-meta">
-                    Repaso {numRepaso} de {REPASO_INTERVALOS.length} · Intervalo{" "}
+                    Repaso {numRepaso} de {REPASO_INTERVALOS.length} ·
+                    {" "}Intervalo{" "}
                     {REPASO_INTERVALOS[intervaloIdx]} día
-                    {REPASO_INTERVALOS[intervaloIdx] > 1 ? "s" : ""}
+                    {REPASO_INTERVALOS[intervaloIdx] > 1
+                      ? "s"
+                      : ""}
                   </p>
+
                   <button
-                    onClick={() => irAMiEstudio(entrada.tema || entrada.subject)}
+                    onClick={() =>
+                      irAMiEstudio(
+                        entrada.tema || entrada.subject
+                      )
+                    }
                     className="repaso__item-link"
                   >
-                    <i className="bi bi-book" /> Repasar en Mi Estudio
+                    <i className="bi bi-book" />
+                    Repasar en Mi Estudio
                   </button>
                 </div>
-                
+
                 <button
-                  onClick={() => marcar(entrada.id, intervaloIdx, entrada.repasosDone)}
+                  onClick={() =>
+                    marcar(
+                      entrada.id,
+                      intervaloIdx,
+                      entrada.repasosDone
+                    )
+                  }
                   className="repaso__check"
+                  aria-label="Marcar repaso como realizado"
+                  title="Marcar repaso como realizado"
                 >
-                  <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2.5" width="16" height="16">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  <svg
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    fill="none"
+                    strokeWidth="2.5"
+                    width="16"
+                    height="16"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m4.5 12.75 6 6 9-13.5"
+                    />
                   </svg>
                 </button>
-                
+
                 <button
                   onClick={() => iniciarBorrado(entrada.id)}
                   className="repaso__trash"
+                  aria-label="Eliminar repaso"
+                  title="Eliminar repaso"
                 >
                   <i className="fa-solid fa-trash" />
                 </button>
@@ -143,45 +265,85 @@ export default function RepasoPage() {
         {repasosHoy.length === 0 && (
           <div className="repaso__empty">
             <div className="repaso__empty-emoji">🎉</div>
-            <p className="repaso__empty-title">No tienes repasos pendientes hoy</p>
-            <p className="repaso__empty-sub">Vuelve mañana o completa más cursos en el cronograma</p>
+
+            <p className="repaso__empty-title">
+              No tienes repasos pendientes hoy
+            </p>
+
+            <p className="repaso__empty-sub">
+              Vuelve mañana o completa más cursos en el cronograma
+            </p>
           </div>
         )}
       </section>
 
       <section>
-        <h2 className="repaso__proximos-title">Próximos repasos</h2>
+        <h2 className="repaso__proximos-title">
+          Próximos repasos
+        </h2>
+
         <div className="repaso__proximos-list">
           {proximos.length === 0 && (
-            <p className="repaso__proximos-empty">No hay repasos programados en los próximos 14 días.</p>
+            <p className="repaso__proximos-empty">
+              No hay repasos programados en los próximos 14 días.
+            </p>
           )}
+
           {Object.keys(porFecha)
             .sort()
             .map((fecha) => {
               const grupo = porFecha[fecha];
               const diff = diffDias(fecha);
-              const etiqueta = diff === 1 ? "Mañana" : `En ${diff} días`;
+              const etiqueta =
+                diff === 1 ? "Mañana" : `En ${diff} días`;
+
               return (
-                <div key={fecha} className="repaso__proximos-group">
+                <div
+                  key={fecha}
+                  className="repaso__proximos-group"
+                >
                   <div className="repaso__proximos-group-header">
-                    <span className="repaso__proximos-fecha">{formatearFecha(fecha)}</span>
-                    <span className="repaso__proximos-etiqueta">{etiqueta}</span>
+                    <span className="repaso__proximos-fecha">
+                      {formatearFecha(fecha)}
+                    </span>
+
+                    <span className="repaso__proximos-etiqueta">
+                      {etiqueta}
+                    </span>
                   </div>
+
                   <div>
                     {grupo.map(({ entrada, intervaloIdx }) => (
-                      <div key={entrada.id} className="repaso__proximos-row">
+                      <div
+                        key={entrada.id}
+                        className="repaso__proximos-row"
+                      >
                         <div className="repaso__proximos-row-content">
-                          <span className={`repaso__dot ${intervaloClasses(intervaloIdx).badge}`} />
+                          <span
+                            className={`repaso__dot ${intervaloClasses(intervaloIdx).badge
+                              }`}
+                          />
+
                           <span className="repaso__proximos-subject">
                             {entrada.subject}
-                            {entrada.tema && <span className="repaso__proximos-tema"> — {entrada.tema}</span>}
+
+                            {entrada.tema && (
+                              <span className="repaso__proximos-tema">
+                                {" "}— {entrada.tema}
+                              </span>
+                            )}
                           </span>
                         </div>
-                        <button 
-                          onClick={() => iniciarBorrado(entrada.id)}
+
+                        <button
+                          onClick={() =>
+                            iniciarBorrado(entrada.id)
+                          }
                           className="repaso__proximos-trash"
+                          aria-label="Eliminar repaso"
+                          title="Eliminar repaso"
                         >
-                           <i className="fa-solid fa-trash" />
+                          <i className="fa-solid fa-trash" />
                         </button>
                       </div>
                     ))}
@@ -197,7 +359,12 @@ export default function RepasoPage() {
         onClose={() => setSearchOpen(false)}
         onSelect={(item) => {
           setSearchOpen(false);
-          irAMiEstudio(item.type === "curso" ? item.nombre : item.tema);
+
+          irAMiEstudio(
+            item.type === "curso"
+              ? item.nombre
+              : item.tema
+          );
         }}
       />
 
@@ -214,21 +381,36 @@ export default function RepasoPage() {
             <div className="delete-modal-icon">
               <i className="fa-solid fa-triangle-exclamation" />
             </div>
-            <h3 className="delete-modal-title">¿Eliminar este repaso?</h3>
+
+            <h3 className="delete-modal-title">
+              ¿Eliminar este repaso?
+            </h3>
+
             <p className="delete-modal-text">
-              {deleteState.phase === 1 
-                ? "Esta acción requiere confirmación. Selecciona Aceptar para continuar." 
+              {deleteState.phase === 1
+                ? "Esta acción requiere confirmación. Selecciona Aceptar para continuar."
                 : "¡Atención! ¿Estás completamente seguro de borrarlo?"}
             </p>
-            
-            <div className={`delete-modal-buttons ${deleteState.phase === 2 ? "delete-modal-buttons--reverse" : ""}`}>
-              <button 
+
+            <div
+              className={`delete-modal-buttons ${deleteState.phase === 2
+                  ? "delete-modal-buttons--reverse"
+                  : ""
+                }`}
+            >
+              <button
                 onClick={confirmarBorrado}
-                className={`btn-confirm ${deleteState.phase === 1 ? "btn-confirm--phase1" : "btn-confirm--phase2"}`}
+                className={`btn-confirm ${deleteState.phase === 1
+                    ? "btn-confirm--phase1"
+                    : "btn-confirm--phase2"
+                  }`}
               >
-                {deleteState.phase === 1 ? "Aceptar" : "Sí, borrar"}
+                {deleteState.phase === 1
+                  ? "Aceptar"
+                  : "Sí, borrar"}
               </button>
-              <button 
+
+              <button
                 onClick={cancelarBorrado}
                 className="btn-cancel"
               >

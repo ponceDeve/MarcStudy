@@ -35,7 +35,7 @@ export default function StepsWelcomeModal({ open, pasos, onFinish, labelFinal = 
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(4, 8, 12, 0.85);
+          background: var(--overlay-strong);
         }
         .welcome-card {
           width: min(360px, 90vw);

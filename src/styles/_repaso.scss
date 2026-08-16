@@ -350,7 +350,7 @@
   bottom: -8px;
   right: 0px;
   background: transparent;
-  color: #fe9697cb;
+  color: var(--danger);
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
@@ -359,7 +359,7 @@
 }
 
 .repaso__item-btn-delete:hover {
-  color: #cc0000;
+  color: var(--danger-dark);
   transition: color 0.2s;
 }
 
@@ -369,14 +369,14 @@
   right: 0;
   transform: translateY(-50%);
   background: transparent;
-  color: rgba(254, 150, 151, 0.796);
+  color: var(--danger);
   border: none;
   cursor: pointer;
   padding: 0.25rem;
 }
 
 .repaso__proximos-btn-delete:hover {
-  color: #cc0000;
+  color: var(--danger-dark);
 }
 
 .repaso__delete-overlay {
@@ -385,7 +385,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -450,7 +450,7 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  color: #ff7c7cb1;
+  color: var(--danger);
   border: none;
   padding: 8px;
   border-radius: 8px;
@@ -461,8 +461,8 @@
 }
 .repaso__trash:hover,
 .repaso__proximos-trash:hover {
-  color: #fb6363;
-  text-shadow: 0 0 5px #fb6363ad;
+  color: var(--danger-dark);
+  text-shadow: 0 0 5px color-mix(in srgb, var(--danger-dark) 65%, transparent);
 }
 .repaso__proximos-row {
   display: flex;
@@ -481,14 +481,14 @@
 .repaso__proximos-trash {
   background: transparent;
   border: none;
-  color: #ff7c7cb1;
+  color: var(--danger);
   cursor: pointer;
 }
 
 .delete-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--overlay);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -561,4 +561,61 @@
   color: var(--ink);
   font-weight: bold;
   cursor: pointer;
+}
+.repaso__instruction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0 auto 20px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--ink-soft);
+}
+
+.repaso__instruction-book {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 18px;
+}
+
+.repaso__instruction p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.repaso__instruction strong {
+  color: var(--ink);
+}
+
+.repaso__instruction-check {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  vertical-align: middle;
+  background: var(--surface);
+  color: var(--ink-soft);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+
+@media (min-width: 640px) {
+  .repaso__instruction {
+    padding: 14px 16px;
+  }
+
+  .repaso__instruction p {
+    font-size: 14.5px;
+  }
 }

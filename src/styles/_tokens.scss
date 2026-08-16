@@ -1,143 +1,58 @@
-/* ============================================================
-   TOKENS — Sistema de diseño con selector claro/oscuro
-   ------------------------------------------------------------
-   Neutros en gris/negro (sin tinte cálido). Se evita el blanco
-   100% puro y el negro 100% puro por el tema de "halación"
-   (halos/glow en bordes de letras, más notorio con astigmatismo),
-   pero manteniéndose dentro de gris/negro real, no un tono cálido.
+:root {
+  --bg: #FBF7F0;
+  --surface: #F4F1E8;
+  --surface-alt: #EAE5D9;
+  --surface-hover: #EAE5D9;
+  --surface-ts: #E0DACB;
+  --border: #D6D0C4;
+  --border-strong: #B5AD9E;
 
-   Acento principal: salvia (verde grisáceo) → asociado en teoría
-   del color con calma, enfoque y constancia; funciona bien en
-   apps de estudio/hábitos sin la carga de alerta que trae el rojo
-   o la sobreestimulación del naranja/amarillo saturado.
-   Acento secundario: azul grisáceo suave → estructura/confianza,
-   para estados informativos.
-   Acento cálido: terracota apagada → único color con más "peso",
-   reservado para like/CTA puntuales, nunca para fondos grandes.
-   ============================================================ */
-
-:root,
-[data-theme="oscuro"] {
-  /* Gris/negro neutro (sin tinte cálido) — negro no 100% puro para
-     no generar halación, pero sí gris oscuro/negro de verdad. */
-  --bg: #121212;
-  --surface: #1e1e1e;
-  --surface-alt: #2a2a2a;
-  --surface-hover: #363636;
-  --border: #262626;
-  --border-strong: #454545;
-
-  /* Blanco no tan blanco */
-  --ink: #ececec;
-  --ink-soft: #b8b8b8;
-  --ink-faint: #8a8a8a;
-  --ink-on-primary: #121212;
-
-  /* Color primario — salvia, aclarada y algo desaturada para que
-     se vea bien sobre fondo oscuro sin vibrar/quemar */
-  --primary: #7ea987;
-  --primary-dark: #628a6c;
-  --primary-light: #a3c4a9;
-  --primary-bg: #26362b;
-
-  /* Color secundario — azul grisáceo (estructura / confianza) */
-  --secondary: #7fa3bd;
-  --secondary-dark: #5f829c;
-  --secondary-bg: #24313b;
-
-  /* Acento — terracota apagada (uso puntual, nunca fondos grandes) */
-  --accent: #cf9270;
-  --accent-dark: #b0724f;
-  --accent-bg: #3b2c22;
-
-  /* Estado */
-  --danger: #c98676;
-  --danger-dark: #a8695a;
-  --danger-bg: #3a2622;
-  --success: #7ea987;
-  --success-bg: #26362b;
-  --warning: #cfab5f;
-  --warning-bg: #3a301c;
-
-  /* Overlay */
-  --overlay: rgba(0, 0, 0, 0.55);
-  --overlay-strong: rgba(0, 0, 0, 0.82);
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.55);
-}
-
-[data-theme="claro"] {
-  /* Gris neutro (sin tinte cálido) + negro no 100% puro.
-     Fondo claro (casi blanco) y cajas/tarjetas en gris, al revés
-     de cómo estaba antes (fondo gris, cajas casi blancas). */
-  --bg: #f4f4f4;
-  --surface: #e9e9e9;
-  --surface-alt: #dcdcdc;
-  --surface-hover: #cfcfcf;
-  --border: #dcdcdc;
-  --border-strong: #b8b8b8;
-
-  --ink: #1c1c1c;
-  --ink-soft: #4a4a4a;
-  --ink-faint: #767676;
+  --ink: #2C2C2C;
+  --ink-soft: #555555;
+  --ink-faint: #7A7A7A;
   --ink-on-primary: #ffffff;
 
-  --primary: #4f7259;
-  --primary-dark: #3a5442;
-  --primary-light: #729278;
-  --primary-bg: #c5d9c0;
+  --primary: #6C7A35;
+  --primary-dark: #525D25;
+  --primary-light: #859642;
+  --primary-bg: #DCECC3;
 
-  --secondary: #4d6f8c;
-  --secondary-dark: #385267;
-  --secondary-bg: #bfd2e0;
+  --secondary: #5A7B94;
+  --secondary-dark: #435E73;
+  --secondary-bg: #D1E3F0;
 
-  --accent: #b06a4d;
-  --accent-dark: #8f5138;
-  --accent-bg: #e0c3ab;
+  --accent: #A86540;
+  --accent-dark: #824C2F;
+  --accent-bg: #F2D9CC;
 
-  --danger: #a04e40;
-  --danger-dark: #833d32;
-  --danger-bg: #e0bcb1;
-  --success: #4f7259;
-  --success-bg: #c5d9c0;
-  --warning: #a67a30;
-  --warning-bg: #e0cd9c;
+  --danger: #A04E40;
+  --danger-dark: #833D32;
+  --danger-bg: #E0BCB1;
+  --success: #6C7A35;
+  --success-bg: #DCECC3;
+  --warning: #FBE8B3;
+  --warning-bg: #E0CD9C;
 
   --overlay: rgba(0, 0, 0, 0.5);
   --overlay-strong: rgba(0, 0, 0, 0.78);
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.10);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.13);
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.18);
-}
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.11);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.15);
 
-:root {
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-full: 999px;
 
-  // Solo dos fuentes en toda la app (aparte de la del cronómetro,
-  // que es "DSDigi" y vive aparte en _base.scss): --font-display para
-  // lo importante (títulos, números destacados) y --font-body para
-  // todo lo secundario (texto de lectura, etiquetas, UI).
   --font-body: "Lato", sans-serif;
---font-display: "Raleway", sans-serif;
+  --font-display: "Raleway", sans-serif;
 }
 
-/* ============================================================
-   BREAKPOINTS — variables SCSS (no pueden ser custom properties
-   porque los media queries las necesitan en tiempo de compilación)
-   Se usan con el mixin respond() en vez de clamp(), para que cada
-   tamaño de pantalla tenga un valor explícito y fácil de ajustar,
-   en vez de una fórmula fluida difícil de razonar/depurar.
-   ============================================================ */
-$bp-sm: 480px;  // celulares grandes
-$bp-md: 768px;  // tablets
-$bp-lg: 1024px; // laptops
-$bp-xl: 1440px; // monitores grandes
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1440px;
 
 @mixin respond($bp) {
   @if $bp == sm {

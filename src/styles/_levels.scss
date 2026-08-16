@@ -86,7 +86,7 @@
     border-radius: var(--radius-md);
     cursor: pointer;
     background: var(--primary);
-    color: #fff;
+    color: var(--ink-on-primary);
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -122,13 +122,13 @@
   &:hover {
     background: var(--danger);
     border-color: var(--danger);
-    color: #fff;
+    color: var(--ink-on-primary);
   }
 }
 .levels-modal__close {
-  color: var(--)!important;
+  color: var(--ink-on-primary) !important;
   text-transform: uppercase;
-  background-color: #833d32!important;
+  background-color: var(--danger-dark) !important;
   letter-spacing: 2px;
 }
 
@@ -309,10 +309,5 @@
     background-color 0.2s;
   border-radius: var(--radius-sm);
   display: inline-block;
-
-  &:hover {
-    text-decoration: underline;
-    background-color: var(--surface-hover);
-    opacity: 0.85;
-  }
+  text-transform: uppercase;
 }

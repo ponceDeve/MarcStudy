@@ -1,12 +1,13 @@
 /* ============================================================
-   SelectionTooltip.jsx
+   SelectionTooltip.scss
    ============================================================ */
+
 .selection-tooltip {
   display: flex;
   position: absolute;
   transform: translateX(-50%);
   background: var(--ink);
-  color: #fff;
+  color: var(--ink-on-primary);
   border: 2px solid var(--primary);
   padding: 8px 14px;
   border-radius: var(--radius-sm);
@@ -18,14 +19,16 @@
   align-items: center;
   gap: 8px;
 }
+
 .selection-tooltip i {
   color: var(--primary-light);
   font-size: 16px;
 }
 
 /* ============================================================
-   PomodoroWidget.jsx
+   PomodoroWidget.scss
    ============================================================ */
+
 .pomo-widget {
   position: fixed;
   width: 160px;
@@ -39,6 +42,7 @@
   color: var(--ink);
   user-select: none;
 }
+
 .pomo-widget__header {
   background: var(--surface-alt);
   padding: 6px 10px;
@@ -53,6 +57,7 @@
   align-items: center;
   gap: 6px;
 }
+
 .pomo-widget__body {
   padding: 10px;
   display: flex;
@@ -60,18 +65,21 @@
   align-items: center;
   gap: 8px;
 }
+
 .pomo-widget__time {
   font-size: 24px;
   font-weight: 800;
   letter-spacing: 0.03em;
   cursor: pointer;
 }
+
 .pomo-widget__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   width: 100%;
 }
+
 .pomo-widget__min-btn {
   font-size: 11px;
   font-weight: 700;
@@ -82,18 +90,22 @@
   color: var(--ink-soft);
   cursor: pointer;
 }
+
 .pomo-widget__min-btn:hover {
   background: var(--surface-hover);
 }
+
 .pomo-widget__min-btn.is-active {
   background: var(--primary);
   border-color: var(--primary-dark);
-  color: #fff;
+  color: var(--ink-on-primary);
 }
+
 .pomo-widget__controls {
   display: flex;
   gap: 6px;
 }
+
 .pomo-widget__icon-btn {
   width: 32px;
   height: 32px;
@@ -106,12 +118,18 @@
   cursor: pointer;
   color: var(--ink);
 }
+
 .pomo-widget__icon-btn:hover {
   background: var(--surface-hover);
 }
+
 .pomo-widget__icon-btn i {
   font-size: 11px;
 }
+
+/* ============================================================
+   GLOSARIO
+   ============================================================ */
 
 .glossary-term-wrap {
   position: relative;
@@ -121,26 +139,23 @@
 .glossary-term {
   position: relative;
   display: inline;
-  color: var(--warning);
+  color: var(--accent);
   cursor: pointer;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 3px;
-  transition: color 0.15s ease;
-  /* Evita que un término de varias palabras se parta a la mitad entre
-     dos líneas: si no entra en el espacio que queda, salta completo
-     a la siguiente línea (como una sola "palabra"). */
+  transition: color 0.5s ease;
   white-space: nowrap;
 }
 
 .glossary-term:hover {
-  color: var(--primary-light);
+  color: var(--accent-dark);
 }
 
-/* --tt-shift es un offset en px (calculado en JS con el ancho real del
-   viewport) que corrige la posición centrada para que el tooltip nunca
-   se salga de la pantalla, sin importar dónde caiga el término dentro
-   del texto. Ver useFloatingTooltip.js. */
+/* ============================================================
+   TOOLTIP DEL GLOSARIO
+   ============================================================ */
+
 .glossary-tooltip {
   position: absolute;
   bottom: calc(100% + 12px);
@@ -149,49 +164,38 @@
   max-width: min(300px, calc(100vw - 24px));
   box-sizing: border-box;
   padding: 11px 15px;
-
   color: var(--ink);
   background: var(--surface);
-
   border: 1px solid var(--primary);
   border-radius: 18px 20px 16px 22px;
-
   box-shadow: var(--shadow-md);
-
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 400;
   line-height: 1.45;
   text-align: left;
-
   overflow-wrap: anywhere;
   word-break: normal;
-
   z-index: 1000;
   pointer-events: none;
-
   transform: translateX(calc(-50% + var(--tt-shift, 0px)));
-  animation: glossary-tooltip-in 0.12s ease-out;
+  animation: glossary-tooltip-in 0.5s ease-out;
 }
 
-/* La flechita sigue apuntando al término aunque el cuerpo del tooltip
-   se haya desplazado para no salirse de la pantalla; clamp() evita que
-   la flecha misma quede pegada a una esquina redondeada. */
 .glossary-tooltip__arrow {
   content: "";
   position: absolute;
-
   bottom: -8px;
-  left: clamp(14px, calc(50% - var(--tt-shift, 0px)), calc(100% - 14px));
-
+  left: clamp(
+    14px,
+    calc(50% - var(--tt-shift, 0px)),
+    calc(100% - 14px)
+  );
   width: 14px;
   height: 14px;
-
   background: var(--surface);
-
   border-right: 1px solid var(--primary);
   border-bottom: 1px solid var(--primary);
-
   transform: translateX(-50%) rotate(45deg);
 }
 
@@ -201,17 +205,31 @@
   font-weight: 400;
 }
 
+/* ============================================================
+   ANIMACIÓN DEL TOOLTIP
+   ============================================================ */
+
 @keyframes glossary-tooltip-in {
   from {
     opacity: 0;
-    transform: translateX(calc(-50% + var(--tt-shift, 0px))) scale(0.97);
+    transform: translateX(
+        calc(-50% + var(--tt-shift, 0px))
+      )
+      scale(0.97);
   }
 
   to {
     opacity: 1;
-    transform: translateX(calc(-50% + var(--tt-shift, 0px))) scale(1);
+    transform: translateX(
+        calc(-50% + var(--tt-shift, 0px))
+      )
+      scale(1);
   }
 }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 479px) {
   .glossary-tooltip {
@@ -232,6 +250,10 @@
     max-width: 320px;
   }
 }
+
+/* ============================================================
+   REDUCCIÓN DE MOVIMIENTO
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .glossary-tooltip {

@@ -123,7 +123,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(4, 8, 12, 0.9);
+          background: var(--overlay-strong);
           padding: 16px;
         }
         .setup-card {
@@ -219,7 +219,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
         }
         /* ESTILO NUEVO: Sugerencia resaltada con teclado */
         .setup-sugerencia-item.is-active {
-          background: var(--primary-light, #e0f2fe);
+          background: var(--primary-bg);
           border-color: var(--primary);
         }
         .setup-char-count.is-error {

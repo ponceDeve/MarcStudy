@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../../hooks/useTheme";
 
 export default function TopBar({
   tema, curso, stage,
@@ -11,7 +10,6 @@ export default function TopBar({
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
-  const { tema: modoColor, alternarTema } = useTheme();
 
   // Detección de desbordamiento
   const wrapperRef = useRef(null);
@@ -147,10 +145,6 @@ export default function TopBar({
             {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
           </div>
         )}
-
-        <button type="button" onClick={alternarTema} className="topbar__theme-btn" title={modoColor === "oscuro" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}>
-          <i className={`fa-solid ${modoColor === "oscuro" ? "fa-sun" : "fa-moon"}`} />
-        </button>
 
         <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
           <i className="fa-solid fa-gear" />

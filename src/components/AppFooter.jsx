@@ -3,8 +3,9 @@ export default function AppFooter() {
 
   return (
     <footer className="app-footer">
-      <p>
-        Hecho a pulso, un tema a la vez — <strong>Junior Ponce</strong> © {anio}
+      <p className="app-footer__brand">Mi Estudio — Plataforma de aprendizaje</p>
+      <p className="app-footer__copyright">
+        © {anio} Junior Ponce. Todos los derechos reservados.
       </p>
     </footer>
   );

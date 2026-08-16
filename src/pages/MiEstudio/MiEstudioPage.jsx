@@ -218,7 +218,7 @@ export default function MiEstudioPage() {
 
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-  
+
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
@@ -274,7 +274,7 @@ export default function MiEstudioPage() {
 
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
-    limpiarPomodoroCompartido(); 
+    limpiarPomodoroCompartido();
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
@@ -401,7 +401,7 @@ export default function MiEstudioPage() {
       // MODIFICACIÓN: Leer la última card visitada desde localStorage
       const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
       let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
-      
+
       // Validación: Si el JSON cambió y el número guardado supera la cantidad de puntos, lo regresamos a 0
       if (cardInicial >= puntos.length) {
         cardInicial = 0;
@@ -413,9 +413,14 @@ export default function MiEstudioPage() {
       );
       setPreguntasVistas(storedPreguntasVistas);
 
-      setTopicData({ ...data, curso: item.curso, tema: item.tema });
+      setTopicData({
+        ...data,
+        curso: item.curso,
+        tema: item.tema,
+        archivo: item.archivo,
+      });
       setFlatPuntos(puntos);
-      
+
       // Inicializar en la card recuperada en lugar de siempre en 0
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
@@ -737,8 +742,8 @@ export default function MiEstudioPage() {
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKey = `ex-${item.puntoIndex}`; 
-        vistaPregunta = item.pregunta; 
+        vistaKey = `ex-${item.puntoIndex}`;
+        vistaPregunta = item.pregunta;
       }
     } else if (isLevelMode) {
       vistaKey = `ex-${nivelIndex}`;
@@ -947,7 +952,7 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
-          
+
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   useEffect(() => {
@@ -1154,7 +1159,7 @@ export default function MiEstudioPage() {
         {!topicData && (
           <>
             <AppHeader />
-            <div className="mi-estudio__home-screen">
+            <div className="mi-estudio__home-screen container">
               <NuevosTemasAviso />
               <div className="mi-estudio__intro">
                 <div>
@@ -1163,7 +1168,7 @@ export default function MiEstudioPage() {
                     {nombreUsuario ? `¿Qué tema quieres repasar, ${nombreUsuario}?` : "¿Qué tema quieres repasar?"}
                   </h1>
                   {error && (
-                    <p style={{ color: "var(--danger, #e74c3c)", fontWeight: 700, marginTop: "10px" }}>
+                    <p style={{ color: "var(--danger)", fontWeight: 700, marginTop: "10px" }}>
                       <i className="fas fa-triangle-exclamation" /> {error}
                     </p>
                   )}
@@ -1259,7 +1264,7 @@ export default function MiEstudioPage() {
         )}
 
         {topicData && (stage === "theory" || stage === "question") && (
-          <div className="mi-estudio__stage">
+          <div className="mi-estudio__stage container">
             {stage === "question" && (
               <div className="mi-estudio__hud-wrap animate-fade-in" style={{ display: 'block', visibility: 'visible', width: '100%', marginBottom: '15px' }}>
                 <Hud
@@ -1411,6 +1416,43 @@ export default function MiEstudioPage() {
               </div>
             </div>
 
+            <div className="mi-estudio__pdf-buttons">
+              <button
+                type="button"
+                className="mi-estudio__pdf-btn"
+                onClick={() => {
+                  if (!topicData?.archivo) return;
+
+                  const pdfRelativo = topicData.archivo
+                    .replace(/temas\//i, "PDFs/")
+                    .replace(/\.json$/i, ".pdf");
+
+                  const rutaPdf = import.meta.env.BASE_URL + pdfRelativo;
+
+                  window.open(rutaPdf, "_blank");
+                }}
+              >
+                <i className="fas fa-file-pdf" />
+                Ver PDF
+              </button>
+
+              <a
+                href={
+                  topicData?.archivo
+                    ? import.meta.env.BASE_URL +
+                    topicData.archivo
+                      .replace(/temas\//i, "PDFs/")
+                      .replace(/\.json$/i, ".pdf")
+                    : "#"
+                }
+                download
+                className="mi-estudio__pdf-btn"
+              >
+                <i className="fas fa-download" />
+                Descargar PDF
+              </a>
+            </div>
+
             {stage === "question" && questionResult && (
               <div className="mi-estudio__explanation-wrap">
                 <ExplanationPanel
@@ -1501,7 +1543,7 @@ export default function MiEstudioPage() {
       {alertaVidas === "tres" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h2 style={{ color: '#f39c12', margin: 0, fontSize: '2rem' }}><i className="fas fa-triangle-exclamation" /> 3 vidas</h2>
+            <h2 style={{ color: 'var(--warning)', margin: 0, fontSize: '2rem' }}><i className="fas fa-triangle-exclamation" /> 3 vidas</h2>
             {renderCorazonesVidas()}
             <p style={{ color: '#fff', fontSize: '1rem' }}>No te confíes.</p>
           </div>
@@ -1511,7 +1553,7 @@ export default function MiEstudioPage() {
       {alertaVidas === "una" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h2 style={{ color: '#e74c3c', margin: 0, fontSize: '2rem', animation: 'pulse 1s infinite' }}><i className="fas fa-fire" /> 1 vida</h2>
+            <h2 style={{ color: 'var(--danger)', margin: 0, fontSize: '2rem', animation: 'pulse 1s infinite' }}><i className="fas fa-fire" /> 1 vida</h2>
             {renderCorazonesVidas()}
             <p style={{ color: '#fff', fontSize: '1rem' }}>Última oportunidad.</p>
           </div>
@@ -1521,7 +1563,7 @@ export default function MiEstudioPage() {
       {alertaVidas === "cero" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h1 style={{ color: 'red', margin: 0, fontSize: '3rem', textShadow: '0 0 10px red' }}>GAME OVER</h1>
+            <h1 style={{ color: 'var(--danger)', margin: 0, fontSize: '3rem', textShadow: '0 0 10px var(--danger)' }}>GAME OVER</h1>
             {renderCorazonesVidas()}
             <p style={{ color: '#aaa', fontSize: '1rem' }}>Progreso reiniciado.</p>
           </div>

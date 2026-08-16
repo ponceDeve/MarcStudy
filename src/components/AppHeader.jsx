@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { useTheme } from "../hooks/useTheme";
 
 export default function AppHeader({
   onAbrirBuscador,
@@ -9,57 +8,106 @@ export default function AppHeader({
   onEditarHorario = null,
 }) {
   const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-  const { tema, alternarTema } = useTheme();
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const headerRef = useRef(null);
 
-  // Mide el alto real del header (varía según breakpoint/contenido) y lo
-  // expone como variable CSS global, para que cualquier pantalla pueda
-  // calcular su espaciado en base a esto en vez de un número fijo.
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
+
     const setHeaderVar = () => {
-      document.documentElement.style.setProperty("--app-header-h", `${el.offsetHeight}px`);
+      document.documentElement.style.setProperty(
+        "--app-header-h",
+        `${el.offsetHeight}px`
+      );
     };
+
     setHeaderVar();
+
     const ro = new ResizeObserver(setHeaderVar);
     ro.observe(el);
+
     return () => ro.disconnect();
   }, []);
 
   const botones = [
     ...(showHome
-      ? [{ title: "Ir a Mi Estudio", label: "Home", fullLabel: "Inicio", icon: "fa-solid fa-house", to: "/" }]
+      ? [{
+        title: "Ir a Mi Estudio",
+        label: "Home",
+        fullLabel: "Inicio",
+        icon: "fa-solid fa-house",
+        to: "/"
+      }]
       : []),
     ...(onAbrirBuscador
-      ? [{ title: "Buscar curso o tema", label: "Buscar", fullLabel: "Buscar curso o tema", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador }]
+      ? [{
+        title: "Buscar curso o tema",
+        label: "Buscar",
+        fullLabel: "Buscar curso o tema",
+        icon: "fa-solid fa-magnifying-glass",
+        onClick: onAbrirBuscador
+      }]
       : []),
-    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: "/pomodoro" },
-    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: "/repaso" },
-    { title: "Editar horario", label: "Editar", fullLabel: "Editar horario", icon: "fa-solid fa-pen", to: "/editar", onClick: onEditarHorario },
+    {
+      title: "Ir al Pomodoro",
+      label: "Pomo",
+      fullLabel: "Pomodoro",
+      icon: "fa-solid fa-calendar-alt",
+      to: "/pomodoro"
+    },
+    {
+      title: "Ir a Mis Repasos",
+      label: "Repaso",
+      fullLabel: "Mis Repasos",
+      icon: "fa-solid fa-brain",
+      to: "/repaso"
+    },
+    {
+      title: "Editar horario",
+      label: "Editar",
+      fullLabel: "Editar horario",
+      icon: "fa-solid fa-pen",
+      to: "/editar",
+      onClick: onEditarHorario
+    },
   ];
 
-  function renderBoton(b, cls, closeFn = () => {}) {
+  function renderBoton(b, cls, closeFn = () => { }) {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
         <span className="topbar__btn-title">{b.label}</span>
       </>
     );
+
     const handleClick = () => {
       if (b.onClick) b.onClick();
       closeFn();
     };
+
     if (b.to) {
       return (
-        <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={handleClick}>
+        <Link
+          key={b.title}
+          to={b.to}
+          title={b.title}
+          className={cls}
+          onClick={handleClick}
+        >
           {content}
         </Link>
       );
     }
+
     return (
-      <button key={b.title} type="button" onClick={handleClick} title={b.title} className={cls}>
+      <button
+        key={b.title}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className={cls}
+      >
         {content}
       </button>
     );
@@ -74,10 +122,17 @@ export default function AppHeader({
       <div className="topbar__drawer">
         <div className="topbar__drawer-header">
           <h3 className="topbar__drawer-title">{title}</h3>
-          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+
+          <button
+            type="button"
+            className="topbar__drawer-close"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
             <i className="fa-solid fa-times" />
           </button>
         </div>
+
         <div className="topbar__drawer-list">
           {children}
         </div>
@@ -85,10 +140,13 @@ export default function AppHeader({
     </div>
   );
 
-  const renderFila = (b, closeFn = () => {}) => {
+  const renderFila = (b, closeFn = () => { }) => {
     const content = (
       <>
-        <span className="topbar__drawer-item-label">{b.fullLabel || b.label}</span>
+        <span className="topbar__drawer-item-label">
+          {b.fullLabel || b.label}
+        </span>
+
         <i className={`${b.icon} topbar__drawer-item-icon`} />
       </>
     );
@@ -99,45 +157,62 @@ export default function AppHeader({
     };
 
     return b.to ? (
-      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={handleClick}>{content}</Link>
+      <Link
+        key={b.title}
+        to={b.to}
+        title={b.title}
+        className="topbar__drawer-item"
+        onClick={handleClick}
+      >
+        {content}
+      </Link>
     ) : (
-      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
+      <button
+        key={b.title || b.label}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className="topbar__drawer-item"
+      >
+        {content}
+      </button>
     );
   };
 
   return (
-    <div className="topbar" ref={headerRef}>
-      <Link to="/" className="topbar__title-btn" title="Mi Estudio">
-        <span className="topbar__curso topbar__curso--clickable">{nombreUsuario || "Mi Estudio"}</span>
-      </Link>
+    <div className="topbar-wrapper">
+      <div className="topbar container" ref={headerRef}>
+        <Link to="/" className="topbar__title-btn" title="Mi Estudio">
+          <span className="topbar__curso topbar__curso--clickable">
+            {nombreUsuario || "Mi Estudio"}
+          </span>
+        </Link>
 
-      <div className="topbar__controls">
-        <div className="topbar__nav">
-          {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
+        <div className="topbar__controls">
+          <div className="topbar__nav">
+            {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMenuMobileOpen(true)}
+            title="Menú"
+            className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+          >
+            <i className="fa-solid fa-bars" />
+          </button>
         </div>
 
-        <button
-          type="button"
-          onClick={alternarTema}
-          title={tema === "oscuro" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-          className="topbar__theme-btn"
-        >
-          <i className={`fa-solid ${tema === "oscuro" ? "fa-sun" : "fa-moon"}`} />
-        </button>
-
-        <button
-          type="button"
-          onClick={() => setMenuMobileOpen(true)}
+        <SideDrawer
           title="Menú"
-          className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+          isOpen={menuMobileOpen}
+          onClose={() => setMenuMobileOpen(false)}
         >
-          <i className="fa-solid fa-bars" />
-        </button>
+          {botones.map((b) =>
+            renderFila(b, () => setMenuMobileOpen(false))
+          )}
+        </SideDrawer>
       </div>
-
-      <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
-        {botones.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
-      </SideDrawer>
     </div>
   );
 }

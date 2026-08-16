@@ -1,32 +1,26 @@
-// ============================================================
-// TopBar.scss
-// ============================================================
-
 @use "./tokens" as *;
 
-// ============================================================
-// TOPBAR (Contenedor Principal)
-// ============================================================
-
-.topbar {
+.topbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 998;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  box-sizing: border-box;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  width: 100%;
+  background: var(--primary);
 }
 
-// ============================================================
-// CAJA 1 — TÍTULO DEL CURSO / TEMA
-// ============================================================
+.topbar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background: var(--primary);
+  border-bottom: 1px solid var(--primary-dark);
+}
 
 .topbar__title-box {
   display: flex;
@@ -41,20 +35,26 @@
 .topbar__title-btn {
   width: fit-content;
   max-width: 100%;
+  height: 100%;
+  min-height: 60px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
   padding: 6px 10px;
   background: transparent;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   cursor: pointer;
   text-align: left;
   overflow: hidden;
-  transition: background 0.15s ease;
+  transition: background 0.5s ease, color 0.5s ease;
 
   &:hover {
-    background: var(--surface-hover);
+    background: color-mix(in srgb, var(--primary-dark), transparent 30%);
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 }
 
@@ -72,7 +72,7 @@
     flex-shrink: 0;
     margin-left: 6px;
     font-size: 14px;
-    color: var(--ink-faint);
+    color: var(--primary-bg);
     opacity: 0.8;
   }
 }
@@ -81,18 +81,14 @@
   display: inline-block;
   font-size: 14px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--ink-on-primary);
   white-space: nowrap;
 
   &--marquee {
-    animation: marqueeOneWay 12s linear infinite;
+    animation: marqueeOneWay 6s linear infinite;
   }
 }
 
-/* El marquee no es decorativo: es la única forma de leer el título del
-   tema cuando no entra en el ancho disponible. Se excluye de la regla
-   global de "reducir movimiento" (_base.scss) para que quien tenga esa
-   preferencia del sistema activada igual pueda leer el texto completo. */
 @media (prefers-reduced-motion: reduce) {
   .topbar__tema--marquee {
     animation-duration: 12s !important;
@@ -101,37 +97,38 @@
 }
 
 @keyframes marqueeOneWay {
-  0%, 10% { transform: translateX(0); }
-  85%, 95% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 1; }
-  96%, 100% { transform: translateX(calc(-1 * var(--scroll-dist))); opacity: 0; }
+  0%, 10% {
+    transform: translateX(0);
+  }
+
+  85%, 95% {
+    transform: translateX(calc(-1 * var(--scroll-dist)));
+    opacity: 1;
+  }
+
+  96%, 100% {
+    transform: translateX(calc(-1 * var(--scroll-dist)));
+    opacity: 0;
+  }
 }
 
 .topbar__curso {
   max-width: 100%;
   font-size: 13.5px;
-  color: var(--ink);
+  color: var(--ink-on-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   &--clickable {
     cursor: pointer;
-    transition: color 0.15s ease;
-
-    &:hover {
-      color: var(--primary);
-    }
   }
 }
-
-// ============================================================
-// CAJA 2 — NAVEGACIÓN PRINCIPAL
-// ============================================================
 
 .topbar__nav {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 8px;
   flex-shrink: 0;
@@ -149,14 +146,18 @@
   background: transparent;
   border: none;
   border-radius: 6px;
-  color: var(--ink);
+  color: var(--ink-on-primary);
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
 
   &:hover {
-    color: var(--primary);
+    background: color-mix(in srgb, var(--primary-dark), transparent 30%);
+  }
+
+  &:active {
+    transform: scale(0.96);
   }
 }
 
@@ -184,37 +185,33 @@
   text-align: center;
 }
 
-// ============================================================
-// CAJA 3 — CONTROLES DERECHOS
-// ============================================================
-
 .topbar__controls {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 8px;
   flex-shrink: 0;
 }
 
 .topbar__control-btn,
-.topbar__gear,
-.topbar__theme-btn {
+.topbar__gear {
   width: 44px;
   height: 44px;
+  align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border: none;
   border-radius: 50%;
-  color: var(--ink);
+  color: var(--ink-on-primary);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
 
   &:hover {
-    background: var(--surface-hover);
-    color: var(--primary);
+    background: var(--primary-dark);
+    color: var(--primary-bg);
   }
 
   &:active {
@@ -227,13 +224,13 @@
 }
 
 .topbar__control-btn--menu {
-  background: var(--primary);
+  background: var(--primary-dark);
   color: var(--ink-on-primary);
   box-shadow: var(--shadow-sm);
 
   &:hover {
-    background: var(--primary-dark);
-    opacity: 0.95;
+    background: color-mix(in srgb, var(--primary-dark), black 10%);
+    color: var(--ink-on-primary);
   }
 }
 
@@ -241,15 +238,12 @@
   display: none;
 }
 
-// ============================================================
-// BREAKPOINTS - NAVBAR
-// ============================================================
-
 @include respond(md) {
   .topbar__nav {
     display: flex !important;
     gap: 12px;
   }
+
   .topbar__hamburger {
     display: none !important;
   }
@@ -259,61 +253,78 @@
   .topbar__nav {
     display: flex !important;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     gap: 16px;
   }
+
   .topbar__nav-btn {
     padding: 5px 10px;
   }
+
   .topbar__btn-icon {
     font-size: 20px;
   }
+
   .topbar__btn-title {
     font-size: 14px;
   }
+
   .topbar__controls {
     gap: 12px;
   }
+
   .topbar__control-btn,
-  .topbar__gear,
-  .topbar__theme-btn {
+  .topbar__gear {
     width: 44px;
     height: 44px;
-    i { font-size: 21px; }
+
+    i {
+      font-size: 21px;
+    }
   }
 }
 
 @include respond(xl) {
   .topbar {
-    padding: 10px 22px;
+    padding: 0 22px;
   }
+
   .topbar__tema {
     font-size: 16px;
   }
+
   .topbar__curso {
     font-size: 14px;
   }
+
   .topbar__nav {
     gap: 24px;
   }
+
   .topbar__nav-btn {
     padding: 6px 12px;
   }
+
   .topbar__btn-icon {
     font-size: 22px;
   }
+
   .topbar__btn-title {
     font-size: 15px;
   }
+
   .topbar__controls {
     gap: 18px;
   }
+
   .topbar__control-btn,
-  .topbar__gear,
-  .topbar__theme-btn {
+  .topbar__gear {
     width: 48px;
     height: 48px;
-    i { font-size: 23px; }
+
+    i {
+      font-size: 23px;
+    }
   }
 }
 
@@ -321,17 +332,11 @@
   .topbar__nav {
     display: none !important;
   }
+
   .topbar__hamburger {
     display: flex !important;
   }
 }
-
-// ============================================================
-// ============================================================
-// PANEL LATERAL (Menú y Configuración) — entra deslizando desde
-// la derecha, cada opción en una fila: texto a la izquierda,
-// ícono a la derecha.
-// ============================================================
 
 .topbar__drawer-backdrop {
   position: fixed;
@@ -339,7 +344,7 @@
   z-index: 999;
   background: transparent;
   pointer-events: none;
-  transition: background 0.25s ease;
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
 
   &.is-open {
     background: var(--overlay-strong);
@@ -360,7 +365,7 @@
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 
   .topbar__drawer-backdrop.is-open & {
     transform: translateX(0);
@@ -372,27 +377,34 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  border-bottom: 1px solid var(--border);
+  background: var(--primary);
+  border-bottom: 1px solid var(--primary-dark);
   flex: none;
 }
 
 .topbar__drawer-title {
-  color: var(--ink);
+  color: var(--ink-on-primary);
   font-size: 22px;
   margin: 0;
   font-family: var(--font-display);
 }
 
 .topbar__drawer-close {
-  background: none;
+  background: transparent;
   border: none;
-  color: var(--ink-soft);
+  color: var(--ink-on-primary);
   font-size: 20px;
   cursor: pointer;
   padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
 
   &:hover {
-    color: var(--ink);
+    background: var(--primary-dark);
+  }
+
+  &:active {
+    transform: scale(0.9);
   }
 }
 
@@ -418,18 +430,20 @@
   text-decoration: none;
   cursor: pointer;
   text-align: left;
-  transition: background 0.15s ease;
+  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
 
   &:last-child {
     border-bottom: none;
   }
 
   &:hover {
-    background: var(--surface-hover);
+    background: var(--primary-bg);
+    color: var(--primary-dark);
   }
 
   &:active {
     background: var(--surface-alt);
+    transform: scale(0.98);
   }
 }
 
@@ -441,18 +455,42 @@
   color: var(--ink-soft);
   font-size: 18px;
   flex: none;
+  transition: color 0.5s ease, transform 0.5s ease;
 }
 
-// ============================================================
-// BREAKPOINTS - PANEL LATERAL
-// ============================================================
+.topbar__drawer-item:hover .topbar__drawer-item-icon {
+  color: var(--primary);
+  transform: translateX(-3px);
+}
 
 @media (min-width: 1024px) {
   .topbar__drawer {
     width: 360px;
   }
+
   .topbar__drawer-item {
     padding: 18px 16px;
     font-size: 17px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar__title-btn,
+  .topbar__curso,
+  .topbar__nav-btn,
+  .topbar__control-btn,
+  .topbar__drawer-backdrop,
+  .topbar__drawer,
+  .topbar__drawer-close,
+  .topbar__drawer-item,
+  .topbar__drawer-item-icon {
+    transition: none;
+  }
+
+  .topbar__nav-btn:active,
+  .topbar__control-btn:active,
+  .topbar__drawer-close:active,
+  .topbar__drawer-item:active {
+    transform: none;
   }
 }

@@ -2,41 +2,37 @@ import { useState } from "react";
 import manifest from "../data/manifest.json";
 
 /**
- * DESCRIPCIONES_CURSO
- * --------------------------------------------------------------
- * Un texto corto de "gancho" por cada curso, escrito a mano (no se
- * genera solo). Todas las frases tienen EXACTAMENTE 90 caracteres,
- * a propósito: así las tarjetas de la grilla quedan parejas en alto,
- * sin que un curso con descripción larga se vea más grande que otro.
+ * ============================================================
+ * DESCRIPCIONES DE LOS CURSOS
+ * ============================================================
  */
+
 const DESCRIPCIONES_CURSO = {
   CIV: "Entiende cómo funciona el país en el que vives: leyes, derechos y tu rol de ciudadano hoy.",
   FIL: "Las preguntas que la humanidad lleva siglos haciéndose, contadas por quienes las plantean.",
-  HIS: "Un recorrido desde los primeros pueblos hasta el mundo actual, para entender cómo llegamos",
-  LEN: "Domina las reglas del idioma que usas todos los días, pero que nunca te enseñaron bien hoy",
+  HIS: "Un recorrido desde los primeros pueblos hasta el mundo actual, para entender cómo llegamos.",
+  LEN: "Domina las reglas del idioma que usas todos los días, pero que nunca te enseñaron bien hoy.",
   LIT: "Historias, autores y estilos que marcaron la forma de contar y de leer el mundo hasta hoy.",
-  RVE: "Entrena tu lectura crítica: comprender rápido, deducir mejor y no caer en trampas de exame",
+  RVE: "Entrena tu lectura crítica: comprender rápido, deducir mejor y no caer en trampas de examen.",
   BIO: "De la célula al cuerpo humano completo: cómo funciona la vida por dentro, paso a paso hoy.",
   ECO: "Por qué suben los precios, cómo se mueve el mercado y qué hay detrás de cada decisión hoy.",
-  FIS: "El movimiento, la energía y las leyes invisibles que rigen todo lo que pasa a tu alrededor",
+  FIS: "El movimiento, la energía y las leyes invisibles que rigen todo lo que pasa a tu alrededor.",
   GEO: "El relieve, el clima y la geografía que moldean al Perú, sus regiones y todo el mundo hoy.",
   PSI: "Cómo pensamos, sentimos y actuamos, explicado con lógica, evidencia y ejemplos cotidianos.",
-  QUI: "Átomos, reacciones y compuestos: la química que está detrás de todo lo que tocas y respira",
-  ALG: "Fundamentos y ejercicios de álgebra para resolver problemas paso a paso, sin complicaciones",
+  QUI: "Átomos, reacciones y compuestos: la química que está detrás de todo lo que tocas y respiras.",
+  ALG: "Fundamentos y ejercicios de álgebra para resolver problemas paso a paso, sin complicaciones.",
   ARI: "Razones, proporciones y esos problemas clásicos que casi siempre caen en el examen de hoy.",
   GEM: "Ángulos, figuras y áreas: la geometría que explica las formas que ves todos los días, hoy.",
-  RMA: "Problemas de lógica y tiempo que ponen a prueba cómo piensas, no solo cuánto memorizas hoy",
+  RMA: "Problemas de lógica y tiempo que ponen a prueba cómo piensas, no solo cuánto memorizas hoy.",
   TRI: "Ángulos, razones trigonométricas y los triángulos que no te dejan tranquilo hasta dominar.",
 };
 
 /**
- * FAQS
- * --------------------------------------------------------------
- * Preguntas frecuentes sobre CÓMO USAR la app, escritas para
- * cualquier persona (sin vocabulario técnico ni de programación).
- * Cada pregunta trae su propio ícono (FontAwesome) para que se
- * reconozca de un vistazo de qué tema trata, incluso antes de leerla.
+ * ============================================================
+ * PREGUNTAS FRECUENTES
+ * ============================================================
  */
+
 const FAQS = [
   {
     icon: "fa-graduation-cap",
@@ -109,11 +105,6 @@ const FAQS = [
     a: "Sí, la app está pensada para verse bien tanto en el celular como en la computadora.",
   },
   {
-    icon: "fa-moon",
-    q: "¿Tiene modo oscuro/claro?",
-    a: "Sí, puedes cambiar entre tema oscuro y claro según tu preferencia.",
-  },
-  {
     icon: "fa-heart-crack",
     q: "¿Qué pasa cuando me quedo sin vidas?",
     a: "Se te indica que agotaste tus intentos en esa sesión de preguntas, para que retomes el tema más adelante con calma.",
@@ -145,23 +136,22 @@ const FAQS = [
   },
 ];
 
-// Colores de acento que van rotando entre las tarjetas de curso.
-const ACCENTS = ["primary", "secondary", "accent", "warning"];
+/**
+ * ============================================================
+ * COMPONENTE
+ * ============================================================
+ */
 
 export default function WelcomeSection({ onSelectTema }) {
-  // Índice del curso actualmente desplegado.
-  // Solo uno puede estar abierto a la vez.
   const [cursoAbierto, setCursoAbierto] = useState(null);
-  
-  // Índice de la pregunta frecuente (FAQ) abierta actualmente.
   const [faqAbierto, setFaqAbierto] = useState(null);
 
   const cursosConTemas = manifest.cursos.filter(
-    (c) => c.temas.length > 0
+    (curso) => curso.temas.length > 0
   );
 
   const totalTemas = cursosConTemas.reduce(
-    (acc, c) => acc + c.temas.length,
+    (acc, curso) => acc + curso.temas.length,
     0
   );
 
@@ -178,125 +168,181 @@ export default function WelcomeSection({ onSelectTema }) {
     });
   }
 
+  function alternarFaq(i) {
+    setFaqAbierto((actual) => (actual === i ? null : i));
+  }
+
   return (
     <div className="welcome-section">
-      {/* ---------------------------------------------------------
-          SECCIÓN 1: Bienvenida + grilla de cursos
-      --------------------------------------------------------- */}
-      <section className="welcome-section__intro">
-        <h2 className="welcome-section__title">
-          Qué encontrarás en Mi Estudio
-        </h2>
 
-        <p className="welcome-section__lead">
-          Una plataforma para preparar tus exámenes: teoría organizada por
-          temas, preguntas de práctica, repaso espaciado y un Pomodoro para
-          armar tu horario de estudio. En total hay{" "}
-          <strong>{cursosConTemas.length} cursos</strong> con{" "}
-          <strong>{totalTemas} temas</strong> disponibles.
-        </p>
+      {/* ======================================================
+          SECCIÓN DE CURSOS
+          El fondo ocupa TODO el ancho.
+          El container limita únicamente el contenido.
+      ====================================================== */}
 
-        <div className="welcome-section__grid">
-          {cursosConTemas.map((curso, i) => {
-            const abierto = cursoAbierto === i;
-            const accent = ACCENTS[i % ACCENTS.length];
+      <section className="welcome-section__courses">
 
-            return (
-              <div
-                key={curso.codigo}
-                className={`welcome-section__curso ${abierto ? "is-open" : ""}`}
-                style={{
-                  "--curso-accent": `var(--${accent})`,
-                  "--curso-accent-bg": `var(--${accent}-bg)`,
-                }}
-              >
-                <div className="welcome-section__curso-top">
-                  <div className="welcome-section__curso-info">
-                    <span className="welcome-section__curso-nombre">
-                      {curso.nombre}
-                    </span>
+        <div className="welcome-section__intro container">
 
-                    <span className="welcome-section__curso-count">
-                      {curso.temas.length} tema
-                      {curso.temas.length !== 1 ? "s" : ""}
-                    </span>
+          <h2 className="welcome-section__title">
+            Qué encontrarás en Mi Estudio
+          </h2>
+
+          <p className="welcome-section__lead">
+            Una plataforma para preparar tus exámenes: teoría organizada por
+            temas, preguntas de práctica, repaso espaciado y un Pomodoro para
+            armar tu horario de estudio. En total hay{" "}
+            <strong>{cursosConTemas.length} cursos</strong> con{" "}
+            <strong>{totalTemas} temas</strong> disponibles.
+          </p>
+
+          <div className="welcome-section__grid">
+
+            {cursosConTemas.map((curso, i) => {
+              const abierto = cursoAbierto === i;
+
+              return (
+                <article
+                  key={curso.codigo}
+                  className={`welcome-section__curso welcome-section__curso--${i % 4} ${
+                    abierto ? "is-open" : ""
+                  }`}
+                >
+
+                  <div className="welcome-section__curso-top">
+
+                    <div className="welcome-section__curso-info">
+
+                      <span className="welcome-section__curso-nombre">
+                        {curso.nombre}
+                      </span>
+
+                      <span className="welcome-section__curso-count">
+                        {curso.temas.length} tema
+                        {curso.temas.length !== 1 ? "s" : ""}
+                      </span>
+
+                    </div>
+
+                    <p className="welcome-section__curso-desc">
+                      {DESCRIPCIONES_CURSO[curso.codigo] ||
+                        "Temario disponible para repasar."}
+                    </p>
+
                   </div>
 
-                  <p className="welcome-section__curso-desc">
-                    {DESCRIPCIONES_CURSO[curso.codigo] ||
-                      "Temario disponible para repasar."}
-                  </p>
-                </div>
+                  <button
+                    type="button"
+                    className="welcome-section__ver-btn"
+                    aria-expanded={abierto}
+                    onClick={() => alternarCurso(i)}
+                  >
+                    <span>
+                      {abierto ? "Ocultar temas" : "Ver temas"}
+                    </span>
 
-                <button
-                  type="button"
-                  className="welcome-section__ver-btn"
-                  aria-expanded={abierto}
-                  onClick={() => alternarCurso(i)}
-                >
-                  {abierto ? "Ocultar temas" : "Ver temas"}
+                    <i
+                      className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${
+                        abierto ? "is-open" : ""
+                      }`}
+                    />
+                  </button>
 
-                  <i
-                    className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${
-                      abierto ? "is-open" : ""
-                    }`}
-                  />
-                </button>
+                  {abierto && (
+                    <ul className="welcome-section__temas">
 
-                {abierto && (
-                  <ul className="welcome-section__temas">
-                    {curso.temas.map((tema) => (
-                      <li key={tema.archivo}>
-                        <button
-                          type="button"
-                          className="welcome-section__tema-btn"
-                          onClick={() => manejarClickTema(curso, tema)}
-                        >
-                          {tema.tema}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            );
-          })}
+                      {curso.temas.map((tema) => (
+                        <li key={tema.archivo}>
+
+                          <button
+                            type="button"
+                            className="welcome-section__tema-btn"
+                            onClick={() =>
+                              manejarClickTema(curso, tema)
+                            }
+                          >
+                            {tema.tema}
+                          </button>
+
+                        </li>
+                      ))}
+
+                    </ul>
+                  )}
+
+                </article>
+              );
+            })}
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* ---------------------------------------------------------
-          SECCIÓN 2: Preguntas frecuentes
-          Acordeón exclusivo controlado por el estado de React
-      --------------------------------------------------------- */}
+      {/* ======================================================
+          PREGUNTAS FRECUENTES
+          También tiene fondo a TODO el ancho.
+      ====================================================== */}
+
       <section className="welcome-section__faq">
-        <h2 className="welcome-section__title">Preguntas frecuentes</h2>
 
-        <div className="welcome-section__faq-list">
-          {FAQS.map((item, i) => (
-            <details
-              key={i}
-              className="welcome-section__faq-item"
-              open={faqAbierto === i}
-            >
-              <summary
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Alterna entre abrir este FAQ o cerrar todo
-                  setFaqAbierto(faqAbierto === i ? null : i);
-                }}
-                style={{ cursor: "pointer" }}
-              >
-                <span className="welcome-section__faq-summary-text">
-                  <i className={`fa-solid ${item.icon} welcome-section__faq-icon`} />
-                  {item.q}
-                </span>
-              </summary>
+        <div className="welcome-section__faq-inner container">
 
-              <p>{item.a}</p>
-            </details>
-          ))}
+          <h2 className="welcome-section__title">
+            Preguntas frecuentes
+          </h2>
+
+          <div className="welcome-section__faq-list">
+
+            {FAQS.map((item, i) => {
+              const abierto = faqAbierto === i;
+
+              return (
+                <details
+                  key={i}
+                  className={`welcome-section__faq-item ${
+                    abierto ? "is-open" : ""
+                  }`}
+                  open={abierto}
+                >
+
+                  <summary
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alternarFaq(i);
+                    }}
+                  >
+
+                    <span className="welcome-section__faq-summary-text">
+
+                      <i
+                        className={`fa-solid ${item.icon} welcome-section__faq-icon`}
+                      />
+
+                      <span>{item.q}</span>
+
+                    </span>
+
+                
+
+                  </summary>
+
+                  <div className="welcome-section__faq-answer">
+                    <p>{item.a}</p>
+                  </div>
+
+                </details>
+              );
+            })}
+
+          </div>
+
         </div>
+
       </section>
+
     </div>
   );
 }
