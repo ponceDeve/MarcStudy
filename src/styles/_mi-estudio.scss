@@ -1,6 +1,7 @@
 /* ============================================================
    MiEstudioPage.jsx
    ============================================================ */
+
 .mi-estudio {
   min-height: 100vh;
   background: var(--bg);
@@ -10,6 +11,7 @@
   color: var(--ink);
   overflow-x: hidden;
 }
+
 .mi-estudio__wrap {
   max-width: 56rem;
   margin: 0 auto;
@@ -20,12 +22,15 @@
   flex-direction: column;
   padding-top: 40px;
 }
+
 .mi-estudio__wrap.has-topbar {
   padding-top: 96px;
 }
+
 .mi-estudio__wrap.is-question {
   padding-top: 24px;
 }
+
 .mi-estudio__wrap.is-home {
   padding-top: 0;
   padding-bottom: 0;
@@ -38,13 +43,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Espaciado calculado en base al alto real del header (medido por
-     AppHeader vía ResizeObserver) — nunca queda pegado ni tampoco
-     centrado a mitad de pantalla. 96px de fallback por si la variable
-     aún no se midió en el primer render. */
+
+  /* Espaciado calculado en base al alto real del header */
   padding-bottom: 40px;
   box-sizing: border-box;
 }
+
 .mi-estudio__intro {
   display: flex;
   flex-direction: column;
@@ -53,12 +57,14 @@
   gap: 32px;
   width: 100%;
 }
+
 .mi-estudio__below {
   min-height: 100dvh;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .mi-estudio__intro-eyebrow {
   font-size: 13.5px;
   font-family: var(--font-body);
@@ -68,6 +74,7 @@
   text-align: center;
   margin: 0;
 }
+
 .mi-estudio__intro-title {
   font-size: 28px;
   font-weight: 700;
@@ -75,6 +82,7 @@
   text-align: center;
   color: var(--ink);
 }
+
 @media (min-width: 640px) {
   .mi-estudio__intro-title {
     font-size: 32px;
@@ -89,6 +97,7 @@
   align-items: center;
   width: 100%;
 }
+
 .mi-estudio__hud-wrap {
   margin-top: 60px;
   margin-bottom: 24px;
@@ -99,6 +108,7 @@
   display: block;
   visibility: visible;
 }
+
 .mi-estudio__explanation-wrap {
   margin-top: 16px;
   width: 100%;
@@ -106,12 +116,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .mi-estudio__theory-wrap {
   max-width: 48rem;
   margin: 0 auto;
   width: 100%;
   position: relative;
 }
+
 .mi-estudio__voz-btn {
   position: absolute;
   top: -14px;
@@ -129,32 +141,40 @@
   border: 2px solid var(--bg);
   transition: background 0.15s, transform 0.1s;
 }
+
 .mi-estudio__voz-btn.is-off {
   background: var(--danger);
 }
+
 .mi-estudio__voz-btn.is-off:hover {
   background: var(--danger-dark);
 }
+
 .mi-estudio__voz-btn.is-on {
   background: var(--success);
 }
+
 .mi-estudio__voz-btn.is-on:hover {
   background: var(--primary-dark);
 }
+
 .mi-estudio__voz-btn:active {
   transform: scale(0.94);
 }
+
 .mi-estudio__theory {
   width: 100%;
   padding: 20px 16px;
   min-height: 260px;
   position: relative;
 }
+
 @media (min-width: 640px) {
   .mi-estudio__theory {
     padding: 32px 24px;
   }
 }
+
 .mi-estudio__theory-inner {
   position: relative;
   z-index: 1;
@@ -162,6 +182,7 @@
   margin: 0 auto;
   text-align: center;
 }
+
 .mi-estudio__theory-badge {
   font-size: 14px;
   text-transform: uppercase;
@@ -176,6 +197,7 @@
   width: 100%;
   padding: 8px;
 }
+
 .mi-estudio__theory-text {
   font-size: 18px;
   line-height: 1.6;
@@ -183,11 +205,13 @@
   font-weight: 600;
   color: var(--ink);
 }
+
 @media (min-width: 640px) {
   .mi-estudio__theory-text {
     font-size: 20px;
   }
 }
+
 .mi-estudio__theory-explicacion {
   font-family: var(--font-body);
   font-size: 22px;
@@ -199,11 +223,13 @@
   padding-top: 24px;
   border-top: 1px dashed var(--border-strong);
 }
+
 @media (min-width: 640px) {
   .mi-estudio__theory-explicacion {
     font-size: 20px;
   }
 }
+
 .mi-estudio__google {
   display: flex;
   align-items: center;
@@ -213,10 +239,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .mi-estudio__google-input-wrap {
   position: relative;
   flex: 1;
 }
+
 .mi-estudio__google-input {
   width: 100%;
   background: var(--surface-alt);
@@ -227,9 +255,11 @@
   color: var(--ink);
   outline: none;
 }
+
 .mi-estudio__google-input:focus {
   border-color: var(--primary);
 }
+
 .mi-estudio__google-btn {
   position: absolute;
   right: 6px;
@@ -246,6 +276,7 @@
   cursor: pointer;
   color: var(--ink-on-primary);
 }
+
 .mi-estudio__google-btn:hover {
   background: var(--primary-dark);
 }
@@ -260,6 +291,7 @@
   max-width: 48rem;
   margin: 0 auto;
 }
+
 .mi-estudio__config-btn {
   position: absolute;
   top: 10px;
@@ -278,10 +310,12 @@
   cursor: pointer;
   box-shadow: var(--shadow-sm);
 }
+
 .mi-estudio__config-btn:active {
   border-bottom-width: 1px;
   transform: translateY(1px);
 }
+
 .mi-estudio__question-inner {
   width: 100%;
   height: 100%;
@@ -298,6 +332,7 @@
   max-width: 28rem;
   margin: 32px auto 16px;
 }
+
 .mi-estudio__nav-btn {
   width: 48px;
   height: 40px;
@@ -313,24 +348,29 @@
   border-bottom: 3px solid transparent;
   cursor: pointer;
 }
+
 .mi-estudio__nav-btn.is-active {
   background: var(--primary);
   border-bottom-color: var(--primary-dark);
   color: var(--ink-on-primary);
 }
+
 .mi-estudio__nav-btn.is-active:hover {
   background: var(--primary-light);
 }
+
 .mi-estudio__nav-btn.is-active:active {
   border-bottom-width: 0;
   transform: translateY(1px);
 }
+
 .mi-estudio__nav-btn:disabled {
   background: var(--surface-alt);
   color: var(--ink-faint);
   cursor: not-allowed;
   box-shadow: none;
 }
+
 .mi-estudio__nav-flip {
   width: 56px;
   height: 56px;
@@ -346,16 +386,20 @@
   cursor: pointer;
   box-shadow: var(--shadow-md);
 }
+
 .mi-estudio__nav-flip:hover {
   background: var(--secondary-dark);
 }
+
 .mi-estudio__nav-flip:active {
   border-bottom-width: 0;
   transform: translateY(1px);
 }
+
 .mi-estudio__nav-right {
   position: relative;
 }
+
 .mi-estudio__nav-hint {
   position: absolute;
   bottom: 100%;
@@ -377,6 +421,7 @@
   z-index: 50;
   box-shadow: var(--shadow-md);
 }
+
 .mi-estudio__nav-right:hover .mi-estudio__nav-hint {
   opacity: 1;
 }
@@ -390,19 +435,23 @@
   gap: 16px;
   text-align: center;
 }
+
 .mi-estudio__finished-emoji {
   font-size: 56px;
 }
+
 .mi-estudio__finished-title {
   font-size: 26px;
   font-weight: 800;
   color: var(--secondary-dark);
   margin: 0;
 }
+
 .mi-estudio__finished-sub {
   color: var(--ink-soft);
   margin: 0;
 }
+
 .mi-estudio__finished-btn {
   margin-top: 20px;
   padding: 14px 32px;
@@ -415,22 +464,30 @@
   cursor: pointer;
   transition: all 0.15s;
 }
+
 .mi-estudio__finished-btn:hover {
   background: var(--primary-light);
 }
+
 .mi-estudio__finished-btn:active {
   border-bottom-width: 0;
   transform: translateY(1px);
 }
+
 .mi-estudio__finished-btn.is-outline {
   background: transparent;
   border: 2px solid var(--border-strong);
   border-bottom: 2px solid var(--border-strong);
   color: var(--ink-soft);
 }
+
 .mi-estudio__finished-btn.is-outline:hover {
   background: var(--surface-hover);
 }
+
+/* ============================================================
+   CONFIGURACIÓN
+   ============================================================ */
 
 .config-overlay {
   position: fixed;
@@ -442,6 +499,7 @@
   justify-content: center;
   backdrop-filter: blur(4px);
 }
+
 .config-overlay__confirm {
   position: absolute;
   top: 40px;
@@ -452,18 +510,21 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
 }
+
 .config-overlay__row {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .config-overlay__item {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .config-overlay__btn {
   width: 56px;
   height: 56px;
@@ -479,17 +540,22 @@
   cursor: pointer;
   transition: all 0.15s;
 }
+
 .config-overlay__btn:active {
   border-bottom-width: 0;
   transform: translateY(1px);
 }
+
 .config-overlay__btn.is-armado {
   background: var(--primary);
   border-bottom-color: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-/* Avisos de vidas (3 vidas / 1 vida / game over): pantalla completa
-   en negro, sin tarjeta ni recuadro, todo centrado. */
+
+/* ============================================================
+   AVISOS DE VIDAS
+   ============================================================ */
+
 .vidas-fullscreen {
   position: fixed;
   inset: 0;
@@ -500,6 +566,7 @@
   justify-content: center;
   text-align: center;
 }
+
 .vidas-fullscreen__content {
   display: flex;
   flex-direction: column;
@@ -508,6 +575,7 @@
   width: min(340px, 90vw);
   box-sizing: border-box;
 }
+
 .vidas-fullscreen__hearts {
   display: flex;
   align-items: center;
@@ -515,43 +583,53 @@
   gap: 12px;
   font-size: 2rem;
 }
+
 .vidas-fullscreen__heart.is-full {
   color: #e74c3c;
 }
+
 .vidas-fullscreen__heart.is-a-punto {
   color: #e74c3c;
   animation: vidas-heart-shake 0.35s ease-in-out infinite;
 }
+
 .vidas-fullscreen__heart.is-roto {
   color: #7f8c8d;
   animation: vidas-heart-break-in 0.3s ease-out;
 }
+
 @keyframes vidas-heart-shake {
   0%,
   100% {
     transform: rotate(0deg);
   }
+
   25% {
     transform: rotate(-10deg);
   }
+
   75% {
     transform: rotate(10deg);
   }
 }
+
 @keyframes vidas-heart-break-in {
   0% {
     transform: scale(1.5);
     opacity: 0.3;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
   }
 }
+
 .vidas-alert {
   width: min(340px, 90vw);
   box-sizing: border-box;
 }
+
 .config-overlay__label {
   margin-top: 10px;
   font-size: 13.5px;
@@ -564,32 +642,53 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ============================================================
+   BUSCADOR DE TEORÍA
+   ============================================================ */
+
 .theory-search {
   position: relative;
   z-index: 5;
   display: flex;
   justify-content: center;
-  margin: 10px 0 0;
+  margin: 10px 0 16px;
   width: 100%;
-  margin-bottom: 16px;
+  background: transparent;
 }
+
 .theory-search__toggle-btn {
   display: none;
 }
+
 .theory-search__wrap {
   position: relative;
   width: 100%;
   max-width: 620px;
+  background: transparent;
 }
+
 .theory-search__input {
   width: 100%;
   padding: 8px 15px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
-  background: var(--surface-alt);
+  background: transparent;
   color: var(--ink);
   font-size: 18px;
+  outline: none;
+  box-sizing: border-box;
 }
+
+.theory-search__input:focus {
+  border-color: var(--primary);
+  background: transparent;
+}
+
+.theory-search__input::placeholder {
+  color: var(--ink-faint);
+}
+
+/* Lista desplegable del buscador */
 .theory-search__dropdown {
   position: absolute;
   top: calc(100% + 4px);
@@ -598,24 +697,35 @@
   z-index: 30;
   max-height: 260px;
   overflow-y: auto;
-  background: color-mix(in srgb, var(--surface) 78%, transparent);
-  backdrop-filter: blur(8px);
+
+  background: transparent;
+  backdrop-filter: none;
+
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 6px;
 }
+
 .theory-search__item {
   text-align: left;
   padding: 8px 10px;
   border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface-alt) 70%, transparent);
+  background: transparent;
   color: var(--ink);
   font-size: 13.5px;
+  border: none;
+  cursor: pointer;
 }
+
+.theory-search__item:hover {
+  background: var(--surface-hover);
+}
+
 .theory-search__item-seccion {
   display: block;
   font-size: 11px;
@@ -628,6 +738,10 @@
     max-width: 100%;
   }
 }
+
+/* ============================================================
+   ALERTA SIN PREGUNTA
+   ============================================================ */
 
 .sin-pregunta-alerta {
   display: flex;

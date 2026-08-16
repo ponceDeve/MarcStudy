@@ -66,9 +66,20 @@
     flex: 1;
   }
 }
+/* 1. Hover: Un cambio sutil solo para indicar que es clickeable */
 .question-card__opt:hover:not(:disabled) {
-  background: var(--border-strong);
-  box-shadow: 0 0 10px var(--border-strong)
+  background: var(--surface-hover); 
+  border-color: var(--border-strong);
+}
+
+/* 2. Seleccionado: Un efecto fuerte y claro que se queda fijo al hacer clic */
+.question-card__opt.is-selected {
+  border-color: var(--ink); 
+  background: var(--surface-hover); 
+  box-shadow: 0 0 0 1px var(--ink); 
+  font-weight: 600; 
+  transform: translateY(-2px); 
+  color: var(--ink); 
 }
 .question-card__opt:disabled {
   cursor: default;
