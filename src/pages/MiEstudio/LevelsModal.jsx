@@ -23,17 +23,22 @@ export default function LevelsModal({
 
   function previewNivel(i) {
     const levelData = flatPuntos[i] || {};
-    const textoBase = levelData.tema || levelData.nombre || levelData.q || levelData.textoConEspacios || "";
+    const textoBase =
+      levelData.tema ||
+      levelData.nombre ||
+      levelData.q ||
+      levelData.textoConEspacios ||
+      "";
     return textoBase || `Nivel ${i + 1}`;
   }
 
-  // Compara dónde empezó el toque (pointerdown) contra dónde terminó
-  // (click) para distinguir un tap real de un scroll/arrastre.
   function fueArrastre(e) {
     const inicio = puntoInicioToque.current;
     if (!inicio) return false;
+
     const dx = e.clientX - inicio.x;
     const dy = e.clientY - inicio.y;
+
     return Math.sqrt(dx * dx + dy * dy) > UMBRAL_ARRASTRE;
   }
 
@@ -44,17 +49,25 @@ export default function LevelsModal({
   }
 
   const indices = Array.from({ length: total }, (_, i) => i);
+
   const indicesFiltrados = busqueda.trim()
     ? buscarConPuntaje(indices, busqueda, (i) => previewNivel(i))
     : indices;
 
   return (
     <div className="levels-modal" onClick={onClose}>
-      <div className="levels-modal__inner" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="levels-modal__inner"
+        onClick={(e) => e.stopPropagation()}
+      >
         <h2 className="levels-modal__title">Seleccionar Nivel</h2>
 
-        <div className="home-search levels-modal__search" onClick={(e) => e.stopPropagation()}>
-          <input autoComplete="off"
+        <div
+          className="home-search levels-modal__search"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <input
+            autoComplete="off"
             type="search"
             name="buscar-nivel"
             value={busqueda}
@@ -67,21 +80,28 @@ export default function LevelsModal({
         <div className="levels-modal__grid">
           {indicesFiltrados.map((i) => {
             const locked = i > maxUnlocked;
-            const isCurrent = i === current;
+            const isSelected = i === current;
 
             return (
               <div key={i} className="level-cell">
                 <button
                   disabled={locked}
                   onPointerDown={(e) => {
-                    puntoInicioToque.current = { x: e.clientX, y: e.clientY };
+                    puntoInicioToque.current = {
+                      x: e.clientX,
+                      y: e.clientY,
+                    };
                   }}
                   onClick={(e) => {
                     e.stopPropagation();
+
                     if (fueArrastre(e)) return;
+
                     seleccionar(i, locked);
                   }}
-                  className={`level-btn ${isCurrent ? "is-current" : ""}`}
+                  className={`level-btn ${
+                    isSelected ? "is-selected" : ""
+                  }`}
                 >
                   {locked ? <i className="fas fa-lock" /> : i + 1}
                 </button>

@@ -241,27 +241,6 @@ export default function ScheduleEditor() {
         <div className="editor-card">
           <div className="editor-header">
             <h2 className="editor-titulo">Editar Horario</h2>
-            <div className="editor-header-nav">
-              <button className="editor-nav-btn" onClick={() => intentarIrA("/")} title="Ir a Mi Estudio">
-                <i className="fa-solid fa-house" />
-              </button>
-              
-              <button className="editor-nav-btn" onClick={() => intentarIrA("/pomodoro")} title="Ir al Pomodoro">
-                <i className="fa-solid fa-calendar-alt" />
-              </button>
-
-              <button className="editor-nav-btn" onClick={() => intentarIrA("/repaso")} title="Ir a Mis Repasos">
-                <i className="fa-solid fa-brain" />
-              </button>
-              <button 
-                className="editor-cerrar" 
-                onClick={intentarCerrar} 
-                title="Cerrar (Esc)"
-                aria-label="Cerrar"
-              >
-                <i className="fa-solid fa-times" />
-              </button>
-            </div>
           </div>
 
           <div className="editor-tabs">
@@ -270,7 +249,7 @@ export default function ScheduleEditor() {
                 key={dia}
                 className={`editor-tab-btn ${diaActivo === dia ? "is-active" : ""}`}
                 onClick={() => cambiarDia(dia)}
-                title={`Ver ${DIA_LABELS[dia]} (Alt + ⬅️/➡️)`}
+                title={`Ver ${DIA_LABELS[dia]}`}
               >
                 {DIA_LABELS[dia].substring(0, 3)}
               </button>

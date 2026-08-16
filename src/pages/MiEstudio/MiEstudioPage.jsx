@@ -58,7 +58,6 @@ function agruparResultados({ cursos, temas }) {
       archivo: t.archivo,
     })),
   }));
-
   const temasPorCurso = new Map();
   for (const t of temas) {
     if (nombresCursosFuertes.has(t.curso)) continue;
@@ -68,7 +67,6 @@ function agruparResultados({ cursos, temas }) {
   for (const [curso, temasDelCurso] of temasPorCurso) {
     grupos.push({ curso, temas: temasDelCurso });
   }
-
   return grupos;
 }
 
@@ -102,18 +100,14 @@ function obtenerVocesListas() {
 function useLecturaTeoriaVoz(texto, activo) {
   useEffect(() => {
     if (!activo || !texto || !("speechSynthesis" in window)) return;
-
     let cancelado = false;
     window.speechSynthesis.cancel();
-
     obtenerVocesListas().then((voces) => {
       if (cancelado) return;
-
       const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
       utter.lang = "es-PE";
       utter.pitch = 0.55;
       utter.rate = 0.92;
-
       const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
       const vozGrave =
         voces.find(
@@ -122,10 +116,8 @@ function useLecturaTeoriaVoz(texto, activo) {
             nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n)),
         ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
       if (vozGrave) utter.voice = vozGrave;
-
       window.speechSynthesis.speak(utter);
     });
-
     return () => {
       cancelado = true;
       if (window.speechSynthesis) window.speechSynthesis.cancel();
@@ -146,11 +138,8 @@ export default function MiEstudioPage() {
   const [maxUnlocked, setMaxUnlocked] = useState(0);
   const [stage, setStage] = useState("theory");
   const [isLevelMode, setIsLevelMode] = useState(false);
-
-  // El footer global no debe verse mientras se está estudiando (teoría
-  // o preguntas de un tema abierto); en el menú inicial y en cualquier
-  // otra pantalla sí se muestra normalmente.
   const { setFooterHidden } = useFooterVisibility();
+
   useEffect(() => {
     const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
     setFooterHidden(ocultar);
@@ -158,7 +147,6 @@ export default function MiEstudioPage() {
   }, [topicData, stage, setFooterHidden]);
 
   const [countdown, setCountdown] = useState(0);
-
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
   const vidaPerderRef = useRef(null);
@@ -176,6 +164,7 @@ export default function MiEstudioPage() {
   }, [alertaVidas]);
 
   const [corazonRoto, setCorazonRoto] = useState(false);
+
   useEffect(() => {
     if (!alertaVidas) {
       setCorazonRoto(false);
@@ -210,24 +199,19 @@ export default function MiEstudioPage() {
   const [nivelIndex, setNivelIndex] = useState(0);
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
   const [nivelCompletions, setNivelCompletions] = useState({});
-
   const [ultimoFlipIndex, setUltimoFlipIndex] = useState(0);
   const [isFlipQuiz, setIsFlipQuiz] = useState(false);
   const [quizBatch, setQuizBatch] = useState([]);
   const [quizPos, setQuizPos] = useState(0);
-
   const [preguntasVistas, setPreguntasVistas] = useState({});
   const [seenQuestionsOpen, setSeenQuestionsOpen] = useState(false);
-
   const [repasoQuizActivo, setRepasoQuizActivo] = useState(false);
   const [repasoQuizBatch, setRepasoQuizBatch] = useState([]);
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
   const [repasoDesdeTeoria, setRepasoDesdeTeoria] = useState(false);
-
   const [searchOpen, setSearchOpen] = useState(false);
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
-
   const [score, setScore] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
   const [questionResult, setQuestionResult] = useState(null);
@@ -235,34 +219,26 @@ export default function MiEstudioPage() {
   const [googleQuery, setGoogleQuery] = useState("");
   const [levelCompletions, setLevelCompletions] = useState({});
   const [isFullscreen, setIsFullscreen] = useState(false);
-
   const [configOpen, setConfigOpen] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
-
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
   const [modoEstudio, setModoEstudio] = useState("completo");
-
   const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] = useState(false);
   const [pomodoroAlarmaLabel, setPomodoroAlarmaLabel] = useState("");
   const pomodoroAlertadoRef = useRef(null);
 
   useEffect(() => {
     const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000;
-
     const intervalo = setInterval(() => {
       const estado = leerPomodoroCompartido();
       if (!estado || !estado.running) return;
-
       const msDesdeQueTermino = Date.now() - estado.endTimestamp;
       if (msDesdeQueTermino < 0) return;
-
       if (msDesdeQueTermino > UMBRAL_AVISO_VENCIDO_MS) {
         limpiarPomodoroCompartido();
         return;
       }
-
       if (pomodoroAlertadoRef.current !== estado.endTimestamp) {
         pomodoroAlertadoRef.current = estado.endTimestamp;
         setPomodoroAlarmaLabel(estado.label || "");
@@ -305,14 +281,11 @@ export default function MiEstudioPage() {
   }, []);
 
   const hayQuery = query.trim() !== "";
-
   const fuertes = useMemo(() => {
     if (!hayQuery) return { cursos: [], temas: [] };
     return buscarFuertes(query);
   }, [query, hayQuery]);
-
   const grupos = useMemo(() => agruparResultados(fuertes), [fuertes]);
-
   const itemsPlanos = useMemo(
     () => grupos.flatMap((g) => [{ type: "curso", nombre: g.curso }, ...g.temas]),
     [grupos],
@@ -323,8 +296,7 @@ export default function MiEstudioPage() {
       setIsFullscreen(!!document.fullscreenElement);
     }
     document.addEventListener("fullscreenchange", onFullscreenChange);
-    return () =>
-      document.removeEventListener("fullscreenchange", onFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
 
   useEffect(() => {
@@ -339,7 +311,6 @@ export default function MiEstudioPage() {
     };
   }, [stage, countdown]);
 
-  // NUEVO EFFECT: Guardar el progreso de la tarjeta automáticamente en localStorage
   useEffect(() => {
     if (topicData) {
       localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex.toString());
@@ -351,10 +322,8 @@ export default function MiEstudioPage() {
       document.documentElement.requestFullscreen().catch((err) => {
         console.error("Error al entrar en pantalla completa:", err);
       });
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
     }
   }
 
@@ -369,50 +338,26 @@ export default function MiEstudioPage() {
         seccion.puntos.map((p) => ({ ...p, seccionTitulo: seccion.titulo })),
       );
       const examenList = data.examen || [];
-
       const storageCompletionsKey = `completions_${item.curso}_${item.tema}`;
-      const storedCompletions = JSON.parse(
-        localStorage.getItem(storageCompletionsKey) || "{}",
-      );
+      const storedCompletions = JSON.parse(localStorage.getItem(storageCompletionsKey) || "{}");
       setLevelCompletions(storedCompletions);
-
       const storageMaxUnlKey = `maxUnlocked_${item.curso}_${item.tema}`;
-      const storedMax = parseInt(
-        localStorage.getItem(storageMaxUnlKey) || "0",
-        10,
-      );
+      const storedMax = parseInt(localStorage.getItem(storageMaxUnlKey) || "0", 10);
       setMaxUnlocked(storedMax);
-
       const storageNivelCompletionsKey = `examenCompletions_${item.curso}_${item.tema}`;
-      const storedNivelCompletions = JSON.parse(
-        localStorage.getItem(storageNivelCompletionsKey) || "{}",
-      );
+      const storedNivelCompletions = JSON.parse(localStorage.getItem(storageNivelCompletionsKey) || "{}");
       setNivelCompletions(storedNivelCompletions);
-
       const storageNivelMaxKey = `examenMaxUnlocked_${item.curso}_${item.tema}`;
-      const storedNivelMax = parseInt(
-        localStorage.getItem(storageNivelMaxKey) || "0",
-        10,
-      );
+      const storedNivelMax = parseInt(localStorage.getItem(storageNivelMaxKey) || "0", 10);
       setNivelMaxUnlocked(storedNivelMax);
       setExamenPreguntas(examenList);
       setNivelIndex(0);
-
-      // MODIFICACIÓN: Leer la última card visitada desde localStorage
       const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
       let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
-
-      // Validación: Si el JSON cambió y el número guardado supera la cantidad de puntos, lo regresamos a 0
-      if (cardInicial >= puntos.length) {
-        cardInicial = 0;
-      }
-
+      if (cardInicial >= puntos.length) cardInicial = 0;
       const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
-      const storedPreguntasVistas = JSON.parse(
-        localStorage.getItem(storagePreguntasVistasKey) || "{}",
-      );
+      const storedPreguntasVistas = JSON.parse(localStorage.getItem(storagePreguntasVistasKey) || "{}");
       setPreguntasVistas(storedPreguntasVistas);
-
       setTopicData({
         ...data,
         curso: item.curso,
@@ -420,8 +365,6 @@ export default function MiEstudioPage() {
         archivo: item.archivo,
       });
       setFlatPuntos(puntos);
-
-      // Inicializar en la card recuperada en lugar de siempre en 0
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
       setIsFlipQuiz(false);
@@ -439,11 +382,9 @@ export default function MiEstudioPage() {
       setQuery("");
       setSearchOpen(false);
       setCountdown(0);
-
       setVidas(5);
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
-
       setPreguntaModoAbierta(true);
     } catch (e) {
       console.error("Error en abrirTema:", e);
@@ -486,24 +427,19 @@ export default function MiEstudioPage() {
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
   useEffect(() => {
     const q = searchParams.get("q");
     if (!q) return;
     const qNorm = normalizarTexto(q);
-
     const temaMatch = OPCIONES_BUSQUEDA.find(
       (item) => item.type === "tema" && normalizarTexto(item.tema) === qNorm,
     );
     const cursoMatch = OPCIONES_BUSQUEDA.find(
       (item) => item.type === "curso" && normalizarTexto(item.nombre) === qNorm,
     );
-
-    if (temaMatch) {
-      seleccionarItem(temaMatch);
-    } else if (cursoMatch) {
-      seleccionarItem(cursoMatch);
-    }
-
+    if (temaMatch) seleccionarItem(temaMatch);
+    else if (cursoMatch) seleccionarItem(cursoMatch);
     window.history.replaceState(null, "", window.location.pathname);
   }, []);
 
@@ -513,14 +449,11 @@ export default function MiEstudioPage() {
   function toggleStage() {
     setIsLevelMode(false);
     if (stage === "theory") {
-      // Al voltear, solo debe salir la pregunta de ESTA tarjeta de
-      // teoría (cardIndex), nunca un lote acumulado de varias tarjetas.
       const pregunta = examenPreguntas[cardIndex] || null;
       if (!pregunta) {
         setSinPreguntaAlerta(true);
         return;
       }
-
       setQuizBatch([{ puntoIndex: cardIndex, pregunta }]);
       setQuizPos(0);
       setIsFlipQuiz(true);
@@ -544,10 +477,6 @@ export default function MiEstudioPage() {
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
       } else {
-        // Se respondió la última pregunta vista: cerrar el repaso y
-        // volver a donde estaba (reinicia para la próxima vez que se
-        // abra, porque verPreguntasVistas() siempre arma el lote de
-        // nuevo desde cero).
         salirDeRepaso();
       }
       return;
@@ -694,11 +623,9 @@ export default function MiEstudioPage() {
       subject: topicData.curso,
       tema: topicData.tema,
     });
-
     repasoGuardadoTimers.current.forEach(clearTimeout);
     setRepasoGuardadoSaliendo(false);
     setRepasoGuardadoMsg(true);
-
     repasoGuardadoTimers.current = [
       setTimeout(() => setRepasoGuardadoSaliendo(true), 1800),
       setTimeout(() => {
@@ -710,20 +637,17 @@ export default function MiEstudioPage() {
 
   function gameOver() {
     if (!topicData) return;
-
     localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
-
     setLevelCompletions({});
     setMaxUnlocked(0);
     setNivelCompletions({});
     setNivelMaxUnlocked(0);
     setCardIndex(0);
     setNivelIndex(0);
-
     setStage("theory");
     setIsLevelMode(false);
     setScore(0);
@@ -735,10 +659,8 @@ export default function MiEstudioPage() {
 
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto });
-
     let vistaKey = null;
     let vistaPregunta = null;
-
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
@@ -755,7 +677,6 @@ export default function MiEstudioPage() {
       vistaKey = `pt-${cardIndex}`;
       vistaPregunta = flatPuntos[cardIndex]?.pregunta || null;
     }
-
     if (vistaKey && vistaPregunta && topicData) {
       setPreguntasVistas((prev) => {
         if (prev[vistaKey]) return prev;
@@ -767,10 +688,8 @@ export default function MiEstudioPage() {
         return next;
       });
     }
-
     if (correcto) {
       setScore((s) => s + 1);
-
       if (isLevelMode) {
         setNivelCompletions((prev) => {
           const newCompletions = { ...prev, [nivelIndex]: (prev[nivelIndex] || 0) + 1 };
@@ -782,7 +701,6 @@ export default function MiEstudioPage() {
           }
           return newCompletions;
         });
-
         setNivelMaxUnlocked((m) => {
           const nextMax = nivelIndex === m ? m + 1 : m;
           if (topicData) {
@@ -801,7 +719,6 @@ export default function MiEstudioPage() {
           }
           return newCompletions;
         });
-
         setMaxUnlocked((m) => {
           const nextMax = cardIndex === m ? m + 1 : m;
           if (topicData) {
@@ -812,10 +729,8 @@ export default function MiEstudioPage() {
       }
     } else {
       setWrongCount((w) => w + 1);
-
       setVidas((prevVidas) => {
         const nuevasVidas = prevVidas - 1;
-
         if (nuevasVidas === 3) {
           setAlertaVidas("tres");
         } else if (nuevasVidas === 1) {
@@ -824,16 +739,14 @@ export default function MiEstudioPage() {
           setAlertaVidas("cero");
           if (ceroVidasRef.current) {
             ceroVidasRef.current.currentTime = 0;
-            ceroVidasRef.current.play().catch(() => { });
+            ceroVidasRef.current.play().catch(() => {});
           }
           gameOver();
         }
-
         if (nuevasVidas > 0 && vidaPerderRef.current) {
           vidaPerderRef.current.currentTime = 0;
-          vidaPerderRef.current.play().catch(() => { });
+          vidaPerderRef.current.play().catch(() => {});
         }
-
         return nuevasVidas;
       });
     }
@@ -866,7 +779,6 @@ export default function MiEstudioPage() {
         return pregunta ? { key, pregunta } : null;
       })
       .filter(Boolean);
-
     if (lote.length === 0) {
       sinPreguntaTimers.current.forEach(clearTimeout);
       setSinPreguntaSaliendo(false);
@@ -880,13 +792,11 @@ export default function MiEstudioPage() {
       ];
       return;
     }
-
     setRepasoQuizBatch(shuffle(lote));
     setRepasoQuizPos(0);
     setRepasoQuizActivo(true);
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
-
     if (stage !== "question") {
       setRepasoDesdeTeoria(true);
       setStage("question");
@@ -924,11 +834,8 @@ export default function MiEstudioPage() {
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-
-  // Lectura de voz manual: el usuario la enciende con un botón dentro
-  // de la teoría. Se mantiene activa mientras avanza dentro del MISMO
-  // tema, pero se apaga sola al cambiar de tema.
   const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
+
   useEffect(() => {
     setLecturaTeoriaOn(false);
   }, [topicData?.tema, topicData?.curso]);
@@ -960,9 +867,7 @@ export default function MiEstudioPage() {
       const tagActivo = document.activeElement && document.activeElement.tagName;
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (searchOpen || configOpen || temasOpen || !topicData) return;
-
       if (stage === "question" && countdown > 0) return;
-
       if (e.key === "Enter") {
         if (stage === "theory" && !isLevelMode) {
           e.preventDefault();
@@ -985,7 +890,6 @@ export default function MiEstudioPage() {
         if (canAdvance) avanzarCard();
       }
     }
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [stage, questionResult, searchOpen, configOpen, temasOpen, topicData, cardIndex, flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance, isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden, isFlipQuiz, quizBatch, quizPos, repasoQuizActivo, repasoQuizBatch, repasoQuizPos]);
@@ -1022,7 +926,6 @@ export default function MiEstudioPage() {
           limpiarPomodoroCompartido();
         }}
       />
-
       {topicData && (
         <TopBar
           stage={stage}
@@ -1041,22 +944,17 @@ export default function MiEstudioPage() {
           onSalirDeRepaso={salirDeRepaso}
         />
       )}
-
       {repasoGuardadoMsg && (
         <div className={`repaso-toast is-success${repasoGuardadoSaliendo ? " is-saliendo" : ""}`}>
           <i className="fas fa-bookmark" /> Guardado para repasar
         </div>
       )}
-
       {sinPreguntaAlerta && (
         <div className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo ? " is-saliendo" : ""}`}>
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
-            <span>
-              No hay preguntas de "{topicData?.tema || "este tema"}"
-            </span>
+            <span>No hay preguntas de "{topicData?.tema || "este tema"}"</span>
           </div>
-
           <button
             type="button"
             className="sin-pregunta-alerta__close"
@@ -1072,9 +970,7 @@ export default function MiEstudioPage() {
           </button>
         </div>
       )}
-
       <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
-
       {configOpen && (
         <div className="config-overlay">
           {confirmLeave && (
@@ -1096,11 +992,8 @@ export default function MiEstudioPage() {
               >
                 <i className="fas fa-play" />
               </button>
-              {botonArmado === "continuar" && (
-                <span className="config-overlay__label">Continuar</span>
-              )}
+              {botonArmado === "continuar" && <span className="config-overlay__label">Continuar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("pantalla", toggleFullscreen)}
@@ -1109,12 +1002,9 @@ export default function MiEstudioPage() {
                 <i className={`fas ${isFullscreen ? "fa-compress" : "fa-expand"}`} />
               </button>
               {botonArmado === "pantalla" && (
-                <span className="config-overlay__label">
-                  {isFullscreen ? "Minimizar" : "Pantalla Completa"}
-                </span>
+                <span className="config-overlay__label">{isFullscreen ? "Minimizar" : "Pantalla Completa"}</span>
               )}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("repasar", verPreguntasVistas)}
@@ -1122,11 +1012,8 @@ export default function MiEstudioPage() {
               >
                 <i className="fas fa-list-check" />
               </button>
-              {botonArmado === "repasar" && (
-                <span className="config-overlay__label">Repasar</span>
-              )}
+              {botonArmado === "repasar" && <span className="config-overlay__label">Repasar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => {
@@ -1139,7 +1026,6 @@ export default function MiEstudioPage() {
               </button>
               {confirmLeave && <span className="config-overlay__label">Abandonar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("reiniciar", reiniciarTarjetas)}
@@ -1147,14 +1033,11 @@ export default function MiEstudioPage() {
               >
                 <i className="fas fa-rotate-left" />
               </button>
-              {botonArmado === "reiniciar" && (
-                <span className="config-overlay__label">Reiniciar</span>
-              )}
+              {botonArmado === "reiniciar" && <span className="config-overlay__label">Reiniciar</span>}
             </div>
           </div>
         </div>
       )}
-
       <div className={wrapClass}>
         {!topicData && (
           <>
@@ -1175,7 +1058,8 @@ export default function MiEstudioPage() {
                 </div>
                 <div className="home-search">
                   <div className="search-input-row">
-                    <input autoComplete="off"
+                    <input
+                      autoComplete="off"
                       type="search"
                       name="buscar-inicio"
                       value={query}
@@ -1217,7 +1101,7 @@ export default function MiEstudioPage() {
                         {grupos.map((g) => {
                           const idxCurso = ++idx;
                           return (
-                            <div key={`grupo-${g.curso}`} className="">
+                            <div key={`grupo-${g.curso}`}>
                               <button
                                 onMouseDown={(e) => {
                                   e.preventDefault();
@@ -1256,13 +1140,11 @@ export default function MiEstudioPage() {
                 </div>
               </div>
             </div>
-
             <div className="mi-estudio__below">
               <WelcomeSection onSelectTema={seleccionarItem} />
             </div>
           </>
         )}
-
         {topicData && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage container">
             {stage === "question" && (
@@ -1276,7 +1158,6 @@ export default function MiEstudioPage() {
                 />
               </div>
             )}
-
             {stage === "theory" && current && (
               <TheorySearchBar
                 flatPuntos={flatPuntos}
@@ -1287,7 +1168,6 @@ export default function MiEstudioPage() {
                 }}
               />
             )}
-
             {stage === "theory" && current && (
               <div className="mi-estudio__theory-wrap">
                 <button
@@ -1302,22 +1182,19 @@ export default function MiEstudioPage() {
                 <div className="arcade-game-container mi-estudio__theory">
                   <div className="arcade-grid" />
                   <div className="mi-estudio__theory-inner">
-                    <p className="mi-estudio__theory-badge">
-                      {current.seccionTitulo}
-                    </p>
+                    <p className="mi-estudio__theory-badge">{current.seccionTitulo}</p>
                     <p className="mi-estudio__theory-text">
                       <GlossaryText text={current.texto} glosario={topicData?.glosario} />
                     </p>
-
                     {current.explicacion && (
                       <div className="mi-estudio__theory-explicacion">
                         <GlossaryText text={current.explicacion} glosario={topicData?.glosario} />
                       </div>
                     )}
-
                     <div className="mi-estudio__google">
                       <div className="mi-estudio__google-input-wrap">
-                        <input autoComplete="off"
+                        <input
+                          autoComplete="off"
                           type="search"
                           name="buscar-google"
                           value={googleQuery}
@@ -1335,7 +1212,6 @@ export default function MiEstudioPage() {
                 </div>
               </div>
             )}
-
             {stage === "question" && (
               <div className="mi-estudio__question-stage">
                 {countdown > 0 ? (
@@ -1363,7 +1239,6 @@ export default function MiEstudioPage() {
                 )}
               </div>
             )}
-
             <div className="mi-estudio__nav">
               <button
                 onClick={retrocederCard}
@@ -1373,13 +1248,11 @@ export default function MiEstudioPage() {
               >
                 <i className="fas fa-caret-left" />
               </button>
-
               {!isLevelMode && modoEstudio !== "solo_preguntas" && (
                 <button onClick={toggleStage} className="mi-estudio__nav-flip" title="Voltear Tarjeta">
                   <i className="fas fa-sync-alt" />
                 </button>
               )}
-
               <div className="mi-estudio__nav-right">
                 {(() => {
                   const esUltimo = repasoQuizActivo
@@ -1404,45 +1277,36 @@ export default function MiEstudioPage() {
                           <i className="fas fa-caret-right" />
                         )}
                       </button>
-
                       {!canAdvance && !esUltimo && (
-                        <span className="mi-estudio__nav-hint">
-                          ¡Supera la pregunta para avanzar!
-                        </span>
+                        <span className="mi-estudio__nav-hint">¡Supera la pregunta para avanzar!</span>
                       )}
                     </>
                   );
                 })()}
               </div>
             </div>
-
             <div className="mi-estudio__pdf-buttons">
               <button
                 type="button"
                 className="mi-estudio__pdf-btn"
                 onClick={() => {
                   if (!topicData?.archivo) return;
-
                   const pdfRelativo = topicData.archivo
-                    .replace(/temas\//i, "PDFs/")
+                    .replace(/^temas\//i, "PDFs/")
                     .replace(/\.json$/i, ".pdf");
-
-                  const rutaPdf = import.meta.env.BASE_URL + pdfRelativo;
-
-                  window.open(rutaPdf, "_blank");
+                  const rutaPdf = `${window.location.origin}${import.meta.env.BASE_URL}${pdfRelativo}`;
+                  window.open(rutaPdf, "_blank", "noopener,noreferrer");
                 }}
               >
                 <i className="fas fa-file-pdf" />
                 Ver PDF
               </button>
-
               <a
                 href={
                   topicData?.archivo
-                    ? import.meta.env.BASE_URL +
-                    topicData.archivo
-                      .replace(/temas\//i, "PDFs/")
-                      .replace(/\.json$/i, ".pdf")
+                    ? `${import.meta.env.BASE_URL}${topicData.archivo
+                        .replace(/^temas\//i, "PDFs/")
+                        .replace(/\.json$/i, ".pdf")}`
                     : "#"
                 }
                 download
@@ -1452,7 +1316,6 @@ export default function MiEstudioPage() {
                 Descargar PDF
               </a>
             </div>
-
             {stage === "question" && questionResult && (
               <div className="mi-estudio__explanation-wrap">
                 <ExplanationPanel
@@ -1465,29 +1328,18 @@ export default function MiEstudioPage() {
             )}
           </div>
         )}
-
         {stage === "finished" && (
           <div className="mi-estudio__finished">
             {confirmGuardarRepasoFinal ? (
               <>
                 <div className="mi-estudio__finished-emoji animate-bounce"><i className="fas fa-thumbtack" /></div>
                 <h2 className="mi-estudio__finished-title">¿Guardar este tema en tus repasos?</h2>
-                <p className="mi-estudio__finished-sub">
-                  Así te va a aparecer en la sección de Repasos para reforzarlo más adelante.
-                </p>
+                <p className="mi-estudio__finished-sub">Así te va a aparecer en la sección de Repasos para reforzarlo más adelante.</p>
                 <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
-                  <button
-                    onClick={() => confirmarGuardarRepasoFinal(true)}
-                    className="mi-estudio__finished-btn"
-                    style={{ marginTop: 0 }}
-                  >
+                  <button onClick={() => confirmarGuardarRepasoFinal(true)} className="mi-estudio__finished-btn" style={{ marginTop: 0 }}>
                     Sí, guardar
                   </button>
-                  <button
-                    onClick={() => confirmarGuardarRepasoFinal(false)}
-                    className="mi-estudio__finished-btn is-outline"
-                    style={{ marginTop: 0 }}
-                  >
+                  <button onClick={() => confirmarGuardarRepasoFinal(false)} className="mi-estudio__finished-btn is-outline" style={{ marginTop: 0 }}>
                     No, gracias
                   </button>
                 </div>
@@ -1507,7 +1359,6 @@ export default function MiEstudioPage() {
           </div>
         )}
       </div>
-
       {topicData && (
         <SeenQuestionsModal
           open={seenQuestionsOpen}
@@ -1516,9 +1367,7 @@ export default function MiEstudioPage() {
           flatPuntos={flatPuntos}
         />
       )}
-
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
-
       {nombreCursoActivo && (
         <TopicsModal
           open={temasOpen}
@@ -1535,11 +1384,9 @@ export default function MiEstudioPage() {
           }}
         />
       )}
-
       <audio ref={vidaPerderRef} src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`} preload="auto" />
       <audio ref={ceroVidasRef} src={`${import.meta.env.BASE_URL}sonidos/cero-vidas.mp3`} preload="auto" />
       <audio ref={alertaNotificacionRef} src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`} preload="auto" />
-
       {alertaVidas === "tres" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
@@ -1549,7 +1396,6 @@ export default function MiEstudioPage() {
           </div>
         </div>
       )}
-
       {alertaVidas === "una" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
@@ -1559,7 +1405,6 @@ export default function MiEstudioPage() {
           </div>
         </div>
       )}
-
       {alertaVidas === "cero" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">

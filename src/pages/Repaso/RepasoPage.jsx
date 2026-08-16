@@ -217,7 +217,7 @@ export default function RepasoPage() {
                     className="repaso__item-link"
                   >
                     <i className="bi bi-book" />
-                    Repasar en Mi Estudio
+                    Repasar
                   </button>
                 </div>
 
