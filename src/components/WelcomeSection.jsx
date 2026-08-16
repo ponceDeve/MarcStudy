@@ -198,22 +198,17 @@ export default function WelcomeSection({ onSelectTema }) {
           </p>
 
           <div className="welcome-section__grid">
-
             {cursosConTemas.map((curso, i) => {
               const abierto = cursoAbierto === i;
 
               return (
                 <article
                   key={curso.codigo}
-                  className={`welcome-section__curso welcome-section__curso--${i % 4} ${
-                    abierto ? "is-open" : ""
-                  }`}
+                  className={`welcome-section__curso welcome-section__curso--${i % 4} ${abierto ? "is-open" : ""
+                    }`}
                 >
-
                   <div className="welcome-section__curso-top">
-
                     <div className="welcome-section__curso-info">
-
                       <span className="welcome-section__curso-nombre">
                         {curso.nombre}
                       </span>
@@ -222,14 +217,12 @@ export default function WelcomeSection({ onSelectTema }) {
                         {curso.temas.length} tema
                         {curso.temas.length !== 1 ? "s" : ""}
                       </span>
-
                     </div>
 
                     <p className="welcome-section__curso-desc">
                       {DESCRIPCIONES_CURSO[curso.codigo] ||
                         "Temario disponible para repasar."}
                     </p>
-
                   </div>
 
                   <button
@@ -238,43 +231,32 @@ export default function WelcomeSection({ onSelectTema }) {
                     aria-expanded={abierto}
                     onClick={() => alternarCurso(i)}
                   >
-                    <span>
-                      {abierto ? "Ocultar temas" : "Ver temas"}
-                    </span>
+                    <span>{abierto ? "Ocultar temas" : "Ver temas"}</span>
 
                     <i
-                      className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${
-                        abierto ? "is-open" : ""
-                      }`}
+                      className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon ${abierto ? "is-open" : ""
+                        }`}
                     />
                   </button>
 
                   {abierto && (
                     <ul className="welcome-section__temas">
-
                       {curso.temas.map((tema) => (
                         <li key={tema.archivo}>
-
                           <button
                             type="button"
                             className="welcome-section__tema-btn"
-                            onClick={() =>
-                              manejarClickTema(curso, tema)
-                            }
+                            onClick={() => manejarClickTema(curso, tema)}
                           >
                             {tema.tema}
                           </button>
-
                         </li>
                       ))}
-
                     </ul>
                   )}
-
                 </article>
               );
             })}
-
           </div>
 
         </div>
@@ -302,9 +284,8 @@ export default function WelcomeSection({ onSelectTema }) {
               return (
                 <details
                   key={i}
-                  className={`welcome-section__faq-item ${
-                    abierto ? "is-open" : ""
-                  }`}
+                  className={`welcome-section__faq-item ${abierto ? "is-open" : ""
+                    }`}
                   open={abierto}
                 >
 
@@ -325,7 +306,7 @@ export default function WelcomeSection({ onSelectTema }) {
 
                     </span>
 
-                
+
 
                   </summary>
 

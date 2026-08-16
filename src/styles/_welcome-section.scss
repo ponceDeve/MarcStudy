@@ -55,35 +55,50 @@
   }
 }
 
+/* ============================================================
+   GRID DE CURSOS
+   ============================================================ */
+
 .welcome-section__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  align-items: start;
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
 }
 
 @media (min-width: 480px) {
   .welcome-section__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 992px) {
   .welcome-section__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
   }
 }
+
+/* ============================================================
+   TARJETA DEL CURSO
+   ============================================================ */
 
 .welcome-section__curso {
   --curso-bg: color-mix(in srgb, var(--warning) 32%, var(--bg));
 
   position: relative;
   z-index: 1;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
   border: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
   border-top: 5px solid color-mix(in srgb, var(--accent), transparent 65%);
   border-radius: 14px;
   background: var(--curso-bg);
+
   transition:
     border-color .25s ease,
     box-shadow .25s ease,
@@ -106,8 +121,13 @@
   transform: none;
 }
 
+/* ============================================================
+   CONTENIDO DE LA TARJETA
+   ============================================================ */
+
 .welcome-section__curso-top {
   padding: 16px 16px 4px;
+  flex: 1;
 }
 
 @media (min-width: 640px) {
@@ -157,21 +177,33 @@
   }
 }
 
+/* ============================================================
+   BOTÓN VER TEMAS
+   ============================================================ */
+
 .welcome-section__ver-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+
   width: calc(100% - 32px);
-  margin: 14px 16px 16px;
+
+  margin: auto 16px 16px;
+
   padding: 9px 12px;
+
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
+
   background: transparent;
   color: var(--primary);
+
   font-weight: 600;
   font-size: .86rem;
+
   cursor: pointer;
+
   transition:
     background .2s ease,
     border-color .2s ease,
@@ -181,7 +213,7 @@
 @media (min-width: 640px) {
   .welcome-section__ver-btn {
     width: calc(100% - 44px);
-    margin: 16px 22px 22px;
+    margin: auto 22px 22px;
   }
 }
 
@@ -203,20 +235,31 @@
   transform: rotate(180deg);
 }
 
+/* ============================================================
+   LISTA DE TEMAS
+   ============================================================ */
+
 .welcome-section__temas {
   position: absolute;
   top: 100%;
   left: -1px;
   right: -1px;
+
   list-style: none;
+
   margin: 0;
   padding: 6px;
+
   max-height: 260px;
   overflow-y: auto;
+
   background: var(--curso-bg);
+
   border: 1px solid var(--accent);
   border-top: none;
+
   border-radius: 0 0 14px 14px;
+
   animation: temasEntrada .25s ease-out;
   transform-origin: top;
 }
@@ -240,6 +283,10 @@
   }
 }
 
+/* ============================================================
+   SCROLLBAR DE TEMAS
+   ============================================================ */
+
 .welcome-section__temas::-webkit-scrollbar {
   width: 6px;
 }
@@ -253,16 +300,27 @@
   border-radius: 3px;
 }
 
+/* ============================================================
+   BOTONES DE TEMAS
+   ============================================================ */
+
 .welcome-section__tema-btn {
   width: 100%;
   text-align: left;
+
   background: transparent;
   border: none;
+
   padding: 10px 12px;
+
   border-radius: 8px;
+
   color: var(--ink-soft);
+
   font-size: .88rem;
+
   cursor: pointer;
+
   transition:
     background .18s ease,
     color .18s ease,
@@ -285,6 +343,10 @@
     font-size: .92rem;
   }
 }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
 
 .welcome-section__faq {
   width: 100%;
@@ -309,6 +371,7 @@
   border-radius: 10px;
   background: var(--bg);
   padding: 4px 16px;
+
   transition:
     border-color .25s ease,
     box-shadow .25s ease,
@@ -317,15 +380,21 @@
   summary {
     list-style: none;
     cursor: pointer;
+
     padding: 12px 8px;
     margin: 0 -8px;
+
     border-radius: 8px;
+
     font-weight: 600;
     color: var(--ink);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 10px;
+
     transition:
       background .2s ease,
       color .2s ease;
@@ -343,6 +412,7 @@
       color: var(--ink-faint);
       font-weight: 400;
       font-size: 1.1rem;
+
       transition:
         transform .3s ease,
         color .2s ease;
@@ -373,9 +443,14 @@
     color: var(--ink-soft);
     font-size: .9rem;
     line-height: 1.5;
+
     animation: faqTextoEntrada .25s ease-out;
   }
 }
+
+/* ============================================================
+   ANIMACIÓN FAQ
+   ============================================================ */
 
 @keyframes faqTextoEntrada {
   from {
@@ -389,6 +464,10 @@
   }
 }
 
+/* ============================================================
+   ICONO Y TEXTO FAQ
+   ============================================================ */
+
 .welcome-section__faq-summary-text {
   display: flex;
   align-items: center;
@@ -400,6 +479,10 @@
   color: var(--primary);
   font-size: .9rem;
 }
+
+/* ============================================================
+   MÓVIL
+   ============================================================ */
 
 @media (max-width: 479px) {
   .welcome-section__courses,
@@ -420,6 +503,10 @@
     font-size: .9rem;
   }
 }
+
+/* ============================================================
+   REDUCIR ANIMACIONES
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .welcome-section__curso,
