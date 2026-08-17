@@ -1,10 +1,8 @@
 export default function PomodoroAlarmModal({ open, label, onIrAPomodoro }) {
-  if (!open) return null;
-
   return (
-    <div className="welcome-overlay">
+    <div className={`pomo-alarm-overlay ${open ? "" : "is-closed"}`} aria-hidden={!open}>
       <style>{`
-        .welcome-overlay {
+        .pomo-alarm-overlay {
           position: fixed;
           top: 0;
           left: 0;
@@ -15,6 +13,15 @@ export default function PomodoroAlarmModal({ open, label, onIrAPomodoro }) {
           align-items: center;
           background: var(--overlay-strong);
           z-index: 9999;
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.25s ease, visibility 0s linear 0s;
+        }
+        .pomo-alarm-overlay.is-closed {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.25s ease, visibility 0s linear 0.25s;
         }
         .pomo-alarm-card {
           width: min(340px, 90vw);

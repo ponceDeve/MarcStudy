@@ -17,8 +17,6 @@ export default function LevelsModal({
     if (!open) setBusqueda("");
   }, [open]);
 
-  if (!open) return null;
-
   const total = flatPuntos.length;
 
   function previewNivel(i) {
@@ -55,7 +53,11 @@ export default function LevelsModal({
     : indices;
 
   return (
-    <div className="levels-modal" onClick={onClose}>
+    <div
+      className={`levels-modal ${open ? "" : "is-closed"}`}
+      onClick={onClose}
+      aria-hidden={!open}
+    >
       <div
         className="levels-modal__inner"
         onClick={(e) => e.stopPropagation()}

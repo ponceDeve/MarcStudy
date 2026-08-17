@@ -1,10 +1,8 @@
 export default function ModoEstudioModal({ open, onElegir }) {
-  if (!open) return null;
-
   return (
-    <div className="welcome-overlay">
+    <div className={`modo-estudio-overlay ${open ? "" : "is-closed"}`} aria-hidden={!open}>
       <style>{`
-        .welcome-overlay {
+        .modo-estudio-overlay {
           position: fixed;
           inset: 0;
           z-index: 10000;
@@ -14,6 +12,15 @@ export default function ModoEstudioModal({ open, onElegir }) {
           background: rgba(10, 14, 20, 0.55);
           backdrop-filter: blur(10px) saturate(140%);
           -webkit-backdrop-filter: blur(10px) saturate(140%);
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.25s ease, visibility 0s linear 0s;
+        }
+        .modo-estudio-overlay.is-closed {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.25s ease, visibility 0s linear 0.25s;
         }
         .modo-estudio-card {
           width: min(340px, 90vw);

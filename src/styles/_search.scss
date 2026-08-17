@@ -12,6 +12,16 @@
   background: var(--overlay);
   backdrop-filter: blur(10px);
   padding: 0 16px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease, visibility 0s linear 0s;
+
+  &.is-closed {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
 }
 
 .search-box {
@@ -25,7 +35,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   transition: border-color 0.2s ease, border-radius 0.2s ease;
@@ -131,7 +141,7 @@
   gap: 0;
   margin: 0;
   padding: 0 0 8px;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   border: none;
   border-radius: 0 0 30px 30px;
   box-shadow: none;
@@ -209,7 +219,7 @@
   gap: 0;
   margin: 0;
   padding: 0 0 8px;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   border: none;
   border-radius: 0 0 30px 30px;
   box-shadow: none;
@@ -220,7 +230,7 @@
 
 .search-group {
   width: 100%;
-  background: var(--surface);
+  background: var(--ink-on-primary);
 }
 
 .search-result-item {
@@ -304,7 +314,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 14px 16px;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   color: var(--ink-soft);
   font-size: 14px;
   text-align: center;
@@ -332,7 +342,7 @@
   overflow-y: auto;
   max-height: 320px;
   z-index: 20;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
@@ -354,7 +364,7 @@
   font-family: var(--font-body);
   font-size: 1rem;
   color: var(--ink);
-  background-color: var(--surface);
+  background-color: rgba(0,0,0,.1);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   outline: none;
@@ -368,7 +378,6 @@
 .levels-modal__search .home-search-input:focus {
   border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 3px var(--primary-bg);
 }
 
 .levels-modal__search .home-search-results {
@@ -378,7 +387,7 @@
   width: 100%;
   margin-top: 8px;
   z-index: 100;
-  background-color: var(--surface);
+  background-color: var(--ink-on-primary);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);

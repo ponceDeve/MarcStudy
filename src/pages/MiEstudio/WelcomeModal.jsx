@@ -55,8 +55,6 @@ export default function WelcomeModal({ open, onSubmit }) {
   const [paso, setPaso] = useState(0);
   const [nombre, setNombre] = useState("");
 
-  if (!open) return null;
-
   const total = PASOS.length;
   const actual = PASOS[paso];
 
@@ -75,7 +73,7 @@ export default function WelcomeModal({ open, onSubmit }) {
   }
 
   return (
-    <div className="welcome-overlay">
+    <div className={`welcome-overlay ${open ? "" : "is-closed"}`} aria-hidden={!open}>
       <style>{`
         .welcome-overlay {
           position: fixed;
@@ -85,6 +83,15 @@ export default function WelcomeModal({ open, onSubmit }) {
           align-items: center;
           justify-content: center;
           background: rgba(4, 8, 12, 0.85);
+          opacity: 1;
+          visibility: visible;
+          transition: opacity 0.25s ease, visibility 0s linear 0s;
+        }
+        .welcome-overlay.is-closed {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.25s ease, visibility 0s linear 0.25s;
         }
         .welcome-card {
           width: min(360px, 90vw);

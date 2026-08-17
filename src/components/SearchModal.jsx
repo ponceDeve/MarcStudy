@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import manifest from "../data/manifest.json";
 import { useArrowKeyList } from "../hooks/useArrowKeyList";
 import { useSearchHistory } from "../hooks/useSearchHistory";
@@ -112,6 +112,7 @@ export default function SearchModal({
   const [query, setQuery] = useState("");
   const [paginaHistorial, setPaginaHistorial] = useState(1);
   const [inputFocused, setInputFocused] = useState(false);
+  const inputRef = useRef(null);
 
   const {
     historial,
@@ -259,6 +260,7 @@ export default function SearchModal({
     if (!open) return;
 
     setPaginaHistorial(1);
+    inputRef.current?.focus();
   }, [open]);
 
   /* ============================================================
@@ -291,20 +293,15 @@ export default function SearchModal({
      MODAL CERRADO
      ============================================================ */
 
-  if (!open) return null;
-
-  /* ============================================================
-     RENDER
-     ============================================================ */
-
   return (
     <div
-      className="search-overlay"
+      className={`search-overlay ${open ? "" : "is-closed"}`}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
+      aria-hidden={!open}
     >
       <div className="search-box">
 
@@ -323,7 +320,7 @@ export default function SearchModal({
             autoComplete="off"
             type="search"
             name="buscar-curso-tema"
-            autoFocus
+            ref={inputRef}
             value={query}
             onFocus={() => {
               setInputFocused(true);

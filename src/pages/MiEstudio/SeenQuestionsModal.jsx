@@ -37,8 +37,6 @@ export default function SeenQuestionsModal({
     }
   }, [open]);
 
-  if (!open) return null;
-
   const preguntaActual = preguntas[pos];
 
   function siguiente() {
@@ -57,7 +55,11 @@ export default function SeenQuestionsModal({
   }
 
   return (
-    <div className="levels-modal" onClick={onClose}>
+    <div
+      className={`levels-modal ${open ? "" : "is-closed"}`}
+      onClick={onClose}
+      aria-hidden={!open}
+    >
       <div className="levels-modal__inner" onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title">Preguntas vistas</h2>
 

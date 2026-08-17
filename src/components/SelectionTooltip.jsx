@@ -58,7 +58,7 @@ export default function SelectionTooltip() {
       id="selection-tooltip"
       onClick={buscar}
       title="Buscar en Google"
-      className="selection-tooltip"
+      className="selection-tooltip animate-fade-in"
       style={{ top: pos.top, left: pos.left }}
     >
       <i className="fab fa-google" />

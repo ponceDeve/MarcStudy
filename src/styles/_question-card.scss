@@ -105,7 +105,7 @@
 .question-card__input {
   width: 100%;
   max-width: 28rem;
-  background: var(--surface);
+  background: rgba(0,0,0,.1);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 10px 16px;
@@ -163,6 +163,7 @@
   background: var(--surface-alt);
   padding: 10px 14px;
   counter-increment: proposicion;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 .question-card__vf-row::before {
   content: counter(proposicion) ".";
@@ -193,10 +194,11 @@
   height: 36px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  background: var(--surface);
+  background: transparent;
   color: var(--ink-soft);
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .question-card__vf-btn:hover:not(:disabled) {
   border-color: var(--primary);
@@ -242,6 +244,7 @@
   font-size: 13.5px;
   color: var(--ink);
   text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 /* Tipo: completar (texto con espacios en blanco) */
@@ -257,6 +260,7 @@
   font-weight: 700;
   color: var(--primary);
   margin: 0 2px;
+  transition: color 0.2s ease;
 }
 .question-card__cloze-input.is-correct {
   color: var(--success);

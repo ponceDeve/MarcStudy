@@ -156,7 +156,7 @@
   position:relative;
   box-sizing:border-box;
   border-radius:var(--radius-lg);
-  background-color:var(--surface);
+  background-color:var(--ink-on-primary);
   background-image:
     linear-gradient(to right,rgba(128,128,128,.025) 1px,transparent 1px),
     linear-gradient(to bottom,rgba(128,128,128,.025) 1px,transparent 1px);
@@ -241,7 +241,7 @@
 
 .mi-estudio__google-input{
   width:100%;
-  background:var(--surface-alt);
+  background: rgba(0,0,0,.1);
   border:1px solid var(--border-strong);
   border-radius:var(--radius-sm);
   padding:10px 40px 10px 16px;
@@ -293,7 +293,7 @@
   z-index:500;
   width:36px;
   height:36px;
-  background:var(--surface);
+  background:transparent;
   border:1px solid var(--border-strong);
   border-bottom-width:3px;
   border-radius:var(--radius-md);
@@ -494,8 +494,29 @@
   z-index:999;
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
   backdrop-filter:blur(4px);
+  opacity:1;
+  visibility:visible;
+  transition:opacity .3s ease, visibility 0s linear 0s;
+}
+
+.config-overlay.is-closed{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .3s ease, visibility 0s linear .3s;
+}
+
+.config-overlay__panel{
+  margin-right:16px;
+  max-width:min(320px, 90vw);
+  transform:translateX(130%);
+  transition:transform .3s ease;
+}
+
+.config-overlay:not(.is-closed) .config-overlay__panel{
+  transform:translateX(0);
 }
 
 .config-overlay__confirm{
@@ -624,7 +645,7 @@
   font-size:13.5px;
   color:var(--ink);
   font-weight:700;
-  background:var(--surface);
+  background:var(--ink-on-primary);
   padding:4px 10px;
   border-radius:var(--radius-sm);
   white-space:nowrap;
@@ -661,17 +682,17 @@
   width:100%;
   padding:8px 15px;
   border-radius:var(--radius-full);
-  border:1px solid var(--border);
+  border:2px solid var(--border);
   background:transparent;
   color:var(--ink);
   font-size:18px;
   outline:none;
   box-sizing:border-box;
+  background-color: var(--ink-on-primary);
 }
 
 .theory-search__input:focus{
   border-color:var(--primary);
-  background:transparent;
 }
 
 .theory-search__input::placeholder{
@@ -782,7 +803,7 @@
   cursor:pointer;
   text-decoration:none;
   transition:all .2s ease-in-out;
-  background-color:transparent;
+  background-color: var(--ink-on-primary);
   color:var(--ink);
   border:1px solid var(--border-strong);
   width:100%;
@@ -838,7 +859,7 @@
   overflow-x:hidden;
   overflow-y:auto;
 
-  background:var(--surface);
+  background:var(--ink-on-primary);
 
   border:1px solid var(--border);
   border-top:none;
@@ -860,7 +881,7 @@
    ============================================================ */
 
 .home-search .search-results{
-  background:var(--surface);
+  background:var(--ink-on-primary);
 }
 
 
@@ -982,7 +1003,7 @@
 
   padding:14px 16px;
 
-  background:var(--surface);
+  background:var(--ink-on-primary);
   color:var(--ink-soft);
 
   font-size:14px;
@@ -1014,8 +1035,8 @@
   font-family:var(--font-body);
   font-size:1rem;
   color:var(--ink);
-  background-color:var(--surface);
-  border:1px solid var(--border);
+  background-color:var(--ink-on-primary);
+  border:2px solid var(--border);
   border-radius:var(--radius-md);
   outline:none;
   transition:border-color .2s ease,box-shadow .2s ease;
@@ -1038,7 +1059,7 @@
   width:100%;
   margin-top:8px;
   z-index:100;
-  background-color:var(--surface);
+  background-color:var(--ink-on-primary);
   border:1px solid var(--border);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-md);

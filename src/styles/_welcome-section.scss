@@ -9,7 +9,7 @@
 
 .welcome-section__courses {
   width: 100%;
-  background: var(--surface);
+  background: var(--ink-on-primary);
   padding: 40px 0;
 }
 
@@ -99,16 +99,18 @@
   border-radius: 14px;
   background: var(--curso-bg);
 
-  transition:
-    border-color .25s ease,
-    box-shadow .25s ease,
-    transform .2s ease;
+  transition: all  .2s ease !important;
 }
 
 .welcome-section__curso:hover {
   border-color: var(--accent);
+  background: var(--ink-on-primary);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+}
+
+.welcome-section__curso:hover .welcome-section__temas {
+  background: var(--ink-on-primary);
 }
 
 .welcome-section__curso.is-open {
@@ -207,7 +209,7 @@
   transition:
     background .2s ease,
     border-color .2s ease,
-    transform .15s ease;
+    transform .15s ease !important;
 }
 
 @media (min-width: 640px) {
@@ -228,7 +230,9 @@
 
 .welcome-section__ver-btn-icon {
   font-size: .72rem;
-  transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+
+  transition:
+    transform .3s cubic-bezier(.4, 0, .2, 1) !important;
 }
 
 .welcome-section__ver-btn-icon.is-open {
@@ -262,6 +266,9 @@
 
   animation: temasEntrada .25s ease-out;
   transform-origin: top;
+
+  transition:
+    background-color .25s ease !important;
 }
 
 @keyframes temasEntrada {
@@ -324,7 +331,7 @@
   transition:
     background .18s ease,
     color .18s ease,
-    transform .15s ease;
+    transform .15s ease !important;
 }
 
 .welcome-section__tema-btn:hover {
@@ -375,7 +382,7 @@
   transition:
     border-color .25s ease,
     box-shadow .25s ease,
-    background .25s ease;
+    background .25s ease !important;
 
   summary {
     list-style: none;
@@ -397,7 +404,7 @@
 
     transition:
       background .2s ease,
-      color .2s ease;
+      color .2s ease !important;
 
     &::-webkit-details-marker {
       display: none;
@@ -415,7 +422,7 @@
 
       transition:
         transform .3s ease,
-        color .2s ease;
+        color .2s ease !important;
     }
   }
 
@@ -501,25 +508,5 @@
   .welcome-section__faq-summary-text {
     gap: 8px;
     font-size: .9rem;
-  }
-}
-
-/* ============================================================
-   REDUCIR ANIMACIONES
-   ============================================================ */
-
-@media (prefers-reduced-motion: reduce) {
-  .welcome-section__curso,
-  .welcome-section__ver-btn,
-  .welcome-section__ver-btn-icon,
-  .welcome-section__tema-btn,
-  .welcome-section__faq-item,
-  .welcome-section__faq-item summary {
-    transition: none;
-  }
-
-  .welcome-section__temas,
-  .welcome-section__faq-item p {
-    animation: none;
   }
 }

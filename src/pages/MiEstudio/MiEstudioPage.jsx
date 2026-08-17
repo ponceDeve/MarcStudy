@@ -1794,8 +1794,8 @@ export default function MiEstudioPage() {
         }
       />
 
-      {configOpen && (
-        <div className="config-overlay">
+      <div className={`config-overlay ${configOpen ? "" : "is-closed"}`} aria-hidden={!configOpen}>
+        <div className="config-overlay__panel">
           {confirmLeave && (
             <div className="config-overlay__confirm animate-bounce">
               Confirmar. Eres un perdedor.
@@ -1951,7 +1951,7 @@ export default function MiEstudioPage() {
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       <div className={wrapClass}>
         {!topicData && (

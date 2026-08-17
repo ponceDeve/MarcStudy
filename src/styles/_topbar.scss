@@ -359,13 +359,13 @@
   right: 0;
   height: 100%;
   width: min(320px, 85vw);
-  background: var(--surface);
+  background: var(--ink-on-primary);
   border-left: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.5s ease;
+  transition: all 10s linear;
 
   .topbar__drawer-backdrop.is-open & {
     transform: translateX(0);
@@ -470,26 +470,5 @@
   .topbar__drawer-item {
     padding: 18px 16px;
     font-size: 17px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .topbar__title-btn,
-  .topbar__curso,
-  .topbar__nav-btn,
-  .topbar__control-btn,
-  .topbar__drawer-backdrop,
-  .topbar__drawer,
-  .topbar__drawer-close,
-  .topbar__drawer-item,
-  .topbar__drawer-item-icon {
-    transition: none;
-  }
-
-  .topbar__nav-btn:active,
-  .topbar__control-btn:active,
-  .topbar__drawer-close:active,
-  .topbar__drawer-item:active {
-    transform: none;
   }
 }

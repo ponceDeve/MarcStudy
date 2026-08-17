@@ -161,12 +161,12 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
       <audio ref={loudRef} src="/cont_crono/sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
       <audio ref={alienRef} src="/cont_crono/sonidos/alien-alarmdrum.mp3" preload="auto" />
 
-      {/* Solo mostramos la parte visual si "open" es verdadero */}
-      {open && (
-        <div
-          ref={widgetRef}
-          className={`pomo-widget ${isCollapsed ? "is-collapsed" : ""}`}
-          style={{
+      {/* Ya no se desmonta: is-hidden controla la visibilidad con transición */}
+      <div
+        ref={widgetRef}
+        className={`pomo-widget ${isCollapsed ? "is-collapsed" : ""} ${open ? "" : "is-hidden"}`}
+        aria-hidden={!open}
+        style={{
             top: pos.top,
             left: pos.left ?? undefined,
             right: pos.left === null ? 20 : undefined,
@@ -270,7 +270,6 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
             </>
           )}
         </div>
-      )}
     </>
   );
 }

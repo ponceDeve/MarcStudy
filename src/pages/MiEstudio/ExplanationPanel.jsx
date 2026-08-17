@@ -40,7 +40,7 @@ export default function ExplanationPanel({
   }, [pregunta, isCorrect, rendido]);
 
   return (
-    <div className={`explanation-panel ${isCorrect ? "is-correct" : "is-wrong"}`}>
+    <div className={`explanation-panel animate-fade-in ${isCorrect ? "is-correct" : "is-wrong"}`}>
       <h4 className={`explanation-panel__title ${isCorrect ? "is-correct" : "is-wrong"}`}>
         <i className={isCorrect ? "fas fa-check-circle" : "fas fa-exclamation-triangle"} />
         {isCorrect ? "¡Respuesta correcta!" : "Respuesta incorrecta"}

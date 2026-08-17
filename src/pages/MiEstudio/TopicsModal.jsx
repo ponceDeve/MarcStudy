@@ -35,8 +35,6 @@ export default function TopicsModal({
     }
   }, [open]);
 
-  if (!open) return null;
-
   function manejarClickTema(item, index) {
     if (activeIndex === index) {
       onSelectTema(item);
@@ -86,10 +84,11 @@ export default function TopicsModal({
 
   return (
     <div
-      className="levels-modal"
+      className={`levels-modal ${open ? "" : "is-closed"}`}
       style={{ zIndex: 1000 }}
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
+      aria-hidden={!open}
     >
       <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title levels-modal__title--live">
