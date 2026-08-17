@@ -1,15 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { shuffle } from "../../lib/shuffle";
 
 // Mini-quiz interactivo con las preguntas de las tarjetas de teoría
 // que ya viste en este tema (no las del examen) — se arma una lista

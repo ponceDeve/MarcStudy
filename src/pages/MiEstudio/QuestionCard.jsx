@@ -1,15 +1,7 @@
 import { useState, useRef, useMemo, useEffect } from "react";
 import 'katex/dist/katex.min.css';
 import Latex from 'react-latex-next';
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { shuffle } from "../../lib/shuffle";
 
 // Parte un texto tipo "La capital de ___1___ es ___2___." en fragmentos de
 // texto plano y marcadores de espacio en blanco, en orden.

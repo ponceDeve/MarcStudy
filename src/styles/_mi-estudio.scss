@@ -1,6 +1,7 @@
 /* ============================================================
    MiEstudioPage.jsx
    ============================================================ */
+
 .mi-estudio{
   min-height:100vh;
   background:var(--bg);
@@ -70,7 +71,9 @@
 }
 
 @media (min-width:640px){
-  .mi-estudio__intro-title{font-size:32px}
+  .mi-estudio__intro-title{
+    font-size:32px;
+  }
 }
 
 .mi-estudio__stage{
@@ -126,13 +129,17 @@
   transition:background .15s,transform .1s;
 }
 
-.mi-estudio__voz-btn.is-off{background:var(--danger)}
+.mi-estudio__voz-btn.is-off{
+  background:var(--danger);
+}
 
 .mi-estudio__voz-btn.is-off:hover{
   background:var(--danger-dark);
 }
 
-.mi-estudio__voz-btn.is-on{background:var(--success)}
+.mi-estudio__voz-btn.is-on{
+  background:var(--success);
+}
 
 .mi-estudio__voz-btn.is-on:hover{
   background:var(--primary-dark);
@@ -148,7 +155,7 @@
   min-height:260px;
   position:relative;
   box-sizing:border-box;
-  border-radius: var(--radius-lg);
+  border-radius:var(--radius-lg);
   background-color:var(--surface);
   background-image:
     linear-gradient(to right,rgba(128,128,128,.025) 1px,transparent 1px),
@@ -415,6 +422,7 @@
 .mi-estudio__nav-right:hover .mi-estudio__nav-hint{
   opacity:1;
 }
+
 .mi-estudio__finished{
   display:flex;
   flex-direction:column;
@@ -474,9 +482,11 @@
   background:var(--surface-hover);
 }
 
+
 /* ============================================================
    CONFIGURACIÓN
    ============================================================ */
+
 .config-overlay{
   position:fixed;
   inset:0;
@@ -540,9 +550,11 @@
   color:var(--ink-on-primary);
 }
 
+
 /* ============================================================
    AVISOS DE VIDAS
    ============================================================ */
+
 .vidas-fullscreen{
   position:fixed;
   inset:0;
@@ -619,9 +631,11 @@
   box-shadow:var(--shadow-sm);
 }
 
+
 /* ============================================================
    BUSCADOR DE TEORÍA
    ============================================================ */
+
 .theory-search{
   position:relative;
   z-index:5;
@@ -711,9 +725,11 @@
   }
 }
 
+
 /* ============================================================
    ALERTA SIN PREGUNTA
    ============================================================ */
+
 .sin-pregunta-alerta{
   display:flex;
   align-items:center;
@@ -739,9 +755,11 @@
   padding:4px;
 }
 
+
 /* ============================================================
    BOTONES PDF
    ============================================================ */
+
 .mi-estudio__pdf-buttons{
   display:flex;
   gap:12px;
@@ -784,4 +802,297 @@
 
 .mi-estudio__pdf-btn:active{
   transform:translateY(1px);
+}
+
+
+/* ============================================================
+   BUSCADOR INICIAL — TEMAS Y CURSOS
+   Mismos estilos visuales del buscador anterior
+   ============================================================ */
+
+.home-search{
+  position:relative;
+  width:100%;
+  max-width:42rem;
+  z-index:20;
+}
+
+
+/* El contenedor de resultados queda pegado
+   directamente debajo del buscador */
+
+.home-search-results{
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  margin:0;
+  padding:0 0 8px;
+
+  width:100%;
+  max-height:400px;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
+  border-top:none;
+
+  border-radius:
+    0
+    0
+    30px
+    30px;
+
+  box-shadow:var(--shadow-md);
+
+  z-index:30;
+}
+
+
+/* ============================================================
+   RESULTADOS DEL BUSCADOR INICIAL
+   ============================================================ */
+
+.home-search .search-results{
+  background:var(--surface);
+}
+
+
+/* Grupo curso */
+
+.home-search .search-result-item.is-curso{
+  width:100%;
+  box-sizing:border-box;
+
+  text-align:left;
+
+  background:var(--primary-bg);
+  color:var(--ink);
+
+  border:none;
+  border-left:3px solid var(--primary);
+
+  border-radius:0;
+
+  padding:10px 16px;
+
+  margin:0 0 3px;
+
+  cursor:pointer;
+
+  font-family:var(--font-body);
+  font-size:1rem;
+  font-weight:700;
+
+  transition:
+    background-color .15s ease,
+    color .15s ease,
+    transform .1s ease;
+}
+
+.home-search .search-result-item.is-curso:hover,
+.home-search .search-result-item.is-curso.is-focused{
+  background:var(--primary);
+  color:var(--ink-on-primary);
+}
+
+.home-search .search-result-item.is-curso:active{
+  transform:translateX(1px);
+}
+
+
+/* Tema */
+
+.home-search .search-result-item.is-tema{
+  width:calc(100% - 24px);
+  box-sizing:border-box;
+
+  margin-left:24px;
+
+  text-align:left;
+
+  background:var(--surface-alt);
+  color:var(--ink);
+
+  border:none;
+  border-left:2px solid var(--border);
+  border-bottom:2px solid var(--border);
+
+  border-radius:0;
+
+  padding:10px 16px;
+
+  cursor:pointer;
+
+  font-family:var(--font-body);
+  font-size:.95rem;
+
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    color .15s ease,
+    transform .1s ease;
+}
+
+.home-search .search-result-item.is-tema:hover,
+.home-search .search-result-item.is-tema.is-focused{
+  background:var(--surface-hover);
+  border-left-color:var(--primary);
+  border-bottom-color:var(--primary);
+  color:var(--ink);
+}
+
+.home-search .search-result-item.is-tema:active{
+  transform:translateX(1px);
+}
+
+
+/* Nombre del tema */
+
+.home-search .search-result-item__tema{
+  font-weight:600;
+  font-size:14px;
+  color:inherit;
+  margin:0;
+}
+
+
+/* Nombre del curso */
+
+.home-search .curso-title{
+  display:block;
+}
+
+
+/* ============================================================
+   SIN RESULTADOS
+   ============================================================ */
+
+.home-search .search-empty{
+  width:100%;
+  box-sizing:border-box;
+
+  margin:0;
+
+  padding:14px 16px;
+
+  background:var(--surface);
+  color:var(--ink-soft);
+
+  font-size:14px;
+  text-align:center;
+
+  border:none;
+
+  border-radius:
+    0
+    0
+    30px
+    30px;
+}
+
+
+/* ============================================================
+   BUSCADOR DE NIVELES
+   ============================================================ */
+
+.levels-modal__search{
+  position:relative;
+  width:100%;
+  margin-bottom:24px;
+}
+
+.levels-modal__search .home-search-input{
+  width:100%;
+  padding:12px 16px;
+  font-family:var(--font-body);
+  font-size:1rem;
+  color:var(--ink);
+  background-color:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  outline:none;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+
+.levels-modal__search .home-search-input::placeholder{
+  color:var(--ink-faint);
+}
+
+.levels-modal__search .home-search-input:focus{
+  border-color:var(--primary);
+  outline:none;
+  box-shadow:0 0 0 3px var(--primary-bg);
+}
+
+.levels-modal__search .home-search-results{
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  margin-top:8px;
+  z-index:100;
+  background-color:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-md);
+  padding:8px;
+  max-height:250px;
+  overflow-y:auto;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.levels-modal__search .home-search-results::-webkit-scrollbar{
+  width:6px;
+}
+
+.levels-modal__search .home-search-results::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.levels-modal__search .home-search-results::-webkit-scrollbar-thumb{
+  background-color:var(--border-strong);
+  border-radius:var(--radius-full);
+}
+
+.levels-modal__search .home-search-result{
+  width:100%;
+  text-align:left;
+  background-color:transparent;
+  border:none;
+  padding:10px 14px;
+  border-radius:var(--radius-sm);
+  cursor:pointer;
+  font-family:var(--font-body);
+  color:var(--ink);
+  transition:
+    background-color .15s ease,
+    color .15s ease,
+    transform .1s ease;
+}
+
+.levels-modal__search .home-search-result:hover,
+.levels-modal__search .home-search-result.is-focused{
+  background-color:var(--surface-hover);
+  color:var(--ink);
+}
+
+.levels-modal__search .home-search-result:active{
+  transform:translateX(1px);
+}
+
+.levels-modal__search .home-search-result p{
+  margin:0;
+  font-size:.95rem;
+  font-weight:500;
+  display:flex;
+  align-items:center;
 }
