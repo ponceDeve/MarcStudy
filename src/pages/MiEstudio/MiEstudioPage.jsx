@@ -264,8 +264,7 @@ export default function MiEstudioPage() {
   const [stage, setStage] = useState("theory");
   const [isLevelMode, setIsLevelMode] = useState(false);
 
-  const { setFooterHidden } =
-    useFooterVisibility();
+  const { setFooterHidden } = useFooterVisibility();
 
   useEffect(() => {
     const ocultar =
@@ -346,10 +345,11 @@ export default function MiEstudioPage() {
               return (
                 <i
                   key={i}
-                  className={`vidas-fullscreen__heart ${corazonRoto
+                  className={`vidas-fullscreen__heart ${
+                    corazonRoto
                       ? "bi bi-heartbreak is-roto"
                       : "bi bi-heart-fill is-a-punto"
-                    }`}
+                  }`}
                 />
               );
             }
@@ -1466,7 +1466,7 @@ export default function MiEstudioPage() {
 
       vistaPregunta =
         flatPuntos[
-          cardIndex
+        cardIndex
         ]?.pregunta || null;
     }
 
@@ -1615,7 +1615,7 @@ export default function MiEstudioPage() {
 
               ceroVidasRef.current
                 .play()
-                .catch(() => { });
+                .catch(() => {});
             }
 
             gameOver();
@@ -1629,7 +1629,7 @@ export default function MiEstudioPage() {
 
             vidaPerderRef.current
               .play()
-              .catch(() => { });
+              .catch(() => {});
           }
 
           return nuevasVidas;
@@ -1782,7 +1782,7 @@ export default function MiEstudioPage() {
 
   const current = isLevelMode
     ? examenPreguntas[
-    nivelIndex
+      nivelIndex
     ]
     : flatPuntos[cardIndex];
 
@@ -1831,7 +1831,7 @@ export default function MiEstudioPage() {
           : modoEstudio ===
             "solo_preguntas"
             ? examenPreguntas[
-            cardIndex
+              cardIndex
             ] || null
             : null;
 
@@ -2099,10 +2099,11 @@ export default function MiEstudioPage() {
 
       {repasoGuardadoMsg && (
         <div
-          className={`repaso-toast is-success${repasoGuardadoSaliendo
+          className={`repaso-toast is-success${
+            repasoGuardadoSaliendo
               ? " is-saliendo"
               : ""
-            }`}
+          }`}
         >
           <i className="fas fa-bookmark" />
           {" "}Guardado para repasar
@@ -2111,10 +2112,11 @@ export default function MiEstudioPage() {
 
       {sinPreguntaAlerta && (
         <div
-          className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo
+          className={`repaso-toast is-top sin-pregunta-alerta${
+            sinPreguntaSaliendo
               ? " is-saliendo"
               : ""
-            }`}
+          }`}
         >
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
@@ -2159,10 +2161,11 @@ export default function MiEstudioPage() {
       />
 
       <div
-        className={`config-overlay ${configOpen
+        className={`config-overlay ${
+          configOpen
             ? ""
             : "is-closed"
-          }`}
+        }`}
         aria-hidden={!configOpen}
       >
         <div className="config-overlay__panel">
@@ -2193,11 +2196,12 @@ export default function MiEstudioPage() {
                     }
                   )
                 }
-                className={`config-overlay__btn ${botonArmado ===
-                    "continuar"
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "continuar"
                     ? "is-armado"
                     : ""
-                  }`}
+                }`}
               >
                 <i className="fas fa-play" />
               </button>
@@ -2218,17 +2222,19 @@ export default function MiEstudioPage() {
                     toggleFullscreen
                   )
                 }
-                className={`config-overlay__btn ${botonArmado ===
-                    "pantalla"
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "pantalla"
                     ? "is-armado"
                     : ""
-                  }`}
+                }`}
               >
                 <i
-                  className={`fas ${isFullscreen
+                  className={`fas ${
+                    isFullscreen
                       ? "fa-compress"
                       : "fa-expand"
-                    }`}
+                  }`}
                 />
               </button>
 
@@ -2250,11 +2256,12 @@ export default function MiEstudioPage() {
                     verPreguntasVistas
                   )
                 }
-                className={`config-overlay__btn ${botonArmado ===
-                    "repasar"
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "repasar"
                     ? "is-armado"
                     : ""
-                  }`}
+                }`}
               >
                 <i className="fas fa-list-check" />
               </button>
@@ -2278,10 +2285,11 @@ export default function MiEstudioPage() {
                     );
                   }
                 }}
-                className={`config-overlay__btn ${confirmLeave
+                className={`config-overlay__btn ${
+                  confirmLeave
                     ? "is-armado"
                     : ""
-                  }`}
+                }`}
               >
                 <i className="fas fa-door-open" />
               </button>
@@ -2301,11 +2309,12 @@ export default function MiEstudioPage() {
                     reiniciarTarjetas
                   )
                 }
-                className={`config-overlay__btn ${botonArmado ===
-                    "reiniciar"
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "reiniciar"
                     ? "is-armado"
                     : ""
-                  }`}
+                }`}
               >
                 <i className="fas fa-rotate-left" />
               </button>
@@ -2360,11 +2369,13 @@ export default function MiEstudioPage() {
 
                 <div className="home-search">
                   <div
-                    className={`search-input-row${mostrarHistorialInicio ||
-                        (busquedaEnfocada && hayQuery)
+                    className={`search-input-row${
+                      mostrarHistorialInicio ||
+                      (busquedaEnfocada &&
+                        hayQuery)
                         ? " has-query"
                         : ""
-                      }`}
+                    }`}
                   >
                     <input
                       autoComplete="off"
@@ -2447,7 +2458,7 @@ export default function MiEstudioPage() {
                         }
                       }}
                       style={{
-                        cursor: "pointer",
+                        cursor: "pointer"
                       }}
                     >
                       <i className="fa-solid fa-magnifying-glass" />
@@ -2571,14 +2582,15 @@ export default function MiEstudioPage() {
 
                                     seleccionarItem({
                                       type: "curso",
-                                      nombre: g.curso,
+                                      nombre: g.curso
                                     });
                                   }}
-                                  className={`search-result-item is-curso ${idxCurso ===
-                                      focusedInicial
+                                  className={`search-result-item is-curso ${
+                                    idxCurso ===
+                                    focusedInicial
                                       ? "is-focused"
                                       : ""
-                                    }`}
+                                  }`}
                                 >
                                   <span className="curso-title">
                                     {g.curso}
@@ -2596,11 +2608,12 @@ export default function MiEstudioPage() {
 
                                         seleccionarItem(t);
                                       }}
-                                      className={`search-result-item is-tema ${idxTema ===
-                                          focusedInicial
+                                      className={`search-result-item is-tema ${
+                                        idxTema ===
+                                        focusedInicial
                                           ? "is-focused"
                                           : ""
-                                        }`}
+                                      }`}
                                     >
                                       <p className="search-result-item__tema">
                                         {t.tema}
@@ -2646,33 +2659,33 @@ export default function MiEstudioPage() {
             <div className="mi-estudio__stage container">
               {stage ===
                 "question" && (
-                  <div
-                    className="mi-estudio__hud-wrap animate-fade-in"
-                    style={{
-                      display:
-                        "block",
-                      visibility:
-                        "visible",
-                      width: "100%",
-                      marginBottom:
-                        "15px"
-                    }}
-                  >
-                    <Hud
-                      current={
-                        progresoPregunta.current
-                      }
-                      total={
-                        progresoPregunta.total
-                      }
-                      correct={score}
-                      wrong={
-                        wrongCount
-                      }
-                      vidas={vidas}
-                    />
-                  </div>
-                )}
+                <div
+                  className="mi-estudio__hud-wrap animate-fade-in"
+                  style={{
+                    display:
+                      "block",
+                    visibility:
+                      "visible",
+                    width: "100%",
+                    marginBottom:
+                      "15px"
+                  }}
+                >
+                  <Hud
+                    current={
+                      progresoPregunta.current
+                    }
+                    total={
+                      progresoPregunta.total
+                    }
+                    correct={score}
+                    wrong={
+                      wrongCount
+                    }
+                    vidas={vidas}
+                  />
+                </div>
+              )}
 
               {stage ===
                 "theory" &&
@@ -2711,10 +2724,11 @@ export default function MiEstudioPage() {
                           (v) => !v
                         )
                       }
-                      className={`mi-estudio__voz-btn ${lecturaTeoriaOn
+                      className={`mi-estudio__voz-btn ${
+                        lecturaTeoriaOn
                           ? "is-on"
                           : "is-off"
-                        }`}
+                      }`}
                       title={
                         lecturaTeoriaOn
                           ? "Desactivar lectura en voz"
@@ -2725,10 +2739,11 @@ export default function MiEstudioPage() {
                       }
                     >
                       <i
-                        className={`fa-solid ${lecturaTeoriaOn
+                        className={`fa-solid ${
+                          lecturaTeoriaOn
                             ? "fa-volume-high"
                             : "fa-volume-xmark"
-                          }`}
+                        }`}
                       />
                     </button>
 
@@ -2810,85 +2825,86 @@ export default function MiEstudioPage() {
 
               {stage ===
                 "question" && (
-                  <div className="mi-estudio__question-stage">
-                    {countdown >
-                      0 ? (
-                      <div
-                        className="animate-fade-in"
+                <div className="mi-estudio__question-stage">
+                  {countdown >
+                    0 ? (
+                    <div
+                      className="animate-fade-in"
+                      style={{
+                        display:
+                          "flex",
+                        flexDirection:
+                          "column",
+                        alignItems:
+                          "center",
+                        justifyContent:
+                          "center",
+                        flex: 1,
+                        minHeight:
+                          "300px"
+                      }}
+                    >
+                      <h2
                         style={{
-                          display:
-                            "flex",
-                          flexDirection:
-                            "column",
-                          alignItems:
-                            "center",
-                          justifyContent:
-                            "center",
-                          flex: 1,
-                          minHeight:
-                            "300px"
+                          fontSize:
+                            "5rem",
+                          margin:
+                            "0",
+                          color:
+                            "var(--ink)"
                         }}
                       >
-                        <h2
-                          style={{
-                            fontSize:
-                              "5rem",
-                            margin:
-                              "0",
-                            color:
-                              "var(--ink)"
-                          }}
-                        >
-                          {
-                            countdown
-                          }
-                        </h2>
+                        {
+                          countdown
+                        }
+                      </h2>
 
-                        <p
-                          style={{
-                            fontSize:
-                              "1.2rem",
-                            opacity:
-                              0.8,
-                            marginTop:
-                              "10px",
-                            textAlign:
-                              "center"
-                          }}
-                        >
-                          Intenta recordar
-                          la teoría antes
-                          de ver la pregunta...
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="mi-estudio__question-inner animate-fade-in">
-                        <QuestionCard
-                          key={`${repasoQuizActivo
-                              ? "repaso-" +
+                      <p
+                        style={{
+                          fontSize:
+                            "1.2rem",
+                          opacity:
+                            0.8,
+                          marginTop:
+                            "10px",
+                          textAlign:
+                            "center"
+                        }}
+                      >
+                        Intenta recordar
+                        la teoría antes
+                        de ver la pregunta...
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="mi-estudio__question-inner animate-fade-in">
+                      <QuestionCard
+                        key={`${
+                          repasoQuizActivo
+                            ? "repaso-" +
                               repasoQuizPos
-                              : isLevelMode
-                                ? "nivel-" +
+                            : isLevelMode
+                              ? "nivel-" +
                                 nivelIndex
-                                : isFlipQuiz
-                                  ? "flip-" +
+                              : isFlipQuiz
+                                ? "flip-" +
                                   cardIndex +
                                   "-" +
                                   quizPos
-                                  : "teoria-" +
+                                : "teoria-" +
                                   cardIndex
-                            }-${attemptKey}`}
-                          pregunta={
-                            preguntaActual
-                          }
-                          onRespondido={
-                            manejarRespuesta
-                          }
-                        />
-                      </div>
-                    )}
-                  </div>
-                )}
+                        }-${attemptKey}`}
+                        pregunta={
+                          preguntaActual
+                        }
+                        onRespondido={
+                          manejarRespuesta
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className="mi-estudio__nav">
                 <button
@@ -2898,26 +2914,27 @@ export default function MiEstudioPage() {
                   disabled={
                     isLevelMode
                       ? nivelIndex ===
-                      0
+                        0
                       : isFlipQuiz
                         ? quizPos ===
-                        0
+                          0
                         : cardIndex ===
-                        0
+                          0
                   }
-                  className={`mi-estudio__nav-btn ${(
+                  className={`mi-estudio__nav-btn ${
+                    (
                       isLevelMode
                         ? nivelIndex ===
-                        0
+                          0
                         : isFlipQuiz
                           ? quizPos ===
-                          0
+                            0
                           : cardIndex ===
-                          0
+                            0
                     )
                       ? ""
                       : "is-active"
-                    }`}
+                  }`}
                   title="Anterior"
                 >
                   <i className="fas fa-caret-left" />
@@ -2925,7 +2942,7 @@ export default function MiEstudioPage() {
 
                 {!isLevelMode &&
                   modoEstudio !==
-                  "solo_preguntas" && (
+                    "solo_preguntas" && (
                     <button
                       onClick={
                         toggleStage
@@ -2942,19 +2959,19 @@ export default function MiEstudioPage() {
                     const esUltimo =
                       repasoQuizActivo
                         ? repasoQuizPos ===
-                        repasoQuizBatch.length -
-                        1
+                          repasoQuizBatch.length -
+                            1
                         : isLevelMode
                           ? nivelIndex ===
-                          examenPreguntas.length -
-                          1
+                            examenPreguntas.length -
+                              1
                           : isFlipQuiz
                             ? quizPos ===
-                            quizBatch.length -
-                            1
+                              quizBatch.length -
+                                1
                             : cardIndex ===
-                            flatPuntos.length -
-                            1;
+                              flatPuntos.length -
+                                1;
 
                     const bloqueado =
                       !canAdvance;
@@ -2968,14 +2985,15 @@ export default function MiEstudioPage() {
                           disabled={
                             bloqueado
                           }
-                          className={`mi-estudio__nav-btn ${bloqueado
+                          className={`mi-estudio__nav-btn ${
+                            bloqueado
                               ? ""
                               : "is-active"
-                            }`}
+                          }`}
                           title="Siguiente"
                         >
                           {esUltimo &&
-                            canAdvance ? (
+                          canAdvance ? (
                             <i className="fas fa-flag-checkered" />
                           ) : (
                             <i className="fas fa-caret-right" />
@@ -2997,66 +3015,7 @@ export default function MiEstudioPage() {
                 </div>
               </div>
 
-              <div className="mi-estudio__pdf-buttons">
-                <button
-                  type="button"
-                  className="mi-estudio__pdf-btn"
-                  onClick={() => {
-                    if (
-                      !topicData?.archivo
-                    ) {
-                      return;
-                    }
-
-                    const pdfRelativo =
-                      topicData.archivo
-                        .replace(
-                          /^temas\//i,
-                          "PDFs/"
-                        )
-                        .replace(
-                          /\.json$/i,
-                          ".pdf"
-                        );
-
-                    const rutaPdf =
-                      `${window.location.origin}${import.meta.env.BASE_URL}${pdfRelativo}`;
-
-                    window.open(
-                      rutaPdf,
-                      "_blank",
-                      "noopener,noreferrer"
-                    );
-                  }}
-                >
-                  <i className="fas fa-file-pdf" />
-                  {" "}Ver PDF
-                </button>
-
-                <a
-                  href={
-                    topicData?.archivo
-                      ? `${import.meta.env.BASE_URL}${topicData.archivo
-                        .replace(
-                          /^temas\//i,
-                          "PDFs/"
-                        )
-                        .replace(
-                          /\.json$/i,
-                          ".pdf"
-                        )}`
-                      : "#"
-                  }
-                  download
-                  className="mi-estudio__pdf-btn"
-                >
-                  <i className="fas fa-download" />
-                  {" "}Descargar PDF
-                </a>
-              </div>
-
-              {stage ===
-                "question" &&
+              {stage === "question" &&
                 questionResult && (
                   <div className="mi-estudio__explanation-wrap">
                     <ExplanationPanel
@@ -3075,102 +3034,162 @@ export default function MiEstudioPage() {
                     />
                   </div>
                 )}
+
+              {stage === "theory" && (
+                <div className="mi-estudio__pdf-buttons">
+                  <button
+                    type="button"
+                    className="mi-estudio__pdf-btn"
+                    onClick={() => {
+                      if (
+                        !topicData?.archivo
+                      ) {
+                        return;
+                      }
+
+                      const pdfRelativo =
+                        topicData.archivo
+                          .replace(
+                            /^temas\//i,
+                            "PDFs/"
+                          )
+                          .replace(
+                            /\.json$/i,
+                            ".pdf"
+                          );
+
+                      const rutaPdf =
+                        `${window.location.origin}${import.meta.env.BASE_URL}${pdfRelativo}`;
+
+                      window.open(
+                        rutaPdf,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }}
+                  >
+                    <i className="fas fa-file-pdf" />
+                    {" "}Ver PDF
+                  </button>
+
+                  <a
+                    href={
+                      topicData?.archivo
+                        ? `${import.meta.env.BASE_URL}${topicData.archivo
+                            .replace(
+                              /^temas\//i,
+                              "PDFs/"
+                            )
+                            .replace(
+                              /\.json$/i,
+                              ".pdf"
+                            )}`
+                        : "#"
+                    }
+                    download
+                    className="mi-estudio__pdf-btn"
+                  >
+                    <i className="fas fa-download" />
+                    {" "}Descargar PDF
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
         {stage ===
           "finished" && (
-            <div className="mi-estudio__finished">
-              {confirmGuardarRepasoFinal ? (
-                <>
-                  <div className="mi-estudio__finished-emoji animate-bounce">
-                    <i className="fas fa-thumbtack" />
-                  </div>
+          <div className="mi-estudio__finished">
+            {confirmGuardarRepasoFinal ? (
+              <>
+                <div className="mi-estudio__finished-emoji animate-bounce">
+                  <i className="fas fa-thumbtack" />
+                </div>
 
-                  <h2 className="mi-estudio__finished-title">
-                    ¿Guardar este
-                    tema en tus
-                    repasos?
-                  </h2>
+                <h2 className="mi-estudio__finished-title">
+                  ¿Guardar este
+                  tema en tus
+                  repasos?
+                </h2>
 
-                  <p className="mi-estudio__finished-sub">
-                    Así te va a
-                    aparecer en la
-                    sección de Repasos
-                    para reforzarlo
-                    más adelante.
-                  </p>
+                <p className="mi-estudio__finished-sub">
+                  Así te va a
+                  aparecer en la
+                  sección de Repasos
+                  para reforzarlo
+                  más adelante.
+                </p>
 
-                  <div
-                    style={{
-                      display:
-                        "flex",
-                      gap: "12px",
-                      marginTop:
-                        "20px"
-                    }}
-                  >
-                    <button
-                      onClick={() =>
-                        confirmarGuardarRepasoFinal(
-                          true
-                        )
-                      }
-                      className="mi-estudio__finished-btn"
-                      style={{
-                        marginTop: 0
-                      }}
-                    >
-                      Sí, guardar
-                    </button>
-
-                    <button
-                      onClick={() =>
-                        confirmarGuardarRepasoFinal(
-                          false
-                        )
-                      }
-                      className="mi-estudio__finished-btn is-outline"
-                      style={{
-                        marginTop: 0
-                      }}
-                    >
-                      No, gracias
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="mi-estudio__finished-emoji animate-bounce">
-                    <i className="fas fa-trophy" />
-                  </div>
-
-                  <h2 className="mi-estudio__finished-title">
-                    {nombreUsuario
-                      ? `¡Tema completado, ${nombreUsuario}!`
-                      : "¡Tema completado!"}
-                  </h2>
-
-                  <p className="mi-estudio__finished-sub">
-                    Excelente trabajo
-                    leyendo toda la
-                    teoría.
-                  </p>
-
+                <div
+                  style={{
+                    display:
+                      "flex",
+                    gap: "12px",
+                    marginTop:
+                      "20px"
+                  }}
+                >
                   <button
                     onClick={() =>
-                      setTemasOpen(
+                      confirmarGuardarRepasoFinal(
                         true
                       )
                     }
                     className="mi-estudio__finished-btn"
+                    style={{
+                      marginTop: 0
+                    }}
                   >
-                    Elegir otro tema
+                    Sí, guardar
                   </button>
-                </>
-              )}
-            </div>
-          )}
+
+                  <button
+                    onClick={() =>
+                      confirmarGuardarRepasoFinal(
+                        false
+                      )
+                    }
+                    className="mi-estudio__finished-btn is-outline"
+                    style={{
+                      marginTop: 0
+                    }}
+                  >
+                    No, gracias
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mi-estudio__finished-emoji animate-bounce">
+                  <i className="fas fa-trophy" />
+                </div>
+
+                <h2 className="mi-estudio__finished-title">
+                  {nombreUsuario
+                    ? `¡Tema completado, ${nombreUsuario}!`
+                    : "¡Tema completado!"}
+                </h2>
+
+                <p className="mi-estudio__finished-sub">
+                  Excelente trabajo
+                  leyendo toda la
+                  teoría.
+                </p>
+
+                <button
+                  onClick={() =>
+                    setTemasOpen(
+                      true
+                    )
+                  }
+                  className="mi-estudio__finished-btn"
+                >
+                  Elegir otro tema
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </div>
 
       {topicData && (
@@ -3254,102 +3273,102 @@ export default function MiEstudioPage() {
 
       {alertaVidas ===
         "tres" && (
-          <div className="vidas-fullscreen animate-fade-in">
-            <div className="vidas-fullscreen__content">
-              <h2
-                style={{
-                  color:
-                    "var(--warning)",
-                  margin: 0,
-                  fontSize:
-                    "2rem"
-                }}
-              >
-                <i className="fas fa-triangle-exclamation" />
-                {" "}3 vidas
-              </h2>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
+            <h2
+              style={{
+                color:
+                  "var(--warning)",
+                margin: 0,
+                fontSize:
+                  "2rem"
+              }}
+            >
+              <i className="fas fa-triangle-exclamation" />
+              {" "}3 vidas
+            </h2>
 
-              {renderCorazonesVidas()}
+            {renderCorazonesVidas()}
 
-              <p
-                style={{
-                  color: "#fff",
-                  fontSize:
-                    "1rem"
-                }}
-              >
-                No te confíes.
-              </p>
-            </div>
+            <p
+              style={{
+                color: "#fff",
+                fontSize:
+                  "1rem"
+              }}
+            >
+              No te confíes.
+            </p>
           </div>
-        )}
+        </div>
+      )}
 
       {alertaVidas ===
         "una" && (
-          <div className="vidas-fullscreen animate-fade-in">
-            <div className="vidas-fullscreen__content">
-              <h2
-                style={{
-                  color:
-                    "var(--danger)",
-                  margin: 0,
-                  fontSize:
-                    "2rem",
-                  animation:
-                    "pulse 1s infinite"
-                }}
-              >
-                <i className="fas fa-fire" />
-                {" "}1 vida
-              </h2>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
+            <h2
+              style={{
+                color:
+                  "var(--danger)",
+                margin: 0,
+                fontSize:
+                  "2rem",
+                animation:
+                  "pulse 1s infinite"
+              }}
+            >
+              <i className="fas fa-fire" />
+              {" "}1 vida
+            </h2>
 
-              {renderCorazonesVidas()}
+            {renderCorazonesVidas()}
 
-              <p
-                style={{
-                  color: "#fff",
-                  fontSize:
-                    "1rem"
-                }}
-              >
-                Última oportunidad.
-              </p>
-            </div>
+            <p
+              style={{
+                color: "#fff",
+                fontSize:
+                  "1rem"
+              }}
+            >
+              Última oportunidad.
+            </p>
           </div>
-        )}
+        </div>
+      )}
 
       {alertaVidas ===
         "cero" && (
-          <div className="vidas-fullscreen animate-fade-in">
-            <div className="vidas-fullscreen__content">
-              <h1
-                style={{
-                  color:
-                    "var(--danger)",
-                  margin: 0,
-                  fontSize:
-                    "3rem",
-                  textShadow:
-                    "0 0 10px var(--danger)"
-                }}
-              >
-                GAME OVER
-              </h1>
+        <div className="vidas-fullscreen animate-fade-in">
+          <div className="vidas-fullscreen__content">
+            <h1
+              style={{
+                color:
+                  "var(--danger)",
+                margin: 0,
+                fontSize:
+                  "3rem",
+                textShadow:
+                  "0 0 10px var(--danger)"
+              }}
+            >
+              GAME OVER
+            </h1>
 
-              {renderCorazonesVidas()}
+            {renderCorazonesVidas()}
 
-              <p
-                style={{
-                  color: "#aaa",
-                  fontSize:
-                    "1rem"
-                }}
-              >
-                Progreso reiniciado.
-              </p>
-            </div>
+            <p
+              style={{
+                color: "#aaa",
+                fontSize:
+                  "1rem"
+              }}
+            >
+              Progreso reiniciado.
+            </p>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 }
