@@ -1,67 +1,58 @@
-:root {
-  --bg: #FBF7F0;
-  --surface: #F4F1E8;
-  --surface-alt: #EAE5D9;
-  --surface-hover: #EAE5D9;
-  --surface-ts: #E0DACB;
-  --border: #D6D0C4;
-  --border-strong: #B5AD9E;
-
-  --ink: #2C2C2C;
-  --ink-soft: #555555;
-  --ink-faint: #7A7A7A;
-  --ink-on-primary: #ffffff;
-
-  --primary: #6C7A35;
-  --primary-dark: #525D25;
-  --primary-light: #859642;
-  --primary-bg: #DCECC3;
-
-  --secondary: #5A7B94;
-  --secondary-dark: #435E73;
-  --secondary-bg: #D1E3F0;
-
-  --accent: #A86540;
-  --accent-dark: #824C2F;
-  --accent-bg: #F2D9CC;
-
-  --danger: #A04E40;
-  --danger-dark: #833D32;
-  --danger-bg: #E0BCB1;
-  --success: #6C7A35;
-  --success-bg: #DCECC3;
-  --warning: #FBE8B3;
-  --warning-bg: #E0CD9C;
-
-  --overlay: rgba(0, 0, 0, 0.5);
-  --overlay-strong: rgba(0, 0, 0, 0.78);
-
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.11);
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.15);
-
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-full: 999px;
-
-  --font-body: "Lato", sans-serif;
-  --font-display: "Raleway", sans-serif;
+:root{
+  --bg:#FBF7F0;
+  --surface:#F4F1E8;
+  --surface-alt:#EAE5D9;
+  --surface-hover:#D9D3C6;
+  --surface-ts:#E0DACB;
+  --border:#D6D0C4;
+  --border-strong:#B5AD9E;
+  --ink:#2C2C2C;
+  --ink-soft:#555555;
+  --ink-faint:#7A7A7A;
+  --ink-on-primary:#ffffff;
+  --primary:#6C7A35;
+  --primary-dark:#525D25;
+  --primary-light:#859642;
+  --primary-bg:#DCECC3;
+  --secondary:#5A7B94;
+  --secondary-dark:#435E73;
+  --secondary-bg:#D1E3F0;
+  --accent:#A86540;
+  --accent-dark:#824C2F;
+  --accent-bg:#F2D9CC;
+  --danger:#A04E40;
+  --danger-dark:#833D32;
+  --danger-bg:#E0BCB1;
+  --success:#6C7A35;
+  --success-bg:#DCECC3;
+  --warning:#FFF6DD;
+  --warning-bg:#fffaec;
+  --overlay:rgba(0,0,0,.5);
+  --overlay-strong:rgba(0,0,0,.78);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:0 6px 16px rgba(0,0,0,.11);
+  --shadow-lg:0 14px 36px rgba(0,0,0,.15);
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:18px;
+  --radius-full:999px;
+  --font-body:"Lato",sans-serif;
+  --font-display:"Raleway",sans-serif;
 }
 
-$bp-sm: 480px;
-$bp-md: 768px;
-$bp-lg: 1024px;
-$bp-xl: 1440px;
+$bp-sm:480px;
+$bp-md:768px;
+$bp-lg:1024px;
+$bp-xl:1440px;
 
-@mixin respond($bp) {
-  @if $bp == sm {
-    @media (min-width: $bp-sm) { @content; }
-  } @else if $bp == md {
-    @media (min-width: $bp-md) { @content; }
-  } @else if $bp == lg {
-    @media (min-width: $bp-lg) { @content; }
-  } @else if $bp == xl {
-    @media (min-width: $bp-xl) { @content; }
+@mixin respond($bp){
+  @if $bp==sm{
+    @media (min-width:$bp-sm){@content;}
+  }@else if $bp==md{
+    @media (min-width:$bp-md){@content;}
+  }@else if $bp==lg{
+    @media (min-width:$bp-lg){@content;}
+  }@else if $bp==xl{
+    @media (min-width:$bp-xl){@content;}
   }
 }

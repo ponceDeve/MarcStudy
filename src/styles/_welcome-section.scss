@@ -1,512 +1,366 @@
-.welcome-section {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto 0;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.welcome-section{
+  width:100%;
+  max-width:100%;
+  margin:40px auto 0;
+  display:flex;
+  flex-direction:column;
+  flex:1;
 }
-
-.welcome-section__courses {
-  width: 100%;
-  background: var(--ink-on-primary);
-  padding: 40px 0;
+.welcome-section__courses{
+  width:100%;
+  background:var(--ink-on-primary);
+  padding:40px 0;
 }
-
-@media (min-width: 640px) {
-  .welcome-section__courses {
-    padding: 56px 0;
+@media (min-width:640px){
+  .welcome-section__courses{
+    padding:56px 0;
   }
 }
-
 .welcome-section__intro,
-.welcome-section__faq-inner {
-  width: 100%;
+.welcome-section__faq-inner{
+  width:100%;
 }
-
-.welcome-section__title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 0 0 12px;
+.welcome-section__title{
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--ink);
+  margin:0 0 12px;
 }
-
-@media (min-width: 640px) {
-  .welcome-section__title {
-    font-size: 1.35rem;
+@media (min-width:640px){
+  .welcome-section__title{
+    font-size:1.35rem;
   }
 }
-
-.welcome-section__lead {
-  color: var(--ink-soft);
-  line-height: 1.55;
-  margin: 0 0 20px;
-
-  strong {
-    color: var(--ink);
+.welcome-section__lead{
+  color:var(--ink-soft);
+  line-height:1.55;
+  margin:0 0 20px;
+}
+.welcome-section__lead strong{
+  color:var(--ink);
+}
+@media (min-width:640px){
+  .welcome-section__lead{
+    font-size:1.02rem;
+    line-height:1.65;
+    max-width:640px;
   }
 }
-
-@media (min-width: 640px) {
-  .welcome-section__lead {
-    font-size: 1.02rem;
-    line-height: 1.65;
-    max-width: 640px;
+.welcome-section__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  width:100%;
+  align-items:stretch;
+}
+@media (min-width:480px){
+  .welcome-section__grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
-
-/* ============================================================
-   GRID DE CURSOS
-   ============================================================ */
-
-.welcome-section__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  width: 100%;
-  align-items: stretch;
-}
-
-@media (min-width: 480px) {
-  .welcome-section__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width:992px){
+  .welcome-section__grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:16px;
   }
 }
-
-@media (min-width: 992px) {
-  .welcome-section__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
+.welcome-section__curso{
+  position:relative;
+  z-index:1;
+  height:100%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  border:1px solid color-mix(in srgb,var(--accent),transparent 65%);
+  border-top:5px solid color-mix(in srgb,var(--accent),transparent 65%);
+  border-radius:14px;
+  background:var(--warning);
+  transition:background .2s linear,border-color .2s linear,box-shadow .2s linear,transform .2s linear!important;
+}
+.welcome-section__curso:hover{
+  border-color:var(--accent);
+  background:var(--warning-bg);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+.welcome-section__curso:hover .welcome-section__temas{
+  background:var(--warning-bg);
+}
+.welcome-section__curso.is-open{
+  z-index:10;
+  border-color:var(--accent);
+  border-bottom-color:transparent;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+  box-shadow:none;
+  transform:none;
+}
+.welcome-section__curso-top{
+  padding:16px 16px 4px;
+  flex:1;
+}
+@media (min-width:640px){
+  .welcome-section__curso-top{
+    padding:22px 22px 6px;
   }
 }
-
-/* ============================================================
-   TARJETA DEL CURSO
-   ============================================================ */
-
-.welcome-section__curso {
-  --curso-bg: color-mix(in srgb, var(--warning) 32%, var(--bg));
-
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-
-  border: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
-  border-top: 5px solid color-mix(in srgb, var(--accent), transparent 65%);
-  border-radius: 14px;
-  background: var(--curso-bg);
-
-  transition: all  .2s ease !important;
+.welcome-section__curso-info{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
 }
-
-.welcome-section__curso:hover {
-  border-color: var(--accent);
-  background: var(--ink-on-primary);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.welcome-section__curso-nombre{
+  font-weight:700;
+  color:var(--ink);
+  font-size:1rem;
 }
-
-.welcome-section__curso:hover .welcome-section__temas {
-  background: var(--ink-on-primary);
-}
-
-.welcome-section__curso.is-open {
-  z-index: 10;
-  border-color: var(--accent);
-  border-bottom-color: transparent;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  box-shadow: none;
-  transform: none;
-}
-
-/* ============================================================
-   CONTENIDO DE LA TARJETA
-   ============================================================ */
-
-.welcome-section__curso-top {
-  padding: 16px 16px 4px;
-  flex: 1;
-}
-
-@media (min-width: 640px) {
-  .welcome-section__curso-top {
-    padding: 22px 22px 6px;
+@media (min-width:640px){
+  .welcome-section__curso-nombre{
+    font-size:1.12rem;
   }
 }
-
-.welcome-section__curso-info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.welcome-section__curso-count{
+  font-size:.76rem;
+  font-weight:600;
+  color:var(--primary);
+  background:var(--primary-bg);
+  padding:2px 9px;
+  border-radius:var(--radius-full);
+  width:fit-content;
 }
-
-.welcome-section__curso-nombre {
-  font-weight: 700;
-  color: var(--ink);
-  font-size: 1rem;
+.welcome-section__curso-desc{
+  margin:10px 0 0;
+  color:var(--ink);
+  font-size:.86rem;
+  line-height:1.45;
 }
-
-@media (min-width: 640px) {
-  .welcome-section__curso-nombre {
-    font-size: 1.12rem;
+@media (min-width:640px){
+  .welcome-section__curso-desc{
+    font-size:.92rem;
   }
 }
-
-.welcome-section__curso-count {
-  font-size: .76rem;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-bg);
-  padding: 2px 9px;
-  border-radius: var(--radius-full);
-  width: fit-content;
+.welcome-section__ver-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:calc(100% - 32px);
+  margin:auto 16px 16px;
+  padding:9px 12px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:transparent;
+  color:var(--primary);
+  font-weight:600;
+  font-size:.86rem;
+  cursor:pointer;
+  transition:background .2s linear,border-color .2s linear,color .2s linear,transform .15s ease!important;
 }
-
-.welcome-section__curso-desc {
-  margin: 10px 0 0;
-  color: var(--ink);
-  font-size: .86rem;
-  line-height: 1.45;
+.welcome-section__ver-btn:hover{
+  background:var(--primary-bg);
+  border-color:var(--primary);
+  color:var(--ink);
 }
-
-@media (min-width: 640px) {
-  .welcome-section__curso-desc {
-    font-size: .92rem;
+.welcome-section__ver-btn:active{
+  transform:scale(.97);
+}
+.welcome-section__curso.is-open .welcome-section__ver-btn{
+  background:var(--success);
+  border-color:var(--success);
+  color:var(--ink-on-primary);
+}
+.welcome-section__curso.is-open .welcome-section__ver-btn:hover{
+  background:var(--success-bg);
+  border-color:var(--success);
+  color:var(--ink);
+}
+@media (min-width:640px){
+  .welcome-section__ver-btn{
+    width:calc(100% - 44px);
+    margin:auto 22px 22px;
   }
 }
-
-/* ============================================================
-   BOTÓN VER TEMAS
-   ============================================================ */
-
-.welcome-section__ver-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  width: calc(100% - 32px);
-
-  margin: auto 16px 16px;
-
-  padding: 9px 12px;
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-
-  background: transparent;
-  color: var(--primary);
-
-  font-weight: 600;
-  font-size: .86rem;
-
-  cursor: pointer;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease,
-    transform .15s ease !important;
+.welcome-section__ver-btn-icon{
+  font-size:.72rem;
+  transition:transform .3s cubic-bezier(.4,0,.2,1)!important;
 }
-
-@media (min-width: 640px) {
-  .welcome-section__ver-btn {
-    width: calc(100% - 44px);
-    margin: auto 22px 22px;
+.welcome-section__ver-btn-icon.is-open{
+  transform:rotate(180deg);
+}
+.welcome-section__temas{
+  position:absolute;
+  top:100%;
+  left:-1px;
+  right:-1px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  max-height:260px;
+  overflow-y:auto;
+  background:var(--warning);
+  border:1px solid var(--accent);
+  border-top:none;
+  border-radius:0 0 14px 14px;
+  animation:temasEntrada .25s linear;
+  transform-origin:top;
+  transition:background-color .2s linear!important;
+}
+.welcome-section__curso:hover .welcome-section__temas{
+  background:var(--warning-bg);
+}
+@keyframes temasEntrada{
+  from{
+    opacity:0;
+    transform:translateY(-8px) scaleY(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scaleY(1);
   }
 }
-
-.welcome-section__ver-btn:hover {
-  background: var(--primary-bg);
-  border-color: var(--primary);
-}
-
-.welcome-section__ver-btn:active {
-  transform: scale(.97);
-}
-
-.welcome-section__ver-btn-icon {
-  font-size: .72rem;
-
-  transition:
-    transform .3s cubic-bezier(.4, 0, .2, 1) !important;
-}
-
-.welcome-section__ver-btn-icon.is-open {
-  transform: rotate(180deg);
-}
-
-/* ============================================================
-   LISTA DE TEMAS
-   ============================================================ */
-
-.welcome-section__temas {
-  position: absolute;
-  top: 100%;
-  left: -1px;
-  right: -1px;
-
-  list-style: none;
-
-  margin: 0;
-  padding: 6px;
-
-  max-height: 260px;
-  overflow-y: auto;
-
-  background: var(--curso-bg);
-
-  border: 1px solid var(--accent);
-  border-top: none;
-
-  border-radius: 0 0 14px 14px;
-
-  animation: temasEntrada .25s ease-out;
-  transform-origin: top;
-
-  transition:
-    background-color .25s ease !important;
-}
-
-@keyframes temasEntrada {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scaleY(.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
+@media (min-width:640px){
+  .welcome-section__temas{
+    max-height:300px;
   }
 }
-
-@media (min-width: 640px) {
-  .welcome-section__temas {
-    max-height: 300px;
-    padding: 8px;
+.welcome-section__temas::-webkit-scrollbar{
+  width:6px;
+}
+.welcome-section__temas::-webkit-scrollbar-track{
+  background:transparent;
+}
+.welcome-section__temas::-webkit-scrollbar-thumb{
+  background:var(--border-strong);
+  border-radius:3px;
+}
+.welcome-section__tema-btn{
+  width:100%;
+  text-align:left;
+  background:transparent;
+  border:none;
+  padding:10px 12px;
+  color:var(--ink-soft);
+  font-size:.88rem;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease!important;
+}
+.welcome-section__tema-btn:hover{
+  background:var(--primary-bg);
+  color:var(--ink);
+}
+.welcome-section__tema-btn:active{
+  transform:scale(.98);
+}
+@media (min-width:640px){
+  .welcome-section__tema-btn{
+    padding:11px 14px;
+    font-size:.92rem;
   }
 }
-
-/* ============================================================
-   SCROLLBAR DE TEMAS
-   ============================================================ */
-
-.welcome-section__temas::-webkit-scrollbar {
-  width: 6px;
+.welcome-section__faq{
+  width:100%;
+  background:var(--surface-alt);
+  padding:40px 0;
 }
-
-.welcome-section__temas::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.welcome-section__temas::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: 3px;
-}
-
-/* ============================================================
-   BOTONES DE TEMAS
-   ============================================================ */
-
-.welcome-section__tema-btn {
-  width: 100%;
-  text-align: left;
-
-  background: transparent;
-  border: none;
-
-  padding: 10px 12px;
-
-  border-radius: 8px;
-
-  color: var(--ink-soft);
-
-  font-size: .88rem;
-
-  cursor: pointer;
-
-  transition:
-    background .18s ease,
-    color .18s ease,
-    transform .15s ease !important;
-}
-
-.welcome-section__tema-btn:hover {
-  background: var(--primary-bg);
-  color: var(--ink);
-  transform: translateX(3px);
-}
-
-.welcome-section__tema-btn:active {
-  transform: scale(.98);
-}
-
-@media (min-width: 640px) {
-  .welcome-section__tema-btn {
-    padding: 11px 14px;
-    font-size: .92rem;
+@media (min-width:640px){
+  .welcome-section__faq{
+    padding:56px 0;
   }
 }
-
-/* ============================================================
-   FAQ
-   ============================================================ */
-
-.welcome-section__faq {
-  width: 100%;
-  background: var(--surface-alt);
-  padding: 40px 0;
+.welcome-section__faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
-
-@media (min-width: 640px) {
-  .welcome-section__faq {
-    padding: 56px 0;
-  }
+.welcome-section__faq-item{
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  padding:4px 16px;
+  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease!important;
 }
-
-.welcome-section__faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.welcome-section__faq-item summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px 8px;
+  margin:0 -8px;
+  border-radius:8px;
+  font-weight:600;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  transition: all .2s linear;
 }
-
-.welcome-section__faq-item {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg);
-  padding: 4px 16px;
-
-  transition:
-    border-color .25s ease,
-    box-shadow .25s ease,
-    background .25s ease !important;
-
-  summary {
-    list-style: none;
-    cursor: pointer;
-
-    padding: 12px 8px;
-    margin: 0 -8px;
-
-    border-radius: 8px;
-
-    font-weight: 600;
-    color: var(--ink);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 10px;
-
-    transition:
-      background .2s ease,
-      color .2s ease !important;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    &:hover {
-      background: var(--surface-hover);
-    }
-
-    &::after {
-      content: "+";
-      color: var(--ink-faint);
-      font-weight: 400;
-      font-size: 1.1rem;
-
-      transition:
-        transform .3s ease,
-        color .2s ease !important;
-    }
+.welcome-section__faq-item summary::-webkit-details-marker{
+  display:none;
+}
+.welcome-section__faq-item summary:hover{
+  background:var(--primary-bg);
+}
+.welcome-section__faq-item summary::after{
+  content:"+";
+  color:var(--ink-faint);
+  font-weight:400;
+  font-size:1.1rem;
+  transition:transform .3s ease,color .2s ease!important;
+}
+.welcome-section__faq-item[open]{
+  border-color:var(--primary);
+  box-shadow:var(--shadow-sm);
+}
+.welcome-section__faq-item[open] summary{
+  color:var(--primary);
+}
+.welcome-section__faq-item[open] summary:hover{
+  background:var(--primary-bg);
+}
+.welcome-section__faq-item[open] summary::after{
+  content:"–";
+  color:var(--primary);
+  transform:rotate(180deg);
+}
+.welcome-section__faq-item p{
+  margin:10px 0 14px;
+  color:var(--ink-soft);
+  font-size:.9rem;
+  line-height:1.5;
+  animation:faqTextoEntrada .25s ease-out;
+}
+@keyframes faqTextoEntrada{
+  from{
+    opacity:0;
+    transform:translateY(-5px);
   }
-
-  &[open] {
-    border-color: var(--primary);
-    box-shadow: var(--shadow-sm);
-  }
-
-  &[open] summary {
-    color: var(--primary);
-  }
-
-  &[open] summary:hover {
-    background: var(--primary-bg);
-  }
-
-  &[open] summary::after {
-    content: "–";
-    color: var(--primary);
-    transform: rotate(180deg);
-  }
-
-  p {
-    margin: 10px 0 14px;
-    color: var(--ink-soft);
-    font-size: .9rem;
-    line-height: 1.5;
-
-    animation: faqTextoEntrada .25s ease-out;
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
-
-/* ============================================================
-   ANIMACIÓN FAQ
-   ============================================================ */
-
-@keyframes faqTextoEntrada {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.welcome-section__faq-summary-text{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-
-/* ============================================================
-   ICONO Y TEXTO FAQ
-   ============================================================ */
-
-.welcome-section__faq-summary-text {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.welcome-section__faq-icon{
+  flex-shrink:0;
+  color:var(--primary);
+  font-size:.9rem;
 }
-
-.welcome-section__faq-icon {
-  flex-shrink: 0;
-  color: var(--primary);
-  font-size: .9rem;
-}
-
-/* ============================================================
-   MÓVIL
-   ============================================================ */
-
-@media (max-width: 479px) {
+@media (max-width:479px){
   .welcome-section__courses,
-  .welcome-section__faq {
-    padding: 32px 0;
+  .welcome-section__faq{
+    padding:32px 0;
   }
-
-  .welcome-section__faq-item {
-    padding: 4px 12px;
+  .welcome-section__faq-item{
+    padding:4px 12px;
   }
-
-  .welcome-section__faq-item summary {
-    padding: 11px 6px;
+  .welcome-section__faq-item summary{
+    padding:11px 6px;
   }
-
-  .welcome-section__faq-summary-text {
-    gap: 8px;
-    font-size: .9rem;
+  .welcome-section__faq-summary-text{
+    gap:8px;
+    font-size:.9rem;
   }
 }

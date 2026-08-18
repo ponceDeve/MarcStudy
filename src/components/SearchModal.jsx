@@ -67,11 +67,11 @@ function agruparResultados({ cursos, temas }) {
       curso: c.nombre,
       temas: cursoEncontrado
         ? cursoEncontrado.temas.map((t) => ({
-            type: "tema",
-            curso: c.nombre,
-            tema: t.tema,
-            archivo: t.archivo,
-          }))
+          type: "tema",
+          curso: c.nombre,
+          tema: t.tema,
+          archivo: t.archivo,
+        }))
         : [],
     };
   });
@@ -142,9 +142,9 @@ export default function SearchModal({
       hayQuery
         ? buscarFuertes(query)
         : {
-            cursos: [],
-            temas: [],
-          },
+          cursos: [],
+          temas: [],
+        },
     [query, hayQuery]
   );
 
@@ -188,6 +188,9 @@ export default function SearchModal({
   const hayMasHistorial =
     paginaHistorial * HISTORIAL_POR_PAGINA <
     historial.length;
+
+  const hayMenosHistorial =
+    paginaHistorial > 1;
 
   /* ============================================================
      EJECUTAR BÚSQUEDA / SELECCIÓN
@@ -290,7 +293,7 @@ export default function SearchModal({
   }, [open, onClose]);
 
   /* ============================================================
-     MODAL CERRADO
+     MODAL
      ============================================================ */
 
   return (
@@ -310,11 +313,10 @@ export default function SearchModal({
             ====================================================== */}
 
         <div
-          className={`search-input-row${
-            hayQuery || mostrarHistorial
+          className={`search-input-row${hayQuery || mostrarHistorial
               ? " has-query"
               : ""
-          }`}
+            }`}
         >
           <input
             autoComplete="off"
@@ -401,10 +403,6 @@ export default function SearchModal({
                   ? item.nombre
                   : item.tema;
 
-              /*
-               * Se utiliza información adicional para reducir
-               * la posibilidad de keys repetidas.
-               */
               const historialKey =
                 item.type === "curso"
                   ? `curso-${item.nombre}-${index}`
@@ -436,37 +434,49 @@ export default function SearchModal({
                 ================================================== */}
 
             <div className="search-history-actions">
-
-              {hayMasHistorial && (
+              {paginaHistorial > 1 && (
                 <button
                   type="button"
-                  className="search-history-more"
+                  className="search-history-action"
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
                   onClick={() => {
-                    setPaginaHistorial(
-                      (actual) => actual + 1
-                    );
+                    setPaginaHistorial((actual) => Math.max(1, actual - 1));
                   }}
                 >
-                  Mostrar más
+                  <i className="fa-solid fa-chevron-up" />
+                  Mostrar -
+                </button>
+              )}
+
+              {hayMasHistorial && (
+                <button
+                  type="button"
+                  className="search-history-action"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                  }}
+                  onClick={() => {
+                    setPaginaHistorial((actual) => actual + 1);
+                  }}
+                >
+                  <i className="fa-solid fa-chevron-down" />
+                  Mostrar +
                 </button>
               )}
 
               <button
                 type="button"
-                className="search-history-delete"
+                className="search-history-action search-history-action--delete"
                 onMouseDown={(e) => {
                   e.preventDefault();
                 }}
-                onClick={
-                  eliminarTodasLasBusquedas
-                }
+                onClick={eliminarTodasLasBusquedas}
               >
-                Eliminar búsquedas
+                <i className="fa-solid fa-trash" />
+                Eliminar 
               </button>
-
             </div>
           </div>
         )}
@@ -503,11 +513,10 @@ export default function SearchModal({
                             nombre: g.curso,
                           })
                         }
-                        className={`search-result-item is-curso${
-                          idxCurso === focusedIdx
+                        className={`search-result-item is-curso${idxCurso === focusedIdx
                             ? " is-focused"
                             : ""
-                        }`}
+                          }`}
                       >
                         <span className="curso-title">
                           {g.curso}
@@ -528,11 +537,10 @@ export default function SearchModal({
                             onClick={() =>
                               ejecutarBusqueda(t)
                             }
-                            className={`search-result-item is-tema${
-                              idxTema === focusedIdx
+                            className={`search-result-item is-tema${idxTema === focusedIdx
                                 ? " is-focused"
                                 : ""
-                            }`}
+                              }`}
                           >
                             <p className="search-result-item__tema">
                               {t.tema}

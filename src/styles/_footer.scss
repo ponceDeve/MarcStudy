@@ -8,9 +8,13 @@
   gap: 5px;
   padding: 18px 16px;
   box-sizing: border-box;
-  background: transparent;
+  background: var(--ink-soft);
   border-top: 1px solid var(--border);
   text-align: center;
+}
+
+.app-footer p {
+  font-size: 15px;
 }
 
 .app-footer__brand {
@@ -19,7 +23,6 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--ink-soft);
 }
 
 .app-footer__copyright {
@@ -28,7 +31,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 1.4;
-  color: var(--ink-soft);
+  color: var(--ink-on-primary);
 }
 
 @media (min-width: 640px) {

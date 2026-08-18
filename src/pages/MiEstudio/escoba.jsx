@@ -8,7 +8,7 @@ import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "../../components/WelcomeSection";
-import NuevosTemasAviso from "../../components/NuevosTemasAviso";
+import AvisosInicio from "../../components/AvisosInicio";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
@@ -1043,7 +1043,7 @@ export default function MiEstudioPage() {
           <>
             <AppHeader />
             <div className="mi-estudio__home-screen container">
-              <NuevosTemasAviso />
+              <AvisosInicio />
               <div className="mi-estudio__intro">
                 <div>
                   <p className="mi-estudio__intro-eyebrow">Mi Estudio</p>

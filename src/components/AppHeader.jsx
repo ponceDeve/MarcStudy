@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function AppHeader({
@@ -10,6 +10,7 @@ export default function AppHeader({
   const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const headerRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     const el = headerRef.current;
@@ -32,36 +33,40 @@ export default function AppHeader({
 
   const botones = [
     ...(showHome
-      ? [{
-        title: "Ir a Mi Estudio",
-        label: "Home",
-        fullLabel: "Inicio",
-        icon: "fa-solid fa-house",
-        to: "/"
-      }]
+      ? [
+          {
+            title: "Ir a Mi Estudio",
+            label: "Home",
+            fullLabel: "Inicio",
+            icon: "fa-solid fa-house",
+            to: "/",
+          },
+        ]
       : []),
     ...(onAbrirBuscador
-      ? [{
-        title: "Buscar curso o tema",
-        label: "Buscar",
-        fullLabel: "Buscar curso o tema",
-        icon: "fa-solid fa-magnifying-glass",
-        onClick: onAbrirBuscador
-      }]
+      ? [
+          {
+            title: "Buscar curso o tema",
+            label: "Buscar",
+            fullLabel: "Buscar curso o tema",
+            icon: "fa-solid fa-magnifying-glass",
+            onClick: onAbrirBuscador,
+          },
+        ]
       : []),
     {
       title: "Ir al Pomodoro",
       label: "Pomo",
       fullLabel: "Pomodoro",
       icon: "fa-solid fa-calendar-alt",
-      to: "/pomodoro"
+      to: "/pomodoro",
     },
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
       fullLabel: "Mis Repasos",
       icon: "fa-solid fa-brain",
-      to: "/repaso"
+      to: "/repaso",
     },
     {
       title: "Editar horario",
@@ -69,11 +74,24 @@ export default function AppHeader({
       fullLabel: "Editar horario",
       icon: "fa-solid fa-pen",
       to: "/editar",
-      onClick: onEditarHorario
+      onClick: onEditarHorario,
     },
   ];
 
-  function renderBoton(b, cls, closeFn = () => { }) {
+  const esActivo = (b) => {
+    if (!b.to) return false;
+
+    if (b.to === "/") {
+      return location.pathname === "/";
+    }
+
+    return (
+      location.pathname === b.to ||
+      location.pathname.startsWith(`${b.to}/`)
+    );
+  };
+
+  function renderBoton(b, cls) {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
@@ -81,9 +99,10 @@ export default function AppHeader({
       </>
     );
 
+    const activeClass = esActivo(b) ? " is-active" : "";
+
     const handleClick = () => {
       if (b.onClick) b.onClick();
-      closeFn();
     };
 
     if (b.to) {
@@ -92,7 +111,7 @@ export default function AppHeader({
           key={b.title}
           to={b.to}
           title={b.title}
-          className={cls}
+          className={`${cls}${activeClass}`}
           onClick={handleClick}
         >
           {content}
@@ -106,7 +125,7 @@ export default function AppHeader({
         type="button"
         onClick={handleClick}
         title={b.title}
-        className={cls}
+        className={`${cls}${activeClass}`}
       >
         {content}
       </button>
@@ -122,7 +141,6 @@ export default function AppHeader({
       <div className="topbar__drawer">
         <div className="topbar__drawer-header">
           <h3 className="topbar__drawer-title">{title}</h3>
-
           <button
             type="button"
             className="topbar__drawer-close"
@@ -133,23 +151,22 @@ export default function AppHeader({
           </button>
         </div>
 
-        <div className="topbar__drawer-list">
-          {children}
-        </div>
+        <div className="topbar__drawer-list">{children}</div>
       </div>
     </div>
   );
 
-  const renderFila = (b, closeFn = () => { }) => {
+  const renderFila = (b, closeFn = () => {}) => {
     const content = (
       <>
         <span className="topbar__drawer-item-label">
           {b.fullLabel || b.label}
         </span>
-
         <i className={`${b.icon} topbar__drawer-item-icon`} />
       </>
     );
+
+    const activeClass = esActivo(b) ? " is-active" : "";
 
     const handleClick = () => {
       if (b.onClick) b.onClick();
@@ -161,7 +178,7 @@ export default function AppHeader({
         key={b.title}
         to={b.to}
         title={b.title}
-        className="topbar__drawer-item"
+        className={`topbar__drawer-item${activeClass}`}
         onClick={handleClick}
       >
         {content}
@@ -172,7 +189,7 @@ export default function AppHeader({
         type="button"
         onClick={handleClick}
         title={b.title}
-        className="topbar__drawer-item"
+        className={`topbar__drawer-item${activeClass}`}
       >
         {content}
       </button>

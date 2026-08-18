@@ -217,10 +217,8 @@ a {
 .app-footer {
   padding: 18px 16px;
   text-align: center;
-  margin-top: 50px; /* lo empuja al fondo cuando el contenido es corto */
   /* Fondo invertido respecto a la página: --ink ya es el color opuesto
      a --bg, así que usarlo como background logra la inversión automática. */
-  background: var(--ink);
   color: color-mix(in srgb, var(--bg) 65%, transparent);
   font-size: 0.85rem;
 

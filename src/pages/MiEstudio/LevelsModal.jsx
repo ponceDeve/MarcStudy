@@ -65,7 +65,9 @@ export default function LevelsModal({
         <h2 className="levels-modal__title">Seleccionar Nivel</h2>
 
         <div
-          className="home-search levels-modal__search"
+          className={`home-search levels-modal__search ${
+            busqueda.trim() ? "has-query" : ""
+          }`}
           onClick={(e) => e.stopPropagation()}
         >
           <input

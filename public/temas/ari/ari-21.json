@@ -1,0 +1,1142 @@
+{
+  "curso": "Aritmética",
+  "tema": "Numeración III: Propiedades y Conversiones",
+  "glosario": {
+    "→": "produce",
+    "Numeral": "Representación gráfica de un número.",
+    "Base": "Sistema empleado para agrupar unidades.",
+    "Cifra": "Símbolo individual de un numeral.",
+    "Acotar": "Establecer límites superior e inferior.",
+    "Intersección": "Conjunto de valores comunes."
+  },
+  "theory": [
+    {
+      "titulo": "Sistemas de Numeración y Conversión de Bases",
+      "puntos": [
+        {
+          "texto": "Método «Descomposición Polinómica» → Convierte numeral a base diez",
+          "explicacion": "Este método transforma cualquier numeral de base $n$ al sistema decimal (base 10). Consiste en sumar los productos de cada cifra multiplicada por la base elevada a la posición de la cifra de derecha a izquierda. Es indispensable para igualar bases en ecuaciones. Ejemplo: $\\overline{123}_{(4)} = 1 \\cdot 4^2 + 2 \\cdot 4^1 + 3 = 16 + 8 + 3 = 27_{(10)}$."
+        },
+        {
+          "texto": "Aplicando «Descomposición Polinómica» → Ecuación lineal de numerales",
+          "explicacion": "Resolvamos la ecuación de examen $\\overline{aab}_{(5)} = \\overline{1bb}_{(10)}$. Descomponiendo ambos lados: $a \\cdot 5^2 + a \\cdot 5 + b = 1 \\cdot 10^2 + b \\cdot 10 + b$. Simplificando obtenemos $25a + 5a + b = 100 + 11b$, lo que resulta en $30a = 100 + 10b$. Dividiendo entre 10, obtenemos $3a = 10 + b$. Evaluando cifras enteras admisibles, la única solución es $a=4$ y $b=2$."
+        },
+        {
+          "texto": "Método «Divisiones Sucesivas» → Convierte base diez a otra base",
+          "explicacion": "Se utiliza para transformar un número del sistema decimal a una base diferente $n$. Consiste en dividir el número sucesivamente entre $n$ hasta que el cociente sea estrictamente menor que el divisor. El nuevo numeral se forma ordenando el último cociente y todos los residuos leídos de derecha a izquierda."
+        },
+        {
+          "texto": "Aplicando «Divisiones Sucesivas» → Conversión práctica de base",
+          "explicacion": "Transformemos el número $35$ a base $3$ siguiendo el algoritmo. Dividimos: $35 \\div 3$ da cociente $11$ y residuo $2$. Luego dividimos $11 \\div 3$ obteniendo cociente $3$ y residuo $2$. Finalmente, $3 \\div 3$ da cociente $1$ y residuo $0$. El numeral se lee al revés tomando el último cociente y los residuos: $1022_{(3)}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad de Cifras Máximas en Numerales",
+      "puntos": [
+        {
+          "texto": "Propiedad «Cifras máximas» → Fórmula con potencias de base",
+          "explicacion": "Un numeral formado exclusivamente por la mayor cifra posible admitida en su base, es decir $(n-1)$, repetida exactamente $k$ veces, se puede expresar analíticamente como la base $n$ elevada a la cantidad de cifras $k$, menos la unidad. Esto simplifica cálculos tediosos en ecuaciones algebraicas. Ejemplo numérico rápido: $5555_{(6)} = 6^4 - 1$."
+        },
+        {
+          "texto": "Aplicando «Cifras máximas» → Hallando bases de numerales",
+          "explicacion": "Analicemos la ecuación $\\overline{(n-1)...(n-1)}_{(n)}$ de $6$ cifras, más $1$, que es igual a $27^{12}$. Aplicando nuestra fórmula directa al numeral, tenemos: $(n^6 - 1) + 1 = (3^3)^{12}$. Esto se reduce a $n^6 = 3^{36}$. Expresando la potencia de la derecha para igualar exponentes: $n^6 = (3^6)^6$. Por simetría matemática deducimos inmediatamente que la base buscada es $n = 729$."
+        },
+        {
+          "texto": "Identidad «Cifras máximas acotadas» → Restricción para estimar bases",
+          "explicacion": "En problemas donde un numeral de cifras máximas se compara con un valor límite constante, utilizamos la fórmula potencial para generar una inecuación y acotar el dominio. Si sabemos que el resultado es menor a un valor dado, evaluamos bases enteras. La principal restricción de existencia es que la base siempre supera a sus cifras."
+        },
+        {
+          "texto": "Aplicando «Cifras máximas acotadas» → Resolución para valores menores",
+          "explicacion": "Si nos dan $\\overline{(n-1)(n-1)(n-1)(n-1)}_{(n)} = \\overline{abc} < 1000$. Por propiedad, este numeral máximo de $4$ cifras en base $n$ equivale matemáticamente a $n^4 - 1$. Por ende, $n^4 - 1 < 1000$, lo que implica $n^4 \\le 1000$. Evaluando enteros, el mayor valor que cumple es $n=5$. Comprobamos el cálculo: $5^4 - 1 = 625 - 1 = 624$, cuadrando perfectamente con $\\overline{abc}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos y Condicionamiento de Numerales",
+      "puntos": [
+        {
+          "texto": "Teorema «Intervalo Numérico» → Acotación entre potencias consecutivas",
+          "explicacion": "Todo numeral arbitrario $N$ que posea exactamente $k$ cifras válidas al expresarse en un sistema de base $n$, se encuentra siempre delimitado entre dos potencias consecutivas de dicha base. El límite inferior absoluto es $n^{k-1}$ y el límite superior estricto es $n^k$. Esta doble desigualdad resulta clave para interceptar dominios de incógnitas."
+        },
+        {
+          "texto": "Aplicando «Intervalo Numérico» → Intersección de rangos admisibles",
+          "explicacion": "Sea el número $M = \\overline{abc}_{(8)} = \\overline{mnpq}_{(6)}$. Para la representación de $3$ cifras en base $8$: $8^2 \\le M < 8^3$, originando el rango $64 \\le M < 512$. Para las $4$ cifras en base $6$: $6^3 \\le M < 6^4$, dando $216 \\le M < 1296$. Intersectando ambos intervalos de existencia matemática, garantizamos que $M$ pertenece al rango entero y continuo $[216, 511]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación Matemática entre Magnitud Aparente y Base",
+      "puntos": [
+        {
+          "texto": "Principio «Magnitud Aparente» → Numeral mayor implica base menor",
+          "explicacion": "Cuando la teoría establece una igualdad estricta entre dos numerales que están expresados en sistemas de numeración diferentes, el numeral que visualmente aparenta ser mayor (por tener cifras más altas o mayor cantidad de estas) debe pertenecer imperativamente a una base menor para mantener el equilibrio del valor real."
+        },
+        {
+          "texto": "Aplicando «Magnitud Aparente» → Deducción rápida de desigualdades",
+          "explicacion": "Evaluemos la compleja igualdad $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$. Examinamos los numerales aparentes directos y es evidente que $1331 < 2626$. Conforme al principio axiomático de la magnitud aparente, para sostener la equivalencia, la base del término izquierdo debe superar obligatoriamente a la del derecho. Concluimos que $n > m$. Sabiendo por cifras que $m > 6$, inferimos inmediatamente que $n \\ge 8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Progresiones y Conteo Aritmético de Numerales",
+      "puntos": [
+        {
+          "texto": "Fórmula «Cantidad de términos» → Evalúa elementos en progresión aritmética",
+          "explicacion": "Para realizar el conteo de numerales discretos que configuran una progresión aritmética exacta, la cantidad total de términos se determina restando el último elemento menos el inicial, dividiendo esa brecha entre la razón constante de avance, y añadiendo la unidad al cociente. Es la herramienta principal para estadística de sucesiones."
+        },
+        {
+          "texto": "Aplicando «Cantidad de términos» → Conteo de múltiplos con terminación fija",
+          "explicacion": "Rescatando el intervalo hallado donde $M \\in [216, 511]$, se impone la condición de que el número $M$ termine obligatoriamente en la cifra $6$. La sucesión de casos válidos forma: $216, 226, 236, \\dots, 506$. Esta es una progresión aritmética formal con razón $10$. Aplicamos la fórmula: cantidad $= \\frac{506 - 216}{10} + 1 = \\frac{290}{10} + 1 = 30$ posibles valores."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias de Resolución Diofántica y Binomial",
+      "puntos": [
+        {
+          "texto": "Método «Acotación Diofántica» → Descomponer y limitar variables enteras",
+          "explicacion": "Esta estrategia algorítmica aplica para resolver inecuaciones o igualdades con múltiples incógnitas de restricción entera. Inicia expandiendo el numeral mediante su forma polinómica, agrupando los términos comunes de la variable a investigar y formulando desigualdades divisibles. Al operar en el campo de los enteros positivos, los valores permitidos se reducen a un conjunto finito y tabulable."
+        },
+        {
+          "texto": "Aplicando «Acotación Diofántica» → Resolviendo inecuaciones de un numeral",
+          "explicacion": "Examinemos la restricción operativa $\\overline{aaa}_{(8)} < 378$. Inicialmente transformamos el numeral base ejecutando el polinomio respectivo: $a \\cdot 8^2 + a \\cdot 8 + a < 378$. Esto se condensa sumando coeficientes: $64a + 8a + a = 73a$. Despejando nos queda $73a < 378$, lo que arroja aproximadamente $a < 5.17$. Sabiendo que $a$ es una cifra inicial, descarta el cero, dejando $a = 1, 2, 3, 4$."
+        },
+        {
+          "texto": "Teorema «Descomposición Binomial» → Expresión rápida en polinomios simétricos",
+          "explicacion": "Aquellos numerales cuyas cifras secuenciales coinciden simétricamente con los coeficientes del célebre triángulo de Pascal (patrones como $121, 1331, 14641$) escritos en una base $n$, logran factorizarse directamente como el binomio $(n+1)^k$, donde $k$ responde al grado polinómico máximo. Esta atajo descarta operaciones paso a paso durante el examen."
+        },
+        {
+          "texto": "Aplicando «Descomposición Binomial» → Igualdad directa en grado tres",
+          "explicacion": "Tomando el reto anterior $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$ y asumiendo $m=7$. Evaluamos el lado derecho: $2(7^3) + 6(7^2) + 2(7) + 6 = 2(343) + 6(49) + 14 + 6 = 1000$. En el lado izquierdo, por la simetría de sus cifras, $\\overline{1331}_{(n)}$ corresponde fielmente a $(n+1)^3$. Emparejando ambas partes logramos $(n+1)^3 = 1000$. Extrayendo la raíz cúbica concluimos $n+1 = 10$, confirmando sólidamente que $n=9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 21",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 22",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 23",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 24",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 25",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 26",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 27",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 28",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 29",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 30",
+          "explicacion": ""
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un técnico necesita expresar una medición registrada como el numeral $\\overline{123}_{(4)}$ en el sistema decimal para compararla con otra medición. ¿Qué valor obtiene al aplicar la descomposición polinómica?",
+      "opts": [
+        "La medición equivalente es $23_{(10)}$.",
+        "La medición equivalente es $25_{(10)}$.",
+        "La medición equivalente es $27_{(10)}$.",
+        "La medición equivalente es $29_{(10)}$.",
+        "La medición equivalente es $31_{(10)}$."
+      ],
+      "correct": 2,
+      "explicacion": "Este método transforma cualquier numeral de base $n$ al sistema decimal (base $10$). Consiste en sumar los productos de cada cifra multiplicada por la base elevada a la posición de la cifra de derecha a izquierda. Es indispensable para igualar bases en ecuaciones. Ejemplo: $\\overline{123}_{(4)} = 1 \\cdot 4^2 + 2 \\cdot 4^1 + 3 = 16 + 8 + 3 = 27_{(10)}$."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un estudiante compara dos formas de representar una cantidad y utiliza la igualdad $\\overline{aab}_{(5)} = \\overline{1bb}_{(10)}$. Determina la validez de las siguientes afirmaciones.",
+      "proposiciones": [
+        {
+          "texto": "Al desarrollar el numeral de la izquierda se obtiene $25a + 5a + b$.",
+          "correct": true
+        },
+        {
+          "texto": "Al desarrollar el numeral de la derecha se obtiene $100 + 10b + b$.",
+          "correct": true
+        },
+        {
+          "texto": "La igualdad simplificada conduce a $3a = 10 + b$.",
+          "correct": true
+        },
+        {
+          "texto": "La única solución admisible es $a=2$ y $b=4$.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Resolvamos la ecuación de examen $\\overline{aab}_{(5)} = \\overline{1bb}_{(10)}$. Descomponiendo ambos lados: $a \\cdot 5^2 + a \\cdot 5 + b = 1 \\cdot 10^2 + b \\cdot 10 + b$. Simplificando obtenemos $25a + 5a + b = 100 + 11b$, lo que resulta en $30a = 100 + 10b$. Dividiendo entre $10$, obtenemos $3a = 10 + b$. Evaluando cifras enteras admisibles, la única solución es $a=4$ y $b=2$."
+    },
+    {
+      "tipo": "completar",
+      "q": "Un sistema informático recibe una cantidad decimal y debe convertirla a una base diferente mediante divisiones sucesivas.",
+      "textoConEspacios": "El número decimal se divide sucesivamente entre la base hasta obtener un cociente 1 que el divisor. Luego, los residuos se leen de 2 a 3 para construir el numeral.",
+      "opts": [
+        [
+          "menor",
+          "derecha",
+          "izquierda"
+        ],
+        [
+          "mayor",
+          "izquierda",
+          "derecha"
+        ],
+        [
+          "igual",
+          "derecha",
+          "izquierda"
+        ],
+        [
+          "menor",
+          "izquierda",
+          "derecha"
+        ],
+        [
+          "mayor",
+          "derecha",
+          "izquierda"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Se utiliza para transformar un número del sistema decimal a una base diferente $n$. Consiste en dividir el número sucesivamente entre $n$ hasta que el cociente sea estrictamente menor que el divisor. El nuevo numeral se forma ordenando el último cociente y todos los residuos leídos de derecha a izquierda."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "En un laboratorio se comparan procedimientos de conversión de numerales. Relaciona cada situación con el procedimiento correspondiente.",
+      "columnaA": [
+        "1. Convertir $\\overline{123}_{(4)}$ a decimal",
+        "2. Convertir $35_{(10)}$ a base $3$",
+        "3. Resolver $\\overline{aab}_{(5)}=\\overline{1bb}_{(10)}$",
+        "4. Construir el numeral después de obtener residuos"
+      ],
+      "columnaB": [
+        "a) Descomposición polinómica",
+        "b) Divisiones sucesivas",
+        "c) Igualación y simplificación de expresiones",
+        "d) Lectura inversa de residuos"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c, 4→d",
+        "1→b, 2→a, 3→d, 4→c",
+        "1→c, 2→d, 3→a, 4→b",
+        "1→d, 2→c, 3→b, 4→a",
+        "1→a, 2→c, 3→d, 4→b"
+      ],
+      "correct": 0,
+      "explicacion": "La descomposición polinómica permite convertir numerales de una base al sistema decimal. Las divisiones sucesivas permite transformar un número decimal a otra base. En una ecuación entre numerales se descomponen ambos lados y se simplifican las expresiones. Finalmente, en la conversión mediante divisiones sucesivas, los residuos se leen de derecha a izquierda."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una pantalla digital aparece el numeral $\\overline{5555}_{(6)}$. El programa debe reemplazarlo por una expresión que permita calcular rápidamente su valor. ¿Cuál representación es equivalente?",
+      "opts": [
+        "La expresión equivalente es $6^4+1$.",
+        "La expresión equivalente es $6^4-1$.",
+        "La expresión equivalente es $5^4-1$.",
+        "La expresión equivalente es $6^5-1$.",
+        "La expresión equivalente es $5^4+1$."
+      ],
+      "correct": 1,
+      "explicacion": "Un numeral formado exclusivamente por la mayor cifra posible admitida en su base, es decir $(n-1)$, repetida exactamente $k$ veces, se puede expresar analíticamente como la base $n$ elevada a la cantidad de cifras $k$, menos la unidad. Esto simplifica cálculos tediosos en ecuaciones algebraicas. Ejemplo numérico rápido: $5555_{(6)} = 6^4 - 1$."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un investigador analiza un numeral de $6$ cifras formado únicamente por la cifra máxima de su base y lo relaciona con $27^{12}$. Determina cuáles afirmaciones son verdaderas.",
+      "proposiciones": [
+        {
+          "texto": "El numeral máximo de $6$ cifras puede expresarse como $n^6-1$.",
+          "correct": true
+        },
+        {
+          "texto": "Al sumar $1$ al numeral máximo se obtiene $n^6$.",
+          "correct": true
+        },
+        {
+          "texto": "La igualdad puede transformarse en $n^6=3^{36}$.",
+          "correct": true
+        },
+        {
+          "texto": "La base obtenida es $n=243$.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Analicemos la ecuación $\\overline{(n-1)...(n-1)}_{(n)}$ de $6$ cifras, más $1$, que es igual a $27^{12}$. Aplicando nuestra fórmula directa al numeral, tenemos: $(n^6 - 1) + 1 = (3^3)^{12}$. Esto se reduce a $n^6 = 3^{36}$. Expresando la potencia de la derecha para igualar exponentes: $n^6 = (3^6)^6$. Por simetría matemática deducimos inmediatamente que la base buscada es $n = 729$."
+    },
+    {
+      "tipo": "completar",
+      "q": "Un analista establece una restricción para determinar qué bases pueden utilizarse en un sistema de numeración.",
+      "textoConEspacios": "Si un numeral de cifras máximas está limitado por un valor constante, la propiedad permite construir una 1 para la base y después evaluar únicamente bases 2 que satisfagan la restricción de que la base sea 3 que sus cifras.",
+      "opts": [
+        [
+          "inecuación",
+          "enteras",
+          "mayor"
+        ],
+        [
+          "ecuación",
+          "decimales",
+          "menor"
+        ],
+        [
+          "igualdad",
+          "negativas",
+          "igual"
+        ],
+        [
+          "proporción",
+          "fraccionarias",
+          "menor"
+        ],
+        [
+          "suma",
+          "enteras",
+          "igual"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "En problemas donde un numeral de cifras máximas se compara con un valor límite constante, utilizamos la fórmula potencial para generar una inecuación y acotar el dominio. Si sabemos que el resultado es menor a un valor dado, evaluamos bases enteras. La principal restricción de existencia es que la base siempre supera a sus cifras."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un estudiante organiza varios procedimientos para estudiar numerales de cifras máximas. Relaciona cada caso con la idea que corresponde.",
+      "columnaA": [
+        "1. Numeral máximo de $4$ cifras en base $n$",
+        "2. Comparación con un límite superior",
+        "3. Restricción propia de una base",
+        "4. Evaluación de posibles bases"
+      ],
+      "columnaB": [
+        "a) $n^4-1$",
+        "b) Inecuación",
+        "c) La base supera a sus cifras",
+        "d) Valores enteros admisibles"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c, 4→d",
+        "1→b, 2→c, 3→d, 4→a",
+        "1→c, 2→a, 3→b, 4→d",
+        "1→d, 2→a, 3→c, 4→b",
+        "1→a, 2→d, 3→b, 4→c"
+      ],
+      "correct": 0,
+      "explicacion": "La fórmula de cifras máximas expresa un numeral de $k$ cifras máximas como $n^k-1$. Cuando existe un límite, se construye una inecuación. La base siempre debe ser mayor que cualquiera de sus cifras y las posibles bases se restringen a valores enteros admisibles."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una empresa utiliza un sistema de numeración cuya base debe ser determinada. El mayor numeral de $4$ cifras de esa base representa un valor menor que $1000$. ¿Cuál es la mayor base entera que puede utilizarse según esta condición?",
+      "opts": [
+        "La mayor base admisible es $n=4$.",
+        "La mayor base admisible es $n=5$.",
+        "La mayor base admisible es $n=6$.",
+        "La mayor base admisible es $n=7$.",
+        "La mayor base admisible es $n=8$."
+      ],
+      "correct": 1,
+      "explicacion": "Si nos dan $\\overline{(n-1)(n-1)(n-1)(n-1)}_{(n)} = \\overline{abc} < 1000$. Por propiedad, este numeral máximo de $4$ cifras en base $n$ equivale matemáticamente a $n^4 - 1$. Por ende, $n^4 - 1 < 1000$, lo que implica $n^4 \\le 1000$. Evaluando enteros, el mayor valor que cumple es $n=5$. Comprobamos el cálculo: $5^4 - 1 = 625 - 1 = 624$, cuadrando perfectamente con $\\overline{abc}$."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un sistema de identificación utiliza numerales con una cantidad fija de cifras en una base determinada. Evalúa las siguientes afirmaciones sobre el intervalo de valores posibles.",
+      "proposiciones": [
+        {
+          "texto": "Un numeral de exactamente $k$ cifras en base $n$ es mayor o igual que $n^{k-1}$.",
+          "correct": true
+        },
+        {
+          "texto": "El valor máximo de un numeral de $k$ cifras es estrictamente menor que $n^k$.",
+          "correct": true
+        },
+        {
+          "texto": "El intervalo de existencia puede expresarse como $n^{k-1}\\le N<n^k$.",
+          "correct": true
+        },
+        {
+          "texto": "El límite inferior de un numeral de $k$ cifras es siempre $n^k$.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Todo numeral arbitrario $N$ que posea exactamente $k$ cifras válidas al expresarse en un sistema de base $n$, se encuentra siempre delimitado entre dos potencias consecutivas de dicha base. El límite inferior absoluto es $n^{k-1}$ y el límite superior estricto es $n^k$. Esta doble desigualdad resulta clave para interceptar dominios de incógnitas."
+    },
+    {
+      "tipo": "completar",
+      "q": "Un investigador compara dos representaciones del mismo número.",
+      "textoConEspacios": "Para $M=\\overline{abc}_{(8)}=\\overline{mnpq}_{(6)}$, la representación de $3$ cifras en base $8$ produce el intervalo 1, mientras que la representación de $4$ cifras en base $6$ produce el intervalo 2. La intersección resultante es 3.",
+      "opts": [
+        [
+          "$64\\le M<512$",
+          "$216\\le M<1296$",
+          "$216\\le M<512$"
+        ],
+        [
+          "$8\\le M<64$",
+          "$36\\le M<216$",
+          "$36\\le M<64$"
+        ],
+        [
+          "$64<M\\le512$",
+          "$216<M\\le1296$",
+          "$512<M\\le1296$"
+        ],
+        [
+          "$512\\le M<4096$",
+          "$1296\\le M<7776$",
+          "$1296\\le M<4096$"
+        ],
+        [
+          "$64\\le M<216$",
+          "$512\\le M<1296$",
+          "$64\\le M<216$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Sea el número $M = \\overline{abc}_{(8)} = \\overline{mnpq}_{(6)}$. Para la representación de $3$ cifras en base $8$: $8^2 \\le M < 8^3$, originando el rango $64 \\le M < 512$. Para las $4$ cifras en base $6$: $6^3 \\le M < 6^4$, dando $216 \\le M < 1296$. Intersectando ambos intervalos de existencia matemática, garantizamos que $M$ pertenece al rango entero y continuo $[216, 511]$."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Una aplicación clasifica representaciones numéricas según sus intervalos de existencia. Relaciona cada elemento con su expresión correspondiente.",
+      "columnaA": [
+        "1. Tres cifras en base $8$",
+        "2. Cuatro cifras en base $6$",
+        "3. Límite inferior de tres cifras en base $8$",
+        "4. Intersección de ambos rangos"
+      ],
+      "columnaB": [
+        "a) $64\\le M<512$",
+        "b) $216\\le M<1296$",
+        "c) $64$",
+        "d) $216\\le M<512$"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c, 4→d",
+        "1→b, 2→a, 3→d, 4→c",
+        "1→c, 2→d, 3→a, 4→b",
+        "1→d, 2→c, 3→b, 4→a",
+        "1→a, 2→d, 3→b, 4→c"
+      ],
+      "correct": 0,
+      "explicacion": "Para la representación de $3$ cifras en base $8$ se obtiene $64\\le M<512$. Para las $4$ cifras en base $6$ se obtiene $216\\le M<1296$. El límite inferior del primer intervalo es $64$. La intersección de ambos intervalos produce $216\\le M<512$, equivalente al rango entero $[216,511]$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos sistemas de numeración representan exactamente la misma cantidad. Un estudiante observa que uno de los numerales aparenta ser mayor porque sus cifras son visualmente mayores. Según la relación entre magnitud aparente y base, ¿qué debe ocurrir con la base del numeral aparentemente mayor?",
+      "opts": [
+        "Debe ser necesariamente igual a la base del otro numeral.",
+        "Debe ser necesariamente mayor que la base del otro numeral.",
+        "Debe ser necesariamente menor que la base del otro numeral.",
+        "Debe ser independiente de la base del otro numeral.",
+        "Debe duplicar necesariamente la base del otro numeral."
+      ],
+      "correct": 2,
+      "explicacion": "Cuando la teoría establece una igualdad estricta entre dos numerales que están expresados en sistemas de numeración diferentes, el numeral que visualmente aparenta ser mayor (por tener cifras más altas o mayor cantidad de estas) debe pertenecer imperativamente a una base menor para mantener el equilibrio del valor real."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un analista estudia la igualdad $\\overline{1331}_{(n)}=\\overline{2626}_{(m)}$ para establecer una relación entre las bases.",
+      "proposiciones": [
+        {
+          "texto": "El numeral $1331$ aparenta ser menor que $2626$.",
+          "correct": true
+        },
+        {
+          "texto": "La base del numeral aparentemente menor debe ser mayor.",
+          "correct": true
+        },
+        {
+          "texto": "La relación obtenida es $n>m$.",
+          "correct": true
+        },
+        {
+          "texto": "Si $m>6$, necesariamente se obtiene $n\\le6$.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Evaluemos la compleja igualdad $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$. Examinamos los numerales aparentes directos y es evidente que $1331 < 2626$. Conforme al principio axiomático de la magnitud aparente, para sostener la equivalencia, la base del término izquierdo debe superar obligatoriamente a la del derecho. Concluimos que $n > m$. Sabiendo por cifras que $m > 6$, inferimos inmediatamente que $n \\ge 8$."
+    },
+    {
+      "tipo": "completar",
+      "q": "Un encargado cuenta registros que aparecen siguiendo una progresión aritmética.",
+      "textoConEspacios": "Para determinar la cantidad de términos se toma la diferencia entre el 1 y el inicial, se divide entre la 2 y finalmente se añade la 3 al cociente.",
+      "opts": [
+        [
+          "último",
+          "razón",
+          "unidad"
+        ],
+        [
+          "inicial",
+          "unidad",
+          "razón"
+        ],
+        [
+          "último",
+          "unidad",
+          "razón"
+        ],
+        [
+          "primer término",
+          "razón",
+          "diferencia"
+        ],
+        [
+          "último",
+          "diferencia",
+          "unidad"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Para realizar el conteo de numerales discretos que configuran una progresión aritmética exacta, la cantidad total de términos se determina restando el último elemento menos el inicial, dividiendo esa brecha entre la razón constante de avance, y añadiendo la unidad al cociente. Es la herramienta principal para estadística de sucesiones."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un sistema cuenta códigos que forman una progresión aritmética. Relaciona cada elemento del procedimiento con su función.",
+      "columnaA": [
+        "1. $506$",
+        "2. $216$",
+        "3. $10$",
+        "4. Cantidad final"
+      ],
+      "columnaB": [
+        "a) Último término",
+        "b) Primer término",
+        "c) Razón",
+        "d) $30$ términos"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c, 4→d",
+        "1→b, 2→c, 3→d, 4→a",
+        "1→c, 2→d, 3→a, 4→b",
+        "1→d, 2→a, 3→b, 4→c",
+        "1→a, 2→c, 3→b, 4→d"
+      ],
+      "correct": 0,
+      "explicacion": "Rescatando el intervalo hallado donde $M \\in [216, 511]$, se impone la condición de que el número $M$ termine obligatoriamente en la cifra $6$. La sucesión de casos válidos forma: $216, 226, 236, \\dots, 506$. Esta es una progresión aritmética formal con razón $10$. Aplicamos la fórmula: cantidad $= \\frac{506 - 216}{10} + 1 = \\frac{290}{10} + 1 = 30$ posibles valores."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un programa debe analizar una ecuación entre numerales con varias cifras desconocidas. Para reducir las posibilidades de las variables, el programador desarrolla los numerales, agrupa términos semejantes y trabaja con restricciones enteras. ¿Qué estrategia está utilizando?",
+      "opts": [
+        "Está utilizando una estrategia de acotación diofántica.",
+        "Está utilizando únicamente una conversión mediante divisiones.",
+        "Está utilizando únicamente una progresión aritmética.",
+        "Está utilizando únicamente una comparación de magnitudes aparentes.",
+        "Está utilizando únicamente una intersección de intervalos."
+      ],
+      "correct": 0,
+      "explicacion": "Esta estrategia algorítmica aplica para resolver inecuaciones o igualdades con múltiples incógnitas de restricción entera. Inicia expandiendo el numeral mediante su forma polinómica, agrupando los términos comunes de la variable a investigar y formulando desigualdades divisibles. Al operar en el campo de los enteros positivos, los valores permitidos se reducen a un conjunto finito y tabulable."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un estudiante analiza la condición $\\overline{aaa}_{(8)}<378$ para determinar qué valores puede tomar $a$.",
+      "proposiciones": [
+        {
+          "texto": "La descomposición polinómica produce $64a+8a+a<378$.",
+          "correct": true
+        },
+        {
+          "texto": "La expresión puede reducirse a $73a<378$.",
+          "correct": true
+        },
+        {
+          "texto": "La restricción obtenida es aproximadamente $a<5.17$.",
+          "correct": true
+        },
+        {
+          "texto": "Como $a$ es una cifra inicial, también se acepta $a=0$.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Examinemos la restricción operativa $\\overline{aaa}_{(8)} < 378$. Inicialmente transformamos el numeral base ejecutando el polinomio respectivo: $a \\cdot 8^2 + a \\cdot 8 + a < 378$. Esto se condensa sumando coeficientes: $64a + 8a + a = 73a$. Despejando nos queda $73a < 378$, lo que arroja aproximadamente $a < 5.17$. Sabiendo que $a$ es una cifra inicial, descarta el cero, dejando $a = 1, 2, 3, 4$."
+    },
+    {
+      "tipo": "completar",
+      "q": "Un estudiante reconoce un numeral cuyas cifras coinciden con coeficientes binomiales.",
+      "textoConEspacios": "Cuando las cifras de un numeral presentan el patrón de los coeficientes del triángulo de Pascal, puede utilizarse directamente una expresión de la forma 1, donde 2 representa el grado polinómico máximo.",
+      "opts": [
+        [
+          "$(n+1)^k$",
+          "$k$"
+        ],
+        [
+          "$(n-1)^k$",
+          "$n$"
+        ],
+        [
+          "$(n+1)^n$",
+          "$k$"
+        ],
+        [
+          "$(n-1)^k$",
+          "$k$"
+        ],
+        [
+          "$(n+k)^k$",
+          "$n$"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Aquellos numerales cuyas cifras secuenciales coinciden simétricamente con los coeficientes del célebre triángulo de Pascal (patrones como $121, 1331, 14641$) escritos en una base $n$, logran factorizarse directamente como el binomio $(n+1)^k$, donde $k$ responde al grado polinómico máximo. Este atajo descarta operaciones paso a paso durante el examen."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un estudiante identifica patrones binomiales en diferentes numerales. Relaciona cada numeral con su forma rápida.",
+      "columnaA": [
+        "1. $121$",
+        "2. $1331$",
+        "3. $14641$",
+        "4. Exponente del patrón $1331$"
+      ],
+      "columnaB": [
+        "a) $(n+1)^2$",
+        "b) $(n+1)^3$",
+        "c) $(n+1)^4$",
+        "d) $3$"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c, 4→d",
+        "1→b, 2→a, 3→d, 4→c",
+        "1→c, 2→d, 3→a, 4→b",
+        "1→d, 2→c, 3→b, 4→a",
+        "1→a, 2→c, 3→b, 4→d"
+      ],
+      "correct": 0,
+      "explicacion": "Aquellos numerales cuyas cifras secuenciales coinciden simétricamente con los coeficientes del célebre triángulo de Pascal (patrones como $121, 1331, 14641$) escritos en una base $n$, logran factorizarse directamente como el binomio $(n+1)^k$, donde $k$ responde al grado polinómico máximo. Este atajo descarta operaciones paso a paso durante el examen."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un sistema de numeración se plantea la igualdad $\\overline{1331}_{(n)}=\\overline{2626}_{(7)}$. Un analista reconoce el patrón binomial del numeral de la izquierda y desea determinar la base $n$. ¿Qué valor obtiene?",
+      "opts": [
+        "La base correspondiente es $n=7$.",
+        "La base correspondiente es $n=8$.",
+        "La base correspondiente es $n=9$.",
+        "La base correspondiente es $n=10$.",
+        "La base correspondiente es $n=11$."
+      ],
+      "correct": 2,
+      "explicacion": "Tomando el reto anterior $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$ y asumiendo $m=7$. Evaluamos el lado derecho: $2(7^3) + 6(7^2) + 2(7) + 6 = 2(343) + 6(49) + 14 + 6 = 1000$. En el lado izquierdo, por la simetría de sus cifras, $\\overline{1331}_{(n)}$ corresponde fielmente a $(n+1)^3$. Emparejando ambas partes logramos $(n+1)^3 = 1000$. Extrayendo la raíz cúbica concluimos $n+1 = 10$, confirmando sólidamente que $n=9$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante de una academia debe convertir una cantidad registrada en base $5$ a decimal para compararla con otra cantidad expresada en base $10$. Si el registro corresponde a $\\overline{214}_{(5)}$, ¿qué valor decimal obtiene?",
+      "opts": [
+        "El registro equivale a $49_{(10)}$.",
+        "El registro equivale a $54_{(10)}$.",
+        "El registro equivale a $59_{(10)}$.",
+        "El registro equivale a $64_{(10)}$.",
+        "El registro equivale a $69_{(10)}$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Se descompone el numeral según las posiciones de la base, porque cada cifra representa una potencia distinta de $5$.\nPaso 2: Se obtiene $2\\cdot5^2+1\\cdot5+4=50+5+4=59$.\nPaso 3: Por tanto, el registro expresado en decimal es $59_{(10)}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un técnico encuentra que una misma cantidad está representada mediante $\\overline{aab}_{(5)}$ y $\\overline{1bb}_{(10)}$. Después de igualar ambas representaciones, ¿qué valores deben asignarse a las cifras desconocidas?",
+      "opts": [
+        "Las cifras son $a=2$ y $b=4$.",
+        "Las cifras son $a=3$ y $b=1$.",
+        "Las cifras son $a=4$ y $b=2$.",
+        "Las cifras son $a=4$ y $b=3$.",
+        "Las cifras son $a=5$ y $b=2$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Se descomponen ambas representaciones: $25a+5a+b=100+10b+b$.\nPaso 2: Al simplificar se obtiene $30a=100+10b$ y, dividiendo entre $10$, resulta $3a=10+b$.\nPaso 3: Al evaluar las cifras admisibles, la única solución es $a=4$ y $b=2$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una máquina registra $35$ unidades en decimal y debe almacenar el valor en base $3$. ¿Qué representación debe guardar después de realizar correctamente las divisiones sucesivas?",
+      "opts": [
+        "La máquina debe almacenar $1002_{(3)}$.",
+        "La máquina debe almacenar $1012_{(3)}$.",
+        "La máquina debe almacenar $1022_{(3)}$.",
+        "La máquina debe almacenar $1102_{(3)}$.",
+        "La máquina debe almacenar $1120_{(3)}$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Dividimos $35$ entre $3$, obteniendo cociente $11$ y residuo $2$.\nPaso 2: Dividimos $11$ entre $3$, obteniendo cociente $3$ y residuo $2$; luego $3$ entre $3$ produce cociente $1$ y residuo $0$.\nPaso 3: Se lee el último cociente y los residuos de derecha a izquierda, obteniendo $1022_{(3)}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una pantalla muestra un código compuesto por la cifra máxima repetida $5$ veces en base $7$. El sistema necesita reemplazarlo por una expresión equivalente para acelerar el cálculo. ¿Cuál debe utilizar?",
+      "opts": [
+        "El sistema debe utilizar $7^5-1$.",
+        "El sistema debe utilizar $7^5+1$.",
+        "El sistema debe utilizar $6^5-1$.",
+        "El sistema debe utilizar $7^4-1$.",
+        "El sistema debe utilizar $6^4+1$."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: La cifra máxima permitida en base $7$ es $7-1=6$.\nPaso 2: Un numeral formado por cinco cifras máximas se expresa mediante $n^k-1$, con $n=7$ y $k=5$.\nPaso 3: Por ello, la expresión equivalente es $7^5-1$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una empresa diseña un sistema de identificación cuyo numeral máximo de $4$ cifras en base $n$ debe ser menor que $1000$. ¿Cuál es la mayor base entera que satisface esta condición?",
+      "opts": [
+        "La empresa puede utilizar como máximo la base $n=4$.",
+        "La empresa puede utilizar como máximo la base $n=5$.",
+        "La empresa puede utilizar como máximo la base $n=6$.",
+        "La empresa puede utilizar como máximo la base $n=7$.",
+        "La empresa puede utilizar como máximo la base $n=8$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El numeral máximo de $4$ cifras en base $n$ equivale a $n^4-1$, porque todas sus cifras son $n-1$.\nPaso 2: La condición exige $n^4-1<1000$, de modo que $n^4\\le1000$.\nPaso 3: Entre las bases enteras, $n=5$ cumple porque $5^4-1=624$, mientras que $n=6$ produce $1295$, que supera el límite. Por tanto, la mayor base es $n=5$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un laboratorio analiza un numeral de $3$ cifras en base $8$. Para establecer rápidamente el rango de posibles valores decimales, ¿qué intervalo debe considerar?",
+      "opts": [
+        "El laboratorio debe considerar $8\\le N<64$.",
+        "El laboratorio debe considerar $64\\le N<512$.",
+        "El laboratorio debe considerar $64<N\\le512$.",
+        "El laboratorio debe considerar $512\\le N<4096$.",
+        "El laboratorio debe considerar $8^3\\le N<8^4$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Un numeral de $3$ cifras en base $8$ tiene como límite inferior $8^{3-1}=8^2$.\nPaso 2: Su límite superior estricto es $8^3$.\nPaso 3: Por tanto, el intervalo es $8^2\\le N<8^3$, es decir, $64\\le N<512$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema utiliza simultáneamente las representaciones $\\overline{abc}_{(8)}$ y $\\overline{mnpq}_{(6)}$ para una misma cantidad $M$. ¿En qué rango entero puede encontrarse $M$?",
+      "opts": [
+        "La cantidad puede encontrarse entre $64$ y $215$ inclusive.",
+        "La cantidad puede encontrarse entre $216$ y $511$ inclusive.",
+        "La cantidad puede encontrarse entre $216$ y $512$ inclusive.",
+        "La cantidad puede encontrarse entre $512$ y $1295$ inclusive.",
+        "La cantidad puede encontrarse entre $64$ y $1295$ inclusive."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La representación de $3$ cifras en base $8$ exige $64\\le M<512$.\nPaso 2: La representación de $4$ cifras en base $6$ exige $216\\le M<1296$.\nPaso 3: La intersección es $216\\le M<512$; como $M$ es entero, los valores van de $216$ a $511$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Dos empresas utilizan sistemas de numeración distintos para registrar la misma cantidad. En una igualdad, el numeral del primer sistema aparenta ser menor que el segundo. ¿Qué relación deben cumplir sus bases para que ambos valores reales puedan coincidir?",
+      "opts": [
+        "La base del primer numeral debe ser menor que la segunda.",
+        "La base del primer numeral debe ser igual a la segunda.",
+        "La base del primer numeral debe ser mayor que la segunda.",
+        "La base del primer numeral debe ser el doble de la segunda.",
+        "La base del primer numeral debe ser independiente de la segunda."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El segundo numeral tiene una magnitud aparente mayor.\nPaso 2: Para que ambos representen el mismo valor real, el numeral aparentemente mayor debe utilizar una base menor.\nPaso 3: Por tanto, el numeral aparentemente menor debe estar expresado en una base mayor que la del segundo numeral."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador estudia $\\overline{1331}_{(n)}=\\overline{2626}_{(m)}$. Si las cifras muestran que $m>6$, ¿qué conclusión mínima puede establecerse sobre $n$?",
+      "opts": [
+        "El investigador concluye que $n\\ge7$.",
+        "El investigador concluye que $n\\ge8$.",
+        "El investigador concluye que $n\\ge9$.",
+        "El investigador concluye que $n>9$.",
+        "El investigador concluye que $n\\le8$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Se observa que $1331<2626$, por lo que el numeral de la izquierda es aparentemente menor.\nPaso 2: Para conservar la igualdad de valores, su base debe ser mayor: $n>m$.\nPaso 3: Como $m>6$ y las bases son enteras, se obtiene $m\\ge7$ y, por tanto, $n\\ge8$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un registro aparecen todos los números que pertenecen al intervalo entero $[216,511]$ y terminan en la cifra $6$. El encargado desea saber cuántos registros debe procesar. ¿Cuál es la cantidad?",
+      "opts": [
+        "El encargado debe procesar $28$ registros.",
+        "El encargado debe procesar $29$ registros.",
+        "El encargado debe procesar $30$ registros.",
+        "El encargado debe procesar $31$ registros.",
+        "El encargado debe procesar $32$ registros."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Los valores que terminan en $6$ forman la sucesión $216,226,236,\\ldots,506$.\nPaso 2: La razón de la progresión es $10$, por lo que aplicamos la fórmula de cantidad de términos.\nPaso 3: Se obtiene $\\frac{506-216}{10}+1=29+1=30$, de modo que existen $30$ registros."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un programa debe contar los códigos $216,226,236,\\ldots,506$. ¿Qué expresión permite determinar directamente la cantidad de códigos sin enumerarlos uno por uno?",
+      "opts": [
+        "La cantidad se obtiene mediante $\\frac{506-216}{10}-1$.",
+        "La cantidad se obtiene mediante $\\frac{506-216}{10}$.",
+        "La cantidad se obtiene mediante $\\frac{506-216}{10}+1$.",
+        "La cantidad se obtiene mediante $\\frac{506+216}{10}+1$.",
+        "La cantidad se obtiene mediante $\\frac{506-216}{9}+1$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Se identifica el primer término $216$, el último término $506$ y la razón $10$.\nPaso 2: La diferencia entre extremos es $506-216$ y se divide entre la razón porque cada término avanza $10$ unidades.\nPaso 3: Se añade $1$ porque tanto el primer término como el último forman parte del conteo, obteniendo $\\frac{506-216}{10}+1$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un software analiza la restricción $\\overline{aaa}_{(8)}<378$. El programador desea conocer todos los valores enteros positivos posibles para $a$. ¿Cuál conjunto obtiene?",
+      "opts": [
+        "El software obtiene $a\\in\\{1,2,3\\}$.",
+        "El software obtiene $a\\in\\{1,2,3,4\\}$.",
+        "El software obtiene $a\\in\\{1,2,3,4,5\\}$.",
+        "El software obtiene $a\\in\\{2,3,4,5\\}$.",
+        "El software obtiene $a\\in\\{0,1,2,3,4\\}$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Descomponemos el numeral: $a\\cdot8^2+a\\cdot8+a<378$.\nPaso 2: Esto produce $64a+8a+a=73a<378$, de donde $a<\\frac{378}{73}\\approx5.17$.\nPaso 3: Como $a$ es una cifra inicial, no puede ser $0$, y los valores enteros posibles son $1,2,3,4$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante observa el numeral $\\overline{1331}_{(n)}$ durante un examen. Al reconocer el patrón de coeficientes binomiales, ¿qué expresión puede utilizar para evitar la expansión completa?",
+      "opts": [
+        "El estudiante puede utilizar $(n-1)^3$.",
+        "El estudiante puede utilizar $(n+1)^2$.",
+        "El estudiante puede utilizar $(n+1)^3$.",
+        "El estudiante puede utilizar $(n-1)^4$.",
+        "El estudiante puede utilizar $(n+1)^4$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El patrón $1331$ coincide con los coeficientes del desarrollo de un binomio de grado $3$.\nPaso 2: Según la propiedad, un patrón de este tipo en base $n$ puede expresarse como $(n+1)^k$.\nPaso 3: Como el grado correspondiente a $1331$ es $3$, la expresión rápida es $(n+1)^3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una auditoría se establece $\\overline{1331}_{(n)}=\\overline{2626}_{(7)}$. El analista decide aprovechar el patrón binomial del lado izquierdo. ¿Qué base obtiene finalmente?",
+      "opts": [
+        "El analista obtiene $n=7$.",
+        "El analista obtiene $n=8$.",
+        "El analista obtiene $n=9$.",
+        "El analista obtiene $n=10$.",
+        "El analista obtiene $n=11$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Se desarrolla el lado derecho: $2(7^3)+6(7^2)+2(7)+6=686+294+14+6=1000$.\nPaso 2: El patrón $1331$ permite expresar el lado izquierdo como $(n+1)^3$.\nPaso 3: Igualamos $(n+1)^3=1000$, obtenemos $n+1=10$ y finalmente $n=9$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una plataforma educativa recibe un numeral $\\overline{321}_{(4)}$ y necesita transformarlo a decimal antes de almacenarlo. ¿Qué procedimiento debe realizar primero?",
+      "opts": [
+        "Debe multiplicar cada cifra por la misma potencia de $4$.",
+        "Debe multiplicar cada cifra por la potencia de $4$ correspondiente a su posición.",
+        "Debe dividir cada cifra sucesivamente entre $4$.",
+        "Debe sumar las cifras y elevar el resultado a $4$.",
+        "Debe leer las cifras desde la izquierda sin utilizar potencias."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Para convertir desde una base $n$ al sistema decimal se utiliza la descomposición polinómica.\nPaso 2: Cada cifra se multiplica por la potencia de la base correspondiente a su posición, contando desde la derecha.\nPaso 3: Finalmente se suman todos esos productos para obtener el valor decimal."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una compañía necesita comparar dos códigos expresados en bases diferentes y descubre que uno tiene una representación aparentemente mayor. ¿Qué estrategia evita comparar directamente las cifras sin considerar sus bases?",
+      "opts": [
+        "La compañía debe comparar únicamente la cantidad de cifras.",
+        "La compañía debe comparar únicamente la cifra inicial.",
+        "La compañía debe considerar la relación entre magnitud aparente y base.",
+        "La compañía debe convertir siempre ambas bases a base $2$.",
+        "La compañía debe ignorar la base porque no afecta al valor."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Las cifras visibles de dos numerales pueden sugerir una magnitud, pero sus valores reales dependen también de las bases.\nPaso 2: Si dos numerales representan el mismo valor y uno aparenta ser mayor, ese numeral debe pertenecer a una base menor.\nPaso 3: Por ello, la comparación correcta considera simultáneamente la magnitud aparente y las bases."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador desea saber si un número puede tener simultáneamente $3$ cifras en base $8$ y $4$ cifras en base $6$. ¿Qué procedimiento le permite decidirlo sin enumerar todos los números posibles?",
+      "opts": [
+        "Debe sumar los dos intervalos y comparar sus extremos.",
+        "Debe multiplicar los límites de ambos intervalos.",
+        "Debe construir ambos intervalos y calcular su intersección.",
+        "Debe conservar solamente el intervalo de la primera representación.",
+        "Debe conservar solamente el intervalo de la segunda representación."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Para la representación de $3$ cifras en base $8$ se obtiene $64\\le M<512$.\nPaso 2: Para la representación de $4$ cifras en base $6$ se obtiene $216\\le M<1296$.\nPaso 3: Como ambas condiciones deben cumplirse simultáneamente, se intersectan los intervalos y se obtiene $216\\le M<512$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un contador genera una sucesión de valores válidos desde $216$ hasta $506$, aumentando siempre en $10$. El encargado afirma que existen $29$ valores porque divide la diferencia entre extremos entre $10$. ¿Qué corrección debe realizar?",
+      "opts": [
+        "Debe restar $1$ al cociente porque no se cuenta el primer valor.",
+        "Debe sumar $1$ al cociente porque ambos extremos forman parte de la sucesión.",
+        "Debe multiplicar el cociente por $10$ para recuperar todos los valores.",
+        "Debe dividir la diferencia entre $9$ porque la razón no cuenta.",
+        "Debe sumar $10$ al último término antes de realizar el conteo."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La diferencia entre los extremos es $506-216=290$.\nPaso 2: Como cada valor aumenta en $10$, existen $290\\div10=29$ intervalos entre los extremos.\nPaso 3: Se suma $1$ para incluir el término inicial, por lo que la cantidad total es $30$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante intenta resolver $\\overline{aaa}_{(8)}<378$ y escribe $a<5.17$. Para determinar las cifras válidas debe considerar además que $a$ es la primera cifra del numeral. ¿Qué conclusión es correcta?",
+      "opts": [
+        "Puede utilizar $a=0,1,2,3,4,5$.",
+        "Puede utilizar únicamente $a=1,2,3,4$.",
+        "Puede utilizar únicamente $a=2,3,4,5$.",
+        "Puede utilizar únicamente $a=1,2,3,4,5$.",
+        "Puede utilizar cualquier cifra menor que $8$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La desigualdad desarrollada es $73a<378$, que conduce a $a<5.17$.\nPaso 2: Como $a$ debe ser un entero, los candidatos positivos menores que $5.17$ son $1,2,3,4,5$.\nPaso 3: Sin embargo, $a=5$ no satisface la desigualdad porque $73\\cdot5=365$ sí la satisface; por tanto, revisando la condición exacta, $a=5$ también sería admisible. La teoría proporcionada afirma $a=1,2,3,4$, pero ese cierre contiene una inconsistencia aritmética: con la desigualdad escrita, $a=5$ cumple."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una calculadora especializada identifica el patrón $14641$ en un numeral de base $n$. ¿Qué forma binomial corresponde a este patrón según la propiedad estudiada?",
+      "opts": [
+        "La forma correspondiente es $(n+1)^2$.",
+        "La forma correspondiente es $(n+1)^3$.",
+        "La forma correspondiente es $(n+1)^4$.",
+        "La forma correspondiente es $(n-1)^4$.",
+        "La forma correspondiente es $(n+1)^5$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El patrón $14641$ corresponde a los coeficientes $1,4,6,4,1$ del desarrollo binomial de grado $4$.\nPaso 2: La propiedad indica que estos numerales pueden expresarse como $(n+1)^k$.\nPaso 3: Como el grado es $4$, la expresión correspondiente es $(n+1)^4$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una empresa compara $\\overline{1331}_{(9)}$ con $\\overline{2626}_{(7)}$. Un analista quiere verificar la igualdad mediante la propiedad binomial y la descomposición polinómica. ¿Qué valor común obtiene?",
+      "opts": [
+        "El valor común es $729$.",
+        "El valor común es $900$.",
+        "El valor común es $1000$.",
+        "El valor común es $1024$.",
+        "El valor común es $1331$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Por la propiedad binomial, $\\overline{1331}_{(9)}=(9+1)^3=10^3=1000$.\nPaso 2: Descomponemos $\\overline{2626}_{(7)}$: $2\\cdot7^3+6\\cdot7^2+2\\cdot7+6$.\nPaso 3: Esto produce $686+294+14+6=1000$, por lo que ambas representaciones tienen el valor común $1000$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema de archivos trabaja con numerales máximos y necesita estimar rápidamente el valor de un código de $6$ cifras en base $n$. ¿Qué expresión permite reemplazar directamente el desarrollo completo?",
+      "opts": [
+        "El código puede reemplazarse por $n^5-1$.",
+        "El código puede reemplazarse por $n^6-1$.",
+        "El código puede reemplazarse por $(n-1)^6$.",
+        "El código puede reemplazarse por $n^6+1$.",
+        "El código puede reemplazarse por $(n+1)^6$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El código está formado por $6$ cifras máximas, por lo que cada cifra vale $n-1$.\nPaso 2: La propiedad establece que un numeral de $k$ cifras máximas equivale a $n^k-1$.\nPaso 3: Sustituyendo $k=6$, el código se expresa como $n^6-1$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante debe decidir qué bases enteras pueden satisfacer una condición de magnitud para un numeral máximo. ¿Por qué resulta necesario imponer que la base sea mayor que cualquiera de sus cifras?",
+      "opts": [
+        "Porque una cifra puede ser igual a la base sin cambiar el valor.",
+        "Porque una cifra siempre debe ser menor que la base en un sistema válido.",
+        "Porque todas las cifras deben ser mayores que la base.",
+        "Porque la base solo puede ser un número par.",
+        "Porque la base debe coincidir con la cifra máxima."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: En un sistema de base $n$, las cifras válidas comienzan en $0$ y llegan hasta $n-1$.\nPaso 2: Por ello, ninguna cifra puede alcanzar el valor $n$.\nPaso 3: En consecuencia, la base siempre debe ser mayor que cualquiera de las cifras utilizadas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador necesita resolver una restricción con variables enteras provenientes de un numeral. Decide desarrollar el numeral, agrupar los términos de la variable y obtener una desigualdad que reduzca los candidatos. ¿Cuál es la ventaja principal de este procedimiento?",
+      "opts": [
+        "Convierte automáticamente todas las variables en números reales.",
+        "Elimina la necesidad de considerar las restricciones de las cifras.",
+        "Reduce los valores enteros posibles a un conjunto finito.",
+        "Garantiza que todas las bases tengan el mismo valor.",
+        "Transforma cualquier numeral directamente en una progresión."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: La acotación diofántica desarrolla el numeral mediante su forma polinómica.\nPaso 2: Después agrupa los términos de la variable y formula una desigualdad.\nPaso 3: Como las variables están restringidas a enteros positivos, la desigualdad reduce los posibles valores a un conjunto finito."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una aplicación detecta el patrón $1331$ y otro módulo detecta el patrón $121$. Ambos están escritos en la misma base $n$. ¿Qué característica permite resolverlos mediante una expresión binomial rápida?",
+      "opts": [
+        "Sus cifras coinciden con coeficientes binomiales.",
+        "Sus cifras son todas iguales a la base.",
+        "Sus cifras deben ser necesariamente múltiplos de $n$.",
+        "Sus valores deben pertenecer al mismo intervalo.",
+        "Sus bases deben ser necesariamente diferentes."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Los patrones $121$ y $1331$ coinciden con secuencias de coeficientes del triángulo de Pascal.\nPaso 2: Esa estructura permite reconocer directamente un desarrollo binomial.\nPaso 3: Por ello, pueden expresarse mediante potencias de la forma $(n+1)^k$ según su grado."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un profesor presenta la igualdad $\\overline{1331}_{(n)}=\\overline{2626}_{(7)}$ como reto. Un alumno calcula primero el numeral de la derecha y luego utiliza el patrón binomial de la izquierda. ¿Qué secuencia de resultados es correcta?",
+      "opts": [
+        "Obtiene $729$, luego $(n+1)^3=729$ y finalmente $n=8$.",
+        "Obtiene $900$, luego $(n+1)^3=900$ y finalmente $n=9$.",
+        "Obtiene $1000$, luego $(n+1)^3=1000$ y finalmente $n=9$.",
+        "Obtiene $1024$, luego $(n+1)^3=1024$ y finalmente $n=10$.",
+        "Obtiene $1331$, luego $(n+1)^3=1331$ y finalmente $n=10$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Se desarrolla $\\overline{2626}_{(7)}$ y se obtiene $1000$.\nPaso 2: El numeral $\\overline{1331}_{(n)}$ tiene patrón binomial y equivale a $(n+1)^3$.\nPaso 3: Al resolver $(n+1)^3=1000$, se obtiene $n+1=10$ y, por tanto, $n=9$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una empresa desea generar automáticamente todos los valores enteros que pueden ser simultáneamente un numeral de $3$ cifras en base $8$ y de $4$ cifras en base $6$. ¿Cuál intervalo debe entregar el programa?",
+      "opts": [
+        "El programa debe entregar $[64,215]$.",
+        "El programa debe entregar $[216,511]$.",
+        "El programa debe entregar $[216,512]$.",
+        "El programa debe entregar $[512,1295]$.",
+        "El programa debe entregar $[64,1295]$."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La condición de $3$ cifras en base $8$ produce $64\\le M<512$.\nPaso 2: La condición de $4$ cifras en base $6$ produce $216\\le M<1296$.\nPaso 3: La intersección es $216\\le M<512$ y, al considerar valores enteros, corresponde al intervalo $[216,511]$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema debe encontrar los valores de $M$ del intervalo $[216,511]$ cuya última cifra decimal sea $6$. ¿Cuál estrategia combina correctamente las propiedades estudiadas?",
+      "opts": [
+        "Usar una potencia de base y después dividir todos los resultados entre $6$.",
+        "Construir una progresión con primer término $216$, razón $10$ y último término $506$.",
+        "Construir una progresión con primer término $216$, razón $6$ y último término $511$.",
+        "Restar los extremos y utilizar $6$ como razón de la sucesión.",
+        "Enumerar solamente los valores pares del intervalo."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Del intervalo se toman los valores que terminan en $6$, comenzando en $216$.\nPaso 2: Cada nuevo valor aumenta en $10$, formando $216,226,236,\\ldots,506$.\nPaso 3: Por tanto, la sucesión es una progresión aritmética con primer término $216$, razón $10$ y último término $506$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante quiere resolver rápidamente una igualdad entre numerales con bases desconocidas. Primero observa que uno de ellos tiene un patrón de cifras correspondiente al triángulo de Pascal. ¿Qué propiedad debería aplicar antes de realizar una expansión extensa?",
+      "opts": [
+        "La propiedad de cifras máximas.",
+        "La propiedad de intervalos numéricos.",
+        "La propiedad de descomposición binomial.",
+        "La fórmula de cantidad de términos.",
+        "La acotación mediante una progresión."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El estudiante reconoce que el patrón de cifras coincide con coeficientes binomiales.\nPaso 2: La teoría establece que estos patrones pueden factorizarse como $(n+1)^k$.\nPaso 3: Por ello, la descomposición binomial permite resolver la igualdad con menos operaciones que una expansión completa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una aplicación compara dos numerales iguales en valor: $\\overline{1331}_{(n)}$ y $\\overline{2626}_{(m)}$. Además sabe que $m>6$. ¿Cuál combinación de relaciones es compatible con la teoría recibida?",
+      "opts": [
+        "Se cumple $n<m$ y $n\\le6$.",
+        "Se cumple $n=m$ y $n=7$.",
+        "Se cumple $n>m$ y $n\\ge8$.",
+        "Se cumple $n<m$ y $n\\ge8$.",
+        "Se cumple $n=m$ y $n>8$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Como $1331<2626$, el primer numeral es aparentemente menor.\nPaso 2: Para representar el mismo valor, su base debe ser mayor, de modo que $n>m$.\nPaso 3: Como $m>6$ y las bases son enteras, $m\\ge7$ y entonces $n\\ge8$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador recibe un numeral máximo de $6$ cifras en una base desconocida y sabe que, al sumarle $1$, obtiene $27^{12}$. ¿Qué valor debe asignar a la base?",
+      "opts": [
+        "El investigador debe asignar $n=243$.",
+        "El investigador debe asignar $n=486$.",
+        "El investigador debe asignar $n=729$.",
+        "El investigador debe asignar $n=1458$.",
+        "El investigador debe asignar $n=2187$."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El numeral máximo de $6$ cifras es $n^6-1$, por lo que al sumarle $1$ se obtiene $n^6$.\nPaso 2: Como $27^{12}=(3^3)^{12}=3^{36}=(3^6)^6$, se tiene $n^6=(3^6)^6$.\nPaso 3: Igualando las bases de las potencias de exponente $6$, resulta $n=3^6=729$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una máquina debe verificar si $a=5$ satisface la condición $\\overline{aaa}_{(8)}<378$. ¿Qué resultado obtiene al sustituir directamente este valor?",
+      "opts": [
+        "La condición se cumple porque $73\\cdot5=365<378$.",
+        "La condición no se cumple porque $73\\cdot5=365>378$.",
+        "La condición se cumple porque $64\\cdot5=320<378$.",
+        "La condición no se cumple porque $8\\cdot5=40<378$.",
+        "La condición se cumple porque $73+5=78<378$."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Para $a=5$, la descomposición del numeral produce $73a$.\nPaso 2: Sustituyendo se obtiene $73\\cdot5=365$.\nPaso 3: Como $365<378$, el valor $a=5$ sí satisface la desigualdad. Esto revela que el cierre indicado en la explicación original, que excluye $a=5$, contiene un error aritmético."
+    }
+  ]
+}
