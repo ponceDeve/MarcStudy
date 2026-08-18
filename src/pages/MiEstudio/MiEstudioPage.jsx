@@ -346,11 +346,10 @@ export default function MiEstudioPage() {
               return (
                 <i
                   key={i}
-                  className={`vidas-fullscreen__heart ${
-                    corazonRoto
+                  className={`vidas-fullscreen__heart ${corazonRoto
                       ? "bi bi-heartbreak is-roto"
                       : "bi bi-heart-fill is-a-punto"
-                  }`}
+                    }`}
                 />
               );
             }
@@ -572,9 +571,9 @@ export default function MiEstudioPage() {
   const {
     historial: historialInicio,
     guardarBusqueda:
-      guardarBusquedaInicio,
+    guardarBusquedaInicio,
     eliminarHistorial:
-      eliminarHistorialInicio
+    eliminarHistorialInicio
   } = useSearchHistory();
 
   const [
@@ -678,7 +677,7 @@ export default function MiEstudioPage() {
       return historialInicio.slice(
         inicio,
         inicio +
-          HISTORIAL_INICIO_POR_PAGINA
+        HISTORIAL_INICIO_POR_PAGINA
       );
     }, [
       historialInicio,
@@ -687,7 +686,7 @@ export default function MiEstudioPage() {
 
   const hayMasHistorialInicio =
     paginaHistorialInicio *
-      HISTORIAL_INICIO_POR_PAGINA <
+    HISTORIAL_INICIO_POR_PAGINA <
     historialInicio.length;
 
   const hayMenosHistorialInicio =
@@ -771,7 +770,7 @@ export default function MiEstudioPage() {
     try {
       const res = await fetch(
         import.meta.env.BASE_URL +
-          item.archivo
+        item.archivo
       );
 
       if (!res.ok) {
@@ -1037,7 +1036,7 @@ export default function MiEstudioPage() {
   const {
     focusedIdx: focusedInicial,
     handleKeyDown:
-      handleKeyDownInicial
+    handleKeyDownInicial
   } = useArrowKeyList(
     itemsPlanos,
     seleccionarItem
@@ -1049,7 +1048,7 @@ export default function MiEstudioPage() {
     if (stage === "theory") {
       const pregunta =
         examenPreguntas[
-          cardIndex
+        cardIndex
         ] || null;
 
       if (!pregunta) {
@@ -1177,7 +1176,7 @@ export default function MiEstudioPage() {
 
         setCardIndex(
           ordenPreguntas[
-            siguientePos
+          siguientePos
           ]
         );
 
@@ -1272,7 +1271,7 @@ export default function MiEstudioPage() {
 
         setCardIndex(
           ordenPreguntas[
-            anteriorPos
+          anteriorPos
           ]
         );
 
@@ -1448,7 +1447,7 @@ export default function MiEstudioPage() {
 
       vistaPregunta =
         examenPreguntas[
-          nivelIndex
+        nivelIndex
         ] || null;
     } else if (
       modoEstudio ===
@@ -1459,7 +1458,7 @@ export default function MiEstudioPage() {
 
       vistaPregunta =
         examenPreguntas[
-          cardIndex
+        cardIndex
         ] || null;
     } else {
       vistaKey =
@@ -1616,7 +1615,7 @@ export default function MiEstudioPage() {
 
               ceroVidasRef.current
                 .play()
-                .catch(() => {});
+                .catch(() => { });
             }
 
             gameOver();
@@ -1630,7 +1629,7 @@ export default function MiEstudioPage() {
 
             vidaPerderRef.current
               .play()
-              .catch(() => {});
+              .catch(() => { });
           }
 
           return nuevasVidas;
@@ -1666,7 +1665,7 @@ export default function MiEstudioPage() {
           if (
             val &&
             typeof val ===
-              "object" &&
+            "object" &&
             val.pregunta
           ) {
             return {
@@ -1683,9 +1682,9 @@ export default function MiEstudioPage() {
 
           return pregunta
             ? {
-                key,
-                pregunta
-              }
+              key,
+              pregunta
+            }
             : null;
         })
         .filter(Boolean);
@@ -1783,8 +1782,8 @@ export default function MiEstudioPage() {
 
   const current = isLevelMode
     ? examenPreguntas[
-        nivelIndex
-      ]
+    nivelIndex
+    ]
     : flatPuntos[cardIndex];
 
   const [
@@ -1801,46 +1800,46 @@ export default function MiEstudioPage() {
 
   const textoCompletoTeoria =
     stage === "theory" &&
-    !isLevelMode &&
-    current
+      !isLevelMode &&
+      current
       ? [
-          current.seccionTitulo,
-          current.texto,
-          current.explicacion
-        ]
-          .filter(Boolean)
-          .join(". ")
+        current.seccionTitulo,
+        current.texto,
+        current.explicacion
+      ]
+        .filter(Boolean)
+        .join(". ")
       : null;
 
   useLecturaTeoriaVoz(
     textoCompletoTeoria,
     lecturaTeoriaOn &&
-      stage === "theory" &&
-      !isLevelMode
+    stage === "theory" &&
+    !isLevelMode
   );
 
   const preguntaActual =
     repasoQuizActivo
       ? repasoQuizBatch[
-          repasoQuizPos
-        ]?.pregunta || null
+        repasoQuizPos
+      ]?.pregunta || null
       : isLevelMode
         ? current
         : isFlipQuiz
           ? quizBatch[quizPos]
-              ?.pregunta || null
+            ?.pregunta || null
           : modoEstudio ===
-              "solo_preguntas"
+            "solo_preguntas"
             ? examenPreguntas[
-                cardIndex
-              ] || null
+            cardIndex
+            ] || null
             : null;
 
   const canAdvance =
     stage !== "question" ||
     Boolean(
       questionResult &&
-        questionResult.isCorrect
+      questionResult.isCorrect
     );
 
   useEffect(() => {
@@ -1969,39 +1968,39 @@ export default function MiEstudioPage() {
   const progresoPregunta =
     repasoQuizActivo
       ? {
-          current:
-            repasoQuizPos + 1,
-          total:
-            repasoQuizBatch.length
-        }
+        current:
+          repasoQuizPos + 1,
+        total:
+          repasoQuizBatch.length
+      }
       : isLevelMode
         ? {
-            current:
-              nivelIndex + 1,
-            total:
-              examenPreguntas.length
-          }
+          current:
+            nivelIndex + 1,
+          total:
+            examenPreguntas.length
+        }
         : isFlipQuiz
           ? {
-              current:
-                quizPos + 1,
-              total:
-                quizBatch.length
-            }
+            current:
+              quizPos + 1,
+            total:
+              quizBatch.length
+          }
           : modoEstudio ===
-              "solo_preguntas"
+            "solo_preguntas"
             ? {
-                current:
-                  posOrden + 1,
-                total:
-                  ordenPreguntas.length
-              }
+              current:
+                posOrden + 1,
+              total:
+                ordenPreguntas.length
+            }
             : {
-                current:
-                  cardIndex + 1,
-                total:
-                  flatPuntos.length
-              };
+              current:
+                cardIndex + 1,
+              total:
+                flatPuntos.length
+            };
 
   const nombreCursoActivo =
     cursoSeleccionado ||
@@ -2100,11 +2099,10 @@ export default function MiEstudioPage() {
 
       {repasoGuardadoMsg && (
         <div
-          className={`repaso-toast is-success${
-            repasoGuardadoSaliendo
+          className={`repaso-toast is-success${repasoGuardadoSaliendo
               ? " is-saliendo"
               : ""
-          }`}
+            }`}
         >
           <i className="fas fa-bookmark" />
           {" "}Guardado para repasar
@@ -2113,11 +2111,10 @@ export default function MiEstudioPage() {
 
       {sinPreguntaAlerta && (
         <div
-          className={`repaso-toast is-top sin-pregunta-alerta${
-            sinPreguntaSaliendo
+          className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo
               ? " is-saliendo"
               : ""
-          }`}
+            }`}
         >
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
@@ -2162,11 +2159,10 @@ export default function MiEstudioPage() {
       />
 
       <div
-        className={`config-overlay ${
-          configOpen
+        className={`config-overlay ${configOpen
             ? ""
             : "is-closed"
-        }`}
+          }`}
         aria-hidden={!configOpen}
       >
         <div className="config-overlay__panel">
@@ -2197,22 +2193,21 @@ export default function MiEstudioPage() {
                     }
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "continuar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "continuar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-play" />
               </button>
 
               {botonArmado ===
                 "continuar" && (
-                <span className="config-overlay__label">
-                  Continuar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Continuar
+                  </span>
+                )}
             </div>
 
             <div className="config-overlay__item">
@@ -2223,30 +2218,28 @@ export default function MiEstudioPage() {
                     toggleFullscreen
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "pantalla"
+                className={`config-overlay__btn ${botonArmado ===
+                    "pantalla"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i
-                  className={`fas ${
-                    isFullscreen
+                  className={`fas ${isFullscreen
                       ? "fa-compress"
                       : "fa-expand"
-                  }`}
+                    }`}
                 />
               </button>
 
               {botonArmado ===
                 "pantalla" && (
-                <span className="config-overlay__label">
-                  {isFullscreen
-                    ? "Minimizar"
-                    : "Pantalla Completa"}
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    {isFullscreen
+                      ? "Minimizar"
+                      : "Pantalla Completa"}
+                  </span>
+                )}
             </div>
 
             <div className="config-overlay__item">
@@ -2257,22 +2250,21 @@ export default function MiEstudioPage() {
                     verPreguntasVistas
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "repasar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "repasar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-list-check" />
               </button>
 
               {botonArmado ===
                 "repasar" && (
-                <span className="config-overlay__label">
-                  Repasar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Repasar
+                  </span>
+                )}
             </div>
 
             <div className="config-overlay__item">
@@ -2286,11 +2278,10 @@ export default function MiEstudioPage() {
                     );
                   }
                 }}
-                className={`config-overlay__btn ${
-                  confirmLeave
+                className={`config-overlay__btn ${confirmLeave
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-door-open" />
               </button>
@@ -2310,22 +2301,21 @@ export default function MiEstudioPage() {
                     reiniciarTarjetas
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "reiniciar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "reiniciar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-rotate-left" />
               </button>
 
               {botonArmado ===
                 "reiniciar" && (
-                <span className="config-overlay__label">
-                  Reiniciar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Reiniciar
+                  </span>
+                )}
             </div>
           </div>
         </div>
@@ -2370,58 +2360,44 @@ export default function MiEstudioPage() {
 
                 <div className="home-search">
                   <div
-                    className={`search-input-row${
-                      mostrarHistorialInicio ||
-                      (
-                        busquedaEnfocada &&
-                        hayQuery
-                      )
+                    className={`search-input-row${mostrarHistorialInicio ||
+                        (busquedaEnfocada && hayQuery)
                         ? " has-query"
                         : ""
-                    }`}
+                      }`}
                   >
                     <input
                       autoComplete="off"
                       type="search"
                       name="buscar-inicio"
                       value={query}
-                      onChange={(e) =>
-                        setQuery(
-                          e.target.value
-                        )
-                      }
+                      onChange={(e) => {
+                        setQuery(e.target.value);
+                        setPaginaHistorialInicio(1);
+                      }}
                       onFocus={() =>
-                        setBusquedaEnfocada(
-                          true
-                        )
+                        setBusquedaEnfocada(true)
                       }
                       onBlur={() =>
                         setTimeout(
                           () =>
-                            setBusquedaEnfocada(
-                              false
-                            ),
+                            setBusquedaEnfocada(false),
                           150
                         )
                       }
                       onKeyDown={(e) => {
                         if (
-                          e.key ===
-                            "Enter" &&
+                          e.key === "Enter" &&
                           hayQuery &&
                           focusedInicial <= 0
                         ) {
                           e.preventDefault();
 
                           const mejorOpcion =
-                            fuertes
-                              .cursos[0] ||
-                            fuertes
-                              .temas[0];
+                            fuertes.cursos[0] ||
+                            fuertes.temas[0];
 
-                          if (
-                            mejorOpcion
-                          ) {
+                          if (mejorOpcion) {
                             seleccionarItem(
                               mejorOpcion
                             );
@@ -2430,13 +2406,28 @@ export default function MiEstudioPage() {
                           }
                         }
 
-                        handleKeyDownInicial(
-                          e
-                        );
+                        handleKeyDownInicial(e);
                       }}
                       placeholder="Buscar tema o curso..."
                       className="search-input"
                     />
+
+                    {hayQuery && (
+                      <button
+                        type="button"
+                        className="search-input-clear"
+                        aria-label="Limpiar búsqueda"
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                        }}
+                        onClick={() => {
+                          setQuery("");
+                          setPaginaHistorialInicio(1);
+                        }}
+                      >
+                        <i className="fa-solid fa-xmark" />
+                      </button>
+                    )}
 
                     <div
                       className="search-input-lupa"
@@ -2445,14 +2436,10 @@ export default function MiEstudioPage() {
 
                         if (hayQuery) {
                           const mejorOpcion =
-                            fuertes
-                              .cursos[0] ||
-                            fuertes
-                              .temas[0];
+                            fuertes.cursos[0] ||
+                            fuertes.temas[0];
 
-                          if (
-                            mejorOpcion
-                          ) {
+                          if (mejorOpcion) {
                             seleccionarItem(
                               mejorOpcion
                             );
@@ -2460,8 +2447,7 @@ export default function MiEstudioPage() {
                         }
                       }}
                       style={{
-                        cursor:
-                          "pointer"
+                        cursor: "pointer",
                       }}
                     >
                       <i className="fa-solid fa-magnifying-glass" />
@@ -2471,46 +2457,33 @@ export default function MiEstudioPage() {
                   {mostrarHistorialInicio && (
                     <div className="search-history">
                       {historialInicioVisible.map(
-                        (
-                          item,
-                          index
-                        ) => {
+                        (item, index) => {
                           const texto =
-                            item.type ===
-                            "curso"
+                            item.type === "curso"
                               ? item.nombre
                               : item.tema;
 
                           const historialKey =
-                            item.type ===
-                            "curso"
+                            item.type === "curso"
                               ? `curso-${item.nombre}-${index}`
                               : `tema-${item.curso || ""}-${item.tema || ""}-${item.archivo || ""}-${index}`;
 
                           return (
                             <button
                               type="button"
-                              key={
-                                historialKey
-                              }
+                              key={historialKey}
                               className="search-history-item"
-                              onMouseDown={(
-                                e
-                              ) => {
+                              onMouseDown={(e) => {
                                 e.preventDefault();
                               }}
                               onClick={() => {
-                                seleccionarItem(
-                                  item
-                                );
+                                seleccionarItem(item);
                               }}
                             >
                               <i className="fa-solid fa-clock-rotate-left" />
 
                               <span>
-                                {
-                                  texto
-                                }
+                                {texto}
                               </span>
                             </button>
                           );
@@ -2522,20 +2495,15 @@ export default function MiEstudioPage() {
                           <button
                             type="button"
                             className="search-history-more"
-                            onMouseDown={(
-                              e
-                            ) => {
+                            onMouseDown={(e) => {
                               e.preventDefault();
                             }}
                             onClick={() => {
                               setPaginaHistorialInicio(
-                                (
-                                  actual
-                                ) =>
+                                (actual) =>
                                   Math.max(
                                     1,
-                                    actual -
-                                      1
+                                    actual - 1
                                   )
                               );
                             }}
@@ -2549,18 +2517,13 @@ export default function MiEstudioPage() {
                           <button
                             type="button"
                             className="search-history-more"
-                            onMouseDown={(
-                              e
-                            ) => {
+                            onMouseDown={(e) => {
                               e.preventDefault();
                             }}
                             onClick={() => {
                               setPaginaHistorialInicio(
-                                (
-                                  actual
-                                ) =>
-                                  actual +
-                                  1
+                                (actual) =>
+                                  actual + 1
                               );
                             }}
                           >
@@ -2572,16 +2535,12 @@ export default function MiEstudioPage() {
                         <button
                           type="button"
                           className="search-history-delete"
-                          onMouseDown={(
-                            e
-                          ) => {
+                          onMouseDown={(e) => {
                             e.preventDefault();
                           }}
                           onClick={() => {
                             eliminarHistorialInicio();
-                            setPaginaHistorialInicio(
-                              1
-                            );
+                            setPaginaHistorialInicio(1);
                           }}
                         >
                           <i className="fa-solid fa-trash" />
@@ -2593,100 +2552,75 @@ export default function MiEstudioPage() {
 
                   {busquedaEnfocada &&
                     hayQuery &&
-                    grupos.length >
-                      0 &&
+                    grupos.length > 0 &&
                     (() => {
                       let idx = -1;
 
                       return (
                         <div className="home-search-results search-results">
-                          {grupos.map(
-                            (g) => {
-                              const idxCurso =
-                                ++idx;
+                          {grupos.map((g) => {
+                            const idxCurso = ++idx;
 
-                              return (
-                                <div
-                                  key={`grupo-${g.curso}`}
-                                >
-                                  <button
-                                    onMouseDown={(
-                                      e
-                                    ) => {
-                                      e.preventDefault();
+                            return (
+                              <div
+                                key={`grupo-${g.curso}`}
+                              >
+                                <button
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
 
-                                      seleccionarItem(
-                                        {
-                                          type: "curso",
-                                          nombre:
-                                            g.curso
-                                        }
-                                      );
-                                    }}
-                                    className={`search-result-item is-curso ${
-                                      idxCurso ===
+                                    seleccionarItem({
+                                      type: "curso",
+                                      nombre: g.curso,
+                                    });
+                                  }}
+                                  className={`search-result-item is-curso ${idxCurso ===
                                       focusedInicial
-                                        ? "is-focused"
-                                        : ""
+                                      ? "is-focused"
+                                      : ""
                                     }`}
-                                  >
-                                    <span className="curso-title">
-                                      {
-                                        g.curso
-                                      }
-                                    </span>
-                                  </button>
+                                >
+                                  <span className="curso-title">
+                                    {g.curso}
+                                  </span>
+                                </button>
 
-                                  {g.temas.map(
-                                    (t) => {
-                                      const idxTema =
-                                        ++idx;
+                                {g.temas.map((t) => {
+                                  const idxTema = ++idx;
 
-                                      return (
-                                        <button
-                                          key={`tema-${t.curso}-${t.tema}`}
-                                          onMouseDown={(
-                                            e
-                                          ) => {
-                                            e.preventDefault();
+                                  return (
+                                    <button
+                                      key={`tema-${t.curso}-${t.tema}`}
+                                      onMouseDown={(e) => {
+                                        e.preventDefault();
 
-                                            seleccionarItem(
-                                              t
-                                            );
-                                          }}
-                                          className={`search-result-item is-tema ${
-                                            idxTema ===
-                                            focusedInicial
-                                              ? "is-focused"
-                                              : ""
-                                          }`}
-                                        >
-                                          <p className="search-result-item__tema">
-                                            {
-                                              t.tema
-                                            }
-                                          </p>
-                                        </button>
-                                      );
-                                    }
-                                  )}
-                                </div>
-                              );
-                            }
-                          )}
+                                        seleccionarItem(t);
+                                      }}
+                                      className={`search-result-item is-tema ${idxTema ===
+                                          focusedInicial
+                                          ? "is-focused"
+                                          : ""
+                                        }`}
+                                    >
+                                      <p className="search-result-item__tema">
+                                        {t.tema}
+                                      </p>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })}
                         </div>
                       );
                     })()}
 
                   {busquedaEnfocada &&
                     hayQuery &&
-                    grupos.length ===
-                      0 && (
+                    grupos.length === 0 && (
                       <div className="home-search-results search-results">
                         <p className="search-empty">
-                          Sin resultados
-                          para "
-                          {query}"
+                          Sin resultados para "{query}"
                         </p>
                       </div>
                     )}
@@ -2712,33 +2646,33 @@ export default function MiEstudioPage() {
             <div className="mi-estudio__stage container">
               {stage ===
                 "question" && (
-                <div
-                  className="mi-estudio__hud-wrap animate-fade-in"
-                  style={{
-                    display:
-                      "block",
-                    visibility:
-                      "visible",
-                    width: "100%",
-                    marginBottom:
-                      "15px"
-                  }}
-                >
-                  <Hud
-                    current={
-                      progresoPregunta.current
-                    }
-                    total={
-                      progresoPregunta.total
-                    }
-                    correct={score}
-                    wrong={
-                      wrongCount
-                    }
-                    vidas={vidas}
-                  />
-                </div>
-              )}
+                  <div
+                    className="mi-estudio__hud-wrap animate-fade-in"
+                    style={{
+                      display:
+                        "block",
+                      visibility:
+                        "visible",
+                      width: "100%",
+                      marginBottom:
+                        "15px"
+                    }}
+                  >
+                    <Hud
+                      current={
+                        progresoPregunta.current
+                      }
+                      total={
+                        progresoPregunta.total
+                      }
+                      correct={score}
+                      wrong={
+                        wrongCount
+                      }
+                      vidas={vidas}
+                    />
+                  </div>
+                )}
 
               {stage ===
                 "theory" &&
@@ -2777,11 +2711,10 @@ export default function MiEstudioPage() {
                           (v) => !v
                         )
                       }
-                      className={`mi-estudio__voz-btn ${
-                        lecturaTeoriaOn
+                      className={`mi-estudio__voz-btn ${lecturaTeoriaOn
                           ? "is-on"
                           : "is-off"
-                      }`}
+                        }`}
                       title={
                         lecturaTeoriaOn
                           ? "Desactivar lectura en voz"
@@ -2792,11 +2725,10 @@ export default function MiEstudioPage() {
                       }
                     >
                       <i
-                        className={`fa-solid ${
-                          lecturaTeoriaOn
+                        className={`fa-solid ${lecturaTeoriaOn
                             ? "fa-volume-high"
                             : "fa-volume-xmark"
-                        }`}
+                          }`}
                       />
                     </button>
 
@@ -2854,7 +2786,7 @@ export default function MiEstudioPage() {
                                 e
                               ) =>
                                 e.key ===
-                                  "Enter" &&
+                                "Enter" &&
                                 buscarEnGoogle()
                               }
                               placeholder="Pregúntale a Google..."
@@ -2878,86 +2810,85 @@ export default function MiEstudioPage() {
 
               {stage ===
                 "question" && (
-                <div className="mi-estudio__question-stage">
-                  {countdown >
-                  0 ? (
-                    <div
-                      className="animate-fade-in"
-                      style={{
-                        display:
-                          "flex",
-                        flexDirection:
-                          "column",
-                        alignItems:
-                          "center",
-                        justifyContent:
-                          "center",
-                        flex: 1,
-                        minHeight:
-                          "300px"
-                      }}
-                    >
-                      <h2
+                  <div className="mi-estudio__question-stage">
+                    {countdown >
+                      0 ? (
+                      <div
+                        className="animate-fade-in"
                         style={{
-                          fontSize:
-                            "5rem",
-                          margin:
-                            "0",
-                          color:
-                            "var(--ink)"
+                          display:
+                            "flex",
+                          flexDirection:
+                            "column",
+                          alignItems:
+                            "center",
+                          justifyContent:
+                            "center",
+                          flex: 1,
+                          minHeight:
+                            "300px"
                         }}
                       >
-                        {
-                          countdown
-                        }
-                      </h2>
+                        <h2
+                          style={{
+                            fontSize:
+                              "5rem",
+                            margin:
+                              "0",
+                            color:
+                              "var(--ink)"
+                          }}
+                        >
+                          {
+                            countdown
+                          }
+                        </h2>
 
-                      <p
-                        style={{
-                          fontSize:
-                            "1.2rem",
-                          opacity:
-                            0.8,
-                          marginTop:
-                            "10px",
-                          textAlign:
-                            "center"
-                        }}
-                      >
-                        Intenta recordar
-                        la teoría antes
-                        de ver la pregunta...
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="mi-estudio__question-inner animate-fade-in">
-                      <QuestionCard
-                        key={`${
-                          repasoQuizActivo
-                            ? "repaso-" +
+                        <p
+                          style={{
+                            fontSize:
+                              "1.2rem",
+                            opacity:
+                              0.8,
+                            marginTop:
+                              "10px",
+                            textAlign:
+                              "center"
+                          }}
+                        >
+                          Intenta recordar
+                          la teoría antes
+                          de ver la pregunta...
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="mi-estudio__question-inner animate-fade-in">
+                        <QuestionCard
+                          key={`${repasoQuizActivo
+                              ? "repaso-" +
                               repasoQuizPos
-                            : isLevelMode
-                              ? "nivel-" +
+                              : isLevelMode
+                                ? "nivel-" +
                                 nivelIndex
-                              : isFlipQuiz
-                                ? "flip-" +
+                                : isFlipQuiz
+                                  ? "flip-" +
                                   cardIndex +
                                   "-" +
                                   quizPos
-                                : "teoria-" +
+                                  : "teoria-" +
                                   cardIndex
-                        }-${attemptKey}`}
-                        pregunta={
-                          preguntaActual
-                        }
-                        onRespondido={
-                          manejarRespuesta
-                        }
-                      />
-                    </div>
-                  )}
-                </div>
-              )}
+                            }-${attemptKey}`}
+                          pregunta={
+                            preguntaActual
+                          }
+                          onRespondido={
+                            manejarRespuesta
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
 
               <div className="mi-estudio__nav">
                 <button
@@ -2967,27 +2898,26 @@ export default function MiEstudioPage() {
                   disabled={
                     isLevelMode
                       ? nivelIndex ===
-                        0
+                      0
                       : isFlipQuiz
                         ? quizPos ===
-                          0
+                        0
                         : cardIndex ===
-                          0
+                        0
                   }
-                  className={`mi-estudio__nav-btn ${
-                    (
+                  className={`mi-estudio__nav-btn ${(
                       isLevelMode
                         ? nivelIndex ===
-                          0
+                        0
                         : isFlipQuiz
                           ? quizPos ===
-                            0
+                          0
                           : cardIndex ===
-                            0
+                          0
                     )
                       ? ""
                       : "is-active"
-                  }`}
+                    }`}
                   title="Anterior"
                 >
                   <i className="fas fa-caret-left" />
@@ -2995,7 +2925,7 @@ export default function MiEstudioPage() {
 
                 {!isLevelMode &&
                   modoEstudio !==
-                    "solo_preguntas" && (
+                  "solo_preguntas" && (
                     <button
                       onClick={
                         toggleStage
@@ -3012,19 +2942,19 @@ export default function MiEstudioPage() {
                     const esUltimo =
                       repasoQuizActivo
                         ? repasoQuizPos ===
-                          repasoQuizBatch.length -
-                            1
+                        repasoQuizBatch.length -
+                        1
                         : isLevelMode
                           ? nivelIndex ===
-                            examenPreguntas.length -
-                              1
+                          examenPreguntas.length -
+                          1
                           : isFlipQuiz
                             ? quizPos ===
-                              quizBatch.length -
-                                1
+                            quizBatch.length -
+                            1
                             : cardIndex ===
-                              flatPuntos.length -
-                                1;
+                            flatPuntos.length -
+                            1;
 
                     const bloqueado =
                       !canAdvance;
@@ -3038,15 +2968,14 @@ export default function MiEstudioPage() {
                           disabled={
                             bloqueado
                           }
-                          className={`mi-estudio__nav-btn ${
-                            bloqueado
+                          className={`mi-estudio__nav-btn ${bloqueado
                               ? ""
                               : "is-active"
-                          }`}
+                            }`}
                           title="Siguiente"
                         >
                           {esUltimo &&
-                          canAdvance ? (
+                            canAdvance ? (
                             <i className="fas fa-flag-checkered" />
                           ) : (
                             <i className="fas fa-caret-right" />
@@ -3108,14 +3037,14 @@ export default function MiEstudioPage() {
                   href={
                     topicData?.archivo
                       ? `${import.meta.env.BASE_URL}${topicData.archivo
-                          .replace(
-                            /^temas\//i,
-                            "PDFs/"
-                          )
-                          .replace(
-                            /\.json$/i,
-                            ".pdf"
-                          )}`
+                        .replace(
+                          /^temas\//i,
+                          "PDFs/"
+                        )
+                        .replace(
+                          /\.json$/i,
+                          ".pdf"
+                        )}`
                       : "#"
                   }
                   download
@@ -3151,97 +3080,97 @@ export default function MiEstudioPage() {
 
         {stage ===
           "finished" && (
-          <div className="mi-estudio__finished">
-            {confirmGuardarRepasoFinal ? (
-              <>
-                <div className="mi-estudio__finished-emoji animate-bounce">
-                  <i className="fas fa-thumbtack" />
-                </div>
+            <div className="mi-estudio__finished">
+              {confirmGuardarRepasoFinal ? (
+                <>
+                  <div className="mi-estudio__finished-emoji animate-bounce">
+                    <i className="fas fa-thumbtack" />
+                  </div>
 
-                <h2 className="mi-estudio__finished-title">
-                  ¿Guardar este
-                  tema en tus
-                  repasos?
-                </h2>
+                  <h2 className="mi-estudio__finished-title">
+                    ¿Guardar este
+                    tema en tus
+                    repasos?
+                  </h2>
 
-                <p className="mi-estudio__finished-sub">
-                  Así te va a
-                  aparecer en la
-                  sección de Repasos
-                  para reforzarlo
-                  más adelante.
-                </p>
+                  <p className="mi-estudio__finished-sub">
+                    Así te va a
+                    aparecer en la
+                    sección de Repasos
+                    para reforzarlo
+                    más adelante.
+                  </p>
 
-                <div
-                  style={{
-                    display:
-                      "flex",
-                    gap: "12px",
-                    marginTop:
-                      "20px"
-                  }}
-                >
+                  <div
+                    style={{
+                      display:
+                        "flex",
+                      gap: "12px",
+                      marginTop:
+                        "20px"
+                    }}
+                  >
+                    <button
+                      onClick={() =>
+                        confirmarGuardarRepasoFinal(
+                          true
+                        )
+                      }
+                      className="mi-estudio__finished-btn"
+                      style={{
+                        marginTop: 0
+                      }}
+                    >
+                      Sí, guardar
+                    </button>
+
+                    <button
+                      onClick={() =>
+                        confirmarGuardarRepasoFinal(
+                          false
+                        )
+                      }
+                      className="mi-estudio__finished-btn is-outline"
+                      style={{
+                        marginTop: 0
+                      }}
+                    >
+                      No, gracias
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="mi-estudio__finished-emoji animate-bounce">
+                    <i className="fas fa-trophy" />
+                  </div>
+
+                  <h2 className="mi-estudio__finished-title">
+                    {nombreUsuario
+                      ? `¡Tema completado, ${nombreUsuario}!`
+                      : "¡Tema completado!"}
+                  </h2>
+
+                  <p className="mi-estudio__finished-sub">
+                    Excelente trabajo
+                    leyendo toda la
+                    teoría.
+                  </p>
+
                   <button
                     onClick={() =>
-                      confirmarGuardarRepasoFinal(
+                      setTemasOpen(
                         true
                       )
                     }
                     className="mi-estudio__finished-btn"
-                    style={{
-                      marginTop: 0
-                    }}
                   >
-                    Sí, guardar
+                    Elegir otro tema
                   </button>
-
-                  <button
-                    onClick={() =>
-                      confirmarGuardarRepasoFinal(
-                        false
-                      )
-                    }
-                    className="mi-estudio__finished-btn is-outline"
-                    style={{
-                      marginTop: 0
-                    }}
-                  >
-                    No, gracias
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="mi-estudio__finished-emoji animate-bounce">
-                  <i className="fas fa-trophy" />
-                </div>
-
-                <h2 className="mi-estudio__finished-title">
-                  {nombreUsuario
-                    ? `¡Tema completado, ${nombreUsuario}!`
-                    : "¡Tema completado!"}
-                </h2>
-
-                <p className="mi-estudio__finished-sub">
-                  Excelente trabajo
-                  leyendo toda la
-                  teoría.
-                </p>
-
-                <button
-                  onClick={() =>
-                    setTemasOpen(
-                      true
-                    )
-                  }
-                  className="mi-estudio__finished-btn"
-                >
-                  Elegir otro tema
-                </button>
-              </>
-            )}
-          </div>
-        )}
+                </>
+              )}
+            </div>
+          )}
       </div>
 
       {topicData && (
@@ -3325,102 +3254,102 @@ export default function MiEstudioPage() {
 
       {alertaVidas ===
         "tres" && (
-        <div className="vidas-fullscreen animate-fade-in">
-          <div className="vidas-fullscreen__content">
-            <h2
-              style={{
-                color:
-                  "var(--warning)",
-                margin: 0,
-                fontSize:
-                  "2rem"
-              }}
-            >
-              <i className="fas fa-triangle-exclamation" />
-              {" "}3 vidas
-            </h2>
+          <div className="vidas-fullscreen animate-fade-in">
+            <div className="vidas-fullscreen__content">
+              <h2
+                style={{
+                  color:
+                    "var(--warning)",
+                  margin: 0,
+                  fontSize:
+                    "2rem"
+                }}
+              >
+                <i className="fas fa-triangle-exclamation" />
+                {" "}3 vidas
+              </h2>
 
-            {renderCorazonesVidas()}
+              {renderCorazonesVidas()}
 
-            <p
-              style={{
-                color: "#fff",
-                fontSize:
-                  "1rem"
-              }}
-            >
-              No te confíes.
-            </p>
+              <p
+                style={{
+                  color: "#fff",
+                  fontSize:
+                    "1rem"
+                }}
+              >
+                No te confíes.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
       {alertaVidas ===
         "una" && (
-        <div className="vidas-fullscreen animate-fade-in">
-          <div className="vidas-fullscreen__content">
-            <h2
-              style={{
-                color:
-                  "var(--danger)",
-                margin: 0,
-                fontSize:
-                  "2rem",
-                animation:
-                  "pulse 1s infinite"
-              }}
-            >
-              <i className="fas fa-fire" />
-              {" "}1 vida
-            </h2>
+          <div className="vidas-fullscreen animate-fade-in">
+            <div className="vidas-fullscreen__content">
+              <h2
+                style={{
+                  color:
+                    "var(--danger)",
+                  margin: 0,
+                  fontSize:
+                    "2rem",
+                  animation:
+                    "pulse 1s infinite"
+                }}
+              >
+                <i className="fas fa-fire" />
+                {" "}1 vida
+              </h2>
 
-            {renderCorazonesVidas()}
+              {renderCorazonesVidas()}
 
-            <p
-              style={{
-                color: "#fff",
-                fontSize:
-                  "1rem"
-              }}
-            >
-              Última oportunidad.
-            </p>
+              <p
+                style={{
+                  color: "#fff",
+                  fontSize:
+                    "1rem"
+                }}
+              >
+                Última oportunidad.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
       {alertaVidas ===
         "cero" && (
-        <div className="vidas-fullscreen animate-fade-in">
-          <div className="vidas-fullscreen__content">
-            <h1
-              style={{
-                color:
-                  "var(--danger)",
-                margin: 0,
-                fontSize:
-                  "3rem",
-                textShadow:
-                  "0 0 10px var(--danger)"
-              }}
-            >
-              GAME OVER
-            </h1>
+          <div className="vidas-fullscreen animate-fade-in">
+            <div className="vidas-fullscreen__content">
+              <h1
+                style={{
+                  color:
+                    "var(--danger)",
+                  margin: 0,
+                  fontSize:
+                    "3rem",
+                  textShadow:
+                    "0 0 10px var(--danger)"
+                }}
+              >
+                GAME OVER
+              </h1>
 
-            {renderCorazonesVidas()}
+              {renderCorazonesVidas()}
 
-            <p
-              style={{
-                color: "#aaa",
-                fontSize:
-                  "1rem"
-              }}
-            >
-              Progreso reiniciado.
-            </p>
+              <p
+                style={{
+                  color: "#aaa",
+                  fontSize:
+                    "1rem"
+                }}
+              >
+                Progreso reiniciado.
+              </p>
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 }

@@ -637,7 +637,6 @@
 
 .vidas-alert{
   width:min(340px,90vw);
-  box-sizing:border-box;
 }
 
 .config-overlay__label{
@@ -742,6 +741,7 @@
 .theory-search__item:hover{
   background:var(--surface-hover);
 }
+
 .theory-search__item-seccion{
   display:block;
   font-size:11px;
@@ -910,49 +910,6 @@
 
 .home-search .search-result-item.is-curso:active{
   transform:translateX(1px);
-}
-
-
-/* Tema */
-
-.home-search .search-result-item.is-tema{
-  width:calc(100% - 24px);
-  box-sizing:border-box;
-  margin-left:24px;
-  text-align:left;
-  background:var(--surface-alt);
-  color:var(--ink);
-  border:none;
-  border-left:2px solid var(--border);
-  border-bottom:2px solid var(--border);
-  border-radius:0;
-  padding:10px 16px;
-  cursor:pointer;
-  font-family:var(--font-body);
-  font-size:.95rem;
-  transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease;
-}
-
-.home-search .search-result-item.is-tema:hover,
-.home-search .search-result-item.is-tema.is-focused{
-  background:var(--surface-hover);
-  border-left-color:var(--primary);
-  border-bottom-color:var(--primary);
-  color:var(--ink);
-}
-
-.home-search .search-result-item.is-tema:active{
-  transform:translateX(1px);
-}
-
-
-/* Nombre del tema */
-
-.home-search .search-result-item__tema{
-  font-weight:600;
-  font-size:14px;
-  color:inherit;
-  margin:0;
 }
 
 

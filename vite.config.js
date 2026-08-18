@@ -17,6 +17,7 @@ function redirigirRaizABase() {
           res.end();
           return;
         }
+
         next();
       });
     },
@@ -33,9 +34,12 @@ export default defineConfig({
       registerType: "autoUpdate",
 
       workbox: {
-        globPatterns: [
-          "**/*.{js,css,html,ico,png,svg,json,mp3,ttf}"
-        ],
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,json,mp3,ttf}"],
+
+        // Evita que el service worker intercepte las peticiones
+        // a PDFs y las responda con index.html (fallback de SPA).
+        // Así "Ver PDF" abre el archivo PDF real.
+        navigateFallbackDenylist: [/^\/cont_crono\/PDFs\//],
       },
 
       manifest: {
