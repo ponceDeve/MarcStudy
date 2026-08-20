@@ -126,26 +126,31 @@
   display:flex;
   align-items:flex-start;
   gap:14px;
-  transition:box-shadow .2s ease,border-color .2s ease;
+  outline: 2px solid transparent;
+  transition: all .2s linear;
   position:relative;
 }
 
 .repaso__item:hover{
   box-shadow:var(--shadow-sm);
+  outline: 2px solid var(--success-bg);
 }
 
 .repaso__item.interval-0{
-  background:var(--primary-bg);
+  background:var(--ink-on-primary);
+  border: var(--nested-border);
   border:1px solid var(--primary-light);
 }
 
 .repaso__item.interval-1{
   background:var(--secondary-bg);
+  border: var(--nested-border);
   border:1px solid var(--secondary);
 }
 
 .repaso__item.interval-2{
   background:var(--accent-bg);
+  border: var(--nested-border);
   border:1px solid var(--accent);
 }
 
@@ -270,7 +275,7 @@
 }
 
 .repaso__item-tema{
-  font-size:16px;
+  font-size:18px;
   color:var(--ink-soft);
   margin:2px 0 0;
 }
@@ -298,7 +303,7 @@
 }
 
 .repaso__item-link:hover{
-  background:var(--primary-light);
+  background:var(--primary-dark);
   color:var(--ink-on-primary);
 }
 
@@ -533,37 +538,33 @@
   flex:1;
   padding:10px;
   border-radius:var(--radius-md);
-  border:1px solid transparent;
-  color:var(--ink-on-primary);
+  border:1px solid var(--danger);
+  background:transparent;
+  color:var(--danger);
   font-weight:700;
   cursor:pointer;
   transition:background .2s ease,border-color .2s ease,opacity .2s ease;
 }
 
-.btn-confirm--phase1{
-  background:var(--danger);
-  border-color:var(--danger-dark);
-}
-
-.btn-confirm--phase2{
-  background:var(--danger-dark);
-  border-color:var(--danger-dark);
+.btn-confirm--phase1:hover,
+.btn-confirm--phase2:hover{
+  background:var(--surface-hover);
 }
 
 .btn-cancel{
   flex:1;
   padding:10px;
   border-radius:var(--radius-md);
-  border:1px solid var(--border-strong);
-  background:var(--surface-alt);
-  color:var(--ink);
+  border:1px solid var(--primary-dark);
+  background:var(--primary);
+  color:var(--ink-on-primary);
   font-weight:700;
   cursor:pointer;
   transition:background .2s ease,border-color .2s ease;
 }
 
 .btn-cancel:hover{
-  background:var(--surface-hover);
+  background:var(--primary-dark);
   border-color:var(--secondary);
 }
 

@@ -2,6 +2,38 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
+function SideDrawer({ title, isOpen, onClose, children }) {
+  return (
+    <>
+      {isOpen && (
+        <div className="offcanvas-backdrop fade show" onClick={onClose} />
+      )}
+
+      <div
+        className={`offcanvas offcanvas-end topbar__drawer ${
+          isOpen ? "show" : ""
+        }`}
+        tabIndex="-1"
+        aria-hidden={!isOpen}
+      >
+        <div className="offcanvas-header topbar__drawer-header">
+          <h3 className="offcanvas-title topbar__drawer-title">{title}</h3>
+          <button
+            type="button"
+            className="topbar__drawer-close"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+
+        <div className="offcanvas-body topbar__drawer-list">{children}</div>
+      </div>
+    </>
+  );
+}
+
 export default function AppHeader({
   onAbrirBuscador,
   showHome = false,
@@ -55,18 +87,18 @@ export default function AppHeader({
         ]
       : []),
     {
-      title: "Ir al Pomodoro",
-      label: "Pomo",
-      fullLabel: "Pomodoro",
-      icon: "fa-solid fa-calendar-alt",
-      to: "/pomodoro",
-    },
-    {
       title: "Ir a Mis Repasos",
       label: "Repaso",
       fullLabel: "Mis Repasos",
       icon: "fa-solid fa-brain",
       to: "/repaso",
+    },
+    {
+      title: "Ir al Pomodoro",
+      label: "Pomo",
+      fullLabel: "Pomodoro",
+      icon: "fa-solid fa-calendar-alt",
+      to: "/pomodoro",
     },
     {
       title: "Editar horario",
@@ -132,30 +164,6 @@ export default function AppHeader({
     );
   }
 
-  const SideDrawer = ({ title, isOpen, onClose, children }) => (
-    <div
-      className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-      aria-hidden={!isOpen}
-    >
-      <div className="topbar__drawer">
-        <div className="topbar__drawer-header">
-          <h3 className="topbar__drawer-title">{title}</h3>
-          <button
-            type="button"
-            className="topbar__drawer-close"
-            onClick={onClose}
-            aria-label="Cerrar"
-          >
-            <i className="fa-solid fa-times" />
-          </button>
-        </div>
-
-        <div className="topbar__drawer-list">{children}</div>
-      </div>
-    </div>
-  );
-
   const renderFila = (b, closeFn = () => {}) => {
     const content = (
       <>
@@ -199,25 +207,27 @@ export default function AppHeader({
   return (
     <div className="topbar-wrapper">
       <div className="topbar container" ref={headerRef}>
-        <Link to="/" className="topbar__title-btn" title="Mi Estudio">
-          <span className="topbar__curso topbar__curso--clickable">
-            {nombreUsuario || "Mi Estudio"}
-          </span>
-        </Link>
+        <div className="topbar__inner">
+          <Link to="/" className="topbar__title-btn" title="Mi Estudio">
+            <span className="topbar__curso topbar__curso--clickable">
+              {nombreUsuario || "Mi Estudio"}
+            </span>
+          </Link>
 
-        <div className="topbar__controls">
-          <div className="topbar__nav">
-            {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
+          <div className="topbar__controls">
+            <div className="topbar__nav">
+              {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setMenuMobileOpen(true)}
+              title="Menú"
+              className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+            >
+              <i className="fa-solid fa-bars" />
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={() => setMenuMobileOpen(true)}
-            title="Menú"
-            className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
-          >
-            <i className="fa-solid fa-bars" />
-          </button>
         </div>
 
         <SideDrawer

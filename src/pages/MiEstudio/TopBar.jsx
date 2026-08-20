@@ -1,12 +1,40 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+function SideDrawer({ title, isOpen, onClose, children }) {
+  return (
+    <>
+      {isOpen && (
+        <div className="offcanvas-backdrop fade show" onClick={onClose} />
+      )}
+
+      <div
+        className={`offcanvas offcanvas-end topbar__drawer ${
+          isOpen ? "show" : ""
+        }`}
+        tabIndex="-1"
+        aria-hidden={!isOpen}
+      >
+        <div className="offcanvas-header topbar__drawer-header">
+          <h3 className="offcanvas-title topbar__drawer-title">{title}</h3>
+          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+        <div className="offcanvas-body topbar__drawer-list">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function TopBar({
   tema, curso, stage,
   onAbrirBuscador, onTogglePomodoroMini, onAbrirTemas,
   onGuardarRepaso, isFullscreen, onToggleFullscreen,
   onVerPreguntasVistas, onAbandonar, onReiniciarTarjetas,
-  repasoQuizActivo, onSalirDeRepaso
+  onIrInicio
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
@@ -38,20 +66,20 @@ export default function TopBar({
   const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(curso)}&tema=${encodeURIComponent(tema)}`;
   const repasoTo = "/repaso";
 
-  // Agregamos 'fullLabel' para que se vea el nombre completo en el celular
+  // Botones ordenados de más a menos importante (izquierda -> derecha)
   const botonesPrincipales = [
-    { title: "Mini cronómetro", label: "Timer", fullLabel: "Mini cronómetro", icon: "fa-solid fa-clock", onClick: onTogglePomodoroMini },
-    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: pomodoroTo },
-    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: repasoTo },
+    { title: "Ir a Inicio", label: "Inicio", fullLabel: "Ir a Inicio", icon: "fa-solid fa-house", onClick: onIrInicio },
     { title: "Buscar otro tema", label: "Buscar", fullLabel: "Buscar tema", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
-    { title: "Guardar", label: "Guardar", fullLabel: "Guardar progreso", icon: "fa-solid fa-bookmark", onClick: onGuardarRepaso }
+    { title: "Guardar", label: "Guardar", fullLabel: "Guardar progreso", icon: "fa-solid fa-bookmark", onClick: onGuardarRepaso },
+    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: repasoTo },
+    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: pomodoroTo }
   ];
 
   const botonesVisibles = stage === "question" ? [] : botonesPrincipales;
 
-  // Agregamos 'fullLabel' a las opciones de configuración también
+  // Opciones de configuración, también ordenadas por importancia
   const configButtons = [
-    { icon: "fas fa-play", label: "Continuar", fullLabel: "Continuar repaso", onClick: () => { if (repasoQuizActivo) onSalirDeRepaso(); } },
+    { icon: "fa-solid fa-clock", label: "Timer", fullLabel: "Mini cronómetro", onClick: onTogglePomodoroMini },
     { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", fullLabel: isFullscreen ? "Minimizar pantalla" : "Pantalla completa", onClick: onToggleFullscreen },
     // "Repasar" muestra las preguntas ya vistas de este tema, mezcladas.
     // Se puede abrir desde teoría o desde pregunta; MiEstudioPage se
@@ -82,26 +110,6 @@ export default function TopBar({
     );
   };
 
-  // Componente reutilizable para los paneles laterales
-  const SideDrawer = ({ title, isOpen, onClose, children }) => (
-    <div
-      className={`topbar__drawer-backdrop ${isOpen ? "is-open" : ""}`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
-      aria-hidden={!isOpen}
-    >
-      <div className="topbar__drawer">
-        <div className="topbar__drawer-header">
-          <h3 className="topbar__drawer-title">{title}</h3>
-          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
-            <i className="fa-solid fa-times" />
-          </button>
-        </div>
-        <div className="topbar__drawer-list">
-          {children}
-        </div>
-      </div>
-    </div>
-  );
 
   // Renderizador para las filas del panel móvil (usa 'fullLabel')
   const renderFila = (b, closeFn = () => {}) => {
@@ -126,35 +134,37 @@ export default function TopBar({
 
   return (
     <div className="topbar">
-      {/* CAJA 1: TEMA + CURSO */}
-      <div className="topbar__title-box">
-        <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
-          <div className="topbar__tema-wrapper" ref={wrapperRef}>
-            <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
-              {tema}
-            </span>
-          </div>
-          <span className="topbar__curso topbar__curso--clickable">{curso}</span>
-        </button>
-      </div>
-
-      {/* CAJA 2 + 3: NAVEGACIÓN Y CONTROLES */}
-      <div className="topbar__controls">
-        {botonesVisibles.length > 0 && (
-          <div className="topbar__nav">
-            {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
-          </div>
-        )}
-
-        <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
-          <i className="fa-solid fa-gear" />
-        </button>
-
-        {botonesVisibles.length > 0 && (
-          <button type="button" onClick={() => setMenuMobileOpen(true)} title="Menú" className="topbar__control-btn topbar__control-btn--menu topbar__hamburger">
-            <i className="fa-solid fa-bars" />
+      <div className="topbar__inner">
+        {/* CAJA 1: TEMA + CURSO */}
+        <div className="topbar__title-box">
+          <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
+            <div className="topbar__tema-wrapper" ref={wrapperRef}>
+              <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
+                {tema}
+              </span>
+            </div>
+            <span className="topbar__curso topbar__curso--clickable">{curso}</span>
           </button>
-        )}
+        </div>
+
+        {/* CAJA 2 + 3: NAVEGACIÓN Y CONTROLES */}
+        <div className="topbar__controls">
+          {botonesVisibles.length > 0 && (
+            <div className="topbar__nav">
+              {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
+            </div>
+          )}
+
+          <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
+            <i className="fa-solid fa-gear" />
+          </button>
+
+          {botonesVisibles.length > 0 && (
+            <button type="button" onClick={() => setMenuMobileOpen(true)} title="Menú" className="topbar__control-btn topbar__control-btn--menu topbar__hamburger">
+              <i className="fa-solid fa-bars" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* PANEL DEL MENÚ MÓVIL */}

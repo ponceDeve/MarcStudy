@@ -19,16 +19,16 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   animation: fade-in 0.25s ease-out;
   z-index: 9999;
+  background-color: var(--ink-on-primary);
 }
 
 .nuevos-temas-aviso {
   border: 1px solid var(--success);
-  background: var(--success-bg);
 }
 
 .repaso-pendiente-aviso {
   border: 1px solid var(--accent);
-  background: var(--accent-bg);
+  border: var(--nested-border);
 }
 
 .nuevos-temas-aviso__header,
@@ -45,7 +45,7 @@
 }
 
 .repaso-pendiente-aviso__icon {
-  color: var(--accent-dark);
+  color: var(--ink-soft);
   font-size: 1rem;
   flex-shrink: 0;
 }
@@ -170,6 +170,5 @@
 
 .nuevos-temas-aviso__cerrar:hover,
 .repaso-pendiente-aviso__cerrar:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
+  color: var(--danger);
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"vite\" \"py watch_manifest.py\" \"py generar_pdfs.py\"",
     "start": "concurrently \"vite\" \"py watch_manifest.py\" \"py generar_pdfs.py\"",
-    "build": "vite build",
+    "build": "py generar_pdfs.py && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
@@ -16,8 +16,6 @@
     "katex": "^0.18.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-katex": "^3.1.0",
-    "react-latex-next": "^3.0.0",
     "react-router-dom": "^7.18.1"
   },
   "devDependencies": {

@@ -184,32 +184,16 @@ a {
    Se agrupa una sola vez aquí; cada componente solo agrega la
    clase junto a la suya (className="btn-primary xxx-btn").
    ============================================================ */
-.btn-primary,
-.btn-danger,
-.btn-secondary {
+.btn-primary {
   border: none;
   cursor: pointer;
   font-weight: 700;
   color: var(--ink-on-primary);
   transition: background 0.15s;
-}
-.btn-primary {
   background: var(--primary);
 }
 .btn-primary:hover {
   background: var(--primary-dark);
-}
-.btn-danger {
-  background: var(--danger);
-}
-.btn-danger:hover {
-  background: var(--danger-dark);
-}
-.btn-secondary {
-  background: var(--secondary);
-}
-.btn-secondary:hover {
-  background: var(--secondary-dark);
 }
 /* ============================================================
    FOOTER — pie de página global de la app
