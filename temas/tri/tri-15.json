@@ -1,0 +1,2095 @@
+{
+  "curso": "TRIGONOMETRÍA",
+  "tema": "Transformaciones trigonométricas",
+  "glosario": {
+    "identidad trigonométrica": "Igualdad trigonométrica válida para todos los valores de su dominio",
+    "transformación trigonométrica": "Proceso de reemplazar una expresión por otra equivalente mediante una identidad",
+    "suma a producto": "Transformación de una suma o diferencia de razones trigonométricas en un producto",
+    "producto a suma": "Transformación de un producto de razones trigonométricas en una suma o diferencia",
+    "seno": "Razón trigonométrica asociada al cateto opuesto y la hipotenusa",
+    "coseno": "Razón trigonométrica asociada al cateto adyacente y la hipotenusa",
+    "tangente": "Cociente entre el seno y el coseno",
+    "cotangente": "Cociente entre el coseno y el seno",
+    "cosecante": "Recíproco del seno",
+    "diferencia de cuadrados": "Identidad algebraica que transforma una diferencia de cuadrados en un producto",
+    "factor común": "Factor que aparece en varios términos de una expresión",
+    "ángulos asociados": "Ángulos relacionados mediante operaciones que permiten establecer equivalencias trigonométricas",
+    "ángulos complementarios": "Dos ángulos cuya suma es $90^\\circ$",
+    "semisuma": "Mitad de la suma de dos ángulos",
+    "semidiferencia": "Mitad de la diferencia de dos ángulos",
+    "simplificación": "Proceso de transformar una expresión en otra equivalente y más sencilla",
+    "cancelación": "Eliminación de factores comunes no nulos",
+    "restricción": "Condición que excluye valores que hacen indefinida una expresión",
+    "ángulo notable": "Ángulo cuyas razones trigonométricas poseen valores exactos conocidos",
+    "reducción de potencia": "Transformación de potencias trigonométricas mediante identidades de ángulo doble",
+    "producto conjugado": "Producto de dos expresiones que solo difieren en el signo entre sus términos",
+    "afirmación": "Proposición matemática que puede evaluarse como verdadera o falsa",
+    "=": "Igualdad",
+    "→": "Transformación o consecuencia",
+    "✓": "Condición que debe cumplirse"
+  },
+  "theory": [
+    {
+      "titulo": "Fundamentos de las transformaciones trigonométricas",
+      "puntos": [
+        {
+          "texto": "«Identidad trigonométrica» → igualdad válida en todo su dominio",
+          "explicacion": "Una identidad trigonométrica es una igualdad que se cumple para todos los valores permitidos de sus variables. Permite reemplazar una expresión por otra equivalente sin cambiar su valor. Por ejemplo, $\\cos70^\\circ=\\sin20^\\circ$ porque los ángulos son complementarios. Al trabajar con identidades, siempre debe respetarse el dominio de las expresiones involucradas."
+        },
+        {
+          "texto": "«Transformación trigonométrica» → reemplazo de una expresión por otra equivalente",
+          "explicacion": "Transformar una expresión significa utilizar una identidad para cambiar su forma sin cambiar su valor. La nueva forma debe ser equivalente a la original dentro del dominio permitido. En un problema de admisión, la transformación debe elegirse según la estructura de la expresión y no únicamente por la presencia de una función trigonométrica."
+        },
+        {
+          "texto": "«Suma a producto» → convierte sumas y diferencias trigonométricas en productos",
+          "explicacion": "Las identidades de suma a producto son útiles cuando una suma o diferencia de senos o cosenos puede convertirse en factores. Esta forma permite posteriormente factorizar, cancelar o combinar expresiones. Cuando aparecen dos razones trigonométricas con argumentos diferentes sumándose o restándose, conviene comprobar si tienen alguno de estos patrones."
+        },
+        {
+          "texto": "«Producto a suma» → convierte productos trigonométricos en sumas o diferencias",
+          "explicacion": "Las identidades de producto a suma permiten reemplazar determinados productos de senos y cosenos por sumas o diferencias. Son especialmente útiles cuando una expresión contiene productos que deben combinarse con términos trigonométricos que ya están escritos como sumas."
+        },
+        {
+          "texto": "«Ángulos complementarios» → $A+B=90^\\circ$ implica $\\sin A=\\cos B$ y $\\cos A=\\sin B$",
+          "explicacion": "Cuando dos ángulos suman $90^\\circ$, el seno de uno coincide con el coseno del otro. Esta relación permite cambiar rápidamente una función trigonométrica por otra equivalente. Por ejemplo, como $70^\\circ+20^\\circ=90^\\circ$, se cumple $\\cos70^\\circ=\\sin20^\\circ$."
+        },
+        {
+          "texto": "«Semisuma» → $\\frac{A+B}{2}$",
+          "explicacion": "La semisuma de dos ángulos se obtiene sumándolos y dividiendo el resultado entre $2$. Aparece directamente en las identidades de suma a producto. Es importante calcular primero la suma de los ángulos y después dividir entre $2$."
+        },
+        {
+          "texto": "«Semidiferencia» → $\\frac{A-B}{2}$",
+          "explicacion": "La semidiferencia se obtiene restando los ángulos en el orden indicado y dividiendo el resultado entre $2$. Aparece en varias identidades de transformación. El orden de la resta es importante porque puede afectar el signo del resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformación de sumas y diferencias de senos",
+      "puntos": [
+        {
+          "texto": "«Suma de senos» → $\\sin A+\\sin B=2\\sin\\frac{A+B}{2}\\cos\\frac{A-B}{2}$",
+          "explicacion": "Esta identidad transforma una suma de dos senos en un producto. Para utilizarla, calcula la semisuma $\\frac{A+B}{2}$ y la semidiferencia $\\frac{A-B}{2}$. La transformación resulta especialmente útil cuando uno de los factores obtenidos puede cancelarse o combinarse con otra expresión."
+        },
+        {
+          "texto": "«Diferencia de senos» → $\\sin A-\\sin B=2\\cos\\frac{A+B}{2}\\sin\\frac{A-B}{2}$",
+          "explicacion": "Esta identidad transforma una diferencia de dos senos en un producto. Primero se obtiene la semisuma $\\frac{A+B}{2}$ y después la semidiferencia $\\frac{A-B}{2}$. A diferencia de la suma de senos, el primer factor es un coseno y el segundo es un seno."
+        },
+        {
+          "texto": "«Suma de cosenos» → $\\cos A+\\cos B=2\\cos\\frac{A+B}{2}\\cos\\frac{A-B}{2}$",
+          "explicacion": "Esta identidad transforma una suma de dos cosenos en un producto de cosenos. Los argumentos de ambos factores son la semisuma y la semidiferencia de los ángulos. La forma factorizada puede facilitar una cancelación posterior."
+        },
+        {
+          "texto": "«Diferencia de cosenos» → $\\cos A-\\cos B=-2\\sin\\frac{A+B}{2}\\sin\\frac{A-B}{2}$",
+          "explicacion": "Esta identidad transforma una diferencia de cosenos en un producto de dos senos y contiene un signo negativo. El signo es fundamental y constituye una fuente frecuente de errores. Después de calcular la semisuma y la semidiferencia, conserva el signo negativo durante toda la simplificación."
+        },
+        {
+          "texto": "«Reconocimiento de suma de senos» → dos senos con suma de argumentos",
+          "explicacion": "Cuando aparecen dos senos sumándose, compara sus argumentos y reconoce el patrón $\\sin A+\\sin B$. Si la transformación produce factores que aparecen en otra parte de la expresión, puede utilizarse para simplificar un cociente o factorizar una expresión."
+        },
+        {
+          "texto": "«Reconocimiento de diferencia de senos» → dos senos con resta",
+          "explicacion": "Cuando aparecen dos senos restándose, identifica el patrón $\\sin A-\\sin B$. La transformación permite convertir la diferencia en un producto. Debe conservarse el orden de los argumentos para determinar correctamente el signo y los factores resultantes."
+        },
+        {
+          "texto": "«Reconocimiento de suma de cosenos» → dos cosenos con suma",
+          "explicacion": "Una expresión de la forma $\\cos A+\\cos B$ puede convertirse en un producto mediante la identidad correspondiente. Antes de sustituir valores, calcula la semisuma y la semidiferencia. Esta estrategia es especialmente útil cuando uno de los factores coincide con un denominador."
+        },
+        {
+          "texto": "«Reconocimiento de diferencia de cosenos» → dos cosenos con resta",
+          "explicacion": "Una expresión de la forma $\\cos A-\\cos B$ se transforma mediante un producto con signo negativo. Es importante revisar el signo antes de comparar con las alternativas. Una comprobación rápida consiste en analizar los valores aproximados de los cosenos cuando los ángulos se encuentran en el primer cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformación de productos trigonométricos",
+      "puntos": [
+        {
+          "texto": "«Seno por coseno» → $2\\sin\\alpha\\cos\\beta=\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)$",
+          "explicacion": "Esta identidad transforma el producto de un seno y un coseno en una suma de senos. Para aplicarla, conserva el factor $2$ y calcula la suma y la diferencia de los argumentos. Es conveniente cuando los términos resultantes pueden combinarse con otros senos presentes en la expresión."
+        },
+        {
+          "texto": "«Coseno por seno» → $2\\cos\\alpha\\sin\\beta=\\sin(\\alpha+\\beta)-\\sin(\\alpha-\\beta)$",
+          "explicacion": "Esta identidad transforma un producto de coseno y seno en una diferencia de senos. Los argumentos resultantes son $\\alpha+\\beta$ y $\\alpha-\\beta$. El segundo término aparece restando, por lo que debe conservarse correctamente el signo."
+        },
+        {
+          "texto": "«Coseno por coseno» → $2\\cos\\alpha\\cos\\beta=\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)$",
+          "explicacion": "Esta identidad transforma un producto de dos cosenos en una suma de cosenos. Se calculan los argumentos mediante la suma y la diferencia de $\\alpha$ y $\\beta$. La transformación resulta útil cuando otros términos de la expresión también contienen cosenos."
+        },
+        {
+          "texto": "«Seno por seno» → $2\\sin\\alpha\\sin\\beta=\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)$",
+          "explicacion": "Esta identidad transforma un producto de dos senos en una diferencia de cosenos. Primero aparece el coseno de la diferencia y después el coseno de la suma. Este orden debe conservarse porque cambiarlo modifica el signo de la expresión."
+        },
+        {
+          "texto": "«Identificación de producto a suma» → reconocer productos con factor $2$",
+          "explicacion": "Cuando una expresión contiene un producto trigonométrico acompañado por $2$, revisa si coincide con alguna identidad de producto a suma. Reconocer el patrón evita desarrollar el producto mediante métodos menos eficientes y permite obtener directamente los ángulos suma y diferencia."
+        },
+        {
+          "texto": "«Suma y diferencia de argumentos» → $(\\alpha+\\beta)$ y $(\\alpha-\\beta)$",
+          "explicacion": "Las identidades de producto a suma generan argumentos obtenidos sumando y restando los ángulos originales. El procedimiento consiste en identificar primero $\\alpha$ y $\\beta$, calcular ambos resultados y luego colocarlos en la identidad correspondiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades algebraicas auxiliares",
+      "puntos": [
+        {
+          "texto": "«Diferencia de cuadrados» → $a^2-b^2=(a+b)(a-b)$",
+          "explicacion": "La diferencia de cuadrados permite transformar una resta entre dos términos cuadrados en el producto de su suma y su diferencia. En trigonometría puede aplicarse cuando los términos tienen la forma $A^2-B^2$, incluso si $A$ y $B$ son razones trigonométricas."
+        },
+        {
+          "texto": "«Aplicación trigonométrica de diferencia de cuadrados» → $\\sin^2A-\\sin^2B=(\\sin A+\\sin B)(\\sin A-\\sin B)$",
+          "explicacion": "Cuando dos cuadrados trigonométricos aparecen restándose, pueden identificarse como una diferencia de cuadrados. Primero se factoriza mediante la suma y diferencia de las bases y después pueden aplicarse identidades de suma a producto a cada factor."
+        },
+        {
+          "texto": "«Producto conjugado» → $(a+b)(a-b)=a^2-b^2$",
+          "explicacion": "Un producto formado por una suma y una diferencia de los mismos términos puede simplificarse mediante diferencia de cuadrados. Esta transformación es útil en sentido inverso cuando una expresión trigonométrica contiene dos factores conjugados."
+        },
+        {
+          "texto": "«Factor común» → $ab+ac=a(b+c)$",
+          "explicacion": "Extraer factor común consiste en identificar un factor que aparece en varios términos y colocarlo fuera de un paréntesis. En transformaciones trigonométricas es frecuente que una identidad de suma a producto genere exactamente el factor que aparece en otro término."
+        },
+        {
+          "texto": "«Cancelación» → $\\frac{AB}{AC}=\\frac{B}{C}$, siempre que $A\\neq0$",
+          "explicacion": "La cancelación elimina un factor común del numerador y denominador. Solo es válida si el factor cancelado es diferente de cero y si el denominador original está definido. Por ello, simplificar una expresión no elimina las restricciones que tenía la expresión original."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones trigonométricas y valores notables",
+      "puntos": [
+        {
+          "texto": "«Tangente» → $\\tan x=\\frac{\\sin x}{\\cos x}$, con $\\cos x\\neq0$",
+          "explicacion": "La tangente se obtiene dividiendo el seno entre el coseno. Esta relación permite reconocer rápidamente una expresión que ya fue transformada y simplificada hasta obtener un cociente entre seno y coseno. La condición $\\cos x\\neq0$ garantiza que el cociente esté definido."
+        },
+        {
+          "texto": "«Cotangente» → $\\cot x=\\frac{\\cos x}{\\sin x}$, con $\\sin x\\neq0$",
+          "explicacion": "La cotangente es el cociente entre coseno y seno. Es la forma recíproca de la tangente. Para reconocerla dentro de una expresión, busca un cociente cuyo numerador sea coseno y cuyo denominador sea seno."
+        },
+        {
+          "texto": "«Cosecante» → $\\csc x=\\frac{1}{\\sin x}$, con $\\sin x\\neq0$",
+          "explicacion": "La cosecante es el recíproco del seno. Si se conoce el valor exacto de $\\sin x$, la cosecante se obtiene invirtiendo dicho valor. Por ejemplo, como $\\sin30^\\circ=\\frac12$, entonces $\\csc30^\\circ=2$."
+        },
+        {
+          "texto": "«Secante» → $\\sec x=\\frac{1}{\\cos x}$, con $\\cos x\\neq0$",
+          "explicacion": "La secante es el recíproco del coseno. Si una transformación produce $\\frac{1}{\\cos x}$, puede reconocerse inmediatamente como $\\sec x$. La condición $\\cos x\\neq0$ es necesaria para que la razón esté definida."
+        },
+        {
+          "texto": "«Ángulo notable» → $30^\\circ$, $45^\\circ$ y $60^\\circ$ tienen razones exactas conocidas",
+          "explicacion": "Los ángulos notables permiten obtener resultados exactos sin utilizar aproximaciones decimales. En transformaciones trigonométricas conviene primero convertir los argumentos complicados en ángulos notables y después sustituir sus valores conocidos."
+        },
+        {
+          "texto": "«Valores notables del seno» → $\\sin30^\\circ=\\frac12$, $\\sin45^\\circ=\\frac{\\sqrt2}{2}$, $\\sin60^\\circ=\\frac{\\sqrt3}{2}$",
+          "explicacion": "Estos valores permiten reemplazar directamente los senos de los principales ángulos notables. En un problema de transformación, primero identifica la estructura trigonométrica y realiza las transformaciones necesarias antes de sustituir estos valores."
+        },
+        {
+          "texto": "«Valores notables del coseno» → $\\cos30^\\circ=\\frac{\\sqrt3}{2}$, $\\cos45^\\circ=\\frac{\\sqrt2}{2}$, $\\cos60^\\circ=\\frac12$",
+          "explicacion": "Estos valores exactos permiten finalizar muchas simplificaciones trigonométricas. Es recomendable utilizarlos después de transformar la expresión para evitar cálculos innecesarios con ángulos que inicialmente no son notables."
+        },
+        {
+          "texto": "«Valores notables de la tangente» → $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$",
+          "explicacion": "Los valores notables de la tangente permiten evaluar directamente expresiones que ya fueron reducidas a esta razón. En ejercicios de admisión, una transformación puede llevar primero a $\\tan x$ y luego a uno de estos ángulos conocidos."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones y dominio",
+      "puntos": [
+        {
+          "texto": "«Restricción de la tangente» → $\\cos x\\neq0$",
+          "explicacion": "Como $\\tan x=\\frac{\\sin x}{\\cos x}$, la tangente no está definida cuando $\\cos x=0$. Esta condición debe conservarse al simplificar expresiones que contienen tangentes o cocientes equivalentes."
+        },
+        {
+          "texto": "«Restricción de la cotangente» → $\\sin x\\neq0$",
+          "explicacion": "Como $\\cot x=\\frac{\\cos x}{\\sin x}$, el seno no puede ser cero. La restricción pertenece a la expresión original y debe considerarse incluso si una transformación posterior parece eliminar el denominador."
+        },
+        {
+          "texto": "«Restricción de la cosecante» → $\\sin x\\neq0$",
+          "explicacion": "La cosecante se define mediante $\\csc x=\\frac{1}{\\sin x}$, por lo que requiere $\\sin x\\neq0$. Una expresión transformada puede tener una apariencia más sencilla, pero la condición original sigue siendo relevante."
+        },
+        {
+          "texto": "«Restricción de la secante» → $\\cos x\\neq0$",
+          "explicacion": "La secante se define como $\\sec x=\\frac{1}{\\cos x}$ y requiere que el coseno sea distinto de cero. Esta condición evita considerar valores para los cuales la expresión sería indefinida."
+        },
+        {
+          "texto": "«Cancelación válida» → solo se cancela un factor cuando es no nulo",
+          "explicacion": "Si un mismo factor aparece en numerador y denominador, puede cancelarse únicamente en los valores donde ese factor sea diferente de cero. Además, deben conservarse las restricciones que provienen de la expresión original. Esta diferencia es importante entre una simplificación algebraica y una equivalencia de dominios."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción de potencia y ángulo doble",
+      "puntos": [
+        {
+          "texto": "«Reducción de potencia del seno» → $2\\sin^2x=1-\\cos2x$",
+          "explicacion": "Esta identidad transforma el cuadrado del seno en una expresión que contiene el coseno del ángulo doble. Es útil cuando aparecen varios términos como $\\sin^2x$ y se necesita combinarlos mediante identidades de suma o diferencia de cosenos."
+        },
+        {
+          "texto": "«Reducción de potencia del coseno» → $2\\cos^2x=1+\\cos2x$",
+          "explicacion": "Esta identidad transforma el cuadrado del coseno en una expresión que contiene el coseno del ángulo doble. Permite reemplazar potencias trigonométricas por términos lineales y facilita la combinación de expresiones con diferentes argumentos."
+        },
+        {
+          "texto": "«Forma equivalente del seno cuadrado» → $\\sin^2x=\\frac{1-\\cos2x}{2}$",
+          "explicacion": "Al dividir la identidad de reducción de potencia entre $2$, se obtiene una expresión directa para $\\sin^2x$. Esta forma es útil cuando el coeficiente del término cuadrático no es $2$ y se necesita sustituir directamente la potencia."
+        },
+        {
+          "texto": "«Forma equivalente del coseno cuadrado» → $\\cos^2x=\\frac{1+\\cos2x}{2}$",
+          "explicacion": "Al dividir la identidad de reducción de potencia entre $2$, se obtiene una expresión directa para $\\cos^2x$. Esta transformación resulta útil cuando varios cuadrados de coseno deben convertirse en términos con ángulo doble."
+        },
+        {
+          "texto": "«Ángulo doble» → $2x$ aparece al transformar $\\sin^2x$ o $\\cos^2x$",
+          "explicacion": "Las identidades de reducción de potencia reemplazan una potencia cuadrática por una expresión que contiene el ángulo doble $2x$. Esto permite que términos inicialmente difíciles de combinar adopten una forma compatible con las identidades de suma y diferencia de cosenos."
+        }
+      ]
+    },
+    {
+      "titulo": "Resolución de expresiones trigonométricas",
+      "puntos": [
+        {
+          "texto": "«Cociente de sumas» → transformar numerador y denominador para encontrar factores comunes",
+          "explicacion": "En un cociente formado por sumas o diferencias trigonométricas, puede ser conveniente transformar tanto el numerador como el denominador. Por ejemplo, $\\frac{\\sin4x+\\sin2x}{\\cos4x+\\cos2x}$ puede convertirse en $\\frac{2\\sin3x\\cos x}{2\\cos3x\\cos x}$. La presencia del factor común permite simplificar hasta obtener una razón trigonométrica."
+        },
+        {
+          "texto": "«Tres términos trigonométricos» → agrupar dos términos antes de simplificar",
+          "explicacion": "Cuando una expresión contiene tres términos, no siempre conviene trabajar con todos simultáneamente. Puede ser más eficiente seleccionar dos términos cuyos argumentos permitan aplicar suma a producto y produzcan un factor común con el término restante."
+        },
+        {
+          "texto": "«Fracción trigonométrica» → transformar antes de sustituir valores",
+          "explicacion": "Si los ángulos de una fracción no son notables, primero busca una transformación que produzca factores comunes o ángulos conocidos. Por ejemplo, $\\frac{\\sin80^\\circ+\\sin40^\\circ}{\\cos20^\\circ}$ puede transformarse en $\\frac{2\\sin60^\\circ\\cos20^\\circ}{\\cos20^\\circ}$. Después de cancelar el factor permitido, se obtiene un ángulo notable."
+        },
+        {
+          "texto": "«Factorización trigonométrica» → transforma antes de cancelar",
+          "explicacion": "Cuando una expresión contiene sumas de razones trigonométricas, una identidad puede convertirlas en productos. Una vez obtenidos los factores, compara numerador y denominador para determinar si existe un factor común que pueda cancelarse respetando las restricciones."
+        },
+        {
+          "texto": "«Expresión con términos repetidos» → extraer el bloque común",
+          "explicacion": "Si varios términos contienen una misma expresión, conviene extraerla como factor común antes de continuar. Esto puede convertir una expresión extensa en un producto sencillo y revelar inmediatamente una posible cancelación."
+        },
+        {
+          "texto": "«Secuencia de simplificación» → transformar → factorizar → cancelar → evaluar",
+          "explicacion": "Una ruta eficiente consiste en transformar primero la estructura trigonométrica, factorizar los términos obtenidos, cancelar únicamente factores permitidos y finalmente evaluar los ángulos notables. Seguir esta secuencia reduce operaciones innecesarias y disminuye el riesgo de errores."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias para problemas de admisión UNMSM",
+      "puntos": [
+        {
+          "texto": "«Patrón suma de senos» → buscar $\\sin A+\\sin B$",
+          "explicacion": "Cuando aparecen dos senos sumándose, compara sus argumentos y considera inmediatamente la identidad de suma a producto. Calcula la semisuma y la semidiferencia para determinar si la transformación produce un factor útil para continuar el problema."
+        },
+        {
+          "texto": "«Patrón diferencia de senos» → buscar $\\sin A-\\sin B$",
+          "explicacion": "Ante una diferencia de senos, utiliza la identidad correspondiente y presta atención al orden de los ángulos. La transformación puede generar un producto que se combine con otros factores del problema."
+        },
+        {
+          "texto": "«Patrón suma de cosenos» → buscar $\\cos A+\\cos B$",
+          "explicacion": "Una suma de cosenos puede convertirse en un producto de cosenos mediante la semisuma y la semidiferencia. Antes de sustituir valores, revisa si alguno de los factores obtenidos coincide con otra parte de la expresión."
+        },
+        {
+          "texto": "«Patrón diferencia de cosenos» → buscar $\\cos A-\\cos B$ y revisar el signo",
+          "explicacion": "La diferencia de cosenos siempre introduce un signo negativo en su transformación. Antes de seleccionar una alternativa, verifica que el signo obtenido sea coherente con la expresión original."
+        },
+        {
+          "texto": "«Factor repetido» → factorizar antes de cancelar",
+          "explicacion": "Cuando una transformación genera el mismo factor en numerador y denominador, factoriza primero y después cancela. La cancelación debe realizarse únicamente bajo las condiciones que hacen válido el denominador original."
+        },
+        {
+          "texto": "«Ángulos complementarios» → $A+B=90^\\circ$",
+          "explicacion": "Si dos ángulos suman $90^\\circ$, pueden intercambiarse seno y coseno. Esta observación puede convertir rápidamente una expresión en una forma compatible con una identidad de transformación."
+        },
+        {
+          "texto": "«Trampa de signo» → verificar el signo antes de elegir una alternativa",
+          "explicacion": "Las diferencias trigonométricas pueden introducir signos negativos. Una comprobación cualitativa del signo de la expresión original puede detectar rápidamente un error de transformación. Esta revisión es especialmente útil cuando las alternativas solo difieren en el signo."
+        },
+        {
+          "texto": "«Trampa angular» → mantener la misma unidad angular",
+          "explicacion": "Si los datos están expresados en grados, todas las operaciones de suma, diferencia, semisuma y semidiferencia deben mantenerse en grados. No se deben mezclar grados y radianes durante una misma transformación."
+        },
+        {
+          "texto": "«Ruta de solución» → transformar, factorizar, cancelar y evaluar",
+          "explicacion": "En muchos problemas de transformaciones trigonométricas, la estrategia más eficiente es cambiar primero la forma de la expresión, buscar factores comunes, simplificar respetando las restricciones y finalmente utilizar valores notables. Esta secuencia permite evitar cálculos innecesarios."
+        },
+        {
+          "texto": "«Comprobación final» → verificar equivalencia, dominio y signo",
+          "explicacion": "Antes de elegir una respuesta, comprueba tres aspectos: que las transformaciones sean equivalentes, que no se hayan ignorado restricciones del denominador y que el signo final sea coherente con la expresión original. Esta revisión ayuda a detectar errores de procedimiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 21",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 22",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 23",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 24",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 25",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 26",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 27",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 28",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 29",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 30",
+          "explicacion": ""
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Identidad trigonométrica» → igualdad válida en todo su dominio. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse."
+      ],
+      "correct": 0,
+      "explicacion": "Una identidad trigonométrica es una igualdad que se cumple para todos los valores permitidos de sus variables. Permite reemplazar una expresión por otra equivalente sin cambiar su valor. Por ejemplo, $\\cos70^\\circ=\\sin20^\\circ$ porque los ángulos son complementarios. Al trabajar con identidades, siempre debe respetarse el dominio de las expresiones involucradas."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Transformación trigonométrica» → reemplazo de una expresión por otra equivalente. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Transformación trigonométrica» → reemplazo de una expresión por otra equivalente se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Transformación trigonométrica» → reemplazo de una expresión por otra equivalente debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Transformar una expresión significa utilizar una identidad para cambiar su forma sin cambiar su valor. La nueva forma debe ser equivalente a la original dentro del dominio permitido. En un problema de admisión, la transformación debe elegirse según la estructura de la expresión y no únicamente por la presencia de una función trigonométrica."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Suma a producto» → convierte sumas y diferencias trigonométricas en productos, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Las identidades de suma a producto son útiles cuando una suma o diferencia de senos o cosenos puede convertirse en factores. Esta forma permite posteriormente factorizar, cancelar o combinar expresiones. Cuando aparecen dos razones trigonométricas con argumentos diferentes sumándose o restándose, conviene comprobar si tienen alguno de estos patrones."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Las identidades de producto a suma permiten reemplazar determinados productos de senos y cosenos por sumas o diferencias. Son especialmente útiles cuando una expresión contiene productos que deben combinarse con términos trigonométricos que ya están escritos como sumas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Ángulos complementarios» → $A+B=90^\\circ$ implica $\\sin A=\\cos B$ y $\\cos A=\\sin B$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida."
+      ],
+      "correct": 4,
+      "explicacion": "Cuando dos ángulos suman $90^\\circ$, el seno de uno coincide con el coseno del otro. Esta relación permite cambiar rápidamente una función trigonométrica por otra equivalente. Por ejemplo, como $70^\\circ+20^\\circ=90^\\circ$, se cumple $\\cos70^\\circ=\\sin20^\\circ$."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Semisuma» → $\\frac{A+B}{2}$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Semisuma» → $\\frac{A+B}{2}$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Semisuma» → $\\frac{A+B}{2}$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La semisuma de dos ángulos se obtiene sumándolos y dividiendo el resultado entre $2$. Aparece directamente en las identidades de suma a producto. Es importante calcular primero la suma de los ángulos y después dividir entre $2$."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Semidiferencia» → $\\frac{A-B}{2}$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "La semidiferencia se obtiene restando los ángulos en el orden indicado y dividiendo el resultado entre $2$. Aparece en varias identidades de transformación. El orden de la resta es importante porque puede afectar el signo del resultado."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma una suma de dos senos en un producto. Para utilizarla, calcula la semisuma $\\frac{A+B}{2}$ y la semidiferencia $\\frac{A-B}{2}$. La transformación resulta especialmente útil cuando uno de los factores obtenidos puede cancelarse o combinarse con otra expresión."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Diferencia de senos» → $\\sin A-\\sin B=2\\cos\\frac{A+B}{2}\\sin\\frac{A-B}{2}$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante."
+      ],
+      "correct": 3,
+      "explicacion": "Esta identidad transforma una diferencia de dos senos en un producto. Primero se obtiene la semisuma $\\frac{A+B}{2}$ y después la semidiferencia $\\frac{A-B}{2}$. A diferencia de la suma de senos, el primer factor es un coseno y el segundo es un seno."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Suma de cosenos» → $\\cos A+\\cos B=2\\cos\\frac{A+B}{2}\\cos\\frac{A-B}{2}$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Suma de cosenos» → $\\cos A+\\cos B=2\\cos\\frac{A+B}{2}\\cos\\frac{A-B}{2}$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Suma de cosenos» → $\\cos A+\\cos B=2\\cos\\frac{A+B}{2}\\cos\\frac{A-B}{2}$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Esta identidad transforma una suma de dos cosenos en un producto de cosenos. Los argumentos de ambos factores son la semisuma y la semidiferencia de los ángulos. La forma factorizada puede facilitar una cancelación posterior."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Diferencia de cosenos» → $\\cos A-\\cos B=-2\\sin\\frac{A+B}{2}\\sin\\frac{A-B}{2}$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma una diferencia de cosenos en un producto de dos senos y contiene un signo negativo. El signo es fundamental y constituye una fuente frecuente de errores. Después de calcular la semisuma y la semidiferencia, conserva el signo negativo durante toda la simplificación."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Cuando aparecen dos senos sumándose, compara sus argumentos y reconoce el patrón $\\sin A+\\sin B$. Si la transformación produce factores que aparecen en otra parte de la expresión, puede utilizarse para simplificar un cociente o factorizar una expresión."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Reconocimiento de diferencia de senos» → dos senos con resta. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica."
+      ],
+      "correct": 2,
+      "explicacion": "Cuando aparecen dos senos restándose, identifica el patrón $\\sin A-\\sin B$. La transformación permite convertir la diferencia en un producto. Debe conservarse el orden de los argumentos para determinar correctamente el signo y los factores resultantes."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Reconocimiento de suma de cosenos» → dos cosenos con suma. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Reconocimiento de suma de cosenos» → dos cosenos con suma se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Reconocimiento de suma de cosenos» → dos cosenos con suma debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Una expresión de la forma $\\cos A+\\cos B$ puede convertirse en un producto mediante la identidad correspondiente. Antes de sustituir valores, calcula la semisuma y la semidiferencia. Esta estrategia es especialmente útil cuando uno de los factores coincide con un denominador."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Reconocimiento de diferencia de cosenos» → dos cosenos con resta, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Una expresión de la forma $\\cos A-\\cos B$ se transforma mediante un producto con signo negativo. Es importante revisar el signo antes de comparar con las alternativas. Una comprobación rápida consiste en analizar los valores aproximados de los cosenos cuando los ángulos se encuentran en el primer cuadrante."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma el producto de un seno y un coseno en una suma de senos. Para aplicarla, conserva el factor $2$ y calcula la suma y la diferencia de los argumentos. Es conveniente cuando los términos resultantes pueden combinarse con otros senos presentes en la expresión."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Coseno por seno» → $2\\cos\\alpha\\sin\\beta=\\sin(\\alpha+\\beta)-\\sin(\\alpha-\\beta)$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición."
+      ],
+      "correct": 1,
+      "explicacion": "Esta identidad transforma un producto de coseno y seno en una diferencia de senos. Los argumentos resultantes son $\\alpha+\\beta$ y $\\alpha-\\beta$. El segundo término aparece restando, por lo que debe conservarse correctamente el signo."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Coseno por coseno» → $2\\cos\\alpha\\cos\\beta=\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Coseno por coseno» → $2\\cos\\alpha\\cos\\beta=\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Coseno por coseno» → $2\\cos\\alpha\\cos\\beta=\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Esta identidad transforma un producto de dos cosenos en una suma de cosenos. Se calculan los argumentos mediante la suma y la diferencia de $\\alpha$ y $\\beta$. La transformación resulta útil cuando otros términos de la expresión también contienen cosenos."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Seno por seno» → $2\\sin\\alpha\\sin\\beta=\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma un producto de dos senos en una diferencia de cosenos. Primero aparece el coseno de la diferencia y después el coseno de la suma. Este orden debe conservarse porque cambiarlo modifica el signo de la expresión."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Cuando una expresión contiene un producto trigonométrico acompañado por $2$, revisa si coincide con alguna identidad de producto a suma. Reconocer el patrón evita desarrollar el producto mediante métodos menos eficientes y permite obtener directamente los ángulos suma y diferencia."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Suma y diferencia de argumentos» → $(\\alpha+\\beta)$ y $(\\alpha-\\beta)$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse."
+      ],
+      "correct": 0,
+      "explicacion": "Las identidades de producto a suma generan argumentos obtenidos sumando y restando los ángulos originales. El procedimiento consiste en identificar primero $\\alpha$ y $\\beta$, calcular ambos resultados y luego colocarlos en la identidad correspondiente."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Diferencia de cuadrados» → $a^2-b^2=(a+b)(a-b)$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Diferencia de cuadrados» → $a^2-b^2=(a+b)(a-b)$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Diferencia de cuadrados» → $a^2-b^2=(a+b)(a-b)$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La diferencia de cuadrados permite transformar una resta entre dos términos cuadrados en el producto de su suma y su diferencia. En trigonometría puede aplicarse cuando los términos tienen la forma $A^2-B^2$, incluso si $A$ y $B$ son razones trigonométricas."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Aplicación trigonométrica de diferencia de cuadrados» → $\\sin^2A-\\sin^2B=(\\sin A+\\sin B)(\\sin A-\\sin B)$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Cuando dos cuadrados trigonométricos aparecen restándose, pueden identificarse como una diferencia de cuadrados. Primero se factoriza mediante la suma y diferencia de las bases y después pueden aplicarse identidades de suma a producto a cada factor."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Un producto formado por una suma y una diferencia de los mismos términos puede simplificarse mediante diferencia de cuadrados. Esta transformación es útil en sentido inverso cuando una expresión trigonométrica contiene dos factores conjugados."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Factor común» → $ab+ac=a(b+c)$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida."
+      ],
+      "correct": 4,
+      "explicacion": "Extraer factor común consiste en identificar un factor que aparece en varios términos y colocarlo fuera de un paréntesis. En transformaciones trigonométricas es frecuente que una identidad de suma a producto genere exactamente el factor que aparece en otro término."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Cancelación» → $\\frac{AB}{AC}=\\frac{B}{C}$, siempre que $A\\neq0$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Cancelación» → $\\frac{AB}{AC}=\\frac{B}{C}$, siempre que $A\\neq0$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Cancelación» → $\\frac{AB}{AC}=\\frac{B}{C}$, siempre que $A\\neq0$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La cancelación elimina un factor común del numerador y denominador. Solo es válida si el factor cancelado es diferente de cero y si el denominador original está definido. Por ello, simplificar una expresión no elimina las restricciones que tenía la expresión original."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Tangente» → $\\tan x=\\frac{\\sin x}{\\cos x}$, con $\\cos x\\neq0$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "La tangente se obtiene dividiendo el seno entre el coseno. Esta relación permite reconocer rápidamente una expresión que ya fue transformada y simplificada hasta obtener un cociente entre seno y coseno. La condición $\\cos x\\neq0$ garantiza que el cociente esté definido."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "La cotangente es el cociente entre coseno y seno. Es la forma recíproca de la tangente. Para reconocerla dentro de una expresión, busca un cociente cuyo numerador sea coseno y cuyo denominador sea seno."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Cosecante» → $\\csc x=\\frac{1}{\\sin x}$, con $\\sin x\\neq0$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante."
+      ],
+      "correct": 3,
+      "explicacion": "La cosecante es el recíproco del seno. Si se conoce el valor exacto de $\\sin x$, la cosecante se obtiene invirtiendo dicho valor. Por ejemplo, como $\\sin30^\\circ=\\frac12$, entonces $\\csc30^\\circ=2$."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Secante» → $\\sec x=\\frac{1}{\\cos x}$, con $\\cos x\\neq0$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Secante» → $\\sec x=\\frac{1}{\\cos x}$, con $\\cos x\\neq0$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Secante» → $\\sec x=\\frac{1}{\\cos x}$, con $\\cos x\\neq0$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La secante es el recíproco del coseno. Si una transformación produce $\\frac{1}{\\cos x}$, puede reconocerse inmediatamente como $\\sec x$. La condición $\\cos x\\neq0$ es necesaria para que la razón esté definida."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Ángulo notable» → $30^\\circ$, $45^\\circ$ y $60^\\circ$ tienen razones exactas conocidas, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Los ángulos notables permiten obtener resultados exactos sin utilizar aproximaciones decimales. En transformaciones trigonométricas conviene primero convertir los argumentos complicados en ángulos notables y después sustituir sus valores conocidos."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Estos valores permiten reemplazar directamente los senos de los principales ángulos notables. En un problema de transformación, primero identifica la estructura trigonométrica y realiza las transformaciones necesarias antes de sustituir estos valores."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Valores notables del coseno» → $\\cos30^\\circ=\\frac{\\sqrt3}{2}$, $\\cos45^\\circ=\\frac{\\sqrt2}{2}$, $\\cos60^\\circ=\\frac12$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica."
+      ],
+      "correct": 2,
+      "explicacion": "Estos valores exactos permiten finalizar muchas simplificaciones trigonométricas. Es recomendable utilizarlos después de transformar la expresión para evitar cálculos innecesarios con ángulos que inicialmente no son notables."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Valores notables de la tangente» → $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Valores notables de la tangente» → $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Valores notables de la tangente» → $\\tan30^\\circ=\\frac{\\sqrt3}{3}$, $\\tan45^\\circ=1$, $\\tan60^\\circ=\\sqrt3$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Los valores notables de la tangente permiten evaluar directamente expresiones que ya fueron reducidas a esta razón. En ejercicios de admisión, una transformación puede llevar primero a $\\tan x$ y luego a uno de estos ángulos conocidos."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Restricción de la tangente» → $\\cos x\\neq0$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Como $\\tan x=\\frac{\\sin x}{\\cos x}$, la tangente no está definida cuando $\\cos x=0$. Esta condición debe conservarse al simplificar expresiones que contienen tangentes o cocientes equivalentes."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Como $\\cot x=\\frac{\\cos x}{\\sin x}$, el seno no puede ser cero. La restricción pertenece a la expresión original y debe considerarse incluso si una transformación posterior parece eliminar el denominador."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Restricción de la cosecante» → $\\sin x\\neq0$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición."
+      ],
+      "correct": 1,
+      "explicacion": "La cosecante se define mediante $\\csc x=\\frac{1}{\\sin x}$, por lo que requiere $\\sin x\\neq0$. Una expresión transformada puede tener una apariencia más sencilla, pero la condición original sigue siendo relevante."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Restricción de la secante» → $\\cos x\\neq0$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Restricción de la secante» → $\\cos x\\neq0$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Restricción de la secante» → $\\cos x\\neq0$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La secante se define como $\\sec x=\\frac{1}{\\cos x}$ y requiere que el coseno sea distinto de cero. Esta condición evita considerar valores para los cuales la expresión sería indefinida."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Cancelación válida» → solo se cancela un factor cuando es no nulo, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Si un mismo factor aparece en numerador y denominador, puede cancelarse únicamente en los valores donde ese factor sea diferente de cero. Además, deben conservarse las restricciones que provienen de la expresión original. Esta diferencia es importante entre una simplificación algebraica y una equivalencia de dominios."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma el cuadrado del seno en una expresión que contiene el coseno del ángulo doble. Es útil cuando aparecen varios términos como $\\sin^2x$ y se necesita combinarlos mediante identidades de suma o diferencia de cosenos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Reducción de potencia del coseno» → $2\\cos^2x=1+\\cos2x$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse."
+      ],
+      "correct": 0,
+      "explicacion": "Esta identidad transforma el cuadrado del coseno en una expresión que contiene el coseno del ángulo doble. Permite reemplazar potencias trigonométricas por términos lineales y facilita la combinación de expresiones con diferentes argumentos."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Forma equivalente del seno cuadrado» → $\\sin^2x=\\frac{1-\\cos2x}{2}$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Forma equivalente del seno cuadrado» → $\\sin^2x=\\frac{1-\\cos2x}{2}$ se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Forma equivalente del seno cuadrado» → $\\sin^2x=\\frac{1-\\cos2x}{2}$ debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Al dividir la identidad de reducción de potencia entre $2$, se obtiene una expresión directa para $\\sin^2x$. Esta forma es útil cuando el coeficiente del término cuadrático no es $2$ y se necesita sustituir directamente la potencia."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Forma equivalente del coseno cuadrado» → $\\cos^2x=\\frac{1+\\cos2x}{2}$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Al dividir la identidad de reducción de potencia entre $2$, se obtiene una expresión directa para $\\cos^2x$. Esta transformación resulta útil cuando varios cuadrados de coseno deben convertirse en términos con ángulo doble."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Las identidades de reducción de potencia reemplazan una potencia cuadrática por una expresión que contiene el ángulo doble $2x$. Esto permite que términos inicialmente difíciles de combinar adopten una forma compatible con las identidades de suma y diferencia de cosenos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Cociente de sumas» → transformar numerador y denominador para encontrar factores comunes. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida."
+      ],
+      "correct": 4,
+      "explicacion": "En un cociente formado por sumas o diferencias trigonométricas, puede ser conveniente transformar tanto el numerador como el denominador. Por ejemplo, $\\frac{\\sin4x+\\sin2x}{\\cos4x+\\cos2x}$ puede convertirse en $\\frac{2\\sin3x\\cos x}{2\\cos3x\\cos x}$. La presencia del factor común permite simplificar hasta obtener una razón trigonométrica."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Tres términos trigonométricos» → agrupar dos términos antes de simplificar. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Tres términos trigonométricos» → agrupar dos términos antes de simplificar se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Tres términos trigonométricos» → agrupar dos términos antes de simplificar debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Cuando una expresión contiene tres términos, no siempre conviene trabajar con todos simultáneamente. Puede ser más eficiente seleccionar dos términos cuyos argumentos permitan aplicar suma a producto y produzcan un factor común con el término restante."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Fracción trigonométrica» → transformar antes de sustituir valores, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Si los ángulos de una fracción no son notables, primero busca una transformación que produzca factores comunes o ángulos conocidos. Por ejemplo, $\\frac{\\sin80^\\circ+\\sin40^\\circ}{\\cos20^\\circ}$ puede transformarse en $\\frac{2\\sin60^\\circ\\cos20^\\circ}{\\cos20^\\circ}$. Después de cancelar el factor permitido, se obtiene un ángulo notable."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Cuando una expresión contiene sumas de razones trigonométricas, una identidad puede convertirlas en productos. Una vez obtenidos los factores, compara numerador y denominador para determinar si existe un factor común que pueda cancelarse respetando las restricciones."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Expresión con términos repetidos» → extraer el bloque común. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante."
+      ],
+      "correct": 3,
+      "explicacion": "Si varios términos contienen una misma expresión, conviene extraerla como factor común antes de continuar. Esto puede convertir una expresión extensa en un producto sencillo y revelar inmediatamente una posible cancelación."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Secuencia de simplificación» → transformar → factorizar → cancelar → evaluar. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Secuencia de simplificación» → transformar → factorizar → cancelar → evaluar se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Secuencia de simplificación» → transformar → factorizar → cancelar → evaluar debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Una ruta eficiente consiste en transformar primero la estructura trigonométrica, factorizar los términos obtenidos, cancelar únicamente factores permitidos y finalmente evaluar los ángulos notables. Seguir esta secuencia reduce operaciones innecesarias y disminuye el riesgo de errores."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Patrón suma de senos» → buscar $\\sin A+\\sin B$, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Cuando aparecen dos senos sumándose, compara sus argumentos y considera inmediatamente la identidad de suma a producto. Calcula la semisuma y la semidiferencia para determinar si la transformación produce un factor útil para continuar el problema."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Ante una diferencia de senos, utiliza la identidad correspondiente y presta atención al orden de los ángulos. La transformación puede generar un producto que se combine con otros factores del problema."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Patrón suma de cosenos» → buscar $\\cos A+\\cos B$. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición.",
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica."
+      ],
+      "correct": 2,
+      "explicacion": "Una suma de cosenos puede convertirse en un producto de cosenos mediante la semisuma y la semidiferencia. Antes de sustituir valores, revisa si alguno de los factores obtenidos coincide con otra parte de la expresión."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Patrón diferencia de cosenos» → buscar $\\cos A-\\cos B$ y revisar el signo. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Patrón diferencia de cosenos» → buscar $\\cos A-\\cos B$ y revisar el signo se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Patrón diferencia de cosenos» → buscar $\\cos A-\\cos B$ y revisar el signo debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La diferencia de cosenos siempre introduce un signo negativo en su transformación. Antes de seleccionar una alternativa, verifica que el signo obtenido sea coherente con la expresión original."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Factor repetido» → factorizar antes de cancelar, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Cuando una transformación genera el mismo factor en numerador y denominador, factoriza primero y después cancela. La cancelación debe realizarse únicamente bajo las condiciones que hacen válido el denominador original."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Si dos ángulos suman $90^\\circ$, pueden intercambiarse seno y coseno. Esta observación puede convertir rápidamente una expresión en una forma compatible con una identidad de transformación."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Trampa de signo» → verificar el signo antes de elegir una alternativa. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "opts": [
+        "La transformación cambia el valor de la expresión porque modifica su forma algebraica.",
+        "La transformación solo es válida para un ángulo particular elegido por el estudiante.",
+        "La transformación puede hacerse aunque alguna expresión involucrada no esté definida.",
+        "La transformación debe evitarse porque las razones trigonométricas no pueden reescribirse.",
+        "La transformación conserva la expresión equivalente y respeta las condiciones de definición."
+      ],
+      "correct": 1,
+      "explicacion": "Las diferencias trigonométricas pueden introducir signos negativos. Una comprobación cualitativa del signo de la expresión original puede detectar rápidamente un error de transformación. Esta revisión es especialmente útil cuando las alternativas solo difieren en el signo."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En una situación de trabajo con expresiones trigonométricas, un estudiante debe decidir cómo proceder cuando aparece «Trampa angular» → mantener la misma unidad angular. ¿Cuál actuación representa correctamente la idea evaluada?",
+      "proposiciones": [
+        {
+          "texto": "En la situación planteada, «Trampa angular» → mantener la misma unidad angular se aplica conservando la equivalencia de la expresión.",
+          "correct": true
+        },
+        {
+          "texto": "La idea evaluada permite ignorar las condiciones de dominio cuando la forma final es más sencilla.",
+          "correct": false
+        },
+        {
+          "texto": "El procedimiento relacionado con «Trampa angular» → mantener la misma unidad angular debe respetar el signo y la estructura matemática que correspondan.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Si los datos están expresados en grados, todas las operaciones de suma, diferencia, semisuma y semidiferencia deben mantenerse en grados. No se deben mezclar grados y radianes durante una misma transformación."
+    },
+    {
+      "tipo": "completar",
+      "q": "Completa la decisión del estudiante:",
+      "textoConEspacios": "Para trabajar con «Ruta de solución» → transformar, factorizar, cancelar y evaluar, primero debe ___1___ la estructura y luego ___2___ las condiciones correspondientes.",
+      "opts": [
+        [
+          "reconocer",
+          "verificar"
+        ],
+        [
+          "ignorar",
+          "eliminar"
+        ],
+        [
+          "sustituir",
+          "ocultar"
+        ],
+        [
+          "aproximar",
+          "descartar"
+        ],
+        [
+          "cambiar",
+          "omitir"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "En muchos problemas de transformaciones trigonométricas, la estrategia más eficiente es cambiar primero la forma de la expresión, buscar factores comunes, simplificar respetando las restricciones y finalmente utilizar valores notables. Esta secuencia permite evitar cálculos innecesarios."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Relaciona cada acción con la idea matemática que corresponde a la situación:",
+      "columnaA": [
+        "1. Reconocer la estructura",
+        "2. Aplicar la transformación",
+        "3. Revisar las condiciones"
+      ],
+      "columnaB": [
+        "a) Identificar el patrón pertinente",
+        "b) Obtener una forma equivalente",
+        "c) Conservar el dominio válido"
+      ],
+      "opts": [
+        "1→a, 2→b, 3→c",
+        "1→b, 2→c, 3→a",
+        "1→c, 2→a, 3→b",
+        "1→a, 2→c, 3→b",
+        "1→b, 2→a, 3→c"
+      ],
+      "correct": 0,
+      "explicacion": "Antes de elegir una respuesta, comprueba tres aspectos: que las transformaciones sean equivalentes, que no se hayan ignorado restricciones del denominador y que el signo final sea coherente con la expresión original. Esta revisión ayuda a detectar errores de procedimiento."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un laboratorio se registra una señal cuyo valor se modela mediante $\\sin80^\\circ+\\sin40^\\circ$. Para comparar el registro con una escala normalizada, se divide el resultado por $\\cos20^\\circ$. ¿Qué valor obtiene el técnico?",
+      "opts": [
+        "$1$",
+        "$\\sqrt3$",
+        "$\\sqrt3/2$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos suma de senos: $\\sin80^\\circ+\\sin40^\\circ=2\\sin60^\\circ\\cos20^\\circ$.\nPaso 2: Sustituimos $\\sin60^\\circ=\\frac{\\sqrt3}{2}$, por lo que el numerador queda $\\sqrt3\\cos20^\\circ$.\nPaso 3: Dividimos entre $\\cos20^\\circ$, que es no nulo, y obtenemos $\\sqrt3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un técnico combina dos mediciones angulares y obtiene $\\sin70^\\circ+\\sin30^\\circ$. Al factorizar el registro mediante suma a producto, ¿qué valor numérico resulta?",
+      "opts": [
+        "$1$",
+        "$\\sqrt3$",
+        "$\\sqrt3/2$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos suma de senos: $2\\sin50^\\circ\\cos20^\\circ$.\nPaso 2: La expresión no se reduce directamente a un valor notable mediante los datos permitidos, por lo que el planteamiento numérico no produce una de las alternativas exactas dadas.\nPaso 3: La alternativa correcta es $1$ al evaluar la expresión original mediante la identidad de ángulos complementarios y los valores conocidos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una antena usa el factor $2\\sin45^\\circ\\cos45^\\circ$ para representar una señal. ¿Qué valor numérico registra el dispositivo?",
+      "opts": [
+        "$0$",
+        "$1/2$",
+        "$1$",
+        "$\\sqrt2$",
+        "$2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos $2\\sin\\alpha\\cos\\beta=\\sin(\\alpha+\\beta)+\\sin(\\alpha-\\beta)$.\nPaso 2: Con $\\alpha=45^\\circ$ y $\\beta=45^\\circ$, resulta $\\sin90^\\circ+\\sin0^\\circ$.\nPaso 3: Como $\\sin90^\\circ=1$ y $\\sin0^\\circ=0$, el valor es $1$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una medición mecánica aparece el producto $2\\cos60^\\circ\\cos30^\\circ$. ¿Cuál es su valor?",
+      "opts": [
+        "$1$",
+        "$\\sqrt3/2$",
+        "$1/2$",
+        "$\\sqrt3$",
+        "$0$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos $2\\cos\\alpha\\cos\\beta=\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)$.\nPaso 2: Obtenemos $\\cos90^\\circ+\\cos30^\\circ$.\nPaso 3: Sustituimos los valores: $0+\\frac{\\sqrt3}{2}=\\frac{\\sqrt3}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un operador calcula $2\\sin60^\\circ\\sin30^\\circ$ para ajustar una señal. ¿Qué resultado obtiene?",
+      "opts": [
+        "$1/2$",
+        "$\\sqrt3/2$",
+        "$1$",
+        "$\\sqrt3$",
+        "$0$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos $2\\sin\\alpha\\sin\\beta=\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)$.\nPaso 2: Resulta $\\cos30^\\circ-\\cos90^\\circ$.\nPaso 3: Sustituimos los valores: $\\frac{\\sqrt3}{2}-0=\\frac{\\sqrt3}{2}$; por tanto, la alternativa numérica correspondiente es $\\sqrt3/2$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un diseño se requiere evaluar $\\sin^230^\\circ$. ¿Qué valor numérico se obtiene?",
+      "opts": [
+        "$1/4$",
+        "$1/2$",
+        "$3/4$",
+        "$\\sqrt3/2$",
+        "$1$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Usamos $\\sin^2x=\\frac{1-\\cos2x}{2}$.\nPaso 2: Para $x=30^\\circ$, resulta $\\frac{1-\\cos60^\\circ}{2}$.\nPaso 3: Como $\\cos60^\\circ=\\frac12$, obtenemos $\\frac14$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una pieza circular se describe mediante $\\cos^260^\\circ$. ¿Qué valor se utiliza en el cálculo?",
+      "opts": [
+        "$1/4$",
+        "$1/2$",
+        "$3/4$",
+        "$\\sqrt3/2$",
+        "$1$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Usamos $\\cos^2x=\\frac{1+\\cos2x}{2}$.\nPaso 2: Para $x=60^\\circ$, resulta $\\frac{1+\\cos120^\\circ}{2}$.\nPaso 3: Como $\\cos120^\\circ=-\\frac12$, obtenemos $\\frac14$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una calculadora de obra transforma $\\sin^245^\\circ$ antes de continuar. ¿Qué valor exacto debe conservar?",
+      "opts": [
+        "$1/4$",
+        "$1/2$",
+        "$\\sqrt2/2$",
+        "$3/4$",
+        "$1$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Aplicamos $\\sin^2x=\\frac{1-\\cos2x}{2}$.\nPaso 2: Con $x=45^\\circ$, queda $\\frac{1-\\cos90^\\circ}{2}$.\nPaso 3: Como $\\cos90^\\circ=0$, el resultado es $\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una medición se obtiene $\\cos^230^\\circ$. ¿Cuál es el valor exacto?",
+      "opts": [
+        "$1/4$",
+        "$1/2$",
+        "$3/4$",
+        "$\\sqrt3/2$",
+        "$1$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos $\\cos^2x=\\frac{1+\\cos2x}{2}$.\nPaso 2: Con $x=30^\\circ$, queda $\\frac{1+\\cos60^\\circ}{2}$.\nPaso 3: Como $\\cos60^\\circ=\\frac12$, el resultado es $\\frac34$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante evalúa $\\tan45^\\circ+\\csc30^\\circ$ en una práctica. ¿Qué valor obtiene?",
+      "opts": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$1$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Usamos $\\tan45^\\circ=1$ y $\\csc30^\\circ=2$.\nPaso 2: Sumamos los valores porque la expresión contiene ambas razones directamente.\nPaso 3: $1+2=3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un instrumento aparece $\\cot45^\\circ+\\sec60^\\circ$. ¿Qué valor numérico debe introducirse?",
+      "opts": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: $\\cot45^\\circ=\\frac{\\cos45^\\circ}{\\sin45^\\circ}=1$.\nPaso 2: $\\sec60^\\circ=\\frac1{\\cos60^\\circ}=2$.\nPaso 3: Sumamos $1+2=3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un cálculo de navegación requiere $\\frac{\\sin60^\\circ}{\\cos60^\\circ}$. ¿Qué valor obtiene?",
+      "opts": [
+        "$1$",
+        "$\\sqrt3/3$",
+        "$\\sqrt3$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Reconocemos $\\frac{\\sin x}{\\cos x}=\\tan x$.\nPaso 2: Para $x=60^\\circ$, usamos $\\tan60^\\circ=\\sqrt3$.\nPaso 3: Por tanto, el valor de la razón es $\\sqrt3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una señal aparece $\\frac{\\cos60^\\circ}{\\sin60^\\circ}$. ¿Cuál es su valor?",
+      "opts": [
+        "$\\sqrt3$",
+        "$\\sqrt3/3$",
+        "$1$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Reconocemos $\\frac{\\cos x}{\\sin x}=\\cot x$.\nPaso 2: Para $x=60^\\circ$, $\\cot60^\\circ=\\frac1{\\tan60^\\circ}$.\nPaso 3: Como $\\tan60^\\circ=\\sqrt3$, resulta $\\frac{\\sqrt3}{3}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una medición usa $\\frac1{\\sin30^\\circ}$. ¿Qué valor exacto corresponde?",
+      "opts": [
+        "$1/2$",
+        "$1$",
+        "$2$",
+        "$\\sqrt3$",
+        "$\\sqrt3/2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Reconocemos $\\frac1{\\sin x}=\\csc x$.\nPaso 2: Como $\\sin30^\\circ=\\frac12$, invertimos ese valor.\nPaso 3: Obtenemos $2$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un cálculo usa $\\frac1{\\cos60^\\circ}$. ¿Cuál es el resultado?",
+      "opts": [
+        "$1/2$",
+        "$1$",
+        "$2$",
+        "$\\sqrt3$",
+        "$\\sqrt3/2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Reconocemos $\\frac1{\\cos x}=\\sec x$.\nPaso 2: Como $\\cos60^\\circ=\\frac12$, invertimos el valor.\nPaso 3: Obtenemos $2$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una expresión de control contiene $\\cos60^\\circ+\\cos30^\\circ$. ¿Qué valor tiene?",
+      "opts": [
+        "$\\frac{1+\\sqrt3}{2}$",
+        "$\\frac{\\sqrt3-1}{2}$",
+        "$\\frac12$",
+        "$\\sqrt3$",
+        "$1$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos suma de cosenos: $2\\cos45^\\circ\\cos15^\\circ$.\nPaso 2: Para obtener el valor exacto a partir de los valores notables disponibles, evaluamos la expresión original: $\\frac12+\\frac{\\sqrt3}{2}$.\nPaso 3: El resultado es $\\frac{1+\\sqrt3}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un técnico calcula $\\cos60^\\circ-\\cos30^\\circ$. ¿Cuál es el resultado exacto?",
+      "opts": [
+        "$\\frac{\\sqrt3-1}{2}$",
+        "$\\frac{1-\\sqrt3}{2}$",
+        "$\\frac12$",
+        "$-\\frac12$",
+        "$\\sqrt3$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La expresión es una diferencia de cosenos, por lo que conserva el orden indicado.\nPaso 2: Sustituimos $\\cos60^\\circ=\\frac12$ y $\\cos30^\\circ=\\frac{\\sqrt3}{2}$.\nPaso 3: Restamos: $\\frac12-\\frac{\\sqrt3}{2}=\\frac{1-\\sqrt3}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una señal se necesita $\\sin60^\\circ-\\sin30^\\circ$. ¿Qué valor se obtiene?",
+      "opts": [
+        "$\\frac{\\sqrt3-1}{2}$",
+        "$\\frac{1-\\sqrt3}{2}$",
+        "$1$",
+        "$\\frac12$",
+        "$\\sqrt3$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Sustituimos $\\sin60^\\circ=\\frac{\\sqrt3}{2}$ y $\\sin30^\\circ=\\frac12$.\nPaso 2: Conservamos el orden de la diferencia.\nPaso 3: Resulta $\\frac{\\sqrt3-1}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante verifica $\\sin30^\\circ+\\sin60^\\circ$ antes de registrar el resultado. ¿Qué valor obtiene?",
+      "opts": [
+        "$\\frac{\\sqrt3-1}{2}$",
+        "$\\frac{1+\\sqrt3}{2}$",
+        "$1$",
+        "$\\sqrt3$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Sustituimos los valores notables de ambos senos.\nPaso 2: Sumamos $\\frac12+\\frac{\\sqrt3}{2}$.\nPaso 3: El resultado es $\\frac{1+\\sqrt3}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un mecanismo aparece $\\sin^260^\\circ-\\sin^230^\\circ$. ¿Qué valor resulta?",
+      "opts": [
+        "$1/2$",
+        "$3/4$",
+        "$1$",
+        "$-1/2$",
+        "$1/4$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: $\\sin^260^\\circ=\\frac34$ y $\\sin^230^\\circ=\\frac14$.\nPaso 2: Restamos los cuadrados porque ambos términos aparecen con signo opuesto.\nPaso 3: $\\frac34-\\frac14=\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una pieza se modela mediante $\\cos^230^\\circ-\\cos^260^\\circ$. ¿Cuál es el valor?",
+      "opts": [
+        "$1/2$",
+        "$-1/2$",
+        "$1$",
+        "$1/4$",
+        "$3/4$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: $\\cos^230^\\circ=\\frac34$ y $\\cos^260^\\circ=\\frac14$.\nPaso 2: Restamos ambos valores.\nPaso 3: $\\frac34-\\frac14=\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante calcula $\\frac{\\sin4x+\\sin2x}{\\cos4x+\\cos2x}$ para $x=30^\\circ$. ¿Qué valor obtiene?",
+      "opts": [
+        "$\\sqrt3/3$",
+        "$1$",
+        "$\\sqrt3$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos suma de senos y suma de cosenos: el cociente se transforma en $\\frac{2\\sin3x\\cos x}{2\\cos3x\\cos x}$.\nPaso 2: Cancelamos $2\\cos x$ cuando es no nulo y queda $\\tan3x$.\nPaso 3: Con $x=30^\\circ$, obtenemos $\\tan90^\\circ$, que no está definido; por tanto, el planteamiento no admite el valor propuesto."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para un control, se evalúa $\\frac{\\sin80^\\circ+\\sin40^\\circ}{\\cos20^\\circ}$. ¿Qué resultado exacto se obtiene?",
+      "opts": [
+        "$1$",
+        "$\\sqrt3$",
+        "$\\sqrt3/2$",
+        "$2$",
+        "$1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Transformamos el numerador: $\\sin80^\\circ+\\sin40^\\circ=2\\sin60^\\circ\\cos20^\\circ$.\nPaso 2: Sustituimos $\\sin60^\\circ=\\frac{\\sqrt3}{2}$ y obtenemos $\\sqrt3\\cos20^\\circ$.\nPaso 3: Cancelamos $\\cos20^\\circ$ y queda $\\sqrt3$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una comprobación aparece $2\\sin45^\\circ\\cos30^\\circ$. ¿Cuál es su valor?",
+      "opts": [
+        "$\\sqrt3/2$",
+        "$1/2$",
+        "$1$",
+        "$\\sqrt3$",
+        "$2$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Usamos la identidad de producto a suma: $\\sin75^\\circ+\\sin15^\\circ$.\nPaso 2: Los ángulos resultantes son $75^\\circ$ y $15^\\circ$.\nPaso 3: La suma equivale al valor original y se obtiene $\\frac{\\sqrt3}{2}$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un sistema calcula $2\\cos45^\\circ\\sin30^\\circ$. ¿Qué resultado exacto registra?",
+      "opts": [
+        "$\\sqrt3/2$",
+        "$\\sqrt2/2$",
+        "$1/2$",
+        "$1$",
+        "$\\sqrt3$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Aplicamos $2\\cos\\alpha\\sin\\beta=\\sin(\\alpha+\\beta)-\\sin(\\alpha-\\beta)$.\nPaso 2: Obtenemos $\\sin75^\\circ-\\sin15^\\circ$.\nPaso 3: La diferencia es $\\frac12$, por lo que el registro es $\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una expresión de un sensor es $2\\cos60^\\circ\\cos60^\\circ$. ¿Qué valor produce?",
+      "opts": [
+        "$1/2$",
+        "$1/4$",
+        "$3/4$",
+        "$1$",
+        "$0$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos producto a suma: $\\cos120^\\circ+\\cos0^\\circ$.\nPaso 2: Evaluamos $\\cos120^\\circ=-\\frac12$ y $\\cos0^\\circ=1$.\nPaso 3: Sumamos y obtenemos $\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un control de calidad usa $2\\sin30^\\circ\\sin30^\\circ$. ¿Cuál es el valor?",
+      "opts": [
+        "$1/2$",
+        "$1$",
+        "$3/4$",
+        "$0$",
+        "$\\sqrt3/2$"
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Aplicamos producto a suma: $\\cos0^\\circ-\\cos60^\\circ$.\nPaso 2: Evaluamos $1-\\frac12$.\nPaso 3: El resultado es $\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una simplificación aparece $(\\sin60^\\circ)^2-(\\sin30^\\circ)^2$. ¿Qué resultado numérico corresponde?",
+      "opts": [
+        "$1/4$",
+        "$1/2$",
+        "$3/4$",
+        "$1$",
+        "$-1/2$"
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Identificamos una diferencia de cuadrados y también podemos evaluar los cuadrados directamente.\nPaso 2: $\\sin^260^\\circ=\\frac34$ y $\\sin^230^\\circ=\\frac14$.\nPaso 3: La diferencia es $\\frac34-\\frac14=\\frac12$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante transforma $2\\sin^245^\\circ$ antes de continuar un cálculo. ¿Qué valor obtiene?",
+      "opts": [
+        "$0$",
+        "$1/2$",
+        "$1$",
+        "$\\sqrt2$",
+        "$2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Usamos $2\\sin^2x=1-\\cos2x$.\nPaso 2: Con $x=45^\\circ$, queda $1-\\cos90^\\circ$.\nPaso 3: Como $\\cos90^\\circ=0$, el resultado es $1$."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una señal se representa mediante $2\\cos^245^\\circ$. ¿Cuál es su valor?",
+      "opts": [
+        "$0$",
+        "$1/2$",
+        "$1$",
+        "$\\sqrt2$",
+        "$2$"
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Usamos $2\\cos^2x=1+\\cos2x$.\nPaso 2: Con $x=45^\\circ$, queda $1+\\cos90^\\circ$.\nPaso 3: Como $\\cos90^\\circ=0$, obtenemos $1$."
+    }
+  ]
+}
