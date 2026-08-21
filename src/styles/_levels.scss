@@ -140,8 +140,9 @@
 
 .levels-modal__search .home-search-result:hover,
 .levels-modal__search .home-search-result.is-focused{
-  background-color:var(--surface-hover);
-  color:var(--ink);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background-color: rgba(20, 21, 24, 1);
+  color: var(--ink-on-primary);
 }
 
 .levels-modal__search .home-search-result:active{

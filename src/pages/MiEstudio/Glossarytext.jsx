@@ -5,6 +5,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
+import { SIMBOLOS_NOTACION } from "../../lib/simbolosNotacion";
 
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -193,12 +194,19 @@ function renderLatex(text) {
   return resultado;
 }
 
+function esSimbolo(termino) {
+  // Un símbolo matemático/científico no tiene letras ni números
+  // (=, +, ✗, ↑, ↓, ≠, ≈, etc.), a diferencia de un término normal
+  // del glosario que sí es una palabra.
+  return !/[a-zA-ZÀ-ÿ0-9]/.test(termino);
+}
+
 function partirPorGlosario(
   texto,
-  glosario
+  glosarioCombinado
 ) {
   const claves = Object.keys(
-    glosario || {}
+    glosarioCombinado || {}
   ).filter(Boolean);
 
   if (
@@ -316,13 +324,26 @@ export default function GlossaryText({
     ajustarPosicion
   } = useFloatingTooltip();
 
+  // Los símbolos de notación (=, +, ≠, etc.) están fijos en el
+  // código y no dependen de que la IA los haya puesto en el
+  // "glosario" del JSON. Si el JSON igual trae una definición propia
+  // para ese símbolo (contenido viejo generado antes de este cambio),
+  // esa definición gana, así no se pierden textos ya generados.
+  const glosarioCombinado = useMemo(
+    () => ({
+      ...SIMBOLOS_NOTACION,
+      ...(glosario || {})
+    }),
+    [glosario]
+  );
+
   const partes = useMemo(
     () =>
       partirPorGlosario(
         text,
-        glosario
+        glosarioCombinado
       ),
-    [text, glosario]
+    [text, glosarioCombinado]
   );
 
   const mostrarTooltip = (i) => {
@@ -366,6 +387,8 @@ export default function GlossaryText({
         const esVisible =
           visible && activo === i;
 
+        const simbolo = esSimbolo(parte.valor);
+
         return (
           <span
             key={i}
@@ -391,7 +414,7 @@ export default function GlossaryText({
                 triggerRefs.current[i] =
                   el;
               }}
-              className="glossary-term"
+              className={`glossary-term${simbolo ? " glossary-term--simbolo" : ""}`}
             >
               {renderLatex(
                 parte.valor
@@ -412,7 +435,7 @@ export default function GlossaryText({
                 <span className="glossary-tooltip__arrow" />
 
                 {renderLatex(
-                  glosario[
+                  glosarioCombinado[
                     parte.key
                   ]
                 )}

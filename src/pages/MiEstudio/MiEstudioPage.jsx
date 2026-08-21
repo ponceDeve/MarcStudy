@@ -12,6 +12,7 @@ import AvisosInicio from "../../components/AvisosInicio";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
+import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import TopBar from "./TopBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
@@ -157,7 +158,7 @@ function agruparResultados({ cursos, temas }) {
 function limpiarParaVoz(texto) {
   if (!texto) return "";
 
-  return texto
+  return reemplazarSimbolosParaVoz(texto)
     .replace(/\\\[|\\\]|\\\(|\\\)|\$\$|\$/g, "")
     .replace(/\\[a-zA-Z]+/g, "")
     .replace(/[{}^_]/g, " ")
@@ -211,7 +212,7 @@ function useLecturaTeoriaVoz(texto, activo) {
 
     window.speechSynthesis.cancel();
 
-    obtenerVocesListas().then((voces) => {
+    function hablarConVoces(voces) {
       if (cancelado) return;
 
       const utter =
@@ -256,7 +257,17 @@ function useLecturaTeoriaVoz(texto, activo) {
       }
 
       window.speechSynthesis.speak(utter);
-    });
+    }
+
+    const vocesYaListas =
+      window.speechSynthesis.getVoices();
+
+    if (vocesYaListas.length > 0) {
+      hablarConVoces(vocesYaListas);
+    } else {
+      hablarConVoces([]);
+      obtenerVocesListas();
+    }
 
     return () => {
       cancelado = true;
@@ -266,6 +277,60 @@ function useLecturaTeoriaVoz(texto, activo) {
       }
     };
   }, [texto, activo]);
+}
+
+/* ============================================================
+   RESALTAR COINCIDENCIA
+   ============================================================ */
+
+function ResaltarCoincidencia({ texto, query }) {
+  if (!query.trim()) {
+    return texto;
+  }
+
+  const textoOriginal = String(texto ?? "");
+  const busqueda = query.trim();
+
+  const textoNormalizado =
+    normalizarTexto(textoOriginal);
+
+  const busquedaNormalizada =
+    normalizarTexto(busqueda);
+
+  if (!busquedaNormalizada) {
+    return textoOriginal;
+  }
+
+  const indice =
+    textoNormalizado.indexOf(busquedaNormalizada);
+
+  if (indice === -1) {
+    return textoOriginal;
+  }
+
+  const antes =
+    textoOriginal.slice(0, indice);
+
+  const coincidencia =
+    textoOriginal.slice(
+      indice,
+      indice + busqueda.length
+    );
+
+  const despues =
+    textoOriginal.slice(
+      indice + busqueda.length
+    );
+
+  return (
+    <>
+      {antes}
+      <span className="search-match">
+        {coincidencia}
+      </span>
+      {despues}
+    </>
+  );
 }
 
 export default function MiEstudioPage() {
@@ -575,6 +640,11 @@ export default function MiEstudioPage() {
   const [
     sinPreguntaAlerta,
     setSinPreguntaAlerta
+  ] = useState(false);
+
+  const [
+    sinSeleccionAlerta,
+    setSinSeleccionAlerta
   ] = useState(false);
 
   const [
@@ -934,10 +1004,6 @@ export default function MiEstudioPage() {
     }
   }
 
-  // ============================================================
-  // SUGERIR EXAMEN — FORM SUBMIT
-  // ============================================================
-
   async function enviarSugerenciaExamen() {
     if (!topicData) return;
 
@@ -1062,8 +1128,8 @@ export default function MiEstudioPage() {
     if (modo === "solo_preguntas") {
       const originalExamen = topicData?.examen || [];
 
-      // Extraemos preguntas vinculadas a la teoría 1/1 (de los textos marcados con check)
       const preguntasVinculadasTeoria = flatPuntos
+        .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
         .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
         .map(p => p.pregunta);
 
@@ -1071,11 +1137,12 @@ export default function MiEstudioPage() {
 
       if (preguntasVinculadasTeoria.length > 0) {
         preguntasFinales = [...preguntasVinculadasTeoria];
-      } else if (originalExamen.length > 0) {
+      } else if (flatPuntos.length === 0 && originalExamen.length > 0) {
         preguntasFinales = originalExamen;
       }
 
       if (preguntasFinales.length === 0) {
+        setSinSeleccionAlerta(flatPuntos.length > 0);
         setSinPreguntaAlerta(true);
         return;
       }
@@ -1165,7 +1232,7 @@ export default function MiEstudioPage() {
 
   function avanzarCard() {
     if (stage === "theory") {
-      return; // La teoría ahora se desplaza (scroll), no usa paginación.
+      return; 
     }
 
     if (repasoQuizActivo) {
@@ -1306,7 +1373,7 @@ export default function MiEstudioPage() {
 
   function retrocederCard() {
     if (stage === "theory") {
-      return; // Deshabilitado en vista teoría (scroll libre)
+      return; 
     }
 
     if (repasoQuizActivo) {
@@ -1979,9 +2046,6 @@ export default function MiEstudioPage() {
     topicData?.curso
   ]);
 
-  // Por defecto lee solo el primer título del tema. En cuanto el
-  // usuario clickea un texto de teoría, la lectura pasa a ese texto
-  // (más su explicación, que aparece justo debajo).
   const puntoVozActual = puntoVozId
     ? flatPuntos.find((p) => p.id === puntoVozId)
     : null;
@@ -2257,10 +2321,6 @@ export default function MiEstudioPage() {
         }}
       />
 
-      {/* ============================================================
-          NOTIFICACIÓN PERSONALIZADA — SUGERENCIA
-          ============================================================ */}
-
       {sugerenciaMsg && (
         <div
           className={`repaso-toast is-success ${sugerenciaMsgSaliendo
@@ -2347,10 +2407,15 @@ export default function MiEstudioPage() {
             <i className="fas fa-circle-info" />
 
             <span>
-              No hay preguntas de "
-              {topicData?.tema ||
-                "este tema"}
-              "
+              {sinSeleccionAlerta
+                ? "Tildá al menos un punto de teoría para ir al examen"
+                : (
+                  <>
+                    No hay preguntas de "
+                    {topicData?.tema || "este tema"}
+                    "
+                  </>
+                )}
             </span>
           </div>
 
@@ -2588,10 +2653,13 @@ export default function MiEstudioPage() {
             <AppHeader showHome />
 
             <div className="mi-estudio__home-screen container">
+
               <AvisosInicio />
 
               <div className="mi-estudio__intro">
+
                 <div>
+
                   <p className="mi-estudio__intro-eyebrow">
                     Mi Estudio
                   </p>
@@ -2608,16 +2676,19 @@ export default function MiEstudioPage() {
                       {error}
                     </p>
                   )}
+
                 </div>
 
                 <div className="home-search">
+
                   <div
                     className={`search-input-row${mostrarHistorialInicio ||
-                        (busquedaEnfocada && hayQuery)
-                        ? " has-query"
-                        : ""
+                      (busquedaEnfocada && hayQuery)
+                      ? " has-query"
+                      : ""
                       }`}
                   >
+
                     <input
                       autoComplete="off"
                       type="search"
@@ -2696,15 +2767,15 @@ export default function MiEstudioPage() {
                     >
                       <i className="fa-solid fa-magnifying-glass" />
                     </div>
+
                   </div>
 
-                  {/* ============================================================
-      HISTORIAL DE BÚSQUEDA
-      ============================================================ */}
                   {mostrarHistorialInicio && (
                     <div className="search-history">
+
                       {historialInicioVisible.map(
                         (item, index) => {
+
                           const texto =
                             item.type === "curso"
                               ? item.nombre
@@ -2738,6 +2809,7 @@ export default function MiEstudioPage() {
                       )}
 
                       <div className="search-history-actions">
+
                         {hayMenosHistorialInicio && (
                           <button
                             type="button"
@@ -2789,22 +2861,24 @@ export default function MiEstudioPage() {
                           <i className="fa-solid fa-trash" />
                           Eliminar
                         </button>
+
                       </div>
+
                     </div>
                   )}
 
-                  {/* ============================================================
-      SUGERENCIAS DEL BUSCADOR
-      ============================================================ */}
                   {busquedaEnfocada &&
                     hayQuery &&
                     grupos.length > 0 &&
                     (() => {
+
                       let idx = -1;
 
                       return (
                         <div className="home-search-results search-results">
+
                           {grupos.map((g) => {
+
                             const idxCurso = ++idx;
 
                             return (
@@ -2821,16 +2895,22 @@ export default function MiEstudioPage() {
                                     });
                                   }}
                                   className={`search-result-item is-curso ${idxCurso === focusedInicial
-                                      ? "is-focused"
-                                      : ""
+                                    ? "is-focused"
+                                    : ""
                                     }`}
                                 >
                                   <span className="curso-title">
-                                    {g.curso}
+
+                                    <ResaltarCoincidencia
+                                      texto={g.curso}
+                                      query={query}
+                                    />
+
                                   </span>
                                 </button>
 
                                 {g.temas.map((t) => {
+
                                   const idxTema = ++idx;
 
                                   return (
@@ -2838,45 +2918,59 @@ export default function MiEstudioPage() {
                                       key={`tema-${t.curso}-${t.tema}`}
                                       onMouseDown={(e) => {
                                         e.preventDefault();
-
                                         seleccionarItem(t);
                                       }}
                                       className={`search-result-item is-tema ${idxTema === focusedInicial
-                                          ? "is-focused"
-                                          : ""
+                                        ? "is-focused"
+                                        : ""
                                         }`}
                                     >
+
                                       <p className="search-result-item__tema">
-                                        {t.tema}
+
+                                        <ResaltarCoincidencia
+                                          texto={t.tema}
+                                          query={query}
+                                        />
+
                                       </p>
+
                                     </button>
                                   );
                                 })}
+
                               </div>
                             );
                           })}
+
                         </div>
                       );
+
                     })()}
 
-                  {/* ============================================================
-      SIN RESULTADOS
-      ============================================================ */}
                   {busquedaEnfocada &&
                     hayQuery &&
                     grupos.length === 0 && (
-                      <div className="home-search-empty">
-                        <p className="search-empty">
-                          Sin resultados para "{query}"
-                        </p>
+
+                      <div className="search-results">
+
+                        <div className="search-group">
+
+                          <div className="search-result-item search-no-results">
+
+                            <p className="search-result-item__tema">
+                              Sin resultados para "{query}"
+                            </p>
+
+                          </div>
+
+                        </div>
+
                       </div>
                     )}
+
                 </div>
 
-                {/* ============================================================
-    CONTINUAR ÚLTIMO TEMA
-    FUERA DE .home-search
-    ============================================================ */}
                 {ultimoTemaInicio && (
                   <button
                     type="button"
@@ -2890,14 +2984,26 @@ export default function MiEstudioPage() {
                       })
                     }
                   >
-                    <i className="fa-solid fa-play welcome-section__continuar-icon" />
 
-                    <span>
-                      Continuar: {ultimoTemaInicio.tema}
+                    <span className="welcome-section__continuar-indicator">
+                      ↳
                     </span>
+
+                    <span className="welcome-section__continuar-label">
+                      Continuar:
+                    </span>
+
+                    <span className="welcome-section__continuar-tema">
+                      {ultimoTemaInicio.tema}
+                    </span>
+
+                    <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
+
                   </button>
                 )}
+
               </div>
+
             </div>
 
             <div className="mi-estudio__below">
@@ -2945,9 +3051,6 @@ export default function MiEstudioPage() {
                   </div>
                 )}
 
-              {/* ============================================================
-                  VISTA DE TEORÍA: TODO EN UNA SOLA PANTALLA
-                  ============================================================ */}
               {stage === "theory" && flatPuntos.length > 0 && (
                 <div className="mi-estudio__theory-wrap">
                   <div className="teoria-sticky-bar">
@@ -2972,12 +3075,10 @@ export default function MiEstudioPage() {
                   </div>
 
                   <div className="teoria-articulo-web">
-                    {/* Estilos inyectados basados en la paleta y requerimientos del usuario */}
                     <style>{`
                       .teoria-articulo-web {
                         max-width: 800px;
                         margin: 0 auto;
-                        padding: 20px 20px 80px 20px;
                       }
                       .teoria-top-actions {
                         display: flex;
@@ -2992,7 +3093,7 @@ export default function MiEstudioPage() {
                         align-items: center;
                         gap: 12px;
                         margin-bottom: 16px;
-                        border-bottom: 1px solid var(--border, #2A2A2A);
+                        border-bottom: 1px solid var(--border, #E1E6EC);
                         padding-bottom: 8px;
                         cursor: pointer;
                         user-select: none;
@@ -3001,40 +3102,37 @@ export default function MiEstudioPage() {
                         width: 24px;
                         height: 24px;
                         cursor: pointer;
-                        accent-color: var(--primary, #F7DF1E);
+                        accent-color: var(--primary, #2563EB);
                       }
                       .teoria-etiqueta {
                         font-family: var(--font-display, "Raleway", sans-serif);
                         font-size: 1.8rem;
                         font-weight: 700;
-                        color: var(--primary, #F7DF1E);
+                        color: var(--primary, #2563EB);
                         margin: 0;
                         line-height: 1.3;
                       }
                       .teoria-punto {
                         margin-bottom: 32px;
                       }
-                      .teoria-punto.is-leyendo .teoria-contenido-principal {
-                        color: var(--primary, #F7DF1E);
-                      }
                       .teoria-contenido-principal {
                         font-family: var(--font-body, "Lato", sans-serif);
                         font-size: 1.15rem;
                         line-height: 1.8;
-                        color: var(--ink, #FFFFFF);
+                        color: var(--ink, #1C2430);
                         margin-bottom: 24px;
                       }
                       .teoria-explicacion-extra {
-                        background-color: var(--surface, #171717);
+                        background-color: var(--surface, #FFFFFF);
                         padding: 24px;
                         border-radius: var(--radius-md, 12px);
-                        border-left: 4px solid var(--primary, #F7DF1E);
-                        color: var(--ink-soft, #D4D4D8);
+                        border-left: 4px solid var(--primary, #2563EB);
+                        color: var(--ink-soft, #4A5568);
                         font-size: 1.05rem;
                         line-height: 1.7;
                       }
                       .teoria-explicacion-icon {
-                        color: var(--primary, #F7DF1E);
+                        color: var(--primary, #2563EB);
                         font-size: 1.3rem;
                         margin-top: 4px;
                       }
@@ -3043,8 +3141,8 @@ export default function MiEstudioPage() {
                         align-items: center;
                         justify-content: center;
                         gap: 12px;
-                        background-color: var(--primary, #F7DF1E);
-                        color: var(--ink-on-primary, #000);
+                        background-color: var(--primary, #2563EB);
+                        color: var(--ink-on-primary, #FFFFFF);
                         padding: 16px 36px;
                         font-size: 1.25rem;
                         font-family: var(--font-display, "Raleway", sans-serif);
@@ -3058,14 +3156,11 @@ export default function MiEstudioPage() {
                         box-shadow: var(--shadow-md);
                       }
                       .teoria-boton-examen:hover {
-                        background-color: var(--primary-light, #FCEF74);
+                        background-color: var(--primary-light, #93B4FB);
                         transform: translateY(-2px);
                         box-shadow: var(--shadow-lg);
                       }
                       @media (max-width: 600px) {
-                        .teoria-articulo-web {
-                          padding: 10px 15px 40px 15px;
-                        }
                         .teoria-etiqueta {
                           font-size: 1.5rem;
                         }
@@ -3083,7 +3178,6 @@ export default function MiEstudioPage() {
                       }
                     `}</style>
 
-                    {/* Mapeamos por sección y ponemos los checks a nivel de texto (punto) */}
                     {topicData?.theory?.map((seccion, idxSeccion) => (
                       <div key={idxSeccion} className="teoria-seccion">
                         <div className="teoria-etiqueta-wrap">
@@ -3092,7 +3186,6 @@ export default function MiEstudioPage() {
                           </h3>
                         </div>
 
-                        {/* El contenido siempre es visible, los checks definen qué irá al examen */}
                         <div className="teoria-puntos-lista animate-fade-in">
                           {seccion.puntos.map((punto, idxPunto) => {
                             const puntoId = `${idxSeccion}-${idxPunto}`;
@@ -3104,13 +3197,13 @@ export default function MiEstudioPage() {
                                 className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
                               >
                                 <div
-                                  style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px' }}
+                                  style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px', alignItems: 'center' }}
                                   onClick={() => setPuntoVozId(puntoId)}
                                 >
                                   <input
                                     type="checkbox"
                                     id={`checkbox-${puntoId}`}
-                                    style={{ marginTop: '6px', width: '20px', height: '20px', accentColor: 'var(--primary, #F7DF1E)', flexShrink: 0, cursor: 'pointer' }}
+                                    style={{ marginTop: '6px', width: '20px', height: '20px', accentColor: 'var(--primary, #2563EB)', flexShrink: 0, cursor: 'pointer' }}
                                     checked={textosSeleccionados.includes(puntoId)}
                                     onClick={(e) => e.stopPropagation()}
                                     onChange={() => {
@@ -3167,7 +3260,6 @@ export default function MiEstudioPage() {
                       </div>
                     </div>
 
-                    {/* Botón final para transicionar a las preguntas */}
                     <div style={{ textAlign: 'center' }}>
                       {examenPreguntas.length > 0 ? (
                         <button
@@ -3240,8 +3332,6 @@ export default function MiEstudioPage() {
                   </div>
                 )}
 
-              {/* Los botones de navegación inferiores (Avanzar, Retroceder) 
-                  sólo aparecen cuando estás en la fase de preguntas */}
               {stage === "question" && (
                 <div className="mi-estudio__nav">
                   <button
@@ -3398,10 +3488,6 @@ export default function MiEstudioPage() {
             </div>
           )}
 
-        {/* ============================================================
-            SUGERIR EXAMEN
-            ============================================================ */}
-
         {topicData &&
           stage === "theory" &&
           examenPreguntas.length ===
@@ -3423,10 +3509,6 @@ export default function MiEstudioPage() {
               </button>
             </section>
           )}
-
-        {/* ============================================================
-            MODAL — SUGERIR EXAMEN
-            ============================================================ */}
 
         {mostrarModalSugerencia && (
           <div

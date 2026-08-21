@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
-  return (
+  return createPortal(
     <>
       {isOpen && (
         <div className="offcanvas-backdrop fade show" onClick={onClose} />
@@ -30,7 +31,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
 
         <div className="offcanvas-body topbar__drawer-list">{children}</div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }
 

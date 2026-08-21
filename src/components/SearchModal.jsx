@@ -1,7 +1,11 @@
 import { useState, useMemo, useEffect, useRef } from "react";
+
 import manifest from "../data/manifest.json";
+
 import { useArrowKeyList } from "../hooks/useArrowKeyList";
+
 import { useSearchHistory } from "../hooks/useSearchHistory";
+
 import { buscarConPuntaje } from "../lib/buscador";
 
 const HISTORIAL_POR_PAGINA = 5;
@@ -20,19 +24,94 @@ const TEMAS_ITEMS = manifest.cursos.flatMap((c) =>
   }))
 );
 
+/* ============================================================
+   NORMALIZAR TEXTO
+   ============================================================ */
+
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+/* ============================================================
+   RESALTAR COINCIDENCIA
+   ============================================================ */
+
+function ResaltarCoincidencia({ texto, query }) {
+  if (!query.trim()) {
+    return texto;
+  }
+
+  const textoOriginal = String(texto ?? "");
+  const busqueda = query.trim();
+
+  const textoNormalizado =
+    normalizarTexto(textoOriginal);
+
+  const busquedaNormalizada =
+    normalizarTexto(busqueda);
+
+  if (!busquedaNormalizada) {
+    return textoOriginal;
+  }
+
+  const indice =
+    textoNormalizado.indexOf(busquedaNormalizada);
+
+  if (indice === -1) {
+    return textoOriginal;
+  }
+
+  const antes =
+    textoOriginal.slice(0, indice);
+
+  const coincidencia =
+    textoOriginal.slice(
+      indice,
+      indice + busqueda.length
+    );
+
+  const despues =
+    textoOriginal.slice(
+      indice + busqueda.length
+    );
+
+  return (
+    <>
+      {antes}
+
+      <span className="search-match">
+        {coincidencia}
+      </span>
+
+      {despues}
+    </>
+  );
+}
+
+/* ============================================================
+   BÚSQUEDA
+   ============================================================ */
+
 function buscarFuertes(query) {
   const cursos = buscarConPuntaje(
     CURSOS_ITEMS,
     query,
     (c) => c.nombre,
-    { minScore: 400 }
+    {
+      minScore: 400
+    }
   );
 
   const temas = buscarConPuntaje(
     TEMAS_ITEMS,
     query,
     (t) => t.tema,
-    { minScore: 400 }
+    {
+      minScore: 400
+    }
   );
 
   return {
@@ -41,18 +120,24 @@ function buscarFuertes(query) {
   };
 }
 
+/* ============================================================
+   AGRUPAR RESULTADOS
+   ============================================================ */
+
 function agruparResultados({ cursos, temas }) {
   const nombresCursosFuertes = new Set(
     cursos.map((c) => c.nombre)
   );
 
   const grupos = cursos.map((c) => {
-    const cursoEncontrado = manifest.cursos.find(
-      (x) => x.nombre === c.nombre
-    );
+    const cursoEncontrado =
+      manifest.cursos.find(
+        (x) => x.nombre === c.nombre
+      );
 
     return {
       curso: c.nombre,
+
       temas: cursoEncontrado
         ? cursoEncontrado.temas.map((t) => ({
             type: "tema",
@@ -88,14 +173,23 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
+/* ============================================================
+   SEARCH MODAL
+   ============================================================ */
+
 export default function SearchModal({
   open,
   onClose,
   onSelect
 }) {
   const [query, setQuery] = useState("");
-  const [paginaHistorial, setPaginaHistorial] = useState(1);
-  const [inputFocused, setInputFocused] = useState(false);
+
+  const [paginaHistorial, setPaginaHistorial] =
+    useState(1);
+
+  const [inputFocused, setInputFocused] =
+    useState(false);
+
   const inputRef = useRef(null);
 
   const {
@@ -104,14 +198,20 @@ export default function SearchModal({
     eliminarHistorial
   } = useSearchHistory();
 
-  const hayQuery = query.trim() !== "";
+  const hayQuery =
+    query.trim() !== "";
 
   const mostrarHistorial =
     inputFocused &&
     !hayQuery &&
     historial.length > 0;
 
-  const mostrarResultados = hayQuery;
+  const mostrarResultados =
+    hayQuery;
+
+  /* ==========================================================
+     RESULTADOS
+     ========================================================== */
 
   const fuertes = useMemo(
     () =>
@@ -129,6 +229,10 @@ export default function SearchModal({
     [fuertes]
   );
 
+  /* ==========================================================
+     ITEMS PLANOS
+     ========================================================== */
+
   const itemsPlanos = useMemo(
     () =>
       grupos.flatMap((g) => [
@@ -140,6 +244,10 @@ export default function SearchModal({
       ]),
     [grupos]
   );
+
+  /* ==========================================================
+     HISTORIAL
+     ========================================================== */
 
   const historialVisible = useMemo(() => {
     const inicio =
@@ -153,11 +261,16 @@ export default function SearchModal({
   }, [historial, paginaHistorial]);
 
   const hayMasHistorial =
-    paginaHistorial * HISTORIAL_POR_PAGINA <
+    paginaHistorial *
+      HISTORIAL_POR_PAGINA <
     historial.length;
 
   const hayMenosHistorial =
     paginaHistorial > 1;
+
+  /* ==========================================================
+     EJECUTAR BÚSQUEDA
+     ========================================================== */
 
   function ejecutarBusqueda(item) {
     if (!item) return;
@@ -165,12 +278,19 @@ export default function SearchModal({
     guardarBusqueda(item);
 
     setQuery("");
+
     setPaginaHistorial(1);
+
     setInputFocused(false);
 
     onSelect(item);
+
     onClose();
   }
+
+  /* ==========================================================
+     EJECUTAR BÚSQUEDA ACTUAL
+     ========================================================== */
 
   function ejecutarBusquedaActual() {
     if (!hayQuery) return;
@@ -184,15 +304,29 @@ export default function SearchModal({
     }
   }
 
+  /* ==========================================================
+     ELIMINAR HISTORIAL
+     ========================================================== */
+
   function eliminarTodasLasBusquedas() {
     eliminarHistorial();
+
     setPaginaHistorial(1);
   }
 
+  /* ==========================================================
+     LIMPIAR BÚSQUEDA
+     ========================================================== */
+
   function limpiarBusqueda() {
     setQuery("");
+
     setPaginaHistorial(1);
   }
+
+  /* ==========================================================
+     NAVEGACIÓN CON FLECHAS
+     ========================================================== */
 
   const {
     focusedIdx,
@@ -201,6 +335,10 @@ export default function SearchModal({
     itemsPlanos,
     ejecutarBusqueda
   );
+
+  /* ==========================================================
+     FOCUS
+     ========================================================== */
 
   useEffect(() => {
     if (!open) return;
@@ -211,6 +349,10 @@ export default function SearchModal({
       inputRef.current?.focus();
     }, 0);
   }, [open]);
+
+  /* ==========================================================
+     ESC
+     ========================================================== */
 
   useEffect(() => {
     if (!open) return;
@@ -234,19 +376,30 @@ export default function SearchModal({
     };
   }, [open, onClose]);
 
+  /* ==========================================================
+     RENDER
+     ========================================================== */
+
   return (
     <div
       className={`search-overlay ${
         open ? "" : "is-closed"
       }`}
+
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
+
       aria-hidden={!open}
     >
       <div className="search-box">
+
+        {/* ==================================================
+            INPUT
+            ================================================== */}
+
         <div
           className={`search-input-row${
             hayQuery || mostrarHistorial
@@ -258,20 +411,26 @@ export default function SearchModal({
             autoComplete="off"
             type="search"
             name="buscar-curso-tema"
+
             ref={inputRef}
+
             value={query}
+
             onFocus={() => {
               setInputFocused(true);
             }}
+
             onBlur={() => {
               setTimeout(() => {
                 setInputFocused(false);
               }, 100);
             }}
+
             onChange={(e) => {
               setQuery(e.target.value);
               setPaginaHistorial(1);
             }}
+
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
@@ -287,39 +446,60 @@ export default function SearchModal({
 
               handleKeyDown(e);
             }}
+
             placeholder="Buscar curso o tema..."
+
             className="search-input"
           />
+
+          {/* ==================================================
+              LIMPIAR
+              ================================================== */}
 
           {hayQuery && (
             <button
               type="button"
               className="search-input-clear"
+
               aria-label="Limpiar búsqueda"
+
               onMouseDown={(e) => {
                 e.preventDefault();
               }}
+
               onClick={limpiarBusqueda}
             >
               <i className="fa-solid fa-xmark" />
             </button>
           )}
 
+          {/* ==================================================
+              LUPA
+              ================================================== */}
+
           <button
             type="button"
             className="search-input-lupa"
+
             aria-label="Buscar"
+
             onMouseDown={(e) => {
               e.preventDefault();
             }}
+
             onClick={ejecutarBusquedaActual}
           >
             <i className="fa-solid fa-magnifying-glass" />
           </button>
         </div>
 
+        {/* ==================================================
+            HISTORIAL
+            ================================================== */}
+
         {mostrarHistorial && (
           <div className="search-history">
+
             {historialVisible.map(
               (item, index) => {
                 const texto =
@@ -336,10 +516,13 @@ export default function SearchModal({
                   <button
                     type="button"
                     key={historialKey}
+
                     className="search-history-item"
+
                     onMouseDown={(e) => {
                       e.preventDefault();
                     }}
+
                     onClick={() => {
                       ejecutarBusqueda(item);
                     }}
@@ -355,13 +538,17 @@ export default function SearchModal({
             )}
 
             <div className="search-history-actions">
+
               {hayMenosHistorial && (
                 <button
                   type="button"
+
                   className="search-history-action"
+
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
+
                   onClick={() => {
                     setPaginaHistorial(
                       (actual) =>
@@ -373,6 +560,7 @@ export default function SearchModal({
                   }}
                 >
                   <i className="fa-solid fa-chevron-up" />
+
                   Mostrar -
                 </button>
               )}
@@ -380,10 +568,13 @@ export default function SearchModal({
               {hayMasHistorial && (
                 <button
                   type="button"
+
                   className="search-history-action"
+
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
+
                   onClick={() => {
                     setPaginaHistorial(
                       (actual) =>
@@ -392,30 +583,41 @@ export default function SearchModal({
                   }}
                 >
                   <i className="fa-solid fa-chevron-down" />
+
                   Mostrar +
                 </button>
               )}
 
               <button
                 type="button"
+
                 className="search-history-action search-history-action--delete"
+
                 onMouseDown={(e) => {
                   e.preventDefault();
                 }}
+
                 onClick={
                   eliminarTodasLasBusquedas
                 }
               >
                 <i className="fa-solid fa-trash" />
+
                 Eliminar
               </button>
+
             </div>
           </div>
         )}
 
+        {/* ==================================================
+            RESULTADOS
+            ================================================== */}
+
         {mostrarResultados &&
           grupos.length > 0 && (
             <div className="search-results">
+
               {(() => {
                 let idx = -1;
 
@@ -429,14 +631,19 @@ export default function SearchModal({
                         key={`grupo-${g.curso}-${grupoIndex}`}
                         className="search-group"
                       >
+
+                        {/* CURSO */}
+
                         <button
                           type="button"
+
                           onClick={() =>
                             ejecutarBusqueda({
                               type: "curso",
                               nombre: g.curso
                             })
                           }
+
                           className={`search-result-item is-curso${
                             idxCurso ===
                             focusedIdx
@@ -445,9 +652,16 @@ export default function SearchModal({
                           }`}
                         >
                           <span className="curso-title">
-                            {g.curso}
+
+                            <ResaltarCoincidencia
+                              texto={g.curso}
+                              query={query}
+                            />
+
                           </span>
                         </button>
+
+                        {/* TEMAS */}
 
                         {g.temas.map(
                           (
@@ -460,12 +674,13 @@ export default function SearchModal({
                             return (
                               <button
                                 type="button"
+
                                 key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+
                                 onClick={() =>
-                                  ejecutarBusqueda(
-                                    t
-                                  )
+                                  ejecutarBusqueda(t)
                                 }
+
                                 className={`search-result-item is-tema${
                                   idxTema ===
                                   focusedIdx
@@ -474,27 +689,49 @@ export default function SearchModal({
                                 }`}
                               >
                                 <p className="search-result-item__tema">
-                                  {t.tema}
+
+                                  <ResaltarCoincidencia
+                                    texto={t.tema}
+                                    query={query}
+                                  />
+
                                 </p>
                               </button>
                             );
                           }
                         )}
+
                       </div>
                     );
                   }
                 );
               })()}
+
             </div>
           )}
+
+        {/* ==================================================
+            SIN RESULTADOS
+            MISMA CAJA QUE UNA SUGERENCIA
+            ================================================== */}
 
         {inputFocused &&
           hayQuery &&
           grupos.length === 0 && (
-            <div className="home-search-empty">
-              <p className="search-empty">
-                Sin resultados para "{query}"
-              </p>
+            <div className="search-results">
+
+              <div className="search-group">
+
+                <div className="search-result-item search-no-results">
+
+                  <p className="search-result-item__tema">
+                    Sin resultados para "{query}"
+                  </p>
+
+                </div>
+
+              </div>
+
             </div>
           )}
       </div>

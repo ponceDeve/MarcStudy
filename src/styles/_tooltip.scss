@@ -164,6 +164,18 @@
   color: var(--accent-dark);
 }
 
+/* Símbolos matemáticos/científicos (=, +, ≠, ≈, ↑, ↓, etc.) del
+   glosario: mismo trato (subrayado, tooltip) pero con un color
+   distinto al de las palabras normales, para diferenciar "notación"
+   de "vocabulario" de un vistazo. */
+.glossary-term--simbolo {
+  color: var(--brand);
+}
+
+.glossary-term--simbolo:hover {
+  color: var(--brand-dark);
+}
+
 /* ============================================================
    TOOLTIP DEL GLOSARIO
    ============================================================ */

@@ -11,24 +11,31 @@
   right: 0;
   z-index: 998;
   width: 100%;
+  height: var(--header-h);
   background: transparent;
+  transition: transform 0.3s ease;
+}
+
+body.is-header-oculto .topbar-wrapper {
+  transform: translateY(-100%);
 }
 
 .topbar {
   position: relative;
   width: 100%;
+  height: var(--header-h);
   box-sizing: border-box;
 
   /* ==========================================================
-     VIDRIO TRANSPARENTE
+     VIDRIO CLARO
      ========================================================== */
 
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.75);
 
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid var(--border);
 
   z-index: 100;
 }
@@ -48,6 +55,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  height: 100%;
 
   display: flex;
   align-items: stretch;
@@ -78,7 +86,6 @@
   max-width: 100%;
 
   height: 100%;
-  min-height: 60px;
 
   display: flex;
   flex-direction: column;
@@ -90,7 +97,7 @@
   border: none;
   border-radius: 6px;
 
-  color: #fff;
+  color: var(--ink);
 
   cursor: pointer;
   text-align: left;
@@ -102,7 +109,9 @@
 }
 
 .topbar__title-btn:hover {
-  background: rgba(255, 255, 255, 0.10);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background: rgba(20, 21, 24, 1);
+  color: #fff;
 }
 
 .topbar__title-btn:active {
@@ -132,7 +141,7 @@
   margin-left: 6px;
 
   font-size: 14px;
-  color: #fff;
+  color: var(--ink);
   opacity: 0.8;
 }
 
@@ -142,7 +151,7 @@
   font-size: 14px;
   font-weight: 700;
 
-  color: #fff;
+  color: var(--ink);
 
   white-space: nowrap;
 }
@@ -177,6 +186,12 @@
   }
 }
 
+.topbar__title-btn:hover .topbar__tema,
+.topbar__title-btn:hover .topbar__curso,
+.topbar__title-btn:hover .topbar__tema-wrapper::after {
+  color: #fff;
+}
+
 /* ============================================================
    CURSO
    ============================================================ */
@@ -185,7 +200,7 @@
   max-width: 100%;
 
   font-size: 13.5px;
-  color: #fff;
+  color: var(--ink-soft);
 
   white-space: nowrap;
   overflow: hidden;
@@ -227,7 +242,7 @@
   border: none;
   border-radius: 6px;
 
-  color: #fff;
+  color: var(--ink);
 
   cursor: pointer;
   text-decoration: none;
@@ -240,13 +255,14 @@
 }
 
 .topbar__nav-btn:hover {
-  background: rgba(255, 255, 255, 0.10);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background: rgba(20, 21, 24, 1);
   color: #fff;
 }
 
 .topbar__nav-btn.is-active {
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
+  background: var(--primary-bg);
+  color: var(--primary-dark);
 }
 
 .topbar__nav-btn:active {
@@ -263,7 +279,7 @@
   font-size: 18px;
   line-height: 1;
 
-  color: #fff;
+  color: inherit;
 }
 
 .topbar__btn-text {
@@ -284,7 +300,7 @@
 
   font-family: var(--font-display);
 
-  color: #fff;
+  color: inherit;
 
   text-align: center;
 }
@@ -318,7 +334,7 @@
   border: none;
   border-radius: 50%;
 
-  color: #fff;
+  color: var(--ink);
 
   cursor: pointer;
 
@@ -330,7 +346,8 @@
 
 .topbar__control-btn:hover,
 .topbar__gear:hover {
-  background: rgba(255, 255, 255, 0.12);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background: rgba(20, 21, 24, 1);
   color: #fff;
 }
 
@@ -342,7 +359,7 @@
 .topbar__control-btn i,
 .topbar__gear i {
   font-size: 18px;
-  color: #fff;
+  color: inherit;
 }
 
 /* ============================================================
@@ -351,12 +368,13 @@
 
 .topbar__control-btn--menu {
   background: transparent;
-  color: #fff;
+  color: var(--ink);
   box-shadow: none;
 }
 
 .topbar__control-btn--menu:hover {
-  background: rgba(255, 255, 255, 0.14);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background: rgba(20, 21, 24, 1);
   color: #fff;
 }
 

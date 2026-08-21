@@ -64,29 +64,32 @@
   color: var(--ink-soft);
 }
 
+/* ============================================================
+   BOTÓN CONTINUAR
+   ============================================================ */
+
 .welcome-section__continuar-btn {
-  margin: 0 auto;
+  margin: 24px auto 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  width: 320px;
+  width: 480px;
   max-width: 100%;
+  box-sizing: border-box;
 
   padding: 11px 20px;
-  margin-top: 24px;
-  margin-bottom: 16px;
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--primary);
   border-radius: var(--radius-md);
 
-  background: transparent;
-  color: var(--ink-soft);
+  background: var(--primary-bg);
+  color: var(--primary);
 
   font-family: var(--font-body);
   font-size: .92rem;
-  font-weight: 600;
 
   cursor: pointer;
 
@@ -96,27 +99,60 @@
     color .15s ease;
 }
 
-.welcome-section__continuar-btn:hover {
-  border-color: var(--primary);
-  color: var(--ink);
-  background: var(--surface-hover);
-}
-
-.welcome-section__continuar-icon {
+/* ↳ Indicador fijo */
+.welcome-section__continuar-indicator {
   flex-shrink: 0;
-  transition: transform .2s ease;
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: .7;
 }
 
-.welcome-section__continuar-btn:hover .welcome-section__continuar-icon {
-  transform: translateX(4px);
+/* "Continuar:" */
+.welcome-section__continuar-label {
+  flex-shrink: 0;
+  font-weight: 700;
 }
 
-/* Texto del tema */
-.welcome-section__continuar-btn span {
+/* Nombre del tema */
+.welcome-section__continuar-tema {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  font-weight: 400;
+}
+
+.welcome-section__continuar-arrow {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+/* Animación infinita mientras haya hover */
+.welcome-section__continuar-btn:hover
+.welcome-section__continuar-arrow {
+  animation: continuar-arrow 0.35s linear infinite alternate;
+}
+@keyframes continuar-arrow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(5px);
+  }
+}
+
+/* Hover general */
+.welcome-section__continuar-btn:hover {
+  background: rgba(37, 99, 235, 0.14);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Solo se mueve la flecha → */
+.welcome-section__continuar-btn:hover
+.welcome-section__continuar-arrow {
+  transform: translateX(4px);
 }
 
 .welcome-section__title {
@@ -199,12 +235,11 @@
   border-top-color: var(--accent);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  background: rgba(20, 21, 24, 1);
+  background: rgba(247, 251, 254, .2);
 }
 
 .welcome-section__curso-top {
   padding: 0;
-  flex: 1;
 }
 
 .welcome-section__curso-info {

@@ -7,6 +7,7 @@ import {
 
 import { shuffle } from "../../lib/shuffle";
 import LatexText from "../../components/LatexText";
+import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 
 /* =========================================================
    UTILIDAD: espacios para completar
@@ -69,7 +70,9 @@ function useLecturaVoz(texto) {
     window.speechSynthesis.cancel();
 
     const utter =
-      new SpeechSynthesisUtterance(texto);
+      new SpeechSynthesisUtterance(
+        reemplazarSimbolosParaVoz(texto)
+      );
 
     utter.lang = "es-PE";
 

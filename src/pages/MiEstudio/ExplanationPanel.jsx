@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import LatexText from "../../components/LatexText";
+import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 
 function respuestaCorrectaTexto(pregunta) {
   if (pregunta.tipo === "verdadero_falso") {
@@ -45,7 +46,9 @@ export default function ExplanationPanel({
     }
 
     const utter =
-      new SpeechSynthesisUtterance(base);
+      new SpeechSynthesisUtterance(
+        reemplazarSimbolosParaVoz(base)
+      );
 
     utter.lang = "es-PE";
 

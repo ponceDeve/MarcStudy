@@ -21,7 +21,7 @@
   color: var(--ink);
   display: flex;
   flex-direction: column;
-  padding: 100px 20px;
+  padding: calc(var(--header-h) + 36px) 20px;
 }
 
 .horario__back {
@@ -1265,7 +1265,7 @@
 
 @media (max-width: 480px) {
   .horario {
-    padding: 100px 10px;
+    padding: calc(var(--header-h) + 36px) 10px;
   }
 
   .horario__main {

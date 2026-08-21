@@ -101,8 +101,9 @@
   color: var(--ink-soft);
 }
 .btn-outline:hover {
-  background: var(--surface-hover);
-  color: var(--ink);
+  /* fondo transparente, sin significado semántico -> fill neutro */
+  background: rgba(20, 21, 24, 1);
+  color: var(--ink-on-primary);
 }
 .btn-solid {
   border: none;

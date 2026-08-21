@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
-  return (
+  return createPortal(
     <>
       {isOpen && (
         <div className="offcanvas-backdrop fade show" onClick={onClose} />
@@ -25,7 +26,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           {children}
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }
 
@@ -38,6 +40,46 @@ export default function TopBar({
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
+
+  // Auto-ocultar header al bajar / mostrar al subir.
+  // No se oculta cerca del tope, ni con menús abiertos (evita que
+  // desaparezca mientras el usuario está usando el drawer/config).
+  useEffect(() => {
+    const UMBRAL_SCROLL = 8;
+    const ZONA_SEGURA_TOPE = 80;
+    let ultimoY = window.scrollY;
+    let ticking = false;
+
+    function actualizar() {
+      const y = window.scrollY;
+      const delta = y - ultimoY;
+
+      if (menuMobileOpen || configOpen) {
+        document.body.classList.remove("is-header-oculto");
+      } else if (y < ZONA_SEGURA_TOPE) {
+        document.body.classList.remove("is-header-oculto");
+      } else if (delta > UMBRAL_SCROLL) {
+        document.body.classList.add("is-header-oculto");
+      } else if (delta < -UMBRAL_SCROLL) {
+        document.body.classList.remove("is-header-oculto");
+      }
+
+      ultimoY = y;
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(actualizar);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      document.body.classList.remove("is-header-oculto");
+    };
+  }, [menuMobileOpen, configOpen]);
 
   // Detección de desbordamiento
   const wrapperRef = useRef(null);
@@ -133,51 +175,53 @@ export default function TopBar({
   };
 
   return (
-    <div className="topbar">
-      <div className="topbar__inner">
-        {/* CAJA 1: TEMA + CURSO */}
-        <div className="topbar__title-box">
-          <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
-            <div className="topbar__tema-wrapper" ref={wrapperRef}>
-              <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
-                {tema}
-              </span>
-            </div>
-            <span className="topbar__curso topbar__curso--clickable">{curso}</span>
-          </button>
-        </div>
-
-        {/* CAJA 2 + 3: NAVEGACIÓN Y CONTROLES */}
-        <div className="topbar__controls">
-          {botonesVisibles.length > 0 && (
-            <div className="topbar__nav">
-              {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
-            </div>
-          )}
-
-          <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
-            <i className="fa-solid fa-gear" />
-          </button>
-
-          {botonesVisibles.length > 0 && (
-            <button type="button" onClick={() => setMenuMobileOpen(true)} title="Menú" className="topbar__control-btn topbar__control-btn--menu topbar__hamburger">
-              <i className="fa-solid fa-bars" />
+    <div className="topbar-wrapper">
+      <div className="topbar">
+        <div className="topbar__inner">
+          {/* CAJA 1: TEMA + CURSO */}
+          <div className="topbar__title-box">
+            <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
+              <div className="topbar__tema-wrapper" ref={wrapperRef}>
+                <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
+                  {tema}
+                </span>
+              </div>
+              <span className="topbar__curso topbar__curso--clickable">{curso}</span>
             </button>
-          )}
+          </div>
+
+          {/* CAJA 2 + 3: NAVEGACIÓN Y CONTROLES */}
+          <div className="topbar__controls">
+            {botonesVisibles.length > 0 && (
+              <div className="topbar__nav">
+                {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
+              </div>
+            )}
+
+            <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
+              <i className="fa-solid fa-gear" />
+            </button>
+
+            {botonesVisibles.length > 0 && (
+              <button type="button" onClick={() => setMenuMobileOpen(true)} title="Menú" className="topbar__control-btn topbar__control-btn--menu topbar__hamburger">
+                <i className="fa-solid fa-bars" />
+              </button>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* PANEL DEL MENÚ MÓVIL */}
-      {botonesVisibles.length > 0 && (
-        <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
-          {botonesVisibles.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+        {/* PANEL DEL MENÚ MÓVIL */}
+        {botonesVisibles.length > 0 && (
+          <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
+            {botonesVisibles.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+          </SideDrawer>
+        )}
+
+        {/* PANEL DE CONFIGURACIÓN */}
+        <SideDrawer title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
+          {configButtons.map((b) => renderFila(b, () => setConfigOpen(false)))}
         </SideDrawer>
-      )}
-
-      {/* PANEL DE CONFIGURACIÓN */}
-      <SideDrawer title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
-        {configButtons.map((b) => renderFila(b, () => setConfigOpen(false)))}
-      </SideDrawer>
+      </div>
     </div>
   );
 }

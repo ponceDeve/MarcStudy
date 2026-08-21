@@ -1,41 +1,48 @@
 :root {
   /* ============================================================
-     FONDOS Y SUPERFICIES — MODO OSCURO
+     FONDOS Y SUPERFICIES — MODO CLARO / EDUCATIVO
+
+     Regla: el fondo padre (--bg) es un gris azulado, un poco más
+     oscuro que las cajas. Las cajas principales son --surface
+     (blanco puro). Nada de color decorativo en fondos: solo
+     neutros, para que el color con significado resalte.
      ============================================================ */
 
-  --bg: #0f0f11;
+  --bg: #eef1f6;
 
-  --ink-on-primary: #000000;
+  --ink-on-primary: #ffffff;
 
-  --surface: #171717;
-  --surface-alt: #1a1a1a;
-  --surface-hover: #262626;
-  --surface-ts: #171717;
+  --surface: #ffffff;
+  --surface-alt: #f5f7fa;
+  --surface-hover: #e9edf3;
+  --surface-ts: #ffffff;
 
-  --border: #2a2a2a;
-  --border-strong: #404040;
+  --border: #e1e6ec;
+  --border-strong: #c9d1da;
 
   /* ============================================================
      TEXTOS
      ============================================================ */
 
-  --ink: #ffffff;
-  --ink-soft: #d4d4d8;
-  --ink-faint: #a1a1aa;
+  --ink: #1c2430;
+  --ink-soft: #4a5568;
+  --ink-faint: #8993a4;
 
   /* ============================================================
      PRIMARY
-     Amarillo JS
+     Azul: único color "decorativo" de marca. Se usa para CTA
+     principal, progreso, elementos activos. NO es alerta ni éxito.
      ============================================================ */
 
-  --primary: #f7df1e;
-  --primary-dark: #c7b316;
-  --primary-light: #fcef74;
-  --primary-bg: rgba(247, 223, 30, 0.15);
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #93b4fb;
+  --primary-bg: rgba(37, 99, 235, 0.08);
 
   /* ============================================================
      BRAND
-     Color principal de navegación y elementos de interfaz
+     Violeta: acento secundario de navegación (ej. badges, nav
+     activo). Distinto del primary para no competir con el CTA.
 
      NO representa:
      - alertas
@@ -44,54 +51,68 @@
      - éxito
      ============================================================ */
 
-  --brand: #6366f1;
-  --brand-dark: #4f46e5;
-  --brand-light: #818cf8;
-  --brand-bg: rgba(99, 102, 241, 0.15);
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-light: #c4b5fd;
+  --brand-bg: rgba(124, 58, 237, 0.08);
 
   /* ============================================================
      SECONDARY
-     Gris azulado tenue
+     Gris neutro puro. Para acciones "sin significado" (omitir,
+     cancelar, botones terciarios): debe leerse como "nada pasa".
      ============================================================ */
 
-  --secondary: #71717a;
-  --secondary-dark: #52525b;
-  --secondary-hover: #a1a1aa;
-  --secondary-bg: rgba(113, 113, 122, 0.15);
+  --secondary: #94a3b8;
+  --secondary-dark: #64748b;
+  --secondary-hover: #cbd5e1;
+  --secondary-bg: rgba(100, 116, 139, 0.08);
 
   /* ============================================================
      ACCENT
-     Rojo para estados destacados / alertas
+     Rosa/coral: aviso suave, algo a lo que prestar atención pero
+     que no es un error (ej. "sin preguntas", recordatorios).
      ============================================================ */
 
-  --accent: #f87171;
-  --accent-dark: #dc2626;
-  --accent-bg: rgba(248, 113, 113, 0.15);
+  --accent: #fb7185;
+  --accent-dark: #e11d48;
+  --accent-bg: rgba(251, 113, 133, 0.1);
 
   /* ============================================================
      DANGER
-     Rojo intenso para errores y acciones peligrosas
+     Rojo. Reservado EXCLUSIVAMENTE para errores, respuestas
+     incorrectas y acciones destructivas.
      ============================================================ */
 
-  --danger: #ef4444;
-  --danger-dark: #b91c1c;
-  --danger-bg: rgba(239, 68, 68, 0.15);
+  --danger: #dc2626;
+  --danger-dark: #991b1b;
+  --danger-bg: rgba(220, 38, 38, 0.08);
 
   /* ============================================================
      SUCCESS
-     Verde para respuestas correctas / completado
+     Verde. Reservado EXCLUSIVAMENTE para respuestas correctas,
+     completado, progreso positivo.
      ============================================================ */
 
-  --success: #22c55e;
-  --success-bg: rgba(34, 197, 94, 0.1);
+  --success: #16a34a;
+  --success-bg: rgba(22, 163, 74, 0.08);
 
   /* ============================================================
      WARNING
-     Advertencias
+     Ámbar. Reservado para advertencias reales (ej. vidas bajas,
+     tiempo por agotarse).
      ============================================================ */
 
-  --warning: #eab308;
-  --warning-bg: rgba(234, 179, 8, 0.15);
+  --warning: #d97706;
+  --warning-bg: rgba(217, 119, 6, 0.1);
+
+  /* ============================================================
+     HEADER
+     Alto fijo del topbar/header. Todo padding-top que necesite
+     "despejar" el header fijo debe usar este valor (nunca un
+     número mágico suelto), para que nunca queden descalzados.
+     ============================================================ */
+
+  --header-h: 64px;
 
   /* ============================================================
      BORDERS / OVERLAYS
@@ -99,18 +120,20 @@
 
   --nested-border: 1px solid var(--border-strong);
 
-  --overlay: rgba(0, 0, 0, 0.6);
-  --overlay-strong: rgba(0, 0, 0, 0.9);
+  --overlay: rgba(15, 23, 42, 0.5);
+  --overlay-strong: rgba(15, 23, 42, 0.75);
 
   /* ============================================================
      SHADOWS
+     Sombras suaves de tono navy (no negro puro) para que se
+     sientan livianas sobre fondo claro.
      ============================================================ */
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
 
-  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
 
-  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.12);
 
   /* ============================================================
      BORDER RADIUS
