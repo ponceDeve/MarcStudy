@@ -117,16 +117,17 @@ function separarDelimitadores(texto) {
 function separarLatexInterno(texto) {
   const partes = [];
 
-  /*
+  /**
    * Comandos LaTeX frecuentes en tus JSON.
    */
   const comandos =
-    "\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|cdot|times|pm|leq|geq|neq|approx|rightarrow|left|right|begin|end)";
+    "\\\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|cdot|times|pm|leq|geq|neq|approx|rightarrow|left|right|begin|end)";
 
-  /*
+  /**
    * Una expresión que contiene subíndice o superíndice.
    *
    * Ejemplos:
+   *
    * x^2
    * x^{2}
    * P_1
@@ -134,9 +135,9 @@ function separarLatexInterno(texto) {
    * H_2O
    */
   const potenciaSubindice =
-    "[A-Za-z0-9]+(?:\\^\\{[^{}]*\\}|\\^[A-Za-z0-9]+|_\\{[^{}]*\\}|_[A-Za-z0-9]+)+";
+    "[A-Za-z0-9]+(?:\\\\^\\\\{[^{}]*\\\\}|\\\\^[A-Za-z0-9]+|_\\\\{[^{}]*\\\\}|_[A-Za-z0-9]+)+";
 
-  /*
+  /**
    * Comandos con sus argumentos.
    */
   const comandoConArgumentos =
@@ -153,7 +154,7 @@ function separarLatexInterno(texto) {
   while ((match = regex.exec(texto)) !== null) {
     const formula = match[0];
 
-    /*
+    /**
      * Evitamos convertir palabras normales.
      */
     if (
@@ -218,7 +219,6 @@ function renderLatex(texto) {
   }
 
   const partes = separarDelimitadores(texto);
-
   const resultado = [];
 
   partes.forEach((parte, indice) => {

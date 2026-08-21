@@ -1,5 +1,9 @@
 @use "./tokens" as *;
 
+/* ============================================================
+   TOPBAR
+   ============================================================ */
+
 .topbar-wrapper {
   position: fixed;
   top: 0;
@@ -14,9 +18,24 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  background: var(--primary);
-  border-bottom: 1px solid var(--primary-dark);
+
+  /* ==========================================================
+     VIDRIO TRANSPARENTE
+     ========================================================== */
+
+  background: rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  z-index: 100;
 }
+
+/* ============================================================
+   CONTENEDOR
+   ============================================================ */
 
 .topbar.container {
   padding: 0;
@@ -29,19 +48,27 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+
   padding: 0 16px;
   box-sizing: border-box;
 }
+
+/* ============================================================
+   TÍTULO / NOMBRE
+   ============================================================ */
 
 .topbar__title-box {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
+
   min-width: 0;
   flex: 1;
+
   margin-right: 16px;
   overflow: hidden;
 }
@@ -49,34 +76,50 @@
 .topbar__title-btn {
   width: fit-content;
   max-width: 100%;
+
   height: 100%;
   min-height: 60px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   padding: 6px 10px;
+
   background: transparent;
   border: none;
   border-radius: 6px;
+
+  color: #fff;
+
   cursor: pointer;
   text-align: left;
   overflow: hidden;
-  transition: background 0.5s ease, color 0.5s ease;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
 }
 
 .topbar__title-btn:hover {
-  background: color-mix(in srgb, var(--primary-dark), transparent 30%);
+  background: rgba(255, 255, 255, 0.10);
 }
 
 .topbar__title-btn:active {
   transform: scale(0.96);
 }
 
+/* ============================================================
+   TEMA
+   ============================================================ */
+
 .topbar__tema-wrapper {
   width: 100%;
   max-width: 100%;
+
   display: inline-flex;
   align-items: center;
+
   overflow: hidden;
   white-space: nowrap;
   vertical-align: middle;
@@ -84,18 +127,23 @@
 
 .topbar__tema-wrapper::after {
   content: "▼";
+
   flex-shrink: 0;
   margin-left: 6px;
+
   font-size: 14px;
-  color: var(--primary-bg);
+  color: #fff;
   opacity: 0.8;
 }
 
 .topbar__tema {
   display: inline-block;
+
   font-size: 14px;
   font-weight: 700;
-  color: var(--ink-on-primary);
+
+  color: #fff;
+
   white-space: nowrap;
 }
 
@@ -129,10 +177,16 @@
   }
 }
 
+/* ============================================================
+   CURSO
+   ============================================================ */
+
 .topbar__curso {
   max-width: 100%;
+
   font-size: 13.5px;
-  color: var(--ink-on-primary);
+  color: #fff;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -142,11 +196,16 @@
   cursor: pointer;
 }
 
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+
 .topbar__nav {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-end;
+
   gap: 8px;
   flex-shrink: 0;
 }
@@ -156,36 +215,55 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 4px;
+
   min-width: 0;
+
   padding: 4px 8px;
   margin: 0;
+
   background: transparent;
   border: none;
   border-radius: 6px;
-  color: var(--ink-on-primary);
+
+  color: #fff;
+
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    transform 0.4s ease;
 }
 
 .topbar__nav-btn:hover {
-  background: color-mix(in srgb, var(--primary-dark), transparent 30%);
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
 }
 
 .topbar__nav-btn.is-active {
-  background: color-mix(in srgb, var(--primary-dark), transparent 30%);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
 }
 
 .topbar__nav-btn:active {
   transform: scale(0.96);
 }
 
+/* ============================================================
+   ICONOS DE NAVEGACIÓN
+   ============================================================ */
+
 .topbar__btn-icon {
   display: block;
+
   font-size: 18px;
   line-height: 1;
+
+  color: #fff;
 }
 
 .topbar__btn-text {
@@ -193,24 +271,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
 }
 
 .topbar__btn-title {
   display: block;
+
   font-size: 12px;
   font-weight: 700;
   line-height: 1.1;
+
   font-family: var(--font-display);
-  color: inherit;
+
+  color: #fff;
+
   text-align: center;
 }
+
+/* ============================================================
+   CONTROLES
+   ============================================================ */
 
 .topbar__controls {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-end;
+
   gap: 8px;
   flex-shrink: 0;
 }
@@ -219,21 +307,31 @@
 .topbar__gear {
   width: 44px;
   height: 44px;
+
   align-self: center;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   background: transparent;
   border: none;
   border-radius: 50%;
-  color: var(--ink-on-primary);
+
+  color: #fff;
+
   cursor: pointer;
-  transition: all .2s linear;
+
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    transform 0.2s linear;
 }
 
 .topbar__control-btn:hover,
 .topbar__gear:hover {
-  background: var(--primary-dark);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 
 .topbar__control-btn:active,
@@ -244,22 +342,35 @@
 .topbar__control-btn i,
 .topbar__gear i {
   font-size: 18px;
+  color: #fff;
 }
 
+/* ============================================================
+   BOTÓN MENÚ
+   ============================================================ */
+
 .topbar__control-btn--menu {
-  background: var(--primary-dark);
-  color: var(--ink-on-primary);
-  box-shadow: var(--shadow-sm);
+  background: transparent;
+  color: #fff;
+  box-shadow: none;
 }
 
 .topbar__control-btn--menu:hover {
-  background: color-mix(in srgb, var(--primary-dark), black 10%);
-  color: var(--ink-on-primary);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
 }
+
+/* ============================================================
+   HAMBURGER
+   ============================================================ */
 
 .topbar__hamburger {
   display: none;
 }
+
+/* ============================================================
+   TABLET
+   ============================================================ */
 
 @include respond(md) {
   .topbar__nav {
@@ -272,11 +383,16 @@
   }
 }
 
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+
 @include respond(lg) {
   .topbar__nav {
     display: flex !important;
     flex-direction: row;
     align-items: stretch;
+
     gap: 16px;
   }
 
@@ -307,6 +423,10 @@
     font-size: 21px;
   }
 }
+
+/* ============================================================
+   XL
+   ============================================================ */
 
 @include respond(xl) {
   .topbar {
@@ -353,6 +473,10 @@
   }
 }
 
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
 @media (max-width: 767px) {
   .topbar__nav {
     display: none !important;
@@ -362,53 +486,79 @@
     display: flex !important;
   }
 }
+
+/* ============================================================
+   DRAWER / OFFCANVAS
+   ============================================================ */
+
 .topbar__drawer.offcanvas {
   --bs-offcanvas-width: min(320px, 85vw);
   --bs-offcanvas-bg: var(--ink-on-primary);
   --bs-offcanvas-border-color: var(--border);
   --bs-offcanvas-box-shadow: var(--shadow-lg);
+
   --bs-offcanvas-zindex: 1050;
+
   --bs-offcanvas-padding-x: 0;
   --bs-offcanvas-padding-y: 0;
 
-  transition: transform .25s linear !important;
+  transition: transform 0.25s linear !important;
 }
+
+/* ============================================================
+   BACKDROP
+   ============================================================ */
 
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
   --bs-backdrop-bg: var(--overlay-strong);
   --bs-backdrop-opacity: 1;
+
   backdrop-filter: blur(4px);
 }
+
+/* ============================================================
+   DRAWER HEADER
+   ============================================================ */
 
 .topbar__drawer-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding: 20px;
+
   background: var(--primary);
   border-bottom: 1px solid var(--primary-dark);
+
   flex: none;
 }
 
 .topbar__drawer-title {
   color: var(--ink-on-primary);
+
   font-size: 22px;
   margin: 0;
+
   font-family: var(--font-display);
 }
 
 .topbar__drawer-close {
   background: transparent;
   border: none;
+
   color: var(--ink-on-primary);
+
   font-size: 20px;
+
   cursor: pointer;
-  border-radius: var(--radius-sm);
-  transition: all .2s linear;
-  width: 35px;
+
   border-radius: var(--radius-full);
-  aspect-ratio: 1/1;
+
+  transition: all 0.2s linear;
+
+  width: 35px;
+  aspect-ratio: 1 / 1;
 }
 
 .topbar__drawer-close:hover {
@@ -420,9 +570,14 @@
   transform: scale(0.9);
 }
 
+/* ============================================================
+   DRAWER LIST
+   ============================================================ */
+
 .topbar__drawer-list {
   display: flex;
   flex-direction: column;
+
   overflow-y: auto;
 }
 
@@ -430,18 +585,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   width: 100%;
+
   padding: 16px 14px;
+
   background: none;
   border: none;
   border-bottom: 1px solid var(--border);
+
   color: var(--ink);
+
   font-size: 16px;
   font-weight: 600;
+
   text-decoration: none;
+
   cursor: pointer;
   text-align: left;
-  transition: background 0.5s ease, color 0.5s ease, transform 0.4s ease;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease,
+    transform 0.4s ease;
 }
 
 .topbar__drawer-item:last-child {
@@ -465,15 +631,28 @@
   transform: scale(0.98);
 }
 
+/* ============================================================
+   DRAWER LABEL
+   ============================================================ */
+
 .topbar__drawer-item-label {
   color: inherit;
 }
 
+/* ============================================================
+   DRAWER ICON
+   ============================================================ */
+
 .topbar__drawer-item-icon {
   color: var(--ink-soft);
+
   font-size: 18px;
+
   flex: none;
-  transition: color 0.5s ease, transform 0.5s ease;
+
+  transition:
+    color 0.5s ease,
+    transform 0.5s ease;
 }
 
 .topbar__drawer-item:hover .topbar__drawer-item-icon,
@@ -481,6 +660,10 @@
   color: var(--primary);
   transform: translateX(-3px);
 }
+
+/* ============================================================
+   DRAWER DESKTOP
+   ============================================================ */
 
 @media (min-width: 1024px) {
   .topbar__drawer.offcanvas {

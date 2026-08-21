@@ -8,9 +8,13 @@
   gap: 5px;
   padding: 18px 16px;
   box-sizing: border-box;
-  background: var(--ink-soft);
+  background: var(--surface-alt);
   border-top: 1px solid var(--border);
   text-align: center;
+}
+
+.app-footer * {
+  color: var(--ink-faint);
 }
 
 .app-footer p {
@@ -23,6 +27,7 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
+  color: var(ink);
 }
 
 .app-footer__copyright {
@@ -31,7 +36,7 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 1.4;
-  color: var(--ink-on-primary);
+  color: var(--ink);
 }
 
 @media (min-width: 640px) {

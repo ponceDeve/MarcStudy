@@ -2,23 +2,23 @@ import { useState, useMemo } from "react";
 import manifest from "../data/manifest.json";
 
 const DESCRIPCIONES_CURSO = {
-  CIV: "Entiende cómo funciona el país en el que vives: leyes, derechos y tu rol de ciudadano hoy.",
-  FIL: "Las preguntas que la humanidad lleva siglos haciéndose, contadas por quienes las plantean.",
-  HIS: "Un recorrido desde los primeros pueblos hasta el mundo actual, para entender cómo llegamos.",
-  LEN: "Domina las reglas del idioma que usas todos los días, pero que nunca te enseñaron bien hoy.",
-  LIT: "Historias, autores y estilos que marcaron la forma de contar y de leer el mundo hasta hoy.",
-  RVE: "Entrena tu lectura crítica: comprender rápido, deducir mejor y no caer en trampas de examen.",
-  BIO: "De la célula al cuerpo humano completo: cómo funciona la vida por dentro, paso a paso hoy.",
-  ECO: "Por qué suben los precios, cómo se mueve el mercado y qué hay detrás de cada decisión hoy.",
-  FIS: "El movimiento, la energía y las leyes invisibles que rigen todo lo que pasa a tu alrededor.",
-  GEO: "El relieve, el clima y la geografía que moldean al Perú, sus regiones y todo el mundo hoy.",
-  PSI: "Cómo pensamos, sentimos y actuamos, explicado con lógica, evidencia y ejemplos cotidianos.",
-  QUI: "Átomos, reacciones y compuestos: la química que está detrás de todo lo que tocas y respiras.",
-  ALG: "Fundamentos y ejercicios de álgebra para resolver problemas paso a paso, sin complicaciones.",
-  ARI: "Razones, proporciones y esos problemas clásicos que casi siempre caen en el examen de hoy.",
-  GEM: "Ángulos, figuras y áreas: la geometría que explica las formas que ves todos los días, hoy.",
-  RMA: "Problemas de lógica y tiempo que ponen a prueba cómo piensas, no solo cuánto memorizas hoy.",
-  TRI: "Ángulos, razones trigonométricas y los triángulos que no te dejan tranquilo hasta dominar."
+  CIV: "Tus derechos, tus deberes y cómo funciona el país donde vives: todo lo que deberías saber para moverte como ciudadano, no solo para el examen.",
+  FIL: "Las grandes preguntas que la humanidad se hace hace siglos, explicadas para que por fin tengan sentido y puedas discutirlas con tus propias ideas.",
+  HIS: "Desde los primeros pueblos hasta hoy: un hilo conductor que te ayuda a entender por qué el mundo terminó siendo como es.",
+  LEN: "Las reglas del idioma que usas todos los días pero que en el colegio nunca terminaron de quedarte claras. Aquí sí se entienden.",
+  LIT: "Autores, obras y estilos que cambiaron la forma de contar historias, contados de una manera que dan ganas de leerlos.",
+  RVE: "Practica leer más rápido, entender mejor y detectar las trampas típicas del examen antes de que te agarren desprevenido.",
+  BIO: "De la célula al cuerpo humano completo: cómo funciona la vida por dentro, explicado paso a paso y sin tecnicismos innecesarios.",
+  ECO: "Por qué suben los precios, cómo se mueve el mercado y qué decisiones hay detrás de todo eso que ves en las noticias.",
+  FIS: "El movimiento, la energía y las leyes invisibles que explican todo lo que pasa a tu alrededor, incluso lo que no notas.",
+  GEO: "El relieve, el clima y la geografía que moldean al Perú y al mundo, para que dejes de memorizar mapas y empieces a entenderlos.",
+  PSI: "Cómo pensamos, sentimos y actuamos las personas, con lógica, evidencia y ejemplos que reconocerás en tu día a día.",
+  QUI: "Átomos, reacciones y compuestos: la química que está detrás de todo lo que tocas, comes y respiras sin que te des cuenta.",
+  ALG: "Fundamentos y ejercicios de álgebra resueltos paso a paso, para que dejes de temerle a las ecuaciones.",
+  ARI: "Razones, proporciones y esos problemas clásicos que siempre caen en el examen, explicados de una forma que por fin se entiende.",
+  GEM: "Ángulos, figuras y áreas: la geometría detrás de las formas que ves todos los días, aunque nunca lo hayas notado.",
+  RMA: "Problemas de lógica y tiempo que ponen a prueba cómo piensas, no cuánto memorizas. Aquí aprendes a resolverlos con calma.",
+  TRI: "Ángulos, razones trigonométricas y esos triángulos que parecen no tener sentido hasta que por fin haces clic."
 };
 
 const FAQS = [
@@ -124,8 +124,8 @@ const FAQS = [
   }
 ];
 
-export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompletadosLista = [] }) {
-  const [cursoAbierto, setCursoAbierto] = useState(null);
+export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [] }) {
+  // Solo conservamos el estado del FAQ, ya no necesitamos el del curso.
   const [faqAbierto, setFaqAbierto] = useState(null);
 
   const cursosConTemas = useMemo(
@@ -146,17 +146,33 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
     [cursosConTemas]
   );
 
+  function estadoTema(curso, tema) {
+    const id = `${curso.nombre}_${tema.tema}`;
+
+    if (temasCompletadosLista.includes(id)) {
+      return "completado";
+    }
+
+    try {
+      const abierto = localStorage.getItem(
+        `ultimaCard_${curso.nombre}_${tema.tema}`
+      );
+
+      if (abierto !== null) {
+        return "en_curso";
+      }
+    } catch {
+      // localStorage no disponible: se asume pendiente
+    }
+
+    return "pendiente";
+  }
+
   function logrosDelCurso(curso) {
     return temasCompletadosLista.filter(
       (id) =>
         id.startsWith(`${curso.nombre}_`)
     ).length;
-  }
-
-  function alternarCurso(i) {
-    setCursoAbierto((actual) =>
-      actual === i ? null : i
-    );
   }
 
   function manejarClickTema(curso, tema) {
@@ -178,26 +194,6 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
     <div className="welcome-section">
       <section className="welcome-section__courses">
         <div className="welcome-section__intro container">
-          {ultimoTema && (
-            <button
-              type="button"
-              className="welcome-section__continuar-btn"
-              onClick={() =>
-                onSelectTema?.({
-                  type: "tema",
-                  curso: ultimoTema.curso,
-                  tema: ultimoTema.tema,
-                  archivo: ultimoTema.archivo
-                })
-              }
-            >
-              <i className="fa-solid fa-play" />
-              <span>
-                Continuar: {ultimoTema.tema}
-              </span>
-            </button>
-          )}
-
           <h2 className="welcome-section__title">
             Qué encontrarás en Mi Estudio
           </h2>
@@ -215,42 +211,40 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
           </div>
 
           <p className="welcome-section__lead">
-            Teoría, preguntas de práctica, repasos y
-            herramientas para organizar tu estudio.
-            Actualmente hay{" "}
+            Aquí tienes todo lo que necesitas para prepararte
+            de verdad: teoría explicada con calma, preguntas
+            para practicar, repasos que te avisan cuándo volver
+            a un tema y herramientas para organizar tu tiempo.
+            Ahora mismo hay{" "}
             <strong>
               {cursosConTemas.length} cursos
             </strong>{" "}
             y{" "}
-            <strong>{totalTemas} temas</strong>.
+            <strong>{totalTemas} temas</strong>{" "}
+            esperando a que empieces.
           </p>
 
           <div className="welcome-section__grid">
             {cursosConTemas.map((curso, i) => {
-              const abierto =
-                cursoAbierto === i;
-
               return (
                 <article
                   key={curso.codigo}
-                  className={`welcome-section__curso welcome-section__curso--${i % 4
-                    }${abierto ? " is-open" : ""}`}
+                  className={`welcome-section__curso welcome-section__curso--${i % 4}`}
                 >
                   <div className="welcome-section__curso-top">
                     <div className="welcome-section__curso-info">
+                      {/* El nombre del curso arriba */}
                       <span className="welcome-section__curso-nombre">
                         {curso.nombre}
                       </span>
 
+                      {/* La caja con el contador de temas y los logros al lado */}
                       <div className="box-nombre-logros">
                         <span className="welcome-section__curso-count">
-                          {curso.temas.length} tema
-                          {curso.temas.length !==
-                            1
-                            ? "s"
-                            : ""}
+                          {curso.temas.length} tema{curso.temas.length !== 1 ? "s" : ""}
                         </span>
 
+                        {/* ¡Aquí están de vuelta los logros! */}
                         <span className="welcome-section__curso-logros">
                           <i className="fa-solid fa-trophy" />
                           {logrosDelCurso(curso)}/{curso.temas.length}
@@ -259,69 +253,54 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
                     </div>
 
                     <p className="welcome-section__curso-desc">
-                      {DESCRIPCIONES_CURSO[
-                        curso.codigo
-                      ] ||
-                        "Temario disponible para estudiar."}
+                      {DESCRIPCIONES_CURSO[curso.codigo] || "Temario disponible para estudiar."}
                     </p>
                   </div>
 
-                  <button
-                    type="button"
-                    className={`welcome-section__ver-btn${abierto
-                        ? " is-open"
-                        : ""
-                      }`}
-                    aria-expanded={
-                      abierto
-                    }
-                    onClick={() =>
-                      alternarCurso(i)
-                    }
-                  >
-                    <span>
-                      {abierto
-                        ? "Ocultar temas"
-                        : "Ver temas"}
-                    </span>
+                  {/* LISTA DE TEMAS: Siempre visible, sin condiciones */}
+                  <ul className="welcome-section__temas">
+                    {curso.temas.map((tema) => {
+                      const estado = estadoTema(curso, tema);
 
-                    <i
-                      className={`fa-solid fa-chevron-down welcome-section__ver-btn-icon${abierto
-                          ? " is-open"
-                          : ""
-                        }`}
-                    />
-                  </button>
+                      return (
+                        <li
+                          key={tema.archivo}
+                          className="welcome-section__tema-item"
+                        >
+                          <div className="welcome-section__tema-content">
+                            <button
+                              type="button"
+                              className="welcome-section__tema-btn"
+                              onClick={() => manejarClickTema(curso, tema)}
+                            >
+                              {/* 1. Ícono de estado a la izquierda */}
+                              <span className={`welcome-section__tema-estado welcome-section__tema-estado--${estado}`}>
+                                <i
+                                  className={
+                                    estado === "completado"
+                                      ? "fa-solid fa-circle-check" // Check verdecito
+                                      : estado === "en_curso"
+                                        ? "fa-regular fa-circle-check" // Check amarillo
+                                        : "fa-regular fa-circle" // Circulo vacío pendiente
+                                  }
+                                  title={
+                                    estado === "completado"
+                                      ? "Completado"
+                                      : estado === "en_curso"
+                                        ? "En curso"
+                                        : "No iniciado"
+                                  }
+                                />
+                              </span>
 
-                  {abierto && (
-                    <ul className="welcome-section__temas">
-                      {curso.temas.map(
-                        (tema) => (
-                          <li
-                            key={
-                              tema.archivo
-                            }
-                            className="welcome-section__tema-item"
-                          >
-                            <div className="welcome-section__tema-content">
-                              <button
-                                type="button"
-                                className="welcome-section__tema-btn"
-                                onClick={() =>
-                                  manejarClickTema(
-                                    curso,
-                                    tema
-                                  )
-                                }
-                              >
-                                {tema.tema}
-                              </button>
-                            </div>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  )}
+                              {/* 2. Texto del tema a la derecha */}
+                              <span>{tema.tema}</span>
+                            </button>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </article>
               );
             })}
@@ -337,16 +316,12 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
 
           <div className="welcome-section__faq-list">
             {FAQS.map((item, i) => {
-              const abierto =
-                faqAbierto === i;
+              const abierto = faqAbierto === i;
 
               return (
                 <details
                   key={i}
-                  className={`welcome-section__faq-item${abierto
-                      ? " is-open"
-                      : ""
-                    }`}
+                  className={`welcome-section__faq-item${abierto ? " is-open" : ""}`}
                   open={abierto}
                 >
                   <summary
@@ -356,12 +331,8 @@ export default function WelcomeSection({ onSelectTema, ultimoTema, temasCompleta
                     }}
                   >
                     <span className="welcome-section__faq-summary-text">
-                      <i
-                        className={`fa-solid ${item.icon} welcome-section__faq-icon`}
-                      />
-                      <span>
-                        {item.q}
-                      </span>
+                      <i className={`fa-solid ${item.icon} welcome-section__faq-icon`} />
+                      <span>{item.q}</span>
                     </span>
                   </summary>
 

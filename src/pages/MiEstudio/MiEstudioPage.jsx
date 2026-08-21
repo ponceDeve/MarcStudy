@@ -13,7 +13,6 @@ import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
 import TopBar from "./TopBar";
-import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
@@ -23,6 +22,7 @@ import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
+import TheorySearchBar from "./TheorySearchBar";
 import {
   leerPomodoroCompartido,
   guardarRetorno,
@@ -285,6 +285,7 @@ export default function MiEstudioPage() {
   const [stage, setStage] = useState("theory");
   const [isLevelMode, setIsLevelMode] =
     useState(false);
+  const [textosSeleccionados, setTextosSeleccionados] = useState([]);
 
   const { setFooterHidden } =
     useFooterVisibility();
@@ -778,9 +779,10 @@ export default function MiEstudioPage() {
 
       const puntos =
         (data.theory || []).flatMap(
-          (seccion) =>
-            seccion.puntos.map((p) => ({
+          (seccion, idxSeccion) =>
+            seccion.puntos.map((p, idxPunto) => ({
               ...p,
+              id: `${idxSeccion}-${idxPunto}`,
               seccionTitulo:
                 seccion.titulo
             }))
@@ -879,6 +881,8 @@ export default function MiEstudioPage() {
       setPreguntasVistas(
         storedPreguntasVistas
       );
+
+      setTextosSeleccionados([]);
 
       setTopicData({
         ...data,
@@ -1055,21 +1059,33 @@ export default function MiEstudioPage() {
   function elegirModoEstudio(modo) {
     setPreguntaModoAbierta(false);
 
-    if (
-      modo === "solo_preguntas"
-    ) {
-      if (
-        examenPreguntas.length === 0
-      ) {
+    if (modo === "solo_preguntas") {
+      const originalExamen = topicData?.examen || [];
+
+      // Extraemos preguntas vinculadas a la teoría 1/1 (de los textos marcados con check)
+      const preguntasVinculadasTeoria = flatPuntos
+        .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
+        .map(p => p.pregunta);
+
+      let preguntasFinales = [];
+
+      if (preguntasVinculadasTeoria.length > 0) {
+        preguntasFinales = [...preguntasVinculadasTeoria];
+      } else if (originalExamen.length > 0) {
+        preguntasFinales = originalExamen;
+      }
+
+      if (preguntasFinales.length === 0) {
         setSinPreguntaAlerta(true);
         return;
       }
 
+      setExamenPreguntas(preguntasFinales);
+
       const orden = shuffle(
         Array.from(
           {
-            length:
-              examenPreguntas.length
+            length: preguntasFinales.length
           },
           (_, i) => i
         )
@@ -1147,47 +1163,11 @@ export default function MiEstudioPage() {
     seleccionarItem
   );
 
-  function toggleStage() {
-    setIsLevelMode(false);
-
-    if (stage === "theory") {
-      const pregunta =
-        examenPreguntas[
-        cardIndex
-        ] || null;
-
-      if (!pregunta) {
-        setSinPreguntaAlerta(
-          true
-        );
-        return;
-      }
-
-      setQuizBatch([
-        {
-          puntoIndex: cardIndex,
-          pregunta
-        }
-      ]);
-
-      setQuizPos(0);
-      setIsFlipQuiz(true);
-      setQuestionResult(null);
-      setAttemptKey(0);
-      setCountdown(10);
-      setStage("question");
-    } else {
-      setIsFlipQuiz(false);
-      setCountdown(0);
-      setQuestionResult(null);
-      setAttemptKey(
-        (k) => k + 1
-      );
-      setStage("theory");
-    }
-  }
-
   function avanzarCard() {
+    if (stage === "theory") {
+      return; // La teoría ahora se desplaza (scroll), no usa paginación.
+    }
+
     if (repasoQuizActivo) {
       if (
         repasoQuizPos <
@@ -1325,6 +1305,10 @@ export default function MiEstudioPage() {
   }
 
   function retrocederCard() {
+    if (stage === "theory") {
+      return; // Deshabilitado en vista teoría (scroll libre)
+    }
+
     if (repasoQuizActivo) {
       if (
         repasoQuizPos > 0
@@ -1985,28 +1969,38 @@ export default function MiEstudioPage() {
     setLecturaTeoriaOn
   ] = useState(false);
 
+  const [puntoVozId, setPuntoVozId] = useState(null);
+
   useEffect(() => {
     setLecturaTeoriaOn(false);
+    setPuntoVozId(null);
   }, [
     topicData?.tema,
     topicData?.curso
   ]);
 
-  const textoCompletoTeoria =
-    stage === "theory" &&
-      !isLevelMode &&
-      current
-      ? [
-        current.seccionTitulo,
-        current.texto,
-        current.explicacion
-      ]
-        .filter(Boolean)
-        .join(". ")
+  // Por defecto lee solo el primer título del tema. En cuanto el
+  // usuario clickea un texto de teoría, la lectura pasa a ese texto
+  // (más su explicación, que aparece justo debajo).
+  const puntoVozActual = puntoVozId
+    ? flatPuntos.find((p) => p.id === puntoVozId)
+    : null;
+
+  const textoParaVoz =
+    stage === "theory" && !isLevelMode
+      ? puntoVozActual
+        ? [
+          puntoVozActual.seccionTitulo,
+          puntoVozActual.texto,
+          puntoVozActual.explicacion
+        ]
+          .filter(Boolean)
+          .join(". ")
+        : topicData?.theory?.[0]?.titulo || null
       : null;
 
   useLecturaTeoriaVoz(
-    textoCompletoTeoria,
+    textoParaVoz,
     lecturaTeoriaOn &&
     stage === "theory" &&
     !isLevelMode
@@ -2073,7 +2067,11 @@ export default function MiEstudioPage() {
           !isLevelMode
         ) {
           e.preventDefault();
-          toggleStage();
+          if (examenPreguntas.length > 0) {
+            elegirModoEstudio("solo_preguntas");
+          } else {
+            finalizarTema();
+          }
         } else if (
           stage === "question" &&
           questionResult &&
@@ -2105,11 +2103,13 @@ export default function MiEstudioPage() {
       } else if (
         e.key === "ArrowLeft"
       ) {
-        retrocederCard();
+        if (stage === "question") {
+          retrocederCard();
+        }
       } else if (
         e.key === "ArrowRight"
       ) {
-        if (canAdvance) {
+        if (stage === "question" && canAdvance) {
           avanzarCard();
         }
       }
@@ -2151,6 +2151,15 @@ export default function MiEstudioPage() {
     repasoQuizBatch,
     repasoQuizPos
   ]);
+
+  let ultimoTemaInicio = null;
+  try {
+    ultimoTemaInicio = JSON.parse(
+      localStorage.getItem("ultimoTemaAbierto")
+    );
+  } catch {
+    ultimoTemaInicio = null;
+  }
 
   const wrapClass = [
     "mi-estudio__wrap",
@@ -2576,7 +2585,7 @@ export default function MiEstudioPage() {
       <div className={wrapClass}>
         {!topicData && (
           <>
-            <AppHeader />
+            <AppHeader showHome />
 
             <div className="mi-estudio__home-screen container">
               <AvisosInicio />
@@ -2604,10 +2613,9 @@ export default function MiEstudioPage() {
                 <div className="home-search">
                   <div
                     className={`search-input-row${mostrarHistorialInicio ||
-                      (busquedaEnfocada &&
-                        hayQuery)
-                      ? " has-query"
-                      : ""
+                        (busquedaEnfocada && hayQuery)
+                        ? " has-query"
+                        : ""
                       }`}
                   >
                     <input
@@ -2616,35 +2624,24 @@ export default function MiEstudioPage() {
                       name="buscar-inicio"
                       value={query}
                       onChange={(e) => {
-                        setQuery(
-                          e.target.value
-                        );
-
-                        setPaginaHistorialInicio(
-                          1
-                        );
+                        setQuery(e.target.value);
+                        setPaginaHistorialInicio(1);
                       }}
                       onFocus={() =>
-                        setBusquedaEnfocada(
-                          true
-                        )
+                        setBusquedaEnfocada(true)
                       }
                       onBlur={() =>
                         setTimeout(
                           () =>
-                            setBusquedaEnfocada(
-                              false
-                            ),
+                            setBusquedaEnfocada(false),
                           150
                         )
                       }
                       onKeyDown={(e) => {
                         if (
-                          e.key ===
-                          "Enter" &&
+                          e.key === "Enter" &&
                           hayQuery &&
-                          focusedInicial <=
-                          0
+                          focusedInicial <= 0
                         ) {
                           e.preventDefault();
 
@@ -2652,20 +2649,13 @@ export default function MiEstudioPage() {
                             fuertes.cursos[0] ||
                             fuertes.temas[0];
 
-                          if (
-                            mejorOpcion
-                          ) {
-                            seleccionarItem(
-                              mejorOpcion
-                            );
-
+                          if (mejorOpcion) {
+                            seleccionarItem(mejorOpcion);
                             return;
                           }
                         }
 
-                        handleKeyDownInicial(
-                          e
-                        );
+                        handleKeyDownInicial(e);
                       }}
                       placeholder="Buscar tema o curso..."
                       className="search-input"
@@ -2681,9 +2671,7 @@ export default function MiEstudioPage() {
                         }}
                         onClick={() => {
                           setQuery("");
-                          setPaginaHistorialInicio(
-                            1
-                          );
+                          setPaginaHistorialInicio(1);
                         }}
                       >
                         <i className="fa-solid fa-xmark" />
@@ -2700,12 +2688,8 @@ export default function MiEstudioPage() {
                             fuertes.cursos[0] ||
                             fuertes.temas[0];
 
-                          if (
-                            mejorOpcion
-                          ) {
-                            seleccionarItem(
-                              mejorOpcion
-                            );
+                          if (mejorOpcion) {
+                            seleccionarItem(mejorOpcion);
                           }
                         }
                       }}
@@ -2714,41 +2698,33 @@ export default function MiEstudioPage() {
                     </div>
                   </div>
 
+                  {/* ============================================================
+      HISTORIAL DE BÚSQUEDA
+      ============================================================ */}
                   {mostrarHistorialInicio && (
                     <div className="search-history">
                       {historialInicioVisible.map(
-                        (
-                          item,
-                          index
-                        ) => {
+                        (item, index) => {
                           const texto =
-                            item.type ===
-                              "curso"
+                            item.type === "curso"
                               ? item.nombre
                               : item.tema;
 
                           const historialKey =
-                            item.type ===
-                              "curso"
+                            item.type === "curso"
                               ? `curso-${item.nombre}-${index}`
                               : `tema-${item.curso || ""}-${item.tema || ""}-${item.archivo || ""}-${index}`;
 
                           return (
                             <button
                               type="button"
-                              key={
-                                historialKey
-                              }
+                              key={historialKey}
                               className="search-history-item"
-                              onMouseDown={(
-                                e
-                              ) => {
+                              onMouseDown={(e) => {
                                 e.preventDefault();
                               }}
                               onClick={() => {
-                                seleccionarItem(
-                                  item
-                                );
+                                seleccionarItem(item);
                               }}
                             >
                               <i className="fa-solid fa-clock-rotate-left" />
@@ -2766,21 +2742,13 @@ export default function MiEstudioPage() {
                           <button
                             type="button"
                             className="search-history-more"
-                            onMouseDown={(
-                              e
-                            ) => {
+                            onMouseDown={(e) => {
                               e.preventDefault();
                             }}
                             onClick={() => {
                               setPaginaHistorialInicio(
-                                (
-                                  actual
-                                ) =>
-                                  Math.max(
-                                    1,
-                                    actual -
-                                    1
-                                  )
+                                (actual) =>
+                                  Math.max(1, actual - 1)
                               );
                             }}
                           >
@@ -2793,18 +2761,12 @@ export default function MiEstudioPage() {
                           <button
                             type="button"
                             className="search-history-more"
-                            onMouseDown={(
-                              e
-                            ) => {
+                            onMouseDown={(e) => {
                               e.preventDefault();
                             }}
                             onClick={() => {
                               setPaginaHistorialInicio(
-                                (
-                                  actual
-                                ) =>
-                                  actual +
-                                  1
+                                (actual) => actual + 1
                               );
                             }}
                           >
@@ -2816,16 +2778,12 @@ export default function MiEstudioPage() {
                         <button
                           type="button"
                           className="search-history-delete"
-                          onMouseDown={(
-                            e
-                          ) => {
+                          onMouseDown={(e) => {
                             e.preventDefault();
                           }}
                           onClick={() => {
                             eliminarHistorialInicio();
-                            setPaginaHistorialInicio(
-                              1
-                            );
+                            setPaginaHistorialInicio(1);
                           }}
                         >
                           <i className="fa-solid fa-trash" />
@@ -2835,100 +2793,110 @@ export default function MiEstudioPage() {
                     </div>
                   )}
 
+                  {/* ============================================================
+      SUGERENCIAS DEL BUSCADOR
+      ============================================================ */}
                   {busquedaEnfocada &&
                     hayQuery &&
-                    grupos.length >
-                    0 &&
+                    grupos.length > 0 &&
                     (() => {
-                      let idx =
-                        -1;
+                      let idx = -1;
 
                       return (
                         <div className="home-search-results search-results">
-                          {grupos.map(
-                            (g) => {
-                              const idxCurso =
-                                ++idx;
+                          {grupos.map((g) => {
+                            const idxCurso = ++idx;
 
-                              return (
-                                <div
-                                  key={`grupo-${g.curso}`}
-                                >
-                                  <button
-                                    onMouseDown={(
-                                      e
-                                    ) => {
-                                      e.preventDefault();
+                            return (
+                              <div
+                                key={`grupo-${g.curso}`}
+                              >
+                                <button
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
 
-                                      seleccionarItem(
-                                        {
-                                          type: "curso",
-                                          nombre:
-                                            g.curso
-                                        }
-                                      );
-                                    }}
-                                    className={`search-result-item is-curso ${idxCurso ===
-                                      focusedInicial
+                                    seleccionarItem({
+                                      type: "curso",
+                                      nombre: g.curso
+                                    });
+                                  }}
+                                  className={`search-result-item is-curso ${idxCurso === focusedInicial
                                       ? "is-focused"
                                       : ""
-                                      }`}
-                                  >
-                                    <span className="curso-title">
-                                      {
-                                        g.curso
-                                      }
-                                    </span>
-                                  </button>
+                                    }`}
+                                >
+                                  <span className="curso-title">
+                                    {g.curso}
+                                  </span>
+                                </button>
 
-                                  {g.temas.map(
-                                    (t) => {
-                                      const idxTema =
-                                        ++idx;
+                                {g.temas.map((t) => {
+                                  const idxTema = ++idx;
 
-                                      return (
-                                        <button
-                                          key={`tema-${t.curso}-${t.tema}`}
-                                          onMouseDown={(
-                                            e
-                                          ) => {
-                                            e.preventDefault();
+                                  return (
+                                    <button
+                                      key={`tema-${t.curso}-${t.tema}`}
+                                      onMouseDown={(e) => {
+                                        e.preventDefault();
 
-                                            seleccionarItem(
-                                              t
-                                            );
-                                          }}
-                                          className={`search-result-item is-tema ${idxTema ===
-                                            focusedInicial
-                                            ? "is-focused"
-                                            : ""
-                                            }`}
-                                        >
-                                          <p className="search-result-item__tema">
-                                            {
-                                              t.tema
-                                            }
-                                          </p>
-                                        </button>
-                                      );
-                                    }
-                                  )}
-                                </div>
-                              );
-                            }
-                          )}
+                                        seleccionarItem(t);
+                                      }}
+                                      className={`search-result-item is-tema ${idxTema === focusedInicial
+                                          ? "is-focused"
+                                          : ""
+                                        }`}
+                                    >
+                                      <p className="search-result-item__tema">
+                                        {t.tema}
+                                      </p>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            );
+                          })}
                         </div>
                       );
                     })()}
 
+                  {/* ============================================================
+      SIN RESULTADOS
+      ============================================================ */}
                   {busquedaEnfocada &&
                     hayQuery &&
                     grupos.length === 0 && (
-                      <p className="search-empty">
-                        Sin resultados para "{query}"
-                      </p>
+                      <div className="home-search-empty">
+                        <p className="search-empty">
+                          Sin resultados para "{query}"
+                        </p>
+                      </div>
                     )}
                 </div>
+
+                {/* ============================================================
+    CONTINUAR ÚLTIMO TEMA
+    FUERA DE .home-search
+    ============================================================ */}
+                {ultimoTemaInicio && (
+                  <button
+                    type="button"
+                    className="welcome-section__continuar-btn"
+                    onClick={() =>
+                      seleccionarItem({
+                        type: "tema",
+                        curso: ultimoTemaInicio.curso,
+                        tema: ultimoTemaInicio.tema,
+                        archivo: ultimoTemaInicio.archivo
+                      })
+                    }
+                  >
+                    <i className="fa-solid fa-play welcome-section__continuar-icon" />
+
+                    <span>
+                      Continuar: {ultimoTemaInicio.tema}
+                    </span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -2946,17 +2914,6 @@ export default function MiEstudioPage() {
                     );
                   } catch {
                     return [];
-                  }
-                })()}
-                ultimoTema={(() => {
-                  try {
-                    return JSON.parse(
-                      localStorage.getItem(
-                        "ultimoTemaAbierto"
-                      )
-                    );
-                  } catch {
-                    return null;
                   }
                 })()}
               />
@@ -2988,136 +2945,252 @@ export default function MiEstudioPage() {
                   </div>
                 )}
 
-              {stage === "theory" &&
-                current && (
-                  <TheorySearchBar
-                    flatPuntos={
-                      flatPuntos
-                    }
-                    onSelect={(index) => {
-                      setCardIndex(
-                        index
-                      );
+              {/* ============================================================
+                  VISTA DE TEORÍA: TODO EN UNA SOLA PANTALLA
+                  ============================================================ */}
+              {stage === "theory" && flatPuntos.length > 0 && (
+                <div className="mi-estudio__theory-wrap">
+                  <div className="teoria-sticky-bar">
+                    <TheorySearchBar
+                      flatPuntos={flatPuntos}
+                      onSelect={(puntoId) => {
+                        setPuntoVozId(puntoId);
+                        document
+                          .getElementById(`punto-${puntoId}`)
+                          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                      }}
+                    />
 
-                      setQuestionResult(
-                        null
-                      );
-
-                      setAttemptKey(
-                        (k) => k + 1
-                      );
-                    }}
-                  />
-                )}
-
-              {stage === "theory" &&
-                current && (
-                  <div className="mi-estudio__theory-wrap">
                     <button
                       type="button"
-                      onClick={() =>
-                        setLecturaTeoriaOn(
-                          (v) => !v
-                        )
-                      }
-                      className={`mi-estudio__voz-btn ${lecturaTeoriaOn
-                        ? "is-on"
-                        : "is-off"
-                        }`}
-                      title={
-                        lecturaTeoriaOn
-                          ? "Desactivar lectura en voz"
-                          : "Leer teoría en voz alta"
-                      }
-                      aria-pressed={
-                        lecturaTeoriaOn
-                      }
+                      onClick={() => setLecturaTeoriaOn((v) => !v)}
+                      className={`mi-estudio__voz-btn ${lecturaTeoriaOn ? "is-on" : "is-off"}`}
+                      title={lecturaTeoriaOn ? "Desactivar lectura en voz" : "Leer teoría en voz alta"}
                     >
-                      <i
-                        className={`fa-solid ${lecturaTeoriaOn
-                          ? "fa-volume-high"
-                          : "fa-volume-xmark"
-                          }`}
-                      />
+                      <i className={`fa-solid ${lecturaTeoriaOn ? "fa-volume-high" : "fa-volume-xmark"}`} />
                     </button>
+                  </div>
 
-                    <div className="arcade-game-container mi-estudio__theory">
-                      <div className="arcade-grid" />
+                  <div className="teoria-articulo-web">
+                    {/* Estilos inyectados basados en la paleta y requerimientos del usuario */}
+                    <style>{`
+                      .teoria-articulo-web {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px 20px 80px 20px;
+                      }
+                      .teoria-top-actions {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-bottom: 30px;
+                      }
+                      .teoria-seccion {
+                        margin-bottom: 56px;
+                      }
+                      .teoria-etiqueta-wrap {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        margin-bottom: 16px;
+                        border-bottom: 1px solid var(--border, #2A2A2A);
+                        padding-bottom: 8px;
+                        cursor: pointer;
+                        user-select: none;
+                      }
+                      .teoria-etiqueta-checkbox {
+                        width: 24px;
+                        height: 24px;
+                        cursor: pointer;
+                        accent-color: var(--primary, #F7DF1E);
+                      }
+                      .teoria-etiqueta {
+                        font-family: var(--font-display, "Raleway", sans-serif);
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        color: var(--primary, #F7DF1E);
+                        margin: 0;
+                        line-height: 1.3;
+                      }
+                      .teoria-punto {
+                        margin-bottom: 32px;
+                      }
+                      .teoria-punto.is-leyendo .teoria-contenido-principal {
+                        color: var(--primary, #F7DF1E);
+                      }
+                      .teoria-contenido-principal {
+                        font-family: var(--font-body, "Lato", sans-serif);
+                        font-size: 1.15rem;
+                        line-height: 1.8;
+                        color: var(--ink, #FFFFFF);
+                        margin-bottom: 24px;
+                      }
+                      .teoria-explicacion-extra {
+                        background-color: var(--surface, #171717);
+                        padding: 24px;
+                        border-radius: var(--radius-md, 12px);
+                        border-left: 4px solid var(--primary, #F7DF1E);
+                        color: var(--ink-soft, #D4D4D8);
+                        font-size: 1.05rem;
+                        line-height: 1.7;
+                      }
+                      .teoria-explicacion-icon {
+                        color: var(--primary, #F7DF1E);
+                        font-size: 1.3rem;
+                        margin-top: 4px;
+                      }
+                      .teoria-boton-examen {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 12px;
+                        background-color: var(--primary, #F7DF1E);
+                        color: var(--ink-on-primary, #000);
+                        padding: 16px 36px;
+                        font-size: 1.25rem;
+                        font-family: var(--font-display, "Raleway", sans-serif);
+                        font-weight: 700;
+                        border-radius: var(--radius-full, 999px);
+                        border: none;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                        box-shadow: var(--shadow-md);
+                      }
+                      .teoria-boton-examen:hover {
+                        background-color: var(--primary-light, #FCEF74);
+                        transform: translateY(-2px);
+                        box-shadow: var(--shadow-lg);
+                      }
+                      @media (max-width: 600px) {
+                        .teoria-articulo-web {
+                          padding: 10px 15px 40px 15px;
+                        }
+                        .teoria-etiqueta {
+                          font-size: 1.5rem;
+                        }
+                        .teoria-contenido-principal {
+                          font-size: 1.05rem;
+                        }
+                        .teoria-explicacion-extra {
+                          padding: 16px;
+                          font-size: 1rem;
+                        }
+                        .teoria-boton-examen {
+                           width: 100%;
+                           padding: 16px 20px;
+                        }
+                      }
+                    `}</style>
 
-                      <div className="mi-estudio__theory-inner">
-                        <p className="mi-estudio__theory-badge">
-                          {
-                            current.seccionTitulo
-                          }
-                        </p>
+                    {/* Mapeamos por sección y ponemos los checks a nivel de texto (punto) */}
+                    {topicData?.theory?.map((seccion, idxSeccion) => (
+                      <div key={idxSeccion} className="teoria-seccion">
+                        <div className="teoria-etiqueta-wrap">
+                          <h3 className="teoria-etiqueta">
+                            {seccion.titulo}
+                          </h3>
+                        </div>
 
-                        <p className="mi-estudio__theory-text">
-                          <GlossaryText
-                            text={
-                              current.texto
-                            }
-                            glosario={
-                              topicData?.glosario
-                            }
-                          />
-                        </p>
+                        {/* El contenido siempre es visible, los checks definen qué irá al examen */}
+                        <div className="teoria-puntos-lista animate-fade-in">
+                          {seccion.puntos.map((punto, idxPunto) => {
+                            const puntoId = `${idxSeccion}-${idxPunto}`;
 
-                        {current.explicacion && (
-                          <div className="mi-estudio__theory-explicacion">
-                            <GlossaryText
-                              text={
-                                current.explicacion
-                              }
-                              glosario={
-                                topicData?.glosario
-                              }
-                            />
-                          </div>
-                        )}
+                            return (
+                              <div
+                                key={idxPunto}
+                                id={`punto-${puntoId}`}
+                                className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
+                              >
+                                <div
+                                  style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px' }}
+                                  onClick={() => setPuntoVozId(puntoId)}
+                                >
+                                  <input
+                                    type="checkbox"
+                                    id={`checkbox-${puntoId}`}
+                                    style={{ marginTop: '6px', width: '20px', height: '20px', accentColor: 'var(--primary, #F7DF1E)', flexShrink: 0, cursor: 'pointer' }}
+                                    checked={textosSeleccionados.includes(puntoId)}
+                                    onClick={(e) => e.stopPropagation()}
+                                    onChange={() => {
+                                      setTextosSeleccionados((prev) =>
+                                        prev.includes(puntoId)
+                                          ? prev.filter((t) => t !== puntoId)
+                                          : [...prev, puntoId]
+                                      );
+                                    }}
+                                  />
+                                  <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal" style={{ margin: 0, cursor: 'pointer' }}>
+                                    <GlossaryText
+                                      text={punto.texto}
+                                      glosario={topicData?.glosario}
+                                    />
+                                  </label>
+                                </div>
 
-                        <div className="mi-estudio__google">
-                          <div className="mi-estudio__google-input-wrap">
-                            <input
-                              autoComplete="off"
-                              type="search"
-                              name="buscar-google"
-                              value={
-                                googleQuery
-                              }
-                              onChange={(
-                                e
-                              ) =>
-                                setGoogleQuery(
-                                  e
-                                    .target
-                                    .value
-                                )
-                              }
-                              onKeyDown={(
-                                e
-                              ) =>
-                                e.key ===
-                                "Enter" &&
-                                buscarEnGoogle()
-                              }
-                              placeholder="Pregúntale a Google..."
-                              className="mi-estudio__google-input"
-                            />
-
-                            <button
-                              onClick={
-                                buscarEnGoogle
-                              }
-                              className="mi-estudio__google-btn"
-                            >
-                              <i className="fab fa-google" />
-                            </button>
-                          </div>
+                                {punto.explicacion && (
+                                  <div className="teoria-explicacion-extra">
+                                    <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                                      <i className="fa-solid fa-lightbulb teoria-explicacion-icon" />
+                                      <div style={{ flex: 1 }}>
+                                        <GlossaryText
+                                          text={punto.explicacion}
+                                          glosario={topicData?.glosario}
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
+                    ))}
+
+                    <div className="mi-estudio__google" style={{ marginTop: '20px', marginBottom: '60px' }}>
+                      <div className="mi-estudio__google-input-wrap">
+                        <input
+                          autoComplete="off"
+                          type="search"
+                          name="buscar-google"
+                          value={googleQuery}
+                          onChange={(e) => setGoogleQuery(e.target.value)}
+                          onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
+                          placeholder="Pregúntale a Google..."
+                          className="mi-estudio__google-input"
+                        />
+                        <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
+                          <i className="fab fa-google" />
+                        </button>
+                      </div>
                     </div>
+
+                    {/* Botón final para transicionar a las preguntas */}
+                    <div style={{ textAlign: 'center' }}>
+                      {examenPreguntas.length > 0 ? (
+                        <button
+                          className="teoria-boton-examen"
+                          onClick={() => elegirModoEstudio("solo_preguntas")}
+                        >
+                          <i className="fa-solid fa-gamepad"></i>
+                          Ir al Examen
+                        </button>
+                      ) : (
+                        <button
+                          className="teoria-boton-examen"
+                          onClick={finalizarTema}
+                        >
+                          <i className="fa-solid fa-check-circle"></i>
+                          Completar Tema
+                        </button>
+                      )}
+                    </div>
+
                   </div>
-                )}
+                </div>
+              )}
 
               {stage ===
                 "question" && (
@@ -3167,111 +3240,80 @@ export default function MiEstudioPage() {
                   </div>
                 )}
 
-              <div className="mi-estudio__nav">
-                <button
-                  onClick={
-                    retrocederCard
-                  }
-                  disabled={
-                    isLevelMode
-                      ? nivelIndex ===
-                      0
-                      : isFlipQuiz
-                        ? quizPos ===
-                        0
-                        : cardIndex ===
-                        0
-                  }
-                  className={`mi-estudio__nav-btn ${(
-                    isLevelMode
-                      ? nivelIndex ===
-                      0
-                      : isFlipQuiz
-                        ? quizPos ===
-                        0
-                        : cardIndex ===
-                        0
-                  )
-                    ? ""
-                    : "is-active"
-                    }`}
-                  title="Anterior"
-                >
-                  <i className="fas fa-caret-left" />
-                </button>
+              {/* Los botones de navegación inferiores (Avanzar, Retroceder) 
+                  sólo aparecen cuando estás en la fase de preguntas */}
+              {stage === "question" && (
+                <div className="mi-estudio__nav">
+                  <button
+                    onClick={retrocederCard}
+                    disabled={
+                      isLevelMode
+                        ? nivelIndex === 0
+                        : isFlipQuiz
+                          ? quizPos === 0
+                          : cardIndex === 0
+                    }
+                    className={`mi-estudio__nav-btn ${(
+                      isLevelMode
+                        ? nivelIndex === 0
+                        : isFlipQuiz
+                          ? quizPos === 0
+                          : cardIndex === 0
+                    )
+                      ? ""
+                      : "is-active"
+                      }`}
+                    title="Anterior"
+                  >
+                    <i className="fas fa-caret-left" />
+                  </button>
 
-                {!isLevelMode &&
-                  modoEstudio !==
-                  "solo_preguntas" && (
-                    <button
-                      onClick={
-                        toggleStage
-                      }
-                      className="mi-estudio__nav-flip"
-                      title="Voltear Tarjeta"
-                    >
-                      <i className="fas fa-sync-alt" />
-                    </button>
-                  )}
+                  <div className="mi-estudio__nav-right">
+                    {(() => {
+                      const esUltimo =
+                        repasoQuizActivo
+                          ? repasoQuizPos ===
+                          repasoQuizBatch.length - 1
+                          : isLevelMode
+                            ? nivelIndex ===
+                            examenPreguntas.length - 1
+                            : isFlipQuiz
+                              ? quizPos ===
+                              quizBatch.length - 1
+                              : cardIndex ===
+                              flatPuntos.length - 1;
 
-                <div className="mi-estudio__nav-right">
-                  {(() => {
-                    const esUltimo =
-                      repasoQuizActivo
-                        ? repasoQuizPos ===
-                        repasoQuizBatch.length -
-                        1
-                        : isLevelMode
-                          ? nivelIndex ===
-                          examenPreguntas.length -
-                          1
-                          : isFlipQuiz
-                            ? quizPos ===
-                            quizBatch.length -
-                            1
-                            : cardIndex ===
-                            flatPuntos.length -
-                            1;
+                      const bloqueado = !canAdvance;
 
-                    const bloqueado =
-                      !canAdvance;
+                      return (
+                        <>
+                          <button
+                            onClick={avanzarCard}
+                            disabled={bloqueado}
+                            className={`mi-estudio__nav-btn ${bloqueado
+                              ? ""
+                              : "is-active"
+                              }`}
+                            title="Siguiente"
+                          >
+                            {esUltimo && canAdvance ? (
+                              <i className="fas fa-flag-checkered" />
+                            ) : (
+                              <i className="fas fa-caret-right" />
+                            )}
+                          </button>
 
-                    return (
-                      <>
-                        <button
-                          onClick={
-                            avanzarCard
-                          }
-                          disabled={
-                            bloqueado
-                          }
-                          className={`mi-estudio__nav-btn ${bloqueado
-                            ? ""
-                            : "is-active"
-                            }`}
-                          title="Siguiente"
-                        >
-                          {esUltimo &&
-                            canAdvance ? (
-                            <i className="fas fa-flag-checkered" />
-                          ) : (
-                            <i className="fas fa-caret-right" />
-                          )}
-                        </button>
-
-                        {!canAdvance &&
-                          !esUltimo && (
+                          {!canAdvance && !esUltimo && (
                             <span className="mi-estudio__nav-hint">
-                              ¡Supera la
-                              pregunta para
-                              avanzar!
+                              ¡Supera la pregunta para avanzar!
                             </span>
                           )}
-                      </>
-                    );
-                  })()}
+                        </>
+                      );
+                    })()}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {stage ===
                 "question" &&
@@ -3389,29 +3431,32 @@ export default function MiEstudioPage() {
         {mostrarModalSugerencia && (
           <div
             className="mi-estudio__modal-overlay"
-            onClick={() =>
-              setMostrarModalSugerencia(
-                false
-              )
-            }
+            onClick={() => setMostrarModalSugerencia(false)}
           >
             <div
               className="mi-estudio__modal"
-              onClick={(e) =>
-                e.stopPropagation()
-              }
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="mi-estudio__modal-header">
-                <div></div>
+                <div>
+                  <p className="suguerir__title">
+                    Sugerir examen
+                  </p>
+
+                  <p className="mi-estudio__modal-desc">
+                    Tema:{" "}
+                    <strong>
+                      {topicData.tema ||
+                        topicData.nombre ||
+                        "Tema actual"}
+                    </strong>
+                  </p>
+                </div>
 
                 <button
                   type="button"
                   className="mi-estudio__modal-close"
-                  onClick={() =>
-                    setMostrarModalSugerencia(
-                      false
-                    )
-                  }
+                  onClick={() => setMostrarModalSugerencia(false)}
                   aria-label="Cerrar"
                 >
                   <i className="fa-solid fa-xmark"></i>
@@ -3419,35 +3464,22 @@ export default function MiEstudioPage() {
               </div>
 
               <div className="mi-estudio__modal-body">
-                <p className="suguerir__title">presiona sugerir examen para:</p>
-                <p className="mi-estudio__modal-desc">
-                  añadir preguntas del
-                  tema{" "}
-                  <strong>
-                    {topicData.tema ||
-                      topicData.nombre ||
-                      "Tema actual"}
-                  </strong>
-                </p>
-
                 <label
                   className="mi-estudio__campo"
                   htmlFor="sugerencia-texto"
                 >
-                  <span className="mi-estudio__campo-label">¿Quieres agregar algún detalle? (opcional)</span>
+                  <span className="mi-estudio__campo-label">
+                    ¿Qué te gustaría que incluya?
+                  </span>
 
                   <textarea
                     id="sugerencia-texto"
                     className="mi-estudio__textarea"
-                    value={
-                      textoSugerencia
-                    }
+                    value={textoSugerencia}
                     onChange={(e) =>
-                      setTextoSugerencia(
-                        e.target.value
-                      )
+                      setTextoSugerencia(e.target.value)
                     }
-                    placeholder="example: no me gusta el color"
+                    placeholder="Escribe tu sugerencia..."
                     rows={4}
                   />
                 </label>
@@ -3457,11 +3489,7 @@ export default function MiEstudioPage() {
                 <button
                   type="button"
                   className="mi-estudio__modal-cancel"
-                  onClick={() =>
-                    setMostrarModalSugerencia(
-                      false
-                    )
-                  }
+                  onClick={() => setMostrarModalSugerencia(false)}
                 >
                   Cancelar
                 </button>
@@ -3469,12 +3497,10 @@ export default function MiEstudioPage() {
                 <button
                   type="button"
                   className="mi-estudio__modal-submit"
-                  onClick={
-                    enviarSugerenciaExamen
-                  }
+                  onClick={enviarSugerenciaExamen}
                 >
                   <i className="fa-solid fa-paper-plane"></i>
-                  Sugerir examen
+                  Enviar sugerencia
                 </button>
               </div>
             </div>

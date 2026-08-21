@@ -2,120 +2,152 @@
    WELCOME SECTION
    ============================================================ */
 
-.welcome-section{
-  width:100%;
-  max-width:100%;
-  margin:40px auto 0;
-  display:flex;
-  flex-direction:column;
-  flex:1;
+.welcome-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* ============================================================
    CURSOS
    ============================================================ */
 
-.welcome-section__courses{
-  width:100%;
-  padding:40px 0;
+.welcome-section__courses {
+  width: 100%;
+  padding: 40px 0;
 }
 
-@media (min-width:640px){
-  .welcome-section__courses{
-    padding:56px 0;
+@media (min-width: 640px) {
+  .welcome-section__courses {
+    padding: 56px 0;
   }
 }
 
 .welcome-section__intro,
-.welcome-section__faq-inner{
-  width:100%;
+.welcome-section__faq-inner {
+  width: 100%;
 }
 
-.welcome-section__logros{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  padding:14px 18px;
-  margin-bottom:16px;
-  background:var(--surface);
-  border:var(--nested-border);
-  border-radius:var(--radius-md);
+.welcome-section__logros {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  background: var(--surface);
+  border: var(--nested-border);
+  border-radius: var(--radius-md);
 }
 
-.welcome-section__logros-icon{
-  font-size:1.5rem;
-  color:var(--ink-soft);
+.welcome-section__logros-icon {
+  font-size: 1.5rem;
+  color: var(--ink-soft);
 }
 
-.welcome-section__logros-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.25;
+.welcome-section__logros-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
 }
 
-.welcome-section__logros-num{
-  font-size:1.15rem;
-  font-weight:700;
-  color:var(--ink);
+.welcome-section__logros-num {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
-.welcome-section__logros-label{
-  font-size:.85rem;
-  color:var(--ink-soft);
+.welcome-section__logros-label {
+  font-size: .85rem;
+  color: var(--ink-soft);
 }
 
-.welcome-section__continuar-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  width:100%;
-  padding:14px 20px;
-  margin-bottom:16px;
-  border:none;
-  border-radius:var(--radius-md);
-  background:var(--primary);
-  color:var(--ink-on-primary);
-  font-family:var(--font-body);
-  font-size:1rem;
-  font-weight:700;
-  cursor:pointer;
-  transition:background .15s ease;
+.welcome-section__continuar-btn {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 320px;
+  max-width: 100%;
+
+  padding: 11px 20px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background: transparent;
+  color: var(--ink-soft);
+
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background .15s ease,
+    border-color .15s ease,
+    color .15s ease;
 }
 
-.welcome-section__continuar-btn:hover{
-  background:var(--primary-dark);
+.welcome-section__continuar-btn:hover {
+  border-color: var(--primary);
+  color: var(--ink);
+  background: var(--surface-hover);
 }
 
-.welcome-section__title{
-  font-size:1.35rem;
-  font-weight:700;
-  color:var(--ink);
-  margin:0 0 12px;
+.welcome-section__continuar-icon {
+  flex-shrink: 0;
+  transition: transform .2s ease;
 }
 
-@media (min-width:640px){
-  .welcome-section__title{
-    font-size:1.55rem;
+.welcome-section__continuar-btn:hover .welcome-section__continuar-icon {
+  transform: translateX(4px);
+}
+
+/* Texto del tema */
+.welcome-section__continuar-btn span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.welcome-section__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__title {
+    font-size: 1.55rem;
   }
 }
 
-.welcome-section__lead{
-  color:var(--ink-soft);
-  font-size:1rem;
-  line-height:1.6;
-  margin:0 0 20px;
+.welcome-section__lead {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
 }
 
-.welcome-section__lead strong{
-  color:var(--ink);
+.welcome-section__lead strong {
+  color: var(--ink);
 }
 
-@media (min-width:640px){
-  .welcome-section__lead{
-    font-size:1.08rem;
-    line-height:1.65;
-    max-width:700px;
+@media (min-width: 640px) {
+  .welcome-section__lead {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    max-width: 700px;
   }
 }
 
@@ -123,24 +155,25 @@
    GRID DE CURSOS
    ============================================================ */
 
-.welcome-section__grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-  width:100%;
-  align-items:stretch;
+.welcome-section__grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  align-items: stretch;
 }
 
-@media (min-width:480px){
-  .welcome-section__grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+@media (min-width: 480px) {
+  .welcome-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width:992px){
-  .welcome-section__grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:16px;
+@media (min-width: 992px) {
+  .welcome-section__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
   }
 }
 
@@ -148,784 +181,410 @@
    TARJETA DE CURSO
    ============================================================ */
 
-.welcome-section__curso{
-  position:relative;
-  z-index:1;
-  height:100%;
-  box-sizing:border-box;
-  display:flex;
-  flex-direction:column;
-  border:1px solid color-mix(in srgb,var(--accent),transparent 65%);
-  border-top:5px solid color-mix(in srgb,var(--accent),transparent 65%);
-  border-radius:14px;
-  background:var(--surface);
-  transition:background .2s linear,border-color .2s linear,box-shadow .2s linear,transform .2s linear!important;
-}
-
-.welcome-section__curso:hover{
-  border-color:var(--accent);
-  box-shadow:var(--shadow-md);
-  transform:translateY(-2px);
-}
-
-.welcome-section__curso:hover .welcome-section__temas{
-  border: var(--nested-border);
-}
-
-.welcome-section__curso.is-open{
-  z-index:10;
-  border-color:var(--accent);
-  border-bottom-color:transparent;
-  border-bottom-left-radius:0;
-  border-bottom-right-radius:0;
-  box-shadow:none;
-  transform:none;
-}
-
-.welcome-section__curso-top{
-  padding:16px 16px 4px;
-  flex:1;
-}
-
-@media (min-width:640px){
-  .welcome-section__curso-top{
-    padding:22px 22px 6px;
-  }
-}
-
-.welcome-section__curso-info{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.welcome-section__curso-nombre{
-  font-weight:700;
-  color:var(--ink);
-  font-size:1.05rem;
-}
-
-@media (min-width:640px){
-  .welcome-section__curso-nombre{
-    font-size:1.18rem;
-  }
-}
-
-.welcome-section__curso-count{
-  font-size:.82rem;
-  font-weight:600;
-  color:var(--primary);
-  background:var(--surface);
-  border: var(--nested-border);
-  padding:3px 9px;
-  border-radius:var(--radius-full);
-  width:fit-content;
-}
-
-.welcome-section__curso-logros{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  font-size:.82rem;
-  font-weight:700;
-  color:var(--ink-soft);
-  background:var(--surface);
-  border: var(--nested-border);
-  padding:3px 9px;
-  border-radius:var(--radius-full);
-  width:fit-content;
-}
-
-.welcome-section__curso-desc{
-  margin:10px 0 0;
-  color:var(--ink);
-  font-size:.95rem;
-  line-height:1.5;
-}
-
-@media (min-width:640px){
-  .welcome-section__curso-desc{
-    font-size:1rem;
-  }
-}
-
-/* ============================================================
-   BOTÓN VER TEMAS
-   ============================================================ */
-
-.welcome-section__ver-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  width:calc(100% - 32px);
-  margin:auto 16px 16px;
-  padding:10px 12px;
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  background:transparent;
-  color:var(--primary);
-  font-weight:600;
-  font-size:.92rem;
-  cursor:pointer;
-  transition:background .2s linear,border-color .2s linear,color .2s linear,transform .15s ease!important;
-}
-
-.welcome-section__ver-btn:hover{
-  background:var(--primary);
-  color: var(--ink-on-primary);
-  border: var(--nested-border);
-  border-color:var(--primary);
-}
-
-.welcome-section__ver-btn:active{
-  transform:scale(.97);
-}
-
-.welcome-section__curso.is-open .welcome-section__ver-btn{
-  background:var(--success);
-  border-color:var(--success);
-  color:var(--ink-on-primary);
-}
-
-.welcome-section__curso.is-open .welcome-section__ver-btn:hover{
-  background:var(--success-bg);
-  border-color:var(--success);
-  color:var(--ink);
-}
-
-@media (min-width:640px){
-  .welcome-section__ver-btn{
-    width:calc(100% - 44px);
-    margin:auto 22px 22px;
-  }
-}
-
-.welcome-section__ver-btn-icon{
-  font-size:.78rem;
-  transition:transform .3s cubic-bezier(.4,0,.2,1)!important;
-}
-
-.welcome-section__ver-btn-icon.is-open{
-  transform:rotate(180deg);
-}
-
-/* ============================================================
-   LISTA DE TEMAS
-   ============================================================ */
-
-.welcome-section__temas{
-  position:absolute;
-  top:100%;
-  left:-1px;
-  right:-1px;
-  list-style:none;
-  margin:0;
-  padding:0;
-  max-height:260px;
-  overflow-y:auto;
-  background:var(--ink-on-primary);
-  border:1px solid var(--accent);
-  border-top:none;
-  border-radius:0 0 14px 14px;
-  animation:temasEntrada .25s linear;
-  transform-origin:top;
-  transition:background-color .2s linear!important;
-}
-
-@keyframes temasEntrada{
-  from{
-    opacity:0;
-    transform:translateY(-8px) scaleY(.96);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scaleY(1);
-  }
-}
-
-@media (min-width:640px){
-  .welcome-section__temas{
-    max-height:300px;
-  }
-}
-
-.welcome-section__temas::-webkit-scrollbar{
-  width:6px;
-}
-
-.welcome-section__temas::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.welcome-section__temas::-webkit-scrollbar-thumb{
-  background:var(--border-strong);
-  border-radius:3px;
-}
-
-/* ============================================================
-   BOTÓN DE TEMA
-   ============================================================ */
-
-.welcome-section__tema-btn{
-  width:100%;
-  display:block;
-  text-align:left;
-  background:transparent;
-  border:none;
-  padding:11px 12px;
-  color:var(--ink-soft);
-  font-size:.95rem;
-  cursor:pointer;
-  transition:background .18s ease,color .18s ease!important;
-}
-
-.welcome-section__tema-btn:hover{
-  background:var(--primary-bg);
-  border: var(--nested-border);
-  color:var(--ink);
-}
-
-.welcome-section__tema-btn:active{
-  transform:scale(.98);
-}
-
-@media (min-width:640px){
-  .welcome-section__tema-btn{
-    padding:12px 14px;
-    font-size:.98rem;
-  }
-}
-
-/* ============================================================
-   FAQ
-   ============================================================ */
-
-.welcome-section__faq{
-  width:100%;
-  background:var(--surface-alt);
-  padding:40px 0;
-}
-
-@media (min-width:640px){
-  .welcome-section__faq{
-    padding:56px 0;
-  }
-}
-
-.welcome-section__faq-list{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.welcome-section__faq-item{
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:var(--bg);
-  padding:4px 16px;
-  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease!important;
-}
-
-.welcome-section__faq-item summary{
-  list-style:none;
-  cursor:pointer;
-  padding:13px 8px;
-  margin:0 -8px;
-  border-radius:8px;
-  font-weight:600;
-  font-size:1rem;
-  color:var(--ink);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  transition:all .2s linear;
-}
-
-.welcome-section__faq-item summary::-webkit-details-marker{
-  display:none;
-}
-
-.welcome-section__faq-item summary:hover{
-  background:var(--success-bg);
-}
-
-.welcome-section__faq-item summary::after{
-  content:"+";
-  color:var(--ink-faint);
-  font-weight:400;
-  font-size:1.2rem;
-  transition:transform .3s ease,color .2s ease!important;
-}
-
-.welcome-section__faq-item[open]{
-  border-color:var(--primary);
-  box-shadow:var(--shadow-sm);
-}
-
-.welcome-section__faq-item[open] summary{
-  color:var(--primary);
-}
-
-.welcome-section__faq-item[open] summary:hover{
-  background:var(--success-bg);
-}
-
-.welcome-section__faq-item[open] summary::after{
-  content:"–";
-  color:var(--primary);
-  transform:rotate(180deg);
-}
-
-.welcome-section__faq-item p{
-  margin:10px 0 14px;
-  color:var(--ink-soft);
-  font-size:.96rem;
-  line-height:1.55;
-  animation:faqTextoEntrada .25s ease-out;
-}
-
-@keyframes faqTextoEntrada{
-  from{
-    opacity:0;
-    transform:translateY(-5px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.welcome-section__faq-summary-text{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.welcome-section__faq-icon{
-  flex-shrink:0;
-  color:var(--ink-soft);
-  font-size:1rem;
-}
-
-@media (max-width:479px){
-  .welcome-section__courses,
-  .welcome-section__faq{
-    padding:32px 0;
-  }
-
-  .welcome-section__faq-item{
-    padding:4px 12px;
-  }
-
-  .welcome-section__faq-item summary{
-    padding:12px 6px;
-    font-size:.95rem;
-  }
-
-  .welcome-section__faq-summary-text{
-    gap:8px;
-  }
-
-  .welcome-section__faq-item p{
-    font-size:.92rem;
-  }
-}
-
-/* ============================================================
-   FORMULARIO — SECCIÓN
-   ============================================================ */
-
-.welcome-section__form-section{
-  width:100%;
-  padding:100px 20px;
-  box-sizing:border-box;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:30px;
-}
-
-.welcome-section__form-header{
-  width:100%;
-  max-width:600px;
-  text-align:left;
-}
-
-.welcome-section__form-header .welcome-section__title{
-  margin-bottom:10px;
-}
-
-.welcome-section__form-desc{
-  margin:0;
-  font-size:1.05rem;
-  color:var(--ink-soft);
-  line-height:1.6;
-}
-
-/* ============================================================
-   FORMULARIO PRINCIPAL
-   ============================================================ */
-
-.welcome-section__form{
-  width:100%;
-  max-width:600px;
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-  padding:28px;
-  box-sizing:border-box;
-  border-radius:var(--radius-lg);
-  background:var(--ink-on-primary);
-  border:1px solid var(--border-strong);
-  box-shadow:var(--shadow-sm);
-}
-
-/* ============================================================
-   CAMPOS
-   ============================================================ */
-
-.welcome-section__campo{
-  display:flex;
-  flex-direction:column;
-  gap:9px;
-  width:100%;
-  text-align:left;
-}
-
-.welcome-section__campo-label{
-  display:block;
-  margin:0;
-  font-size:1.05rem;
-  line-height:1.4;
-  font-weight:700;
-  color:var(--ink);
-}
-
-.welcome-section__campo-help{
-  margin:-3px 0 2px;
-  color:var(--ink-soft);
-  font-size:.92rem;
-  line-height:1.45;
-}
-
-.welcome-section__form-row{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  width:100%;
-}
-
-@media (min-width:480px){
-  .welcome-section__form-row{
-    flex-direction:row;
-  }
-}
-
-/* ============================================================
-   TEXTAREA
-   ============================================================ */
-
-.welcome-section__textarea{
-  width:100%;
-  box-sizing:border-box;
-  padding:14px 15px;
-  border-radius:var(--radius-md);
-  border:1px solid var(--border-strong);
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:1rem;
-  line-height:1.5;
-  outline:none;
-  resize:none;
-  min-height:110px;
-  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
-}
-
-.welcome-section__textarea::placeholder{
-  color:var(--ink-faint);
-}
-
-.welcome-section__textarea:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px var(--primary-bg);
-}
-
-/* ============================================================
-   SECCIÓN SUGERIR EXAMEN
-   ============================================================ */
-
-.welcome-section__exam-suggestion{
-  width:100%;
-  box-sizing:border-box;
-  margin-top:2px;
-  padding:22px;
-  border:1px solid var(--border-strong);
-  border-radius:var(--radius-lg);
-  background:var(--surface-alt);
-}
-
-.welcome-section__exam-heading{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  margin-bottom:20px;
-}
-
-.welcome-section__exam-icon{
-  width:44px;
-  height:44px;
-  min-width:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:var(--radius-md);
-  background:var(--primary-bg);
-  border: var(--nested-border);
-  color:var(--primary);
-  font-size:18px;
-}
-
-.welcome-section__exam-title{
-  margin:0 0 5px;
-  color:var(--ink);
-  font-size:1.15rem;
-  line-height:1.35;
-}
-
-.welcome-section__exam-description{
-  margin:0;
-  color:var(--ink-soft);
-  font-size:.92rem;
-  line-height:1.5;
-}
-
-.welcome-section__exam-fields{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-  width:100%;
-}
-
-.welcome-section__exam-field{
-  margin:0;
-}
-
-/* ============================================================
-   BOTONES SELECTORES DE CURSO Y TEMA
-   ============================================================ */
-
-.welcome-section__selector-btn{
-  width:100%;
-  min-height:52px;
-  box-sizing:border-box;
-  padding:13px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  border:1px solid var(--border-strong);
-  border-radius:var(--radius-md);
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font-body);
-  font-size:1rem;
-  text-align:left;
-  cursor:pointer;
-  outline:none;
-  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease,opacity .2s ease;
-}
-
-.welcome-section__selector-btn:hover:not(.welcome-section__selector-btn--disabled){
-  border-color:var(--primary);
-  background:var(--primary-bg);
-  border: var(--nested-border);
-}
-
-.welcome-section__selector-btn:focus-visible{
-  border-color:var(--primary);
-  box-shadow:0 0 0 3px var(--primary-bg);
-}
-
-.welcome-section__selector-btn--disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.welcome-section__selector-text{
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.welcome-section__selector-icon{
-  flex-shrink:0;
-  margin-left:4px;
-  color:var(--ink-faint);
-  font-size:.8rem;
-}
-
-/* ============================================================
-   ESTADO DE EXAMEN
-   ============================================================ */
-
-.welcome-section__exam-status{
-  margin:16px 0 0;
-  padding:12px 14px;
-  display:flex;
-  align-items:flex-start;
-  gap:9px;
-  border-radius:var(--radius-md);
-  font-size:.92rem;
-  line-height:1.5;
-}
-
-.welcome-section__exam-status i{
-  flex-shrink:0;
-  margin-top:3px;
-}
-
-.welcome-section__exam-status--error{
-  color:var(--danger);
-  background:color-mix(in srgb,var(--danger),transparent 90%);
-}
-
-.welcome-section__exam-status--success{
-  color:var(--success);
-  background:color-mix(in srgb,var(--success),transparent 90%);
-}
-
-/* ============================================================
-   ESTADO GENERAL DEL FORMULARIO
-   ============================================================ */
-
-.welcome-section__campo-estado{
-  margin:0;
-  font-size:1rem;
-  font-weight:600;
-  line-height:1.5;
-  text-align:center;
-}
-
-.welcome-section__campo-estado.is-error{
-  color:var(--danger);
-}
-
-.welcome-section__campo-estado.is-success{
-  color:var(--success);
-}
-
-/* ============================================================
-   BOTÓN DE ENVÍO
-   ============================================================ */
-
-.welcome-section__form-submit{
-  display:flex;
-  justify-content:center;
-  margin-top:4px;
-  padding-top:22px;
-  border-top:1px dashed var(--border-strong);
-}
-
-.welcome-section__btn-submit{
-  min-width:210px;
-  min-height:48px;
-  padding:12px 26px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  background:var(--primary);
-  color:var(--ink-on-primary);
-  border:none;
-  border-bottom:3px solid var(--primary-dark);
-  border-radius:var(--radius-md);
-  font-family:var(--font-body);
-  font-weight:700;
-  font-size:1rem;
-  cursor:pointer;
-  transition:background .15s ease,transform .15s ease,opacity .15s ease;
-}
-
-.welcome-section__btn-submit:hover:not(:disabled){
-  background:var(--primary-dark);
-}
-
-.welcome-section__btn-submit:active:not(:disabled){
-  border-bottom-width:0;
-  transform:translateY(3px);
-}
-
-.welcome-section__btn-submit:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-/* ============================================================
-   RESPONSIVE — FORMULARIO
-   ============================================================ */
-
-@media (min-width:640px){
-  .welcome-section__exam-fields{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-}
-
-@media (max-width:479px){
-  .welcome-section__form-section{
-    padding:70px 16px;
-  }
-
-  .welcome-section__form{
-    padding:20px;
-  }
-
-  .welcome-section__form-desc{
-    font-size:1rem;
-  }
-
-  .welcome-section__exam-suggestion{
-    padding:16px;
-  }
-
-  .welcome-section__exam-heading{
-    gap:10px;
-  }
-
-  .welcome-section__exam-title{
-    font-size:1.05rem;
-  }
-
-  .welcome-section__exam-description{
-    font-size:.9rem;
-  }
-
-  .welcome-section__campo-label{
-    font-size:1rem;
-  }
-
-  .welcome-section__campo-help{
-    font-size:.88rem;
-  }
-
-  .welcome-section__textarea{
-    font-size:1rem;
-  }
-
-  .welcome-section__selector-btn{
-    font-size:.95rem;
-  }
-
-  .welcome-section__btn-submit{
-    width:100%;
-  }
+.welcome-section__curso {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-top: 3px solid color-mix(in srgb, var(--accent), transparent 65%);
+  border-radius: 14px;
+  background: transparent;
+  padding: 18px 16px;
+  transition: background .2s linear, box-shadow .2s linear, transform .2s linear !important;
+}
+
+.welcome-section__curso:hover {
+  border-top-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  background: rgba(20, 21, 24, 1);
+}
+
+.welcome-section__curso-top {
+  padding: 0;
+  flex: 1;
+}
+
+.welcome-section__curso-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .box-nombre-logros {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
+  gap: 10px;
+}
+
+.welcome-section__curso-nombre {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__curso-nombre {
+    font-size: 1.18rem;
+  }
+}
+
+/* Badge de Preguntas y Contador */
+.welcome-section__curso-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--surface-alt);
+  border: var(--nested-border);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.welcome-section__curso-logros {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: var(--nested-border);
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.welcome-section__curso-desc {
+  margin: 6px 0 14px;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   LISTA DE TEMAS (Siempre visible desde el inicio)
+   ============================================================ */
+
+.welcome-section__temas {
+  position: relative;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.welcome-section__temas::-webkit-scrollbar {
+  width: 5px;
+}
+
+.welcome-section__temas::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.welcome-section__temas::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   BOTÓN DE TEMA (Íconos a la izquierda y Hover Radial)
+   ============================================================ */
+
+.welcome-section__tema-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinea ícono y texto a la izquierda */
+  gap: 12px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 9px 10px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .25s ease, color .2s ease !important;
+}
+
+/* Hover con degradado circular blanco casi transparente */
+.welcome-section__tema-btn:hover {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 80%);
+  color: var(--primary);
+}
+
+.welcome-section__tema-btn:active {
+  transform: scale(.98);
+}
+
+/* ============================================================
+   ESTADOS DE TEMAS (Completado, En curso, Pendiente)
+   ============================================================ */
+
+.welcome-section__tema-estado {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+}
+
+/* Verde para completados */
+.welcome-section__tema-estado--completado {
+  color: #10b981;
+}
+
+/* Amarillo / Ámbar para en curso */
+.welcome-section__tema-estado--en_curso {
+  color: #f59e0b;
+}
+
+/* Círculo punteado / tenue para pendientes */
+.welcome-section__tema-estado--pendiente {
+  color: var(--ink-faint);
+  opacity: 0.35;
+}
+
+/* ============================================================
+   PREGUNTAS FRECUENTES (FAQ)
+   ============================================================ */
+
+.welcome-section__faq {
+  width: 100%;
+  padding: 40px 0;
+}
+
+@media (min-width: 640px) {
+  .welcome-section__faq {
+    padding: 56px 0;
+  }
+}
+
+.welcome-section__faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.welcome-section__faq-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 4px 16px;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease !important;
+}
+
+.welcome-section__faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 14px 8px;
+  margin: 0 -8px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  transition: all .2s linear;
+}
+
+.welcome-section__faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.welcome-section__faq-item summary:hover {
+  background: var(--surface-hover);
+}
+
+.welcome-section__faq-item summary::after {
+  content: "+";
+  color: var(--ink-faint);
+  font-weight: 400;
+  font-size: 1.2rem;
+  transition: transform .3s ease, color .2s ease !important;
+}
+
+.welcome-section__faq-item[open] {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-section__faq-item[open] summary {
+  color: var(--primary);
+}
+
+.welcome-section__faq-item[open] summary::after {
+  content: "–";
+  color: var(--primary);
+  transform: rotate(180deg);
+}
+
+.welcome-section__faq-item p {
+  margin: 6px 0 14px;
+  color: var(--ink-soft);
+  font-size: .96rem;
+  line-height: 1.55;
+  animation: faqTextoEntrada .25s ease-out;
+}
+
+@keyframes faqTextoEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-section__faq-summary-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-section__faq-icon {
+  flex-shrink: 0;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+/* ============================================================
+   FORMULARIO Y CONTACTO
+   ============================================================ */
+
+.welcome-section__form-section {
+  width: 100%;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.welcome-section__form-header {
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+}
+
+.welcome-section__form-header .welcome-section__title {
+  margin-bottom: 10px;
+}
+
+.welcome-section__form-desc {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.welcome-section__form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px;
+  box-sizing: border-box;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-section__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+}
+
+.welcome-section__campo-label {
+  display: block;
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.welcome-section__campo-help {
+  margin: -3px 0 2px;
+  color: var(--ink-soft);
+  font-size: .92rem;
+  line-height: 1.45;
+}
+
+.welcome-section__textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  resize: none;
+  min-height: 110px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.welcome-section__textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-bg);
+}
+
+.welcome-section__btn-submit {
+  min-width: 210px;
+  min-height: 48px;
+  padding: 12px 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: var(--primary);
+  color: var(--ink-on-primary);
+  border: none;
+  border-bottom: 3px solid var(--primary-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.welcome-section__btn-submit:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.welcome-section__btn-submit:active:not(:disabled) {
+  border-bottom-width: 0;
+  transform: translateY(3px);
 }

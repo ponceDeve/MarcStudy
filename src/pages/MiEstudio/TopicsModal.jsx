@@ -109,7 +109,7 @@ export default function TopicsModal({
           {inputEnfocado && (
             <div className="home-search-results">
               {temasFiltrados.length === 0 && (
-                <p style={{ padding: "12px 16px", color: "var(--ink-soft)" }}>
+                <p className="search-empty">
                   Ningún tema coincide con "{busqueda}".
                 </p>
               )}
@@ -124,7 +124,7 @@ export default function TopicsModal({
                   className={`home-search-result ${item.tema === temaActual ? "is-focused" : ""}`}
                 >
                   <p>
-                    <span style={{ opacity: 0.6, marginRight: "8px" }}>#{index + 1}</span>
+                    <span className="home-search-result__num">#{index + 1}</span>
                     {item.tema}
                   </p>
                 </button>
@@ -158,14 +158,8 @@ export default function TopicsModal({
         </div>
 
         {listaTemas.length === 0 && (
-          <p style={{ color: "var(--ink-soft)", marginBottom: "20px" }}>
+          <p className="levels-modal__empty">
             No hay temas registrados para este curso.
-          </p>
-        )}
-
-        {listaTemas.length > 0 && temasFiltrados.length === 0 && (
-          <p style={{ color: "var(--ink-soft)", marginBottom: "20px" }}>
-            Ningún tema coincide con "{busqueda}".
           </p>
         )}
 

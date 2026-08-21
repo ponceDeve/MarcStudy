@@ -376,22 +376,15 @@
 
 .search-result-item.is-tema{
   font-size:.95rem;
-  margin-left:24px;
-  width:calc(100% - 24px);
-  border-left:2px solid var(--border);
-  border-bottom:2px solid var(--border);
   background-color: transparent;
   color:var(--ink);
-  transition:  all .2s linear
+  transition: background-color .15s ease;
 }
 
 .search-result-item.is-tema:hover,
 .search-result-item.is-tema.is-focused{
   background-color: rgba(0,0,0,.1);
-  border-left-color:var(--primary);
-  border-bottom-color:var(--primary);
   color:var(--ink);
-  border-bottom-left-radius: var(--radius-sm);
 }
 
 .search-result-item.is-tema:active{
@@ -461,6 +454,26 @@
   border-top:none;
   border-radius:0 0 30px 30px;
   box-shadow:var(--shadow-md);
+}
+
+/* Las sugerencias (historial, resultados y "sin resultados") del
+   buscador de inicio SIEMPRE flotan por encima del contenido que
+   viene después (como el botón Continuar), nunca empujan el layout. */
+.home-search .search-history,
+.home-search-empty{
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  margin-top:0;
+  z-index:20;
+  box-shadow:var(--shadow-md);
+}
+
+.home-search .search-empty{
+  margin:0;
+  border-top:none;
+  border-radius:0 0 30px 30px;
 }
 
 
@@ -560,4 +573,14 @@
   font-weight:500;
   display:flex;
   align-items:center;
+}
+
+.home-search-result__num{
+  opacity:.6;
+  margin-right:8px;
+}
+
+.levels-modal__empty{
+  color:var(--ink-soft);
+  margin-bottom:20px;
 }

@@ -2,28 +2,29 @@ import { useState } from "react";
 import { buscarConPuntaje } from "../../lib/buscador";
 
 // Buscador discreto (NO modal) para saltar a una tarjeta de teoría
-// específica del tema actual. Siempre es un input directo arriba de
-// la tarjeta, en cualquier tamaño de pantalla. Sin sugerencias hasta
-// escribir.
+// específica del tema actual. Busca por título de sección, texto y
+// explicación. Sin sugerencias hasta escribir.
 export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
   const [query, setQuery] = useState("");
   const [buscadorFocus, setBuscadorFocus] = useState(false);
 
-  const itemsConIndice = flatPuntos.map((p, index) => ({ p, index }));
+  const hayQuery = query.trim() !== "";
 
-  const resultados = query.trim()
+  const resultados = hayQuery
     ? buscarConPuntaje(
-        itemsConIndice,
+        flatPuntos,
         query,
-        ({ p }) => `${p.seccionTitulo || ""} ${p.texto || ""}`
-      ).slice(0, 6)
+        (p) => `${p.seccionTitulo || ""} ${p.texto || ""} ${p.explicacion || ""}`
+      ).slice(0, 8)
     : [];
 
-  function elegir(index) {
-    onSelect(index);
+  function elegir(puntoId) {
+    onSelect(puntoId);
     setQuery("");
     setBuscadorFocus(false);
   }
+
+  const mostrarDropdown = buscadorFocus && hayQuery;
 
   return (
     <div className="theory-search">
@@ -35,21 +36,27 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setBuscadorFocus(true)}
-          onBlur={() => setBuscadorFocus(false)}
-          placeholder="Buscar en este tema..."
+          onBlur={() => setTimeout(() => setBuscadorFocus(false), 150)}
+          placeholder="Buscar título, texto o explicación..."
           className={`theory-search__input ${
             query.trim() && buscadorFocus ? "has-value" : ""
           }`}
         />
 
-        {buscadorFocus && resultados.length > 0 && (
+        {mostrarDropdown && (
           <div className="theory-search__dropdown">
-            {resultados.map(({ p, index }) => (
+            {resultados.length === 0 && (
+              <p className="theory-search__empty">
+                Sin resultados para "{query}"
+              </p>
+            )}
+
+            {resultados.map((p) => (
               <button
-                key={index}
+                key={p.id}
                 type="button"
                 onMouseDown={(e) => e.preventDefault()}
-                onClick={() => elegir(index)}
+                onClick={() => elegir(p.id)}
                 className="theory-search__item"
               >
                 {p.seccionTitulo && (

@@ -1,599 +1,949 @@
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================ */
+
 .container__repaso {
   padding: 100px 10px;
 }
 
-.repaso{
-  min-height:calc(100vh - 200px);
-  padding:28px 24px;
-  box-sizing:border-box;
-  color:var(--ink);
-  display:flex;
-  flex-direction:column;
-  gap:22px;
+
+/* ============================================================
+   CONTENEDOR REPASOS
+   ============================================================ */
+
+.repaso {
+  min-height: calc(100vh - 200px);
+  padding: 28px 24px;
+  box-sizing: border-box;
+
+  color: var(--ink);
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
   background-color: var(--ink-on-primary);
   border-radius: var(--radius-lg);
 }
 
-.repaso__nav{
-  position:fixed;
-  top:16px;
-  right:16px;
-  z-index:200;
-  display:flex;
-  gap:8px;
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+
+.repaso__nav {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 200;
+
+  display: flex;
+  gap: 8px;
 }
 
-.repaso__nav-link{
-  display:flex;
-  align-items:center;
-  gap:6px;
-  font-size:13.5px;
-  font-weight:600;
-  color:var(--ink-soft);
-  background:transparent;
-  padding:6px 12px;
-  border-radius:var(--radius-full);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow-sm);
+.repaso__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 13.5px;
+  font-weight: 600;
+
+  color: var(--ink-soft);
+  background: transparent;
+
+  padding: 6px 12px;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+
+  box-shadow: var(--shadow-sm);
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.repaso__nav-link:hover{
-  color:var(--primary);
+.repaso__nav-link:hover {
+  color: var(--primary);
 }
 
-.repaso__header{
-  margin:0;
+
+/* ============================================================
+   CABECERA
+   ============================================================ */
+
+.repaso__header {
+  margin: 0;
 }
 
-.repaso__title{
-  font-size:26px;
-  font-weight:700;
-  font-family:var(--font-display);
-  color:var(--ink);
-  margin:0;
+.repaso__title {
+  margin: 0;
+
+  font-size: 26px;
+  font-weight: 700;
+  font-family: var(--font-display);
+
+  color: var(--ink);
 }
 
-.repaso__date{
-  font-size:18px;
-  color:var(--ink-soft);
-  margin:4px 0 0;
+.repaso__date {
+  margin: 4px 0 0;
+
+  font-size: 18px;
+  color: var(--ink-soft);
 }
 
-.repaso__instruction{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  width:100%;
-  margin:0;
-  padding:12px 14px;
-  box-sizing:border-box;
-  background:var(--surface-alt);
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  color:var(--ink-soft);
+
+/* ============================================================
+   INSTRUCCIÓN
+   ============================================================ */
+
+.repaso__instruction {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 0;
+  padding: 12px 14px;
+
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  color: var(--ink-soft);
 }
 
-.repaso__instruction-book{
+.repaso__instruction-book {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: var(--ink-on-primary);
-  width:32px;
-  height:32px;
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--primary);
-  font-size:18px;
+  color: var(--primary);
+
+  font-size: 18px;
+
   border-radius: var(--radius-full);
 }
 
-.repaso__instruction p{
-  margin:0;
-  font-size:18px;
-  line-height:1.5;
+.repaso__instruction p {
+  margin: 0;
+
+  font-size: 18px;
+  line-height: 1.5;
 }
 
-.repaso__instruction strong{
-  color:var(--ink);
+.repaso__instruction strong {
+  color: var(--ink);
 }
 
-.repaso__instruction-check{
-  width:32px;
-  height:32px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 5px;
-  vertical-align:middle;
-  background:var(--ink-on-primary);
-  color:var(--ink-soft);
-  border:1px solid var(--border);
-  border-radius:50%;
+.repaso__instruction-check {
+  width: 32px;
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 5px;
+
+  vertical-align: middle;
+
+  background: var(--ink-on-primary);
+  color: var(--ink-soft);
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
 }
 
-.repaso__section{
-  margin:0;
+
+/* ============================================================
+   REPASOS DE HOY
+   ============================================================ */
+
+.repaso__section {
+  margin: 0;
 }
 
-.repaso__list{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+.repaso__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.repaso__item{
-  border-radius:var(--radius-md);
-  padding:14px;
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
+
+/* ============================================================
+   TARJETA DE REPASO
+   ============================================================ */
+
+.repaso__item {
+  position: relative;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  padding: 14px;
+
+  border-radius: var(--radius-md);
+
   outline: 2px solid transparent;
-  transition: all .2s linear;
-  position:relative;
+
+  color: var(--ink);
+
+  transition:
+    box-shadow 0.2s ease,
+    outline-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.repaso__item:hover{
-  box-shadow:var(--shadow-sm);
-  outline: 2px solid var(--success-bg);
+.repaso__item:hover {
+  box-shadow: var(--shadow-sm);
+  outline-color: var(--success-bg);
 }
 
-.repaso__item.interval-0{
-  background:var(--ink-on-primary);
-  border: var(--nested-border);
-  border:1px solid var(--primary-light);
+
+/* ============================================================
+   INTERVALOS
+   0 = 1 día
+   1 = 3 días
+   2 = 7 días
+   3 = 21 días
+   ============================================================ */
+
+/* ---------- INTERVALO 0 · 1 DÍA ---------- */
+
+.repaso__item.interval-0 {
+  background: var(--ink-on-primary);
+  border: 1px solid var(--primary-light);
 }
 
-.repaso__item.interval-1{
-  background:var(--secondary-bg);
-  border: var(--nested-border);
-  border:1px solid var(--secondary);
+
+/* ---------- INTERVALO 1 · 3 DÍAS ---------- */
+
+.repaso__item.interval-1 {
+  background: var(--secondary-bg);
+  border: 1px solid var(--secondary);
 }
 
-.repaso__item.interval-2{
-  background:var(--accent-bg);
-  border: var(--nested-border);
-  border:1px solid var(--accent);
+
+/* ---------- INTERVALO 2 · 7 DÍAS ---------- */
+
+.repaso__item.interval-2 {
+  background: var(--accent-bg);
+  border: 1px solid var(--accent);
 }
 
-.repaso__item.interval-3{
-  background:var(--danger-bg);
-  border:1px solid var(--danger);
+
+/* ---------- INTERVALO 3 · 21 DÍAS ---------- */
+
+.repaso__item.interval-3 {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger);
 }
 
-.repaso__item.interval-0,
-.repaso__item.interval-1,
-.repaso__item.interval-2,
-.repaso__item.interval-3{
-  color:var(--ink);
+
+/* ============================================================
+   CONTENIDO DE LAS TARJETAS
+   ============================================================ */
+
+.repaso__item-body {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 5px;
 }
 
-.repaso__item.interval-0 .repaso__item-subject,
-.repaso__item.interval-1 .repaso__item-subject,
-.repaso__item.interval-2 .repaso__item-subject,
-.repaso__item.interval-3 .repaso__item-subject{
-  color:var(--ink);
-  font-weight:800;
+
+/* ============================================================
+   ETIQUETAS
+   ============================================================ */
+
+.repaso__item-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 4px;
 }
 
-.repaso__item.interval-0 .repaso__item-tema,
-.repaso__item.interval-1 .repaso__item-tema,
-.repaso__item.interval-2 .repaso__item-tema,
-.repaso__item.interval-3 .repaso__item-tema,
-.repaso__item.interval-0 .repaso__item-meta,
-.repaso__item.interval-1 .repaso__item-meta,
-.repaso__item.interval-2 .repaso__item-meta,
-.repaso__item.interval-3 .repaso__item-meta{
-  color:var(--ink);
-  opacity:.85;
+
+/* ---------- BADGES ---------- */
+
+.repaso__badge {
+  padding: 2px 8px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  border-radius: 6px;
+
+  color: var(--ink-on-primary);
 }
 
-.repaso__badge{
-  font-size:15px;
-  font-weight:700;
-  padding:2px 8px;
-  border-radius:6px;
-  color:var(--ink-on-primary);
+
+/* ---------- BADGE INTERVALO 0 ---------- */
+
+.repaso__badge.interval-0 {
+  background: var(--primary);
 }
 
-.repaso__badge.interval-0{
-  background:var(--primary);
+
+/* ---------- BADGE INTERVALO 1 ---------- */
+
+.repaso__badge.interval-1 {
+  background: var(--secondary);
 }
 
-.repaso__badge.interval-1{
-  background:var(--secondary);
+
+/* ---------- BADGE INTERVALO 2 ---------- */
+
+.repaso__badge.interval-2 {
+  background: var(--accent-dark);
 }
 
-.repaso__badge.interval-2{
-  background:var(--accent-dark);
+
+/* ---------- BADGE INTERVALO 3 ---------- */
+
+.repaso__badge.interval-3 {
+  background: var(--danger);
 }
 
-.repaso__badge.interval-3{
-  background:var(--danger);
+
+/* ============================================================
+   DÍA
+   ============================================================ */
+
+.repaso__item-day {
+  font-size: 16px;
+  font-weight: 600;
+
+  color: var(--ink);
+  opacity: 0.7;
+
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-.repaso__dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  flex-shrink:0;
-  display:inline-block;
+
+/* ============================================================
+   VENCIDO
+   ============================================================ */
+
+.repaso__item-overdue {
+  font-size: 16px;
+  font-weight: 700;
+
+  color: var(--danger);
 }
 
-.repaso__dot.interval-0{
-  background:var(--primary);
+
+/* ============================================================
+   CURSO
+   ============================================================ */
+
+.repaso__item-subject {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+
+  color: var(--ink);
 }
 
-.repaso__dot.interval-1{
-  background:var(--secondary);
+
+/* ============================================================
+   TEMA
+   ============================================================ */
+
+.repaso__item-tema {
+  margin: 2px 0 0;
+
+  font-size: 18px;
+
+  color: var(--ink);
+  opacity: 0.85;
 }
 
-.repaso__dot.interval-2{
-  background:var(--accent-dark);
+
+/* ============================================================
+   INFORMACIÓN DEL REPASO
+   ============================================================ */
+
+.repaso__item-meta {
+  margin: 4px 0 0;
+
+  font-size: 15px;
+
+  color: var(--ink);
+  opacity: 0.85;
 }
 
-.repaso__dot.interval-3{
-  background:var(--danger);
+
+/* ============================================================
+   BOTÓN REPASAR
+   ============================================================ */
+
+.repaso__item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 8px;
+  padding: 7px 12px;
+
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-full);
+
+  background: var(--primary);
+  color: var(--bg);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
 }
 
-.repaso__item-body{
-  flex:1;
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  align-items:flex-start;
+.repaso__item-link:hover {
+  background: var(--primary-dark);
+  color: var(--ink-on-primary);
 }
 
-.repaso__item-tags{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-bottom:4px;
+.repaso__item-link:active {
+  transform: scale(0.97);
+
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
-.repaso__item-day{
-  font-size:16px;
-  font-weight:600;
-  color:var(--ink);
-  opacity:.7;
-  text-transform:uppercase;
-  letter-spacing:.03em;
+
+/* ============================================================
+   CHECK DE REPASO
+   ============================================================ */
+
+.repaso__check {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--ink-faint);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
-.repaso__item-overdue{
-  font-size:16px;
-  font-weight:700;
-  color:var(--danger);
+.repaso__check:hover {
+  border-color: var(--secondary);
+  background: var(--secondary);
+  color: var(--ink-on-primary);
 }
 
-.repaso__item-subject{
-  font-weight:700;
-  font-size:18px;
-  line-height:1.2;
-  color:var(--ink);
-  margin:0;
+
+/* ============================================================
+   PAPELERA
+   ============================================================ */
+
+.repaso__trash {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--danger);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
-.repaso__item-tema{
-  font-size:18px;
-  color:var(--ink-soft);
-  margin:2px 0 0;
+.repaso__trash:hover {
+  color: var(--danger-dark);
+  background: var(--danger-bg);
 }
 
-.repaso__item-meta{
-  font-size:15px;
-  margin:4px 0 0;
+
+/* ============================================================
+   ESTADO VACÍO
+   ============================================================ */
+
+.repaso__empty {
+  padding: 56px 16px;
+
+  text-align: center;
+
+  background: var(--surface-alt);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
 }
 
-.repaso__item-link{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  margin-top:8px;
-  padding:7px 12px;
-  border:1px solid var(--primary);
-  border-radius:var(--radius-full);
-  background:var(--primary);
-  color:var(--bg);
-  font-size:.9rem;
-  font-weight:700;
-  text-decoration:none;
-  cursor:pointer;
-  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .15s ease;
+.repaso__empty-emoji {
+  margin-bottom: 12px;
+
+  font-size: 44px;
+
+  opacity: 0.9;
 }
 
-.repaso__item-link:hover{
-  background:var(--primary-dark);
-  color:var(--ink-on-primary);
+.repaso__empty-title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: var(--ink);
 }
 
-.repaso__item-link:active{
-  transform:scale(.97);
-  background:var(--primary-dark);
-  border-color:var(--primary-dark);
+.repaso__empty-sub {
+  margin: 4px 0 0;
+
+  font-size: 14px;
+
+  color: var(--ink-soft);
 }
 
-.repaso__check{
-  flex-shrink:0;
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  border:2px solid var(--border-strong);
-  background:transparent;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--ink-faint);
-  cursor:pointer;
-  transition:background .2s ease,border-color .2s ease,color .2s ease;
+
+/* ============================================================
+   PRÓXIMOS REPASOS
+   ============================================================ */
+
+.repaso__proximos-title {
+  margin: 0 0 12px;
+
+  font-size: 22px;
+  font-weight: 700;
+  font-family: var(--font-display);
+
+  color: var(--ink);
 }
 
-.repaso__check:hover{
-  border-color:var(--secondary);
-  background:var(--secondary);
-  color:var(--ink-on-primary);
+.repaso__proximos-empty {
+  margin: 0;
+
+  font-size: 18px;
+
+  color: var(--ink-soft);
 }
 
-.repaso__trash{
-  position:absolute;
-  bottom:10px;
-  right:10px;
-  color:var(--danger);
-  background:transparent;
-  border:none;
-  padding:8px;
-  border-radius:var(--radius-sm);
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:color .2s ease,background .2s ease;
+.repaso__proximos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.repaso__trash:hover{
-  color:var(--danger-dark);
-  background:var(--danger-bg);
+
+/* ============================================================
+   GRUPO POR FECHA
+   ============================================================ */
+
+.repaso__proximos-group {
+  overflow: hidden;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
 }
 
-.repaso__empty{
-  text-align:center;
-  padding:56px 16px;
-  background:var(--surface-alt);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
+
+/* ============================================================
+   CABECERA DEL GRUPO
+   ============================================================ */
+
+.repaso__proximos-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 14px;
+
+  background: var(--surface-alt);
+
+  border-bottom: 1px solid var(--border);
 }
 
-.repaso__empty-emoji{
-  font-size:44px;
-  margin-bottom:12px;
-  opacity:.9;
+.repaso__proximos-fecha {
+  font-size: 14px;
+  font-weight: 700;
+
+  color: var(--ink);
 }
 
-.repaso__empty-title{
-  font-weight:700;
-  color:var(--ink);
-  font-size:16px;
-  margin:0;
+.repaso__proximos-etiqueta {
+  font-size: 14px;
+
+  color: var(--ink-faint);
 }
 
-.repaso__empty-sub{
-  color:var(--ink-soft);
-  font-size:14px;
-  margin:4px 0 0;
+
+/* ============================================================
+   FILA DE PRÓXIMO REPASO
+   ============================================================ */
+
+.repaso__proximos-row {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border-bottom: 1px solid var(--border);
 }
 
-.repaso__proximos-title{
-  font-size:22px;
-  font-weight:700;
-  font-family:var(--font-display);
-  color:var(--ink);
-  margin:0 0 12px;
+.repaso__proximos-row:last-child {
+  border-bottom: none;
 }
 
-.repaso__proximos-empty{
-  font-size:18px;
-  color:var(--ink-soft);
-  margin:0;
+
+/* ============================================================
+   CONTENIDO DE LA FILA
+   ============================================================ */
+
+.repaso__proximos-row-content {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.repaso__proximos-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+
+/* ============================================================
+   PUNTO DE INTERVALO
+   ============================================================ */
+
+.repaso__dot {
+  width: 8px;
+  height: 8px;
+
+  display: inline-block;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
 }
 
-.repaso__proximos-group{
-  border:1px solid var(--border);
-  border-radius:var(--radius-md);
-  overflow:hidden;
+
+/* ---------- DOT INTERVALO 0 ---------- */
+
+.repaso__dot.interval-0 {
+  background: var(--primary);
 }
 
-.repaso__proximos-group-header{
-  padding:8px 14px;
-  background:var(--surface-alt);
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+
+/* ---------- DOT INTERVALO 1 ---------- */
+
+.repaso__dot.interval-1 {
+  background: var(--secondary);
 }
 
-.repaso__proximos-fecha{
-  font-size:14px;
-  font-weight:700;
-  color:var(--ink);
+
+/* ---------- DOT INTERVALO 2 ---------- */
+
+.repaso__dot.interval-2 {
+  background: var(--accent-dark);
 }
 
-.repaso__proximos-etiqueta{
-  font-size:14px;
-  color:var(--ink-faint);
+
+/* ---------- DOT INTERVALO 3 ---------- */
+
+.repaso__dot.interval-3 {
+  background: var(--danger);
 }
 
-.repaso__proximos-row{
-  padding:10px 14px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:8px;
-  border-bottom:1px solid var(--border);
-  position:relative;
+
+/* ============================================================
+   TEXTO DEL PRÓXIMO REPASO
+   ============================================================ */
+
+.repaso__proximos-subject {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--ink);
 }
 
-.repaso__proximos-row:last-child{
-  border-bottom:none;
+.repaso__proximos-tema {
+  overflow: hidden;
+
+  font-size: 13.5px;
+
+  color: var(--ink-faint);
+
+  text-overflow: ellipsis;
 }
 
-.repaso__proximos-row-content{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex:1;
-  min-width:0;
+
+/* ============================================================
+   PAPELERA PRÓXIMOS
+   ============================================================ */
+
+.repaso__proximos-trash {
+  flex-shrink: 0;
+
+  padding: 8px;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--danger);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
 }
 
-.repaso__proximos-subject{
-  font-size:14px;
-  font-weight:600;
-  color:var(--ink);
-  display:flex;
-  flex-direction:column;
-  min-width:0;
+.repaso__proximos-trash:hover {
+  color: var(--danger-dark);
+  background: var(--danger-bg);
 }
 
-.repaso__proximos-tema{
-  font-size:13.5px;
-  color:var(--ink-faint);
-  overflow:hidden;
-  text-overflow:ellipsis;
+
+/* ============================================================
+   MODAL ELIMINAR
+   ============================================================ */
+
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background: var(--overlay-strong);
+
+  backdrop-filter: blur(3px);
 }
 
-.repaso__proximos-trash{
-  flex-shrink:0;
-  background:transparent;
-  border:none;
-  color:var(--danger);
-  cursor:pointer;
-  padding:8px;
-  border-radius:var(--radius-sm);
-  transition:color .2s ease,background .2s ease;
+.delete-modal-content {
+  width: 100%;
+  max-width: 350px;
+
+  box-sizing: border-box;
+
+  padding: 24px;
+
+  text-align: center;
+
+  background: var(--ink-on-primary);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-lg);
 }
 
-.repaso__proximos-trash:hover{
-  color:var(--danger-dark);
-  background:var(--danger-bg);
+.delete-modal-icon {
+  margin-bottom: 12px;
+
+  font-size: 2rem;
+
+  color: var(--danger);
 }
 
-.delete-modal-overlay{
-  position:fixed;
-  inset:0;
-  background:var(--overlay-strong);
-  backdrop-filter:blur(3px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:16px;
-  z-index:9999;
+.delete-modal-title {
+  margin: 0 0 12px;
+
+  color: var(--ink);
 }
 
-.delete-modal-content{
-  width:100%;
-  max-width:350px;
-  padding:24px;
-  box-sizing:border-box;
-  text-align:center;
-  background:var(--ink-on-primary);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  box-shadow:var(--shadow-lg);
+.delete-modal-text {
+  margin: 0 0 24px;
+
+  font-size: 0.9rem;
+
+  color: var(--ink-soft);
 }
 
-.delete-modal-icon{
-  font-size:2rem;
-  color:var(--danger);
-  margin-bottom:12px;
+
+/* ============================================================
+   BOTONES DEL MODAL
+   ============================================================ */
+
+.delete-modal-buttons {
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+
+  gap: 12px;
 }
 
-.delete-modal-title{
-  margin:0 0 12px;
-  color:var(--ink);
+.delete-modal-buttons--reverse {
+  flex-direction: row-reverse;
 }
 
-.delete-modal-text{
-  color:var(--ink-soft);
-  margin:0 0 24px;
-  font-size:.9rem;
-}
 
-.delete-modal-buttons{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  flex-direction:row;
-}
+/* ============================================================
+   BOTÓN CONFIRMAR
+   ============================================================ */
 
-.delete-modal-buttons--reverse{
-  flex-direction:row-reverse;
-}
+.btn-confirm {
+  flex: 1;
 
-.btn-confirm{
-  flex:1;
-  padding:10px;
-  border-radius:var(--radius-md);
-  border:1px solid var(--danger);
-  background:transparent;
-  color:var(--danger);
-  font-weight:700;
-  cursor:pointer;
-  transition:background .2s ease,border-color .2s ease,opacity .2s ease;
+  padding: 10px;
+
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+
+  background: transparent;
+  color: var(--danger);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .btn-confirm--phase1:hover,
-.btn-confirm--phase2:hover{
-  background:var(--surface-hover);
+.btn-confirm--phase2:hover {
+  background: var(--surface-hover);
 }
 
-.btn-cancel{
-  flex:1;
-  padding:10px;
-  border-radius:var(--radius-md);
-  border:1px solid var(--primary-dark);
-  background:var(--primary);
-  color:var(--ink-on-primary);
-  font-weight:700;
-  cursor:pointer;
-  transition:background .2s ease,border-color .2s ease;
+
+/* ============================================================
+   BOTÓN CANCELAR
+   ============================================================ */
+
+.btn-cancel {
+  flex: 1;
+
+  padding: 10px;
+
+  border: 1px solid var(--primary-dark);
+  border-radius: var(--radius-md);
+
+  background: var(--primary);
+  color: var(--ink-on-primary);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.btn-cancel:hover{
-  background:var(--primary-dark);
-  border-color:var(--secondary);
+.btn-cancel:hover {
+  background: var(--primary-dark);
+  border-color: var(--secondary);
 }
 
-@media (max-width:480px){
-  .repaso{
-    padding:22px 16px;
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .repaso {
+    padding: 22px 16px;
   }
 
-  .repaso__title{
-    font-size:22px;
+  .repaso__title {
+    font-size: 22px;
   }
 
-  .repaso__instruction{
-    align-items:flex-start;
+  .repaso__instruction {
+    align-items: flex-start;
   }
 
-  .repaso__item{
-    align-items:flex-start;
+  .repaso__instruction p {
+    font-size: 16px;
   }
 
-  .repaso__proximos-group-header{
-    gap:10px;
+  .repaso__item {
+    align-items: flex-start;
   }
 
-  .delete-modal-buttons{
-    flex-direction:column;
+  .repaso__item-subject {
+    font-size: 17px;
   }
 
-  .delete-modal-buttons--reverse{
-    flex-direction:column;
+  .repaso__item-tema {
+    font-size: 16px;
+  }
+
+  .repaso__proximos-group-header {
+    gap: 10px;
+  }
+
+  .delete-modal-buttons {
+    flex-direction: column;
+  }
+
+  .delete-modal-buttons--reverse {
+    flex-direction: column;
   }
 }
