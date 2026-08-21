@@ -2,18 +2,17 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// Si entrás a localhost:PUERTO/ a secas (sin /cont_crono/) — por un
-// enlace o pestaña vieja guardada — Vite normalmente muestra un error
-// de "base URL" en vez de la app. Este plugin redirige automáticamente
-// esa raíz hacia /cont_crono/ para que no haga falta escribir la ruta
-// completa a mano cada vez.
 function redirigirRaizABase() {
   return {
     name: "redirigir-raiz-a-base",
+
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         if (req.url === "/" || req.url === "") {
-          res.writeHead(302, { Location: "/cont_crono/" });
+          res.writeHead(302, {
+            Location: "/cont_crono/",
+          });
+
           res.end();
           return;
         }
@@ -25,8 +24,11 @@ function redirigirRaizABase() {
 }
 
 export default defineConfig({
+  base: "/cont_crono/",
+
   plugins: [
     redirigirRaizABase(),
+
     react(),
 
     VitePWA({
@@ -34,12 +36,15 @@ export default defineConfig({
       registerType: "autoUpdate",
 
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,json,mp3,ttf}"],
+        globPatterns: [
+          "**/*.{js,css,html,ico,png,svg,json,mp3,ttf,woff,woff2}",
+        ],
 
-        // Evita que el service worker intercepte las peticiones
-        // a PDFs y las responda con index.html (fallback de SPA).
-        // Así "Ver PDF" abre el archivo PDF real.
-        navigateFallbackDenylist: [/^\/cont_crono\/PDFs\//],
+        navigateFallback: "/cont_crono/index.html",
+
+        navigateFallbackDenylist: [
+          /^\/cont_crono\/PDFs\//,
+        ],
       },
 
       manifest: {
@@ -78,8 +83,6 @@ export default defineConfig({
       },
     }),
   ],
-
-  base: "/cont_crono/",
 
   server: {
     port: 3000,
