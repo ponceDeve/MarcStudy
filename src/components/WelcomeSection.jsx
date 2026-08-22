@@ -128,6 +128,11 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
   // Solo conservamos el estado del FAQ, ya no necesitamos el del curso.
   const [faqAbierto, setFaqAbierto] = useState(null);
 
+  // Por curso, en qué página de temas está (páginas de TEMAS_POR_PAGINA).
+  const [paginaPorCurso, setPaginaPorCurso] = useState({});
+
+  const TEMAS_POR_PAGINA = 6;
+
   const cursosConTemas = useMemo(
     () =>
       manifest.cursos.filter(
@@ -257,9 +262,13 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
                     </p>
                   </div>
 
-                  {/* LISTA DE TEMAS: Siempre visible, sin condiciones */}
+                  {/* LISTA DE TEMAS: se muestra de a TEMAS_POR_PAGINA */}
                   <ul className="welcome-section__temas">
-                    {curso.temas.map((tema) => {
+                    {(() => {
+                      const pagina = paginaPorCurso[curso.codigo] || 0;
+                      const inicio = pagina * TEMAS_POR_PAGINA;
+                      return curso.temas.slice(inicio, inicio + TEMAS_POR_PAGINA);
+                    })().map((tema) => {
                       const estado = estadoTema(curso, tema);
 
                       return (
@@ -301,6 +310,48 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
                       );
                     })}
                   </ul>
+
+                  {curso.temas.length > TEMAS_POR_PAGINA && (() => {
+                    const pagina = paginaPorCurso[curso.codigo] || 0;
+                    const hayMas = (pagina + 1) * TEMAS_POR_PAGINA < curso.temas.length;
+                    const hayMenos = pagina > 0;
+
+                    return (
+                      <div className="welcome-section__temas-nav">
+                        {hayMenos && (
+                          <button
+                            type="button"
+                            className="welcome-section__temas-toggle"
+                            onClick={() =>
+                              setPaginaPorCurso((prev) => ({
+                                ...prev,
+                                [curso.codigo]: pagina - 1
+                              }))
+                            }
+                          >
+                            <i className="fa-solid fa-chevron-up" />
+                            Mostrar menos
+                          </button>
+                        )}
+
+                        {hayMas && (
+                          <button
+                            type="button"
+                            className="welcome-section__temas-toggle"
+                            onClick={() =>
+                              setPaginaPorCurso((prev) => ({
+                                ...prev,
+                                [curso.codigo]: pagina + 1
+                              }))
+                            }
+                          >
+                            Mostrar más
+                            <i className="fa-solid fa-chevron-down" />
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })()}
                 </article>
               );
             })}

@@ -209,6 +209,7 @@ function useLecturaTeoriaVoz(texto, activo) {
     }
 
     let cancelado = false;
+    let timeoutId = null;
 
     window.speechSynthesis.cancel();
 
@@ -256,7 +257,16 @@ function useLecturaTeoriaVoz(texto, activo) {
         utter.voice = vozGrave;
       }
 
-      window.speechSynthesis.speak(utter);
+      // En WebView/Android (Capacitor), cancel() + speak() en el mismo
+      // tick suele fallar en silencio: el motor se queda leyendo el
+      // audio anterior en vez de cambiar al nuevo (por eso "repetía
+      // el mismo título" al tocar distintos puntos). Encolar el
+      // speak() con un pequeño delay le da tiempo al cancel() de
+      // aplicarse de verdad antes de hablar el texto nuevo.
+      timeoutId = setTimeout(() => {
+        if (cancelado) return;
+        window.speechSynthesis.speak(utter);
+      }, 80);
     }
 
     const vocesYaListas =
@@ -271,6 +281,10 @@ function useLecturaTeoriaVoz(texto, activo) {
 
     return () => {
       cancelado = true;
+
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
 
       if (window.speechSynthesis) {
         window.speechSynthesis.cancel();
@@ -3075,108 +3089,15 @@ export default function MiEstudioPage() {
                   </div>
 
                   <div className="teoria-articulo-web">
-                    <style>{`
-                      .teoria-articulo-web {
-                        max-width: 800px;
-                        margin: 0 auto;
-                      }
-                      .teoria-top-actions {
-                        display: flex;
-                        justify-content: flex-end;
-                        margin-bottom: 30px;
-                      }
-                      .teoria-seccion {
-                        margin-bottom: 56px;
-                      }
-                      .teoria-etiqueta-wrap {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        margin-bottom: 16px;
-                        border-bottom: 1px solid var(--border, #E1E6EC);
-                        padding-bottom: 8px;
-                        cursor: pointer;
-                        user-select: none;
-                      }
-                      .teoria-etiqueta-checkbox {
-                        width: 24px;
-                        height: 24px;
-                        cursor: pointer;
-                        accent-color: var(--primary, #2563EB);
-                      }
-                      .teoria-etiqueta {
-                        font-family: var(--font-display, "Raleway", sans-serif);
-                        font-size: 1.8rem;
-                        font-weight: 700;
-                        color: var(--primary, #2563EB);
-                        margin: 0;
-                        line-height: 1.3;
-                      }
-                      .teoria-punto {
-                        margin-bottom: 32px;
-                      }
-                      .teoria-contenido-principal {
-                        font-family: var(--font-body, "Lato", sans-serif);
-                        font-size: 1.15rem;
-                        line-height: 1.8;
-                        color: var(--ink, #1C2430);
-                        margin-bottom: 24px;
-                      }
-                      .teoria-explicacion-extra {
-                        background-color: var(--surface, #FFFFFF);
-                        padding: 24px;
-                        border-radius: var(--radius-md, 12px);
-                        border-left: 4px solid var(--primary, #2563EB);
-                        color: var(--ink-soft, #4A5568);
-                        font-size: 1.05rem;
-                        line-height: 1.7;
-                      }
-                      .teoria-explicacion-icon {
-                        color: var(--primary, #2563EB);
-                        font-size: 1.3rem;
-                        margin-top: 4px;
-                      }
-                      .teoria-boton-examen {
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 12px;
-                        background-color: var(--primary, #2563EB);
-                        color: var(--ink-on-primary, #FFFFFF);
-                        padding: 16px 36px;
-                        font-size: 1.25rem;
-                        font-family: var(--font-display, "Raleway", sans-serif);
-                        font-weight: 700;
-                        border-radius: var(--radius-full, 999px);
-                        border: none;
-                        cursor: pointer;
-                        transition: all 0.2s ease;
-                        text-transform: uppercase;
-                        letter-spacing: 0.5px;
-                        box-shadow: var(--shadow-md);
-                      }
-                      .teoria-boton-examen:hover {
-                        background-color: var(--primary-light, #93B4FB);
-                        transform: translateY(-2px);
-                        box-shadow: var(--shadow-lg);
-                      }
-                      @media (max-width: 600px) {
-                        .teoria-etiqueta {
-                          font-size: 1.5rem;
-                        }
-                        .teoria-contenido-principal {
-                          font-size: 1.05rem;
-                        }
-                        .teoria-explicacion-extra {
-                          padding: 16px;
-                          font-size: 1rem;
-                        }
-                        .teoria-boton-examen {
-                           width: 100%;
-                           padding: 16px 20px;
-                        }
-                      }
-                    `}</style>
+                    <div className="teoria-aviso-uso">
+                      <i className="fa-solid fa-circle-info teoria-aviso-uso__icon" />
+                      <span>
+                        Marca el check de un punto para que el examen
+                        de este tema use solo preguntas de esa parte.
+                        Si activas la bocina, se lee en voz alta
+                        únicamente el punto que toques.
+                      </span>
+                    </div>
 
                     {topicData?.theory?.map((seccion, idxSeccion) => (
                       <div key={idxSeccion} className="teoria-seccion">
@@ -3197,13 +3118,13 @@ export default function MiEstudioPage() {
                                 className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
                               >
                                 <div
-                                  style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '16px', alignItems: 'center' }}
+                                  className="teoria-punto__fila"
                                   onClick={() => setPuntoVozId(puntoId)}
                                 >
                                   <input
                                     type="checkbox"
                                     id={`checkbox-${puntoId}`}
-                                    style={{ marginTop: '6px', width: '20px', height: '20px', accentColor: 'var(--primary, #2563EB)', flexShrink: 0, cursor: 'pointer' }}
+                                    className="teoria-etiqueta-checkbox"
                                     checked={textosSeleccionados.includes(puntoId)}
                                     onClick={(e) => e.stopPropagation()}
                                     onChange={() => {
@@ -3214,7 +3135,7 @@ export default function MiEstudioPage() {
                                       );
                                     }}
                                   />
-                                  <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal" style={{ margin: 0, cursor: 'pointer' }}>
+                                  <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
                                     <GlossaryText
                                       text={punto.texto}
                                       glosario={topicData?.glosario}
@@ -3224,9 +3145,9 @@ export default function MiEstudioPage() {
 
                                 {punto.explicacion && (
                                   <div className="teoria-explicacion-extra">
-                                    <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
+                                    <div className="teoria-explicacion-extra__fila">
                                       <i className="fa-solid fa-lightbulb teoria-explicacion-icon" />
-                                      <div style={{ flex: 1 }}>
+                                      <div className="teoria-explicacion-extra__texto">
                                         <GlossaryText
                                           text={punto.explicacion}
                                           glosario={topicData?.glosario}
@@ -3241,26 +3162,7 @@ export default function MiEstudioPage() {
                         </div>
                       </div>
                     ))}
-
-                    <div className="mi-estudio__google" style={{ marginTop: '20px', marginBottom: '60px' }}>
-                      <div className="mi-estudio__google-input-wrap">
-                        <input
-                          autoComplete="off"
-                          type="search"
-                          name="buscar-google"
-                          value={googleQuery}
-                          onChange={(e) => setGoogleQuery(e.target.value)}
-                          onKeyDown={(e) => e.key === "Enter" && buscarEnGoogle()}
-                          placeholder="Pregúntale a Google..."
-                          className="mi-estudio__google-input"
-                        />
-                        <button onClick={buscarEnGoogle} className="mi-estudio__google-btn">
-                          <i className="fab fa-google" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div style={{ textAlign: 'center' }}>
+                    <div className="teoria-acciones-final">
                       {examenPreguntas.length > 0 ? (
                         <button
                           className="teoria-boton-examen"

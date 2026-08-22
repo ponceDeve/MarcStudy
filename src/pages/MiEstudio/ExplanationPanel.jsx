@@ -52,9 +52,19 @@ export default function ExplanationPanel({
 
     utter.lang = "es-PE";
 
-    window.speechSynthesis.speak(utter);
+    // Mismo ajuste que en la lectura de teoría: dar un pequeño margen
+    // entre cancel() y speak() para que no se quede leyendo el audio
+    // anterior en vez del nuevo.
+    let cancelado = false;
+    const timeoutId = setTimeout(() => {
+      if (!cancelado) {
+        window.speechSynthesis.speak(utter);
+      }
+    }, 80);
 
     return () => {
+      cancelado = true;
+      clearTimeout(timeoutId);
       window.speechSynthesis.cancel();
     };
   }, [

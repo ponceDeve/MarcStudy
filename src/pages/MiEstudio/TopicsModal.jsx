@@ -14,11 +14,16 @@ export default function TopicsModal({
   const [hasHover, setHasHover] = useState(false);
   const [busqueda, setBusqueda] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
+  const [mostrarTodos, setMostrarTodos] = useState(false);
   const puntoInicioToque = useRef(null);
 
   // Si el dedo se movió más de esto entre el toque inicial y el click,
   // fue un scroll, no una selección real: se ignora el click.
   const UMBRAL_ARRASTRE = 10;
+
+  // En vez de scrollear una lista larga de temas, se muestra solo un
+  // bloque inicial y el resto queda detrás de "Mostrar más".
+  const LIMITE_INICIAL = 48;
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.matchMedia) {
@@ -32,6 +37,7 @@ export default function TopicsModal({
       setActiveIndex(null);
       setHoveredIndex(null);
       setInputEnfocado(false);
+      setMostrarTodos(false);
     }
   }, [open]);
 
@@ -81,6 +87,14 @@ export default function TopicsModal({
   // El título solo cambia con clic/toque (activeIndex), nunca con el
   // simple hover — cambiar el header al pasar el mouse resultaba molesto.
   const temaEnTitulo = activeIndex !== null ? listaTemas[activeIndex]?.tema : null;
+
+  // Con búsqueda activa se muestran todos los resultados filtrados;
+  // sin búsqueda, se respeta el límite hasta que se pida "Mostrar más".
+  const hayBusqueda = busqueda.trim().length > 0;
+  const temasVisibles = hayBusqueda || mostrarTodos
+    ? temasFiltrados
+    : temasFiltrados.slice(0, LIMITE_INICIAL);
+  const hayMasTemas = !hayBusqueda && temasFiltrados.length > LIMITE_INICIAL;
 
   return (
     <div
@@ -134,7 +148,7 @@ export default function TopicsModal({
         </div>
 
         <div className="levels-modal__grid">
-          {temasFiltrados.map(({ item, index }) => {
+          {temasVisibles.map(({ item, index }) => {
             const esTemaActual = item.tema === temaActual;
 
             return (
@@ -156,6 +170,36 @@ export default function TopicsModal({
             );
           })}
         </div>
+
+        {hayMasTemas && (
+          <div className="levels-modal__pagination">
+            <button
+              type="button"
+              className="levels-modal__toggle-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMostrarTodos(true);
+              }}
+            >
+              Mostrar más ({temasFiltrados.length - LIMITE_INICIAL} más)
+            </button>
+          </div>
+        )}
+
+        {!hayBusqueda && mostrarTodos && temasFiltrados.length > LIMITE_INICIAL && (
+          <div className="levels-modal__pagination">
+            <button
+              type="button"
+              className="levels-modal__toggle-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                setMostrarTodos(false);
+              }}
+            >
+              Mostrar menos
+            </button>
+          </div>
+        )}
 
         {listaTemas.length === 0 && (
           <p className="levels-modal__empty">

@@ -9,7 +9,12 @@
   flex-direction: column;
   position: relative;
   color: var(--ink);
-  overflow-x: hidden;
+  // Nota: NO poner overflow-x:hidden aquí. html/body ya lo tienen
+  // (_base.scss) y ponerlo también en este div rompe el
+  // position:sticky de .teoria-sticky-bar (el par overflow-x/y no
+  // "visible" en un ancestro obliga al navegador a tratarlo como
+  // contenedor de scroll, y como este div nunca hace scroll por sí
+  // mismo, el sticky deja de seguir el scroll real de la página).
 }
 
 .mi-estudio__wrap {
@@ -1621,4 +1626,165 @@ body.is-header-oculto .teoria-sticky-bar {
     width: 100%;
   }
 
+}
+
+/* ============================================================
+   Teoría (artículo web) — antes estaba como <style> inline en
+   MiEstudioPage.jsx, movido acá.
+   ============================================================ */
+
+.teoria-articulo-web {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.teoria-aviso-uso {
+  max-width: 800px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md, 12px);
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border, #E1E6EC);
+  color: var(--ink-soft, #4A5568);
+  font-family: var(--font-body, "Lato", sans-serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.teoria-aviso-uso__icon {
+  color: var(--primary, #2563EB);
+  font-size: 1.1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.teoria-seccion {
+  margin-bottom: 56px;
+}
+
+.teoria-etiqueta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border, #E1E6EC);
+  padding-bottom: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.teoria-etiqueta {
+  font-family: var(--font-display, "Raleway", sans-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary, #2563EB);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.teoria-punto {
+  margin-bottom: 32px;
+}
+
+.teoria-punto__fila {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.teoria-etiqueta-checkbox {
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary, #2563EB);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.teoria-contenido-principal {
+  font-family: var(--font-body, "Lato", sans-serif);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink, #1C2430);
+  cursor: pointer;
+}
+
+.teoria-explicacion-extra {
+  background-color: var(--surface, #FFFFFF);
+  padding: 24px;
+  border-radius: var(--radius-md, 12px);
+  border-left: 4px solid var(--primary, #2563EB);
+  color: var(--ink-soft, #4A5568);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.teoria-explicacion-extra__fila {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.teoria-explicacion-extra__texto {
+  flex: 1;
+}
+
+.teoria-explicacion-icon {
+  color: var(--primary, #2563EB);
+  font-size: 1.3rem;
+  margin-top: 4px;
+}
+
+.teoria-acciones-final {
+  text-align: center;
+}
+
+.teoria-boton-examen {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--primary, #2563EB);
+  color: var(--ink-on-primary, #FFFFFF);
+  padding: 16px 36px;
+  font-size: 1.25rem;
+  font-family: var(--font-display, "Raleway", sans-serif);
+  font-weight: 700;
+  border-radius: var(--radius-full, 999px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-md);
+}
+
+.teoria-boton-examen:hover {
+  background-color: var(--primary-light, #93B4FB);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 600px) {
+  .teoria-etiqueta {
+    font-size: 1.5rem;
+  }
+
+  .teoria-contenido-principal {
+    font-size: 1.05rem;
+  }
+
+  .teoria-explicacion-extra {
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  .teoria-boton-examen {
+    width: 100%;
+    padding: 16px 20px;
+  }
 }

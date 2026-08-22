@@ -1,6 +1,14 @@
 /* ============================================================
    LevelsModal
    ============================================================ */
+@font-face {
+  font-family: "DS-DIGIB";
+  src: url("/font/DS-DIGIB.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 .levels-modal{
   position:fixed;
@@ -185,6 +193,30 @@
   }
 }
 
+.levels-modal__pagination{
+  display:flex;
+  justify-content:center;
+  padding-bottom:20px;
+}
+
+.levels-modal__toggle-btn{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:14px;
+  color:var(--primary);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-full,999px);
+  padding:10px 24px;
+  cursor:pointer;
+  transition:background .15s,transform .1s;
+}
+
+.levels-modal__toggle-btn:hover{
+  background:var(--primary-light);
+  color:var(--ink-on-primary);
+}
+
 .levels-modal__close{
   font-family:var(--font-body);
   font-weight:700;
@@ -292,31 +324,41 @@
   transition:opacity .15s ease,transform .15s ease,visibility 0s linear 0s;
 }
 
-.level-btn{
-  width:100%;
-  aspect-ratio:1;
-  background:var(--ink-on-primary);
-  border:3px solid var(--border);
-  border-bottom-width:6px;
-  color:var(--ink-soft);
-  font-family:var(--font-display);
-  font-size:26px;
-  font-weight:800;
-  border-radius:var(--radius-md);
-  cursor:pointer;
-  transition:all .1s ease-in-out;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
+.level-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--ink-on-primary);
+  border: 3px solid var(--border);
+  border-bottom-width: 6px;
+  color: var(--ink-soft);
+
+  font-family: "DS-DIGIB", sans-serif;
+  font-size: clamp(48px, 10vw, 84px);
+  font-weight: normal;
+
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.level-btn:hover:not(:disabled){
-  background:var(--success-bg);
-  border-color:var(--primary);
-  color:var(--primary-dark);
-  transform:translateY(3px);
-  border-bottom-width:3px;
+.level-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--success-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-color: var(--primary);
+  color: var(--primary-dark);
+
+  transform: translateY(3px);
+  border-bottom-width: 3px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 .level-btn.is-selected{

@@ -314,8 +314,6 @@
   list-style: none;
   margin: 12px 0 0;
   padding: 0;
-  max-height: 320px;
-  overflow-y: auto;
   background: transparent;
   border: none;
   display: flex;
@@ -323,17 +321,36 @@
   gap: 2px;
 }
 
-.welcome-section__temas::-webkit-scrollbar {
-  width: 5px;
+.welcome-section__temas-nav {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
 }
 
-.welcome-section__temas::-webkit-scrollbar-track {
+.welcome-section__temas-toggle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: transparent;
+  color: var(--brand);
+  font-family: var(--font-body);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-md);
 }
 
-.welcome-section__temas::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: 3px;
+.welcome-section__temas-toggle:hover {
+  background-color: var(--brand-bg);
+}
+
+.welcome-section__temas-toggle i {
+  transition: all .2s linearkkk;
+}
+.welcome-section__temas-toggle:hover i {
+  transform: rotate(180deg);
 }
 
 /* ============================================================
@@ -612,7 +629,7 @@
   font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
-  transition: background .15s ease, transform .15s ease;
+  transition: background .15s linear, transform .15s linear;
 }
 
 .welcome-section__btn-submit:hover:not(:disabled) {
