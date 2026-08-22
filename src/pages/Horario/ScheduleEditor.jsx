@@ -20,12 +20,32 @@ export default function ScheduleEditor(){
   const navigate=useNavigate();
   const location=useLocation();
   const [nombreUsuario]=useLocalStorage("miEstudio_nombreUsuario",null);
+  const [mostrarAdvertenciaDia,setMostrarAdvertenciaDia]=useState(false);
+  const [diaActual, setDiaActual]=useState("");
 
   const nombreMostrar=nombreUsuario
     ? nombreUsuario.charAt(0).toUpperCase()+nombreUsuario.slice(1)
     : "Horario";
 
   const rutaAnterior=location.state?.from||"/pomodoro";
+
+  // Validar si es domingo para permitir editar
+  useEffect(() => {
+    const hoy = new Date();
+    const esDomingo = hoy.getDay() === 0; // 0 = domingo
+    const diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    const nombreDia = diasSemana[hoy.getDay()];
+    setDiaActual(nombreDia);
+    
+    if (!esDomingo) {
+      setMostrarAdvertenciaDia(true);
+      // Redirigir después de 3 segundos si no es domingo
+      const timer = setTimeout(() => {
+        navigate(rutaAnterior);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [navigate, rutaAnterior]);
 
   const [horarioInicial,setHorarioInicial]=useState(()=>leerHorario()||{});
   const [horario,setHorario]=useState(()=>leerHorario()||{});
@@ -394,6 +414,48 @@ export default function ScheduleEditor(){
         showHome
         onAbrirBuscador={()=>setSearchOpen(true)}
       />
+
+      {mostrarAdvertenciaDia && (
+        <div className="schedule-editor-warning">
+          <style>{`
+            .schedule-editor-warning {
+              position: fixed;
+              top: 80px;
+              left: 50%;
+              transform: translateX(-50%);
+              background: #fff3cd;
+              border: 2px solid #ffc107;
+              border-radius: 8px;
+              padding: 16px 24px;
+              max-width: 90vw;
+              z-index: 1000;
+              animation: slide-down 0.3s ease-out;
+              text-align: center;
+            }
+
+            @keyframes slide-down {
+              from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+              }
+              to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+              }
+            }
+
+            .schedule-editor-warning-text {
+              margin: 0;
+              color: #856404;
+              font-weight: 600;
+              font-size: 0.95rem;
+            }
+          `}</style>
+          <p className="schedule-editor-warning-text">
+            ⏰ Solo puedes editar el horario los domingos. Hoy es {diaActual}. Redirigiendo...
+          </p>
+        </div>
+      )}
 
       <div className="editor-page">
         <div className="editor-card container">

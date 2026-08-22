@@ -1,6 +1,49 @@
 import { useState } from "react";
 import { buscarConPuntaje } from "../../lib/buscador";
 
+// Función para normalizar texto
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+// Componente para resaltar coincidencia en búsqueda
+function ResaltarCoincidencia({ texto, query }) {
+  if (!query.trim()) {
+    return texto;
+  }
+
+  const textoOriginal = String(texto ?? "");
+  const busqueda = query.trim();
+
+  const textoNormalizado = normalizarTexto(textoOriginal);
+  const busquedaNormalizada = normalizarTexto(busqueda);
+
+  if (!busquedaNormalizada) {
+    return textoOriginal;
+  }
+
+  const indice = textoNormalizado.indexOf(busquedaNormalizada);
+
+  if (indice === -1) {
+    return textoOriginal;
+  }
+
+  const antes = textoOriginal.slice(0, indice);
+  const coincidencia = textoOriginal.slice(indice, indice + busqueda.length);
+  const despues = textoOriginal.slice(indice + busqueda.length);
+
+  return (
+    <>
+      {antes}
+      <span className="search-match">{coincidencia}</span>
+      {despues}
+    </>
+  );
+}
+
 // Buscador discreto (NO modal) para saltar a una tarjeta de teoría
 // específica del tema actual. Busca por título de sección, texto y
 // explicación. Sin sugerencias hasta escribir.
@@ -61,10 +104,12 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
               >
                 {p.seccionTitulo && (
                   <span className="theory-search__item-seccion">
-                    {p.seccionTitulo}
+                    <ResaltarCoincidencia texto={p.seccionTitulo} query={query} />
                   </span>
                 )}
-                <span>{p.texto}</span>
+                <span>
+                  <ResaltarCoincidencia texto={p.texto} query={query} />
+                </span>
               </button>
             ))}
           </div>

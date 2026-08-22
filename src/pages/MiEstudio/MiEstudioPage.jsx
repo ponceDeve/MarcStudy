@@ -24,10 +24,13 @@ import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import TheorySearchBar from "./TheorySearchBar";
+import ExercisesSection from "./ExercisesSection";
+import CongratulationsAlert from "../../components/CongratulationsAlert";
 import {
   leerPomodoroCompartido,
   guardarRetorno,
-  limpiarPomodoroCompartido
+  limpiarPomodoroCompartido,
+  leerYLimpiarRetorno
 } from "../../lib/pomodoroShared";
 import { shuffle } from "../../lib/shuffle";
 import "katex/dist/katex.min.css";
@@ -365,6 +368,7 @@ export default function MiEstudioPage() {
   const [isLevelMode, setIsLevelMode] =
     useState(false);
   const [textosSeleccionados, setTextosSeleccionados] = useState([]);
+  const [mostrarCongratulations, setMostrarCongratulations] = useState(false);
 
   const { setFooterHidden } =
     useFooterVisibility();
@@ -531,6 +535,9 @@ export default function MiEstudioPage() {
 
   const [modoEstudio, setModoEstudio] =
     useState("completo");
+
+  const [esModoAdicionales, setEsModoAdicionales] =
+    useState(false);
 
   const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] =
     useState(false);
@@ -967,6 +974,7 @@ export default function MiEstudioPage() {
       );
 
       setTextosSeleccionados([]);
+      setEsModoAdicionales(false);
 
       setTopicData({
         ...data,
@@ -1136,28 +1144,48 @@ export default function MiEstudioPage() {
     }
   }
 
-  function elegirModoEstudio(modo) {
+  function elegirModoEstudio(modo, opts = {}) {
     setPreguntaModoAbierta(false);
+    setEsModoAdicionales(!!opts.soloAdicionales);
 
     if (modo === "solo_preguntas") {
       const originalExamen = topicData?.examen || [];
 
-      const preguntasVinculadasTeoria = flatPuntos
-        .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
-        .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
-        .map(p => p.pregunta);
-
       let preguntasFinales = [];
 
-      if (preguntasVinculadasTeoria.length > 0) {
-        preguntasFinales = [...preguntasVinculadasTeoria];
-      } else if (flatPuntos.length === 0 && originalExamen.length > 0) {
-        preguntasFinales = originalExamen;
+      if (opts.soloAdicionales) {
+        preguntasFinales = flatPuntos
+          .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
+          .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios")
+          .map(x => x.pregunta);
+      } else {
+        const preguntasVinculadasTeoria = flatPuntos
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
+          .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
+          .map(p => p.pregunta);
+
+        preguntasFinales = preguntasVinculadasTeoria.length > 0
+          ? [...preguntasVinculadasTeoria]
+          : originalExamen;
       }
 
       if (preguntasFinales.length === 0) {
-        setSinSeleccionAlerta(flatPuntos.length > 0);
+        // Sin preguntas de examen: avisar con alerta y sonido, y quedarnos en teoría
+        sinPreguntaTimers.current.forEach(clearTimeout);
+
+        setSinPreguntaSaliendo(false);
         setSinPreguntaAlerta(true);
+
+        sinPreguntaTimers.current = [
+          setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+          setTimeout(() => {
+            setSinPreguntaAlerta(false);
+            setSinPreguntaSaliendo(false);
+          }, 4300)
+        ];
+
+        setModoEstudio("completo");
+        setStage("theory");
         return;
       }
 
@@ -1192,8 +1220,16 @@ export default function MiEstudioPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const q =
+    let q =
       searchParams.get("q");
+
+    // Si no hay q en URL, revisar si volvemos del pomodoro
+    if (!q) {
+      const temaPendiente = leerYLimpiarRetorno();
+      if (temaPendiente) {
+        q = temaPendiente;
+      }
+    }
 
     if (!q) return;
 
@@ -1488,6 +1524,19 @@ export default function MiEstudioPage() {
     setConfirmGuardarRepasoFinal(
       true
     );
+
+    if (esModoAdicionales) {
+      const idsEjercicios = flatPuntos
+        .filter(p => p.seccionTitulo === "Ejercicios")
+        .map(p => p.id);
+
+      setTextosSeleccionados((prev) => [
+        ...prev,
+        ...idsEjercicios.filter((id) => !prev.includes(id)),
+      ]);
+    }
+
+    setMostrarCongratulations(true);
 
     if (topicData) {
       const completados = JSON.parse(
@@ -2064,16 +2113,32 @@ export default function MiEstudioPage() {
     ? flatPuntos.find((p) => p.id === puntoVozId)
     : null;
 
+  const ultimaSeccionLeidaRef = useRef(null);
+
+  useEffect(() => {
+    ultimaSeccionLeidaRef.current = null;
+  }, [
+    topicData?.tema,
+    topicData?.curso
+  ]);
+
   const textoParaVoz =
     stage === "theory" && !isLevelMode
       ? puntoVozActual
-        ? [
-          puntoVozActual.seccionTitulo,
-          puntoVozActual.texto,
-          puntoVozActual.explicacion
-        ]
-          .filter(Boolean)
-          .join(". ")
+        ? (() => {
+          const esNuevaSeccion =
+            ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
+
+          ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
+
+          return [
+            esNuevaSeccion ? puntoVozActual.seccionTitulo : null,
+            puntoVozActual.texto,
+            puntoVozActual.explicacion
+          ]
+            .filter(Boolean)
+            .join(". ");
+        })()
         : topicData?.theory?.[0]?.titulo || null
       : null;
 
@@ -3100,6 +3165,7 @@ export default function MiEstudioPage() {
                     </div>
 
                     {topicData?.theory?.map((seccion, idxSeccion) => (
+                      seccion.titulo === "Ejercicios" ? null :
                       <div key={idxSeccion} className="teoria-seccion">
                         <div className="teoria-etiqueta-wrap">
                           <h3 className="teoria-etiqueta">
@@ -3128,11 +3194,18 @@ export default function MiEstudioPage() {
                                     checked={textosSeleccionados.includes(puntoId)}
                                     onClick={(e) => e.stopPropagation()}
                                     onChange={() => {
-                                      setTextosSeleccionados((prev) =>
-                                        prev.includes(puntoId)
+                                      setTextosSeleccionados((prev) => {
+                                        const newSelection = prev.includes(puntoId)
                                           ? prev.filter((t) => t !== puntoId)
-                                          : [...prev, puntoId]
-                                      );
+                                          : [...prev, puntoId];
+                                        
+                                        // Mostrar alerta si se completó toda la teoría
+                                        if (newSelection.length === flatPuntos.length && flatPuntos.length > 0) {
+                                          setMostrarCongratulations(true);
+                                        }
+                                        
+                                        return newSelection;
+                                      });
                                     }}
                                   />
                                   <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
@@ -3162,16 +3235,16 @@ export default function MiEstudioPage() {
                         </div>
                       </div>
                     ))}
-                    <div className="teoria-acciones-final">
-                      {examenPreguntas.length > 0 ? (
-                        <button
-                          className="teoria-boton-examen"
-                          onClick={() => elegirModoEstudio("solo_preguntas")}
-                        >
-                          <i className="fa-solid fa-gamepad"></i>
-                          Ir al Examen
-                        </button>
-                      ) : (
+                    
+                    {/* Sección separada de ejercicios */}
+                    <ExercisesSection
+                      examenPreguntas={examenPreguntas.filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
+                      onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
+                    />
+
+                    {/* Botón final si no hay ejercicios */}
+                    {examenPreguntas.length === 0 && (
+                      <div className="teoria-acciones-final">
                         <button
                           className="teoria-boton-examen"
                           onClick={finalizarTema}
@@ -3179,8 +3252,8 @@ export default function MiEstudioPage() {
                           <i className="fa-solid fa-check-circle"></i>
                           Completar Tema
                         </button>
-                      )}
-                    </div>
+                      </div>
+                    )}
 
                   </div>
                 </div>
@@ -3703,6 +3776,11 @@ export default function MiEstudioPage() {
             </div>
           </div>
         )}
+
+      <CongratulationsAlert
+        visible={mostrarCongratulations}
+        onClose={() => setMostrarCongratulations(false)}
+      />
     </div>
   );
 }
