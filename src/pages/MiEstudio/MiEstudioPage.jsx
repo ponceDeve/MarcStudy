@@ -664,9 +664,9 @@ export default function MiEstudioPage() {
   ] = useState(false);
 
   const [
-    sinSeleccionAlerta,
-    setSinSeleccionAlerta
-  ] = useState(false);
+    tipoSinPreguntaAlerta,
+    setTipoSinPreguntaAlerta
+  ] = useState(null);
 
   const [
     sinPreguntaSaliendo,
@@ -1151,36 +1151,29 @@ export default function MiEstudioPage() {
     if (modo === "solo_preguntas") {
       const originalExamen = topicData?.examen || [];
 
-      let preguntasFinales = [];
+      if (
+        !opts.soloAdicionales &&
+        originalExamen.length > 0 &&
+        textosSeleccionados.length === 0
+      ) {
+        setTipoSinPreguntaAlerta("sin-seleccion");
 
-      if (opts.soloAdicionales) {
-        preguntasFinales = flatPuntos
-          .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
-          .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios")
-          .map(x => x.pregunta);
-      } else {
-        const preguntasVinculadasTeoria = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
-          .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
-          .map(p => p.pregunta);
-
-        preguntasFinales = preguntasVinculadasTeoria.length > 0
-          ? [...preguntasVinculadasTeoria]
-          : originalExamen;
-      }
-
-      if (preguntasFinales.length === 0) {
-        // Sin preguntas de examen: avisar con alerta y sonido, y quedarnos en teoría
-        sinPreguntaTimers.current.forEach(clearTimeout);
+        sinPreguntaTimers.current.forEach(
+          clearTimeout
+        );
 
         setSinPreguntaSaliendo(false);
         setSinPreguntaAlerta(true);
 
         sinPreguntaTimers.current = [
-          setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+          setTimeout(
+            () => setSinPreguntaSaliendo(true),
+            4000
+          ),
           setTimeout(() => {
             setSinPreguntaAlerta(false);
             setSinPreguntaSaliendo(false);
+            setTipoSinPreguntaAlerta(null);
           }, 4300)
         ];
 
@@ -1189,12 +1182,78 @@ export default function MiEstudioPage() {
         return;
       }
 
-      setExamenPreguntas(preguntasFinales);
+      let preguntasFinales = [];
+
+      if (opts.soloAdicionales) {
+        preguntasFinales = flatPuntos
+          .map((p, i) => ({
+            punto: p,
+            pregunta: originalExamen[i]
+          }))
+          .filter(
+            (x) =>
+              x.pregunta &&
+              x.punto?.seccionTitulo === "Ejercicios"
+          )
+          .map((x) => x.pregunta);
+      } else {
+        const preguntasVinculadasTeoria =
+          flatPuntos
+            .map((p, i) => ({
+              id: p.id,
+              pregunta: originalExamen[i]
+            }))
+            .filter(
+              ({ id, pregunta }) =>
+                pregunta &&
+                textosSeleccionados.includes(id)
+            )
+            .map(
+              ({ pregunta }) => pregunta
+            );
+
+        preguntasFinales =
+          preguntasVinculadasTeoria;
+      }
+
+      if (preguntasFinales.length === 0) {
+        setTipoSinPreguntaAlerta("sin-preguntas");
+
+        sinPreguntaTimers.current.forEach(
+          clearTimeout
+        );
+
+        setSinPreguntaSaliendo(false);
+        setSinPreguntaAlerta(true);
+
+        sinPreguntaTimers.current = [
+          setTimeout(
+            () => setSinPreguntaSaliendo(true),
+            4000
+          ),
+          setTimeout(() => {
+            setSinPreguntaAlerta(false);
+            setSinPreguntaSaliendo(false);
+            setTipoSinPreguntaAlerta(null);
+          }, 4300)
+        ];
+
+        setModoEstudio("completo");
+        setStage("theory");
+        return;
+      }
+
+      setTipoSinPreguntaAlerta(null);
+
+      setExamenPreguntas(
+        preguntasFinales
+      );
 
       const orden = shuffle(
         Array.from(
           {
-            length: preguntasFinales.length
+            length:
+              preguntasFinales.length
           },
           (_, i) => i
         )
@@ -1282,7 +1341,7 @@ export default function MiEstudioPage() {
 
   function avanzarCard() {
     if (stage === "theory") {
-      return; 
+      return;
     }
 
     if (repasoQuizActivo) {
@@ -1423,7 +1482,7 @@ export default function MiEstudioPage() {
 
   function retrocederCard() {
     if (stage === "theory") {
-      return; 
+      return;
     }
 
     if (repasoQuizActivo) {
@@ -2502,8 +2561,8 @@ export default function MiEstudioPage() {
             <i className="fas fa-circle-info" />
 
             <span>
-              {sinSeleccionAlerta
-                ? "Tildá al menos un punto de teoría para ir al examen"
+              {tipoSinPreguntaAlerta === "sin-seleccion"
+                ? "Selecciona una teoría para mostrar su pregunta."
                 : (
                   <>
                     No hay preguntas de "
@@ -3217,76 +3276,76 @@ export default function MiEstudioPage() {
 
                     {topicData?.theory?.map((seccion, idxSeccion) => (
                       seccion.titulo === "Ejercicios" ? null :
-                      <div key={idxSeccion} className="teoria-seccion">
-                        <div className="teoria-etiqueta-wrap">
-                          <h3 className="teoria-etiqueta">
-                            {seccion.titulo}
-                          </h3>
-                        </div>
+                        <div key={idxSeccion} className="teoria-seccion">
+                          <div className="teoria-etiqueta-wrap">
+                            <h3 className="teoria-etiqueta">
+                              {seccion.titulo}
+                            </h3>
+                          </div>
 
-                        <div className="teoria-puntos-lista animate-fade-in">
-                          {seccion.puntos.map((punto, idxPunto) => {
-                            const puntoId = `${idxSeccion}-${idxPunto}`;
+                          <div className="teoria-puntos-lista animate-fade-in">
+                            {seccion.puntos.map((punto, idxPunto) => {
+                              const puntoId = `${idxSeccion}-${idxPunto}`;
 
-                            return (
-                              <div
-                                key={idxPunto}
-                                id={`punto-${puntoId}`}
-                                className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
-                              >
+                              return (
                                 <div
-                                  className="teoria-punto__fila"
-                                  onClick={() => setPuntoVozId(puntoId)}
+                                  key={idxPunto}
+                                  id={`punto-${puntoId}`}
+                                  className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
                                 >
-                                  <input
-                                    type="checkbox"
-                                    id={`checkbox-${puntoId}`}
-                                    className="teoria-etiqueta-checkbox"
-                                    checked={textosSeleccionados.includes(puntoId)}
-                                    onClick={(e) => e.stopPropagation()}
-                                    onChange={() => {
-                                      setTextosSeleccionados((prev) => {
-                                        const newSelection = prev.includes(puntoId)
-                                          ? prev.filter((t) => t !== puntoId)
-                                          : [...prev, puntoId];
-                                        
-                                        // Mostrar alerta si se completó toda la teoría
-                                        if (newSelection.length === flatPuntos.length && flatPuntos.length > 0) {
-                                          setMostrarCongratulations(true);
-                                        }
-                                        
-                                        return newSelection;
-                                      });
-                                    }}
-                                  />
-                                  <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
-                                    <GlossaryText
-                                      text={punto.texto}
-                                      glosario={topicData?.glosario}
-                                    />
-                                  </label>
-                                </div>
+                                  <div
+                                    className="teoria-punto__fila"
+                                    onClick={() => setPuntoVozId(puntoId)}
+                                  >
+                                    <input
+                                      type="checkbox"
+                                      id={`checkbox-${puntoId}`}
+                                      className="teoria-etiqueta-checkbox"
+                                      checked={textosSeleccionados.includes(puntoId)}
+                                      onClick={(e) => e.stopPropagation()}
+                                      onChange={() => {
+                                        setTextosSeleccionados((prev) => {
+                                          const newSelection = prev.includes(puntoId)
+                                            ? prev.filter((t) => t !== puntoId)
+                                            : [...prev, puntoId];
 
-                                {punto.explicacion && (
-                                  <div className="teoria-explicacion-extra">
-                                    <div className="teoria-explicacion-extra__fila">
-                                      <i className="fa-solid fa-lightbulb teoria-explicacion-icon" />
-                                      <div className="teoria-explicacion-extra__texto">
-                                        <GlossaryText
-                                          text={punto.explicacion}
-                                          glosario={topicData?.glosario}
-                                        />
+                                          // Mostrar alerta si se completó toda la teoría
+                                          if (newSelection.length === flatPuntos.length && flatPuntos.length > 0) {
+                                            setMostrarCongratulations(true);
+                                          }
+
+                                          return newSelection;
+                                        });
+                                      }}
+                                    />
+                                    <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
+                                      <GlossaryText
+                                        text={punto.texto}
+                                        glosario={topicData?.glosario}
+                                      />
+                                    </label>
+                                  </div>
+
+                                  {punto.explicacion && (
+                                    <div className="teoria-explicacion-extra">
+                                      <div className="teoria-explicacion-extra__fila">
+                                        <i className="fa-solid fa-lightbulb teoria-explicacion-icon" />
+                                        <div className="teoria-explicacion-extra__texto">
+                                          <GlossaryText
+                                            text={punto.explicacion}
+                                            glosario={topicData?.glosario}
+                                          />
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
                         </div>
-                      </div>
                     ))}
-                    
+
                     {/* Botón final: si hay preguntas de examen para este tema
                         (no las de "Ejercicios", que ya tienen su propio botón
                         más abajo), llevar al examen. Si no hay ninguna, completar

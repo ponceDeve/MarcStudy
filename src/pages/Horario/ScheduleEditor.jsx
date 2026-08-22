@@ -1,5 +1,5 @@
-import { useState,useEffect } from "react";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import {
   DIAS_SEMANA,
@@ -10,156 +10,132 @@ import {
   guardarHorario,
 } from "../../lib/scheduleStorage";
 import manifest from "../../data/manifest.json";
-import { buscarConPuntaje,normalizarTexto } from "../../lib/buscador";
+import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
 
-const OPCIONES_POMODOROS=[1,2,3,4,5,6];
+const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
-export default function ScheduleEditor(){
-  const navigate=useNavigate();
-  const location=useLocation();
-  const [nombreUsuario]=useLocalStorage("miEstudio_nombreUsuario",null);
-  const [mostrarAdvertenciaDia,setMostrarAdvertenciaDia]=useState(false);
-  const [diaActual, setDiaActual]=useState("");
+export default function ScheduleEditor() {
+  const navigate = useNavigate();
 
-  const nombreMostrar=nombreUsuario
-    ? nombreUsuario.charAt(0).toUpperCase()+nombreUsuario.slice(1)
+  const [nombreUsuario] = useLocalStorage(
+    "miEstudio_nombreUsuario",
+    null
+  );
+
+  const nombreMostrar = nombreUsuario
+    ? nombreUsuario.charAt(0).toUpperCase() + nombreUsuario.slice(1)
     : "Horario";
 
-  const rutaAnterior=location.state?.from||"/pomodoro";
+  const [horarioInicial, setHorarioInicial] = useState(
+    () => leerHorario() || {}
+  );
 
-  // Validar si es domingo para permitir editar
-  useEffect(() => {
+  const [horario, setHorario] = useState(
+    () => leerHorario() || {}
+  );
+
+  const [diaActivo, setDiaActivo] = useState(() => {
     const hoy = new Date();
-    const esDomingo = hoy.getDay() === 0; // 0 = domingo
-    const diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-    const nombreDia = diasSemana[hoy.getDay()];
-    setDiaActual(nombreDia);
-    
-    if (!esDomingo) {
-      setMostrarAdvertenciaDia(true);
-      // Redirigir después de 3 segundos si no es domingo
-      const timer = setTimeout(() => {
-        navigate(rutaAnterior);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [navigate, rutaAnterior]);
+    const indiceDia = (hoy.getDay() + 6) % 7;
 
-  const [horarioInicial,setHorarioInicial]=useState(()=>leerHorario()||{});
-  const [horario,setHorario]=useState(()=>leerHorario()||{});
-
-  const [diaActivo,setDiaActivo]=useState(()=>{
-    const hor=leerHorario()||{};
-    const configurados=DIAS_SEMANA.filter(
-      d=>hor[d]&&hor[d].length>0
-    );
-    return configurados[0]||"lunes";
+    return DIAS_SEMANA[indiceDia];
   });
 
-  const [showForm,setShowForm]=useState(false);
-  const [editingIdx,setEditingIdx]=useState(null);
-  const [searchOpen,setSearchOpen]=useState(false);
-  const [nombreCurso,setNombreCurso]=useState("");
-  const [pomodoros,setPomodoros]=useState(4);
-  const [sugerenciaActiva,setSugerenciaActiva]=useState(-1);
-  const [confirmandoBorrar,setConfirmandoBorrar]=useState(null);
-  const [salidaPendiente,setSalidaPendiente]=useState(null);
-  const [cursoOriginal,setCursoOriginal]=useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [editingIdx, setEditingIdx] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [nombreCurso, setNombreCurso] = useState("");
+  const [pomodoros, setPomodoros] = useState(4);
+  const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
+  const [confirmandoBorrar, setConfirmandoBorrar] = useState(null);
+  const [salidaPendiente, setSalidaPendiente] = useState(null);
+  const [cursoOriginal, setCursoOriginal] = useState(null);
 
-  const [mostrarNoCambios,setMostrarNoCambios]=useState(false);
-  const [mostrarNoCambiosCurso,setMostrarNoCambiosCurso]=useState(false);
+  const [mostrarNoCambios, setMostrarNoCambios] = useState(false);
+  const [mostrarNoCambiosCurso, setMostrarNoCambiosCurso] =
+    useState(false);
 
-  const hayCambiosSinGuardar=
-    JSON.stringify(horario)!==JSON.stringify(horarioInicial||{});
+  const hayCambiosSinGuardar =
+    JSON.stringify(horario) !==
+    JSON.stringify(horarioInicial || {});
 
-  const cursosDelDia=horario[diaActivo]||[];
+  const cursosDelDia = horario[diaActivo] || [];
 
-  const nombreExcedido=
-    nombreCurso.length>LIMITE_NOMBRE_CURSO;
+  const nombreExcedido =
+    nombreCurso.length > LIMITE_NOMBRE_CURSO;
 
-  const puedeAgregarMas=
-    cursosDelDia.length<MAX_CURSOS_POR_DIA;
+  const puedeAgregarMas =
+    cursosDelDia.length < MAX_CURSOS_POR_DIA;
 
-  const sugerencias=nombreCurso.trim()
+  const sugerencias = nombreCurso.trim()
     ? buscarConPuntaje(
         manifest.cursos,
         nombreCurso,
-        c=>c.nombre
-      ).slice(0,6)
+        (c) => c.nombre
+      ).slice(0, 6)
     : [];
 
-  const coincideExacto=manifest.cursos.some(
-    c=>normalizarTexto(c.nombre)===normalizarTexto(nombreCurso)
+  const coincideExacto = manifest.cursos.some(
+    (c) =>
+      normalizarTexto(c.nombre) ===
+      normalizarTexto(nombreCurso)
   );
 
-  const cursoSinCambios=
-    editingIdx!==null&&
-    cursoOriginal&&
-    normalizarTexto(nombreCurso.trim())===
-      normalizarTexto(cursoOriginal.subject)&&
-    pomodoros===cursoOriginal.pomodoros;
+  const cursoSinCambios =
+    editingIdx !== null &&
+    cursoOriginal &&
+    normalizarTexto(nombreCurso.trim()) ===
+      normalizarTexto(cursoOriginal.subject) &&
+    pomodoros === cursoOriginal.pomodoros;
 
-  function mostrarMensajeNoCambios(){
+  function mostrarMensajeNoCambios() {
     setMostrarNoCambios(true);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setMostrarNoCambios(false);
-    },2200);
+    }, 2200);
   }
 
-  function mostrarMensajeNoCambiosCurso(){
+  function mostrarMensajeNoCambiosCurso() {
     setMostrarNoCambiosCurso(true);
 
-    setTimeout(()=>{
+    setTimeout(() => {
       setMostrarNoCambiosCurso(false);
-    },2200);
+    }, 2200);
   }
 
-  function guardarTodo(){
-    if(!hayCambiosSinGuardar){
+  function guardarTodo() {
+    if (!hayCambiosSinGuardar) {
       mostrarMensajeNoCambios();
       return;
     }
 
     guardarHorario(horario);
     setHorarioInicial(horario);
-    navigate(rutaAnterior);
+    navigate(-1);
   }
 
-  function intentarCerrar(){
-    if(hayCambiosSinGuardar){
+  function intentarCerrar() {
+    if (hayCambiosSinGuardar) {
       setSalidaPendiente("cerrar");
-    }else{
-      navigate(rutaAnterior);
+    } else {
+      navigate(-1);
     }
   }
 
-  function intentarIrA(ruta){
-    if(hayCambiosSinGuardar){
-      setSalidaPendiente(ruta);
-    }else{
-      navigate(ruta);
-    }
-  }
-
-  function resolverSalida(guardarAntes){
-    if(guardarAntes){
+  function resolverSalida(guardarAntes) {
+    if (guardarAntes) {
       guardarHorario(horario);
       setHorarioInicial(horario);
     }
 
-    const destino=
-      salidaPendiente==="cerrar"||!salidaPendiente
-        ? rutaAnterior
-        : salidaPendiente;
-
     setSalidaPendiente(null);
-    navigate(destino);
+    navigate(-1);
   }
 
-  function cambiarDia(dia){
+  function cambiarDia(dia) {
     setDiaActivo(dia);
     setShowForm(false);
     setConfirmandoBorrar(null);
@@ -167,21 +143,21 @@ export default function ScheduleEditor(){
     setMostrarNoCambiosCurso(false);
   }
 
-  function abrirFormulario(idx=null){
+  function abrirFormulario(idx = null) {
     setMostrarNoCambiosCurso(false);
 
-    if(idx!==null){
-      const curso=cursosDelDia[idx];
+    if (idx !== null) {
+      const curso = cursosDelDia[idx];
 
       setEditingIdx(idx);
       setNombreCurso(curso.subject);
       setPomodoros(curso.pomodoros);
 
       setCursoOriginal({
-        subject:curso.subject,
-        pomodoros:curso.pomodoros,
+        subject: curso.subject,
+        pomodoros: curso.pomodoros,
       });
-    }else{
+    } else {
       setEditingIdx(null);
       setNombreCurso("");
       setPomodoros(4);
@@ -192,7 +168,7 @@ export default function ScheduleEditor(){
     setShowForm(true);
   }
 
-  function cerrarFormulario(){
+  function cerrarFormulario() {
     setShowForm(false);
     setEditingIdx(null);
     setCursoOriginal(null);
@@ -202,72 +178,76 @@ export default function ScheduleEditor(){
     setMostrarNoCambiosCurso(false);
   }
 
-  function eliminarCurso(idx){
-    setHorario(prev=>{
-      const lista=[...(prev[diaActivo]||[])];
+  function eliminarCurso(idx) {
+    setHorario((prev) => {
+      const lista = [...(prev[diaActivo] || [])];
 
-      lista.splice(idx,1);
+      lista.splice(idx, 1);
 
-      return{
+      return {
         ...prev,
-        [diaActivo]:lista,
+        [diaActivo]: lista,
       };
     });
 
     setConfirmandoBorrar(null);
   }
 
-  function guardarCursoFormulario(){
-    if(cursoSinCambios){
+  function guardarCursoFormulario() {
+    if (cursoSinCambios) {
       mostrarMensajeNoCambiosCurso();
       return;
     }
 
-    const limpio=nombreCurso.trim();
+    const limpio = nombreCurso.trim();
 
-    const cursoReal=manifest.cursos.find(
-      c=>normalizarTexto(c.nombre)===normalizarTexto(limpio)
+    const cursoReal = manifest.cursos.find(
+      (c) =>
+        normalizarTexto(c.nombre) ===
+        normalizarTexto(limpio)
     );
 
-    if(!cursoReal||nombreExcedido){
+    if (!cursoReal || nombreExcedido) {
       return;
     }
 
-    setHorario(prev=>{
-      const listaActual=[...(prev[diaActivo]||[])];
+    setHorario((prev) => {
+      const listaActual = [
+        ...(prev[diaActivo] || []),
+      ];
 
-      if(editingIdx!==null){
-        listaActual[editingIdx]={
-          subject:cursoReal.nombre,
+      if (editingIdx !== null) {
+        listaActual[editingIdx] = {
+          subject: cursoReal.nombre,
           pomodoros,
         };
-      }else{
-        if(!puedeAgregarMas){
+      } else {
+        if (!puedeAgregarMas) {
           return prev;
         }
 
         listaActual.push({
-          subject:cursoReal.nombre,
+          subject: cursoReal.nombre,
           pomodoros,
         });
       }
 
-      return{
+      return {
         ...prev,
-        [diaActivo]:listaActual,
+        [diaActivo]: listaActual,
       };
     });
 
     cerrarFormulario();
   }
 
-  function handleInputKeyDown(e){
-    if(sugerencias.length===0){
-      if(
-        e.key==="Enter"&&
-        coincideExacto&&
+  function handleInputKeyDown(e) {
+    if (sugerencias.length === 0) {
+      if (
+        e.key === "Enter" &&
+        coincideExacto &&
         !nombreExcedido
-      ){
+      ) {
         e.preventDefault();
         guardarCursoFormulario();
       }
@@ -275,101 +255,104 @@ export default function ScheduleEditor(){
       return;
     }
 
-    if(e.key==="ArrowDown"){
+    if (e.key === "ArrowDown") {
       e.preventDefault();
 
-      setSugerenciaActiva(prev=>
-        prev<sugerencias.length-1
-          ?prev+1
-          :prev
+      setSugerenciaActiva((prev) =>
+        prev < sugerencias.length - 1
+          ? prev + 1
+          : prev
       );
-    }else if(e.key==="ArrowUp"){
+    } else if (e.key === "ArrowUp") {
       e.preventDefault();
 
-      setSugerenciaActiva(prev=>
-        prev>0?prev-1:0
+      setSugerenciaActiva((prev) =>
+        prev > 0 ? prev - 1 : 0
       );
-    }else if(e.key==="Enter"){
+    } else if (e.key === "Enter") {
       e.preventDefault();
 
-      if(
-        sugerenciaActiva>=0&&
-        sugerenciaActiva<sugerencias.length
-      ){
+      if (
+        sugerenciaActiva >= 0 &&
+        sugerenciaActiva < sugerencias.length
+      ) {
         setNombreCurso(
           sugerencias[sugerenciaActiva].nombre
         );
 
         setSugerenciaActiva(-1);
-      }else if(
-        coincideExacto&&
+      } else if (
+        coincideExacto &&
         !nombreExcedido
-      ){
+      ) {
         guardarCursoFormulario();
       }
     }
   }
 
-  useEffect(()=>{
-    const handleKeyDown=e=>{
-      if(e.key==="Escape"){
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
         e.preventDefault();
 
-        if(searchOpen){
+        if (searchOpen) {
           setSearchOpen(false);
-        }else if(salidaPendiente!==null){
+        } else if (salidaPendiente !== null) {
           setSalidaPendiente(null);
-        }else if(confirmandoBorrar!==null){
+        } else if (confirmandoBorrar !== null) {
           setConfirmandoBorrar(null);
-        }else if(showForm){
+        } else if (showForm) {
           cerrarFormulario();
-        }else{
+        } else {
           intentarCerrar();
         }
 
         return;
       }
 
-      if(
-        (e.ctrlKey||e.metaKey)&&
-        e.key.toLowerCase()==="s"
-      ){
+      if (
+        (e.ctrlKey || e.metaKey) &&
+        e.key.toLowerCase() === "s"
+      ) {
         e.preventDefault();
         guardarTodo();
         return;
       }
 
-      if(
-        e.altKey&&
-        e.key.toLowerCase()==="n"
-      ){
+      if (
+        e.altKey &&
+        e.key.toLowerCase() === "n"
+      ) {
         e.preventDefault();
 
-        if(!showForm&&puedeAgregarMas){
+        if (!showForm && puedeAgregarMas) {
           abrirFormulario();
         }
 
         return;
       }
 
-      if(
-        e.altKey&&
-        (e.key==="ArrowLeft"||e.key==="ArrowRight")
-      ){
+      if (
+        e.altKey &&
+        (e.key === "ArrowLeft" ||
+          e.key === "ArrowRight")
+      ) {
         e.preventDefault();
 
-        const currentIndex=
+        const currentIndex =
           DIAS_SEMANA.indexOf(diaActivo);
 
-        if(e.key==="ArrowLeft"){
-          const prevIndex=
-            (currentIndex-1+DIAS_SEMANA.length)%
+        if (e.key === "ArrowLeft") {
+          const prevIndex =
+            (currentIndex -
+              1 +
+              DIAS_SEMANA.length) %
             DIAS_SEMANA.length;
 
           cambiarDia(DIAS_SEMANA[prevIndex]);
-        }else{
-          const nextIndex=
-            (currentIndex+1)%
+        } else {
+          const nextIndex =
+            (currentIndex + 1) %
             DIAS_SEMANA.length;
 
           cambiarDia(DIAS_SEMANA[nextIndex]);
@@ -378,24 +361,28 @@ export default function ScheduleEditor(){
         return;
       }
 
-      if(
-        showForm&&
-        e.altKey&&
-        e.key>="1"&&
-        e.key<="6"
-      ){
+      if (
+        showForm &&
+        e.altKey &&
+        e.key >= "1" &&
+        e.key <= "6"
+      ) {
         e.preventDefault();
-        setPomodoros(parseInt(e.key,10));
+        setPomodoros(parseInt(e.key, 10));
       }
     };
 
-    window.addEventListener("keydown",handleKeyDown);
-
-    return()=>window.removeEventListener(
+    window.addEventListener(
       "keydown",
       handleKeyDown
     );
-  },[
+
+    return () =>
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+  }, [
     showForm,
     horario,
     diaActivo,
@@ -404,58 +391,17 @@ export default function ScheduleEditor(){
     salidaPendiente,
     hayCambiosSinGuardar,
     searchOpen,
-    rutaAnterior,
     cursoSinCambios,
   ]);
 
-  return(
+  return (
     <>
       <AppHeader
         showHome
-        onAbrirBuscador={()=>setSearchOpen(true)}
+        onAbrirBuscador={() =>
+          setSearchOpen(true)
+        }
       />
-
-      {mostrarAdvertenciaDia && (
-        <div className="schedule-editor-warning">
-          <style>{`
-            .schedule-editor-warning {
-              position: fixed;
-              top: 80px;
-              left: 50%;
-              transform: translateX(-50%);
-              background: #fff3cd;
-              border: 2px solid #ffc107;
-              border-radius: 8px;
-              padding: 16px 24px;
-              max-width: 90vw;
-              z-index: 1000;
-              animation: slide-down 0.3s ease-out;
-              text-align: center;
-            }
-
-            @keyframes slide-down {
-              from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-10px);
-              }
-              to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-              }
-            }
-
-            .schedule-editor-warning-text {
-              margin: 0;
-              color: #856404;
-              font-weight: 600;
-              font-size: 0.95rem;
-            }
-          `}</style>
-          <p className="schedule-editor-warning-text">
-            ⏰ Solo puedes editar el horario los domingos. Hoy es {diaActual}. Redirigiendo...
-          </p>
-        </div>
-      )}
 
       <div className="editor-page">
         <div className="editor-card container">
@@ -467,16 +413,18 @@ export default function ScheduleEditor(){
           </div>
 
           <div className="editor-tabs">
-            {DIAS_SEMANA.map(dia=>(
+            {DIAS_SEMANA.map((dia) => (
               <button
                 key={dia}
                 className={`editor-tab-btn ${
-                  diaActivo===dia?"is-active":""
+                  diaActivo === dia
+                    ? "is-active"
+                    : ""
                 }`}
-                onClick={()=>cambiarDia(dia)}
+                onClick={() => cambiarDia(dia)}
                 title={`Ver ${DIA_LABELS[dia]}`}
               >
-                {DIA_LABELS[dia].substring(0,3)}
+                {DIA_LABELS[dia].substring(0, 3)}
               </button>
             ))}
           </div>
@@ -486,15 +434,15 @@ export default function ScheduleEditor(){
               Cursos para el {diaActivo}
             </h3>
 
-            {!showForm&&(
+            {!showForm && (
               <>
-                {cursosDelDia.length===0?(
+                {cursosDelDia.length === 0 ? (
                   <p className="editor-texto-vacio">
                     Día libre. No hay cursos agregados.
                   </p>
-                ):(
+                ) : (
                   <div className="editor-lista">
-                    {cursosDelDia.map((c,i)=>(
+                    {cursosDelDia.map((c, i) => (
                       <div
                         key={i}
                         className="editor-item"
@@ -506,25 +454,29 @@ export default function ScheduleEditor(){
 
                           <span className="editor-item-pomo">
                             {c.pomodoros} pomodoros (
-                            {c.pomodoros*30} min)
+                            {c.pomodoros * 30} min)
                           </span>
                         </div>
 
                         <div className="editor-acciones-item">
                           <button
                             className="editor-icon-btn"
-                            onClick={()=>abrirFormulario(i)}
+                            onClick={() =>
+                              abrirFormulario(i)
+                            }
                             title="Editar curso"
                           >
-                            <i className="fa-solid fa-pen"/>
+                            <i className="fa-solid fa-pen" />
                           </button>
 
                           <button
                             className="editor-icon-btn is-danger"
-                            onClick={()=>setConfirmandoBorrar(i)}
+                            onClick={() =>
+                              setConfirmandoBorrar(i)
+                            }
                             title="Eliminar curso"
                           >
-                            <i className="fa-solid fa-trash-can"/>
+                            <i className="fa-solid fa-trash-can" />
                           </button>
                         </div>
                       </div>
@@ -534,12 +486,12 @@ export default function ScheduleEditor(){
               </>
             )}
 
-            {showForm&&(
+            {showForm && (
               <div className="editor-add-box">
                 <h4 className="editor-form-titulo">
-                  {editingIdx!==null
-                    ?"Editar curso"
-                    :"Agregar un curso nuevo"}
+                  {editingIdx !== null
+                    ? "Editar curso"
+                    : "Agregar un curso nuevo"}
                 </h4>
 
                 <div className="editor-input-wrap">
@@ -547,7 +499,7 @@ export default function ScheduleEditor(){
                     autoComplete="off"
                     autoFocus
                     value={nombreCurso}
-                    onChange={e=>{
+                    onChange={(e) => {
                       setNombreCurso(e.target.value);
                       setSugerenciaActiva(-1);
                       setMostrarNoCambiosCurso(false);
@@ -555,47 +507,61 @@ export default function ScheduleEditor(){
                     onKeyDown={handleInputKeyDown}
                     placeholder="Escribe el nombre..."
                     className={`editor-input ${
-                      nombreExcedido?"is-error":""
+                      nombreExcedido
+                        ? "is-error"
+                        : ""
                     }`}
                   />
 
-                  {sugerencias.length>0&&!coincideExacto&&(
-                    <div className="editor-sugerencias">
-                      {sugerencias.map((c,index)=>(
-                        <button
-                          key={c.nombre}
-                          className={`editor-sugerencia-item ${
-                            sugerenciaActiva===index
-                              ?"is-active"
-                              :""
-                          }`}
-                          onClick={()=>{
-                            setNombreCurso(c.nombre);
-                            setSugerenciaActiva(-1);
-                            setMostrarNoCambiosCurso(false);
-                          }}
-                        >
-                          {c.nombre}
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                  {sugerencias.length > 0 &&
+                    !coincideExacto && (
+                      <div className="editor-sugerencias">
+                        {sugerencias.map(
+                          (c, index) => (
+                            <button
+                              key={c.nombre}
+                              className={`editor-sugerencia-item ${
+                                sugerenciaActiva ===
+                                index
+                                  ? "is-active"
+                                  : ""
+                              }`}
+                              onClick={() => {
+                                setNombreCurso(
+                                  c.nombre
+                                );
+                                setSugerenciaActiva(
+                                  -1
+                                );
+                                setMostrarNoCambiosCurso(
+                                  false
+                                );
+                              }}
+                            >
+                              {c.nombre}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    )}
                 </div>
 
                 <div className="editor-feedback-container">
-                  {nombreCurso.trim()&&
-                  sugerencias.length===0&&
-                  !coincideExacto?(
+                  {nombreCurso.trim() &&
+                  sugerencias.length === 0 &&
+                  !coincideExacto ? (
                     <p className="editor-error-msg">
                       Curso no encontrado
                     </p>
-                  ):(
-                    <span/>
+                  ) : (
+                    <span />
                   )}
 
                   <p
                     className={`editor-char-count ${
-                      nombreExcedido?"is-error":""
+                      nombreExcedido
+                        ? "is-error"
+                        : ""
                     }`}
                   >
                     {nombreCurso.length}/
@@ -610,38 +576,46 @@ export default function ScheduleEditor(){
                 <div
                   className="editor-pomo-grid"
                   tabIndex={0}
-                  onKeyDown={e=>{
-                    if(e.key==="ArrowRight"){
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowRight") {
                       e.preventDefault();
 
-                      setPomodoros(p=>
-                        Math.min(6,p+1)
+                      setPomodoros((p) =>
+                        Math.min(6, p + 1)
                       );
 
-                      setMostrarNoCambiosCurso(false);
-                    }else if(e.key==="ArrowLeft"){
+                      setMostrarNoCambiosCurso(
+                        false
+                      );
+                    } else if (
+                      e.key === "ArrowLeft"
+                    ) {
                       e.preventDefault();
 
-                      setPomodoros(p=>
-                        Math.max(1,p-1)
+                      setPomodoros((p) =>
+                        Math.max(1, p - 1)
                       );
 
-                      setMostrarNoCambiosCurso(false);
+                      setMostrarNoCambiosCurso(
+                        false
+                      );
                     }
                   }}
                 >
-                  {OPCIONES_POMODOROS.map(n=>(
+                  {OPCIONES_POMODOROS.map((n) => (
                     <button
                       key={n}
                       tabIndex={-1}
                       className={`editor-pomo-btn ${
-                        pomodoros===n
-                          ?"is-on btn-primary"
-                          :""
+                        pomodoros === n
+                          ? "is-on btn-primary"
+                          : ""
                       }`}
-                      onClick={()=>{
+                      onClick={() => {
                         setPomodoros(n);
-                        setMostrarNoCambiosCurso(false);
+                        setMostrarNoCambiosCurso(
+                          false
+                        );
                       }}
                       title={`Seleccionar ${n} pomodoros`}
                     >
@@ -651,31 +625,32 @@ export default function ScheduleEditor(){
                 </div>
 
                 <div className="editor-form-acciones">
-
                   <button
                     className={`editor-btn-add is-primary btn-primary editor-btn-save ${
                       cursoSinCambios
-                        ?"is-no-changes"
-                        :""
+                        ? "is-no-changes"
+                        : ""
                     }`}
                     disabled={
-                      !coincideExacto||
+                      !coincideExacto ||
                       nombreExcedido
                     }
-                    onClick={guardarCursoFormulario}
+                    onClick={
+                      guardarCursoFormulario
+                    }
                     title={
                       cursoSinCambios
-                        ?"No hay cambios para guardar"
-                        :"Guardar curso"
+                        ? "No hay cambios para guardar"
+                        : "Guardar curso"
                     }
                   >
-                    <i className="fa-solid fa-floppy-disk"/>
+                    <i className="fa-solid fa-floppy-disk" />
 
-                    {editingIdx!==null
-                      ?"Guardar cambios"
-                      :"Añadir curso"}
+                    {editingIdx !== null
+                      ? "Guardar cambios"
+                      : "Añadir curso"}
 
-                    {mostrarNoCambiosCurso&&(
+                    {mostrarNoCambiosCurso && (
                       <span className="editor-no-cambios">
                         No hay cambios para guardar
                       </span>
@@ -689,27 +664,28 @@ export default function ScheduleEditor(){
                   >
                     Cancelar
                   </button>
-
                 </div>
               </div>
             )}
           </div>
 
-          {!showForm&&(
+          {!showForm && (
             <div className="editor-footer">
 
               <button
                 className="editor-btn-outline icon-only-btn"
-                onClick={()=>abrirFormulario()}
+                onClick={() =>
+                  abrirFormulario()
+                }
                 disabled={!puedeAgregarMas}
                 title={
                   !puedeAgregarMas
-                    ?`Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado`
-                    :"Agregar curso"
+                    ? `Límite de ${MAX_CURSOS_POR_DIA} cursos alcanzado`
+                    : "Agregar curso"
                 }
                 aria-label="Agregar curso"
               >
-                <i className="fa-solid fa-plus"/>
+                <i className="fa-solid fa-plus" />
                 Agregar
               </button>
 
@@ -724,21 +700,21 @@ export default function ScheduleEditor(){
               <button
                 className={`editor-btn-save btn-primary icon-only-btn ${
                   !hayCambiosSinGuardar
-                    ?"is-no-changes"
-                    :""
+                    ? "is-no-changes"
+                    : ""
                 }`}
                 onClick={guardarTodo}
                 title={
                   hayCambiosSinGuardar
-                    ?"Guardar cambios"
-                    :"No hay cambios para guardar"
+                    ? "Guardar cambios"
+                    : "No hay cambios para guardar"
                 }
                 aria-label="Guardar Cambios"
               >
-                <i className="fa-solid fa-floppy-disk"/>
+                <i className="fa-solid fa-floppy-disk" />
                 Guardar
 
-                {mostrarNoCambios&&(
+                {mostrarNoCambios && (
                   <span className="editor-no-cambios">
                     No hay cambios para guardar
                   </span>
@@ -751,88 +727,110 @@ export default function ScheduleEditor(){
 
         <SearchModal
           open={searchOpen}
-          onClose={()=>setSearchOpen(false)}
-          onSelect={item=>{
+          onClose={() =>
+            setSearchOpen(false)
+          }
+          onSelect={(item) => {
             setSearchOpen(false);
 
             navigate(
               `/?q=${encodeURIComponent(
-                item.type==="curso"
-                  ?item.nombre
-                  :item.tema
+                item.type === "curso"
+                  ? item.nombre
+                  : item.tema
               )}`
             );
           }}
         />
 
-        {confirmandoBorrar!==null&&
-        cursosDelDia[confirmandoBorrar]&&(
-          <div
-            className="editor-confirm-backdrop"
-            onClick={()=>setConfirmandoBorrar(null)}
-          >
+        {confirmandoBorrar !== null &&
+          cursosDelDia[confirmandoBorrar] && (
             <div
-              className="editor-confirm-box"
-              onClick={e=>e.stopPropagation()}
+              className="editor-confirm-backdrop"
+              onClick={() =>
+                setConfirmandoBorrar(null)
+              }
             >
-              <i className="fa-solid fa-triangle-exclamation editor-confirm-icon"/>
+              <div
+                className="editor-confirm-box"
+                onClick={(e) =>
+                  e.stopPropagation()
+                }
+              >
+                <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
 
-              <p className="editor-confirm-texto">
-                ¿Eliminar{" "}
-                <strong>
-                  {cursosDelDia[confirmandoBorrar].subject}
-                </strong>
-                ?
-              </p>
+                <p className="editor-confirm-texto">
+                  ¿Eliminar{" "}
+                  <strong>
+                    {
+                      cursosDelDia[
+                        confirmandoBorrar
+                      ].subject
+                    }
+                  </strong>
+                  ?
+                </p>
 
-              <div className="editor-confirm-acciones">
-                <button
-                  className="editor-btn-outline"
-                  onClick={()=>setConfirmandoBorrar(null)}
-                >
-                  No
-                </button>
+                <div className="editor-confirm-acciones">
+                  <button
+                    className="editor-btn-outline"
+                    onClick={() =>
+                      setConfirmandoBorrar(null)
+                    }
+                  >
+                    No
+                  </button>
 
-                <button
-                  className="editor-confirm-btn-si"
-                  onClick={()=>
-                    eliminarCurso(confirmandoBorrar)
-                  }
-                >
-                  Sí, eliminar
-                </button>
+                  <button
+                    className="editor-confirm-btn-si"
+                    onClick={() =>
+                      eliminarCurso(
+                        confirmandoBorrar
+                      )
+                    }
+                  >
+                    Sí, eliminar
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {salidaPendiente!==null&&(
+        {salidaPendiente !== null && (
           <div
             className="editor-confirm-backdrop"
-            onClick={()=>setSalidaPendiente(null)}
+            onClick={() =>
+              setSalidaPendiente(null)
+            }
           >
             <div
               className="editor-confirm-box"
-              onClick={e=>e.stopPropagation()}
+              onClick={(e) =>
+                e.stopPropagation()
+              }
             >
-              <i className="fa-solid fa-triangle-exclamation editor-confirm-icon"/>
+              <i className="fa-solid fa-triangle-exclamation editor-confirm-icon" />
 
               <p className="editor-confirm-texto">
-                Tienes cambios sin guardar. Si sales ahora,
-                se van a perder.
+                Tienes cambios sin guardar. Si
+                sales ahora, se van a perder.
               </p>
 
               <div className="editor-confirm-acciones">
                 <button
                   className="editor-btn-outline"
-                  onClick={()=>setSalidaPendiente(null)}
+                  onClick={() =>
+                    setSalidaPendiente(null)
+                  }
                 >
                   Seguir editando
                 </button>
 
                 <button
                   className="editor-confirm-btn-si"
-                  onClick={()=>resolverSalida(false)}
+                  onClick={() =>
+                    resolverSalida(false)
+                  }
                 >
                   Salir sin guardar
                 </button>
@@ -840,15 +838,16 @@ export default function ScheduleEditor(){
 
               <button
                 className="editor-confirm-guardar-tambien"
-                onClick={()=>resolverSalida(true)}
+                onClick={() =>
+                  resolverSalida(true)
+                }
               >
-                <i className="fa-solid fa-floppy-disk"/>
+                <i className="fa-solid fa-floppy-disk" />
                 Mejor guardar y salir
               </button>
             </div>
           </div>
         )}
-
       </div>
     </>
   );

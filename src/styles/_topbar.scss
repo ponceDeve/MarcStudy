@@ -84,28 +84,25 @@ body.is-header-oculto .topbar-wrapper {
 .topbar__title-btn {
   width: fit-content;
   max-width: 100%;
-
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   padding: 6px 10px;
-
   background: transparent;
   border: none;
   border-radius: 6px;
-
   color: var(--ink);
-
   cursor: pointer;
   text-align: left;
   overflow: hidden;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 900;
 
   transition:
-    background 0.5s ease,
-    color 0.5s ease;
+    background 0.5s linear,
+    color 0.5s linear;
 }
 
 .topbar__title-btn:hover {
@@ -198,10 +195,8 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__curso {
   max-width: 100%;
-
   font-size: 13.5px;
   color: var(--ink-soft);
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
