@@ -1,11 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 
 import katex from "katex";
-
 import "katex/dist/katex.min.css";
 
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
-
 import { SIMBOLOS_NOTACION } from "../../lib/simbolosNotacion";
 
 function escapeRegExp(str) {
@@ -36,24 +34,21 @@ function renderLatex(text) {
   const partes = [];
   let ultimo = 0;
 
-  /*
-   * Detecta fórmulas delimitadas:
-   *
-   * $...$
-   * $$...$$
-   * \(...\)
-   * \[...\]
-   */
   const delimitadoresRegex =
     /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
 
   let match;
 
-  while ((match = delimitadoresRegex.exec(text)) !== null) {
+  while (
+    (match = delimitadoresRegex.exec(text)) !== null
+  ) {
     if (match.index > ultimo) {
       partes.push({
         tipo: "texto",
-        valor: text.slice(ultimo, match.index)
+        valor: text.slice(
+          ultimo,
+          match.index
+        )
       });
     }
 
@@ -92,7 +87,8 @@ function renderLatex(text) {
       displayMode
     });
 
-    ultimo = match.index + delimitador.length;
+    ultimo =
+      match.index + delimitador.length;
   }
 
   if (ultimo < text.length) {
@@ -124,25 +120,8 @@ function renderLatex(text) {
       return;
     }
 
-    /*
-     * Busca comandos LaTeX sin delimitadores.
-     *
-     * Ejemplos:
-     *
-     * \frac{a}{b}
-     * \sqrt{x}
-     * \mathbb{R}
-     * \infty
-     * \in
-     * \leq
-     * \geq
-     * \neq
-     * \cup
-     * \cap
-     */
-
     const formulaRegex =
-      /\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|infty|in|leq|geq|neq|approx|pm|mp|times|div|cdot|cup|cap|subset|subseteq|supset|supseteq|forall|exists|to|rightarrow|left|right|begin|end)(?:\s*(?:\{[^{}]*\}|\[[^\]]*\]|\([^)]*\)))?|[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|\_\{[^{}]+\}|_[A-Za-z0-9]+)+/g;
+      /\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|infty|in|leq|geq|neq|approx|pm|mp|times|div|cdot|cup|cap|triangle|subset|subseteq|supset|supseteq|forall|exists|to|rightarrow|left|right|begin|end)(?:\s*(?:\{[^{}]*\}|\[[^\]]*\]|\([^)]*\)))?|[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|\_\{[^{}]+\}|_[A-Za-z0-9]+)+/g;
 
     const subPartes = [];
 
@@ -150,13 +129,11 @@ function renderLatex(text) {
     let formulaMatch;
 
     while (
-      (formulaMatch = formulaRegex.exec(parte.valor)) !== null
+      (formulaMatch =
+        formulaRegex.exec(parte.valor)) !== null
     ) {
       const formula = formulaMatch[0];
 
-      /*
-       * Evitamos convertir palabras normales.
-       */
       if (
         !formula.includes("\\") &&
         !formula.includes("^") &&
@@ -165,7 +142,10 @@ function renderLatex(text) {
         continue;
       }
 
-      if (formulaMatch.index > ultimoFormula) {
+      if (
+        formulaMatch.index >
+        ultimoFormula
+      ) {
         subPartes.push(
           <span
             key={`${indice}-text-${ultimoFormula}`}
@@ -186,13 +166,21 @@ function renderLatex(text) {
       );
 
       ultimoFormula =
-        formulaMatch.index + formula.length;
+        formulaMatch.index +
+        formula.length;
     }
 
-    if (ultimoFormula < parte.valor.length) {
+    if (
+      ultimoFormula <
+      parte.valor.length
+    ) {
       subPartes.push(
-        <span key={`${indice}-text-end`}>
-          {parte.valor.slice(ultimoFormula)}
+        <span
+          key={`${indice}-text-end`}
+        >
+          {parte.valor.slice(
+            ultimoFormula
+          )}
         </span>
       );
     }
@@ -210,18 +198,6 @@ function renderLatex(text) {
 }
 
 function esSimbolo(termino) {
-  /*
-   * Un símbolo matemático/científico no tiene letras ni números.
-   *
-   * Ejemplos:
-   * =
-   * +
-   * ≠
-   * ≈
-   * ↑
-   * ↓
-   * ∞
-   */
   return !/[a-zA-ZÀ-ÿ0-9]/.test(termino);
 }
 
@@ -245,30 +221,23 @@ function partirPorGlosario(
     ];
   }
 
-  /*
-   * Primero los términos más largos.
-   *
-   * Ejemplo:
-   *
-   * "Media Aritmética"
-   * antes que
-   * "Media"
-   */
   const ordenadas = [...claves].sort(
-    (a, b) => b.length - a.length
+    (a, b) =>
+      b.length - a.length
   );
 
-  const patrones = ordenadas.map((k) => {
-    const esPalabra =
-      /^[a-zA-ZÀ-ÿ0-9\s]+$/.test(k);
+  const patrones =
+    ordenadas.map((k) => {
+      const esPalabra =
+        /^[a-zA-ZÀ-ÿ0-9\s]+$/.test(k);
 
-    const escaped =
-      escapeRegExp(k);
+      const escaped =
+        escapeRegExp(k);
 
-    return esPalabra
-      ? `\\b${escaped}\\b`
-      : escaped;
-  });
+      return esPalabra
+        ? `\\b${escaped}\\b`
+        : escaped;
+    });
 
   const regex = new RegExp(
     `(${patrones.join("|")})`,
@@ -284,7 +253,8 @@ function partirPorGlosario(
     (match = regex.exec(texto)) !== null
   ) {
     if (
-      match.index > ultimoIndex
+      match.index >
+      ultimoIndex
     ) {
       partes.push({
         tipo: "texto",
@@ -295,7 +265,8 @@ function partirPorGlosario(
       });
     }
 
-    const encontrado = match[0];
+    const encontrado =
+      match[0];
 
     const keyOriginal =
       ordenadas.find(
@@ -323,7 +294,8 @@ function partirPorGlosario(
   }
 
   if (
-    ultimoIndex < texto.length
+    ultimoIndex <
+    texto.length
   ) {
     partes.push({
       tipo: "texto",
@@ -340,8 +312,10 @@ export default function GlossaryText({
   text,
   glosario = {}
 }) {
-  const [activo, setActivo] =
-    useState(null);
+  const [
+    activo,
+    setActivo
+  ] = useState(null);
 
   const triggerRefs =
     useRef({});
@@ -357,20 +331,14 @@ export default function GlossaryText({
     ajustarPosicion
   } = useFloatingTooltip();
 
-  /*
-   * Los símbolos de notación están definidos
-   * en SIMBOLOS_NOTACION.
-   *
-   * Si el JSON contiene una definición propia,
-   * esa definición tiene prioridad.
-   */
-  const glosarioCombinado = useMemo(
-    () => ({
-      ...SIMBOLOS_NOTACION,
-      ...(glosario || {})
-    }),
-    [glosario]
-  );
+  const glosarioCombinado =
+    useMemo(
+      () => ({
+        ...SIMBOLOS_NOTACION,
+        ...(glosario || {})
+      }),
+      [glosario]
+    );
 
   const partes = useMemo(
     () =>
@@ -378,7 +346,10 @@ export default function GlossaryText({
         text,
         glosarioCombinado
       ),
-    [text, glosarioCombinado]
+    [
+      text,
+      glosarioCombinado
+    ]
   );
 
   const mostrarTooltip = (i) => {
@@ -406,89 +377,92 @@ export default function GlossaryText({
         ocultar();
       }}
     >
-      {partes.map((parte, i) => {
-        /*
-         * Texto normal:
-         *
-         * Se manda directamente a renderLatex()
-         */
-        if (
-          parte.tipo === "texto"
-        ) {
+      {partes.map(
+        (parte, i) => {
+          if (
+            parte.tipo === "texto"
+          ) {
+            return (
+              <span key={i}>
+                {renderLatex(
+                  parte.valor
+                )}
+              </span>
+            );
+          }
+
+          const esVisible =
+            visible &&
+            activo === i;
+
+          const simbolo =
+            esSimbolo(
+              parte.valor
+            );
+
           return (
-            <span key={i}>
-              {renderLatex(
-                parte.valor
+            <span
+              key={i}
+              className="glossary-term-wrap"
+              onMouseEnter={() => {
+                mostrarTooltip(i);
+              }}
+              onMouseLeave={() => {
+                ocultarTooltip();
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+
+                if (
+                  activo === i
+                ) {
+                  ocultarTooltip();
+                } else {
+                  mostrarTooltip(i);
+                }
+              }}
+            >
+              <span
+                ref={(el) => {
+                  triggerRefs.current[i] =
+                    el;
+                }}
+                className={`glossary-term${
+                  simbolo
+                    ? " glossary-term--simbolo"
+                    : ""
+                }`}
+              >
+                {renderLatex(
+                  parte.valor
+                )}
+              </span>
+
+              {esVisible && (
+                <span
+                  ref={(el) => {
+                    tooltipRefs.current[i] =
+                      el;
+                  }}
+                  className="glossary-tooltip"
+                  style={{
+                    "--tt-shift":
+                      `${shift}px`
+                  }}
+                >
+                  <span className="glossary-tooltip__arrow" />
+
+                  {renderLatex(
+                    glosarioCombinado[
+                      parte.key
+                    ]
+                  )}
+                </span>
               )}
             </span>
           );
         }
-
-        const esVisible =
-          visible && activo === i;
-
-        const simbolo =
-          esSimbolo(parte.valor);
-
-        return (
-          <span
-            key={i}
-            className="glossary-term-wrap"
-            onMouseEnter={() => {
-              mostrarTooltip(i);
-            }}
-            onMouseLeave={() => {
-              ocultarTooltip();
-            }}
-            onClick={(e) => {
-              e.stopPropagation();
-
-              if (activo === i) {
-                ocultarTooltip();
-              } else {
-                mostrarTooltip(i);
-              }
-            }}
-          >
-            <span
-              ref={(el) => {
-                triggerRefs.current[i] =
-                  el;
-              }}
-              className={`glossary-term${
-                simbolo
-                  ? " glossary-term--simbolo"
-                  : ""
-              }`}
-            >
-              {renderLatex(
-                parte.valor
-              )}
-            </span>
-
-            {esVisible && (
-              <span
-                ref={(el) => {
-                  tooltipRefs.current[i] =
-                    el;
-                }}
-                className="glossary-tooltip"
-                style={{
-                  "--tt-shift": `${shift}px`
-                }}
-              >
-                <span className="glossary-tooltip__arrow" />
-
-                {renderLatex(
-                  glosarioCombinado[
-                    parte.key
-                  ]
-                )}
-              </span>
-            )}
-          </span>
-        );
-      })}
+      )}
     </span>
   );
 }
