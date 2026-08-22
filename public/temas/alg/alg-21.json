@@ -1,0 +1,233 @@
+{
+  "curso": "Álgebra",
+  "tema": "Desigualdades e Intervalos",
+  "glosario": {
+    "Desigualdad": "Relación de orden entre dos expresiones o magnitudes algebraicas.",
+    "Intervalo": "Subconjunto continuo y ordenado de la recta numérica real.",
+    "Infinito": "Concepto matemático de crecimiento ilimitado, carente de valor numérico.",
+    "Intersección": "Colección de elementos comunes que comparten dos o más conjuntos.",
+    "Unión": "Agrupación total y sinérgica de los elementos de varios conjuntos.",
+    "Optimización": "Búsqueda analítica del valor máximo o mínimo estructural posible.",
+    "Corolario": "Proposición matemática que se deduce directamente de un teorema previo."
+  },
+  "theory": [
+    {
+      "titulo": "Recta Numérica y Desigualdades",
+      "puntos": [
+        {
+          "texto": "«Recta Numérica Real» centrada en el neutro $0$",
+          "explicacion": "Es la representación gráfica continua donde el cero actúa como eje neutral que separa positivos de negativos. Imagina una regla infinita; así como mides objetos, aquí ubicas geométricamente valores abstractos. Todo número real ocupa un único punto, sin huecos, diferenciándose de los conjuntos discretos. Ejemplo numérico: El valor $3.5$ ocupa una posición en la recta, situado exactamente entre el $3$ y el $4$."
+        },
+        {
+          "texto": "Si $a > 0$ → número «Positivo»",
+          "explicacion": "Define el signo de un valor basándose en su ubicación a la derecha del cero en la recta. A diferencia de las magnitudes absolutas que representan solo distancias, esto indica una dirección específica. En la vida diaria, equivale a tener dinero a favor en una cuenta, oponiéndose a tener una deuda. Ejemplo numérico: Si tienes un saldo a favor de cinco unidades, este se representa como $5$, el cual lógicamente cumple con la inecuación estricta $5 > 0$."
+        },
+        {
+          "texto": "Los extremos $-\\infty$ y $+\\infty$ son «Ideales»",
+          "explicacion": "Representan conceptos matemáticos de crecimiento sin límite, pero carecen de propiedades para operarse como los demás valores. Se diferencian de los números reales porque no cumplen sus axiomas básicos de cuerpo algebraico, considerándose elementos simbólicos. Piensa en el horizonte visual: puedes caminar hacia él indefinidamente pero es imposible que logres alcanzarlo físicamente. Ejemplo numérico: Si evaluamos la variable $x \\in \\mathbb{R}$, es incorrecto afirmar que la igualdad $x = +\\infty$ ocurra, lo correcto es establecer que $x < +\\infty$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos Acotados y No Acotados",
+      "puntos": [
+        {
+          "texto": "Un «Intervalo» es un subconjunto continuo de $\\mathbb{R}$",
+          "explicacion": "Abarca la totalidad de los infinitos números comprendidos entre dos límites marcados en la recta numérica. Se distingue de un conjunto finito porque incluye absolutamente todas las fracciones y decimales intermedios, sin saltarse ninguno en el camino. Funciona como el lapso de tiempo de una película, abarcando cada fracción de segundo desde el inicio hasta los créditos. Ejemplo numérico: El subconjunto delimitado entre los extremos $1$ y $2$ incluye infinitos valores reales, tales como el $1.5$ o la raíz geométrica $\\sqrt{2}$."
+        },
+        {
+          "texto": "«Intervalo Cerrado» con $x \\in [a,b]$",
+          "explicacion": "Define un conjunto que incluye explícitamente a sus propios extremos, simbolizándose gráficamente con corchetes y puntos completamente rellenados sobre la recta. Está estrechamente relacionado con problemas de optimización donde los valores máximos o mínimos son respuestas válidas y alcanzables. Se asemeja al peso límite de una maleta de avión que permite llevar de cero a veintitrés kilos exactos. Ejemplo numérico: Si sabemos por dato que el intervalo cerrado es $x \\in [2,5]$, el máximo valor entero que la variable asume es $5$."
+        },
+        {
+          "texto": "Aplicando «Intervalo Cerrado» → hallar máximo entero",
+          "explicacion": "Para resolver de forma correcta estos ejercicios, primero se identifican los extremos que sí forman parte del conjunto gracias a la desigualdad no estricta del tipo $\\leq$. Vinculado al concepto previo de contención total, rastreamos el valor válido posicionado más a la derecha. Gráficamente, la frontera superior es una bolita sólida que aprueba el límite. Ejemplo resuelto: Dada la condición analítica $2 \\leq x \\leq 7$, el valor tope es parte de las soluciones; por lo tanto, el máximo entero posible evaluado es $7$."
+        },
+        {
+          "texto": "«Intervalo Abierto» con $x \\in \\langle a,b\\rangle$",
+          "explicacion": "Representa un segmento continuo que excluye terminantemente a sus puntos de frontera, graficándose mediante llaves angulares y círculos completamente vacíos. Marca un tope numérico al que te puedes acercar infinitamente pero que jamás lograrás igualar, tocar o utilizar como respuesta. Es como la indicación estricta de llegar hasta la puerta de un lugar restringido sin tener permitido cruzarla. Ejemplo numérico: Si un determinado rango algebraico está dado por $x \\in \\langle 5,10\\rangle$, el mayor valor entero que pertenece es $9$, descartando al $10$."
+        },
+        {
+          "texto": "Aplicando «Intervalo Abierto» → buscar tope entero",
+          "explicacion": "Al emplear forzosamente desigualdades estrictas del tipo menor que o mayor que, descartamos automáticamente los topes extremos del conjunto analizado. A diferencia del caso cerrado que abarca su frontera, aquí debemos retroceder en la recta numérica hasta el número válido inmediatamente anterior. Es una trampa clásica de admisión confundir este límite. Ejemplo resuelto: Si nos piden el máximo entero para la restricción rigurosa $5 < x < 10$, sabemos que el $10$ está prohibido; entonces, el mayor entero que satisface esto es el $9$."
+        },
+        {
+          "texto": "«Intervalo No Acotado» con $x \\in [a,+\\infty\\rangle$",
+          "explicacion": "Son conjuntos estructurales que poseen un único extremo numérico real definido, mientras que su otra frontera se extiende infinitamente hacia la derecha o izquierda. Contrastan radicalmente con los tramos acotados ya que carecen por completo de una cota de contención superior o inferior. Se asimilan a las normativas de edad mínima para adquirir un servicio, como ser mayor de dieciocho años sin establecer tope límite de vejez. Ejemplo numérico: La condición algebraica $x \\geq 3$ origina siempre el conjunto semiabierto de la forma $x \\in [3,+\\infty\\rangle$."
+        },
+        {
+          "texto": "Aplicando «Intervalo No Acotado» → graficar limitante",
+          "explicacion": "El límite de un lado se encuentra plenamente definido e incluido mediante el signo de desigualdad flexible, pero la barrera opuesta es simplemente inexistente. En la recta numérica, la zona sombreada se proyecta hacia una región lateral de forma ininterrumpida, debiendo usarse siempre el símbolo de llave abierta en el infinito. Ejemplo resuelto: Para resolver la expresión geométrica $x \\leq 7$, el intervalo resultante proviene desde el fondo infinito negativo; la notación formal y correcta a marcar es el subconjunto $x \\in \\langle-\\infty,7]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con Intervalos",
+      "puntos": [
+        {
+          "texto": "«Unión» $\\cup$ → fusiona elementos totales",
+          "explicacion": "Esta operación consolida todos los elementos presentes en al menos uno de los intervalos participantes, generando un macrorango algebraico único. A diferencia de la intersección que busca reducir opciones, la unión es totalmente expansiva, tolerante e inclusiva con cada número. Funciona con la misma lógica organizativa de combinar a los invitados de dos listas distintas para que todos asistan finalmente a la misma fiesta. Ejemplo numérico: Al unir gráficamente los tramos $A=[1,3]$ y $B=[2,4]$, obtenemos el rango extendido continuo $A \\cup B=[1,4]$."
+        },
+        {
+          "texto": "Aplicando «Unión» → unir subconjuntos superpuestos",
+          "explicacion": "La técnica infalible y recomendada requiere graficar ambos conjuntos simultáneamente sobre una única recta para poder visualizar su alcance espacial total combinado. Se toma metódicamente como punto de partida absoluto el extremo situado más a la izquierda y como cierre el ubicado más a la derecha. Ejemplo resuelto: Teniendo los rangos iniciales $A=\\langle2,7]$ y $B=\\langle5,10\\rangle$, la unión física de sus zonas sombreadas produce sin interrupciones el nuevo intervalo consolidado global $A \\cup B=\\langle2,10\\rangle$."
+        },
+        {
+          "texto": "«Intersección» $\\cap$ → cruce de comunes",
+          "explicacion": "Filtra y selecciona estrictamente aquella porción específica de la recta donde los gráficos de múltiples intervalos se superponen y coinciden al mismo tiempo. Al contrario que la unión expansiva, esta acción analítica es restrictiva porque exige cumplir de forma obligatoria todas las condiciones de pertenencia en simultáneo. Es conceptualmente análogo a publicar una vacante de empleo buscando candidatos que obligatoriamente dominen tanto inglés como francés. Ejemplo numérico: Evaluando cuidadosamente $A=[0,5]$ y $B=[3,8]$, su intersección resulta ser únicamente la zona compartida $A \\cap B=[3,5]$."
+        },
+        {
+          "texto": "Aplicando «Intersección» → hallar zona cruzada",
+          "explicacion": "En la representación gráfica visual, el foco de atención estratégico se centra de manera exclusiva en el área que ha sido doblemente achurada por las líneas de trazo. Debemos tener un cuidado extremo y minucioso con la herencia de los corchetes o llaves en las fronteras de esta nueva región central. Ejemplo resuelto: Intersectando los subconjuntos $A=\\langle2,7]$ y $B=\\langle5,10\\rangle$, la superposición estricta inicia en el $5$ abierto y culmina en el $7$ cerrado, obteniendo así un resultado de $A \\cap B=\\langle5,7]$."
+        },
+        {
+          "texto": "«Diferencia» $A-B$ → restar porción",
+          "explicacion": "Se trata de conservar intacto el conjunto base original procediendo luego a eliminar o recortar la región exacta que comparte invasivamente con el segundo. Guarda un fuerte lazo procedimental con la intersección, ya que el segmento que se sustrae algebraicamente es precisamente ese traslape común detectado. Resulta tan práctico y visual como ser dueño legal de un enorme terreno plano y verse obligado a ceder la porción invadida por el límite del vecino. Ejemplo numérico: Restando direccionalmente los intervalos $A=[1,5]$ y $B=[4,6]$, la parte restante será $A-B=[1,4\\rangle$."
+        },
+        {
+          "texto": "Aplicando «Diferencia» → restar subconjuntos algebraicos",
+          "explicacion": "Al bloque matriz del minuendo le aplicamos una sustracción directa correspondiente a los puntos que han sido tocados por el sustraendo, invirtiendo el estado del corchete limitante en la zona de corte. Si el conjunto retirado presentaba una frontera abierta, significa que no logra llevarse ese número, dejándolo salvado en el conjunto original. Ejemplo resuelto: Dados fielmente $A=\\langle2,7]$ y $B=\\langle5,10\\rangle$, como $B$ es abierto en el extremo $5$, el valor $5$ sobrevive y se queda en $A$, dando un final de $A-B=\\langle2,5]$."
+        },
+        {
+          "texto": "«Diferencia Simétrica» $A \\triangle B$ excluyendo centros",
+          "explicacion": "Agrupa eficazmente todos aquellos elementos que pertenecen de manera exclusiva y solitaria a cada conjunto individual, procediendo a erradicar por completo su intersección central. Fusiona de manera muy elegante las nociones matemáticas previas de unión global y diferencia clásica, todo compilado en un único procedimiento de limpieza estructural. Representa la traducción analítica perfecta de la conocida premisa lógica humana de elegir «uno u otro, pero jamás permitiendo ambos a la vez». Ejemplo numérico: Operando los bloques $A=[1,3]$ y $B=[2,4]$, la diferencia simétrica da como resultado la partición distanciada $[1,2\\rangle \\cup \\langle3,4]$."
+        },
+        {
+          "texto": "Aplicando «Diferencia Simétrica» → retirar superposición",
+          "explicacion": "El método operativo más óptimo en exámenes consiste en primero unir pacíficamente las dos totalidades y luego generar un hueco interno eliminando matemáticamente su segmento de superposición. El resultado visual usualmente se compone de tramos inconexos y aislados, separados de manera forzada por el vacío dejado tras la intersección extraída. Ejemplo resuelto: Si tenemos los datos $A=\\langle2,7]$ y $B=\\langle5,10\\rangle$, la unión generalizada es $\\langle2,10\\rangle$; al retirarle quirúrgicamente el centro común $\\langle5,7]$, la operación final genera $A \\triangle B=\\langle2,5] \\cup \\langle7,10\\rangle$."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema de las Medias (MA y MG)",
+      "puntos": [
+        {
+          "texto": "«Teorema de las Medias» para optimizar variables",
+          "explicacion": "Establece con firmeza una importante jerarquía inquebrantable entre los promedios calculados exclusivamente a partir de un conjunto de números reales netamente positivos. A diferencia del avanzado cálculo diferencial universitario, ofrece una ruta analítica puramente algebraica y muy veloz para detectar máximos o mínimos en pruebas objetivas. Es un postulado indispensable en el ámbito del diseño y la economía, usado para maximizar las ganancias productivas empleando recursos estrictamente limitados. Ejemplo numérico: Usando los valores de muestra $2$ y $8$, la media aritmética calculada es $5$ y la geométrica resulta $4$, cumpliendo firmemente que $5>4$."
+        },
+        {
+          "texto": "«MA y MG» para $\\mathbb{R}^{+}$ → $\\frac{a+b}{2}\\geq\\sqrt{ab}$",
+          "explicacion": "Garantiza teóricamente que el promedio aritmético jamás será inferior al respectivo promedio geométrico, logrando la ansiada igualdad absoluta únicamente cuando ambos números evaluados sean idénticos. Vincula de forma muy estratégica un valor de suma constante conocida con la maximización buscada de su producto, o viceversa para localizar un punto mínimo de gasto. Si posees exactamente veinte metros de cerca lineal para rodear un área rectangular, la superficie encerrada es máxima si equilibras las partes y formas un cuadrado perfecto. Ejemplo numérico: Si la suma impuesta como regla es $a+b=10$, se deduce rápidamente por fórmula que el producto interno será $ab\\leq25$."
+        },
+        {
+          "texto": "Aplicando «MA y MG» → maximizar superficie",
+          "explicacion": "Para triunfar, se arma la inecuación colocando la sumatoria estipulada de los lados dividida sobre dos, imponiendo lógicamente que dicho cociente sea mayor o igual a la raíz del área buscada. Sustituimos de inmediato el dato perimétrico constante para poder despejar exitosamente el producto variable mediante una simple potenciación cuadrática en ambos lados. Ejemplo resuelto: Si el semiperímetro constante de un lote es $a+b=20$, la poderosa fórmula indica que $10\\geq\\sqrt{ab}$; al elevar esto al cuadrado con cuidado, determinamos finalmente que la superficie máxima posible $S=(ab)_{max}$ equivale a $100$."
+        }
+      ]
+    },
+    {
+      "titulo": "Optimización Aplicada y Extensiones",
+      "puntos": [
+        {
+          "texto": "«Suma Recíproca» → $x+\\frac{k}{x}\\geq2\\sqrt{k}$",
+          "explicacion": "Nace naturalmente como un corolario valioso y directo del teorema principal de promedios, aplicado estratégicamente entre un término lineal variable y su respectivo inverso multiplicativo escalado. Es sin duda el atajo matemático más famoso y frecuente en las pruebas de admisión preuniversitaria para hallar rápidamente el piso mínimo de expresiones algebraicas racionales complejas. Basa su enorme eficacia en el hecho de que, al multiplicar internamente los factores, la variable de análisis se cancela cruzada y deja sobreviviendo solo una raíz constante. Ejemplo numérico: Para toda $x>0$, el valor mínimo absoluto garantizado de la expresión fraccionaria $x+\\frac{25}{x}$ es la operación $2\\sqrt{25}=10$."
+        },
+        {
+          "texto": "Aplicando «Suma Recíproca» → minimizar fracción racional",
+          "explicacion": "Para asegurar los puntos, insertamos los sumandos problemáticos directo en la sólida estructura de la inecuación de las medias, aprovechando la certeza de que el producto oculto anulará la incómoda incógnita por completo. La media aritmética forzosamente superará a la raíz cuadrada de esta nueva constante resultante generada limpiamente en el lado derecho de la relación. Ejemplo resuelto: Para calcular con precisión el mínimo de la expresión $A=x+\\frac{144}{x}$, notamos que la raíz del producto cruzado se reduce a $12$; multiplicando este valor por el factor dos de la fórmula, deducimos que el tope mínimo infranqueable es $24$."
+        },
+        {
+          "texto": "«MA y MG Tridimensional» para optimizar sólidos",
+          "explicacion": "Extiende magistralmente el confiable axioma de los promedios numéricos hacia tres variables espaciales positivas simultáneas, garantizando que el tercio exacto de su suma total supera indefectiblemente a su raíz cúbica. Facilita enormemente la resolución teórica de problemas espaciales donde se busca lograr la máxima capacidad volumétrica a partir de aristas sumadas restrictivas y constantes. Posee una amplísima aplicación industrial ingenieril en la fabricación masiva de contenedores de transporte logístico, buscando conseguir albergar el mayor interior posible invirtiendo la menor cantidad de costoso metal. Ejemplo numérico: Para variables positivas $a,b,c$, se cumple obligatoriamente la relación volumétrica inamovible de la forma $\\frac{a+b+c}{3}\\geq\\sqrt[3]{abc}$."
+        },
+        {
+          "texto": "Aplicando «MA y MG Tridimensional» → volumen tope",
+          "explicacion": "Frente al examen, planteamos de inmediato la desigualdad estructural dividiendo la suma total aportada de las dimensiones espaciales entre tres y acotando por encima el radical de grado tres del producto buscado. Este proceso analítico culmina siempre despejando la vital multiplicación interna al elevar toda la inecuación completa al exponente cubo, obteniendo la capacidad límite deseada. Ejemplo resuelto: Ante la estricta restricción física de que $a+b+c=30$, el cociente inicial obligatorio resulta en $10$; elevando esto al cubo con rapidez resulta en la certeza matemática $1000\\geq abc$, confirmando que el volumen máximo $(abc)_{max}$ es estrictamente el número $1000$."
+        },
+        {
+          "texto": "«Optimización de Perímetro» minimizando longitudes lineales",
+          "explicacion": "Representa analíticamente el proceso inverso exacto al cálculo tradicional del área máxima; en este escenario se dispone de una superficie geográfica fija para la cual se busca abaratar al máximo la longitud del cerco perimetral. Se apoya igualmente de lleno en el gran teorema de promedios, pero utilizando esta vez la media geométrica estática y conocida para hallar astutamente la cota inferior de la suma aritmética. Es un concepto vital y recurrente para un granjero agricultor que necesita encerrar hectáreas definidas de pasto comprando en la ferretería la menor cantidad posible de alambre trenzado. Ejemplo numérico: Si el área restrictiva de un plano es $ab=25$, el cerco mínimo optimizado resulta ser la suma $2a+2b=20$."
+        },
+        {
+          "texto": "Aplicando «Optimización de Perímetro» → minimizar valla",
+          "explicacion": "Cuando el problema planteado establece categóricamente una superficie interior inamovible, se colocan los segmentos laterales requeridos para el cerco dentro de la parte superior de la fórmula de la media aritmética. Se opera metódicamente el radical derecho usando los valores de área conocidos por dato y se procede a despejar la sumatoria de longitudes para hallar finalmente el costo lineal mínimo requerido. Ejemplo resuelto: Si el área útil de dos corrales contiguos determina por dato que $ab=300$ y la valla solicitada obedece a la suma $4a+3b$, aplicando la desigualdad tenemos la relación $\\frac{4a+3b}{2}\\geq\\sqrt{12(300)}$; al operar y despejar obtenemos una longitud mínima absoluta de $120$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
+        }
+      ]
+    }
+  ]
+}

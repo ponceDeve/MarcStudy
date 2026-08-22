@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -45,6 +46,10 @@ export default function AppHeader({
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
+
+  // Auto-ocultar header al bajar / mostrar al subir, igual que en
+  // Mi Estudio. No se oculta con el menú móvil abierto.
+  useAutoHideHeader(menuMobileOpen);
 
   useEffect(() => {
     const el = headerRef.current;

@@ -5,6 +5,7 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
+
 import { SIMBOLOS_NOTACION } from "../../lib/simbolosNotacion";
 
 function escapeRegExp(str) {
@@ -32,40 +33,57 @@ function renderFormula(formula, key, displayMode = false) {
 function renderLatex(text) {
   if (!text) return "";
 
-  const delimitadoresRegex =
-    /\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\$\$[\s\S]*?\$\$|\$[^$\n]*?\$/g;
-
   const partes = [];
-
   let ultimo = 0;
+
+  /*
+   * Detecta fórmulas delimitadas:
+   *
+   * $...$
+   * $$...$$
+   * \(...\)
+   * \[...\]
+   */
+  const delimitadoresRegex =
+    /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
+
   let match;
 
-  while (
-    (match = delimitadoresRegex.exec(text)) !== null
-  ) {
+  while ((match = delimitadoresRegex.exec(text)) !== null) {
     if (match.index > ultimo) {
       partes.push({
         tipo: "texto",
-        valor: text.slice(
-          ultimo,
-          match.index
-        )
+        valor: text.slice(ultimo, match.index)
       });
     }
 
-    let formula = match[0];
+    const delimitador = match[0];
+
+    let formula = delimitador;
     let displayMode = false;
 
-    if (formula.startsWith("\\[")) {
-      formula = formula.slice(2, -2);
+    if (
+      delimitador.startsWith("$$") &&
+      delimitador.endsWith("$$")
+    ) {
+      formula = delimitador.slice(2, -2);
       displayMode = true;
-    } else if (formula.startsWith("\\(")) {
-      formula = formula.slice(2, -2);
-    } else if (formula.startsWith("$$")) {
-      formula = formula.slice(2, -2);
+    } else if (
+      delimitador.startsWith("\\[") &&
+      delimitador.endsWith("\\]")
+    ) {
+      formula = delimitador.slice(2, -2);
       displayMode = true;
-    } else if (formula.startsWith("$")) {
-      formula = formula.slice(1, -1);
+    } else if (
+      delimitador.startsWith("\\(") &&
+      delimitador.endsWith("\\)")
+    ) {
+      formula = delimitador.slice(2, -2);
+    } else if (
+      delimitador.startsWith("$") &&
+      delimitador.endsWith("$")
+    ) {
+      formula = delimitador.slice(1, -1);
     }
 
     partes.push({
@@ -74,8 +92,7 @@ function renderLatex(text) {
       displayMode
     });
 
-    ultimo =
-      match.index + match[0].length;
+    ultimo = match.index + delimitador.length;
   }
 
   if (ultimo < text.length) {
@@ -111,14 +128,21 @@ function renderLatex(text) {
      * Busca comandos LaTeX sin delimitadores.
      *
      * Ejemplos:
+     *
      * \frac{a}{b}
      * \sqrt{x}
-     * \sin{x}
-     * \arcsin{x}
-     * \text{mol}
+     * \mathbb{R}
+     * \infty
+     * \in
+     * \leq
+     * \geq
+     * \neq
+     * \cup
+     * \cap
      */
+
     const formulaRegex =
-      /\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|begin|end)(?:\s*(?:\{[^{}]*\}|\[[^\]]*\]|\([^)]*\)))?|[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|_\{[^{}]+\}|_[A-Za-z0-9]+)+/g;
+      /\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|infty|in|leq|geq|neq|approx|pm|mp|times|div|cdot|cup|cap|subset|subseteq|supset|supseteq|forall|exists|to|rightarrow|left|right|begin|end)(?:\s*(?:\{[^{}]*\}|\[[^\]]*\]|\([^)]*\)))?|[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|\_\{[^{}]+\}|_[A-Za-z0-9]+)+/g;
 
     const subPartes = [];
 
@@ -126,8 +150,7 @@ function renderLatex(text) {
     let formulaMatch;
 
     while (
-      (formulaMatch =
-        formulaRegex.exec(parte.valor)) !== null
+      (formulaMatch = formulaRegex.exec(parte.valor)) !== null
     ) {
       const formula = formulaMatch[0];
 
@@ -142,9 +165,7 @@ function renderLatex(text) {
         continue;
       }
 
-      if (
-        formulaMatch.index > ultimoFormula
-      ) {
+      if (formulaMatch.index > ultimoFormula) {
         subPartes.push(
           <span
             key={`${indice}-text-${ultimoFormula}`}
@@ -168,16 +189,10 @@ function renderLatex(text) {
         formulaMatch.index + formula.length;
     }
 
-    if (
-      ultimoFormula < parte.valor.length
-    ) {
+    if (ultimoFormula < parte.valor.length) {
       subPartes.push(
-        <span
-          key={`${indice}-text-end`}
-        >
-          {parte.valor.slice(
-            ultimoFormula
-          )}
+        <span key={`${indice}-text-end`}>
+          {parte.valor.slice(ultimoFormula)}
         </span>
       );
     }
@@ -195,9 +210,18 @@ function renderLatex(text) {
 }
 
 function esSimbolo(termino) {
-  // Un símbolo matemático/científico no tiene letras ni números
-  // (=, +, ✗, ↑, ↓, ≠, ≈, etc.), a diferencia de un término normal
-  // del glosario que sí es una palabra.
+  /*
+   * Un símbolo matemático/científico no tiene letras ni números.
+   *
+   * Ejemplos:
+   * =
+   * +
+   * ≠
+   * ≈
+   * ↑
+   * ↓
+   * ∞
+   */
   return !/[a-zA-ZÀ-ÿ0-9]/.test(termino);
 }
 
@@ -221,6 +245,15 @@ function partirPorGlosario(
     ];
   }
 
+  /*
+   * Primero los términos más largos.
+   *
+   * Ejemplo:
+   *
+   * "Media Aritmética"
+   * antes que
+   * "Media"
+   */
   const ordenadas = [...claves].sort(
     (a, b) => b.length - a.length
   );
@@ -324,11 +357,13 @@ export default function GlossaryText({
     ajustarPosicion
   } = useFloatingTooltip();
 
-  // Los símbolos de notación (=, +, ≠, etc.) están fijos en el
-  // código y no dependen de que la IA los haya puesto en el
-  // "glosario" del JSON. Si el JSON igual trae una definición propia
-  // para ese símbolo (contenido viejo generado antes de este cambio),
-  // esa definición gana, así no se pierden textos ya generados.
+  /*
+   * Los símbolos de notación están definidos
+   * en SIMBOLOS_NOTACION.
+   *
+   * Si el JSON contiene una definición propia,
+   * esa definición tiene prioridad.
+   */
   const glosarioCombinado = useMemo(
     () => ({
       ...SIMBOLOS_NOTACION,
@@ -372,6 +407,11 @@ export default function GlossaryText({
       }}
     >
       {partes.map((parte, i) => {
+        /*
+         * Texto normal:
+         *
+         * Se manda directamente a renderLatex()
+         */
         if (
           parte.tipo === "texto"
         ) {
@@ -387,7 +427,8 @@ export default function GlossaryText({
         const esVisible =
           visible && activo === i;
 
-        const simbolo = esSimbolo(parte.valor);
+        const simbolo =
+          esSimbolo(parte.valor);
 
         return (
           <span
@@ -414,7 +455,11 @@ export default function GlossaryText({
                 triggerRefs.current[i] =
                   el;
               }}
-              className={`glossary-term${simbolo ? " glossary-term--simbolo" : ""}`}
+              className={`glossary-term${
+                simbolo
+                  ? " glossary-term--simbolo"
+                  : ""
+              }`}
             >
               {renderLatex(
                 parte.valor

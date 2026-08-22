@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
+import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -35,51 +36,16 @@ export default function TopBar({
   tema, curso, stage,
   onAbrirBuscador, onTogglePomodoroMini, onAbrirTemas,
   onGuardarRepaso, isFullscreen, onToggleFullscreen,
-  onVerPreguntasVistas, onAbandonar, onReiniciarTarjetas,
+  onVerPreguntasVistas, onAbandonarPregunta, onReiniciarTarjetas,
   onIrInicio
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
 
   // Auto-ocultar header al bajar / mostrar al subir.
-  // No se oculta cerca del tope, ni con menús abiertos (evita que
-  // desaparezca mientras el usuario está usando el drawer/config).
-  useEffect(() => {
-    const UMBRAL_SCROLL = 8;
-    const ZONA_SEGURA_TOPE = 80;
-    let ultimoY = window.scrollY;
-    let ticking = false;
-
-    function actualizar() {
-      const y = window.scrollY;
-      const delta = y - ultimoY;
-
-      if (menuMobileOpen || configOpen) {
-        document.body.classList.remove("is-header-oculto");
-      } else if (y < ZONA_SEGURA_TOPE) {
-        document.body.classList.remove("is-header-oculto");
-      } else if (delta > UMBRAL_SCROLL) {
-        document.body.classList.add("is-header-oculto");
-      } else if (delta < -UMBRAL_SCROLL) {
-        document.body.classList.remove("is-header-oculto");
-      }
-
-      ultimoY = y;
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(actualizar);
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      document.body.classList.remove("is-header-oculto");
-    };
-  }, [menuMobileOpen, configOpen]);
+  // No se oculta con menús abiertos (evita que desaparezca mientras
+  // el usuario está usando el drawer/config).
+  useAutoHideHeader(menuMobileOpen || configOpen);
 
   // Detección de desbordamiento
   const wrapperRef = useRef(null);
@@ -128,7 +94,11 @@ export default function TopBar({
     // encarga de cambiar a la vista de pregunta y volver si hace falta.
     { icon: "fas fa-list-check", label: "Repasar", fullLabel: "Ver preguntas vistas", onClick: onVerPreguntasVistas },
     { icon: "fas fa-rotate-left", label: "Reiniciar", fullLabel: "Reiniciar tarjetas", onClick: onReiniciarTarjetas },
-    { icon: "fas fa-door-open", label: "Abandonar", fullLabel: "Abandonar sesión", onClick: onAbandonar }
+    // "Abandonar" solo tiene sentido dentro de una pregunta: te devuelve
+    // a la teoría. En teoría no debe existir este botón.
+    ...(stage === "question"
+      ? [{ icon: "fas fa-door-open", label: "Abandonar", fullLabel: "Abandonar pregunta", onClick: onAbandonarPregunta }]
+      : [])
   ];
 
   // Renderizadores de UI para la barra (usa 'label' corto)

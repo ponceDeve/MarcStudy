@@ -127,8 +127,12 @@
 }
 
 .teoria-sticky-bar {
-  position: sticky;
-  top: var(--header-h);
+  /* No se puede animar el salto entre position:static y sticky (a
+     diferencia del transform del header, "position" no es animable
+     con CSS), así que el cambio es instantáneo. Se prioriza que al
+     subir vuelva a comportarse como un elemento normal (se va con
+     el contenido) por sobre tener el mismo deslizamiento del header. */
+  position: static;
   z-index: 50;
   display: flex;
   align-items: center;
@@ -139,10 +143,10 @@
   padding: 10px 20px;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  transition: top 0.3s ease;
 }
 
 body.is-header-oculto .teoria-sticky-bar {
+  position: sticky;
   top: 0;
 }
 

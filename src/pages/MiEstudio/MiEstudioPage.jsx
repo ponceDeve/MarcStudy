@@ -2026,6 +2026,22 @@ export default function MiEstudioPage() {
   const [confirmSalirApp, setConfirmSalirApp] =
     useState(false);
 
+  const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] =
+    useState(false);
+
+  function pedirAbandonarPregunta() {
+    setConfirmAbandonarPregunta(true);
+  }
+
+  function cancelarAbandonarPregunta() {
+    setConfirmAbandonarPregunta(false);
+  }
+
+  function confirmarAbandonarPregunta() {
+    setConfirmAbandonarPregunta(false);
+    abandonarJuego();
+  }
+
   function pedirSalirApp() {
     setConfirmSalirApp(true);
   }
@@ -2451,8 +2467,8 @@ export default function MiEstudioPage() {
           onVerPreguntasVistas={
             verPreguntasVistas
           }
-          onAbandonar={
-            pedirSalirApp
+          onAbandonarPregunta={
+            pedirAbandonarPregunta
           }
           onIrInicio={
             irAInicio
@@ -2559,6 +2575,41 @@ export default function MiEstudioPage() {
             onClick={confirmarSalirApp}
           >
             Sí, salir
+          </button>
+        </div>
+      </Modal>
+
+      <Modal
+        open={confirmAbandonarPregunta}
+        onClose={cancelarAbandonarPregunta}
+      >
+        <div className="tema-modal-skull-icon">
+          <i className="fa-solid fa-skull" />
+        </div>
+
+        <h3 className="tema-modal-title">
+          Eres un perdedor.
+        </h3>
+
+        <p className="tema-modal-subtitle">
+          ¿volver a la teoría?
+        </p>
+
+        <div className="tema-modal-actions">
+          <button
+            type="button"
+            className="btn-solid"
+            onClick={cancelarAbandonarPregunta}
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            className="btn-outline"
+            onClick={confirmarAbandonarPregunta}
+          >
+            Sí, volver a la teoría
           </button>
         </div>
       </Modal>
@@ -3236,15 +3287,22 @@ export default function MiEstudioPage() {
                       </div>
                     ))}
                     
-                    {/* Sección separada de ejercicios */}
-                    <ExercisesSection
-                      examenPreguntas={examenPreguntas.filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
-                      onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
-                    />
-
-                    {/* Botón final si no hay ejercicios */}
-                    {examenPreguntas.length === 0 && (
-                      <div className="teoria-acciones-final">
+                    {/* Botón final: si hay preguntas de examen para este tema
+                        (no las de "Ejercicios", que ya tienen su propio botón
+                        más abajo), llevar al examen. Si no hay ninguna, completar
+                        el tema directamente. Antes solo se cubría el caso sin
+                        preguntas, y el caso normal quedaba sin botón visible
+                        (solo se podía entrar con la tecla Enter). */}
+                    <div className="teoria-acciones-final">
+                      {examenPreguntas.length > 0 ? (
+                        <button
+                          className="teoria-boton-examen"
+                          onClick={() => elegirModoEstudio("solo_preguntas")}
+                        >
+                          <i className="fa-solid fa-graduation-cap"></i>
+                          Ir al Examen
+                        </button>
+                      ) : (
                         <button
                           className="teoria-boton-examen"
                           onClick={finalizarTema}
@@ -3252,8 +3310,14 @@ export default function MiEstudioPage() {
                           <i className="fa-solid fa-check-circle"></i>
                           Completar Tema
                         </button>
-                      </div>
-                    )}
+                      )}
+                    </div>
+
+                    {/* Sección separada de ejercicios */}
+                    <ExercisesSection
+                      examenPreguntas={examenPreguntas.filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
+                      onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
+                    />
 
                   </div>
                 </div>

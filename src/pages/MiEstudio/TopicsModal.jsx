@@ -150,11 +150,12 @@ export default function TopicsModal({
         <div className="levels-modal__grid">
           {temasVisibles.map(({ item, index }) => {
             const esTemaActual = item.tema === temaActual;
+            const esArmado = activeIndex === index;
 
             return (
               <div key={index} className="level-cell">
                 <button
-                  className={`level-btn ${esTemaActual ? 'is-current' : ''}`}
+                  className={`level-btn ${esTemaActual ? 'is-current' : ''} ${esArmado ? 'is-armado' : ''}`}
                   onPointerDown={(e) => manejarToqueInicial(item, e)}
                   onClick={(e) => {
                     e.stopPropagation();
