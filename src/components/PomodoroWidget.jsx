@@ -158,8 +158,8 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
   return (
     <>
       {/* SOLUCIÓN AL BUG: Los audios siempre se renderizan para que suenen incluso si el widget se cierra temporalmente */}
-      <audio ref={loudRef} src="/cont_crono/sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
-      <audio ref={alienRef} src="/cont_crono/sonidos/alien-alarmdrum.mp3" preload="auto" />
+      <audio ref={loudRef} src="/MarcStudy/sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
+      <audio ref={alienRef} src="/MarcStudy/sonidos/alien-alarmdrum.mp3" preload="auto" />
 
       {/* Ya no se desmonta: is-hidden controla la visibilidad con transición */}
       <div
@@ -167,109 +167,109 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
         className={`pomo-widget ${isCollapsed ? "is-collapsed" : ""} ${open ? "" : "is-hidden"}`}
         aria-hidden={!open}
         style={{
-            top: pos.top,
-            left: pos.left ?? undefined,
-            right: pos.left === null ? 20 : undefined,
-            position: "fixed", // Para asegurar que flote y el drag funcione bien
-            zIndex: 9999,
-            ...(isCollapsed ? {
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              padding: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              overflow: "hidden",
-              backgroundColor: "var(--ink)",
-              color: "var(--ink-on-primary)",
-              boxShadow: "var(--shadow-md)"
-            } : {})
-          }}
-        >
-          {isCollapsed ? (
+          top: pos.top,
+          left: pos.left ?? undefined,
+          right: pos.left === null ? 20 : undefined,
+          position: "fixed", // Para asegurar que flote y el drag funcione bien
+          zIndex: 9999,
+          ...(isCollapsed ? {
+            width: "50px",
+            height: "50px",
+            borderRadius: "50%",
+            padding: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+            backgroundColor: "var(--ink)",
+            color: "var(--ink-on-primary)",
+            boxShadow: "var(--shadow-md)"
+          } : {})
+        }}
+      >
+        {isCollapsed ? (
+          <div
+            onMouseDown={onDragStart}
+            onTouchStart={onDragStart}
+            onClick={handleIconClick}
+            style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", touchAction: "none", cursor: "grab" }}
+          >
+            <i className="fas fa-clock" style={{ fontSize: "24px" }} />
+          </div>
+        ) : (
+          <>
             <div
               onMouseDown={onDragStart}
               onTouchStart={onDragStart}
-              onClick={handleIconClick}
-              style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", touchAction: "none", cursor: "grab" }}
+              onClick={handleHeaderClick}
+              className="pomo-widget__header"
+              style={{
+                touchAction: "none",
+                cursor: "grab",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
             >
-              <i className="fas fa-clock" style={{ fontSize: "24px" }} />
-            </div>
-          ) : (
-            <>
-              <div
-                onMouseDown={onDragStart}
-                onTouchStart={onDragStart}
-                onClick={handleHeaderClick}
-                className="pomo-widget__header"
-                style={{
-                  touchAction: "none",
-                  cursor: "grab",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center"
-                }}
-              >
-                <div><i className="fas fa-clock" /> Pomodoro</div>
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  {isRunning && (
-                    <i 
-                      className="fas fa-minus" 
-                      title="Minimizar" 
-                      onClick={(e) => { e.stopPropagation(); setIsCollapsed(true); }}
-                      style={{ cursor: "pointer", opacity: 0.8 }} 
-                    />
-                  )}
-                  <i
-                    className="fas fa-times"
-                    title="Cerrar"
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onTouchStart={(e) => e.stopPropagation()}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onClose();
-                    }}
-                    style={{ cursor: "pointer", opacity: 0.8, fontSize: "16px" }}
-                  />
-                </div>
-              </div>
-              <div className="pomo-widget__body">
-                {!isRunning && (
-                  <>
-                    <div className="pomo-widget__time" onClick={stopAlarms} style={{ cursor: "pointer" }}>
-                      {formatted}
-                    </div>
-                    <div className="pomo-widget__grid">
-                      {MINUTOS_DISPONIBLES.map((min) => (
-                        <button
-                          key={min}
-                          onClick={() => pickMinutes(min)}
-                          className={`pomo-widget__min-btn ${selectedMin === min ? "is-active" : ""}`}
-                        >
-                          {min}
-                        </button>
-                      ))}
-                    </div>
-                    <div className="pomo-widget__controls">
-                      <button onClick={handleStart} className="pomo-widget__icon-btn" style={{ opacity: selectedMin === 0 ? 0.5 : 1, cursor: selectedMin === 0 ? "not-allowed" : "pointer" }}>
-                        <i className="fas fa-play" />
-                      </button>
-                      <button onClick={() => reset()} className="pomo-widget__icon-btn">
-                        <i className="fas fa-rotate-left" />
-                      </button>
-                    </div>
-                  </>
-                )}
+              <div><i className="fas fa-clock" /> Pomodoro</div>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 {isRunning && (
-                  <div className="pomo-widget__time" onClick={pause} title="Clic para pausar" style={{ cursor: "pointer" }}>
+                  <i
+                    className="fas fa-minus"
+                    title="Minimizar"
+                    onClick={(e) => { e.stopPropagation(); setIsCollapsed(true); }}
+                    style={{ cursor: "pointer", opacity: 0.8 }}
+                  />
+                )}
+                <i
+                  className="fas fa-times"
+                  title="Cerrar"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClose();
+                  }}
+                  style={{ cursor: "pointer", opacity: 0.8, fontSize: "16px" }}
+                />
+              </div>
+            </div>
+            <div className="pomo-widget__body">
+              {!isRunning && (
+                <>
+                  <div className="pomo-widget__time" onClick={stopAlarms} style={{ cursor: "pointer" }}>
                     {formatted}
                   </div>
-                )}
-              </div>
-            </>
-          )}
-        </div>
+                  <div className="pomo-widget__grid">
+                    {MINUTOS_DISPONIBLES.map((min) => (
+                      <button
+                        key={min}
+                        onClick={() => pickMinutes(min)}
+                        className={`pomo-widget__min-btn ${selectedMin === min ? "is-active" : ""}`}
+                      >
+                        {min}
+                      </button>
+                    ))}
+                  </div>
+                  <div className="pomo-widget__controls">
+                    <button onClick={handleStart} className="pomo-widget__icon-btn" style={{ opacity: selectedMin === 0 ? 0.5 : 1, cursor: selectedMin === 0 ? "not-allowed" : "pointer" }}>
+                      <i className="fas fa-play" />
+                    </button>
+                    <button onClick={() => reset()} className="pomo-widget__icon-btn">
+                      <i className="fas fa-rotate-left" />
+                    </button>
+                  </div>
+                </>
+              )}
+              {isRunning && (
+                <div className="pomo-widget__time" onClick={pause} title="Clic para pausar" style={{ cursor: "pointer" }}>
+                  {formatted}
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

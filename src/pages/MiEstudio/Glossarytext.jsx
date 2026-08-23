@@ -201,6 +201,84 @@ function esSimbolo(termino) {
   return !/[a-zA-ZÀ-ÿ0-9]/.test(termino);
 }
 
+/**
+ * Separa el texto en fórmulas $...$ (u otros delimitadores LaTeX)
+ * y texto normal. Se ejecuta SIEMPRE antes que el glosario: un
+ * símbolo como "+" o "=" dentro de una fórmula no debe cortarla,
+ * así que el glosario nunca debe ver el contenido de una fórmula.
+ */
+function separarPorFormulas(texto) {
+  const partes = [];
+  let ultimo = 0;
+  let match;
+
+  const delimitadoresRegex =
+    /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
+
+  while (
+    (match = delimitadoresRegex.exec(texto)) !== null
+  ) {
+    if (match.index > ultimo) {
+      partes.push({
+        tipo: "texto",
+        valor: texto.slice(ultimo, match.index)
+      });
+    }
+
+    const delimitador = match[0];
+    let formula = delimitador;
+    let displayMode = false;
+
+    if (
+      delimitador.startsWith("$$") &&
+      delimitador.endsWith("$$")
+    ) {
+      formula = delimitador.slice(2, -2);
+      displayMode = true;
+    } else if (
+      delimitador.startsWith("\\[") &&
+      delimitador.endsWith("\\]")
+    ) {
+      formula = delimitador.slice(2, -2);
+      displayMode = true;
+    } else if (
+      delimitador.startsWith("\\(") &&
+      delimitador.endsWith("\\)")
+    ) {
+      formula = delimitador.slice(2, -2);
+    } else if (
+      delimitador.startsWith("$") &&
+      delimitador.endsWith("$")
+    ) {
+      formula = delimitador.slice(1, -1);
+    }
+
+    partes.push({
+      tipo: "formula",
+      valor: formula,
+      displayMode
+    });
+
+    ultimo = match.index + delimitador.length;
+  }
+
+  if (ultimo < texto.length) {
+    partes.push({
+      tipo: "texto",
+      valor: texto.slice(ultimo)
+    });
+  }
+
+  if (partes.length === 0) {
+    partes.push({
+      tipo: "texto",
+      valor: texto
+    });
+  }
+
+  return partes;
+}
+
 function partirPorGlosario(
   texto,
   glosarioCombinado
@@ -308,6 +386,31 @@ function partirPorGlosario(
   return partes;
 }
 
+/**
+ * Une los dos pasos en el orden correcto: primero separa fórmulas,
+ * y el glosario solo se aplica dentro de los pedazos de texto
+ * normal (nunca dentro de una fórmula).
+ */
+function construirPartes(texto, glosarioCombinado) {
+  const partes = [];
+
+  separarPorFormulas(texto).forEach((parte) => {
+    if (parte.tipo === "formula") {
+      partes.push(parte);
+      return;
+    }
+
+    partirPorGlosario(
+      parte.valor,
+      glosarioCombinado
+    ).forEach((sub) => {
+      partes.push(sub);
+    });
+  });
+
+  return partes;
+}
+
 export default function GlossaryText({
   text,
   glosario = {}
@@ -342,7 +445,7 @@ export default function GlossaryText({
 
   const partes = useMemo(
     () =>
-      partirPorGlosario(
+      construirPartes(
         text,
         glosarioCombinado
       ),
@@ -379,6 +482,16 @@ export default function GlossaryText({
     >
       {partes.map(
         (parte, i) => {
+          if (
+            parte.tipo === "formula"
+          ) {
+            return renderFormula(
+              parte.valor,
+              `formula-${i}`,
+              parte.displayMode
+            );
+          }
+
           if (
             parte.tipo === "texto"
           ) {

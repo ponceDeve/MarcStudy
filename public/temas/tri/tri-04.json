@@ -1,0 +1,109 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Resolución de Triángulos Rectángulos",
+  "glosario": {
+    "Resolución": "Hallar lados desconocidos usando datos dados.",
+    "Razón": "Cociente entre dos lados del triángulo.",
+    "Hipotenusa": "Lado de mayor longitud, opuesto al recto.",
+    "Elevación": "Ángulo medido sobre la línea horizontal.",
+    "Depresión": "Ángulo medido bajo la línea horizontal.",
+    "Visual": "Línea recta del ojo al objeto.",
+    "Transversal": "Recta que cruza dos líneas paralelas."
+  },
+  "theory": [
+    {
+      "titulo": "Regla Fundamental de Resolución",
+      "puntos": [
+        {
+          "texto": "Incógnita = Dato + (Quiero / Tengo)",
+          "explicacion": "Esta regla general es el pilar para evitar memorizar fórmulas innecesarias en los exámenes de admisión. Se forma una fracción donde el numerador es el lado a hallar y el denominador el lado conocido, identificando qué razón trigonométrica forman respecto al ángulo. Ejemplo: Si tienes el cateto opuesto $L=5$ y buscas la hipotenusa $x$, la razón es $\\frac{\\text{Hip}}{\\text{Op}} = \\csc(\\alpha)$, entonces $x = 5\\csc(\\alpha)$. El truco UNMSM es siempre plantear esta fracción mentalmente antes de escribir."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso 1: Conociendo la Hipotenusa (L) y un Ángulo",
+      "puntos": [
+        {
+          "texto": "Hipotenusa = L ⇒ Opuesto = L·sin(α)",
+          "explicacion": "Este es el caso más frecuente en física (descomposición de vectores) y geometría plana. Aplicamos la regla: $\\frac{\\text{Opuesto}}{\\text{Hipotenusa}} = \\sin(\\alpha)$. Ejemplo real: En un triángulo rectángulo de hipotenusa $10$ y ángulo de $30^\\circ$, el cateto opuesto mide $10\\sin(30^\\circ) = 10(0.5) = 5$. El \"truco\" visual es recordar que el lado que está \"al frente\" del ángulo siempre lleva el seno cuando la hipotenusa es dato."
+        },
+        {
+          "texto": "Hipotenusa = L ⇒ Adyacente = L·cos(α)",
+          "explicacion": "Compañero directo del caso anterior, usado para hallar la base o proyección de una sombra. La deducción es $\\frac{\\text{Adyacente}}{\\text{Hipotenusa}} = \\cos(\\alpha)$. Si tomamos el mismo ejemplo con hipotenusa $10$ y ángulo de $30^\\circ$, el lado adyacente es $10\\cos(30^\\circ) = 5\\sqrt{3}$. En problemas complejos de la UNMSM, este cateto suele ser la base compartida con otro triángulo adyacente."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos 2 y 3: Conociendo un Cateto y un Ángulo",
+      "puntos": [
+        {
+          "texto": "Opuesto = L ⇒ Hipotenusa = L·csc(α)",
+          "explicacion": "Se utiliza cuando la altura de un objeto es conocida y necesitamos calcular la longitud visual o la escalera apoyada. Aplicando la regla general: $\\frac{\\text{Hipotenusa}}{\\text{Opuesto}} = \\csc(\\alpha)$. Ejemplo: Si un muro mide $4$ metros de altura (opuesto) y la escalera forma un ángulo de $53^\\circ$ con el suelo, la longitud de la escalera es $4\\csc(53^\\circ) = 4(\\frac{5}{4}) = 5$ metros. Cuidado: muchos estudiantes confunden cosecante con secante en este paso."
+        },
+        {
+          "texto": "Opuesto = L ⇒ Adyacente = L·cot(α)",
+          "explicacion": "Fundamental en problemas de sombras o para calcular la distancia horizontal desde la base de una torre. La razón generada es $\\frac{\\text{Adyacente}}{\\text{Opuesto}} = \\cot(\\alpha)$. Si la torre mide $20$m y el ángulo es $45^\\circ$, la sombra es $20\\cot(45^\\circ) = 20(1) = 20$m. Un truco de examen es que, si el ángulo es de $45^\\circ$, la cotangente es $1$, volviendo al triángulo un isósceles instantáneo sin mayor cálculo."
+        },
+        {
+          "texto": "Adyacente = L ⇒ Hipotenusa = L·sec(α)",
+          "explicacion": "Aparece cuando la distancia terrestre al objetivo es dato y se busca la distancia en línea recta al punto más alto. La fracción es $\\frac{\\text{Hipotenusa}}{\\text{Adyacente}} = \\sec(\\alpha)$. Ejemplo: Estás a $12$m de un poste y miras su cima con ángulo $\\theta$, la distancia de tu ojo a la cima es $12\\sec(\\theta)$. En UNMSM, este caso suele combinarse con sumas de fracciones algebraicas para simplificar el resultado."
+        },
+        {
+          "texto": "Adyacente = L ⇒ Opuesto = L·tan(α)",
+          "explicacion": "Es la fórmula más utilizada en el tema de ángulos de elevación para hallar alturas. La estructura obedece a $\\frac{\\text{Opuesto}}{\\text{Adyacente}} = \\tan(\\alpha)$. Si te alejas $30$m de un edificio y mides una elevación de $37^\\circ$, la altura es $30\\tan(37^\\circ) = 30(\\frac{3}{4}) = 22.5$m. Variante típica: Si el observador tiene una altura $h$, el lado opuesto total será la altura calculada con la tangente más la altura $h$ del observador."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de Áreas y Alturas Relativas",
+      "puntos": [
+        {
+          "texto": "Área = (a·b·sin(θ)) / 2",
+          "explicacion": "Esta es la fórmula trigonométrica del área, indispensable cuando no tienes la altura directa pero sí dos lados y el ángulo comprendido. Deriva de trazar la altura y resolverla como $h = b\\sin(\\theta)$. Ejemplo: Un triángulo tiene lados de $6$ y $8$, con un ángulo de $30^\\circ$ entre ellos; su área es $S = \\frac{6 \\cdot 8 \\cdot \\sin(30^\\circ)}{2} = 24(0.5) = 12$ unidades cuadradas. En los exámenes, usan esta fórmula para igualarla a la fórmula geométrica clásica y hallar otra variable."
+        },
+        {
+          "texto": "Altura = Hipotenusa·sin(α)·cos(α)",
+          "explicacion": "Propiedad oculta poderosa en triángulos rectángulos cuando se traza la altura relativa a la hipotenusa. Si la hipotenusa es $c$, la altura $h$ cumple $h = c\\sin(\\alpha)\\cos(\\alpha)$. Ejemplo: Si la hipotenusa es $10$ y un ángulo es $15^\\circ$, $h = 10\\sin(15^\\circ)\\cos(15^\\circ)$. Usando ángulos dobles (tema conexo), esto equivale a $h = 5\\sin(30^\\circ) = 2.5$. Este atajo ahorra hasta 3 minutos en una prueba de admisión."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos Verticales: Elevación y Depresión",
+      "puntos": [
+        {
+          "texto": "Mira arriba ⇒ Ángulo elevación",
+          "explicacion": "Es el ángulo formado por la línea horizontal y la línea visual cuando el objeto está por encima del observador. Requiere trazar estrictamente una línea paralela al piso desde el ojo del observador. Ejemplo: Si ves un avión desde el suelo, la base de tu triángulo es la línea horizontal imaginaria y el ángulo se abre hacia el cielo. Trampa clásica UNMSM: no sumar la altura del observador al resultado final de la altura del objeto."
+        },
+        {
+          "texto": "Mira abajo ⇒ Ángulo depresión",
+          "explicacion": "Es el ángulo entre la línea horizontal imaginaria y la línea visual cuando el objetivo está por debajo. El error mortal aquí es medir el ángulo respecto a la pared o la torre vertical, ¡siempre es respecto a la horizontal! Ejemplo: Desde un faro de $50$m de altura ves un barco con depresión de $30^\\circ$; la distancia se halla armando el triángulo donde la vertical del faro es un cateto."
+        },
+        {
+          "texto": "Elevación ≈ Depresión (Alternos)",
+          "explicacion": "Por la propiedad de rectas paralelas (Z de Zorro) cortadas por una secante (la línea visual), el ángulo de depresión del observador arriba es exactamente igual al ángulo de elevación si el objeto abajo lo mirara. Esto significa que si un vigía te ve con depresión $\\alpha$, tú ves al vigía con elevación $\\alpha$. Usar esto permite trasladar el ángulo de depresión (que \"flota\" afuera) al interior del triángulo rectángulo apoyado en el piso, facilitando la resolución de la tangente."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelos y Estrategias Avanzadas de Problemas UNMSM",
+      "puntos": [
+        {
+          "texto": "Lado común ✓ Conector triángulos",
+          "explicacion": "En problemas de \"doble triángulo\" (ej. una torre vista desde dos puntos diferentes alineados), la altura de la torre es el lado común. La estrategia es llamar $h$ a la altura y expresar las dos bases en función de $h$ y las cotangentes. Ejemplo: Base total = $h\\cot(\\alpha) + h\\cot(\\beta)$. Factorizando $h$, resuelves en un solo paso algebraico. Este modelo es el que más se repite históricamente en San Marcos."
+        },
+        {
+          "texto": "Polígono irregular ✓ Trazar alturas",
+          "explicacion": "Cuando en el examen te dan un triángulo acutángulo o un trapecio escaleno con ángulos notables (ej. $37^\\circ$, $45^\\circ$, $60^\\circ$), la regla de oro es trazar alturas estratégicas para encerrar esos ángulos en triángulos rectángulos propios. Ejemplo: Si tienes un triángulo de lados $A, B$ y ángulo $53^\\circ$ al centro, trazas la altura adyacente a $B$ para formar un triángulo rectángulo de $53^\\circ$ y $37^\\circ$, calculando sus lados mediante las razones conocidas."
+        },
+        {
+          "texto": "Mitad ángulo ✓ Prolongar catetos",
+          "explicacion": "Si te piden la razón trigonométrica de $\\frac{\\theta}{2}$ y conoces el triángulo de $\\theta$, el truco geométrico es prolongar el cateto adyacente una longitud igual a la hipotenusa y unir con el vértice superior. Esto forma un triángulo isósceles exterior cuyo ángulo agudo inferior será exactamente $\\frac{\\theta}{2}$. Ejemplo: Para hallar $\\tan(\\frac{53^\ncirc}{2})$, prolongas el adyacente ($4$) una longitud igual a la hipotenusa ($5$), creando un nuevo adyacente de $9$ frente a un opuesto de $3$, dando $\\tan = \\frac{3}{9} = \\frac{1}{3}$."
+        },
+        {
+          "texto": "Ángulo α ⇒ Complemento 90-α",
+          "explicacion": "En problemas donde intervienen rebotes de luz, billar, o geometría compleja, los estudiantes suelen estancarse con un ángulo $\\alpha$. La clave es llenar todos los vértices del triángulo usando $\\beta = 90^\\circ - \\alpha$. Al hacer esto, las razones cambian por sus co-razones (el seno de uno es el coseno del otro). Ejemplo: Si tienes cateto $x$ adyacente a $\\alpha$, ese mismo $x$ es el cateto opuesto de $\\beta$. Trasladar estos datos de un triángulo anidado a otro es fundamental para hallar el lado pedido."
+        }
+      ]
+    }
+  ]
+}

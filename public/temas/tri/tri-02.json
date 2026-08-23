@@ -1,0 +1,128 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Razones Trigonométricas de Ángulos Agudos",
+  "glosario": {
+    "Cateto": "Lado adyacente al ángulo recto del triángulo.",
+    "Hipotenusa": "Lado de mayor longitud, opuesto al ángulo recto.",
+    "Razón": "Cociente entre las longitudes de dos lados.",
+    "Recíprocas": "Razones cuyo producto es igual a la unidad.",
+    "Cofunción": "Razón trigonométrica del ángulo complementario.",
+    "Complementarios": "Dos ángulos cuya suma es exactamente noventa grados.",
+    "Notables": "Triángulos con proporción de lados geométricamente exacta."
+  },
+  "theory": [
+    {
+      "titulo": "Fundamentos del Triángulo Rectángulo",
+      "puntos": [
+        {
+          "texto": "Triángulo rectángulo $\\supset$ catetos e hipotenusa.",
+          "explicacion": "Todo triángulo rectángulo contiene un ángulo interno de $90^\\circ$. Los lados que forman este ángulo recto son los catetos, mientras que el lado más largo frente al ángulo recto es la hipotenusa. Para resolver problemas básicos en UNMSM, primero debes identificar correctamente estos elementos respecto al ángulo de estudio. Por ejemplo, en un triángulo de lados $3$, $4$ y $5$, los catetos son $3$ y $4$, y la hipotenusa es $5$."
+        },
+        {
+          "texto": "Teorema de Pitágoras: $a^2+c^2=b^2$.",
+          "explicacion": "El Teorema de Pitágoras establece que la suma de los cuadrados de los catetos es igual al cuadrado de la hipotenusa: $a^2+c^2=b^2$. Es la herramienta principal para hallar un lado desconocido cuando se conocen los otros dos. Ejemplo: si los catetos miden $6$ y $8$, la hipotenusa $h$ se halla mediante $h^2=6^2+8^2=36+64=100$, por lo que $h=10$."
+        },
+        {
+          "texto": "Ángulos agudos: $\\alpha+\\beta=90^\\circ$.",
+          "explicacion": "Los dos ángulos que no son el ángulo recto en un triángulo rectángulo siempre suman $90^\\circ$. Esta propiedad fundamental justifica la existencia de las cofunciones trigonométricas. Si un ángulo mide $20^\\circ$, el otro mide $70^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición de las 6 Razones Trigonométricas",
+      "puntos": [
+        {
+          "texto": "Seno: $\\sin(\\alpha)=\\frac{\\text{Cateto Opuesto}}{\\text{Hipotenusa}}$.",
+          "explicacion": "El seno de un ángulo agudo se define como el cociente entre el cateto opuesto y la hipotenusa. Si el cateto opuesto a $\\alpha$ mide $3$ y la hipotenusa mide $5$, entonces $\\sin(\\alpha)=\\frac{3}{5}$."
+        },
+        {
+          "texto": "Coseno: $\\cos(\\alpha)=\\frac{\\text{Cateto Adyacente}}{\\text{Hipotenusa}}$.",
+          "explicacion": "El coseno de un ángulo agudo se define como el cociente entre el cateto adyacente y la hipotenusa. Si el cateto adyacente mide $12$ y la hipotenusa mide $13$, entonces $\\cos(\\alpha)=\\frac{12}{13}$."
+        },
+        {
+          "texto": "Tangente: $\\tan(\\alpha)=\\frac{\\text{Cateto Opuesto}}{\\text{Cateto Adyacente}}$.",
+          "explicacion": "La tangente relaciona directamente los dos catetos. Si el cateto opuesto mide $8$ y el adyacente mide $6$, entonces $\\tan(\\alpha)=\\frac{8}{6}=\\frac{4}{3}$."
+        },
+        {
+          "texto": "Cotangente: $\\cot(\\alpha)=\\frac{\\text{Cateto Adyacente}}{\\text{Cateto Opuesto}}$.",
+          "explicacion": "La cotangente es la razón recíproca de la tangente. Se calcula dividiendo el cateto adyacente entre el cateto opuesto. Si el adyacente mide $6$ y el opuesto mide $8$, entonces $\\cot(\\alpha)=\\frac{6}{8}=\\frac{3}{4}$."
+        },
+        {
+          "texto": "Secante: $\\sec(\\alpha)=\\frac{\\text{Hipotenusa}}{\\text{Cateto Adyacente}}$.",
+          "explicacion": "La secante es la razón recíproca del coseno. Si la hipotenusa mide $17$ y el cateto adyacente mide $15$, entonces $\\sec(\\alpha)=\\frac{17}{15}$."
+        },
+        {
+          "texto": "Cosecante: $\\csc(\\alpha)=\\frac{\\text{Hipotenusa}}{\\text{Cateto Opuesto}}$.",
+          "explicacion": "La cosecante es la razón recíproca del seno. Si la hipotenusa mide $25$ y el cateto opuesto mide $7$, entonces $\\csc(\\alpha)=\\frac{25}{7}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades: Recíprocas y Complementarias",
+      "puntos": [
+        {
+          "texto": "$\\sin(x)\\cdot\\csc(x)=1$.",
+          "explicacion": "El seno y la cosecante son razones recíprocas para un mismo ángulo. Por ello, su producto siempre es igual a $1$. Por ejemplo, $5\\sin(14^\\circ)\\csc(14^\\circ)=5$."
+        },
+        {
+          "texto": "$\\cos(x)\\cdot\\sec(x)=1$.",
+          "explicacion": "El coseno y la secante son razones recíprocas para un mismo ángulo. Por ello, $\\cos(x)\\cdot\\sec(x)=1$. Por ejemplo, $\\cos(40^\\circ)\\sec(40^\\circ)+3=4$."
+        },
+        {
+          "texto": "$\\tan(x)\\cdot\\cot(x)=1$.",
+          "explicacion": "La tangente y la cotangente son razones recíprocas para un mismo ángulo. Por ello, su producto es igual a $1$. Si $\\tan(x)\\cot(x)=y-7$, entonces $1=y-7$ y $y=8$."
+        },
+        {
+          "texto": "$\\sin(\\alpha)=\\cos(\\beta)\\Rightarrow\\alpha+\\beta=90^\\circ$.",
+          "explicacion": "El seno de un ángulo es igual al coseno de su complemento. Si $\\sin(40^\\circ)=\\cos(x)$, entonces $40^\\circ+x=90^\\circ$, por lo que $x=50^\\circ$."
+        },
+        {
+          "texto": "$\\tan(\\alpha)=\\cot(\\beta)\\Rightarrow\\alpha+\\beta=90^\\circ$.",
+          "explicacion": "La tangente de un ángulo coincide con la cotangente de su complemento. Si $\\tan(2x)=\\cot(x+30^\\circ)$, entonces $2x+x+30^\\circ=90^\\circ$. Por tanto, $x=20^\\circ$."
+        },
+        {
+          "texto": "$\\sec(\\alpha)=\\csc(\\beta)\\Rightarrow\\alpha+\\beta=90^\\circ$.",
+          "explicacion": "La secante y la cosecante son cofunciones. Si $\\sec(5x)=\\csc(4x)$, entonces $5x+4x=90^\\circ$, de donde $x=10^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulos Rectángulos Notables",
+      "puntos": [
+        {
+          "texto": "Triángulo $30^\\circ-60^\\circ-90^\\circ$: $1k$, $\\sqrt{3}k$, $2k$.",
+          "explicacion": "En este triángulo notable, el cateto menor mide $k$, el cateto mayor mide $\\sqrt{3}k$ y la hipotenusa mide $2k$. Si la hipotenusa mide $10$, el cateto opuesto a $30^\\circ$ mide $5$."
+        },
+        {
+          "texto": "Triángulo $45^\\circ-45^\\circ-90^\\circ$: $1k$, $1k$, $\\sqrt{2}k$.",
+          "explicacion": "Es un triángulo rectángulo isósceles. Sus dos catetos son iguales y la hipotenusa es $\\sqrt{2}$ veces uno de ellos. Si un cateto mide $7$, el otro también mide $7$ y la hipotenusa mide $7\\sqrt{2}$."
+        },
+        {
+          "texto": "Triángulo aproximado $37^\\circ-53^\\circ-90^\\circ$: $3k$, $4k$, $5k$.",
+          "explicacion": "Es el triángulo notable aproximado basado en la terna pitagórica $3$, $4$, $5$. El lado $3k$ se opone aproximadamente a $37^\\circ$ y el lado $4k$ se opone aproximadamente a $53^\\circ$. Por ejemplo, si $\\sin(\\theta)=\\frac{3}{5}$, en problemas preuniversitarios se puede asociar aproximadamente $\\theta=37^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelos de Problemas UNMSM y Métodos de Solución",
+      "puntos": [
+        {
+          "texto": "$\\sin(C)=\\frac{5}{13}\\Rightarrow$ construir triángulo.",
+          "explicacion": "Si el problema proporciona el valor de una razón trigonométrica, puedes construir un triángulo rectángulo asignando una constante $k$. Si $\\sin(C)=\\frac{5}{13}$, entonces el cateto opuesto puede representarse como $5k$ y la hipotenusa como $13k$. Por Pitágoras, el cateto adyacente es $12k$."
+        },
+        {
+          "texto": "$\\cos(A)\\cdot\\sec(B)=1\\Rightarrow A=B$.",
+          "explicacion": "Cuando dos razones recíprocas aparecen multiplicándose y el resultado es $1$, se puede analizar si los ángulos son iguales. Por ejemplo, si $\\cos(3x-10^\\circ)\\cdot\\sec(x+40^\\circ)=1$, se igualan los argumentos: $3x-10^\\circ=x+40^\\circ$. Así se obtiene $x=25^\\circ$."
+        },
+        {
+          "texto": "$\\tan(2x)=\\cot(3x)\\Rightarrow2x+3x=90^\\circ$.",
+          "explicacion": "Cuando una razón trigonométrica se iguala a su cofunción, los ángulos correspondientes son complementarios. Por ello, $\\tan(2x)=\\cot(3x)$ implica $2x+3x=90^\\circ$, de donde $x=18^\\circ$."
+        },
+        {
+          "texto": "$3(BH)=2(AC)\\Rightarrow$ establecer relaciones algebraicas.",
+          "explicacion": "En problemas geométricos donde se proporcionan relaciones entre segmentos, se asignan variables y se expresan los lados mediante proporciones. Por ejemplo, de $3(BH)=2(AC)$ se puede obtener una relación entre ambos segmentos antes de aplicar las razones trigonométricas correspondientes."
+        }
+      ]
+    }
+  ]
+}

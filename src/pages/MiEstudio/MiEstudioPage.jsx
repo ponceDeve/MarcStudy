@@ -549,14 +549,6 @@ export default function MiEstudioPage() {
     useRef(null);
 
   const [
-    mostrarModalSugerencia,
-    setMostrarModalSugerencia
-  ] = useState(false);
-
-  const [textoSugerencia, setTextoSugerencia] =
-    useState("");
-
-  const [
     sugerenciaMsg,
     setSugerenciaMsg
   ] = useState(null);
@@ -1008,8 +1000,6 @@ export default function MiEstudioPage() {
       setSinPreguntaAlerta(false);
       setPreguntaModoAbierta(true);
 
-      setTextoSugerencia("");
-      setMostrarModalSugerencia(false);
       setSugerenciaMsg(null);
       setSugerenciaMsgSaliendo(false);
     } catch (e) {
@@ -1029,22 +1019,16 @@ export default function MiEstudioPage() {
   async function enviarSugerenciaExamen() {
     if (!topicData) return;
 
-    sugerenciaTimers.current.forEach(
-      clearTimeout
-    );
+    sugerenciaTimers.current.forEach(clearTimeout);
 
     setSugerenciaMsg(null);
     setSugerenciaMsgSaliendo(false);
 
     const datos = {
-      _subject: `Sugerencia de examen — ${topicData.tema ||
-        "Tema sin nombre"
-        }`,
+      _subject: `Sugerencia de examen — ${topicData.tema || "Tema sin nombre"}`,
+      nombre: nombreUsuario || "Usuario sin nombre",
       curso: topicData.curso || "",
       tema: topicData.tema || "",
-      comentario:
-        textoSugerencia.trim() ||
-        "Sin comentario adicional.",
       _captcha: "false"
     };
 
@@ -1054,35 +1038,23 @@ export default function MiEstudioPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type":
-              "application/json",
-            Accept:
-              "application/json"
+            "Content-Type": "application/json",
+            Accept: "application/json"
           },
           body: JSON.stringify(datos)
         }
       );
 
-      const resultado =
-        await respuesta.json();
+      const resultado = await respuesta.json();
 
-      console.log(
-        "Respuesta de FormSubmit:",
-        resultado
-      );
+      console.log("Respuesta de FormSubmit:", resultado);
 
-      if (
-        !respuesta.ok ||
-        !resultado.success
-      ) {
+      if (!respuesta.ok || !resultado.success) {
         throw new Error(
           resultado.message ||
           "FormSubmit rechazó el envío."
         );
       }
-
-      setTextoSugerencia("");
-      setMostrarModalSugerencia(false);
 
       setSugerenciaMsg(
         "Tu sugerencia fue enviada correctamente."
@@ -1100,6 +1072,7 @@ export default function MiEstudioPage() {
           setSugerenciaMsgSaliendo(false);
         }, 5000)
       ];
+
     } catch (error) {
       console.error(
         "Error al enviar sugerencia:",
@@ -1116,6 +1089,7 @@ export default function MiEstudioPage() {
         setTimeout(() => {
           setSugerenciaMsgSaliendo(true);
         }, 3000),
+
         setTimeout(() => {
           setSugerenciaMsg(null);
           setSugerenciaMsgSaliendo(false);
@@ -3594,11 +3568,7 @@ export default function MiEstudioPage() {
               <button
                 type="button"
                 className="mi-estudio__suggestion-btn"
-                onClick={() =>
-                  setMostrarModalSugerencia(
-                    true
-                  )
-                }
+                onClick={enviarSugerenciaExamen}
               >
                 <i className="fa-solid fa-file-circle-plus"></i>
                 <span>
@@ -3607,85 +3577,6 @@ export default function MiEstudioPage() {
               </button>
             </section>
           )}
-
-        {mostrarModalSugerencia && (
-          <div
-            className="mi-estudio__modal-overlay"
-            onClick={() => setMostrarModalSugerencia(false)}
-          >
-            <div
-              className="mi-estudio__modal"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="mi-estudio__modal-header">
-                <div>
-                  <p className="suguerir__title">
-                    Sugerir examen
-                  </p>
-
-                  <p className="mi-estudio__modal-desc">
-                    Tema:{" "}
-                    <strong>
-                      {topicData.tema ||
-                        topicData.nombre ||
-                        "Tema actual"}
-                    </strong>
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  className="mi-estudio__modal-close"
-                  onClick={() => setMostrarModalSugerencia(false)}
-                  aria-label="Cerrar"
-                >
-                  <i className="fa-solid fa-xmark"></i>
-                </button>
-              </div>
-
-              <div className="mi-estudio__modal-body">
-                <label
-                  className="mi-estudio__campo"
-                  htmlFor="sugerencia-texto"
-                >
-                  <span className="mi-estudio__campo-label">
-                    ¿Qué te gustaría que incluya?
-                  </span>
-
-                  <textarea
-                    id="sugerencia-texto"
-                    className="mi-estudio__textarea"
-                    value={textoSugerencia}
-                    onChange={(e) =>
-                      setTextoSugerencia(e.target.value)
-                    }
-                    placeholder="Escribe tu sugerencia..."
-                    rows={4}
-                  />
-                </label>
-              </div>
-
-              <div className="mi-estudio__modal-footer">
-                <button
-                  type="button"
-                  className="mi-estudio__modal-cancel"
-                  onClick={() => setMostrarModalSugerencia(false)}
-                >
-                  Cancelar
-                </button>
-
-                <button
-                  type="button"
-                  className="mi-estudio__modal-submit"
-                  onClick={enviarSugerenciaExamen}
-                >
-                  <i className="fa-solid fa-paper-plane"></i>
-                  Enviar sugerencia
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {stage === "finished" && (
           <div className="mi-estudio__finished">

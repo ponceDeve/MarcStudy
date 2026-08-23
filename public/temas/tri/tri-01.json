@@ -1,0 +1,115 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Sistemas de Medición Angular",
+  "glosario": {
+    "Ángulo": "Rotación de un rayo sobre un vértice.",
+    "Sexagesimal": "Sistema inglés que divide la vuelta en 360 partes.",
+    "Centesimal": "Sistema francés que divide la vuelta en 400 partes.",
+    "Radián": "Ángulo cuyo arco tiene la misma longitud que el radio.",
+    "Proporcionalidad": "Relación constante entre dos o más magnitudes.",
+    "Conversión": "Transformación entre distintos sistemas de medición."
+  },
+  "theory": [
+    {
+      "titulo": "Sistema Sexagesimal (Inglés) y Propiedades Ocultas",
+      "puntos": [
+        {
+          "texto": "$1^\\circ = 60'$",
+          "explicacion": "En el sistema inglés, una vuelta completa mide $360^\\circ$. Para reducir la notación $a^\\circ b' c''$, debes aplicar la suma algebraica $a^\\circ + b' + c''$. Ejemplo: convertir $2^\\circ 15'$ a minutos requiere multiplicar $2 \\times 60$ y sumar $15$, obteniendo $135'$."
+        },
+        {
+          "texto": "$1' = 60''$",
+          "explicacion": "Cada minuto sexagesimal contiene $60$ segundos. Para transformar grados directamente a segundos, el factor de conversión es $3600$. Por lo tanto, un ángulo escrito como $1^\\circ 1' 1''$ equivale a $3600'' + 60'' + 1'' = 3661''$."
+        },
+        {
+          "texto": "Subunidades S $\\downarrow 60$",
+          "explicacion": "En la notación sexagesimal pura, los minutos y segundos jamás deben igualar o superar $60$. Si al sumar obtienes un resultado como $45^\\circ 75'$, debes transformarlo extrayendo grupos de $60$: $75' = 1^\\circ 15'$, quedando el ángulo correcto en $46^\\circ 15'$."
+        },
+        {
+          "texto": "Total Minutos S = $60S$",
+          "explicacion": "Fórmula clave para trucos de examen. Si un problema menciona el número de minutos sexagesimales, se representa algebraicamente como $60S$. Si menciona segundos, es $3600S$. Ejemplo: si sus minutos sexagesimales son $120$, entonces $60S = 120 \\Rightarrow S = 2^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema Centesimal (Francés) y Subunidades",
+      "puntos": [
+        {
+          "texto": "$1^{\\mathrm g} = 100^{\\mathrm m}$",
+          "explicacion": "En el sistema centesimal (francés), la vuelta se divide en $400^{\\mathrm g}$. La notación conjunta $x^{\\mathrm g}y^{\\mathrm m}z^{\\mathrm s}$ equivale a $x^{\\mathrm g} + y^{\\mathrm m} + z^{\\mathrm s}$. Ejemplo práctico: transformar $3^{\\mathrm g}40^{\\mathrm m}$ a minutos requiere multiplicar $3 \\times 100$ y sumar $40$, dando como resultado $340^{\\mathrm m}$."
+        },
+        {
+          "texto": "$1^{\\mathrm m} = 100^{\\mathrm s}$",
+          "explicacion": "Un grado centesimal equivale a $10000^{\\mathrm s}$. Este sistema de base $10$ facilita las conversiones directas con decimales. Por ejemplo, $2{,}4532^{\\mathrm g}$ se puede leer automáticamente como $2^{\\mathrm g}45^{\\mathrm m}32^{\\mathrm s}$ sin cálculos engorrosos."
+        },
+        {
+          "texto": "Subunidades C $\\downarrow 100$",
+          "explicacion": "En este sistema, los minutos y segundos están estrictamente limitados a $99$. Si un cálculo arroja $5^{\\mathrm g}120^{\\mathrm m}$, se debe simplificar extrayendo $100^{\\mathrm m}$ como $1^{\\mathrm g}$, resultando en la expresión simplificada y correcta de $6^{\\mathrm g}20^{\\mathrm m}$."
+        },
+        {
+          "texto": "Total Minutos C = $100C$",
+          "explicacion": "Si en un problema te piden trabajar con el número de minutos centesimales, reemplázalo por la expresión $100C$. Para segundos centesimales, usa $10000C$. Esto evita trabajar con decimales o fracciones innecesarias desde el inicio del planteamiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema Radial, Equivalencias Exactas y Aproximadas",
+      "puntos": [
+        {
+          "texto": "$\\pi\\ \\mathrm{rad} = 180^\\circ$",
+          "explicacion": "Equivalencia fundamental de media vuelta. Se utiliza constantemente para crear factores de conversión unitarios, tales como $\\frac{\\pi\\ \\mathrm{rad}}{180^\\circ}$. Sirve para transformar rápidamente cualquier ángulo sexagesimal a radianes mediante una multiplicación directa."
+        },
+        {
+          "texto": "$\\pi\\ \\mathrm{rad} = 200^{\\mathrm g}$",
+          "explicacion": "Factor equivalente de media vuelta para el sistema francés. Combinado con el sistema inglés, establece la relación directa y fundamental $180^\\circ = 200^{\\mathrm g}$, de la cual se derivan las fórmulas simplificadas de proporción utilizadas en admisión."
+        },
+        {
+          "texto": "$1\\ \\mathrm{rad} \\approx 57^\\circ$",
+          "explicacion": "Un radián es exactamente $57^\\circ 17' 44''$. En problemas teóricos de desigualdades angulares, recuerda siempre el orden de magnitud: para un mismo ángulo positivo, el número en centesimales es mayor al sexagesimal. Pero en unidad absoluta: $1\\ \\mathrm{rad} > 1^\\circ > 1^{\\mathrm g}$."
+        },
+        {
+          "texto": "$27' = 50^{\\mathrm m}$",
+          "explicacion": "Equivalencia directa para subunidades. Nace de simplificar la relación $\\frac{9 \\times 60'}{10 \\times 100^{\\mathrm m}}$. Es vital para convertir minutos sexagesimales a centesimales rápidamente, saltándose el paso intermedio de convertirlos primero a grados enteros."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas Generales de Proporcionalidad Trigonométrica",
+      "puntos": [
+        {
+          "texto": "Fórmula General $\\Rightarrow$ Proporción $K$",
+          "explicacion": "La igualdad universal $\\frac{S}{180} = \\frac{C}{200} = \\frac{R}{\\pi} = K$ es obligatoria cuando los problemas involucran variables elevadas a exponentes, radicales complejos o cuando la constante $\\pi$ aparece explícitamente restando o sumando en los numeradores de la ecuación propuesta."
+        },
+        {
+          "texto": "Fórmula Simplificada $\\Rightarrow k$",
+          "explicacion": "La versión reducida $\\frac{S}{9} = \\frac{C}{10} = \\frac{20R}{\\pi} = k$ es la herramienta más usada en exámenes. Permite parametrizar rápidamente los datos: $S=9k$, $C=10k$, $R=\\frac{\\pi k}{20}$. Solo debe usarse cuando no haya interferencias de fracciones con $\\pi$ en el dato inicial."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelos Avanzados de Resolución de Problemas UNMSM",
+      "puntos": [
+        {
+          "texto": "Modelo Suma $\\Rightarrow 19k$",
+          "explicacion": "Tipo de problema: la suma del número de grados S y C es $76$. Método de solución: plantear $S+C=76$. Reemplazar la fórmula simplificada: $9k+10k=76 \\Rightarrow 19k=76 \\Rightarrow k=4$. Finalmente, hallar el ángulo en radianes sustituyendo: $R=\\frac{\\pi(4)}{20}=\\frac{\\pi}{5}\\ \\mathrm{rad}$."
+        },
+        {
+          "texto": "Modelo Diferencia $\\Rightarrow k$",
+          "explicacion": "Tipo de problema: relaciones de resta o exceso. Si el problema indica que el exceso de C sobre S es $5$, planteas $C-S=5$. Reemplazando variables: $10k-9k=5 \\Rightarrow k=5$. Si te piden el ángulo en sexagesimales, reemplazas: $S=9(5)=45^\\circ$."
+        },
+        {
+          "texto": "Modelo Inversas $\\Rightarrow$ Fracciones",
+          "explicacion": "Tipo de problema: suma de fracciones algebraicas. Ejemplo: $\\frac{1}{S}+\\frac{1}{C}=\\frac{19}{90}$. Método de solución: reemplazar por $9k$ y $10k$ en los denominadores: $\\frac{1}{9k}+\\frac{1}{10k}=\\frac{19}{90k}$. Igualando resultados, $\\frac{19}{90k}=\\frac{19}{90}$, por ende se deduce que $k=1$."
+        },
+        {
+          "texto": "Modelo Cuadrados $\\Rightarrow 181k^2$",
+          "explicacion": "Tipo de problema: ecuaciones de grado $2$ con raíces. Ejemplo: $\\sqrt{S^2+C^2}=\\sqrt{181}$. Método de solución: introducir proporciones directamente: $(9k)^2+(10k)^2=81k^2+100k^2=181k^2$. La raíz cuadrada extraída queda $k\\sqrt{181}=\\sqrt{181} \\Rightarrow k=1$."
+        },
+        {
+          "texto": "Modelo Mix $\\Rightarrow 1540k$",
+          "explicacion": "Tipo de problema: combinación de subunidades. La suma de minutos S y C de un ángulo es $1540$. Método de solución: aplicar fórmulas de cantidad de minutos totales: $60S+100C=1540$. Usando la constante $k$: $60(9k)+100(10k)=1540 \\Rightarrow 540k+1000k=1540 \\Rightarrow k=1$."
+        }
+      ]
+    }
+  ]
+}
