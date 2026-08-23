@@ -41,6 +41,10 @@
   padding-top: 10px;
   font-size: clamp(14px, 2vw, 18px);
 }
+.explanation-panel__text i {
+  color: var(--danger);
+  font-size: 20px!important;
+}
 .explanation-panel__actions {
   margin-top: 14px;
   display: flex;
@@ -78,3 +82,434 @@
   font-weight: 400;
 }
 
+.rendirse-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(120, 0, 0, 0.18) 0%,
+      rgba(0, 0, 0, 0.72) 65%,
+      rgba(0, 0, 0, 0.82) 100%
+    );
+
+  backdrop-filter: blur(5px);
+
+  animation: rendirseOverlayIn 0.2s ease;
+}
+
+
+/* ================================
+   MODAL
+   ================================ */
+
+.rendirse-modal {
+  position: relative;
+
+  width: min(440px, 100%);
+
+  padding: 34px 30px 28px;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f8f8f8 55%,
+      #eeeeee 100%
+    );
+
+  border: 2px solid rgba(120, 120, 120, 0.18);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  animation: rendirseModalIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* Línea superior de derrota */
+
+.rendirse-modal::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 6px;
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #b02a37 0,
+      #b02a37 10px,
+      #dc3545 10px,
+      #dc3545 20px
+    );
+}
+
+
+/* Decoración inferior */
+
+.rendirse-modal::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -90px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(220, 53, 69, 0.06);
+
+  pointer-events: none;
+}
+
+
+/* ================================
+   ICONO
+   ================================ */
+
+.rendirse-modal__icon {
+  width: 82px;
+  height: 82px;
+
+  margin: 2px auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8d7da,
+      #f1aeb5
+    );
+
+  border: 4px solid #ffffff;
+
+  color: #b02a37;
+
+  font-size: 32px;
+
+  box-shadow:
+    0 8px 20px rgba(176, 42, 55, 0.22),
+    0 0 0 3px rgba(220, 53, 69, 0.12);
+
+  animation: derrotaIcono 0.45s ease;
+}
+
+
+/* Pequeño círculo decorativo */
+
+.rendirse-modal__icon::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -7px;
+
+  border-radius: 50%;
+
+  border: 2px dashed rgba(176, 42, 55, 0.25);
+
+  animation: derrotaIconoRing 8s linear infinite;
+}
+
+
+/* ================================
+   TITULO
+   ================================ */
+
+.rendirse-modal__title {
+  position: relative;
+
+  margin: 0 0 12px;
+
+  color: #343a40;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+}
+
+.rendirse-modal__title i {
+  margin-right: 7px;
+
+  color: #b02a37;
+
+  font-size: 21px;
+}
+
+
+/* ================================
+   MENSAJE
+   ================================ */
+
+.rendirse-modal__text {
+  position: relative;
+
+  max-width: 350px;
+
+  margin: 0 auto 26px;
+
+  color: #6c757d;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* ================================
+   BOTONES
+   ================================ */
+
+.rendirse-modal__actions {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+
+.rendirse-modal__btn {
+  min-height: 46px;
+
+  padding: 11px 18px;
+
+  border-radius: 13px;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+
+
+/* ================================
+   SEGUIR INTENTANDO
+   ================================ */
+
+.rendirse-modal__btn.is-cancel {
+  color: #495057;
+
+  background: #ffffff;
+
+  border: 2px solid #dee2e6;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.rendirse-modal__btn.is-cancel:hover {
+  background: #f8f9fa;
+
+  border-color: #adb5bd;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 15px rgba(0, 0, 0, 0.10);
+}
+
+.rendirse-modal__btn.is-cancel i {
+  margin-left: 5px;
+}
+
+
+/* ================================
+   RENDIRSE
+   ================================ */
+
+.rendirse-modal__btn.is-confirm {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dc3545,
+      #b02a37
+    );
+
+  border: 2px solid #b02a37;
+
+  box-shadow:
+    0 5px 14px rgba(176, 42, 55, 0.28);
+}
+
+.rendirse-modal__btn.is-confirm:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #c82333,
+      #991f2b
+    );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 20px rgba(176, 42, 55, 0.35);
+}
+
+.rendirse-modal__btn.is-confirm i {
+  margin-left: 5px;
+}
+
+
+/* ================================
+   CLICK
+   ================================ */
+
+.rendirse-modal__btn:active {
+  transform: translateY(1px) !important;
+
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.12) !important;
+}
+
+
+/* ================================
+   ANIMACIONES
+   ================================ */
+
+@keyframes rendirseOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes rendirseModalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.86)
+      translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+
+@keyframes derrotaIcono {
+  0% {
+    opacity: 0;
+
+    transform:
+      scale(0.5)
+      rotate(-12deg);
+  }
+
+  70% {
+    transform:
+      scale(1.08)
+      rotate(3deg);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0);
+  }
+}
+
+
+@keyframes derrotaIconoRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 480px) {
+  .rendirse-modal {
+    width: 100%;
+
+    padding: 30px 20px 22px;
+
+    border-radius: 20px;
+  }
+
+  .rendirse-modal__icon {
+    width: 72px;
+    height: 72px;
+
+    font-size: 28px;
+  }
+
+  .rendirse-modal__title {
+    font-size: 22px;
+  }
+
+  .rendirse-modal__text {
+    font-size: 14px;
+  }
+
+  .rendirse-modal__actions {
+    flex-direction: column;
+  }
+
+  .rendirse-modal__btn {
+    width: 100%;
+  }
+}

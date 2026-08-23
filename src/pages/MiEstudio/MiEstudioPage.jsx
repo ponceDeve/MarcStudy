@@ -548,6 +548,9 @@ export default function MiEstudioPage() {
   const pomodoroAlertadoRef =
     useRef(null);
 
+  const [enviandoSugerencia, setEnviandoSugerencia] =
+    useState(false);
+
   const [
     sugerenciaMsg,
     setSugerenciaMsg
@@ -656,9 +659,14 @@ export default function MiEstudioPage() {
   ] = useState(false);
 
   const [
-    tipoSinPreguntaAlerta,
-    setTipoSinPreguntaAlerta
-  ] = useState(null);
+    sinSeleccionAlerta,
+    setSinSeleccionAlerta
+  ] = useState(false);
+
+  const [
+    faltaCompletarTeoria,
+    setFaltaCompletarTeoria
+  ] = useState(false);
 
   const [
     sinPreguntaSaliendo,
@@ -1017,18 +1025,22 @@ export default function MiEstudioPage() {
   }
 
   async function enviarSugerenciaExamen() {
-    if (!topicData) return;
+    if (!topicData || enviandoSugerencia) return;
 
     sugerenciaTimers.current.forEach(clearTimeout);
+    sugerenciaTimers.current = [];
 
     setSugerenciaMsg(null);
     setSugerenciaMsgSaliendo(false);
+    setEnviandoSugerencia(true);
 
     const datos = {
-      _subject: `Sugerencia de examen — ${topicData.tema || "Tema sin nombre"}`,
-      nombre: nombreUsuario || "Usuario sin nombre",
+      _subject: `Sugerencia de examen — ${topicData.tema ||
+        "Tema sin nombre"
+        }`,
       curso: topicData.curso || "",
       tema: topicData.tema || "",
+      comentario: "Sugerencia enviada desde la página del tema.",
       _captcha: "false"
     };
 
@@ -1038,23 +1050,34 @@ export default function MiEstudioPage() {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
+            "Content-Type":
+              "application/json",
+            Accept:
+              "application/json"
           },
           body: JSON.stringify(datos)
         }
       );
 
-      const resultado = await respuesta.json();
+      const resultado =
+        await respuesta.json();
 
-      console.log("Respuesta de FormSubmit:", resultado);
+      console.log(
+        "Respuesta de FormSubmit:",
+        resultado
+      );
 
-      if (!respuesta.ok || !resultado.success) {
+      if (
+        !respuesta.ok ||
+        !resultado.success
+      ) {
         throw new Error(
           resultado.message ||
           "FormSubmit rechazó el envío."
         );
       }
+
+      setEnviandoSugerencia(false);
 
       setSugerenciaMsg(
         "Tu sugerencia fue enviada correctamente."
@@ -1072,12 +1095,13 @@ export default function MiEstudioPage() {
           setSugerenciaMsgSaliendo(false);
         }, 5000)
       ];
-
     } catch (error) {
       console.error(
         "Error al enviar sugerencia:",
         error
       );
+
+      setEnviandoSugerencia(false);
 
       setSugerenciaMsg(
         "No se pudo enviar la sugerencia. Inténtalo nuevamente."
@@ -1089,7 +1113,6 @@ export default function MiEstudioPage() {
         setTimeout(() => {
           setSugerenciaMsgSaliendo(true);
         }, 3000),
-
         setTimeout(() => {
           setSugerenciaMsg(null);
           setSugerenciaMsgSaliendo(false);
@@ -1118,6 +1141,41 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Toda la teoría normal (sin contar "Ejercicios") debe estar
+  // marcada con el check antes de poder completar el tema.
+  const teoriaCompleta = useMemo(() => {
+    const idsTeoriaNormal = flatPuntos
+      .filter((p) => p.seccionTitulo !== "Ejercicios")
+      .map((p) => p.id);
+
+    return (
+      idsTeoriaNormal.length === 0 ||
+      idsTeoriaNormal.every((id) => textosSeleccionados.includes(id))
+    );
+  }, [flatPuntos, textosSeleccionados]);
+
+  function intentarCompletarTema() {
+    if (!teoriaCompleta) {
+      sinPreguntaTimers.current.forEach(clearTimeout);
+
+      setSinSeleccionAlerta(false);
+      setFaltaCompletarTeoria(true);
+      setSinPreguntaSaliendo(false);
+      setSinPreguntaAlerta(true);
+
+      sinPreguntaTimers.current = [
+        setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+        setTimeout(() => {
+          setSinPreguntaAlerta(false);
+          setSinPreguntaSaliendo(false);
+        }, 4300)
+      ];
+      return;
+    }
+
+    finalizarTema();
+  }
+
   function elegirModoEstudio(modo, opts = {}) {
     setPreguntaModoAbierta(false);
     setEsModoAdicionales(!!opts.soloAdicionales);
@@ -1125,90 +1183,64 @@ export default function MiEstudioPage() {
     if (modo === "solo_preguntas") {
       const originalExamen = topicData?.examen || [];
 
-      if (
-        !opts.soloAdicionales &&
-        originalExamen.length > 0 &&
-        textosSeleccionados.length === 0
-      ) {
-        setTipoSinPreguntaAlerta("sin-seleccion");
-
-        sinPreguntaTimers.current.forEach(
-          clearTimeout
-        );
-
-        setSinPreguntaSaliendo(false);
-        setSinPreguntaAlerta(true);
-
-        sinPreguntaTimers.current = [
-          setTimeout(
-            () => setSinPreguntaSaliendo(true),
-            4000
-          ),
-          setTimeout(() => {
-            setSinPreguntaAlerta(false);
-            setSinPreguntaSaliendo(false);
-            setTipoSinPreguntaAlerta(null);
-          }, 4300)
-        ];
-
-        setModoEstudio("completo");
-        setStage("theory");
-        return;
-      }
-
       let preguntasFinales = [];
 
       if (opts.soloAdicionales) {
         preguntasFinales = flatPuntos
-          .map((p, i) => ({
-            punto: p,
-            pregunta: originalExamen[i]
-          }))
-          .filter(
-            (x) =>
-              x.pregunta &&
-              x.punto?.seccionTitulo === "Ejercicios"
-          )
-          .map((x) => x.pregunta);
-      } else {
-        const preguntasVinculadasTeoria =
-          flatPuntos
-            .map((p, i) => ({
-              id: p.id,
-              pregunta: originalExamen[i]
-            }))
-            .filter(
-              ({ id, pregunta }) =>
-                pregunta &&
-                textosSeleccionados.includes(id)
-            )
-            .map(
-              ({ pregunta }) => pregunta
-            );
+          .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
+          .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios")
+          .map(x => x.pregunta);
+      } else if (opts.requiereSeleccion) {
+        // Viene del botón/atajo "Ir al Examen" DENTRO de la teoría: acá sí
+        // se exige haber tildado al menos un punto (a diferencia de
+        // "Omitir", que se presiona antes de ver la teoría y no tiene
+        // nada que tildar).
+        if (textosSeleccionados.length === 0) {
+          sinPreguntaTimers.current.forEach(clearTimeout);
 
-        preguntasFinales =
-          preguntasVinculadasTeoria;
+          setSinSeleccionAlerta(true);
+          setFaltaCompletarTeoria(false);
+          setSinPreguntaSaliendo(false);
+          setSinPreguntaAlerta(true);
+
+          sinPreguntaTimers.current = [
+            setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+            setTimeout(() => {
+              setSinPreguntaAlerta(false);
+              setSinPreguntaSaliendo(false);
+            }, 4300)
+          ];
+          return;
+        }
+
+        const preguntasVinculadasTeoria = flatPuntos
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
+          .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
+          .map(p => p.pregunta);
+
+        preguntasFinales = preguntasVinculadasTeoria.length > 0
+          ? preguntasVinculadasTeoria
+          : originalExamen;
+      } else {
+        // "Omitir" (antes de ver la teoría) u otros llamados sin exigencia
+        // de selección: directamente todas las preguntas del tema.
+        preguntasFinales = originalExamen;
       }
 
       if (preguntasFinales.length === 0) {
-        setTipoSinPreguntaAlerta("sin-preguntas");
+        // Sin preguntas de examen: avisar con alerta y sonido, y quedarnos en teoría
+        sinPreguntaTimers.current.forEach(clearTimeout);
 
-        sinPreguntaTimers.current.forEach(
-          clearTimeout
-        );
-
+        setSinSeleccionAlerta(false);
+        setFaltaCompletarTeoria(false);
         setSinPreguntaSaliendo(false);
         setSinPreguntaAlerta(true);
 
         sinPreguntaTimers.current = [
-          setTimeout(
-            () => setSinPreguntaSaliendo(true),
-            4000
-          ),
+          setTimeout(() => setSinPreguntaSaliendo(true), 4000),
           setTimeout(() => {
             setSinPreguntaAlerta(false);
             setSinPreguntaSaliendo(false);
-            setTipoSinPreguntaAlerta(null);
           }, 4300)
         ];
 
@@ -1217,17 +1249,12 @@ export default function MiEstudioPage() {
         return;
       }
 
-      setTipoSinPreguntaAlerta(null);
-
-      setExamenPreguntas(
-        preguntasFinales
-      );
+      setExamenPreguntas(preguntasFinales);
 
       const orden = shuffle(
         Array.from(
           {
-            length:
-              preguntasFinales.length
+            length: preguntasFinales.length
           },
           (_, i) => i
         )
@@ -2260,7 +2287,7 @@ export default function MiEstudioPage() {
         ) {
           e.preventDefault();
           if (examenPreguntas.length > 0) {
-            elegirModoEstudio("solo_preguntas");
+            elegirModoEstudio("solo_preguntas", { requiereSeleccion: true });
           } else {
             finalizarTema();
           }
@@ -2419,6 +2446,45 @@ export default function MiEstudioPage() {
 
   return (
     <div className="mi-estudio">
+      <style>{`
+        .mi-estudio__suggestion-loading {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          min-height: 42px;
+          padding: 0 16px;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .mi-estudio__suggestion-spinner {
+          width: 17px;
+          height: 17px;
+          flex: 0 0 17px;
+          border: 2px solid currentColor;
+          border-top-color: transparent;
+          border-radius: 50%;
+          animation: miEstudioSuggestionSpin 0.7s linear infinite;
+        }
+
+        @keyframes miEstudioSuggestionSpin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .mi-estudio__suggestion-btn:disabled {
+          cursor: wait;
+        }
+      `}</style>
+
       <WelcomeModal
         open={!nombreUsuario}
         onSubmit={(n) =>
@@ -2535,15 +2601,17 @@ export default function MiEstudioPage() {
             <i className="fas fa-circle-info" />
 
             <span>
-              {tipoSinPreguntaAlerta === "sin-seleccion"
-                ? "Selecciona una teoría para mostrar su pregunta."
-                : (
-                  <>
-                    No hay preguntas de "
-                    {topicData?.tema || "este tema"}
-                    "
-                  </>
-                )}
+              {faltaCompletarTeoria
+                ? "Dale check a toda la teoría antes de completar el tema"
+                : sinSeleccionAlerta
+                  ? "Tildá al menos un punto de teoría para ir al examen"
+                  : (
+                    <>
+                      No hay preguntas de "
+                      {topicData?.tema || "este tema"}
+                      "
+                    </>
+                  )}
             </span>
           </div>
 
@@ -2621,11 +2689,11 @@ export default function MiEstudioPage() {
         </div>
 
         <h3 className="tema-modal-title">
-          Eres un perdedor.
+          Confirmar. Eres un perdedor.
         </h3>
 
         <p className="tema-modal-subtitle">
-          ¿volver a la teoría?
+          ¿Seguro que quieres abandonar esta pregunta y volver a la teoría?
         </p>
 
         <div className="tema-modal-actions">
@@ -3330,15 +3398,16 @@ export default function MiEstudioPage() {
                       {examenPreguntas.length > 0 ? (
                         <button
                           className="teoria-boton-examen"
-                          onClick={() => elegirModoEstudio("solo_preguntas")}
+                          onClick={() => elegirModoEstudio("solo_preguntas", { requiereSeleccion: true })}
                         >
                           <i className="fa-solid fa-graduation-cap"></i>
                           Ir al Examen
                         </button>
                       ) : (
                         <button
-                          className="teoria-boton-examen"
-                          onClick={finalizarTema}
+                          className={`teoria-boton-examen${teoriaCompleta ? "" : " is-bloqueado"}`}
+                          onClick={intentarCompletarTema}
+                          aria-disabled={!teoriaCompleta}
                         >
                           <i className="fa-solid fa-check-circle"></i>
                           Completar Tema
@@ -3565,18 +3634,35 @@ export default function MiEstudioPage() {
           examenPreguntas.length ===
           0 && (
             <section className="mi-estudio__suggestion">
-              <button
-                type="button"
-                className="mi-estudio__suggestion-btn"
-                onClick={enviarSugerenciaExamen}
-              >
-                <i className="fa-solid fa-file-circle-plus"></i>
-                <span>
-                  Sugerir examen
-                </span>
-              </button>
+              {enviandoSugerencia ? (
+                <div
+                  className="mi-estudio__suggestion-loading"
+                  aria-live="polite"
+                >
+                  <span
+                    className="mi-estudio__suggestion-spinner"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    Enviando sugerencia...
+                  </span>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="mi-estudio__suggestion-btn"
+                  onClick={enviarSugerenciaExamen}
+                  disabled={enviandoSugerencia}
+                >
+                  <i className="fa-solid fa-file-circle-plus"></i>
+                  <span>
+                    Sugerir tema
+                  </span>
+                </button>
+              )}
             </section>
           )}
+
 
         {stage === "finished" && (
           <div className="mi-estudio__finished">

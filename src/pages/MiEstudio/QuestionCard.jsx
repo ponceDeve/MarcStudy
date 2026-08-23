@@ -6,7 +6,9 @@ import {
 } from "react";
 
 import { shuffle } from "../../lib/shuffle";
+
 import LatexText from "../../components/LatexText";
+
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 
 /* =========================================================
@@ -139,6 +141,7 @@ function OpcionMultiple({
       pregunta.correct;
 
     setWasCorrect(correct);
+
     setAnswered(true);
 
     if (
@@ -149,7 +152,7 @@ function OpcionMultiple({
 
       hurraRef.current
         .play()
-        .catch(() => { });
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -207,7 +210,7 @@ function OpcionMultiple({
               answered &&
               wasCorrect &&
               opt.originalIndex ===
-              pregunta.correct;
+                pregunta.correct;
 
             let cls = "";
 
@@ -215,22 +218,18 @@ function OpcionMultiple({
               if (
                 isTheCorrectOne
               ) {
-                cls =
-                  "is-correct";
+                cls = "is-correct";
               } else if (
                 isChosen
               ) {
-                cls =
-                  "is-wrong";
+                cls = "is-wrong";
               } else {
-                cls =
-                  "is-muted";
+                cls = "is-muted";
               }
             } else if (
               isChosen
             ) {
-              cls =
-                "is-selected";
+              cls = "is-selected";
             }
 
             return (
@@ -301,7 +300,7 @@ function VerdaderoFalso({
 
   useLecturaVoz(
     pregunta.q ||
-    "Indica si cada proposición es verdadera o falsa."
+      "Indica si cada proposición es verdadera o falsa."
   );
 
   function marcar(i, valor) {
@@ -343,7 +342,7 @@ function VerdaderoFalso({
 
       hurraRef.current
         .play()
-        .catch(() => { });
+        .catch(() => {});
     }
 
     onRespondido(correcto);
@@ -370,23 +369,25 @@ function VerdaderoFalso({
             const propAcertada =
               answered &&
               respuestas[i] ===
-              prop.correct;
+                prop.correct;
 
             const propFallada =
               answered &&
               respuestas[i] !==
-              prop.correct;
+                prop.correct;
 
             return (
               <li
                 key={i}
-                className={`question-card__vf-row ${propAcertada
+                className={`question-card__vf-row ${
+                  propAcertada
                     ? "is-correct"
                     : ""
-                  } ${propFallada
+                } ${
+                  propFallada
                     ? "is-wrong"
                     : ""
-                  }`}
+                }`}
               >
                 <span className="question-card__vf-texto">
                   <LatexText>
@@ -396,33 +397,31 @@ function VerdaderoFalso({
 
                 <div className="question-card__vf-btns">
                   <button
-                    disabled={
-                      answered
-                    }
+                    disabled={answered}
                     onClick={() =>
                       marcar(i, true)
                     }
-                    className={`question-card__vf-btn ${respuestas[i] ===
-                        true
+                    className={`question-card__vf-btn ${
+                      respuestas[i] ===
+                      true
                         ? "is-selected"
                         : ""
-                      }`}
+                    }`}
                   >
                     V
                   </button>
 
                   <button
-                    disabled={
-                      answered
-                    }
+                    disabled={answered}
                     onClick={() =>
                       marcar(i, false)
                     }
-                    className={`question-card__vf-btn ${respuestas[i] ===
-                        false
+                    className={`question-card__vf-btn ${
+                      respuestas[i] ===
+                      false
                         ? "is-selected"
                         : ""
-                      }`}
+                    }`}
                   >
                     F
                   </button>
@@ -473,7 +472,7 @@ function Completar({
     () =>
       partirEnEspacios(
         pregunta.textoConEspacios ||
-        ""
+          ""
       ),
     [pregunta]
   );
@@ -491,7 +490,7 @@ function Completar({
 
   useLecturaVoz(
     pregunta.q ||
-    "Completa los espacios en blanco."
+      "Completa los espacios en blanco."
   );
 
   const shuffled = useMemo(
@@ -530,6 +529,7 @@ function Completar({
       pregunta.correct;
 
     setWasCorrect(correct);
+
     setAnswered(true);
 
     if (
@@ -540,7 +540,7 @@ function Completar({
 
       hurraRef.current
         .play()
-        .catch(() => { });
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -549,7 +549,7 @@ function Completar({
   const palabrasElegidas =
     chosenIdx !== null
       ? shuffled[chosenIdx]
-        .palabras
+          .palabras
       : null;
 
   let espacioIdx = -1;
@@ -588,12 +588,11 @@ function Completar({
             const texto =
               palabrasElegidas
                 ? palabrasElegidas[
-                idx
-                ]
+                    idx
+                  ]
                 : "";
 
-            let statusClass =
-              "";
+            let statusClass = "";
 
             if (answered) {
               statusClass =
@@ -612,7 +611,7 @@ function Completar({
                     {texto}
                   </LatexText>
                 ) : (
-                  "_________"
+                  "________"
                 )}
               </span>
             );
@@ -630,7 +629,7 @@ function Completar({
               answered &&
               wasCorrect &&
               opt.originalIndex ===
-              pregunta.correct;
+                pregunta.correct;
 
             let cls = "";
 
@@ -638,22 +637,18 @@ function Completar({
               if (
                 isTheCorrectOne
               ) {
-                cls =
-                  "is-correct";
+                cls = "is-correct";
               } else if (
                 isChosen
               ) {
-                cls =
-                  "is-wrong";
+                cls = "is-wrong";
               } else {
-                cls =
-                  "is-muted";
+                cls = "is-muted";
               }
             } else if (
               isChosen
             ) {
-              cls =
-                "is-selected";
+              cls = "is-selected";
             }
 
             return (
@@ -722,7 +717,7 @@ function Relacionar({
 
   useLecturaVoz(
     pregunta.q ||
-    "Relaciona ambas columnas."
+      "Relaciona ambas columnas."
   );
 
   const shuffled = useMemo(
@@ -761,6 +756,7 @@ function Relacionar({
       pregunta.correct;
 
     setWasCorrect(correct);
+
     setAnswered(true);
 
     if (
@@ -771,7 +767,7 @@ function Relacionar({
 
       hurraRef.current
         .play()
-        .catch(() => { });
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -790,28 +786,30 @@ function Relacionar({
       <div className="question-card__match">
         <ul className="question-card__match-col">
           {(pregunta.columnaA ||
-            []).map(
-              (item, i) => (
-                <li key={i}>
-                  <LatexText>
-                    {item}
-                  </LatexText>
-                </li>
-              )
-            )}
+            []
+          ).map(
+            (item, i) => (
+              <li key={i}>
+                <LatexText>
+                  {item}
+                </LatexText>
+              </li>
+            )
+          )}
         </ul>
 
         <ul className="question-card__match-col">
           {(pregunta.columnaB ||
-            []).map(
-              (item, i) => (
-                <li key={i}>
-                  <LatexText>
-                    {item}
-                  </LatexText>
-                </li>
-              )
-            )}
+            []
+          ).map(
+            (item, i) => (
+              <li key={i}>
+                <LatexText>
+                  {item}
+                </LatexText>
+              </li>
+            )
+          )}
         </ul>
       </div>
 
@@ -825,7 +823,7 @@ function Relacionar({
               answered &&
               wasCorrect &&
               opt.originalIndex ===
-              pregunta.correct;
+                pregunta.correct;
 
             let cls = "";
 
@@ -833,22 +831,18 @@ function Relacionar({
               if (
                 isTheCorrectOne
               ) {
-                cls =
-                  "is-correct";
+                cls = "is-correct";
               } else if (
                 isChosen
               ) {
-                cls =
-                  "is-wrong";
+                cls = "is-wrong";
               } else {
-                cls =
-                  "is-muted";
+                cls = "is-muted";
               }
             } else if (
               isChosen
             ) {
-              cls =
-                "is-selected";
+              cls = "is-selected";
             }
 
             return (
@@ -902,6 +896,74 @@ export default function QuestionCard({
   pregunta,
   onRespondido,
 }) {
+  /*
+   * =======================================================
+   * CONTADOR DE INTENTOS
+   * =======================================================
+   *
+   * Este estado pertenece al QuestionCard,
+   * no a cada tipo de pregunta.
+   *
+   * De esta manera todos los tipos:
+   *
+   * - opción múltiple
+   * - verdadero/falso
+   * - completar
+   * - relacionar
+   *
+   * utilizan el mismo contador.
+   */
+
+  const [intentos, setIntentos] =
+    useState(0);
+
+  /*
+   * Cuando cambia realmente la pregunta,
+   * reiniciamos el contador.
+   */
+
+  useEffect(() => {
+    setIntentos(0);
+  }, [pregunta]);
+
+  /*
+   * Esta función reemplaza directamente
+   * al onRespondido original.
+   *
+   * Si la respuesta es incorrecta:
+   * aumenta el contador.
+   *
+   * Si es correcta:
+   * mantiene el contador y envía
+   * el resultado.
+   */
+
+  function manejarRespuesta(correct) {
+    if (correct) {
+      onRespondido(true, intentos);
+      return;
+    }
+
+    setIntentos((prev) => {
+      const nuevoIntento =
+        prev + 1;
+
+      /*
+       * Mandamos al padre:
+       *
+       * false = incorrecto
+       * nuevoIntento = número de intento
+       */
+
+      onRespondido(
+        false,
+        nuevoIntento
+      );
+
+      return nuevoIntento;
+    });
+  }
+
   let Contenido =
     OpcionMultiple;
 
@@ -936,7 +998,7 @@ export default function QuestionCard({
           )}
           pregunta={pregunta}
           onRespondido={
-            onRespondido
+            manejarRespuesta
           }
         />
       </div>
