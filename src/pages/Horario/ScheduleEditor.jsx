@@ -18,7 +18,6 @@ const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
 export default function ScheduleEditor() {
   const navigate = useNavigate();
-
   const [nombreUsuario] = useLocalStorage(
     "miEstudio_nombreUsuario",
     null
@@ -31,15 +30,12 @@ export default function ScheduleEditor() {
   const [horarioInicial, setHorarioInicial] = useState(
     () => leerHorario() || {}
   );
-
   const [horario, setHorario] = useState(
     () => leerHorario() || {}
   );
-
   const [diaActivo, setDiaActivo] = useState(() => {
     const hoy = new Date();
     const indiceDia = (hoy.getDay() + 6) % 7;
-
     return DIAS_SEMANA[indiceDia];
   });
 
