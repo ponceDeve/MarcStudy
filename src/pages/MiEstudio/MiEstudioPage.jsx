@@ -1040,6 +1040,7 @@ export default function MiEstudioPage() {
         }`,
       curso: topicData.curso || "",
       tema: topicData.tema || "",
+      nombre: nombreUsuario || "Sin nombre",
       comentario: "Sugerencia enviada desde la página del tema.",
       _captcha: "false"
     };

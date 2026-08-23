@@ -96,7 +96,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
   width: 100%;
 }
 
@@ -863,9 +862,8 @@ body.is-header-oculto .teoria-sticky-bar {
   z-index: 1000;
   max-height: 260px;
   overflow-y: auto;
-  background: var(--surface-alt);
-  border: 1px solid var(--border-strong);
-  border-top: none;
+  background: var(--ink-on-primary);
+  border: 1px solid var(--primary);
   border-bottom-left-radius: var(--radius-md);
   border-bottom-right-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
@@ -944,8 +942,6 @@ body.is-header-oculto .teoria-sticky-bar {
 .mi-estudio__pdf-buttons {
   display: flex;
   gap: 12px;
-  margin-top: 20px;
-  margin-bottom: 32px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -998,6 +994,21 @@ body.is-header-oculto .teoria-sticky-bar {
   align-items: center;
   gap: 12px;
   text-align: center;
+}
+
+/* Este es el nombre de clase que realmente usa el <section> del botón
+   "Sugerir tema" / spinner de envío en MiEstudioPage.jsx. Antes no
+   tenía ningún estilo (desajuste con ".mi-estudio__sugerir" de arriba,
+   que no se usa en ningún JSX), por eso el spinner de carga quedaba
+   pegado a la izquierda en vez de centrado. */
+.mi-estudio__suggestion {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .mi-estudio__sugerir-text {
@@ -1443,6 +1454,31 @@ body.is-header-oculto .teoria-sticky-bar {
    BOTÓN SUGERENCIA
    ============================================================ */
 
+.mi-estudio__suggestion-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--overlay-strong);
+  color: var(--ink-on-primary);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mi-estudio__suggestion-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, .35);
+  border-top-color: var(--ink-on-primary);
+  border-radius: 50%;
+  animation: form-spinner .6s linear infinite;
+}
+
 .mi-estudio__suggestion-btn {
   display: flex;
   justify-content: center;
@@ -1752,7 +1788,7 @@ body.is-header-oculto .teoria-sticky-bar {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background-color: var(--primary, #2563EB);
+  background-color: red;
   color: var(--ink-on-primary, #FFFFFF);
   padding: 16px 36px;
   font-size: 1.25rem;
@@ -1806,56 +1842,5 @@ body.is-header-oculto .teoria-sticky-bar {
   .teoria-boton-examen {
     width: 100%;
     padding: 16px 20px;
-  }
-}
-
-.sugerencia-loading {
-  position: fixed !important;
-  inset: 0 !important;
-
-  width: 100vw;
-  height: 100vh;
-
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  gap: 14px;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  z-index: 999999 !important;
-
-  background: rgba(0, 0, 0, 0.45);
-}
-
-.sugerencia-spinner {
-  width: 44px;
-  height: 44px;
-
-  flex: 0 0 44px;
-
-  border: 4px solid currentColor;
-  border-top-color: transparent;
-
-  border-radius: 50%;
-
-  animation: sugerenciaSpin 0.7s linear infinite;
-}
-
-.sugerencia-loading span:last-child {
-  display: block;
-  margin: 0;
-}
-
-@keyframes sugerenciaSpin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }
