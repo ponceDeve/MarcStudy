@@ -1,0 +1,122 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Identidades Trigonométricas Fundamentales, Auxiliares y Estrategias",
+  "glosario": {
+    "Identidad": "Igualdad válida para todo valor del dominio.",
+    "Dominio": "Conjunto de valores permitidos para la variable.",
+    "Recíproca": "Función que es la inversa multiplicativa de otra.",
+    "Cociente": "Identidad formada por la división de dos funciones.",
+    "Pitagórica": "Identidad que relaciona funciones al cuadrado sumando uno.",
+    "Auxiliar": "Identidad derivada que acelera operaciones y cálculos.",
+    "Conjugada": "Expresión binomial con el signo central opuesto.",
+    "Condicional": "Expresión que requiere cumplir una restricción angular previa."
+  },
+  "theory": [
+    {
+      "titulo": "Identidades Recíprocas",
+      "puntos": [
+        {
+          "texto": "sen(x) * csc(x) = 1",
+          "explicacion": "Esta identidad se utiliza para simplificar expresiones multiplicativas y despejar funciones. Método: Identificar el producto de funciones recíprocas, verificar que el ángulo sea idéntico y sustituir por la unidad. Ejemplo: Simplificar $E = 5 \\sin(20^\\circ) \\csc(20^\\circ) + 3$. Como $\\sin(20^\\circ)\\csc(20^\\circ) = 1$, operamos: $E = 5(1) + 3 = 8$. En exámenes de admisión UNMSM, suelen ocultar esto combinándolo con ángulos complementarios."
+        },
+        {
+          "texto": "cos(x) * sec(x) = 1",
+          "explicacion": "Permite transformar secantes a cosenos para estandarizar ecuaciones trigonométricas. Método: Cuando veas una secante en el denominador, súbela como coseno, o viceversa. Ejemplo: Reducir $R = \\frac{\\cos(40^\\circ)}{\\frac{1}{\\sec(40^\\circ)}} + 2$. Como $\\frac{1}{\\sec(40^\\circ)} = \\cos(40^\\circ)$, reemplazamos: $R = \\frac{\\cos(40^\\circ)}{\\cos(40^\\circ)} + 2 = 1 + 2 = 3$. La restricción es que el ángulo no sea un múltiplo impar de $\\frac{\\pi}{2}$."
+        },
+        {
+          "texto": "tan(x) * cot(x) = 1",
+          "explicacion": "Fundamental para simplificar productos de tangentes y cotangentes con el mismo argumento. Método: Agrupar términos multiplicativos equivalentes para anularlos rápidamente. Ejemplo: Evaluar $M = \\tan(15^\\circ) \\cdot \\tan(45^\\circ) \\cdot \\cot(15^\\circ)$. Reordenando el producto: $M = (\\tan(15^\\circ)\\cot(15^\\circ)) \\cdot \\tan(45^\\circ) = 1 \\cdot 1 = 1$. Cuidado con el dominio: $x \\in \\mathbb{R} - \\{\\frac{n\\pi}{2}\\}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades por Cociente",
+      "puntos": [
+        {
+          "texto": "tan(x) = sen(x) / cos(x)",
+          "explicacion": "Es la herramienta principal para llevar expresiones de tangentes a términos de senos y cosenos. Método: Reemplazar la tangente para poder homogeneizar fracciones trigonométricas. Ejemplo: Simplificar $T = \\cos(x) \\cdot \\tan(x)$. Sustituyendo obtenemos $T = \\cos(x) \\cdot \\frac{\\sin(x)}{\\cos(x)}$. Cancelando el coseno queda $T = \\sin(x)$. Es el primer paso recomendado si un ejercicio no tiene identidades directas evidentes."
+        },
+        {
+          "texto": "cot(x) = cos(x) / sen(x)",
+          "explicacion": "Similar a la tangente, lleva la cotangente a las funciones circulares primarias. Método: Útil en sumas de fracciones algebraicas para buscar el Mínimo Común Múltiplo. Ejemplo: Reducir $H = \\sin(x) \\cdot \\cot(x)$. Reemplazamos: $H = \\sin(x) \\cdot \\frac{\\cos(x)}{\\sin(x)}$. Anulando el seno, resulta $H = \\cos(x)$. Los alumnos UNMSM deben dominar esta conversión inversa para ganar velocidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades Pitagóricas",
+      "puntos": [
+        {
+          "texto": "sen²(x) + cos²(x) = 1",
+          "explicacion": "La identidad suprema de la trigonometría, vincula las dos funciones base de forma cuadrática. Método: Despejar un término al cuadrado para transformar la expresión, a menudo usando diferencia de cuadrados: $\\sin^2(x) = (1-\\cos(x))(1+\\cos(x))$. Ejemplo: Si $\\sin(x) = \\frac{1}{3}$, hallar $\\cos^2(x)$. Despejamos: $\\cos^2(x) = 1 - (\\frac{1}{3})^2 = 1 - \\frac{1}{9} = \\frac{8}{9}$. Es frecuente aplicarla en factorización."
+        },
+        {
+          "texto": "sec²(x) - tan²(x) = 1",
+          "explicacion": "Relaciona la secante y la tangente, vital en integrales y resolución de triángulos avanzados. Método: Aplicable como diferencia de cuadrados o para sustituir $\\sec^2(x)$ por $1 + \\tan^2(x)$. Ejemplo: Reducir $W = \\sec^2(30^\\circ) - \\tan^2(30^\\circ) + 5$. Dado que la identidad se cumple para el mismo ángulo, todo el primer binomio es $1$, entonces $W = 1 + 5 = 6$. Memorizar las variaciones despejadas ahorra tiempo valioso."
+        },
+        {
+          "texto": "csc²(x) - cot²(x) = 1",
+          "explicacion": "Conecta la cosecante y la cotangente mediante una relación cuadrática constante. Método: Usar para racionalizar o crear sistemas de ecuaciones cuando se factoriza como $(\\csc(x)-\\cot(x))(\\csc(x)+\\cot(x)) = 1$. Ejemplo: Calcular $E = 3\\csc^2(x) - 3\\cot^2(x)$. Factorizando el $3$, obtenemos $E = 3(\\csc^2(x) - \\cot^2(x))$. Aplicando la identidad, $E = 3(1) = 3$. Siempre verifica que el ángulo $x$ sea el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades Auxiliares (Frecuentes en UNMSM)",
+      "puntos": [
+        {
+          "texto": "sen⁴(x) + cos⁴(x) ≈ 1 - 2sen²(x)cos²(x)",
+          "explicacion": "Identidad auxiliar deducida al elevar al cuadrado la identidad pitagórica principal. Método: Usarla como atajo directo cuando aparezcan grados cuartos sumados, evitando binomios largos. Ejemplo: Si $\\sin(x)\\cos(x) = 0.2$, calcular $K = \\sin^4(x) + \\cos^4(x)$. Reemplazando directamente: $K = 1 - 2(0.2)^2 = 1 - 2(0.04) = 1 - 0.08 = 0.92$. Esta fórmula reduce el tiempo de resolución a menos de un minuto."
+        },
+        {
+          "texto": "sen⁶(x) + cos⁶(x) ≈ 1 - 3sen²(x)cos²(x)",
+          "explicacion": "Se obtiene elevando al cubo la identidad pitagórica, crucial para preguntas de simplificación extrema. Método: Identificar la suma de potencias sextas y sustituirla inmediatamente por este trinomio equivalente. Ejemplo: Reducir $V = 2(\\sin^6(x) + \\cos^6(x)) - 3(\\sin^4(x) + \\cos^4(x))$. Reemplazando: $2(1 - 3\\sin^2(x)\\cos^2(x)) - 3(1 - 2\\sin^2(x)\\cos^2(x))$. Operando: $2 - 6\\sin^2(x)\\cos^2(x) - 3 + 6\\sin^2(x)\\cos^2(x) = -1$. Clásico \"truco\" de la universidad para asustar con exponentes altos."
+        },
+        {
+          "texto": "tan(x) + cot(x) = sec(x)csc(x)",
+          "explicacion": "Convierte una suma de funciones en un producto, una de las identidades auxiliares más poderosas. Método: Aplicar cuando necesites transformar un binomio en un solo término multiplicativo para poder simplificar fracciones. Ejemplo: Simplificar $A = \\frac{\\tan(x) + \\cot(x)}{\\sec(x)}$. Sustituimos el numerador: $A = \\frac{\\sec(x)\\csc(x)}{\\sec(x)}$. Simplificando la secante, nos queda $A = \\csc(x)$. Dominar esto distingue a un ingresante de un postulante promedio."
+        },
+        {
+          "texto": "sec²(x) + csc²(x) = sec²(x)csc²(x)",
+          "explicacion": "Increíble propiedad donde la suma de cuadrados de secante y cosecante es igual a su producto. Método: Usado en radicales continuos o fracciones complejas para fusionar sumas en multiplicaciones puras. Ejemplo: Calcular $L = \\sqrt{\\sec^2(45^\\circ) + \\csc^2(45^\\circ)}$. Convertimos a producto: $L = \\sqrt{\\sec^2(45^\\circ)\\csc^2(45^\\circ)} = \\sec(45^\\circ)\\csc(45^\\circ)$. Evaluando: $\\sqrt{2} \\cdot \\sqrt{2} = 2$. Propiedad indispensable en simplificación rápida."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades Algebraicas Especiales (Conjugadas)",
+      "puntos": [
+        {
+          "texto": "sec(x) + tan(x) = a",
+          "explicacion": "Truco vital en UNMSM para resolver sistemas de ecuaciones trigonométricas a partir de identidades cuadráticas. Método: Si te dan la suma o resta, su \"conjugada\" (opuesta) es su inversa multiplicativa debido a que $\\sec^2(x) - \\tan^2(x) = 1$. Ejemplo: Si $\\sec(x) + \\tan(x) = 3$, hallar $\\sec(x)$. Sabemos que $\\sec(x) - \\tan(x) = \\frac{1}{3}$. Sumando verticalmente: $2\\sec(x) = 3 + \\frac{1}{3} = \\frac{10}{3} \\Rightarrow \\sec(x) = \\frac{5}{3}$. Memoriza esta relación."
+        },
+        {
+          "texto": "csc(x) - cot(x) = b",
+          "explicacion": "Idéntico al caso de la secante, aplica para la cosecante y cotangente generando sistemas rápidos. Método: Usar la identidad pitagórica factorizada para deducir automáticamente la segunda ecuación del sistema lineal. Ejemplo: Si $\\csc(x) - \\cot(x) = 2$, calcular $\\cot(x)$. La ecuación conjugada es $\\csc(x) + \\cot(x) = \\frac{1}{2}$. Restamos (segunda menos primera): $2\\cot(x) = \\frac{1}{2} - 2 = -\\frac{3}{2} \\Rightarrow \\cot(x) = -\\frac{3}{4}$. Reduce el problema a aritmética básica."
+        },
+        {
+          "texto": "(1 ± sen(x) ± cos(x))² ≈ 2(1±sen(x))(1±cos(x))",
+          "explicacion": "Expansión notable que factoriza un trinomio al cuadrado que involucra al seno, coseno y la unidad. Método: Identificar el binomio al cuadrado que contenga un $1$ y funciones primarias, luego aplicar la expansión directa respetando signos. Ejemplo: Reducir $F = \\frac{(1+\\sin(x)+\\cos(x))^2}{1+\\sin(x)}$. Aplicando la fórmula: $F = \\frac{2(1+\\sin(x))(1+\\cos(x))}{1+\\sin(x)}$. Simplificando, resulta $F = 2(1+\\cos(x))$. Útil para evitar el uso del Teorema del Trinomio al Cuadrado largo."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias de Resolución de Problemas Complejos",
+      "puntos": [
+        {
+          "texto": "Condicional ✓ usar variables auxiliares",
+          "explicacion": "Aborda problemas donde te dan una condición inicial (ej. $x+y=90^\\circ$) o un valor fijo. Método: Despejar una función, o usar razones trigonométricas complementarias (corrazones), para reemplazar en la expresión meta. Ejemplo: Si $\\tan(x) + \\cot(x) = 3$, calcular $E = \\tan^2(x) + \\cot^2(x)$. Elevamos la condición al cuadrado: $(\\tan(x) + \\cot(x))^2 = 3^2 \\Rightarrow \\tan^2(x) + 2\\tan(x)\\cot(x) + \\cot^2(x) = 9$. Como $\\tan(x)\\cot(x)=1$, entonces $E + 2(1) = 9 \\Rightarrow E = 7$."
+        },
+        {
+          "texto": "Expresiones complejas ✓ llevar a senos",
+          "explicacion": "La técnica universal cuando te estancas y no logras visualizar ninguna identidad evidente en el problema. Método: Utilizar las identidades recíprocas y por cociente para transformar todas las funciones a senos y cosenos, luego sumar fracciones. Ejemplo: Simplificar $M = \\sec(x) - \\tan(x)\\sin(x)$. Convertimos: $M = \\frac{1}{\\cos(x)} - \\frac{\\sin(x)}{\\cos(x)}\\sin(x) = \\frac{1 - \\sin^2(x)}{\\cos(x)}$. Usando la pitagórica: $M = \\frac{\\cos^2(x)}{\\cos(x)} = \\cos(x)$. Es el método más seguro a costa de ser más extenso."
+        },
+        {
+          "texto": "Eliminación angular ✓ aislar variable trigonométrica",
+          "explicacion": "Típico en problemas donde se requiere encontrar una relación geométrica o algebraica sin depender del ángulo $\\theta$. Método: Despejar las funciones trigonométricas y elevar al cuadrado (o cubo) para forzar la aparición de identidades pitagóricas. Ejemplo: Si $m = 2\\sin(x)$ y $n = 2\\cos(x)$, eliminar $x$. Despejamos $\\frac{m}{2} = \\sin(x)$ y $\\frac{n}{2} = \\cos(x)$. Elevando y sumando: $(\\frac{m}{2})^2 + (\\frac{n}{2})^2 = \\sin^2(x) + \\cos^2(x) = 1 \\Rightarrow m^2 + n^2 = 4$."
+        },
+        {
+          "texto": "Fracciones compuestas ✓ multiplicar por conjugada",
+          "explicacion": "Estrategia clave cuando el denominador contiene binomios del tipo $1 \\pm \\sin(x)$ o $1 \\pm \\cos(x)$. Método: Multiplicar el numerador y denominador por la conjugada del denominador para generar una diferencia de cuadrados (identidad pitagórica). Ejemplo: Racionalizar $P = \\frac{\\cos(x)}{1-\\sin(x)}$. Multiplicamos por $(1+\\sin(x))$: $P = \\frac{\\cos(x)(1+\\sin(x))}{1-\\sin^2(x)} = \\frac{\\cos(x)(1+\\sin(x))}{\\cos^2(x)}$. Simplificando queda $P = \\frac{1+\\sin(x)}{\\cos(x)} = \\sec(x) + \\tan(x)$. Truco constante en finales de admisión."
+        }
+      ]
+    }
+  ]
+}
