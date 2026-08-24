@@ -64,12 +64,12 @@ export default function SeenQuestionsModal({
         <h2 className="levels-modal__title">Preguntas vistas</h2>
 
         {preguntas.length === 0 ? (
-          <p style={{ color: "var(--ink-soft)", marginBottom: "20px" }}>
+          <p className="levels-modal__empty">
             Todavía no has respondido ninguna pregunta de este tema.
           </p>
         ) : (
           <>
-            <p style={{ color: "var(--ink-soft)", fontSize: "14px", marginBottom: "12px" }}>
+            <p className="levels-modal__counter">
               Pregunta {pos + 1} de {preguntas.length}
             </p>
 

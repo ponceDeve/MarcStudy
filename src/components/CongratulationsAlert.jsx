@@ -85,57 +85,6 @@ export default function CongratulationsAlert({
 
   return (
     <div className="congratulations-alert">
-      <style>{`
-        .congratulations-alert {
-          position: fixed;
-          top: 16px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(46, 204, 113, 0.18);
-          backdrop-filter: blur(8px) saturate(140%);
-          -webkit-backdrop-filter: blur(8px) saturate(140%);
-          border: 1px solid rgba(46, 204, 113, 0.4);
-          border-radius: 16px;
-          padding: 14px 22px;
-          text-align: center;
-          z-index: 9999;
-          box-shadow: 0 6px 24px rgba(46, 204, 113, 0.15);
-          animation: congratulations-pop 0.3s ease-out;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-
-        @keyframes congratulations-pop {
-          0% {
-            transform: translateX(-50%) translateY(-20px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-          }
-        }
-
-        .congratulations-icon {
-          font-size: 22px;
-          color: #2ecc71;
-        }
-
-        .congratulations-title {
-          margin: 0;
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: var(--ink, #333);
-        }
-
-        .congratulations-text {
-          margin: 0;
-          font-size: 0.8rem;
-          color: var(--ink-soft, #666);
-        }
-      `}</style>
-
       <i className="fa-solid fa-circle-check congratulations-icon"></i>
       <div>
         <h2 className="congratulations-title">¡Excelente!</h2>

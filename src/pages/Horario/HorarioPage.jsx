@@ -673,55 +673,16 @@ export default function HorarioPage() {
 
   if (isLocked) {
     return (
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "#000",
-          color: "#fff",
-          zIndex: 99999,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          padding: "20px",
-        }}
-      >
-        <h2
-          className="timer-font"
-          style={{
-            fontSize: "6rem",
-            margin: "0 0 30px 0",
-            letterSpacing: "2px",
-          }}
-        >
+      <div className="horario__lock-screen">
+        <h2 className="timer-font horario__lock-clock">
           {formatted}
         </h2>
 
-        <p
-          style={{
-            fontSize: "1.5rem",
-            marginBottom: "15px",
-            maxWidth: "600px",
-            lineHeight: "1.4",
-            fontWeight: "bold",
-          }}
-        >
+        <p className="horario__lock-title">
           Debes descansar porque ya estudiaste mucho.
         </p>
 
-        <p
-          style={{
-            fontSize: "1.2rem",
-            opacity: 0.7,
-            maxWidth: "600px",
-            lineHeight: "1.4",
-          }}
-        >
+        <p className="horario__lock-sub">
           La pantalla se desbloqueará automáticamente al
           terminar el tiempo.
         </p>
@@ -783,9 +744,7 @@ export default function HorarioPage() {
               <div className="horario__progress-track">
                 <div
                   className="horario__progress-fill"
-                  style={{
-                    width: `${progressPct}%`,
-                  }}
+                  style={{ "--fill-pct": `${progressPct}%` }}
                 />
               </div>
             </div>
@@ -975,9 +934,7 @@ export default function HorarioPage() {
                         <div className="horario__mini-track">
                           <div
                             className="horario__mini-fill"
-                            style={{
-                              width: `${pct}%`,
-                            }}
+                            style={{ "--fill-pct": `${pct}%` }}
                           />
                         </div>
 

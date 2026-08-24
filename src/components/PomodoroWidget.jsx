@@ -167,24 +167,9 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
         className={`pomo-widget ${isCollapsed ? "is-collapsed" : ""} ${open ? "" : "is-hidden"}`}
         aria-hidden={!open}
         style={{
-          top: pos.top,
-          left: pos.left ?? undefined,
-          right: pos.left === null ? 20 : undefined,
-          position: "fixed", // Para asegurar que flote y el drag funcione bien
-          zIndex: 9999,
-          ...(isCollapsed ? {
-            width: "50px",
-            height: "50px",
-            borderRadius: "50%",
-            padding: 0,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "hidden",
-            backgroundColor: "var(--ink)",
-            color: "var(--ink-on-primary)",
-            boxShadow: "var(--shadow-md)"
-          } : {})
+          "--pomo-top": `${pos.top}px`,
+          "--pomo-left": pos.left != null ? `${pos.left}px` : "auto",
+          "--pomo-right": pos.left === null ? "20px" : "auto",
         }}
       >
         {isCollapsed ? (
@@ -192,9 +177,9 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
             onMouseDown={onDragStart}
             onTouchStart={onDragStart}
             onClick={handleIconClick}
-            style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", touchAction: "none", cursor: "grab" }}
+            className="pomo-widget__collapsed-icon"
           >
-            <i className="fas fa-clock" style={{ fontSize: "24px" }} />
+            <i className="fas fa-clock" />
           </div>
         ) : (
           <>
@@ -203,26 +188,18 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
               onTouchStart={onDragStart}
               onClick={handleHeaderClick}
               className="pomo-widget__header"
-              style={{
-                touchAction: "none",
-                cursor: "grab",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}
             >
               <div><i className="fas fa-clock" /> Pomodoro</div>
-              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div className="pomo-widget__header-actions">
                 {isRunning && (
                   <i
-                    className="fas fa-minus"
+                    className="fas fa-minus pomo-widget__header-icon"
                     title="Minimizar"
                     onClick={(e) => { e.stopPropagation(); setIsCollapsed(true); }}
-                    style={{ cursor: "pointer", opacity: 0.8 }}
                   />
                 )}
                 <i
-                  className="fas fa-times"
+                  className="fas fa-times pomo-widget__header-icon pomo-widget__header-icon--close"
                   title="Cerrar"
                   onMouseDown={(e) => e.stopPropagation()}
                   onTouchStart={(e) => e.stopPropagation()}
@@ -230,14 +207,13 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
                     e.stopPropagation();
                     onClose();
                   }}
-                  style={{ cursor: "pointer", opacity: 0.8, fontSize: "16px" }}
                 />
               </div>
             </div>
             <div className="pomo-widget__body">
               {!isRunning && (
                 <>
-                  <div className="pomo-widget__time" onClick={stopAlarms} style={{ cursor: "pointer" }}>
+                  <div className="pomo-widget__time" onClick={stopAlarms}>
                     {formatted}
                   </div>
                   <div className="pomo-widget__grid">
@@ -252,7 +228,7 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
                     ))}
                   </div>
                   <div className="pomo-widget__controls">
-                    <button onClick={handleStart} className="pomo-widget__icon-btn" style={{ opacity: selectedMin === 0 ? 0.5 : 1, cursor: selectedMin === 0 ? "not-allowed" : "pointer" }}>
+                    <button onClick={handleStart} className={`pomo-widget__icon-btn ${selectedMin === 0 ? "is-disabled" : ""}`}>
                       <i className="fas fa-play" />
                     </button>
                     <button onClick={() => reset()} className="pomo-widget__icon-btn">
@@ -262,7 +238,7 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
                 </>
               )}
               {isRunning && (
-                <div className="pomo-widget__time" onClick={pause} title="Clic para pausar" style={{ cursor: "pointer" }}>
+                <div className="pomo-widget__time" onClick={pause} title="Clic para pausar">
                   {formatted}
                 </div>
               )}

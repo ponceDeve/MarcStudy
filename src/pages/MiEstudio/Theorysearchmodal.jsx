@@ -37,7 +37,7 @@ export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSe
           />
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxHeight: "50vh", overflowY: "auto" }}>
+        <div className="theory-search-modal__results">
           {resultados.map(({ p, index }) => (
             <button
               key={index}
@@ -46,23 +46,16 @@ export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSe
                 onClose();
                 setQuery("");
               }}
-              style={{
-                textAlign: "left",
-                padding: "10px 12px",
-                borderRadius: "var(--radius-sm)",
-                border: "1px solid var(--border-strong)",
-                background: "var(--surface-alt)",
-                color: "var(--ink)",
-              }}
+              className="theory-search-modal__item"
             >
               {p.seccionTitulo && (
-                <p style={{ margin: "0 0 2px", fontSize: "12.5px", color: "var(--ink-faint)" }}>{p.seccionTitulo}</p>
+                <p className="theory-search-modal__item-heading">{p.seccionTitulo}</p>
               )}
-              <p style={{ margin: 0 }}>{p.texto}</p>
+              <p className="theory-search-modal__item-text">{p.texto}</p>
             </button>
           ))}
           {resultados.length === 0 && (
-            <p style={{ color: "var(--ink-soft)" }}>Ningún resultado para "{query}".</p>
+            <p className="theory-search-modal__empty">Ningún resultado para "{query}".</p>
           )}
         </div>
 

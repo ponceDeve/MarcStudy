@@ -15,8 +15,7 @@ export default function Hud({ current, total, correct, wrong, vidas }) {
           {[...Array(5)].map((_, i) => (
             <i
               key={i}
-              className={i < vidas ? "fa-solid fa-heart" : "fa-regular fa-heart"}
-              style={{ opacity: i < vidas ? 1 : 0.3 }}
+              className={i < vidas ? "fa-solid fa-heart" : "fa-regular fa-heart hud__vida-icon--lost"}
             />
           ))}
         </span>

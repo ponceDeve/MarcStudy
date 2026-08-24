@@ -197,12 +197,7 @@ export default function LevelsModal({
         </div>
 
         {indicesFiltrados.length === 0 && (
-          <p
-            style={{
-              color: "var(--ink-soft)",
-              marginBottom: "20px"
-            }}
-          >
+          <p className="levels-modal__empty">
             Ningún nivel coincide con "
             {busqueda}".
           </p>

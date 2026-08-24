@@ -115,177 +115,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
 
   return (
     <div className="setup-overlay">
-      <style>{`
-        .setup-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 10000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--overlay-strong);
-          padding: 16px;
-        }
-        .setup-card {
-          width: min(420px, 100%);
-          max-height: 90vh;
-          overflow-y: auto;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          padding: 28px 24px;
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-        .setup-titulo {
-          margin: 0;
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: var(--ink);
-          text-align: center;
-        }
-        .setup-sub {
-          margin: -10px 0 0;
-          font-size: 0.85rem;
-          color: var(--ink-soft);
-          text-align: center;
-        }
-        .setup-dias-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 8px;
-        }
-        .setup-dia-btn {
-          padding: 12px 4px;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--border-strong);
-          background: var(--surface-alt);
-          color: var(--ink-soft);
-          font-weight: 700;
-          font-size: 0.85rem;
-          cursor: pointer;
-        }
-        .setup-dia-btn.is-on {
-          border-color: var(--primary);
-        }
-        .setup-input {
-          width: 100%;
-          box-sizing: border-box;
-          padding: 12px 14px;
-          border-radius: var(--radius-md);
-          border: 1px solid var(--border-strong);
-          background: var(--bg);
-          color: var(--ink);
-          font-size: 1rem;
-        }
-        .setup-input.is-error {
-          border-color: var(--danger);
-        }
-        .setup-char-count {
-          font-size: 0.875rem;
-          text-align: right;
-          color: var(--ink-soft);
-          margin: -10px 2px 0 0;
-        }
-        .setup-input-wrap {
-          position: relative;
-        }
-        .setup-sugerencias {
-          position: absolute;
-          top: calc(100% + 4px);
-          left: 0;
-          right: 0;
-          z-index: 20;
-          max-height: 220px;
-          overflow-y: auto;
-          background: var(--surface);
-          border: 1px solid var(--border-strong);
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-md);
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          padding: 6px;
-        }
-        .setup-sugerencia-item {
-          text-align: left;
-          padding: 8px 12px;
-          border-radius: var(--radius-sm);
-          border: 1px solid var(--border);
-          background: var(--surface-alt);
-          color: var(--ink);
-          font-size: 0.9rem;
-        }
-        /* ESTILO NUEVO: Sugerencia resaltada con teclado */
-        .setup-sugerencia-item.is-active {
-          background: var(--primary-bg);
-          border-color: var(--primary);
-        }
-        .setup-char-count.is-error {
-          color: var(--danger);
-          font-weight: 700;
-        }
-        .setup-lista-cursos {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .setup-lista-curso-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 8px 12px;
-          background: var(--surface-alt);
-          border-radius: var(--radius-sm);
-          font-size: 0.85rem;
-          color: var(--ink);
-        }
-        .setup-pomo-grid {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 6px;
-        }
-        /* ESTILO NUEVO: Para que se note cuando el grid de pomodoros tiene el foco */
-        .setup-pomo-grid:focus {
-          outline: 2px solid var(--primary);
-          outline-offset: 2px;
-          border-radius: var(--radius-sm);
-        }
-        .setup-pomo-btn {
-          padding: 10px 0;
-          border-radius: var(--radius-sm);
-          border: 1px solid var(--border-strong);
-          background: var(--surface-alt);
-          color: var(--ink);
-          font-weight: 700;
-          cursor: pointer;
-        }
-        .setup-pomo-btn.is-on {
-          border-color: var(--primary);
-        }
-        .setup-nav {
-          display: flex;
-          gap: 10px;
-        }
-        .setup-btn {
-          flex: 1;
-          padding: 13px;
-          border-radius: var(--radius-md);
-          border: none;
-          font-weight: 700;
-          font-size: 0.95rem;
-          cursor: pointer;
-        }
-        .setup-btn.is-primary:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-        .setup-btn.is-ghost {
-          background: var(--surface-alt);
-          color: var(--ink-soft);
-        }
-      `}</style>
 
       <div className="setup-card">
         {paso === "dias" && (
@@ -375,7 +204,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               )}
             </div>
             {nombreCurso.trim() && sugerencias.length === 0 && (
-              <p className="setup-sub" style={{ margin: 0, color: "var(--danger)" }}>
+              <p className="setup-sub setup-sub--error">
                 Ningún curso tuyo coincide con "{nombreCurso}". Configúralo primero en Mi Estudio.
               </p>
             )}
@@ -385,7 +214,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 : `${nombreCurso.length}/${LIMITE_NOMBRE_CURSO}`}
             </p>
 
-            <p className="setup-sub" style={{ margin: 0 }}>¿Cuántos pomodoros?</p>
+            <p className="setup-sub setup-sub--tight">¿Cuántos pomodoros?</p>
             {/* NUEVO: El grid de pomodoros ahora responde a las flechas */}
             <div
               className="setup-pomo-grid"

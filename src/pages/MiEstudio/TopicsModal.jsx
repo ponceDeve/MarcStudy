@@ -98,13 +98,12 @@ export default function TopicsModal({
 
   return (
     <div
-      className={`levels-modal ${open ? "" : "is-closed"}`}
-      style={{ zIndex: 1000 }}
+      className={`levels-modal levels-modal--topics ${open ? "" : "is-closed"}`}
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
       aria-hidden={!open}
     >
-      <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
+      <div className="levels-modal__inner levels-modal__inner--topics" onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title levels-modal__title--live">
           {temaEnTitulo || `Temas de ${curso}`}
         </h2>
