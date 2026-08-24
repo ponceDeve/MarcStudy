@@ -12,9 +12,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -73,25 +72,25 @@ export default function AppHeader({
   const botones = [
     ...(showHome
       ? [
-          {
-            title: "Ir a Mi Estudio",
-            label: "Home",
-            fullLabel: "Inicio",
-            icon: "fa-solid fa-house",
-            to: "/",
-          },
-        ]
+        {
+          title: "Ir a Mi Estudio",
+          label: "Home",
+          fullLabel: "Inicio",
+          icon: "fa-solid fa-house",
+          to: "/",
+        },
+      ]
       : []),
     ...(onAbrirBuscador
       ? [
-          {
-            title: "Buscar curso o tema",
-            label: "Buscar",
-            fullLabel: "Buscar curso o tema",
-            icon: "fa-solid fa-magnifying-glass",
-            onClick: onAbrirBuscador,
-          },
-        ]
+        {
+          title: "Buscar curso o tema",
+          label: "Buscar",
+          fullLabel: "Buscar curso o tema",
+          icon: "fa-solid fa-magnifying-glass",
+          onClick: onAbrirBuscador,
+        },
+      ]
       : []),
     {
       title: "Ir a Mis Repasos",
@@ -171,7 +170,7 @@ export default function AppHeader({
     );
   }
 
-  const renderFila = (b, closeFn = () => {}) => {
+  const renderFila = (b, closeFn = () => { }) => {
     const content = (
       <>
         <span className="topbar__drawer-item-label">
@@ -215,13 +214,21 @@ export default function AppHeader({
     <div className="topbar-wrapper">
       <div className="topbar container" ref={headerRef}>
         <div className="topbar__inner">
+
           <Link to="/" className="topbar__title-btn" title="Mi Estudio">
+            <img
+              src={`${import.meta.env.BASE_URL}icon.png`}
+              alt="Mi Estudio"
+              className="topbar__logo"
+            />
+
             <span className="topbar__curso topbar__curso--clickable">
               {nombreUsuario || "Mi Estudio"}
             </span>
           </Link>
 
           <div className="topbar__controls">
+
             <div className="topbar__nav">
               {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
             </div>
@@ -234,7 +241,9 @@ export default function AppHeader({
             >
               <i className="fa-solid fa-bars" />
             </button>
+
           </div>
+
         </div>
 
         <SideDrawer

@@ -86,8 +86,7 @@ body.is-header-oculto .topbar-wrapper {
   max-width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
   padding: 6px 10px;
   background: transparent;
   border: none;
@@ -99,6 +98,7 @@ body.is-header-oculto .topbar-wrapper {
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 900;
+  gap: 6px;
 
   transition:
     background 0.5s linear,
@@ -107,8 +107,7 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__title-btn:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background: rgba(20, 21, 24, 1);
-  color: #fff;
+  color: var(--primary)!important;
 }
 
 .topbar__title-btn:active {
@@ -184,7 +183,6 @@ body.is-header-oculto .topbar-wrapper {
 }
 
 .topbar__title-btn:hover .topbar__tema,
-.topbar__title-btn:hover .topbar__curso,
 .topbar__title-btn:hover .topbar__tema-wrapper::after {
   color: #fff;
 }
@@ -687,4 +685,18 @@ body.is-header-oculto .topbar-wrapper {
     padding: 18px 16px;
     font-size: 17px;
   }
+}
+.topbar__title-btn:hover .topbar__curso {
+  color: var(--primary)!important;
+}
+.topbar__logo {
+  width: 35px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.15s linear;
+}
+
+.topbar__title-btn:hover .topbar__logo {
+  transform: rotate(-15deg) scale(1.1);
 }

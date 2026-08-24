@@ -9,12 +9,10 @@
   flex-direction: column;
   position: relative;
   color: var(--ink);
-  // Nota: NO poner overflow-x:hidden aquí. html/body ya lo tienen
-  // (_base.scss) y ponerlo también en este div rompe el
-  // position:sticky de .teoria-sticky-bar (el par overflow-x/y no
-  // "visible" en un ancestro obliga al navegador a tratarlo como
-  // contenedor de scroll, y como este div nunca hace scroll por sí
-  // mismo, el sticky deja de seguir el scroll real de la página).
+
+  /* Nota: NO poner overflow-x:hidden aquí.
+     html/body ya lo tienen (_base.scss) y ponerlo también en
+     este div rompe el position:sticky de .teoria-sticky-bar. */
 }
 
 .mi-estudio__wrap {
@@ -76,17 +74,92 @@
   margin: 0;
 }
 
+/* ============================================================
+   TÍTULO PRINCIPAL
+   ============================================================ */
+
 .mi-estudio__intro-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: clamp(24px, 10vw, 60px);
+  font-weight: 800;
   margin: 8px 0 0;
   text-align: center;
   color: var(--ink);
+  font-family: var(--font-body);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  box-sizing: border-box;
 }
 
-@media (min-width: 640px) {
+.mi-estudio__intro-title-text {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.mi-estudio__intro-highlight {
+  display: block;
+  width: fit-content;
+  max-width: 0;
+
+  margin: 4px auto 0;
+
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--primary);
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* Cursor al costado */
+  border-right: 2px solid var(--primary);
+
+  /* Más lento */
+  animation:
+    typing 3.5s steps(30, end) forwards,
+    blink-caret 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    max-width: 0;
+  }
+
+  to {
+    max-width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE DEL TÍTULO
+   ============================================================ */
+
+@media (max-width: 480px) {
   .mi-estudio__intro-title {
-    font-size: 32px;
+    /*
+      Reduce el tamaño para que "Hora de repasar + nombre"
+      tenga más posibilidades de entrar en una sola fila.
+    */
+    font-size: clamp(20px, 8vw, 32px);
+    gap: 0.2em;
+  }
+
+  .mi-estudio__intro-highlight {
+    margin-top: 2px;
+  }
+
+  .mi-estudio__intro-cursor {
+    width: 2px;
+    margin-left: 3px;
   }
 }
 
@@ -96,6 +169,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 100px;
   width: 100%;
 }
 
@@ -126,11 +200,11 @@
 }
 
 .teoria-sticky-bar {
-  /* No se puede animar el salto entre position:static y sticky (a
-     diferencia del transform del header, "position" no es animable
-     con CSS), así que el cambio es instantáneo. Se prioriza que al
-     subir vuelva a comportarse como un elemento normal (se va con
-     el contenido) por sobre tener el mismo deslizamiento del header. */
+  /*
+    No se puede animar el salto entre position:static y sticky.
+    Se prioriza que al subir vuelva a comportarse como un
+    elemento normal.
+  */
   position: static;
   z-index: 50;
   display: flex;
@@ -268,7 +342,6 @@ body.is-header-oculto .teoria-sticky-bar {
   }
 }
 
-
 /* ============================================================
    BUSCADOR GOOGLE
    ============================================================ */
@@ -324,7 +397,6 @@ body.is-header-oculto .teoria-sticky-bar {
   background: var(--primary-dark);
 }
 
-
 /* ============================================================
    PREGUNTA
    ============================================================ */
@@ -364,15 +436,6 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: translateY(1px);
 }
 
-.mi-estudio__question-inner {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
@@ -383,7 +446,7 @@ body.is-header-oculto .teoria-sticky-bar {
   align-items: center;
   gap: 16px;
   max-width: 28rem;
-  margin: 32px auto 0px;
+  margin: 32px auto 0;
 }
 
 .mi-estudio__nav-btn {
@@ -481,7 +544,6 @@ body.is-header-oculto .teoria-sticky-bar {
   opacity: 1;
 }
 
-
 /* ============================================================
    FINALIZADO
    ============================================================ */
@@ -561,7 +623,6 @@ body.is-header-oculto .teoria-sticky-bar {
   margin-top: 10px;
 }
 
-
 /* ============================================================
    CUENTA REGRESIVA
    ============================================================ */
@@ -587,7 +648,6 @@ body.is-header-oculto .teoria-sticky-bar {
   opacity: .8;
   text-align: center;
 }
-
 
 /* ============================================================
    CONFIGURACIÓN
@@ -676,7 +736,6 @@ body.is-header-oculto .teoria-sticky-bar {
   border-bottom-color: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-
 
 /* ============================================================
    AVISOS DE VIDAS
@@ -797,7 +856,6 @@ body.is-header-oculto .teoria-sticky-bar {
   box-shadow: var(--shadow-sm);
 }
 
-
 /* ============================================================
    BUSCADOR DE TEORÍA
    ============================================================ */
@@ -822,8 +880,6 @@ body.is-header-oculto .teoria-sticky-bar {
   z-index: 101;
 }
 
-/* Input secundario y discreto: es un buscador de apoyo, no el
-   protagonista de la pantalla. */
 .theory-search__input {
   width: 100%;
   padding: 7px 14px;
@@ -862,8 +918,9 @@ body.is-header-oculto .teoria-sticky-bar {
   z-index: 1000;
   max-height: 260px;
   overflow-y: auto;
-  background: var(--ink-on-primary);
-  border: 1px solid var(--primary);
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+  border-top: none;
   border-bottom-left-radius: var(--radius-md);
   border-bottom-right-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
@@ -904,7 +961,6 @@ body.is-header-oculto .teoria-sticky-bar {
   text-align: center;
 }
 
-
 /* ============================================================
    ALERTA SIN PREGUNTA
    ============================================================ */
@@ -934,7 +990,6 @@ body.is-header-oculto .teoria-sticky-bar {
   padding: 4px;
 }
 
-
 /* ============================================================
    BOTONES PDF
    ============================================================ */
@@ -942,6 +997,8 @@ body.is-header-oculto .teoria-sticky-bar {
 .mi-estudio__pdf-buttons {
   display: flex;
   gap: 12px;
+  margin-top: 20px;
+  margin-bottom: 32px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -980,7 +1037,6 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: translateY(1px);
 }
 
-
 /* ============================================================
    SUGERIR EXAMEN
    ============================================================ */
@@ -996,19 +1052,14 @@ body.is-header-oculto .teoria-sticky-bar {
   text-align: center;
 }
 
-/* Este es el nombre de clase que realmente usa el <section> del botón
-   "Sugerir tema" / spinner de envío en MiEstudioPage.jsx. Antes no
-   tenía ningún estilo (desajuste con ".mi-estudio__sugerir" de arriba,
-   que no se usa en ningún JSX), por eso el spinner de carga quedaba
-   pegado a la izquierda en vez de centrado. */
 .mi-estudio__suggestion {
   width: 100%;
   max-width: 600px;
+  margin: 32px auto 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 0 auto;
 }
 
 .mi-estudio__sugerir-text {
@@ -1043,7 +1094,6 @@ body.is-header-oculto .teoria-sticky-bar {
   border-bottom-width: 0;
   transform: translateY(3px);
 }
-
 
 /* ============================================================
    MODAL DE SUGERENCIA
@@ -1122,7 +1172,6 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: scale(.94);
 }
 
-
 /* ============================================================
    CABECERA DEL FORMULARIO
    ============================================================ */
@@ -1147,7 +1196,6 @@ body.is-header-oculto .teoria-sticky-bar {
   line-height: 1.45;
   color: var(--ink-soft);
 }
-
 
 /* ============================================================
    FORMULARIO
@@ -1209,7 +1257,6 @@ body.is-header-oculto .teoria-sticky-bar {
   color: var(--ink-faint);
 }
 
-
 /* ============================================================
    CAMPOS
    ============================================================ */
@@ -1268,7 +1315,6 @@ body.is-header-oculto .teoria-sticky-bar {
   min-height: 64px;
 }
 
-
 /* ============================================================
    SELECT
    ============================================================ */
@@ -1285,7 +1331,6 @@ body.is-header-oculto .teoria-sticky-bar {
   background-size: 16px;
   padding-right: 40px;
 }
-
 
 /* ============================================================
    CHECKBOX Y RADIO
@@ -1351,7 +1396,6 @@ body.is-header-oculto .teoria-sticky-bar {
   border-radius: 50%;
 }
 
-
 /* ============================================================
    DROPZONE
    ============================================================ */
@@ -1371,7 +1415,6 @@ body.is-header-oculto .teoria-sticky-bar {
   border-color: var(--primary);
   background: var(--primary-bg);
 }
-
 
 /* ============================================================
    VALIDACIÓN
@@ -1393,7 +1436,6 @@ body.is-header-oculto .teoria-sticky-bar {
   align-items: center;
   gap: 6px;
 }
-
 
 /* ============================================================
    BOTÓN DE ENVÍO
@@ -1448,7 +1490,6 @@ body.is-header-oculto .teoria-sticky-bar {
     transform: rotate(360deg);
   }
 }
-
 
 /* ============================================================
    BOTÓN SUGERENCIA
@@ -1505,7 +1546,6 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: translateY(2px);
   border-bottom-width: 1px;
 }
-
 
 /* ============================================================
    CONTENIDO DEL MODAL
@@ -1601,13 +1641,11 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: translateY(2px);
 }
 
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 
 @media (min-width: 640px) {
-
   .mi-estudio__form-row {
     flex-direction: row;
     gap: 16px;
@@ -1616,12 +1654,9 @@ body.is-header-oculto .teoria-sticky-bar {
   .mi-estudio__form-row .mi-estudio__campo {
     flex: 1;
   }
-
 }
 
-
 @media (max-width: 639px) {
-
   .mi-estudio__modal-overlay {
     padding: 12px;
     align-items: flex-start;
@@ -1665,12 +1700,10 @@ body.is-header-oculto .teoria-sticky-bar {
   .mi-estudio__modal-submit {
     width: 100%;
   }
-
 }
 
 /* ============================================================
-   Teoría (artículo web) — antes estaba como <style> inline en
-   MiEstudioPage.jsx, movido acá.
+   TEORÍA — ARTÍCULO WEB
    ============================================================ */
 
 .teoria-articulo-web {
@@ -1788,7 +1821,7 @@ body.is-header-oculto .teoria-sticky-bar {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background-color: red;
+  background-color: var(--primary, #2563EB);
   color: var(--ink-on-primary, #FFFFFF);
   padding: 16px 36px;
   font-size: 1.25rem;
@@ -1809,9 +1842,6 @@ body.is-header-oculto .teoria-sticky-bar {
   box-shadow: var(--shadow-lg);
 }
 
-/* Botón "Completar Tema" cuando falta marcar toda la teoría: se ve
-   apagado, pero sigue siendo clickeable a propósito, para poder
-   avisar al usuario en vez de quedar inerte sin explicación. */
 .teoria-boton-examen.is-bloqueado {
   background-color: var(--surface-alt, #E5E7EB);
   color: var(--ink-soft, #6B7280);
