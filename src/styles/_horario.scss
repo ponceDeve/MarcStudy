@@ -1366,6 +1366,33 @@
 }
 
 /* ============================================================
+   GATE DE CONFIGURACIÓN (botón para abrir el asistente)
+   ============================================================ */
+
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-strong);
+  padding: 16px;
+}
+
+.gate-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ============================================================
    ASISTENTE DE CONFIGURACIÓN DE HORARIO (ScheduleSetup)
    ============================================================ */
 

@@ -178,7 +178,7 @@
   justify-content: center;
   cursor: pointer;
   color: var(--ink);
-  transition: background 0.15s ease;
+  transition: background 0.15s linear;
 }
 
 .pomo-widget__icon-btn:hover {
@@ -206,25 +206,22 @@
 .glossary-term {
   position: relative;
   display: inline;
-  color: var(--accent);
+  color: var(--ink);
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-style: dotted;
   text-underline-offset: 3px;
-  transition: color 0.5s ease;
+  background: var(--brand-light);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
   white-space: nowrap;
+  padding: 0 2px;
 }
-
-.glossary-term:hover {
-  color: var(--accent-dark);
-}
-
 /* Símbolos matemáticos/científicos (=, +, ≠, ≈, ↑, ↓, etc.) del
    glosario: mismo trato (subrayado, tooltip) pero con un color
    distinto al de las palabras normales, para diferenciar "notación"
    de "vocabulario" de un vistazo. */
 .glossary-term--simbolo {
   color: var(--brand);
+  background:transparent;
 }
 
 .glossary-term--simbolo:hover {

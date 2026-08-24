@@ -37,7 +37,7 @@ export default function TopBar({
   onAbrirBuscador, onTogglePomodoroMini, onAbrirTemas,
   onGuardarRepaso, isFullscreen, onToggleFullscreen,
   onVerPreguntasVistas, onAbandonarPregunta, onReiniciarTarjetas,
-  onIrInicio
+  onIrInicio, pdfVerUrl, pdfDescargaUrl
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
@@ -89,11 +89,14 @@ export default function TopBar({
   const configButtons = [
     { icon: "fa-solid fa-clock", label: "Timer", fullLabel: "Mini cronómetro", onClick: onTogglePomodoroMini },
     { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", fullLabel: isFullscreen ? "Minimizar pantalla" : "Pantalla completa", onClick: onToggleFullscreen },
-    // "Repasar" muestra las preguntas ya vistas de este tema, mezcladas.
-    // Se puede abrir desde teoría o desde pregunta; MiEstudioPage se
-    // encarga de cambiar a la vista de pregunta y volver si hace falta.
-    { icon: "fas fa-list-check", label: "Repasar", fullLabel: "Ver preguntas vistas", onClick: onVerPreguntasVistas },
-    { icon: "fas fa-rotate-left", label: "Reiniciar", fullLabel: "Reiniciar tarjetas", onClick: onReiniciarTarjetas },
+    // PDF del tema: reemplazan a los antiguos botones "Ver preguntas
+    // vistas" y "Reiniciar tarjetas", que ya no están disponibles acá.
+    ...(pdfVerUrl
+      ? [{ icon: "fas fa-file-pdf", label: "Ver PDF", fullLabel: "Ver PDF", href: pdfVerUrl, target: "_blank" }]
+      : []),
+    ...(pdfDescargaUrl
+      ? [{ icon: "fas fa-download", label: "Descargar", fullLabel: "Descargar PDF", href: pdfDescargaUrl, download: true }]
+      : []),
     // "Abandonar" solo tiene sentido dentro de una pregunta: te devuelve
     // a la teoría. En teoría no debe existir este botón.
     ...(stage === "question"
@@ -136,6 +139,23 @@ export default function TopBar({
       if (b.onClick) b.onClick();
       closeFn();
     };
+
+    if (b.href) {
+      return (
+        <a
+          key={b.title || b.label}
+          href={b.href}
+          download={b.download || undefined}
+          target={b.target}
+          rel={b.target ? "noopener noreferrer" : undefined}
+          title={b.title}
+          className="topbar__drawer-item"
+          onClick={closeFn}
+        >
+          {content}
+        </a>
+      );
+    }
 
     return b.to ? (
       <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>

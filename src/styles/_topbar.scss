@@ -100,14 +100,12 @@ body.is-header-oculto .topbar-wrapper {
   font-weight: 900;
   gap: 6px;
 
-  transition:
-    background 0.5s linear,
-    color 0.5s linear;
+  transition: all .3 linear!important;
 }
 
 .topbar__title-btn:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  color: var(--primary)!important;
+  background: var(--success-bg);
 }
 
 .topbar__title-btn:active {
@@ -236,16 +234,12 @@ align-items: center;
   text-decoration: none;
   white-space: nowrap;
 
-  transition:
-    background 0.5s ease,
-    color 0.5s ease,
-    transform 0.4s ease;
+  transition: all .3s linear
 }
 
 .topbar__nav-btn:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background: rgba(20, 21, 24, 1);
-  color: #fff;
+  background: var(--success-bg);
 }
 
 .topbar__nav-btn.is-active {
@@ -335,8 +329,7 @@ align-items: center;
 .topbar__control-btn:hover,
 .topbar__gear:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background: rgba(20, 21, 24, 1);
-  color: #fff;
+  background: var(--success-bg);
 }
 
 .topbar__control-btn:active,

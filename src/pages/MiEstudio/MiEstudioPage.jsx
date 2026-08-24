@@ -2250,6 +2250,21 @@ export default function MiEstudioPage() {
       questionResult.isCorrect
     );
 
+  const [
+    hintBloqueoVisible,
+    setHintBloqueoVisible,
+  ] = useState(false);
+
+  useEffect(() => {
+    if (!hintBloqueoVisible) return;
+
+    const timer = setTimeout(() => {
+      setHintBloqueoVisible(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [hintBloqueoVisible]);
+
   useEffect(() => {
     function onKeyDown(e) {
       const tagActivo =
@@ -2575,6 +2590,20 @@ export default function MiEstudioPage() {
           }
           onReiniciarTarjetas={
             reiniciarTarjetas
+          }
+          pdfVerUrl={
+            topicData?.archivo
+              ? `${window.location.origin}${import.meta.env.BASE_URL}${topicData.archivo
+                .replace(/^temas\//i, "PDFs/")
+                .replace(/\.json$/i, ".pdf")}`
+              : null
+          }
+          pdfDescargaUrl={
+            topicData?.archivo
+              ? `${import.meta.env.BASE_URL}${topicData.archivo
+                .replace(/^temas\//i, "PDFs/")
+                .replace(/\.json$/i, ".pdf")}`
+              : null
           }
         />
       )}
@@ -3307,14 +3336,20 @@ export default function MiEstudioPage() {
 
                   <div className="teoria-articulo-web">
                     <div className="teoria-aviso-uso">
-                      <i className="fa-solid fa-circle-info teoria-aviso-uso__icon" />
-                      <span>
-                        Marca el check de un punto para que el examen
-                        de este tema use solo preguntas de esa parte.
-                        Si activas la bocina, se lee en voz alta
-                        únicamente el punto que toques.
-                      </span>
-                    </div>
+  <i className="fa-solid fa-circle-info teoria-aviso-uso__icon" />
+
+  <div className="teoria-aviso-uso__mensajes">
+    <span>
+      <i className="fa-solid fa-square-check" />
+      Selecciona los textos para el examen.
+    </span>
+
+    <span>
+      <i className="fa-solid fa-volume-high" />
+      Selecciona los textos que leerá la bocina.
+    </span>
+  </div>
+</div>
 
                     {topicData?.theory?.map((seccion, idxSeccion) => (
                       seccion.titulo === "Ejercicios" ? null :
@@ -3388,14 +3423,12 @@ export default function MiEstudioPage() {
                         </div>
                     ))}
 
-                    {/* Botón final: si hay preguntas de examen para este tema
-                        (no las de "Ejercicios", que ya tienen su propio botón
-                        más abajo), llevar al examen. Si no hay ninguna, completar
-                        el tema directamente. Antes solo se cubría el caso sin
-                        preguntas, y el caso normal quedaba sin botón visible
-                        (solo se podía entrar con la tecla Enter). */}
+                    {/* Botón final: "Completar Tema" siempre visible. Si además
+                        hay preguntas de examen para este tema (no las de
+                        "Ejercicios", que ya tienen su propio botón más abajo),
+                        se muestra junto a "Ir al Examen" en la misma fila. */}
                     <div className="teoria-acciones-final">
-                      {examenPreguntas.length > 0 ? (
+                      {examenPreguntas.length > 0 && (
                         <button
                           className="teoria-boton-examen"
                           onClick={() => elegirModoEstudio("solo_preguntas", { requiereSeleccion: true })}
@@ -3403,16 +3436,15 @@ export default function MiEstudioPage() {
                           <i className="fa-solid fa-graduation-cap"></i>
                           Ir al Examen
                         </button>
-                      ) : (
-                        <button
-                          className={`teoria-boton-examen${teoriaCompleta ? "" : " is-bloqueado"}`}
-                          onClick={intentarCompletarTema}
-                          aria-disabled={!teoriaCompleta}
-                        >
-                          <i className="fa-solid fa-check-circle"></i>
-                          Completar Tema
-                        </button>
                       )}
+                      <button
+                        className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta ? "" : " is-bloqueado"}`}
+                        onClick={intentarCompletarTema}
+                        aria-disabled={!teoriaCompleta}
+                      >
+                        <i className="fa-solid fa-check-circle"></i>
+                        Completar Tema
+                      </button>
                     </div>
 
                     {/* Sección separada de ejercicios */}
@@ -3519,8 +3551,14 @@ export default function MiEstudioPage() {
                       return (
                         <>
                           <button
-                            onClick={avanzarCard}
-                            disabled={bloqueado}
+                            onClick={() => {
+                              if (bloqueado) {
+                                setHintBloqueoVisible(true);
+                                return;
+                              }
+                              avanzarCard();
+                            }}
+                            aria-disabled={bloqueado}
                             className={`mi-estudio__nav-btn ${bloqueado
                               ? ""
                               : "is-active"
@@ -3534,8 +3572,8 @@ export default function MiEstudioPage() {
                             )}
                           </button>
 
-                          {!canAdvance && !esUltimo && (
-                            <span className="mi-estudio__nav-hint">
+                          {!canAdvance && !esUltimo && hintBloqueoVisible && (
+                            <span className="mi-estudio__nav-hint is-visible">
                               ¡Supera la pregunta para avanzar!
                             </span>
                           )}
@@ -3564,66 +3602,6 @@ export default function MiEstudioPage() {
                         reintentarPregunta
                       }
                     />
-                  </div>
-                )}
-
-              {stage ===
-                "theory" && (
-                  <div className="mi-estudio__pdf-buttons">
-                    <button
-                      type="button"
-                      className="mi-estudio__pdf-btn"
-                      onClick={() => {
-                        if (
-                          !topicData?.archivo
-                        ) {
-                          return;
-                        }
-
-                        const pdfRelativo =
-                          topicData.archivo
-                            .replace(
-                              /^temas\//i,
-                              "PDFs/"
-                            )
-                            .replace(
-                              /\.json$/i,
-                              ".pdf"
-                            );
-
-                        const rutaPdf = `${window.location.origin}${import.meta.env.BASE_URL}${pdfRelativo}`;
-
-                        window.open(
-                          rutaPdf,
-                          "_blank",
-                          "noopener,noreferrer"
-                        );
-                      }}
-                    >
-                      <i className="fas fa-file-pdf" />{" "}
-                      Ver PDF
-                    </button>
-
-                    <a
-                      href={
-                        topicData?.archivo
-                          ? `${import.meta.env.BASE_URL}${topicData.archivo
-                            .replace(
-                              /^temas\//i,
-                              "PDFs/"
-                            )
-                            .replace(
-                              /\.json$/i,
-                              ".pdf"
-                            )}`
-                          : "#"
-                      }
-                      download
-                      className="mi-estudio__pdf-btn"
-                    >
-                      <i className="fas fa-download" />{" "}
-                      Descargar PDF
-                    </a>
                   </div>
                 )}
             </div>

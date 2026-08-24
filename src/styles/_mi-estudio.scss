@@ -169,7 +169,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 100px;
   width: 100%;
 }
 
@@ -480,7 +479,8 @@ body.is-header-oculto .teoria-sticky-bar {
   transform: translateY(1px);
 }
 
-.mi-estudio__nav-btn:disabled {
+.mi-estudio__nav-btn:disabled,
+.mi-estudio__nav-btn[aria-disabled="true"] {
   background: var(--surface-alt);
   color: var(--ink-faint);
   cursor: not-allowed;
@@ -540,7 +540,7 @@ body.is-header-oculto .teoria-sticky-bar {
   box-shadow: var(--shadow-md);
 }
 
-.mi-estudio__nav-right:hover .mi-estudio__nav-hint {
+.mi-estudio__nav-hint.is-visible {
   opacity: 1;
 }
 
@@ -1055,7 +1055,8 @@ body.is-header-oculto .teoria-sticky-bar {
 .mi-estudio__suggestion {
   width: 100%;
   max-width: 600px;
-  margin: 32px auto 40px;
+  margin: 50px auto;
+  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1523,7 +1524,6 @@ body.is-header-oculto .teoria-sticky-bar {
 .mi-estudio__suggestion-btn {
   display: flex;
   justify-content: center;
-  margin: 50px auto;
   background-color: var(--primary);
   padding: 14px 28px;
   gap: 7px;
@@ -1713,18 +1713,41 @@ body.is-header-oculto .teoria-sticky-bar {
 
 .teoria-aviso-uso {
   max-width: 800px;
-  margin: 0 auto 24px;
-  padding: 14px 18px;
+  margin: 0 auto 16px;
+  padding: 9px 12px;
   border-radius: var(--radius-md, 12px);
   background: var(--surface, #FFFFFF);
   border: 1px solid var(--border, #E1E6EC);
   color: var(--ink-soft, #4A5568);
   font-family: var(--font-body, "Lato", sans-serif);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.82rem;
+  line-height: 1.35;
   display: flex;
-  gap: 12px;
+  gap: 9px;
   align-items: flex-start;
+  position: relative;
+}
+.teoria-aviso-uso > i {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+.teoria-aviso-uso__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.9rem;
+}
+
+.teoria-aviso-uso__mensajes {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.teoria-aviso-uso__mensajes span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .teoria-aviso-uso__icon {
@@ -1813,7 +1836,11 @@ body.is-header-oculto .teoria-sticky-bar {
 }
 
 .teoria-acciones-final {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 50px;
 }
 
 .teoria-boton-examen {
@@ -1855,6 +1882,27 @@ body.is-header-oculto .teoria-sticky-bar {
   box-shadow: none;
 }
 
+.teoria-boton-completar {
+  background-color: var(--success, #16A34A);
+}
+
+.teoria-boton-completar:hover {
+  background-color: var(--success, #16A34A);
+  filter: brightness(1.1);
+}
+
+.teoria-boton-completar.is-bloqueado {
+  background-color: var(--success, #16A34A);
+  color: var(--ink-on-primary, #FFFFFF);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.teoria-boton-completar.is-bloqueado:hover {
+  background-color: var(--success, #16A34A);
+  filter: none;
+}
+
 @media (max-width: 600px) {
   .teoria-etiqueta {
     font-size: 1.5rem;
@@ -1867,6 +1915,10 @@ body.is-header-oculto .teoria-sticky-bar {
   .teoria-explicacion-extra {
     padding: 16px;
     font-size: 1rem;
+  }
+
+  .teoria-acciones-final {
+    flex-direction: column;
   }
 
   .teoria-boton-examen {
@@ -1925,4 +1977,100 @@ body.is-header-oculto .teoria-sticky-bar {
   margin: 0;
   font-size: 0.8rem;
   color: var(--ink-soft, #666);
+}
+
+/* ============================================================
+   PRÁCTICA DE EJERCICIOS (ExercisesSection)
+   ============================================================ */
+
+.exercises-section {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--brand);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin: 40px auto;
+}
+
+.exercises-section::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--brand-bg);
+  pointer-events: none;
+}
+
+.exercises-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.exercises-header-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  color: var(--brand-dark);
+}
+
+.exercises-description {
+  margin: 0 0 20px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  position: relative;
+}
+
+.exercises-buttons {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.exercises-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  border-bottom: 4px solid transparent;
+  border-radius: var(--radius-full);
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 32px);
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all .15s;
+  box-shadow: var(--shadow-md);
+}
+
+.exercises-btn-primary {
+  background: var(--brand);
+  border-bottom-color: var(--brand-dark);
+  color: var(--ink-on-primary);
+}
+
+.exercises-btn-primary:hover {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+}
+
+.exercises-btn-primary:active {
+  border-bottom-width: 0;
+  transform: translateY(3px);
+}
+
+.exercises-icon {
+  font-size: 0.8rem;
+  width: 22px;
+  height: 22px;
 }
