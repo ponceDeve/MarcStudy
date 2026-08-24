@@ -260,6 +260,12 @@ function useLecturaTeoriaVoz(texto, activo) {
         utter.voice = vozGrave;
       }
 
+      // En WebView/Android (Capacitor), cancel() + speak() en el mismo
+      // tick suele fallar en silencio: el motor se queda leyendo el
+      // audio anterior en vez de cambiar al nuevo (por eso "repetía
+      // el mismo título" al tocar distintos puntos). Encolar el
+      // speak() con un pequeño delay le da tiempo al cancel() de
+      // aplicarse de verdad antes de hablar el texto nuevo.
       timeoutId = setTimeout(() => {
         if (cancelado) return;
         window.speechSynthesis.speak(utter);
@@ -523,44 +529,6 @@ export default function MiEstudioPage() {
       "miEstudio_nombreUsuario",
       null
     );
-
-  const [nombreEscrito, setNombreEscrito] =
-    useState("");
-
-  const [escribiendoNombre, setEscribiendoNombre] =
-    useState(false);
-
-  useEffect(() => {
-    if (!nombreUsuario) {
-      setNombreEscrito("");
-      setEscribiendoNombre(false);
-      return;
-    }
-
-    const nombre = String(nombreUsuario);
-
-    setNombreEscrito("");
-    setEscribiendoNombre(true);
-
-    let indice = 0;
-
-    const intervalo = setInterval(() => {
-      indice += 1;
-
-      setNombreEscrito(
-        nombre.slice(0, indice)
-      );
-
-      if (indice >= nombre.length) {
-        clearInterval(intervalo);
-        setEscribiendoNombre(false);
-      }
-    }, 75);
-
-    return () => {
-      clearInterval(intervalo);
-    };
-  }, [nombreUsuario]);
 
   const [preguntaModoAbierta, setPreguntaModoAbierta] =
     useState(false);
@@ -1174,6 +1142,8 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Toda la teoría normal (sin contar "Ejercicios") debe estar
+  // marcada con el check antes de poder completar el tema.
   const teoriaCompleta = useMemo(() => {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
@@ -1222,6 +1192,10 @@ export default function MiEstudioPage() {
           .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios")
           .map(x => x.pregunta);
       } else if (opts.requiereSeleccion) {
+        // Viene del botón/atajo "Ir al Examen" DENTRO de la teoría: acá sí
+        // se exige haber tildado al menos un punto (a diferencia de
+        // "Omitir", que se presiona antes de ver la teoría y no tiene
+        // nada que tildar).
         if (textosSeleccionados.length === 0) {
           sinPreguntaTimers.current.forEach(clearTimeout);
 
@@ -1249,10 +1223,13 @@ export default function MiEstudioPage() {
           ? preguntasVinculadasTeoria
           : originalExamen;
       } else {
+        // "Omitir" (antes de ver la teoría) u otros llamados sin exigencia
+        // de selección: directamente todas las preguntas del tema.
         preguntasFinales = originalExamen;
       }
 
       if (preguntasFinales.length === 0) {
+        // Sin preguntas de examen: avisar con alerta y sonido, y quedarnos en teoría
         sinPreguntaTimers.current.forEach(clearTimeout);
 
         setSinSeleccionAlerta(false);
@@ -1307,6 +1284,7 @@ export default function MiEstudioPage() {
     let q =
       searchParams.get("q");
 
+    // Si no hay q en URL, revisar si volvemos del pomodoro
     if (!q) {
       const temaPendiente = leerYLimpiarRetorno();
       if (temaPendiente) {
@@ -2469,6 +2447,44 @@ export default function MiEstudioPage() {
 
   return (
     <div className="mi-estudio">
+      <style>{`
+        .mi-estudio__suggestion-loading {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          min-height: 42px;
+          padding: 0 16px;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .mi-estudio__suggestion-spinner {
+          width: 17px;
+          height: 17px;
+          flex: 0 0 17px;
+          border: 2px solid currentColor;
+          border-top-color: transparent;
+          border-radius: 50%;
+          animation: miEstudioSuggestionSpin 0.7s linear infinite;
+        }
+
+        @keyframes miEstudioSuggestionSpin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .mi-estudio__suggestion-btn:disabled {
+          cursor: wait;
+        }
+      `}</style>
 
       <WelcomeModal
         open={!nombreUsuario}
@@ -2877,25 +2893,10 @@ export default function MiEstudioPage() {
                 <div>
 
                   <h1 className="mi-estudio__intro-title">
-                    <span className="mi-estudio__intro-title-text">
-                      Hora de repasar
-                    </span>
-
+                    Hora de repasar
                     {nombreUsuario && (
-                      <span
-                        className={`mi-estudio__intro-highlight ${escribiendoNombre
-                          ? "is-typing"
-                          : "is-typing-complete"
-                          }`}
-                      >
-                        {nombreEscrito}
-
-                        {escribiendoNombre && (
-                          <span
-                            className="mi-estudio__intro-cursor"
-                            aria-hidden="true"
-                          />
-                        )}
+                      <span className="mi-estudio__intro-highlight">
+                        {nombreUsuario}
                       </span>
                     )}
                   </h1>
@@ -3307,11 +3308,11 @@ export default function MiEstudioPage() {
                   <div className="teoria-articulo-web">
                     <div className="teoria-aviso-uso">
                       <i className="fa-solid fa-circle-info teoria-aviso-uso__icon" />
-
                       <span>
-                        <i className="fa-regular fa-square-check" /> Marca un punto para enfocarte en él.
-                        <br />
-                        <i className="fa-solid fa-volume-high" /> Toca un punto para escucharlo.
+                        Marca el check de un punto para que el examen
+                        de este tema use solo preguntas de esa parte.
+                        Si activas la bocina, se lee en voz alta
+                        únicamente el punto que toques.
                       </span>
                     </div>
 
@@ -3350,6 +3351,7 @@ export default function MiEstudioPage() {
                                             ? prev.filter((t) => t !== puntoId)
                                             : [...prev, puntoId];
 
+                                          // Mostrar alerta si se completó toda la teoría
                                           if (newSelection.length === flatPuntos.length && flatPuntos.length > 0) {
                                             setMostrarCongratulations(true);
                                           }
@@ -3386,6 +3388,12 @@ export default function MiEstudioPage() {
                         </div>
                     ))}
 
+                    {/* Botón final: si hay preguntas de examen para este tema
+                        (no las de "Ejercicios", que ya tienen su propio botón
+                        más abajo), llevar al examen. Si no hay ninguna, completar
+                        el tema directamente. Antes solo se cubría el caso sin
+                        preguntas, y el caso normal quedaba sin botón visible
+                        (solo se podía entrar con la tecla Enter). */}
                     <div className="teoria-acciones-final">
                       {examenPreguntas.length > 0 ? (
                         <button
@@ -3407,6 +3415,7 @@ export default function MiEstudioPage() {
                       )}
                     </div>
 
+                    {/* Sección separada de ejercicios */}
                     <ExercisesSection
                       examenPreguntas={examenPreguntas.filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
                       onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
@@ -3653,6 +3662,7 @@ export default function MiEstudioPage() {
               )}
             </section>
           )}
+
 
         {stage === "finished" && (
           <div className="mi-estudio__finished">

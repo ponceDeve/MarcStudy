@@ -1,6 +1,47 @@
 import React, { useEffect, useRef, useState } from "react";
 import { buscarConPuntaje } from "../../lib/buscador";
 
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function ResaltarCoincidencia({ texto, query }) {
+  if (!query.trim()) {
+    return texto;
+  }
+
+  const textoOriginal = String(texto ?? "");
+  const busqueda = query.trim();
+
+  const textoNormalizado = normalizarTexto(textoOriginal);
+  const busquedaNormalizada = normalizarTexto(busqueda);
+
+  if (!busquedaNormalizada) {
+    return textoOriginal;
+  }
+
+  const indice = textoNormalizado.indexOf(busquedaNormalizada);
+
+  if (indice === -1) {
+    return textoOriginal;
+  }
+
+  const antes = textoOriginal.slice(0, indice);
+  const coincidencia = textoOriginal.slice(indice, indice + busqueda.length);
+  const despues = textoOriginal.slice(indice + busqueda.length);
+
+  return (
+    <>
+      {antes}
+      <span className="search-match">{coincidencia}</span>
+      {despues}
+    </>
+  );
+}
+
 export default function TopicsModal({
   open,
   onClose,
@@ -98,12 +139,13 @@ export default function TopicsModal({
 
   return (
     <div
-      className={`levels-modal levels-modal--topics ${open ? "" : "is-closed"}`}
+      className={`levels-modal ${open ? "" : "is-closed"}`}
+      style={{ zIndex: 1000 }}
       onClick={() => setActiveIndex(null)}
       onScroll={manejarScroll}
       aria-hidden={!open}
     >
-      <div className="levels-modal__inner levels-modal__inner--topics" onClick={(e) => e.stopPropagation()}>
+      <div className="levels-modal__inner" style={{ marginTop: 76 }} onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title levels-modal__title--live">
           {temaEnTitulo || `Temas de ${curso}`}
         </h2>
@@ -138,7 +180,7 @@ export default function TopicsModal({
                 >
                   <p>
                     <span className="home-search-result__num">#{index + 1}</span>
-                    {item.tema}
+                    <ResaltarCoincidencia texto={item.tema} query={busqueda} />
                   </p>
                 </button>
               ))}

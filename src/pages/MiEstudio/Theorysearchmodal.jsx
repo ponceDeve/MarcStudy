@@ -1,6 +1,47 @@
 import { useEffect, useRef, useState } from "react";
 import { buscarConPuntaje } from "../../lib/buscador";
 
+function normalizarTexto(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function ResaltarCoincidencia({ texto, query }) {
+  if (!query.trim()) {
+    return texto;
+  }
+
+  const textoOriginal = String(texto ?? "");
+  const busqueda = query.trim();
+
+  const textoNormalizado = normalizarTexto(textoOriginal);
+  const busquedaNormalizada = normalizarTexto(busqueda);
+
+  if (!busquedaNormalizada) {
+    return textoOriginal;
+  }
+
+  const indice = textoNormalizado.indexOf(busquedaNormalizada);
+
+  if (indice === -1) {
+    return textoOriginal;
+  }
+
+  const antes = textoOriginal.slice(0, indice);
+  const coincidencia = textoOriginal.slice(indice, indice + busqueda.length);
+  const despues = textoOriginal.slice(indice + busqueda.length);
+
+  return (
+    <>
+      {antes}
+      <span className="search-match">{coincidencia}</span>
+      {despues}
+    </>
+  );
+}
+
 // Busca dentro del texto de cada tarjeta de teoría del tema actual
 // (no las preguntas) y permite saltar directo a la que coincide.
 export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSelect }) {
@@ -37,7 +78,7 @@ export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSe
           />
         </div>
 
-        <div className="theory-search-modal__results">
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px", maxHeight: "50vh", overflowY: "auto" }}>
           {resultados.map(({ p, index }) => (
             <button
               key={index}
@@ -46,16 +87,27 @@ export default function TheorySearchModal({ open, onClose, flatPuntos = [], onSe
                 onClose();
                 setQuery("");
               }}
-              className="theory-search-modal__item"
+              style={{
+                textAlign: "left",
+                padding: "10px 12px",
+                borderRadius: "var(--radius-sm)",
+                border: "1px solid var(--border-strong)",
+                background: "var(--surface-alt)",
+                color: "var(--ink)",
+              }}
             >
               {p.seccionTitulo && (
-                <p className="theory-search-modal__item-heading">{p.seccionTitulo}</p>
+                <p style={{ margin: "0 0 2px", fontSize: "12.5px", color: "var(--ink-faint)" }}>
+                  <ResaltarCoincidencia texto={p.seccionTitulo} query={query} />
+                </p>
               )}
-              <p className="theory-search-modal__item-text">{p.texto}</p>
+              <p style={{ margin: 0 }}>
+                <ResaltarCoincidencia texto={p.texto} query={query} />
+              </p>
             </button>
           ))}
           {resultados.length === 0 && (
-            <p className="theory-search-modal__empty">Ningún resultado para "{query}".</p>
+            <p style={{ color: "var(--ink-soft)" }}>Ningún resultado para "{query}".</p>
           )}
         </div>
 
