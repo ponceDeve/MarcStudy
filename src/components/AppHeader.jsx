@@ -215,7 +215,7 @@ export default function AppHeader({
       <div className="topbar container" ref={headerRef}>
         <div className="topbar__inner">
 
-          <Link to="/" className="topbar__title-btn" title="Mi Estudio">
+          <Link to="/" className="topbar__title-btn btn__inicio" title="Mi Estudio">
             <img
               src={`${import.meta.env.BASE_URL}icon.png`}
               alt="Mi Estudio"

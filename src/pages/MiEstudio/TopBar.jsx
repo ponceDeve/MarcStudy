@@ -155,6 +155,7 @@ export default function TopBar({
                 <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
                   {tema}
                 </span>
+                <i class="bi bi-chevron-down"></i>
               </div>
               <span className="topbar__curso topbar__curso--clickable">{curso}</span>
             </button>
