@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Cada paso del tutorial: ícono + título + texto corto.
 // El último paso ("nombre") es especial: en vez de ícono, pide el nombre.
@@ -72,6 +72,23 @@ export default function WelcomeModal({ open, onSubmit }) {
     setPaso((p) => Math.max(p - 1, 0));
   }
 
+  useEffect(() => {
+    if (!open) return;
+
+    function onKeyDown(e) {
+      const enInput = ["INPUT", "TEXTAREA"].includes(
+        e.target.tagName
+      );
+      if (enInput) return;
+
+      if (e.key === "ArrowRight") siguiente();
+      if (e.key === "ArrowLeft") anterior();
+    }
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  });
+
   return (
     <div className={`welcome-overlay welcome-overlay--dark ${open ? "" : "is-closed"}`} aria-hidden={!open}>
       <div className="welcome-card">
@@ -90,13 +107,13 @@ export default function WelcomeModal({ open, onSubmit }) {
             <p className="welcome-texto">Lo usamos para saludarte y en tus resultados.</p>
             <input
               type="text"
-              name="name"
+              name="apodo-usuario"
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="characters"
               spellCheck={false}
               autoFocus
-              maxLength={30}
+              maxLength={16}
               value={nombre}
               onChange={(e) => {
                 const valor = e.target.value
