@@ -6,7 +6,13 @@ import { useArrowKeyList } from "../hooks/useArrowKeyList";
 
 import { useSearchHistory } from "../hooks/useSearchHistory";
 
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
 import { buscarConPuntaje } from "../lib/buscador";
+
+import { franjaHoraria } from "../lib/saludo";
+
+import EditarNombreModal from "./EditarNombreModal";
 
 const HISTORIAL_POR_PAGINA = 5;
 
@@ -188,6 +194,12 @@ export default function SearchModal({
     useState(1);
 
   const [inputFocused, setInputFocused] =
+    useState(false);
+
+  const [nombreUsuario, setNombreUsuario] =
+    useLocalStorage("miEstudio_nombreUsuario", null);
+
+  const [editarNombreAbierto, setEditarNombreAbierto] =
     useState(false);
 
   const inputRef = useRef(null);
@@ -395,6 +407,22 @@ export default function SearchModal({
       aria-hidden={!open}
     >
       <div className="search-box">
+
+        {/* ==================================================
+            SALUDO (portada, antes de escribir)
+            ================================================== */}
+
+        {!hayQuery && (
+          <p className="search-saludo">
+            {franjaHoraria()}
+            {nombreUsuario && ", "}
+            {nombreUsuario && (
+              <span className="search-saludo__nombre">
+                {nombreUsuario}
+              </span>
+            )}
+          </p>
+        )}
 
         {/* ==================================================
             INPUT
@@ -735,6 +763,16 @@ export default function SearchModal({
             </div>
           )}
       </div>
+
+      <EditarNombreModal
+        open={editarNombreAbierto}
+        nombreActual={nombreUsuario}
+        onGuardar={(n) => {
+          setNombreUsuario(n);
+          setEditarNombreAbierto(false);
+        }}
+        onCancelar={() => setEditarNombreAbierto(false)}
+      />
     </div>
   );
 }

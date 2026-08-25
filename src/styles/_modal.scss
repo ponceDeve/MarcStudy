@@ -400,3 +400,32 @@
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* ============================================================
+   EditarNombreModal.jsx (variante oscura del welcome-card)
+   ============================================================ */
+
+.editar-nombre-card {
+  background: var(--ink);
+  border-color: var(--border-strong);
+}
+
+.editar-nombre-card .welcome-titulo {
+  color: var(--ink-on-primary);
+}
+
+.editar-nombre-card .welcome-texto {
+  color: var(--ink-on-primary);
+  opacity: 0.7;
+}
+
+.editar-nombre-card .welcome-input {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-strong);
+  color: var(--ink-on-primary);
+}
+
+.editar-nombre-card .welcome-btn.is-back {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-on-primary);
+}

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
+import EditarNombreModal from "./EditarNombreModal";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -41,7 +42,8 @@ export default function AppHeader({
   showHome = false,
   onEditarHorario = null,
 }) {
-  const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const [editarNombreAbierto, setEditarNombreAbierto] = useState(false);
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
@@ -215,17 +217,30 @@ export default function AppHeader({
       <div className="topbar container" ref={headerRef}>
         <div className="topbar__inner">
 
-          <Link to="/" className="topbar__title-btn btn__inicio" title="Mi Estudio">
-            <img
-              src={`${import.meta.env.BASE_URL}icon.png`}
-              alt="Mi Estudio"
-              className="topbar__logo"
-            />
+          <div className="topbar__title-btn btn__inicio">
+            <Link to="/" title="Mi Estudio">
+              <img
+                src={`${import.meta.env.BASE_URL}icon.png`}
+                alt="Mi Estudio"
+                className="topbar__logo"
+              />
+            </Link>
 
-            <span className="topbar__curso topbar__curso--clickable">
-              {nombreUsuario || "Mi Estudio"}
-            </span>
-          </Link>
+            {nombreUsuario ? (
+              <button
+                type="button"
+                className="topbar__curso topbar__curso--clickable"
+                onClick={() => setEditarNombreAbierto(true)}
+                title="Editar nombre"
+              >
+                {nombreUsuario}
+              </button>
+            ) : (
+              <Link to="/" className="topbar__curso topbar__curso--clickable">
+                Mi Estudio
+              </Link>
+            )}
+          </div>
 
           <div className="topbar__controls">
 
@@ -256,6 +271,16 @@ export default function AppHeader({
           )}
         </SideDrawer>
       </div>
+
+      <EditarNombreModal
+        open={editarNombreAbierto}
+        nombreActual={nombreUsuario}
+        onGuardar={(n) => {
+          setNombreUsuario(n);
+          setEditarNombreAbierto(false);
+        }}
+        onCancelar={() => setEditarNombreAbierto(false)}
+      />
     </div>
   );
 }

@@ -26,6 +26,7 @@ import TopicsModal from "./TopicsModal";
 import TheorySearchBar from "./TheorySearchBar";
 import ExercisesSection from "./ExercisesSection";
 import CongratulationsAlert from "../../components/CongratulationsAlert";
+import EditarNombreModal from "../../components/EditarNombreModal";
 import {
   leerPomodoroCompartido,
   guardarRetorno,
@@ -529,6 +530,9 @@ export default function MiEstudioPage() {
       "miEstudio_nombreUsuario",
       null
     );
+
+  const [editarNombreAbierto, setEditarNombreAbierto] =
+    useState(false);
 
   const [preguntaModoAbierta, setPreguntaModoAbierta] =
     useState(false);
@@ -2508,6 +2512,16 @@ export default function MiEstudioPage() {
         }
       />
 
+      <EditarNombreModal
+        open={editarNombreAbierto}
+        nombreActual={nombreUsuario}
+        onGuardar={(n) => {
+          setNombreUsuario(n);
+          setEditarNombreAbierto(false);
+        }}
+        onCancelar={() => setEditarNombreAbierto(false)}
+      />
+
       <ModoEstudioModal
         open={preguntaModoAbierta}
         onElegir={elegirModoEstudio}
@@ -2924,9 +2938,13 @@ export default function MiEstudioPage() {
                   <h1 className="mi-estudio__intro-title">
                     Hora de repasar
                     {nombreUsuario && (
-                      <span className="mi-estudio__intro-highlight">
+                      <button
+                        type="button"
+                        className="mi-estudio__intro-highlight mi-estudio__intro-highlight--btn"
+                        onClick={() => setEditarNombreAbierto(true)}
+                      >
                         {nombreUsuario}
-                      </span>
+                      </button>
                     )}
                   </h1>
 

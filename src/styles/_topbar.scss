@@ -105,7 +105,7 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__title-btn:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background: var(--success-bg);
+  background: var(--brand-bg);
 }
 
 .topbar__title-btn:active {
@@ -195,6 +195,12 @@ align-items: center;
 
 .topbar__curso--clickable {
   cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
 }
 
 /* ============================================================
@@ -239,7 +245,7 @@ align-items: center;
 
 .topbar__nav-btn:hover {
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background: var(--success-bg);
+  background: var(--brand-bg);
 }
 
 .topbar__nav-btn.is-active {
