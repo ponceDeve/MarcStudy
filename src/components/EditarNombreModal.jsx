@@ -30,11 +30,12 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
 
         <input
           type="text"
-          name="name"
+          name="playerName"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="characters"
           spellCheck={false}
+          inputMode="text"
           autoFocus
           maxLength={16}
           value={nombre}
@@ -42,6 +43,7 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
             const valor = e.target.value
               .replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, "")
               .toUpperCase();
+
             setNombre(valor);
           }}
           onKeyDown={(e) => {
@@ -50,6 +52,7 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
           placeholder="TU NOMBRE..."
           className="welcome-input"
         />
+
 
         <div className="welcome-nav">
           <button className="welcome-btn is-back" onClick={onCancelar}>
