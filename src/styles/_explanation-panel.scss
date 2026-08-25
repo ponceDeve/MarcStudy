@@ -40,11 +40,20 @@
 .explanation-panel__text {
   border-top: 1px solid var(--border);
   padding-top: 10px;
-  font-size: clamp(14px, 2vw, 18px);
+  font-size: 18px;
 }
 .explanation-panel__text i {
   color: var(--danger);
   font-size: 20px !important;
+}
+.explanation-panel__text--rendirse {
+  border-top: none;
+  padding-top: 0;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--danger);
+  border-bottom: 1px solid var(--border);
 }
 .explanation-panel__actions {
   margin-top: 14px;

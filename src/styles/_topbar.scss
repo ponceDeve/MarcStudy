@@ -56,7 +56,7 @@ body.is-header-oculto .topbar-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
-
+  align-items: center!important;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -86,7 +86,6 @@ body.is-header-oculto .topbar-wrapper {
   max-width: 100%;
   height: 100%;
   display: flex;
-  padding: 6px 10px;
   background: transparent;
   border: none;
   border-radius: 6px;
@@ -97,10 +96,8 @@ body.is-header-oculto .topbar-wrapper {
   overflow: hidden;
   text-decoration: none;
   font-family: var(--font-body);
-  font-weight: 900;
-  gap: 6px;
+  font-weight: 700;
 
-  transition: all .2 linear!important;
 }
 
 .topbar__title-btn:hover {
@@ -181,7 +178,6 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__curso {
   max-width: 100%;
-  font-size: 13.5px;
   color: var(--ink-soft);
   white-space: nowrap;
   overflow: hidden;
@@ -201,6 +197,7 @@ align-items: center;
   font: inherit;
   text-align: left;
   text-decoration: none;
+  font-size: 15px;
 }
 
 /* ============================================================
@@ -440,10 +437,6 @@ align-items: center;
 
   .topbar__tema {
     font-size: 16px;
-  }
-
-  .topbar__curso {
-    font-size: 14px;
   }
 
   .topbar__nav {

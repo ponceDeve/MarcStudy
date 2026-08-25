@@ -1,34 +1,80 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LatexText from "../../components/LatexText";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
+import RendirseModal from "../../components/RendirseModal";
 
-const mensajesIncorrectos = [
-  <>
-    <i className="bi bi-lightbulb-off"></i>{" "}
-    Uy, qué sabio… tu respuesta fue digna de un manual de errores.{" "}
-    <i className="bi bi-emoji-smirk-fill"></i>
-  </>,
-  <>
-    <i className="bi bi-emoji-dizzy-fill"></i>{" "}
-    ¿Segundo intento y todavía nada? Anda, piensa un poquito.{" "}
-    <i className="bi bi-emoji-laughing-fill"></i>
-  </>,
-  <>
-    <i className="bi bi-emoji-dizzy-fill"></i>{" "}
-    Tres intentos y seguimos igual… esto ya se está poniendo preocupante.{" "}
-    <i className="bi bi-emoji-laughing-fill"></i>
-  </>,
-  <>
-    <i className="bi bi-emoji-dizzy-fill"></i>{" "}
-    Ya van cuatro. La respuesta está ahí mismo y tú haciendo turismo.{" "}
-    <i className="bi bi-emoji-laughing-fill"></i>
-  </>,
-  <>
-    <i className="bi bi-emoji-dizzy-fill"></i>{" "}
-    Hermano, la pregunta ya te conoce mejor que tú a ella.{" "}
-    <i className="bi bi-emoji-laughing-fill"></i>
-  </>,
-];
+const mensajesIncorrectos = {
+  5: [
+    <>
+      <i className="bi bi-lightbulb-off"></i>{" "}
+      Uy, qué sabio… tu respuesta fue digna de un manual de errores.{" "}
+      <i className="bi bi-emoji-smirk-fill"></i>
+    </>,
+  ],
+  4: [
+    <>
+      <i className="bi bi-emoji-dizzy-fill"></i>{" "}
+      Dos veces y nada… ¿seguro que estudiaste?{" "}
+      <i className="bi bi-emoji-laughing-fill"></i>
+    </>,
+  ],
+  3: [
+    <>
+      <i className="bi bi-emoji-dizzy-fill"></i>{" "}
+      Tres intentos y seguimos igual… esto ya se está poniendo preocupante.{" "}
+      <i className="bi bi-emoji-laughing-fill"></i>
+    </>,
+  ],
+  2: [
+    <>
+      <i className="bi bi-emoji-dizzy-fill"></i>{" "}
+      Ya van cuatro. La respuesta está ahí mismo y tú haciendo turismo.{" "}
+      <i className="bi bi-emoji-laughing-fill"></i>
+    </>,
+  ],
+  1: [
+    <>
+      <i className="bi bi-emoji-dizzy-fill"></i>{" "}
+      Hermano, la pregunta ya te conoce mejor que tú a ella.{" "}
+      <i className="bi bi-emoji-laughing-fill"></i>
+    </>,
+  ],
+  0: [
+    <>
+      <i className="bi bi-emoji-dizzy-fill"></i>{" "}
+      Ya perdió toda esperanza, pero aquí va el último intento.{" "}
+      <i className="bi bi-emoji-laughing-fill"></i>
+    </>,
+  ],
+};
+
+// Mensajes cuando se rinde según vidas restantes
+const mensajesRendirse = {
+  5: {
+    titulo: "¿Ya te quieres rendir?",
+    explicacion: "Recién estamos empezando, aquí está la respuesta:"
+  },
+  4: {
+    titulo: "Quedan cuatro vidas",
+    explicacion: "Aún tienes chances, pero léelo bien:"
+  },
+  3: {
+    titulo: "Quedan tres vidas",
+    explicacion: "La presión sube, concentración a esto:"
+  },
+  2: {
+    titulo: "Quedan dos vidas",
+    explicacion: "Esto se pone difícil, aprende esto:"
+  },
+  1: {
+    titulo: "Última vida",
+    explicacion: "Esta es tu última oportunidad, pón atención:"
+  },
+  0: {
+    titulo: "Se acabó",
+    explicacion: "Al menos aprende esto para la próxima:"
+  }
+};
 
 export default function ExplanationPanel({
   pregunta,
@@ -38,7 +84,20 @@ export default function ExplanationPanel({
   intentos = 0,
   rendido = false,
   onRendirse,
+  vidas = 5,
+  vidasActuales,
+  corazones,
+  lives,
 }) {
+  const [mostrarModalRendirse, setMostrarModalRendirse] = useState(false);
+  
+  const cantVidas = corazones ?? lives ?? vidas ?? 5;
+  const cantVidasActuales = vidasActuales ?? cantVidas;
+
+  const infoRendirse = rendido 
+    ? mensajesRendirse[cantVidas] || mensajesRendirse[5]
+    : null;
+
   useEffect(() => {
     if (!("speechSynthesis" in window)) {
       return;
@@ -51,7 +110,7 @@ export default function ExplanationPanel({
     if (isCorrect) {
       base = `Correcto. ${pregunta.explicacion}`;
     } else if (rendido) {
-      base = pregunta.explicacion;
+      base = `${infoRendirse?.explicacion} ${pregunta.explicacion}`;
     } else {
       base = "Incorrecto. Inténtalo de nuevo.";
     }
@@ -75,17 +134,13 @@ export default function ExplanationPanel({
       clearTimeout(timeoutId);
       window.speechSynthesis.cancel();
     };
-  }, [pregunta, isCorrect, rendido]);
+  }, [pregunta, isCorrect, rendido, infoRendirse]);
 
   const intentosActuales = Math.max(intentos, 1);
 
-  const indiceMensajeIncorrecto = Math.min(
-    intentosActuales - 1,
-    mensajesIncorrectos.length - 1
-  );
-
   const mensajeIncorrecto =
-    mensajesIncorrectos[indiceMensajeIncorrecto];
+    mensajesIncorrectos[cantVidas]?.[0] ||
+    mensajesIncorrectos[5]?.[0];
 
   return (
     <div
@@ -108,7 +163,9 @@ export default function ExplanationPanel({
         />
         {isCorrect
           ? "¡Respuesta correcta!"
-          : "Respuesta incorrecta"}
+          : rendido
+            ? infoRendirse?.titulo || "Respuesta incorrecta"
+            : "Respuesta incorrecta"}
       </h4>
 
       {isCorrect ? (
@@ -116,9 +173,16 @@ export default function ExplanationPanel({
           <LatexText>{pregunta.explicacion}</LatexText>
         </div>
       ) : rendido ? (
-        <div className="explanation-panel__text">
-          <LatexText>{pregunta.explicacion}</LatexText>
-        </div>
+        <>
+          {infoRendirse && (
+            <p className="explanation-panel__text explanation-panel__text--rendirse">
+              {infoRendirse.explicacion}
+            </p>
+          )}
+          <div className="explanation-panel__text">
+            <LatexText>{pregunta.explicacion}</LatexText>
+          </div>
+        </>
       ) : (
         <p className="explanation-panel__text">
           {mensajeIncorrecto}
@@ -142,10 +206,12 @@ export default function ExplanationPanel({
               Repetir <i className="fas fa-rotate-left" />
             </button>
 
-            {!rendido && (
+            {!rendido && cantVidasActuales > 1 && (
               <button
                 type="button"
-                onClick={onRendirse}
+                onClick={() =>
+                  setMostrarModalRendirse(true)
+                }
                 className="explanation-panel__btn is-neutral"
               >
                 Rendirse <i className="fas fa-flag" />
@@ -154,6 +220,18 @@ export default function ExplanationPanel({
           </>
         )}
       </div>
+
+      <RendirseModal
+        abierto={mostrarModalRendirse}
+        vidas={cantVidasActuales}
+        onContinuar={() =>
+          setMostrarModalRendirse(false)
+        }
+        onRendirse={() => {
+          setMostrarModalRendirse(false);
+          onRendirse?.();
+        }}
+      />
     </div>
   );
 }

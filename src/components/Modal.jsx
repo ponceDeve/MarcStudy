@@ -1,4 +1,4 @@
-export default function Modal({ open, onClose, children, wide = false }) {
+export default function Modal({ open, onClose, children, wide = false, plain = false }) {
   return (
     <div
       className={`modal-backdrop ${open ? "" : "is-closed"}`}
@@ -6,7 +6,7 @@ export default function Modal({ open, onClose, children, wide = false }) {
         if (e.target === e.currentTarget && onClose) onClose();
       }}
     >
-      <div className={`modal-box ${wide ? "modal-wide" : ""}`}>{children}</div>
+      <div className={`modal-box ${wide ? "modal-wide" : ""} ${plain ? "modal-box--plain" : ""}`}>{children}</div>
     </div>
   );
 }

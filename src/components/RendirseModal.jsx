@@ -1,15 +1,18 @@
 import React from "react";
 
 const mensajesRendirse = {
-  3: "¿Tan difícil era? Primer intento y ya te caíste…",
-  2: "Dos veces y nada… ¿seguro que estudiaste?",
-  1: "Tercer intento y sigues patinando. Ya parece deporte.",
-  0: "Ya perdí la cuenta… ¿vas a seguir o te rindes? ",
+  5: "¿Ya tiras la toalla? Si estás entero, no seas palta.",
+  4: "Cuatro vidas aún. No te achiques tan rápido.",
+  3: "Quedan tres vidas. La presión empieza a subir…",
+  2: "Dos vidas y sigues igual. Esto se pone difícil.",
+  1: "Una vida. Esta es tu última oportunidad.",
+  0: "Ya perdiste todas. Al menos aprendiste algo.",
+
 };
 
 export default function RendirseModal({
   abierto,
-  vidas = 3,
+  vidas = 5,
   corazones,
   lives,
   onContinuar,
@@ -17,8 +20,8 @@ export default function RendirseModal({
 }) {
   if (!abierto) return null;
 
-  // Usa cualquier prop de vidas que maneje tu app o 3 por defecto
-  const cantidadVidas = corazones ?? lives ?? vidas ?? 3;
+  // Usa cualquier prop de vidas que maneje tu app o 5 por defecto
+  const cantidadVidas = corazones ?? lives ?? vidas ?? 5;
 
   const mensaje =
     mensajesRendirse[cantidadVidas] ||

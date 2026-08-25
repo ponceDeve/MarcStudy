@@ -668,7 +668,7 @@ export default function QuestionCard({
       className="arcade-game-container question-card"
       style={{ position: "relative" }}
     >
-      <button
+      {cantVidas > 1 && <button
         type="button"
         onClick={() =>
           setMostrarModalRendirse(true)
@@ -688,7 +688,7 @@ export default function QuestionCard({
         }}
       >
         <i className="fas fa-flag" />
-      </button>
+      </button>}
 
       <div className="arcade-grid" />
 

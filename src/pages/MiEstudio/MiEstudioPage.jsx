@@ -363,6 +363,7 @@ export default function MiEstudioPage() {
     useState(false);
   const [textosSeleccionados, setTextosSeleccionados] = useState([]);
   const [mostrarCongratulations, setMostrarCongratulations] = useState(false);
+  const [mostrarAviso, setMostrarAviso] = useState(true);
 
   const { setFooterHidden } =
     useFooterVisibility();
@@ -398,7 +399,7 @@ export default function MiEstudioPage() {
 
     const delay =
       alertaVidas === "cero"
-        ? 4200
+        ? 2500
         : 3200;
 
     const t = setTimeout(() => {
@@ -1586,6 +1587,10 @@ export default function MiEstudioPage() {
       ]);
     }
 
+    if (!teoriaCompleta) {
+      return;
+    }
+
     setMostrarCongratulations(true);
 
     if (topicData) {
@@ -1723,9 +1728,28 @@ export default function MiEstudioPage() {
   }
 
   function rendirsePregunta() {
+    if (vidas <= 1) return;
+
     setQuestionResult({
       isCorrect: false,
-      rendido: true
+      rendido: true,
+      vidasEnEsteIntento: vidas
+    });
+
+    // Decrementar vidas cuando se rinde
+    setWrongCount((w) => w + 1);
+    setVidas((prevVidas) => {
+      const nuevasVidas = prevVidas - 1;
+
+      if (nuevasVidas === 3) {
+        setAlertaVidas("tres");
+      } else if (nuevasVidas === 1) {
+        setAlertaVidas("una");
+      } else if (nuevasVidas <= 0) {
+        setAlertaVidas("cero");
+      }
+
+      return nuevasVidas;
     });
   }
 
@@ -1733,7 +1757,8 @@ export default function MiEstudioPage() {
     correcto
   ) {
     setQuestionResult({
-      isCorrect: correcto
+      isCorrect: correcto,
+      vidasEnEsteIntento: vidas
     });
 
     let vistaKey = null;
@@ -2670,35 +2695,34 @@ export default function MiEstudioPage() {
       <Modal
         open={confirmAbandonarPregunta}
         onClose={cancelarAbandonarPregunta}
+        plain
       >
-        <div className="tema-modal-skull-icon">
-          <i className="fa-solid fa-skull" />
-        </div>
+        <div className="retirada-modal">
+          <h3 className="retirada-modal__title">
+            Regresar a la teoría
+          </h3>
 
-        <h3 className="tema-modal-title">
-          Confirmar. Eres un perdedor.
-        </h3>
+          <p className="retirada-modal__subtitle">
+            ¿Ya te rendiste, perdedor?
+          </p>
 
-        <p className="tema-modal-subtitle">
-          ¿Seguro que quieres abandonar esta pregunta y volver a la teoría?
-        </p>
+          <div className="retirada-modal__actions">
+            <button
+              type="button"
+              className="retirada-modal__btn is-cancel"
+              onClick={cancelarAbandonarPregunta}
+            >
+              Cancelar
+            </button>
 
-        <div className="tema-modal-actions">
-          <button
-            type="button"
-            className="btn-solid"
-            onClick={cancelarAbandonarPregunta}
-          >
-            Cancelar
-          </button>
-
-          <button
-            type="button"
-            className="btn-outline"
-            onClick={confirmarAbandonarPregunta}
-          >
-            Sí, volver a la teoría
-          </button>
+            <button
+              type="button"
+              className="retirada-modal__btn is-confirm"
+              onClick={confirmarAbandonarPregunta}
+            >
+              Regresar
+            </button>
+          </div>
         </div>
       </Modal>
 
@@ -3292,26 +3316,35 @@ export default function MiEstudioPage() {
                   </div>
 
                   <div className="teoria-articulo-web">
-                    <div className="teoria-aviso-uso">
-                      <i className="fa-solid fa-circle-info teoria-aviso-uso__icon" />
+                    {mostrarAviso && (
+                      <div className="teoria-aviso-uso">
+                        <button
+                          type="button"
+                          className="teoria-aviso-uso__icon"
+                          onClick={() => setMostrarAviso(false)}
+                          aria-label="Cerrar aviso"
+                        >
+                          <i className="fa-solid fa-xmark" />
+                        </button>
 
-                      <div className="teoria-aviso-uso__mensajes">
-                        <span>
-                          <i className="fa-solid fa-square-check" />
-                          Selecciona los textos para el examen.
-                        </span>
+                        <div className="teoria-aviso-uso__mensajes">
+                          <span>
+                            <i className="fa-solid fa-square-check" />
+                            Selecciona los textos para el examen.
+                          </span>
 
-                        <span>
-                          <i className="fa-solid fa-volume-high" />
-                          Selecciona los textos que leerá la bocina.
-                        </span>
+                          <span>
+                            <i className="fa-solid fa-volume-high" />
+                            Selecciona los textos que leerá la bocina.
+                          </span>
 
-                        <span>
-                          <i className="fa-solid fa-gamepad" />
-                          Presiona el botón para responder la pregunta del texto.
-                        </span>
+                          <span>
+                            <i className="fa-solid fa-gamepad" />
+                            Presiona el botón para responder la pregunta del texto.
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {topicData?.theory?.map((seccion, idxSeccion) => (
                       seccion.titulo === "Ejercicios" ? null :
@@ -3474,6 +3507,7 @@ export default function MiEstudioPage() {
                           onRendirse={
                             rendirsePregunta
                           }
+                          vidas={vidas}
                         />
                       </div>
                     )}
@@ -3576,9 +3610,16 @@ export default function MiEstudioPage() {
                       onReintentar={
                         reintentarPregunta
                       }
-                      rendidoInicial={
+                      rendido={
                         questionResult.rendido
                       }
+                      onRendirse={
+                        rendirsePregunta
+                      }
+                      vidas={
+                        questionResult.vidasEnEsteIntento ?? vidas
+                      }
+                      vidasActuales={vidas}
                     />
                   </div>
                 )}
