@@ -36,7 +36,7 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
           autoCapitalize="characters"
           spellCheck={false}
           autoFocus
-          maxLength={30}
+          maxLength={16}
           value={nombre}
           onChange={(e) => {
             const valor = e.target.value
