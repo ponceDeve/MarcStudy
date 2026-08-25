@@ -1,28 +1,28 @@
 /* ============================================================
    SearchModal.jsx + buscador inicial + buscador de niveles
    ============================================================ */
-.search-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  padding: 0 16px;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .25s ease, visibility 0s linear 0s;
 
-  &.is-closed {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity .25s ease, visibility 0s linear .25s;
+.search-overlay{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(4, 8, 12, 0.75);
+  backdrop-filter:blur(10px);
+  padding:0 16px;
+  opacity:1;
+  visibility:visible;
+  transition:opacity .25s ease,visibility 0s linear 0s;
+
+  &.is-closed{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility 0s linear .25s;
   }
 }
-
 
 .search-box{
   position:relative;
@@ -36,19 +36,12 @@
   font-size:clamp(20px, 5vw, 30px);
   font-weight:800;
   color:var(--ink-on-primary);
-  display:flex;
-  flex-direction: column;
 }
 
 .search-saludo__nombre{
-  background:none;
-  border:none;
-  padding:0;
-  font:inherit;
   font-weight:800;
   color:var(--primary);
-  cursor:pointer;
-  text-shadow: 0 0 3px #Fff;
+  text-shadow:0 0 12px var(--primary);
 }
 
 .search-input-row{

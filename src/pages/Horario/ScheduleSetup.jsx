@@ -125,13 +125,15 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
               {DIAS_SEMANA.map((dia) => (
                 <button
                   key={dia}
-                  className={`setup-dia-btn ${diasSeleccionados.includes(dia) ? "is-on btn-primary" : ""}`}
+                  className={`setup-dia-btn ${diasSeleccionados.includes(dia) ? "is-on" : ""
+                    }`}
                   onClick={() => toggleDia(dia)}
                 >
                   {DIA_LABELS[dia]}
                 </button>
               ))}
             </div>
+
             <div className="setup-nav">
               {onCancel && (
                 <button className="setup-btn is-ghost" onClick={onCancel}>

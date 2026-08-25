@@ -15,7 +15,7 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
 
   return (
     <div
-      className={`welcome-overlay ${open ? "" : "is-closed"}`}
+      className={`welcome-overlay editar-nombre-overlay ${open ? "" : "is-closed"}`}
       aria-hidden={!open}
       onClick={(e) => {
         if (e.target === e.currentTarget) onCancelar();
@@ -27,7 +27,6 @@ export default function EditarNombreModal({ open, nombreActual, onGuardar, onCan
         </div>
 
         <h2 className="welcome-titulo">Editar nombre</h2>
-        <p className="welcome-texto">Así te vamos a saludar de ahora en adelante.</p>
 
         <input
           type="text"

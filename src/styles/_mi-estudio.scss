@@ -90,7 +90,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  user-select: none;
   width: 100%;
   box-sizing: border-box;
 }
@@ -121,15 +121,6 @@
   animation:
     typing 3.5s steps(30, end) forwards,
     blink-caret 0.7s step-end infinite;
-}
-
-.mi-estudio__intro-highlight--btn {
-  background: none;
-  border: none;
-  border-right: 2px solid var(--primary);
-  padding: 0;
-  cursor: pointer;
-  font: inherit;
 }
 
 @keyframes typing {
