@@ -447,6 +447,60 @@
   margin-bottom: 18px;
 }
 
+/* Botón de foto: círculo con la foto o el ícono por defecto, más un
+   lapicito superpuesto que indica que se puede cambiar. */
+.editar-nombre-foto {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 10px;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+.editar-nombre-foto__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.editar-nombre-foto__lapiz {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  border: 2px solid var(--surface);
+}
+
+.editar-nombre-foto__quitar {
+  display: block;
+  margin: 0 auto 14px;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 /* ============================================================
    MODAL — RETIRADA (abandonar pregunta)
    Mismo estilo visual que .rendirse-modal (ver _explanation-panel.scss)

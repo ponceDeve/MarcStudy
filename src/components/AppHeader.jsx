@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
+import EditarNombreModal from "./EditarNombreModal";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -41,8 +42,10 @@ export default function AppHeader({
   showHome = false,
   onEditarHorario = null,
 }) {
-  const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const [fotoUsuario, setFotoUsuario] = useLocalStorage("miEstudio_fotoUsuario", null);
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+  const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
 
@@ -218,9 +221,9 @@ export default function AppHeader({
           <div className="topbar__title-btn btn__inicio">
             <Link to="/" title="Mi Estudio">
               <img
-                src={`${import.meta.env.BASE_URL}icon.png`}
+                src={fotoUsuario || `${import.meta.env.BASE_URL}icon.png`}
                 alt="Mi Estudio"
-                className="topbar__logo"
+                className={`topbar__logo${fotoUsuario ? " topbar__logo--foto" : ""}`}
               />
             </Link>
 
@@ -240,6 +243,17 @@ export default function AppHeader({
             <div className="topbar__nav">
               {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
             </div>
+
+            {nombreUsuario && (
+              <button
+                type="button"
+                onClick={() => setEditarPerfilAbierto(true)}
+                title="Editar perfil"
+                className="topbar__control-btn topbar__perfil-btn"
+              >
+                <i className="fa-solid fa-user" />
+              </button>
+            )}
 
             <button
               type="button"
@@ -264,6 +278,18 @@ export default function AppHeader({
           )}
         </SideDrawer>
       </div>
+
+      <EditarNombreModal
+        open={editarPerfilAbierto}
+        nombreActual={nombreUsuario}
+        fotoActual={fotoUsuario}
+        onGuardar={(n, f) => {
+          setNombreUsuario(n);
+          setFotoUsuario(f);
+          setEditarPerfilAbierto(false);
+        }}
+        onCancelar={() => setEditarPerfilAbierto(false)}
+      />
     </div>
   );
 }

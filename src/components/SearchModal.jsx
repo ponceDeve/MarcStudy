@@ -198,6 +198,8 @@ export default function SearchModal({
 
   const [nombreUsuario, setNombreUsuario] =
     useLocalStorage("miEstudio_nombreUsuario", null);
+  const [fotoUsuario, setFotoUsuario] =
+    useLocalStorage("miEstudio_fotoUsuario", null);
 
   const [editarNombreAbierto, setEditarNombreAbierto] =
     useState(false);
@@ -767,8 +769,10 @@ export default function SearchModal({
       <EditarNombreModal
         open={editarNombreAbierto}
         nombreActual={nombreUsuario}
-        onGuardar={(n) => {
+        fotoActual={fotoUsuario}
+        onGuardar={(n, f) => {
           setNombreUsuario(n);
+          setFotoUsuario(f);
           setEditarNombreAbierto(false);
         }}
         onCancelar={() => setEditarNombreAbierto(false)}

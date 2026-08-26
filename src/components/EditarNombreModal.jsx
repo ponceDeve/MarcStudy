@@ -1,26 +1,82 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { comprimirFotoUsuario } from "../utils/imagen";
 
-export default function EditarNombreModal({ open, nombreActual = "", onGuardar, onCancelar }) {
+export default function EditarNombreModal({
+  open,
+  nombreActual = "",
+  fotoActual = null,
+  onGuardar,
+  onCancelar,
+}) {
   const [nombre, setNombre] = useState(nombreActual);
+  const [foto, setFoto] = useState(fotoActual);
+  const inputFotoRef = useRef(null);
 
   useEffect(() => {
-    if (open) setNombre(nombreActual);
-  }, [open, nombreActual]);
+    if (open) {
+      setNombre(nombreActual);
+      setFoto(fotoActual);
+    }
+  }, [open, nombreActual, fotoActual]);
 
   if (!open) return null;
 
   function guardar() {
     const limpio = nombre.trim();
     if (!limpio) return;
-    onGuardar(limpio);
+    onGuardar(limpio, foto);
+  }
+
+  async function elegirFoto(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    try {
+      const comprimida = await comprimirFotoUsuario(file);
+      setFoto(comprimida);
+    } catch {
+      // Si falla la compresión (imagen corrupta, etc.), no se cambia la foto.
+    }
   }
 
   return (
     <div className="welcome-overlay editar-nombre-overlay">
       <div className="welcome-card editar-nombre-card">
-        <div className="welcome-icon-ring">
-          <i className="fa-solid fa-user" />
-        </div>
+        <button
+          type="button"
+          className="editar-nombre-foto"
+          onClick={() => inputFotoRef.current?.click()}
+          title="Cambiar foto"
+        >
+          {foto ? (
+            <img src={foto} alt="Tu foto" className="editar-nombre-foto__img" />
+          ) : (
+            <i className="fa-solid fa-user" />
+          )}
+          <span className="editar-nombre-foto__lapiz">
+            <i className="fa-solid fa-pen" />
+          </span>
+        </button>
+
+        <input
+          ref={inputFotoRef}
+          type="file"
+          accept="image/*"
+          onChange={elegirFoto}
+          style={{ display: "none" }}
+        />
+
+        {foto && (
+          <button
+            type="button"
+            className="editar-nombre-foto__quitar"
+            onClick={() => setFoto(null)}
+          >
+            Quitar foto
+          </button>
+        )}
+
         <h2 className="welcome-titulo">Editar nombre</h2>
         <input
           type="text"

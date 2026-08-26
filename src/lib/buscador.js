@@ -141,3 +141,111 @@ export function buscarConPuntaje(items, query, getTexto, { minScore = 0 } = {}) 
     .sort((a, b) => b.score - a.score)
     .map((r) => r.item);
 }
+
+// Igual que buscarConPuntaje pero devuelve también el puntaje, para
+// combinarlo con otros puntajes (ej. similitud semántica) antes de
+// ordenar. No reemplaza a buscarConPuntaje, se usa donde hace falta
+// el número además del item.
+export function puntajeDeTexto(texto, query) {
+  return puntajeMatch(normalizarTexto(texto), normalizarTexto(query));
+}
+
+/* ============================================================
+   FRAGMENTOS (SNIPPETS)
+   ============================================================
+   Para textos largos (ej. una explicación de varias líneas), en vez
+   de mostrarla completa en un resultado de búsqueda, se recorta un
+   pedazo corto alrededor de dónde está la coincidencia — igual que
+   hacen los buscadores comunes. */
+
+// Escapa caracteres especiales de regex.
+function escaparRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Variantes de vocales/ñ con o sin tilde, para poder buscar directo
+// sobre el texto ORIGINAL (con tildes) sin desalinear posiciones como
+// pasaría si buscáramos sobre una versión normalizada y aplicáramos
+// el índice al texto con tildes.
+const VARIANTES_ACENTO = {
+  a: "[aàáâãä]",
+  e: "[eèéêë]",
+  i: "[iìíîï]",
+  o: "[oòóôõö]",
+  u: "[uùúûü]",
+  n: "[nñ]",
+};
+
+function regexInsensible(fragmento) {
+  const escapado = escaparRegex(fragmento);
+  const patron = escapado.replace(/[aeioun]/gi, (c) => {
+    const base = c.toLowerCase();
+    return VARIANTES_ACENTO[base] || c;
+  });
+  try {
+    return new RegExp(patron, "i");
+  } catch {
+    return null;
+  }
+}
+
+// Busca dónde empieza la mejor coincidencia visual de "query" dentro de
+// "texto" (texto SIN normalizar, tal cual se va a mostrar). Devuelve el
+// índice de caracter, o null si no hay ninguna coincidencia literal
+// (esto pasa seguido con resultados puramente semánticos, donde el
+// texto no comparte palabras con la búsqueda).
+export function buscarPosicion(texto, query) {
+  const queryLimpia = String(query || "").trim();
+  if (!queryLimpia || !texto) return null;
+
+  const regexCompleta = regexInsensible(queryLimpia);
+  if (regexCompleta) {
+    const idx = texto.search(regexCompleta);
+    if (idx !== -1) return idx;
+  }
+
+  // No apareció la frase completa: probar palabra por palabra (evita
+  // recortes desde el inicio cuando en realidad sí hay una palabra
+  // clave presente en otro lugar del texto).
+  const palabras = queryLimpia.split(/\s+/).filter((p) => p.length >= 3);
+  for (const palabra of palabras) {
+    const regexPalabra = regexInsensible(palabra);
+    if (!regexPalabra) continue;
+    const idx = texto.search(regexPalabra);
+    if (idx !== -1) return idx;
+  }
+
+  return null;
+}
+
+// Recorta "texto" a un fragmento corto centrado en "indiceCaracter".
+// Si indiceCaracter es null (no hubo coincidencia literal, típico en
+// matches semánticos), recorta desde el inicio. Pone "..." solo del
+// lado donde de verdad se cortó texto.
+export function extraerFragmento(texto, indiceCaracter, { palabrasAntes = 4, palabrasDespues = 6 } = {}) {
+  const textoLimpio = String(texto || "").trim();
+  if (!textoLimpio) return "";
+
+  if (indiceCaracter == null || indiceCaracter < 0) {
+    const palabras = textoLimpio.split(/\s+/);
+    const tomadas = palabras.slice(0, palabrasAntes + palabrasDespues);
+    const huboCorte = tomadas.length < palabras.length;
+    return huboCorte ? `${tomadas.join(" ")}...` : tomadas.join(" ");
+  }
+
+  const antes = textoLimpio.slice(0, indiceCaracter);
+  const despues = textoLimpio.slice(indiceCaracter);
+
+  const palabrasAntesArr = antes.trim().split(/\s+/).filter(Boolean);
+  const palabrasDespuesArr = despues.trim().split(/\s+/).filter(Boolean);
+
+  const tomarAntes = palabrasAntesArr.slice(-palabrasAntes);
+  const tomarDespues = palabrasDespuesArr.slice(0, palabrasDespues);
+
+  const huboCorteAntes = palabrasAntesArr.length > tomarAntes.length;
+  const huboCorteDespues = palabrasDespuesArr.length > tomarDespues.length;
+
+  const fragmento = [...tomarAntes, ...tomarDespues].join(" ");
+
+  return `${huboCorteAntes ? "..." : ""}${fragmento}${huboCorteDespues ? "..." : ""}`;
+}

@@ -8,14 +8,14 @@
 // "significado" se usa para el tooltip (igual que antes) y para que
 // el lector de voz diga la palabra en vez de intentar leer el símbolo.
 export const SIMBOLOS_NOTACION = {
-  "=": "define",
+  "=": "igual",
   "→": "produce",
   "⊃": "contiene",
   "∈": "pertenece",
   "⇒": "causa",
   "✓": "requiere",
   "✗": "carece",
-  "+": "combina",
+  "+": "más",
   "↑": "aumenta",
   "↓": "disminuye",
   "≠": "diferente",

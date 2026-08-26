@@ -1190,11 +1190,44 @@ body.is-header-oculto .teoria-sticky-bar {
   background: var(--surface-hover);
 }
 
+.theory-search__item.is-focused {
+  background: var(--surface-hover);
+}
+
 .theory-search__item-seccion {
   display: block;
   font-size: 11px;
   color: var(--ink-faint);
   margin-bottom: 2px;
+}
+
+.theory-search__item-fragmento {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.theory-search__item-badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--ink-faint);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.theory-search__buscando {
+  margin: 0;
+  padding: 8px 14px;
+  color: var(--ink-faint);
+  font-size: 12px;
+  text-align: center;
 }
 
 .theory-search__empty {
