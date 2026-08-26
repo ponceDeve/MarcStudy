@@ -218,14 +218,6 @@ export default function AppHeader({
         <div className="topbar__inner">
 
           <div className="topbar__title-btn btn__inicio">
-            <Link to="/" title="Mi Estudio">
-              <img
-                src={`${import.meta.env.BASE_URL}icon.png`}
-                alt="Mi Estudio"
-                className="topbar__logo"
-              />
-            </Link>
-
             {nombreUsuario ? (
               <button
                 type="button"
@@ -237,7 +229,7 @@ export default function AppHeader({
               </button>
             ) : (
               <Link to="/" className="topbar__curso topbar__curso--clickable">
-                Mi Estudio
+                d
               </Link>
             )}
           </div>

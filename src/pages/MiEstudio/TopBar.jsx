@@ -11,9 +11,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -105,7 +104,7 @@ export default function TopBar({
   ];
 
   // Renderizadores de UI para la barra (usa 'label' corto)
-  const renderBoton = (b, cls, closeFn = () => {}) => {
+  const renderBoton = (b, cls, closeFn = () => { }) => {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
@@ -127,7 +126,7 @@ export default function TopBar({
 
 
   // Renderizador para las filas del panel móvil (usa 'fullLabel')
-  const renderFila = (b, closeFn = () => {}) => {
+  const renderFila = (b, closeFn = () => { }) => {
     const content = (
       <>
         <span className="topbar__drawer-item-label">{b.fullLabel || b.label}</span>
@@ -172,9 +171,14 @@ export default function TopBar({
           <div className="topbar__title-box">
             <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
               <div className="topbar__tema-wrapper" ref={wrapperRef}>
-                <span className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""}`}>
-                  {tema}
+                <span
+                  className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""
+                    }`}
+                >
+                  <span>{tema}</span>
+                  <span aria-hidden="true">{tema}</span>
                 </span>
+
                 <i className="bi bi-chevron-down"></i>
               </div>
               <span className="topbar__curso topbar__curso--clickable">{curso}</span>
