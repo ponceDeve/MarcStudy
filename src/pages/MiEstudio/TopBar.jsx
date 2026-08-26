@@ -11,17 +11,27 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
-          }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${
+          isOpen ? "show" : ""
+        }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
         <div className="offcanvas-header topbar__drawer-header">
-          <h3 className="offcanvas-title topbar__drawer-title">{title}</h3>
-          <button type="button" className="topbar__drawer-close" onClick={onClose} aria-label="Cerrar">
+          <h3 className="offcanvas-title topbar__drawer-title">
+            {title}
+          </h3>
+
+          <button
+            type="button"
+            className="topbar__drawer-close"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
             <i className="fa-solid fa-times" />
           </button>
         </div>
+
         <div className="offcanvas-body topbar__drawer-list">
           {children}
         </div>
@@ -32,83 +42,189 @@ function SideDrawer({ title, isOpen, onClose, children }) {
 }
 
 export default function TopBar({
-  tema, curso, stage,
-  onAbrirBuscador, onTogglePomodoroMini, onAbrirTemas,
-  onGuardarRepaso, isFullscreen, onToggleFullscreen,
-  onVerPreguntasVistas, onAbandonarPregunta, onReiniciarTarjetas,
-  onIrInicio, pdfVerUrl, pdfDescargaUrl
+  tema,
+  curso,
+  stage,
+  onAbrirBuscador,
+  onTogglePomodoroMini,
+  onAbrirTemas,
+  onGuardarRepaso,
+  isFullscreen,
+  onToggleFullscreen,
+  onVerPreguntasVistas,
+  onAbandonarPregunta,
+  onReiniciarTarjetas,
+  onIrInicio,
+  pdfVerUrl,
+  pdfDescargaUrl
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
 
-  // Auto-ocultar header al bajar / mostrar al subir.
-  // No se oculta con menús abiertos (evita que desaparezca mientras
-  // el usuario está usando el drawer/config).
   useAutoHideHeader(menuMobileOpen || configOpen);
 
-  // Detección de desbordamiento
   const wrapperRef = useRef(null);
+  const temaRef = useRef(null);
   const [temaOverflows, setTemaOverflows] = useState(false);
 
   useEffect(() => {
     const checkOverflow = () => {
-      if (!wrapperRef.current) return;
-      const { scrollWidth, clientWidth } = wrapperRef.current;
+      const wrapper = wrapperRef.current;
+      const temaElement = temaRef.current;
 
-      if (scrollWidth > clientWidth) {
-        setTemaOverflows(true);
-        wrapperRef.current.style.setProperty("--scroll-dist", `${scrollWidth - clientWidth + 20}px`);
-      } else {
+      if (!wrapper || !temaElement) return;
+
+      const firstText = temaElement.children[0];
+
+      if (!firstText) {
         setTemaOverflows(false);
-        wrapperRef.current.style.removeProperty("--scroll-dist");
+        return;
+      }
+
+      const wrapperWidth = wrapper.clientWidth;
+      const textWidth = firstText.scrollWidth;
+
+      const overflows = textWidth > wrapperWidth;
+
+      setTemaOverflows(overflows);
+
+      if (overflows) {
+        const scrollDistance = -(textWidth + 40);
+
+        wrapper.style.setProperty(
+          "--scroll-dist",
+          `${scrollDistance}px`
+        );
+      } else {
+        wrapper.style.removeProperty("--scroll-dist");
       }
     };
 
     checkOverflow();
+
+    const observer = new ResizeObserver(checkOverflow);
+
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current);
+    }
+
     window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", checkOverflow);
+    };
   }, [tema]);
 
-  // Configuración de botones
-  const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(curso)}&tema=${encodeURIComponent(tema)}`;
+  const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(
+    curso
+  )}&tema=${encodeURIComponent(tema)}`;
+
   const repasoTo = "/repaso";
 
-  // Botones ordenados de más a menos importante (izquierda -> derecha)
   const botonesPrincipales = [
-    { title: "Ir a Inicio", label: "Inicio", fullLabel: "Ir a Inicio", icon: "fa-solid fa-house", onClick: onIrInicio },
-    { title: "Buscar otro tema", label: "Buscar", fullLabel: "Buscar tema", icon: "fa-solid fa-magnifying-glass", onClick: onAbrirBuscador },
-    { title: "Guardar", label: "Guardar", fullLabel: "Guardar progreso", icon: "fa-solid fa-bookmark", onClick: onGuardarRepaso },
-    { title: "Ir a Mis Repasos", label: "Repaso", fullLabel: "Mis Repasos", icon: "fa-solid fa-brain", to: repasoTo },
-    { title: "Ir al Pomodoro", label: "Pomo", fullLabel: "Pomodoro", icon: "fa-solid fa-calendar-alt", to: pomodoroTo }
+    {
+      title: "Ir a Inicio",
+      label: "Inicio",
+      fullLabel: "Ir a Inicio",
+      icon: "fa-solid fa-house",
+      onClick: onIrInicio
+    },
+    {
+      title: "Buscar otro tema",
+      label: "Buscar",
+      fullLabel: "Buscar tema",
+      icon: "fa-solid fa-magnifying-glass",
+      onClick: onAbrirBuscador
+    },
+    {
+      title: "Guardar",
+      label: "Guardar",
+      fullLabel: "Guardar progreso",
+      icon: "fa-solid fa-bookmark",
+      onClick: onGuardarRepaso
+    },
+    {
+      title: "Ir a Mis Repasos",
+      label: "Repaso",
+      fullLabel: "Mis Repasos",
+      icon: "fa-solid fa-brain",
+      to: repasoTo
+    },
+    {
+      title: "Ir al Pomodoro",
+      label: "Pomo",
+      fullLabel: "Pomodoro",
+      icon: "fa-solid fa-calendar-alt",
+      to: pomodoroTo
+    }
   ];
 
-  const botonesVisibles = stage === "question" ? [] : botonesPrincipales;
+  const botonesVisibles =
+    stage === "question" ? [] : botonesPrincipales;
 
-  // Opciones de configuración, también ordenadas por importancia
   const configButtons = [
-    { icon: "fa-solid fa-clock", label: "Timer", fullLabel: "Mini cronómetro", onClick: onTogglePomodoroMini },
-    { icon: isFullscreen ? "fas fa-compress" : "fas fa-expand", label: isFullscreen ? "Minimizar" : "Pantalla", fullLabel: isFullscreen ? "Minimizar pantalla" : "Pantalla completa", onClick: onToggleFullscreen },
-    // PDF del tema: reemplazan a los antiguos botones "Ver preguntas
-    // vistas" y "Reiniciar tarjetas", que ya no están disponibles acá.
+    {
+      icon: "fa-solid fa-clock",
+      label: "Timer",
+      fullLabel: "Mini cronómetro",
+      onClick: onTogglePomodoroMini
+    },
+    {
+      icon: isFullscreen
+        ? "fas fa-compress"
+        : "fas fa-expand",
+      label: isFullscreen ? "Minimizar" : "Pantalla",
+      fullLabel: isFullscreen
+        ? "Minimizar pantalla"
+        : "Pantalla completa",
+      onClick: onToggleFullscreen
+    },
     ...(pdfVerUrl
-      ? [{ icon: "fas fa-file-pdf", label: "Ver PDF", fullLabel: "Ver PDF", href: pdfVerUrl, target: "_blank" }]
+      ? [
+          {
+            icon: "fas fa-file-pdf",
+            label: "Ver PDF",
+            fullLabel: "Ver PDF",
+            href: pdfVerUrl,
+            target: "_blank"
+          }
+        ]
       : []),
     ...(pdfDescargaUrl
-      ? [{ icon: "fas fa-download", label: "Descargar", fullLabel: "Descargar PDF", href: pdfDescargaUrl, download: true }]
+      ? [
+          {
+            icon: "fas fa-download",
+            label: "Descargar",
+            fullLabel: "Descargar PDF",
+            href: pdfDescargaUrl,
+            download: true
+          }
+        ]
       : []),
-    // "Abandonar" solo tiene sentido dentro de una pregunta: te devuelve
-    // a la teoría. En teoría no debe existir este botón.
     ...(stage === "question"
-      ? [{ icon: "fas fa-door-open", label: "Abandonar", fullLabel: "Abandonar pregunta", onClick: onAbandonarPregunta }]
+      ? [
+          {
+            icon: "fas fa-door-open",
+            label: "Abandonar",
+            fullLabel: "Abandonar pregunta",
+            onClick: onAbandonarPregunta
+          }
+        ]
       : [])
   ];
 
-  // Renderizadores de UI para la barra (usa 'label' corto)
-  const renderBoton = (b, cls, closeFn = () => { }) => {
+  const renderBoton = (
+    b,
+    cls,
+    closeFn = () => {}
+  ) => {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
-        <span className="topbar__btn-title">{b.label}</span>
+        <span className="topbar__btn-title">
+          {b.label}
+        </span>
       </>
     );
 
@@ -118,19 +234,41 @@ export default function TopBar({
     };
 
     return b.to ? (
-      <Link key={b.title} to={b.to} title={b.title} className={cls} onClick={closeFn}>{content}</Link>
+      <Link
+        key={b.title}
+        to={b.to}
+        title={b.title}
+        className={cls}
+        onClick={closeFn}
+      >
+        {content}
+      </Link>
     ) : (
-      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className={cls}>{content}</button>
+      <button
+        key={b.title || b.label}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className={cls}
+      >
+        {content}
+      </button>
     );
   };
 
-
-  // Renderizador para las filas del panel móvil (usa 'fullLabel')
-  const renderFila = (b, closeFn = () => { }) => {
+  const renderFila = (
+    b,
+    closeFn = () => {}
+  ) => {
     const content = (
       <>
-        <span className="topbar__drawer-item-label">{b.fullLabel || b.label}</span>
-        <i className={`${b.icon} topbar__drawer-item-icon`} />
+        <span className="topbar__drawer-item-label">
+          {b.fullLabel || b.label}
+        </span>
+
+        <i
+          className={`${b.icon} topbar__drawer-item-icon`}
+        />
       </>
     );
 
@@ -146,7 +284,11 @@ export default function TopBar({
           href={b.href}
           download={b.download || undefined}
           target={b.target}
-          rel={b.target ? "noopener noreferrer" : undefined}
+          rel={
+            b.target
+              ? "noopener noreferrer"
+              : undefined
+          }
           title={b.title}
           className="topbar__drawer-item"
           onClick={closeFn}
@@ -157,9 +299,25 @@ export default function TopBar({
     }
 
     return b.to ? (
-      <Link key={b.title} to={b.to} title={b.title} className="topbar__drawer-item" onClick={closeFn}>{content}</Link>
+      <Link
+        key={b.title}
+        to={b.to}
+        title={b.title}
+        className="topbar__drawer-item"
+        onClick={closeFn}
+      >
+        {content}
+      </Link>
     ) : (
-      <button key={b.title || b.label} type="button" onClick={handleClick} title={b.title} className="topbar__drawer-item">{content}</button>
+      <button
+        key={b.title || b.label}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className="topbar__drawer-item"
+      >
+        {content}
+      </button>
     );
   };
 
@@ -167,54 +325,107 @@ export default function TopBar({
     <div className="topbar-wrapper">
       <div className="topbar">
         <div className="topbar__inner">
-          {/* CAJA 1: TEMA + CURSO */}
           <div className="topbar__title-box">
-            <button type="button" className="topbar__title-btn" onClick={onAbrirTemas} title="Ver mapa de temas de este curso">
-              <div className="topbar__tema-wrapper" ref={wrapperRef}>
+            <button
+              type="button"
+              className="topbar__title-btn"
+              onClick={onAbrirTemas}
+              title="Ver mapa de temas de este curso"
+            >
+              <div
+                className="topbar__tema-wrapper"
+                ref={wrapperRef}
+              >
                 <span
-                  className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""
-                    }`}
+                  ref={temaRef}
+                  className={`topbar__tema ${
+                    temaOverflows
+                      ? "topbar__tema--marquee"
+                      : ""
+                  }`}
                 >
                   <span>{tema}</span>
-                  <span aria-hidden="true">{tema}</span>
+
+                  {temaOverflows && (
+                    <span aria-hidden="true">
+                      {tema}
+                    </span>
+                  )}
                 </span>
 
-                <i className="bi bi-chevron-down"></i>
+                <i className="bi bi-chevron-down" />
               </div>
-              <span className="topbar__curso topbar__curso--clickable">{curso}</span>
+
+              <span className="topbar__curso topbar__curso--clickable">
+                {curso}
+              </span>
             </button>
           </div>
 
-          {/* CAJA 2 + 3: NAVEGACIÓN Y CONTROLES */}
           <div className="topbar__controls">
             {botonesVisibles.length > 0 && (
               <div className="topbar__nav">
-                {botonesVisibles.map((b) => renderBoton(b, "topbar__nav-btn"))}
+                {botonesVisibles.map((b) =>
+                  renderBoton(
+                    b,
+                    "topbar__nav-btn"
+                  )
+                )}
               </div>
             )}
 
-            <button type="button" onClick={() => setConfigOpen(true)} title="Configuración" className="topbar__gear">
+            <button
+              type="button"
+              onClick={() => setConfigOpen(true)}
+              title="Configuración"
+              className="topbar__gear"
+            >
               <i className="fa-solid fa-gear" />
             </button>
 
             {botonesVisibles.length > 0 && (
-              <button type="button" onClick={() => setMenuMobileOpen(true)} title="Menú" className="topbar__control-btn topbar__control-btn--menu topbar__hamburger">
+              <button
+                type="button"
+                onClick={() =>
+                  setMenuMobileOpen(true)
+                }
+                title="Menú"
+                className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+              >
                 <i className="fa-solid fa-bars" />
               </button>
             )}
           </div>
         </div>
 
-        {/* PANEL DEL MENÚ MÓVIL */}
         {botonesVisibles.length > 0 && (
-          <SideDrawer title="Menú" isOpen={menuMobileOpen} onClose={() => setMenuMobileOpen(false)}>
-            {botonesVisibles.map((b) => renderFila(b, () => setMenuMobileOpen(false)))}
+          <SideDrawer
+            title="Menú"
+            isOpen={menuMobileOpen}
+            onClose={() =>
+              setMenuMobileOpen(false)
+            }
+          >
+            {botonesVisibles.map((b) =>
+              renderFila(
+                b,
+                () => setMenuMobileOpen(false)
+              )
+            )}
           </SideDrawer>
         )}
 
-        {/* PANEL DE CONFIGURACIÓN */}
-        <SideDrawer title="Configuración" isOpen={configOpen} onClose={() => setConfigOpen(false)}>
-          {configButtons.map((b) => renderFila(b, () => setConfigOpen(false)))}
+        <SideDrawer
+          title="Configuración"
+          isOpen={configOpen}
+          onClose={() => setConfigOpen(false)}
+        >
+          {configButtons.map((b) =>
+            renderFila(
+              b,
+              () => setConfigOpen(false)
+            )
+          )}
         </SideDrawer>
       </div>
     </div>

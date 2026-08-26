@@ -1,9 +1,5 @@
 @use "./tokens" as *;
 
-/* ============================================================
-   TOPBAR
-   ============================================================ */
-
 .topbar-wrapper {
   position: fixed;
   top: 0;
@@ -25,24 +21,12 @@ body.is-header-oculto .topbar-wrapper {
   width: 100%;
   height: var(--header-h);
   box-sizing: border-box;
-
-  /* ==========================================================
-     VIDRIO CLARO
-     ========================================================== */
-
   background: rgba(255, 255, 255, 0.75);
-
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
-
   border-bottom: 1px solid var(--border);
-
   z-index: 100;
 }
-
-/* ============================================================
-   CONTENEDOR
-   ============================================================ */
 
 .topbar.container {
   padding: 0;
@@ -56,18 +40,12 @@ body.is-header-oculto .topbar-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
-  align-items: center!important;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-between;
-
   padding: 0 16px;
   box-sizing: border-box;
 }
-
-/* ============================================================
-   TÍTULO / NOMBRE
-   ============================================================ */
 
 .topbar__title-box {
   display: flex;
@@ -75,8 +53,8 @@ body.is-header-oculto .topbar-wrapper {
   line-height: 1.2;
   height: 100%;
   min-width: 0;
-  flex: 1;
-align-items: center;
+  flex: 1 1 auto;
+  align-items: flex-start;
   margin-right: 16px;
   overflow: hidden;
 }
@@ -84,12 +62,13 @@ align-items: center;
 .topbar__title-btn {
   width: fit-content;
   max-width: 100%;
+  min-width: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center; /* ← importante */
-  gap: 0;                  /* ← elimina separación flex */
+  justify-content: center;
+  gap: 0;
   background: transparent;
   border: none;
   border-radius: 6px;
@@ -101,10 +80,10 @@ align-items: center;
   font-family: var(--font-body);
   font-weight: 700;
   padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .topbar__title-btn:hover {
-  /* fondo transparente, sin significado semántico -> fill neutro */
   background: var(--brand-bg);
 }
 
@@ -112,13 +91,10 @@ align-items: center;
   transform: scale(0.96);
 }
 
-/* ============================================================
-   TEMA
-   ============================================================ */
-
 .topbar__tema-wrapper {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -128,8 +104,9 @@ align-items: center;
 }
 
 .topbar__tema-wrapper i {
+  flex: 0 0 auto;
   transition: transform 0.2s linear;
-} 
+}
 
 .topbar__tema-wrapper:hover i {
   transform: rotate(180deg);
@@ -138,6 +115,7 @@ align-items: center;
 .topbar__tema {
   display: flex;
   width: max-content;
+  min-width: 0;
   flex-shrink: 0;
   font-size: 14px;
   font-weight: 700;
@@ -151,7 +129,7 @@ align-items: center;
 }
 
 .topbar__tema--marquee {
-  animation: marqueeOneWay 15s linear infinite !important;;
+  animation: marqueeOneWay 25s linear infinite;
 }
 
 @keyframes marqueeOneWay {
@@ -160,12 +138,9 @@ align-items: center;
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(var(--scroll-dist));
   }
 }
-/* ============================================================
-   CURSO
-   ============================================================ */
 
 .topbar__curso {
   max-width: 100%;
@@ -177,8 +152,8 @@ align-items: center;
 }
 
 .btn__inicio {
-flex-direction: row;
-align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .topbar__curso--clickable {
@@ -192,16 +167,11 @@ align-items: center;
   font-size: 15px;
 }
 
-/* ============================================================
-   NAVEGACIÓN
-   ============================================================ */
-
 .topbar__nav {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-end;
-
   gap: 8px;
   flex-shrink: 0;
 }
@@ -211,29 +181,21 @@ align-items: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 4px;
-
   min-width: 0;
-
   padding: 4px 8px;
   margin: 0;
-
   background: transparent;
   border: none;
   border-radius: 6px;
-
   color: var(--ink);
-
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-
-  transition: all .2s linear
+  transition: all 0.2s linear;
 }
 
 .topbar__nav-btn:hover {
-  /* fondo transparente, sin significado semántico -> fill neutro */
   background: var(--brand-bg);
 }
 
@@ -246,16 +208,10 @@ align-items: center;
   transform: scale(0.96);
 }
 
-/* ============================================================
-   ICONOS DE NAVEGACIÓN
-   ============================================================ */
-
 .topbar__btn-icon {
   display: block;
-
   font-size: 18px;
   line-height: 1;
-
   color: inherit;
 }
 
@@ -264,34 +220,24 @@ align-items: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
 .topbar__btn-title {
   display: block;
-
   font-size: 12px;
   font-weight: 700;
   line-height: 1.1;
-
   font-family: var(--font-display);
-
   color: inherit;
-
   text-align: center;
 }
-
-/* ============================================================
-   CONTROLES
-   ============================================================ */
 
 .topbar__controls {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: flex-end;
-
   gap: 8px;
   flex-shrink: 0;
 }
@@ -300,21 +246,15 @@ align-items: center;
 .topbar__gear {
   width: 44px;
   height: 44px;
-
   align-self: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: transparent;
   border: none;
   border-radius: 50%;
-
   color: var(--ink);
-
   cursor: pointer;
-
   transition:
     background 0.2s linear,
     color 0.2s linear,
@@ -323,7 +263,6 @@ align-items: center;
 
 .topbar__control-btn:hover,
 .topbar__gear:hover {
-  /* fondo transparente, sin significado semántico -> fill neutro */
   background: var(--success-bg);
 }
 
@@ -338,10 +277,6 @@ align-items: center;
   color: inherit;
 }
 
-/* ============================================================
-   BOTÓN MENÚ
-   ============================================================ */
-
 .topbar__control-btn--menu {
   background: transparent;
   color: var(--ink);
@@ -349,22 +284,13 @@ align-items: center;
 }
 
 .topbar__control-btn--menu:hover {
-  /* fondo transparente, sin significado semántico -> fill neutro */
   background: rgba(20, 21, 24, 1);
   color: #fff;
 }
 
-/* ============================================================
-   HAMBURGER
-   ============================================================ */
-
 .topbar__hamburger {
   display: none;
 }
-
-/* ============================================================
-   TABLET
-   ============================================================ */
 
 @include respond(md) {
   .topbar__nav {
@@ -377,16 +303,11 @@ align-items: center;
   }
 }
 
-/* ============================================================
-   DESKTOP
-   ============================================================ */
-
 @include respond(lg) {
   .topbar__nav {
     display: flex !important;
     flex-direction: row;
     align-items: stretch;
-
     gap: 16px;
   }
 
@@ -417,10 +338,6 @@ align-items: center;
     font-size: 21px;
   }
 }
-
-/* ============================================================
-   XL
-   ============================================================ */
 
 @include respond(xl) {
   .topbar {
@@ -463,10 +380,6 @@ align-items: center;
   }
 }
 
-/* ============================================================
-   MOBILE
-   ============================================================ */
-
 @media (max-width: 767px) {
   .topbar__nav {
     display: none !important;
@@ -477,76 +390,49 @@ align-items: center;
   }
 }
 
-/* ============================================================
-   DRAWER / OFFCANVAS
-   ============================================================ */
-
 .topbar__drawer.offcanvas {
   --bs-offcanvas-width: min(320px, 85vw);
   --bs-offcanvas-bg: var(--ink-on-primary);
   --bs-offcanvas-border-color: var(--border);
   --bs-offcanvas-box-shadow: var(--shadow-lg);
-
   --bs-offcanvas-zindex: 1050;
-
   --bs-offcanvas-padding-x: 0;
   --bs-offcanvas-padding-y: 0;
-
   transition: transform 0.25s linear !important;
 }
-
-/* ============================================================
-   BACKDROP
-   ============================================================ */
 
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
   --bs-backdrop-bg: var(--overlay-strong);
   --bs-backdrop-opacity: 1;
-
   backdrop-filter: blur(4px);
 }
-
-/* ============================================================
-   DRAWER HEADER
-   ============================================================ */
 
 .topbar__drawer-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 20px;
-
   background: var(--primary);
   border-bottom: 1px solid var(--primary-dark);
-
   flex: none;
 }
 
 .topbar__drawer-title {
   color: var(--ink-on-primary);
-
   font-size: 22px;
   margin: 0;
-
   font-family: var(--font-display);
 }
 
 .topbar__drawer-close {
   background: transparent;
   border: none;
-
   color: var(--ink-on-primary);
-
   font-size: 20px;
-
   cursor: pointer;
-
   border-radius: var(--radius-full);
-
   transition: all 0.2s linear;
-
   width: 35px;
   aspect-ratio: 1 / 1;
 }
@@ -560,14 +446,9 @@ align-items: center;
   transform: scale(0.9);
 }
 
-/* ============================================================
-   DRAWER LIST
-   ============================================================ */
-
 .topbar__drawer-list {
   display: flex;
   flex-direction: column;
-
   overflow-y: auto;
 }
 
@@ -575,25 +456,17 @@ align-items: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   width: 100%;
-
   padding: 16px 14px;
-
   background: none;
   border: none;
   border-bottom: 1px solid var(--border);
-
   color: var(--ink);
-
   font-size: 16px;
   font-weight: 600;
-
   text-decoration: none;
-
   cursor: pointer;
   text-align: left;
-
   transition:
     background 0.5s ease,
     color 0.5s ease,
@@ -621,25 +494,14 @@ align-items: center;
   transform: scale(0.98);
 }
 
-/* ============================================================
-   DRAWER LABEL
-   ============================================================ */
-
 .topbar__drawer-item-label {
   color: inherit;
 }
 
-/* ============================================================
-   DRAWER ICON
-   ============================================================ */
-
 .topbar__drawer-item-icon {
   color: var(--ink-soft);
-
   font-size: 18px;
-
   flex: none;
-
   transition:
     color 0.5s ease,
     transform 0.5s ease;
@@ -651,10 +513,6 @@ align-items: center;
   transform: translateX(-3px);
 }
 
-/* ============================================================
-   DRAWER DESKTOP
-   ============================================================ */
-
 @media (min-width: 1024px) {
   .topbar__drawer.offcanvas {
     --bs-offcanvas-width: 360px;
@@ -665,9 +523,11 @@ align-items: center;
     font-size: 17px;
   }
 }
+
 .topbar__title-btn:hover .topbar__curso {
-  color: var(--primary)!important;
+  color: var(--primary) !important;
 }
+
 .topbar__logo {
   width: 35px;
   aspect-ratio: 1 / 1;

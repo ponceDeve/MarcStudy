@@ -33,15 +33,17 @@
 .search-saludo{
   margin:0 4px 16px;
   text-align:center;
-  font-size:clamp(20px, 5vw, 30px);
   font-weight:800;
+  font-size:1.3rem;
   color:var(--ink-on-primary);
+  display:flex;
+  flex-direction:column;
 }
 
 .search-saludo__nombre{
   font-weight:800;
   color:var(--primary);
-  text-shadow:0 0 12px var(--primary);
+  text-shadow:0 0 25px var(--ink-on-primary);
 }
 
 .search-input-row{
@@ -430,16 +432,12 @@
 .search-empty{
   width:100%;
   box-sizing:border-box;
-  margin:8px 0 0;
-  padding:14px 16px;
-  background:var(--accent-bg);
-  border: var(--nested-border);
   color:var(--ink-soft);
   font-size:14px;
   text-align:center;
-  border:1px solid var(--border);
   border-radius:var(--radius-md);
   box-shadow:var(--shadow-sm);
+  padding:20px 0;
 }
 
 
