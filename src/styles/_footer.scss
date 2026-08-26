@@ -39,6 +39,25 @@
   color: var(--ink);
 }
 
+.app-footer__editar-nombre {
+  margin-top: 6px;
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.app-footer__editar-nombre:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
 @media (min-width: 640px) {
   .app-footer {
     padding: 20px 24px;

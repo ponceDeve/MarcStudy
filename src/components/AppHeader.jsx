@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
-import EditarNombreModal from "./EditarNombreModal";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -42,8 +41,7 @@ export default function AppHeader({
   showHome = false,
   onEditarHorario = null,
 }) {
-  const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-  const [editarNombreAbierto, setEditarNombreAbierto] = useState(false);
+  const [nombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
@@ -218,18 +216,21 @@ export default function AppHeader({
         <div className="topbar__inner">
 
           <div className="topbar__title-btn btn__inicio">
+            <Link to="/" title="Mi Estudio">
+              <img
+                src={`${import.meta.env.BASE_URL}icon.png`}
+                alt="Mi Estudio"
+                className="topbar__logo"
+              />
+            </Link>
+
             {nombreUsuario ? (
-              <button
-                type="button"
-                className="topbar__curso topbar__curso--clickable"
-                onClick={() => setEditarNombreAbierto(true)}
-                title="Editar nombre"
-              >
+              <span className="topbar__curso" title={nombreUsuario}>
                 {nombreUsuario}
-              </button>
+              </span>
             ) : (
               <Link to="/" className="topbar__curso topbar__curso--clickable">
-                d
+                Mi Estudio
               </Link>
             )}
           </div>
@@ -263,16 +264,6 @@ export default function AppHeader({
           )}
         </SideDrawer>
       </div>
-
-      <EditarNombreModal
-        open={editarNombreAbierto}
-        nombreActual={nombreUsuario}
-        onGuardar={(n) => {
-          setNombreUsuario(n);
-          setEditarNombreAbierto(false);
-        }}
-        onCancelar={() => setEditarNombreAbierto(false)}
-      />
     </div>
   );
 }
