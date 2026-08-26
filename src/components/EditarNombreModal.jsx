@@ -22,7 +22,6 @@ export default function EditarNombreModal({ open, nombreActual = "", onGuardar, 
           <i className="fa-solid fa-user" />
         </div>
         <h2 className="welcome-titulo">Editar nombre</h2>
-        <p className="welcome-texto">Lo usamos para saludarte y en tus resultados.</p>
         <input
           type="text"
           name="apodo-usuario"
