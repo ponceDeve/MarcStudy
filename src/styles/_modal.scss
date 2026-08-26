@@ -408,6 +408,22 @@
   cursor: not-allowed;
 }
 
+/* Pantalla de elección inicial: "Ver tutorial" / "Ya sé cómo funciona" */
+.welcome-choice-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.welcome-btn.is-skip {
+  width: 100%;
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  border: 1px solid var(--border-strong);
+}
+
 /* ============================================================
    EditarNombreModal.jsx (variante oscura del welcome-card)
    ============================================================ */
