@@ -13,6 +13,7 @@ import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
+import { resaltarPalabraTemporal, flashearFondoTemporal } from "../../utils/resaltarBusqueda";
 import TopBar from "./TopBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
@@ -1571,11 +1572,6 @@ export default function MiEstudioPage() {
   }
 
   function finalizarTema() {
-    setStage("finished");
-    setConfirmGuardarRepasoFinal(
-      true
-    );
-
     if (esModoAdicionales) {
       const idsEjercicios = flatPuntos
         .filter(p => p.seccionTitulo === "Ejercicios")
@@ -1588,8 +1584,20 @@ export default function MiEstudioPage() {
     }
 
     if (!teoriaCompleta) {
+      // Esta mini-tanda de preguntas terminó (ej. la vista previa de un
+      // solo punto desde el botón del mando, o un examen con selección
+      // parcial), pero el tema todavía no está completo: no corresponde
+      // mostrar "tema terminado" ni pedir guardar en repasos. Se vuelve
+      // a la teoría tal cual estaba.
+      setStage("theory");
+      setIsLevelMode(false);
       return;
     }
+
+    setStage("finished");
+    setConfirmGuardarRepasoFinal(
+      true
+    );
 
     setMostrarCongratulations(true);
 
@@ -3297,11 +3305,39 @@ export default function MiEstudioPage() {
                   <div className="teoria-sticky-bar">
                     <TheorySearchBar
                       flatPuntos={flatPuntos}
-                      onSelect={(puntoId) => {
+                      onSelect={({ puntoId, campo, matchText }) => {
                         setPuntoVozId(puntoId);
-                        document
-                          .getElementById(`punto-${puntoId}`)
-                          ?.scrollIntoView({ behavior: "smooth", block: "center" });
+                        // Pequeño delay: si el scroll se dispara en el
+                        // mismo instante en que se cierra el dropdown de
+                        // resultados, el cambio de alto de la página a
+                        // mitad de la animación hace que el scroll se vea
+                        // brusco/salte. Esperamos a que el cierre ya haya
+                        // pintado, y recién ahí medimos y hacemos scroll.
+                        requestAnimationFrame(() => {
+                          requestAnimationFrame(() => {
+                            const contenedorPunto = document.getElementById(`punto-${puntoId}`);
+                            contenedorPunto?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                            // No se resalta la tarjeta entera: se busca el
+                            // campo específico (texto principal o
+                            // explicación) donde se encontró, y ahí se
+                            // resalta solo la palabra/frase que coincidió.
+                            // Si el match fue puramente semántico (sin
+                            // palabra literal para subrayar), en vez de
+                            // eso se destella el fondo de ese campo.
+                            const selectorCampo =
+                              campo === "explicacion"
+                                ? ".teoria-explicacion-extra__texto"
+                                : ".teoria-contenido-principal";
+                            const contenedorCampo = contenedorPunto?.querySelector(selectorCampo);
+
+                            if (matchText && contenedorCampo) {
+                              resaltarPalabraTemporal(contenedorCampo, matchText);
+                            } else if (contenedorCampo) {
+                              flashearFondoTemporal(contenedorCampo);
+                            }
+                          });
+                        });
                       }}
                     />
 
@@ -3382,7 +3418,14 @@ export default function MiEstudioPage() {
                                               ? prev.filter((t) => t !== puntoId)
                                               : [...prev, puntoId];
 
-                                            if (newSelection.length === flatPuntos.length && flatPuntos.length > 0) {
+                                            const idsTeoriaNormal = flatPuntos
+                                              .filter((p) => p.seccionTitulo !== "Ejercicios")
+                                              .map((p) => p.id);
+
+                                            if (
+                                              idsTeoriaNormal.length > 0 &&
+                                              idsTeoriaNormal.every((id) => newSelection.includes(id))
+                                            ) {
                                               setMostrarCongratulations(true);
                                             }
 

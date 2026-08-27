@@ -176,7 +176,7 @@ const VARIANTES_ACENTO = {
   n: "[nñ]",
 };
 
-function regexInsensible(fragmento) {
+export function regexInsensible(fragmento) {
   const escapado = escaparRegex(fragmento);
   const patron = escapado.replace(/[aeioun]/gi, (c) => {
     const base = c.toLowerCase();
@@ -189,19 +189,19 @@ function regexInsensible(fragmento) {
   }
 }
 
-// Busca dónde empieza la mejor coincidencia visual de "query" dentro de
-// "texto" (texto SIN normalizar, tal cual se va a mostrar). Devuelve el
-// índice de caracter, o null si no hay ninguna coincidencia literal
-// (esto pasa seguido con resultados puramente semánticos, donde el
-// texto no comparte palabras con la búsqueda).
-export function buscarPosicion(texto, query) {
+// Busca la mejor coincidencia LITERAL de "query" dentro de "texto"
+// (texto SIN normalizar, tal cual se muestra). Devuelve { indice, largo }
+// del match encontrado, o null si no hay ninguna coincidencia literal
+// (esto pasa seguido en resultados puramente semánticos, donde el texto
+// no comparte ninguna palabra con la búsqueda).
+export function buscarCoincidencia(texto, query) {
   const queryLimpia = String(query || "").trim();
   if (!queryLimpia || !texto) return null;
 
   const regexCompleta = regexInsensible(queryLimpia);
   if (regexCompleta) {
-    const idx = texto.search(regexCompleta);
-    if (idx !== -1) return idx;
+    const match = texto.match(regexCompleta);
+    if (match) return { indice: match.index, largo: match[0].length };
   }
 
   // No apareció la frase completa: probar palabra por palabra (evita
@@ -211,11 +211,17 @@ export function buscarPosicion(texto, query) {
   for (const palabra of palabras) {
     const regexPalabra = regexInsensible(palabra);
     if (!regexPalabra) continue;
-    const idx = texto.search(regexPalabra);
-    if (idx !== -1) return idx;
+    const match = texto.match(regexPalabra);
+    if (match) return { indice: match.index, largo: match[0].length };
   }
 
   return null;
+}
+
+// Compatibilidad: solo el índice (usado para armar el fragmento/snippet).
+export function buscarPosicion(texto, query) {
+  const resultado = buscarCoincidencia(texto, query);
+  return resultado ? resultado.indice : null;
 }
 
 // Recorta "texto" a un fragmento corto centrado en "indiceCaracter".

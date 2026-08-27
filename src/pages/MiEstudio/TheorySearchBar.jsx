@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import {
   puntajeDeTexto,
+  buscarCoincidencia,
   buscarPosicion,
   extraerFragmento,
   normalizarTexto,
@@ -214,11 +215,39 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
   }, [candidatosTexto, semantico, query, hayQuery]);
 
   const { focusedIdx, handleKeyDown } = useArrowKeyList(resultados, (resultado) => {
-    elegir(resultado.punto.id);
+    elegir(resultado);
   });
 
-  function elegir(puntoId) {
-    onSelect(puntoId);
+  function elegir(resultado) {
+    const { punto } = resultado;
+    const queryLimpia = query.trim();
+
+    // Busca dónde está la coincidencia REAL para poder resaltar solo esa
+    // palabra/frase en la página (primero en el texto principal, después
+    // en la explicación). Si no hay ninguna coincidencia literal (match
+    // puramente semántico), no hay nada puntual que subrayar.
+    const matchTexto = buscarCoincidencia(punto.texto || "", queryLimpia);
+    const matchExplicacion = buscarCoincidencia(punto.explicacion || "", queryLimpia);
+
+    let campo = null;
+    let matchText = null;
+
+    if (matchTexto) {
+      campo = "texto";
+      matchText = punto.texto.slice(matchTexto.indice, matchTexto.indice + matchTexto.largo);
+    } else if (matchExplicacion) {
+      campo = "explicacion";
+      matchText = punto.explicacion.slice(
+        matchExplicacion.indice,
+        matchExplicacion.indice + matchExplicacion.largo
+      );
+    } else {
+      // Sin coincidencia literal: aproximamos "dónde se encontró" al
+      // campo con más contenido (la explicación, si existe).
+      campo = punto.explicacion ? "explicacion" : "texto";
+    }
+
+    onSelect({ puntoId: punto.id, campo, matchText });
     setQuery("");
     setBuscadorFocus(false);
   }
@@ -277,7 +306,7 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
                   key={punto.id}
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => elegir(punto.id)}
+                  onClick={() => elegir(r)}
                   className={`theory-search__item ${
                     idx === focusedIdx ? "is-focused" : ""
                   }`}

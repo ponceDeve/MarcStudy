@@ -2062,6 +2062,42 @@ body.is-header-oculto .teoria-sticky-bar {
 
 .teoria-punto {
   margin-bottom: 32px;
+  border-radius: var(--radius-md, 10px);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Resultado de búsqueda: se resalta solo la palabra/frase encontrada,
+   no la tarjeta completa. */
+.teoria-busqueda-resaltado {
+  background: rgba(68, 190, 218, 0.35);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+  transition: background-color 0.4s ease;
+}
+
+.teoria-busqueda-resaltado.is-fading {
+  background: transparent;
+}
+
+/* Cuando no hay palabra literal para subrayar (match semántico), se
+   destella el fondo del campo (texto o explicación) 2 segundos y
+   vuelve a la normalidad. */
+.teoria-busqueda-flash {
+  animation: teoria-busqueda-flash-anim 2s ease;
+  border-radius: var(--radius-sm, 6px);
+}
+
+@keyframes teoria-busqueda-flash-anim {
+  0% {
+    background-color: rgba(68, 190, 218, 0.35);
+  }
+  75% {
+    background-color: rgba(68, 190, 218, 0.35);
+  }
+  100% {
+    background-color: transparent;
+  }
 }
 
 .teoria-punto__fila {
