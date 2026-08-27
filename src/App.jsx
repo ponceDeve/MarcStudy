@@ -13,6 +13,7 @@ import {
 } from "./context/FooterVisibilityContext";
 
 import AppFooter from "./components/AppFooter";
+import AsistenteAyuda from "./components/AsistenteAyuda/AsistenteAyuda";
 
 function AppFooterGate() {
   const { footerHidden } = useFooterVisibility();
@@ -33,6 +34,12 @@ export default function App() {
           </Routes>
 
           <AppFooterGate />
+
+          {/* Asistente de ayuda GLOBAL: fuera de <Routes>, así que se
+              mantiene montado (mismo ícono, mismo chat) sin importar a
+              qué pantalla se navegue: Inicio, un tema, teoría, preguntas,
+              examen, Repaso o Pomodoro. */}
+          <AsistenteAyuda />
         </FooterVisibilityProvider>
       </PomodoroProvider>
     </BrowserRouter>

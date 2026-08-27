@@ -21,7 +21,113 @@ const DESCRIPCIONES_CURSO = {
   TRI: "Ángulos, razones trigonométricas y esos triángulos que parecen no tener sentido hasta que por fin haces clic."
 };
 
+const FAQS = [
+  {
+    icon: "fa-graduation-cap",
+    q: "¿Cómo funciona el modo estudio?",
+    a: "Eliges un curso o tema, revisas la teoría y luego puedes responder preguntas para practicar."
+  },
+  {
+    icon: "fa-rotate",
+    q: '¿Qué es "Repaso"?',
+    a: "Te indica qué temas conviene volver a estudiar según cuándo los estudiaste."
+  },
+  {
+    icon: "fa-clock",
+    q: "¿Cómo se calcula mi próximo repaso?",
+    a: "La app registra cuándo estudias cada tema y utiliza esa información para organizar tus próximos repasos."
+  },
+  {
+    icon: "fa-trash",
+    q: "¿Puedo quitar un tema de mis repasos?",
+    a: "Sí. Puedes eliminar un tema de la lista de próximos repasos cuando quieras."
+  },
+  {
+    icon: "fa-heart",
+    q: '¿Qué son las "vidas"?',
+    a: "Son tus intentos disponibles al responder preguntas dentro de una sesión."
+  },
+  {
+    icon: "fa-hourglass-half",
+    q: "¿Qué es el Pomodoro?",
+    a: "Es un temporizador que divide el estudio en bloques de trabajo y descanso. También puedes usarlo para organizar tu horario."
+  },
+  {
+    icon: "fa-floppy-disk",
+    q: "¿Se guarda mi progreso?",
+    a: "Sí. Tu progreso, horario y preguntas vistas se guardan automáticamente en tu dispositivo."
+  },
+  {
+    icon: "fa-volume-high",
+    q: "¿Puedo escuchar la teoría?",
+    a: "Sí. Los temas que tienen lectura en voz alta incluyen un botón para escuchar la teoría."
+  },
+  {
+    icon: "fa-circle-info",
+    q: "¿Qué son las palabras subrayadas?",
+    a: "Son términos que tienen información adicional. Puedes interactuar con ellos para consultar su definición."
+  },
+  {
+    icon: "fa-list-check",
+    q: "¿Puedo ir directamente a las preguntas?",
+    a: "Sí. Puedes elegir estudiar la teoría o pasar directamente a las preguntas cuando el tema lo permita."
+  },
+  {
+    icon: "fa-magnifying-glass",
+    q: "¿Cómo busco un curso o tema?",
+    a: "Usa el buscador de las páginas principales para encontrar rápidamente el curso o tema que necesitas."
+  },
+  {
+    icon: "fa-calendar-days",
+    q: "¿Cómo edito mi horario?",
+    a: "Desde Pomodoro puedes organizar tus cursos por día y decidir cuántos bloques dedicarás a cada uno."
+  },
+  {
+    icon: "fa-pause",
+    q: "¿Qué pasa si cierro la página durante un Pomodoro?",
+    a: "El temporizador guarda su estado para que puedas continuar cuando vuelvas."
+  },
+  {
+    icon: "fa-mobile-screen",
+    q: "¿Puedo usar Mi Estudio desde el celular?",
+    a: "Sí. La plataforma está adaptada para celulares, tablets y computadoras."
+  },
+  {
+    icon: "fa-heart-crack",
+    q: "¿Qué pasa si me quedo sin vidas?",
+    a: "La sesión de preguntas termina y puedes volver al tema más adelante."
+  },
+  {
+    icon: "fa-shield-halved",
+    q: "¿Mi progreso se mantiene si cierro el navegador?",
+    a: "Sí. El progreso permanece guardado en el dispositivo mientras no borres los datos de la aplicación."
+  },
+  {
+    icon: "fa-circle-question",
+    q: "¿Cómo son las preguntas del examen?",
+    a: "Son preguntas de opción múltiple relacionadas directamente con el tema estudiado."
+  },
+  {
+    icon: "fa-bell",
+    q: "¿Por qué suena una alarma al terminar el Pomodoro?",
+    a: "La alarma te avisa que terminó el bloque de estudio. Puedes configurar las opciones de sonido."
+  },
+  {
+    icon: "fa-user",
+    q: "¿Por qué me pide mi nombre?",
+    a: "Solo se utiliza para personalizar algunos mensajes de la aplicación."
+  },
+  {
+    icon: "fa-layer-group",
+    q: "¿Hay niveles dentro de un tema?",
+    a: "Sí. Algunos temas están divididos en niveles que se desbloquean progresivamente."
+  }
+];
+
 export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [] }) {
+  // Solo conservamos el estado del FAQ, ya no necesitamos el del curso.
+  const [faqAbierto, setFaqAbierto] = useState(null);
+
   // Por curso, en qué página de temas está (páginas de TEMAS_POR_PAGINA).
   const [paginaPorCurso, setPaginaPorCurso] = useState({});
 
@@ -81,6 +187,12 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
       tema: tema.tema,
       archivo: tema.archivo
     });
+  }
+
+  function alternarFaq(i) {
+    setFaqAbierto((actual) =>
+      actual === i ? null : i
+    );
   }
 
   return (
@@ -241,6 +353,44 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
                     );
                   })()}
                 </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="welcome-section__faq">
+        <div className="welcome-section__faq-inner container">
+          <h2 className="welcome-section__title">
+            Preguntas frecuentes
+          </h2>
+
+          <div className="welcome-section__faq-list">
+            {FAQS.map((item, i) => {
+              const abierto = faqAbierto === i;
+
+              return (
+                <details
+                  key={i}
+                  className={`welcome-section__faq-item${abierto ? " is-open" : ""}`}
+                  open={abierto}
+                >
+                  <summary
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alternarFaq(i);
+                    }}
+                  >
+                    <span className="welcome-section__faq-summary-text">
+                      <i className={`fa-solid ${item.icon} welcome-section__faq-icon`} />
+                      <span>{item.q}</span>
+                    </span>
+                  </summary>
+
+                  <div className="welcome-section__faq-answer">
+                    <p>{item.a}</p>
+                  </div>
+                </details>
               );
             })}
           </div>

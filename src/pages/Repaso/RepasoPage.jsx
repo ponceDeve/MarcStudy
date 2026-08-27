@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
-import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 
 import {
   leerLog,
@@ -17,26 +16,9 @@ import {
   eliminarRepaso
 } from "../../lib/repasoStorage";
 
-const PASOS_BIENVENIDA = [
-  {
-    icon: "fa-solid fa-brain",
-    titulo: "¡Bienvenido a Repasos!",
-    texto:
-      "Aquí se guardan automáticamente los temas que vas terminando en Mi Estudio."
-  },
-  {
-    icon: "fa-solid fa-calendar-day",
-    titulo: "Repetición espaciada",
-    texto:
-      "Cada tema programa 4 repasos: al 1, 3, 7 y 21 días — así no se te olvida."
-  },
-  {
-    icon: "fa-solid fa-check",
-    titulo: "Marca como hecho",
-    texto:
-      "Toca el check de un repaso cuando ya lo repasaste, para avanzar al siguiente intervalo."
-  }
-];
+// La bienvenida con tutorial fijo (PASOS_BIENVENIDA) se reemplazó por el
+// asistente de ayuda global: cualquier duda sobre cómo funciona el
+// Repaso se responde ahora desde el ícono de robot.
 
 export default function RepasoPage() {
   const navigate = useNavigate();
@@ -47,11 +29,6 @@ export default function RepasoPage() {
   );
 
   const [searchOpen, setSearchOpen] = useState(false);
-
-  const [welcomeSeen, setWelcomeSeen] = useLocalStorage(
-    "repaso_welcome_seen",
-    false
-  );
 
   const [log, setLog] = useState(() => leerLog());
 
@@ -589,18 +566,8 @@ export default function RepasoPage() {
           }}
         />
 
-        {/* ─────────────────────────────────────
-            MODAL DE BIENVENIDA
-        ───────────────────────────────────── */}
-
-        <StepsWelcomeModal
-          open={!welcomeSeen}
-          pasos={PASOS_BIENVENIDA}
-          labelFinal="Entendido"
-          onFinish={() =>
-            setWelcomeSeen(true)
-          }
-        />
+        {/* La bienvenida con tutorial fijo se reemplazó por el asistente
+            de ayuda global (ícono de robot). */}
 
         {/* ─────────────────────────────────────
             MODAL ELIMINAR

@@ -25,7 +25,6 @@ import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import SearchModal from "../../components/SearchModal";
-import StepsWelcomeModal from "../../components/StepsWelcomeModal";
 import ScheduleSetup from "./ScheduleSetup";
 
 const POMODORO_MIN = 25;
@@ -41,32 +40,9 @@ const NOMBRE_DIA = {
   domingo: "Domingo",
 };
 
-const PASOS_BIENVENIDA = [
-  {
-    icon: "fa-solid fa-calendar-alt",
-    titulo: "¡Bienvenido al Pomodoro!",
-    texto:
-      "Aquí armas tu propio horario de estudio con sesiones cronometradas.",
-  },
-  {
-    icon: "fa-solid fa-list-check",
-    titulo: "Tu horario, a tu medida",
-    texto:
-      "Eliges qué días estudias y qué cursos ves cada día, con cuántos pomodoros cada uno.",
-  },
-  {
-    icon: "fa-solid fa-play",
-    titulo: "Sesiones de 25 minutos",
-    texto:
-      "Cada pomodoro son 25 min de estudio seguidos de 5 min de descanso, hasta terminar los que elegiste.",
-  },
-  {
-    icon: "fa-solid fa-pen",
-    titulo: "¿Cambió tu horario?",
-    texto:
-      "Toca 'Editar' arriba cuando quieras para rehacer tus días y cursos.",
-  },
-];
+// La explicación fija de "¡Bienvenido al Pomodoro!" (PASOS_BIENVENIDA) se
+// reemplazó por el asistente de ayuda global: cualquier duda sobre cómo
+// funciona el Pomodoro se responde ahora desde ahí.
 
 // Solo estos descansos activan el bloqueo de pantalla.
 const RESTS_BLOQUEABLES = [5, 10, 30];
@@ -139,11 +115,6 @@ export default function HorarioPage() {
   const [manualBreak, setManualBreak] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  const [welcomeSeen, setWelcomeSeen] = useLocalStorage(
-    "horario_welcome_seen",
-    false,
-  );
-
   const [setupOpen, setSetupOpen] = useState(false);
 
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
@@ -175,8 +146,7 @@ export default function HorarioPage() {
     [activeCourse],
   );
 
-  const mostrarGate =
-    welcomeSeen && !hayHorarioConfigurado() && !setupOpen;
+  const mostrarGate = !hayHorarioConfigurado() && !setupOpen;
 
   useEffect(() => {
     document.body.style.overflow = mostrarGate ? "hidden" : "";
@@ -1423,18 +1393,8 @@ export default function HorarioPage() {
         </div>
       </Modal>
 
-      {/* ==========================================================
-          BIENVENIDA
-          ========================================================== */}
-
-      <StepsWelcomeModal
-        open={!welcomeSeen}
-        pasos={PASOS_BIENVENIDA}
-        labelFinal="Entendido"
-        onFinish={() =>
-          setWelcomeSeen(true)
-        }
-      />
+      {/* La bienvenida con tutorial fijo se reemplazó por el asistente de
+          ayuda global (ícono de robot). */}
 
       {/* ==========================================================
           GATE DE CONFIGURACIÓN

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import LatexText from "../../components/LatexText";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
@@ -48,33 +48,109 @@ const mensajesIncorrectos = {
   ],
 };
 
-// Mensajes cuando se rinde según vidas restantes
+// Mensajes que se muestran DESPUÉS de rendirse, según cuántas vidas le
+// quedaban al usuario en ese momento. Rendirse ya no cuesta una vida:
+// esto es solo tono, para que la pantalla de "te rendiste" no se sienta
+// siempre igual si el usuario se rinde varias veces en la sesión.
 const mensajesRendirse = {
-  5: {
-    titulo: "¿Ya te quieres rendir?",
-    explicacion: "Recién estamos empezando, aquí está la respuesta:"
-  },
-  4: {
-    titulo: "Quedan cuatro vidas",
-    explicacion: "Aún tienes chances, pero léelo bien:"
-  },
-  3: {
-    titulo: "Quedan tres vidas",
-    explicacion: "La presión sube, concentración a esto:"
-  },
-  2: {
-    titulo: "Quedan dos vidas",
-    explicacion: "Esto se pone difícil, aprende esto:"
-  },
-  1: {
-    titulo: "Última vida",
-    explicacion: "Esta es tu última oportunidad, pón atención:"
-  },
-  0: {
-    titulo: "Se acabó",
-    explicacion: "Al menos aprende esto para la próxima:"
-  }
+  5: [
+    {
+      titulo: "¿Ya te quieres rendir?",
+      explicacion: "Recién estamos empezando, aquí está la respuesta:",
+    },
+    {
+      titulo: "Vidas completas y ya te rindes",
+      explicacion: "Sin drama, esto es lo que tenías que responder:",
+    },
+    {
+      titulo: "Bandera blanca temprano",
+      explicacion: "Nada grave, repasa esto y sigue:",
+    },
+  ],
+  4: [
+    {
+      titulo: "Quedan cuatro vidas",
+      explicacion: "Aún tienes chances, pero léelo bien:",
+    },
+    {
+      titulo: "Con margen de sobra",
+      explicacion: "No hace falta rendirse tan rápido, pero bueno, aquí está:",
+    },
+    {
+      titulo: "Cuatro vidas en el marcador",
+      explicacion: "Toma nota de esto para el próximo intento:",
+    },
+  ],
+  3: [
+    {
+      titulo: "Quedan tres vidas",
+      explicacion: "La presión sube, concentración a esto:",
+    },
+    {
+      titulo: "A mitad de camino",
+      explicacion: "Vas por la mitad de tus vidas. Repasa esto:",
+    },
+    {
+      titulo: "Tres vidas todavía",
+      explicacion: "No está mal, pero presta atención a esto:",
+    },
+  ],
+  2: [
+    {
+      titulo: "Quedan dos vidas",
+      explicacion: "Esto se pone difícil, aprende esto:",
+    },
+    {
+      titulo: "Solo dos vidas",
+      explicacion: "Ya casi no hay margen para las siguientes. Fíjate en esto:",
+    },
+    {
+      titulo: "Dos vidas en el marcador",
+      explicacion: "Rendirse no te cuesta nada, pero anota bien esto:",
+    },
+    {
+      titulo: "Quedan dos",
+      explicacion: "Con dos vidas conviene ir con más cuidado. Aquí tienes:",
+    },
+  ],
+  1: [
+    {
+      titulo: "Última vida",
+      explicacion: "Esta es tu última oportunidad para responder, pón atención:",
+    },
+    {
+      titulo: "Una vida nada más",
+      explicacion: "Rendirte no te la quita, pero de aquí en más ve con cuidado:",
+    },
+    {
+      titulo: "El límite está cerca",
+      explicacion: "Con una vida restante, memoriza bien esto:",
+    },
+    {
+      titulo: "Solo una vida",
+      explicacion: "Nada de presión por rendirte, pero repasa esto con calma:",
+    },
+  ],
+  0: [
+    {
+      titulo: "Se acabó",
+      explicacion: "Al menos aprende esto para la próxima:",
+    },
+    {
+      titulo: "Sin vidas en el marcador",
+      explicacion: "Aprovecha para repasar bien esto:",
+    },
+    {
+      titulo: "Ronda terminada",
+      explicacion: "Esto es lo que tenías que responder:",
+    },
+  ],
 };
+
+function elegirInfoRendirse(cantVidas) {
+  const grupo = mensajesRendirse[cantVidas] || mensajesRendirse[5];
+  return grupo[Math.floor(Math.random() * grupo.length)];
+}
 
 export default function ExplanationPanel({
   pregunta,
@@ -94,9 +170,11 @@ export default function ExplanationPanel({
   const cantVidas = corazones ?? lives ?? vidas ?? 5;
   const cantVidasActuales = vidasActuales ?? cantVidas;
 
-  const infoRendirse = rendido 
-    ? mensajesRendirse[cantVidas] || mensajesRendirse[5]
-    : null;
+  const infoRendirse = useMemo(
+    () => (rendido ? elegirInfoRendirse(cantVidas) : null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [rendido, pregunta]
+  );
 
   useEffect(() => {
     if (!("speechSynthesis" in window)) {
@@ -206,7 +284,7 @@ export default function ExplanationPanel({
               Repetir <i className="fas fa-rotate-left" />
             </button>
 
-            {!rendido && cantVidasActuales > 1 && (
+            {!rendido && (
               <button
                 type="button"
                 onClick={() =>

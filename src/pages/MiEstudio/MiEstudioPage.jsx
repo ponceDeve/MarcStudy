@@ -1736,29 +1736,15 @@ export default function MiEstudioPage() {
   }
 
   function rendirsePregunta() {
-    if (vidas <= 1) return;
-
     setQuestionResult({
       isCorrect: false,
       rendido: true,
       vidasEnEsteIntento: vidas
     });
 
-    // Decrementar vidas cuando se rinde
+    // Rendirse ya NO quita vidas: solo se registra como un intento
+    // fallido para las estadísticas de aciertos/errores.
     setWrongCount((w) => w + 1);
-    setVidas((prevVidas) => {
-      const nuevasVidas = prevVidas - 1;
-
-      if (nuevasVidas === 3) {
-        setAlertaVidas("tres");
-      } else if (nuevasVidas === 1) {
-        setAlertaVidas("una");
-      } else if (nuevasVidas <= 0) {
-        setAlertaVidas("cero");
-      }
-
-      return nuevasVidas;
-    });
   }
 
   function manejarRespuesta(

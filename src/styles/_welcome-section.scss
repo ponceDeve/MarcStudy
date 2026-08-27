@@ -26,8 +26,7 @@
   }
 }
 
-.welcome-section__intro,
-.welcome-section__faq-inner {
+.welcome-section__intro {
   width: 100%;
 }
 
@@ -411,113 +410,6 @@
 .welcome-section__tema-estado--pendiente {
   color: var(--ink-faint);
   opacity: 0.35;
-}
-
-/* ============================================================
-   PREGUNTAS FRECUENTES (FAQ)
-   ============================================================ */
-
-.welcome-section__faq {
-  width: 100%;
-  padding: 40px 0;
-}
-
-@media (min-width: 640px) {
-  .welcome-section__faq {
-    padding: 56px 0;
-  }
-}
-
-.welcome-section__faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.welcome-section__faq-item {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--surface);
-  padding: 4px 16px;
-  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease !important;
-}
-
-.welcome-section__faq-item summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 14px 8px;
-  margin: 0 -8px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  transition: all .2s linear;
-}
-
-.welcome-section__faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.welcome-section__faq-item summary:hover {
-  background: var(--surface-hover);
-}
-
-.welcome-section__faq-item summary::after {
-  content: "+";
-  color: var(--ink-faint);
-  font-weight: 400;
-  font-size: 1.2rem;
-  transition: transform .3s ease, color .2s ease !important;
-}
-
-.welcome-section__faq-item[open] {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-sm);
-}
-
-.welcome-section__faq-item[open] summary {
-  color: var(--primary);
-}
-
-.welcome-section__faq-item[open] summary::after {
-  content: "–";
-  color: var(--primary);
-  transform: rotate(180deg);
-}
-
-.welcome-section__faq-item p {
-  margin: 6px 0 14px;
-  color: var(--ink-soft);
-  font-size: .96rem;
-  line-height: 1.55;
-  animation: faqTextoEntrada .25s ease-out;
-}
-
-@keyframes faqTextoEntrada {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.welcome-section__faq-summary-text {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.welcome-section__faq-icon {
-  flex-shrink: 0;
-  color: var(--ink-soft);
-  font-size: 1rem;
 }
 
 /* ============================================================
