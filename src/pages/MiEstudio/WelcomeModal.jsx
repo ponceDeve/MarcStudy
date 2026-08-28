@@ -1,17 +1,95 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Antes este modal incluía un tutorial fijo de 9 pasos explicando cada
-// función de Mi Estudio. Esa explicación se reemplazó por el asistente
-// de ayuda global (el ícono de robot, disponible en toda la app), así
-// que aquí solo queda lo que sigue siendo necesario de verdad: pedirle
-// su nombre al usuario la primera vez que entra.
-export default function WelcomeModal({ open, onSubmit }) {
-  const [nombre, setNombre] = useState("");
+async function comprimirFotoUsuario(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith("image/")) {
+      reject(new Error("El archivo no es una imagen"));
+      return;
+    }
+
+    const lector = new FileReader();
+
+    lector.onload = () => {
+      const img = new Image();
+
+      img.onload = () => {
+        const MAX_SIZE = 500;
+
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_SIZE) {
+            height = Math.round((height * MAX_SIZE) / width);
+            width = MAX_SIZE;
+          }
+        } else if (height > MAX_SIZE) {
+          width = Math.round((width * MAX_SIZE) / height);
+          height = MAX_SIZE;
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext("2d");
+
+        if (!ctx) {
+          reject(new Error("No se pudo procesar la imagen"));
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+
+        resolve(canvas.toDataURL("image/jpeg", 0.82));
+      };
+
+      img.onerror = () => reject(new Error("No se pudo leer la imagen"));
+      img.src = lector.result;
+    };
+
+    lector.onerror = () => reject(new Error("No se pudo leer el archivo"));
+    lector.readAsDataURL(file);
+  });
+}
+
+export default function WelcomeModal({
+  open,
+  onSubmit,
+  nombreActual = "",
+  fotoActual = null,
+}) {
+  const [nombre, setNombre] = useState(nombreActual);
+  const [foto, setFoto] = useState(fotoActual);
+  const inputFotoRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      setNombre(nombreActual || "");
+      setFoto(fotoActual || null);
+    }
+  }, [open, nombreActual, fotoActual]);
 
   function confirmar() {
     const limpio = nombre.trim();
+
     if (!limpio) return;
-    onSubmit(limpio);
+
+    onSubmit(limpio, foto);
+  }
+
+  async function elegirFoto(e) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+
+    if (!file) return;
+
+    try {
+      const comprimida = await comprimirFotoUsuario(file);
+      setFoto(comprimida);
+    } catch {
+      // No cambiar la foto si ocurre un error.
+    }
   }
 
   return (
@@ -22,16 +100,49 @@ export default function WelcomeModal({ open, onSubmit }) {
       aria-hidden={!open}
     >
       <div className="welcome-card">
-        <div className="welcome-icon-ring">
-          <i className="fa-solid fa-graduation-cap" />
-        </div>
+        <button
+          type="button"
+          className="editar-nombre-foto"
+          onClick={() => inputFotoRef.current?.click()}
+          title="Agregar o cambiar foto"
+          aria-label="Agregar o cambiar foto"
+        >
+          {foto ? (
+            <img
+              src={foto}
+              alt="Tu foto"
+              className="editar-nombre-foto__img"
+            />
+          ) : (
+            <i className="fa-solid fa-user" />
+          )}
 
-        <h2 className="welcome-titulo">¡Bienvenido a Mi Estudio!</h2>
+          <span className="editar-nombre-foto__lapiz">
+            <i className="fa-solid fa-pen" />
+          </span>
+        </button>
 
-        <p className="welcome-texto">
-          Antes de empezar, ¿cómo te llamas? Lo usamos para saludarte y en
-          tus resultados.
-        </p>
+        <input
+          ref={inputFotoRef}
+          type="file"
+          accept="image/*"
+          onChange={elegirFoto}
+          style={{ display: "none" }}
+        />
+
+        {foto && (
+          <button
+            type="button"
+            className="editar-nombre-foto__quitar"
+            onClick={() => setFoto(null)}
+          >
+            Quitar foto
+          </button>
+        )}
+
+        <h2 className="welcome-titulo">
+          ¿Cómo te llamas?
+        </h2>
 
         <input
           type="text"
@@ -41,7 +152,7 @@ export default function WelcomeModal({ open, onSubmit }) {
           autoCapitalize="characters"
           spellCheck={false}
           autoFocus
-          maxLength={16}
+          maxLength={30}
           value={nombre}
           onChange={(e) => {
             const valor = e.target.value
@@ -59,19 +170,14 @@ export default function WelcomeModal({ open, onSubmit }) {
           className="welcome-input"
         />
 
-        <p className="welcome-texto welcome-texto--sutil">
-          <i className="fa-solid fa-robot" /> ¿Tienes dudas sobre cómo
-          funciona la app? Toca el ícono del asistente, abajo, cuando
-          quieras.
-        </p>
-
         <div className="welcome-nav">
           <button
+            type="button"
             className="welcome-btn is-next btn-primary"
             onClick={confirmar}
             disabled={!nombre.trim()}
           >
-            Empezar a estudiar
+            Continuar
           </button>
         </div>
       </div>

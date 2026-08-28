@@ -188,7 +188,7 @@
 
 @media (max-width:480px){
   .levels-modal__grid{
-    grid-template-columns:repeat(4,minmax(0,1fr));
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:8px;
   }
 }
@@ -493,6 +493,8 @@
 .levels-modal__empty {
   color: var(--ink-soft);
   margin-bottom: 20px;
+  background: transparent!important;
+  padding: 0!important;
 }
 
 .levels-modal__counter {

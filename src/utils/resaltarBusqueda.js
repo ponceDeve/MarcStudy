@@ -6,16 +6,18 @@ import { regexInsensible } from "../lib/buscador";
 // casos:
 //
 // - Si se sabe exactamente qué palabra/frase coincidió (matchText), se
-//   envuelve solo esa parte del texto en un <mark> temporal.
+//   envuelve solo esa parte del texto en un <mark> temporal, fijo por
+//   DURACION_PALABRA_MS.
 // - Si no hay ninguna coincidencia literal (match puramente semántico,
-//   la búsqueda encontró el punto por significado, no por palabras),
-//   no hay nada puntual para subrayar: se destella el fondo de todo el
-//   campo (texto o explicación) donde se encontró, para ubicar igual
-//   al usuario.
+//   la búsqueda encontró el punto por significado, no por palabras), no
+//   hay nada puntual para subrayar: se pone una capa oscura semitransparente
+//   sobre todo el campo (texto o explicación) donde se encontró, por
+//   DURACION_FLASH_MS, para ubicar igual al usuario.
 
-const DURACION_MS = 2000;
+const DURACION_PALABRA_MS = 5000;
+const DURACION_FLASH_MS = 2000;
 
-export function resaltarPalabraTemporal(contenedor, matchText, duracionMs = DURACION_MS) {
+export function resaltarPalabraTemporal(contenedor, matchText, duracionMs = DURACION_PALABRA_MS) {
   if (!contenedor || !matchText) return false;
 
   const regex = regexInsensible(matchText);
@@ -47,10 +49,9 @@ export function resaltarPalabraTemporal(contenedor, matchText, duracionMs = DURA
       return false;
     }
 
-    setTimeout(() => {
-      marca.classList.add("is-fading");
-      setTimeout(() => deshacerResaltado(marca), 400);
-    }, duracionMs);
+    // Se queda fijo, a color completo, durante toda la duración; recién
+    // al final se quita de una (sin fundido a medio camino).
+    setTimeout(() => deshacerResaltado(marca), duracionMs);
 
     return true;
   }
@@ -66,8 +67,31 @@ function deshacerResaltado(marca) {
   padre.normalize();
 }
 
-export function flashearFondoTemporal(contenedor, duracionMs = DURACION_MS) {
+// Pone una capa oscura semitransparente (rgba(0,0,0,0.1)) cubriendo todo
+// el contenedor, vía un div absoluto (inset: 0) superpuesto — no anima
+// el background del contenedor directo, para que cubra el campo entero
+// sin importar su propio color de fondo. El contenedor necesita quedar
+// con position relative mientras dura el flash, para que el overlay se
+// ubique justo encima de él (se restaura como estaba después).
+export function flashearFondoTemporal(contenedor, duracionMs = DURACION_FLASH_MS) {
   if (!contenedor) return;
-  contenedor.classList.add("teoria-busqueda-flash");
-  setTimeout(() => contenedor.classList.remove("teoria-busqueda-flash"), duracionMs);
+
+  const posicionOriginal = contenedor.style.position;
+  const necesitaRelative =
+    getComputedStyle(contenedor).position === "static";
+
+  if (necesitaRelative) {
+    contenedor.style.position = "relative";
+  }
+
+  const overlay = document.createElement("div");
+  overlay.className = "teoria-busqueda-overlay";
+  contenedor.appendChilad(overlay);
+
+  setTimeout(() => {
+    overlay.remove();
+    if (necesitaRelative) {
+      contenedor.style.position = posicionOriginal;
+    }
+  }, duracionMs);
 }

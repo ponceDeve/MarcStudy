@@ -10,8 +10,9 @@ import { embeberTextos, embeberTexto, similitudCoseno } from "../../lib/semantic
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 
 const DEBOUNCE_SEMANTICO_MS = 350;
+const MIN_LARGO_QUERY_TEXTO = 2;
 const MIN_LARGO_QUERY_SEMANTICO = 4;
-const UMBRAL_SIMILITUD = 0.45;
+const UMBRAL_SIMILITUD = 0.60;
 
 // Componente para resaltar coincidencia en búsqueda (título / texto del
 // punto). Igual que siempre: coincidencia literal simple sobre el texto
@@ -113,7 +114,8 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
 
   // --- Búsqueda textual: instantánea, en cada tecla (barata) ---
   const candidatosTexto = useMemo(() => {
-    if (!hayQuery) return [];
+    const queryLimpia = query.trim();
+    if (!hayQuery || queryLimpia.length < MIN_LARGO_QUERY_TEXTO) return [];
 
     return flatPuntos.map((punto) => {
       const scoreTitulo = puntajeDeTexto(punto.seccionTitulo || "", query);
@@ -136,7 +138,14 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
     if (debounceRef.current) clearTimeout(debounceRef.current);
 
     const queryLimpia = query.trim();
-    if (queryLimpia.length < MIN_LARGO_QUERY_SEMANTICO) {
+    const hayCoincidenciasLiterales = candidatosTexto.some(
+      ({ textScore }) => textScore > 0
+    );
+
+    if (
+      queryLimpia.length < MIN_LARGO_QUERY_SEMANTICO ||
+      hayCoincidenciasLiterales
+    ) {
       setBuscandoSemantico(false);
       return;
     }
@@ -188,28 +197,44 @@ export default function TheorySearchBar({ flatPuntos = [], onSelect }) {
     }, DEBOUNCE_SEMANTICO_MS);
 
     return () => clearTimeout(debounceRef.current);
-  }, [query, flatPuntos]);
+  }, [query, flatPuntos, candidatosTexto]);
 
-  // --- Combinar texto + semántico en un ranking final ---
+  // --- Búsqueda por etapas: texto primero, semántica como fallback ---
   const resultados = useMemo(() => {
-    if (!hayQuery) return [];
+    const queryLimpia = query.trim();
+    if (!hayQuery || queryLimpia.length < MIN_LARGO_QUERY_TEXTO) return [];
 
-    const semanticoVigente = semantico.query === query.trim() ? semantico.scores : {};
+    const resultadosTexto = candidatosTexto
+      .filter(({ textScore }) => textScore > 0)
+      .map(({ punto, textScore, soloExplicacion }) => ({
+        punto,
+        finalScore: textScore,
+        soloExplicacion,
+        esSemantico: false,
+      }))
+      .sort((a, b) => b.finalScore - a.finalScore)
+      .slice(0, 8);
+
+    if (resultadosTexto.length > 0 || queryLimpia.length < MIN_LARGO_QUERY_SEMANTICO) {
+      return resultadosTexto;
+    }
+
+    const semanticoVigente =
+      semantico.query === queryLimpia ? semantico.scores : {};
 
     return candidatosTexto
-      .map(({ punto, textScore, soloExplicacion }) => {
+      .map(({ punto }) => {
         const similitud = semanticoVigente[punto.id];
-        const semanticScore = similitud != null ? similitud * 700 : 0;
-        const finalScore = Math.max(textScore, semanticScore);
+        if (similitud == null) return null;
 
         return {
           punto,
-          finalScore,
-          soloExplicacion,
-          esSemantico: semanticScore > textScore && semanticScore > 0,
+          finalScore: similitud * 700,
+          soloExplicacion: false,
+          esSemantico: true,
         };
       })
-      .filter((r) => r.finalScore > 0)
+      .filter(Boolean)
       .sort((a, b) => b.finalScore - a.finalScore)
       .slice(0, 8);
   }, [candidatosTexto, semantico, query, hayQuery]);
