@@ -11,16 +11,24 @@ import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
 
 function partirEnEspacios(textoConEspacios) {
+  const texto = textoConEspacios || "";
   const partes = [];
-  const regex = /___\d+___/g;
+
+  // Gemini debería usar siempre ___1___, pero a veces no respeta el
+  // formato exacto y entrega ***1*** o ---1--- (o mezcla los tres
+  // estilos entre la apertura y el cierre). Esta regex acepta
+  // cualquiera de los 3 delimitadores, en cualquier combinación, con
+  // o sin espacios pegados al número.
+  const regex = /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
+
   let ultimoIndex = 0;
   let match;
 
-  while ((match = regex.exec(textoConEspacios)) !== null) {
+  while ((match = regex.exec(texto)) !== null) {
     if (match.index > ultimoIndex) {
       partes.push({
         tipo: "texto",
-        valor: textoConEspacios.slice(ultimoIndex, match.index),
+        valor: texto.slice(ultimoIndex, match.index),
       });
     }
 
@@ -31,10 +39,10 @@ function partirEnEspacios(textoConEspacios) {
     ultimoIndex = match.index + match[0].length;
   }
 
-  if (ultimoIndex < textoConEspacios.length) {
+  if (ultimoIndex < texto.length) {
     partes.push({
       tipo: "texto",
-      valor: textoConEspacios.slice(ultimoIndex),
+      valor: texto.slice(ultimoIndex),
     });
   }
 

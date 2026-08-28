@@ -92,6 +92,15 @@
   padding: 14px 18px;
 }
 
+.faq-section__item.is-abierta {
+  background: var(--primary-bg);
+  border-color: var(--primary-light);
+}
+
+.faq-section__item.is-abierta .faq-section__pregunta {
+  color: var(--primary);
+}
+
 .faq-section__pregunta {
   font-weight: 600;
   color: var(--ink);
@@ -116,6 +125,10 @@
 
 .faq-section__item[open] .faq-section__pregunta::before {
   transform: rotate(-180deg);
+}
+
+.faq-section__item.is-abierta .faq-section__pregunta::before {
+  color: var(--primary);
 }
 
 .faq-section__respuesta {

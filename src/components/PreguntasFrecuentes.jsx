@@ -29,6 +29,7 @@ const PREGUNTAS_DESTACADAS = preguntasFrecuentes
 
 export default function PreguntasFrecuentes() {
   const [busqueda, setBusqueda] = useState("");
+  const [abiertaId, setAbiertaId] = useState(null);
 
   const queryNorm = sinTildes(busqueda);
 
@@ -41,6 +42,10 @@ export default function PreguntasFrecuentes() {
     if (!queryNorm) return PREGUNTAS_DESTACADAS;
     return preguntasFrecuentes.filter((p) => coincide(p, queryNorm));
   }, [queryNorm]);
+
+  function alternarPregunta(id) {
+    setAbiertaId((actual) => (actual === id ? null : id));
+  }
 
   return (
     <section className="faq-section">
@@ -71,14 +76,30 @@ export default function PreguntasFrecuentes() {
               <p>{respuestaDinamica}</p>
             </div>
           ) : preguntasAMostrar.length > 0 ? (
-            preguntasAMostrar.map((p) => (
-              <details key={p.id} className="faq-section__item">
-                <summary className="faq-section__pregunta">
-                  {p.pregunta}
-                </summary>
-                <p className="faq-section__respuesta">{p.respuestas[0]}</p>
-              </details>
-            ))
+            preguntasAMostrar.map((p) => {
+              const abierta = abiertaId === p.id;
+
+              return (
+                <details
+                  key={p.id}
+                  className={`faq-section__item ${abierta ? "is-abierta" : ""}`}
+                  open={abierta}
+                >
+                  <summary
+                    className="faq-section__pregunta"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alternarPregunta(p.id);
+                    }}
+                  >
+                    {p.pregunta}
+                  </summary>
+                  <p className="faq-section__respuesta">
+                    {p.respuestas[0]}
+                  </p>
+                </details>
+              );
+            })
           ) : (
             <p className="faq-section__vacio">
               No puedo responder a esa pregunta. Prueba con otras

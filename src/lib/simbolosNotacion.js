@@ -19,7 +19,25 @@ export const SIMBOLOS_NOTACION = {
   "↑": "aumenta",
   "↓": "disminuye",
   "≠": "diferente",
-  "≈": "similar"
+  "≈": "similar",
+
+  "⇔": "equivale",
+  "↔": "se relaciona con",
+  "∴": "por tanto",
+  "∵": "porque",
+  "⊂": "forma parte de",
+  "∉": "no pertenece",
+  "≤": "menor o igual",
+  "≥": "mayor o igual",
+  "−": "menos",
+  "±": "más o menos",
+  "×": "multiplica",
+  "÷": "divide",
+  "→": "produce",
+  "⇒": "implica",
+  "∣": "tal que",
+  "∧": "y",
+  "∨": "o"
 };
 
 // Ordenados de más largo a más corto (por si en el futuro se agrega
