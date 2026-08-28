@@ -3135,12 +3135,7 @@ export default function MiEstudioPage() {
                                     }`}
                                 >
                                   <span className="curso-title">
-
-                                    <ResaltarCoincidencia
-                                      texto={g.curso}
-                                      query={query}
-                                    />
-
+                                    {g.curso}
                                   </span>
                                 </button>
 

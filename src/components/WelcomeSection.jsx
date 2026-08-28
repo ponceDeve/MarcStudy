@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import manifest from "../data/manifest.json";
+import PreguntasFrecuentes from "./PreguntasFrecuentes";
 
 const DESCRIPCIONES_CURSO = {
   CIV: "Tus derechos, tus deberes y cómo funciona el país donde vives: todo lo que deberías saber para moverte como ciudadano, no solo para el examen.",
@@ -246,6 +247,8 @@ export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [
           </div>
         </div>
       </section>
+
+      <PreguntasFrecuentes />
     </div>
   );
 }

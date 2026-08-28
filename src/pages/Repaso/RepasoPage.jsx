@@ -16,9 +16,9 @@ import {
   eliminarRepaso
 } from "../../lib/repasoStorage";
 
-// La bienvenida con tutorial fijo (PASOS_BIENVENIDA) se reemplazó por el
-// asistente de ayuda global: cualquier duda sobre cómo funciona el
-// Repaso se responde ahora desde el ícono de robot.
+// La bienvenida con tutorial fijo (PASOS_BIENVENIDA) se reemplazó por la
+// sección de Preguntas frecuentes en Inicio: cualquier duda sobre cómo
+// funciona el Repaso se responde ahora desde ahí.
 
 export default function RepasoPage() {
   const navigate = useNavigate();
@@ -566,8 +566,8 @@ export default function RepasoPage() {
           }}
         />
 
-        {/* La bienvenida con tutorial fijo se reemplazó por el asistente
-            de ayuda global (ícono de robot). */}
+        {/* La bienvenida con tutorial fijo se reemplazó por la sección de
+            Preguntas frecuentes en Inicio. */}
 
         {/* ─────────────────────────────────────
             MODAL ELIMINAR

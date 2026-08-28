@@ -682,12 +682,7 @@ export default function SearchModal({
                           }`}
                         >
                           <span className="curso-title">
-
-                            <ResaltarCoincidencia
-                              texto={g.curso}
-                              query={query}
-                            />
-
+                            {g.curso}
                           </span>
                         </button>
 

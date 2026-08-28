@@ -41,8 +41,8 @@ const NOMBRE_DIA = {
 };
 
 // La explicación fija de "¡Bienvenido al Pomodoro!" (PASOS_BIENVENIDA) se
-// reemplazó por el asistente de ayuda global: cualquier duda sobre cómo
-// funciona el Pomodoro se responde ahora desde ahí.
+// reemplazó por la sección de Preguntas frecuentes en Inicio: cualquier
+// duda sobre cómo funciona el Pomodoro se responde ahora desde ahí.
 
 // Solo estos descansos activan el bloqueo de pantalla.
 const RESTS_BLOQUEABLES = [5, 10, 30];
@@ -1393,8 +1393,8 @@ export default function HorarioPage() {
         </div>
       </Modal>
 
-      {/* La bienvenida con tutorial fijo se reemplazó por el asistente de
-          ayuda global (ícono de robot). */}
+      {/* La bienvenida con tutorial fijo se reemplazó por la sección de
+          Preguntas frecuentes en Inicio. */}
 
       {/* ==========================================================
           GATE DE CONFIGURACIÓN
