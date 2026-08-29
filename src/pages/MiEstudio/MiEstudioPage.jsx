@@ -353,6 +353,8 @@ export default function MiEstudioPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [flatPuntos, setFlatPuntos] = useState([]);
+  const [preguntasFinalesIds, setPreguntasFinalesIds] =
+    useState([]);
   const [cardIndex, setCardIndex] = useState(0);
   const [ordenPreguntas, setOrdenPreguntas] =
     useState([]);
@@ -363,6 +365,7 @@ export default function MiEstudioPage() {
   const [isLevelMode, setIsLevelMode] =
     useState(false);
   const [textosSeleccionados, setTextosSeleccionados] = useState([]);
+  const [textosCompletados, setTextosCompletados] = useState([]);
   const [mostrarCongratulations, setMostrarCongratulations] = useState(false);
   const [mostrarAviso, setMostrarAviso] = useState(true);
 
@@ -1179,17 +1182,22 @@ export default function MiEstudioPage() {
       const originalExamen = topicData?.examen || [];
 
       let preguntasFinales = [];
+      let idsFinales = [];
 
       if (opts.soloAdicionales) {
-        preguntasFinales = flatPuntos
+        const itemsFinales = flatPuntos
           .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
-          .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios")
-          .map(x => x.pregunta);
+          .filter(x => x.pregunta && x.punto?.seccionTitulo === "Ejercicios");
+
+        preguntasFinales = itemsFinales.map(x => x.pregunta);
+        idsFinales = itemsFinales.map(x => x.punto.id);
       } else if (opts.seleccionEspecifica) {
-        preguntasFinales = flatPuntos
+        const itemsFinales = flatPuntos
           .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
-          .filter(p => p.pregunta && opts.seleccionEspecifica.includes(p.id))
-          .map(p => p.pregunta);
+          .filter(p => p.pregunta && opts.seleccionEspecifica.includes(p.id));
+
+        preguntasFinales = itemsFinales.map(p => p.pregunta);
+        idsFinales = itemsFinales.map(p => p.id);
       } else if (opts.requiereSeleccion) {
         if (textosSeleccionados.length === 0) {
           sinPreguntaTimers.current.forEach(clearTimeout);
@@ -1209,16 +1217,25 @@ export default function MiEstudioPage() {
           return;
         }
 
-        const preguntasVinculadasTeoria = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
-          .filter(p => p.pregunta && textosSeleccionados.includes(p.id))
-          .map(p => p.pregunta);
+        const itemsPuntos = flatPuntos
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }));
 
-        preguntasFinales = preguntasVinculadasTeoria.length > 0
-          ? preguntasVinculadasTeoria
-          : originalExamen;
+        const itemsVinculadosTeoria = itemsPuntos
+          .filter(p => p.pregunta && textosSeleccionados.includes(p.id));
+
+        const itemsFinales = itemsVinculadosTeoria.length > 0
+          ? itemsVinculadosTeoria
+          : itemsPuntos.filter(p => p.pregunta);
+
+        preguntasFinales = itemsFinales.map(p => p.pregunta);
+        idsFinales = itemsFinales.map(p => p.id);
       } else {
-        preguntasFinales = originalExamen;
+        const itemsFinales = flatPuntos
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
+          .filter(p => p.pregunta);
+
+        preguntasFinales = itemsFinales.map(p => p.pregunta);
+        idsFinales = itemsFinales.map(p => p.id);
       }
 
       if (preguntasFinales.length === 0) {
@@ -1243,6 +1260,7 @@ export default function MiEstudioPage() {
       }
 
       setExamenPreguntas(preguntasFinales);
+      setPreguntasFinalesIds(idsFinales);
 
       const orden = shuffle(
         Array.from(
@@ -1264,6 +1282,8 @@ export default function MiEstudioPage() {
       setStage("question");
       setIsFlipQuiz(false);
       setCountdown(0);
+      setQuestionResult(null);
+      setAttemptKey(0);
     }
   }
 
@@ -1831,6 +1851,40 @@ export default function MiEstudioPage() {
       setScore(
         (s) => s + 1
       );
+
+      if (
+        modoEstudio === "solo_preguntas" &&
+        preguntasFinalesIds[cardIndex]
+      ) {
+        const puntoIdRespondido = preguntasFinalesIds[cardIndex];
+
+        setTextosCompletados((prev) =>
+          prev.includes(puntoIdRespondido)
+            ? prev
+            : [...prev, puntoIdRespondido]
+        );
+
+        setTextosSeleccionados((prev) => {
+          if (prev.includes(puntoIdRespondido)) {
+            return prev;
+          }
+
+          const newSelection = [...prev, puntoIdRespondido];
+
+          const idsTeoriaNormal = flatPuntos
+            .filter((p) => p.seccionTitulo !== "Ejercicios")
+            .map((p) => p.id);
+
+          if (
+            idsTeoriaNormal.length > 0 &&
+            idsTeoriaNormal.every((id) => newSelection.includes(id))
+          ) {
+            setMostrarCongratulations(true);
+          }
+
+          return newSelection;
+        });
+      }
 
       if (isLevelMode) {
         setNivelCompletions(
@@ -3394,6 +3448,13 @@ export default function MiEstudioPage() {
                                         checked={textosSeleccionados.includes(puntoId)}
                                         onClick={(e) => e.stopPropagation()}
                                         onChange={() => {
+                                          if (textosCompletados.includes(puntoId)) {
+                                            // Ya se ganó este check al responder
+                                            // bien su pregunta: no se puede
+                                            // desmarcar con un click.
+                                            return;
+                                          }
+
                                           setTextosSeleccionados((prev) => {
                                             const newSelection = prev.includes(puntoId)
                                               ? prev.filter((t) => t !== puntoId)
@@ -3478,7 +3539,7 @@ export default function MiEstudioPage() {
                     </div>
 
                     <ExercisesSection
-                      examenPreguntas={examenPreguntas.filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
+                      examenPreguntas={(topicData?.examen || []).filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
                       onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
                     />
 
