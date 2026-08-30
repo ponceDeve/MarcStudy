@@ -37,7 +37,10 @@ function leerHistorial() {
 
 function escribirHistorial(historial) {
   try {
-    localStorage.setItem(HISTORIAL_KEY, JSON.stringify(historial));
+    localStorage.setItem(
+      HISTORIAL_KEY,
+      JSON.stringify(historial)
+    );
 
     return true;
   } catch {
@@ -48,25 +51,10 @@ function escribirHistorial(historial) {
 export function useSearchHistory() {
   const [historial, setHistorial] = useState([]);
 
-  /*
-   * Cargar el historial guardado al montar el componente.
-   */
   useEffect(() => {
     setHistorial(leerHistorial());
   }, []);
 
-  /*
-   * Guardar una búsqueda.
-   *
-   * Si ya existe:
-   * - no crea duplicado
-   * - la mueve al principio
-   *
-   * Si no existe:
-   * - la agrega al principio
-   *
-   * Se conservan como máximo 15 búsquedas.
-   */
   const guardarBusqueda = useCallback((item) => {
     if (!item) {
       return [];
@@ -80,12 +68,17 @@ export function useSearchHistory() {
     }
 
     const sinDuplicado = historialActual.filter(
-      (anterior) => obtenerClaveHistorial(anterior) !== claveNueva,
+      (anterior) =>
+        obtenerClaveHistorial(anterior) !== claveNueva
     );
 
-    const nuevoHistorial = [item, ...sinDuplicado].slice(0, HISTORIAL_MAX);
+    const nuevoHistorial = [
+      item,
+      ...sinDuplicado
+    ].slice(0, HISTORIAL_MAX);
 
-    const guardado = escribirHistorial(nuevoHistorial);
+    const guardado =
+      escribirHistorial(nuevoHistorial);
 
     if (guardado) {
       setHistorial(nuevoHistorial);
@@ -95,9 +88,31 @@ export function useSearchHistory() {
     return historialActual;
   }, []);
 
-  /*
-   * Eliminar todo el historial.
-   */
+  const eliminarBusqueda = useCallback((item) => {
+    if (!item) {
+      return;
+    }
+
+    const claveEliminar =
+      obtenerClaveHistorial(item);
+
+    if (!claveEliminar) {
+      return;
+    }
+
+    const historialActual = leerHistorial();
+
+    const nuevoHistorial =
+      historialActual.filter(
+        (anterior) =>
+          obtenerClaveHistorial(anterior) !==
+          claveEliminar
+      );
+
+    escribirHistorial(nuevoHistorial);
+    setHistorial(nuevoHistorial);
+  }, []);
+
   const eliminarHistorial = useCallback(() => {
     try {
       localStorage.removeItem(HISTORIAL_KEY);
@@ -108,25 +123,22 @@ export function useSearchHistory() {
     setHistorial([]);
   }, []);
 
-  /*
-   * Volver a leer el historial desde localStorage.
-   *
-   * Es útil cuando otro componente puede haber modificado
-   * el historial mientras este componente seguía montado.
-   */
   const actualizarHistorial = useCallback(() => {
     const nuevoHistorial = leerHistorial();
+
     setHistorial(nuevoHistorial);
+
     return nuevoHistorial;
   }, []);
 
   return {
     historial,
     guardarBusqueda,
+    eliminarBusqueda,
     eliminarHistorial,
     actualizarHistorial,
     obtenerClaveHistorial,
-    maxHistorial: HISTORIAL_MAX,
+    maxHistorial: HISTORIAL_MAX
   };
 }
 

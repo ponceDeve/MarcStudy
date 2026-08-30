@@ -66,12 +66,12 @@
   font-size: 14px;
   border: none;
   border-radius: var(--radius-md);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   color: var(--ink-on-primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s linear, transform 0.15s linear, box-shadow 0.15s linear;
 }
 .explanation-panel__btn.is-next {
   background: var(--primary);
@@ -108,7 +108,7 @@
   background:rgba(178,180,192,.74);
   backdrop-filter:blur(2px);
   -webkit-backdrop-filter:blur(2px);
-  animation:rendirseOverlayIn .18s ease-out;
+  animation:rendirseOverlayIn .18s linear-out;
 }
 
 .rendirse-modal {
@@ -225,8 +225,8 @@
   font-weight: 800;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease, color 0.12s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: transform 0.12s linear, background-color 0.12s linear, border-color 0.12s linear, box-shadow 0.12s linear, color 0.12s linear;
 }
 .rendirse-modal__btn.is-cancel {
   color: rgba(255, 255, 255, 0.88);

@@ -9,7 +9,7 @@
   width: 100%;
   height: var(--header-h);
   background: transparent;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s linear;
 }
 
 body.is-header-oculto .topbar-wrapper {
@@ -37,7 +37,6 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__inner {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   height: 100%;
   display: flex;
@@ -68,12 +67,11 @@ body.is-header-oculto .topbar-wrapper {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 0;
   background: transparent;
   border: none;
   border-radius: 6px;
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   text-align: left;
   overflow: hidden;
   text-decoration: none;
@@ -108,7 +106,7 @@ body.is-header-oculto .topbar-wrapper {
   transition: transform 0.2s linear;
 }
 
-.topbar__tema-wrapper:hover i {
+.topbar__title-btn:hover i {
   transform: rotate(180deg);
 }
 
@@ -148,23 +146,24 @@ body.is-header-oculto .topbar-wrapper {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0 20px;
+  font-size: clamp(.75rem, 1vw, 1.25rem);
+
 }
 
 .btn__inicio {
   flex-direction: row;
   align-items: center;
+  gap: 10px;
 }
 
 .topbar__curso--clickable {
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   background: none;
   border: none;
   padding: 0;
   font: inherit;
   text-align: left;
   text-decoration: none;
-  font-size: 15px;
 }
 
 .topbar__nav {
@@ -189,7 +188,7 @@ body.is-header-oculto .topbar-wrapper {
   border: none;
   border-radius: 6px;
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s linear;
@@ -242,6 +241,105 @@ body.is-header-oculto .topbar-wrapper {
   flex-shrink: 0;
 }
 
+.topbar__search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 420px;
+  height: 38px;
+  margin: 0 12px;
+  padding: 0 14px;
+  background: var(--surface-alt, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full, 999px);
+  color: var(--ink-soft);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  font-family: var(--font-body);
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    transform 0.2s linear;
+}
+
+.topbar__search-bar:hover {
+  background: var(--brand-bg);
+  border-color: var(--primary);
+}
+
+.topbar__search-bar:active {
+  transform: scale(0.98);
+}
+
+.topbar__search-icon {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.topbar__search-placeholder {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.topbar__search-kbd {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .topbar__search-bar {
+    max-width: none;
+    margin: 0 8px;
+    padding: 0 12px;
+  }
+
+  .topbar__search-kbd {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar__search-placeholder {
+    display: none;
+  }
+
+  .topbar__search-bar {
+    flex: 0 0 auto;
+    width: 38px;
+    padding: 0;
+    justify-content: center;
+    margin: 0 6px;
+  }
+}
+
+@include respond(lg) {
+  .topbar__search-bar {
+    height: 42px;
+    max-width: 460px;
+  }
+
+  .topbar__search-placeholder,
+  .topbar__search-icon {
+    font-size: 14px;
+  }
+}
+
 .topbar__control-btn,
 .topbar__gear {
   width: 44px;
@@ -254,7 +352,7 @@ body.is-header-oculto .topbar-wrapper {
   border: none;
   border-radius: 50%;
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     background 0.2s linear,
     color 0.2s linear,
@@ -286,6 +384,7 @@ body.is-header-oculto .topbar-wrapper {
 .topbar__control-btn--menu:hover {
   background: rgba(20, 21, 24, 1);
   color: #fff;
+  transition: background .3s linear;
 }
 
 .topbar__hamburger {
@@ -431,7 +530,7 @@ body.is-header-oculto .topbar-wrapper {
   border: none;
   color: var(--ink-on-primary);
   font-size: 20px;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   border-radius: var(--radius-full);
   transition: all 0.2s linear;
   width: 35px;
@@ -466,12 +565,12 @@ body.is-header-oculto .topbar-wrapper {
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   text-align: left;
   transition:
-    background 0.5s ease,
-    color 0.5s ease,
-    transform 0.4s ease;
+    background 0.5s linear,
+    color 0.5s linear,
+    transform 0.4s linear;
 }
 
 .topbar__drawer-item:last-child {
@@ -504,8 +603,8 @@ body.is-header-oculto .topbar-wrapper {
   font-size: 18px;
   flex: none;
   transition:
-    color 0.5s ease,
-    transform 0.5s ease;
+    color 0.5s linear,
+    transform 0.5s linear;
 }
 
 .topbar__drawer-item:hover .topbar__drawer-item-icon,
@@ -543,5 +642,5 @@ body.is-header-oculto .topbar-wrapper {
 
 .topbar__logo--foto {
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
 }

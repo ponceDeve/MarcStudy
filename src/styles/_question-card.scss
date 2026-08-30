@@ -56,7 +56,7 @@
   border-radius: var(--radius-md);
   padding: 14px 12px;
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     border-color 0.15s,
     background 0.15s;
@@ -126,7 +126,7 @@
   border-radius: var(--radius-md);
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.15s;
   text-transform: uppercase;
 }
@@ -164,7 +164,7 @@
   background: var(--surface-alt);
   padding: 10px 14px;
   counter-increment: proposicion;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.2s linear, background 0.2s linear;
 }
 .question-card__vf-row::before {
   content: counter(proposicion) ".";
@@ -198,8 +198,8 @@
   background: transparent;
   color: var(--ink-soft);
   font-weight: 700;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear;
 }
 .question-card__vf-btn:hover:not(:disabled) {
   border-color: var(--success-bg);
@@ -247,7 +247,7 @@
   font-size: 13.5px;
   color: var(--ink);
   text-align: left;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 0.15s linear, background 0.15s linear;
 }
 
 /* Tipo: completar (texto con espacios en blanco) */
@@ -263,7 +263,7 @@
   font-weight: 700;
   color: var(--primary);
   margin: 0 2px;
-  transition: color 0.2s ease;
+  transition: color 0.2s linear;
 }
 .question-card__cloze-input.is-correct {
   color: var(--success);

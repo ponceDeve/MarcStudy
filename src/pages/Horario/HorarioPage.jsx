@@ -23,7 +23,6 @@ import {
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
-import AppFooter from "../../components/AppFooter";
 import SearchModal from "../../components/SearchModal";
 import ScheduleSetup from "./ScheduleSetup";
 

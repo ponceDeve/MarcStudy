@@ -62,9 +62,9 @@
   text-decoration: none;
 
   transition:
-    color 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
+    color 0.2s linear,
+    background 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .repaso__nav-link:hover {
@@ -204,9 +204,9 @@
   color: var(--ink);
 
   transition:
-    box-shadow 0.2s ease,
-    outline-color 0.2s ease,
-    transform 0.2s ease;
+    box-shadow 0.2s linear,
+    outline-color 0.2s linear,
+    transform 0.2s linear;
 }
 
 .repaso__item:hover {
@@ -422,13 +422,13 @@
 
   text-decoration: none;
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.15s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    transform 0.15s linear;
 }
 
 .repaso__item-link:hover {
@@ -464,12 +464,12 @@
   background: transparent;
   color: var(--ink-faint);
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear;
 }
 
 .repaso__check:hover {
@@ -500,11 +500,11 @@
   background: transparent;
   color: var(--danger);
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    color 0.2s ease,
-    background 0.2s ease;
+    color 0.2s linear,
+    background 0.2s linear;
 }
 
 .repaso__trash:hover {
@@ -748,11 +748,11 @@
   background: transparent;
   color: var(--danger);
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    color 0.2s ease,
-    background 0.2s ease;
+    color 0.2s linear,
+    background 0.2s linear;
 }
 
 .repaso__proximos-trash:hover {
@@ -857,12 +857,12 @@
 
   font-weight: 700;
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    opacity 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .btn-confirm--phase1:hover,
@@ -888,11 +888,11 @@
 
   font-weight: 700;
 
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .btn-cancel:hover {

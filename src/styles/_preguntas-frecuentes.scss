@@ -104,8 +104,9 @@
 .faq-section__pregunta {
   font-weight: 600;
   color: var(--ink);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   list-style: none;
+  user-select: none;
 }
 
 .faq-section__pregunta::-webkit-details-marker {
@@ -120,7 +121,7 @@
   margin-right: 10px;
   font-size: 0.75rem;
   color: var(--ink-faint);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s linear;
 }
 
 .faq-section__item[open] .faq-section__pregunta::before {

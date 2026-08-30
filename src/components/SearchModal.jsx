@@ -1,17 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
-
 import manifest from "../data/manifest.json";
-
-import { useArrowKeyList } from "../hooks/useArrowKeyList";
-
 import { useSearchHistory } from "../hooks/useSearchHistory";
-
 import { useLocalStorage } from "../hooks/useLocalStorage";
-
 import { buscarConPuntaje } from "../lib/buscador";
-
-import { franjaHoraria } from "../lib/saludo";
-
 import EditarNombreModal from "./EditarNombreModal";
 
 const HISTORIAL_POR_PAGINA = 5;
@@ -30,10 +21,6 @@ const TEMAS_ITEMS = manifest.cursos.flatMap((c) =>
   }))
 );
 
-/* ============================================================
-   NORMALIZAR TEXTO
-   ============================================================ */
-
 function normalizarTexto(texto) {
   return String(texto ?? "")
     .normalize("NFD")
@@ -41,65 +28,43 @@ function normalizarTexto(texto) {
     .toLowerCase();
 }
 
-/* ============================================================
-   RESALTAR COINCIDENCIA
-   ============================================================ */
-
 function ResaltarCoincidencia({ texto, query }) {
-  if (!query.trim()) {
-    return texto;
-  }
+  if (!query.trim()) return texto;
 
   const textoOriginal = String(texto ?? "");
   const busqueda = query.trim();
-
-  const textoNormalizado =
-    normalizarTexto(textoOriginal);
-
-  const busquedaNormalizada =
-    normalizarTexto(busqueda);
+  const textoNormalizado = normalizarTexto(textoOriginal);
+  const busquedaNormalizada = normalizarTexto(busqueda);
 
   if (!busquedaNormalizada) {
     return textoOriginal;
   }
 
-  const indice =
-    textoNormalizado.indexOf(busquedaNormalizada);
+  const indice = textoNormalizado.indexOf(busquedaNormalizada);
 
   if (indice === -1) {
     return textoOriginal;
   }
 
-  const antes =
-    textoOriginal.slice(0, indice);
-
-  const coincidencia =
-    textoOriginal.slice(
-      indice,
-      indice + busqueda.length
-    );
-
-  const despues =
-    textoOriginal.slice(
-      indice + busqueda.length
-    );
+  const antes = textoOriginal.slice(0, indice);
+  const coincidencia = textoOriginal.slice(
+    indice,
+    indice + busqueda.length
+  );
+  const despues = textoOriginal.slice(
+    indice + busqueda.length
+  );
 
   return (
     <>
       {antes}
-
       <span className="search-match">
         {coincidencia}
       </span>
-
       {despues}
     </>
   );
 }
-
-/* ============================================================
-   BÚSQUEDA
-   ============================================================ */
 
 function buscarFuertes(query) {
   const cursos = buscarConPuntaje(
@@ -126,24 +91,18 @@ function buscarFuertes(query) {
   };
 }
 
-/* ============================================================
-   AGRUPAR RESULTADOS
-   ============================================================ */
-
 function agruparResultados({ cursos, temas }) {
   const nombresCursosFuertes = new Set(
     cursos.map((c) => c.nombre)
   );
 
   const grupos = cursos.map((c) => {
-    const cursoEncontrado =
-      manifest.cursos.find(
-        (x) => x.nombre === c.nombre
-      );
+    const cursoEncontrado = manifest.cursos.find(
+      (x) => x.nombre === c.nombre
+    );
 
     return {
       curso: c.nombre,
-
       temas: cursoEncontrado
         ? cursoEncontrado.temas.map((t) => ({
             type: "tema",
@@ -179,53 +138,54 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
-/* ============================================================
-   SEARCH MODAL
-   ============================================================ */
-
 export default function SearchModal({
   open,
   onClose,
   onSelect
 }) {
   const [query, setQuery] = useState("");
-
-  const [paginaHistorial, setPaginaHistorial] =
-    useState(1);
-
-  const [inputFocused, setInputFocused] =
-    useState(false);
+  const [paginaHistorial, setPaginaHistorial] = useState(1);
+  const [inputFocused, setInputFocused] = useState(false);
 
   const [nombreUsuario, setNombreUsuario] =
-    useLocalStorage("miEstudio_nombreUsuario", null);
+    useLocalStorage(
+      "miEstudio_nombreUsuario",
+      null
+    );
+
   const [fotoUsuario, setFotoUsuario] =
-    useLocalStorage("miEstudio_fotoUsuario", null);
+    useLocalStorage(
+      "miEstudio_fotoUsuario",
+      null
+    );
 
   const [editarNombreAbierto, setEditarNombreAbierto] =
     useState(false);
+
+  const [focusedIdx, setFocusedIdx] = useState(-1);
 
   const inputRef = useRef(null);
 
   const {
     historial,
     guardarBusqueda,
-    eliminarHistorial
+    eliminarHistorial,
+    eliminarBusqueda
   } = useSearchHistory();
 
-  const hayQuery =
-    query.trim() !== "";
+  const hayQuery = query.trim() !== "";
 
-  const mostrarHistorial =
-    inputFocused &&
-    !hayQuery &&
-    historial.length > 0;
-
-  const mostrarResultados =
-    hayQuery;
-
-  /* ==========================================================
-     RESULTADOS
-     ========================================================== */
+  const gruposIniciales = useMemo(() => {
+    return manifest.cursos.map((curso) => ({
+      curso: curso.nombre,
+      temas: curso.temas.map((tema) => ({
+        type: "tema",
+        curso: curso.nombre,
+        tema: tema.tema,
+        archivo: tema.archivo
+      }))
+    }));
+  }, []);
 
   const fuertes = useMemo(
     () =>
@@ -243,25 +203,40 @@ export default function SearchModal({
     [fuertes]
   );
 
-  /* ==========================================================
-     ITEMS PLANOS
-     ========================================================== */
+  const mostrarListaInicial =
+    open &&
+    !hayQuery &&
+    !inputFocused;
 
-  const itemsPlanos = useMemo(
-    () =>
-      grupos.flatMap((g) => [
-        {
-          type: "curso",
-          nombre: g.curso
-        },
-        ...g.temas
-      ]),
-    [grupos]
-  );
+  const mostrarHistorial =
+    open &&
+    inputFocused &&
+    !hayQuery &&
+    historial.length > 0;
 
-  /* ==========================================================
-     HISTORIAL
-     ========================================================== */
+  const mostrarResultados =
+    open &&
+    hayQuery;
+
+  const contenidoExpandido =
+    mostrarListaInicial ||
+    mostrarHistorial ||
+    mostrarResultados ||
+    (inputFocused &&
+      hayQuery &&
+      grupos.length === 0);
+
+  const temasIniciales = useMemo(() => {
+    return gruposIniciales.flatMap(
+      (grupo) => grupo.temas
+    );
+  }, [gruposIniciales]);
+
+  const temasResultados = useMemo(() => {
+    return grupos.flatMap(
+      (grupo) => grupo.temas
+    );
+  }, [grupos]);
 
   const historialVisible = useMemo(() => {
     const inicio =
@@ -272,7 +247,10 @@ export default function SearchModal({
       inicio,
       inicio + HISTORIAL_POR_PAGINA
     );
-  }, [historial, paginaHistorial]);
+  }, [
+    historial,
+    paginaHistorial
+  ]);
 
   const hayMasHistorial =
     paginaHistorial *
@@ -282,9 +260,23 @@ export default function SearchModal({
   const hayMenosHistorial =
     paginaHistorial > 1;
 
-  /* ==========================================================
-     EJECUTAR BÚSQUEDA
-     ========================================================== */
+  const itemsNavegables = useMemo(() => {
+    if (hayQuery) {
+      return temasResultados;
+    }
+
+    if (inputFocused) {
+      return historialVisible;
+    }
+
+    return temasIniciales;
+  }, [
+    hayQuery,
+    inputFocused,
+    historialVisible,
+    temasResultados,
+    temasIniciales
+  ]);
 
   function ejecutarBusqueda(item) {
     if (!item) return;
@@ -292,19 +284,13 @@ export default function SearchModal({
     guardarBusqueda(item);
 
     setQuery("");
-
     setPaginaHistorial(1);
-
     setInputFocused(false);
+    setFocusedIdx(-1);
 
     onSelect(item);
-
     onClose();
   }
-
-  /* ==========================================================
-     EJECUTAR BÚSQUEDA ACTUAL
-     ========================================================== */
 
   function ejecutarBusquedaActual() {
     if (!hayQuery) return;
@@ -318,121 +304,234 @@ export default function SearchModal({
     }
   }
 
-  /* ==========================================================
-     ELIMINAR HISTORIAL
-     ========================================================== */
+  function eliminarUnaBusqueda(e, item) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    eliminarBusqueda(item);
+
+    setFocusedIdx(-1);
+
+    const historialRestante =
+      historial.length - 1;
+
+    const maxPagina = Math.max(
+      1,
+      Math.ceil(
+        historialRestante /
+          HISTORIAL_POR_PAGINA
+      )
+    );
+
+    setPaginaHistorial((actual) =>
+      Math.min(actual, maxPagina)
+    );
+  }
 
   function eliminarTodasLasBusquedas() {
     eliminarHistorial();
-
     setPaginaHistorial(1);
+    setFocusedIdx(-1);
   }
-
-  /* ==========================================================
-     LIMPIAR BÚSQUEDA
-     ========================================================== */
 
   function limpiarBusqueda() {
     setQuery("");
-
     setPaginaHistorial(1);
+    setFocusedIdx(-1);
+
+    requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
   }
 
-  /* ==========================================================
-     NAVEGACIÓN CON FLECHAS
-     ========================================================== */
+  function moverSeleccion(direccion) {
+    if (!open) return;
 
-  const {
+    const total = itemsNavegables.length;
+
+    if (!total) {
+      setFocusedIdx(-1);
+      return;
+    }
+
+    setFocusedIdx((actual) => {
+      if (actual === -1) {
+        return direccion > 0
+          ? 0
+          : total - 1;
+      }
+
+      const siguiente =
+        actual + direccion;
+
+      if (siguiente < 0) {
+        return 0;
+      }
+
+      if (siguiente >= total) {
+        return total - 1;
+      }
+
+      return siguiente;
+    });
+  }
+
+  function seleccionarElementoActual() {
+    if (
+      focusedIdx < 0 ||
+      focusedIdx >= itemsNavegables.length
+    ) {
+      return;
+    }
+
+    ejecutarBusqueda(
+      itemsNavegables[focusedIdx]
+    );
+  }
+
+  useEffect(() => {
+    if (focusedIdx < 0) {
+      return;
+    }
+
+    const elemento =
+      document.querySelector(
+        `[data-search-index="${focusedIdx}"]`
+      );
+
+    if (!elemento) {
+      return;
+    }
+
+    elemento.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }, [
     focusedIdx,
-    handleKeyDown
-  } = useArrowKeyList(
-    itemsPlanos,
-    ejecutarBusqueda
-  );
+    itemsNavegables
+  ]);
 
-  /* ==========================================================
-     FOCUS
-     ========================================================== */
+  useEffect(() => {
+    setFocusedIdx(-1);
+  }, [
+    query,
+    paginaHistorial
+  ]);
 
   useEffect(() => {
     if (!open) return;
 
     setPaginaHistorial(1);
-
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 0);
+    setQuery("");
+    setInputFocused(false);
+    setFocusedIdx(-1);
   }, [open]);
-
-  /* ==========================================================
-     ESC
-     ========================================================== */
 
   useEffect(() => {
     if (!open) return;
 
-    function onEsc(e) {
+    function onKeyDown(e) {
+      if (
+        document.activeElement ===
+        inputRef.current
+      ) {
+        return;
+      }
+
       if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
         onClose();
+        return;
+      }
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        e.stopPropagation();
+        moverSeleccion(1);
+        return;
+      }
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        e.stopPropagation();
+        moverSeleccion(-1);
+        return;
+      }
+
+      if (e.key === "Enter") {
+        if (
+          focusedIdx >= 0 &&
+          focusedIdx <
+            itemsNavegables.length
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          seleccionarElementoActual();
+          return;
+        }
+
+        if (hayQuery) {
+          e.preventDefault();
+          e.stopPropagation();
+          ejecutarBusquedaActual();
+        }
       }
     }
 
     document.addEventListener(
       "keydown",
-      onEsc
+      onKeyDown,
+      true
     );
 
     return () => {
       document.removeEventListener(
         "keydown",
-        onEsc
+        onKeyDown,
+        true
       );
     };
-  }, [open, onClose]);
+  }, [
+    open,
+    onClose,
+    focusedIdx,
+    itemsNavegables,
+    hayQuery
+  ]);
 
-  /* ==========================================================
-     RENDER
-     ========================================================== */
+  const inputTieneLista =
+    mostrarListaInicial ||
+    mostrarHistorial ||
+    (mostrarResultados &&
+      grupos.length > 0);
 
   return (
     <div
-      className={`search-overlay ${
-        open ? "" : "is-closed"
+      className={`search-overlay${
+        open ? "" : " is-closed"
       }`}
-
       onClick={(e) => {
-        if (e.target === e.currentTarget) {
+        if (
+          e.target ===
+          e.currentTarget
+        ) {
           onClose();
         }
       }}
-
       aria-hidden={!open}
     >
-      <div className="search-box">
-
-        {/* ==================================================
-            SALUDO (portada, antes de escribir)
-            ================================================== */}
-
-        {!hayQuery && (
-          <p className="search-saludo">
-            {franjaHoraria()}
-            {nombreUsuario && ", "}
-            {nombreUsuario && (
-              <span className="search-saludo__nombre">
-                {nombreUsuario}
-              </span>
-            )}
-          </p>
-        )}
-
-        {/* ==================================================
-            INPUT
-            ================================================== */}
-
+      <div
+        className={`search-box${
+          contenidoExpandido
+            ? " is-expanded"
+            : ""
+        }`}
+      >
         <div
           className={`search-input-row${
-            hayQuery || mostrarHistorial
+            inputTieneLista
               ? " has-query"
               : ""
           }`}
@@ -441,95 +540,99 @@ export default function SearchModal({
             autoComplete="off"
             type="search"
             name="buscar-curso-tema"
-
             ref={inputRef}
-
             value={query}
-
             onFocus={() => {
               setInputFocused(true);
+              setFocusedIdx(-1);
             }}
-
             onBlur={() => {
               setTimeout(() => {
                 setInputFocused(false);
               }, 100);
             }}
-
             onChange={(e) => {
               setQuery(e.target.value);
               setPaginaHistorial(1);
+              setFocusedIdx(-1);
             }}
-
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
+              if (e.key === "Escape") {
                 e.preventDefault();
-
-                if (
-                  hayQuery &&
-                  focusedIdx <= 0
-                ) {
-                  ejecutarBusquedaActual();
-                  return;
-                }
+                e.stopPropagation();
+                onClose();
+                return;
               }
 
-              handleKeyDown(e);
+              if (e.key === "ArrowDown") {
+                e.preventDefault();
+                e.stopPropagation();
+                moverSeleccion(1);
+                return;
+              }
+
+              if (e.key === "ArrowUp") {
+                e.preventDefault();
+                e.stopPropagation();
+                moverSeleccion(-1);
+                return;
+              }
+
+              if (e.key === "Enter") {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (
+                  focusedIdx >= 0 &&
+                  focusedIdx <
+                    itemsNavegables.length
+                ) {
+                  seleccionarElementoActual();
+                  return;
+                }
+
+                if (hayQuery) {
+                  ejecutarBusquedaActual();
+                }
+              }
             }}
-
             placeholder="Buscar curso o tema..."
-
             className="search-input"
           />
-
-          {/* ==================================================
-              LIMPIAR
-              ================================================== */}
 
           {hayQuery && (
             <button
               type="button"
               className="search-input-clear"
-
               aria-label="Limpiar búsqueda"
-
               onMouseDown={(e) => {
                 e.preventDefault();
+                e.stopPropagation();
               }}
-
               onClick={limpiarBusqueda}
             >
               <i className="fa-solid fa-xmark" />
             </button>
           )}
 
-          {/* ==================================================
-              LUPA
-              ================================================== */}
-
           <button
             type="button"
             className="search-input-lupa"
-
             aria-label="Buscar"
-
             onMouseDown={(e) => {
               e.preventDefault();
+              e.stopPropagation();
             }}
-
-            onClick={ejecutarBusquedaActual}
+            onClick={
+              ejecutarBusquedaActual
+            }
           >
             <i className="fa-solid fa-magnifying-glass" />
           </button>
         </div>
 
-        {/* ==================================================
-            HISTORIAL
-            ================================================== */}
-
         {mostrarHistorial && (
           <div className="search-history">
-
             {historialVisible.map(
               (item, index) => {
                 const texto =
@@ -543,42 +646,62 @@ export default function SearchModal({
                     : `tema-${item.curso || ""}-${item.tema || ""}-${item.archivo || ""}-${index}`;
 
                 return (
-                  <button
-                    type="button"
+                  <div
                     key={historialKey}
-
-                    className="search-history-item"
-
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                    }}
-
-                    onClick={() => {
-                      ejecutarBusqueda(item);
-                    }}
+                    className={`search-history-item${
+                      index === focusedIdx
+                        ? " is-focused"
+                        : ""
+                    }`}
+                    data-search-index={index}
                   >
-                    <i className="fa-solid fa-clock-rotate-left" />
+                    <button
+                      type="button"
+                      className="search-history-select"
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                      }}
+                      onClick={() => {
+                        ejecutarBusqueda(item);
+                      }}
+                    >
+                      <i className="fa-solid fa-clock-rotate-left" />
 
-                    <span>
-                      {texto}
-                    </span>
-                  </button>
+                      <span className="search-history-text">
+                        {texto}
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="search-history-delete"
+                      aria-label={`Eliminar ${texto} del historial`}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                      onClick={(e) => {
+                        eliminarUnaBusqueda(
+                          e,
+                          item
+                        );
+                      }}
+                    >
+                      <i className="fa-solid fa-xmark" />
+                    </button>
+                  </div>
                 );
               }
             )}
 
             <div className="search-history-actions">
-
               {hayMenosHistorial && (
                 <button
                   type="button"
-
                   className="search-history-action"
-
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
-
                   onClick={() => {
                     setPaginaHistorial(
                       (actual) =>
@@ -590,7 +713,6 @@ export default function SearchModal({
                   }}
                 >
                   <i className="fa-solid fa-chevron-up" />
-
                   Mostrar -
                 </button>
               )}
@@ -598,13 +720,10 @@ export default function SearchModal({
               {hayMasHistorial && (
                 <button
                   type="button"
-
                   className="search-history-action"
-
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
-
                   onClick={() => {
                     setPaginaHistorial(
                       (actual) =>
@@ -613,150 +732,156 @@ export default function SearchModal({
                   }}
                 >
                   <i className="fa-solid fa-chevron-down" />
-
                   Mostrar +
                 </button>
               )}
 
               <button
                 type="button"
-
                 className="search-history-action search-history-action--delete"
-
                 onMouseDown={(e) => {
                   e.preventDefault();
                 }}
-
                 onClick={
                   eliminarTodasLasBusquedas
                 }
               >
                 <i className="fa-solid fa-trash" />
-
                 Eliminar
               </button>
-
             </div>
           </div>
         )}
 
-        {/* ==================================================
-            RESULTADOS
-            ================================================== */}
+        {mostrarListaInicial && (
+          <div className="search-results">
+            {gruposIniciales.map(
+              (g, grupoIndex) => (
+                <div
+                  key={`grupo-inicial-${g.curso}-${grupoIndex}`}
+                  className="search-group"
+                >
+                  <div className="search-result-item is-curso">
+                    <span className="curso-title">
+                      {g.curso}
+                    </span>
+                  </div>
 
-        {mostrarResultados &&
-          grupos.length > 0 && (
-            <div className="search-results">
+                  {g.temas.map(
+                    (t, temaIndex) => {
+                      const index =
+                        temasIniciales.findIndex(
+                          (item) =>
+                            item.curso ===
+                              t.curso &&
+                            item.tema ===
+                              t.tema &&
+                            item.archivo ===
+                              t.archivo
+                        );
 
-              {(() => {
-                let idx = -1;
-
-                return grupos.map(
-                  (g, grupoIndex) => {
-                    const idxCurso =
-                      ++idx;
-
-                    return (
-                      <div
-                        key={`grupo-${g.curso}-${grupoIndex}`}
-                        className="search-group"
-                      >
-
-                        {/* CURSO */}
-
+                      return (
                         <button
                           type="button"
-
-                          onClick={() =>
-                            ejecutarBusqueda({
-                              type: "curso",
-                              nombre: g.curso
-                            })
+                          key={`tema-inicial-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+                          data-search-index={
+                            index
                           }
-
-                          className={`search-result-item is-curso${
-                            idxCurso ===
+                          onClick={() =>
+                            ejecutarBusqueda(t)
+                          }
+                          className={`search-result-item is-tema${
+                            index ===
                             focusedIdx
                               ? " is-focused"
                               : ""
                           }`}
                         >
-                          <span className="curso-title">
-                            {g.curso}
-                          </span>
+                          <p className="search-result-item__tema">
+                            {t.tema}
+                          </p>
                         </button>
+                      );
+                    }
+                  )}
+                </div>
+              )
+            )}
+          </div>
+        )}
 
-                        {/* TEMAS */}
+        {mostrarResultados &&
+          grupos.length > 0 && (
+            <div className="search-results">
+              {grupos.map(
+                (g, grupoIndex) => (
+                  <div
+                    key={`grupo-${g.curso}-${grupoIndex}`}
+                    className="search-group"
+                  >
+                    <div className="search-result-item is-curso">
+                      <span className="curso-title">
+                        {g.curso}
+                      </span>
+                    </div>
 
-                        {g.temas.map(
-                          (
-                            t,
-                            temaIndex
-                          ) => {
-                            const idxTema =
-                              ++idx;
+                    {g.temas.map(
+                      (t, temaIndex) => {
+                        const index =
+                          temasResultados.findIndex(
+                            (item) =>
+                              item.curso ===
+                                t.curso &&
+                              item.tema ===
+                                t.tema &&
+                              item.archivo ===
+                                t.archivo
+                          );
 
-                            return (
-                              <button
-                                type="button"
-
-                                key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
-
-                                onClick={() =>
-                                  ejecutarBusqueda(t)
-                                }
-
-                                className={`search-result-item is-tema${
-                                  idxTema ===
-                                  focusedIdx
-                                    ? " is-focused"
-                                    : ""
-                                }`}
-                              >
-                                <p className="search-result-item__tema">
-
-                                  <ResaltarCoincidencia
-                                    texto={t.tema}
-                                    query={query}
-                                  />
-
-                                </p>
-                              </button>
-                            );
-                          }
-                        )}
-
-                      </div>
-                    );
-                  }
-                );
-              })()}
-
+                        return (
+                          <button
+                            type="button"
+                            key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+                            data-search-index={
+                              index
+                            }
+                            onClick={() =>
+                              ejecutarBusqueda(t)
+                            }
+                            className={`search-result-item is-tema${
+                              index ===
+                              focusedIdx
+                                ? " is-focused"
+                                : ""
+                            }`}
+                          >
+                            <p className="search-result-item__tema">
+                              <ResaltarCoincidencia
+                                texto={t.tema}
+                                query={query}
+                              />
+                            </p>
+                          </button>
+                        );
+                      }
+                    )}
+                  </div>
+                )
+              )}
             </div>
           )}
-
-        {/* ==================================================
-            SIN RESULTADOS
-            MISMA CAJA QUE UNA SUGERENCIA
-            ================================================== */}
 
         {inputFocused &&
           hayQuery &&
           grupos.length === 0 && (
             <div className="search-results">
-
               <div className="search-group">
-
                 <div className="search-result-item search-no-results">
-
                   <p className="search-result-item__tema">
                     Sin resultados para "{query}"
                   </p>
-
                 </div>
-
               </div>
-
             </div>
           )}
       </div>
@@ -770,7 +895,9 @@ export default function SearchModal({
           setFotoUsuario(f);
           setEditarNombreAbierto(false);
         }}
-        onCancelar={() => setEditarNombreAbierto(false)}
+        onCancelar={() =>
+          setEditarNombreAbierto(false)
+        }
       />
     </div>
   );

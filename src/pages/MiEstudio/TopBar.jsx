@@ -7,7 +7,10 @@ function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
       {isOpen && (
-        <div className="offcanvas-backdrop fade show" onClick={onClose} />
+        <div
+          className="offcanvas-backdrop fade show"
+          onClick={onClose}
+        />
       )}
 
       <div
@@ -51,12 +54,10 @@ export default function TopBar({
   onGuardarRepaso,
   isFullscreen,
   onToggleFullscreen,
-  onVerPreguntasVistas,
   onAbandonarPregunta,
-  onReiniciarTarjetas,
   onIrInicio,
   pdfVerUrl,
-  pdfDescargaUrl
+  pdfDescargaUrl,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
@@ -83,7 +84,6 @@ export default function TopBar({
 
       const wrapperWidth = wrapper.clientWidth;
       const textWidth = firstText.scrollWidth;
-
       const overflows = textWidth > wrapperWidth;
 
       setTemaOverflows(overflows);
@@ -122,97 +122,134 @@ export default function TopBar({
 
   const repasoTo = "/repaso";
 
+  /*
+  ============================================================
+  BOTONES PRINCIPALES
+  ============================================================
+  */
+
   const botonesPrincipales = [
     {
       title: "Ir a Inicio",
       label: "Inicio",
       fullLabel: "Ir a Inicio",
       icon: "fa-solid fa-house",
-      onClick: onIrInicio
+      onClick: onIrInicio,
     },
+
     {
       title: "Buscar otro tema",
       label: "Buscar",
       fullLabel: "Buscar tema",
       icon: "fa-solid fa-magnifying-glass",
-      onClick: onAbrirBuscador
+      onClick: onAbrirBuscador,
     },
+
     {
-      title: "Guardar",
+      title: "Guardar progreso",
       label: "Guardar",
       fullLabel: "Guardar progreso",
       icon: "fa-solid fa-bookmark",
-      onClick: onGuardarRepaso
+      onClick: onGuardarRepaso,
     },
+
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
       fullLabel: "Mis Repasos",
-      icon: "fa-solid fa-brain",
-      to: repasoTo
+      icon: "fa-solid fa-calendar-check",
+      to: repasoTo,
     },
+
     {
       title: "Ir al Pomodoro",
-      label: "Pomo",
+      label: "Pomodoro",
       fullLabel: "Pomodoro",
-      icon: "fa-solid fa-calendar-alt",
-      to: pomodoroTo
-    }
+      icon: "fa-solid fa-hourglass-half",
+      to: pomodoroTo,
+    },
   ];
 
   const botonesVisibles =
-    stage === "question" ? [] : botonesPrincipales;
+    stage === "question"
+      ? []
+      : botonesPrincipales;
+
+  /*
+  ============================================================
+  AJUSTES
+  ============================================================
+  */
 
   const configButtons = [
     {
+      title: "Mini cronómetro",
       icon: "fa-solid fa-clock",
       label: "Timer",
       fullLabel: "Mini cronómetro",
-      onClick: onTogglePomodoroMini
+      onClick: onTogglePomodoroMini,
     },
+
     {
+      title: isFullscreen
+        ? "Minimizar pantalla"
+        : "Pantalla completa",
       icon: isFullscreen
         ? "fas fa-compress"
         : "fas fa-expand",
-      label: isFullscreen ? "Minimizar" : "Pantalla",
+      label: isFullscreen
+        ? "Minimizar"
+        : "Pantalla",
       fullLabel: isFullscreen
         ? "Minimizar pantalla"
         : "Pantalla completa",
-      onClick: onToggleFullscreen
+      onClick: onToggleFullscreen,
     },
+
     ...(pdfVerUrl
       ? [
           {
+            title: "Ver PDF",
             icon: "fas fa-file-pdf",
             label: "Ver PDF",
             fullLabel: "Ver PDF",
             href: pdfVerUrl,
-            target: "_blank"
-          }
+            target: "_blank",
+          },
         ]
       : []),
+
     ...(pdfDescargaUrl
       ? [
           {
+            title: "Descargar PDF",
             icon: "fas fa-download",
             label: "Descargar",
             fullLabel: "Descargar PDF",
             href: pdfDescargaUrl,
-            download: true
-          }
+            download: true,
+          },
         ]
       : []),
+
     ...(stage === "question"
       ? [
           {
+            title: "Abandonar pregunta",
             icon: "fas fa-door-open",
             label: "Abandonar",
             fullLabel: "Abandonar pregunta",
-            onClick: onAbandonarPregunta
-          }
+            onClick: onAbandonarPregunta,
+          },
         ]
-      : [])
+      : []),
   ];
+
+  /*
+  ============================================================
+  BOTÓN DEL TOPBAR
+  ============================================================
+  */
 
   const renderBoton = (
     b,
@@ -222,6 +259,7 @@ export default function TopBar({
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
+
         <span className="topbar__btn-title">
           {b.label}
         </span>
@@ -229,21 +267,28 @@ export default function TopBar({
     );
 
     const handleClick = () => {
-      if (b.onClick) b.onClick();
+      if (b.onClick) {
+        b.onClick();
+      }
+
       closeFn();
     };
 
-    return b.to ? (
-      <Link
-        key={b.title}
-        to={b.to}
-        title={b.title}
-        className={cls}
-        onClick={closeFn}
-      >
-        {content}
-      </Link>
-    ) : (
+    if (b.to) {
+      return (
+        <Link
+          key={b.title || b.label}
+          to={b.to}
+          title={b.title}
+          className={cls}
+          onClick={closeFn}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
       <button
         key={b.title || b.label}
         type="button"
@@ -255,6 +300,12 @@ export default function TopBar({
       </button>
     );
   };
+
+  /*
+  ============================================================
+  FILA DEL DRAWER
+  ============================================================
+  */
 
   const renderFila = (
     b,
@@ -273,7 +324,10 @@ export default function TopBar({
     );
 
     const handleClick = () => {
-      if (b.onClick) b.onClick();
+      if (b.onClick) {
+        b.onClick();
+      }
+
       closeFn();
     };
 
@@ -298,17 +352,21 @@ export default function TopBar({
       );
     }
 
-    return b.to ? (
-      <Link
-        key={b.title}
-        to={b.to}
-        title={b.title}
-        className="topbar__drawer-item"
-        onClick={closeFn}
-      >
-        {content}
-      </Link>
-    ) : (
+    if (b.to) {
+      return (
+        <Link
+          key={b.title || b.label}
+          to={b.to}
+          title={b.title}
+          className="topbar__drawer-item"
+          onClick={closeFn}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
       <button
         key={b.title || b.label}
         type="button"
@@ -321,11 +379,24 @@ export default function TopBar({
     );
   };
 
+  /*
+  ============================================================
+  RENDER
+  ============================================================
+  */
+
   return (
     <div className="topbar-wrapper">
       <div className="topbar">
+
         <div className="topbar__inner">
+
+          {/* ==================================================
+              TEMA + CURSO
+              ================================================== */}
+
           <div className="topbar__title-box">
+
             <button
               type="button"
               className="topbar__title-btn"
@@ -360,9 +431,15 @@ export default function TopBar({
                 {curso}
               </span>
             </button>
+
           </div>
 
+          {/* ==================================================
+              CONTROLES
+              ================================================== */}
+
           <div className="topbar__controls">
+
             {botonesVisibles.length > 0 && (
               <div className="topbar__nav">
                 {botonesVisibles.map((b) =>
@@ -374,14 +451,24 @@ export default function TopBar({
               </div>
             )}
 
+            {/* =================================================
+                AJUSTES
+                ================================================= */}
+
             <button
               type="button"
-              onClick={() => setConfigOpen(true)}
-              title="Configuración"
+              onClick={() =>
+                setConfigOpen(true)
+              }
+              title="Ajustes"
               className="topbar__gear"
             >
               <i className="fa-solid fa-gear" />
             </button>
+
+            {/* =================================================
+                MENÚ
+                ================================================= */}
 
             {botonesVisibles.length > 0 && (
               <button
@@ -395,8 +482,13 @@ export default function TopBar({
                 <i className="fa-solid fa-bars" />
               </button>
             )}
+
           </div>
         </div>
+
+        {/* ====================================================
+            DRAWER — MENÚ
+            ==================================================== */}
 
         {botonesVisibles.length > 0 && (
           <SideDrawer
@@ -409,24 +501,33 @@ export default function TopBar({
             {botonesVisibles.map((b) =>
               renderFila(
                 b,
-                () => setMenuMobileOpen(false)
+                () =>
+                  setMenuMobileOpen(false)
               )
             )}
           </SideDrawer>
         )}
 
+        {/* ====================================================
+            DRAWER — AJUSTES
+            ==================================================== */}
+
         <SideDrawer
-          title="Configuración"
+          title="Ajustes"
           isOpen={configOpen}
-          onClose={() => setConfigOpen(false)}
+          onClose={() =>
+            setConfigOpen(false)
+          }
         >
           {configButtons.map((b) =>
             renderFila(
               b,
-              () => setConfigOpen(false)
+              () =>
+                setConfigOpen(false)
             )
           )}
         </SideDrawer>
+
       </div>
     </div>
   );

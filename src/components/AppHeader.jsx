@@ -9,17 +9,24 @@ function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
       {isOpen && (
-        <div className="offcanvas-backdrop fade show" onClick={onClose} />
+        <div
+          className="offcanvas-backdrop fade show"
+          onClick={onClose}
+        />
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
-          }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${
+          isOpen ? "show" : ""
+        }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
         <div className="offcanvas-header topbar__drawer-header">
-          <h3 className="offcanvas-title topbar__drawer-title">{title}</h3>
+          <h3 className="offcanvas-title topbar__drawer-title">
+            {title}
+          </h3>
+
           <button
             type="button"
             className="topbar__drawer-close"
@@ -30,7 +37,9 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           </button>
         </div>
 
-        <div className="offcanvas-body topbar__drawer-list">{children}</div>
+        <div className="offcanvas-body topbar__drawer-list">
+          {children}
+        </div>
       </div>
     </>,
     document.body
@@ -42,19 +51,27 @@ export default function AppHeader({
   showHome = false,
   onEditarHorario = null,
 }) {
-  const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-  const [fotoUsuario, setFotoUsuario] = useLocalStorage("miEstudio_fotoUsuario", null);
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage(
+    "miEstudio_nombreUsuario",
+    null
+  );
+
+  const [fotoUsuario, setFotoUsuario] = useLocalStorage(
+    "miEstudio_fotoUsuario",
+    null
+  );
+
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
+
   const headerRef = useRef(null);
   const location = useLocation();
 
-  // Auto-ocultar header al bajar / mostrar al subir, igual que en
-  // Mi Estudio. No se oculta con el menú móvil abierto.
   useAutoHideHeader(menuMobileOpen);
 
   useEffect(() => {
     const el = headerRef.current;
+
     if (!el) return;
 
     const setHeaderVar = () => {
@@ -72,43 +89,53 @@ export default function AppHeader({
     return () => ro.disconnect();
   }, []);
 
+  /*
+  ============================================================
+  BOTONES DEL HEADER DE INICIO
+  ============================================================
+  */
+
   const botones = [
     ...(showHome
       ? [
-        {
-          title: "Ir a Mi Estudio",
-          label: "Home",
-          fullLabel: "Inicio",
-          icon: "fa-solid fa-house",
-          to: "/",
-        },
-      ]
+          {
+            title: "Ir a Inicio",
+            label: "Inicio",
+            fullLabel: "Ir a Inicio",
+            icon: "fa-solid fa-house",
+            to: "/",
+          },
+        ]
       : []),
+
     ...(onAbrirBuscador
       ? [
-        {
-          title: "Buscar curso o tema",
-          label: "Buscar",
-          fullLabel: "Buscar curso o tema",
-          icon: "fa-solid fa-magnifying-glass",
-          onClick: onAbrirBuscador,
-        },
-      ]
+          {
+            title: "Buscar curso o tema",
+            label: "Buscar",
+            fullLabel: "Buscar curso o tema",
+            icon: "fa-solid fa-magnifying-glass",
+            onClick: onAbrirBuscador,
+          },
+        ]
       : []),
+
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
       fullLabel: "Mis Repasos",
-      icon: "fa-solid fa-brain",
+      icon: "fa-solid fa-calendar-check",
       to: "/repaso",
     },
+
     {
       title: "Ir al Pomodoro",
-      label: "Pomo",
+      label: "Pomodoro",
       fullLabel: "Pomodoro",
-      icon: "fa-solid fa-calendar-alt",
+      icon: "fa-solid fa-hourglass-half",
       to: "/pomodoro",
     },
+
     {
       title: "Editar horario",
       label: "Editar",
@@ -117,7 +144,25 @@ export default function AppHeader({
       to: "/editar",
       onClick: onEditarHorario,
     },
+
+    ...(nombreUsuario
+      ? [
+          {
+            title: "Editar perfil",
+            label: "Perfil",
+            fullLabel: "Editar perfil",
+            icon: "fa-solid fa-user",
+            onClick: () => setEditarPerfilAbierto(true),
+          },
+        ]
+      : []),
   ];
+
+  /*
+  ============================================================
+  RUTA ACTIVA
+  ============================================================
+  */
 
   const esActivo = (b) => {
     if (!b.to) return false;
@@ -132,18 +177,31 @@ export default function AppHeader({
     );
   };
 
-  function renderBoton(b, cls) {
+  /*
+  ============================================================
+  BOTÓN DEL TOPBAR
+  ============================================================
+  */
+
+  const renderBoton = (b, cls) => {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
-        <span className="topbar__btn-title">{b.label}</span>
+
+        <span className="topbar__btn-title">
+          {b.label}
+        </span>
       </>
     );
 
-    const activeClass = esActivo(b) ? " is-active" : "";
+    const activeClass = esActivo(b)
+      ? " is-active"
+      : "";
 
     const handleClick = () => {
-      if (b.onClick) b.onClick();
+      if (b.onClick) {
+        b.onClick();
+      }
     };
 
     if (b.to) {
@@ -162,7 +220,7 @@ export default function AppHeader({
 
     return (
       <button
-        key={b.title}
+        key={b.title || b.label}
         type="button"
         onClick={handleClick}
         title={b.title}
@@ -171,36 +229,57 @@ export default function AppHeader({
         {content}
       </button>
     );
-  }
+  };
 
-  const renderFila = (b, closeFn = () => { }) => {
+  /*
+  ============================================================
+  FILA DEL MENÚ LATERAL
+  ============================================================
+  */
+
+  const renderFila = (
+    b,
+    closeFn = () => {}
+  ) => {
     const content = (
       <>
         <span className="topbar__drawer-item-label">
           {b.fullLabel || b.label}
         </span>
-        <i className={`${b.icon} topbar__drawer-item-icon`} />
+
+        <i
+          className={`${b.icon} topbar__drawer-item-icon`}
+        />
       </>
     );
 
-    const activeClass = esActivo(b) ? " is-active" : "";
+    const activeClass = esActivo(b)
+      ? " is-active"
+      : "";
 
     const handleClick = () => {
-      if (b.onClick) b.onClick();
+      if (b.onClick) {
+        b.onClick();
+      }
+
       closeFn();
     };
 
-    return b.to ? (
-      <Link
-        key={b.title}
-        to={b.to}
-        title={b.title}
-        className={`topbar__drawer-item${activeClass}`}
-        onClick={handleClick}
-      >
-        {content}
-      </Link>
-    ) : (
+    if (b.to) {
+      return (
+        <Link
+          key={b.title}
+          to={b.to}
+          title={b.title}
+          className={`topbar__drawer-item${activeClass}`}
+          onClick={handleClick}
+        >
+          {content}
+        </Link>
+      );
+    }
+
+    return (
       <button
         key={b.title || b.label}
         type="button"
@@ -213,51 +292,110 @@ export default function AppHeader({
     );
   };
 
+  /*
+  ============================================================
+  HEADER
+  ============================================================
+  */
+
   return (
     <div className="topbar-wrapper">
-      <div className="topbar container" ref={headerRef}>
+      <div
+        className="topbar"
+        ref={headerRef}
+      >
         <div className="topbar__inner">
 
+          {/* ==================================================
+              LOGO + NOMBRE DEL USUARIO
+              ================================================== */}
+
           <div className="topbar__title-btn btn__inicio">
-            <Link to="/" title="Mi Estudio">
+
+            <Link
+              to="/"
+              title="Mi Estudio"
+            >
               <img
-                src={fotoUsuario || `${import.meta.env.BASE_URL}icon.png`}
+                src={
+                  fotoUsuario ||
+                  `${import.meta.env.BASE_URL}icon.png`
+                }
                 alt="Mi Estudio"
-                className={`topbar__logo${fotoUsuario ? " topbar__logo--foto" : ""}`}
+                className={`topbar__logo${
+                  fotoUsuario
+                    ? " topbar__logo--foto"
+                    : ""
+                }`}
               />
             </Link>
 
             {nombreUsuario ? (
-              <span className="topbar__curso" title={nombreUsuario}>
+              <span
+                className="topbar__curso"
+                title={nombreUsuario}
+              >
                 {nombreUsuario}
               </span>
             ) : (
-              <Link to="/" className="topbar__curso topbar__curso--clickable">
+              <Link
+                to="/"
+                className="topbar__curso topbar__curso--clickable"
+              >
                 Mi Estudio
               </Link>
             )}
           </div>
 
+          {/* ==================================================
+              BUSCADOR
+              ================================================== */}
+
+          {onAbrirBuscador && (
+            <button
+              type="button"
+              className="topbar__search-bar"
+              onClick={onAbrirBuscador}
+              title="Buscar curso o tema"
+            >
+              <i className="fa-solid fa-magnifying-glass topbar__search-icon" />
+
+              <span className="topbar__search-placeholder">
+                Buscar cursos, temas...
+              </span>
+            </button>
+          )}
+
+          {/* ==================================================
+              CONTROLES
+              ================================================== */}
+
           <div className="topbar__controls">
 
             <div className="topbar__nav">
-              {botones.map((b) => renderBoton(b, "topbar__nav-btn"))}
+
+              {botones
+                .filter(
+                  (b) => b.label !== "Buscar"
+                )
+                .map((b) =>
+                  renderBoton(
+                    b,
+                    "topbar__nav-btn"
+                  )
+                )}
+
             </div>
 
-            {nombreUsuario && (
-              <button
-                type="button"
-                onClick={() => setEditarPerfilAbierto(true)}
-                title="Editar perfil"
-                className="topbar__control-btn topbar__perfil-btn"
-              >
-                <i className="fa-solid fa-user" />
-              </button>
-            )}
+            {/* =================================================
+                MENÚ
+                ================================================= */}
 
             <button
               type="button"
-              onClick={() => setMenuMobileOpen(true)}
+              onClick={() =>
+                setMenuMobileOpen(true)
+              }
               title="Menú"
               className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
             >
@@ -265,19 +403,32 @@ export default function AppHeader({
             </button>
 
           </div>
-
         </div>
+
+        {/* ====================================================
+            MENÚ LATERAL
+            ==================================================== */}
 
         <SideDrawer
           title="Menú"
           isOpen={menuMobileOpen}
-          onClose={() => setMenuMobileOpen(false)}
+          onClose={() =>
+            setMenuMobileOpen(false)
+          }
         >
           {botones.map((b) =>
-            renderFila(b, () => setMenuMobileOpen(false))
+            renderFila(
+              b,
+              () =>
+                setMenuMobileOpen(false)
+            )
           )}
         </SideDrawer>
       </div>
+
+      {/* ======================================================
+          MODAL DE PERFIL
+          ====================================================== */}
 
       <EditarNombreModal
         open={editarPerfilAbierto}
@@ -288,7 +439,9 @@ export default function AppHeader({
           setFotoUsuario(f);
           setEditarPerfilAbierto(false);
         }}
-        onCancelar={() => setEditarPerfilAbierto(false)}
+        onCancelar={() =>
+          setEditarPerfilAbierto(false)
+        }
       />
     </div>
   );

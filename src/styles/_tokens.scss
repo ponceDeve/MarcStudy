@@ -94,6 +94,7 @@
      ============================================================ */
 
   --success: #16a34a;
+  --success-dark: #166534;
   --success-bg: rgba(22, 163, 74, 0.08);
 
   /* ============================================================
@@ -150,19 +151,57 @@
 
   --font-body: "Lato", sans-serif;
   --font-display: "Raleway", sans-serif;
+
+  /* ============================================================
+     ESCALA TIPOGRÁFICA
+     5 niveles fijos. Todo font-size del proyecto debe apuntar a
+     uno de estos — nunca un valor suelto (px o rem inventado).
+     ============================================================ */
+
+  --fs-sm: 0.875rem;    /* texto secundario, badges, metadatos */
+  --fs-body: 1rem;      /* texto normal */
+  --fs-md: 1.25rem;     /* subtítulos, títulos de tarjeta */
+  --fs-title: 2rem;     /* título de página */
+  --fs-hero: clamp(1.75rem, 5vw, 3rem); /* único título "hero" por pantalla */
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+  /* ============================================================
+     ESCALA DE ESPACIADO
+     Todo margin/padding/gap debe apuntar a uno de estos pasos.
+     ============================================================ */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+
+  /* ============================================================
+     ANCHO DE CONTENIDO
+     Ancho máximo compartido para bloques centrados (buscador,
+     botón "continuar", etc.) para que queden alineados entre sí
+     en vez de que cada uno invente su propio ancho.
+     ============================================================ */
+
+  --content-max-width: 42rem;
 }
 
 /* ============================================================
    BREAKPOINTS
    ============================================================ */
 
-$bp-sm: 480px;
-$bp-md: 768px;
-$bp-lg: 1024px;
-$bp-xl: 1440px;
+$bp-sm: 30rem;   // 480px
+$bp-md: 48rem;   // 768px
+$bp-lg: 64rem;   // 1024px
+$bp-xl: 90rem;   // 1440px
 
 /* ============================================================
-   RESPONSIVE MIXIN
+   RESPONSIVE MIXINS
+   respond($bp)     -> @media (min-width: ...)
+   respond-max($bp) -> @media (max-width: ...)
    ============================================================ */
 
 @mixin respond($bp) {
@@ -180,6 +219,26 @@ $bp-xl: 1440px;
     }
   } @else if $bp == xl {
     @media (min-width: $bp-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-max($bp) {
+  @if $bp == sm {
+    @media (max-width: $bp-sm) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (max-width: $bp-md) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (max-width: $bp-lg) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (max-width: $bp-xl) {
       @content;
     }
   }

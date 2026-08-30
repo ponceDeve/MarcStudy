@@ -157,7 +157,6 @@ export default function ExplanationPanel({
   isCorrect,
   onSiguiente,
   onReintentar,
-  intentos = 0,
   rendido = false,
   onRendirse,
   vidas = 5,
@@ -213,8 +212,6 @@ export default function ExplanationPanel({
       window.speechSynthesis.cancel();
     };
   }, [pregunta, isCorrect, rendido, infoRendirse]);
-
-  const intentosActuales = Math.max(intentos, 1);
 
   const mensajeIncorrecto =
     mensajesIncorrectos[cantVidas]?.[0] ||

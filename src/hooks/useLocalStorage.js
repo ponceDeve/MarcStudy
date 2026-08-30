@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 // Hook genérico: se comporta como useState pero persiste en localStorage.
 // Reemplaza los localStorage.getItem/setItem sueltos que había repetidos
@@ -12,8 +12,6 @@ export function useLocalStorage(key, defaultValue) {
       return defaultValue;
     }
   });
-
-  const isFirstRun = useRef(true);
 
   useEffect(() => {
     try {

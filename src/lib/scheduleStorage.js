@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────
-// Horario de Pomodoro personalizado por el usuario (reemplaza el horario
-// fijo que antes vivía en data/schedule.js).
+// Horario de Pomodoro personalizado por el usuario.
 // Forma guardada: { lunes: [{subject, pomodoros}], martes: [...], ... }
 // Solo aparecen las claves de los días que el usuario eligió.
 // ─────────────────────────────────────────────────────────────────────────

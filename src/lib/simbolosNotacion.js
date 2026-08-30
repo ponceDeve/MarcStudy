@@ -8,18 +8,18 @@
 // "significado" se usa para el tooltip (igual que antes) y para que
 // el lector de voz diga la palabra en vez de intentar leer el símbolo.
 export const SIMBOLOS_NOTACION = {
-  "=": "igual",
-  "→": "produce",
-  "⊃": "contiene",
-  "∈": "pertenece",
-  "⇒": "causa",
-  "✓": "requiere",
-  "✗": "carece",
-  "+": "más",
+  "=": "es",
+  "→": "da lugar a",
+  "⊃": "incluye",
+  "∈": "forma parte de",
+  "⇒": "provoca",
+  "✓": "necesita",
+  "✗": "no tiene",
+  "+": "además",
   "↑": "aumenta",
   "↓": "disminuye",
-  "≠": "diferente",
-  "≈": "similar",
+  "≠": "se diferencia de",
+  "≈": "es similar a",
 };
 
 // Ordenados de más largo a más corto (por si en el futuro se agrega

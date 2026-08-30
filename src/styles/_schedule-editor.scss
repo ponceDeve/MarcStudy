@@ -37,10 +37,10 @@
   border:1px solid var(--border);
   color:var(--ink-soft);
   font-size:20px;
-  cursor:pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   padding:10px;
   border-radius:var(--radius-sm);
-  transition:color .2s ease,background .2s ease,border-color .2s ease;
+  transition:color .2s linear,background .2s linear,border-color .2s linear;
 }
 
 .editor-cerrar:hover{
@@ -74,8 +74,8 @@
   font-size:15px;
   font-weight:700;
   border-radius:var(--radius-sm);
-  cursor:pointer;
-  transition:background .2s ease,color .2s ease,border-color .2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:background .2s linear,color .2s linear,border-color .2s linear;
 }
 
 .editor-tab-btn:hover{
@@ -131,7 +131,7 @@
   border:1px solid var(--border);
   border-left:4px solid transparent;
   border-radius:var(--radius-md);
-  transition:background .2s ease,border-color .2s ease,box-shadow .2s ease;
+  transition:background .2s linear,border-color .2s linear,box-shadow .2s linear;
 }
 
 .editor-item:hover{
@@ -178,7 +178,7 @@
   background:var(--surface-alt);
   color:var(--ink);
   font-size:15px;
-  cursor:pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all .2s linear;
 }
 
@@ -232,7 +232,7 @@
   color:var(--ink);
   font-family:var(--font-body);
   font-size:16px;
-  transition:border-color .2s ease,box-shadow .2s ease,background .2s ease;
+  transition:border-color .2s linear,box-shadow .2s linear,background .2s linear;
 }
 
 .editor-input:focus{
@@ -272,8 +272,8 @@
   color:var(--ink);
   font-family:var(--font-body);
   font-size:15px;
-  cursor:pointer;
-  transition:background .2s ease,color .2s ease,border-color .2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:background .2s linear,color .2s linear,border-color .2s linear;
 }
 
 .editor-sugerencia-item:hover{
@@ -343,8 +343,8 @@
   font-family:var(--font-body);
   font-size:16px;
   font-weight:700;
-  cursor:pointer;
-  transition:background .5s ease,border-color .5s ease,color .5s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:background .5s linear,border-color .5s linear,color .5s linear;
 }
 
 .editor-pomo-btn:hover{
@@ -373,8 +373,8 @@
   font-size:16px;
   font-weight:700;
   text-align:center;
-  cursor:pointer;
-  transition:background .2s ease,border-color .2s ease,color .2s ease,opacity .2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:background .2s linear,border-color .2s linear,color .2s linear,opacity .2s linear;
 }
 
 .editor-btn-add:disabled{
@@ -442,7 +442,6 @@
 .editor-btn-save.is-no-changes:hover{
   opacity:.8;
   background:var(--primary);
-  color:var(--ink);
   cursor:not-allowed;
 }
 
@@ -475,7 +474,7 @@
   line-height:1.3;
   white-space:nowrap;
   pointer-events:none;
-  animation:editorNoCambiosIn .2s ease-out;
+  animation:editorNoCambiosIn .2s linear-out;
 }
 
 .editor-no-cambios::after{
@@ -539,8 +538,8 @@
   font-family:var(--font-body);
   font-size:16px;
   font-weight:700;
-  cursor:pointer;
-  transition:background .2s ease,border-color .2s ease,color .2s ease,opacity .2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:background .2s linear,border-color .2s linear,color .2s linear,opacity .2s linear;
 }
 
 .icon-only-btn:disabled{
@@ -604,7 +603,7 @@
   border-radius:var(--radius-md);
   font-size:14px;
   font-weight:700;
-  cursor:pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .editor-confirm-btn-si{
@@ -628,7 +627,7 @@
   color:var(--primary);
   font-size:13.5px;
   font-weight:700;
-  cursor:pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .editor-confirm-guardar-tambien:hover{

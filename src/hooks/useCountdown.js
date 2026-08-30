@@ -50,7 +50,7 @@ export function useCountdown(initialMinutes, onComplete) {
       setIsRunning(false);
       setSecondsLeft(0);
       localStorage.removeItem(STORAGE_KEY); // Limpiar al terminar
-      onCompleteRef.current && onCompleteRef.current();
+      onCompleteRef.current?.();
     } else {
       setSecondsLeft(remaining);
     }

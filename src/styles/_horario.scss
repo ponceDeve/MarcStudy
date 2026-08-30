@@ -44,9 +44,9 @@
   font-weight: 600;
   box-shadow: var(--shadow-sm);
   transition:
-    color 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
+    color 0.2s linear,
+    background 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__back-link:hover {
@@ -128,13 +128,13 @@
   background: var(--surface-alt);
   color: var(--ink-soft);
   font-size: 14px;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   overflow: hidden;
   text-overflow: ellipsis;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__btn-volver-tema:hover {
@@ -219,7 +219,7 @@
   width: var(--fill-pct, 0%);
   background: var(--primary);
   border-radius: var(--radius-full);
-  transition: width 0.3s ease;
+  transition: width 0.3s linear;
 }
 
 /* ============================================================
@@ -252,12 +252,12 @@
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    opacity 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .horario__btn.is-start {
@@ -299,11 +299,11 @@
   color: var(--ink-soft);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__btn-reset:hover {
@@ -343,11 +343,11 @@
   color: var(--ink-soft);
   font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__day-btn:hover {
@@ -402,11 +402,11 @@
   border-radius: var(--radius-sm);
   background: var(--surface-alt);
   color: var(--ink-soft);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__back-course:hover {
@@ -442,8 +442,8 @@
   background: transparent;
   color: var(--ink-soft);
   font-size: 13.5px;
-  cursor: pointer;
-  transition: color 0.2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: color 0.2s linear;
 }
 
 .horario__reset-link:hover {
@@ -467,7 +467,7 @@
   border: 1px solid var(--border);
   border-left: 4px solid transparent;
   border-radius: var(--radius-md);
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.3s linear;
 }
 
@@ -553,7 +553,7 @@
   height: 100%;
   width: var(--fill-pct, 0%);
   border-radius: var(--radius-full);
-  transition: width 0.3s ease;
+  transition: width 0.3s linear;
 }
 
 .horario__mini-fill.level-easy {
@@ -612,11 +612,11 @@
   color: var(--ink-soft);
   font-size: 13.5px;
   font-weight: 600;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__rest-btn:hover {
@@ -675,9 +675,9 @@
   background: var(--surface-alt);
   color: var(--ink-soft);
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear;
 }
 
 .horario__task-box.is-past {
@@ -747,7 +747,7 @@
   width: 20px;
   height: 20px;
   color: var(--border-strong);
-  transition: color 0.2s ease;
+  transition: color 0.2s linear;
 }
 
 .horario__rest-dot.is-past .horario__tomato-svg {
@@ -762,8 +762,8 @@
   color: var(--secondary);
   font-size: 10px;
   transition:
-    color 0.2s ease,
-    opacity 0.2s ease;
+    color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .horario__rest-dot.is-past .horario__tomato-icon {
@@ -820,8 +820,8 @@
   font-weight: 700;
   box-shadow: var(--shadow-sm);
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__repaso-link:hover {
@@ -872,8 +872,8 @@
   font-size: 14px;
   font-weight: 700;
   box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: background 0.2s ease;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: background 0.2s linear;
 }
 
 .horario__complete-btn:hover {
@@ -905,11 +905,11 @@
   background: var(--surface-alt);
   color: var(--ink);
   text-align: left;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear;
 }
 
 .curso-rapido__tema-btn:hover {
@@ -967,13 +967,13 @@
   background: var(--surface-alt);
   color: var(--ink);
   text-align: left;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear,
+    transform 0.15s linear,
+    box-shadow 0.2s linear;
 }
 
 .tema-modal__item:hover {
@@ -1049,12 +1049,12 @@
   font-family: var(--font-body);
   font-size: 0.95rem;
   text-align: left;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.15s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    transform 0.15s linear;
 }
 
 .tema-selector__boton:hover {
@@ -1093,12 +1093,12 @@
   border-radius: var(--radius-full);
   font-size: 0.9rem;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    opacity 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .tema-selector__confirm-btn.is-cancelar {
@@ -1141,11 +1141,11 @@
   color: var(--ink-soft);
   font-size: 0.82rem;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .tema-selector__omitir:hover {
@@ -1176,11 +1176,11 @@
   color: var(--ink-on-primary);
   font-size: 0.82rem;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .tema-selector__iniciar:hover {
@@ -1222,12 +1222,12 @@
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: none;
   transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    background 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear;
 }
 
 .horario__quick-course-select:hover {
@@ -1389,7 +1389,7 @@
   border: none;
   font-size: 1rem;
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 /* ============================================================
@@ -1462,7 +1462,7 @@
   color: var(--ink-soft);
   font-weight: 700;
   font-size: 0.85rem;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .setup-dia-btn.is-on {
@@ -1571,7 +1571,7 @@
   background: var(--surface-alt);
   color: var(--ink);
   font-weight: 700;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .setup-pomo-btn.is-on {
@@ -1590,7 +1590,7 @@
   border: none;
   font-weight: 700;
   font-size: 0.95rem;
-  cursor: pointer;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .setup-btn.is-primary:disabled {

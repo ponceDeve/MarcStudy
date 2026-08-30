@@ -51,8 +51,6 @@ export default function TopicsModal({
   onSelectTema
 }) {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [hasHover, setHasHover] = useState(false);
   const [busqueda, setBusqueda] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
   const [mostrarTodos, setMostrarTodos] = useState(false);
@@ -67,16 +65,9 @@ export default function TopicsModal({
   const LIMITE_INICIAL = 48;
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia) {
-      setHasHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-    }
-  }, []);
-
-  useEffect(() => {
     if (!open) {
       setBusqueda("");
       setActiveIndex(null);
-      setHoveredIndex(null);
       setInputEnfocado(false);
       setMostrarTodos(false);
     }
@@ -93,17 +84,8 @@ export default function TopicsModal({
     setActiveIndex(index);
   }
 
-  function manejarHover(item, index) {
-    setHoveredIndex(index);
-  }
-
-  function manejarSalidaHover() {
-    setHoveredIndex(null);
-  }
-
   function manejarScroll() {
     setActiveIndex(null);
-    setHoveredIndex(null);
   }
 
   function manejarToqueInicial(item, e) {
@@ -203,8 +185,6 @@ export default function TopicsModal({
                     if (fueArrastre(e)) return;
                     manejarClickTema(item, index);
                   }}
-                  onMouseOver={() => manejarHover(item, index)}
-                  onMouseOut={manejarSalidaHover}
                 >
                   {index + 1}
                 </button>

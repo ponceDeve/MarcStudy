@@ -1,6 +1,5 @@
 export default function ExercisesSection({
   examenPreguntas,
-  onIniciarEjercicios,
   onModoEstudio,
 }) {
   if (!examenPreguntas || examenPreguntas.length === 0) {
