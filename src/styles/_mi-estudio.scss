@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  padding: 20px;
   padding-top: 2.5rem;
 
   &.has-topbar {
@@ -32,7 +33,7 @@
   }
 
   &.is-question {
-    padding-top: 1.5rem;
+    padding-top: calc(var(--header-h) + 1.5rem);
   }
 
   &.is-home {
