@@ -26,6 +26,7 @@ import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import TheorySearchBar from "./TheorySearchBar";
 import ExercisesSection from "./ExercisesSection";
+import ConfirmacionSalida from "../../components/ConfirmacionSalida";
 import CongratulationsAlert from "../../components/CongratulationsAlert";
 import {
   leerPomodoroCompartido,
@@ -353,6 +354,22 @@ export default function MiEstudioPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [flatPuntos, setFlatPuntos] = useState([]);
+
+  // Igual que "puntos" en abrirTema(), pero recalculado directamente
+  // desde topicData en vez de depender del estado flatPuntos (que se
+  // reordena/filtra durante el videojuego y puede quedar desalineado
+  // al volver a teoría). Se usa solo para saber a qué sección
+  // pertenece cada pregunta del examen (ExercisesSection).
+  const puntosEstables = useMemo(() => {
+    return (topicData?.theory || []).flatMap(
+      (seccion, idxSeccion) =>
+        seccion.puntos.map((p, idxPunto) => ({
+          ...p,
+          id: `${idxSeccion}-${idxPunto}`,
+          seccionTitulo: seccion.titulo
+        }))
+    );
+  }, [topicData]);
   const [preguntasFinalesIds, setPreguntasFinalesIds] =
     useState([]);
   const [cardIndex, setCardIndex] = useState(0);
@@ -366,8 +383,22 @@ export default function MiEstudioPage() {
     useState(false);
   const [textosSeleccionados, setTextosSeleccionados] = useState([]);
   const [textosCompletados, setTextosCompletados] = useState([]);
+  // Marca si hubo marcas/respuestas nuevas desde que se cargó o se
+  // guardó por última vez este tema. A diferencia de mirar si
+  // textosSeleccionados/textosCompletados tienen elementos (que
+  // también es cierto justo después de cargar un tema ya guardado),
+  // este flag solo se activa con cambios reales del usuario en la
+  // sesión actual.
+  const huboCambiosSinGuardarRef = useRef(false);
   const [mostrarCongratulations, setMostrarCongratulations] = useState(false);
   const [mostrarAviso, setMostrarAviso] = useState(true);
+
+  // Confirmación de guardado al salir de teoría (cambio de tema o
+  // cierre de pestaña) cuando hay textos marcados sin guardar.
+  const [mostrarConfirmacionSalida, setMostrarConfirmacionSalida] =
+    useState(false);
+  const [temaProximoSalida, setTemaProximoSalida] = useState(null);
+  const [destinoSalida, setDestinoSalida] = useState("tema"); // "tema" | "inicio"
 
   const { setFooterHidden } =
     useFooterVisibility();
@@ -386,6 +417,35 @@ export default function MiEstudioPage() {
     stage,
     setFooterHidden
   ]);
+
+  // Guardado automático + confirmación nativa al cerrar la pestaña o
+  // el navegador con textos marcados sin guardar.
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (
+        stage !== "theory" ||
+        (textosSeleccionados.length === 0 && textosCompletados.length === 0)
+      ) {
+        return;
+      }
+
+      if (topicData?.archivo) {
+        localStorage.setItem(
+          `textos_${topicData.archivo}`,
+          JSON.stringify({
+            textos: textosSeleccionados,
+            completados: textosCompletados
+          })
+        );
+      }
+
+      // Ya se guardó arriba; no bloqueamos el cierre con el alert nativo.
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () =>
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [stage, textosSeleccionados, textosCompletados, topicData?.archivo]);
 
   const [countdown, setCountdown] =
     useState(0);
@@ -973,7 +1033,23 @@ export default function MiEstudioPage() {
       );
 
       setTextosSeleccionados([]);
+      setTextosCompletados([]);
       setEsModoAdicionales(false);
+      huboCambiosSinGuardarRef.current = false;
+
+      const storageTextosKey = `textos_${item.archivo}`;
+      const textosGuardados = localStorage.getItem(storageTextosKey);
+
+      if (textosGuardados) {
+        try {
+          const { textos, completados } = JSON.parse(textosGuardados);
+          setTextosSeleccionados(textos || []);
+          setTextosCompletados(completados || []);
+        } catch {
+          // JSON corrupto o formato viejo: ignorar y seguir sin
+          // restaurar textos marcados para este tema.
+        }
+      }
 
       setTopicData({
         ...data,
@@ -1121,6 +1197,65 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Punto único por el que debe pasar cualquier intento de abrir un
+  // tema distinto al actual. Si estamos en teoría con textos
+  // marcados/completados sin guardar, pedimos confirmación antes de
+  // reemplazar topicData (lo que perdería esos avances).
+  function pedirAbrirTema(item) {
+    const hayCambiosSinGuardar =
+      stage === "theory" &&
+      topicData?.archivo &&
+      topicData.archivo !== item.archivo &&
+      huboCambiosSinGuardarRef.current;
+
+    if (hayCambiosSinGuardar) {
+      setTemaProximoSalida(item);
+      setDestinoSalida("tema");
+      setMostrarConfirmacionSalida(true);
+      return;
+    }
+
+    abrirTema(item);
+  }
+
+  function irADestinoSalida() {
+    if (destinoSalida === "inicio") {
+      setTopicData(null);
+      setStage("theory");
+    } else if (temaProximoSalida) {
+      abrirTema(temaProximoSalida);
+    }
+
+    setTemaProximoSalida(null);
+  }
+
+  function handleGuardarYSalir() {
+    if (topicData?.archivo) {
+      localStorage.setItem(
+        `textos_${topicData.archivo}`,
+        JSON.stringify({
+          textos: textosSeleccionados,
+          completados: textosCompletados
+        })
+      );
+    }
+
+    huboCambiosSinGuardarRef.current = false;
+    setMostrarConfirmacionSalida(false);
+    irADestinoSalida();
+  }
+
+  function handleSalirSinGuardar() {
+    huboCambiosSinGuardarRef.current = false;
+    setMostrarConfirmacionSalida(false);
+    irADestinoSalida();
+  }
+
+  function handleCancelarSalida() {
+    setMostrarConfirmacionSalida(false);
+    setTemaProximoSalida(null);
+  }
+
   function seleccionarItem(item) {
     setQuery("");
     guardarBusquedaInicio(item);
@@ -1137,7 +1272,7 @@ export default function MiEstudioPage() {
         item.curso
       );
       setTemasOpen(false);
-      abrirTema(item);
+      pedirAbrirTema(item);
     }
   }
 
@@ -1597,6 +1732,8 @@ export default function MiEstudioPage() {
         .filter(p => p.seccionTitulo === "Ejercicios")
         .map(p => p.id);
 
+      huboCambiosSinGuardarRef.current = true;
+
       setTextosSeleccionados((prev) => [
         ...prev,
         ...idsEjercicios.filter((id) => !prev.includes(id)),
@@ -1857,6 +1994,8 @@ export default function MiEstudioPage() {
         preguntasFinalesIds[cardIndex]
       ) {
         const puntoIdRespondido = preguntasFinalesIds[cardIndex];
+
+        huboCambiosSinGuardarRef.current = true;
 
         setTextosCompletados((prev) =>
           prev.includes(puntoIdRespondido)
@@ -2202,6 +2341,18 @@ export default function MiEstudioPage() {
   }
 
   function irAInicio() {
+    const hayCambiosSinGuardar =
+      stage === "theory" &&
+      topicData?.archivo &&
+      huboCambiosSinGuardarRef.current;
+
+    if (hayCambiosSinGuardar) {
+      setTemaProximoSalida(null);
+      setDestinoSalida("inicio");
+      setMostrarConfirmacionSalida(true);
+      return;
+    }
+
     setTopicData(null);
     setStage("theory");
   }
@@ -3444,7 +3595,7 @@ export default function MiEstudioPage() {
                                       <input
                                         type="checkbox"
                                         id={`checkbox-${puntoId}`}
-                                        className="teoria-etiqueta-checkbox"
+                                        className={`teoria-etiqueta-checkbox${textosCompletados.includes(puntoId) ? " is-completado" : ""}`}
                                         checked={textosSeleccionados.includes(puntoId)}
                                         onClick={(e) => e.stopPropagation()}
                                         onChange={() => {
@@ -3454,6 +3605,8 @@ export default function MiEstudioPage() {
                                             // desmarcar con un click.
                                             return;
                                           }
+
+                                          huboCambiosSinGuardarRef.current = true;
 
                                           setTextosSeleccionados((prev) => {
                                             const newSelection = prev.includes(puntoId)
@@ -3539,7 +3692,7 @@ export default function MiEstudioPage() {
                     </div>
 
                     <ExercisesSection
-                      examenPreguntas={(topicData?.examen || []).filter((_, i) => flatPuntos[i]?.seccionTitulo === "Ejercicios")}
+                      examenPreguntas={(topicData?.examen || []).filter((_, i) => puntosEstables[i]?.seccionTitulo === "Ejercicios")}
                       onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
                     />
 
@@ -3874,7 +4027,7 @@ export default function MiEstudioPage() {
           onSelectTema={(
             temaItem
           ) => {
-            abrirTema({
+            pedirAbrirTema({
               curso:
                 nombreCursoActivo,
               tema:
@@ -3962,6 +4115,14 @@ export default function MiEstudioPage() {
       <CongratulationsAlert
         visible={mostrarCongratulations}
         onClose={() => setMostrarCongratulations(false)}
+      />
+
+      <ConfirmacionSalida
+        mostrar={mostrarConfirmacionSalida}
+        temaActual={topicData?.tema || "este tema"}
+        onGuardarYSalir={handleGuardarYSalir}
+        onSalirSinGuardar={handleSalirSinGuardar}
+        onCancelar={handleCancelarSalida}
       />
     </div>
   );

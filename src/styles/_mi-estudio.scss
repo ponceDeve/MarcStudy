@@ -2104,6 +2104,11 @@ body.is-header-oculto .teoria-sticky-bar {
   accent-color: var(--primary, #2563EB);
   flex-shrink: 0;
   cursor: pointer;
+
+  &.is-completado {
+    accent-color: var(--success, #16a34a);
+    cursor: default;
+  }
 }
 
 .teoria-contenido-principal {
