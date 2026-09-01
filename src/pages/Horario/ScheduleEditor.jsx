@@ -12,6 +12,9 @@ import {
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
 import AppHeader from "../../components/AppHeader";
+import TutorialSpotlight from "../../components/TutorialSpotlight";
+import { useTutorialSeen } from "../../hooks/useTutorialSeen";
+import { TUTORIAL_EDITAR_HORARIO } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
@@ -42,6 +45,18 @@ export default function ScheduleEditor() {
   const [showForm, setShowForm] = useState(false);
   const [editingIdx, setEditingIdx] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { visto: tutorialEditarVisto, marcarVisto: marcarTutorialEditarVisto } =
+    useTutorialSeen("editar-horario");
+  const [tutorialEditarOpen, setTutorialEditarOpen] = useState(false);
+  const [tutorialEditarPasoUnico, setTutorialEditarPasoUnico] =
+    useState(null);
+
+  useEffect(() => {
+    if (!tutorialEditarVisto) {
+      const t = setTimeout(() => setTutorialEditarOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [tutorialEditarVisto]);
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
@@ -397,6 +412,11 @@ export default function ScheduleEditor() {
         onAbrirBuscador={() =>
           setSearchOpen(true)
         }
+        tutorialSteps={TUTORIAL_EDITAR_HORARIO}
+        onSelectTutorialStep={(idx) => {
+          setTutorialEditarPasoUnico(TUTORIAL_EDITAR_HORARIO[idx]);
+          setTutorialEditarOpen(true);
+        }}
       />
 
       <div className="editor-page">
@@ -736,6 +756,20 @@ export default function ScheduleEditor() {
                   : item.tema
               )}`
             );
+          }}
+        />
+
+        <TutorialSpotlight
+          steps={
+            tutorialEditarPasoUnico
+              ? [tutorialEditarPasoUnico]
+              : TUTORIAL_EDITAR_HORARIO
+          }
+          open={tutorialEditarOpen}
+          onClose={() => {
+            setTutorialEditarOpen(false);
+            setTutorialEditarPasoUnico(null);
+            marcarTutorialEditarVisto();
           }}
         />
 

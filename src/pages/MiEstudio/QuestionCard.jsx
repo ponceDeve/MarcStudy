@@ -690,7 +690,7 @@ export default function QuestionCard({
           background: "transparent",
           border: "none",
           padding: "12px 16px",
-          cursor: "pointer",
+          cursor: "url(/cursor_pointer.webp), pointer",
           fontSize: "1.2rem",
           color: "#94a3b8",
         }}

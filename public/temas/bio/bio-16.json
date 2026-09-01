@@ -1,36 +1,36 @@
 {
   "curso": "Biología",
-  "tema": "Anomalías Cromosómicas",
+  "tema": "Citogenética",
   "glosario": {
     "Citogenética": "Estudio de los cromosomas celulares.",
-    "Cromosoma": "Bastón de ADN muy condensado.",
+    "Cromosoma": "Bastón de material genético muy condensado.",
     "Centrómero": "Constricción primaria del cromosoma.",
     "Telómero": "Secuencias repetitivas en los extremos.",
     "Cariotipo": "Conjunto cromosómico del núcleo celular.",
-    "Aneuploidía": "Anomalía en número de cromosomas.",
-    "=": "Define",
-    "✓": "Requiere",
-    "∈": "Pertenece",
-    "✗": "Carece",
-    "⊃": "Contiene",
-    "⇒": "Causa",
-    "→": "Produce"
+    "Aneuploidía": "Anomalía en el número de cromosomas.",
+    "ADN": "Ácido Desoxirribonucleico, principal molécula portadora de información genética.",
+    "Diploide": "Célula que contiene dos juegos completos de cromosomas homólogos.",
+    "Histona": "Proteína básica sobre la cual se enrolla el material genético."
   },
   "theory": [
     {
-      "titulo": "Conceptos Básicos de Citogenética",
+      "titulo": "Conceptos de Citogenética",
       "puntos": [
         {
-          "texto": "Citogenética = estudio de los cromosomas.",
-          "explicacion": "La citogenética es la rama de la biología y la genética enfocada en el análisis de la estructura, función y comportamiento de los cromosomas celulares."
+          "texto": "«Citogenética» = estudio de los cromosomas",
+          "explicacion": "Es la rama biológica enfocada en analizar la estructura, función y comportamiento de los cromosomas celulares."
         },
         {
-          "texto": "Cromosomas = bastones de ADN muy condensados.",
-          "explicacion": "Los cromosomas son estructuras altamente compactas compuestas por ADN e histonas, organizadas para permitir la distribución equitativa del material genético."
+          "texto": "Cromosomas = bastones de ADN condensados",
+          "explicacion": "Son estructuras altamente compactas compuestas por Ácido Desoxirribonucleico (ADN) e histonas, organizadas para distribuir equitativamente el genoma."
         },
         {
-          "texto": "Cromosomas ✓ observación en célula en división.",
-          "explicacion": "El máximo nivel de condensación del ADN se produce durante la metafase celular, momento óptimo en el cual los cromosomas se vuelven visibles al microscopio óptico."
+          "texto": "Cromosomas ✓ observación en célula en división",
+          "explicacion": "El máximo nivel de condensación celular se produce durante la metafase, momento óptimo para visualizarlos al microscopio óptico."
+        },
+        {
+          "texto": "Cromatina condensada ⇒ formación de cromosomas",
+          "explicacion": "Antes de la división, las hebras laxas de cromatina se enrollan estrechamente para evitar enredos del Ácido Desoxirribonucleico (ADN) durante el reparto cromosómico."
         }
       ]
     },
@@ -38,16 +38,20 @@
       "titulo": "Estructura del Cromosoma",
       "puntos": [
         {
-          "texto": "Centrómero = constricción primaria.",
-          "explicacion": "El centrómero es una región especializada del cromosoma que actúa como sitio de unión para las cromátides hermanas y el cinetocoro durante la división celular."
+          "texto": "«Centrómero» = constricción primaria",
+          "explicacion": "Es una región especializada que actúa como sitio de unión para las cromátides hermanas durante la división celular."
         },
         {
-          "texto": "Telómero = secuencias repetitivas.",
-          "explicacion": "Los telómeros son extremos cromosómicos formados por secuencias cortas de ADN repetitivo que evitan la degradación y la fusión entre cromosomas diferentes."
+          "texto": "«Telómero» = secuencias repetitivas",
+          "explicacion": "Forman extremos cromosómicos con secuencias cortas de Ácido Desoxirribonucleico (ADN) que evitan la degradación y fusión entre cromosomas diferentes."
         },
         {
-          "texto": "Brazo p y q ∈ estructura cromosómica.",
-          "explicacion": "El centrómero divide longitudinalmente al cromosoma en dos porciones denominadas brazo corto (p) y brazo largo (q), fundamentales para su clasificación morfológica."
+          "texto": "Estructura cromosómica ⊃ brazo p y q",
+          "explicacion": "El centrómero divide longitudinalmente al cromosoma en un brazo corto (p) y un brazo largo (q), esenciales para su clasificación."
+        },
+        {
+          "texto": "Cinetocoro = disco proteico centromérico",
+          "explicacion": "Es un complejo de proteínas anclado al centrómero donde se ensamblan los microtúbulos del huso acromático para separar las cromátides."
         }
       ]
     },
@@ -55,82 +59,179 @@
       "titulo": "Tipos de Cromosomas",
       "puntos": [
         {
-          "texto": "Cromosoma metacéntrico = presenta centrómero central.",
-          "explicacion": "En el cromosoma metacéntrico, el centrómero se localiza en el punto medio exacto, dividiendo al cromosoma en dos brazos de longitud prácticamente idéntica."
+          "texto": "Cromosoma metacéntrico = presenta centrómero central",
+          "explicacion": "El centrómero se localiza en el punto medio exacto, dividiendo al cromosoma en brazos p y q de longitud idéntica."
         },
         {
-          "texto": "Cromosoma submetacéntrico = presenta centrómero subcentral.",
-          "explicacion": "El cromosoma submetacéntrico posee el centrómero desplazado ligeramente del centro, lo que genera un brazo p más corto en comparación con el brazo q."
+          "texto": "Cromosoma submetacéntrico = presenta centrómero subcentral",
+          "explicacion": "Posee el centrómero desplazado ligeramente del centro, lo que genera un brazo p más corto en comparación con el brazo q."
         },
         {
-          "texto": "Tipo submetacéntrico = cromosoma más abundante.",
-          "explicacion": "Dentro de la morfología cromosómica humana, el cariotipo destaca por una mayor presencia numérica de cromosomas clasificados como submetacéntricos."
+          "texto": "Tipo submetacéntrico = cromosoma más abundante",
+          "explicacion": "Dentro de la morfología cromosómica humana normal, el cariotipo destaca por una mayor presencia numérica de estos cromosomas desequilibrados."
         },
         {
-          "texto": "Cromosoma acrocéntrico = presenta centrómero subterminal.",
-          "explicacion": "El cromosoma acrocéntrico cuenta con un centrómero ubicado muy cerca de uno de los extremos, dando como resultado un brazo p extremadamente reducido."
+          "texto": "Cromosoma acrocéntrico = presenta centrómero subterminal",
+          "explicacion": "Cuenta con un centrómero ubicado muy cerca de uno de los extremos, dando como resultado un brazo p extremadamente reducido."
         },
         {
-          "texto": "Cromosoma telocéntrico = presenta centrómero terminal.",
-          "explicacion": "El cromosoma telocéntrico presenta el centrómero localizado en el extremo absoluto del cromosoma, por lo que carece funcionalmente de un brazo p visible."
+          "texto": "Cromosoma telocéntrico = presenta centrómero terminal",
+          "explicacion": "Presenta el centrómero localizado en el extremo absoluto del cromosoma, por lo que carece funcionalmente de un brazo p visible."
         },
         {
-          "texto": "Humanos ✗ cromosomas telocéntricos.",
-          "explicacion": "El genoma de la especie humana se caracteriza por la ausencia total de cromosomas telocéntricos en su dotación citogenética normal."
+          "texto": "Humanos ✗ cromosomas telocéntricos",
+          "explicacion": "El genoma diploide de la especie humana se caracteriza por la ausencia total de cromosomas telocéntricos en su dotación normal."
         }
       ]
     },
     {
-      "titulo": "El Cariotipo Humano",
+      "titulo": "Cariotipo Humano",
       "puntos": [
         {
-          "texto": "Cariotipo = conjunto de cromosomas del núcleo.",
-          "explicacion": "El cariotipo representa el patrón ordenado de todos los cromosomas presentes en el núcleo de una célula somática, clasificados por tamaño y morfología."
+          "texto": "«Cariotipo» = conjunto de cromosomas",
+          "explicacion": "Representa el patrón ordenado de todos los cromosomas del núcleo en una célula somática, clasificados por tamaño y morfología."
         },
         {
-          "texto": "Cariotipo diploide humano ⊃ 23 pares.",
-          "explicacion": "Las células somáticas humanas presentan una condición diploide (2n) constituida por un total de 46 cromosomas agrupados en 23 pares homólogos."
+          "texto": "Cariotipo diploide humano ⊃ 23 pares",
+          "explicacion": "Las células somáticas humanas presentan una condición diploide constituida por un total de 46 cromosomas agrupados en parejas homólogas."
         },
         {
-          "texto": "Pares 1 al 22 = cromosomas autosómicos.",
-          "explicacion": "Los cromosomas autosómicos corresponden a los primeros 22 pares del cariotipo humano, encargados de regular las características corporales generales no sexuales."
+          "texto": "Pares 1 al 22 = cromosomas autosómicos",
+          "explicacion": "Corresponden a los cromosomas encargados de codificar y regular las características corporales generales no vinculadas al sexo biológico."
         },
         {
-          "texto": "Par 23 = cromosoma sexual.",
-          "explicacion": "El vigésimo tercer par corresponde a los cromosomas sexuales (XX o XY), los cuales determinan genéticamente el sexo biológico del individuo."
+          "texto": "Par 23 = cromosoma sexual",
+          "explicacion": "Corresponde a la pareja de cromosomas sexuales X e Y, los cuales determinan genéticamente el sexo biológico del individuo."
         }
       ]
     },
     {
-      "titulo": "Anomalías en el Número de Cromosomas",
+      "titulo": "Anomalías Numéricas",
       "puntos": [
         {
-          "texto": "Aneuploidía = anomalía en número de cromosomas.",
-          "explicacion": "La aneuploidía consiste en la alteración cuantitativa donde falta o sobra uno o más cromosomas específicos respecto al número diploide normal."
+          "texto": "«Aneuploidía» = anomalía cromosómica numérica",
+          "explicacion": "Consiste en la alteración cuantitativa donde falta o sobra uno o más cromosomas específicos respecto al número diploide normal."
         },
         {
-          "texto": "Mala disyunción meiótica ⇒ aneuploidías.",
-          "explicacion": "La causa principal de las aneuploidías es la no disyunción, un error en la separación de los cromosomas homólogos o cromátides durante la formación de gametos."
+          "texto": "Mala disyunción meiótica ⇒ aneuploidías",
+          "explicacion": "La causa principal de estos trastornos es un error en la separación de los cromosomas homólogos durante la formación de gametos."
         },
         {
-          "texto": "Trisomía = presencia de 47 cromosomas.",
-          "explicacion": "La trisomía se produce cuando un gameto con un cromosoma extra fecunda a uno normal, generando una dotación total de 47 cromosomas en humanos."
+          "texto": "Trisomía = presencia de 47 cromosomas",
+          "explicacion": "Se produce cuando un gameto con un cromosoma extra fecunda a uno normal, generando una dotación total de 47 cromosomas."
         },
         {
-          "texto": "Monosomía = presencia de 45 cromosomas.",
-          "explicacion": "La monosomía surge por la unión de un gameto deficitario al que le falta un cromosoma, resultando en un total de 45 cromosomas en el individuo."
+          "texto": "Síndrome de Down = trisomía autosómica",
+          "explicacion": "Es una aneuploidía común donde el individuo hereda tres copias del cromosoma 21, provocando alteraciones fisiológicas y del desarrollo cognitivo."
         },
         {
-          "texto": "Nulisomía = falta un par cromosómico completo.",
-          "explicacion": "La nulisomía es una alteración cromosómica grave donde se pierde por completo una pareja entera de cromosomas homólogos."
+          "texto": "Monosomía = presencia de 45 cromosomas",
+          "explicacion": "Surge por la unión de un gameto deficitario al que le falta un cromosoma, resultando en un total de 45 cromosomas."
         },
         {
-          "texto": "Nulisomía humana → total de 44 cromosomas.",
-          "explicacion": "Al perderse un par completo de cromosomas en una célula somática humana, el recuento total disminuye de 46 a 44 cromosomas."
+          "texto": "Síndrome de Turner = monosomía sexual",
+          "explicacion": "Se presenta en mujeres que poseen un único cromosoma sexual X, siendo la única monosomía viable en la especie humana."
         },
         {
-          "texto": "Poliploidía = tres o más juegos cromosómicos.",
-          "explicacion": "La poliploidía ocurre cuando la célula adquiere juegos completos adicionales de cromosomas enteros, dando lugar a condiciones como triploidía (3n) o tetraploidía (4n)."
+          "texto": "Nulisomía = falta un par completo",
+          "explicacion": "Es una alteración cromosómica grave y generalmente letal donde se pierde por completo una pareja entera de cromosomas homólogos."
+        },
+        {
+          "texto": "Nulisomía humana → 44 cromosomas totales",
+          "explicacion": "Al perderse un par completo de cromosomas homólogos en una célula somática humana, el recuento total disminuye de 46 a 44."
+        },
+        {
+          "texto": "«Poliploidía» = tres o más juegos",
+          "explicacion": "Ocurre cuando la célula adquiere juegos completos adicionales de cromosomas, dando lugar a condiciones masivas como triploidía o tetraploidía."
+        },
+        {
+          "texto": "Poliploidía ✓ viable en plantas",
+          "explicacion": "A diferencia de los animales donde resulta invariablemente letal, en el reino vegetal el aumento de juegos cromosómicos es un mecanismo evolutivo normal."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }

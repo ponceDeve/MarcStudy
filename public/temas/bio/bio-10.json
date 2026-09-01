@@ -2,95 +2,105 @@
   "curso": "Biología",
   "tema": "Respiración Celular",
   "glosario": {
-    "Glucólisis": "Fase anaeróbica que degrada glucosa en citosol.",
-    "ATP": "Nucleótido que almacena y transfiere energía celular.",
-    "NADH2": "Molécula que transporta electrones y protones.",
-    "FADH2": "Transportador de electrones usado en fase mitocondrial.",
-    "Citoplasma": "Medio acuoso celular donde ocurre la glucólisis.",
-    "Mitocondria": "Organela encargada de la respiración celular aeróbica.",
-    "Mesosoma": "Pliegue de membrana bacteriana para respiración celular.",
-    "Matriz": "Espacio interior mitocondrial donde ocurre ciclo Krebs.",
-    "Cresta": "Pliegue mitocondrial para la fosforilación oxidativa.",
-    "Fermentación": "Ruta anaeróbica que regenera NAD sin oxígeno.",
-    "Lanzadera": "Proteína de membrana que ingresa electrones mitocondriales.",
-    "Catabólico": "Proceso que degrada moléculas complejas en simples.",
-    "Exergónico": "Proceso químico que libera energía al medio.",
-    "=": "Define",
-    "→": "Produce",
-    "⊃": "Contiene",
-    "∈": "Pertenece",
-    "⇒": "Causa",
-    "✓": "Requiere"
+    "Glucólisis": "Ruta metabólica anaeróbica que escinde glucosa en citosol.",
+    "ATP": "Nucleótido encargado de almacenar y transferir energía celular.",
+    "NADH": "Coenzima reducida que transporta electrones de alta energía.",
+    "Citoplasma": "Medio celular acuoso donde ocurren las reacciones iniciales.",
+    "Mitocondria": "Organela bimembranosa especializada en el metabolismo oxidativo aeróbico.",
+    "Mesosoma": "Invaginación de la membrana bacteriana con enzimas respiratorias.",
+    "Matriz": "Fluido interior mitocondrial que alberga enzimas del ciclo.",
+    "Cresta": "Pliegue interno mitocondrial que sostiene la cadena transportadora.",
+    "Fermentación": "Vía citosólica anaeróbica que regenera coenzimas sin oxígeno.",
+    "Lanzadera": "Proteína transportadora transmembrana para equivalentes de reducción.",
+    "Catabolismo": "Conjunto de reacciones que degradan moléculas orgánicas complejas.",
+    "Exergónico": "Proceso químico termodinámico que libera energía al entorno."
   },
   "theory": [
     {
-      "titulo": "Características y Objetivo General",
+      "titulo": "Características Generales",
       "puntos": [
         {
           "texto": "Respiración celular = proceso catabólico.",
-          "explicacion": "La respiración celular es un proceso catabólico porque rompe enlaces de moléculas orgánicas complejas, como la glucosa, para transformarlas en compuestos más simples, liberando la energía contenida en ellos."
+          "explicacion": "La vía rompe enlaces de moléculas orgánicas complejas, como la glucosa, para transformarlas en compuestos más simples como agua y dióxido de carbono. Es análogo a desarmar un edificio de bloques para reutilizar sus piezas y la energía de sus uniones."
         },
         {
           "texto": "Respiración celular = proceso exergónico.",
-          "explicacion": "Se le llama proceso exergónico porque su principal característica es la liberación neta de energía hacia el medio celular, la cual será almacenada temporalmente en forma de enlaces de alta energía en el ATP."
+          "explicacion": "Termodinámicamente posee un cambio de energía libre negativo, liberando energía neta hacia el medio intracelular que será atrapada en enlaces químicos temporales."
         },
         {
           "texto": "Respiración celular ∈ todos los seres vivos.",
-          "explicacion": "Absolutamente todos los seres vivos realizan alguna forma de respiración celular porque necesitan procesar nutrientes para obtener energía en forma de ATP y mantener sus funciones vitales."
-        },
-        {
-          "texto": "Objetivo principal → producción de ATP.",
-          "explicacion": "El objetivo supremo de la respiración celular es capturar la energía liberada en la destrucción de la glucosa para sintetizar ATP, que es la moneda energética que la célula puede usar para sus trabajos."
-        },
-        {
-          "texto": "Rendimiento aeróbico → 36 a 38 ATP.",
-          "explicacion": "La oxidación completa de una molécula de glucosa en presencia de oxígeno rinde un total de 36 a 38 moléculas de ATP, dependiendo del tipo de lanzadera que la célula utilice para ingresar los electrones."
+          "explicacion": "Es un rasgo metabólico universal; tanto organismos unicelulares como pluricelulares necesitan procesar nutrientes para sostener su homeostasis y evitar la muerte celular."
         }
       ]
     },
     {
-      "titulo": "El ATP (Adenosín Trifosfato)",
+      "titulo": "Objetivo Energético",
       "puntos": [
         {
+          "texto": "Objetivo principal → producción de ATP.",
+          "explicacion": "El propósito supremo de toda la maquinaria respiratoria es capturar la energía química de los alimentos y centralizarla en una moneda única utilizable por las enzimas."
+        },
+        {
+          "texto": "Rendimiento aeróbico ≈ 38 ATP.",
+          "explicacion": "La oxidación total de un solo mol de glucosa con oxígeno rinde teóricamente entre treinta y seis a treinta y ocho moles del nucleótido, un nivel de eficiencia metabólica muy superior a las vías sin oxígeno."
+        }
+      ]
+    },
+    {
+      "titulo": "Adenosín Trifosfato",
+      "puntos": [
+        {
+          "texto": "ATP = Adenosín Trifosfato.",
+          "explicacion": "Es el nombre completo y formal de la principal molécula portadora de energía libre en todas las células vivas."
+        },
+        {
           "texto": "ATP = nucleótido energético.",
-          "explicacion": "El ATP es un nucleótido libre que ha evolucionado para actuar como la principal moneda de transferencia de energía en la célula, de ahí que se le llame el nucleótido energético."
+          "explicacion": "Evolutivamente se adaptó como intermediario para acoplar las reacciones que liberan energía con aquellas que la consumen, actuando como una batería celular recargable."
         },
         {
-          "texto": "ATP = ergomolécula.",
-          "explicacion": "Se le denomina ergomolécula porque es la molécula encargada de almacenar y proveer la energía necesaria para realizar todo el trabajo celular, desde el movimiento muscular hasta la síntesis de proteínas."
-        },
-        {
-          "texto": "Estructura del ATP ⊃ adenosina.",
-          "explicacion": "La molécula de ATP contiene adenosina, que es la unión de la base nitrogenada adenina con el azúcar pentosa. A esta base se le unirán posteriormente los grupos fosfato."
+          "texto": "Estructura del ATP ⊃ base adenina.",
+          "explicacion": "Cuenta con una base nitrogenada púrica de doble anillo, idéntica a la que forma parte del código genético en el núcleo."
         },
         {
           "texto": "Estructura del ATP ⊃ azúcar ribosa.",
-          "explicacion": "El ATP utiliza una pentosa llamada azúcar ribosa, que es el mismo azúcar que se encuentra en el ARN y une la base nitrogenada con la cadena de fosfatos."
+          "explicacion": "Utiliza una pentosa llamada ribosa como puente estructural, siendo el mismo monosacárido que conforma el Ácido Ribonucleico o ARN."
+        },
+        {
+          "texto": "ARN = Ácido Ribonucleico.",
+          "explicacion": "Macromolécula clave en la síntesis de proteínas que comparte componentes estructurales con los nucleótidos libres de transporte energético."
         },
         {
           "texto": "Estructura del ATP ⊃ tres fosfatos.",
-          "explicacion": "El ATP contiene una cadena de tres grupos fosfato. Los enlaces entre estos grupos son altamente inestables y almacenan mucha energía que se libera al romperse."
+          "explicacion": "Posee una cadena trifosfatada unida por enlaces anhídrido fosfórico. La repulsión entre sus cargas negativas hace que los enlaces sean inestables y altamente energéticos."
+        },
+        {
+          "texto": "Ruptura de fosfato ⇒ libera energía.",
+          "explicacion": "Cuando el tercer grupo fosfato se desprende por hidrólisis celular, la molécula se convierte en difosfato y libera la energía necesaria para el trabajo fisiológico."
         }
       ]
     },
     {
-      "titulo": "Localización de la Respiración Celular",
+      "titulo": "Localización Celular",
       "puntos": [
         {
+          "texto": "Célula procariota ✗ organelas membranosas.",
+          "explicacion": "Las bacterias y arqueas carecen de compartimentos internos cerrados por membranas complejas, obligándolas a adaptar su espacio interno para el metabolismo."
+        },
+        {
           "texto": "Célula procariota ✓ citoplasma.",
-          "explicacion": "Como las células procariotas carecen de organelas con membrana, las etapas iniciales de la degradación de la glucosa ocurren disueltas directamente en su citoplasma."
+          "explicacion": "Toda la fase inicial e intermedia de la escisión de la glucosa ocurre disuelta directamente en el hialoplasma bacteriano libre."
         },
         {
           "texto": "Célula procariota ✓ mesosomas.",
-          "explicacion": "Para las fases que requieren cadena transportadora de electrones, las bacterias utilizan invaginaciones de su propia membrana plasmática llamadas mesosomas, actuando de forma análoga a las mitocondrias."
+          "explicacion": "Para anclar la maquinaria transportadora de electrones, utilizan repliegues hacia adentro de su propia membrana plasmática exterior, análogos funcionales de las organelas eucariotas."
         },
         {
           "texto": "Célula eucariota ✓ citoplasma.",
-          "explicacion": "En eucariotas, la primera fase de la respiración celular ocurre siempre en el citoplasma, sirviendo como el paso preparatorio antes de que los metabolitos ingresen a las organelas especializadas."
+          "explicacion": "El medio acuoso celular sirve como laboratorio preparatorio; aquí ocurre la rotura inicial anaeróbica antes de que los metabolitos ingresen a compartimentos cerrados."
         },
         {
           "texto": "Célula eucariota ✓ mitocondria.",
-          "explicacion": "La mitocondria es la organela especializada de las células eucariotas donde ocurren todas las etapas aeróbicas de la respiración para maximizar la producción de ATP."
+          "explicacion": "Compartimento altamente especializado de doble membrana que aísla las reacciones que requieren oxígeno, maximizando el gradiente electroquímico sin interferir con el citosol."
         }
       ]
     },
@@ -98,199 +108,1172 @@
       "titulo": "Preparación de Macromoléculas",
       "puntos": [
         {
-          "texto": "Carbohidratos → glucosa.",
-          "explicacion": "Los carbohidratos complejos deben ser digeridos y degradados a monosacáridos, principalmente glucosa, la cual es el combustible ideal para iniciar la vía de la glucólisis."
+          "texto": "Carbohidratos complejos → glucosa.",
+          "explicacion": "Polímeros como el almidón o glucógeno se hidrolizan por enzimas digestivas hasta su monómero básico hexosa, el combustible universal por excelencia."
         },
         {
-          "texto": "Lípidos → ácidos grasos.",
-          "explicacion": "Los lípidos se degradan en glicerol y ácidos grasos; estos últimos sufren beta-oxidación para convertirse en Acetil-CoA y entrar directamente al ciclo de Krebs."
+          "texto": "Lípidos → glicerol + ácidos grasos.",
+          "explicacion": "Los triglicéridos de reserva sufren lipólisis, separándose en un alcohol de tres carbonos y largas cadenas alifáticas ricas en energía."
+        },
+        {
+          "texto": "Ácidos grasos → Acetil-CoA.",
+          "explicacion": "Mediante una ruta llamada beta-oxidación, las cadenas grasas se cortan de dos en dos carbonos, ingresando directamente a la etapa mitocondrial intermedia."
         },
         {
           "texto": "Proteínas → aminoácidos.",
-          "explicacion": "Cuando los carbohidratos y lípidos escasean, las proteínas son digeridas hasta aminoácidos, los cuales pierden su grupo amino para ingresar en distintos puntos de las rutas respiratorias."
+          "explicacion": "En estados de ayuno prolongado o emergencia, las cadenas polipeptídicas musculares se degradan hasta sus monómeros básicos para fines energéticos."
+        },
+        {
+          "texto": "Aminoácidos ↓ grupo amino.",
+          "explicacion": "Para entrar a la ruta respiratoria, sufren desaminación hepática; el nitrógeno se excreta como urea y el esqueleto de carbono restante se oxida."
         }
       ]
     },
     {
-      "titulo": "Fase Citosólica: Glucólisis",
+      "titulo": "Fase Glucólisis",
       "puntos": [
         {
           "texto": "Fase citosólica = Glucólisis.",
-          "explicacion": "La glucólisis se considera la fase citosólica porque todas sus reacciones, mediadas por enzimas específicas, ocurren en el líquido intracelular sin requerir membranas de organelas."
+          "explicacion": "Primer bloque metabólico universal que consta de diez reacciones enzimáticas consecutivas flotando libremente en el citosol celular."
         },
         {
-          "texto": "Glucólisis = vía de Embden-Meyerhof.",
-          "explicacion": "La secuencia completa de reacciones metabólicas que transforman la glucosa en piruvato fue elucidada por Embden, Meyerhof y Parnas, recibiendo su epónimo."
+          "texto": "Glucólisis = vía Embden-Meyerhof-Parnas.",
+          "explicacion": "El nombre histórico honra a los bioquímicos pioneros que descifraron la ruta metabólica completa paso por paso a principios del siglo veinte."
         },
         {
-          "texto": "Glucólisis = proceso anaeróbico.",
-          "explicacion": "La glucólisis es una vía metabólica universal que no utiliza ni requiere oxígeno gaseoso en absoluto, por lo que puede ser realizada por organismos aeróbicos y anaeróbicos."
+          "texto": "Embden-Meyerhof-Parnas = Gustav Embden, Otto Meyerhof, Jakub Karol Parnas.",
+          "explicacion": "Nombres completos de los tres científicos europeos fundamentales que aislaron los intermediarios fosforilados de la ruta celular en tejido muscular."
+        },
+        {
+          "texto": "Glucólisis ✗ oxígeno.",
+          "explicacion": "Es un mecanismo primordial muy antiguo evolutivamente que no utiliza gas oxígeno, permitiendo la supervivencia de extremófilos anaeróbicos."
         },
         {
           "texto": "Ingreso de glucosa ✓ insulina.",
-          "explicacion": "Para ingresar eficientemente al citoplasma celular y comenzar la glucólisis, la glucosa circulante en la sangre requiere la acción de la insulina, que activa los canales transportadores."
+          "explicacion": "Hormona peptídica pancreática indispensable en mamíferos para ordenar a la célula que permita el ingreso de azúcar desde el torrente sanguíneo."
+        },
+        {
+          "texto": "Insulina ⇒ activa transportadores GLUT.",
+          "explicacion": "Se une a receptores de membrana que promueven la translocación de canales de glucosa, abriendo el paso físico hacia el interior."
         },
         {
           "texto": "Inicio de glucólisis ✓ 2 ATP.",
-          "explicacion": "La glucólisis requiere una fase inicial de inversión donde se consumen dos moléculas de ATP para fosforilar la glucosa y convertirla en compuestos inestables."
-        },
+          "explicacion": "Etapa de inversión obligatoria donde la enzima hexoquinasa y la fosfofructoquinasa gastan energía para fosforilar e inestabilizar la molécula inicial."
+        }
+      ]
+    },
+    {
+      "titulo": "Rendimiento de Glucólisis",
+      "puntos": [
         {
           "texto": "Glucólisis → 4 ATP brutos.",
-          "explicacion": "Después de que la molécula de glucosa se parte en dos de tres carbonos, cada ruta paralela produce energía, generando un total de cuatro moléculas de ATP de forma bruta."
+          "explicacion": "Tras partirse la hexosa en dos azúcares de tres carbonos, las cinasas extraen energía libre y logran fabricar cuatro moléculas por fosforilación a nivel de sustrato."
         },
         {
           "texto": "Glucólisis → 2 ATP netos.",
-          "explicacion": "Para calcular la ganancia real, se resta la inversión inicial de la producción total bruta, arrojando un beneficio neto de dos ATP por cada glucosa degradada."
+          "explicacion": "Cálculo real de ganancia metabólica obtenido al restar las dos moléculas invertidas al inicio de las cuatro fabricadas, dejando poco saldo a favor."
+        },
+        {
+          "texto": "NADH2 = Nicotinamida adenina dinucleótido reducido.",
+          "explicacion": "Nombre completo de la coenzima que captura y transporta electrones altamente reactivos desde las rutas citosólicas hacia la cadena respiratoria."
         },
         {
           "texto": "Glucólisis → 2 NADH2.",
-          "explicacion": "Durante la oxidación del fosfogliceraldehído se extraen electrones y protones de alta energía que son capturados por la coenzima NAD+, generando dos moléculas de NADH2."
+          "explicacion": "En el sexto paso, la oxidación mediada por deshidrogenasas arranca electrones y protones, llenando dos vehículos de transporte intracelular."
         },
         {
           "texto": "Glucólisis → 2 piruvatos.",
-          "explicacion": "La molécula original de glucosa se escinde y oxida parcialmente hasta convertirse en dos moléculas de ácido pirúvico, cuyo destino posterior dependerá de la presencia de oxígeno."
+          "explicacion": "Producto final de la ruta; la hexosa original queda dividida simétricamente en dos ácidos orgánicos que actúan como encrucijada metabólica."
+        },
+        {
+          "texto": "Piruvato = molécula de tres carbonos.",
+          "explicacion": "Esqueleto carbonado parcialmente oxidado que todavía contiene gran cantidad de energía en sus enlaces covalentes lista para ser extraída en la mitocondria."
         }
       ]
     },
     {
-      "titulo": "Destino del Piruvato y Fermentación",
+      "titulo": "Vías de Fermentación",
       "puntos": [
         {
           "texto": "Presencia de O2 ⇒ ingreso a mitocondria.",
-          "explicacion": "Si hay oxígeno disponible, el piruvato y el NADH2 generados cruzan las membranas e ingresan a la mitocondria para continuar su oxidación total y extraer toda su energía."
+          "explicacion": "Si las presiones parciales de oxígeno tisular son normales, el ácido pirúvico es succionado hacia el interior de la organela para su destrucción total."
         },
         {
           "texto": "Ausencia de O2 ⇒ fermentación.",
-          "explicacion": "Cuando falta oxígeno, la célula desvía los piruvatos hacia vías de fermentación para regenerar el NAD+ y evitar que la glucólisis se detenga, aunque no produzcan más ATP."
+          "explicacion": "Cuando el gas escasea, la cadena respiratoria se atasca y la célula recurre al plan de emergencia citosólico para descargar sus coenzimas y no morir."
         },
         {
           "texto": "Fermentación alcohólica ∈ levaduras.",
-          "explicacion": "Las levaduras, que son hongos unicelulares utilizados en panadería y cervecería, son los principales organismos capaces de convertir el piruvato en alcohol sin oxígeno."
+          "explicacion": "Ruta predominante en hongos unicelulares como «Saccharomyces cerevisiae», explotada industrialmente en las panaderías y fábricas de licores."
         },
         {
-          "texto": "Fermentación alcohólica → 2 etanol.",
-          "explicacion": "En esta vía, el piruvato se descarboxila a acetaldehído y luego es reducido por el NADH2 para convertirse en etanol, el cual es secretado como desecho celular."
+          "texto": "Fermentación alcohólica → 2 acetaldehídos.",
+          "explicacion": "El piruvato pierde un átomo de carbono, transformándose transitoriamente en este compuesto tóxico que servirá como aceptor final de electrones."
+        },
+        {
+          "texto": "Acetaldehído → 2 etanol.",
+          "explicacion": "La coenzima reducida descarga sus electrones sobre el acetaldehído, reduciéndolo químicamente hasta formar alcohol etílico que se expulsa al exterior."
         },
         {
           "texto": "Fermentación alcohólica → 2 CO2.",
-          "explicacion": "Al pasar el piruvato a etanol, el carbono restante se desprende en forma de gas dióxido de carbono, siendo responsable de inflar la masa del pan o burbujear la cerveza."
+          "explicacion": "La descarboxilación inicial libera dióxido de carbono gaseoso, cuyas burbujas son responsables anatómicas de inflar y dar textura esponjosa a la masa del pan."
         },
         {
           "texto": "Fermentación láctica ∈ células musculares.",
-          "explicacion": "Las fibras musculares animales pueden realizar fermentación láctica cuando las contracciones son intensas y el suministro sanguíneo de oxígeno resulta insuficiente."
+          "explicacion": "Mecanismo de escape usado por miocitos animales e incluso por bacterias lácticas usadas en la manufactura de yogur industrial."
         },
         {
           "texto": "Fermentación láctica → 2 lactatos.",
-          "explicacion": "El músculo convierte el piruvato directamente en ácido láctico al aceptar los electrones del NADH2, sin producir descarboxilación ni liberar gas dióxido de carbono."
+          "explicacion": "El piruvato acepta directamente los hidrógenos sin perder carbonos previamente, transformándose en ácido láctico puro."
         },
         {
-          "texto": "Esfuerzo físico ⇒ ácido láctico.",
-          "explicacion": "Durante un esfuerzo físico intenso, la glucólisis acelera y acumula ácido láctico, cuya presencia disminuye el pH intracelular y contribuye a la fatiga muscular transitoria."
+          "texto": "Fermentación láctica ✗ liberación de CO2.",
+          "explicacion": "A diferencia de la ruta de las levaduras, aquí el esqueleto de tres carbonos se mantiene íntegro, por lo que no hay producción de gas de desecho."
+        },
+        {
+          "texto": "Esfuerzo físico intenso ⇒ acumula ácido láctico.",
+          "explicacion": "Durante un sprint o levantamiento de pesas, la sangre no suple oxígeno suficientemente rápido, forzando al músculo a sobrevivir a base de pura fermentación."
+        },
+        {
+          "texto": "Ácido láctico ↓ pH intracelular.",
+          "explicacion": "La cristalización y acumulación del ácido induce una leve acidosis metabólica local que interfiere con los canales de calcio de las miofibrillas."
+        },
+        {
+          "texto": "Acidosis láctica ⇒ fatiga muscular transitoria.",
+          "explicacion": "La bajada de pH se manifiesta neurológicamente como ardor y debilidad repentina, obligando al individuo a detener el esfuerzo intenso para recuperar oxígeno."
         }
       ]
     },
     {
-      "titulo": "Fase Mitocondrial: Acetilación",
+      "titulo": "Acetilación del Piruvato",
       "puntos": [
         {
           "texto": "Fase mitocondrial = proceso aeróbico.",
-          "explicacion": "Todo el metabolismo dentro de la mitocondria se clasifica como aeróbico; aunque el oxígeno participa al final, sin él toda la maquinaria mitocondrial se paraliza."
+          "explicacion": "Engloba todas las reacciones dentro de la organela que requieren estrictamente al gas como sumidero final de toxicidad electrónica."
         },
         {
           "texto": "Acetilación ∈ matriz mitocondrial.",
-          "explicacion": "La acetilación del piruvato ocurre disuelta en el fluido interior de la organela, conocido como matriz mitocondrial, donde residen las enzimas específicas que ejecutan el proceso."
+          "explicacion": "Fase de transición o «eslabón» que ocurre nadando en el líquido denso central de la organela mediado por un enorme complejo multienzimático."
         },
         {
-          "texto": "Piruvato → pierde carbono.",
-          "explicacion": "Para prepararse antes de entrar al ciclo de Krebs, una enzima descarboxilasa arranca un carbono del piruvato y lo libera como gas dióxido de carbono."
+          "texto": "Piruvato ↓ 1 carbono.",
+          "explicacion": "Sufre descarboxilación oxidativa; una enzima recorta un enlace carbono-carbono irreversiblemente para preparar la molécula."
+        },
+        {
+          "texto": "Carbono liberado = CO2.",
+          "explicacion": "El pedazo desprendido se oxigena totalmente formando el gas de desecho primario que exhalamos constantemente por los pulmones."
         },
         {
           "texto": "Acetilación → produce grupo acetil.",
-          "explicacion": "Tras la pérdida del carbono y la extracción de electrones, el esqueleto restante de dos carbonos se denomina grupo acetil, actuando como combustible directo para el ciclo de Krebs."
+          "explicacion": "Lo que resta de la molécula original de tres carbonos es un residuo orgánico inestable de solo dos carbonos, listo para ser entregado."
         },
         {
-          "texto": "Acetil + Coenzima A.",
-          "explicacion": "El grupo acetil es acoplado inmediatamente a una molécula transportadora llamada Coenzima A para formar el complejo Acetil-CoA y asegurar su ingreso al ciclo."
+          "texto": "Grupo acetil = molécula de dos carbonos.",
+          "explicacion": "Es la unidad de combustible estandarizada de la mitocondria; los lípidos, carbohidratos y proteínas convergen todos hacia esta estructura."
+        },
+        {
+          "texto": "CoA = Coenzima A.",
+          "explicacion": "Nombre completo de la molécula adaptadora derivada de la vitamina B5, encargada de movilizar residuos de carbono dentro de la matriz."
+        },
+        {
+          "texto": "Acetil + CoA → Acetil-CoA.",
+          "explicacion": "El residuo de dos carbonos se liga temporalmente a la molécula adaptadora, formando un enlace tioéster de alta energía que lo introducirá al ciclo."
         },
         {
           "texto": "Acetilación → genera NADH2.",
-          "explicacion": "Simultáneamente al corte del carbono, la molécula se oxida y los electrones extraídos reducen una molécula de NAD+ para formar NADH2, sumando rendimiento energético."
+          "explicacion": "El recorte de la estructura libera pares de electrones atrapados, añadiendo rendimiento energético a la suma total celular."
         }
       ]
     },
     {
-      "titulo": "Fase Mitocondrial: Ciclo de Krebs",
+      "titulo": "Ciclo de Krebs",
       "puntos": [
         {
           "texto": "Ciclo de Krebs = ciclo del citrato.",
-          "explicacion": "El ciclo de Krebs también se llama ciclo del citrato porque el citrato es el primer metabolito estable de seis carbonos formado al inicio de las reacciones."
+          "explicacion": "Ruta cíclica anfibólica bautizada con múltiples nombres, central para cruzar vías de síntesis y de degradación bioquímica."
+        },
+        {
+          "texto": "Krebs = Hans Adolf Krebs.",
+          "explicacion": "Nombre completo del médico y bioquímico alemán exiliado que descubrió la ruta cíclica del metabolismo celular, ganando el Premio Nobel por ello."
+        },
+        {
+          "texto": "Ciclo de Krebs ∈ matriz mitocondrial.",
+          "explicacion": "Las ocho enzimas que forman esta rueda giratoria molecular se encuentran disueltas de forma libre en el líquido interno, excepto una que está anclada."
+        },
+        {
+          "texto": "Oxalacetato = molécula de cuatro carbonos.",
+          "explicacion": "El anfitrión residente permanente del ciclo que se regenera en cada vuelta y espera acoplarse con nuevo combustible entrante."
         },
         {
           "texto": "Acetil-CoA + oxalacetato.",
-          "explicacion": "El ciclo inicia cuando la Coenzima A entrega el grupo acetil de dos carbonos a una molécula receptora residente de cuatro carbonos llamada oxalacetato."
+          "explicacion": "Paso inaugural: el transportador abandona su carga de dos carbonos colisionando con el receptor anfitrión de cuatro carbonos."
         },
         {
-          "texto": "Ciclo de Krebs → produce citrato.",
-          "explicacion": "La enzima citrato sintasa fusiona el Acetil con el oxalacetato para producir una molécula de citrato que luego comenzará a ser desmantelada de forma escalonada."
+          "texto": "Fusión de carbonos → citrato.",
+          "explicacion": "El producto ensamblado resultante es el primer ácido tricarboxílico de la ruta, el cual sufrirá múltiples mutilaciones químicas."
         },
         {
-          "texto": "Ciclo de Krebs → 3 NADH2.",
-          "explicacion": "Durante una sola vuelta del ciclo, las repetidas oxidaciones logran reducir tres moléculas de NAD+ hasta convertirlas en tres energéticas moléculas de NADH2."
+          "texto": "Citrato = molécula de seis carbonos.",
+          "explicacion": "Estructura intermedia temporal que acumula toda la energía de la glucosa remanente, lista para ser deshidratada y oxidada."
         },
         {
-          "texto": "Ciclo de Krebs → 1 FADH2.",
-          "explicacion": "En un punto específico del ciclo, los electrones extraídos tienen un nivel energético distinto que es recogido por el FAD, generando una molécula de FADH2 por vuelta."
+          "texto": "Citrato sintasa ⇒ cataliza fusión inicial.",
+          "explicacion": "Enzima específica que actúa como el motor de arranque del ciclo, controlando la velocidad de la respiración según las necesidades energéticas."
         },
         {
-          "texto": "Ciclo de Krebs → 1 ATP.",
-          "explicacion": "El ciclo de Krebs forma un GTP que luego transfiere su fosfato para generar un ATP por vuelta, enfocando su verdadero propósito en llenar coenzimas con electrones."
+          "texto": "Ciclo de Krebs → 3 NADH2 por vuelta.",
+          "explicacion": "En tres puntos específicos de la rueda, deshidrogenasas roban electrones poderosos, representando el mayor botín energético de la vía."
         },
         {
-          "texto": "Ciclo de Krebs → 2 CO2.",
-          "explicacion": "Para que el ciclo regrese a su estructura original de cuatro carbonos, la molécula debe perder dos carbonos durante las reacciones, los cuales escapan como gas de desecho."
+          "texto": "FADH2 = Flavín adenina dinucleótido reducido.",
+          "explicacion": "Nombre completo de una coenzima secundaria distinta, derivada de la vitamina B2, que capta electrones de menor voltaje relativo."
+        },
+        {
+          "texto": "Ciclo de Krebs → 1 FADH2 por vuelta.",
+          "explicacion": "El paso que convierte succinato a fumarato libera electrones más débiles que solo pueden ser capturados por esta segunda coenzima."
+        },
+        {
+          "texto": "GTP = Guanosín trifosfato.",
+          "explicacion": "Nombre completo de un nucleótido análogo similar estructuralmente a la moneda energética universal pero con base guanina."
+        },
+        {
+          "texto": "Ciclo de Krebs → 1 GTP por vuelta.",
+          "explicacion": "Único punto de la rueda donde ocurre fosforilación a nivel de sustrato, produciendo energía química directamente y no en forma de electrones."
+        },
+        {
+          "texto": "GTP → transfiere fosfato a ATP.",
+          "explicacion": "Inmediatamente después de nacer, entrega su grupo terminal para recargar la moneda universal y facilitar la contabilidad celular."
+        },
+        {
+          "texto": "Ciclo de Krebs → 2 CO2 por vuelta.",
+          "explicacion": "Para asegurar que la rueda vuelva al estado de anfitrión de cuatro carbonos, se desprenden dos átomos extraídos como gas que viajará a la sangre venosa."
         }
       ]
     },
     {
-      "titulo": "Fosforilación Oxidativa y Balance Energético",
+      "titulo": "Fosforilación Oxidativa",
       "puntos": [
         {
           "texto": "Fosforilación oxidativa ∈ cresta mitocondrial.",
-          "explicacion": "La maquinaria enzimática de la cadena respiratoria y la ATPasa se encuentran incrustadas en la membrana interna de la mitocondria, formando pliegues conocidos como crestas."
+          "explicacion": "Proceso final masivo situado físicamente en la membrana interna plegada, donde se concentra toda el área de superficie disponible."
+        },
+        {
+          "texto": "Cresta mitocondrial ⊃ cadena respiratoria.",
+          "explicacion": "Formada por cuatro complejos proteicos de citocromos intercalados que actúan como cables conductores, pasándose los electrones por afinidad creciente."
+        },
+        {
+          "texto": "Cresta mitocondrial ⊃ complejo ATP sintasa.",
+          "explicacion": "También llamado complejo V; es una nanomáquina rotatoria tipo turbina que utiliza el flujo de protones para comprimir y fusionar las subunidades del nucleótido."
         },
         {
           "texto": "Oxígeno = último aceptor de electrones.",
-          "explicacion": "Al final de la cadena respiratoria, el oxígeno recibe definitivamente los electrones gastados y se une con protones para formar moléculas de agua."
+          "explicacion": "Por su inmensa electronegatividad, funciona como el sumidero final y aspiradora que arrastra el flujo eléctrico, evitando que los cables se quemen y atasquen."
         },
         {
-          "texto": "1 NADH2 → equivale a 3 ATP.",
-          "explicacion": "Los electrones entregados por el NADH2 ingresan al inicio de la cadena, teniendo suficiente recorrido y energía para bombear protones que permitirán a la ATPasa fabricar tres ATP."
+          "texto": "Oxígeno + protones + electrones → agua.",
+          "explicacion": "Al capturar la descarga, el gas neutraliza sus cargas incorporando iones de hidrógeno libres, generando agua metabólica completamente inofensiva para la célula."
         },
         {
-          "texto": "1 FADH2 → equivale a 2 ATP.",
-          "explicacion": "El FADH2 entrega sus electrones más adelante en la cadena, perdiendo el bombeo de un complejo, por lo que la gradiente generada solo alcanza para fabricar dos ATP."
+          "texto": "1 NADH2 → 3 ATP.",
+          "explicacion": "Como entra en el primer complejo, sus electrones viajan por toda la cadena bombeando suficientes protones al espacio intermembrana para que la turbina dé vuelta y media."
         },
         {
-          "texto": "Lanzadera = proteína de membrana.",
-          "explicacion": "Las lanzaderas son proteínas de membrana especializadas que recogen los electrones afuera en el citoplasma y los pasan a nuevas coenzimas en el interior mitocondrial."
+          "texto": "1 FADH2 → 2 ATP.",
+          "explicacion": "Al ser más débil, entrega su carga en el segundo complejo salteándose una bomba, por lo que su gradiente generado es menor y su rendimiento cae."
+        }
+      ]
+    },
+    {
+      "titulo": "Lanzaderas y Balance",
+      "puntos": [
+        {
+          "texto": "Lanzadera = proteína de membrana interna.",
+          "explicacion": "Las coenzimas reducidas en el citosol celular son moléculas demasiado inmensas para atravesar las compuertas de la organela, dependiendo de intermediarios que crucen el mensaje electrónico."
         },
         {
-          "texto": "Glicerol fosfato → produce 2 ATP.",
-          "explicacion": "La lanzadera del glicerol fosfato entrega los electrones del NADH2 citosólico a un FAD mitocondrial, rindiendo solo dos ATP por cada molécula debido a la pérdida de energía en el pase."
+          "texto": "Lanzadera glicerol fosfato → 2 ATP por NADH2.",
+          "explicacion": "Ruta predominante en cerebro y músculo esquelético; al pasar la carga adentro, se la entrega a una coenzima secundaria mitocondrial que pierde voltaje en el relevo."
         },
         {
           "texto": "Glicerol fosfato ⇒ balance de 36 ATP.",
-          "explicacion": "Si los NADH2 de la glucólisis usan la lanzadera de glicerol fosfato, el balance matemático sumando los rendimientos de la acetilación y Krebs arroja un total de 36 ATP netos."
+          "explicacion": "Debido al peaje energético de esta ruta de entrada específica, los electrones citosólicos rinden un nucleótido menos por unidad, mermando el total matemático final."
         },
         {
-          "texto": "Malato aspartato → produce 3 ATP.",
-          "explicacion": "La lanzadera del malato aspartato es más eficiente porque entrega los electrones a un NAD+ interior, conservando el rendimiento pleno de tres ATP por cada coenzima."
+          "texto": "Lanzadera malato aspartato → 3 ATP por NADH2.",
+          "explicacion": "Mecanismo especializado en corazón, hígado y riñones que resulta perfectamente eficiente al transferir electrones a una coenzima primaria residente homóloga, sin pérdidas de potencial térmico."
         },
         {
           "texto": "Malato aspartato ⇒ balance de 38 ATP.",
-          "explicacion": "Al no perderse energía durante la transferencia de los NADH2 glucolíticos, la suma total y máxima posible de la ruta aeróbica llega al óptimo de 38 ATP por glucosa."
+          "explicacion": "Suma matemática teórica óptima de la oxidación de la hexosa que ocurre solo cuando no existe gasto o pérdida de voltaje al ingresar los electrones extraídos desde afuera."
         }
       ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis celular evalúa la respiración como proceso catabólico al degradar glucosa. Si el experimento mide sus consecuencias energéticas directas, determine la afirmación correcta.",
+      "opts": [
+        "Rompe enlaces orgánicos y genera moléculas simples",
+        "Une compuestos inorgánicos y forma enlaces simples",
+        "Altera estructuras celulares y consume muchas grasas",
+        "Detiene reacciones químicas y bloquea vías simples",
+        "Activa vías anabólicas y sintetiza proteínas simples"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Respiración celular = proceso catabólico. La respiración degrada moléculas complejas para obtener energía, por lo que rompe enlaces orgánicos hacia compuestos más simples."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un calorímetro, el tejido muscular exhibe respiración celular siendo un proceso exergónico. Seleccione la predicción térmica y energética adecuada para esta medición celular.",
+      "opts": [
+        "Mantiene energía térmica constante en la célula",
+        "Absorbe mucha energía útil de su entorno",
+        "Libera energía neta hacia el medio celular",
+        "Destruye energía potencial en el medio celular",
+        "Fija la energía lumínica del medio celular"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Respiración celular = proceso exergónico. Al romper enlaces de alta energía, la célula libera energía de forma neta hacia el medio intracelular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se estudian muestras de bacterias extremófilas, plantas terrestres y mamíferos para evaluar si la respiración celular pertenece a todos los seres vivos. Concluya adecuadamente.",
+      "opts": [
+        "Ocurre exclusivamente dentro de organismos con tejidos",
+        "Funciona únicamente cuando existe luz solar directa",
+        "Falla en bacterias por carecer de mitocondrias",
+        "Aparece en absolutamente todo organismo vivo celular",
+        "Depende de pulmones en todo organismo pluricelular"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Respiración celular ∈ todos los seres vivos. Es un proceso metabólico universal indispensable para el mantenimiento vital, sin importar la complejidad estructural."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se inhibe el objetivo principal de la respiración celular, que es la producción de ATP. Determine qué consecuencia letal inmediata sufrirán estas células experimentales.",
+      "opts": [
+        "Falla la captura principal de nucleótidos energéticos",
+        "Inhibe la síntesis exclusiva de ácidos nucleicos",
+        "Detiene la producción directa de lípidos complejos",
+        "Activa la reserva total de carbohidratos complejos",
+        "Acelera la captura celular de radiación solar"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Objetivo principal → producción de ATP. La célula muere al no poder capturar la energía liberada en forma de moneda energética utilizable."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un tejido altamente irrigado realiza metabolismo oxidativo. Conociendo que su rendimiento aeróbico es de treinta y ocho ATP por hexosa, evalúe la eficiencia esperada.",
+      "opts": [
+        "Reduce al mínimo la obtención de energía",
+        "Muestra baja eficiencia generando apenas dos moléculas",
+        "Inhibe completamente la ganancia de nueva energía",
+        "Alcanza la máxima producción de nucleótidos celulares",
+        "Detiene la vía oxidativa sin formar moléculas"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Rendimiento aeróbico ≈ 38 ATP. La vía aeróbica maximiza la extracción energética logrando el mayor número posible de moléculas de ATP."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un reactivo marca radiactivamente al ATP, específicamente al adenosín trifosfato. Identifique qué función molecular se rastreará al seguir el recorrido de este marcador.",
+      "opts": [
+        "Falla el código genético principal del núcleo",
+        "Sigue el almacenamiento celular de grasa parda",
+        "Muestra la transferencia de energía celular vital",
+        "Altera la estructura básica de los cromosomas",
+        "Marca la construcción de nuevas paredes celulares"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: ATP = Adenosín Trifosfato. Este compuesto funciona como la molécula central e indispensable para la transferencia de energía en el trabajo celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La biología define al ATP como un nucleótido energético. Si una droga impide que el ATP actúe como tal, seleccione el desenlace intracelular lógico.",
+      "opts": [
+        "Mantiene estables los procesos vitales sin alteración",
+        "Inhibe la provisión de energía para trabajos",
+        "Aumenta la velocidad de las reacciones celulares",
+        "Activa vías alternas de energía sin problema",
+        "Genera más enlaces covalentes fuertes sin energía"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: ATP = nucleótido energético. Sin su función de ergomolécula, la célula queda sin suministro de batería para acoplar sus procesos vitales."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis químico desarma la estructura del ATP y encuentra que contiene la base adenina. Elija la interpretación correcta respecto a esta base nitrogenada.",
+      "opts": [
+        "Utiliza una pirimidina simple de anillo único",
+        "Emplea la base púrica de doble anillo",
+        "Requiere una base exclusiva del ácido ribonucleico",
+        "Falla al intentar unirse con el azúcar",
+        "Cambia su estructura según la especie viva"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Estructura del ATP ⊃ base adenina. La adenina es una base púrica de doble anillo, que forma la adenosina junto al azúcar."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La estructura del ATP requiere contener azúcar ribosa. Si una mutación celular solo produce desoxirribosa, determine qué impacto tendrá en la formación energética.",
+      "opts": [
+        "Logra producir nucleótidos energéticos sin ningún problema",
+        "Mejora la estabilidad de la moneda energética",
+        "Inhibe la formación del nucleótido energético celular",
+        "Cambia la función de la moneda energética",
+        "Activa el metabolismo secundario de la ribosa"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Estructura del ATP ⊃ azúcar ribosa. El ATP requiere estrictamente la pentosa ribosa; usar desoxirribosa alteraría su estructura molecular funcional."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El ARN es el ácido ribonucleico. Dado que comparte componentes con el nucleótido energético, identifique la afirmación correcta sobre la relación entre ambos.",
+      "opts": [
+        "El ácido emplea la misma pentosa celular",
+        "La molécula utiliza un tipo de hexosa",
+        "El ácido carece de bases nitrogenadas púricas",
+        "La molécula rechaza unirse con grupos fosfato",
+        "El ácido destruye los componentes del nucleótido"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: ARN = Ácido Ribonucleico. El azúcar ribosa es el mismo monosacárido que estructura tanto el ARN como el ATP."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se estudia la estructura del ATP y se confirma que contiene tres fosfatos. Evalúe la naturaleza química de los enlaces entre estos grupos terminales.",
+      "opts": [
+        "Forman enlaces muy estables de nula repulsión",
+        "Crean uniones permanentes sin potencial de ruptura",
+        "Generan repulsión formando enlaces altamente inestables reactivos",
+        "Evitan liberar calor por ser uniones pasivas",
+        "Fijan los grupos sin almacenar energía libre"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Estructura del ATP ⊃ tres fosfatos. Las cargas negativas de los tres fosfatos generan repulsión, haciendo que sus uniones sean muy inestables y energéticas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La enzima ATPasa cataliza la ruptura del fosfato, causando que se libere energía. Seleccione la consecuencia inmediata de este paso metabólico en la célula.",
+      "opts": [
+        "Consume energía formando moléculas de difosfato celular",
+        "Libera energía útil creando trabajo celular activo",
+        "Inhibe los procesos exergónicos del medio intracelular",
+        "Almacena energía potencial en el enlace roto",
+        "Destruye toda la base nitrogenada liberando luz"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Ruptura de fosfato ⇒ libera energía. Al romperse el tercer fosfato por hidrólisis, se cede la energía requerida para el trabajo fisiológico."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La célula procariota no posee organelas membranosas complejas. Si se inyecta glucosa en una bacteria, evalúe cómo organizará la célula sus vías respiratorias.",
+      "opts": [
+        "Delega el metabolismo hacia sus vacuolas centrales",
+        "Mueve todas las vías al núcleo definido",
+        "Adapta su propio espacio interno sin mitocondrias",
+        "Rechaza procesar glucosa por carecer de organelas",
+        "Absorbe mitocondrias del medio para poder respirar"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Célula procariota ✗ organelas membranosas. Al no tener organelas con membrana, la bacteria realiza todo el metabolismo en compartimentos adaptados de su propia estructura."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una toxina inactiva el citoplasma de una célula procariota. Identifique qué fase temprana de la respiración celular se detendrá inmediatamente tras la exposición.",
+      "opts": [
+        "Falla la degradación inicial disuelta de glucosa",
+        "Inhibe la fosforilación oxidativa de las mitocondrias",
+        "Detiene la entrada celular de nueva luz",
+        "Aumenta la síntesis primaria de ácidos grasos",
+        "Destruye el transporte electrónico de las crestas"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Célula procariota ✓ citoplasma. Las fases iniciales e intermedias ocurren disueltas en el citoplasma; sin él, la escisión inicial de la glucosa colapsa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un antibiótico destruye los mesosomas de una célula procariota. Determine qué función metabólica dependiente de estas estructuras perderá la bacteria de forma irreversible.",
+      "opts": [
+        "Mantiene intacta la cadena transportadora de electrones",
+        "Pierde el soporte de las enzimas respiratorias",
+        "Acelera la glucólisis libre del fluido citosólico",
+        "Evita la digestión de sus vacuolas alimenticias",
+        "Mejora la síntesis neta de ácidos nucleicos"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Célula procariota ✓ mesosomas. Estas invaginaciones de la membrana sostienen la maquinaria de la cadena de electrones análoga a la mitocondria."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una célula eucariota recibe glucosa marcada con isótopos. Conociendo que las enzimas del citoplasma inician la vía, seleccione el primer evento metabólico observable.",
+      "opts": [
+        "Ingresa directamente al ciclo en la mitocondria",
+        "Sufre reacciones preparatorias anaeróbicas en el medio",
+        "Se oxida totalmente sin requerir pasos previos",
+        "Rechaza la ruptura fuera de las organelas",
+        "Activa las bombas iónicas del núcleo celular"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Célula eucariota ✓ citoplasma. El citoplasma eucariota es el paso preparatorio inicial donde la glucosa empieza a romperse antes de entrar a la organela."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se extrae la mitocondria de una célula eucariota aislada. Prediga el resultado sobre el metabolismo oxidativo aeróbico si el oxígeno permanece presente en exceso.",
+      "opts": [
+        "Funciona normalmente utilizando vías respiratorias citosólicas puras",
+        "Maximiza la producción energética del ciclo celular",
+        "Colapsa al perder el compartimento aeróbico especializado",
+        "Genera más nucleótidos energéticos que una intacta",
+        "Activa vías nuevas que reemplazan la organela"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Célula eucariota ✓ mitocondria. La organela centraliza todas las etapas aeróbicas; sin ella, el metabolismo oxidativo completo y la máxima producción energética colapsan."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un organismo ingiere carbohidratos complejos que deben convertirse en glucosa para entrar a la respiración. Identifique el mecanismo digestivo necesario para aprovechar este alimento.",
+      "opts": [
+        "Fusiona monómeros para armar nuevos polímeros estables",
+        "Hidroliza polímeros enzimáticamente hasta su monómero básico",
+        "Absorbe cadenas largas intactas al medio citosólico",
+        "Rechaza el alimento por ser muy complejo",
+        "Oxida totalmente la macromolécula en el estómago"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Carbohidratos complejos → glucosa. Los carbohidratos como el almidón deben ser degradados mediante enzimas digestivas hasta formar monosacáridos hexosas utilizables."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante un ayuno, los lípidos se degradan formando glicerol y ácidos grasos. Evalúe cómo contribuye este paso inicial lipolítico al suministro energético celular.",
+      "opts": [
+        "Oculta la energía celular en cadenas cortas",
+        "Falla en preparar los compuestos orgánicos complejos",
+        "Separa las reservas en fracciones altamente energéticas",
+        "Detiene el metabolismo oxidativo de las reservas",
+        "Forma carbohidratos complejos usando reservas de lípidos"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Lípidos → glicerol + ácidos grasos. La lipólisis separa los triglicéridos en un alcohol y largas cadenas alifáticas, ambos compuestos ricos en energía química."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una enzima bloquea el paso de los ácidos grasos hacia Acetil-CoA en el hígado. Seleccione la vía metabólica específica que se verá interrumpida inmediatamente.",
+      "opts": [
+        "Falla la glucólisis primaria en el citosol",
+        "Inhibe la ruta llamada beta oxidación lipídica",
+        "Acelera la descarboxilación directa del ácido pirúvico",
+        "Activa la síntesis mitocondrial de nuevas proteínas",
+        "Detiene la entrada de carbohidratos al sistema"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Ácidos grasos → Acetil-CoA. La beta-oxidación es la ruta que corta las cadenas grasas de dos en dos carbonos para ingresar al ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En desnutrición severa, las proteínas se degradan hasta aminoácidos para generar ATP. Evalúe la viabilidad de utilizar esta ruta extrema como fuente de energía.",
+      "opts": [
+        "Actúa como combustible ideal en condiciones normales",
+        "Sirve para emergencias degradando cadenas polipeptídicas musculares",
+        "Falla en producir energía celular bajo estrés",
+        "Produce nucleótidos energéticos sin perder tejido útil",
+        "Inhibe por completo la ruta respiratoria celular"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Proteínas → aminoácidos. Cuando no hay carbohidratos ni lípidos, las proteínas estructurales musculares se degradan hasta monómeros, utilizándose como fuente de emergencia."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Los aminoácidos pierden su grupo amino para entrar a las rutas respiratorias. Identifique el destino de este desecho nitrogenado extraído durante la desaminación celular.",
+      "opts": [
+        "Oxida sus átomos formando gas de dióxido",
+        "Se excreta formando metabolitos orgánicos tipo urea",
+        "Ingresa intacto al ciclo mitocondrial de Krebs",
+        "Actúa como aceptor final de nuevos electrones",
+        "Genera agua metabólica al neutralizar los protones"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Aminoácidos ↓ grupo amino. Durante la desaminación, el grupo nitrogenado se separa y se excreta como urea, permitiendo que el carbono se oxide."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una droga paraliza el citosol donde ocurre la glucólisis. Determine qué característica ambiental de este medio acuoso se pierde al detener la fase citosólica.",
+      "opts": [
+        "Falla el medio libre mediado por enzimas",
+        "Inhibe el gradiente exclusivo del espacio intermembrana",
+        "Aumenta la tensión de membranas de organelas",
+        "Detiene el bombeo oxidativo dentro del núcleo",
+        "Acelera la síntesis genética de forma incontrolable"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Fase citosólica = Glucólisis. Esta fase ocurre libremente en el citosol acuoso gracias a enzimas sueltas, sin requerir en absoluto de membranas internas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Los libros mencionan a la glucólisis como la vía de Embden-Meyerhof-Parnas. Seleccione la afirmación que describe la naturaleza de esta secuencia de reacciones celulares.",
+      "opts": [
+        "Es una ruta exclusiva para organismos aeróbicos",
+        "Es el primer bloque metabólico secuencial universal",
+        "Falla en extraer energía libre del sustrato",
+        "Muestra apenas un solo paso catalítico simple",
+        "Inhibe la transformación del azúcar en piruvato"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Glucólisis = vía Embden-Meyerhof-Parnas. Es la ruta metabólica universal inicial constituida por diez reacciones consecutivas que escinden la glucosa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La ruta fue nombrada en honor a Gustav Embden, Otto Meyerhof y Jakub Karol Parnas. Elija la contribución experimental principal de estos tres científicos europeos.",
+      "opts": [
+        "Descifraron la cadena transportadora de las mitocondrias",
+        "Aislaron el ciclo del ácido cítrico completo",
+        "Elucidaron la transformación metabólica celular paso por paso",
+        "Descubrieron el oxígeno como aceptor metabólico final",
+        "Sintetizaron artificialmente nucleótidos libres de gran energía"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Embden-Meyerhof-Parnas = Gustav Embden, Otto Meyerhof, Jakub Karol Parnas. Ellos fueron los bioquímicos que descifraron y aislaron los intermediarios completos de esta ruta."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un ambiente asfixiante, una bacteria continúa haciendo glucólisis ya que no requiere oxígeno. Determine el beneficio evolutivo primario de este rasgo celular primordial.",
+      "opts": [
+        "Impide la formación de moléculas energéticas inestables",
+        "Genera más energía que la fase aeróbica",
+        "Falla en sostener la vida sin mitocondrias",
+        "Permite la supervivencia celular de organismos anaeróbicos",
+        "Detiene toda vía enzimática por extrema toxicidad"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Glucólisis ✗ oxígeno. Al ser un mecanismo primordial que no usa oxígeno, permite que extremófilos anaeróbicos y tejidos sin irrigación sigan obteniendo ATP."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa que el ingreso citoplasmático de glucosa circulante requiere insulina. Si un tejido animal carece de esta hormona, anticipe el bloqueo celular consecuente.",
+      "opts": [
+        "Mejora la velocidad de la vía metabólica",
+        "Falla la señal para activar los canales",
+        "Genera una producción masiva de energía libre",
+        "Oxida la hexosa circulante antes de entrar",
+        "Inhibe la cadena transportadora de la organela"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Ingreso de glucosa ✓ insulina. Sin la insulina, la orden hormonal falla y los canales transportadores celulares no se abren para que entre glucosa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "La insulina estimula el tejido periférico. Dado que esta hormona activa los canales transportadores GLUT, seleccione el resultado fisiológico inmediato a nivel de membrana.",
+      "opts": [
+        "Bloquea temporalmente el flujo hacia el interior",
+        "Sintetiza nuevos receptores hormonales sin usar canales",
+        "Promueve la translocación física facilitando el paso",
+        "Destruye las proteínas de membrana sin abrir",
+        "Evita el consumo metabólico periférico de reservas"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Insulina ⇒ activa transportadores GLUT. La hormona se une al receptor, translocando físicamente los canales GLUT hacia la membrana para abrir el paso celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis del inicio de la glucólisis demuestra que esta etapa invierte 2 ATP. Determine la razón química por la que la célula gasta energía aquí.",
+      "opts": [
+        "Falla en intentar recuperar la energía gastada",
+        "Oxida totalmente la hexosa en ese instante",
+        "Inhibe las cinasas que rompen la glucosa",
+        "Fosforila la hexosa para volverla altamente inestable",
+        "Regenera compuestos estables de muy baja energía"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Inicio de glucólisis ✓ 2 ATP. Se requiere inversión de energía al inicio para fosforilar la glucosa, volviéndola un compuesto inestable listo para romperse."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la etapa de beneficio, la glucólisis produce 4 ATP brutos por fosforilación a nivel de sustrato. Seleccione la afirmación correcta sobre este evento energético.",
+      "opts": [
+        "Representa la energía real ganada sin descuentos",
+        "Demuestra una ganancia masiva de nucleótidos celulares",
+        "Falla en liberar energía libre de enlaces",
+        "Indica las moléculas fabricadas durante la reacción",
+        "Ocurre exclusivamente dentro del líquido mitocondrial denso"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Glucólisis → 4 ATP brutos. La vía extrae energía de las mitades de tres carbonos, logrando fabricar cuatro moléculas de forma bruta durante las reacciones."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tras calcular el balance, la célula obtiene 2 ATP netos de la glucólisis. Determine cómo se deduce este valor a partir de los eventos previos.",
+      "opts": [
+        "Suma los nucleótidos gastados a los formados",
+        "Multiplica el rendimiento celular bruto por dos",
+        "Resta la inversión inicial a la producción bruta",
+        "Divide la producción bruta entre las organelas",
+        "Ignora la fase de inversión al contar"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Glucólisis → 2 ATP netos. El cálculo real de ganancia se obtiene restando matemáticamente los dos ATP invertidos a los cuatro ATP fabricados posteriormente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El NADH2 es la nicotinamida adenina dinucleótido reducida. Conociendo su naturaleza de coenzima de transporte, identifique su carga activa principal obtenida durante las rutas metabólicas.",
+      "opts": [
+        "Transporta protones y electrones de alta energía",
+        "Moviliza fosfatos inorgánicos hacia zonas de síntesis",
+        "Carga gases respiratorios tóxicos al medio ambiente",
+        "Transfiere enlaces tioéster directamente a los polímeros",
+        "Falla al intentar captar la energía libre"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: NADH2 = Nicotinamida adenina dinucleótido reducido. Esta coenzima se reduce al capturar electrones altamente reactivos y protones, para transportarlos hacia la cadena respiratoria celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al oxidarse el fosfogliceraldehído, la glucólisis arroja como ganancia 2 moléculas de NADH2. Seleccione el proceso que permite la formación celular de estas importantes coenzimas.",
+      "opts": [
+        "Aceptan electrones al descarbonizarse los piruvatos formados",
+        "Generan enlaces fosfato al consumir oxígeno celular",
+        "Reducen vehículos utilizando hidrógenos extraídos del metabolito",
+        "Inhiben el flujo de energía hacia mitocondrias",
+        "Fosforilan el adenosín perdiendo su poder reductor"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Glucólisis → 2 NADH2. Las deshidrogenasas arrancan electrones y protones del azúcar en proceso, reduciendo dos moléculas de NAD+ que actúan como vehículos de transporte."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al finalizar su ruta en el citosol, la glucólisis genera 2 piruvatos a partir de un azúcar. Evalúe el estado estructural resultante de este producto final.",
+      "opts": [
+        "Conserva la hexosa original pero con fosfatos",
+        "Divide simétricamente el compuesto en ácidos orgánicos",
+        "Falla en retener carbono en la molécula",
+        "Desprende dióxido en forma de gas libre",
+        "Sintetiza compuestos de seis carbonos altamente estables"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Glucólisis → 2 piruvatos. La hexosa de seis carbonos se escinde simétricamente formando dos moléculas de ácido pirúvico que servirán como encrucijada metabólica celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se analiza químicamente que cada piruvato es una molécula que contiene tres carbonos. Determine la condición energética actual de esta estructura antes de continuar reaccionando.",
+      "opts": [
+        "Carece completamente de energía en sus enlaces",
+        "Muestra una oxidación total sin energía residual",
+        "Contiene gran cantidad de energía en enlaces covalentes",
+        "Falla en liberar electrones por estar reducida",
+        "Inhibe su paso hacia vías altamente oxidativas"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Piruvato = molécula de tres carbonos. Este ácido orgánico está parcialmente oxidado, por lo que aún conserva abundante energía libre extraíble en la mitocondria."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un tejido muscular perfundido, la presencia abundante de oxígeno provoca el ingreso de metabolitos a la mitocondria. Seleccione la deducción fisiológica metabólica apropiada.",
+      "opts": [
+        "Falla la absorción del piruvato citosólico oxidable",
+        "Succiona el piruvato para su destrucción aeróbica",
+        "Desvía todo el ácido hacia vías anaeróbicas",
+        "Inhibe la acción transportadora del medio acuoso",
+        "Acelera la acumulación de ácido láctico tóxico"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Presencia de O2 ⇒ ingreso a mitocondria. Si las presiones de oxígeno son normales, el ácido pirúvico cruza la membrana para oxidarse totalmente adentro."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante isquemia temporal, la ausencia de oxígeno activa las vías de fermentación celular. Determine el propósito metabólico de desviar el metabolismo hacia este mecanismo anaeróbico.",
+      "opts": [
+        "Genera enormes cantidades extra de nueva energía",
+        "Detiene la glucólisis por exceso de coenzimas",
+        "Regenera las coenzimas para evitar morir asfixiada",
+        "Falla al intentar descargar sus electrones inútiles",
+        "Aumenta la destrucción total del esqueleto carbonado"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Ausencia de O2 ⇒ fermentación. Al faltar oxígeno, la cadena se atasca, y la fermentación funciona como plan de emergencia para descargar NADH2 y regenerarlo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una muestra de Saccharomyces cerevisiae demuestra que la fermentación alcohólica ocurre en estas levaduras. Seleccione la característica distintiva celular de estos organismos fúngicos unicelulares fermentadores.",
+      "opts": [
+        "Realizan vías exclusivas de células musculares estriadas",
+        "Producen lácteos sin generar compuestos etílicos tóxicos",
+        "Oxidan totalmente el ácido al carecer de mitocondrias",
+        "Convierten el ácido pirúvico en alcohol sin oxígeno",
+        "Falla la producción de gas durante su metabolismo"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Fermentación alcohólica ∈ levaduras. Estos hongos unicelulares (usados en panadería) poseen la maquinaria enzimática para convertir el piruvato en alcohol cuando el oxígeno escasea."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El primer paso de esta ruta celular fúngica modifica el metabolito original y produce 2 moléculas de acetaldehído. Evalúe qué tipo de transformación molecular sucede aquí.",
+      "opts": [
+        "El ácido pierde un átomo formando este intermedio",
+        "El esqueleto gana energía sumando nuevos carbonos",
+        "La coenzima reduce directamente el ácido orgánico estable",
+        "Falla en liberar gases durante la modificación enzimática",
+        "Mantiene íntegro el ácido sin cortar ningún enlace"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Fermentación alcohólica → 2 acetaldehídos. El piruvato de tres carbonos pierde un carbono transitoriamente (descarboxilación), formando un intermedio tóxico llamado acetaldehído que recibirá electrones."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al continuar la vía, el acetaldehído capta hidrógenos citosólicos y finalmente produce 2 moléculas de etanol. Identifique la razón química de este último evento reductor.",
+      "opts": [
+        "Descarboxila el compuesto perdiendo todos sus átomos",
+        "Falla en aceptar electrones provenientes de las coenzimas",
+        "Descarga electrones del vehículo formando alcohol de desecho",
+        "Oxida el alcohol para generar mucha más energía",
+        "Detiene la glucólisis acumulando compuestos orgánicos altamente tóxicos"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Acetaldehído → 2 etanol. El NADH2 descarga sus electrones sobre el acetaldehído (reduciéndolo), transformándolo en etanol que luego es secretado al exterior celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un panadero observa que la masa aumenta de volumen; esto ocurre porque la fermentación alcohólica libera 2 moléculas de gas CO2. Seleccione el origen de este gas.",
+      "opts": [
+        "Proviene de hidrolizar directamente el agua del medio",
+        "Surge de la reducción final de los alcoholes",
+        "Falla al extraerse de los azúcares altamente oxidados",
+        "Nace de la descarboxilación inicial del ácido pirúvico",
+        "Depende de capturar gas ambiental hacia la masa"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Fermentación alcohólica → 2 CO2. El carbono perdido por el piruvato al convertirse en acetaldehído se desprende como dióxido de carbono gaseoso, inflando texturas esponjosas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tras una carrera extrema, las biopsias revelan que la fermentación láctica aparece en células musculares humanas. Evalúe bajo qué situación fisiológica se activa este mecanismo animal.",
+      "opts": [
+        "Ocurre cuando el riego sanguíneo excede la necesidad",
+        "Se dispara como escape cuando el oxígeno es insuficiente",
+        "Falla al intentar funcionar sin membranas celulares intactas",
+        "Inhibe el consumo energético durante reposo muscular prolongado",
+        "Aparece exclusivamente si hay abundantes reservas de oxígeno"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Fermentación láctica ∈ células musculares. Las fibras musculares recurren a este escape metabólico cuando las contracciones son tan intensas que el riego sanguíneo no aporta suficiente oxígeno."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El miocito carece de descarboxilasas para fermentar, por lo que produce directamente 2 lactatos a partir de piruvato. Identifique la diferencia estructural en esta transformación directa celular.",
+      "opts": [
+        "Acepta hidrógenos manteniendo íntegro su esqueleto de carbonos",
+        "Corta enlaces de carbono formando compuestos más pequeños",
+        "Falla al recibir electrones desde las coenzimas cargadas",
+        "Genera compuestos etílicos sin producir gases de desecho",
+        "Inhibe toda modificación enzimática de los ácidos orgánicos"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Fermentación láctica → 2 lactatos. El piruvato acepta directamente los electrones y protones sin perder carbonos, transformándose en ácido láctico puro sin modificaciones de longitud."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la vía del yogur, la fermentación láctica ocurre celularmente y carece de liberación de CO2. Determine la razón química por la que no hay efervescencia aquí.",
+      "opts": [
+        "Desprende oxígeno gasificando el medio celular sin carbonos",
+        "Oculta el gas dentro de las cadenas alifáticas cortas",
+        "Falla la enzima que debería oxidar el ácido puro",
+        "Conserva los tres carbonos originales en el producto final",
+        "Elimina nitrógeno en lugar del gas de carbono típico"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Fermentación láctica ✗ liberación de CO2. Como el esqueleto de tres carbonos pasa directamente a lactato sin descarboxilación previa, no se produce ningún gas residual."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un deportista mantiene un esfuerzo físico extenuante prolongado que causa acumulación de ácido láctico en sangre. Seleccione la causa metabólica primaria de esta saturación metabólica animal transitoria.",
+      "opts": [
+        "Mejora el aporte de oxígeno muscular por esfuerzo continuo",
+        "Falla la glucólisis por falta total de carbohidratos simples",
+        "Acelera las vías citosólicas ante la falta de oxígeno",
+        "Detiene el metabolismo celular para recuperar los tejidos rotos",
+        "Activa vías anabólicas que construyen fibras ricas en ácido"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Esfuerzo físico intenso ⇒ acumula ácido láctico. El suministro sanguíneo no alcanza la velocidad requerida, forzando a la glucólisis anaeróbica a acelerar y acumular el metabolito."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tras una sesión intensa, el aumento de ácido láctico disminuye bruscamente el pH intracelular del miocito. Evalúe el impacto bioquímico local provocado por esta variación del medio.",
+      "opts": [
+        "Alcaliniza el citoplasma celular promoviendo mayor contracción muscular",
+        "Genera una leve acidosis metabólica que interfiere fisiológicamente",
+        "Mantiene el potencial iónico estabilizando los canales transportadores",
+        "Falla en alterar la acidez del fluido celular interno",
+        "Destruye por completo las miofibrillas de las fibras estriadas"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Ácido láctico ↓ pH intracelular. La acumulación cristalina del ácido provoca una acidosis metabólica local transitoria, alterando químicamente el funcionamiento de las proteínas contráctiles."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El dolor y la acidosis láctica generada inducen la fatiga muscular transitoria en el individuo sano. Identifique la finalidad neurológica y biológica de este síntoma punzante agudo.",
+      "opts": [
+        "Permite seguir corriendo indefinidamente sin gastar energía celular",
+        "Inhibe la asimilación del azúcar para que mueran células",
+        "Falla en proteger los tejidos musculares de roturas profundas",
+        "Obliga a detener el esfuerzo intenso para recuperar oxígeno",
+        "Aumenta la tolerancia al daño celular en fibras lentas"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Acidosis láctica ⇒ fatiga muscular transitoria. La baja de pH y debilidad actúan como advertencia de sobrecarga, obligando al individuo a detenerse para restituir el flujo oxidativo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa que toda la fase mitocondrial se clasifica como proceso puramente aeróbico celular. Determine el requerimiento estricto que define el funcionamiento de esta organela especializada aislada.",
+      "opts": [
+        "Carece de dependencia del gas respiratorio final",
+        "Requiere estrictamente oxígeno para evitar paralizar sus reacciones",
+        "Falla cuando hay altas presiones de oxígeno molecular",
+        "Utiliza gas de desecho para oxidar todos los nutrientes",
+        "Detiene el bombeo electrónico al contactar oxígeno tisular"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Fase mitocondrial = proceso aeróbico. Aunque el oxígeno solo entra al final, sin él toda la cadena se atasca, paralizando absolutamente toda la maquinaria mitocondrial."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para iniciar el proceso aeróbico intermedio, la acetilación ocurre disuelta en la matriz mitocondrial. Seleccione la característica estructural del entorno donde actúa este complejo multienzimático gigante preparatorio.",
+      "opts": [
+        "Se encuentra incrustado en membranas lipídicas citosólicas",
+        "Falla al intentar ubicarse en zonas con mucha agua",
+        "Ocurre flotando en el denso fluido interior de la organela",
+        "Se adhiere a los pliegues externos de la pared celular",
+        "Requiere espacio intermembrana libre de cualquier otra proteína"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Acetilación ∈ matriz mitocondrial. Este eslabón metabólico de transición se ejecuta de manera disuelta en la matriz, el fluido denso y enzimático interior de la mitocondria."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el paso de transición, la enzima actúa sobre el piruvato arrastrándole 1 átomo de carbono. Evalúe qué tipo de modificación sufre la estructura original del metabolito celular.",
+      "opts": [
+        "Sufre un recorte covalente irreversible acortando su esqueleto carbonado",
+        "Alarga su estructura añadiendo átomos provenientes de coenzimas libres",
+        "Falla en perder carbonos manteniéndose estable como ácido pirúvico",
+        "Transfiere carbonos hacia otras moléculas de glucosa citosólicas",
+        "Divide simétricamente sus átomos para formar dos ácidos lácticos"
+      ],
+      "correct": 0,
+      "explicacion": "Basado en: Piruvato ↓ 1 carbono. Una enzima descarboxilasa arranca un carbono del esqueleto (descarboxilación), acortándolo de manera irreversible para prepararlo para el ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se mide el escape de gases tisulares comprobando que el carbono liberado conforma gas CO2. Identifique el destino de este desecho producido durante la transición de moléculas.",
+      "opts": [
+        "Se incorpora directamente a la estructura de la membrana",
+        "Genera estructuras carbonadas pesadas en la zona citosólica",
+        "Falla en oxigenarse totalmente, formando compuestos tóxicos",
+        "Difunde hacia la sangre venosa para ser exhalado constantemente",
+        "Reacciona con protones libres para formar agua puramente metabólica"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Carbono liberado = CO2. El pedazo desprendido se oxigena totalmente formando el gas de desecho dióxido de carbono, el cual viaja a los pulmones."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Después de la escisión inicial enzimática, la vía de acetilación genera como remanente un grupo acetil. Determine el estado estructural y la función de este residuo orgánico.",
+      "opts": [
+        "Forma un producto estable de tres carbonos inservible",
+        "Conserva un esqueleto de cuatro carbonos energéticos inestables",
+        "Deja un fragmento orgánico que actuará como combustible",
+        "Falla en funcionar como unidad energética celular útil",
+        "Destruye todas sus propiedades químicas para no ser oxidado"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Acetilación → produce grupo acetil. Tras la descarboxilación, el esqueleto restante actuará como la unidad combustible directa que será entregada al ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa que este grupo acetil es una molécula que presenta exactamente dos carbonos estructurales. Evalúe la importancia de estandarizar los combustibles hacia este residuo de dos carbonos.",
+      "opts": [
+        "Impide la entrada de polímeros que posean distinto tamaño",
+        "Unifica todas las macromoléculas del cuerpo hacia una estructura",
+        "Falla al cruzar membranas por ser demasiado pequeña",
+        "Evita que el ciclo funcione al requerir moléculas grandes",
+        "Altera la química de los hidratos deteniendo el metabolismo"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Grupo acetil = molécula de dos carbonos. Carbohidratos, lípidos y proteínas convergen hacia esta unidad estandarizada de dos carbonos, simplificando el ingreso a Krebs."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para asegurar la movilización de este residuo inestable se necesita la molécula CoA o Coenzima A. Seleccione la función adaptadora que cumple esta coenzima derivada de vitaminas.",
+      "opts": [
+        "Acepta electrones de alta energía transportándolos al oxígeno final",
+        "Rompe el esqueleto de carbonos formando moléculas acuosas",
+        "Moviliza residuos carbonados inestables dentro del fluido mitocondrial",
+        "Falla al intentar unirse covalentemente a ácidos orgánicos simples",
+        "Sintetiza nuevos enlaces dobles en las grasas de reserva"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: CoA = Coenzima A. Es el transportador especializado encargado de acoplarse al residuo de carbono y llevarlo de forma segura al inicio del ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una enzima une covalentemente el acetil con la CoA para lograr producir finalmente Acetil-CoA estable. Determine la naturaleza energética de esta unión transitoria preparatoria.",
+      "opts": [
+        "Pierde toda la energía libre que poseía el ácido",
+        "Crea un enlace tioéster de muy alta energía conservada",
+        "Falla en asegurar el ingreso eficiente al ciclo celular",
+        "Genera un puente de hidrógeno débil sin fuerza",
+        "Rechaza la introducción de la molécula al espacio interno"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Acetil + CoA → Acetil-CoA. El residuo se liga mediante un enlace tioéster altamente energético, asegurando su entrega forzosa al anfitrión del ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Simultáneamente, la acetilación captura pares de electrones y genera coenzimas como el NADH2. Seleccione la contribución que otorga este paso aislado al rendimiento celular general final.",
+      "opts": [
+        "Resta energía a la suma total de ATP formados",
+        "Falla en sumar poder reductor hacia la ruta aeróbica",
+        "Consume nucleótidos energéticos durante este corte metabólico intermedio",
+        "Llena vehículos de transporte añadiendo rendimiento eléctrico a la célula",
+        "Inhibe toda formación celular de coenzimas cargadas positivamente"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Acetilación → genera NADH2. Al cortar el piruvato, la molécula se oxida; los electrones son capturados por el NAD+, sumando más vehículos cargados para la cadena."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El metabolismo intermedio incluye el ciclo de Krebs, clásicamente llamado el ciclo del citrato celular. Evalúe el porqué de este nombre alternativo usado en manuales bioquímicos especializados.",
+      "opts": [
+        "Nombra así por producir cítricos en toda célula aeróbica",
+        "Refiere a la enzima final que termina la vuelta",
+        "Se debe a que es el primer metabolito estable formado",
+        "Falla al intentar describir la naturaleza de los ácidos",
+        "Designa al gas de desecho con denominación cítrica artificial"
+      ],
+      "correct": 2,
+      "explicacion": "Basado en: Ciclo de Krebs = ciclo del citrato. Se llama así porque el citrato es el primer metabolito orgánico formado apenas inicia la rueda."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El epónimo del ciclo honra directamente al bioquímico alemán exiliado Hans Adolf Krebs de Europa. Identifique el hito científico por el cual este investigador recibió gran reconocimiento.",
+      "opts": [
+        "Inventó las coenzimas para sintetizar fármacos puramente citosólicos",
+        "Demostró que el oxígeno mata las mitocondrias bajo presión",
+        "Descubrió la naturaleza puramente lineal de las fermentaciones musculares",
+        "Descubrió la ruta enzimática cíclica central del metabolismo celular",
+        "Falla en explicar la producción aeróbica de nucleótidos purínicos"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Krebs = Hans Adolf Krebs. Este bioquímico ganó el Nobel por mapear y dilucidar los pasos de la rueda enzimática anfibólica celular central."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "El ciclo de Krebs se asienta en la matriz mitocondrial disuelto en su denso interior. Seleccione la deducción estructural correcta sobre las enzimas que operan esta vía cíclica.",
+      "opts": [
+        "Están ancladas rígidamente a membranas superficiales sin contacto acuoso",
+        "Residen disueltas de forma mayormente libre en el líquido organelar",
+        "Falla al intentar flotar en medios con alta densidad",
+        "Ocupan el espacio externo entre ambas paredes de lípidos",
+        "Viajan continuamente desde el núcleo celular hasta la matriz"
+      ],
+      "correct": 1,
+      "explicacion": "Basado en: Ciclo de Krebs ∈ matriz mitocondrial. Siete de las ocho enzimas del ciclo flotan libremente disueltas en el líquido interior o matriz mitocondrial."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una molécula residente llamada oxalacetato actúa en esta matriz y contiene siempre cuatro carbonos. Determine su rol biológico permanente dentro de las operaciones del circuito cerrado.",
+      "opts": [
+        "Rechaza acoplarse con residuos nuevos que entren al espacio",
+        "Funciona como gas residual desprendido de las fases iniciales",
+        "Falla en regenerarse al término de cada vuelta metabólica",
+        "Espera como anfitrión regenerable al nuevo combustible orgánico entrante",
+        "Destruye todas las cadenas largas provenientes del medio citosólico"
+      ],
+      "correct": 3,
+      "explicacion": "Basado en: Oxalacetato = molécula de cuatro carbonos. Es el anfitrión residente que sobrevive tras terminar cada vuelta, listo para recibir la siguiente carga entrante."
     }
   ]
 }

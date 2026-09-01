@@ -3,16 +3,13 @@
   "tema": "Herencia Alélica",
   "glosario": {
     "Codominancia": "Expresión simultánea de ambos alelos sin mezclarse.",
-    "Dominancia incompleta": "Alelos que generan un fenotipo intermediario mezclado.",
-    "Alelos múltiples": "Existencia de más de dos alelos para un gen.",
-    "Herencia poligénica": "Rasgos determinados por la acción de múltiples genes.",
-    "Pleiotropía": "Un solo gen afecta múltiples características fenotípicas.",
-    "Epistasis": "Un gen enmascara la expresión de otro gen.",
-    "=": "Define",
-    "→": "Produce",
-    "⊃": "Contiene",
-    "≠": "Diferente",
-    "✓": "Requiere"
+    "Dominancia incompleta": "Alelos que generan fenotipo intermediario mezclado.",
+    "Alelos múltiples": "Población que posee más de dos variantes.",
+    "Herencia poligénica": "Rasgos determinados por acción de múltiples genes.",
+    "Pleiotropía": "Un gen afecta múltiples características fenotípicas.",
+    "Epistasis": "Un gen enmascara la expresión de otro.",
+    "Hemicigoto": "Posee un solo alelo para un gen.",
+    "Eritrocito": "Célula sanguínea portadora de antígenos de membrana."
   },
   "theory": [
     {
@@ -23,12 +20,24 @@
           "explicacion": "La dominancia incompleta es un tipo de herencia donde ninguno de los alelos es completamente dominante. El individuo heterocigoto manifiesta una condición intermedia que mezcla las características de ambos progenitores."
         },
         {
-          "texto": "Cruce flor roja (RR) x flor blanca (BB) → F1 rosada (RB).",
+          "texto": "Carl Erich Correns ⇒ descubre dominancia incompleta.",
+          "explicacion": "El botánico alemán Carl Erich Correns describió científicamente este fenómeno genético al estudiar el color de la planta «Don Diego de noche» (Mirabilis jalapa), evidenciando de manera práctica que las leyes mendelianas clásicas tenían excepciones estructurales."
+        },
+        {
+          "texto": "Generación filial uno (F1) ✓ expresa fenotipo fusionado.",
+          "explicacion": "La primera generación de descendientes, denominada Generación filial uno (F1), resulta del cruce inicial de dos líneas puras homocigotas. En este patrón genético, todos los individuos híbridos F1 exhiben un rasgo intermedio invariable."
+        },
+        {
+          "texto": "Cruce flor roja (RR) + flor blanca (BB) → F1 rosada (RB).",
           "explicacion": "Al cruzar una planta de flores rojas homocigotas con una blanca homocigota, la primera generación filial no muestra el rojo dominante, sino una fusión tonal expresada como flores de color rosado en estado heterocigoto."
         },
         {
-          "texto": "Cruce F1 (RB x RB) → proporción fenotípica 1 rojo : 2 rosados : 1 blanco.",
-          "explicacion": "Al autofecundar la generación F1 de dominancia incompleta, la proporción fenotípica coincide exactamente con la genotípica (1:2:1), debido a que los heterocigotos conservan un fenotipo único diferenciado de los homocigotos."
+          "texto": "Cruce F1 (RB + RB) → proporción fenotípica 1:2:1.",
+          "explicacion": "Al autofecundar la generación F1 de dominancia incompleta, se obtienen descendientes con la proporción de un individuo rojo, dos individuos rosados y un individuo blanco."
+        },
+        {
+          "texto": "Proporción fenotípica = proporción genotípica.",
+          "explicacion": "La proporción fenotípica coincide exactamente con la genotípica (1:2:1), debido a que los heterocigotos conservan un fenotipo único diferenciado de los homocigotos dominantes y recesivos."
         }
       ]
     },
@@ -40,12 +49,20 @@
           "explicacion": "En la codominancia, ambos alelos presentes en el heterocigoto se manifiestan de manera independiente y completa en el fenotipo, sin mezclarse ni eclipsarse el uno al otro."
         },
         {
-          "texto": "Ejemplo: Ganado shorthorn → alelo rojo + alelo blanco = pelaje roano.",
-          "explicacion": "El ganado shorthorn ilustra la codominancia mediante el pelaje roano, donde coexisten de forma visible pelos completamente rojos y pelos completamente blancos distribuidos en el cuerpo del animal."
+          "texto": "Ganado shorthorn → pelaje roano.",
+          "explicacion": "El ganado shorthorn ilustra la codominancia mediante el pelaje roano, una pigmentación característica generada por la expresión equiparable de dos genes de coloración."
         },
         {
-          "texto": "Sistema ABO ⊃ alelos IA, IB y i.",
+          "texto": "Pelaje roano ⊃ alelo rojo + alelo blanco.",
+          "explicacion": "En el pelaje roano coexisten de forma visible pelos completamente rojos y pelos completamente blancos distribuidos en el cuerpo del animal, en lugar de un color uniforme mezclado."
+        },
+        {
+          "texto": "Sistema de grupos sanguíneos ABO ⊃ alelos IA, IB y i.",
           "explicacion": "El sistema de grupos sanguíneos humanos ABO funciona mediante alelos múltiples, donde conviven tres variantes alélicas distintas que determinan la presencia de antígenos en los glóbulos rojos."
+        },
+        {
+          "texto": "Alelo IA + Alelo IB → codominancia activa.",
+          "explicacion": "Cuando un individuo hereda los alelos dominantes IA e IB, ninguno logra enmascarar al contrario. Ambos genes dirigen la síntesis de enzimas que colocan sus respectivos antígenos en la membrana del eritrocito de manera simultánea."
         },
         {
           "texto": "Alelos IA = IB ⇒ grupo sanguíneo AB.",
@@ -67,6 +84,18 @@
         {
           "texto": "Grupo sanguíneo O ✓ requiere alelos recesivos (ii).",
           "explicacion": "El grupo sanguíneo O carece de los antígenos A y B en la superficie celular. Genéticamente se manifiesta únicamente cuando el individuo es homocigoto para el alelo recesivo i (ii)."
+        },
+        {
+          "texto": "Alelo IA o IB + alelo i → dominancia completa.",
+          "explicacion": "En el Sistema de grupos sanguíneos ABO, si se hereda un alelo IA o IB junto con el alelo recesivo i, el fenotipo resultante expresará únicamente el antígeno del alelo dominante, operando bajo las reglas mendelianas tradicionales."
+        },
+        {
+          "texto": "Fórmula cantidad de genotipos = \\\\frac{n(n+1)}{2}.",
+          "explicacion": "Para calcular matemáticamente el número total de genotipos diploides posibles que se pueden formar en una población que posee alelos múltiples, se aplica esta fórmula donde «n» representa la cantidad total de alelos disponibles para ese gen."
+        },
+        {
+          "texto": "Ejemplo resuelto fórmula alelos ABO.",
+          "explicacion": "En el Sistema de grupos sanguíneos ABO existen 3 alelos (n = 3: IA, IB, i). Al reemplazar en la fórmula se obtiene 3 por (3 más 1) dividido entre 2. Esto resulta en 12 entre 2, lo que demuestra que existen exactamente 6 genotipos posibles en la población humana."
         }
       ]
     },
@@ -74,7 +103,7 @@
       "titulo": "Herencia Ligada al Sexo",
       "puntos": [
         {
-          "texto": "Cromosomas sexuales ⊃ par XX (mujer) y par XY (varón).",
+          "texto": "Cromosomas sexuales ⊃ par XX (mujer) + par XY (varón).",
           "explicacion": "La determinación sexual en humanos se rige por cromosomas específicos. Las mujeres poseen dos cromosomas X homólogos, mientras que los varones presentan un cromosoma X y un cromosoma Y de menor tamaño."
         },
         {
@@ -82,12 +111,109 @@
           "explicacion": "Los caracteres ligados al cromosoma X se heredan de manera particular porque los varones, al poseer un solo cromosoma X (XY), expresarán cualquier alelo presente en él, sea dominante o recesivo."
         },
         {
-          "texto": "Daltonismo ∨ Hemofilia ⇒ condiciones recesivas ligadas al X.",
-          "explicacion": "Enfermedades genéticas como el daltonismo y la hemofilia son causadas por genes defectuosos en el cromosoma X. Por esta razón, afectan con mayor frecuencia a los varones, quienes solo necesitan una copia para manifestarlas."
+          "texto": "Thomas Hunt Morgan ⇒ descubre herencia ligada al X.",
+          "explicacion": "El biólogo y genetista estadounidense Thomas Hunt Morgan comprobó la existencia de la herencia ligada al sexo realizando cruces experimentales con la mosca del vinagre (Drosophila melanogaster), analizando la transmisión del color de los ojos blancos."
+        },
+        {
+          "texto": "Varón XY = individuo hemicigoto.",
+          "explicacion": "Debido a que el cromosoma Y es considerablemente más pequeño y carece de muchos genes presentes en el cromosoma X, los varones son hemicigotos; poseen una sola copia genética para esos rasgos y no pueden enmascarar alelos recesivos mutados."
+        },
+        {
+          "texto": "Daltonismo ⇒ condición recesiva ligada al X.",
+          "explicacion": "El daltonismo es una enfermedad genética causada por genes defectuosos en el cromosoma X que afecta la capacidad visual de distinguir colores. Afecta con mayor frecuencia a los varones, quienes solo necesitan una copia para manifestarla."
+        },
+        {
+          "texto": "Hemofilia ⇒ condición recesiva ligada al X.",
+          "explicacion": "La hemofilia es un trastorno genético recesivo ubicado en el cromosoma X que altera severamente la coagulación de la sangre. Las mujeres requieren dos alelos recesivos para padecerla, mientras que los varones enferman con uno solo."
         },
         {
           "texto": "Mujer portadora ✓ heterocigota para alelo recesivo ligado al X.",
-          "explicacion": "Una mujer con un alelo normal y uno afectado en sus cromosomas X (XHXh) no padece la enfermedad debido a la dominancia del alelo sano, pero actúa como portadora transmitiéndolo a su descendencia."
+          "explicacion": "Una mujer con un alelo normal y uno afectado en sus cromosomas X (XHXh) no padece la enfermedad debido a la dominancia del alelo sano. Sin embargo, actúa como portadora sana transmitiéndolo a su descendencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }

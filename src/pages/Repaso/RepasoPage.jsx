@@ -1,7 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
+import TutorialSpotlight from "../../components/TutorialSpotlight";
+import { useTutorialSeen } from "../../hooks/useTutorialSeen";
+import { TUTORIAL_REPASO } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 
 import {
@@ -29,6 +32,18 @@ export default function RepasoPage() {
   );
 
   const [searchOpen, setSearchOpen] = useState(false);
+  const { visto: tutorialRepasoVisto, marcarVisto: marcarTutorialRepasoVisto } =
+    useTutorialSeen("repaso");
+  const [tutorialRepasoOpen, setTutorialRepasoOpen] = useState(false);
+  const [tutorialRepasoPasoUnico, setTutorialRepasoPasoUnico] =
+    useState(null);
+
+  useEffect(() => {
+    if (!tutorialRepasoVisto) {
+      const t = setTimeout(() => setTutorialRepasoOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [tutorialRepasoVisto]);
 
   const [log, setLog] = useState(() => leerLog());
 
@@ -167,6 +182,11 @@ export default function RepasoPage() {
           onAbrirBuscador={() =>
             setSearchOpen(true)
           }
+          tutorialSteps={TUTORIAL_REPASO}
+          onSelectTutorialStep={(idx) => {
+            setTutorialRepasoPasoUnico(TUTORIAL_REPASO[idx]);
+            setTutorialRepasoOpen(true);
+          }}
         />
 
         {/* ─────────────────────────────────────
@@ -566,8 +586,19 @@ export default function RepasoPage() {
           }}
         />
 
-        {/* La bienvenida con tutorial fijo se reemplazó por la sección de
-            Preguntas frecuentes en Inicio. */}
+        <TutorialSpotlight
+          steps={
+            tutorialRepasoPasoUnico
+              ? [tutorialRepasoPasoUnico]
+              : TUTORIAL_REPASO
+          }
+          open={tutorialRepasoOpen}
+          onClose={() => {
+            setTutorialRepasoOpen(false);
+            setTutorialRepasoPasoUnico(null);
+            marcarTutorialRepasoVisto();
+          }}
+        />
 
         {/* ─────────────────────────────────────
             MODAL ELIMINAR

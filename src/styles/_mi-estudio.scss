@@ -73,7 +73,6 @@
   align-items: center;
   justify-content: center;
 
-  padding: var(--space-6) clamp(1.5rem, 5vw, 4rem);
 }
 
 /* ============================================================
@@ -144,28 +143,20 @@
 .welcome-section__continuar-btn {
   width: 100%;
   max-width: 50rem;
-
   margin: var(--space-6) auto 0;
   padding: var(--space-4) var(--space-5);
-
   display: flex;
   align-items: center;
   gap: var(--space-3);
-
   box-sizing: border-box;
-
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-
   background: var(--surface);
   color: var(--ink);
-
   font-family: var(--font-body);
   font-size: var(--fs-body);
   text-align: left;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     border-color 0.2s linear,
     box-shadow 0.2s linear,
@@ -204,18 +195,18 @@
 .welcome-section__continuar-label {
   flex-shrink: 0;
 
-  color: var(--ink-faint);
   font-family: var(--font-body);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-normal);
   line-height: 1.3;
+  color: var(--ink);
 }
 
 .welcome-section__continuar-tema {
   min-width: 0;
   overflow: hidden;
 
-  color: var(--ink);
+  color: var(--ink-faint);
   font-family: var(--font-body);
   font-size: var(--fs-body);
   font-weight: var(--fw-bold);
@@ -228,10 +219,8 @@
 .welcome-section__continuar-arrow {
   margin-left: auto;
   flex-shrink: 0;
-
   color: var(--primary);
   font-size: var(--fs-md);
-
   transition: transform 0.2s linear;
 }
 
@@ -714,12 +703,10 @@
 
   text-align: center;
 
-  background: linear-gradient(
-    180deg,
-    #172033 0%,
-    #111827 52%,
-    #0b1120 100%
-  );
+  background: linear-gradient(180deg,
+      #172033 0%,
+      #111827 52%,
+      #0b1120 100%);
 
   border: 0.0625rem solid rgba(255, 255, 255, 0.12);
   border-radius: 0.875rem;
@@ -741,13 +728,11 @@
 
     height: 0.1875rem;
 
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--danger) 20%,
-      var(--danger) 80%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--danger) 20%,
+        var(--danger) 80%,
+        transparent 100%);
 
     box-shadow: 0 0 1.125rem rgba(220, 38, 38, 0.55);
   }
@@ -952,6 +937,7 @@
 }
 
 @keyframes vidasHeartShake {
+
   0%,
   100% {
     transform: rotate(0deg);
@@ -979,6 +965,7 @@
 }
 
 @keyframes vidasTitlePulse {
+
   0%,
   100% {
     transform: scale(1);
@@ -1663,14 +1650,12 @@
 
     background: var(--ink-on-primary);
 
-    clip-path: polygon(
-      14% 44%,
-      0 65%,
-      50% 100%,
-      100% 16%,
-      80% 0%,
-      43% 62%
-    );
+    clip-path: polygon(14% 44%,
+        0 65%,
+        50% 100%,
+        100% 16%,
+        80% 0%,
+        43% 62%);
   }
 
   input[type="radio"] {
@@ -1719,6 +1704,7 @@
    ============================================================ */
 
 .mi-estudio__campo.has-error {
+
   .mi-estudio__input,
   .mi-estudio__select,
   .mi-estudio__textarea {
@@ -2116,7 +2102,7 @@
 
   margin-bottom: 1rem;
 
-  > div {
+  >div {
     display: flex;
     align-items: center;
     gap: 0.625rem;
@@ -2480,8 +2466,7 @@
   gap: 0.3125rem;
 
   padding:
-    clamp(0.625rem, 2vw, 0.875rem)
-    clamp(1.25rem, 4vw, 2rem);
+    clamp(0.625rem, 2vw, 0.875rem) clamp(1.25rem, 4vw, 2rem);
 
   border: none;
   border-bottom: 0.25rem solid transparent;
@@ -2533,12 +2518,10 @@
 
   padding: 1.75rem 1.75rem 1.5rem;
 
-  background: linear-gradient(
-    180deg,
-    #172033 0%,
-    #111827 52%,
-    #0b1120 100%
-  );
+  background: linear-gradient(180deg,
+      #172033 0%,
+      #111827 52%,
+      #0b1120 100%);
 
   border: 0.0625rem solid rgba(255, 255, 255, 0.12);
   border-radius: 0.875rem;
@@ -2559,13 +2542,11 @@
 
     height: 0.1875rem;
 
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--danger) 20%,
-      var(--danger) 80%,
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--danger) 20%,
+        var(--danger) 80%,
+        transparent 100%);
 
     box-shadow: 0 0 1.125rem rgba(220, 38, 38, 0.45);
   }
@@ -2697,6 +2678,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+
   > :first-child {
     flex: 1 1 auto;
     min-width: 0;
@@ -2779,12 +2761,6 @@
    ============================================================ */
 
 @include respond-max(md) {
-  .mi-estudio__intro {
-    padding:
-      var(--space-6)
-      var(--space-4);
-  }
-
   .mi-estudio__intro-content {
     width: min(100%, 46rem);
   }
@@ -2833,8 +2809,7 @@
     min-height: calc(100dvh - var(--header-h));
 
     padding:
-      var(--space-5)
-      var(--space-3);
+      var(--space-5) var(--space-3);
   }
 
   .mi-estudio__intro-content {
@@ -2869,8 +2844,7 @@
     margin-top: var(--space-5);
 
     padding:
-      var(--space-3)
-      var(--space-3);
+      var(--space-3) var(--space-3);
 
     gap: var(--space-2);
   }

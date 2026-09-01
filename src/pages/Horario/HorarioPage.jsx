@@ -23,6 +23,9 @@ import {
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
+import TutorialSpotlight from "../../components/TutorialSpotlight";
+import { useTutorialSeen } from "../../hooks/useTutorialSeen";
+import { TUTORIAL_POMODORO } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 import ScheduleSetup from "./ScheduleSetup";
 
@@ -113,6 +116,18 @@ export default function HorarioPage() {
 
   const [manualBreak, setManualBreak] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { visto: tutorialPomodoroVisto, marcarVisto: marcarTutorialPomodoroVisto } =
+    useTutorialSeen("pomodoro");
+  const [tutorialPomodoroOpen, setTutorialPomodoroOpen] = useState(false);
+  const [tutorialPomodoroPasoUnico, setTutorialPomodoroPasoUnico] =
+    useState(null);
+
+  useEffect(() => {
+    if (!tutorialPomodoroVisto) {
+      const t = setTimeout(() => setTutorialPomodoroOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [tutorialPomodoroVisto]);
 
   const [setupOpen, setSetupOpen] = useState(false);
 
@@ -665,6 +680,11 @@ export default function HorarioPage() {
         showHome
         onAbrirBuscador={() => setSearchOpen(true)}
         onEditarHorario={() => navigate("/editar")}
+        tutorialSteps={TUTORIAL_POMODORO}
+        onSelectTutorialStep={(idx) => {
+          setTutorialPomodoroPasoUnico(TUTORIAL_POMODORO[idx]);
+          setTutorialPomodoroOpen(true);
+        }}
       />
 
       <main className="horario__main">
@@ -1228,6 +1248,20 @@ export default function HorarioPage() {
                 : item.tema,
             )}`,
           );
+        }}
+      />
+
+      <TutorialSpotlight
+        steps={
+          tutorialPomodoroPasoUnico
+            ? [tutorialPomodoroPasoUnico]
+            : TUTORIAL_POMODORO
+        }
+        open={tutorialPomodoroOpen}
+        onClose={() => {
+          setTutorialPomodoroOpen(false);
+          setTutorialPomodoroPasoUnico(null);
+          marcarTutorialPomodoroVisto();
         }}
       />
 

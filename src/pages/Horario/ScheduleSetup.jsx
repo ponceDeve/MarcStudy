@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DIAS_SEMANA,
   DIA_LABELS,
@@ -7,6 +7,12 @@ import {
 } from "../../lib/scheduleStorage";
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
+import TutorialSpotlight from "../../components/TutorialSpotlight";
+import { useTutorialSeen } from "../../hooks/useTutorialSeen";
+import {
+  TUTORIAL_CONFIGURAR_DIAS,
+  TUTORIAL_CONFIGURAR_CURSO,
+} from "../../data/tutorialSteps";
 
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
 
@@ -23,6 +29,30 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
 
   // NUEVO: Estado para saber qué sugerencia está seleccionada con las flechas
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
+
+  const { visto: tutorialDiasVisto, marcarVisto: marcarTutorialDiasVisto } =
+    useTutorialSeen("configurar-pomodoro-dias");
+  const [tutorialDiasOpen, setTutorialDiasOpen] = useState(false);
+
+  const { visto: tutorialCursoVisto, marcarVisto: marcarTutorialCursoVisto } =
+    useTutorialSeen("configurar-pomodoro-curso");
+  const [tutorialCursoOpen, setTutorialCursoOpen] = useState(false);
+
+  useEffect(() => {
+    if (open && paso === "dias" && !tutorialDiasVisto) {
+      const t = setTimeout(() => setTutorialDiasOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, paso === "dias"]);
+
+  useEffect(() => {
+    if (open && paso === "curso" && !tutorialCursoVisto) {
+      const t = setTimeout(() => setTutorialCursoOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, paso === "curso"]);
 
   if (!open) return null;
 
@@ -260,6 +290,24 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           </>
         )}
       </div>
+
+      <TutorialSpotlight
+        steps={TUTORIAL_CONFIGURAR_DIAS}
+        open={tutorialDiasOpen}
+        onClose={() => {
+          setTutorialDiasOpen(false);
+          marcarTutorialDiasVisto();
+        }}
+      />
+
+      <TutorialSpotlight
+        steps={TUTORIAL_CONFIGURAR_CURSO}
+        open={tutorialCursoOpen}
+        onClose={() => {
+          setTutorialCursoOpen(false);
+          marcarTutorialCursoVisto();
+        }}
+      />
     </div>
   );
 }

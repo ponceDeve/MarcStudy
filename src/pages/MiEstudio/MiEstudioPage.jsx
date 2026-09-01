@@ -5,6 +5,9 @@ import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
+import TutorialSpotlight from "../../components/TutorialSpotlight";
+import { useTutorialSeen } from "../../hooks/useTutorialSeen";
+import { TUTORIAL_INICIO } from "../../data/tutorialSteps";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "./WelcomeSection";
 import AvisosInicio from "../../components/AvisosInicio";
@@ -411,6 +414,12 @@ export default function MiEstudioPage() {
     useState(false);
   const [searchOpen, setSearchOpen] =
     useState(false);
+  const { visto: tutorialInicioVisto, marcarVisto: marcarTutorialInicioVisto } =
+    useTutorialSeen("inicio");
+  const [tutorialInicioOpen, setTutorialInicioOpen] = useState(false);
+  const [tutorialInicioPasoUnico, setTutorialInicioPasoUnico] =
+    useState(null);
+
   const [pomodoroMiniOpen, setPomodoroMiniOpen] =
     useState(false);
   const [temasOpen, setTemasOpen] =
@@ -418,6 +427,8 @@ export default function MiEstudioPage() {
   const [score, setScore] = useState(0);
   const [wrongCount, setWrongCount] =
     useState(0);
+  const [preguntasFalladas, setPreguntasFalladas] =
+    useState({});
   const [questionResult, setQuestionResult] =
     useState(null);
   const [attemptKey, setAttemptKey] =
@@ -436,6 +447,13 @@ export default function MiEstudioPage() {
       "miEstudio_nombreUsuario",
       null
     );
+
+  useEffect(() => {
+    if (nombreUsuario && !tutorialInicioVisto) {
+      const t = setTimeout(() => setTutorialInicioOpen(true), 500);
+      return () => clearTimeout(t);
+    }
+  }, [nombreUsuario, tutorialInicioVisto]);
 
   const [preguntaModoAbierta, setPreguntaModoAbierta] =
     useState(false);
@@ -848,6 +866,7 @@ export default function MiEstudioPage() {
       setIsLevelMode(false);
       setScore(0);
       setWrongCount(0);
+      setPreguntasFalladas({});
       setQuestionResult(null);
       setAttemptKey(0);
       setSearchOpen(false);
@@ -1650,6 +1669,7 @@ export default function MiEstudioPage() {
     setIsLevelMode(false);
     setScore(0);
     setWrongCount(0);
+    setPreguntasFalladas({});
     setQuestionResult(null);
     setAttemptKey(0);
     setCountdown(0);
@@ -1661,6 +1681,60 @@ export default function MiEstudioPage() {
       rendido: true,
       vidasEnEsteIntento: vidas
     });
+
+    let vistaKeyRendido = null;
+    let vistaPreguntaRendido = null;
+
+    if (isFlipQuiz) {
+      const item =
+        quizBatch[quizPos];
+
+      if (item) {
+        vistaKeyRendido =
+          `ex-${item.puntoIndex}`;
+
+        vistaPreguntaRendido =
+          item.pregunta;
+      }
+    } else if (isLevelMode) {
+      vistaKeyRendido =
+        `ex-${nivelIndex}`;
+
+      vistaPreguntaRendido =
+        examenPreguntas[
+        nivelIndex
+        ] || null;
+    } else if (
+      modoEstudio ===
+      "solo_preguntas"
+    ) {
+      vistaKeyRendido =
+        `ex-${cardIndex}`;
+
+      vistaPreguntaRendido =
+        examenPreguntas[
+        cardIndex
+        ] || null;
+    } else {
+      vistaKeyRendido =
+        `pt-${cardIndex}`;
+
+      vistaPreguntaRendido =
+        flatPuntos[
+          cardIndex
+        ]?.pregunta || null;
+    }
+
+    if (vistaKeyRendido && vistaPreguntaRendido) {
+      setPreguntasFalladas(
+        (prev) => ({
+          ...prev,
+          [vistaKeyRendido]: {
+            pregunta: vistaPreguntaRendido
+          }
+        })
+      );
+    }
 
     // Rendirse ya NO quita vidas: solo se registra como un intento
     // fallido para las estadísticas de aciertos/errores.
@@ -1873,6 +1947,17 @@ export default function MiEstudioPage() {
       setWrongCount(
         (w) => w + 1
       );
+
+      if (vistaKey && vistaPregunta) {
+        setPreguntasFalladas(
+          (prev) => ({
+            ...prev,
+            [vistaKey]: {
+              pregunta: vistaPregunta
+            }
+          })
+        );
+      }
 
       setVidas(
         (prevVidas) => {
@@ -2833,6 +2918,11 @@ export default function MiEstudioPage() {
             <AppHeader
               showHome
               onAbrirBuscador={() => setSearchOpen(true)}
+              tutorialSteps={TUTORIAL_INICIO}
+              onSelectTutorialStep={(idx) => {
+                setTutorialInicioPasoUnico(TUTORIAL_INICIO[idx]);
+                setTutorialInicioOpen(true);
+              }}
             />
 
             <div className="mi-estudio__home-screen container">
@@ -3422,6 +3512,20 @@ export default function MiEstudioPage() {
         onSelect={
           seleccionarItem
         }
+      />
+
+      <TutorialSpotlight
+        steps={
+          tutorialInicioPasoUnico
+            ? [tutorialInicioPasoUnico]
+            : TUTORIAL_INICIO
+        }
+        open={tutorialInicioOpen}
+        onClose={() => {
+          setTutorialInicioOpen(false);
+          setTutorialInicioPasoUnico(null);
+          marcarTutorialInicioVisto();
+        }}
       />
 
       {nombreCursoActivo && (

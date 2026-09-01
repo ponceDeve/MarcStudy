@@ -55,7 +55,7 @@ export default function EditarNombreModal({
             <i className="fa-solid fa-user" />
           )}
           <span className="editar-nombre-foto__lapiz">
-            <i className="fa-solid fa-pen" />
+            <i className="fa-solid fa-plus" />
           </span>
         </button>
 
