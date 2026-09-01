@@ -3,60 +3,63 @@
   "tema": "Bacterias",
   "glosario": {
     "Bacteria": "Organismo procariota unicelular microscópico.",
-    "Procariota": "Célula sin núcleo ni membranas internas.",
-    "Peptidoglucano": "Polímero de la pared celular bacteriana.",
-    "Plásmido": "ADN extracromosómico circular bacteriano.",
-    "Fisión": "División celular asexual de bacterias.",
-    "Endoespora": "Estructura de resistencia bacteriana inactiva.",
-    "Heterótrofo": "Organismo que obtiene carbono de otros.",
-    "Autótrofo": "Organismo que sintetiza su propio alimento.",
-    "Mesosoma": "Invaginación de la membrana plasmática bacteriana.",
-    "Cosmopolita": "Que se encuentra en todo el mundo.",
-    "Cocos": "Bacterias con forma esférica.",
+    "Procariota": "Célula sin núcleo verdadero.",
+    "Peptidoglucano": "Polímero rígido de la pared celular.",
+    "Plásmido": "ADN circular extracromosómico bacteriano.",
+    "Fisión": "División celular asexual bacteriana.",
+    "Endoespora": "Estructura bacteriana latente y resistente.",
+    "Heterótrofo": "Consume materia orgánica externa.",
+    "Autótrofo": "Produce su propio alimento.",
+    "Mesosoma": "Invaginación de la membrana bacteriana.",
+    "Cosmopolita": "Habita en todo el planeta.",
+    "Cocos": "Bacterias de forma esférica.",
     "Bacilos": "Bacterias con forma de bastón.",
-    "Vibriones": "Bacterias con forma de coma o bastón curvado.",
-    "Espirilos": "Bacterias con forma de espiral rígida.",
-    "Conjugación": "Transferencia de plásmidos mediante pilus.",
-    "Transformación": "Incorporación de ADN libre del medio.",
-    "Transducción": "Transferencia de ADN mediada por virus.",
-    "Patógeno": "Organismo que produce enfermedades.",
-    "Biorremediación": "Uso de bacterias para degradar sustancias tóxicas.",
-    "Extremófila": "Organismo que vive en condiciones extremas.",
-    "=": "Define",
-    "∈": "Pertenece",
-    "⊃": "Contiene",
-    "→": "Produce",
-    "✓": "Requiere",
-    "✗": "Carece",
-    "+": "Combina"
+    "Vibriones": "Bacterias con forma de coma.",
+    "Espirilos": "Bacterias de forma helicoidal rígida.",
+    "Conjugación": "Transferencia de plásmidos entre bacterias.",
+    "Transformación": "Captación de ADN libre del entorno.",
+    "Transducción": "Transferencia genética mediante virus.",
+    "Patógeno": "Microorganismo que causa enfermedades.",
+    "Biorremediación": "Uso de microorganismos para degradar contaminantes.",
+    "Extremófila": "Organismo que vive en ambientes extremos.",
+    "Nucleoide": "Región celular que contiene el ADN bacteriano.",
+    "Hopanoides": "Moléculas que estabilizan la membrana bacteriana."
   },
   "theory": [
     {
       "titulo": "Características Generales",
       "puntos": [
         {
-          "texto": "Bacterias = organismos unicelulares.",
-          "explicacion": "Las bacterias son organismos estrictamente unicelulares. Esto significa que todo el individuo está formado por una sola célula capaz de realizar todas sus funciones vitales de forma independiente."
+          "texto": "Bacterias = «unicelulares»",
+          "explicacion": "Integran todo su organismo en una única unidad metabólica autosuficiente sin formar tejidos[cite: 1]."
         },
         {
-          "texto": "Bacterias ∈ células procariotas.",
-          "explicacion": "Las bacterias pertenecen al grupo de las células procariotas, lo que implica que carecen de una membrana nuclear que encierre su material genético."
+          "texto": "Bacterias ∈ «procariotas»",
+          "explicacion": "Carecen de envoltura nuclear que aísle su material genético del citoplasma[cite: 1]."
         },
         {
-          "texto": "Bacterias → generalmente nutrición heterótrofa.",
-          "explicacion": "La gran mayoría de las bacterias dependen de obtener moléculas ricas en energía consumiendo materia orgánica del medio externo."
+          "texto": "Bacterias → nutrición «heterótrofa»",
+          "explicacion": "La mayoría consume materia orgánica ambiental como fuente principal de carbono y energía[cite: 1]."
         },
         {
-          "texto": "Cianobacterias y bacterias púrpuras ✗ heterótrofas.",
-          "explicacion": "A diferencia de la mayoría, las cianobacterias y las bacterias púrpuras son organismos autótrofos capaces de realizar fotosíntesis para sintetizar su alimento."
+          "texto": "Cianobacterias ✗ nutrición «heterótrofa»",
+          "explicacion": "Sintetizan sus propios compuestos orgánicos utilizando energía solar mediante fotosíntesis[cite: 1]."
         },
         {
-          "texto": "Bacterias → forman colonias.",
-          "explicacion": "Frecuentemente, las bacterias se agrupan compartiendo un espacio para cooperar en su protección o nutrición, sin llegar a constituir tejidos complejos."
+          "texto": "Bacterias púrpuras ✗ nutrición «heterótrofa»",
+          "explicacion": "Poseen pigmentos bacterioclorofila para fabricar su alimento a partir de luz[cite: 1]."
         },
         {
-          "texto": "Bacterias = organismos cosmopolitas.",
-          "explicacion": "Se denominan cosmopolitas debido a su amplia distribución mundial y su enorme capacidad para habitar casi cualquier ambiente de la Tierra."
+          "texto": "Bacterias → forman «colonias»",
+          "explicacion": "Se agrupan físicamente para optimizar la resistencia ambiental y el intercambio metabólico[cite: 1]."
+        },
+        {
+          "texto": "Bacterias = organismos «cosmopolitas»",
+          "explicacion": "Prosperan en ambientes diversos del planeta como suelo, agua y tracto gastrointestinal[cite: 1]."
+        },
+        {
+          "texto": "Tamaño bacteriano ≈ «micras»",
+          "explicacion": "Oscilan habitualmente entre 0,5 y 5 micrómetros de diámetro, requiriendo microscopía óptica para su observación[cite: 1]."
         }
       ]
     },
@@ -64,344 +67,546 @@
       "titulo": "Nutrición Bacteriana",
       "puntos": [
         {
-          "texto": "Bacterias heterótrofas → obtienen biomoléculas del medio.",
-          "explicacion": "Absorben compuestos orgánicos preformados directamente del entorno o de los tejidos de un huésped para poder sobrevivir."
+          "texto": "Dióxido de Carbono («CO2») = fuente inorgánica",
+          "explicacion": "Suministra el carbono fundamental para la fijación autótrofa en bacterias fotosintéticas y quimirosintéticas[cite: 1]."
         },
         {
-          "texto": "Bacterias fotoautótrofas ✓ CO2 + luz.",
-          "explicacion": "Utilizan dióxido de carbono como fuente de carbono y aprovechan la energía de la luz solar para llevar a cabo sus procesos fotosintéticos."
+          "texto": "Bacterias heterótrofas → captación de «biomoléculas»",
+          "explicacion": "Absorben carbohidratos, aminoácidos y lípidos preformados del medio circundante o del hospedero[cite: 1]."
         },
         {
-          "texto": "Fotosíntesis oxigénica ∈ cianobacterias.",
-          "explicacion": "Las cianobacterias utilizan agua como donador de electrones, liberando oxígeno gaseoso al medio como resultado de su fotosíntesis."
+          "texto": "Bacterias fotoautótrofas ✓ «CO2» + luz",
+          "explicacion": "Transforman fotones luminosos en energía química metabólica para fijar la materia inorgánica[cite: 1]."
         },
         {
-          "texto": "Fotosíntesis anoxigénica ∈ bacterias verdes y púrpuras.",
-          "explicacion": "Utilizan la luz solar como fuente energética pero emplean compuestos alternativos, como el sulfuro de hidrógeno, sin liberar oxígeno."
+          "texto": "Fotosíntesis oxigénica ∈ «cianobacterias»",
+          "explicacion": "Rompen la molécula de agua durante el proceso fotosintético y liberan oxígeno molecular al ambiente[cite: 1]."
         },
         {
-          "texto": "Bacterias quimioautótrofas ✓ CO2 + oxidación inorgánica.",
-          "explicacion": "Asimilan el dióxido de carbono utilizando la energía liberada mediante la oxidación de moléculas inorgánicas del medio."
+          "texto": "Fotosíntesis anoxigénica ∈ bacterias «verdes»",
+          "explicacion": "Utilizan compuestos reducidos como el sulfuro de hidrógeno en lugar de agua sin producir O2[cite: 1]."
         },
         {
-          "texto": "Ferrobacterias ∈ bacterias quimioautótrofas.",
-          "explicacion": "Obtienen su energía metabólica oxidando hierro ferroso a hierro férrico para fijar el carbono inorgánico."
+          "texto": "Fotosíntesis anoxigénica ∈ bacterias «púrpuras»",
+          "explicacion": "Emplean donadores de electrones inorgánicos alternativos manteniendo la atmósfera desprovista de oxígeno[cite: 1]."
+        },
+        {
+          "texto": "Bacterias quimioautótrofas ✓ «CO2» + oxidación inorgánica",
+          "explicacion": "Aprovechan la energía liberada al oxidar minerales del suelo para fijar carbono sin requerir luz[cite: 1]."
+        },
+        {
+          "texto": "Ferrobacterias ∈ bacterias «quimioautótrofas»",
+          "explicacion": "Oxidan iones ferrosos a férricos extrayendo la energía necesaria para su anabolismo[cite: 1]."
+        },
+        {
+          "texto": "Nitrobacterias → oxidación de «nitritos»",
+          "explicacion": "Transforman nitritos en nitratos dentro del ciclo biogeoquímico enriqueciendo la fertilidad del suelo[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Estructura Principal: Envolturas",
+      "titulo": "Envolturas Celulares",
       "puntos": [
         {
-          "texto": "Pared celular → protección.",
-          "explicacion": "Capa rígida exterior que otorga protección mecánica a la célula y previene su estallido osmótico en medios hipotónicos."
+          "texto": "Pared celular → «protección» osmótica",
+          "explicacion": "Impide el estallido celular por presión turgente en soluciones acuosas de baja concentración salina[cite: 1]."
         },
         {
-          "texto": "Pared celular ⊃ peptidoglucano o mureína.",
-          "explicacion": "Su estructura está compuesta fundamentalmente por un polímero exclusivo y resistente llamado peptidoglucano o mureína."
+          "texto": "Pared celular ⊃ «peptidoglucano»",
+          "explicacion": "Estructura rígida de cadenas de azúcares entrelazadas por puentes peptídicos cortos[cite: 1]."
         },
         {
-          "texto": "Bacterias Gram positivas ⊃ ácido teicoico.",
-          "explicacion": "Poseen una capa gruesa de peptidoglucano atravesada por moléculas de ácido teicoico que aportan rigidez a la superficie."
+          "texto": "Peptidoglucano = «mureína»",
+          "explicacion": "Designación alternativa para la red macromolecular que otorga forma a la cubierta bacteriana[cite: 1]."
         },
         {
-          "texto": "Membrana plasmática ⊃ fosfolípidos + proteínas.",
-          "explicacion": "Estructura basada en una bicapa fosfolipídica integrada con proteínas que actúa como barrera selectiva y metabólica."
+          "texto": "Bacterias Gram positivas ⊃ «ácido teicoico»",
+          "explicacion": "Anclan polímeros cargados negativamente a su capa gruesa de peptidoglucano aportando estabilidad física[cite: 1]."
         },
         {
-          "texto": "Membrana plasmática bacteriana ✗ colesterol.",
-          "explicacion": "A diferencia de las células animales, carece de colesterol y emplea otras moléculas reguladoras de fluidez como los hopanoides."
+          "texto": "Bacterias Gram negativas ⊃ «lipopolisacárido»",
+          "explicacion": "Presentan una membrana externa cargada de endotoxinas responsables de inducir respuestas febriles[cite: 1]."
+        },
+        {
+          "texto": "Membrana plasmática ⊃ fosfolípidos + «proteínas»",
+          "explicacion": "Constituye una barrera selectiva semipermeable indispensable para regular el paso de metabolitos[cite: 1]."
+        },
+        {
+          "texto": "Membrana plasmática bacteriana ✗ «colesterol»",
+          "explicacion": "Carece de lípidos esteroides típicos eucariotas regulando la fluidez mediante moléculas alternativas[cite: 1]."
+        },
+        {
+          "texto": "Membrana bacteriana ⊃ «hopanoides»",
+          "explicacion": "Estabilizan la matriz lipídica bacteriana cumpliendo una función análoga al colesterol animal[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Estructura Principal: Citoplasma y Genoma",
+      "titulo": "Genoma Bacteriano",
       "puntos": [
         {
-          "texto": "Nucleoide ⊃ ADN bacteriano.",
-          "explicacion": "Región densa del citoplasma donde se agrupa el material genético al carecer de un núcleo delimitado por membrana."
+          "texto": "Ácido Desoxirribonucleico («ADN») = genoma",
+          "explicacion": "Molécula portadora del código genético que rige la estructura y metabolismo celular[cite: 1]."
         },
         {
-          "texto": "ADN bacteriano = circular + único.",
-          "explicacion": "El genoma principal consiste por lo general en una única molécula de ADN bicatenario cerrada sobre sí misma."
+          "texto": "Nucleoide ⊃ «ADN» bacteriano",
+          "explicacion": "Zona citoplasmática densa desprovista de membrana delimitante donde se ubica el cromosoma[cite: 1]."
         },
         {
-          "texto": "ADN bacteriano = desnudo.",
-          "explicacion": "Se le denomina desnudo debido a la ausencia de un empaquetamiento complejo comparable al de los eucariotas."
+          "texto": "«ADN» bacteriano = circular + único",
+          "explicacion": "Consiste en una sola doble hebra cerrada covalentemente sobre sí misma en forma de anillo[cite: 1]."
         },
         {
-          "texto": "ADN desnudo ✗ proteínas histonas.",
-          "explicacion": "Carece de proteínas histonas alrededor de las cuales se enrolla el material genético en otros tipos celulares."
+          "texto": "«ADN» bacteriano = «desnudo»",
+          "explicacion": "Presenta una empaquetadura accesible para la maquinaria enzimática de transcripción directa[cite: 1]."
         },
         {
-          "texto": "Ribosomas bacterianos = tipo 70S.",
-          "explicacion": "Son organelas no membranosas encargadas de la traducción, caracterizadas por un coeficiente de sedimentación de 70S."
-        },
-        {
-          "texto": "Ribosoma 70S ⊃ subunidades 30S + 50S.",
-          "explicacion": "Está integrado por dos subunidades desiguales, una menor de 30S y una mayor de 50S, que se acoplan durante la síntesis."
-        },
-        {
-          "texto": "Ribosomas → síntesis proteica (traducción).",
-          "explicacion": "Llevan a cabo la lectura del ARN mensajero para ensamblar aminoácidos y formar proteínas funcionales."
-        },
-        {
-          "texto": "Plásmido = ADN extracromosómico circular.",
-          "explicacion": "Pequeña molécula de ADN circular independiente que frecuentemente transporta genes de resistencia u otras ventajas adaptativas."
-        },
-        {
-          "texto": "Mesosoma central → forma tabique de división.",
-          "explicacion": "Invaginación de la membrana plasmática que se ancla al ADN para generar el septo transversal durante la división."
-        },
-        {
-          "texto": "Mesosoma central → fisión binaria.",
-          "explicacion": "Facilita la separación cromosómica y la tabicación requerida para la reproducción asexual de la bacteria."
-        },
-        {
-          "texto": "Mesosoma lateral → respiración celular.",
-          "explicacion": "Aloja las enzimas de la cadena transportadora de electrones al carecer la célula de mitocondrias verdaderas."
-        },
-        {
-          "texto": "Respiración celular bacteriana → produce ATP.",
-          "explicacion": "Oxida moléculas orgánicas para liberar y almacenar energía metabólica utilizable en forma de trifosfato de adenosina."
+          "texto": "«ADN» desnudo ✗ «histonas»",
+          "explicacion": "Carece de proteínas octaméricas organizadoras reduciendo la complejidad del superenrollamiento[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Estructura Facultativa",
+      "titulo": "Estructura del Citoplasma",
       "puntos": [
         {
-          "texto": "Cápsula → resistencia a fármacos.",
-          "explicacion": "Envoltura mucosa externa que dificulta la penetración de agentes antimicrobianos y aumenta la virulencia."
+          "texto": "Ácido Ribonucleico («ARN») = mensajero",
+          "explicacion": "Transcribe la información génica del ADN para dirigir la síntesis de cadenas polipeptídicas[cite: 1]."
         },
         {
-          "texto": "Cápsula → evita la fagocitosis.",
-          "explicacion": "Su textura y composición impiden que los glóbulos blancos del huésped puedan capturar e ingerir fácilmente a la bacteria."
+          "texto": "Ribosomas bacterianos = tipo «70S»",
+          "explicacion": "Complejos ribonucleoproteicos de menor coeficiente de sedimentación que los ribosomas eucariotas 80S[cite: 1]."
         },
         {
-          "texto": "Endoesporas → resistencia a condiciones desfavorables.",
-          "explicacion": "Estructuras latentes de alta durabilidad que se forman internamente cuando el ambiente se torna hostil."
+          "texto": "Ribosoma 70S ⊃ subunidades «30S» + «50S»",
+          "explicacion": "Se ensamblan dinámicamente durante la traducción acoplando la subunidad menor 30S a la mayor 50S[cite: 1]."
         },
         {
-          "texto": "Bacillus y Clostridium → forman endoesporas.",
-          "explicacion": "Géneros bacterianos reconocidos por generar estas formas de resistencia capaces de sobrevivir durante largos periodos."
+          "texto": "Ribosomas → síntesis de «proteínas»",
+          "explicacion": "Enlazan aminoácidos mediante uniones peptídicas interpretando la secuencia de codones del ARN[cite: 1]."
         },
         {
-          "texto": "Pilus o fimbria → adhesión celular.",
-          "explicacion": "Apéndices proteicos cortos que permiten a la bacteria fijarse fuertemente a superficies, tejidos o sustratos."
-        },
-        {
-          "texto": "Pilus → conjugación (transferencia de ADN).",
-          "explicacion": "Un tipo especializado de pilus sexual forma un puente temporal para transferir plásmidos entre células bacterianas."
-        },
-        {
-          "texto": "Inclusiones = gránulos de almacén.",
-          "explicacion": "Acúmulos citoplasmáticos no membranosos donde se acumulan sustancias de reserva de forma insoluble."
-        },
-        {
-          "texto": "Inclusiones ⊃ polifosfato, almidón, glucógeno.",
-          "explicacion": "Contienen depósitos de reserva energética o estructural como polifosfatos y polisacáridos similares al almidón."
-        },
-        {
-          "texto": "Flagelo → movilidad bacteriana.",
-          "explicacion": "Apéndice helicoidal accionado por un motor basal cuya rotación impulsa a la célula a través de medios acuosos."
-        },
-        {
-          "texto": "Bacterias átricas ✗ flagelos.",
-          "explicacion": "Carecen por completo de apéndices flagelares, por lo que suelen ser organismos inmóviles."
-        },
-        {
-          "texto": "Bacterias monótricas ⊃ un solo flagelo.",
-          "explicacion": "Presentan un único flagelo polar que le otorga a la célula un desplazamiento rápido y direccional."
-        },
-        {
-          "texto": "Bacterias lofótricas ⊃ mechón de flagelos.",
-          "explicacion": "Poseen un penacho o ramillete de flagelos concentrados en uno de los extremos de la estructura celular."
-        },
-        {
-          "texto": "Bacterias anfítricas ⊃ flagelos en ambos polos.",
-          "explicacion": "Cuentan con flagelos o mechones ubicados de manera simétrica en los dos extremos opuestos de la bacteria."
-        },
-        {
-          "texto": "Bacterias perítricas ⊃ flagelos alrededor del contorno.",
-          "explicacion": "Tienen numerosos flagelos distribuidos a lo largo de toda la superficie externa de la célula."
+          "texto": "Plásmido = «ADN» extracromosómico circular",
+          "explicacion": "Elemento génico accesorio autonómico que porta determinantes adaptativos de resistencia a fármacos[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Formas de Bacterias",
+      "titulo": "Mesosomas Bacterianos",
       "puntos": [
         {
-          "texto": "Cocos = bacterias esféricas.",
-          "explicacion": "Morfología globular que puede encontrarse de manera aislada o formando diversas agrupaciones celulares."
+          "texto": "Trifosfato de Adenosina («ATP») = energía",
+          "explicacion": "Molécula que almacena el potencial energético necesario para activar las reacciones anabólicas[cite: 1]."
         },
         {
-          "texto": "Diplococos = cocos agrupados de dos en dos.",
-          "explicacion": "Células esféricas que permanecen unidas en parejas tras completar su proceso de división."
+          "texto": "Mesosoma central → forma tabique de «división»",
+          "explicacion": "Dirige la síntesis interna del septo transversal durante la bipartición celular[cite: 1]."
         },
         {
-          "texto": "Estreptococos = cocos en cadenas.",
-          "explicacion": "Disposición lineal adoptada cuando las células hijas se dividen en un único plano y continúan unidas."
+          "texto": "Mesosoma central → «fisión binaria»",
+          "explicacion": "Garantiza el anclaje y la segregación equitativa de las réplicas del ADN único[cite: 1]."
         },
         {
-          "texto": "Estafilococos = cocos en racimos.",
-          "explicacion": "Agrupaciones irregulares tridimensionales que recuerdan a un racimo de uvas debido a divisiones en múltiples planos."
+          "texto": "Mesosoma lateral → «respiración celular»",
+          "explicacion": "Amplía la superficie membranosa replegada sosteniendo la cadena transportadora de electrones[cite: 1]."
         },
         {
-          "texto": "Bacilos = bacterias en forma de bastón.",
-          "explicacion": "Estructuras tridimensionales alargadas de forma cilíndrica que pueden hallarse aisladas o en cadenas cortas."
-        },
-        {
-          "texto": "Vibriones = bacterias en forma de coma.",
-          "explicacion": "Bacterias que presentan una curvatura característica similar a una coma ortográfica."
-        },
-        {
-          "texto": "Espirilos = bacterias en espiral.",
-          "explicacion": "Microorganismos con forma helicoidal y rígida, provistos comúnmente de flagelos polares."
+          "texto": "Respiración celular bacteriana → produce «ATP»",
+          "explicacion": "Genera una fuerza protonmotriz para fosforilar moléculas de difosfato de adenosina[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Reproducción Bacteriana",
+      "titulo": "Estructuras Facultativas",
       "puntos": [
         {
-          "texto": "Fisión binaria = reproducción asexual.",
-          "explicacion": "Mecanismo mediante el cual una célula progenitora origina dos células hijas genéticamente idénticas."
+          "texto": "Cápsula → resistencia a «fármacos»",
+          "explicacion": "Forma una capa mucosa hidrofílica externa que retrasa la difusión de principios antibióticos[cite: 1]."
         },
         {
-          "texto": "Paso 1 de fisión = replicación del ADN.",
-          "explicacion": "Etapa inicial donde la molécula circular de ADN se duplica para asegurar copias idénticas en ambas hijas."
+          "texto": "Cápsula → evita la «fagocitosis»",
+          "explicacion": "Oculta determinantes antigénicos de superficie bloqueando la englución por neutrófilos[cite: 1]."
         },
         {
-          "texto": "Paso 2 de fisión = forma el tabique.",
-          "explicacion": "La membrana y la pared celular crecen hacia el interior formando un septo transversal que divide el espacio."
+          "texto": "Endoesporas → resistencia a «condiciones desfavorables»",
+          "explicacion": "Estructuras criptobióticas hiperresistentes al calor, desecación extrema y luz radiante[cite: 1]."
         },
         {
-          "texto": "Paso 3 de fisión = separación del citoplasma.",
-          "explicacion": "Conclusión del proceso donde el citoplasma se divide por completo, generando dos células independientes."
+          "texto": "Bacillus → forman «endoesporas»",
+          "explicacion": "Género aeróbico Gram positivo capaz de persistir inactivo en suelos por décadas[cite: 1]."
+        },
+        {
+          "texto": "Clostridium → forman «endoesporas»",
+          "explicacion": "Bacterias anaerobias patógenas que sobreviven en ambientes expuestos a la intemperie[cite: 1]."
+        },
+        {
+          "texto": "Pilus → «adhesión» celular",
+          "explicacion": "Apéndices proteicos rígidos que permiten la fijación a epitelios y superficies inertes[cite: 1]."
+        },
+        {
+          "texto": "Fimbria = «pilus» adhesivo",
+          "explicacion": "Nombre alternativo para los apéndices fibrilares involucrados en el anclaje primario[cite: 1]."
+        },
+        {
+          "texto": "Pilus sexual → «conjugación» genómica",
+          "explicacion": "Forma un conducto cilíndrico de contacto intercelular para la donación horizontal de plásmidos[cite: 1]."
+        },
+        {
+          "texto": "Inclusiones = gránulos de «almacén»",
+          "explicacion": "Agregados macromoleculares insolubles que previenen el desequilibrio en la presión osmótica interna[cite: 1]."
+        },
+        {
+          "texto": "Inclusiones ⊃ «polifosfato»",
+          "explicacion": "Reservan fosfatos esenciales para recargar nucleótidos y mantener el metabolismo lipídico[cite: 1]."
+        },
+        {
+          "texto": "Inclusiones ⊃ «almidón»",
+          "explicacion": "Polímeros de reserva de glucosa utilizados durante épocas de carencia nutricional[cite: 1]."
+        },
+        {
+          "texto": "Inclusiones ⊃ «glucógeno»",
+          "explicacion": "Carbohidrato citoplasmático altamente ramificado disponible para movilización bioenergética veloz[cite: 1]."
+        },
+        {
+          "texto": "Flagelo → «movilidad» bacteriana",
+          "explicacion": "Estructura helicoidal impulsada por un motor basal rotatorio incrustado en la membrana[cite: 1]."
+        },
+        {
+          "texto": "Bacterias átricas ✗ «flagelos»",
+          "explicacion": "Carecen de apéndices motores sufriendo desplazamiento pasivo impulsado por corrientes[cite: 1]."
+        },
+        {
+          "texto": "Bacterias monótricas ⊃ «un» solo flagelo",
+          "explicacion": "Presentan un único filamento motor polar facilitando nados unidireccionales rápidos[cite: 1]."
+        },
+        {
+          "texto": "Bacterias lofótricas ⊃ «mechón» de flagelos",
+          "explicacion": "Concentran un grupo de flagelos en un solo polo celular para propulsión enérgica[cite: 1]."
+        },
+        {
+          "texto": "Bacterias anfítricas ⊃ flagelos en «ambos» polos",
+          "explicacion": "Poseen estructuras flagelares dispuestas simétricamente en ambos extremos opuestos[cite: 1]."
+        },
+        {
+          "texto": "Bacterias perítricas ⊃ flagelos en «contorno»",
+          "explicacion": "Distribuyen múltiples flagelos por toda la periferia permitiendo cambios abruptos de giro[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Transferencia de ADN (Mecanismos Parasexuales)",
+      "titulo": "Morfología Bacteriana",
       "puntos": [
         {
-          "texto": "Conjugación → transferencia de plásmidos mediante pilus.",
-          "explicacion": "Mecanismo horizontal donde una bacteria dona material genético a otra a través de un tubo proteico de unión."
+          "texto": "Cocos = bacterias «esféricas»",
+          "explicacion": "Muestran un aspecto celular esferoidal regular reduciendo al mínimo la superficie expuesta[cite: 1]."
         },
         {
-          "texto": "Transformación → absorción de ADN libre del medio.",
-          "explicacion": "Proceso en el cual una bacteria capta fragmentos de ADN dispersos originados por células lisadas vecinas."
+          "texto": "Diplococos = cocos agrupados de «dos» en dos",
+          "explicacion": "Permanecen en parejas asociadas tras dividirse en un único plano perpendicular[cite: 1]."
         },
         {
-          "texto": "Transducción → transferencia de ADN mediada por virus.",
-          "explicacion": "Intercambio genético accidental en el que un bacteriófago transporta fragmentos de ADN bacteriano hacia un nuevo huésped."
+          "texto": "Estreptococos = cocos en «cadenas»",
+          "explicacion": "Se alinean en hileras rosariadas al mantener divisiones repetidas en un mismo eje[cite: 1]."
+        },
+        {
+          "texto": "Estafilococos = cocos en «racimos»",
+          "explicacion": "Generan masas tridimensionales irregulares por tabicaciones celulares en múltiples planos azarosos[cite: 1]."
+        },
+        {
+          "texto": "Bacilos = bacterias en forma de «bastón»",
+          "explicacion": "Presentan cuerpos elongados cilíndricos que maximizan el área superficial de absorción[cite: 1]."
+        },
+        {
+          "texto": "Vibriones = bacterias en forma de «coma»",
+          "explicacion": "Bastoncillos rígidos provistos de una curvatura única parecida al signo ortográfico[cite: 1]."
+        },
+        {
+          "texto": "Espirilos = bacterias en «espiral»",
+          "explicacion": "Tienen morfología helicoidal rígida desplazándose por giro sobre su propio eje longitudinal[cite: 1]."
+        },
+        {
+          "texto": "Espiroquetas = bacterias en espiral «flexible»",
+          "explicacion": "Hélices ondulantes delgadas provistas de un endoflagelo axil dentro del espacio periplásmico[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Importancia de las Bacterias",
+      "titulo": "Reproducción Asexual",
       "puntos": [
         {
-          "texto": "Bacterias patógenas → producen enfermedades clínicas.",
-          "explicacion": "Grupo reducido capaz de invadir tejidos corporales y liberar toxinas que desencadenan patologías infecciosas."
+          "texto": "Fisión binaria = reproducción «asexual»",
+          "explicacion": "Duplica la población progenitora produciendo clones idénticos sin recombinación gamética[cite: 1]."
         },
         {
-          "texto": "Mycobacterium tuberculosis → tuberculosis.",
-          "explicacion": "Bacilo aerobio estricto causante de una infección crónica que afecta principalmente al tejido pulmonar."
+          "texto": "Paso 1 de fisión = replicación del «ADN»",
+          "explicacion": "Duplica de forma semiconservativa la cadena cromosómica a partir de un único origen[cite: 1]."
         },
         {
-          "texto": "Mycobacterium leprae → lepra.",
-          "explicacion": "Agente etiológico responsable de impactar la piel, las mucosas y los nervios periféricos."
+          "texto": "Paso 2 de fisión = forma el «tabique»",
+          "explicacion": "Crece una muralla interna de peptidoglucano desde los bordes hacia el centro celular[cite: 1]."
         },
         {
-          "texto": "Vibrio cholerae → cólera.",
-          "explicacion": "Bacteria curvada transmitida por agua contaminada que provoca cuadros diarreicos agudos severos."
-        },
-        {
-          "texto": "Vibrio vulnificus → necrosis.",
-          "explicacion": "Patógeno oportunista marino capaz de causar infecciones graves en heridas con destrucción tisular rápida."
-        },
-        {
-          "texto": "Salmonella typhi → tifoidea.",
-          "explicacion": "Bacteria entérica que genera fiebre prolongada y compromiso sistémico en el organismo humano."
-        },
-        {
-          "texto": "Campylobacter → diarrea aguda.",
-          "explicacion": "Uno de los principales agentes bacterianos asociados a la gastroenteritis de transmisión alimentaria."
-        },
-        {
-          "texto": "Shigella sp → disentería bacilar (o brucelosis según apunte).",
-          "explicacion": "Género vinculado en los esquemas de estudio a trastornos infecciosos e intestinales severos."
-        },
-        {
-          "texto": "Brucella sp → neumonía (o brucelosis).",
-          "explicacion": "Asociada en los apuntes de clase a procesos infecciosos de tipo sistémico o respiratorio."
-        },
-        {
-          "texto": "Yersinia pestis → peste bubónica.",
-          "explicacion": "Bacteria zoonótica transmitida por pulgas de roedores históricamente vinculada a epidemias letales."
-        },
-        {
-          "texto": "Bartonella bacilliformis → fiebre de oroya.",
-          "explicacion": "Agente endémico transmitido por insectos vectores que produce la denominada verruga peruana."
-        },
-        {
-          "texto": "Bordetella pertussis → tos convulsiva.",
-          "explicacion": "Infecta las vías respiratorias altas provocando accesos severos y característicos de tos (coqueluche)."
-        },
-        {
-          "texto": "Bacterias industriales → producción de yogur, queso, vinagre, ajinomoto.",
-          "explicacion": "Utilizadas mediante fermentación para elaborar productos de consumo masivo y aminoácidos comerciales."
-        },
-        {
-          "texto": "Biorremediación → desintegración de sustancias tóxicas (petróleo, plásticos).",
-          "explicacion": "Aprovechamiento de la versatilidad metabólica para degradar contaminantes ambientales complejos."
-        },
-        {
-          "texto": "Bacterias agronómicas → fertilizan la tierra y fijan nitrógeno.",
-          "explicacion": "Organismos simbióticos que transforman el nitrógeno atmosférico en compuestos asimilables para enriquecer el suelo."
+          "texto": "Paso 3 de fisión = separación del «citoplasma»",
+          "explicacion": "Escinde el citoplasma dividiendo físicamente la célula madre en dos hijas autóctonas[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Clasificación de Bacterias (Arqueobacterias y Eubacterias)",
+      "titulo": "Transferencia Genética Horizontal",
       "puntos": [
         {
-          "texto": "Arqueobacterias = organismos extremófilos.",
-          "explicacion": "Microorganismos ancestrales adaptados para sobrevivir en condiciones físicas y químicas sumamente hostiles."
+          "texto": "Conjugación → transferencia de «plásmidos»",
+          "explicacion": "Traspasa material genético entre bacterias vivas mediante el acoplamiento con un pilus sexual[cite: 1]."
         },
         {
-          "texto": "Arqueobacterias ⊃ monocapa de fosfolípidos.",
-          "explicacion": "Poseen membranas integradas por una monocapa lipídica con enlaces éter que les otorga alta estabilidad térmica."
+          "texto": "Transformación → absorción de «ADN» libre",
+          "explicacion": "Captura e integra fragmentos génicos sueltos dispersos en el entorno procedentes de lisis celular[cite: 1]."
         },
         {
-          "texto": "Termófilas → temperatura extrema.",
-          "explicacion": "Arqueas adaptadas para prosperar de manera óptima en fuentes hidrotermales y géiseres volcánicos."
+          "texto": "Transducción → transferencia de «ADN» por virus",
+          "explicacion": "Intercambia fragmentos del genoma bacteriano utilizando bacteriófagos infectantes como vehículo[cite: 1]."
         },
         {
-          "texto": "Halófilas → alta salinidad.",
-          "explicacion": "Habitan medios con concentraciones extremas de sal, como salares y cuerpos de agua altamente salinos."
+          "texto": "Bacteriófago = virus «bacteriano»",
+          "explicacion": "Parásito intracelular obligado que inyecta su genoma en el citoplasma destruyendo la bacteria[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Bacterias Patógenas",
+      "puntos": [
+        {
+          "texto": "Bacterias patógenas → producen «enfermedades»",
+          "explicacion": "Sintetizan toxinas dañinas e invaden tejidos descompensando la homeostasis del organismo[cite: 1]."
         },
         {
-          "texto": "Metanógenas → producen metano (CH4).",
-          "explicacion": "Anaerobias estricta que reducen dióxido de carbono y liberan gas metano como subproducto metabólico."
+          "texto": "Mycobacterium tuberculosis → «tuberculosis»",
+          "explicacion": "Bacteria ácido-alcohol resistente que destruye el parénquima pulmonar formando granulomas[cite: 1]."
         },
         {
-          "texto": "Acidófilas → pH ácido.",
-          "explicacion": "Se desarrollan sin dificultad en ambientes con niveles de acidez sumamente elevados."
+          "texto": "Mycobacterium leprae → «lepra»",
+          "explicacion": "Afecta los filetes nerviosos periféricos y dermatomas provocando insensibilidad y lesiones cutáneas[cite: 1]."
         },
         {
-          "texto": "Micoplasmas ⊃ sin pared celular.",
-          "explicacion": "Grupo peculiar de eubacterias que carecen de cubierta rígida externa, lo que las hace resistentes a ciertos antibióticos."
+          "texto": "Vibrio cholerae → «cólera»",
+          "explicacion": "Produce enterotoxinas en la mucosa intestinal provocando severos cuadros de diarrea acuosa[cite: 1]."
         },
         {
-          "texto": "Rickettsias = bacterias intracelulares pequeñas.",
-          "explicacion": "Microorganismos que actúan obligadamente como parásitos dentro de células eucariotas para multiplicarse."
+          "texto": "Vibrio vulnificus → «necrosis»",
+          "explicacion": "Genera infecciones fulminantes en heridas abiertas expuestas al agua de mar contaminada[cite: 1]."
         },
         {
-          "texto": "Clamidias → poseen inclusiones.",
-          "explicacion": "Bacterias intracelulares caracterizadas por generar cuerpos de inclusión específicos durante su ciclo infeccioso."
+          "texto": "Salmonella typhi → «tifoidea»",
+          "explicacion": "Coloniza las placas de Peyer enteropatogénicas desencadenando bacteriemias e hipertermia sistémica[cite: 1]."
+        },
+        {
+          "texto": "Campylobacter → «diarrea» aguda",
+          "explicacion": "Principal causa de gastroenteritis de origen alimentario por consumo de carne aviar cruda[cite: 1]."
+        },
+        {
+          "texto": "Shigella sp → «disentería» bacilar",
+          "explicacion": "Destruye enterocitos del intestino grueso provocando deposiciones con sangre y pujos[cite: 1]."
+        },
+        {
+          "texto": "Brucella sp → «brucelosis»",
+          "explicacion": "Zoonosis transmitida por consumo de lácteos no pasteurizados que cursa con fiebres ondulantes[cite: 1]."
+        },
+        {
+          "texto": "Yersinia pestis → «peste» bubónica",
+          "explicacion": "Infección transmitida por la pulga de roedores que inflama los ganglios linfáticos produciendo bubones[cite: 1]."
+        },
+        {
+          "texto": "Bartonella bacilliformis → «fiebre» de Oroya",
+          "explicacion": "Infección endémica andina transmitida por titiras que lisa hematíes causando anemia verrucosa[cite: 1]."
+        },
+        {
+          "texto": "Bordetella pertussis → «tos» convulsiva",
+          "explicacion": "Paraliza los cilios respiratorios con exotoxinas produciendo accesos violently sofocantes[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia Industrial",
+      "puntos": [
+        {
+          "texto": "Bacterias industriales → producción de «yogur»",
+          "explicacion": "Fermentan la lactosa produciendo ácido láctico que coagula las proteínas lácteas[cite: 1]."
+        },
+        {
+          "texto": "Bacterias industriales → producción de «queso»",
+          "explicacion": "Acidifican el sustrato lácteo permitiendo el madurado proteico y lipídico del producto[cite: 1]."
+        },
+        {
+          "texto": "Bacterias industriales → producción de «vinagre»",
+          "explicacion": "Oxidan el alcohol etílico convirtiéndolo en ácido acético mediante metabólisis aeróbica[cite: 1]."
+        },
+        {
+          "texto": "Bacterias industriales → síntesis de «ajinomoto»",
+          "explicacion": "Secretan glutamato monosódico en biorreactores para la fabricación comercial de potenciadores del sabor[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia Ecológica",
+      "puntos": [
+        {
+          "texto": "Biorremediación → degradación de «petróleo»",
+          "explicacion": "Catabolizan los hidrocarburos pesados vertidos al mar transformándolos en compuestos inocuos[cite: 1]."
+        },
+        {
+          "texto": "Biorremediación → desintegración de «plásticos»",
+          "explicacion": "Exudan enzimas capaces de romper enlaces sintéticos poliméricos acortando su vida contaminante[cite: 1]."
+        },
+        {
+          "texto": "Bacterias agronómicas → «fertilizan» la tierra",
+          "explicacion": "Liberan nutrientes minerales fijados en la matriz edáfica poniéndolos a disposición radicular[cite: 1]."
+        },
+        {
+          "texto": "Bacterias agronómicas → fijación de «nitrógeno»",
+          "explicacion": "Transforman el nitrógeno gaseoso inerte en amonio asimilable para el desarrollo vegetal[cite: 1]."
+        },
+        {
+          "texto": "Rhizobium → «simbiosis» radicular",
+          "explicacion": "Forma nodulaciones en raíces de leguminosas cediendo nitrógeno fijado a cambio de carbohidratos[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Arqueobacterias Extremófilas",
+      "puntos": [
+        {
+          "texto": "Potencial de Hidrógeno («pH») = acidez",
+          "explicacion": "Medida logarítmica de la concentración de protones de una solución que determina la acidez ambiental[cite: 1]."
+        },
+        {
+          "texto": "Arqueobacterias = organismos «extremófilos»",
+          "explicacion": "Prosperan bajo condiciones físico-químicas hostiles incompatibles con el resto de seres vivos[cite: 1]."
+        },
+        {
+          "texto": "Arqueobacterias ⊃ «monocapa» de fosfolípidos",
+          "explicacion": "Unen sus cadenas lipídicas mediante enlaces éter sumamente estables contra desnaturalizaciones[cite: 1]."
+        },
+        {
+          "texto": "Termófilas → «temperatura» extrema",
+          "explicacion": "Resisten temperaturas sobre los 80 °C encontradas en fuentes hidrotermales volcánicas[cite: 1]."
+        },
+        {
+          "texto": "Halófilas → alta «salinidad»",
+          "explicacion": "Toleran concentraciones salinas elevadas en salares evaporíticos deshidratantes[cite: 1]."
+        },
+        {
+          "texto": "Metano («CH4») = gas hidrocarburo",
+          "explicacion": "Subproducto gaseoso liberado en fermentaciones anaeróbicas puras[cite: 1]."
+        },
+        {
+          "texto": "Metanógenas → producen «CH4»",
+          "explicacion": "Reducen dióxido de carbono metabólicamente en sedimentos anóxicos y en el aparato digestivo animal[cite: 1]."
+        },
+        {
+          "texto": "Acidófilas → «pH» ácido",
+          "explicacion": "Soportan niveles extremos de acidez con pH inferiores a 2 en efluentes mineros[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Eubacterias Especializadas",
+      "puntos": [
+        {
+          "texto": "Micoplasmas ⊃ ✗ «pared» celular",
+          "explicacion": "Inmunes a la penicilina por carecer de la estructura mureínica que ataca dicho antibiótico[cite: 1]."
+        },
+        {
+          "texto": "Rickettsias = bacterias «intracelulares»",
+          "explicacion": "Requieren obligatoriamente la maquinaria citoplasmática de una célula huésped para replicar[cite: 1]."
+        },
+        {
+          "texto": "Clamidias → poseen «inclusiones»",
+          "explicacion": "Forman vacualizaciones con cuerpos reticulados visibles durante su ciclo reproductivo infeccioso[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }

@@ -2,173 +2,1237 @@
   "curso": "Biología",
   "tema": "Mitosis",
   "glosario": {
-    "CDK": "Enzimas kinasas que regulan el ciclo celular.",
-    "Latencia": "Estado de reposo o inactividad celular.",
-    "Interfase": "Etapa de preparación y crecimiento celular.",
-    "Centrosoma": "Centro organizador de microtúbulos y huso.",
-    "Diploide": "Célula con dos juegos de cromosomas.",
-    "Cariocinesis": "Proceso de división del núcleo celular.",
-    "Cinetocoro": "Estructura donde se anclan los microtúbulos.",
-    "Citocinesis": "División física del citoplasma celular.",
-    "Fragmoplasto": "Placa divisoria en células vegetales.",
-    "Centrípeta": "Movimiento que va hacia el centro.",
-    "Centrífuga": "Movimiento que va hacia el exterior.",
-    "=": "Define",
-    "→": "Produce",
-    "✓": "Requiere",
-    "∈": "Pertenece",
-    "↑": "Aumenta",
-    "+": "Combina"
+    "Latencia": "Estado de reposo o inactividad celular transitorio o permanente.",
+    "Interfase": "Etapa de preparación, duplicación y crecimiento previo a dividirse.",
+    "Centrosoma": "Centro organizador de microtúbulos y el huso acromático.",
+    "Diploide": "Célula que posee dos juegos completos de cromosomas.",
+    "Cariocinesis": "Proceso biológico de división física del material del núcleo.",
+    "Cinetocoro": "Estructura proteica donde se anclan los microtúbulos del huso.",
+    "Citocinesis": "División física del citoplasma para separar las células hijas.",
+    "Fragmoplasto": "Placa divisoria característica de las células vegetales en división.",
+    "Centrípeta": "Movimiento o fuerza que se dirige hacia el centro.",
+    "Centrífuga": "Movimiento o expansión que se aleja hacia el exterior.",
+    "Quiescencia": "Estado de reposo celular donde se detiene la división.",
+    "Cromatina": "Forma laxa en la que se encuentra el material genético."
   },
   "theory": [
     {
-      "titulo": "El Ciclo Celular y Fase G0",
+      "titulo": "El Ciclo Celular",
       "puntos": [
         {
-          "texto": "Ciclo celular = conjunto de procesos.",
-          "explicacion": "El ciclo celular no es un evento instantáneo, sino un conjunto ordenado de procesos biológicos por los que atraviesa una célula desde que nace hasta que se divide."
+          "texto": "Ciclo celular = conjunto de procesos",
+          "explicacion": "No es un evento instantáneo, sino un conjunto ordenado de procesos biológicos sucesivos por los que atraviesa una célula desde el momento en que nace hasta que llega a dividirse."
         },
         {
-          "texto": "Ciclo celular → desarrollo + división.",
-          "explicacion": "A lo largo de su ciclo, la célula primero experimenta una etapa de desarrollo (crecimiento y preparación) que culmina inevitablemente con su división en nuevas células hijas."
+          "texto": "Ciclo celular → desarrollo + división",
+          "explicacion": "A lo largo de su existencia, la célula experimenta primero una prolongada etapa de desarrollo, donde crece y se prepara, que culmina inevitablemente con su partición en nuevas células hijas."
         },
         {
-          "texto": "Ciclo celular ✓ regulación por CDK.",
-          "explicacion": "El ciclo celular está estrictamente controlado por factores promotores, destacando las CDK (kinasas dependientes de ciclinas), que actúan como puntos de control para asegurar que cada fase se cumpla correctamente."
+          "texto": "Kinasas dependientes de ciclinas (CDK)",
+          "explicacion": "Las Kinasas dependientes de ciclinas (abreviadas como CDK) son las enzimas maestras que actúan como reguladores bioquímicos indispensables para permitir o detener el avance del ciclo celular."
         },
         {
-          "texto": "Fase G0 = estado de latencia.",
-          "explicacion": "La Fase G0 es un periodo de latencia o quiescencia donde la célula sale del ciclo normal de división, deteniendo su progresión para enfocarse en funciones específicas o descanso."
+          "texto": "Ciclo celular ✓ regulación por CDK",
+          "explicacion": "Todo el progreso está estrictamente controlado por factores promotores, destacando las CDK, que funcionan como puntos de control de calidad para asegurar que cada fase previa se cumpla correctamente."
         },
         {
-          "texto": "Neuronas ∈ Fase G0 permanente.",
-          "explicacion": "Existen células altamente especializadas, como las neuronas y los miocitos (células musculares), que entran en una Fase G0 permanente; es decir, pierden para siempre su capacidad de dividirse."
-        },
-        {
-          "texto": "Hepatocitos ∈ Fase G0 temporal.",
-          "explicacion": "A diferencia de las neuronas, las células del hígado (hepatocitos) están en una Fase G0 temporal. No se dividen normalmente, pero ante un daño hepático pueden reactivar su ciclo para regenerar el tejido."
+          "texto": "Puntos de control celular",
+          "explicacion": "Son mecanismos de vigilancia internos que evalúan el tamaño celular, el estado del material genético y las condiciones del entorno antes de autorizar el paso a la siguiente etapa."
         }
       ]
     },
     {
-      "titulo": "Interfase: Fases G1, S y G2",
+      "titulo": "Fase G0",
       "puntos": [
         {
-          "texto": "Interfase = fase de crecimiento.",
-          "explicacion": "La interfase (o intermitosis) abarca la mayor parte de la vida de la célula. Es esencialmente una gran fase de crecimiento y preparación metabólica previa a la división celular."
+          "texto": "Fase G0 = estado de latencia",
+          "explicacion": "Es un periodo de quiescencia donde la célula sale voluntariamente del ciclo normal de división, deteniendo su progresión de forma transitoria o definitiva para enfocarse en funciones metabólicas específicas."
         },
         {
-          "texto": "Fase G1 → duplicación de organelas.",
-          "explicacion": "En la fase G1 (Gap 1), la célula comienza a prepararse fabricando más material celular, lo que incluye la duplicación de sus organelas citoplasmáticas para sostener el aumento de tamaño."
+          "texto": "Neuronas ∈ Fase G0 permanente",
+          "explicacion": "Existen células de alta complejidad y especialización, como las neuronas del sistema nervioso, que entran en una Fase G0 de manera irreversible, perdiendo para siempre su capacidad reproductiva."
         },
         {
-          "texto": "Fase G1 ↑ volumen celular.",
-          "explicacion": "Como consecuencia directa de la síntesis de proteínas y la duplicación masiva de organelas, la célula experimenta un notable aumento de su volumen celular durante la fase G1."
+          "texto": "Miocitos ∈ Fase G0 permanente",
+          "explicacion": "Al igual que las células nerviosas, los miocitos o células musculares alcanzan un nivel de maduración donde se estacionan permanentemente en G0, sin poder dividirse para generar más tejido muscular."
         },
         {
-          "texto": "Fase S → replicación del ADN.",
-          "explicacion": "La letra S proviene de Síntesis. En esta etapa clave de la interfase, la célula sintetiza una nueva copia de su material genético, replicando el ADN (cromatina) para que cada futura célula hija tenga la información completa."
-        },
-        {
-          "texto": "Fase S → duplicación del centrosoma.",
-          "explicacion": "Junto con la replicación del ADN, en la fase S también se duplica el centrosoma (que contiene los centriolos en células animales), una estructura fundamental para guiar posteriormente la división cromosómica."
-        },
-        {
-          "texto": "Fase G2 → síntesis de ATP.",
-          "explicacion": "La fase G2 es el último preparativo antes de la división mitótica. Requiere un gran gasto energético, por lo que la célula se enfoca en la síntesis de moléculas de ATP y proteínas necesarias para la inminente separación."
+          "texto": "Hepatocitos ∈ Fase G0 temporal",
+          "explicacion": "Las células del hígado humano se encuentran normalmente en reposo, pero conservan la capacidad latente de reactivar su ciclo celular si ocurre una lesión, para regenerar el órgano."
         }
       ]
     },
     {
-      "titulo": "Importancia de la División Mitótica",
+      "titulo": "Interfase Celular",
       "puntos": [
         {
-          "texto": "División mitótica = fase de repartición.",
-          "explicacion": "La mitosis es mecánicamente la fase de repartición, donde todo el material (ADN y organelas) que fue cuidadosamente duplicado durante la interfase se distribuye equitativamente."
+          "texto": "Interfase = fase de crecimiento",
+          "explicacion": "También llamada intermitosis, abarca la inmensa mayoría de la vida celular. Consiste en una gran etapa de crecimiento, síntesis de moléculas y preparación metabólica previa a la partición."
         },
         {
-          "texto": "Célula madre 2n → células hijas 2n.",
-          "explicacion": "La mitosis es una división conservativa. Una célula somática original diploide (2n) se divide para originar exactamente 2 células hijas que mantienen la misma carga genética diploide (2n)."
-        },
-        {
-          "texto": "Mitosis pluricelular → crecimiento + regeneración.",
-          "explicacion": "En los organismos pluricelulares (como animales y plantas), la mitosis no crea nuevos individuos, sino que es la base biológica para el desarrollo, crecimiento del cuerpo y regeneración de tejidos dañados."
-        },
-        {
-          "texto": "Mitosis unicelular → reproducción.",
-          "explicacion": "A diferencia de los organismos complejos, en los seres unicelulares eucariotas (como algunas algas y protozoarios), cada mitosis da origen a un individuo completo nuevo, sirviendo como su mecanismo de reproducción asexual poblacional."
+          "texto": "Interfase ⊃ G1 + S + G2",
+          "explicacion": "Esta larga etapa de preparación se subdivide universalmente en tres subfases secuenciales obligatorias: el intervalo 1 (G1), la fase de síntesis (S) y el intervalo 2 (G2)."
         }
       ]
     },
     {
-      "titulo": "Fases de la Cariocinesis",
+      "titulo": "Fase G1",
       "puntos": [
         {
-          "texto": "Cariocinesis = división del núcleo.",
-          "explicacion": "La cariocinesis (del griego karyon = núcleo y kinesis = movimiento/división) es la etapa de la mitosis enfocada exclusivamente en la partición y distribución del material genético nuclear."
+          "texto": "Fase G1 → duplicación de organelas",
+          "explicacion": "En el primer intervalo o Gap 1, la célula recién nacida inicia su preparación fabricando material, lo que exige la duplicación activa de sus organelas para abastecer su aumento de tamaño."
         },
         {
-          "texto": "Profase → desorganización de carioteca.",
-          "explicacion": "En la primera fase (Profase), la envoltura nuclear (carioteca) y el nucleolo se desorganizan, permitiendo que los cromosomas queden libres en el citoplasma para poder ser movilizados."
-        },
-        {
-          "texto": "Profase → condensación de cromatina.",
-          "explicacion": "Para evitar que el ADN se enrede o rompa al moverlo, la cromatina (que estaba laxa) empieza a condensarse y empaquetarse fuertemente hasta hacer visibles a los cromosomas."
-        },
-        {
-          "texto": "Prometafase → huso se une al cinetocoro.",
-          "explicacion": "En la Prometafase, los microtúbulos del huso acromático logran contactar a los cromosomas, uniéndose específicamente a unos discos proteicos llamados cinetocoros ubicados en el centrómero."
-        },
-        {
-          "texto": "Metafase → formación de línea ecuatorial.",
-          "explicacion": "Impulsados por el huso, los cromosomas alcanzan su máximo grado de condensación y se alinean perfectamente en el centro de la célula, formando la placa o línea ecuatorial."
-        },
-        {
-          "texto": "Anafase → disyunción de cromátidas hermanas.",
-          "explicacion": "La Anafase se caracteriza por la disyunción (separación brusca) de los cromosomas dobles. Las cromátidas hermanas se rompen por el centrómero, convirtiéndose en cromosomas simples."
-        },
-        {
-          "texto": "Anafase → migración hacia polos opuestos.",
-          "explicacion": "Una vez separadas, las fibras del huso se acortan, arrastrando a las cromátidas (ahora cromosomas simples) hacia los polos opuestos de la célula para garantizar una copia en cada lado."
-        },
-        {
-          "texto": "Telofase → reorganización de carioteca.",
-          "explicacion": "La Telofase es funcionalmente inversa a la Profase. Al llegar el ADN a los polos, el huso desaparece y la carioteca se reorganiza alrededor de cada grupo cromosómico, formando dos núcleos definidos."
+          "texto": "Fase G1 ↑ volumen celular",
+          "explicacion": "Como resultado directo de la intensa síntesis de proteínas estructurales y la creación masiva de organelas, la célula experimenta un aumento dramático y visible en su volumen total."
         }
       ]
     },
     {
-      "titulo": "Citocinesis: Animal y Vegetal",
+      "titulo": "Fase S",
       "puntos": [
         {
-          "texto": "Citocinesis = división del citoplasma.",
-          "explicacion": "Una vez finalizada la cariocinesis (división del núcleo), el ciclo culmina con la citocinesis, que es el corte y partición física de todo el citoplasma para independizar a las dos células."
+          "texto": "Ácido Desoxirribonucleico (ADN)",
+          "explicacion": "El Ácido Desoxirribonucleico (ADN) es la macromolécula que contiene toda la información genética hereditaria, organizándose en forma de cromatina dentro del núcleo durante la interfase."
         },
         {
-          "texto": "Citocinesis animal ✓ anillo contráctil.",
-          "explicacion": "Al no tener pared rígida, la célula animal se divide por estrangulamiento. Esto requiere la formación de un anillo contráctil justo por debajo de la membrana plasmática ecuatorial."
+          "texto": "Fase S → replicación del ADN",
+          "explicacion": "En esta etapa crítica, la célula sintetiza una copia exacta de su material genético completo, para garantizar que ambas células hijas futuras reciban el mismo manual de instrucciones biológico."
         },
         {
-          "texto": "Anillo contráctil = actina + miosina.",
-          "explicacion": "El anillo contráctil funciona de manera similar al músculo, utilizando la interacción motora entre filamentos de actina y miosina para tensarse y estrangular la célula."
+          "texto": "Fase S → duplicación del centrosoma",
+          "explicacion": "A la par de copiar el genoma, se duplica el centrosoma celular. Esta estructura formará el huso acromático, una maquinaria fundamental para guiar el movimiento de los cromosomas después."
         },
         {
-          "texto": "Citocinesis animal = dirección centrípeta.",
-          "explicacion": "El estrangulamiento ocurre desde el exterior de la célula apretando hacia el centro (como un cinturón), por lo que se denomina movimiento de dirección centrípeta."
-        },
-        {
-          "texto": "Citocinesis vegetal → formación de fragmoplasto.",
-          "explicacion": "Las células vegetales tienen una pared celular rígida y no pueden estrangularse. En su lugar, el aparato de Golgi envía vesículas al ecuador que se fusionan para construir el fragmoplasto (una nueva placa celular)."
-        },
-        {
-          "texto": "Fragmoplasto = celulosa + pectina.",
-          "explicacion": "Las vesículas que forman el fragmoplasto están cargadas con los componentes básicos de la pared celular vegetal, fundamentalmente carbohidratos complejos como la celulosa y la pectina."
-        },
-        {
-          "texto": "Citocinesis vegetal = dirección centrífuga.",
-          "explicacion": "El fragmoplasto comienza a ensamblarse en el centro exacto de la célula y crece expandiéndose hacia los bordes externos hasta tocar la membrana original, un proceso de dirección centrífuga."
+          "texto": "Célula animal ⊃ centriolos",
+          "explicacion": "En el caso específico de los organismos animales, los centrosomas que se duplican en la fase S contienen un par de centriolos en su interior, ausentes en los vegetales superiores."
         }
       ]
+    },
+    {
+      "titulo": "Fase G2",
+      "puntos": [
+        {
+          "texto": "Adenosín Trifosfato (ATP)",
+          "explicacion": "El Adenosín Trifosfato (ATP) es la molécula primordial de intercambio de energía química que utilizan las células para sostener cualquier proceso que demande esfuerzo, como la mitosis."
+        },
+        {
+          "texto": "Fase G2 → síntesis de ATP",
+          "explicacion": "Siendo el último preparativo antes de dividirse, la célula se enfoca en producir y almacenar grandes reservas energéticas en forma de ATP y proteínas especializadas para la inminente partición."
+        },
+        {
+          "texto": "Fase G2 ✓ gasto energético",
+          "explicacion": "El proceso de partición que se avecina requiere una movilización mecánica violenta de componentes celulares, lo cual demanda una enorme inversión previa de la energía acumulada en G2."
+        }
+      ]
+    },
+    {
+      "titulo": "Importancia Mitótica",
+      "puntos": [
+        {
+          "texto": "División mitótica = fase de repartición",
+          "explicacion": "Mecánicamente, es el evento central donde todo el material meticulosamente duplicado en la interfase (desde el genoma hasta las organelas) se distribuye de manera equitativa."
+        },
+        {
+          "texto": "Célula madre diploide → células hijas diploides",
+          "explicacion": "Es un proceso genéticamente conservativo. Una célula somática original con doble juego cromosómico (2n) genera exactamente dos descendientes que mantienen intacta la misma carga diploide (2n)."
+        },
+        {
+          "texto": "Mitosis pluricelular → crecimiento + regeneración",
+          "explicacion": "En plantas y animales, este mecanismo celular no crea organismos diferentes, sino que permite el aumento de tamaño corporal del individuo y la reparación de tejidos cuando sufren heridas."
+        },
+        {
+          "texto": "Mitosis unicelular → reproducción asexual",
+          "explicacion": "Para organismos simples de una sola célula, como las amebas o paramecios eucariotas, cada evento de mitosis genera un individuo completamente independiente, aumentando su población."
+        }
+      ]
+    },
+    {
+      "titulo": "Cariocinesis Inicial",
+      "puntos": [
+        {
+          "texto": "Cariocinesis = división del núcleo",
+          "explicacion": "Derivado del griego «karyon» (núcleo) y «kinesis» (movimiento), es la subetapa mitótica encargada exclusivamente de desensamblar el núcleo original y distribuir su material hereditario equitativamente."
+        },
+        {
+          "texto": "Profase → desorganización de carioteca",
+          "explicacion": "En esta etapa inaugural, la membrana o envoltura nuclear (carioteca) junto al nucleolo se fragmentan y desorganizan, liberando el contenido genético directamente hacia el citoplasma circundante."
+        },
+        {
+          "texto": "Profase → condensación de cromatina",
+          "explicacion": "Para evitar roturas o enredos durante el traslado, el material genético laxo se enrolla y empaqueta de forma extremadamente densa, haciéndose visible bajo el microscopio como cromosomas estructurados."
+        },
+        {
+          "texto": "Prometafase → huso se une al cinetocoro",
+          "explicacion": "Las fibras proteicas del huso acromático recién formado invaden el área nuclear y se enganchan físicamente a los cinetocoros, unos discos de anclaje situados en la cintura del cromosoma."
+        }
+      ]
+    },
+    {
+      "titulo": "Metafase y Anafase",
+      "puntos": [
+        {
+          "texto": "Metafase → formación de línea ecuatorial",
+          "explicacion": "Impulsados por la tensión de las fibras del huso, los cromosomas condensados al máximo son alineados perfectamente en el plano central de la célula, formando la característica placa ecuatorial."
+        },
+        {
+          "texto": "Anafase → disyunción de cromátidas",
+          "explicacion": "Ocurre una separación brusca o disyunción anatómica. Los cromosomas dobles se parten por su centrómero, independizando a sus cromátidas hermanas que pasan a considerarse cromosomas simples."
+        },
+        {
+          "texto": "Anafase → migración hacia polos opuestos",
+          "explicacion": "Inmediatamente tras la ruptura, los microtúbulos se retraen y arrastran implacablemente a los cromosomas simples hacia los extremos opuestos, garantizando un lote genético idéntico en cada polo."
+        }
+      ]
+    },
+    {
+      "titulo": "Telofase",
+      "puntos": [
+        {
+          "texto": "Telofase ≈ profase inversa",
+          "explicacion": "Es la última fase nuclear, donde ocurren eventos funcionalmente contrarios a la profase: los cromosomas dejan de estar empaquetados para volver a su estado relajado de cromatina."
+        },
+        {
+          "texto": "Telofase → reorganización de carioteca",
+          "explicacion": "Al llegar el genoma a ambos polos celulares, el aparato del huso se desintegra y una nueva envoltura nuclear se ensambla alrededor de cada lote, conformando dos núcleos nuevos."
+        }
+      ]
+    },
+    {
+      "titulo": "Citocinesis Animal",
+      "puntos": [
+        {
+          "texto": "Citocinesis = división del citoplasma",
+          "explicacion": "Finalizada la partición de los núcleos, se requiere un corte físico del volumen celular y sus membranas para lograr la independencia anatómica total de las dos células hijas formadas."
+        },
+        {
+          "texto": "Citocinesis animal ✓ anillo contráctil",
+          "explicacion": "Al carecer de una pared celular rígida, las células del cuerpo animal logran dividirse mediante un proceso de estrangulamiento que exige la formación de un cinturón proteico submembranoso."
+        },
+        {
+          "texto": "Anillo contráctil = actina + miosina",
+          "explicacion": "Esta estructura funciona como un músculo a escala microscópica, empleando el deslizamiento e interacción de fibras de actina y miosina para generar la tensión necesaria para ahorcar la célula."
+        },
+        {
+          "texto": "Citocinesis animal = dirección centrípeta",
+          "explicacion": "El proceso de estrangulamiento inicia desde el exterior de la membrana plasmática, hundiendo el surco de segmentación hacia el interior profundo celular, un sentido de avance centrípeto."
+        }
+      ]
+    },
+    {
+      "titulo": "Citocinesis Vegetal",
+      "puntos": [
+        {
+          "texto": "Citocinesis vegetal ✗ estrangulamiento",
+          "explicacion": "Debido a que poseen una pared celular de celulosa extremadamente rígida, las células de las plantas son físicamente incapaces de doblarse o estrangularse como lo hacen las células animales."
+        },
+        {
+          "texto": "Citocinesis vegetal → formación de fragmoplasto",
+          "explicacion": "Para solventar su rigidez, construyen un tabique divisor interno conocido como fragmoplasto, que es esencialmente el andamio de la futura pared celular compartida entre las células hijas."
+        },
+        {
+          "texto": "Fragmoplasto = celulosa + pectina",
+          "explicacion": "Las estructuras membranosas que erigen este tabique divisorio están cargadas con carbohidratos estructurales complejos de origen vegetal, siendo la celulosa y la pectina sus ingredientes principales."
+        },
+        {
+          "texto": "Aparato de Golgi → vesículas del fragmoplasto",
+          "explicacion": "La organela celular conocida como Aparato de Golgi es la fábrica encargada de empaquetar y despachar las vesículas repletas de materiales que se fusionarán en el plano ecuatorial."
+        },
+        {
+          "texto": "Citocinesis vegetal = dirección centrífuga",
+          "explicacion": "A diferencia del modelo animal, el tabique de las plantas se ensambla iniciando en el centro exacto y va creciendo expansivamente hacia los bordes externos, un movimiento netamente centrífugo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
+        }
+      ]
+    }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador aísla una célula epidérmica y nota que su existencia no es un salto inmediato hacia la partición, sino una transición escalonada. ¿Qué principio explica adecuadamente esta evidencia experimental observada?",
+      "opts": [
+        "Su progresión ocurre mediante un conjunto ordenado de procesos sucesivos.",
+        "Su material genético se condensa instantáneamente sin pasos biológicos.",
+        "Su existencia celular evita atravesar por cualquier evento prolongado.",
+        "Su actividad metabólica carece de una secuencia de etapas biológicas.",
+        "Su ciclo biológico omite el crecimiento para acelerar la reproducción."
+      ],
+      "correct": 0,
+      "explicacion": "El caso evidencia que la célula atraviesa una transición escalonada porque el ciclo celular no es instantáneo, sino un conjunto ordenado de procesos biológicos sucesivos desde que nace hasta que se divide. Las alternativas fallan al asumir inmediatez o ausencia de etapas organizadas, lo cual contradice la observación."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al cultivar fibroblastos, se introduce un fármaco que detiene todo crecimiento metabólico previo a la partición. ¿Qué consecuencia directa tendrá esto sobre el futuro inmediato de las células tratadas?",
+      "opts": [
+        "Iniciarán su estrangulamiento centrípeto inmediatamente después.",
+        "Serán incapaces de dividirse por falta de una etapa de desarrollo.",
+        "Alcanzarán la madurez metabólica prescindiendo de macromoléculas.",
+        "Condensarán su cromatina sin necesidad de duplicar sus organelas.",
+        "Retrocederán hacia un estado procariota por falta de su carioteca."
+      ],
+      "correct": 1,
+      "explicacion": "El fármaco detiene el crecimiento metabólico, afectando el desarrollo. Como el ciclo celular requiere desarrollo y preparación antes de culminar en la división, bloquear la primera etapa hace imposible la partición celular. Los distractores fallan al asumir que la célula puede dividirse mágicamente sin preparación previa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un análisis genético de levaduras mutantes, se descubre que carecen de ciertas enzimas maestras encargadas de regular bioquímicamente las etapas. ¿Qué molécula específica se encuentra ausente o inactiva en la muestra?",
+      "opts": [
+        "La proteína estructural miosina.",
+        "La macromolécula polisacárida.",
+        "Las kinasas dependientes de ciclinas.",
+        "El trifosfato de adenosina libre.",
+        "La celulosa formadora de placa."
+      ],
+      "correct": 2,
+      "explicacion": "Las enzimas maestras que actúan como reguladores bioquímicos del ciclo celular son las kinasas dependientes de ciclinas (CDK). Las demás alternativas son componentes motores (miosina), estructurales (celulosa) o energéticos (ATP), no enzimas reguladoras."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un cultivo tumoral prolifera descontroladamente porque ignora los fallos en sus preparativos. ¿Qué mecanismo biológico se encuentra funcionalmente evadido por estas células durante su multiplicación desmedida?",
+      "opts": [
+        "El acortamiento de las fibras microtubulares motoras.",
+        "El empaquetamiento temprano de su material genético.",
+        "El desensamblaje estructural de su envoltura nuclear.",
+        "La regulación estricta impuesta por factores promotores.",
+        "La distribución equitativa de sus moléculas orgánicas."
+      ],
+      "correct": 3,
+      "explicacion": "El progreso celular normal está estrictamente controlado por factores promotores (CDK) que verifican el cumplimiento correcto de cada fase. Las células tumorales ignoran estos controles de calidad regulatorios, evadiendo la vigilancia. Los distractores mencionan mecanismos mecánicos mitóticos, no de regulación del ciclo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la transición celular, un mecanismo interno detecta un tamaño celular insuficiente y frena la división. ¿Qué componente interno es responsable directo de esta evaluación de las condiciones biológicas?",
+      "opts": [
+        "El huso acromático de distribución.",
+        "El centrómero anclado al genoma.",
+        "El anillo submembranoso contráctil.",
+        "El fragmoplasto de placa vegetal.",
+        "El punto de control de vigilancia."
+      ],
+      "correct": 4,
+      "explicacion": "Los mecanismos internos que evalúan el tamaño, genoma y entorno antes de autorizar el avance son los puntos de control celular. Las otras opciones son estructuras físicas implicadas mecánicamente en la partición (huso, anillo, fragmoplasto), no sistemas de evaluación o vigilancia metabólica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al observar un epitelio glandular, se nota que algunas células se retiran temporalmente de su reproducción para cumplir funciones secretoras exclusivas. ¿En qué estado biológico específico se encuentran estas células glandulares?",
+      "opts": [
+        "En un periodo de latencia conocido como Fase G0.",
+        "En un proceso de condensación cromosómica extrema.",
+        "En una etapa de disyunción de cromátidas hermanas.",
+        "En un evento de estrangulamiento citoplasmático real.",
+        "En un momento de ensamble masivo del fragmoplasto."
+      ],
+      "correct": 0,
+      "explicacion": "El retiro del ciclo de división para enfocarse en funciones metabólicas específicas o descanso se denomina estado de latencia o quiescencia, correspondiente a la Fase G0. Los distractores describen eventos activos de la cariocinesis o citocinesis que contradicen el estado de reposo metabólico observado."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un paciente sufre una isquemia cerebral que destruye tejido nervioso, el cual no logra ser reemplazado por la proliferación del tejido circundante. ¿Qué condición celular impide biológicamente esta regeneración neurológica?",
+      "opts": [
+        "Las células sanas carecen de enzimas metabólicas.",
+        "Las neuronas se encuentran en Fase G0 irreversible.",
+        "El tejido posee células con genomas extracelulares.",
+        "El sistema nervioso destruye su propio anillo celular.",
+        "Las células cerebrales forman una placa de celulosa."
+      ],
+      "correct": 1,
+      "explicacion": "Las neuronas son células altamente especializadas que entran de manera permanente e irreversible en la Fase G0, perdiendo para siempre su capacidad de dividirse y regenerar tejido. Las alternativas plantean escenarios biológicamente imposibles o propios de células vegetales."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tras un infarto agudo de miocardio, el tejido cardíaco dañado es sustituido por una cicatriz fibrosa inerte en lugar de generar nuevas fibras. ¿Por qué las células musculares sanas vecinas no logran dividirse para repararlo?",
+      "opts": [
+        "Porque degradaron definitivamente sus fibras de celulosa.",
+        "Porque consumieron todo su Adenosín Trifosfato interno.",
+        "Porque se estacionaron permanentemente en quiescencia.",
+        "Porque eliminaron sus enzimas kinasas y husos polares.",
+        "Porque su citoplasma experimentó un corte transversal."
+      ],
+      "correct": 2,
+      "explicacion": "Los miocitos o células musculares, al igual que las neuronas, alcanzan un nivel de maduración donde se estacionan de forma permanente en G0 (quiescencia irreversible), incapacitándolos para proliferar y regenerar tejido muscular funcional tras un daño."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un donante pierde parte de su lóbulo derecho, pero semanas después el órgano recupera casi todo su volumen original gracias al tejido remanente. ¿Qué particularidad biológica permitió esta respuesta tisular masiva?",
+      "opts": [
+        "Los macrófagos ensamblaron un fragmoplasto central.",
+        "Las células estomacales migraron hacia la herida.",
+        "El genoma se duplicó sin realizar una citocinesis.",
+        "Los hepatocitos reactivaron su ciclo desde Fase G0.",
+        "El tejido muscular cardíaco reemplazó la biomasa."
+      ],
+      "correct": 3,
+      "explicacion": "Las células del hígado (hepatocitos) se encuentran normalmente en una Fase G0 temporal. Ante una lesión, conservan la capacidad latente de salir de la quiescencia, reactivar su ciclo celular y dividirse masivamente para regenerar el órgano amputado o dañado."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Un análisis temporal revela que la célula pasa la mayor parte de su vida en la ___1___, una extensa fase metabólica dedicada principalmente al ___2___ previo a su partición.",
+      "opts": [
+        [
+          "cariocinesis",
+          "empaquetamiento"
+        ],
+        [
+          "citocinesis",
+          "estrangulamiento"
+        ],
+        [
+          "telofase",
+          "desenrollamiento"
+        ],
+        [
+          "prometafase",
+          "desplazamiento"
+        ],
+        [
+          "interfase",
+          "crecimiento"
+        ]
+      ],
+      "correct": 4,
+      "explicacion": "La interfase (o intermitosis) abarca la inmensa mayoría de la vida celular, siendo esencialmente una gran etapa de crecimiento, síntesis y preparación metabólica. Las demás opciones son subfases mitóticas de corta duración y no corresponden a una extensa preparación metabólica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante evalúa la fase preparatoria de un organismo eucariota unicelular y afirma que ocurre en un solo bloque continuo sin subdivisiones. ¿Qué error conceptual presenta esta interpretación del evento?",
+      "opts": [
+        "La etapa preparatoria abarca subfases secuenciales G1, S y G2 obligatorias.",
+        "El desarrollo metabólico requiere exclusivamente una duplicación centromérica.",
+        "El ciclo completo omite cualquier tipo de preparación previa a la división.",
+        "La interfase sucede siempre después de la citocinesis y antes de la latencia.",
+        "El crecimiento celular depende únicamente del ensamblaje del anillo proteico."
+      ],
+      "correct": 0,
+      "explicacion": "La prolongada etapa de preparación (interfase) no es un bloque único indiferenciado, sino que se subdivide universalmente en tres subfases secuenciales obligatorias: G1, S y G2. Las demás opciones asumen omisiones imposibles o confunden el orden del ciclo vital."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se expone un embrión a una toxina que bloquea específicamente la fabricación de membranas y estructuras citoplasmáticas inmediatamente después del nacimiento celular. ¿Qué proceso fundamental se está interrumpiendo en este escenario?",
+      "opts": [
+        "El desenrollamiento cromosómico en la última fase nuclear.",
+        "La duplicación activa de organelas originada en el primer intervalo.",
+        "La formación de la placa ecuatorial guiada por microtúbulos.",
+        "La disyunción brusca de cromátidas hermanas hacia los polos.",
+        "El estrangulamiento periférico originado por miosina celular."
+      ],
+      "correct": 1,
+      "explicacion": "Inmediatamente después de nacer, la célula ingresa al primer intervalo (Fase G1), donde se prepara fabricando material, lo que exige la duplicación de sus organelas citoplasmáticas. La toxina bloquea esta fabricación estructural inicial, impidiendo el abastecimiento. Los distractores son eventos mitóticos posteriores."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una mutación genética impide que una célula en desarrollo ensamble nuevas proteínas estructurales durante sus primeras horas de vida. ¿Qué consecuencia física evidente tendrá esto al finalizar dicha subetapa inicial?",
+      "opts": [
+        "El citoplasma sufrirá un corte transversal asimétrico profundo.",
+        "El núcleo generará dos envolturas protectoras independientes.",
+        "La célula será incapaz de incrementar drásticamente su volumen.",
+        "Los cromosomas dobles perderán sus discos de anclaje proteico.",
+        "El fragmoplasto crecerá expansivamente hacia los bordes externos."
+      ],
+      "correct": 2,
+      "explicacion": "Durante la Fase G1, la intensa síntesis de proteínas estructurales y creación de organelas provoca un aumento dramático y visible en el volumen total celular. Al impedirse esta síntesis, la célula no podrá incrementar su volumen, afectando su crecimiento. Las demás son fallas mecánicas de etapas ajenas a G1."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al teñir un núcleo interfasico con marcadores fluorescentes específicos, se detecta una inmensa macromolécula organizada de forma muy laxa que porta la herencia. ¿Qué estructura biológica está siendo observada directamente en el experimento?",
+      "opts": [
+        "El huso acromático de tracción motora.",
+        "El anillo contráctil de estrangulamiento.",
+        "El disco cinetocórico de la cintura.",
+        "El Ácido Desoxirribonucleico en cromatina.",
+        "El Adenosín Trifosfato de alta energía."
+      ],
+      "correct": 3,
+      "explicacion": "La macromolécula que contiene la información genética hereditaria y se organiza de forma laxa en el núcleo durante la interfase es el ADN en forma de cromatina. Las demás alternativas corresponden a proteínas estructurales, motoras o moléculas energéticas que no portan información hereditaria."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se aplica radiación ultravioleta que inactiva la maquinaria responsable de sintetizar nuevas cadenas polinucleotídicas complementarias en el núcleo. ¿Qué proceso crítico de la interfase queda biológicamente frustrado por este tratamiento?",
+      "opts": [
+        "El acortamiento de fibras polares microtubulares celulares.",
+        "La disolución de la envoltura protectora del núcleo genético.",
+        "La reparación del anillo submembranoso de naturaleza proteica.",
+        "El ensamblaje del tabique divisor de celulosa expansiva ecuatorial.",
+        "La replicación de una copia exacta del material genético nuclear."
+      ],
+      "correct": 4,
+      "explicacion": "La maquinaria inactivada es la responsable de sintetizar cadenas de ADN. Este bloqueo frustra la Fase S, donde la célula debe replicar una copia exacta de su material genético completo para asegurar que ambas células hijas reciban el manual biológico. Los distractores aluden a procesos mecánicos mitóticos o citocinéticos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una sustancia química inhibe la duplicación de una estructura citoplasmática organizadora durante la fase de síntesis genómica. ¿Qué evento mecánico futuro se verá gravemente afectado por la carencia de este componente celular?",
+      "opts": [
+        "La correcta guía y formación del huso acromático.",
+        "El aumento volumétrico asociado al primer intervalo.",
+        "La acumulación de reservas energéticas moleculares.",
+        "La síntesis de carbohidratos complejos estructurales.",
+        "La partición permanente del lóbulo orgánico dañado."
+      ],
+      "correct": 0,
+      "explicacion": "A la par del genoma, en la Fase S se duplica el centrosoma. Esta estructura es la organizadora de microtúbulos que formará el huso acromático, fundamental para guiar el movimiento cromosómico futuro. Su inhibición afectará la tracción mecánica. Las otras opciones refieren a G1, G2 o citocinesis vegetal."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Durante un estudio comparativo, se analizan los centrosomas duplicados de diferentes linajes biológicos eucariotas. Relacione el tipo de organismo con la presencia o ausencia de estructuras internas en su centro organizador.",
+      "columnaA": [
+        "1. Muestra obtenida de tejido dérmico de un mamífero.",
+        "2. Muestra obtenida del tejido fotosintético de un árbol.",
+        "3. Muestra de un tejido muscular estriado en desarrollo."
+      ],
+      "columnaB": [
+        "a) Carece de un par de centriolos en su interior.",
+        "b) Contiene un par de centriolos en su interior."
+      ],
+      "opts": [
+        "1a - 2b - 3a",
+        "1b - 2a - 3b",
+        "1a - 2a - 3b",
+        "1b - 2b - 3a",
+        "1a - 2b - 3b"
+      ],
+      "correct": 1,
+      "explicacion": "En organismos animales (tejido dérmico y muscular mamífero, 1 y 3), los centrosomas contienen un par de centriolos (b). En vegetales superiores (tejido de un árbol, 2), los centrosomas carecen de centriolos (a). La combinación correcta es 1b, 2a, 3b."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se mide el consumo de ciertas moléculas poco antes de iniciar la partición cromosómica, detectando un recambio masivo de energía química. ¿Qué molécula primordial es responsable de sostener este inminente esfuerzo mecánico?",
+      "opts": [
+        "El polisacárido estructural rígido extracelular.",
+        "La enzima reguladora dependiente de ciclinas.",
+        "El Adenosín Trifosfato de intercambio metabólico.",
+        "La cadena de ácido nucleico relajada nuclear.",
+        "El polímero de actina contráctil submembranosa."
+      ],
+      "correct": 2,
+      "explicacion": "El Adenosín Trifosfato (ATP) es la molécula primordial de intercambio de energía química que utiliza la célula para sostener procesos que demandan gran esfuerzo mecánico, como la inminente mitosis que se prepara en G2. Las demás opciones son compuestos estructurales, genéticos o regulatorios, no el sustrato energético principal."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un veneno mitocondrial reduce drásticamente la capacidad de la célula para almacenar compuestos energéticos durante el último intervalo de descanso. ¿Qué consecuencia directa tendrá este déficit sobre la fisiología de la muestra?",
+      "opts": [
+        "Incapacidad masiva para sintetizar y reservar moléculas de ATP.",
+        "Multiplicación incontrolada del par de centriolos animales.",
+        "Destrucción irreversible de la cadena maestra hereditaria.",
+        "Reactivación espontánea del crecimiento tisular neuronal.",
+        "Fusión prematura de vesículas repletas de carbohidratos."
+      ],
+      "correct": 0,
+      "explicacion": "Durante la Fase G2, siendo el último preparativo, la célula se enfoca en producir y almacenar grandes reservas energéticas (ATP). Al afectar las mitocondrias, la célula se vuelve incapaz de sintetizar este ATP necesario, frustrando la provisión energética para dividirse."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa que el proceso de separación genómica consume una abrumadora cantidad de energía previamente acumulada. ¿Por qué la mecánica divisoria requiere biológicamente esta enorme inversión de recursos energéticos?",
+      "opts": [
+        "Porque estabiliza permanentemente la cromatina laxa interna.",
+        "Porque moviliza violentamente los componentes celulares densos.",
+        "Porque detiene la actividad de los puntos de control interfasico.",
+        "Porque disuelve la pared de celulosa que envuelve al individuo.",
+        "Porque inhibe la acción catalítica de las enzimas promotoras."
+      ],
+      "correct": 1,
+      "explicacion": "El proceso de partición mitótica exige una movilización mecánica violenta de componentes masivos (como arrastrar cromosomas altamente condensados y constreñir membranas), lo cual requiere gastar la enorme inversión energética de ATP acumulada en G2. Las demás opciones no describen trabajos mecánicos que demanden dicha energía."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis morfométrico demuestra que al finalizar la fase activa, el material previamente acumulado en la célula original es dividido. ¿Cuál es la función central de este evento en el ciclo biológico general?",
+      "opts": [
+        "Actuar como la etapa de crecimiento metabólico principal.",
+        "Garantizar la acumulación masiva de energía en forma química.",
+        "Ejecutar mecánicamente la distribución equitativa del material.",
+        "Producir una mutación intencional de la secuencia hereditaria.",
+        "Establecer un periodo transitorio de quiescencia funcional."
+      ],
+      "correct": 2,
+      "explicacion": "La división mitótica es esencialmente la fase de repartición, donde el evento central consiste en distribuir mecánicamente de manera equitativa todo el material (ADN y organelas) que fue cuidadosamente duplicado en la interfase. Las opciones que mencionan crecimiento, energía o quiescencia pertenecen a interfase o G0."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "El proceso mitótico se considera genéticamente ___1___, ya que asegura que una célula progenitora con doble juego cromosómico origine descendientes estrictamente ___2___.",
+      "opts": [
+        [
+          "destructivo",
+          "haploides"
+        ],
+        [
+          "variable",
+          "diferentes"
+        ],
+        [
+          "aleatorio",
+          "mutados"
+        ],
+        [
+          "conservativo",
+          "diploides"
+        ],
+        [
+          "reduccional",
+          "simples"
+        ]
+      ],
+      "correct": 3,
+      "explicacion": "La mitosis es un proceso genéticamente conservativo, garantizando que una célula somática original diploide (2n) origine exactamente dos células hijas que mantienen intacta la misma carga diploide (2n). Distractores como reduccional o haploide aplican a procesos ajenos (meiosis), y no a la mitosis."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al observar la cicatrización de una herida profunda en un mamífero, se nota una intensa actividad proliferativa. ¿Qué rol biológico fundamental está cumpliendo esta división celular en dicho organismo complejo?",
+      "opts": [
+        "Inducir la creación de individuos completamente ajenos al cuerpo original.",
+        "Originar descendientes unicelulares con diferente información hereditaria.",
+        "Desencadenar la muerte programada del tejido adyacente a la lesión traumática.",
+        "Restaurar su estructura promoviendo un recambio anatómico sin variar el genoma.",
+        "Permitir la regeneración de tejidos dañados y el aumento de biomasa corporal."
+      ],
+      "correct": 4,
+      "explicacion": "En organismos pluricelulares (animales o plantas), la mitosis no crea nuevos individuos poblacionales, sino que actúa como la base biológica que sustenta el crecimiento físico del cuerpo y la reparación regenerativa de los tejidos cuando sufren heridas, garantizando la supervivencia anatómica del organismo."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un estudiante extrae un organismo protozoario y detecta que tras cada ciclo, la cantidad de organismos aislados aumenta en su placa Petri. Evalúe las afirmaciones sobre este fenómeno eucariota unicelular.",
+      "proposiciones": [
+        {
+          "texto": "Cada evento de partición genera un individuo completamente independiente del progenitor.",
+          "correct": true
+        },
+        {
+          "texto": "El mecanismo actúa exclusivamente como un sistema de reparación para tejidos dañados.",
+          "correct": false
+        },
+        {
+          "texto": "El aumento poblacional observado representa su mecanismo de reproducción biológica asexual.",
+          "correct": true
+        }
+      ],
+      "correct": 0,
+      "explicacion": "En seres eucariotas unicelulares, cada mitosis genera un organismo completo e independiente (verdad), sirviendo directamente como su método de reproducción asexual poblacional (verdad). No funciona como mecanismo de reparación tisular (falso) debido a que no forman verdaderos tejidos pluricelulares."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una mutación afecta el mecanismo encargado de desmontar el núcleo original durante la etapa de repartición celular eucariota. ¿Qué subproceso biológico específico se encuentra imposibilitado de ejecutarse correctamente en la muestra?",
+      "opts": [
+        "El incremento masivo de organelas citoplasmáticas tempranas.",
+        "La división anatómica física de todo el material del núcleo.",
+        "La estrangulación periférica del citoplasma por tracción motora.",
+        "El ingreso voluntario hacia una latencia o quiescencia temporal.",
+        "La expansión de vesículas cargadas de carbohidratos complejos."
+      ],
+      "correct": 1,
+      "explicacion": "El desensamble del núcleo para distribuir el material hereditario es el eje de la cariocinesis (división anatómica del núcleo). Las demás alternativas describen la citocinesis (estrangulación, vesículas), el intervalo G1 (organelas) o el estado G0 (latencia temporal)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Bajo el microscopio, se observa una célula en su fase inaugural donde la membrana protectora hereditaria pierde su cohesión estructural. ¿Qué consecuencia mecánica inmediata permite esta desorganización biológica controlada?",
+      "opts": [
+        "Oculta temporalmente a los cromosomas dentro de un organelo rígido.",
+        "Bloquea la síntesis química de trifosfato para detener el ciclo celular.",
+        "Libera el contenido genético hacia el citoplasma para poder movilizarlo.",
+        "Forma un tabique interno sólido que separa independientemente las hijas.",
+        "Reorganiza nuevas cariotecas alrededor de cada lote polar distanciado."
+      ],
+      "correct": 2,
+      "explicacion": "En la Profase, la fragmentación de la carioteca (envoltura nuclear) cumple la función mecánica de liberar el contenido genético directamente hacia el citoplasma circundante, condición indispensable para que el huso pueda contactar y movilizar el ADN posteriormente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se inyecta una enzima que impide el enrollamiento temprano de las moléculas hereditarias, manteniéndolas en su forma laxa natural. ¿Qué riesgo mecánico enfrentará el material genético al intentar ser arrastrado hacia los polos?",
+      "opts": [
+        "Será incapaz de desorganizar la membrana protectora del núcleo intacto.",
+        "Evitará la disyunción prematura manteniendo unidades cromosómicas fusionadas.",
+        "Sufrirá posibles roturas o enredos graves debido a su extrema fragilidad laxa.",
+        "Provocará que la miosina constriña la zona ecuatorial sin separar previamente.",
+        "Acelerará excesivamente su llegada a los polos opuestos del citoplasma esférico."
+      ],
+      "correct": 3,
+      "explicacion": "Para evitar roturas o enredos durante su traslado celular, la cromatina laxa debe condensarse y empaquetarse densamente en cromosomas resistentes (Profase). Si se impide este empaquetamiento protector, arrastrar filamentos laxos provocará rupturas catastróficas del genoma al intentar movilizarlos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante una observación especializada, se nota que las fibras proteicas invaden el área central, buscando anclarse físicamente a los cromosomas. ¿A qué estructura específica lograrán unirse exitosamente estos microtúbulos invasores?",
+      "opts": [
+        "A la envoltura cariotecaria remanente.",
+        "A la pared celular celulósica vegetal.",
+        "A los discos proteicos del cinetocoro.",
+        "Al anillo de actina submembranoso.",
+        "A la membrana plasmática externa."
+      ],
+      "correct": 2,
+      "explicacion": "En la Prometafase, los microtúbulos del huso invaden el área y se unen físicamente a los cinetocoros, que son discos de anclaje especializados ubicados en el centrómero de cada cromosoma. Ninguna otra estructura (anillos o membranas) sirve de anclaje para traccionar cromosomas."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Gracias a la tensión generada por el huso, los cromosomas alcanzan su máximo nivel de ___1___ y logran alinearse perfectamente, constituyendo la característica placa ___2___.",
+      "opts": [
+        [
+          "desenrollamiento",
+          "polar"
+        ],
+        [
+          "duplicación",
+          "periférica"
+        ],
+        [
+          "fragmentación",
+          "lateral"
+        ],
+        [
+          "condensación",
+          "ecuatorial"
+        ],
+        [
+          "estrangulación",
+          "central"
+        ]
+      ],
+      "correct": 3,
+      "explicacion": "En la Metafase, los cromosomas alcanzan su máximo grado de condensación (empaquetamiento) y, debido al equilibrio de tensiones del huso, se alinean ordenadamente en el plano central, formando la placa o línea ecuatorial de la célula."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se analiza una célula en la etapa de separación y se detecta una inhibición en la ruptura de los centrómeros. ¿Qué anomalía anatómica persistirá en la estructura hereditaria debido a este fallo?",
+      "opts": [
+        "Se organizará en cromatina excesivamente descondensada.",
+        "Mantendrá unidas obligatoriamente a sus cromátidas hermanas.",
+        "Perderá sus discos de anclaje microtubular permanentemente.",
+        "Destruirá sus propios centriolos para formar el anillo motor.",
+        "Duplicará su número diploide sin aumentar biomasa celular."
+      ],
+      "correct": 1,
+      "explicacion": "En la Anafase debe ocurrir la disyunción (ruptura) de los cromosomas dobles por el centrómero, independizando a sus cromátidas hermanas. Si el centrómero no se rompe, los cromosomas dobles seguirán anatómicamente unidos, frustrando la repartición equitativa del lote simple hacia los polos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Tras una separación exitosa de cromátidas, una toxina bloquea el acortamiento de los filamentos del aparato traccionador. ¿Qué evento mecánico crítico se verá interrumpido inmediatamente después de la disyunción?",
+      "opts": [
+        "El ensamblaje del anillo en la periferia de la membrana celular.",
+        "La condensación del material laxo en estructuras empaquetadas.",
+        "El arrastre implacable de los genomas hacia los extremos opuestos.",
+        "La fusión de sacos de pectina en el plano central citoplasmático.",
+        "La disolución de la carioteca que protegía el nucleolo original."
+      ],
+      "correct": 2,
+      "explicacion": "Una vez separadas (disyunción anafásica), la tracción depende del acortamiento de las fibras del huso, las cuales arrastran los cromosomas simples hacia los polos opuestos. Al bloquear el acortamiento filamentoso, los cromosomas quedan varados en el centro, interrumpiendo la migración polar vital."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Al finalizar la migración cromosómica, la célula ejecuta procesos que revierten completamente los eventos de las primeras fases de repartición. Evalúe la veracidad de estos eventos restauradores.",
+      "proposiciones": [
+        {
+          "texto": "Los cromosomas empaquetados se descondensan para retornar a su estado laxo original.",
+          "correct": true
+        },
+        {
+          "texto": "El huso acromático se reorganiza para iniciar un segundo estrangulamiento periférico.",
+          "correct": false
+        },
+        {
+          "texto": "Los procesos observados corresponden a eventos funcionalmente contrarios a la profase.",
+          "correct": true
+        }
+      ],
+      "correct": 0,
+      "explicacion": "La Telofase es funcionalmente inversa a la Profase (verdad): los cromosomas compactos se relajan volviendo a ser cromatina laxa (verdad). El huso acromático no se reorganiza para estrangular (eso es función del anillo en citocinesis animal), sino que se desintegra (falso)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Cuando el lote genético alcanza su destino en los polos celulares, el aparato motor se desintegra por completo. ¿Qué estructura membranosa emerge inmediatamente después para proteger el ADN recién distribuido?",
+      "opts": [
+        "Una rígida capa de carbohidratos insolubles.",
+        "Una nueva envoltura protectora nucleocéntrica.",
+        "Una pared celular construida mediante vesículas.",
+        "Una placa ecuatorial compuesta por centriolos.",
+        "Una red contráctil de microfilamentos motores."
+      ],
+      "correct": 1,
+      "explicacion": "En la Telofase, tras llegar a los polos y desaparecer el huso, se ensambla una nueva envoltura nuclear (carioteca) alrededor de cada grupo cromosómico distribuido, aislando y protegiendo el ADN del citoplasma circundante. Las otras opciones son estructuras vegetales o citocinéticas animales, no protectores genómicos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa un tejido celular cultivado que ha finalizado exitosamente la partición de todos sus núcleos, pero retiene una enorme biomasa compartida. ¿Qué fase del proceso celular ha sido omitida experimentalmente?",
+      "opts": [
+        "El desensamblaje genético.",
+        "La formación del huso.",
+        "El corte físico del citoplasma.",
+        "La disyunción de las cromátidas.",
+        "El empaquetamiento del ADN laxo."
+      ],
+      "correct": 2,
+      "explicacion": "Una vez divididos los núcleos (cariocinesis finalizada), el ciclo culmina obligatoriamente con la citocinesis, que es el corte físico del citoplasma y membranas para independizar a las células. Al retener una masa compartida multinucleada, se evidencia la omisión de esta partición anatómica del citoplasma."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al cultivar células provenientes del cuerpo de un vertebrado, se constata que no poseen una pared externa rígida. ¿Qué mecanismo biológico requerirán obligatoriamente estas células para independizarse tras repartir su genoma?",
+      "opts": [
+        "El ensamble progresivo de un andamio interno de celulosa.",
+        "El acortamiento de microtúbulos polares unidos al cinetocoro.",
+        "La expansión centrífuga de múltiples vesículas aglomeradas.",
+        "La formación de un cinturón proteico submembranoso contráctil.",
+        "El empaquetamiento denso del material genético citoplasmático."
+      ],
+      "correct": 3,
+      "explicacion": "Las células animales (vertebrados), al carecer de pared rígida, logran su partición citoplasmática mediante estrangulamiento. Esto exige biológicamente la conformación de un anillo contráctil (cinturón submembranoso) que aplique fuerza mecánica transversal. El andamio interno de celulosa es exclusivo del reino vegetal."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un análisis bioquímico de la zona de estrangulamiento celular detecta la presencia de proteínas que actúan de manera similar a la contracción del músculo humano. Relacione los componentes identificados con su función y naturaleza.",
+      "columnaA": [
+        "1. Fibras del anillo.",
+        "2. Actividad motora.",
+        "3. Mecanismo de fuerza."
+      ],
+      "columnaB": [
+        "a) Interacción biológica microscópica tensora.",
+        "b) Filamentos contráctiles de actina y miosina.",
+        "c) Genera el nivel de tensión necesario para ahorcar."
+      ],
+      "opts": [
+        "1b - 2a - 3c",
+        "1c - 2b - 3a",
+        "1a - 2c - 3b",
+        "1b - 2c - 3a",
+        "1c - 2a - 3b"
+      ],
+      "correct": 0,
+      "explicacion": "El anillo emplea componentes fibrilares (1) compuestos por actina y miosina (b). Su actividad motora (2) radica en la interacción y deslizamiento tensor (a), mientras que este mecanismo (3) genera la tensión mecánica para ahorcar a la célula (c). La relación correcta es 1b, 2a, 3c."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante un seguimiento fotográfico, se nota que el surco de segmentación se profundiza continuamente desde el exterior del plasmalema hacia el interior celular profundo. ¿Qué vector direccional define anatómicamente a este movimiento contráctil?",
+      "opts": [
+        "El avance de dirección predominantemente longitudinal.",
+        "El sentido de progresión de naturaleza centrípeta.",
+        "La dinámica migratoria de características centrífugas.",
+        "La orientación aleatoria hacia polos opuestos del citosol.",
+        "El desplazamiento guiado por crecimiento expansivo periférico."
+      ],
+      "correct": 1,
+      "explicacion": "El estrangulamiento celular animal actúa presionando mecánicamente desde la periferia exterior hacia el centro celular profundo (como ajustar un cinturón), por lo que físicamente posee una dirección o avance de naturaleza centrípeta. Los movimientos expansivos u opuestos describen procesos distintos o vegetales."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se intenta comprimir mecánicamente el ecuador de una célula de hoja para forzar su división, pero la estructura opone resistencia y se quiebra sin deformarse. ¿Por qué es físicamente inviable el estrangulamiento en este linaje celular?",
+      "opts": [
+        "Por la total ausencia de un núcleo diferenciado con envoltura propia.",
+        "Debido a que poseen una coraza estructural inmensamente elástica.",
+        "Por la presencia de una cubierta extremadamente rígida de carbohidratos.",
+        "Debido al acortamiento excesivamente lento de sus filamentos polares.",
+        "Por la inexistencia de vesículas empacadoras en su citoplasma celular."
+      ],
+      "correct": 2,
+      "explicacion": "Las células vegetales están recubiertas por una pared celular de celulosa que es extremadamente rígida. Esta coraza estructural las hace físicamente incapaces de doblarse o estrangularse como lo hacen las células animales sin romperse catastróficamente. Las opciones de elasticidad o ausencia de núcleo son directamente erróneas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Ante la incapacidad física de doblar sus bordes, una célula epidérmica de un tallo en crecimiento comienza a construir un andamio intermedio. ¿Qué solución anatómica erige esta célula para asegurar la partición de su biomasa?",
+      "opts": [
+        "La síntesis masiva de lípidos de membrana mitocondrial difusos.",
+        "La polimerización de un anillo ecuatorial contráctil flexible.",
+        "El ensamblaje de un tabique divisor interno o placa celular.",
+        "La duplicación del material genético sin organizar cromosomas.",
+        "La tracción mecánica centrípeta usando miosina submembranosa."
+      ],
+      "correct": 3,
+      "explicacion": "Al no poder estrangularse debido a su pared rígida, la célula vegetal soluciona el problema de la partición construyendo un tabique divisor interno conocido como fragmoplasto o placa celular. Los distractores como el anillo contráctil, tracción o miosina son exclusividades mecánicas del reino animal."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se analiza químicamente la placa divisoria recién estructurada entre dos nuevas células de raíz. ¿Qué componentes moleculares predominantes conformarán el armazón básico de este nuevo límite tisular?",
+      "opts": [
+        "Únicamente proteínas contráctiles homólogas al tejido muscular.",
+        "Cadenas de nucleótidos sueltas provenientes del centro organizador.",
+        "Vesículas vacías de alta densidad sin componentes metabólicos útiles.",
+        "Fibras microtubulares retraídas remanentes del sistema anafásico.",
+        "Carbohidratos estructurales complejos de matriz como celulosa y pectina."
+      ],
+      "correct": 4,
+      "explicacion": "El fragmoplasto y la futura pared celular que divide a las células vegetales están compuestos fundamentalmente por carbohidratos complejos de origen vegetal, siendo la celulosa y la pectina sus ingredientes principales. Las proteínas contráctiles, nucleótidos y microtúbulos no forman paredes celulares vegetales."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Para lograr erigir el fragmoplasto, la organela despachadora conocida como ___1___ envía una inmensa cantidad de ___2___ que se fusionarán en el plano medio.",
+      "opts": [
+        [
+          "Aparato de Golgi",
+          "vesículas"
+        ],
+        [
+          "Núcleo celular",
+          "cromátidas"
+        ],
+        [
+          "Reticulo liso",
+          "hormonas"
+        ],
+        [
+          "Mitocondria local",
+          "energías"
+        ],
+        [
+          "Centrosoma polar",
+          "microtúbulos"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "El Aparato de Golgi es la organela encargada de actuar como fábrica empaquetadora, despachando vesículas cargadas de materiales (carbohidratos) que viajarán hacia el plano ecuatorial para fusionarse y edificar el tabique divisor. Las demás organelas no tienen esta función vesicular biológica central en la citocinesis."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Observando el desarrollo de un tejido primario en plantas, se nota que la placa intercelular inicia en el corazón celular y avanza expansivamente hacia la periferia. ¿Qué dinámica direccional exhibe este ensamble arquitectónico?",
+      "opts": [
+        "Se detiene al alcanzar el núcleo periférico previamente migrado.",
+        "Avanza mediante un vector espacial de características centrífugas.",
+        "Utiliza un estrangulamiento constrictivo netamente centrípeto.",
+        "Fluye aleatoriamente sin tocar la membrana exterior persistente.",
+        "Retrocede hacia el centro tras contactar con el límite celulósico."
+      ],
+      "correct": 1,
+      "explicacion": "A diferencia del anillo animal, el fragmoplasto vegetal se ensambla iniciando en el centro exacto y crece expansivamente hacia los bordes externos. Este movimiento que huye o se aleja del centro biológico se define espacialmente como dinámico centrífugo. Las características centrípetas o constrictivas aplican en animales."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se analizan los niveles de volumen y biomoléculas en dos cultivos celulares sometidos a tratamientos distintos. El cultivo 1 muestra aumento masivo de organelas sin replicar el genoma; el cultivo 2 replica su información, pero no duplica su organizador polar de tracción. ¿Qué carencia mecánica inmediata afectará a cada cultivo para dividirse?",
+      "opts": [
+        "El cultivo 1 omitirá separar su genoma idéntico, y el cultivo 2 será incapaz de anclar filamentos polares a los cinetocoros.",
+        "El cultivo 1 carecerá de material hereditario para repartir, y el cultivo 2 no podrá ensamblar su huso acromático.",
+        "El cultivo 1 inhibirá su crecimiento metabólico total, y el cultivo 2 no desarrollará una envoltura protectora central.",
+        "El cultivo 1 formará dos placas ecuatoriales funcionales, y el cultivo 2 estrangulará su biomasa en fase centrífuga.",
+        "El cultivo 1 no poseerá energía química suficiente, y el cultivo 2 destruirá sus microtúbulos de anclaje periférico."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El cultivo 1 duplica organelas (G1) pero no replica genoma (falla en S); por tanto, no tiene una copia de material hereditario para repartir. Paso 2: El cultivo 2 replica genoma pero no el organizador polar (centrosoma en S); sin él, no ensambla huso acromático. Paso 3: Al no haber huso, el cultivo 2 no puede traccionar cromosomas. Paso 4: La combinación causal correcta señala carencia de herencia para el primero y falta de huso para el segundo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un paciente sufre una extirpación del 40% del hígado y, paralelamente, un desgarro profundo del músculo esquelético. Tras seis meses, se realiza una biopsia comparativa de ambos sitios lesionados. Considerando la dinámica mitótica, ¿qué resultados histológicos exhibirán ambas muestras?",
+      "opts": [
+        "El hígado formará únicamente tejido de cicatrización; el músculo regenerará masivamente su biomasa previa.",
+        "Ambos órganos desarrollarán cicatrización fibrosa irreversible debido a su alta especialización anatómica celular.",
+        "El hígado restaurará celularmente el volumen perdido; el músculo formará tejido fibroso inerte sin regenerar fibras.",
+        "Ambos órganos proliferarán descontroladamente al evadir todos los puntos de vigilancia restrictivos del organismo.",
+        "El hígado consumirá su energía química remanente en telofase; el músculo bloqueará su huso acromático central."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El hígado posee hepatocitos en Fase G0 temporal, pudiendo salir de su latencia. Paso 2: Al salir, reactivan la mitosis pluricelular para regenerar masivamente el tejido amputado. Paso 3: El músculo esquelético tiene miocitos en Fase G0 permanente irreversible. Paso 4: Al no poder dividirse, el músculo dañado solo se repara con cicatriz fibrosa inerte. La conclusión correcta predice regeneración hepática y fibrosis muscular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un agente toxicológico agota selectivamente el suministro de energía acumulada celular justo antes de la profase. Sabiendo que una etapa del proceso separativo exige desplazar grandes biomasas nucleares desde el ecuador hacia extremos opuestos, ¿qué subproceso puntual fracasará inevitablemente por esta falla de suministro?",
+      "opts": [
+        "La expansión del fragmoplasto divisor expansivo en dirección centrífuga citoplasmática.",
+        "La desorganización laxa paulatina de la envoltura protectora durante el arribo polar.",
+        "El anclaje invasor temprano de los microtúbulos polares sobre las placas del centrómero.",
+        "El arrastre violento de los cromosomas simples tras la disyunción de sus cromátidas.",
+        "La condensación pasiva paulatina del material genético suelto tras romper la carioteca."
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: El agente toxicológico agota el ATP almacenado en Fase G2. Paso 2: La movilización mecánica más violenta de componentes celulares masivos ocurre durante la tracción polar. Paso 3: En la anafase, el acortamiento de fibras debe arrastrar cromosomas simples desde el ecuador a los polos. Paso 4: Sin la gran inversión energética previa de ATP, este arrastre violento o disyunción anatómica migratoria colapsará de inmediato."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se someten cultivos de biomasa dérmica (animal) y radicular (vegetal) a una toxina que neutraliza por completo la fusión vesicular del sistema empaquetador del complejo endomembranoso. ¿Qué fenotipo terminal mostrará experimentalmente cada cultivo al cabo de tres ciclos?",
+      "opts": [
+        "El cultivo dérmico generará múltiples células independientes y el radicular será un único saco celular plurinucleado gigante.",
+        "Ambos cultivos lograrán estrangular su biomasa centrípetamente porque conservan proteínas motoras contráctiles intactas.",
+        "El cultivo dérmico inhibirá su cariocinesis prematuramente y el radicular ensamblará un andamio compuesto por miosinas.",
+        "Ambos cultivos formarán tabiques divisores parciales utilizando enzimas dependientes de ciclinas presentes en citoplasma.",
+        "El cultivo dérmico se detendrá en fase metabólica latente G0 y el radicular destruirá su rígida cubierta carbohidratada externa."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: La toxina bloquea la fusión de vesículas del Aparato de Golgi. Paso 2: La citocinesis animal (tejido dérmico) usa un anillo de actina/miosina contráctil, por lo que no depende de vesículas y completará su división. Paso 3: La citocinesis vegetal (radicular) requiere obligatoriamente vesículas de Golgi para ensamblar el fragmoplasto centrífugo. Paso 4: Al inhibirse las vesículas, la célula vegetal no dividirá su citoplasma, convirtiéndose en una masa gigante plurinucleada compartida."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un científico altera genéticamente la estructura proteica de anclaje ubicada en la cintura del cromosoma, imposibilitando la conexión, ¿cuál será la primera consecuencia morfológica directa e inmediata observada bajo el microscopio?",
+      "opts": [
+        "La desintegración espontánea de toda la red contráctil de actina.",
+        "El fracaso al intentar formar la alineación de la placa ecuatorial.",
+        "El engrosamiento desmedido de la pared de celulosa circundante.",
+        "La condensación inmediata de todos los nucleótidos citosólicos.",
+        "El avance expansivo del tabique intermedio hacia la membrana."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: La estructura de anclaje proteico es el cinetocoro, situado en el centrómero. Paso 2: En la prometafase, el huso debe unirse al cinetocoro para aplicar tensión mecánica. Paso 3: La tensión equilibrada de las fibras empuja y alinea a los cromosomas al centro celular. Paso 4: Si es imposible conectar las fibras, la tensión no existe y los cromosomas no podrán formar la placa ecuatorial de metafase."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se desarrolla un químico citostático que interrumpe de forma altamente específica la desorganización de envolturas membranosas internas preexistentes, sin afectar sistemas enzimáticos ni organelas. ¿Qué etapa exacta de todo el conjunto de eventos quedará paralizada indefinidamente?",
+      "opts": [
+        "El crecimiento general originado al iniciar el primer intervalo intermitótico celular.",
+        "La migración anafásica centrífuga que asegura la distribución de material heredable.",
+        "La subfase de síntesis obligatoria de macromoléculas de información de cadena doble.",
+        "La cariocinesis inicial que requiere fragmentar la estructura que aísla los cromosomas.",
+        "El proceso de estrangulamiento periférico originado por tensión mecánica citoplasmática."
+      ],
+      "correct": 3,
+      "explicacion": "Paso 1: El químico bloquea específicamente la desorganización de membranas protectoras internas (carioteca). Paso 2: La desorganización de la carioteca es el evento inaugural crítico de la profase mitótica. Paso 3: Sin fragmentar esta envoltura, los cromosomas quedan atrapados e incomunicados del citoplasma. Paso 4: Esto paraliza irreversiblemente la etapa inicial de cariocinesis, impidiendo que el huso contacte el genoma."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al investigar el cáncer de colon, se encuentra un tumor donde las células omiten biológicamente la verificación de la integridad de su ADN replicado antes de iniciar su reparto orgánico. ¿Qué componentes se hallan funcionalmente averiados en la maquinaria de esta neoplasia?",
+      "opts": [
+        "Los anillos musculares contráctiles.",
+        "Los puntos de control de vigilancia.",
+        "Las gruesas placas de hemicelulosa.",
+        "Los microtúbulos polares invasores.",
+        "Las vesículas de transporte ecuatorial."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: Antes de iniciar la repartición (mitosis), la célula debe verificar obligatoriamente la integridad de su genoma tras la fase S. Paso 2: Esta evaluación biológica de calidad depende de mecanismos de vigilancia interna. Paso 3: Estos mecanismos se conocen formalmente como puntos de control celular (con apoyo de CDK). Paso 4: Al omitir la revisión y avanzar con daños, se deduce directamente una avería funcional de los puntos de control."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante postula que al administrar inhibidores específicos de microfilamentos motores, una célula de algarrobo (vegetal superior) sufrirá un colapso en su división celular análogo al de una célula humana. ¿Por qué es falsa esta extrapolación comparativa?",
+      "opts": [
+        "Porque los microfilamentos motores del algarrobo requieren un ambiente netamente hipotónico.",
+        "Porque la muestra humana genera husos acromáticos empleando vesículas secretoras vacías.",
+        "Porque el tejido de algarrobo completa su citocinesis mediante síntesis expansiva, sin motores.",
+        "Porque la muestra humana detiene siempre su mitosis antes de condensar la cromatina laxa.",
+        "Porque el tejido de algarrobo reemplaza sus organelas empleando un cordón contráctil polar."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Los microfilamentos motores (actina y miosina) se utilizan para el estrangulamiento citoplasmático en células animales (humanas). Paso 2: El algarrobo es vegetal superior, posee pared de celulosa y no puede estrangularse. Paso 3: La célula vegetal divide su citoplasma ensamblando un fragmoplasto vesicular de forma centrífuga expansiva. Paso 4: Por tanto, inhibir filamentos motores ahogaría a la célula humana, pero resultaría inocuo para el mecanismo expansivo del algarrobo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un protocolo experimental in vitro se induce un bloqueo total de las proteínas cinasas justo tras culminar el primer intervalo de la interfase. Considerando el rol regulador estricto, ¿cuál será el estado fenotípico de estas células tras 72 horas de incubación ininterrumpida?",
+      "opts": [
+        "Presentarán una biomasa enorme pero su material hereditario será de tipo simple y sin duplicar.",
+        "Completarán varias divisiones de reducción y originarán organismos microscópicos unicelulares.",
+        "Exhibirán numerosos fragmoplastos paralelos en su matriz por repetición de fases centrífugas.",
+        "Acelerarán inusualmente el desenrollamiento de la cromatina polar en cada compartimento núcleo.",
+        "Condensarán irreversiblemente todo el adenilato almacenado provocando ruptura submembranosa."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Las CDK regulan el avance entre fases. Paso 2: El bloqueo inducido ocurre justo tras terminar G1 (el primer intervalo de crecimiento de biomasa). Paso 3: Sin autorización de las CDK, la célula no puede avanzar hacia la Fase S. Paso 4: En consecuencia, la célula se estanca con gran biomasa (lograda en G1) pero con ADN simple, incapaz de duplicar su genoma para la futura repartición celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la formación de la placa de división en un tejido meristemático aislado, se introduce una molécula química que altera la orientación espacial natural del ensamble. En lugar de alejarse del corazón orgánico, las unidades fluyen hacia él. ¿Qué vector cinético alterado describe este fenómeno anómalo?",
+      "opts": [
+        "Crecimiento expansivo de flujo bidireccional asimétrico.",
+        "Desplazamiento motorizado en vector de escape radical.",
+        "Movimiento expansivo que fluye en sentido netamente centrífugo.",
+        "Constricción mecánica submembranosa análoga a células dérmicas.",
+        "Movimiento que se invirtió hacia una dirección o flujo centrípeto."
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: Normalmente, la placa vegetal (fragmoplasto) crece del centro hacia fuera, exhibiendo movimiento expansivo centrífugo. Paso 2: La molécula altera el ensamble forzando que las unidades fluyan en reversa, desde los bordes hacia el corazón de la célula. Paso 3: Todo movimiento direccional convergente o presionante que se dirige hacia el centro exacto se define espacialmente como dirección o vector de flujo centrípeto."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un cultivo de células animales asíncronas, se administra un potente fluorocromo que emite intensa luz únicamente al unirse a grandes reservas de adenosina. ¿Qué fase del ciclo manifestará la luminiscencia biológica de mayor intensidad transitoria en el sistema?",
+      "opts": [
+        "El periodo metabólico especializado irreversible y no proliferativo celular G0.",
+        "El último preparativo energético previo a la inminente partición cromosómica G2.",
+        "El segmento específico de disyunción de las estructuras condensadas en polos.",
+        "El estado biológico inaugural de duplicación masiva organelar del primer intervalo.",
+        "La subfase netamente responsable de replicar fidedignamente la carga genética S."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El fluorocromo se une a grandes reservas de adenosina (ATP). Paso 2: El ciclo biológico presenta una subfase enfocada casi exclusivamente en producir y almacenar abrumadoras cantidades de reservas energéticas para uso mecánico. Paso 3: Esta etapa es el último preparativo metabólico antes de dividir, la fase G2. Paso 4: Por ello, las células en G2 presentarán la mayor saturación temporal de molécula emisora."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis de la cariocinesis de un tejido eucariota arroja los siguientes datos: una membrana protectora desorganizada, ausencia total del huso unificador sobre el material empaquetado, y cromosomas que no sufren desgarro anatómico a nivel centromérico. Considerando la secuencia estándar normal, ¿qué eventos específicos no han ocurrido aún?",
+      "opts": [
+        "No han ocurrido ni la prometafase invasora ni la ruptura anafásica centrífuga equitativa.",
+        "No se experimentó el acortamiento de microtúbulos polares telofásicos durante la síntesis.",
+        "No se ensambló el fragmoplasto de pectina necesario para generar tracción intercromosómica.",
+        "No se logró la condensación laxa temprana, evitando así la disyunción mecánica prometáfasica.",
+        "No se detuvo el ciclo de crecimiento en G1, evadiendo la replicación de material hereditario doble."
+      ],
+      "correct": 0,
+      "explicacion": "Paso 1: Membrana desorganizada y cromosomas empaquetados indican que la Profase ya culminó. Paso 2: Ausencia del huso anclado significa que la invasión microtubular sobre el cinetocoro de Prometafase no ha ocurrido. Paso 3: Los cromosomas intactos sin desgarro centromérico (disyunción) confirman que la Anafase no se ha dado. Paso 4: La deducción correcta concluye la omisión temporal de los eventos de la prometafase y la disyunción anafásica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se estudian organismos acuáticos unicelulares que sufren cortes periódicos intencionales de su biomasa externa. Sorprendentemente, logran subsistir y reparar el daño sin que ello implique la creación de nuevos organismos independientes para su población. ¿Por qué esto representa una desviación metabólica del patrón esperado para su linaje?",
+      "opts": [
+        "Porque los organismos eucariotas complejos pluricelulares emplean este corte únicamente para generar latencia poblacional.",
+        "Porque, biológicamente, su única respuesta mitótica posible consiste en la proliferación mediante regeneración de tejidos completos.",
+        "Porque para los seres unicelulares primitivos eucariotas, todo mecanismo mitótico actúa universalmente como reproducción poblacional.",
+        "Porque los filamentos del anillo de este sistema orgánico acuático requieren pared celulósica rígida para lograr el estrangulamiento.",
+        "Porque carecen de centrosomas provistos de centriolos animales, obligando a emplear miosina durante el transporte del lote hereditario."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El organismo estudiado es unicelular eucariota. Paso 2: En la biología estándar, el individuo unicelular se divide por completo durante cada evento mitótico. Paso 3: Por tanto, la mitosis unicelular siempre representa biológicamente su mecanismo de reproducción asexual poblacional, incrementando la densidad de organismos completos. Paso 4: Al subsistir y reparar partes corporales sin reproducir un individuo nuevo, se desvían de este axioma, comportándose extrañamente como células de un pluricelular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un científico diseña una sonda sintética programada para unirse y degradar toda la reserva celular de histonas de un cultivo que acaba de culminar G2, ¿qué evento anatómico visible bajo microscopio en las siguientes horas fracasará inevitablemente por la disfunción de estos componentes?",
+      "opts": [
+        "El desensamblaje precoz y brusco de la membrana celular exterior periférica animal.",
+        "El empaquetamiento fuertemente condicionado de la macromolécula genética suelta.",
+        "El corte transversal neto por estrangulamiento dirigido hacia el foco de la organela.",
+        "El arrastre violento de los lotes cromosómicos ecuatoriales hacia los polos opuestos.",
+        "El ensamble bioquímico intermedio que formará la rígida pared de carbohidratos."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El cultivo acaba de culminar la interfase G2 y debe entrar al primer evento de cariocinesis (Profase). Paso 2: La Profase exige condensar y empaquetar fuertemente el ADN laxo (cromatina) para movilizarlo sin daño. Paso 3: El empaquetamiento estructural del ADN depende de asociarse con proteínas especializadas (las histonas que conforman la cromatina nucleosómica). Paso 4: Sin histonas, la célula es incapaz de enrollar y compactar su información genética visible, paralizando la condensación temprana del material suelto."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante un experimento metabólico combinado, se fusiona el citoplasma de una célula en fase de síntesis activa con el de otra ubicada en estado de quiescencia temporal (G0). Considerando la estricta dinámica reguladora del ciclo biológico normal, ¿qué respuesta adaptativa primaria inducirán las moléculas reguladoras transferidas sobre el genoma estacionario?",
+      "opts": [
+        "Inducirán al núcleo en reposo a experimentar inmediatamente una disyunción anafásica centrífuga con su propio componente motor.",
+        "Frustrarán toda actividad proliferativa bloqueando para siempre la capacidad regenerativa latente de su estructura pluricelular.",
+        "Generarán una condensación inmediata extrema sin requerir síntesis proteica debido a la asimilación agresiva de macromoléculas celulósicas.",
+        "Provocarán que la carga hereditaria inactiva sufra un empaquetamiento polar traccionado empleando microtúbulos libres asincrónicos.",
+        "Forzarán a la célula previamente inactiva a reactivar su progresión y encender biológicamente los procesos de replicación celular."
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: La célula 1 está en Fase S activa (posee altos niveles de factores promotores CDK encargados de avanzar). La célula 2 está en Fase G0 temporal (latencia). Paso 2: Al fusionarse los citoplasmas, las enzimas maestras CDK de la célula 1 difunden hacia el núcleo estacionario de la 2. Paso 3: Los factores reguladores imponen el ritmo metabólico general del ciclo. Paso 4: Esta cascada enzimática forzará a la célula inactiva a salir de la latencia y reactivar su ciclo, encendiendo su propia maquinaria de replicación genética obligada."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se aísla un clon mutante que ensambla erróneamente un tabique de estrangulamiento constrictivo justo debajo de su envoltura ecuatorial externa, pero, por su estatus biológico evolutivo superior, también es capaz de empaquetar vesículas de carbohidratos en su región central. ¿Cuál será la resolución física de su citocinesis y por qué?",
+      "opts": [
+        "El clon se estrangulará exitosamente de forma centrípeta empleando su tabique constrictivo flexible, sin requerir las vesículas empaquetadas.",
+        "Su tabique centrípeto fracasará por la rigidez subyacente y dependerá biológicamente del fragmoplasto de flujo expansivo centrífugo.",
+        "Acelerará enormemente su partición celular gracias a la sumatoria física cooperativa entre su constricción motora periférica y su placa vesicular.",
+        "Consumirá irreversiblemente todas las moléculas energéticas ATP disponibles antes de lograr siquiera organizar la placa o el andamio constrictivo motor.",
+        "Romperá tempranamente su membrana plasmática protectora por exceso de tracción interna, matando a las descendientes diploides inestables originadas."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El clon empaqueta vesículas de carbohidratos (celulosa/pectina), característica inequívoca de célula vegetal provista de pared rígida inflexible. Paso 2: Esta rigidez extrema hace mecánicamente inviable deformar la célula desde la periferia externa. Paso 3: Aunque posea erróneamente un tabique contráctil mutante animal, la fuerza tensional centrípeta jamás logrará vencer ni ahogar la coraza de celulosa sin destruir la célula. Paso 4: Por tanto, la constricción colapsará y la célula dependerá obligatoriamente de la funcionalidad biológica de su placa interna (fragmoplasto) en dirección centrífuga para lograr partición."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis temporal de dos cultivos idénticos determina que la población 'A' exhibe cromátidas hermanas fuertemente adheridas en el plano medio; y la población 'B' presenta núcleos reorganizados alrededor de filamentos difusos laxos recién relajados en los extremos. A nivel de requerimientos biológicos específicos, ¿qué demanda prioritaria exigen estas poblaciones para consumar su meta evolutiva en los siguientes instantes?",
+      "opts": [
+        "Ambas poblaciones exigen duplicar abrumadoramente sus organelas citosólicas.",
+        "La primera demanda síntesis de macromolécula, la segunda disyunción de discos.",
+        "La primera demanda tracción de microtúbulos polar, la segunda corte citosólico.",
+        "Ambas demandan un ingreso voluntario masivo hacia el periodo de reposo celular.",
+        "La primera demanda condensar el material laxo central, la segunda empaquetarlo."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: Población A tiene cromosomas alineados (Metafase); el evento inmediato siguiente es la disyunción y migración a los polos (Anafase). Paso 2: Esta migración exige obligatoriamente tracción mediante acortamiento de microtúbulos polares. Paso 3: Población B ya tiene núcleos reorganizados con material laxo en polos (Telofase finalizada); su evento final obligado es partir su matriz periférica. Paso 4: Esta partición exige mecánicamente el corte biológico de su volumen (citocinesis). La coincidencia relaciona metafísica de migración con partición estructural final."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante un experimento para evaluar la disyunción mecánica polar intracromosómica, se emplean dosis controladas de compuestos que cristalizan reversiblemente el polímero tubular acromático e impiden su contracción retráctil una vez este contacta la zona cinetocórica. Si este cristalizador se aplica de forma temprana sin remoción alguna a células que ingresan recién al estado profásico del ciclo generacional biológico, ¿qué consecuencia estructural observable revelará este linaje en sus etapas de desarrollo subsecuentes?",
+      "opts": [
+        "Invertirá su cinética migratoria, fluyendo desde regiones ecuatoriales del citosol hacia el área interna central para fusionar los genes.",
+        "Mantendrá unidas las hebras de información duplicadas alineadas sobre el ecuador sin poder arrastrarlas a polos distantes de la cámara.",
+        "Consumirá todo su suministro acumulativo de compuesto altamente energético, sin conseguir disgregar biológicamente la membrana protectora.",
+        "Duplicará inusualmente el volumen celular animal para poder formar anillos contráctiles paralelos asincrónicos sin intervención polar motora.",
+        "Condensará sus largos hilos relajados descontroladamente pero será absolutamente incapaz de disolver la carioteca pre-división celular original."
+      ],
+      "correct": 1,
+      "explicacion": "Paso 1: El compuesto cristaliza y paraliza la capacidad de contracción/acortamiento de los microtúbulos del huso acromático una vez contactan el disco (cinetocoro). Paso 2: Las células ingresan a Profase (desorganizan núcleo, condensan cromatina) de manera normal y avanzan. Paso 3: En Prometafase/Metafase logran contactar los cinetocoros y alinear al centro, pero los microtúbulos ya están cristalizados e incapaces de ejercer retracción violenta por su acortamiento mecánico. Paso 4: Por tanto, llegada la Anafase, la tensión requerida no ocurre; las cromátidas duplicadas hermanas quedan varadas e inmovilizadas en el ecuador, incapaces de arrastrarse hacia los polos celulares correspondientes."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se observa in vivo un evento atípico de citocinesis en tejidos dérmicos provenientes de un individuo adulto eucariota sano: una vez divididos los lotes genómicos nucleares diploides aislados, la célula madre genera de forma simultánea múltiples surcos estranguladores que cortan transversal y asimétricamente el cuerpo principal, generando cuatro células descendientes con volúmenes variables. Si se sabe que este tejido conserva un ciclo normal estricto sin alteraciones genéticas hereditarias preexistentes, ¿qué componente organizador metabólico fue anómalamente múltiple durante las fases preparatorias previas del experimento y por qué originó este evento inusual de partición multiaxial simultánea?",
+      "opts": [
+        "Debido a que la célula omitió la fase G0 y sobrecargó la matriz de ciclinas reguladoras de flujo interfasico expansivo.",
+        "Porque los filamentos del anillo de actina no consumieron el suministro energético masivo reservado durante el intervalo G2.",
+        "Puesto que la célula debió replicar erróneamente más de un centro organizador (centrosoma) durante la subfase de síntesis.",
+        "Porque las membranas del complejo dictiosoma vesicular generaron placas de carbohidrato rígidas en regiones asincrónicas.",
+        "Dado que el genoma original de cromatina en estado laxo fue truncado aleatoriamente por la carencia de factores enzimáticos."
+      ],
+      "correct": 2,
+      "explicacion": "Paso 1: El tejido animal (dérmico) se divide empleando surcos de segmentación por anillos submembranosos guiados geométricamente por el eje longitudinal del huso. Paso 2: El huso bipolar normal se estructura gracias a que durante la Fase S se duplica exactamente un centrosoma (quedando dos centros organizadores). Paso 3: Si se formaron anormalmente múltiples surcos simultáneos de estrangulamiento traccionado asimétrico, existían múltiples ejes organizadores. Paso 4: Esto evidencia un error previo en interfase (Fase S), donde la maquinaria replicó aberrantemente más de un centrosoma polar, originando husos multipolares caóticos y múltiples particiones del tejido."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Si un equipo somete un linaje vegetal pluricelular fotosintético inmaduro a un choque calórico extremo y prolongado durante su subfase de acumulación energética primaria G1 celular, frustrando permanentemente la capacidad bioquímica estructural productora y sintética sin inducir muerte directa del material, ¿qué impedimento biológico central evitará la perpetuación final reproductiva de su material celular hereditario de cadena doble mediante cariocinesis en los próximos instantes del ensayo biológico?",
+      "opts": [
+        "Serán incapacitados de originar un anillo de tracción anafásica centrífuga con dirección centrípeta animal transmembranosa.",
+        "No podrán condensar visiblemente los cromosomas largos en metafase porque carecen de histonas empaquetadoras en el nucleolo.",
+        "La carencia de duplicación organelar paralizará el incremento del volumen y biomasa intermitótica limitando el soporte tisular general.",
+        "Carecerán del armazón estructural proteico de reserva indispensable para poder iniciar y sostener la separación violenta polar tardía.",
+        "La ausencia general de materia prima estructural impedirá fundamentalmente copiar su genoma diploide central de manera idéntica."
+      ],
+      "correct": 4,
+      "explicacion": "Paso 1: El choque frustra permanentemente la capacidad sintética constructora masiva durante la subfase de primer crecimiento G1. Paso 2: Aunque esto paraliza el volumen organelar y la biomasa periférica, el ciclo obliga a atravesar secuencialmente etapas subsiguientes dependientes. Paso 3: El impedimento biológico celular central reproductivo de este fallo recae sobre la Fase S obligatoria e inmediata. Paso 4: Sin la materia prima estructural sintetizada en G1 (nucleótidos, enzimas, andamios), la maquinaria será biológicamente incapaz de copiar/replicar fidedignamente su genoma central de cadena doble en fase de síntesis, deteniendo catastróficamente toda posibilidad posterior de mitosis o cariocinesis por falta de material duplicado equitativamente asegurable."
     }
   ]
 }

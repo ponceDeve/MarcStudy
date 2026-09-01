@@ -3,172 +3,319 @@
   "tema": "Virus",
   "glosario": {
     "Virus": "Estructura biológica acelular e infecciosa.",
-    "Virión": "Partícula viral infecciosa en estado extracelular.",
-    "Cápside": "Cubierta de proteínas que protege el genoma.",
-    "Capsómero": "Subunidad proteica que forma la cápside.",
-    "Espícula": "Estructura viral externa para adhesión celular.",
-    "Genoma": "Material genético de un virus u organismo.",
+    "Virión": "Partícula viral infecciosa extracelular.",
+    "Cápside": "Cubierta proteica que protege el genoma.",
+    "Capsómero": "Subunidad proteica de la cápside.",
+    "Espícula": "Estructura externa viral para adhesión celular.",
+    "Genoma": "Material genético de un organismo o virus.",
     "Latencia": "Estado inactivo del virus en la célula.",
     "Tropismo": "Afinidad viral por un tejido u órgano.",
-    "Lentivirus": "Género de virus de periodo de incubación largo.",
-    "Retrotranscriptasa": "Enzima que sintetiza ADN a partir de ARN.",
+    "Lentivirus": "Virus de incubación prolongada.",
+    "Retrotranscriptasa": "Enzima que produce ADN a partir de ARN.",
     "Adsorción": "Fijación inicial del virus a la célula.",
-    "=": "Define",
-    "→": "Produce",
-    "∈": "Pertenece",
-    "⊃": "Contiene",
-    "✓": "Requiere",
-    "⇒": "Causa",
-    "≠": "Diferente"
+    "Bacteriófago": "Virus que infecta exclusivamente bacterias.",
+    "Endocitosis": "Entrada de sustancias mediante la membrana celular.",
+    "Lisis": "Ruptura celular que provoca su muerte."
   },
   "theory": [
     {
-      "titulo": "Definición y Características Generales",
+      "titulo": "Definición Viral",
       "puntos": [
         {
           "texto": "Virus = sustancia venenosa.",
-          "explicacion": "Etimológicamente, la palabra virus proviene del latín y significa veneno o toxina. Antes del desarrollo de la virología moderna, los científicos usaban este término para describir cualquier agente infeccioso líquido que causaba enfermedades."
+          "explicacion": "Etimológicamente, la palabra proviene del latín y significa veneno o toxina[cite: 1]. Antes del desarrollo de la virología moderna, los científicos usaban este término para describir cualquier agente infeccioso líquido[cite: 1]."
         },
         {
-          "texto": "Virus → descubiertos por Ivanowski.",
-          "explicacion": "Dmitri Ivanowski fue un biólogo ruso que en 1892 demostró que el agente causante de la enfermedad del mosaico del tabaco podía atravesar filtros diseñados para retener bacterias. Este experimento marcó el descubrimiento del primer virus."
+          "texto": "Virus ✗ metabolismo propio.",
+          "explicacion": "Al ser entidades acelulares, carecen de las enzimas y organelas necesarias para generar energía o sintetizar proteínas, por lo que dependen obligatoriamente de una célula hospedera para multiplicarse."
+        },
+        {
+          "texto": "Virus → descubiertos por Dmitri Ivanowski.",
+          "explicacion": "Este biólogo ruso demostró en 1892 que el agente causante de la enfermedad del mosaico del tabaco podía atravesar filtros diseñados para retener bacterias[cite: 1]. Este experimento histórico marcó el descubrimiento del primer agente viral[cite: 1]."
         },
         {
           "texto": "Virus = 20 a 300 nm.",
-          "explicacion": "Los virus son agentes submicroscópicos, cuyo tamaño habitual oscila entre los 20 y 300 nanómetros. Su diminuto tamaño es la razón por la cual no pueden ser retenidos por los filtros bacteriológicos comunes."
+          "explicacion": "Son agentes submicroscópicos que se miden en nanómetros, un tamaño extremadamente diminuto que explica por qué no pueden ser retenidos por los filtros bacteriológicos comunes en los laboratorios[cite: 1]."
         },
         {
           "texto": "Virus ✓ microscopio electrónico.",
-          "explicacion": "Debido a que su tamaño en el rango de los nanómetros es menor que la longitud de onda de la luz visible, los virus no pueden verse con un microscopio óptico tradicional y requieren la alta resolución del microscopio electrónico."
+          "explicacion": "Debido a que su tamaño en el rango nanométrico es menor que la longitud de onda de la luz visible, no pueden verse con instrumentos ópticos tradicionales y exigen alta resolución electrónica para su estudio[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Composición General",
+      "puntos": [
+        {
+          "texto": "Virus = proteínas + ácido nucleico.",
+          "explicacion": "Todos están conformados estructuralmente por un genoma molecular que contiene la información genética esencial, rodeado y protegido por una resistente cubierta de proteínas llamada cápside[cite: 1]."
         },
         {
-          "texto": "Virus = proteínas y ácido nucleico.",
-          "explicacion": "Todos los virus están conformados por un genoma o ácido nucleico que contiene la información genética, rodeado y protegido por una cubierta de proteínas llamada cápside, formando juntos una estructura supramolecular."
+          "texto": "ADN = Ácido Desoxirribonucleico.",
+          "explicacion": "Es la macromolécula biológica estructurada en doble hélice que almacena de forma estable las instrucciones genéticas de la mayoría de los seres vivos y de ciertos patógenos virales."
         },
         {
-          "texto": "Genoma viral = ADN o ARN.",
-          "explicacion": "A diferencia de las células que poseen ambos ácidos nucleicos, un virus contiene solo un tipo de ácido nucleico como su genoma, el cual puede ser ADN o ARN, pero nunca ambos al mismo tiempo."
+          "texto": "ARN = Ácido Ribonucleico.",
+          "explicacion": "Es una macromolécula, habitualmente de cadena sencilla, que interviene en la síntesis proteica celular y funciona como el único material genético en diversos agentes infecciosos."
+        },
+        {
+          "texto": "Genoma viral ⊃ único ácido nucleico.",
+          "explicacion": "A diferencia de las células biológicas que poseen ambos materiales genéticos, un patógeno viral contiene solo un tipo específico como su genoma, pudiendo ser ADN o ARN, pero nunca ambos a la vez[cite: 1]."
         },
         {
           "texto": "Virión = forma viral extracelular.",
-          "explicacion": "Se denomina virión a la partícula viral completa e infecciosa cuando se encuentra libre en el medio extracelular antes de invadir una célula hospedera, funcionando como vehículo de transporte para el genoma."
+          "explicacion": "Se denomina así a la partícula completa e infecciosa cuando se encuentra libre en el medio externo antes de invadir una célula hospedera, funcionando estrictamente como vehículo de transporte genómico[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Estructura Viral",
+      "titulo": "Conformación Estructural",
       "puntos": [
         {
           "texto": "Cápside = envoltura proteica.",
-          "explicacion": "La cápside es la cubierta de naturaleza proteica que encierra y protege al genoma viral. Además de brindar protección, en los virus desnudos participa directamente en el reconocimiento de la célula hospedera."
+          "explicacion": "Constituye la cubierta estructural interna que encierra y aísla al genoma viral[cite: 1]. En los patógenos que carecen de capas adicionales, participa directamente en el reconocimiento de la membrana de la célula hospedera[cite: 1]."
         },
         {
-          "texto": "Capsómeros = unidades de la cápside.",
-          "explicacion": "La cápside no es continua, sino que está formada por el ensamblaje de múltiples subunidades proteicas idénticas denominadas capsómeros. Su disposición geométrica determina la simetría estructural del virus."
+          "texto": "Capsómeros = subunidades de cápside.",
+          "explicacion": "La cubierta protectora no es una pieza continua, sino que resulta del ensamblaje repetitivo de múltiples bloques proteicos idénticos[cite: 1]. La disposición geométrica de estas piezas determina la simetría final[cite: 1]."
         },
         {
-          "texto": "Forma icosaédrica = poliedro.",
-          "explicacion": "La simetría icosaédrica le da al virus la apariencia de un poliedro regular con 20 caras triangulares. Es una de las formas geométricas más eficientes para crear un espacio cerrado resistente a partir de subunidades."
+          "texto": "Forma icosaédrica = poliedro regular.",
+          "explicacion": "Esta simetría le otorga la apariencia de un poliedro con 20 caras triangulares[cite: 1]. Es matemáticamente una de las formas volumétricas más eficientes para crear un espacio cerrado resistente minimizando el gasto de material biológico[cite: 1]."
         },
         {
-          "texto": "Envoltura = lípidos y glúcidos.",
-          "explicacion": "Algunos virus poseen por encima de la cápside una envoltura adicional compuesta principalmente por una bicapa de lípidos y glúcidos. Esta estructura es adquirida de la membrana de la célula hospedera durante la liberación."
+          "texto": "Simetría helicoidal = forma cilíndrica.",
+          "explicacion": "En esta configuración, los bloques proteicos se organizan en espiral alrededor del ácido nucleico central formando un tubo hueco, característica observable en el agente del mosaico del tabaco."
+        },
+        {
+          "texto": "Envoltura viral ⊃ lípidos + glúcidos.",
+          "explicacion": "Algunos patógenos poseen por encima de su cápside una capa adicional compuesta principalmente por una bicapa fosfolipídica y carbohidratos[cite: 1]. Esta membrana externa es adquirida por gemación desde la célula infectada al momento de la liberación[cite: 1]."
+        },
+        {
+          "texto": "Virus desnudos ✗ envoltura lipídica.",
+          "explicacion": "Son aquellos que únicamente poseen su nucleocápside. Al no tener la membrana lipídica externa, suelen ser considerablemente más resistentes a las condiciones ambientales extremas y a la acción de detergentes comunes."
         },
         {
           "texto": "Espículas ∈ envoltura viral.",
-          "explicacion": "Las espículas son proyecciones glicoproteicas que sobresalen de la envoltura viral. Actúan como llaves moleculares que reconocen y se unen específicamente a los receptores de la célula que van a infectar."
+          "explicacion": "Son proyecciones sobresalientes de naturaleza glicoproteica ancladas en la superficie externa[cite: 1]. Actúan fisiológicamente como llaves moleculares que reconocen y se unen de forma específica a los receptores de la célula diana[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Etapas y Consecuencias de la Infección",
+      "titulo": "Proceso de Infección",
       "puntos": [
         {
-          "texto": "Etapa 1 = Fijación o adsorción.",
-          "explicacion": "La fijación, también llamada adsorción, es el primer paso del ciclo viral. Ocurre cuando las proteínas de superficie del virus reconocen y se adhieren específicamente a los receptores de la membrana de la célula hospedera."
+          "texto": "Etapa inicial = adsorción.",
+          "explicacion": "También llamada fijación, ocurre cuando las proteínas de superficie del agente infeccioso reconocen químicamente y se adhieren con alta especificidad a los receptores presentes en la membrana de la célula hospedera[cite: 1]."
         },
         {
-          "texto": "Etapa 3 = Replicación del genoma.",
-          "explicacion": "Una vez que el material genético viral ingresa a la célula, comienza la replicación. En esta fase, la maquinaria celular es secuestrada para producir múltiples copias idénticas del genoma del virus."
+          "texto": "Segunda etapa = penetración.",
+          "explicacion": "Fase donde el material genético logra ingresar al citoplasma celular. Dependiendo del tipo de agente, puede ocurrir inyectando únicamente el ácido nucleico o ingresando toda la cápside por procesos de endocitosis o fusión de membranas."
+        },
+        {
+          "texto": "Tercera etapa = replicación genómica.",
+          "explicacion": "Una vez liberado el material genético en el interior celular, la maquinaria bioquímica del huésped es secuestrada forzosamente para producir rápidamente múltiples copias idénticas del genoma invasor y sus proteínas estructurales[cite: 1]."
+        },
+        {
+          "texto": "Cuarta etapa = ensamblaje.",
+          "explicacion": "Las nuevas copias del genoma y las subunidades proteicas sintetizadas se agrupan espontáneamente en el citoplasma celular para construir las estructuras tridimensionales de los nuevos viriones completos."
+        },
+        {
+          "texto": "Etapa final = liberación.",
+          "explicacion": "Las nuevas partículas infecciosas ensambladas abandonan la célula hospedera para propagar la infección, pudiendo salir de forma gradual mediante gemación o abruptamente provocando la lisis celular."
+        }
+      ]
+    },
+    {
+      "titulo": "Ciclos de Multiplicación",
+      "puntos": [
+        {
+          "texto": "Ciclo lítico ⇒ destrucción celular.",
+          "explicacion": "Es el mecanismo activo donde la rápida replicación y posterior liberación masiva de viriones provoca inevitablemente la ruptura de la membrana plasmática, terminando con la muerte inmediata de la célula hospedera."
         },
         {
           "texto": "Fase lisogénica = ADN viral acoplado.",
-          "explicacion": "En el ciclo lisogénico, el virus no destruye la célula inmediatamente. Su genoma de ADN se integra al genoma de la célula hospedera pasando a denominarse provirus o profago, manteniéndose en estado inactivo."
+          "explicacion": "En esta vía alternativa, el agente no destruye la célula inmediatamente tras ingresar[cite: 1]. Su genoma se integra físicamente al genoma del huésped, pasando a denominarse provirus o profago, y se mantiene en estado bioquímicamente inactivo[cite: 1]."
         },
         {
           "texto": "Fase lisogénica → latencia.",
-          "explicacion": "Como resultado de la integración del ADN viral, la infección entra en un periodo de latencia. Durante este tiempo, el virus permanece asintomático y se duplica silenciosamente junto con la división celular del huésped."
+          "explicacion": "Como resultado directo de la integración cromosómica, la infección entra en un prolongado periodo silente[cite: 1]. El patógeno permanece totalmente asintomático y logra duplicarse de manera indetectable junto con la división natural de la célula huésped[cite: 1]."
         },
         {
           "texto": "Alteración del ADN ⇒ cáncer.",
-          "explicacion": "Algunos virus alteran el ADN de la célula hospedera al integrarse en su genoma. Esta mutación inducida puede descontrolar el ciclo celular y conducir a la proliferación de tumores, originando cáncer en virus oncogénicos."
+          "explicacion": "Ciertos agentes alteran el material genético de la célula al integrarse profundamente en su secuencia cromosómica[cite: 1]. Esta mutación celular inducida puede descontrolar el ciclo reproductivo, conduciendo a la proliferación de tumores en virus oncogénicos[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "Clasificación Viral por Tropismo",
+      "titulo": "Clasificación por Tropismo",
       "puntos": [
         {
           "texto": "Vicerotrópico → ataca órganos internos.",
-          "explicacion": "El término vicerotrópico define a aquellos virus que tienen afinidad por infectar y dañar las vísceras u órganos internos del cuerpo. Un ejemplo clásico son los virus de la hepatitis que atacan directamente el hígado."
+          "explicacion": "Término patológico que define a los agentes con afinidad molecular por infectar y dañar tejidos profundos o vísceras[cite: 1]. Un ejemplo clínico clásico son los distintos tipos de hepatitis que destruyen directamente el tejido del hígado[cite: 1]."
         },
         {
           "texto": "Dermotrópico → ataca la piel.",
-          "explicacion": "Los virus dermotrópicos presentan especificidad para replicarse en las células del tejido epitelial de la piel o mucosas. En esta clasificación se agrupan virus que causan lesiones cutáneas como el herpes y la varicela."
+          "explicacion": "Presentan especificidad superficial para replicarse activamente en las células del tejido epitelial o en las mucosas externas[cite: 1]. En esta categoría biológica se agrupan patógenos que generan úlceras o lesiones cutáneas eruptivas como el herpes y la varicela[cite: 1]."
         },
         {
           "texto": "Neumotrópico → ataca vías respiratorias.",
-          "explicacion": "El tropismo neumotrópico define a los virus que infectan preferentemente el epitelio del tracto respiratorio y los pulmones. Ejemplos representativos de esta clasificación son los virus causantes de la gripe y el resfrío."
+          "explicacion": "Define a aquellos patógenos que infectan preferentemente la mucosa ciliada del tracto respiratorio superior y los alvéolos pulmonares[cite: 1]. Ejemplos representativos de gran impacto poblacional son los agentes causantes de la gripe estacional y el resfrío común[cite: 1]."
         },
         {
           "texto": "Linfotrópico → ataca linfocitos.",
-          "explicacion": "Los virus linfotrópicos tienen una afinidad específica por las células del sistema inmunológico, en particular por los linfocitos. Al dañar estas células, debilitan severamente la capacidad del organismo para combatir infecciones."
+          "explicacion": "Tienen una afinidad letal y específica por las células de defensa del sistema inmunológico[cite: 1]. Al parasitar y destruir linfocitos, debilitan severamente la capacidad natural del organismo humano para combatir futuras infecciones oportunistas[cite: 1]."
+        },
+        {
+          "texto": "Neurotrópico → ataca sistema nervioso.",
+          "explicacion": "Agentes que presentan una alta especificidad por infectar neuronas y tejidos del sistema nervioso central o periférico. Enfermedades graves como la rabia y la poliomielitis son consecuencia directa de este tropismo tisular."
         }
       ]
     },
     {
-      "titulo": "VIH - SIDA: Características y Mecanismo",
+      "titulo": "Agente VIH",
       "puntos": [
         {
-          "texto": "VIH = virus ARN.",
-          "explicacion": "El Virus de Inmunodeficiencia Humana pertenece al grupo de virus cuyo genoma está compuesto por moléculas de ARN. Específicamente, contiene dos copias idénticas de ARN monocatenario en su interior."
+          "texto": "VIH = Virus de Inmunodeficiencia Humana.",
+          "explicacion": "Es el agente infeccioso específico responsable de atacar y deteriorar progresivamente los mecanismos de defensa inmunológica, dejando al paciente vulnerable frente a múltiples complicaciones clínicas."
+        },
+        {
+          "texto": "SIDA = Síndrome de Inmunodeficiencia Adquirida.",
+          "explicacion": "Representa la etapa final, crónica y más grave de la infección por el retrovirus, caracterizada por la aparición letal de diversas enfermedades infecciosas oportunistas y neoplasias."
+        },
+        {
+          "texto": "Genoma del VIH = ARN monocatenario.",
+          "explicacion": "Este patógeno pertenece al grupo cuyo material genético está compuesto por moléculas ribonucleicas[cite: 1]. Específicamente, almacena dos copias idénticas de cadena sencilla en el interior de su estructura central[cite: 1]."
         },
         {
           "texto": "VIH ∈ familia Lentivirus.",
-          "explicacion": "El VIH se clasifica dentro del género Lentivirus, perteneciente a la familia de los retrovirus. El prefijo lenti hace alusión al prolongado período de latencia que caracteriza la infección antes de manifestar síntomas."
+          "explicacion": "Se clasifica taxonómicamente dentro de este género particular, que a su vez forma parte de la familia de los retrovirus[cite: 1]. El prefijo de su clasificación hace alusión al prolongado e insidioso período de incubación que transcurre antes de manifestar síntomas[cite: 1]."
         },
         {
           "texto": "VIH ✓ receptor celular CD4.",
-          "explicacion": "Para iniciar la infección, las glucoproteínas de envoltura del VIH deben acoplarse específicamente a la molécula CD4, un receptor ubicado en la superficie de los linfocitos T colaboradores y otras células inmunitarias."
+          "explicacion": "Para lograr el inicio exitoso de una infección, las glucoproteínas presentes en su envoltura externa deben acoplarse físicamente a esta molécula específica, la cual funciona como puerta de entrada en linfocitos T colaboradores y macrófagos[cite: 1]."
         },
         {
           "texto": "Cápside P24 → detección temprana.",
-          "explicacion": "La P24 es la proteína principal que conforma la cápside del VIH. Debido a que se produce en grandes cantidades al inicio, la detección de este antígeno en sangre es una herramienta crucial para el diagnóstico temprano."
+          "explicacion": "Esta molécula es la proteína estructural principal que conforma el núcleo interno del patógeno[cite: 1]. Al producirse masivamente en las fases iniciales, la identificación de este antígeno en suero sanguíneo constituye una herramienta diagnóstica fundamental[cite: 1]."
         },
         {
-          "texto": "Retrotranscriptasa → convierte ARN en ADN.",
-          "explicacion": "La transcriptasa inversa es una enzima fundamental para los retrovirus. Su función es leer el ARN viral y sintetizar ADN complementario, invirtiendo el flujo genético para que luego el provirus se integre al huésped."
+          "texto": "Retrotranscriptasa → convierte ARN a ADN.",
+          "explicacion": "También llamada transcriptasa inversa, es una enzima empacada en el virión que cumple una función vital[cite: 1]. Su tarea es leer la cadena ribonucleica viral y sintetizar una hebra complementaria desoxirribonucleica, invirtiendo el dogma biológico del flujo genético[cite: 1]."
         },
         {
-          "texto": "GP120 → reconoce al receptor CD4.",
-          "explicacion": "La GP120 es una glucoproteína que sobresale en la envoltura externa del VIH como espícula. Actúa como mecanismo de reconocimiento, teniendo alta afinidad para unirse al receptor CD4 e iniciar la adsorción."
+          "texto": "GP120 → reconoce receptor celular.",
+          "explicacion": "Es una glicoproteína especializada que sobresale estructuralmente en la envoltura externa simulando una espícula[cite: 1]. Actúa como el principal mecanismo de reconocimiento, teniendo altísima afinidad química para anclarse a los linfocitos diana e iniciar la adsorción[cite: 1]."
         }
       ]
     },
     {
-      "titulo": "VIH - SIDA: Etapas y Vías de Transmisión",
+      "titulo": "Transmisión Viral",
       "puntos": [
         {
-          "texto": "Latencia = etapa asintomática.",
-          "explicacion": "Después de la primoinfección, el VIH entra en una fase de latencia clínica que puede durar varios años. Durante este periodo la persona es asintomática, pero el virus se multiplica y destruye el sistema inmune."
+          "texto": "Latencia del VIH = etapa asintomática.",
+          "explicacion": "Posterior al momento de la primoinfección, el proceso ingresa en una fase clínica oculta que puede extenderse a lo largo de varios años[cite: 1]. Durante este largo periodo, aunque el paciente luce sano, la replicación intracelular continúa destruyendo el sistema inmune silenciosamente[cite: 1]."
         },
         {
-          "texto": "Vía sexual = transmisión más común.",
-          "explicacion": "El contacto sexual sin protección es el mecanismo de transmisión más frecuente del VIH a nivel mundial. El virus presente en fluidos corporales ingresa al cuerpo a través de microlesiones en las mucosas durante el coito."
+          "texto": "Vía sexual = contagio principal.",
+          "explicacion": "El contacto íntimo sin preservativo representa el mecanismo de diseminación más frecuente a nivel mundial[cite: 1]. El agente patógeno concentrado en los fluidos corporales reproductivos ingresa al torrente sanguíneo aprovechando microlesiones invisibles en las mucosas durante el coito[cite: 1]."
+        },
+        {
+          "texto": "Vía sanguínea ⇒ contagio directo.",
+          "explicacion": "La exposición inmediata a sangre infectada permite el ingreso sistémico del agente sin barreras. Ocurre frecuentemente por compartir jeringas contaminadas, accidentes laborales con agujas o transfusiones de componentes sanguíneos sin controles sanitarios."
+        },
+        {
+          "texto": "Vía vertical → madre a hijo.",
+          "explicacion": "Es la ruta de transmisión gestacional o pediátrica. El paso del patógeno puede suceder a través de la placenta durante el embarazo, mediante el intercambio de fluidos en el parto natural, o mediante la lactancia materna prolongada."
         },
         {
           "texto": "Besos y abrazos ≠ vías de transmisión.",
-          "explicacion": "El VIH no se transmite por el contacto social cotidiano. El virus no sobrevive ni se contagia mediante abrazos, besos cerrados, compartir utensilios, lágrimas, sudor, saliva ni por picaduras de insectos."
+          "explicacion": "El retrovirus es sumamente frágil en el medio ambiente y no se disemina por el contacto social cotidiano[cite: 1]. No sobrevive ni es capaz de contagiar a través de caricias, uso compartido de utensilios, sudor, lágrimas, saliva casual, ni por picaduras de mosquitos[cite: 1]."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }
