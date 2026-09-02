@@ -14,19 +14,19 @@
       "titulo": "Sistemas de Numeración y Conversión de Bases",
       "puntos": [
         {
-          "texto": "Método «Descomposición Polinómica» → Convierte numeral a base diez",
+          "texto": "Método Descomposición Polinómica → Convierte numeral a base diez",
           "explicacion": "Este método transforma cualquier numeral de base $n$ al sistema decimal (base 10). Consiste en sumar los productos de cada cifra multiplicada por la base elevada a la posición de la cifra de derecha a izquierda. Es indispensable para igualar bases en ecuaciones. Ejemplo: $\\overline{123}_{(4)} = 1 \\cdot 4^2 + 2 \\cdot 4^1 + 3 = 16 + 8 + 3 = 27_{(10)}$."
         },
         {
-          "texto": "Aplicando «Descomposición Polinómica» → Ecuación lineal de numerales",
+          "texto": "Aplicando Descomposición Polinómica → Ecuación lineal de numerales",
           "explicacion": "Resolvamos la ecuación de examen $\\overline{aab}_{(5)} = \\overline{1bb}_{(10)}$. Descomponiendo ambos lados: $a \\cdot 5^2 + a \\cdot 5 + b = 1 \\cdot 10^2 + b \\cdot 10 + b$. Simplificando obtenemos $25a + 5a + b = 100 + 11b$, lo que resulta en $30a = 100 + 10b$. Dividiendo entre 10, obtenemos $3a = 10 + b$. Evaluando cifras enteras admisibles, la única solución es $a=4$ y $b=2$."
         },
         {
-          "texto": "Método «Divisiones Sucesivas» → Convierte base diez a otra base",
+          "texto": "Método Divisiones Sucesivas → Convierte base diez a otra base",
           "explicacion": "Se utiliza para transformar un número del sistema decimal a una base diferente $n$. Consiste en dividir el número sucesivamente entre $n$ hasta que el cociente sea estrictamente menor que el divisor. El nuevo numeral se forma ordenando el último cociente y todos los residuos leídos de derecha a izquierda."
         },
         {
-          "texto": "Aplicando «Divisiones Sucesivas» → Conversión práctica de base",
+          "texto": "Aplicando Divisiones Sucesivas → Conversión práctica de base",
           "explicacion": "Transformemos el número $35$ a base $3$ siguiendo el algoritmo. Dividimos: $35 \\div 3$ da cociente $11$ y residuo $2$. Luego dividimos $11 \\div 3$ obteniendo cociente $3$ y residuo $2$. Finalmente, $3 \\div 3$ da cociente $1$ y residuo $0$. El numeral se lee al revés tomando el último cociente y los residuos: $1022_{(3)}$."
         }
       ]
@@ -35,19 +35,19 @@
       "titulo": "Propiedad de Cifras Máximas en Numerales",
       "puntos": [
         {
-          "texto": "Propiedad «Cifras máximas» → Fórmula con potencias de base",
+          "texto": "Propiedad Cifras máximas → Fórmula con potencias de base",
           "explicacion": "Un numeral formado exclusivamente por la mayor cifra posible admitida en su base, es decir $(n-1)$, repetida exactamente $k$ veces, se puede expresar analíticamente como la base $n$ elevada a la cantidad de cifras $k$, menos la unidad. Esto simplifica cálculos tediosos en ecuaciones algebraicas. Ejemplo numérico rápido: $5555_{(6)} = 6^4 - 1$."
         },
         {
-          "texto": "Aplicando «Cifras máximas» → Hallando bases de numerales",
+          "texto": "Aplicando Cifras máximas → Hallando bases de numerales",
           "explicacion": "Analicemos la ecuación $\\overline{(n-1)...(n-1)}_{(n)}$ de $6$ cifras, más $1$, que es igual a $27^{12}$. Aplicando nuestra fórmula directa al numeral, tenemos: $(n^6 - 1) + 1 = (3^3)^{12}$. Esto se reduce a $n^6 = 3^{36}$. Expresando la potencia de la derecha para igualar exponentes: $n^6 = (3^6)^6$. Por simetría matemática deducimos inmediatamente que la base buscada es $n = 729$."
         },
         {
-          "texto": "Identidad «Cifras máximas acotadas» → Restricción para estimar bases",
+          "texto": "Identidad Cifras máximas acotadas → Restricción para estimar bases",
           "explicacion": "En problemas donde un numeral de cifras máximas se compara con un valor límite constante, utilizamos la fórmula potencial para generar una inecuación y acotar el dominio. Si sabemos que el resultado es menor a un valor dado, evaluamos bases enteras. La principal restricción de existencia es que la base siempre supera a sus cifras."
         },
         {
-          "texto": "Aplicando «Cifras máximas acotadas» → Resolución para valores menores",
+          "texto": "Aplicando Cifras máximas acotadas → Resolución para valores menores",
           "explicacion": "Si nos dan $\\overline{(n-1)(n-1)(n-1)(n-1)}_{(n)} = \\overline{abc} < 1000$. Por propiedad, este numeral máximo de $4$ cifras en base $n$ equivale matemáticamente a $n^4 - 1$. Por ende, $n^4 - 1 < 1000$, lo que implica $n^4 \\le 1000$. Evaluando enteros, el mayor valor que cumple es $n=5$. Comprobamos el cálculo: $5^4 - 1 = 625 - 1 = 624$, cuadrando perfectamente con $\\overline{abc}$."
         }
       ]
@@ -56,11 +56,11 @@
       "titulo": "Intervalos y Condicionamiento de Numerales",
       "puntos": [
         {
-          "texto": "Teorema «Intervalo Numérico» → Acotación entre potencias consecutivas",
+          "texto": "Teorema Intervalo Numérico → Acotación entre potencias consecutivas",
           "explicacion": "Todo numeral arbitrario $N$ que posea exactamente $k$ cifras válidas al expresarse en un sistema de base $n$, se encuentra siempre delimitado entre dos potencias consecutivas de dicha base. El límite inferior absoluto es $n^{k-1}$ y el límite superior estricto es $n^k$. Esta doble desigualdad resulta clave para interceptar dominios de incógnitas."
         },
         {
-          "texto": "Aplicando «Intervalo Numérico» → Intersección de rangos admisibles",
+          "texto": "Aplicando Intervalo Numérico → Intersección de rangos admisibles",
           "explicacion": "Sea el número $M = \\overline{abc}_{(8)} = \\overline{mnpq}_{(6)}$. Para la representación de $3$ cifras en base $8$: $8^2 \\le M < 8^3$, originando el rango $64 \\le M < 512$. Para las $4$ cifras en base $6$: $6^3 \\le M < 6^4$, dando $216 \\le M < 1296$. Intersectando ambos intervalos de existencia matemática, garantizamos que $M$ pertenece al rango entero y continuo $[216, 511]$."
         }
       ]
@@ -69,11 +69,11 @@
       "titulo": "Relación Matemática entre Magnitud Aparente y Base",
       "puntos": [
         {
-          "texto": "Principio «Magnitud Aparente» → Numeral mayor implica base menor",
+          "texto": "Principio Magnitud Aparente → Numeral mayor implica base menor",
           "explicacion": "Cuando la teoría establece una igualdad estricta entre dos numerales que están expresados en sistemas de numeración diferentes, el numeral que visualmente aparenta ser mayor (por tener cifras más altas o mayor cantidad de estas) debe pertenecer imperativamente a una base menor para mantener el equilibrio del valor real."
         },
         {
-          "texto": "Aplicando «Magnitud Aparente» → Deducción rápida de desigualdades",
+          "texto": "Aplicando Magnitud Aparente → Deducción rápida de desigualdades",
           "explicacion": "Evaluemos la compleja igualdad $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$. Examinamos los numerales aparentes directos y es evidente que $1331 < 2626$. Conforme al principio axiomático de la magnitud aparente, para sostener la equivalencia, la base del término izquierdo debe superar obligatoriamente a la del derecho. Concluimos que $n > m$. Sabiendo por cifras que $m > 6$, inferimos inmediatamente que $n \\ge 8$."
         }
       ]
@@ -82,11 +82,11 @@
       "titulo": "Progresiones y Conteo Aritmético de Numerales",
       "puntos": [
         {
-          "texto": "Fórmula «Cantidad de términos» → Evalúa elementos en progresión aritmética",
+          "texto": "Fórmula Cantidad de términos → Evalúa elementos en progresión aritmética",
           "explicacion": "Para realizar el conteo de numerales discretos que configuran una progresión aritmética exacta, la cantidad total de términos se determina restando el último elemento menos el inicial, dividiendo esa brecha entre la razón constante de avance, y añadiendo la unidad al cociente. Es la herramienta principal para estadística de sucesiones."
         },
         {
-          "texto": "Aplicando «Cantidad de términos» → Conteo de múltiplos con terminación fija",
+          "texto": "Aplicando Cantidad de términos → Conteo de múltiplos con terminación fija",
           "explicacion": "Rescatando el intervalo hallado donde $M \\in [216, 511]$, se impone la condición de que el número $M$ termine obligatoriamente en la cifra $6$. La sucesión de casos válidos forma: $216, 226, 236, \\dots, 506$. Esta es una progresión aritmética formal con razón $10$. Aplicamos la fórmula: cantidad $= \\frac{506 - 216}{10} + 1 = \\frac{290}{10} + 1 = 30$ posibles valores."
         }
       ]
@@ -95,19 +95,19 @@
       "titulo": "Estrategias de Resolución Diofántica y Binomial",
       "puntos": [
         {
-          "texto": "Método «Acotación Diofántica» → Descomponer y limitar variables enteras",
+          "texto": "Método Acotación Diofántica → Descomponer y limitar variables enteras",
           "explicacion": "Esta estrategia algorítmica aplica para resolver inecuaciones o igualdades con múltiples incógnitas de restricción entera. Inicia expandiendo el numeral mediante su forma polinómica, agrupando los términos comunes de la variable a investigar y formulando desigualdades divisibles. Al operar en el campo de los enteros positivos, los valores permitidos se reducen a un conjunto finito y tabulable."
         },
         {
-          "texto": "Aplicando «Acotación Diofántica» → Resolviendo inecuaciones de un numeral",
+          "texto": "Aplicando Acotación Diofántica → Resolviendo inecuaciones de un numeral",
           "explicacion": "Examinemos la restricción operativa $\\overline{aaa}_{(8)} < 378$. Inicialmente transformamos el numeral base ejecutando el polinomio respectivo: $a \\cdot 8^2 + a \\cdot 8 + a < 378$. Esto se condensa sumando coeficientes: $64a + 8a + a = 73a$. Despejando nos queda $73a < 378$, lo que arroja aproximadamente $a < 5.17$. Sabiendo que $a$ es una cifra inicial, descarta el cero, dejando $a = 1, 2, 3, 4$."
         },
         {
-          "texto": "Teorema «Descomposición Binomial» → Expresión rápida en polinomios simétricos",
+          "texto": "Teorema Descomposición Binomial → Expresión rápida en polinomios simétricos",
           "explicacion": "Aquellos numerales cuyas cifras secuenciales coinciden simétricamente con los coeficientes del célebre triángulo de Pascal (patrones como $121, 1331, 14641$) escritos en una base $n$, logran factorizarse directamente como el binomio $(n+1)^k$, donde $k$ responde al grado polinómico máximo. Esta atajo descarta operaciones paso a paso durante el examen."
         },
         {
-          "texto": "Aplicando «Descomposición Binomial» → Igualdad directa en grado tres",
+          "texto": "Aplicando Descomposición Binomial → Igualdad directa en grado tres",
           "explicacion": "Tomando el reto anterior $\\overline{1331}_{(n)} = \\overline{2626}_{(m)}$ y asumiendo $m=7$. Evaluamos el lado derecho: $2(7^3) + 6(7^2) + 2(7) + 6 = 2(343) + 6(49) + 14 + 6 = 1000$. En el lado izquierdo, por la simetría de sus cifras, $\\overline{1331}_{(n)}$ corresponde fielmente a $(n+1)^3$. Emparejando ambas partes logramos $(n+1)^3 = 1000$. Extrayendo la raíz cúbica concluimos $n+1 = 10$, confirmando sólidamente que $n=9$."
         }
       ]

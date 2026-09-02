@@ -1,174 +1,176 @@
 {
   "curso": "Biología",
-  "tema": "Herencia Sanguínea",
+  "tema": "Leyes de Mendel",
   "glosario": {
-    "Antígeno": "Molécula que genera respuesta inmunitaria.",
-    "Anticuerpo": "Proteína en el plasma que neutraliza antígenos.",
-    "Eritrocito": "Glóbulo rojo en la sangre.",
-    "Ginándrico": "Relativo a genes del cromosoma X.",
-    "Holándrico": "Relativo a genes del cromosoma Y.",
-    "Autosómico": "Cromosoma no ligado directamente al sexo.",
-    "Heterocigoto": "Organismo con dos alelos diferentes.",
-    "Homocigoto": "Organismo con dos alelos iguales."
+    "Homocigoto": "Dos alelos iguales.",
+    "Heterocigoto": "Dos alelos diferentes.",
+    "Alelo": "Variante de un gen.",
+    "Gameto": "Célula sexual que lleva un alelo de cada gen.",
+    "F1": "Primera generación filial.",
+    "F2": "Segunda generación filial.",
+    "Segregación": "Separación de los alelos al formar gametos."
   },
   "theory": [
     {
-      "titulo": "Sistema ABO",
+      "titulo": "Primera Ley de Mendel: Principio de Uniformidad",
       "puntos": [
         {
-          "texto": "Herencia sanguínea = genes expresan antígenos",
-          "explicacion": "La información genética dicta qué tipo de proteínas o carbohidratos específicos se formarán en la superficie de la membrana celular de los glóbulos rojos."
+          "texto": "Primera Ley = Uniformidad",
+          "explicacion": "Cuando se cruzan dos progenitores homocigotos que difieren en un carácter, toda la descendencia de la F1 presenta el mismo genotipo. Si existe dominancia completa, también presenta el mismo fenotipo."
         },
         {
-          "texto": "Karl Landsteiner → descubrimiento en 1901",
-          "explicacion": "El biólogo y médico austríaco Karl Landsteiner descubrió los antígenos eritrocitarios, revolucionando las transfusiones sanguíneas y obteniendo un reconocimiento internacional."
+          "texto": "Cruce de líneas puras",
+          "explicacion": "Los progenitores son homocigotos para el carácter estudiado. Por ejemplo, AA representa un homocigoto dominante y aa un homocigoto recesivo."
         },
         {
-          "texto": "Sistema ABO ⊃ alelos múltiples",
-          "explicacion": "El grupo sanguíneo ABO ilustra alelos múltiples en una población, pues un mismo locus presenta tres alternativas: alelo A, alelo B y alelo nulo o ausente."
+          "texto": "AA × aa",
+          "explicacion": "El individuo AA solamente puede formar gametos A, mientras que el individuo aa solamente puede formar gametos a. Por ello, todos los descendientes reciben A de un progenitor y a del otro."
         },
         {
-          "texto": "Grupo O = donador universal",
-          "explicacion": "Al carecer de antígenos A y B en sus eritrocitos, la sangre tipo O puede ser transfundida a otros grupos sin desencadenar una respuesta inmunitaria masiva."
+          "texto": "F1 = 100% Aa",
+          "explicacion": "Todos los descendientes de AA × aa son Aa. Por tanto, toda la F1 es heterocigota."
         },
         {
-          "texto": "Grupo AB = receptor universal",
-          "explicacion": "El grupo AB carece de anticuerpos Anti-A y Anti-B en su plasma, lo que impide que ataque los glóbulos rojos recibidos de cualquier otro grupo sanguíneo."
+          "texto": "Fenotipo de la F1",
+          "explicacion": "Con dominancia completa, todos los individuos Aa expresan el carácter dominante. El alelo recesivo está presente, pero no se manifiesta en el fenotipo."
         },
         {
-          "texto": "Grupo A ⊃ anticuerpo Anti-B",
-          "explicacion": "El sistema inmunitario de un individuo con grupo A reconoce el antígeno A como propio y sintetiza de manera natural anticuerpos contra el antígeno ajeno."
-        },
-        {
-          "texto": "Grupo B ⊃ anticuerpo Anti-A",
-          "explicacion": "Una persona con tipo B genera anticuerpos Anti-A en su plasma sanguíneo para defenderse de la presencia potencial de eritrocitos extraños portadores de dicho antígeno."
-        },
-        {
-          "texto": "Grupo AB ✗ anticuerpos",
-          "explicacion": "Como los eritrocitos del grupo AB portan ambos antígenos, el organismo evita producir anticuerpos contra ellos para no destruir sus propias células sanguíneas."
-        },
-        {
-          "texto": "Grupo O → produce ambos anticuerpos",
-          "explicacion": "Al no presentar antígenos propios en la superficie celular, el sistema inmunitario del grupo O genera tanto anticuerpos Anti-A como Anti-B en su plasma."
-        },
-        {
-          "texto": "Cruce ABO → progenitores heterocigotos",
-          "explicacion": "Al cruzar un padre heterocigoto para el grupo A con una madre heterocigota para el grupo B, el cuadro de Punnett arroja una probabilidad del 25% para cada fenotipo."
+          "texto": "Aplicación a varios caracteres",
+          "explicacion": "Si se estudian varios pares de genes y los progenitores son completamente homocigotos para todos ellos, la F1 puede ser uniforme en cada locus. Por ejemplo, AABB × aabb produce una F1 formada por individuos AaBb."
         }
       ]
     },
     {
-      "titulo": "Sistema Rh",
+      "titulo": "Segunda Ley de Mendel: Principio de Segregación",
       "puntos": [
         {
-          "texto": "Sistema Rh ⊃ antígeno D",
-          "explicacion": "El sistema Rh, investigado inicialmente en monos Rhesus, se define biológicamente por la presencia o ausencia de la proteína transmembranal denominada antígeno D."
+          "texto": "Segunda Ley = Segregación",
+          "explicacion": "Los dos alelos que posee un individuo para un mismo gen se separan durante la formación de los gametos. Por eso, cada gameto recibe solamente uno de los dos alelos."
         },
         {
-          "texto": "Alelo R → antígeno D presente",
-          "explicacion": "El alelo dominante R codifica la correcta síntesis y ubicación del antígeno D en la membrana celular de los glóbulos rojos humanos."
+          "texto": "Aa → A o a",
+          "explicacion": "Un individuo heterocigoto Aa posee los alelos A y a. Al formar gametos, estos se separan, por lo que puede producir gametos A y gametos a."
         },
         {
-          "texto": "Alelo r → ausencia de antígeno D",
-          "explicacion": "El alelo r es recesivo debido a una mutación que impide la formación del antígeno D, generando eritrocitos que carecen de esta proteína específica."
+          "texto": "Proporción de gametos",
+          "explicacion": "En un individuo Aa, si ambos tipos de gametos tienen la misma probabilidad, se espera una proporción de 1 A : 1 a, equivalente a 50% A y 50% a."
         },
         {
-          "texto": "Fenotipo Rh+ ✗ anticuerpo Anti-D",
-          "explicacion": "Las personas positivas poseen el antígeno D, por lo que su sistema inmunitario lo reconoce como componente propio y omite la producción de anticuerpos Anti-D."
+          "texto": "La segregación ocurre en cada locus",
+          "explicacion": "Si un individuo posee varios pares de alelos, cada par se segrega. En AaBb, el par A/a se separa y el par B/b también se separa al formar los gametos."
         },
         {
-          "texto": "Fenotipo Rh+ ⊃ genotipos RR o Rr",
-          "explicacion": "La dominancia completa del alelo R determina que el fenotipo positivo se manifieste tanto en condición homocigota dominante como en estado heterocigoto."
+          "texto": "Cruce monohíbrido",
+          "explicacion": "En Aa × Aa, cada progenitor produce gametos A y a. Las combinaciones posibles son AA, Aa, Aa y aa, dando una proporción genotípica esperada de 1:2:1."
         },
         {
-          "texto": "Fenotipo Rh- ⊃ anticuerpo Anti-D",
-          "explicacion": "Al carecer del antígeno D, el sistema inmunitario de los individuos Rh negativo tiene la capacidad de fabricar anticuerpos Antiiza-D si se expone a sangre incompatible."
-        },
-        {
-          "texto": "Fenotipo Rh- ⊃ genotipo rr",
-          "explicacion": "Al tratarse de un rasgo estrictamente recesivo, la única forma genética de manifestar un fenotipo Rh negativo es heredando un par de alelos recesivos idénticos."
-        },
-        {
-          "texto": "Mujer Rh- gestando Rh+ ⇒ eritroblastosis fetal",
-          "explicacion": "La incompatibilidad sanguínea durante el embarazo puede provocar que los anticuerpos maternos crucen la placenta y ataquen los eritrocitos del feto, causando graves daños."
+          "texto": "Proporción fenotípica monohíbrida",
+          "explicacion": "Con dominancia completa, AA y Aa presentan el fenotipo dominante, mientras que aa presenta el recesivo. Por eso, Aa × Aa produce una proporción fenotípica esperada de 3:1."
         }
       ]
     },
     {
-      "titulo": "Herencia del Sexo",
+      "titulo": "Aplicación de la segregación a cruces con varios genes",
       "puntos": [
         {
-          "texto": "Herencia del sexo = cromosomas sexuales",
-          "explicacion": "Este campo de la genética analiza la transmisión de los genes localizados físicamente en los cromosomas responsables de determinar el sexo biológico del organismo."
+          "texto": "Cada gen se analiza por separado",
+          "explicacion": "En un cruce con varios pares de genes, primero se identifica el genotipo de cada progenitor en cada locus. Después se determina qué alelos puede aportar en cada posición."
         },
         {
-          "texto": "Drosophila melanogaster ✓ par 4 sexual",
-          "explicacion": "En los estudios clásicos con la mosca de la fruta, es su cuarto par cromosómico el que dicta la diferenciación sexual, distanciándose del modelo de los mamíferos."
+          "texto": "AaBb",
+          "explicacion": "El individuo AaBb es heterocigoto en dos loci: A/a y B/b. Al formar gametos, debe recibir un alelo del locus A y uno del locus B."
         },
         {
-          "texto": "Especie humana ✓ par 23 sexual",
-          "explicacion": "El cariotipo humano se compone de 23 pares; los primeros 22 son autosomas y el vigésimo tercero, constituido por cromosomas XX o XY, define el género biológico."
+          "texto": "Gametos de AaBb",
+          "explicacion": "Al combinar un alelo de cada locus se obtienen AB, Ab, aB y ab. Por tanto, AaBb puede formar 4 tipos de gametos cuando los loci se segregan de forma independiente."
         },
         {
-          "texto": "Genes ginándricos ∈ cromosoma X",
-          "explicacion": "El concepto ginándrico designa la región diferencial del cromosoma X, albergando los factores hereditarios específicos que configuran la herencia ligada al sexo."
+          "texto": "AaBbCc",
+          "explicacion": "Un individuo AaBbCc tiene tres pares heterocigotos. Debe elegir un alelo de A/a, uno de B/b y uno de C/c para cada gameto."
         },
         {
-          "texto": "Alteraciones ginándricas = herencia recesiva",
-          "explicacion": "Las anomalías originadas por alteraciones en genes ginándricos suelen manifestar un patrón de herencia recesivo ligado al cromosoma X, afectando mayormente a varones."
+          "texto": "Gametos de AaBbCc",
+          "explicacion": "Al combinar los alelos de los tres loci se obtienen 8 tipos de gametos: ABC, ABc, AbC, Abc, aBC, aBc, abC y abc."
         },
         {
-          "texto": "Daltonismo ∈ alteraciones ginándricas",
-          "explicacion": "El daltonismo, entendido como la alteración en la percepción de los colores, corresponde a una patología hereditaria transportada en el cromosoma X."
+          "texto": "Número de tipos de gametos",
+          "explicacion": "Cuando un individuo posee n pares heterocigotos y los loci se comportan de forma independiente, el número de tipos de gametos posibles se calcula mediante 2^n."
         },
         {
-          "texto": "Hemofilia ∈ alteraciones ginándricas",
-          "explicacion": "La hemofilia, caracterizada por la deficiencia en los mecanismos de coagulación sanguínea, constituye otra clásica alteración ginándrica de carácter recesivo."
+          "texto": "Ejemplo con dos pares heterocigotos",
+          "explicacion": "Para AaBb existen 2 pares heterocigotos. Por tanto, el número de tipos de gametos es 2^2 = 4."
         },
         {
-          "texto": "Genes holándricos ∈ cromosoma Y",
-          "explicacion": "Los genes holándricos residen de manera exclusiva en la región no homóloga del cromosoma Y, un segmento de ADN limitado exclusivamente al linaje masculino."
+          "texto": "Ejemplo con tres pares heterocigotos",
+          "explicacion": "Para AaBbCc existen 3 pares heterocigotos. Por tanto, el número de tipos de gametos es 2^3 = 8."
         },
         {
-          "texto": "Alteraciones holándricas = herencia restricta",
-          "explicacion": "Debido a la presencia exclusiva del cromosoma Y en varones, las patologías holándricas se transmiten de manera directa e infalible de padres a hijos varones."
+          "texto": "Ejemplo con cuatro pares heterocigotos",
+          "explicacion": "Para AaBbCcDd existen 4 pares heterocigotos. Por tanto, el individuo puede producir 2^4 = 16 tipos de gametos."
         },
         {
-          "texto": "Hipertricosis auricular ∈ alteraciones holándricas",
-          "explicacion": "La hipertricosis auricular, reflejada en el desarrollo anómalo de vello en el pabellón auricular, es un ejemplo prototípico de herencia restricta al sexo."
+          "texto": "No todos los cruces tienen el mismo número de gametos",
+          "explicacion": "El número de gametos depende de los pares heterocigotos de cada progenitor. Un progenitor con más loci heterocigotos puede producir más tipos de gametos que otro."
         },
         {
-          "texto": "Síndrome de SRY ∈ alteraciones holándricas",
-          "explicacion": "El gen SRY, fundamental para la determinación testicular y asociado a diversas disgenesias gonadales, se ubica directamente en el cromosoma Y."
-        }
-      ]
-    },
-    {
-      "titulo": "Herencia Influenciada",
-      "puntos": [
-        {
-          "texto": "Herencia influenciada ✓ ambiente hormonal",
-          "explicacion": "La manifestación externa de estos genes se encuentra regulada por el perfil endocrino del organismo, donde los niveles de hormonas modifican la dominancia alélica."
+          "texto": "Ejemplo: AaBb × Aabb",
+          "explicacion": "AaBb tiene dos pares heterocigotos y puede formar 4 tipos de gametos: AB, Ab, aB y ab. Aabb solamente tiene un par heterocigoto, por lo que produce 2 tipos: Ab y ab."
         },
         {
-          "texto": "Genes influenciados ∈ cromosomas autosómicos",
-          "explicacion": "A diferencia de la herencia sexual estricta, los genes regulados por hormonas se sitúan en los cromosomas autosómicos comunes, presentes por igual en ambos sexos."
+          "texto": "Combinaciones del cuadro de Punnett",
+          "explicacion": "Si un progenitor produce m tipos de gametos y el otro produce n tipos, el cuadro de Punnett puede contener hasta m × n combinaciones."
         },
         {
-          "texto": "Calvicie humana = rasgo influenciado",
-          "explicacion": "La alopecia androgenética representa el modelo más claro de herencia influenciada por el sexo, modulada directamente por la presencia de hormonas como la testosterona."
+          "texto": "Ejemplo: AaBb × AaBb",
+          "explicacion": "Cada progenitor produce 4 tipos de gametos. Por ello, el cuadro de Punnett contiene 4 × 4 = 16 combinaciones."
         },
         {
-          "texto": "Genotipo CC → varón y mujer calvos",
-          "explicacion": "La carga genética del genotipo homocigoto dominante para la calvicie es tan potente que se expresa fenotípicamente en ambos sexos sin distinción hormonal."
+          "texto": "Ejemplo: AaBbCc × AaBbCc",
+          "explicacion": "Cada progenitor produce 8 tipos de gametos. Por ello, el cuadro de Punnett contiene 8 × 8 = 64 combinaciones posibles."
         },
         {
-          "texto": "Genotipo Cc → varón calvo y mujer sana",
-          "explicacion": "Este genotipo heterocigoto evidencia la influencia endocrina: actúa como alelo dominante bajo concentraciones de hormonas masculinas y como recesivo en entorno femenino."
+          "texto": "Cruces polihíbridos",
+          "explicacion": "Un cruce que analiza simultáneamente varios pares de genes se denomina polihíbrido. La misma lógica de segregación se aplica a cada locus, aunque aumente el número de gametos y combinaciones."
         },
         {
-          "texto": "Genotipo cc → varón y mujer sanos",
-          "explicacion": "Al carecer por completo del alelo vinculado a la alopecia, los individuos con genotipo cc desarrollan un fenotipo capilar completamente normal y saludable."
+          "texto": "Cómo construir un gameto",
+          "explicacion": "Para construir un gameto, se escoge un solo alelo de cada par. Por ejemplo, para AaBbCc se selecciona A o a, luego B o b y finalmente C o c."
+        },
+        {
+          "texto": "Cómo evitar errores en gametos",
+          "explicacion": "No se deben colocar los dos alelos de un mismo locus dentro de un gameto. Por ejemplo, AaBb puede formar AB, Ab, aB y ab, pero no puede formar Aa, Bb ni Aab."
+        },
+        {
+          "texto": "Independencia entre loci",
+          "explicacion": "Cuando los genes se asumen independientes, la segregación de un par de alelos no determina cuál alelo se recibe de otro par. Esto permite combinar las posibilidades de cada locus para generar los distintos gametos."
+        },
+        {
+          "texto": "Proporciones mediante cruces separados",
+          "explicacion": "En cruces con varios genes independientes, una forma de trabajar es resolver cada locus por separado y después combinar las probabilidades de los resultados correspondientes."
+        },
+        {
+          "texto": "Ejemplo de producto de probabilidades",
+          "explicacion": "Si un resultado tiene una probabilidad de 1/4 en un locus y otro resultado independiente tiene una probabilidad de 1/2 en otro locus, la probabilidad conjunta se obtiene multiplicando ambas: 1/4 × 1/2 = 1/8."
+        },
+        {
+          "texto": "Genotipo frente a fenotipo",
+          "explicacion": "En cruces largos es necesario distinguir el genotipo obtenido de su fenotipo. Diferentes genotipos pueden producir el mismo fenotipo cuando existe dominancia completa."
+        },
+        {
+          "texto": "Dominancia completa",
+          "explicacion": "Cuando un alelo dominante determina el fenotipo frente a un alelo recesivo, los genotipos AA y Aa presentan el mismo fenotipo, mientras que aa presenta el fenotipo recesivo."
+        },
+        {
+          "texto": "Conteo de resultados",
+          "explicacion": "Al resolver un cuadro de Punnett grande, primero se identifican todas las combinaciones genéticas y después se agrupan las que tienen el mismo genotipo o el mismo fenotipo, según lo que solicite el problema."
+        },
+        {
+          "texto": "Cruces de diferente complejidad",
+          "explicacion": "La Segunda Ley no está limitada a cruces con dos alelos totales. La misma segregación permite analizar cruces con dos, tres, cuatro o más pares de genes, siempre que se determine correctamente qué gametos puede producir cada progenitor."
+        },
+        {
+          "texto": "Regla general para resolver cruces largos",
+          "explicacion": "Para resolver un cruce polihíbrido: identifica los pares heterocigotos de cada progenitor, determina los tipos de gametos mediante 2^n cuando corresponda, combina los gametos y finalmente cuenta las proporciones genotípicas o fenotípicas solicitadas."
         }
       ]
     },
