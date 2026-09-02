@@ -2657,7 +2657,7 @@ async function resolverConsultaDinamica(
       return crearRespuestaDinamica({
         id: "consulta-dinamica-pertenencia-tema",
         respuestas: [
-          `El tema «${tema.tema}» pertenece al curso de ${cursoReal.nombre}.`,
+          `El tema ${tema.tema} pertenece al curso de ${cursoReal.nombre}.`,
         ],
         contexto:
           actualizarContexto(
@@ -2831,7 +2831,7 @@ async function resolverConsultaDinamica(
     return crearRespuestaDinamica({
       id: "consulta-dinamica-tema",
       respuestas: [
-        `Mi Estudio tiene el tema «${tema.tema}» en el curso de ${curso.nombre}.`,
+        `Mi Estudio tiene el tema ${tema.tema} en el curso de ${curso.nombre}.`,
       ],
       contexto:
         actualizarContexto(
@@ -3235,7 +3235,7 @@ export async function responderPreguntaAsistente(
       return crearRespuestaDinamica({
         id: "consulta-dinamica-tema",
         respuestas: [
-          `Mi Estudio tiene el tema «${entidades.tema.tema}» en el curso de ${curso.nombre}.`,
+          `Mi Estudio tiene el tema ${entidades.tema.tema} en el curso de ${curso.nombre}.`,
         ],
         contexto: {
           curso,

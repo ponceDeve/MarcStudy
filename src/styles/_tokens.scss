@@ -37,7 +37,7 @@
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --primary-light: #93b4fb;
-  --primary-bg: rgba(37, 99, 235, 0.08);
+  --primary-bg: #eef3ff;
 
   /* ============================================================
      BRAND
@@ -54,7 +54,7 @@
   --brand: #7c3aed;
   --brand-dark: #6d28d9;
   --brand-light: #c4b5fd;
-  --brand-bg: rgba(124, 58, 237, 0.08);
+  --brand-bg: #f3efff;
 
   /* ============================================================
      SECONDARY
@@ -65,7 +65,7 @@
   --secondary: #94a3b8;
   --secondary-dark: #64748b;
   --secondary-hover: #cbd5e1;
-  --secondary-bg: rgba(100, 116, 139, 0.08);
+  --secondary-bg: #f1f3f6;
 
   /* ============================================================
      ACCENT
@@ -75,7 +75,7 @@
 
   --accent: #fb7185;
   --accent-dark: #e11d48;
-  --accent-bg: rgba(251, 113, 133, 0.1);
+  --accent-bg: #fff0f2;
 
   /* ============================================================
      DANGER
@@ -85,7 +85,7 @@
 
   --danger: #dc2626;
   --danger-dark: #991b1b;
-  --danger-bg: rgba(220, 38, 38, 0.08);
+  --danger-bg: #fef0f0;
 
   /* ============================================================
      SUCCESS
@@ -95,7 +95,7 @@
 
   --success: #16a34a;
   --success-dark: #166534;
-  --success-bg: rgba(22, 163, 74, 0.08);
+  --success-bg: #edf9f1;
 
   /* ============================================================
      WARNING
@@ -104,7 +104,7 @@
      ============================================================ */
 
   --warning: #d97706;
-  --warning-bg: rgba(217, 119, 6, 0.1);
+  --warning-bg: #fff5e8;
 
   /* ============================================================
      HEADER
@@ -131,9 +131,7 @@
      ============================================================ */
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-
   --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
-
   --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.12);
 
   /* ============================================================
@@ -158,11 +156,16 @@
      uno de estos — nunca un valor suelto (px o rem inventado).
      ============================================================ */
 
-  --fs-sm: 0.875rem;    /* texto secundario, badges, metadatos */
-  --fs-body: 1rem;      /* texto normal */
-  --fs-md: 1.25rem;     /* subtítulos, títulos de tarjeta */
-  --fs-title: 2rem;     /* título de página */
-  --fs-hero: clamp(1.75rem, 5vw, 3rem); /* único título "hero" por pantalla */
+  --fs-sm: 0.875rem;
+  /* texto secundario, badges, metadatos */
+  --fs-body: 1rem;
+  /* texto normal */
+  --fs-md: 1.25rem;
+  /* subtítulos, títulos de tarjeta */
+  --fs-title: 2rem;
+  /* título de página */
+  --fs-hero: clamp(1.75rem, 5vw, 3rem);
+  /* único título "hero" por pantalla */
 
   --fw-normal: 400;
   --fw-bold: 700;
@@ -193,10 +196,10 @@
    BREAKPOINTS
    ============================================================ */
 
-$bp-sm: 30rem;   // 480px
-$bp-md: 48rem;   // 768px
-$bp-lg: 64rem;   // 1024px
-$bp-xl: 90rem;   // 1440px
+$bp-sm: 30rem; // 480px
+$bp-md: 48rem; // 768px
+$bp-lg: 64rem; // 1024px
+$bp-xl: 90rem; // 1440px
 
 /* ============================================================
    RESPONSIVE MIXINS
@@ -205,19 +208,25 @@ $bp-xl: 90rem;   // 1440px
    ============================================================ */
 
 @mixin respond($bp) {
-  @if $bp == sm {
+  @if $bp ==sm {
     @media (min-width: $bp-sm) {
       @content;
     }
-  } @else if $bp == md {
+  }
+
+  @else if $bp ==md {
     @media (min-width: $bp-md) {
       @content;
     }
-  } @else if $bp == lg {
+  }
+
+  @else if $bp ==lg {
     @media (min-width: $bp-lg) {
       @content;
     }
-  } @else if $bp == xl {
+  }
+
+  @else if $bp ==xl {
     @media (min-width: $bp-xl) {
       @content;
     }
@@ -225,19 +234,25 @@ $bp-xl: 90rem;   // 1440px
 }
 
 @mixin respond-max($bp) {
-  @if $bp == sm {
+  @if $bp ==sm {
     @media (max-width: $bp-sm) {
       @content;
     }
-  } @else if $bp == md {
+  }
+
+  @else if $bp ==md {
     @media (max-width: $bp-md) {
       @content;
     }
-  } @else if $bp == lg {
+  }
+
+  @else if $bp ==lg {
     @media (max-width: $bp-lg) {
       @content;
     }
-  } @else if $bp == xl {
+  }
+
+  @else if $bp ==xl {
     @media (max-width: $bp-xl) {
       @content;
     }

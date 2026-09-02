@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
-
 import manifest from "../../data/manifest.json";
-
 import PreguntasFrecuentes from "../../components/PreguntasFrecuentes";
 
 const DESCRIPCIONES_CURSO = {
@@ -24,36 +22,17 @@ const DESCRIPCIONES_CURSO = {
   TRI: "Domina ángulos, razones y triángulos de la trigonometría."
 };
 
-export default function WelcomeSection({
-  onSelectTema,
-  temasCompletadosLista = [],
-}) {
-  /*
-   * Guarda la página de temas que está viendo cada curso.
-   *
-   * Ejemplo:
-   * página 0 → temas 1-7
-   * página 1 → temas 8-14
-   * página 2 → temas 15-21
-   */
+export default function WelcomeSection({ onSelectTema, temasCompletadosLista = [] }) {
   const [paginaTemas, setPaginaTemas] = useState({});
-
   const TEMAS_POR_PAGINA = 7;
 
   const cursosConTemas = useMemo(
-    () =>
-      manifest.cursos.filter(
-        (curso) => curso.temas.length > 0
-      ),
+    () => manifest.cursos.filter(curso => curso.temas.length > 0),
     []
   );
 
   const totalTemas = useMemo(
-    () =>
-      cursosConTemas.reduce(
-        (total, curso) => total + curso.temas.length,
-        0
-      ),
+    () => cursosConTemas.reduce((total, curso) => total + curso.temas.length, 0),
     [cursosConTemas]
   );
 
@@ -81,8 +60,7 @@ export default function WelcomeSection({
 
   function logrosDelCurso(curso) {
     return temasCompletadosLista.filter(
-      (id) =>
-        id.startsWith(`${curso.nombre}_`)
+      id => id.startsWith(`${curso.nombre}_`)
     ).length;
   }
 
@@ -91,37 +69,30 @@ export default function WelcomeSection({
       type: "tema",
       curso: curso.nombre,
       tema: tema.tema,
-      archivo: tema.archivo,
+      archivo: tema.archivo
     });
   }
 
   function cambiarPaginaTemas(cursoCodigo, direccion) {
-    setPaginaTemas((prev) => {
+    setPaginaTemas(prev => {
       const paginaActual = prev[cursoCodigo] || 0;
 
       return {
         ...prev,
-        [cursoCodigo]: Math.max(
-          0,
-          paginaActual + direccion
-        ),
+        [cursoCodigo]: Math.max(0, paginaActual + direccion)
       };
     });
   }
 
   return (
     <div className="welcome-section">
-
       <section className="welcome-section__courses">
-
         <div className="welcome-section__intro container">
-
           <h2 className="welcome-section__title">
             Qué encontrarás en Mi Estudio
           </h2>
 
           <div className="welcome-section__logros">
-
             <svg
               className="welcome-section__logros-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -134,18 +105,15 @@ export default function WelcomeSection({
                   <stop offset="70%" stopColor="#D4AF37" />
                   <stop offset="100%" stopColor="#9A7D0A" />
                 </linearGradient>
-
                 <linearGradient id="oroReflejo" x1="100%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#FFF5CC" />
                   <stop offset="50%" stopColor="#F5B041" />
                   <stop offset="100%" stopColor="#7D6608" />
                 </linearGradient>
-
                 <linearGradient id="baseDegradado" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#2C3E50" />
                   <stop offset="100%" stopColor="#1A252F" />
                 </linearGradient>
-
                 <filter id="sombraPremium" x="-10%" y="-10%" width="130%" height="130%">
                   <feDropShadow dx="0" dy="8" stdDeviation="6" floodColor="#000" floodOpacity="0.25" />
                 </filter>
@@ -168,165 +136,83 @@ export default function WelcomeSection({
             </svg>
 
             <div className="welcome-section__logros-text">
-
               <span className="welcome-section__logros-num">
                 {temasCompletadosLista.length} / {totalTemas}
               </span>
-
               <span className="welcome-section__logros-label">
                 temas completados
               </span>
-
             </div>
           </div>
 
           <p className="welcome-section__lead">
-            Aquí tienes todo lo que necesitas para prepararte
-            de verdad: teoría explicada con calma, preguntas
-            para practicar, repasos que te avisan cuándo volver
-            a un tema y herramientas para organizar tu tiempo.
-            Ahora mismo hay{" "}
-
-            <strong>
-              {cursosConTemas.length} cursos
-            </strong>{" "}
-
+            Aquí tienes todo lo que necesitas para prepararte de verdad: teoría explicada con calma, preguntas para practicar, repasos que te avisan cuándo volver a un tema y herramientas para organizar tu tiempo. Ahora mismo hay{" "}
+            <strong>{cursosConTemas.length} cursos</strong>{" "}
             y{" "}
-
-            <strong>
-              {totalTemas} temas
-            </strong>{" "}
-
+            <strong>{totalTemas} temas</strong>{" "}
             esperando a que empieces.
           </p>
 
           <div className="welcome-section__grid">
-
             {cursosConTemas.map((curso, i) => {
+              const paginaActual = paginaTemas[curso.codigo] || 0;
+              const inicio = paginaActual * TEMAS_POR_PAGINA;
 
-              /*
-               * Página actual de este curso.
-               *
-               * Si no existe todavía, empieza en 0.
-               */
-              const paginaActual =
-                paginaTemas[curso.codigo] || 0;
-
-              /*
-               * Calculamos desde qué tema empieza
-               * la página actual.
-               *
-               * 0 → 0
-               * 1 → 7
-               * 2 → 14
-               * etc.
-               */
-              const inicio =
-                paginaActual * TEMAS_POR_PAGINA;
-
-              /*
-               * Solo obtenemos 7 temas.
-               *
-               * MUY IMPORTANTE:
-               * los temas anteriores desaparecen de la
-               * interfaz cuando avanzamos.
-               */
               const temasVisibles = curso.temas.slice(
                 inicio,
                 inicio + TEMAS_POR_PAGINA
               );
 
-              /*
-               * Determinamos si existe otra página.
-               */
               const haySiguiente =
-                inicio + TEMAS_POR_PAGINA <
-                curso.temas.length;
+                inicio + TEMAS_POR_PAGINA < curso.temas.length;
 
-              /*
-               * Determinamos si existe una página anterior.
-               */
-              const hayAnterior =
-                paginaActual > 0;
+              const hayAnterior = paginaActual > 0;
 
               return (
                 <article
                   key={curso.codigo}
-                  className={`welcome-section__curso welcome-section__curso--${i % 4
-                    }`}
+                  className={`welcome-section__curso welcome-section__curso--${i % 4}`}
                 >
-
                   <div className="welcome-section__curso-top">
-
                     <div className="welcome-section__curso-info">
-
                       <span className="welcome-section__curso-nombre">
                         {curso.nombre}
                       </span>
 
                       <div className="box-nombre-logros">
-
                         <span className="welcome-section__curso-count">
                           {curso.temas.length} tema
-                          {curso.temas.length !== 1
-                            ? "s"
-                            : ""}
+                          {curso.temas.length !== 1 ? "s" : ""}
                         </span>
 
                         <span className="welcome-section__curso-logros">
-
                           <i className="fa-solid fa-trophy" />
-
-                          {logrosDelCurso(curso)}
-                          /
-                          {curso.temas.length}
-
+                          {logrosDelCurso(curso)}/{curso.temas.length}
                         </span>
-
                       </div>
-
                     </div>
 
                     <p className="welcome-section__curso-desc">
                       {DESCRIPCIONES_CURSO[curso.codigo] ||
                         "Temario disponible para estudiar."}
                     </p>
-
                   </div>
 
-                  {/* =====================================================
-                      LISTA DE TEMAS
-                      SOLO SE MUESTRAN 7 A LA VEZ
-                     ===================================================== */}
-
                   <ul className="welcome-section__temas">
-
-                    {temasVisibles.map((tema) => {
-
-                      const estado =
-                        estadoTema(curso, tema);
+                    {temasVisibles.map(tema => {
+                      const estado = estadoTema(curso, tema);
 
                       return (
                         <li
                           key={tema.archivo}
                           className="welcome-section__tema-item"
                         >
-
                           <div className="welcome-section__tema-content">
-
                             <button
                               type="button"
                               className="welcome-section__tema-btn"
-                              onClick={() =>
-                                manejarClickTema(
-                                  curso,
-                                  tema
-                                )
-                              }
+                              onClick={() => manejarClickTema(curso, tema)}
                             >
-
-                              {/* Ícono de estado */}
-
                               <span
                                 className={`welcome-section__tema-estado welcome-section__tema-estado--${estado}`}
                                 title={
@@ -337,50 +223,30 @@ export default function WelcomeSection({
                                       : "No iniciado"
                                 }
                               >
-
                                 {estado !== "pendiente" && (
                                   <span className="welcome-section__tema-estado-check" />
                                 )}
-
                               </span>
 
-                              {/* Nombre del tema */}
-
-                              <span>
-                                {tema.tema}
-                              </span>
-
+                              <span>{tema.tema}</span>
                             </button>
-
                           </div>
-
                         </li>
                       );
                     })}
-
                   </ul>
-
-                  {/* =====================================================
-                      NAVEGACIÓN DE TEMAS
-                     ===================================================== */}
 
                   {(haySiguiente || hayAnterior) && (
                     <div className="welcome-section__temas-navigation">
-
                       {haySiguiente && (
                         <button
                           type="button"
                           className="welcome-section__mostrar-temas"
                           onClick={() =>
-                            cambiarPaginaTemas(
-                              curso.codigo,
-                              1
-                            )
+                            cambiarPaginaTemas(curso.codigo, 1)
                           }
                         >
-                          <span>
-                            Mostrar más
-                          </span>
+                          <span>Mostrar más</span>
                           <i className="fa-solid fa-chevron-down" />
                         </button>
                       )}
@@ -390,34 +256,23 @@ export default function WelcomeSection({
                           type="button"
                           className="welcome-section__mostrar-temas"
                           onClick={() =>
-                            cambiarPaginaTemas(
-                              curso.codigo,
-                              -1
-                            )
+                            cambiarPaginaTemas(curso.codigo, -1)
                           }
                         >
                           <i className="fa-solid fa-chevron-up" />
-                          <span>
-                            Mostrar menos
-                          </span>
+                          <span>Mostrar menos</span>
                         </button>
                       )}
-
                     </div>
                   )}
-
                 </article>
               );
             })}
-
           </div>
-
         </div>
-
       </section>
 
       <PreguntasFrecuentes />
-
     </div>
   );
 }

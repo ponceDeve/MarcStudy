@@ -7,6 +7,19 @@
  * selectores aquí también, o ese paso se saltará solo.
  */
 
+export const TUTORIAL_WELCOME = [
+  {
+    selector: ".editar-nombre-foto",
+    titulo: "Tu foto",
+    texto: "Toca aquí para agregar una foto de perfil. Es opcional, puedes dejarlo así si prefieres."
+  },
+  {
+    selector: ".welcome-input",
+    titulo: "Tu nombre",
+    texto: "Escribe cómo quieres que te llamemos dentro de la app. Luego puedes cambiarlo cuando quieras."
+  }
+];
+
 export const TUTORIAL_INICIO = [
   {
     selector: ".btn__inicio",
@@ -133,6 +146,21 @@ export const TUTORIAL_POMODORO = [
     selector: ".horario__courses-card",
     titulo: "Tus cursos del día",
     texto: "Acá aparecen los bloques de estudio que armaste para este día. Tócalos para activarlos."
+  },
+  {
+    selector: ".horario__rest-btn--corto",
+    titulo: "Descanso corto",
+    texto: "Desc. 10 es para un respiro corto entre un curso y otro."
+  },
+  {
+    selector: ".horario__rest-btn--largo",
+    titulo: "Descanso largo",
+    texto: "Desc. 30 es para un descanso más largo, como cuando vas a comer."
+  },
+  {
+    selector: ".horario__quick-course",
+    titulo: "Escoge un curso o tema",
+    texto: "Si no tienes un bloque armado para ahora, elige aquí directamente el curso o tema que vas a estudiar."
   }
 ];
 
@@ -199,6 +227,28 @@ export const TUTORIAL_REPASO = [
     selector: ".repaso__item-day",
     titulo: "Cuándo repasarlo",
     texto: "Esta etiqueta te dice si el repaso es para hoy, si ya se pasó, o cuándo toca."
+  },
+  {
+    selector: ".repaso__proximos-title",
+    titulo: "Próximos repasos",
+    texto: "Acá puedes ver los repasos que vienen más adelante, para planear tu semana."
+  }
+];
+
+// Versión reducida: se usa cuando no hay repasos pendientes hoy, ya que
+// los pasos de la tarjeta (.repaso__item-subject, .repaso__check,
+// .repaso__item-day) no existen todavía en el DOM y el tutorial
+// saltaría del paso 1 directo al 5.
+export const TUTORIAL_REPASO_VACIO = [
+  {
+    selector: ".repaso__instruction",
+    titulo: "¿Qué es un repaso?",
+    texto: "Acá vuelven los temas que ya estudiaste, para que no se te olviden con el tiempo."
+  },
+  {
+    selector: ".repaso__empty",
+    titulo: "Sin pendientes por ahora",
+    texto: "Cuando tengas un repaso pendiente, va a aparecer aquí como una tarjeta que puedes tocar y marcar como hecho."
   },
   {
     selector: ".repaso__proximos-title",

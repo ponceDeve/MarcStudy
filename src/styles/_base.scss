@@ -87,17 +87,31 @@ button {
   border-radius: var(--radius-sm);
 }
 
-/* Se oculta la barra visual del scroll en toda la app — el scroll en
-   sí sigue funcionando igual (con rueda, arrastre, flechas, touch),
-   solo no se dibuja la barra. */
+/* ============================================================
+   SCROLLBAR — DELGADA Y CON COLOR DE MARCA
+   ============================================================ */
+
 * {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* versiones viejas de Edge/IE */
+  scrollbar-width: thin;
+  scrollbar-color: var(--success) transparent;
 }
+
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none; /* Chrome/Safari/Edge modernos */
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--success);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--success);
 }
 
 @font-face {

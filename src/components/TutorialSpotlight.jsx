@@ -22,7 +22,21 @@ function medir(el) {
  * del scroll. Si no se estabiliza rápido, igual muestra algo tras un tope.
  */
 function scrollYEsperar(el, cb) {
-  el.scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
+  const headerH =
+    parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--header-h"
+      )
+    ) || 64;
+  const offsetDeseado = headerH + 20;
+
+  const rectInicial = el.getBoundingClientRect();
+  const scrollDestino = window.scrollY + rectInicial.top - offsetDeseado;
+
+  window.scrollTo({
+    top: Math.max(scrollDestino, 0),
+    behavior: "smooth"
+  });
 
   let ultimaPos = null;
   let quietoDesde = null;
@@ -178,8 +192,6 @@ export default function TutorialSpotlight({ steps, open, onClose, startAt = 0 })
     if (paso > 0) setPaso((p) => p - 1);
   };
 
-  const tooltipArriba = rect ? rect.top > window.innerHeight * 0.55 : false;
-
   return createPortal(
     <div className="tut-spotlight" aria-live="polite">
       {/* Overlay solo visual: no cierra el tutorial al tocarlo */}
@@ -211,20 +223,12 @@ export default function TutorialSpotlight({ steps, open, onClose, startAt = 0 })
 
       {rect && listo && (
         <div
-          className={`tut-spotlight__tooltip ${
-            tooltipArriba ? "tut-spotlight__tooltip--arriba" : "tut-spotlight__tooltip--abajo"
-          }`}
+          className="tut-spotlight__tooltip tut-spotlight__tooltip--abajo"
           style={{
-            top: (() => {
-              const ALTURA_TOOLTIP_MAX = 260;
-              const topBase = tooltipArriba
-                ? rect.top - 12 - ALTURA_TOOLTIP_MAX
-                : rect.bottom + 12;
-              return Math.min(
-                Math.max(topBase, 12),
-                Math.max(window.innerHeight - ALTURA_TOOLTIP_MAX - 12, 12)
-              );
-            })(),
+            top: Math.min(
+              rect.bottom + 12,
+              Math.max(window.innerHeight - 260 - 12, 12)
+            ),
             left: Math.min(Math.max(rect.left, 12), window.innerWidth - 300)
           }}
         >

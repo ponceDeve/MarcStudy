@@ -1,11 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import manifest from "../data/manifest.json";
-import { useSearchHistory } from "../hooks/useSearchHistory";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { buscarConPuntaje } from "../lib/buscador";
 import EditarNombreModal from "./EditarNombreModal";
-
-const HISTORIAL_POR_PAGINA = 5;
 
 const CURSOS_ITEMS = manifest.cursos.map((c) => ({
   type: "curso",
@@ -138,14 +135,37 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
+function construirItemsNavegables(grupos) {
+  const items = [];
+
+  for (const grupo of grupos) {
+    items.push({
+      type: "curso",
+      nombre: grupo.curso
+    });
+
+    for (const tema of grupo.temas) {
+      items.push({
+        type: "tema",
+        curso: tema.curso,
+        tema: tema.tema,
+        archivo: tema.archivo
+      });
+    }
+  }
+
+  return items;
+}
+
 export default function SearchModal({
   open,
   onClose,
   onSelect
 }) {
   const [query, setQuery] = useState("");
-  const [paginaHistorial, setPaginaHistorial] = useState(1);
   const [inputFocused, setInputFocused] = useState(false);
+  const [editarNombreAbierto, setEditarNombreAbierto] =
+    useState(false);
 
   const [nombreUsuario, setNombreUsuario] =
     useLocalStorage(
@@ -159,19 +179,9 @@ export default function SearchModal({
       null
     );
 
-  const [editarNombreAbierto, setEditarNombreAbierto] =
-    useState(false);
-
   const [focusedIdx, setFocusedIdx] = useState(-1);
 
   const inputRef = useRef(null);
-
-  const {
-    historial,
-    guardarBusqueda,
-    eliminarHistorial,
-    eliminarBusqueda
-  } = useSearchHistory();
 
   const hayQuery = query.trim() !== "";
 
@@ -205,14 +215,7 @@ export default function SearchModal({
 
   const mostrarListaInicial =
     open &&
-    !hayQuery &&
-    !inputFocused;
-
-  const mostrarHistorial =
-    open &&
-    inputFocused &&
-    !hayQuery &&
-    historial.length > 0;
+    !hayQuery;
 
   const mostrarResultados =
     open &&
@@ -220,71 +223,47 @@ export default function SearchModal({
 
   const contenidoExpandido =
     mostrarListaInicial ||
-    mostrarHistorial ||
-    mostrarResultados ||
-    (inputFocused &&
-      hayQuery &&
-      grupos.length === 0);
+    mostrarResultados;
 
-  const temasIniciales = useMemo(() => {
-    return gruposIniciales.flatMap(
-      (grupo) => grupo.temas
-    );
-  }, [gruposIniciales]);
-
-  const temasResultados = useMemo(() => {
-    return grupos.flatMap(
-      (grupo) => grupo.temas
-    );
-  }, [grupos]);
-
-  const historialVisible = useMemo(() => {
-    const inicio =
-      (paginaHistorial - 1) *
-      HISTORIAL_POR_PAGINA;
-
-    return historial.slice(
-      inicio,
-      inicio + HISTORIAL_POR_PAGINA
-    );
-  }, [
-    historial,
-    paginaHistorial
-  ]);
-
-  const hayMasHistorial =
-    paginaHistorial *
-      HISTORIAL_POR_PAGINA <
-    historial.length;
-
-  const hayMenosHistorial =
-    paginaHistorial > 1;
-
-  const itemsNavegables = useMemo(() => {
+  const gruposVisibles = useMemo(() => {
     if (hayQuery) {
-      return temasResultados;
+      return grupos;
     }
 
-    if (inputFocused) {
-      return historialVisible;
-    }
-
-    return temasIniciales;
+    return gruposIniciales;
   }, [
     hayQuery,
-    inputFocused,
-    historialVisible,
-    temasResultados,
-    temasIniciales
+    grupos,
+    gruposIniciales
   ]);
+
+  const itemsNavegables = useMemo(
+    () => construirItemsNavegables(gruposVisibles),
+    [gruposVisibles]
+  );
+
+  function obtenerIndiceElemento(item) {
+    return itemsNavegables.findIndex((elemento) => {
+      if (elemento.type !== item.type) {
+        return false;
+      }
+
+      if (elemento.type === "curso") {
+        return elemento.nombre === item.nombre;
+      }
+
+      return (
+        elemento.curso === item.curso &&
+        elemento.tema === item.tema &&
+        elemento.archivo === item.archivo
+      );
+    });
+  }
 
   function ejecutarBusqueda(item) {
     if (!item) return;
 
-    guardarBusqueda(item);
-
     setQuery("");
-    setPaginaHistorial(1);
     setInputFocused(false);
     setFocusedIdx(-1);
 
@@ -299,44 +278,29 @@ export default function SearchModal({
       fuertes.cursos[0] ||
       fuertes.temas[0];
 
-    if (mejorOpcion) {
-      ejecutarBusqueda(mejorOpcion);
+    if (!mejorOpcion) return;
+
+    if (mejorOpcion.type === "curso") {
+      const cursoEncontrado = manifest.cursos.find(
+        (curso) =>
+          curso.nombre === mejorOpcion.nombre
+      );
+
+      if (!cursoEncontrado) return;
+
+      ejecutarBusqueda({
+        type: "curso",
+        nombre: cursoEncontrado.nombre
+      });
+
+      return;
     }
-  }
 
-  function eliminarUnaBusqueda(e, item) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    eliminarBusqueda(item);
-
-    setFocusedIdx(-1);
-
-    const historialRestante =
-      historial.length - 1;
-
-    const maxPagina = Math.max(
-      1,
-      Math.ceil(
-        historialRestante /
-          HISTORIAL_POR_PAGINA
-      )
-    );
-
-    setPaginaHistorial((actual) =>
-      Math.min(actual, maxPagina)
-    );
-  }
-
-  function eliminarTodasLasBusquedas() {
-    eliminarHistorial();
-    setPaginaHistorial(1);
-    setFocusedIdx(-1);
+    ejecutarBusqueda(mejorOpcion);
   }
 
   function limpiarBusqueda() {
     setQuery("");
-    setPaginaHistorial(1);
     setFocusedIdx(-1);
 
     requestAnimationFrame(() => {
@@ -384,24 +348,21 @@ export default function SearchModal({
       return;
     }
 
-    ejecutarBusqueda(
-      itemsNavegables[focusedIdx]
-    );
+    const item =
+      itemsNavegables[focusedIdx];
+
+    ejecutarBusqueda(item);
   }
 
   useEffect(() => {
-    if (focusedIdx < 0) {
-      return;
-    }
+    if (focusedIdx < 0) return;
 
     const elemento =
       document.querySelector(
         `[data-search-index="${focusedIdx}"]`
       );
 
-    if (!elemento) {
-      return;
-    }
+    if (!elemento) return;
 
     elemento.scrollIntoView({
       behavior: "smooth",
@@ -414,18 +375,18 @@ export default function SearchModal({
 
   useEffect(() => {
     setFocusedIdx(-1);
-  }, [
-    query,
-    paginaHistorial
-  ]);
+  }, [query]);
 
   useEffect(() => {
     if (!open) return;
 
-    setPaginaHistorial(1);
     setQuery("");
-    setInputFocused(false);
+    setInputFocused(true);
     setFocusedIdx(-1);
+
+    requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
   }, [open]);
 
   useEffect(() => {
@@ -463,8 +424,7 @@ export default function SearchModal({
       if (e.key === "Enter") {
         if (
           focusedIdx >= 0 &&
-          focusedIdx <
-            itemsNavegables.length
+          focusedIdx < itemsNavegables.length
         ) {
           e.preventDefault();
           e.stopPropagation();
@@ -503,7 +463,6 @@ export default function SearchModal({
 
   const inputTieneLista =
     mostrarListaInicial ||
-    mostrarHistorial ||
     (mostrarResultados &&
       grupos.length > 0);
 
@@ -544,7 +503,6 @@ export default function SearchModal({
             value={query}
             onFocus={() => {
               setInputFocused(true);
-              setFocusedIdx(-1);
             }}
             onBlur={() => {
               setTimeout(() => {
@@ -553,7 +511,6 @@ export default function SearchModal({
             }}
             onChange={(e) => {
               setQuery(e.target.value);
-              setPaginaHistorial(1);
               setFocusedIdx(-1);
             }}
             onKeyDown={(e) => {
@@ -623,225 +580,59 @@ export default function SearchModal({
               e.preventDefault();
               e.stopPropagation();
             }}
-            onClick={
-              ejecutarBusquedaActual
-            }
+            onClick={ejecutarBusquedaActual}
           >
             <i className="fa-solid fa-magnifying-glass" />
           </button>
         </div>
 
-        {mostrarHistorial && (
-          <div className="search-history">
-            {historialVisible.map(
-              (item, index) => {
-                const texto =
-                  item.type === "curso"
-                    ? item.nombre
-                    : item.tema;
-
-                const historialKey =
-                  item.type === "curso"
-                    ? `curso-${item.nombre}-${index}`
-                    : `tema-${item.curso || ""}-${item.tema || ""}-${item.archivo || ""}-${index}`;
-
-                return (
-                  <div
-                    key={historialKey}
-                    className={`search-history-item${
-                      index === focusedIdx
-                        ? " is-focused"
-                        : ""
-                    }`}
-                    data-search-index={index}
-                  >
-                    <button
-                      type="button"
-                      className="search-history-select"
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                      }}
-                      onClick={() => {
-                        ejecutarBusqueda(item);
-                      }}
-                    >
-                      <i className="fa-solid fa-clock-rotate-left" />
-
-                      <span className="search-history-text">
-                        {texto}
-                      </span>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="search-history-delete"
-                      aria-label={`Eliminar ${texto} del historial`}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                      onClick={(e) => {
-                        eliminarUnaBusqueda(
-                          e,
-                          item
-                        );
-                      }}
-                    >
-                      <i className="fa-solid fa-xmark" />
-                    </button>
-                  </div>
-                );
-              }
-            )}
-
-            <div className="search-history-actions">
-              {hayMenosHistorial && (
-                <button
-                  type="button"
-                  className="search-history-action"
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                  onClick={() => {
-                    setPaginaHistorial(
-                      (actual) =>
-                        Math.max(
-                          1,
-                          actual - 1
-                        )
-                    );
-                  }}
-                >
-                  <i className="fa-solid fa-chevron-up" />
-                  Mostrar -
-                </button>
-              )}
-
-              {hayMasHistorial && (
-                <button
-                  type="button"
-                  className="search-history-action"
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                  onClick={() => {
-                    setPaginaHistorial(
-                      (actual) =>
-                        actual + 1
-                    );
-                  }}
-                >
-                  <i className="fa-solid fa-chevron-down" />
-                  Mostrar +
-                </button>
-              )}
-
-              <button
-                type="button"
-                className="search-history-action search-history-action--delete"
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-                onClick={
-                  eliminarTodasLasBusquedas
-                }
-              >
-                <i className="fa-solid fa-trash" />
-                Eliminar
-              </button>
-            </div>
-          </div>
-        )}
-
         {mostrarListaInicial && (
           <div className="search-results">
             {gruposIniciales.map(
-              (g, grupoIndex) => (
-                <div
-                  key={`grupo-inicial-${g.curso}-${grupoIndex}`}
-                  className="search-group"
-                >
-                  <div className="search-result-item is-curso">
-                    <span className="curso-title">
-                      {g.curso}
-                    </span>
-                  </div>
+              (g, grupoIndex) => {
+                const cursoIndex =
+                  obtenerIndiceElemento({
+                    type: "curso",
+                    nombre: g.curso
+                  });
 
-                  {g.temas.map(
-                    (t, temaIndex) => {
-                      const index =
-                        temasIniciales.findIndex(
-                          (item) =>
-                            item.curso ===
-                              t.curso &&
-                            item.tema ===
-                              t.tema &&
-                            item.archivo ===
-                              t.archivo
-                        );
-
-                      return (
-                        <button
-                          type="button"
-                          key={`tema-inicial-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
-                          data-search-index={
-                            index
-                          }
-                          onClick={() =>
-                            ejecutarBusqueda(t)
-                          }
-                          className={`search-result-item is-tema${
-                            index ===
-                            focusedIdx
-                              ? " is-focused"
-                              : ""
-                          }`}
-                        >
-                          <p className="search-result-item__tema">
-                            {t.tema}
-                          </p>
-                        </button>
-                      );
-                    }
-                  )}
-                </div>
-              )
-            )}
-          </div>
-        )}
-
-        {mostrarResultados &&
-          grupos.length > 0 && (
-            <div className="search-results">
-              {grupos.map(
-                (g, grupoIndex) => (
+                return (
                   <div
-                    key={`grupo-${g.curso}-${grupoIndex}`}
+                    key={`grupo-inicial-${g.curso}-${grupoIndex}`}
                     className="search-group"
                   >
-                    <div className="search-result-item is-curso">
+                    <button
+                      type="button"
+                      data-search-index={cursoIndex}
+                      className={`search-result-item is-curso${
+                        cursoIndex ===
+                        focusedIdx
+                          ? " is-focused"
+                          : ""
+                      }`}
+                      onClick={() =>
+                        ejecutarBusqueda({
+                          type: "curso",
+                          nombre: g.curso
+                        })
+                      }
+                    >
                       <span className="curso-title">
                         {g.curso}
                       </span>
-                    </div>
+                    </button>
 
                     {g.temas.map(
                       (t, temaIndex) => {
                         const index =
-                          temasResultados.findIndex(
-                            (item) =>
-                              item.curso ===
-                                t.curso &&
-                              item.tema ===
-                                t.tema &&
-                              item.archivo ===
-                                t.archivo
+                          obtenerIndiceElemento(
+                            t
                           );
 
                         return (
                           <button
                             type="button"
-                            key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+                            key={`tema-inicial-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
                             data-search-index={
                               index
                             }
@@ -856,23 +647,102 @@ export default function SearchModal({
                             }`}
                           >
                             <p className="search-result-item__tema">
-                              <ResaltarCoincidencia
-                                texto={t.tema}
-                                query={query}
-                              />
+                              {t.tema}
                             </p>
                           </button>
                         );
                       }
                     )}
                   </div>
-                )
+                );
+              }
+            )}
+          </div>
+        )}
+
+        {mostrarResultados &&
+          grupos.length > 0 && (
+            <div className="search-results">
+              {grupos.map(
+                (g, grupoIndex) => {
+                  const cursoIndex =
+                    obtenerIndiceElemento({
+                      type: "curso",
+                      nombre: g.curso
+                    });
+
+                  return (
+                    <div
+                      key={`grupo-${g.curso}-${grupoIndex}`}
+                      className="search-group"
+                    >
+                      <button
+                        type="button"
+                        data-search-index={
+                          cursoIndex
+                        }
+                        className={`search-result-item is-curso${
+                          cursoIndex ===
+                          focusedIdx
+                            ? " is-focused"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          ejecutarBusqueda({
+                            type: "curso",
+                            nombre: g.curso
+                          })
+                        }
+                      >
+                        <span className="curso-title">
+                          {g.curso}
+                        </span>
+                      </button>
+
+                      {g.temas.map(
+                        (t, temaIndex) => {
+                          const index =
+                            obtenerIndiceElemento(
+                              t
+                            );
+
+                          return (
+                            <button
+                              type="button"
+                              key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+                              data-search-index={
+                                index
+                              }
+                              onClick={() =>
+                                ejecutarBusqueda(
+                                  t
+                                )
+                              }
+                              className={`search-result-item is-tema${
+                                index ===
+                                focusedIdx
+                                  ? " is-focused"
+                                  : ""
+                              }`}
+                            >
+                              <p className="search-result-item__tema">
+                                <ResaltarCoincidencia
+                                  texto={t.tema}
+                                  query={query}
+                                />
+                              </p>
+                            </button>
+                          );
+                        }
+                      )}
+                    </div>
+                  );
+                }
               )}
             </div>
           )}
 
-        {inputFocused &&
-          hayQuery &&
+        {mostrarResultados &&
           grupos.length === 0 && (
             <div className="search-results">
               <div className="search-group">

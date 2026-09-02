@@ -71,79 +71,6 @@
 }
 
 /* ============================================================
-   BOTÓN CONTINUAR
-   ============================================================ */
-
-.welcome-section__continuar-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-md);
-  background: var(--primary-bg);
-  color: var(--primary);
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.15s linear,
-    border-color 0.15s linear,
-    color 0.15s linear;
-}
-
-.welcome-section__continuar-indicator {
-  flex-shrink: 0;
-  font-size: 1.1rem;
-  font-weight: var(--fw-normal);
-  opacity: 0.7;
-}
-
-.welcome-section__continuar-label {
-  flex-shrink: 0;
-  font-weight: var(--fw-bold);
-}
-
-.welcome-section__continuar-tema {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: var(--fw-normal);
-}
-
-.welcome-section__continuar-arrow {
-  flex-shrink: 0;
-  font-size: 1.1rem;
-  font-weight: var(--fw-bold);
-}
-
-.welcome-section__continuar-btn:hover
-.welcome-section__continuar-arrow {
-  animation: continuar-arrow 0.35s linear infinite alternate;
-}
-
-@keyframes continuar-arrow {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(5px);
-  }
-}
-
-.welcome-section__continuar-btn:hover {
-  background: rgba(37, 99, 235, 0.14);
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-/* ============================================================
    TÍTULO
    ============================================================ */
 
@@ -220,12 +147,7 @@
   display: flex;
   flex-direction: column;
   border: none;
-  border-top: 3px solid
-    color-mix(
-      in srgb,
-      var(--accent),
-      transparent 65%
-    );
+  border-top: 3px solid color-mix(in srgb, var(--accent), transparent 65%);
   border-radius: 14px;
   background: transparent;
   padding: 18px 16px;
@@ -338,7 +260,6 @@
 
 /* ============================================================
    NAVEGACIÓN DE TEMAS
-   Los botones se separan a los extremos.
    ============================================================ */
 
 .welcome-section__temas-navigation {
@@ -358,18 +279,14 @@
   justify-content: center;
   gap: 4px;
   padding: 2px 0;
-
   border: none;
   background: transparent;
   color: var(--ink-soft);
-
   font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: var(--fw-normal);
   line-height: 1.2;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     color 0.15s linear,
     transform 0.15s linear;
@@ -452,10 +369,6 @@
   box-sizing: border-box;
   border-radius: 50%;
 
-  /* ==========================================================
-     CHECK
-     ========================================================== */
-
   &-check {
     position: relative;
     display: block;
@@ -467,18 +380,10 @@
     margin-top: -2px;
   }
 
-  /* ==========================================================
-     COMPLETADO
-     ========================================================== */
-
   &--completado {
     color: var(--success);
     border: 2px solid currentColor;
   }
-
-  /* ==========================================================
-     EN CURSO
-     ========================================================== */
 
   &--en_curso {
     color: var(--warning);
@@ -507,142 +412,9 @@
     }
   }
 
-  /* ==========================================================
-     PENDIENTE
-     ========================================================== */
-
   &--pendiente {
     color: var(--ink-faint);
     opacity: 0.35;
     border: 2px dashed currentColor;
   }
-}
-
-/* ============================================================
-   FORMULARIO Y CONTACTO
-   ============================================================ */
-
-.welcome-section__form-section {
-  width: 100%;
-  padding: 80px 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-}
-
-.welcome-section__form-header {
-  width: 100%;
-  max-width: 600px;
-  text-align: left;
-}
-
-.welcome-section__form-header
-.welcome-section__title {
-  margin-bottom: 10px;
-}
-
-.welcome-section__form-desc {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-}
-
-.welcome-section__form {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  padding: 28px;
-  box-sizing: border-box;
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-sm);
-}
-
-.welcome-section__campo {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  width: 100%;
-  text-align: left;
-}
-
-.welcome-section__campo-label {
-  display: block;
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.4;
-  font-weight: var(--fw-bold);
-  color: var(--ink);
-}
-
-.welcome-section__campo-help {
-  margin: -3px 0 2px;
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-.welcome-section__textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 14px 15px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.5;
-  outline: none;
-  resize: none;
-  min-height: 110px;
-  transition:
-    border-color 0.2s linear,
-    box-shadow 0.2s linear;
-}
-
-.welcome-section__textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-bg);
-}
-
-/* ============================================================
-   BOTÓN ENVIAR
-   ============================================================ */
-
-.welcome-section__btn-submit {
-  min-width: 210px;
-  min-height: 48px;
-  padding: 12px 26px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  background: var(--primary);
-  color: var(--ink-on-primary);
-  border: none;
-  border-bottom: 3px solid var(--primary-dark);
-  border-radius: var(--radius-md);
-  font-family: var(--font-body);
-  font-weight: var(--fw-bold);
-  font-size: 1rem;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.15s linear,
-    transform 0.15s linear;
-}
-
-.welcome-section__btn-submit:hover:not(:disabled) {
-  background: var(--primary-dark);
-}
-
-.welcome-section__btn-submit:active:not(:disabled) {
-  border-bottom-width: 0;
-  transform: translateY(3px);
 }

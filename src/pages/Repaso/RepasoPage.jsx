@@ -4,7 +4,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
 import TutorialSpotlight from "../../components/TutorialSpotlight";
 import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_REPASO } from "../../data/tutorialSteps";
+import { TUTORIAL_REPASO, TUTORIAL_REPASO_VACIO } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 
 import {
@@ -66,6 +66,12 @@ export default function RepasoPage() {
     () => clasificarRepasos(log),
     [log]
   );
+
+  // Si no hay repasos pendientes hoy, las tarjetas (.repaso__item-*)
+  // no existen en el DOM: usamos la versión reducida del tutorial para
+  // que no salte pasos.
+  const tutorialRepasoSteps =
+    repasosHoy.length === 0 ? TUTORIAL_REPASO_VACIO : TUTORIAL_REPASO;
 
   /*
    * ─────────────────────────────────────────────────────────────
@@ -182,9 +188,9 @@ export default function RepasoPage() {
           onAbrirBuscador={() =>
             setSearchOpen(true)
           }
-          tutorialSteps={TUTORIAL_REPASO}
+          tutorialSteps={tutorialRepasoSteps}
           onSelectTutorialStep={(idx) => {
-            setTutorialRepasoPasoUnico(TUTORIAL_REPASO[idx]);
+            setTutorialRepasoPasoUnico(tutorialRepasoSteps[idx]);
             setTutorialRepasoOpen(true);
           }}
         />
@@ -590,7 +596,7 @@ export default function RepasoPage() {
           steps={
             tutorialRepasoPasoUnico
               ? [tutorialRepasoPasoUnico]
-              : TUTORIAL_REPASO
+              : tutorialRepasoSteps
           }
           open={tutorialRepasoOpen}
           onClose={() => {

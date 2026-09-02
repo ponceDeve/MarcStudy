@@ -17,16 +17,16 @@
       "titulo": "Razonamiento Deductivo (Teoría General)",
       "puntos": [
         {
-          "texto": "«Razonamiento deductivo» → deducción de caso general a particular.",
+          "texto": "Razonamiento deductivo → deducción de caso general a particular.",
           "explicacion": "La deducción aplica leyes matemáticas universales y generales a situaciones puntuales, contrastando diametralmente con la inducción matemática. Al igual que usar una receta estándar para hornear un pastel ajustando solo el tamaño del molde (cotidiano), adaptas los datos a la regla. Método: Identifica el patrón general y evalúa para el dato pedido sin calcular exhaustivamente. Ejemplo resuelto: Si todo polinomio $P(x)$ de grado cero es constante con valor $k$, y sabemos que $P(x) = 5$, entonces al evaluar $P(10)$ el resultado es inexorablemente 5."
         },
         {
-          "texto": "«Producto nulo» con factor $(x-x)=0$.",
+          "texto": "Producto nulo con factor $(x-x)=0$.",
           "explicacion": "En un producto algebraico sucesivo y continuo basado en el abecedario, inevitablemente aparecerá el término central nulo que absorbe todo. Relacionado a la propiedad multiplicativa del cero en números reales. Como cuando cortas la energía de la casa desde la llave principal apagando absolutamente todo el sistema eléctrico (cotidiano), un cero anula la expresión. Método: Busca analíticamente la letra que coincide con la variable principal. Ejemplo resuelto: $P=(x-a)(x-b)\\dots(x-x)\\dots(x-z)=(x-a)\\dots(0)\\dots(x-z)=0$."
         },
         {
-          "texto": "Evaluando $P=(10-a)\\dots(10-z)$ con «factor cero».",
-          "explicacion": "Al reemplazar la variable abstracta por un número fijo, buscaremos el factor exacto que al restarse arroje cero como resultado. Es la aplicación directa de la técnica del «producto nulo» explicada antes. Imagina revisar tu manojo de llaves y notar que justo te falta la de la puerta principal, perdiendo todo el acceso (cotidiano), ese factor faltante anula tu entrada. Método: Iguala la variable numérica al valor de la letra equivalente en el patrón. Ejemplo numérico resuelto: Hallar el valor de $M=(7-1)(7-2)\\dots(7-10)$. Al avanzar en la serie, el séptimo factor es $(7-7)=0$, resultando finalmente en $M=0$."
+          "texto": "Evaluando $P=(10-a)\\dots(10-z)$ con factor cero.",
+          "explicacion": "Al reemplazar la variable abstracta por un número fijo, buscaremos el factor exacto que al restarse arroje cero como resultado. Es la aplicación directa de la técnica del producto nulo explicada antes. Imagina revisar tu manojo de llaves y notar que justo te falta la de la puerta principal, perdiendo todo el acceso (cotidiano), ese factor faltante anula tu entrada. Método: Iguala la variable numérica al valor de la letra equivalente en el patrón. Ejemplo numérico resuelto: Hallar el valor de $M=(7-1)(7-2)\\dots(7-10)$. Al avanzar en la serie, el séptimo factor es $(7-7)=0$, resultando finalmente en $M=0$."
         }
       ]
     },
@@ -34,12 +34,12 @@
       "titulo": "Cifras Terminales (Terminaciones Invariantes)",
       "puntos": [
         {
-          "texto": "«Invariancia» pura: $(\\dots5)^n=\\dots5$.",
+          "texto": "Invariancia pura: $(\\dots5)^n=\\dots5$.",
           "explicacion": "Las bases numéricas que terminan en cero, uno, cinco y seis repiten invariablemente su última cifra al elevarse a cualquier exponente entero positivo. Esto fundamenta las reglas operativas de los cuadrados perfectos. Como un reloj digital programado que marca las doce cada mediodía sin importar el día del año (cotidiano), el patrón final es inalterable. Método: Observa la última cifra de la base, ignora el exponente y simplemente cópiala. Ejemplo resuelto: Calcular la terminación de $T=31^{40}+25^{13}$. Operando directamente por invariancia: $T=\\dots1+\\dots5=\\dots6$."
         },
         {
           "texto": "Sumando potencias invariantes: $E=1235^x+41^y$.",
-          "explicacion": "Resolveremos sumas combinando bases con «invariancia» pura de cifras terminales. Se apoya en el principio de que solo la unidad de la base determina la terminación de la potencia, volviendo irrelevante el tamaño de las variables del exponente. Similar a saber que el tren de la línea verde siempre te dejará en la misma estación central sin importar a qué velocidad viaje el conductor (cotidiano). Método: Reduce cada término algebraico a su última cifra constante. Ejemplo numérico resuelto: $E=1235^{2026}+41^{2026}$. La terminación de la base terminada en cinco es 5, y la de uno es 1. Sumando ambas unidades: $E=\\dots5+\\dots1=\\dots6$."
+          "explicacion": "Resolveremos sumas combinando bases con invariancia pura de cifras terminales. Se apoya en el principio de que solo la unidad de la base determina la terminación de la potencia, volviendo irrelevante el tamaño de las variables del exponente. Similar a saber que el tren de la línea verde siempre te dejará en la misma estación central sin importar a qué velocidad viaje el conductor (cotidiano). Método: Reduce cada término algebraico a su última cifra constante. Ejemplo numérico resuelto: $E=1235^{2026}+41^{2026}$. La terminación de la base terminada en cinco es 5, y la de uno es 1. Sumando ambas unidades: $E=\\dots5+\\dots1=\\dots6$."
         }
       ]
     },
@@ -47,12 +47,12 @@
       "titulo": "Cifras Terminales (Ciclos de Paridad)",
       "puntos": [
         {
-          "texto": "«Ciclo par» para $(\\dots4)^{\\text{par}}=\\dots6$.",
-          "explicacion": "Las bases terminadas en cuatro y nueve alternan su última cifra dependiendo exclusivamente de la «paridad» de su exponente numérico. Esto sirve de preámbulo analítico a los ciclos más complejos de cuatro tiempos. Es como accionar un interruptor clásico de luz: solo existen los estados encendido o apagado, alternando mutuamente cada vez que lo tocas (cotidiano). Método: Para la base cuatro, exponente impar arroja 4 y par arroja 6; para la base nueve, exponente impar da 9 y par da 1. Ejemplo resuelto: $4^1=4$, $4^2=16\\rightarrow\\dots6$, verificando el patrón."
+          "texto": "Ciclo par para $(\\dots4)^{\\text{par}}=\\dots6$.",
+          "explicacion": "Las bases terminadas en cuatro y nueve alternan su última cifra dependiendo exclusivamente de la paridad de su exponente numérico. Esto sirve de preámbulo analítico a los ciclos más complejos de cuatro tiempos. Es como accionar un interruptor clásico de luz: solo existen los estados encendido o apagado, alternando mutuamente cada vez que lo tocas (cotidiano). Método: Para la base cuatro, exponente impar arroja 4 y par arroja 6; para la base nueve, exponente impar da 9 y par da 1. Ejemplo resuelto: $4^1=4$, $4^2=16\\rightarrow\\dots6$, verificando el patrón."
         },
         {
           "texto": "Evaluando paridad en $R=14^{22}+19^{33}$.",
-          "explicacion": "Aplicaremos el análisis de exponentes gigantes para bases cuatro y nueve determinando su «paridad». Conectar esta lógica simplifica drásticamente potencias monumentales, eludiendo multiplicaciones titánicas y absurdas en exámenes de admisión. Como asomarte por la ventana para decidir instantáneamente si llevarás paraguas o gafas de sol antes de salir (cotidiano), evaluamos el estado antes de calcular a ciegas. Método: Identifica la unidad de la base y mira el último dígito del exponente para verificar si es par. Ejemplo numérico resuelto: Hallar la cifra final de $R=14^{22}+19^{33}$. El exponente 22 es par (termina en 6), el 33 es impar (termina en 9). Total: $R=\\dots6+\\dots9=\\dots15\\rightarrow\\dots5$."
+          "explicacion": "Aplicaremos el análisis de exponentes gigantes para bases cuatro y nueve determinando su paridad. Conectar esta lógica simplifica drásticamente potencias monumentales, eludiendo multiplicaciones titánicas y absurdas en exámenes de admisión. Como asomarte por la ventana para decidir instantáneamente si llevarás paraguas o gafas de sol antes de salir (cotidiano), evaluamos el estado antes de calcular a ciegas. Método: Identifica la unidad de la base y mira el último dígito del exponente para verificar si es par. Ejemplo numérico resuelto: Hallar la cifra final de $R=14^{22}+19^{33}$. El exponente 22 es par (termina en 6), el 33 es impar (termina en 9). Total: $R=\\dots6+\\dots9=\\dots15\\rightarrow\\dots5$."
         }
       ]
     },
@@ -60,7 +60,7 @@
       "titulo": "Cifras Terminales (Ciclos de Cuatro)",
       "puntos": [
         {
-          "texto": "«Ciclo cuatro» tipo $(\\dots2)^{4+1}=\\dots2$.",
+          "texto": "Ciclo cuatro tipo $(\\dots2)^{4+1}=\\dots2$.",
           "explicacion": "Las terminaciones de dos, tres, siete y ocho completan un ciclo rotativo cada cuatro potencias consecutivas. Esta propiedad amplía la lógica binaria del ciclo de paridad aplicando el algoritmo de división modular. Al igual que el transcurso de las cuatro estaciones climatológicas que se repiten cíclicamente cada doce meses (cotidiano), los restos de la división marcan la pauta del ciclo. Método: Expresa el exponente original como un múltiplo de cuatro más un número residual y busca en la tabla de las primeras cuatro potencias. Ejemplo resuelto: $(\\dots2)^{4+1}=\\dots2$, $(\\dots2)^{4+2}=\\dots4$, $(\\dots2)^{4+3}=\\dots8$ y $(\\dots2)^4=\\dots6$."
         },
         {
@@ -77,24 +77,24 @@
           "explicacion": "Se multiplica rápidamente copiando el dígito extremo y sumando las cifras adyacentes avanzando de derecha a izquierda. Posee su férrea justificación algebraica en factorizar el once como una suma de base diez más uno. Así como una brigada de rescate pasa baldes de agua donde cada persona toma el balde de su compañero previo para avanzar (cotidiano), cada nueva cifra surge de integrar a sus vecinas. Método: Copia las unidades, suma pares de cifras consecutivas hacia la izquierda y baja la cifra principal original más lo acumulado. Ejemplo numérico resuelto: Multiplicar $234\\times11$. Unidades: 4. Sumas adyacentes: $4+3=7$, luego $3+2=5$. Bajas el 2 del inicio. El resultado es 2574."
         },
         {
-          "texto": "Llevando el «acarreo» en $47358\\times11$.",
-          "explicacion": "Cuando la adición contigua de cifras supera el dígito nueve, preservamos el exceso como un «acarreo» para la siguiente columna izquierda. Constituye el mismo proceso lógico de retención de las sumas tradicionales. Imagina agrupar sistemáticamente tus monedas sueltas sobrantes en una alcancía para canjear un billete completo en el banco al día siguiente (cotidiano), acumulamos el excedente para el próximo paso. Método: Anota exclusivamente las unidades de la suma parcial y adiciona la decena sobrante al próximo par. Ejemplo numérico resuelto: Efectuar $85\\times11$. Cifra final: 5. Suma $8+5=13$, entonces anotas 3 y llevas 1. Cifra inicial será $8+1=9$. El resultado final es 935."
+          "texto": "Llevando el acarreo en $47358\\times11$.",
+          "explicacion": "Cuando la adición contigua de cifras supera el dígito nueve, preservamos el exceso como un acarreo para la siguiente columna izquierda. Constituye el mismo proceso lógico de retención de las sumas tradicionales. Imagina agrupar sistemáticamente tus monedas sueltas sobrantes en una alcancía para canjear un billete completo en el banco al día siguiente (cotidiano), acumulamos el excedente para el próximo paso. Método: Anota exclusivamente las unidades de la suma parcial y adiciona la decena sobrante al próximo par. Ejemplo numérico resuelto: Efectuar $85\\times11$. Cifra final: 5. Suma $8+5=13$, entonces anotas 3 y llevas 1. Cifra inicial será $8+1=9$. El resultado final es 935."
         },
         {
           "texto": "Multiplicación $N\\times(10^k-1)$ para nueves.",
           "explicacion": "Multiplicar por extensas cadenas de nueves equivale algebraicamente a agregar ceros a la derecha y restar el número originario. Reemplaza de forma magistral una multiplicación sumamente compleja por una sustracción directa empleando complementos aritméticos. Absolutamente análogo a pagar un recibo telefónico de noventa y nueve soles entregando un billete de cien y aguardando un solo sol de vuelto (cotidiano). Método: Contabiliza los nueves presentes, agrega idéntica cantidad de ceros al número base y réstale el número principal. Ejemplo numérico resuelto: Resolver $232\\times99$. Se transforma inmediatamente en $232\\times(100-1)=23200-232$. La sustracción arroja 22968."
         },
         {
-          "texto": "«Criptoaritmética» con resta $NEWT\\times9999$.",
-          "explicacion": "Emplear la diferencia mediante ceros resulta vital para develar incógnitas en la «criptoaritmética» con factores de nueves. Transmuta abstractas ecuaciones horizontales literales en sustracciones verticales muy amigables, viabilizando descubrir cada dígito por mera columna. Como armar pacientemente un rompecabezas probando físicamente qué pieza encaja perfecto en el hueco dejado por el resto (cotidiano). Método: Plantea la diferencia con ceros de forma vertical, igualando las terminaciones conocidas para restar de abajo hacia arriba. Ejemplo numérico resuelto: Hallar letras en $NEWT\\times9999=\\dots7034$. Equivale operativamente a restar $NEWT0000-NEWT=\\dots7034$. En la columna de unidades de la sustracción: $10-T=4\\rightarrow T=6$."
+          "texto": "Criptoaritmética con resta $NEWT\\times9999$.",
+          "explicacion": "Emplear la diferencia mediante ceros resulta vital para develar incógnitas en la criptoaritmética con factores de nueves. Transmuta abstractas ecuaciones horizontales literales en sustracciones verticales muy amigables, viabilizando descubrir cada dígito por mera columna. Como armar pacientemente un rompecabezas probando físicamente qué pieza encaja perfecto en el hueco dejado por el resto (cotidiano). Método: Plantea la diferencia con ceros de forma vertical, igualando las terminaciones conocidas para restar de abajo hacia arriba. Ejemplo numérico resuelto: Hallar letras en $NEWT\\times9999=\\dots7034$. Equivale operativamente a restar $NEWT0000-NEWT=\\dots7034$. En la columna de unidades de la sustracción: $10-T=4\\rightarrow T=6$."
         },
         {
-          "texto": "«Cuadrado en cinco» $(\\dots5)^2=\\dots25$.",
+          "texto": "Cuadrado en cinco $(\\dots5)^2=\\dots25$.",
           "explicacion": "Cualquier número natural culminado en cifra cinco que sea elevado al cuadrado finalizará indefectiblemente en veinticinco. Es el caso particular más notable derivado de la regla de invariancia de cifras terminales tratada inicialmente. Como utilizar un atajo vecinal conocido en tu ruta diaria al trabajo que te garantiza ahorrar tiempo de viaje incondicionalmente (cotidiano). Método: Escribe el 25 como bloque final. Toma las cifras precedentes al cinco (llamadas $n$) y multiplica por su consecutivo entero inmediato $n(n+1)$, anteponiendo el producto. Ejemplo numérico resuelto: Calcular $(45)^2$. La terminación asegura un 25. Prefijo inicial: $4\\times5=20$. Ensamblando las partes obtenemos el resultado de 2025."
         },
         {
           "texto": "Producto de consecutivos en $(105)^2=11025$.",
-          "explicacion": "La regla estructural del «cuadrado en cinco» opera idénticamente para números colosales agrupando todo el prefijo numérico como una unidad inseparable. Garantiza extrema celeridad y precisión en problemas donde operar tradicionalmente consumiría demasiado tiempo vital de examen. Imagina agrupar fajos pequeños de billetes en densos bloques de cien para cuantificar enormes sumas de efectivo velozmente (cotidiano), empaquetamos los primeros dígitos. Método: Aísla el bloque numérico completo previo al cinco y multiplícalo por el siguiente valor entero consecutivo del bloque. Ejemplo numérico resuelto: Evaluar la potencia $(105)^2$. El bloque prefijo es $n=10$. Su producto respectivo es $10\\times11=110$. Anexamos el veinticinco obligatorio. Resultado final e indiscutible: 11025."
+          "explicacion": "La regla estructural del cuadrado en cinco opera idénticamente para números colosales agrupando todo el prefijo numérico como una unidad inseparable. Garantiza extrema celeridad y precisión en problemas donde operar tradicionalmente consumiría demasiado tiempo vital de examen. Imagina agrupar fajos pequeños de billetes en densos bloques de cien para cuantificar enormes sumas de efectivo velozmente (cotidiano), empaquetamos los primeros dígitos. Método: Aísla el bloque numérico completo previo al cinco y multiplícalo por el siguiente valor entero consecutivo del bloque. Ejemplo numérico resuelto: Evaluar la potencia $(105)^2$. El bloque prefijo es $n=10$. Su producto respectivo es $10\\times11=110$. Anexamos el veinticinco obligatorio. Resultado final e indiscutible: 11025."
         }
       ]
     },
@@ -102,15 +102,15 @@
       "titulo": "Habilidad Operativa (Simplificación Numérica)",
       "puntos": [
         {
-          "texto": "«Factorización» de numeral repetitivo $\\overline{abab}=\\overline{ab}\\times101$.",
+          "texto": "Factorización de numeral repetitivo $\\overline{abab}=\\overline{ab}\\times101$.",
           "explicacion": "Los numerales enteros estructurados por bloques reiterativos se pueden descomponer nítidamente extrayendo el bloque y multiplicándolo por cadenas de ceros y unos. Su fundamento más profundo recae en la rigurosa descomposición polinómica en el sistema decimal. Al igual que mercar en el supermercado un gran empaque familiar de seis bebidas ahorrando el paso de escanear individualmente cada botella (cotidiano), factorizamos por racimos enteros. Método: Extrae el sub-bloque que se repite constantemente y multiplica por el formato adecuado de unos separados por ceros. Ejemplo numérico resuelto: Simplificar agresivamente la fracción $\\frac{1313}{3434}$. Descomponemos el numerador como $13\\times101$ y el denominador como $34\\times101$. Cancelando el factor común, nos queda $\\frac{13}{34}$."
         },
         {
           "texto": "Suma de fracciones factorizadas $S=68\\times\\frac{13}{34}$.",
-          "explicacion": "Frente a sumatorias kilométricas de fracciones cuyos numerales crecen iterativamente, la técnica de «factorización» revela que son términos idénticos ocultos. Supone una mera ilusión óptica matemática ideada para intimidar; simulan aumentar de tamaño pero su valor real es estático. Igual que tener exactamente un litro de agua que mantiene su volumen sin importar si lo presentas en una jarra o disperso en varios vasos pequeños (cotidiano). Método: Factoriza exhaustivamente cada término fraccionario para descubrir la constante y multiplícala por la cantidad total de términos. Ejemplo numérico resuelto: Sumar un total de sesenta y ocho veces la serie $S=\\frac{13}{34}+\\frac{1313}{3434}+\\dots$. Tras cancelar el $101$, $10101$, etc., vemos que cada fracción vale $\\frac{13}{34}$. Sumando: $68\\times\\frac{13}{34}=2\\times13=26$."
+          "explicacion": "Frente a sumatorias kilométricas de fracciones cuyos numerales crecen iterativamente, la técnica de factorización revela que son términos idénticos ocultos. Supone una mera ilusión óptica matemática ideada para intimidar; simulan aumentar de tamaño pero su valor real es estático. Igual que tener exactamente un litro de agua que mantiene su volumen sin importar si lo presentas en una jarra o disperso en varios vasos pequeños (cotidiano). Método: Factoriza exhaustivamente cada término fraccionario para descubrir la constante y multiplícala por la cantidad total de términos. Ejemplo numérico resuelto: Sumar un total de sesenta y ocho veces la serie $S=\\frac{13}{34}+\\frac{1313}{3434}+\\dots$. Tras cancelar el $101$, $10101$, etc., vemos que cada fracción vale $\\frac{13}{34}$. Sumando: $68\\times\\frac{13}{34}=2\\times13=26$."
         },
         {
-          "texto": "Sistema deductivo de «numeral» lineal.",
+          "texto": "Sistema deductivo de numeral lineal.",
           "explicacion": "Facilita resolver sistemas simultáneos de ecuaciones donde intervienen numerales en base diez efectuando sumas o restas verticales sistemáticas para despejar o eliminar componentes cíclicos. Afianza robustamente el esquema general analítico de deducción algebraica. Asemeja a pesar dos maletas viajeras juntas en la báscula y luego pesarlas restando diferencias para deducir certeramente el peso neto de cada bulto (cotidiano). Método: Ejecuta suma algebraica de las ecuaciones hacia abajo para despejar el numeral más grande o relevante. Ejemplo numérico resuelto: Si nos dan $\\overline{abc}+\\overline{cab}=\\dots5$ y también $\\overline{abc}-\\overline{cab}=\\dots5$. Sumando las expresiones se anula $\\overline{cab}$, quedando $2(\\overline{abc})=\\dots0$, lo que implica que la cifra $c$ máxima forma el numeral $\\overline{abc}=905$. Luego $a\\times c+b=9\\times5+0=45$."
         }
       ]
@@ -119,11 +119,11 @@
       "titulo": "Problemas Complejos (Series y Criptoaritmética)",
       "puntos": [
         {
-          "texto": "Producto infinito en serie de «paridad».",
+          "texto": "Producto infinito en serie de paridad.",
           "explicacion": "Dentro del cálculo de productos infinitamente largos o de grado indeterminado, basta imperativamente con hallar un único factor absorbente (como terminaciones en cero o cinco emparejadas) para dictaminar el fin de todo el sistema iterativo. Sigue la misma premisa fatalista de encontrar apenas una manzana seriamente podrida en un lote cerrado que arruina toda la caja irremediablemente (cotidiano). Método: Inspecciona meticulosamente los primeros términos sucesivos buscando patrones de anulación o cifras terminales dominantes. Ejemplo numérico resuelto: Encontrar la cifra terminal de la mega serie $M=(4^1+1)(4^2-1)(4^3+1)\\dots$. El primer paréntesis arroja $(4+1)=5$. Al multiplicar permanentemente un número terminado en cinco por cualquier factor impar posterior (verificando la paridad de la base cuatro), el resultado siempre terminará inexorablemente en 5."
         },
         {
-          "texto": "Sumas iterativas en «criptoaritmética» de columna.",
+          "texto": "Sumas iterativas en criptoaritmética de columna.",
           "explicacion": "Al enfrentarse a la suma de progresiones donde las cifras anexan dígitos hacia la izquierda sistemáticamente (por ejemplo sumar $6+46+646$), la clave reside en alinear uniformemente las cifras a la derecha para contar repeticiones verticales unitarias. Simula metódicamente armar una torre lúdica de bloques de madera donde la base inferior siempre concentra la mayor cantidad de piezas aguantando el peso total (cotidiano). Método: Multiplica velozmente la cifra terminal constante de las unidades por el conteo absoluto de términos para sacar el acarreo base. Ejemplo numérico resuelto: Efectuar la suma de doce gigantescos términos $6+46+646+\\dots$. La columna principal derecha contiene puntualmente doce veces al número seis: $12\\times6=72$, terminando en cifra 2 e imponiendo un acarreo de 7. La segunda columna tendrá once veces al cuatro: $11\\times4+7=51\\rightarrow\\dots1$."
         }
       ]
@@ -795,7 +795,7 @@
     },
     {
       "tipo": "opcion_multiple",
-      "q": "El sistema de frenos automáticos de un tren metropolitano se calibra usando una ecuación deductiva en el denominador del tiempo de respuesta: $T = \frac{100}{(V - a)(V - b)\\dots(V - z)}$, donde $V$ es la velocidad del tren en el alfabeto. Si los sensores fallan al intentar evaluar a la velocidad $V$ equivalente a la letra «h», ¿qué acción matemática sucede con el protocolo de frenos al tratar de aplicar multiplicaciones rápidas de $11$ al resultado general?",
+      "q": "El sistema de frenos automáticos de un tren metropolitano se calibra usando una ecuación deductiva en el denominador del tiempo de respuesta: $T = \frac{100}{(V - a)(V - b)\\dots(V - z)}$, donde $V$ es la velocidad del tren en el alfabeto. Si los sensores fallan al intentar evaluar a la velocidad $V$ equivalente a la letra h, ¿qué acción matemática sucede con el protocolo de frenos al tratar de aplicar multiplicaciones rápidas de $11$ al resultado general?",
       "opts": [
         "El sistema arroja un valor de $1100$ milisegundos de respuesta.",
         "El protocolo arroja un error nulo irrecuperable por división entre cero, paralizando el cálculo.",

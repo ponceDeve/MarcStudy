@@ -33,6 +33,26 @@
   width: 100%;
   max-width: 42rem;
   margin-top: 100px;
+
+  &:has(.search-results) {
+    .search-input-row {
+      border-radius: 30px 30px 0 0;
+    }
+
+    .search-input-lupa {
+      border-radius: 50% 50% 0 50%;
+    }
+  }
+
+  &:not(:has(.search-results)) {
+    .search-input-row {
+      border-radius: 30px;
+    }
+
+    .search-input-lupa {
+      border-radius: 50%;
+    }
+  }
 }
 
 /* ============================================================
@@ -49,10 +69,10 @@
   font-size: clamp(26px, 6vw, 38px);
   font-weight: 800;
   color: var(--ink-on-primary);
-}
 
-.search-saludo__nombre {
-  font-weight: 800;
+  &__nombre {
+    font-weight: 800;
+  }
 }
 
 /* ============================================================
@@ -69,15 +89,16 @@
   border: 1px solid var(--border-strong);
   border-radius: 30px;
   z-index: 2;
-}
+  overflow: hidden;
 
-.search-input-row:focus-within {
-  border-color: var(--border-strong);
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, .04);
-}
+  &:focus-within {
+    border-color: var(--border-strong);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .04);
+  }
 
-.search-input-row.has-query {
-  border-radius: 30px 30px 0 0;
+  &.has-query {
+    border-radius: 30px 30px 0 0;
+  }
 }
 
 /* ============================================================
@@ -93,12 +114,21 @@
   border: none;
   outline: none;
   padding: 14px 112px 14px 24px;
+  font-family: var(--font-body);
   font-size: 16px;
-}
 
-.search-input:focus {
-  outline: none;
-  box-shadow: none;
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--ink-faint);
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
 }
 
 /* ============================================================
@@ -125,18 +155,14 @@
   z-index: 3;
   font: inherit;
   transition: background-color .15s linear, transform .1s linear;
-}
 
-.search-input-row.has-query .search-input-lupa {
-  border-radius: 50% 50% 0 50%;
-}
+  &:hover {
+    background: var(--secondary-dark);
+  }
 
-.search-input-lupa:hover {
-  background: var(--secondary-dark);
-}
-
-.search-input-lupa:active {
-  transform: scale(.96);
+  &:active {
+    transform: scale(.96);
+  }
 }
 
 /* ============================================================
@@ -161,224 +187,22 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   z-index: 4;
   transition: color .15s linear, transform .1s linear;
-}
 
-.search-input-clear i {
-  font-size: 20px;
-  line-height: 1;
-}
+  i {
+    color: inherit;
+    font-size: 20px;
+    line-height: 1;
+  }
 
-.search-input-clear:hover {
-  background: transparent;
-  color: var(--danger);
-}
+  &:hover {
+    background: transparent;
+    color: var(--danger);
+  }
 
-.search-input-clear:active {
-  background: transparent;
-  transform: translateY(-50%) scale(.9);
-}
-
-/* ============================================================
-   HISTORIAL
-   ============================================================ */
-
-.search-history {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin: 0;
-  padding: 0 0 6px;
-  box-sizing: border-box;
-  background: var(--ink-on-primary);
-  border: 1px solid var(--border-strong);
-  border-top: none;
-  border-radius: 0 0 30px 30px;
-  box-shadow: none;
-  max-height: 400px;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.search-history::-webkit-scrollbar {
-  width: 6px;
-}
-
-.search-history::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.search-history::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: var(--radius-full);
-}
-
-/* ============================================================
-   ELEMENTO DEL HISTORIAL
-   ============================================================ */
-
-.search-history-item {
-  width: 100%;
-  min-height: 46px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  text-align: left;
-  border: none;
-  background: transparent;
-  padding: 4px 10px 4px 16px;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  border-radius: 0;
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: .93rem;
-  transition: background-color .15s linear, color .15s linear;
-}
-
-.search-history-item:hover,
-.search-history-item.is-focused {
-  background: var(--surface-hover);
-}
-
-/* ============================================================
-   ICONO + NOMBRE
-   ============================================================ */
-
-.search-history-item > div {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.search-history-item > div > i {
-  flex: 0 0 20px;
-  width: 20px;
-  margin-right: 2px;
-  color: var(--ink-soft);
-  font-size: 14px;
-  text-align: center;
-  transition: color .15s linear;
-}
-
-.search-history-item:hover > div > i,
-.search-history-item.is-focused > div > i {
-  color: var(--secondary);
-}
-
-/* ============================================================
-   NOMBRE
-   ============================================================ */
-
-.search-history-text {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* ============================================================
-   X DEL HISTORIAL
-   ============================================================ */
-
-.search-history-delete {
-  flex: 0 0 38px;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-  border: none;
-  outline: none;
-  background: transparent;
-  color: var(--ink-soft);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: color .15s linear, transform .1s linear;
-}
-
-.search-history-delete i {
-  color: inherit;
-  font-size: 20px;
-  line-height: 1;
-}
-
-.search-history-delete:hover {
-  background: transparent;
-  color: var(--danger);
-}
-
-.search-history-delete:active {
-  background: transparent;
-  transform: scale(.9);
-}
-
-/* ============================================================
-   ACCIONES DEL HISTORIAL
-   ============================================================ */
-
-.search-history-actions {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 16px;
-  padding: 6px 14px 2px;
-  margin: 0;
-  box-sizing: border-box;
-  border-top: 1px solid transparent;
-  border-image: repeating-linear-gradient(
-    to right,
-    var(--border-strong) 0 12px,
-    transparent 12px 24px
-  ) 1;
-}
-
-.search-history-action {
-  width: auto;
-  min-height: auto;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 2px 0;
-  margin: 0;
-  border: none;
-  background: transparent;
-  border-radius: 0;
-  color: var(--ink-faint);
-  font-family: var(--font-body);
-  font-size: .78rem;
-  font-weight: 500;
-  text-align: center;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: color .15s linear;
-}
-
-.search-history-action i {
-  width: auto;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: 11px;
-  color: inherit;
-}
-
-.search-history-action:hover {
-  background: transparent;
-  color: var(--secondary);
-}
-
-.search-history-action--delete {
-  color: var(--ink-faint);
-}
-
-.search-history-action--delete:hover {
-  background: transparent;
-  color: var(--danger);
+  &:active {
+    background: transparent;
+    transform: translateY(-50%) scale(.9);
+  }
 }
 
 /* ============================================================
@@ -401,19 +225,23 @@
   max-height: 400px;
   overflow-x: hidden;
   overflow-y: auto;
-}
+  overscroll-behavior: contain;
 
-.search-results::-webkit-scrollbar {
-  width: 6px;
-}
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-.search-results::-webkit-scrollbar-track {
-  background: transparent;
-}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-.search-results::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
-  border-radius: var(--radius-full);
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: var(--radius-full);
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
 }
 
 /* ============================================================
@@ -423,21 +251,40 @@
 .search-group {
   width: 100%;
   background: var(--ink-on-primary);
+
+  &:not(:first-child) {
+    border-top: 1px solid var(--border);
+  }
 }
 
 /* ============================================================
-   RESULTADO
+   RESULTADO BASE
    ============================================================ */
 
 .search-result-item {
   width: 100%;
+  min-height: 40px;
   box-sizing: border-box;
+  display: block;
   text-align: left;
   border: none;
   background: transparent;
   padding: 9px 16px;
+  margin: 0;
   border-radius: 0;
-  transition: background-color .15s linear, color .15s linear, transform .1s linear;
+  font-family: var(--font-body);
+  transition:
+    background-color .15s linear,
+    color .15s linear,
+    transform .1s linear;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateX(1px);
+  }
 }
 
 /* ============================================================
@@ -445,19 +292,56 @@
    ============================================================ */
 
 .search-result-item.is-curso {
-  border: var(--nested-border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   user-select: none;
   color: var(--primary);
-  font-weight: 700;
   font-size: 1rem;
+  font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-}
-.search-result-item.is-curso:hover {
-  background-color: var(--primary-bg);
-}
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 16px;
 
-.curso-title {
-  display: block;
+  .curso-title {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1.3;
+    text-decoration: none;
+  }
+
+  &:hover,
+  &.is-focused {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+  }
+
+  &:focus-visible {
+    background-color: var(--primary-bg);
+  }
+
+  &:active {
+    transform: translateX(1px);
+  }
+
+  /*
+    Importante:
+    El curso no utiliza .search-match.
+    Aunque el texto coincida con la búsqueda,
+    permanece completamente limpio.
+  */
+
+  .search-match {
+    background: transparent;
+  }
 }
 
 /* ============================================================
@@ -465,21 +349,31 @@
    ============================================================ */
 
 .search-result-item.is-tema {
+  display: block;
+  width: 100%;
   font-size: .95rem;
   background-color: transparent;
   color: var(--ink);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background-color .15s linear, color .15s linear, transform .1s linear;
-}
+  transition:
+    background-color .15s linear,
+    color .15s linear,
+    transform .1s linear;
 
-.search-result-item.is-tema:hover,
-.search-result-item.is-tema.is-focused {
-  background-color: rgba(0, 0, 0, .1);
-  color: var(--ink);
-}
+  &:hover,
+  &.is-focused {
+    background-color: rgba(0, 0, 0, .1);
+    color: var(--ink);
+  }
 
-.search-result-item.is-tema:active {
-  transform: translateX(1px);
+  &:focus-visible {
+    background-color: rgba(0, 0, 0, .1);
+    outline: none;
+  }
+
+  &:active {
+    transform: translateX(1px);
+  }
 }
 
 /* ============================================================
@@ -491,6 +385,7 @@
   font-size: 14px;
   color: inherit;
   margin: 0;
+  line-height: 1.45;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   display: inline;
 }
@@ -501,8 +396,32 @@
   margin: 0;
 }
 
+/* ============================================================
+   TÍTULO DE CURSO
+   ============================================================ */
+
 .curso-title {
   display: block;
+  width: 100%;
+}
+
+/* ============================================================
+   COINCIDENCIA
+   ============================================================ */
+
+.search-match {
+  background: rgba(68, 190, 218, .22);
+  color: inherit;
+  border-radius: 2px;
+}
+
+/*
+  Refuerzo:
+  Nunca se muestra resaltado dentro de un curso.
+*/
+
+.search-result-item.is-curso .search-match {
+  background: transparent;
 }
 
 /* ============================================================
@@ -524,18 +443,13 @@
 
 .search-no-results {
   cursor: default;
-}
+  color: var(--ink-soft);
 
-.search-no-results:hover {
-  background: inherit;
-}
-
-/* ============================================================
-   COINCIDENCIA
-   ============================================================ */
-
-.search-match {
-  background: rgba(68, 190, 218, .22);
+  &:hover,
+  &.is-focused {
+    background: transparent;
+    color: var(--ink-soft);
+  }
 }
 
 /* ============================================================
@@ -546,6 +460,22 @@
   position: relative;
   width: 100%;
   max-width: var(--content-max-width);
+
+  .search-history,
+  .search-empty {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    z-index: 20;
+    box-shadow: var(--shadow-md);
+  }
+
+  .search-empty {
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+  }
 }
 
 .mi-estudio__intro > .home-search {
@@ -573,23 +503,6 @@
   box-shadow: var(--shadow-md);
 }
 
-.home-search .search-history,
-.home-search-empty {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  margin-top: 0;
-  z-index: 20;
-  box-shadow: var(--shadow-md);
-}
-
-.home-search .search-empty {
-  margin: 0;
-  border-top: none;
-  border-radius: 0 0 30px 30px;
-}
-
 /* ============================================================
    BUSCADOR DE NIVELES
    ============================================================ */
@@ -598,28 +511,31 @@
   position: relative;
   width: 100%;
   margin-bottom: 24px;
-}
 
-.levels-modal__search .home-search-input {
-  width: 100%;
-  padding: 11px 16px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--ink);
-  background-color: rgba(0, 0, 0, .1);
-  border: 2px solid var(--border);
-  border-radius: var(--radius-md);
-  outline: none;
-  transition: border-color .2s linear, box-shadow .2s linear;
-}
+  .home-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 16px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ink);
+    background-color: rgba(0, 0, 0, .1);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition:
+      border-color .2s linear,
+      box-shadow .2s linear;
 
-.levels-modal__search .home-search-input::placeholder {
-  color: var(--ink-faint);
-}
+    &::placeholder {
+      color: var(--ink-faint);
+    }
 
-.levels-modal__search .home-search-input:focus {
-  border-color: var(--secondary);
-  outline: none;
+    &:focus {
+      border-color: var(--secondary);
+      outline: none;
+    }
+  }
 }
 
 /* ============================================================
@@ -643,23 +559,19 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-}
 
-/* ============================================================
-   SCROLLBAR NIVELES
-   ============================================================ */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-.levels-modal__search .home-search-results::-webkit-scrollbar {
-  width: 6px;
-}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-.levels-modal__search .home-search-results::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.levels-modal__search .home-search-results::-webkit-scrollbar-thumb {
-  background-color: var(--border-strong);
-  border-radius: var(--radius-full);
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--border-strong);
+    border-radius: var(--radius-full);
+  }
 }
 
 /* ============================================================
@@ -676,25 +588,33 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   font-family: var(--font-body);
   color: var(--ink);
-  transition: background-color .15s linear, color .15s linear, transform .1s linear;
-}
+  transition:
+    background-color .15s linear,
+    color .15s linear,
+    transform .1s linear;
 
-.levels-modal__search .home-search-result:hover,
-.levels-modal__search .home-search-result.is-focused {
-  background-color: var(--surface-hover);
-  color: var(--ink);
-}
+  &:hover,
+  &.is-focused {
+    background-color: var(--surface-hover);
+    color: var(--ink);
+  }
 
-.levels-modal__search .home-search-result:active {
-  transform: translateX(1px);
-}
+  &:focus-visible {
+    background-color: var(--surface-hover);
+    outline: none;
+  }
 
-.levels-modal__search .home-search-result p {
-  margin: 0;
-  font-size: .95rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
+  &:active {
+    transform: translateX(1px);
+  }
+
+  p {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
 }
 
 /* ============================================================
@@ -716,30 +636,64 @@
 }
 
 /* ============================================================
-   BORDE DEL BUSCADOR SEGÚN CONTENIDO
+   RESPONSIVE
    ============================================================ */
 
-.search-box:has(.search-results),
-.search-box:has(.search-history) {
-  .search-input-row {
-    border-radius: 30px 30px 0 0;
+@media (max-width: 600px) {
+  .search-overlay {
+    padding: 0 10px;
+  }
+
+  .search-box {
+    margin-top: 70px;
+    max-width: 100%;
+  }
+
+  .search-input {
+    padding: 13px 104px 13px 18px;
+    font-size: 15px;
+  }
+
+  .search-input-clear {
+    right: 48px;
+    width: 34px;
+    height: 34px;
+
+    i {
+      font-size: 18px;
+    }
   }
 
   .search-input-lupa {
-    border-radius: 50% 50% 0 50%;
+    width: 52px;
+  }
+
+  .search-results {
+    max-height: min(400px, calc(100vh - 150px));
+  }
+
+  .search-result-item {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .search-result-item.is-curso {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .search-result-item.is-tema {
+    padding-top: 9px;
+    padding-bottom: 9px;
   }
 }
 
-/* ============================================================
-   SIN SUGERENCIAS
-   ============================================================ */
-
-.search-box:not(:has(.search-results)):not(:has(.search-history)) {
-  .search-input-row {
-    border-radius: 30px;
+@media (max-height: 600px) {
+  .search-box {
+    margin-top: 40px;
   }
 
-  .search-input-lupa {
-    border-radius: 50%;
+  .search-results {
+    max-height: calc(100vh - 110px);
   }
 }

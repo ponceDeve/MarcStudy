@@ -941,7 +941,7 @@ export default function HorarioPage() {
 
                 <div className="horario__rest-row">
                   <button
-                    className="horario__rest-btn"
+                    className="horario__rest-btn horario__rest-btn--corto"
                     onClick={() =>
                       iniciarDescansoManual(10)
                     }
@@ -950,7 +950,7 @@ export default function HorarioPage() {
                   </button>
 
                   <button
-                    className="horario__rest-btn"
+                    className="horario__rest-btn horario__rest-btn--largo"
                     onClick={() =>
                       iniciarDescansoManual(30)
                     }
