@@ -4,12 +4,7 @@
 @font-face {
   font-family: "DS-DIGIB";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
 }
-
-
 .levels-modal{
   position:fixed;
   inset:0;
@@ -23,6 +18,12 @@
   opacity:1;
   visibility:visible;
   transition:opacity .25s linear,visibility 0s linear 0s;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+.levels-modal::-webkit-scrollbar{
+  display:none;
 }
 
 .levels-modal.is-closed{
@@ -100,7 +101,6 @@
   outline:none!important;
   box-shadow:none!important;
 }
-
 .levels-modal__search .home-search-results{
   position:absolute;
   top:100%;
@@ -112,25 +112,17 @@
   border:2px solid var(--secondary);
   border-radius:0 0 30px 30px;
   box-shadow:none;
-  padding:8px;
   max-height:280px;
   overflow-y:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
   display:flex;
   flex-direction:column;
   gap:4px;
 }
 
 .levels-modal__search .home-search-results::-webkit-scrollbar{
-  width:6px;
-}
-
-.levels-modal__search .home-search-results::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.levels-modal__search .home-search-results::-webkit-scrollbar-thumb{
-  background-color:var(--border-strong);
-  border-radius:var(--radius-full);
+  display:none;
 }
 
 .levels-modal__search .home-search-result{
@@ -138,7 +130,6 @@
   text-align:left;
   background-color:transparent;
   border:none;
-  padding:9px 14px;
   border-radius:var(--radius-sm);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   font-family:var(--font-body);
@@ -149,8 +140,8 @@
 .levels-modal__search .home-search-result:hover,
 .levels-modal__search .home-search-result.is-focused{
   /* fondo transparente, sin significado semántico -> fill neutro */
-  background-color: rgba(20, 21, 24, 1);
-  color: var(--ink-on-primary);
+  background-color: var(--primary-bg);
+  color: var(--ink);
 }
 
 .levels-modal__search .home-search-result:active{
@@ -331,11 +322,9 @@
   border: 3px solid var(--border);
   border-bottom-width: 6px;
   color: var(--ink-soft);
-
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: clamp(48px, 10vw, 84px);
-
+  font-family: DS-DIGIB;
+  font-weight: bolder;
+  font-size: 3rem;
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all .1s linear-in-out;
