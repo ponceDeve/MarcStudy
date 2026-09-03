@@ -1,9 +1,5 @@
 @use "./tokens" as *;
 
-// ============================================================
-// TOPBAR WRAPPER
-// ============================================================
-
 .topbar-wrapper {
   position: fixed;
   top: 0;
@@ -20,10 +16,6 @@ body.is-header-oculto .topbar-wrapper {
   transform: translateY(-100%);
 }
 
-// ============================================================
-// TOPBAR
-// ============================================================
-
 .topbar {
   position: relative;
   width: 100%;
@@ -33,10 +25,6 @@ body.is-header-oculto .topbar-wrapper {
   border-bottom: 1px solid var(--border);
   z-index: 100;
 
-  // ==========================================================
-  // CONTAINER
-  // ==========================================================
-
   &.container {
     padding: 0;
     max-width: none;
@@ -44,86 +32,50 @@ body.is-header-oculto .topbar-wrapper {
     margin: 0;
   }
 
-  // ==========================================================
-  // INNER
-  // ==========================================================
-
   &__inner {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 16px;
-
     box-sizing: border-box;
   }
-
-  // ==========================================================
-  // TITLE BOX
-  // ==========================================================
 
   &__title-box {
     display: flex;
     flex-direction: column;
-
     line-height: 1.2;
-
     height: 100%;
-
     min-width: 0;
-
     flex: 1 1 auto;
-
     align-items: flex-start;
-
     margin-right: 16px;
-
     overflow: hidden;
   }
-
-  // ==========================================================
-  // TITLE BUTTON
-  // ==========================================================
 
   &__title-btn {
     width: fit-content;
     max-width: 100%;
     min-width: 0;
-
     height: 100%;
-
     display: flex;
     flex-direction: column;
-
     align-items: flex-start;
     justify-content: center;
-
     background: transparent;
-
     border: none;
     border-radius: 6px;
-
     color: var(--ink);
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     text-align: left;
-
     overflow: hidden;
-
     text-decoration: none;
-
     font-family: var(--font-body);
     font-weight: 700;
-
     padding: 0 10px;
-
     box-sizing: border-box;
-
     transition:
       background 0.2s linear,
       transform 0.15s linear;
@@ -149,24 +101,15 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // TEMA
-  // ==========================================================
-
   &__tema-wrapper {
     width: 100%;
     max-width: 100%;
     min-width: 0;
-
     display: flex;
     align-items: center;
-
     overflow: hidden;
-
     white-space: nowrap;
-
     vertical-align: middle;
-
     gap: 6px;
 
     i {
@@ -177,17 +120,12 @@ body.is-header-oculto .topbar-wrapper {
 
   &__tema {
     display: flex;
-
     width: max-content;
     min-width: 0;
-
     flex-shrink: 0;
-
     font-size: 14px;
     font-weight: 700;
-
     color: var(--ink);
-
     white-space: nowrap;
 
     > span {
@@ -200,65 +138,36 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // CURSO
-  // ==========================================================
-
   &__curso {
     max-width: 100%;
-
     color: var(--ink-soft);
-
     white-space: nowrap;
-
     overflow: hidden;
-
     text-overflow: ellipsis;
-
     font-size: clamp(0.75rem, 1vw, 1.25rem);
 
     &--clickable {
       cursor: url("/cursor_pointer.webp"), pointer !important;
-
       background: none;
-
       border: none;
-
       padding: 0;
-
       font: inherit;
-
       text-align: left;
-
       text-decoration: none;
     }
   }
 
-  // ==========================================================
-  // INICIO
-  // ==========================================================
-
   .btn__inicio {
     flex-direction: row;
-
     align-items: center;
-
     gap: 10px;
   }
 
-  // ==========================================================
-  // LOGO
-  // ==========================================================
-
   &__logo {
     width: 35px;
-
     aspect-ratio: 1 / 1;
-
     object-fit: contain;
-
     flex-shrink: 0;
-
     transition: transform 0.15s linear;
 
     &--foto {
@@ -267,55 +176,31 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // NAVEGACIÓN
-  // ==========================================================
-
   &__nav {
     display: flex;
-
     flex-direction: row;
-
     align-items: stretch;
-
     justify-content: flex-end;
-
     gap: 8px;
-
     flex-shrink: 0;
   }
 
   &__nav-btn {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 4px;
-
     min-width: 0;
-
     padding: 4px 8px;
-
     margin: 0;
-
     background: transparent;
-
     border: none;
-
     border-radius: 6px;
-
     color: var(--ink);
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     text-decoration: none;
-
     white-space: nowrap;
-
     transition:
       background 0.2s linear,
       color 0.2s linear,
@@ -327,7 +212,6 @@ body.is-header-oculto .topbar-wrapper {
 
     &.is-active {
       background: var(--primary-bg);
-
       color: var(--primary-dark);
     }
 
@@ -336,115 +220,63 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // ICONOS
-  // ==========================================================
-
   &__btn-icon {
     display: block;
-
     font-size: 18px;
-
     line-height: 1;
-
     color: inherit;
   }
 
   &__btn-text {
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
   }
 
   &__btn-title {
     display: block;
-
     font-size: 12px;
-
     font-weight: 700;
-
     line-height: 1.1;
-
     font-family: var(--font-display);
-
     color: inherit;
-
     text-align: center;
   }
 
-  // ==========================================================
-  // CONTROLES
-  // ==========================================================
-
   &__controls {
     display: flex;
-
     flex-direction: row;
-
     align-items: stretch;
-
     justify-content: flex-end;
-
     gap: 8px;
-
     flex-shrink: 0;
   }
 
-  // ==========================================================
-  // BUSCADOR
-  // ==========================================================
-
   &__search-bar {
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     flex: 1 1 auto;
-
     min-width: 0;
-
     max-width: 420px;
-
     height: 38px;
-
     margin: 0 12px;
-
     padding: 0 14px;
-
-    background: var(
-      --surface-alt,
-      rgba(0, 0, 0, 0.04)
-    );
-
-    border: 1px solid var(--border);
-
-    border-radius: var(
-      --radius-full,
-      999px
-    );
-
-    color: var(--ink-soft);
-
+    background: var(--surface);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-full, 999px);
+    color: var(--ink);
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     font-family: var(--font-body);
-
     transition:
       background 0.2s linear,
       border-color 0.2s linear,
       transform 0.2s linear;
 
     &:hover {
-      background: var(--brand-bg);
-
+      background: var(--primary-bg);
       border-color: var(--primary);
     }
 
@@ -455,80 +287,47 @@ body.is-header-oculto .topbar-wrapper {
 
   &__search-icon {
     flex: 0 0 auto;
-
     font-size: 14px;
-
-    color: var(--ink-soft);
+    color: var(--primary);
   }
 
   &__search-placeholder {
     flex: 1 1 auto;
-
     min-width: 0;
-
     overflow: hidden;
-
     white-space: nowrap;
-
     text-overflow: ellipsis;
-
     text-align: left;
-
     font-size: 13px;
-
-    font-weight: 500;
-
-    color: var(--ink-soft);
+    font-weight: 600;
+    color: var(--ink);
   }
 
   &__search-kbd {
     flex: 0 0 auto;
-
     font-size: 11px;
-
     font-weight: 700;
-
     padding: 2px 6px;
-
     border-radius: 6px;
-
-    background: var(--surface, #fff);
-
+    background: var(--surface-alt);
     border: 1px solid var(--border);
-
     color: var(--ink-soft);
-
     white-space: nowrap;
   }
-
-  // ==========================================================
-  // BOTONES DE CONTROL
-  // ==========================================================
 
   &__control-btn,
   &__gear {
     width: 44px;
-
     height: 44px;
-
     align-self: center;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     background: transparent;
-
     border: none;
-
     border-radius: 50%;
-
     color: var(--ink);
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     transition:
       background 0.2s linear,
       color 0.2s linear,
@@ -548,61 +347,35 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // AYUDA EN ESCRITORIO
-  // ==========================================================
-
   &__help {
     position: relative;
-
     flex-shrink: 0;
   }
 
   &__help-btn {
     font-size: 16px;
-
     color: var(--ink-soft);
   }
 
   &__help-menu {
     position: absolute;
-
     top: calc(100% + 6px);
-
     right: 0;
-
     min-width: 190px;
-
     max-width: 240px;
-
     max-height: 280px;
-
     overflow-y: auto;
-
     background: var(--surface, #fff);
-
     border: 1px solid var(--border);
-
     border-radius: 10px;
-
-    box-shadow:
-      0 12px 30px rgba(0, 0, 0, 0.15);
-
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
     padding: 8px;
-
     z-index: 60;
-
     display: flex;
-
     flex-direction: column;
-
     gap: 2px;
-
     scrollbar-width: thin;
-
-    scrollbar-color:
-      var(--border)
-      transparent;
+    scrollbar-color: var(--border) transparent;
 
     &::-webkit-scrollbar {
       width: 6px;
@@ -614,61 +387,39 @@ body.is-header-oculto .topbar-wrapper {
 
     &::-webkit-scrollbar-thumb {
       background: var(--border);
-
       border-radius: 999px;
     }
   }
 
   &__help-menu-label {
     flex: 0 0 auto;
-
     font-size: 11px;
-
     font-weight: 700;
-
     color: var(--ink-soft);
-
     text-transform: uppercase;
-
     letter-spacing: 0.4px;
-
     padding: 4px 8px 6px;
   }
 
   &__help-menu-item {
     width: 100%;
-
     flex: 0 0 auto;
-
     text-align: left;
-
     background: none;
-
     border: none;
-
     border-radius: 6px;
-
     padding: 8px;
-
     font-size: 13px;
-
     font-family: inherit;
-
     color: var(--ink);
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     transition:
       background 0.15s ease,
       color 0.15s ease,
       transform 0.15s ease;
 
     &:hover {
-      background: var(
-        --surface-alt,
-        rgba(0, 0, 0, 0.05)
-      );
-
+      background: var(--surface-alt, rgba(0, 0, 0, 0.05));
       color: var(--primary);
     }
 
@@ -678,27 +429,18 @@ body.is-header-oculto .topbar-wrapper {
 
     &:focus-visible {
       outline: 2px solid var(--primary);
-
       outline-offset: -2px;
     }
   }
 
-  // ==========================================================
-  // HAMBURGUESA
-  // ==========================================================
-
   &__control-btn--menu {
     background: transparent;
-
     color: var(--ink);
-
     box-shadow: none;
 
     &:hover {
       background: rgba(20, 21, 24, 1);
-
       color: #fff;
-
       transition: background 0.3s linear;
     }
   }
@@ -707,137 +449,69 @@ body.is-header-oculto .topbar-wrapper {
     display: none;
   }
 
-  // ==========================================================
-  // DRAWER
-  // ==========================================================
-
   &__drawer.offcanvas {
     --bs-offcanvas-width: min(320px, 85vw);
-
     --bs-offcanvas-bg: var(--ink-on-primary);
-
     --bs-offcanvas-border-color: var(--border);
-
     --bs-offcanvas-box-shadow: var(--shadow-lg);
-
     --bs-offcanvas-zindex: 1050;
-
     --bs-offcanvas-padding-x: 0;
-
     --bs-offcanvas-padding-y: 0;
-
     position: fixed !important;
-
     top: 0 !important;
-
     right: 0 !important;
-
     bottom: 0 !important;
-
     left: auto !important;
-
     width: var(--bs-offcanvas-width) !important;
-
     height: 100dvh !important;
-
     min-height: 0 !important;
-
     max-height: 100dvh !important;
-
     margin: 0 !important;
-
     padding: 0 !important;
-
     display: grid !important;
-
-    grid-template-rows:
-      auto minmax(0, 1fr) !important;
-
+    grid-template-rows: auto minmax(0, 1fr) !important;
     overflow: hidden !important;
-
     box-sizing: border-box !important;
-
     z-index: 1050 !important;
-
-    transition:
-      transform 0.25s linear !important;
-
+    transition: transform 0.25s linear !important;
     overscroll-behavior: contain;
   }
 
-  // ==========================================================
-  // DRAWER HEADER
-  // ==========================================================
-
   &__drawer-header {
     width: 100% !important;
-
     min-height: 76px !important;
-
     height: auto !important;
-
     display: flex !important;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 20px;
-
     box-sizing: border-box;
-
     background: var(--primary);
-
     border-bottom: 1px solid var(--primary-dark);
-
     flex: none !important;
   }
 
-  // ==========================================================
-  // DRAWER TITLE
-  // ==========================================================
-
   &__drawer-title {
     margin: 0;
-
     color: var(--ink-on-primary);
-
     font-size: 22px;
-
     font-family: var(--font-display);
-
     user-select: none;
   }
 
-  // ==========================================================
-  // DRAWER CLOSE
-  // ==========================================================
-
   &__drawer-close {
     flex: 0 0 auto;
-
     width: 35px;
-
     height: 35px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     background: transparent;
-
     border: none;
-
     color: var(--ink-on-primary);
-
     font-size: 20px;
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     border-radius: var(--radius-full);
-
     transition:
       background 0.2s linear,
       transform 0.2s linear;
@@ -851,48 +525,24 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  // ==========================================================
-  // DRAWER LIST
-  //
-  // ESTA ES LA ÚNICA ZONA QUE HACE SCROLL
-  // ==========================================================
-
   &__drawer-list {
     width: 100% !important;
-
     min-width: 0 !important;
-
     min-height: 0 !important;
-
     height: auto !important;
-
     max-height: none !important;
-
     margin: 0 !important;
-
     padding: 0 !important;
-
     display: flex !important;
-
     flex-direction: column !important;
-
     overflow-x: hidden !important;
-
     overflow-y: auto !important;
-
     box-sizing: border-box !important;
-
     touch-action: pan-y !important;
-
     overscroll-behavior-y: contain !important;
-
     -webkit-overflow-scrolling: touch;
-
     scrollbar-width: thin;
-
-    scrollbar-color:
-      var(--border)
-      transparent;
+    scrollbar-color: var(--border) transparent;
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -904,7 +554,6 @@ body.is-header-oculto .topbar-wrapper {
 
     &::-webkit-scrollbar-thumb {
       background: var(--border);
-
       border-radius: 999px;
     }
 
@@ -912,52 +561,29 @@ body.is-header-oculto .topbar-wrapper {
       background: var(--ink-soft);
     }
 
-    // Los elementos generan altura real.
     > * {
       flex: 0 0 auto !important;
-
       min-height: 0;
     }
   }
 
-  // ==========================================================
-  // ITEMS DEL DRAWER
-  // ==========================================================
-
   &__drawer-item {
     flex: 0 0 auto !important;
-
     width: 100% !important;
-
     min-height: 58px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     padding: 16px 14px;
-
     box-sizing: border-box;
-
     background: none;
-
     border: none;
-
-
     color: var(--ink);
-
     font-size: 16px;
-
     font-weight: 600;
-
     text-decoration: none;
-
     cursor: url("/cursor_pointer.webp"), pointer !important;
-
     text-align: left;
-
     transition:
       background 0.3s linear,
       color 0.3s linear,
@@ -969,163 +595,97 @@ body.is-header-oculto .topbar-wrapper {
 
     &:hover {
       background: var(--primary-bg);
-
       border-color: var(--nested-border);
-
       color: var(--primary-dark);
 
       .topbar__drawer-item-icon {
         color: var(--primary);
-
         transform: translateX(-3px);
       }
     }
 
     &.is-active {
       background: var(--primary-bg);
-
       border-color: var(--nested-border);
-
       color: var(--primary-dark);
 
       .topbar__drawer-item-icon {
         color: var(--primary);
-
         transform: translateX(-3px);
       }
     }
 
     &:active {
       background: var(--surface-alt);
-
       transform: scale(0.98);
     }
   }
 
-  // ==========================================================
-  // DRAWER ITEM LABEL
-  // ==========================================================
-
   &__drawer-item-label {
     min-width: 0;
-
     color: inherit;
   }
 
-  // ==========================================================
-  // DRAWER ITEM ICON
-  // ==========================================================
-
   &__drawer-item-icon {
     color: var(--ink-soft);
-
     font-size: 18px;
-
     flex: none;
-
     transition:
       color 0.3s linear,
       transform 0.3s linear;
   }
 
-  // ==========================================================
-  // AYUDA DENTRO DEL DRAWER
-  // ==========================================================
-
   &__drawer-help-wrapper {
     width: 100% !important;
-
     min-width: 0 !important;
-
     flex: 0 0 auto !important;
   }
 
-  // ==========================================================
-  // CONTENIDO DE AYUDA
-  // ==========================================================
-
   &__drawer-help {
     width: 100% !important;
-
     display: flex !important;
-
     flex-direction: column !important;
-
     flex: 0 0 auto !important;
-
     padding: 6px 0 10px;
-
     box-sizing: border-box;
-
     background: var(--surface-alt);
-
     border-bottom: 1px solid var(--border);
 
     .topbar__help-menu-label {
       display: block;
-
       flex: 0 0 auto !important;
-
       padding: 8px 18px 7px;
-
       font-size: 11px;
-
       font-weight: 700;
-
       line-height: 1.2;
-
       color: var(--ink-soft);
-
       text-transform: uppercase;
-
       letter-spacing: 0.4px;
-
       user-select: none;
     }
 
     .topbar__help-menu-item {
       width: 100% !important;
-
       min-height: 42px !important;
-
       height: auto !important;
-
       display: flex !important;
-
       align-items: center;
-
       flex: 0 0 auto !important;
-
       margin: 0 !important;
-
       padding: 9px 18px 9px 32px;
-
       box-sizing: border-box;
-
       background: transparent;
-
       border: none;
-
       border-radius: 0;
-
       color: var(--ink);
-
       font-family: var(--font-body);
-
       font-size: 14px;
-
       font-weight: 500;
-
       line-height: 1.35;
-
       text-align: left;
-
       white-space: normal;
-
       overflow-wrap: anywhere;
-
       cursor: url("/cursor_pointer.webp"), pointer !important;
-
       transition:
         background 0.15s ease,
         color 0.15s ease,
@@ -1133,9 +693,7 @@ body.is-header-oculto .topbar-wrapper {
 
       &:hover {
         background: var(--brand-bg);
-
         color: var(--primary-dark);
-
         padding-left: 36px;
       }
 
@@ -1145,16 +703,11 @@ body.is-header-oculto .topbar-wrapper {
 
       &:focus-visible {
         outline: 2px solid var(--primary);
-
         outline-offset: -2px;
       }
     }
   }
 }
-
-// ============================================================
-// MARQUEE
-// ============================================================
 
 @keyframes marqueeOneWay {
   from {
@@ -1165,10 +718,6 @@ body.is-header-oculto .topbar-wrapper {
     transform: translateX(var(--scroll-dist));
   }
 }
-
-// ============================================================
-// TABLET / MÓVIL
-// ============================================================
 
 @media (max-width: 767px) {
   .topbar {
@@ -1182,9 +731,7 @@ body.is-header-oculto .topbar-wrapper {
 
     &__search-bar {
       max-width: none;
-
       margin: 0 8px;
-
       padding: 0 12px;
     }
 
@@ -1192,46 +739,28 @@ body.is-header-oculto .topbar-wrapper {
       display: none;
     }
 
-    // ========================================================
-    // DRAWER MÓVIL
-    // ========================================================
-
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
-
       height: 100dvh !important;
-
       min-height: 0 !important;
-
       max-height: 100dvh !important;
-
-      grid-template-rows:
-        auto minmax(0, 1fr) !important;
-
+      grid-template-rows: auto minmax(0, 1fr) !important;
       overflow: hidden !important;
     }
 
     &__drawer-header {
       min-height: 68px !important;
-
       flex: none !important;
     }
 
     &__drawer-list {
       min-height: 0 !important;
-
       height: auto !important;
-
       max-height: none !important;
-
       overflow-x: hidden !important;
-
       overflow-y: auto !important;
-
       touch-action: pan-y !important;
-
       -webkit-overflow-scrolling: touch;
-
       overscroll-behavior-y: contain !important;
     }
 
@@ -1241,7 +770,6 @@ body.is-header-oculto .topbar-wrapper {
 
     &__drawer-item {
       min-height: 56px;
-
       flex: 0 0 auto !important;
     }
 
@@ -1255,10 +783,6 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-// ============================================================
-// TELÉFONOS PEQUEÑOS
-// ============================================================
-
 @media (max-width: 480px) {
   .topbar {
     &__search-placeholder {
@@ -1267,27 +791,20 @@ body.is-header-oculto .topbar-wrapper {
 
     &__search-bar {
       flex: 0 0 auto;
-
       width: 38px;
-
       padding: 0;
-
       justify-content: center;
-
       margin: 0 6px;
     }
 
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
-
       height: 100dvh !important;
-
       max-height: 100dvh !important;
     }
 
     &__drawer-header {
       min-height: 64px !important;
-
       padding: 14px 16px;
     }
 
@@ -1297,22 +814,18 @@ body.is-header-oculto .topbar-wrapper {
 
     &__drawer-close {
       width: 34px;
-
       height: 34px;
     }
 
     &__drawer-item {
       min-height: 54px;
-
       padding: 14px;
-
       font-size: 15px;
     }
 
     &__drawer-help {
       .topbar__help-menu-item {
         min-height: 40px !important;
-
         padding: 9px 14px 9px 28px;
 
         &:hover {
@@ -1323,15 +836,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-// ============================================================
-// MD
-// ============================================================
-
 @include respond(md) {
   .topbar {
     &__nav {
       display: flex !important;
-
       gap: 12px;
     }
 
@@ -1341,15 +849,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-// ============================================================
-// LG
-// ============================================================
-
 @include respond(lg) {
   .topbar {
     &__search-bar {
       height: 42px;
-
       max-width: 460px;
     }
 
@@ -1360,11 +863,8 @@ body.is-header-oculto .topbar-wrapper {
 
     &__nav {
       display: flex !important;
-
       flex-direction: row;
-
       align-items: stretch;
-
       gap: 16px;
     }
 
@@ -1387,7 +887,6 @@ body.is-header-oculto .topbar-wrapper {
     &__control-btn,
     &__gear {
       width: 44px;
-
       height: 44px;
     }
 
@@ -1402,16 +901,13 @@ body.is-header-oculto .topbar-wrapper {
 
     &__drawer-item {
       min-height: 62px;
-
       padding: 18px 16px;
-
       font-size: 17px;
     }
 
     &__drawer-help {
       .topbar__help-menu-item {
         font-size: 15px;
-
         padding-left: 36px;
 
         &:hover {
@@ -1421,10 +917,6 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 }
-
-// ============================================================
-// XL
-// ============================================================
 
 @include respond(xl) {
   .topbar {
@@ -1457,7 +949,6 @@ body.is-header-oculto .topbar-wrapper {
     &__control-btn,
     &__gear {
       width: 48px;
-
       height: 48px;
     }
 
@@ -1468,18 +959,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-// ============================================================
-// BACKDROP
-// ============================================================
-
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
-
   --bs-backdrop-bg: var(--overlay-strong);
-
   --bs-backdrop-opacity: 1;
-
   backdrop-filter: blur(4px);
-
   -webkit-backdrop-filter: blur(4px);
 }

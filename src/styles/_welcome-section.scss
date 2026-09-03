@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  min-height: 100dvh;
+  padding-bottom: 150px;
 }
 
 /* ============================================================
@@ -28,6 +30,26 @@
 
 .welcome-section__intro {
   width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 28px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+  .welcome-section__intro {
+    max-width: 1600px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .welcome-section__intro {
+    max-width: 1750px;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
 }
 
 /* ============================================================
@@ -111,31 +133,103 @@
 }
 
 /* ============================================================
-   GRID DE CURSOS
+   CARRUSEL GENERAL
    ============================================================ */
 
-.welcome-section__grid {
+.welcome-section__carousel {
   position: relative;
+  width: 100%;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   CATEGORÍA
+   ============================================================ */
+
+.welcome-section__category {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.welcome-section__category-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  margin: 0;
+
+  i {
+    color: var(--brand);
+    font-size: 1.1em;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 640px) {
+  .welcome-section__category-title {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+}
+
+/* ============================================================
+   CONTENEDOR DEL CARRUSEL
+   ============================================================ */
+
+.welcome-section__carousel-row-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.welcome-section__carousel-row-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   VENTANA
+   NO SE UTILIZA overflow: hidden
+   ============================================================ */
+
+.welcome-section__carousel-viewport {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================================
+   FILA DE TARJETAS
+   ============================================================ */
+
+.welcome-section__carousel-row {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(
+    3,
+    minmax(0, 1fr)
+  );
   gap: 20px;
   width: 100%;
   align-items: stretch;
-  overflow: visible;
-}
-
-@media (min-width: 480px) {
-  .welcome-section__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 992px) {
-  .welcome-section__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
+  box-sizing: border-box;
 }
 
 /* ============================================================
@@ -144,12 +238,18 @@
 
 .welcome-section__curso {
   position: relative;
-  height: 100%;
+  width: 100%;
+  min-width: 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   border: none;
-  border-top: 3px solid color-mix(in srgb, var(--accent), transparent 65%);
+  border-top: 3px solid
+    color-mix(
+      in srgb,
+      var(--accent),
+      transparent 65%
+    );
   border-radius: 14px;
   background: transparent;
   padding: 18px 16px;
@@ -164,7 +264,12 @@
   border-top-color: var(--accent);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-  background: rgba(247, 251, 254, 0.2);
+  background: rgba(
+    247,
+    251,
+    254,
+    0.2
+  );
 }
 
 .welcome-section__curso--abierto {
@@ -179,7 +284,7 @@
 }
 
 /* ============================================================
-   PARTE SUPERIOR DEL CURSO
+   PARTE SUPERIOR
    ============================================================ */
 
 .welcome-section__curso-top {
@@ -214,7 +319,7 @@
 }
 
 /* ============================================================
-   CONTADOR DE TEMAS
+   CONTADOR
    ============================================================ */
 
 .welcome-section__curso-count {
@@ -249,8 +354,23 @@
   width: fit-content;
 }
 
+.welcome-section__trophy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.welcome-section__trophy svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* ============================================================
-   DESCRIPCIÓN DEL CURSO
+   DESCRIPCIÓN
    ============================================================ */
 
 .welcome-section__curso-desc {
@@ -261,7 +381,7 @@
 }
 
 /* ============================================================
-   BOTÓN VER TEMAS
+   VER TEMAS
    ============================================================ */
 
 .welcome-section__ver-temas {
@@ -279,7 +399,8 @@
   font-size: 0.75rem;
   font-weight: var(--fw-bold);
   text-align: left;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor: url("/cursor_pointer.webp"),
+    pointer !important;
   transition:
     color 0.15s linear,
     transform 0.15s linear;
@@ -293,9 +414,19 @@
   transform: translateY(1px);
 }
 
-.welcome-section__ver-temas i {
-  font-size: 0.55rem;
-  color: currentColor;
+.welcome-section__ver-temas-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.welcome-section__ver-temas-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .welcome-section__ver-temas:focus-visible {
@@ -305,7 +436,7 @@
 }
 
 /* ============================================================
-   DESPLEGABLE DE TEMAS
+   DROPDOWN
    ============================================================ */
 
 .welcome-section__temas-dropdown {
@@ -321,6 +452,11 @@
   border-radius: 0 0 14px 14px;
   box-shadow: var(--shadow-md);
 }
+
+/*
+ * No se coloca overflow hidden aquí.
+ * El dropdown puede sobresalir verticalmente.
+ */
 
 /* ============================================================
    LISTA DE TEMAS
@@ -369,7 +505,8 @@
   font-size: 0.68rem;
   font-weight: var(--fw-normal);
   line-height: 1.2;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor: url("/cursor_pointer.webp"),
+    pointer !important;
   transition:
     color 0.15s linear,
     transform 0.15s linear;
@@ -386,9 +523,18 @@
   transform: translateY(1px);
 }
 
-.welcome-section__mostrar-temas i {
-  font-size: 0.5rem;
-  color: currentColor;
+.welcome-section__mostrar-temas-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 11px;
+  height: 11px;
+}
+
+.welcome-section__mostrar-temas-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .welcome-section__mostrar-temas:focus-visible {
@@ -414,14 +560,16 @@
   color: var(--ink-soft);
   font-size: 12px;
   border-radius: 8px;
-  cursor: url("/cursor_auto.webp"), auto !important;
+  cursor: url("/cursor_auto.webp"),
+    auto !important;
   transition:
     background 0.25s linear,
     color 0.2s linear !important;
 }
 
 .welcome-section__tema-btn span {
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor: url("/cursor_pointer.webp"),
+    pointer !important;
 }
 
 .welcome-section__tema-btn:hover {
@@ -451,53 +599,341 @@
   height: 22px;
   box-sizing: border-box;
   border-radius: 50%;
+}
 
-  &-check {
-    position: relative;
-    display: block;
-    width: 7px;
-    height: 11px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg);
-    margin-top: -2px;
+.welcome-section__tema-estado-check {
+  position: relative;
+  display: block;
+  width: 7px;
+  height: 11px;
+  border-right: 2px solid
+    currentColor;
+  border-bottom: 2px solid
+    currentColor;
+  transform: rotate(45deg);
+  margin-top: -2px;
+}
+
+.welcome-section__tema-estado--completado {
+  color: var(--success);
+  border: 2px solid currentColor;
+}
+
+.welcome-section__tema-estado--en_curso {
+  color: var(--warning);
+  border: none;
+}
+
+.welcome-section__tema-estado--en_curso::before,
+.welcome-section__tema-estado--en_curso::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.welcome-section__tema-estado--en_curso::before {
+  border: 2px solid currentColor;
+  clip-path: inset(
+    0 50% 0 0
+  );
+}
+
+.welcome-section__tema-estado--en_curso::after {
+  border: 2px dashed currentColor;
+  clip-path: inset(
+    0 0 0 50%
+  );
+}
+
+.welcome-section__tema-estado--pendiente {
+  color: var(--ink-faint);
+  opacity: 0.35;
+  border: 2px dashed currentColor;
+}
+
+/* ============================================================
+   FLECHAS DEL CARRUSEL
+   ============================================================ */
+
+.welcome-section__carousel-arrow {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: var(--nested-border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: url("/cursor_pointer.webp"),
+    pointer !important;
+  box-shadow: var(--shadow-sm);
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.welcome-section__carousel-arrow:hover {
+  color: var(--primary);
+  background: var(--surface-hover);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: scale(1.05);
+}
+
+.welcome-section__carousel-arrow:active {
+  transform: scale(0.96);
+}
+
+.welcome-section__carousel-arrow svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================================
+   PUNTITOS
+   ============================================================ */
+
+.welcome-section__carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.welcome-section__carousel-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--ink-faint);
+  opacity: 0.45;
+  cursor: url("/cursor_pointer.webp"),
+    pointer !important;
+  transition:
+    width 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.welcome-section__carousel-dot:hover {
+  opacity: 0.8;
+  transform: scale(1.15);
+}
+
+.welcome-section__carousel-dot--active {
+  width: 20px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  opacity: 1;
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 991px) {
+  .welcome-section__carousel {
+    gap: 34px;
   }
 
-  &--completado {
-    color: var(--success);
-    border: 2px solid currentColor;
+  .welcome-section__carousel-row-container {
+    gap: 8px;
   }
 
-  &--en_curso {
-    color: var(--warning);
-    border: none;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      box-sizing: border-box;
-      pointer-events: none;
-    }
-
-    &::before {
-      border: 2px solid currentColor;
-      clip-path: inset(0 50% 0 0);
-    }
-
-    &::after {
-      border: 2px dashed currentColor;
-      clip-path: inset(0 0 0 50%);
-    }
+  .welcome-section__carousel-row {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+    gap: 14px;
   }
 
-  &--pendiente {
-    color: var(--ink-faint);
-    opacity: 0.35;
-    border: 2px dashed currentColor;
+  .welcome-section__carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .welcome-section__carousel-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .welcome-section__curso {
+    padding: 16px 13px;
+  }
+
+  .welcome-section__curso-nombre {
+    font-size: 1rem;
+  }
+
+  .welcome-section__curso-desc {
+    font-size: 0.84rem;
+  }
+}
+
+/* ============================================================
+   MÓVIL
+   ============================================================ */
+
+@media (max-width: 639px) {
+  .welcome-section__intro {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .welcome-section__carousel {
+    gap: 28px;
+  }
+
+  .welcome-section__category-title {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+  }
+
+  .welcome-section__carousel-row-container {
+    gap: 5px;
+  }
+
+  .welcome-section__carousel-row {
+    grid-template-columns: minmax(
+      0,
+      1fr
+    );
+    gap: 8px;
+  }
+
+  .welcome-section__carousel-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .welcome-section__carousel-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .welcome-section__curso {
+    padding: 12px 9px;
+    border-radius: 10px;
+  }
+
+  .welcome-section__curso--abierto {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .welcome-section__curso-nombre {
+    font-size: 0.85rem;
+  }
+
+  .welcome-section__curso-info {
+    gap: 5px;
+  }
+
+  .welcome-section__curso-count,
+  .welcome-section__curso-logros {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+
+  .welcome-section__curso-desc {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    margin: 5px 0 8px;
+  }
+
+  .welcome-section__ver-temas {
+    font-size: 0.65rem;
+  }
+
+  .welcome-section__temas-dropdown {
+    padding: 0 9px 10px;
+  }
+
+  .welcome-section__tema-btn {
+    gap: 7px;
+    padding: 7px 5px;
+    font-size: 10px;
+  }
+
+  .welcome-section__tema-estado {
+    width: 18px;
+    height: 18px;
+  }
+
+  .welcome-section__carousel-dots {
+    margin-top: 7px;
+  }
+}
+
+/* ============================================================
+   MÓVILES MUY PEQUEÑOS
+   ============================================================ */
+
+@media (max-width: 380px) {
+  .welcome-section__intro {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .welcome-section__carousel {
+    gap: 24px;
+  }
+
+  .welcome-section__carousel-row-container {
+    gap: 3px;
+  }
+
+  .welcome-section__carousel-row {
+    gap: 5px;
+  }
+
+  .welcome-section__carousel-arrow {
+    width: 26px;
+    height: 26px;
+  }
+
+  .welcome-section__carousel-arrow svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .welcome-section__curso {
+    padding: 10px 7px;
+  }
+
+  .welcome-section__curso-nombre {
+    font-size: 0.78rem;
+  }
+
+  .welcome-section__curso-desc {
+    font-size: 0.66rem;
+  }
+}
+
+/* ============================================================
+   REDUCIR MOVIMIENTO
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-section__carousel-arrow,
+  .welcome-section__curso,
+  .welcome-section__carousel-dot {
+    transition: none;
   }
 }

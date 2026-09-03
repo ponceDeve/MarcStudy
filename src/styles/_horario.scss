@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   padding: calc(var(--header-h) + 36px) 20px;
+  padding-bottom: 0;
 }
 
 .horario__back {
@@ -43,10 +44,7 @@
   font-size: 13.5px;
   font-weight: 600;
   box-shadow: var(--shadow-sm);
-  transition:
-    color 0.2s linear,
-    background 0.2s linear,
-    border-color 0.2s linear;
+  transition: color 0.2s linear, background 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__back-link:hover {
@@ -55,10 +53,6 @@
   border: var(--nested-border);
   border-color: var(--primary);
 }
-
-/* ============================================================
-   MAIN
-   ============================================================ */
 
 .horario__main {
   width: 100%;
@@ -91,10 +85,6 @@
   gap: 22px;
 }
 
-/* ============================================================
-   CARDS
-   ============================================================ */
-
 .horario__timer-card,
 .horario__courses-card {
   background: var(--ink-on-primary);
@@ -104,16 +94,11 @@
 }
 
 .horario__timer-card {
-  min-height: 480px;
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* ============================================================
-   VOLVER AL TEMA
-   ============================================================ */
 
 .horario__btn-volver-tema {
   width: 100%;
@@ -131,10 +116,7 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__btn-volver-tema:hover {
@@ -143,64 +125,44 @@
   border-color: var(--border-strong);
 }
 
-/* ============================================================
-   TIMER
-   ============================================================ */
-
 .horario__timer-center {
   flex: 1;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: clamp(8px, 1.5vh, 16px);
 }
 
 .horario__timer-label {
-  margin: 0 0 12px;
+  margin: 0;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: clamp(12px, 1.4vw, 14px);
   font-weight: 600;
 }
 
 .horario__timer-clock {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   font-family: "DS-Digital", monospace !important;
-  font-size: 7.5rem;
+  font-size: min(24vw, 15rem);
   font-weight: normal !important;
   font-style: normal;
-  line-height: 1;
+  line-height: 0.8;
   letter-spacing: 0;
-  user-select: none;
+  white-space: nowrap;
+  text-align: center;
   color: var(--ink);
+  user-select: none;
+  overflow: hidden;
 }
-
-@media (min-width: 480px) {
-  .horario__timer-clock {
-    font-size: 9rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .horario__timer-clock {
-    font-size: 13rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .horario__timer-clock {
-    font-size: 15rem;
-  }
-}
-
-@media (min-width: $bp-xl) {
-  .horario__timer-clock {
-    font-size: 18rem;
-  }
-}
-
-/* ============================================================
-   PROGRESO DEL TIMER
-   ============================================================ */
 
 .horario__progress-track {
   position: relative;
@@ -221,10 +183,6 @@
   border-radius: var(--radius-full);
   transition: width 0.3s linear;
 }
-
-/* ============================================================
-   CONTROLES DEL TIMER
-   ============================================================ */
 
 .horario__timer-controls {
   padding-top: 18px;
@@ -253,11 +211,7 @@
   font-size: 14px;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear,
-    opacity 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
 }
 
 .horario__btn.is-start {
@@ -300,10 +254,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__btn-reset:hover {
@@ -311,10 +262,6 @@
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
-/* ============================================================
-   DÍAS
-   ============================================================ */
 
 .horario__day-tabs {
   display: flex;
@@ -344,10 +291,7 @@
   font-size: 14px;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__day-btn:hover {
@@ -355,21 +299,13 @@
   color: var(--ink);
 }
 
-.horario__day-btn.is-active {
+.horario__day-btn.is-active,
+.horario__day-btn.is-active:hover {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
 }
 
-.horario__day-btn.is-active:hover {
-  background: var(--primary-dark);
-}
-
-/* ============================================================
-   CURSOS
-   ============================================================ */
-
 .horario__courses-card {
-  min-height: 400px;
   padding: 22px;
 }
 
@@ -403,10 +339,7 @@
   background: var(--surface-alt);
   color: var(--ink-soft);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__back-course:hover {
@@ -429,11 +362,6 @@
   font-size: 18px;
 }
 
-/* ============================================================
-   REINICIAR
-   Acción normal, no destructiva
-   ============================================================ */
-
 .horario__reset-link {
   display: flex;
   align-items: center;
@@ -449,10 +377,6 @@
 .horario__reset-link:hover {
   color: var(--secondary-hover);
 }
-
-/* ============================================================
-   LISTA DE CURSOS
-   ============================================================ */
 
 .horario__course-list {
   display: flex;
@@ -593,10 +517,6 @@
   opacity: 0.7;
 }
 
-/* ============================================================
-   DESCANSOS MANUALES
-   ============================================================ */
-
 .horario__rest-row {
   display: flex;
   gap: 8px;
@@ -613,10 +533,7 @@
   font-size: 13.5px;
   font-weight: 600;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__rest-btn:hover {
@@ -624,10 +541,6 @@
   border-color: var(--primary);
   color: var(--ink);
 }
-
-/* ============================================================
-   TAREAS
-   ============================================================ */
 
 .horario__task-list {
   position: relative;
@@ -674,28 +587,17 @@
   border-radius: var(--radius-md);
   background: var(--surface-alt);
   color: var(--ink-soft);
-  transition:
-    background 0.2s linear,
-    border-color 0.2s linear,
-    box-shadow 0.2s linear;
+  transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
 }
 
 .horario__task-box.is-past {
   background: var(--secondary-bg);
-  border: var(--nested-border);
   border-color: var(--secondary);
   color: var(--ink-soft);
 }
 
-/*
-  Tarea activa:
-  No es una alerta.
-  Por eso usamos PRIMARY en lugar de ACCENT/DANGER.
-*/
-
 .horario__task-box.is-active {
   background: var(--primary-bg);
-  border: var(--nested-border);
   border-color: var(--primary);
   color: var(--ink);
   box-shadow: 0 0 0 3px var(--primary-bg);
@@ -727,10 +629,6 @@
   opacity: 0.8;
 }
 
-/* ============================================================
-   DESCANSOS DENTRO DE LA SECUENCIA
-   ============================================================ */
-
 .horario__rest-dot {
   position: relative;
   width: 32px;
@@ -761,9 +659,7 @@
   transform: translate(-50%, -50%);
   color: var(--secondary);
   font-size: 10px;
-  transition:
-    color 0.2s linear,
-    opacity 0.2s linear;
+  transition: color 0.2s linear, opacity 0.2s linear;
 }
 
 .horario__rest-dot.is-past .horario__tomato-icon {
@@ -792,10 +688,6 @@
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
 
-/* ============================================================
-   REPASO
-   ============================================================ */
-
 .horario__repaso-link-wrap {
   width: 100%;
   max-width: 80rem;
@@ -819,18 +711,12 @@
   font-size: 14px;
   font-weight: 700;
   box-shadow: var(--shadow-sm);
-  transition:
-    background 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, border-color 0.2s linear;
 }
 
 .horario__repaso-link:hover {
   background: var(--primary-dark);
 }
-
-/* ============================================================
-   MODAL CURSO COMPLETADO
-   ============================================================ */
 
 .horario__complete-modal {
   padding: 16px;
@@ -880,10 +766,6 @@
   background: var(--primary-dark);
 }
 
-/* ============================================================
-   CURSO RÁPIDO
-   ============================================================ */
-
 .curso-rapido__temas {
   display: flex;
   flex-direction: column;
@@ -906,22 +788,14 @@
   color: var(--ink);
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    border-color 0.2s linear,
-    color 0.2s linear;
+  transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear;
 }
 
 .curso-rapido__tema-btn:hover {
   background: var(--primary-bg);
-  border: var(--nested-border);
   border-color: var(--primary);
   color: var(--primary);
 }
-
-/* ============================================================
-   TEMA MODAL
-   ============================================================ */
 
 .tema-modal {
   min-height: 0;
@@ -968,17 +842,11 @@
   color: var(--ink);
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    border-color 0.2s linear,
-    color 0.2s linear,
-    transform 0.15s linear,
-    box-shadow 0.2s linear;
+  transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear, transform 0.15s linear, box-shadow 0.2s linear;
 }
 
 .tema-modal__item:hover {
   background: var(--primary-bg);
-  border: var(--nested-border);
   border-color: var(--primary);
   color: var(--primary);
   transform: translateY(-1px);
@@ -989,10 +857,6 @@
   transform: translateY(0);
   box-shadow: none;
 }
-
-/* ============================================================
-   SELECTOR DE TEMAS
-   ============================================================ */
 
 .tema-selector {
   display: flex;
@@ -1050,16 +914,11 @@
   font-size: 0.95rem;
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear,
-    transform 0.15s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, transform 0.15s linear;
 }
 
 .tema-selector__boton:hover {
   background: var(--primary-bg);
-  border: var(--nested-border);
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -1067,19 +926,13 @@
 .tema-selector__boton:active {
   transform: scale(0.98);
   background: var(--primary-bg);
-  border: var(--nested-border);
 }
 
 .tema-selector__boton.is-selected {
   background: var(--primary-bg);
-  border: var(--nested-border);
-  color: var(--primary);
   border-color: var(--primary);
+  color: var(--primary);
 }
-
-/* ============================================================
-   CONFIRMACIONES
-   ============================================================ */
 
 .tema-selector__confirm-row {
   display: flex;
@@ -1094,11 +947,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear,
-    opacity 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
 }
 
 .tema-selector__confirm-btn.is-cancelar {
@@ -1126,11 +975,6 @@
   cursor: not-allowed;
 }
 
-/*
-  OMITIR NO ES PELIGROSO.
-  Por eso usa el estilo secundario/neutro.
-*/
-
 .tema-selector__omitir {
   align-self: center;
   margin-top: 2px;
@@ -1142,10 +986,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .tema-selector__omitir:hover {
@@ -1153,10 +994,6 @@
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
-/* ============================================================
-   ACCIONES DEL SELECTOR
-   ============================================================ */
 
 .tema-selector__acciones {
   display: flex;
@@ -1177,10 +1014,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    background 0.2s linear,
-    color 0.2s linear,
-    border-color 0.2s linear;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
 
 .tema-selector__iniciar:hover {
@@ -1193,10 +1027,6 @@
   background: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-
-/* ============================================================
-   CURSO RÁPIDO
-   ============================================================ */
 
 .horario__quick-course {
   display: flex;
@@ -1224,10 +1054,7 @@
   font-weight: 500;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: none;
-  transition:
-    background 0.2s linear,
-    border-color 0.2s linear,
-    box-shadow 0.2s linear;
+  transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
 }
 
 .horario__quick-course-select:hover {
@@ -1240,19 +1067,15 @@
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
 @media (max-width: 768px) {
   .horario__main {
-    min-height: calc(100vh - 200px);
+    min-height: 0;
     padding: 22px 16px;
     gap: 18px;
   }
 
   .horario__timer-card {
-    min-height: 440px;
+    min-height: 0;
     padding: 24px 18px;
   }
 
@@ -1271,21 +1094,24 @@
   }
 
   .horario__main {
+    min-height: 0;
     padding: 0;
     margin-bottom: 50px;
   }
 
   .horario__timer-card {
-    min-height: calc(100vh - 200px);
+    min-height: 0;
+    height: auto;
     padding: 22px 16px;
   }
 
-  .horario__courses-card {
-    padding: 18px 16px;
+  .horario__timer-center {
+    gap: 10px;
   }
 
   .horario__timer-clock {
-    font-size: 7rem;
+    font-size: min(23vw, 7rem);
+    line-height: 0.78;
   }
 
   .horario__timer-btn-row {
@@ -1326,9 +1152,30 @@
     flex-direction: column;
   }
 }
-/* ============================================================
-   PANTALLA BLOQUEADA (descanso obligatorio)
-   ============================================================ */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .horario__timer-clock {
+    font-size: min(22vw, 9rem);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .horario__timer-clock {
+    font-size: min(20vw, 12rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .horario__timer-clock {
+    font-size: min(19vw, 15rem);
+  }
+}
+
+@media (min-width: $bp-xl) {
+  .horario__timer-clock {
+    font-size: min(18vw, 18rem);
+  }
+}
 
 .horario__lock-screen {
   position: fixed;
@@ -1365,10 +1212,6 @@
   line-height: 1.4;
 }
 
-/* ============================================================
-   GATE DE CONFIGURACIÓN (botón para abrir el asistente)
-   ============================================================ */
-
 .gate-overlay {
   position: fixed;
   inset: 0;
@@ -1391,10 +1234,6 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
-/* ============================================================
-   ASISTENTE DE CONFIGURACIÓN DE HORARIO (ScheduleSetup)
-   ============================================================ */
 
 .setup-overlay {
   position: fixed;
@@ -1449,6 +1288,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
+
 .setup-dia-btn.is-on {
   background: var(--brand-dark);
   color: var(--ink-on-primary);
@@ -1522,7 +1362,6 @@
   font-size: 0.9rem;
 }
 
-/* Sugerencia resaltada con teclado */
 .setup-sugerencia-item.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
@@ -1556,7 +1395,6 @@
   gap: 6px;
 }
 
-/* Para que se note cuando el grid de pomodoros tiene el foco */
 .setup-pomo-grid:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
