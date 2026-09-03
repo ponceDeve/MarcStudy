@@ -183,6 +183,13 @@ body.is-header-oculto .topbar-wrapper {
     justify-content: flex-end;
     gap: 8px;
     flex-shrink: 0;
+
+    &--question {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
   }
 
   &__nav-btn {
@@ -201,13 +208,15 @@ body.is-header-oculto .topbar-wrapper {
     cursor: url("/cursor_pointer.webp"), pointer !important;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
     transition:
       background 0.2s linear,
       color 0.2s linear,
       transform 0.2s linear;
 
     &:hover {
-      background: var(--brand-bg);
+      background: var(--surface-hover);
+      color: var(--primary);
     }
 
     &.is-active {
@@ -217,6 +226,47 @@ body.is-header-oculto .topbar-wrapper {
 
     &:active {
       transform: scale(0.96);
+    }
+
+    &--abandonar {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 0;
+      flex-shrink: 0;
+      padding: 6px 12px;
+      color: var(--danger);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      white-space: nowrap;
+      cursor: url("/cursor_pointer.webp"), pointer !important;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+
+      &:hover {
+        background: var(--danger-bg);
+        color: var(--danger);
+        border-color: var(--danger);
+      }
+
+      &:active {
+        transform: scale(0.94);
+      }
+
+      .topbar__btn-icon {
+        color: inherit;
+        flex-shrink: 0;
+      }
+
+      .topbar__btn-title {
+        color: inherit;
+      }
     }
   }
 
@@ -252,6 +302,7 @@ body.is-header-oculto .topbar-wrapper {
     justify-content: flex-end;
     gap: 8px;
     flex-shrink: 0;
+    min-width: 0;
   }
 
   &__search-bar {
@@ -439,8 +490,7 @@ body.is-header-oculto .topbar-wrapper {
     box-shadow: none;
 
     &:hover {
-      background: rgba(20, 21, 24, 1);
-      color: #fff;
+      background: var(--success-bg);
       transition: background 0.3s linear;
     }
   }
@@ -457,6 +507,7 @@ body.is-header-oculto .topbar-wrapper {
     --bs-offcanvas-zindex: 1050;
     --bs-offcanvas-padding-x: 0;
     --bs-offcanvas-padding-y: 0;
+
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
@@ -723,6 +774,36 @@ body.is-header-oculto .topbar-wrapper {
   .topbar {
     &__nav {
       display: none !important;
+
+      &--question {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        gap: 4px;
+      }
+    }
+
+    &__nav-btn--abandonar {
+      display: inline-flex !important;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      min-width: 42px;
+      min-height: 42px;
+      padding: 7px 10px;
+      flex-shrink: 0;
+    }
+
+    &__nav-btn--abandonar .topbar__btn-title {
+      display: none;
+    }
+
+    &__nav-btn--abandonar .topbar__btn-icon {
+      display: block;
+      font-size: 18px;
+      margin: 0;
     }
 
     &__hamburger {
@@ -785,6 +866,14 @@ body.is-header-oculto .topbar-wrapper {
 
 @media (max-width: 480px) {
   .topbar {
+    &__title-box {
+      margin-right: 8px;
+    }
+
+    &__inner {
+      padding: 0 10px;
+    }
+
     &__search-placeholder {
       display: none;
     }
@@ -795,6 +884,24 @@ body.is-header-oculto .topbar-wrapper {
       padding: 0;
       justify-content: center;
       margin: 0 6px;
+    }
+
+    &__nav--question {
+      display: flex !important;
+    }
+
+    &__nav-btn--abandonar {
+      display: inline-flex !important;
+      width: 40px;
+      min-width: 40px;
+      height: 40px;
+      min-height: 40px;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    &__nav-btn--abandonar .topbar__btn-icon {
+      font-size: 17px;
     }
 
     &__drawer.offcanvas {
@@ -841,6 +948,10 @@ body.is-header-oculto .topbar-wrapper {
     &__nav {
       display: flex !important;
       gap: 12px;
+
+      &--question {
+        display: flex !important;
+      }
     }
 
     &__hamburger {
@@ -870,6 +981,10 @@ body.is-header-oculto .topbar-wrapper {
 
     &__nav-btn {
       padding: 5px 10px;
+    }
+
+    &__nav-btn--abandonar {
+      padding: 6px 12px;
     }
 
     &__btn-icon {
@@ -932,6 +1047,10 @@ body.is-header-oculto .topbar-wrapper {
 
     &__nav-btn {
       padding: 6px 12px;
+    }
+
+    &__nav-btn--abandonar {
+      padding: 7px 14px;
     }
 
     &__btn-icon {

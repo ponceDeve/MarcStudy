@@ -82,10 +82,6 @@ export default function RendirseModal({
         className="rendirse-modal"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="rendirse-modal__icon">
-          <i className="fas fa-flag" />
-        </div>
-
         <h3 className="rendirse-modal__title">
           ¿Te vas a rendir?
         </h3>

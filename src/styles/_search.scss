@@ -220,7 +220,7 @@
   background: var(--ink-on-primary);
   border: 1px solid var(--border-strong);
   border-top: none;
-  border-radius: 0 0 30px 30px;
+  border-radius: 0;
   box-shadow: none;
   max-height: 400px;
   overflow-x: hidden;
@@ -228,7 +228,8 @@
   overscroll-behavior: contain;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 3px;
+    height: 3px;
   }
 
   &::-webkit-scrollbar-track {
@@ -236,12 +237,16 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
+    background: var(--primary);
     border-radius: var(--radius-full);
   }
 
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover);
+  }
+
   scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-color: var(--primary) transparent;
 }
 
 /* ============================================================
@@ -255,6 +260,34 @@
   &:not(:first-child) {
     border-top: 1px solid var(--border);
   }
+}
+
+/* ============================================================
+   TEMAS DEL CURSO
+   ============================================================ */
+
+.search-group__temas {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows .28s ease,
+    opacity .2s ease,
+    visibility .28s ease;
+}
+
+.search-group__temas.is-open {
+  grid-template-rows: 1fr;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-group__temas > * {
+  min-height: 0;
 }
 
 /* ============================================================
@@ -297,7 +330,7 @@
   align-items: center;
   justify-content: flex-start;
   user-select: none;
-  color: var(--primary);
+  color: var(--ink);
   font-size: 1rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -320,6 +353,10 @@
 
   &:hover,
   &.is-focused {
+    color: var(--primary);
+  }
+
+  &.is-open {
     background-color: var(--primary-bg);
     color: var(--primary);
   }
@@ -332,16 +369,25 @@
     transform: translateX(1px);
   }
 
-  /*
-    Importante:
-    El curso no utiliza .search-match.
-    Aunque el texto coincida con la búsqueda,
-    permanece completamente limpio.
-  */
-
   .search-match {
     background: transparent;
   }
+}
+
+/* ============================================================
+   FLECHA DEL CURSO
+   ============================================================ */
+
+.search-course-chevron {
+  flex: 0 0 auto;
+  margin-left: 10px;
+  font-size: 11px;
+  color: currentColor;
+  transition: transform .25s ease;
+}
+
+.search-course-chevron.is-open {
+  transform: rotate(180deg);
 }
 
 /* ============================================================
@@ -352,6 +398,8 @@
   display: block;
   width: 100%;
   font-size: .95rem;
+  font-weight: var(--fw-normal);
+  font-style: italic;
   background-color: transparent;
   color: var(--ink);
   cursor: url("/cursor_pointer.webp"), pointer !important;
@@ -414,11 +462,6 @@
   color: inherit;
   border-radius: 2px;
 }
-
-/*
-  Refuerzo:
-  Nunca se muestra resaltado dentro de un curso.
-*/
 
 .search-result-item.is-curso .search-match {
   background: transparent;

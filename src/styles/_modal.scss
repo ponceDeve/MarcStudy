@@ -25,7 +25,6 @@
   padding: 12px;
   width: 100%;
   max-width: 380px;
-  box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
   text-align: center;
 }
@@ -36,7 +35,6 @@
   background: none;
   padding: 0;
   border: none;
-  box-shadow: none;
   max-width: 440px;
 }
 .modal-close-x {
@@ -96,7 +94,6 @@
 }
 .tema-modal-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px var(--primary-bg);
 }
 .tema-modal-actions {
   display: flex;
@@ -478,7 +475,6 @@
 
 .editar-nombre-foto:hover {
   border-color: var(--primary-light);
-  box-shadow: 0 0 5px var(--primary-light);
 }
 
 .editar-nombre-foto__img {
@@ -539,7 +535,6 @@
   background: linear-gradient(180deg, #172033 0%, #111827 52%, #0b1120 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03), 0 0 40px rgba(220, 38, 38, 0.08);
 }
 .retirada-modal::before {
   content: "";
@@ -549,7 +544,6 @@
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, transparent 0%, var(--danger) 20%, var(--danger) 80%, transparent 100%);
-  box-shadow: 0 0 18px rgba(220, 38, 38, 0.55);
 }
 .retirada-modal::after {
   content: "";
@@ -586,73 +580,82 @@
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
+
 .retirada-modal__btn {
   flex: 1;
-  min-height: 50px;
-  padding: 11px 18px;
-  border-radius: 8px;
+  min-height: 42px;
+  padding: 8px 14px;
+  border-radius: 7px;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: transform 0.12s linear, background-color 0.12s linear, border-color 0.12s linear, box-shadow 0.12s linear, color 0.12s linear;
+  transition:
+    transform 0.12s linear,
+    background-color 0.12s linear,
+    border-color 0.12s linear,
+    color 0.12s linear;
 }
+
 .retirada-modal__btn.is-cancel {
   color: rgba(255, 255, 255, 0.88);
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
+
 .retirada-modal__btn.is-cancel:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.09);
   border-color: rgba(255, 255, 255, 0.24);
-  transform: translateY(-2px);
-  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
 }
+
 .retirada-modal__btn.is-confirm {
   color: #ffffff;
   background: var(--danger);
   border: 1px solid var(--danger);
-  box-shadow: 0 5px 18px rgba(220, 38, 38, 0.20);
 }
+
 .retirada-modal__btn.is-confirm:hover {
   color: #ffffff;
   background: var(--danger-dark);
   border-color: var(--danger-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(220, 38, 38, 0.30);
+  transform: translateY(-1px);
 }
+
 .retirada-modal__btn:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
+
 .retirada-modal__btn:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 @media (max-width: 480px) {
   .retirada-modal {
-    padding: 30px 20px 22px;
-    border-radius: 12px;
+    padding: 24px 16px 18px;
+    border-radius: 10px;
   }
+
   .retirada-modal__title {
-    font-size: 25px;
+    font-size: 22px;
   }
+
   .retirada-modal__subtitle {
-    font-size: 16px;
-    line-height: 1.55;
-    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-bottom: 18px;
   }
-  .retirada-modal__actions {
-    flex-direction: column;
-  }
+
   .retirada-modal__btn {
     width: 100%;
-    min-height: 50px;
+    min-height: 42px;
+    padding: 8px 12px;
+    font-size: 11px;
   }
 }

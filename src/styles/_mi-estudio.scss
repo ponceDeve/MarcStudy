@@ -2394,7 +2394,6 @@
 
   font-size: 1.3rem;
 }
-
 /* ============================================================
    ACCIONES FINALES
    ============================================================ */
@@ -2403,55 +2402,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-  gap: 1rem;
-
-  margin-bottom: 3.125rem;
+  gap: 0.75rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
 
 .teoria-boton-examen {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-
-  padding: 1rem 2.25rem;
-
-  background-color: var(--primary);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.7rem 1.4rem;
+  background: var(--primary);
   color: var(--ink-on-primary);
-
   border: none;
   border-radius: var(--radius-full);
-
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
-
   text-transform: uppercase;
   letter-spacing: 0.0312rem;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   box-shadow: var(--shadow-md);
-
-  transition: all 0.2s linear;
+  transition:
+    background-color 0.2s linear,
+    transform 0.2s linear,
+    box-shadow 0.2s linear;
 
   &:hover {
-    background-color: var(--primary-light);
+    background: var(--primary-light);
     transform: translateY(-0.125rem);
     box-shadow: var(--shadow-lg);
   }
 
   &.is-bloqueado {
-    background-color: var(--surface-alt);
+    background: var(--surface-alt);
     color: var(--ink-soft);
-
     opacity: 0.7;
-
     box-shadow: none;
 
     &:hover {
-      background-color: var(--surface-alt);
+      background: var(--surface-alt);
       transform: none;
       box-shadow: none;
     }
@@ -2459,22 +2452,24 @@
 }
 
 .teoria-boton-completar {
-  background-color: var(--success);
+  background: var(--success);
+  color: var(--ink-on-primary);
 
   &:hover {
-    background-color: var(--success);
+    background: var(--success);
+    color: var(--ink-on-primary);
     filter: brightness(1.1);
   }
 
   &.is-bloqueado {
-    background-color: var(--success);
+    background: var(--success);
     color: var(--ink-on-primary);
-
     opacity: 0.5;
     cursor: not-allowed;
 
     &:hover {
-      background-color: var(--success);
+      background: var(--success);
+      color: var(--ink-on-primary);
       filter: none;
     }
   }
@@ -2484,37 +2479,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   flex-shrink: 0;
-
   margin-left: 0.5rem;
   padding: 0.25rem 0.4375rem;
-
   background: transparent;
   color: var(--primary);
-
   border: none;
   border-radius: 0.4375rem;
-
   font-size: 1.1rem;
   line-height: 1;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     transform 0.15s linear,
     background-color 0.15s linear;
 
   &:hover {
     transform: scale(1.18);
-    background-color: var(--primary-bg);
+    background: var(--primary-bg);
   }
 
   &:active {
     transform: scale(0.92);
   }
 }
-
 /* ============================================================
    ALERTA DE FELICITACIÓN
    ============================================================ */

@@ -33,31 +33,20 @@ function ResaltarCoincidencia({ texto, query }) {
   const textoNormalizado = normalizarTexto(textoOriginal);
   const busquedaNormalizada = normalizarTexto(busqueda);
 
-  if (!busquedaNormalizada) {
-    return textoOriginal;
-  }
+  if (!busquedaNormalizada) return textoOriginal;
 
   const indice = textoNormalizado.indexOf(busquedaNormalizada);
 
-  if (indice === -1) {
-    return textoOriginal;
-  }
+  if (indice === -1) return textoOriginal;
 
   const antes = textoOriginal.slice(0, indice);
-  const coincidencia = textoOriginal.slice(
-    indice,
-    indice + busqueda.length
-  );
-  const despues = textoOriginal.slice(
-    indice + busqueda.length
-  );
+  const coincidencia = textoOriginal.slice(indice, indice + busqueda.length);
+  const despues = textoOriginal.slice(indice + busqueda.length);
 
   return (
     <>
       {antes}
-      <span className="search-match">
-        {coincidencia}
-      </span>
+      <span className="search-match">{coincidencia}</span>
       {despues}
     </>
   );
@@ -68,30 +57,21 @@ function buscarFuertes(query) {
     CURSOS_ITEMS,
     query,
     (c) => c.nombre,
-    {
-      minScore: 400
-    }
+    { minScore: 400 }
   );
 
   const temas = buscarConPuntaje(
     TEMAS_ITEMS,
     query,
     (t) => t.tema,
-    {
-      minScore: 400
-    }
+    { minScore: 400 }
   );
 
-  return {
-    cursos,
-    temas
-  };
+  return { cursos, temas };
 }
 
 function agruparResultados({ cursos, temas }) {
-  const nombresCursosFuertes = new Set(
-    cursos.map((c) => c.nombre)
-  );
+  const nombresCursosFuertes = new Set(cursos.map((c) => c.nombre));
 
   const grupos = cursos.map((c) => {
     const cursoEncontrado = manifest.cursos.find(
@@ -114,9 +94,7 @@ function agruparResultados({ cursos, temas }) {
   const temasPorCurso = new Map();
 
   for (const t of temas) {
-    if (nombresCursosFuertes.has(t.curso)) {
-      continue;
-    }
+    if (nombresCursosFuertes.has(t.curso)) continue;
 
     if (!temasPorCurso.has(t.curso)) {
       temasPorCurso.set(t.curso, []);
@@ -135,7 +113,7 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
-function construirItemsNavegables(grupos) {
+function construirItemsNavegables(grupos, cursoAbierto) {
   const items = [];
 
   for (const grupo of grupos) {
@@ -143,6 +121,8 @@ function construirItemsNavegables(grupos) {
       type: "curso",
       nombre: grupo.curso
     });
+
+    if (grupo.curso !== cursoAbierto) continue;
 
     for (const tema of grupo.temas) {
       items.push({
@@ -157,32 +137,22 @@ function construirItemsNavegables(grupos) {
   return items;
 }
 
-export default function SearchModal({
-  open,
-  onClose,
-  onSelect
-}) {
+export default function SearchModal({ open, onClose, onSelect }) {
   const [query, setQuery] = useState("");
   const [inputFocused, setInputFocused] = useState(false);
-  const [editarNombreAbierto, setEditarNombreAbierto] =
-    useState(false);
-
-  const [nombreUsuario, setNombreUsuario] =
-    useLocalStorage(
-      "miEstudio_nombreUsuario",
-      null
-    );
-
-  const [fotoUsuario, setFotoUsuario] =
-    useLocalStorage(
-      "miEstudio_fotoUsuario",
-      null
-    );
-
+  const [editarNombreAbierto, setEditarNombreAbierto] = useState(false);
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage(
+    "miEstudio_nombreUsuario",
+    null
+  );
+  const [fotoUsuario, setFotoUsuario] = useLocalStorage(
+    "miEstudio_fotoUsuario",
+    null
+  );
   const [focusedIdx, setFocusedIdx] = useState(-1);
+  const [cursoAbierto, setCursoAbierto] = useState(null);
 
   const inputRef = useRef(null);
-
   const hayQuery = query.trim() !== "";
 
   const gruposIniciales = useMemo(() => {
@@ -198,55 +168,29 @@ export default function SearchModal({
   }, []);
 
   const fuertes = useMemo(
-    () =>
-      hayQuery
-        ? buscarFuertes(query)
-        : {
-            cursos: [],
-            temas: []
-          },
+    () => (hayQuery ? buscarFuertes(query) : { cursos: [], temas: [] }),
     [query, hayQuery]
   );
 
-  const grupos = useMemo(
-    () => agruparResultados(fuertes),
-    [fuertes]
+  const grupos = useMemo(() => agruparResultados(fuertes), [fuertes]);
+
+  const mostrarListaInicial = open && !hayQuery;
+  const mostrarResultados = open && hayQuery;
+  const contenidoExpandido = mostrarListaInicial || mostrarResultados;
+
+  const gruposVisibles = useMemo(
+    () => (hayQuery ? grupos : gruposIniciales),
+    [hayQuery, grupos, gruposIniciales]
   );
 
-  const mostrarListaInicial =
-    open &&
-    !hayQuery;
-
-  const mostrarResultados =
-    open &&
-    hayQuery;
-
-  const contenidoExpandido =
-    mostrarListaInicial ||
-    mostrarResultados;
-
-  const gruposVisibles = useMemo(() => {
-    if (hayQuery) {
-      return grupos;
-    }
-
-    return gruposIniciales;
-  }, [
-    hayQuery,
-    grupos,
-    gruposIniciales
-  ]);
-
   const itemsNavegables = useMemo(
-    () => construirItemsNavegables(gruposVisibles),
-    [gruposVisibles]
+    () => construirItemsNavegables(gruposVisibles, cursoAbierto),
+    [gruposVisibles, cursoAbierto]
   );
 
   function obtenerIndiceElemento(item) {
     return itemsNavegables.findIndex((elemento) => {
-      if (elemento.type !== item.type) {
-        return false;
-      }
+      if (elemento.type !== item.type) return false;
 
       if (elemento.type === "curso") {
         return elemento.nombre === item.nombre;
@@ -266,24 +210,34 @@ export default function SearchModal({
     setQuery("");
     setInputFocused(false);
     setFocusedIdx(-1);
+    setCursoAbierto(null);
 
     onSelect(item);
     onClose();
   }
 
+  function manejarClickCurso(curso) {
+    if (cursoAbierto === curso) {
+      ejecutarBusqueda({
+        type: "curso",
+        nombre: curso
+      });
+      return;
+    }
+
+    setCursoAbierto(curso);
+  }
+
   function ejecutarBusquedaActual() {
     if (!hayQuery) return;
 
-    const mejorOpcion =
-      fuertes.cursos[0] ||
-      fuertes.temas[0];
+    const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
 
     if (!mejorOpcion) return;
 
     if (mejorOpcion.type === "curso") {
       const cursoEncontrado = manifest.cursos.find(
-        (curso) =>
-          curso.nombre === mejorOpcion.nombre
+        (curso) => curso.nombre === mejorOpcion.nombre
       );
 
       if (!cursoEncontrado) return;
@@ -320,21 +274,13 @@ export default function SearchModal({
 
     setFocusedIdx((actual) => {
       if (actual === -1) {
-        return direccion > 0
-          ? 0
-          : total - 1;
+        return direccion > 0 ? 0 : total - 1;
       }
 
-      const siguiente =
-        actual + direccion;
+      const siguiente = actual + direccion;
 
-      if (siguiente < 0) {
-        return 0;
-      }
-
-      if (siguiente >= total) {
-        return total - 1;
-      }
+      if (siguiente < 0) return 0;
+      if (siguiente >= total) return total - 1;
 
       return siguiente;
     });
@@ -348,8 +294,12 @@ export default function SearchModal({
       return;
     }
 
-    const item =
-      itemsNavegables[focusedIdx];
+    const item = itemsNavegables[focusedIdx];
+
+    if (item.type === "curso") {
+      manejarClickCurso(item.nombre);
+      return;
+    }
 
     ejecutarBusqueda(item);
   }
@@ -357,10 +307,9 @@ export default function SearchModal({
   useEffect(() => {
     if (focusedIdx < 0) return;
 
-    const elemento =
-      document.querySelector(
-        `[data-search-index="${focusedIdx}"]`
-      );
+    const elemento = document.querySelector(
+      `[data-search-index="${focusedIdx}"]`
+    );
 
     if (!elemento) return;
 
@@ -368,10 +317,7 @@ export default function SearchModal({
       behavior: "smooth",
       block: "nearest"
     });
-  }, [
-    focusedIdx,
-    itemsNavegables
-  ]);
+  }, [focusedIdx, itemsNavegables]);
 
   useEffect(() => {
     setFocusedIdx(-1);
@@ -383,6 +329,7 @@ export default function SearchModal({
     setQuery("");
     setInputFocused(true);
     setFocusedIdx(-1);
+    setCursoAbierto(null);
 
     requestAnimationFrame(() => {
       inputRef.current?.focus();
@@ -393,12 +340,7 @@ export default function SearchModal({
     if (!open) return;
 
     function onKeyDown(e) {
-      if (
-        document.activeElement ===
-        inputRef.current
-      ) {
-        return;
-      }
+      if (document.activeElement === inputRef.current) return;
 
       if (e.key === "Escape") {
         e.preventDefault();
@@ -440,18 +382,10 @@ export default function SearchModal({
       }
     }
 
-    document.addEventListener(
-      "keydown",
-      onKeyDown,
-      true
-    );
+    document.addEventListener("keydown", onKeyDown, true);
 
     return () => {
-      document.removeEventListener(
-        "keydown",
-        onKeyDown,
-        true
-      );
+      document.removeEventListener("keydown", onKeyDown, true);
     };
   }, [
     open,
@@ -463,19 +397,88 @@ export default function SearchModal({
 
   const inputTieneLista =
     mostrarListaInicial ||
-    (mostrarResultados &&
-      grupos.length > 0);
+    (mostrarResultados && grupos.length > 0);
+
+  function renderGrupo(g, grupoIndex, esBusqueda = false) {
+    const cursoIndex = obtenerIndiceElemento({
+      type: "curso",
+      nombre: g.curso
+    });
+
+    const estaAbierto = cursoAbierto === g.curso;
+
+    return (
+      <div
+        key={`${esBusqueda ? "grupo" : "grupo-inicial"}-${g.curso}-${grupoIndex}`}
+        className="search-group"
+      >
+        <button
+          type="button"
+          data-search-index={cursoIndex}
+          className={`search-result-item is-curso${
+            cursoIndex === focusedIdx ? " is-focused" : ""
+          }${estaAbierto ? " is-open" : ""}`}
+          onClick={() => manejarClickCurso(g.curso)}
+        >
+          <span className="curso-title">
+            {esBusqueda ? (
+              <ResaltarCoincidencia
+                texto={g.curso}
+                query={query}
+              />
+            ) : (
+              g.curso
+            )}
+          </span>
+
+          <i
+            className={`fa-solid fa-chevron-down search-course-chevron${
+              estaAbierto ? " is-open" : ""
+            }`}
+          />
+        </button>
+
+        <div
+          className={`search-group__temas${
+            estaAbierto ? " is-open" : ""
+          }`}
+        >
+          {g.temas.map((t, temaIndex) => {
+            const index = obtenerIndiceElemento(t);
+
+            return (
+              <button
+                type="button"
+                key={`tema-${esBusqueda ? "" : "inicial-"}${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
+                data-search-index={index}
+                onClick={() => ejecutarBusqueda(t)}
+                className={`search-result-item is-tema${
+                  index === focusedIdx ? " is-focused" : ""
+                }`}
+              >
+                <p className="search-result-item__tema">
+                  {esBusqueda ? (
+                    <ResaltarCoincidencia
+                      texto={t.tema}
+                      query={query}
+                    />
+                  ) : (
+                    t.tema
+                  )}
+                </p>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
-      className={`search-overlay${
-        open ? "" : " is-closed"
-      }`}
+      className={`search-overlay${open ? "" : " is-closed"}`}
       onClick={(e) => {
-        if (
-          e.target ===
-          e.currentTarget
-        ) {
+        if (e.target === e.currentTarget) {
           onClose();
         }
       }}
@@ -483,16 +486,12 @@ export default function SearchModal({
     >
       <div
         className={`search-box${
-          contenidoExpandido
-            ? " is-expanded"
-            : ""
+          contenidoExpandido ? " is-expanded" : ""
         }`}
       >
         <div
           className={`search-input-row${
-            inputTieneLista
-              ? " has-query"
-              : ""
+            inputTieneLista ? " has-query" : ""
           }`}
         >
           <input
@@ -501,9 +500,7 @@ export default function SearchModal({
             name="buscar-curso-tema"
             ref={inputRef}
             value={query}
-            onFocus={() => {
-              setInputFocused(true);
-            }}
+            onFocus={() => setInputFocused(true)}
             onBlur={() => {
               setTimeout(() => {
                 setInputFocused(false);
@@ -512,6 +509,7 @@ export default function SearchModal({
             onChange={(e) => {
               setQuery(e.target.value);
               setFocusedIdx(-1);
+              setCursoAbierto(null);
             }}
             onKeyDown={(e) => {
               if (e.key === "Escape") {
@@ -541,8 +539,7 @@ export default function SearchModal({
 
                 if (
                   focusedIdx >= 0 &&
-                  focusedIdx <
-                    itemsNavegables.length
+                  focusedIdx < itemsNavegables.length
                 ) {
                   seleccionarElementoActual();
                   return;
@@ -588,172 +585,31 @@ export default function SearchModal({
 
         {mostrarListaInicial && (
           <div className="search-results">
-            {gruposIniciales.map(
-              (g, grupoIndex) => {
-                const cursoIndex =
-                  obtenerIndiceElemento({
-                    type: "curso",
-                    nombre: g.curso
-                  });
-
-                return (
-                  <div
-                    key={`grupo-inicial-${g.curso}-${grupoIndex}`}
-                    className="search-group"
-                  >
-                    <button
-                      type="button"
-                      data-search-index={cursoIndex}
-                      className={`search-result-item is-curso${
-                        cursoIndex ===
-                        focusedIdx
-                          ? " is-focused"
-                          : ""
-                      }`}
-                      onClick={() =>
-                        ejecutarBusqueda({
-                          type: "curso",
-                          nombre: g.curso
-                        })
-                      }
-                    >
-                      <span className="curso-title">
-                        {g.curso}
-                      </span>
-                    </button>
-
-                    {g.temas.map(
-                      (t, temaIndex) => {
-                        const index =
-                          obtenerIndiceElemento(
-                            t
-                          );
-
-                        return (
-                          <button
-                            type="button"
-                            key={`tema-inicial-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
-                            data-search-index={
-                              index
-                            }
-                            onClick={() =>
-                              ejecutarBusqueda(t)
-                            }
-                            className={`search-result-item is-tema${
-                              index ===
-                              focusedIdx
-                                ? " is-focused"
-                                : ""
-                            }`}
-                          >
-                            <p className="search-result-item__tema">
-                              {t.tema}
-                            </p>
-                          </button>
-                        );
-                      }
-                    )}
-                  </div>
-                );
-              }
+            {gruposIniciales.map((g, grupoIndex) =>
+              renderGrupo(g, grupoIndex)
             )}
           </div>
         )}
 
-        {mostrarResultados &&
-          grupos.length > 0 && (
-            <div className="search-results">
-              {grupos.map(
-                (g, grupoIndex) => {
-                  const cursoIndex =
-                    obtenerIndiceElemento({
-                      type: "curso",
-                      nombre: g.curso
-                    });
+        {mostrarResultados && grupos.length > 0 && (
+          <div className="search-results">
+            {grupos.map((g, grupoIndex) =>
+              renderGrupo(g, grupoIndex, true)
+            )}
+          </div>
+        )}
 
-                  return (
-                    <div
-                      key={`grupo-${g.curso}-${grupoIndex}`}
-                      className="search-group"
-                    >
-                      <button
-                        type="button"
-                        data-search-index={
-                          cursoIndex
-                        }
-                        className={`search-result-item is-curso${
-                          cursoIndex ===
-                          focusedIdx
-                            ? " is-focused"
-                            : ""
-                        }`}
-                        onClick={() =>
-                          ejecutarBusqueda({
-                            type: "curso",
-                            nombre: g.curso
-                          })
-                        }
-                      >
-                        <span className="curso-title">
-                          {g.curso}
-                        </span>
-                      </button>
-
-                      {g.temas.map(
-                        (t, temaIndex) => {
-                          const index =
-                            obtenerIndiceElemento(
-                              t
-                            );
-
-                          return (
-                            <button
-                              type="button"
-                              key={`tema-${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
-                              data-search-index={
-                                index
-                              }
-                              onClick={() =>
-                                ejecutarBusqueda(
-                                  t
-                                )
-                              }
-                              className={`search-result-item is-tema${
-                                index ===
-                                focusedIdx
-                                  ? " is-focused"
-                                  : ""
-                              }`}
-                            >
-                              <p className="search-result-item__tema">
-                                <ResaltarCoincidencia
-                                  texto={t.tema}
-                                  query={query}
-                                />
-                              </p>
-                            </button>
-                          );
-                        }
-                      )}
-                    </div>
-                  );
-                }
-              )}
-            </div>
-          )}
-
-        {mostrarResultados &&
-          grupos.length === 0 && (
-            <div className="search-results">
-              <div className="search-group">
-                <div className="search-result-item search-no-results">
-                  <p className="search-result-item__tema">
-                    Sin resultados para "{query}"
-                  </p>
-                </div>
+        {mostrarResultados && grupos.length === 0 && (
+          <div className="search-results">
+            <div className="search-group">
+              <div className="search-result-item search-no-results">
+                <p className="search-result-item__tema">
+                  Sin resultados para "{query}"
+                </p>
               </div>
             </div>
-          )}
+          </div>
+        )}
       </div>
 
       <EditarNombreModal
@@ -765,9 +621,7 @@ export default function SearchModal({
           setFotoUsuario(f);
           setEditarNombreAbierto(false);
         }}
-        onCancelar={() =>
-          setEditarNombreAbierto(false)
-        }
+        onCancelar={() => setEditarNombreAbierto(false)}
       />
     </div>
   );

@@ -49,20 +49,13 @@ export default function TopBar({
   curso,
   stage,
   onAbrirBuscador,
-  onTogglePomodoroMini,
   onAbrirTemas,
-  onGuardarRepaso,
-  isFullscreen,
-  onToggleFullscreen,
   onAbandonarPregunta,
   onIrInicio,
-  pdfVerUrl,
-  pdfDescargaUrl,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-  const [configOpen, setConfigOpen] = useState(false);
 
-  useAutoHideHeader(menuMobileOpen || configOpen);
+  useAutoHideHeader(menuMobileOpen);
 
   const wrapperRef = useRef(null);
   const temaRef = useRef(null);
@@ -89,11 +82,9 @@ export default function TopBar({
       setTemaOverflows(overflows);
 
       if (overflows) {
-        const scrollDistance = -(textWidth + 40);
-
         wrapper.style.setProperty(
           "--scroll-dist",
-          `${scrollDistance}px`
+          `${-(textWidth + 40)}px`
         );
       } else {
         wrapper.style.removeProperty("--scroll-dist");
@@ -121,12 +112,6 @@ export default function TopBar({
   )}&tema=${encodeURIComponent(tema)}`;
 
   const repasoTo = "/repaso";
-
-  /*
-  ============================================================
-  BOTONES PRINCIPALES
-  ============================================================
-  */
 
   const botonesPrincipales = [
     {
@@ -161,87 +146,22 @@ export default function TopBar({
 
   const botonesVisibles =
     stage === "question"
-      ? []
-      : botonesPrincipales;
-
-  /*
-  ============================================================
-  AJUSTES
-  ============================================================
-  */
-
-  const configButtons = [
-    {
-      title: "Mini cronómetro",
-      icon: "fa-solid fa-clock",
-      label: "Timer",
-      fullLabel: "Mini cronómetro",
-      onClick: onTogglePomodoroMini,
-    },
-    {
-      title: "Guardar progreso",
-      icon: "fa-solid fa-bookmark",
-      label: "Guardar",
-      fullLabel: "Guardar progreso",
-      onClick: onGuardarRepaso,
-    },
-    {
-      title: isFullscreen
-        ? "Minimizar pantalla"
-        : "Pantalla completa",
-      icon: isFullscreen
-        ? "fas fa-compress"
-        : "fas fa-expand",
-      label: isFullscreen
-        ? "Minimizar"
-        : "Pantalla",
-      fullLabel: isFullscreen
-        ? "Minimizar pantalla"
-        : "Pantalla completa",
-      onClick: onToggleFullscreen,
-    },
-    ...(pdfVerUrl
-      ? [
-          {
-            title: "Ver PDF",
-            icon: "fas fa-file-pdf",
-            label: "Ver PDF",
-            fullLabel: "Ver PDF",
-            href: pdfVerUrl,
-            target: "_blank",
-          },
-        ]
-      : []),
-    ...(pdfDescargaUrl
-      ? [
-          {
-            title: "Descargar PDF",
-            icon: "fas fa-download",
-            label: "Descargar",
-            fullLabel: "Descargar PDF",
-            href: pdfDescargaUrl,
-            download: true,
-          },
-        ]
-      : []),
-    ...(stage === "question"
       ? [
           {
             title: "Abandonar pregunta",
-            icon: "fas fa-door-open",
             label: "Abandonar",
             fullLabel: "Abandonar pregunta",
+            icon: "fas fa-door-open",
             onClick: onAbandonarPregunta,
+            className: "topbar__nav-btn--abandonar",
           },
         ]
-      : []),
-  ];
+      : botonesPrincipales;
 
-  /*
-  ============================================================
-  BOTÓN DEL TOPBAR
-  ============================================================
-  */
+  const botonesMenu =
+    stage === "question"
+      ? []
+      : botonesVisibles;
 
   const renderBoton = (
     b,
@@ -251,6 +171,7 @@ export default function TopBar({
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
+
         <span className="topbar__btn-title">
           {b.label}
         </span>
@@ -265,13 +186,17 @@ export default function TopBar({
       closeFn();
     };
 
+    const buttonClass = `${cls} ${
+      b.className || ""
+    }`.trim();
+
     if (b.to) {
       return (
         <Link
           key={b.title || b.label}
           to={b.to}
           title={b.title}
-          className={cls}
+          className={buttonClass}
           onClick={closeFn}
         >
           {content}
@@ -285,18 +210,12 @@ export default function TopBar({
         type="button"
         onClick={handleClick}
         title={b.title}
-        className={cls}
+        className={buttonClass}
       >
         {content}
       </button>
     );
   };
-
-  /*
-  ============================================================
-  FILA DEL DRAWER
-  ============================================================
-  */
 
   const renderFila = (
     b,
@@ -321,27 +240,6 @@ export default function TopBar({
 
       closeFn();
     };
-
-    if (b.href) {
-      return (
-        <a
-          key={b.title || b.label}
-          href={b.href}
-          download={b.download || undefined}
-          target={b.target}
-          rel={
-            b.target
-              ? "noopener noreferrer"
-              : undefined
-          }
-          title={b.title}
-          className="topbar__drawer-item"
-          onClick={closeFn}
-        >
-          {content}
-        </a>
-      );
-    }
 
     if (b.to) {
       return (
@@ -370,21 +268,10 @@ export default function TopBar({
     );
   };
 
-  /*
-  ============================================================
-  RENDER
-  ============================================================
-  */
-
   return (
     <div className="topbar-wrapper">
       <div className="topbar">
         <div className="topbar__inner">
-
-          {/* ==================================================
-              TEMA + CURSO
-              ================================================== */}
-
           <div className="topbar__title-box">
             <button
               type="button"
@@ -422,14 +309,15 @@ export default function TopBar({
             </button>
           </div>
 
-          {/* ==================================================
-              CONTROLES
-              ================================================== */}
-
           <div className="topbar__controls">
-
             {botonesVisibles.length > 0 && (
-              <div className="topbar__nav">
+              <div
+                className={`topbar__nav ${
+                  stage === "question"
+                    ? "topbar__nav--question"
+                    : ""
+                }`}
+              >
                 {botonesVisibles.map((b) =>
                   renderBoton(
                     b,
@@ -439,26 +327,7 @@ export default function TopBar({
               </div>
             )}
 
-            {/* =================================================
-                AJUSTES
-                ================================================= */}
-
-            <button
-              type="button"
-              onClick={() =>
-                setConfigOpen(true)
-              }
-              title="Ajustes"
-              className="topbar__gear"
-            >
-              <i className="fa-solid fa-gear" />
-            </button>
-
-            {/* =================================================
-                MENÚ
-                ================================================= */}
-
-            {botonesVisibles.length > 0 && (
+            {botonesMenu.length > 0 && (
               <button
                 type="button"
                 onClick={() =>
@@ -467,17 +336,13 @@ export default function TopBar({
                 title="Menú"
                 className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
               >
-                <i className="fa-solid fa-bars" />
+                <i className="fa-solid fa-gear" />
               </button>
             )}
           </div>
         </div>
 
-        {/* ====================================================
-            DRAWER — MENÚ
-            ==================================================== */}
-
-        {botonesVisibles.length > 0 && (
+        {botonesMenu.length > 0 && (
           <SideDrawer
             title="Menú"
             isOpen={menuMobileOpen}
@@ -485,7 +350,7 @@ export default function TopBar({
               setMenuMobileOpen(false)
             }
           >
-            {botonesVisibles.map((b) =>
+            {botonesMenu.map((b) =>
               renderFila(
                 b,
                 () =>
@@ -494,26 +359,6 @@ export default function TopBar({
             )}
           </SideDrawer>
         )}
-
-        {/* ====================================================
-            DRAWER — AJUSTES
-            ==================================================== */}
-
-        <SideDrawer
-          title="Ajustes"
-          isOpen={configOpen}
-          onClose={() =>
-            setConfigOpen(false)
-          }
-        >
-          {configButtons.map((b) =>
-            renderFila(
-              b,
-              () =>
-                setConfigOpen(false)
-            )
-          )}
-        </SideDrawer>
       </div>
     </div>
   );
