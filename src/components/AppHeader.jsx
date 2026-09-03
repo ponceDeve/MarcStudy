@@ -48,7 +48,7 @@ function SideDrawer({ title, isOpen, onClose, children }) {
 
 export default function AppHeader({
   onAbrirBuscador,
-  showHome = false,
+  section = "inicio",
   onEditarHorario = null,
   tutorialSteps = null,
   onSelectTutorialStep = null,
@@ -126,8 +126,15 @@ export default function AppHeader({
   // BOTONES DEL HEADER
   // ============================================================
 
+  const esInicio = section === "inicio";
+
   const botones = [
-    ...(showHome
+    // ==========================================================
+    // IR A INICIO
+    // Solo tiene sentido fuera de Inicio.
+    // ==========================================================
+
+    ...(!esInicio
       ? [
           {
             title: "Ir a Inicio",
@@ -138,6 +145,10 @@ export default function AppHeader({
           },
         ]
       : []),
+
+    // ==========================================================
+    // BUSCADOR
+    // ==========================================================
 
     ...(onAbrirBuscador
       ? [
@@ -151,32 +162,41 @@ export default function AppHeader({
         ]
       : []),
 
-    {
-      title: "Ir a Mis Repasos",
-      label: "Repaso",
-      fullLabel: "Mis Repasos",
-      icon: "fa-solid fa-calendar-check",
-      to: "/repaso",
-    },
+    // ==========================================================
+    // INICIO — ORDEN DE IMPORTANCIA
+    //
+    // 1. Pomodoro
+    // 2. Repaso
+    // 3. Perfil
+    // 4. Ayuda
+    // ==========================================================
 
-    {
-      title: "Ir al Pomodoro",
-      label: "Pomodoro",
-      fullLabel: "Pomodoro",
-      icon: "fa-solid fa-hourglass-half",
-      to: "/pomodoro",
-    },
+    ...(esInicio
+      ? [
+          {
+            title: "Ir al Pomodoro",
+            label: "Pomodoro",
+            fullLabel: "Pomodoro",
+            icon: "fa-solid fa-hourglass-half",
+            to: "/pomodoro",
+          },
 
-    {
-      title: "Editar horario",
-      label: "Editar",
-      fullLabel: "Editar horario",
-      icon: "fa-solid fa-pen",
-      to: "/editar",
-      onClick: onEditarHorario,
-    },
+          {
+            title: "Ir a Mis Repasos",
+            label: "Repaso",
+            fullLabel: "Mis Repasos",
+            icon: "fa-solid fa-calendar-check",
+            to: "/repaso",
+          },
+        ]
+      : []),
 
-    ...(nombreUsuario
+    // ==========================================================
+    // PERFIL
+    // Solo se muestra desde Inicio.
+    // ==========================================================
+
+    ...(esInicio && nombreUsuario
       ? [
           {
             title: "Editar perfil",
@@ -190,7 +210,65 @@ export default function AppHeader({
       : []),
 
     // ==========================================================
+    // REPASO → POMODORO
+    // ==========================================================
+
+    ...(section === "repaso"
+      ? [
+          {
+            title: "Ir al Pomodoro",
+            label: "Pomodoro",
+            fullLabel: "Pomodoro",
+            icon: "fa-solid fa-hourglass-half",
+            to: "/pomodoro",
+          },
+        ]
+      : []),
+
+    // ==========================================================
+    // POMODORO → REPASO + EDITAR HORARIO
+    // ==========================================================
+
+    ...(section === "pomodoro"
+      ? [
+          {
+            title: "Ir a Mis Repasos",
+            label: "Repaso",
+            fullLabel: "Mis Repasos",
+            icon: "fa-solid fa-calendar-check",
+            to: "/repaso",
+          },
+
+          {
+            title: "Editar horario",
+            label: "Editar",
+            fullLabel: "Editar horario",
+            icon: "fa-solid fa-pen",
+            to: "/editar",
+            onClick: onEditarHorario,
+          },
+        ]
+      : []),
+
+    // ==========================================================
+    // EDITAR HORARIO → POMODORO
+    // ==========================================================
+
+    ...(section === "editar"
+      ? [
+          {
+            title: "Ir al Pomodoro",
+            label: "Pomodoro",
+            fullLabel: "Pomodoro",
+            icon: "fa-solid fa-hourglass-half",
+            to: "/pomodoro",
+          },
+        ]
+      : []),
+
+    // ==========================================================
     // AYUDA
+    // Siempre queda después de las acciones principales.
     // ==========================================================
 
     ...(tutorialSteps && tutorialSteps.length > 0
@@ -230,7 +308,6 @@ export default function AppHeader({
   const seleccionarPasoAyuda = (idx) => {
     setMenuAyudaAbierto(false);
     setMenuMobileOpen(false);
-
     onSelectTutorialStep?.(idx);
   };
 
@@ -258,7 +335,9 @@ export default function AppHeader({
             title={b.title}
             className={`${cls} topbar__help-btn`}
           >
-            <i className={`${b.icon} topbar__btn-icon`} />
+            <i
+              className={`${b.icon} topbar__btn-icon`}
+            />
 
             <span className="topbar__btn-title">
               {b.label}
@@ -295,7 +374,9 @@ export default function AppHeader({
 
     const content = (
       <>
-        <i className={`${b.icon} topbar__btn-icon`} />
+        <i
+          className={`${b.icon} topbar__btn-icon`}
+        />
 
         <span className="topbar__btn-title">
           {b.label}
@@ -604,4 +685,4 @@ export default function AppHeader({
       />
     </div>
   );
-}
+}F

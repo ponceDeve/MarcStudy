@@ -256,9 +256,8 @@ export default function MiEstudioPage() {
             return (
               <i
                 key={i}
-                className={`vidas-fullscreen__heart ${
-                  corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"
-                }`}
+                className={`vidas-fullscreen__heart ${corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"
+                  }`}
               />
             );
           }
@@ -484,7 +483,7 @@ export default function MiEstudioPage() {
           const { textos, completados } = JSON.parse(textosGuardados);
           setTextosSeleccionados(textos || []);
           setTextosCompletados(completados || []);
-        } catch {}
+        } catch { }
       }
 
       setTopicData({ ...data, curso: item.curso, tema: item.tema, archivo: item.archivo });
@@ -1171,14 +1170,14 @@ export default function MiEstudioPage() {
           setAlertaVidas("cero");
           if (ceroVidasRef.current) {
             ceroVidasRef.current.currentTime = 0;
-            ceroVidasRef.current.play().catch(() => {});
+            ceroVidasRef.current.play().catch(() => { });
           }
           gameOver();
         }
 
         if (nuevasVidas > 0 && vidaPerderRef.current) {
           vidaPerderRef.current.currentTime = 0;
-          vidaPerderRef.current.play().catch(() => {});
+          vidaPerderRef.current.play().catch(() => { });
         }
 
         return nuevasVidas;
@@ -1327,12 +1326,12 @@ export default function MiEstudioPage() {
     stage === "theory" && !isLevelMode
       ? puntoVozActual
         ? (() => {
-            const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
-            ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
-            return [esNuevaSeccion ? puntoVozActual.seccionTitulo : null, puntoVozActual.texto, puntoVozActual.explicacion]
-              .filter(Boolean)
-              .join(". ");
-          })()
+          const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
+          ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
+          return [esNuevaSeccion ? puntoVozActual.seccionTitulo : null, puntoVozActual.texto, puntoVozActual.explicacion]
+            .filter(Boolean)
+            .join(". ");
+        })()
         : topicData?.theory?.[0]?.titulo || null
       : null;
 
@@ -1341,12 +1340,12 @@ export default function MiEstudioPage() {
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
-    ? current
-    : isFlipQuiz
-    ? quizBatch[quizPos]?.pregunta || null
-    : modoEstudio === "solo_preguntas"
-    ? examenPreguntas[cardIndex] || null
-    : null;
+      ? current
+      : isFlipQuiz
+        ? quizBatch[quizPos]?.pregunta || null
+        : modoEstudio === "solo_preguntas"
+          ? examenPreguntas[cardIndex] || null
+          : null;
 
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
@@ -1416,12 +1415,12 @@ export default function MiEstudioPage() {
   const progresoPregunta = repasoQuizActivo
     ? { current: repasoQuizPos + 1, total: repasoQuizBatch.length }
     : isLevelMode
-    ? { current: nivelIndex + 1, total: examenPreguntas.length }
-    : isFlipQuiz
-    ? { current: quizPos + 1, total: quizBatch.length }
-    : modoEstudio === "solo_preguntas"
-    ? { current: posOrden + 1, total: ordenPreguntas.length }
-    : { current: cardIndex + 1, total: flatPuntos.length };
+      ? { current: nivelIndex + 1, total: examenPreguntas.length }
+      : isFlipQuiz
+        ? { current: quizPos + 1, total: quizBatch.length }
+        : modoEstudio === "solo_preguntas"
+          ? { current: posOrden + 1, total: ordenPreguntas.length }
+          : { current: cardIndex + 1, total: flatPuntos.length };
 
   const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
   const cursoEncontrado = manifest.cursos.find((c) => c.nombre === nombreCursoActivo);
@@ -1490,8 +1489,8 @@ export default function MiEstudioPage() {
               {faltaCompletarTeoria
                 ? "Dale check a toda la teoría antes de completar el tema"
                 : sinSeleccionAlerta
-                ? "Tildá al menos un punto de teoría para ir al examen"
-                : <>No hay preguntas de "{topicData?.tema || "este tema"}"</>}
+                  ? "Tildá al menos un punto de teoría para ir al examen"
+                  : <>No hay preguntas de "{topicData?.tema || "este tema"}"</>}
             </span>
           </div>
 
@@ -1606,7 +1605,7 @@ export default function MiEstudioPage() {
         {!topicData && (
           <>
             <AppHeader
-              showHome
+              section="inicio"
               onAbrirBuscador={() => setSearchOpen(true)}
               tutorialSteps={TUTORIAL_INICIO}
               onSelectTutorialStep={(idx) => {
@@ -1624,8 +1623,8 @@ export default function MiEstudioPage() {
                     Aprende y domina <span className="mi-estudio__intro-highlight">cada tema</span>
                   </h1>
 
-                  <p className="mi-estudio__intro-subtitle">
-                    Estudia con teoría clara, practica con ejercicios y refuerza lo aprendido con repasos inteligentes, paso a paso.
+                  <p className="mi-estudio__intro-description">
+                    Estudia a tu ritmo, comprende cada concepto y avanza paso a paso hacia tus objetivos.
                   </p>
 
                   {ultimoTemaInicio && (
@@ -1833,15 +1832,14 @@ export default function MiEstudioPage() {
                 ) : (
                   <div className="mi-estudio__question-inner animate-fade-in">
                     <QuestionCard
-                      key={`${
-                        repasoQuizActivo
+                      key={`${repasoQuizActivo
                           ? "repaso-" + repasoQuizPos
                           : isLevelMode
-                          ? "nivel-" + nivelIndex
-                          : isFlipQuiz
-                          ? "flip-" + cardIndex + "-" + quizPos
-                          : "teoria-" + cardIndex
-                      }-${attemptKey}`}
+                            ? "nivel-" + nivelIndex
+                            : isFlipQuiz
+                              ? "flip-" + cardIndex + "-" + quizPos
+                              : "teoria-" + cardIndex
+                        }-${attemptKey}`}
                       pregunta={preguntaActual}
                       onRespondido={manejarRespuesta}
                       onRendirse={rendirsePregunta}
@@ -1857,9 +1855,8 @@ export default function MiEstudioPage() {
                 <button
                   onClick={retrocederCard}
                   disabled={isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0}
-                  className={`mi-estudio__nav-btn ${
-                    (isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"
-                  }`}
+                  className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"
+                    }`}
                   title="Anterior"
                 >
                   <i className="fas fa-caret-left" />
@@ -1870,10 +1867,10 @@ export default function MiEstudioPage() {
                     const esUltimo = repasoQuizActivo
                       ? repasoQuizPos === repasoQuizBatch.length - 1
                       : isLevelMode
-                      ? nivelIndex === examenPreguntas.length - 1
-                      : isFlipQuiz
-                      ? quizPos === quizBatch.length - 1
-                      : cardIndex === flatPuntos.length - 1;
+                        ? nivelIndex === examenPreguntas.length - 1
+                        : isFlipQuiz
+                          ? quizPos === quizBatch.length - 1
+                          : cardIndex === flatPuntos.length - 1;
 
                     const bloqueado = !canAdvance;
 

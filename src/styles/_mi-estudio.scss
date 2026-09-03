@@ -68,7 +68,6 @@
   width: 100%;
   min-height: calc(100dvh - var(--header-h));
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,12 +80,10 @@
 
 .mi-estudio__intro-content {
   width: min(100%, 50rem);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
 
@@ -119,20 +116,78 @@
 }
 
 /* ============================================================
-   SUBTÍTULO
+   ACCIONES SECUNDARIAS (Pomodoro · Repaso)
    ============================================================ */
 
-.mi-estudio__intro-subtitle {
-  width: 100%;
-  max-width: 650px;
-
+.mi-estudio__quick-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
   margin: var(--space-4) 0 0;
+}
 
-  color: var(--ink-soft);
+.mi-estudio__quick-actions-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-strong);
+}
+
+.mi-estudio__quick-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-md);
+  background: var(--brand-bg);
+  color: var(--brand-dark);
   font-family: var(--font-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-normal);
-  line-height: 1.6;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear,
+    box-shadow 0.2s linear,
+    transform 0.2s linear;
+
+  i {
+    color: var(--brand-dark);
+  }
+
+  &:hover {
+    background: var(--brand);
+    border-color: var(--brand-dark);
+    color: var(--ink-on-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+
+    i {
+      color: var(--ink-on-primary);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+}
+
+.mi-estudio__intro-description {
+  margin: var(--space-3) auto 0;
+  max-width: 650px;
+  color: var(--ink-soft);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.7;
   text-align: center;
 }
 
@@ -141,15 +196,15 @@
    ============================================================ */
 
 .welcome-section__continuar-btn {
-  width: 100%;
   max-width: 400px;
-  margin: var(--space-6) auto 0;
+  width: 100%;
+  margin: var(--space-3) auto 0;
   padding: var(--space-1) var(--space-3);
   display: flex;
   align-items: center;
   gap: var(--space-3);
   box-sizing: border-box;
-  border: 1px solid var(--border);
+  border: 1px solid var(--primary);
   border-radius: var(--radius-lg);
   background: var(--primary-bg);
   color: var(--ink);
@@ -157,12 +212,16 @@
   font-size: var(--fs-body);
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: all .2s linear;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear,
+    transform 0.2s linear;
 
   &:hover {
-    border-color: var(--primary-light);
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
+    background: rgba(37, 99, 235, .15);
 
     .welcome-section__continuar-arrow {
       transform: translateX(0.3rem);
@@ -181,7 +240,6 @@
 
 .welcome-section__continuar-indicator {
   flex-shrink: 0;
-
   color: var(--primary);
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
@@ -192,7 +250,7 @@
   flex-shrink: 0;
   font-family: var(--font-body);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-boldF);
+  font-weight: var(--fw-bold);
   line-height: 1.3;
   color: var(--ink);
 }
@@ -200,9 +258,9 @@
 .welcome-section__continuar-tema {
   min-width: 0;
   overflow: hidden;
-  color: var(--ink-faint);
+  color: var(--primary-dark);
   font-family: var(--font-body);
-  font-size: var(--fs-body);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-normal);
   line-height: 1.4;
   white-space: nowrap;
@@ -2658,11 +2716,6 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  position: sticky;
-  top: 0px;
-  left: 0;
-  right: 0;
-  z-index: 80;
 
   > :first-child {
     flex: 1 1 auto;
@@ -2753,14 +2806,6 @@
   .mi-estudio__intro-title {
     font-size: clamp(2.5rem, 7vw, 3.75rem);
   }
-
-  .mi-estudio__intro-subtitle {
-    font-size: var(--fs-body);
-  }
-
-  .welcome-section__continuar-btn {
-    max-width: 46rem;
-  }
 }
 
 /* ============================================================
@@ -2792,9 +2837,6 @@
 
   .mi-estudio__intro {
     min-height: calc(100dvh - var(--header-h));
-
-    padding:
-      var(--space-5) var(--space-3);
   }
 
   .mi-estudio__intro-content {
@@ -2813,32 +2855,16 @@
     margin-top: var(--space-1);
   }
 
-  .mi-estudio__intro-subtitle {
-    width: 100%;
-
+  .mi-estudio__quick-actions {
     margin-top: var(--space-4);
-
-    font-size: var(--fs-body);
-    line-height: 1.55;
   }
 
   .welcome-section__continuar-btn {
-    width: 100%;
-    max-width: 100%;
-
     margin-top: var(--space-5);
-
-    padding:
-      var(--space-3) var(--space-3);
-
     gap: var(--space-2);
   }
 
   .welcome-section__continuar-label {
-    font-size: var(--fs-sm);
-  }
-
-  .welcome-section__continuar-tema {
     font-size: var(--fs-sm);
   }
 

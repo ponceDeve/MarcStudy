@@ -184,7 +184,7 @@ export default function RepasoPage() {
       <div className="repaso container">
 
         <AppHeader
-          showHome
+          section="repaso"
           onAbrirBuscador={() =>
             setSearchOpen(true)
           }

@@ -408,7 +408,7 @@ export default function ScheduleEditor() {
   return (
     <>
       <AppHeader
-        showHome
+        section="editar"
         onAbrirBuscador={() =>
           setSearchOpen(true)
         }

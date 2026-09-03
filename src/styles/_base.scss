@@ -35,7 +35,7 @@ body {
   // Importante: NO poner overflow-x aquí. Si "body" tiene un overflow-x
   // distinto de "visible", el navegador fuerza overflow-y a "auto" y
   // convierte a body en su propio contenedor de scroll. Eso rompe el
-  // position:sticky de elementos como .teoria-sticky-bar (el buscador
+  // position:sticky de elementos como .hx (el buscador
   // con la bocina dentro de un tema), porque dejan de seguir el scroll
   // real de la página (html). El overflow-x:hidden en "html" de arriba
   // ya evita el scroll horizontal, así que no hace falta repetirlo aquí.
@@ -92,26 +92,12 @@ button {
    ============================================================ */
 
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--success) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--success);
-  border-radius: var(--radius-full);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--success);
+*::-webkit-scrollbar {
+  display: none;
 }
 
 @font-face {

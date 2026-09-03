@@ -677,7 +677,7 @@ export default function HorarioPage() {
   return (
     <div className="horario">
       <AppHeader
-        showHome
+        section="pomodoro"
         onAbrirBuscador={() => setSearchOpen(true)}
         onEditarHorario={() => navigate("/editar")}
         tutorialSteps={TUTORIAL_POMODORO}
@@ -815,17 +815,6 @@ export default function HorarioPage() {
                     {NOMBRE_DIA[selectedDay]}
                   </h3>
 
-                  <p className="horario__day-sub">
-                    {activeCourse
-                      ? `${activeCourse.subject} · ${getDonePomodoros(
-                          selectedDay,
-                          activeCourse.subject,
-                          activeCourse.pomodoros,
-                        )}/${activeCourse.pomodoros} pomodoros`
-                      : courses.length > 0
-                        ? "Elige un curso para empezar"
-                        : "Sin cursos configurados este día"}
-                  </p>
                 </div>
               </div>
 

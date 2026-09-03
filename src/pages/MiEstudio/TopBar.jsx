@@ -136,7 +136,6 @@ export default function TopBar({
       icon: "fa-solid fa-house",
       onClick: onIrInicio,
     },
-
     {
       title: "Buscar otro tema",
       label: "Buscar",
@@ -144,15 +143,6 @@ export default function TopBar({
       icon: "fa-solid fa-magnifying-glass",
       onClick: onAbrirBuscador,
     },
-
-    {
-      title: "Guardar progreso",
-      label: "Guardar",
-      fullLabel: "Guardar progreso",
-      icon: "fa-solid fa-bookmark",
-      onClick: onGuardarRepaso,
-    },
-
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
@@ -160,7 +150,6 @@ export default function TopBar({
       icon: "fa-solid fa-calendar-check",
       to: repasoTo,
     },
-
     {
       title: "Ir al Pomodoro",
       label: "Pomodoro",
@@ -189,7 +178,13 @@ export default function TopBar({
       fullLabel: "Mini cronómetro",
       onClick: onTogglePomodoroMini,
     },
-
+    {
+      title: "Guardar progreso",
+      icon: "fa-solid fa-bookmark",
+      label: "Guardar",
+      fullLabel: "Guardar progreso",
+      onClick: onGuardarRepaso,
+    },
     {
       title: isFullscreen
         ? "Minimizar pantalla"
@@ -205,7 +200,6 @@ export default function TopBar({
         : "Pantalla completa",
       onClick: onToggleFullscreen,
     },
-
     ...(pdfVerUrl
       ? [
           {
@@ -218,7 +212,6 @@ export default function TopBar({
           },
         ]
       : []),
-
     ...(pdfDescargaUrl
       ? [
           {
@@ -231,7 +224,6 @@ export default function TopBar({
           },
         ]
       : []),
-
     ...(stage === "question"
       ? [
           {
@@ -259,7 +251,6 @@ export default function TopBar({
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
-
         <span className="topbar__btn-title">
           {b.label}
         </span>
@@ -388,7 +379,6 @@ export default function TopBar({
   return (
     <div className="topbar-wrapper">
       <div className="topbar">
-
         <div className="topbar__inner">
 
           {/* ==================================================
@@ -396,7 +386,6 @@ export default function TopBar({
               ================================================== */}
 
           <div className="topbar__title-box">
-
             <button
               type="button"
               className="topbar__title-btn"
@@ -431,7 +420,6 @@ export default function TopBar({
                 {curso}
               </span>
             </button>
-
           </div>
 
           {/* ==================================================
@@ -482,7 +470,6 @@ export default function TopBar({
                 <i className="fa-solid fa-bars" />
               </button>
             )}
-
           </div>
         </div>
 
@@ -527,7 +514,6 @@ export default function TopBar({
             )
           )}
         </SideDrawer>
-
       </div>
     </div>
   );

@@ -115,12 +115,14 @@
    ============================================================ */
 
 .welcome-section__grid {
+  position: relative;
   margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
   width: 100%;
   align-items: stretch;
+  overflow: visible;
 }
 
 @media (min-width: 480px) {
@@ -155,6 +157,7 @@
     background 0.2s linear,
     box-shadow 0.2s linear,
     transform 0.2s linear !important;
+  z-index: 1;
 }
 
 .welcome-section__curso:hover {
@@ -163,6 +166,21 @@
   transform: translateY(-2px);
   background: rgba(247, 251, 254, 0.2);
 }
+
+.welcome-section__curso--abierto {
+  z-index: 100;
+  background: var(--surface);
+  border-radius: 14px 14px 0 0;
+  box-shadow: var(--shadow-md);
+}
+
+.welcome-section__curso--abierto:hover {
+  background: var(--surface);
+}
+
+/* ============================================================
+   PARTE SUPERIOR DEL CURSO
+   ============================================================ */
 
 .welcome-section__curso-top {
   padding: 0;
@@ -243,19 +261,83 @@
 }
 
 /* ============================================================
+   BOTÓN VER TEMAS
+   ============================================================ */
+
+.welcome-section__ver-temas {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 0;
+  margin-top: 2px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: var(--fw-bold);
+  text-align: left;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    color 0.15s linear,
+    transform 0.15s linear;
+}
+
+.welcome-section__ver-temas:hover {
+  color: var(--primary);
+}
+
+.welcome-section__ver-temas:active {
+  transform: translateY(1px);
+}
+
+.welcome-section__ver-temas i {
+  font-size: 0.55rem;
+  color: currentColor;
+}
+
+.welcome-section__ver-temas:focus-visible {
+  outline: 2px solid var(--brand-light);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   DESPLEGABLE DE TEMAS
+   ============================================================ */
+
+.welcome-section__temas-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-sizing: border-box;
+  padding: 0 16px 16px;
+  background: var(--surface);
+  border: none;
+  border-radius: 0 0 14px 14px;
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================================
    LISTA DE TEMAS
    ============================================================ */
 
 .welcome-section__temas {
   position: relative;
   list-style: none;
-  margin: 12px 0 0;
+  margin: 0;
   padding: 0;
   background: transparent;
   border: none;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  max-height: 320px;
+  overflow-y: auto;
 }
 
 /* ============================================================
@@ -268,8 +350,9 @@
   justify-content: space-between;
   gap: 12px;
   width: 100%;
-  margin-top: 14px;
-  padding-top: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: var(--nested-border);
   box-sizing: border-box;
 }
 
