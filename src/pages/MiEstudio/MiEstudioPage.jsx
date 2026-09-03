@@ -1638,7 +1638,6 @@ export default function MiEstudioPage() {
                         archivo: ultimoTemaInicio.archivo
                       })}
                     >
-                      <span className="welcome-section__continuar-indicator">↳</span>
                       <span className="welcome-section__continuar-label">Continuar:</span>
                       <span className="welcome-section__continuar-tema">{ultimoTemaInicio.tema}</span>
                       <i className="bi bi-arrow-right welcome-section__continuar-arrow" />

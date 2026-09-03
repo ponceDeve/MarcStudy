@@ -399,8 +399,7 @@
   font-size: 0.75rem;
   font-weight: var(--fw-bold);
   text-align: left;
-  cursor: url("/cursor_pointer.webp"),
-    pointer !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     color 0.15s linear,
     transform 0.15s linear;
@@ -453,11 +452,6 @@
   box-shadow: var(--shadow-md);
 }
 
-/*
- * No se coloca overflow hidden aquí.
- * El dropdown puede sobresalir verticalmente.
- */
-
 /* ============================================================
    LISTA DE TEMAS
    ============================================================ */
@@ -505,8 +499,7 @@
   font-size: 0.68rem;
   font-weight: var(--fw-normal);
   line-height: 1.2;
-  cursor: url("/cursor_pointer.webp"),
-    pointer !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     color 0.15s linear,
     transform 0.15s linear;
@@ -560,16 +553,14 @@
   color: var(--ink-soft);
   font-size: 12px;
   border-radius: 8px;
-  cursor: url("/cursor_auto.webp"),
-    auto !important;
+  cursor: url("/cursor_auto.webp"), auto !important;
   transition:
     background 0.25s linear,
     color 0.2s linear !important;
 }
 
 .welcome-section__tema-btn span {
-  cursor: url("/cursor_pointer.webp"),
-    pointer !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
 .welcome-section__tema-btn:hover {
@@ -606,10 +597,8 @@
   display: block;
   width: 7px;
   height: 11px;
-  border-right: 2px solid
-    currentColor;
-  border-bottom: 2px solid
-    currentColor;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
   transform: rotate(45deg);
   margin-top: -2px;
 }
@@ -638,16 +627,12 @@
 
 .welcome-section__tema-estado--en_curso::before {
   border: 2px solid currentColor;
-  clip-path: inset(
-    0 50% 0 0
-  );
+  clip-path: inset(0 50% 0 0);
 }
 
 .welcome-section__tema-estado--en_curso::after {
   border: 2px dashed currentColor;
-  clip-path: inset(
-    0 0 0 50%
-  );
+  clip-path: inset(0 0 0 50%);
 }
 
 .welcome-section__tema-estado--pendiente {
@@ -672,8 +657,7 @@
   border-radius: 50%;
   background: var(--surface);
   color: var(--ink-soft);
-  cursor: url("/cursor_pointer.webp"),
-    pointer !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-sm);
   transition:
     color 0.2s ease,
@@ -722,8 +706,7 @@
   border-radius: 50%;
   background: var(--ink-faint);
   opacity: 0.45;
-  cursor: url("/cursor_pointer.webp"),
-    pointer !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     width 0.2s ease,
     opacity 0.2s ease,
@@ -802,7 +785,7 @@
   }
 
   .welcome-section__category-title {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     margin-bottom: 12px;
   }
 
@@ -811,10 +794,7 @@
   }
 
   .welcome-section__carousel-row {
-    grid-template-columns: minmax(
-      0,
-      1fr
-    );
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
   }
 
@@ -829,7 +809,7 @@
   }
 
   .welcome-section__curso {
-    padding: 12px 9px;
+    padding: 13px 10px;
     border-radius: 10px;
   }
 
@@ -838,27 +818,27 @@
   }
 
   .welcome-section__curso-nombre {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
   }
 
   .welcome-section__curso-info {
-    gap: 5px;
+    gap: 6px;
   }
 
   .welcome-section__curso-count,
   .welcome-section__curso-logros {
-    font-size: 0.65rem;
-    padding: 3px 6px;
+    font-size: 0.72rem;
+    padding: 3px 7px;
   }
 
   .welcome-section__curso-desc {
-    font-size: 0.72rem;
-    line-height: 1.4;
-    margin: 5px 0 8px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 5px 0 9px;
   }
 
   .welcome-section__ver-temas {
-    font-size: 0.65rem;
+    font-size: 0.72rem;
   }
 
   .welcome-section__temas-dropdown {
@@ -867,8 +847,8 @@
 
   .welcome-section__tema-btn {
     gap: 7px;
-    padding: 7px 5px;
-    font-size: 10px;
+    padding: 8px 5px;
+    font-size: 0.75rem;
   }
 
   .welcome-section__tema-estado {
@@ -914,15 +894,28 @@
   }
 
   .welcome-section__curso {
-    padding: 10px 7px;
+    padding: 11px 8px;
   }
 
   .welcome-section__curso-nombre {
-    font-size: 0.78rem;
+    font-size: 0.9rem;
+  }
+
+  .welcome-section__curso-count,
+  .welcome-section__curso-logros {
+    font-size: 0.7rem;
   }
 
   .welcome-section__curso-desc {
-    font-size: 0.66rem;
+    font-size: 0.78rem;
+  }
+
+  .welcome-section__ver-temas {
+    font-size: 0.7rem;
+  }
+
+  .welcome-section__tema-btn {
+    font-size: 0.72rem;
   }
 }
 
