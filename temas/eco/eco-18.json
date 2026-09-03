@@ -2,117 +2,266 @@
   "curso": "Economía",
   "tema": "Oferta Equilibrio",
   "glosario": {
-    "Oferta": "Comportamiento y capacidad del vendedor.",
-    "Cantidad ofertada": "Unidades vendidas a un precio específico.",
-    "Ceteris paribus": "Mantenimiento constante de los demás factores.",
-    "Equilibrio": "Igualdad entre cantidad ofertada y demandada.",
-    "Abundancia": "Exceso de productos ofertados en mercado.",
-    "Escasez": "Insuficiencia de productos ante la demanda.",
-    "Ley de Say": "La oferta crea su propia demanda.",
-    "=": "Define",
-    "✓": "Requiere",
-    "⇒": "Causa",
-    "→": "Produce",
-    "⊃": "Contiene"
+    "Oferta": "Comportamiento y capacidad del vendedor en el mercado.",
+    "Demanda": "Deseo y capacidad de compra del consumidor.",
+    "Equilibrio": "Igualdad exacta entre cantidad ofertada y demandada.",
+    "Abundancia": "Exceso de productos ofertados sin vender en mercado.",
+    "Escasez": "Insuficiencia de productos disponibles ante la demanda.",
+    "Tecnología": "Innovaciones aplicadas que optimizan los procesos de fabricación."
   },
   "theory": [
     {
-      "titulo": "Definición y Factores de la Oferta",
+      "titulo": "Definición de Oferta",
       "puntos": [
         {
           "texto": "Oferta = conducta del productor.",
-          "explicacion": "En economía, la oferta refleja el comportamiento, las motivaciones y las decisiones estratégicas de los empresarios al momento de llevar sus bienes y servicios al mercado. Representa la perspectiva del vendedor en el proceso de intercambio comercial."
+          "explicacion": "Refleja las motivaciones y decisiones estratégicas de los empresarios al llevar sus bienes y servicios al mercado, representando exclusivamente la perspectiva del vendedor en el proceso de intercambio."
         },
         {
-          "texto": "Oferta ✓ deseo y capacidad de venta.",
-          "explicacion": "Para que exista oferta no basta con la intención de comercializar un producto; el vendedor debe poseer la capacidad real de producción y logística. Esta combinación garantiza la disponibilidad efectiva de los bienes en el mercado."
+          "texto": "Oferta ✓ deseo + capacidad de venta.",
+          "explicacion": "Para ser considerada como tal en economía, la mera intención comercial no basta. El vendedor necesita contar con la logística e infraestructura real para fabricar y distribuir el producto."
         },
         {
-          "texto": "Cantidad ofertada = unidades vendidas a precio específico.",
-          "explicacion": "A diferencia de la oferta general, la cantidad ofertada representa un punto exacto en el mercado. Indica el número determinado de productos que una empresa coloca a la venta a un nivel de precio dado."
+          "texto": "Cantidad ofertada = unidades a precio específico.",
+          "explicacion": "Indica un número determinado y exacto de productos que una empresa coloca a la venta a un nivel tarifario dado, representando un único punto en la gráfica del mercado."
         },
         {
-          "texto": "Mayores costos productivos ⇒ menor oferta.",
-          "explicacion": "El incremento en el precio de los insumos o salarios reduce el margen de ganancia del empresario. Ante mayores costos de producción, los vendedores se ven obligados a disminuir la cantidad total de bienes ofertados."
+          "texto": "Oferta ≠ cantidad ofertada.",
+          "explicacion": "Un error clásico en exámenes es confundir toda la curva con un solo punto. La primera abarca todas las intenciones posibles a distintos precios, mientras la segunda es un valor puntual."
         },
         {
-          "texto": "Mayor tecnología ⇒ mayor oferta.",
-          "explicacion": "La incorporación de innovaciones tecnológicas optimiza los procesos de fabricación y reduce los costos unitarios. Esto motiva a las empresas a incrementar la producción y colocar un mayor volumen de bienes en el mercado."
-        },
-        {
-          "texto": "Mayores impuestos ⇒ menor oferta.",
-          "explicacion": "Los tributos aplicados a la producción funcionan como un sobrecosto para las empresas. Al elevar los gastos operativos, desincentivan la actividad empresarial y provocan una reducción directa en la oferta disponible."
+          "texto": "Racionalidad del productor ⇒ maximizar ganancias.",
+          "explicacion": "El agente económico que ofrece bienes actúa bajo un principio de eficiencia, buscando siempre obtener la mayor rentabilidad posible al reducir gastos e incrementar sus ingresos por ventas."
         }
       ]
     },
     {
-      "titulo": "Ecuación y Ley de la Oferta",
+      "titulo": "Factores de Oferta",
       "puntos": [
         {
-          "texto": "Ley de oferta = relación directa entre precio y cantidad.",
-          "explicacion": "Bajo la condición ceteris paribus, existe una relación directamente proporcional entre el precio y la cantidad ofertada. Si el precio de venta sube, los productores incrementan su oferta para maximizar sus beneficios económicos."
+          "texto": "↑ costos productivos ⇒ ↓ oferta.",
+          "explicacion": "El incremento en el precio de los insumos o salarios reduce el margen de ganancia empresarial. Ante esto, los vendedores se ven obligados a disminuir su nivel de fabricación."
+        },
+        {
+          "texto": "Costos productivos ⊃ salarios + materias primas.",
+          "explicacion": "Para fabricar cualquier bien, el empresario debe asumir gastos ineludibles que incluyen la remuneración de la mano de obra, el alquiler del local y la compra de insumos básicos."
+        },
+        {
+          "texto": "↑ tecnología ⇒ ↑ oferta.",
+          "explicacion": "La incorporación de innovaciones como maquinaria automatizada o software especializado optimiza el tiempo y reduce gastos unitarios, motivando a las empresas a incrementar su volumen de bienes disponibles."
+        },
+        {
+          "texto": "↑ impuestos ⇒ ↓ oferta.",
+          "explicacion": "Los tributos aplicados a la producción operan como un sobrecosto obligatorio para las empresas. Al elevar los gastos operativos, desincentivan la actividad y provocan una reducción directa del stock."
+        },
+        {
+          "texto": "↑ subsidios estatales ⇒ ↑ oferta.",
+          "explicacion": "Cuando el gobierno otorga ayudas económicas a un sector productivo, los costos de las empresas disminuyen artificialmente, lo que les permite fabricar más unidades con el mismo capital inicial."
+        },
+        {
+          "texto": "Clima óptimo ⇒ ↑ oferta agrícola.",
+          "explicacion": "En sectores primarios, las condiciones meteorológicas favorables actúan como un factor externo positivo. Una buena temporada de lluvias asegura cosechas abundantes y abarata los alimentos en el mercado."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley y Ecuación",
+      "puntos": [
+        {
+          "texto": "Ley de oferta = relación directa precio-cantidad.",
+          "explicacion": "Si la tarifa de un bien sube, los productores incrementan su fabricación para aprovechar las ganancias. Es un principio fundamental que muestra cómo el incentivo económico rige la producción."
+        },
+        {
+          "texto": "Condición de ley ✓ ceteris paribus.",
+          "explicacion": "Para que la relación entre precio y volumen se cumpla sin alteraciones, es obligatorio el «mantenimiento constante de los demás factores», asumiendo que los costos, tecnología y clima no cambian."
         },
         {
           "texto": "Ecuación de oferta ⊃ pendiente positiva.",
-          "explicacion": "En la representación matemática de la oferta, la pendiente refleja un signo positivo debido a la relación directa entre variables. Esto determina que la curva de oferta presente siempre una inclinación ascendente."
+          "explicacion": "En su representación matemática y gráfica, la inclinación ascendente refleja el signo positivo. Esto confirma visualmente que ambas variables se mueven en la misma dirección."
         },
         {
-          "texto": "Variación de precio → deslizamiento en la misma curva.",
-          "explicacion": "Cuando únicamente cambia el precio del bien, no se altera la función de oferta subyacente. En el gráfico, este cambio se representa como un movimiento o deslizamiento entre diferentes puntos de una misma curva."
+          "texto": "Variación de precio → deslizamiento en curva.",
+          "explicacion": "Cuando únicamente cambia el valor monetario del bien, la función subyacente no se altera. En la gráfica, esto se observa como un tránsito entre dos puntos sobre una misma línea."
         },
         {
-          "texto": "Variación de otros factores → desplazamiento de la curva.",
-          "explicacion": "Si cambian factores distintos al precio, como la tecnología o los impuestos, toda la relación de oferta se modifica. Esto provoca un desplazamiento completo de la curva hacia la derecha o hacia la izquierda."
+          "texto": "Variación de otros factores → desplazamiento.",
+          "explicacion": "Si cambian elementos distintos a la tarifa, como una innovación técnica o un nuevo impuesto, toda la relación original caduca. La curva completa debe moverse a una nueva posición."
+        },
+        {
+          "texto": "Desplazamiento a derecha = ↑ oferta.",
+          "explicacion": "Visualmente, cuando la curva se mueve hacia la derecha, indica que a los mismos niveles de precio anteriores, ahora los empresarios están dispuestos a vender una cantidad mayor."
+        },
+        {
+          "texto": "Desplazamiento a izquierda = ↓ oferta.",
+          "explicacion": "Un movimiento integral de la curva hacia la zona izquierda del eje cartesiano demuestra una contracción productiva, generalmente causada por desastres, aumento de insumos o crisis económicas."
         }
       ]
     },
     {
-      "titulo": "Equilibrio y Desequilibrio de Mercado",
+      "titulo": "Equilibrio de Mercado",
       "puntos": [
         {
-          "texto": "Equilibrio = cantidad ofertada igual a cantidad demandada.",
-          "explicacion": "El equilibrio representa una situación de acuerdo en el mercado donde los planes de los vendedores coinciden con los de los compradores. A ese nivel de precio, el mercado se vacía sin dejar excedentes ni faltantes."
+          "texto": "Equilibrio = cantidad ofertada igual a demandada.",
+          "explicacion": "Representa una situación de acuerdo perfecto donde los planes de los vendedores coinciden con el deseo de los compradores. No sobran bienes en los estantes ni faltan productos para adquirir."
         },
         {
-          "texto": "Precio fijado sobre el equilibrio ⇒ abundancia.",
-          "explicacion": "Un precio por encima de la tasa de equilibrio motiva un aumento en la producción pero desincentiva la compra. Esta desconexión genera un exceso de oferta donde los productos quedan almacenados sin venderse."
+          "texto": "Intersección de curvas = punto de equilibrio.",
+          "explicacion": "Geométricamente, el acuerdo se halla en la coordenada exacta donde la curva descendente de los consumidores cruza con la curva ascendente de los productores, dictando la tarifa oficial."
         },
         {
-          "texto": "Precio fijado bajo el equilibrio ⇒ escasez.",
-          "explicacion": "Cuando el precio se ubica por debajo del punto de equilibrio, la demanda de los consumidores supera la producción ofrecida. La baja rentabilidad desmotiva a los vendedores, provocando un desabastecimiento."
+          "texto": "Precio sobre equilibrio ⇒ abundancia.",
+          "explicacion": "Una tarifa demasiado alta motiva mucha producción pero espanta a los compradores. Esta desconexión genera un exceso donde los artículos se acumulan en almacenes sin lograr venderse."
+        },
+        {
+          "texto": "Abundancia = exceso de oferta.",
+          "explicacion": "Es el término técnico para describir la sobreproducción en un mercado desregulado. Los empresarios, al notar que sus bodegas están llenas, eventualmente tendrán que rematar la mercadería."
+        },
+        {
+          "texto": "Precio bajo equilibrio ⇒ escasez.",
+          "explicacion": "Una tarifa excesivamente barata atrae a multitudes de consumidores, pero desmotiva la fabricación por falta de rentabilidad. El stock se agota rápidamente generando desabastecimiento general."
+        },
+        {
+          "texto": "Escasez = exceso de demanda.",
+          "explicacion": "Ocurre cuando la cantidad de familias que desean comprar un bien supera ampliamente a las unidades disponibles. Esto suele provocar largas filas y competencia feroz entre los clientes."
         }
       ]
     },
     {
-      "titulo": "Leyes de Mercado y Control de Precios",
+      "titulo": "Leyes de Mercado",
       "puntos": [
         {
-          "texto": "Mayor oferta global ⇒ menor precio de mercado.",
-          "explicacion": "Cuando la cantidad total de un bien disponible en el mercado aumenta significativamente, el producto pierde rareza. Para poder colocar todo el volumen ofertado, los vendedores se ven obligados a reducir sus precios."
+          "texto": "↑ oferta global ⇒ ↓ precio de mercado.",
+          "explicacion": "Cuando el volumen total de un bien aumenta masivamente, este pierde su estatus de rareza. Para poder liquidar todo el stock, los comerciantes deben abaratar sus productos agresivamente."
         },
         {
-          "texto": "Mayor demanda global ⇒ mayor precio de mercado.",
-          "explicacion": "Un incremento en el interés y la capacidad de compra de los consumidores ejerce presión sobre el stock disponible. La competencia entre compradores permite a los oferentes elevar el precio de venta del bien."
+          "texto": "↑ demanda global ⇒ ↑ precio de mercado.",
+          "explicacion": "Un incremento en el interés y capacidad de compra ejerce presión sobre un stock limitado. La disputa entre los clientes permite a los dueños cobrar más caro por el mismo artículo."
         },
         {
-          "texto": "Ley de Say = toda oferta crea su propia demanda.",
-          "explicacion": "Formulada por Jean-Baptiste Say, esta teoría postula que el acto de producir genera ingresos equivalentes en forma de salarios y ganancias. Estos recursos financieros alimentan directamente el consumo de otros bienes."
+          "texto": "Ley de Say = oferta crea demanda.",
+          "explicacion": "Teoría clásica que postula que el acto de fabricar genera ingresos en forma de salarios y beneficios. Ese mismo dinero luego servirá para consumir, garantizando que todo lo producido se venda."
         },
         {
-          "texto": "Precio mínimo = fijado por encima del equilibrio.",
-          "explicacion": "El precio mínimo es una regulación estatal que impone un piso legal por encima del valor de libre mercado. Ninguna transacción puede realizarse legalmente a un precio inferior al nivel fijado."
+          "texto": "Autor de Ley = Jean-Baptiste Say.",
+          "explicacion": "Este economista clásico francés formuló el principio de los mercados en el siglo XIX, argumentando en contra de la posibilidad de crisis generales de sobreproducción en el sistema capitalista."
+        },
+        {
+          "texto": "Ley de Say asume pleno empleo.",
+          "explicacion": "Para que este postulado funcione a la perfección, se requiere que todos los recursos de la economía estén siendo utilizados eficientemente, premisa que fue duramente criticada posteriormente por John Maynard Keynes."
+        }
+      ]
+    },
+    {
+      "titulo": "Control de Precios",
+      "puntos": [
+        {
+          "texto": "Precio mínimo = fijado sobre equilibrio.",
+          "explicacion": "Es una intervención estatal que impone un suelo legal, prohibiendo transacciones por debajo de ese límite. Fuerza al mercado a operar artificialmente en la zona de abundancia."
         },
         {
           "texto": "Precio mínimo → favorece al productor.",
-          "explicacion": "El gobierno establece un precio mínimo para garantizar un nivel razonable de ingresos a los vendedores u oferentes. Se aplica comúnmente en mercados agrícolas y laborales para proteger al sector productivo."
+          "explicacion": "El gobierno lo establece para garantizar que sectores vulnerables no quiebren por tarifas excesivamente bajas, asegurando un margen de supervivencia para agricultores o trabajadores poco calificados."
         },
         {
-          "texto": "Precio máximo = fijado por debajo del equilibrio.",
-          "explicacion": "El precio máximo es un tope legal fijado gubernamentalmente por debajo del precio de equilibrio natural. Esta medida prohíbe vender el producto a un costo mayor, buscando controlar la inflación."
+          "texto": "Ejemplo mínimo = salario mínimo vital.",
+          "explicacion": "La remuneración mínima legal es el caso más común de esta política. El Estado prohíbe contratar mano de obra por menos de ese monto, buscando proteger al trabajador de la explotación."
+        },
+        {
+          "texto": "Precio máximo = fijado bajo equilibrio.",
+          "explicacion": "Es un tope legal impuesto gubernamentalmente. Prohíbe comercializar artículos por encima de esa barrera, obligando al sistema a transar artificialmente en la zona de escasez."
         },
         {
           "texto": "Precio máximo → favorece al consumidor.",
-          "explicacion": "Esta medida busca proteger la capacidad adquisitiva de las familias en situaciones de crisis. Permite que la población acceda a bienes de primera necesidad a costos accesibles regulados por el Estado."
+          "explicacion": "Esta regulación busca proteger el bolsillo de las familias durante crisis inflacionarias o guerras, permitiendo que la población adquiera bienes de primera necesidad que de otro modo serían inaccesibles."
+        },
+        {
+          "texto": "Precio máximo prolongado ⇒ mercado negro.",
+          "explicacion": "Al fijar topes irreales que generan desabastecimiento crónico, surgen redes clandestinas donde los bienes ocultos se venden ilegalmente a tarifas muchísimo más altas que las del libre mercado."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }
