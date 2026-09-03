@@ -80,11 +80,15 @@ export default function EditarNombreModal({
         <h2 className="welcome-titulo">Editar nombre</h2>
         <input
           type="text"
-          name="apodo-usuario"
+          name="apodo-jugador-marcstudy"
+          id="apodo-jugador-marcstudy"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="characters"
           spellCheck={false}
+          data-lpignore="true"
+          data-1p-ignore="true"
+          data-form-type="other"
           autoFocus
           maxLength={30}
           value={nombre}

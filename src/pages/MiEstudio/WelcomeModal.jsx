@@ -146,11 +146,15 @@ export default function WelcomeModal({
 
         <input
           type="text"
-          name="apodo-usuario"
+          name="apodo-jugador-marcstudy"
+          id="apodo-jugador-marcstudy"
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="characters"
           spellCheck={false}
+          data-lpignore="true"
+          data-1p-ignore="true"
+          data-form-type="other"
           autoFocus
           maxLength={30}
           value={nombre}
