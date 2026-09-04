@@ -22,14 +22,9 @@ export const TUTORIAL_WELCOME = [
 
 export const TUTORIAL_INICIO = [
   {
-    selector: ".btn__inicio",
-    titulo: "Inicio",
-    texto: "Este logo siempre te trae de vuelta a esta pantalla principal, desde cualquier sección."
-  },
-  {
     selector: ".topbar__search-bar",
     titulo: "Buscar",
-    texto: "Si ya sabes qué tema buscas, usa esta barra para encontrarlo al instante."
+    texto: "Si ya sabes qué tema buscas, usa esta barra para encontrarlo al instante. Puedes buscar tanto por curso como por tema."
   },
   {
     selector: "a[title='Ir a Mis Repasos']",
@@ -52,26 +47,35 @@ export const TUTORIAL_INICIO = [
     texto: "Aquí puedes cambiar tu nombre o tu foto cuando quieras."
   },
   {
-    selector: ".welcome-section__title",
-    titulo: "Tus cursos",
-    texto:
-      "Acá ves todos los cursos disponibles. Cada uno tiene sus propios temas listos para estudiar."
-  },
-  {
-    selector: ".welcome-section__logros",
-    titulo: "Tus logros",
-    texto: "Este contador sube cada vez que completas un tema. Es tu progreso general."
+    selector: ".welcome-section__continuar-btn",
+    titulo: "Continuar",
+    texto: "Aquí retomas el último tema que dejaste a medias, justo donde te quedaste."
   },
   {
     selector: ".welcome-section__curso-top",
     titulo: "Un curso",
     texto:
-      "Cada tarjeta es un curso. Muestra cuántos temas tiene y cuántos ya conquistaste."
+      "Cada tarjeta es un curso: muestra su nombre, cuántos temas tiene y tu progreso (el trofeo). Presiona \"Ver temas\" para desplegar la lista de temas de ese curso."
   },
   {
     selector: ".welcome-section__tema-btn",
     titulo: "Un tema",
-    texto: "Toca cualquier tema para empezar a estudiarlo: teoría, ejercicios y preguntas."
+    texto: "Toca cualquier tema para empezar a estudiarlo: teoría, ejercicios y preguntas. El ícono te dice si ya lo completaste."
+  }
+];
+
+// Pasos extra que solo se muestran la primera vez que se abre el buscador
+// (SearchModal), ya que sus resultados no existen en el DOM hasta entonces.
+export const TUTORIAL_BUSCADOR = [
+  {
+    selector: ".search-result-item.is-curso",
+    titulo: "Resultado de curso",
+    texto: "Si el resultado es un curso, tócalo para ver todos sus temas."
+  },
+  {
+    selector: ".search-result-item.is-tema",
+    titulo: "Resultado de tema",
+    texto: "Si el resultado es un tema puntual, tócalo para entrar directo a estudiarlo."
   }
 ];
 
@@ -111,26 +115,22 @@ export const TUTORIAL_CONFIGURAR_CURSO = [
   }
 ];
 
-export const TUTORIAL_POMODORO = [
+// Paso aparte: solo se muestra mientras está el gate de "Configurar Pomodoro"
+// (o sea, cuando el usuario todavía no arma su horario). Una vez que sale de
+// ese modal, recién sigue TUTORIAL_POMODORO con el resto de los pasos.
+export const TUTORIAL_POMODORO_GATE = [
   {
     selector: ".gate-btn",
     titulo: "Configurar Pomodoro",
     texto: "Antes de empezar, arma tu horario semanal aquí: qué cursos estudias y cuándo."
-  },
+  }
+];
+
+export const TUTORIAL_POMODORO = [
   {
     selector: ".horario__timer-clock",
     titulo: "El cronómetro",
     texto: "Este es tu tiempo de estudio. Se cuenta en bloques (pomodoros) con descansos entre medio."
-  },
-  {
-    selector: ".horario__btn.is-start",
-    titulo: "Iniciar",
-    texto: "Presiona aquí para arrancar el bloque de estudio o descanso seleccionado."
-  },
-  {
-    selector: ".horario__btn.is-pause",
-    titulo: "Pausar",
-    texto: "¿Necesitas parar un momento? Aquí pausas sin perder el progreso del bloque."
   },
   {
     selector: ".horario__btn-reset",
@@ -138,68 +138,13 @@ export const TUTORIAL_POMODORO = [
     texto: "Vuelve a poner el cronómetro del bloque actual desde cero."
   },
   {
-    selector: ".horario__day-tabs",
-    titulo: "Días de la semana",
-    texto: "Cambia de día para ver o planear el horario de estudio de cada uno."
-  },
-  {
-    selector: ".horario__courses-card",
-    titulo: "Tus cursos del día",
-    texto: "Acá aparecen los bloques de estudio que armaste para este día. Tócalos para activarlos."
-  },
-  {
     selector: ".horario__rest-btn--corto",
-    titulo: "Descanso corto",
-    texto: "Desc. 10 es para un respiro corto entre un curso y otro."
-  },
-  {
-    selector: ".horario__rest-btn--largo",
-    titulo: "Descanso largo",
-    texto: "Desc. 30 es para un descanso más largo, como cuando vas a comer."
-  },
-  {
-    selector: ".horario__quick-course",
-    titulo: "Escoge un curso o tema",
-    texto: "Si no tienes un bloque armado para ahora, elige aquí directamente el curso o tema que vas a estudiar."
+    titulo: "Descansos",
+    texto: "\"Desc. 10\" y \"Desc. 30\" son descansos manuales de 10 y 30 minutos."
   }
 ];
 
 export const TUTORIAL_EDITAR_HORARIO = [
-  {
-    selector: ".editor-tabs",
-    titulo: "Días",
-    texto: "Elige a qué día de la semana le vas a armar o editar el horario."
-  },
-  {
-    selector: ".editor-lista",
-    titulo: "Bloques del día",
-    texto: "Esta es la lista de cursos y descansos que ya tienes programados para ese día."
-  },
-  {
-    selector: ".editor-add-box",
-    titulo: "Agregar bloque",
-    texto: "Escribe el curso o descanso que quieres sumar al horario de este día."
-  },
-  {
-    selector: ".editor-pomo-grid",
-    titulo: "Cantidad de pomodoros",
-    texto: "Define cuántos bloques de estudio (pomodoros) le vas a dedicar a este curso."
-  },
-  {
-    selector: ".editor-btn-add",
-    titulo: "Guardar bloque",
-    texto: "Cuando esté listo, presiona aquí para agregarlo a tu horario."
-  },
-  {
-    selector: "button[aria-label='Agregar curso']",
-    titulo: "Agregar curso",
-    texto: "Abre el formulario para sumar un nuevo curso o descanso a este día."
-  },
-  {
-    selector: ".editor-footer button[title='Cancelar']",
-    titulo: "Cancelar",
-    texto: "Cierra el editor sin guardar los cambios que hiciste."
-  },
   {
     selector: "button[aria-label='Guardar Cambios']",
     titulo: "Guardar cambios",
@@ -209,50 +154,24 @@ export const TUTORIAL_EDITAR_HORARIO = [
 
 export const TUTORIAL_REPASO = [
   {
-    selector: ".repaso__instruction",
-    titulo: "¿Qué es un repaso?",
-    texto: "Acá vuelven los temas que ya estudiaste, para que no se te olviden con el tiempo."
-  },
-  {
-    selector: ".repaso__item-subject",
-    titulo: "Un repaso pendiente",
-    texto: "Cada tarjeta es un tema que te toca reforzar. Toca sobre él para repasarlo."
-  },
-  {
     selector: ".repaso__check",
     titulo: "Marcar como hecho",
-    texto: "Cuando termines de repasarlo, marca aquí para sacarlo de tu lista de pendientes."
+    texto: "Cuando termines de repasarlo en Mi Estudio, marca aquí para sacarlo de tu lista de pendientes."
   },
   {
-    selector: ".repaso__item-day",
-    titulo: "Cuándo repasarlo",
-    texto: "Esta etiqueta te dice si el repaso es para hoy, si ya se pasó, o cuándo toca."
-  },
-  {
-    selector: ".repaso__proximos-title",
-    titulo: "Próximos repasos",
-    texto: "Acá puedes ver los repasos que vienen más adelante, para planear tu semana."
+    selector: ".repaso__trash",
+    titulo: "Eliminar",
+    texto: "Borra este repaso de tu lista de forma permanente."
   }
 ];
 
 // Versión reducida: se usa cuando no hay repasos pendientes hoy, ya que
-// los pasos de la tarjeta (.repaso__item-subject, .repaso__check,
-// .repaso__item-day) no existen todavía en el DOM y el tutorial
-// saltaría del paso 1 directo al 5.
+// los pasos de la tarjeta (.repaso__check, .repaso__trash) no existen
+// todavía en el DOM.
 export const TUTORIAL_REPASO_VACIO = [
-  {
-    selector: ".repaso__instruction",
-    titulo: "¿Qué es un repaso?",
-    texto: "Acá vuelven los temas que ya estudiaste, para que no se te olviden con el tiempo."
-  },
   {
     selector: ".repaso__empty",
     titulo: "Sin pendientes por ahora",
     texto: "Cuando tengas un repaso pendiente, va a aparecer aquí como una tarjeta que puedes tocar y marcar como hecho."
-  },
-  {
-    selector: ".repaso__proximos-title",
-    titulo: "Próximos repasos",
-    texto: "Acá puedes ver los repasos que vienen más adelante, para planear tu semana."
   }
 ];

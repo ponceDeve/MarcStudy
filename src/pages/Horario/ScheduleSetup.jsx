@@ -265,7 +265,7 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 <button
                   key={n}
                   tabIndex={-1} // Evita que cada botón gane foco individualmente, el div padre lo controla
-                  className={`setup-pomo-btn ${pomodoros === n ? "is-on btn-primary" : ""}`}
+                  className={`setup-pomo-btn ${pomodoros === n ? "is-on" : ""}`}
                   onClick={() => setPomodoros(n)}
                 >
                   {n}

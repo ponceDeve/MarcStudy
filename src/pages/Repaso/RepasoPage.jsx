@@ -214,48 +214,6 @@ export default function RepasoPage() {
         </div>
 
         {/* ─────────────────────────────────────
-            INSTRUCCIÓN
-        ───────────────────────────────────── */}
-
-        <div className="repaso__instruction">
-
-          <div className="repaso__instruction-book">
-            <i className="bi bi-book" />
-          </div>
-
-          <p>
-            Primero repasa el tema en{" "}
-            <strong>Mi Estudio</strong>{" "}
-            y luego pulsa
-
-            <span className="repaso__instruction-check">
-
-              <svg
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                fill="none"
-                strokeWidth="2.5"
-                width="16"
-                height="16"
-              >
-
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="m4.5 12.75 6 6 9-13.5"
-                />
-
-              </svg>
-
-            </span>
-
-            para marcar el repaso como realizado.
-
-          </p>
-
-        </div>
-
-        {/* ─────────────────────────────────────
             REPASOS DE HOY
         ───────────────────────────────────── */}
 

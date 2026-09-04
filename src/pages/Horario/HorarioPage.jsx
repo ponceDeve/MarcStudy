@@ -25,7 +25,7 @@ import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
 import TutorialSpotlight from "../../components/TutorialSpotlight";
 import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_POMODORO } from "../../data/tutorialSteps";
+import { TUTORIAL_POMODORO, TUTORIAL_POMODORO_GATE } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 import ScheduleSetup from "./ScheduleSetup";
 
@@ -122,13 +122,6 @@ export default function HorarioPage() {
   const [tutorialPomodoroPasoUnico, setTutorialPomodoroPasoUnico] =
     useState(null);
 
-  useEffect(() => {
-    if (!tutorialPomodoroVisto) {
-      const t = setTimeout(() => setTutorialPomodoroOpen(true), 500);
-      return () => clearTimeout(t);
-    }
-  }, [tutorialPomodoroVisto]);
-
   const [setupOpen, setSetupOpen] = useState(false);
 
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
@@ -161,6 +154,28 @@ export default function HorarioPage() {
   );
 
   const mostrarGate = !hayHorarioConfigurado() && !setupOpen;
+
+  const [tutorialGateOpen, setTutorialGateOpen] = useState(false);
+
+  useEffect(() => {
+    if (tutorialPomodoroVisto || !mostrarGate) return;
+
+    const t = setTimeout(() => setTutorialGateOpen(true), 500);
+    return () => clearTimeout(t);
+  }, [tutorialPomodoroVisto, mostrarGate]);
+
+  useEffect(() => {
+    if (setupOpen) setTutorialGateOpen(false);
+  }, [setupOpen]);
+
+  useEffect(() => {
+    if (tutorialPomodoroVisto || mostrarGate || setupOpen) return;
+
+    setTutorialGateOpen(false);
+
+    const t = setTimeout(() => setTutorialPomodoroOpen(true), 500);
+    return () => clearTimeout(t);
+  }, [tutorialPomodoroVisto, mostrarGate, setupOpen]);
 
   useEffect(() => {
     document.body.style.overflow = mostrarGate ? "hidden" : "";
@@ -818,31 +833,6 @@ export default function HorarioPage() {
                 </div>
               </div>
 
-              {!activeCourse &&
-                courses.length > 0 && (
-                  <button
-                    onClick={() => {
-                      const cleared = {
-                        ...progress,
-                      };
-
-                      courses.forEach((c) => {
-                        delete cleared[
-                          progressKey(
-                            selectedDay,
-                            c.subject,
-                          )
-                        ];
-                      });
-
-                      setProgress(cleared);
-                    }}
-                    className="horario__reset-link"
-                  >
-                    <i className="fas fa-rotate-left" />{" "}
-                    Reiniciar
-                  </button>
-                )}
             </div>
 
             {!activeCourse && (
@@ -1238,6 +1228,12 @@ export default function HorarioPage() {
             )}`,
           );
         }}
+      />
+
+      <TutorialSpotlight
+        steps={TUTORIAL_POMODORO_GATE}
+        open={tutorialGateOpen}
+        onClose={() => setTutorialGateOpen(false)}
       />
 
       <TutorialSpotlight

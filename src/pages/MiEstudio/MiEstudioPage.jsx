@@ -7,7 +7,7 @@ import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import TutorialSpotlight from "../../components/TutorialSpotlight";
 import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_INICIO } from "../../data/tutorialSteps";
+import { TUTORIAL_INICIO, TUTORIAL_BUSCADOR } from "../../data/tutorialSteps";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "./WelcomeSection";
 import AvisosInicio from "../../components/AvisosInicio";
@@ -286,6 +286,30 @@ export default function MiEstudioPage() {
   const { visto: tutorialInicioVisto, marcarVisto: marcarTutorialInicioVisto } = useTutorialSeen("inicio");
   const [tutorialInicioOpen, setTutorialInicioOpen] = useState(false);
   const [tutorialInicioPasoUnico, setTutorialInicioPasoUnico] = useState(null);
+  const [avisoContinuarVacio, setAvisoContinuarVacio] = useState(false);
+
+  useEffect(() => {
+    if (!avisoContinuarVacio) return;
+    const t = setTimeout(() => setAvisoContinuarVacio(false), 2500);
+    return () => clearTimeout(t);
+  }, [avisoContinuarVacio]);
+
+  const { visto: tutorialBuscadorVisto, marcarVisto: marcarTutorialBuscadorVisto } =
+    useTutorialSeen("buscador");
+  const [tutorialBuscadorOpen, setTutorialBuscadorOpen] = useState(false);
+
+  useEffect(() => {
+    if (!searchOpen || tutorialBuscadorVisto) return;
+
+    const intervalo = setInterval(() => {
+      if (document.querySelector(".search-result-item")) {
+        setTutorialBuscadorOpen(true);
+        clearInterval(intervalo);
+      }
+    }, 400);
+
+    return () => clearInterval(intervalo);
+  }, [searchOpen, tutorialBuscadorVisto]);
 
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
@@ -1620,29 +1644,49 @@ export default function MiEstudioPage() {
               <section className="mi-estudio__intro">
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">
-                    Aprende y domina <span className="mi-estudio__intro-highlight">cada tema</span>
+                    Aprende y domina{" "}
+                    <span className="mi-estudio__intro-highlight">cada tema</span>
                   </h1>
 
                   <p className="mi-estudio__intro-description">
                     Estudia a tu ritmo, comprende cada concepto y avanza paso a paso hacia tus objetivos.
                   </p>
 
-                  {ultimoTemaInicio && (
+                  <div className="welcome-section__continuar-wrapper">
+                    {avisoContinuarVacio && (
+                      <span className="welcome-section__continuar-aviso">
+                        No hay tema para continuar
+                      </span>
+                    )}
+
                     <button
                       type="button"
                       className="welcome-section__continuar-btn"
-                      onClick={() => seleccionarItem({
-                        type: "tema",
-                        curso: ultimoTemaInicio.curso,
-                        tema: ultimoTemaInicio.tema,
-                        archivo: ultimoTemaInicio.archivo
-                      })}
+                      onClick={() => {
+                        if (!ultimoTemaInicio) {
+                          setAvisoContinuarVacio(true);
+                          return;
+                        }
+
+                        seleccionarItem({
+                          type: "tema",
+                          curso: ultimoTemaInicio.curso,
+                          tema: ultimoTemaInicio.tema,
+                          archivo: ultimoTemaInicio.archivo
+                        });
+                      }}
                     >
-                      <span className="welcome-section__continuar-label">Continuar:</span>
-                      <span className="welcome-section__continuar-tema">{ultimoTemaInicio.tema}</span>
+                      <span className="welcome-section__continuar-label">
+                        Continuar:
+                      </span>
+
+                      <span className="welcome-section__continuar-tema">
+                        {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
+                      </span>
+
                       <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
                     </button>
-                  )}
+                  </div>
                 </div>
               </section>
             </div>
@@ -1742,7 +1786,6 @@ export default function MiEstudioPage() {
                                       onChange={() => {
                                         if (textosCompletados.includes(puntoId)) return;
 
-                                        huboCambiosSinGuardarRef.current = true;
                                         setTextosSeleccionados((prev) => {
                                           const newSelection = prev.includes(puntoId)
                                             ? prev.filter((t) => t !== puntoId)
@@ -1832,12 +1875,12 @@ export default function MiEstudioPage() {
                   <div className="mi-estudio__question-inner animate-fade-in">
                     <QuestionCard
                       key={`${repasoQuizActivo
-                          ? "repaso-" + repasoQuizPos
-                          : isLevelMode
-                            ? "nivel-" + nivelIndex
-                            : isFlipQuiz
-                              ? "flip-" + cardIndex + "-" + quizPos
-                              : "teoria-" + cardIndex
+                        ? "repaso-" + repasoQuizPos
+                        : isLevelMode
+                          ? "nivel-" + nivelIndex
+                          : isFlipQuiz
+                            ? "flip-" + cardIndex + "-" + quizPos
+                            : "teoria-" + cardIndex
                         }-${attemptKey}`}
                       pregunta={preguntaActual}
                       onRespondido={manejarRespuesta}
@@ -2000,6 +2043,15 @@ export default function MiEstudioPage() {
           setTutorialInicioOpen(false);
           setTutorialInicioPasoUnico(null);
           marcarTutorialInicioVisto();
+        }}
+      />
+
+      <TutorialSpotlight
+        steps={TUTORIAL_BUSCADOR}
+        open={tutorialBuscadorOpen}
+        onClose={() => {
+          setTutorialBuscadorOpen(false);
+          marcarTutorialBuscadorVisto();
         }}
       />
 
