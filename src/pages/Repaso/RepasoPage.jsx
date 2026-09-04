@@ -2,9 +2,6 @@ import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import AppHeader from "../../components/AppHeader";
-import TutorialSpotlight from "../../components/TutorialSpotlight";
-import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_REPASO, TUTORIAL_REPASO_VACIO } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 
 import {
@@ -32,18 +29,6 @@ export default function RepasoPage() {
   );
 
   const [searchOpen, setSearchOpen] = useState(false);
-  const { visto: tutorialRepasoVisto, marcarVisto: marcarTutorialRepasoVisto } =
-    useTutorialSeen("repaso");
-  const [tutorialRepasoOpen, setTutorialRepasoOpen] = useState(false);
-  const [tutorialRepasoPasoUnico, setTutorialRepasoPasoUnico] =
-    useState(null);
-
-  useEffect(() => {
-    if (!tutorialRepasoVisto) {
-      const t = setTimeout(() => setTutorialRepasoOpen(true), 500);
-      return () => clearTimeout(t);
-    }
-  }, [tutorialRepasoVisto]);
 
   const [log, setLog] = useState(() => leerLog());
 
@@ -66,12 +51,6 @@ export default function RepasoPage() {
     () => clasificarRepasos(log),
     [log]
   );
-
-  // Si no hay repasos pendientes hoy, las tarjetas (.repaso__item-*)
-  // no existen en el DOM: usamos la versión reducida del tutorial para
-  // que no salte pasos.
-  const tutorialRepasoSteps =
-    repasosHoy.length === 0 ? TUTORIAL_REPASO_VACIO : TUTORIAL_REPASO;
 
   /*
    * ─────────────────────────────────────────────────────────────
@@ -188,11 +167,6 @@ export default function RepasoPage() {
           onAbrirBuscador={() =>
             setSearchOpen(true)
           }
-          tutorialSteps={tutorialRepasoSteps}
-          onSelectTutorialStep={(idx) => {
-            setTutorialRepasoPasoUnico(tutorialRepasoSteps[idx]);
-            setTutorialRepasoOpen(true);
-          }}
         />
 
         {/* ─────────────────────────────────────
@@ -547,20 +521,6 @@ export default function RepasoPage() {
                 : item.tema
             );
 
-          }}
-        />
-
-        <TutorialSpotlight
-          steps={
-            tutorialRepasoPasoUnico
-              ? [tutorialRepasoPasoUnico]
-              : tutorialRepasoSteps
-          }
-          open={tutorialRepasoOpen}
-          onClose={() => {
-            setTutorialRepasoOpen(false);
-            setTutorialRepasoPasoUnico(null);
-            marcarTutorialRepasoVisto();
           }}
         />
 

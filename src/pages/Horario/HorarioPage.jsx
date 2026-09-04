@@ -23,9 +23,6 @@ import {
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
-import TutorialSpotlight from "../../components/TutorialSpotlight";
-import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_POMODORO, TUTORIAL_POMODORO_GATE } from "../../data/tutorialSteps";
 import SearchModal from "../../components/SearchModal";
 import ScheduleSetup from "./ScheduleSetup";
 
@@ -116,11 +113,6 @@ export default function HorarioPage() {
 
   const [manualBreak, setManualBreak] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
-  const { visto: tutorialPomodoroVisto, marcarVisto: marcarTutorialPomodoroVisto } =
-    useTutorialSeen("pomodoro");
-  const [tutorialPomodoroOpen, setTutorialPomodoroOpen] = useState(false);
-  const [tutorialPomodoroPasoUnico, setTutorialPomodoroPasoUnico] =
-    useState(null);
 
   const [setupOpen, setSetupOpen] = useState(false);
 
@@ -154,28 +146,6 @@ export default function HorarioPage() {
   );
 
   const mostrarGate = !hayHorarioConfigurado() && !setupOpen;
-
-  const [tutorialGateOpen, setTutorialGateOpen] = useState(false);
-
-  useEffect(() => {
-    if (tutorialPomodoroVisto || !mostrarGate) return;
-
-    const t = setTimeout(() => setTutorialGateOpen(true), 500);
-    return () => clearTimeout(t);
-  }, [tutorialPomodoroVisto, mostrarGate]);
-
-  useEffect(() => {
-    if (setupOpen) setTutorialGateOpen(false);
-  }, [setupOpen]);
-
-  useEffect(() => {
-    if (tutorialPomodoroVisto || mostrarGate || setupOpen) return;
-
-    setTutorialGateOpen(false);
-
-    const t = setTimeout(() => setTutorialPomodoroOpen(true), 500);
-    return () => clearTimeout(t);
-  }, [tutorialPomodoroVisto, mostrarGate, setupOpen]);
 
   useEffect(() => {
     document.body.style.overflow = mostrarGate ? "hidden" : "";
@@ -695,11 +665,6 @@ export default function HorarioPage() {
         section="pomodoro"
         onAbrirBuscador={() => setSearchOpen(true)}
         onEditarHorario={() => navigate("/editar")}
-        tutorialSteps={TUTORIAL_POMODORO}
-        onSelectTutorialStep={(idx) => {
-          setTutorialPomodoroPasoUnico(TUTORIAL_POMODORO[idx]);
-          setTutorialPomodoroOpen(true);
-        }}
       />
 
       <main className="horario__main">
@@ -1227,26 +1192,6 @@ export default function HorarioPage() {
                 : item.tema,
             )}`,
           );
-        }}
-      />
-
-      <TutorialSpotlight
-        steps={TUTORIAL_POMODORO_GATE}
-        open={tutorialGateOpen}
-        onClose={() => setTutorialGateOpen(false)}
-      />
-
-      <TutorialSpotlight
-        steps={
-          tutorialPomodoroPasoUnico
-            ? [tutorialPomodoroPasoUnico]
-            : TUTORIAL_POMODORO
-        }
-        open={tutorialPomodoroOpen}
-        onClose={() => {
-          setTutorialPomodoroOpen(false);
-          setTutorialPomodoroPasoUnico(null);
-          marcarTutorialPomodoroVisto();
         }}
       />
 

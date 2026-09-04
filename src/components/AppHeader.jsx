@@ -50,8 +50,6 @@ export default function AppHeader({
   onAbrirBuscador,
   section = "inicio",
   onEditarHorario = null,
-  tutorialSteps = null,
-  onSelectTutorialStep = null,
 }) {
   const [nombreUsuario, setNombreUsuario] = useLocalStorage(
     "miEstudio_nombreUsuario",
@@ -65,38 +63,11 @@ export default function AppHeader({
 
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
-  const [menuAyudaAbierto, setMenuAyudaAbierto] = useState(false);
 
-  const ayudaRef = useRef(null);
   const headerRef = useRef(null);
   const location = useLocation();
 
   useAutoHideHeader(menuMobileOpen);
-
-  // ============================================================
-  // CERRAR AYUDA AL HACER CLICK FUERA
-  // ============================================================
-
-  useEffect(() => {
-    if (!menuAyudaAbierto) return;
-
-    const onClickFuera = (e) => {
-      if (
-        ayudaRef.current &&
-        !ayudaRef.current.contains(e.target)
-      ) {
-        setMenuAyudaAbierto(false);
-      }
-    };
-
-    document.addEventListener("mousedown", onClickFuera);
-
-    return () =>
-      document.removeEventListener(
-        "mousedown",
-        onClickFuera
-      );
-  }, [menuAyudaAbierto]);
 
   // ============================================================
   // ALTURA DEL HEADER
@@ -265,23 +236,6 @@ export default function AppHeader({
           },
         ]
       : []),
-
-    // ==========================================================
-    // AYUDA
-    // Siempre queda después de las acciones principales.
-    // ==========================================================
-
-    ...(tutorialSteps && tutorialSteps.length > 0
-      ? [
-          {
-            title: "Ver ayuda de esta sección",
-            label: "Ayuda",
-            fullLabel: "Ayuda",
-            icon: "fa-regular fa-circle-question",
-            isHelp: true,
-          },
-        ]
-      : []),
   ];
 
   // ============================================================
@@ -302,72 +256,10 @@ export default function AppHeader({
   };
 
   // ============================================================
-  // SELECCIONAR PASO DE AYUDA
-  // ============================================================
-
-  const seleccionarPasoAyuda = (idx) => {
-    setMenuAyudaAbierto(false);
-    setMenuMobileOpen(false);
-    onSelectTutorialStep?.(idx);
-  };
-
-  // ============================================================
   // BOTÓN NORMAL DEL TOPBAR
   // ============================================================
 
   const renderBoton = (b, cls) => {
-    // ----------------------------------------------------------
-    // AYUDA
-    // ----------------------------------------------------------
-
-    if (b.isHelp) {
-      return (
-        <div
-          key={b.title}
-          className="topbar__help"
-          ref={ayudaRef}
-        >
-          <button
-            type="button"
-            onClick={() =>
-              setMenuAyudaAbierto((v) => !v)
-            }
-            title={b.title}
-            className={`${cls} topbar__help-btn`}
-          >
-            <i
-              className={`${b.icon} topbar__btn-icon`}
-            />
-
-            <span className="topbar__btn-title">
-              {b.label}
-            </span>
-          </button>
-
-          {menuAyudaAbierto && (
-            <div className="topbar__help-menu">
-              <span className="topbar__help-menu-label">
-                ¿Qué quieres ver?
-              </span>
-
-              {tutorialSteps.map((paso, idx) => (
-                <button
-                  key={paso.titulo}
-                  type="button"
-                  className="topbar__help-menu-item"
-                  onClick={() =>
-                    seleccionarPasoAyuda(idx)
-                  }
-                >
-                  {paso.titulo}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      );
-    }
-
     // ----------------------------------------------------------
     // BOTONES NORMALES
     // ----------------------------------------------------------
@@ -429,57 +321,6 @@ export default function AppHeader({
     b,
     closeFn = () => {}
   ) => {
-    // ----------------------------------------------------------
-    // AYUDA DENTRO DEL MENÚ HAMBURGUESA
-    // ----------------------------------------------------------
-
-    if (b.isHelp) {
-      return (
-        <div
-          key={b.title}
-          className="topbar__drawer-help-wrapper"
-        >
-          <button
-            type="button"
-            title={b.title}
-            className="topbar__drawer-item"
-            onClick={() =>
-              setMenuAyudaAbierto((v) => !v)
-            }
-          >
-            <span className="topbar__drawer-item-label">
-              {b.fullLabel || b.label}
-            </span>
-
-            <i
-              className={`${b.icon} topbar__drawer-item-icon`}
-            />
-          </button>
-
-          {menuAyudaAbierto && (
-            <div className="topbar__drawer-help">
-              <span className="topbar__help-menu-label">
-                ¿Qué quieres ver?
-              </span>
-
-              {tutorialSteps.map((paso, idx) => (
-                <button
-                  key={paso.titulo}
-                  type="button"
-                  className="topbar__help-menu-item"
-                  onClick={() =>
-                    seleccionarPasoAyuda(idx)
-                  }
-                >
-                  {paso.titulo}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      );
-    }
-
     // ----------------------------------------------------------
     // FILAS NORMALES
     // ----------------------------------------------------------

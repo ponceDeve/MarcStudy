@@ -5,9 +5,6 @@ import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
-import TutorialSpotlight from "../../components/TutorialSpotlight";
-import { useTutorialSeen } from "../../hooks/useTutorialSeen";
-import { TUTORIAL_INICIO, TUTORIAL_BUSCADOR } from "../../data/tutorialSteps";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "./WelcomeSection";
 import AvisosInicio from "../../components/AvisosInicio";
@@ -283,9 +280,6 @@ export default function MiEstudioPage() {
   const [repasoQuizPos, setRepasoQuizPos] = useState(0);
   const [repasoDesdeTeoria, setRepasoDesdeTeoria] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const { visto: tutorialInicioVisto, marcarVisto: marcarTutorialInicioVisto } = useTutorialSeen("inicio");
-  const [tutorialInicioOpen, setTutorialInicioOpen] = useState(false);
-  const [tutorialInicioPasoUnico, setTutorialInicioPasoUnico] = useState(null);
   const [avisoContinuarVacio, setAvisoContinuarVacio] = useState(false);
 
   useEffect(() => {
@@ -293,23 +287,6 @@ export default function MiEstudioPage() {
     const t = setTimeout(() => setAvisoContinuarVacio(false), 2500);
     return () => clearTimeout(t);
   }, [avisoContinuarVacio]);
-
-  const { visto: tutorialBuscadorVisto, marcarVisto: marcarTutorialBuscadorVisto } =
-    useTutorialSeen("buscador");
-  const [tutorialBuscadorOpen, setTutorialBuscadorOpen] = useState(false);
-
-  useEffect(() => {
-    if (!searchOpen || tutorialBuscadorVisto) return;
-
-    const intervalo = setInterval(() => {
-      if (document.querySelector(".search-result-item")) {
-        setTutorialBuscadorOpen(true);
-        clearInterval(intervalo);
-      }
-    }, 400);
-
-    return () => clearInterval(intervalo);
-  }, [searchOpen, tutorialBuscadorVisto]);
 
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
@@ -324,13 +301,6 @@ export default function MiEstudioPage() {
   const [confirmLeave, setConfirmLeave] = useState(false);
 
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-
-  useEffect(() => {
-    if (nombreUsuario && !tutorialInicioVisto) {
-      const t = setTimeout(() => setTutorialInicioOpen(true), 500);
-      return () => clearTimeout(t);
-    }
-  }, [nombreUsuario, tutorialInicioVisto]);
 
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
   const [modoEstudio, setModoEstudio] = useState("completo");
@@ -1631,11 +1601,6 @@ export default function MiEstudioPage() {
             <AppHeader
               section="inicio"
               onAbrirBuscador={() => setSearchOpen(true)}
-              tutorialSteps={TUTORIAL_INICIO}
-              onSelectTutorialStep={(idx) => {
-                setTutorialInicioPasoUnico(TUTORIAL_INICIO[idx]);
-                setTutorialInicioOpen(true);
-              }}
             />
 
             <div className="mi-estudio__home-screen container">
@@ -2035,25 +2000,6 @@ export default function MiEstudioPage() {
       )}
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
-
-      <TutorialSpotlight
-        steps={tutorialInicioPasoUnico ? [tutorialInicioPasoUnico] : TUTORIAL_INICIO}
-        open={tutorialInicioOpen}
-        onClose={() => {
-          setTutorialInicioOpen(false);
-          setTutorialInicioPasoUnico(null);
-          marcarTutorialInicioVisto();
-        }}
-      />
-
-      <TutorialSpotlight
-        steps={TUTORIAL_BUSCADOR}
-        open={tutorialBuscadorOpen}
-        onClose={() => {
-          setTutorialBuscadorOpen(false);
-          marcarTutorialBuscadorVisto();
-        }}
-      />
 
       {nombreCursoActivo && (
         <TopicsModal
