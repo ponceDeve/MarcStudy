@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
+
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
+import { useTemaOscuro } from "../hooks/useTemaOscuro";
+
 import EditarNombreModal from "./EditarNombreModal";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
@@ -61,6 +64,8 @@ export default function AppHeader({
     null
   );
 
+  const [temaOscuro, setTemaOscuro] = useTemaOscuro();
+
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
 
@@ -88,6 +93,7 @@ export default function AppHeader({
     setHeaderVar();
 
     const ro = new ResizeObserver(setHeaderVar);
+
     ro.observe(el);
 
     return () => ro.disconnect();
@@ -102,7 +108,6 @@ export default function AppHeader({
   const botones = [
     // ==========================================================
     // IR A INICIO
-    // Solo tiene sentido fuera de Inicio.
     // ==========================================================
 
     ...(!esInicio
@@ -134,12 +139,10 @@ export default function AppHeader({
       : []),
 
     // ==========================================================
-    // INICIO — ORDEN DE IMPORTANCIA
-    //
+    // INICIO
     // 1. Pomodoro
     // 2. Repaso
     // 3. Perfil
-    // 4. Ayuda
     // ==========================================================
 
     ...(esInicio
@@ -164,7 +167,6 @@ export default function AppHeader({
 
     // ==========================================================
     // PERFIL
-    // Solo se muestra desde Inicio.
     // ==========================================================
 
     ...(esInicio && nombreUsuario
@@ -174,8 +176,7 @@ export default function AppHeader({
             label: "Perfil",
             fullLabel: "Editar perfil",
             icon: "fa-solid fa-user",
-            onClick: () =>
-              setEditarPerfilAbierto(true),
+            onClick: () => setEditarPerfilAbierto(true),
           },
         ]
       : []),
@@ -260,15 +261,9 @@ export default function AppHeader({
   // ============================================================
 
   const renderBoton = (b, cls) => {
-    // ----------------------------------------------------------
-    // BOTONES NORMALES
-    // ----------------------------------------------------------
-
     const content = (
       <>
-        <i
-          className={`${b.icon} topbar__btn-icon`}
-        />
+        <i className={`${b.icon} topbar__btn-icon`} />
 
         <span className="topbar__btn-title">
           {b.label}
@@ -321,10 +316,6 @@ export default function AppHeader({
     b,
     closeFn = () => {}
   ) => {
-    // ----------------------------------------------------------
-    // FILAS NORMALES
-    // ----------------------------------------------------------
-
     const content = (
       <>
         <span className="topbar__drawer-item-label">
@@ -452,6 +443,7 @@ export default function AppHeader({
               ================================================== */}
 
           <div className="topbar__controls">
+
             <div className="topbar__nav">
               {botones
                 .filter(
@@ -466,13 +458,53 @@ export default function AppHeader({
             </div>
 
             {/* =================================================
+                TOGGLE MODO OSCURO
+                ================================================= */}
+
+            <button
+              type="button"
+              className={`topbar__theme-toggle ${
+                temaOscuro ? "is-dark" : ""
+              }`}
+              onClick={() =>
+                setTemaOscuro(
+                  (actual) => !actual
+                )
+              }
+              title={
+                temaOscuro
+                  ? "Cambiar a modo claro"
+                  : "Cambiar a modo oscuro"
+              }
+              aria-label={
+                temaOscuro
+                  ? "Cambiar a modo claro"
+                  : "Cambiar a modo oscuro"
+              }
+              aria-pressed={temaOscuro}
+            >
+              <i className="fa-solid fa-sun topbar__theme-sun" />
+
+              <span className="topbar__theme-thumb">
+                <i
+                  className={
+                    temaOscuro
+                      ? "fa-solid fa-moon"
+                      : "fa-solid fa-sun"
+                  }
+                />
+              </span>
+
+              <i className="fa-solid fa-moon topbar__theme-moon" />
+            </button>
+
+            {/* =================================================
                 MENÚ HAMBURGUESA
                 ================================================= */}
 
             <button
               type="button"
               onClick={() => {
-                setMenuAyudaAbierto(false);
                 setMenuMobileOpen(true);
               }}
               title="Menú"
@@ -480,6 +512,7 @@ export default function AppHeader({
             >
               <i className="fa-solid fa-bars" />
             </button>
+
           </div>
         </div>
 
@@ -491,7 +524,6 @@ export default function AppHeader({
           title="Menú"
           isOpen={menuMobileOpen}
           onClose={() => {
-            setMenuAyudaAbierto(false);
             setMenuMobileOpen(false);
           }}
         >
@@ -499,7 +531,6 @@ export default function AppHeader({
             renderFila(
               b,
               () => {
-                setMenuAyudaAbierto(false);
                 setMenuMobileOpen(false);
               }
             )

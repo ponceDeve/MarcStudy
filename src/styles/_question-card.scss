@@ -137,6 +137,16 @@
   opacity: 0.5;
   cursor: default;
 }
+/* Variante "Repetir": aparece junto a la pregunta apenas la fallas,
+   para no obligar a bajar hasta la explicación para reintentar. */
+.question-card__submit.is-retry {
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--border-strong);
+}
+.question-card__submit.is-retry:hover {
+  background: var(--surface-hover);
+}
 .question-card__explicacion {
   margin-top: 16px;
   font-size: 14px;

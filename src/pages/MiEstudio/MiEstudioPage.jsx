@@ -281,12 +281,20 @@ export default function MiEstudioPage() {
   const [repasoDesdeTeoria, setRepasoDesdeTeoria] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [avisoContinuarVacio, setAvisoContinuarVacio] = useState(false);
+  const avisoContinuarVacioTimeoutRef = useRef(null);
+
+  function mostrarAvisoContinuarVacio() {
+    clearTimeout(avisoContinuarVacioTimeoutRef.current);
+    setAvisoContinuarVacio(true);
+    avisoContinuarVacioTimeoutRef.current = setTimeout(
+      () => setAvisoContinuarVacio(false),
+      2500
+    );
+  }
 
   useEffect(() => {
-    if (!avisoContinuarVacio) return;
-    const t = setTimeout(() => setAvisoContinuarVacio(false), 2500);
-    return () => clearTimeout(t);
-  }, [avisoContinuarVacio]);
+    return () => clearTimeout(avisoContinuarVacioTimeoutRef.current);
+  }, []);
 
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
@@ -1344,12 +1352,17 @@ export default function MiEstudioPage() {
   const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
 
   const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
+  const hintBloqueoTimeoutRef = useRef(null);
+
+  function mostrarHintBloqueo() {
+    clearTimeout(hintBloqueoTimeoutRef.current);
+    setHintBloqueoVisible(true);
+    hintBloqueoTimeoutRef.current = setTimeout(() => setHintBloqueoVisible(false), 2000);
+  }
 
   useEffect(() => {
-    if (!hintBloqueoVisible) return;
-    const timer = setTimeout(() => setHintBloqueoVisible(false), 2000);
-    return () => clearTimeout(timer);
-  }, [hintBloqueoVisible]);
+    return () => clearTimeout(hintBloqueoTimeoutRef.current);
+  }, []);
 
   useEffect(() => {
     function onKeyDown(e) {
@@ -1629,7 +1642,7 @@ export default function MiEstudioPage() {
                       className="welcome-section__continuar-btn"
                       onClick={() => {
                         if (!ultimoTemaInicio) {
-                          setAvisoContinuarVacio(true);
+                          mostrarAvisoContinuarVacio();
                           return;
                         }
 
@@ -1850,6 +1863,7 @@ export default function MiEstudioPage() {
                       pregunta={preguntaActual}
                       onRespondido={manejarRespuesta}
                       onRendirse={rendirsePregunta}
+                      onReintentar={reintentarPregunta}
                       vidas={vidas}
                     />
                   </div>
@@ -1886,7 +1900,7 @@ export default function MiEstudioPage() {
                         <button
                           onClick={() => {
                             if (bloqueado) {
-                              setHintBloqueoVisible(true);
+                              mostrarHintBloqueo();
                               return;
                             }
                             avanzarCard();

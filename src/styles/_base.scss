@@ -1,7 +1,16 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  /* Ocultar scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer / Edge antiguo */
 }
 
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Edge, Brave, Safari */
+}
 html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
@@ -157,7 +166,7 @@ button {
 /* ── Contenedor "arcade" (tarjetas de teoría/pregunta) ───────────────── */
 .arcade-game-container {
   position: relative;
-  background: var(--ink-on-primary);
+  background: var(--surface);
   border: 2px solid var(--border);
   border-radius: var(--radius-lg);
   width: 100%;

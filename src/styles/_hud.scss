@@ -10,7 +10,7 @@
   margin: 0 auto;
   margin-bottom: 24px;
   padding: 10px 14px;
-  background: var(--ink-on-primary);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   font-family: var(--font-body);
@@ -48,7 +48,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10000;
-  background: #efc4c4;
+  background: color-mix(in srgb, var(--danger) 22%, var(--surface));
   border: 2px solid var(--danger);
   padding: 14px 22px;
   box-sizing: border-box;
@@ -73,7 +73,7 @@
 }
 
 .repaso-toast.is-success {
-  background: #bbf7d0;
+  background: color-mix(in srgb, var(--success) 22%, var(--surface));
   border-color: color-mix(in srgb, var(--success) 55%, transparent);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }

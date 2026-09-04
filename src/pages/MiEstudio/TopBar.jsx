@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
+import { useTemaOscuro } from "../../hooks/useTemaOscuro";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -54,6 +55,7 @@ export default function TopBar({
   onIrInicio,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+  const [temaOscuro, setTemaOscuro] = useTemaOscuro();
 
   useAutoHideHeader(menuMobileOpen);
 
@@ -326,6 +328,43 @@ export default function TopBar({
                 )}
               </div>
             )}
+
+            <button
+              type="button"
+              className={`topbar__theme-toggle ${
+                temaOscuro ? "is-dark" : ""
+              }`}
+              onClick={() =>
+                setTemaOscuro(
+                  (actual) => !actual
+                )
+              }
+              title={
+                temaOscuro
+                  ? "Cambiar a modo claro"
+                  : "Cambiar a modo oscuro"
+              }
+              aria-label={
+                temaOscuro
+                  ? "Cambiar a modo claro"
+                  : "Cambiar a modo oscuro"
+              }
+              aria-pressed={temaOscuro}
+            >
+              <i className="fa-solid fa-sun topbar__theme-sun" />
+
+              <span className="topbar__theme-thumb">
+                <i
+                  className={
+                    temaOscuro
+                      ? "fa-solid fa-moon"
+                      : "fa-solid fa-sun"
+                  }
+                />
+              </span>
+
+              <i className="fa-solid fa-moon topbar__theme-moon" />
+            </button>
 
             {botonesMenu.length > 0 && (
               <button

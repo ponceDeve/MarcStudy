@@ -1,116 +1,93 @@
 :root {
-  /* ============================================================
-     FONDOS Y SUPERFICIES — MODO CLARO / EDUCATIVO
-
-     Regla: el fondo padre (--bg) es un gris azulado, un poco más
-     oscuro que las cajas. Las cajas principales son --surface
-     (blanco puro). Nada de color decorativo en fondos: solo
-     neutros, para que el color con significado resalte.
-     ============================================================ */
-
   --bg: #eef1f6;
-
   --ink-on-primary: #ffffff;
 
   --surface: #ffffff;
   --surface-alt: #f5f7fa;
-  --surface-hover: #e9edf3;
+  --surface-hover: #e2e7ee;
   --surface-ts: #ffffff;
 
-  --border: #e1e6ec;
-  --border-strong: #c9d1da;
+  --border: #dfe5ec;
+  --border-strong: #c5ced9;
 
   /* ============================================================
      TEXTOS
      ============================================================ */
 
-  --ink: #1c2430;
-  --ink-soft: #4a5568;
-  --ink-faint: #8993a4;
+  --ink: #18212d;
+  --ink-soft: #465365;
+  --ink-faint: #718096;
 
   /* ============================================================
      PRIMARY
-     Azul: único color "decorativo" de marca. Se usa para CTA
-     principal, progreso, elementos activos. NO es alerta ni éxito.
+     Azul de acción principal.
+     CTA, progreso, elementos activos.
      ============================================================ */
 
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
-  --primary-light: #93b4fb;
-  --primary-bg: rgba(37, 99, 235, 0.08);
+  --primary-light: #60a5fa;
+  --primary-bg: rgba(37, 99, 235, 0.10);
 
   /* ============================================================
      BRAND
-     Violeta: acento secundario de navegación (ej. badges, nav
-     activo). Distinto del primary para no competir con el CTA.
-
-     NO representa:
-     - alertas
-     - errores
-     - peligro
-     - éxito
+     Violeta de navegación / identidad secundaria.
      ============================================================ */
 
   --brand: #7c3aed;
   --brand-dark: #6d28d9;
-  --brand-light: #c4b5fd;
-  --brand-bg: rgba(124, 58, 237, 0.08);
+  --brand-light: #a78bfa;
+  --brand-bg: rgba(124, 58, 237, 0.10);
 
   /* ============================================================
      SECONDARY
-     Gris neutro puro. Para acciones "sin significado" (omitir,
-     cancelar, botones terciarios): debe leerse como "nada pasa".
+     Gris neutro.
      ============================================================ */
 
-  --secondary: #94a3b8;
-  --secondary-dark: #64748b;
-  --secondary-hover: #cbd5e1;
-  --secondary-bg: rgba(100, 116, 139, 0.08);
+  --secondary: #64748b;
+  --secondary-dark: #475569;
+  --secondary-hover: #e2e8f0;
+  --secondary-bg: rgba(100, 116, 139, 0.10);
 
   /* ============================================================
      ACCENT
-     Rosa/coral: aviso suave, algo a lo que prestar atención pero
-     que no es un error (ej. "sin preguntas", recordatorios).
+     Rosa/coral.
+     Avisos suaves, recordatorios y atención no crítica.
      ============================================================ */
 
-  --accent: #fb7185;
-  --accent-dark: #e11d48;
-  --accent-bg: rgba(251, 113, 133, 0.1);
+  --accent: #e11d48;
+  --accent-dark: #be123c;
+  --accent-bg: rgba(225, 29, 72, 0.09);
 
   /* ============================================================
      DANGER
-     Rojo. Reservado EXCLUSIVAMENTE para errores, respuestas
-     incorrectas y acciones destructivas.
+     Exclusivamente errores / acciones destructivas.
      ============================================================ */
 
   --danger: #dc2626;
-  --danger-dark: #991b1b;
-  --danger-bg: rgba(220, 38, 38, 0.08);
+  --danger-dark: #b91c1c;
+  --danger-bg: rgba(220, 38, 38, 0.09);
 
   /* ============================================================
      SUCCESS
-     Verde. Reservado EXCLUSIVAMENTE para respuestas correctas,
-     completado, progreso positivo.
+     Exclusivamente correcto / completado / progreso positivo.
      ============================================================ */
 
   --success: #16a34a;
-  --success-dark: #166534;
-  --success-bg: rgba(22, 163, 74, 0.08);
+  --success-dark: #15803d;
+  --success-bg: rgba(22, 163, 74, 0.09);
 
   /* ============================================================
      WARNING
-     Ámbar. Reservado para advertencias reales (ej. vidas bajas,
-     tiempo por agotarse).
+     Advertencias reales.
      ============================================================ */
 
   --warning: #d97706;
-  --warning-bg: rgba(217, 119, 6, 0.1);
+  --warning-dark: #b45309;
+  --warning-bg: rgba(217, 119, 6, 0.10);
 
   /* ============================================================
      HEADER
-     Alto fijo del topbar/header. Todo padding-top que necesite
-     "despejar" el header fijo debe usar este valor (nunca un
-     número mágico suelto), para que nunca queden descalzados.
      ============================================================ */
 
   --header-h: 64px;
@@ -121,13 +98,11 @@
 
   --nested-border: 1px solid var(--border-strong);
 
-  --overlay: rgba(15, 23, 42, 0.5);
-  --overlay-strong: rgba(15, 23, 42, 0.75);
+  --overlay: rgba(15, 23, 42, 0.50);
+  --overlay-strong: rgba(15, 23, 42, 0.76);
 
   /* ============================================================
      SHADOWS
-     Sombras suaves de tono navy (no negro puro) para que se
-     sientan livianas sobre fondo claro.
      ============================================================ */
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
@@ -152,22 +127,19 @@
 
   /* ============================================================
      ESCALA TIPOGRÁFICA
-     5 niveles fijos. Todo font-size del proyecto debe apuntar a
-     uno de estos — nunca un valor suelto (px o rem inventado).
      ============================================================ */
 
-  --fs-sm: 0.875rem;    /* texto secundario, badges, metadatos */
-  --fs-body: 1rem;      /* texto normal */
-  --fs-md: 1.25rem;     /* subtítulos, títulos de tarjeta */
-  --fs-title: 2rem;     /* título de página */
-  --fs-hero: clamp(1.75rem, 5vw, 3rem); /* único título "hero" por pantalla */
+  --fs-sm: 0.875rem;
+  --fs-body: 1rem;
+  --fs-md: 1.25rem;
+  --fs-title: 2rem;
+  --fs-hero: clamp(1.75rem, 5vw, 3rem);
 
   --fw-normal: 400;
   --fw-bold: 700;
 
   /* ============================================================
      ESCALA DE ESPACIADO
-     Todo margin/padding/gap debe apuntar a uno de estos pasos.
      ============================================================ */
 
   --space-1: 0.25rem;
@@ -179,65 +151,225 @@
 
   /* ============================================================
      ANCHO DE CONTENIDO
-     Ancho máximo compartido para bloques centrados (buscador,
-     botón "continuar", etc.) para que queden alineados entre sí
-     en vez de que cada uno invente su propio ancho.
      ============================================================ */
 
   --content-max-width: 42rem;
 }
 
-/* ============================================================
+
+/* ================================================================
+   MODO OSCURO
+   Jerarquía clara de superficies:
+
+   --bg            → fondo más profundo
+   --surface       → tarjeta principal
+   --surface-alt   → panel secundario
+   --surface-hover → interacción / hover
+
+   La diferencia entre niveles es deliberada para evitar que
+   tarjetas, modales, inputs y fondo se mezclen visualmente.
+   ================================================================ */
+
+[data-theme="dark"] {
+
+  /* ============================================================
+     FONDOS Y SUPERFICIES
+     ============================================================ */
+
+  --bg: #0b0f14;
+  --ink-on-primary: #ffffff;
+
+  --surface: #141922;
+  --surface-alt: #1b222d;
+  --surface-hover: #242c38;
+  --surface-ts: #141922;
+
+  --border: #303947;
+  --border-strong: #465163;
+
+  /* ============================================================
+     TEXTOS
+     ============================================================ */
+
+  --ink: #f4f7fb;
+  --ink-soft: #b8c1cf;
+  --ink-faint: #8b96a6;
+
+  /* ============================================================
+     PRIMARY
+     Azul suficientemente luminoso para destacar sobre fondos
+     oscuros sin saturar toda la interfaz.
+     ============================================================ */
+
+  --primary: #6d9aff;
+  --primary-dark: #4f7ff0;
+  --primary-light: #a8c2ff;
+  --primary-bg: rgba(109, 154, 255, 0.14);
+
+  /* ============================================================
+     BRAND
+     Violeta secundario claramente diferenciado del azul.
+     ============================================================ */
+
+  --brand: #a477ff;
+  --brand-dark: #8557e8;
+  --brand-light: #cbb8ff;
+  --brand-bg: rgba(164, 119, 255, 0.14);
+
+  /* ============================================================
+     SECONDARY
+     Gris neutro.
+     ============================================================ */
+
+  --secondary: #9aa6b6;
+  --secondary-dark: #788596;
+  --secondary-hover: #303946;
+  --secondary-bg: rgba(154, 166, 182, 0.13);
+
+  /* ============================================================
+     ACCENT
+     Rosa/coral.
+     ============================================================ */
+
+  --accent: #ff7f95;
+  --accent-dark: #f05c76;
+  --accent-bg: rgba(255, 127, 149, 0.14);
+
+  /* ============================================================
+     DANGER
+     ============================================================ */
+
+  --danger: #ff5c5c;
+  --danger-dark: #ff8585;
+  --danger-bg: rgba(255, 92, 92, 0.14);
+
+  /* ============================================================
+     SUCCESS
+     ============================================================ */
+
+  --success: #3fdb73;
+  --success-dark: #2dbd5f;
+  --success-bg: rgba(63, 219, 115, 0.14);
+
+  /* ============================================================
+     WARNING
+     ============================================================ */
+
+  --warning: #ffb52e;
+  --warning-dark: #e99a13;
+  --warning-bg: rgba(255, 181, 46, 0.14);
+
+  /* ============================================================
+     HEADER
+     ============================================================ */
+
+  --header-h: 64px;
+
+  /* ============================================================
+     BORDERS / OVERLAYS
+     ============================================================ */
+
+  --nested-border: 1px solid var(--border-strong);
+
+  --overlay: rgba(0, 0, 0, 0.64);
+  --overlay-strong: rgba(0, 0, 0, 0.84);
+
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.34);
+  --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.44);
+}
+
+
+/* ================================================================
    BREAKPOINTS
-   ============================================================ */
+   ================================================================ */
 
-$bp-sm: 30rem;   // 480px
-$bp-md: 48rem;   // 768px
-$bp-lg: 64rem;   // 1024px
-$bp-xl: 90rem;   // 1440px
+$bp-sm: 30rem; // 480px
+$bp-md: 48rem; // 768px
+$bp-lg: 64rem; // 1024px
+$bp-xl: 90rem; // 1440px
 
-/* ============================================================
+
+/* ================================================================
    RESPONSIVE MIXINS
+
    respond($bp)     -> @media (min-width: ...)
    respond-max($bp) -> @media (max-width: ...)
-   ============================================================ */
+   ================================================================ */
 
 @mixin respond($bp) {
-  @if $bp == sm {
+
+  @if $bp ==sm {
+
     @media (min-width: $bp-sm) {
       @content;
     }
-  } @else if $bp == md {
+
+  }
+
+  @else if $bp ==md {
+
     @media (min-width: $bp-md) {
       @content;
     }
-  } @else if $bp == lg {
+
+  }
+
+  @else if $bp ==lg {
+
     @media (min-width: $bp-lg) {
       @content;
     }
-  } @else if $bp == xl {
+
+  }
+
+  @else if $bp ==xl {
+
     @media (min-width: $bp-xl) {
       @content;
     }
+
   }
+
 }
 
+
 @mixin respond-max($bp) {
-  @if $bp == sm {
+
+  @if $bp ==sm {
+
     @media (max-width: $bp-sm) {
       @content;
     }
-  } @else if $bp == md {
+
+  }
+
+  @else if $bp ==md {
+
     @media (max-width: $bp-md) {
       @content;
     }
-  } @else if $bp == lg {
+
+  }
+
+  @else if $bp ==lg {
+
     @media (max-width: $bp-lg) {
       @content;
     }
-  } @else if $bp == xl {
+
+  }
+
+  @else if $bp ==xl {
+
     @media (max-width: $bp-xl) {
       @content;
     }
+
   }
+
 }

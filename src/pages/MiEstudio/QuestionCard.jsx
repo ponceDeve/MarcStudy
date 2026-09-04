@@ -73,7 +73,7 @@ function useLecturaVoz(texto) {
   }, [texto]);
 }
 
-function OpcionMultiple({ pregunta, onRespondido }) {
+function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
   const [answered, setAnswered] = useState(false);
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
@@ -187,6 +187,17 @@ function OpcionMultiple({ pregunta, onRespondido }) {
         </div>
       )}
 
+      {answered && !wasCorrect && onReintentar && (
+        <div className="question-card__type-wrap">
+          <button
+            onClick={onReintentar}
+            className="question-card__submit is-retry"
+          >
+            Repetir <i className="fas fa-rotate-left" />
+          </button>
+        </div>
+      )}
+
       <audio
         ref={hurraRef}
         src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`}
@@ -196,7 +207,7 @@ function OpcionMultiple({ pregunta, onRespondido }) {
   );
 }
 
-function VerdaderoFalso({ pregunta, onRespondido }) {
+function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
   const proposiciones = pregunta.proposiciones || [];
 
   const [respuestas, setRespuestas] = useState(() =>
@@ -204,6 +215,7 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
   );
 
   const [answered, setAnswered] = useState(false);
+  const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
 
   useLecturaVoz(
@@ -233,6 +245,7 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
       (r, i) => r === proposiciones[i].correct
     );
 
+    setWasCorrect(correcto);
     setAnswered(true);
 
     if (correcto && hurraRef.current) {
@@ -319,6 +332,15 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
         </button>
       )}
 
+      {answered && !wasCorrect && onReintentar && (
+        <button
+          onClick={onReintentar}
+          className="question-card__submit is-retry"
+        >
+          Repetir <i className="fas fa-rotate-left" />
+        </button>
+      )}
+
       <audio
         ref={hurraRef}
         src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`}
@@ -328,7 +350,7 @@ function VerdaderoFalso({ pregunta, onRespondido }) {
   );
 }
 
-function Completar({ pregunta, onRespondido }) {
+function Completar({ pregunta, onRespondido, onReintentar }) {
   const partes = useMemo(
     () =>
       partirEnEspacios(
@@ -488,6 +510,17 @@ function Completar({ pregunta, onRespondido }) {
         </div>
       )}
 
+      {answered && !wasCorrect && onReintentar && (
+        <div className="question-card__type-wrap">
+          <button
+            onClick={onReintentar}
+            className="question-card__submit is-retry"
+          >
+            Repetir <i className="fas fa-rotate-left" />
+          </button>
+        </div>
+      )}
+
       <audio
         ref={hurraRef}
         src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`}
@@ -497,7 +530,7 @@ function Completar({ pregunta, onRespondido }) {
   );
 }
 
-function Relacionar({ pregunta, onRespondido }) {
+function Relacionar({ pregunta, onRespondido, onReintentar }) {
   const [answered, setAnswered] = useState(false);
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
@@ -621,6 +654,17 @@ function Relacionar({ pregunta, onRespondido }) {
         </div>
       )}
 
+      {answered && !wasCorrect && onReintentar && (
+        <div className="question-card__type-wrap">
+          <button
+            onClick={onReintentar}
+            className="question-card__submit is-retry"
+          >
+            Repetir <i className="fas fa-rotate-left" />
+          </button>
+        </div>
+      )}
+
       <audio
         ref={hurraRef}
         src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`}
@@ -634,6 +678,7 @@ export default function QuestionCard({
   pregunta,
   onRespondido,
   onRendirse,
+  onReintentar,
   vidas,
   corazones,
   lives,
@@ -705,6 +750,7 @@ export default function QuestionCard({
           key={JSON.stringify(pregunta)}
           pregunta={pregunta}
           onRespondido={manejarRespuesta}
+          onReintentar={onReintentar}
         />
       </div>
 

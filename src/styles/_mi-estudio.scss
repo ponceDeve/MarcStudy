@@ -258,6 +258,9 @@
 
   box-shadow: var(--shadow-md);
   z-index: 10;
+  pointer-events: none;
+
+  animation: avisoBurbujaIn 0.18s ease-out;
 }
 
 /* La puntita de la nubecita */
@@ -275,6 +278,18 @@
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid var(--ink);
+}
+
+/* Burbuja de aviso genérica: la usan botones bloqueados
+   (esperan una acción previa) para avisar por qué no avanzan */
+@keyframes avisoBurbujaIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .welcome-section__continuar-indicator {
@@ -647,36 +662,37 @@
 
 .mi-estudio__nav-hint {
   position: absolute;
-  right: 0;
-  bottom: 100%;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 50;
-
   width: max-content;
   max-width: 13.75rem;
-
-  margin-bottom: 0.75rem;
-  padding: 0.375rem 0.75rem;
-
-  background: var(--danger);
-  color: var(--ink-on-primary);
-
-  border-radius: var(--radius-sm);
-
-  font-size: 0.8438rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  font-size: 0.8125rem;
   font-weight: 700;
   text-align: center;
   white-space: normal;
-
-  opacity: 0;
-  pointer-events: none;
-
   box-shadow: var(--shadow-md);
+  pointer-events: none;
+  animation: avisoBurbujaIn 0.18s ease-out;
+  color: var(--bg);
+}
 
-  transition: opacity 0.15s;
-
-  &.is-visible {
-    opacity: 1;
-  }
+/* La puntita de la nubecita */
+.mi-estudio__nav-hint::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--ink);
 }
 
 /* ============================================================
@@ -908,7 +924,7 @@
   margin-top: 0.625rem;
   padding: 0.25rem 0.625rem;
 
-  background: var(--ink-on-primary);
+  background: var(--surface);
   color: var(--ink);
 
   border-radius: var(--radius-sm);
@@ -1266,7 +1282,7 @@
 
     padding: 0.4375rem 0.875rem;
 
-    background: var(--ink-on-primary);
+    background: var(--surface);
     color: var(--ink-soft);
 
     border: 0.0625rem solid var(--border);
@@ -1312,7 +1328,7 @@
 
     padding: 0.25rem 0;
 
-    background: var(--ink-on-primary);
+    background: var(--surface);
 
     border: 0.0625rem solid var(--primary);
     border-bottom-left-radius: var(--radius-md);
@@ -1458,7 +1474,7 @@
 
   padding: 0.625rem 1.25rem;
 
-  background-color: var(--ink-on-primary);
+  background-color: var(--surface);
   color: var(--ink);
 
   border: 0.0625rem solid var(--border-strong);
@@ -1593,7 +1609,7 @@
 
   padding: 1.75rem;
 
-  background: var(--ink-on-primary);
+  background: var(--surface);
 
   outline: 0.125rem solid var(--border);
   outline-offset: 0.0625rem;
