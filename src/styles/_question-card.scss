@@ -102,6 +102,7 @@
   flex-direction: column;
   gap: 8px;
   align-items: center;
+  position: relative;
 }
 .question-card__input {
   width: 100%;
@@ -133,7 +134,8 @@
 .question-card__submit:hover {
   background: var(--primary-dark);
 }
-.question-card__submit:disabled {
+.question-card__submit:disabled,
+.question-card__submit[aria-disabled="true"] {
   opacity: 0.5;
   cursor: default;
 }

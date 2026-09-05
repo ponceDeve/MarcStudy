@@ -55,12 +55,14 @@ export default function TopBar({
   onIrInicio,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+
   const [temaOscuro, setTemaOscuro] = useTemaOscuro();
 
   useAutoHideHeader(menuMobileOpen);
 
   const wrapperRef = useRef(null);
   const temaRef = useRef(null);
+
   const [temaOverflows, setTemaOverflows] = useState(false);
 
   useEffect(() => {
@@ -79,6 +81,7 @@ export default function TopBar({
 
       const wrapperWidth = wrapper.clientWidth;
       const textWidth = firstText.scrollWidth;
+
       const overflows = textWidth > wrapperWidth;
 
       setTemaOverflows(overflows);
@@ -274,6 +277,7 @@ export default function TopBar({
     <div className="topbar-wrapper">
       <div className="topbar">
         <div className="topbar__inner">
+
           <div className="topbar__title-box">
             <button
               type="button"
@@ -312,6 +316,7 @@ export default function TopBar({
           </div>
 
           <div className="topbar__controls">
+
             {botonesVisibles.length > 0 && (
               <div
                 className={`topbar__nav ${
@@ -329,15 +334,17 @@ export default function TopBar({
               </div>
             )}
 
+            {/* =====================================================
+                SELECTOR DE TEMA
+                Un solo botón con SOL + LUNA
+               ===================================================== */}
             <button
               type="button"
               className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : ""
+                temaOscuro ? "is-dark" : "is-light"
               }`}
               onClick={() =>
-                setTemaOscuro(
-                  (actual) => !actual
-                )
+                setTemaOscuro((actual) => !actual)
               }
               title={
                 temaOscuro
@@ -351,19 +358,19 @@ export default function TopBar({
               }
               aria-pressed={temaOscuro}
             >
-              <i className="fa-solid fa-sun topbar__theme-sun" />
-
-              <span className="topbar__theme-thumb">
+              <span className="topbar__theme-option topbar__theme-option--light">
                 <i
-                  className={
-                    temaOscuro
-                      ? "fa-solid fa-moon"
-                      : "fa-solid fa-sun"
-                  }
+                  className="fa-solid fa-sun"
+                  aria-hidden="true"
                 />
               </span>
 
-              <i className="fa-solid fa-moon topbar__theme-moon" />
+              <span className="topbar__theme-option topbar__theme-option--dark">
+                <i
+                  className="fa-solid fa-moon"
+                  aria-hidden="true"
+                />
+              </span>
             </button>
 
             {botonesMenu.length > 0 && (
@@ -378,6 +385,7 @@ export default function TopBar({
                 <i className="fa-solid fa-gear" />
               </button>
             )}
+
           </div>
         </div>
 

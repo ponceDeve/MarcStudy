@@ -8,6 +8,79 @@
 }
 
 /* ============================================================
+   AVISO DE BLOQUEO (burbuja)
+   ------------------------------------------------------------
+   La usa cualquier botón que está bloqueado porque espera una
+   acción previa del usuario (elegir un tema, seleccionar una
+   opción, responder una pregunta, etc). El elemento que la
+   contiene debe tener position: relative.
+
+   Uso normal (mensaje corto, una línea):
+     <span className="aviso-bloqueo">Elige un tema</span>
+
+   Mensaje largo que puede necesitar 2 líneas:
+     <span className="aviso-bloqueo aviso-bloqueo--wrap">...</span>
+   ============================================================ */
+
+.aviso-bloqueo {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: none;
+
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  pointer-events: none;
+
+  animation: avisoBloqueoIn 0.18s ease-out;
+}
+
+.aviso-bloqueo--wrap {
+  max-width: 13.75rem;
+  white-space: normal;
+}
+
+.aviso-bloqueo::after {
+  content: "";
+  position: absolute;
+
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 0;
+  height: 0;
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--ink);
+}
+
+@keyframes avisoBloqueoIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
    PomodoroWidget.scss
    ============================================================ */
 

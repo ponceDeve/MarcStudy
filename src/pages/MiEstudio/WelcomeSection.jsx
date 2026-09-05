@@ -9,14 +9,12 @@ const DESCRIPCIONES_CURSO = {
   LEN: "Domina las reglas del idioma y mejora tu comunicación.",
   LIT: "Conoce autores, obras y estilos fundamentales de la literatura.",
   RVE: "Mejora tu lectura, comprensión y velocidad para el examen.",
-
   BIO: "Comprende la vida, desde las células hasta el cuerpo humano.",
   ECO: "Entiende precios, mercados y decisiones de la economía.",
   FIS: "Comprende movimiento, energía y las leyes de la naturaleza.",
   GEO: "Entiende relieve, clima y espacios geográficos del mundo.",
   PSI: "Comprende cómo pensamos, sentimos y actuamos las personas.",
   QUI: "Comprende átomos, compuestos y reacciones de la química.",
-
   ALG: "Domina ecuaciones, expresiones y problemas básicos de álgebra.",
   ARI: "Resuelve razones, proporciones y problemas clásicos de aritmética.",
   GEM: "Domina ángulos, figuras, áreas y conceptos de geometría.",
@@ -34,17 +32,20 @@ const CONFIG_CATEGORIAS = [
   {
     id: "matematica",
     titulo: "Matemática",
-    icono: "bi-rulers"
+    iconoIzquierdo: "bi-calculator",
+    iconoDerecho: "bi-rulers"
   },
-  {
-    id: "ciencias",
-    titulo: "Ciencias",
-    icono: "bi-beaker"
-  },
+ {
+  id: "ciencias",
+  titulo: "Ciencias",
+  iconoIzquierdo: "bi-beaker",
+  iconoDerecho: "bi-eyedropper"
+},
   {
     id: "letras",
     titulo: "Letras",
-    icono: "bi-book"
+    iconoIzquierdo: "bi-book",
+    iconoDerecho: "bi-feather"
   }
 ];
 
@@ -330,6 +331,7 @@ export default function WelcomeSection({
           ) {
             nuevas[id] =
               totalPaginas - 1;
+
             cambio = true;
           }
         }
@@ -464,8 +466,8 @@ export default function WelcomeSection({
       <article
         key={curso.codigo}
         className={`welcome-section__curso${abierto
-          ? " welcome-section__curso--abierto"
-          : ""
+            ? " welcome-section__curso--abierto"
+            : ""
           }`}
       >
         <div className="welcome-section__curso-top">
@@ -742,8 +744,19 @@ export default function WelcomeSection({
         className={`welcome-section__category welcome-section__category--${categoria.id}`}
       >
         <h3 className="welcome-section__category-title">
-          <i className={`bi ${categoria.icono}`}></i>
-          {categoria.titulo}
+          <i
+            className={`bi ${categoria.iconoIzquierdo}`}
+            aria-hidden="true"
+          />
+
+          <span>
+            {categoria.titulo}
+          </span>
+
+          <i
+            className={`bi ${categoria.iconoDerecho}`}
+            aria-hidden="true"
+          />
         </h3>
 
         <div
@@ -820,9 +833,9 @@ export default function WelcomeSection({
                     key={`${categoria.id}-dot-${index}`}
                     type="button"
                     className={`welcome-section__carousel-dot${paginaActual ===
-                      index
-                      ? " welcome-section__carousel-dot--active"
-                      : ""
+                        index
+                        ? " welcome-section__carousel-dot--active"
+                        : ""
                       }`}
                     onClick={() =>
                       irAPaginaCurso(
@@ -877,14 +890,17 @@ export default function WelcomeSection({
                     offset="0%"
                     stopColor="#FFE066"
                   />
+
                   <stop
                     offset="30%"
                     stopColor="#F5B041"
                   />
+
                   <stop
                     offset="70%"
                     stopColor="#D4AF37"
                   />
+
                   <stop
                     offset="100%"
                     stopColor="#9A7D0A"
@@ -902,10 +918,12 @@ export default function WelcomeSection({
                     offset="0%"
                     stopColor="#FFF5CC"
                   />
+
                   <stop
                     offset="50%"
                     stopColor="#F5B041"
                   />
+
                   <stop
                     offset="100%"
                     stopColor="#7D6608"
@@ -923,6 +941,7 @@ export default function WelcomeSection({
                     offset="0%"
                     stopColor="#2C3E50"
                   />
+
                   <stop
                     offset="100%"
                     stopColor="#1A252F"
@@ -1035,9 +1054,7 @@ export default function WelcomeSection({
 
             <div className="welcome-section__logros-text">
               <span className="welcome-section__logros-num">
-                {
-                  temasCompletadosLista.length
-                }{" "}
+                {temasCompletadosLista.length}{" "}
                 / {totalTemas}
               </span>
 

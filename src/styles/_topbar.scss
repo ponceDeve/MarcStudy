@@ -172,10 +172,6 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  /* ============================================================
-     NAVEGACIÓN
-     ============================================================ */
-
   &__nav {
     display: flex;
     flex-direction: row;
@@ -295,10 +291,6 @@ body.is-header-oculto .topbar-wrapper {
     text-align: center;
   }
 
-  /* ============================================================
-     CONTROLES
-     ============================================================ */
-
   &__controls {
     display: flex;
     flex-direction: row;
@@ -309,29 +301,28 @@ body.is-header-oculto .topbar-wrapper {
     min-width: 0;
   }
 
-  /* ============================================================
-     TOGGLE MODO CLARO / OSCURO
-     ============================================================ */
+  /* =========================================================
+     THEME TOGGLE
+     ========================================================= */
 
   &__theme-toggle {
     position: relative;
     width: 64px;
     height: 32px;
-    padding: 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full);
-    background: var(--surface-alt);
+    padding: 2px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-full);
+    background: var(--surface-alt);
     flex-shrink: 0;
     align-self: center;
     cursor: url("/cursor_pointer.webp"), pointer !important;
-    overflow: hidden;
     box-sizing: border-box;
     transition:
-      background 0.25s ease,
-      border-color 0.25s ease,
+      background 0.2s ease,
+      border-color 0.2s ease,
       transform 0.15s ease;
 
     &:hover {
@@ -346,96 +337,102 @@ body.is-header-oculto .topbar-wrapper {
       outline: 2px solid var(--primary);
       outline-offset: 2px;
     }
-
-    &.is-dark {
-      background: var(--surface-alt);
-      border-color: var(--border-strong);
-    }
   }
 
-  &__theme-sun,
-  &__theme-moon {
+  &__theme-option {
     position: relative;
-    width: 32px;
-    height: 100%;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    pointer-events: none;
-    z-index: 1;
-    flex-shrink: 0;
-    transition:
-      color 0.25s ease,
-      opacity 0.25s ease;
-  }
-
-  /* Sol activo en modo claro */
-  &__theme-sun {
-    color: #f59e0b;
-  }
-
-  /* Luna inactiva en modo claro */
-  &__theme-moon {
-    color: var(--ink-faint);
-  }
-
-  /* Luna activa en modo oscuro */
-  &__theme-toggle.is-dark &__theme-sun {
-    color: var(--ink-faint);
-  }
-
-  &__theme-toggle.is-dark &__theme-moon {
-    color: var(--brand);
-  }
-
-  &__theme-thumb {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 24px;
-    height: 24px;
     border-radius: 50%;
-    background: var(--surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
-    z-index: 2;
-    pointer-events: none;
-    box-sizing: border-box;
+    border: 1px solid transparent;
+    z-index: 1;
+
     transition:
-      transform 0.25s ease,
-      background 0.25s ease;
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
 
     i {
-      font-size: 11px;
-      color: var(--ink);
+      font-size: 15px;
+      line-height: 1;
+      pointer-events: none;
+
       transition:
-        transform 0.25s ease,
-        color 0.25s ease;
+        color 0.2s ease,
+        transform 0.2s ease;
     }
   }
 
-  &__theme-toggle.is-dark &__theme-thumb {
-    transform: translateX(32px);
+  /* =========================================================
+     MODO CLARO
+     
+     ☀️ Sol activo     = amarillo
+     🌙 Luna inactiva  = neutro
+     ========================================================= */
 
-    i {
-      color: var(--brand);
+  &__theme-toggle.is-light {
+    background: var(--surface);
+    border-color: var(--border-strong);
+
+    .topbar__theme-option--light {
+      background: var(--ink);
+      border-color: var(--ink);
+
+      i {
+        color: #f5b400;
+        transform: scale(1.05);
+      }
+    }
+
+    .topbar__theme-option--dark {
+      background: transparent;
+      border-color: transparent;
+
+      i {
+        color: var(--ink-soft);
+        transform: scale(1);
+      }
     }
   }
 
-  &__theme-toggle:active &__theme-thumb {
-    transform: scale(0.9);
+  /* =========================================================
+     MODO OSCURO
+     
+     ☀️ Sol inactivo  = neutro
+     🌙 Luna activa   = morado
+     ========================================================= */
+
+  &__theme-toggle.is-dark {
+    background: var(--surface-alt);
+    border-color: var(--border-strong);
+
+    .topbar__theme-option--light {
+      background: transparent;
+      border-color: transparent;
+
+      i {
+        color: var(--ink-soft);
+        transform: scale(1);
+      }
+    }
+
+    .topbar__theme-option--dark {
+      background: var(--ink);
+      border-color: var(--surface);
+
+      i {
+        color: var(--brand);
+        transform: scale(1.05);
+      }
+    }
   }
 
-  &__theme-toggle.is-dark:active &__theme-thumb {
-    transform: translateX(32px) scale(0.9);
-  }
-
-  /* ============================================================
-     BUSCADOR
-     ============================================================ */
+  /* =========================================================
+     SEARCH
+     ========================================================= */
 
   &__search-bar {
     display: flex;
@@ -498,9 +495,9 @@ body.is-header-oculto .topbar-wrapper {
     white-space: nowrap;
   }
 
-  /* ============================================================
-     BOTONES DE CONTROL
-     ============================================================ */
+  /* =========================================================
+     CONTROL BUTTONS
+     ========================================================= */
 
   &__control-btn,
   &__gear {
@@ -534,9 +531,9 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  /* ============================================================
-     AYUDA
-     ============================================================ */
+  /* =========================================================
+     HELP
+     ========================================================= */
 
   &__help {
     position: relative;
@@ -639,9 +636,9 @@ body.is-header-oculto .topbar-wrapper {
     display: none;
   }
 
-  /* ============================================================
-     DRAWER / PANEL HAMBURGUESA
-     ============================================================ */
+  /* =========================================================
+     DRAWER
+     ========================================================= */
 
   &__drawer.offcanvas {
     --bs-offcanvas-width: min(320px, 85vw);
@@ -676,7 +673,6 @@ body.is-header-oculto .topbar-wrapper {
     overscroll-behavior: contain;
   }
 
-  /* Refuerzo para Bootstrap: nunca usar blanco fijo */
   &__drawer.offcanvas,
   &__drawer.offcanvas .offcanvas-body,
   &__drawer.offcanvas .offcanvas-header {
@@ -852,6 +848,7 @@ body.is-header-oculto .topbar-wrapper {
 
   &__drawer-help {
     width: 100% !important;
+    min-width: 0;
     display: flex !important;
     flex-direction: column !important;
     flex: 0 0 auto !important;
@@ -919,10 +916,6 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* ================================================================
-   MARQUEE
-   ================================================================ */
-
 @keyframes marqueeOneWay {
   from {
     transform: translateX(0);
@@ -932,10 +925,6 @@ body.is-header-oculto .topbar-wrapper {
     transform: translateX(var(--scroll-dist));
   }
 }
-
-/* ================================================================
-   TABLET / MOBILE
-   ================================================================ */
 
 @media (max-width: 767px) {
   .topbar {
@@ -947,7 +936,6 @@ body.is-header-oculto .topbar-wrapper {
         align-items: center;
         justify-content: flex-end;
         flex-shrink: 0;
-        gap: 4px;
       }
     }
 
@@ -989,6 +977,7 @@ body.is-header-oculto .topbar-wrapper {
 
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
+
       height: 100dvh !important;
       min-height: 0 !important;
       max-height: 100dvh !important;
@@ -1038,10 +1027,6 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* ================================================================
-   MÓVIL PEQUEÑO
-   ================================================================ */
-
 @media (max-width: 480px) {
   .topbar {
     &__title-box {
@@ -1082,37 +1067,28 @@ body.is-header-oculto .topbar-wrapper {
       font-size: 17px;
     }
 
+    /* =====================================================
+       THEME TOGGLE MOBILE
+       ===================================================== */
+
     &__theme-toggle {
       width: 58px;
       height: 30px;
+      padding: 2px;
     }
 
-    &__theme-sun,
-    &__theme-moon {
-      width: 29px;
-    }
-
-    &__theme-thumb {
-      top: 2px;
-      left: 2px;
-      width: 24px;
-      height: 24px;
-    }
-
-    &__theme-toggle.is-dark &__theme-thumb {
-      transform: translateX(28px);
+    &__theme-option {
+      width: 26px;
+      height: 26px;
 
       i {
-        color: var(--brand);
+        font-size: 14px;
       }
-    }
-
-    &__theme-toggle.is-dark:active &__theme-thumb {
-      transform: translateX(28px) scale(0.9);
     }
 
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
+
       height: 100dvh !important;
       max-height: 100dvh !important;
       background: var(--surface) !important;
@@ -1157,10 +1133,6 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* ================================================================
-   TABLET — 768px+
-   ================================================================ */
-
 @include respond(md) {
   .topbar {
     &__nav {
@@ -1177,10 +1149,6 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 }
-
-/* ================================================================
-   DESKTOP — 1024px+
-   ================================================================ */
 
 @include respond(lg) {
   .topbar {
@@ -1255,10 +1223,6 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* ================================================================
-   PANTALLAS GRANDES — 1440px+
-   ================================================================ */
-
 @include respond(xl) {
   .topbar {
     padding: 0 22px;
@@ -1304,15 +1268,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* ================================================================
-   BOOTSTRAP OFFCANVAS BACKDROP
-   ================================================================ */
-
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
   --bs-backdrop-bg: var(--overlay-strong);
   --bs-backdrop-opacity: 1;
-
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }

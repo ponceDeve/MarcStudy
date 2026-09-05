@@ -1632,7 +1632,7 @@ export default function MiEstudioPage() {
 
                   <div className="welcome-section__continuar-wrapper">
                     {avisoContinuarVacio && (
-                      <span className="welcome-section__continuar-aviso">
+                      <span className="aviso-bloqueo">
                         No hay tema para continuar
                       </span>
                     )}
@@ -1917,7 +1917,7 @@ export default function MiEstudioPage() {
                         </button>
 
                         {!canAdvance && !esUltimo && hintBloqueoVisible && (
-                          <span className="mi-estudio__nav-hint is-visible">
+                          <span className="aviso-bloqueo aviso-bloqueo--wrap">
                             ¡Supera la pregunta para avanzar!
                           </span>
                         )}

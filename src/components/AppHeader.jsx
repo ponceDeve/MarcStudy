@@ -19,9 +19,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -112,14 +111,14 @@ export default function AppHeader({
 
     ...(!esInicio
       ? [
-          {
-            title: "Ir a Inicio",
-            label: "Inicio",
-            fullLabel: "Ir a Inicio",
-            icon: "fa-solid fa-house",
-            to: "/",
-          },
-        ]
+        {
+          title: "Ir a Inicio",
+          label: "Inicio",
+          fullLabel: "Ir a Inicio",
+          icon: "fa-solid fa-house",
+          to: "/",
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -128,14 +127,14 @@ export default function AppHeader({
 
     ...(onAbrirBuscador
       ? [
-          {
-            title: "Buscar curso o tema",
-            label: "Buscar",
-            fullLabel: "Buscar curso o tema",
-            icon: "fa-solid fa-magnifying-glass",
-            onClick: onAbrirBuscador,
-          },
-        ]
+        {
+          title: "Buscar curso o tema",
+          label: "Buscar",
+          fullLabel: "Buscar curso o tema",
+          icon: "fa-solid fa-magnifying-glass",
+          onClick: onAbrirBuscador,
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -147,22 +146,22 @@ export default function AppHeader({
 
     ...(esInicio
       ? [
-          {
-            title: "Ir al Pomodoro",
-            label: "Pomodoro",
-            fullLabel: "Pomodoro",
-            icon: "fa-solid fa-hourglass-half",
-            to: "/pomodoro",
-          },
+        {
+          title: "Ir al Pomodoro",
+          label: "Pomodoro",
+          fullLabel: "Pomodoro",
+          icon: "fa-solid fa-hourglass-half",
+          to: "/pomodoro",
+        },
 
-          {
-            title: "Ir a Mis Repasos",
-            label: "Repaso",
-            fullLabel: "Mis Repasos",
-            icon: "fa-solid fa-calendar-check",
-            to: "/repaso",
-          },
-        ]
+        {
+          title: "Ir a Mis Repasos",
+          label: "Repaso",
+          fullLabel: "Mis Repasos",
+          icon: "fa-solid fa-calendar-check",
+          to: "/repaso",
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -171,14 +170,14 @@ export default function AppHeader({
 
     ...(esInicio && nombreUsuario
       ? [
-          {
-            title: "Editar perfil",
-            label: "Perfil",
-            fullLabel: "Editar perfil",
-            icon: "fa-solid fa-user",
-            onClick: () => setEditarPerfilAbierto(true),
-          },
-        ]
+        {
+          title: "Editar perfil",
+          label: "Perfil",
+          fullLabel: "Editar perfil",
+          icon: "fa-solid fa-user",
+          onClick: () => setEditarPerfilAbierto(true),
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -187,14 +186,14 @@ export default function AppHeader({
 
     ...(section === "repaso"
       ? [
-          {
-            title: "Ir al Pomodoro",
-            label: "Pomodoro",
-            fullLabel: "Pomodoro",
-            icon: "fa-solid fa-hourglass-half",
-            to: "/pomodoro",
-          },
-        ]
+        {
+          title: "Ir al Pomodoro",
+          label: "Pomodoro",
+          fullLabel: "Pomodoro",
+          icon: "fa-solid fa-hourglass-half",
+          to: "/pomodoro",
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -203,23 +202,23 @@ export default function AppHeader({
 
     ...(section === "pomodoro"
       ? [
-          {
-            title: "Ir a Mis Repasos",
-            label: "Repaso",
-            fullLabel: "Mis Repasos",
-            icon: "fa-solid fa-calendar-check",
-            to: "/repaso",
-          },
+        {
+          title: "Ir a Mis Repasos",
+          label: "Repaso",
+          fullLabel: "Mis Repasos",
+          icon: "fa-solid fa-calendar-check",
+          to: "/repaso",
+        },
 
-          {
-            title: "Editar horario",
-            label: "Editar",
-            fullLabel: "Editar horario",
-            icon: "fa-solid fa-pen",
-            to: "/editar",
-            onClick: onEditarHorario,
-          },
-        ]
+        {
+          title: "Editar horario",
+          label: "Editar",
+          fullLabel: "Editar horario",
+          icon: "fa-solid fa-pen",
+          to: "/editar",
+          onClick: onEditarHorario,
+        },
+      ]
       : []),
 
     // ==========================================================
@@ -228,14 +227,14 @@ export default function AppHeader({
 
     ...(section === "editar"
       ? [
-          {
-            title: "Ir al Pomodoro",
-            label: "Pomodoro",
-            fullLabel: "Pomodoro",
-            icon: "fa-solid fa-hourglass-half",
-            to: "/pomodoro",
-          },
-        ]
+        {
+          title: "Ir al Pomodoro",
+          label: "Pomodoro",
+          fullLabel: "Pomodoro",
+          icon: "fa-solid fa-hourglass-half",
+          to: "/pomodoro",
+        },
+      ]
       : []),
   ];
 
@@ -314,7 +313,7 @@ export default function AppHeader({
 
   const renderFila = (
     b,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
@@ -394,11 +393,10 @@ export default function AppHeader({
                   `${import.meta.env.BASE_URL}icon.png`
                 }
                 alt="Mi Estudio"
-                className={`topbar__logo${
-                  fotoUsuario
+                className={`topbar__logo${fotoUsuario
                     ? " topbar__logo--foto"
                     : ""
-                }`}
+                  }`}
               />
             </Link>
 
@@ -463,13 +461,10 @@ export default function AppHeader({
 
             <button
               type="button"
-              className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : ""
-              }`}
+              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
+                }`}
               onClick={() =>
-                setTemaOscuro(
-                  (actual) => !actual
-                )
+                setTemaOscuro((actual) => !actual)
               }
               title={
                 temaOscuro
@@ -483,19 +478,19 @@ export default function AppHeader({
               }
               aria-pressed={temaOscuro}
             >
-              <i className="fa-solid fa-sun topbar__theme-sun" />
-
-              <span className="topbar__theme-thumb">
+              <span className="topbar__theme-option topbar__theme-option--light">
                 <i
-                  className={
-                    temaOscuro
-                      ? "fa-solid fa-moon"
-                      : "fa-solid fa-sun"
-                  }
+                  className="fa-solid fa-sun"
+                  aria-hidden="true"
                 />
               </span>
 
-              <i className="fa-solid fa-moon topbar__theme-moon" />
+              <span className="topbar__theme-option topbar__theme-option--dark">
+                <i
+                  className="fa-solid fa-moon"
+                  aria-hidden="true"
+                />
+              </span>
             </button>
 
             {/* =================================================

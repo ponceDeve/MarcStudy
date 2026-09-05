@@ -9,6 +9,7 @@ import { shuffle } from "../../lib/shuffle";
 import LatexText from "../../components/LatexText";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
+import { useAvisoBloqueo } from "../../hooks/useAvisoBloqueo";
 
 function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
@@ -78,6 +79,7 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
+  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
 
   const shuffled = useMemo(
     () =>
@@ -98,7 +100,12 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
   }
 
   function confirmarRespuesta() {
-    if (answered || chosenIdx === null) return;
+    if (answered) return;
+
+    if (chosenIdx === null) {
+      mostrarAviso();
+      return;
+    }
 
     const correct =
       shuffled[chosenIdx].originalIndex === pregunta.correct;
@@ -177,9 +184,14 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
 
       {!answered && (
         <div className="question-card__type-wrap">
+          {avisoVisible && (
+            <span className="aviso-bloqueo">
+              Elige una opción antes de responder
+            </span>
+          )}
           <button
             onClick={confirmarRespuesta}
-            disabled={chosenIdx === null}
+            aria-disabled={chosenIdx === null}
             className="question-card__submit"
           >
             Responder
@@ -217,6 +229,7 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
   const [answered, setAnswered] = useState(false);
   const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
+  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
 
   useLecturaVoz(
     pregunta.q ||
@@ -234,10 +247,10 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
   }
 
   function calificar() {
-    if (
-      answered ||
-      respuestas.some((r) => r === null)
-    ) {
+    if (answered) return;
+
+    if (respuestas.some((r) => r === null)) {
+      mostrarAviso();
       return;
     }
 
@@ -323,13 +336,20 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
       </ol>
 
       {!answered && (
-        <button
-          onClick={calificar}
-          disabled={!todasRespondidas}
-          className="question-card__submit"
-        >
-          Calificar
-        </button>
+        <div className="question-card__type-wrap">
+          {avisoVisible && (
+            <span className="aviso-bloqueo">
+              Marca V o F en todas las proposiciones
+            </span>
+          )}
+          <button
+            onClick={calificar}
+            aria-disabled={!todasRespondidas}
+            className="question-card__submit"
+          >
+            Calificar
+          </button>
+        </div>
       )}
 
       {answered && !wasCorrect && onReintentar && (
@@ -363,6 +383,7 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
+  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
 
   useLecturaVoz(
     pregunta.q || "Completa los espacios en blanco."
@@ -387,7 +408,12 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
   }
 
   function confirmarRespuesta() {
-    if (answered || chosenIdx === null) return;
+    if (answered) return;
+
+    if (chosenIdx === null) {
+      mostrarAviso();
+      return;
+    }
 
     const correct =
       shuffled[chosenIdx].originalIndex ===
@@ -500,9 +526,14 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
 
       {!answered && (
         <div className="question-card__type-wrap">
+          {avisoVisible && (
+            <span className="aviso-bloqueo">
+              Elige una opción antes de responder
+            </span>
+          )}
           <button
             onClick={confirmarRespuesta}
-            disabled={chosenIdx === null}
+            aria-disabled={chosenIdx === null}
             className="question-card__submit"
           >
             Responder
@@ -535,6 +566,7 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
   const hurraRef = useRef(null);
+  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
 
   useLecturaVoz(
     pregunta.q || "Relaciona ambas columnas."
@@ -559,7 +591,12 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
   }
 
   function confirmarRespuesta() {
-    if (answered || chosenIdx === null) return;
+    if (answered) return;
+
+    if (chosenIdx === null) {
+      mostrarAviso();
+      return;
+    }
 
     const correct =
       shuffled[chosenIdx].originalIndex ===
@@ -644,9 +681,14 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
 
       {!answered && (
         <div className="question-card__type-wrap">
+          {avisoVisible && (
+            <span className="aviso-bloqueo">
+              Elige una opción antes de responder
+            </span>
+          )}
           <button
             onClick={confirmarRespuesta}
-            disabled={chosenIdx === null}
+            aria-disabled={chosenIdx === null}
             className="question-card__submit"
           >
             Responder
