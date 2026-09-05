@@ -1,5 +1,4 @@
 @use "./tokens" as *;
-
 @font-face {
   font-family: "DS-Digital";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
@@ -7,13 +6,11 @@
   font-style: normal;
   font-display: swap;
 }
-
 .timer-font {
   font-family: "DS-Digital", monospace !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
-
 .horario {
   width: 100%;
   min-height: 100vh;
@@ -24,36 +21,6 @@
   padding: calc(var(--header-h) + 36px) 20px;
   padding-bottom: 0;
 }
-
-.horario__back {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 200;
-}
-
-.horario__back-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--ink-soft);
-  font-size: 13.5px;
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-  transition: color 0.2s linear, background 0.2s linear, border-color 0.2s linear;
-}
-
-.horario__back-link:hover {
-  color: var(--primary);
-  background: var(--primary-bg);
-  border: var(--nested-border);
-  border-color: var(--primary);
-}
-
 .horario__main {
   width: 100%;
   max-width: 80rem;
@@ -63,28 +30,23 @@
   display: grid;
   gap: 22px;
 }
-
 @media (min-width: 1024px) {
   .horario__main {
     grid-template-columns: repeat(12, 1fr);
   }
-
   .horario__timer-section {
     grid-column: span 8;
   }
-
   .horario__side-section {
     grid-column: span 4;
   }
 }
-
 .horario__timer-section,
 .horario__side-section {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
-
 .horario__timer-card,
 .horario__courses-card {
   background: var(--surface);
@@ -92,14 +54,12 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
 }
-
 .horario__timer-card {
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .horario__btn-volver-tema {
   width: 100%;
   display: flex;
@@ -118,13 +78,11 @@
   text-overflow: ellipsis;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
 .horario__btn-volver-tema:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__timer-center {
   flex: 1;
   min-width: 0;
@@ -137,14 +95,12 @@
   text-align: center;
   gap: clamp(8px, 1.5vh, 16px);
 }
-
 .horario__timer-label {
   margin: 0;
   color: var(--ink-soft);
   font-size: clamp(12px, 1.4vw, 14px);
   font-weight: 600;
 }
-
 .horario__timer-clock {
   display: block;
   width: 100%;
@@ -163,7 +119,6 @@
   user-select: none;
   overflow: hidden;
 }
-
 .horario__progress-track {
   position: relative;
   width: 100%;
@@ -175,7 +130,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
 }
-
 .horario__progress-fill {
   height: 100%;
   width: var(--fill-pct, 0%);
@@ -183,12 +137,10 @@
   border-radius: var(--radius-full);
   transition: width 0.3s linear;
 }
-
 .horario__timer-controls {
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
-
 .horario__timer-btn-row {
   width: 100%;
   max-width: 28rem;
@@ -197,7 +149,6 @@
   justify-content: center;
   gap: 8px;
 }
-
 .horario__btn {
   flex: 1;
   min-height: 46px;
@@ -213,39 +164,32 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
 }
-
 .horario__btn.is-start {
   background: var(--primary);
   color: var(--ink-on-primary);
   border-color: var(--primary-dark);
   box-shadow: var(--shadow-sm);
 }
-
 .horario__btn.is-start:hover {
   background: var(--primary-dark);
 }
-
 .horario__btn.is-start:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
-
 .horario__btn.is-pause {
   background: var(--surface-alt);
   color: var(--ink);
   border-color: var(--border);
 }
-
 .horario__btn.is-pause:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
 }
-
 .horario__btn.is-pause:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
-
 .horario__btn-reset {
   min-height: 46px;
   padding: 12px 14px;
@@ -256,13 +200,11 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
 .horario__btn-reset:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__day-tabs {
   display: flex;
   flex-direction: column;
@@ -273,14 +215,12 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
-
 .horario__day-row {
   background-color: var(--surface);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
 }
-
 .horario__day-btn {
   min-width: 0;
   padding: 11px 8px;
@@ -293,22 +233,18 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
 .horario__day-btn:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
-
 .horario__day-btn.is-active,
 .horario__day-btn.is-active:hover {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-
 .horario__courses-card {
   padding: 22px;
 }
-
 .horario__courses-header {
   display: flex;
   align-items: center;
@@ -319,14 +255,12 @@
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
-
 .horario__courses-header-left {
   display: flex;
   align-items: center;
   gap: 10px;
   min-width: 0;
 }
-
 .horario__back-course {
   width: 38px;
   height: 38px;
@@ -341,13 +275,11 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
 .horario__back-course:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__day-title {
   margin: 0;
   color: var(--ink);
@@ -355,35 +287,11 @@
   font-weight: 700;
   text-transform: capitalize;
 }
-
-.horario__day-sub {
-  margin: 2px 0 0;
-  color: var(--ink-soft);
-  font-size: 18px;
-}
-
-.horario__reset-link {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: none;
-  background: transparent;
-  color: var(--ink-soft);
-  font-size: 13.5px;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: color 0.2s linear;
-}
-
-.horario__reset-link:hover {
-  color: var(--secondary-hover);
-}
-
 .horario__course-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .horario__course-item {
   padding: 16px;
   background: var(--surface);
@@ -393,29 +301,14 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.3s linear;
 }
-
 .horario__course-item:hover {
   box-shadow: var(--shadow-sm);
   background-color: var(--surface-hover);
   border-color: var(--ink);
 }
-
 .horario__course-item.is-complete {
   opacity: 0.65;
 }
-
-.horario__course-item.level-easy {
-  border-left-color: var(--primary);
-}
-
-.horario__course-item.level-medium {
-  border-left-color: var(--secondary);
-}
-
-.horario__course-item.level-hard {
-  border-left-color: var(--accent-dark);
-}
-
 .horario__course-top {
   display: flex;
   align-items: flex-start;
@@ -423,7 +316,6 @@
   gap: 10px;
   margin-bottom: 12px;
 }
-
 .horario__course-tags {
   display: flex;
   align-items: center;
@@ -431,40 +323,17 @@
   flex-wrap: wrap;
   min-width: 0;
 }
-
-.horario__level-badge {
-  padding: 3px 8px;
-  border-radius: var(--radius-sm);
-  color: var(--ink-on-primary);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.horario__level-badge.level-easy {
-  background: var(--primary);
-}
-
-.horario__level-badge.level-medium {
-  background: var(--secondary);
-}
-
-.horario__level-badge.level-hard {
-  background: var(--accent-dark);
-}
-
 .horario__course-name {
   margin: 0;
   color: inherit;
   font-size: 15px;
   font-weight: 700;
 }
-
 .horario__course-progress {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .horario__mini-track {
   flex: 1;
   height: 6px;
@@ -472,7 +341,6 @@
   background: rgba(0, 0, 0, 0.12);
   border-radius: var(--radius-full);
 }
-
 .horario__mini-fill {
   height: 100%;
   width: var(--fill-pct, 0%);
@@ -480,19 +348,6 @@
   border-radius: var(--radius-full);
   transition: width 0.3s linear;
 }
-
-.horario__mini-fill.level-easy {
-  background: var(--primary);
-}
-
-.horario__mini-fill.level-medium {
-  background: var(--secondary);
-}
-
-.horario__mini-fill.level-hard {
-  background: var(--accent-dark);
-}
-
 .horario__course-count {
   flex-shrink: 0;
   color: inherit;
@@ -501,48 +356,105 @@
   opacity: 0.8;
   white-space: nowrap;
 }
-
 .horario__course-status {
   margin: 8px 0 0;
   color: inherit;
   font-size: 13px;
   opacity: 0.75;
 }
-
 .horario__check-icon {
   color: var(--success);
 }
-
 .horario__chevron-icon {
   color: var(--ink-faint);
   opacity: 0.7;
 }
-
+/* ============================================================
+   DESCANSO MANUAL
+   ============================================================ */
 .horario__rest-row {
   display: flex;
   gap: 8px;
   margin-top: 8px;
 }
-
-.horario__rest-btn {
+.horario__rest-select {
+  position: relative;
   flex: 1;
-  padding: 12px;
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--radius-md);
-  background: transparent;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.horario__rest-info {
+  width: 100%;
+}
+.horario__rest-message {
+  margin: 0;
   color: var(--ink-soft);
   font-size: 13.5px;
   font-weight: 600;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
-.horario__rest-btn:hover {
+.horario__rest-select-control {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.horario__rest-select-control > i:first-child {
+  position: absolute;
+  left: 13px;
+  z-index: 1;
+  color: var(--ink-soft);
+  font-size: 13px;
+  pointer-events: none;
+}
+.horario__rest-select-control > i:last-child {
+  position: absolute;
+  right: 13px;
+  z-index: 1;
+  color: var(--ink-soft);
+  font-size: 11px;
+  pointer-events: none;
+}
+.horario__rest-select select {
+  width: 100%;
+  min-height: 42px;
+  padding: 11px 34px 11px 36px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
+}
+.horario__rest-select select:hover {
   background: var(--surface-hover);
+  color: var(--ink);
   border-color: var(--primary);
+}
+.horario__rest-select select:focus {
+  background: var(--surface-hover);
+  color: var(--ink);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-bg);
+}
+.horario__rest-select select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+.horario__rest-select select option {
+  background: var(--surface);
   color: var(--ink);
 }
-
+/* ============================================================
+   TAREAS
+   ============================================================ */
 .horario__task-list {
   position: relative;
   display: flex;
@@ -552,14 +464,12 @@
   padding-left: 4px;
   border-left: 2px solid var(--border);
 }
-
 .horario__task-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-left: -17px;
 }
-
 .horario__task-dot {
   width: 32px;
   height: 32px;
@@ -574,13 +484,11 @@
   font-size: 14px;
   font-weight: 700;
 }
-
 .horario__task-dot.is-past {
   background: var(--secondary);
   border-color: var(--secondary);
   color: var(--ink-on-primary);
 }
-
 .horario__task-box {
   flex: 1;
   padding: 14px;
@@ -590,24 +498,17 @@
   color: var(--ink-soft);
   transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
 }
-
 .horario__task-box.is-past {
   background: var(--secondary-bg);
   border-color: var(--secondary);
   color: var(--ink-soft);
 }
-
 .horario__task-box.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
   color: var(--ink);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
-.horario__task-box.is-rest {
-  padding: 10px;
-}
-
 .horario__task-box-top {
   display: flex;
   align-items: flex-start;
@@ -615,21 +516,18 @@
   gap: 8px;
   margin-bottom: 4px;
 }
-
 .horario__task-box-title {
   margin: 0;
   color: inherit;
   font-size: 14px;
   font-weight: 700;
 }
-
 .horario__task-box-detail {
   margin: 0;
   color: inherit;
   font-size: 13.5px;
   opacity: 0.8;
 }
-
 .horario__rest-dot {
   position: relative;
   width: 32px;
@@ -641,18 +539,15 @@
   border-radius: var(--radius-full);
   background: var(--surface-alt);
 }
-
 .horario__tomato-svg {
   width: 20px;
   height: 20px;
   color: var(--border-strong);
   transition: color 0.2s linear;
 }
-
 .horario__rest-dot.is-past .horario__tomato-svg {
   color: var(--success);
 }
-
 .horario__tomato-icon {
   position: absolute;
   top: 50%;
@@ -662,12 +557,10 @@
   font-size: 10px;
   transition: color 0.2s linear, opacity 0.2s linear;
 }
-
 .horario__rest-dot.is-past .horario__tomato-icon {
   color: var(--success);
   opacity: 1;
 }
-
 .horario__rest-box {
   flex: 1;
   padding: 10px;
@@ -678,70 +571,36 @@
   font-size: 13.5px;
   font-weight: 600;
 }
-
 .horario__rest-box.is-past {
   opacity: 0.6;
 }
-
 .horario__rest-box.is-active {
   border-color: var(--primary);
   background: var(--primary-bg);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
-.horario__repaso-link-wrap {
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 24px 32px;
-  display: flex;
-  justify-content: center;
-}
-
-.horario__repaso-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 46px;
-  padding: 12px 24px;
-  border: 1px solid var(--primary-dark);
-  border-radius: var(--radius-md);
-  background: var(--primary);
-  color: var(--ink-on-primary);
-  font-size: 14px;
-  font-weight: 700;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.2s linear, border-color 0.2s linear;
-}
-
-.horario__repaso-link:hover {
-  background: var(--primary-dark);
-}
-
+/* ============================================================
+   MODAL COMPLETADO
+   ============================================================ */
 .horario__complete-modal {
   padding: 16px;
   text-align: center;
 }
-
 .horario__complete-emoji {
   margin-bottom: 16px;
   font-size: 56px;
 }
-
 .horario__complete-title {
   margin: 0 0 10px;
   color: var(--ink);
   font-size: 22px;
   font-weight: 700;
 }
-
 .horario__complete-sub {
   margin: 0 0 16px;
   color: var(--ink-soft);
   font-size: 14px;
 }
-
 .horario__complete-msg {
   margin: 0 0 28px;
   color: var(--ink);
@@ -749,7 +608,6 @@
   font-weight: 600;
   line-height: 1.4;
 }
-
 .horario__complete-btn {
   padding: 12px 24px;
   border: 1px solid var(--primary-dark);
@@ -762,11 +620,12 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear;
 }
-
 .horario__complete-btn:hover {
   background: var(--primary-dark);
 }
-
+/* ============================================================
+   CURSO RÁPIDO
+   ============================================================ */
 .curso-rapido__temas {
   display: flex;
   flex-direction: column;
@@ -776,11 +635,9 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-
 .curso-rapido__temas::-webkit-scrollbar {
   display: none;
 }
-
 .curso-rapido__tema-btn {
   padding: 10px 12px;
   border: 1px solid var(--border);
@@ -791,13 +648,14 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear;
 }
-
 .curso-rapido__tema-btn:hover {
   background: var(--primary-bg);
   border-color: var(--primary);
   color: var(--primary);
 }
-
+/* ============================================================
+   TEMA MODAL
+   ============================================================ */
 .tema-modal {
   min-height: 0;
   max-height: 80vh;
@@ -806,17 +664,14 @@
   flex-direction: column;
   gap: 8px;
 }
-
 .tema-modal__title {
   margin: 0;
 }
-
 .tema-modal__text {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9rem;
 }
-
 .tema-modal__list {
   min-height: 0;
   max-height: 280px;
@@ -827,13 +682,10 @@
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
-
 .tema-modal__list::-webkit-scrollbar {
   display: none;
 }
-
 .tema-modal__item {
   width: 100%;
   padding: 10px 12px;
@@ -845,7 +697,6 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear, transform 0.15s linear, box-shadow 0.2s linear;
 }
-
 .tema-modal__item:hover {
   background: var(--primary-bg);
   border-color: var(--primary);
@@ -853,19 +704,19 @@
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
-
 .tema-modal__item:active {
   transform: translateY(0);
   box-shadow: none;
 }
-
+/* ============================================================
+   SELECTOR DE TEMA
+   ============================================================ */
 .tema-selector {
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 6px;
 }
-
 .tema-selector__titulo {
   margin: 0;
   color: var(--secondary);
@@ -873,13 +724,11 @@
   font-weight: 800;
   line-height: 1.2;
 }
-
 .tema-selector__descripcion {
   margin: -4px 0 0;
   color: var(--ink-soft);
   font-size: 18px;
 }
-
 .tema-selector__lista {
   max-height: 280px;
   padding: 15px 15px 15px 0;
@@ -890,20 +739,16 @@
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
-
 .tema-selector__lista::-webkit-scrollbar {
   width: 3px;
 }
-
 .tema-selector__lista::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .tema-selector__lista::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 999px;
 }
-
 .tema-selector__boton {
   width: 100%;
   padding: 10px 12px;
@@ -917,30 +762,25 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, transform 0.15s linear;
 }
-
 .tema-selector__boton:hover {
   background: var(--primary-bg);
   border-color: var(--primary);
   color: var(--primary);
 }
-
 .tema-selector__boton:active {
   transform: scale(0.98);
   background: var(--primary-bg);
 }
-
 .tema-selector__boton.is-selected {
   background: var(--primary-bg);
   border-color: var(--primary);
   color: var(--primary);
 }
-
 .tema-selector__confirm-row {
   display: flex;
   gap: 10px;
   margin-top: 4px;
 }
-
 .tema-selector__confirm-btn {
   flex: 1;
   padding: 10px 14px;
@@ -950,32 +790,26 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
 }
-
 .tema-selector__confirm-btn.is-cancelar {
   border: 1px solid var(--border-strong);
   background: transparent;
   color: var(--ink);
 }
-
 .tema-selector__confirm-btn.is-cancelar:hover {
   background: var(--surface-hover);
 }
-
 .tema-selector__confirm-btn.is-aceptar {
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--ink-on-primary);
 }
-
 .tema-selector__confirm-btn.is-aceptar:hover {
   background: var(--primary-dark);
 }
-
 .tema-selector__confirm-btn.is-aceptar:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .tema-selector__omitir {
   align-self: center;
   margin-top: 2px;
@@ -989,23 +823,19 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
 .tema-selector__omitir:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .tema-selector__acciones {
   display: flex;
   gap: 10px;
 }
-
 .tema-selector__accion {
   flex: 1;
   justify-content: center;
 }
-
 .tema-selector__iniciar {
   padding: 7px 14px;
   border: 1px solid var(--primary);
@@ -1017,30 +847,25 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
 }
-
-.tema-selector__iniciar:hover {
+.tema-selector__iniciar:hover,
+.tema-selector__iniciar:active {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
   border-color: var(--primary-dark);
 }
-
-.tema-selector__iniciar:active {
-  background: var(--primary-dark);
-  color: var(--ink-on-primary);
-}
-
+/* ============================================================
+   CURSO RÁPIDO
+   ============================================================ */
 .horario__quick-course {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .horario__quick-course-label {
   color: var(--ink-soft);
   font-size: 13.5px;
   font-weight: 600;
 }
-
 .horario__quick-course-select {
   width: 100%;
   box-sizing: border-box;
@@ -1057,140 +882,28 @@
   box-shadow: none;
   transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
 }
-
 .horario__quick-course-select:hover {
   background: var(--surface-hover);
   border-color: var(--primary);
 }
-
 .horario__quick-course-select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .horario__quick-course-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   text-align: left;
-
-  i {
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
 }
-
-@media (max-width: 768px) {
-  .horario__main {
-    min-height: 0;
-    padding: 22px 16px;
-    gap: 18px;
-  }
-
-  .horario__timer-card {
-    min-height: 0;
-    padding: 24px 18px;
-  }
-
-  .horario__courses-card {
-    padding: 18px;
-  }
-
-  .horario__timer-btn-row {
-    gap: 6px;
-  }
+.horario__quick-course-btn i {
+  font-size: 12px;
+  color: var(--ink-soft);
 }
-
-@media (max-width: 480px) {
-  .horario {
-    padding: calc(var(--header-h) + 36px) 10px;
-  }
-
-  .horario__main {
-    min-height: 0;
-    padding: 0;
-    margin-bottom: 50px;
-  }
-
-  .horario__timer-card {
-    min-height: 0;
-    height: auto;
-    padding: 22px 16px;
-  }
-
-  .horario__timer-center {
-    gap: 10px;
-  }
-
-  .horario__timer-clock {
-    font-size: min(23vw, 7rem);
-    line-height: 0.78;
-  }
-
-  .horario__timer-btn-row {
-    gap: 6px;
-  }
-
-  .horario__btn {
-    padding: 11px 8px;
-    font-size: 13px;
-  }
-
-  .horario__btn-reset {
-    padding: 11px;
-  }
-
-  .horario__course-item {
-    padding: 14px;
-  }
-
-  .horario__course-tags {
-    width: 100%;
-  }
-
-  .horario__day-row {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .horario__rest-row {
-    flex-direction: column;
-  }
-
-  .horario__repaso-link-wrap {
-    padding: 0 16px 32px;
-  }
-
-  .tema-selector__confirm-row,
-  .tema-selector__acciones {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .horario__timer-clock {
-    font-size: min(22vw, 9rem);
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .horario__timer-clock {
-    font-size: min(20vw, 12rem);
-  }
-}
-
-@media (min-width: 1024px) {
-  .horario__timer-clock {
-    font-size: min(19vw, 15rem);
-  }
-}
-
-@media (min-width: $bp-xl) {
-  .horario__timer-clock {
-    font-size: min(18vw, 18rem);
-  }
-}
-
+/* ============================================================
+   BLOQUEO
+   ============================================================ */
 .horario__lock-screen {
   position: fixed;
   inset: 0;
@@ -1204,13 +917,11 @@
   text-align: center;
   padding: 20px;
 }
-
 .horario__lock-clock {
   font-size: 6rem;
-  margin: 0 0 30px 0;
+  margin: 0 0 30px;
   letter-spacing: 2px;
 }
-
 .horario__lock-title {
   font-size: 1.5rem;
   margin-bottom: 15px;
@@ -1218,14 +929,15 @@
   line-height: 1.4;
   font-weight: bold;
 }
-
 .horario__lock-sub {
   font-size: 1.2rem;
   opacity: 0.7;
   max-width: 600px;
   line-height: 1.4;
 }
-
+/* ============================================================
+   GATE
+   ============================================================ */
 .gate-overlay {
   position: fixed;
   inset: 0;
@@ -1236,7 +948,6 @@
   background: var(--overlay-strong);
   padding: 16px;
 }
-
 .gate-btn {
   display: flex;
   align-items: center;
@@ -1248,7 +959,9 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
+/* ============================================================
+   SETUP
+   ============================================================ */
 .setup-overlay {
   position: fixed;
   inset: 0;
@@ -1259,7 +972,6 @@
   background: var(--overlay-strong);
   padding: 16px;
 }
-
 .setup-card {
   width: min(420px, 100%);
   max-height: 90vh;
@@ -1272,7 +984,6 @@
   flex-direction: column;
   gap: 18px;
 }
-
 .setup-titulo {
   margin: 0;
   font-size: 1.15rem;
@@ -1280,34 +991,28 @@
   color: var(--ink);
   text-align: center;
 }
-
 .setup-sub {
   margin: -10px 0 0;
   font-size: 0.85rem;
   color: var(--ink-soft);
   text-align: center;
 }
-
 .setup-sub--tight {
   margin: 0;
 }
-
 .setup-sub--error {
   margin: 0;
   color: var(--danger);
 }
-
 .setup-dias-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
-
 .setup-dia-btn.is-on {
   background: var(--secondary-dark);
   color: var(--bg);
 }
-
 .setup-dia-btn {
   padding: 12px 4px;
   border-radius: var(--radius-md);
@@ -1319,7 +1024,6 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear;
 }
-
 .setup-input {
   width: 100%;
   box-sizing: border-box;
@@ -1339,52 +1043,42 @@
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .setup-input.is-error {
   border-color: var(--danger);
 }
-
 .setup-char-count {
   font-size: 0.875rem;
   text-align: right;
   color: var(--ink-soft);
   margin: -10px 2px 0 0;
 }
-
 .setup-input-wrap {
   position: relative;
 }
-
 .setup-sugerencias {
   position: absolute;
-  top: calc(100%);
+  top: 100%;
   left: 0;
   right: 0;
   z-index: 20;
   max-height: 220px;
   overflow-y: auto;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* Internet Explorer/Edge antiguo */
   background: var(--surface);
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-smF);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: var(--space-1);
-  border-radius: var(--radius-md);
 }
-
-/* Chrome, Edge, Safari */
 .setup-sugerencias::-webkit-scrollbar {
   display: none;
   width: 0;
   height: 0;
 }
-
 .setup-sugerencia-item {
   text-align: left;
   padding: 8px 12px;
@@ -1394,26 +1088,20 @@
   color: var(--ink);
   font-size: 0.9rem;
 }
-.setup-sugerencia-item:hover{
-  background: var(--primary-bg);
-  border-color: var(--primary);
-}
+.setup-sugerencia-item:hover,
 .setup-sugerencia-item.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
 }
-
 .setup-char-count.is-error {
   color: var(--danger);
   font-weight: 700;
 }
-
 .setup-lista-cursos {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .setup-lista-curso-item {
   display: flex;
   justify-content: space-between;
@@ -1424,19 +1112,16 @@
   font-size: 0.85rem;
   color: var(--ink);
 }
-
 .setup-pomo-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
 }
-
 .setup-pomo-grid:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
-
 .setup-pomo-btn {
   padding: 10px 0;
   border-radius: var(--radius-sm);
@@ -1446,23 +1131,19 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
 .setup-pomo-btn:hover {
   background: var(--primary-bg);
   border-color: var(--primary);
 }
-
 .setup-pomo-btn.is-on {
   border-color: var(--secondary-dark);
   background: var(--secondary-dark);
   color: var(--bg);
 }
-
 .setup-nav {
   display: flex;
   gap: 10px;
 }
-
 .setup-btn {
   flex: 1;
   padding: 13px;
@@ -1472,13 +1153,103 @@
   font-size: 0.95rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
 .setup-btn.is-primary:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
-
 .setup-btn.is-ghost {
   background: var(--surface-alt);
   color: var(--ink-soft);
+}
+/* ============================================================
+   TABLET / MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .horario__main {
+    min-height: 0;
+    padding: 22px 16px;
+    gap: 18px;
+  }
+  .horario__timer-card {
+    min-height: 0;
+    padding: 24px 18px;
+  }
+  .horario__courses-card {
+    padding: 18px;
+  }
+  .horario__timer-btn-row {
+    gap: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .horario {
+    padding: calc(var(--header-h) + 36px) 10px;
+  }
+  .horario__main {
+    min-height: 0;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+  .horario__timer-card {
+    min-height: 0;
+    height: auto;
+    padding: 22px 16px;
+  }
+  .horario__timer-center {
+    gap: 10px;
+  }
+  .horario__timer-clock {
+    font-size: min(23vw, 7rem);
+    line-height: 0.78;
+  }
+  .horario__timer-btn-row {
+    gap: 6px;
+  }
+  .horario__btn {
+    padding: 11px 8px;
+    font-size: 13px;
+  }
+  .horario__btn-reset {
+    padding: 11px;
+  }
+  .horario__course-item {
+    padding: 14px;
+  }
+  .horario__course-tags {
+    width: 100%;
+  }
+  .horario__day-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .horario__rest-row {
+    flex-direction: column;
+  }
+  .horario__rest-select {
+    width: 100%;
+    flex: none;
+  }
+  .tema-selector__confirm-row,
+  .tema-selector__acciones {
+    flex-direction: column;
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .horario__timer-clock {
+    font-size: min(22vw, 9rem);
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .horario__timer-clock {
+    font-size: min(20vw, 12rem);
+  }
+}
+@media (min-width: 1024px) {
+  .horario__timer-clock {
+    font-size: min(19vw, 15rem);
+  }
+}
+@media (min-width: $bp-xl) {
+  .horario__timer-clock {
+    font-size: min(18vw, 18rem);
+  }
 }

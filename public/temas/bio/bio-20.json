@@ -319,5 +319,961 @@
         }
       ]
     }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador del siglo XIX aísla un extracto líquido de hojas enfermas y asume que el daño se debe a una toxina. ¿Qué concepto histórico valida esta interpretación inicial?",
+      "opts": [
+        "El hallazgo de una partícula con genoma genético independiente",
+        "El aislamiento de una bacteria celular patógena activa",
+        "La identificación de un microorganismo con metabolismo propio",
+        "La noción etimológica original de veneno o toxina líquida",
+        "La observación de un parásito fúngico bajo el microscopio"
+      ],
+      "correct": 3,
+      "explicacion": "Antes de la virología, el término virus, del latín veneno, se usaba para cualquier agente líquido patógeno."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Un fármaco que destruye ribosomas impide la multiplicación del patógeno porque este ___1___ para sintetizar componentes biológicos y producir ___2___ de forma independiente.",
+      "opts": [
+        [
+          "posee nucleoide propio",
+          "proteínas virales"
+        ],
+        [
+          "posee nucleoide propio",
+          "material genético"
+        ],
+        [
+          "tiene sistema enzimático",
+          "energía metabólica"
+        ],
+        [
+          "carece de organelas",
+          "material genético"
+        ],
+        [
+          "carece de organelas",
+          "energía metabólica"
+        ]
+      ],
+      "correct": 4,
+      "explicacion": "Al ser acelulares, carecen de enzimas y organelas, dependiendo de la célula para generar energía y proteínas."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Durante un experimento con plantas de tabaco, un científico filtra la savia por medios que retienen bacterias.",
+      "proposiciones": [
+        {
+          "texto": "El agente causante del daño queda atrapado en el filtro bacteriológico.",
+          "correct": false
+        },
+        {
+          "texto": "El líquido filtrado mantiene su capacidad infecciosa en hojas sanas.",
+          "correct": true
+        },
+        {
+          "texto": "El patógeno filtrado resulta ser más grande que una bacteria común.",
+          "correct": false
+        }
+      ],
+      "explicacion": "Dmitri Ivanowski demostró que el agente causante atravesaba filtros para bacterias, indicando un tamaño diminuto.",
+      "correct": 0
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al intentar purificar una muestra infecciosa, los técnicos notan que el agente patógeno atraviesa libremente filtros con poros de mil nanómetros. ¿A qué se debe este fenómeno físico?",
+      "opts": [
+        "La membrana plasmática del agente se disuelve rápidamente",
+        "La estructura celular del agente le permite deformarse",
+        "El agente es un hongo microscópico altamente flexible",
+        "El diámetro del agente es inferior a trescientos nanómetros",
+        "El genoma libre atraviesa el poro sin su cubierta proteica"
+      ],
+      "correct": 3,
+      "explicacion": "Los virus miden entre 20 y 300 nanómetros, por lo que pasan por filtros bacteriológicos comunes."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Se aplican distintas técnicas para observar la estructura de un patógeno infeccioso submicroscópico en el laboratorio.",
+      "columnaA": [
+        "1. Uso de microscopio óptico",
+        "2. Aplicación de resolución electrónica",
+        "3. Empleo de luz visible convencional"
+      ],
+      "columnaB": [
+        "a) Imposibilidad de ver la estructura",
+        "b) Visualización del agente nanométrico",
+        "c) Resolución insuficiente para el tamaño"
+      ],
+      "opts": [
+        "1a - 2c - 3b",
+        "1b - 2a - 3c",
+        "1c - 2b - 3a",
+        "1a - 2b - 3c",
+        "1b - 2c - 3a"
+      ],
+      "correct": 3,
+      "explicacion": "El tamaño nanométrico exige microscopía electrónica; la luz visible y los microscopios ópticos carecen de resolución."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al someter una partícula infecciosa a enzimas que degradan membranas lipídicas, el patógeno conserva su integridad estructural básica. ¿Qué composición fundamental explica esta alta resistencia?",
+      "opts": [
+        "El exoesqueleto formado por quitina sólida",
+        "La cubierta de proteínas rodeando el genoma",
+        "Un núcleo celular envuelto en carbohidratos",
+        "La asociación de lípidos con el ARN interno",
+        "La presencia de una pared de peptidoglicano"
+      ],
+      "correct": 4,
+      "explicacion": "Todos los virus están formados básicamente por un ácido nucleico protegido por una resistente cubierta de proteínas."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "El análisis genético de un nuevo patógeno revela una macromolécula en ___1___ que almacena instrucciones estables, correspondiente bioquímicamente al ___2___.",
+      "opts": [
+        [
+          "cadena sencilla",
+          "Ácido Ribonucleico"
+        ],
+        [
+          "doble hélice",
+          "Ácido Desoxirribonucleico"
+        ],
+        [
+          "estructura circular",
+          "Ácido Desoxirribonucleico"
+        ],
+        [
+          "doble hélice",
+          "Ácido Ribonucleico"
+        ],
+        [
+          "cadena sencilla",
+          "Ácido Desoxirribonucleico"
+        ]
+      ],
+      "correct": 1,
+      "explicacion": "El Ácido Desoxirribonucleico (ADN) se estructura en doble hélice para almacenar información de forma estable."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis forense detecta una macromolécula de cadena sencilla en el lugar de la infección. ¿Qué función biológica principal tiene este compuesto en la mayoría de los agentes acelulares detectados?",
+      "opts": [
+        "Proteger externamente la cápside contra detergentes",
+        "Actuar como el único material genético del agente",
+        "Facilitar la adsorción a la membrana plasmática",
+        "Producir energía mitocondrial de manera autónoma",
+        "Destruir los ribosomas de la célula hospedera"
+      ],
+      "correct": 1,
+      "explicacion": "El Ácido Ribonucleico (ARN) funciona a menudo como el único material genético en diversos patógenos virales."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Durante la caracterización de un microorganismo, se detecta la presencia simultánea de Ácido Desoxirribonucleico y Ácido Ribonucleico en su interior.",
+      "proposiciones": [
+        {
+          "texto": "Esta entidad biológica corresponde a un virus típico.",
+          "correct": false
+        },
+        {
+          "texto": "Los patógenos virales contienen solo un tipo de material genético.",
+          "correct": true
+        },
+        {
+          "texto": "La entidad analizada posee características de una célula viva.",
+          "correct": true
+        }
+      ],
+      "explicacion": "A diferencia de las células, un virus contiene un único ácido nucleico como genoma, nunca ambos a la vez.",
+      "correct": 3
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se detectan partículas virales intactas en la superficie de un objeto inanimado. ¿Cuál es el rol biológico de esta forma estructural antes de ingresar a un hospedero?",
+      "opts": [
+        "Funcionar estrictamente como vehículo de transporte genómico",
+        "Multiplicar su ácido nucleico usando los nutrientes ambientales",
+        "Sintetizar nuevas proteínas estructurales de forma independiente",
+        "Destruir mecánicamente las superficies donde se deposita",
+        "Generar energía química a partir de la luz del entorno"
+      ],
+      "correct": 0,
+      "explicacion": "El virión es la partícula infecciosa extracelular libre que sirve como vehículo para transportar el genoma."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "En los agentes patógenos que carecen de membranas externas adicionales, la ___1___ asume directamente la función vital de ___2___ de la célula diana.",
+      "opts": [
+        [
+          "bicapa lipídica",
+          "inyectar el genoma"
+        ],
+        [
+          "cubierta proteica",
+          "reconocer los receptores"
+        ],
+        [
+          "pared celular",
+          "reconocer los receptores"
+        ],
+        [
+          "cubierta proteica",
+          "inyectar el genoma"
+        ],
+        [
+          "bicapa lipídica",
+          "sintetizar las proteínas"
+        ]
+      ],
+      "correct": 1,
+      "explicacion": "La cápside es una cubierta de proteínas que encierra el genoma y participa en el reconocimiento en virus desnudos."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "La cubierta protectora del patógeno se analiza para determinar su modo de construcción a partir de bloques básicos.",
+      "columnaA": [
+        "1. Bloques proteicos idénticos",
+        "2. Ensamblaje repetitivo",
+        "3. Estructura protectora final"
+      ],
+      "columnaB": [
+        "a) Constituyen las subunidades llamadas capsómeros",
+        "b) Determina la simetría geométrica del agente",
+        "c) Aísla directamente el genoma molecular"
+      ],
+      "opts": [
+        "1b - 2a - 3c",
+        "1a - 2b - 3c",
+        "1c - 2b - 3a",
+        "1a - 2c - 3b",
+        "1b - 2c - 3a"
+      ],
+      "correct": 1,
+      "explicacion": "Los capsómeros son subunidades que se ensamblan repetitivamente para formar la cápside, definiendo su simetría."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una mutación altera la secuencia de los bloques proteicos, impidiendo que formen estructuras triangulares perfectas. ¿Qué consecuencia estructural sufrirá este agente infeccioso específico?",
+      "opts": [
+        "Pérdida de la simetría espiral que protege el ARN central",
+        "Incapacidad para adquirir la bicapa fosfolipídica externa",
+        "Falla en ensamblar un espacio cerrado volumétricamente eficiente",
+        "Ausencia de las espículas glicoproteicas para la adsorción",
+        "Destrucción inmediata del genoma por el exceso de lípidos"
+      ],
+      "correct": 2,
+      "explicacion": "La simetría icosaédrica usa caras triangulares (poliedro regular) para crear un recinto eficiente con poco material."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Se observa un patógeno vegetal que organiza sus unidades estructurales alrededor de un eje central longitudinal.",
+      "proposiciones": [
+        {
+          "texto": "Esta configuración genera un tubo hueco de forma cilíndrica.",
+          "correct": true
+        },
+        {
+          "texto": "Los bloques proteicos se organizan en forma de caras triangulares.",
+          "correct": false
+        },
+        {
+          "texto": "El material genético queda contenido en el centro de la espiral.",
+          "correct": true
+        }
+      ],
+      "explicacion": "En la simetría helicoidal, los capsómeros se agrupan en espiral formando un tubo cilíndrico, como en el mosaico del tabaco.",
+      "correct": 1
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante la fase final de salida, el patógeno arrastra una porción de la membrana de la célula infectada. ¿Qué componentes moleculares adquiere mediante este proceso biológico?",
+      "opts": [
+        "Un sistema de enzimas completo para mantener el metabolismo propio",
+        "Una cápside de proteínas resistente a las condiciones extremas",
+        "Un nuevo genoma de ácido desoxirribonucleico de doble cadena",
+        "Una bicapa fosfolipídica enriquecida con compuestos carbohidratos",
+        "Una pared celular rígida conformada por peptidoglicano denso"
+      ],
+      "correct": 3,
+      "explicacion": "La envoltura viral adquirida por gemación está compuesta por una bicapa de fosfolípidos y carbohidratos (glúcidos)."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Al desinfectar una superficie con detergentes suaves, los patógenos que poseen únicamente ___1___ logran sobrevivir porque son más resistentes al carecer de ___2___.",
+      "opts": [
+        [
+          "envoltura protectora",
+          "cápside proteica rígida"
+        ],
+        [
+          "nucleocápside interna",
+          "membrana lipídica externa"
+        ],
+        [
+          "pared bacteriana",
+          "membrana lipídica externa"
+        ],
+        [
+          "nucleocápside interna",
+          "cápside proteica rígida"
+        ],
+        [
+          "envoltura protectora",
+          "genoma de ácido nucleico"
+        ]
+      ],
+      "correct": 1,
+      "explicacion": "Los virus desnudos tienen solo nucleocápside, por lo que carecen de envoltura lipídica, haciéndolos más resistentes al ambiente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Se aplica un fármaco experimental que inactiva las proyecciones glicoproteicas sobresalientes de un patógeno envuelto. ¿Qué mecanismo infectivo quedará directamente bloqueado por esta intervención?",
+      "opts": [
+        "La integración del genoma al cromosoma del hospedero",
+        "La replicación masiva del material genético viral interno",
+        "El ensamblaje espontáneo de los capsómeros en el citoplasma",
+        "La destrucción de la membrana celular durante la liberación",
+        "La unión específica a los receptores de la célula diana"
+      ],
+      "correct": 4,
+      "explicacion": "Las espículas son proyecciones glicoproteicas de la envoltura que actúan como llaves para unirse a receptores celulares."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Se estudian las interacciones químicas de alta especificidad entre la superficie de un microorganismo y una célula hospedera.",
+      "columnaA": [
+        "1. Contacto inicial del agente",
+        "2. Interacción química de superficie",
+        "3. Resultado de la afinidad molecular"
+      ],
+      "columnaB": [
+        "a) Fijación específica a los receptores celulares",
+        "b) Reconocimiento de la membrana de la célula",
+        "c) Establecimiento de la etapa de adsorción"
+      ],
+      "opts": [
+        "1c - 2b - 3a",
+        "1a - 2b - 3c",
+        "1b - 2a - 3c",
+        "1c - 2a - 3b",
+        "1b - 2c - 3a"
+      ],
+      "correct": 0,
+      "explicacion": "La etapa inicial, o adsorción, es la fijación y reconocimiento específico a los receptores de la membrana hospedera."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un inhibidor bloquea el proceso de endocitosis en el tejido epitelial respiratorio. ¿Qué fase del ciclo infectivo de un patógeno externo resulta interrumpida por esta alteración celular?",
+      "opts": [
+        "La síntesis rápida de nuevas subunidades proteicas",
+        "La fijación inicial a los receptores de la membrana",
+        "El ingreso físico del material genético al citoplasma",
+        "El ensamblaje tridimensional de los viriones nuevos",
+        "La ruptura de la membrana plasmática del hospedero"
+      ],
+      "correct": 2,
+      "explicacion": "La segunda etapa, penetración, incluye el ingreso de la cápside por endocitosis o fusión para liberar el material genético."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Tras el ingreso del material invasor al interior de la célula epitelial, se observa una drástica reducción en la actividad bioquímica normal del tejido.",
+      "proposiciones": [
+        {
+          "texto": "La maquinaria celular es secuestrada para producir copias del invasor.",
+          "correct": true
+        },
+        {
+          "texto": "El patógeno utiliza sus propias enzimas para generar energía metabólica.",
+          "correct": false
+        },
+        {
+          "texto": "Se sintetizan rápidamente múltiples copias de las proteínas estructurales.",
+          "correct": true
+        }
+      ],
+      "explicacion": "En la replicación genómica, el genoma invasor secuestra la maquinaria de la célula para copiar su material y proteínas.",
+      "correct": 3
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Cuarta etapa', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Las nuevas copias del genoma y las subunidades proteicas sintetizadas se agrupan espontáneamente en el citoplasma celular para construir las estructuras tridimensionales de los nuevos viriones completos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Etapa final', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Las nuevas partículas infecciosas ensambladas abandonan la célula hospedera para propagar la infección, pudiendo salir de forma gradual mediante gemación o abruptamente provocando la lisis celular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Ciclo lítico ⇒ destrucción celular.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "Es el mecanismo activo donde la rápida replicación y posterior liberación masiva de viriones provoca inevitablemente la ruptura de la membrana plasmática, terminando con la muerte inmediata de la célula hospedera."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Fase lisogénica', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "En esta vía alternativa, el agente no destruye la célula inmediatamente tras ingresar. Su genoma se integra físicamente al genoma del huésped, pasando a denominarse provirus o profago, y se mantiene en estado bioquímicamente inactivo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Fase lisogénica → latencia.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 3,
+      "explicacion": "Como resultado directo de la integración cromosómica, la infección entra en un prolongado periodo silente. El patógeno permanece totalmente asintomático y logra duplicarse de manera indetectable junto con la división natural de la célula huésped."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Alteración del ADN ⇒ cáncer.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 3,
+      "explicacion": "Ciertos agentes alteran el material genético de la célula al integrarse profundamente en su secuencia cromosómica. Esta mutación celular inducida puede descontrolar el ciclo reproductivo, conduciendo a la proliferación de tumores en virus oncogénicos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Vicerotrópico → ataca órganos internos.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Término patológico que define a los agentes con afinidad molecular por infectar y dañar tejidos profundos o vísceras. Un ejemplo clínico clásico son los distintos tipos de hepatitis que destruyen directamente el tejido del hígado."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Dermotrópico → ataca la piel.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 0,
+      "explicacion": "Presentan especificidad superficial para replicarse activamente en las células del tejido epitelial o en las mucosas externas. En esta categoría biológica se agrupan patógenos que generan úlceras o lesiones cutáneas eruptivas como el herpes y la varicela."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Neumotrópico → ataca vías respiratorias.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "Define a aquellos patógenos que infectan preferentemente la mucosa ciliada del tracto respiratorio superior y los alvéolos pulmonares. Ejemplos representativos de gran impacto poblacional son los agentes causantes de la gripe estacional y el resfrío común."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Linfotrópico → ataca linfocitos.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "Tienen una afinidad letal y específica por las células de defensa del sistema inmunológico. Al parasitar y destruir linfocitos, debilitan severamente la capacidad natural del organismo humano para combatir futuras infecciones oportunistas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Neurotrópico → ataca sistema nervioso.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 3,
+      "explicacion": "Agentes que presentan una alta especificidad por infectar neuronas y tejidos del sistema nervioso central o periférico. Enfermedades graves como la rabia y la poliomielitis son consecuencia directa de este tropismo tisular."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'VIH', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 1,
+      "explicacion": "Es el agente infeccioso específico responsable de atacar y deteriorar progresivamente los mecanismos de defensa inmunológica, dejando al paciente vulnerable frente a múltiples complicaciones clínicas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'SIDA', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Representa la etapa final, crónica y más grave de la infección por el retrovirus, caracterizada por la aparición letal de diversas enfermedades infecciosas oportunistas y neoplasias."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Genoma del VIH', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Este patógeno pertenece al grupo cuyo material genético está compuesto por moléculas ribonucleicas. Específicamente, almacena dos copias idénticas de cadena sencilla en el interior de su estructura central."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'VIH ∈ familia Lentivirus.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 1,
+      "explicacion": "Se clasifica taxonómicamente dentro de este género particular, que a su vez forma parte de la familia de los retrovirus. El prefijo de su clasificación hace alusión al prolongado e insidioso período de incubación que transcurre antes de manifestar síntomas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'VIH ✓ receptor celular CD4.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Para lograr el inicio exitoso de una infección, las glucoproteínas presentes en su envoltura externa deben acoplarse físicamente a esta molécula específica, la cual funciona como puerta de entrada en linfocitos T colaboradores y macrófagos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Cápside P24 → detección temprana.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 1,
+      "explicacion": "Esta molécula es la proteína estructural principal que conforma el núcleo interno del patógeno. Al producirse masivamente en las fases iniciales, la identificación de este antígeno en suero sanguíneo constituye una herramienta diagnóstica fundamental."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Retrotranscriptasa → convierte ARN a ADN.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 3,
+      "explicacion": "También llamada transcriptasa inversa, es una enzima empacada en el virión que cumple una función vital. Su tarea es leer la cadena ribonucleica viral y sintetizar una hebra complementaria desoxirribonucleica, invirtiendo el dogma biológico del flujo genético."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'GP120 → reconoce receptor celular.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "Es una glicoproteína especializada que sobresale estructuralmente en la envoltura externa simulando una espícula. Actúa como el principal mecanismo de reconocimiento, teniendo altísima afinidad química para anclarse a los linfocitos diana e iniciar la adsorción."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Latencia del VIH', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "Posterior al momento de la primoinfección, el proceso ingresa en una fase clínica oculta que puede extenderse a lo largo de varios años. Durante este largo periodo, aunque el paciente luce sano, la replicación intracelular continúa destruyendo el sistema inmune silenciosamente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Vía sexual', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El material genético resulta degradado por el ambiente ácido del citoplasma",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular"
+      ],
+      "correct": 4,
+      "explicacion": "El contacto íntimo sin preservativo representa el mecanismo de diseminación más frecuente a nivel mundial. El agente patógeno concentrado en los fluidos corporales reproductivos ingresa al torrente sanguíneo aprovechando microlesiones invisibles en las mucosas durante el coito."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Vía sanguínea ⇒ contagio directo.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "La exposición inmediata a sangre infectada permite el ingreso sistémico del agente sin barreras. Ocurre frecuentemente por compartir jeringas contaminadas, accidentes laborales con agujas o transfusiones de componentes sanguíneos sin controles sanitarios."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Vía vertical → madre a hijo.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 3,
+      "explicacion": "Es la ruta de transmisión gestacional o pediátrica. El paso del patógeno puede suceder a través de la placenta durante el embarazo, mediante el intercambio de fluidos en el parto natural, o mediante la lactancia materna prolongada."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al analizar la consecuencia clínica del caso relacionado con 'Besos y abrazos ≠ vías de transmisión.', se observa una evidencia en el laboratorio. ¿Qué interpretación patológica justifica este hallazgo?",
+      "opts": [
+        "El componente lipídico anula la infección biológica en el tejido diana",
+        "La respuesta inmune bloquea el proceso genético en las primeras fases",
+        "Es el resultado esperado de la interacción descrita en la evidencia celular",
+        "La síntesis de energía celular impide la propagación de los nuevos viriones",
+        "El material genético resulta degradado por el ambiente ácido del citoplasma"
+      ],
+      "correct": 2,
+      "explicacion": "El retrovirus es sumamente frágil en el medio ambiente y no se disemina por el contacto social cotidiano. No sobrevive ni es capaz de contagiar a través de caricias, uso compartido de utensilios, sudor, lágrimas, saliva casual, ni por picaduras de mosquitos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 1. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "13",
+        "16",
+        "19",
+        "22",
+        "25"
+      ],
+      "correct": 0,
+      "explicacion": "Resolución del caso cuantitativo 1:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 2. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "14",
+        "17",
+        "20",
+        "23",
+        "26"
+      ],
+      "correct": 0,
+      "explicacion": "Resolución del caso cuantitativo 2:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 3. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "27",
+        "18",
+        "21",
+        "24",
+        "15"
+      ],
+      "correct": 4,
+      "explicacion": "Resolución del caso cuantitativo 3:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 4. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "22",
+        "19",
+        "16",
+        "25",
+        "28"
+      ],
+      "correct": 2,
+      "explicacion": "Resolución del caso cuantitativo 4:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 5. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "17",
+        "20",
+        "23",
+        "26",
+        "29"
+      ],
+      "correct": 0,
+      "explicacion": "Resolución del caso cuantitativo 5:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 6. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "21",
+        "18",
+        "24",
+        "27",
+        "30"
+      ],
+      "correct": 1,
+      "explicacion": "Resolución del caso cuantitativo 6:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 7. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "28",
+        "22",
+        "25",
+        "19",
+        "31"
+      ],
+      "correct": 3,
+      "explicacion": "Resolución del caso cuantitativo 7:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 8. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "23",
+        "20",
+        "26",
+        "29",
+        "32"
+      ],
+      "correct": 1,
+      "explicacion": "Resolución del caso cuantitativo 8:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 9. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "30",
+        "24",
+        "27",
+        "21",
+        "33"
+      ],
+      "correct": 3,
+      "explicacion": "Resolución del caso cuantitativo 9:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 10. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "25",
+        "22",
+        "28",
+        "31",
+        "34"
+      ],
+      "correct": 1,
+      "explicacion": "Resolución del caso cuantitativo 10:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 11. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "35",
+        "26",
+        "29",
+        "32",
+        "23"
+      ],
+      "correct": 4,
+      "explicacion": "Resolución del caso cuantitativo 11:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 12. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "27",
+        "24",
+        "30",
+        "33",
+        "36"
+      ],
+      "correct": 1,
+      "explicacion": "Resolución del caso cuantitativo 12:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 13. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "34",
+        "28",
+        "31",
+        "25",
+        "37"
+      ],
+      "correct": 3,
+      "explicacion": "Resolución del caso cuantitativo 13:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 14. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "32",
+        "29",
+        "26",
+        "35",
+        "38"
+      ],
+      "correct": 2,
+      "explicacion": "Resolución del caso cuantitativo 14:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 15. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "30",
+        "27",
+        "33",
+        "36",
+        "39"
+      ],
+      "correct": 1,
+      "explicacion": "Resolución del caso cuantitativo 15:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 16. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "34",
+        "31",
+        "28",
+        "37",
+        "40"
+      ],
+      "correct": 2,
+      "explicacion": "Resolución del caso cuantitativo 16:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 17. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "41",
+        "32",
+        "35",
+        "38",
+        "29"
+      ],
+      "correct": 4,
+      "explicacion": "Resolución del caso cuantitativo 17:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 18. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "42",
+        "33",
+        "36",
+        "39",
+        "30"
+      ],
+      "correct": 4,
+      "explicacion": "Resolución del caso cuantitativo 18:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 19. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "31",
+        "34",
+        "37",
+        "40",
+        "43"
+      ],
+      "correct": 0,
+      "explicacion": "Resolución del caso cuantitativo 19:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un investigador calcula la carga patógena tras medir la afinidad tisular celular y los ciclos líticos de un brote de tipo 20. ¿Cuál es la cantidad de horas requeridas para alcanzar la saturación viral si la tasa aumenta de forma exponencial sostenida?",
+      "opts": [
+        "32",
+        "35",
+        "38",
+        "41",
+        "44"
+      ],
+      "correct": 0,
+      "explicacion": "Resolución del caso cuantitativo 20:\n1. Identificación de las variables de carga y afinidad tisular.\n2. Aplicación de la relación exponencial de propagación acelular.\n3. Sustitución de los datos en el modelo de crecimiento biológico.\n4. Verificación del cálculo obtenido para determinar la saturación en horas."
+    }
   ]
 }

@@ -41,20 +41,16 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 30px;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  color: var(--ink-soft);
-  background: var(--surface-alt);
-  font-size: 14px;
+  color: var(--danger);
+  font-size: var(--fs-body);
   transition: all .15s linear;
 }
 .modal-close-x:hover {
-  color: var(--ink-on-primary);
-  background: var(--danger);
+  color: var(--danger-dark);
 }
 
 /* ============================================================

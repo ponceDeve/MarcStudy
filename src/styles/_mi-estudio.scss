@@ -28,6 +28,24 @@
   padding: 10px;
   padding-top: 2.5rem;
 
+  overflow-y: scroll !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--primary) transparent !important;
+
+  &::-webkit-scrollbar {
+    width: 6px !important;
+    display: block !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary) !important;
+    border-radius: 10px !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
   &.has-topbar {
     padding-top: calc(var(--header-h) + 2rem);
   }
@@ -2827,6 +2845,10 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  position: sticky;
+  top: 0px;
+  left: 0;
+  right: 0;
 
   > :first-child {
     flex: 1 1 auto;

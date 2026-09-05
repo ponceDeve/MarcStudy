@@ -2,12 +2,30 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) transparent;
 }
 
 *::-webkit-scrollbar {
-  display: none;
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark);
 }
 
 html {

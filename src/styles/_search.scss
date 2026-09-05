@@ -284,6 +284,7 @@
   height: auto;
   opacity: 1;
   visibility: visible;
+  padding-bottom: 24px;
 }
 
 .search-group__temas > * {
@@ -357,8 +358,7 @@
   }
 
   &.is-open {
-    background-color: var(--primary-bg);
-    color: var(--primary);
+    color: var(--primary-dark);
   }
 
   &:focus-visible {
@@ -397,11 +397,9 @@
 .search-result-item.is-tema {
   display: block;
   width: 100%;
-  font-size: .95rem;
-  font-family: var(--font-display);
-  font-style: italic;
   background-color: transparent;
   color: var(--ink);
+  font-weight: var(--fw-extrabold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
     background-color .15s linear,

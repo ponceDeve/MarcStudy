@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { usePomodoro } from "../../context/PomodoroContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import manifest from "../../data/manifest.json";
+import { normalizarTexto } from "../../lib/buscador";
 import {
   leerHorario,
   guardarHorario,
@@ -10,9 +11,11 @@ import {
   DIAS_SEMANA,
   DIA_LABELS,
 } from "../../lib/scheduleStorage";
+
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
+
 import { leerProgresoHorario } from "../../lib/horarioProgress";
-import { normalizarTexto } from "../../lib/buscador";
+
 import {
   limpiarPomodoroCompartido,
   leerPomodoroCompartido,
@@ -20,6 +23,7 @@ import {
   leerRetorno,
   guardarRetorno,
 } from "../../lib/pomodoroShared";
+
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
@@ -28,6 +32,7 @@ import ScheduleSetup from "./ScheduleSetup";
 
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
+const DURACIONES_DESCANSO = [5, 10, 15, 20, 25, 30, 35, 40];
 
 const NOMBRE_DIA = {
   lunes: "Lunes",
@@ -38,13 +43,6 @@ const NOMBRE_DIA = {
   sabado: "Sábado",
   domingo: "Domingo",
 };
-
-// La explicación fija de "¡Bienvenido al Pomodoro!" (PASOS_BIENVENIDA) se
-// reemplazó por la sección de Preguntas frecuentes en Inicio: cualquier
-// duda sobre cómo funciona el Pomodoro se responde ahora desde ahí.
-
-// Solo estos descansos activan el bloqueo de pantalla.
-const RESTS_BLOQUEABLES = [5, 10, 30];
 
 function buildCourseTasks(course) {
   const tasks = [];
@@ -99,30 +97,36 @@ export default function HorarioPage() {
   );
 
   const [temaDesdeLink, setTemaDesdeLink] = useState(null);
+
   const [retornoTema, setRetornoTema] = useState(() => leerRetorno());
 
-  function volverAlTema() {
-    if (!retornoTema) return;
-
-    navigate(`/?q=${encodeURIComponent(retornoTema)}`);
-  }
-
   const [pendingCourseComplete, setPendingCourseComplete] = useState(null);
+
   const [temaModalOpen, setTemaModalOpen] = useState(false);
+
   const [courseCompleteOpen, setCourseCompleteOpen] = useState(false);
 
   const [manualBreak, setManualBreak] = useState(null);
+
+  // Descanso sin tiempo por defecto
+  const [breakDuration, setBreakDuration] = useState("");
+
   const [searchOpen, setSearchOpen] = useState(false);
 
   const [setupOpen, setSetupOpen] = useState(false);
 
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
+
   const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
+
   const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
+
   const [cursoPickerOpen, setCursoPickerOpen] = useState(false);
 
   const [eligiendoTemaIdx, setEligiendoTemaIdx] = useState(null);
+
   const [temaSeleccionadoTmp, setTemaSeleccionadoTmp] = useState(null);
+
   const [temaElegidoParaCurso, setTemaElegidoParaCurso] = useState(null);
 
   const [isLocked, setIsLocked] = useLocalStorage(
@@ -133,6 +137,8 @@ export default function HorarioPage() {
   const [lockConfirmOpen, setLockConfirmOpen] = useState(false);
 
   const [cursoRapidoPreparado, setCursoRapidoPreparado] = useState(null);
+
+  const [alarmActive, setAlarmActive] = useState(false);
 
   const alarmRef = useRef(null);
 
@@ -156,6 +162,12 @@ export default function HorarioPage() {
     };
   }, [mostrarGate]);
 
+  function volverAlTema() {
+    if (!retornoTema) return;
+
+    navigate(`/?q=${encodeURIComponent(retornoTema)}`);
+  }
+
   function getTaskIndex(day, subject) {
     return progress[progressKey(day, subject)] || 0;
   }
@@ -171,19 +183,75 @@ export default function HorarioPage() {
   }
 
   const pomodoro = usePomodoro();
-  const { formatted, secondsLeft, isRunning } = pomodoro;
+
+  const {
+    formatted,
+    secondsLeft,
+    totalSeconds,
+    isRunning,
+  } = pomodoro;
+
   const reset = pomodoro.reiniciar;
 
-  const currentTaskDuration = activeCourse
-    ? activeTasks[getTaskIndex(selectedDay, activeCourse.subject)]
-        ?.duration || POMODORO_MIN
-    : manualBreak || POMODORO_MIN;
+  const currentTaskDuration =
+    totalSeconds > 0
+      ? totalSeconds / 60
+      : activeCourse
+        ? activeTasks[
+            getTaskIndex(
+              selectedDay,
+              activeCourse.subject,
+            )
+          ]?.duration || POMODORO_MIN
+        : manualBreak || POMODORO_MIN;
 
-  const progressPct = Math.round(
-    ((currentTaskDuration * 60 - secondsLeft) /
-      (currentTaskDuration * 60)) *
-      100,
-  );
+  const progressPct =
+    totalSeconds > 0
+      ? Math.min(
+          100,
+          Math.max(
+            0,
+            Math.round(
+              ((totalSeconds - secondsLeft) / totalSeconds) * 100,
+            ),
+          ),
+        )
+      : 0;
+
+  function apagarAlarma() {
+    const audios = document.querySelectorAll("audio");
+
+    audios.forEach((audio) => {
+      try {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = true;
+      } catch {
+        // Ignorar errores de audio.
+      }
+    });
+
+    setAlarmActive(false);
+  }
+
+  function handleAlarmEnded() {
+    setAlarmActive(false);
+
+    if (alarmRef.current) {
+      alarmRef.current.muted = false;
+      alarmRef.current.currentTime = 0;
+    }
+  }
+
+  function resetConSync(duration) {
+    apagarAlarma();
+
+    if (alarmRef.current) {
+      alarmRef.current.muted = false;
+    }
+
+    reset(duration);
+  }
 
   useEffect(() => {
     if (!isLocked || isRunning) return;
@@ -201,27 +269,18 @@ export default function HorarioPage() {
   }, [isLocked, isRunning, setIsLocked]);
 
   function iniciarConSync() {
+    apagarAlarma();
+
     const taskIndex = activeCourse
-      ? getTaskIndex(selectedDay, activeCourse.subject)
+      ? getTaskIndex(
+          selectedDay,
+          activeCourse.subject,
+        )
       : null;
 
     const isCourseTask =
-      activeCourse && activeTasks[taskIndex]?.type === "course";
-
-    const isRestTask =
-      (activeCourse && activeTasks[taskIndex]?.type === "rest") ||
-      (!activeCourse && manualBreak);
-
-    if (isRestTask) {
-      const duracionDescanso = activeCourse
-        ? activeTasks[taskIndex]?.duration
-        : manualBreak;
-
-      if (RESTS_BLOQUEABLES.includes(duracionDescanso)) {
-        setLockConfirmOpen(true);
-        return;
-      }
-    }
+      activeCourse &&
+      activeTasks[taskIndex]?.type === "course";
 
     const label = activeCourse
       ? `${activeCourse.subject} · ${
@@ -229,7 +288,9 @@ export default function HorarioPage() {
         }`
       : cursoRapidoPreparado
         ? `${cursoRapidoPreparado} · Pomodoro 1 de 4`
-        : "";
+        : manualBreak
+          ? `Descanso de ${manualBreak} min`
+          : "";
 
     pomodoro.iniciar(
       null,
@@ -249,39 +310,33 @@ export default function HorarioPage() {
     }
 
     if (temaElegidoParaCurso) {
-      navigate(`/?q=${encodeURIComponent(temaElegidoParaCurso)}`);
+      navigate(
+        `/?q=${encodeURIComponent(
+          temaElegidoParaCurso,
+        )}`,
+      );
+
       setTemaElegidoParaCurso(null);
       return;
     }
 
     if (temaDesdeLink) {
-      navigate(`/?q=${encodeURIComponent(temaDesdeLink.tema)}`);
+      navigate(
+        `/?q=${encodeURIComponent(
+          temaDesdeLink.tema,
+        )}`,
+      );
+
       return;
     }
 
     const retorno = leerYLimpiarRetorno();
 
     if (retorno && isCourseTask) {
-      navigate(`/?q=${encodeURIComponent(retorno)}`);
+      navigate(
+        `/?q=${encodeURIComponent(retorno)}`,
+      );
     }
-  }
-
-  function confirmarBloqueoDescanso() {
-    setIsLocked(true);
-    setLockConfirmOpen(false);
-
-    const label = activeCourse
-      ? `${activeCourse.subject} · Descanso`
-      : manualBreak
-        ? `Descanso de ${manualBreak} min`
-        : "Descanso";
-
-    pomodoro.iniciar(
-      null,
-      label,
-      activeCourse ? activeCourse.subject : "",
-      activeCourse ? selectedDay : "",
-    );
   }
 
   function pausarConSync() {
@@ -308,7 +363,9 @@ export default function HorarioPage() {
         : "";
 
       if (
-        ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(activeTag)
+        ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(
+          activeTag,
+        )
       ) {
         return;
       }
@@ -324,7 +381,10 @@ export default function HorarioPage() {
       }
     }
 
-    window.addEventListener("keydown", handleGlobalKeyDown);
+    window.addEventListener(
+      "keydown",
+      handleGlobalKeyDown,
+    );
 
     return () =>
       window.removeEventListener(
@@ -345,21 +405,35 @@ export default function HorarioPage() {
     isLocked,
   ]);
 
-  function handleTaskComplete({ day, subject, completado } = {}) {
+  function handleTaskComplete({
+    day,
+    subject,
+    completado,
+  } = {}) {
     limpiarPomodoroCompartido();
 
     if (alarmRef.current) {
-      alarmRef.current.muted = false;
-      alarmRef.current.volume = 1.0;
-      alarmRef.current.load();
-      alarmRef.current.play().catch(() => {});
+      const audio = alarmRef.current;
+
+      audio.muted = false;
+      audio.volume = 1.0;
+      audio.currentTime = 0;
+
+      audio
+        .play()
+        .then(() => setAlarmActive(true))
+        .catch(() => setAlarmActive(false));
     }
 
     if (isLocked) {
       setIsLocked(false);
 
       if (retornoTema) {
-        navigate(`/?q=${encodeURIComponent(retornoTema)}`);
+        navigate(
+          `/?q=${encodeURIComponent(
+            retornoTema,
+          )}`,
+        );
       }
     }
 
@@ -378,6 +452,7 @@ export default function HorarioPage() {
 
       setCourseCompleteOpen(true);
       setActiveCourseIdx(null);
+
       return;
     }
 
@@ -389,7 +464,7 @@ export default function HorarioPage() {
       const idx = getTaskIndex(day, subject);
 
       if (activeTasks[idx]) {
-        reset(activeTasks[idx].duration);
+        resetConSync(activeTasks[idx].duration);
       }
     }
   }
@@ -403,6 +478,7 @@ export default function HorarioPage() {
 
   function abrirCurso(idx) {
     const course = courses[idx];
+
     const tasks = buildCourseTasks(course);
 
     const taskIdx = getTaskIndex(
@@ -411,33 +487,31 @@ export default function HorarioPage() {
     );
 
     setManualBreak(null);
+
     setActiveCourseIdx(idx);
 
-    // Si el pomodoro que está corriendo ya es el de este mismo
-    // curso, no lo reiniciamos: seguimos exactamente donde iba.
-    // Solo se reinicia cuando de verdad se entra a un curso/tema
-    // distinto al que está corriendo (o si no hay nada corriendo).
     const yaEstaCorriendo =
       isRunning &&
-      normalizarTexto(pomodoro.subject || "") ===
-        normalizarTexto(course.subject);
+      normalizarTexto(
+        pomodoro.subject || "",
+      ) === normalizarTexto(course.subject);
 
-    if (!yaEstaCorriendo && taskIdx < tasks.length) {
-      reset(tasks[taskIdx].duration);
+    if (
+      !yaEstaCorriendo &&
+      taskIdx < tasks.length
+    ) {
+      resetConSync(tasks[taskIdx].duration);
     }
   }
 
   function abrirOPedirTema(idx) {
     const course = courses[idx];
 
-    // Si el pomodoro de este curso ya está corriendo (por ejemplo,
-    // el usuario salió con la flecha y quiere volver), no tiene
-    // sentido pedirle que elija tema de nuevo: ya lo eligió y el
-    // cronómetro sigue contando.
     const yaEstaCorriendo =
       isRunning &&
-      normalizarTexto(pomodoro.subject || "") ===
-        normalizarTexto(course.subject);
+      normalizarTexto(
+        pomodoro.subject || "",
+      ) === normalizarTexto(course.subject);
 
     if (yaEstaCorriendo) {
       abrirCurso(idx);
@@ -455,41 +529,26 @@ export default function HorarioPage() {
     setTemaSeleccionadoTmp(tema);
   }
 
-  /*
-   * CONFIRMAR TEMA
-   *
-   * Aquí sí se entra al curso porque el usuario
-   * eligió explícitamente un tema y pulsó Confirmar.
-   *
-   * También eliminamos el retorno anterior para que
-   * no aparezca el botón "Volver a..." mientras se
-   * está preparando este nuevo tema.
-   */
   function aceptarTemaDeCurso() {
     if (!temaSeleccionadoTmp) return;
 
     const idx = eligiendoTemaIdx;
 
-    // El nuevo tema reemplaza cualquier retorno anterior.
     leerYLimpiarRetorno();
+
     setRetornoTema(null);
 
     setEligiendoTemaIdx(null);
-    setTemaElegidoParaCurso(temaSeleccionadoTmp);
+
+    setTemaElegidoParaCurso(
+      temaSeleccionadoTmp,
+    );
+
     setTemaSeleccionadoTmp(null);
 
     abrirCurso(idx);
   }
 
-  /*
-   * CANCELAR TEMA
-   *
-   * IMPORTANTE:
-   * Ya NO llamamos a abrirCurso().
-   *
-   * Si el usuario no selecciona ningún tema,
-   * permanece fuera de los Pomodoros.
-   */
   function omitirTemaDeCurso() {
     setEligiendoTemaIdx(null);
     setTemaSeleccionadoTmp(null);
@@ -497,21 +556,52 @@ export default function HorarioPage() {
   }
 
   function iniciarDescansoManual(minutos) {
+    apagarAlarma();
+
     setActiveCourseIdx(null);
+
     setManualBreak(minutos);
-    reset(minutos);
+
+    resetConSync(minutos);
   }
 
-  function elegirCursoRapido(dia, nombreCurso) {
+  function cambiarDuracionDescanso(e) {
+    const valor = e.target.value;
+
+    if (valor === "") {
+      setBreakDuration("");
+      setManualBreak(null);
+      return;
+    }
+
+    const minutos = Number(valor);
+
+    setBreakDuration(minutos);
+    setManualBreak(minutos);
+
+    if (!isRunning) {
+      resetConSync(minutos);
+    }
+  }
+
+  function elegirCursoRapido(
+    dia,
+    nombreCurso,
+  ) {
     setCursoPickerOpen(false);
+
     setCursoRapidoDia(dia);
+
     setCursoRapidoNombre(nombreCurso);
+
     setTemaRapidoElegido(null);
   }
 
   function cancelarCursoRapido() {
     setCursoRapidoDia(null);
+
     setCursoRapidoNombre("");
+
     setTemaRapidoElegido(null);
   }
 
@@ -524,12 +614,21 @@ export default function HorarioPage() {
       return;
     }
 
-    setActiveCourseIdx(null);
-    setManualBreak(null);
-    setCursoRapidoPreparado(cursoRapidoNombre);
-    setTemaElegidoParaCurso(temaRapidoElegido);
+    apagarAlarma();
 
-    reset(POMODORO_MIN);
+    setActiveCourseIdx(null);
+
+    setManualBreak(null);
+
+    setCursoRapidoPreparado(
+      cursoRapidoNombre,
+    );
+
+    setTemaElegidoParaCurso(
+      temaRapidoElegido,
+    );
+
+    resetConSync(POMODORO_MIN);
 
     cancelarCursoRapido();
   }
@@ -581,6 +680,7 @@ export default function HorarioPage() {
 
   function terminarSetup(nuevoHorario) {
     guardarHorario(nuevoHorario);
+
     setHorario(nuevoHorario);
 
     const configurados = DIAS_SEMANA.filter(
@@ -589,8 +689,12 @@ export default function HorarioPage() {
         nuevoHorario[d].length > 0,
     );
 
-    setSelectedDay(configurados[0] || "lunes");
+    setSelectedDay(
+      configurados[0] || "lunes",
+    );
+
     setActiveCourseIdx(null);
+
     setSetupOpen(false);
   }
 
@@ -622,6 +726,7 @@ export default function HorarioPage() {
 
       if (idx !== -1) {
         setSelectedDay(dia);
+
         setActiveCourseIdx(idx);
 
         if (cursoParam) {
@@ -657,7 +762,9 @@ export default function HorarioPage() {
             ] || 0;
 
           if (taskIdx < tasks.length) {
-            reset(tasks[taskIdx].duration);
+            resetConSync(
+              tasks[taskIdx].duration,
+            );
           }
         }
 
@@ -665,10 +772,6 @@ export default function HorarioPage() {
       }
     }
   }, []);
-
-  /* ============================================================
-     PANTALLA BLOQUEADA
-     ============================================================ */
 
   if (isLocked) {
     return (
@@ -682,8 +785,8 @@ export default function HorarioPage() {
         </p>
 
         <p className="horario__lock-sub">
-          La pantalla se desbloqueará automáticamente al
-          terminar el tiempo.
+          La pantalla se desbloqueará
+          automáticamente al terminar el tiempo.
         </p>
       </div>
     );
@@ -693,8 +796,12 @@ export default function HorarioPage() {
     <div className="horario">
       <AppHeader
         section="pomodoro"
-        onAbrirBuscador={() => setSearchOpen(true)}
-        onEditarHorario={() => navigate("/editar")}
+        onAbrirBuscador={() =>
+          setSearchOpen(true)
+        }
+        onEditarHorario={() =>
+          navigate("/editar")
+        }
       />
 
       <main className="horario__main">
@@ -705,8 +812,8 @@ export default function HorarioPage() {
                 onClick={volverAlTema}
                 className="horario__btn-volver-tema"
               >
-                <i className="fas fa-arrow-left" /> Volver altema "
-                {retornoTema}"
+                <i className="fas fa-arrow-left" />{" "}
+                Volver al tema "{retornoTema}"
               </button>
             )}
 
@@ -714,25 +821,28 @@ export default function HorarioPage() {
               {activeCourse && (
                 <p className="horario__timer-label">
                   {activeCourse.subject} ·{" "}
-                  {activeTasks[activeTaskIdx]?.type ===
-                  "rest"
+                  {activeTasks[activeTaskIdx]
+                    ?.type === "rest"
                     ? "Descanso"
                     : activeTasks[activeTaskIdx]
-                        ?.detail || "Completado"}
+                          ?.detail ||
+                      "Completado"}
                 </p>
               )}
 
-              {!activeCourse && manualBreak && (
-                <p className="horario__timer-label">
-                  Descanso de {manualBreak} min
-                </p>
-              )}
+              {!activeCourse &&
+                manualBreak && (
+                  <p className="horario__timer-label">
+                    Descanso de {manualBreak} min
+                  </p>
+                )}
 
               {!activeCourse &&
                 !manualBreak &&
                 cursoRapidoPreparado && (
                   <p className="horario__timer-label">
-                    {cursoRapidoPreparado} · Pomodoro 1 de 4
+                    {cursoRapidoPreparado} ·
+                    Pomodoro 1 de 4
                   </p>
                 )}
 
@@ -743,7 +853,9 @@ export default function HorarioPage() {
               <div className="horario__progress-track">
                 <div
                   className="horario__progress-fill"
-                  style={{ "--fill-pct": `${progressPct}%` }}
+                  style={{
+                    "--fill-pct": `${progressPct}%`,
+                  }}
                 />
               </div>
             </div>
@@ -760,7 +872,8 @@ export default function HorarioPage() {
                   }
                   className="horario__btn is-start"
                 >
-                  <i className="fas fa-play" /> Iniciar
+                  <i className="fas fa-play" />{" "}
+                  Iniciar
                 </button>
 
                 <button
@@ -768,12 +881,15 @@ export default function HorarioPage() {
                   disabled={!isRunning}
                   className="horario__btn is-pause"
                 >
-                  <i className="fas fa-pause" /> Pausar
+                  <i className="fas fa-pause" />{" "}
+                  Pausar
                 </button>
 
                 <button
                   onClick={() =>
-                    reset(currentTaskDuration)
+                    resetConSync(
+                      currentTaskDuration,
+                    )
                   }
                   className="horario__btn-reset"
                 >
@@ -824,33 +940,34 @@ export default function HorarioPage() {
                   <h3 className="horario__day-title">
                     {NOMBRE_DIA[selectedDay]}
                   </h3>
-
                 </div>
               </div>
-
             </div>
 
             {!activeCourse && (
               <div className="horario__course-list">
                 {courses.map((c, idx) => {
-                  const done = getDonePomodoros(
-                    selectedDay,
-                    c.subject,
-                    c.pomodoros,
-                  );
+                  const done =
+                    getDonePomodoros(
+                      selectedDay,
+                      c.subject,
+                      c.pomodoros,
+                    );
 
                   const isComplete =
                     done >= c.pomodoros;
 
                   const pct = Math.round(
-                    (done / c.pomodoros) * 100,
+                    (done / c.pomodoros) *
+                      100,
                   );
 
-                  const statusText = isComplete
-                    ? "Completado"
-                    : done > 0
-                      ? "En curso"
-                      : "No iniciado";
+                  const statusText =
+                    isComplete
+                      ? "Completado"
+                      : done > 0
+                        ? "En curso"
+                        : "No iniciado";
 
                   return (
                     <div
@@ -897,7 +1014,9 @@ export default function HorarioPage() {
                         <div className="horario__mini-track">
                           <div
                             className="horario__mini-fill"
-                            style={{ "--fill-pct": `${pct}%` }}
+                            style={{
+                              "--fill-pct": `${pct}%`,
+                            }}
                           />
                         </div>
 
@@ -914,23 +1033,47 @@ export default function HorarioPage() {
                 })}
 
                 <div className="horario__rest-row">
-                  <button
-                    className="horario__rest-btn horario__rest-btn--corto"
-                    onClick={() =>
-                      iniciarDescansoManual(10)
-                    }
-                  >
-                    Desc. 10
-                  </button>
+                  <div className="horario__rest-select">
+                    <div className="horario__rest-info">
+                      <p className="horario__rest-message">
+                        Elige la duración de tu
+                        descanso
+                      </p>
+                    </div>
 
-                  <button
-                    className="horario__rest-btn horario__rest-btn--largo"
-                    onClick={() =>
-                      iniciarDescansoManual(30)
-                    }
-                  >
-                    Desc. 30
-                  </button>
+                    <div className="horario__rest-select-control">
+                      <i className="fa-solid fa-mug-hot" />
+
+                      <select
+                        value={breakDuration}
+                        onChange={
+                          cambiarDuracionDescanso
+                        }
+                        disabled={isRunning}
+                        aria-label="Duración del descanso"
+                      >
+                        <option
+                          value=""
+                          disabled
+                        >
+                          Descanso sin tiempo
+                        </option>
+
+                        {DURACIONES_DESCANSO.map(
+                          (minutos) => (
+                            <option
+                              key={minutos}
+                              value={minutos}
+                            >
+                              Desc. {minutos} min
+                            </option>
+                          ),
+                        )}
+                      </select>
+
+                      <i className="fas fa-chevron-down" />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="horario__quick-course">
@@ -1075,11 +1218,36 @@ export default function HorarioPage() {
         ref={alarmRef}
         src="sonidos/loud-alarm-ringtones-annoying.mp3"
         preload="auto"
+        onEnded={handleAlarmEnded}
       />
 
-      {/* ==========================================================
-          MODAL DE ADVERTENCIA DE DESCANSO
-          ========================================================== */}
+      {alarmActive && (
+        <div
+          className="horario__alarm-toast"
+          role="alert"
+        >
+          <div className="horario__alarm-toast-icon">
+            <i className="fa-solid fa-bell" />
+          </div>
+
+          <div className="horario__alarm-toast-content">
+            <strong>¡Tiempo terminado!</strong>
+
+            <span>
+              La alarma está sonando
+            </span>
+          </div>
+
+          <button
+            type="button"
+            className="horario__alarm-toast-btn"
+            onClick={apagarAlarma}
+          >
+            <i className="fa-solid fa-volume-xmark" />
+            Apagar alarma
+          </button>
+        </div>
+      )}
 
       <Modal
         open={lockConfirmOpen}
@@ -1094,7 +1262,7 @@ export default function HorarioPage() {
           className="modal-close-x"
           aria-label="Cerrar"
         >
-          <i className="fa-solid fa-times" />
+          <i className="fas fa-times" />
         </button>
 
         <div className="tema-selector">
@@ -1103,8 +1271,8 @@ export default function HorarioPage() {
           </h3>
 
           <p className="tema-selector__descripcion">
-            La pantalla se bloqueará durante tu
-            descanso.
+            La pantalla se bloqueará durante
+            tu descanso.
             <br />
             ¿Quieres comenzar ahora?
           </p>
@@ -1120,7 +1288,27 @@ export default function HorarioPage() {
             </button>
 
             <button
-              onClick={confirmarBloqueoDescanso}
+              onClick={() => {
+                setIsLocked(true);
+                setLockConfirmOpen(false);
+
+                const label = activeCourse
+                  ? `${activeCourse.subject} · Descanso`
+                  : manualBreak
+                    ? `Descanso de ${manualBreak} min`
+                    : "Descanso";
+
+                pomodoro.iniciar(
+                  null,
+                  label,
+                  activeCourse
+                    ? activeCourse.subject
+                    : "",
+                  activeCourse
+                    ? selectedDay
+                    : "",
+                );
+              }}
               className="tema-selector__confirm-btn is-aceptar"
             >
               Confirmar
@@ -1128,10 +1316,6 @@ export default function HorarioPage() {
           </div>
         </div>
       </Modal>
-
-      {/* ==========================================================
-          MODAL CURSO COMPLETADO
-          ========================================================== */}
 
       <Modal
         open={courseCompleteOpen}
@@ -1143,7 +1327,7 @@ export default function HorarioPage() {
           className="modal-close-x"
           aria-label="Cerrar"
         >
-          <i className="fa-solid fa-times" />
+          <i className="fas fa-times" />
         </button>
 
         <div className="horario__complete-modal">
@@ -1185,10 +1369,6 @@ export default function HorarioPage() {
         onOmitir={omitirTema}
       />
 
-      {/* ==========================================================
-          BUSCADOR
-          ========================================================== */}
-
       <SearchModal
         open={searchOpen}
         onClose={() =>
@@ -1207,10 +1387,6 @@ export default function HorarioPage() {
         }}
       />
 
-      {/* ==========================================================
-          MODAL PARA ELEGIR TEMA DEL CURSO DEL HORARIO
-          ========================================================== */}
-
       <Modal
         open={eligiendoTemaIdx !== null}
         onClose={omitirTemaDeCurso}
@@ -1220,13 +1396,14 @@ export default function HorarioPage() {
           className="modal-close-x"
           aria-label="Cerrar"
         >
-          <i className="fa-solid fa-times" />
+          <i className="fas fa-times" />
         </button>
 
         <div className="tema-selector">
           <h3 className="tema-selector__titulo">
             {eligiendoTemaIdx !== null
-              ? courses[eligiendoTemaIdx]?.subject
+              ? courses[eligiendoTemaIdx]
+                  ?.subject
               : ""}
           </h3>
 
@@ -1238,9 +1415,7 @@ export default function HorarioPage() {
             {(
               manifest.cursos.find(
                 (c) =>
-                  normalizarTexto(
-                    c.nombre,
-                  ) ===
+                  normalizarTexto(c.nombre) ===
                   normalizarTexto(
                     eligiendoTemaIdx !== null
                       ? courses[
@@ -1289,20 +1464,20 @@ export default function HorarioPage() {
         </div>
       </Modal>
 
-      {/* ==========================================================
-          MODAL ELEGIR CURSO (rápido)
-          ========================================================== */}
-
       <Modal
         open={cursoPickerOpen}
-        onClose={() => setCursoPickerOpen(false)}
+        onClose={() =>
+          setCursoPickerOpen(false)
+        }
       >
         <button
-          onClick={() => setCursoPickerOpen(false)}
+          onClick={() =>
+            setCursoPickerOpen(false)
+          }
           className="modal-close-x"
           aria-label="Cerrar"
         >
-          <i className="fa-solid fa-times" />
+          <i className="fas fa-times" />
         </button>
 
         <div className="tema-selector">
@@ -1335,10 +1510,6 @@ export default function HorarioPage() {
         </div>
       </Modal>
 
-      {/* ==========================================================
-          MODAL CURSO RÁPIDO
-          ========================================================== */}
-
       <Modal
         open={!!cursoRapidoDia}
         onClose={cancelarCursoRapido}
@@ -1348,7 +1519,7 @@ export default function HorarioPage() {
           className="modal-close-x"
           aria-label="Cerrar"
         >
-          <i className="fa-solid fa-times" />
+          <i className="fas fa-times" />
         </button>
 
         <div className="tema-selector">
@@ -1357,7 +1528,8 @@ export default function HorarioPage() {
           </h3>
 
           <p className="tema-selector__descripcion">
-            Elige el tema que vas a repasar en{" "}
+            Elige el tema que vas a repasar
+            en{" "}
             {cursoRapidoDia &&
               DIA_LABELS[cursoRapidoDia]}
             :
@@ -1367,9 +1539,7 @@ export default function HorarioPage() {
             {(
               manifest.cursos.find(
                 (c) =>
-                  normalizarTexto(
-                    c.nombre,
-                  ) ===
+                  normalizarTexto(c.nombre) ===
                   normalizarTexto(
                     cursoRapidoNombre,
                   ),
@@ -1379,7 +1549,9 @@ export default function HorarioPage() {
                 key={t.tema}
                 type="button"
                 onClick={() =>
-                  setTemaRapidoElegido(t.tema)
+                  setTemaRapidoElegido(
+                    t.tema,
+                  )
                 }
                 className={`tema-selector__boton ${
                   temaRapidoElegido ===
@@ -1414,13 +1586,6 @@ export default function HorarioPage() {
         </div>
       </Modal>
 
-      {/* La bienvenida con tutorial fijo se reemplazó por la sección de
-          Preguntas frecuentes en Inicio. */}
-
-      {/* ==========================================================
-          GATE DE CONFIGURACIÓN
-          ========================================================== */}
-
       {mostrarGate && (
         <div className="gate-overlay">
           <button
@@ -1429,7 +1594,7 @@ export default function HorarioPage() {
               setSetupOpen(true)
             }
           >
-            <i className="fa-solid fa-calendar-alt" />
+            <i className="fas fa-calendar-alt" />
             Configurar Pomodoro
           </button>
         </div>

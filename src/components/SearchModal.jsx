@@ -30,6 +30,7 @@ function ResaltarCoincidencia({ texto, query }) {
 
   const textoOriginal = String(texto ?? "");
   const busqueda = query.trim();
+
   const textoNormalizado = normalizarTexto(textoOriginal);
   const busquedaNormalizada = normalizarTexto(busqueda);
 
@@ -40,10 +41,12 @@ function ResaltarCoincidencia({ texto, query }) {
   if (indice === -1) return textoOriginal;
 
   const antes = textoOriginal.slice(0, indice);
+
   const coincidencia = textoOriginal.slice(
     indice,
     indice + busqueda.length
   );
+
   const despues = textoOriginal.slice(
     indice + busqueda.length
   );
@@ -72,7 +75,10 @@ function buscarFuertes(query) {
     { minScore: 400 }
   );
 
-  return { cursos, temas };
+  return {
+    cursos,
+    temas
+  };
 }
 
 function agruparResultados({ cursos, temas }) {
@@ -120,7 +126,10 @@ function agruparResultados({ cursos, temas }) {
   return grupos;
 }
 
-function construirItemsNavegables(grupos, cursoAbierto) {
+function construirItemsNavegables(
+  grupos,
+  cursosAbiertos
+) {
   const items = [];
 
   for (const grupo of grupos) {
@@ -129,7 +138,9 @@ function construirItemsNavegables(grupos, cursoAbierto) {
       nombre: grupo.curso
     });
 
-    if (grupo.curso !== cursoAbierto) continue;
+    if (!cursosAbiertos.has(grupo.curso)) {
+      continue;
+    }
 
     for (const tema of grupo.temas) {
       items.push({
@@ -144,27 +155,50 @@ function construirItemsNavegables(grupos, cursoAbierto) {
   return items;
 }
 
-export default function SearchModal({ open, onClose, onSelect }) {
+export default function SearchModal({
+  open,
+  onClose,
+  onSelect
+}) {
   const [query, setQuery] = useState("");
   const [inputFocused, setInputFocused] = useState(false);
-  const [editarNombreAbierto, setEditarNombreAbierto] = useState(false);
-  const [nombreUsuario, setNombreUsuario] = useLocalStorage(
+
+  const [
+    editarNombreAbierto,
+    setEditarNombreAbierto
+  ] = useState(false);
+
+  const [
+    nombreUsuario,
+    setNombreUsuario
+  ] = useLocalStorage(
     "miEstudio_nombreUsuario",
     null
   );
-  const [fotoUsuario, setFotoUsuario] = useLocalStorage(
+
+  const [
+    fotoUsuario,
+    setFotoUsuario
+  ] = useLocalStorage(
     "miEstudio_fotoUsuario",
     null
   );
+
   const [focusedIdx, setFocusedIdx] = useState(-1);
-  const [cursoAbierto, setCursoAbierto] = useState(null);
+
+  const [
+    cursosAbiertos,
+    setCursosAbiertos
+  ] = useState(new Set());
 
   const inputRef = useRef(null);
+
   const hayQuery = query.trim() !== "";
 
   const gruposIniciales = useMemo(() => {
     return manifest.cursos.map((curso) => ({
       curso: curso.nombre,
+
       temas: curso.temas.map((tema) => ({
         type: "tema",
         curso: curso.nombre,
@@ -175,40 +209,75 @@ export default function SearchModal({ open, onClose, onSelect }) {
   }, []);
 
   const fuertes = useMemo(
-    () => (hayQuery ? buscarFuertes(query) : { cursos: [], temas: [] }),
+    () =>
+      hayQuery
+        ? buscarFuertes(query)
+        : {
+            cursos: [],
+            temas: []
+          },
     [query, hayQuery]
   );
 
-  const grupos = useMemo(() => agruparResultados(fuertes), [fuertes]);
+  const grupos = useMemo(
+    () => agruparResultados(fuertes),
+    [fuertes]
+  );
 
-  const mostrarListaInicial = open && !hayQuery;
-  const mostrarResultados = open && hayQuery;
-  const contenidoExpandido = mostrarListaInicial || mostrarResultados;
+  const mostrarListaInicial =
+    open && !hayQuery;
+
+  const mostrarResultados =
+    open && hayQuery;
+
+  const contenidoExpandido =
+    mostrarListaInicial ||
+    mostrarResultados;
 
   const gruposVisibles = useMemo(
-    () => (hayQuery ? grupos : gruposIniciales),
-    [hayQuery, grupos, gruposIniciales]
+    () =>
+      hayQuery
+        ? grupos
+        : gruposIniciales,
+    [
+      hayQuery,
+      grupos,
+      gruposIniciales
+    ]
   );
 
   const itemsNavegables = useMemo(
-    () => construirItemsNavegables(gruposVisibles, cursoAbierto),
-    [gruposVisibles, cursoAbierto]
+    () =>
+      construirItemsNavegables(
+        gruposVisibles,
+        cursosAbiertos
+      ),
+    [
+      gruposVisibles,
+      cursosAbiertos
+    ]
   );
 
   function obtenerIndiceElemento(item) {
-    return itemsNavegables.findIndex((elemento) => {
-      if (elemento.type !== item.type) return false;
+    return itemsNavegables.findIndex(
+      (elemento) => {
+        if (elemento.type !== item.type) {
+          return false;
+        }
 
-      if (elemento.type === "curso") {
-        return elemento.nombre === item.nombre;
+        if (elemento.type === "curso") {
+          return (
+            elemento.nombre === item.nombre
+          );
+        }
+
+        return (
+          elemento.curso === item.curso &&
+          elemento.tema === item.tema &&
+          elemento.archivo === item.archivo
+        );
       }
-
-      return (
-        elemento.curso === item.curso &&
-        elemento.tema === item.tema &&
-        elemento.archivo === item.archivo
-      );
-    });
+    );
   }
 
   function ejecutarBusqueda(item) {
@@ -217,29 +286,42 @@ export default function SearchModal({ open, onClose, onSelect }) {
     setQuery("");
     setInputFocused(false);
     setFocusedIdx(-1);
-    setCursoAbierto(null);
+    setCursosAbiertos(new Set());
 
     onSelect(item);
     onClose();
   }
 
   function manejarClickCurso(curso) {
-    setCursoAbierto((actual) =>
-      actual === curso ? null : curso
-    );
+    setCursosAbiertos((actuales) => {
+      const nuevos = new Set(actuales);
+
+      if (nuevos.has(curso)) {
+        nuevos.delete(curso);
+      } else {
+        nuevos.add(curso);
+      }
+
+      return nuevos;
+    });
   }
 
   function ejecutarBusquedaActual() {
     if (!hayQuery) return;
 
-    const mejorOpcion = fuertes.cursos[0] || fuertes.temas[0];
+    const mejorOpcion =
+      fuertes.cursos[0] ||
+      fuertes.temas[0];
 
     if (!mejorOpcion) return;
 
     if (mejorOpcion.type === "curso") {
-      const cursoEncontrado = manifest.cursos.find(
-        (curso) => curso.nombre === mejorOpcion.nombre
-      );
+      const cursoEncontrado =
+        manifest.cursos.find(
+          (curso) =>
+            curso.nombre ===
+            mejorOpcion.nombre
+        );
 
       if (!cursoEncontrado) return;
 
@@ -257,6 +339,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
   function limpiarBusqueda() {
     setQuery("");
     setFocusedIdx(-1);
+    setCursosAbiertos(new Set());
 
     requestAnimationFrame(() => {
       inputRef.current?.focus();
@@ -266,7 +349,8 @@ export default function SearchModal({ open, onClose, onSelect }) {
   function moverSeleccion(direccion) {
     if (!open) return;
 
-    const total = itemsNavegables.length;
+    const total =
+      itemsNavegables.length;
 
     if (!total) {
       setFocusedIdx(-1);
@@ -275,13 +359,21 @@ export default function SearchModal({ open, onClose, onSelect }) {
 
     setFocusedIdx((actual) => {
       if (actual === -1) {
-        return direccion > 0 ? 0 : total - 1;
+        return direccion > 0
+          ? 0
+          : total - 1;
       }
 
-      const siguiente = actual + direccion;
+      const siguiente =
+        actual + direccion;
 
-      if (siguiente < 0) return 0;
-      if (siguiente >= total) return total - 1;
+      if (siguiente < 0) {
+        return 0;
+      }
+
+      if (siguiente >= total) {
+        return total - 1;
+      }
 
       return siguiente;
     });
@@ -290,15 +382,20 @@ export default function SearchModal({ open, onClose, onSelect }) {
   function seleccionarElementoActual() {
     if (
       focusedIdx < 0 ||
-      focusedIdx >= itemsNavegables.length
+      focusedIdx >=
+        itemsNavegables.length
     ) {
       return;
     }
 
-    const item = itemsNavegables[focusedIdx];
+    const item =
+      itemsNavegables[focusedIdx];
 
     if (item.type === "curso") {
-      manejarClickCurso(item.nombre);
+      manejarClickCurso(
+        item.nombre
+      );
+
       return;
     }
 
@@ -308,9 +405,10 @@ export default function SearchModal({ open, onClose, onSelect }) {
   useEffect(() => {
     if (focusedIdx < 0) return;
 
-    const elemento = document.querySelector(
-      `[data-search-index="${focusedIdx}"]`
-    );
+    const elemento =
+      document.querySelector(
+        `[data-search-index="${focusedIdx}"]`
+      );
 
     if (!elemento) return;
 
@@ -318,11 +416,52 @@ export default function SearchModal({ open, onClose, onSelect }) {
       behavior: "smooth",
       block: "nearest"
     });
-  }, [focusedIdx, itemsNavegables]);
+  }, [
+    focusedIdx,
+    itemsNavegables
+  ]);
 
+  /*
+   * Cuando cambia la búsqueda:
+   *
+   * - Si no hay búsqueda, cerramos todos.
+   * - Si hay coincidencias de temas, abrimos TODOS
+   *   los cursos que contienen esas coincidencias.
+   * - Si el curso ya es una coincidencia fuerte por
+   *   su propio nombre, no lo abrimos automáticamente.
+   */
   useEffect(() => {
     setFocusedIdx(-1);
-  }, [query]);
+
+    if (!hayQuery) {
+      setCursosAbiertos(new Set());
+      return;
+    }
+
+    const cursosConCoincidencias =
+      new Set(
+        fuertes.temas
+          .filter(
+            (tema) =>
+              !fuertes.cursos.some(
+                (curso) =>
+                  curso.nombre ===
+                  tema.curso
+              )
+          )
+          .map(
+            (tema) => tema.curso
+          )
+      );
+
+    setCursosAbiertos(
+      cursosConCoincidencias
+    );
+  }, [
+    query,
+    hayQuery,
+    fuertes
+  ]);
 
   useEffect(() => {
     if (!open) return;
@@ -330,7 +469,7 @@ export default function SearchModal({ open, onClose, onSelect }) {
     setQuery("");
     setInputFocused(true);
     setFocusedIdx(-1);
-    setCursoAbierto(null);
+    setCursosAbiertos(new Set());
 
     requestAnimationFrame(() => {
       inputRef.current?.focus();
@@ -341,52 +480,75 @@ export default function SearchModal({ open, onClose, onSelect }) {
     if (!open) return;
 
     function onKeyDown(e) {
-      if (document.activeElement === inputRef.current) return;
+      if (
+        document.activeElement ===
+        inputRef.current
+      ) {
+        return;
+      }
 
       if (e.key === "Escape") {
         e.preventDefault();
         e.stopPropagation();
+
         onClose();
+
         return;
       }
 
       if (e.key === "ArrowDown") {
         e.preventDefault();
         e.stopPropagation();
+
         moverSeleccion(1);
+
         return;
       }
 
       if (e.key === "ArrowUp") {
         e.preventDefault();
         e.stopPropagation();
+
         moverSeleccion(-1);
+
         return;
       }
 
       if (e.key === "Enter") {
         if (
           focusedIdx >= 0 &&
-          focusedIdx < itemsNavegables.length
+          focusedIdx <
+            itemsNavegables.length
         ) {
           e.preventDefault();
           e.stopPropagation();
+
           seleccionarElementoActual();
+
           return;
         }
 
         if (hayQuery) {
           e.preventDefault();
           e.stopPropagation();
+
           ejecutarBusquedaActual();
         }
       }
     }
 
-    document.addEventListener("keydown", onKeyDown, true);
+    document.addEventListener(
+      "keydown",
+      onKeyDown,
+      true
+    );
 
     return () => {
-      document.removeEventListener("keydown", onKeyDown, true);
+      document.removeEventListener(
+        "keydown",
+        onKeyDown,
+        true
+      );
     };
   }, [
     open,
@@ -398,28 +560,53 @@ export default function SearchModal({ open, onClose, onSelect }) {
 
   const inputTieneLista =
     mostrarListaInicial ||
-    (mostrarResultados && grupos.length > 0);
+    (
+      mostrarResultados &&
+      grupos.length > 0
+    );
 
-  function renderGrupo(g, grupoIndex, esBusqueda = false) {
-    const cursoIndex = obtenerIndiceElemento({
-      type: "curso",
-      nombre: g.curso
-    });
+  function renderGrupo(
+    g,
+    grupoIndex,
+    esBusqueda = false
+  ) {
+    const cursoIndex =
+      obtenerIndiceElemento({
+        type: "curso",
+        nombre: g.curso
+      });
 
-    const estaAbierto = cursoAbierto === g.curso;
+    const estaAbierto =
+      cursosAbiertos.has(g.curso);
 
     return (
       <div
-        key={`${esBusqueda ? "grupo" : "grupo-inicial"}-${g.curso}-${grupoIndex}`}
+        key={`${
+          esBusqueda
+            ? "grupo"
+            : "grupo-inicial"
+        }-${g.curso}-${grupoIndex}`}
         className="search-group"
       >
         <button
           type="button"
-          data-search-index={cursoIndex}
+          data-search-index={
+            cursoIndex
+          }
           className={`search-result-item is-curso${
-            cursoIndex === focusedIdx ? " is-focused" : ""
-          }${estaAbierto ? " is-open" : ""}`}
-          onClick={() => manejarClickCurso(g.curso)}
+            cursoIndex === focusedIdx
+              ? " is-focused"
+              : ""
+          }${
+            estaAbierto
+              ? " is-open"
+              : ""
+          }`}
+          onClick={() =>
+            manejarClickCurso(
+              g.curso
+            )
+          }
         >
           <span className="curso-title">
             {esBusqueda ? (
@@ -434,42 +621,70 @@ export default function SearchModal({ open, onClose, onSelect }) {
 
           <i
             className={`fa-solid fa-chevron-down search-course-chevron${
-              estaAbierto ? " is-open" : ""
+              estaAbierto
+                ? " is-open"
+                : ""
             }`}
           />
         </button>
 
         <div
           className={`search-group__temas${
-            estaAbierto ? " is-open" : ""
+            estaAbierto
+              ? " is-open"
+              : ""
           }`}
         >
-          {g.temas.map((t, temaIndex) => {
-            const index = obtenerIndiceElemento(t);
+          {g.temas.map(
+            (t, temaIndex) => {
+              const index =
+                obtenerIndiceElemento(
+                  t
+                );
 
-            return (
-              <button
-                type="button"
-                key={`tema-${esBusqueda ? "" : "inicial-"}${t.curso}-${t.tema}-${t.archivo || ""}-${grupoIndex}-${temaIndex}`}
-                data-search-index={index}
-                onClick={() => ejecutarBusqueda(t)}
-                className={`search-result-item is-tema${
-                  index === focusedIdx ? " is-focused" : ""
-                }`}
-              >
-                <p className="search-result-item__tema">
-                  {esBusqueda ? (
-                    <ResaltarCoincidencia
-                      texto={t.tema}
-                      query={query}
-                    />
-                  ) : (
+              return (
+                <button
+                  type="button"
+                  key={`tema-${
+                    esBusqueda
+                      ? ""
+                      : "inicial-"
+                  }${t.curso}-${
                     t.tema
-                  )}
-                </p>
-              </button>
-            );
-          })}
+                  }-${
+                    t.archivo || ""
+                  }-${grupoIndex}-${temaIndex}`}
+                  data-search-index={
+                    index
+                  }
+                  onClick={() =>
+                    ejecutarBusqueda(
+                      t
+                    )
+                  }
+                  className={`search-result-item is-tema${
+                    index ===
+                    focusedIdx
+                      ? " is-focused"
+                      : ""
+                  }`}
+                >
+                  <p className="search-result-item__tema">
+                    {esBusqueda ? (
+                      <ResaltarCoincidencia
+                        texto={t.tema}
+                        query={
+                          query
+                        }
+                      />
+                    ) : (
+                      t.tema
+                    )}
+                  </p>
+                </button>
+              );
+            }
+          )}
         </div>
       </div>
     );
@@ -477,9 +692,16 @@ export default function SearchModal({ open, onClose, onSelect }) {
 
   return (
     <div
-      className={`search-overlay${open ? "" : " is-closed"}`}
+      className={`search-overlay${
+        open
+          ? ""
+          : " is-closed"
+      }`}
       onClick={(e) => {
-        if (e.target === e.currentTarget) {
+        if (
+          e.target ===
+          e.currentTarget
+        ) {
           onClose();
         }
       }}
@@ -487,12 +709,16 @@ export default function SearchModal({ open, onClose, onSelect }) {
     >
       <div
         className={`search-box${
-          contenidoExpandido ? " is-expanded" : ""
+          contenidoExpandido
+            ? " is-expanded"
+            : ""
         }`}
       >
         <div
           className={`search-input-row${
-            inputTieneLista ? " has-query" : ""
+            inputTieneLista
+              ? " has-query"
+              : ""
           }`}
         >
           <input
@@ -501,48 +727,76 @@ export default function SearchModal({ open, onClose, onSelect }) {
             name="buscar-curso-tema"
             ref={inputRef}
             value={query}
-            onFocus={() => setInputFocused(true)}
+            onFocus={() =>
+              setInputFocused(
+                true
+              )
+            }
             onBlur={() => {
               setTimeout(() => {
-                setInputFocused(false);
+                setInputFocused(
+                  false
+                );
               }, 100);
             }}
             onChange={(e) => {
-              setQuery(e.target.value);
+              setQuery(
+                e.target.value
+              );
+
               setFocusedIdx(-1);
-              setCursoAbierto(null);
             }}
             onKeyDown={(e) => {
-              if (e.key === "Escape") {
+              if (
+                e.key === "Escape"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
+
                 onClose();
+
                 return;
               }
 
-              if (e.key === "ArrowDown") {
+              if (
+                e.key ===
+                "ArrowDown"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
+
                 moverSeleccion(1);
+
                 return;
               }
 
-              if (e.key === "ArrowUp") {
+              if (
+                e.key ===
+                "ArrowUp"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
+
                 moverSeleccion(-1);
+
                 return;
               }
 
-              if (e.key === "Enter") {
+              if (
+                e.key ===
+                "Enter"
+              ) {
                 e.preventDefault();
                 e.stopPropagation();
 
                 if (
-                  focusedIdx >= 0 &&
-                  focusedIdx < itemsNavegables.length
+                  focusedIdx >=
+                    0 &&
+                  focusedIdx <
+                    itemsNavegables.length
                 ) {
                   seleccionarElementoActual();
+
                   return;
                 }
 
@@ -564,7 +818,9 @@ export default function SearchModal({ open, onClose, onSelect }) {
                 e.preventDefault();
                 e.stopPropagation();
               }}
-              onClick={limpiarBusqueda}
+              onClick={
+                limpiarBusqueda
+              }
             >
               <i className="fa-solid fa-xmark" />
             </button>
@@ -573,43 +829,67 @@ export default function SearchModal({ open, onClose, onSelect }) {
 
         {mostrarListaInicial && (
           <div className="search-results">
-            {gruposIniciales.map((g, grupoIndex) =>
-              renderGrupo(g, grupoIndex)
+            {gruposIniciales.map(
+              (g, grupoIndex) =>
+                renderGrupo(
+                  g,
+                  grupoIndex
+                )
             )}
           </div>
         )}
 
-        {mostrarResultados && grupos.length > 0 && (
-          <div className="search-results">
-            {grupos.map((g, grupoIndex) =>
-              renderGrupo(g, grupoIndex, true)
-            )}
-          </div>
-        )}
+        {mostrarResultados &&
+          grupos.length > 0 && (
+            <div className="search-results">
+              {grupos.map(
+                (g, grupoIndex) =>
+                  renderGrupo(
+                    g,
+                    grupoIndex,
+                    true
+                  )
+              )}
+            </div>
+          )}
 
-        {mostrarResultados && grupos.length === 0 && (
-          <div className="search-results">
-            <div className="search-group">
-              <div className="search-result-item search-no-results">
-                <p className="search-result-item__tema">
-                  Sin resultados para "{query}"
-                </p>
+        {mostrarResultados &&
+          grupos.length === 0 && (
+            <div className="search-results">
+              <div className="search-group">
+                <div className="search-result-item search-no-results">
+                  <p className="search-result-item__tema">
+                    Sin resultados para "
+                    {query}"
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
 
       <EditarNombreModal
-        open={editarNombreAbierto}
-        nombreActual={nombreUsuario}
-        fotoActual={fotoUsuario}
+        open={
+          editarNombreAbierto
+        }
+        nombreActual={
+          nombreUsuario
+        }
+        fotoActual={
+          fotoUsuario
+        }
         onGuardar={(n, f) => {
           setNombreUsuario(n);
           setFotoUsuario(f);
-          setEditarNombreAbierto(false);
+          setEditarNombreAbierto(
+            false
+          );
         }}
-        onCancelar={() => setEditarNombreAbierto(false)}
+        onCancelar={() =>
+          setEditarNombreAbierto(
+            false
+          )
+        }
       />
     </div>
   );
