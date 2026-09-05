@@ -1,19 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
 :root {
+  /* ============================================================
+     FONDOS Y SUPERFICIES
+     ============================================================ */
   --bg: #eef1f6;
   --ink-on-primary: #ffffff;
-
   --surface: #ffffff;
   --surface-alt: #f5f7fa;
   --surface-hover: #e2e7ee;
   --surface-ts: #ffffff;
-
   --border: #dfe5ec;
   --border-strong: #c5ced9;
 
   /* ============================================================
      TEXTOS
      ============================================================ */
-
   --ink: #18212d;
   --ink-soft: #465365;
   --ink-faint: #718096;
@@ -23,7 +25,6 @@
      Azul de acción principal.
      CTA, progreso, elementos activos.
      ============================================================ */
-
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --primary-light: #60a5fa;
@@ -33,7 +34,6 @@
      BRAND
      Violeta de navegación / identidad secundaria.
      ============================================================ */
-
   --brand: #7c3aed;
   --brand-dark: #6d28d9;
   --brand-light: #a78bfa;
@@ -43,7 +43,6 @@
      SECONDARY
      Gris neutro.
      ============================================================ */
-
   --secondary: #64748b;
   --secondary-dark: #475569;
   --secondary-hover: #e2e8f0;
@@ -54,7 +53,6 @@
      Rosa/coral.
      Avisos suaves, recordatorios y atención no crítica.
      ============================================================ */
-
   --accent: #e11d48;
   --accent-dark: #be123c;
   --accent-bg: rgba(225, 29, 72, 0.09);
@@ -63,7 +61,6 @@
      DANGER
      Exclusivamente errores / acciones destructivas.
      ============================================================ */
-
   --danger: #dc2626;
   --danger-dark: #b91c1c;
   --danger-bg: rgba(220, 38, 38, 0.09);
@@ -72,7 +69,6 @@
      SUCCESS
      Exclusivamente correcto / completado / progreso positivo.
      ============================================================ */
-
   --success: #16a34a;
   --success-dark: #15803d;
   --success-bg: rgba(22, 163, 74, 0.09);
@@ -81,7 +77,6 @@
      WARNING
      Advertencias reales.
      ============================================================ */
-
   --warning: #d97706;
   --warning-dark: #b45309;
   --warning-bg: rgba(217, 119, 6, 0.10);
@@ -89,22 +84,18 @@
   /* ============================================================
      HEADER
      ============================================================ */
-
   --header-h: 64px;
 
   /* ============================================================
      BORDERS / OVERLAYS
      ============================================================ */
-
   --nested-border: 1px solid var(--border-strong);
-
   --overlay: rgba(15, 23, 42, 0.50);
   --overlay-strong: rgba(15, 23, 42, 0.76);
 
   /* ============================================================
      SHADOWS
      ============================================================ */
-
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.12);
@@ -112,36 +103,41 @@
   /* ============================================================
      BORDER RADIUS
      ============================================================ */
-
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-full: 999px;
 
   /* ============================================================
-     FONTS
+     FONT
      ============================================================ */
-
-  --font-body: "Lato", sans-serif;
-  --font-display: "Raleway", sans-serif;
+  --font: "Plus Jakarta Sans", sans-serif;
 
   /* ============================================================
      ESCALA TIPOGRÁFICA
      ============================================================ */
-
+  --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-body: 1rem;
-  --fs-md: 1.25rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
   --fs-title: 2rem;
   --fs-hero: clamp(1.75rem, 5vw, 3rem);
 
+  /* ============================================================
+     PESOS TIPOGRÁFICOS
+     ============================================================ */
+  --fw-light: 300;
   --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
   --fw-bold: 700;
+  --fw-extrabold: 800;
 
   /* ============================================================
      ESCALA DE ESPACIADO
      ============================================================ */
-
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 1rem;
@@ -152,224 +148,167 @@
   /* ============================================================
      ANCHO DE CONTENIDO
      ============================================================ */
-
   --content-max-width: 42rem;
 }
-
 
 /* ================================================================
    MODO OSCURO
    Jerarquía clara de superficies:
-
    --bg            → fondo más profundo
    --surface       → tarjeta principal
    --surface-alt   → panel secundario
    --surface-hover → interacción / hover
-
-   La diferencia entre niveles es deliberada para evitar que
-   tarjetas, modales, inputs y fondo se mezclen visualmente.
-   ================================================================ */
+   ================================================================= */
 
 [data-theme="dark"] {
-
   /* ============================================================
      FONDOS Y SUPERFICIES
      ============================================================ */
-
-  --bg: #0b0f14;
+  --bg: #10141a;
   --ink-on-primary: #ffffff;
-
-  --surface: #141922;
-  --surface-alt: #1b222d;
-  --surface-hover: #242c38;
-  --surface-ts: #141922;
-
-  --border: #303947;
-  --border-strong: #465163;
+  --surface: #181d24;
+  --surface-alt: #20262f;
+  --surface-hover: #292f39;
+  --surface-ts: #181d24;
+  --border: #303741;
+  --border-strong: #424b58;
 
   /* ============================================================
      TEXTOS
      ============================================================ */
-
-  --ink: #f4f7fb;
-  --ink-soft: #b8c1cf;
-  --ink-faint: #8b96a6;
+  --ink: #e8ecf1;
+  --ink-soft: #aeb7c4;
+  --ink-faint: #7f8997;
 
   /* ============================================================
      PRIMARY
-     Azul suficientemente luminoso para destacar sobre fondos
-     oscuros sin saturar toda la interfaz.
+     Azul más apagado para evitar exceso de brillo.
      ============================================================ */
-
-  --primary: #6d9aff;
-  --primary-dark: #4f7ff0;
-  --primary-light: #a8c2ff;
-  --primary-bg: rgba(109, 154, 255, 0.14);
+  --primary: #5b82d6;
+  --primary-dark: #496db8;
+  --primary-light: #7d9de0;
+  --primary-bg: rgba(91, 130, 214, 0.12);
 
   /* ============================================================
      BRAND
-     Violeta secundario claramente diferenciado del azul.
+     Violeta moderado.
      ============================================================ */
-
-  --brand: #a477ff;
-  --brand-dark: #8557e8;
-  --brand-light: #cbb8ff;
-  --brand-bg: rgba(164, 119, 255, 0.14);
+  --brand: #8065c4;
+  --brand-dark: #684fa4;
+  --brand-light: #9b83d2;
+  --brand-bg: rgba(128, 101, 196, 0.12);
 
   /* ============================================================
      SECONDARY
      Gris neutro.
      ============================================================ */
-
-  --secondary: #9aa6b6;
-  --secondary-dark: #788596;
-  --secondary-hover: #303946;
-  --secondary-bg: rgba(154, 166, 182, 0.13);
+  --secondary: #8c96a5;
+  --secondary-dark: #707a89;
+  --secondary-hover: #303741;
+  --secondary-bg: rgba(140, 150, 165, 0.10);
 
   /* ============================================================
      ACCENT
-     Rosa/coral.
+     Rosa moderado, sin competir con el azul.
      ============================================================ */
-
-  --accent: #ff7f95;
-  --accent-dark: #f05c76;
-  --accent-bg: rgba(255, 127, 149, 0.14);
+  --accent: #c96b7e;
+  --accent-dark: #aa5267;
+  --accent-bg: rgba(201, 107, 126, 0.10);
 
   /* ============================================================
      DANGER
      ============================================================ */
-
-  --danger: #ff5c5c;
-  --danger-dark: #ff8585;
-  --danger-bg: rgba(255, 92, 92, 0.14);
+  --danger: #d85b5b;
+  --danger-dark: #b74747;
+  --danger-bg: rgba(216, 91, 91, 0.11);
 
   /* ============================================================
      SUCCESS
+     Verde moderado.
      ============================================================ */
-
-  --success: #3fdb73;
-  --success-dark: #2dbd5f;
-  --success-bg: rgba(63, 219, 115, 0.14);
+  --success: #4caf70;
+  --success-dark: #3b8e5a;
+  --success-bg: rgba(76, 175, 112, 0.10);
 
   /* ============================================================
      WARNING
+     Amarillo/naranja moderado.
      ============================================================ */
-
-  --warning: #ffb52e;
-  --warning-dark: #e99a13;
-  --warning-bg: rgba(255, 181, 46, 0.14);
+  --warning: #d59a3a;
+  --warning-dark: #b77d28;
+  --warning-bg: rgba(213, 154, 58, 0.10);
 
   /* ============================================================
      HEADER
      ============================================================ */
-
   --header-h: 64px;
 
   /* ============================================================
      BORDERS / OVERLAYS
      ============================================================ */
-
   --nested-border: 1px solid var(--border-strong);
-
   --overlay: rgba(0, 0, 0, 0.64);
   --overlay-strong: rgba(0, 0, 0, 0.84);
 
   /* ============================================================
      SHADOWS
      ============================================================ */
-
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.34);
   --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.44);
 }
 
-
 /* ================================================================
    BREAKPOINTS
-   ================================================================ */
+   ================================================================= */
 
 $bp-sm: 30rem; // 480px
 $bp-md: 48rem; // 768px
 $bp-lg: 64rem; // 1024px
 $bp-xl: 90rem; // 1440px
 
-
 /* ================================================================
    RESPONSIVE MIXINS
-
-   respond($bp)     -> @media (min-width: ...)
-   respond-max($bp) -> @media (max-width: ...)
-   ================================================================ */
+   respond($bp)     → @media (min-width: ...)
+   respond-max($bp) → @media (max-width: ...)
+   ================================================================= */
 
 @mixin respond($bp) {
-
-  @if $bp ==sm {
-
+  @if $bp == sm {
     @media (min-width: $bp-sm) {
       @content;
     }
-
-  }
-
-  @else if $bp ==md {
-
+  } @else if $bp == md {
     @media (min-width: $bp-md) {
       @content;
     }
-
-  }
-
-  @else if $bp ==lg {
-
+  } @else if $bp == lg {
     @media (min-width: $bp-lg) {
       @content;
     }
-
-  }
-
-  @else if $bp ==xl {
-
+  } @else if $bp == xl {
     @media (min-width: $bp-xl) {
       @content;
     }
-
   }
-
 }
 
-
 @mixin respond-max($bp) {
-
-  @if $bp ==sm {
-
+  @if $bp == sm {
     @media (max-width: $bp-sm) {
       @content;
     }
-
-  }
-
-  @else if $bp ==md {
-
+  } @else if $bp == md {
     @media (max-width: $bp-md) {
       @content;
     }
-
-  }
-
-  @else if $bp ==lg {
-
+  } @else if $bp == lg {
     @media (max-width: $bp-lg) {
       @content;
     }
-
-  }
-
-  @else if $bp ==xl {
-
+  } @else if $bp == xl {
     @media (max-width: $bp-xl) {
       @content;
     }
-
   }
-
 }

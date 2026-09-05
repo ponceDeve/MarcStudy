@@ -40,8 +40,13 @@ function ResaltarCoincidencia({ texto, query }) {
   if (indice === -1) return textoOriginal;
 
   const antes = textoOriginal.slice(0, indice);
-  const coincidencia = textoOriginal.slice(indice, indice + busqueda.length);
-  const despues = textoOriginal.slice(indice + busqueda.length);
+  const coincidencia = textoOriginal.slice(
+    indice,
+    indice + busqueda.length
+  );
+  const despues = textoOriginal.slice(
+    indice + busqueda.length
+  );
 
   return (
     <>
@@ -71,7 +76,9 @@ function buscarFuertes(query) {
 }
 
 function agruparResultados({ cursos, temas }) {
-  const nombresCursosFuertes = new Set(cursos.map((c) => c.nombre));
+  const nombresCursosFuertes = new Set(
+    cursos.map((c) => c.nombre)
+  );
 
   const grupos = cursos.map((c) => {
     const cursoEncontrado = manifest.cursos.find(
@@ -217,15 +224,9 @@ export default function SearchModal({ open, onClose, onSelect }) {
   }
 
   function manejarClickCurso(curso) {
-    if (cursoAbierto === curso) {
-      ejecutarBusqueda({
-        type: "curso",
-        nombre: curso
-      });
-      return;
-    }
-
-    setCursoAbierto(curso);
+    setCursoAbierto((actual) =>
+      actual === curso ? null : curso
+    );
   }
 
   function ejecutarBusquedaActual() {
@@ -568,19 +569,6 @@ export default function SearchModal({ open, onClose, onSelect }) {
               <i className="fa-solid fa-xmark" />
             </button>
           )}
-
-          <button
-            type="button"
-            className="search-input-lupa"
-            aria-label="Buscar"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-            onClick={ejecutarBusquedaActual}
-          >
-            <i className="fa-solid fa-magnifying-glass" />
-          </button>
         </div>
 
         {mostrarListaInicial && (

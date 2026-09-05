@@ -119,6 +119,7 @@ export default function HorarioPage() {
   const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
   const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
   const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
+  const [cursoPickerOpen, setCursoPickerOpen] = useState(false);
 
   const [eligiendoTemaIdx, setEligiendoTemaIdx] = useState(null);
   const [temaSeleccionadoTmp, setTemaSeleccionadoTmp] = useState(null);
@@ -412,8 +413,36 @@ export default function HorarioPage() {
     setManualBreak(null);
     setActiveCourseIdx(idx);
 
-    if (taskIdx < tasks.length) {
+    // Si el pomodoro que está corriendo ya es el de este mismo
+    // curso, no lo reiniciamos: seguimos exactamente donde iba.
+    // Solo se reinicia cuando de verdad se entra a un curso/tema
+    // distinto al que está corriendo (o si no hay nada corriendo).
+    const yaEstaCorriendo =
+      isRunning &&
+      normalizarTexto(pomodoro.subject || "") ===
+        normalizarTexto(course.subject);
+
+    if (!yaEstaCorriendo && taskIdx < tasks.length) {
       reset(tasks[taskIdx].duration);
+    }
+  }
+
+  function abrirOPedirTema(idx) {
+    const course = courses[idx];
+
+    // Si el pomodoro de este curso ya está corriendo (por ejemplo,
+    // el usuario salió con la flecha y quiere volver), no tiene
+    // sentido pedirle que elija tema de nuevo: ya lo eligió y el
+    // cronómetro sigue contando.
+    const yaEstaCorriendo =
+      isRunning &&
+      normalizarTexto(pomodoro.subject || "") ===
+        normalizarTexto(course.subject);
+
+    if (yaEstaCorriendo) {
+      abrirCurso(idx);
+    } else {
+      pedirTemaYAbrirCurso(idx);
     }
   }
 
@@ -474,6 +503,7 @@ export default function HorarioPage() {
   }
 
   function elegirCursoRapido(dia, nombreCurso) {
+    setCursoPickerOpen(false);
     setCursoRapidoDia(dia);
     setCursoRapidoNombre(nombreCurso);
     setTemaRapidoElegido(null);
@@ -675,7 +705,7 @@ export default function HorarioPage() {
                 onClick={volverAlTema}
                 className="horario__btn-volver-tema"
               >
-                <i className="fas fa-arrow-left" /> Volver a "
+                <i className="fas fa-arrow-left" /> Volver altema "
                 {retornoTema}"
               </button>
             )}
@@ -831,7 +861,7 @@ export default function HorarioPage() {
                       }
                       onClick={() =>
                         !isComplete &&
-                        pedirTemaYAbrirCurso(idx)
+                        abrirOPedirTema(idx)
                       }
                       onKeyDown={(e) => {
                         if (
@@ -840,7 +870,7 @@ export default function HorarioPage() {
                             e.key === " ")
                         ) {
                           e.preventDefault();
-                          pedirTemaYAbrirCurso(idx);
+                          abrirOPedirTema(idx);
                         }
                       }}
                       className={`horario__course-item ${
@@ -908,34 +938,16 @@ export default function HorarioPage() {
                     Escoge un curso
                   </label>
 
-                  <select
-                    value=""
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        elegirCursoRapido(
-                          selectedDay,
-                          e.target.value,
-                        );
-                      }
-                    }}
-                    className="horario__quick-course-select"
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setCursoPickerOpen(true)
+                    }
+                    className="horario__quick-course-select horario__quick-course-btn"
                   >
-                    <option
-                      value=""
-                      disabled
-                    >
-                      Selecciona un curso...
-                    </option>
-
-                    {manifest.cursos.map((c) => (
-                      <option
-                        key={c.nombre}
-                        value={c.nombre}
-                      >
-                        {c.nombre}
-                      </option>
-                    ))}
-                  </select>
+                    Selecciona un curso...
+                    <i className="fas fa-chevron-down" />
+                  </button>
                 </div>
               </div>
             )}
@@ -1273,6 +1285,52 @@ export default function HorarioPage() {
             >
               Confirmar
             </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* ==========================================================
+          MODAL ELEGIR CURSO (rápido)
+          ========================================================== */}
+
+      <Modal
+        open={cursoPickerOpen}
+        onClose={() => setCursoPickerOpen(false)}
+      >
+        <button
+          onClick={() => setCursoPickerOpen(false)}
+          className="modal-close-x"
+          aria-label="Cerrar"
+        >
+          <i className="fa-solid fa-times" />
+        </button>
+
+        <div className="tema-selector">
+          <h3 className="tema-selector__titulo">
+            Escoge un curso
+          </h3>
+
+          <p className="tema-selector__descripcion">
+            Curso que vas a repasar en{" "}
+            {DIA_LABELS[selectedDay]}:
+          </p>
+
+          <div className="tema-selector__lista">
+            {manifest.cursos.map((c) => (
+              <button
+                key={c.nombre}
+                type="button"
+                onClick={() =>
+                  elegirCursoRapido(
+                    selectedDay,
+                    c.nombre,
+                  )
+                }
+                className="tema-selector__boton"
+              >
+                {c.nombre}
+              </button>
+            ))}
           </div>
         </div>
       </Modal>

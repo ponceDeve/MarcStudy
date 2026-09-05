@@ -622,7 +622,7 @@ export default function ScheduleEditor() {
 
                 <div className="editor-form-acciones">
                   <button
-                    className={`editor-btn-add is-primary btn-primary editor-btn-save ${
+                    className={`editor-btn-add is-primary editor-btn-save ${
                       cursoSinCambios
                         ? "is-no-changes"
                         : ""

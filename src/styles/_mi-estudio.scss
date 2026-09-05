@@ -2250,9 +2250,7 @@
 
 .teoria-etiqueta {
   margin: 0;
-
-  color: var(--primary);
-
+  color: var(--secondary-dark);
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 700;
@@ -2336,13 +2334,9 @@
 
 .teoria-explicacion-extra {
   padding: 1.5rem;
-
   background-color: var(--surface);
   color: var(--ink-soft);
-
-  border-left: 0.25rem solid var(--primary);
   border-radius: var(--radius-md);
-
   font-size: 1.05rem;
   line-height: 1.7;
 
@@ -2454,7 +2448,7 @@
   margin-left: 0.5rem;
   padding: 0.25rem 0.4375rem;
   background: transparent;
-  color: var(--primary);
+  color: var(--warning);
   border: none;
   border-radius: 0.4375rem;
   font-size: 1.1rem;
@@ -2465,8 +2459,7 @@
     background-color 0.15s linear;
 
   &:hover {
-    transform: scale(1.18);
-    background: var(--primary-bg);
+    background: var(--warning-bg);
   }
 
   &:active {

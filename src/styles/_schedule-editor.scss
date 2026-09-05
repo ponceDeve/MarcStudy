@@ -129,14 +129,14 @@
   padding:16px 18px;
   background:var(--surface-alt);
   border:1px solid var(--border);
-  border-left:4px solid transparent;
   border-radius:var(--radius-md);
   transition:background .2s linear,border-color .2s linear,box-shadow .2s linear;
 }
 
 .editor-item:hover{
-  border-left-color:var(--primary);
   box-shadow:var(--shadow-sm);
+  background-color: var(--surface-hover);
+  border: 1px solid var(--ink);
 }
 
 .editor-item-info{
@@ -351,18 +351,18 @@
   font-size:16px;
   font-weight:700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:background .5s linear,border-color .5s linear,color .5s linear;
 }
 
 .editor-pomo-btn:hover{
   background:var(--surface-hover);
   color:var(--ink);
+  transition: all .3s linear;
 }
 
 .editor-pomo-btn.is-on{
-  background:var(--secondary);
+  background:var(--secondary-dark);
   border-color:var(--secondary-dark);
-  color:var(--ink-on-primary);
+  color:var(--bg);
 }
 
 .editor-form-acciones{
@@ -394,10 +394,6 @@
   color:var(--ink-on-primary);
   border:1px solid var(--primary-dark);
   transition:background .15s;
-}
-
-.btn-primary:hover:not(:disabled){
-  background:var(--primary-dark);
 }
 
 .editor-btn-outline{
