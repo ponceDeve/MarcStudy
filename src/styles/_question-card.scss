@@ -1,25 +1,30 @@
 /* ============================================================
    QuestionCard.jsx
    ============================================================ */
+
 .question-card {
   width: 100%;
   min-height: 400px;
   padding: 28px 20px;
 }
+
 .question-card__inner {
   position: relative;
   z-index: 1;
   max-width: 40rem;
   margin: 0 auto;
 }
+
 .question-card__q {
   margin: 20px 0 32px;
   color: var(--ink);
 }
+
 .question-card__q span {
   font-size: 18px;
   line-height: -10px;
 }
+
 .question-card__q-intro {
   font-size: 18px;
   font-weight: 600;
@@ -27,6 +32,7 @@
   margin: 0 0 14px;
   user-select: none;
 }
+
 .question-card__q-props {
   display: flex;
   flex-direction: column;
@@ -35,6 +41,7 @@
   max-width: 480px;
   margin: 0 auto;
 }
+
 .question-card__q-prop {
   font-size: 16px;
   font-weight: 600;
@@ -43,6 +50,7 @@
   border-radius: var(--radius-sm);
   background: var(--surface-alt);
 }
+
 .question-card__options {
   display: flex;
   flex-direction: column;
@@ -50,6 +58,7 @@
   justify-content: center;
   margin-bottom: 28px;
 }
+
 .question-card__opt {
   font-size: 14px;
   border: 1px solid var(--border-strong);
@@ -57,46 +66,49 @@
   padding: 14px 12px;
   color: var(--ink);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:
-    border-color 0.15s,
-    background 0.15s;
+  transition: border-color 0.15s, background 0.15s;
   text-align: start;
 }
+
 @media (min-width: 640px) {
   .question-card__opt {
     flex: 1;
   }
 }
-/* 1. Hover: Un cambio sutil solo para indicar que es clickeable */
+
 .question-card__opt:hover:not(:disabled) {
-  background: var(--surface-hover); 
-  border-color: var(--border-strong);
+  background: var(--surface-hover);
+  border-color: var(--ink);
 }
 
-/* 2. Seleccionado: Un efecto fuerte y claro que se queda fijo al hacer clic */
 .question-card__opt.is-selected {
-  border-color: var(--ink); 
-  background: var(--surface-hover); 
-  box-shadow: 0 0 0 1px var(--ink); 
-  font-weight: 600; 
-  transform: translateY(-2px); 
-  color: var(--ink); 
+  border-color: var(--ink);
+  background: var(--surface-hover);
+  box-shadow: 0 0 0 1px var(--ink);
+  font-weight: 600;
+  transform: translateY(-2px);
+  color: var(--ink);
 }
+
 .question-card__opt:disabled {
   cursor: default;
 }
+
 .question-card__opt.is-correct {
   border-color: var(--success);
   background: var(--success-bg);
 }
+
 .question-card__opt.is-wrong {
   border-color: var(--danger);
   background: var(--danger-bg);
 }
+
 .question-card__opt.is-muted {
   border-color: var(--border);
   opacity: 0.55;
 }
+
 .question-card__type-wrap {
   display: flex;
   flex-direction: column;
@@ -104,6 +116,7 @@
   align-items: center;
   position: relative;
 }
+
 .question-card__input {
   width: 100%;
   max-width: 28rem;
@@ -115,9 +128,11 @@
   color: var(--ink);
   outline: none;
 }
+
 .question-card__input:focus {
   border-color: var(--primary);
 }
+
 .question-card__submit {
   width: 100%;
   padding: 13px;
@@ -131,31 +146,33 @@
   transition: background 0.15s;
   text-transform: uppercase;
 }
+
 .question-card__submit:hover {
   background: var(--primary-dark);
 }
+
 .question-card__submit:disabled,
 .question-card__submit[aria-disabled="true"] {
   opacity: 0.5;
   cursor: default;
 }
-/* Variante "Repetir": aparece junto a la pregunta apenas la fallas,
-   para no obligar a bajar hasta la explicación para reintentar. */
+
 .question-card__submit.is-retry {
   background: var(--surface);
   color: var(--ink);
   border: 2px solid var(--border-strong);
 }
+
 .question-card__submit.is-retry:hover {
   background: var(--surface-hover);
 }
+
 .question-card__explicacion {
   margin-top: 16px;
   font-size: 14px;
   color: var(--ink-soft);
 }
 
-/* Tipo: verdadero / falso (lista de proposiciones) */
 .question-card__vf-list {
   display: flex;
   flex-direction: column;
@@ -166,6 +183,7 @@
   padding: 0;
   counter-reset: proposicion;
 }
+
 .question-card__vf-row {
   display: flex;
   align-items: center;
@@ -178,30 +196,36 @@
   counter-increment: proposicion;
   transition: border-color 0.2s linear, background 0.2s linear;
 }
+
 .question-card__vf-row::before {
   content: counter(proposicion) ".";
   font-weight: 700;
   color: var(--ink-soft);
   flex-shrink: 0;
 }
+
 .question-card__vf-row.is-correct {
   border-color: var(--success);
   background: var(--success-bg);
 }
+
 .question-card__vf-row.is-wrong {
   border-color: var(--danger);
   background: var(--danger-bg);
 }
+
 .question-card__vf-texto {
   flex: 1 1 200px;
   font-size: 14px;
   color: var(--ink);
   text-align: left;
 }
+
 .question-card__vf-btns {
   display: flex;
   gap: 6px;
 }
+
 .question-card__vf-btn {
   width: 36px;
   height: 36px;
@@ -213,26 +237,29 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear;
 }
+
 .question-card__vf-btn:hover:not(:disabled) {
   border-color: var(--success-bg);
   background: var(--success-bg);
 }
+
 .question-card__vf-btn.is-selected,
 .question-card__vf-btn.is-selected:hover {
   background: var(--success);
   border-color: var(--success);
   color: var(--ink-on-primary);
 }
+
 .question-card__vf-btn:disabled {
   cursor: default;
 }
+
 .question-card__vf-correcta {
   width: 100%;
   font-size: 13.5px;
   color: var(--danger);
 }
 
-/* Tipo: relacionar (dos columnas para emparejar) */
 .question-card__match {
   display: flex;
   gap: 24px;
@@ -241,6 +268,7 @@
   margin-bottom: 20px;
   width: 100%;
 }
+
 .question-card__match-col {
   display: flex;
   flex-direction: column;
@@ -251,6 +279,7 @@
   flex: 1 1 160px;
   justify-content: center;
 }
+
 .question-card__match-col li {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
@@ -263,6 +292,7 @@
 }
 
 /* Tipo: completar (texto con espacios en blanco) */
+
 .question-card__cloze {
   font-size: 15px;
   line-height: 2.2;
@@ -271,15 +301,29 @@
   margin-bottom: 16px;
   line-height: 1.5;
 }
+
 .question-card__cloze-input {
-  font-weight: 700;
-  color: var(--primary);
-  margin: 0 2px;
-  transition: color 0.2s linear;
+  display: inline-block;
+  min-width: 80px;
+  margin: 0 4px;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: baseline;
+  line-height: 1;
+  border-bottom: 2px solid var(--warning);
 }
+
+.question-card__cloze-input.has-value {
+  border-bottom: none;
+  color: var(--warning);
+}
+
 .question-card__cloze-input.is-correct {
   color: var(--success);
+  border-bottom-color: var(--success);
 }
+
 .question-card__cloze-input.is-wrong {
   color: var(--danger);
+  border-bottom-color: var(--danger);
 }

@@ -3,6 +3,7 @@ import MiEstudioPage from "./pages/MiEstudio/MiEstudioPage";
 import HorarioPage from "./pages/Horario/HorarioPage";
 import ScheduleEditor from "./pages/Horario/ScheduleEditor";
 import RepasoPage from "./pages/Repaso/RepasoPage";
+import ExamenPage from "./pages/Examen/ExamenPage";
 import { PomodoroProvider } from "./context/PomodoroContext";
 import {
   FooterVisibilityProvider,
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/pomodoro" element={<HorarioPage />} />
             <Route path="/editar" element={<ScheduleEditor />} />
             <Route path="/repaso" element={<RepasoPage />} />
+            <Route path="/examen" element={<ExamenPage />} />
           </Routes>
           <AppFooterGate />
         </FooterVisibilityProvider>

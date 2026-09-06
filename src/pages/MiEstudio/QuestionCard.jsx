@@ -463,12 +463,17 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
             ? palabrasElegidas[idx]
             : "";
 
+          // El espacio vacío se ve como una simple línea (gracias al
+          // border-bottom de .question-card__cloze-input en el CSS),
+          // no como guiones bajos escritos. Mientras el usuario elige
+          // (antes de responder) se resalta en ámbar con "has-value";
+          // al responder, se pinta verde o rojo como antes.
           let statusClass = "";
 
           if (answered) {
-            statusClass = wasCorrect
-              ? "is-correct"
-              : "is-wrong";
+            statusClass = wasCorrect ? "is-correct" : "is-wrong";
+          } else if (texto) {
+            statusClass = "has-value";
           }
 
           return (
@@ -476,11 +481,7 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
               key={i}
               className={`question-card__cloze-input ${statusClass}`}
             >
-              {texto ? (
-                <LatexText>{texto}</LatexText>
-              ) : (
-                "______"
-              )}
+              {texto ? <LatexText>{texto}</LatexText> : "\u00A0"}
             </span>
           );
         })}

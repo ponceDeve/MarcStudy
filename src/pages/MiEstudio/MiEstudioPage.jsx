@@ -34,6 +34,7 @@ import {
   leerYLimpiarRetorno
 } from "../../lib/pomodoroShared";
 import { shuffle } from "../../lib/shuffle";
+import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
 import "katex/dist/katex.min.css";
 
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
@@ -772,6 +773,7 @@ export default function MiEstudioPage() {
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [simulacroModalOpen, setSimulacroModalOpen] = useState(false);
 
   useEffect(() => {
     let q = searchParams.get("q");
@@ -1533,8 +1535,8 @@ export default function MiEstudioPage() {
           <h3 className="retirada-modal__title">Regresar a la teoría</h3>
           <p className="retirada-modal__subtitle">¿Ya te rendiste, perdedor?</p>
           <div className="retirada-modal__actions">
-            <button type="button" className="retirada-modal__btn is-cancel" onClick={cancelarAbandonarPregunta}>Cancelar</button>
-            <button type="button" className="retirada-modal__btn is-confirm" onClick={confirmarAbandonarPregunta}>Regresar</button>
+            <button type="button" className="retirada-modal__btn is-confirm" onClick={cancelarAbandonarPregunta}>Cancelar</button>
+            <button type="button" className="retirada-modal__btn is-cancel" onClick={confirmarAbandonarPregunta}>Regresar</button>
           </div>
         </div>
       </Modal>
@@ -1631,42 +1633,73 @@ export default function MiEstudioPage() {
                   </p>
 
                   <div className="welcome-section__continuar-wrapper">
-                    {avisoContinuarVacio && (
-                      <span className="aviso-bloqueo">
-                        No hay tema para continuar
-                      </span>
-                    )}
 
-                    <button
-                      type="button"
-                      className="welcome-section__continuar-btn"
-                      onClick={() => {
-                        if (!ultimoTemaInicio) {
-                          mostrarAvisoContinuarVacio();
-                          return;
-                        }
+  {avisoContinuarVacio && (
+    <span className="aviso-bloqueo">
+      No hay tema para continuar
+    </span>
+  )}
 
-                        seleccionarItem({
-                          type: "tema",
-                          curso: ultimoTemaInicio.curso,
-                          tema: ultimoTemaInicio.tema,
-                          archivo: ultimoTemaInicio.archivo
-                        });
-                      }}
-                    >
-                      <span className="welcome-section__continuar-label">
-                        Continuar:
-                      </span>
+  <button
+    type="button"
+    className="welcome-section__continuar-btn"
+    onClick={() => {
+      if (!ultimoTemaInicio) {
+        mostrarAvisoContinuarVacio();
+        return;
+      }
 
-                      <span className="welcome-section__continuar-tema">
-                        {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
-                      </span>
+      seleccionarItem({
+        type: "tema",
+        curso: ultimoTemaInicio.curso,
+        tema: ultimoTemaInicio.tema,
+        archivo: ultimoTemaInicio.archivo
+      });
+    }}
+  >
+    <span className="welcome-section__continuar-label">
+      Continuar:
+    </span>
 
-                      <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
-                    </button>
-                  </div>
+    <span className="welcome-section__continuar-tema">
+      {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
+    </span>
+
+    <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
+  </button>
+
+  <button
+    type="button"
+    className="welcome-section__simulacro-panel"
+    onClick={() => setSimulacroModalOpen(true)}
+    aria-label="Rendir simulacro"
+  >
+    <span className="welcome-section__simulacro-icon">
+      <i className="bi bi-bullseye"></i>
+    </span>
+
+    <span className="welcome-section__simulacro-info">
+      <strong>Rendir simulacro</strong>
+      <span>Pon a prueba tus conocimientos</span>
+    </span>
+
+    <span className="welcome-section__simulacro-arrow">
+      <i className="bi bi-arrow-right"></i>
+    </span>
+  </button>
+
+</div>
                 </div>
               </section>
+
+              <SeleccionAreaModal
+                open={simulacroModalOpen}
+                onClose={() => setSimulacroModalOpen(false)}
+                onConfirmar={(area) => {
+                  setSimulacroModalOpen(false);
+                  navigate(`/examen?area=${area}`);
+                }}
+              />
             </div>
 
             <div className="mi-estudio__below">

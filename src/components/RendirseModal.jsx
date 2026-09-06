@@ -93,7 +93,7 @@ export default function RendirseModal({
         <div className="rendirse-modal__actions">
           <button
             type="button"
-            className="rendirse-modal__btn is-cancel"
+            className="rendirse-modal__btn is-confirm"
             onClick={onContinuar}
           >
             Continuar
@@ -101,7 +101,7 @@ export default function RendirseModal({
 
           <button
             type="button"
-            className="rendirse-modal__btn is-confirm"
+            className="rendirse-modal__btn is-cancel"
             onClick={onRendirse}
           >
             Rendirse
