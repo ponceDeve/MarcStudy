@@ -15,6 +15,8 @@
   margin: 0 auto;
 }
 
+/* PREGUNTA */
+
 .question-card__q {
   margin: 20px 0 32px;
   color: var(--ink);
@@ -22,7 +24,7 @@
 
 .question-card__q span {
   font-size: 18px;
-  line-height: -10px;
+  line-height: 1.4;
 }
 
 .question-card__q-intro {
@@ -51,63 +53,376 @@
   background: var(--surface-alt);
 }
 
+/* ALTERNATIVAS */
+
 .question-card__options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: center;
+  gap: 8px;
+  justify-content: flex-start;
   margin-bottom: 28px;
+  width: 100%;
 }
+
+/* ALTERNATIVA INDIVIDUAL */
 
 .question-card__opt {
-  font-size: 14px;
-  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 4px 0;
+  margin: 0;
+  border: none;
   border-radius: var(--radius-md);
-  padding: 14px 12px;
+  background: var(--surface);
   color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: var(--fw-normal);
+  line-height: 1.45;
+  text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: border-color 0.15s, background 0.15s;
-  text-align: start;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    opacity 0.15s ease;
 }
 
-@media (min-width: 640px) {
-  .question-card__opt {
-    flex: 1;
-  }
+/* CÍRCULO */
+
+.question-card__opt-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
 }
 
-.question-card__opt:hover:not(:disabled) {
-  background: var(--surface-hover);
-  border-color: var(--ink);
+/* TEXTO */
+
+.question-card__opt-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-top: 6px;
+  color: var(--ink);
 }
+
+/* ============================================================
+   HOVER NORMAL
+   SOLO FUNCIONA MIENTRAS NO HAYA NINGUNA SELECCIONADA
+   ============================================================ */
+
+.question-card__opt:hover:not(:disabled):not(.is-selected) {
+  background: var(--primary-bg);
+  color: var(--ink);
+}
+
+.question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   SELECCIONADA
+   ============================================================ */
 
 .question-card__opt.is-selected {
-  border-color: var(--ink);
-  background: var(--surface-hover);
-  box-shadow: 0 0 0 1px var(--ink);
-  font-weight: 600;
-  transform: translateY(-2px);
+  background: var(--brand-bg);
   color: var(--ink);
+  font-weight: var(--fw-semibold);
+  cursor: default !important;
+}
+
+.question-card__opt.is-selected .question-card__opt-letter {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--ink-on-primary);
+  transform: scale(1.04);
+}
+
+.question-card__opt.is-selected .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   SELECCIONADA — SIN HOVER
+   ============================================================ */
+
+.question-card__opt.is-selected:hover:not(:disabled) {
+  background: var(--brand-bg);
+  color: var(--ink);
+  cursor: default !important;
+}
+
+.question-card__opt.is-selected:hover:not(:disabled)
+  .question-card__opt-letter {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--ink-on-primary);
+  transform: scale(1.04);
+}
+
+.question-card__opt.is-selected:hover:not(:disabled)
+  .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   DESPUÉS DE SELECCIONAR UNA ALTERNATIVA
+   LAS DEMÁS YA NO TIENEN HOVER DE FONDO
+   SOLO EL CÍRCULO CAMBIA
+   ============================================================ */
+
+.question-card:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected) {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.question-card:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.question-card:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   CORRECTA
+   ============================================================ */
+
+.question-card__opt.is-correct {
+  background: var(--success-bg);
+  color: var(--ink);
+}
+
+.question-card__opt.is-correct .question-card__opt-letter {
+  border-color: var(--success);
+  background: var(--success);
+  color: var(--ink-on-primary);
+}
+
+.question-card__opt.is-correct .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   INCORRECTA
+   ============================================================ */
+
+.question-card__opt.is-wrong {
+  background: var(--accent-bg);
+  color: var(--ink);
+}
+
+.question-card__opt.is-wrong .question-card__opt-letter {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--ink-on-primary);
+}
+
+.question-card__opt.is-wrong .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   MUTED
+   ============================================================ */
+
+.question-card__opt.is-muted {
+  background: var(--surface);
+  color: var(--ink-faint);
+  opacity: 0.5;
+}
+
+.question-card__opt.is-muted .question-card__opt-letter {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--ink-faint);
+}
+
+.question-card__opt.is-muted .question-card__opt-text {
+  color: var(--ink-faint);
 }
 
 .question-card__opt:disabled {
-  cursor: default;
+  cursor: default !important;
 }
 
-.question-card__opt.is-correct {
-  border-color: var(--success);
-  background: var(--success-bg);
+/* ============================================================
+   COMPLETAR Y RELACIONAR
+   ============================================================ */
+
+.question-card--completar .question-card__options,
+.question-card--relacionar .question-card__options {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 18px;
 }
 
-.question-card__opt.is-wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
+/* ALTERNATIVAS CORTAS */
+
+.question-card--completar .question-card__opt,
+.question-card--relacionar .question-card__opt {
+  width: auto;
+  max-width: 100%;
+  flex: 0 1 auto;
+  align-items: center;
+  padding: 4px 6px;
 }
 
-.question-card__opt.is-muted {
-  border-color: var(--border);
-  opacity: 0.55;
+/* TEXTO CORTAS */
+
+.question-card--completar .question-card__opt-text,
+.question-card--relacionar .question-card__opt-text {
+  flex: 0 1 auto;
+  padding-top: 0;
 }
+
+/* ============================================================
+   HOVER CORTAS — ANTES DE SELECCIONAR
+   ============================================================ */
+
+.question-card--completar .question-card__opt:hover:not(:disabled):not(.is-selected),
+.question-card--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) {
+  background: var(--primary-bg);
+  color: var(--ink);
+}
+
+.question-card--completar .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter,
+.question-card--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+/* ============================================================
+   CORTAS DESPUÉS DE SELECCIONAR
+   SIN HOVER DE FONDO
+   ============================================================ */
+
+.question-card--completar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected),
+.question-card--relacionar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected) {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.question-card--completar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter,
+.question-card--relacionar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-letter {
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.question-card--completar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-text,
+.question-card--relacionar:has(.question-card__opt.is-selected)
+  .question-card__opt:hover:not(:disabled):not(.is-selected)
+  .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   SELECCIONADA CORTAS — SIN HOVER
+   ============================================================ */
+
+.question-card--completar .question-card__opt.is-selected,
+.question-card--relacionar .question-card__opt.is-selected {
+  background: var(--brand-bg);
+  color: var(--ink);
+  cursor: default !important;
+}
+
+.question-card--completar .question-card__opt.is-selected:hover:not(:disabled),
+.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled) {
+  background: var(--brand-bg);
+  color: var(--ink);
+  cursor: default !important;
+}
+
+.question-card--completar .question-card__opt.is-selected .question-card__opt-letter,
+.question-card--relacionar .question-card__opt.is-selected .question-card__opt-letter {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--ink-on-primary);
+  transform: scale(1.04);
+}
+
+.question-card--completar .question-card__opt.is-selected:hover:not(:disabled)
+  .question-card__opt-letter,
+.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled)
+  .question-card__opt-letter {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--ink-on-primary);
+  transform: scale(1.04);
+}
+
+.question-card--completar .question-card__opt.is-selected .question-card__opt-text,
+.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled)
+  .question-card__opt-text {
+  color: var(--ink);
+}
+
+/* ============================================================
+   RESPONSIVE SHORT
+   ============================================================ */
+
+@media (max-width: 520px) {
+  .question-card--completar .question-card__options,
+  .question-card--relacionar .question-card__options {
+    justify-content: flex-start;
+    gap: 6px 10px;
+  }
+
+  .question-card--completar .question-card__opt,
+  .question-card--relacionar .question-card__opt {
+    max-width: calc(50% - 10px);
+  }
+}
+
+/* ============================================================
+   RESPONDER
+   ============================================================ */
 
 .question-card__type-wrap {
   display: flex;
@@ -120,10 +435,11 @@
 .question-card__input {
   width: 100%;
   max-width: 28rem;
-  background: rgba(0,0,0,.1);
+  background: rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
   padding: 10px 16px;
+  font-family: var(--font);
   font-size: 14px;
   color: var(--ink);
   outline: none;
@@ -140,10 +456,13 @@
   color: var(--ink-on-primary);
   border: none;
   border-radius: var(--radius-md);
+  font-family: var(--font);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--fw-semibold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.15s;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
   text-transform: uppercase;
 }
 
@@ -167,11 +486,19 @@
   background: var(--surface-hover);
 }
 
+/* ============================================================
+   EXPLICACIÓN
+   ============================================================ */
+
 .question-card__explicacion {
   margin-top: 16px;
   font-size: 14px;
   color: var(--ink-soft);
 }
+
+/* ============================================================
+   VERDADERO / FALSO
+   ============================================================ */
 
 .question-card__vf-list {
   display: flex;
@@ -194,24 +521,26 @@
   background: var(--surface-alt);
   padding: 10px 14px;
   counter-increment: proposicion;
-  transition: border-color 0.2s linear, background 0.2s linear;
+  transition:
+    border-color 0.2s linear,
+    background 0.2s linear;
 }
 
 .question-card__vf-row::before {
   content: counter(proposicion) ".";
-  font-weight: 700;
+  font-weight: var(--fw-bold);
   color: var(--ink-soft);
   flex-shrink: 0;
 }
 
 .question-card__vf-row.is-correct {
-  border-color: var(--success);
-  background: var(--success-bg);
+  border-color: var(--primary);
+  background: var(--primary-bg);
 }
 
 .question-card__vf-row.is-wrong {
-  border-color: var(--danger);
-  background: var(--danger-bg);
+  border-color: var(--accent);
+  background: var(--accent-bg);
 }
 
 .question-card__vf-texto {
@@ -233,20 +562,25 @@
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--ink-soft);
-  font-weight: 700;
+  font-family: var(--font);
+  font-weight: var(--fw-bold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear;
+  transition:
+    background 0.15s linear,
+    border-color 0.15s linear,
+    color 0.15s linear;
 }
 
 .question-card__vf-btn:hover:not(:disabled) {
-  border-color: var(--success-bg);
-  background: var(--success-bg);
+  border-color: var(--primary);
+  background: var(--primary-bg);
+  color: var(--primary);
 }
 
 .question-card__vf-btn.is-selected,
 .question-card__vf-btn.is-selected:hover {
-  background: var(--success);
-  border-color: var(--success);
+  background: var(--brand);
+  border-color: var(--brand);
   color: var(--ink-on-primary);
 }
 
@@ -257,8 +591,12 @@
 .question-card__vf-correcta {
   width: 100%;
   font-size: 13.5px;
-  color: var(--danger);
+  color: var(--ink-soft);
 }
+
+/* ============================================================
+   RELACIONAR — COLUMNAS
+   ============================================================ */
 
 .question-card__match {
   display: flex;
@@ -277,7 +615,13 @@
   padding: 0;
   margin: 0;
   flex: 1 1 160px;
-  justify-content: center;
+  justify-content: space-between;
+}
+
+/* RELACIONAR — DISTRIBUCIÓN HIJOS */
+
+.question-card__match--relacionar .question-card__match-col {
+  justify-content: space-between;
 }
 
 .question-card__match-col li {
@@ -288,42 +632,115 @@
   font-size: 13.5px;
   color: var(--ink);
   text-align: left;
-  transition: border-color 0.15s linear, background 0.15s linear;
+  transition:
+    border-color 0.15s linear,
+    background 0.15s linear,
+    color 0.15s linear;
 }
 
-/* Tipo: completar (texto con espacios en blanco) */
+/* ============================================================
+   COMPLETAR — TEXTO CON ESPACIOS
+   ============================================================ */
 
 .question-card__cloze {
   font-size: 15px;
-  line-height: 2.2;
   color: var(--ink);
   text-align: start;
   margin-bottom: 16px;
   line-height: 1.5;
 }
 
+/* ESPACIO */
+
 .question-card__cloze-input {
+  position: relative;
   display: inline-block;
   min-width: 80px;
   margin: 0 4px;
-  font-weight: 600;
+  padding: 0 3px;
+  font-weight: var(--fw-semibold);
+  color: var(--ink);
   text-align: center;
   vertical-align: baseline;
-  line-height: 1;
-  border-bottom: 2px solid var(--warning);
+  line-height: inherit;
 }
+
+/* LÍNEA */
+
+.question-card__cloze-input::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  transition:
+    opacity 0.15s ease,
+    background 0.15s ease;
+}
+
+/* SELECCIONADA */
 
 .question-card__cloze-input.has-value {
-  border-bottom: none;
-  color: var(--warning);
+  color: var(--brand);
 }
+
+.question-card__cloze-input.has-value::after {
+  opacity: 0;
+}
+
+/* CORRECTA */
 
 .question-card__cloze-input.is-correct {
-  color: var(--success);
-  border-bottom-color: var(--success);
+  color: var(--primary);
 }
 
+.question-card__cloze-input.is-correct::after {
+  opacity: 0;
+}
+
+/* INCORRECTA */
+
 .question-card__cloze-input.is-wrong {
-  color: var(--danger);
-  border-bottom-color: var(--danger);
+  color: var(--accent);
+}
+
+.question-card__cloze-input.is-wrong::after {
+  opacity: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .question-card {
+    padding: 24px 16px;
+  }
+
+  .question-card__q {
+    margin-top: 16px;
+    margin-bottom: 24px;
+  }
+
+  .question-card__q-intro {
+    font-size: 17px;
+  }
+
+  .question-card__opt {
+    gap: 10px;
+  }
+
+  .question-card__opt-letter {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .question-card__opt-text {
+    padding-top: 5px;
+  }
 }

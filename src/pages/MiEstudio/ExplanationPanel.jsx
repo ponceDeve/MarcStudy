@@ -185,9 +185,9 @@ export default function ExplanationPanel({
     let base;
 
     if (isCorrect) {
-      base = `Correcto. ${pregunta.explicacion}`;
+      base = "Correcto.";
     } else if (rendido) {
-      base = `${infoRendirse?.explicacion} ${pregunta.explicacion}`;
+      base = infoRendirse?.explicacion || "";
     } else {
       base = "Incorrecto. Inténtalo de nuevo.";
     }
@@ -264,37 +264,28 @@ export default function ExplanationPanel({
         </p>
       )}
 
-      <div className="explanation-panel__actions">
-        {isCorrect ? (
-          <button
-            onClick={onSiguiente}
-            className="explanation-panel__btn is-next"
-          >
-            Siguiente <i className="fas fa-arrow-right" />
-          </button>
-        ) : (
-          <>
+      {!isCorrect && (
+        <div className="explanation-panel__actions">
+          {rendido ? (
             <button
               onClick={onReintentar}
               className="explanation-panel__btn is-neutral"
             >
               Repetir <i className="fas fa-rotate-left" />
             </button>
-
-            {!rendido && (
-              <button
-                type="button"
-                onClick={() =>
-                  setMostrarModalRendirse(true)
-                }
-                className="explanation-panel__btn is-neutral"
-              >
-                Rendirse <i className="fas fa-flag" />
-              </button>
-            )}
-          </>
-        )}
-      </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() =>
+                setMostrarModalRendirse(true)
+              }
+              className="explanation-panel__btn is-neutral"
+            >
+              Rendirse <i className="fas fa-flag" />
+            </button>
+          )}
+        </div>
+      )}
 
       <RendirseModal
         abierto={mostrarModalRendirse}

@@ -1,5 +1,7 @@
 import LatexText from "../../components/LatexText";
 
+const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
+
 // ============================================================================
 // DETECTAR ESPACIOS DE COMPLETAR
 // ============================================================================
@@ -195,7 +197,9 @@ export default function PreguntaSimulacro({
                 key={i}
                 className={`question-card__cloze-input ${
                   texto ? "has-value" : ""
-                } ${modoResultado ? "is-correct" : ""}`}
+                } ${
+                  modoResultado ? "is-correct" : ""
+                }`}
               >
                 {texto ? (
                   <LatexText>{texto}</LatexText>
@@ -220,8 +224,6 @@ export default function PreguntaSimulacro({
                 respuesta === null ||
                 respuesta === undefined;
 
-              // Respondió bien:
-              // mostrar únicamente la correcta.
               if (
                 respuesta === pregunta.correctoIdx &&
                 !esCorrecta
@@ -229,14 +231,10 @@ export default function PreguntaSimulacro({
                 return null;
               }
 
-              // No respondió:
-              // mostrar únicamente la correcta.
               if (estaEnBlanco && !esCorrecta) {
                 return null;
               }
 
-              // Respondió mal:
-              // mostrar marcada + correcta.
               if (
                 !estaEnBlanco &&
                 respuesta !== pregunta.correctoIdx &&
@@ -267,11 +265,18 @@ export default function PreguntaSimulacro({
                     : ""
                 } ${claseResultado}`}
               >
-                <LatexText>
-                  {Array.isArray(combo)
-                    ? combo.join(" · ")
-                    : combo}
-                </LatexText>
+                <span className="question-card__opt-letter">
+                  {LETRAS_ALTERNATIVAS[i] ||
+                    String.fromCharCode(65 + i)}
+                </span>
+
+                <span className="question-card__opt-text">
+                  <LatexText>
+                    {Array.isArray(combo)
+                      ? combo.join(" · ")
+                      : combo}
+                  </LatexText>
+                </span>
               </button>
             );
           })}
@@ -365,7 +370,14 @@ export default function PreguntaSimulacro({
                     : ""
                 } ${claseResultado}`}
               >
-                <LatexText>{combo}</LatexText>
+                <span className="question-card__opt-letter">
+                  {LETRAS_ALTERNATIVAS[i] ||
+                    String.fromCharCode(65 + i)}
+                </span>
+
+                <span className="question-card__opt-text">
+                  <LatexText>{combo}</LatexText>
+                </span>
               </button>
             );
           })}
@@ -378,32 +390,21 @@ export default function PreguntaSimulacro({
   // OPCIÓN MÚLTIPLE
   // ==========================================================================
 
-  const lineasQ = (pregunta.q || "")
-    .split("\n")
-    .filter((l) => l.trim() !== "");
-
-  const introQ = lineasQ[0] || "";
-  const restoQ = lineasQ.slice(1);
+  const parrafosQ = (pregunta.q || "")
+    .split(/\n\s*\n/)
+    .filter((p) => p.trim() !== "");
 
   return (
     <>
       <div className="question-card__q">
-        <p className="question-card__q-intro">
-          <LatexText>{introQ}</LatexText>
-        </p>
-
-        {restoQ.length > 0 && (
-          <div className="question-card__q-props">
-            {restoQ.map((linea, i) => (
-              <p
-                key={i}
-                className="question-card__q-prop"
-              >
-                <LatexText>{linea}</LatexText>
-              </p>
-            ))}
-          </div>
-        )}
+        {parrafosQ.map((parrafo, i) => (
+          <p
+            key={i}
+            className="question-card__q-prop"
+          >
+            <LatexText>{parrafo}</LatexText>
+          </p>
+        ))}
       </div>
 
       <div className="question-card__options">
@@ -419,8 +420,6 @@ export default function PreguntaSimulacro({
               respuesta === null ||
               respuesta === undefined;
 
-            // Respondió correctamente:
-            // mostrar únicamente la correcta.
             if (
               respuesta === pregunta.correctoIdx &&
               !esCorrecta
@@ -428,14 +427,10 @@ export default function PreguntaSimulacro({
               return null;
             }
 
-            // No respondió:
-            // mostrar únicamente la correcta.
             if (estaEnBlanco && !esCorrecta) {
               return null;
             }
 
-            // Respondió incorrectamente:
-            // mostrar únicamente marcada + correcta.
             if (
               !estaEnBlanco &&
               respuesta !== pregunta.correctoIdx &&
@@ -466,7 +461,14 @@ export default function PreguntaSimulacro({
                   : ""
               } ${claseResultado}`}
             >
-              <LatexText>{texto}</LatexText>
+              <span className="question-card__opt-letter">
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(65 + i)}
+              </span>
+
+              <span className="question-card__opt-text">
+                <LatexText>{texto}</LatexText>
+              </span>
             </button>
           );
         })}

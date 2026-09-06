@@ -1351,7 +1351,10 @@ export default function MiEstudioPage() {
           ? examenPreguntas[cardIndex] || null
           : null;
 
-  const canAdvance = stage !== "question" || Boolean(questionResult && questionResult.isCorrect);
+  const canAdvance =
+    stage !== "question" ||
+    modoEstudio === "solo_preguntas" ||
+    Boolean(questionResult && questionResult.isCorrect);
 
   const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
   const hintBloqueoTimeoutRef = useRef(null);
@@ -1897,6 +1900,7 @@ export default function MiEstudioPage() {
                       onRespondido={manejarRespuesta}
                       onRendirse={rendirsePregunta}
                       onReintentar={reintentarPregunta}
+                      onSiguiente={avanzarCard}
                       vidas={vidas}
                     />
                   </div>

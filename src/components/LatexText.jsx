@@ -1,4 +1,5 @@
 import katex from "katex";
+
 import "katex/dist/katex.min.css";
 
 /**
@@ -214,6 +215,14 @@ function renderLatex(texto) {
     texto = String(texto);
   }
 
+  /**
+   * Convierte "\n" escrito literalmente dentro de los datos
+   * en un salto de línea real.
+   *
+   * Si ya existe un salto de línea real, no lo modifica.
+   */
+  texto = texto.replace(/\\n/g, "\n");
+
   if (!texto) {
     return "";
   }
@@ -250,6 +259,9 @@ function renderLatex(texto) {
         resultado.push(
           <span
             key={`texto-${indice}-${subIndice}`}
+            style={{
+              whiteSpace: "pre-line",
+            }}
           >
             {subParte.valor}
           </span>
@@ -287,7 +299,12 @@ export default function LatexText({
       : String(children);
 
   return (
-    <span className={className}>
+    <span
+      className={className}
+      style={{
+        whiteSpace: "pre-line",
+      }}
+    >
       {renderLatex(texto)}
     </span>
   );

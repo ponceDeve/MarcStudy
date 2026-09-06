@@ -33,7 +33,9 @@ function leerEstadoGuardado(area) {
 
     if (data.area !== area) return null;
 
-    if (!data.horaFin || data.horaFin <= Date.now()) return null;
+    if (!data.horaFin || data.horaFin <= Date.now()) {
+      return null;
+    }
 
     return data;
   } catch {
@@ -43,7 +45,10 @@ function leerEstadoGuardado(area) {
 
 function guardarEstado(estado) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(estado)
+    );
   } catch {
     // Si falla el guardado no rompemos el examen, solo no persiste.
   }
@@ -56,9 +61,13 @@ function limpiarEstadoGuardado() {
 function formatearTiempo(segundos) {
   const s = Math.max(0, Math.round(segundos));
 
-  const h = String(Math.floor(s / 3600)).padStart(2, "0");
+  const h = String(
+    Math.floor(s / 3600)
+  ).padStart(2, "0");
 
-  const m = String(Math.floor((s % 3600) / 60)).padStart(2, "0");
+  const m = String(
+    Math.floor((s % 3600) / 60)
+  ).padStart(2, "0");
 
   const ss = String(s % 60).padStart(2, "0");
 
@@ -72,30 +81,40 @@ export default function ExamenPage() {
 
   const navigate = useNavigate();
 
-  const { setFooterHidden } = useFooterVisibility();
+  const { setFooterHidden } =
+    useFooterVisibility();
 
-  const [etapa, setEtapa] = useState("cargando");
+  const [etapa, setEtapa] =
+    useState("cargando");
 
-  const [preguntas, setPreguntas] = useState([]);
+  const [preguntas, setPreguntas] =
+    useState([]);
 
-  const [respuestas, setRespuestas] = useState({});
+  const [respuestas, setRespuestas] =
+    useState({});
 
-  const [horaFin, setHoraFin] = useState(null);
+  const [horaFin, setHoraFin] =
+    useState(null);
 
   /*
    * Ahora el índice representa el CURSO actual,
    * no una pregunta individual.
    */
-  const [indiceCurso, setIndiceCurso] = useState(0);
+
+  const [indiceCurso, setIndiceCurso] =
+    useState(0);
 
   const [segundosLeft, setSegundosLeft] =
     useState(DURACION_SEGUNDOS);
 
-  const [modal, setModal] = useState(null);
+  const [modal, setModal] =
+    useState(null);
 
-  const [resultados, setResultados] = useState(null);
+  const [resultados, setResultados] =
+    useState(null);
 
-  const respuestasRef = useRef(respuestas);
+  const respuestasRef =
+    useRef(respuestas);
 
   respuestasRef.current = respuestas;
 
@@ -109,14 +128,19 @@ export default function ExamenPage() {
     let cancelado = false;
 
     async function iniciar() {
-      const guardado = leerEstadoGuardado(area);
+      const guardado =
+        leerEstadoGuardado(area);
 
       if (guardado) {
         if (cancelado) return;
 
-        setPreguntas(guardado.preguntas || []);
+        setPreguntas(
+          guardado.preguntas || []
+        );
 
-        setRespuestas(guardado.respuestas || {});
+        setRespuestas(
+          guardado.respuestas || {}
+        );
 
         setHoraFin(guardado.horaFin);
 
@@ -124,7 +148,9 @@ export default function ExamenPage() {
           Math.max(
             0,
             Math.round(
-              (guardado.horaFin - Date.now()) / 1000
+              (guardado.horaFin -
+                Date.now()) /
+                1000
             )
           )
         );
@@ -134,12 +160,14 @@ export default function ExamenPage() {
         return;
       }
 
-      const nuevasPreguntas = await armarSimulacro(area);
+      const nuevasPreguntas =
+        await armarSimulacro(area);
 
       if (cancelado) return;
 
       const fin =
-        Date.now() + DURACION_SEGUNDOS * 1000;
+        Date.now() +
+        DURACION_SEGUNDOS * 1000;
 
       setPreguntas(nuevasPreguntas);
 
@@ -147,7 +175,9 @@ export default function ExamenPage() {
 
       setHoraFin(fin);
 
-      setSegundosLeft(DURACION_SEGUNDOS);
+      setSegundosLeft(
+        DURACION_SEGUNDOS
+      );
 
       setEtapa("en_curso");
 
@@ -178,12 +208,22 @@ export default function ExamenPage() {
    * no quedarse en el scroll que tenía el curso anterior.
    * ============================================================
    */
+
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto",
+    });
   }, [indiceCurso]);
 
   useEffect(() => {
-    if (etapa !== "en_curso" || !horaFin) return;
+    if (
+      etapa !== "en_curso" ||
+      !horaFin
+    ) {
+      return;
+    }
 
     function tick() {
       const restante = Math.round(
@@ -199,14 +239,21 @@ export default function ExamenPage() {
 
     tick();
 
-    const id = setInterval(tick, 1000);
+    const id = setInterval(
+      tick,
+      1000
+    );
 
-    return () => clearInterval(id);
+    return () =>
+      clearInterval(id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [etapa, horaFin]);
 
-  function actualizarRespuesta(preguntaId, valor) {
+  function actualizarRespuesta(
+    preguntaId,
+    valor
+  ) {
     setRespuestas((prev) => {
       const nuevo = {
         ...prev,
@@ -247,7 +294,8 @@ export default function ExamenPage() {
     return (
       <div className="examen-page examen-page--cargando">
         <p>
-          Armando tu simulacro del área {area}...
+          Armando tu simulacro del área{" "}
+          {area}...
         </p>
       </div>
     );
@@ -277,7 +325,9 @@ export default function ExamenPage() {
    *
    * El orden se conserva según la primera aparición de cada
    * curso dentro de preguntas.
+   * ============================================================
    */
+
   const cursos = [];
 
   const cursosMap = new Map();
@@ -288,7 +338,8 @@ export default function ExamenPage() {
     if (!cursosMap.has(curso)) {
       const grupo = {
         curso,
-        cursoNombre: pregunta.cursoNombre,
+        cursoNombre:
+          pregunta.cursoNombre,
         preguntas: [],
       };
 
@@ -297,12 +348,15 @@ export default function ExamenPage() {
       cursos.push(grupo);
     }
 
-    cursosMap.get(curso).preguntas.push(pregunta);
+    cursosMap
+      .get(curso)
+      .preguntas.push(pregunta);
   });
 
   /*
    * Protección por si el examen todavía no tiene preguntas.
    */
+
   const cursoActual =
     cursos[indiceCurso] || null;
 
@@ -314,6 +368,7 @@ export default function ExamenPage() {
    * CONTADOR / PROGRESO
    * ============================================================
    */
+
   const totalRespondidas =
     Object.keys(respuestas).length;
 
@@ -325,11 +380,15 @@ export default function ExamenPage() {
    * La aguja da una vuelta cada 60 minutos.
    * ============================================================
    */
+
   const segundosTranscurridos =
-    DURACION_SEGUNDOS - segundosLeft;
+    DURACION_SEGUNDOS -
+    segundosLeft;
 
   const rotacionAguja =
-    ((segundosTranscurridos / 60) * 6) % 360;
+    ((segundosTranscurridos / 60) *
+      6) %
+    360;
 
   /*
    * ============================================================
@@ -341,51 +400,66 @@ export default function ExamenPage() {
    * Esto permite que preguntas del mismo texto compartan
    * un único bloque de contexto y que textos diferentes
    * permanezcan separados.
+   * ============================================================
    */
+
   const gruposRV = [];
 
   const gruposRVMap = new Map();
 
-  preguntasDelCurso.forEach((pregunta) => {
-    const textoRV = pregunta.textoRV;
+  preguntasDelCurso.forEach(
+    (pregunta) => {
+      const textoRV =
+        pregunta.textoRV;
 
-    if (!textoRV) return;
+      if (!textoRV) return;
 
-    const tieneContenido =
-      textoRV.titulo ||
-      textoRV.texto ||
-      textoRV.imagen;
+      const tieneContenido =
+        textoRV.titulo ||
+        textoRV.texto ||
+        textoRV.imagen;
 
-    if (!tieneContenido) return;
+      if (!tieneContenido) return;
 
-    const clave = JSON.stringify({
-      titulo: textoRV.titulo || "",
-      texto: textoRV.texto || "",
-      imagen: textoRV.imagen || null,
-    });
+      const clave = JSON.stringify({
+        titulo:
+          textoRV.titulo || "",
+        texto:
+          textoRV.texto || "",
+        imagen:
+          textoRV.imagen || null,
+      });
 
-    if (!gruposRVMap.has(clave)) {
-      const grupo = {
-        clave,
-        textoRV,
-        preguntas: [],
-      };
+      if (!gruposRVMap.has(clave)) {
+        const grupo = {
+          clave,
+          textoRV,
+          preguntas: [],
+        };
 
-      gruposRVMap.set(clave, grupo);
+        gruposRVMap.set(
+          clave,
+          grupo
+        );
 
-      gruposRV.push(grupo);
+        gruposRV.push(grupo);
+      }
+
+      gruposRVMap
+        .get(clave)
+        .preguntas.push(pregunta);
     }
-
-    gruposRVMap
-      .get(clave)
-      .preguntas.push(pregunta);
-  });
+  );
 
   /*
    * Determina a qué texto RV pertenece una pregunta.
    */
-  function obtenerClaveTextoRV(pregunta) {
-    const textoRV = pregunta?.textoRV;
+
+  function obtenerClaveTextoRV(
+    pregunta
+  ) {
+    const textoRV =
+      pregunta?.textoRV;
 
     if (!textoRV) return null;
 
@@ -397,9 +471,12 @@ export default function ExamenPage() {
     if (!tieneContenido) return null;
 
     return JSON.stringify({
-      titulo: textoRV.titulo || "",
-      texto: textoRV.texto || "",
-      imagen: textoRV.imagen || null,
+      titulo:
+        textoRV.titulo || "",
+      texto:
+        textoRV.texto || "",
+      imagen:
+        textoRV.imagen || null,
     });
   }
 
@@ -408,11 +485,21 @@ export default function ExamenPage() {
    * RENDER DEL CONTEXTO RV
    * ============================================================
    */
+
   function renderTextoRV(textoRV) {
     if (!textoRV) return null;
 
     const imagen =
       textoRV.imagen || null;
+
+    const parrafos = (
+      textoRV.texto || ""
+    )
+      .split(/\n\s*\n/)
+      .filter(
+        (parrafo) =>
+          parrafo.trim() !== ""
+      );
 
     return (
       <div className="question-card__inner">
@@ -421,8 +508,14 @@ export default function ExamenPage() {
         ) : null}
 
         {textoRV.texto ? (
-          <div>
-            {textoRV.texto}
+          <div className="examen-page__rv-texto-contenido">
+            {parrafos.map(
+              (parrafo, index) => (
+                <p key={index}>
+                  {parrafo}
+                </p>
+              )
+            )}
           </div>
         ) : null}
 
@@ -430,7 +523,10 @@ export default function ExamenPage() {
           <img
             src={`${import.meta.env.BASE_URL}${String(
               imagen
-            ).replace(/^\/+/, "")}`}
+            ).replace(
+              /^\/+/,
+              ""
+            )}`}
             alt={
               textoRV.titulo ||
               "Texto de Razonamiento Verbal"
@@ -449,7 +545,10 @@ export default function ExamenPage() {
    * La navegación ya no utiliza un índice de pregunta.
    * ============================================================
    */
-  function renderTarjetaPregunta(pregunta) {
+
+  function renderTarjetaPregunta(
+    pregunta
+  ) {
     return (
       <div
         key={pregunta.id}
@@ -463,7 +562,9 @@ export default function ExamenPage() {
           <PreguntaSimulacro
             pregunta={pregunta}
             respuesta={
-              respuestas[pregunta.id] ?? null
+              respuestas[
+                pregunta.id
+              ] ?? null
             }
             onCambiar={(valor) =>
               actualizarRespuesta(
@@ -481,8 +582,9 @@ export default function ExamenPage() {
     if (!preguntasDelCurso.length) {
       return (
         <p>
-          No se pudo armar el simulacro (no hay preguntas
-          disponibles todavía para esta área).
+          No se pudo armar el simulacro
+          (no hay preguntas disponibles
+          todavía para esta área).
         </p>
       );
     }
@@ -504,70 +606,88 @@ export default function ExamenPage() {
      * quedan en tarjetas propias y separadas por igual.
      * ==========================================================
      */
+
     const bloques = [];
 
     let grupoActual = null;
 
-    preguntasDelCurso.forEach((pregunta) => {
-      const claveTextoRV =
-        obtenerClaveTextoRV(pregunta);
+    preguntasDelCurso.forEach(
+      (pregunta) => {
+        const claveTextoRV =
+          obtenerClaveTextoRV(
+            pregunta
+          );
 
-      if (claveTextoRV) {
-        if (
-          grupoActual &&
-          grupoActual.clave === claveTextoRV
-        ) {
-          grupoActual.preguntas.push(pregunta);
+        if (claveTextoRV) {
+          if (
+            grupoActual &&
+            grupoActual.clave ===
+              claveTextoRV
+          ) {
+            grupoActual.preguntas.push(
+              pregunta
+            );
+
+            return;
+          }
+
+          grupoActual = {
+            clave: claveTextoRV,
+            textoRV:
+              pregunta.textoRV,
+            preguntas: [pregunta],
+          };
+
+          bloques.push(
+            grupoActual
+          );
 
           return;
         }
 
-        grupoActual = {
-          clave: claveTextoRV,
-          textoRV: pregunta.textoRV,
+        grupoActual = null;
+
+        bloques.push({
+          clave: null,
+          textoRV: null,
           preguntas: [pregunta],
-        };
-
-        bloques.push(grupoActual);
-
-        return;
+        });
       }
+    );
 
-      grupoActual = null;
+    return bloques.map(
+      (bloque) => {
+        if (!bloque.textoRV) {
+          return renderTarjetaPregunta(
+            bloque.preguntas[0]
+          );
+        }
 
-      bloques.push({
-        clave: null,
-        textoRV: null,
-        preguntas: [pregunta],
-      });
-    });
+        return (
+          <div
+            key={bloque.clave}
+            className="examen-page__rv-grupo"
+          >
+            <div className="arcade-game-container question-card examen-page__card examen-page__rv-texto">
+              <div className="examen-page__curso-tag">
+                {cursoActual.cursoNombre}
+              </div>
 
-    return bloques.map((bloque) => {
-      if (!bloque.textoRV) {
-        return renderTarjetaPregunta(
-          bloque.preguntas[0]
-        );
-      }
-
-      return (
-        <div
-          key={bloque.clave}
-          className="examen-page__rv-grupo"
-        >
-          <div className="arcade-game-container question-card examen-page__card examen-page__rv-texto">
-            <div className="examen-page__curso-tag">
-              {cursoActual.cursoNombre}
+              {renderTextoRV(
+                bloque.textoRV
+              )}
             </div>
 
-            {renderTextoRV(bloque.textoRV)}
+            {bloque.preguntas.map(
+              (pregunta) =>
+                renderTarjetaPregunta(
+                  pregunta
+                )
+            )}
           </div>
-
-          {bloque.preguntas.map((pregunta) =>
-            renderTarjetaPregunta(pregunta)
-          )}
-        </div>
-      );
-    });
+        );
+      }
+    );
   }
 
   return (
@@ -575,7 +695,9 @@ export default function ExamenPage() {
       <div className="examen-page__topbar">
         <span
           className={`examen-page__timer ${
-            segundosLeft <= 300 ? "is-urgente" : ""
+            segundosLeft <= 300
+              ? "is-urgente"
+              : ""
           }`}
         >
           <svg
@@ -584,6 +706,7 @@ export default function ExamenPage() {
             aria-hidden="true"
           >
             {/* Esfera del reloj */}
+
             <circle
               className="examen-page__clock-face"
               cx="12"
@@ -592,6 +715,7 @@ export default function ExamenPage() {
             />
 
             {/* Aguja */}
+
             <line
               className="examen-page__clock-minute"
               x1="12"
@@ -600,11 +724,13 @@ export default function ExamenPage() {
               y2="5"
               style={{
                 transform: `rotate(${rotacionAguja}deg)`,
-                transformOrigin: "12px 12px",
+                transformOrigin:
+                  "12px 12px",
               }}
             />
 
             {/* Centro de la aguja */}
+
             <circle
               className="examen-page__clock-center"
               cx="12"
@@ -612,7 +738,9 @@ export default function ExamenPage() {
               r="1"
             />
           </svg>{" "}
-          {formatearTiempo(segundosLeft)}
+          {formatearTiempo(
+            segundosLeft
+          )}
         </span>
 
         <span className="examen-page__progreso">
@@ -627,7 +755,9 @@ export default function ExamenPage() {
         <button
           type="button"
           className="examen-page__abandonar-btn"
-          onClick={() => setModal("abandonar")}
+          onClick={() =>
+            setModal("abandonar")
+          }
         >
           Abandonar
         </button>
@@ -642,32 +772,41 @@ export default function ExamenPage() {
                 const nuevoIndice =
                   cursos.findIndex(
                     (curso) =>
-                      String(curso.curso) ===
+                      String(
+                        curso.curso
+                      ) ===
                       event.target.value
                   );
 
-                if (nuevoIndice !== -1) {
-                  setIndiceCurso(nuevoIndice);
+                if (
+                  nuevoIndice !== -1
+                ) {
+                  setIndiceCurso(
+                    nuevoIndice
+                  );
                 }
               }}
               aria-label="Seleccionar curso"
             >
-              {cursos.map((curso) => (
-                <option
-                  key={curso.curso}
-                  value={curso.curso}
-                >
-                  {curso.cursoNombre}
-                </option>
-              ))}
+              {cursos.map(
+                (curso) => (
+                  <option
+                    key={curso.curso}
+                    value={curso.curso}
+                  >
+                    {curso.cursoNombre}
+                  </option>
+                )
+              )}
             </select>
 
             {renderPreguntasDelCurso()}
           </>
         ) : (
           <p>
-            No se pudo armar el simulacro (no hay preguntas
-            disponibles todavía para esta área).
+            No se pudo armar el simulacro
+            (no hay preguntas disponibles
+            todavía para esta área).
           </p>
         )}
 
@@ -680,8 +819,9 @@ export default function ExamenPage() {
                 cursos.length === 0
               }
               onClick={() =>
-                setIndiceCurso((i) =>
-                  Math.max(0, i - 1)
+                setIndiceCurso(
+                  (i) =>
+                    Math.max(0, i - 1)
                 )
               }
               className="examen-page__nav-btn"
@@ -694,14 +834,16 @@ export default function ExamenPage() {
               type="button"
               disabled={
                 cursos.length === 0 ||
-                indiceCurso >= cursos.length - 1
+                indiceCurso >=
+                  cursos.length - 1
               }
               onClick={() =>
-                setIndiceCurso((i) =>
-                  Math.min(
-                    cursos.length - 1,
-                    i + 1
-                  )
+                setIndiceCurso(
+                  (i) =>
+                    Math.min(
+                      cursos.length - 1,
+                      i + 1
+                    )
                 )
               }
               className="examen-page__nav-btn"
@@ -714,7 +856,9 @@ export default function ExamenPage() {
           <button
             type="button"
             className="examen-page__entregar-btn"
-            onClick={() => setModal("entregar")}
+            onClick={() =>
+              setModal("entregar")
+            }
           >
             Entregar examen
           </button>
@@ -724,7 +868,9 @@ export default function ExamenPage() {
       <AbandonarSimulacroModal
         abierto={modal !== null}
         modo={modal || "abandonar"}
-        onContinuar={() => setModal(null)}
+        onContinuar={() =>
+          setModal(null)
+        }
         onConfirmar={
           modal === "entregar"
             ? entregarExamen

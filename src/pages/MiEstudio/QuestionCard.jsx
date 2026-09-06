@@ -1,3 +1,7 @@
+/* ============================================================
+   QuestionCard.jsx
+   ============================================================ */
+
 import {
   useState,
   useRef,
@@ -11,16 +15,23 @@ import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
 import { useAvisoBloqueo } from "../../hooks/useAvisoBloqueo";
 
+// ============================================================================
+// UTILIDADES
+// ============================================================================
+
 function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
   const partes = [];
 
-  // Gemini debería usar siempre ___1___, pero a veces no respeta el
-  // formato exacto y entrega ***1*** o ---1--- (o mezcla los tres
-  // estilos entre la apertura y el cierre). Esta regex acepta
-  // cualquiera de los 3 delimitadores, en cualquier combinación, con
-  // o sin espacios pegados al número.
-  const regex = /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
+  // Acepta:
+  // ___1___
+  // ***1***
+  // ---1---
+  //
+  // También acepta combinaciones entre delimitadores y espacios
+  // alrededor del número.
+  const regex =
+    /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
 
   let ultimoIndex = 0;
   let match;
@@ -50,6 +61,10 @@ function partirEnEspacios(textoConEspacios) {
   return partes;
 }
 
+// ============================================================================
+// LECTURA POR VOZ
+// ============================================================================
+
 function useLecturaVoz(texto) {
   useEffect(() => {
     if (!texto || !("speechSynthesis" in window)) {
@@ -74,20 +89,39 @@ function useLecturaVoz(texto) {
   }, [texto]);
 }
 
-function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
+// ============================================================================
+// LETRAS DE LAS ALTERNATIVAS
+// ============================================================================
+
+const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
+
+// ============================================================================
+// OPCIÓN MÚLTIPLE
+// ============================================================================
+
+function OpcionMultiple({
+  pregunta,
+  onRespondido,
+  onReintentar,
+}) {
   const [answered, setAnswered] = useState(false);
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
+
   const hurraRef = useRef(null);
-  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
+
+  const [avisoVisible, mostrarAviso] =
+    useAvisoBloqueo();
 
   const shuffled = useMemo(
     () =>
       shuffle(
-        (pregunta.opts || []).map((text, originalIndex) => ({
-          text,
-          originalIndex,
-        }))
+        (pregunta.opts || []).map(
+          (text, originalIndex) => ({
+            text,
+            originalIndex,
+          })
+        )
       ),
     [pregunta]
   );
@@ -96,6 +130,7 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
 
   function elegirOpcion(idx) {
     if (answered) return;
+
     setChosenIdx(idx);
   }
 
@@ -108,14 +143,18 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
     }
 
     const correct =
-      shuffled[chosenIdx].originalIndex === pregunta.correct;
+      shuffled[chosenIdx].originalIndex ===
+      pregunta.correct;
 
     setWasCorrect(correct);
     setAnswered(true);
 
     if (correct && hurraRef.current) {
       hurraRef.current.currentTime = 0;
-      hurraRef.current.play().catch(() => { });
+
+      hurraRef.current
+        .play()
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -123,7 +162,9 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
 
   const lineasQ = (pregunta.q || "")
     .split("\n")
-    .filter((linea) => linea.trim() !== "");
+    .filter(
+      (linea) => linea.trim() !== ""
+    );
 
   const introQ = lineasQ[0] || "";
   const restoQ = lineasQ.slice(1);
@@ -138,7 +179,10 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
         {restoQ.length > 0 && (
           <div className="question-card__q-props">
             {restoQ.map((linea, i) => (
-              <p key={i} className="question-card__q-prop">
+              <p
+                key={i}
+                className="question-card__q-prop"
+              >
                 <LatexText>{linea}</LatexText>
               </p>
             ))}
@@ -148,12 +192,14 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
 
       <div className="question-card__options">
         {shuffled.map((opt, i) => {
-          const isChosen = chosenIdx === i;
+          const isChosen =
+            chosenIdx === i;
 
           const isTheCorrectOne =
             answered &&
             wasCorrect &&
-            opt.originalIndex === pregunta.correct;
+            opt.originalIndex ===
+              pregunta.correct;
 
           let cls = "";
 
@@ -172,11 +218,25 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
           return (
             <button
               key={i}
-              onClick={() => elegirOpcion(i)}
+              type="button"
+              onClick={() =>
+                elegirOpcion(i)
+              }
               disabled={answered}
               className={`question-card__opt ${cls}`}
             >
-              <LatexText>{opt.text}</LatexText>
+              <span className="question-card__opt-letter">
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(
+                    65 + i
+                  )}
+              </span>
+
+              <span className="question-card__opt-text">
+                <LatexText>
+                  {opt.text}
+                </LatexText>
+              </span>
             </button>
           );
         })}
@@ -189,9 +249,13 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
               Elige una opción antes de responder
             </span>
           )}
+
           <button
+            type="button"
             onClick={confirmarRespuesta}
-            aria-disabled={chosenIdx === null}
+            aria-disabled={
+              chosenIdx === null
+            }
             className="question-card__submit"
           >
             Responder
@@ -199,16 +263,20 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
         </div>
       )}
 
-      {answered && !wasCorrect && onReintentar && (
-        <div className="question-card__type-wrap">
-          <button
-            onClick={onReintentar}
-            className="question-card__submit is-retry"
-          >
-            Repetir <i className="fas fa-rotate-left" />
-          </button>
-        </div>
-      )}
+      {answered &&
+        !wasCorrect &&
+        onReintentar && (
+          <div className="question-card__type-wrap">
+            <button
+              type="button"
+              onClick={onReintentar}
+              className="question-card__submit is-retry"
+            >
+              Repetir{" "}
+              <i className="fas fa-rotate-left" />
+            </button>
+          </div>
+        )}
 
       <audio
         ref={hurraRef}
@@ -219,21 +287,37 @@ function OpcionMultiple({ pregunta, onRespondido, onReintentar }) {
   );
 }
 
-function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
-  const proposiciones = pregunta.proposiciones || [];
+// ============================================================================
+// VERDADERO / FALSO
+// ============================================================================
 
-  const [respuestas, setRespuestas] = useState(() =>
-    Array(proposiciones.length).fill(null)
-  );
+function VerdaderoFalso({
+  pregunta,
+  onRespondido,
+  onReintentar,
+}) {
+  const proposiciones =
+    pregunta.proposiciones || [];
 
-  const [answered, setAnswered] = useState(false);
-  const [wasCorrect, setWasCorrect] = useState(false);
+  const [respuestas, setRespuestas] =
+    useState(() =>
+      Array(proposiciones.length).fill(null)
+    );
+
+  const [answered, setAnswered] =
+    useState(false);
+
+  const [wasCorrect, setWasCorrect] =
+    useState(false);
+
   const hurraRef = useRef(null);
-  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
+
+  const [avisoVisible, mostrarAviso] =
+    useAvisoBloqueo();
 
   useLecturaVoz(
     pregunta.q ||
-    "Indica si cada proposición es verdadera o falsa."
+      "Indica si cada proposición es verdadera o falsa."
   );
 
   function marcar(i, valor) {
@@ -241,7 +325,9 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
 
     setRespuestas((prev) => {
       const copia = [...prev];
+
       copia[i] = valor;
+
       return copia;
     });
   }
@@ -249,90 +335,123 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
   function calificar() {
     if (answered) return;
 
-    if (respuestas.some((r) => r === null)) {
+    if (
+      respuestas.some(
+        (r) => r === null
+      )
+    ) {
       mostrarAviso();
       return;
     }
 
-    const correcto = respuestas.every(
-      (r, i) => r === proposiciones[i].correct
-    );
+    const correcto =
+      respuestas.every(
+        (r, i) =>
+          r === proposiciones[i].correct
+      );
 
     setWasCorrect(correcto);
     setAnswered(true);
 
     if (correcto && hurraRef.current) {
       hurraRef.current.currentTime = 0;
-      hurraRef.current.play().catch(() => { });
+
+      hurraRef.current
+        .play()
+        .catch(() => {});
     }
 
     onRespondido(correcto);
   }
 
-  const todasRespondidas = respuestas.every(
-    (r) => r !== null
-  );
+  const todasRespondidas =
+    respuestas.every(
+      (r) => r !== null
+    );
 
   return (
     <>
       {pregunta.q && (
         <h3 className="question-card__q">
-          <LatexText>{pregunta.q}</LatexText>
+          <LatexText>
+            {pregunta.q}
+          </LatexText>
         </h3>
       )}
 
       <ol className="question-card__vf-list">
-        {proposiciones.map((prop, i) => {
-          const propAcertada =
-            answered &&
-            respuestas[i] === prop.correct;
+        {proposiciones.map(
+          (prop, i) => {
+            const propAcertada =
+              answered &&
+              respuestas[i] ===
+                prop.correct;
 
-          const propFallada =
-            answered &&
-            respuestas[i] !== prop.correct;
+            const propFallada =
+              answered &&
+              respuestas[i] !==
+                prop.correct;
 
-          return (
-            <li
-              key={i}
-              className={`question-card__vf-row ${propAcertada ? "is-correct" : ""
-                } ${propFallada ? "is-wrong" : ""}`}
-            >
-              <span className="question-card__vf-texto">
-                <LatexText>{prop.texto}</LatexText>
-              </span>
-
-              <div className="question-card__vf-btns">
-                <button
-                  disabled={answered}
-                  onClick={() => marcar(i, true)}
-                  className={`question-card__vf-btn ${respuestas[i] === true
-                      ? "is-selected"
-                      : ""
-                    }`}
-                >
-                  V
-                </button>
-
-                <button
-                  disabled={answered}
-                  onClick={() => marcar(i, false)}
-                  className={`question-card__vf-btn ${respuestas[i] === false
-                      ? "is-selected"
-                      : ""
-                    }`}
-                >
-                  F
-                </button>
-              </div>
-
-              {propFallada && (
-                <span className="question-card__vf-correcta">
-                  Incorrecto — inténtalo de nuevo
+            return (
+              <li
+                key={i}
+                className={`question-card__vf-row ${
+                  propAcertada
+                    ? "is-correct"
+                    : ""
+                } ${
+                  propFallada
+                    ? "is-wrong"
+                    : ""
+                }`}
+              >
+                <span className="question-card__vf-texto">
+                  <LatexText>
+                    {prop.texto}
+                  </LatexText>
                 </span>
-              )}
-            </li>
-          );
-        })}
+
+                <div className="question-card__vf-btns">
+                  <button
+                    type="button"
+                    disabled={answered}
+                    onClick={() =>
+                      marcar(i, true)
+                    }
+                    className={`question-card__vf-btn ${
+                      respuestas[i] === true
+                        ? "is-selected"
+                        : ""
+                    }`}
+                  >
+                    V
+                  </button>
+
+                  <button
+                    type="button"
+                    disabled={answered}
+                    onClick={() =>
+                      marcar(i, false)
+                    }
+                    className={`question-card__vf-btn ${
+                      respuestas[i] === false
+                        ? "is-selected"
+                        : ""
+                    }`}
+                  >
+                    F
+                  </button>
+                </div>
+
+                {propFallada && (
+                  <span className="question-card__vf-correcta">
+                    Incorrecto — inténtalo de nuevo
+                  </span>
+                )}
+              </li>
+            );
+          }
+        )}
       </ol>
 
       {!answered && (
@@ -342,9 +461,13 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
               Marca V o F en todas las proposiciones
             </span>
           )}
+
           <button
+            type="button"
             onClick={calificar}
-            aria-disabled={!todasRespondidas}
+            aria-disabled={
+              !todasRespondidas
+            }
             className="question-card__submit"
           >
             Calificar
@@ -352,14 +475,18 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
         </div>
       )}
 
-      {answered && !wasCorrect && onReintentar && (
-        <button
-          onClick={onReintentar}
-          className="question-card__submit is-retry"
-        >
-          Repetir <i className="fas fa-rotate-left" />
-        </button>
-      )}
+      {answered &&
+        !wasCorrect &&
+        onReintentar && (
+          <button
+            type="button"
+            onClick={onReintentar}
+            className="question-card__submit is-retry"
+          >
+            Repetir{" "}
+            <i className="fas fa-rotate-left" />
+          </button>
+        )}
 
       <audio
         ref={hurraRef}
@@ -370,7 +497,15 @@ function VerdaderoFalso({ pregunta, onRespondido, onReintentar }) {
   );
 }
 
-function Completar({ pregunta, onRespondido, onReintentar }) {
+// ============================================================================
+// COMPLETAR
+// ============================================================================
+
+function Completar({
+  pregunta,
+  onRespondido,
+  onReintentar,
+}) {
   const partes = useMemo(
     () =>
       partirEnEspacios(
@@ -379,14 +514,23 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
     [pregunta]
   );
 
-  const [answered, setAnswered] = useState(false);
-  const [chosenIdx, setChosenIdx] = useState(null);
-  const [wasCorrect, setWasCorrect] = useState(false);
+  const [answered, setAnswered] =
+    useState(false);
+
+  const [chosenIdx, setChosenIdx] =
+    useState(null);
+
+  const [wasCorrect, setWasCorrect] =
+    useState(false);
+
   const hurraRef = useRef(null);
-  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
+
+  const [avisoVisible, mostrarAviso] =
+    useAvisoBloqueo();
 
   useLecturaVoz(
-    pregunta.q || "Completa los espacios en blanco."
+    pregunta.q ||
+      "Completa los espacios en blanco."
   );
 
   const shuffled = useMemo(
@@ -404,6 +548,7 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
 
   function elegirOpcion(i) {
     if (answered) return;
+
     setChosenIdx(i);
   }
 
@@ -416,7 +561,8 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
     }
 
     const correct =
-      shuffled[chosenIdx].originalIndex ===
+      shuffled[chosenIdx]
+        .originalIndex ===
       pregunta.correct;
 
     setWasCorrect(correct);
@@ -424,7 +570,10 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
 
     if (correct && hurraRef.current) {
       hurraRef.current.currentTime = 0;
-      hurraRef.current.play().catch(() => { });
+
+      hurraRef.current
+        .play()
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -441,7 +590,9 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
     <>
       {pregunta.q && (
         <h3 className="question-card__q">
-          <LatexText>{pregunta.q}</LatexText>
+          <LatexText>
+            {pregunta.q}
+          </LatexText>
         </h3>
       )}
 
@@ -450,7 +601,9 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
           if (parte.tipo === "texto") {
             return (
               <span key={i}>
-                <LatexText>{parte.valor}</LatexText>
+                <LatexText>
+                  {parte.valor}
+                </LatexText>
               </span>
             );
           }
@@ -459,19 +612,17 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
 
           const idx = espacioIdx;
 
-          const texto = palabrasElegidas
-            ? palabrasElegidas[idx]
-            : "";
+          const texto =
+            palabrasElegidas
+              ? palabrasElegidas[idx]
+              : "";
 
-          // El espacio vacío se ve como una simple línea (gracias al
-          // border-bottom de .question-card__cloze-input en el CSS),
-          // no como guiones bajos escritos. Mientras el usuario elige
-          // (antes de responder) se resalta en ámbar con "has-value";
-          // al responder, se pinta verde o rojo como antes.
           let statusClass = "";
 
           if (answered) {
-            statusClass = wasCorrect ? "is-correct" : "is-wrong";
+            statusClass = wasCorrect
+              ? "is-correct"
+              : "is-wrong";
           } else if (texto) {
             statusClass = "has-value";
           }
@@ -481,7 +632,13 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
               key={i}
               className={`question-card__cloze-input ${statusClass}`}
             >
-              {texto ? <LatexText>{texto}</LatexText> : "\u00A0"}
+              {texto ? (
+                <LatexText>
+                  {texto}
+                </LatexText>
+              ) : (
+                "\u00A0"
+              )}
             </span>
           );
         })}
@@ -489,12 +646,14 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
 
       <div className="question-card__options">
         {shuffled.map((opt, i) => {
-          const isChosen = chosenIdx === i;
+          const isChosen =
+            chosenIdx === i;
 
           const isTheCorrectOne =
             answered &&
             wasCorrect &&
-            opt.originalIndex === pregunta.correct;
+            opt.originalIndex ===
+              pregunta.correct;
 
           let cls = "";
 
@@ -513,13 +672,25 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
           return (
             <button
               key={i}
-              onClick={() => elegirOpcion(i)}
+              type="button"
+              onClick={() =>
+                elegirOpcion(i)
+              }
               disabled={answered}
               className={`question-card__opt ${cls}`}
             >
-              <LatexText>
-                {opt.palabras.join(" · ")}
-              </LatexText>
+              <span className="question-card__opt-letter">
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(
+                    65 + i
+                  )}
+              </span>
+
+              <span className="question-card__opt-text">
+                <LatexText>
+                  {opt.palabras.join(" · ")}
+                </LatexText>
+              </span>
             </button>
           );
         })}
@@ -532,9 +703,13 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
               Elige una opción antes de responder
             </span>
           )}
+
           <button
+            type="button"
             onClick={confirmarRespuesta}
-            aria-disabled={chosenIdx === null}
+            aria-disabled={
+              chosenIdx === null
+            }
             className="question-card__submit"
           >
             Responder
@@ -542,16 +717,20 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
         </div>
       )}
 
-      {answered && !wasCorrect && onReintentar && (
-        <div className="question-card__type-wrap">
-          <button
-            onClick={onReintentar}
-            className="question-card__submit is-retry"
-          >
-            Repetir <i className="fas fa-rotate-left" />
-          </button>
-        </div>
-      )}
+      {answered &&
+        !wasCorrect &&
+        onReintentar && (
+          <div className="question-card__type-wrap">
+            <button
+              type="button"
+              onClick={onReintentar}
+              className="question-card__submit is-retry"
+            >
+              Repetir{" "}
+              <i className="fas fa-rotate-left" />
+            </button>
+          </div>
+        )}
 
       <audio
         ref={hurraRef}
@@ -562,15 +741,32 @@ function Completar({ pregunta, onRespondido, onReintentar }) {
   );
 }
 
-function Relacionar({ pregunta, onRespondido, onReintentar }) {
-  const [answered, setAnswered] = useState(false);
-  const [chosenIdx, setChosenIdx] = useState(null);
-  const [wasCorrect, setWasCorrect] = useState(false);
+// ============================================================================
+// RELACIONAR
+// ============================================================================
+
+function Relacionar({
+  pregunta,
+  onRespondido,
+  onReintentar,
+}) {
+  const [answered, setAnswered] =
+    useState(false);
+
+  const [chosenIdx, setChosenIdx] =
+    useState(null);
+
+  const [wasCorrect, setWasCorrect] =
+    useState(false);
+
   const hurraRef = useRef(null);
-  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
+
+  const [avisoVisible, mostrarAviso] =
+    useAvisoBloqueo();
 
   useLecturaVoz(
-    pregunta.q || "Relaciona ambas columnas."
+    pregunta.q ||
+      "Relaciona ambas columnas."
   );
 
   const shuffled = useMemo(
@@ -588,6 +784,7 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
 
   function elegirOpcion(i) {
     if (answered) return;
+
     setChosenIdx(i);
   }
 
@@ -600,7 +797,8 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
     }
 
     const correct =
-      shuffled[chosenIdx].originalIndex ===
+      shuffled[chosenIdx]
+        .originalIndex ===
       pregunta.correct;
 
     setWasCorrect(correct);
@@ -608,7 +806,10 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
 
     if (correct && hurraRef.current) {
       hurraRef.current.currentTime = 0;
-      hurraRef.current.play().catch(() => { });
+
+      hurraRef.current
+        .play()
+        .catch(() => {});
     }
 
     onRespondido(correct);
@@ -618,16 +819,20 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
     <>
       {pregunta.q && (
         <h3 className="question-card__q">
-          <LatexText>{pregunta.q}</LatexText>
+          <LatexText>
+            {pregunta.q}
+          </LatexText>
         </h3>
       )}
 
-      <div className="question-card__match">
+      <div className="question-card__match question-card__match--relacionar">
         <ul className="question-card__match-col">
           {(pregunta.columnaA || []).map(
             (item, i) => (
               <li key={i}>
-                <LatexText>{item}</LatexText>
+                <LatexText>
+                  {item}
+                </LatexText>
               </li>
             )
           )}
@@ -637,7 +842,9 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
           {(pregunta.columnaB || []).map(
             (item, i) => (
               <li key={i}>
-                <LatexText>{item}</LatexText>
+                <LatexText>
+                  {item}
+                </LatexText>
               </li>
             )
           )}
@@ -646,12 +853,14 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
 
       <div className="question-card__options">
         {shuffled.map((opt, i) => {
-          const isChosen = chosenIdx === i;
+          const isChosen =
+            chosenIdx === i;
 
           const isTheCorrectOne =
             answered &&
             wasCorrect &&
-            opt.originalIndex === pregunta.correct;
+            opt.originalIndex ===
+              pregunta.correct;
 
           let cls = "";
 
@@ -670,11 +879,25 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
           return (
             <button
               key={i}
-              onClick={() => elegirOpcion(i)}
+              type="button"
+              onClick={() =>
+                elegirOpcion(i)
+              }
               disabled={answered}
               className={`question-card__opt ${cls}`}
             >
-              <LatexText>{opt.combo}</LatexText>
+              <span className="question-card__opt-letter">
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(
+                    65 + i
+                  )}
+              </span>
+
+              <span className="question-card__opt-text">
+                <LatexText>
+                  {opt.combo}
+                </LatexText>
+              </span>
             </button>
           );
         })}
@@ -687,9 +910,13 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
               Elige una opción antes de responder
             </span>
           )}
+
           <button
+            type="button"
             onClick={confirmarRespuesta}
-            aria-disabled={chosenIdx === null}
+            aria-disabled={
+              chosenIdx === null
+            }
             className="question-card__submit"
           >
             Responder
@@ -697,16 +924,20 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
         </div>
       )}
 
-      {answered && !wasCorrect && onReintentar && (
-        <div className="question-card__type-wrap">
-          <button
-            onClick={onReintentar}
-            className="question-card__submit is-retry"
-          >
-            Repetir <i className="fas fa-rotate-left" />
-          </button>
-        </div>
-      )}
+      {answered &&
+        !wasCorrect &&
+        onReintentar && (
+          <div className="question-card__type-wrap">
+            <button
+              type="button"
+              onClick={onReintentar}
+              className="question-card__submit is-retry"
+            >
+              Repetir{" "}
+              <i className="fas fa-rotate-left" />
+            </button>
+          </div>
+        )}
 
       <audio
         ref={hurraRef}
@@ -717,6 +948,10 @@ function Relacionar({ pregunta, onRespondido, onReintentar }) {
   );
 }
 
+// ============================================================================
+// QUESTION CARD
+// ============================================================================
+
 export default function QuestionCard({
   pregunta,
   onRespondido,
@@ -726,11 +961,19 @@ export default function QuestionCard({
   corazones,
   lives,
 }) {
-  const [intentos, setIntentos] = useState(0);
-  const [mostrarModalRendirse, setMostrarModalRendirse] =
-    useState(false);
+  const [intentos, setIntentos] =
+    useState(0);
 
-  const cantVidas = corazones ?? lives ?? vidas ?? 3;
+  const [
+    mostrarModalRendirse,
+    setMostrarModalRendirse,
+  ] = useState(false);
+
+  const cantVidas =
+    corazones ??
+    lives ??
+    vidas ??
+    3;
 
   useEffect(() => {
     setIntentos(0);
@@ -739,30 +982,54 @@ export default function QuestionCard({
 
   function manejarRespuesta(correct) {
     if (correct) {
-      onRespondido(true, intentos);
+      onRespondido(
+        true,
+        intentos
+      );
+
       return;
     }
 
-    const nuevoIntento = intentos + 1;
+    const nuevoIntento =
+      intentos + 1;
 
     setIntentos(nuevoIntento);
-    onRespondido(false, nuevoIntento);
+
+    onRespondido(
+      false,
+      nuevoIntento
+    );
   }
 
-  let Contenido = OpcionMultiple;
+  let Contenido =
+    OpcionMultiple;
 
-  if (pregunta.tipo === "verdadero_falso") {
-    Contenido = VerdaderoFalso;
-  } else if (pregunta.tipo === "completar") {
-    Contenido = Completar;
-  } else if (pregunta.tipo === "relacionar") {
-    Contenido = Relacionar;
+  if (
+    pregunta.tipo ===
+    "verdadero_falso"
+  ) {
+    Contenido =
+      VerdaderoFalso;
+  } else if (
+    pregunta.tipo ===
+    "completar"
+  ) {
+    Contenido =
+      Completar;
+  } else if (
+    pregunta.tipo ===
+    "relacionar"
+  ) {
+    Contenido =
+      Relacionar;
   }
 
   return (
     <div
-      className="arcade-game-container question-card"
-      style={{ position: "relative" }}
+      className={`arcade-game-container question-card question-card--${pregunta.tipo || "opcion_multiple"}`}
+      style={{
+        position: "relative",
+      }}
     >
       <button
         type="button"
@@ -778,7 +1045,8 @@ export default function QuestionCard({
           background: "transparent",
           border: "none",
           padding: "12px 16px",
-          cursor: "url(/cursor_pointer.webp), pointer",
+          cursor:
+            'url("/cursor_pointer.webp"), pointer',
           fontSize: "1.2rem",
           color: "#94a3b8",
         }}
@@ -790,21 +1058,34 @@ export default function QuestionCard({
 
       <div className="question-card__inner">
         <Contenido
-          key={JSON.stringify(pregunta)}
+          key={JSON.stringify(
+            pregunta
+          )}
           pregunta={pregunta}
-          onRespondido={manejarRespuesta}
-          onReintentar={onReintentar}
+          onRespondido={
+            manejarRespuesta
+          }
+          onReintentar={
+            onReintentar
+          }
         />
       </div>
 
       <RendirseModal
-        abierto={mostrarModalRendirse}
+        abierto={
+          mostrarModalRendirse
+        }
         vidas={cantVidas}
         onContinuar={() =>
-          setMostrarModalRendirse(false)
+          setMostrarModalRendirse(
+            false
+          )
         }
         onRendirse={() => {
-          setMostrarModalRendirse(false);
+          setMostrarModalRendirse(
+            false
+          );
+
           onRendirse?.();
         }}
       />
