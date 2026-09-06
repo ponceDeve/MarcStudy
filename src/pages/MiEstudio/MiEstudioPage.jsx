@@ -1351,9 +1351,32 @@ export default function MiEstudioPage() {
           ? examenPreguntas[cardIndex] || null
           : null;
 
+  // Interruptor oculto de desarrollo: se activa/desactiva tocando 7
+  // veces seguidas el nombre "MarcStudy" en el footer de la app (ver
+  // AppFooter.jsx). No está expuesto en ningún botón, menú ni
+  // configuración visible de Mi Estudio.
+  const [modoPruebaAvance, setModoPruebaAvance] = useState(false);
+
+  useEffect(() => {
+    function alternar() {
+      setModoPruebaAvance((actual) => {
+        const nuevo = !actual;
+        alert(
+          nuevo
+            ? "Modo prueba activado: ya puedes avanzar sin responder."
+            : "Modo prueba desactivado."
+        );
+        return nuevo;
+      });
+    }
+
+    window.addEventListener("mp-toggle", alternar);
+    return () => window.removeEventListener("mp-toggle", alternar);
+  }, []);
+
   const canAdvance =
+    modoPruebaAvance ||
     stage !== "question" ||
-    modoEstudio === "solo_preguntas" ||
     Boolean(questionResult && questionResult.isCorrect);
 
   const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
@@ -1637,61 +1660,58 @@ export default function MiEstudioPage() {
 
                   <div className="welcome-section__continuar-wrapper">
 
-  {avisoContinuarVacio && (
-    <span className="aviso-bloqueo">
-      No hay tema para continuar
-    </span>
-  )}
+                    {avisoContinuarVacio && (
+                      <span className="aviso-bloqueo">
+                        No hay tema para continuar
+                      </span>
+                    )}
 
-  <button
-    type="button"
-    className="welcome-section__continuar-btn"
-    onClick={() => {
-      if (!ultimoTemaInicio) {
-        mostrarAvisoContinuarVacio();
-        return;
-      }
+                    <button
+                      type="button"
+                      className="welcome-section__continuar-btn"
+                      onClick={() => {
+                        if (!ultimoTemaInicio) {
+                          mostrarAvisoContinuarVacio();
+                          return;
+                        }
 
-      seleccionarItem({
-        type: "tema",
-        curso: ultimoTemaInicio.curso,
-        tema: ultimoTemaInicio.tema,
-        archivo: ultimoTemaInicio.archivo
-      });
-    }}
-  >
-    <span className="welcome-section__continuar-label">
-      Continuar:
-    </span>
+                        seleccionarItem({
+                          type: "tema",
+                          curso: ultimoTemaInicio.curso,
+                          tema: ultimoTemaInicio.tema,
+                          archivo: ultimoTemaInicio.archivo
+                        });
+                      }}
+                    >
+                      <span className="welcome-section__continuar-label">
+                        Continuar:
+                      </span>
 
-    <span className="welcome-section__continuar-tema">
-      {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
-    </span>
+                      <span className="welcome-section__continuar-tema">
+                        {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
+                      </span>
 
-    <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
-  </button>
+                      <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
+                    </button>
 
-  <button
-    type="button"
-    className="welcome-section__simulacro-panel"
-    onClick={() => setSimulacroModalOpen(true)}
-    aria-label="Rendir simulacro"
-  >
-    <span className="welcome-section__simulacro-icon">
-      <i className="bi bi-bullseye"></i>
-    </span>
+                    <button
+                      type="button"
+                      className="welcome-section__simulacro-panel"
+                      onClick={() => setSimulacroModalOpen(true)}
+                      aria-label="Rendir simulacro"
+                    >
+                      <span className="welcome-section__simulacro-icon">
+                        <i className="bi bi-bullseye"></i>
+                      </span>
 
-    <span className="welcome-section__simulacro-info">
-      <strong>Rendir simulacro</strong>
-      <span>Pon a prueba tus conocimientos</span>
-    </span>
+                      <span className="welcome-section__simulacro-info">
+                        <strong>Rendir simulacro</strong>
+                        <span>Pon a prueba tus conocimientos</span>
+                      </span>
 
-    <span className="welcome-section__simulacro-arrow">
-      <i className="bi bi-arrow-right"></i>
-    </span>
-  </button>
+                    </button>
 
-</div>
+                  </div>
                 </div>
               </section>
 
@@ -1775,9 +1795,12 @@ export default function MiEstudioPage() {
                   {topicData?.theory?.map((seccion, idxSeccion) => (
                     seccion.titulo === "Ejercicios" ? null :
                       <div key={idxSeccion} className="teoria-seccion">
-                        <div className="teoria-etiqueta-wrap">
-                          <h3 className="teoria-etiqueta">{seccion.titulo}</h3>
-                        </div>
+                        <h3 className="teoria-etiqueta">
+                          <GlossaryText
+                            text={seccion.titulo}
+                            glosario={topicData?.glosario}
+                          />
+                        </h3>
 
                         <div className="teoria-puntos-lista animate-fade-in">
                           {seccion.puntos.map((punto, idxPunto) => {

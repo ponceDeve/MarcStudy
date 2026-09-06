@@ -48,9 +48,6 @@
   font-size: 16px;
   font-weight: 600;
   margin: 0;
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-alt);
 }
 
 /* ALTERNATIVAS */
@@ -68,7 +65,7 @@
 
 .question-card__opt {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   width: 100%;
   padding: 4px 0;
@@ -281,8 +278,8 @@
    COMPLETAR Y RELACIONAR
    ============================================================ */
 
-.question-card--completar .question-card__options,
-.question-card--relacionar .question-card__options {
+.question-card__options--completar,
+.question-card__options--relacionar {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
@@ -292,8 +289,8 @@
 
 /* ALTERNATIVAS CORTAS */
 
-.question-card--completar .question-card__opt,
-.question-card--relacionar .question-card__opt {
+.question-card__options--completar .question-card__opt,
+.question-card__options--relacionar .question-card__opt {
   width: auto;
   max-width: 100%;
   flex: 0 1 auto;
@@ -303,8 +300,8 @@
 
 /* TEXTO CORTAS */
 
-.question-card--completar .question-card__opt-text,
-.question-card--relacionar .question-card__opt-text {
+.question-card__options--completar .question-card__opt-text,
+.question-card__options--relacionar .question-card__opt-text {
   flex: 0 1 auto;
   padding-top: 0;
 }
@@ -313,15 +310,15 @@
    HOVER CORTAS — ANTES DE SELECCIONAR
    ============================================================ */
 
-.question-card--completar .question-card__opt:hover:not(:disabled):not(.is-selected),
-.question-card--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) {
+.question-card__options--completar .question-card__opt:hover:not(:disabled):not(.is-selected),
+.question-card__options--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--primary-bg);
   color: var(--ink);
 }
 
-.question-card--completar .question-card__opt:hover:not(:disabled):not(.is-selected)
+.question-card__options--completar .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-letter,
-.question-card--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected)
+.question-card__options--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-letter {
   border-color: var(--primary);
   background: var(--primary-bg);
@@ -333,18 +330,18 @@
    SIN HOVER DE FONDO
    ============================================================ */
 
-.question-card--completar:has(.question-card__opt.is-selected)
+.question-card__options--completar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected),
-.question-card--relacionar:has(.question-card__opt.is-selected)
+.question-card__options--relacionar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--surface);
   color: var(--ink);
 }
 
-.question-card--completar:has(.question-card__opt.is-selected)
+.question-card__options--completar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-letter,
-.question-card--relacionar:has(.question-card__opt.is-selected)
+.question-card__options--relacionar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-letter {
   border-color: var(--primary);
@@ -352,10 +349,10 @@
   color: var(--primary);
 }
 
-.question-card--completar:has(.question-card__opt.is-selected)
+.question-card__options--completar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-text,
-.question-card--relacionar:has(.question-card__opt.is-selected)
+.question-card__options--relacionar:has(.question-card__opt.is-selected)
   .question-card__opt:hover:not(:disabled):not(.is-selected)
   .question-card__opt-text {
   color: var(--ink);
@@ -365,31 +362,31 @@
    SELECCIONADA CORTAS — SIN HOVER
    ============================================================ */
 
-.question-card--completar .question-card__opt.is-selected,
-.question-card--relacionar .question-card__opt.is-selected {
+.question-card__options--completar .question-card__opt.is-selected,
+.question-card__options--relacionar .question-card__opt.is-selected {
   background: var(--brand-bg);
   color: var(--ink);
   cursor: default !important;
 }
 
-.question-card--completar .question-card__opt.is-selected:hover:not(:disabled),
-.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled) {
+.question-card__options--completar .question-card__opt.is-selected:hover:not(:disabled),
+.question-card__options--relacionar .question-card__opt.is-selected:hover:not(:disabled) {
   background: var(--brand-bg);
   color: var(--ink);
   cursor: default !important;
 }
 
-.question-card--completar .question-card__opt.is-selected .question-card__opt-letter,
-.question-card--relacionar .question-card__opt.is-selected .question-card__opt-letter {
+.question-card__options--completar .question-card__opt.is-selected .question-card__opt-letter,
+.question-card__options--relacionar .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--brand);
   background: var(--brand);
   color: var(--ink-on-primary);
   transform: scale(1.04);
 }
 
-.question-card--completar .question-card__opt.is-selected:hover:not(:disabled)
+.question-card__options--completar .question-card__opt.is-selected:hover:not(:disabled)
   .question-card__opt-letter,
-.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled)
+.question-card__options--relacionar .question-card__opt.is-selected:hover:not(:disabled)
   .question-card__opt-letter {
   border-color: var(--brand);
   background: var(--brand);
@@ -397,9 +394,8 @@
   transform: scale(1.04);
 }
 
-.question-card--completar .question-card__opt.is-selected .question-card__opt-text,
-.question-card--relacionar .question-card__opt.is-selected:hover:not(:disabled)
-  .question-card__opt-text {
+.question-card__options--completar .question-card__opt.is-selected .question-card__opt-text,
+.question-card__options--relacionar .question-card__opt.is-selected .question-card__opt-text {
   color: var(--ink);
 }
 
@@ -408,15 +404,17 @@
    ============================================================ */
 
 @media (max-width: 520px) {
-  .question-card--completar .question-card__options,
-  .question-card--relacionar .question-card__options {
+  .question-card__options--completar,
+  .question-card__options--relacionar {
     justify-content: flex-start;
     gap: 6px 10px;
   }
 
-  .question-card--completar .question-card__opt,
-  .question-card--relacionar .question-card__opt {
-    max-width: calc(50% - 10px);
+  .question-card__options--completar .question-card__opt,
+  .question-card__options--relacionar .question-card__opt {
+    width: auto;
+    max-width: 100%;
+    flex: 0 1 auto;
   }
 }
 
@@ -656,6 +654,7 @@
   position: relative;
   display: inline-block;
   min-width: 80px;
+  max-width: 100%;
   margin: 0 4px;
   padding: 0 3px;
   font-weight: var(--fw-semibold);
@@ -663,6 +662,8 @@
   text-align: center;
   vertical-align: baseline;
   line-height: inherit;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* LÍNEA */

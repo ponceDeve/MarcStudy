@@ -23,15 +23,26 @@ function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
   const partes = [];
 
-  // Acepta:
+  // Acepta cualquier combinación de:
   // ___1___
   // ***1***
   // ---1---
+  // ___1---
+  // ---1___
+  // ___1***
+  // ***1___
+  // ***1---
+  // ---1***
   //
-  // También acepta combinaciones entre delimitadores y espacios
-  // alrededor del número.
+  // También acepta espacios alrededor del número:
+  // ___ 1 ___
+  // *** 1 ---
+  // --- 1 ***
+  //
+  // El número es obligatorio y puede tener cualquier cantidad de dígitos.
+
   const regex =
-    /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
+    /(?:___|\*\*\*|---)\s*\d+\s*(?:___|\*\*\*|---)/g;
 
   let ultimoIndex = 0;
   let match;
@@ -78,7 +89,6 @@ function useLecturaVoz(texto) {
     );
 
     utter.lang = "es-PE";
-
     window.speechSynthesis.speak(utter);
 
     return () => {
@@ -107,7 +117,6 @@ function OpcionMultiple({
   const [answered, setAnswered] = useState(false);
   const [chosenIdx, setChosenIdx] = useState(null);
   const [wasCorrect, setWasCorrect] = useState(false);
-
   const hurraRef = useRef(null);
 
   const [avisoVisible, mostrarAviso] =
@@ -130,7 +139,6 @@ function OpcionMultiple({
 
   function elegirOpcion(idx) {
     if (answered) return;
-
     setChosenIdx(idx);
   }
 
@@ -325,9 +333,7 @@ function VerdaderoFalso({
 
     setRespuestas((prev) => {
       const copia = [...prev];
-
       copia[i] = valor;
-
       return copia;
     });
   }
@@ -548,7 +554,6 @@ function Completar({
 
   function elegirOpcion(i) {
     if (answered) return;
-
     setChosenIdx(i);
   }
 
@@ -644,7 +649,7 @@ function Completar({
         })}
       </p>
 
-      <div className="question-card__options">
+      <div className="question-card__options question-card__options--completar">
         {shuffled.map((opt, i) => {
           const isChosen =
             chosenIdx === i;
@@ -784,7 +789,6 @@ function Relacionar({
 
   function elegirOpcion(i) {
     if (answered) return;
-
     setChosenIdx(i);
   }
 
@@ -851,7 +855,7 @@ function Relacionar({
         </ul>
       </div>
 
-      <div className="question-card__options">
+      <div className="question-card__options question-card__options--relacionar">
         {shuffled.map((opt, i) => {
           const isChosen =
             chosenIdx === i;
@@ -986,7 +990,6 @@ export default function QuestionCard({
         true,
         intentos
       );
-
       return;
     }
 
@@ -1026,7 +1029,10 @@ export default function QuestionCard({
 
   return (
     <div
-      className={`arcade-game-container question-card question-card--${pregunta.tipo || "opcion_multiple"}`}
+      className={`arcade-game-container question-card question-card--${
+        pregunta.tipo ||
+        "opcion_multiple"
+      }`}
       style={{
         position: "relative",
       }}

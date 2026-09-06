@@ -11,7 +11,6 @@ function partirEnEspacios(textoConEspacios) {
   const partes = [];
   const regex =
     /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
-
   let ultimoIndex = 0;
   let match;
 
@@ -211,7 +210,7 @@ export default function PreguntaSimulacro({
           })}
         </p>
 
-        <div className="question-card__options">
+        <div className="question-card__options question-card__options--completar">
           {opciones.map((combo, i) => {
             if (modoResultado) {
               const esCorrecta =
@@ -316,7 +315,7 @@ export default function PreguntaSimulacro({
           </ul>
         </div>
 
-        <div className="question-card__options">
+        <div className="question-card__options question-card__options--relacionar">
           {(pregunta.opciones || []).map((combo, i) => {
             if (modoResultado) {
               const esCorrecta =
