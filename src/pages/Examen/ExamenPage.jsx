@@ -168,6 +168,20 @@ export default function ExamenPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [area]);
 
+  /*
+   * ============================================================
+   * SCROLL ARRIBA AL CAMBIAR DE CURSO
+   * ============================================================
+   *
+   * Cuando se navega a otro curso (Ant./Sig. o el selector),
+   * la vista debe empezar siempre desde la primera pregunta,
+   * no quedarse en el scroll que tenía el curso anterior.
+   * ============================================================
+   */
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [indiceCurso]);
+
   useEffect(() => {
     if (etapa !== "en_curso" || !horaFin) return;
 
@@ -242,10 +256,7 @@ export default function ExamenPage() {
   if (etapa === "resultados") {
     return (
       <>
-        <AppHeader
-          section="examen"
-          onAbrirBuscador={() => {}}
-        />
+        <AppHeader section="examen" />
 
         <ResultadosExamenPage
           resultados={resultados}
@@ -438,6 +449,34 @@ export default function ExamenPage() {
    * La navegación ya no utiliza un índice de pregunta.
    * ============================================================
    */
+  function renderTarjetaPregunta(pregunta) {
+    return (
+      <div
+        key={pregunta.id}
+        className="arcade-game-container question-card examen-page__card"
+      >
+        <div className="examen-page__curso-tag">
+          {cursoActual.cursoNombre}
+        </div>
+
+        <div className="question-card__inner">
+          <PreguntaSimulacro
+            pregunta={pregunta}
+            respuesta={
+              respuestas[pregunta.id] ?? null
+            }
+            onCambiar={(valor) =>
+              actualizarRespuesta(
+                pregunta.id,
+                valor
+              )
+            }
+          />
+        </div>
+      </div>
+    );
+  }
+
   function renderPreguntasDelCurso() {
     if (!preguntasDelCurso.length) {
       return (
@@ -448,47 +487,84 @@ export default function ExamenPage() {
       );
     }
 
-    const textosMostrados = new Set();
+    /*
+     * ==========================================================
+     * AGRUPAR EN BLOQUES CONSECUTIVOS
+     * ==========================================================
+     *
+     * Antes, el texto RV se insertaba dentro de la MISMA tarjeta
+     * que la primera pregunta del grupo, mientras que el resto
+     * de preguntas de ese mismo texto quedaban en tarjetas
+     * propias. Eso hacía que la primera pregunta se viera
+     * "pegada" al texto y las demás se vieran "separadas" del
+     * mismo texto, aunque todas pertenecen al mismo bloque.
+     *
+     * Ahora el texto se muestra en su PROPIA tarjeta, una sola
+     * vez por grupo, y todas sus preguntas (incluida la primera)
+     * quedan en tarjetas propias y separadas por igual.
+     * ==========================================================
+     */
+    const bloques = [];
 
-    return preguntasDelCurso.map((pregunta) => {
+    let grupoActual = null;
+
+    preguntasDelCurso.forEach((pregunta) => {
       const claveTextoRV =
         obtenerClaveTextoRV(pregunta);
 
-      const mostrarTexto =
-        claveTextoRV &&
-        !textosMostrados.has(claveTextoRV);
+      if (claveTextoRV) {
+        if (
+          grupoActual &&
+          grupoActual.clave === claveTextoRV
+        ) {
+          grupoActual.preguntas.push(pregunta);
 
-      if (mostrarTexto) {
-        textosMostrados.add(claveTextoRV);
+          return;
+        }
+
+        grupoActual = {
+          clave: claveTextoRV,
+          textoRV: pregunta.textoRV,
+          preguntas: [pregunta],
+        };
+
+        bloques.push(grupoActual);
+
+        return;
+      }
+
+      grupoActual = null;
+
+      bloques.push({
+        clave: null,
+        textoRV: null,
+        preguntas: [pregunta],
+      });
+    });
+
+    return bloques.map((bloque) => {
+      if (!bloque.textoRV) {
+        return renderTarjetaPregunta(
+          bloque.preguntas[0]
+        );
       }
 
       return (
         <div
-          key={pregunta.id}
-          className="arcade-game-container question-card examen-page__card"
+          key={bloque.clave}
+          className="examen-page__rv-grupo"
         >
-          <div className="examen-page__curso-tag">
-            {cursoActual.cursoNombre}
+          <div className="arcade-game-container question-card examen-page__card examen-page__rv-texto">
+            <div className="examen-page__curso-tag">
+              {cursoActual.cursoNombre}
+            </div>
+
+            {renderTextoRV(bloque.textoRV)}
           </div>
 
-          {mostrarTexto
-            ? renderTextoRV(pregunta.textoRV)
-            : null}
-
-          <div className="question-card__inner">
-            <PreguntaSimulacro
-              pregunta={pregunta}
-              respuesta={
-                respuestas[pregunta.id] ?? null
-              }
-              onCambiar={(valor) =>
-                actualizarRespuesta(
-                  pregunta.id,
-                  valor
-                )
-              }
-            />
-          </div>
+          {bloque.preguntas.map((pregunta) =>
+            renderTarjetaPregunta(pregunta)
+          )}
         </div>
       );
     });

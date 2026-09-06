@@ -303,11 +303,50 @@ function prepararPreguntasRV(
   }
 
   // ==========================================================
-  // SELECCIONAR 3 TEXTOS
+  // SEPARAR CANDIDATOS SEGÚN CUÁNTAS PREGUNTAS APORTAN
+  // ==========================================================
+  //
+  // La distribución final SIEMPRE necesita que, de los 3
+  // textos elegidos, al menos UNO tenga 4 preguntas
+  // (3 + 3 + 4 = 10). Antes se elegían 3 textos al azar sin
+  // garantizar esto, así que si los 3 elegidos tenían
+  // únicamente 3 preguntas cada uno, no calzaba ninguna
+  // distribución y el bloque de RV se descartaba por completo
+  // (bug intermitente: en ~25% de los simulacros no salían
+  // preguntas de razonamiento verbal).
+  //
+  // Ahora se garantiza explícitamente que uno de los 3 textos
+  // seleccionados tenga al menos 4 preguntas.
   // ==========================================================
 
-  const textosSeleccionados =
-    candidatos.slice(0, 3);
+  const conCuatro = candidatos.filter(
+    (texto) => texto.preguntas.length >= 4
+  );
+
+  const conTres = candidatos.filter(
+    (texto) => texto.preguntas.length === 3
+  );
+
+  if (conCuatro.length < 1) {
+    return [];
+  }
+
+  const [textoDeCuatro, ...restoConCuatro] =
+    conCuatro;
+
+  const restantes = shuffle([
+    ...restoConCuatro,
+    ...conTres,
+  ]);
+
+  if (restantes.length < 2) {
+    return [];
+  }
+
+  const textosSeleccionados = shuffle([
+    textoDeCuatro,
+    ...restantes.slice(0, 2),
+  ]);
 
   // ==========================================================
   // POSIBLES DISTRIBUCIONES
@@ -593,10 +632,13 @@ export function calcularResultados(
 
   const detalle = preguntas.map(
     (p) => {
+      const respuestaUsuario =
+        respuestas[p.id] ?? null;
+
       const estado =
         calificarPregunta(
           p,
-          respuestas[p.id] ?? null
+          respuestaUsuario
         );
 
       const puntos =
@@ -610,6 +652,7 @@ export function calcularResultados(
         pregunta: p,
         estado,
         puntos,
+        respuesta: respuestaUsuario,
       };
     }
   );

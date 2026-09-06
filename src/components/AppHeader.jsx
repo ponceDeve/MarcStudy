@@ -522,7 +522,9 @@ export default function AppHeader({
             setMenuMobileOpen(false);
           }}
         >
-          {botones.map((b) =>
+          {botones
+          .filter((b) => b.label !== "Buscar")
+          .map((b) =>
             renderFila(
               b,
               () => {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import LatexText from "../../components/LatexText";
+import PreguntaSimulacro from "./PreguntaSimulacro";
 
 const ICONO_CURSO = {
   RVE: "bi-chat-left-text",
@@ -49,27 +50,8 @@ const TEXTO_ESTADO = {
   incorrecta: "Incorrecta",
   blanco: "Sin responder",
 };
-
-function textoRespuestaCorrecta(pregunta) {
-  if (pregunta.tipo === "verdadero_falso") {
-    return (pregunta.proposiciones || [])
-      .map((p) => (p.correct ? "Verdadero" : "Falso"))
-      .join(" · ");
-  }
-
-  const opcion = pregunta.opciones?.[pregunta.correctoIdx];
-
-  if (Array.isArray(opcion)) {
-    return opcion.join(" · ");
-  }
-
-  return opcion ?? "—";
-}
-
-function PreguntaResultado({ item, numero }) {
-  const [abierta, setAbierta] = useState(false);
-
-  const { pregunta, estado, puntos } = item;
+function PreguntaResultado({ item, numero, abierta, onToggle }) {
+  const { pregunta, estado, puntos, respuesta } = item;
 
   return (
     <li
@@ -80,7 +62,7 @@ function PreguntaResultado({ item, numero }) {
       <button
         type="button"
         className="resultados-examen__pregunta-header"
-        onClick={() => setAbierta((v) => !v)}
+        onClick={onToggle}
       >
         {ICONO_ESTADO[estado]}
 
@@ -99,16 +81,22 @@ function PreguntaResultado({ item, numero }) {
 
       {abierta && (
         <div className="resultados-examen__explicacion">
-          {pregunta.q && (
-            <p className="resultados-examen__pregunta-enunciado">
-              <LatexText>{pregunta.q}</LatexText>
+          <div className="question-card resultados-examen__detalle-pregunta">
+            <div className="question-card__inner">
+              <PreguntaSimulacro
+                pregunta={pregunta}
+                respuesta={respuesta}
+                onCambiar={() => {}}
+                modoResultado
+              />
+            </div>
+          </div>
+
+          {pregunta.explicacion && (
+            <p className="resultados-examen__explicacion-texto">
+              <LatexText>{pregunta.explicacion}</LatexText>
             </p>
           )}
-
-          <p className="resultados-examen__respuesta-correcta">
-            Respuesta correcta:{" "}
-            <LatexText>{textoRespuestaCorrecta(pregunta)}</LatexText>
-          </p>
         </div>
       )}
     </li>
@@ -122,6 +110,25 @@ export default function ResultadosExamenPage({
   onSalir,
 }) {
   const { puntajeTotal, grupos } = resultados;
+
+  /*
+   * ============================================================
+   * ACORDEÓN ÚNICO
+   * ============================================================
+   *
+   * Solo una pregunta puede estar abierta a la vez en toda la
+   * página de resultados. Al abrir una, las demás se cierran
+   * automáticamente (se guarda un solo id "abierto").
+   * ============================================================
+   */
+  const [preguntaAbiertaId, setPreguntaAbiertaId] =
+    useState(null);
+
+  function alternarPregunta(id) {
+    setPreguntaAbiertaId((actual) =>
+      actual === id ? null : id
+    );
+  }
 
   const totalPreguntas = grupos.reduce(
     (acc, g) => acc + g.items.length,
@@ -186,6 +193,12 @@ export default function ResultadosExamenPage({
                   key={item.pregunta.id}
                   item={item}
                   numero={index + 1}
+                  abierta={
+                    preguntaAbiertaId === item.pregunta.id
+                  }
+                  onToggle={() =>
+                    alternarPregunta(item.pregunta.id)
+                  }
                 />
               ))}
             </ul>

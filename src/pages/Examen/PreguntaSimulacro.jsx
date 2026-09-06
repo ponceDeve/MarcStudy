@@ -3,12 +3,6 @@ import LatexText from "../../components/LatexText";
 // ============================================================================
 // DETECTAR ESPACIOS DE COMPLETAR
 // ============================================================================
-// Acepta:
-// ___1___
-// ***1***
-// ---1---
-// y también mezclas de delimitadores.
-// ============================================================================
 
 function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
@@ -52,6 +46,7 @@ export default function PreguntaSimulacro({
   pregunta,
   respuesta,
   onCambiar,
+  modoResultado = false,
 }) {
   // ==========================================================================
   // VERDADERO / FALSO
@@ -60,11 +55,11 @@ export default function PreguntaSimulacro({
   if (pregunta.tipo === "verdadero_falso") {
     const marcas =
       respuesta ||
-      Array(
-        pregunta.proposiciones?.length || 0
-      ).fill(null);
+      Array(pregunta.proposiciones?.length || 0).fill(null);
 
     function marcar(i, valor) {
+      if (modoResultado) return;
+
       const copia = [...marcas];
       copia[i] = valor;
       onCambiar(copia);
@@ -79,48 +74,71 @@ export default function PreguntaSimulacro({
         )}
 
         <ol className="question-card__vf-list">
-          {(pregunta.proposiciones || []).map(
-            (prop, i) => (
+          {(pregunta.proposiciones || []).map((prop, i) => {
+            const marcada = marcas[i];
+
+            const respondida =
+              marcada === true || marcada === false;
+
+            const filaEstado = modoResultado
+              ? !respondida
+                ? ""
+                : marcada === prop.correct
+                  ? "is-correct"
+                  : "is-wrong"
+              : "";
+
+            return (
               <li
                 key={i}
-                className="question-card__vf-row"
+                className={`question-card__vf-row ${filaEstado}`}
               >
                 <span className="question-card__vf-texto">
-                  <LatexText>
-                    {prop.texto}
-                  </LatexText>
+                  <LatexText>{prop.texto}</LatexText>
                 </span>
 
                 <div className="question-card__vf-btns">
                   <button
                     type="button"
-                    onClick={() =>
-                      marcar(i, true)
-                    }
-                    className={`question-card__vf-btn ${marcas[i] === true
-                        ? "is-selected"
-                        : ""
-                      }`}
+                    disabled={modoResultado}
+                    onClick={() => marcar(i, true)}
+                    className={`question-card__vf-btn ${
+                      marcas[i] === true ? "is-selected" : ""
+                    }`}
                   >
                     V
                   </button>
 
                   <button
                     type="button"
-                    onClick={() =>
-                      marcar(i, false)
-                    }
-                    className={`question-card__vf-btn ${marcas[i] === false
-                        ? "is-selected"
-                        : ""
-                      }`}
+                    disabled={modoResultado}
+                    onClick={() => marcar(i, false)}
+                    className={`question-card__vf-btn ${
+                      marcas[i] === false ? "is-selected" : ""
+                    }`}
                   >
                     F
                   </button>
                 </div>
+
+                {modoResultado && !respondida && (
+                  <span className="question-card__vf-correcta">
+                    Correcta:{" "}
+                    {prop.correct ? "Verdadero" : "Falso"}
+                  </span>
+                )}
+
+                {modoResultado &&
+                  respondida &&
+                  marcada !== prop.correct && (
+                    <span className="question-card__vf-correcta">
+                      Correcta:{" "}
+                      {prop.correct ? "Verdadero" : "Falso"}
+                    </span>
+                  )}
               </li>
-            )
-          )}
+            );
+          })}
         </ol>
       </>
     );
@@ -137,11 +155,15 @@ export default function PreguntaSimulacro({
 
     const opciones = pregunta.opciones || [];
 
+    const idxAMostrar = modoResultado
+      ? pregunta.correctoIdx
+      : respuesta;
+
     const palabrasElegidas =
-      respuesta !== null &&
-        respuesta !== undefined &&
-        opciones[respuesta]
-        ? opciones[respuesta]
+      idxAMostrar !== null &&
+      idxAMostrar !== undefined &&
+      opciones[idxAMostrar]
+        ? opciones[idxAMostrar]
         : null;
 
     let espacioIdx = -1;
@@ -153,9 +175,7 @@ export default function PreguntaSimulacro({
             if (parte.tipo === "texto") {
               return (
                 <span key={i}>
-                  <LatexText>
-                    {parte.valor}
-                  </LatexText>
+                  <LatexText>{parte.valor}</LatexText>
                 </span>
               );
             }
@@ -166,15 +186,16 @@ export default function PreguntaSimulacro({
 
             const texto =
               palabrasElegidas &&
-                palabrasElegidas[idx] !== undefined
+              palabrasElegidas[idx] !== undefined
                 ? palabrasElegidas[idx]
                 : "";
 
             return (
               <span
                 key={i}
-                className={`question-card__cloze-input ${texto ? "has-value" : ""
-                  }`}
+                className={`question-card__cloze-input ${
+                  texto ? "has-value" : ""
+                } ${modoResultado ? "is-correct" : ""}`}
               >
                 {texto ? (
                   <LatexText>{texto}</LatexText>
@@ -187,23 +208,73 @@ export default function PreguntaSimulacro({
         </p>
 
         <div className="question-card__options">
-          {opciones.map((combo, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => onCambiar(i)}
-              className={`question-card__opt ${respuesta === i
-                  ? "is-selected"
+          {opciones.map((combo, i) => {
+            if (modoResultado) {
+              const esCorrecta =
+                i === pregunta.correctoIdx;
+
+              const esMarcada =
+                i === respuesta;
+
+              const estaEnBlanco =
+                respuesta === null ||
+                respuesta === undefined;
+
+              // Respondió bien:
+              // mostrar únicamente la correcta.
+              if (
+                respuesta === pregunta.correctoIdx &&
+                !esCorrecta
+              ) {
+                return null;
+              }
+
+              // No respondió:
+              // mostrar únicamente la correcta.
+              if (estaEnBlanco && !esCorrecta) {
+                return null;
+              }
+
+              // Respondió mal:
+              // mostrar marcada + correcta.
+              if (
+                !estaEnBlanco &&
+                respuesta !== pregunta.correctoIdx &&
+                !esCorrecta &&
+                !esMarcada
+              ) {
+                return null;
+              }
+            }
+
+            const claseResultado = modoResultado
+              ? i === pregunta.correctoIdx
+                ? "is-correct"
+                : i === respuesta
+                  ? "is-wrong"
                   : ""
-                }`}
-            >
-              <LatexText>
-                {Array.isArray(combo)
-                  ? combo.join(" · ")
-                  : combo}
-              </LatexText>
-            </button>
-          ))}
+              : "";
+
+            return (
+              <button
+                key={i}
+                type="button"
+                disabled={modoResultado}
+                onClick={() => onCambiar(i)}
+                className={`question-card__opt ${
+                  respuesta === i && !modoResultado
+                    ? "is-selected"
+                    : ""
+                } ${claseResultado}`}
+              >
+                <LatexText>
+                  {Array.isArray(combo)
+                    ? combo.join(" · ")
+                    : combo}
+                </LatexText>
+              </button>
+            );
+          })}
         </div>
       </>
     );
@@ -218,50 +289,86 @@ export default function PreguntaSimulacro({
       <>
         {pregunta.q && (
           <h3 className="question-card__q">
-            <LatexText>
-              {pregunta.q}
-            </LatexText>
+            <LatexText>{pregunta.q}</LatexText>
           </h3>
         )}
 
         <div className="question-card__match">
           <ul className="question-card__match-col">
-            {(pregunta.columnaA || []).map(
-              (item, i) => (
-                <li key={i}>
-                  <LatexText>{item}</LatexText>
-                </li>
-              )
-            )}
+            {(pregunta.columnaA || []).map((item, i) => (
+              <li key={i}>
+                <LatexText>{item}</LatexText>
+              </li>
+            ))}
           </ul>
 
           <ul className="question-card__match-col">
-            {(pregunta.columnaB || []).map(
-              (item, i) => (
-                <li key={i}>
-                  <LatexText>{item}</LatexText>
-                </li>
-              )
-            )}
+            {(pregunta.columnaB || []).map((item, i) => (
+              <li key={i}>
+                <LatexText>{item}</LatexText>
+              </li>
+            ))}
           </ul>
         </div>
 
         <div className="question-card__options">
-          {(pregunta.opciones || []).map(
-            (combo, i) => (
+          {(pregunta.opciones || []).map((combo, i) => {
+            if (modoResultado) {
+              const esCorrecta =
+                i === pregunta.correctoIdx;
+
+              const esMarcada =
+                i === respuesta;
+
+              const estaEnBlanco =
+                respuesta === null ||
+                respuesta === undefined;
+
+              if (
+                respuesta === pregunta.correctoIdx &&
+                !esCorrecta
+              ) {
+                return null;
+              }
+
+              if (estaEnBlanco && !esCorrecta) {
+                return null;
+              }
+
+              if (
+                !estaEnBlanco &&
+                respuesta !== pregunta.correctoIdx &&
+                !esCorrecta &&
+                !esMarcada
+              ) {
+                return null;
+              }
+            }
+
+            const claseResultado = modoResultado
+              ? i === pregunta.correctoIdx
+                ? "is-correct"
+                : i === respuesta
+                  ? "is-wrong"
+                  : ""
+              : "";
+
+            return (
               <button
                 key={i}
                 type="button"
+                disabled={modoResultado}
                 onClick={() => onCambiar(i)}
-                className={`question-card__opt ${respuesta === i
+                className={`question-card__opt ${
+                  respuesta === i && !modoResultado
                     ? "is-selected"
                     : ""
-                  }`}
+                } ${claseResultado}`}
               >
                 <LatexText>{combo}</LatexText>
               </button>
-            )
-          )}
+            );
+          })}
         </div>
       </>
     );
@@ -292,9 +399,7 @@ export default function PreguntaSimulacro({
                 key={i}
                 className="question-card__q-prop"
               >
-                <LatexText>
-                  {linea}
-                </LatexText>
+                <LatexText>{linea}</LatexText>
               </p>
             ))}
           </div>
@@ -302,21 +407,69 @@ export default function PreguntaSimulacro({
       </div>
 
       <div className="question-card__options">
-        {(pregunta.opciones || []).map(
-          (texto, i) => (
+        {(pregunta.opciones || []).map((texto, i) => {
+          if (modoResultado) {
+            const esCorrecta =
+              i === pregunta.correctoIdx;
+
+            const esMarcada =
+              i === respuesta;
+
+            const estaEnBlanco =
+              respuesta === null ||
+              respuesta === undefined;
+
+            // Respondió correctamente:
+            // mostrar únicamente la correcta.
+            if (
+              respuesta === pregunta.correctoIdx &&
+              !esCorrecta
+            ) {
+              return null;
+            }
+
+            // No respondió:
+            // mostrar únicamente la correcta.
+            if (estaEnBlanco && !esCorrecta) {
+              return null;
+            }
+
+            // Respondió incorrectamente:
+            // mostrar únicamente marcada + correcta.
+            if (
+              !estaEnBlanco &&
+              respuesta !== pregunta.correctoIdx &&
+              !esCorrecta &&
+              !esMarcada
+            ) {
+              return null;
+            }
+          }
+
+          const claseResultado = modoResultado
+            ? i === pregunta.correctoIdx
+              ? "is-correct"
+              : i === respuesta
+                ? "is-wrong"
+                : ""
+            : "";
+
+          return (
             <button
               key={i}
               type="button"
+              disabled={modoResultado}
               onClick={() => onCambiar(i)}
-              className={`question-card__opt ${respuesta === i
+              className={`question-card__opt ${
+                respuesta === i && !modoResultado
                   ? "is-selected"
                   : ""
-                }`}
+              } ${claseResultado}`}
             >
               <LatexText>{texto}</LatexText>
             </button>
-          )
-        )}
+          );
+        })}
       </div>
     </>
   );
