@@ -22,7 +22,14 @@
        tarda más que la última vez que se hizo este mismo examen.
    ============================================================ */
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 
 import LatexText from "../../components/LatexText";
 import { shuffle } from "../../lib/shuffle";
@@ -58,9 +65,7 @@ function elegirMensajeRendirse() {
 function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
   const partes = [];
-
   const regex = /(?:___|\*\*\*|---)\s*\d+\s*(?:___|\*\*\*|---)/g;
-
   let ultimoIndex = 0;
   let match;
 
@@ -73,7 +78,6 @@ function partirEnEspacios(textoConEspacios) {
     }
 
     partes.push({ tipo: "espacio" });
-
     ultimoIndex = match.index + match[0].length;
   }
 
@@ -127,6 +131,7 @@ function calificarPreguntaTema(pregunta, respuesta) {
 function formatearTiempo(segundosTotales) {
   const m = Math.floor(segundosTotales / 60);
   const s = segundosTotales % 60;
+
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
@@ -134,7 +139,12 @@ function formatearTiempo(segundosTotales) {
    RENDER DE UNA PREGUNTA (sin corrección en tiempo real)
    ============================================================ */
 
-function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
+function PreguntaExamenTema({
+  pregunta,
+  respuesta,
+  onCambiar,
+  rendido
+}) {
   const shuffled = useMemo(() => {
     if (pregunta.tipo === "verdadero_falso") return null;
 
@@ -148,6 +158,7 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
 
   const partes = useMemo(() => {
     if (pregunta.tipo !== "completar") return null;
+
     return partirEnEspacios(pregunta.textoConEspacios || "");
   }, [pregunta]);
 
@@ -186,8 +197,9 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
                     nuevo[i] = true;
                     onCambiar(nuevo);
                   }}
-                  className={`question-card__vf-btn ${marcas[i] === true ? "is-selected" : ""
-                    }`}
+                  className={`question-card__vf-btn ${
+                    marcas[i] === true ? "is-selected" : ""
+                  }`}
                 >
                   V
                 </button>
@@ -199,8 +211,9 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
                     nuevo[i] = false;
                     onCambiar(nuevo);
                   }}
-                  className={`question-card__vf-btn ${marcas[i] === false ? "is-selected" : ""
-                    }`}
+                  className={`question-card__vf-btn ${
+                    marcas[i] === false ? "is-selected" : ""
+                  }`}
                 >
                   F
                 </button>
@@ -241,14 +254,16 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
             }
 
             espacioIdx += 1;
+
             const idx = espacioIdx;
             const texto = palabrasElegidas ? palabrasElegidas[idx] : "";
 
             return (
               <span
                 key={i}
-                className={`question-card__cloze-input ${texto ? "has-value" : ""
-                  }`}
+                className={`question-card__cloze-input ${
+                  texto ? "has-value" : ""
+                }`}
               >
                 {texto ? <LatexText>{texto}</LatexText> : "\u00A0"}
               </span>
@@ -262,12 +277,15 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
               key={i}
               type="button"
               onClick={() => onCambiar(opt.originalIndex)}
-              className={`question-card__opt ${respuesta === opt.originalIndex ? "is-selected" : ""
-                }`}
+              className={`question-card__opt ${
+                respuesta === opt.originalIndex ? "is-selected" : ""
+              }`}
             >
               <span className="question-card__opt-letter">
-                {LETRAS_ALTERNATIVAS[i] || String.fromCharCode(65 + i)}
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(65 + i)}
               </span>
+
               <span className="question-card__opt-text">
                 <LatexText>{opt.valor.join(" · ")}</LatexText>
               </span>
@@ -313,12 +331,15 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
               key={i}
               type="button"
               onClick={() => onCambiar(opt.originalIndex)}
-              className={`question-card__opt ${respuesta === opt.originalIndex ? "is-selected" : ""
-                }`}
+              className={`question-card__opt ${
+                respuesta === opt.originalIndex ? "is-selected" : ""
+              }`}
             >
               <span className="question-card__opt-letter">
-                {LETRAS_ALTERNATIVAS[i] || String.fromCharCode(65 + i)}
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(65 + i)}
               </span>
+
               <span className="question-card__opt-text">
                 <LatexText>{opt.valor}</LatexText>
               </span>
@@ -355,12 +376,15 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
             key={i}
             type="button"
             onClick={() => onCambiar(opt.originalIndex)}
-            className={`question-card__opt ${respuesta === opt.originalIndex ? "is-selected" : ""
-              }`}
+            className={`question-card__opt ${
+              respuesta === opt.originalIndex ? "is-selected" : ""
+            }`}
           >
             <span className="question-card__opt-letter">
-              {LETRAS_ALTERNATIVAS[i] || String.fromCharCode(65 + i)}
+              {LETRAS_ALTERNATIVAS[i] ||
+                String.fromCharCode(65 + i)}
             </span>
+
             <span className="question-card__opt-text">
               <LatexText>{opt.valor}</LatexText>
             </span>
@@ -377,7 +401,11 @@ function PreguntaExamenTema({ pregunta, respuesta, onCambiar, rendido }) {
    porque en este modo no existen)
    ============================================================ */
 
-function ModalConfirmarRendirse({ abierto, onContinuar, onRendirse }) {
+function ModalConfirmarRendirse({
+  abierto,
+  onContinuar,
+  onRendirse
+}) {
   const mensaje = useMemo(
     () => elegirMensajeRendirse(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -387,11 +415,21 @@ function ModalConfirmarRendirse({ abierto, onContinuar, onRendirse }) {
   if (!abierto) return null;
 
   return (
-    <div className="rendirse-modal-overlay" onClick={onContinuar}>
-      <div className="rendirse-modal" onClick={(e) => e.stopPropagation()}>
-        <h3 className="rendirse-modal__title">¿Te vas a rendir?</h3>
+    <div
+      className="rendirse-modal-overlay"
+      onClick={onContinuar}
+    >
+      <div
+        className="rendirse-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="rendirse-modal__title">
+          ¿Te vas a rendir?
+        </h3>
 
-        <p className="rendirse-modal__text">{mensaje}</p>
+        <p className="rendirse-modal__text">
+          {mensaje}
+        </p>
 
         <div className="rendirse-modal__actions">
           <button
@@ -416,13 +454,442 @@ function ModalConfirmarRendirse({ abierto, onContinuar, onRendirse }) {
 }
 
 /* ============================================================
+   MODAL DE CONFIRMACIÓN DE ENTREGA
+   ============================================================ */
+
+function ModalConfirmarEntrega({
+  abierto,
+  respondidas,
+  total,
+  onCancelar,
+  onEntregar
+}) {
+  if (!abierto) return null;
+
+  return (
+    <div
+      className="rendirse-modal-overlay"
+      onClick={onCancelar}
+    >
+      <div
+        className="rendirse-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="rendirse-modal__title">
+          ¿Entregar examen?
+        </h3>
+
+        <p className="rendirse-modal__text">
+          {respondidas} / {total} respondidas
+        </p>
+
+        <div className="rendirse-modal__actions">
+          <button
+            type="button"
+            className="rendirse-modal__btn is-confirm"
+            onClick={onCancelar}
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            className="rendirse-modal__btn is-cancel"
+            onClick={onEntregar}
+          >
+            Entregar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   RENDER DE UNA PREGUNTA EN MODO RESULTADO
+   (igual que PreguntaSimulacro.jsx del examen real: muestra la
+   pregunta literal y, en las alternativas, la correcta siempre;
+   si el usuario marcó una incorrecta, también se muestra esa)
+   ============================================================ */
+
+function PreguntaResultadoTema({ pregunta, respuesta }) {
+  const lineasQ = (pregunta.q || "")
+    .split("\n")
+    .filter((linea) => linea.trim() !== "");
+
+  const introQ = lineasQ[0] || "";
+  const restoQ = lineasQ.slice(1);
+
+  /* -------------------- VERDADERO / FALSO -------------------- */
+
+  if (pregunta.tipo === "verdadero_falso") {
+    const marcas = respuesta || [];
+
+    return (
+      <>
+        {pregunta.q && (
+          <h3 className="question-card__q">
+            <LatexText>{pregunta.q}</LatexText>
+          </h3>
+        )}
+
+        <ol className="question-card__vf-list">
+          {(pregunta.proposiciones || []).map((prop, i) => {
+            const marcada = marcas[i];
+
+            const respondida =
+              marcada === true || marcada === false;
+
+            const filaEstado = !respondida
+              ? ""
+              : marcada === prop.correct
+                ? "is-correct"
+                : "is-wrong";
+
+            return (
+              <li
+                key={i}
+                className={`question-card__vf-row ${filaEstado}`}
+              >
+                <span className="question-card__vf-texto">
+                  <LatexText>{prop.texto}</LatexText>
+                </span>
+
+                <div className="question-card__vf-btns">
+                  <button
+                    type="button"
+                    disabled
+                    className={`question-card__vf-btn ${
+                      marcas[i] === true ? "is-selected" : ""
+                    }`}
+                  >
+                    V
+                  </button>
+
+                  <button
+                    type="button"
+                    disabled
+                    className={`question-card__vf-btn ${
+                      marcas[i] === false ? "is-selected" : ""
+                    }`}
+                  >
+                    F
+                  </button>
+                </div>
+
+                {(!respondida || marcada !== prop.correct) && (
+                  <span className="question-card__vf-correcta">
+                    Correcta:{" "}
+                    {prop.correct ? "Verdadero" : "Falso"}
+                  </span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </>
+    );
+  }
+
+  /* -------------------- COMPLETAR -------------------- */
+
+  if (pregunta.tipo === "completar") {
+    const partes = partirEnEspacios(
+      pregunta.textoConEspacios || ""
+    );
+
+    const opts = pregunta.opts || [];
+    const palabrasElegidas = opts[pregunta.correct] || null;
+
+    let espacioIdx = -1;
+
+    return (
+      <>
+        {pregunta.q && (
+          <h3 className="question-card__q">
+            <LatexText>{pregunta.q}</LatexText>
+          </h3>
+        )}
+
+        <p className="question-card__cloze">
+          {partes.map((parte, i) => {
+            if (parte.tipo === "texto") {
+              return (
+                <span key={i}>
+                  <LatexText>{parte.valor}</LatexText>
+                </span>
+              );
+            }
+
+            espacioIdx += 1;
+
+            const idx = espacioIdx;
+
+            const texto =
+              palabrasElegidas &&
+              palabrasElegidas[idx] !== undefined
+                ? palabrasElegidas[idx]
+                : "";
+
+            return (
+              <span
+                key={i}
+                className={`question-card__cloze-input is-correct ${
+                  texto ? "has-value" : ""
+                }`}
+              >
+                {texto ? (
+                  <LatexText>{texto}</LatexText>
+                ) : (
+                  "\u00A0"
+                )}
+              </span>
+            );
+          })}
+        </p>
+
+        <div className="question-card__options question-card__options--completar">
+          {opts.map((combo, i) => {
+            const esCorrecta = i === pregunta.correct;
+            const esMarcada = i === respuesta;
+
+            const estaEnBlanco =
+              respuesta === null || respuesta === undefined;
+
+            if (respuesta === pregunta.correct && !esCorrecta) {
+              return null;
+            }
+
+            if (estaEnBlanco && !esCorrecta) {
+              return null;
+            }
+
+            if (
+              !estaEnBlanco &&
+              respuesta !== pregunta.correct &&
+              !esCorrecta &&
+              !esMarcada
+            ) {
+              return null;
+            }
+
+            const claseResultado = esCorrecta
+              ? "is-correct"
+              : esMarcada
+                ? "is-wrong"
+                : "";
+
+            return (
+              <button
+                key={i}
+                type="button"
+                disabled
+                className={`question-card__opt ${claseResultado}`}
+              >
+                <span className="question-card__opt-letter">
+                  {LETRAS_ALTERNATIVAS[i] ||
+                    String.fromCharCode(65 + i)}
+                </span>
+
+                <span className="question-card__opt-text">
+                  <LatexText>
+                    {Array.isArray(combo)
+                      ? combo.join(" · ")
+                      : combo}
+                  </LatexText>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+
+  /* -------------------- RELACIONAR -------------------- */
+
+  if (pregunta.tipo === "relacionar") {
+    const opts = pregunta.opts || [];
+
+    return (
+      <>
+        {pregunta.q && (
+          <h3 className="question-card__q">
+            <LatexText>{pregunta.q}</LatexText>
+          </h3>
+        )}
+
+        <div className="question-card__match question-card__match--relacionar">
+          <ul className="question-card__match-col">
+            {(pregunta.columnaA || []).map((item, i) => (
+              <li key={i}>
+                <LatexText>{item}</LatexText>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="question-card__match-col">
+            {(pregunta.columnaB || []).map((item, i) => (
+              <li key={i}>
+                <LatexText>{item}</LatexText>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="question-card__options question-card__options--relacionar">
+          {opts.map((valor, i) => {
+            const esCorrecta = i === pregunta.correct;
+            const esMarcada = i === respuesta;
+
+            const estaEnBlanco =
+              respuesta === null || respuesta === undefined;
+
+            if (respuesta === pregunta.correct && !esCorrecta) {
+              return null;
+            }
+
+            if (estaEnBlanco && !esCorrecta) {
+              return null;
+            }
+
+            if (
+              !estaEnBlanco &&
+              respuesta !== pregunta.correct &&
+              !esCorrecta &&
+              !esMarcada
+            ) {
+              return null;
+            }
+
+            const claseResultado = esCorrecta
+              ? "is-correct"
+              : esMarcada
+                ? "is-wrong"
+                : "";
+
+            return (
+              <button
+                key={i}
+                type="button"
+                disabled
+                className={`question-card__opt ${claseResultado}`}
+              >
+                <span className="question-card__opt-letter">
+                  {LETRAS_ALTERNATIVAS[i] ||
+                    String.fromCharCode(65 + i)}
+                </span>
+
+                <span className="question-card__opt-text">
+                  <LatexText>{valor}</LatexText>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+
+  /* -------------------- OPCIÓN MÚLTIPLE (por defecto) -------------------- */
+
+  const opts = pregunta.opts || [];
+
+  return (
+    <>
+      <div className="question-card__q">
+        <p className="question-card__q-intro">
+          <LatexText>{introQ}</LatexText>
+        </p>
+
+        {restoQ.length > 0 && (
+          <div className="question-card__q-props">
+            {restoQ.map((linea, i) => (
+              <p key={i} className="question-card__q-prop">
+                <LatexText>{linea}</LatexText>
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="question-card__options">
+        {opts.map((valor, i) => {
+          const esCorrecta = i === pregunta.correct;
+          const esMarcada = i === respuesta;
+
+          const estaEnBlanco =
+            respuesta === null || respuesta === undefined;
+
+          if (respuesta === pregunta.correct && !esCorrecta) {
+            return null;
+          }
+
+          if (estaEnBlanco && !esCorrecta) {
+            return null;
+          }
+
+          if (
+            !estaEnBlanco &&
+            respuesta !== pregunta.correct &&
+            !esCorrecta &&
+            !esMarcada
+          ) {
+            return null;
+          }
+
+          const claseResultado = esCorrecta
+            ? "is-correct"
+            : esMarcada
+              ? "is-wrong"
+              : "";
+
+          return (
+            <button
+              key={i}
+              type="button"
+              disabled
+              className={`question-card__opt ${claseResultado}`}
+            >
+              <span className="question-card__opt-letter">
+                {LETRAS_ALTERNATIVAS[i] ||
+                  String.fromCharCode(65 + i)}
+              </span>
+
+              <span className="question-card__opt-text">
+                <LatexText>{valor}</LatexText>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+/* ============================================================
    FILA DE RESULTADO (pantalla final)
    ============================================================ */
 
 const ICONO_ESTADO = {
-  correcta: <i className="fas fa-check-circle" style={{ color: "var(--success)" }} />,
-  incorrecta: <i className="fas fa-times-circle" style={{ color: "var(--danger)" }} />,
-  blanco: <i className="fas fa-minus-circle" style={{ color: "var(--ink-faint)" }} />
+  correcta: (
+    <i
+      className="fas fa-check-circle"
+      style={{ color: "var(--success)" }}
+    />
+  ),
+  incorrecta: (
+    <i
+      className="fas fa-times-circle"
+      style={{ color: "var(--danger)" }}
+    />
+  ),
+  blanco: (
+    <i
+      className="fas fa-minus-circle"
+      style={{ color: "var(--ink-faint)" }}
+    />
+  )
 };
 
 const TEXTO_ESTADO = {
@@ -431,13 +898,24 @@ const TEXTO_ESTADO = {
   blanco: "Sin responder"
 };
 
-function FilaResultado({ item, numero, abierta, onToggle }) {
-  const { pregunta, estado, puntos } = item;
+function FilaResultado({
+  item,
+  numero,
+  abierta,
+  onToggle
+}) {
+  const {
+    pregunta,
+    estado,
+    puntos,
+    respuesta
+  } = item;
 
   return (
     <li
-      className={`resultados-examen__pregunta is-${estado} ${abierta ? "is-abierta" : ""
-        }`}
+      className={`resultados-examen__pregunta is-${estado} ${
+        abierta ? "is-abierta" : ""
+      }`}
     >
       <button
         type="button"
@@ -451,17 +929,38 @@ function FilaResultado({ item, numero, abierta, onToggle }) {
         </span>
 
         <span className="resultados-examen__pregunta-puntos">
-          {puntos > 0 ? `+${puntos.toFixed ? puntos.toFixed(2) : puntos}` : puntos}
+          {puntos > 0
+            ? `+${puntos.toFixed ? puntos.toFixed(2) : puntos}`
+            : puntos}
         </span>
 
-        <i className={`fas fa-chevron-${abierta ? "up" : "down"}`} />
+        <i
+          className={`fas fa-chevron-${
+            abierta ? "up" : "down"
+          }`}
+        />
       </button>
 
-      {abierta && pregunta.explicacion && (
+      {abierta && (
         <div className="resultados-examen__explicacion">
-          <p className="resultados-examen__explicacion-texto">
-            <LatexText>{pregunta.explicacion}</LatexText>
-          </p>
+          <div
+            className={`question-card resultados-examen__detalle-pregunta question-card--${
+              pregunta.tipo || "opcion_multiple"
+            }`}
+          >
+            <div className="question-card__inner">
+              <PreguntaResultadoTema
+                pregunta={pregunta}
+                respuesta={respuesta}
+              />
+            </div>
+          </div>
+
+          {pregunta.explicacion && (
+            <p className="resultados-examen__explicacion-texto">
+              <LatexText>{pregunta.explicacion}</LatexText>
+            </p>
+          )}
         </div>
       )}
     </li>
@@ -472,54 +971,130 @@ function FilaResultado({ item, numero, abierta, onToggle }) {
    COMPONENTE PRINCIPAL
    ============================================================ */
 
-export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerminar }) {
+const TemaExamenView = forwardRef(function TemaExamenView(
+  {
+    preguntas,
+    titulos,
+    claveTiempo,
+    onTerminar,
+    onFaseChange
+  },
+  ref
+) {
   const [indice, setIndice] = useState(0);
-  const [fase, setFase] = useState("preguntas"); // "preguntas" | "resultados"
-
+  const [fase, setFase] = useState("preguntas");
   const [respuestasPorIndice, setRespuestasPorIndice] = useState({});
   const [resultadosPorIndice, setResultadosPorIndice] = useState({});
   const [rendidoPorIndice, setRendidoPorIndice] = useState({});
-  const [mensajeRendirsePorIndice, setMensajeRendirsePorIndice] = useState({});
-
-  const [preguntaAbiertaResultado, setPreguntaAbiertaResultado] = useState(null);
-  const [modalRendirseAbierto, setModalRendirseAbierto] = useState(false);
+  const [
+    mensajeRendirsePorIndice,
+    setMensajeRendirsePorIndice
+  ] = useState({});
+  const [
+    preguntaAbiertaResultado,
+    setPreguntaAbiertaResultado
+  ] = useState(null);
+  const [
+    tituloSeleccionado,
+    setTituloSeleccionado
+  ] = useState(null);
+  const [
+    modalRendirseAbierto,
+    setModalRendirseAbierto
+  ] = useState(false);
+  const [
+    modalEntregaAbierto,
+    setModalEntregaAbierto
+  ] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
 
   const tiempoInicioRef = useRef(Date.now());
-  const [tiempoTranscurrido, setTiempoTranscurrido] = useState(0);
+  const toastTimeoutRef = useRef(null);
+
+  const [tiempoTranscurrido, setTiempoTranscurrido] =
+    useState(0);
+
   const [tiempoAnterior] = useState(() => {
     const guardado = localStorage.getItem(claveTiempo);
     return guardado ? parseInt(guardado, 10) : null;
   });
+
+  /*
+   * NUEVO:
+   * Informa al componente padre si estamos en preguntas
+   * o en resultados.
+   *
+   * Esto permite que MiEstudioPage pueda cambiar los botones
+   * del TopBar sin modificar la lógica interna del examen.
+   */
+  useEffect(() => {
+    onFaseChange?.(fase);
+  }, [fase, onFaseChange]);
 
   useEffect(() => {
     if (fase !== "preguntas") return;
 
     const intervalo = setInterval(() => {
       setTiempoTranscurrido(
-        Math.floor((Date.now() - tiempoInicioRef.current) / 1000)
+        Math.floor(
+          (Date.now() - tiempoInicioRef.current) / 1000
+        )
       );
     }, 1000);
 
     return () => clearInterval(intervalo);
   }, [fase]);
 
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const total = preguntas.length;
   const preguntaActual = preguntas[indice];
 
+  function mostrarToastEntrega() {
+    setToastVisible(true);
+
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastVisible(false);
+      toastTimeoutRef.current = null;
+    }, 2000);
+  }
+
   function fijarResultado(idx, estado) {
     setResultadosPorIndice((prev) =>
-      prev[idx] ? prev : { ...prev, [idx]: estado }
+      prev[idx]
+        ? prev
+        : {
+            ...prev,
+            [idx]: estado
+          }
     );
   }
 
   function manejarCambioRespuesta(nuevaRespuesta) {
-    setRespuestasPorIndice((prev) => ({ ...prev, [indice]: nuevaRespuesta }));
+    setRespuestasPorIndice((prev) => ({
+      ...prev,
+      [indice]: nuevaRespuesta
+    }));
   }
 
   function manejarRendirse() {
     if (rendidoPorIndice[indice]) return;
 
-    setRendidoPorIndice((prev) => ({ ...prev, [indice]: true }));
+    setRendidoPorIndice((prev) => ({
+      ...prev,
+      [indice]: true
+    }));
+
     setMensajeRendirsePorIndice((prev) => ({
       ...prev,
       [indice]: elegirMensajeRendirse()
@@ -529,20 +1104,29 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
   }
 
   function manejarAnterior() {
-    if (indice > 0) setIndice((i) => i - 1);
+    if (indice > 0) {
+      setIndice((i) => i - 1);
+    }
   }
 
   function manejarSiguiente() {
+    if (indice === total - 1) {
+      mostrarToastEntrega();
+      return;
+    }
+
     if (!resultadosPorIndice[indice]) {
       const respuesta = respuestasPorIndice[indice] ?? null;
-      const estado = calificarPreguntaTema(preguntaActual, respuesta);
+      const estado = calificarPreguntaTema(
+        preguntaActual,
+        respuesta
+      );
+
       fijarResultado(indice, estado);
     }
 
     if (indice < total - 1) {
       setIndice((i) => i + 1);
-    } else {
-      terminarPreguntas();
     }
   }
 
@@ -551,50 +1135,190 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
       (Date.now() - tiempoInicioRef.current) / 1000
     );
 
-    localStorage.setItem(claveTiempo, String(segundosFinal));
+    localStorage.setItem(
+      claveTiempo,
+      String(segundosFinal)
+    );
+
     setFase("resultados");
   }
 
+  /*
+   * Se llama desde afuera (botón "Abandonar" del TopBar) cuando el
+   * usuario abandona en medio de una pregunta: las preguntas que
+   * todavía no tengan resultado fijado se califican con la
+   * respuesta que haya en ese momento (o en blanco) y se salta
+   * directo a la pantalla de resultados, igual que "Abandonar" en
+   * el examen real.
+   */
+  function finalizarAhora() {
+    setResultadosPorIndice((prev) => {
+      const nuevo = { ...prev };
+
+      preguntas.forEach((pregunta, i) => {
+        if (nuevo[i]) return;
+
+        const respuesta = respuestasPorIndice[i] ?? null;
+
+        nuevo[i] = calificarPreguntaTema(
+          pregunta,
+          respuesta
+        );
+      });
+
+      return nuevo;
+    });
+
+    terminarPreguntas();
+  }
+
+  function preguntaEstaRespondida(
+    pregunta,
+    respuesta
+  ) {
+    if (respuesta === null || respuesta === undefined) {
+      return false;
+    }
+
+    if (pregunta.tipo === "verdadero_falso") {
+      const proposiciones = pregunta.proposiciones || [];
+
+      return (
+        proposiciones.length > 0 &&
+        proposiciones.every(
+          (_, i) =>
+            respuesta[i] === true ||
+            respuesta[i] === false
+        )
+      );
+    }
+
+    return true;
+  }
+
+  const cantidadRespondidas = preguntas.reduce(
+    (cantidad, pregunta, i) =>
+      cantidad +
+      (preguntaEstaRespondida(
+        pregunta,
+        respuestasPorIndice[i]
+      )
+        ? 1
+        : 0),
+    0
+  );
+
+  useImperativeHandle(ref, () => ({
+    finalizarAhora
+  }));
+
+  useEffect(() => {
+    if (fase !== "preguntas") return;
+    if (modalRendirseAbierto) return;
+    if (modalEntregaAbierto) return;
+
+    function manejarTecla(event) {
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        manejarSiguiente();
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        manejarAnterior();
+      }
+    }
+
+    window.addEventListener(
+      "keydown",
+      manejarTecla
+    );
+
+    return () =>
+      window.removeEventListener(
+        "keydown",
+        manejarTecla
+      );
+  }, [
+    fase,
+    modalRendirseAbierto,
+    modalEntregaAbierto,
+    indice,
+    respuestasPorIndice,
+    resultadosPorIndice
+  ]);
+
   const tiempoExcedido =
-    tiempoAnterior !== null && tiempoTranscurrido > tiempoAnterior;
+    tiempoAnterior !== null &&
+    tiempoTranscurrido > tiempoAnterior;
 
   /* -------------------- PANTALLA DE RESULTADOS -------------------- */
 
   if (fase === "resultados") {
     const detalle = preguntas.map((p, i) => {
-      const estado = resultadosPorIndice[i] || "blanco";
+      const estado =
+        resultadosPorIndice[i] || "blanco";
+
       return {
         pregunta: p,
+        respuesta: respuestasPorIndice[i] ?? null,
         titulo: titulos[i] || "Sin título",
         estado,
         puntos: puntosDeEstado(estado)
       };
     });
 
-    const puntajeTotal = detalle.reduce((acc, d) => acc + d.puntos, 0);
+    const puntajeTotal = detalle.reduce(
+      (acc, d) => acc + d.puntos,
+      0
+    );
 
     const porTitulo = new Map();
+
     detalle.forEach((item, i) => {
       if (!porTitulo.has(item.titulo)) {
-        porTitulo.set(item.titulo, { titulo: item.titulo, items: [] });
+        porTitulo.set(item.titulo, {
+          titulo: item.titulo,
+          items: []
+        });
       }
-      porTitulo.get(item.titulo).items.push({ ...item, numeroGlobal: i + 1 });
+
+      porTitulo.get(item.titulo).items.push({
+        ...item,
+        numeroGlobal: i + 1
+      });
     });
 
-    const totalCorrectas = detalle.filter((d) => d.estado === "correcta").length;
+    const grupos = Array.from(
+      porTitulo.values()
+    );
+
+    const totalCorrectas = detalle.filter(
+      (d) => d.estado === "correcta"
+    ).length;
+
+    const grupoSeleccionado =
+      grupos.find(
+        (grupo) =>
+          grupo.titulo === tituloSeleccionado
+      ) ||
+      grupos[0] ||
+      null;
+
+    const puntajeGrupo = grupoSeleccionado
+      ? grupoSeleccionado.items.reduce(
+          (acc, item) => acc + item.puntos,
+          0
+        )
+      : 0;
+
+    const correctasGrupo = grupoSeleccionado
+      ? grupoSeleccionado.items.filter(
+          (item) => item.estado === "correcta"
+        ).length
+      : 0;
 
     return (
       <div className="resultados-examen container">
         <div className="resultados-examen__resumen">
-          <button
-            type="button"
-            className="teoria-boton-examen"
-            onClick={onTerminar}
-            style={{ marginBottom: "16px" }}
-          >
-            Siguiente <i className="fa-solid fa-arrow-right" />
-          </button>
-
           <h1 className="resultados-examen__puntaje">
             {puntajeTotal.toFixed(2)}
           </h1>
@@ -604,40 +1328,101 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
           </p>
         </div>
 
-        {Array.from(porTitulo.values()).map((grupo) => (
-          <section className="resultados-examen__bloque" key={grupo.titulo}>
+        {grupos.length > 1 && (
+          <select
+            className="resultados-examen__selector-curso"
+            value={grupoSeleccionado?.titulo ?? ""}
+            onChange={(event) =>
+              setTituloSeleccionado(
+                event.target.value
+              )
+            }
+            aria-label="Seleccionar título"
+          >
+            {grupos.map((grupo) => (
+              <option
+                key={grupo.titulo}
+                value={grupo.titulo}
+              >
+                {grupo.titulo}
+              </option>
+            ))}
+          </select>
+        )}
+
+        {grupoSeleccionado && (
+          <div className="resultados-examen__resumen-curso">
+            <strong className="resultados-examen__resumen-curso-puntaje">
+              {puntajeGrupo.toFixed(2)}
+            </strong>
+
+            <span className="resultados-examen__resumen-curso-datos">
+              {correctasGrupo}/
+              {grupoSeleccionado.items.length}
+            </span>
+          </div>
+        )}
+
+        {grupoSeleccionado && (
+          <section
+            className="resultados-examen__bloque"
+            key={grupoSeleccionado.titulo}
+          >
             <h2 className="resultados-examen__bloque-titulo">
-              {grupo.titulo}
+              {grupoSeleccionado.titulo}
             </h2>
 
             <ul className="resultados-examen__lista">
-              {grupo.items.map((item) => (
-                <FilaResultado
-                  key={item.numeroGlobal}
-                  item={item}
-                  numero={item.numeroGlobal}
-                  abierta={preguntaAbiertaResultado === item.numeroGlobal}
-                  onToggle={() =>
-                    setPreguntaAbiertaResultado((actual) =>
-                      actual === item.numeroGlobal ? null : item.numeroGlobal
-                    )
-                  }
-                />
-              ))}
+              {grupoSeleccionado.items.map(
+                (item) => (
+                  <FilaResultado
+                    key={item.numeroGlobal}
+                    item={item}
+                    numero={item.numeroGlobal}
+                    abierta={
+                      preguntaAbiertaResultado ===
+                      item.numeroGlobal
+                    }
+                    onToggle={() =>
+                      setPreguntaAbiertaResultado(
+                        (actual) =>
+                          actual ===
+                          item.numeroGlobal
+                            ? null
+                            : item.numeroGlobal
+                      )
+                    }
+                  />
+                )
+              )}
             </ul>
           </section>
-        ))}
+        )}
       </div>
     );
   }
 
   /* -------------------- PANTALLA DE PREGUNTA -------------------- */
 
-  const rendido = Boolean(rendidoPorIndice[indice]);
+  const rendido = Boolean(
+    rendidoPorIndice[indice]
+  );
 
   return (
     <>
-      <div className="hud" style={{ marginBottom: "16px" }}>
+      {toastVisible && (
+        <div
+          className="tema-examen-toast"
+          role="status"
+        >
+          Entrega tu examen
+        </div>
+      )}
+
+      <div
+        className="hud"
+        style={{ marginBottom: "16px" }}
+      >
         <span>
           Avance:{" "}
           <span className="hud__progress-value">
@@ -647,24 +1432,32 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
 
         <span
           style={{
-            color: tiempoExcedido ? "var(--danger)" : "var(--ink-soft)",
+            color: tiempoExcedido
+              ? "var(--danger)"
+              : "var(--ink-soft)",
             fontWeight: 600
           }}
         >
           <i className="fa-solid fa-stopwatch" />{" "}
-          {formatearTiempo(tiempoTranscurrido)}
+          {formatearTiempo(
+            tiempoTranscurrido
+          )}
         </span>
       </div>
 
       <div
-        className={`arcade-game-container question-card question-card--${preguntaActual.tipo || "opcion_multiple"
-          }`}
+        className={`arcade-game-container question-card question-card--${
+          preguntaActual.tipo ||
+          "opcion_multiple"
+        }`}
         style={{ position: "relative" }}
       >
         {!rendido && (
           <button
             type="button"
-            onClick={() => setModalRendirseAbierto(true)}
+            onClick={() =>
+              setModalRendirseAbierto(true)
+            }
             title="Rendirse"
             style={{
               position: "absolute",
@@ -687,8 +1480,13 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
         <div className="question-card__inner">
           <PreguntaExamenTema
             pregunta={preguntaActual}
-            respuesta={respuestasPorIndice[indice] ?? null}
-            onCambiar={manejarCambioRespuesta}
+            respuesta={
+              respuestasPorIndice[indice] ??
+              null
+            }
+            onCambiar={
+              manejarCambioRespuesta
+            }
             rendido={rendido}
           />
         </div>
@@ -704,46 +1502,73 @@ export default function TemaExamenView({ preguntas, titulos, claveTiempo, onTerm
 
             {preguntaActual.explicacion && (
               <div className="explanation-panel__text">
-                <LatexText>{preguntaActual.explicacion}</LatexText>
+                <LatexText>
+                  {preguntaActual.explicacion}
+                </LatexText>
               </div>
             )}
           </div>
         </div>
       )}
 
-      <div className="mi-estudio__nav">
-        <button
-          onClick={manejarAnterior}
-          disabled={indice === 0}
-          className={`mi-estudio__nav-btn ${indice === 0 ? "" : "is-active"}`}
-          title="Anterior"
-        >
-          <i className="fas fa-caret-left" />
-        </button>
-
-        <div className="mi-estudio__nav-right">
+      <div className="examen-page__nav">
+        <div className="examen-page__nav-preguntas">
           <button
-            onClick={manejarSiguiente}
-            className="mi-estudio__nav-btn is-active"
-            title="Siguiente"
+            type="button"
+            onClick={manejarAnterior}
+            disabled={indice === 0}
+            className="examen-page__nav-btn"
           >
-            {indice === total - 1 ? (
-              <i className="fas fa-flag-checkered" />
-            ) : (
-              <i className="fas fa-caret-right" />
-            )}
+            <i className="fas fa-arrow-left" />
+            Ant.
+          </button>
+
+          <button
+            type="button"
+            onClick={manejarSiguiente}
+            className="examen-page__nav-btn"
+          >
+            Sig.
+            <i className="fas fa-arrow-right" />
           </button>
         </div>
+
+        <button
+          type="button"
+          className="examen-page__entregar-btn"
+          onClick={() =>
+            setModalEntregaAbierto(true)
+          }
+        >
+          Entregar examen
+        </button>
       </div>
 
       <ModalConfirmarRendirse
         abierto={modalRendirseAbierto}
-        onContinuar={() => setModalRendirseAbierto(false)}
+        onContinuar={() =>
+          setModalRendirseAbierto(false)
+        }
         onRendirse={() => {
           setModalRendirseAbierto(false);
           manejarRendirse();
         }}
       />
+
+      <ModalConfirmarEntrega
+        abierto={modalEntregaAbierto}
+        respondidas={cantidadRespondidas}
+        total={total}
+        onCancelar={() =>
+          setModalEntregaAbierto(false)
+        }
+        onEntregar={() => {
+          setModalEntregaAbierto(false);
+          finalizarAhora();
+        }}
+      />
     </>
   );
-}
+});
+
+export default TemaExamenView;

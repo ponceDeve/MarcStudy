@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+
 import { createPortal } from "react-dom";
+
 import { Link } from "react-router-dom";
+
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
+
 import { useTemaOscuro } from "../../hooks/useTemaOscuro";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
@@ -15,8 +19,9 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
-          }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${
+          isOpen ? "show" : ""
+        }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -80,7 +85,6 @@ export default function TopBar({
 
       const wrapperWidth = wrapper.clientWidth;
       const textWidth = firstText.scrollWidth;
-
       const overflows = textWidth > wrapperWidth;
 
       setTemaOverflows(overflows);
@@ -117,6 +121,12 @@ export default function TopBar({
 
   const repasoTo = "/repaso";
 
+  // ============================================================
+  // BOTONES PRINCIPALES
+  // Estos aparecen en RESULTADOS.
+  // En pantallas pequeñas pasan al menú hamburguesa.
+  // ============================================================
+
   const botonesPrincipales = [
     {
       title: "Ir a Inicio",
@@ -148,29 +158,58 @@ export default function TopBar({
     },
   ];
 
-  const botonesVisibles =
-    stage === "question"
-      ? [
-        {
-          title: "Abandonar pregunta",
-          label: "Abandonar",
-          fullLabel: "Abandonar pregunta",
-          icon: "fas fa-door-open",
-          onClick: onAbandonarPregunta,
-          className: "topbar__nav-btn--abandonar",
-        },
-      ]
-      : botonesPrincipales;
+  // ============================================================
+  // BOTÓN DE PREGUNTAS
+  // Durante las preguntas solamente aparece ABANDONAR.
+  // ============================================================
 
-  const botonesMenu =
-    stage === "question"
-      ? []
-      : botonesVisibles;
+  const botonAbandonar = {
+    title: "Abandonar pregunta",
+    label: "Abandonar",
+    fullLabel: "Abandonar pregunta",
+    icon: "fas fa-door-open",
+    onClick: onAbandonarPregunta,
+    className: "topbar__nav-btn--abandonar",
+  };
+
+  // ============================================================
+  // VISIBILIDAD
+  //
+  // QUESTION:
+  //   Solo Abandonar.
+  //
+  // RESULTS:
+  //   Inicio + Buscar + Repaso + Pomodoro.
+  //
+  // Cualquier otro stage:
+  //   Botones principales.
+  // ============================================================
+
+  const esPregunta = stage === "question";
+  const esResultados = stage === "results";
+
+  const botonesVisibles = esPregunta
+    ? [botonAbandonar]
+    : botonesPrincipales;
+
+  // ============================================================
+  // MENÚ MOBILE
+  //
+  // En preguntas:
+  //   Abandonar.
+  //
+  // En resultados:
+  //   Inicio + Buscar + Repaso + Pomodoro.
+  //
+  // El modo oscuro NO entra aquí; permanece fuera.
+  // ============================================================
+
+  const botonesMenu = botonesVisibles;
 
   const renderBoton = (
     b,
     cls,
-    closeFn = () => { }
+    closeFn = () => {}
   ) => {
     const content = (
       <>
@@ -190,8 +229,7 @@ export default function TopBar({
       closeFn();
     };
 
-    const buttonClass = `${cls} ${b.className || ""
-      }`.trim();
+    const buttonClass = `${cls} ${b.className || ""}`.trim();
 
     if (b.to) {
       return (
@@ -222,7 +260,7 @@ export default function TopBar({
 
   const renderFila = (
     b,
-    closeFn = () => { }
+    closeFn = () => {}
   ) => {
     const content = (
       <>
@@ -289,10 +327,11 @@ export default function TopBar({
               >
                 <span
                   ref={temaRef}
-                  className={`topbar__tema ${temaOverflows
+                  className={`topbar__tema ${
+                    temaOverflows
                       ? "topbar__tema--marquee"
                       : ""
-                    }`}
+                  }`}
                 >
                   <span>{tema}</span>
 
@@ -304,10 +343,11 @@ export default function TopBar({
                 </span>
 
                 <span
-                  className={`topbar__expand-icon ${menuMobileOpen ? "is-open" : ""
-                    }`}
+                  className={`topbar__expand-icon ${
+                    menuMobileOpen ? "is-open" : ""
+                  }`}
                   aria-hidden="true"
-                ></span>
+                />
               </div>
 
               <span className="topbar__curso topbar__curso--clickable">
@@ -318,12 +358,23 @@ export default function TopBar({
 
           <div className="topbar__controls">
 
+            {/* =====================================================
+                BOTONES DE NAVEGACIÓN
+
+                PREGUNTAS:
+                Solo ABANDONAR.
+
+                RESULTADOS:
+                Inicio + Buscar + Repaso + Pomodoro.
+               ===================================================== */}
+
             {botonesVisibles.length > 0 && (
               <div
-                className={`topbar__nav ${stage === "question"
+                className={`topbar__nav ${
+                  esPregunta
                     ? "topbar__nav--question"
                     : ""
-                  }`}
+                }`}
               >
                 {botonesVisibles.map((b) =>
                   renderBoton(
@@ -336,14 +387,20 @@ export default function TopBar({
 
             {/* =====================================================
                 SELECTOR DE TEMA
-                Un solo botón con SOL + LUNA
+                Un solo botón con SOL + LUNA.
+
+                Este botón permanece fuera del menú mobile.
                ===================================================== */}
+
             <button
               type="button"
-              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
-                }`}
+              className={`topbar__theme-toggle ${
+                temaOscuro ? "is-dark" : "is-light"
+              }`}
               onClick={() =>
-                setTemaOscuro((actual) => !actual)
+                setTemaOscuro(
+                  (actual) => !actual
+                )
               }
               title={
                 temaOscuro
@@ -372,6 +429,16 @@ export default function TopBar({
               </span>
             </button>
 
+            {/* =====================================================
+                HAMBURGUESA
+
+                En mobile contiene:
+                - Abandonar, durante preguntas.
+                - Inicio, Buscar, Repaso y Pomodoro, en resultados.
+
+                El modo oscuro permanece fuera.
+               ===================================================== */}
+
             {botonesMenu.length > 0 && (
               <button
                 type="button"
@@ -384,9 +451,12 @@ export default function TopBar({
                 <i className="fa-solid fa-gear" />
               </button>
             )}
-
           </div>
         </div>
+
+        {/* =========================================================
+            MENÚ LATERAL MOBILE
+           ========================================================= */}
 
         {botonesMenu.length > 0 && (
           <SideDrawer

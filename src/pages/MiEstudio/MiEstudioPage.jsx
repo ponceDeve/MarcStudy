@@ -215,6 +215,7 @@ export default function MiEstudioPage() {
   // Modo examen dentro de un tema (Omitir / Ir al Examen): sin vidas,
   // sin corrección en tiempo real. Ver TemaExamenView.jsx.
   const [modoExamenTema, setModoExamenTema] = useState(false);
+  const [faseExamenTema, setFaseExamenTema] = useState("preguntas");
   const [titulosFinalesExamen, setTitulosFinalesExamen] = useState([]);
 
   const vidaPerderRef = useRef(null);
@@ -775,6 +776,10 @@ export default function MiEstudioPage() {
       // el comportamiento normal, sin cambios.
       setModoExamenTema(!opts.seleccionEspecifica && !opts.soloAdicionales);
 
+      if (!opts.seleccionEspecifica && !opts.soloAdicionales) {
+        setFaseExamenTema("preguntas");
+      }
+
       const orden = shuffle(Array.from({ length: preguntasFinales.length }, (_, i) => i));
 
       setOrdenPreguntas(orden);
@@ -994,12 +999,18 @@ export default function MiEstudioPage() {
     setMostrarCongratulations(true);
 
     if (topicData) {
-      const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
+      const completados = JSON.parse(
+        localStorage.getItem("temasCompletados") || "[]"
+      );
+
       const id = `${topicData.curso}_${topicData.tema}`;
 
       if (!completados.includes(id)) {
         completados.push(id);
-        localStorage.setItem("temasCompletados", JSON.stringify(completados));
+        localStorage.setItem(
+          "temasCompletados",
+          JSON.stringify(completados)
+        );
       }
     }
   }
@@ -1294,11 +1305,21 @@ export default function MiEstudioPage() {
 
   const [confirmSalirApp, setConfirmSalirApp] = useState(false);
   const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] = useState(false);
+  const temaExamenViewRef = useRef(null);
 
   function pedirAbandonarPregunta() { setConfirmAbandonarPregunta(true); }
   function cancelarAbandonarPregunta() { setConfirmAbandonarPregunta(false); }
   function confirmarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
+
+    // Dentro de un examen por tema, "Abandonar" no debe botarte a la
+    // teoría: te manda directo a la pantalla de resultados con lo
+    // que ya respondiste (igual que "Abandonar" en el examen real).
+    if (modoExamenTema && stage === "question" && temaExamenViewRef.current) {
+      temaExamenViewRef.current.finalizarAhora();
+      return;
+    }
+
     abandonarJuego();
   }
 
@@ -1521,7 +1542,13 @@ export default function MiEstudioPage() {
 
       {topicData && (
         <TopBar
-          stage={stage}
+          stage={
+            modoExamenTema
+              ? faseExamenTema === "resultados"
+                ? "results"
+                : "question"
+              : stage
+          }
           tema={topicData.tema}
           curso={topicData.curso}
           onAbrirBuscador={() => setSearchOpen(true)}
@@ -1940,10 +1967,12 @@ export default function MiEstudioPage() {
               <div className="mi-estudio__question-stage">
                 <div className="mi-estudio__question-inner animate-fade-in">
                   <TemaExamenView
+                    ref={temaExamenViewRef}
                     preguntas={examenPreguntas}
                     titulos={titulosFinalesExamen}
                     claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
                     onTerminar={finalizarTemaDesdeExamen}
+                    onFaseChange={setFaseExamenTema}
                   />
                 </div>
               </div>
