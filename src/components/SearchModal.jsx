@@ -82,33 +82,9 @@ function buscarFuertes(query) {
 }
 
 function agruparResultados({ cursos, temas }) {
-  const nombresCursosFuertes = new Set(
-    cursos.map((c) => c.nombre)
-  );
-
-  const grupos = cursos.map((c) => {
-    const cursoEncontrado = manifest.cursos.find(
-      (x) => x.nombre === c.nombre
-    );
-
-    return {
-      curso: c.nombre,
-      temas: cursoEncontrado
-        ? cursoEncontrado.temas.map((t) => ({
-            type: "tema",
-            curso: c.nombre,
-            tema: t.tema,
-            archivo: t.archivo
-          }))
-        : []
-    };
-  });
-
   const temasPorCurso = new Map();
 
   for (const t of temas) {
-    if (nombresCursosFuertes.has(t.curso)) continue;
-
     if (!temasPorCurso.has(t.curso)) {
       temasPorCurso.set(t.curso, []);
     }
@@ -116,7 +92,18 @@ function agruparResultados({ cursos, temas }) {
     temasPorCurso.get(t.curso).push(t);
   }
 
+  const nombresCursosFuertes = new Set(
+    cursos.map((c) => c.nombre)
+  );
+
+  const grupos = cursos.map((c) => ({
+    curso: c.nombre,
+    temas: temasPorCurso.get(c.nombre) || []
+  }));
+
   for (const [curso, temasDelCurso] of temasPorCurso) {
+    if (nombresCursosFuertes.has(curso)) continue;
+
     grupos.push({
       curso,
       temas: temasDelCurso
@@ -426,9 +413,10 @@ export default function SearchModal({
    *
    * - Si no hay búsqueda, cerramos todos.
    * - Si hay coincidencias de temas, abrimos TODOS
-   *   los cursos que contienen esas coincidencias.
-   * - Si el curso ya es una coincidencia fuerte por
-   *   su propio nombre, no lo abrimos automáticamente.
+   *   los cursos que contienen esas coincidencias,
+   *   incluso si el curso también coincide por su
+   *   propio nombre (antes se excluía ese caso y
+   *   quedaba cerrado de forma inconsistente).
    */
   useEffect(() => {
     setFocusedIdx(-1);
@@ -440,18 +428,9 @@ export default function SearchModal({
 
     const cursosConCoincidencias =
       new Set(
-        fuertes.temas
-          .filter(
-            (tema) =>
-              !fuertes.cursos.some(
-                (curso) =>
-                  curso.nombre ===
-                  tema.curso
-              )
-          )
-          .map(
-            (tema) => tema.curso
-          )
+        fuertes.temas.map(
+          (tema) => tema.curso
+        )
       );
 
     setCursosAbiertos(

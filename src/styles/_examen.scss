@@ -241,10 +241,19 @@
     border-radius: var(--radius-md);
     cursor: pointer;
     white-space: nowrap;
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    align-items: center;
 
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
+    }
+    &:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--primary);
+      border-style: dashed;
     }
   }
 
