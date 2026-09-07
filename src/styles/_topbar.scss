@@ -348,7 +348,6 @@ body.is-header-oculto .topbar-wrapper {
     border-radius: 50%;
     border: 1px solid transparent;
     z-index: 1;
-
     transition:
       background 0.2s ease,
       border-color 0.2s ease,
@@ -358,7 +357,6 @@ body.is-header-oculto .topbar-wrapper {
       font-size: 15px;
       line-height: 1;
       pointer-events: none;
-
       transition:
         color 0.2s ease,
         transform 0.2s ease;
@@ -367,9 +365,6 @@ body.is-header-oculto .topbar-wrapper {
 
   /* =========================================================
      MODO CLARO
-     
-     ☀️ Sol activo     = amarillo
-     🌙 Luna inactiva  = neutro
      ========================================================= */
 
   &__theme-toggle.is-light {
@@ -399,9 +394,6 @@ body.is-header-oculto .topbar-wrapper {
 
   /* =========================================================
      MODO OSCURO
-     
-     ☀️ Sol inactivo  = neutro
-     🌙 Luna activa   = morado
      ========================================================= */
 
   &__theme-toggle.is-dark {
@@ -914,6 +906,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
 @keyframes marqueeOneWay {
   from {
     transform: translateX(0);
@@ -924,8 +920,74 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 767px) {
   .topbar {
+    &__inner {
+      padding: 0 10px;
+      gap: 4px;
+    }
+
+    &__title-box {
+      margin-right: 8px;
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    &__title-btn {
+      padding: 0 6px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    &__tema-wrapper {
+      gap: 4px;
+
+      i {
+        flex: 0 0 auto;
+        font-size: 12px;
+      }
+    }
+
+    &__tema {
+      font-size: 13px;
+
+      > span {
+        padding-right: 28px;
+      }
+
+      &--marquee {
+        animation-duration: 18s;
+      }
+    }
+
+    &__curso {
+      font-size: 11px;
+    }
+
+    &__controls {
+      gap: 5px;
+      flex: 0 0 auto;
+    }
+
+    &__theme-toggle {
+      width: 58px;
+      height: 30px;
+      padding: 2px;
+    }
+
+    &__theme-option {
+      width: 26px;
+      height: 26px;
+
+      i {
+        font-size: 12px;
+      }
+    }
+
     &__nav {
       display: none !important;
 
@@ -934,6 +996,7 @@ body.is-header-oculto .topbar-wrapper {
         align-items: center;
         justify-content: flex-end;
         flex-shrink: 0;
+        gap: 3px;
       }
     }
 
@@ -942,10 +1005,11 @@ body.is-header-oculto .topbar-wrapper {
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      width: auto;
+      width: 42px;
       min-width: 42px;
+      height: 42px;
       min-height: 42px;
-      padding: 7px 10px;
+      padding: 0;
       flex-shrink: 0;
     }
 
@@ -955,18 +1019,31 @@ body.is-header-oculto .topbar-wrapper {
 
     &__nav-btn--abandonar .topbar__btn-icon {
       display: block;
-      font-size: 18px;
+      font-size: 17px;
       margin: 0;
     }
 
     &__hamburger {
       display: flex !important;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+    }
+
+    &__control-btn,
+    &__gear {
+      width: 42px;
+      height: 42px;
+
+      i {
+        font-size: 17px;
+      }
     }
 
     &__search-bar {
       max-width: none;
-      margin: 0 8px;
-      padding: 0 12px;
+      margin: 0 6px;
+      padding: 0 10px;
     }
 
     &__search-kbd {
@@ -975,7 +1052,6 @@ body.is-header-oculto .topbar-wrapper {
 
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
-
       height: 100dvh !important;
       min-height: 0 !important;
       max-height: 100dvh !important;
@@ -1025,14 +1101,73 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   MOBILE PEQUEÑO
+   ========================================================= */
+
 @media (max-width: 480px) {
   .topbar {
-    &__title-box {
-      margin-right: 8px;
+    &__inner {
+      padding: 0 8px;
+      gap: 3px;
     }
 
-    &__inner {
-      padding: 0 10px;
+    &__title-box {
+      margin-right: 5px;
+    }
+
+    &__title-btn {
+      padding: 0 5px;
+    }
+
+    &__tema-wrapper {
+      gap: 3px;
+
+      i {
+        font-size: 11px;
+        flex: 0 0 auto;
+      }
+    }
+
+    &__tema {
+      font-size: 12px;
+
+      > span {
+        padding-right: 24px;
+      }
+    }
+
+    &__curso {
+      font-size: 10px;
+    }
+
+    &__controls {
+      gap: 4px;
+    }
+
+    &__theme-toggle {
+      width: 56px;
+      height: 29px;
+      padding: 2px;
+    }
+
+    &__theme-option {
+      width: 25px;
+      height: 25px;
+
+      i {
+        font-size: 11px;
+      }
+    }
+
+    &__control-btn,
+    &__gear {
+      width: 40px;
+      height: 40px;
+
+      i {
+        font-size: 16px;
+      }
     }
 
     &__search-placeholder {
@@ -1042,9 +1177,14 @@ body.is-header-oculto .topbar-wrapper {
     &__search-bar {
       flex: 0 0 auto;
       width: 38px;
+      height: 40px;
       padding: 0;
       justify-content: center;
-      margin: 0 6px;
+      margin: 0 4px;
+    }
+
+    &__search-icon {
+      font-size: 14px;
     }
 
     &__nav--question {
@@ -1062,31 +1202,16 @@ body.is-header-oculto .topbar-wrapper {
     }
 
     &__nav-btn--abandonar .topbar__btn-icon {
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    /* =====================================================
-       THEME TOGGLE MOBILE
-       ===================================================== */
-
-    &__theme-toggle {
-      width: 58px;
-      height: 30px;
-      padding: 2px;
-    }
-
-    &__theme-option {
-      width: 26px;
-      height: 26px;
-
-      i {
-        font-size: 14px;
-      }
+    &__hamburger {
+      width: 40px;
+      height: 40px;
     }
 
     &__drawer.offcanvas {
       --bs-offcanvas-width: min(320px, 88vw);
-
       height: 100dvh !important;
       max-height: 100dvh !important;
       background: var(--surface) !important;
@@ -1131,6 +1256,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @include respond(md) {
   .topbar {
     &__nav {
@@ -1147,6 +1276,10 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 }
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
 
 @include respond(lg) {
   .topbar {
@@ -1221,6 +1354,10 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   XL
+   ========================================================= */
+
 @include respond(xl) {
   .topbar {
     padding: 0 22px;
@@ -1266,10 +1403,51 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
+/* =========================================================
+   OFFCANVAS BACKDROP
+   ========================================================= */
+
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
   --bs-backdrop-bg: var(--overlay-strong);
   --bs-backdrop-opacity: 1;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   EXPAND ICON — + / −
+   ========================================================= */
+
+.topbar__expand-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 17px;
+    height: 3px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+  }
+
+  /* Línea vertical → forma el + */
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  /* Al estar abierto, desaparece la línea vertical → */
+  /* queda solamente el − */
+  &.is-open::after {
+    transform: translate(-50%, -50%);
+  }
 }

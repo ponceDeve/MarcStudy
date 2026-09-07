@@ -9,6 +9,7 @@ import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import WelcomeSection from "./WelcomeSection";
 import AvisosInicio from "../../components/AvisosInicio";
 import QuestionCard from "./QuestionCard";
+import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
@@ -210,6 +211,11 @@ export default function MiEstudioPage() {
   const [countdown, setCountdown] = useState(0);
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
+
+  // Modo examen dentro de un tema (Omitir / Ir al Examen): sin vidas,
+  // sin corrección en tiempo real. Ver TemaExamenView.jsx.
+  const [modoExamenTema, setModoExamenTema] = useState(false);
+  const [titulosFinalesExamen, setTitulosFinalesExamen] = useState([]);
 
   const vidaPerderRef = useRef(null);
   const ceroVidasRef = useRef(null);
@@ -684,6 +690,7 @@ export default function MiEstudioPage() {
       const originalExamen = topicData?.examen || [];
       let preguntasFinales = [];
       let idsFinales = [];
+      let titulosFinales = [];
 
       if (opts.soloAdicionales) {
         const itemsFinales = flatPuntos
@@ -692,13 +699,15 @@ export default function MiEstudioPage() {
 
         preguntasFinales = itemsFinales.map((x) => x.pregunta);
         idsFinales = itemsFinales.map((x) => x.punto.id);
+        titulosFinales = itemsFinales.map((x) => x.punto.seccionTitulo);
       } else if (opts.seleccionEspecifica) {
         const itemsFinales = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
           .filter((p) => p.pregunta && opts.seleccionEspecifica.includes(p.id));
 
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
+        titulosFinales = itemsFinales.map((p) => p.titulo);
       } else if (opts.requiereSeleccion) {
         if (textosSeleccionados.length === 0) {
           sinPreguntaTimers.current.forEach(clearTimeout);
@@ -718,19 +727,21 @@ export default function MiEstudioPage() {
           return;
         }
 
-        const itemsPuntos = flatPuntos.map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }));
+        const itemsPuntos = flatPuntos.map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }));
         const itemsVinculadosTeoria = itemsPuntos.filter((p) => p.pregunta && textosSeleccionados.includes(p.id));
         const itemsFinales = itemsVinculadosTeoria.length > 0 ? itemsVinculadosTeoria : itemsPuntos.filter((p) => p.pregunta);
 
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
+        titulosFinales = itemsFinales.map((p) => p.titulo);
       } else {
         const itemsFinales = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i] }))
+          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
           .filter((p) => p.pregunta);
 
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
+        titulosFinales = itemsFinales.map((p) => p.titulo);
       }
 
       if (preguntasFinales.length === 0) {
@@ -756,6 +767,13 @@ export default function MiEstudioPage() {
 
       setExamenPreguntas(preguntasFinales);
       setPreguntasFinalesIds(idsFinales);
+      setTitulosFinalesExamen(titulosFinales);
+
+      // "Omitir" (sin opts) e "Ir al Examen" (requiereSeleccion) usan el
+      // modo examen (sin vidas, sin corrección en vivo). El videojuego
+      // (seleccionEspecifica) y los ejercicios adicionales se quedan con
+      // el comportamiento normal, sin cambios.
+      setModoExamenTema(!opts.seleccionEspecifica && !opts.soloAdicionales);
 
       const orden = shuffle(Array.from({ length: preguntasFinales.length }, (_, i) => i));
 
@@ -954,6 +972,23 @@ export default function MiEstudioPage() {
       return;
     }
 
+    setStage("finished");
+    setConfirmGuardarRepasoFinal(true);
+    setMostrarCongratulations(true);
+
+    if (topicData) {
+      const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
+      const id = `${topicData.curso}_${topicData.tema}`;
+
+      if (!completados.includes(id)) {
+        completados.push(id);
+        localStorage.setItem("temasCompletados", JSON.stringify(completados));
+      }
+    }
+  }
+
+  function finalizarTemaDesdeExamen() {
+    setModoExamenTema(false);
     setStage("finished");
     setConfirmGuardarRepasoFinal(true);
     setMostrarCongratulations(true);
@@ -1742,7 +1777,7 @@ export default function MiEstudioPage() {
 
         {topicData && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage">
-            {stage === "question" && (
+            {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__hud-wrap animate-fade-in">
                 <Hud
                   current={progresoPregunta.current}
@@ -1901,7 +1936,20 @@ export default function MiEstudioPage() {
               </div>
             )}
 
-            {stage === "question" && (
+            {stage === "question" && modoExamenTema && (
+              <div className="mi-estudio__question-stage">
+                <div className="mi-estudio__question-inner animate-fade-in">
+                  <TemaExamenView
+                    preguntas={examenPreguntas}
+                    titulos={titulosFinalesExamen}
+                    claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
+                    onTerminar={finalizarTemaDesdeExamen}
+                  />
+                </div>
+              </div>
+            )}
+
+            {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__question-stage">
                 {countdown > 0 ? (
                   <div className="mi-estudio__countdown-wrap animate-fade-in">
@@ -1931,7 +1979,7 @@ export default function MiEstudioPage() {
               </div>
             )}
 
-            {stage === "question" && (
+            {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__nav">
                 <button
                   onClick={retrocederCard}
@@ -1988,7 +2036,7 @@ export default function MiEstudioPage() {
               </div>
             )}
 
-            {stage === "question" && questionResult && (
+            {stage === "question" && !modoExamenTema && questionResult && (
               <div className="mi-estudio__explanation-wrap">
                 <ExplanationPanel
                   pregunta={preguntaActual}

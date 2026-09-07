@@ -15,9 +15,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
       )}
 
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -152,15 +151,15 @@ export default function TopBar({
   const botonesVisibles =
     stage === "question"
       ? [
-          {
-            title: "Abandonar pregunta",
-            label: "Abandonar",
-            fullLabel: "Abandonar pregunta",
-            icon: "fas fa-door-open",
-            onClick: onAbandonarPregunta,
-            className: "topbar__nav-btn--abandonar",
-          },
-        ]
+        {
+          title: "Abandonar pregunta",
+          label: "Abandonar",
+          fullLabel: "Abandonar pregunta",
+          icon: "fas fa-door-open",
+          onClick: onAbandonarPregunta,
+          className: "topbar__nav-btn--abandonar",
+        },
+      ]
       : botonesPrincipales;
 
   const botonesMenu =
@@ -171,7 +170,7 @@ export default function TopBar({
   const renderBoton = (
     b,
     cls,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
@@ -191,9 +190,8 @@ export default function TopBar({
       closeFn();
     };
 
-    const buttonClass = `${cls} ${
-      b.className || ""
-    }`.trim();
+    const buttonClass = `${cls} ${b.className || ""
+      }`.trim();
 
     if (b.to) {
       return (
@@ -224,7 +222,7 @@ export default function TopBar({
 
   const renderFila = (
     b,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
@@ -291,11 +289,10 @@ export default function TopBar({
               >
                 <span
                   ref={temaRef}
-                  className={`topbar__tema ${
-                    temaOverflows
+                  className={`topbar__tema ${temaOverflows
                       ? "topbar__tema--marquee"
                       : ""
-                  }`}
+                    }`}
                 >
                   <span>{tema}</span>
 
@@ -306,7 +303,11 @@ export default function TopBar({
                   )}
                 </span>
 
-                <i className="bi bi-chevron-down" />
+                <span
+                  className={`topbar__expand-icon ${menuMobileOpen ? "is-open" : ""
+                    }`}
+                  aria-hidden="true"
+                ></span>
               </div>
 
               <span className="topbar__curso topbar__curso--clickable">
@@ -319,11 +320,10 @@ export default function TopBar({
 
             {botonesVisibles.length > 0 && (
               <div
-                className={`topbar__nav ${
-                  stage === "question"
+                className={`topbar__nav ${stage === "question"
                     ? "topbar__nav--question"
                     : ""
-                }`}
+                  }`}
               >
                 {botonesVisibles.map((b) =>
                   renderBoton(
@@ -340,9 +340,8 @@ export default function TopBar({
                ===================================================== */}
             <button
               type="button"
-              className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : "is-light"
-              }`}
+              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
+                }`}
               onClick={() =>
                 setTemaOscuro((actual) => !actual)
               }
