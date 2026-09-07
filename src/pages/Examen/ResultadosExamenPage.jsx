@@ -232,6 +232,7 @@ export default function ResultadosExamenPage({ resultados, area, nombreArea, onS
   }
 
   const totalPreguntas = grupos.reduce((acc, grupo) => acc + grupo.items.length, 0);
+
   const totalCorrectas = grupos.reduce(
     (acc, grupo) => acc + grupo.items.filter((item) => item.estado === "correcta").length,
     0
@@ -242,12 +243,6 @@ export default function ResultadosExamenPage({ resultados, area, nombreArea, onS
   const puntajeCurso = grupoSeleccionado
     ? grupoSeleccionado.items.reduce((total, item) => total + item.puntos, 0)
     : 0;
-
-  const correctasCurso = grupoSeleccionado
-    ? grupoSeleccionado.items.filter((item) => item.estado === "correcta").length
-    : 0;
-
-  const totalPreguntasCurso = grupoSeleccionado?.items.length ?? 0;
 
   function obtenerMensajeDelCurso(grupo) {
     if (!grupo) return "";
@@ -289,17 +284,6 @@ export default function ResultadosExamenPage({ resultados, area, nombreArea, onS
       </select>
 
       {grupoSeleccionado && (
-        <div className="resultados-examen__resumen-curso">
-          <strong className="resultados-examen__resumen-curso-puntaje">
-            {puntajeCurso.toFixed(2)}
-          </strong>
-          <span className="resultados-examen__resumen-curso-datos">
-            {correctasCurso}/{totalPreguntasCurso}
-          </span>
-        </div>
-      )}
-
-      {grupoSeleccionado && (
         <section className="resultados-examen__bloque" key={grupoSeleccionado.curso}>
           <div className="resultados-examen__mensaje-principal">
             {obtenerMensajeDelCurso(grupoSeleccionado)}
@@ -307,7 +291,12 @@ export default function ResultadosExamenPage({ resultados, area, nombreArea, onS
 
           <h2 className="resultados-examen__bloque-titulo">
             <i className={`bi ${ICONO_CURSO[grupoSeleccionado.curso] || "bi-journal-bookmark"}`} />
-            {grupoSeleccionado.nombre}
+            <span className="resultados-examen__bloque-nombre">
+              {grupoSeleccionado.nombre}
+            </span>
+            <span className="resultados-examen__bloque-puntaje">
+              {puntajeCurso.toFixed(2)}
+            </span>
           </h2>
 
           <ul className="resultados-examen__lista">

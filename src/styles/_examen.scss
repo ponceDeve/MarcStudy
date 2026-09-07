@@ -503,6 +503,7 @@
 
 .resultados-examen {
   max-width: var(--content-max-width);
+  padding-top: var(--header-h);
 
   &__resumen {
     margin-bottom: var(--space-5);
@@ -718,4 +719,11 @@
 .resultados-examen__resumen-curso-datos{
   font-size:.95rem;
   color:var(--ink-soft);
+}
+
+.resultados-examen__bloque-puntaje  {
+  background-color: var(--surface-hover);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--ink);
 }
