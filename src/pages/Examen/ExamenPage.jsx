@@ -23,6 +23,27 @@ const DURACION_SEGUNDOS = 3 * 60 * 60;
 
 const STORAGE_KEY = "examen_simulacro_estado";
 
+const ICONO_CURSO = {
+  RVE: "bi-chat-left-text",
+  RMA: "bi-calculator",
+  ARI: "bi-123",
+  GEM: "bi-bounding-box",
+  ALG: "bi-asterisk",
+  TRI: "bi-triangle",
+  LEN: "bi-fonts",
+  LIT: "bi-book",
+  PSI: "bi-people",
+  CIV: "bi-bank",
+  HPE: "bi-flag",
+  HIS: "bi-globe-americas",
+  GEO: "bi-map",
+  ECO: "bi-currency-dollar",
+  FIL: "bi-lightbulb",
+  FIS: "bi-magnet",
+  QUI: "bi-droplet",
+  BIO: "bi-flower1",
+};
+
 function leerEstadoGuardado(area) {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -74,10 +95,209 @@ function formatearTiempo(segundos) {
   return `${h}:${m}:${ss}`;
 }
 
+function SelectorCurso({
+  cursos,
+  cursoSeleccionado,
+  onSeleccionar,
+}) {
+  const [abierto, setAbierto] = useState(false);
+
+  const [busqueda, setBusqueda] = useState("");
+
+  const selectorRef = useRef(null);
+
+  const cursoActual = cursos.find(
+    (curso) =>
+      String(curso.curso) ===
+      String(cursoSeleccionado)
+  );
+
+  const cursosFiltrados = [...cursos]
+    .filter((curso) =>
+      curso.cursoNombre
+        .toLowerCase()
+        .includes(busqueda.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (
+        String(a.curso) ===
+        String(cursoSeleccionado)
+      ) {
+        return -1;
+      }
+
+      if (
+        String(b.curso) ===
+        String(cursoSeleccionado)
+      ) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+  useEffect(() => {
+    function manejarClickFuera(event) {
+      if (
+        selectorRef.current &&
+        !selectorRef.current.contains(event.target)
+      ) {
+        cerrar();
+      }
+    }
+
+    if (abierto) {
+      document.addEventListener(
+        "mousedown",
+        manejarClickFuera
+      );
+    }
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        manejarClickFuera
+      );
+    };
+  }, [abierto]);
+
+  function abrir() {
+    setBusqueda("");
+    setAbierto(true);
+  }
+
+  function cerrar() {
+    setBusqueda("");
+    setAbierto(false);
+  }
+
+  function seleccionar(curso) {
+    onSeleccionar(curso.curso);
+    cerrar();
+  }
+
+  return (
+    <div
+      ref={selectorRef}
+      className={`selector-busqueda ${
+        abierto ? "is-abierto" : ""
+      }`}
+    >
+      {!abierto ? (
+        <button
+          type="button"
+          className="selector-busqueda__control"
+          onClick={abrir}
+          aria-expanded={false}
+          aria-haspopup="listbox"
+        >
+          <i
+            className={`bi ${
+              ICONO_CURSO[cursoActual?.curso] ||
+              "bi-journal-bookmark"
+            }`}
+          />
+
+          <span>
+            {cursoActual?.cursoNombre ||
+              "Seleccionar curso"}
+          </span>
+
+          <i className="fas fa-chevron-down" />
+        </button>
+      ) : (
+        <>
+          <div className="selector-busqueda__busqueda">
+            <i className="fas fa-search" />
+
+            <input
+              type="text"
+              value={busqueda}
+              onChange={(event) =>
+                setBusqueda(event.target.value)
+              }
+              onKeyDown={(event) => {
+                if (event.key === "Escape") {
+                  cerrar();
+                }
+              }}
+              placeholder="Buscar curso..."
+              autoFocus
+              aria-label="Buscar curso"
+            />
+
+            {busqueda && (
+              <button
+                type="button"
+                className="selector-busqueda__limpiar"
+                onClick={() => setBusqueda("")}
+                aria-label="Limpiar búsqueda"
+              >
+                <i className="fas fa-times" />
+              </button>
+            )}
+          </div>
+
+          <div className="selector-busqueda__menu">
+            <div
+              className="selector-busqueda__opciones"
+              role="listbox"
+            >
+              {cursosFiltrados.length > 0 ? (
+                cursosFiltrados.map((curso) => (
+                  <button
+                    type="button"
+                    key={curso.curso}
+                    className={`selector-busqueda__opcion ${
+                      String(curso.curso) ===
+                      String(cursoSeleccionado)
+                        ? "is-seleccionado"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      seleccionar(curso)
+                    }
+                    role="option"
+                    aria-selected={
+                      String(curso.curso) ===
+                      String(cursoSeleccionado)
+                    }
+                  >
+                    <i
+                      className={`bi ${
+                        ICONO_CURSO[curso.curso] ||
+                        "bi-journal-bookmark"
+                      }`}
+                    />
+
+                    <span>
+                      {curso.cursoNombre}
+                    </span>
+
+                    {String(curso.curso) ===
+                      String(cursoSeleccionado) && (
+                      <i className="fas fa-check" />
+                    )}
+                  </button>
+                ))
+              ) : (
+                <div className="selector-busqueda__vacio">
+                  No se encontró ningún curso
+                </div>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function ExamenPage() {
   const [searchParams] = useSearchParams();
 
-  const area = searchParams.get("area") || "A";
+  const area =
+    searchParams.get("area") || "A";
 
   const navigate = useNavigate();
 
@@ -100,7 +320,6 @@ export default function ExamenPage() {
    * Ahora el índice representa el CURSO actual,
    * no una pregunta individual.
    */
-
   const [indiceCurso, setIndiceCurso] =
     useState(0);
 
@@ -121,7 +340,8 @@ export default function ExamenPage() {
   useEffect(() => {
     setFooterHidden(true);
 
-    return () => setFooterHidden(false);
+    return () =>
+      setFooterHidden(false);
   }, [setFooterHidden]);
 
   useEffect(() => {
@@ -208,7 +428,6 @@ export default function ExamenPage() {
    * no quedarse en el scroll que tenía el curso anterior.
    * ============================================================
    */
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -310,7 +529,9 @@ export default function ExamenPage() {
           resultados={resultados}
           area={area}
           nombreArea={AREAS_UNMSM[area]}
-          onSalir={() => navigate("/")}
+          onSalir={() =>
+            navigate("/")
+          }
         />
       </>
     );
@@ -327,7 +548,6 @@ export default function ExamenPage() {
    * curso dentro de preguntas.
    * ============================================================
    */
-
   const cursos = [];
 
   const cursosMap = new Map();
@@ -356,7 +576,6 @@ export default function ExamenPage() {
   /*
    * Protección por si el examen todavía no tiene preguntas.
    */
-
   const cursoActual =
     cursos[indiceCurso] || null;
 
@@ -368,7 +587,6 @@ export default function ExamenPage() {
    * CONTADOR / PROGRESO
    * ============================================================
    */
-
   const totalRespondidas =
     Object.keys(respuestas).length;
 
@@ -380,7 +598,6 @@ export default function ExamenPage() {
    * La aguja da una vuelta cada 60 minutos.
    * ============================================================
    */
-
   const segundosTranscurridos =
     DURACION_SEGUNDOS -
     segundosLeft;
@@ -402,7 +619,6 @@ export default function ExamenPage() {
    * permanezcan separados.
    * ============================================================
    */
-
   const gruposRV = [];
 
   const gruposRVMap = new Map();
@@ -454,7 +670,6 @@ export default function ExamenPage() {
   /*
    * Determina a qué texto RV pertenece una pregunta.
    */
-
   function obtenerClaveTextoRV(
     pregunta
   ) {
@@ -485,7 +700,6 @@ export default function ExamenPage() {
    * RENDER DEL CONTEXTO RV
    * ============================================================
    */
-
   function renderTextoRV(textoRV) {
     if (!textoRV) return null;
 
@@ -521,9 +735,7 @@ export default function ExamenPage() {
 
         {imagen ? (
           <img
-            src={`${import.meta.env.BASE_URL}${String(
-              imagen
-            ).replace(
+            src={`${import.meta.env.BASE_URL}${String(imagen).replace(
               /^\/+/,
               ""
             )}`}
@@ -545,7 +757,6 @@ export default function ExamenPage() {
    * La navegación ya no utiliza un índice de pregunta.
    * ============================================================
    */
-
   function renderTarjetaPregunta(
     pregunta
   ) {
@@ -706,7 +917,6 @@ export default function ExamenPage() {
             aria-hidden="true"
           >
             {/* Esfera del reloj */}
-
             <circle
               className="examen-page__clock-face"
               cx="12"
@@ -715,7 +925,6 @@ export default function ExamenPage() {
             />
 
             {/* Aguja */}
-
             <line
               className="examen-page__clock-minute"
               x1="12"
@@ -730,7 +939,6 @@ export default function ExamenPage() {
             />
 
             {/* Centro de la aguja */}
-
             <circle
               className="examen-page__clock-center"
               cx="12"
@@ -738,6 +946,7 @@ export default function ExamenPage() {
               r="1"
             />
           </svg>{" "}
+
           {formatearTiempo(
             segundosLeft
           )}
@@ -766,16 +975,19 @@ export default function ExamenPage() {
       <div className="examen-page__body container">
         {cursoActual ? (
           <>
-            <select
-              value={cursoActual.curso}
-              onChange={(event) => {
+            <SelectorCurso
+              cursos={cursos}
+              cursoSeleccionado={
+                cursoActual.curso
+              }
+              onSeleccionar={(curso) => {
                 const nuevoIndice =
                   cursos.findIndex(
-                    (curso) =>
+                    (item) =>
                       String(
-                        curso.curso
+                        item.curso
                       ) ===
-                      event.target.value
+                      String(curso)
                   );
 
                 if (
@@ -786,19 +998,7 @@ export default function ExamenPage() {
                   );
                 }
               }}
-              aria-label="Seleccionar curso"
-            >
-              {cursos.map(
-                (curso) => (
-                  <option
-                    key={curso.curso}
-                    value={curso.curso}
-                  >
-                    {curso.cursoNombre}
-                  </option>
-                )
-              )}
-            </select>
+            />
 
             {renderPreguntasDelCurso()}
           </>

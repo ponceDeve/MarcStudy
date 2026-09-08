@@ -992,6 +992,15 @@ export default function MiEstudioPage() {
     }
   }
 
+  // Se llama desde la flecha "volver" en la pantalla de resultados
+  // del Modo Examen por tema (TemaExamenView): regresa a la teoría
+  // del mismo tema sin marcarlo como completado ni disparar el
+  // flujo de "Felicidades" (eso solo pasa al terminar de verdad).
+  function volverATeoriaDesdeExamenTema() {
+    setModoExamenTema(false);
+    setStage("theory");
+  }
+
   function finalizarTemaDesdeExamen() {
     setModoExamenTema(false);
     setStage("finished");
@@ -1973,6 +1982,7 @@ export default function MiEstudioPage() {
                     claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
                     onTerminar={finalizarTemaDesdeExamen}
                     onFaseChange={setFaseExamenTema}
+                    onVolverTeoria={volverATeoriaDesdeExamenTema}
                   />
                 </div>
               </div>
