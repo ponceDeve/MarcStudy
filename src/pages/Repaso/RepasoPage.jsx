@@ -94,11 +94,7 @@ export default function RepasoPage() {
     [log]
   );
 
-  function marcar(
-    id,
-    intervaloIdx,
-    repasosDoneActual
-  ) {
+  function marcar(id, intervaloIdx, repasosDoneActual) {
     const repasosDone = Array.isArray(repasosDoneActual)
       ? [...repasosDoneActual]
       : [];
@@ -165,10 +161,6 @@ export default function RepasoPage() {
 
     return map;
   }, [proximos]);
-
-  /*
-   * TEMARIO
-   */
 
   const [cursoTemario, setCursoTemario] = useState("");
   const [categoriaTemario, setCategoriaTemario] = useState("");
@@ -274,6 +266,15 @@ export default function RepasoPage() {
     }));
   }
 
+  function abrirTemaEnChatGPT(curso, tema) {
+    const mensaje = `Hola chamo, dime todo sobre el curso ${curso} del tema ${tema}, explicado a nivel preuniversitario.`;
+
+    window.open(
+      `https://chatgpt.com/?q=${encodeURIComponent(mensaje)}`,
+      "_blank"
+    );
+  }
+
   function programarRepasoTemario(curso, tema) {
     registrarCursoCompletado({
       subject: curso,
@@ -295,8 +296,6 @@ export default function RepasoPage() {
           }
         />
 
-        {/* PESTAÑAS */}
-
         <div className="repaso__tabs">
 
           {TABS.map((t) => (
@@ -314,8 +313,6 @@ export default function RepasoPage() {
           ))}
 
         </div>
-
-        {/* HOY */}
 
         {tab === "hoy" && (
           <section className="repaso__section">
@@ -474,8 +471,6 @@ export default function RepasoPage() {
           </section>
         )}
 
-        {/* PRÓXIMOS */}
-
         {tab === "proximos" && (
           <section className="repaso__section">
 
@@ -600,8 +595,6 @@ export default function RepasoPage() {
 
           </section>
         )}
-
-        {/* TEMARIO */}
 
         {tab === "temario" && (
           <section className="repaso__section">
@@ -746,33 +739,48 @@ export default function RepasoPage() {
                         </span>
 
                         {!programado && (
-                          abierto ? (
-                            <button
-                              type="button"
-                              className="repaso__temario-action repaso__temario-action--repaso"
-                              onClick={() =>
-                                programarRepasoTemario(
-                                  cursoTemario,
-                                  tema
-                                )
-                              }
-                            >
-                              Repaso
-                            </button>
-                          ) : (
+                          <div style={{ display: "flex", gap: "8px" }}>
+                            {abierto ? (
+                              <button
+                                type="button"
+                                className="repaso__temario-action repaso__temario-action--repaso"
+                                onClick={() =>
+                                  programarRepasoTemario(
+                                    cursoTemario,
+                                    tema
+                                  )
+                                }
+                              >
+                                Repaso
+                              </button>
+                            ) : (
+                              <button
+                                type="button"
+                                className="repaso__temario-action"
+                                onClick={() =>
+                                  abrirTemaEnYoutube(
+                                    cursoTemario,
+                                    tema
+                                  )
+                                }
+                              >
+                                ▶ YouTube
+                              </button>
+                            )}
+
                             <button
                               type="button"
                               className="repaso__temario-action"
                               onClick={() =>
-                                abrirTemaEnYoutube(
+                                abrirTemaEnChatGPT(
                                   cursoTemario,
                                   tema
                                 )
                               }
                             >
-                              Estudiar
+                              🤖 ChatGPT
                             </button>
-                          )
+                          </div>
                         )}
 
                       </div>
@@ -793,8 +801,6 @@ export default function RepasoPage() {
           </section>
         )}
 
-        {/* BUSCADOR */}
-
         <SearchModal
           open={searchOpen}
           onClose={() =>
@@ -812,8 +818,6 @@ export default function RepasoPage() {
 
           }}
         />
-
-        {/* MODAL ELIMINAR */}
 
         {deleteState.isOpen && (
           <div className="delete-modal-overlay">
