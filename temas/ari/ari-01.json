@@ -1,146 +1,276 @@
 {
   "curso": "Aritmética",
-  "tema": "Razones Aritmética",
+  "tema": "Números enteros",
   "glosario": {
-    "Razón": "Comparación matemática entre dos cantidades.",
-    "Antecedente": "Primer término de cualquier razón matemática.",
-    "Consecuente": "Segundo término de cualquier razón matemática.",
-    "SRGE": "Serie de razones geométricas equivalentes.",
-    "Continua": "Serie donde los términos medios se repiten.",
-    "Discreta": "Serie donde todos los términos son distintos."
+    "entero": "Número sin parte decimal",
+    "opuesto": "Entero con signo contrario",
+    "magnitud": "Valor numérico sin considerar signo",
+    "adición": "Operación que reúne cantidades",
+    "sustracción": "Operación que determina una diferencia",
+    "sumando": "Número que participa en una suma",
+    "minuendo": "Número del que se resta",
+    "sustraendo": "Número que se resta"
   },
   "theory": [
     {
-      "titulo": "1. Fundamentos de Razón Aritmética (RA)",
+      "titulo": "Números enteros",
       "puntos": [
         {
-          "texto": "RA compara mediante sustracción: $a - b = r$",
-          "explicacion": "Aquí, $a$ es el antecedente, $b$ es el consecuente y $r$ es el valor de la razón aritmética. Esta operación determina en cuántas unidades excede una cantidad a la otra."
+          "texto": "Enteros positivos, negativos y cero",
+          "explicacion": "Los enteros incluyen números positivos, negativos y el cero. En la recta numérica, los negativos quedan a la izquierda y los positivos a la derecha."
         },
         {
-          "texto": "Dos autos cuestan $15k y $12k. Hallar RA.",
-          "explicacion": "Identificamos el antecedente $a = 15000$ y el consecuente $b = 12000$. Aplicamos la definición de la razón aritmética restando ambas cantidades: $15000 - 12000 = r$. El valor de la razón aritmética es $3000$, indicando el exceso de precio."
+          "texto": "Orden de los enteros",
+          "explicacion": "En la recta numérica, el número ubicado más a la derecha es mayor. Por ejemplo: $-4<0<3$."
         },
         {
-          "texto": "Despeje del antecedente aritmético: $a = b + r$",
-          "explicacion": "El antecedente siempre puede expresarse linealmente como el consecuente más la razón. Esta forma es indispensable para resolver sistemas de ecuaciones lineales con dos variables."
-        },
-        {
-          "texto": "Dos números suman 40 y su RA es 10.",
-          "explicacion": "Planteamos el sistema: $a+b=40$ y $a-b=10$. Sumando ambas ecuaciones en vertical eliminamos $b$, obteniendo $2a = 50$, lo que implica $a = 25$. Reemplazando en la suma, el consecuente es $b = 15$."
+          "texto": "Comparación de negativos",
+          "explicacion": "Entre dos negativos, es mayor el que está más cerca del cero. Por ejemplo: $-2>-7$."
         }
       ]
     },
     {
-      "titulo": "2. Fundamentos de Razón Geométrica (RG)",
+      "titulo": "Valor absoluto",
       "puntos": [
         {
-          "texto": "RG compara mediante división: $\\frac{a}{b} = k$",
-          "explicacion": "El antecedente se divide por el consecuente para hallar la constante de proporcionalidad $k$. Determina cuántas veces una cantidad contiene a la otra."
+          "texto": "Valor absoluto",
+          "explicacion": "Representa la distancia entre un entero y el cero. Por ello, nunca resulta negativo."
         },
         {
-          "texto": "Dos recipientes tienen 50L y 20L. Hallar RG.",
-          "explicacion": "Definimos $a = 50$ y $b = 20$. Establecemos el cociente geométrico $\\frac{50}{20} = k$. Simplificando los ceros, obtenemos que la razón geométrica es $k = \\frac{5}{2}$."
-        },
-        {
-          "texto": "Parametrización del antecedente: $a = b \\cdot k$",
-          "explicacion": "Multiplicar el consecuente por la constante nos devuelve el antecedente. Es el paso inicial más común para homogeneizar variables en aritmética."
-        },
-        {
-          "texto": "Dos números están de 3 a 5 sumando 64.",
-          "explicacion": "Usamos la parametrización: sean los números $3k$ y $5k$. Sumamos ambas expresiones: $3k + 5k = 64$, resultando en $8k = 64$ y $k = 8$. Los números reales son $24$ y $40$."
+          "texto": "$|-a|=|a|$",
+          "explicacion": "El signo no cambia la distancia al cero. Ejemplo: $|-8|=|8|=8$."
         }
       ]
     },
     {
-      "titulo": "3. Razón Armónica (RH)",
+      "titulo": "Opuesto",
       "puntos": [
         {
-          "texto": "RH es la RA de inversas: $\\frac{1}{a} - \\frac{1}{b} = h$",
-          "explicacion": "Mide el exceso aritmético, pero aplicado estrictamente a los recíprocos de las cantidades originales. Es el pilar para construir proporciones armónicas en la UNI."
+          "texto": "Opuesto de un entero",
+          "explicacion": "El opuesto conserva la magnitud y cambia el signo. El opuesto de $7$ es $-7$ y el de $-7$ es $7$."
         },
         {
-          "texto": "Hallar la razón armónica de 4 y 5.",
-          "explicacion": "Calculamos las inversas de las cantidades: $\\frac{1}{4}$ y $\\frac{1}{5}$. Aplicamos la sustracción de inversas: $\\frac{1}{4} - \\frac{1}{5} = h$. Homogeneizando, $\\frac{5-4}{20} = \\frac{1}{20}$, por ende $h = 0.05$."
-        },
-        {
-          "texto": "Identidad armónica oculta: $h = \\frac{b - a}{a \\cdot b}$",
-          "explicacion": "Derivada de resolver la fracción algebraica de la RH. Relaciona directamente la razón armónica con la diferencia invertida y el producto de las cantidades."
-        },
-        {
-          "texto": "El producto es 50 y la diferencia es 10.",
-          "explicacion": "Sabemos que la diferencia entre $b$ y $a$ es $10$, y su producto $a \\cdot b$ es $50$. Aplicamos la identidad directa: $h = \\frac{10}{50}$. Simplificando, la razón armónica es $\\frac{1}{5}$."
+          "texto": "$a+(-a)=0$",
+          "explicacion": "Un entero y su opuesto se cancelan al sumarse. Ejemplo: $9+(-9)=0$."
         }
       ]
     },
     {
-      "titulo": "4. Propiedades Operativas en Proporciones",
+      "titulo": "Adición",
       "puntos": [
         {
-          "texto": "Adición de consecuentes: $\\frac{a+b}{b} = k+1$",
-          "explicacion": "Si a ambos lados de una razón geométrica se le suma 1, el consecuente se incorpora al numerador. Conserva la equivalencia algebraica del sistema."
+          "texto": "Signos iguales → sumar magnitudes",
+          "explicacion": "Se suman los valores absolutos y se conserva el signo común. Ejemplo: $-7+(-5)=-12$."
         },
         {
-          "texto": "Si $\\frac{x}{y} = \\frac{3}{2}$, hallar el valor de $\\frac{x+y}{y}$.",
-          "explicacion": "Partimos de la constante $k = \\frac{3}{2}$. Aplicamos la propiedad sumando $1$ a ambos lados: $\\frac{x}{y} + 1 = \\frac{3}{2} + 1$. Resolviendo la fracción, obtenemos $\\frac{x+y}{y} = \\frac{5}{2}$."
+          "texto": "Signos diferentes → restar magnitudes",
+          "explicacion": "Se restan los valores absolutos y se conserva el signo del número con mayor magnitud. Ejemplo: $-11+7=-4$."
         },
         {
-          "texto": "Diferencia simétrica: $\\frac{a+b}{a-b} = \\frac{c+d}{c-d}$",
-          "explicacion": "Propiedad fundamental derivada de sumar y restar los términos. Permite eliminar incógnitas cuando se presentan sistemas conjugados."
+          "texto": "Mayor magnitud determina el signo",
+          "explicacion": "Cuando los signos son diferentes, se compara el valor absoluto de ambos números. Ejemplo: $8+(-13)=-5$ porque $13>8$."
         },
         {
-          "texto": "Si $\\frac{m}{n} = 4$, hallar el valor de $\\frac{m+n}{m-n}$.",
-          "explicacion": "Escribimos $4$ como $\\frac{4}{1}$. Aplicamos la propiedad de diferencia simétrica a ambos miembros: $\\frac{m+n}{m-n} = \\frac{4+1}{4-1}$. Operando el lado derecho, la respuesta directa es $\\frac{5}{3}$."
+          "texto": "Adición de opuestos",
+          "explicacion": "Si los sumandos tienen igual magnitud y signos contrarios, el resultado es cero. Ejemplo: $15+(-15)=0$."
+        },
+        {
+          "texto": "Adición de varios enteros",
+          "explicacion": "Conviene agrupar positivos y negativos o identificar opuestos. Ejemplo: $-8+12-4+5=5$."
         }
       ]
     },
     {
-      "titulo": "5. Serie de Razones Equivalentes (SRGE)",
+      "titulo": "Propiedades suma",
       "puntos": [
         {
-          "texto": "Suma de términos: $\\frac{\\sum A}{\\sum C} = k$",
-          "explicacion": "En una SRGE, la suma de todos los antecedentes dividida entre la suma de todos los consecuentes mantiene intacta la constante de proporcionalidad inicial."
+          "texto": "Propiedad conmutativa",
+          "explicacion": "El orden de los sumandos no altera la suma: $a+b=b+a$. Ejemplo: $-3+8=8+(-3)=5$."
         },
         {
-          "texto": "$\\frac{a}{2} = \\frac{b}{3} = \\frac{c}{5}$ y $a+b+c = 30$. Hallar $c$.",
-          "explicacion": "Aplicamos la propiedad de suma: $\\frac{a+b+c}{2+3+5} = k$. Sustituimos el dato: $\\frac{30}{10} = 3$, por lo que $k = 3$. Finalmente, despejamos $c = 5(3) = 15$."
+          "texto": "Propiedad asociativa",
+          "explicacion": "La agrupación de los sumandos puede cambiar sin alterar la suma: $(a+b)+c=a+(b+c)$."
         },
         {
-          "texto": "Producto de $n$ razones: $\\frac{\\prod A}{\\prod C} = k^n$",
-          "explicacion": "Al multiplicar $n$ razones geométricas equivalentes, los antecedentes y consecuentes se multiplican entre sí, elevando la constante a la potencia igual al número de razones."
+          "texto": "Ejemplo asociativo",
+          "explicacion": "$(2+(-7))+5=2+((-7)+5)=-5$. La agrupación cambia, pero el resultado permanece."
         },
         {
-          "texto": "$\\frac{a}{2} = \\frac{b}{3} = \\frac{c}{4} = k$ y $a \\cdot b \\cdot c = 192$.",
-          "explicacion": "Multiplicamos las 3 razones: $\\frac{a \\cdot b \\cdot c}{2 \\cdot 3 \\cdot 4} = k^3$. Reemplazamos el producto: $\\frac{192}{24} = k^3$. Dividiendo obtenemos $8 = k^3$, por lo cual $k = 2$."
+          "texto": "Elemento neutro",
+          "explicacion": "El cero no modifica la suma: $a+0=a$. Ejemplo: $-14+0=-14$."
+        },
+        {
+          "texto": "Clausura de la adición",
+          "explicacion": "La suma de dos enteros siempre produce otro entero. Ejemplo: $-6+10=4$."
         }
       ]
     },
     {
-      "titulo": "6. Resolución Avanzada y Artificios (Nivel UNI)",
+      "titulo": "Sustracción",
       "puntos": [
         {
-          "texto": "Parametrización inversa de SRGE continua: $a = d \\cdot k^3$",
-          "explicacion": "En $\\frac{a}{b}=\\frac{b}{c}=\\frac{c}{d}=k$, se parametriza desde el último consecuente. Evita el exceso de variables dependientes y linealiza el problema instantáneamente."
+          "texto": "Resta como suma del opuesto",
+          "explicacion": "Toda sustracción puede transformarse en una adición del opuesto: $a-b=a+(-b)$."
         },
         {
-          "texto": "En continua $\\frac{a}{b}=\\frac{b}{c}=\\frac{c}{d}=2$, $a+d=36$. Hallar $a$.",
-          "explicacion": "Usando la parametrización inversa para 3 razones: $a = d(k^3) = d(2^3) = 8d$. Sustituimos en la ecuación: $8d + d = 36$, obteniendo $9d = 36$ y $d = 4$. Finalmente, $a = 8(4) = 32$."
+          "texto": "Ejemplo de transformación",
+          "explicacion": "$8-3=8+(-3)=5$."
         },
         {
-          "texto": "Razón de diferencias en SRGE: $\\frac{a-b}{b-c} = k$",
-          "explicacion": "Artificio deductivo. Al restar antecedentes y consecuentes de pares adyacentes en una serie continua, la constante de proporcionalidad no se altera."
+          "texto": "Restar un negativo",
+          "explicacion": "Al restar un negativo, su opuesto es positivo. Ejemplo: $7-(-4)=7+4=11$."
         },
         {
-          "texto": "Si $\\frac{x}{y}=\\frac{y}{z}=k$, $x-y=12$ y $y-z=4$, hallar $k$.",
-          "explicacion": "Aplicamos la propiedad de resta de antecedentes sobre la resta de consecuentes consecutivos: $\\frac{x-y}{y-z} = k$. Reemplazando los datos numéricos obtenidos, $\\frac{12}{4} = k$, por lo que $k = 3$."
+          "texto": "Resta entre negativos",
+          "explicacion": "Se transforma primero la resta en suma del opuesto. Ejemplo: $-9-(-6)=-9+6=-3$."
         },
         {
-          "texto": "Extracción de raíces en SRGE: $\\sqrt[n]{\\frac{A}{C}} = k$",
-          "explicacion": "Si los términos de una SRGE están elevados a la potencia $n$ generando constante $k^n$, aplicar raíz $n$-ésima a todo el sistema regresa la serie a grado 1 y constante $k$."
+          "texto": "Sustracción no conmutativa",
+          "explicacion": "Cambiar el orden altera el resultado: $9-4=5$, mientras $4-9=-5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos consecutivos",
+      "puntos": [
+        {
+          "texto": "$+ (+a) → +a$",
+          "explicacion": "Un signo positivo delante de un entero positivo mantiene su signo. Ejemplo: $+ (+6)=6$."
         },
         {
-          "texto": "$\\frac{x^2}{4} = \\frac{y^2}{9} = k^2$ y $x+y=15$. Hallar $x$.",
-          "explicacion": "Extraemos raíz cuadrada a la serie: $\\frac{x}{2} = \\frac{y}{3} = k$. Aplicamos suma de antecedentes: $\\frac{x+y}{2+3} = k$. Reemplazamos: $\\frac{15}{5} = k$, resultando $k=3$. Por tanto, $x = 2(3) = 6$."
+          "texto": "$+ (-a) → -a$",
+          "explicacion": "Un signo positivo delante de un entero negativo mantiene su signo. Ejemplo: $+(-6)=-6$."
+        },
+        {
+          "texto": "$- (+a) → -a$",
+          "explicacion": "Restar un entero positivo equivale a cambiarlo por su opuesto. Ejemplo: $9-(+4)=9+(-4)=5$."
+        },
+        {
+          "texto": "$- (-a) → +a$",
+          "explicacion": "Restar un entero negativo equivale a sumar su opuesto positivo. Ejemplo: $9-(-4)=9+4=13$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones combinadas",
+      "puntos": [
+        {
+          "texto": "Transformar restas antes de operar",
+          "explicacion": "Cuando una expresión contiene varias sumas y restas, convertir las restas en sumas de opuestos facilita el manejo de los signos."
+        },
+        {
+          "texto": "Ejemplo con varias restas",
+          "explicacion": "$7-(-3)-5=7+3+(-5)=5$."
+        },
+        {
+          "texto": "Paréntesis positivos",
+          "explicacion": "Un signo positivo delante de un paréntesis conserva los términos de su interior. Ejemplo: $+(5-8)=5-8=-3$."
+        },
+        {
+          "texto": "Paréntesis negativos",
+          "explicacion": "Un signo negativo delante de un paréntesis cambia el signo de cada término al eliminar la agrupación. Ejemplo: $-(5-8)=-5+8=3$."
+        },
+        {
+          "texto": "Cancelación de términos opuestos",
+          "explicacion": "Detectar pares como $a+(-a)$ permite simplificar expresiones rápidamente. Ejemplo: $12-7-5=12+(-7)+(-5)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones",
+      "puntos": [
+        {
+          "texto": "Aumento y disminución",
+          "explicacion": "Un aumento puede representarse con un entero positivo y una disminución con uno negativo. Ejemplo: una cantidad que cambia $-6$ y luego $+10$ tiene cambio neto $4$."
+        },
+        {
+          "texto": "Ganancias y pérdidas",
+          "explicacion": "Las ganancias pueden representarse con positivos y las pérdidas con negativos. Ejemplo: $50+(-18)=32$ representa una ganancia neta de $32$ unidades monetarias."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }
