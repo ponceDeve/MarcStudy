@@ -1,220 +1,158 @@
+@use "./tokens" as *;
 /* ============================================================
    CONTENEDOR PRINCIPAL
    ============================================================ */
-
 .container__repaso {
   padding: calc(var(--header-h) + 36px) 10px;
 }
-
-
 /* ============================================================
    CONTENEDOR REPASOS
    ============================================================ */
-
 .repaso {
   min-height: calc(100vh - 200px);
   padding: 28px 24px;
   box-sizing: border-box;
-
   color: var(--ink);
-
   display: flex;
   flex-direction: column;
   gap: 22px;
-
-  background-color: var(--surface);
   border-radius: var(--radius-lg);
 }
-
-
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-
 .repaso__nav {
   position: fixed;
   top: 16px;
   right: 16px;
   z-index: 200;
-
   display: flex;
   gap: 8px;
 }
-
 .repaso__nav-link {
   display: flex;
   align-items: center;
   gap: 6px;
-
   font-size: 13.5px;
   font-weight: 600;
-
   color: var(--ink-soft);
   background: transparent;
-
   padding: 6px 12px;
-
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
-
   box-shadow: var(--shadow-sm);
-
   text-decoration: none;
-
   transition:
     color 0.2s linear,
     background 0.2s linear,
     border-color 0.2s linear;
 }
-
 .repaso__nav-link:hover {
   color: var(--primary);
 }
-
-
 /* ============================================================
    CABECERA
    ============================================================ */
-
 .repaso__header {
   margin: 0;
 }
-
 .repaso__title {
   margin: 0;
-
   font-size: 26px;
   font-weight: 700;
   font-family: var(--font-display);
-
   color: var(--ink);
 }
-
 .repaso__date {
   margin: 4px 0 0;
-
   font-size: 18px;
   color: var(--ink-soft);
 }
-
-
 /* ============================================================
    INSTRUCCIÓN
    ============================================================ */
-
 .repaso__instruction {
   width: 100%;
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
   gap: 12px;
-
   margin: 0;
   padding: 12px 14px;
-
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-
   color: var(--ink-soft);
 }
-
 .repaso__instruction-book {
   width: 32px;
   height: 32px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: var(--surface);
   color: var(--primary);
-
   font-size: 18px;
-
   border-radius: var(--radius-full);
 }
-
 .repaso__instruction p {
   margin: 0;
-
   font-size: 18px;
   line-height: 1.5;
 }
-
 .repaso__instruction strong {
   color: var(--ink);
 }
-
 .repaso__instruction-check {
   width: 32px;
   height: 32px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   margin: 0 5px;
-
   vertical-align: middle;
-
   background: var(--surface);
   color: var(--ink-soft);
-
   border: 1px solid var(--border);
   border-radius: 50%;
 }
-
-
 /* ============================================================
    REPASOS DE HOY
    ============================================================ */
-
 .repaso__section {
   margin: 0;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-sizing: border-box;
 }
-
 .repaso__list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-
-
 /* ============================================================
    TARJETA DE REPASO
    ============================================================ */
-
 .repaso__item {
   position: relative;
-
   display: flex;
   align-items: flex-start;
   gap: 14px;
-
   padding: 14px;
-
   border-radius: var(--radius-md);
-
   outline: 2px solid transparent;
-
   color: var(--ink);
-
   transition:
     box-shadow 0.2s linear,
     outline-color 0.2s linear,
     transform 0.2s linear;
 }
-
 .repaso__item:hover {
   box-shadow: var(--shadow-sm);
   outline-color: var(--success-bg);
 }
-
-
 /* ============================================================
    INTERVALOS
    0 = 1 día
@@ -222,728 +160,689 @@
    2 = 7 días
    3 = 21 días
    ============================================================ */
-
 /* ---------- INTERVALO 0 · 1 DÍA ---------- */
-
 .repaso__item.interval-0 {
   background: var(--surface);
   border: 1px solid var(--primary-light);
 }
-
-
 /* ---------- INTERVALO 1 · 3 DÍAS ---------- */
-
 .repaso__item.interval-1 {
   background: var(--secondary-bg);
   border: 1px solid var(--secondary);
 }
-
-
 /* ---------- INTERVALO 2 · 7 DÍAS ---------- */
-
 .repaso__item.interval-2 {
   background: var(--accent-bg);
   border: 1px solid var(--accent);
 }
-
-
 /* ---------- INTERVALO 3 · 21 DÍAS ---------- */
-
 .repaso__item.interval-3 {
   background: var(--danger-bg);
   border: 1px solid var(--danger);
 }
-
-
 /* ============================================================
    CONTENIDO DE LAS TARJETAS
    ============================================================ */
-
 .repaso__item-body {
   flex: 1;
   min-width: 0;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   gap: 5px;
 }
-
-
 /* ============================================================
    ETIQUETAS
    ============================================================ */
-
 .repaso__item-tags {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
   gap: 8px;
-
   margin-bottom: 4px;
 }
-
-
 /* ---------- BADGES ---------- */
-
 .repaso__badge {
   padding: 2px 8px;
-
   font-size: 15px;
   font-weight: 700;
-
   border-radius: 6px;
-
   color: var(--ink-on-primary);
 }
-
-
 /* ---------- BADGE INTERVALO 0 ---------- */
-
 .repaso__badge.interval-0 {
   background: var(--primary);
 }
-
-
 /* ---------- BADGE INTERVALO 1 ---------- */
-
 .repaso__badge.interval-1 {
   background: var(--secondary);
 }
-
-
 /* ---------- BADGE INTERVALO 2 ---------- */
-
 .repaso__badge.interval-2 {
   background: var(--accent-dark);
 }
-
-
 /* ---------- BADGE INTERVALO 3 ---------- */
-
 .repaso__badge.interval-3 {
   background: var(--danger);
 }
-
-
 /* ============================================================
    DÍA
    ============================================================ */
-
 .repaso__item-day {
   font-size: 16px;
   font-weight: 600;
-
   color: var(--ink);
   opacity: 0.7;
-
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
-
-
 /* ============================================================
    VENCIDO
    ============================================================ */
-
 .repaso__item-overdue {
   font-size: 16px;
   font-weight: 700;
-
   color: var(--danger);
 }
-
-
 /* ============================================================
    CURSO
    ============================================================ */
-
 .repaso__item-subject {
   margin: 0;
-
   font-size: 18px;
   font-weight: 800;
   line-height: 1.2;
-
   color: var(--ink);
 }
-
-
 /* ============================================================
    TEMA
    ============================================================ */
-
 .repaso__item-tema {
   margin: 2px 0 0;
-
   font-size: 18px;
-
   color: var(--ink);
   opacity: 0.85;
 }
-
-
 /* ============================================================
    INFORMACIÓN DEL REPASO
    ============================================================ */
-
 .repaso__item-meta {
   margin: 4px 0 0;
-
   font-size: 15px;
-
   color: var(--ink);
   opacity: 0.85;
 }
-
-
 /* ============================================================
    BOTÓN REPASAR
    ============================================================ */
-
 .repaso__item-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-
   margin-top: 8px;
   padding: 7px 12px;
-
   border: 1px solid var(--primary);
   border-radius: var(--radius-full);
-
   background: var(--primary);
   color: var(--bg);
-
   font-size: 0.9rem;
   font-weight: 700;
-
   text-decoration: none;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     background 0.2s linear,
     color 0.2s linear,
     border-color 0.2s linear,
     transform 0.15s linear;
 }
-
 .repaso__item-link:hover {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-
 .repaso__item-link:active {
   transform: scale(0.97);
-
   background: var(--primary-dark);
   border-color: var(--primary-dark);
 }
-
-
 /* ============================================================
    CHECK DE REPASO
    ============================================================ */
-
 .repaso__check {
   width: 36px;
   height: 36px;
-
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 2px solid var(--border-strong);
   border-radius: 50%;
-
   background: transparent;
   color: var(--ink-faint);
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     background 0.2s linear,
     border-color 0.2s linear,
     color 0.2s linear;
 }
-
 .repaso__check:hover {
   border-color: var(--secondary);
   background: var(--secondary);
   color: var(--ink-on-primary);
 }
-
-
 /* ============================================================
    PAPELERA
    ============================================================ */
-
 .repaso__trash {
   position: absolute;
   right: 10px;
   bottom: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 8px;
-
   border: none;
   border-radius: var(--radius-sm);
-
   background: transparent;
   color: var(--danger);
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     color 0.2s linear,
     background 0.2s linear;
 }
-
 .repaso__trash:hover {
   color: var(--danger-dark);
   background: var(--danger-bg);
 }
-
-
 /* ============================================================
    ESTADO VACÍO
    ============================================================ */
-
 .repaso__empty {
   padding: 56px 16px;
-
   text-align: center;
-
   background: var(--surface-alt);
-
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
-
 .repaso__empty-emoji {
   margin-bottom: 12px;
-
   font-size: 44px;
-
   opacity: 0.9;
 }
-
 .repaso__empty-title {
   margin: 0;
-
   font-size: 16px;
   font-weight: 700;
-
   color: var(--ink);
 }
-
 .repaso__empty-sub {
   margin: 4px 0 0;
-
   font-size: 14px;
-
   color: var(--ink-soft);
 }
-
-
 /* ============================================================
    PRÓXIMOS REPASOS
    ============================================================ */
-
 .repaso__proximos-title {
   margin: 0 0 12px;
-
   font-size: 22px;
   font-weight: 700;
   font-family: var(--font-display);
-
   color: var(--ink);
 }
-
 .repaso__proximos-empty {
   margin: 0;
-
   font-size: 18px;
-
   color: var(--ink-soft);
 }
-
 .repaso__proximos-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
-
 /* ============================================================
    GRUPO POR FECHA
    ============================================================ */
-
 .repaso__proximos-group {
   overflow: hidden;
-
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
-
-
 /* ============================================================
    CABECERA DEL GRUPO
    ============================================================ */
-
 .repaso__proximos-group-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 8px 14px;
-
   background: var(--surface-alt);
-
   border-bottom: 1px solid var(--border);
 }
-
 .repaso__proximos-fecha {
   font-size: 14px;
   font-weight: 700;
-
   color: var(--ink);
 }
-
 .repaso__proximos-etiqueta {
   font-size: 14px;
-
   color: var(--ink-faint);
 }
-
-
 /* ============================================================
    FILA DE PRÓXIMO REPASO
    ============================================================ */
-
 .repaso__proximos-row {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 8px;
-
   padding: 10px 14px;
-
   border-bottom: 1px solid var(--border);
 }
-
 .repaso__proximos-row:last-child {
   border-bottom: none;
 }
-
-
 /* ============================================================
    CONTENIDO DE LA FILA
    ============================================================ */
-
 .repaso__proximos-row-content {
   flex: 1;
   min-width: 0;
-
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-
 /* ============================================================
    PUNTO DE INTERVALO
    ============================================================ */
-
 .repaso__dot {
   width: 8px;
   height: 8px;
-
   display: inline-block;
-
   flex-shrink: 0;
-
   border-radius: 50%;
 }
-
-
 /* ---------- DOT INTERVALO 0 ---------- */
-
 .repaso__dot.interval-0 {
   background: var(--primary);
 }
-
-
 /* ---------- DOT INTERVALO 1 ---------- */
-
 .repaso__dot.interval-1 {
   background: var(--secondary);
 }
-
-
 /* ---------- DOT INTERVALO 2 ---------- */
-
 .repaso__dot.interval-2 {
   background: var(--accent-dark);
 }
-
-
 /* ---------- DOT INTERVALO 3 ---------- */
-
 .repaso__dot.interval-3 {
   background: var(--danger);
 }
-
-
 /* ============================================================
    TEXTO DEL PRÓXIMO REPASO
    ============================================================ */
-
 .repaso__proximos-subject {
   min-width: 0;
-
   display: flex;
   flex-direction: column;
-
   font-size: 14px;
   font-weight: 600;
-
   color: var(--ink);
 }
-
 .repaso__proximos-tema {
   overflow: hidden;
-
   font-size: 13.5px;
-
   color: var(--ink-faint);
-
   text-overflow: ellipsis;
 }
-
-
 /* ============================================================
    PAPELERA PRÓXIMOS
    ============================================================ */
-
 .repaso__proximos-trash {
   flex-shrink: 0;
-
   padding: 8px;
-
   border: none;
   border-radius: var(--radius-sm);
-
   background: transparent;
   color: var(--danger);
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     color 0.2s linear,
     background 0.2s linear;
 }
-
 .repaso__proximos-trash:hover {
   color: var(--danger-dark);
   background: var(--danger-bg);
 }
-
-
 /* ============================================================
    MODAL ELIMINAR
    ============================================================ */
-
 .delete-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 16px;
-
   background: var(--overlay-strong);
-
   backdrop-filter: blur(3px);
 }
-
 .delete-modal-content {
   width: 100%;
   max-width: 350px;
-
   box-sizing: border-box;
-
   padding: 24px;
-
   text-align: center;
-
   background: var(--surface);
-
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-
   box-shadow: var(--shadow-lg);
 }
-
 .delete-modal-icon {
   margin-bottom: 12px;
-
   font-size: 2rem;
-
   color: var(--danger);
 }
-
 .delete-modal-title {
   margin: 0 0 12px;
-
   color: var(--ink);
 }
-
 .delete-modal-text {
   margin: 0 0 24px;
-
   font-size: 0.9rem;
-
   color: var(--ink-soft);
 }
-
-
 /* ============================================================
    BOTONES DEL MODAL
    ============================================================ */
-
 .delete-modal-buttons {
   display: flex;
   justify-content: center;
-
   flex-direction: row;
-
   gap: 12px;
 }
-
 .delete-modal-buttons--reverse {
   flex-direction: row-reverse;
 }
-
-
 /* ============================================================
    BOTÓN CONFIRMAR
    ============================================================ */
-
 .btn-confirm {
   flex: 1;
-
   padding: 10px;
-
   border: 1px solid var(--danger);
   border-radius: var(--radius-md);
-
   background: transparent;
   color: var(--danger);
-
   font-weight: 700;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     background 0.2s linear,
     border-color 0.2s linear,
     opacity 0.2s linear;
 }
-
 .btn-confirm--phase1:hover,
 .btn-confirm--phase2:hover {
   background: var(--surface-hover);
 }
-
-
 /* ============================================================
    BOTÓN CANCELAR
    ============================================================ */
-
 .btn-cancel {
   flex: 1;
-
   padding: 10px;
-
   border: 1px solid var(--primary-dark);
   border-radius: var(--radius-md);
-
   background: var(--primary);
   color: var(--ink-on-primary);
-
   font-weight: 700;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
-
   transition:
     background 0.2s linear,
     border-color 0.2s linear;
 }
-
 .btn-cancel:hover {
   background: var(--primary-dark);
   border-color: var(--secondary);
 }
-
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-
 @media (max-width: 480px) {
-
   .repaso {
     padding: 22px 16px;
   }
-
   .repaso__title {
     font-size: 22px;
   }
-
   .repaso__instruction {
     align-items: flex-start;
   }
-
   .repaso__instruction p {
     font-size: 16px;
   }
-
   .repaso__item {
     align-items: flex-start;
   }
-
   .repaso__item-subject {
     font-size: 17px;
   }
-
   .repaso__item-tema {
     font-size: 16px;
   }
-
   .repaso__proximos-group-header {
     gap: 10px;
   }
-
   .delete-modal-buttons {
     flex-direction: column;
   }
-
   .delete-modal-buttons--reverse {
     flex-direction: column;
+  }
+}
+/* ============================================================
+   PESTAÑAS (tabs)
+   ============================================================ */
+.repaso__tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-alt);
+  box-shadow: var(--shadow-md);
+}
+.repaso__tab {
+  flex: 1;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.repaso__tab:last-child {
+  border-right: none;
+}
+.repaso__tab--active {
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: inset 0 -3px 0 var(--primary);
+}
+/* ============================================================
+   PESTAÑA "TEMARIO"
+   ============================================================ */
+.repaso__temario-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.repaso__categoria-tabs {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.repaso__categoria-tab {
+  flex: 0 0 auto;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  padding: 9px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+.repaso__categoria-tab--active {
+  background: var(--surface-hover);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+/* ── Lista de cursos ───────────────────────────────────────── */
+/* ── Lista de cursos ───────────────────────────────────────── */
+.repaso__select {
+  position: relative;
+  margin-bottom: 10px;
+}
+.repaso__select-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+.repaso__select-option {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.repaso__select-option:last-child {
+  border-bottom: none;
+}
+.repaso__select-option:hover {
+  background: var(--surface-hover);
+}
+.repaso__select-option--active {
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+.repaso__search {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  outline: none;
+  font-size: var(--fs-sm);
+  margin-bottom: 12px;
+  font-family: var(--font);
+}
+.repaso__search:focus {
+  border-color: var(--primary);
+}
+.repaso__semana-select {
+  flex: 0 0 auto;
+  width: auto;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+}
+.repaso__temario-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.repaso__temario-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-align: left;
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+}
+.repaso__temario-item--done {
+  background: var(--success-bg);
+  border-color: var(--success);
+}
+.repaso__temario-item-check {
+  width: 18px;
+  flex: 0 0 18px;
+  color: var(--success-dark);
+  font-weight: var(--fw-bold);
+}
+.repaso__temario-item-nombre {
+  flex: 1;
+  font-weight: var(--fw-medium);
+}
+.repaso__temario-action {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--ink);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-xs);
+  cursor: pointer;
+}
+.repaso__temario-action:hover {
+  background: var(--success-bg);
+}
+.repaso__temario-action--repaso {
+  background: var(--success);
+  color: var(--ink-on-primary);
+  border-color: var(--success);
+}
+/* ============================================================
+   RESPONSIVE — nuevos bloques
+   ============================================================ */
+@include respond-max(sm) {
+  .repaso__tab {
+    padding: 9px 8px;
+    font-size: 13px;
+  }
+  .repaso__categoria-tab {
+    padding: 7px 6px;
+    font-size: 12px;
   }
 }

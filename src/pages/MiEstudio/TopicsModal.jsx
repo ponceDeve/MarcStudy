@@ -57,6 +57,9 @@ export default function TopicsModal({
   const [busqueda, setBusqueda] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
   const [mostrarTodos, setMostrarTodos] = useState(false);
+  const [tamanoTitulo, setTamanoTitulo] = useState(null);
+
+  const tituloRef = useRef(null);
   const puntoInicioToque = useRef(null);
 
   const UMBRAL_ARRASTRE = 10;
@@ -71,6 +74,51 @@ export default function TopicsModal({
     }
   }, [open]);
 
+  useEffect(() => {
+    const ajustarTitulo = () => {
+      const titulo = tituloRef.current;
+
+      if (!titulo) return;
+
+      const estilo = window.getComputedStyle(titulo);
+      const tamanoOriginal = parseFloat(estilo.fontSize);
+
+      if (!tamanoOriginal) return;
+
+      titulo.style.fontSize = `${tamanoOriginal}px`;
+      titulo.style.whiteSpace = "nowrap";
+
+      const TAMANO_MINIMO = 18;
+
+      let tamano = tamanoOriginal;
+
+      while (
+        titulo.scrollWidth > titulo.clientWidth &&
+        tamano > TAMANO_MINIMO
+      ) {
+        tamano -= 0.5;
+        titulo.style.fontSize = `${tamano}px`;
+      }
+
+      setTamanoTitulo(tamano);
+    };
+
+    ajustarTitulo();
+
+    const observer = new ResizeObserver(ajustarTitulo);
+
+    if (tituloRef.current) {
+      observer.observe(tituloRef.current);
+    }
+
+    window.addEventListener("resize", ajustarTitulo);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", ajustarTitulo);
+    };
+  }, [curso, activeIndex, temaActual, open]);
+
   function manejarClickTema(item, index) {
     if (activeIndex === index) {
       onSelectTema(item);
@@ -80,10 +128,6 @@ export default function TopicsModal({
     }
 
     setActiveIndex(index);
-  }
-
-  function manejarScroll() {
-    setActiveIndex(null);
   }
 
   function manejarToqueInicial(item, e) {
@@ -111,10 +155,10 @@ export default function TopicsModal({
 
   const temasFiltrados = busqueda.trim()
     ? buscarConPuntaje(
-      temasConIndice,
-      busqueda,
-      ({ item }) => item.tema
-    )
+        temasConIndice,
+        busqueda,
+        ({ item }) => item.tema
+      )
     : temasConIndice;
 
   const temaEnTitulo =
@@ -138,7 +182,6 @@ export default function TopicsModal({
       className={`levels-modal ${open ? "" : "is-closed"}`}
       style={{ zIndex: 1000 }}
       onClick={() => setActiveIndex(null)}
-      onScroll={manejarScroll}
       aria-hidden={!open}
     >
       <div
@@ -146,62 +189,81 @@ export default function TopicsModal({
         style={{ marginTop: 76 }}
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="levels-modal__title levels-modal__title--live">
+        <h2
+          ref={tituloRef}
+          className="levels-modal__title levels-modal__title--live"
+          style={{
+            ...(tamanoTitulo !== null
+              ? { fontSize: `${tamanoTitulo}px` }
+              : {}),
+            whiteSpace: "nowrap"
+          }}
+        >
           {temaEnTitulo || `Temas de ${curso}`}
         </h2>
 
-        <div
-          className="home-search levels-modal__search"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <input
-            autoComplete="off"
-            type="search"
-            name="buscar-tema"
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-            onFocus={() => setInputEnfocado(true)}
-            onBlur={() =>
-              setTimeout(
-                () => setInputEnfocado(false),
-                150
-              )
-            }
-            placeholder="Buscar tema por nombre..."
-            className="home-search-input"
-          />
+        <div className="levels-modal__search-row">
+          <div
+            className="home-search levels-modal__search"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <input
+              autoComplete="off"
+              type="search"
+              name="buscar-tema"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+              onFocus={() => setInputEnfocado(true)}
+              onBlur={() =>
+                setTimeout(
+                  () => setInputEnfocado(false),
+                  150
+                )
+              }
+              placeholder="Buscar tema por nombre..."
+              className="home-search-input"
+            />
 
-          {inputEnfocado && (
-            <div className="home-search-results">
-              {temasFiltrados.length === 0 && (
-                <p className="search-empty">
-                  Ningún tema coincide con "{busqueda}".
-                </p>
-              )}
-
-              {temasFiltrados.map(({ item, index }) => (
-                <button
-                  key={index}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    onSelectTema(item);
-                    onClose();
-                  }}
-                  className={`home-search-result ${item.tema === temaActual
-                      ? "is-focused"
-                      : ""
-                    }`}
-                >
-                  <p>
-                    <ResaltarCoincidencia
-                      texto={item.tema}
-                      query={busqueda}
-                    />
+            {inputEnfocado && (
+              <div className="home-search-results">
+                {temasFiltrados.length === 0 && (
+                  <p className="search-empty">
+                    Ningún tema coincide con "{busqueda}".
                   </p>
-                </button>
-              ))}
-            </div>
-          )}
+                )}
+
+                {temasFiltrados.map(({ item, index }) => (
+                  <button
+                    key={index}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      onSelectTema(item);
+                      onClose();
+                    }}
+                    className={`home-search-result ${
+                      item.tema === temaActual
+                        ? "is-focused"
+                        : ""
+                    }`}
+                  >
+                    <p>
+                      <ResaltarCoincidencia
+                        texto={item.tema}
+                        query={busqueda}
+                      />
+                    </p>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button
+            className="levels-modal__close"
+            onClick={onClose}
+          >
+            Cerrar
+          </button>
         </div>
 
         <div className="levels-modal__grid">
@@ -218,9 +280,11 @@ export default function TopicsModal({
                 className="level-cell"
               >
                 <button
-                  className={`level-btn ${esTemaActual ? "is-current" : ""
-                    } ${esArmado ? "is-armado" : ""
-                    }`}
+                  className={`level-btn ${
+                    esTemaActual ? "is-current" : ""
+                  } ${
+                    esArmado ? "is-armado" : ""
+                  }`}
                   onPointerDown={(e) =>
                     manejarToqueInicial(item, e)
                   }
@@ -277,13 +341,6 @@ export default function TopicsModal({
             No hay temas registrados para este curso.
           </p>
         )}
-
-        <button
-          className="levels-modal__close"
-          onClick={onClose}
-        >
-          Cerrar mapa
-        </button>
       </div>
     </div>
   );

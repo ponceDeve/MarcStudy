@@ -1947,7 +1947,7 @@ const TemaExamenView = forwardRef(
             </button>
           )}
 
-          <div className="resultados-examen__resumen">
+          <div className="resultados-examen__resumen preguntas-normales">
             <h1 className="resultados-examen__puntaje">
               {puntajeTotal.toFixed(2)}
             </h1>
@@ -2089,19 +2089,7 @@ const TemaExamenView = forwardRef(
                 )
               }
               title="Rendirse"
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                zIndex: 10,
-                background:
-                  "transparent",
-                border: "none",
-                padding:
-                  "12px 16px",
-                fontSize: "1.2rem",
-                color: "#94a3b8"
-              }}
+              className="question-card__rendirse-btn"
             >
               <i className="fas fa-flag" />
             </button>

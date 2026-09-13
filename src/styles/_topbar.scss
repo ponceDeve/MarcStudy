@@ -43,27 +43,81 @@ body.is-header-oculto .topbar-wrapper {
     box-sizing: border-box;
   }
 
-  &__title-box {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
+  &__content-box {
+    width: auto;
     height: 100%;
     min-width: 0;
-    flex: 1 1 auto;
-    align-items: flex-start;
-    margin-right: 16px;
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    margin-right: 16px;
   }
 
-  &__title-btn {
-    width: fit-content;
-    max-width: 100%;
+  /* ============================================================
+     IDENTIDAD / MI ESTUDIO
+     ============================================================ */
+
+  &__brand {
+    flex: 0 0 auto;
     min-width: 0;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__brand-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.15s linear;
+
+    &--foto {
+      border-radius: 50%;
+      object-fit: contain;
+    }
+  }
+
+  &__brand-name {
+    min-width: 0;
+    max-width: 180px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: clamp(0.75rem, 1vw, 1.25rem);
+    font-weight: 700;
+    text-decoration: none;
+
+    &--clickable {
+      cursor: url("/cursor_pointer.webp"), pointer !important;
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      text-align: left;
+      text-decoration: none;
+    }
+  }
+
+  /* ============================================================
+     CURSO + TEMA
+     ============================================================ */
+
+  &__title-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
     background: transparent;
     border: none;
     border-radius: 6px;
@@ -83,18 +137,46 @@ body.is-header-oculto .topbar-wrapper {
     &:hover {
       background: var(--surface-hover);
 
-      .topbar__logo {
+      .topbar__brand-logo {
         transform: rotate(-15deg) scale(1.1);
-      }
-
-      i {
-        transform: rotate(180deg);
       }
     }
 
     &:active {
       transform: scale(0.96);
     }
+  }
+
+  &__title-box {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__info-box {
+    min-width: 0;
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__expand-box {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
   }
 
   &__tema-wrapper {
@@ -135,23 +217,19 @@ body.is-header-oculto .topbar-wrapper {
   }
 
   &__curso {
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
     color: var(--ink-soft);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: clamp(0.75rem, 1vw, 1.25rem);
-
-    &--clickable {
-      cursor: url("/cursor_pointer.webp"), pointer !important;
-      background: none;
-      border: none;
-      padding: 0;
-      font: inherit;
-      text-align: left;
-      text-decoration: none;
-    }
   }
+
+  /* ============================================================
+     BOTONES DE INICIO
+     ============================================================ */
 
   .btn__inicio {
     flex-direction: row;
@@ -159,18 +237,9 @@ body.is-header-oculto .topbar-wrapper {
     gap: 10px;
   }
 
-  &__logo {
-    width: 35px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    flex-shrink: 0;
-    transition: transform 0.15s linear;
-
-    &--foto {
-      border-radius: 50%;
-      object-fit: contain;
-    }
-  }
+  /* ============================================================
+     NAVEGACIÓN
+     ============================================================ */
 
   &__nav {
     display: flex;
@@ -232,17 +301,16 @@ body.is-header-oculto .topbar-wrapper {
       min-width: 0;
       flex-shrink: 0;
       padding: 6px 12px;
-      color: var(--danger);
       background: transparent;
       border: 1px solid transparent;
       border-radius: 8px;
       white-space: nowrap;
       cursor: url("/cursor_pointer.webp"), pointer !important;
       transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.15s ease;
+        background 0.2s linear,
+        color 0.2s linear,
+        border-color 0.2s linear,
+        transform 0.15s linear;
 
       &:hover {
         background: var(--danger-bg);
@@ -290,6 +358,10 @@ body.is-header-oculto .topbar-wrapper {
     text-align: center;
   }
 
+  /* ============================================================
+     CONTROLES
+     ============================================================ */
+
   &__controls {
     display: flex;
     flex-direction: row;
@@ -299,10 +371,6 @@ body.is-header-oculto .topbar-wrapper {
     flex-shrink: 0;
     min-width: 0;
   }
-
-  /* =========================================================
-     THEME TOGGLE
-     ========================================================= */
 
   &__theme-toggle {
     position: relative;
@@ -320,9 +388,9 @@ body.is-header-oculto .topbar-wrapper {
     cursor: url("/cursor_pointer.webp"), pointer !important;
     box-sizing: border-box;
     transition:
-      background 0.2s ease,
-      border-color 0.2s ease,
-      transform 0.15s ease;
+      background 0.2s linear,
+      border-color 0.2s linear,
+      transform 0.15s linear;
 
     &:hover {
       border-color: var(--primary);
@@ -349,23 +417,19 @@ body.is-header-oculto .topbar-wrapper {
     border: 1px solid transparent;
     z-index: 1;
     transition:
-      background 0.2s ease,
-      border-color 0.2s ease,
-      transform 0.2s ease;
+      background 0.2s linear,
+      border-color 0.2s linear,
+      transform 0.2s linear;
 
     i {
       font-size: 15px;
       line-height: 1;
       pointer-events: none;
       transition:
-        color 0.2s ease,
-        transform 0.2s ease;
+        color 0.2s linear,
+        transform 0.2s linear;
     }
   }
-
-  /* =========================================================
-     MODO CLARO
-     ========================================================= */
 
   &__theme-toggle.is-light {
     background: var(--surface);
@@ -392,10 +456,6 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  /* =========================================================
-     MODO OSCURO
-     ========================================================= */
-
   &__theme-toggle.is-dark {
     background: var(--surface-alt);
     border-color: var(--border-strong);
@@ -421,9 +481,9 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
 
-  /* =========================================================
-     SEARCH
-     ========================================================= */
+  /* ============================================================
+     BUSCADOR
+     ============================================================ */
 
   &__search-bar {
     display: flex;
@@ -486,9 +546,9 @@ body.is-header-oculto .topbar-wrapper {
     white-space: nowrap;
   }
 
-  /* =========================================================
-     CONTROL BUTTONS
-     ========================================================= */
+  /* ============================================================
+     BOTONES DE CONTROL
+     ============================================================ */
 
   &__control-btn,
   &__gear {
@@ -521,10 +581,6 @@ body.is-header-oculto .topbar-wrapper {
       color: inherit;
     }
   }
-
-  /* =========================================================
-     HELP
-     ========================================================= */
 
   &__help {
     position: relative;
@@ -593,9 +649,9 @@ body.is-header-oculto .topbar-wrapper {
     color: var(--ink);
     cursor: url("/cursor_pointer.webp"), pointer !important;
     transition:
-      background 0.15s ease,
-      color 0.15s ease,
-      transform 0.15s ease;
+      background 0.15s linear,
+      color 0.15s linear,
+      transform 0.15s linear;
 
     &:hover {
       background: var(--surface-hover);
@@ -626,9 +682,9 @@ body.is-header-oculto .topbar-wrapper {
     display: none;
   }
 
-  /* =========================================================
+  /* ============================================================
      DRAWER
-     ========================================================= */
+     ============================================================ */
 
   &__drawer.offcanvas {
     --bs-offcanvas-width: min(320px, 85vw);
@@ -884,9 +940,9 @@ body.is-header-oculto .topbar-wrapper {
       overflow-wrap: anywhere;
       cursor: url("/cursor_pointer.webp"), pointer !important;
       transition:
-        background 0.15s ease,
-        color 0.15s ease,
-        padding-left 0.15s ease;
+        background 0.15s linear,
+        color 0.15s linear,
+        padding-left 0.15s linear;
 
       &:hover {
         background: var(--brand-bg) !important;
@@ -906,9 +962,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
    MARQUEE
-   ========================================================= */
+   ============================================================ */
 
 @keyframes marqueeOneWay {
   from {
@@ -920,9 +976,45 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
+   ICONO +
+   ============================================================ */
+
+.topbar__expand-icon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: block;
+  margin: 0;
+  align-self: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 17px;
+    height: 3px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s linear;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &.is-open::after {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ============================================================
    MOBILE
-   ========================================================= */
+   ============================================================ */
 
 @media (max-width: 767px) {
   .topbar {
@@ -931,16 +1023,45 @@ body.is-header-oculto .topbar-wrapper {
       gap: 4px;
     }
 
-    &__title-box {
+    &__content-box {
       margin-right: 8px;
       min-width: 0;
       flex: 1 1 auto;
+    }
+
+    &__brand {
+      gap: 7px;
+    }
+
+    &__brand-logo {
+      width: 32px;
+      height: 32px;
+    }
+
+    &__brand-name {
+      max-width: 130px;
+      font-size: 11px;
     }
 
     &__title-btn {
       padding: 0 6px;
       min-width: 0;
       max-width: 100%;
+    }
+
+    &__title-box {
+      min-width: 0;
+    }
+
+    &__info-box {
+      min-width: 0;
+    }
+
+    &__expand-box {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      margin-left: 3px;
     }
 
     &__tema-wrapper {
@@ -1101,9 +1222,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
    MOBILE PEQUEÑO
-   ========================================================= */
+   ============================================================ */
 
 @media (max-width: 480px) {
   .topbar {
@@ -1112,12 +1233,32 @@ body.is-header-oculto .topbar-wrapper {
       gap: 3px;
     }
 
-    &__title-box {
+    &__content-box {
       margin-right: 5px;
+    }
+
+    &__brand {
+      gap: 5px;
+    }
+
+    &__brand-logo {
+      width: 29px;
+      height: 29px;
+    }
+
+    &__brand-name {
+      max-width: 100px;
+      font-size: 10px;
     }
 
     &__title-btn {
       padding: 0 5px;
+    }
+
+    &__expand-box {
+      width: 25px;
+      height: 25px;
+      flex-basis: 25px;
     }
 
     &__tema-wrapper {
@@ -1256,9 +1397,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
    TABLET
-   ========================================================= */
+   ============================================================ */
 
 @include respond(md) {
   .topbar {
@@ -1277,9 +1418,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
    DESKTOP
-   ========================================================= */
+   ============================================================ */
 
 @include respond(lg) {
   .topbar {
@@ -1354,9 +1495,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
+/* ============================================================
    XL
-   ========================================================= */
+   ============================================================ */
 
 @include respond(xl) {
   .topbar {
@@ -1403,9 +1544,9 @@ body.is-header-oculto .topbar-wrapper {
   }
 }
 
-/* =========================================================
-   OFFCANVAS BACKDROP
-   ========================================================= */
+/* ============================================================
+   BACKDROP
+   ============================================================ */
 
 .offcanvas-backdrop {
   --bs-backdrop-zindex: 1049;
@@ -1413,41 +1554,4 @@ body.is-header-oculto .topbar-wrapper {
   --bs-backdrop-opacity: 1;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-}
-
-/* =========================================================
-   EXPAND ICON — + / −
-   ========================================================= */
-
-.topbar__expand-icon {
-  position: relative;
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
-  display: inline-block;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 17px;
-    height: 3px;
-    border-radius: 999px;
-    background: currentColor;
-    transform: translate(-50%, -50%);
-    transition: transform 0.2s ease;
-  }
-
-  /* Línea vertical → forma el + */
-  &::after {
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-
-  /* Al estar abierto, desaparece la línea vertical → */
-  /* queda solamente el − */
-  &.is-open::after {
-    transform: translate(-50%, -50%);
-  }
 }

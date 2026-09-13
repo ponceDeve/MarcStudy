@@ -24,7 +24,7 @@ export default function SeleccionAreaModal({ open, onClose, onConfirmar }) {
         </h2>
 
         <p className="seleccion-area__subtitle">
-          Hasta 90 preguntas 😊
+          aproximadamente 90 preguntas o menos
         </p>
 
         <div className="seleccion-area__lista">

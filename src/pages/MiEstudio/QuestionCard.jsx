@@ -11,7 +11,6 @@ import {
 
 import { shuffle } from "../../lib/shuffle";
 import LatexText from "../../components/LatexText";
-import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
 import { useAvisoBloqueo } from "../../hooks/useAvisoBloqueo";
 
@@ -38,8 +37,6 @@ function partirEnEspacios(textoConEspacios) {
   // ___ 1 ___
   // *** 1 ---
   // --- 1 ***
-  //
-  // El número es obligatorio y puede tener cualquier cantidad de dígitos.
 
   const regex =
     /(?:___|\*\*\*|---)\s*\d+\s*(?:___|\*\*\*|---)/g;
@@ -70,33 +67,6 @@ function partirEnEspacios(textoConEspacios) {
   }
 
   return partes;
-}
-
-// ============================================================================
-// LECTURA POR VOZ
-// ============================================================================
-
-function useLecturaVoz(texto) {
-  useEffect(() => {
-    if (!texto || !("speechSynthesis" in window)) {
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    const utter = new SpeechSynthesisUtterance(
-      reemplazarSimbolosParaVoz(texto)
-    );
-
-    utter.lang = "es-PE";
-    window.speechSynthesis.speak(utter);
-
-    return () => {
-      if (window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, [texto]);
 }
 
 // ============================================================================
@@ -134,8 +104,6 @@ function OpcionMultiple({
       ),
     [pregunta]
   );
-
-  useLecturaVoz(pregunta.q);
 
   function elegirOpcion(idx) {
     if (answered) return;
@@ -322,11 +290,6 @@ function VerdaderoFalso({
 
   const [avisoVisible, mostrarAviso] =
     useAvisoBloqueo();
-
-  useLecturaVoz(
-    pregunta.q ||
-      "Indica si cada proposición es verdadera o falsa."
-  );
 
   function marcar(i, valor) {
     if (answered) return;
@@ -533,11 +496,6 @@ function Completar({
 
   const [avisoVisible, mostrarAviso] =
     useAvisoBloqueo();
-
-  useLecturaVoz(
-    pregunta.q ||
-      "Completa los espacios en blanco."
-  );
 
   const shuffled = useMemo(
     () =>
@@ -769,11 +727,6 @@ function Relacionar({
   const [avisoVisible, mostrarAviso] =
     useAvisoBloqueo();
 
-  useLecturaVoz(
-    pregunta.q ||
-      "Relaciona ambas columnas."
-  );
-
   const shuffled = useMemo(
     () =>
       shuffle(
@@ -982,6 +935,11 @@ export default function QuestionCard({
   useEffect(() => {
     setIntentos(0);
     setMostrarModalRendirse(false);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
   }, [pregunta]);
 
   function manejarRespuesta(correct) {
@@ -1033,9 +991,6 @@ export default function QuestionCard({
         pregunta.tipo ||
         "opcion_multiple"
       }`}
-      style={{
-        position: "relative",
-      }}
     >
       <button
         type="button"
@@ -1043,19 +998,7 @@ export default function QuestionCard({
           setMostrarModalRendirse(true)
         }
         title="Rendirse"
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          zIndex: 10,
-          background: "transparent",
-          border: "none",
-          padding: "12px 16px",
-          cursor:
-            'url("/cursor_pointer.webp"), pointer',
-          fontSize: "1.2rem",
-          color: "#94a3b8",
-        }}
+        className="question-card__rendirse-btn"
       >
         <i className="fas fa-flag" />
       </button>

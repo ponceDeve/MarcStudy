@@ -5,6 +5,7 @@
   font-family: "DS-DIGIB";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
 }
+
 .levels-modal{
   position:fixed;
   inset:0;
@@ -35,7 +36,7 @@
 
 .levels-modal__title{
   font-family:var(--font-display);
-  font-size:clamp(18px,2.3vw,22px);
+  font-size:clamp(26px,3.6vw,34px);
   font-weight:800;
   color:var(--ink);
   text-transform:uppercase;
@@ -57,6 +58,10 @@
   margin:0 0 18px;
   border-bottom:2px solid var(--border);
   border-radius:var(--radius-md);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  width:100%;
 }
 
 .levels-modal__inner{
@@ -66,27 +71,42 @@
   margin:0!important;
 }
 
+/* ============================================================
+   Buscador + Cerrar mapa
+   ============================================================ */
+
+.levels-modal__search-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+  margin-bottom:16px;
+}
+
 .levels-modal__search{
   position:relative;
   z-index:5;
-  width:20rem;
-  max-width:calc(100vw - 32px);
-  margin:0 auto 16px;
+  flex:1;
+  min-width:0;
+  width:auto;
+  max-width:none;
+  margin:0;
 }
 
 .levels-modal__search .home-search-input{
   width:100%;
   box-sizing:border-box;
-  padding:14px 24px;
+  padding:9px 16px;
   font-family:var(--font-body);
-  font-size:16px;
+  font-size:14px;
   color:var(--ink);
   background:var(--surface);
-  border:2px solid var(--border);
+  border:1px solid var(--border);
   border-radius:30px;
   outline:none!important;
   box-shadow:none!important;
-  transition:border-color .2s linear,border-radius .2s linear;
+  transition:none;
 }
 
 .levels-modal__search .home-search-input::placeholder{
@@ -94,23 +114,25 @@
 }
 
 .levels-modal__search .home-search-input:focus{
-  border-color:var(--secondary);
+  border:1px solid var(--secondary);
   border-bottom-color:transparent;
   border-bottom-left-radius:0;
   border-bottom-right-radius:0;
   outline:none!important;
   box-shadow:none!important;
 }
+
 .levels-modal__search .home-search-results{
   position:absolute;
   top:100%;
   left:0;
   width:100%;
   margin-top:0;
+  padding:0;
   z-index:100;
   background:var(--surface);
-  border:2px solid var(--secondary);
-  border-radius:0 0 30px 30px;
+  border:1px solid var(--secondary);
+  border-radius:0;
   box-shadow:none;
   max-height:280px;
   overflow-y:auto;
@@ -127,21 +149,23 @@
 
 .levels-modal__search .home-search-result{
   width:100%;
+  min-width:0;
+  box-sizing:border-box;
   text-align:left;
   background-color:transparent;
   border:none;
   border-radius:var(--radius-sm);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
   font-family:var(--font-body);
   color:var(--ink);
+  padding:0;
   transition:background-color .15s linear,color .15s linear,transform .1s linear;
 }
 
 .levels-modal__search .home-search-result:hover,
 .levels-modal__search .home-search-result.is-focused{
-  /* fondo transparente, sin significado semántico -> fill neutro */
-  background-color: var(--primary-bg);
-  color: var(--ink);
+  background-color:var(--primary-bg);
+  color:var(--ink);
 }
 
 .levels-modal__search .home-search-result:active{
@@ -150,81 +174,41 @@
 
 .levels-modal__search .home-search-result p{
   margin:0;
-  font-size:.95rem;
+  padding:7px 10px;
+  font-size:13px;
   font-weight:500;
-  display:flex;
-  align-items:center;
+  line-height:1.25;
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
-.levels-modal__grid{
-  display:grid;
-  grid-template-columns:repeat(6,minmax(0,1fr));
-  gap:14px;
-  justify-content:center;
-  padding-bottom:24px;
-}
-
-@media (max-width:1024px){
-  .levels-modal__grid{
-    grid-template-columns:repeat(5,minmax(0,1fr));
-  }
-}
-
-@media (max-width:768px){
-  .levels-modal__grid{
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:10px;
-  }
-}
-
-@media (max-width:480px){
-  .levels-modal__grid{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:8px;
-  }
-}
-
-.levels-modal__pagination{
-  display:flex;
-  justify-content:center;
-  padding-bottom:20px;
-}
-
-.levels-modal__toggle-btn{
-  font-family:var(--font-body);
-  font-weight:700;
-  font-size:14px;
-  color:var(--primary);
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius-full,999px);
-  padding:10px 24px;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:background .15s,transform .1s;
-}
-
-.levels-modal__toggle-btn:hover{
-  background:var(--primary-light);
-  color:var(--ink-on-primary);
-}
+/* ============================================================
+   Botón Cerrar mapa
+   ============================================================ */
 
 .levels-modal__close{
+  flex-shrink:0;
+  align-self:center;
   font-family:var(--font-body);
   font-weight:700;
-  font-size:16px;
-  padding:14px 28px;
+  font-size:13px;
+  padding:0;
   border:none;
   border-radius:var(--radius-md);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
   background:var(--danger-dark)!important;
   color:var(--ink-on-primary)!important;
   text-transform:uppercase;
-  letter-spacing:2px;
+  letter-spacing:1px;
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  justify-content:center;
+  gap:8px;
   box-shadow:var(--shadow-md);
   transition:background .15s linear;
+  margin:0;
 }
 
 .levels-modal__close:hover{
@@ -246,7 +230,7 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
 }
 
 .levels-modal__close-fixed:hover{
@@ -316,29 +300,29 @@
 }
 
 .level-btn {
-  width: 100%;
-  aspect-ratio: 1;
-  background: var(--surface);
-  border: 3px solid var(--border);
-  border-bottom-width: 6px;
-  color: var(--ink-soft);
-  font-family: DS-DIGIB;
-  font-weight: bolder;
-  font-size: 3rem;
-  border-radius: var(--radius-md);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: all .1s linear-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  width:100%;
+  aspect-ratio:1;
+  background:var(--surface);
+  border:3px solid var(--border);
+  border-bottom-width:6px;
+  color:var(--ink-soft);
+  font-family:DS-DIGIB;
+  font-weight:bolder;
+  font-size:3rem;
+  border-radius:var(--radius-md);
+  cursor:url("/cursor_pointer.webp"), pointer !important;
+  transition:all .1s linear-in-out;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
 }
 
 .level-btn:hover:not(:disabled) {
-  border-color: var(--primary);
-  color: var(--primary-dark);
-  transform: translateY(3px);
-  border-bottom-width: 3px;
+  border-color:var(--primary);
+  color:var(--primary-dark);
+  transform:translateY(3px);
+  border-bottom-width:3px;
   box-shadow:
     inset 0 0 30px color-mix(in srgb, var(--primary) 45%, transparent),
     0 6px 18px rgba(0, 0, 0, 0.12);
@@ -362,23 +346,20 @@
   box-shadow:none!important;
 }
 
-/* Estado "armado" tras el primer clic en TopicsModal (mapa de temas):
-   usa el mismo estilo que :active (para no mezclar colores distintos),
-   pero se mantiene aunque se suelte el clic o se saque el mouse. */
 .level-btn.is-armado {
-  border-color: var(--brand) !important;
-  color: var(--brand-dark) !important;
+  border-color:var(--brand)!important;
+  color:var(--brand-dark)!important;
   box-shadow:
     inset 0 0 30px color-mix(in srgb, var(--brand) 45%, transparent),
-    0 0 0 3px var(--brand-bg) !important;
+    0 0 0 3px var(--brand-bg)!important;
 }
 
 .level-btn.is-armado:hover {
-  border-color: var(--brand) !important;
-  color: var(--brand-dark) !important;
+  border-color:var(--brand)!important;
+  color:var(--brand-dark)!important;
   box-shadow:
     inset 0 0 30px color-mix(in srgb, var(--brand) 45%, transparent),
-    0 0 0 3px var(--brand-bg) !important;
+    0 0 0 3px var(--brand-bg)!important;
 }
 
 .level-btn:active:not(:disabled){
@@ -392,6 +373,58 @@
   border-color:var(--border);
   color:var(--ink-faint);
   cursor:not-allowed;
+}
+
+.levels-modal__grid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:14px;
+  justify-content:center;
+  padding-bottom:24px;
+}
+
+@media (max-width:1024px){
+  .levels-modal__grid{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+  }
+}
+
+@media (max-width:768px){
+  .levels-modal__grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+  }
+}
+
+@media (max-width:480px){
+  .levels-modal__grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+  }
+}
+
+.levels-modal__pagination{
+  display:flex;
+  justify-content:center;
+  padding-bottom:20px;
+}
+
+.levels-modal__toggle-btn{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:14px;
+  color:var(--primary);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-full,999px);
+  padding:10px 24px;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
+  transition:background .15s,transform .1s;
+}
+
+.levels-modal__toggle-btn:hover{
+  background:var(--primary-light);
+  color:var(--ink-on-primary);
 }
 
 .temas-modal-grid{
@@ -414,7 +447,7 @@
   font-size:14px;
   font-weight:700;
   border-radius:var(--radius-md);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
   transition:all .1s linear-in-out;
   display:flex;
   align-items:center;
@@ -425,7 +458,7 @@
 
 .tema-arcade-btn:hover:not(:disabled){
   background:var(--primary-bg);
-  border: var(--nested-border);
+  border:var(--nested-border);
   border-color:var(--primary);
   color:var(--primary-dark);
   transform:translateY(3px);
@@ -446,7 +479,7 @@
 }
 
 .topbar__curso--clickable{
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  cursor:url("/cursor_pointer.webp"), pointer !important;
   transition:opacity .2s,background-color .2s;
   border-radius:var(--radius-sm);
   display:inline-block;
@@ -473,30 +506,52 @@
     margin-bottom:14px;
   }
 
+  .levels-modal__search-row{
+    gap:8px;
+    margin-bottom:14px;
+  }
+
   .levels-modal__search{
-    width:20rem;
-    max-width:calc(100vw - 24px);
+    flex:1;
+    min-width:0;
+    width:auto;
+    max-width:none;
+  }
+
+  .levels-modal__search .home-search-input{
+    padding:8px 14px;
+    font-size:13px;
+  }
+
+  .levels-modal__search .home-search-result p{
+    padding:6px 8px;
+    font-size:12px;
+  }
+
+  .levels-modal__close{
+    font-size:12px;
   }
 }
+
 .levels-modal__empty {
-  color: var(--ink-soft);
-  margin-bottom: 20px;
-  background: transparent!important;
-  padding: 0!important;
+  color:var(--ink-soft);
+  margin-bottom:20px;
+  background:transparent!important;
+  padding:0!important;
 }
 
 .levels-modal__counter {
-  color: var(--ink-soft);
-  font-size: 14px;
-  margin-bottom: 12px;
+  color:var(--ink-soft);
+  font-size:14px;
+  margin-bottom:12px;
 }
 
 .levels-modal--topics {
-  z-index: 1000;
+  z-index:1000;
 }
 
 .levels-modal__inner--topics {
-  margin-top: 76px;
+  margin-top:76px;
 }
 
 /* ============================================================
@@ -504,32 +559,32 @@
    ============================================================ */
 
 .theory-search-modal__results {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 50vh;
-  overflow-y: auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:50vh;
+  overflow-y:auto;
 }
 
 .theory-search-modal__item {
-  text-align: left;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-strong);
-  background: var(--surface-alt);
-  color: var(--ink);
+  text-align:left;
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--border-strong);
+  background:var(--surface-alt);
+  color:var(--ink);
 }
 
 .theory-search-modal__item-heading {
-  margin: 0 0 2px;
-  font-size: 12.5px;
-  color: var(--ink-faint);
+  margin:0 0 2px;
+  font-size:12.5px;
+  color:var(--ink-faint);
 }
 
 .theory-search-modal__item-text {
-  margin: 0;
+  margin:0;
 }
 
 .theory-search-modal__empty {
-  color: var(--ink-soft);
+  color:var(--ink-soft);
 }

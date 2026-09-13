@@ -233,7 +233,11 @@ function PreguntaResultado({ item, numero, abierta, onToggle }) {
         {ICONO_ESTADO[estado]}
 
         <span className="resultados-examen__pregunta-texto">
-          Pregunta {numero} — {TEXTO_ESTADO[estado]}
+          {abierta ? pregunta.tema || `Pregunta ${numero}` : `Pregunta ${numero}`}
+        </span>
+
+        <span className="resultados-examen__pregunta-estado">
+          {TEXTO_ESTADO[estado]}
         </span>
 
         <span className="resultados-examen__pregunta-puntos">
@@ -390,8 +394,8 @@ function SelectorCurso({ grupos, cursoSeleccionado, onSeleccionar }) {
                     type="button"
                     key={grupo.curso}
                     className={`selector-busqueda__opcion ${grupo.curso === cursoSeleccionado
-                        ? "is-seleccionado"
-                        : ""
+                      ? "is-seleccionado"
+                      : ""
                       }`}
                     onClick={() => seleccionar(grupo)}
                     role="option"

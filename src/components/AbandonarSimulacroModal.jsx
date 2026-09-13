@@ -10,11 +10,11 @@ export default function AbandonarSimulacroModal({
 
   const titulo = esEntrega
     ? "¿Entregar el simulacro?"
-    : "¿Seguro que quieres abandonar?";
+    : "¿Ya abandonas?";
 
   const texto = esEntrega
     ? "Se calificará con tus respuestas actuales."
-    : "Tu progreso se perderá.";
+    : "Tu progreso se perderá, perdedor.";
 
   const textoConfirmar = esEntrega ? "Entregar" : "Abandonar";
 

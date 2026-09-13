@@ -16,9 +16,8 @@ function SideDrawer({ title, isOpen, onClose, children }) {
         />
       )}
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -108,170 +107,170 @@ export default function AppHeader({
 
     ...(esResultados
       ? [
-          {
-            title: "Ir a Inicio",
-            label: "Inicio",
-            fullLabel: "Ir a Inicio",
-            icon: "fa-solid fa-house",
-            to: "/",
-          },
-          ...(onAbrirBuscador
-            ? [
-                {
-                  title: "Buscar curso o tema",
-                  label: "Buscar",
-                  fullLabel: "Buscar curso o tema",
-                  icon: "fa-solid fa-magnifying-glass",
-                  onClick: onAbrirBuscador,
-                },
-              ]
-            : []),
-          {
-            title: "Ir al Pomodoro",
-            label: "Pomodoro",
-            fullLabel: "Pomodoro",
-            icon: "fa-solid fa-hourglass-half",
-            to: "/pomodoro",
-          },
-          {
-            title: "Ir a Mis Repasos",
-            label: "Repaso",
-            fullLabel: "Mis Repasos",
-            icon: "fa-solid fa-calendar-check",
-            to: "/repaso",
-          },
-        ]
+        {
+          title: "Ir a Inicio",
+          label: "Inicio",
+          fullLabel: "Ir a Inicio",
+          icon: "fa-solid fa-house",
+          to: "/",
+        },
+        ...(onAbrirBuscador
+          ? [
+            {
+              title: "Buscar curso o tema",
+              label: "Buscar",
+              fullLabel: "Buscar curso o tema",
+              icon: "fa-solid fa-magnifying-glass",
+              onClick: onAbrirBuscador,
+            },
+          ]
+          : []),
+        {
+          title: "Ir al Pomodoro",
+          label: "Pomodoro",
+          fullLabel: "Pomodoro",
+          icon: "fa-solid fa-hourglass-half",
+          to: "/pomodoro",
+        },
+        {
+          title: "Ir a Mis Repasos",
+          label: "Repaso",
+          fullLabel: "Mis Repasos",
+          icon: "fa-solid fa-calendar-check",
+          to: "/repaso",
+        },
+      ]
       : [
-          // ========================================================
-          // IR A INICIO
-          // ========================================================
+        // ========================================================
+        // IR A INICIO
+        // ========================================================
 
-          ...(!esInicio
-            ? [
-                {
-                  title: "Ir a Inicio",
-                  label: "Inicio",
-                  fullLabel: "Ir a Inicio",
-                  icon: "fa-solid fa-house",
-                  to: "/",
-                },
-              ]
-            : []),
+        ...(!esInicio
+          ? [
+            {
+              title: "Ir a Inicio",
+              label: "Inicio",
+              fullLabel: "Ir a Inicio",
+              icon: "fa-solid fa-house",
+              to: "/",
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // BUSCADOR
-          // ========================================================
+        // ========================================================
+        // BUSCADOR
+        // ========================================================
 
-          ...(onAbrirBuscador
-            ? [
-                {
-                  title: "Buscar curso o tema",
-                  label: "Buscar",
-                  fullLabel: "Buscar curso o tema",
-                  icon: "fa-solid fa-magnifying-glass",
-                  onClick: onAbrirBuscador,
-                },
-              ]
-            : []),
+        ...(onAbrirBuscador
+          ? [
+            {
+              title: "Buscar curso o tema",
+              label: "Buscar",
+              fullLabel: "Buscar curso o tema",
+              icon: "fa-solid fa-magnifying-glass",
+              onClick: onAbrirBuscador,
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // INICIO
-          // 1. Pomodoro
-          // 2. Repaso
-          // 3. Perfil
-          // ========================================================
+        // ========================================================
+        // INICIO
+        // 1. Pomodoro
+        // 2. Repaso
+        // 3. Perfil
+        // ========================================================
 
-          ...(esInicio
-            ? [
-                {
-                  title: "Ir al Pomodoro",
-                  label: "Pomodoro",
-                  fullLabel: "Pomodoro",
-                  icon: "fa-solid fa-hourglass-half",
-                  to: "/pomodoro",
-                },
-                {
-                  title: "Ir a Mis Repasos",
-                  label: "Repaso",
-                  fullLabel: "Mis Repasos",
-                  icon: "fa-solid fa-calendar-check",
-                  to: "/repaso",
-                },
-              ]
-            : []),
+        ...(esInicio
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+            {
+              title: "Ir a Mis Repasos",
+              label: "Repaso",
+              fullLabel: "Mis Repasos",
+              icon: "fa-solid fa-calendar-check",
+              to: "/repaso",
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // PERFIL
-          // ========================================================
+        // ========================================================
+        // PERFIL
+        // ========================================================
 
-          ...(esInicio && nombreUsuario
-            ? [
-                {
-                  title: "Editar perfil",
-                  label: "Perfil",
-                  fullLabel: "Editar perfil",
-                  icon: "fa-solid fa-user",
-                  onClick: () => setEditarPerfilAbierto(true),
-                },
-              ]
-            : []),
+        ...(esInicio && nombreUsuario
+          ? [
+            {
+              title: "Editar perfil",
+              label: "Perfil",
+              fullLabel: "Editar perfil",
+              icon: "fa-solid fa-user",
+              onClick: () => setEditarPerfilAbierto(true),
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // REPASO → POMODORO
-          // ========================================================
+        // ========================================================
+        // REPASO → POMODORO
+        // ========================================================
 
-          ...(section === "repaso"
-            ? [
-                {
-                  title: "Ir al Pomodoro",
-                  label: "Pomodoro",
-                  fullLabel: "Pomodoro",
-                  icon: "fa-solid fa-hourglass-half",
-                  to: "/pomodoro",
-                },
-              ]
-            : []),
+        ...(section === "repaso"
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // POMODORO → REPASO + EDITAR HORARIO
-          // ========================================================
+        // ========================================================
+        // POMODORO → REPASO + EDITAR HORARIO
+        // ========================================================
 
-          ...(section === "pomodoro"
-            ? [
-                {
-                  title: "Ir a Mis Repasos",
-                  label: "Repaso",
-                  fullLabel: "Mis Repasos",
-                  icon: "fa-solid fa-calendar-check",
-                  to: "/repaso",
-                },
-                {
-                  title: "Editar horario",
-                  label: "Editar",
-                  fullLabel: "Editar horario",
-                  icon: "fa-solid fa-pen",
-                  to: "/editar",
-                  onClick: onEditarHorario,
-                },
-              ]
-            : []),
+        ...(section === "pomodoro"
+          ? [
+            {
+              title: "Ir a Mis Repasos",
+              label: "Repaso",
+              fullLabel: "Mis Repasos",
+              icon: "fa-solid fa-calendar-check",
+              to: "/repaso",
+            },
+            {
+              title: "Editar horario",
+              label: "Editar",
+              fullLabel: "Editar horario",
+              icon: "fa-solid fa-pen",
+              to: "/editar",
+              onClick: onEditarHorario,
+            },
+          ]
+          : []),
 
-          // ========================================================
-          // EDITAR HORARIO → POMODORO
-          // ========================================================
+        // ========================================================
+        // EDITAR HORARIO → POMODORO
+        // ========================================================
 
-          ...(section === "editar"
-            ? [
-                {
-                  title: "Ir al Pomodoro",
-                  label: "Pomodoro",
-                  fullLabel: "Pomodoro",
-                  icon: "fa-solid fa-hourglass-half",
-                  to: "/pomodoro",
-                },
-              ]
-            : []),
-        ]),
+        ...(section === "editar"
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+          ]
+          : []),
+      ]),
   ];
 
   // ============================================================
@@ -348,7 +347,7 @@ export default function AppHeader({
 
   const renderFila = (
     b,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
@@ -414,7 +413,7 @@ export default function AppHeader({
               LOGO + NOMBRE DEL USUARIO
               ================================================== */}
 
-          <div className="topbar__title-btn btn__inicio">
+          <div className="topbar__brand btn__inicio">
             <Link
               to="/"
               title="Mi Estudio"
@@ -425,17 +424,16 @@ export default function AppHeader({
                   `${import.meta.env.BASE_URL}icon.png`
                 }
                 alt="Mi Estudio"
-                className={`topbar__logo${
-                  fotoUsuario
-                    ? " topbar__logo--foto"
+                className={`topbar__brand-logo${fotoUsuario
+                    ? " topbar__brand-logo--foto"
                     : ""
-                }`}
+                  }`}
               />
             </Link>
 
             {nombreUsuario ? (
               <span
-                className="topbar__curso"
+                className="topbar__brand-name"
                 title={nombreUsuario}
               >
                 {nombreUsuario}
@@ -443,7 +441,7 @@ export default function AppHeader({
             ) : (
               <Link
                 to="/"
-                className="topbar__curso topbar__curso--clickable"
+                className="topbar__brand-name topbar__brand-name--clickable"
               >
                 Mi Estudio
               </Link>
@@ -503,9 +501,8 @@ export default function AppHeader({
 
             <button
               type="button"
-              className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : "is-light"
-              }`}
+              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
+                }`}
               onClick={() =>
                 setTemaOscuro(
                   (actual) => !actual

@@ -1,11 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-
 import { createPortal } from "react-dom";
-
 import { Link } from "react-router-dom";
-
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
-
 import { useTemaOscuro } from "../../hooks/useTemaOscuro";
 
 function SideDrawer({ title, isOpen, onClose, children }) {
@@ -17,11 +13,9 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           onClick={onClose}
         />
       )}
-
       <div
-        className={`offcanvas offcanvas-end topbar__drawer ${
-          isOpen ? "show" : ""
-        }`}
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
         tabIndex="-1"
         aria-hidden={!isOpen}
       >
@@ -29,7 +23,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           <h3 className="offcanvas-title topbar__drawer-title">
             {title}
           </h3>
-
           <button
             type="button"
             className="topbar__drawer-close"
@@ -39,7 +32,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
             <i className="fa-solid fa-times" />
           </button>
         </div>
-
         <div className="offcanvas-body topbar__drawer-list">
           {children}
         </div>
@@ -59,14 +51,12 @@ export default function TopBar({
   onIrInicio,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-
   const [temaOscuro, setTemaOscuro] = useTemaOscuro();
 
   useAutoHideHeader(menuMobileOpen);
 
   const wrapperRef = useRef(null);
   const temaRef = useRef(null);
-
   const [temaOverflows, setTemaOverflows] = useState(false);
 
   useEffect(() => {
@@ -121,12 +111,6 @@ export default function TopBar({
 
   const repasoTo = "/repaso";
 
-  // ============================================================
-  // BOTONES PRINCIPALES
-  // Estos aparecen en RESULTADOS.
-  // En pantallas pequeñas pasan al menú hamburguesa.
-  // ============================================================
-
   const botonesPrincipales = [
     {
       title: "Ir a Inicio",
@@ -158,11 +142,6 @@ export default function TopBar({
     },
   ];
 
-  // ============================================================
-  // BOTÓN DE PREGUNTAS
-  // Durante las preguntas solamente aparece ABANDONAR.
-  // ============================================================
-
   const botonAbandonar = {
     title: "Abandonar pregunta",
     label: "Abandonar",
@@ -172,49 +151,22 @@ export default function TopBar({
     className: "topbar__nav-btn--abandonar",
   };
 
-  // ============================================================
-  // VISIBILIDAD
-  //
-  // QUESTION:
-  //   Solo Abandonar.
-  //
-  // RESULTS:
-  //   Inicio + Buscar + Repaso + Pomodoro.
-  //
-  // Cualquier otro stage:
-  //   Botones principales.
-  // ============================================================
-
   const esPregunta = stage === "question";
-  const esResultados = stage === "results";
 
   const botonesVisibles = esPregunta
     ? [botonAbandonar]
     : botonesPrincipales;
-
-  // ============================================================
-  // MENÚ MOBILE
-  //
-  // En preguntas:
-  //   Abandonar.
-  //
-  // En resultados:
-  //   Inicio + Buscar + Repaso + Pomodoro.
-  //
-  // El modo oscuro NO entra aquí; permanece fuera.
-  // ============================================================
 
   const botonesMenu = botonesVisibles;
 
   const renderBoton = (
     b,
     cls,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
-
         <span className="topbar__btn-title">
           {b.label}
         </span>
@@ -260,14 +212,13 @@ export default function TopBar({
 
   const renderFila = (
     b,
-    closeFn = () => {}
+    closeFn = () => { }
   ) => {
     const content = (
       <>
         <span className="topbar__drawer-item-label">
           {b.fullLabel || b.label}
         </span>
-
         <i
           className={`${b.icon} topbar__drawer-item-icon`}
         />
@@ -313,68 +264,55 @@ export default function TopBar({
     <div className="topbar-wrapper">
       <div className="topbar">
         <div className="topbar__inner">
-
-          <div className="topbar__title-box">
+          <div className="topbar__content-box">
             <button
               type="button"
               className="topbar__title-btn"
               onClick={onAbrirTemas}
               title="Ver mapa de temas de este curso"
             >
-              <div
-                className="topbar__tema-wrapper"
-                ref={wrapperRef}
-              >
-                <span
-                  ref={temaRef}
-                  className={`topbar__tema ${
-                    temaOverflows
-                      ? "topbar__tema--marquee"
-                      : ""
-                  }`}
-                >
-                  <span>{tema}</span>
+              <div className="topbar__title-box">
+                <div className="topbar__info-box">
+                  <div
+                    className="topbar__tema-wrapper"
+                    ref={wrapperRef}
+                  >
+                    <span
+                      ref={temaRef}
+                      className={`topbar__tema ${temaOverflows ? "topbar__tema--marquee" : ""
+                        }`}
+                    >
+                      <span>{tema}</span>
 
-                  {temaOverflows && (
-                    <span aria-hidden="true">
-                      {tema}
+                      {temaOverflows && (
+                        <span aria-hidden="true">
+                          {tema}
+                        </span>
+                      )}
                     </span>
-                  )}
-                </span>
+                  </div>
+
+                  <span className="topbar__curso topbar__curso--clickable">
+                    {curso}
+                  </span>
+                </div>
 
                 <span
-                  className={`topbar__expand-icon ${
-                    menuMobileOpen ? "is-open" : ""
-                  }`}
+                  className={`topbar__expand-icon ${menuMobileOpen ? "is-open" : ""
+                    }`}
                   aria-hidden="true"
                 />
               </div>
-
-              <span className="topbar__curso topbar__curso--clickable">
-                {curso}
-              </span>
             </button>
           </div>
 
           <div className="topbar__controls">
-
-            {/* =====================================================
-                BOTONES DE NAVEGACIÓN
-
-                PREGUNTAS:
-                Solo ABANDONAR.
-
-                RESULTADOS:
-                Inicio + Buscar + Repaso + Pomodoro.
-               ===================================================== */}
-
             {botonesVisibles.length > 0 && (
               <div
-                className={`topbar__nav ${
-                  esPregunta
+                className={`topbar__nav ${esPregunta
                     ? "topbar__nav--question"
                     : ""
-                }`}
+                  }`}
               >
                 {botonesVisibles.map((b) =>
                   renderBoton(
@@ -385,18 +323,10 @@ export default function TopBar({
               </div>
             )}
 
-            {/* =====================================================
-                SELECTOR DE TEMA
-                Un solo botón con SOL + LUNA.
-
-                Este botón permanece fuera del menú mobile.
-               ===================================================== */}
-
             <button
               type="button"
-              className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : "is-light"
-              }`}
+              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
+                }`}
               onClick={() =>
                 setTemaOscuro(
                   (actual) => !actual
@@ -429,16 +359,6 @@ export default function TopBar({
               </span>
             </button>
 
-            {/* =====================================================
-                HAMBURGUESA
-
-                En mobile contiene:
-                - Abandonar, durante preguntas.
-                - Inicio, Buscar, Repaso y Pomodoro, en resultados.
-
-                El modo oscuro permanece fuera.
-               ===================================================== */}
-
             {botonesMenu.length > 0 && (
               <button
                 type="button"
@@ -453,10 +373,6 @@ export default function TopBar({
             )}
           </div>
         </div>
-
-        {/* =========================================================
-            MENÚ LATERAL MOBILE
-           ========================================================= */}
 
         {botonesMenu.length > 0 && (
           <SideDrawer

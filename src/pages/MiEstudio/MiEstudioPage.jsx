@@ -58,7 +58,6 @@ function normalizarTexto(texto) {
 
 function limpiarParaVoz(texto) {
   if (!texto) return "";
-
   return reemplazarSimbolosParaVoz(texto)
     .replace(/\\\[|\\\]|\\\(|\\\)|\$\$|\$/g, "")
     .replace(/\\[a-zA-Z]+/g, "")
@@ -71,69 +70,54 @@ let vocesListasPromise = null;
 
 function obtenerVocesListas() {
   if (vocesListasPromise) return vocesListasPromise;
-
   vocesListasPromise = new Promise((resolve) => {
     const voces = window.speechSynthesis.getVoices();
     if (voces.length > 0) {
       resolve(voces);
       return;
     }
-
     window.speechSynthesis.onvoiceschanged = () => {
       resolve(window.speechSynthesis.getVoices());
     };
-
     setTimeout(() => {
       resolve(window.speechSynthesis.getVoices());
     }, 1200);
   });
-
   return vocesListasPromise;
 }
 
 function useLecturaTeoriaVoz(texto, activo) {
   useEffect(() => {
     if (!activo || !texto || !("speechSynthesis" in window)) return;
-
     let cancelado = false;
     let timeoutId = null;
-
     window.speechSynthesis.cancel();
-
     function hablarConVoces(voces) {
       if (cancelado) return;
-
       const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
       utter.lang = "es-PE";
       utter.pitch = 0.55;
       utter.rate = 0.92;
-
       const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
-
       const vozGrave =
         voces.find(
           (v) =>
             v.lang?.toLowerCase().startsWith("es") &&
             nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n))
         ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
-
       if (vozGrave) utter.voice = vozGrave;
-
       timeoutId = setTimeout(() => {
         if (cancelado) return;
         window.speechSynthesis.speak(utter);
       }, 80);
     }
-
     const vocesYaListas = window.speechSynthesis.getVoices();
-
     if (vocesYaListas.length > 0) {
       hablarConVoces(vocesYaListas);
     } else {
       hablarConVoces([]);
       obtenerVocesListas();
     }
-
     return () => {
       cancelado = true;
       if (timeoutId) clearTimeout(timeoutId);
@@ -148,12 +132,10 @@ export default function MiEstudioPage() {
   const [, setLoading] = useState(false);
   const [, setError] = useState("");
   const [flatPuntos, setFlatPuntos] = useState([]);
-
   const puntosBuscables = useMemo(
     () => flatPuntos.filter((p) => p.seccionTitulo !== "Ejercicios"),
     [flatPuntos]
   );
-
   const puntosEstables = useMemo(() => {
     return (topicData?.theory || []).flatMap((seccion, idxSeccion) =>
       seccion.puntos.map((p, idxPunto) => ({
@@ -163,7 +145,6 @@ export default function MiEstudioPage() {
       }))
     );
   }, [topicData]);
-
   const [preguntasFinalesIds, setPreguntasFinalesIds] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
   const [ordenPreguntas, setOrdenPreguntas] = useState([]);
@@ -178,8 +159,41 @@ export default function MiEstudioPage() {
   const [mostrarConfirmacionSalida, setMostrarConfirmacionSalida] = useState(false);
   const [temaProximoSalida, setTemaProximoSalida] = useState(null);
   const [destinoSalida, setDestinoSalida] = useState("tema");
-
+  const [mostrarBarraTeoria, setMostrarBarraTeoria] = useState(false);
+  const [mostrarBotonBuscador, setMostrarBotonBuscador] = useState(false);
+  const barraTeoriaRef = useRef(null);
   const { setFooterHidden } = useFooterVisibility();
+
+  useEffect(() => {
+    const manejarScroll = () => {
+      if (window.scrollY > 80) {
+        setMostrarBotonBuscador(true);
+      } else {
+        setMostrarBotonBuscador(false);
+        setMostrarBarraTeoria(false);
+      }
+    };
+    window.addEventListener("scroll", manejarScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", manejarScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!mostrarBarraTeoria) return;
+    const manejarClickFuera = (e) => {
+      if (
+        barraTeoriaRef.current &&
+        !barraTeoriaRef.current.contains(e.target)
+      ) {
+        setMostrarBarraTeoria(false);
+      }
+    };
+    document.addEventListener("pointerdown", manejarClickFuera);
+    return () => {
+      document.removeEventListener("pointerdown", manejarClickFuera);
+    };
+  }, [mostrarBarraTeoria]);
 
   useEffect(() => {
     const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
@@ -192,7 +206,6 @@ export default function MiEstudioPage() {
       if (stage !== "theory" || (textosSeleccionados.length === 0 && textosCompletados.length === 0)) {
         return;
       }
-
       if (topicData?.archivo) {
         localStorage.setItem(
           `textos_${topicData.archivo}`,
@@ -203,7 +216,6 @@ export default function MiEstudioPage() {
         );
       }
     };
-
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [stage, textosSeleccionados, textosCompletados, topicData?.archivo]);
@@ -211,13 +223,9 @@ export default function MiEstudioPage() {
   const [countdown, setCountdown] = useState(0);
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
-
-  // Modo examen dentro de un tema (Omitir / Ir al Examen): sin vidas,
-  // sin corrección en tiempo real. Ver TemaExamenView.jsx.
   const [modoExamenTema, setModoExamenTema] = useState(false);
   const [faseExamenTema, setFaseExamenTema] = useState("preguntas");
   const [titulosFinalesExamen, setTitulosFinalesExamen] = useState([]);
-
   const vidaPerderRef = useRef(null);
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
@@ -225,12 +233,10 @@ export default function MiEstudioPage() {
   useEffect(() => {
     if (!alertaVidas) return;
     const delay = alertaVidas === "cero" ? 2500 : 3200;
-
     const t = setTimeout(() => {
       setAlertaVidas(null);
       if (alertaVidas === "cero") setVidas(5);
     }, delay);
-
     return () => clearTimeout(t);
   }, [alertaVidas]);
 
@@ -241,11 +247,9 @@ export default function MiEstudioPage() {
       setCorazonRoto(false);
       return;
     }
-
     const t = setTimeout(() => {
       setCorazonRoto(true);
     }, 700);
-
     return () => clearTimeout(t);
   }, [alertaVidas]);
 
@@ -256,17 +260,14 @@ export default function MiEstudioPage() {
           if (i < vidas) {
             return <i key={i} className="bi bi-heart-fill vidas-fullscreen__heart is-full" />;
           }
-
           if (i === vidas) {
             return (
               <i
                 key={i}
-                className={`vidas-fullscreen__heart ${corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"
-                  }`}
+                className={`vidas-fullscreen__heart ${corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"}`}
               />
             );
           }
-
           return <i key={i} className="bi bi-heartbreak vidas-fullscreen__heart is-roto" />;
         })}
       </div>
@@ -315,9 +316,7 @@ export default function MiEstudioPage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
-
   const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
-
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
   const [modoEstudio, setModoEstudio] = useState("completo");
   const [esModoAdicionales, setEsModoAdicionales] = useState(false);
@@ -331,26 +330,21 @@ export default function MiEstudioPage() {
 
   useEffect(() => {
     const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000;
-
     const intervalo = setInterval(() => {
       const estado = leerPomodoroCompartido();
       if (!estado || !estado.running) return;
-
       const msDesdeQueTermino = Date.now() - estado.endTimestamp;
       if (msDesdeQueTermino < 0) return;
-
       if (msDesdeQueTermino > UMBRAL_AVISO_VENCIDO_MS) {
         limpiarPomodoroCompartido();
         return;
       }
-
       if (pomodoroAlertadoRef.current !== estado.endTimestamp) {
         pomodoroAlertadoRef.current = estado.endTimestamp;
         setPomodoroAlarmaLabel(estado.label || "");
         setPomodoroAlarmaAbierta(true);
       }
     }, 1000);
-
     return () => clearInterval(intervalo);
   }, []);
 
@@ -362,17 +356,14 @@ export default function MiEstudioPage() {
   }
 
   const { guardarBusqueda: guardarBusquedaInicio } = useSearchHistory();
-
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
   const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] = useState(false);
   const repasoGuardadoTimers = useRef([]);
-
   const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
   const [sinSeleccionAlerta, setSinSeleccionAlerta] = useState(false);
   const [faltaCompletarTeoria, setFaltaCompletarTeoria] = useState(false);
   const [sinPreguntaSaliendo, setSinPreguntaSaliendo] = useState(false);
   const sinPreguntaTimers = useRef([]);
-
   const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
 
   useEffect(() => {
@@ -431,18 +422,14 @@ export default function MiEstudioPage() {
   async function abrirTema(item) {
     setLoading(true);
     setError("");
-
     localStorage.setItem(
       "ultimoTemaAbierto",
       JSON.stringify({ curso: item.curso, tema: item.tema, archivo: item.archivo })
     );
-
     try {
       const res = await fetch(import.meta.env.BASE_URL + item.archivo);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
-
       const data = await res.json();
-
       const puntos = (data.theory || []).flatMap((seccion, idxSeccion) =>
         seccion.puntos.map((p, idxPunto) => ({
           ...p,
@@ -450,44 +437,33 @@ export default function MiEstudioPage() {
           seccionTitulo: seccion.titulo
         }))
       );
-
       const examenList = data.examen || [];
-
       const storageCompletionsKey = `completions_${item.curso}_${item.tema}`;
       const storedCompletions = JSON.parse(localStorage.getItem(storageCompletionsKey) || "{}");
       setLevelCompletions(storedCompletions);
-
       const storageMaxUnlKey = `maxUnlocked_${item.curso}_${item.tema}`;
       const storedMax = parseInt(localStorage.getItem(storageMaxUnlKey) || "0", 10);
       setMaxUnlocked(storedMax);
-
       const storageNivelCompletionsKey = `examenCompletions_${item.curso}_${item.tema}`;
       const storedNivelCompletions = JSON.parse(localStorage.getItem(storageNivelCompletionsKey) || "{}");
       setNivelCompletions(storedNivelCompletions);
-
       const storageNivelMaxKey = `examenMaxUnlocked_${item.curso}_${item.tema}`;
       const storedNivelMax = parseInt(localStorage.getItem(storageNivelMaxKey) || "0", 10);
       setNivelMaxUnlocked(storedNivelMax);
-
       setExamenPreguntas(examenList);
       setNivelIndex(0);
-
       const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
       let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
       if (cardInicial >= puntos.length) cardInicial = 0;
-
       const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
       const storedPreguntasVistas = JSON.parse(localStorage.getItem(storagePreguntasVistasKey) || "{}");
       setPreguntasVistas(storedPreguntasVistas);
-
       setTextosSeleccionados([]);
       setTextosCompletados([]);
       setEsModoAdicionales(false);
       huboCambiosSinGuardarRef.current = false;
-
       const storageTextosKey = `textos_${item.archivo}`;
       const textosGuardados = localStorage.getItem(storageTextosKey);
-
       if (textosGuardados) {
         try {
           const { textos, completados } = JSON.parse(textosGuardados);
@@ -495,7 +471,6 @@ export default function MiEstudioPage() {
           setTextosCompletados(completados || []);
         } catch { }
       }
-
       setTopicData({ ...data, curso: item.curso, tema: item.tema, archivo: item.archivo });
       setFlatPuntos(puntos);
       setCardIndex(cardInicial);
@@ -531,14 +506,11 @@ export default function MiEstudioPage() {
 
   async function enviarSugerenciaExamen() {
     if (!topicData || enviandoSugerencia) return;
-
     sugerenciaTimers.current.forEach(clearTimeout);
     sugerenciaTimers.current = [];
-
     setSugerenciaMsg(null);
     setSugerenciaMsgSaliendo(false);
     setEnviandoSugerencia(true);
-
     const datos = {
       _subject: `Sugerencia de examen — ${topicData.tema || "Tema sin nombre"}`,
       curso: topicData.curso || "",
@@ -547,23 +519,19 @@ export default function MiEstudioPage() {
       comentario: "Sugerencia enviada desde la página del tema.",
       _captcha: "false"
     };
-
     try {
       const respuesta = await fetch("https://formsubmit.co/ajax/7f233465b329341d11f0a1b54466dea1", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(datos)
       });
-
       const resultado = await respuesta.json();
       if (!respuesta.ok || !resultado.success) {
         throw new Error(resultado.message || "FormSubmit rechazó el envío.");
       }
-
       setEnviandoSugerencia(false);
       setSugerenciaMsg("Tu sugerencia fue enviada correctamente.");
       setSugerenciaMsgSaliendo(false);
-
       sugerenciaTimers.current = [
         setTimeout(() => setSugerenciaMsgSaliendo(true), 4600),
         setTimeout(() => {
@@ -576,7 +544,6 @@ export default function MiEstudioPage() {
       setEnviandoSugerencia(false);
       setSugerenciaMsg("No se pudo enviar la sugerencia. Inténtalo nuevamente.");
       setSugerenciaMsgSaliendo(false);
-
       sugerenciaTimers.current = [
         setTimeout(() => setSugerenciaMsgSaliendo(true), 3000),
         setTimeout(() => {
@@ -593,14 +560,12 @@ export default function MiEstudioPage() {
       topicData?.archivo &&
       topicData.archivo !== item.archivo &&
       huboCambiosSinGuardarRef.current;
-
     if (hayCambiosSinGuardar) {
       setTemaProximoSalida(item);
       setDestinoSalida("tema");
       setMostrarConfirmacionSalida(true);
       return;
     }
-
     abrirTema(item);
   }
 
@@ -611,7 +576,6 @@ export default function MiEstudioPage() {
     } else if (temaProximoSalida) {
       abrirTema(temaProximoSalida);
     }
-
     setTemaProximoSalida(null);
   }
 
@@ -622,7 +586,6 @@ export default function MiEstudioPage() {
         JSON.stringify({ textos: textosSeleccionados, completados: textosCompletados })
       );
     }
-
     huboCambiosSinGuardarRef.current = false;
     setMostrarConfirmacionSalida(false);
     irADestinoSalida();
@@ -641,7 +604,6 @@ export default function MiEstudioPage() {
 
   function seleccionarItem(item) {
     guardarBusquedaInicio(item);
-
     if (item.type === "curso") {
       setCursoSeleccionado(item.nombre);
       setTemasOpen(true);
@@ -657,19 +619,16 @@ export default function MiEstudioPage() {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
       .map((p) => p.id);
-
     return idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => textosSeleccionados.includes(id));
   }, [flatPuntos, textosSeleccionados]);
 
   function intentarCompletarTema() {
     if (!teoriaCompleta) {
       sinPreguntaTimers.current.forEach(clearTimeout);
-
       setSinSeleccionAlerta(false);
       setFaltaCompletarTeoria(true);
       setSinPreguntaSaliendo(false);
       setSinPreguntaAlerta(true);
-
       sinPreguntaTimers.current = [
         setTimeout(() => setSinPreguntaSaliendo(true), 4000),
         setTimeout(() => {
@@ -679,25 +638,21 @@ export default function MiEstudioPage() {
       ];
       return;
     }
-
     finalizarTema();
   }
 
   function elegirModoEstudio(modo, opts = {}) {
     setPreguntaModoAbierta(false);
     setEsModoAdicionales(!!opts.soloAdicionales);
-
     if (modo === "solo_preguntas") {
       const originalExamen = topicData?.examen || [];
       let preguntasFinales = [];
       let idsFinales = [];
       let titulosFinales = [];
-
       if (opts.soloAdicionales) {
         const itemsFinales = flatPuntos
           .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
           .filter((x) => x.pregunta && x.punto?.seccionTitulo === "Ejercicios");
-
         preguntasFinales = itemsFinales.map((x) => x.pregunta);
         idsFinales = itemsFinales.map((x) => x.punto.id);
         titulosFinales = itemsFinales.map((x) => x.punto.seccionTitulo);
@@ -705,19 +660,16 @@ export default function MiEstudioPage() {
         const itemsFinales = flatPuntos
           .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
           .filter((p) => p.pregunta && opts.seleccionEspecifica.includes(p.id));
-
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
         titulosFinales = itemsFinales.map((p) => p.titulo);
       } else if (opts.requiereSeleccion) {
         if (textosSeleccionados.length === 0) {
           sinPreguntaTimers.current.forEach(clearTimeout);
-
           setSinSeleccionAlerta(true);
           setFaltaCompletarTeoria(false);
           setSinPreguntaSaliendo(false);
           setSinPreguntaAlerta(true);
-
           sinPreguntaTimers.current = [
             setTimeout(() => setSinPreguntaSaliendo(true), 4000),
             setTimeout(() => {
@@ -727,11 +679,9 @@ export default function MiEstudioPage() {
           ];
           return;
         }
-
         const itemsPuntos = flatPuntos.map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }));
         const itemsVinculadosTeoria = itemsPuntos.filter((p) => p.pregunta && textosSeleccionados.includes(p.id));
         const itemsFinales = itemsVinculadosTeoria.length > 0 ? itemsVinculadosTeoria : itemsPuntos.filter((p) => p.pregunta);
-
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
         titulosFinales = itemsFinales.map((p) => p.titulo);
@@ -739,20 +689,16 @@ export default function MiEstudioPage() {
         const itemsFinales = flatPuntos
           .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
           .filter((p) => p.pregunta);
-
         preguntasFinales = itemsFinales.map((p) => p.pregunta);
         idsFinales = itemsFinales.map((p) => p.id);
         titulosFinales = itemsFinales.map((p) => p.titulo);
       }
-
       if (preguntasFinales.length === 0) {
         sinPreguntaTimers.current.forEach(clearTimeout);
-
         setSinSeleccionAlerta(false);
         setFaltaCompletarTeoria(false);
         setSinPreguntaSaliendo(false);
         setSinPreguntaAlerta(true);
-
         sinPreguntaTimers.current = [
           setTimeout(() => setSinPreguntaSaliendo(true), 4000),
           setTimeout(() => {
@@ -760,28 +706,18 @@ export default function MiEstudioPage() {
             setSinPreguntaSaliendo(false);
           }, 4300)
         ];
-
         setModoEstudio("completo");
         setStage("theory");
         return;
       }
-
       setExamenPreguntas(preguntasFinales);
       setPreguntasFinalesIds(idsFinales);
       setTitulosFinalesExamen(titulosFinales);
-
-      // "Omitir" (sin opts) e "Ir al Examen" (requiereSeleccion) usan el
-      // modo examen (sin vidas, sin corrección en vivo). El videojuego
-      // (seleccionEspecifica) y los ejercicios adicionales se quedan con
-      // el comportamiento normal, sin cambios.
       setModoExamenTema(!opts.seleccionEspecifica && !opts.soloAdicionales);
-
       if (!opts.seleccionEspecifica && !opts.soloAdicionales) {
         setFaseExamenTema("preguntas");
       }
-
       const orden = shuffle(Array.from({ length: preguntasFinales.length }, (_, i) => i));
-
       setOrdenPreguntas(orden);
       setPosOrden(0);
       setCardIndex(orden[0] ?? 0);
@@ -800,36 +736,28 @@ export default function MiEstudioPage() {
 
   useEffect(() => {
     let q = searchParams.get("q");
-
     if (!q) {
       const temaPendiente = leerYLimpiarRetorno();
       if (temaPendiente) q = temaPendiente;
     }
-
     if (!q) return;
-
     const qNorm = normalizarTexto(q);
-
     const temaMatch = OPCIONES_BUSQUEDA.find(
       (item) => item.type === "tema" && normalizarTexto(item.tema) === qNorm
     );
-
     const cursoMatch = OPCIONES_BUSQUEDA.find(
       (item) => item.type === "curso" && normalizarTexto(item.nombre) === qNorm
     );
-
     if (temaMatch) {
       seleccionarItem(temaMatch);
     } else if (cursoMatch) {
       seleccionarItem(cursoMatch);
     }
-
     window.history.replaceState(null, "", window.location.pathname);
   }, []);
 
   function avanzarCard() {
     if (stage === "theory") return;
-
     if (repasoQuizActivo) {
       if (repasoQuizPos < repasoQuizBatch.length - 1) {
         setRepasoQuizPos(repasoQuizPos + 1);
@@ -840,7 +768,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (isLevelMode) {
       if (nivelIndex < examenPreguntas.length - 1) {
         setNivelIndex(nivelIndex + 1);
@@ -851,7 +778,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (isFlipQuiz) {
       if (quizPos < quizBatch.length - 1) {
         setQuizPos(quizPos + 1);
@@ -863,7 +789,6 @@ export default function MiEstudioPage() {
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
         setCountdown(0);
-
         if (cardIndex < flatPuntos.length - 1) {
           setCardIndex(cardIndex + 1);
           setStage("theory");
@@ -873,7 +798,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (modoEstudio === "solo_preguntas") {
       if (posOrden < ordenPreguntas.length - 1) {
         const siguientePos = posOrden + 1;
@@ -889,7 +813,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (cardIndex < flatPuntos.length - 1) {
       setCardIndex(cardIndex + 1);
       setStage("theory");
@@ -904,7 +827,6 @@ export default function MiEstudioPage() {
 
   function retrocederCard() {
     if (stage === "theory") return;
-
     if (repasoQuizActivo) {
       if (repasoQuizPos > 0) {
         setRepasoQuizPos(repasoQuizPos - 1);
@@ -913,7 +835,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (isLevelMode) {
       if (nivelIndex > 0) {
         setNivelIndex(nivelIndex - 1);
@@ -922,7 +843,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (isFlipQuiz) {
       if (quizPos > 0) {
         setQuizPos(quizPos - 1);
@@ -931,7 +851,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (modoEstudio === "solo_preguntas") {
       if (posOrden > 0) {
         const anteriorPos = posOrden - 1;
@@ -945,7 +864,6 @@ export default function MiEstudioPage() {
       }
       return;
     }
-
     if (cardIndex > 0) {
       setCardIndex(cardIndex - 1);
       setStage("theory");
@@ -966,25 +884,20 @@ export default function MiEstudioPage() {
       const idsEjercicios = flatPuntos
         .filter((p) => p.seccionTitulo === "Ejercicios")
         .map((p) => p.id);
-
       huboCambiosSinGuardarRef.current = true;
       setTextosSeleccionados((prev) => [...prev, ...idsEjercicios.filter((id) => !prev.includes(id))]);
     }
-
     if (!teoriaCompleta) {
       setStage("theory");
       setIsLevelMode(false);
       return;
     }
-
     setStage("finished");
     setConfirmGuardarRepasoFinal(true);
     setMostrarCongratulations(true);
-
     if (topicData) {
       const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
       const id = `${topicData.curso}_${topicData.tema}`;
-
       if (!completados.includes(id)) {
         completados.push(id);
         localStorage.setItem("temasCompletados", JSON.stringify(completados));
@@ -992,10 +905,6 @@ export default function MiEstudioPage() {
     }
   }
 
-  // Se llama desde la flecha "volver" en la pantalla de resultados
-  // del Modo Examen por tema (TemaExamenView): regresa a la teoría
-  // del mismo tema sin marcarlo como completado ni disparar el
-  // flujo de "Felicidades" (eso solo pasa al terminar de verdad).
   function volverATeoriaDesdeExamenTema() {
     setModoExamenTema(false);
     setStage("theory");
@@ -1006,20 +915,12 @@ export default function MiEstudioPage() {
     setStage("finished");
     setConfirmGuardarRepasoFinal(true);
     setMostrarCongratulations(true);
-
     if (topicData) {
-      const completados = JSON.parse(
-        localStorage.getItem("temasCompletados") || "[]"
-      );
-
+      const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
       const id = `${topicData.curso}_${topicData.tema}`;
-
       if (!completados.includes(id)) {
         completados.push(id);
-        localStorage.setItem(
-          "temasCompletados",
-          JSON.stringify(completados)
-        );
+        localStorage.setItem("temasCompletados", JSON.stringify(completados));
       }
     }
   }
@@ -1044,12 +945,10 @@ export default function MiEstudioPage() {
 
   function guardarParaRepaso() {
     if (!topicData) return;
-
     registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
     repasoGuardadoTimers.current.forEach(clearTimeout);
     setRepasoGuardadoSaliendo(false);
     setRepasoGuardadoMsg(true);
-
     repasoGuardadoTimers.current = [
       setTimeout(() => setRepasoGuardadoSaliendo(true), 1800),
       setTimeout(() => {
@@ -1061,13 +960,11 @@ export default function MiEstudioPage() {
 
   function gameOver() {
     if (!topicData) return;
-
     localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
-
     setLevelCompletions({});
     setMaxUnlocked(0);
     setNivelCompletions({});
@@ -1086,10 +983,8 @@ export default function MiEstudioPage() {
 
   function rendirsePregunta() {
     setQuestionResult({ isCorrect: false, rendido: true, vidasEnEsteIntento: vidas });
-
     let vistaKeyRendido = null;
     let vistaPreguntaRendido = null;
-
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
@@ -1106,23 +1001,19 @@ export default function MiEstudioPage() {
       vistaKeyRendido = `pt-${cardIndex}`;
       vistaPreguntaRendido = flatPuntos[cardIndex]?.pregunta || null;
     }
-
     if (vistaKeyRendido && vistaPreguntaRendido) {
       setPreguntasFalladas((prev) => ({
         ...prev,
         [vistaKeyRendido]: { pregunta: vistaPreguntaRendido }
       }));
     }
-
     setWrongCount((w) => w + 1);
   }
 
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto, vidasEnEsteIntento: vidas });
-
     let vistaKey = null;
     let vistaPregunta = null;
-
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
@@ -1139,42 +1030,32 @@ export default function MiEstudioPage() {
       vistaKey = `pt-${cardIndex}`;
       vistaPregunta = flatPuntos[cardIndex]?.pregunta || null;
     }
-
     if (vistaKey && vistaPregunta && topicData) {
       setPreguntasVistas((prev) => {
         if (prev[vistaKey]) return prev;
-
         const next = { ...prev, [vistaKey]: { pregunta: vistaPregunta } };
         localStorage.setItem(`preguntasVistas_${topicData.curso}_${topicData.tema}`, JSON.stringify(next));
         return next;
       });
     }
-
     if (correcto) {
       setScore((s) => s + 1);
-
       if (modoEstudio === "solo_preguntas" && preguntasFinalesIds[cardIndex]) {
         const puntoIdRespondido = preguntasFinalesIds[cardIndex];
         huboCambiosSinGuardarRef.current = true;
-
         setTextosCompletados((prev) => (prev.includes(puntoIdRespondido) ? prev : [...prev, puntoIdRespondido]));
-
         setTextosSeleccionados((prev) => {
           if (prev.includes(puntoIdRespondido)) return prev;
-
           const newSelection = [...prev, puntoIdRespondido];
           const idsTeoriaNormal = flatPuntos
             .filter((p) => p.seccionTitulo !== "Ejercicios")
             .map((p) => p.id);
-
           if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
             setMostrarCongratulations(true);
           }
-
           return newSelection;
         });
       }
-
       if (isLevelMode) {
         setNivelCompletions((prev) => {
           const newCompletions = { ...prev, [nivelIndex]: (prev[nivelIndex] || 0) + 1 };
@@ -1183,7 +1064,6 @@ export default function MiEstudioPage() {
           }
           return newCompletions;
         });
-
         setNivelMaxUnlocked((m) => {
           const nextMax = nivelIndex === m ? m + 1 : m;
           if (topicData) {
@@ -1199,7 +1079,6 @@ export default function MiEstudioPage() {
           }
           return newCompletions;
         });
-
         setMaxUnlocked((m) => {
           const nextMax = cardIndex === m ? m + 1 : m;
           if (topicData) {
@@ -1210,17 +1089,14 @@ export default function MiEstudioPage() {
       }
     } else {
       setWrongCount((w) => w + 1);
-
       if (vistaKey && vistaPregunta) {
         setPreguntasFalladas((prev) => ({
           ...prev,
           [vistaKey]: { pregunta: vistaPregunta }
         }));
       }
-
       setVidas((prevVidas) => {
         const nuevasVidas = prevVidas - 1;
-
         if (nuevasVidas === 3) {
           setAlertaVidas("tres");
         } else if (nuevasVidas === 1) {
@@ -1229,16 +1105,14 @@ export default function MiEstudioPage() {
           setAlertaVidas("cero");
           if (ceroVidasRef.current) {
             ceroVidasRef.current.currentTime = 0;
-            ceroVidasRef.current.play().catch(() => { });
+            ceroVidasRef.current.play().catch(() => {});
           }
           gameOver();
         }
-
         if (nuevasVidas > 0 && vidaPerderRef.current) {
           vidaPerderRef.current.currentTime = 0;
-          vidaPerderRef.current.play().catch(() => { });
+          vidaPerderRef.current.play().catch(() => {});
         }
-
         return nuevasVidas;
       });
     }
@@ -1271,12 +1145,10 @@ export default function MiEstudioPage() {
         return pregunta ? { key, pregunta } : null;
       })
       .filter(Boolean);
-
     if (lote.length === 0) {
       sinPreguntaTimers.current.forEach(clearTimeout);
       setSinPreguntaSaliendo(false);
       setSinPreguntaAlerta(true);
-
       sinPreguntaTimers.current = [
         setTimeout(() => setSinPreguntaSaliendo(true), 1950),
         setTimeout(() => {
@@ -1286,13 +1158,11 @@ export default function MiEstudioPage() {
       ];
       return;
     }
-
     setRepasoQuizBatch(shuffle(lote));
     setRepasoQuizPos(0);
     setRepasoQuizActivo(true);
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
-
     if (stage !== "question") {
       setRepasoDesdeTeoria(true);
       setStage("question");
@@ -1305,7 +1175,6 @@ export default function MiEstudioPage() {
     setRepasoQuizActivo(false);
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
-
     if (repasoDesdeTeoria) {
       setStage("theory");
       setRepasoDesdeTeoria(false);
@@ -1316,23 +1185,26 @@ export default function MiEstudioPage() {
   const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] = useState(false);
   const temaExamenViewRef = useRef(null);
 
-  function pedirAbandonarPregunta() { setConfirmAbandonarPregunta(true); }
-  function cancelarAbandonarPregunta() { setConfirmAbandonarPregunta(false); }
+  function pedirAbandonarPregunta() {
+    setConfirmAbandonarPregunta(true);
+  }
+
+  function cancelarAbandonarPregunta() {
+    setConfirmAbandonarPregunta(false);
+  }
+
   function confirmarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
-
-    // Dentro de un examen por tema, "Abandonar" no debe botarte a la
-    // teoría: te manda directo a la pantalla de resultados con lo
-    // que ya respondiste (igual que "Abandonar" en el examen real).
     if (modoExamenTema && stage === "question" && temaExamenViewRef.current) {
       temaExamenViewRef.current.finalizarAhora();
       return;
     }
-
     abandonarJuego();
   }
 
-  function cancelarSalirApp() { setConfirmSalirApp(false); }
+  function cancelarSalirApp() {
+    setConfirmSalirApp(false);
+  }
 
   function confirmarSalirApp() {
     if (typeof window !== "undefined" && window.Capacitor?.isNativePlatform?.()) {
@@ -1342,22 +1214,21 @@ export default function MiEstudioPage() {
         return;
       }
     }
-
     window.close();
-    setTimeout(() => { window.location.href = "about:blank"; }, 300);
+    setTimeout(() => {
+      window.location.href = "about:blank";
+    }, 300);
   }
 
   function irAInicio() {
     const hayCambiosSinGuardar =
       stage === "theory" && topicData?.archivo && huboCambiosSinGuardarRef.current;
-
     if (hayCambiosSinGuardar) {
       setTemaProximoSalida(null);
       setDestinoSalida("inicio");
       setMostrarConfirmacionSalida(true);
       return;
     }
-
     setTopicData(null);
     setStage("theory");
   }
@@ -1375,7 +1246,6 @@ export default function MiEstudioPage() {
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-
   const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
   const [puntoVozId, setPuntoVozId] = useState(null);
 
@@ -1395,12 +1265,16 @@ export default function MiEstudioPage() {
     stage === "theory" && !isLevelMode
       ? puntoVozActual
         ? (() => {
-          const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
-          ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
-          return [esNuevaSeccion ? puntoVozActual.seccionTitulo : null, puntoVozActual.texto, puntoVozActual.explicacion]
-            .filter(Boolean)
-            .join(". ");
-        })()
+            const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
+            ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
+            return [
+              esNuevaSeccion ? puntoVozActual.seccionTitulo : null,
+              puntoVozActual.texto,
+              puntoVozActual.explicacion
+            ]
+              .filter(Boolean)
+              .join(". ");
+          })()
         : topicData?.theory?.[0]?.titulo || null
       : null;
 
@@ -1416,10 +1290,6 @@ export default function MiEstudioPage() {
           ? examenPreguntas[cardIndex] || null
           : null;
 
-  // Interruptor oculto de desarrollo: se activa/desactiva tocando 7
-  // veces seguidas el nombre "MarcStudy" en el footer de la app (ver
-  // AppFooter.jsx). No está expuesto en ningún botón, menú ni
-  // configuración visible de Mi Estudio.
   const [modoPruebaAvance, setModoPruebaAvance] = useState(false);
 
   useEffect(() => {
@@ -1434,7 +1304,6 @@ export default function MiEstudioPage() {
         return nuevo;
       });
     }
-
     window.addEventListener("mp-toggle", alternar);
     return () => window.removeEventListener("mp-toggle", alternar);
   }, []);
@@ -1463,7 +1332,6 @@ export default function MiEstudioPage() {
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (searchOpen || configOpen || temasOpen || !topicData) return;
       if (stage === "question" && countdown > 0) return;
-
       if (e.key === "Enter") {
         if (stage === "theory" && !isLevelMode) {
           e.preventDefault();
@@ -1490,7 +1358,6 @@ export default function MiEstudioPage() {
         if (stage === "question" && canAdvance) avanzarCard();
       }
     }
-
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [
@@ -1529,9 +1396,7 @@ export default function MiEstudioPage() {
   return (
     <div className="mi-estudio">
       <WelcomeModal open={!nombreUsuario} onSubmit={(n) => setNombreUsuario(n)} />
-
       <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
-
       <PomodoroAlarmModal
         open={pomodoroAlarmaAbierta}
         label={pomodoroAlarmaLabel}
@@ -1541,14 +1406,12 @@ export default function MiEstudioPage() {
           limpiarPomodoroCompartido();
         }}
       />
-
       {sugerenciaMsg && (
         <div className={`repaso-toast is-success${sugerenciaMsgSaliendo ? " is-saliendo" : ""}`}>
           <i className={sugerenciaMsg.startsWith("Tu sugerencia") ? "fas fa-circle-check" : "fas fa-circle-exclamation"} />
           <span>{sugerenciaMsg}</span>
         </div>
       )}
-
       {topicData && (
         <TopBar
           stage={
@@ -1580,13 +1443,11 @@ export default function MiEstudioPage() {
           }
         />
       )}
-
       {repasoGuardadoMsg && (
         <div className={`repaso-toast is-success${repasoGuardadoSaliendo ? " is-saliendo" : ""}`}>
           <i className="fas fa-bookmark" /> Guardado para repasar
         </div>
       )}
-
       {sinPreguntaAlerta && (
         <div className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo ? " is-saliendo" : ""}`}>
           <div className="sin-pregunta-alerta__contenido">
@@ -1599,7 +1460,6 @@ export default function MiEstudioPage() {
                   : <>No hay preguntas de "{topicData?.tema || "este tema"}"</>}
             </span>
           </div>
-
           <button
             type="button"
             className="sin-pregunta-alerta__close"
@@ -1615,9 +1475,7 @@ export default function MiEstudioPage() {
           </button>
         </div>
       )}
-
       <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
-
       <Modal open={confirmSalirApp} onClose={cancelarSalirApp}>
         <h3 className="tema-modal-title">¿Salir de la aplicación?</h3>
         <p className="tema-modal-subtitle">Vas a salir de la web/aplicación. Tu progreso ya quedó guardado.</p>
@@ -1626,7 +1484,6 @@ export default function MiEstudioPage() {
           <button type="button" className="btn-outline" onClick={confirmarSalirApp}>Sí, salir</button>
         </div>
       </Modal>
-
       <Modal open={confirmAbandonarPregunta} onClose={cancelarAbandonarPregunta} plain>
         <div className="retirada-modal">
           <h3 className="retirada-modal__title">Regresar a la teoría</h3>
@@ -1637,13 +1494,11 @@ export default function MiEstudioPage() {
           </div>
         </div>
       </Modal>
-
       <div className={`config-overlay ${configOpen ? "" : "is-closed"}`} aria-hidden={!configOpen}>
         <div className="config-overlay__panel">
           {confirmLeave && (
             <div className="config-overlay__confirm animate-bounce">Confirmar. Eres un perdedor.</div>
           )}
-
           <div className="config-overlay__row">
             <div className="config-overlay__item">
               <button
@@ -1658,7 +1513,6 @@ export default function MiEstudioPage() {
               </button>
               {botonArmado === "continuar" && <span className="config-overlay__label">Continuar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("pantalla", toggleFullscreen)}
@@ -1670,7 +1524,6 @@ export default function MiEstudioPage() {
                 <span className="config-overlay__label">{isFullscreen ? "Minimizar" : "Pantalla Completa"}</span>
               )}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("repasar", verPreguntasVistas)}
@@ -1680,7 +1533,6 @@ export default function MiEstudioPage() {
               </button>
               {botonArmado === "repasar" && <span className="config-overlay__label">Repasar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => {
@@ -1693,7 +1545,6 @@ export default function MiEstudioPage() {
               </button>
               {confirmLeave && <span className="config-overlay__label">Abandonar</span>}
             </div>
-
             <div className="config-overlay__item">
               <button
                 onClick={() => manejarBotonConfig("reiniciar", reiniciarTarjetas)}
@@ -1706,7 +1557,6 @@ export default function MiEstudioPage() {
           </div>
         </div>
       </div>
-
       <div className={wrapClass}>
         {!topicData && (
           <>
@@ -1714,29 +1564,23 @@ export default function MiEstudioPage() {
               section="inicio"
               onAbrirBuscador={() => setSearchOpen(true)}
             />
-
             <div className="mi-estudio__home-screen container">
               <AvisosInicio />
-
               <section className="mi-estudio__intro">
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">
                     Aprende y domina{" "}
                     <span className="mi-estudio__intro-highlight">cada tema</span>
                   </h1>
-
                   <p className="mi-estudio__intro-description">
                     Estudia a tu ritmo, comprende cada concepto y avanza paso a paso hacia tus objetivos.
                   </p>
-
                   <div className="welcome-section__continuar-wrapper">
-
                     {avisoContinuarVacio && (
                       <span className="aviso-bloqueo">
                         No hay tema para continuar
                       </span>
                     )}
-
                     <button
                       type="button"
                       className="welcome-section__continuar-btn"
@@ -1745,7 +1589,6 @@ export default function MiEstudioPage() {
                           mostrarAvisoContinuarVacio();
                           return;
                         }
-
                         seleccionarItem({
                           type: "tema",
                           curso: ultimoTemaInicio.curso,
@@ -1757,14 +1600,11 @@ export default function MiEstudioPage() {
                       <span className="welcome-section__continuar-label">
                         Continuar:
                       </span>
-
                       <span className="welcome-section__continuar-tema">
                         {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
                       </span>
-
                       <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
                     </button>
-
                     <button
                       type="button"
                       className="welcome-section__simulacro-panel"
@@ -1774,18 +1614,14 @@ export default function MiEstudioPage() {
                       <span className="welcome-section__simulacro-icon">
                         <i className="bi bi-bullseye"></i>
                       </span>
-
                       <span className="welcome-section__simulacro-info">
                         <strong>Rendir simulacro</strong>
                         <span>Pon a prueba tus conocimientos</span>
                       </span>
-
                     </button>
-
                   </div>
                 </div>
               </section>
-
               <SeleccionAreaModal
                 open={simulacroModalOpen}
                 onClose={() => setSimulacroModalOpen(false)}
@@ -1795,7 +1631,6 @@ export default function MiEstudioPage() {
                 }}
               />
             </div>
-
             <div className="mi-estudio__below">
               <WelcomeSection
                 onSelectTema={seleccionarItem}
@@ -1810,7 +1645,6 @@ export default function MiEstudioPage() {
             </div>
           </>
         )}
-
         {topicData && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage">
             {stage === "question" && !modoExamenTema && (
@@ -1824,10 +1658,12 @@ export default function MiEstudioPage() {
                 />
               </div>
             )}
-
             {stage === "theory" && flatPuntos.length > 0 && (
               <div className="mi-estudio__theory-wrap">
-                <div className="teoria-sticky-bar">
+                <div
+                  ref={barraTeoriaRef}
+                  className={`teoria-sticky-bar ${mostrarBarraTeoria ? "is-open" : ""}`}
+                >
                   <TheorySearchBar
                     flatPuntos={puntosBuscables}
                     onSelect={({ puntoId, campo, matchText }) => {
@@ -1835,13 +1671,16 @@ export default function MiEstudioPage() {
                       requestAnimationFrame(() => {
                         requestAnimationFrame(() => {
                           const contenedorPunto = document.getElementById(`punto-${puntoId}`);
-                          contenedorPunto?.scrollIntoView({ behavior: "smooth", block: "center" });
-
-                          const selectorCampo = campo === "explicacion"
-                            ? ".teoria-explicacion-extra__texto"
-                            : ".teoria-contenido-principal";
-                          const contenedorCampo = contenedorPunto?.querySelector(selectorCampo);
-
+                          contenedorPunto?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "center",
+                          });
+                          const selectorCampo =
+                            campo === "explicacion"
+                              ? ".teoria-explicacion-extra__texto"
+                              : ".teoria-contenido-principal";
+                          const contenedorCampo =
+                            contenedorPunto?.querySelector(selectorCampo);
                           if (matchText && contenedorCampo) {
                             resaltarPalabraTemporal(contenedorCampo, matchText);
                           } else if (contenedorCampo) {
@@ -1851,17 +1690,32 @@ export default function MiEstudioPage() {
                       });
                     }}
                   />
-
                   <button
                     type="button"
                     onClick={() => setLecturaTeoriaOn((v) => !v)}
                     className={`mi-estudio__voz-btn ${lecturaTeoriaOn ? "is-on" : "is-off"}`}
-                    title={lecturaTeoriaOn ? "Desactivar lectura en voz" : "Leer teoría en voz alta"}
+                    title={
+                      lecturaTeoriaOn
+                        ? "Desactivar lectura en voz"
+                        : "Leer teoría en voz alta"
+                    }
                   >
-                    <i className={`fa-solid ${lecturaTeoriaOn ? "fa-volume-high" : "fa-volume-xmark"}`} />
+                    <i
+                      className={`fa-solid ${lecturaTeoriaOn ? "fa-volume-high" : "fa-volume-xmark"}`}
+                    />
                   </button>
                 </div>
-
+                {mostrarBotonBuscador && !mostrarBarraTeoria && (
+                  <button
+                    type="button"
+                    className="teoria-buscador-flotante"
+                    onClick={() => setMostrarBarraTeoria(true)}
+                    aria-label="Abrir buscador"
+                    title="Abrir buscador"
+                  >
+                    <i className="fa-solid fa-magnifying-glass" />
+                  </button>
+                )}
                 <div className="teoria-articulo-web">
                   {topicData?.theory?.map((seccion, idxSeccion) => (
                     seccion.titulo === "Ejercicios" ? null :
@@ -1872,11 +1726,9 @@ export default function MiEstudioPage() {
                             glosario={topicData?.glosario}
                           />
                         </h3>
-
                         <div className="teoria-puntos-lista animate-fade-in">
                           {seccion.puntos.map((punto, idxPunto) => {
                             const puntoId = `${idxSeccion}-${idxPunto}`;
-
                             return (
                               <div
                                 key={idxPunto}
@@ -1893,20 +1745,16 @@ export default function MiEstudioPage() {
                                       onClick={(e) => e.stopPropagation()}
                                       onChange={() => {
                                         if (textosCompletados.includes(puntoId)) return;
-
                                         setTextosSeleccionados((prev) => {
                                           const newSelection = prev.includes(puntoId)
                                             ? prev.filter((t) => t !== puntoId)
                                             : [...prev, puntoId];
-
                                           const idsTeoriaNormal = flatPuntos
                                             .filter((p) => p.seccionTitulo !== "Ejercicios")
                                             .map((p) => p.id);
-
                                           if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
                                             setMostrarCongratulations(true);
                                           }
-
                                           return newSelection;
                                         });
                                       }}
@@ -1928,11 +1776,23 @@ export default function MiEstudioPage() {
                                     <i className="fa-solid fa-gamepad"></i>
                                   </button>
                                 </div>
-
+                                {punto.imagen && (
+                                  <div className="teoria-punto__imagen-wrap">
+                                    <img
+                                      src={
+                                        /^(https?:)?\/\//i.test(punto.imagen)
+                                          ? punto.imagen
+                                          : `${import.meta.env.BASE_URL}${String(punto.imagen).replace(/^\/+/, "")}`
+                                      }
+                                      alt={punto.texto || "Imagen de la teoría"}
+                                      className="teoria-punto__imagen"
+                                      loading="lazy"
+                                    />
+                                  </div>
+                                )}
                                 {punto.explicacion && (
                                   <div className="teoria-explicacion-extra">
                                     <div className="teoria-explicacion-extra__fila">
-                                      <i className="fa-solid fa-lightbulb teoria-explicacion-icon" />
                                       <div className="teoria-explicacion-extra__texto">
                                         <GlossaryText text={punto.explicacion} glosario={topicData?.glosario} />
                                       </div>
@@ -1945,7 +1805,6 @@ export default function MiEstudioPage() {
                         </div>
                       </div>
                   ))}
-
                   <div className="teoria-acciones-final">
                     {examenPreguntas.length > 0 && (
                       <button
@@ -1963,7 +1822,6 @@ export default function MiEstudioPage() {
                       <i className="fa-solid fa-check-circle"></i> Completar Tema
                     </button>
                   </div>
-
                   <ExercisesSection
                     examenPreguntas={(topicData?.examen || []).filter((_, i) => puntosEstables[i]?.seccionTitulo === "Ejercicios")}
                     onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
@@ -1971,7 +1829,6 @@ export default function MiEstudioPage() {
                 </div>
               </div>
             )}
-
             {stage === "question" && modoExamenTema && (
               <div className="mi-estudio__question-stage">
                 <div className="mi-estudio__question-inner animate-fade-in">
@@ -1987,7 +1844,6 @@ export default function MiEstudioPage() {
                 </div>
               </div>
             )}
-
             {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__question-stage">
                 {countdown > 0 ? (
@@ -2017,19 +1873,16 @@ export default function MiEstudioPage() {
                 )}
               </div>
             )}
-
             {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__nav">
                 <button
                   onClick={retrocederCard}
                   disabled={isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0}
-                  className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"
-                    }`}
+                  className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"}`}
                   title="Anterior"
                 >
                   <i className="fas fa-caret-left" />
                 </button>
-
                 <div className="mi-estudio__nav-right">
                   {(() => {
                     const esUltimo = repasoQuizActivo
@@ -2039,9 +1892,7 @@ export default function MiEstudioPage() {
                         : isFlipQuiz
                           ? quizPos === quizBatch.length - 1
                           : cardIndex === flatPuntos.length - 1;
-
                     const bloqueado = !canAdvance;
-
                     return (
                       <>
                         <button
@@ -2062,7 +1913,6 @@ export default function MiEstudioPage() {
                             <i className="fas fa-caret-right" />
                           )}
                         </button>
-
                         {!canAdvance && !esUltimo && hintBloqueoVisible && (
                           <span className="aviso-bloqueo aviso-bloqueo--wrap">
                             ¡Supera la pregunta para avanzar!
@@ -2074,7 +1924,6 @@ export default function MiEstudioPage() {
                 </div>
               </div>
             )}
-
             {stage === "question" && !modoExamenTema && questionResult && (
               <div className="mi-estudio__explanation-wrap">
                 <ExplanationPanel
@@ -2091,7 +1940,6 @@ export default function MiEstudioPage() {
             )}
           </div>
         )}
-
         {topicData && stage === "theory" && examenPreguntas.length === 0 && (
           <section className="mi-estudio__suggestion">
             {enviandoSugerencia ? (
@@ -2112,7 +1960,6 @@ export default function MiEstudioPage() {
             )}
           </section>
         )}
-
         {stage === "finished" && (
           <div className="mi-estudio__finished">
             {confirmGuardarRepasoFinal ? (
@@ -2150,7 +1997,6 @@ export default function MiEstudioPage() {
           </div>
         )}
       </div>
-
       {topicData && (
         <SeenQuestionsModal
           open={seenQuestionsOpen}
@@ -2159,9 +2005,7 @@ export default function MiEstudioPage() {
           flatPuntos={flatPuntos}
         />
       )}
-
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
-
       {nombreCursoActivo && (
         <TopicsModal
           open={temasOpen}
@@ -2174,11 +2018,9 @@ export default function MiEstudioPage() {
           }}
         />
       )}
-
       <audio ref={vidaPerderRef} src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`} preload="auto" />
       <audio ref={ceroVidasRef} src={`${import.meta.env.BASE_URL}sonidos/cero-vidas.mp3`} preload="auto" />
       <audio ref={alertaNotificacionRef} src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`} preload="auto" />
-
       {alertaVidas === "tres" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
@@ -2188,7 +2030,6 @@ export default function MiEstudioPage() {
           </div>
         </div>
       )}
-
       {alertaVidas === "una" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
@@ -2198,7 +2039,6 @@ export default function MiEstudioPage() {
           </div>
         </div>
       )}
-
       {alertaVidas === "cero" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
@@ -2208,9 +2048,7 @@ export default function MiEstudioPage() {
           </div>
         </div>
       )}
-
       <CongratulationsAlert visible={mostrarCongratulations} onClose={() => setMostrarCongratulations(false)} />
-
       <ConfirmacionSalida
         mostrar={mostrarConfirmacionSalida}
         temaActual={topicData?.tema || "este tema"}

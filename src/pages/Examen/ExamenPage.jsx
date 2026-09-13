@@ -90,7 +90,9 @@ function formatearTiempo(segundos) {
     Math.floor((s % 3600) / 60)
   ).padStart(2, "0");
 
-  const ss = String(s % 60).padStart(2, "0");
+  const ss = String(
+    s % 60
+  ).padStart(2, "0");
 
   return `${h}:${m}:${ss}`;
 }
@@ -101,7 +103,6 @@ function SelectorCurso({
   onSeleccionar,
 }) {
   const [abierto, setAbierto] = useState(false);
-
   const [busqueda, setBusqueda] = useState("");
 
   const selectorRef = useRef(null);
@@ -317,9 +318,11 @@ export default function ExamenPage() {
     useState(null);
 
   /*
-   * Ahora el índice representa el CURSO actual,
-   * no una pregunta individual.
+   * ============================================================
+   * ÍNDICE DEL CURSO
+   * ============================================================
    */
+
   const [indiceCurso, setIndiceCurso] =
     useState(0);
 
@@ -332,10 +335,115 @@ export default function ExamenPage() {
   const [resultados, setResultados] =
     useState(null);
 
+  /*
+   * ============================================================
+   * HEADER / TOPBAR
+   * ============================================================
+   *
+   * topbarVisible controla si la barra superior está visible.
+   *
+   * topbarRef permite conocer la altura REAL del header.
+   * ============================================================
+   */
+
+  const [topbarVisible, setTopbarVisible] =
+    useState(true);
+
+  const topbarRef = useRef(null);
+
+  /*
+   * Ref de respuestas para evitar problemas con estados
+   * desactualizados al entregar automáticamente.
+   */
+
   const respuestasRef =
     useRef(respuestas);
 
   respuestasRef.current = respuestas;
+
+  /*
+   * ============================================================
+   * OCULTAR TOPBAR CON EL SCROLL
+   * ============================================================
+   *
+   * Funcionamiento:
+   *
+   * 1. Mientras el scroll no supere la altura del header,
+   *    el header permanece visible.
+   *
+   * 2. Cuando el usuario supera la altura del header y
+   *    continúa bajando, el header desaparece.
+   *
+   * 3. Cuando el usuario empieza a subir, vuelve a aparecer.
+   * ============================================================
+   */
+
+  useEffect(() => {
+    const topbar = topbarRef.current;
+
+    if (!topbar) return;
+
+    let ultimaPosicion = window.scrollY;
+
+    function manejarScroll() {
+      const posicionActual = window.scrollY;
+
+      const alturaHeader =
+        topbar.offsetHeight;
+
+      /*
+       * Si todavía estamos dentro de la altura
+       * del header, siempre permanece visible.
+       */
+
+      if (posicionActual <= alturaHeader) {
+        setTopbarVisible(true);
+
+        ultimaPosicion = posicionActual;
+
+        return;
+      }
+
+      /*
+       * El usuario está bajando.
+       */
+
+      if (posicionActual > ultimaPosicion) {
+        setTopbarVisible(false);
+      }
+
+      /*
+       * El usuario está subiendo.
+       */
+
+      else if (posicionActual < ultimaPosicion) {
+        setTopbarVisible(true);
+      }
+
+      ultimaPosicion = posicionActual;
+    }
+
+    window.addEventListener(
+      "scroll",
+      manejarScroll,
+      {
+        passive: true,
+      }
+    );
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        manejarScroll
+      );
+    };
+  }, []);
+
+  /*
+   * ============================================================
+   * FOOTER
+   * ============================================================
+   */
 
   useEffect(() => {
     setFooterHidden(true);
@@ -343,6 +451,12 @@ export default function ExamenPage() {
     return () =>
       setFooterHidden(false);
   }, [setFooterHidden]);
+
+  /*
+   * ============================================================
+   * INICIAR / RECUPERAR EXAMEN
+   * ============================================================
+   */
 
   useEffect(() => {
     let cancelado = false;
@@ -362,7 +476,9 @@ export default function ExamenPage() {
           guardado.respuestas || {}
         );
 
-        setHoraFin(guardado.horaFin);
+        setHoraFin(
+          guardado.horaFin
+        );
 
         setSegundosLeft(
           Math.max(
@@ -389,7 +505,9 @@ export default function ExamenPage() {
         Date.now() +
         DURACION_SEGUNDOS * 1000;
 
-      setPreguntas(nuevasPreguntas);
+      setPreguntas(
+        nuevasPreguntas
+      );
 
       setRespuestas({});
 
@@ -422,19 +540,27 @@ export default function ExamenPage() {
    * ============================================================
    * SCROLL ARRIBA AL CAMBIAR DE CURSO
    * ============================================================
-   *
-   * Cuando se navega a otro curso (Ant./Sig. o el selector),
-   * la vista debe empezar siempre desde la primera pregunta,
-   * no quedarse en el scroll que tenía el curso anterior.
-   * ============================================================
    */
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "auto",
     });
+
+    /*
+     * Al cambiar de curso, el header vuelve a aparecer.
+     */
+
+    setTopbarVisible(true);
   }, [indiceCurso]);
+
+  /*
+   * ============================================================
+   * CRONÓMETRO
+   * ============================================================
+   */
 
   useEffect(() => {
     if (
@@ -445,9 +571,11 @@ export default function ExamenPage() {
     }
 
     function tick() {
-      const restante = Math.round(
-        (horaFin - Date.now()) / 1000
-      );
+      const restante =
+        Math.round(
+          (horaFin - Date.now()) /
+            1000
+        );
 
       setSegundosLeft(restante);
 
@@ -468,6 +596,12 @@ export default function ExamenPage() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [etapa, horaFin]);
+
+  /*
+   * ============================================================
+   * ACTUALIZAR RESPUESTA
+   * ============================================================
+   */
 
   function actualizarRespuesta(
     preguntaId,
@@ -490,11 +624,18 @@ export default function ExamenPage() {
     });
   }
 
+  /*
+   * ============================================================
+   * ENTREGAR EXAMEN
+   * ============================================================
+   */
+
   function entregarExamen() {
-    const res = calcularResultados(
-      preguntas,
-      respuestasRef.current
-    );
+    const res =
+      calcularResultados(
+        preguntas,
+        respuestasRef.current
+      );
 
     setResultados(res);
 
@@ -505,9 +646,21 @@ export default function ExamenPage() {
     limpiarEstadoGuardado();
   }
 
+  /*
+   * ============================================================
+   * ABANDONAR EXAMEN
+   * ============================================================
+   */
+
   function abandonarExamen() {
     entregarExamen();
   }
+
+  /*
+   * ============================================================
+   * CARGANDO
+   * ============================================================
+   */
 
   if (etapa === "cargando") {
     return (
@@ -520,6 +673,12 @@ export default function ExamenPage() {
     );
   }
 
+  /*
+   * ============================================================
+   * RESULTADOS
+   * ============================================================
+   */
+
   if (etapa === "resultados") {
     return (
       <>
@@ -528,7 +687,9 @@ export default function ExamenPage() {
         <ResultadosExamenPage
           resultados={resultados}
           area={area}
-          nombreArea={AREAS_UNMSM[area]}
+          nombreArea={
+            AREAS_UNMSM[area]
+          }
           onSalir={() =>
             navigate("/")
           }
@@ -541,19 +702,15 @@ export default function ExamenPage() {
    * ============================================================
    * AGRUPACIÓN DE PREGUNTAS POR CURSO
    * ============================================================
-   *
-   * Se utiliza pregunta.curso como identificador estable.
-   *
-   * El orden se conserva según la primera aparición de cada
-   * curso dentro de preguntas.
-   * ============================================================
    */
+
   const cursos = [];
 
   const cursosMap = new Map();
 
   preguntas.forEach((pregunta) => {
-    const curso = pregunta.curso;
+    const curso =
+      pregunta.curso;
 
     if (!cursosMap.has(curso)) {
       const grupo = {
@@ -563,7 +720,10 @@ export default function ExamenPage() {
         preguntas: [],
       };
 
-      cursosMap.set(curso, grupo);
+      cursosMap.set(
+        curso,
+        grupo
+      );
 
       cursos.push(grupo);
     }
@@ -574,30 +734,34 @@ export default function ExamenPage() {
   });
 
   /*
-   * Protección por si el examen todavía no tiene preguntas.
+   * ============================================================
+   * CURSO ACTUAL
+   * ============================================================
    */
+
   const cursoActual =
-    cursos[indiceCurso] || null;
+    cursos[indiceCurso] ||
+    null;
 
   const preguntasDelCurso =
-    cursoActual?.preguntas || [];
+    cursoActual?.preguntas ||
+    [];
 
   /*
    * ============================================================
    * CONTADOR / PROGRESO
    * ============================================================
    */
+
   const totalRespondidas =
     Object.keys(respuestas).length;
 
   /*
    * ============================================================
    * ROTACIÓN DE LA AGUJA
-   *
-   * El examen dura 3 horas.
-   * La aguja da una vuelta cada 60 minutos.
    * ============================================================
    */
+
   const segundosTranscurridos =
     DURACION_SEGUNDOS -
     segundosLeft;
@@ -611,14 +775,8 @@ export default function ExamenPage() {
    * ============================================================
    * CONTEXTO DE TEXTOS RV
    * ============================================================
-   *
-   * Cada texto se identifica por su contenido/metadata.
-   *
-   * Esto permite que preguntas del mismo texto compartan
-   * un único bloque de contexto y que textos diferentes
-   * permanezcan separados.
-   * ============================================================
    */
+
   const gruposRV = [];
 
   const gruposRVMap = new Map();
@@ -637,16 +795,20 @@ export default function ExamenPage() {
 
       if (!tieneContenido) return;
 
-      const clave = JSON.stringify({
-        titulo:
-          textoRV.titulo || "",
-        texto:
-          textoRV.texto || "",
-        imagen:
-          textoRV.imagen || null,
-      });
+      const clave =
+        JSON.stringify({
+          titulo:
+            textoRV.titulo || "",
+          texto:
+            textoRV.texto || "",
+          imagen:
+            textoRV.imagen ||
+            null,
+        });
 
-      if (!gruposRVMap.has(clave)) {
+      if (
+        !gruposRVMap.has(clave)
+      ) {
         const grupo = {
           clave,
           textoRV,
@@ -663,13 +825,18 @@ export default function ExamenPage() {
 
       gruposRVMap
         .get(clave)
-        .preguntas.push(pregunta);
+        .preguntas.push(
+          pregunta
+        );
     }
   );
 
   /*
-   * Determina a qué texto RV pertenece una pregunta.
+   * ============================================================
+   * OBTENER CLAVE DEL TEXTO RV
+   * ============================================================
    */
+
   function obtenerClaveTextoRV(
     pregunta
   ) {
@@ -683,7 +850,9 @@ export default function ExamenPage() {
       textoRV.texto ||
       textoRV.imagen;
 
-    if (!tieneContenido) return null;
+    if (!tieneContenido) {
+      return null;
+    }
 
     return JSON.stringify({
       titulo:
@@ -691,20 +860,25 @@ export default function ExamenPage() {
       texto:
         textoRV.texto || "",
       imagen:
-        textoRV.imagen || null,
+        textoRV.imagen ||
+        null,
     });
   }
 
   /*
    * ============================================================
-   * RENDER DEL CONTEXTO RV
+   * RENDER DEL TEXTO RV
    * ============================================================
    */
-  function renderTextoRV(textoRV) {
+
+  function renderTextoRV(
+    textoRV
+  ) {
     if (!textoRV) return null;
 
     const imagen =
-      textoRV.imagen || null;
+      textoRV.imagen ||
+      null;
 
     const parrafos = (
       textoRV.texto || ""
@@ -718,13 +892,18 @@ export default function ExamenPage() {
     return (
       <div className="question-card__inner">
         {textoRV.titulo ? (
-          <h3>{textoRV.titulo}</h3>
+          <h3>
+            {textoRV.titulo}
+          </h3>
         ) : null}
 
         {textoRV.texto ? (
           <div className="examen-page__rv-texto-contenido">
             {parrafos.map(
-              (parrafo, index) => (
+              (
+                parrafo,
+                index
+              ) => (
                 <p key={index}>
                   {parrafo}
                 </p>
@@ -735,7 +914,9 @@ export default function ExamenPage() {
 
         {imagen ? (
           <img
-            src={`${import.meta.env.BASE_URL}${String(imagen).replace(
+            src={`${import.meta.env.BASE_URL}${String(
+              imagen
+            ).replace(
               /^\/+/,
               ""
             )}`}
@@ -751,12 +932,10 @@ export default function ExamenPage() {
 
   /*
    * ============================================================
-   * RENDER DE LAS PREGUNTAS DEL CURSO
-   *
-   * Las preguntas se muestran TODAS.
-   * La navegación ya no utiliza un índice de pregunta.
+   * RENDER DE UNA TARJETA DE PREGUNTA
    * ============================================================
    */
+
   function renderTarjetaPregunta(
     pregunta
   ) {
@@ -789,12 +968,21 @@ export default function ExamenPage() {
     );
   }
 
+  /*
+   * ============================================================
+   * RENDER DE TODAS LAS PREGUNTAS DEL CURSO
+   * ============================================================
+   */
+
   function renderPreguntasDelCurso() {
-    if (!preguntasDelCurso.length) {
+    if (
+      !preguntasDelCurso.length
+    ) {
       return (
         <p>
-          No se pudo armar el simulacro
-          (no hay preguntas disponibles
+          No se pudo armar el
+          simulacro (no hay
+          preguntas disponibles
           todavía para esta área).
         </p>
       );
@@ -803,18 +991,6 @@ export default function ExamenPage() {
     /*
      * ==========================================================
      * AGRUPAR EN BLOQUES CONSECUTIVOS
-     * ==========================================================
-     *
-     * Antes, el texto RV se insertaba dentro de la MISMA tarjeta
-     * que la primera pregunta del grupo, mientras que el resto
-     * de preguntas de ese mismo texto quedaban en tarjetas
-     * propias. Eso hacía que la primera pregunta se viera
-     * "pegada" al texto y las demás se vieran "separadas" del
-     * mismo texto, aunque todas pertenecen al mismo bloque.
-     *
-     * Ahora el texto se muestra en su PROPIA tarjeta, una sola
-     * vez por grupo, y todas sus preguntas (incluida la primera)
-     * quedan en tarjetas propias y separadas por igual.
      * ==========================================================
      */
 
@@ -843,10 +1019,15 @@ export default function ExamenPage() {
           }
 
           grupoActual = {
-            clave: claveTextoRV,
+            clave:
+              claveTextoRV,
+
             textoRV:
               pregunta.textoRV,
-            preguntas: [pregunta],
+
+            preguntas: [
+              pregunta,
+            ],
           };
 
           bloques.push(
@@ -861,7 +1042,9 @@ export default function ExamenPage() {
         bloques.push({
           clave: null,
           textoRV: null,
-          preguntas: [pregunta],
+          preguntas: [
+            pregunta,
+          ],
         });
       }
     );
@@ -881,7 +1064,9 @@ export default function ExamenPage() {
           >
             <div className="arcade-game-container question-card examen-page__card examen-page__rv-texto">
               <div className="examen-page__curso-tag">
-                {cursoActual.cursoNombre}
+                {
+                  cursoActual.cursoNombre
+                }
               </div>
 
               {renderTextoRV(
@@ -901,9 +1086,27 @@ export default function ExamenPage() {
     );
   }
 
+  /*
+   * ============================================================
+   * RENDER PRINCIPAL
+   * ============================================================
+   */
+
   return (
     <div className="examen-page">
-      <div className="examen-page__topbar">
+
+      {/* ======================================================
+          TOPBAR DEL EXAMEN
+          ====================================================== */}
+
+      <div
+        ref={topbarRef}
+        className={`examen-page__topbar ${
+          topbarVisible
+            ? "is-visible"
+            : "is-hidden"
+        }`}
+      >
         <span
           className={`examen-page__timer ${
             segundosLeft <= 300
@@ -917,6 +1120,7 @@ export default function ExamenPage() {
             aria-hidden="true"
           >
             {/* Esfera del reloj */}
+
             <circle
               className="examen-page__clock-face"
               cx="12"
@@ -925,6 +1129,7 @@ export default function ExamenPage() {
             />
 
             {/* Aguja */}
+
             <line
               className="examen-page__clock-minute"
               x1="12"
@@ -939,13 +1144,14 @@ export default function ExamenPage() {
             />
 
             {/* Centro de la aguja */}
+
             <circle
               className="examen-page__clock-center"
               cx="12"
               cy="12"
               r="1"
             />
-          </svg>{" "}
+          </svg>
 
           {formatearTiempo(
             segundosLeft
@@ -958,7 +1164,8 @@ export default function ExamenPage() {
             ? indiceCurso + 1
             : 0}{" "}
           / {cursos.length} ·{" "}
-          {totalRespondidas} respondidas
+          {totalRespondidas}{" "}
+          respondidas
         </span>
 
         <button
@@ -972,7 +1179,12 @@ export default function ExamenPage() {
         </button>
       </div>
 
+      {/* ======================================================
+          BODY
+          ====================================================== */}
+
       <div className="examen-page__body container">
+
         {cursoActual ? (
           <>
             <SelectorCurso
@@ -1004,14 +1216,21 @@ export default function ExamenPage() {
           </>
         ) : (
           <p>
-            No se pudo armar el simulacro
-            (no hay preguntas disponibles
+            No se pudo armar el
+            simulacro (no hay
+            preguntas disponibles
             todavía para esta área).
           </p>
         )}
 
+        {/* ====================================================
+            NAVEGACIÓN
+            ==================================================== */}
+
         <div className="examen-page__nav">
+
           <div className="examen-page__nav-preguntas">
+
             <button
               type="button"
               disabled={
@@ -1021,7 +1240,10 @@ export default function ExamenPage() {
               onClick={() =>
                 setIndiceCurso(
                   (i) =>
-                    Math.max(0, i - 1)
+                    Math.max(
+                      0,
+                      i - 1
+                    )
                 )
               }
               className="examen-page__nav-btn"
@@ -1051,6 +1273,7 @@ export default function ExamenPage() {
               Sig.
               <i className="fas fa-arrow-right" />
             </button>
+
           </div>
 
           <button
@@ -1062,12 +1285,19 @@ export default function ExamenPage() {
           >
             Entregar examen
           </button>
+
         </div>
       </div>
 
+      {/* ======================================================
+          MODAL
+          ====================================================== */}
+
       <AbandonarSimulacroModal
         abierto={modal !== null}
-        modo={modal || "abandonar"}
+        modo={
+          modal || "abandonar"
+        }
         onContinuar={() =>
           setModal(null)
         }
@@ -1077,6 +1307,7 @@ export default function ExamenPage() {
             : abandonarExamen
         }
       />
+
     </div>
   );
 }

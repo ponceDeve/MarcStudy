@@ -46,7 +46,7 @@ async function poolDelCurso(codigoCurso) {
   }
 
   // ==========================================================
-  // RVE NO USA LOS EXAMEN DE LOS TEMAS
+  // RVE NO USA LOS EXÁMENES DE LOS TEMAS
   // ==========================================================
 
   if (codigoCurso === "RVE") {
@@ -69,6 +69,7 @@ async function poolDelCurso(codigoCurso) {
   // ==========================================================
   // DE CADA TEMA:
   // SOLO SE TOMAN LAS ÚLTIMAS 20 PREGUNTAS
+  // Y SE ESCOGE 1 AL AZAR
   // ==========================================================
 
   temasJson.forEach((data) => {
@@ -80,14 +81,22 @@ async function poolDelCurso(codigoCurso) {
       (p) => p && p.tipo
     );
 
-    // SOLO LAS ÚLTIMAS 20 DE ESTE TEMA
     const ultimas20 = preguntasValidas.slice(-20);
 
-    preguntas.push(...ultimas20);
+    if (ultimas20.length === 0) {
+      return;
+    }
+
+    const ejercicio = shuffle(ultimas20)[0];
+
+    preguntas.push({
+      ...ejercicio,
+      tema: data.tema || "",
+    });
   });
 
   // ==========================================================
-  // MEZCLAR TODAS LAS PREGUNTAS DE LOS TEMAS
+  // MEZCLAR LAS PREGUNTAS DE LOS TEMAS
   // ==========================================================
 
   return {
@@ -104,7 +113,6 @@ let contadorId = 0;
 
 function nuevoId() {
   contadorId += 1;
-
   return `sim-${Date.now()}-${contadorId}`;
 }
 
@@ -121,6 +129,7 @@ function prepararPregunta(
     id: nuevoId(),
     curso,
     cursoNombre,
+    tema: preguntaOriginal.tema || "",
     tipo: preguntaOriginal.tipo,
     q: preguntaOriginal.q || "",
     explicacion: preguntaOriginal.explicacion || "",
@@ -132,6 +141,31 @@ function prepararPregunta(
 
   if (preguntaOriginal.textoRV) {
     base.textoRV = preguntaOriginal.textoRV;
+  }
+
+  if (preguntaOriginal.tituloRV) {
+    base.tituloRV = preguntaOriginal.tituloRV;
+  }
+
+  if (preguntaOriginal.imagenRV) {
+    base.imagenRV = preguntaOriginal.imagenRV;
+  }
+
+  if (preguntaOriginal.idTextoRV) {
+    base.idTextoRV = preguntaOriginal.idTextoRV;
+  }
+
+  if (preguntaOriginal.subtipoRV) {
+    base.subtipoRV = preguntaOriginal.subtipoRV;
+  }
+
+  if (preguntaOriginal.numeroTextoRV) {
+    base.numeroTextoRV = preguntaOriginal.numeroTextoRV;
+  }
+
+  if (preguntaOriginal.numeroPreguntaRV) {
+    base.numeroPreguntaRV =
+      preguntaOriginal.numeroPreguntaRV;
   }
 
   // ==========================================================
@@ -245,171 +279,175 @@ function prepararPregunta(
 // RVE utiliza textosRV.json.
 //
 // Se seleccionan:
+//
 // - 3 textos
 // - 10 preguntas totales
-// - distribución 3 + 3 + 4
+// - Texto 1 → 4 preguntas
+// - Texto 2 → 3 preguntas
+// - Texto 3 → 3 preguntas
+// - Texto 3 SIEMPRE es inglés
 //
 // ============================================================
 
-function prepararPreguntasRV(
-  curso,
-  cursoNombre,
-  cantidadPedida
-) {
-  if (cantidadPedida <= 0) {
-    return [];
-  }
+export function prepararPreguntasRV(bancoEntrada) {
+  const CANTIDAD_TEXTOS = 3;
+  const CANTIDAD_PREGUNTAS = [4, 3, 3];
 
-  const textos = Array.isArray(
-    textosRV?.textos
-  )
-    ? textosRV.textos
-    : [];
-
-  if (textos.length < 3) {
-    return [];
-  }
-
-  // ==========================================================
-  // FILTRAR TEXTOS VÁLIDOS
-  // ==========================================================
-
-  const textosDisponibles = shuffle(
-    textos.filter(
-      (texto) =>
-        texto &&
-        texto.id &&
-        Array.isArray(texto.preguntas) &&
-        texto.preguntas.length > 0
-    )
-  );
-
-  if (textosDisponibles.length < 3) {
-    return [];
-  }
-
-  // ==========================================================
-  // SOLO TEXTOS QUE PUEDAN APORTAR AL MENOS 3 PREGUNTAS
-  // ==========================================================
-
-  const candidatos =
-    textosDisponibles.filter(
-      (texto) =>
-        texto.preguntas.length >= 3
+  if (!bancoEntrada) {
+    console.error(
+      "No se recibió textosRV."
     );
 
-  if (candidatos.length < 3) {
     return [];
   }
 
-  // ==========================================================
-  // SEPARAR CANDIDATOS SEGÚN CUÁNTAS PREGUNTAS APORTAN
-  // ==========================================================
-  //
-  // La distribución final SIEMPRE necesita que, de los 3
-  // textos elegidos, al menos UNO tenga 4 preguntas
-  // (3 + 3 + 4 = 10). Antes se elegían 3 textos al azar sin
-  // garantizar esto, así que si los 3 elegidos tenían
-  // únicamente 3 preguntas cada uno, no calzaba ninguna
-  // distribución y el bloque de RV se descartaba por completo
-  // (bug intermitente: en ~25% de los simulacros no salían
-  // preguntas de razonamiento verbal).
-  //
-  // Ahora se garantiza explícitamente que uno de los 3 textos
-  // seleccionados tenga al menos 4 preguntas.
-  // ==========================================================
+  const banco = Array.isArray(bancoEntrada)
+    ? bancoEntrada
+    : Array.isArray(bancoEntrada.textos)
+      ? bancoEntrada.textos
+      : [];
 
-  const conCuatro = candidatos.filter(
-    (texto) => texto.preguntas.length >= 4
-  );
-
-  const conTres = candidatos.filter(
-    (texto) => texto.preguntas.length === 3
-  );
-
-  if (conCuatro.length < 1) {
-    return [];
-  }
-
-  const [textoDeCuatro, ...restoConCuatro] =
-    conCuatro;
-
-  const restantes = shuffle([
-    ...restoConCuatro,
-    ...conTres,
-  ]);
-
-  if (restantes.length < 2) {
-    return [];
-  }
-
-  const textosSeleccionados = shuffle([
-    textoDeCuatro,
-    ...restantes.slice(0, 2),
-  ]);
-
-  // ==========================================================
-  // POSIBLES DISTRIBUCIONES
-  // ==========================================================
-
-  const distribuciones = shuffle([
-    [3, 3, 4],
-    [3, 4, 3],
-    [4, 3, 3],
-  ]);
-
-  // ==========================================================
-  // BUSCAR UNA DISTRIBUCIÓN POSIBLE
-  // ==========================================================
-
-  const distribucionValida =
-    distribuciones.find(
-      (distribucion) =>
-        distribucion.every(
-          (cantidad, i) =>
-            textosSeleccionados[i]
-              .preguntas.length >= cantidad
-        )
+  if (banco.length === 0) {
+    console.error(
+      "El banco de textos RV está vacío."
     );
 
-  if (!distribucionValida) {
     return [];
   }
 
-  const preguntas = [];
+  const textosIngles = banco.filter(
+    (texto) =>
+      String(
+        texto?.subtipo || ""
+      )
+        .toLowerCase()
+        .trim() === "ingles"
+  );
 
-  // ==========================================================
-  // TOMAR LAS PREGUNTAS DE CADA TEXTO
-  // ==========================================================
+  const textosNoIngles = banco.filter(
+    (texto) =>
+      String(
+        texto?.subtipo || ""
+      )
+        .toLowerCase()
+        .trim() !== "ingles"
+  );
+
+  if (textosIngles.length === 0) {
+    console.error(
+      "No existen textos con subtipo 'ingles'."
+    );
+
+    return [];
+  }
+
+  const mezclar = (array) => {
+    const copia = [...array];
+
+    for (
+      let i = copia.length - 1;
+      i > 0;
+      i--
+    ) {
+      const j = Math.floor(
+        Math.random() * (i + 1)
+      );
+
+      [copia[i], copia[j]] = [
+        copia[j],
+        copia[i],
+      ];
+    }
+
+    return copia;
+  };
+
+  const candidatosNormales =
+    mezclar(textosNoIngles);
+
+  if (candidatosNormales.length < 2) {
+    console.error(
+      "Se necesitan al menos 2 textos que no sean de inglés."
+    );
+
+    return [];
+  }
+
+  const texto1 =
+    candidatosNormales[0];
+
+  const texto2 =
+    candidatosNormales[1];
+
+  const texto3 =
+    mezclar(textosIngles)[0];
+
+  const textosSeleccionados = [
+    {
+      texto: texto1,
+      cantidadPreguntas:
+        CANTIDAD_PREGUNTAS[0],
+    },
+
+    {
+      texto: texto2,
+      cantidadPreguntas:
+        CANTIDAD_PREGUNTAS[1],
+    },
+
+    {
+      texto: texto3,
+      cantidadPreguntas:
+        CANTIDAD_PREGUNTAS[2],
+    },
+  ];
+
+  const resultado = [];
 
   textosSeleccionados.forEach(
-    (texto, i) => {
-      const cantidad =
-        distribucionValida[i];
+    (
+      {
+        texto,
+        cantidadPreguntas,
+      },
+      indiceTexto
+    ) => {
+      if (!Array.isArray(texto.preguntas)) {
+        console.warn(
+          `El texto ${texto.id} no tiene preguntas válidas.`
+        );
 
-      const preguntasDelTexto =
-        shuffle(
-          texto.preguntas.filter(
-            (pregunta) =>
-              pregunta &&
-              pregunta.tipo
-          )
-        ).slice(0, cantidad);
+        return;
+      }
 
-      preguntasDelTexto.forEach(
-        (pregunta) => {
-          preguntas.push({
+      if (
+        texto.preguntas.length <
+        cantidadPreguntas
+      ) {
+        console.warn(
+          `El texto ${texto.id} tiene solo ${texto.preguntas.length} preguntas. ` +
+            `Se necesitan ${cantidadPreguntas}.`
+        );
+      }
+
+      const preguntasDisponibles =
+        mezclar(texto.preguntas);
+
+      const preguntasSeleccionadas =
+        preguntasDisponibles.slice(
+          0,
+          cantidadPreguntas
+        );
+
+      preguntasSeleccionadas.forEach(
+        (
+          pregunta,
+          indicePregunta
+        ) => {
+          resultado.push({
             ...pregunta,
 
             textoRV: {
-              id: texto.id,
-
-              tipo:
-                texto.tipo || "",
-
-              subtipo:
-                texto.subtipo || "",
-
               titulo:
                 texto.titulo || "",
 
@@ -417,32 +455,75 @@ function prepararPreguntasRV(
                 texto.texto || "",
 
               imagen:
-                texto.imagen === undefined
-                  ? null
-                  : texto.imagen,
+                texto.imagen ?? null,
             },
+
+            idTextoRV:
+              texto.id,
+
+            subtipoRV:
+              texto.subtipo,
+
+            numeroTextoRV:
+              indiceTexto + 1,
+
+            numeroPreguntaRV:
+              indicePregunta + 1,
           });
         }
       );
     }
   );
 
-  // ==========================================================
-  // VERIFICAR QUE SEAN EXACTAMENTE 10
-  // ==========================================================
-
-  if (preguntas.length !== 10) {
-    return [];
+  if (resultado.length !== 10) {
+    console.warn(
+      `RV generó ${resultado.length} preguntas en lugar de 10.`
+    );
   }
 
-  return preguntas.map(
-    (pregunta) =>
-      prepararPregunta(
-        pregunta,
-        curso,
-        cursoNombre
+  const textosFinales = [];
+
+  resultado.forEach((pregunta) => {
+    if (
+      !textosFinales.includes(
+        pregunta.idTextoRV
       )
-  );
+    ) {
+      textosFinales.push(
+        pregunta.idTextoRV
+      );
+    }
+  });
+
+  if (
+    textosFinales.length !==
+    CANTIDAD_TEXTOS
+  ) {
+    console.warn(
+      `RV generó ${textosFinales.length} textos en lugar de ${CANTIDAD_TEXTOS}.`
+    );
+  }
+
+  const tercerTexto =
+    resultado.find(
+      (pregunta) =>
+        pregunta.numeroTextoRV === 3
+    );
+
+  if (
+    !tercerTexto ||
+    String(
+      tercerTexto.subtipoRV || ""
+    )
+      .toLowerCase()
+      .trim() !== "ingles"
+  ) {
+    console.error(
+      "ERROR: el tercer texto de RV no es inglés."
+    );
+  }
+
+  return resultado;
 }
 
 // ============================================================
@@ -456,12 +537,9 @@ export async function armarSimulacro(area) {
   const codigos = Object.keys(
     distribucion
   ).filter(
-    (c) => distribucion[c] > 0
+    (c) =>
+      distribucion[c] > 0
   );
-
-  // ==========================================================
-  // CARGAR LOS POOLS DE TODOS LOS CURSOS
-  // ==========================================================
 
   const pools = await Promise.all(
     codigos.map((codigo) =>
@@ -471,66 +549,65 @@ export async function armarSimulacro(area) {
 
   const preguntas = [];
 
-  // ==========================================================
-  // SELECCIONAR PREGUNTAS
-  // ==========================================================
+  codigos.forEach(
+    (codigo, i) => {
+      const cantidadPedida =
+        distribucion[codigo];
 
-  codigos.forEach((codigo, i) => {
-    const cantidadPedida =
-      distribucion[codigo];
+      const {
+        nombre,
+        preguntas: pool,
+      } = pools[i];
 
-    const {
-      nombre,
-      preguntas: pool,
-    } = pools[i];
+      // ======================================================
+      // RVE
+      // ======================================================
 
-    // ========================================================
-    // RVE
-    // ========================================================
+      if (codigo === "RVE") {
+        const preguntasRV =
+          prepararPreguntasRV(
+            textosRV
+          );
 
-    if (codigo === "RVE") {
-      const preguntasRV =
-        prepararPreguntasRV(
-          codigo,
-          nombre,
-          cantidadPedida
+        const preguntasRVPreparadas =
+          preguntasRV.map(
+            (pregunta) =>
+              prepararPregunta(
+                pregunta,
+                codigo,
+                nombre
+              )
+          );
+
+        preguntas.push(
+          ...preguntasRVPreparadas
         );
 
-      preguntas.push(
-        ...preguntasRV
+        return;
+      }
+
+      // ======================================================
+      // CURSOS NORMALES
+      // ======================================================
+
+      const elegidas = shuffle(
+        pool
+      ).slice(
+        0,
+        cantidadPedida
       );
 
-      return;
+      elegidas.forEach((p) => {
+        preguntas.push(
+          prepararPregunta(
+            p,
+            codigo,
+            nombre
+          )
+        );
+      });
     }
-
-    // ========================================================
-    // CURSOS NORMALES
-    // ========================================================
-    //
-    // IMPORTANTE:
-    //
-    // pool ya contiene únicamente:
-    // las últimas 20 preguntas de CADA tema.
-    //
-    // Aquí recién se selecciona la cantidad
-    // que necesita el simulacro.
-    //
-    // ========================================================
-
-    const elegidas = shuffle(
-      pool
-    ).slice(0, cantidadPedida);
-
-    elegidas.forEach((p) => {
-      preguntas.push(
-        prepararPregunta(
-          p,
-          codigo,
-          nombre
-        )
-      );
-    });
-  });
+  );
 
   return preguntas;
 }
@@ -543,10 +620,6 @@ export function calificarPregunta(
   pregunta,
   respuesta
 ) {
-  // ==========================================================
-  // VERDADERO / FALSO
-  // ==========================================================
-
   if (
     pregunta.tipo ===
     "verdadero_falso"
@@ -569,7 +642,8 @@ export function calificarPregunta(
     const todasCorrectas =
       pregunta.proposiciones.every(
         (prop, i) =>
-          marcas[i] === prop.correct
+          marcas[i] ===
+          prop.correct
       );
 
     return todasCorrectas
@@ -577,20 +651,12 @@ export function calificarPregunta(
       : "incorrecta";
   }
 
-  // ==========================================================
-  // SIN RESPUESTA
-  // ==========================================================
-
   if (
     respuesta === null ||
     respuesta === undefined
   ) {
     return "blanco";
   }
-
-  // ==========================================================
-  // PREGUNTA NORMAL
-  // ==========================================================
 
   return respuesta ===
     pregunta.correctoIdx
@@ -605,11 +671,15 @@ export function calificarPregunta(
 export function puntosDeEstado(
   estado
 ) {
-  if (estado === "correcta") {
+  if (
+    estado === "correcta"
+  ) {
     return PUNTOS_CORRECTA;
   }
 
-  if (estado === "incorrecta") {
+  if (
+    estado === "incorrecta"
+  ) {
     return PUNTOS_INCORRECTA;
   }
 
@@ -626,12 +696,8 @@ export function calcularResultados(
 ) {
   let puntajeTotal = 0;
 
-  // ==========================================================
-  // DETALLE DE CADA PREGUNTA
-  // ==========================================================
-
-  const detalle = preguntas.map(
-    (p) => {
+  const detalle =
+    preguntas.map((p) => {
       const respuestaUsuario =
         respuestas[p.id] ?? null;
 
@@ -652,16 +718,13 @@ export function calcularResultados(
         pregunta: p,
         estado,
         puntos,
-        respuesta: respuestaUsuario,
+        respuesta:
+          respuestaUsuario,
       };
-    }
-  );
+    });
 
-  // ==========================================================
-  // AGRUPAR POR CURSO
-  // ==========================================================
-
-  const porCurso = new Map();
+  const porCurso =
+    new Map();
 
   detalle.forEach((item) => {
     const key =
@@ -670,11 +733,9 @@ export function calcularResultados(
     if (!porCurso.has(key)) {
       porCurso.set(key, {
         curso: key,
-
         nombre:
           item.pregunta
             .cursoNombre,
-
         items: [],
       });
     }
@@ -684,13 +745,8 @@ export function calcularResultados(
       .items.push(item);
   });
 
-  // ==========================================================
-  // RESULTADO FINAL
-  // ==========================================================
-
   return {
     puntajeTotal,
-
     detalle,
 
     grupos:
