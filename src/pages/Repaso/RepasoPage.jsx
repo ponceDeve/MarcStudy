@@ -1,8 +1,11 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 import AppHeader from "../../components/AppHeader";
 import SearchModal from "../../components/SearchModal";
+
 import coursesSemanas from "../../data/coursesSemanas.json";
+
 import {
   leerLog,
   marcarRepasoHecho,
@@ -73,23 +76,95 @@ function labelCursoTemario(curso) {
 
 export default function RepasoPage() {
   const navigate = useNavigate();
+
   const [tab, setTab] = useState("hoy");
   const [searchOpen, setSearchOpen] = useState(false);
   const [log, setLog] = useState(() => leerLog());
+
   const [deleteState, setDeleteState] = useState({
     isOpen: false,
     id: null,
     phase: 1
   });
 
-  function irAMiEstudio(nombre) {
-    navigate(`/?q=${encodeURIComponent(nombre)}`);
-  }
+  const [cursoTemario, setCursoTemario] = useState("");
+  const [categoriaTemario, setCategoriaTemario] = useState("");
+
+  const [selectorAbierto, setSelectorAbierto] = useState(false);
+  const [semanaSelectorAbierto, setSemanaSelectorAbierto] =
+    useState(false);
+
+  const [semanaTemario, setSemanaTemario] = useState(1);
+
+  const [enYoutube, setEnYoutube] = useState({});
+
+  const selectRef = useRef(null);
+  const semanaRef = useRef(null);
 
   const { repasosHoy, proximos } = useMemo(
     () => clasificarRepasos(log),
     [log]
   );
+
+  const porFecha = useMemo(() => {
+    const map = {};
+
+    proximos.forEach((item) => {
+      if (!map[item.fecha]) {
+        map[item.fecha] = [];
+      }
+
+      map[item.fecha].push(item);
+    });
+
+    return map;
+  }, [proximos]);
+
+  const cursosDeCategoria = useMemo(() => {
+    if (!categoriaTemario) return [];
+
+    const categoria = CATEGORIAS_TEMARIO.find(
+      (cat) => cat.id === categoriaTemario
+    );
+
+    return categoria ? categoria.cursos : [];
+  }, [categoriaTemario]);
+
+  const temasSemana = useMemo(() => {
+    if (!cursoTemario) return [];
+
+    return (
+      coursesSemanas[cursoTemario]?.[`semana_${semanaTemario}`] || []
+    );
+  }, [cursoTemario, semanaTemario]);
+
+  useEffect(() => {
+    function manejarClickFuera(e) {
+      if (
+        selectRef.current &&
+        !selectRef.current.contains(e.target)
+      ) {
+        setSelectorAbierto(false);
+      }
+
+      if (
+        semanaRef.current &&
+        !semanaRef.current.contains(e.target)
+      ) {
+        setSemanaSelectorAbierto(false);
+      }
+    }
+
+    document.addEventListener("mousedown", manejarClickFuera);
+
+    return () => {
+      document.removeEventListener("mousedown", manejarClickFuera);
+    };
+  }, []);
+
+  function irAMiEstudio(nombre) {
+    navigate(`/?q=${encodeURIComponent(nombre)}`);
+  }
 
   function marcar(id, intervaloIdx, repasosDoneActual) {
     const repasosDone = Array.isArray(repasosDoneActual)
@@ -119,6 +194,7 @@ export default function RepasoPage() {
       });
     } else {
       setLog(eliminarRepaso(deleteState.id));
+
       setDeleteState({
         isOpen: false,
         id: null,
@@ -135,98 +211,46 @@ export default function RepasoPage() {
     });
   }
 
-  const porFecha = useMemo(() => {
-    const map = {};
-
-    proximos.forEach((item) => {
-      if (!map[item.fecha]) {
-        map[item.fecha] = [];
-      }
-
-      map[item.fecha].push(item);
-    });
-
-    return map;
-  }, [proximos]);
-
-  const [cursoTemario, setCursoTemario] = useState("");
-  const [categoriaTemario, setCategoriaTemario] = useState("");
-  const [selectorAbierto, setSelectorAbierto] = useState(false);
-  const [semanaSelectorAbierto, setSemanaSelectorAbierto] = useState(false);
-  const [semanaTemario, setSemanaTemario] = useState(1);
-  const [enYoutube, setEnYoutube] = useState({});
-
-  const selectRef = useRef(null);
-  const semanaRef = useRef(null);
-
-  const cursosDeCategoria = useMemo(() => {
-    if (!categoriaTemario) return [];
-
-    const categoria = CATEGORIAS_TEMARIO.find(
-      (cat) => cat.id === categoriaTemario
-    );
-
-    return categoria ? categoria.cursos : [];
-  }, [categoriaTemario]);
-
-  useEffect(() => {
-    function manejarClickFuera(e) {
-      if (
-        selectRef.current &&
-        !selectRef.current.contains(e.target)
-      ) {
-        setSelectorAbierto(false);
-      }
-
-      if (
-        semanaRef.current &&
-        !semanaRef.current.contains(e.target)
-      ) {
-        setSemanaSelectorAbierto(false);
-      }
-    }
-
-    document.addEventListener("mousedown", manejarClickFuera);
-
-    return () => {
-      document.removeEventListener("mousedown", manejarClickFuera);
-    };
-  }, []);
+  /* ============================================================
+     SELECTOR DE CURSO
+     ============================================================ */
 
   function elegirCategoria(catId) {
-    if (catId !== categoriaTemario) {
-      setCursoTemario("");
-      setSemanaTemario(1);
-      setCategoriaTemario(catId);
-      setSelectorAbierto(true);
-      setSemanaSelectorAbierto(false);
-      return;
-    }
+    setCategoriaTemario(catId);
+    setCursoTemario("");
+    setSemanaTemario(1);
 
-    setSelectorAbierto((prev) => !prev);
+    // IMPORTANTE:
+    // permanece abierto mostrando los cursos
+    setSelectorAbierto(true);
+
     setSemanaSelectorAbierto(false);
   }
 
   function elegirCurso(nombre) {
     setCursoTemario(nombre);
     setSemanaTemario(1);
+
+    // Al elegir un curso sí se cierra
     setSelectorAbierto(false);
+  }
+
+  function volverCategorias() {
+    setCategoriaTemario("");
+    setCursoTemario("");
+    setSemanaTemario(1);
+
+    // IMPORTANTE:
+    // vuelve a las categorías sin cerrar el selector
+    setSelectorAbierto(true);
+
+    setSemanaSelectorAbierto(false);
   }
 
   function elegirSemana(semana) {
     setSemanaTemario(semana);
     setSemanaSelectorAbierto(false);
   }
-
-  const temasSemana = useMemo(() => {
-    if (!cursoTemario) return [];
-
-    return (
-      coursesSemanas[cursoTemario]?.[
-      `semana_${semanaTemario}`
-      ] || []
-    );
-  }, [cursoTemario, semanaTemario]);
 
   function claveTema(curso, semana, tema) {
     return `${curso}|${semana}|${tema}`;
@@ -245,7 +269,9 @@ export default function RepasoPage() {
     const query = `${curso} ${tema} preuniversitario`;
 
     window.open(
-      `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`,
+      `https://www.youtube.com/results?search_query=${encodeURIComponent(
+        query
+      )}`,
       "_blank"
     );
 
@@ -256,7 +282,13 @@ export default function RepasoPage() {
   }
 
   function abrirTemaEnChatGPT(curso, tema) {
-    const mensaje = `Hola chamo, dime todo sobre el curso ${curso} del tema ${tema}, explicado a nivel preuniversitario.`;
+    const mensaje = `Hola chamo, dime todo sobre el curso ${curso} del tema ${tema}, explicado a nivel preuniversitario. Mándamelo en varios mensajes cortos usando este formato: un título con el nombre del punto, y debajo 3 a 5 líneas que empiecen con "→" resumiendo la idea en frases cortas, sin párrafos largos. Un solo punto por mensaje. Ejemplo de formato:
+Método científico
+→ conjunto de procedimientos
+→ permite estudiar fenómenos
+→ de manera ordenada, objetiva y verificable
+→ obtiene conocimientos basados en evidencias
+Al final de cada mensaje pregúntame si quiero continuar, no me mandes todo junto.`;
 
     window.open(
       `https://chatgpt.com/?q=${encodeURIComponent(mensaje)}`,
@@ -276,18 +308,24 @@ export default function RepasoPage() {
 
   return (
     <main className="container__repaso">
-      <div className="repaso container">
+      <div className="repaso">
+
         <AppHeader
           section="repaso"
           onAbrirBuscador={() => setSearchOpen(true)}
         />
 
+        {/* ======================================================
+            TABS
+            ====================================================== */}
+
         <div className="repaso__tabs">
           {TABS.map((t) => (
             <button
               key={t.id}
-              className={`repaso__tab ${tab === t.id ? "repaso__tab--active" : ""
-                }`}
+              className={`repaso__tab ${
+                tab === t.id ? "repaso__tab--active" : ""
+              }`}
               onClick={() => setTab(t.id)}
             >
               {t.label}
@@ -295,111 +333,131 @@ export default function RepasoPage() {
           ))}
         </div>
 
+        {/* ======================================================
+            HOY
+            ====================================================== */}
+
         {tab === "hoy" && (
           <section className="repaso__section">
             <div className="repaso__list">
-              {repasosHoy.map(({ entrada, intervaloIdx, vencido }) => {
-                const lc = intervaloClasses(intervaloIdx);
-                const numRepaso = intervaloIdx + 1;
 
-                return (
-                  <div
-                    key={entrada.id}
-                    className={`repaso__item ${lc.box}`}
-                  >
-                    <div className="repaso__item-body">
-                      <div className="repaso__item-tags">
-                        <span className={`repaso__badge ${lc.badge}`}>
-                          Repaso {numRepaso}
-                        </span>
+              {repasosHoy.map(
+                ({ entrada, intervaloIdx, vencido }) => {
+                  const lc = intervaloClasses(intervaloIdx);
+                  const numRepaso = intervaloIdx + 1;
 
-                        {entrada.day && (
-                          <span className="repaso__item-day">
-                            {entrada.day}
+                  return (
+                    <div
+                      key={entrada.id}
+                      className={`repaso__item ${lc.box}`}
+                    >
+                      <div className="repaso__item-body">
+
+                        <div className="repaso__item-tags">
+                          <span
+                            className={`repaso__badge ${lc.badge}`}
+                          >
+                            Repaso {numRepaso}
                           </span>
+
+                          {entrada.day && (
+                            <span className="repaso__item-day">
+                              {entrada.day}
+                            </span>
+                          )}
+
+                          {vencido && (
+                            <span className="repaso__item-overdue">
+                              Vencido
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="repaso__item-subject">
+                          {entrada.subject}
+                        </h3>
+
+                        {entrada.tema && (
+                          <p className="repaso__item-tema">
+                            Tema: {entrada.tema}
+                          </p>
                         )}
 
-                        {vencido && (
-                          <span className="repaso__item-overdue">
-                            Vencido
-                          </span>
-                        )}
-                      </div>
-
-                      <h3 className="repaso__item-subject">
-                        {entrada.subject}
-                      </h3>
-
-                      {entrada.tema && (
-                        <p className="repaso__item-tema">
-                          Tema: {entrada.tema}
+                        <p className="repaso__item-meta">
+                          Repaso {numRepaso} de{" "}
+                          {REPASO_INTERVALOS.length}
+                          {" · "}
+                          Intervalo{" "}
+                          {REPASO_INTERVALOS[intervaloIdx]} día
+                          {REPASO_INTERVALOS[intervaloIdx] > 1
+                            ? "s"
+                            : ""}
                         </p>
-                      )}
 
-                      <p className="repaso__item-meta">
-                        Repaso {numRepaso} de {REPASO_INTERVALOS.length}
-                        {" · "}Intervalo{" "}
-                        {REPASO_INTERVALOS[intervaloIdx]} día
-                        {REPASO_INTERVALOS[intervaloIdx] > 1 ? "s" : ""}
-                      </p>
+                        <button
+                          onClick={() =>
+                            irAMiEstudio(
+                              entrada.tema || entrada.subject
+                            )
+                          }
+                          className="repaso__item-link"
+                        >
+                          <i className="bi bi-book" />
+                          Repasar
+                        </button>
+
+                      </div>
 
                       <button
                         onClick={() =>
-                          irAMiEstudio(
-                            entrada.tema || entrada.subject
+                          marcar(
+                            entrada.id,
+                            intervaloIdx,
+                            entrada.repasosDone
                           )
                         }
-                        className="repaso__item-link"
+                        className="repaso__check"
+                        aria-label="Marcar repaso como realizado"
+                        title="Marcar repaso como realizado"
                       >
-                        <i className="bi bi-book" />
-                        Repasar
+                        <svg
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          fill="none"
+                          strokeWidth="2.5"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m4.5 12.75 6 6 9-13.5"
+                          />
+                        </svg>
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          iniciarBorrado(entrada.id)
+                        }
+                        className="repaso__trash"
+                        aria-label="Eliminar repaso"
+                        title="Eliminar repaso"
+                      >
+                        <i className="fa-solid fa-trash" />
                       </button>
                     </div>
+                  );
+                }
+              )}
 
-                    <button
-                      onClick={() =>
-                        marcar(
-                          entrada.id,
-                          intervaloIdx,
-                          entrada.repasosDone
-                        )
-                      }
-                      className="repaso__check"
-                      aria-label="Marcar repaso como realizado"
-                      title="Marcar repaso como realizado"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        fill="none"
-                        strokeWidth="2.5"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="m4.5 12.75 6 6 9-13.5"
-                        />
-                      </svg>
-                    </button>
-
-                    <button
-                      onClick={() => iniciarBorrado(entrada.id)}
-                      className="repaso__trash"
-                      aria-label="Eliminar repaso"
-                      title="Eliminar repaso"
-                    >
-                      <i className="fa-solid fa-trash" />
-                    </button>
-                  </div>
-                );
-              })}
             </div>
 
             {repasosHoy.length === 0 && (
               <div className="repaso__empty">
-                <div className="repaso__empty-emoji">🎉</div>
+                <div className="repaso__empty-emoji">
+                  🎉
+                </div>
 
                 <p className="repaso__empty-title">
                   No tienes repasos pendientes hoy
@@ -413,11 +471,18 @@ export default function RepasoPage() {
           </section>
         )}
 
+        {/* ======================================================
+            PRÓXIMOS
+            ====================================================== */}
+
         {tab === "proximos" && (
           <section className="repaso__section">
+
             {proximos.length === 0 ? (
               <div className="repaso__empty">
-                <div className="repaso__empty-emoji">🎉</div>
+                <div className="repaso__empty-emoji">
+                  🎉
+                </div>
 
                 <p className="repaso__empty-title">
                   No tienes repasos pendientes hoy
@@ -429,19 +494,24 @@ export default function RepasoPage() {
               </div>
             ) : (
               <div className="repaso__proximos-list">
+
                 {Object.keys(porFecha)
                   .sort()
                   .map((fecha) => {
                     const grupo = porFecha[fecha];
                     const diff = diffDias(fecha);
+
                     const etiqueta =
-                      diff === 1 ? "Mañana" : `En ${diff} días`;
+                      diff === 1
+                        ? "Mañana"
+                        : `En ${diff} días`;
 
                     return (
                       <div
                         key={fecha}
                         className="repaso__proximos-group"
                       >
+
                         <div className="repaso__proximos-group-header">
                           <span className="repaso__proximos-fecha">
                             {formatearFecha(fecha)}
@@ -452,16 +522,20 @@ export default function RepasoPage() {
                           </span>
                         </div>
 
-                        <div>
-                          {grupo.map(({ entrada, intervaloIdx }) => (
+                        {grupo.map(
+                          ({ entrada, intervaloIdx }) => (
                             <div
                               key={entrada.id}
                               className="repaso__proximos-row"
                             >
                               <div className="repaso__proximos-row-content">
+
                                 <span
-                                  className={`repaso__dot ${intervaloClasses(intervaloIdx).badge
-                                    }`}
+                                  className={`repaso__dot ${
+                                    intervaloClasses(
+                                      intervaloIdx
+                                    ).badge
+                                  }`}
                                 />
 
                                 <span className="repaso__proximos-subject">
@@ -469,10 +543,12 @@ export default function RepasoPage() {
 
                                   {entrada.tema && (
                                     <span className="repaso__proximos-tema">
-                                      {" "}— {entrada.tema}
+                                      {" "}
+                                      — {entrada.tema}
                                     </span>
                                   )}
                                 </span>
+
                               </div>
 
                               <button
@@ -486,92 +562,152 @@ export default function RepasoPage() {
                                 <i className="fa-solid fa-trash" />
                               </button>
                             </div>
-                          ))}
-                        </div>
+                          )
+                        )}
+
                       </div>
                     );
                   })}
+
               </div>
             )}
+
           </section>
         )}
 
+        {/* ======================================================
+            TEMARIO
+            ====================================================== */}
+
         {tab === "temario" && (
           <section className="repaso__section">
+
             <div className="repaso__temario-toolbar">
-              <div className="repaso__categoria-tabs">
-                {CATEGORIAS_TEMARIO.map((cat) => (
-                  <div
-                    key={cat.id}
-                    className="repaso__categoria-wrapper"
-                    ref={
-                      categoriaTemario === cat.id
-                        ? selectRef
-                        : null
-                    }
-                  >
-                    <button
-                      type="button"
-                      className={`repaso__categoria-tab ${categoriaTemario === cat.id
-                          ? "repaso__categoria-tab--active"
-                          : ""
-                        }`}
-                      onClick={() => elegirCategoria(cat.id)}
-                    >
-                      <span>
-                        {categoriaTemario === cat.id && cursoTemario
-                          ? labelCursoTemario(cursoTemario)
-                          : cat.label}
-                      </span>
 
-                      <i className="fa-solid fa-chevron-down" />
-                    </button>
+              {/* ==================================================
+                  SELECTOR DE CURSO
+                  ================================================== */}
 
-                    {categoriaTemario === cat.id &&
-                      selectorAbierto && (
-                        <div className="repaso__select">
-                          <div className="repaso__select-menu">
-                            {cursosDeCategoria.map((curso) => (
-                              <button
-                                key={curso}
-                                type="button"
-                                className={`repaso__select-option ${cursoTemario === curso
-                                    ? "repaso__select-option--active"
-                                    : ""
-                                  }`}
-                                onClick={() => elegirCurso(curso)}
-                              >
-                                {labelCursoTemario(curso)}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
+              <div
+                className="repaso__categoria-wrapper"
+                ref={selectRef}
+              >
+
+                <button
+                  type="button"
+                  className={`repaso__categoria-tab ${
+                    selectorAbierto
+                      ? "repaso__categoria-tab--active"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    setSelectorAbierto((prev) => !prev);
+                    setSemanaSelectorAbierto(false);
+                  }}
+                >
+                  {cursoTemario
+                    ? labelCursoTemario(cursoTemario)
+                    : categoriaTemario
+                      ? CATEGORIAS_TEMARIO.find(
+                          (cat) =>
+                            cat.id === categoriaTemario
+                        )?.label
+                      : "Curso"}
+
+                  <i className="fa-solid fa-chevron-down" />
+                </button>
+
+                {selectorAbierto && (
+                  <div className="repaso__select">
+                    <div className="repaso__select-menu">
+
+                      {/* =========================================
+                          NIVEL 1: CATEGORÍAS
+                          ========================================= */}
+
+                      {!categoriaTemario ? (
+                        CATEGORIAS_TEMARIO.map((cat) => (
+                          <button
+                            key={cat.id}
+                            type="button"
+                            className="repaso__select-option"
+                            onClick={() =>
+                              elegirCategoria(cat.id)
+                            }
+                          >
+                            {cat.label}
+                          </button>
+                        ))
+                      ) : (
+                        <>
+                          {/* =====================================
+                              VOLVER A CATEGORÍAS
+                              ===================================== */}
+
+                          <button
+                            type="button"
+                            className="repaso__select-back"
+                            onClick={volverCategorias}
+                          >
+                            <i className="fa-solid fa-arrow-left" />
+                            Categorías
+                          </button>
+
+                          {/* =====================================
+                              NIVEL 2: CURSOS
+                              ===================================== */}
+
+                          {cursosDeCategoria.map((curso) => (
+                            <button
+                              key={curso}
+                              type="button"
+                              className={`repaso__select-option ${
+                                cursoTemario === curso
+                                  ? "repaso__select-option--active"
+                                  : ""
+                              }`}
+                              onClick={() =>
+                                elegirCurso(curso)
+                              }
+                            >
+                              {labelCursoTemario(curso)}
+                            </button>
+                          ))}
+                        </>
                       )}
+
+                    </div>
                   </div>
-                ))}
+                )}
+
               </div>
+
+              {/* ==================================================
+                  SELECTOR DE SEMANA
+                  ================================================== */}
 
               {cursoTemario && (
                 <div
                   className="repaso__categoria-wrapper"
                   ref={semanaRef}
                 >
+
                   <button
                     type="button"
-                    className={`repaso__categoria-tab ${semanaSelectorAbierto
+                    className={`repaso__categoria-tab ${
+                      semanaSelectorAbierto
                         ? "repaso__categoria-tab--active"
                         : ""
-                      }`}
+                    }`}
                     onClick={() => {
                       setSemanaSelectorAbierto(
                         (prev) => !prev
                       );
+
                       setSelectorAbierto(false);
                     }}
                   >
-                    <span>
-                      Semana {semanaTemario}
-                    </span>
+                    Semana {semanaTemario}
 
                     <i className="fa-solid fa-chevron-down" />
                   </button>
@@ -579,14 +715,16 @@ export default function RepasoPage() {
                   {semanaSelectorAbierto && (
                     <div className="repaso__select">
                       <div className="repaso__select-menu">
+
                         {SEMANAS_TEMARIO.map((semana) => (
                           <button
                             key={semana}
                             type="button"
-                            className={`repaso__select-option ${semanaTemario === semana
+                            className={`repaso__select-option ${
+                              semanaTemario === semana
                                 ? "repaso__select-option--active"
                                 : ""
-                              }`}
+                            }`}
                             onClick={() =>
                               elegirSemana(semana)
                             }
@@ -594,16 +732,26 @@ export default function RepasoPage() {
                             Semana {semana}
                           </button>
                         ))}
+
                       </div>
                     </div>
                   )}
+
                 </div>
               )}
+
             </div>
+
+            {/* ====================================================
+                SIN CURSO
+                ==================================================== */}
 
             {!cursoTemario && (
               <div className="repaso__empty">
-                <div className="repaso__empty-emoji">📚</div>
+
+                <div className="repaso__empty-emoji">
+                  📚
+                </div>
 
                 <p className="repaso__empty-title">
                   Elige un curso
@@ -612,11 +760,17 @@ export default function RepasoPage() {
                 <p className="repaso__empty-sub">
                   Selecciona un curso para ver sus temas
                 </p>
+
               </div>
             )}
 
+            {/* ====================================================
+                TEMAS
+                ==================================================== */}
+
             {cursoTemario && (
               <div className="repaso__temario-list">
+
                 {temasSemana.map((tema) => {
                   const programado = temaEstaProgramado(
                     cursoTemario,
@@ -626,25 +780,23 @@ export default function RepasoPage() {
 
                   const abierto = Boolean(
                     enYoutube[
-                    claveTema(
-                      cursoTemario,
-                      semanaTemario,
-                      tema
-                    )
+                      claveTema(
+                        cursoTemario,
+                        semanaTemario,
+                        tema
+                      )
                     ]
                   );
 
                   return (
                     <div
                       key={tema}
-                      className={`repaso__temario-item ${programado
+                      className={`repaso__temario-item ${
+                        programado
                           ? "repaso__temario-item--done"
                           : ""
-                        }`}
+                      }`}
                     >
-                      <span className="repaso__temario-item-check">
-                        {programado ? "✓" : ""}
-                      </span>
 
                       <span className="repaso__temario-item-nombre">
                         {tema}
@@ -652,6 +804,7 @@ export default function RepasoPage() {
 
                       {!programado && (
                         <div className="repaso__temario-actions">
+
                           {abierto ? (
                             <button
                               type="button"
@@ -692,8 +845,10 @@ export default function RepasoPage() {
                           >
                             🤖 ChatGPT
                           </button>
+
                         </div>
                       )}
+
                     </div>
                   );
                 })}
@@ -703,10 +858,16 @@ export default function RepasoPage() {
                     No se encontró ningún tema.
                   </p>
                 )}
+
               </div>
             )}
+
           </section>
         )}
+
+        {/* ======================================================
+            SEARCH
+            ====================================================== */}
 
         <SearchModal
           open={searchOpen}
@@ -722,9 +883,15 @@ export default function RepasoPage() {
           }}
         />
 
+        {/* ======================================================
+            MODAL ELIMINAR
+            ====================================================== */}
+
         {deleteState.isOpen && (
           <div className="delete-modal-overlay">
+
             <div className="delete-modal-content">
+
               <div className="delete-modal-icon">
                 <i className="fa-solid fa-triangle-exclamation" />
               </div>
@@ -740,17 +907,20 @@ export default function RepasoPage() {
               </p>
 
               <div
-                className={`delete-modal-buttons ${deleteState.phase === 1
+                className={`delete-modal-buttons ${
+                  deleteState.phase === 1
                     ? "delete-modal-buttons--reverse"
                     : ""
-                  }`}
+                }`}
               >
+
                 <button
                   onClick={confirmarBorrado}
-                  className={`btn-confirm ${deleteState.phase === 1
+                  className={`btn-confirm ${
+                    deleteState.phase === 1
                       ? "btn-confirm--phase1"
                       : "btn-confirm--phase2"
-                    }`}
+                  }`}
                 >
                   {deleteState.phase === 1
                     ? "Aceptar"
@@ -763,10 +933,14 @@ export default function RepasoPage() {
                 >
                   Cancelar
                 </button>
+
               </div>
+
             </div>
+
           </div>
         )}
+
       </div>
     </main>
   );

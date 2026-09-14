@@ -806,6 +806,28 @@ export default function HorarioPage() {
 
       <main className="horario__main">
         <section className="horario__timer-section">
+          {/* HUD DE DÍAS: ahora está encima del cronómetro */}
+          <div className="horario__day-tabs">
+            <div className="horario__day-row">
+              {DIAS_SEMANA.map((dia) => (
+                <button
+                  key={dia}
+                  onClick={() => {
+                    setSelectedDay(dia);
+                    setActiveCourseIdx(null);
+                  }}
+                  className={`horario__day-btn ${
+                    selectedDay === dia
+                      ? "is-active"
+                      : ""
+                  }`}
+                >
+                  {DIA_LABELS[dia]}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="horario__timer-card">
             {retornoTema && (
               <button
@@ -901,27 +923,6 @@ export default function HorarioPage() {
         </section>
 
         <section className="horario__side-section">
-          <div className="horario__day-tabs">
-            <div className="horario__day-row">
-              {DIAS_SEMANA.map((dia) => (
-                <button
-                  key={dia}
-                  onClick={() => {
-                    setSelectedDay(dia);
-                    setActiveCourseIdx(null);
-                  }}
-                  className={`horario__day-btn ${
-                    selectedDay === dia
-                      ? "is-active"
-                      : ""
-                  }`}
-                >
-                  {DIA_LABELS[dia]}
-                </button>
-              ))}
-            </div>
-          </div>
-
           <div className="horario__courses-card">
             <div className="horario__courses-header">
               <div className="horario__courses-header-left">
