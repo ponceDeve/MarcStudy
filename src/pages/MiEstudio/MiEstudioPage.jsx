@@ -29,11 +29,11 @@ import ExercisesSection from "./ExercisesSection";
 import ConfirmacionSalida from "../../components/ConfirmacionSalida";
 import CongratulationsAlert from "../../components/CongratulationsAlert";
 import {
-  leerPomodoroCompartido,
   guardarRetorno,
   limpiarPomodoroCompartido,
   leerYLimpiarRetorno
 } from "../../lib/pomodoroShared";
+import { usePomodoro } from "../../context/PomodoroContext";
 import { shuffle } from "../../lib/shuffle";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
 import "katex/dist/katex.min.css";
@@ -322,31 +322,25 @@ export default function MiEstudioPage() {
   const [esModoAdicionales, setEsModoAdicionales] = useState(false);
   const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] = useState(false);
   const [pomodoroAlarmaLabel, setPomodoroAlarmaLabel] = useState("");
-  const pomodoroAlertadoRef = useRef(null);
+  const pomodoroEstuvoCorriendoRef = useRef(false);
   const [enviandoSugerencia, setEnviandoSugerencia] = useState(false);
   const [sugerenciaMsg, setSugerenciaMsg] = useState(null);
   const [sugerenciaMsgSaliendo, setSugerenciaMsgSaliendo] = useState(false);
   const sugerenciaTimers = useRef([]);
 
+  const pomodoro = usePomodoro();
+
   useEffect(() => {
-    const UMBRAL_AVISO_VENCIDO_MS = 2 * 60 * 1000;
-    const intervalo = setInterval(() => {
-      const estado = leerPomodoroCompartido();
-      if (!estado || !estado.running) return;
-      const msDesdeQueTermino = Date.now() - estado.endTimestamp;
-      if (msDesdeQueTermino < 0) return;
-      if (msDesdeQueTermino > UMBRAL_AVISO_VENCIDO_MS) {
-        limpiarPomodoroCompartido();
-        return;
-      }
-      if (pomodoroAlertadoRef.current !== estado.endTimestamp) {
-        pomodoroAlertadoRef.current = estado.endTimestamp;
-        setPomodoroAlarmaLabel(estado.label || "");
-        setPomodoroAlarmaAbierta(true);
-      }
-    }, 1000);
-    return () => clearInterval(intervalo);
-  }, []);
+    if (pomodoro.isRunning) {
+      pomodoroEstuvoCorriendoRef.current = true;
+      return;
+    }
+    if (pomodoroEstuvoCorriendoRef.current && pomodoro.secondsLeft === 0) {
+      setPomodoroAlarmaLabel(pomodoro.label || "");
+      setPomodoroAlarmaAbierta(true);
+    }
+    pomodoroEstuvoCorriendoRef.current = false;
+  }, [pomodoro.isRunning, pomodoro.secondsLeft, pomodoro.label]);
 
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);

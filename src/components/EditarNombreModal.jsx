@@ -49,11 +49,13 @@ export default function EditarNombreModal({
           onClick={() => inputFotoRef.current?.click()}
           title="Cambiar foto"
         >
-          {foto ? (
-            <img src={foto} alt="Tu foto" className="editar-nombre-foto__img" />
-          ) : (
-            <i className="fa-solid fa-user" />
-          )}
+          <span className="editar-nombre-foto__mask">
+            {foto ? (
+              <img src={foto} alt="Tu foto" className="editar-nombre-foto__img" />
+            ) : (
+              <i className="fa-solid fa-user" />
+            )}
+          </span>
           <span className="editar-nombre-foto__lapiz">
             <i className="fa-solid fa-plus" />
           </span>

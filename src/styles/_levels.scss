@@ -33,18 +33,16 @@
   pointer-events:none;
   transition:opacity .25s linear,visibility 0s linear .25s;
 }
-
-.levels-modal__title{
-  font-family:var(--font-display);
-  font-size:clamp(26px,3.6vw,34px);
-  font-weight:800;
-  color:var(--ink);
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  text-align:center;
-  margin:0;
+.levels-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 3.6vw, 34px);
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: center;
+  margin: 0;
 }
-
 .levels-modal__title--live{
   position:sticky;
   top:0;
@@ -194,7 +192,7 @@
   font-family:var(--font-body);
   font-weight:700;
   font-size:13px;
-  padding:0;
+  padding: var(--space-1);
   border:none;
   border-radius:var(--radius-md);
   cursor:url("/cursor_pointer.webp"), pointer !important;

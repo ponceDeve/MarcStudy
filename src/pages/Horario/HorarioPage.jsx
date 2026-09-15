@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { usePomodoro } from "../../context/PomodoroContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import manifest from "../../data/manifest.json";
+import coursesSemanas from "../../data/coursesSemanas.json";
 import { normalizarTexto } from "../../lib/buscador";
 import {
   leerHorario,
@@ -11,19 +12,17 @@ import {
   DIAS_SEMANA,
   DIA_LABELS,
 } from "../../lib/scheduleStorage";
-
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
-
 import { leerProgresoHorario } from "../../lib/horarioProgress";
-
 import {
   limpiarPomodoroCompartido,
   leerPomodoroCompartido,
-  leerYLimpiarRetorno,
   leerRetorno,
   guardarRetorno,
+  guardarTemaCurso,
+  leerTemaCurso,
+  limpiarTemaCurso,
 } from "../../lib/pomodoroShared";
-
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
@@ -73,7 +72,9 @@ export default function HorarioPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const [horario, setHorario] = useState(() => leerHorario() || {});
+  const [horario, setHorario] = useState(
+    () => leerHorario() || {},
+  );
 
   const [selectedDay, setSelectedDay] = useState(() => {
     const dias = [
@@ -89,73 +90,119 @@ export default function HorarioPage() {
     return dias[new Date().getDay()];
   });
 
-  const [activeCourseIdx, setActiveCourseIdx] = useState(null);
+  const [activeCourseIdx, setActiveCourseIdx] =
+    useState(null);
 
   const [progress, setProgress] = useLocalStorage(
     "horario_task_progress_v1",
     {},
   );
 
-  const [temaDesdeLink, setTemaDesdeLink] = useState(null);
+  const [temaDesdeLink, setTemaDesdeLink] =
+    useState(null);
 
-  const [retornoTema, setRetornoTema] = useState(() => leerRetorno());
+  const [retornoTema, setRetornoTema] = useState(
+    () => leerRetorno(),
+  );
 
-  const [pendingCourseComplete, setPendingCourseComplete] = useState(null);
+  const [pendingCourseComplete, setPendingCourseComplete] =
+    useState(null);
 
-  const [temaModalOpen, setTemaModalOpen] = useState(false);
+  const [temaModalOpen, setTemaModalOpen] =
+    useState(false);
 
-  const [courseCompleteOpen, setCourseCompleteOpen] = useState(false);
+  const [courseCompleteOpen, setCourseCompleteOpen] =
+    useState(false);
 
-  const [manualBreak, setManualBreak] = useState(null);
+  const [manualBreak, setManualBreak] =
+    useState(null);
 
-  // Descanso sin tiempo por defecto
-  const [breakDuration, setBreakDuration] = useState("");
+  const [breakDuration, setBreakDuration] =
+    useState("");
 
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchOpen, setSearchOpen] =
+    useState(false);
 
-  const [setupOpen, setSetupOpen] = useState(false);
+  const [setupOpen, setSetupOpen] =
+    useState(false);
 
-  const [cursoRapidoDia, setCursoRapidoDia] = useState(null);
+  const [cursoRapidoDia, setCursoRapidoDia] =
+    useState(null);
 
-  const [cursoRapidoNombre, setCursoRapidoNombre] = useState("");
+  const [cursoRapidoNombre, setCursoRapidoNombre] =
+    useState("");
 
-  const [temaRapidoElegido, setTemaRapidoElegido] = useState(null);
+  const [temaRapidoElegido, setTemaRapidoElegido] =
+    useState(null);
 
-  const [cursoPickerOpen, setCursoPickerOpen] = useState(false);
+  const [cursoPickerOpen, setCursoPickerOpen] =
+    useState(false);
 
-  const [eligiendoTemaIdx, setEligiendoTemaIdx] = useState(null);
+  const [eligiendoTemaIdx, setEligiendoTemaIdx] =
+    useState(null);
 
-  const [temaSeleccionadoTmp, setTemaSeleccionadoTmp] = useState(null);
+  const [temaSeleccionadoTmp, setTemaSeleccionadoTmp] =
+    useState(null);
 
-  const [temaElegidoParaCurso, setTemaElegidoParaCurso] = useState(null);
+  const [origenTemaSelector, setOrigenTemaSelector] =
+    useState("codigo");
+
+  const [semanaTemaSelector, setSemanaTemaSelector] =
+    useState(1);
+
+  const [semanaPagina, setSemanaPagina] =
+    useState(0);
+
+  const [temaElegidoParaCurso, setTemaElegidoParaCurso] =
+    useState(null);
 
   const [isLocked, setIsLocked] = useLocalStorage(
     "horario_rest_locked",
     false,
   );
 
-  const [lockConfirmOpen, setLockConfirmOpen] = useState(false);
+  const [lockConfirmOpen, setLockConfirmOpen] =
+    useState(false);
 
-  const [cursoRapidoPreparado, setCursoRapidoPreparado] = useState(null);
+  const [cursoRapidoPreparado, setCursoRapidoPreparado] =
+    useState(null);
 
-  const [alarmActive, setAlarmActive] = useState(false);
+  const [alarmActive, setAlarmActive] =
+    useState(false);
 
   const alarmRef = useRef(null);
+
+  const [origenTemaRapido, setOrigenTemaRapido] =
+    useState(null);
+
+  const [semanaTemaRapido, setSemanaTemaRapido] =
+    useState(1);
+
+  const [semanaPaginaRapido, setSemanaPaginaRapido] =
+    useState(0);
 
   const courses = horario[selectedDay] || [];
 
   const activeCourse =
-    activeCourseIdx !== null ? courses[activeCourseIdx] : null;
+    activeCourseIdx !== null
+      ? courses[activeCourseIdx]
+      : null;
 
   const activeTasks = useMemo(
-    () => (activeCourse ? buildCourseTasks(activeCourse) : []),
+    () =>
+      activeCourse
+        ? buildCourseTasks(activeCourse)
+        : [],
     [activeCourse],
   );
 
-  const mostrarGate = !hayHorarioConfigurado() && !setupOpen;
+  const mostrarGate =
+    !hayHorarioConfigurado() && !setupOpen;
 
   useEffect(() => {
-    document.body.style.overflow = mostrarGate ? "hidden" : "";
+    document.body.style.overflow = mostrarGate
+      ? "hidden"
+      : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -165,14 +212,20 @@ export default function HorarioPage() {
   function volverAlTema() {
     if (!retornoTema) return;
 
-    navigate(`/?q=${encodeURIComponent(retornoTema)}`);
+    navigate(
+      `/?q=${encodeURIComponent(retornoTema)}`,
+    );
   }
 
   function getTaskIndex(day, subject) {
     return progress[progressKey(day, subject)] || 0;
   }
 
-  function getDonePomodoros(day, subject, pomodoros) {
+  function getDonePomodoros(
+    day,
+    subject,
+    pomodoros,
+  ) {
     const tasks = buildCourseTasks({ pomodoros });
     const idx = getTaskIndex(day, subject);
 
@@ -212,7 +265,9 @@ export default function HorarioPage() {
           Math.max(
             0,
             Math.round(
-              ((totalSeconds - secondsLeft) / totalSeconds) * 100,
+              ((totalSeconds - secondsLeft) /
+                totalSeconds) *
+                100,
             ),
           ),
         )
@@ -226,9 +281,7 @@ export default function HorarioPage() {
         audio.pause();
         audio.currentTime = 0;
         audio.muted = true;
-      } catch {
-        // Ignorar errores de audio.
-      }
+      } catch {}
     });
 
     setAlarmActive(false);
@@ -310,32 +363,9 @@ export default function HorarioPage() {
     }
 
     if (temaElegidoParaCurso) {
-      navigate(
-        `/?q=${encodeURIComponent(
-          temaElegidoParaCurso,
-        )}`,
-      );
-
+      const tema = temaElegidoParaCurso;
       setTemaElegidoParaCurso(null);
-      return;
-    }
-
-    if (temaDesdeLink) {
-      navigate(
-        `/?q=${encodeURIComponent(
-          temaDesdeLink.tema,
-        )}`,
-      );
-
-      return;
-    }
-
-    const retorno = leerYLimpiarRetorno();
-
-    if (retorno && isCourseTask) {
-      navigate(
-        `/?q=${encodeURIComponent(retorno)}`,
-      );
+      navigate(`/?q=${encodeURIComponent(tema)}`);
     }
   }
 
@@ -427,14 +457,6 @@ export default function HorarioPage() {
 
     if (isLocked) {
       setIsLocked(false);
-
-      if (retornoTema) {
-        navigate(
-          `/?q=${encodeURIComponent(
-            retornoTema,
-          )}`,
-        );
-      }
     }
 
     if (!subject) {
@@ -445,6 +467,8 @@ export default function HorarioPage() {
     setProgress(leerProgresoHorario());
 
     if (completado) {
+      limpiarTemaCurso(day, subject);
+
       setPendingCourseComplete({
         subject,
         day,
@@ -452,7 +476,6 @@ export default function HorarioPage() {
 
       setCourseCompleteOpen(true);
       setActiveCourseIdx(null);
-
       return;
     }
 
@@ -472,13 +495,17 @@ export default function HorarioPage() {
   useEffect(() => {
     pomodoro.registrarOnComplete(handleTaskComplete);
 
-    return () =>
-      pomodoro.registrarOnComplete(null);
+    return () => {
+      if (pomodoro.cancelarOnComplete) {
+        pomodoro.cancelarOnComplete();
+      } else {
+        pomodoro.registrarOnComplete(null);
+      }
+    };
   });
 
   function abrirCurso(idx) {
     const course = courses[idx];
-
     const tasks = buildCourseTasks(course);
 
     const taskIdx = getTaskIndex(
@@ -487,7 +514,6 @@ export default function HorarioPage() {
     );
 
     setManualBreak(null);
-
     setActiveCourseIdx(idx);
 
     const yaEstaCorriendo =
@@ -515,6 +541,16 @@ export default function HorarioPage() {
 
     if (yaEstaCorriendo) {
       abrirCurso(idx);
+      return;
+    }
+
+    const temaGuardado = leerTemaCurso(selectedDay, course.subject);
+
+    if (temaGuardado) {
+      guardarRetorno(temaGuardado);
+      setRetornoTema(temaGuardado);
+      setTemaElegidoParaCurso(temaGuardado);
+      abrirCurso(idx);
     } else {
       pedirTemaYAbrirCurso(idx);
     }
@@ -523,6 +559,9 @@ export default function HorarioPage() {
   function pedirTemaYAbrirCurso(idx) {
     setEligiendoTemaIdx(idx);
     setTemaSeleccionadoTmp(null);
+    setOrigenTemaSelector("codigo");
+    setSemanaTemaSelector(1);
+    setSemanaPagina(0);
   }
 
   function marcarTemaTmp(tema) {
@@ -530,22 +569,22 @@ export default function HorarioPage() {
   }
 
   function aceptarTemaDeCurso() {
-    if (!temaSeleccionadoTmp) return;
+    if (!temaSeleccionadoTmp) {
+      return;
+    }
 
     const idx = eligiendoTemaIdx;
+    const tema = temaSeleccionadoTmp;
+    const course = courses[idx];
 
-    leerYLimpiarRetorno();
-
-    setRetornoTema(null);
-
+    guardarRetorno(tema);
+    setRetornoTema(tema);
+    if (course) {
+      guardarTemaCurso(selectedDay, course.subject, tema);
+    }
     setEligiendoTemaIdx(null);
-
-    setTemaElegidoParaCurso(
-      temaSeleccionadoTmp,
-    );
-
+    setTemaElegidoParaCurso(tema);
     setTemaSeleccionadoTmp(null);
-
     abrirCurso(idx);
   }
 
@@ -557,11 +596,8 @@ export default function HorarioPage() {
 
   function iniciarDescansoManual(minutos) {
     apagarAlarma();
-
     setActiveCourseIdx(null);
-
     setManualBreak(minutos);
-
     resetConSync(minutos);
   }
 
@@ -589,20 +625,21 @@ export default function HorarioPage() {
     nombreCurso,
   ) {
     setCursoPickerOpen(false);
-
     setCursoRapidoDia(dia);
-
     setCursoRapidoNombre(nombreCurso);
-
     setTemaRapidoElegido(null);
+    setOrigenTemaRapido(null);
+    setSemanaTemaRapido(1);
+    setSemanaPaginaRapido(0);
   }
 
   function cancelarCursoRapido() {
     setCursoRapidoDia(null);
-
     setCursoRapidoNombre("");
-
     setTemaRapidoElegido(null);
+    setOrigenTemaRapido(null);
+    setSemanaTemaRapido(1);
+    setSemanaPaginaRapido(0);
   }
 
   function confirmarCursoRapido() {
@@ -615,21 +652,22 @@ export default function HorarioPage() {
     }
 
     apagarAlarma();
-
     setActiveCourseIdx(null);
-
     setManualBreak(null);
 
     setCursoRapidoPreparado(
       cursoRapidoNombre,
     );
 
+    guardarRetorno(temaRapidoElegido);
+    setRetornoTema(temaRapidoElegido);
+    guardarTemaCurso(cursoRapidoDia, cursoRapidoNombre, temaRapidoElegido);
+
     setTemaElegidoParaCurso(
       temaRapidoElegido,
     );
 
     resetConSync(POMODORO_MIN);
-
     cancelarCursoRapido();
   }
 
@@ -680,7 +718,6 @@ export default function HorarioPage() {
 
   function terminarSetup(nuevoHorario) {
     guardarHorario(nuevoHorario);
-
     setHorario(nuevoHorario);
 
     const configurados = DIAS_SEMANA.filter(
@@ -694,7 +731,6 @@ export default function HorarioPage() {
     );
 
     setActiveCourseIdx(null);
-
     setSetupOpen(false);
   }
 
@@ -726,7 +762,6 @@ export default function HorarioPage() {
 
       if (idx !== -1) {
         setSelectedDay(dia);
-
         setActiveCourseIdx(idx);
 
         if (cursoParam) {
@@ -745,8 +780,7 @@ export default function HorarioPage() {
           isRunning &&
           normalizarTexto(
             pomodoro.subject || "",
-          ) ===
-            normalizarTexto(cursoObjetivo);
+          ) === normalizarTexto(cursoObjetivo);
 
         if (!mismoCursoCorriendo) {
           const tasks = buildCourseTasks(
@@ -806,7 +840,6 @@ export default function HorarioPage() {
 
       <main className="horario__main">
         <section className="horario__timer-section">
-          {/* HUD DE DÍAS: ahora está encima del cronómetro */}
           <div className="horario__day-tabs">
             <div className="horario__day-row">
               {DIAS_SEMANA.map((dia) => (
@@ -831,6 +864,7 @@ export default function HorarioPage() {
           <div className="horario__timer-card">
             {retornoTema && (
               <button
+                type="button"
                 onClick={volverAlTema}
                 className="horario__btn-volver-tema"
               >
@@ -847,7 +881,7 @@ export default function HorarioPage() {
                     ?.type === "rest"
                     ? "Descanso"
                     : activeTasks[activeTaskIdx]
-                          ?.detail ||
+                        ?.detail ||
                       "Completado"}
                 </p>
               )}
@@ -913,6 +947,7 @@ export default function HorarioPage() {
                       currentTaskDuration,
                     )
                   }
+                  disabled={!isRunning}
                   className="horario__btn-reset"
                 >
                   <i className="fas fa-rotate-left" />
@@ -959,8 +994,7 @@ export default function HorarioPage() {
                     done >= c.pomodoros;
 
                   const pct = Math.round(
-                    (done / c.pomodoros) *
-                      100,
+                    (done / c.pomodoros) * 100,
                   );
 
                   const statusText =
@@ -1165,29 +1199,24 @@ export default function HorarioPage() {
                         className="horario__task-row"
                       >
                         <div
-                          className={`horario__rest-dot ${
+                          className={`horario__rest-dot horario__tomato-circle ${
                             isPast
                               ? "is-past"
-                              : ""
+                              : "is-locked"
                           }`}
                         >
-                          <svg
-                            className="horario__tomato-svg"
-                            viewBox="0 0 24 24"
+                          <i
+                            className="fa-solid fa-apple-whole horario__tomato-icon"
                             aria-hidden="true"
-                          >
-                            <path
-                              d="M12 3c.9 0 1.5.9 1.5.9s.6-.9 1.6-.9c-.1 1.1-.9 1.7-1.5 1.9 3.7.4 6.6 3.3 6.6 8.3 0 4.9-3.7 7.8-8.2 7.8s-8.2-2.9-8.2-7.8c0-5 2.9-7.9 6.6-8.3-.6-.2-1.4-.8-1.5-1.9 1 0 1.6.9 1.6.9S11.1 3 12 3z"
-                              fill="currentColor"
-                            />
-                          </svg>
+                          />
 
                           <i
                             className={`fa-solid ${
                               isPast
                                 ? "fa-check"
                                 : "fa-lock"
-                            } horario__tomato-icon`}
+                            } horario__tomato-lock`}
+                            aria-hidden="true"
                           />
                         </div>
 
@@ -1256,16 +1285,6 @@ export default function HorarioPage() {
           setLockConfirmOpen(false)
         }
       >
-        <button
-          onClick={() =>
-            setLockConfirmOpen(false)
-          }
-          className="modal-close-x"
-          aria-label="Cerrar"
-        >
-          <i className="fas fa-times" />
-        </button>
-
         <div className="tema-selector">
           <h3 className="tema-selector__titulo">
             Aviso de Descanso
@@ -1323,14 +1342,6 @@ export default function HorarioPage() {
         onClose={cerrarCourseComplete}
         wide
       >
-        <button
-          onClick={cerrarCourseComplete}
-          className="modal-close-x"
-          aria-label="Cerrar"
-        >
-          <i className="fas fa-times" />
-        </button>
-
         <div className="horario__complete-modal">
           <div className="horario__complete-emoji">
             🎉
@@ -1392,14 +1403,6 @@ export default function HorarioPage() {
         open={eligiendoTemaIdx !== null}
         onClose={omitirTemaDeCurso}
       >
-        <button
-          onClick={omitirTemaDeCurso}
-          className="modal-close-x"
-          aria-label="Cerrar"
-        >
-          <i className="fas fa-times" />
-        </button>
-
         <div className="tema-selector">
           <h3 className="tema-selector__titulo">
             {eligiendoTemaIdx !== null
@@ -1412,19 +1415,135 @@ export default function HorarioPage() {
             Elige el tema que vas a estudiar:
           </p>
 
+          <div className="tema-selector__origen-tabs">
+            <button
+              type="button"
+              onClick={() => {
+                setOrigenTemaSelector("codigo");
+                setTemaSeleccionadoTmp(null);
+              }}
+              className={`tema-selector__origen-tab ${
+                origenTemaSelector === "codigo"
+                  ? "is-active"
+                  : ""
+              }`}
+            >
+              Temas del curso
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setOrigenTemaSelector("repaso");
+                setTemaSeleccionadoTmp(null);
+              }}
+              className={`tema-selector__origen-tab ${
+                origenTemaSelector === "repaso"
+                  ? "is-active"
+                  : ""
+              }`}
+            >
+              Temario
+            </button>
+          </div>
+
+          {origenTemaSelector === "repaso" && (
+            <div className="tema-selector__semana-tabs">
+              <button
+                type="button"
+                className="tema-selector__semana-arrow"
+                onClick={() => {
+                  setSemanaPagina(
+                    (prev) =>
+                      (prev - 1 + 2) % 2,
+                  );
+                  setTemaSeleccionadoTmp(null);
+                }}
+                aria-label="Semanas anteriores"
+              >
+                ‹
+              </button>
+
+              {[0, 1, 2, 3].map(
+                (offset) => {
+                  const semana =
+                    semanaPagina * 4 +
+                    offset +
+                    1;
+
+                  return (
+                    <button
+                      key={semana}
+                      type="button"
+                      onClick={() => {
+                        setSemanaTemaSelector(
+                          semana,
+                        );
+                        setTemaSeleccionadoTmp(
+                          null,
+                        );
+                      }}
+                      className={`tema-selector__semana-tab ${
+                        semanaTemaSelector ===
+                        semana
+                          ? "is-active"
+                          : ""
+                      }`}
+                    >
+                      S{semana}
+                    </button>
+                  );
+                },
+              )}
+
+              <button
+                type="button"
+                className="tema-selector__semana-arrow"
+                onClick={() => {
+                  setSemanaPagina(
+                    (prev) =>
+                      (prev + 1) % 2,
+                  );
+                  setTemaSeleccionadoTmp(null);
+                }}
+                aria-label="Siguientes semanas"
+              >
+                ›
+              </button>
+            </div>
+          )}
+
           <div className="tema-selector__lista">
             {(
-              manifest.cursos.find(
-                (c) =>
-                  normalizarTexto(c.nombre) ===
-                  normalizarTexto(
-                    eligiendoTemaIdx !== null
-                      ? courses[
-                          eligiendoTemaIdx
-                        ]?.subject
-                      : "",
-                  ),
-              )?.temas || []
+              origenTemaSelector === "codigo"
+                ? manifest.cursos.find(
+                    (c) =>
+                      normalizarTexto(
+                        c.nombre,
+                      ) ===
+                      normalizarTexto(
+                        eligiendoTemaIdx !==
+                        null
+                          ? courses[
+                              eligiendoTemaIdx
+                            ]?.subject
+                          : "",
+                      ),
+                  )?.temas || []
+                : (
+                    courses[
+                      eligiendoTemaIdx !==
+                      null
+                        ? courses[
+                            eligiendoTemaIdx
+                          ]?.subject
+                        : ""
+                    ]?.[
+                      `semana_${semanaTemaSelector}`
+                    ] || []
+                  ).map((tema) => ({
+                    tema,
+                  }))
             ).map((t) => (
               <button
                 key={t.tema}
@@ -1471,16 +1590,6 @@ export default function HorarioPage() {
           setCursoPickerOpen(false)
         }
       >
-        <button
-          onClick={() =>
-            setCursoPickerOpen(false)
-          }
-          className="modal-close-x"
-          aria-label="Cerrar"
-        >
-          <i className="fas fa-times" />
-        </button>
-
         <div className="tema-selector">
           <h3 className="tema-selector__titulo">
             Escoge un curso
@@ -1515,14 +1624,6 @@ export default function HorarioPage() {
         open={!!cursoRapidoDia}
         onClose={cancelarCursoRapido}
       >
-        <button
-          onClick={cancelarCursoRapido}
-          className="modal-close-x"
-          aria-label="Cerrar"
-        >
-          <i className="fas fa-times" />
-        </button>
-
         <div className="tema-selector">
           <h3 className="tema-selector__titulo">
             {cursoRapidoNombre}
@@ -1536,35 +1637,159 @@ export default function HorarioPage() {
             :
           </p>
 
-          <div className="tema-selector__lista">
-            {(
-              manifest.cursos.find(
-                (c) =>
-                  normalizarTexto(c.nombre) ===
-                  normalizarTexto(
-                    cursoRapidoNombre,
-                  ),
-              )?.temas || []
-            ).map((t) => (
-              <button
-                key={t.tema}
-                type="button"
-                onClick={() =>
-                  setTemaRapidoElegido(
-                    t.tema,
-                  )
-                }
-                className={`tema-selector__boton ${
-                  temaRapidoElegido ===
-                  t.tema
-                    ? "is-selected"
-                    : ""
-                }`}
-              >
-                {t.tema}
-              </button>
-            ))}
+          <div className="tema-selector__origen-tabs">
+            <button
+              type="button"
+              onClick={() => {
+                setOrigenTemaRapido("codigo");
+                setTemaRapidoElegido(null);
+              }}
+              className={`tema-selector__origen-tab ${
+                origenTemaRapido === "codigo"
+                  ? "is-active"
+                  : ""
+              }`}
+            >
+              Temas del curso
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setOrigenTemaRapido("repaso");
+                setTemaRapidoElegido(null);
+              }}
+              className={`tema-selector__origen-tab ${
+                origenTemaRapido === "repaso"
+                  ? "is-active"
+                  : ""
+              }`}
+            >
+              Temario
+            </button>
           </div>
+
+          {origenTemaRapido === "repaso" && (
+            <div className="tema-selector__semana-tabs">
+              <button
+                type="button"
+                className="tema-selector__semana-arrow"
+                onClick={() => {
+                  setSemanaPaginaRapido(
+                    (prev) =>
+                      (prev - 1 + 2) % 2,
+                  );
+                  setTemaRapidoElegido(null);
+                }}
+                aria-label="Semanas anteriores"
+              >
+                ‹
+              </button>
+
+              {[0, 1, 2, 3].map(
+                (offset) => {
+                  const semana =
+                    semanaPaginaRapido * 4 +
+                    offset +
+                    1;
+
+                  return (
+                    <button
+                      key={semana}
+                      type="button"
+                      onClick={() => {
+                        setSemanaTemaRapido(
+                          semana,
+                        );
+                        setTemaRapidoElegido(
+                          null,
+                        );
+                      }}
+                      className={`tema-selector__semana-tab ${
+                        semanaTemaRapido ===
+                        semana
+                          ? "is-active"
+                          : ""
+                      }`}
+                    >
+                      S{semana}
+                    </button>
+                  );
+                },
+              )}
+
+              <button
+                type="button"
+                className="tema-selector__semana-arrow"
+                onClick={() => {
+                  setSemanaPaginaRapido(
+                    (prev) =>
+                      (prev + 1) % 2,
+                  );
+                  setTemaRapidoElegido(null);
+                }}
+                aria-label="Siguientes semanas"
+              >
+                ›
+              </button>
+            </div>
+          )}
+
+          {origenTemaRapido !== null && (
+            <div className="tema-selector__lista">
+              {(
+                origenTemaRapido === "codigo"
+                  ? (
+                      manifest.cursos.find(
+                        (c) =>
+                          normalizarTexto(
+                            c.nombre,
+                          ) ===
+                          normalizarTexto(
+                            cursoRapidoNombre,
+                          ),
+                      )?.temas || []
+                    ).map((tema) => ({
+                      tema:
+                        typeof tema ===
+                        "string"
+                          ? tema
+                          : tema.tema,
+                    }))
+                  : (
+                      coursesSemanas[
+                        cursoRapidoNombre
+                      ]?.[
+                        `semana_${semanaTemaRapido}`
+                      ] || []
+                    ).map((tema) => ({
+                      tema:
+                        typeof tema ===
+                        "string"
+                          ? tema
+                          : tema.tema,
+                    }))
+              ).map((t) => (
+                <button
+                  key={t.tema}
+                  type="button"
+                  onClick={() =>
+                    setTemaRapidoElegido(
+                      t.tema,
+                    )
+                  }
+                  className={`tema-selector__boton ${
+                    temaRapidoElegido ===
+                    t.tema
+                      ? "is-selected"
+                      : ""
+                  }`}
+                >
+                  {t.tema}
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="tema-selector__confirm-row">
             <button

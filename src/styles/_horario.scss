@@ -29,6 +29,7 @@
   width: 100%;
   max-width: 80rem;
   min-height: calc(100vh - 200px);
+  margin: 0 auto;
   padding: 28px 24px;
   display: grid;
   gap: 22px;
@@ -86,7 +87,10 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__btn-volver-tema:hover {
@@ -181,7 +185,11 @@
   font-size: 14px;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .horario__btn.is-start {
@@ -197,7 +205,7 @@
 
 .horario__btn.is-start:disabled {
   opacity: 0.45;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .horario__btn.is-pause {
@@ -213,7 +221,8 @@
 
 .horario__btn.is-pause:disabled {
   opacity: 0.45;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
+  pointer-events: none;
 }
 
 .horario__btn-reset {
@@ -224,7 +233,11 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .horario__btn-reset:hover {
@@ -233,21 +246,26 @@
   border-color: var(--border-strong);
 }
 
+.horario__btn-reset:disabled {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
 /* ============================================================
-   DIAS
+   DÍAS
    ============================================================ */
 
 .horario__day-tabs {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 8px;
+  padding: var(--space-1);
   background: var(--surface);
   border: 2px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .horario__day-row {
@@ -259,8 +277,8 @@
 }
 
 .horario__day-btn {
-  width: 100%;
   min-width: 0;
+  width: 100%;
   padding: 11px 6px;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
@@ -269,7 +287,10 @@
   font-size: 14px;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__day-btn:hover {
@@ -321,7 +342,10 @@
   background: var(--surface-alt);
   color: var(--ink-soft);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .horario__back-course:hover {
@@ -504,7 +528,11 @@
   font-size: 13.5px;
   font-weight: 600;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear;
 }
 
 .horario__rest-select select:hover {
@@ -539,8 +567,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-left: 15px;
-  padding-left: 4px;
+  margin-left: 0;
+  padding-left: 44px;
   border-left: 2px solid var(--border);
 }
 
@@ -548,7 +576,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-left: -17px;
+  margin-left: -60px;
 }
 
 .horario__task-dot {
@@ -579,7 +607,10 @@
   border-radius: var(--radius-md);
   background: var(--surface-alt);
   color: var(--ink-soft);
-  transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear;
 }
 
 .horario__task-box.is-past {
@@ -617,6 +648,10 @@
   opacity: 0.8;
 }
 
+/* ============================================================
+   TOMATE / DESCANSO
+   ============================================================ */
+
 .horario__rest-dot {
   position: relative;
   width: 32px;
@@ -629,10 +664,24 @@
   background: var(--surface-alt);
 }
 
+.horario__tomato-circle {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
 .horario__tomato-svg {
   width: 20px;
   height: 20px;
-  color: var(--border-strong);
+  color: var(--danger);
   transition: color 0.2s linear;
 }
 
@@ -645,14 +694,21 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--secondary);
-  font-size: 10px;
-  transition: color 0.2s linear, opacity 0.2s linear;
+  color: #dc2626;
+  font-size: 28px;
+  line-height: 1;
+  transition: color 0.2s linear;
 }
 
 .horario__rest-dot.is-past .horario__tomato-icon {
-  color: var(--success);
-  opacity: 1;
+  color: #16a34a;
+}
+
+.horario__tomato-lock {
+  position: absolute;
+  bottom: 4px;
+  font-size: 14px;
+  color: var(--border);
 }
 
 .horario__rest-box {
@@ -748,19 +804,23 @@
 
 .curso-rapido__tema-btn {
   padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface-alt);
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear;
 }
 
 .curso-rapido__tema-btn:hover {
-  background: var(--primary-bg);
-  border-color: var(--primary);
-  color: var(--primary);
+  background: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--ink);
 }
 
 /* ============================================================
@@ -778,6 +838,7 @@
 
 .tema-modal__title {
   margin: 0;
+  color: var(--ink);
 }
 
 .tema-modal__text {
@@ -792,7 +853,7 @@
   padding: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
   overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: none;
@@ -804,27 +865,28 @@
 
 .tema-modal__item {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--surface-alt);
+  padding: 11px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
   text-align: left;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear, transform 0.15s linear, box-shadow 0.2s linear;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    color 0.2s linear;
 }
 
 .tema-modal__item:hover {
-  background: var(--primary-bg);
-  border-color: var(--primary);
-  color: var(--primary);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  background: var(--surface-hover);
+  border-bottom-color: var(--border-strong);
+  color: var(--ink);
 }
 
 .tema-modal__item:active {
-  transform: translateY(0);
-  box-shadow: none;
+  background: var(--surface-hover);
 }
 
 /* ============================================================
@@ -834,33 +896,149 @@
 .tema-selector {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   padding: 6px;
 }
 
 .tema-selector__titulo {
   margin: 0;
-  color: var(--secondary);
+  color: var(--ink);
   font-size: 1.2rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .tema-selector__descripcion {
-  margin: -4px 0 0;
+  margin: -8px 0 0;
   color: var(--ink-soft);
-  font-size: 18px;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
+
+/* ============================================================
+   FUENTE DEL TEMA
+   ============================================================ */
+
+.tema-selector__origen-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding-bottom: 2px;
+}
+
+.tema-selector__origen-tab {
+  position: relative;
+  padding: 10px 12px 11px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    color 0.2s linear,
+    border-color 0.2s linear;
+}
+
+.tema-selector__origen-tab:hover {
+  color: var(--ink);
+}
+
+.tema-selector__origen-tab.is-active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ============================================================
+   SEMANAS
+   ============================================================ */
+
+.tema-selector__semana-selector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tema-selector__semana-tabs {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.tema-selector__semana-tab {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 6px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-faint);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
+}
+
+.tema-selector__semana-tab:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
+.tema-selector__semana-tab.is-active {
+  background: var(--secondary-bg);
+  color: var(--secondary-dark);
+}
+
+.tema-selector__semana-arrow {
+  flex: 0 0 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 1rem;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    transform 0.15s linear;
+}
+
+.tema-selector__semana-arrow:hover {
+  background: var(--surface-hover);
+  color: var(--ink);
+}
+
+.tema-selector__semana-arrow:active {
+  transform: scale(0.94);
+}
+
+/* ============================================================
+   LISTA DE TEMAS
+   ============================================================ */
 
 .tema-selector__lista {
   max-height: 280px;
-  padding: 15px 15px 15px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--primary) transparent;
+  scrollbar-color: var(--border-strong) transparent;
+  padding-right: 3px;
 }
 
 .tema-selector__lista::-webkit-scrollbar {
@@ -872,100 +1050,123 @@
 }
 
 .tema-selector__lista::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--border-strong);
   border-radius: 999px;
 }
 
 .tema-selector__boton {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
   background: transparent;
   color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-family: var(--font);
   text-align: left;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-light);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, transform 0.15s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .tema-selector__boton:hover {
-  background: var(--primary-bg);
-  border-color: var(--primary);
-  color: var(--primary);
+  background: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--ink);
 }
 
 .tema-selector__boton:active {
-  transform: scale(0.98);
-  background: var(--primary-bg);
+  background: var(--surface-hover);
 }
 
 .tema-selector__boton.is-selected {
   background: var(--primary-bg);
-  border-color: var(--primary);
-  color: var(--primary);
+  border-bottom-color: var(--primary-light);
+  color: var(--primary-light);
+  font-weight: 700;
 }
+
+/* ============================================================
+   ACCIONES
+   ============================================================ */
 
 .tema-selector__confirm-row {
   display: flex;
-  gap: 10px;
-  margin-top: 4px;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 2px;
+  padding-top: 12px;
 }
 
 .tema-selector__confirm-btn {
-  flex: 1;
-  padding: 10px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  min-width: 108px;
+  padding: 9px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 0.85rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear, opacity 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear,
+    opacity 0.2s linear;
 }
 
 .tema-selector__confirm-btn.is-cancelar {
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border);
   background: transparent;
-  color: var(--ink);
+  color: var(--ink-soft);
 }
 
 .tema-selector__confirm-btn.is-cancelar:hover {
   background: var(--surface-hover);
+  border-color: var(--border-strong);
+  color: var(--ink);
 }
 
 .tema-selector__confirm-btn.is-aceptar {
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--ink-on-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .tema-selector__confirm-btn.is-aceptar:hover {
   background: var(--primary-dark);
+  border-color: var(--primary-dark);
 }
 
 .tema-selector__confirm-btn.is-aceptar:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  pointer-events: none;
+  box-shadow: none;
 }
 
 .tema-selector__omitir {
   align-self: center;
   margin-top: 2px;
   padding: 7px 14px;
-  border: 1px solid var(--border-strong);
+  border: 0;
   border-radius: var(--radius-full);
   background: transparent;
-  color: var(--ink-soft);
-  font-size: 0.82rem;
+  color: var(--ink-faint);
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear;
 }
 
 .tema-selector__omitir:hover {
   background: var(--surface-hover);
   color: var(--ink);
-  border-color: var(--border-strong);
 }
 
 .tema-selector__acciones {
@@ -987,7 +1188,10 @@
   font-size: 0.82rem;
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: background 0.2s linear, color 0.2s linear, border-color 0.2s linear;
+  transition:
+    background 0.2s linear,
+    color 0.2s linear,
+    border-color 0.2s linear;
 }
 
 .tema-selector__iniciar:hover,
@@ -1027,7 +1231,10 @@
   font-weight: 500;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: none;
-  transition: background 0.2s linear, border-color 0.2s linear, box-shadow 0.2s linear;
+  transition:
+    background 0.2s linear,
+    border-color 0.2s linear,
+    box-shadow 0.2s linear;
 }
 
 .horario__quick-course-select:hover {
@@ -1345,7 +1552,7 @@
 
 .setup-btn.is-primary:disabled {
   opacity: 0.4;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 .setup-btn.is-ghost {
@@ -1379,12 +1586,11 @@
 
   .horario__day-row {
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 4px;
   }
 
   .horario__day-btn {
-    padding: 10px 3px;
-    font-size: 13px;
+    padding: 9px 4px;
+    font-size: 12px;
   }
 }
 
@@ -1437,11 +1643,10 @@
 
   .horario__day-row {
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 3px;
   }
 
   .horario__day-btn {
-    padding: 9px 2px;
+    padding: 8px 2px;
     font-size: 11px;
   }
 
@@ -1454,9 +1659,36 @@
     flex: none;
   }
 
+  .tema-selector {
+    gap: 14px;
+  }
+
+  .tema-selector__origen-tabs {
+    gap: 2px;
+  }
+
+  .tema-selector__origen-tab {
+    padding: 9px 6px 10px;
+    font-size: 0.82rem;
+  }
+
+  .tema-selector__semana-tab {
+    padding: 7px 4px;
+    font-size: 0.74rem;
+  }
+
+  .tema-selector__boton {
+    padding: 9px 10px;
+    font-size: 0.86rem;
+  }
+
   .tema-selector__confirm-row,
   .tema-selector__acciones {
     flex-direction: column;
+  }
+
+  .tema-selector__confirm-btn {
+    width: 100%;
   }
 }
 

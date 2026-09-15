@@ -4,30 +4,15 @@
   margin: 0;
 }
 
-/* Scrollbar */
+/* Ocultar scrollbar */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--secondary) transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  display: none;
 }
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background: var(--secondary);
-  border-radius: 999px;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-dark);
-}
-
 html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
