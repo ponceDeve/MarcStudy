@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "start": "vite",
-    "build": "py actualizar_manifest.py && vite build",
+    "build": "py actualizar_manifest.py && vite build && node copiar_404.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
