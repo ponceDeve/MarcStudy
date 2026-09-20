@@ -1,7 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-
 const STORAGE_KEY = "pomodoro_countdown_backup";
-
 export function useCountdown(initialMinutes, onComplete) {
   // 1. Inicializar leyendo de localStorage (sobrevive al cambio de pantalla)
   const [secondsLeft, setSecondsLeft] = useState(() => {
@@ -18,7 +16,6 @@ export function useCountdown(initialMinutes, onComplete) {
     }
     return initialMinutes * 60;
   });
-
   const [isRunning, setIsRunning] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -27,24 +24,20 @@ export function useCountdown(initialMinutes, onComplete) {
     }
     return false;
   });
-
   const intervalRef = useRef(null);
   const endTimeRef = useRef(null); 
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
-
   const clear = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
   }, []);
-
   const tick = useCallback(() => {
     if (!endTimeRef.current) return;
     const now = Date.now();
     const remaining = Math.round((endTimeRef.current - now) / 1000);
-
     if (remaining <= 0) {
       clear();
       setIsRunning(false);
@@ -55,20 +48,15 @@ export function useCountdown(initialMinutes, onComplete) {
       setSecondsLeft(remaining);
     }
   }, [clear]);
-
   const start = useCallback(() => {
     if (intervalRef.current) return;
-
     setIsRunning(true);
     const end = Date.now() + secondsLeft * 1000;
     endTimeRef.current = end;
-    
     // Guardamos la meta en el almacenamiento del celular
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ endTime: end }));
-
     intervalRef.current = setInterval(tick, 1000);
   }, [secondsLeft, tick]);
-
   const pause = useCallback(() => {
     clear();
     setIsRunning(false);
@@ -76,7 +64,6 @@ export function useCountdown(initialMinutes, onComplete) {
     // Guardamos los segundos restantes para cuando regrese
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ pausedLeft: secondsLeft }));
   }, [clear, secondsLeft]);
-
   const reset = useCallback(
     (minutes) => {
       clear();
@@ -87,7 +74,6 @@ export function useCountdown(initialMinutes, onComplete) {
     },
     [clear, initialMinutes],
   );
-
   const setMinutes = useCallback(
     (minutes) => {
       clear();
@@ -98,7 +84,6 @@ export function useCountdown(initialMinutes, onComplete) {
     },
     [clear],
   );
-
   // 2. Auto-arrancar el intervalo si detecta que había un timer activo al montar la pantalla
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -111,7 +96,6 @@ export function useCountdown(initialMinutes, onComplete) {
     }
     return clear;
   }, [clear, tick]);
-
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "visible" && isRunning) {
@@ -123,10 +107,8 @@ export function useCountdown(initialMinutes, onComplete) {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [isRunning, tick]);
-
   const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
   const ss = String(secondsLeft % 60).padStart(2, "0");
-
   return {
     secondsLeft,
     formatted: `${mm}:${ss}`,

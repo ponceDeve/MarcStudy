@@ -1,5 +1,4 @@
 @use "./tokens" as *;
-
 .app-footer {
   width: 100%;
   margin-top: var(--space-6);
@@ -13,15 +12,12 @@
   border-top: 1px solid var(--border);
   text-align: center;
 }
-
 .app-footer * {
   color: var(--ink-faint);
 }
-
 .app-footer p {
   font-size: var(--fs-sm);
 }
-
 .app-footer__brand {
   margin: 0;
   font-family: var(--font-body);
@@ -30,7 +26,6 @@
   line-height: 1.4;
   color: var(--ink);
 }
-
 .app-footer__copyright {
   margin: 0;
   font-family: var(--font-body);
@@ -39,7 +34,6 @@
   line-height: 1.4;
   color: var(--ink-faint);
 }
-
 @media (min-width: $bp-md) {
   .app-footer {
     padding: var(--space-4) var(--space-5);

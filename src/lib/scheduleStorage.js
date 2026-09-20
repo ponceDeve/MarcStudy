@@ -3,9 +3,7 @@
 // Forma guardada: { lunes: [{subject, pomodoros}], martes: [...], ... }
 // Solo aparecen las claves de los días que el usuario eligió.
 // ─────────────────────────────────────────────────────────────────────────
-
 export const SCHEDULE_STORAGE_KEY = "mi_estudio_horario_personalizado";
-
 export const DIAS_SEMANA = [
   "lunes",
   "martes",
@@ -15,7 +13,6 @@ export const DIAS_SEMANA = [
   "sabado",
   "domingo",
 ];
-
 export const DIA_LABELS = {
   lunes: "Lun",
   martes: "Mar",
@@ -25,10 +22,8 @@ export const DIA_LABELS = {
   sabado: "Sáb",
   domingo: "Dom",
 };
-
 export const MAX_CURSOS_POR_DIA = 4;
 export const LIMITE_NOMBRE_CURSO = 24;
-
 export function leerHorario() {
   try {
     const raw = localStorage.getItem(SCHEDULE_STORAGE_KEY);
@@ -38,7 +33,6 @@ export function leerHorario() {
     return null;
   }
 }
-
 export function guardarHorario(schedule) {
   try {
     localStorage.setItem(SCHEDULE_STORAGE_KEY, JSON.stringify(schedule));
@@ -46,7 +40,6 @@ export function guardarHorario(schedule) {
     console.error("Error guardando horario personalizado:", e);
   }
 }
-
 export function hayHorarioConfigurado() {
   const h = leerHorario();
   return !!(h && Object.keys(h).length > 0);

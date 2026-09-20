@@ -1,7 +1,6 @@
 /* ============================================================
    SEARCH OVERLAY
    ============================================================ */
-
 .search-overlay {
   position: fixed;
   inset: 0;
@@ -15,7 +14,6 @@
   opacity: 1;
   visibility: visible;
   transition: opacity .25s linear, visibility 0s linear 0s;
-
   &.is-closed {
     opacity: 0;
     visibility: hidden;
@@ -23,42 +21,34 @@
     transition: opacity .25s linear, visibility 0s linear .25s;
   }
 }
-
 /* ============================================================
    SEARCH BOX
    ============================================================ */
-
 .search-box {
   position: relative;
   width: 100%;
   max-width: 42rem;
   margin-top: 100px;
-
   &:has(.search-results) {
     .search-input-row {
       border-radius: 30px 30px 0 0;
     }
-
     .search-input-lupa {
       border-radius: 50% 50% 0 50%;
     }
   }
-
   &:not(:has(.search-results)) {
     .search-input-row {
       border-radius: 30px;
     }
-
     .search-input-lupa {
       border-radius: 50%;
     }
   }
 }
-
 /* ============================================================
    SALUDO
    ============================================================ */
-
 .search-saludo {
   margin: 0 4px 16px;
   text-align: center;
@@ -69,16 +59,13 @@
   font-size: clamp(26px, 6vw, 38px);
   font-weight: 800;
   color: var(--ink-on-primary);
-
   &__nombre {
     font-weight: 800;
   }
 }
-
 /* ============================================================
    INPUT ROW
    ============================================================ */
-
 .search-input-row {
   position: relative;
   width: 100%;
@@ -90,21 +77,17 @@
   border-radius: 30px;
   z-index: 2;
   overflow: hidden;
-
   &:focus-within {
     border-color: var(--border-strong);
     box-shadow: 0 0 0 2px rgba(0, 0, 0, .04);
   }
-
   &.has-query {
     border-radius: 30px 30px 0 0;
   }
 }
-
 /* ============================================================
    INPUT
    ============================================================ */
-
 .search-input {
   width: 100%;
   min-width: 0;
@@ -113,28 +96,23 @@
   color: var(--ink);
   border: none;
   outline: none;
-  padding: 14px 112px 14px 24px;
+  padding: 14px 112px 14px 56px;
   font-family: var(--font-body);
   font-size: 16px;
-
   &:focus {
     outline: none;
     box-shadow: none;
   }
-
   &::placeholder {
     color: var(--ink-faint);
   }
-
   &::-webkit-search-cancel-button {
     display: none;
   }
 }
-
 /* ============================================================
    LUPA
    ============================================================ */
-
 .search-input-lupa {
   position: absolute;
   top: 0;
@@ -155,20 +133,49 @@
   z-index: 3;
   font: inherit;
   transition: background-color .15s linear, transform .1s linear;
-
   &:hover {
     background: var(--secondary-dark);
   }
-
   &:active {
     transform: scale(.96);
   }
 }
-
+/* ============================================================
+   LUPA (BOTÓN, A LA IZQUIERDA DEL INPUT)
+   ============================================================ */
+.search-input-lupa-izq {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  padding: 0;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  z-index: 4;
+  transition: color .15s linear, transform .1s linear;
+  i {
+    color: inherit;
+    font-size: 18px;
+    line-height: 1;
+  }
+  &:hover {
+    color: var(--primary);
+  }
+  &:active {
+    transform: translateY(-50%) scale(.9);
+  }
+}
 /* ============================================================
    BOTÓN LIMPIAR
    ============================================================ */
-
 .search-input-clear {
   position: absolute;
   top: 50%;
@@ -187,28 +194,38 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   z-index: 4;
   transition: color .15s linear, transform .1s linear;
-
   i {
     color: inherit;
     font-size: 20px;
     line-height: 1;
   }
-
   &:hover {
     background: transparent;
     color: var(--danger);
   }
-
   &:active {
     background: transparent;
     transform: translateY(-50%) scale(.9);
   }
 }
-
 /* ============================================================
    RESULTADOS
    ============================================================ */
-
+.search-section-label {
+  margin: 0;
+  padding: 10px 16px 4px;
+  color: var(--ink-faint);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.search-result-item__seccion {
+  margin: 0 0 2px;
+  color: var(--ink-faint);
+  font-size: 12px;
+  font-weight: 600;
+}
 .search-results {
   width: 100%;
   display: flex;
@@ -226,46 +243,46 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px;
   }
-
   &::-webkit-scrollbar-track {
     background: transparent;
   }
-
   &::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: var(--radius-full);
   }
-
   &::-webkit-scrollbar-thumb:hover {
     background: var(--primary-hover);
   }
-
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
-
 /* ============================================================
    GRUPO
    ============================================================ */
-
 .search-group {
   width: 100%;
   background: var(--surface);
-
   &:not(:first-child) {
     border-top: 1px solid var(--border);
   }
 }
-
+/* ============================================================
+   FILA DEL CURSO
+   ============================================================ */
+.search-course-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
 /* ============================================================
    TEMAS DEL CURSO
    ============================================================ */
-
 .search-group__temas {
   display: grid;
   grid-template-rows: 0fr;
@@ -278,7 +295,6 @@
     opacity .2s ease,
     visibility .28s ease;
 }
-
 .search-group__temas.is-open {
   grid-template-rows: 1fr;
   height: auto;
@@ -286,15 +302,12 @@
   visibility: visible;
   padding-bottom: 24px;
 }
-
 .search-group__temas > * {
   min-height: 0;
 }
-
 /* ============================================================
    RESULTADO BASE
    ============================================================ */
-
 .search-result-item {
   width: 100%;
   min-height: 40px;
@@ -311,22 +324,21 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
-
   &:focus {
     outline: none;
   }
-
   &:active {
     transform: translateX(1px);
   }
 }
-
 /* ============================================================
    CURSO
    ============================================================ */
-
 .search-result-item.is-curso {
   position: relative;
+  flex: 0 0 auto;
+  width: auto;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -338,11 +350,10 @@
   background: transparent;
   border: none;
   outline: none;
-  padding: 10px 16px;
-
+  padding: 10px 4px 10px 16px;
   .curso-title {
     display: block;
-    width: 100%;
+    width: auto;
     margin: 0;
     padding: 0;
     color: inherit;
@@ -350,50 +361,70 @@
     font-weight: inherit;
     line-height: 1.3;
     text-decoration: none;
+    white-space: nowrap;
   }
-
   &:hover,
   &.is-focused {
     color: var(--primary);
   }
-
   &.is-open {
     color: var(--primary-dark);
   }
-
   &:focus-visible {
     background-color: var(--primary-bg);
   }
-
   &:active {
     transform: translateX(1px);
   }
-
   .search-match {
     background: transparent;
   }
 }
-
 /* ============================================================
-   FLECHA DEL CURSO
+   BOTÓN + / − DEL CURSO
    ============================================================ */
-
-.search-course-chevron {
-  flex: 0 0 auto;
-  margin-left: 10px;
-  font-size: 11px;
-  color: currentColor;
-  transition: transform .25s ease;
+.search-course-toggle {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  font: inherit;
+  transition:
+    background-color .15s linear,
+    color .15s linear,
+    transform .1s linear;
+  i {
+    font-size: 13px;
+    line-height: 1;
+  }
+  &:hover {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+  }
+  &:focus-visible {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+    outline: none;
+  }
+  &:active {
+    transform: scale(.92);
+  }
+  &.is-open {
+    color: var(--primary);
+  }
 }
-
-.search-course-chevron.is-open {
-  transform: rotate(180deg);
-}
-
 /* ============================================================
    TEMA
    ============================================================ */
-
 .search-result-item.is-tema {
   display: block;
   width: 100%;
@@ -405,27 +436,22 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
-
   &:hover,
   &.is-focused {
     background-color: rgba(0, 0, 0, .1);
     color: var(--ink);
   }
-
   &:focus-visible {
     background-color: rgba(0, 0, 0, .1);
     outline: none;
   }
-
   &:active {
     transform: translateX(1px);
   }
 }
-
 /* ============================================================
    TEXTO DEL TEMA
    ============================================================ */
-
 .search-result-item__tema {
   font-size: 14px;
   color: inherit;
@@ -434,40 +460,32 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   display: inline;
 }
-
 .search-result-item__curso {
   font-size: 14px;
   color: var(--ink-soft);
   margin: 0;
 }
-
 /* ============================================================
    TÍTULO DE CURSO
    ============================================================ */
-
 .curso-title {
   display: block;
-  width: 100%;
+  width: auto;
 }
-
 /* ============================================================
    COINCIDENCIA
    ============================================================ */
-
 .search-match {
   background: rgba(68, 190, 218, .22);
   color: inherit;
   border-radius: 2px;
 }
-
 .search-result-item.is-curso .search-match {
   background: transparent;
 }
-
 /* ============================================================
    SIN RESULTADOS
    ============================================================ */
-
 .search-empty {
   width: 100%;
   box-sizing: border-box;
@@ -480,27 +498,22 @@
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-
 .search-no-results {
   cursor: default;
   color: var(--ink-soft);
-
   &:hover,
   &.is-focused {
     background: transparent;
     color: var(--ink-soft);
   }
 }
-
 /* ============================================================
    BUSCADOR INICIAL
    ============================================================ */
-
 .home-search {
   position: relative;
   width: 100%;
   max-width: var(--content-max-width);
-
   .search-history,
   .search-empty {
     position: absolute;
@@ -511,21 +524,17 @@
     z-index: 20;
     box-shadow: var(--shadow-md);
   }
-
   .search-empty {
     border-top: none;
     border-radius: 0 0 30px 30px;
   }
 }
-
 .mi-estudio__intro > .home-search {
   display: none;
 }
-
 /* ============================================================
    RESULTADOS DEL BUSCADOR INICIAL
    ============================================================ */
-
 .home-search-results {
   position: absolute;
   top: 100%;
@@ -542,16 +551,13 @@
   border-radius: 0 0 30px 30px;
   box-shadow: var(--shadow-md);
 }
-
 /* ============================================================
    BUSCADOR DE NIVELES
    ============================================================ */
-
 .levels-modal__search {
   position: relative;
   width: 100%;
   margin-bottom: 24px;
-
   .home-search-input {
     width: 100%;
     box-sizing: border-box;
@@ -566,22 +572,18 @@
     transition:
       border-color .2s linear,
       box-shadow .2s linear;
-
     &::placeholder {
       color: var(--ink-faint);
     }
-
     &:focus {
       border-color: var(--secondary);
       outline: none;
     }
   }
 }
-
 /* ============================================================
    RESULTADOS DE NIVELES
    ============================================================ */
-
 .levels-modal__search .home-search-results {
   position: absolute;
   top: 100%;
@@ -599,25 +601,20 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   &::-webkit-scrollbar {
     width: 6px;
   }
-
   &::-webkit-scrollbar-track {
     background: transparent;
   }
-
   &::-webkit-scrollbar-thumb {
     background-color: var(--border-strong);
     border-radius: var(--radius-full);
   }
 }
-
 /* ============================================================
    RESULTADO DE NIVEL
    ============================================================ */
-
 .levels-modal__search .home-search-result {
   width: 100%;
   text-align: left;
@@ -632,22 +629,18 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
-
   &:hover,
   &.is-focused {
     background-color: var(--surface-hover);
     color: var(--ink);
   }
-
   &:focus-visible {
     background-color: var(--surface-hover);
     outline: none;
   }
-
   &:active {
     transform: translateX(1px);
   }
-
   p {
     margin: 0;
     font-size: .95rem;
@@ -656,83 +649,81 @@
     align-items: center;
   }
 }
-
 /* ============================================================
    NÚMERO DEL NIVEL
    ============================================================ */
-
 .home-search-result__num {
   opacity: .6;
   margin-right: 8px;
 }
-
 /* ============================================================
    VACÍO DE NIVELES
    ============================================================ */
-
 .levels-modal__empty {
   color: var(--ink-soft);
   margin-bottom: 20px;
 }
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-
 @media (max-width: 600px) {
   .search-overlay {
     padding: 0 10px;
   }
-
   .search-box {
     margin-top: 70px;
     max-width: 100%;
   }
-
   .search-input {
-    padding: 13px 104px 13px 18px;
+    padding: 13px 104px 13px 48px;
     font-size: 15px;
   }
-
+  .search-input-lupa-izq {
+    left: 12px;
+    width: 32px;
+    height: 32px;
+    i {
+      font-size: 16px;
+    }
+  }
   .search-input-clear {
     right: 48px;
     width: 34px;
     height: 34px;
-
     i {
       font-size: 18px;
     }
   }
-
   .search-input-lupa {
     width: 52px;
   }
-
   .search-results {
     max-height: min(400px, calc(100vh - 150px));
   }
-
   .search-result-item {
     padding-left: 14px;
     padding-right: 14px;
   }
-
   .search-result-item.is-curso {
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 14px;
+    padding-right: 4px;
   }
-
+  .search-course-toggle {
+    flex-basis: 26px;
+    width: 26px;
+    height: 26px;
+  }
   .search-result-item.is-tema {
     padding-top: 9px;
     padding-bottom: 9px;
   }
 }
-
 @media (max-height: 600px) {
   .search-box {
     margin-top: 40px;
   }
-
   .search-results {
     max-height: calc(100vh - 110px);
   }

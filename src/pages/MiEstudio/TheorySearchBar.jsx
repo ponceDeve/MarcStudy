@@ -12,44 +12,35 @@ import {
   similitudCoseno,
 } from "../../lib/semantico";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
-
 const DEBOUNCE_SEMANTICO_MS = 350;
 const MIN_LARGO_QUERY_TEXTO = 2;
 const MIN_LARGO_QUERY_SEMANTICO = 4;
 const UMBRAL_SIMILITUD = 0.60;
-
 /* ============================================================
    RESALTAR COINCIDENCIA
    ============================================================ */
-
 // Resalta una coincidencia literal dentro de un texto.
 function ResaltarCoincidencia({ texto, query }) {
   if (!query.trim()) {
     return texto;
   }
-
   const textoOriginal = String(texto ?? "");
   const busqueda = query.trim();
   const textoNormalizado = normalizarTexto(textoOriginal);
   const busquedaNormalizada = normalizarTexto(busqueda);
-
   if (!busquedaNormalizada) {
     return textoOriginal;
   }
-
   const indice = textoNormalizado.indexOf(busquedaNormalizada);
-
   if (indice === -1) {
     return textoOriginal;
   }
-
   const antes = textoOriginal.slice(0, indice);
   const coincidencia = textoOriginal.slice(
     indice,
     indice + busqueda.length
   );
   const despues = textoOriginal.slice(indice + busqueda.length);
-
   return (
     <>
       {antes}
@@ -58,28 +49,23 @@ function ResaltarCoincidencia({ texto, query }) {
     </>
   );
 }
-
 /* ============================================================
    RESALTAR FRAGMENTO
    ============================================================ */
-
 // Resalta una coincidencia dentro de un fragmento ya recortado.
 function ResaltarFragmento({ fragmento, indice, largoCoincidencia }) {
   if (indice == null || indice < 0) {
     return fragmento;
   }
-
   const antes = fragmento.slice(0, indice);
   const coincidencia = fragmento.slice(
     indice,
     indice + largoCoincidencia
   );
   const despues = fragmento.slice(indice + largoCoincidencia);
-
   if (!coincidencia) {
     return fragmento;
   }
-
   return (
     <>
       {antes}
@@ -88,17 +74,14 @@ function ResaltarFragmento({ fragmento, indice, largoCoincidencia }) {
     </>
   );
 }
-
 /* ============================================================
    ARMAR FRAGMENTO DE EXPLICACIÓN
    ============================================================ */
-
 // Busca dónde está la coincidencia dentro de la explicación
 // original y luego recalcula su posición dentro del fragmento.
 function armarFragmentoExplicacion(explicacion, query) {
   const indiceOriginal = buscarPosicion(explicacion, query);
   const fragmento = extraerFragmento(explicacion, indiceOriginal);
-
   if (indiceOriginal == null) {
     return {
       fragmento,
@@ -106,24 +89,20 @@ function armarFragmentoExplicacion(explicacion, query) {
       largo: 0,
     };
   }
-
   const queryLimpia = query.trim();
   const indiceEnFragmento = buscarPosicion(
     fragmento,
     queryLimpia
   );
-
   return {
     fragmento,
     indice: indiceEnFragmento,
     largo: queryLimpia.length,
   };
 }
-
 /* ============================================================
    THEORY SEARCH BAR
    ============================================================ */
-
 // Buscador discreto para saltar a una tarjeta de teoría.
 //
 // COMPORTAMIENTO:
@@ -147,29 +126,23 @@ export default function TheorySearchBar({
     query: "",
     scores: {},
   });
-
   const cacheEmbeddingsRef = useRef({
     flatPuntos: null,
     promesa: null,
   });
-
   const idPeticionRef = useRef(0);
   const hayQuery = query.trim() !== "";
-
   /* ============================================================
      BÚSQUEDA TEXTUAL
      ============================================================ */
-
   const candidatosTexto = useMemo(() => {
     const queryLimpia = query.trim();
-
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
     ) {
       return [];
     }
-
     return flatPuntos
       .map((punto) => {
         /* --------------------------------------------------------
@@ -178,68 +151,55 @@ export default function TheorySearchBar({
            IMPORTANTE:
            El puntaje por sí solo NO decide si se muestra.
            -------------------------------------------------------- */
-
         const scoreTitulo = puntajeDeTexto(
           punto.seccionTitulo || "",
           query
         );
-
         const scoreTexto = puntajeDeTexto(
           punto.texto || "",
           query
         );
-
         const scoreExplicacion = puntajeDeTexto(
           punto.explicacion || "",
           query
         );
-
         const mejorTextoOTitulo = Math.max(
           scoreTitulo,
           scoreTexto
         );
-
         const textScore = Math.max(
           mejorTextoOTitulo,
           scoreExplicacion
         );
-
         /* --------------------------------------------------------
            COINCIDENCIAS LITERALES REALES
            Estas son las que determinan si la sugerencia
            realmente puede mostrarse y resaltarse.
            -------------------------------------------------------- */
-
         const matchTitulo = buscarCoincidencia(
           punto.seccionTitulo || "",
           queryLimpia
         );
-
         const matchTexto = buscarCoincidencia(
           punto.texto || "",
           queryLimpia
         );
-
         const matchExplicacion = buscarCoincidencia(
           punto.explicacion || "",
           queryLimpia
         );
-
         const tieneCoincidenciaReal =
           !!matchTitulo ||
           !!matchTexto ||
           !!matchExplicacion;
-
         /* --------------------------------------------------------
            DETERMINAR SI LA COINCIDENCIA ESTÁ SOLO
            EN LA EXPLICACIÓN
            -------------------------------------------------------- */
-
         const soloExplicacion =
           !!matchExplicacion &&
           !matchTitulo &&
           !matchTexto;
-
         return {
           punto,
           textScore,
@@ -258,7 +218,6 @@ export default function TheorySearchBar({
          SOLO pasan los puntos que tienen una coincidencia
          literal real.
          ---------------------------------------------------------- */
-
       .filter(
         ({ tieneCoincidenciaReal }) =>
           tieneCoincidenciaReal
@@ -268,25 +227,21 @@ export default function TheorySearchBar({
     query,
     hayQuery,
   ]);
-
   /* ============================================================
      RESULTADOS VISIBLES
      ============================================================ */
-
   // Las sugerencias muestran únicamente coincidencias
   // literales reales.
   //
   // La búsqueda semántica NO se muestra automáticamente.
   const resultados = useMemo(() => {
     const queryLimpia = query.trim();
-
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
     ) {
       return [];
     }
-
     return candidatosTexto
       .map(
         ({
@@ -316,11 +271,9 @@ export default function TheorySearchBar({
     query,
     hayQuery,
   ]);
-
   /* ============================================================
      BÚSQUEDA SEMÁNTICA
      ============================================================ */
-
   async function buscarSemantico(queryLimpia) {
     if (
       queryLimpia.length <
@@ -328,17 +281,13 @@ export default function TheorySearchBar({
     ) {
       return null;
     }
-
     const miPeticion =
       ++idPeticionRef.current;
-
     setBuscandoSemantico(true);
-
     try {
       /* ----------------------------------------------------------
          CACHE DE EMBEDDINGS
          ---------------------------------------------------------- */
-
       if (
         cacheEmbeddingsRef.current.flatPuntos !==
         flatPuntos
@@ -354,11 +303,9 @@ export default function TheorySearchBar({
           ),
         };
       }
-
       /* ----------------------------------------------------------
          GENERAR VECTOR DE LA QUERY Y OBTENER VECTORES
          ---------------------------------------------------------- */
-
       const [
         vectoresPuntos,
         vectorQuery,
@@ -366,43 +313,35 @@ export default function TheorySearchBar({
         cacheEmbeddingsRef.current.promesa,
         embeberTexto(queryLimpia),
       ]);
-
       /* ----------------------------------------------------------
          COMPROBAR QUE SIGUE SIENDO LA MISMA PETICIÓN
          ---------------------------------------------------------- */
-
       if (
         miPeticion !==
         idPeticionRef.current
       ) {
         return null;
       }
-
       let mejorPunto = null;
       let mejorSimilitud = -Infinity;
-
       /* ----------------------------------------------------------
          BUSCAR LA COINCIDENCIA SEMÁNTICA MÁS PARECIDA
          ---------------------------------------------------------- */
-
       flatPuntos.forEach(
         (punto, i) => {
           const vector =
             vectoresPuntos[i];
-
           if (
             !vector ||
             !vectorQuery
           ) {
             return;
           }
-
           const similitud =
             similitudCoseno(
               vectorQuery,
               vector
             );
-
           if (
             similitud >=
             UMBRAL_SIMILITUD &&
@@ -415,11 +354,9 @@ export default function TheorySearchBar({
           }
         }
       );
-
       if (!mejorPunto) {
         return null;
       }
-
       return {
         punto: mejorPunto,
         finalScore:
@@ -440,50 +377,39 @@ export default function TheorySearchBar({
       }
     }
   }
-
   /* ============================================================
      ELEGIR RESULTADO
      ============================================================ */
-
   function elegir(resultado) {
     const { punto } = resultado;
-
     const queryLimpia =
       query.trim();
-
     /* ----------------------------------------------------------
        BUSCAR COINCIDENCIA EN TEXTO
        ---------------------------------------------------------- */
-
     const matchTexto =
       buscarCoincidencia(
         punto.texto || "",
         queryLimpia
       );
-
     /* ----------------------------------------------------------
        BUSCAR COINCIDENCIA EN EXPLICACIÓN
        ---------------------------------------------------------- */
-
     const matchExplicacion =
       buscarCoincidencia(
         punto.explicacion || "",
         queryLimpia
       );
-
     let campo = null;
     let matchText = null;
-
     /* ----------------------------------------------------------
        PRIORIDAD:
        1. Texto
        2. Explicación
        3. Semántico
        ---------------------------------------------------------- */
-
     if (matchTexto) {
       campo = "texto";
-
       matchText =
         punto.texto.slice(
           matchTexto.indice,
@@ -492,7 +418,6 @@ export default function TheorySearchBar({
         );
     } else if (matchExplicacion) {
       campo = "explicacion";
-
       matchText =
         punto.explicacion.slice(
           matchExplicacion.indice,
@@ -505,88 +430,71 @@ export default function TheorySearchBar({
          Esto ocurre únicamente cuando llegamos aquí mediante
          búsqueda semántica.
          -------------------------------------------------------- */
-
       campo = punto.explicacion
         ? "explicacion"
         : "texto";
     }
-
     /* ----------------------------------------------------------
        AVISAR AL COMPONENTE PADRE
        ---------------------------------------------------------- */
-
     onSelect({
       puntoId: punto.id,
       campo,
       matchText,
     });
-
     /* ----------------------------------------------------------
        LIMPIAR BUSCADOR
        ---------------------------------------------------------- */
-
     setQuery("");
     setBuscadorFocus(false);
   }
-
   /* ============================================================
      ENTER
      ============================================================ */
-
   async function buscarConEnter() {
     const queryLimpia =
       query.trim();
-
     if (
       queryLimpia.length <
       MIN_LARGO_QUERY_TEXTO
     ) {
       return;
     }
-
     /* ----------------------------------------------------------
        CASO 1:
        EXISTE UNA COINCIDENCIA LITERAL.
        Usamos la primera porque "resultados" ya está ordenado
        por relevancia.
        ---------------------------------------------------------- */
-
     if (resultados.length > 0) {
       elegir(resultados[0]);
       return;
     }
-
     /* ----------------------------------------------------------
        CASO 2:
        NO EXISTE NINGUNA COINCIDENCIA LITERAL.
        Enter activa la búsqueda semántica.
        ---------------------------------------------------------- */
-
     if (
       queryLimpia.length <
       MIN_LARGO_QUERY_SEMANTICO
     ) {
       return;
     }
-
     const resultadoSemantico =
       await buscarSemantico(
         queryLimpia
       );
-
     /* ----------------------------------------------------------
        SI ENCONTRAMOS UNA COINCIDENCIA SEMÁNTICA
        ---------------------------------------------------------- */
-
     if (resultadoSemantico) {
       elegir(resultadoSemantico);
     }
   }
-
   /* ============================================================
      NAVEGACIÓN CON FLECHAS
      ============================================================ */
-
   const {
     focusedIdx,
     handleKeyDown,
@@ -596,63 +504,51 @@ export default function TheorySearchBar({
       elegir(resultado);
     }
   );
-
   /* ============================================================
      TECLADO DEL INPUT
      ============================================================ */
-
   function onKeyDownInput(e) {
     /* ----------------------------------------------------------
        ESCAPE
        ---------------------------------------------------------- */
-
     if (e.key === "Escape") {
       e.currentTarget.blur();
       setBuscadorFocus(false);
       return;
     }
-
     /* ----------------------------------------------------------
        ENTER
        IMPORTANTE:
        No dejamos que useArrowKeyList maneje Enter.
        Enter tiene nuestro comportamiento personalizado.
        ---------------------------------------------------------- */
-
     if (e.key === "Enter") {
       e.preventDefault();
       buscarConEnter();
       return;
     }
-
     /* ----------------------------------------------------------
        FLECHAS
        ---------------------------------------------------------- */
-
     handleKeyDown(e);
   }
-
   /* ============================================================
      MOSTRAR DROPDOWN
      ============================================================ */
-
   const mostrarDropdown =
     buscadorFocus &&
     hayQuery &&
     query.trim().length >=
     MIN_LARGO_QUERY_TEXTO;
-
   /* ============================================================
      RENDER
      ============================================================ */
-
   return (
     <div className="theory-search">
       <div className="theory-search__wrap">
         {/* ======================================================
            INPUT
            ====================================================== */}
-
         <input
           autoComplete="off"
           type="search"
@@ -682,11 +578,9 @@ export default function TheorySearchBar({
           className={`theory-search__input ${mostrarDropdown ? "has-results" : ""
             }`}
         />
-
         {/* ======================================================
            SUGERENCIAS
            ====================================================== */}
-
         {mostrarDropdown && (
           <div className="theory-search__dropdown">
             {resultados.length > 0 ? (
@@ -698,18 +592,15 @@ export default function TheorySearchBar({
                     matchTexto,
                     matchExplicacion,
                   } = r;
-
                   /* ------------------------------------------------
                      FRAGMENTO DE EXPLICACIÓN
                      Solo se prepara si la coincidencia está
                      únicamente en la explicación.
                      ------------------------------------------------ */
-
                   const soloExplicacion =
                     !!matchExplicacion &&
                     !matchTitulo &&
                     !matchTexto;
-
                   const datosFragmento =
                     soloExplicacion
                       ? armarFragmentoExplicacion(
@@ -718,7 +609,6 @@ export default function TheorySearchBar({
                         query
                       )
                       : null;
-
                   return (
                     <button
                       key={punto.id}
@@ -738,7 +628,6 @@ export default function TheorySearchBar({
                       {/* ------------------------------------------
                          SOLO MOSTRAR LA COINCIDENCIA
                          ------------------------------------------ */}
-
                       {matchTitulo ? (
                         <span className="theory-search__item-seccion">
                           <ResaltarCoincidencia
@@ -785,7 +674,6 @@ export default function TheorySearchBar({
                 No hay coincidencias
               </p>
             )}
-
             {buscandoSemantico && (
               <div className="theory-search__semantic-loading">
                 Buscando la coincidencia más parecida...

@@ -1,5 +1,4 @@
 @use "./tokens" as *;
-
 @font-face {
   font-family: "DS-Digital";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
@@ -7,13 +6,11 @@
   font-style: normal;
   font-display: swap;
 }
-
 .timer-font {
   font-family: "DS-Digital", monospace !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
-
 .horario {
   width: 100%;
   min-height: 100vh;
@@ -24,7 +21,6 @@
   padding: calc(var(--header-h) + 36px) 20px;
   padding-bottom: 0;
 }
-
 .horario__main {
   width: 100%;
   max-width: 80rem;
@@ -34,28 +30,23 @@
   display: grid;
   gap: 22px;
 }
-
 @media (min-width: 1024px) {
   .horario__main {
     grid-template-columns: repeat(12, 1fr);
   }
-
   .horario__timer-section {
     grid-column: span 8;
   }
-
   .horario__side-section {
     grid-column: span 4;
   }
 }
-
 .horario__timer-section,
 .horario__side-section {
   display: flex;
   flex-direction: column;
   gap: 22px;
 }
-
 .horario__timer-card,
 .horario__courses-card {
   background: var(--surface);
@@ -63,26 +54,23 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
 }
-
 .horario__timer-card {
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .horario__btn-volver-tema {
-  width: 100%;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   margin-bottom: 12px;
   padding: 10px 12px;
-  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: var(--surface-alt);
-  color: var(--ink-soft);
   font-size: 14px;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   overflow: hidden;
@@ -92,13 +80,11 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .horario__btn-volver-tema:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__timer-center {
   flex: 1;
   min-width: 0;
@@ -111,14 +97,12 @@
   text-align: center;
   gap: clamp(8px, 1.5vh, 16px);
 }
-
 .horario__timer-label {
   margin: 0;
   color: var(--ink-soft);
   font-size: clamp(12px, 1.4vw, 14px);
   font-weight: 600;
 }
-
 .horario__timer-clock {
   display: block;
   width: 100%;
@@ -137,7 +121,6 @@
   user-select: none;
   overflow: hidden;
 }
-
 .horario__progress-track {
   position: relative;
   width: 100%;
@@ -149,7 +132,6 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
 }
-
 .horario__progress-fill {
   height: 100%;
   width: var(--fill-pct, 0%);
@@ -157,12 +139,10 @@
   border-radius: var(--radius-full);
   transition: width 0.3s linear;
 }
-
 .horario__timer-controls {
   padding-top: 18px;
   border-top: 1px solid var(--border);
 }
-
 .horario__timer-btn-row {
   width: 100%;
   max-width: 28rem;
@@ -171,7 +151,6 @@
   justify-content: center;
   gap: 8px;
 }
-
 .horario__btn {
   flex: 1;
   min-height: 46px;
@@ -191,40 +170,33 @@
     border-color 0.2s linear,
     opacity 0.2s linear;
 }
-
 .horario__btn.is-start {
   background: var(--primary);
   color: var(--ink-on-primary);
   border-color: var(--primary-dark);
   box-shadow: var(--shadow-sm);
 }
-
 .horario__btn.is-start:hover {
   background: var(--primary-dark);
 }
-
 .horario__btn.is-start:disabled {
   opacity: 0.45;
   cursor: not-allowed !important;
 }
-
 .horario__btn.is-pause {
   background: var(--surface-alt);
   color: var(--ink);
   border-color: var(--border);
 }
-
 .horario__btn.is-pause:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
 }
-
 .horario__btn.is-pause:disabled {
   opacity: 0.45;
   cursor: not-allowed !important;
   pointer-events: none;
 }
-
 .horario__btn-reset {
   min-height: 46px;
   padding: 12px 14px;
@@ -239,23 +211,19 @@
     border-color 0.2s linear,
     opacity 0.2s linear;
 }
-
 .horario__btn-reset:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__btn-reset:disabled {
   opacity: 0.45;
   cursor: not-allowed !important;
   pointer-events: none;
 }
-
 /* ============================================================
    DÍAS
    ============================================================ */
-
 .horario__day-tabs {
   width: 100%;
   display: flex;
@@ -267,7 +235,6 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
-
 .horario__day-row {
   width: 100%;
   background-color: var(--surface);
@@ -275,7 +242,6 @@
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 6px;
 }
-
 .horario__day-btn {
   min-width: 0;
   width: 100%;
@@ -292,26 +258,21 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .horario__day-btn:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
-
 .horario__day-btn.is-active,
 .horario__day-btn.is-active:hover {
   background: var(--primary-light);
-  color: var(--ink-on-primary);
+  color: var(--ink);
 }
-
 /* ============================================================
    CURSOS
    ============================================================ */
-
 .horario__courses-card {
   padding: 22px;
 }
-
 .horario__courses-header {
   display: flex;
   align-items: center;
@@ -322,14 +283,12 @@
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
-
 .horario__courses-header-left {
   display: flex;
   align-items: center;
   gap: 10px;
   min-width: 0;
 }
-
 .horario__back-course {
   width: 38px;
   height: 38px;
@@ -347,13 +306,11 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .horario__back-course:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--border-strong);
 }
-
 .horario__day-title {
   margin: 0;
   color: var(--ink);
@@ -361,13 +318,11 @@
   font-weight: 700;
   text-transform: capitalize;
 }
-
 .horario__course-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .horario__course-item {
   padding: 16px;
   background: var(--surface);
@@ -377,17 +332,14 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.3s linear;
 }
-
 .horario__course-item:hover {
   box-shadow: var(--shadow-sm);
   background-color: var(--surface-hover);
   border-color: var(--ink);
 }
-
 .horario__course-item.is-complete {
   opacity: 0.65;
 }
-
 .horario__course-top {
   display: flex;
   align-items: flex-start;
@@ -395,7 +347,6 @@
   gap: 10px;
   margin-bottom: 12px;
 }
-
 .horario__course-tags {
   display: flex;
   align-items: center;
@@ -403,20 +354,17 @@
   flex-wrap: wrap;
   min-width: 0;
 }
-
 .horario__course-name {
   margin: 0;
   color: inherit;
   font-size: 15px;
   font-weight: 700;
 }
-
 .horario__course-progress {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .horario__mini-track {
   flex: 1;
   height: 6px;
@@ -424,7 +372,6 @@
   background: rgba(0, 0, 0, 0.12);
   border-radius: var(--radius-full);
 }
-
 .horario__mini-fill {
   height: 100%;
   width: var(--fill-pct, 0%);
@@ -432,7 +379,6 @@
   border-radius: var(--radius-full);
   transition: width 0.3s linear;
 }
-
 .horario__course-count {
   flex-shrink: 0;
   color: inherit;
@@ -441,33 +387,27 @@
   opacity: 0.8;
   white-space: nowrap;
 }
-
 .horario__course-status {
   margin: 8px 0 0;
   color: inherit;
   font-size: 13px;
   opacity: 0.75;
 }
-
 .horario__check-icon {
   color: var(--success);
 }
-
 .horario__chevron-icon {
   color: var(--ink-faint);
   opacity: 0.7;
 }
-
 /* ============================================================
    DESCANSO MANUAL
    ============================================================ */
-
 .horario__rest-row {
   display: flex;
   gap: 8px;
   margin-top: 8px;
 }
-
 .horario__rest-select {
   position: relative;
   flex: 1;
@@ -476,25 +416,21 @@
   flex-direction: column;
   gap: 6px;
 }
-
 .horario__rest-info {
   width: 100%;
 }
-
 .horario__rest-message {
   margin: 0;
   color: var(--ink-soft);
   font-size: 13.5px;
   font-weight: 600;
 }
-
 .horario__rest-select-control {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
 }
-
 .horario__rest-select-control > i:first-child {
   position: absolute;
   left: 13px;
@@ -503,7 +439,6 @@
   font-size: 13px;
   pointer-events: none;
 }
-
 .horario__rest-select-control > i:last-child {
   position: absolute;
   right: 13px;
@@ -512,7 +447,6 @@
   font-size: 11px;
   pointer-events: none;
 }
-
 .horario__rest-select select {
   width: 100%;
   min-height: 42px;
@@ -534,34 +468,28 @@
     border-color 0.2s linear,
     box-shadow 0.2s linear;
 }
-
 .horario__rest-select select:hover {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--primary);
 }
-
 .horario__rest-select select:focus {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .horario__rest-select select:disabled {
   opacity: 0.5;
   cursor: not-allowed !important;
 }
-
 .horario__rest-select select option {
   background: var(--surface);
   color: var(--ink);
 }
-
 /* ============================================================
    TAREAS
    ============================================================ */
-
 .horario__task-list {
   position: relative;
   display: flex;
@@ -571,14 +499,12 @@
   padding-left: 44px;
   border-left: 2px solid var(--border);
 }
-
 .horario__task-row {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   margin-left: -60px;
 }
-
 .horario__task-dot {
   width: 32px;
   height: 32px;
@@ -593,13 +519,11 @@
   font-size: 14px;
   font-weight: 700;
 }
-
 .horario__task-dot.is-past {
   background: var(--secondary);
   border-color: var(--secondary);
   color: var(--ink-on-primary);
 }
-
 .horario__task-box {
   flex: 1;
   padding: 14px;
@@ -612,20 +536,17 @@
     border-color 0.2s linear,
     box-shadow 0.2s linear;
 }
-
 .horario__task-box.is-past {
   background: var(--secondary-bg);
   border-color: var(--secondary);
   color: var(--ink-soft);
 }
-
 .horario__task-box.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
   color: var(--ink);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .horario__task-box-top {
   display: flex;
   align-items: flex-start;
@@ -633,25 +554,21 @@
   gap: 8px;
   margin-bottom: 4px;
 }
-
 .horario__task-box-title {
   margin: 0;
   color: inherit;
   font-size: 14px;
   font-weight: 700;
 }
-
 .horario__task-box-detail {
   margin: 0;
   color: inherit;
   font-size: 13.5px;
   opacity: 0.8;
 }
-
 /* ============================================================
    TOMATE / DESCANSO
    ============================================================ */
-
 .horario__rest-dot {
   position: relative;
   width: 32px;
@@ -663,7 +580,6 @@
   border-radius: var(--radius-full);
   background: var(--surface-alt);
 }
-
 .horario__tomato-circle {
   position: relative;
   width: 28px;
@@ -677,18 +593,15 @@
   border-radius: 0;
   background: transparent;
 }
-
 .horario__tomato-svg {
   width: 20px;
   height: 20px;
   color: var(--danger);
   transition: color 0.2s linear;
 }
-
 .horario__rest-dot.is-past .horario__tomato-svg {
   color: var(--success);
 }
-
 .horario__tomato-icon {
   position: absolute;
   top: 50%;
@@ -699,18 +612,15 @@
   line-height: 1;
   transition: color 0.2s linear;
 }
-
 .horario__rest-dot.is-past .horario__tomato-icon {
   color: #16a34a;
 }
-
 .horario__tomato-lock {
   position: absolute;
   bottom: 4px;
-  font-size: 14px;
-  color: var(--border);
+  font-size: 12px;
+  color: var(--ink-on-primary);
 }
-
 .horario__rest-box {
   flex: 1;
   padding: 10px;
@@ -721,44 +631,36 @@
   font-size: 13.5px;
   font-weight: 600;
 }
-
 .horario__rest-box.is-past {
   opacity: 0.6;
 }
-
 .horario__rest-box.is-active {
   border-color: var(--primary);
   background: var(--primary-bg);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 /* ============================================================
    MODAL COMPLETADO
    ============================================================ */
-
 .horario__complete-modal {
   padding: 16px;
   text-align: center;
 }
-
 .horario__complete-emoji {
   margin-bottom: 16px;
   font-size: 56px;
 }
-
 .horario__complete-title {
   margin: 0 0 10px;
   color: var(--ink);
   font-size: 22px;
   font-weight: 700;
 }
-
 .horario__complete-sub {
   margin: 0 0 16px;
   color: var(--ink-soft);
   font-size: 14px;
 }
-
 .horario__complete-msg {
   margin: 0 0 28px;
   color: var(--ink);
@@ -766,7 +668,6 @@
   font-weight: 600;
   line-height: 1.4;
 }
-
 .horario__complete-btn {
   padding: 12px 24px;
   border: 1px solid var(--primary-dark);
@@ -779,15 +680,12 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.2s linear;
 }
-
 .horario__complete-btn:hover {
   background: var(--primary-dark);
 }
-
 /* ============================================================
    CURSO RÁPIDO
    ============================================================ */
-
 .curso-rapido__temas {
   display: flex;
   flex-direction: column;
@@ -797,11 +695,9 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-
 .curso-rapido__temas::-webkit-scrollbar {
   display: none;
 }
-
 .curso-rapido__tema-btn {
   padding: 10px 12px;
   border: 0;
@@ -816,17 +712,14 @@
     border-color 0.2s linear,
     color 0.2s linear;
 }
-
 .curso-rapido__tema-btn:hover {
   background: var(--surface-hover);
   border-color: var(--border);
   color: var(--ink);
 }
-
 /* ============================================================
    TEMA MODAL
    ============================================================ */
-
 .tema-modal {
   min-height: 0;
   max-height: 80vh;
@@ -835,18 +728,15 @@
   flex-direction: column;
   gap: 8px;
 }
-
 .tema-modal__title {
   margin: 0;
   color: var(--ink);
 }
-
 .tema-modal__text {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9rem;
 }
-
 .tema-modal__list {
   min-height: 0;
   max-height: 280px;
@@ -858,11 +748,9 @@
   overflow-y: auto;
   scrollbar-width: none;
 }
-
 .tema-modal__list::-webkit-scrollbar {
   display: none;
 }
-
 .tema-modal__item {
   width: 100%;
   padding: 11px 4px;
@@ -878,28 +766,23 @@
     border-color 0.2s linear,
     color 0.2s linear;
 }
-
 .tema-modal__item:hover {
   background: var(--surface-hover);
   border-bottom-color: var(--border-strong);
   color: var(--ink);
 }
-
 .tema-modal__item:active {
   background: var(--surface-hover);
 }
-
 /* ============================================================
    SELECTOR DE TEMA
    ============================================================ */
-
 .tema-selector {
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 6px;
 }
-
 .tema-selector__titulo {
   margin: 0;
   color: var(--ink);
@@ -907,25 +790,21 @@
   font-weight: 800;
   line-height: 1.2;
 }
-
 .tema-selector__descripcion {
   margin: -8px 0 0;
   color: var(--ink-soft);
   font-size: 0.9rem;
   line-height: 1.45;
 }
-
 /* ============================================================
    FUENTE DEL TEMA
    ============================================================ */
-
 .tema-selector__origen-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
   padding-bottom: 2px;
 }
-
 .tema-selector__origen-tab {
   position: relative;
   padding: 10px 12px 11px;
@@ -942,27 +821,22 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .tema-selector__origen-tab:hover {
   color: var(--ink);
 }
-
 .tema-selector__origen-tab.is-active {
   color: var(--primary);
   border-bottom-color: var(--primary);
 }
-
 /* ============================================================
    SEMANAS
    ============================================================ */
-
 .tema-selector__semana-selector {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .tema-selector__semana-tabs {
   min-width: 0;
   flex: 1;
@@ -970,7 +844,6 @@
   gap: 2px;
   align-items: center;
 }
-
 .tema-selector__semana-tab {
   flex: 1;
   min-width: 0;
@@ -987,17 +860,14 @@
     background 0.2s linear,
     color 0.2s linear;
 }
-
 .tema-selector__semana-tab:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
-
 .tema-selector__semana-tab.is-active {
   background: var(--secondary-bg);
   color: var(--secondary-dark);
 }
-
 .tema-selector__semana-arrow {
   flex: 0 0 28px;
   height: 28px;
@@ -1016,20 +886,16 @@
     color 0.2s linear,
     transform 0.15s linear;
 }
-
 .tema-selector__semana-arrow:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
-
 .tema-selector__semana-arrow:active {
   transform: scale(0.94);
 }
-
 /* ============================================================
    LISTA DE TEMAS
    ============================================================ */
-
 .tema-selector__lista {
   max-height: 280px;
   display: flex;
@@ -1040,20 +906,16 @@
   scrollbar-color: var(--border-strong) transparent;
   padding-right: 3px;
 }
-
 .tema-selector__lista::-webkit-scrollbar {
   width: 3px;
 }
-
 .tema-selector__lista::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .tema-selector__lista::-webkit-scrollbar-thumb {
   background: var(--border-strong);
   border-radius: 999px;
 }
-
 .tema-selector__boton {
   width: 100%;
   padding: 10px 12px;
@@ -1072,28 +934,23 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .tema-selector__boton:hover {
   background: var(--surface-hover);
   border-color: var(--border);
   color: var(--ink);
 }
-
 .tema-selector__boton:active {
   background: var(--surface-hover);
 }
-
 .tema-selector__boton.is-selected {
   background: var(--primary-bg);
   border-bottom-color: var(--primary-light);
   color: var(--primary-light);
   font-weight: 700;
 }
-
 /* ============================================================
    ACCIONES
    ============================================================ */
-
 .tema-selector__confirm-row {
   display: flex;
   justify-content: flex-end;
@@ -1101,7 +958,6 @@
   margin-top: 2px;
   padding-top: 12px;
 }
-
 .tema-selector__confirm-btn {
   min-width: 108px;
   padding: 9px 16px;
@@ -1116,38 +972,32 @@
     border-color 0.2s linear,
     opacity 0.2s linear;
 }
-
 .tema-selector__confirm-btn.is-cancelar {
   border: 1px solid var(--border);
   background: transparent;
   color: var(--ink-soft);
 }
-
 .tema-selector__confirm-btn.is-cancelar:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
   color: var(--ink);
 }
-
 .tema-selector__confirm-btn.is-aceptar {
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--ink-on-primary);
   box-shadow: var(--shadow-sm);
 }
-
 .tema-selector__confirm-btn.is-aceptar:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
 }
-
 .tema-selector__confirm-btn.is-aceptar:disabled {
   opacity: 0.4;
   cursor: not-allowed !important;
   pointer-events: none;
   box-shadow: none;
 }
-
 .tema-selector__omitir {
   align-self: center;
   margin-top: 2px;
@@ -1163,22 +1013,18 @@
     background 0.2s linear,
     color 0.2s linear;
 }
-
 .tema-selector__omitir:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
-
 .tema-selector__acciones {
   display: flex;
   gap: 10px;
 }
-
 .tema-selector__accion {
   flex: 1;
   justify-content: center;
 }
-
 .tema-selector__iniciar {
   padding: 7px 14px;
   border: 1px solid var(--primary);
@@ -1193,30 +1039,25 @@
     color 0.2s linear,
     border-color 0.2s linear;
 }
-
 .tema-selector__iniciar:hover,
 .tema-selector__iniciar:active {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
   border-color: var(--primary-dark);
 }
-
 /* ============================================================
    CURSO RÁPIDO
    ============================================================ */
-
 .horario__quick-course {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .horario__quick-course-label {
   color: var(--ink-soft);
   font-size: 13.5px;
   font-weight: 600;
 }
-
 .horario__quick-course-select {
   width: 100%;
   box-sizing: border-box;
@@ -1236,17 +1077,14 @@
     border-color 0.2s linear,
     box-shadow 0.2s linear;
 }
-
 .horario__quick-course-select:hover {
   background: var(--surface-hover);
   border-color: var(--primary);
 }
-
 .horario__quick-course-select:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .horario__quick-course-btn {
   display: flex;
   align-items: center;
@@ -1254,16 +1092,13 @@
   gap: 8px;
   text-align: left;
 }
-
 .horario__quick-course-btn i {
   font-size: 12px;
   color: var(--ink-soft);
 }
-
 /* ============================================================
    BLOQUEO
    ============================================================ */
-
 .horario__lock-screen {
   position: fixed;
   inset: 0;
@@ -1277,13 +1112,11 @@
   text-align: center;
   padding: 20px;
 }
-
 .horario__lock-clock {
   font-size: 6rem;
   margin: 0 0 30px;
   letter-spacing: 2px;
 }
-
 .horario__lock-title {
   font-size: 1.5rem;
   margin-bottom: 15px;
@@ -1291,18 +1124,15 @@
   line-height: 1.4;
   font-weight: bold;
 }
-
 .horario__lock-sub {
   font-size: 1.2rem;
   opacity: 0.7;
   max-width: 600px;
   line-height: 1.4;
 }
-
 /* ============================================================
    GATE
    ============================================================ */
-
 .gate-overlay {
   position: fixed;
   inset: 0;
@@ -1313,7 +1143,6 @@
   background: var(--overlay-strong);
   padding: 16px;
 }
-
 .gate-btn {
   display: flex;
   align-items: center;
@@ -1325,11 +1154,9 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
 /* ============================================================
    SETUP
    ============================================================ */
-
 .setup-overlay {
   position: fixed;
   inset: 0;
@@ -1340,7 +1167,6 @@
   background: var(--overlay-strong);
   padding: 16px;
 }
-
 .setup-card {
   width: min(420px, 100%);
   max-height: 90vh;
@@ -1353,7 +1179,6 @@
   flex-direction: column;
   gap: 18px;
 }
-
 .setup-titulo {
   margin: 0;
   font-size: 1.15rem;
@@ -1361,34 +1186,28 @@
   color: var(--ink);
   text-align: center;
 }
-
 .setup-sub {
   margin: -10px 0 0;
   font-size: 0.85rem;
   color: var(--ink-soft);
   text-align: center;
 }
-
 .setup-sub--tight {
   margin: 0;
 }
-
 .setup-sub--error {
   margin: 0;
   color: var(--danger);
 }
-
 .setup-dias-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
-
 .setup-dia-btn.is-on {
   background: var(--secondary-dark);
   color: var(--bg);
 }
-
 .setup-dia-btn {
   padding: 12px 4px;
   border-radius: var(--radius-md);
@@ -1400,7 +1219,6 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear;
 }
-
 .setup-input {
   width: 100%;
   box-sizing: border-box;
@@ -1413,31 +1231,25 @@
   outline: none;
   transition: all 0.2s linear;
 }
-
 .setup-input:hover {
   background: var(--primary-bg);
 }
-
 .setup-input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
-
 .setup-input.is-error {
   border-color: var(--danger);
 }
-
 .setup-char-count {
   font-size: 0.875rem;
   text-align: right;
   color: var(--ink-soft);
   margin: -10px 2px 0 0;
 }
-
 .setup-input-wrap {
   position: relative;
 }
-
 .setup-sugerencias {
   position: absolute;
   top: 100%;
@@ -1457,13 +1269,11 @@
   gap: 4px;
   padding: var(--space-1);
 }
-
 .setup-sugerencias::-webkit-scrollbar {
   display: none;
   width: 0;
   height: 0;
 }
-
 .setup-sugerencia-item {
   text-align: left;
   padding: 8px 12px;
@@ -1473,24 +1283,20 @@
   color: var(--ink);
   font-size: 0.9rem;
 }
-
 .setup-sugerencia-item:hover,
 .setup-sugerencia-item.is-active {
   background: var(--primary-bg);
   border-color: var(--primary);
 }
-
 .setup-char-count.is-error {
   color: var(--danger);
   font-weight: 700;
 }
-
 .setup-lista-cursos {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .setup-lista-curso-item {
   display: flex;
   justify-content: space-between;
@@ -1501,19 +1307,16 @@
   font-size: 0.85rem;
   color: var(--ink);
 }
-
 .setup-pomo-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 6px;
 }
-
 .setup-pomo-grid:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
-
 .setup-pomo-btn {
   padding: 10px 0;
   border-radius: var(--radius-sm);
@@ -1523,23 +1326,19 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
 .setup-pomo-btn:hover {
   background: var(--primary-bg);
   border-color: var(--primary);
 }
-
 .setup-pomo-btn.is-on {
   border-color: var(--secondary-dark);
   background: var(--secondary-dark);
   color: var(--bg);
 }
-
 .setup-nav {
   display: flex;
   gap: 10px;
 }
-
 .setup-btn {
   flex: 1;
   padding: 13px;
@@ -1549,167 +1348,133 @@
   font-size: 0.95rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-
 .setup-btn.is-primary:disabled {
   opacity: 0.4;
   cursor: not-allowed !important;
 }
-
 .setup-btn.is-ghost {
   background: var(--surface-alt);
   color: var(--ink-soft);
 }
-
 /* ============================================================
    TABLET / MOBILE
    ============================================================ */
-
 @media (max-width: 768px) {
   .horario__main {
     min-height: 0;
     padding: 22px 16px;
     gap: 18px;
   }
-
   .horario__timer-card {
     min-height: 0;
     padding: 24px 18px;
   }
-
   .horario__courses-card {
     padding: 18px;
   }
-
   .horario__timer-btn-row {
     gap: 6px;
   }
-
   .horario__day-row {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
-
   .horario__day-btn {
     padding: 9px 4px;
     font-size: 12px;
   }
 }
-
 @media (max-width: 480px) {
   .horario {
     padding: calc(var(--header-h) + 36px) 10px;
     padding-bottom: 0;
   }
-
   .horario__main {
     min-height: 0;
     padding: 0;
   }
-
   .horario__timer-card {
     min-height: 0;
     height: auto;
     padding: 22px 16px;
   }
-
   .horario__timer-center {
     gap: 10px;
   }
-
   .horario__timer-clock {
     font-size: min(23vw, 7rem);
     line-height: 0.78;
   }
-
   .horario__timer-btn-row {
     gap: 6px;
   }
-
   .horario__btn {
     padding: 11px 8px;
     font-size: 13px;
   }
-
   .horario__btn-reset {
     padding: 11px;
   }
-
   .horario__course-item {
     padding: 14px;
   }
-
   .horario__course-tags {
     width: 100%;
   }
-
   .horario__day-row {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
-
   .horario__day-btn {
     padding: 8px 2px;
     font-size: 11px;
   }
-
   .horario__rest-row {
     flex-direction: column;
   }
-
   .horario__rest-select {
     width: 100%;
     flex: none;
   }
-
   .tema-selector {
     gap: 14px;
   }
-
   .tema-selector__origen-tabs {
     gap: 2px;
   }
-
   .tema-selector__origen-tab {
     padding: 9px 6px 10px;
     font-size: 0.82rem;
   }
-
   .tema-selector__semana-tab {
     padding: 7px 4px;
     font-size: 0.74rem;
   }
-
   .tema-selector__boton {
     padding: 9px 10px;
     font-size: 0.86rem;
   }
-
   .tema-selector__confirm-row,
   .tema-selector__acciones {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
-
   .tema-selector__confirm-btn {
     width: 100%;
   }
 }
-
 @media (min-width: 481px) and (max-width: 767px) {
   .horario__timer-clock {
     font-size: min(22vw, 9rem);
   }
 }
-
 @media (min-width: 768px) and (max-width: 1023px) {
   .horario__timer-clock {
     font-size: min(20vw, 12rem);
   }
 }
-
 @media (min-width: 1024px) {
   .horario__timer-clock {
     font-size: min(19vw, 15rem);
   }
 }
-
 @media (min-width: $bp-xl) {
   .horario__timer-clock {
     font-size: min(18vw, 18rem);

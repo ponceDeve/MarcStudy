@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import QuestionCard from "./QuestionCard";
 import ExplanationPanel from "./ExplanationPanel";
 import { shuffle } from "../../lib/shuffle";
-
 // Mini-quiz interactivo con las preguntas de las tarjetas de teoría
 // que ya viste en este tema (no las del examen) — se arma una lista
 // mezclada apenas se abre el modal y se responde una por una, igual
@@ -16,7 +15,6 @@ export default function SeenQuestionsModal({
   const [pos, setPos] = useState(0);
   const [questionResult, setQuestionResult] = useState(null);
   const [attemptKey, setAttemptKey] = useState(0);
-
   const preguntas = useMemo(() => {
     if (!open) return [];
     const indices = Object.keys(preguntasVistas).map(Number);
@@ -27,7 +25,6 @@ export default function SeenQuestionsModal({
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
-
   // Al abrir el modal de nuevo, arrancar siempre desde la primera.
   useEffect(() => {
     if (open) {
@@ -36,9 +33,7 @@ export default function SeenQuestionsModal({
       setAttemptKey(0);
     }
   }, [open]);
-
   const preguntaActual = preguntas[pos];
-
   function siguiente() {
     if (pos < preguntas.length - 1) {
       setPos((p) => p + 1);
@@ -48,12 +43,10 @@ export default function SeenQuestionsModal({
       onClose();
     }
   }
-
   function reintentar() {
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
   }
-
   return (
     <div
       className={`levels-modal ${open ? "" : "is-closed"}`}
@@ -62,7 +55,6 @@ export default function SeenQuestionsModal({
     >
       <div className="levels-modal__inner" onClick={(e) => e.stopPropagation()}>
         <h2 className="levels-modal__title">Preguntas vistas</h2>
-
         {preguntas.length === 0 ? (
           <p className="levels-modal__empty">
             Todavía no has respondido ninguna pregunta de este tema.
@@ -72,13 +64,11 @@ export default function SeenQuestionsModal({
             <p className="levels-modal__counter">
               Pregunta {pos + 1} de {preguntas.length}
             </p>
-
             <QuestionCard
               key={`${pos}-${attemptKey}`}
               pregunta={preguntaActual}
               onRespondido={(correcto) => setQuestionResult({ isCorrect: correcto })}
             />
-
             {questionResult && (
               <ExplanationPanel
                 pregunta={preguntaActual}
@@ -89,7 +79,6 @@ export default function SeenQuestionsModal({
             )}
           </>
         )}
-
         <button onClick={onClose} className="levels-modal__close">
           <i className="fas fa-times" /> Cerrar
         </button>

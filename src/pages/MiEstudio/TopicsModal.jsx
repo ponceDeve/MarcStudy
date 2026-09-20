@@ -1,41 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import { buscarConPuntaje } from "../../lib/buscador";
-
 function normalizarTexto(texto) {
   return String(texto ?? "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 }
-
 function ResaltarCoincidencia({ texto, query }) {
   if (!query.trim()) {
     return texto;
   }
-
   const textoOriginal = String(texto ?? "");
   const busqueda = query.trim();
   const textoNormalizado = normalizarTexto(textoOriginal);
   const busquedaNormalizada = normalizarTexto(busqueda);
-
   if (!busquedaNormalizada) {
     return textoOriginal;
   }
-
   const indice = textoNormalizado.indexOf(busquedaNormalizada);
-
   if (indice === -1) {
     return textoOriginal;
   }
-
   const antes = textoOriginal.slice(0, indice);
   const coincidencia = textoOriginal.slice(
     indice,
     indice + busqueda.length
   );
   const despues = textoOriginal.slice(indice + busqueda.length);
-
   return (
     <>
       {antes}
@@ -44,7 +35,6 @@ function ResaltarCoincidencia({ texto, query }) {
     </>
   );
 }
-
 export default function TopicsModal({
   open,
   onClose,
@@ -58,13 +48,10 @@ export default function TopicsModal({
   const [inputEnfocado, setInputEnfocado] = useState(false);
   const [mostrarTodos, setMostrarTodos] = useState(false);
   const [tamanoTitulo, setTamanoTitulo] = useState(null);
-
   const tituloRef = useRef(null);
   const puntoInicioToque = useRef(null);
-
   const UMBRAL_ARRASTRE = 10;
   const LIMITE_INICIAL = 48;
-
   useEffect(() => {
     if (!open) {
       setBusqueda("");
@@ -73,25 +60,17 @@ export default function TopicsModal({
       setMostrarTodos(false);
     }
   }, [open]);
-
   useEffect(() => {
     const ajustarTitulo = () => {
       const titulo = tituloRef.current;
-
       if (!titulo) return;
-
       const estilo = window.getComputedStyle(titulo);
       const tamanoOriginal = parseFloat(estilo.fontSize);
-
       if (!tamanoOriginal) return;
-
       titulo.style.fontSize = `${tamanoOriginal}px`;
       titulo.style.whiteSpace = "nowrap";
-
       const TAMANO_MINIMO = 18;
-
       let tamano = tamanoOriginal;
-
       while (
         titulo.scrollWidth > titulo.clientWidth &&
         tamano > TAMANO_MINIMO
@@ -99,26 +78,19 @@ export default function TopicsModal({
         tamano -= 0.5;
         titulo.style.fontSize = `${tamano}px`;
       }
-
       setTamanoTitulo(tamano);
     };
-
     ajustarTitulo();
-
     const observer = new ResizeObserver(ajustarTitulo);
-
     if (tituloRef.current) {
       observer.observe(tituloRef.current);
     }
-
     window.addEventListener("resize", ajustarTitulo);
-
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", ajustarTitulo);
     };
   }, [curso, activeIndex, temaActual, open]);
-
   function manejarClickTema(item, index) {
     if (activeIndex === index) {
       onSelectTema(item);
@@ -126,33 +98,25 @@ export default function TopicsModal({
       setActiveIndex(null);
       return;
     }
-
     setActiveIndex(index);
   }
-
   function manejarToqueInicial(item, e) {
     puntoInicioToque.current = {
       x: e.clientX,
       y: e.clientY
     };
   }
-
   function fueArrastre(e) {
     const inicio = puntoInicioToque.current;
-
     if (!inicio) return false;
-
     const dx = e.clientX - inicio.x;
     const dy = e.clientY - inicio.y;
-
     return Math.sqrt(dx * dx + dy * dy) > UMBRAL_ARRASTRE;
   }
-
   const temasConIndice = listaTemas.map((item, index) => ({
     item,
     index
   }));
-
   const temasFiltrados = busqueda.trim()
     ? buscarConPuntaje(
         temasConIndice,
@@ -160,23 +124,18 @@ export default function TopicsModal({
         ({ item }) => item.tema
       )
     : temasConIndice;
-
   const temaEnTitulo =
     activeIndex !== null
       ? listaTemas[activeIndex]?.tema
       : null;
-
   const hayBusqueda = busqueda.trim().length > 0;
-
   const temasVisibles =
     hayBusqueda || mostrarTodos
       ? temasFiltrados
       : temasFiltrados.slice(0, LIMITE_INICIAL);
-
   const hayMasTemas =
     !hayBusqueda &&
     temasFiltrados.length > LIMITE_INICIAL;
-
   return (
     <div
       className={`levels-modal ${open ? "" : "is-closed"}`}
@@ -201,7 +160,6 @@ export default function TopicsModal({
         >
           {temaEnTitulo || `Temas de ${curso}`}
         </h2>
-
         <div className="levels-modal__search-row">
           <div
             className="home-search levels-modal__search"
@@ -223,7 +181,6 @@ export default function TopicsModal({
               placeholder="Buscar tema por nombre..."
               className="home-search-input"
             />
-
             {inputEnfocado && (
               <div className="home-search-results">
                 {temasFiltrados.length === 0 && (
@@ -231,7 +188,6 @@ export default function TopicsModal({
                     Ningún tema coincide con "{busqueda}".
                   </p>
                 )}
-
                 {temasFiltrados.map(({ item, index }) => (
                   <button
                     key={index}
@@ -257,7 +213,6 @@ export default function TopicsModal({
               </div>
             )}
           </div>
-
           <button
             className="levels-modal__close"
             onClick={onClose}
@@ -265,15 +220,12 @@ export default function TopicsModal({
             Cerrar
           </button>
         </div>
-
         <div className="levels-modal__grid">
           {temasVisibles.map(({ item, index }) => {
             const esTemaActual =
               item.tema === temaActual;
-
             const esArmado =
               activeIndex === index;
-
             return (
               <div
                 key={index}
@@ -290,9 +242,7 @@ export default function TopicsModal({
                   }
                   onClick={(e) => {
                     e.stopPropagation();
-
                     if (fueArrastre(e)) return;
-
                     manejarClickTema(item, index);
                   }}
                 >
@@ -302,7 +252,6 @@ export default function TopicsModal({
             );
           })}
         </div>
-
         {hayMasTemas && (
           <div className="levels-modal__pagination">
             <button
@@ -318,7 +267,6 @@ export default function TopicsModal({
             </button>
           </div>
         )}
-
         {!hayBusqueda &&
           mostrarTodos &&
           temasFiltrados.length > LIMITE_INICIAL && (
@@ -335,7 +283,6 @@ export default function TopicsModal({
               </button>
             </div>
           )}
-
         {listaTemas.length === 0 && (
           <p className="levels-modal__empty">
             No hay temas registrados para este curso.

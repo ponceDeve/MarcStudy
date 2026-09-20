@@ -7,9 +7,7 @@ import {
 } from "../../lib/scheduleStorage";
 import manifest from "../../data/manifest.json";
 import { buscarConPuntaje, normalizarTexto } from "../../lib/buscador";
-
 const OPCIONES_POMODOROS = [1, 2, 3, 4, 5, 6];
-
 // Asistente: 1) elegir días → 2) por cada día elegido, agregar cursos +
 // cantidad de pomodoros (máx. 4 por día, se puede omitir para cortar
 // antes). Al terminar el último día, entrega el horario armado.
@@ -20,29 +18,23 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
   const [horario, setHorario] = useState({});
   const [nombreCurso, setNombreCurso] = useState("");
   const [pomodoros, setPomodoros] = useState(4);
-
   // NUEVO: Estado para saber qué sugerencia está seleccionada con las flechas
   const [sugerenciaActiva, setSugerenciaActiva] = useState(-1);
-
   if (!open) return null;
-
   const diaActual = diasSeleccionados[diaIdx];
   const cursosDelDia = horario[diaActual] || [];
   const nombreExcedido = nombreCurso.length > LIMITE_NOMBRE_CURSO;
-
   const sugerencias = nombreCurso.trim()
     ? buscarConPuntaje(manifest.cursos, nombreCurso, (c) => c.nombre).slice(0, 6)
     : [];
   const coincideExacto = manifest.cursos.some(
     (c) => normalizarTexto(c.nombre) === normalizarTexto(nombreCurso),
   );
-
   function toggleDia(dia) {
     setDiasSeleccionados((prev) =>
       prev.includes(dia) ? prev.filter((d) => d !== dia) : [...prev, dia],
     );
   }
-
   function empezarConfiguracionCursos() {
     if (diasSeleccionados.length === 0) return;
     // Mantener el orden natural lunes → domingo, sin importar el orden de clic.
@@ -52,14 +44,12 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
     setHorario({});
     setPaso("curso");
   }
-
   function agregarCurso() {
     const limpio = nombreCurso.trim();
     const cursoReal = manifest.cursos.find(
       (c) => normalizarTexto(c.nombre) === normalizarTexto(limpio),
     );
     if (!cursoReal || nombreExcedido) return;
-
     setHorario((prev) => {
       const listaActual = prev[diaActual] || [];
       return { ...prev, [diaActual]: [...listaActual, { subject: cursoReal.nombre, pomodoros }] };
@@ -67,13 +57,11 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
     setNombreCurso("");
     setPomodoros(4);
     setSugerenciaActiva(-1);
-
     const nuevaCantidad = cursosDelDia.length + 1;
     if (nuevaCantidad >= MAX_CURSOS_POR_DIA) {
       avanzarDia();
     }
   }
-
   function avanzarDia() {
     setNombreCurso("");
     setPomodoros(4);
@@ -85,7 +73,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
       onComplete(horario);
     }
   }
-
   // NUEVO: Función para manejar las flechas y el Enter en el input
   function handleInputKeyDown(e) {
     if (sugerencias.length === 0) {
@@ -95,7 +82,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
       }
       return;
     }
-
     if (e.key === "ArrowDown") {
       e.preventDefault();
       setSugerenciaActiva((prev) => (prev < sugerencias.length - 1 ? prev + 1 : prev));
@@ -112,10 +98,8 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
       }
     }
   }
-
   return (
     <div className="setup-overlay">
-
       <div className="setup-card">
         {paso === "dias" && (
           <>
@@ -133,7 +117,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 </button>
               ))}
             </div>
-
             <div className="setup-nav">
               {onCancel && (
                 <button className="setup-btn is-ghost" onClick={onCancel}>
@@ -150,14 +133,12 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
             </div>
           </>
         )}
-
         {paso === "curso" && (
           <>
             <h2 className="setup-titulo">{DIA_LABELS[diaActual]} — Curso {cursosDelDia.length + 1}</h2>
             <p className="setup-sub">
               {cursosDelDia.length}/{MAX_CURSOS_POR_DIA} cursos agregados este día
             </p>
-
             {cursosDelDia.length > 0 && (
               <div className="setup-lista-cursos">
                 {cursosDelDia.map((c, i) => (
@@ -168,7 +149,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 ))}
               </div>
             )}
-
             <div className="setup-input-wrap">
               <input
                 type="search"
@@ -215,7 +195,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 ? `Muy largo — máximo ${LIMITE_NOMBRE_CURSO} caracteres`
                 : `${nombreCurso.length}/${LIMITE_NOMBRE_CURSO}`}
             </p>
-
             <p className="setup-sub setup-sub--tight">¿Cuántos pomodoros?</p>
             {/* NUEVO: El grid de pomodoros ahora responde a las flechas */}
             <div
@@ -242,7 +221,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
                 </button>
               ))}
             </div>
-
             <div className="setup-nav">
               {cursosDelDia.length > 0 && (
                 <button className="setup-btn is-ghost" onClick={avanzarDia}>
@@ -260,7 +238,6 @@ export default function ScheduleSetup({ open, onComplete, onCancel }) {
           </>
         )}
       </div>
-
     </div>
   );
 }

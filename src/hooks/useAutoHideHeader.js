@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 /**
  * Auto-oculta el header al bajar / lo muestra al subir, agregando o
  * quitando la clase "is-header-oculto" en <body> (el CSS de
@@ -18,11 +17,9 @@ export function useAutoHideHeader(bloqueado = false) {
     const ZONA_SEGURA_TOPE = 80;
     let ultimoY = window.scrollY;
     let ticking = false;
-
     function actualizar() {
       const y = window.scrollY;
       const delta = y - ultimoY;
-
       if (bloqueado) {
         document.body.classList.remove("is-header-oculto");
       } else if (y < ZONA_SEGURA_TOPE) {
@@ -35,17 +32,14 @@ export function useAutoHideHeader(bloqueado = false) {
         // cerca del tope).
         document.body.classList.remove("is-header-oculto");
       }
-
       ultimoY = y;
       ticking = false;
     }
-
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(actualizar);
     }
-
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);

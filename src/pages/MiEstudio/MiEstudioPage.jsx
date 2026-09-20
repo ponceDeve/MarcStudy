@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
+import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
@@ -24,7 +25,6 @@ import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
 import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
-import TheorySearchBar from "./TheorySearchBar";
 import ExercisesSection from "./ExercisesSection";
 import ConfirmacionSalida from "../../components/ConfirmacionSalida";
 import CongratulationsAlert from "../../components/CongratulationsAlert";
@@ -37,7 +37,6 @@ import { usePomodoro } from "../../context/PomodoroContext";
 import { shuffle } from "../../lib/shuffle";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
 import "katex/dist/katex.min.css";
-
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
   { type: "curso", nombre: curso.nombre },
   ...curso.temas.map((tema) => ({
@@ -47,7 +46,6 @@ const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
     archivo: tema.archivo
   }))
 ]);
-
 function normalizarTexto(texto) {
   return String(texto || "")
     .normalize("NFD")
@@ -55,7 +53,6 @@ function normalizarTexto(texto) {
     .toLowerCase()
     .trim();
 }
-
 function limpiarParaVoz(texto) {
   if (!texto) return "";
   return reemplazarSimbolosParaVoz(texto)
@@ -65,9 +62,7 @@ function limpiarParaVoz(texto) {
     .replace(/\s+/g, " ")
     .trim();
 }
-
 let vocesListasPromise = null;
-
 function obtenerVocesListas() {
   if (vocesListasPromise) return vocesListasPromise;
   vocesListasPromise = new Promise((resolve) => {
@@ -85,7 +80,6 @@ function obtenerVocesListas() {
   });
   return vocesListasPromise;
 }
-
 function useLecturaTeoriaVoz(texto, activo) {
   useEffect(() => {
     if (!activo || !texto || !("speechSynthesis" in window)) return;
@@ -125,7 +119,6 @@ function useLecturaTeoriaVoz(texto, activo) {
     };
   }, [texto, activo]);
 }
-
 export default function MiEstudioPage() {
   const [topicData, setTopicData] = useState(null);
   const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
@@ -136,6 +129,14 @@ export default function MiEstudioPage() {
     () => flatPuntos.filter((p) => p.seccionTitulo !== "Ejercicios"),
     [flatPuntos]
   );
+  const puntosTeoria = puntosBuscables;
+  const [teoriaVistaIndex, setTeoriaVistaIndex] = useState(0);
+  useEffect(() => {
+    if (puntosTeoria.length > 0 && teoriaVistaIndex >= puntosTeoria.length) {
+      setTeoriaVistaIndex(puntosTeoria.length - 1);
+    }
+  }, [puntosTeoria.length, teoriaVistaIndex]);
+  const puntoTeoriaActual = puntosTeoria[teoriaVistaIndex] || null;
   const puntosEstables = useMemo(() => {
     return (topicData?.theory || []).flatMap((seccion, idxSeccion) =>
       seccion.puntos.map((p, idxPunto) => ({
@@ -163,7 +164,6 @@ export default function MiEstudioPage() {
   const [mostrarBotonBuscador, setMostrarBotonBuscador] = useState(false);
   const barraTeoriaRef = useRef(null);
   const { setFooterHidden } = useFooterVisibility();
-
   useEffect(() => {
     const manejarScroll = () => {
       if (window.scrollY > 80) {
@@ -178,7 +178,6 @@ export default function MiEstudioPage() {
       window.removeEventListener("scroll", manejarScroll);
     };
   }, []);
-
   useEffect(() => {
     if (!mostrarBarraTeoria) return;
     const manejarClickFuera = (e) => {
@@ -194,13 +193,11 @@ export default function MiEstudioPage() {
       document.removeEventListener("pointerdown", manejarClickFuera);
     };
   }, [mostrarBarraTeoria]);
-
   useEffect(() => {
     const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
     setFooterHidden(ocultar);
     return () => setFooterHidden(false);
   }, [topicData, stage, setFooterHidden]);
-
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (stage !== "theory" || (textosSeleccionados.length === 0 && textosCompletados.length === 0)) {
@@ -219,7 +216,6 @@ export default function MiEstudioPage() {
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [stage, textosSeleccionados, textosCompletados, topicData?.archivo]);
-
   const [countdown, setCountdown] = useState(0);
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
@@ -229,7 +225,6 @@ export default function MiEstudioPage() {
   const vidaPerderRef = useRef(null);
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
-
   useEffect(() => {
     if (!alertaVidas) return;
     const delay = alertaVidas === "cero" ? 2500 : 3200;
@@ -239,9 +234,7 @@ export default function MiEstudioPage() {
     }, delay);
     return () => clearTimeout(t);
   }, [alertaVidas]);
-
   const [corazonRoto, setCorazonRoto] = useState(false);
-
   useEffect(() => {
     if (!alertaVidas) {
       setCorazonRoto(false);
@@ -252,7 +245,6 @@ export default function MiEstudioPage() {
     }, 700);
     return () => clearTimeout(t);
   }, [alertaVidas]);
-
   function renderCorazonesVidas() {
     return (
       <div className="vidas-fullscreen__hearts">
@@ -273,7 +265,6 @@ export default function MiEstudioPage() {
       </div>
     );
   }
-
   const [examenPreguntas, setExamenPreguntas] = useState([]);
   const [nivelIndex, setNivelIndex] = useState(0);
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
@@ -291,7 +282,6 @@ export default function MiEstudioPage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [avisoContinuarVacio, setAvisoContinuarVacio] = useState(false);
   const avisoContinuarVacioTimeoutRef = useRef(null);
-
   function mostrarAvisoContinuarVacio() {
     clearTimeout(avisoContinuarVacioTimeoutRef.current);
     setAvisoContinuarVacio(true);
@@ -300,11 +290,9 @@ export default function MiEstudioPage() {
       2500
     );
   }
-
   useEffect(() => {
     return () => clearTimeout(avisoContinuarVacioTimeoutRef.current);
   }, []);
-
   const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
   const [score, setScore] = useState(0);
@@ -327,9 +315,7 @@ export default function MiEstudioPage() {
   const [sugerenciaMsg, setSugerenciaMsg] = useState(null);
   const [sugerenciaMsgSaliendo, setSugerenciaMsgSaliendo] = useState(false);
   const sugerenciaTimers = useRef([]);
-
   const pomodoro = usePomodoro();
-
   useEffect(() => {
     if (pomodoro.isRunning) {
       pomodoroEstuvoCorriendoRef.current = true;
@@ -341,14 +327,12 @@ export default function MiEstudioPage() {
     }
     pomodoroEstuvoCorriendoRef.current = false;
   }, [pomodoro.isRunning, pomodoro.secondsLeft, pomodoro.label]);
-
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
     limpiarPomodoroCompartido();
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
-
   const { guardarBusqueda: guardarBusquedaInicio } = useSearchHistory();
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
   const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] = useState(false);
@@ -359,7 +343,6 @@ export default function MiEstudioPage() {
   const [sinPreguntaSaliendo, setSinPreguntaSaliendo] = useState(false);
   const sinPreguntaTimers = useRef([]);
   const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
-
   useEffect(() => {
     if (sinPreguntaAlerta && alertaNotificacionRef.current) {
       alertaNotificacionRef.current.currentTime = 0;
@@ -368,7 +351,6 @@ export default function MiEstudioPage() {
       });
     }
   }, [sinPreguntaAlerta]);
-
   useEffect(() => {
     return () => {
       repasoGuardadoTimers.current.forEach(clearTimeout);
@@ -376,7 +358,6 @@ export default function MiEstudioPage() {
       sugerenciaTimers.current.forEach(clearTimeout);
     };
   }, []);
-
   useEffect(() => {
     function onFullscreenChange() {
       setIsFullscreen(!!document.fullscreenElement);
@@ -384,7 +365,6 @@ export default function MiEstudioPage() {
     document.addEventListener("fullscreenchange", onFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
-
   useEffect(() => {
     let timer = null;
     if (stage === "question" && countdown > 0) {
@@ -396,13 +376,11 @@ export default function MiEstudioPage() {
       if (timer) clearInterval(timer);
     };
   }, [stage, countdown]);
-
   useEffect(() => {
     if (topicData) {
       localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex.toString());
     }
   }, [cardIndex, topicData]);
-
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch((err) => {
@@ -412,8 +390,8 @@ export default function MiEstudioPage() {
       document.exitFullscreen();
     }
   }
-
   async function abrirTema(item) {
+    window.scrollTo(0, 0);
     setLoading(true);
     setError("");
     localStorage.setItem(
@@ -454,6 +432,7 @@ export default function MiEstudioPage() {
       setPreguntasVistas(storedPreguntasVistas);
       setTextosSeleccionados([]);
       setTextosCompletados([]);
+      setTeoriaVistaIndex(0);
       setEsModoAdicionales(false);
       huboCambiosSinGuardarRef.current = false;
       const storageTextosKey = `textos_${item.archivo}`;
@@ -497,7 +476,6 @@ export default function MiEstudioPage() {
       setLoading(false);
     }
   }
-
   async function enviarSugerenciaExamen() {
     if (!topicData || enviandoSugerencia) return;
     sugerenciaTimers.current.forEach(clearTimeout);
@@ -547,7 +525,55 @@ export default function MiEstudioPage() {
       ];
     }
   }
-
+  async function generarCuestionarioDECO() {
+    if (!topicData) return;
+    const teoria = (topicData.theory || [])
+      .map((seccion) => {
+        const titulo = seccion?.titulo || "";
+        const puntos = (seccion?.puntos || [])
+          .map((punto) => {
+            const texto = punto?.texto || "";
+            const explicacion = punto?.explicacion || "";
+            return [texto, explicacion].filter(Boolean).join("\n");
+          })
+          .filter(Boolean)
+          .join("\n\n");
+        return [titulo, puntos].filter(Boolean).join("\n\n");
+      })
+      .filter(Boolean)
+      .join("\n\n");
+    const prompt = `Actúa como profesor experto en admisión UNMSM.
+Genera 20 preguntas de opción múltiple con estilo DECO utilizando EXCLUSIVAMENTE la teoría proporcionada.
+REGLAS:
+- 20 preguntas.
+- Cada pregunta debe tener 5 alternativas: A, B, C, D y E.
+- Prioriza situaciones, aplicación, análisis, relaciones, causa-efecto, interpretación y comparación.
+- Evita preguntas de definición directa cuando sea posible.
+- Los distractores deben ser plausibles.
+- Distribuye las preguntas por todo el contenido.
+- No repitas innecesariamente un mismo concepto.
+- Nivel preuniversitario.
+- Enfoque tipo examen de admisión UNMSM.
+- Indica la respuesta correcta y una explicación breve después de cada pregunta.
+- No agregues información que no esté respaldada por la teoría.
+CURSO:
+${topicData.curso || ""}
+TEMA:
+${topicData.tema || ""}
+TEORÍA:
+${teoria}`;
+    try {
+      await navigator.clipboard.writeText(prompt);
+      window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error("No se pudo copiar el cuestionario:", error);
+      window.open(
+        `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  }
   function pedirAbrirTema(item) {
     const hayCambiosSinGuardar =
       stage === "theory" &&
@@ -562,7 +588,6 @@ export default function MiEstudioPage() {
     }
     abrirTema(item);
   }
-
   function irADestinoSalida() {
     if (destinoSalida === "inicio") {
       setTopicData(null);
@@ -572,7 +597,6 @@ export default function MiEstudioPage() {
     }
     setTemaProximoSalida(null);
   }
-
   function handleGuardarYSalir() {
     if (topicData?.archivo) {
       localStorage.setItem(
@@ -584,19 +608,47 @@ export default function MiEstudioPage() {
     setMostrarConfirmacionSalida(false);
     irADestinoSalida();
   }
-
   function handleSalirSinGuardar() {
     huboCambiosSinGuardarRef.current = false;
     setMostrarConfirmacionSalida(false);
     irADestinoSalida();
   }
-
   function handleCancelarSalida() {
     setMostrarConfirmacionSalida(false);
     setTemaProximoSalida(null);
   }
-
   function seleccionarItem(item) {
+    if (item.type === "contenido") {
+      const idx = puntosTeoria.findIndex(
+        (p) => p.id === item.puntoId
+      );
+      if (idx !== -1) {
+        setTeoriaVistaIndex(idx);
+        setPuntoVozId(item.puntoId);
+      }
+      setSearchOpen(false);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const contenedorPunto = document.getElementById(`punto-${item.puntoId}`);
+          contenedorPunto?.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+          const selectorCampo =
+            item.campo === "explicacion"
+              ? ".teoria-explicacion-extra__texto"
+              : ".teoria-contenido-principal";
+          const contenedorCampo =
+            contenedorPunto?.querySelector(selectorCampo);
+          if (item.matchText && contenedorCampo) {
+            resaltarPalabraTemporal(contenedorCampo, item.matchText);
+          } else if (contenedorCampo) {
+            flashearFondoTemporal(contenedorCampo);
+          }
+        });
+      });
+      return;
+    }
     guardarBusquedaInicio(item);
     if (item.type === "curso") {
       setCursoSeleccionado(item.nombre);
@@ -608,14 +660,12 @@ export default function MiEstudioPage() {
       pedirAbrirTema(item);
     }
   }
-
   const teoriaCompleta = useMemo(() => {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
       .map((p) => p.id);
     return idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => textosSeleccionados.includes(id));
   }, [flatPuntos, textosSeleccionados]);
-
   function intentarCompletarTema() {
     if (!teoriaCompleta) {
       sinPreguntaTimers.current.forEach(clearTimeout);
@@ -634,7 +684,6 @@ export default function MiEstudioPage() {
     }
     finalizarTema();
   }
-
   function elegirModoEstudio(modo, opts = {}) {
     setPreguntaModoAbierta(false);
     setEsModoAdicionales(!!opts.soloAdicionales);
@@ -723,11 +772,9 @@ export default function MiEstudioPage() {
       setAttemptKey(0);
     }
   }
-
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [simulacroModalOpen, setSimulacroModalOpen] = useState(false);
-
   useEffect(() => {
     let q = searchParams.get("q");
     if (!q) {
@@ -749,7 +796,6 @@ export default function MiEstudioPage() {
     }
     window.history.replaceState(null, "", window.location.pathname);
   }, []);
-
   function avanzarCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
@@ -818,7 +864,6 @@ export default function MiEstudioPage() {
       finalizarTema();
     }
   }
-
   function retrocederCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
@@ -867,12 +912,10 @@ export default function MiEstudioPage() {
       setCountdown(0);
     }
   }
-
   function reintentarPregunta() {
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
   }
-
   function finalizarTema() {
     if (esModoAdicionales) {
       const idsEjercicios = flatPuntos
@@ -898,12 +941,10 @@ export default function MiEstudioPage() {
       }
     }
   }
-
   function volverATeoriaDesdeExamenTema() {
     setModoExamenTema(false);
     setStage("theory");
   }
-
   function finalizarTemaDesdeExamen() {
     setModoExamenTema(false);
     setStage("finished");
@@ -918,16 +959,13 @@ export default function MiEstudioPage() {
       }
     }
   }
-
   function confirmarGuardarRepasoFinal(guardar) {
     if (guardar && topicData) {
       registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
     }
     setConfirmGuardarRepasoFinal(false);
   }
-
   const [botonArmado, setBotonArmado] = useState(null);
-
   function manejarBotonConfig(key, accion) {
     if (botonArmado === key) {
       accion();
@@ -936,7 +974,6 @@ export default function MiEstudioPage() {
       setBotonArmado(key);
     }
   }
-
   function guardarParaRepaso() {
     if (!topicData) return;
     registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
@@ -951,7 +988,6 @@ export default function MiEstudioPage() {
       }, 2100)
     ];
   }
-
   function gameOver() {
     if (!topicData) return;
     localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
@@ -974,7 +1010,6 @@ export default function MiEstudioPage() {
     setAttemptKey(0);
     setCountdown(0);
   }
-
   function rendirsePregunta() {
     setQuestionResult({ isCorrect: false, rendido: true, vidasEnEsteIntento: vidas });
     let vistaKeyRendido = null;
@@ -1003,7 +1038,6 @@ export default function MiEstudioPage() {
     }
     setWrongCount((w) => w + 1);
   }
-
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto, vidasEnEsteIntento: vidas });
     let vistaKey = null;
@@ -1099,19 +1133,18 @@ export default function MiEstudioPage() {
           setAlertaVidas("cero");
           if (ceroVidasRef.current) {
             ceroVidasRef.current.currentTime = 0;
-            ceroVidasRef.current.play().catch(() => {});
+            ceroVidasRef.current.play().catch(() => { });
           }
           gameOver();
         }
         if (nuevasVidas > 0 && vidaPerderRef.current) {
           vidaPerderRef.current.currentTime = 0;
-          vidaPerderRef.current.play().catch(() => {});
+          vidaPerderRef.current.play().catch(() => { });
         }
         return nuevasVidas;
       });
     }
   }
-
   function reiniciarTarjetas() {
     setCardIndex(0);
     setUltimoFlipIndex(0);
@@ -1127,7 +1160,6 @@ export default function MiEstudioPage() {
     setConfirmGuardarRepasoFinal(false);
     setBotonArmado(null);
   }
-
   function verPreguntasVistas() {
     const lote = Object.entries(preguntasVistas)
       .map(([key, val]) => {
@@ -1164,7 +1196,6 @@ export default function MiEstudioPage() {
       setRepasoDesdeTeoria(false);
     }
   }
-
   function salirDeRepaso() {
     setRepasoQuizActivo(false);
     setQuestionResult(null);
@@ -1174,19 +1205,15 @@ export default function MiEstudioPage() {
       setRepasoDesdeTeoria(false);
     }
   }
-
   const [confirmSalirApp, setConfirmSalirApp] = useState(false);
   const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] = useState(false);
   const temaExamenViewRef = useRef(null);
-
   function pedirAbandonarPregunta() {
     setConfirmAbandonarPregunta(true);
   }
-
   function cancelarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
   }
-
   function confirmarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
     if (modoExamenTema && stage === "question" && temaExamenViewRef.current) {
@@ -1195,11 +1222,9 @@ export default function MiEstudioPage() {
     }
     abandonarJuego();
   }
-
   function cancelarSalirApp() {
     setConfirmSalirApp(false);
   }
-
   function confirmarSalirApp() {
     if (typeof window !== "undefined" && window.Capacitor?.isNativePlatform?.()) {
       const AppPlugin = window.Capacitor.Plugins?.App;
@@ -1213,7 +1238,6 @@ export default function MiEstudioPage() {
       window.location.href = "about:blank";
     }, 300);
   }
-
   function irAInicio() {
     const hayCambiosSinGuardar =
       stage === "theory" && topicData?.archivo && huboCambiosSinGuardarRef.current;
@@ -1226,7 +1250,6 @@ export default function MiEstudioPage() {
     setTopicData(null);
     setStage("theory");
   }
-
   function abandonarJuego() {
     setStage("theory");
     setIsLevelMode(false);
@@ -1238,42 +1261,115 @@ export default function MiEstudioPage() {
     setBotonArmado(null);
     setCountdown(0);
   }
-
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
   const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
+  const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
+  function enviarPreguntaChatGpt() {
+    const pregunta = preguntaChatGpt.trim();
+    if (!pregunta) return;
+    const url = `https://chatgpt.com/?q=${encodeURIComponent(pregunta)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+    setPreguntaChatGpt("");
+  }
+  function enviarQuizInteractivoChatGpt() {
+    if (!topicData) return;
+    const teoria = (topicData.theory || [])
+      .filter((seccion) => seccion?.titulo !== "Ejercicios")
+      .map((seccion) => {
+        const puntos = (seccion?.puntos || [])
+          .map((punto) => {
+            const texto = punto?.texto || "";
+            const explicacion = punto?.explicacion || "";
+            return [texto, explicacion]
+              .filter(Boolean)
+              .join("\n");
+          })
+          .filter(Boolean)
+          .join("\n\n");
+        return [seccion?.titulo, puntos]
+          .filter(Boolean)
+          .join("\n");
+      })
+      .filter(Boolean)
+      .join("\n\n");
+    if (!teoria.trim()) return;
+    const prompt = `Actúa como profesor experto en admisión UNMSM.
+Quiero que conviertas EXCLUSIVAMENTE la teoría proporcionada al final en un CUESTIONARIO INTERACTIVO de 20 preguntas.
+REGLAS DE LA INTERACCIÓN:
+- INICIA DIRECTAMENTE con la pregunta 1.
+- Presenta UNA SOLA pregunta por vez.
+- Cada pregunta debe tener exactamente 5 alternativas: A, B, C, D y E.
+- Las alternativas deben poder seleccionarse/interactuarse; no quiero una lista de texto para responder escribiendo la letra.
+- ESPERA mi respuesta antes de mostrar la siguiente pregunta.
+- Después de mi selección, indica inmediatamente si es correcta o incorrecta.
+- Explica brevemente por qué la alternativa elegida es correcta o incorrecta.
+- Después muestra un control/opción para continuar con la siguiente pregunta.
+- No muestres las 20 preguntas juntas.
+- No generes una lista numerada de las 20 preguntas.
+- No me entregues un cuestionario en texto plano.
+- No generes JSON.
+- Si dispones de una interfaz interactiva, tarjetas, botones u otro componente seleccionable, UTILÍZALO.
+- La experiencia debe funcionar como un cuestionario interactivo: PREGUNTA → SELECCIÓN A/B/C/D/E → CORRECCIÓN → EXPLICACIÓN → SIGUIENTE.
+REGLAS DEL CONTENIDO:
+- Las 20 preguntas deben ser NUEVAS.
+- No copies, reutilices ni reformules los ejercicios existentes.
+- Ignora por completo cualquier sección llamada "Ejercicios".
+- Usa únicamente la teoría proporcionada debajo.
+- No inventes información externa.
+- Distribuye las 20 preguntas entre los distintos contenidos de la teoría.
+- Utiliza estilo UNMSM/DECO.
+- Prioriza situaciones, aplicación, análisis, interpretación, comparación, relaciones y causa-efecto.
+- Evita preguntas de definición directa cuando el contenido permita evaluarse mediante una situación.
+- Los distractores deben ser plausibles y estar relacionados con el contenido.
+- No reveles la respuesta correcta antes de que yo seleccione una alternativa.
+CURSO:
+${topicData.curso || ""}
+TEMA:
+${topicData.tema || ""}
+TEORÍA: 
+${teoria}`;
+    navigator.clipboard
+      .writeText(prompt)
+      .then(() => {
+        window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+      })
+      .catch(() => {
+        const url = `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+      });
+  }
   const [puntoVozId, setPuntoVozId] = useState(null);
-
+  useEffect(() => {
+    if (stage === "theory" && puntoTeoriaActual) {
+      setPuntoVozId(puntoTeoriaActual.id);
+    }
+  }, [stage, puntoTeoriaActual?.id]);
   useEffect(() => {
     setLecturaTeoriaOn(false);
     setPuntoVozId(null);
   }, [topicData?.tema, topicData?.curso]);
-
   const puntoVozActual = puntoVozId ? flatPuntos.find((p) => p.id === puntoVozId) : null;
   const ultimaSeccionLeidaRef = useRef(null);
-
   useEffect(() => {
     ultimaSeccionLeidaRef.current = null;
   }, [topicData?.tema, topicData?.curso]);
-
   const textoParaVoz =
     stage === "theory" && !isLevelMode
       ? puntoVozActual
         ? (() => {
-            const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
-            ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
-            return [
-              esNuevaSeccion ? puntoVozActual.seccionTitulo : null,
-              puntoVozActual.texto,
-              puntoVozActual.explicacion
-            ]
-              .filter(Boolean)
-              .join(". ");
-          })()
+          const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
+          ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
+          return [
+            esNuevaSeccion ? puntoVozActual.seccionTitulo : null,
+            puntoVozActual.texto,
+            puntoVozActual.explicacion
+          ]
+            .filter(Boolean)
+            .join(". ");
+        })()
         : topicData?.theory?.[0]?.titulo || null
       : null;
-
   useLecturaTeoriaVoz(textoParaVoz, lecturaTeoriaOn && stage === "theory" && !isLevelMode);
-
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -1283,9 +1379,7 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
-
   const [modoPruebaAvance, setModoPruebaAvance] = useState(false);
-
   useEffect(() => {
     function alternar() {
       setModoPruebaAvance((actual) => {
@@ -1301,25 +1395,113 @@ export default function MiEstudioPage() {
     window.addEventListener("mp-toggle", alternar);
     return () => window.removeEventListener("mp-toggle", alternar);
   }, []);
-
   const canAdvance =
     modoPruebaAvance ||
     stage !== "question" ||
     Boolean(questionResult && questionResult.isCorrect);
-
   const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
   const hintBloqueoTimeoutRef = useRef(null);
-
   function mostrarHintBloqueo() {
     clearTimeout(hintBloqueoTimeoutRef.current);
     setHintBloqueoVisible(true);
     hintBloqueoTimeoutRef.current = setTimeout(() => setHintBloqueoVisible(false), 2000);
   }
-
   useEffect(() => {
-    return () => clearTimeout(hintBloqueoTimeoutRef.current);
-  }, []);
-
+    function onKeyDown(e) {
+      const tagActivo = document.activeElement && document.activeElement.tagName;
+      if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
+      if (searchOpen || configOpen || temasOpen || !topicData) return;
+      const tecla = e.key.toLowerCase();
+      // =========================
+      // NAVEGACIÓN DE TEORÍA
+      // =========================
+      if (stage === "theory" && !isLevelMode) {
+        if (["arrowleft", "arrowup", "a", "w"].includes(tecla)) {
+          e.preventDefault();
+          setTeoriaVistaIndex((i) => Math.max(0, i - 1));
+          return;
+        }
+        if (["arrowright", "arrowdown", "d", "s"].includes(tecla)) {
+          e.preventDefault();
+          setTeoriaVistaIndex((i) =>
+            Math.min(puntosTeoria.length - 1, i + 1)
+          );
+          return;
+        }
+        // Enter → entrar al videojuego/examen
+        if (tecla === "enter") {
+          e.preventDefault();
+          if (examenPreguntas.length > 0) {
+            elegirModoEstudio("solo_preguntas", {
+              requiereSeleccion: true
+            });
+          } else {
+            finalizarTema();
+          }
+          return;
+        }
+      }
+      // =========================
+      // VIDEOJUEGO / PREGUNTAS
+      // =========================
+      if (stage === "question") {
+        if (countdown > 0) return;
+        // Enter → avanzar o reintentar
+        if (tecla === "enter") {
+          e.preventDefault();
+          if (questionResult && questionResult.isCorrect) {
+            avanzarCard();
+          } else if (questionResult && !questionResult.isCorrect) {
+            reintentarPregunta();
+          }
+          return;
+        }
+        // Espacio → avanzar si está permitido
+        if (tecla === " ") {
+          e.preventDefault();
+          if (canAdvance) {
+            avanzarCard();
+          }
+          return;
+        }
+        // Flecha izquierda → anterior
+        if (tecla === "arrowleft") {
+          e.preventDefault();
+          retrocederCard();
+          return;
+        }
+        // Flecha derecha → siguiente
+        if (tecla === "arrowright") {
+          e.preventDefault();
+          if (canAdvance) {
+            avanzarCard();
+          }
+          return;
+        }
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [
+    stage,
+    questionResult,
+    searchOpen,
+    configOpen,
+    temasOpen,
+    topicData,
+    canAdvance,
+    isLevelMode,
+    countdown,
+    examenPreguntas,
+    elegirModoEstudio,
+    finalizarTema,
+    avanzarCard,
+    retrocederCard,
+    reintentarPregunta,
+    puntosTeoria.length
+  ]);
   useEffect(() => {
     function onKeyDown(e) {
       const tagActivo = document.activeElement && document.activeElement.tagName;
@@ -1360,19 +1542,20 @@ export default function MiEstudioPage() {
     isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden, isFlipQuiz, quizBatch,
     quizPos, repasoQuizActivo, repasoQuizBatch, repasoQuizPos
   ]);
-
+  const recomendacionesHoyInicio = useMemo(
+    () => obtenerRecomendacionesHoy(),
+    []
+  );
   let ultimoTemaInicio = null;
   try {
     ultimoTemaInicio = JSON.parse(localStorage.getItem("ultimoTemaAbierto"));
   } catch {
     ultimoTemaInicio = null;
   }
-
   const wrapClass = [
     "mi-estudio__wrap",
     stage === "question" ? "is-question" : topicData ? "has-topbar" : "is-home"
   ].join(" ");
-
   const progresoPregunta = repasoQuizActivo
     ? { current: repasoQuizPos + 1, total: repasoQuizBatch.length }
     : isLevelMode
@@ -1382,11 +1565,128 @@ export default function MiEstudioPage() {
         : modoEstudio === "solo_preguntas"
           ? { current: posOrden + 1, total: ordenPreguntas.length }
           : { current: cardIndex + 1, total: flatPuntos.length };
-
   const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
   const cursoEncontrado = manifest.cursos.find((c) => c.nombre === nombreCursoActivo);
   const temasDelCurso = cursoEncontrado ? cursoEncontrado.temas : [];
-
+  // ============================================================
+  // ESTILO ANTERIOR DE TEORÍA (lista completa de puntos)
+  // Ya no se usa: la vista actual muestra un punto a la vez
+  // (ver "teoria-articulo-web" dentro del return). Se deja esta
+  // función sin llamar para no perder el código.
+  // ============================================================
+  // eslint-disable-next-line no-unused-vars
+  function ContenidoTeoriaListaCompleta_NoUsado() {
+    return (
+      <div className="teoria-articulo-web">
+        {topicData?.theory?.map((seccion, idxSeccion) => (
+          seccion.titulo === "Ejercicios" ? null :
+            <div key={idxSeccion} className="teoria-seccion">
+              <h3 className="teoria-etiqueta">
+                {seccion.titulo}
+              </h3>
+              <div className="teoria-puntos-lista animate-fade-in">
+                {seccion.puntos.map((punto, idxPunto) => {
+                  const puntoId = `${idxSeccion}-${idxPunto}`;
+                  return (
+                    <div
+                      key={idxPunto}
+                      id={`punto-${puntoId}`}
+                      className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
+                    >
+                      <div className="teoria-punto__fila" onClick={() => setPuntoVozId(puntoId)}>
+                        <div>
+                          <input
+                            type="checkbox"
+                            id={`checkbox-${puntoId}`}
+                            className={`teoria-etiqueta-checkbox${textosCompletados.includes(puntoId) ? " is-completado" : ""}`}
+                            checked={textosSeleccionados.includes(puntoId)}
+                            onClick={(e) => e.stopPropagation()}
+                            onChange={() => {
+                              if (textosCompletados.includes(puntoId)) return;
+                              setTextosSeleccionados((prev) => {
+                                const newSelection = prev.includes(puntoId)
+                                  ? prev.filter((t) => t !== puntoId)
+                                  : [...prev, puntoId];
+                                const idsTeoriaNormal = flatPuntos
+                                  .filter((p) => p.seccionTitulo !== "Ejercicios")
+                                  .map((p) => p.id);
+                                if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
+                                  setMostrarCongratulations(true);
+                                }
+                                return newSelection;
+                              });
+                            }}
+                          />
+                          <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
+                            <GlossaryText text={punto.texto} glosario={topicData?.glosario} />
+                          </label>
+                        </div>
+                        <button
+                          type="button"
+                          className="teoria-punto__game-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            elegirModoEstudio("solo_preguntas", { seleccionEspecifica: [puntoId] });
+                          }}
+                          title="Ir a la pregunta de este texto"
+                          aria-label="Ir a la pregunta de este texto"
+                        >
+                          <i className="fa-solid fa-gamepad"></i>
+                        </button>
+                      </div>
+                      {punto.imagen && (
+                        <div className="teoria-punto__imagen-wrap">
+                          <img
+                            src={
+                              /^(https?:)?\/\//i.test(punto.imagen)
+                                ? punto.imagen
+                                : `${import.meta.env.BASE_URL}${String(punto.imagen).replace(/^\/+/, "")}`
+                            }
+                            alt={punto.texto || "Imagen de la teoría"}
+                            className="teoria-punto__imagen"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      {punto.explicacion && (
+                        <div className="teoria-explicacion-extra">
+                          <div className="teoria-explicacion-extra__fila">
+                            <div className="teoria-explicacion-extra__texto">
+                              <GlossaryText text={punto.explicacion} glosario={topicData?.glosario} />
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+        ))}
+        <div className="teoria-acciones-final">
+          {examenPreguntas.length > 0 && (
+            <button
+              className="teoria-boton-examen"
+              onClick={() => elegirModoEstudio("solo_preguntas", { requiereSeleccion: true })}
+            >
+              <i className="fa-solid fa-graduation-cap"></i> Ir al Examen
+            </button>
+          )}
+          <button
+            className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta ? "" : " is-bloqueado"}`}
+            onClick={intentarCompletarTema}
+            aria-disabled={!teoriaCompleta}
+          >
+            <i className="fa-solid fa-check-circle"></i> Completar Tema
+          </button>
+        </div>
+        <ExercisesSection
+          examenPreguntas={(topicData?.examen || []).filter((_, i) => puntosEstables[i]?.seccionTitulo === "Ejercicios")}
+          onModoEstudio={() => elegirModoEstudio("solo_preguntas", { soloAdicionales: true })}
+        />
+      </div>
+    );
+  }
   return (
     <div className="mi-estudio">
       <WelcomeModal open={!nombreUsuario} onSubmit={(n) => setNombreUsuario(n)} />
@@ -1625,6 +1925,30 @@ export default function MiEstudioPage() {
                 }}
               />
             </div>
+            {recomendacionesHoyInicio.length > 0 && (
+              <div className="mi-estudio__recomendados container">
+                <h3 className="mi-estudio__recomendados-title">
+                  Repasos recomendados de hoy
+                </h3>
+                <div className="mi-estudio__recomendados-grid">
+                  {recomendacionesHoyInicio.map((r) => (
+                    <div
+                      key={`${r.curso}-Turno${r.turno}`}
+                      className="mi-estudio__recomendados-curso"
+                    >
+                      <span className="mi-estudio__recomendados-curso-nombre">
+                        {r.curso}
+                      </span>
+                      <ul className="mi-estudio__recomendados-temas">
+                        {r.temas.map((tema) => (
+                          <li key={tema}>{tema}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="mi-estudio__below">
               <WelcomeSection
                 onSelectTema={seleccionarItem}
@@ -1658,32 +1982,30 @@ export default function MiEstudioPage() {
                   ref={barraTeoriaRef}
                   className={`teoria-sticky-bar ${mostrarBarraTeoria ? "is-open" : ""}`}
                 >
-                  <TheorySearchBar
-                    flatPuntos={puntosBuscables}
-                    onSelect={({ puntoId, campo, matchText }) => {
-                      setPuntoVozId(puntoId);
-                      requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                          const contenedorPunto = document.getElementById(`punto-${puntoId}`);
-                          contenedorPunto?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                          });
-                          const selectorCampo =
-                            campo === "explicacion"
-                              ? ".teoria-explicacion-extra__texto"
-                              : ".teoria-contenido-principal";
-                          const contenedorCampo =
-                            contenedorPunto?.querySelector(selectorCampo);
-                          if (matchText && contenedorCampo) {
-                            resaltarPalabraTemporal(contenedorCampo, matchText);
-                          } else if (contenedorCampo) {
-                            flashearFondoTemporal(contenedorCampo);
-                          }
-                        });
-                      });
-                    }}
-                  />
+                  <div className="teoria-chatgpt-bar">
+                    <input
+                      type="text"
+                      className="teoria-chatgpt-bar__input"
+                      placeholder="Pregúntale a ChatGPT..."
+                      value={preguntaChatGpt}
+                      onChange={(e) => setPreguntaChatGpt(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          enviarPreguntaChatGpt();
+                        }
+                      }}
+                    />
+                    <button
+                      type="button"
+                      className="teoria-chatgpt-bar__btn"
+                      onClick={enviarPreguntaChatGpt}
+                      title="Preguntar a ChatGPT"
+                      aria-label="Preguntar a ChatGPT"
+                    >
+                      <i className="fa-solid fa-paper-plane" />
+                    </button>
+                  </div>
                   <button
                     type="button"
                     onClick={() => setLecturaTeoriaOn((v) => !v)}
@@ -1711,103 +2033,112 @@ export default function MiEstudioPage() {
                   </button>
                 )}
                 <div className="teoria-articulo-web">
-                  {topicData?.theory?.map((seccion, idxSeccion) => (
-                    seccion.titulo === "Ejercicios" ? null :
-                      <div key={idxSeccion} className="teoria-seccion">
-                        <h3 className="teoria-etiqueta">
-                          <GlossaryText
-                            text={seccion.titulo}
-                            glosario={topicData?.glosario}
-                          />
-                        </h3>
-                        <div className="teoria-puntos-lista animate-fade-in">
-                          {seccion.puntos.map((punto, idxPunto) => {
-                            const puntoId = `${idxSeccion}-${idxPunto}`;
-                            return (
-                              <div
-                                key={idxPunto}
-                                id={`punto-${puntoId}`}
-                                className={`teoria-punto${puntoVozId === puntoId ? " is-leyendo" : ""}`}
-                              >
-                                <div className="teoria-punto__fila" onClick={() => setPuntoVozId(puntoId)}>
-                                  <div>
-                                    <input
-                                      type="checkbox"
-                                      id={`checkbox-${puntoId}`}
-                                      className={`teoria-etiqueta-checkbox${textosCompletados.includes(puntoId) ? " is-completado" : ""}`}
-                                      checked={textosSeleccionados.includes(puntoId)}
-                                      onClick={(e) => e.stopPropagation()}
-                                      onChange={() => {
-                                        if (textosCompletados.includes(puntoId)) return;
-                                        setTextosSeleccionados((prev) => {
-                                          const newSelection = prev.includes(puntoId)
-                                            ? prev.filter((t) => t !== puntoId)
-                                            : [...prev, puntoId];
-                                          const idsTeoriaNormal = flatPuntos
-                                            .filter((p) => p.seccionTitulo !== "Ejercicios")
-                                            .map((p) => p.id);
-                                          if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
-                                            setMostrarCongratulations(true);
-                                          }
-                                          return newSelection;
-                                        });
-                                      }}
-                                    />
-                                    <label htmlFor={`checkbox-${puntoId}`} className="teoria-contenido-principal">
-                                      <GlossaryText text={punto.texto} glosario={topicData?.glosario} />
-                                    </label>
-                                  </div>
-                                  <button
-                                    type="button"
-                                    className="teoria-punto__game-btn"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      elegirModoEstudio("solo_preguntas", { seleccionEspecifica: [puntoId] });
-                                    }}
-                                    title="Ir a la pregunta de este texto"
-                                    aria-label="Ir a la pregunta de este texto"
-                                  >
-                                    <i className="fa-solid fa-gamepad"></i>
-                                  </button>
+                  {puntoTeoriaActual && (
+                    <>
+                      <h3 className="teoria-etiqueta">
+                        {puntoTeoriaActual.seccionTitulo}
+                      </h3>
+                      <div
+                        id={`punto-${puntoTeoriaActual.id}`}
+                        className={`arcade-game-container teoria-card-unica${puntoVozId === puntoTeoriaActual.id ? " is-leyendo" : ""}`}
+                      >
+                        <div className="arcade-grid" />
+                        <div className="teoria-card-unica__inner">
+                          <div className="teoria-punto__fila">
+                            <div>
+                              <input
+                                type="checkbox"
+                                id={`checkbox-${puntoTeoriaActual.id}`}
+                                className={`teoria-etiqueta-checkbox${textosCompletados.includes(puntoTeoriaActual.id) ? " is-completado" : ""}`}
+                                checked={textosSeleccionados.includes(puntoTeoriaActual.id)}
+                                onChange={() => {
+                                  const puntoId = puntoTeoriaActual.id;
+                                  if (textosCompletados.includes(puntoId)) return;
+                                  setTextosSeleccionados((prev) => {
+                                    const newSelection = prev.includes(puntoId)
+                                      ? prev.filter((t) => t !== puntoId)
+                                      : [...prev, puntoId];
+                                    const idsTeoriaNormal = flatPuntos
+                                      .filter((p) => p.seccionTitulo !== "Ejercicios")
+                                      .map((p) => p.id);
+                                    if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
+                                      setMostrarCongratulations(true);
+                                    }
+                                    return newSelection;
+                                  });
+                                }}
+                              />
+                              <label htmlFor={`checkbox-${puntoTeoriaActual.id}`} className="teoria-contenido-principal">
+                                <GlossaryText text={puntoTeoriaActual.texto} glosario={topicData?.glosario} />
+                              </label>
+                            </div>
+                          </div>
+                          {puntoTeoriaActual.imagen && (
+                            <div className="teoria-punto__imagen-wrap">
+                              <img
+                                src={
+                                  /^(https?:)?\/\//i.test(puntoTeoriaActual.imagen)
+                                    ? puntoTeoriaActual.imagen
+                                    : `${import.meta.env.BASE_URL}${String(puntoTeoriaActual.imagen).replace(/^\/+/, "")}`
+                                }
+                                alt={puntoTeoriaActual.texto || "Imagen de la teoría"}
+                                className="teoria-punto__imagen"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          {puntoTeoriaActual.explicacion && (
+                            <div className="teoria-explicacion-extra teoria-explicacion-extra--unida">
+                              <div className="teoria-explicacion-extra__fila">
+                                <div className="teoria-explicacion-extra__texto">
+                                  <GlossaryText text={puntoTeoriaActual.explicacion} glosario={topicData?.glosario} />
                                 </div>
-                                {punto.imagen && (
-                                  <div className="teoria-punto__imagen-wrap">
-                                    <img
-                                      src={
-                                        /^(https?:)?\/\//i.test(punto.imagen)
-                                          ? punto.imagen
-                                          : `${import.meta.env.BASE_URL}${String(punto.imagen).replace(/^\/+/, "")}`
-                                      }
-                                      alt={punto.texto || "Imagen de la teoría"}
-                                      className="teoria-punto__imagen"
-                                      loading="lazy"
-                                    />
-                                  </div>
-                                )}
-                                {punto.explicacion && (
-                                  <div className="teoria-explicacion-extra">
-                                    <div className="teoria-explicacion-extra__fila">
-                                      <div className="teoria-explicacion-extra__texto">
-                                        <GlossaryText text={punto.explicacion} glosario={topicData?.glosario} />
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
                               </div>
-                            );
-                          })}
+                            </div>
+                          )}
                         </div>
                       </div>
-                  ))}
+                      <div className="teoria-nav-botones">
+                        <button
+                          type="button"
+                          className="teoria-nav-btn"
+                          onClick={() => setTeoriaVistaIndex((i) => Math.max(0, i - 1))}
+                          disabled={teoriaVistaIndex === 0}
+                          title="Anterior"
+                          aria-label="Punto anterior"
+                        >
+                          <i className="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button
+                          type="button"
+                          className="teoria-nav-btn teoria-nav-btn--game"
+                          onClick={() => elegirModoEstudio("solo_preguntas", { seleccionEspecifica: [puntoTeoriaActual.id] })}
+                          title="Ir a la pregunta de este texto"
+                          aria-label="Ir a la pregunta de este texto"
+                        >
+                          <i className="fa-solid fa-gamepad"></i>
+                        </button>
+                        <button
+                          type="button"
+                          className="teoria-nav-btn"
+                          onClick={() => setTeoriaVistaIndex((i) => Math.min(puntosTeoria.length - 1, i + 1))}
+                          disabled={teoriaVistaIndex === puntosTeoria.length - 1}
+                          title="Siguiente"
+                          aria-label="Punto siguiente"
+                        >
+                          <i className="fa-solid fa-arrow-right"></i>
+                        </button>
+                      </div>
+                    </>
+                  )}
                   <div className="teoria-acciones-final">
-                    {examenPreguntas.length > 0 && (
-                      <button
-                        className="teoria-boton-examen"
-                        onClick={() => elegirModoEstudio("solo_preguntas", { requiereSeleccion: true })}
-                      >
-                        <i className="fa-solid fa-graduation-cap"></i> Ir al Examen
-                      </button>
-                    )}
+                    <button
+                      className={`teoria-boton-examen${examenPreguntas.length > 0 ? "" : " is-bloqueado"}`}
+                      onClick={() => examenPreguntas.length > 0 && elegirModoEstudio("solo_preguntas", { requiereSeleccion: true })}
+                      aria-disabled={examenPreguntas.length === 0}
+                    >
+                      <i className="fa-solid fa-graduation-cap"></i> Ir al Examen
+                    </button>
                     <button
                       className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta ? "" : " is-bloqueado"}`}
                       onClick={intentarCompletarTema}
@@ -1934,24 +2265,37 @@ export default function MiEstudioPage() {
             )}
           </div>
         )}
-        {topicData && stage === "theory" && examenPreguntas.length === 0 && (
+        {topicData && stage === "theory" && (
           <section className="mi-estudio__suggestion">
-            {enviandoSugerencia ? (
-              <div className="mi-estudio__suggestion-loading" aria-live="polite">
-                <span className="mi-estudio__suggestion-spinner" aria-hidden="true" />
-                <span>Enviando sugerencia...</span>
-              </div>
-            ) : (
+            <div className="mi-estudio__suggestion-actions">
               <button
                 type="button"
-                className="mi-estudio__suggestion-btn"
-                onClick={enviarSugerenciaExamen}
-                disabled={enviandoSugerencia}
+                className="mi-estudio__suggestion-btn mi-estudio__suggestion-btn--deco"
+                onClick={enviarQuizInteractivoChatGpt}
+                title="Copiar la teoría y crear un quiz interactivo en ChatGPT"
               >
-                <i className="fa-solid fa-file-circle-plus"></i>
-                <span>Sugerir tema</span>
+                <i className="fa-solid fa-list-check"></i>
+                <span>Quiz interactivo</span>
               </button>
-            )}
+              {examenPreguntas.length === 0 && (
+                enviandoSugerencia ? (
+                  <div className="mi-estudio__suggestion-loading" aria-live="polite">
+                    <span className="mi-estudio__suggestion-spinner" aria-hidden="true" />
+                    <span>Enviando sugerencia...</span>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    className="mi-estudio__suggestion-btn"
+                    onClick={enviarSugerenciaExamen}
+                    disabled={enviandoSugerencia}
+                  >
+                    <i className="fa-solid fa-file-circle-plus"></i>
+                    <span>Sugerir tema</span>
+                  </button>
+                )
+              )}
+            </div>
           </section>
         )}
         {stage === "finished" && (
@@ -1999,7 +2343,12 @@ export default function MiEstudioPage() {
           flatPuntos={flatPuntos}
         />
       )}
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} onSelect={seleccionarItem} />
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        onSelect={seleccionarItem}
+        contenidoTema={stage === "theory" ? puntosTeoria : []}
+      />
       {nombreCursoActivo && (
         <TopicsModal
           open={temasOpen}

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import LatexText from "../../components/LatexText";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import RendirseModal from "../../components/RendirseModal";
-
 const mensajesIncorrectos = {
   5: [
     <>
@@ -47,7 +46,6 @@ const mensajesIncorrectos = {
     </>,
   ],
 };
-
 // Mensajes que se muestran DESPUÉS de rendirse, según cuántas vidas le
 // quedaban al usuario en ese momento. Rendirse ya no cuesta una vida:
 // esto es solo tono, para que la pantalla de "te rendiste" no se sienta
@@ -146,12 +144,10 @@ const mensajesRendirse = {
     },
   ],
 };
-
 function elegirInfoRendirse(cantVidas) {
   const grupo = mensajesRendirse[cantVidas] || mensajesRendirse[5];
   return grupo[Math.floor(Math.random() * grupo.length)];
 }
-
 export default function ExplanationPanel({
   pregunta,
   isCorrect,
@@ -165,25 +161,19 @@ export default function ExplanationPanel({
   lives,
 }) {
   const [mostrarModalRendirse, setMostrarModalRendirse] = useState(false);
-  
   const cantVidas = corazones ?? lives ?? vidas ?? 5;
   const cantVidasActuales = vidasActuales ?? cantVidas;
-
   const infoRendirse = useMemo(
     () => (rendido ? elegirInfoRendirse(cantVidas) : null),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [rendido, pregunta]
   );
-
   useEffect(() => {
     if (!("speechSynthesis" in window)) {
       return;
     }
-
     window.speechSynthesis.cancel();
-
     let base;
-
     if (isCorrect) {
       base = "Correcto.";
     } else if (rendido) {
@@ -191,32 +181,25 @@ export default function ExplanationPanel({
     } else {
       base = "Incorrecto. Inténtalo de nuevo.";
     }
-
     const utter = new SpeechSynthesisUtterance(
       reemplazarSimbolosParaVoz(base)
     );
-
     utter.lang = "es-PE";
-
     let cancelado = false;
-
     const timeoutId = setTimeout(() => {
       if (!cancelado) {
         window.speechSynthesis.speak(utter);
       }
     }, 80);
-
     return () => {
       cancelado = true;
       clearTimeout(timeoutId);
       window.speechSynthesis.cancel();
     };
   }, [pregunta, isCorrect, rendido, infoRendirse]);
-
   const mensajeIncorrecto =
     mensajesIncorrectos[cantVidas]?.[0] ||
     mensajesIncorrectos[5]?.[0];
-
   return (
     <div
       className={`explanation-panel animate-fade-in ${
@@ -242,7 +225,6 @@ export default function ExplanationPanel({
             ? infoRendirse?.titulo || "Respuesta incorrecta"
             : "Respuesta incorrecta"}
       </h4>
-
       {isCorrect ? (
         <div className="explanation-panel__text">
           <LatexText>{pregunta.explicacion}</LatexText>
@@ -263,7 +245,6 @@ export default function ExplanationPanel({
           {mensajeIncorrecto}
         </p>
       )}
-
       {!isCorrect && (
         <div className="explanation-panel__actions">
           {rendido ? (
@@ -286,7 +267,6 @@ export default function ExplanationPanel({
           )}
         </div>
       )}
-
       <RendirseModal
         abierto={mostrarModalRendirse}
         vidas={cantVidasActuales}

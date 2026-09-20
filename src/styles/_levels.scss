@@ -5,7 +5,6 @@
   font-family: "DS-DIGIB";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
 }
-
 .levels-modal{
   position:fixed;
   inset:0;
@@ -22,11 +21,9 @@
   scrollbar-width:none;
   -ms-overflow-style:none;
 }
-
 .levels-modal::-webkit-scrollbar{
   display:none;
 }
-
 .levels-modal.is-closed{
   opacity:0;
   visibility:hidden;
@@ -61,18 +58,15 @@
   text-overflow:ellipsis;
   width:100%;
 }
-
 .levels-modal__inner{
   max-width:900px;
   width:100%;
   text-align:center;
   margin:0!important;
 }
-
 /* ============================================================
    Buscador + Cerrar mapa
    ============================================================ */
-
 .levels-modal__search-row{
   display:flex;
   align-items:center;
@@ -81,7 +75,6 @@
   width:100%;
   margin-bottom:16px;
 }
-
 .levels-modal__search{
   position:relative;
   z-index:5;
@@ -91,7 +84,6 @@
   max-width:none;
   margin:0;
 }
-
 .levels-modal__search .home-search-input{
   width:100%;
   box-sizing:border-box;
@@ -106,11 +98,9 @@
   box-shadow:none!important;
   transition:none;
 }
-
 .levels-modal__search .home-search-input::placeholder{
   color:var(--ink-faint);
 }
-
 .levels-modal__search .home-search-input:focus{
   border:1px solid var(--secondary);
   border-bottom-color:transparent;
@@ -119,7 +109,6 @@
   outline:none!important;
   box-shadow:none!important;
 }
-
 .levels-modal__search .home-search-results{
   position:absolute;
   top:100%;
@@ -140,11 +129,9 @@
   flex-direction:column;
   gap:4px;
 }
-
 .levels-modal__search .home-search-results::-webkit-scrollbar{
   display:none;
 }
-
 .levels-modal__search .home-search-result{
   width:100%;
   min-width:0;
@@ -159,17 +146,14 @@
   padding:0;
   transition:background-color .15s linear,color .15s linear,transform .1s linear;
 }
-
 .levels-modal__search .home-search-result:hover,
 .levels-modal__search .home-search-result.is-focused{
   background-color:var(--primary-bg);
   color:var(--ink);
 }
-
 .levels-modal__search .home-search-result:active{
   transform:translateX(1px);
 }
-
 .levels-modal__search .home-search-result p{
   margin:0;
   padding:7px 10px;
@@ -181,11 +165,9 @@
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-
 /* ============================================================
    Botón Cerrar mapa
    ============================================================ */
-
 .levels-modal__close{
   flex-shrink:0;
   align-self:center;
@@ -208,11 +190,9 @@
   transition:background .15s linear;
   margin:0;
 }
-
 .levels-modal__close:hover{
   background:var(--danger)!important;
 }
-
 .levels-modal__close-fixed{
   position:fixed;
   top:72px;
@@ -230,13 +210,11 @@
   justify-content:center;
   cursor:url("/cursor_pointer.webp"), pointer !important;
 }
-
 .levels-modal__close-fixed:hover{
   background:var(--danger);
   border-color:var(--danger);
   color:var(--ink-on-primary);
 }
-
 .level-tema-banner{
   background:var(--bg);
   color:var(--accent);
@@ -251,11 +229,9 @@
   text-align:center;
   box-shadow:var(--shadow-md);
 }
-
 .level-cell{
   position:relative;
 }
-
 .level-tooltip{
   position:fixed;
   background:var(--bg);
@@ -276,7 +252,6 @@
   transition:opacity .15s linear,transform .15s linear,visibility 0s linear .15s;
   pointer-events:none;
 }
-
 .level-tooltip::after{
   content:"";
   position:absolute;
@@ -289,14 +264,12 @@
   border-right:6px solid transparent;
   border-top:6px solid var(--accent);
 }
-
 .level-tooltip.is-visible{
   opacity:1;
   visibility:visible;
   transform:translateY(0);
   transition:opacity .15s linear,transform .15s linear,visibility 0s linear 0s;
 }
-
 .level-btn {
   width:100%;
   aspect-ratio:1;
@@ -315,7 +288,6 @@
   justify-content:center;
   position:relative;
 }
-
 .level-btn:hover:not(:disabled) {
   border-color:var(--primary);
   color:var(--primary-dark);
@@ -325,7 +297,6 @@
     inset 0 0 30px color-mix(in srgb, var(--primary) 45%, transparent),
     0 6px 18px rgba(0, 0, 0, 0.12);
 }
-
 .level-btn.is-selected{
   background:var(--secondary)!important;
   border-color:var(--secondary)!important;
@@ -334,7 +305,6 @@
   border-bottom-width:6px!important;
   box-shadow:none!important;
 }
-
 .level-btn.is-selected:hover{
   background:var(--secondary)!important;
   border-color:var(--secondary)!important;
@@ -343,7 +313,6 @@
   border-bottom-width:6px!important;
   box-shadow:none!important;
 }
-
 .level-btn.is-armado {
   border-color:var(--brand)!important;
   color:var(--brand-dark)!important;
@@ -351,7 +320,6 @@
     inset 0 0 30px color-mix(in srgb, var(--brand) 45%, transparent),
     0 0 0 3px var(--brand-bg)!important;
 }
-
 .level-btn.is-armado:hover {
   border-color:var(--brand)!important;
   color:var(--brand-dark)!important;
@@ -359,20 +327,17 @@
     inset 0 0 30px color-mix(in srgb, var(--brand) 45%, transparent),
     0 0 0 3px var(--brand-bg)!important;
 }
-
 .level-btn:active:not(:disabled){
   border-color:var(--accent);
   color:var(--accent-dark);
   box-shadow:0 0 0 3px var(--accent-bg);
 }
-
 .level-btn:disabled{
   background:var(--surface-alt);
   border-color:var(--border);
   color:var(--ink-faint);
   cursor:not-allowed;
 }
-
 .levels-modal__grid{
   display:grid;
   grid-template-columns:repeat(6,minmax(0,1fr));
@@ -380,33 +345,28 @@
   justify-content:center;
   padding-bottom:24px;
 }
-
 @media (max-width:1024px){
   .levels-modal__grid{
     grid-template-columns:repeat(5,minmax(0,1fr));
   }
 }
-
 @media (max-width:768px){
   .levels-modal__grid{
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:10px;
   }
 }
-
 @media (max-width:480px){
   .levels-modal__grid{
     grid-template-columns:repeat(3,minmax(0,1fr));
     gap:8px;
   }
 }
-
 .levels-modal__pagination{
   display:flex;
   justify-content:center;
   padding-bottom:20px;
 }
-
 .levels-modal__toggle-btn{
   font-family:var(--font-body);
   font-weight:700;
@@ -419,12 +379,10 @@
   cursor:url("/cursor_pointer.webp"), pointer !important;
   transition:background .15s,transform .1s;
 }
-
 .levels-modal__toggle-btn:hover{
   background:var(--primary-light);
   color:var(--ink-on-primary);
 }
-
 .temas-modal-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
@@ -433,7 +391,6 @@
   width:100%;
   padding-bottom:24px;
 }
-
 .tema-arcade-btn{
   width:100%;
   padding:16px 12px;
@@ -453,7 +410,6 @@
   text-align:center;
   line-height:1.3;
 }
-
 .tema-arcade-btn:hover:not(:disabled){
   background:var(--primary-bg);
   border:var(--nested-border);
@@ -462,100 +418,82 @@
   transform:translateY(3px);
   border-bottom-width:3px;
 }
-
 .tema-arcade-btn.is-current{
   border-color:var(--accent);
   color:var(--accent-dark);
   box-shadow:0 0 0 3px var(--accent-bg);
 }
-
 .tema-arcade-btn:disabled{
   background:var(--surface-alt);
   border-color:var(--border);
   color:var(--ink-faint);
   cursor:not-allowed;
 }
-
 .topbar__curso--clickable{
   cursor:url("/cursor_pointer.webp"), pointer !important;
   transition:opacity .2s,background-color .2s;
   border-radius:var(--radius-sm);
   display:inline-block;
 }
-
 @media (min-width:1280px){
   .temas-modal-grid{
     grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
   }
-
   .tema-arcade-btn{
     font-size:16px;
     padding:20px 16px;
   }
 }
-
 @media (max-width:639px){
   .levels-modal{
     padding:0 12px 8px;
   }
-
   .levels-modal__title--live{
     padding:14px 12px;
     margin-bottom:14px;
   }
-
   .levels-modal__search-row{
     gap:8px;
     margin-bottom:14px;
   }
-
   .levels-modal__search{
     flex:1;
     min-width:0;
     width:auto;
     max-width:none;
   }
-
   .levels-modal__search .home-search-input{
     padding:8px 14px;
     font-size:13px;
   }
-
   .levels-modal__search .home-search-result p{
     padding:6px 8px;
     font-size:12px;
   }
-
   .levels-modal__close{
     font-size:12px;
   }
 }
-
 .levels-modal__empty {
   color:var(--ink-soft);
   margin-bottom:20px;
   background:transparent!important;
   padding:0!important;
 }
-
 .levels-modal__counter {
   color:var(--ink-soft);
   font-size:14px;
   margin-bottom:12px;
 }
-
 .levels-modal--topics {
   z-index:1000;
 }
-
 .levels-modal__inner--topics {
   margin-top:76px;
 }
-
 /* ============================================================
    TheorySearchModal.jsx
    ============================================================ */
-
 .theory-search-modal__results {
   display:flex;
   flex-direction:column;
@@ -563,7 +501,6 @@
   max-height:50vh;
   overflow-y:auto;
 }
-
 .theory-search-modal__item {
   text-align:left;
   padding:10px 12px;
@@ -572,17 +509,14 @@
   background:var(--surface-alt);
   color:var(--ink);
 }
-
 .theory-search-modal__item-heading {
   margin:0 0 2px;
   font-size:12.5px;
   color:var(--ink-faint);
 }
-
 .theory-search-modal__item-text {
   margin:0;
 }
-
 .theory-search-modal__empty {
   color:var(--ink-soft);
 }

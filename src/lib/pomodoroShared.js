@@ -5,13 +5,11 @@
 // así cualquier pestaña puede calcular el tiempo restante sin depender
 // de que un setInterval siga vivo en segundo plano.
 // ─────────────────────────────────────────────────────────────────────────
-
 const POMO_SHARED_KEY = "mi_estudio_pomodoro_compartido";
 const POMO_RETORNO_KEY = "mi_estudio_pomodoro_retorno";
 // Si el retorno guardado tiene más de esto, se considera olvidado/abandonado
 // y no debe reabrir el tema solo (mismo criterio que UMBRAL_ABANDONO_MS).
 const UMBRAL_RETORNO_MS = 2 * 60 * 60 * 1000;
-
 export function guardarPomodoroCompartido(estado) {
   try {
     localStorage.setItem(POMO_SHARED_KEY, JSON.stringify(estado));
@@ -19,7 +17,6 @@ export function guardarPomodoroCompartido(estado) {
     console.error("Error guardando pomodoro compartido:", e);
   }
 }
-
 export function leerPomodoroCompartido() {
   try {
     const raw = localStorage.getItem(POMO_SHARED_KEY);
@@ -28,7 +25,6 @@ export function leerPomodoroCompartido() {
     return null;
   }
 }
-
 export function limpiarPomodoroCompartido() {
   try {
     localStorage.removeItem(POMO_SHARED_KEY);
@@ -36,7 +32,6 @@ export function limpiarPomodoroCompartido() {
     /* noop */
   }
 }
-
 // Nombre del tema al que hay que volver después de presionar "Iniciar"
 // en Pomodoro (se guarda justo antes de mandar al usuario a esa pestaña
 // desde el aviso de "se acabó el tiempo").
@@ -50,14 +45,12 @@ export function guardarRetorno(temaNombre) {
     /* noop */
   }
 }
-
 // Lee el retorno guardado, descartándolo (y borrándolo) si ya quedó viejo
 // u olvidado, o si es un valor del formato antiguo (string plano).
 function leerRetornoVigente() {
   try {
     const raw = localStorage.getItem(POMO_RETORNO_KEY);
     if (!raw) return null;
-
     let data;
     try {
       data = JSON.parse(raw);
@@ -66,30 +59,25 @@ function leerRetornoVigente() {
       localStorage.removeItem(POMO_RETORNO_KEY);
       return null;
     }
-
     if (!data?.tema || !data?.timestamp) {
       localStorage.removeItem(POMO_RETORNO_KEY);
       return null;
     }
-
     if (Date.now() - data.timestamp > UMBRAL_RETORNO_MS) {
       localStorage.removeItem(POMO_RETORNO_KEY);
       return null;
     }
-
     return data.tema;
   } catch {
     return null;
   }
 }
-
 // Igual que leerYLimpiarRetorno, pero sin borrar el valor: sirve para
 // mostrar un botón persistente de "volver al tema" que no se pierda
 // la primera vez que se lee.
 export function leerRetorno() {
   return leerRetornoVigente();
 }
-
 export function leerYLimpiarRetorno() {
   const tema = leerRetornoVigente();
   if (tema) {
@@ -101,7 +89,6 @@ export function leerYLimpiarRetorno() {
   }
   return tema;
 }
-
 // ─────────────────────────────────────────────────────────────────────────
 // Tema elegido por curso+día. Se guarda apenas el usuario elige el tema
 // para un curso, y se usa para NO volver a preguntar el tema en los
@@ -109,11 +96,9 @@ export function leerYLimpiarRetorno() {
 // aunque ya se haya salido de la página de Pomodoro mientras corría.
 // ─────────────────────────────────────────────────────────────────────────
 const TEMA_CURSO_KEY = "mi_estudio_pomodoro_tema_curso";
-
 function claveTemaCurso(day, subject) {
   return `${day}::${subject}`;
 }
-
 export function guardarTemaCurso(day, subject, tema) {
   try {
     const raw = localStorage.getItem(TEMA_CURSO_KEY);
@@ -124,7 +109,6 @@ export function guardarTemaCurso(day, subject, tema) {
     /* noop */
   }
 }
-
 export function leerTemaCurso(day, subject) {
   try {
     const raw = localStorage.getItem(TEMA_CURSO_KEY);
@@ -134,7 +118,6 @@ export function leerTemaCurso(day, subject) {
     return null;
   }
 }
-
 export function limpiarTemaCurso(day, subject) {
   try {
     const raw = localStorage.getItem(TEMA_CURSO_KEY);
@@ -146,7 +129,39 @@ export function limpiarTemaCurso(day, subject) {
     /* noop */
   }
 }
-
+// ─────────────────────────────────────────────────────────────────────────
+// Curso activo (día + materia) dentro de Horario. Se guarda mientras el
+// usuario está "dentro" de un curso, para poder restaurar esa vista al
+// volver a la página (por ejemplo, después de ir a Mi Estudio a estudiar
+// mientras corre el pomodoro y regresar cuando se acaba el tiempo).
+// ─────────────────────────────────────────────────────────────────────────
+const CURSO_ACTIVO_KEY = "mi_estudio_pomodoro_curso_activo";
+export function guardarCursoActivo(day, subject) {
+  try {
+    if (!subject) {
+      localStorage.removeItem(CURSO_ACTIVO_KEY);
+      return;
+    }
+    localStorage.setItem(CURSO_ACTIVO_KEY, JSON.stringify({ day, subject }));
+  } catch {
+    /* noop */
+  }
+}
+export function leerCursoActivo() {
+  try {
+    const raw = localStorage.getItem(CURSO_ACTIVO_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+export function limpiarCursoActivo() {
+  try {
+    localStorage.removeItem(CURSO_ACTIVO_KEY);
+  } catch {
+    /* noop */
+  }
+}
 // ─────────────────────────────────────────────────────────────────────────
 // Posición exacta (card, stage, modo) dentro de un tema de Mi Estudio.
 // Se guarda mientras el usuario navega las tarjetas, y se usa al volver
@@ -155,7 +170,6 @@ export function limpiarTemaCurso(day, subject) {
 // mostrar la teoría.
 // ─────────────────────────────────────────────────────────────────────────
 const POSICION_ESTUDIO_KEY = "mi_estudio_posicion_actual";
-
 export function guardarPosicionEstudio(posicion) {
   try {
     localStorage.setItem(POSICION_ESTUDIO_KEY, JSON.stringify(posicion));
@@ -163,7 +177,6 @@ export function guardarPosicionEstudio(posicion) {
     /* noop */
   }
 }
-
 export function leerPosicionEstudio() {
   try {
     const raw = localStorage.getItem(POSICION_ESTUDIO_KEY);

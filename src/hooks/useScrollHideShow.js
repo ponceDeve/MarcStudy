@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 /**
  * Hook para ocultar/mostrar header al hacer scroll
  * Agrega/quita la clase "is-header-oculto" al body
@@ -21,14 +20,11 @@ export function useScrollHideShow({
       document.body.classList.remove("is-header-oculto");
       return;
     }
-
     let ultimoY = window.scrollY;
     let ticking = false;
-
     function actualizar() {
       const y = window.scrollY;
       const delta = y - ultimoY;
-
       if (y < zonaSeguraTope) {
         document.body.classList.remove("is-header-oculto");
       } else if (delta > umbralScroll) {
@@ -38,19 +34,15 @@ export function useScrollHideShow({
         // Scroll hacia arriba
         document.body.classList.remove("is-header-oculto");
       }
-
       ultimoY = y;
       ticking = false;
     }
-
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(actualizar);
     }
-
     window.addEventListener("scroll", onScroll, { passive: true });
-    
     return () => {
       window.removeEventListener("scroll", onScroll);
       document.body.classList.remove("is-header-oculto");

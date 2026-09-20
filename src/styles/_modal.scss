@@ -1,5 +1,4 @@
 @use "./tokens" as *;
-
 @font-face {
   font-family: "DS-Digital";
   src: url("/font/DS-DIGIB.TTF") format("truetype");
@@ -7,49 +6,43 @@
   font-style: normal;
   font-display: swap;
 }
-
 .timer-font {
   font-family: "DS-Digital", monospace !important;
   font-weight: normal !important;
   font-style: normal !important;
 }
-
 /* =========================================================
    MODAL BASE
    ========================================================= */
-
 body.modal-open {
   overflow: hidden;
 }
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   height: 100vh;
   padding: var(--space-5) 0;
   background: var(--overlay);
   backdrop-filter: blur(2px);
   box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
-
 .modal-backdrop.is-closed {
   opacity: 0;
   pointer-events: none;
 }
-
 .modal-box {
   position: relative;
   width: 100%;
   max-width: 380px;
   height: auto;
   min-height: 0;
+  max-height: calc(100vh - (var(--space-5) * 2));
   flex: 0 0 auto;
   margin: 0 auto;
   background: var(--surface);
@@ -58,24 +51,19 @@ body.modal-open {
   border: 1px solid var(--border);
   text-align: center;
   box-sizing: border-box;
-  overflow: visible;
+  overflow-y: auto;
 }
-
 .modal-box.modal-wide {
   max-width: 480px;
 }
-
 .modal-box.modal-box--plain {
   background: none;
   padding: 0;
   border: none;
-  max-width: 440px;
 }
-
 /* =========================================================
    MODAL CLOSE
    ========================================================= */
-
 .modal-close {
   position: absolute;
   top: 10px;
@@ -88,40 +76,32 @@ body.modal-open {
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 2;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 28px;
   height: 28px;
-
   transition:
     background 0.2s linear,
     color 0.2s linear,
     transform 0.15s linear;
 }
-
 .modal-close:hover {
   color: var(--danger-dark);
   background-color: var(--danger-bg);
 }
-
 .modal-close:active {
   transform: scale(0.94);
 }
-
 /* =========================================================
    TEMA MODAL
    ========================================================= */
-
 .tema-modal-title {
   margin: 0;
   color: var(--ink);
   font-size: 1.25rem;
   font-weight: 800;
 }
-
 .tema-modal-skull-icon {
   width: 54px;
   height: 54px;
@@ -134,14 +114,12 @@ body.modal-open {
   color: var(--primary);
   font-size: 1.7rem;
 }
-
 .tema-modal-subtitle {
   margin: var(--space-2) 0 var(--space-4);
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.5;
 }
-
 .tema-modal-input {
   width: 100%;
   padding: 0.75rem 0.9rem;
@@ -157,19 +135,16 @@ body.modal-open {
     border-color 0.2s,
     box-shadow 0.2s;
 }
-
 .tema-modal-input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
 }
-
 .tema-modal-actions {
   display: flex;
   justify-content: center;
   gap: var(--space-2);
   margin-top: var(--space-4);
 }
-
 .btn-outline,
 .btn-solid {
   min-height: 40px;
@@ -185,36 +160,29 @@ body.modal-open {
     color 0.2s,
     transform 0.15s;
 }
-
 .btn-outline {
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--border);
 }
-
 .btn-outline:hover {
   background: var(--surface-soft, #f3f4f6);
 }
-
 .btn-solid {
   background: var(--primary);
   color: #fff;
   border: 1px solid var(--primary);
 }
-
 .btn-solid:hover {
   filter: brightness(0.96);
 }
-
 .btn-outline:active,
 .btn-solid:active {
   transform: scale(0.98);
 }
-
 /* =========================================================
    WELCOME
    ========================================================= */
-
 .welcome-overlay {
   position: fixed;
   inset: 0;
@@ -230,27 +198,25 @@ body.modal-open {
   box-sizing: border-box;
   overflow: visible;
 }
-
 .welcome-overlay.is-closed {
   opacity: 0;
   pointer-events: none;
 }
-
 .welcome-overlay--dark {
   background: rgb(0 0 0 / 78%);
 }
-
 .welcome-card {
   width: 100%;
   max-width: 380px;
+  max-height: calc(100vh - (var(--space-5) * 2));
   padding: var(--space-5);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   text-align: center;
   box-sizing: border-box;
+  overflow-y: auto;
 }
-
 .welcome-dots {
   display: flex;
   justify-content: center;
@@ -258,7 +224,6 @@ body.modal-open {
   gap: 6px;
   margin-bottom: var(--space-4);
 }
-
 .welcome-dot {
   width: 7px;
   height: 7px;
@@ -268,13 +233,11 @@ body.modal-open {
     width 0.2s,
     background 0.2s;
 }
-
 .welcome-dot.is-active {
   width: 20px;
   border-radius: 999px;
   background: var(--primary);
 }
-
 .welcome-icon-ring {
   width: 68px;
   height: 68px;
@@ -287,7 +250,6 @@ body.modal-open {
   color: var(--primary);
   font-size: 1.8rem;
 }
-
 .welcome-titulo {
   margin: 0;
   color: var(--ink);
@@ -296,7 +258,6 @@ body.modal-open {
   line-height: 1.25;
   margin: var(--space-3) 0;
 }
-
 .welcome-texto {
   margin: 0 auto;
   max-width: 320px;
@@ -304,21 +265,18 @@ body.modal-open {
   font-size: 0.9rem;
   line-height: 1.55;
 }
-
 .welcome-texto--sutil {
   margin-top: var(--space-2);
   font-size: 0.8rem;
   opacity: 0.75;
 }
-
 .welcome-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: var(--space-2);
   margin-top: var(--space-3);
 }
-
 .welcome-btn {
   min-height: 40px;
   padding: 0.6rem 1rem;
@@ -336,61 +294,50 @@ body.modal-open {
     color 0.2s,
     transform 0.15s;
 }
-
 .welcome-btn:hover {
   background: var(--surface-soft, #f3f4f6);
 }
-
 .welcome-btn:active {
   transform: scale(0.98);
 }
-
 .welcome-btn.is-back {
   color: var(--muted);
 }
-
 .welcome-btn.is-next {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
 }
-
 .welcome-btn.is-next:hover {
   filter: brightness(0.96);
 }
-
 .welcome-btn.is-next:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   filter: none;
 }
-
 .welcome-choice-nav {
   display: flex;
   justify-content: center;
   gap: var(--space-2);
   margin-top: var(--space-4);
 }
-
 .welcome-btn.is-skip {
   border: none;
   background: transparent;
   color: var(--muted);
 }
-
 .welcome-btn.is-skip:hover {
   background: transparent;
   color: var(--ink);
 }
-
 /* =========================================================
    WELCOME INPUT
    ========================================================= */
-
 .welcome-input {
-  width: 100%;
+  width: 80%;
   padding: 0.75rem 0.9rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--ink);
   border-radius: var(--radius-md);
   background: var(--surface);
   color: var(--ink);
@@ -402,16 +349,13 @@ body.modal-open {
     border-color 0.2s,
     box-shadow 0.2s;
 }
-
 .welcome-input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgb(37 99 235 / 10%);
 }
-
 /* =========================================================
    POMODORO ALARM
    ========================================================= */
-
 .pomo-alarm-overlay {
   position: fixed;
   inset: 0;
@@ -428,24 +372,23 @@ body.modal-open {
   overflow: visible;
   transition: opacity 0.2s;
 }
-
 .pomo-alarm-overlay.is-closed {
   opacity: 0;
   pointer-events: none;
 }
-
 .pomo-alarm-card {
   position: relative;
   width: 100%;
   max-width: 360px;
+  max-height: calc(100vh - (var(--space-5) * 2));
   padding: var(--space-5);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   text-align: center;
   box-sizing: border-box;
+  overflow-y: auto;
 }
-
 .pomo-alarm-icon {
   width: 64px;
   height: 64px;
@@ -458,20 +401,17 @@ body.modal-open {
   color: var(--violet);
   font-size: 1.7rem;
 }
-
 .pomo-alarm-titulo {
   margin: 0 0 var(--space-4);
   color: var(--ink);
   font-size: 1.3rem;
   font-weight: 800;
 }
-
 .pomo-alarm-label {
   margin: 0 0 var(--space-3);
   color: var(--muted);
   font-size: 0.9rem;
 }
-
 .pomo-alarm-btn {
   width: 100%;
   min-height: 42px;
@@ -487,30 +427,24 @@ body.modal-open {
     background 0.2s,
     transform 0.15s;
 }
-
 .pomo-alarm-btn:hover {
   filter: brightness(0.96);
 }
-
 .pomo-alarm-btn:active {
   transform: scale(0.98);
 }
-
 .pomo-alarm-btn--omitir {
   margin-top: var(--space-2);
   background: transparent;
   border-color: var(--border);
   color: var(--muted);
 }
-
 .pomo-alarm-btn--omitir:hover {
   background: var(--surface-2, rgb(0 0 0 / 4%));
 }
-
 /* =========================================================
    MODO ESTUDIO
    ========================================================= */
-
 .modo-estudio-overlay {
   position: fixed;
   inset: 0;
@@ -527,37 +461,34 @@ body.modal-open {
   overflow: visible;
   transition: opacity 0.2s;
 }
-
 .modo-estudio-overlay.is-closed {
   opacity: 0;
   pointer-events: none;
 }
-
 .modo-estudio-card {
   width: 100%;
   max-width: 380px;
+  max-height: calc(100vh - (var(--space-5) * 2));
   padding: var(--space-5);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   text-align: center;
   box-sizing: border-box;
+  overflow-y: auto;
 }
-
 .modo-estudio-titulo {
   margin: 0;
   color: var(--ink);
   font-size: 1.3rem;
   font-weight: 800;
 }
-
 .modo-estudio-nav {
   display: flex;
   justify-content: center;
   gap: var(--space-2);
   margin-top: var(--space-5);
 }
-
 .modo-estudio-btn {
   min-height: 40px;
   padding: 0.6rem 1rem;
@@ -570,17 +501,14 @@ body.modal-open {
   font-weight: 700;
   cursor: pointer;
 }
-
 .modo-estudio-btn.is-omitir {
   border-color: var(--border);
   background: transparent;
   color: var(--muted);
 }
-
 /* =========================================================
    EDITAR NOMBRE
    ========================================================= */
-
 .editar-nombre-overlay {
   position: fixed;
   inset: 0;
@@ -596,18 +524,18 @@ body.modal-open {
   box-sizing: border-box;
   overflow: visible;
 }
-
 .editar-nombre-card {
   width: 100%;
   max-width: 380px;
+  max-height: calc(100vh - (var(--space-5) * 2));
   padding: var(--space-5);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   text-align: center;
   box-sizing: border-box;
+  overflow-y: auto;
 }
-
 .editar-nombre-foto {
   position: relative;
   width: 90px;
@@ -615,7 +543,6 @@ body.modal-open {
   margin: 0 auto;
   cursor: pointer;
 }
-
 .editar-nombre-foto__mask {
   display: flex;
   align-items: center;
@@ -627,11 +554,9 @@ body.modal-open {
   background: var(--surface-soft, #f3f4f6);
   border: 1px solid var(--border);
 }
-
 .editar-nombre-foto:hover .editar-nombre-foto__mask {
   border-color: var(--primary);
 }
-
 .editar-nombre-foto__img {
   width: 100%;
   height: 100%;
@@ -641,11 +566,9 @@ body.modal-open {
 .editar-nombre-foto img {
   transition: all .3s linear;
 }
-
 .editar-nombre-foto:hover img {
-  transform: scale(1.5);
+  transform: scale(1.15);
 }
-
 .editar-nombre-foto__lapiz {
   position: absolute;
   right: 0;
@@ -661,7 +584,6 @@ body.modal-open {
   font-size: 0.75rem;
   border: 2px solid var(--surface);
 }
-
 .editar-nombre-foto__quitar {
   display: block;
   border: none;
@@ -672,15 +594,12 @@ body.modal-open {
   font-size: 0.75rem;
   cursor: pointer;
 }
-
 .editar-nombre-foto__quitar:hover {
   color: var(--ink);
 }
-
 /* =========================================================
    RETIRADA MODAL
    ========================================================= */
-
 .retirada-modal {
   position: relative;
   width: 100%;
@@ -692,7 +611,6 @@ body.modal-open {
   box-sizing: border-box;
   text-align: center;
 }
-
 .retirada-modal::before {
   content: "";
   position: absolute;
@@ -704,7 +622,6 @@ body.modal-open {
   border-radius: 999px;
   background: var(--border);
 }
-
 .retirada-modal::after {
   content: "";
   position: absolute;
@@ -712,7 +629,6 @@ body.modal-open {
   border-radius: inherit;
   pointer-events: none;
 }
-
 .retirada-modal button {
   min-height: 40px;
   padding: 0.6rem 1rem;
@@ -722,11 +638,9 @@ body.modal-open {
   font-weight: 700;
   cursor: pointer;
 }
-
 /* =========================================================
    MOBILE
    ========================================================= */
-
 @media (max-width: 480px) {
   .modal-backdrop,
   .welcome-overlay,
@@ -735,7 +649,6 @@ body.modal-open {
   .editar-nombre-overlay {
     padding: var(--space-3) 10px;
   }
-
   .modal-box,
   .welcome-card,
   .pomo-alarm-card,
@@ -743,12 +656,11 @@ body.modal-open {
   .editar-nombre-card,
   .retirada-modal {
     max-width: 100%;
+    max-height: calc(100vh - (var(--space-3) * 2));
   }
-
   .modal-box {
     padding: var(--space-4) var(--space-3);
   }
-
   .welcome-card,
   .pomo-alarm-card,
   .modo-estudio-card,
@@ -756,15 +668,12 @@ body.modal-open {
   .retirada-modal {
     padding: var(--space-4);
   }
-
   .welcome-nav {
     gap: 8px;
   }
-
   .welcome-btn {
     padding: 0.55rem 0.8rem;
   }
-
   .modal-close {
     top: 8px;
     right: 8px;

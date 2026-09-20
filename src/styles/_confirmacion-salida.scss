@@ -10,7 +10,6 @@
   padding: 20px;
   animation: confirmacionSalidaFadeIn 0.2s linear;
 }
-
 .confirmacion-salida__modal {
   background: #ffffff;
   border-radius: 16px;
@@ -20,27 +19,23 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
   animation: confirmacionSalidaSlideUp 0.25s linear;
   text-align: center;
-
   h3 {
     margin: 14px 0 8px;
     font-size: 17px;
     font-weight: 700;
     color: #1e293b;
   }
-
   p {
     margin: 0 0 22px;
     color: #64748b;
     font-size: 13.5px;
     line-height: 1.5;
-
     strong {
       color: #334155;
       font-weight: 600;
     }
   }
 }
-
 .confirmacion-salida__icono {
   width: 48px;
   height: 48px;
@@ -50,18 +45,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   i {
     font-size: 20px;
     color: #f59e0b;
   }
 }
-
 .confirmacion-salida__botones {
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   button {
     width: 100%;
     padding: 12px 16px;
@@ -73,39 +65,31 @@
     transition: all 0.15s linear;
   }
 }
-
 .confirmacion-salida__guardar {
   background: #2563eb;
   color: white;
-
   &:hover {
     background: #1d4ed8;
   }
-
   &:active {
     transform: scale(0.98);
   }
 }
-
 .confirmacion-salida__descartar {
   background: transparent;
   color: #64748b;
-
   &:hover {
     background: #f1f5f9;
     color: #475569;
   }
-
   &:active {
     transform: scale(0.98);
   }
 }
-
 @keyframes confirmacionSalidaFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 @keyframes confirmacionSalidaSlideUp {
   from {
     opacity: 0;

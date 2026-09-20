@@ -5,7 +5,6 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
 import { useTemaOscuro } from "../hooks/useTemaOscuro";
 import EditarNombreModal from "./EditarNombreModal";
-
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
@@ -42,7 +41,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
     document.body
   );
 }
-
 export default function AppHeader({
   onAbrirBuscador,
   section = "inicio",
@@ -61,50 +59,38 @@ export default function AppHeader({
   const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
   const headerRef = useRef(null);
   const location = useLocation();
-
   useAutoHideHeader(menuMobileOpen);
-
   // ============================================================
   // ALTURA DEL HEADER
   // ============================================================
-
   useEffect(() => {
     const el = headerRef.current;
     if (!el) return;
-
     const setHeaderVar = () => {
       document.documentElement.style.setProperty(
         "--app-header-h",
         `${el.offsetHeight}px`
       );
     };
-
     setHeaderVar();
-
     const ro = new ResizeObserver(setHeaderVar);
     ro.observe(el);
-
     return () => ro.disconnect();
   }, []);
-
   // ============================================================
   // SECCIONES
   // ============================================================
-
   const esInicio = section === "inicio";
   const esResultados = section === "resultados";
-
   // ============================================================
   // BOTONES DEL HEADER
   // ============================================================
-
   const botones = [
     // ==========================================================
     // RESULTADOS
     // En resultados deben existir exactamente:
     // Inicio, Pomodoro, Repaso y Buscador.
     // ==========================================================
-
     ...(esResultados
       ? [
         {
@@ -144,7 +130,6 @@ export default function AppHeader({
         // ========================================================
         // IR A INICIO
         // ========================================================
-
         ...(!esInicio
           ? [
             {
@@ -156,11 +141,9 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // BUSCADOR
         // ========================================================
-
         ...(onAbrirBuscador
           ? [
             {
@@ -172,14 +155,12 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // INICIO
         // 1. Pomodoro
         // 2. Repaso
         // 3. Perfil
         // ========================================================
-
         ...(esInicio
           ? [
             {
@@ -198,11 +179,9 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // PERFIL
         // ========================================================
-
         ...(esInicio && nombreUsuario
           ? [
             {
@@ -214,11 +193,9 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // REPASO → POMODORO
         // ========================================================
-
         ...(section === "repaso"
           ? [
             {
@@ -230,11 +207,9 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // POMODORO → REPASO + EDITAR HORARIO
         // ========================================================
-
         ...(section === "pomodoro"
           ? [
             {
@@ -254,11 +229,9 @@ export default function AppHeader({
             },
           ]
           : []),
-
         // ========================================================
         // EDITAR HORARIO → POMODORO
         // ========================================================
-
         ...(section === "editar"
           ? [
             {
@@ -272,28 +245,22 @@ export default function AppHeader({
           : []),
       ]),
   ];
-
   // ============================================================
   // RUTA ACTIVA
   // ============================================================
-
   const esActivo = (b) => {
     if (!b.to) return false;
-
     if (b.to === "/") {
       return location.pathname === "/";
     }
-
     return (
       location.pathname === b.to ||
       location.pathname.startsWith(`${b.to}/`)
     );
   };
-
   // ============================================================
   // BOTÓN NORMAL DEL TOPBAR
   // ============================================================
-
   const renderBoton = (b, cls) => {
     const content = (
       <>
@@ -303,17 +270,14 @@ export default function AppHeader({
         </span>
       </>
     );
-
     const activeClass = esActivo(b)
       ? " is-active"
       : "";
-
     const handleClick = () => {
       if (b.onClick) {
         b.onClick();
       }
     };
-
     if (b.to) {
       return (
         <Link
@@ -327,7 +291,6 @@ export default function AppHeader({
         </Link>
       );
     }
-
     return (
       <button
         key={b.title || b.label}
@@ -340,11 +303,9 @@ export default function AppHeader({
       </button>
     );
   };
-
   // ============================================================
   // FILA NORMAL DEL MENÚ LATERAL
   // ============================================================
-
   const renderFila = (
     b,
     closeFn = () => { }
@@ -359,18 +320,15 @@ export default function AppHeader({
         />
       </>
     );
-
     const activeClass = esActivo(b)
       ? " is-active"
       : "";
-
     const handleClick = () => {
       if (b.onClick) {
         b.onClick();
       }
       closeFn();
     };
-
     if (b.to) {
       return (
         <Link
@@ -384,7 +342,6 @@ export default function AppHeader({
         </Link>
       );
     }
-
     return (
       <button
         key={b.title || b.label}
@@ -397,11 +354,9 @@ export default function AppHeader({
       </button>
     );
   };
-
   // ============================================================
   // HEADER
   // ============================================================
-
   return (
     <div className="topbar-wrapper">
       <div
@@ -412,7 +367,6 @@ export default function AppHeader({
           {/* ==================================================
               LOGO + NOMBRE DEL USUARIO
               ================================================== */}
-
           <div className="topbar__brand btn__inicio">
             <Link
               to="/"
@@ -430,7 +384,6 @@ export default function AppHeader({
                   }`}
               />
             </Link>
-
             {nombreUsuario ? (
               <span
                 className="topbar__brand-name"
@@ -447,11 +400,9 @@ export default function AppHeader({
               </Link>
             )}
           </div>
-
           {/* ==================================================
               BUSCADOR
               ================================================== */}
-
           {onAbrirBuscador && (
             <button
               type="button"
@@ -465,11 +416,9 @@ export default function AppHeader({
               </span>
             </button>
           )}
-
           {/* ==================================================
               CONTROLES
               ================================================== */}
-
           <div className="topbar__controls">
             <div className="topbar__nav">
               {botones
@@ -482,7 +431,6 @@ export default function AppHeader({
                     "topbar__nav-btn"
                   )
                 )}
-
               {/* Buscador visible como botón del header.
                   Se mantiene separado del search-bar existente. */}
               {esResultados &&
@@ -494,11 +442,9 @@ export default function AppHeader({
                   "topbar__nav-btn topbar__nav-btn--resultados-buscar"
                 )}
             </div>
-
             {/* =================================================
                 TOGGLE MODO OSCURO
                 ================================================= */}
-
             <button
               type="button"
               className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
@@ -526,7 +472,6 @@ export default function AppHeader({
                   aria-hidden="true"
                 />
               </span>
-
               <span className="topbar__theme-option topbar__theme-option--dark">
                 <i
                   className="fa-solid fa-moon"
@@ -534,11 +479,9 @@ export default function AppHeader({
                 />
               </span>
             </button>
-
             {/* =================================================
                 MENÚ HAMBURGUESA
                 ================================================= */}
-
             <button
               type="button"
               onClick={() => {
@@ -551,11 +494,9 @@ export default function AppHeader({
             </button>
           </div>
         </div>
-
         {/* ====================================================
             MENÚ LATERAL
             ==================================================== */}
-
         <SideDrawer
           title="Menú"
           isOpen={menuMobileOpen}
@@ -568,7 +509,6 @@ export default function AppHeader({
               // En resultados el drawer debe contener:
               // Inicio, Pomodoro, Repaso y Buscador.
               if (esResultados) return true;
-
               // En las demás secciones se conserva
               // exactamente el comportamiento anterior.
               return b.label !== "Buscar";
@@ -583,11 +523,9 @@ export default function AppHeader({
             )}
         </SideDrawer>
       </div>
-
       {/* ======================================================
           MODAL DE PERFIL
           ====================================================== */}
-
       <EditarNombreModal
         open={editarPerfilAbierto}
         nombreActual={nombreUsuario}

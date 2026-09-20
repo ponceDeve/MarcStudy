@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
-
 export default function TemaModal({ open, subject, day, onGuardar, onOmitir }) {
   const [tema, setTema] = useState("");
-
   useEffect(() => {
     if (open) setTema("");
   }, [open]);
-
   return (
     <Modal open={open} onClose={onOmitir}>
       <button onClick={onOmitir} className="modal-close-x" aria-label="Cerrar">

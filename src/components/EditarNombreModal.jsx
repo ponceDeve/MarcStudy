@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { comprimirFotoUsuario } from "../utils/imagen";
-
 export default function EditarNombreModal({
   open,
   nombreActual = "",
@@ -11,27 +10,22 @@ export default function EditarNombreModal({
   const [nombre, setNombre] = useState(nombreActual);
   const [foto, setFoto] = useState(fotoActual);
   const inputFotoRef = useRef(null);
-
   useEffect(() => {
     if (open) {
       setNombre(nombreActual);
       setFoto(fotoActual);
     }
   }, [open, nombreActual, fotoActual]);
-
   if (!open) return null;
-
   function guardar() {
     const limpio = nombre.trim();
     if (!limpio) return;
     onGuardar(limpio, foto);
   }
-
   async function elegirFoto(e) {
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file) return;
-
     try {
       const comprimida = await comprimirFotoUsuario(file);
       setFoto(comprimida);
@@ -39,7 +33,6 @@ export default function EditarNombreModal({
       // Si falla la compresión (imagen corrupta, etc.), no se cambia la foto.
     }
   }
-
   return (
     <div className="welcome-overlay editar-nombre-overlay">
       <div className="welcome-card editar-nombre-card">
@@ -60,7 +53,6 @@ export default function EditarNombreModal({
             <i className="fa-solid fa-plus" />
           </span>
         </button>
-
         <input
           ref={inputFotoRef}
           type="file"
@@ -68,7 +60,6 @@ export default function EditarNombreModal({
           onChange={elegirFoto}
           style={{ display: "none" }}
         />
-
         {foto && (
           <button
             type="button"
@@ -78,7 +69,6 @@ export default function EditarNombreModal({
             Quitar foto
           </button>
         )}
-
         <h2 className="welcome-titulo">Editar nombre</h2>
         <input
           type="text"
@@ -98,7 +88,6 @@ export default function EditarNombreModal({
             const valor = e.target.value
               .replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, "")
               .toUpperCase();
-
             setNombre(valor);
           }}
           onKeyDown={(e) => {

@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-
 // Reutilizado por el buscador inicial y por el modal de "buscar otro tema".
 export function useArrowKeyList(items, onSelect) {
   const [focusedIdx, setFocusedIdx] = useState(-1);
-
   // Antes esto ponía el primer resultado como "enfocado" apenas
   // cambiaba la lista, así que siempre se veía con el color de hover
   // aunque no lo hayas tocado con el teclado. Ahora arranca sin nada
@@ -13,7 +11,6 @@ export function useArrowKeyList(items, onSelect) {
   useEffect(() => {
     setFocusedIdx(-1);
   }, [items]);
-
   function handleKeyDown(e) {
     if (items.length === 0) return;
     if (e.key === "ArrowDown") {
@@ -30,6 +27,5 @@ export function useArrowKeyList(items, onSelect) {
       if (items[idx]) onSelect(items[idx]);
     }
   }
-
   return { focusedIdx, handleKeyDown };
 }

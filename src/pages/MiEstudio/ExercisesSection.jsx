@@ -5,7 +5,6 @@ export default function ExercisesSection({
   if (!examenPreguntas || examenPreguntas.length === 0) {
     return null;
   }
-
   return (
     <div className="exercises-section">
   <div className="exercises-header">
@@ -14,11 +13,9 @@ export default function ExercisesSection({
       Práctica de Ejercicios
     </h3>
   </div>
-
   <p className="exercises-description">
     Practica los ejercicios de este tema para reforzar la teoría.
   </p>
-
   <div className="exercises-buttons">
     <button
       className="exercises-btn exercises-btn-primary"

@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-
 // Banco de mensajes de la confirmación "¿Te vas a rendir?", agrupados
 // por la cantidad de vidas que le quedan al usuario en ese momento.
 // Cada vez que se abre el modal se elige uno al azar del grupo que
@@ -43,14 +42,11 @@ const mensajesRendirse = {
     "Sin vidas visibles, pero rendirte sigue siendo gratis: aprovecha para aprender.",
   ],
 };
-
 function elegirMensaje(cantidadVidas) {
   const grupo =
     mensajesRendirse[cantidadVidas] || mensajesRendirse[5];
-
   return grupo[Math.floor(Math.random() * grupo.length)];
 }
-
 export default function RendirseModal({
   abierto,
   vidas = 5,
@@ -61,7 +57,6 @@ export default function RendirseModal({
 }) {
   // Usa cualquier prop de vidas que maneje tu app o 5 por defecto
   const cantidadVidas = corazones ?? lives ?? vidas ?? 5;
-
   // Se recalcula cada vez que el modal se abre (cambia "abierto" o la
   // cantidad de vidas), no en cada render, para que el mensaje no
   // cambie solo mientras el usuario lo está leyendo.
@@ -70,9 +65,7 @@ export default function RendirseModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [abierto, cantidadVidas]
   );
-
   if (!abierto) return null;
-
   return (
     <div
       className="rendirse-modal-overlay"
@@ -85,11 +78,9 @@ export default function RendirseModal({
         <h3 className="rendirse-modal__title">
           ¿Te vas a rendir?
         </h3>
-
         <p className="rendirse-modal__text">
           {mensaje}
         </p>
-
         <div className="rendirse-modal__actions">
           <button
             type="button"
@@ -98,7 +89,6 @@ export default function RendirseModal({
           >
             Continuar
           </button>
-
           <button
             type="button"
             className="rendirse-modal__btn is-cancel"

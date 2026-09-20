@@ -1,11 +1,8 @@
 import LatexText from "../../components/LatexText";
-
 const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
-
 // ============================================================================
 // DETECTAR ESPACIOS DE COMPLETAR
 // ============================================================================
-
 function partirEnEspacios(textoConEspacios) {
   const texto = textoConEspacios || "";
   const partes = [];
@@ -13,7 +10,6 @@ function partirEnEspacios(textoConEspacios) {
     /(?:___|\*\*\*|---)\s*\d{1,2}\s*(?:___|\*\*\*|---)/g;
   let ultimoIndex = 0;
   let match;
-
   while ((match = regex.exec(texto)) !== null) {
     if (match.index > ultimoIndex) {
       partes.push({
@@ -21,28 +17,22 @@ function partirEnEspacios(textoConEspacios) {
         valor: texto.slice(ultimoIndex, match.index),
       });
     }
-
     partes.push({
       tipo: "espacio",
     });
-
     ultimoIndex = match.index + match[0].length;
   }
-
   if (ultimoIndex < texto.length) {
     partes.push({
       tipo: "texto",
       valor: texto.slice(ultimoIndex),
     });
   }
-
   return partes;
 }
-
 // ============================================================================
 // COMPONENTE PRINCIPAL
 // ============================================================================
-
 export default function PreguntaSimulacro({
   pregunta,
   respuesta,
@@ -52,20 +42,16 @@ export default function PreguntaSimulacro({
   // ==========================================================================
   // VERDADERO / FALSO
   // ==========================================================================
-
   if (pregunta.tipo === "verdadero_falso") {
     const marcas =
       respuesta ||
       Array(pregunta.proposiciones?.length || 0).fill(null);
-
     function marcar(i, valor) {
       if (modoResultado) return;
-
       const copia = [...marcas];
       copia[i] = valor;
       onCambiar(copia);
     }
-
     return (
       <>
         {pregunta.q && (
@@ -73,14 +59,11 @@ export default function PreguntaSimulacro({
             <LatexText>{pregunta.q}</LatexText>
           </h3>
         )}
-
         <ol className="question-card__vf-list">
           {(pregunta.proposiciones || []).map((prop, i) => {
             const marcada = marcas[i];
-
             const respondida =
               marcada === true || marcada === false;
-
             const filaEstado = modoResultado
               ? !respondida
                 ? ""
@@ -88,7 +71,6 @@ export default function PreguntaSimulacro({
                   ? "is-correct"
                   : "is-wrong"
               : "";
-
             return (
               <li
                 key={i}
@@ -97,7 +79,6 @@ export default function PreguntaSimulacro({
                 <span className="question-card__vf-texto">
                   <LatexText>{prop.texto}</LatexText>
                 </span>
-
                 <div className="question-card__vf-btns">
                   <button
                     type="button"
@@ -109,7 +90,6 @@ export default function PreguntaSimulacro({
                   >
                     V
                   </button>
-
                   <button
                     type="button"
                     disabled={modoResultado}
@@ -121,14 +101,12 @@ export default function PreguntaSimulacro({
                     F
                   </button>
                 </div>
-
                 {modoResultado && !respondida && (
                   <span className="question-card__vf-correcta">
                     Correcta:{" "}
                     {prop.correct ? "Verdadero" : "Falso"}
                   </span>
                 )}
-
                 {modoResultado &&
                   respondida &&
                   marcada !== prop.correct && (
@@ -144,31 +122,24 @@ export default function PreguntaSimulacro({
       </>
     );
   }
-
   // ==========================================================================
   // COMPLETAR
   // ==========================================================================
-
   if (pregunta.tipo === "completar") {
     const partes = partirEnEspacios(
       pregunta.textoConEspacios || ""
     );
-
     const opciones = pregunta.opciones || [];
-
     const idxAMostrar = modoResultado
       ? pregunta.correctoIdx
       : respuesta;
-
     const palabrasElegidas =
       idxAMostrar !== null &&
       idxAMostrar !== undefined &&
       opciones[idxAMostrar]
         ? opciones[idxAMostrar]
         : null;
-
     let espacioIdx = -1;
-
     return (
       <>
         <p className="question-card__q">
@@ -180,17 +151,13 @@ export default function PreguntaSimulacro({
                 </span>
               );
             }
-
             espacioIdx += 1;
-
             const idx = espacioIdx;
-
             const texto =
               palabrasElegidas &&
               palabrasElegidas[idx] !== undefined
                 ? palabrasElegidas[idx]
                 : "";
-
             return (
               <span
                 key={i}
@@ -209,31 +176,25 @@ export default function PreguntaSimulacro({
             );
           })}
         </p>
-
         <div className="question-card__options question-card__options--completar">
           {opciones.map((combo, i) => {
             if (modoResultado) {
               const esCorrecta =
                 i === pregunta.correctoIdx;
-
               const esMarcada =
                 i === respuesta;
-
               const estaEnBlanco =
                 respuesta === null ||
                 respuesta === undefined;
-
               if (
                 respuesta === pregunta.correctoIdx &&
                 !esCorrecta
               ) {
                 return null;
               }
-
               if (estaEnBlanco && !esCorrecta) {
                 return null;
               }
-
               if (
                 !estaEnBlanco &&
                 respuesta !== pregunta.correctoIdx &&
@@ -243,7 +204,6 @@ export default function PreguntaSimulacro({
                 return null;
               }
             }
-
             const claseResultado = modoResultado
               ? i === pregunta.correctoIdx
                 ? "is-correct"
@@ -251,7 +211,6 @@ export default function PreguntaSimulacro({
                   ? "is-wrong"
                   : ""
               : "";
-
             return (
               <button
                 key={i}
@@ -268,7 +227,6 @@ export default function PreguntaSimulacro({
                   {LETRAS_ALTERNATIVAS[i] ||
                     String.fromCharCode(65 + i)}
                 </span>
-
                 <span className="question-card__opt-text">
                   <LatexText>
                     {Array.isArray(combo)
@@ -283,11 +241,9 @@ export default function PreguntaSimulacro({
       </>
     );
   }
-
   // ==========================================================================
   // RELACIONAR
   // ==========================================================================
-
   if (pregunta.tipo === "relacionar") {
     return (
       <>
@@ -296,7 +252,6 @@ export default function PreguntaSimulacro({
             <LatexText>{pregunta.q}</LatexText>
           </h3>
         )}
-
         <div className="question-card__match">
           <ul className="question-card__match-col">
             {(pregunta.columnaA || []).map((item, i) => (
@@ -305,7 +260,6 @@ export default function PreguntaSimulacro({
               </li>
             ))}
           </ul>
-
           <ul className="question-card__match-col">
             {(pregunta.columnaB || []).map((item, i) => (
               <li key={i}>
@@ -314,31 +268,25 @@ export default function PreguntaSimulacro({
             ))}
           </ul>
         </div>
-
         <div className="question-card__options question-card__options--relacionar">
           {(pregunta.opciones || []).map((combo, i) => {
             if (modoResultado) {
               const esCorrecta =
                 i === pregunta.correctoIdx;
-
               const esMarcada =
                 i === respuesta;
-
               const estaEnBlanco =
                 respuesta === null ||
                 respuesta === undefined;
-
               if (
                 respuesta === pregunta.correctoIdx &&
                 !esCorrecta
               ) {
                 return null;
               }
-
               if (estaEnBlanco && !esCorrecta) {
                 return null;
               }
-
               if (
                 !estaEnBlanco &&
                 respuesta !== pregunta.correctoIdx &&
@@ -348,7 +296,6 @@ export default function PreguntaSimulacro({
                 return null;
               }
             }
-
             const claseResultado = modoResultado
               ? i === pregunta.correctoIdx
                 ? "is-correct"
@@ -356,7 +303,6 @@ export default function PreguntaSimulacro({
                   ? "is-wrong"
                   : ""
               : "";
-
             return (
               <button
                 key={i}
@@ -373,7 +319,6 @@ export default function PreguntaSimulacro({
                   {LETRAS_ALTERNATIVAS[i] ||
                     String.fromCharCode(65 + i)}
                 </span>
-
                 <span className="question-card__opt-text">
                   <LatexText>{combo}</LatexText>
                 </span>
@@ -384,15 +329,12 @@ export default function PreguntaSimulacro({
       </>
     );
   }
-
   // ==========================================================================
   // OPCIÓN MÚLTIPLE
   // ==========================================================================
-
   const parrafosQ = (pregunta.q || "")
     .split(/\n\s*\n/)
     .filter((p) => p.trim() !== "");
-
   return (
     <>
       <div className="question-card__q">
@@ -405,31 +347,25 @@ export default function PreguntaSimulacro({
           </p>
         ))}
       </div>
-
       <div className="question-card__options">
         {(pregunta.opciones || []).map((texto, i) => {
           if (modoResultado) {
             const esCorrecta =
               i === pregunta.correctoIdx;
-
             const esMarcada =
               i === respuesta;
-
             const estaEnBlanco =
               respuesta === null ||
               respuesta === undefined;
-
             if (
               respuesta === pregunta.correctoIdx &&
               !esCorrecta
             ) {
               return null;
             }
-
             if (estaEnBlanco && !esCorrecta) {
               return null;
             }
-
             if (
               !estaEnBlanco &&
               respuesta !== pregunta.correctoIdx &&
@@ -439,7 +375,6 @@ export default function PreguntaSimulacro({
               return null;
             }
           }
-
           const claseResultado = modoResultado
             ? i === pregunta.correctoIdx
               ? "is-correct"
@@ -447,7 +382,6 @@ export default function PreguntaSimulacro({
                 ? "is-wrong"
                 : ""
             : "";
-
           return (
             <button
               key={i}
@@ -464,7 +398,6 @@ export default function PreguntaSimulacro({
                 {LETRAS_ALTERNATIVAS[i] ||
                   String.fromCharCode(65 + i)}
               </span>
-
               <span className="question-card__opt-text">
                 <LatexText>{texto}</LatexText>
               </span>

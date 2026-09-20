@@ -1,9 +1,7 @@
 import { useEffect } from "react";
-
 // Función simple para confeti sin librería externa, explota desde el centro
 function crearConfeti() {
   if (typeof document === "undefined") return;
-  
   const canvas = document.createElement("canvas");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -15,18 +13,14 @@ function crearConfeti() {
     z-index: 10000;
   `;
   document.body.appendChild(canvas);
-
   const ctx = canvas.getContext("2d");
   const particulas = [];
-
   const centroX = canvas.width / 2;
   const centroY = canvas.height / 2;
-
   // Crear particulas que explotan desde el centro en todas direcciones
   for (let i = 0; i < 100; i++) {
     const angulo = Math.random() * Math.PI * 2;
     const velocidad = Math.random() * 12 + 4;
-
     particulas.push({
       x: centroX,
       y: centroY,
@@ -38,23 +32,18 @@ function crearConfeti() {
       ],
     });
   }
-
   let frameCount = 0;
   const maxFrames = 120; // 2 segundos a 60fps
-
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     particulas.forEach((p) => {
       p.y += p.vy;
       p.x += p.vx;
       p.vy += 0.25; // gravedad
       p.vx *= 0.98; // fricción del aire
-
       ctx.fillStyle = p.color;
       ctx.fillRect(p.x, p.y, p.size, p.size);
     });
-
     frameCount++;
     if (frameCount < maxFrames) {
       requestAnimationFrame(animate);
@@ -62,10 +51,8 @@ function crearConfeti() {
       canvas.remove();
     }
   };
-
   animate();
 }
-
 export default function CongratulationsAlert({
   visible,
   onClose,
@@ -76,13 +63,10 @@ export default function CongratulationsAlert({
       const timer = setTimeout(() => {
         onClose?.();
       }, 3000);
-
       return () => clearTimeout(timer);
     }
   }, [visible, onClose]);
-
   if (!visible) return null;
-
   return (
     <div className="congratulations-alert">
       <i className="fa-solid fa-circle-check congratulations-icon"></i>

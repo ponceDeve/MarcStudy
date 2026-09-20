@@ -1,20 +1,16 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useCountdown } from "../hooks/useCountdown";
-
 const MINUTOS_DISPONIBLES = [5, 10, 25, 30];
-
 export default function PomodoroWidget({ open, onClose, anchorRect }) {
   const [selectedMin, setSelectedMin] = useState(0);
   const [pos, setPos] = useState({ top: 90, left: null });
   const [isCollapsed, setIsCollapsed] = useState(false);
-
   const widgetRef = useRef(null);
   const dragRef = useRef({ dragging: false, moved: false, offsetX: 0, offsetY: 0 });
   // Recuerda si ya estaba abierto para detectar solo el momento en que
   // se ABRE (y no cada vez que cambian otras props), así no le pisamos
   // la posición al usuario mientras lo está arrastrando.
   const estabaAbiertoRef = useRef(false);
-
   // Cada vez que el widget se abre, lo colocamos justo debajo del botón
   // "Timer" que se tocó. A partir de ahí el usuario lo puede arrastrar
   // libremente (eso ya lo maneja onDragMove más abajo) sin que esto lo
@@ -23,10 +19,8 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
     const seAcabaDeAbrir = open && !estabaAbiertoRef.current;
     estabaAbiertoRef.current = open;
     if (!seAcabaDeAbrir || !anchorRect) return;
-
     let top = anchorRect.top + 8;
     let left = anchorRect.left;
-
     // Esperamos al siguiente frame para tener el tamaño real del
     // widget ya montado y no dejarlo salido de la pantalla.
     requestAnimationFrame(() => {
@@ -40,10 +34,8 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
       setPos({ top, left });
     });
   }, [open, anchorRect]);
-
   const loudRef = useRef(null);
   const alienRef = useRef(null);
-
   const handleComplete = useCallback(() => {
     setIsCollapsed(false);
     const audio = selectedMin === 25 ? loudRef.current : alienRef.current;
@@ -53,10 +45,8 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
     }
     setSelectedMin(0);
   }, [selectedMin]);
-
   // EL WIDGET ES AHORA EL DUEÑO DEL CRONÓMETRO
   const { formatted, isRunning, secondsLeft, start, pause, reset, setMinutes } = useCountdown(selectedMin, handleComplete);
-
   // Antes esto se disparaba SIEMPRE que selectedMin era 0 (o sea,
   // siempre al montar, ya que selectedMin arranca en 0) — y como
   // setMinutes(0) borra lo que había en localStorage, un cronómetro
@@ -68,7 +58,6 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
       setMinutes(0);
     }
   }, [selectedMin, setMinutes, isRunning, secondsLeft]);
-
   useEffect(() => {
     return () => {
       window.removeEventListener("mousemove", onDragMove);
@@ -77,20 +66,17 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
       window.removeEventListener("touchend", onDragEnd);
     };
   }, []);
-
   function handleStart() {
-    if (selectedMin === 0) return;
+    if (secondsLeft === 0) return;
     start();
     if (window.innerWidth <= 768) {
       setIsCollapsed(true);
     }
   }
-
   function pickMinutes(min) {
     setSelectedMin(min);
     if (setMinutes) setMinutes(min);
   }
-
   function stopAlarms() {
     [loudRef.current, alienRef.current].forEach((a) => {
       if (!a) return;
@@ -98,43 +84,35 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
       a.currentTime = 0;
     });
   }
-
   function getCoordinates(e) {
     if (e.type.includes("touch") || e.touches) {
       return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
     }
     return { clientX: e.clientX, clientY: e.clientY };
   }
-
   function onDragStart(e) {
     if (!widgetRef.current) return;
     const rect = widgetRef.current.getBoundingClientRect();
     const { clientX, clientY } = getCoordinates(e);
     dragRef.current = { dragging: true, moved: false, offsetX: clientX - rect.left, offsetY: clientY - rect.top };
     setPos({ top: rect.top, left: rect.left });
-
     window.addEventListener("mousemove", onDragMove);
     window.addEventListener("mouseup", onDragEnd);
     window.addEventListener("touchmove", onDragMove, { passive: false });
     window.addEventListener("touchend", onDragEnd);
   }
-
   function onDragMove(e) {
     if (!dragRef.current.dragging) return;
     dragRef.current.moved = true;
-
     const { clientX, clientY } = getCoordinates(e);
     const w = widgetRef.current;
     if (!w) return;
-
     let newLeft = clientX - dragRef.current.offsetX;
     let newTop = clientY - dragRef.current.offsetY;
-
     newLeft = Math.max(0, Math.min(window.innerWidth - w.offsetWidth, newLeft));
     newTop = Math.max(0, Math.min(window.innerHeight - w.offsetHeight, newTop));
     setPos({ top: newTop, left: newLeft });
   }
-
   function onDragEnd() {
     dragRef.current.dragging = false;
     window.removeEventListener("mousemove", onDragMove);
@@ -142,25 +120,21 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
     window.removeEventListener("touchmove", onDragMove);
     window.removeEventListener("touchend", onDragEnd);
   }
-
   function handleIconClick() {
     if (!dragRef.current.moved) {
       setIsCollapsed(false);
     }
   }
-
   function handleHeaderClick() {
     if (!dragRef.current.moved && isRunning) {
       setIsCollapsed(true);
     }
   }
-
   return (
     <>
       {/* SOLUCIÓN AL BUG: Los audios siempre se renderizan para que suenen incluso si el widget se cierra temporalmente */}
       <audio ref={loudRef} src="/MarcStudy/sonidos/loud-alarm-ringtones-annoying.mp3" preload="auto" />
       <audio ref={alienRef} src="/MarcStudy/sonidos/alien-alarmdrum.mp3" preload="auto" />
-
       {/* Ya no se desmonta: is-hidden controla la visibilidad con transición */}
       <div
         ref={widgetRef}
@@ -228,7 +202,7 @@ export default function PomodoroWidget({ open, onClose, anchorRect }) {
                     ))}
                   </div>
                   <div className="pomo-widget__controls">
-                    <button onClick={handleStart} className={`pomo-widget__icon-btn ${selectedMin === 0 ? "is-disabled" : ""}`}>
+                    <button onClick={handleStart} className={`pomo-widget__icon-btn ${secondsLeft === 0 ? "is-disabled" : ""}`}>
                       <i className="fas fa-play" />
                     </button>
                     <button onClick={() => reset()} className="pomo-widget__icon-btn">

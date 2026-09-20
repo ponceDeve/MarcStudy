@@ -1,7 +1,6 @@
 /* ============================================================
    ExplanationPanel.jsx
    ============================================================ */
-
 .explanation-panel {
   max-width: 48rem;
   width: 100%;
@@ -94,11 +93,9 @@
   opacity: 0.75;
   font-weight: 400;
 }
-
 /* ============================================================
    MODAL — RENDIRSE / VIDEOJUEGO
    ============================================================ */
-
 .rendirse-modal-overlay{
   position:fixed;
   inset:0;
@@ -107,20 +104,19 @@
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:rgba(178,180,192,.74);
+  background: rgba(45, 47, 58, 0.74);
   backdrop-filter:blur(2px);
   -webkit-backdrop-filter:blur(2px);
   animation:rendirseOverlayIn .18s linear-out;
 }
-
 .rendirse-modal {
   position: relative;
   width: min(440px, 100%);
   padding: 34px 32px 30px;
   overflow: hidden;
   text-align: center;
-  background: linear-gradient(180deg, #172033 0%, #111827 52%, #0b1120 100%);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--bg);
   border-radius: 14px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03), 0 0 40px rgba(220, 38, 38, 0.08);
   animation: rendirseModalIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -132,8 +128,9 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--danger) 20%, var(--danger) 80%, transparent 100%);
+  background: var(--danger);
   box-shadow: 0 0 18px rgba(220, 38, 38, 0.55);
+  z-index: 10;
 }
 .rendirse-modal::after {
   content: "";
@@ -147,13 +144,12 @@
   position: relative;
   z-index: 1;
   margin: 0 0 14px;
-  color: #ffffff;
+  color: var(--ink);
   font-family: var(--font-display);
   font-size: 30px;
   font-weight: 800;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 .rendirse-modal__text {
   position: relative;
@@ -165,6 +161,7 @@
   font-size: 17px;
   font-weight: 400;
   line-height: 1.6;
+  color: var(--ink);
 }
 .rendirse-modal__divider {
   position: relative;
@@ -174,11 +171,9 @@
   margin: 0 0 22px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
 }
-
 /* ============================================================
    BOTONES
    ============================================================ */
-
 .rendirse-modal__actions {
   position: relative;
   z-index: 1;
@@ -199,30 +194,23 @@
   transition: transform 0.12s linear, background-color 0.12s linear, border-color 0.12s linear, box-shadow 0.12s linear, color 0.12s linear;
 }
 .rendirse-modal__btn.is-cancel {
-  color: rgba(255, 255, 255, 0.88);
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
 }
 .rendirse-modal__btn.is-cancel:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: var(--surface-hover);
   transform: translateY(-2px);
-  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.22);
 }
 .rendirse-modal__btn.is-confirm {
   color: #ffffff;
   background: var(--primary);
   border: 1px solid var(--primary);
-  box-shadow: 0 5px 18px rgba(37, 99, 235, 0.25);
 }
 .rendirse-modal__btn.is-confirm:hover {
   color: #ffffff;
   background: var(--primary-dark);
   border-color: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
 }
 .rendirse-modal__btn:active {
   transform: scale(0.96);
@@ -231,11 +219,9 @@
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: 3px;
 }
-
 /* ============================================================
    ANIMACIONES
    ============================================================ */
-
 @keyframes rendirseOverlayIn {
   from {
     opacity: 0;
@@ -254,11 +240,9 @@
     transform: scale(1) translateY(0);
   }
 }
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-
 @media (max-width: 480px) {
   .rendirse-modal {
     width: 100%;

@@ -1,7 +1,6 @@
 /* ============================================================
    AVISOS DE INICIO — "cursos nuevos" y "repaso pendiente"
    ============================================================ */
-
 .nuevos-temas-aviso,
 .repaso-pendiente-aviso {
   overflow-y: auto;
@@ -23,35 +22,29 @@
   z-index: 9999;
   background-color: var(--surface);
 }
-
 .nuevos-temas-aviso {
   border: 1px solid var(--success);
 }
-
 .repaso-pendiente-aviso {
   border: 1px solid var(--accent);
   border: var(--nested-border);
 }
-
 .nuevos-temas-aviso__header,
 .repaso-pendiente-aviso__header {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .nuevos-temas-aviso__icon {
   color: var(--success);
   font-size: 1rem;
   flex-shrink: 0;
 }
-
 .repaso-pendiente-aviso__icon {
   color: var(--ink-soft);
   font-size: 1rem;
   flex-shrink: 0;
 }
-
 .nuevos-temas-aviso__saludo,
 .repaso-pendiente-aviso__saludo {
   margin: 0;
@@ -61,7 +54,6 @@
   font-size: 0.9rem;
   font-weight: 700;
 }
-
 .nuevos-temas-aviso__texto,
 .repaso-pendiente-aviso__texto {
   margin: 0;
@@ -69,11 +61,9 @@
   font-size: 0.9rem;
   line-height: 1.4;
 }
-
 /* ============================================================
    LISTA COMPACTA DE CURSOS NUEVOS
    ============================================================ */
-
 .nuevos-temas-aviso__cursos {
   display: flex;
   flex-direction: column;
@@ -84,11 +74,9 @@
   overflow-y: auto;
   scrollbar-width: none;
 }
-
 .nuevos-temas-aviso__cursos::-webkit-scrollbar {
   display: none;
 }
-
 .nuevos-temas-aviso__curso {
   display: flex;
   align-items: center;
@@ -97,7 +85,6 @@
   min-height: 26px;
   padding: 2px 0;
 }
-
 .nuevos-temas-aviso__curso-nombre {
   margin: 0;
   min-width: 0;
@@ -109,7 +96,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .nuevos-temas-aviso__cantidad {
   flex-shrink: 0;
   color: var(--success);
@@ -117,11 +103,9 @@
   font-weight: 700;
   white-space: nowrap;
 }
-
 /* ============================================================
    LISTA DE REPASO PENDIENTE
    ============================================================ */
-
 .nuevos-temas-aviso__lista,
 .repaso-pendiente-aviso__lista {
   margin: 0;
@@ -130,16 +114,13 @@
   font-size: 0.88rem;
   line-height: 1.6;
 }
-
 .nuevos-temas-aviso__lista li,
 .repaso-pendiente-aviso__lista li {
   margin: 0;
 }
-
 /* ============================================================
    BOTÓN DE REPASO
    ============================================================ */
-
 .repaso-pendiente-aviso__boton {
   align-self: flex-start;
   border: none;
@@ -152,15 +133,12 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.15s;
 }
-
 .repaso-pendiente-aviso__boton:hover {
   background: var(--accent-dark);
 }
-
 /* ============================================================
    BOTÓN CERRAR
    ============================================================ */
-
 .nuevos-temas-aviso__cerrar,
 .repaso-pendiente-aviso__cerrar {
   flex-shrink: 0;
@@ -174,7 +152,6 @@
     background 0.15s,
     color 0.15s;
 }
-
 .nuevos-temas-aviso__cerrar:hover,
 .repaso-pendiente-aviso__cerrar:hover {
   color: var(--danger);

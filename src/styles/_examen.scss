@@ -1,80 +1,63 @@
 @use "./tokens" as *;
-
 // ============================================================
 // SIMULACRO DE EXAMEN
 // ============================================================
-
 .examen-page {
-
   min-height: 100dvh;
   background: var(--bg);
   display: flex;
   flex-direction: column;
-
   &--cargando {
     align-items: center;
     justify-content: center;
     color: var(--ink-soft);
     font-size: var(--fs-md);
   }
-
   // ==========================================================
   // BARRA SUPERIOR DEL EXAMEN
   // ==========================================================
-
   &__topbar {
     position: sticky;
     top: 0;
     z-index: 90;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: var(--space-3);
-
     padding: var(--space-3) var(--space-4);
-
     background: var(--surface);
     border-bottom: var(--nested-border);
     box-shadow: var(--shadow-sm);
-
     // Animación para ocultar/mostrar
     transition:
       transform 0.25s ease,
       opacity 0.25s ease;
-
     &.is-visible {
       transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
-
     &.is-hidden {
       transform: translateY(-100%);
       opacity: 0;
       pointer-events: none;
     }
   }
-
   &__timer {
     display: flex;
     align-items: center;
     gap: var(--space-1);
-
     color: var(--ink);
     font-size: var(--fs-lg);
     font-weight: var(--fw-bold);
     white-space: nowrap;
-
     &.is-urgente {
       color: var(--danger);
     }
   }
-
   // ==========================================================
   // RELOJ ANIMADO
   // ==========================================================
-
   &__clock {
     width: 1em;
     height: 1em;
@@ -83,55 +66,47 @@
     overflow: visible;
     vertical-align: middle;
   }
-
   &__clock-face {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
   }
-
   &__clock-minute {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
   }
-
   &__clock-center {
     fill: currentColor;
   }
-
   &__progreso {
     display: inline-block;
     color: var(--ink-faint);
     font-size: var(--fs-sm);
     white-space: nowrap;
   }
-
   &__abandonar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
     padding: var(--space-2) var(--space-3);
-
-    background: var(--danger-bg);
     color: var(--danger);
-
     border: none;
     border-radius: var(--radius-md);
-
     font-weight: var(--fw-semibold);
-
     cursor: pointer;
     white-space: nowrap;
-
     &:hover {
-      background: var(--danger);
-      color: #fff;
+      transition: background .2s linear;
+      background: var(--danger-bg);
+      color: var(--danger-dark);
     }
   }
-
   // ==========================================================
   // CUERPO
   // ==========================================================
-
   &__body {
     flex: 1;
     width: 100%;
@@ -139,200 +114,150 @@
     margin: 0 auto;
     padding: var(--space-4) var(--space-3) var(--space-6);
   }
-
   &__card {
     position: relative;
     margin-bottom: var(--space-4);
   }
-
   &__rv-grupo {
     display: flex;
     flex-direction: column;
   }
-
   &__rv-texto {
     background: var(--surface-alt);
     border-left: 3px solid var(--primary);
   }
-
   &__curso-tag {
     display: inline-block;
-
     margin-bottom: var(--space-3);
     padding: 2px 10px;
-
     background: var(--primary-bg);
     color: var(--primary);
-
     border-radius: var(--radius-full);
-
     font-size: var(--fs-xs);
     font-weight: var(--fw-semibold);
   }
-
   // ==========================================================
   // NAVEGACIÓN
   // ==========================================================
-
   &__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: var(--space-6);
     margin-top: var(--space-4);
-
     flex-wrap: wrap;
   }
-
   &__nav-preguntas {
     display: flex;
     gap: var(--space-2);
     min-width: 0;
   }
-
   &__nav-btn {
     padding: var(--space-2) var(--space-3);
-
     background: var(--surface);
     color: var(--ink);
-
     border: var(--nested-border);
     border-radius: var(--radius-md);
-
     cursor: pointer;
     white-space: nowrap;
-
     display: flex;
     gap: var(--space-3);
     justify-content: center;
     align-items: center;
-
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
     }
-
     &:hover {
       background-color: var(--surface-hover);
       border-color: var(--primary);
       border-style: dashed;
     }
   }
-
   &__entregar-btn {
     padding: var(--space-2) var(--space-4);
-
     background: var(--primary);
     color: var(--ink-on-primary);
-
     border: none;
     border-radius: var(--radius-md);
-
     font-weight: var(--fw-semibold);
-
     cursor: pointer;
     white-space: nowrap;
-
     &:hover {
       background: var(--primary-dark);
     }
   }
-
   // ==========================================================
   // PUNTOS
   // ==========================================================
-
   &__dots {
     display: flex;
     flex-wrap: wrap;
-
     gap: 6px;
     max-height: 90px;
-
     margin-top: var(--space-4);
     padding: var(--space-2);
-
     background: var(--surface-alt);
     border-radius: var(--radius-md);
-
     overflow-y: auto;
   }
-
   &__dot {
     width: 10px;
     height: 10px;
     padding: 0;
-
     background: var(--border-strong);
-
     border: none;
     border-radius: 50%;
-
     cursor: pointer;
-
     &.is-respondida {
       background: var(--primary);
     }
-
     &.is-actual {
       outline: 2px solid var(--ink);
       outline-offset: 2px;
     }
   }
-
   // ==========================================================
   // RESPONSIVE — 600 PX
   // ==========================================================
-
   @media (max-width: 600px) {
-
     &__topbar {
       gap: var(--space-2);
       padding: var(--space-2) var(--space-3);
     }
-
     &__timer {
       font-size: var(--fs-md);
     }
-
     &__clock {
       width: 1em;
       height: 1em;
     }
-
     &__progreso {
       display: none;
     }
-
     &__abandonar-btn {
       padding: var(--space-2);
       font-size: var(--fs-xs);
     }
-
     &__body {
       padding: var(--space-3) var(--space-2) var(--space-5);
     }
-
     &__nav {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-2);
     }
-
     &__nav-preguntas {
       display: flex;
       width: 100%;
       gap: var(--space-2);
       order: 1;
     }
-
     &__nav-btn {
       flex: 1 1 0;
       width: 50%;
       min-width: 0;
     }
-
     &__entregar-btn {
       width: 100%;
       margin-top: var(--space-2);
@@ -340,175 +265,128 @@
     }
   }
 }
-
 // ============================================================
 // TARJETA
 // ============================================================
-
 .examen-page__card {
   padding: var(--space-3);
   padding-bottom: 0;
 }
-
 // ============================================================
 // MODAL DE SELECCIÓN DE ÁREA
 // ============================================================
-
 .seleccion-area {
-
   &__title {
     margin-bottom: 4px;
     font-size: var(--fs-lg);
     font-weight: var(--fw-bold);
   }
-
   &__subtitle {
     margin-bottom: var(--space-4);
     color: var(--ink-faint);
     font-size: var(--fs-sm);
   }
-
   &__lista {
     display: flex;
     align-items: stretch;
-
     gap: 6px;
     width: 100%;
     margin-bottom: var(--space-4);
   }
-
   &__opt {
     width: 0;
     min-width: 0;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     flex: 1 1 0;
-
     padding: 8px;
-
     background: var(--surface-alt);
     color: var(--ink);
-
     border: 1px solid var(--ink);
     border-radius: var(--radius-md);
-
     font-weight: var(--fw-bold);
     white-space: nowrap;
-
     cursor: pointer;
-
     transition:
       flex-grow 0.15s linear,
       background-color 0.2s linear,
       border-color 0.2s linear,
       color 0.2s linear;
-
     &:hover {
       background: var(--surface-hover);
     }
-
     &.is-selected {
       flex: 2 1 0;
-
       background: var(--success-bg);
       color: var(--success-dark);
       border-color: var(--success);
     }
   }
-
   &__letra {
     flex-shrink: 0;
     font-size: var(--fs-md);
     line-height: 1;
   }
-
   &__nombre {
     overflow: hidden;
-
     color: var(--primary);
-
     font-size: var(--fs-sm);
     font-weight: var(--fw-semibold);
   }
-
   &__actions {
     display: flex;
     justify-content: flex-end;
-
     gap: 6px;
     margin-top: 32px;
   }
-
   &__cancelar {
     padding: 7px 10px;
-
     background: transparent;
     color: var(--ink-faint);
-
     border: none;
-
     cursor: pointer;
   }
-
   &__ir {
     padding: 7px 18px;
-
     background: var(--primary);
     color: var(--ink-on-primary);
-
     border: none;
     border-radius: var(--radius-md);
-
     font-weight: var(--fw-semibold);
-
     cursor: pointer;
-
     &:disabled {
       opacity: 0.4;
       cursor: not-allowed;
     }
   }
-
   // ==========================================================
   // RESPONSIVE — 600 PX
   // ==========================================================
-
   @media (max-width: 600px) {
-
     &__lista {
       gap: 5px;
     }
-
     &__opt {
       padding: 8px;
-
       &.is-selected {
         flex: 2 1 0;
       }
     }
-
     &__nombre {
       font-size: var(--fs-xs);
     }
   }
 }
-
 // ============================================================
 // RESULTADOS DEL SIMULACRO
 // ============================================================
-
 .resultados-examen {
-
   position: relative;
   max-width: var(--content-max-width);
-
   // ==========================================================
   // VOLVER A TEORÍA
   // ==========================================================
-
   &__volver-teoria {
     position: absolute;
     top: var(--header-h);
@@ -525,244 +403,177 @@
     border-radius: 50%;
     color: var(--ink-soft);
     font-size: 1.1rem;
-
     cursor: pointer;
-
     &:hover,
     &:active {
-      background: var(
-        --surface-hover,
-        rgba(0, 0, 0, 0.05)
-      );
+      background: var(--surface-hover,
+          rgba(0, 0, 0, 0.05));
     }
   }
-
   // ==========================================================
   // RESUMEN
   // ==========================================================
-
   &__resumen {
     margin-bottom: var(--space-5);
     text-align: center;
     margin-top: calc(var(--header-h) + var(--space-3));
   }
-
   &__puntaje {
     margin: 0;
-
     color: var(--primary);
-
     font-size: var(--fs-hero);
     font-weight: var(--fw-extrabold);
   }
-
   &__subtitulo {
     margin-bottom: var(--space-3);
     color: var(--ink-faint);
   }
-
   // ==========================================================
   // MENSAJE DEL CURSO
   // ==========================================================
-
   &__mensaje-principal {
     margin: 0 auto var(--space-4);
     max-width: 420px;
-
     text-align: center;
-
     color: var(--ink-soft);
-
     font-size: var(--fs-sm);
     font-weight: var(--fw-semibold);
     font-style: italic;
   }
-
   // ==========================================================
   // BLOQUE
   // ==========================================================
-
   &__bloque {
     margin-bottom: var(--space-4);
   }
-
   &__bloque-titulo {
     display: flex;
     align-items: center;
-
     gap: var(--space-2);
     margin-bottom: var(--space-2);
-
     font-size: var(--fs-body);
     font-weight: var(--fw-semibold);
-
     i {
       color: var(--primary);
       font-size: var(--fs-md);
     }
   }
-
   &__bloque-nombre {
     flex: 1;
     min-width: 0;
   }
-
   &__bloque-puntaje {
     background-color: var(--surface-hover);
-
     padding: var(--space-1) var(--space-2);
-
     border-radius: var(--radius-full);
     border: 1px solid var(--ink);
-
     white-space: nowrap;
   }
-
   // ==========================================================
   // LISTA DE PREGUNTAS
   // ==========================================================
-
   &__lista {
     display: flex;
     flex-direction: column;
-
     gap: var(--space-2);
-
     padding: 0;
     margin: 0;
-
     list-style: none;
   }
-
   &__pregunta {
     background: var(--surface);
-
     border: var(--nested-border);
     border-radius: var(--radius-md);
-
     overflow: hidden;
-
     &.is-correcta {
       background: var(--success-bg);
       border-color: var(--success);
     }
-
     &.is-incorrecta {
       background: var(--danger-bg);
       border-color: var(--danger);
     }
-
     &.is-abierta {
       background: var(--surface);
     }
   }
-
   &__pregunta-header {
     display: flex;
     align-items: center;
-
     width: 100%;
     gap: var(--space-2);
-
     padding: var(--space-3);
-
     background: none;
     color: var(--ink);
-
     border: none;
-
     text-align: left;
-
     cursor: pointer;
   }
-
   &__pregunta-texto {
     flex: 1;
     font-size: var(--fs-sm);
   }
-
   &__pregunta-puntos {
     color: var(--ink-faint);
-
     font-size: var(--fs-xs);
     font-weight: var(--fw-semibold);
   }
-
   // ==========================================================
   // EXPLICACIÓN
   // ==========================================================
-
   &__explicacion {
     padding: 0 var(--space-3) var(--space-3);
-
     color: var(--ink-soft);
     font-size: var(--fs-sm);
   }
-
   &__detalle-pregunta {
     min-height: 0;
-
     padding: 0;
     margin-bottom: var(--space-3);
-
     .question-card__inner {
       max-width: none;
       margin: 0;
     }
-
     .question-card__q,
     .question-card__q-intro {
       margin-top: 0;
     }
   }
-
   &__explicacion-texto {
     margin: 0;
     padding-top: var(--space-2);
-
     border-top: var(--nested-border);
   }
-
   &__pregunta-enunciado {
     margin: 0 0 var(--space-2);
-
     color: var(--ink);
     font-weight: var(--fw-medium);
   }
-
   &__respuesta-correcta {
     margin: 0;
-
     color: var(--success-dark);
     font-weight: var(--fw-semibold);
   }
 }
-
 .preguntas-normales {
   margin-top: 0;
 }
-
 // ============================================================
 // RESUMEN DEL CURSO
 // ============================================================
-
 .resultados-examen__resumen-curso {
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 10px;
   margin: 14px 0 20px;
 }
-
 .resultados-examen__resumen-curso-puntaje {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
-
   color: var(--ink);
 }
-
 .resultados-examen__resumen-curso-datos {
   font-size: 0.95rem;
   color: var(--ink-soft);

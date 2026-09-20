@@ -1,38 +1,31 @@
 /* ============================================================
    QuestionCard.scss
    ============================================================ */
-
 .question-card {
   width: 100%;
   min-height: 400px;
   padding: var(--space-6) var(--space-2);
 }
-
 .question-card * {
   user-select: none;
 }
-
 .question-card__inner {
   position: relative;
   z-index: 1;
   max-width: 40rem;
   margin: 0 auto;
 }
-
 /* ============================================================
    PREGUNTA
    ============================================================ */
-
 .question-card__q {
   margin: 20px 0 32px;
   color: var(--ink);
 }
-
 .question-card__q span {
   font-size: 18px;
   line-height: 1.4;
 }
-
 .question-card__q-intro {
   font-size: 18px;
   font-weight: 600;
@@ -40,7 +33,6 @@
   margin: 0 0 14px;
   user-select: none;
 }
-
 .question-card__q-props {
   display: flex;
   flex-direction: column;
@@ -49,17 +41,14 @@
   max-width: 480px;
   margin: 0 auto;
 }
-
 .question-card__q-prop {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
 }
-
 /* ============================================================
    ALTERNATIVAS
    ============================================================ */
-
 .question-card__options {
   display: flex;
   flex-direction: column;
@@ -68,11 +57,9 @@
   margin-bottom: 28px;
   width: 100%;
 }
-
 /* ============================================================
    ALTERNATIVA INDIVIDUAL
    ============================================================ */
-
 .question-card__opt {
   display: flex;
   align-items: center;
@@ -96,11 +83,9 @@
     color 0.15s linear,
     opacity 0.15s linear;
 }
-
 /* ============================================================
    CÍRCULO
    ============================================================ */
-
 .question-card__opt-letter {
   display: inline-flex;
   align-items: center;
@@ -122,43 +107,35 @@
     color 0.15s linear,
     transform 0.15s linear;
 }
-
 /* ============================================================
    TEXTO
    ============================================================ */
-
 .question-card__opt-text {
   flex: 1 1 auto;
   min-width: 0;
   padding-top: 6px;
   color: var(--ink);
 }
-
 /* ============================================================
    HOVER NORMAL
    SOLO FUNCIONA MIENTRAS NO HAYA NINGUNA SELECCIONADA
    ============================================================ */
-
 .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--primary-bg);
   color: var(--ink);
 }
-
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
-
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    SELECCIONADA
    Azul claro = interacción / elección del usuario
    ============================================================ */
-
 .question-card__opt.is-selected {
   background: var(--primary-bg);
   color: var(--ink);
@@ -166,130 +143,105 @@
   cursor: default !important;
   border: 1px solid var(--primary-light);
 }
-
 .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
   color: var(--ink-on-primary);
   transform: scale(1.04);
 }
-
 .question-card__opt.is-selected .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    SELECCIONADA — SIN HOVER
    ============================================================ */
-
 .question-card__opt.is-selected:hover:not(:disabled) {
   background: var(--primary-bg);
   color: var(--ink);
   cursor: default !important;
 }
-
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
   color: var(--ink-on-primary);
   transform: scale(1.04);
 }
-
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    DESPUÉS DE SELECCIONAR UNA ALTERNATIVA
    LAS DEMÁS YA NO TIENEN HOVER DE FONDO
    SOLO EL CÍRCULO CAMBIA
    ============================================================ */
-
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--surface);
   color: var(--ink);
 }
-
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
-
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    CORRECTA
    Verde = resultado correcto
    ============================================================ */
-
 .question-card__opt.is-correct {
   background: var(--success-bg);
   color: var(--ink);
   border-color: var(--success);
 }
-
 .question-card__opt.is-correct .question-card__opt-letter {
   border-color: var(--success);
   background: var(--success);
   color: var(--ink-on-primary);
 }
-
 .question-card__opt.is-correct .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    INCORRECTA
    Rojo = respuesta incorrecta
    ============================================================ */
-
 .question-card__opt.is-wrong {
   background: var(--danger-bg);
   color: var(--ink);
   border-color: var(--danger);
 }
-
 .question-card__opt.is-wrong .question-card__opt-letter {
   border-color: var(--danger);
   background: var(--danger);
   color: var(--ink-on-primary);
 }
-
 .question-card__opt.is-wrong .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    MUTED
    ============================================================ */
-
 .question-card__opt.is-muted {
   background: var(--surface);
   color: var(--ink-faint);
   opacity: 0.5;
 }
-
 .question-card__opt.is-muted .question-card__opt-letter {
   border-color: var(--border);
   background: transparent;
   color: var(--ink-faint);
 }
-
 .question-card__opt.is-muted .question-card__opt-text {
   color: var(--ink-faint);
 }
-
 .question-card__opt:disabled {
   cursor: default !important;
 }
-
 /* ============================================================
    COMPLETAR Y RELACIONAR
    ============================================================ */
-
 .question-card__options--completar,
 .question-card__options--relacionar {
   flex-direction: row;
@@ -299,11 +251,9 @@
   gap: 8px 18px;
   margin-top: var(--space-6);
 }
-
 /* ============================================================
    ALTERNATIVAS CORTAS
    ============================================================ */
-
 .question-card__options--completar .question-card__opt,
 .question-card__options--relacionar .question-card__opt {
   width: auto;
@@ -312,61 +262,50 @@
   align-items: center;
   padding: 4px 6px;
 }
-
 /* ============================================================
    TEXTO CORTAS
    ============================================================ */
-
 .question-card__options--completar .question-card__opt-text,
 .question-card__options--relacionar .question-card__opt-text {
   flex: 0 1 auto;
   padding-top: 0;
 }
-
 /* ============================================================
    HOVER CORTAS — ANTES DE SELECCIONAR
    ============================================================ */
-
 .question-card__options--completar .question-card__opt:hover:not(:disabled):not(.is-selected),
 .question-card__options--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--primary-bg);
   color: var(--ink);
 }
-
 .question-card__options--completar .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter,
 .question-card__options--relacionar .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
-
 /* ============================================================
    CORTAS DESPUÉS DE SELECCIONAR
    SIN HOVER DE FONDO
    ============================================================ */
-
 .question-card__options--completar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected),
 .question-card__options--relacionar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--surface);
   color: var(--ink);
 }
-
 .question-card__options--completar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter,
 .question-card__options--relacionar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
-
 .question-card__options--completar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text,
 .question-card__options--relacionar:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    SELECCIONADA CORTAS — SIN HOVER
    ============================================================ */
-
 .question-card__options--completar .question-card__opt.is-selected,
 .question-card__options--relacionar .question-card__opt.is-selected {
   background: var(--primary-bg);
@@ -374,7 +313,6 @@
   border-color: var(--primary-light);
   cursor: default !important;
 }
-
 .question-card__options--completar .question-card__opt.is-selected:hover:not(:disabled),
 .question-card__options--relacionar .question-card__opt.is-selected:hover:not(:disabled) {
   background: var(--primary-bg);
@@ -382,7 +320,6 @@
   border-color: var(--primary-light);
   cursor: default !important;
 }
-
 .question-card__options--completar .question-card__opt.is-selected .question-card__opt-letter,
 .question-card__options--relacionar .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--primary-light);
@@ -390,7 +327,6 @@
   color: var(--ink-on-primary);
   transform: scale(1.04);
 }
-
 .question-card__options--completar .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter,
 .question-card__options--relacionar .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter {
   border-color: var(--primary-light);
@@ -398,40 +334,32 @@
   color: var(--ink-on-primary);
   transform: scale(1.04);
 }
-
 .question-card__options--completar .question-card__opt.is-selected .question-card__opt-text,
 .question-card__options--relacionar .question-card__opt.is-selected .question-card__opt-text {
   color: var(--ink);
 }
-
 /* ============================================================
    RESULTADOS — COMPLETAR Y RELACIONAR
    ============================================================ */
-
 .question-card__options--completar .question-card__opt.is-correct,
 .question-card__options--relacionar .question-card__opt.is-correct {
   background: var(--success-bg);
   border-color: var(--success);
 }
-
 .question-card__options--completar .question-card__opt.is-wrong,
 .question-card__options--relacionar .question-card__opt.is-wrong {
   background: var(--danger-bg);
   border-color: var(--danger);
 }
-
 /* ============================================================
    RESPONSIVE SHORT
    ============================================================ */
-
 @media (max-width: 520px) {
-
   .question-card__options--completar,
   .question-card__options--relacionar {
     justify-content: flex-start;
     gap: 6px 10px;
   }
-
   .question-card__options--completar .question-card__opt,
   .question-card__options--relacionar .question-card__opt {
     width: auto;
@@ -439,11 +367,9 @@
     flex: 0 1 auto;
   }
 }
-
 /* ============================================================
    RESPONDER
    ============================================================ */
-
 .question-card__type-wrap {
   display: flex;
   flex-direction: column;
@@ -451,7 +377,6 @@
   align-items: center;
   position: relative;
 }
-
 .question-card__input {
   width: 100%;
   max-width: 28rem;
@@ -464,11 +389,9 @@
   color: var(--ink);
   outline: none;
 }
-
 .question-card__input:focus {
   border-color: var(--primary-light);
 }
-
 .question-card__submit {
   width: 100%;
   padding: 13px;
@@ -485,41 +408,33 @@
     transform 0.15s linear;
   text-transform: uppercase;
 }
-
 .question-card__submit:hover {
   background: var(--primary-dark);
 }
-
 .question-card__submit:disabled,
 .question-card__submit[aria-disabled="true"] {
   opacity: 0.5;
   cursor: default;
 }
-
 .question-card__submit.is-retry {
   background: var(--surface);
   color: var(--ink);
   border: 2px solid var(--border-strong);
 }
-
 .question-card__submit.is-retry:hover {
   background: var(--surface-hover);
 }
-
 /* ============================================================
    EXPLICACIÓN
    ============================================================ */
-
 .question-card__explicacion {
   margin-top: 16px;
   font-size: 14px;
   color: var(--ink-soft);
 }
-
 /* ============================================================
    VERDADERO / FALSO
    ============================================================ */
-
 .question-card__vf-list {
   display: flex;
   flex-direction: column;
@@ -530,7 +445,6 @@
   padding: 0;
   counter-reset: proposicion;
 }
-
 .question-card__vf-row {
   display: flex;
   align-items: center;
@@ -545,36 +459,30 @@
     border-color 0.2s linear,
     background 0.2s linear;
 }
-
 .question-card__vf-row::before {
   content: counter(proposicion) ".";
   font-weight: var(--fw-bold);
   color: var(--ink-soft);
   flex-shrink: 0;
 }
-
 .question-card__vf-row.is-correct {
   border-color: var(--success);
   background: var(--success-bg);
 }
-
 .question-card__vf-row.is-wrong {
   border-color: var(--danger);
   background: var(--danger-bg);
 }
-
 .question-card__vf-texto {
   flex: 1 1 200px;
   font-size: 14px;
   color: var(--ink);
   text-align: left;
 }
-
 .question-card__vf-btns {
   display: flex;
   gap: 6px;
 }
-
 .question-card__vf-btn {
   width: 36px;
   height: 36px;
@@ -590,34 +498,28 @@
     border-color 0.15s linear,
     color 0.15s linear;
 }
-
 .question-card__vf-btn:hover:not(:disabled) {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
-
 .question-card__vf-btn.is-selected,
 .question-card__vf-btn.is-selected:hover {
   background: var(--primary-light);
   border-color: var(--primary-light);
   color: var(--ink-on-primary);
 }
-
 .question-card__vf-btn:disabled {
   cursor: default;
 }
-
 .question-card__vf-correcta {
   width: 100%;
   font-size: 13.5px;
   color: var(--ink-soft);
 }
-
 /* ============================================================
    RELACIONAR — COLUMNAS
    ============================================================ */
-
 .question-card__match {
   display: flex;
   gap: 24px;
@@ -626,7 +528,6 @@
   margin-bottom: 20px;
   width: 100%;
 }
-
 .question-card__match-col {
   display: flex;
   flex-direction: column;
@@ -637,15 +538,12 @@
   flex: 1 1 160px;
   justify-content: space-between;
 }
-
 /* ============================================================
    RELACIONAR — DISTRIBUCIÓN HIJOS
    ============================================================ */
-
 .question-card__match--relacionar .question-card__match-col {
   justify-content: space-between;
 }
-
 .question-card__match-col li {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
@@ -659,26 +557,21 @@
     background 0.15s linear,
     color 0.15s linear;
 }
-
 /* ============================================================
    COMPLETAR — TARJETA UN POCO MÁS GRANDE Y CENTRADA
    ============================================================ */
-
 .question-card--completar {
   min-height: 460px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .question-card--completar .question-card__inner {
   width: 100%;
 }
-
 /* ============================================================
    COMPLETAR — TEXTO CON ESPACIOS
    ============================================================ */
-
 .question-card__cloze {
   font-size: 19px;
   font-weight: var(--fw-bold);
@@ -687,11 +580,9 @@
   margin-bottom: 16px;
   line-height: 1.7;
 }
-
 /* ============================================================
    ESPACIO
    ============================================================ */
-
 .question-card__cloze-input {
   position: relative;
   display: inline-block;
@@ -707,11 +598,9 @@
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-
 /* ============================================================
    LÍNEA
    ============================================================ */
-
 .question-card__cloze-input::after {
   content: "";
   position: absolute;
@@ -725,74 +614,57 @@
     opacity 0.15s linear,
     background 0.15s linear;
 }
-
 /* ============================================================
    SELECCIONADA
    ============================================================ */
-
 .question-card__cloze-input.has-value {
   color: var(--primary-light);
 }
-
 .question-card__cloze-input.has-value::after {
   opacity: 0;
 }
-
 /* ============================================================
    CORRECTA
    ============================================================ */
-
 .question-card__cloze-input.is-correct {
   color: var(--success);
 }
-
 .question-card__cloze-input.is-correct::after {
   opacity: 0;
 }
-
 /* ============================================================
    INCORRECTA
    ============================================================ */
-
 .question-card__cloze-input.is-wrong {
   color: var(--danger);
 }
-
 .question-card__cloze-input.is-wrong::after {
   opacity: 0;
 }
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-
 @media (max-width: 640px) {
   .question-card__q {
     margin-top: 16px;
     margin-bottom: 24px;
   }
-
   .question-card__q-intro {
     font-size: 17px;
   }
-
   .question-card__opt {
     gap: 10px;
   }
-
   .question-card__opt-letter {
     flex-basis: 30px;
     width: 30px;
     height: 30px;
     font-size: 12px;
   }
-
   .question-card__opt-text {
     padding-top: 5px;
-
   }
 }
-
 // ============================================================
 // Agregar estas reglas al SCSS de QuestionCard (donde ya viven
 // .question-card, .arcade-game-container, etc.)
@@ -800,12 +672,10 @@
 // Reemplazan el style={{ position: "relative" }} del contenedor
 // y el style={{...}} inline del botón de rendirse (bandera).
 // ============================================================
-
 .question-card {
   // antes: style={{ position: "relative" }} en el div raíz
   position: relative;
 }
-
 .question-card__rendirse-btn {
   position: absolute;
   top: 0;

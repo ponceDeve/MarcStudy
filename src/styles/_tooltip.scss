@@ -1,12 +1,10 @@
 /* ============================================================
    Tooltips de selección y ayuda
    ============================================================ */
-
 @font-face{
   font-family:'DS-Digital';
   src:url('/font/DS-DIGIB.TTF') format('truetype');
 }
-
 /* ============================================================
    AVISO DE BLOQUEO (burbuja)
    ------------------------------------------------------------
@@ -14,76 +12,59 @@
    acción previa del usuario (elegir un tema, seleccionar una
    opción, responder una pregunta, etc). El elemento que la
    contiene debe tener position: relative.
-
    Uso normal (mensaje corto, una línea):
      <span className="aviso-bloqueo">Elige un tema</span>
-
    Mensaje largo que puede necesitar 2 líneas:
      <span className="aviso-bloqueo aviso-bloqueo--wrap">...</span>
    ============================================================ */
-
 .aviso-bloqueo {
   position: absolute;
   bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
-
   width: max-content;
-
   padding: 8px 12px;
   border-radius: 8px;
   background: var(--ink);
   color: var(--bg);
-
   font-size: 13px;
   font-weight: 500;
   line-height: 1.2;
   white-space: nowrap;
   text-align: center;
   text-transform: none;
-
   box-shadow: var(--shadow-md);
   z-index: 10;
   pointer-events: none;
-
   animation: avisoBloqueoIn 0.18s ease-out;
 }
-
 .aviso-bloqueo--wrap {
   max-width: 13.75rem;
   white-space: normal;
 }
-
 .aviso-bloqueo::after {
   content: "";
   position: absolute;
-
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-
   width: 0;
   height: 0;
-
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-top: 6px solid var(--ink);
 }
-
 @keyframes avisoBloqueoIn {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
 }
-
 /* ============================================================
    PomodoroWidget.scss
    ============================================================ */
-
 .pomo-widget {
   position: fixed;
   top: var(--pomo-top, 90px);
@@ -103,14 +84,12 @@
   visibility: visible;
   transition: opacity 0.2s linear, visibility 0s linear 0s;
 }
-
 .pomo-widget.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s linear, visibility 0s linear 0.2s;
 }
-
 .pomo-widget.is-collapsed {
   width: 50px;
   height: 50px;
@@ -124,7 +103,6 @@
   color: var(--ink-on-primary);
   box-shadow: var(--shadow-md);
 }
-
 .pomo-widget__collapsed-icon {
   width: 100%;
   height: 100%;
@@ -133,12 +111,10 @@
   align-items: center;
   touch-action: none;
   cursor: grab;
-
   i {
     font-size: 24px;
   }
 }
-
 .pomo-widget__header {
   background: var(--surface-alt);
   padding: 6px 10px;
@@ -155,22 +131,18 @@
   align-items: center;
   gap: 6px;
 }
-
 .pomo-widget__header-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .pomo-widget__header-icon {
   cursor: url("/cursor_pointer.webp"), pointer !important;
   opacity: 0.8;
 }
-
 .pomo-widget__header-icon--close {
   font-size: 16px;
 }
-
 .pomo-widget__body {
   padding: 10px;
   display: flex;
@@ -178,7 +150,6 @@
   align-items: center;
   margin: 0;
 }
-
 .pomo-widget__time {
   font-size: 34px;
   padding: 0;
@@ -187,14 +158,12 @@
   font-family: DS-Digital;
   font-weight: 900;
 }
-
 .pomo-widget__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
   width: 100%;
 }
-
 .pomo-widget__min-btn {
   font-size: 11px;
   font-weight: 700;
@@ -206,22 +175,18 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear;
 }
-
 .pomo-widget__min-btn:hover {
   background: var(--surface-hover);
 }
-
 .pomo-widget__min-btn.is-active {
   background: var(--primary);
   border-color: var(--primary-dark);
   color: var(--ink-on-primary);
 }
-
 .pomo-widget__controls {
   display: flex;
   gap: 6px;
 }
-
 .pomo-widget__icon-btn {
   width: 32px;
   height: 32px;
@@ -235,29 +200,23 @@
   color: var(--ink);
   transition: background 0.15s linear;
 }
-
 .pomo-widget__icon-btn:hover {
   background: var(--surface-hover);
 }
-
 .pomo-widget__icon-btn.is-disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 .pomo-widget__icon-btn i {
   font-size: 11px;
 }
-
 /* ============================================================
    GLOSARIO
    ============================================================ */
-
 .glossary-term-wrap {
   position: relative;
   display: inline;
 }
-
 .glossary-term {
   position: relative;
   display: inline;
@@ -277,15 +236,12 @@
   color: var(--brand);
   background:transparent;
 }
-
 .glossary-term--simbolo:hover {
   color: var(--brand-dark);
 }
-
 /* ============================================================
    TOOLTIP DEL GLOSARIO
    ============================================================ */
-
 .glossary-tooltip {
   position: absolute;
   bottom: calc(100% + 12px);
@@ -311,7 +267,6 @@
   transform: translateX(calc(-50% + var(--tt-shift, 0px)));
   animation: glossary-tooltip-in 0.5s linear-out;
 }
-
 .glossary-tooltip__arrow {
   content: "";
   position: absolute;
@@ -328,17 +283,14 @@
   border-bottom: 1px solid var(--primary);
   transform: translateX(-50%) rotate(45deg);
 }
-
 .glossary-tooltip .katex {
   color: var(--ink);
   font-size: 1em;
   font-weight: 400;
 }
-
 /* ============================================================
    ANIMACIÓN DEL TOOLTIP
    ============================================================ */
-
 @keyframes glossary-tooltip-in {
   from {
     opacity: 0;
@@ -347,7 +299,6 @@
       )
       scale(0.97);
   }
-
   to {
     opacity: 1;
     transform: translateX(
@@ -356,11 +307,9 @@
       scale(1);
   }
 }
-
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-
 @media (max-width: 479px) {
   .glossary-tooltip {
     max-width: calc(100vw - 24px);
@@ -368,23 +317,19 @@
     font-size: 0.88rem;
   }
 }
-
 @media (min-width: 480px) {
   .glossary-tooltip {
     max-width: min(300px, calc(100vw - 28px));
   }
 }
-
 @media (min-width: 768px) {
   .glossary-tooltip {
     max-width: 320px;
   }
 }
-
 /* ============================================================
    REDUCCIÓN DE MOVIMIENTO
    ============================================================ */
-
 @media (prefers-reduced-motion: reduce) {
   .glossary-tooltip {
     animation: none;

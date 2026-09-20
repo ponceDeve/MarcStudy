@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-
 export default function SelectionTooltip() {
   const [pos, setPos] = useState(null); // {top, left} | null
   const textRef = useRef("");
-
   useEffect(() => {
     function handleSelection(e) {
       if (e.target && e.target.closest && e.target.closest("#selection-tooltip")) return;
@@ -23,13 +21,11 @@ export default function SelectionTooltip() {
         }
       }, 10);
     }
-
     function handleMouseDown(e) {
       if (e.target && e.target.closest && !e.target.closest("#selection-tooltip")) {
         setPos(null);
       }
     }
-
     document.addEventListener("mouseup", handleSelection);
     document.addEventListener("keyup", handleSelection);
     document.addEventListener("touchend", handleSelection);
@@ -41,7 +37,6 @@ export default function SelectionTooltip() {
       document.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
-
   function buscar(e) {
     e.stopPropagation();
     if (!textRef.current) return;
@@ -50,9 +45,7 @@ export default function SelectionTooltip() {
     setPos(null);
     window.getSelection().removeAllRanges();
   }
-
   if (!pos) return null;
-
   return (
     <div
       id="selection-tooltip"

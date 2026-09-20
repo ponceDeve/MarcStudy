@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-
 export default function Modal({
   open,
   onClose,
@@ -16,15 +15,12 @@ export default function Modal({
       document.documentElement.classList.remove("modal-open");
       document.body.classList.remove("modal-open");
     }
-
     return () => {
       document.documentElement.classList.remove("modal-open");
       document.body.classList.remove("modal-open");
     };
   }, [open]);
-
   if (!open) return null;
-
   return createPortal(
     <div
       className="modal-backdrop"
@@ -47,7 +43,6 @@ export default function Modal({
         >
           <i className="bi bi-x"></i>
         </button>
-
         {children}
       </div>
     </div>,

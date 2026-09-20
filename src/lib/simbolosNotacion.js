@@ -15,41 +15,35 @@ export const SIMBOLOS_NOTACION = {
   "⇒": "provoca",
   "✓": "necesita",
   "✗": "no tiene",
-  "+": "además",
+  "+": "màs",
   "↑": "aumenta",
   "↓": "disminuye",
   "≠": "se diferencia de",
   "≈": "es similar a",
 };
-
 // Ordenados de más largo a más corto (por si en el futuro se agrega
 // algún símbolo de más de un carácter) para que el regex no corte mal.
 const CLAVES_ORDENADAS = Object.keys(SIMBOLOS_NOTACION).sort(
   (a, b) => b.length - a.length
 );
-
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
-
 export const SIMBOLOS_NOTACION_REGEX = new RegExp(
   `(${CLAVES_ORDENADAS.map(escapeRegExp).join("|")})`,
   "g"
 );
-
 export function esSimboloDeNotacion(caracter) {
   return Object.prototype.hasOwnProperty.call(
     SIMBOLOS_NOTACION,
     caracter
   );
 }
-
 // Reemplaza cada símbolo por su palabra, para que el lector de voz
 // diga "define" en vez de leer "=" (o quedarse callado/raro en ese
 // punto). Se usa antes de mandarle el texto a SpeechSynthesisUtterance.
 export function reemplazarSimbolosParaVoz(texto) {
   if (!texto) return texto;
-
   return texto.replace(
     SIMBOLOS_NOTACION_REGEX,
     (match) => ` ${SIMBOLOS_NOTACION[match]} `

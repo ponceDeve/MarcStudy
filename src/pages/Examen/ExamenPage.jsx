@@ -1,28 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-
 import { useNavigate, useSearchParams } from "react-router-dom";
-
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
-
 import AppHeader from "../../components/AppHeader";
-
 import {
   armarSimulacro,
   calcularResultados,
 } from "../../lib/simulacroExamen";
-
 import { AREAS_UNMSM } from "../../data/distribucionExamenUNMSM";
-
 import PreguntaSimulacro from "./PreguntaSimulacro";
-
 import ResultadosExamenPage from "./ResultadosExamenPage";
-
 import AbandonarSimulacroModal from "../../components/AbandonarSimulacroModal";
-
 const DURACION_SEGUNDOS = 3 * 60 * 60;
-
 const STORAGE_KEY = "examen_simulacro_estado";
-
 const ICONO_CURSO = {
   RVE: "bi-chat-left-text",
   RMA: "bi-calculator",
@@ -43,27 +32,20 @@ const ICONO_CURSO = {
   QUI: "bi-droplet",
   BIO: "bi-flower1",
 };
-
 function leerEstadoGuardado(area) {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-
     if (!raw) return null;
-
     const data = JSON.parse(raw);
-
     if (data.area !== area) return null;
-
     if (!data.horaFin || data.horaFin <= Date.now()) {
       return null;
     }
-
     return data;
   } catch {
     return null;
   }
 }
-
 function guardarEstado(estado) {
   try {
     localStorage.setItem(
@@ -74,29 +56,22 @@ function guardarEstado(estado) {
     // Si falla el guardado no rompemos el examen, solo no persiste.
   }
 }
-
 function limpiarEstadoGuardado() {
   localStorage.removeItem(STORAGE_KEY);
 }
-
 function formatearTiempo(segundos) {
   const s = Math.max(0, Math.round(segundos));
-
   const h = String(
     Math.floor(s / 3600)
   ).padStart(2, "0");
-
   const m = String(
     Math.floor((s % 3600) / 60)
   ).padStart(2, "0");
-
   const ss = String(
     s % 60
   ).padStart(2, "0");
-
   return `${h}:${m}:${ss}`;
 }
-
 function SelectorCurso({
   cursos,
   cursoSeleccionado,
@@ -104,15 +79,12 @@ function SelectorCurso({
 }) {
   const [abierto, setAbierto] = useState(false);
   const [busqueda, setBusqueda] = useState("");
-
   const selectorRef = useRef(null);
-
   const cursoActual = cursos.find(
     (curso) =>
       String(curso.curso) ===
       String(cursoSeleccionado)
   );
-
   const cursosFiltrados = [...cursos]
     .filter((curso) =>
       curso.cursoNombre
@@ -126,17 +98,14 @@ function SelectorCurso({
       ) {
         return -1;
       }
-
       if (
         String(b.curso) ===
         String(cursoSeleccionado)
       ) {
         return 1;
       }
-
       return 0;
     });
-
   useEffect(() => {
     function manejarClickFuera(event) {
       if (
@@ -146,14 +115,12 @@ function SelectorCurso({
         cerrar();
       }
     }
-
     if (abierto) {
       document.addEventListener(
         "mousedown",
         manejarClickFuera
       );
     }
-
     return () => {
       document.removeEventListener(
         "mousedown",
@@ -161,28 +128,23 @@ function SelectorCurso({
       );
     };
   }, [abierto]);
-
   function abrir() {
     setBusqueda("");
     setAbierto(true);
   }
-
   function cerrar() {
     setBusqueda("");
     setAbierto(false);
   }
-
   function seleccionar(curso) {
     onSeleccionar(curso.curso);
     cerrar();
   }
-
   return (
     <div
       ref={selectorRef}
-      className={`selector-busqueda ${
-        abierto ? "is-abierto" : ""
-      }`}
+      className={`selector-busqueda ${abierto ? "is-abierto" : ""
+        }`}
     >
       {!abierto ? (
         <button
@@ -193,24 +155,20 @@ function SelectorCurso({
           aria-haspopup="listbox"
         >
           <i
-            className={`bi ${
-              ICONO_CURSO[cursoActual?.curso] ||
+            className={`bi ${ICONO_CURSO[cursoActual?.curso] ||
               "bi-journal-bookmark"
-            }`}
+              }`}
           />
-
           <span>
             {cursoActual?.cursoNombre ||
               "Seleccionar curso"}
           </span>
-
           <i className="fas fa-chevron-down" />
         </button>
       ) : (
         <>
           <div className="selector-busqueda__busqueda">
             <i className="fas fa-search" />
-
             <input
               type="text"
               value={busqueda}
@@ -226,7 +184,6 @@ function SelectorCurso({
               autoFocus
               aria-label="Buscar curso"
             />
-
             {busqueda && (
               <button
                 type="button"
@@ -238,7 +195,6 @@ function SelectorCurso({
               </button>
             )}
           </div>
-
           <div className="selector-busqueda__menu">
             <div
               className="selector-busqueda__opciones"
@@ -249,12 +205,11 @@ function SelectorCurso({
                   <button
                     type="button"
                     key={curso.curso}
-                    className={`selector-busqueda__opcion ${
-                      String(curso.curso) ===
-                      String(cursoSeleccionado)
+                    className={`selector-busqueda__opcion ${String(curso.curso) ===
+                        String(cursoSeleccionado)
                         ? "is-seleccionado"
                         : ""
-                    }`}
+                      }`}
                     onClick={() =>
                       seleccionar(curso)
                     }
@@ -265,20 +220,17 @@ function SelectorCurso({
                     }
                   >
                     <i
-                      className={`bi ${
-                        ICONO_CURSO[curso.curso] ||
+                      className={`bi ${ICONO_CURSO[curso.curso] ||
                         "bi-journal-bookmark"
-                      }`}
+                        }`}
                     />
-
                     <span>
                       {curso.cursoNombre}
                     </span>
-
                     {String(curso.curso) ===
                       String(cursoSeleccionado) && (
-                      <i className="fas fa-check" />
-                    )}
+                        <i className="fas fa-check" />
+                      )}
                   </button>
                 ))
               ) : (
@@ -293,48 +245,34 @@ function SelectorCurso({
     </div>
   );
 }
-
 export default function ExamenPage() {
   const [searchParams] = useSearchParams();
-
   const area =
     searchParams.get("area") || "A";
-
   const navigate = useNavigate();
-
   const { setFooterHidden } =
     useFooterVisibility();
-
   const [etapa, setEtapa] =
     useState("cargando");
-
   const [preguntas, setPreguntas] =
     useState([]);
-
   const [respuestas, setRespuestas] =
     useState({});
-
   const [horaFin, setHoraFin] =
     useState(null);
-
   /*
    * ============================================================
    * ÍNDICE DEL CURSO
    * ============================================================
    */
-
   const [indiceCurso, setIndiceCurso] =
     useState(0);
-
   const [segundosLeft, setSegundosLeft] =
     useState(DURACION_SEGUNDOS);
-
   const [modal, setModal] =
     useState(null);
-
   const [resultados, setResultados] =
     useState(null);
-
   /*
    * ============================================================
    * HEADER / TOPBAR
@@ -345,22 +283,16 @@ export default function ExamenPage() {
    * topbarRef permite conocer la altura REAL del header.
    * ============================================================
    */
-
   const [topbarVisible, setTopbarVisible] =
     useState(true);
-
   const topbarRef = useRef(null);
-
   /*
    * Ref de respuestas para evitar problemas con estados
    * desactualizados al entregar automáticamente.
    */
-
   const respuestasRef =
     useRef(respuestas);
-
   respuestasRef.current = respuestas;
-
   /*
    * ============================================================
    * OCULTAR TOPBAR CON EL SCROLL
@@ -377,52 +309,37 @@ export default function ExamenPage() {
    * 3. Cuando el usuario empieza a subir, vuelve a aparecer.
    * ============================================================
    */
-
   useEffect(() => {
     const topbar = topbarRef.current;
-
     if (!topbar) return;
-
     let ultimaPosicion = window.scrollY;
-
     function manejarScroll() {
       const posicionActual = window.scrollY;
-
       const alturaHeader =
         topbar.offsetHeight;
-
       /*
        * Si todavía estamos dentro de la altura
        * del header, siempre permanece visible.
        */
-
       if (posicionActual <= alturaHeader) {
         setTopbarVisible(true);
-
         ultimaPosicion = posicionActual;
-
         return;
       }
-
       /*
        * El usuario está bajando.
        */
-
       if (posicionActual > ultimaPosicion) {
         setTopbarVisible(false);
       }
-
       /*
        * El usuario está subiendo.
        */
-
       else if (posicionActual < ultimaPosicion) {
         setTopbarVisible(true);
       }
-
       ultimaPosicion = posicionActual;
     }
-
     window.addEventListener(
       "scroll",
       manejarScroll,
@@ -430,7 +347,6 @@ export default function ExamenPage() {
         passive: true,
       }
     );
-
     return () => {
       window.removeEventListener(
         "scroll",
@@ -438,87 +354,65 @@ export default function ExamenPage() {
       );
     };
   }, []);
-
   /*
    * ============================================================
    * FOOTER
    * ============================================================
    */
-
   useEffect(() => {
     setFooterHidden(true);
-
     return () =>
       setFooterHidden(false);
   }, [setFooterHidden]);
-
   /*
    * ============================================================
    * INICIAR / RECUPERAR EXAMEN
    * ============================================================
    */
-
   useEffect(() => {
     let cancelado = false;
-
     async function iniciar() {
       const guardado =
         leerEstadoGuardado(area);
-
       if (guardado) {
         if (cancelado) return;
-
         setPreguntas(
           guardado.preguntas || []
         );
-
         setRespuestas(
           guardado.respuestas || {}
         );
-
         setHoraFin(
           guardado.horaFin
         );
-
         setSegundosLeft(
           Math.max(
             0,
             Math.round(
               (guardado.horaFin -
                 Date.now()) /
-                1000
+              1000
             )
           )
         );
-
         setEtapa("en_curso");
-
         return;
       }
-
       const nuevasPreguntas =
         await armarSimulacro(area);
-
       if (cancelado) return;
-
       const fin =
         Date.now() +
         DURACION_SEGUNDOS * 1000;
-
       setPreguntas(
         nuevasPreguntas
       );
-
       setRespuestas({});
-
       setHoraFin(fin);
-
       setSegundosLeft(
         DURACION_SEGUNDOS
       );
-
       setEtapa("en_curso");
-
       guardarEstado({
         area,
         preguntas: nuevasPreguntas,
@@ -526,42 +420,33 @@ export default function ExamenPage() {
         horaFin: fin,
       });
     }
-
     iniciar();
-
     return () => {
       cancelado = true;
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [area]);
-
   /*
    * ============================================================
    * SCROLL ARRIBA AL CAMBIAR DE CURSO
    * ============================================================
    */
-
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "auto",
     });
-
     /*
      * Al cambiar de curso, el header vuelve a aparecer.
      */
-
     setTopbarVisible(true);
   }, [indiceCurso]);
-
   /*
    * ============================================================
    * CRONÓMETRO
    * ============================================================
    */
-
   useEffect(() => {
     if (
       etapa !== "en_curso" ||
@@ -569,40 +454,31 @@ export default function ExamenPage() {
     ) {
       return;
     }
-
     function tick() {
       const restante =
         Math.round(
           (horaFin - Date.now()) /
-            1000
+          1000
         );
-
       setSegundosLeft(restante);
-
       if (restante <= 0) {
         entregarExamen();
       }
     }
-
     tick();
-
     const id = setInterval(
       tick,
       1000
     );
-
     return () =>
       clearInterval(id);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [etapa, horaFin]);
-
   /*
    * ============================================================
    * ACTUALIZAR RESPUESTA
    * ============================================================
    */
-
   function actualizarRespuesta(
     preguntaId,
     valor
@@ -612,56 +488,44 @@ export default function ExamenPage() {
         ...prev,
         [preguntaId]: valor,
       };
-
       guardarEstado({
         area,
         preguntas,
         respuestas: nuevo,
         horaFin,
       });
-
       return nuevo;
     });
   }
-
   /*
    * ============================================================
    * ENTREGAR EXAMEN
    * ============================================================
    */
-
   function entregarExamen() {
     const res =
       calcularResultados(
         preguntas,
         respuestasRef.current
       );
-
     setResultados(res);
-
     setEtapa("resultados");
-
     setModal(null);
-
     limpiarEstadoGuardado();
   }
-
   /*
    * ============================================================
    * ABANDONAR EXAMEN
    * ============================================================
    */
-
   function abandonarExamen() {
     entregarExamen();
   }
-
   /*
    * ============================================================
    * CARGANDO
    * ============================================================
    */
-
   if (etapa === "cargando") {
     return (
       <div className="examen-page examen-page--cargando">
@@ -672,18 +536,15 @@ export default function ExamenPage() {
       </div>
     );
   }
-
   /*
    * ============================================================
    * RESULTADOS
    * ============================================================
    */
-
   if (etapa === "resultados") {
     return (
       <>
         <AppHeader section="examen" />
-
         <ResultadosExamenPage
           resultados={resultados}
           area={area}
@@ -697,21 +558,16 @@ export default function ExamenPage() {
       </>
     );
   }
-
   /*
    * ============================================================
    * AGRUPACIÓN DE PREGUNTAS POR CURSO
    * ============================================================
    */
-
   const cursos = [];
-
   const cursosMap = new Map();
-
   preguntas.forEach((pregunta) => {
     const curso =
       pregunta.curso;
-
     if (!cursosMap.has(curso)) {
       const grupo = {
         curso,
@@ -719,82 +575,63 @@ export default function ExamenPage() {
           pregunta.cursoNombre,
         preguntas: [],
       };
-
       cursosMap.set(
         curso,
         grupo
       );
-
       cursos.push(grupo);
     }
-
     cursosMap
       .get(curso)
       .preguntas.push(pregunta);
   });
-
   /*
    * ============================================================
    * CURSO ACTUAL
    * ============================================================
    */
-
   const cursoActual =
     cursos[indiceCurso] ||
     null;
-
   const preguntasDelCurso =
     cursoActual?.preguntas ||
     [];
-
   /*
    * ============================================================
    * CONTADOR / PROGRESO
    * ============================================================
    */
-
   const totalRespondidas =
     Object.keys(respuestas).length;
-
   /*
    * ============================================================
    * ROTACIÓN DE LA AGUJA
    * ============================================================
    */
-
   const segundosTranscurridos =
     DURACION_SEGUNDOS -
     segundosLeft;
-
   const rotacionAguja =
     ((segundosTranscurridos / 60) *
       6) %
     360;
-
   /*
    * ============================================================
    * CONTEXTO DE TEXTOS RV
    * ============================================================
    */
-
   const gruposRV = [];
-
   const gruposRVMap = new Map();
-
   preguntasDelCurso.forEach(
     (pregunta) => {
       const textoRV =
         pregunta.textoRV;
-
       if (!textoRV) return;
-
       const tieneContenido =
         textoRV.titulo ||
         textoRV.texto ||
         textoRV.imagen;
-
       if (!tieneContenido) return;
-
       const clave =
         JSON.stringify({
           titulo:
@@ -805,7 +642,6 @@ export default function ExamenPage() {
             textoRV.imagen ||
             null,
         });
-
       if (
         !gruposRVMap.has(clave)
       ) {
@@ -814,15 +650,12 @@ export default function ExamenPage() {
           textoRV,
           preguntas: [],
         };
-
         gruposRVMap.set(
           clave,
           grupo
         );
-
         gruposRV.push(grupo);
       }
-
       gruposRVMap
         .get(clave)
         .preguntas.push(
@@ -830,30 +663,24 @@ export default function ExamenPage() {
         );
     }
   );
-
   /*
    * ============================================================
    * OBTENER CLAVE DEL TEXTO RV
    * ============================================================
    */
-
   function obtenerClaveTextoRV(
     pregunta
   ) {
     const textoRV =
       pregunta?.textoRV;
-
     if (!textoRV) return null;
-
     const tieneContenido =
       textoRV.titulo ||
       textoRV.texto ||
       textoRV.imagen;
-
     if (!tieneContenido) {
       return null;
     }
-
     return JSON.stringify({
       titulo:
         textoRV.titulo || "",
@@ -864,22 +691,18 @@ export default function ExamenPage() {
         null,
     });
   }
-
   /*
    * ============================================================
    * RENDER DEL TEXTO RV
    * ============================================================
    */
-
   function renderTextoRV(
     textoRV
   ) {
     if (!textoRV) return null;
-
     const imagen =
       textoRV.imagen ||
       null;
-
     const parrafos = (
       textoRV.texto || ""
     )
@@ -888,7 +711,6 @@ export default function ExamenPage() {
         (parrafo) =>
           parrafo.trim() !== ""
       );
-
     return (
       <div className="question-card__inner">
         {textoRV.titulo ? (
@@ -896,7 +718,6 @@ export default function ExamenPage() {
             {textoRV.titulo}
           </h3>
         ) : null}
-
         {textoRV.texto ? (
           <div className="examen-page__rv-texto-contenido">
             {parrafos.map(
@@ -911,7 +732,6 @@ export default function ExamenPage() {
             )}
           </div>
         ) : null}
-
         {imagen ? (
           <img
             src={`${import.meta.env.BASE_URL}${String(
@@ -929,13 +749,11 @@ export default function ExamenPage() {
       </div>
     );
   }
-
   /*
    * ============================================================
    * RENDER DE UNA TARJETA DE PREGUNTA
    * ============================================================
    */
-
   function renderTarjetaPregunta(
     pregunta
   ) {
@@ -947,13 +765,12 @@ export default function ExamenPage() {
         <div className="examen-page__curso-tag">
           {cursoActual.cursoNombre}
         </div>
-
         <div className="question-card__inner">
           <PreguntaSimulacro
             pregunta={pregunta}
             respuesta={
               respuestas[
-                pregunta.id
+              pregunta.id
               ] ?? null
             }
             onCambiar={(valor) =>
@@ -967,13 +784,11 @@ export default function ExamenPage() {
       </div>
     );
   }
-
   /*
    * ============================================================
    * RENDER DE TODAS LAS PREGUNTAS DEL CURSO
    * ============================================================
    */
-
   function renderPreguntasDelCurso() {
     if (
       !preguntasDelCurso.length
@@ -987,58 +802,45 @@ export default function ExamenPage() {
         </p>
       );
     }
-
     /*
      * ==========================================================
      * AGRUPAR EN BLOQUES CONSECUTIVOS
      * ==========================================================
      */
-
     const bloques = [];
-
     let grupoActual = null;
-
     preguntasDelCurso.forEach(
       (pregunta) => {
         const claveTextoRV =
           obtenerClaveTextoRV(
             pregunta
           );
-
         if (claveTextoRV) {
           if (
             grupoActual &&
             grupoActual.clave ===
-              claveTextoRV
+            claveTextoRV
           ) {
             grupoActual.preguntas.push(
               pregunta
             );
-
             return;
           }
-
           grupoActual = {
             clave:
               claveTextoRV,
-
             textoRV:
               pregunta.textoRV,
-
             preguntas: [
               pregunta,
             ],
           };
-
           bloques.push(
             grupoActual
           );
-
           return;
         }
-
         grupoActual = null;
-
         bloques.push({
           clave: null,
           textoRV: null,
@@ -1048,7 +850,6 @@ export default function ExamenPage() {
         });
       }
     );
-
     return bloques.map(
       (bloque) => {
         if (!bloque.textoRV) {
@@ -1056,7 +857,6 @@ export default function ExamenPage() {
             bloque.preguntas[0]
           );
         }
-
         return (
           <div
             key={bloque.clave}
@@ -1068,12 +868,10 @@ export default function ExamenPage() {
                   cursoActual.cursoNombre
                 }
               </div>
-
               {renderTextoRV(
                 bloque.textoRV
               )}
             </div>
-
             {bloque.preguntas.map(
               (pregunta) =>
                 renderTarjetaPregunta(
@@ -1085,34 +883,28 @@ export default function ExamenPage() {
       }
     );
   }
-
   /*
    * ============================================================
    * RENDER PRINCIPAL
    * ============================================================
    */
-
   return (
     <div className="examen-page">
-
       {/* ======================================================
           TOPBAR DEL EXAMEN
           ====================================================== */}
-
       <div
         ref={topbarRef}
-        className={`examen-page__topbar ${
-          topbarVisible
+        className={`examen-page__topbar ${topbarVisible
             ? "is-visible"
             : "is-hidden"
-        }`}
+          }`}
       >
         <span
-          className={`examen-page__timer ${
-            segundosLeft <= 300
+          className={`examen-page__timer ${segundosLeft <= 300
               ? "is-urgente"
               : ""
-          }`}
+            }`}
         >
           <svg
             className="examen-page__clock"
@@ -1120,16 +912,13 @@ export default function ExamenPage() {
             aria-hidden="true"
           >
             {/* Esfera del reloj */}
-
             <circle
               className="examen-page__clock-face"
               cx="12"
               cy="12"
               r="9"
             />
-
             {/* Aguja */}
-
             <line
               className="examen-page__clock-minute"
               x1="12"
@@ -1142,9 +931,7 @@ export default function ExamenPage() {
                   "12px 12px",
               }}
             />
-
             {/* Centro de la aguja */}
-
             <circle
               className="examen-page__clock-center"
               cx="12"
@@ -1152,12 +939,10 @@ export default function ExamenPage() {
               r="1"
             />
           </svg>
-
           {formatearTiempo(
             segundosLeft
           )}
         </span>
-
         <span className="examen-page__progreso">
           Curso{" "}
           {cursos.length
@@ -1167,7 +952,6 @@ export default function ExamenPage() {
           {totalRespondidas}{" "}
           respondidas
         </span>
-
         <button
           type="button"
           className="examen-page__abandonar-btn"
@@ -1176,15 +960,13 @@ export default function ExamenPage() {
           }
         >
           Abandonar
+          <i className="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
         </button>
       </div>
-
       {/* ======================================================
           BODY
           ====================================================== */}
-
       <div className="examen-page__body container">
-
         {cursoActual ? (
           <>
             <SelectorCurso
@@ -1201,7 +983,6 @@ export default function ExamenPage() {
                       ) ===
                       String(curso)
                   );
-
                 if (
                   nuevoIndice !== -1
                 ) {
@@ -1211,7 +992,6 @@ export default function ExamenPage() {
                 }
               }}
             />
-
             {renderPreguntasDelCurso()}
           </>
         ) : (
@@ -1222,15 +1002,11 @@ export default function ExamenPage() {
             todavía para esta área).
           </p>
         )}
-
         {/* ====================================================
             NAVEGACIÓN
             ==================================================== */}
-
         <div className="examen-page__nav">
-
           <div className="examen-page__nav-preguntas">
-
             <button
               type="button"
               disabled={
@@ -1251,13 +1027,12 @@ export default function ExamenPage() {
               <i className="fas fa-arrow-left" />
               Ant.
             </button>
-
             <button
               type="button"
               disabled={
                 cursos.length === 0 ||
                 indiceCurso >=
-                  cursos.length - 1
+                cursos.length - 1
               }
               onClick={() =>
                 setIndiceCurso(
@@ -1273,9 +1048,7 @@ export default function ExamenPage() {
               Sig.
               <i className="fas fa-arrow-right" />
             </button>
-
           </div>
-
           <button
             type="button"
             className="examen-page__entregar-btn"
@@ -1285,14 +1058,11 @@ export default function ExamenPage() {
           >
             Entregar examen
           </button>
-
         </div>
       </div>
-
       {/* ======================================================
           MODAL
           ====================================================== */}
-
       <AbandonarSimulacroModal
         abierto={modal !== null}
         modo={
@@ -1307,7 +1077,6 @@ export default function ExamenPage() {
             : abandonarExamen
         }
       />
-
     </div>
   );
 }

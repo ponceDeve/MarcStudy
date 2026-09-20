@@ -1,15 +1,11 @@
 import { useMemo, useRef, useState } from "react";
-
 import katex from "katex";
 import "katex/dist/katex.min.css";
-
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
 import { SIMBOLOS_NOTACION } from "../../lib/simbolosNotacion";
-
 function escapeRegExp(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
-
 function renderFormula(formula, key, displayMode = false) {
   try {
     return (
@@ -27,18 +23,13 @@ function renderFormula(formula, key, displayMode = false) {
     return <span key={key}>{formula}</span>;
   }
 }
-
 function renderLatex(text) {
   if (!text) return "";
-
   const partes = [];
   let ultimo = 0;
-
   const delimitadoresRegex =
     /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
-
   let match;
-
   while (
     (match = delimitadoresRegex.exec(text)) !== null
   ) {
@@ -51,12 +42,9 @@ function renderLatex(text) {
         )
       });
     }
-
     const delimitador = match[0];
-
     let formula = delimitador;
     let displayMode = false;
-
     if (
       delimitador.startsWith("$$") &&
       delimitador.endsWith("$$")
@@ -80,33 +68,27 @@ function renderLatex(text) {
     ) {
       formula = delimitador.slice(1, -1);
     }
-
     partes.push({
       tipo: "formula",
       valor: formula,
       displayMode
     });
-
     ultimo =
       match.index + delimitador.length;
   }
-
   if (ultimo < text.length) {
     partes.push({
       tipo: "texto",
       valor: text.slice(ultimo)
     });
   }
-
   if (partes.length === 0) {
     partes.push({
       tipo: "texto",
       valor: text
     });
   }
-
   const resultado = [];
-
   partes.forEach((parte, indice) => {
     if (parte.tipo === "formula") {
       resultado.push(
@@ -116,24 +98,18 @@ function renderLatex(text) {
           parte.displayMode
         )
       );
-
       return;
     }
-
     const formulaRegex =
       /\\(?:frac|dfrac|tfrac|binom|sqrt|sin|cos|tan|cot|sec|csc|arcsin|arccos|arctan|sinh|cosh|tanh|log|ln|exp|max|min|lim|sum|prod|int|text|mathrm|mathbf|mathit|mathbb|overline|underline|vec|hat|bar|infty|in|leq|geq|neq|approx|pm|mp|times|div|cdot|cup|cap|triangle|subset|subseteq|supset|supseteq|forall|exists|to|rightarrow|left|right|begin|end)(?:\s*(?:\{[^{}]*\}|\[[^\]]*\]|\([^)]*\)))?|[A-Za-z0-9]+(?:\^\{[^{}]+\}|\^[A-Za-z0-9]+|\_\{[^{}]+\}|_[A-Za-z0-9]+)+/g;
-
     const subPartes = [];
-
     let ultimoFormula = 0;
     let formulaMatch;
-
     while (
       (formulaMatch =
         formulaRegex.exec(parte.valor)) !== null
     ) {
       const formula = formulaMatch[0];
-
       if (
         !formula.includes("\\") &&
         !formula.includes("^") &&
@@ -141,7 +117,6 @@ function renderLatex(text) {
       ) {
         continue;
       }
-
       if (
         formulaMatch.index >
         ultimoFormula
@@ -157,19 +132,16 @@ function renderLatex(text) {
           </span>
         );
       }
-
       subPartes.push(
         renderFormula(
           formula,
           `${indice}-latex-${formulaMatch.index}`
         )
       );
-
       ultimoFormula =
         formulaMatch.index +
         formula.length;
     }
-
     if (
       ultimoFormula <
       parte.valor.length
@@ -184,7 +156,6 @@ function renderLatex(text) {
         </span>
       );
     }
-
     resultado.push(
       <span key={`texto-${indice}`}>
         {subPartes.length > 0
@@ -193,14 +164,11 @@ function renderLatex(text) {
       </span>
     );
   });
-
   return resultado;
 }
-
 function esSimbolo(termino) {
   return !/[a-zA-ZÀ-ÿ0-9]/.test(termino);
 }
-
 /**
  * Separa el texto en fórmulas $...$ (u otros delimitadores LaTeX)
  * y texto normal. Se ejecuta SIEMPRE antes que el glosario: un
@@ -211,10 +179,8 @@ function separarPorFormulas(texto) {
   const partes = [];
   let ultimo = 0;
   let match;
-
   const delimitadoresRegex =
     /(\$\$[\s\S]*?\$\$|\$[^$\n]+?\$|\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\))/g;
-
   while (
     (match = delimitadoresRegex.exec(texto)) !== null
   ) {
@@ -224,11 +190,9 @@ function separarPorFormulas(texto) {
         valor: texto.slice(ultimo, match.index)
       });
     }
-
     const delimitador = match[0];
     let formula = delimitador;
     let displayMode = false;
-
     if (
       delimitador.startsWith("$$") &&
       delimitador.endsWith("$$")
@@ -252,33 +216,27 @@ function separarPorFormulas(texto) {
     ) {
       formula = delimitador.slice(1, -1);
     }
-
     partes.push({
       tipo: "formula",
       valor: formula,
       displayMode
     });
-
     ultimo = match.index + delimitador.length;
   }
-
   if (ultimo < texto.length) {
     partes.push({
       tipo: "texto",
       valor: texto.slice(ultimo)
     });
   }
-
   if (partes.length === 0) {
     partes.push({
       tipo: "texto",
       valor: texto
     });
   }
-
   return partes;
 }
-
 function partirPorGlosario(
   texto,
   glosarioCombinado
@@ -286,7 +244,6 @@ function partirPorGlosario(
   const claves = Object.keys(
     glosarioCombinado || {}
   ).filter(Boolean);
-
   if (
     !texto ||
     claves.length === 0
@@ -298,35 +255,27 @@ function partirPorGlosario(
       }
     ];
   }
-
   const ordenadas = [...claves].sort(
     (a, b) =>
       b.length - a.length
   );
-
   const patrones =
     ordenadas.map((k) => {
       const esPalabra =
         /^[a-zA-ZÀ-ÿ0-9\s]+$/.test(k);
-
       const escaped =
         escapeRegExp(k);
-
       return esPalabra
         ? `\\b${escaped}\\b`
         : escaped;
     });
-
   const regex = new RegExp(
     `(${patrones.join("|")})`,
     "giu"
   );
-
   const partes = [];
-
   let ultimoIndex = 0;
   let match;
-
   while (
     (match = regex.exec(texto)) !== null
   ) {
@@ -342,27 +291,22 @@ function partirPorGlosario(
         )
       });
     }
-
     const encontrado =
       match[0];
-
     const keyOriginal =
       ordenadas.find(
         (k) =>
           k.toLowerCase() ===
           encontrado.toLowerCase()
       );
-
     partes.push({
       tipo: "termino",
       valor: encontrado,
       key: keyOriginal
     });
-
     ultimoIndex =
       match.index +
       encontrado.length;
-
     if (
       match.index ===
       regex.lastIndex
@@ -370,7 +314,6 @@ function partirPorGlosario(
       regex.lastIndex++;
     }
   }
-
   if (
     ultimoIndex <
     texto.length
@@ -382,10 +325,8 @@ function partirPorGlosario(
       )
     });
   }
-
   return partes;
 }
-
 /**
  * Une los dos pasos en el orden correcto: primero separa fórmulas,
  * y el glosario solo se aplica dentro de los pedazos de texto
@@ -393,13 +334,11 @@ function partirPorGlosario(
  */
 function construirPartes(texto, glosarioCombinado) {
   const partes = [];
-
   separarPorFormulas(texto).forEach((parte) => {
     if (parte.tipo === "formula") {
       partes.push(parte);
       return;
     }
-
     partirPorGlosario(
       parte.valor,
       glosarioCombinado
@@ -407,10 +346,8 @@ function construirPartes(texto, glosarioCombinado) {
       partes.push(sub);
     });
   });
-
   return partes;
 }
-
 export default function GlossaryText({
   text,
   glosario = {}
@@ -419,13 +356,10 @@ export default function GlossaryText({
     activo,
     setActivo
   ] = useState(null);
-
   const triggerRefs =
     useRef({});
-
   const tooltipRefs =
     useRef({});
-
   const {
     visible,
     shift,
@@ -433,7 +367,6 @@ export default function GlossaryText({
     ocultar,
     ajustarPosicion
   } = useFloatingTooltip();
-
   const glosarioCombinado =
     useMemo(
       () => ({
@@ -442,7 +375,6 @@ export default function GlossaryText({
       }),
       [glosario]
     );
-
   const partes = useMemo(
     () =>
       construirPartes(
@@ -454,12 +386,9 @@ export default function GlossaryText({
       glosarioCombinado
     ]
   );
-
   const mostrarTooltip = (i) => {
     setActivo(i);
-
     mostrarEn();
-
     requestAnimationFrame(() => {
       ajustarPosicion(
         triggerRefs.current[i],
@@ -467,12 +396,10 @@ export default function GlossaryText({
       );
     });
   };
-
   const ocultarTooltip = () => {
     setActivo(null);
     ocultar();
   };
-
   return (
     <span
       onClick={() => {
@@ -491,7 +418,6 @@ export default function GlossaryText({
               parte.displayMode
             );
           }
-
           if (
             parte.tipo === "texto"
           ) {
@@ -503,16 +429,13 @@ export default function GlossaryText({
               </span>
             );
           }
-
           const esVisible =
             visible &&
             activo === i;
-
           const simbolo =
             esSimbolo(
               parte.valor
             );
-
           return (
             <span
               key={i}
@@ -525,7 +448,6 @@ export default function GlossaryText({
               }}
               onClick={(e) => {
                 e.stopPropagation();
-
                 if (
                   activo === i
                 ) {
@@ -550,7 +472,6 @@ export default function GlossaryText({
                   parte.valor
                 )}
               </span>
-
               {esVisible && (
                 <span
                   ref={(el) => {
@@ -564,7 +485,6 @@ export default function GlossaryText({
                   }}
                 >
                   <span className="glossary-tooltip__arrow" />
-
                   {renderLatex(
                     glosarioCombinado[
                       parte.key

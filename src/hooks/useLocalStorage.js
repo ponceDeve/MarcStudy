@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 // Hook genérico: se comporta como useState pero persiste en localStorage.
 // Reemplaza los localStorage.getItem/setItem sueltos que había repetidos
 // en repaso.js, script.js e index.html.
@@ -12,7 +11,6 @@ export function useLocalStorage(key, defaultValue) {
       return defaultValue;
     }
   });
-
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
@@ -20,6 +18,5 @@ export function useLocalStorage(key, defaultValue) {
       console.error(`Error guardando "${key}" en localStorage:`, e);
     }
   }, [key, value]);
-
   return [value, setValue];
 }

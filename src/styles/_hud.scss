@@ -62,36 +62,29 @@
   box-shadow: inset 0 1px 0 rgba(255,255,255,.25),0 6px 20px rgba(0,0,0,.18);
   animation: repasoToastEntrada .25s linear-out;
 }
-
 .repaso-toast * {
-  color: var(--danger-dark);
+  color: var(--ink);
 }
-
 .repaso-toast i {
   font-size: 18px;
   flex-shrink: 0;
 }
-
 .repaso-toast.is-success {
   background: color-mix(in srgb, var(--success) 22%, var(--surface));
   border-color: color-mix(in srgb, var(--success) 55%, transparent);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
-
 .repaso-toast.is-success * {
-  color: var(--success-dark);
+  color: var(--ink);
 }
-
 .repaso-toast.is-saliendo {
   animation: repasoToastSalida .3s linear-in forwards;
 }
-
 @media (max-width:600px) {
   .repaso-toast {
     width: 90%;
   }
 }
-
 @keyframes repasoToastEntrada {
   from {
     opacity: 0;
@@ -102,7 +95,6 @@
     transform: translate(-50%,0);
   }
 }
-
 @keyframes repasoToastSalida {
   from {
     opacity: 1;
@@ -113,7 +105,6 @@
     transform: translate(-50%,-15px);
   }
 }
-
 @media (prefers-reduced-motion:reduce) {
   .repaso-toast,
   .repaso-toast.is-saliendo {

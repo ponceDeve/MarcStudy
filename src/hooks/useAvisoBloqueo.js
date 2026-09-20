@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-
 // Hook para botones que están "bloqueados" porque esperan una
 // acción previa del usuario (elegir una opción, responder algo, etc).
 // Devuelve [visible, mostrar]: llama a mostrar() cuando el usuario
@@ -9,16 +8,13 @@ import { useEffect, useRef, useState } from "react";
 export function useAvisoBloqueo(duracion = 2000) {
   const [visible, setVisible] = useState(false);
   const timeoutRef = useRef(null);
-
   useEffect(() => {
     return () => clearTimeout(timeoutRef.current);
   }, []);
-
   function mostrar() {
     clearTimeout(timeoutRef.current);
     setVisible(true);
     timeoutRef.current = setTimeout(() => setVisible(false), duracion);
   }
-
   return [visible, mostrar];
 }

@@ -9,14 +9,11 @@ import {
   FooterVisibilityProvider,
   useFooterVisibility,
 } from "./context/FooterVisibilityContext";
-
 import AppFooter from "./components/AppFooter";
-
 function AppFooterGate() {
   const { footerHidden } = useFooterVisibility();
   return footerHidden ? null : <AppFooter />;
 }
-
 export default function App() {
   return (
     <BrowserRouter basename="/MarcStudy">
