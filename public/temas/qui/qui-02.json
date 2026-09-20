@@ -2,148 +2,401 @@
   "curso": "Química",
   "tema": "Materia",
   "glosario": {
-    "Materia": "Todo aquello con masa y volumen que interactúa.",
-    "Sustancias puras": "Materia de composición química definida y constante.",
-    "Sustancia simple": "Sustancia formada por un solo elemento químico.",
-    "Sustancia compuesta": "Sustancia formada por elementos químicos distintos.",
+    "Materia": "Todo aquello que posee masa y ocupa un espacio.",
+    "Átomo": "Unidad fundamental de un elemento químico.",
+    "Molécula": "Conjunto de átomos unidos químicamente.",
+    "Sustancia pura": "Materia de composición química fija y definida.",
+    "Elemento": "Sustancia pura formada por un solo tipo de átomo.",
+    "Compuesto": "Sustancia pura formada por elementos diferentes unidos químicamente.",
     "Mezcla": "Unión física de dos o más sustancias.",
-    "Mezcla homogénea": "Mezcla uniforme de una sola fase visible.",
-    "Mezcla heterogénea": "Mezcla no uniforme con fases identificables.",
-    "Salmuera": "Mezcla homogénea de agua con sal.",
-    "Electrólisis": "Descomposición química mediante corriente eléctrica continua.",
+    "Mezcla homogénea": "Mezcla uniforme que presenta una sola fase.",
+    "Mezcla heterogénea": "Mezcla no uniforme que presenta dos o más fases.",
+    "Fase": "Porción homogénea y físicamente distinguible de un sistema.",
+    "Sistema": "Porción de materia seleccionada para su estudio.",
+    "Densidad": "Relación entre la masa y el volumen.",
+    "Electrólisis": "Descomposición química mediante corriente eléctrica.",
     "Pirólisis": "Descomposición química producida por altas temperaturas.",
-    "Fotólisis": "Ruptura de enlaces generada por la luz.",
-    "Catálisis": "Modificación de velocidad en una reacción química.",
-    "Tamizado": "Separación de sólidos según su tamaño.",
-    "Destilación": "Separación de líquidos por sus puntos ebullición.",
-    "Filtración": "Separación de sólidos suspendidos en un líquido.",
-    "Decantación": "Separación de fluidos basada en sus densidades.",
-    "=": "Define",
-    "✓": "Requiere",
-    "⊃": "Contiene",
-    "∈": "Pertenece",
-    "✗": "Carece",
-    "→": "Produce"
+    "Fotólisis": "Descomposición química producida mediante energía luminosa.",
+    "Catálisis": "Proceso que modifica la velocidad de una reacción química.",
+    "Tamizado": "Separación de sólidos según el tamaño de sus partículas.",
+    "Destilación": "Separación basada en diferentes puntos de ebullición.",
+    "Filtración": "Separación de sólidos suspendidos mediante un material poroso.",
+    "Decantación": "Separación basada principalmente en diferencias de densidad."
   },
   "theory": [
     {
-      "titulo": "Definición de Materia",
+      "titulo": "Concepto de Materia",
       "puntos": [
         {
-          "texto": "Materia = todo aquello con lo cual interactuamos.",
-          "explicacion": "La materia abarca la totalidad del universo físico existente. Interactuamos con ella constantemente, ya sea de forma directa y tangible al tocar objetos o de forma indirecta al respirar los gases de la atmósfera. Todo lo que ocupa espacio forma parte del dominio de la materia."
+          "texto": "Materia = todo aquello que posee masa y ocupa espacio.",
+          "explicacion": "La materia es todo aquello que posee masa y ocupa un lugar en el espacio. Los cuerpos y sustancias que nos rodean están constituidos por materia."
         },
         {
-          "texto": "Materia ✓ poseer masa y volumen.",
-          "explicacion": "Para que un componente del universo sea considerado materia en la química clásica, debe cumplir dos condiciones obligatorias de forma simultánea. La masa representa la cantidad de sustancia que posee un cuerpo, mientras que el volumen es el espacio tridimensional que dicho cuerpo ocupa."
+          "texto": "La materia ✓ poseer masa y volumen.",
+          "explicacion": "La masa expresa la cantidad de materia de un cuerpo y el volumen representa el espacio que ocupa."
         }
       ]
     },
     {
-      "titulo": "Clasificación: Sustancias Puras",
+      "titulo": "Partículas de la Materia",
       "puntos": [
         {
-          "texto": "Sustancias puras ✓ poseer representación química.",
-          "explicacion": "Las sustancias puras son tipos de materia que tienen una composición química fija, definida e invariable. Debido a esta composición constante, es posible representarlas formalmente mediante símbolos químicos si son elementos simples o fórmulas químicas estructuradas si se trata de compuestos químicos."
+          "texto": "La materia está formada por partículas.",
+          "explicacion": "La materia presenta una estructura formada por partículas muy pequeñas, como átomos, moléculas e iones."
         },
         {
-          "texto": "Sustancia simple = formada por el mismo tipo de átomos.",
-          "explicacion": "Una sustancia simple o elemento químico es una forma de materia constituida exclusivamente por átomos que poseen el mismo número atómico. No importa la cantidad de átomos presentes en la molécula, siempre que pertenezcan exactamente a la misma especie química sin combinarse con otros elementos distintos."
+          "texto": "Átomo = unidad fundamental de un elemento.",
+          "explicacion": "El átomo es la unidad fundamental que conserva las características químicas de un elemento."
         },
         {
-          "texto": "Ejemplos de sustancias simples ⊃ Au, Ag, Cl2, O3.",
-          "explicacion": "Especies como el oro (Au) y la plata (Ag) existen en estado atómico puro. Por su parte, el cloro molecular (Cl2) y el ozono (O3) son moléculas compuestas por dos y tres átomos del mismo elemento respectivamente. Al no combinarse con elementos ajenos, todos son considerados sustancias simples."
-        },
-        {
-          "texto": "Sustancia compuesta = formada por elementos químicos diferentes.",
-          "explicacion": "Una sustancia compuesta es una materia homogénea formada por la combinación química de dos o más elementos diferentes en proporciones fijas. Los átomos involucrados se enlazan químicamente, originando una nueva sustancia cuyas propiedades son completamente distintas a las de los elementos individuales que la forman."
-        },
-        {
-          "texto": "Ejemplos de sustancias compuestas ⊃ NaCl, H2O2, C6H12O6.",
-          "explicacion": "El cloruro de sodio (NaCl), el peróxido de hidrógeno (H2O2) y la glucosa (C6H12O6) son compuestos químicos definidos. Sus fórmulas muestran la unión atómica de varios elementos distintos: el NaCl combina sodio y cloro; el H2O2, hidrógeno y oxígeno; y la glucosa, carbono, hidrógeno y oxígeno."
+          "texto": "Molécula = conjunto de átomos unidos químicamente.",
+          "explicacion": "Una molécula está formada por dos o más átomos unidos mediante enlaces químicos."
         }
       ]
     },
     {
-      "titulo": "Clasificación: Mezclas",
+      "titulo": "Clasificación de Materia",
       "puntos": [
         {
-          "texto": "Mezcla = unión de dos o más sustancias.",
-          "explicacion": "Una mezcla es un sistema material formado por la combinación física de dos o más sustancias puras. A diferencia de lo que ocurre en un compuesto químico, en la mezcla no suceden reacciones químicas entre sus componentes, por lo cual cada sustancia conserva intactas sus propiedades químicas individuales."
+          "texto": "Materia ⊃ sustancias puras y mezclas.",
+          "explicacion": "La materia puede clasificarse en sustancias puras y mezclas según la composición y uniformidad de sus componentes."
         },
         {
-          "texto": "Componentes de una mezcla ∈ proporción variable.",
-          "explicacion": "Las mezclas no obedecen a proporciones químicas fijas o compuestas. Sus componentes pueden combinarse en cantidades totalmente libres y variables sin alterar la naturaleza fundamental de la mezcla. Por ejemplo, al disolver azúcar en agua se puede modificar la concentración libremente manteniendo el sistema como una solución."
+          "texto": "Sustancia pura = composición química fija y definida.",
+          "explicacion": "Una sustancia pura posee composición constante y propiedades características. Puede ser un elemento o un compuesto."
         },
         {
-          "texto": "Mezcla homogénea ✗ diferenciar componentes mediante microscopio.",
-          "explicacion": "Una mezcla homogénea o solución es un sistema que presenta una sola fase uniforme en toda su extensión. Sus componentes están distribuidos de manera tan íntima a nivel molecular o iónico que resulta imposible distinguirlos visualmente, incluso cuando se utiliza un microscopio óptico de gran aumento."
-        },
-        {
-          "texto": "Ejemplos de mezcla homogénea ⊃ salmuera, aire, gasolina.",
-          "explicacion": "La salmuera (sal disuelta en agua), el aire atmosférico (mezcla de gases) y la gasolina comercial son sistemas monofásicos perfectos. En todos estos casos, las propiedades físicas y químicas son idénticas en cualquier punto de la mezcla, pues no se observan límites de separación entre sus componentes."
-        },
-        {
-          "texto": "Mezcla heterogénea ✓ distinguir componentes mediante microscopio.",
-          "explicacion": "Una mezcla heterogénea es un sistema no uniforme constituido por dos o más fases físicamente distintas. Debido a que la distribución de sus componentes no es homogénea a nivel molecular, es posible observar y diferenciar claramente sus distintas partes a simple vista o empleando un microscopio."
-        },
-        {
-          "texto": "Ejemplo de mezcla heterogénea ⊃ petróleo.",
-          "explicacion": "El petróleo crudo es una mezcla compleja de hidrocarburos, agua, sales e impurezas en diversos estados de la materia. Al poseer compuestos inmiscibles y suspensiones de partículas sólidas y líquidas, conforma un sistema multifásico donde se pueden apreciar distintas fases bajo análisis instrumental."
+          "texto": "Sustancia pura ⊃ elementos y compuestos.",
+          "explicacion": "Las sustancias puras se clasifican en elementos, formados por un solo tipo de elemento químico, y compuestos, formados por elementos diferentes."
         }
       ]
     },
     {
-      "titulo": "Cambios de la Materia",
+      "titulo": "Elementos y Compuestos",
       "puntos": [
         {
-          "texto": "Cambios físicos ✗ alterar la identidad de la materia.",
-          "explicacion": "Un cambio o fenómeno físico es una transformación transitoria que afecta únicamente el aspecto externo, la forma o el estado de agregación de la materia. Durante este proceso no se rompen ni se forman enlaces químicos, de modo que la estructura molecular básica y la identidad del cuerpo permanecen intactas."
+          "texto": "Elemento = sustancia formada por un solo tipo de átomo.",
+          "explicacion": "Un elemento químico contiene átomos con el mismo número atómico. No puede descomponerse químicamente en sustancias más simples."
         },
         {
-          "texto": "Ejemplo de cambio físico = congelar agua.",
-          "explicacion": "Cuando el agua en estado líquido se congela para convertirse en hielo, experimenta un cambio en sus propiedades físicas como dureza y temperatura. Sin embargo, tanto el líquido como el hielo están constituidos por las mismas moléculas de H2O, lo que demuestra que no hubo alteración química."
+          "texto": "Ejemplos de elementos ⊃ Au, Ag, O2, Cl2.",
+          "explicacion": "Oro, plata, oxígeno y cloro son elementos. Aunque O2 y Cl2 tienen moléculas con varios átomos, todos sus átomos pertenecen al mismo elemento."
         },
         {
-          "texto": "Cambios químicos → formación de nuevas sustancias.",
-          "explicacion": "Un cambio químico o reacción química es un proceso irreversible donde las sustancias originales cambian su estructura íntima. Los enlaces entre átomos se rompen y se reorganizan para dar lugar a sustancias totalmente nuevas que poseen propiedades físicas y químicas diferentes a las del material inicial."
+          "texto": "Compuesto = formado por elementos diferentes unidos químicamente.",
+          "explicacion": "Un compuesto contiene dos o más elementos diferentes unidos químicamente en proporciones definidas. Sus propiedades son diferentes de las de sus elementos constituyentes."
         },
         {
-          "texto": "Ejemplo de cambio químico = oxidación de un metal.",
-          "explicacion": "La oxidación es un fenómeno químico en el cual un metal reacciona con el oxígeno presente en el ambiente. Durante el proceso se forman óxidos metálicos, los cuales son compuestos químicos diferentes con propiedades completamente distintas a las del metal puro original."
-        },
-        {
-          "texto": "Cambios nucleares = alteraciones a nivel del núcleo atómico.",
-          "explicacion": "Un cambio o fenómeno nuclear es una transformación extrema que modifica la estructura del núcleo de los átomos mediante procesos de fisión o fusión nuclear. Estas reacciones alteran el número de protones y neutrones, transformando los átomos iniciales en elementos químicos completamente diferentes y liberando gran energía."
+          "texto": "Ejemplos de compuestos ⊃ NaCl, H2O, CO2.",
+          "explicacion": "El NaCl contiene sodio y cloro; el H2O contiene hidrógeno y oxígeno; el CO2 contiene carbono y oxígeno."
         }
       ]
     },
     {
-      "titulo": "Métodos de Separación",
+      "titulo": "Mezclas",
       "puntos": [
         {
-          "texto": "Separación de sustancia compuesta ✓ métodos químicos.",
-          "explicacion": "Los elementos que integran una sustancia compuesta se encuentran unidos químicamente por enlaces atómicos de alta energía. Por esta razón, los métodos físicos simples no son capaces de romper dicha unión, siendo indispensable aplicar procesos o reacciones químicas para separar el compuesto en sus elementos constituyentes."
+          "texto": "Mezcla = unión física de dos o más sustancias.",
+          "explicacion": "Una mezcla resulta de combinar físicamente dos o más sustancias. Sus componentes conservan sus propiedades químicas y pueden separarse mediante métodos físicos."
         },
         {
-          "texto": "Separar compuesto NaCl ✓ método de electrólisis.",
-          "explicacion": "El cloruro de sodio (NaCl) es un compuesto iónico muy estable. La electrólisis es un método químico que utiliza una corriente eléctrica continua para romper los enlaces químicos de este compuesto, logrando descomponerlo exitosamente en sus elementos puros: sodio metálico y gas cloro."
+          "texto": "Componentes de una mezcla ∈ proporciones variables.",
+          "explicacion": "Los componentes de una mezcla pueden encontrarse en cantidades variables. No existe una proporción química fija como ocurre en un compuesto."
         },
         {
-          "texto": "Otros métodos químicos ⊃ fotólisis, pirólisis, catálisis.",
-          "explicacion": "Existen diversos procesos químicos que permiten romper enlaces en los compuestos. La fotólisis utiliza la energía de la luz, la pirólisis emplea calor elevado en ausencia de oxígeno, y la catálisis utiliza sustancias especiales para acelerar la descomposición química de la materia."
+          "texto": "Mezcla homogénea = presenta una sola fase.",
+          "explicacion": "Una mezcla homogénea tiene composición uniforme y presenta una sola fase. Sus componentes no se distinguen a simple vista."
         },
         {
-          "texto": "Separación de mezclas ✓ métodos físicos.",
-          "explicacion": "Dado que los componentes de una mezcla están unidos únicamente por interacciones físicas y no por enlaces químicos, no es necesario alterar la identidad química de las sustancias. Para separarlos basta con aprovechar las diferencias entre sus propiedades físicas, como la densidad o el punto de ebullición."
+          "texto": "Ejemplos homogéneos ⊃ salmuera, aire y gasolina.",
+          "explicacion": "La salmuera, el aire y la gasolina son ejemplos de mezclas homogéneas porque presentan uniformidad en toda su extensión."
         },
         {
-          "texto": "Separar arena y arroz ✓ método de tamizado.",
-          "explicacion": "El tamizado es un método físico mecánico utilizado para separar mezclas de sólidos constituidas por partículas de distinto tamaño. Al hacer pasar la mezcla por una malla o tamiz, las partículas más pequeñas de arena atraviesan los poros mientras que los granos de arroz quedan retenidos."
+          "texto": "Mezcla heterogénea = presenta dos o más fases.",
+          "explicacion": "Una mezcla heterogénea presenta composición no uniforme y dos o más fases físicamente distinguibles."
         },
         {
-          "texto": "Otros métodos físicos ⊃ destilación, filtración, decantación.",
-          "explicacion": "Los métodos físicos aprovechan propiedades mecánicas de las sustancias. La destilación separa líquidos según sus puntos de ebullición, la filtración retiene sólidos insolubles suspendidos en un líquido usando un medio poroso, y la decantación separa fluidos inmiscibles impulsada por la diferencia de densidades."
+          "texto": "Ejemplos heterogéneos ⊃ agua y aceite, granito.",
+          "explicacion": "El agua con aceite y el granito presentan diferentes regiones o fases que pueden distinguirse físicamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de Materia",
+      "puntos": [
+        {
+          "texto": "Propiedades = características que permiten describir la materia.",
+          "explicacion": "Las propiedades permiten identificar, describir y diferenciar sustancias y cuerpos materiales."
+        },
+        {
+          "texto": "Masa = cantidad de materia de un cuerpo.",
+          "explicacion": "La masa es una propiedad asociada a la cantidad de materia. En el Sistema Internacional se mide principalmente en kilogramos."
+        },
+        {
+          "texto": "Volumen = espacio ocupado por la materia.",
+          "explicacion": "El volumen indica el espacio ocupado por un cuerpo. En el Sistema Internacional su unidad es el metro cúbico."
+        },
+        {
+          "texto": "Densidad = relación entre masa y volumen.",
+          "explicacion": "La densidad relaciona la masa de una sustancia con el volumen que ocupa. Permite comparar qué tan concentrada está la materia."
+        },
+        {
+          "texto": "Fórmula de densidad = d = m/V.",
+          "explicacion": "La densidad se calcula dividiendo la masa entre el volumen. Las unidades dependen de las unidades empleadas para masa y volumen."
+        },
+        {
+          "texto": "Fórmula de masa = m = d × V.",
+          "explicacion": "Si se conocen la densidad y el volumen, la masa se obtiene multiplicándolos."
+        },
+        {
+          "texto": "Ejemplo: d = 2 g/cm³ y V = 5 cm³.",
+          "explicacion": "Aplicando la fórmula m = d × V, se obtiene m = 2 g/cm³ × 5 cm³ = 10 g."
+        },
+        {
+          "texto": "Fórmula de volumen = V = m/d.",
+          "explicacion": "Si se conocen la masa y la densidad, el volumen se obtiene dividiendo la masa entre la densidad."
+        },
+        {
+          "texto": "Densidad del agua ≈ 1 g/cm³.",
+          "explicacion": "En condiciones habituales, la densidad del agua se aproxima a 1 g/cm³. Este valor permite relacionar fácilmente masa y volumen."
+        },
+        {
+          "texto": "1 mL = 1 cm³.",
+          "explicacion": "El mililitro y el centímetro cúbico representan el mismo volumen, por lo que pueden utilizarse de manera equivalente."
+        }
+      ]
+    },
+    {
+      "titulo": "Estados Físicos",
+      "puntos": [
+        {
+          "texto": "Estados físicos ⊃ sólido, líquido, gaseoso y plasma.",
+          "explicacion": "La materia puede presentarse en distintos estados físicos según las condiciones de temperatura y presión y el comportamiento de sus partículas."
+        },
+        {
+          "texto": "Sólido = forma y volumen definidos.",
+          "explicacion": "En los sólidos, las partículas están muy próximas y presentan movimientos principalmente de vibración alrededor de posiciones determinadas."
+        },
+        {
+          "texto": "Líquido = volumen definido y forma variable.",
+          "explicacion": "Los líquidos mantienen un volumen definido, pero adoptan la forma del recipiente que los contiene."
+        },
+        {
+          "texto": "Gas = forma y volumen variables.",
+          "explicacion": "Los gases no poseen forma ni volumen propios y se expanden hasta ocupar el recipiente disponible."
+        },
+        {
+          "texto": "Plasma = gas ionizado con partículas cargadas.",
+          "explicacion": "El plasma contiene partículas cargadas eléctricamente y aparece, por ejemplo, en las estrellas y en determinadas descargas eléctricas."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambios de Estado",
+      "puntos": [
+        {
+          "texto": "Fusión → sólido a líquido.",
+          "explicacion": "La fusión ocurre cuando una sustancia pasa del estado sólido al líquido mediante absorción de energía."
+        },
+        {
+          "texto": "Solidificación → líquido a sólido.",
+          "explicacion": "La solidificación ocurre cuando una sustancia líquida pierde energía y pasa al estado sólido."
+        },
+        {
+          "texto": "Vaporización → líquido a gas.",
+          "explicacion": "La vaporización es el paso de líquido a gas. Puede ocurrir mediante evaporación o ebullición."
+        },
+        {
+          "texto": "Condensación → gas a líquido.",
+          "explicacion": "La condensación ocurre cuando un gas pierde energía y pasa al estado líquido."
+        },
+        {
+          "texto": "Sublimación → sólido a gas.",
+          "explicacion": "La sublimación es el cambio directo de estado sólido a gaseoso sin pasar por el estado líquido."
+        },
+        {
+          "texto": "Deposición → gas a sólido.",
+          "explicacion": "La deposición es el cambio directo de estado gaseoso a sólido sin pasar por el estado líquido."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambios de Materia",
+      "puntos": [
+        {
+          "texto": "Cambio físico ✗ formar una sustancia nueva.",
+          "explicacion": "En un cambio físico se modifica el estado, forma, tamaño o aspecto de la materia, pero no se forma una sustancia nueva."
+        },
+        {
+          "texto": "Ejemplo físico = congelación del agua.",
+          "explicacion": "Al congelarse, el agua líquida se transforma en hielo. Ambas formas corresponden a H2O, por lo que no aparece una sustancia nueva."
+        },
+        {
+          "texto": "Cambio químico → formación de sustancias nuevas.",
+          "explicacion": "En un cambio químico se forman sustancias con composición y propiedades diferentes de las sustancias iniciales."
+        },
+        {
+          "texto": "Ejemplo químico = oxidación de un metal.",
+          "explicacion": "Durante la oxidación, un metal reacciona con otras sustancias y puede formar óxidos con propiedades diferentes al metal original."
+        },
+        {
+          "texto": "Cambio nuclear = alteración del núcleo atómico.",
+          "explicacion": "Los cambios nucleares modifican el núcleo de los átomos. Pueden producir transformaciones entre núcleos y liberar grandes cantidades de energía."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustancias y Separación",
+      "puntos": [
+        {
+          "texto": "Compuesto ✓ separarse mediante métodos químicos.",
+          "explicacion": "Los elementos de un compuesto están unidos químicamente. Por ello, para separarlos se necesitan procesos químicos que alteren esas uniones."
+        },
+        {
+          "texto": "NaCl → puede descomponerse mediante electrólisis.",
+          "explicacion": "La electrólisis utiliza energía eléctrica para producir una transformación química que permite separar los elementos presentes en determinados compuestos."
+        },
+        {
+          "texto": "Otros métodos químicos ⊃ fotólisis, pirólisis y catálisis.",
+          "explicacion": "La fotólisis emplea energía luminosa y la pirólisis utiliza altas temperaturas para producir transformaciones químicas. La catálisis modifica la velocidad de una reacción mediante un catalizador."
+        },
+        {
+          "texto": "Mezcla ✓ separarse mediante métodos físicos.",
+          "explicacion": "Los componentes de una mezcla conservan su identidad química, por lo que pueden separarse aprovechando diferencias en sus propiedades físicas."
+        },
+        {
+          "texto": "Tamizado = separación de sólidos por tamaño.",
+          "explicacion": "El tamizado utiliza una malla para separar partículas sólidas de diferente tamaño. Las partículas pequeñas atraviesan los orificios y las grandes quedan retenidas."
+        },
+        {
+          "texto": "Ejemplo: arena y arroz → tamizado.",
+          "explicacion": "La diferencia de tamaño entre los granos permite que el tamiz retenga el arroz y deje pasar las partículas de arena."
+        },
+        {
+          "texto": "Destilación = separación según puntos de ebullición.",
+          "explicacion": "La destilación aprovecha las diferencias entre los puntos de ebullición de los componentes de una mezcla, especialmente de líquidos."
+        },
+        {
+          "texto": "Filtración = separación de sólidos mediante material poroso.",
+          "explicacion": "La filtración permite separar un sólido insoluble de un fluido mediante un material poroso que retiene las partículas sólidas."
+        },
+        {
+          "texto": "Decantación = separación basada en diferencias de densidad.",
+          "explicacion": "La decantación permite separar componentes que presentan diferencias de densidad, especialmente líquidos inmiscibles o sólidos sedimentados."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase y Sistema",
+      "puntos": [
+        {
+          "texto": "Fase = porción homogénea y físicamente distinguible.",
+          "explicacion": "Una fase es una región de materia que presenta propiedades uniformes y puede distinguirse físicamente de otras regiones."
+        },
+        {
+          "texto": "Mezcla homogénea ⊃ una sola fase.",
+          "explicacion": "Una mezcla homogénea presenta una sola fase porque su composición es uniforme en toda su extensión."
+        },
+        {
+          "texto": "Mezcla heterogénea ⊃ dos o más fases.",
+          "explicacion": "Una mezcla heterogénea presenta dos o más fases debido a que su composición no es uniforme."
+        },
+        {
+          "texto": "Sistema = porción de materia seleccionada para estudiar.",
+          "explicacion": "En química, un sistema es una porción de materia delimitada conceptualmente para analizar sus propiedades y transformaciones."
+        },
+        {
+          "texto": "Sistema homogéneo = presenta una sola fase.",
+          "explicacion": "Un sistema homogéneo presenta propiedades uniformes y una sola fase en toda la región estudiada."
+        },
+        {
+          "texto": "Sistema heterogéneo = presenta varias fases.",
+          "explicacion": "Un sistema heterogéneo contiene dos o más fases con propiedades o composiciones diferentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejercicios",
+      "puntos": [
+        {
+          "texto": "Ejercicio 1",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 2",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 3",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 4",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 5",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 6",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 7",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 8",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 9",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 10",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 11",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 12",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 13",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 14",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 15",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 16",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 17",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 18",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 19",
+          "explicacion": ""
+        },
+        {
+          "texto": "Ejercicio 20",
+          "explicacion": ""
         }
       ]
     }
