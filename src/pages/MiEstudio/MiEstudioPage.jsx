@@ -16,6 +16,7 @@ import GlossaryText from "./Glossarytext";
 import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
 import { resaltarPalabraTemporal, flashearFondoTemporal } from "../../utils/resaltarBusqueda";
 import TopBar from "./TopBar";
+import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
@@ -118,6 +119,43 @@ function useLecturaTeoriaVoz(texto, activo) {
       if (window.speechSynthesis) window.speechSynthesis.cancel();
     };
   }, [texto, activo]);
+}
+// Formato nuevo de los temas: los ejercicios viven aparte, en "ejercicios"
+// (arreglo de preguntas), y "theory" ya no trae la sección "Ejercicios".
+// Aquí se convierten al formato interno que usa esta página (sección
+// "Ejercicios" al final de la teoría y sus preguntas al final de "examen"),
+// así el resto de la página no cambia. Los temas del formato anterior
+// (sin "ejercicios") pasan sin modificarse.
+function adaptarEjerciciosAparte(data) {
+  if (!data || !Array.isArray(data.ejercicios) || data.ejercicios.length === 0) {
+    return data;
+  }
+  const ejercicios = data.ejercicios;
+  const theory = (data.theory || []).filter(
+    (seccion) => seccion?.titulo !== "Ejercicios"
+  );
+  const totalPuntosTeoria = theory.reduce(
+    (total, seccion) => total + (seccion.puntos?.length || 0),
+    0
+  );
+  const examenTeoria = Array.from(
+    { length: totalPuntosTeoria },
+    (_, i) => (data.examen || [])[i] ?? null
+  );
+  return {
+    ...data,
+    theory: [
+      ...theory,
+      {
+        titulo: "Ejercicios",
+        puntos: ejercicios.map((_, i) => ({
+          texto: `Ejercicio ${i + 1}`,
+          explicacion: ""
+        }))
+      }
+    ],
+    examen: [...examenTeoria, ...ejercicios]
+  };
 }
 export default function MiEstudioPage() {
   const [topicData, setTopicData] = useState(null);
@@ -401,7 +439,7 @@ export default function MiEstudioPage() {
     try {
       const res = await fetch(import.meta.env.BASE_URL + item.archivo);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
-      const data = await res.json();
+      const data = adaptarEjerciciosAparte(await res.json());
       const puntos = (data.theory || []).flatMap((seccion, idxSeccion) =>
         seccion.puntos.map((p, idxPunto) => ({
           ...p,
@@ -527,24 +565,29 @@ export default function MiEstudioPage() {
   }
   async function generarCuestionarioDECO() {
     if (!topicData) return;
+
     const teoria = (topicData.theory || [])
       .map((seccion) => {
         const titulo = seccion?.titulo || "";
         const puntos = (seccion?.puntos || [])
           .map((punto) => {
             const texto = punto?.texto || "";
-            const explicacion = punto?.explicacion || "";
-            return [texto, explicacion].filter(Boolean).join("\n");
+            return texto;
           })
           .filter(Boolean)
           .join("\n\n");
+
         return [titulo, puntos].filter(Boolean).join("\n\n");
       })
       .filter(Boolean)
       .join("\n\n");
+
     const prompt = `Actúa como profesor experto en admisión UNMSM.
+
 Genera 20 preguntas de opción múltiple con estilo DECO utilizando EXCLUSIVAMENTE la teoría proporcionada.
+
 REGLAS:
+
 - 20 preguntas.
 - Cada pregunta debe tener 5 alternativas: A, B, C, D y E.
 - Prioriza situaciones, aplicación, análisis, relaciones, causa-efecto, interpretación y comparación.
@@ -556,12 +599,19 @@ REGLAS:
 - Enfoque tipo examen de admisión UNMSM.
 - Indica la respuesta correcta y una explicación breve después de cada pregunta.
 - No agregues información que no esté respaldada por la teoría.
+
 CURSO:
+
 ${topicData.curso || ""}
+
 TEMA:
+
 ${topicData.tema || ""}
+
 TEORÍA:
+
 ${teoria}`;
+
     try {
       await navigator.clipboard.writeText(prompt);
       window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
@@ -1982,30 +2032,19 @@ ${teoria}`;
                   ref={barraTeoriaRef}
                   className={`teoria-sticky-bar ${mostrarBarraTeoria ? "is-open" : ""}`}
                 >
-                  <div className="teoria-chatgpt-bar">
-                    <input
-                      type="text"
-                      className="teoria-chatgpt-bar__input"
-                      placeholder="Pregúntale a ChatGPT..."
-                      value={preguntaChatGpt}
-                      onChange={(e) => setPreguntaChatGpt(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          e.preventDefault();
-                          enviarPreguntaChatGpt();
-                        }
-                      }}
-                    />
-                    <button
-                      type="button"
-                      className="teoria-chatgpt-bar__btn"
-                      onClick={enviarPreguntaChatGpt}
-                      title="Preguntar a ChatGPT"
-                      aria-label="Preguntar a ChatGPT"
-                    >
-                      <i className="fa-solid fa-paper-plane" />
-                    </button>
-                  </div>
+                  <TheorySearchBar
+                    flatPuntos={puntosTeoria}
+                    onSelect={(sel) => seleccionarItem({ type: "contenido", ...sel })}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setPomodoroMiniOpen((o) => !o)}
+                    className={`mi-estudio__voz-btn mi-estudio__voz-btn--cronometro${pomodoroMiniOpen ? " is-active" : ""}`}
+                    title="Mini cronómetro"
+                    aria-label="Mini cronómetro"
+                  >
+                    <i className="fa-solid fa-clock" />
+                  </button>
                   <button
                     type="button"
                     onClick={() => setLecturaTeoriaOn((v) => !v)}

@@ -56,10 +56,18 @@ async function poolDelCurso(codigoCurso) {
   // Y SE ESCOGE 1 AL AZAR
   // ==========================================================
   temasJson.forEach((data) => {
-    if (!data || !Array.isArray(data.examen)) {
+    if (
+      !data ||
+      (!Array.isArray(data.examen) && !Array.isArray(data.ejercicios))
+    ) {
       return;
     }
-    const preguntasValidas = data.examen.filter(
+    // Formato nuevo: los ejercicios vienen aparte en "ejercicios".
+    // Formato anterior: son las últimas preguntas de "examen".
+    const origenPreguntas = Array.isArray(data.ejercicios)
+      ? data.ejercicios
+      : data.examen;
+    const preguntasValidas = origenPreguntas.filter(
       (p) => p && p.tipo
     );
     const ultimas20 = preguntasValidas.slice(-20);

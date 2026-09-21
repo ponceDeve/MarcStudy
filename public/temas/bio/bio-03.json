@@ -266,5 +266,952 @@
         }
       ]
     }
+  ],
+  "examen": [
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante una inspección nutricional, un fabricante afirma que su bebida no contiene carbohidratos, aunque sus ingredientes listan azúcares de caña añadidos.",
+      "opts": [
+        "El producto miente, dado que biológicamente los azúcares pertenecen exactamente al mismo grupo de los carbohidratos.",
+        "La etiqueta es correcta, pues los azúcares carecen de la estructura elemental que define a los carbohidratos.",
+        "El fabricante acierta, ya que los carbohidratos incluyen exclusivamente grasas saturadas de origen animal.",
+        "La afirmación es válida, porque los azúcares son proteínas simples y no moléculas de carbohidratos.",
+        "El etiquetado es legal, porque los carbohidratos vegetales no se clasifican como azúcares en ningún caso."
+      ],
+      "correct": 0,
+      "explicacion": "Los glúcidos se conocen comúnmente como azúcares o carbohidratos de forma indistinta. Si el producto contiene azúcares añadidos, obligatoriamente contiene carbohidratos, por lo que la afirmación del fabricante es falsa y busca evadir los controles nutricionales. Las alternativas erróneas asumen equivocadamente clasificaciones biológicas ajenas o incompatibles con los glúcidos."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Al someter una muestra orgánica a un análisis elemental, el científico descarta de inmediato que sea un glúcido porque no encuentra rastros de ___1___, a pesar de haber detectado una alta concentración de ___2___.",
+      "opts": [
+        [
+          "fósforo",
+          "oxígeno y carbono"
+        ],
+        [
+          "oxígeno",
+          "carbono e hidrógeno"
+        ],
+        [
+          "carbono",
+          "nitrógeno y azufre"
+        ],
+        [
+          "nitrógeno",
+          "carbono e hidrógeno"
+        ],
+        [
+          "oxígeno",
+          "nitrógeno y fósforo"
+        ]
+      ],
+      "correct": 1,
+      "explicacion": "Los glúcidos están formados obligatoriamente por Carbono, Hidrógeno y Oxígeno. Si en la muestra falta el elemento oxígeno, la molécula no puede clasificarse como glúcido bajo ninguna circunstancia, incluso si cuenta con abundantes niveles de carbono e hidrógeno (lo que indicaría que es un hidrocarburo lipídico). Los glúcidos no requieren incorporar nitrógeno ni fósforo en su estructura básica."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un estudiante compara las propiedades gustativas de tres compuestos puros encontrados en los estantes de un laboratorio de química orgánica.",
+      "columnaA": [
+        "1. Cristales que al contacto con la lengua generan una fuerte sensación dulce.",
+        "2. Polvo blanco que no estimula los receptores de sabor dulce en la boca.",
+        "3. Jarabe espeso que produce una intensa y rápida respuesta en las papilas gustativas."
+      ],
+      "columnaB": [
+        "a) Característica esperada de un macromolecular polisacárido complejo.",
+        "b) Propiedad típica de un glúcido de estructura molecular simple.",
+        "c) Comportamiento exclusivo de moléculas inorgánicas de laboratorio."
+      ],
+      "opts": [
+        "1a - 2c - 3b",
+        "1c - 2a - 3b",
+        "1b - 2a - 3b",
+        "1b - 2c - 3a",
+        "1a - 2b - 3c"
+      ],
+      "correct": 2,
+      "explicacion": "Los glúcidos simples poseen un marcado sabor dulce capaz de estimular los receptores gustativos (los casos 1 y 3 encajan con la propiedad b). En contraste, los polisacáridos alcanzan tal grado de complejidad estructural que pierden por completo esta propiedad (el caso 2 coincide con la característica a). La opción correcta conecta de forma precisa cada evidencia sensorial con el nivel de complejidad del glúcido."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un botánico intenta extraer nutrientes de una raíz silvestre triturada utilizando únicamente agua pura como solvente a temperatura ambiente.",
+      "proposiciones": [
+        {
+          "texto": "Los glúcidos simples de la raíz pasarán a la solución acuosa debido a su alta facilidad biológica para disolverse.",
+          "correct": true
+        },
+        {
+          "texto": "Los polisacáridos estructurales formarán una mezcla homogénea con el agua sin dejar ningún residuo sólido.",
+          "correct": false
+        },
+        {
+          "texto": "El agua será ineficaz para disolver los glúcidos de gran tamaño por la carencia de solubilidad acuosa de estos.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Los glúcidos simples cuentan con abundantes grupos polares que los vuelven altamente hidrosolubles, logrando pasar al agua con facilidad. En cambio, los polisacáridos son macromoléculas gigantescas insolubles, por lo que nunca formarán una mezcla homogénea y siempre dejarán un residuo sólido en el fondo del recipiente de extracción."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un atleta calcula que su cuerpo necesita reponer exactamente 120 kilocalorías de energía rápida tras un esfuerzo intenso, consumiendo un suplemento puro.",
+      "opts": [
+        "Deberá ingerir 120 gramos del suplemento, ya que la relación de conversión metabólica es siempre directa.",
+        "Necesitará 60 gramos, porque cada unidad de masa de glúcido aporta dos kilocalorías biológicamente útiles.",
+        "Tendrá que consumir 40 gramos, dado que la oxidación celular extrae exactamente tres kilocalorías por gramo.",
+        "Deberá consumir 30 gramos, puesto que cada gramo de glúcido oxidado en el cuerpo libera cuatro kilocalorías.",
+        "Requerirá 15 gramos, asumiendo un rendimiento celular extremo de ocho kilocalorías por cada gramo oxidado."
+      ],
+      "correct": 3,
+      "explicacion": "La oxidación metabólica de un gramo de glúcido aporta siempre 4 kilocalorías de energía inmediata. Para que el atleta logre reponer exactamente las 120 kilocalorías que necesita, debe dividir esa meta energética entre 4, lo que da como resultado la ingesta de 30 gramos exactos. Los distractores proponen factores de conversión calórica que no corresponden a los glúcidos."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Ante una caída repentina de energía, el cultivo celular detiene sus funciones vitales porque se agotó la ___1___, molécula que actúa como el ___2___ primordial del sistema.",
+      "opts": [
+        [
+          "fructosa",
+          "material de reserva"
+        ],
+        [
+          "celulosa",
+          "catalizador biológico"
+        ],
+        [
+          "quitina",
+          "escudo protector"
+        ],
+        [
+          "galactosa",
+          "inhibidor enzimático"
+        ],
+        [
+          "glucosa",
+          "combustible celular"
+        ]
+      ],
+      "correct": 4,
+      "explicacion": "La glucosa es la molécula fundamental que las células emplean directamente como su principal combustible para mantener todos sus procesos vitales activos. Las otras alternativas sugieren carbohidratos que cumplen roles estructurales ajenos a la demanda metabólica inmediata o funciones que no corresponden al requerimiento energético celular urgente de este caso."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un bioquímico bloquea etapas específicas de la respiración dentro de una célula viva y observa los efectos sobre sus moléculas portadoras.",
+      "columnaA": [
+        "1. El combustible celular se degrada exitosamente sin interrupciones químicas.",
+        "2. Un inhibidor potente impide que el combustible sea procesado en la matriz.",
+        "3. Se introduce combustible en exceso acompañado de una oxigenación óptima."
+      ],
+      "columnaB": [
+        "a) Síntesis abundante de moléculas energéticas de Trifosfato de Adenosina (ATP).",
+        "b) Caída severa en los niveles de energía celular disponible para funciones vitales.",
+        "c) Acumulación excesiva de polímeros indigeribles en el citoplasma celular."
+      ],
+      "opts": [
+        "1a - 2b - 3a",
+        "1b - 2a - 3c",
+        "1c - 2b - 3a",
+        "1a - 2c - 3b",
+        "1b - 2c - 3a"
+      ],
+      "correct": 0,
+      "explicacion": "La degradación normal o incrementada del combustible celular produce inevitablemente la síntesis de moléculas de Trifosfato de Adenosina (ATP), que es el portador vital de energía (las evidencias 1 y 3 coinciden con la consecuencia a). Si el bioquímico impide que el proceso ocurra, la energía celular disponible cae estrepitosamente (la evidencia 2 coincide con b)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Tras consumir una ración rica en carbohidratos, un perro de rescate entra en estado de reposo, lo que desencadena una intensa actividad de almacenamiento en sus órganos internos.",
+      "proposiciones": [
+        {
+          "texto": "El tejido hepático del animal comenzará a sintetizar polisacáridos complejos para guardar cuidadosamente el excedente energético.",
+          "correct": true
+        },
+        {
+          "texto": "El organismo del perro convertirá toda la energía extra en celulosa pura para blindar las membranas de sus células.",
+          "correct": false
+        },
+        {
+          "texto": "El exceso metabólico de la ración se acumulará bajo la forma de glucógeno dentro de las células de su hígado.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Los animales cuentan con un mecanismo que les permite almacenar el exceso de carbohidratos ingeridos alojándolos en el hígado mediante la formación de glucógeno, su principal polisacárido de reserva. Es biológicamente imposible que un perro sintetice celulosa, ya que ese polímero es de uso y creación exclusivos del reino vegetal."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un paciente consume inmensas cantidades de hojas verdes buscando obtener calorías, pero a los pocos días reporta fatiga constante y una acentuada pérdida de peso corporal.",
+      "opts": [
+        "Las hojas verdes carecen totalmente de cualquier tipo de glúcido en su estructura macroscópica.",
+        "Las enzimas humanas no pueden descomponer la celulosa vegetal para extraer su energía interna.",
+        "El cuerpo humano transforma rápidamente la celulosa en glucógeno sin generar ninguna caloría.",
+        "La celulosa inhibe la absorción de los líquidos, causando deshidratación y debilidad inmediata.",
+        "Los polisacáridos vegetales son altamente tóxicos y bloquean la síntesis natural de vitaminas."
+      ],
+      "correct": 1,
+      "explicacion": "La celulosa que abunda en las hojas verdes es completamente indigerible para las enzimas del tracto humano, por lo que actúa únicamente como fibra dietética y no aporta las calorías vitales que el paciente busca. Esto explica por qué, a pesar del enorme volumen ingerido, el paciente sufre un déficit energético severo que causa fatiga y reducción de masa corporal."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "El gastroenterólogo recomendó consumir mucha más ___1___ para solucionar el estreñimiento crónico, pues esta macromolécula incrementa el volumen fecal y favorece los ___2___.",
+      "opts": [
+        [
+          "glucosa",
+          "jugos gástricos"
+        ],
+        [
+          "quitina",
+          "procesos renales"
+        ],
+        [
+          "fibra",
+          "movimientos peristálticos"
+        ],
+        [
+          "fructosa",
+          "movimientos respiratorios"
+        ],
+        [
+          "fibra",
+          "jugos gástricos"
+        ]
+      ],
+      "correct": 2,
+      "explicacion": "El consumo constante de fibra dietética (como la celulosa indigerible) resiste la digestión y llega al intestino para aumentar considerablemente la masa de las heces. Este volumen físico extra es lo que termina estimulando la motilidad o los vitales movimientos peristálticos del tracto intestinal, aliviando de forma mecánica el cuadro de estreñimiento."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un fitopatólogo evalúa la rigidez de distintas muestras de tejido vegetal tras haberlas expuesto a una enzima sintética que destruye progresivamente las microfibrillas estructurales.",
+      "columnaA": [
+        "1. Células de una hoja tratadas durante horas con la enzima degradadora.",
+        "2. Células de un tallo joven que no recibieron ningún tratamiento químico.",
+        "3. Tejido protector externo expuesto a un exceso severo de la misma enzima."
+      ],
+      "columnaB": [
+        "a) Mantiene una red densa y rígida completamente intacta alrededor del tejido.",
+        "b) Pierde la protección de celulosa externa que rodea herméticamente a la célula.",
+        "c) Incrementa el grosor de su barrera protectora natural para defenderse."
+      ],
+      "opts": [
+        "1a - 2b - 3c",
+        "1b - 2c - 3a",
+        "1c - 2a - 3b",
+        "1b - 2a - 3b",
+        "1a - 2c - 3b"
+      ],
+      "correct": 3,
+      "explicacion": "La enzima está diseñada para destruir la densa red de celulosa que conforma la pared celular vegetal. Las muestras expuestas a la enzima (1 y 3) inevitablemente perderán su cubierta estructural protectora (b), mientras que el tejido que no fue tratado por el químico (2) logrará mantener su red densa y rígida totalmente intacta (a)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un agricultor aplica un potente fungicida diseñado exclusivamente para disolver cubiertas compuestas de celulosa, pero tras varios días nota que los hongos invasores de su cultivo siguen intactos y reproduciéndose.",
+      "proposiciones": [
+        {
+          "texto": "El fungicida es ineficaz porque la cubierta resistente de los hongos está formada bioquímicamente por quitina.",
+          "correct": true
+        },
+        {
+          "texto": "Los hongos invasores carecen completamente de cualquier tipo de estructura exterior protectora a nivel celular.",
+          "correct": false
+        },
+        {
+          "texto": "La pared de los hongos resiste el ataque porque posee una composición molecular distinta a la del tejido vegetal.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La pared celular que protege a los hongos está estructurada en base al polisacárido quitina, careciendo absolutamente de celulosa. Por esta razón, un fungicida que solo sabe atacar enlaces de celulosa vegetal será completamente inútil frente a las hifas fúngicas, permitiendo que la plaga siga intacta y propagándose por todo el cultivo."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un biólogo diseña un pesticida que bloquea la síntesis de un polisacárido específico, logrando que los insectos plaga perezcan al no poder renovar su caparazón tras mudar.",
+      "opts": [
+        "El compuesto inhibe la producción de glucógeno, desnutriendo drásticamente al animal afectado.",
+        "El pesticida destruye las reservas de almidón acumuladas dentro del delicado tejido del insecto.",
+        "La toxina paraliza la asimilación de celulosa en la dieta herbívora del artrópodo invasor.",
+        "El químico bloquea la formación de moléculas de Trifosfato de Adenosina (ATP), frenando el metabolismo basal.",
+        "El producto impide la síntesis de quitina, debilitando catastróficamente la cubierta protectora del insecto."
+      ],
+      "correct": 4,
+      "explicacion": "El exoesqueleto o caparazón que protege a los insectos y demás artrópodos está compuesto esencialmente por el polisacárido quitina. Al bloquear la síntesis de esta molécula estructural, el biólogo impide que el artrópodo consolide su nueva armadura externa después de una muda, dejándolo expuesto, frágil y vulnerable a la muerte. Las otras opciones son biológicamente imposibles para este filo."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Durante la digestión en el tracto, las enzimas especializadas fragmentan los carbohidratos complejos hasta convertirlos en ___1___, debido a que estas constituyen las unidades ___2___ que el cuerpo ya no puede descomponer más.",
+      "opts": [
+        [
+          "monosacáridos",
+          "básicas"
+        ],
+        [
+          "disacáridos",
+          "poliméricas"
+        ],
+        [
+          "polisacáridos",
+          "inorgánicas"
+        ],
+        [
+          "monosacáridos",
+          "poliméricas"
+        ],
+        [
+          "disacáridos",
+          "básicas"
+        ]
+      ],
+      "correct": 0,
+      "explicacion": "Los monosacáridos representan las unidades monoméricas fundamentales o básicas que conforman a todos los carbohidratos de mayor tamaño. Como no pueden hidrolizarse o descomponerse en glúcidos todavía más simples, constituyen siempre el último producto que el sistema digestivo humano absorbe luego de haber fragmentado las moléculas complejas ingeridas."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un químico clasifica distintas cadenas carbonadas descubiertas en una muestra purificada para descartar aquellas que bajo ninguna circunstancia podrían considerarse monosacáridos naturales.",
+      "columnaA": [
+        "1. Molécula orgánica conformada por un esqueleto lineal de cinco carbonos.",
+        "2. Compuesto inusual formado íntegramente por una cadena de diez carbonos.",
+        "3. Estructura celular que posee exactamente seis átomos de carbono enlazados."
+      ],
+      "columnaB": [
+        "a) Se encuentra fuera del rango de longitud típico de un monosacárido.",
+        "b) Presenta una longitud totalmente compatible con un azúcar simple.",
+        "c) Exhibe una estructura química exclusiva de un ácido nucleico viral."
+      ],
+      "opts": [
+        "1b - 2c - 3a",
+        "1b - 2a - 3b",
+        "1a - 2b - 3c",
+        "1c - 2a - 3b",
+        "1b - 2c - 3b"
+      ],
+      "correct": 1,
+      "explicacion": "La cadena carbonada de los monosacáridos varía estrictamente desde tres hasta siete átomos de carbono. Por consiguiente, las moléculas que tienen 5 y 6 carbonos (casos 1 y 3) encajan perfectamente como azúcares simples (b), mientras que la inusual molécula de 10 carbonos (caso 2) excede por mucho el límite biológico y queda descartada (a)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Al estudiar de cerca una célula infectada, un virólogo detecta una altísima acumulación de hebras de ácido nucleico que contienen un azúcar de cinco carbonos específico en su esqueleto central.",
+      "proposiciones": [
+        {
+          "texto": "Si el azúcar identificado resulta ser la ribosa, las moléculas acumuladas corresponden inequívocamente a hebras de Ácido Ribonucleico (ARN).",
+          "correct": true
+        },
+        {
+          "texto": "La presencia de este monosacárido confirma científicamente que el virus intruso está sintetizando polisacáridos de reserva en la célula.",
+          "correct": false
+        },
+        {
+          "texto": "El hallazgo de la ribosa revela con certeza que la célula parasitada está produciendo masivamente ácidos ribonucleicos de origen viral.",
+          "correct": true
+        }
+      ],
+      "explicacion": "La ribosa es una pentosa (azúcar de cinco carbonos) que se caracteriza por conformar de manera exclusiva la estructura química central del Ácido Ribonucleico (ARN). Por ende, detectar ribosa en grandes cantidades dentro del material genético acumulado confirma que la infección se basa en la síntesis de ARN viral, no en reservas energéticas ni en ADN."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al comparar molecularmente dos ácidos nucleicos en el laboratorio, un técnico nota sorprendido que uno de ellos pesa ligeramente menos por nucleótido debido a la ausencia de un átomo específico en su azúcar.",
+      "opts": [
+        "Se trata de Ácido Ribonucleico (ARN), ya que su azúcar asociado pierde un átomo de nitrógeno denso.",
+        "Es un polisacárido viral, pues carece de un átomo de carbono central en toda su larga estructura.",
+        "Es Ácido Desoxirribonucleico (ADN), dado que la desoxirribosa tiene un átomo de oxígeno menos.",
+        "Corresponde a Ácido Ribonucleico (ARN), porque la ribosa carece de todo el oxígeno en su anillo.",
+        "Se trata de Ácido Desoxirribonucleico (ADN), ya que su azúcar pierde un átomo de hidrógeno clave."
+      ],
+      "correct": 2,
+      "explicacion": "La desoxirribosa es la pentosa fundamental del Ácido Desoxirribonucleico (ADN). Como su nombre bioquímico lo indica, se distingue estructuralmente de la ribosa justamente por carecer de un átomo de oxígeno, lo que reduce ligerísimamente la masa molecular de cada nucleótido y explica a la perfección la caída de peso registrada por el técnico del laboratorio."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "En un delicado experimento in vitro, se bloquea la producción de ___1___ en los tejidos de una hoja, lo que detiene inmediatamente la fijación del ___2___ durante el vital ciclo fotosintético de la planta.",
+      "opts": [
+        [
+          "glucosa",
+          "oxígeno"
+        ],
+        [
+          "celulosa",
+          "nitrógeno"
+        ],
+        [
+          "ribosa",
+          "monóxido de carbono"
+        ],
+        [
+          "ribulosa",
+          "dióxido de carbono"
+        ],
+        [
+          "fructosa",
+          "dióxido de carbono"
+        ]
+      ],
+      "correct": 3,
+      "explicacion": "La ribulosa es la pentosa fundamental que actúa en la planta como molécula aceptora del dióxido de carbono ambiental durante la fase oscura de la fotosíntesis. Al bloquear la disponibilidad de esta pentosa, la hoja queda completamente incapacitada para asimilar este gas esencial, colapsando su producción de materia orgánica."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un equipo de enfermería monitorea la concentración de diferentes azúcares disueltos en el torrente circulatorio de unos pacientes sometidos a estrés metabólico.",
+      "columnaA": [
+        "1. Hexosa que viaja disuelta abundantemente en el plasma.",
+        "2. Glúcido complejo no apto para transporte sanguíneo.",
+        "3. Azúcar que llega a los tejidos para activarlos en el acto."
+      ],
+      "columnaB": [
+        "a) Rasgo fisiológico atribuible al almidón vegetal.",
+        "b) Rol metabólico cumplido por la glucosa humana.",
+        "c) Rasgo celular atribuible a la celulosa indigerible."
+      ],
+      "opts": [
+        "1a - 2b - 3c",
+        "1b - 2c - 3a",
+        "1c - 2a - 3b",
+        "1a - 2c - 3b",
+        "1b - 2a - 3b"
+      ],
+      "correct": 4,
+      "explicacion": "La glucosa es la única hexosa encargada de viajar disuelta libremente en la sangre de los mamíferos para dotar de energía inmediata a los tejidos que lo requieran (los casos 1 y 3 describen a la glucosa, b). Por el contrario, macromoléculas complejas como el almidón vegetal (caso 2) jamás se disuelven para transportarse por el plasma sanguíneo (a)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Una extraña falla genética le impide a las glándulas mamarias de un mamífero hembra sintetizar una hexosa crucial e indispensable inmediatamente después del parto.",
+      "proposiciones": [
+        {
+          "texto": "La producción de leche del animal carecerá de su azúcar característico por la fatal falta de galactosa.",
+          "correct": true
+        },
+        {
+          "texto": "El tejido mamario secretará únicamente fructosa madura para nutrir a las crías recién nacidas.",
+          "correct": false
+        },
+        {
+          "texto": "El animal enfermo no podrá originar el disacárido esencial de la leche debido a esta deficiencia química.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Las glándulas mamarias tienen como función producir galactosa para luego combinarla con glucosa y así originar la lactosa, que es el disacárido de la leche fundamental para los lactantes. Su ausencia interrumpe este proceso esencial de la lactancia materna. Los mamíferos no secretan fructosa a través de las mamas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En una clínica de fertilidad, un análisis profundo revela que los espermatozoides de un paciente pierden su movilidad rápidamente debido a un déficit nutricional crítico en el líquido seminal.",
+      "opts": [
+        "El plasma seminal presenta una secreción insuficiente de fructosa, privándolos de su fuente de energía celular.",
+        "El líquido examinado carece de galactosa, la hexosa primaria responsable de generar el impulso flagelar.",
+        "Se evidencia una severa deficiencia de celulosa, debilitando la membrana de los gametos reproductivos.",
+        "Hay una falta de glucógeno, el cual debe ser absorbido entero por el espermatozoide para moverse.",
+        "El paciente no sintetiza ribulosa, impidiendo la respiración mitocondrial del gameto masculino."
+      ],
+      "correct": 0,
+      "explicacion": "A diferencia del torrente sanguíneo, el líquido seminal nutre a los espermatozoides empleando la fructosa como hexosa proveedora de energía. Sin la secreción adecuada de esta molécula, los gametos agotan velozmente sus reservas mitocondriales, dejando de mover su flagelo y causando un cuadro severo de inmovilidad y posible infertilidad."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Al lograr sintetizar un disacárido in vitro, el hábil químico observa la liberación de ___1___ como residuo inerte, lo cual confirma que los grupos ___2___ de los azúcares reaccionaron exitosamente.",
+      "opts": [
+        [
+          "oxígeno",
+          "carbonilos"
+        ],
+        [
+          "agua",
+          "hidroxilos"
+        ],
+        [
+          "agua",
+          "carboxilos"
+        ],
+        [
+          "hidrógeno",
+          "hidroxilos"
+        ],
+        [
+          "dióxido",
+          "hidroxilos"
+        ]
+      ],
+      "correct": 1,
+      "explicacion": "La creación de un enlace glucosídico siempre ocurre mediante la reacción de condensación entre los grupos hidroxilo de dos monosacáridos que se aproximan. Esta interacción covalente requiere deshidratar la zona de unión, lo que significa que el proceso expulsa obligatoriamente una molécula de agua hacia el medio por cada enlace formado."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un técnico extrae y filtra un fluido celular para separar los distintos carbohidratos, basándose estrictamente en la cantidad exacta de unidades monoméricas que componen a cada uno.",
+      "columnaA": [
+        "1. Molécula formada químicamente por la firme unión de dos unidades básicas.",
+        "2. Glúcido complejo que resulta de combinar tres o más anillos de carbono.",
+        "3. Oligosacárido enlazado que contiene exactamente dos monosacáridos unidos."
+      ],
+      "columnaB": [
+        "a) Se clasifica definitivamente fuera de la categoría de los disacáridos.",
+        "b) Se cataloga estrictamente como un disacárido molecular genuino.",
+        "c) Corresponde a una diminuta molécula que no puede ser hidrolizada."
+      ],
+      "opts": [
+        "1c - 2a - 3b",
+        "1b - 2c - 3a",
+        "1b - 2a - 3b",
+        "1a - 2b - 3c",
+        "1c - 2b - 3a"
+      ],
+      "correct": 2,
+      "explicacion": "La definición biológica de los disacáridos demanda que la molécula resulte de la combinación de exactamente dos monosacáridos (los casos 1 y 3 coinciden con la catalogación b). Si el carbohidrato analizado presenta tres o más unidades encadenadas, como los polisacáridos (caso 2), escapa por completo a esta clasificación estricta (a)."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "En el caldero de una cervecería artesanal, la fermentación de un disacárido puro produce niveles de energía que solo podrían explicarse si la molécula estuviera formada por dos hexosas completamente idénticas.",
+      "proposiciones": [
+        {
+          "texto": "El compuesto degradado es la maltosa, pues consiste en dos moléculas de glucosa homólogas firmemente unidas.",
+          "correct": true
+        },
+        {
+          "texto": "La sustancia vertida debe ser sacarosa de mesa, ya que esta libera fructosa altamente energética al fermentar.",
+          "correct": false
+        },
+        {
+          "texto": "La hidrólisis extrema del sustrato generará de manera exclusiva moléculas del principal combustible celular.",
+          "correct": true
+        }
+      ],
+      "explicacion": "A diferencia de otros disacáridos, la maltosa se caracteriza por estar conformada por la unión de dos moléculas de glucosa. En consecuencia, su rompimiento rinde pura glucosa (el principal combustible celular), sin liberar otras hexosas como la fructosa o la galactosa, justificando el homogéneo y alto rendimiento energético observado por el cervecero."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un agrónomo analiza los tejidos de unas semillas de cebada almacenadas en seco y nota que casi no contienen un disacárido específico, el cual hace su aparición súbitamente tras humedecerlas por horas.",
+      "opts": [
+        "El agua exterior introdujo sacarosa disuelta a gran presión para nutrir al embrión vegetal latente.",
+        "La intensa humedad ambiental disolvió la quitina dura, transformándola en reserva vegetal blanda.",
+        "Las semillas secas perdieron por completo su lactosa debido a la fuerte evaporación prolongada.",
+        "El proceso húmedo de germinación desencadenó la aparición natural de maltosa en la semilla.",
+        "El brote vegetal sintetizó de inmediato celulosa líquida para generar la energía térmica requerida."
+      ],
+      "correct": 3,
+      "explicacion": "La maltosa es el disacárido que abunda de manera natural en los tejidos vegetales que se encuentran en plena actividad de germinación y brote, como la semilla de cebada al ser hidratada. Su aparición en los análisis del agrónomo señala que la semilla rompió su letargo y empezó a degradar el almidón interno para liberar dicho azúcar."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Una severa mutación intestinal impide a un lactante separar la ___1___ y la galactosa en el intestino, provocando que la enorme cantidad de ___2___ ingerida fermente velozmente y produzca gases.",
+      "opts": [
+        [
+          "fructosa",
+          "sacarosa"
+        ],
+        [
+          "glucosa",
+          "maltosa"
+        ],
+        [
+          "ribosa",
+          "lactosa"
+        ],
+        [
+          "fructosa",
+          "maltosa"
+        ],
+        [
+          "glucosa",
+          "lactosa"
+        ]
+      ],
+      "correct": 4,
+      "explicacion": "La lactosa, presente abundantemente en la leche materna, requiere ser separada en sus dos monómeros componentes: la glucosa y la galactosa. Si el intestino del lactante carece de la enzima para romper este enlace, el disacárido permanece intacto, no puede absorberse y fermenta en el colon generando molestias gástricas."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Al calentar azúcar de mesa común en presencia de un ácido débil, un repostero nota que la mezcla viscosa ahora contiene dos azúcares simples totalmente distintos con diferentes niveles de dulzor al probarlos.",
+      "columnaA": [
+        "1. Disacárido original vertido antes de aplicar el calor y el ácido en la olla.",
+        "2. Hexosa liberada en la mezcla conocida como el combustible celular principal.",
+        "3. Hexosa liberada en la mezcla que suele ser abundante en las frutas dulces."
+      ],
+      "columnaB": [
+        "a) Sacarosa.",
+        "b) Glucosa.",
+        "c) Fructosa."
+      ],
+      "opts": [
+        "1a - 2b - 3c",
+        "1b - 2c - 3a",
+        "1c - 2a - 3b",
+        "1a - 2c - 3b",
+        "1b - 2a - 3c"
+      ],
+      "correct": 0,
+      "explicacion": "El azúcar de mesa que utilizamos a diario es químicamente sacarosa (1a). Al someterse a calor y acidez, la sacarosa se hidroliza de forma irreversible separándose en las dos moléculas que la componen: una de glucosa (2b) y una de fructosa (3c). La correspondencia directa y ordenada está reflejada en la primera alternativa."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Al estudiar de cerca los fluidos viscosos de un organismo tolerante a la congelación invernal, se detecta un disacárido que protege las membranas y que, al hidrolizarse, arroja el mismo resultado monomérico que la maltosa.",
+      "proposiciones": [
+        {
+          "texto": "El disacárido protector hallado es la trehalosa, ya que ambas moléculas liberan únicamente pura glucosa.",
+          "correct": true
+        },
+        {
+          "texto": "El compuesto encontrado posee una mezcla letal de glucosa y galactosa especialmente adaptada al frío extremo.",
+          "correct": false
+        },
+        {
+          "texto": "La hidrólisis controlada de esta molécula siempre rinde dos unidades del combustible celular primario.",
+          "correct": true
+        }
+      ],
+      "explicacion": "Tanto la maltosa como la trehalosa son disacáridos que resultan de combinar exactamente dos unidades de glucosa. La diferencia entre ambos radica en el ángulo de su enlace, pero su hidrólisis total generará siempre el mismo producto: glucosa pura, invalidando cualquier afirmación sobre la presencia de galactosa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un entomólogo extrae el líquido circulatorio de una langosta del desierto para poder medir sus altísimos niveles de energía durante un episodio de vuelo prolongado.",
+      "opts": [
+        "Encontrará altos niveles de lactosa circulando velozmente por las arterias y venas principales del animal.",
+        "Detectará abundante trehalosa circulando libremente en la hemolinfa como sistema de transporte energético.",
+        "Observará pesada sacarosa acumulada en los gruesos glóbulos rojos del artrópodo volador.",
+        "Medirá grandes cristales de celulosa viajando incesantemente por todo el sistema circulatorio.",
+        "Identificará puro glucógeno disuelto flotando en el torrente venoso oscuro del insecto estudiado."
+      ],
+      "correct": 1,
+      "explicacion": "En el caso particular de los artrópodos e insectos, el glúcido principal encargado del transporte de energía biológica no es la glucosa suelta como ocurre en los mamíferos, sino el disacárido trehalosa. Este azúcar se disuelve y circula libremente por su hemolinfa para nutrir rápidamente a los músculos de vuelo sin obstruirlos."
+    },
+    {
+      "tipo": "completar",
+      "q": "",
+      "textoConEspacios": "Para que una macromolécula glúcida adquiera características físicas de insolubilidad acuosa, la enzima debe enlazar inmensas cadenas que superen holgadamente las ___1___ unidades de ___2___.",
+      "opts": [
+        [
+          "cinco",
+          "disacáridos"
+        ],
+        [
+          "veinte",
+          "ácidos nucleicos"
+        ],
+        [
+          "diez",
+          "monosacáridos"
+        ],
+        [
+          "dos",
+          "monosacáridos"
+        ],
+        [
+          "diez",
+          "disacáridos"
+        ]
+      ],
+      "correct": 2,
+      "explicacion": "Los polisacáridos son macromoléculas que, por definición teórica, están constituidas por el encadenamiento de más de diez monosacáridos o asombrosamente unidos. Es precisamente esta descomunal longitud de cadena y su alto peso molecular lo que vuelve a estos gigantes incapaces de disolverse en medios acuosos."
+    },
+    {
+      "tipo": "relacionar",
+      "q": "Un ecólogo extrae y analiza cuidadosamente los órganos subterráneos de una planta de papa cultivada en un suelo muy pobre, observando la presencia de gránulos gigantes de reserva energética en sus células.",
+      "columnaA": [
+        "1. Gran macromolécula acumulada en el interior de la abultada célula vegetal.",
+        "2. Monómero que será liberado cuando la planta urgida requiera más energía.",
+        "3. Función biológica principal que cumple el enorme gránulo alojado en la raíz."
+      ],
+      "columnaB": [
+        "a) Almidón.",
+        "b) Glucosa.",
+        "c) Reserva a largo plazo."
+      ],
+      "opts": [
+        "1b - 2a - 3c",
+        "1a - 2c - 3b",
+        "1c - 2a - 3b",
+        "1a - 2b - 3c",
+        "1b - 2c - 3a"
+      ],
+      "correct": 3,
+      "explicacion": "Los vegetales almacenan gran parte de sus excesos de energía sintetizando inmensas moléculas de almidón (1a), una estrategia que les permite contar con una eficiente bóveda de reserva a largo plazo (3c) que, al hidrolizarse frente a la escasez, liberará monosacáridos de glucosa (2b) para asegurar la supervivencia celular."
+    },
+    {
+      "tipo": "verdadero_falso",
+      "q": "Un brillante científico logra separar físicamente las dos fracciones que conforman un grano de almidón y se enfoca en analizar el comportamiento físico de la porción que no presenta ninguna bifurcación estructural.",
+      "proposiciones": [
+        {
+          "texto": "La fracción aislada corresponde plenamente a la amilosa, caracterizada siempre por su rígida estructura lineal.",
+          "correct": true
+        },
+        {
+          "texto": "Esta porción del almidón forma unas complejas redes tridimensionales llenas de agresivas ramas entrelazadas.",
+          "correct": false
+        },
+        {
+          "texto": "La muestra aislada contiene inmensas cadenas de glucosa conectadas sin puntos de unión adicionales.",
+          "correct": true
+        }
+      ],
+      "explicacion": "El almidón natural cuenta con una fracción que se denomina amilosa. Esta parte se distingue estructuralmente de la amilopectina por ser una extensa cadena de glucosa lineal que no cuenta con ramificaciones o bifurcaciones de ningún tipo, generando un comportamiento físico peculiar bajo análisis microscópico."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Al intentar crear un adhesivo comercial biodegradable, un ingeniero selecciona la fracción del almidón que le otorga la mayor viscosidad física debido a sus innumerables y caóticos puntos de ramificación.",
+      "opts": [
+        "El adhesivo basa toda su gran adherencia en las rectas hebras lineales de la amilosa pura.",
+        "El compuesto aprovecha audazmente la estructura de la celulosa vegetal que no es ramificada.",
+        "El material innovador utiliza quitina porque posee múltiples y sólidas uniones laterales densas.",
+        "El producto industrial se beneficia del glucógeno residual que las plantas secretan al exterior.",
+        "El ingeniero empleó amilopectina, que es la porción con uniones y ramas adicionales del almidón."
+      ],
+      "correct": 4,
+      "explicacion": "La amilopectina constituye la porción ampliamente ramificada del almidón. Su caótica estructura tridimensional plagada de puntos de unión adicionales proporciona enormes alteraciones en las propiedades físicas de la mezcla, otorgándole una viscosidad y adherencia superior que resultan muy valiosas para la fabricación de adhesivos orgánicos. Las plantas no producen glucógeno ni quitina."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un paciente sufre de episodios de fatiga extrema. El médico tratante detecta que sus niveles de glucosa en la sangre son completamente normales, pero sus células musculares no pueden producir Trifosfato de Adenosina (ATP) a partir de ella. ¿Qué consecuencia inmediata sufre el metabolismo de este paciente?",
+      "opts": [
+        "El músculo carece de moléculas portadoras de energía para poder sostener sus intensos procesos vitales.",
+        "La glucosa sanguínea se transformará instantáneamente en celulosa para brindar un fuerte soporte al tejido.",
+        "Las células del cuerpo comenzarán a secretar galactosa masivamente hacia el torrente sanguíneo como compensación.",
+        "El organismo detendrá de forma súbita la absorción de oxígeno en los pulmones por falta de reservas de almidón.",
+        "El hígado liberará abundante trehalosa para nutrir directamente las fibras musculares fatigadas sin escalas."
+      ],
+      "correct": 0,
+      "explicacion": "La glucosa ingresa desde la sangre a la célula para funcionar como el combustible celular primario. La degradación completa de esta glucosa durante la respiración debe sintetizar vitales moléculas de Trifosfato de Adenosina (ATP). Si se bloquea la producción de ATP, las células musculares se quedan de inmediato sin su moneda de energía. Las opciones biológicamente incorrectas mencionan procesos exclusivos de vegetales (celulosa, almidón) o de artrópodos (trehalosa)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un análisis nutricional exhaustivo de una ración militar de emergencia busca maximizar el aporte calórico en el menor peso físico posible. Si una densa barra contiene exactamente 150 gramos de almidón puro, ¿cuánta energía metabólica rápida y útil le proporcionará al soldado que la consuma en la trinchera?",
+      "opts": [
+        "La barra liberará un total de 150 kilocalorías de impacto.",
+        "El consumo aportará unas masivas 600 kilocalorías biológicas.",
+        "El metabolismo extraerá exactamente unas 300 kilocalorías útiles.",
+        "El soldado aprovechará un volumen de unas 450 kilocalorías netas.",
+        "El cuerpo del soldado asimilará un total de 1200 kilocalorías puras."
+      ],
+      "correct": 1,
+      "explicacion": "El almidón es químicamente un glúcido polisacárido. La teoría biológica de nutrición establece rígidamente que un gramo de cualquier glúcido que se logre oxidar aportará al organismo 4 kilocalorías de energía. Para hallar la energía total, multiplicamos la masa del glúcido (150 gramos) por el factor energético (4 kilocalorías por gramo), dando como resultado ineludible 600 kilocalorías listas para ser utilizadas."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un agresivo hongo fitopatógeno infecta gravemente el exoesqueleto de un escarabajo. Para lograr sobrevivir y propagarse, el hongo secreta enzimas especializadas que destruyen el denso polisacárido estructural del insecto con la intención de asimilarlo. ¿Qué molécula química particular libera esta agresiva digestión y cómo impacta en el cuerpo del insecto?",
+      "opts": [
+        "Libera densa celulosa, fortaleciendo de manera accidental pero severa el frágil tejido epidérmico del animal atacado.",
+        "Produce enorme cantidad de amilopectina, lo que paraliza brutalmente el tránsito del tejido intestinal del escarabajo.",
+        "Degrada la rígida quitina, debilitando gravísimamente la crucial cubierta protectora externa del vulnerable artrópodo.",
+        "Hidroliza el almacenado glucógeno, despojando súbitamente al asustado insecto de todas sus valiosas reservas hepáticas.",
+        "Rompe los frágiles enlaces de trehalosa circulante, agotando toda la energía disuelta y guardada en la hemolinfa."
+      ],
+      "correct": 2,
+      "explicacion": "El duro exoesqueleto de todos los artrópodos y escarabajos está fabricado con el polisacárido denominado quitina, de rol puramente estructural. El hongo atacante debe secretar enzimas exclusivas para lograr degradar la quitina. Al destruirse esta molécula protectora, la armadura externa del insecto colapsa y lo vuelve propenso a depredadores y desecación. Los distractores proponen dañar glucógeno o trehalosa, que no forman la coraza."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una gran industria láctea logra desarrollar una enzima sintética novedosa con el propósito de poder tratar industrialmente leche fresca deslactosada. Si la enzima en cuestión logra separar de manera completamente eficiente el abundante disacárido de la leche en el reactor, ¿qué pares de hexosas separadas se detectarán flotando y disueltas en el líquido del producto final?",
+      "opts": [
+        "Se encontrarán grandes cantidades de moléculas libres de glucosa y fructosa dulces.",
+        "El líquido contendrá un mar de hexosas idénticas formadas por glucosa y glucosa.",
+        "Las pruebas reportarán una acumulación letal de monómeros de galactosa y fructosa.",
+        "El test industrial marcará una masiva presencia de moléculas de glucosa y galactosa.",
+        "Se detectarán fragmentos residuales compuestos por la ribosa y la desoxirribosa inertes."
+      ],
+      "correct": 3,
+      "explicacion": "El glúcido que se halla de manera natural en la leche mamífera es el disacárido conocido como lactosa. La enzima industrial somete la lactosa a hidrólisis, provocando que se rompa su fuerte enlace glucosídico. Por definición, la lactosa está ensamblada combinando exactamente una molécula de glucosa con una de galactosa, por lo que el líquido final tendrá ambas hexosas esparcidas de forma independiente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante un sofisticado experimento celular, se cultivan células vegetales extraídas en un medio repleto de glucosa levemente radiactiva. Días después de finalizada la prueba, se observa asombrosamente que la radiactividad rastreada se concentró de manera muy fuerte en los bordes y las paredes celulares de las hojas recién creadas. ¿Qué macromolécula en particular retuvo la peligrosa señal en su interior?",
+      "opts": [
+        "El pesado almidón de reserva, que formó densos bultos insolubles a lo largo de las nuevas membranas externas.",
+        "El glucógeno hepático oculto en los cloroplastos, que asimiló las partículas radiactivas para dar calor a las hojas.",
+        "La dura quitina fúngica, que creció en todo el perímetro para proteger el núcleo del tejido de mutaciones letales.",
+        "La sacarosa líquida del xilema, que cristalizó y atrapó la emisión nociva antes de que dañara las verdes hojas.",
+        "La celulosa puramente estructural, que utilizó las hexosas radiactivas flotantes como ladrillos para su resistente red."
+      ],
+      "correct": 4,
+      "explicacion": "Las células vegetales captan activamente la glucosa suelta en su medio ambiente. Para poder ensamblar sus vitales y rígidas paredes celulares externas, las plantas polimerizan esas glucosas para formar hilos indigeribles de celulosa. Como la glucosa absorbida era radiactiva, la celulosa recién tejida en el borde de la célula retendrá todas las emisiones captadas por los instrumentos."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un hábil biólogo logra aislar exitosamente el líquido interno de una semilla de cebada germinando en el campo y luego lo compara rigurosamente con el fluido circulatorio extraído de una gran abeja voladora. Al hidrolizar por completo los abundantes disacáridos principales de cada muestra bajo calor, ¿qué inusual resultado idéntico se obtiene en las dos probetas?",
+      "opts": [
+        "La liberación exclusiva de monómeros de glucosa en el líquido resultante de ambas probetas analizadas.",
+        "La producción química simultánea de glucosa y también de fructosa flotando en ambos líquidos calientes.",
+        "La agresiva síntesis celular de almidón ramificado ensamblado a partir de los monómeros glúcidos residuales.",
+        "La obtención inesperada de galactosa pura tras lograr romper forzosamente todos los enlaces glucosídicos.",
+        "El aislamiento innegable de cinco pentosas idénticas diseñadas para la síntesis masiva de ácidos nucleicos."
+      ],
+      "correct": 0,
+      "explicacion": "En estado de germinación, la semilla produce el disacárido maltosa. Por su parte, la abeja voladora requiere circular por su hemolinfa el disacárido trehalosa. Aunque son moléculas distintas producidas por reinos lejanos, la maltosa y la trehalosa comparten una característica estructural: ambas se componen exclusivamente de dos uniones de glucosa. Al hidrolizarlas, las muestras rinden inexorablemente pura glucosa."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un estudiante de pregrado analiza en un tubo el Ácido Desoxirribonucleico (ADN) extraído de un tejido animal sano y lo expone imprudentemente a una corrosiva sustancia que destruye las hexosas. Tras la peligrosa exposición, el estudiante observa maravillado que la microscópica estructura del Ácido Desoxirribonucleico (ADN) permanece completamente intacta. ¿A qué se debe esta asombrosa resistencia química?",
+      "opts": [
+        "El grueso esqueleto de doble hélice está bien protegido por una impenetrable capa de glucógeno animal adhesivo.",
+        "El azúcar del ADN es la desoxirribosa, la cual resulta ser una pequeña pentosa y no una hexosa atacable por el líquido.",
+        "La estructura genética humana o animal carece de manera absoluta y total de cualquier tipo imaginable de monosacárido.",
+        "El vital ácido nucleico contiene hebras de celulosa vegetal incrustadas que repelen de inmediato los agentes externos.",
+        "El ADN utiliza activamente la ribulosa, un azúcar que neutraliza fácilmente las poderosas sustancias ácidas secretadas."
+      ],
+      "correct": 1,
+      "explicacion": "El reactivo corrosivo en cuestión tiene un comportamiento muy específico: solamente detecta y ataca azúcares de seis carbonos (las hexosas). El esqueleto del Ácido Desoxirribonucleico (ADN) está formado por su pentosa llamada desoxirribosa (que solo posee cinco carbonos). Por no ser en absoluto una hexosa, la toxina química ignora a la molécula de la herencia y esta no sufre el menor daño estructural."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un vigoroso suplemento dietético mezcla polvo de azúcar común de mesa y extracto puro de hígado animal seco. Si un atleta lo consume antes de entrenar y las potentes enzimas de su estómago descomponen completamente los glúcidos de ambos ingredientes pesados, ¿qué valiosos productos monosacáridos se absorberán finalmente en la mucosa de su delgado intestino?",
+      "opts": [
+        "Únicamente fluirán unidades sueltas de fructosa intercaladas con cadenas rígidas de amilosa pura sin degradar.",
+        "Ingresarán a la sangre montones de glucosa y de galactosa junto con fibrillas fibrosas de celulosa indigerible.",
+        "Se absorberá abundante glucosa que proviene del glucógeno y de la sacarosa, acompañada de suelta fructosa.",
+        "Absorberá mucha maltosa vegetal diluida, enormes cantidades de ribosa libre y complejas unidades de trehalosa animal.",
+        "Obtendrá galactosa pura robada a los tejidos del hígado y sacarosa densa pero manteniéndose totalmente intacta."
+      ],
+      "correct": 2,
+      "explicacion": "El azúcar de mesa es el disacárido sacarosa, el cual rinde glucosa y fructosa al ser digerido por el humano. Por otro lado, el hígado seco de animal es rico en la reserva de glucógeno, el cual es un polisacárido gigante hecho enteramente de glucosas. Tras una hidrólisis enzimática total de ambas fuentes, el intestino absorberá torrentes de glucosa (de ambos ingredientes) y fructosa (del azúcar)."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En un hermético laboratorio botánico, se altera genéticamente a una humilde planta frutal para que pierda total e irreversiblemente su capacidad natural de lograr sintetizar amilosa y amilopectina en el tejido radicular. ¿Qué impacto crítico y terminal sufrirá esta indefensa planta a largo plazo si se le priva intencionalmente de la luz solar en una bóveda?",
+      "opts": [
+        "Sufrirá una deshidratación masiva e instantánea por la total falta de celulosa estructural a lo largo y ancho de su pared.",
+        "Sus valiosas semillas latentes germinarán prematuramente bajo tierra por causa de un violento y tóxico exceso de maltosa.",
+        "Detendrá todas sus reacciones de fotosíntesis inmediatamente al mediodía por carecer en absoluto de ribulosa aceptora.",
+        "Morirá sin remedio por cruda inanición, al no ser capaz de almacenar adecuadamente la glucosa en la enorme forma de almidón.",
+        "Todas sus largas hojas colapsarán porque no podrán producir las sólidas e indispensables paredes protectoras de dura quitina."
+      ],
+      "correct": 3,
+      "explicacion": "La amilosa y la amilopectina constituyen las dos valiosas fracciones que estructuran al almidón. Esta macromolécula es la exclusiva reserva a largo plazo de las plantas. Durante el oscuro período sin luz, la planta ya no puede fotosintetizar, por lo que depende a vida o muerte de su almidón. Si la mutación le prohibió formarlo, la planta perece de hambre al agotar su escasa energía libre."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un pálido paciente vegano muy estricto basa toda su rígida dieta consumiendo enormes volúmenes de duros polisacáridos vegetales. En sus recientes análisis de muestras fecales, el asombrado doctor detecta un muy alto volumen de fuertes cadenas de glucosa intactas que el débil cuerpo del paciente no pudo en absoluto hidrolizar. ¿Qué rebelde compuesto específico es el que genera tan llamativo y abundante residuo?",
+      "opts": [
+        "El pesado almidón alojado en las tuberosas raíces, que resulta enormemente tóxico para las delicadas enzimas estomacales.",
+        "El fibroso glucógeno vegetal, que con tenacidad inaudita resiste el agresivo ataque del brutal nivel de pH gástrico.",
+        "La delgada maltosa presente en los finos brotes, que fermenta velozmente y de manera explosiva dentro del oscuro colon.",
+        "La dura quitina robada a los pesados hongos silvestres, que bloquea agresivamente toda la fina absorción intestinal.",
+        "La densa celulosa verde extraída de las fibrosas hojas, que el intestino humano se ve obligado a emplear como fibra dietética."
+      ],
+      "correct": 4,
+      "explicacion": "El cuerpo humano está muy bien equipado con las enzimas para descomponer almidón y sacarosa. No obstante, las duras microfibrillas de celulosa (que son inmensas cadenas de glucosa vegetal) no pueden ser rotas por nuestro sistema digestivo, pues carecemos de la enzima específica. Estas grandes redes pasan sin alterarse formando la conocida fibra dietética que engrosa las heces."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un pequeño insecto alado cae sin querer en un oscuro frasco que alberga una solución la cual inhibe letalmente a las enzimas encargadas de romper fuertes enlaces entre dos moléculas idénticas de glucosa. ¿Qué complejo proceso fisiológico del asustado animal colapsará velozmente primero, justo cuando intente alzar enérgico vuelo para lograr escapar del recipiente?",
+      "opts": [
+        "El aprovechamiento de toda la trehalosa circulante para poder obtener rápida energía contráctil en los ágiles músculos de vuelo.",
+        "La eficaz digestión del disacárido de la lactosa que se hallaba abundantemente presente en el florido néctar ingerido horas atrás.",
+        "La vital asimilación de toda la blanda quitina ingerida con urgencia para poder regenerar aceleradamente sus dañadas y rasgadas alas.",
+        "La veloz incorporación de la libre fructosa proveniente de las frutas jugosas directamente a su saturado torrente de sangre venosa.",
+        "La paciente construcción de una enorme y robusta pared de celulosa diseñada para endurecer por fin todo su caparazón y exoesqueleto."
+      ],
+      "correct": 0,
+      "explicacion": "El insecto volador depende vitalmente de la trehalosa para obtener estallidos de energía inmediatos. Este disacárido que viaja por su hemolinfa resulta de la unión de dos glucosas idénticas. Como el líquido tóxico bloquea la hidrólisis de estos exactos enlaces, el artrópodo no puede usar su combustible, sufriendo agotamiento extremo e imposibilitando el vuelo por inanición muscular. Los insectos no forman celulosa ni absorben lactosa vegetal."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un audaz investigador logra descubrir un viscoso microorganismo que secreta una dañina toxina capaz de transformar letalmente todos los sensibles grupos hidroxilo de cualquier monosacárido disuelto en rígidos metilos apolares y secos. ¿Qué crucial propiedad física perderán de manera inmediata los azúcares simples al entrar en desgraciado contacto con esta terrible toxina?",
+      "opts": [
+        "Perderán súbitamente su gran capacidad covalente de unirse fuertemente en largas filas para poder formar grandes moléculas de agua pura.",
+        "Dejarán instantáneamente de comportarse como químicos hidrosolubles al perder irremediablemente toda su bella polaridad química natural.",
+        "Aumentarán vertiginosamente su potente y agradable dulzor hasta volverse tóxicos e irritantes para todas las papilas gustativas cercanas.",
+        "Se transformarán casi por arte de magia en gigantescos polisacáridos sólidos de muy alta y pesada rigidez en su nueva y extraña estructura.",
+        "Emitirán peligrosamente de la nada cuatro enormes kilocalorías de calor letal sin necesidad alguna de tener que ser oxidados en la mitocondria celular."
+      ],
+      "correct": 1,
+      "explicacion": "El rasgo físico fundamental de los glúcidos de escaso peso (los simples) es que son muy hidrosolubles en medios acuosos, todo gracias a la abundante presencia de grupos polares de tipo hidroxilo. Si una toxina convierte a estos polos afines al agua en metilos apolares secos e hidrofóbicos, el azúcar se vuelve incapaz de mezclarse, perdiendo en el acto toda su cualidad para disolverse adecuadamente."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una opulenta industria extrae un fino y agradable polvo dulce del corazón de frutas sumamente maduras y busca formular con ello un suero intravenoso experimental diseñado para enfermos sin hígado. ¿Por qué razón médica el uso exclusivo y absoluto de este glúcido podría entorpecer y retrasar la deseada recuperación celular en comparación con un suero estándar?",
+      "opts": [
+        "Porque el famoso polvo es realmente lactosa, la cual resulta ser un disacárido lechoso que forzosamente requiere enzimas estomacales para asimilarse.",
+        "Porque el compuesto se trata en realidad de sacarosa granulada, un complejo y pesado azúcar que de ninguna manera se disuelve en el plasma venoso rojo.",
+        "Porque el endulzante extraído es la fructosa, cuando la frágil célula enferma exige de forma directa glucosa para usarla como su combustible primordial.",
+        "Porque la fibra recolectada es celulosa toscamente triturada, la cual no aporta al delicado torrente sanguíneo ni siquiera la más mínima y valiosa kilocaloría útil.",
+        "Porque todas las frutas maduras concentran altos niveles de grueso almidón en su interior, lo que bloquea horriblemente el delicado y vital flujo del torrente sanguíneo."
+      ],
+      "correct": 2,
+      "explicacion": "El azúcar sumamente dulce que la industria cosecha a partir del jugo de frutas es, indudablemente, la fructosa. Sin embargo, los sueros médicos hospitalarios prefieren utilizar la glucosa porque esta hexosa es la moneda de combustible celular primaria e inmediata del cuerpo humano. Administrar grandes cantidades de fructosa forzaría un retraso en la conversión y utilización de energía, algo fatal en convalecientes."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "En el seno de un soleado vivero controlado, una mala mutación genética bloquea la producción natural de la pentosa principal responsable del ciclo oscuro de la fotosíntesis. Aunque el agricultor verifica que la planta recibe agua abundante, luz intensa y nutrientes ideales, esta nunca logra aumentar su raquítica biomasa viva. ¿Cuál de los siguientes eventos describe la causa biológica exacta de la desgracia?",
+      "opts": [
+        "La fina y pálida raíz no puede absorber de ninguna forma el agua circundante al carecer lamentablemente de un duro exoesqueleto subterráneo de quitina fúngica.",
+        "El minúsculo núcleo celular detiene su veloz síntesis genética de Ácido Ribonucleico (ARN) por la dolorosa falta de cientos de moléculas activas de la pequeña ribosa.",
+        "Los verdes cloroplastos estallan espectacularmente debido a la violenta e imparable acumulación excesiva de los inmensos gránulos de densa amilopectina.",
+        "El desvalido tejido foliar no puede bajo ninguna circunstancia fijar el escaso dióxido de carbono en el interior por la fatal y absoluta ausencia de ribulosa.",
+        "La sabia resina vegetal que viaja en el tallo no transporta energía alguna porque la mutada planta no logra producir a tiempo gruesas cantidades de la necesaria trehalosa."
+      ],
+      "correct": 3,
+      "explicacion": "Para poder crear toda su biomasa y sobrevivir, la planta requiere obligatoriamente asimilar y atrapar el dióxido de carbono del aire, un proceso vital mediado en el ciclo oscuro por la pentosa receptora ribulosa. Al impedirse mediante mutación la síntesis de esta esencial ribulosa, todo el proceso de fotosíntesis orgánica se paraliza, frustrando la posibilidad de que la frágil planta aumente su biomasa y tamaño."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un obsesivo médico patólogo evalúa tejido muscular humano severamente necrosado bajo el microscopio y encuentra estupefacto gigantescas reservas energéticas intactas que la célula muerta no logró usar. Si el investigador aísla por completo este pesado polisacárido puro y luego lo somete e hidroliza de forma brutal hasta el máximo de sus monómeros, ¿qué microscópico producto obtendrá lloviendo en el tubo?",
+      "opts": [
+        "Millones de largos y sueltos ácidos ribonucleicos flotando libres por la matriz acuosa.",
+        "Fibras verdes e inmaculadas de ruda celulosa vegetal extremadamente puras y tiesas.",
+        "Toneles rebosantes de dulce lactosa en estado completamente y espeso pero líquido.",
+        "Enormes y brillantes moléculas poliédricas compuestas enteramente de pura sacarosa blanca.",
+        "Abundantes e innumerables monosacáridos libres formados enteramente de pura glucosa diluida."
+      ],
+      "correct": 4,
+      "explicacion": "Los animales vertebrados guardan eficientemente sus enormes reservas de carbohidratos en la valiosa forma química de un glúcido polisacárido bautizado como glucógeno. Esta gigantesca cadena altamente ramificada se encuentra abundantemente alojada tanto en los tejidos del hígado como en las células del músculo esquelético. Al estar construida únicamente apilando glucosas, la ruptura total y despiadada rinde pura y exclusiva glucosa monomérica."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Para lograr fabricar en serie una novedosa cápsula farmacéutica que resista exitosamente el embate de los fuertes ácidos del estómago pero que simultáneamente alimente con energía a las benéficas bacterias oscuras del colon humano, los ingenieros utilizan un largo polisacárido lineal extraído meticulosamente de la pared externa de rústicas plantas herbáceas altas. ¿Qué resistente compuesto natural eligieron astutamente los diseñadores?",
+      "opts": [
+        "La dura e indigerible celulosa vegetal.",
+        "La altamente ramificada amilopectina fúngica.",
+        "La densa quitina blindada de los artrópodos marinos.",
+        "El blando glucógeno hepático del pesado ganado bovino.",
+        "La pura y blanda amilosa extraída del almidón de las semillas secas."
+      ],
+      "correct": 0,
+      "explicacion": "El objetivo exige imperiosamente encontrar un durísimo polímero protector propio de la pared de la célula vegetal. La gruesa pared de las hierbas está armada entrelazando microfibrillas de la muy resistente celulosa. Este material no se ve afectado ni lo más mínimo por los ácidos gástricos de los humanos, permitiendo que la medicina atraviese a salvo el estómago y actúe como nutritiva fibra frente a la flora de bacterias del colon."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un enigmático virus silvestre de bioseguridad ha sido aterradoramente diseñado para infectar exitosamente a todas las células empaquetando su siniestro código genético central usando y armando exclusivamente eslabones de azúcares de cinco carbonos a los que siempre les falta intencionalmente un único átomo de oxígeno vital. ¿Qué letal tipo de material genético introducirá como un fantasma en la célula huésped que se convertirá en su víctima?",
+      "opts": [
+        "Largas cadenas genéticas monocatenarias conformadas por un Ácido Ribonucleico (ARN) altamente mutagénico y letal.",
+        "Gigantescas hebras moleculares enrolladas pertenecientes al Ácido Desoxirribonucleico (ADN) con densa información celular codificada.",
+        "Brillantes plásmidos circulares minúsculos formados mágicamente por miles de moléculas de ribulosa dispuestas a iniciar la ruta fotosintética.",
+        "Peligrosas y tóxicas vesículas repletas del ansiado Trifosfato de Adenosina (ATP) celular para acelerar fatalmente todo el perezoso metabolismo basal.",
+        "Numerosas unidades sueltas y estructurales de la pequeña ribosa oxigenada que sirven primordialmente para sintetizar y desplegar nuevas proteínas."
+      ],
+      "correct": 1,
+      "explicacion": "El virus en el laboratorio utiliza específicamente una pequeña pentosa que se caracteriza biológicamente por tener cinco carbonos y a la cual le falta un átomo de oxígeno fundamental en la posición correcta del anillo. Este desoxigenado azúcar corresponde indiscutiblemente al monosacárido desoxirribosa. Puesto que la desoxirribosa es la viga maestra exclusiva que sostiene la cadena del Ácido Desoxirribonucleico (ADN), el virus inyectará genoma de ADN."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Un deportista y afanado nutricionista mezcla ruidosamente en una licuadora industrial abundante germen de trigo en plena y latente etapa activa, combinado con leche entera muy fresca de vaca estabulada. Si el experto logra extraer químicamente los disacáridos predominantes de ambas pesadas fuentes líquidas y luego los rompe sin piedad en las probetas del laboratorio, ¿qué par de escurridizos monosacáridos recolectará triunfante y separados al final de su proceso?",
+      "opts": [
+        "Capturará fructosa extremadamente abundante nadando sola y dejando minúsculas trazas de fragmentos de desoxirribosa amarga.",
+        "Obtendrá un tubo turbio y pálido lleno únicamente y exclusivamente de galactosa proveniente de ambas exóticas y revueltas fuentes.",
+        "Acumulará montones de pura y cristalina glucosa disuelta en una gran e inmensa cantidad y también le sobrará una evidente porción de dulce galactosa.",
+        "Conseguirá frágil ribosa descompuesta robada a toda la verde semilla triturada y oscura fructosa espesa derivada tras calentar la densa leche.",
+        "Recolectará un tubo de ensayo resplandeciente lleno hasta el borde de muy blanca glucosa pura sin rastro alguno ni mancha de ningún otro tipo de monosacárido."
+      ],
+      "correct": 2,
+      "explicacion": "El germen de la pequeña semilla de trigo se encuentra en franco brote, por lo que su interior aporta a raudales el vital disacárido maltosa. A su vez, la densa leche entera recién ordeñada inunda la mezcla aportando el lactosuero y su disacárido lactosa. Al hidrolizarlos juntos, la maltosa entrega dos pesadas glucosas, mientras que la lactosa regala otra glucosa y una galactosa solitaria."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Una audaz expedición de biólogos halla un viejo fósil de insecto incrustado firmemente en un ámbar de pino milenario y logra asombrosamente extraer una gigantesca molécula oscura y totalmente intacta que formaba parte de su rígido y agresivo caparazón protector exterior. Al analizar su espectro, se confirma ineludiblemente que este fósil bioquímico es un puro y pesado polisacárido. ¿Por qué esta colosal estructura cristalizada no podría haber servido como reserva de energía bajo ningún concepto si el asustado insecto hubiese pasado una feroz hambre?",
+      "opts": [
+        "Porque esta gruesa composición orgánica se degrada sola y velozmente a las pocas horas con tan solo permitir la intensa exposición solar calcinante prolongada en las dunas.",
+        "Porque los arcaicos e imperfectos insectos extintos no podían bajo el sol oxidar los grandes polisacáridos de ninguna forma, condenándolos siempre al letargo gélido.",
+        "Porque toda la gigante costra está compuesta enteramente de toxica galactosa, que paradójicamente es muy irritante, picante y siempre letal para su acelerado metabolismo.",
+        "Porque este polímero extraído del monstruo es pura y rígida quitina estructural, la cual nunca fue diseñada biológicamente para que se deba hidrolizar o romper ante la llegada del fatal ayuno.",
+        "Porque el abundante y denso almidón verde alojado duramente en su viejo y tosco exoesqueleto exige forzosamente el uso desesperado de fuertes y amargas enzimas vegetales muy exclusivas."
+      ],
+      "correct": 3,
+      "explicacion": "Todos los exoesqueletos duros, las escamas y las costras externas blindadas en artrópodos se encuentran esculpidos empleando exclusivamente millones de largas cadenas de quitina. Como ocurre con todos los eficientes polímeros con rol defensivo y físico, la quitina no puede servir jamás como almacén calórico que la bestia logre canibalizar, debiendo depositar su verdadera reserva alimenticia de glucógeno y trehalosa fluidos y seguros dentro del tórax blando."
+    },
+    {
+      "tipo": "opcion_multiple",
+      "q": "Durante el violento desarrollo de una maratónica e insufrible competencia deportiva olímpica de montaña, un corredor atleta agotado decide consumir desesperado un costoso frasco repleto de pastillas de purísimo Trifosfato de Adenosina (ATP) encapsulado, tratando de usar ese atajo con la esperanza ilusoria de saltarse la lenta digestión y asimilación al evitar los muy dulces y pastosos geles de glucosa artificiales de siempre. ¿Por qué esta alocada y desesperada estrategia farmacológica es total y biológicamente ineficaz e inútil para lograr su objetivo de dotar de nueva y explosiva energía inmediata a las doloridas fibras de sus músculos quemados?",
+      "opts": [
+        "Porque el denso Trifosfato de Adenosina (ATP) de las píldoras ingeridas se transforma milagrosamente en verde y duro almidón vegetal dentro del tibio estómago para su posterior e inconveniente reserva gástrica lenta.",
+        "Porque todas las abundantes e intensas glándulas salivales degradan en el acto la píldora disolviendo de inmediato el Trifosfato de Adenosina (ATP) entero hasta convertirlo erróneamente en dulce y perjudicial lactosa pura de infante.",
+        "Porque el oscuro estómago mamífero desintegra las capas gruesas, absorbe y tritura todo el Trifosfato de Adenosina (ATP) para mandarlo de golpe y por error directo a la densa hemolinfa pegajosa bajo forma de amarga trehalosa inútil.",
+        "Porque las diminutas compuertas de la adolorida y estresada célula del grueso músculo olímpico solo aceptan con cautela a los gigantes y monstruosos polisacáridos complejos de plantas por la pequeña y apretada membrana polarizada plasmática.",
+        "Porque el pequeño y veloz Trifosfato de Adenosina (ATP) es en realidad el muy valioso y frágil producto intracelular resultante de la silenciosa respiración quemante mitocondrial oscura profunda, y no un tosco y burdo nutriente calórico externo listo para tragar."
+      ],
+      "correct": 4,
+      "explicacion": "A nivel celular, solo ingresan los nutrientes fundamentales que viajan suspendidos como carga por toda la sangre, destacando entre todos a la vital glucosa libre. El Trifosfato de Adenosina (ATP) en sí mismo jamás fluye ni actúa como si fuese un alimento, sino que más bien constituye la tan preciada y volátil moneda o chispa energética final del cuerpo. Tragar ATP oralmente destrozaría su cadena fosfatada en el estómago, inutilizando la pastilla por completo."
+    }
   ]
 }

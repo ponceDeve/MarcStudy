@@ -249,6 +249,9 @@
    ============================================================ */
 .welcome-section__curso-top {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .welcome-section__curso-info {
   display: flex;
@@ -594,25 +597,25 @@
   margin-top: 12px;
 }
 .welcome-section__carousel-dot {
-  width: 7px;
-  height: 7px;
+  width:  18px;
+  height: 18px;
   padding: 0;
   border: none;
   border-radius: 50%;
   background: var(--ink-faint);
   opacity: 0.45;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: width 0.2s ease, opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  transition: all .2s linear!important;
 }
 .welcome-section__carousel-dot:hover {
-  opacity: 0.8;
-  transform: scale(1.15);
+  background-color: var(--primary-dark);
 }
 .welcome-section__carousel-dot--active {
-  width: 20px;
+  width: 36px;
   border-radius: var(--radius-full);
-  background: var(--primary);
   opacity: 1;
+  background-color: var(--primary-dark);
+
 }
 /* ============================================================
    TABLET

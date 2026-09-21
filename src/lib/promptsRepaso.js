@@ -12,6 +12,11 @@ import {
   teoriaMate,
   teoriaCiencia
 } from "./promptsJsonTeoria";
+import {
+  examenLetras,
+  examenMate,
+  examenCiencia
+} from "./promptsExamenTeoria";
 
 const NOTA_FORMULAS =
   "Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.";
@@ -476,6 +481,39 @@ const EJEMPLOS_APUNTE = {
 ## VI Coalición
 - Leipzig («de las naciones») → derrota napoleónica
 - Es enviado a Elba`,
+  "Biología": `# Histología vegetal
+## Concepto
+- Rama de la Botánica: estudia los tejidos de la planta
+- Tejido: conjunto de células similares que cumplen funciones específicas
+- Padre de la histología: Marcelo Malpighi
+## Clases de tejidos
+- Juveniles (embrionarios)
+  - Células indiferenciadas
+  - Crecimiento constante
+- Adultos
+  - Células diferenciadas
+## Tejidos juveniles (meristemos)
+- Células en constante mitosis
+- Meristemo apical (1rio)
+  - Ápice del tallo y ápice radicular (cofia)
+  - Crecimiento longitudinal
+- Meristemo lateral (2rio) = cambium
+  - Crecimiento en grosor
+  - Cambium suberoso: debajo del súber
+  - Cambium vascular: entre xilema y floema
+## Tejidos adultos
+- Protectores
+  - Epidermis
+    - Células incoloras y planas, en monocapa
+    - Reviste hojas y tallos verdes
+    - Estomas → respiración, transpiración, fotosíntesis
+  - Peridermis (3 capas)
+    - Súber o corcho → células muertas
+    - Felógeno = cambium suberoso
+    - Felodermis → células vivas
+- Conductores
+  - Xilema → savia bruta (agua y sales), unidireccional
+  - Floema → savia elaborada (agua y azúcares), de las hojas a toda la planta`,
   "Física": `# Ondas mecánicas (O.M.)
 ## Concepto
 - Propagación de perturbaciones
@@ -585,7 +623,7 @@ ${ejemplo}
 `
     : "";
   const avisoJson = paraJson
-    ? "\nEste es el PASO 1 de 2: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía."
+    ? "\nEste es el PASO 1 de 3: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía."
     : "";
 
   return `Actúa como profesor experto de ${rol} a nivel preuniversitario. Escribe APUNTES PARA COPIAR EN EL CUADERNO sobre el tema «${tema}» del curso «${curso}».
@@ -606,8 +644,14 @@ ${marcarTemaActual(temarioCurso, tema)}
 Desarrolla ÚNICAMENTE «${tema}».
 Cada tema del temario tiene sus propios apuntes. Todo tema distinto de «${tema}» (los de la misma semana y los demás) está PROHIBIDO: no escribas sus definiciones, tipos, fórmulas, ejemplos ni subtemas, aunque estén relacionados o parezcan encajar en este tema.
 Ejemplo: si el temario tiene los temas «Mezclas y sustancias», «Estados de agregación» y «Propiedades físicas y químicas», nada de eso se desarrolla dentro de «Materia».
-Antes de escribir cada viñeta pregúntate: ¿este dato es el contenido central de otro tema del temario? Si la respuesta es sí, no lo escribas.
+EXCEPCIÓN: todo lo que se enseña DENTRO de «${tema}» se incluye completo, aunque otro tema vecino toque el mismo concepto. Ejemplo: las clasificaciones de la comunicación (humana y no humana, verbal y no verbal, por dirección, por relación...) son de «Comunicación», aunque exista el tema «Lenguaje humano».
+Antes de omitir una viñeta por creer que es de otro tema, comprueba que sea de verdad el contenido central de ese otro tema. Si es un tipo, una clasificación o un elemento de «${tema}», inclúyela.
 Si un tema vecino es imprescindible para entender este, nómbralo en una viñeta de máximo tres palabras, sin desarrollarlo.
+
+PROCESO INTERNO (no lo muestres)
+1. Consulta el tema en textos escolares y preuniversitarios peruanos; si tienes búsqueda web, úsala y contrasta al menos dos fuentes.
+2. Haz el inventario completo de lo que se enseña de «${tema}»: todos los criterios de clasificación con TODOS sus tipos (por ejemplo: según los participantes, según el código, según la dirección, según la relación entre los participantes), y todos sus elementos, funciones, etapas y casos.
+3. Escribe los apuntes cubriendo cada elemento del inventario, sin omitir ninguno.
 
 ESTRUCTURA
 - Empieza con el título: # ${tema}
@@ -622,7 +666,7 @@ ESTRUCTURA
 - «Concepto» solo puede ser el primer subtema y solo si el tema necesita definirse.
 - No hay mínimo ni máximo fijo de subtemas: los que el tema realmente tenga.
 - Usa la forma que mejor represente cada contenido y NO repitas la misma en todos los subtemas: jerarquía con viñetas anidadas (criterio → tipos), secuencia numerada (procesos y pasos), cronología (fecha → hecho), contraste (A vs B) y etiqueta: dato.
-- Las viñetas anidadas (hasta 2 niveles) agrupan: la viñeta madre es el criterio o el grupo y las hijas son sus tipos, partes o ejemplos. Nunca repitas el criterio en cada hija (mal: «Según genoma: ADN» y «Según genoma: ARN»; bien: «Según genoma» con hijas «ADN» y «ARN»).
+- Las viñetas anidadas (hasta 3 niveles) agrupan: la madre es el grupo o criterio, la hija es el tipo o la parte y la nieta son sus datos. Usa el tercer nivel solo cuando el tema tenga de verdad tres niveles de clasificación. Nunca repitas el criterio en cada hija (mal: «Según genoma: ADN» y «Según genoma: ARN»; bien: «Según genoma» con hijas «ADN» y «ARN»).
 - Contraste: una viñeta madre «A vs B» con una hija por cada lado, dentro del subtema al que pertenece.
 - ORDEN DENTRO DE CADA SUBTEMA: las viñetas siguen la lista numerada de «ENFOQUE», de arriba hacia abajo.
 - Agrupa las viñetas del mismo tipo: todas las características juntas, todas las especies juntas, todos los ejemplos juntos. No las mezcles.
@@ -669,7 +713,7 @@ ${bloqueEjemplo}FORMATO DE SALIDA
 - Sin introducción, sin conclusión, sin tablas y sin explicaciones fuera de los apuntes.
 
 CONTROL FINAL
-Antes de responder comprueba que: desarrollaste solo «${tema}»; cada título es corto y de un solo subtema; no hay secciones genéricas; cada viñeta tiene una sola idea, es breve y no es una oración completa; usaste solo los símbolos permitidos; no hay fuentes ni citas; no falta ningún tipo, parte, etapa, ejemplo ni dato de este tema que el examen suele evaluar; ninguna viñeta es solo un nombre sin información; y no incluiste contenido que sea de otro tema del temario.`;
+Antes de responder comprueba que: desarrollaste solo «${tema}»; cada título es corto y de un solo subtema; no hay secciones genéricas; cada viñeta tiene una sola idea, es breve y no es una oración completa; usaste solo los símbolos permitidos; no hay fuentes ni citas; no falta ningún tipo, parte, etapa, ejemplo ni dato de este tema que el examen suele evaluar; cada criterio de clasificación del tema aparece con todos sus tipos; ninguna viñeta es solo un nombre sin información; y no incluiste contenido que sea de otro tema del temario.`;
 }
 
 
@@ -697,10 +741,29 @@ export function construirPromptJson({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
 
-PASO 2 de 2: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
-Devuelve únicamente el JSON, siguiendo todas las reglas de abajo.
+PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
+Devuelve únicamente el JSON, siguiendo todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
 
 ${promptJsonBase(curso)}`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// PASO 3: examen + ejercicios a partir del JSON de teoría del paso 2.
+// Usa los prompts examen_*.txt de la carpeta promt/, elegidos según el curso.
+// ─────────────────────────────────────────────────────────────────────────
+function promptExamenBase(curso) {
+  if (CURSOS_JSON_MATE.includes(curso)) return examenMate;
+  if (CURSOS_JSON_CIENCIA.includes(curso)) return examenCiencia;
+  return examenLetras;
+}
+
+export function construirPromptExamen({ curso, tema }) {
+  return `CURSO: ${curso}
+TEMA: ${tema}
+
+PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que «recibes» en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
+
+${promptExamenBase(curso)}`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────

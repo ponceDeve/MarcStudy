@@ -18,15 +18,14 @@ import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import {
   construirPromptRepaso,
   construirPromptJson,
+  construirPromptExamen,
   copiarTexto
 } from "../../lib/promptsRepaso";
-
 const TABS = [
   { id: "hoy", label: "Hoy" },
   { id: "proximos", label: "Próximos" },
   { id: "temario", label: "Temario" }
 ];
-
 const CATEGORIAS_TEMARIO = [
   {
     id: "letras",
@@ -65,14 +64,11 @@ const CATEGORIAS_TEMARIO = [
     ]
   }
 ];
-
 const SEMANAS_TEMARIO = [1, 2, 3, 4, 5, 6, 7, 8];
-
 const LABELS_CORTOS_TEMARIO = {
   "Habilidad Lógico Matemático": "R. Matemático",
   "Habilidad Verbal": "R. Verbal"
 };
-
 const INSTRUCCIONES_CHATGPT = {
   "Habilidad Lógico Matemático": `
 En este curso prioriza el razonamiento y la resolución de problemas.
@@ -413,24 +409,22 @@ autor → corriente o postura → idea central → diferencias.
 No agregues etimología, biografía extensa o historia innecesaria salvo que sea relevante para el tema.
 `
 };
-
 function labelCursoTemario(curso) {
   return LABELS_CORTOS_TEMARIO[curso] || curso;
 }
-
 function normalizarTexto(texto) {
   return texto
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
 }
-
 export default function RepasoPage() {
   const navigate = useNavigate();
   const [tab, setTab] = useState("hoy");
   const [searchOpen, setSearchOpen] = useState(false);
   const [log, setLog] = useState(() => leerLog());
-  const [recomendadoFullScreenOpen, setRecomendadoFullScreenOpen] = useState(false);
+  const [recomendadoFullScreenOpen, setRecomendadoFullScreenOpen] =
+    useState(false);
   const [confirmarRepaso, setConfirmarRepaso] = useState({
     isOpen: false,
     curso: "",
@@ -448,29 +442,25 @@ export default function RepasoPage() {
   const [semanaSelectorAbierto, setSemanaSelectorAbierto] = useState(false);
   const [semanaTemario, setSemanaTemario] = useState(1);
   const [busquedaTemario, setBusquedaTemario] = useState("");
-  const [busquedaTemarioAplicada, setBusquedaTemarioAplicada] = useState("");
   const [temaSeleccionado, setTemaSeleccionado] = useState(null);
-  const [busquedaTemarioAbierta, setBusquedaTemarioAbierta] = useState(false);
+  const [busquedaTemarioAbierta, setBusquedaTemarioAbierta] =
+    useState(false);
   const [copiadoKey, setCopiadoKey] = useState("");
   const selectRef = useRef(null);
   const semanaRef = useRef(null);
   const buscadorTemarioRef = useRef(null);
-
   const recomendacionesHoy = useMemo(
     () => obtenerRecomendacionesHoy(),
     [log]
   );
-
   const recomendacionesConTemas = useMemo(
     () => recomendacionesHoy.filter((r) => r.temas.length > 0),
     [recomendacionesHoy]
   );
-
   const { repasosHoy, proximos } = useMemo(
     () => clasificarRepasos(log),
     [log]
   );
-
   const porFecha = useMemo(() => {
     const map = {};
     proximos.forEach((item) => {
@@ -481,7 +471,6 @@ export default function RepasoPage() {
     });
     return map;
   }, [proximos]);
-
   const cursosDeCategoria = useMemo(() => {
     if (!categoriaTemario) return [];
     const categoria = CATEGORIAS_TEMARIO.find(
@@ -489,12 +478,20 @@ export default function RepasoPage() {
     );
     return categoria ? categoria.cursos : [];
   }, [categoriaTemario]);
-
   const temasSemana = useMemo(() => {
     if (!cursoTemario) return [];
-    return coursesSemanas[cursoTemario]?.[`semana_${semanaTemario}`] || [];
+    return (
+      coursesSemanas[cursoTemario]?.[`semana_${semanaTemario}`] || []
+    );
   }, [cursoTemario, semanaTemario]);
-
+  /*
+   * Número inicial de la semana actual.
+   *
+   * Ejemplo:
+   * Semana 1 → 1
+   * Semana 2 → cantidad de temas de semana 1 + 1
+   * Semana 3 → temas de semana 1 + semana 2 + 1
+   */
   const numeroInicialSemana = useMemo(() => {
     if (!cursoTemario) return 1;
     let total = 0;
@@ -505,7 +502,10 @@ export default function RepasoPage() {
     }
     return total + 1;
   }, [cursoTemario, semanaTemario]);
-
+  /*
+   * Calcula el número consecutivo de un tema dentro de un curso.
+   * No reinicia la numeración al cambiar de semana.
+   */
   function obtenerNumeroTema(curso, semana, indice) {
     let total = 0;
     for (let numeroSemana = 1; numeroSemana < semana; numeroSemana++) {
@@ -515,19 +515,17 @@ export default function RepasoPage() {
     }
     return total + indice + 1;
   }
-
   const resultadosBusquedaTemario = useMemo(() => {
     const termino = normalizarTexto(busquedaTemario.trim());
     if (!termino) return [];
     const resultados = [];
-
     for (const [curso, semanas] of Object.entries(coursesSemanas)) {
       for (const [claveSemana, temas] of Object.entries(semanas || {})) {
-        const numeroSemana = Number(claveSemana.replace("semana_", ""));
-
+        const numeroSemana = Number(
+          claveSemana.replace("semana_", "")
+        );
         for (let indice = 0; indice < (temas || []).length; indice++) {
           const tema = temas[indice];
-
           if (normalizarTexto(tema).includes(termino)) {
             resultados.push({
               curso,
@@ -543,51 +541,18 @@ export default function RepasoPage() {
         }
       }
     }
-
     return resultados;
   }, [busquedaTemario]);
-
-  const resultadoBusquedaTemarioAplicada = useMemo(() => {
-    const termino = normalizarTexto(busquedaTemarioAplicada.trim());
-    if (!termino) return null;
-
-    for (const [curso, semanas] of Object.entries(coursesSemanas)) {
-      for (const [claveSemana, temas] of Object.entries(semanas || {})) {
-        const numeroSemana = Number(claveSemana.replace("semana_", ""));
-
-        for (let indice = 0; indice < (temas || []).length; indice++) {
-          const tema = temas[indice];
-
-          if (normalizarTexto(tema).includes(termino)) {
-            return {
-              curso,
-              semana: numeroSemana,
-              numeroTema: obtenerNumeroTema(
-                curso,
-                numeroSemana,
-                indice
-              ),
-              tema
-            };
-          }
-        }
-      }
-    }
-
-    return null;
-  }, [busquedaTemarioAplicada]);
-
+  const resultadoBusquedaTemario =
+    resultadosBusquedaTemario[0] || null;
   const temasVisiblesTemario = useMemo(() => {
     if (temaSeleccionado) {
       return [temaSeleccionado];
     }
-
-    if (!cursoTemario) return [];
-
-    if (resultadoBusquedaTemarioAplicada) {
-      return [resultadoBusquedaTemarioAplicada];
+    if (busquedaTemario.trim()) {
+      return resultadosBusquedaTemario;
     }
-
+    if (!cursoTemario) return [];
     return temasSemana.map((tema, indice) => ({
       curso: cursoTemario,
       semana: semanaTemario,
@@ -596,17 +561,20 @@ export default function RepasoPage() {
     }));
   }, [
     temaSeleccionado,
+    busquedaTemario,
+    resultadosBusquedaTemario,
     cursoTemario,
     semanaTemario,
     temasSemana,
-    numeroInicialSemana,
-    resultadoBusquedaTemarioAplicada
+    numeroInicialSemana
   ]);
-
-  const cursoSelectorTemario = cursoTemario;
-  const semanaSelectorTemario = semanaTemario;
-  const semanaHabilitada = Boolean(cursoTemario);
-
+  const cursoSelectorTemario =
+    cursoTemario || resultadoBusquedaTemario?.curso || "";
+  const semanaSelectorTemario = cursoTemario
+    ? semanaTemario
+    : resultadoBusquedaTemario?.semana || 1;
+  const semanaHabilitada =
+    Boolean(cursoTemario) || Boolean(resultadoBusquedaTemario);
   useEffect(() => {
     function manejarClickFuera(e) {
       if (
@@ -615,14 +583,12 @@ export default function RepasoPage() {
       ) {
         setSelectorAbierto(false);
       }
-
       if (
         semanaRef.current &&
         !semanaRef.current.contains(e.target)
       ) {
         setSemanaSelectorAbierto(false);
       }
-
       if (
         buscadorTemarioRef.current &&
         !buscadorTemarioRef.current.contains(e.target)
@@ -630,30 +596,25 @@ export default function RepasoPage() {
         setBusquedaTemarioAbierta(false);
       }
     }
-
     document.addEventListener("mousedown", manejarClickFuera);
-
     return () => {
       document.removeEventListener("mousedown", manejarClickFuera);
     };
   }, []);
-
   function irAMiEstudio(nombre) {
     navigate(`/?q=${encodeURIComponent(nombre)}`);
   }
-
   function marcar(id, intervaloIdx, repasosDoneActual) {
     const repasosDone = Array.isArray(repasosDoneActual)
       ? [...repasosDoneActual]
       : [];
-
     if (!repasosDone.includes(intervaloIdx)) {
       repasosDone.push(intervaloIdx);
     }
-
+    // marcarRepasoHecho ya suma por su cuenta el siguiente intervalo;
+    // por eso se le pasa el estado ORIGINAL (si no, contaba doble).
     setLog(marcarRepasoHecho(id, repasosDoneActual));
   }
-
   function iniciarBorrado(id) {
     setDeleteState({
       isOpen: true,
@@ -661,7 +622,6 @@ export default function RepasoPage() {
       phase: 1
     });
   }
-
   function confirmarBorrado() {
     if (deleteState.phase === 1) {
       setDeleteState({
@@ -677,7 +637,6 @@ export default function RepasoPage() {
       });
     }
   }
-
   function cancelarBorrado() {
     setDeleteState({
       isOpen: false,
@@ -685,59 +644,54 @@ export default function RepasoPage() {
       phase: 1
     });
   }
-
   function elegirCategoria(catId) {
     setCategoriaTemario(catId);
     setCursoTemario("");
     setSemanaTemario(1);
     setTemaSeleccionado(null);
     setBusquedaTemario("");
-    setBusquedaTemarioAplicada("");
     setSelectorAbierto(true);
     setSemanaSelectorAbierto(false);
   }
-
   function elegirCurso(nombre) {
     const categoria = CATEGORIAS_TEMARIO.find((cat) =>
       cat.cursos.includes(nombre)
     );
-
     setCursoTemario(nombre);
     setCategoriaTemario(categoria?.id || "");
     setSemanaTemario(1);
     setTemaSeleccionado(null);
     setBusquedaTemario("");
-    setBusquedaTemarioAplicada("");
     setSelectorAbierto(false);
   }
-
   function volverCategorias() {
     setCategoriaTemario("");
     setCursoTemario("");
     setSemanaTemario(1);
     setTemaSeleccionado(null);
     setBusquedaTemario("");
-    setBusquedaTemarioAplicada("");
     setSelectorAbierto(true);
     setSemanaSelectorAbierto(false);
   }
-
   function elegirSemana(semana) {
-    if (!cursoTemario) return;
-
+    const cursoBusqueda = resultadoBusquedaTemario?.curso;
+    const categoriaBusqueda = CATEGORIAS_TEMARIO.find((cat) =>
+      cat.cursos.includes(cursoBusqueda)
+    );
+    if (!cursoTemario && cursoBusqueda) {
+      setCursoTemario(cursoBusqueda);
+      setCategoriaTemario(categoriaBusqueda?.id || "");
+    }
     setSemanaTemario(semana);
     setTemaSeleccionado(null);
     setSemanaSelectorAbierto(false);
     setBusquedaTemario("");
-    setBusquedaTemarioAplicada("");
     setBusquedaTemarioAbierta(false);
   }
-
   function seleccionarResultadoBusqueda(resultado) {
     const categoria = CATEGORIAS_TEMARIO.find((cat) =>
       cat.cursos.includes(resultado.curso)
     );
-
     setCategoriaTemario(categoria?.id || "");
     setCursoTemario(resultado.curso);
     setSemanaTemario(resultado.semana);
@@ -747,45 +701,29 @@ export default function RepasoPage() {
       numeroTema: resultado.numeroTema,
       tema: resultado.tema
     });
-    setBusquedaTemarioAplicada("");
     setBusquedaTemarioAbierta(false);
     setSelectorAbierto(false);
     setSemanaSelectorAbierto(false);
   }
-
   function manejarBusquedaTemarioKeyDown(e) {
     if (e.key !== "Enter") return;
     e.preventDefault();
-
-    const resultado = resultadosBusquedaTemario[0];
-
-    if (resultado) {
-      seleccionarResultadoBusqueda(resultado);
-    } else {
-      setBusquedaTemarioAplicada(busquedaTemario);
-      setBusquedaTemarioAbierta(false);
-    }
-  }
-
-  function limpiarBusquedaTemario() {
-    setBusquedaTemario("");
-    setBusquedaTemarioAplicada("");
     setBusquedaTemarioAbierta(false);
   }
-
+  function limpiarBusquedaTemario() {
+    setBusquedaTemario("");
+    setBusquedaTemarioAbierta(false);
+  }
   function resaltarCoincidencia(texto) {
     const termino = busquedaTemario.trim();
     if (!termino) return texto;
-
     const terminoNormalizado = normalizarTexto(termino);
     const partes = [];
     let posicion = 0;
-
     while (posicion < texto.length) {
       const posicionNormalizada = normalizarTexto(
         texto.slice(posicion)
       ).indexOf(terminoNormalizado);
-
       if (posicionNormalizada === -1) {
         partes.push(
           <span key={posicion}>
@@ -794,10 +732,8 @@ export default function RepasoPage() {
         );
         break;
       }
-
       let inicio = posicion;
       let caracteresNormalizados = 0;
-
       while (
         inicio < texto.length &&
         caracteresNormalizados < posicionNormalizada
@@ -807,7 +743,6 @@ export default function RepasoPage() {
         ).length;
         inicio++;
       }
-
       if (inicio > posicion) {
         partes.push(
           <span key={`${posicion}-antes`}>
@@ -815,10 +750,8 @@ export default function RepasoPage() {
           </span>
         );
       }
-
       let fin = inicio;
       let longitudNormalizada = 0;
-
       while (
         fin < texto.length &&
         longitudNormalizada < terminoNormalizado.length
@@ -828,7 +761,6 @@ export default function RepasoPage() {
         ).length;
         fin++;
       }
-
       partes.push(
         <mark
           key={`${inicio}-${fin}`}
@@ -837,13 +769,10 @@ export default function RepasoPage() {
           {texto.slice(inicio, fin)}
         </mark>
       );
-
       posicion = fin;
     }
-
     return partes;
   }
-
   function temaEstaRecomendadoHoy(curso, semana, tema) {
     return recomendacionesHoy.some(
       (r) =>
@@ -851,7 +780,6 @@ export default function RepasoPage() {
         r.temas.includes(tema)
     );
   }
-
   function temaEstaProgramado(curso, semana, tema) {
     return log.some(
       (entrada) =>
@@ -860,10 +788,8 @@ export default function RepasoPage() {
         entrada.day === `Semana ${semana}`
     );
   }
-
   function abrirConfirmacionRepaso(curso, semana, tema) {
     if (temaEstaProgramado(curso, semana, tema)) return;
-
     setConfirmarRepaso({
       isOpen: true,
       curso,
@@ -871,7 +797,6 @@ export default function RepasoPage() {
       tema
     });
   }
-
   function cancelarProgramacionRepaso() {
     setConfirmarRepaso({
       isOpen: false,
@@ -880,7 +805,6 @@ export default function RepasoPage() {
       tema: ""
     });
   }
-
   function confirmarProgramacionRepaso() {
     if (
       !confirmarRepaso.curso ||
@@ -890,26 +814,21 @@ export default function RepasoPage() {
       cancelarProgramacionRepaso();
       return;
     }
-
     registrarCursoCompletado({
       subject: confirmarRepaso.curso,
       tema: confirmarRepaso.tema,
       day: `Semana ${confirmarRepaso.semana}`
     });
-
     setLog(leerLog());
     cancelarProgramacionRepaso();
   }
-
   function abrirTemaEnYoutube(curso, tema) {
     const query = `${curso} ${tema} preuniversitario`;
-
     window.open(
       `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`,
       "_blank"
     );
   }
-
   function armarTemarioCurso(curso) {
     return Object.entries(coursesSemanas[curso] || {})
       .map(([claveSemana, temas]) => {
@@ -918,7 +837,7 @@ export default function RepasoPage() {
       })
       .join("\n");
   }
-
+  // Copia al portapapeles el prompt del paso 1 (investigar) o del paso 2 (JSON).
   async function copiarPasoJson(paso, curso, tema) {
     const texto =
       paso === 1
@@ -928,41 +847,34 @@ export default function RepasoPage() {
             temarioCurso: armarTemarioCurso(curso),
             paraJson: true
           })
+        : paso === 3
+        ? construirPromptExamen({ curso, tema })
         : construirPromptJson({ curso, tema });
-
     const clave = `${curso}|${tema}|${paso}`;
     const ok = await copiarTexto(texto);
-
     if (!ok) {
       window.alert("No se pudo copiar al portapapeles.");
       return;
     }
-
     setCopiadoKey(clave);
-
     setTimeout(() => {
-      setCopiadoKey((actual) =>
-        actual === clave ? "" : actual
-      );
+      setCopiadoKey((actual) => (actual === clave ? "" : actual));
     }, 2000);
   }
-
+  // Paso 1: abre ChatGPT con el prompt ya puesto. Además lo copia al
+  // portapapeles por si la URL resulta muy larga y el chat abre vacío.
   function abrirPaso1EnChatGPT(curso, tema) {
     const prompt = construirPromptRepaso({
       curso,
       tema,
-      temarioCurso: armarTemarioCurso(curso),
-      paraJson: true
+      temarioCurso: armarTemarioCurso(curso)
     });
-
     window.open(
-      `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
+      `https://chatgpt.com/?q=${encodeURIComponent(prompt)}&hints=search`,
       "_blank"
     );
-
     copiarTexto(prompt);
   }
-
   function abrirTemaEnChatGPT(curso, tema) {
     const temarioCurso = Object.entries(
       coursesSemanas[curso] || {}
@@ -972,24 +884,22 @@ export default function RepasoPage() {
         return `Semana ${numeroSemana}: ${(temas || []).join(" | ")}`;
       })
       .join("\n");
-
     const prompt = construirPromptRepaso({
       curso,
       tema,
       temarioCurso
     });
-
     window.open(
       `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
       "_blank"
     );
   }
-
+  // Versión anterior (prompt único con INSTRUCCIONES_CHATGPT). Ya no se usa:
+  // se dejó tal cual y solo se quitó la referencia desde el botón.
   function abrirTemaEnChatGPTAnterior(curso, tema) {
     const instruccionesCurso =
       INSTRUCCIONES_CHATGPT[curso] ||
       "Adapta la explicación a la naturaleza del curso y prioriza únicamente los contenidos fundamentales del tema.";
-
     const temarioCurso = Object.entries(
       coursesSemanas[curso] || {}
     )
@@ -998,7 +908,6 @@ export default function RepasoPage() {
         return `Semana ${numeroSemana}: ${(temas || []).join(" | ")}`;
       })
       .join("\n");
-
     const prompt = `Investiga el tema "${tema}" del curso "${curso}" a nivel preuniversitario para el examen de admisión UNMSM.
 Usa información confiable y contrástala antes de responder, pero NO muestres el proceso de investigación ni información sobre las fuentes.
 Quiero APUNTES PARA COPIAR EN EL CUADERNO.
@@ -1134,13 +1043,11 @@ No hagas un informe.
 No hagas un ensayo.
 No expliques el proceso de investigación.
 Escribe directamente los apuntes.`;
-
     window.open(
       `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
       "_blank"
     );
   }
-
   return (
     <main className="container__repaso">
       <div className="repaso">
@@ -1148,7 +1055,6 @@ Escribe directamente los apuntes.`;
           section="repaso"
           onAbrirBuscador={() => setSearchOpen(true)}
         />
-
         <div className="repaso__tabs">
           {TABS.map((t) => (
             <button
@@ -1162,7 +1068,6 @@ Escribe directamente los apuntes.`;
             </button>
           ))}
         </div>
-
         {tab === "hoy" && (
           <section className="repaso__section">
             <div className="repaso__list">
@@ -1170,7 +1075,6 @@ Escribe directamente los apuntes.`;
                 ({ entrada, intervaloIdx, vencido }) => {
                   const lc = intervaloClasses(intervaloIdx);
                   const numRepaso = intervaloIdx + 1;
-
                   return (
                     <div
                       key={entrada.id}
@@ -1183,30 +1087,25 @@ Escribe directamente los apuntes.`;
                           >
                             Repaso {numRepaso}
                           </span>
-
                           {entrada.day && (
                             <span className="repaso__item-day">
                               {entrada.day}
                             </span>
                           )}
-
                           {vencido && (
                             <span className="repaso__item-overdue">
                               Vencido
                             </span>
                           )}
                         </div>
-
                         <h3 className="repaso__item-subject">
                           {entrada.subject}
                         </h3>
-
                         {entrada.tema && (
                           <p className="repaso__item-tema">
                             Tema: {entrada.tema}
                           </p>
                         )}
-
                         <p className="repaso__item-meta">
                           Repaso {numRepaso} de{" "}
                           {REPASO_INTERVALOS.length}
@@ -1217,7 +1116,6 @@ Escribe directamente los apuntes.`;
                             ? "s"
                             : ""}
                         </p>
-
                         <button
                           onClick={() =>
                             irAMiEstudio(
@@ -1230,7 +1128,6 @@ Escribe directamente los apuntes.`;
                           Repasar
                         </button>
                       </div>
-
                       <button
                         onClick={() =>
                           marcar(
@@ -1258,7 +1155,6 @@ Escribe directamente los apuntes.`;
                           />
                         </svg>
                       </button>
-
                       <button
                         onClick={() =>
                           iniciarBorrado(entrada.id)
@@ -1274,7 +1170,6 @@ Escribe directamente los apuntes.`;
                 }
               )}
             </div>
-
             {repasosHoy.length === 0 && (
               <div className="repaso__empty">
                 <div className="repaso__empty-emoji">🎉</div>
@@ -1289,7 +1184,6 @@ Escribe directamente los apuntes.`;
             )}
           </section>
         )}
-
         {tab === "proximos" && (
           <section className="repaso__section">
             {proximos.length === 0 ? (
@@ -1314,7 +1208,6 @@ Escribe directamente los apuntes.`;
                       diff === 1
                         ? "Mañana"
                         : `En ${diff} días`;
-
                     return (
                       <div
                         key={fecha}
@@ -1328,7 +1221,6 @@ Escribe directamente los apuntes.`;
                             {etiqueta}
                           </span>
                         </div>
-
                         {grupo.map(
                           ({ entrada, intervaloIdx }) => (
                             <div
@@ -1343,10 +1235,8 @@ Escribe directamente los apuntes.`;
                                     ).badge
                                   }`}
                                 />
-
                                 <span className="repaso__proximos-subject">
                                   {entrada.subject}
-
                                   {entrada.tema && (
                                     <span className="repaso__proximos-tema">
                                       {" "}
@@ -1355,7 +1245,6 @@ Escribe directamente los apuntes.`;
                                   )}
                                 </span>
                               </div>
-
                               <button
                                 onClick={() =>
                                   iniciarBorrado(
@@ -1378,7 +1267,6 @@ Escribe directamente los apuntes.`;
             )}
           </section>
         )}
-
         {tab === "temario" && (
           <section className="repaso__section">
             <div className="repaso__temario-toolbar">
@@ -1408,7 +1296,6 @@ Escribe directamente los apuntes.`;
                       : "Curso"}
                   <i className="fa-solid fa-chevron-down" />
                 </button>
-
                 {selectorAbierto && (
                   <div className="repaso__select">
                     <div className="repaso__select-menu">
@@ -1435,7 +1322,6 @@ Escribe directamente los apuntes.`;
                             <i className="fa-solid fa-arrow-left" />
                             Categorías
                           </button>
-
                           {cursosDeCategoria.map((curso) => (
                             <button
                               key={curso}
@@ -1458,7 +1344,6 @@ Escribe directamente los apuntes.`;
                   </div>
                 )}
               </div>
-
               <div
                 className="repaso__categoria-wrapper"
                 ref={semanaRef}
@@ -1473,7 +1358,36 @@ Escribe directamente los apuntes.`;
                   }`}
                   onClick={() => {
                     if (!semanaHabilitada) return;
-
+                    if (
+                      !cursoTemario &&
+                      resultadoBusquedaTemario
+                    ) {
+                      const categoria =
+                        CATEGORIAS_TEMARIO.find((cat) =>
+                          cat.cursos.includes(
+                            resultadoBusquedaTemario.curso
+                          )
+                        );
+                      setCursoTemario(
+                        resultadoBusquedaTemario.curso
+                      );
+                      setCategoriaTemario(
+                        categoria?.id || ""
+                      );
+                      setSemanaTemario(
+                        resultadoBusquedaTemario.semana
+                      );
+                      setTemaSeleccionado({
+                        curso:
+                          resultadoBusquedaTemario.curso,
+                        semana:
+                          resultadoBusquedaTemario.semana,
+                        numeroTema:
+                          resultadoBusquedaTemario.numeroTema,
+                        tema:
+                          resultadoBusquedaTemario.tema
+                      });
+                    }
                     setSemanaSelectorAbierto(
                       (prev) => !prev
                     );
@@ -1483,7 +1397,6 @@ Escribe directamente los apuntes.`;
                   Semana {semanaSelectorTemario}
                   <i className="fa-solid fa-chevron-down" />
                 </button>
-
                 {semanaSelectorAbierto &&
                   semanaHabilitada && (
                     <div className="repaso__select">
@@ -1508,20 +1421,19 @@ Escribe directamente los apuntes.`;
                     </div>
                   )}
               </div>
-
               <div
                 className="repaso__temario-search"
                 ref={buscadorTemarioRef}
               >
                 <div className="repaso__temario-search-input">
                   <i className="fa-solid fa-magnifying-glass" />
-
                   <input
                     type="text"
                     value={busquedaTemario}
                     placeholder="Buscar tema..."
                     onChange={(e) => {
                       setBusquedaTemario(e.target.value);
+                      setTemaSeleccionado(null);
                       setBusquedaTemarioAbierta(true);
                     }}
                     onFocus={() => {
@@ -1529,10 +1441,11 @@ Escribe directamente los apuntes.`;
                         setBusquedaTemarioAbierta(true);
                       }
                     }}
-                    onKeyDown={manejarBusquedaTemarioKeyDown}
+                    onKeyDown={
+                      manejarBusquedaTemarioKeyDown
+                    }
                     aria-label="Buscar tema en el temario"
                   />
-
                   {busquedaTemario && (
                     <button
                       type="button"
@@ -1544,7 +1457,6 @@ Escribe directamente los apuntes.`;
                     </button>
                   )}
                 </div>
-
                 {busquedaTemarioAbierta &&
                   busquedaTemario.trim() && (
                     <div className="repaso__temario-search-results">
@@ -1567,13 +1479,13 @@ Escribe directamente los apuntes.`;
                                   resultado.tema
                                 )}
                               </span>
-
                               <span className="repaso__temario-search-result-meta">
                                 {labelCursoTemario(
                                   resultado.curso
                                 )}
                                 {" · "}
-                                Semana {resultado.semana}
+                                Semana{" "}
+                                {resultado.semana}
                                 {" · "}
                                 Tema{" "}
                                 {String(
@@ -1591,22 +1503,22 @@ Escribe directamente los apuntes.`;
                   )}
               </div>
             </div>
-
-            {!cursoTemario && (
-              <div className="repaso__empty">
-                <div className="repaso__empty-emoji">
-                  📚
+            {!cursoTemario &&
+              !busquedaTemario.trim() && (
+                <div className="repaso__empty">
+                  <div className="repaso__empty-emoji">
+                    📚
+                  </div>
+                  <p className="repaso__empty-title">
+                    Elige un curso
+                  </p>
+                  <p className="repaso__empty-sub">
+                    Selecciona un curso para ver sus temas
+                  </p>
                 </div>
-                <p className="repaso__empty-title">
-                  Elige un curso
-                </p>
-                <p className="repaso__empty-sub">
-                  Selecciona un curso para ver sus temas
-                </p>
-              </div>
-            )}
-
-            {cursoTemario && (
+              )}
+            {(cursoTemario ||
+              busquedaTemario.trim()) && (
               <div className="repaso__temario-list">
                 {temasVisiblesTemario.map(
                   ({
@@ -1621,7 +1533,6 @@ Escribe directamente los apuntes.`;
                         semana,
                         tema
                       );
-
                     const recomendadoHoy =
                       !programado &&
                       temaEstaRecomendadoHoy(
@@ -1629,7 +1540,6 @@ Escribe directamente los apuntes.`;
                         semana,
                         tema
                       );
-
                     return (
                       <div
                         key={`${curso}|${semana}|${tema}`}
@@ -1660,7 +1570,6 @@ Escribe directamente los apuntes.`;
                             {tema}
                           </button>
                         </div>
-
                         {!programado && (
                           <div className="repaso__temario-actions">
                             <button
@@ -1675,35 +1584,14 @@ Escribe directamente los apuntes.`;
                             >
                               ▶ YouTube
                             </button>
-
                             <button
                               type="button"
                               className="repaso__temario-action"
                               onClick={() =>
-                                abrirPaso1EnChatGPT(
-                                  curso,
-                                  tema
-                                )
+                                abrirPaso1EnChatGPT(curso, tema)
                               }
                             >
-                              🤖 1 · Investigar
-                            </button>
-
-                            <button
-                              type="button"
-                              className="repaso__temario-action"
-                              onClick={() =>
-                                copiarPasoJson(
-                                  2,
-                                  curso,
-                                  tema
-                                )
-                              }
-                            >
-                              {copiadoKey ===
-                              `${curso}|${tema}|2`
-                                ? "✓ Copiado"
-                                : "📋 2 · JSON"}
+                              🤖 Investigar
                             </button>
                           </div>
                         )}
@@ -1711,7 +1599,6 @@ Escribe directamente los apuntes.`;
                     );
                   }
                 )}
-
                 {temasVisiblesTemario.length === 0 && (
                   <p className="repaso__proximos-empty">
                     No se encontró ningún tema.
@@ -1721,7 +1608,6 @@ Escribe directamente los apuntes.`;
             )}
           </section>
         )}
-
         <button
           type="button"
           className="repaso__recomendado-fab"
@@ -1732,7 +1618,6 @@ Escribe directamente los apuntes.`;
         >
           <i className="bi bi-calendar-check" />
         </button>
-
         {recomendadoFullScreenOpen && (
           <div className="repaso__recomendado-fullscreen">
             <div className="repaso__recomendado-fullscreen-header">
@@ -1745,16 +1630,13 @@ Escribe directamente los apuntes.`;
               >
                 <i className="bi bi-arrow-left" /> Volver
               </button>
-
               <h2>Recomendado de hoy</h2>
             </div>
-
             <p className="repaso__recomendado-vacio">
               {recomendacionesConTemas.length === 0
                 ? "No hay repasos pendientes por hoy. ¡Vas al día!"
                 : null}
             </p>
-
             {recomendacionesConTemas.map((r) => (
               <div
                 key={`${r.curso}-Turno${r.turno}`}
@@ -1763,7 +1645,6 @@ Escribe directamente los apuntes.`;
                 <div className="repaso__recomendado-curso-nombre">
                   {r.curso}
                 </div>
-
                 <ul className="repaso__recomendado-temas">
                   {r.temas.map((tema) => (
                     <li key={tema}>{tema}</li>
@@ -1773,7 +1654,6 @@ Escribe directamente los apuntes.`;
             ))}
           </div>
         )}
-
         <SearchModal
           open={searchOpen}
           onClose={() => setSearchOpen(false)}
@@ -1786,24 +1666,20 @@ Escribe directamente los apuntes.`;
             );
           }}
         />
-
         {deleteState.isOpen && (
           <div className="delete-modal-overlay">
             <div className="delete-modal-content">
               <div className="delete-modal-icon">
                 <i className="fa-solid fa-triangle-exclamation" />
               </div>
-
               <h3 className="delete-modal-title">
                 ¿Eliminar repaso?
               </h3>
-
               <p className="delete-modal-text">
                 {deleteState.phase === 1
                   ? "Esta acción requiere confirmación. Selecciona Aceptar para continuar."
                   : "¡Atención! ¿Estás completamente seguro de borrarlo?"}
               </p>
-
               <div
                 className={`delete-modal-buttons ${
                   deleteState.phase === 1
@@ -1823,7 +1699,6 @@ Escribe directamente los apuntes.`;
                     ? "Aceptar"
                     : "Sí, borrar"}
                 </button>
-
                 <button
                   onClick={cancelarBorrado}
                   className="btn-cancel"
@@ -1834,19 +1709,16 @@ Escribe directamente los apuntes.`;
             </div>
           </div>
         )}
-
         {confirmarRepaso.isOpen && (
           <div className="repaso__confirm-toast">
             <div className="repaso__confirm-toast-content">
               <div className="repaso__confirm-toast-info">
                 <i className="fa-solid fa-calendar-check" />
-
                 <div>
                   <strong>Guardar repaso</strong>
                   <span>{confirmarRepaso.tema}</span>
                 </div>
               </div>
-
               <div className="repaso__confirm-toast-actions">
                 <button
                   type="button"
@@ -1857,7 +1729,6 @@ Escribe directamente los apuntes.`;
                 >
                   Cancelar
                 </button>
-
                 <button
                   type="button"
                   className="repaso__confirm-toast-confirm"

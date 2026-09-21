@@ -232,7 +232,6 @@
   flex-direction: column;
   gap: 0;
   margin: 0;
-  padding: 0 0 8px;
   box-sizing: border-box;
   background: var(--surface);
   border: 1px solid var(--border-strong);
@@ -277,7 +276,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 /* ============================================================
@@ -300,7 +299,6 @@
   height: auto;
   opacity: 1;
   visibility: visible;
-  padding-bottom: 24px;
 }
 .search-group__temas > * {
   min-height: 0;
@@ -453,12 +451,13 @@
    TEXTO DEL TEMA
    ============================================================ */
 .search-result-item__tema {
-  font-size: 14px;
   color: inherit;
   margin: 0;
   line-height: 1.45;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   display: inline;
+  font-weight: 400;
+  font-size: 20px;
 }
 .search-result-item__curso {
   font-size: 14px;
@@ -476,12 +475,88 @@
    COINCIDENCIA
    ============================================================ */
 .search-match {
-  background: rgba(68, 190, 218, .22);
-  color: inherit;
+  color: var(--accent);
   border-radius: 2px;
 }
 .search-result-item.is-curso .search-match {
   background: transparent;
+}
+/* ============================================================
+   CARGANDO BÚSQUEDA SEMÁNTICA
+   ============================================================ */
+.search-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  color: var(--ink-soft);
+  cursor: default;
+  background: transparent;
+  &:hover,
+  &.is-focused {
+    background: transparent;
+    color: var(--ink-soft);
+  }
+  .search-result-item__tema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 0;
+    font-size: 0;
+    line-height: 1;
+    cursor: default !important;
+  }
+  .search-result-item__tema::before {
+    content: "Buscando";
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .search-result-item__tema::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    flex: 0 0 5px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow:
+      10px 0 currentColor,
+      20px 0 currentColor;
+    animation: search-dots-wave 1.2s ease-in-out infinite;
+  }
+}
+@keyframes search-dots-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      10px 0 currentColor,
+      20px 0 currentColor;
+  }
+  15% {
+    transform: translateY(-5px);
+    box-shadow:
+      10px 0 currentColor,
+      20px 0 currentColor;
+  }
+  30% {
+    transform: translateY(0);
+    box-shadow:
+      10px -5px currentColor,
+      20px 0 currentColor;
+  }
+  45% {
+    transform: translateY(0);
+    box-shadow:
+      10px 0 currentColor,
+      20px -5px currentColor;
+  }
+  60% {
+    transform: translateY(0);
+    box-shadow:
+      10px 0 currentColor,
+      20px 0 currentColor;
+  }
 }
 /* ============================================================
    SIN RESULTADOS
@@ -500,7 +575,11 @@
 }
 .search-no-results {
   cursor: default;
+  font-size: 40px;
   color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover,
   &.is-focused {
     background: transparent;

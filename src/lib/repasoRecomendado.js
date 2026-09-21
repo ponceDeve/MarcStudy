@@ -1,7 +1,17 @@
 import temarioSesiones from "../data/temarioSesiones.json";
 import { leerLog, leerHistorialRotacion } from "./repasoStorage";
+import { leerHorario, DIAS_SEMANA } from "./scheduleStorage";
 // ─────────────────────────────────────────────────────────────────────────
 // Recomendaciones de Temario: qué toca hoy en cada curso.
+//
+// SEGÚN EL HORARIO DE POMODORO: si hay un horario configurado, hoy se
+// recomiendan solo los cursos que tienes en el horario de ESTE día de la
+// semana (lunes, martes...). De cada curso sale su bloque (turno) actual:
+// el primero que todavía no tiene todos sus temas guardados. Ese bloque se
+// mantiene hasta completarlo y solo entonces sale el siguiente. Cada curso
+// avanza por su cuenta y lo que no completes un día no se acumula ni se
+// mueve al día siguiente. Si no hay horario configurado, se usa la rotación
+// de abajo. Si hay horario pero hoy no tiene cursos, no se recomienda nada.
 //
 // Rotación fija de 6 grupos (1 curso de "letras", 1 de "ciencias" y 1 de
 // "cálculo" por grupo, cada curso pertenece siempre al mismo grupo). Los
@@ -153,12 +163,73 @@ function calcularEstadoRotacion() {
     turnosDados,
   };
 }
+// Clave del día de la semana como la guarda el horario ("lunes"... "domingo").
+function claveDiaDeHoy(fecha) {
+  return DIAS_SEMANA[(fecha.getDay() + 6) % 7];
+}
+function normalizarNombre(texto) {
+  return String(texto ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+// El horario guarda el nombre que escribió el usuario: se empareja con el
+// curso del temario ignorando mayúsculas y tildes (igual que HorarioPage).
+function cursoDelTemario(nombre) {
+  const buscado = normalizarNombre(nombre);
+  return (
+    Object.keys(temarioSesiones).find(
+      (curso) => normalizarNombre(curso) === buscado
+    ) || null
+  );
+}
+// Bloque (turno) actual de un curso: el primero que todavía no está
+// completo. Devuelve null si ya completó los 30.
+function turnoActualDeCurso(log, curso) {
+  const turnos = agruparEnTurnos(listaTemasDelCurso(curso));
+  for (let i = 0; i < turnos.length; i++) {
+    if (!turnoEstaCompleto(log, curso, turnos[i])) {
+      return { indice: i, turno: turnos[i] };
+    }
+  }
+  return null;
+}
+// Recomendaciones de hoy según el horario de Pomodoro.
+function obtenerRecomendacionesPorHorario(horario, fecha) {
+  const log = [...leerLog(), ...leerHistorialRotacion()];
+  const cursosDeHoy = horario[claveDiaDeHoy(fecha)] || [];
+  const yaAgregados = new Set();
+  const recomendaciones = [];
+  cursosDeHoy.forEach(({ subject }) => {
+    const curso = cursoDelTemario(subject);
+    if (!curso || yaAgregados.has(curso)) return;
+    yaAgregados.add(curso);
+    const actual = turnoActualDeCurso(log, curso);
+    if (!actual) return;
+    recomendaciones.push({
+      curso,
+      turno: actual.indice + 1,
+      temas: temasPendientesDeTurno(log, curso, actual.turno),
+      sesionesPendientesEnCurso:
+        NUM_TURNOS_POR_CURSO - actual.indice,
+    });
+  });
+  return recomendaciones;
+}
 /**
  * Devuelve, para el día actual de la rotación, los temas pendientes del
  * turno que le toca hoy a cada uno de los 3 cursos del grupo (los cursos
  * que ya terminaron sus 30 turnos simplemente no aparecen).
  */
-export function obtenerRecomendacionesHoy() {
+export function obtenerRecomendacionesHoy(fecha = new Date()) {
+  const horario = leerHorario();
+  if (horario && Object.keys(horario).length > 0) {
+    return obtenerRecomendacionesPorHorario(horario, fecha);
+  }
+  return obtenerRecomendacionesPorRotacion();
+}
+function obtenerRecomendacionesPorRotacion() {
   const {
     dia,
     log,
