@@ -1977,9 +1977,34 @@ ${teoria}`;
             </div>
             {recomendacionesHoyInicio.length > 0 && (
               <div className="mi-estudio__recomendados container">
-                <h3 className="mi-estudio__recomendados-title">
-                  Repasos recomendados de hoy
-                </h3>
+                <div className="mi-estudio__recomendados-fecha">
+                  {(() => {
+                    const ahora = new Date();
+                    const objetivo = new Date(2027, 2, 15);
+
+                    let meses =
+                      (objetivo.getFullYear() - ahora.getFullYear()) * 12 +
+                      (objetivo.getMonth() - ahora.getMonth());
+
+                    const fechaMeses = new Date(ahora);
+                    fechaMeses.setMonth(fechaMeses.getMonth() + meses);
+
+                    if (fechaMeses > objetivo) {
+                      meses--;
+                      fechaMeses.setMonth(fechaMeses.getMonth() - 1);
+                    }
+
+                    const diasRestantes = Math.ceil(
+                      (objetivo - fechaMeses) / (1000 * 60 * 60 * 24)
+                    );
+
+                    const semanas = Math.floor(diasRestantes / 7);
+                    const dias = diasRestantes % 7;
+
+                    return `${meses} meses · ${semanas} semanas · ${dias} días`;
+                  })()}
+                </div>
+
                 <div className="mi-estudio__recomendados-grid">
                   {recomendacionesHoyInicio.map((r) => (
                     <div
@@ -1989,6 +2014,7 @@ ${teoria}`;
                       <span className="mi-estudio__recomendados-curso-nombre">
                         {r.curso}
                       </span>
+
                       <ul className="mi-estudio__recomendados-temas">
                         {r.temas.map((tema) => (
                           <li key={tema}>{tema}</li>
