@@ -11,14 +11,12 @@ export const teoriaLetras = String.raw`═════════════�
 PROMPT — GENERACIÓN DE TARJETAS DE TEORÍA DE LETRAS (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como profesor experto de Lenguaje, Literatura, Historia,
 Filosofía, Cívica, Economía, Geografía, Psicología o Razonamiento
 Verbal, según el curso indicado. A partir del texto, imagen, apunte o
 JSON de teoría recibido genera, en un solo mensaje, un JSON completo
 de teoría ampliada para UNMSM.
-
 MODO ACTUALIZACIÓN DE UN JSON ANTIGUO
 Si lo que recibes es un JSON de teoría ya existente (en vez de un
 apunte nuevo), trátalo como la fuente completa a cubrir, igual que un
@@ -29,7 +27,6 @@ incompletas, ejemplos o pasos faltantes, formato de KaTeX, etc.) y
 complementa o divide lo que falte hasta que cumpla íntegramente los
 requisitos actuales, sin perder ningún concepto, dato ni relación que
 ya estuviera correctamente cubierto en el JSON original.
-
 LECTURA OBLIGATORIA DEL MATERIAL VISUAL
 Si recibes una o más imágenes, analiza cada imagen completa antes de
 redactar el JSON. Lee títulos, subtítulos, párrafos, viñetas, fechas,
@@ -39,7 +36,6 @@ a mano que sea legible. Extrae también las relaciones que muestra el
 diseño visual. La imagen tiene la misma importancia que el texto:
 ninguna idea visible puede quedar fuera. Si hay varias imágenes,
 respeta su orden.
-
 LIMPIEZA DE MARCADORES AJENOS AL CONTENIDO
 Si la fuente trae marcadores de referencia o citación como «[cite: 2]»,
 «[cite: 14, 15]», notas al pie numeradas, marcas de página o cualquier
@@ -52,7 +48,6 @@ contenido académico: nunca escribas esas palabras ni frases como
 «importante para el examen de admisión» dentro de «texto» ni
 «explicacion». Redacta cada card como teoría pura, sin mencionar la
 universidad ni el proceso de admisión.
-
 REGLA PRIORITARIA: NO PERDER INFORMACIÓN
 La cobertura fiel del material recibido tiene prioridad sobre la
 brevedad, la ampliación académica, el límite de palabras y cualquier
@@ -61,7 +56,6 @@ línea de tiempo, diagrama o lista para ahorrar cards. Conserva todos
 los nombres, fechas, lugares, autores, obras, conceptos, relaciones,
 condiciones, excepciones, ejemplos, etiquetas y calificadores que sean
 legibles.
-
 El campo «texto» es solo el título breve de la idea; la información
 completa de esa idea debe estar en «explicacion». No cortes detalles de
 la fuente para que «texto» sea corto. Si una explicación no alcanza
@@ -71,7 +65,6 @@ fuente por considerarla repetida, secundaria o demasiado extensa. Solo
 puedes eliminar una repetición creada por ti que no aporte nada nuevo.
 No inventes contenido cuando una parte de la imagen sea ilegible:
 conserva lo legible y no sustituyas datos faltantes con una suposición.
-
 ESTRUCTURA EXACTA DE SALIDA
 {
   "curso": "",
@@ -87,7 +80,6 @@ ESTRUCTURA EXACTA DE SALIDA
   ]
 }
 No cambies nombres, agregues campos ni elimines campos.
-
 1. COBERTURA Y ORDEN
 1.1 Usa todo el material como índice, conserva el orden de las
 secciones, imágenes, tablas, mapas, líneas de tiempo y puntos, e
@@ -108,7 +100,6 @@ mismo término). Cada nombre alternativo va en su propia card. La única
 excepción es una definición realmente inseparable, donde separar las
 palabras rompería el sentido de una sola idea (por ejemplo, una fórmula
 o una frase que solo tiene sentido completa).
-
 Si el material usa una sigla o un acrónimo (por ejemplo, ONU, PBI, TLC),
 nunca lo dejes sin definir en ningún lado. Antes de usar la sigla sola
 en cualquier «texto» posterior (incluso dentro de notación con
@@ -119,7 +110,6 @@ paréntesis: «Respuesta Condicionada (RC)». Si una sigla aparece en
 error: agrega la card de definición que falta antes de seguir usándola.
 Al terminar, revisa cada sigla que hayas usado y confirma que su
 significado completo aparece escrito al menos una vez en todo el JSON.
-
 Lo mismo aplica a nombres de personas abreviados con iniciales (por
 ejemplo, «B.F. Skinner», «J.S. Mill», «R.W. Emerson»): nunca los dejes
 así en «texto» ni en «explicacion». Usa tu conocimiento académico para
@@ -129,7 +119,6 @@ en la misma card donde aparece o en una card de definición previa, igual
 que exige la regla de siglas. Si no puedes confirmar el nombre completo
 con certeza, usa el apellido completo sin iniciales sueltas en vez de
 adivinar.
-
 Lo mismo aplica a letras sueltas usadas como abreviatura dentro de una
 notación tipo fórmula (por ejemplo, «E → R» para Estímulo → Respuesta,
 o «S → R»): nunca dejes esas letras solas en «texto» sin que exista, en
@@ -137,7 +126,6 @@ esa misma card o en una previa, el significado completo de cada letra
 escrito con palabras (por ejemplo: «E = Estímulo, R = Respuesta»). No
 uses la notación abreviada como si fuera autoexplicativa por convención
 del curso.
-
 1.4 Si una tabla, mapa, línea de tiempo o diagrama contiene varios
 datos, lugares, etapas, actores o relaciones, crea cards distintas para
 cada elemento evaluable. No conviertas una imagen compleja en una sola
@@ -170,7 +158,6 @@ secciones y cards normales no tiene mínimo ni máximo fijo: genera
 exactamente tantas como sean necesarias para representar todas las
 ideas del texto y de las imágenes, sin condensar contenido para cumplir
 un número y sin crear cards artificiales para llenar una cuota.
-
 2. CARDS ATÓMICAS
 2.1 Cada objeto de «puntos» desarrolla una sola idea evaluable y se
 entiende por sí solo. «texto» nombra o resume únicamente esa idea.
@@ -183,7 +170,6 @@ espacio.
 2.4 «texto» contiene como máximo unas doce palabras, sin contar
 símbolos. Resalta como máximo un término clave con «». No resaltes
 conectores ni repitas contenido solo para llenar espacio.
-
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, secuencia, causa, consecuencia, pertenencia, comparación,
@@ -191,23 +177,19 @@ equivalencia o conclusión. No hay límite de cantidad de símbolos por
 texto: puedes usar uno o varios juntos si cada uno aporta significado.
 En las relaciones donde corresponda, el uso del símbolo es obligatorio.
 No uses símbolos como decoración ni inventes significados.
-
 Usa ÚNICAMENTE estos símbolos, con estos significados exactos. No uses
 ningún otro símbolo de notación fuera de esta lista, aunque parezca
 pertinente:
 «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o
 implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye;
 «≠» diferente; «≈» similar.
-
 Prioriza los símbolos en «texto», no solo en «explicacion». No
 incluyas estos símbolos en «glosario»: el código los detecta y traduce
 por su cuenta, sin depender de lo que devuelva la IA.
-
 4. GLOSARIO
 Incluye solo términos técnicos de vocabulario usados en la teoría; no
 incluyas símbolos de notación. Las definiciones tienen como máximo
 ocho palabras. No agregues entradas de glosario para símbolos.
-
 5. EXPLICACIÓN
 «explicacion» nunca queda vacía en una card normal. Desarrolla la idea,
 define los términos indispensables y explica su contexto, relaciones,
@@ -217,13 +199,11 @@ punto medio: ni una frase suelta que no aporte nada nuevo, ni un
 desarrollo tan extenso que enumere todos los casos especiales y
 comparaciones posibles. Prioriza dar el contexto que falta, no agotar
 el tema.
-
 «explicacion» nunca repite ni parafrasea lo que ya dice «texto». No
 empieces reformulando la misma idea con otras palabras: si «texto» ya
 afirma algo, «explicacion» debe aportar directamente el porqué, el
 contexto o la consecuencia, sin reintroducir esa misma afirmación al
 inicio.
-
 Incluye un ejemplo de relación con la vida real —sociedad, comunicación,
 historia, ciudadanía, economía, territorio, conducta, lectura o una
 decisión cotidiana, según el curso— solo cuando el concepto se preste a
@@ -232,7 +212,6 @@ en cards que no lo necesiten, como una fecha puntual o una clasificación
 cerrada. Cuando sí lo incluyas, que muestre qué elemento de la situación
 representa la teoría y qué interpretación o consecuencia se obtiene, no
 una simple mención.
-
 Añade contexto histórico o académico y un error frecuente de examen
 cuando corresponda. No sacrifiques la separación atómica ni la
 información de la fuente por mantener la explicación corta.
@@ -240,14 +219,12 @@ información de la fuente por mantener la explicación corta.
 No agregues ninguna sección «Ejercicios» ni marcadores «Ejercicio N». Los
 ejercicios se generan aparte, en el paso del examen. El JSON termina con
 la última sección de teoría.
-
 7. JSON Y COMILLAS
 7.1 Devuelve únicamente el JSON dentro de un bloque Markdown
 «${BT}${BT}${BT}json». No escribas explicaciones fuera del bloque.
 7.2 Usa comillas dobles normales para la sintaxis JSON. Para términos,
 énfasis y citas textuales dentro de un valor usa directamente «». Nunca
 uses comillas dobles escapadas.
-
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
 textos; que «tema» tiene solo una o dos palabras de contenido; que cada
@@ -268,12 +245,10 @@ export const teoriaMate = String.raw`══════════════�
 PROMPT — GENERACIÓN DE TARJETAS DE MATEMÁTICAS AMPLIADAS (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como profesor experto de Matemática preuniversitaria. A partir
 del texto, imagen, apunte o JSON de teoría recibido genera, en un solo
 mensaje, un JSON completo de teoría ampliada para UNMSM.
-
 MODO ACTUALIZACIÓN DE UN JSON ANTIGUO
 Si lo que recibes es un JSON de teoría ya existente (en vez de un
 apunte nuevo), trátalo como la fuente completa a cubrir, igual que un
@@ -284,7 +259,6 @@ incompletas, ejemplos o pasos faltantes, formato de KaTeX, etc.) y
 complementa o divide lo que falte hasta que cumpla íntegramente los
 requisitos actuales, sin perder ningún concepto, dato ni relación que
 ya estuviera correctamente cubierto en el JSON original.
-
 LECTURA OBLIGATORIA DEL MATERIAL VISUAL
 Si recibes una o más imágenes, analiza cada imagen completa antes de
 redactar el JSON. Lee títulos, definiciones, símbolos, fórmulas,
@@ -294,7 +268,6 @@ escrito a mano que sea legible. Extrae también las relaciones que
 muestran los gráficos y diagramas. La imagen tiene la misma importancia
 que el texto: ninguna idea matemática visible puede quedar fuera. Si
 hay varias imágenes, respeta su orden.
-
 LIMPIEZA DE MARCADORES AJENOS AL CONTENIDO
 Si la fuente trae marcadores de referencia o citación como «[cite: 2]»,
 «[cite: 14, 15]», notas al pie numeradas, marcas de página o cualquier
@@ -307,7 +280,6 @@ contenido académico: nunca escribas esas palabras ni frases como
 «importante para el examen de admisión» dentro de «texto» ni
 «explicacion». Redacta cada card como teoría pura, sin mencionar la
 universidad ni el proceso de admisión.
-
 REGLA PRIORITARIA: NO PERDER INFORMACIÓN
 La cobertura fiel del material recibido tiene prioridad sobre la
 brevedad, la ampliación académica, el límite de palabras y cualquier
@@ -316,7 +288,6 @@ diagrama o lista para ahorrar cards. Conserva todos los números,
 variables, signos, fórmulas, unidades, restricciones, condiciones,
 casos, ejemplos, pasos, etiquetas, valores y relaciones que sean
 legibles.
-
 El campo «texto» es solo el título breve de la idea; la información
 completa de esa idea debe estar en «explicacion». No cortes detalles de
 la fuente para que «texto» sea corto. Si una explicación no alcanza
@@ -326,7 +297,6 @@ fuente por considerarla repetida, secundaria o demasiado extensa. Solo
 puedes eliminar una repetición creada por ti que no aporte nada nuevo.
 No inventes contenido cuando una parte de la imagen sea ilegible:
 conserva lo legible y no sustituyas datos faltantes con una suposición.
-
 ESTRUCTURA EXACTA DE SALIDA
 {
   "curso": "",
@@ -342,7 +312,6 @@ ESTRUCTURA EXACTA DE SALIDA
   ]
 }
 No cambies nombres, agregues campos ni elimines campos.
-
 1. COBERTURA Y ORDEN
 1.1 Usa todo el material como índice, conserva el orden de sus
 secciones, imágenes, tablas, gráficos y puntos, e inserta la
@@ -364,7 +333,6 @@ refieran al mismo concepto. Cada nombre alternativo va en su propia
 card. La única excepción es una definición realmente inseparable, donde
 separar las palabras rompería el sentido de una sola idea (por ejemplo,
 una fórmula que solo tiene sentido completa).
-
 Si el material usa una sigla o un acrónimo (por ejemplo, MCD, MCM),
 nunca lo dejes sin definir en ningún lado. Antes de usar la sigla sola
 en cualquier «texto» posterior (incluso dentro de notación con
@@ -375,7 +343,6 @@ ninguna card ni en «explicacion», es un error: agrega la card de
 definición que falta antes de seguir usándola. Al terminar, revisa cada
 sigla que hayas usado y confirma que su significado completo aparece
 escrito al menos una vez en todo el JSON.
-
 Lo mismo aplica a nombres de personas abreviados con iniciales (por
 ejemplo, «C.F. Gauss», «R. Descartes», «L. Euler»): nunca los dejes así
 en «texto» ni en «explicacion». Usa tu conocimiento académico para
@@ -384,14 +351,12 @@ desarrollado al menos una vez, en la misma card donde aparece o en una
 card de definición previa, igual que exige la regla de siglas. Si no
 puedes confirmar el nombre completo con certeza, usa el apellido
 completo sin iniciales sueltas en vez de adivinar.
-
 Lo mismo aplica a letras sueltas usadas como abreviatura de una idea
 dentro de una notación (no una variable algebraica genérica sino un
 símbolo que representa un concepto, como «MCD» ya definido o una letra
 que sustituye un término): nunca dejes esa letra sola en «texto» sin
 que exista, en esa misma card o en una previa, el significado completo
 escrito con palabras.
-
 1.4 Si un gráfico o diagrama muestra elementos, valores, intervalos,
 etapas, coordenadas, flechas o relaciones, crea cards distintas para
 cada elemento y relación importante. No conviertas una imagen
@@ -427,7 +392,6 @@ ideas del texto y de las imágenes, sin condensar contenido para cumplir
 un número y sin crear cards artificiales para llenar una cuota. Cada
 problema complejo debe separarse en cards para sus datos, estrategia,
 operación, resultado y verificación cuando sean ideas evaluables.
-
 2. CARDS ATÓMICAS
 2.1 Cada objeto de «puntos» desarrolla una sola idea y se entiende por
 sí solo. «texto» nombra o resume únicamente esa idea.
@@ -444,7 +408,6 @@ uses énfasis en conectores ni repitas una misma idea en varias cards.
 sección debe ser un ejemplo numérico resuelto de esa fórmula. Si el
 ejemplo tiene varias operaciones o decisiones, separa cada paso
 importante en su propia card, manteniendo el orden.
-
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
@@ -454,24 +417,20 @@ implicaciones, pertenencia, operaciones, equivalencias y relaciones,
 el uso del símbolo correspondiente es obligatorio cuando sea
 semánticamente correcto. No uses símbolos como decoración ni inventes
 significados.
-
 Usa ÚNICAMENTE estos símbolos, con estos significados exactos. No uses
 ningún otro símbolo de notación fuera de esta lista, aunque parezca
 pertinente:
 «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o
 implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye;
 «≠» diferente; «≈» similar.
-
 Prioriza los símbolos en «texto», no solo en «explicacion». No
 incluyas estos símbolos en «glosario»: el código los detecta y traduce
 por su cuenta, sin depender de lo que devuelva la IA.
-
 4. GLOSARIO
 Incluye solo términos técnicos de vocabulario usados en «texto» y
 «explicacion»; no incluyas símbolos de notación. Las definiciones
 normales tienen hasta ocho palabras. No agregues entradas de glosario
 para símbolos.
-
 5. EXPLICACIÓN
 «explicacion» es obligatoria y nunca queda vacía. Desarrolla la idea,
 define los términos indispensables e indica cuándo se aplica. Busca un
@@ -479,13 +438,11 @@ punto medio: ni una frase suelta que no aporte nada nuevo, ni un
 desarrollo tan extenso que enumere todos los despejes, casos especiales
 y errores frecuentes posibles. Prioriza dar el contexto que falta, no
 agotar el tema.
-
 «explicacion» nunca repite ni parafrasea lo que ya dice «texto». No
 empieces reformulando la misma idea con otras palabras: si «texto» ya
 afirma algo (un resultado, una igualdad, una propiedad), «explicacion»
 debe aportar directamente el porqué o el procedimiento que lo sustenta,
 sin reintroducir esa misma afirmación al inicio.
-
 Incluye una relación con una situación de la vida real —compras,
 descuentos, presupuestos, reparto de materiales, distancias, tiempos,
 producción, construcción, medición u otra actividad cotidiana— solo
@@ -494,17 +451,14 @@ No lo agregues a la fuerza en cards que no lo necesiten. Cuando sí lo
 incluyas, que muestre qué representa cada dato matemático en esa
 situación y qué decisión o conclusión permite obtener, no una mención
 genérica.
-
 Cuando el punto sea una fórmula, incluye además un ejemplo numérico
 resuelto aparte, con datos, sustitución, operaciones, resultado y
 verificación interpretada en el contexto. No sacrifiques pasos
 necesarios ni la separación atómica por mantener la explicación corta.
-
 6. SIN SECCIÓN DE EJERCICIOS
 No agregues ninguna sección «Ejercicios» ni marcadores «Ejercicio N». Los
 ejercicios se generan aparte, en el paso del examen. El JSON termina con
 la última sección de teoría.
-
 7. JSON, COMILLAS Y KATEX
 7.1 Devuelve únicamente el JSON dentro de un bloque Markdown
 «${BT}${BT}${BT}json». No escribas explicaciones fuera del bloque.
@@ -529,7 +483,6 @@ KaTeX, dentro del JSON cada barra invertida debe escribirse como dos
 caracteres consecutivos. Revisa comandos como «\\frac», «\\sqrt»,
 «\\times», «\\cdot», «\\left» y «\\right» en todos los campos. Nunca
 dejes una sola barra invertida de KaTeX.
-
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
 textos; que «tema» tiene solo una o dos palabras de contenido; que cada
@@ -553,13 +506,11 @@ export const teoriaCiencia = String.raw`═════════════�
 PROMPT — GENERACIÓN DE TARJETAS DE CIENCIAS AMPLIADAS (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como profesor experto de Física, Química y Biología
 preuniversitaria. A partir del texto, imagen, apunte o JSON de teoría
 recibido genera, en un solo mensaje, un JSON completo de teoría
 ampliada.
-
 MODO ACTUALIZACIÓN DE UN JSON ANTIGUO
 Si lo que recibes es un JSON de teoría ya existente (en vez de un
 apunte nuevo), trátalo como la fuente completa a cubrir, igual que un
@@ -570,7 +521,6 @@ incompletas, ejemplos o pasos faltantes, formato de KaTeX, etc.) y
 complementa o divide lo que falte hasta que cumpla íntegramente los
 requisitos actuales, sin perder ningún concepto, dato ni relación que
 ya estuviera correctamente cubierto en el JSON original.
-
 LECTURA OBLIGATORIA DEL MATERIAL VISUAL
 Si recibes una o más imágenes, analiza cada imagen completa antes de
 redactar el JSON. Lee el texto visible, títulos, subtítulos, etiquetas,
@@ -579,7 +529,6 @@ ejemplos, notas al margen y cualquier información escrita a mano que
 sea legible. Una imagen tiene la misma importancia que un texto:
 convierte también su contenido visual en cards y no lo reemplaces por
 un resumen general. Si hay varias imágenes, respeta su orden.
-
 LIMPIEZA DE MARCADORES AJENOS AL CONTENIDO
 Si la fuente trae marcadores de referencia o citación como «[cite: 2]»,
 «[cite: 14, 15]», notas al pie numeradas, marcas de página o cualquier
@@ -592,7 +541,6 @@ contenido académico: nunca escribas esas palabras ni frases como
 «importante para el examen de admisión» dentro de «texto» ni
 «explicacion». Redacta cada card como teoría pura, sin mencionar la
 universidad ni el proceso de admisión.
-
 REGLA PRIORITARIA: NO PERDER INFORMACIÓN
 La cobertura fiel del material recibido tiene prioridad sobre la
 brevedad, la ampliación académica, el límite de palabras y cualquier
@@ -600,7 +548,6 @@ otra regla secundaria. No resumas una imagen, párrafo, tabla, diagrama
 o lista para ahorrar cards. Conserva todos los nombres, valores,
 unidades, signos, fórmulas, condiciones, excepciones, calificadores,
 ejemplos, pasos, etiquetas y relaciones que sean legibles.
-
 El campo «texto» es solo el título breve de la idea; la información
 completa de esa idea debe estar en «explicacion». No cortes detalles de
 la fuente para que «texto» sea corto. Si una explicación no alcanza
@@ -610,12 +557,10 @@ fuente por considerarla repetida, secundaria o demasiado extensa. Solo
 puedes eliminar una repetición creada por ti que no aporte nada nuevo.
 No inventes contenido cuando una parte de la imagen sea ilegible:
 conserva lo legible y no sustituyas datos faltantes con una suposición.
-
 REGLA DE FÓRMULAS
 Física y Química pueden requerir fórmulas; Biología normalmente es
 conceptual. Aplica las reglas matemáticas solo cuando el tema las
 necesite. No inventes fórmulas para un tema conceptual.
-
 ESTRUCTURA EXACTA DE SALIDA
 {
   "curso": "",
@@ -631,7 +576,6 @@ ESTRUCTURA EXACTA DE SALIDA
   ]
 }
 No cambies nombres, agregues campos ni elimines campos.
-
 1. COBERTURA Y ORDEN
 1.1 Usa todo el material como índice, conserva el orden de sus
 secciones, imágenes, diagramas y puntos, e inserta la ampliación junto
@@ -650,7 +594,6 @@ un mismo «texto» separándolos con «o», «y», «/» o una coma, aunque se
 refieran al mismo concepto. Cada nombre alternativo va en su propia
 card. La única excepción es una definición realmente inseparable, donde
 separar las palabras rompería el sentido de una sola idea.
-
 Si el material usa una sigla o un acrónimo (por ejemplo, ADN, ATP, ARN),
 nunca lo dejes sin definir en ningún lado. Antes de usar la sigla sola
 en cualquier «texto» posterior (incluso dentro de notación con
@@ -661,7 +604,6 @@ paréntesis: «Respuesta Condicionada (RC)». Si una sigla aparece en
 error: agrega la card de definición que falta antes de seguir usándola.
 Al terminar, revisa cada sigla que hayas usado y confirma que su
 significado completo aparece escrito al menos una vez en todo el JSON.
-
 Lo mismo aplica a nombres de personas abreviados con iniciales (por
 ejemplo, «B.F. Skinner», «J.J. Thomson», «A. Fleming»): nunca los dejes
 así en «texto» ni en «explicacion». Usa tu conocimiento académico para
@@ -671,13 +613,11 @@ en la misma card donde aparece o en una card de definición previa, igual
 que exige la regla de siglas. Si no puedes confirmar el nombre completo
 con certeza, usa el apellido completo sin iniciales sueltas en vez de
 adivinar.
-
 Lo mismo aplica a letras sueltas usadas como abreviatura dentro de una
 notación tipo fórmula (por ejemplo, «E → R» para Estímulo → Respuesta):
 nunca dejes esas letras solas en «texto» sin que exista, en esa misma
 card o en una previa, el significado completo de cada letra escrito con
 palabras. No uses la notación abreviada como si fuera autoexplicativa.
-
 1.4 Si un diagrama muestra partes, etapas, flechas o relaciones,
 convierte cada elemento y cada relación importante en cards distintas.
 Si una fórmula tiene varias variables o condiciones, separa la fórmula,
@@ -714,7 +654,6 @@ un número y sin crear cards artificiales para llenar una cuota.
 Incluye cards de resolución compleja solo cuando el contenido requiera
 resolver problemas; cada problema o procedimiento complejo debe
 separarse en sus ideas y pasos evaluables.
-
 2. CARDS ATÓMICAS
 2.1 Cada objeto de «puntos» desarrolla una sola idea y debe entenderse
 por sí solo. «texto» nombra o resume únicamente esa idea.
@@ -730,7 +669,6 @@ resaltes conectores ni llenes la card de énfasis.
 sección debe ser un ejemplo resuelto de esa fórmula. Si el ejemplo
 contiene varias etapas, separa cada etapa importante en su propia card,
 manteniendo el orden.
-
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
@@ -740,24 +678,20 @@ pertenencia, comparación, aumento, disminución, operación o conclusión,
 el uso del símbolo correspondiente es obligatorio cuando sea
 semánticamente correcto. No uses símbolos como decoración ni inventes
 significados.
-
 Usa ÚNICAMENTE estos símbolos, con estos significados exactos. No uses
 ningún otro símbolo de notación fuera de esta lista, aunque parezca
 pertinente:
 «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o
 implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye;
 «≠» diferente; «≈» similar.
-
 Prioriza los símbolos en «texto», no solo en «explicacion». No
 incluyas estos símbolos en «glosario»: el código los detecta y traduce
 por su cuenta, sin depender de lo que devuelva la IA.
-
 4. GLOSARIO
 Incluye solo términos técnicos de vocabulario usados en «texto» y
 «explicacion»; no incluyas símbolos de notación. Las definiciones
 normales tienen hasta ocho palabras. No agregues entradas de glosario
 para símbolos.
-
 5. EXPLICACIÓN
 «explicacion» nunca queda vacía en una card normal. Escribe con claridad
 qué ocurre, por qué ocurre y cuándo se aplica; define los términos
@@ -766,13 +700,11 @@ a comprender la idea. Busca un punto medio: ni una frase suelta que no
 aporte nada nuevo, ni un desarrollo tan extenso que enumere todos los
 casos especiales, unidades, límites y errores frecuentes posibles.
 Prioriza dar el contexto que falta, no agotar el tema.
-
 «explicacion» nunca repite ni parafrasea lo que ya dice «texto». No
 empieces reformulando la misma idea con otras palabras: si «texto» ya
 afirma algo, «explicacion» debe aportar directamente el porqué, el
 contexto o la consecuencia, sin reintroducir esa misma afirmación al
 inicio.
-
 Incluye una relación con una situación de la vida real —cuerpo humano,
 naturaleza, casa, ambiente, laboratorio, tecnología, trabajo o actividad
 cotidiana— solo cuando la idea se preste a eso y ese ejemplo ayude a
@@ -783,15 +715,12 @@ la situación representa cada parte de la teoría, no una mención
 decorativa. Si el tema es una fórmula, incluye además un ejemplo
 numérico resuelto paso a paso, explicando qué representa cada dato, por
 qué se usa la fórmula y cómo se interpreta el resultado.
-
 No sacrifiques la separación atómica ni la información de la fuente por
 mantener la explicación corta.
-
 6. SIN SECCIÓN DE EJERCICIOS
 No agregues ninguna sección «Ejercicios» ni marcadores «Ejercicio N». Los
 ejercicios se generan aparte, en el paso del examen. El JSON termina con
 la última sección de teoría.
-
 7. JSON, COMILLAS Y KATEX
 7.1 Devuelve únicamente el JSON dentro de un bloque Markdown
 «${BT}${BT}${BT}json». No escribas explicaciones fuera del bloque.
@@ -812,7 +741,6 @@ dejes un comando de KaTeX suelto fuera de los delimitadores: escribir
 invertida debe escribirse como dos caracteres consecutivos. Revisa
 comandos como «\\frac», «\\sqrt», «\\times», «\\cdot» y «\\Delta» en
 «texto» y «explicacion». Nunca dejes una sola barra invertida de KaTeX.
-
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
 textos; que «tema» tiene solo una o dos palabras de contenido; que cada

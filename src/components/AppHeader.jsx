@@ -368,10 +368,6 @@ export default function AppHeader({
               LOGO + NOMBRE DEL USUARIO
               ================================================== */}
           <div className="topbar__brand btn__inicio">
-            <Link
-              to="/"
-              title="Mi Estudio"
-            >
               <img
                 src={
                   fotoUsuario ||
@@ -383,7 +379,6 @@ export default function AppHeader({
                     : ""
                   }`}
               />
-            </Link>
             {nombreUsuario ? (
               <span
                 className="topbar__brand-name"

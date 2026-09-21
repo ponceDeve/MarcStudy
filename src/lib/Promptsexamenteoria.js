@@ -10,7 +10,6 @@ export const examenLetras = String.raw`═════════════�
 PROMPT — GENERACIÓN DE EXAMEN DE LETRAS TIPO DECO (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como especialista en Lenguaje, Literatura, Historia, Filosofía,
 Cívica, Economía, Geografía, Psicología o Razonamiento Verbal, según el
@@ -18,7 +17,6 @@ curso recibido, con nivel UNMSM. Recibirás un JSON de teoría
 con secciones («titulo») y, dentro de cada una, puntos con «texto» y
 «explicacion». No hay una sección «Ejercicios» ni marcadores «Ejercicio N»:
 los ejercicios los redactas tú (Bloque B).
-
 OBJETIVO PEDAGÓGICO PRIORITARIO
 Evalúa comprensión, interpretación, transferencia y juicio, no memoria
 literal. El estudiante no debe acertar por reconocer una palabra,
@@ -27,7 +25,6 @@ apunte. Cada pregunta del Bloque A corresponde únicamente al título que le toc
 puntos, pero debe convertirlos en un caso, fragmento,
 evidencia, afirmación, comparación o error conceptual que obligue a
 razonar.
-
 FLUJO OBLIGATORIO DE DOS MENSAJES
 1. Primer mensaje: enumera cada título en el orden recibido, con sus puntos
    numerados (número y «texto»). Calcula cuántas preguntas del Bloque A le
@@ -46,7 +43,6 @@ FLUJO OBLIGATORIO DE DOS MENSAJES
    código markdown, sin comentarios antes ni después. No lo coloques en un
    documento ni en un panel separado del chat.
    Forma: { "examen": [ ... ], "ejercicios": [ ... ] }
-
 1. BLOQUES Y CANTIDAD
 1.1 Bloque A (clave «examen»): las preguntas se hacen por título, no por
 punto. Cantidad por título = mínimo(puntos del título, máximo(2, mínimo(4,
@@ -73,10 +69,8 @@ llevan el valor literal «null» (no un string «"null"», no un objeto vacío
 posiciones. No elimines ni compactes posiciones. Ejemplo: un título de 6
 puntos con 2 preguntas → [pregunta, pregunta, null, null, null, null]. El
 arreglo «ejercicios» tiene 20 elementos y ninguno es «null».
-
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
-
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...",
   "...", "...", "..."], "correct": 0, "explicacion": "..." }
@@ -87,7 +81,6 @@ copies una oración cambiando solo el término. Mantén extensión,
 estructura visual y nivel de detalle semejantes, pero haz que cada opción
 requiera considerar un matiz distinto. La correcta debe depender del
 análisis del caso, no de una palabra que coincida con el apunte.
-
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...",
   "proposiciones": [
@@ -99,7 +92,6 @@ Presenta primero un fragmento, situación o afirmación contextualizada.
 Incluye al menos tres proposiciones que interpreten sus rasgos,
 consecuencias, intención, relación o contexto. No uses definiciones
 aisladas ni frases cuya respuesta dependa de recordar una sola palabra.
-
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...",
   "opts": [["..."], ["..."], ["..."], ["..."], ["..."]],
@@ -108,7 +100,6 @@ aisladas ni frases cuya respuesta dependa de recordar una sola palabra.
 necesita una instrucción aparte, solo el texto con los espacios. Nunca
 escribas ninguna instrucción ni copies ahí el caso; así se evita por
 completo la duplicación con «textoConEspacios».
-
 «textoConEspacios» plantea un caso breve con un problema o un dato que
 no cuadra a simple vista —igual que en opción múltiple—, no una oración
 plana de una sola idea. Cada blanco se completa con una palabra o una
@@ -117,7 +108,6 @@ los blancos resuelven inferencias, relaciones, consecuencias o
 categorías aplicadas al caso, no el nombre literal de una teoría, autor,
 obra o definición memorizada. Marca la posición literalmente como
 «___1___», «___2___», etc.
-
 «opts» contiene exactamente cinco combos, cada uno con la misma
 cantidad de blancos y la misma cantidad de palabras en cada posición que
 los demás combos. Cruza los términos entre los combos —una palabra que
@@ -125,7 +115,6 @@ aparece en el blanco 1 de un combo puede aparecer en el blanco 2 de
 otro— para que ninguna combinación se descarte por una sola palabra
 suelta o por su posición; el estudiante debe evaluar la combinación
 completa contra el caso. No repitas combos idénticos.
-
 2.4 Relacionar:
 { "tipo": "relacionar", "q": "...", "columnaA": ["1. ...", "2. ...",
   "3. ..."], "columnaB": ["a) ...", "b) ...", "c) ..."],
@@ -137,7 +126,6 @@ términos con definiciones que se resuelvan por memoria. Cada columna
 tiene al menos tres elementos. «opts» contiene cinco combinaciones
 completas y cortas con el formato «1a - 2b - 3c». No uses flechas,
 comas ni el texto completo de las columnas.
-
 2.5 ALTERNATIVAS: RAZONAMIENTO, NO RECONOCIMIENTO
 Las alternativas no deben ser cinco versiones de la misma teoría.
 Deben competir dentro del mismo caso y representar lecturas posibles,
@@ -149,7 +137,6 @@ autores, hechos o relaciones que ya aparezcan en la teoría de este tema
 un autor que la fuente no haya enseñado, ni siquiera como distractor.
 Cada opción debe ser razonable a primera vista y la correcta debe ser
 la única que encaje con toda la evidencia.
-
 Las cinco alternativas de una misma pregunta deben tener la misma
 cantidad de palabras entre sí, sin contar símbolos, y ninguna debe
 superar ~15 palabras, y ese es un límite máximo, no una meta: prioriza
@@ -166,21 +153,18 @@ alternativa. Al menos dos distractores deben ser conceptos o
 interpretaciones cercanas que puedan confundirse por un matiz de
 significado, contexto, intención, relación o alcance. No incluyas una
 palabra exclusiva que delate la correcta.
-
 Cuando el mismo grupo de términos o ideas pueda combinarse de más de una
 forma (por ejemplo, dos conceptos que se intercambian de posición),
 cruza esas piezas entre las alternativas: un elemento que aparece
 primero en una alternativa puede aparecer después en otra. Esto impide
 que el estudiante descarte una alternativa completa por una sola pieza
 suelta, sin analizar la combinación entera.
-
 En «completar», los cinco combos conservan la misma cantidad de blancos
 y la misma cantidad de palabras en cada posición, cruzando los términos
 entre combos como se explicó arriba. En «relacionar», todos mantienen
 el mismo número de pares y el patrón «1a - 2b - 3c», modificando
 asignaciones que obliguen a revisar cada vínculo. Nunca repitas combos
 idénticos.
-
 3. DISEÑO DE LAS PREGUNTAS
 En «opcion_multiple», «verdadero_falso» y «relacionar», el campo «q»
 debe terminar con una interrogación explícita y completa —una pregunta
@@ -195,7 +179,6 @@ donde «q» es siempre «""», este mismo criterio se traslada a
 «textoConEspacios»: el caso debe dejar clarísimo, por su propia
 redacción, qué debe deducir el estudiante en cada blanco, sin necesidad
 de una interrogación literal.
-
 Evita definiciones directas y preguntas abstractas. Presenta siempre un
 caso breve con un problema, un dato que no cuadra o un hecho que exige
 explicación —no una simple observación plana—, formulado en una sola
@@ -205,13 +188,11 @@ sin adornos ni información de sobra; el enunciado del Bloque A no debe
 superar ~45 palabras, y ese es un límite, no un objetivo: redacta el
 caso con el mínimo de palabras que permita plantearlo con claridad, y
 alárgalo solo si el caso realmente lo necesita.
-
 No preguntes «¿qué es...?, ¿quién fue...?, ¿cuál es la definición...?»
 si la respuesta aparece literalmente en la teoría. Tampoco escribas el
 nombre de la corriente, autor, obra o concepto como pista cuando el
 estudiante pueda identificarlo y marcar la alternativa sin analizar. No
 copies frases distintivas de «texto» o «explicacion».
-
 En el Bloque A usa únicamente la información de los puntos del título que fusiona,
 transformada en una situación que exija interpretarla. En el Bloque B
 integra varias secciones de la teoría; ahí sí puede necesitarse más de
@@ -220,7 +201,6 @@ pero sin acumular información que
 no se use. Alterna las formas de inicio para no repetir escenarios. Los
 distractores deben ser confusiones plausibles y no poder descartarse
 por una sola palabra o diferencia de redacción.
-
 4. TEXTO, COMILLAS Y JSON
 Usa comillas dobles normales solo para la sintaxis JSON. Para términos,
 énfasis o citas dentro de un valor usa directamente «». No uses comillas
@@ -232,7 +212,6 @@ más de dos preguntas consecutivas. Elige el índice correcto de cada
 pregunta antes de redactar las alternativas. Antes de entregar el
 examen, cuenta cuántas veces aparece cada índice y corrige si alguno
 domina.
-
 5. EXPLICACIONES
 Si una pregunta o su explicación usa una sigla, un acrónimo, un nombre
 de persona abreviado con iniciales, o una letra suelta de notación (como
@@ -240,7 +219,6 @@ de persona abreviado con iniciales, o una letra suelta de notación (como
 en el «q» o en la «explicacion» de esa misma pregunta, aunque la teoría
 original ya lo haya definido en otro documento. No asumas que el
 estudiante ya conoce esa expansión.
-
 En el Bloque A usa las «explicacion» de los puntos que fusiona como base,
 pero escribe una explicación detallada que vincule cada indicio del caso
 con la respuesta y explique por qué las otras interpretaciones no
@@ -249,13 +227,11 @@ vida real —comunicación, sociedad, historia, ciudadanía, economía,
 territorio, conducta o lectura, según corresponda— y explica qué
 elemento de esa situación permite aplicar la teoría. No pegues la teoría
 literalmente ni la reescribas como una definición.
-
 En el Bloque B redacta una argumentación nueva, aplicada al caso y
 coherente con la teoría. Expón el razonamiento en al menos cuatro pasos
 numerados: identifica los indicios, interpreta su relación, contrástala
 con las alternativas y concluye. Evita repetir información innecesaria,
 pero no reduzcas la explicación a nombrar la alternativa correcta.
-
 6. VALIDACIÓN FINAL
 Comprueba que:
 - toda pregunta de «opcion_multiple», «verdadero_falso» y «relacionar»
@@ -300,13 +276,11 @@ export const examenMate = String.raw`══════════════�
 PROMPT — GENERACIÓN DE EXAMEN DE MATEMÁTICAS TIPO DECO (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como especialista en Matemática tipo DECO de nivel UNMSM. Recibirás un JSON de teoría
 con secciones («titulo») y, dentro de cada una, puntos con «texto» y
 «explicacion». No hay una sección «Ejercicios» ni marcadores «Ejercicio N»:
 los ejercicios los redactas tú (Bloque B).
-
 OBJETIVO PEDAGÓGICO PRIORITARIO
 Evalúa modelación, interpretación, estrategia y verificación, no
 memoria literal. Una persona no debe acertar por reconocer el nombre de
@@ -315,7 +289,6 @@ Cada pregunta del Bloque A corresponde únicamente al título que le toca y fusi
 puntos, pero debe convertirlos en un problema DECO: una situación,
 una representación, un patrón, una restricción, un error de
 procedimiento o una decisión que obligue a deducir la respuesta.
-
 FLUJO OBLIGATORIO DE DOS MENSAJES
 1. Primer mensaje: enumera cada título en el orden recibido, con sus puntos
    numerados (número y «texto»). Calcula cuántas preguntas del Bloque A le
@@ -334,7 +307,6 @@ FLUJO OBLIGATORIO DE DOS MENSAJES
    código markdown, sin comentarios antes ni después. No lo coloques en un
    documento ni en un panel separado del chat.
    Forma: { "examen": [ ... ], "ejercicios": [ ... ] }
-
 1. BLOQUES Y CANTIDAD
 1.1 Bloque A (clave «examen»): las preguntas se hacen por título, no por
 punto. Cantidad por título = mínimo(puntos del título, máximo(2, mínimo(4,
@@ -370,10 +342,8 @@ llevan el valor literal «null» (no un string «"null"», no un objeto vacío
 posiciones. No elimines ni compactes posiciones. Ejemplo: un título de 6
 puntos con 2 preguntas → [pregunta, pregunta, null, null, null, null]. El
 arreglo «ejercicios» tiene 20 elementos y ninguno es «null».
-
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
-
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...",
   "...", "...", "..."], "correct": 0, "explicacion": "..." }
@@ -385,7 +355,6 @@ número. Conserva una presentación y extensión semejantes, pero haz que
 cada alternativa represente un razonamiento diferente y plausible. La
 correcta debe surgir del análisis completo, no de una palabra o formato
 que la delate.
-
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...",
   "proposiciones": [
@@ -397,7 +366,6 @@ Presenta una situación matemática antes de las proposiciones. Incluye
 al menos tres afirmaciones sobre la interpretación, el procedimiento,
 la representación o el resultado del caso. No uses definiciones aisladas
 ni afirmaciones que se resuelvan recordando el nombre de una fórmula.
-
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...",
   "opts": [["..."], ["..."], ["..."], ["..."], ["..."]],
@@ -406,7 +374,6 @@ ni afirmaciones que se resuelvan recordando el nombre de una fórmula.
 necesita una instrucción aparte, solo el texto con los espacios. Nunca
 escribas ninguna instrucción ni copies ahí el enunciado; así se evita
 por completo la duplicación con «textoConEspacios».
-
 Plantea el caso en «textoConEspacios» con un problema o una situación
 que no cuadra a simple vista, igual que en opción múltiple. Los blancos
 deben completar pasos, condiciones, relaciones, resultados intermedios
@@ -415,14 +382,12 @@ de una propiedad o la copia de una fórmula. Cada blanco se completa con
 una palabra, un número o una frase muy corta (una o dos palabras),
 nunca con una oración completa, y debe quedar sin respuesta, marcado
 literalmente como «___1___», «___2___», etc.
-
 «opts» tiene cinco combos, cada uno con la misma cantidad de blancos y
 la misma cantidad de palabras en cada posición que los demás. Cruza los
 términos entre los combos —un valor que aparece en el blanco 1 de un
 combo puede aparecer en el blanco 2 de otro— para que ninguna
 combinación se descarte por una sola pieza suelta. Los distractores
 deben corresponder a errores matemáticos posibles.
-
 2.4 Relacionar:
 { "tipo": "relacionar", "q": "...", "columnaA": ["1. ...", "2. ...",
   "3. ..."], "columnaB": ["a) ...", "b) ...", "c) ..."],
@@ -434,7 +399,6 @@ términos con definiciones memorizables. Cada columna tiene al menos
 tres elementos. Genera cinco combinaciones completas en «opts», usando
 únicamente el formato corto «1a - 2b - 3c». No uses flechas ni repitas
 el contenido de las columnas.
-
 2.5 ALTERNATIVAS: RAZONAMIENTO, NO RECONOCIMIENTO
 Las alternativas no deben ser cinco versiones de la misma teoría. Deben
 ser respuestas competidoras al mismo caso: por ejemplo, distintas
@@ -446,7 +410,6 @@ debe apoyarse únicamente en propiedades, fórmulas o procedimientos que
 ya estén enseñados en la teoría de este tema (incluida la de otros
 puntos); nunca inventes una propiedad o un método que la fuente no haya
 enseñado, ni siquiera como distractor.
-
 Las cinco alternativas de una misma pregunta deben tener la misma
 cantidad de palabras entre sí (fuera del Bloque B cuantitativo, donde
 aplica la regla de formato y magnitud de abajo), y en el Bloque A
@@ -463,13 +426,11 @@ distractores deben ser resultados cercanos, expresiones parecidas o
 procedimientos que fallen por errores plausibles, como un signo,
 despeje, dominio, unidad, redondeo, orden de operaciones o
 interpretación de una condición.
-
 Cuando el mismo grupo de términos o valores pueda combinarse de más de
 una forma, cruza esas piezas entre las alternativas: un elemento que
 aparece primero en una alternativa puede aparecer después en otra. Esto
 impide que el estudiante descarte una alternativa completa por una sola
 pieza suelta, sin analizar la combinación entera.
-
 En el Bloque B cuantitativo, conserva formato, precisión y magnitud
 aproximada en las cinco alternativas. Genera valores cercanos a partir
 de errores distintos, no números alejados. En «completar», conserva la
@@ -477,7 +438,6 @@ misma cantidad y posición de blancos y la misma cantidad de palabras en
 cada posición, cruzando los términos entre combos como se explicó
 arriba. En «relacionar», conserva el patrón y modifica asignaciones que
 obliguen a revisar cada vínculo. No repitas combos idénticos.
-
 3. DISEÑO DE LAS PREGUNTAS
 En «opcion_multiple», «verdadero_falso» y «relacionar», el campo «q»
 debe terminar con una interrogación explícita y completa —una pregunta
@@ -492,7 +452,6 @@ alternativa. En «completar», donde «q» es siempre «""», este mismo
 criterio se traslada a «textoConEspacios»: el caso debe dejar
 clarísimo, por su propia redacción, qué debe deducir el estudiante en
 cada blanco, sin necesidad de una interrogación literal.
-
 En el Bloque A, plantea el caso en una sola oración que incluya un
 problema, una situación que no cuadra o un patrón que exija explicación
 —no una simple observación ni una lista de datos—: compras, viajes,
@@ -502,7 +461,6 @@ y necesario para modelar, sin acumular datos de sobra; el enunciado no
 debe superar ~45 palabras, y ese es un límite, no un objetivo: redacta
 el caso con el mínimo de palabras que permita plantearlo con claridad,
 y alárgalo solo si el caso realmente lo necesita.
-
 No preguntes «¿cuál es la fórmula...?», «¿qué propiedad se aplica...?»,
 «¿qué es...?» ni pidas recordar un procedimiento. Si los puntos del título contienen una fórmula o propiedad, presenta un problema contextualizado
 para usarla: el estudiante debe reconocer las magnitudes a partir del
@@ -510,7 +468,6 @@ caso, plantear la relación, sustituir, operar, revisar restricciones e
 interpretar el resultado. No escribas el nombre de la propiedad o
 fórmula como pista si puede identificarse y responder sin resolver. En
 el Bloque A, el problema debe evaluar los puntos fusionados del título mediante su aplicación, no mediante la memorización de su vocabulario.
-
 En el Bloque B, al ser más cuantitativo, el caso puede necesitar más de
 una oración para presentar los datos, sin superar ~60 palabras en
 total, pero sin acumular información que
@@ -519,7 +476,6 @@ porcentajes, comparaciones o resultados intermedios. La mayoría de los
 problemas debe encadenar dos conceptos. Cada distractor debe representar
 un error común, conservar la misma precisión, formato y cantidad de
 palabras, y no poder descartarse por una sola pista.
-
 4. NOTACIÓN Y ESCAPES JSON
 4.1 Usa KaTeX («$...$») solo cuando sea necesario: fórmulas, ecuaciones
 o expresiones que requieran notación matemática. Si una variable, número
@@ -547,7 +503,6 @@ y no puede repetirse el mismo índice en más de dos preguntas
 consecutivas. Elige el índice correcto de cada pregunta antes de
 redactar las alternativas. Antes de entregar el examen, cuenta cuántas
 veces aparece cada índice y corrige si alguno domina.
-
 5. EXPLICACIONES
 Si una pregunta o su explicación usa una sigla, un acrónimo, un nombre
 de persona abreviado con iniciales, o una letra suelta de notación no
@@ -555,7 +510,6 @@ algebraica, escribe su significado completo con palabras al menos una
 vez en el «q» o en la «explicacion» de esa misma pregunta, aunque la
 teoría original ya lo haya definido en otro documento. No asumas que el
 estudiante ya conoce esa expansión.
-
 En el Bloque A usa las «explicacion» de los puntos que fusiona como base,
 pero escribe una explicación detallada de cómo los datos del caso llevan
 a la respuesta y por qué cada distractor falla. No pegues la teoría ni
@@ -564,12 +518,10 @@ real: explica qué representa cada dato, variable, operación y resultado.
 Si se usa una fórmula, incluye la selección de la relación, las
 restricciones, la sustitución, las unidades, las operaciones, la
 verificación y la interpretación contextual.
-
 En el Bloque B escribe una solución nueva con mínimo cuatro pasos
 numerados, mostrando cada operación, la decisión y el motivo de
 aplicarla; el resultado debe coincidir con «correct». La explicación debe
 ser didáctica y completa, no una frase que solo confirme la alternativa.
-
 6. VALIDACIÓN FINAL
 Comprueba que:
 - toda pregunta de «opcion_multiple», «verdadero_falso» y «relacionar»
@@ -616,14 +568,12 @@ export const examenCiencia = String.raw`═════════════�
 PROMPT — GENERACIÓN DE EXAMEN DE CIENCIAS TIPO DECO (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
-
 ROL Y ENTRADA
 Actúa como especialista en exámenes de Física, Química y Biología de
 nivel UNMSM. Recibirás un JSON de teoría
 con secciones («titulo») y, dentro de cada una, puntos con «texto» y
 «explicacion». No hay una sección «Ejercicios» ni marcadores «Ejercicio N»:
 los ejercicios los redactas tú (Bloque B).
-
 OBJETIVO PEDAGÓGICO PRIORITARIO
 El examen debe medir comprensión, aplicación e inferencia, no memoria de
 palabras. Una persona no debe poder acertar por reconocer un término del
@@ -632,7 +582,6 @@ Cada pregunta del Bloque A corresponde únicamente al título que le toca y fusi
 puntos, pero debe transformar esa teoría en una situación que obligue a
 interpretar evidencias, anticipar consecuencias, comparar explicaciones,
 detectar un error o elegir una decisión justificada.
-
 FLUJO OBLIGATORIO DE DOS MENSAJES
 1. Primer mensaje: enumera cada título en el orden recibido, con sus puntos
    numerados (número y «texto»). Calcula cuántas preguntas del Bloque A le
@@ -651,7 +600,6 @@ FLUJO OBLIGATORIO DE DOS MENSAJES
    código markdown, sin comentarios antes ni después. No lo coloques en un
    documento ni en un panel separado del chat.
    Forma: { "examen": [ ... ], "ejercicios": [ ... ] }
-
 1. BLOQUES Y CANTIDAD
 1.1 Bloque A (clave «examen»): las preguntas se hacen por título, no por
 punto. Cantidad por título = mínimo(puntos del título, máximo(2, mínimo(4,
@@ -688,10 +636,8 @@ llevan el valor literal «null» (no un string «"null"», no un objeto vacío
 posiciones. No elimines ni compactes posiciones. Ejemplo: un título de 6
 puntos con 2 preguntas → [pregunta, pregunta, null, null, null, null]. El
 arreglo «ejercicios» tiene 20 elementos y ninguno es «null».
-
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
-
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...",
   "...", "...", "..."], "correct": 0, "explicacion": "..." }
@@ -703,7 +649,6 @@ la teoría ni cambies únicamente una palabra de una oración repetida.
 Cada alternativa debe obligar a considerar una relación causal, una
 condición, una evidencia o un paso del razonamiento. La correcta debe
 ser la única compatible con el caso y la teoría correspondiente.
-
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...",
   "proposiciones": [
@@ -716,7 +661,6 @@ proposiciones que interpreten ese caso. No escribas definiciones
 aisladas, nombres de teorías ni frases que puedan resolverse recordando
 una palabra; cada proposición debe exigir analizar una condición o una
 consecuencia.
-
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...",
   "opts": [["..."], ["..."], ["..."], ["..."], ["..."]],
@@ -725,7 +669,6 @@ consecuencia.
 necesita una instrucción aparte, solo el texto con los espacios. Nunca
 escribas ninguna instrucción ni copies ahí el caso; así se evita por
 completo la duplicación con «textoConEspacios».
-
 Construye un caso breve con un problema o un dato que no cuadra a
 simple vista —igual que en opción múltiple—, formulado en una sola
 oración, y deja blancos para consecuencias, relaciones, interpretaciones,
@@ -735,14 +678,12 @@ oración completa. No uses un blanco para pedir simplemente el nombre de
 una teoría, una definición o una palabra textual del apunte.
 «textoConEspacios» debe contener uno o más blancos numerados
 literalmente como «___1___», «___2___», etc.
-
 «opts» contiene exactamente cinco combos, cada uno con la misma
 cantidad de blancos y la misma cantidad de palabras en cada posición que
 los demás. Cruza los términos entre los combos —una palabra que aparece
 en el blanco 1 de un combo puede aparecer en el blanco 2 de otro— para
 que ninguna combinación se descarte por una sola palabra suelta. Los
 distractores deben representar errores razonables de interpretación.
-
 2.4 Relacionar:
 { "tipo": "relacionar", "q": "...", "columnaA": ["1. ...", "2. ...",
   "3. ..."], "columnaB": ["a) ...", "b) ...", "c) ..."],
@@ -754,7 +695,6 @@ términos con definiciones memorizables. Cada columna tiene al menos tres
 elementos. «opts» contiene cinco combinaciones completas y cortas; usa
 números y letras solo para referenciar las columnas, con el formato
 «1a - 2b - 3c». No uses flechas ni repitas el texto de las columnas.
-
 2.5 ALTERNATIVAS: RAZONAMIENTO, NO RECONOCIMIENTO
 Las cinco alternativas deben pertenecer al mismo caso y competir por la
 respuesta, pero no deben ser la misma teoría expresada cinco veces.
@@ -765,7 +705,6 @@ alternativa debe apoyarse únicamente en mecanismos, procesos o datos que
 ya estén enseñados en la teoría de este tema (incluida la de otros
 puntos); nunca inventes un mecanismo, una sustancia o un dato que la
 fuente no haya enseñado, ni siquiera como distractor.
-
 Las cinco alternativas de una misma pregunta deben tener la misma
 cantidad de palabras entre sí, sin contar símbolos, y ninguna debe
 superar ~15 palabras (excepto si es puramente numérica), y ese es un
@@ -783,19 +722,16 @@ correcta por un matiz de condición, causa, mecanismo, escala, unidad,
 signo o consecuencia. No introduzcas una palabra exclusiva que delate la
 respuesta ni uses un término del apunte en el enunciado si ese término
 funciona como pista.
-
 Cuando el mismo grupo de términos o ideas pueda combinarse de más de una
 forma, cruza esas piezas entre las alternativas: un elemento que aparece
 primero en una alternativa puede aparecer después en otra. Esto impide
 que el estudiante descarte una alternativa completa por una sola pieza
 suelta, sin analizar la combinación entera.
-
 En «completar», todos los combos conservan la misma cantidad y posición
 de blancos y la misma cantidad de palabras en cada posición, cruzando
 los términos entre combos como se explicó arriba. En «relacionar»,
 todas las combinaciones conservan el patrón y modifican asignaciones que
 requieran revisar cada relación. No repitas combos idénticos.
-
 3. DISEÑO DE LAS PREGUNTAS
 En «opcion_multiple», «verdadero_falso» y «relacionar», el campo «q»
 debe terminar con una interrogación explícita y completa —una pregunta
@@ -810,20 +746,17 @@ donde «q» es siempre «""», este mismo criterio se traslada a
 «textoConEspacios»: el caso debe dejar clarísimo, por su propia
 redacción, qué debe deducir el estudiante en cada blanco, sin necesidad
 de una interrogación literal.
-
 En el Bloque A, plantea el caso en una sola oración que incluya un
 problema, un dato que no cuadra o un hecho que exija explicación —no
 una simple observación plana ni una lista de datos—: experimento,
 transporte, deporte, cocina, laboratorio, fenómeno natural, análisis de
 una muestra u observación de un estudiante. El caso debe dar el gancho
 justo y necesario para razonar, sin acumular información de sobra.
-
 No preguntes de forma directa «¿qué es...?, ¿cuál es la definición...?,
 ¿qué teoría afirma...?», ni pidas completar una palabra que aparezca
 literalmente en la teoría. No pongas el nombre de la teoría, ley o
 principio como pista, salvo que sea indispensable para resolver el caso.
 No copies frases distintivas de «texto» o «explicacion».
-
 Cuando un punto de teoría del título sea una fórmula, no preguntes cuál es la
 fórmula, qué significa cada símbolo ni qué ley se aplica. Presenta una
 situación física o química con datos, relaciones y condiciones para que
@@ -833,7 +766,6 @@ resultado. La pregunta debe evaluar el uso de la fórmula dentro del caso.
 En Biología conceptual no inventes cálculos ni fórmulas, y no uses
 KaTeX en ningún campo de esas preguntas: todo número, porcentaje o
 proporción se escribe como texto normal, sin delimitadores «$...$».
-
 En el Bloque A, el caso, los distractores y la respuesta deben centrarse en los puntos fusionados del título, en una sola oración con su gancho, sin
 acumular datos de más; no debe superar aproximadamente 45 palabras, y
 ese es un límite, no un objetivo: redacta el caso con el mínimo de
@@ -848,7 +780,6 @@ números listos para sustituir en una sola fórmula. En todos los
 bloques, los distractores deben corresponder a errores comunes y ser
 plausibles a primera vista. No permitas que una sola unidad, palabra,
 signo, longitud o dato visible descarte varias alternativas.
-
 4. NOTACIÓN Y ESCAPES JSON
 4.1 En temas con matemática, usa KaTeX («$...$») solo cuando sea
 necesario: fórmulas, ecuaciones o símbolos que requieran notación
@@ -877,7 +808,6 @@ pregunta antes de redactar las alternativas, para no acomodar
 distractores alrededor de una respuesta ya puesta en la posición 0.
 Antes de entregar el examen, cuenta cuántas veces aparece cada índice
 y corrige si alguno domina.
-
 5. EXPLICACIONES
 Si una pregunta o su explicación usa una sigla, un acrónimo, un nombre
 de persona abreviado con iniciales, o una letra suelta de notación (como
@@ -885,7 +815,6 @@ de persona abreviado con iniciales, o una letra suelta de notación (como
 en el «q» o en la «explicacion» de esa misma pregunta, aunque la teoría
 original ya lo haya definido en otro documento. No asumas que el
 estudiante ya conoce esa expansión.
-
 En el Bloque A usa las «explicacion» de los puntos que fusiona como base,
 pero desarrolla una explicación detallada vinculándola explícitamente
 con cada evidencia del caso y con la razón por la que las otras
@@ -894,7 +823,6 @@ agregues una respuesta que se pueda encontrar por una palabra. Incluye,
 cuando corresponda, la relación con una situación de la vida real, el
 significado de las magnitudes, las unidades, las condiciones y el error
 que produce cada distractor.
-
 Si la pregunta usa una fórmula, la explicación debe mostrar qué dato
 representa cada variable, por qué esa fórmula es pertinente, la
 sustitución con unidades, las operaciones, la interpretación física o
@@ -903,7 +831,6 @@ una resolución propia con al menos cuatro pasos numerados; cada paso
 debe indicar qué se hace y por qué. La explicación debe ser suficiente
 para que el estudiante aprenda el procedimiento y no solo conozca la
 alternativa correcta.
-
 6. VALIDACIÓN FINAL
 Antes de responder, comprueba que:
 - toda pregunta de «opcion_multiple», «verdadero_falso» y «relacionar»

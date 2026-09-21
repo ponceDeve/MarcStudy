@@ -105,16 +105,17 @@ function armarFragmentoExplicacion(explicacion, query) {
    ============================================================ */
 // Buscador discreto para saltar a una tarjeta de teoría.
 //
-// COMPORTAMIENTO:
+// COMPORTAMIENTO (nada es en vivo, todo ocurre al presionar Enter):
 //
-// 1. Mientras escribes:
-//    - Solo muestra coincidencias literales reales.
-//    - Si no existe la palabra/frase, muestra "No hay coincidencias".
+// 1. Mientras escribes no se busca ni se muestra nada.
 //
 // 2. Al presionar Enter:
-//    - Si existe coincidencia literal, selecciona la mejor.
-//    - Si NO existe coincidencia literal, realiza búsqueda
-//      semántica y selecciona la coincidencia más parecida.
+//    - Se buscan coincidencias literales y se muestran como sugerencias.
+//    - Si NO hay ninguna coincidencia literal, se hace la búsqueda
+//      semántica y se muestra la más parecida como sugerencia.
+//
+// 3. Con las sugerencias visibles, Enter de nuevo elige la enfocada
+//    (flechas) o la primera; también se puede hacer clic en una.
 export default function TheorySearchBar({
   flatPuntos = [],
   onSelect,
@@ -131,12 +132,18 @@ export default function TheorySearchBar({
     promesa: null,
   });
   const idPeticionRef = useRef(0);
-  const hayQuery = query.trim() !== "";
+  // Búsqueda "confirmada" con Enter: los resultados salen de aquí,
+  // no de lo que se está escribiendo.
+  const [queryBuscada, setQueryBuscada] = useState("");
+  const [rondaBusqueda, setRondaBusqueda] = useState(0);
+  const [resultadoSemantico, setResultadoSemantico] = useState(null);
+  const [busquedaLista, setBusquedaLista] = useState(false);
+  const hayQuery = queryBuscada.trim() !== "";
   /* ============================================================
      BÚSQUEDA TEXTUAL
      ============================================================ */
   const candidatosTexto = useMemo(() => {
-    const queryLimpia = query.trim();
+    const queryLimpia = queryBuscada.trim();
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
@@ -153,15 +160,15 @@ export default function TheorySearchBar({
            -------------------------------------------------------- */
         const scoreTitulo = puntajeDeTexto(
           punto.seccionTitulo || "",
-          query
+          queryBuscada
         );
         const scoreTexto = puntajeDeTexto(
           punto.texto || "",
-          query
+          queryBuscada
         );
         const scoreExplicacion = puntajeDeTexto(
           punto.explicacion || "",
-          query
+          queryBuscada
         );
         const mejorTextoOTitulo = Math.max(
           scoreTitulo,
@@ -224,7 +231,7 @@ export default function TheorySearchBar({
       );
   }, [
     flatPuntos,
-    query,
+    queryBuscada,
     hayQuery,
   ]);
   /* ============================================================
@@ -235,7 +242,7 @@ export default function TheorySearchBar({
   //
   // La búsqueda semántica NO se muestra automáticamente.
   const resultados = useMemo(() => {
-    const queryLimpia = query.trim();
+    const queryLimpia = queryBuscada.trim();
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
@@ -268,7 +275,7 @@ export default function TheorySearchBar({
       .slice(0, 8);
   }, [
     candidatosTexto,
-    query,
+    queryBuscada,
     hayQuery,
   ]);
   /* ============================================================
@@ -383,7 +390,7 @@ export default function TheorySearchBar({
   function elegir(resultado) {
     const { punto } = resultado;
     const queryLimpia =
-      query.trim();
+      queryBuscada.trim();
     /* ----------------------------------------------------------
        BUSCAR COINCIDENCIA EN TEXTO
        ---------------------------------------------------------- */
@@ -446,52 +453,66 @@ export default function TheorySearchBar({
        LIMPIAR BUSCADOR
        ---------------------------------------------------------- */
     setQuery("");
+    setQueryBuscada("");
+    setResultadoSemantico(null);
     setBuscadorFocus(false);
   }
   /* ============================================================
      ENTER
      ============================================================ */
-  async function buscarConEnter() {
-    const queryLimpia =
-      query.trim();
-    if (
-      queryLimpia.length <
-      MIN_LARGO_QUERY_TEXTO
-    ) {
+  function buscarConEnter() {
+    const queryLimpia = query.trim();
+    if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
-    /* ----------------------------------------------------------
-       CASO 1:
-       EXISTE UNA COINCIDENCIA LITERAL.
-       Usamos la primera porque "resultados" ya está ordenado
-       por relevancia.
-       ---------------------------------------------------------- */
-    if (resultados.length > 0) {
-      elegir(resultados[0]);
+    // Ya hay sugerencias visibles para este mismo texto:
+    // Enter elige la enfocada con las flechas o, si no hay, la primera.
+    if (queryLimpia === queryBuscada && resultadosVisibles.length > 0) {
+      elegir(resultadosVisibles[focusedIdx >= 0 ? focusedIdx : 0]);
       return;
     }
-    /* ----------------------------------------------------------
-       CASO 2:
-       NO EXISTE NINGUNA COINCIDENCIA LITERAL.
-       Enter activa la búsqueda semántica.
-       ---------------------------------------------------------- */
-    if (
-      queryLimpia.length <
-      MIN_LARGO_QUERY_SEMANTICO
-    ) {
-      return;
-    }
-    const resultadoSemantico =
-      await buscarSemantico(
-        queryLimpia
-      );
-    /* ----------------------------------------------------------
-       SI ENCONTRAMOS UNA COINCIDENCIA SEMÁNTICA
-       ---------------------------------------------------------- */
-    if (resultadoSemantico) {
-      elegir(resultadoSemantico);
-    }
+    // Búsqueda nueva (o reintento si la anterior no dio nada).
+    setResultadoSemantico(null);
+    setBusquedaLista(false);
+    setQueryBuscada(queryLimpia);
+    setRondaBusqueda((r) => r + 1);
+    setBuscadorFocus(true);
   }
+  /* ============================================================
+     SEMÁNTICO COMO RESPALDO
+     ============================================================ */
+  // Se ejecuta después de cada Enter: si no hubo ninguna coincidencia
+  // literal, busca la más parecida por significado.
+  useEffect(() => {
+    if (rondaBusqueda === 0 || !queryBuscada) {
+      return undefined;
+    }
+    if (resultados.length > 0) {
+      setBusquedaLista(true);
+      return undefined;
+    }
+    if (queryBuscada.length < MIN_LARGO_QUERY_SEMANTICO) {
+      setBusquedaLista(true);
+      return undefined;
+    }
+    let cancelado = false;
+    buscarSemantico(queryBuscada).then((r) => {
+      if (cancelado) return;
+      setResultadoSemantico(r);
+      setBusquedaLista(true);
+    });
+    return () => {
+      cancelado = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rondaBusqueda]);
+  // Lo que realmente se ve en el dropdown.
+  const resultadosVisibles =
+    resultados.length > 0
+      ? resultados
+      : resultadoSemantico
+        ? [resultadoSemantico]
+        : [];
   /* ============================================================
      NAVEGACIÓN CON FLECHAS
      ============================================================ */
@@ -499,7 +520,7 @@ export default function TheorySearchBar({
     focusedIdx,
     handleKeyDown,
   } = useArrowKeyList(
-    resultados,
+    resultadosVisibles,
     (resultado) => {
       elegir(resultado);
     }
@@ -538,8 +559,8 @@ export default function TheorySearchBar({
   const mostrarDropdown =
     buscadorFocus &&
     hayQuery &&
-    query.trim().length >=
-    MIN_LARGO_QUERY_TEXTO;
+    query.trim() === queryBuscada &&
+    (resultadosVisibles.length > 0 || buscandoSemantico || busquedaLista);
   /* ============================================================
      RENDER
      ============================================================ */
@@ -583,8 +604,8 @@ export default function TheorySearchBar({
            ====================================================== */}
         {mostrarDropdown && (
           <div className="theory-search__dropdown">
-            {resultados.length > 0 ? (
-              resultados.map(
+            {resultadosVisibles.length > 0 ? (
+              resultadosVisibles.map(
                 (r, idx) => {
                   const {
                     punto,
@@ -606,7 +627,7 @@ export default function TheorySearchBar({
                       ? armarFragmentoExplicacion(
                         punto.explicacion ||
                         "",
-                        query
+                        queryBuscada
                       )
                       : null;
                   return (
@@ -628,26 +649,33 @@ export default function TheorySearchBar({
                       {/* ------------------------------------------
                          SOLO MOSTRAR LA COINCIDENCIA
                          ------------------------------------------ */}
-                      {matchTitulo ? (
-                        <span className="theory-search__item-seccion">
-                          <ResaltarCoincidencia
-                            texto={
-                              punto.seccionTitulo
-                            }
-                            query={
-                              query
-                            }
-                          />
+                      {r.esSemantico ? (
+                        <span>
+                          {punto.texto || punto.explicacion}
                         </span>
+                      ) : matchTitulo ? (
+                        <>
+                          <span className="theory-search__item-seccion">
+                            <ResaltarCoincidencia
+                              texto={
+                                punto.seccionTitulo
+                              }
+                              query={queryBuscada}
+                            />
+                          </span>
+                          {punto.texto ? (
+                            <span className="theory-search__item-texto">
+                              {punto.texto}
+                            </span>
+                          ) : null}
+                        </>
                       ) : matchTexto ? (
                         <span>
                           <ResaltarCoincidencia
                             texto={
                               punto.texto
                             }
-                            query={
-                              query
-                            }
+                            query={queryBuscada}
                           />
                         </span>
                       ) : datosFragmento?.fragmento ? (
@@ -669,11 +697,11 @@ export default function TheorySearchBar({
                   );
                 }
               )
-            ) : (
+            ) : busquedaLista && !buscandoSemantico ? (
               <p className="theory-search__empty">
                 No hay coincidencias
               </p>
-            )}
+            ) : null}
             {buscandoSemantico && (
               <div className="theory-search__semantic-loading">
                 Buscando la coincidencia más parecida...

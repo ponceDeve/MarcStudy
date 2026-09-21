@@ -1,13 +1,17 @@
 @use "./tokens" as *;
+
 /* ============================================================
    CONTENEDOR PRINCIPAL
    ============================================================ */
+
 .container__repaso {
   padding: calc(var(--header-h) + 36px) 10px;
 }
+
 /* ============================================================
    CONTENEDOR REPASOS
    ============================================================ */
+
 .repaso {
   max-width: 1024px;
   margin: 0 auto;
@@ -19,9 +23,11 @@
   gap: 22px;
   border-radius: var(--radius-lg);
 }
+
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
+
 .repaso__nav {
   position: fixed;
   top: 16px;
@@ -30,6 +36,7 @@
   display: flex;
   gap: 8px;
 }
+
 .repaso__nav-link {
   display: flex;
   align-items: center;
@@ -48,15 +55,19 @@
     background 0.2s linear,
     border-color 0.2s linear;
 }
+
 .repaso__nav-link:hover {
   color: var(--primary);
 }
+
 /* ============================================================
    CABECERA
    ============================================================ */
+
 .repaso__header {
   margin: 0;
 }
+
 .repaso__title {
   margin: 0;
   font-size: 26px;
@@ -64,14 +75,17 @@
   font-family: var(--font-display);
   color: var(--ink);
 }
+
 .repaso__date {
   margin: 4px 0 0;
   font-size: 18px;
   color: var(--ink-soft);
 }
+
 /* ============================================================
    INSTRUCCIÓN
    ============================================================ */
+
 .repaso__instruction {
   width: 100%;
   box-sizing: border-box;
@@ -85,6 +99,7 @@
   border-radius: var(--radius-md);
   color: var(--ink-soft);
 }
+
 .repaso__instruction-book {
   width: 32px;
   height: 32px;
@@ -97,14 +112,17 @@
   font-size: 18px;
   border-radius: var(--radius-full);
 }
+
 .repaso__instruction p {
   margin: 0;
   font-size: 18px;
   line-height: 1.5;
 }
+
 .repaso__instruction strong {
   color: var(--ink);
 }
+
 .repaso__instruction-check {
   width: 32px;
   height: 32px;
@@ -118,9 +136,11 @@
   border: 1px solid var(--border);
   border-radius: 50%;
 }
+
 /* ============================================================
    REPASOS DE HOY
    ============================================================ */
+
 .repaso__section {
   margin: 0;
   background: var(--surface);
@@ -128,14 +148,17 @@
   padding: var(--space-3);
   box-sizing: border-box;
 }
+
 .repaso__list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
+
 /* ============================================================
    TARJETA DE REPASO
    ============================================================ */
+
 .repaso__item {
   position: relative;
   display: flex;
@@ -150,32 +173,40 @@
     outline-color 0.2s linear,
     transform 0.2s linear;
 }
+
 .repaso__item:hover {
   box-shadow: var(--shadow-sm);
   outline-color: var(--success-bg);
 }
+
 /* ============================================================
    INTERVALOS
    ============================================================ */
+
 .repaso__item.interval-0 {
   background: var(--surface);
   border: 1px solid var(--primary-light);
 }
+
 .repaso__item.interval-1 {
   background: var(--secondary-bg);
   border: 1px solid var(--secondary);
 }
+
 .repaso__item.interval-2 {
   background: var(--accent-bg);
   border: 1px solid var(--accent);
 }
+
 .repaso__item.interval-3 {
   background: var(--danger-bg);
   border: 1px solid var(--danger);
 }
+
 /* ============================================================
    CONTENIDO DE LAS TARJETAS
    ============================================================ */
+
 .repaso__item-body {
   flex: 1;
   min-width: 0;
@@ -184,9 +215,11 @@
   align-items: flex-start;
   gap: 5px;
 }
+
 /* ============================================================
    ETIQUETAS
    ============================================================ */
+
 .repaso__item-tags {
   display: flex;
   align-items: center;
@@ -194,6 +227,7 @@
   gap: 8px;
   margin-bottom: 4px;
 }
+
 .repaso__badge {
   padding: 2px 8px;
   font-size: 15px;
@@ -201,21 +235,27 @@
   border-radius: 6px;
   color: var(--ink-on-primary);
 }
+
 .repaso__badge.interval-0 {
   background: var(--primary);
 }
+
 .repaso__badge.interval-1 {
   background: var(--secondary);
 }
+
 .repaso__badge.interval-2 {
   background: var(--accent-dark);
 }
+
 .repaso__badge.interval-3 {
   background: var(--danger);
 }
+
 /* ============================================================
    DÍA
    ============================================================ */
+
 .repaso__item-day {
   font-size: 16px;
   font-weight: 600;
@@ -224,17 +264,21 @@
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
+
 /* ============================================================
    VENCIDO
    ============================================================ */
+
 .repaso__item-overdue {
   font-size: 16px;
   font-weight: 700;
   color: var(--danger);
 }
+
 /* ============================================================
    CURSO
    ============================================================ */
+
 .repaso__item-subject {
   margin: 0;
   font-size: 18px;
@@ -242,27 +286,33 @@
   line-height: 1.2;
   color: var(--ink);
 }
+
 /* ============================================================
    TEMA
    ============================================================ */
+
 .repaso__item-tema {
   margin: 2px 0 0;
   font-size: 18px;
   color: var(--ink);
   opacity: 0.85;
 }
+
 /* ============================================================
    INFORMACIÓN DEL REPASO
    ============================================================ */
+
 .repaso__item-meta {
   margin: 4px 0 0;
   font-size: 15px;
   color: var(--ink);
   opacity: 0.85;
 }
+
 /* ============================================================
    BOTÓN REPASAR
    ============================================================ */
+
 .repaso__item-link {
   display: inline-flex;
   align-items: center;
@@ -283,18 +333,22 @@
     border-color 0.2s linear,
     transform 0.15s linear;
 }
+
 .repaso__item-link:hover {
   background: var(--primary-dark);
   color: var(--ink-on-primary);
 }
+
 .repaso__item-link:active {
   transform: scale(0.97);
   background: var(--primary-dark);
   border-color: var(--primary-dark);
 }
+
 /* ============================================================
    CHECK DE REPASO
    ============================================================ */
+
 .repaso__check {
   width: 36px;
   height: 36px;
@@ -312,14 +366,17 @@
     border-color 0.2s linear,
     color 0.2s linear;
 }
+
 .repaso__check:hover {
   border-color: var(--secondary);
   background: var(--secondary);
   color: var(--ink-on-primary);
 }
+
 /* ============================================================
    PAPELERA
    ============================================================ */
+
 .repaso__trash {
   position: absolute;
   right: 10px;
@@ -337,13 +394,16 @@
     color 0.2s linear,
     background 0.2s linear;
 }
+
 .repaso__trash:hover {
   color: var(--danger-dark);
   background: var(--danger-bg);
 }
+
 /* ============================================================
    ESTADO VACÍO
    ============================================================ */
+
 .repaso__empty {
   padding: 56px 16px;
   text-align: center;
@@ -351,25 +411,30 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
 }
+
 .repaso__empty-emoji {
   margin-bottom: 12px;
   font-size: 44px;
   opacity: 0.9;
 }
+
 .repaso__empty-title {
   margin: 0;
   font-size: 16px;
   font-weight: 700;
   color: var(--ink);
 }
+
 .repaso__empty-sub {
   margin: 4px 0 0;
   font-size: 14px;
   color: var(--ink-soft);
 }
+
 /* ============================================================
    PRÓXIMOS REPASOS
    ============================================================ */
+
 .repaso__proximos-title {
   margin: 0 0 12px;
   font-size: 22px;
@@ -377,21 +442,25 @@
   font-family: var(--font-display);
   color: var(--ink);
 }
+
 .repaso__proximos-empty {
   margin: 0;
   font-size: 18px;
   color: var(--ink-soft);
 }
+
 .repaso__proximos-list {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .repaso__proximos-group {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
+
 .repaso__proximos-group-header {
   display: flex;
   align-items: center;
@@ -400,15 +469,18 @@
   background: var(--surface-alt);
   border-bottom: 1px solid var(--border);
 }
+
 .repaso__proximos-fecha {
   font-size: 14px;
   font-weight: 700;
   color: var(--ink);
 }
+
 .repaso__proximos-etiqueta {
   font-size: 14px;
   color: var(--ink-faint);
 }
+
 .repaso__proximos-row {
   position: relative;
   display: flex;
@@ -418,9 +490,11 @@
   padding: 10px 14px;
   border-bottom: 1px solid var(--border);
 }
+
 .repaso__proximos-row:last-child {
   border-bottom: none;
 }
+
 .repaso__proximos-row-content {
   flex: 1;
   min-width: 0;
@@ -428,6 +502,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .repaso__dot {
   width: 8px;
   height: 8px;
@@ -435,18 +510,23 @@
   flex-shrink: 0;
   border-radius: 50%;
 }
+
 .repaso__dot.interval-0 {
   background: var(--primary);
 }
+
 .repaso__dot.interval-1 {
   background: var(--secondary);
 }
+
 .repaso__dot.interval-2 {
   background: var(--accent-dark);
 }
+
 .repaso__dot.interval-3 {
   background: var(--danger);
 }
+
 .repaso__proximos-subject {
   min-width: 0;
   display: flex;
@@ -455,12 +535,14 @@
   font-weight: 600;
   color: var(--ink);
 }
+
 .repaso__proximos-tema {
   overflow: hidden;
   font-size: 13.5px;
   color: var(--ink-faint);
   text-overflow: ellipsis;
 }
+
 .repaso__proximos-trash {
   flex-shrink: 0;
   padding: 8px;
@@ -473,13 +555,16 @@
     color 0.2s linear,
     background 0.2s linear;
 }
+
 .repaso__proximos-trash:hover {
   color: var(--danger-dark);
   background: var(--danger-bg);
 }
+
 /* ============================================================
    MODAL ELIMINAR
    ============================================================ */
+
 .delete-modal-overlay {
   position: fixed;
   inset: 0;
@@ -491,6 +576,7 @@
   background: var(--overlay-strong);
   backdrop-filter: blur(3px);
 }
+
 .delete-modal-content {
   width: 100%;
   max-width: 350px;
@@ -502,29 +588,35 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
+
 .delete-modal-icon {
   margin-bottom: 12px;
   font-size: 2rem;
   color: var(--danger);
 }
+
 .delete-modal-title {
   margin: 0 0 12px;
   color: var(--ink);
 }
+
 .delete-modal-text {
   margin: 0 0 24px;
   font-size: 0.9rem;
   color: var(--ink-soft);
 }
+
 .delete-modal-buttons {
   display: flex;
   justify-content: center;
   flex-direction: row;
   gap: 12px;
 }
+
 .delete-modal-buttons--reverse {
   flex-direction: row-reverse;
 }
+
 .btn-confirm {
   flex: 1;
   padding: 10px;
@@ -539,10 +631,12 @@
     border-color 0.2s linear,
     opacity 0.2s linear;
 }
+
 .btn-confirm--phase1:hover,
 .btn-confirm--phase2:hover {
   background: var(--surface-hover);
 }
+
 .btn-cancel {
   flex: 1;
   padding: 10px;
@@ -556,45 +650,58 @@
     background 0.2s linear,
     border-color 0.2s linear;
 }
+
 .btn-cancel:hover {
   background: var(--primary-dark);
   border-color: var(--secondary);
 }
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
 @media (max-width: 480px) {
   .repaso__title {
     font-size: 22px;
   }
+
   .repaso__instruction {
     align-items: flex-start;
   }
+
   .repaso__instruction p {
     font-size: 16px;
   }
+
   .repaso__item {
     align-items: flex-start;
   }
+
   .repaso__item-subject {
     font-size: 17px;
   }
+
   .repaso__item-tema {
     font-size: 16px;
   }
+
   .repaso__proximos-group-header {
     gap: 10px;
   }
+
   .delete-modal-buttons {
     flex-direction: column;
   }
+
   .delete-modal-buttons--reverse {
     flex-direction: column;
   }
 }
+
 /* ============================================================
    PESTAÑAS
    ============================================================ */
+
 .repaso__tabs {
   display: flex;
   gap: 0;
@@ -604,6 +711,7 @@
   background: var(--surface-alt);
   box-shadow: var(--shadow-md);
 }
+
 .repaso__tab {
   flex: 1;
   border: none;
@@ -621,17 +729,21 @@
     color 0.15s ease,
     box-shadow 0.15s ease;
 }
+
 .repaso__tab:last-child {
   border-right: none;
 }
+
 .repaso__tab--active {
   background: var(--surface);
   color: var(--primary);
   box-shadow: inset 0 -3px 0 var(--primary);
 }
+
 /* ============================================================
    PESTAÑA TEMARIO
    ============================================================ */
+
 .repaso__temario-toolbar {
   display: flex;
   align-items: center;
@@ -639,9 +751,11 @@
   margin-bottom: var(--space-4);
   flex-wrap: wrap;
 }
+
 .repaso__categoria-wrapper {
   position: relative;
 }
+
 .repaso__categoria-tab {
   flex: 0 0 auto;
   display: flex;
@@ -662,21 +776,26 @@
     color 0.15s ease,
     border-color 0.15s ease;
 }
+
 .repaso__categoria-tab:hover:not(:disabled) {
   background: var(--surface-hover);
 }
+
 .repaso__categoria-tab:disabled {
   opacity: 0.5;
   cursor: not-allowed !important;
 }
+
 .repaso__categoria-tab--active {
   background: var(--surface-hover);
   color: var(--ink);
   border-color: var(--ink);
 }
+
 /* ============================================================
    SELECTOR PERSONALIZADO
    ============================================================ */
+
 .repaso__select {
   position: absolute;
   top: calc(100% + 6px);
@@ -684,6 +803,7 @@
   z-index: 100;
   margin: 0;
 }
+
 .repaso__select-menu {
   position: relative;
   width: max-content;
@@ -699,6 +819,7 @@
   border-radius: var(--radius-md);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
+
 .repaso__select-menu button:first-child {
   display: flex;
   gap: 5px;
@@ -706,6 +827,7 @@
   align-items: center;
   padding: 10px 14px;
 }
+
 .repaso__select-option {
   width: 100%;
   min-width: max-content;
@@ -726,16 +848,20 @@
     background 0.15s ease,
     color 0.15s ease;
 }
+
 .repaso__select-option:last-child {
   border-bottom: none;
 }
+
 .repaso__select-option:hover {
   background: var(--surface-hover);
 }
+
 .repaso__select-option--active {
   background: var(--primary-bg);
   color: var(--primary);
 }
+
 .repaso__select-back {
   width: 100%;
   min-width: max-content;
@@ -759,22 +885,27 @@
     background 0.15s ease,
     color 0.15s ease;
 }
+
 .repaso__select-back:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
+
 .repaso__select-back i {
   font-size: 12px;
 }
+
 /* ============================================================
    BUSCADOR DEL TEMARIO
    ============================================================ */
+
 .repaso__temario-search {
   position: relative;
   order: 3;
   flex: 1 1 220px;
   min-width: 190px;
 }
+
 .repaso__temario-search-input {
   width: 100%;
   min-height: 38px;
@@ -792,16 +923,19 @@
     background 0.15s ease,
     box-shadow 0.15s ease;
 }
+
 .repaso__temario-search-input:focus-within {
   background: var(--surface);
   border-color: var(--primary);
   box-shadow: 0 0 0 3px var(--primary-bg);
 }
+
 .repaso__temario-search-input > i {
   flex-shrink: 0;
   font-size: 13px;
   color: var(--ink-faint);
 }
+
 .repaso__temario-search-input input {
   flex: 1;
   min-width: 0;
@@ -814,9 +948,11 @@
   font-family: var(--font);
   font-size: var(--fs-sm);
 }
+
 .repaso__temario-search-input input::placeholder {
   color: var(--ink-faint);
 }
+
 .repaso__temario-search-input button {
   width: 26px;
   height: 26px;
@@ -831,13 +967,16 @@
   color: var(--ink-faint);
   cursor: pointer;
 }
+
 .repaso__temario-search-input button:hover {
   background: var(--surface-hover);
   color: var(--ink);
 }
+
 /* ============================================================
    RESULTADOS DEL BUSCADOR
    ============================================================ */
+
 .repaso__temario-search-results {
   position: absolute;
   top: calc(100% + 6px);
@@ -851,6 +990,7 @@
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
+
 .repaso__temario-search-result {
   width: 100%;
   display: flex;
@@ -864,46 +1004,57 @@
   text-align: left;
   cursor: pointer;
 }
+
 .repaso__temario-search-result:last-child {
   border-bottom: 0;
 }
+
 .repaso__temario-search-result-tema {
   font-size: 18px;
   line-height: 1.25;
 }
+
 .repaso__temario-search-result-meta {
   font-size: 14px;
   color: var(--ink-muted);
 }
+
 .repaso__temario-search-result--active {
   background: var(--primary-bg);
 }
+
 .repaso__temario-search-empty {
   padding: 9px 10px;
   font-size: 12px;
 }
+
 /* ============================================================
    RESALTADO DE TEXTO ENCONTRADO
    ============================================================ */
+
 .repaso__temario-search-highlight {
   font-weight: var(--fw-bold);
   color: var(--accent);
   padding: 0;
   background-color: transparent;
 }
+
 .repaso__temario-highlight {
   padding: 0 2px;
   border-radius: 3px;
   font-weight: var(--fw-bold);
 }
+
 /* ============================================================
    LISTA DE TEMARIO
    ============================================================ */
+
 .repaso__temario-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .repaso__temario-item {
   display: flex;
   align-items: center;
@@ -918,31 +1069,37 @@
   font-size: var(--fs-sm);
   color: var(--ink);
 }
+
 .repaso__temario-item--selected {
   background: var(--primary-bg);
   border-color: var(--primary);
   box-shadow: 0 0 0 1px var(--primary);
 }
+
 .repaso__temario-item--done {
   background: var(--success-bg);
   border-color: var(--success);
 }
+
 .repaso__temario-item--recomendado {
   background: var(--success-bg);
   border-color: var(--success);
   border-style: dashed;
 }
+
 .repaso__temario-item-content {
   flex: 1;
   min-width: 0;
   display: flex;
   align-items: center;
-  user-select: text!important;
+  user-select: text !important;
 }
+
 .repaso__temario-item-nombre {
   flex: 1;
   font-weight: var(--fw-medium);
 }
+
 .repaso__temario-item-nombre-button {
   display: inline;
   width: 100%;
@@ -957,16 +1114,19 @@
   font-weight: var(--fw-medium);
   line-height: 1.4;
   text-align: left;
-  user-select: text!important;
+  user-select: text !important;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
+
 .repaso__temario-item-nombre-button:disabled {
   cursor: default !important;
 }
+
 .repaso__temario-item-numero {
   color: var(--brand);
   text-shadow: 0 0 0.3px var(--ink);
 }
+
 .repaso__temario-actions {
   flex-shrink: 0;
   display: flex;
@@ -974,6 +1134,7 @@
   gap: 8px;
   margin-left: auto;
 }
+
 .repaso__temario-action {
   flex: 0 0 auto;
   border: 1px solid var(--border);
@@ -985,18 +1146,31 @@
   font-size: var(--fs-xs);
   cursor: pointer;
 }
+
 .repaso__temario-action:hover {
   background: var(--primary-bg);
   border-color: var(--primary-dark);
 }
+
 .repaso__temario-action--repaso {
   background: var(--success);
   color: var(--ink-on-primary);
   border-color: var(--success);
 }
+
+/* ============================================================
+   ESPACIADO DEL NOMBRE DEL TEMA SIN SELECCIÓN
+   ============================================================ */
+
+.repaso__temario-item-nombre {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 /* ============================================================
    TOAST GUARDAR REPASO
    ============================================================ */
+
 .repaso__confirm-toast {
   position: fixed;
   top: 18px;
@@ -1011,6 +1185,7 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
 }
+
 .repaso__confirm-toast-content {
   display: flex;
   align-items: center;
@@ -1018,15 +1193,18 @@
   gap: 18px;
   padding: 14px 16px;
 }
+
 .repaso__confirm-toast-info {
   min-width: 0;
   display: flex;
   align-items: center;
   gap: 12px;
 }
+
 .repaso__confirm-toast-info * {
-  color: var(--ink)!important;
+  color: var(--ink) !important;
 }
+
 .repaso__confirm-toast-info > i {
   width: 36px;
   height: 36px;
@@ -1039,16 +1217,19 @@
   color: var(--ink);
   font-size: 16px;
 }
+
 .repaso__confirm-toast-info > div {
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
+
 .repaso__confirm-toast-info strong {
   font-size: 16px;
   font-weight: var(--fw-bold);
 }
+
 .repaso__confirm-toast-info span {
   overflow: hidden;
   color: var(--ink-soft);
@@ -1056,12 +1237,14 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .repaso__confirm-toast-actions {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .repaso__confirm-toast-cancel,
 .repaso__confirm-toast-confirm {
   padding: 7px 13px;
@@ -1070,28 +1253,34 @@
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
+
 .repaso__confirm-toast-cancel {
   border: 1px solid var(--border);
   background: transparent;
   color: var(--ink);
 }
+
 .repaso__confirm-toast-cancel:hover {
   background: var(--surface-hover);
 }
+
 .repaso__confirm-toast-confirm {
   border: 1px solid var(--primary);
   background: var(--primary);
   color: var(--ink-on-primary);
 }
+
 .repaso__confirm-toast-confirm:hover {
   background: var(--primary-dark);
   border-color: var(--primary-dark);
 }
+
 /* ============================================================
    RECOMENDADO
    ============================================================ */
+
 .repaso__recomendado-fab {
   position: fixed;
   right: 18px;
@@ -1110,6 +1299,7 @@
   cursor: pointer;
   z-index: 40;
 }
+
 .repaso__recomendado-fullscreen {
   position: fixed;
   inset: 0;
@@ -1118,18 +1308,21 @@
   padding: calc(var(--header-h) + 16px) 16px 40px;
   z-index: 1000;
 }
+
 .repaso__recomendado-fullscreen-header {
   display: flex;
   align-items: center;
   gap: 12px;
   max-width: 48rem;
   margin: 0 auto;
+
   h2 {
     margin: 0;
     font-size: var(--fs-md);
     color: var(--ink);
   }
 }
+
 .repaso__recomendado-volver {
   border: none;
   background: transparent;
@@ -1142,20 +1335,24 @@
   cursor: pointer;
   padding: 4px 0;
 }
+
 .repaso__recomendado-subtitulo {
   color: var(--ink-muted);
   font-size: var(--fs-xs);
   margin: 0 0 18px;
 }
+
 .repaso__recomendado-vacio {
   color: var(--ink-muted);
   font-size: var(--fs-sm);
   text-align: center;
   padding: 24px 0;
 }
+
 .repaso__recomendado-categoria {
   margin-bottom: 20px;
 }
+
 .repaso__recomendado-categoria-title {
   margin: 0 0 8px;
   font-size: var(--fs-xs);
@@ -1164,6 +1361,7 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
 .repaso__recomendado-curso {
   background: var(--surface-alt);
   border: 1px solid var(--border);
@@ -1173,75 +1371,99 @@
   margin: 0 auto;
   margin-bottom: var(--space-3);
 }
+
 .repaso__recomendado-curso-nombre {
   font-weight: var(--fw-semibold);
   font-size: var(--fs-sm);
   color: var(--ink);
 }
+
 .repaso__recomendado-curso-semana {
   font-weight: var(--fw-medium);
   font-size: var(--fs-xs);
   color: var(--ink-muted);
 }
+
 .repaso__recomendado-temas {
   margin: 6px 0 0;
   padding-left: 18px;
   font-size: var(--fs-xs);
   color: var(--ink);
 }
+
 /* ============================================================
    RESPONSIVE — TEMARIO
    ============================================================ */
+
 @include respond-max(sm) {
   .repaso__tab {
     padding: 9px 8px;
     font-size: 13px;
   }
+
   .repaso__categoria-tab {
     padding: 7px 10px;
     font-size: 12px;
   }
+
   .repaso__select {
     max-width: calc(100vw - 32px);
   }
+
   .repaso__select-menu {
     max-width: calc(100vw - 32px);
   }
+
   .repaso__select-option,
   .repaso__select-back {
     white-space: normal;
   }
+
   .repaso__temario-search {
     flex: 1 1 100%;
     order: 3;
   }
+
   .repaso__temario-search-results {
     max-height: 300px;
     overflow-y: auto;
   }
+
   .repaso__temario-item {
     align-items: flex-start;
   }
+
   .repaso__temario-item-content {
     flex: 1 1 100%;
   }
+
   .repaso__temario-actions {
     width: 100%;
     margin-left: 0;
   }
+
   .repaso__temario-action {
     flex: 1;
   }
+
   .repaso__confirm-toast-content {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
   }
+
   .repaso__confirm-toast-actions {
     width: 100%;
   }
+
   .repaso__confirm-toast-cancel,
   .repaso__confirm-toast-confirm {
     flex: 1;
   }
+}
+.repaso__temario-grupo-nombre {
+  margin: var(--space-3) 0;
+  color: var(--warning);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-md)
 }

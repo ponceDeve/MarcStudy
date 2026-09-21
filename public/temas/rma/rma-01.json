@@ -1,0 +1,360 @@
+{
+  "curso": "Razonamiento Matemático",
+  "tema": "Deductivo simple",
+  "glosario": {
+    "proposición": "Enunciado que puede ser verdadero o falso",
+    "premisa": "Enunciado que aporta información para deducir",
+    "conclusión": "Afirmación obtenida de las premisas",
+    "deducción inmediata": "Conclusión obtenida directamente de los datos",
+    "contrarrecíproca": "Forma equivalente de una implicación",
+    "silogismo": "Razonamiento que relaciona premisas para concluir",
+    "variable": "Elemento que puede tomar distintos valores",
+    "cuadro de decisiones": "Tabla para relacionar variables y posibilidades"
+  },
+  "theory": [
+    {
+      "titulo": "Proceso deductivo",
+      "puntos": [
+        {
+          "texto": "La **deducción** relaciona datos para obtener conclusiones",
+          "explicacion": "Se parte de información dada y se establecen consecuencias que deben cumplirse necesariamente."
+        },
+        {
+          "texto": "**Premisa** → información conocida",
+          "explicacion": "Cada premisa aporta una condición que debe respetarse durante toda la resolución."
+        },
+        {
+          "texto": "**Conclusión** → resultado deducido",
+          "explicacion": "Es la afirmación que se obtiene al relacionar correctamente las premisas."
+        },
+        {
+          "texto": "Deductivo simple → pocas variables y razonamiento directo",
+          "explicacion": "Los problemas utilizan pocas relaciones entre elementos y permiten llegar a la respuesta mediante deducciones directas."
+        },
+        {
+          "texto": "La conclusión debe cumplir todas las condiciones",
+          "explicacion": "Una respuesta compatible con solo algunas premisas no es suficiente. Debe satisfacer simultáneamente toda la información."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposiciones",
+      "puntos": [
+        {
+          "texto": "**Proposición** → enunciado con valor de verdad",
+          "explicacion": "Puede determinarse si el enunciado es verdadero o falso dentro del contexto planteado."
+        },
+        {
+          "texto": "Una pregunta no es proposición",
+          "explicacion": "Una pregunta solicita información, pero no afirma algo que pueda clasificarse como verdadero o falso."
+        },
+        {
+          "texto": "Una orden no es proposición",
+          "explicacion": "Una orden indica una acción y no posee un valor de verdad."
+        },
+        {
+          "texto": "Un enunciado ambiguo no es proposición",
+          "explicacion": "Si no puede determinarse claramente su valor de verdad dentro del contexto, no funciona como proposición."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción inmediata",
+      "puntos": [
+        {
+          "texto": "**Deducción inmediata** → relaciona datos directamente",
+          "explicacion": "La conclusión se obtiene sin construir una cadena extensa de relaciones. Basta combinar las premisas pertinentes."
+        },
+        {
+          "texto": "A ⇒ B y A → B",
+          "explicacion": "Si una condición A implica B y se sabe que A ocurre, entonces B debe ocurrir."
+        },
+        {
+          "texto": "A ⇒ B y ✗B → ✗A",
+          "explicacion": "Si A produjera B, no puede mantenerse A cuando B está descartada. Esta transformación corresponde a la contrarrecíproca."
+        },
+        {
+          "texto": "A ⇒ B no permite concluir B ⇒ A",
+          "explicacion": "La relación inicial solo establece que A produce B. No garantiza que B produzca A."
+        },
+        {
+          "texto": "A ⇒ B y B ⇒ C → A ⇒ C",
+          "explicacion": "La consecuencia de la primera relación puede utilizarse como condición de la segunda, formando una cadena deductiva."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso de implicación",
+      "puntos": [
+        {
+          "texto": "Si Carlos participa ⇒ Héctor participa",
+          "explicacion": "La condición indica que la participación de Carlos obliga a la participación de Héctor."
+        },
+        {
+          "texto": "Héctor no participa → Carlos no participa",
+          "explicacion": "Si Carlos participara, la condición obligaría a Héctor a participar. Por ello, la ausencia de Héctor descarta a Carlos."
+        },
+        {
+          "texto": "Ejemplo: Héctor no participa",
+          "explicacion": "Esta información puede combinarse directamente con la condición que relaciona a Carlos y Héctor."
+        },
+        {
+          "texto": "Carlos participa → Héctor participa",
+          "explicacion": "La participación de Carlos activaría necesariamente la participación de Héctor."
+        },
+        {
+          "texto": "Héctor no participa → Carlos no participa",
+          "explicacion": "Como Héctor no participa, la posibilidad de que Carlos participe queda descartada."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones entre variables",
+      "puntos": [
+        {
+          "texto": "**Variable** → elemento que debe determinarse",
+          "explicacion": "Puede representar una persona, objeto, profesión, lugar, actividad u otra característica del problema."
+        },
+        {
+          "texto": "Cada variable puede relacionarse con otra",
+          "explicacion": "El problema proporciona condiciones que permiten determinar qué elemento corresponde a cada característica."
+        },
+        {
+          "texto": "Dos variables → relación persona característica",
+          "explicacion": "Un caso frecuente consiste en asociar personas con profesiones, lugares, actividades, medios de transporte u otras características."
+        },
+        {
+          "texto": "Una relación conocida reduce posibilidades",
+          "explicacion": "Cuando una correspondencia queda determinada, las alternativas restantes disminuyen y permiten obtener nuevas relaciones."
+        },
+        {
+          "texto": "Una correspondencia descartada no puede reutilizarse",
+          "explicacion": "Si el problema establece que cada característica corresponde a un solo elemento, una opción eliminada no puede asignarse nuevamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadro de decisiones",
+      "puntos": [
+        {
+          "texto": "**Cuadro de decisiones** → organiza correspondencias",
+          "explicacion": "Se colocan los elementos de las variables en filas y columnas para registrar relaciones confirmadas y descartadas."
+        },
+        {
+          "texto": "✓ → correspondencia confirmada",
+          "explicacion": "Una marca de confirmación indica que ambos elementos están relacionados."
+        },
+        {
+          "texto": "✗ → correspondencia descartada",
+          "explicacion": "Una marca de descarte indica que ambos elementos no pueden corresponderse."
+        },
+        {
+          "texto": "Una característica usada → elimina alternativas equivalentes",
+          "explicacion": "Cuando cada elemento posee una sola característica y cada característica corresponde a un solo elemento, confirmar una pareja permite descartar esa característica de los demás."
+        },
+        {
+          "texto": "Ejemplo: Ana → médica",
+          "explicacion": "Si cada persona tiene una profesión diferente, confirmar que Ana es médica permite descartar médica para las demás personas."
+        },
+        {
+          "texto": "Bruno ✗ médica",
+          "explicacion": "La profesión médica ya quedó asignada a Ana bajo la condición de correspondencia única."
+        },
+        {
+          "texto": "Completar una pareja permite continuar",
+          "explicacion": "Después de confirmar una correspondencia, se aplican las demás condiciones para obtener nuevas asignaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Correspondencia única",
+      "puntos": [
+        {
+          "texto": "Cada persona tiene una característica diferente",
+          "explicacion": "Cuando el enunciado establece que las características son diferentes, ninguna característica puede repetirse entre las personas."
+        },
+        {
+          "texto": "Una característica pertenece a una persona",
+          "explicacion": "Si existe correspondencia uno a uno, una característica ya asignada queda disponible para ninguna otra persona."
+        },
+        {
+          "texto": "Última posibilidad → correspondencia obligatoria",
+          "explicacion": "Si todas las alternativas de una persona fueron descartadas excepto una, esa alternativa queda determinada."
+        },
+        {
+          "texto": "Ejemplo: Ana no es médica ni ingeniera",
+          "explicacion": "Si Ana solo puede tener una de tres profesiones, queda únicamente la profesión que no haya sido descartada."
+        },
+        {
+          "texto": "Ana → profesión restante",
+          "explicacion": "La asignación se obtiene por eliminación cuando las otras posibilidades son incompatibles con las condiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción por eliminación",
+      "puntos": [
+        {
+          "texto": "**Eliminación** → descarta posibilidades incompatibles",
+          "explicacion": "Se analizan las alternativas y se eliminan aquellas que contradicen una condición del problema."
+        },
+        {
+          "texto": "Una contradicción → ✗ alternativa",
+          "explicacion": "Si una posibilidad incumple una condición, ya no puede formar parte de la solución."
+        },
+        {
+          "texto": "Una única posibilidad restante → ✓ respuesta",
+          "explicacion": "Cuando las demás alternativas fueron descartadas correctamente, la opción restante queda determinada."
+        },
+        {
+          "texto": "Ejemplo: tres profesiones para tres personas",
+          "explicacion": "Si una persona no puede tener dos profesiones y las condiciones descartan dos de ellas, la tercera queda determinada."
+        },
+        {
+          "texto": "Ana ✗ médica y ✗ ingeniera",
+          "explicacion": "Las dos condiciones eliminan esas profesiones para Ana."
+        },
+        {
+          "texto": "Ana → contadora",
+          "explicacion": "La profesión restante queda asignada a Ana por eliminación."
+        },
+        {
+          "texto": "Verificación → revisar todas las condiciones",
+          "explicacion": "La asignación final debe comprobarse nuevamente contra cada dato para evitar una eliminación incorrecta."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones de conjuntos",
+      "puntos": [
+        {
+          "texto": "Todos A son B → A ⊂ B",
+          "explicacion": "Cada elemento de A pertenece también a B. La inclusión permite deducir propiedades de los elementos de A."
+        },
+        {
+          "texto": "Ningún A es B → A y B separados",
+          "explicacion": "La condición impide que un mismo elemento pertenezca simultáneamente a ambos conjuntos."
+        },
+        {
+          "texto": "Algunos A son B → existe elemento común",
+          "explicacion": "La afirmación garantiza que al menos un elemento pertenece a ambos conjuntos."
+        },
+        {
+          "texto": "Todos A son B y todos B son C",
+          "explicacion": "La pertenencia a A implica pertenencia a B, y pertenecer a B implica pertenecer a C."
+        },
+        {
+          "texto": "A ⊂ B y B ⊂ C → A ⊂ C",
+          "explicacion": "La inclusión se encadena porque cada elemento de A pertenece a B y, por esa misma condición, también pertenece a C."
+        }
+      ]
+    },
+    {
+      "titulo": "Silogismo hipotético",
+      "puntos": [
+        {
+          "texto": "**Silogismo** → encadena relaciones condicionales",
+          "explicacion": "Permite obtener una consecuencia cuando la conclusión de una condición coincide con la condición de otra."
+        },
+        {
+          "texto": "A ⇒ B y B ⇒ C → A ⇒ C",
+          "explicacion": "La primera condición lleva de A hacia B y la segunda continúa desde B hacia C."
+        },
+        {
+          "texto": "Ejemplo: estudia ⇒ practica",
+          "explicacion": "La primera relación establece que estudiar produce la condición de practicar."
+        },
+        {
+          "texto": "Practica ⇒ mejora",
+          "explicacion": "La segunda relación establece que practicar produce mejora."
+        },
+        {
+          "texto": "Estudia ⇒ mejora",
+          "explicacion": "Al encadenar ambas condiciones se obtiene la consecuencia final."
+        },
+        {
+          "texto": "Verificación → ambas relaciones deben cumplirse",
+          "explicacion": "La cadena solo es válida cuando la segunda condición utiliza exactamente la consecuencia obtenida en la primera."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de resolución",
+      "puntos": [
+        {
+          "texto": "1. Identificar personas y características",
+          "explicacion": "Separa los elementos que aparecen en el problema y determina qué características deben relacionarse."
+        },
+        {
+          "texto": "2. Extraer cada condición",
+          "explicacion": "Convierte cada oración del enunciado en una relación concreta entre elementos."
+        },
+        {
+          "texto": "3. Marcar relaciones directas",
+          "explicacion": "Las correspondencias explícitas son el punto de partida porque reducen inmediatamente las posibilidades."
+        },
+        {
+          "texto": "4. Aplicar exclusiones",
+          "explicacion": "Descarta las relaciones incompatibles con los datos y aprovecha las condiciones de correspondencia única."
+        },
+        {
+          "texto": "5. Encadenar las deducciones",
+          "explicacion": "Una relación obtenida puede convertirse en información útil para determinar otra correspondencia."
+        },
+        {
+          "texto": "6. Responder exactamente lo solicitado",
+          "explicacion": "No es necesario determinar información que no influye en la pregunta si la respuesta ya puede establecerse."
+        },
+        {
+          "texto": "7. Verificar todas las condiciones",
+          "explicacion": "Comprueba que la solución obtenida no contradiga ningún dato del enunciado."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo completo",
+      "puntos": [
+        {
+          "texto": "Ana, Bruno y Carla tienen profesiones diferentes",
+          "explicacion": "Las profesiones disponibles son médica, ingeniera y abogada. Cada persona posee una sola profesión."
+        },
+        {
+          "texto": "Ana no es médica",
+          "explicacion": "La profesión médica queda descartada para Ana."
+        },
+        {
+          "texto": "Bruno no es ingeniero",
+          "explicacion": "La profesión ingeniero queda descartada para Bruno."
+        },
+        {
+          "texto": "Carla es médica",
+          "explicacion": "La condición determina directamente la profesión de Carla."
+        },
+        {
+          "texto": "Carla médica → Ana no médica",
+          "explicacion": "La asignación de Carla confirma además que la profesión médica no puede asignarse a otra persona."
+        },
+        {
+          "texto": "Ana → ingeniera o abogada",
+          "explicacion": "Ana no puede ser médica y todavía tiene dos posibilidades."
+        },
+        {
+          "texto": "Bruno → médica o abogada",
+          "explicacion": "Bruno no puede ser ingeniero y la profesión médica ya pertenece a Carla, por lo que queda una sola alternativa."
+        },
+        {
+          "texto": "Bruno → abogada",
+          "explicacion": "Como Carla ya es médica y Bruno no puede ser ingeniero, la única profesión disponible para Bruno es abogada."
+        },
+        {
+          "texto": "Ana → ingeniera",
+          "explicacion": "La profesión abogada ya corresponde a Bruno y médica corresponde a Carla. Por eliminación, Ana es ingeniera."
+        },
+        {
+          "texto": "Verificación → Ana ingeniera, Bruno abogada, Carla médica",
+          "explicacion": "Las tres personas tienen profesiones diferentes y se cumplen todas las condiciones iniciales."
+        }
+      ]
+    }
+  ]
+}

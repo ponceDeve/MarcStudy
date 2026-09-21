@@ -565,7 +565,6 @@ export default function MiEstudioPage() {
   }
   async function generarCuestionarioDECO() {
     if (!topicData) return;
-
     const teoria = (topicData.theory || [])
       .map((seccion) => {
         const titulo = seccion?.titulo || "";
@@ -576,18 +575,13 @@ export default function MiEstudioPage() {
           })
           .filter(Boolean)
           .join("\n\n");
-
         return [titulo, puntos].filter(Boolean).join("\n\n");
       })
       .filter(Boolean)
       .join("\n\n");
-
     const prompt = `Actúa como profesor experto en admisión UNMSM.
-
 Genera 20 preguntas de opción múltiple con estilo DECO utilizando EXCLUSIVAMENTE la teoría proporcionada.
-
 REGLAS:
-
 - 20 preguntas.
 - Cada pregunta debe tener 5 alternativas: A, B, C, D y E.
 - Prioriza situaciones, aplicación, análisis, relaciones, causa-efecto, interpretación y comparación.
@@ -599,19 +593,12 @@ REGLAS:
 - Enfoque tipo examen de admisión UNMSM.
 - Indica la respuesta correcta y una explicación breve después de cada pregunta.
 - No agregues información que no esté respaldada por la teoría.
-
 CURSO:
-
 ${topicData.curso || ""}
-
 TEMA:
-
 ${topicData.tema || ""}
-
 TEORÍA:
-
 ${teoria}`;
-
     try {
       await navigator.clipboard.writeText(prompt);
       window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
@@ -1981,30 +1968,23 @@ ${teoria}`;
                   {(() => {
                     const ahora = new Date();
                     const objetivo = new Date(2027, 2, 15);
-
                     let meses =
                       (objetivo.getFullYear() - ahora.getFullYear()) * 12 +
                       (objetivo.getMonth() - ahora.getMonth());
-
                     const fechaMeses = new Date(ahora);
                     fechaMeses.setMonth(fechaMeses.getMonth() + meses);
-
                     if (fechaMeses > objetivo) {
                       meses--;
                       fechaMeses.setMonth(fechaMeses.getMonth() - 1);
                     }
-
                     const diasRestantes = Math.ceil(
                       (objetivo - fechaMeses) / (1000 * 60 * 60 * 24)
                     );
-
                     const semanas = Math.floor(diasRestantes / 7);
                     const dias = diasRestantes % 7;
-
                     return `${meses} meses · ${semanas} semanas · ${dias} días`;
                   })()}
                 </div>
-
                 <div className="mi-estudio__recomendados-grid">
                   {recomendacionesHoyInicio.map((r) => (
                     <div
@@ -2014,7 +1994,6 @@ ${teoria}`;
                       <span className="mi-estudio__recomendados-curso-nombre">
                         {r.curso}
                       </span>
-
                       <ul className="mi-estudio__recomendados-temas">
                         {r.temas.map((tema) => (
                           <li key={tema}>{tema}</li>

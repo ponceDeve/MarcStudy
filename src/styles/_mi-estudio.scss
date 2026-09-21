@@ -167,14 +167,15 @@
    REPASOS RECOMENDADOS DE HOY
    ============================================================ */
 .mi-estudio__recomendados {
-  margin: var(--space-4, 1.5rem) auto 0;
   max-width: 900px;
 }
-.mi-estudio__recomendados-fecha {
-  margin: -2px 0 18px;
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--accent);
+.mi-estudio__recomendados-title {
+  margin: 0 0 10px;
+  color: var(--success);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   text-align: center;
 }
 .mi-estudio__recomendados-grid {
@@ -226,7 +227,7 @@
   box-sizing: border-box;
   border: 1px solid var(--primary);
   border-radius: var(--radius-lg);
-  background: var(--primary-bg);
+  background: var(--surface);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--fs-body);
@@ -239,7 +240,7 @@
   &:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);
-    background: rgba(37, 99, 235, 0.15);
+    background: var(--surface-hover);
     .welcome-section__continuar-arrow {
       animation: continuarArrow 0.8s ease-in-out infinite;
     }
@@ -1835,7 +1836,6 @@
   }
 }
 .teoria-explicacion-icon {
-  margin-top: 0.25rem;
   color: var(--primary);
   font-size: 1.3rem;
 }
@@ -1945,9 +1945,8 @@
 }
 .teoria-explicacion-extra--unida {
   background: transparent;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 0.0625rem solid var(--border);
+  border-top: 3px dashed var(--border);
+  border-radius: 0;
 }
 .teoria-nav-botones {
   display: flex;
@@ -2407,18 +2406,45 @@
     text-align: left;
   }
   &__item {
-    padding: 0.65rem 0.85rem;
+    display: block;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+    line-height: 1.35;
     cursor: pointer;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     transition: background-color 0.15s linear;
-    &:hover {
+    /* Entre dos sugerencias queda una sola línea (no doble). */
+    & + & {
+      border-top-width: 0;
+    }
+    /* El borde exterior del dropdown ya cierra la lista. */
+    &:first-child {
+      border-top-width: 0;
+    }
+    &:last-child {
+      border-bottom-width: 0;
+    }
+    &:hover,
+    &.is-focused {
       background-color: var(--surface-hover);
     }
   }
-  &__item-seccion {
-    padding: 0 0.85rem;
-  }
+  /* Sin margen/relleno propio: todas las sugerencias quedan alineadas
+     con el mismo relleno del botón. */
+  &__item-seccion,
   &__item-fragmento {
-    padding: 0.15rem 0.85rem 0.65rem;
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  /* Texto del punto, debajo del título cuando la coincidencia es un título. */
+  &__item-texto {
+    display: block;
+    margin: 0.15rem 0 0;
+    padding: 0;
+    color: var(--ink-soft);
+    font-size: 0.7rem;
   }
   &__item-badge {
     width: fit-content;
@@ -2643,7 +2669,6 @@
     max-height: 15rem;
   }
   .teoria-explicacion-extra {
-    padding: 1rem;
     font-size: 1rem;
   }
   .teoria-acciones-final {
@@ -2710,7 +2735,6 @@
     max-height: 15rem;
   }
   .teoria-explicacion-extra {
-    padding: 1rem;
     font-size: 1rem;
   }
   .teoria-acciones-final {
@@ -3047,4 +3071,12 @@
 .mi-estudio__suggestion-btn--deco:hover {
   background: var(--surface-hover);
   border-color: var(--ink);
+}
+
+.mi-estudio__recomendados-fecha {
+  text-align: center;
+  color: var(--warning);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-4);
 }
