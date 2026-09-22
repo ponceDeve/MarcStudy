@@ -2,9 +2,14 @@
 // Prompts de ChatGPT de la pestaña Temario de Repaso.
 // Salida esperada: APUNTES PARA COPIAR EN EL CUADERNO (Markdown, sin JSON).
 //
-// El temario completo sirve como LÍMITE DE CONTENIDO.
-// El filtro de examen decide qué conocimientos del tema realmente deben entrar.
+// Plantilla: rol → temario del curso (marca el tema actual) → investigación
+// obligatoria con búsqueda web → límite con los demás temas del temario →
+// autorrevisión antes de entregar → qué incluir / qué no incluir → brevedad
+// → formato. Cada curso solo cambia su "arquetipo" (cómo se investiga y qué
+// se incluye) y su "rasgo" (qué atributo distingue un tipo de otro en ese
+// curso en particular).
 // ─────────────────────────────────────────────────────────────────────────
+
 import {
   teoriaLetras,
   teoriaMate,
@@ -15,774 +20,344 @@ import {
   examenMate,
   examenCiencia
 } from "./promptsExamenTeoria";
+
 const NOTA_FORMULAS =
   "Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.";
+
+// arquetipo: "practico" (tipos de problema/pregunta, sin procedimientos de
+// resolución) | "historico" (hechos, causas, consecuencias) | "conceptual"
+// (definición, tipos, atributos — el resto de los cursos).
 export const PROMPTS_REPASO = {
   "Habilidad Lógico Matemático": {
-    practico: true,
-    rol: "Razonamiento Lógico Matemático",
-    ejemploSubtemas:
-      "para «Sucesiones» → Tipos de sucesión, Término general, Suma de términos.",
-    subtemas:
-      "son los tipos de problema, métodos o estrategias que realmente pertenezcan al tema.",
-    contenido: [
-      "condiciones del problema y qué se pide",
-      "método de resolución",
-      "cuándo conviene usar cada método",
-      "patrones o relaciones útiles para reconocer el problema",
-      "casos particulares que cambian la resolución"
-    ],
-    especial: [
-      "Enseña cómo pensar y resolver, no teoría innecesaria.",
-      "Incluye ejemplos resueltos solo cuando enseñen un método o tipo de problema realmente importante.",
-      "No incluyas métodos que no correspondan al tema solicitado."
-    ],
-    evitar:
-      "etimología, historia, curiosidades ni teoría que no ayude a resolver problemas",
+    arquetipo: "practico",
+    unidadSing: "tipo de problema",
+    unidadPlur: "tipos de problema",
+    rasgo: "atajos, propiedades o casos límite de ese tipo de problema",
     formulas: true
   },
   "Aritmética": {
-    practico: true,
-    rol: "Aritmética",
-    ejemploSubtemas:
-      "para «Fracciones» → Clases de fracción, Operaciones, Fracción generatriz.",
-    subtemas:
-      "son las propiedades, casos, operaciones o clases de números que realmente correspondan al tema.",
-    contenido: [
-      "definición mínima necesaria",
-      "propiedades aplicables",
-      "reglas y condiciones de aplicación",
-      "procedimientos de resolución",
-      "casos particulares que cambian el procedimiento"
-    ],
-    especial: [
-      "Indica cuándo se aplica una propiedad o regla solo si esa condición puede ser evaluada.",
-      "Incluye ejemplos únicamente cuando enseñen un procedimiento importante."
-    ],
-    evitar: "etimología, historia ni curiosidades numéricas",
+    arquetipo: "practico",
+    unidadSing: "tipo de problema",
+    unidadPlur: "tipos de problema",
+    rasgo:
+      "las condiciones de validez de la propiedad (conjunto numérico, valores excluidos) y sus casos especiales",
     formulas: true
   },
   "Álgebra": {
-    practico: true,
-    rol: "Álgebra",
-    ejemploSubtemas:
-      "para «Ecuación cuadrática» → Forma general, Discriminante, Suma y producto de raíces.",
-    subtemas:
-      "son los conceptos, propiedades, métodos o casos algebraicos propios del tema.",
-    contenido: [
-      "concepto fundamental",
-      "propiedades e identidades aplicables",
-      "fórmulas necesarias",
-      "condiciones y restricciones",
-      "métodos de resolución",
-      "casos especiales examinables"
-    ],
-    especial: [
-      "Explica cuándo y cómo aplicar cada propiedad, fórmula o método cuando sea necesario.",
-      "Incluye un ejemplo solo si muestra una aplicación importante."
-    ],
-    evitar: "etimología, historia ni álgebra abstracta universitaria",
+    arquetipo: "practico",
+    unidadSing: "tipo de problema",
+    unidadPlur: "tipos de problema",
+    rasgo: "las condiciones de existencia, restricciones y teoremas asociados",
     formulas: true
   },
   "Geometría": {
-    practico: true,
-    rol: "Geometría",
-    ejemploSubtemas:
-      "para «Triángulos» → Clasificación, Puntos notables, Propiedades.",
-    subtemas:
-      "son las figuras, elementos, teoremas, propiedades o relaciones propios del tema.",
-    contenido: [
-      "elementos y notación necesarios",
-      "clasificaciones relevantes",
-      "propiedades aplicables",
-      "teoremas necesarios",
-      "fórmulas necesarias",
-      "relación entre propiedad y tipo de problema"
-    ],
-    especial: [
-      "Como no hay dibujos, describe las figuras mediante sus elementos y relaciones.",
-      "No demuestres teoremas salvo que la demostración sea indispensable para resolver o comprender una pregunta.",
-      "Incluye ejemplos solo para tipos de problema importantes."
-    ],
-    evitar: "historia, etimología ni curiosidades geométricas",
+    arquetipo: "practico",
+    unidadSing: "tipo de problema",
+    unidadPlur: "tipos de problema",
+    rasgo: "las condiciones del teorema y a qué tipo de figura se aplica",
     formulas: true
   },
   "Trigonometría": {
-    practico: true,
-    rol: "Trigonometría",
-    ejemploSubtemas:
-      "para «Razones trigonométricas» → Razones en el triángulo rectángulo, Ángulos notables, Ángulos complementarios.",
-    subtemas:
-      "son las razones, funciones, identidades o tipos de problema propios del tema.",
-    contenido: [
-      "definición necesaria",
-      "valores importantes cuando correspondan",
-      "signos o condiciones cuando sean necesarios",
-      "identidades y fórmulas aplicables",
-      "procedimientos de transformación o resolución",
-      "cuándo usar cada relación"
-    ],
-    especial: [
-      "No listes fórmulas solo porque sean trigonométricas.",
-      "Incluye una fórmula únicamente si pertenece realmente al tema y tiene utilidad examinable.",
-      "Incluye ejemplos solo para procedimientos importantes."
-    ],
-    evitar: "historia, etimología ni curiosidades",
+    arquetipo: "practico",
+    unidadSing: "tipo de problema",
+    unidadPlur: "tipos de problema",
+    rasgo:
+      "la condición de validez de la identidad y el cuadrante o rango donde aplica",
     formulas: true
-  },
-  "Economía": {
-    rol: "Economía",
-    ejemploSubtemas:
-      "para «Mercado» → Tipos de mercado, Demanda y oferta, Equilibrio.",
-    subtemas:
-      "son los conceptos, elementos, tipos, agentes o procesos económicos propios del tema.",
-    contenido: [
-      "concepto",
-      "características distintivas",
-      "elementos o agentes",
-      "clasificación necesaria",
-      "funcionamiento",
-      "relaciones de causa y consecuencia",
-      "términos indispensables"
-    ],
-    especial: [
-      "Marca con «≠» los conceptos que puedan confundirse.",
-      "Incluye fórmulas solo si pertenecen al tema.",
-      "Usa ejemplos reales solo cuando aclaren una diferencia o relación examinable."
-    ],
-    evitar:
-      "modelos universitarios avanzados, historia del pensamiento económico ni curiosidades",
-    formulas: true
-  },
-  "Biología": {
-    rol: "Biología",
-    ejemploSubtemas:
-      "para «Célula» → Concepto, Tipos de célula, Organelos.",
-    subtemas:
-      "son las estructuras, procesos, niveles, grupos o mecanismos propios del tema.",
-    contenido: [
-      "concepto necesario",
-      "características distintivas",
-      "estructura y función",
-      "clasificación necesaria",
-      "procesos y etapas",
-      "mecanismos y relaciones",
-      "terminología científica indispensable",
-      "ejemplos o casos que permitan identificar el concepto"
-    ],
-    especial: [
-      "Marca con «≠» las estructuras o procesos que puedan confundirse.",
-      "Incluye solo características que permitan identificar, diferenciar o comprender algo examinable.",
-      "No enumeres características por completar una lista."
-    ],
-    evitar:
-      "historia del descubrimiento, etimología ni curiosidades salvo que sean indispensables para el tema",
-    formulas: false
-  },
-  "Física": {
-    practico: true,
-    rol: "Física",
-    ejemploSubtemas:
-      "para «MRU» → Concepto, Ecuación del MRU, Encuentro y alcance.",
-    subtemas:
-      "son los fenómenos, magnitudes, leyes, relaciones o tipos de problema propios del tema.",
-    contenido: [
-      "concepto físico",
-      "magnitudes necesarias con símbolo y unidad",
-      "leyes y principios aplicables",
-      "fórmulas necesarias",
-      "condiciones de aplicación",
-      "casos particulares que cambien la resolución"
-    ],
-    especial: [
-      "Explica qué representa físicamente una fórmula solo cuando ayude a aplicarla.",
-      "Incluye ejemplos únicamente para tipos de problema importantes.",
-      "Indica unidades del Sistema Internacional cuando sean necesarias para resolver."
-    ],
-    evitar: "historia, biografías, etimología ni curiosidades",
-    formulas: true
-  },
-  "Química": {
-    rol: "Química",
-    ejemploSubtemas:
-      "para «Enlace químico» → Concepto, Tipos de enlace, Propiedades de los compuestos.",
-    subtemas:
-      "son los conceptos, clases, estructuras, reacciones, leyes o cálculos que realmente pertenezcan al tema.",
-    contenido: [
-      "concepto",
-      "propiedades relevantes",
-      "clasificación necesaria",
-      "estructura",
-      "nomenclatura y reglas aplicables",
-      "reacciones propias del tema",
-      "condiciones necesarias",
-      "cálculos y procedimientos cuando correspondan"
-    ],
-    especial: [
-      "Ajusta la proporción entre teoría y cálculo a la naturaleza del tema.",
-      "No agregues propiedades o reacciones solo porque pertenezcan a la Química.",
-      "Escribe fórmulas químicas en texto plano con subíndices."
-    ],
-    evitar: "historia, biografías, etimología ni curiosidades",
-    formulas: true
-  },
-  "Geografía": {
-    rol: "Geografía",
-    ejemploSubtemas:
-      "para «Relieve peruano» → Regiones del relieve, Formas del relieve, Factores.",
-    subtemas:
-      "son los elementos, regiones, factores o procesos geográficos propios del tema.",
-    contenido: [
-      "concepto",
-      "características distintivas",
-      "ubicación y límites cuando sean examinables",
-      "factores y elementos",
-      "clasificación necesaria",
-      "distribución",
-      "procesos y relaciones causales",
-      "ejemplos concretos cuando permitan identificar el concepto"
-    ],
-    especial: [
-      "Da cifras, nombres y ubicaciones solo cuando tengan utilidad examinable y estés seguro.",
-      "Resalta relaciones entre factores y fenómenos cuando puedan preguntarse."
-    ],
-    evitar: "historia, etimología ni curiosidades",
-    formulas: false
-  },
-  "Educación Cívica": {
-    rol: "Educación Cívica",
-    ejemploSubtemas:
-      "para «Estado» → Elementos del Estado, Poderes del Estado, Organismos autónomos.",
-    subtemas:
-      "son los conceptos, instituciones, derechos, deberes, normas o procesos propios del tema.",
-    contenido: [
-      "concepto",
-      "características distintivas",
-      "elementos",
-      "instituciones y competencias necesarias",
-      "derechos y deberes",
-      "normas relevantes",
-      "situaciones de aplicación cuando sean examinables"
-    ],
-    especial: [
-      "Marca con «≠» las instituciones o conceptos parecidos que puedan confundirse.",
-      "Usa la legislación peruana vigente cuando el tema la requiera.",
-      "No agregues artículos legales solo para ampliar el contenido."
-    ],
-    evitar: "etimología, historia ni curiosidades",
-    formulas: false
-  },
-  "Psicología": {
-    rol: "Psicología",
-    ejemploSubtemas:
-      "para «Memoria» → Tipos de memoria, Procesos, Olvido.",
-    subtemas:
-      "son los procesos, tipos, teorías, enfoques o etapas propios del tema.",
-    contenido: [
-      "concepto",
-      "características distintivas",
-      "procesos",
-      "tipos o clases necesarios",
-      "teorías o enfoques propios del tema",
-      "autores indispensables",
-      "situaciones de aplicación cuando ayuden a identificar el concepto"
-    ],
-    especial: [
-      "Marca con «≠» los conceptos similares que puedan confundirse.",
-      "Incluye autores solo cuando sean relevantes para identificar una teoría, enfoque o concepto.",
-      "No conviertas cada autor relacionado con el tema en un apartado."
-    ],
-    evitar: "biografías, etimología ni historia innecesaria",
-    formulas: false
   },
   "Habilidad Verbal": {
-    practico: true,
-    rol: "Razonamiento Verbal",
-    ejemploSubtemas:
-      "para «Analogías» → Tipos de analogía, Procedimiento de resolución, Casos frecuentes.",
-    subtemas:
-      "son los tipos de ejercicio o estrategias propias del tema.",
-    contenido: [
-      "definición mínima",
-      "criterio para identificarlo",
-      "procedimiento",
-      "criterios para descartar alternativas",
-      "casos frecuentes realmente útiles"
-    ],
-    especial: [
-      "Enseña cómo identificar y resolver el ejercicio.",
-      "Incluye ejemplos solo cuando representen un tipo de pregunta importante."
-    ],
-    evitar: "teoría extensa que no mejore la capacidad de resolución",
-    formulas: false
-  },
-  "Lenguaje": {
-    rol: "Lenguaje",
-    ejemploSubtemas:
-      "para «Tildación» → Reglas generales, Tilde diacrítica, Casos especiales.",
-    subtemas:
-      "son los elementos, clases, reglas o procedimientos lingüísticos propios del tema.",
-    contenido: [
-      "concepto necesario",
-      "características distintivas",
-      "elementos",
-      "clasificación necesaria",
-      "reglas aplicables",
-      "excepciones relevantes",
-      "procedimiento de análisis"
-    ],
-    especial: [
-      "Aplica la norma vigente de la Real Academia Española (RAE).",
-      "Usa ejemplos solo cuando aclaren una regla o excepción importante.",
-      "No conviertas cada excepción existente en contenido obligatorio."
-    ],
-    evitar: "etimología, historia de la lengua ni curiosidades",
-    formulas: false
-  },
-  "Literatura": {
-    rol: "Literatura",
-    ejemploSubtemas:
-      "para «Géneros literarios» → Género épico, Género lírico, Género dramático.",
-    subtemas:
-      "son las corrientes, géneros, épocas, autores u obras propios del tema.",
-    contenido: [
-      "concepto o ubicación necesaria",
-      "características distintivas",
-      "especies o subgéneros cuando correspondan",
-      "recursos o rasgos identificadores",
-      "representantes importantes",
-      "obras importantes",
-      "tema o argumento cuando permita identificar la obra"
-    ],
-    especial: [
-      "Usa el formato autor → obra → rasgo cuando sea útil.",
-      "Incluye contexto histórico o biográfico solo cuando permita identificar una corriente, autor u obra.",
-      "No copies fragmentos de obras ni poemas."
-    ],
-    evitar: "biografías extensas, etimología ni contexto innecesario",
+    arquetipo: "practico",
+    unidadSing: "tipo de pregunta",
+    unidadPlur: "tipos de pregunta",
+    rasgo:
+      "las palabras clave del enunciado y los tipos de alternativa incorrecta de esa habilidad",
     formulas: false
   },
   "Historia Universal": {
-    rol: "Historia Universal",
-    ejemploSubtemas:
-      "para «Revolución Francesa» → Causas, Etapas, Consecuencias.",
-    subtemas:
-      "son las etapas, procesos, civilizaciones, revoluciones o conflictos propios del tema.",
-    contenido: [
-      "ubicación temporal",
-      "contexto necesario",
-      "causas",
-      "hechos principales",
-      "consecuencias",
-      "personajes indispensables",
-      "conceptos necesarios"
-    ],
-    especial: [
-      "Verifica las fechas antes de incluirlas.",
-      "Usa cronología cuando ayude a diferenciar acontecimientos.",
-      "No agregues hechos de otros temas del temario."
-    ],
-    evitar: "anécdotas, biografías extensas ni curiosidades",
-    formulas: false
+    arquetipo: "historico"
   },
   "Historia del Perú": {
-    rol: "Historia del Perú",
-    ejemploSubtemas:
-      "para «Tahuantinsuyo» → Organización política, Organización económica, Expansión.",
-    subtemas:
-      "son los periodos, culturas, procesos o dimensiones históricas propias del tema.",
-    contenido: [
-      "ubicación temporal y espacial",
-      "contexto necesario",
-      "organización política cuando corresponda",
-      "organización social cuando corresponda",
-      "economía cuando corresponda",
-      "cultura cuando corresponda",
-      "causas, hechos y consecuencias cuando correspondan",
-      "personajes indispensables"
-    ],
-    especial: [
-      "Incluye solo las dimensiones que realmente formen parte del tema.",
-      "No mezcles periodos, culturas o procesos de otros temas.",
-      "Verifica las fechas antes de incluirlas."
-    ],
-    evitar: "anécdotas, biografías extensas ni curiosidades",
+    arquetipo: "historico"
+  },
+  "Biología": {
+    arquetipo: "conceptual",
+    rasgo:
+      "qué molécula interviene y en qué dirección cambia, tipo de reacción, energía, enzimas, u otro rasgo que los exámenes usen para diferenciarlos",
+    formulas: false,
+    notaExtra:
+      "Un subtema que NO tenga su propio número en el temario (por ejemplo taxia, tropismo, nastia o movimiento dentro de Irritabilidad) va DENTRO del subtema al que pertenece, nunca como un subtítulo aparte."
+  },
+  "Física": {
+    arquetipo: "conceptual",
+    rasgo:
+      "si es escalar o vectorial, su fórmula con las unidades del Sistema Internacional, y sus condiciones de validez",
+    formulas: true
+  },
+  "Química": {
+    arquetipo: "conceptual",
+    rasgo: "su fórmula, su nomenclatura, sus propiedades y el tipo de reacción en que participa",
+    formulas: true
+  },
+  "Economía": {
+    arquetipo: "conceptual",
+    rasgo:
+      "los agentes o variables que intervienen y, si tiene fórmula, sus unidades y cómo se interpreta",
+    formulas: true
+  },
+  "Lenguaje": {
+    arquetipo: "conceptual",
+    rasgo: "su criterio de identificación, sus excepciones y un ejemplo propio de una línea",
     formulas: false
   },
+  "Literatura": {
+    arquetipo: "conceptual",
+    rasgo: "autor u obra representativa, época y rasgo de estilo que lo distingue",
+    formulas: false,
+    notaExtra: "No copies fragmentos de obras ni versos: parafrasea siempre."
+  },
   "Filosofía": {
-    rol: "Filosofía",
-    ejemploSubtemas:
-      "para «Teoría del conocimiento» → Racionalismo, Empirismo, Criticismo.",
-    subtemas:
-      "son los problemas, corrientes, autores o posturas propios del tema.",
-    contenido: [
-      "problema filosófico",
-      "concepto",
-      "postura o corriente",
-      "autor y postura",
-      "planteamientos principales",
-      "contrastes entre posturas cuando sean necesarios",
-      "aplicación cuando permita identificar una postura"
-    ],
-    especial: [
-      "Escribe nombres completos cuando estés seguro.",
-      "Menciona obras solo cuando sean parte del contenido examinable.",
-      "No conviertas cada autor relacionado con el tema en contenido obligatorio."
-    ],
-    evitar: "etimología, biografías extensas ni historia innecesaria",
+    arquetipo: "conceptual",
+    rasgo: "representante, época y la tesis central que lo distingue de corrientes vecinas",
+    formulas: false
+  },
+  "Geografía": {
+    arquetipo: "conceptual",
+    rasgo: "su ubicación, su causa y, si es un dato numérico, su unidad",
+    formulas: false
+  },
+  "Educación Cívica": {
+    arquetipo: "conceptual",
+    rasgo: "su función o atribución concreta y la norma que lo respalda",
+    formulas: false
+  },
+  "Psicología": {
+    arquetipo: "conceptual",
+    rasgo: "el autor y su aporte, o los componentes y fases del proceso",
     formulas: false
   }
 };
+
+// Respaldo por si aparece un curso sin configuración propia.
+const CONFIG_GENERICA = {
+  arquetipo: "conceptual",
+  rasgo: "los rasgos que distinguen un tipo de otro dentro de este curso",
+  formulas: false
+};
+
 // ─────────────────────────────────────────────────────────────────────────
-// Apuntes reales de pizarra como modelo de estilo y brevedad.
+// Apuntes reales de pizarra (transcritos), solo como modelo de estilo y
+// brevedad. Se citan aparte y se aclara que no hay que copiar su contenido.
 // ─────────────────────────────────────────────────────────────────────────
 const EJEMPLOS_APUNTE = {
   "Literatura": `# Alejo Carpentier
 ## Etapa
-- Nueva narrativa hispanoamericana
-- Narrativa y ensayo
+- Nueva narrativa hispanoamericana (consolidación)
+## Características de su obra
+- Preferencia por narrativa y ensayo
 - Técnicas modernas
-- Influencia del surrealismo
-- Sincretismo: amerindia + africana + europea
-- Tradición + hechos históricos
-- Lo real maravilloso
+- Influencia del surrealismo (mundo onírico)
+- Sincretismo cultural: amerindia + africana + europea
+- Fusión: tradición + hechos históricos
+- Teoriza lo real maravilloso
 ## El reino de este mundo
 - Género: narrativo
 - Especie: novela
 - Narrador: omnisciente
-- Narración: lineal-cronológica + episódica
-## Personajes
-- Haitianos → tradición
-  - Ti Noel → tradición colectiva
-  - Mackandal → primera revolución
-  - Boukman → revolución armada
-- Franceses → colonización
-  - Monsieur Lenormand de Mezy → cobardía
-  - Paulina Bonaparte → decadencia francesa
-## Tema
-- Principal: búsqueda de libertad
-- Secundarios: esclavitud, opresión, tiranía`,
-  "Historia Universal": `# Imperio napoleónico
+- Narración: lineal-cronológica + episódica`,
+  "Historia Universal": `# Imperio napoleónico (1804-1815)
 ## III Coalición
 - Trafalgar → derrota franco-española
-- Austerlitz → gran victoria
-- Confederación del Rin
+- Austerlitz → gran victoria («los tres emperadores»)
+- Crea la Confederación del Rin
 ## IV Coalición
-- Decreto de Berlín → bloqueo continental
-- Tilsit → acuerdo con Alejandro I
-## Península ibérica
-- 1807 → invade Portugal
-- 1808 → invade España
-## Campaña de Rusia
-- 1812 → inicio del fin
-- Tierra quemada
-## VI Coalición
-- Leipzig → derrota napoleónica
-- Elba → exilio`,
+- Decreto de Berlín → bloqueo continental contra Inglaterra
+- Tilsit → acuerdo con el zar Alejandro I (Rusia)`,
   "Biología": `# Histología vegetal
 ## Concepto
-- Rama de la Botánica
-- Estudia tejidos vegetales
-- Tejido → células similares + función específica
-## Tejidos juveniles
-- Células indiferenciadas
-- Mitosis constante
-- Meristemo apical → crecimiento longitudinal
-- Meristemo lateral → crecimiento en grosor
-## Tejidos adultos
-- Protectores
-  - Epidermis → revestimiento
-  - Estomas → intercambio gaseoso + transpiración
-- Conductores
-  - Xilema → savia bruta
-  - Floema → savia elaborada`,
-  "Física": `# Ondas mecánicas
+- Rama de la Botánica: estudia los tejidos de la planta
+- Tejido: conjunto de células similares que cumplen funciones específicas
+## Clases de tejidos
+- Juveniles (embrionarios): células indiferenciadas, crecimiento constante
+- Adultos: células diferenciadas`,
+  "Física": `# Ondas mecánicas (O.M.)
 ## Concepto
 - Propagación de perturbaciones
-- Transportan energía, no materia
-- Requieren medio material
+- Transportan energía y cantidad de movimiento, no materia
+- Las partículas solo oscilan
+- Necesitan un medio material
 ## Tipos
-- Longitudinal → vibración paralela
-- Transversal → vibración perpendicular
-## Elementos
-- Cresta → punto más alto
-- Valle → punto más bajo
-- λ → longitud de onda
-- A → amplitud
-- v = λ/T = λ·f`,
+- O.M. longitudinal: vibración de partículas paralela a la propagación (el sonido)
+- O.M. transversal: vibración de partículas perpendicular a la propagación (superficie libre de un líquido)`,
   "Química": `# Estequiometría
 ## Definición
-- Relaciones cuantitativas de una reacción
-- Moles, masa y volumen
-## Conservación de masa
-- Σ masa reactantes = Σ masa productos
-- O₂ + 2 H₂ → 2 H₂O
-## Reactivos
-- Reactivo limitante → se consume primero
-- Reactivo en exceso → queda sobrante`
+- Rama de la Química: aspecto cuantitativo de todo proceso químico
+- Relación de moles, masa y volumen
+## Ley de conservación de la masa (Lavoisier)
+- En toda reacción: Σ masa reactantes = Σ masa productos
+- Ejemplo: O₂ + 2 H₂ → 2 H₂O (32 g + 4 g → 36 g)`
 };
+
 // ─────────────────────────────────────────────────────────────────────────
-// Respaldo para cursos sin configuración propia.
+// Temario numerado, marcando el tema actual.
+// temarioCurso viene como "Semana N: tema1 | tema2 | ...", una línea por
+// semana, en el orden real del curso.
 // ─────────────────────────────────────────────────────────────────────────
-const PROMPT_GENERICO = {
-  rol: "",
-  ejemploSubtemas:
-    "para «Géneros literarios» → Género épico, Género lírico, Género dramático.",
-  subtemas:
-    "son únicamente los subtemas que realmente pertenezcan al tema.",
-  contenido: [
-    "concepto necesario",
-    "características distintivas",
-    "clasificación necesaria",
-    "procesos o procedimientos cuando correspondan",
-    "ejemplos solo cuando sean examinables"
-  ],
-  especial: [
-    "Adapta el contenido a la naturaleza del curso.",
-    "Aplica siempre el filtro de relevancia para examen."
-  ],
-  evitar: "etimología, historia, curiosidades y teoría innecesaria",
-  formulas: false
-};
-// ─────────────────────────────────────────────────────────────────────────
-// Marca el tema actual dentro del temario.
-// ─────────────────────────────────────────────────────────────────────────
-function marcarTemaActual(temarioCurso, tema) {
-  return String(temarioCurso || "")
+function temarioNumerado(temarioCurso, tema) {
+  const temas = String(temarioCurso || "")
     .split("\n")
-    .map((linea) => {
+    .filter(Boolean)
+    .flatMap((linea) => {
       const i = linea.indexOf(": ");
-      if (i === -1) return linea;
-      const cabecera = linea.slice(0, i + 2);
-      const temas = linea
-        .slice(i + 2)
-        .split(" | ")
-        .map((t) =>
-          t === tema
-            ? `>>> TEMA ACTUAL: ${t} <<<`
-            : t
-        );
-      return cabecera + temas.join(" | ");
-    })
+      const cuerpo = i === -1 ? linea : linea.slice(i + 2);
+      return cuerpo.split(" | ").map((t) => t.trim()).filter(Boolean);
+    });
+  const total = temas.length;
+  const lista = temas
+    .map((t, n) => `${n + 1}. ${t}${t === tema ? "  ← TEMA A DESARROLLAR" : ""}`)
     .join("\n");
+  return { total, lista };
 }
-function lista(items) {
-  return items.map((i) => `- ${i}`).join("\n");
+
+function bloqueInvestigacion(c, u, up) {
+  if (c.arquetipo === "practico") {
+    return `INVESTIGACIÓN (obligatoria, antes de escribir)
+No respondas de memoria. Usa búsqueda web.
+1. Busca primero la estructura general del tema (sus ${up}).
+2. Para CADA ${u}, busca su regla o forma básica.
+3. Para CADA ${u}, busca ${c.rasgo}, pero solo los que de verdad distinguen un ${u} de otro.
+4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué reglas usan realmente: si preguntan solo la forma básica, no agregues condiciones que nadie pregunta.
+5. Busca los ${up} con los que este tema suele confundirse.
+Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
+  }
+  if (c.arquetipo === "historico") {
+    return `INVESTIGACIÓN (obligatoria, antes de escribir)
+No respondas de memoria. Usa búsqueda web.
+1. Busca primero la estructura general del tema (sus ${up}: causas, etapas, consecuencias).
+2. Para CADA ${u}, busca su dato básico: qué ocurrió, cuándo y dónde.
+3. Para CADA ${u}, busca personajes con nombre completo, causas y consecuencias, pero solo los datos que de verdad distinguen ese hecho de otros.
+4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué fechas o nombres preguntan realmente: si preguntan solo el hecho básico, no agregues detalles que nadie pregunta.
+5. Busca los hechos o procesos con los que este tema suele confundirse.
+Contrasta cada fecha, nombre o cifra en al menos dos fuentes. Si los historiadores discrepan o no puedes confirmar el dato, indícalo como aproximado o no lo escribas.`;
+  }
+  return `INVESTIGACIÓN (obligatoria, antes de escribir)
+No respondas de memoria. Usa búsqueda web.
+1. Busca primero la estructura general del tema (sus ${up} o características principales).
+2. Para CADA ${u}, busca su definición básica y sus tipos o clasificaciones completas.
+3. Para CADA tipo que encuentres, busca ${c.rasgo}, pero solo los que de verdad distinguen un tipo de otro.
+4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué preguntan realmente: si preguntan solo la definición básica, no agregues atributos que nadie pregunta.
+5. Busca los conceptos que suelen confundirse con este tema.
+Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
 }
-function listaNumerada(items) {
-  return items.map((i, n) => `${n + 1}. ${i}`).join("\n");
+
+function bloqueLimite(c, total) {
+  const extra = c.notaExtra ? ` ${c.notaExtra}` : "";
+  return `LÍMITE CON OTROS TEMAS DEL TEMARIO
+El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con «← TEMA A DESARROLLAR». Si al investigarlo encuentras algo que en el temario tiene su propio número, nómbralo como máximo en una viñeta de conexión, sin desarrollarlo.${extra}`;
 }
-// ─────────────────────────────────────────────────────────────────────────
-// PROMPT PRINCIPAL
-// ─────────────────────────────────────────────────────────────────────────
+
+function bloqueAutorrevision(c, u, up) {
+  let l1, l2, l3, l4;
+  if (c.arquetipo === "historico") {
+    l1 = `Verifica que CADA ${u} tenga primero su hecho básico en una viñeta simple, antes de causas, consecuencias o personajes.`;
+    l2 = `Verifica que no haya más de dos niveles de viñeta en total (${u} → causa/consecuencia/personaje). Si un ${u} tiene varios datos, únelos en una sola viñeta, nunca en viñetas propias por dato.`;
+    l3 = "Verifica que cada dato que incluiste de verdad distingue este hecho de otro.";
+    l4 = `Verifica que no haya ${up} que en realidad sean parte de un proceso ya desarrollado.`;
+  } else if (c.arquetipo === "practico") {
+    l1 = `Verifica que CADA ${u} tenga primero su regla o forma básica en una viñeta simple, antes de cualquier condición o atajo.`;
+    l2 = `Verifica que no haya más de dos niveles de viñeta en total (${u} → condición/atajo). Si un ${u} tiene varios rasgos, únelos en una sola viñeta, nunca en viñetas propias por rasgo.`;
+    l3 = "Verifica que cada condición o atajo que incluiste de verdad distingue un tipo de otro.";
+    l4 = `Verifica que no haya ${up} que en realidad sean variantes de otro ya desarrollado.`;
+  } else {
+    l1 = `Verifica que CADA ${u} tenga primero su definición básica en una viñeta simple, antes de cualquier tipo o atributo.`;
+    l2 = `Verifica que no haya más de dos niveles de viñeta en total (${u} → tipo). Si un tipo tiene varios atributos, únelos en una sola viñeta de ese tipo, nunca en viñetas propias por atributo.`;
+    l3 = "Verifica que cada atributo que incluiste de verdad distingue un tipo de otro.";
+    l4 = `Verifica que no haya ${up} que en realidad sean formas de otro ${u} ya desarrollado.`;
+  }
+  return `ANTES DE ENTREGAR (autorrevisión obligatoria)
+- ${l1}
+- ${l2}
+- ${l3}
+- ${l4}
+- Verifica que no hayas desarrollado a fondo ningún tema que en el temario tenga su propio número.
+- Quita cualquier número de referencia, nota al pie o lista de fuentes que tu búsqueda haya generado. El apunte no lleva ninguna marca de dónde salió la información.`;
+}
+
+function bloqueIncluir(c, u, up) {
+  let inc, exc;
+  if (c.arquetipo === "historico") {
+    inc = `El hecho básico de cada ${u} siempre (qué, cuándo, dónde). Causas, consecuencias y personajes con nombre completo solo cuando el ${u} los tenga y un examen pueda preguntarlos. Procesos vecinos que aparecen como distractores.`;
+    exc = `Relatos narrativos extensos, curiosidades sin valor de examen, opiniones sobre los hechos, fechas que no puedas confirmar. No dupliques un ${u} como si fuera otro. No inventes un dato si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+  } else if (c.arquetipo === "practico") {
+    const upCap = up.charAt(0).toUpperCase() + up.slice(1);
+    inc = `La regla o forma básica de cada ${u} siempre. Las condiciones de uso y atajos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Casos límite y excepciones. ${upCap} vecinos que aparecen como distractores.`;
+    exc = `Procedimientos de resolución paso a paso, ejemplos resueltos con alternativas, enunciados de problemas completos, etimología, historia o curiosidades. No dupliques un ${u} como si fuera otro. No inventes una condición si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+  } else {
+    inc = `La definición básica de cada ${u} siempre. Los tipos y sus atributos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Estructura y función, etapas, excepciones. Conceptos vecinos que aparecen como distractores.`;
+    if (c.formulas) {
+      inc += " Cuando el tema tenga fórmulas de cálculo, inclúyelas con sus variables y unidades.";
+    }
+    exc = `Etimología, historia, curiosidades, detalles universitarios que esas preguntas no piden, cómo resolver problemas ni ejemplos resueltos. No dupliques un ${u} como si fuera un tema aparte. No inventes un atributo si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
+  }
+  return `QUÉ INCLUIR\n${inc}\n\nQUÉ NO INCLUIR\n${exc}`;
+}
+
 export function construirPromptRepaso({
   curso,
   tema,
   temarioCurso,
   paraJson = false
 }) {
-  const c = PROMPTS_REPASO[curso] || PROMPT_GENERICO;
-  const rol = c.rol || curso;
-  const notaFormulas = c.formulas
-    ? `\n${NOTA_FORMULAS}`
-    : "";
-  const bloqueEnfoque = c.practico
-    ? `En este curso los conocimientos se evalúan principalmente mediante aplicación.
-Prioriza procedimientos, reglas, fórmulas, propiedades, condiciones y casos que permitan resolver.
-Reduce la teoría a lo necesario para aplicar el conocimiento.`
-    : `En este curso pueden evaluarse conocimientos conceptuales.
-Prioriza definiciones exactas, características distintivas, clasificaciones, relaciones, diferencias y datos concretos realmente necesarios.`;
+  const c = PROMPTS_REPASO[curso] || CONFIG_GENERICA;
+  const u = c.unidadSing || (c.arquetipo === "historico" ? "aspecto" : "subtema");
+  const up =
+    c.unidadPlur ||
+    (c.arquetipo === "historico" ? "aspectos" : `${u}s`);
+  const { total, lista } = temarioNumerado(temarioCurso, tema);
+  const notaFormulas = c.formulas ? `\n${NOTA_FORMULAS}` : "";
   const ejemplo = EJEMPLOS_APUNTE[curso];
   const bloqueEjemplo = ejemplo
-    ? `EJEMPLO DE ESTILO
-Solo muestra la densidad y brevedad esperadas.
-NO copies su contenido ni su estructura si no corresponde al tema.
-${ejemplo}`
+    ? `EJEMPLO DE APUNTE REAL (de otro tema: solo ilustra el estilo y la brevedad; NO copies su contenido)\n${ejemplo}\n\n`
     : "";
   const avisoJson = paraJson
-    ? `
-Este es el PASO 1 de 3.
-Solo escribe los apuntes.
-No conviertas todavía a JSON.`
+    ? "\nEste es el PASO 1 de 3: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía."
     : "";
-  return `Actúa como profesor experto de ${rol} a nivel preuniversitario.
-Escribe APUNTES PARA COPIAR EN EL CUADERNO sobre el tema «${tema}» del curso «${curso}».
-Usa información confiable, pero NO muestres el proceso de investigación ni fuentes:
-nada de links, citas, notas ni marcadores como [1] o [cite].
-No menciones la universidad, academias, profesores ni el examen.
-${avisoJson}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FILTRO DE CONTENIDO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Tu trabajo es SELECCIONAR, no resumir toda la teoría existente.
-Incluye un conocimiento solo si cumple al menos una función clara:
-- puede convertirse razonablemente en una pregunta;
-- es necesario para resolver una pregunta;
-- permite identificar o diferenciar una respuesta;
-- es una regla, propiedad, fórmula, condición o excepción aplicable;
-- es indispensable para comprender otro conocimiento fundamental.
-OMITE información que solo sea verdadera, relacionada, académicamente conocida, anecdótica, secundaria o incluida para hacer el apunte más completo.
-«COMPLETO» significa cubrir los conocimientos FUNDAMENTALES Y EXAMINABLES del tema, no toda la teoría existente.
-No existe una cantidad mínima de contenido:
-tema pequeño → pocos apuntes;
-tema amplio → más apuntes solo si realmente hay más contenido examinable.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NIVEL Y ENFOQUE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nivel preuniversitario.
-${bloqueEnfoque}
-Si dudas de la relevancia de un dato, omítelo.
-No agregues contenido universitario, anecdótico o innecesario.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ALCANCE DEL TEMARIO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Temario completo de ${curso.toUpperCase()}:
-${marcarTemaActual(temarioCurso, tema)}
-El temario funciona como LÍMITE DE CONTENIDO.
-Desarrolla únicamente:
-«${tema}»
-Los demás temas sirven solo para conocer los límites y evitar mezclar contenidos.
-Está prohibido desarrollar otros temas, aunque estén relacionados.
-Si un concepto pertenece principalmente a otro tema → OMITIR.
-Si pertenece realmente a «${tema}» y es fundamental/examinable → INCLUIR.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CLASIFICACIONES, PROPIEDADES Y EJEMPLOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-No incluyas automáticamente todas las clasificaciones existentes.
-Una clasificación debe ser:
-- propia del tema;
-- fundamental;
-- examinable.
-No enumeres todas las propiedades conocidas.
-Incluye una propiedad solo si sirve para identificar, diferenciar, resolver o comprender el tema.
-Los ejemplos no son obligatorios.
-Inclúyelos solo si:
-- enseñan un procedimiento;
-- permiten identificar un concepto;
-- aclaran una diferencia;
-- representan un tipo de pregunta importante.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FÓRMULAS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-No agregues fórmulas que no pertenezcan directamente a «${tema}».
-Cada fórmula debe tener una función clara dentro del tema.
+
+  return `Actúa como profesor de ${curso} preuniversitario e investigador. Prepara apuntes para copiar a mi cuaderno sobre el tema marcado en el temario de abajo, para el examen de admisión de la UNMSM (Área C).
+No te doy apuntes: investiga tú solo. No muestres el proceso de investigación ni fuentes: nada de links, citas, notas ni marcadores como [1] o [cite]. No menciones la universidad, academias, profesores ni el examen dentro de los apuntes.${avisoJson}
+
+TEMARIO DE ${curso.toUpperCase()} (referencia, no lo desarrolles completo — ${total} temas)
+${lista}
+
+${bloqueInvestigacion(c, u, up)}
+
+${bloqueLimite(c, total)}
+
+${bloqueAutorrevision(c, u, up)}
+
+${bloqueIncluir(c, u, up)}
+
+BREVEDAD (regla principal)
+- Una idea por viñeta, en fragmentos cortos: máximo 12 palabras. Sin oraciones largas ni explicaciones.
+- Máximo dos niveles de viñeta por ${u}.
+- Cada dato aparece una sola vez en todo el apunte.
+- Negrita solo en el término clave.
+- Si hay duda entre incluir o quitar algo, quítalo.
 ${notaFormulas}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ESTRUCTURA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Empieza exactamente con:
-# ${tema}
-Después crea únicamente los subtemas que realmente necesite «${tema}».
-Cada subtema puede llevar un título ##.
-No existe número mínimo ni máximo de subtemas.
-No crees secciones artificiales ni categorías solo para completar una lista.
-No uses secciones genéricas como:
-- Diferencias
-- Claves para examen
-- Ideas clave
-- Fórmula para recordar
-- Resumen
-- Conclusión
-- Recomendaciones
-- Aplicaciones
-- Limitaciones
-salvo que realmente formen parte del contenido del tema.
-No dividas artificialmente un tema pequeño.
-«Concepto» solo aparece si realmente hace falta definir el tema.
-${c.ejemploSubtemas}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ENFOQUE DE ${curso.toUpperCase()}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Los posibles bloques de este curso son:
-${c.subtemas}
-Esto NO significa que debas usarlos todos.
-Contenido prioritario:
-${listaNumerada(c.contenido)}
-Reglas específicas:
-${lista(c.especial)}
-No agregues ${c.evitar}.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-REDACCIÓN
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Escribe como apuntes de pizarra.
-- Una viñeta = una idea.
-- Frases cortas.
-- Palabras clave.
-- Sin párrafos largos.
-- Sin explicaciones innecesarias.
-- Sin repetición.
-- Sin relleno.
-La mayoría de viñetas debe tener entre 3 y 8 palabras.
-Máximo aproximado: 12 palabras.
-Solo una definición inicial puede ser más larga si resulta necesaria.
-Usa:
-- etiqueta: dato
-- concepto → rasgo
-- causa → consecuencia
-- fecha → hecho
-- estructura → función
-- A ≠ B
-Resalta en **negrita** como máximo un término clave por viñeta.
-No repitas información entre viñetas ni subtemas.
-Los procedimientos van numerados.
-Cada paso ocupa una línea.
-La primera vez que aparezca una sigla, escribe su significado completo.
-No inventes datos.
-Si no estás seguro de un dato concreto, omítelo.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SÍMBOLOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Usa únicamente estos símbolos:
-= igual
-→ produce
-⊃ contiene
-∈ pertenece
-⇒ causa o implica
-✓ requiere
-✗ carece
-+ más
-↑ aumenta
-↓ disminuye
-≠ diferente
-≈ similar
-${notaFormulas}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EJEMPLO DE ESTILO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${bloqueEjemplo}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONTROL FINAL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Antes de responder comprueba:
-1. ¿Todo pertenece realmente a «${tema}»?
-2. ¿Hay contenido de otro tema?
-3. ¿Cada viñeta tiene utilidad para responder o resolver?
-4. ¿Hay información verdadera pero innecesaria?
-5. ¿Hay clasificaciones o propiedades secundarias?
-6. ¿Hay ejemplos que no enseñen algo importante?
-7. ¿Hay fórmulas innecesarias?
-8. ¿Hay repeticiones?
-9. ¿Se cubrieron los conocimientos fundamentales y examinables?
-10. ¿El tamaño corresponde a la cantidad real de contenido?
-Si algo no supera el filtro → ELIMÍNALO.
-No aumentes la extensión para parecer completo.
-No reduzcas contenido fundamental para hacerlo corto.
-El resultado debe ser:
-COMPLETO EN LO EXAMINABLE + SIN TEORÍA EXTRA.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FORMATO DE SALIDA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Solo los apuntes.
-Markdown.
-Listos para copiar.
-Sin introducción.
-Sin conclusión.
-Sin fuentes.
-Sin citas.
-Sin explicaciones fuera de los apuntes.`;
+
+${bloqueEjemplo}FORMATO
+- Un solo título, con el nombre del tema. No lo repitas.
+- Subtítulos cortos, uno por ${u}. Primero su dato o definición básica en una viñeta, luego lo demás si corresponde.
+- Tabla solo si comparas 3 o más cosas, y esa comparación no se repite en viñetas.
+- Ordena de lo más importante a lo menos importante.
+- Termina con el último dato del tema: sin tabla resumen, sin fuentes, sin notas, sin conclusión y sin preguntas finales.
+- Sin introducción ni conclusión: solo los apuntes, en Markdown, listos para copiar.`;
 }
+
+
 // ─────────────────────────────────────────────────────────────────────────
-// PASO 2: convertir los apuntes del paso 1 a JSON.
+// PASO 2: convertir en JSON los apuntes del paso 1 (mensaje aparte).
+// Usa los mismos prompts de tarjetas de la carpeta promt/ (copiados en promptsJsonTeoria.js),
+// elegidos según el curso.
 // ─────────────────────────────────────────────────────────────────────────
 const CURSOS_JSON_MATE = [
   "Habilidad Lógico Matemático",
@@ -791,59 +366,46 @@ const CURSOS_JSON_MATE = [
   "Geometría",
   "Trigonometría"
 ];
-const CURSOS_JSON_CIENCIA = [
-  "Biología",
-  "Física",
-  "Química"
-];
+const CURSOS_JSON_CIENCIA = ["Biología", "Física", "Química"];
+
 function promptJsonBase(curso) {
-  if (CURSOS_JSON_MATE.includes(curso)) {
-    return teoriaMate;
-  }
-  if (CURSOS_JSON_CIENCIA.includes(curso)) {
-    return teoriaCiencia;
-  }
+  if (CURSOS_JSON_MATE.includes(curso)) return teoriaMate;
+  if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
+
 export function construirPromptJson({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
-PASO 2 de 3:
-Convierte en el JSON indicado por este prompt los apuntes que escribiste en tu mensaje anterior.
-Ese texto anterior es el material recibido y debe cubrirse completo.
-NO agregues conocimientos nuevos.
-NO completes los apuntes con teoría externa.
-NO agregues información que no aparezca en los apuntes anteriores.
-Devuelve únicamente el JSON.
-Sigue todas las reglas de abajo.
-Después te pediré el examen; no lo hagas todavía.
+
+PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
+Devuelve únicamente el JSON, siguiendo todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+
 ${promptJsonBase(curso)}`;
 }
+
 // ─────────────────────────────────────────────────────────────────────────
-// PASO 3: examen + ejercicios a partir del JSON de teoría.
+// PASO 3: examen + ejercicios a partir del JSON de teoría del paso 2.
+// Usa los prompts examen_*.txt de la carpeta promt/, elegidos según el curso.
 // ─────────────────────────────────────────────────────────────────────────
 function promptExamenBase(curso) {
-  if (CURSOS_JSON_MATE.includes(curso)) {
-    return examenMate;
-  }
-  if (CURSOS_JSON_CIENCIA.includes(curso)) {
-    return examenCiencia;
-  }
+  if (CURSOS_JSON_MATE.includes(curso)) return examenMate;
+  if (CURSOS_JSON_CIENCIA.includes(curso)) return examenCiencia;
   return examenLetras;
 }
+
 export function construirPromptExamen({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
-PASO 3 de 3:
-Usa como entrada EXCLUSIVAMENTE el JSON de teoría que generaste en tu mensaje anterior.
-Ese JSON es el material que recibes.
-NO agregues teoría nueva que no esté representada en el JSON.
-NO amplíes el tema con conocimientos externos.
-Genera el examen y los ejercicios siguiendo todas las reglas de abajo, incluido el flujo de dos mensajes.
+
+PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que «recibes» en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
+
 ${promptExamenBase(curso)}`;
 }
+
 // ─────────────────────────────────────────────────────────────────────────
-// Copiar al portapapeles.
+// Copiar al portapapeles (con respaldo si el navegador no permite la API).
+// Devuelve true si se copió.
 // ─────────────────────────────────────────────────────────────────────────
 export async function copiarTexto(texto) {
   try {
@@ -852,10 +414,7 @@ export async function copiarTexto(texto) {
       return true;
     }
   } catch (e) {
-    console.error(
-      "Error copiando con la API del portapapeles:",
-      e
-    );
+    console.error("Error copiando con la API del portapapeles:", e);
   }
   try {
     const area = document.createElement("textarea");
@@ -869,10 +428,7 @@ export async function copiarTexto(texto) {
     document.body.removeChild(area);
     return ok;
   } catch (e) {
-    console.error(
-      "Error copiando con el respaldo:",
-      e
-    );
+    console.error("Error copiando con el respaldo:", e);
     return false;
   }
 }

@@ -14,7 +14,7 @@ import {
   REPASO_INTERVALOS,
   eliminarRepaso
 } from "../../lib/repasoStorage";
-import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
+import { obtenerRecomendacionesDia } from "../../lib/repasoRecomendado";
 import {
   construirPromptRepaso,
   construirPromptJson,
@@ -89,20 +89,22 @@ export default function RepasoPage() {
   const navigate = useNavigate();
   const [tab, setTab] = useState("hoy");
   const [log, setLog] = useState(() => leerLog());
-  const [recomendadoFullScreenOpen, setRecomendadoFullScreenOpen] =
-    useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [diaRecomendado, setDiaRecomendado] = useState(0);
+
   const [confirmarRepaso, setConfirmarRepaso] = useState({
     isOpen: false,
     curso: "",
     semana: null,
     tema: ""
   });
+
   const [deleteState, setDeleteState] = useState({
     isOpen: false,
     id: null,
     phase: 1
   });
+
   const [cursoTemario, setCursoTemario] = useState("");
   const [categoriaTemario, setCategoriaTemario] = useState("");
   const [selectorAbierto, setSelectorAbierto] = useState(false);
@@ -112,13 +114,14 @@ export default function RepasoPage() {
   const [temaSeleccionado, setTemaSeleccionado] = useState(null);
   const [busquedaTemarioAbierta, setBusquedaTemarioAbierta] = useState(false);
   const [copiadoKey, setCopiadoKey] = useState("");
+
   const selectRef = useRef(null);
   const semanaRef = useRef(null);
   const buscadorTemarioRef = useRef(null);
 
   const recomendacionesHoy = useMemo(
-    () => obtenerRecomendacionesHoy(),
-    [log]
+    () => obtenerRecomendacionesDia(diaRecomendado),
+    [diaRecomendado, log]
   );
 
   const recomendacionesConTemas = useMemo(
@@ -133,25 +136,31 @@ export default function RepasoPage() {
 
   const porFecha = useMemo(() => {
     const map = {};
+
     proximos.forEach((item) => {
       if (!map[item.fecha]) {
         map[item.fecha] = [];
       }
+
       map[item.fecha].push(item);
     });
+
     return map;
   }, [proximos]);
 
   const cursosDeCategoria = useMemo(() => {
     if (!categoriaTemario) return [];
+
     const categoria = CATEGORIAS_TEMARIO.find(
       (cat) => cat.id === categoriaTemario
     );
+
     return categoria ? categoria.cursos : [];
   }, [categoriaTemario]);
 
   const temasSemana = useMemo(() => {
     if (!cursoTemario) return [];
+
     return (
       coursesSemanas[cursoTemario]?.[`semana_${semanaTemario}`] || []
     );
@@ -159,27 +168,33 @@ export default function RepasoPage() {
 
   const numeroInicialSemana = useMemo(() => {
     if (!cursoTemario) return 1;
+
     let total = 0;
+
     for (let semana = 1; semana < semanaTemario; semana++) {
       total += (
         coursesSemanas[cursoTemario]?.[`semana_${semana}`] || []
       ).length;
     }
+
     return total + 1;
   }, [cursoTemario, semanaTemario]);
 
   function obtenerNumeroTema(curso, semana, indice) {
     let total = 0;
+
     for (let numeroSemana = 1; numeroSemana < semana; numeroSemana++) {
       total += (
         coursesSemanas[curso]?.[`semana_${numeroSemana}`] || []
       ).length;
     }
+
     return total + indice + 1;
   }
 
   const resultadosBusquedaTemario = useMemo(() => {
     const termino = normalizarTexto(busquedaTemario.trim());
+
     if (!termino) return [];
 
     const resultados = [];
@@ -1138,6 +1153,7 @@ export default function RepasoPage() {
                   }}
                 >
                   Semana {semanaSelectorTemario}
+
                   <i className="fa-solid fa-chevron-down" />
                 </button>
 
@@ -1188,7 +1204,9 @@ export default function RepasoPage() {
                         setBusquedaTemarioAbierta(true);
                       }
                     }}
-                    onKeyDown={manejarBusquedaTemarioKeyDown}
+                    onKeyDown={
+                      manejarBusquedaTemarioKeyDown
+                    }
                     aria-label="Buscar tema en el temario"
                   />
 
@@ -1252,51 +1270,84 @@ export default function RepasoPage() {
             </div>
 
             {mostrarTemarioInicial && (
-              <div className="repaso__temario-list">
-                {(() => {
-                  const grupos =
-                    temasRecomendadosIniciales.reduce(
-                      (acumulado, item) => {
-                        if (!acumulado[item.curso]) {
-                          acumulado[item.curso] = [];
-                        }
+              <>
+                <div className="repaso__temario-recomendado-nav">
+                  {diaRecomendado === 1 && (
+                    <button
+                      type="button"
+                      className="repaso__temario-recomendado-nav-button"
+                      onClick={() =>
+                        setDiaRecomendado(0)
+                      }
+                      aria-label="Día anterior"
+                    >
+                      <i className="bi bi-arrow-left" />
+                      Retroceder
+                    </button>
+                  )}
 
-                        acumulado[item.curso].push(item);
-                        return acumulado;
-                      },
-                      {}
+                  {diaRecomendado === 0 && (
+                    <button
+                      type="button"
+                      className="repaso__temario-recomendado-nav-button"
+                      onClick={() =>
+                        setDiaRecomendado(1)
+                      }
+                      aria-label="Día siguiente"
+                    >
+                      Avanzar
+                      <i className="bi bi-arrow-right" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="repaso__temario-list">
+                  {(() => {
+                    const grupos =
+                      temasRecomendadosIniciales.reduce(
+                        (acumulado, item) => {
+                          if (!acumulado[item.curso]) {
+                            acumulado[item.curso] = [];
+                          }
+
+                          acumulado[item.curso].push(item);
+
+                          return acumulado;
+                        },
+                        {}
+                      );
+
+                    return Object.entries(grupos).map(
+                      ([curso, temas]) => (
+                        <div
+                          key={curso}
+                          className="repaso__temario-grupo"
+                        >
+                          <div className="repaso__temario-grupo-nombre">
+                            {labelCursoTemario(curso)}
+                          </div>
+
+                          <div className="repaso__temario-list">
+                            {temas.map((item) =>
+                              renderTemaItem(
+                                item,
+                                false,
+                                false
+                              )
+                            )}
+                          </div>
+                        </div>
+                      )
                     );
+                  })()}
 
-                  return Object.entries(grupos).map(
-                    ([curso, temas]) => (
-                      <div
-                        key={curso}
-                        className="repaso__temario-grupo"
-                      >
-                        <div className="repaso__temario-grupo-nombre">
-                          {labelCursoTemario(curso)}
-                        </div>
-
-                        <div className="repaso__temario-list">
-                          {temas.map((item) =>
-                            renderTemaItem(
-                              item,
-                              false,
-                              false
-                            )
-                          )}
-                        </div>
-                      </div>
-                    )
-                  );
-                })()}
-
-                {temasRecomendadosIniciales.length === 0 && (
-                  <p className="repaso__proximos-empty">
-                    No tienes temas pendientes para hoy.
-                  </p>
-                )}
-              </div>
+                  {temasRecomendadosIniciales.length === 0 && (
+                    <p className="repaso__proximos-empty">
+                      No tienes temas pendientes para este día.
+                    </p>
+                  )}
+                </div>
+              </>
             )}
 
             {(cursoTemario || busquedaTemario.trim()) && (
@@ -1317,58 +1368,6 @@ export default function RepasoPage() {
               </div>
             )}
           </section>
-        )}
-
-        <button
-          type="button"
-          className="repaso__recomendado-fab"
-          onClick={() =>
-            setRecomendadoFullScreenOpen(true)
-          }
-          aria-label="Ver repasos recomendados de hoy"
-        >
-          <i className="bi bi-calendar-check" />
-        </button>
-
-        {recomendadoFullScreenOpen && (
-          <div className="repaso__recomendado-fullscreen">
-            <div className="repaso__recomendado-fullscreen-header">
-              <button
-                type="button"
-                className="repaso__recomendado-volver"
-                onClick={() =>
-                  setRecomendadoFullScreenOpen(false)
-                }
-              >
-                <i className="bi bi-arrow-left" /> Volver
-              </button>
-
-              <h2>Recomendado de hoy</h2>
-            </div>
-
-            <p className="repaso__recomendado-vacio">
-              {recomendacionesConTemas.length === 0
-                ? "No hay repasos pendientes por hoy. ¡Vas al día!"
-                : null}
-            </p>
-
-            {recomendacionesConTemas.map((r) => (
-              <div
-                key={`${r.curso}-Turno${r.turno}`}
-                className="repaso__recomendado-curso"
-              >
-                <div className="repaso__recomendado-curso-nombre">
-                  {r.curso}
-                </div>
-
-                <ul className="repaso__recomendado-temas">
-                  {r.temas.map((tema) => (
-                    <li key={tema}>{tema}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
         )}
 
         <SearchModal
