@@ -1028,6 +1028,71 @@
 }
 
 /* ============================================================
+   MENÚ DE ACCIONES (Investigar / JSON / Examen)
+   ============================================================ */
+
+.repaso__temario-accion-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.repaso__temario-accion-wrapper .repaso__temario-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.repaso__temario-accion-wrapper .repaso__temario-action i {
+  font-size: 10px;
+}
+
+.repaso__temario-accion-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  width: max-content;
+  min-width: 160px;
+  max-width: 240px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.repaso__temario-accion-menu-item {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.repaso__temario-accion-menu-item:last-child {
+  border-bottom: none;
+}
+
+.repaso__temario-accion-menu-item:hover {
+  background: var(--surface-hover);
+}
+
+/* ============================================================
    GRUPO DEL TEMARIO
    ============================================================ */
 
@@ -1049,7 +1114,7 @@
 
 .repaso__temario-recomendado-nav-button {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -1353,6 +1418,14 @@
 
   .repaso__temario-action {
     flex: 1;
+  }
+
+  .repaso__temario-accion-wrapper {
+    flex: 1;
+  }
+
+  .repaso__temario-accion-menu {
+    max-width: calc(100vw - 32px);
   }
 
   .repaso__confirm-toast-content {

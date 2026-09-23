@@ -244,8 +244,9 @@ No respondas de memoria. Usa búsqueda web.
 1. Busca primero la estructura general del tema (sus ${up} o características principales).
 2. Para CADA ${u}, busca su definición básica y sus tipos o clasificaciones completas.
 3. Para CADA tipo que encuentres, busca ${c.rasgo}, pero solo los que de verdad distinguen un tipo de otro.
-4. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué preguntan realmente: si preguntan solo la definición básica, no agregues atributos que nadie pregunta.
-5. Busca los conceptos que suelen confundirse con este tema.
+4. Busca los casos, agentes, enfermedades, fenómenos o ejemplos concretos y aplicados de este tema con los que un examen suele evaluarlo. No te quedes solo en el esquema de clasificación abstracto: un tema con aplicaciones reales conocidas (una enfermedad representativa, un mecanismo con nombre propio, una vía o proceso concreto) debe cubrir esas aplicaciones, no solo la teoría general.
+5. Busca preguntas de exámenes de admisión anteriores de la UNMSM sobre el tema (si no hay, de otras universidades peruanas). Fíjate qué preguntan realmente: si preguntan solo la definición básica, no agregues atributos que nadie pregunta; si preguntan sobre un caso o agente concreto del paso 4, ese caso debe quedar cubierto en el apunte.
+6. Busca los conceptos que suelen confundirse con este tema.
 Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
 }
 
@@ -292,7 +293,7 @@ function bloqueIncluir(c, u, up) {
     inc = `La regla o forma básica de cada ${u} siempre. Las condiciones de uso y atajos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Casos límite y excepciones. ${upCap} vecinos que aparecen como distractores.`;
     exc = `Procedimientos de resolución paso a paso, ejemplos resueltos con alternativas, enunciados de problemas completos, etimología, historia o curiosidades. No dupliques un ${u} como si fuera otro. No inventes una condición si no distingue nada. Ningún número de referencia ni lista de fuentes. Nada de otro tema del temario que tenga su propio número.`;
   } else {
-    inc = `La definición básica de cada ${u} siempre. Los tipos y sus atributos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Estructura y función, etapas, excepciones. Conceptos vecinos que aparecen como distractores.`;
+    inc = `La definición básica de cada ${u} siempre. Los tipos y sus atributos distintivos solo cuando el ${u} los tenga y un examen pueda preguntarlos. Estructura y función, etapas, excepciones. Casos, agentes o ejemplos concretos y aplicados cuando el tema tenga uno representativo conocido (una enfermedad, un mecanismo con nombre propio, un proceso real), no solo el esquema abstracto. Conceptos vecinos que aparecen como distractores.`;
     if (c.formulas) {
       inc += " Cuando el tema tenga fórmulas de cálculo, inclúyelas con sus variables y unidades.";
     }

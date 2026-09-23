@@ -65,7 +65,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 4px 0;
+  padding: 8px;
   margin: 0;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
@@ -101,11 +101,7 @@
   font-size: 13px;
   font-weight: var(--fw-bold);
   line-height: 1;
-  transition:
-    background 0.15s linear,
-    border-color 0.15s linear,
-    color 0.15s linear,
-    transform 0.15s linear;
+  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear, transform 0.15s linear;
 }
 /* ============================================================
    TEXTO
@@ -127,7 +123,7 @@
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--ink);
 }
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
@@ -146,7 +142,7 @@
 .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
-  color: var(--ink-on-primary);
+  color: var(--ink);
   transform: scale(1.04);
 }
 .question-card__opt.is-selected .question-card__opt-text {
@@ -414,7 +410,7 @@
 .question-card__submit:disabled,
 .question-card__submit[aria-disabled="true"] {
   opacity: 0.5;
-  cursor: default;
+  cursor: not-allowed!important;
 }
 .question-card__submit.is-retry {
   background: var(--surface);

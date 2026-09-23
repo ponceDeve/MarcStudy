@@ -1,6 +1,5 @@
 import temarioSesiones from "../data/temarioSesiones.json";
 import { leerLog, leerHistorialRotacion } from "./repasoStorage";
-import { leerHorario, DIAS_SEMANA } from "./scheduleStorage";
 
 export const GRUPOS_ROTACION = [
   ["Habilidad Verbal", "Educación Cívica", "Economía"],
@@ -150,28 +149,6 @@ function calcularEstadoRotacion() {
   };
 }
 
-function claveDiaDeHoy(fecha) {
-  return DIAS_SEMANA[(fecha.getDay() + 6) % 7];
-}
-
-function normalizarNombre(texto) {
-  return String(texto ?? "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim();
-}
-
-function cursoDelTemario(nombre) {
-  const buscado = normalizarNombre(nombre);
-
-  return (
-    Object.keys(temarioSesiones).find(
-      (curso) => normalizarNombre(curso) === buscado
-    ) || null
-  );
-}
-
 function turnoActualDeCurso(log, curso) {
   const turnos = agruparEnTurnos(
     listaTemasDelCurso(curso)
@@ -187,41 +164,6 @@ function turnoActualDeCurso(log, curso) {
   }
 
   return null;
-}
-
-function obtenerRecomendacionesPorHorario(horario, fecha) {
-  const log = [...leerLog(), ...leerHistorialRotacion()];
-  const cursosDeHoy =
-    horario[claveDiaDeHoy(fecha)] || [];
-
-  const yaAgregados = new Set();
-  const recomendaciones = [];
-
-  cursosDeHoy.forEach(({ subject }) => {
-    const curso = cursoDelTemario(subject);
-
-    if (!curso || yaAgregados.has(curso)) return;
-
-    yaAgregados.add(curso);
-
-    const actual = turnoActualDeCurso(log, curso);
-
-    if (!actual) return;
-
-    recomendaciones.push({
-      curso,
-      turno: actual.indice + 1,
-      temas: temasPendientesDeTurno(
-        log,
-        curso,
-        actual.turno
-      ),
-      sesionesPendientesEnCurso:
-        NUM_TURNOS_POR_CURSO - actual.indice
-    });
-  });
-
-  return recomendaciones;
 }
 
 function obtenerRecomendacionesPorRotacion() {
@@ -319,20 +261,6 @@ export function obtenerRecomendacionesDia(
   desplazamiento = 0,
   fecha = new Date()
 ) {
-  const horario = leerHorario();
-
-  if (horario && Object.keys(horario).length > 0) {
-    const fechaObjetivo = new Date(fecha);
-    fechaObjetivo.setDate(
-      fechaObjetivo.getDate() + desplazamiento
-    );
-
-    return obtenerRecomendacionesPorHorario(
-      horario,
-      fechaObjetivo
-    );
-  }
-
   const estado = calcularEstadoRotacion();
 
   return obtenerRecomendacionesParaDiaRotacion(

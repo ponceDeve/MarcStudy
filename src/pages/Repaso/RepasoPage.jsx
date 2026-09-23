@@ -114,6 +114,7 @@ export default function RepasoPage() {
   const [temaSeleccionado, setTemaSeleccionado] = useState(null);
   const [busquedaTemarioAbierta, setBusquedaTemarioAbierta] = useState(false);
   const [copiadoKey, setCopiadoKey] = useState("");
+  const [accionMenuAbierta, setAccionMenuAbierta] = useState("");
 
   const selectRef = useRef(null);
   const semanaRef = useRef(null);
@@ -343,6 +344,10 @@ export default function RepasoPage() {
         !buscadorTemarioRef.current.contains(e.target)
       ) {
         setBusquedaTemarioAbierta(false);
+      }
+
+      if (!e.target.closest(".repaso__temario-accion-wrapper")) {
+        setAccionMenuAbierta("");
       }
     }
 
@@ -700,6 +705,9 @@ export default function RepasoPage() {
       mostrarRecomendado &&
       temaEstaRecomendadoHoy(curso, tema);
 
+    const claveAccion = `${curso}|${semana}|${tema}`;
+    const menuAbierto = accionMenuAbierta === claveAccion;
+
     return (
       <div
         key={`${curso}|${semana}|${tema}`}
@@ -745,15 +753,59 @@ export default function RepasoPage() {
               ▶ YouTube
             </button>
 
-            <button
-              type="button"
-              className="repaso__temario-action"
-              onClick={() =>
-                abrirPaso1EnChatGPT(curso, tema)
-              }
-            >
-              🤖 Investigar
-            </button>
+            <div className="repaso__temario-accion-wrapper">
+              <button
+                type="button"
+                className="repaso__temario-action"
+                onClick={() =>
+                  setAccionMenuAbierta((actual) =>
+                    actual === claveAccion ? "" : claveAccion
+                  )
+                }
+              >
+                🤖 Prompts
+                <i className="fa-solid fa-chevron-down" />
+              </button>
+
+              {menuAbierto && (
+                <div className="repaso__temario-accion-menu">
+                  <button
+                    type="button"
+                    className="repaso__temario-accion-menu-item"
+                    onClick={() => {
+                      abrirPaso1EnChatGPT(curso, tema);
+                      setAccionMenuAbierta("");
+                    }}
+                  >
+                    🤖 Investigar
+                  </button>
+
+                  <button
+                    type="button"
+                    className="repaso__temario-accion-menu-item"
+                    onClick={() =>
+                      copiarPasoJson(2, curso, tema)
+                    }
+                  >
+                    {copiadoKey === `${curso}|${tema}|2`
+                      ? "✅ Copiado"
+                      : "📋 Copiar JSON"}
+                  </button>
+
+                  <button
+                    type="button"
+                    className="repaso__temario-accion-menu-item"
+                    onClick={() =>
+                      copiarPasoJson(3, curso, tema)
+                    }
+                  >
+                    {copiadoKey === `${curso}|${tema}|3`
+                      ? "✅ Copiado"
+                      : "📄 Copiar Examen"}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -1282,7 +1334,7 @@ export default function RepasoPage() {
                       aria-label="Día anterior"
                     >
                       <i className="bi bi-arrow-left" />
-                      Retroceder
+                      Anterior
                     </button>
                   )}
 
@@ -1295,7 +1347,7 @@ export default function RepasoPage() {
                       }
                       aria-label="Día siguiente"
                     >
-                      Avanzar
+                      Siguiente
                       <i className="bi bi-arrow-right" />
                     </button>
                   )}

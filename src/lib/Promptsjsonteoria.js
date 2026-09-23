@@ -451,10 +451,17 @@ No lo agregues a la fuerza en cards que no lo necesiten. Cuando sí lo
 incluyas, que muestre qué representa cada dato matemático en esa
 situación y qué decisión o conclusión permite obtener, no una mención
 genérica.
-Cuando el punto sea una fórmula, incluye además un ejemplo numérico
-resuelto aparte, con datos, sustitución, operaciones, resultado y
-verificación interpretada en el contexto. No sacrifiques pasos
-necesarios ni la separación atómica por mantener la explicación corta.
+Cuando el punto sea una fórmula o una regla operativa, «explicacion»
+debe priorizar el desarrollo numérico sobre la descripción verbal de la
+regla: no repitas la regla con otras palabras, resuélvela con números.
+Incluye, dentro de esa misma «explicacion», un ejemplo numérico
+resuelto con datos, sustitución, cada operación y el resultado,
+interpretado en el contexto. Desarrolla tantos pasos como el
+procedimiento realmente necesite para quedar completo: no te limites a
+un número fijo de pasos ni recortes operaciones para acortar la
+explicación, y tampoco inventes pasos de más si el procedimiento es
+corto. No sacrifiques pasos necesarios ni la separación atómica por
+mantener la explicación corta.
 6. SIN SECCIÓN DE EJERCICIOS
 No agregues ninguna sección «Ejercicios» ni marcadores «Ejercicio N». Los
 ejercicios se generan aparte, en el paso del examen. El JSON termina con
@@ -712,9 +719,20 @@ entenderla mejor. No lo agregues a la fuerza en cards que no lo
 necesiten, como una clasificación cerrada o un dato puntual que no gana
 nada con un ejemplo. Cuando sí lo incluyas, que muestre qué elemento de
 la situación representa cada parte de la teoría, no una mención
-decorativa. Si el tema es una fórmula, incluye además un ejemplo
-numérico resuelto paso a paso, explicando qué representa cada dato, por
-qué se usa la fórmula y cómo se interpreta el resultado.
+decorativa.
+Si el punto es una fórmula (Física o Química), «explicacion» debe
+priorizar el desarrollo numérico sobre la descripción verbal de la
+fórmula: no repitas la fórmula con otras palabras, resuélvela con
+números. Incluye, dentro de esa misma «explicacion», un ejemplo
+numérico resuelto con datos, sustitución, cada operación y el
+resultado, explicando qué representa cada dato y cómo se interpreta el
+resultado. Desarrolla tantos pasos como el procedimiento realmente
+necesite para quedar completo: no te limites a un número fijo de pasos
+ni recortes operaciones para acortar la explicación, y tampoco
+inventes pasos de más si el procedimiento es corto.
+En Biología, que normalmente no tiene fórmulas, la explicación va en
+prosa —qué ocurre, por qué ocurre y cuándo se aplica— sin forzar un
+formato de pasos.
 No sacrifiques la separación atómica ni la información de la fuente por
 mantener la explicación corta.
 6. SIN SECCIÓN DE EJERCICIOS
