@@ -22,6 +22,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding: 10px;
+  padding-bottom: var(--space-6);
   padding-top: 2.5rem;
   &.has-topbar {
     padding-top: calc(var(--header-h) + 2rem);
@@ -150,18 +151,6 @@
     outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
-}
-/* ============================================================
-   DESCRIPCIÓN
-   ============================================================ */
-.mi-estudio__intro-description {
-  margin: var(--space-3) auto 0;
-  max-width: 650px;
-  color: var(--ink-soft);
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-  font-style: italic;
-  line-height: 1.55;
-  text-align: center;
 }
 /* ============================================================
    REPASOS RECOMENDADOS DE HOY
@@ -409,10 +398,6 @@
   .mi-estudio__intro-title {
     font-size: clamp(2.15rem, 8vw, 3.5rem);
   }
-  .mi-estudio__intro-description {
-    max-width: 580px;
-    font-size: 0.95rem;
-  }
   .welcome-section__continuar-btn,
   .welcome-section__simulacro-panel {
     max-width: 380px;
@@ -453,12 +438,6 @@
   }
   .mi-estudio__quick-actions-sep {
     height: 18px;
-  }
-  .mi-estudio__intro-description {
-    max-width: 520px;
-    margin-top: 12px;
-    font-size: 0.9rem;
-    line-height: 1.5;
   }
   .welcome-section__continuar-btn,
   .welcome-section__simulacro-panel {
@@ -520,11 +499,6 @@
   }
   .mi-estudio__quick-actions-sep {
     height: 16px;
-  }
-  .mi-estudio__intro-description {
-    margin-top: 10px;
-    font-size: 0.86rem;
-    line-height: 1.5;
   }
   .welcome-section__continuar-btn {
     margin-top: 12px;
@@ -1773,7 +1747,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-3);
 
   >div {
     display: flex;
@@ -1826,7 +1800,6 @@
   font-size: 1.05rem;
   line-height: 1.7;
   font-style: italic;
-  text-align: justify;
   &__fila {
     display: flex;
     align-items: flex-start;
@@ -1996,6 +1969,11 @@
   &:hover i {
     scale: 1.2;
   }
+}
+.teoria-nav-btn--sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.85rem;
 }
 /* ============================================================
    ALERTA DE FELICITACIÓN

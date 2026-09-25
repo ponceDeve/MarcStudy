@@ -19,24 +19,20 @@ Antes de construir cada pregunta, identifica internamente qué información del 
 OBJETIVO PEDAGÓGICO PRIORITARIO
 Evalúa comprensión, interpretación, transferencia, inferencia y juicio, no memoria literal.
 El estudiante no debe acertar por reconocer una palabra, definición, nombre de autor, corriente, periodo o frase idéntica al apunte.
-Cada pregunta del Bloque A corresponde únicamente al título que le toca y fusiona varios de sus puntos, pero debe transformar esa teoría en una situación DECO: caso, fragmento, evidencia, afirmación, comparación, situación comunicativa, hecho histórico, situación social, económica, geográfica o psicológica, o error conceptual que obligue a razonar.
+Cada pregunta del Bloque A corresponde únicamente al título que le toca y evalúa uno solo de sus puntos, pero debe transformar esa teoría en una situación DECO: caso, fragmento, evidencia, afirmación, comparación, situación comunicativa, hecho histórico, situación social, económica, geográfica o psicológica, o error conceptual que obligue a razonar.
 FLUJO OBLIGATORIO DE DOS MENSAJES
 1. Primer mensaje: enumera cada título en el orden recibido, con sus puntos numerados (número y «texto»). Calcula cuántas preguntas del Bloque A le corresponden según 1.1 y muestra una lista «Título — puntos — preguntas». Cierra con:
 «Bloque A: X preguntas — Bloque B: 20 ejercicios — Total: X+20».
 No redactes preguntas, alternativas, respuestas ni JSON.
-2. Detente y espera la confirmación «genera json» o equivalente. En esa pausa el usuario puede indicar títulos que NO deben tener pregunta (por ejemplo «sin pregunta: título 3») o cambiar la cantidad de un título. Anótalo antes de continuar. Si no dice nada, se usa la cantidad calculada.
+2. Detente y espera la confirmación «genera json» o equivalente. En esa pausa el usuario puede pedir ajustes. Anótalos antes de continuar.
 3. Segundo mensaje: entrega únicamente un objeto JSON con dos claves, «examen» (Bloque A) y «ejercicios» (Bloque B), como texto plano, directamente en el cuerpo de la respuesta, dentro de un bloque de código markdown, sin comentarios antes ni después.
 Forma:
 { "examen": [ ... ], "ejercicios": [ ... ] }
 1. BLOQUES Y CANTIDAD
 1.1 BLOQUE A
-Las preguntas se hacen por título, no por punto.
-Cantidad por título:
-mínimo(puntos del título, máximo(2, mínimo(4, ⌈puntos/3⌉))).
-Un título de un solo punto lleva 1 pregunta.
-Cada pregunta debe fusionar dos o más puntos del MISMO título. Si un título tiene un solo punto, se permite una pregunta que evalúe ese punto mediante aplicación, interpretación o inferencia, nunca mediante definición directa.
-Entre todas las preguntas de un título deben quedar cubiertos todos sus puntos.
-Usa únicamente información de esos puntos.
+Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
+Cada pregunta evalúa su propio punto mediante aplicación, interpretación o inferencia, nunca mediante definición directa. No fusiones varios puntos en una sola pregunta.
+Usa únicamente información de los puntos del título.
 1.2 BLOQUE B
 Crea EXACTAMENTE 20 ejercicios, sin ningún valor «null».
 Ordénalos de dificultad creciente.
@@ -63,20 +59,18 @@ No repitas consecutivamente la misma combinación de conceptos ni el mismo tipo 
 No introduzcas conocimientos externos al JSON.
 No recibes marcadores «Ejercicio N»: esa expresión no debe aparecer ni parafrasearse en «q», «textoConEspacios» ni en ningún otro campo.
 1.3 Los Bloques A y B van en arreglos separados («examen» y «ejercicios»).
-1.4 POSICIONES Y «null»
-El arreglo «examen» debe tener exactamente tantos elementos como puntos de teoría recibidos, todos los de todos los títulos, en el mismo orden.
-Dentro de cada título, las preguntas ocupan sus primeras N posiciones y las demás posiciones llevan el valor literal «null».
-Un título marcado como «sin pregunta» lleva «null» en todas sus posiciones.
-No elimines ni compactes posiciones.
+1.4 CORRESPONDENCIA UNO A UNO
+El arreglo «examen» debe tener exactamente tantos elementos como puntos de teoría recibidos, todos los de todos los títulos, en el mismo orden: la posición N del arreglo es la pregunta del punto N.
+Cada posición lleva una pregunta. No uses «null» ni dejes ningún punto sin pregunta.
 Ejemplo:
-un título de 6 puntos con 2 preguntas:
-[pregunta, pregunta, null, null, null, null].
+un título de 3 puntos: [pregunta, pregunta, pregunta].
 El arreglo «ejercicios» tiene exactamente 20 elementos y ninguno es «null».
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 Usa exactamente cinco alternativas.
+Cada alternativa tiene una sola idea y máximo 5 palabras, sin explicación ni justificación dentro. Las cinco tienen un largo parecido. El detalle sutil de un distractor se logra cambiando una palabra o frase corta, no alargando la oración.
 Las cinco deben responder al mismo caso o fragmento y competir entre sí.
 No redactes cinco paráfrasis de la teoría.
 No construyas las alternativas cambiando únicamente una palabra de una misma oración.
@@ -187,7 +181,7 @@ Comprueba que:
 - el arreglo «ejercicios» tiene exactamente 20 elementos;
 - no existe «null» dentro de «ejercicios»;
 - cada pregunta del Bloque A corresponde únicamente a su título;
-- cada pregunta fusiona al menos dos puntos salvo el título de un solo punto;
+- cada punto tiene exactamente una pregunta y ninguna pregunta fusiona varios puntos;
 - todos los puntos del título quedan cubiertos entre las preguntas;
 - el Bloque B integra varios elementos de teoría;
 - ningún ejercicio utiliza conocimiento externo al JSON;
@@ -198,6 +192,7 @@ Comprueba que:
 - al menos dos distractores son plausibles;
 - ninguna alternativa puede descartarse por una pista superficial;
 - la correcta no destaca por longitud, vocabulario o estructura;
+- cada alternativa tiene máximo 5 palabras y un largo parecido al de las otras cuatro;
 - los casos son DECO y requieren análisis;
 - el interrogante está integrado naturalmente en el planteamiento;
 - no se añade artificialmente una pregunta separada cuando no sea necesaria;
@@ -232,33 +227,20 @@ No evalúes memoria literal de una propiedad o fórmula.
 El estudiante debe interpretar una situación, identificar los datos relevantes, elegir relaciones apropiadas, realizar operaciones y comprobar o interpretar el resultado.
 FLUJO OBLIGATORIO DE DOS MENSAJES
 1. Primer mensaje: enumera cada título en el orden recibido, con sus puntos numerados (número y «texto»).
-Para cada título identifica primero qué puntos contienen una fórmula, ecuación, relación matemática, procedimiento formal o contenido directamente aplicable mediante resolución.
-Esos son los puntos elegibles para Bloque A.
 Muestra:
-«Título — puntos — puntos aplicables — preguntas».
+«Título — puntos — preguntas» (una pregunta por cada punto).
 Cierra con:
 «Bloque A: X preguntas — Bloque B: 20 ejercicios — Total: X+20».
 No redactes preguntas, alternativas, respuestas ni JSON.
 2. Detente y espera la confirmación «genera json» o equivalente.
-El usuario puede indicar títulos que NO deben tener pregunta o cambiar cantidades.
+El usuario puede pedir ajustes.
 3. Segundo mensaje: entrega únicamente un objeto JSON con dos claves: «examen» y «ejercicios».
 Forma:
 { "examen": [ ... ], "ejercicios": [ ... ] }
 1. BLOQUES Y CANTIDAD
-1.1 BLOQUE A — COBERTURA SELECTIVA
-NO generes automáticamente una pregunta para cada punto matemático.
-Solo los puntos que contengan una fórmula, ecuación, relación matemática, procedimiento formal o contenido que requiera aplicación pueden generar una pregunta del Bloque A.
-Los puntos puramente conceptuales, definiciones, terminología, clasificaciones, características, propiedades elementales o datos que puedan preguntarse mediante simple reconocimiento deben quedar como «null».
-No fabriques preguntas artificiales para convertir esos puntos en problemas.
-Para cada título, calcula la cantidad de preguntas utilizando SOLO sus puntos elegibles.
-Cantidad base:
-mínimo(puntos elegibles, máximo(2, mínimo(4, ⌈puntos elegibles/3⌉))).
-Excepciones:
-- 0 puntos elegibles → 0 preguntas;
-- 1 punto elegible → 1 pregunta;
-- si hay menos puntos elegibles que la cantidad calculada, usa los disponibles.
-Cada pregunta debe fusionar dos o más puntos elegibles del MISMO título.
-Si existe únicamente un punto elegible, se permite una pregunta que lo evalúe mediante aplicación y razonamiento.
+1.1 BLOQUE A — UNA PREGUNTA POR PUNTO
+Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
+Cada pregunta evalúa su propio punto mediante aplicación y razonamiento: si el punto es una fórmula, ecuación o procedimiento, se resuelve; si es conceptual, se plantea una situación donde el concepto deba aplicarse o interpretarse, nunca por definición directa ni por simple reconocimiento. No fusiones varios puntos en una sola pregunta.
 No mezcles puntos de otros títulos.
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
@@ -296,20 +278,16 @@ No introduzcas conocimientos que no aparezcan en el JSON.
 1.4 El Bloque B usa exclusivamente «opcion_multiple».
 1.5 En el Bloque B, las cinco alternativas son únicamente números: enteros, decimales o fracciones.
 No escribas unidades, palabras, etiquetas ni letras dentro de las alternativas.
-1.6 POSICIONES Y «null»
-El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos, en el mismo orden.
-Dentro de cada título:
-- los puntos elegibles que correspondan a preguntas ocupan las primeras posiciones necesarias;
-- los restantes puntos llevan «null».
-Los puntos no elegibles llevan «null».
-Un título sin puntos elegibles lleva «null» en todas sus posiciones.
-No elimines ni compactes posiciones.
+1.6 CORRESPONDENCIA UNO A UNO
+El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos, en el mismo orden: la posición N es la pregunta del punto N.
+Cada posición lleva una pregunta. No uses «null» ni dejes ningún punto sin pregunta.
 El arreglo «ejercicios» tiene exactamente 20 elementos y ninguno es «null».
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 En Bloque A, las alternativas pueden ser resultados, expresiones, estrategias, relaciones o decisiones matemáticas.
+En Bloque A, toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, con largo parecido entre las cinco.
 En Bloque B, las alternativas son únicamente resultados numéricos.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
@@ -394,9 +372,10 @@ Comprueba que:
 - el primer mensaje solo enumera y calcula;
 - el segundo mensaje solo entrega JSON;
 - el arreglo «examen» tiene exactamente tantos elementos como puntos;
-- los puntos no elegibles del Bloque A son «null»;
-- no se creó una pregunta artificial para una definición o propiedad puramente conceptual;
-- cada pregunta del Bloque A usa únicamente puntos elegibles del mismo título;
+- ningún punto del Bloque A queda sin pregunta y no hay «null» en «examen»;
+- los puntos conceptuales se evalúan mediante aplicación, no por definición directa;
+- cada pregunta del Bloque A usa únicamente información de su mismo título;
+- cada punto tiene exactamente una pregunta;
 - el Bloque B tiene exactamente 20 ejercicios;
 - ningún ejercicio del Bloque B es «null»;
 - todos los ejercicios del Bloque B integran al menos dos elementos de teoría;
@@ -404,6 +383,7 @@ Comprueba que:
 - ningún ejercicio requiere conocimiento externo al JSON;
 - ningún ejercicio se reduce a una sustitución directa aislada;
 - las alternativas numéricas proceden de errores matemáticos plausibles;
+- en el Bloque A, toda alternativa escrita con palabras tiene máximo 5 palabras;
 - no hay números absurdos utilizados únicamente como distractores;
 - el interrogante está integrado naturalmente en el planteamiento;
 - no se depende de una pregunta artificial separada;
@@ -447,13 +427,8 @@ Forma:
 { "examen": [ ... ], "ejercicios": [ ... ] }
 1. BLOQUES Y CANTIDAD
 1.1 BLOQUE A
-Las preguntas se hacen por título, no por punto.
-Cantidad por título:
-mínimo(puntos del título, máximo(2, mínimo(4, ⌈puntos/3⌉))).
-Un título de un solo punto lleva 1 pregunta.
-Cada pregunta fusiona dos o más puntos del MISMO título.
-Si existe un título de un solo punto, se permite una pregunta aplicada sobre ese punto.
-Entre las preguntas de un título deben quedar cubiertos todos sus puntos.
+Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
+Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta.
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
 Ninguno puede ser «null».
@@ -496,10 +471,10 @@ No introduzcas conocimiento externo.
 1.5 En ejercicios cuantitativos de Física y Química, las alternativas son únicamente números: enteros, decimales o fracciones.
 No añadas palabras, unidades ni etiquetas.
 En Biología conceptual, las alternativas pueden ser frases breves.
-1.6 POSICIONES Y «null»
-El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos.
-Dentro de cada título, las preguntas ocupan sus primeras N posiciones y las demás posiciones son «null».
-Un título marcado como «sin pregunta» lleva «null» en todas sus posiciones.
+Toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, sin explicación dentro, con largo parecido entre las cinco.
+1.6 CORRESPONDENCIA UNO A UNO
+El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos, en el mismo orden: la posición N es la pregunta del punto N.
+Cada posición lleva una pregunta. No uses «null» ni dejes ningún punto sin pregunta.
 El arreglo «ejercicios» tiene exactamente 20 elementos y ninguno es «null».
 2. TIPOS Y CAMPOS EXACTOS
 2.1 Opción múltiple:
@@ -601,7 +576,7 @@ Comprueba que:
 - «ejercicios» tiene exactamente 20 elementos;
 - ningún ejercicio del Bloque B es «null»;
 - cada pregunta del Bloque A corresponde únicamente a su título;
-- cada pregunta fusiona al menos dos puntos salvo títulos de un solo punto;
+- cada punto tiene exactamente una pregunta y ninguna pregunta fusiona varios puntos;
 - todos los puntos del título quedan cubiertos;
 - los 20 ejercicios del Bloque B integran al menos dos elementos de teoría;
 - cuando el tema lo permita, los ejercicios difíciles integran tres o más;
@@ -613,6 +588,7 @@ Comprueba que:
 - no existe una palabra obligatoria para construir distractores;
 - los distractores son plausibles;
 - la correcta no destaca por pistas formales;
+- toda alternativa escrita con palabras tiene máximo 5 palabras;
 - el interrogante está integrado naturalmente en el planteamiento;
 - no se añade una pregunta artificial separada cuando no sea necesaria;
 - las alternativas cuantitativas de Física y Química son únicamente números;

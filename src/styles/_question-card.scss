@@ -4,7 +4,7 @@
 .question-card {
   width: 100%;
   min-height: 400px;
-  padding: var(--space-6) var(--space-2);
+  padding: var(--space-4) var(--space-2);
 }
 .question-card * {
   user-select: none;
@@ -19,7 +19,7 @@
    PREGUNTA
    ============================================================ */
 .question-card__q {
-  margin: 20px 0 32px;
+  margin: 0 0 32px;
   color: var(--ink);
 }
 .question-card__q span {
@@ -32,6 +32,7 @@
   text-align: start;
   margin: 0 0 14px;
   user-select: none;
+  word-spacing: 10px;
 }
 .question-card__q-props {
   display: flex;
@@ -109,8 +110,8 @@
 .question-card__opt-text {
   flex: 1 1 auto;
   min-width: 0;
-  padding-top: 6px;
   color: var(--ink);
+  font-size: 17px ;
 }
 /* ============================================================
    HOVER NORMAL
@@ -159,7 +160,7 @@
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
-  color: var(--ink-on-primary);
+  color: var(--ink);
   transform: scale(1.04);
 }
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-text {
@@ -503,7 +504,7 @@
 .question-card__vf-btn.is-selected:hover {
   background: var(--primary-light);
   border-color: var(--primary-light);
-  color: var(--ink-on-primary);
+  color: var(--ink);
 }
 .question-card__vf-btn:disabled {
   cursor: default;

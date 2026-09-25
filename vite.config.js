@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+
 function redirigirRaizABase() {
   return {
     name: "redirigir-raiz-a-base",
@@ -18,6 +19,7 @@ function redirigirRaizABase() {
     },
   };
 }
+
 export default defineConfig({
   base: "/MarcStudy/",
   plugins: [
