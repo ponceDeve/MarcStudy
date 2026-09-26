@@ -7,8 +7,6 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
-import WelcomeSection from "./WelcomeSection";
-import AvisosInicio from "../../components/AvisosInicio";
 import QuestionCard from "./QuestionCard";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
@@ -20,7 +18,6 @@ import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
-import WelcomeModal from "./WelcomeModal";
 import Modal from "../../components/Modal";
 import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
@@ -436,6 +433,23 @@ export default function MiEstudioPage() {
   const [sinPreguntaSaliendo, setSinPreguntaSaliendo] = useState(false);
   const sinPreguntaTimers = useRef([]);
   const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
+  // Solo en memoria: al no persistir en storage, el toast vuelve a
+  // mostrarse en cada recarga de la página (F5), en vez de una sola vez.
+  const [pantallaToastVisto, setPantallaToastVisto] = useState(false);
+  const [pantallaToastVisible, setPantallaToastVisible] = useState(false);
+  const [pantallaToastSaliendo, setPantallaToastSaliendo] = useState(false);
+  const pantallaToastTimers = useRef([]);
+
+  function cerrarPantallaToast() {
+    setPantallaToastSaliendo(true);
+    setPantallaToastVisto(true);
+    pantallaToastTimers.current.push(
+      setTimeout(() => {
+        setPantallaToastVisible(false);
+        setPantallaToastSaliendo(false);
+      }, 300)
+    );
+  }
 
   useEffect(() => {
     if (sinPreguntaAlerta && alertaNotificacionRef.current) {
@@ -450,8 +464,15 @@ export default function MiEstudioPage() {
     return () => {
       repasoGuardadoTimers.current.forEach(clearTimeout);
       sinPreguntaTimers.current.forEach(clearTimeout);
+      pantallaToastTimers.current.forEach(clearTimeout);
     };
   }, []);
+
+  useEffect(() => {
+    if (pantallaToastVisto || isFullscreen) return;
+    const t = setTimeout(() => setPantallaToastVisible(true), 700);
+    return () => clearTimeout(t);
+  }, [pantallaToastVisto, isFullscreen]);
 
   useEffect(() => {
     function onFullscreenChange() {
@@ -1358,6 +1379,8 @@ ${teoria}`;
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
   const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
+  const [musicaTeoriaOn, setMusicaTeoriaOn] = useState(false);
+  const musicaTeoriaRef = useRef(null);
   const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
 
   function enviarPreguntaChatGpt() {
@@ -1408,6 +1431,36 @@ ${teoria}`;
       : null;
 
   useLecturaTeoriaVoz(textoParaVoz, lecturaTeoriaOn && stage === "theory" && !isLevelMode);
+
+  useEffect(() => {
+    if (!musicaTeoriaRef.current) {
+      const audio = new Audio(`${import.meta.env.BASE_URL}sonidos/Paperback_Rain.mp3`);
+      audio.loop = true;
+      audio.volume = 0.35;
+      musicaTeoriaRef.current = audio;
+    }
+    return () => {
+      if (musicaTeoriaRef.current) {
+        musicaTeoriaRef.current.pause();
+        musicaTeoriaRef.current.src = "";
+        musicaTeoriaRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const audio = musicaTeoriaRef.current;
+    if (!audio) return;
+    if (musicaTeoriaOn) {
+      const resultado = audio.play();
+      if (resultado && typeof resultado.catch === "function") {
+        resultado.catch(() => { });
+      }
+    } else {
+      audio.pause();
+    }
+  }, [musicaTeoriaOn]);
+
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -1620,7 +1673,6 @@ ${teoria}`;
 
   return (
     <div className="mi-estudio">
-      <WelcomeModal open={!nombreUsuario} onSubmit={(n) => setNombreUsuario(n)} />
       <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
       <PomodoroAlarmModal
         open={pomodoroAlarmaAbierta}
@@ -1661,6 +1713,35 @@ ${teoria}`;
               : null
           }
         />
+      )}
+      {pantallaToastVisible && (
+        <div className={`repaso-toast is-top mi-estudio__pantalla-toast${pantallaToastSaliendo ? " is-saliendo" : ""}`}>
+          <div className="mi-estudio__pantalla-toast-contenido">
+            <i className="fas fa-expand" />
+            <span>Pantalla compelta</span>
+          </div>
+          <div className="mi-estudio__pantalla-toast-acciones">
+            <button
+              type="button"
+              className="mi-estudio__pantalla-toast-btn"
+              onClick={() => {
+                toggleFullscreen();
+                cerrarPantallaToast();
+              }}
+            >
+              Activar
+            </button>
+            <button
+              type="button"
+              className="mi-estudio__pantalla-toast-close"
+              onClick={cerrarPantallaToast}
+              aria-label="Cerrar"
+              title="Cerrar"
+            >
+              <i className="fas fa-xmark" />
+            </button>
+          </div>
+        </div>
       )}
       {repasoGuardadoMsg && (
         <div className={`repaso-toast is-success${repasoGuardadoSaliendo ? " is-saliendo" : ""}`}>
@@ -1784,7 +1865,6 @@ ${teoria}`;
               onAbrirBuscador={() => setSearchOpen(true)}
             />
             <div className="mi-estudio__home-screen container">
-              <AvisosInicio />
               <section className="mi-estudio__intro">
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">
@@ -1889,18 +1969,7 @@ ${teoria}`;
                 </div>
               </div>
             )}
-            <div className="mi-estudio__below">
-              <WelcomeSection
-                onSelectTema={seleccionarItem}
-                temasCompletadosLista={(() => {
-                  try {
-                    return JSON.parse(localStorage.getItem("temasCompletados") || "[]");
-                  } catch {
-                    return [];
-                  }
-                })()}
-              />
-            </div>
+
           </>
         )}
         {topicData && (stage === "theory" || stage === "question") && (
@@ -1934,6 +2003,15 @@ ${teoria}`;
                     aria-label="Mini cronómetro"
                   >
                     <i className="fa-solid fa-clock" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMusicaTeoriaOn((v) => !v)}
+                    className={`mi-estudio__voz-btn mi-estudio__voz-btn--musica ${musicaTeoriaOn ? "is-on" : "is-off"}`}
+                    title={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
+                    aria-label={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
+                  >
+                    <i className="fa-solid fa-music" />
                   </button>
                   <button
                     type="button"

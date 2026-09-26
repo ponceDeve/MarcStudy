@@ -36,6 +36,7 @@ export default defineConfig({
         navigateFallbackDenylist: [
           /^\/MarcStudy\/PDFs\//,
         ],
+        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
       },
       manifest: {
         name: "MarcStudy · Pomodoro",

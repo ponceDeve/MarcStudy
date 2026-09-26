@@ -1094,6 +1094,57 @@
   }
 }
 /* ============================================================
+   TOAST: SUGERIR PANTALLA COMPLETA
+   ============================================================ */
+.mi-estudio__pantalla-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: var(--surface);
+  border: 0.0625rem solid var(--primary);
+  color: var(--ink);
+  &-contenido {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--ink);
+  }
+  &-acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  &-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background-color: var(--primary);
+    color: var(--ink-on-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: url("/cursor_pointer.webp"), pointer !important;
+    transition: background-color 0.15s linear;
+    &:hover {
+      background-color: var(--primary-dark);
+    }
+  }
+  &-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    cursor: url("/cursor_pointer.webp"), pointer !important;
+  }
+}
+/* ============================================================
    BOTONES PDF
    ============================================================ */
 .mi-estudio__pdf-buttons {
@@ -1747,7 +1798,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-6);
 
   >div {
     display: flex;
@@ -2495,7 +2546,7 @@
    BOTÓN MINI CRONÓMETRO (junto al de voz, en la barra de teoría)
    ============================================================ */
 .mi-estudio__voz-btn--cronometro {
-  right: 46px;
+  right: 84px;
   background-color: var(--primary);
   border-color: var(--primary);
   &:hover {
@@ -2507,9 +2558,15 @@
     box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--primary);
   }
 }
-/* Deja espacio a la derecha para los dos botones (cronómetro + voz). */
+/* ============================================================
+   BOTÓN DE MÚSICA (entre el cronómetro y el de voz, en la barra de teoría)
+   ============================================================ */
+.mi-estudio__voz-btn--musica {
+  right: 46px;
+}
+/* Deja espacio a la derecha para los tres botones (cronómetro + música + voz). */
 .teoria-sticky-bar .theory-search__input {
-  padding-right: 90px;
+  padding-right: 128px;
 }
 /* ============================================================
    BOTÓN CIRCULAR PARA ABRIR BUSCADOR
