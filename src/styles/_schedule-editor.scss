@@ -119,7 +119,6 @@
 }
 .editor-item:hover{
   box-shadow:var(--shadow-sm);
-  background-color: var(--surface-hover);
   border: 1px solid var(--ink);
 }
 .editor-item-info{
@@ -338,7 +337,7 @@
 }
 .editor-btn-add:disabled{
   opacity:.45;
-  cursor:not-allowed;
+  cursor:not-allowed!important;
 }
 .btn-primary{
   background:var(--primary);
@@ -379,12 +378,12 @@
 }
 /* Cuando no existen cambios */
 .editor-btn-save.is-no-changes{
-  cursor:not-allowed;
+  cursor:not-allowed!important;
 }
 /* Evita que el hover quite la opacidad */
 .editor-btn-save.is-no-changes:hover{
   background:var(--primary);
-  cursor:not-allowed;
+  cursor:not-allowed!important;
 }
 /* ============================================================
    MENSAJE "NO HAY CAMBIOS"
@@ -476,7 +475,7 @@
 }
 .icon-only-btn:disabled{
   opacity:.45;
-  cursor:not-allowed;
+  cursor:not-allowed!important;
 }
 /* ============================================================
    MODAL CONFIRMACIÓN

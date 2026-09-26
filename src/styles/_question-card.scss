@@ -23,7 +23,7 @@
   color: var(--ink);
 }
 .question-card__q span {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.4;
 }
 .question-card__q-intro {
@@ -99,7 +99,7 @@
   background: var(--surface);
   color: var(--ink-soft);
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: var(--fw-bold);
   line-height: 1;
   transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear, transform 0.15s linear;
@@ -111,7 +111,7 @@
   flex: 1 1 auto;
   min-width: 0;
   color: var(--ink);
-  font-size: 17px ;
+  font-size: 22px ;
 }
 /* ============================================================
    HOVER NORMAL
@@ -195,7 +195,7 @@
 .question-card__opt.is-correct .question-card__opt-letter {
   border-color: var(--success);
   background: var(--success);
-  color: var(--ink-on-primary);
+  color: var(--ink);
 }
 .question-card__opt.is-correct .question-card__opt-text {
   color: var(--ink);
@@ -212,7 +212,7 @@
 .question-card__opt.is-wrong .question-card__opt-letter {
   border-color: var(--danger);
   background: var(--danger);
-  color: var(--ink-on-primary);
+  color: var(--ink);
 }
 .question-card__opt.is-wrong .question-card__opt-text {
   color: var(--ink);
@@ -321,14 +321,13 @@
 .question-card__options--relacionar .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
-  color: var(--ink-on-primary);
+  color: var(--ink);
   transform: scale(1.04);
 }
 .question-card__options--completar .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter,
 .question-card__options--relacionar .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
-  color: var(--ink-on-primary);
   transform: scale(1.04);
 }
 .question-card__options--completar .question-card__opt.is-selected .question-card__opt-text,
@@ -472,7 +471,7 @@
 }
 .question-card__vf-texto {
   flex: 1 1 200px;
-  font-size: 14px;
+  font-size: 18px;
   color: var(--ink);
   text-align: left;
 }

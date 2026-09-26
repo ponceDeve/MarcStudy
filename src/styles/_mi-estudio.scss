@@ -1,4 +1,5 @@
 @use "./tokens" as *;
+
 /* ============================================================
    MiEstudioPage.jsx
    ============================================================ */
@@ -15,6 +16,7 @@
     puede romper position: sticky de .teoria-sticky-bar.
   */
 }
+
 .mi-estudio__wrap {
   width: 100%;
   flex: 1;
@@ -24,17 +26,21 @@
   padding: 10px;
   padding-bottom: var(--space-6);
   padding-top: 2.5rem;
+
   &.has-topbar {
     padding-top: calc(var(--header-h) + 2rem);
   }
+
   &.is-question {
     padding-top: calc(var(--header-h) + 1.5rem);
   }
+
   &.is-home {
     padding-top: 0;
     padding-bottom: 0;
   }
 }
+
 /* ============================================================
    HOME — PANTALLA DE ENTRADA
    ============================================================ */
@@ -49,6 +55,7 @@
   padding-top: var(--header-h);
   padding-bottom: var(--space-6);
 }
+
 /* ============================================================
    ENTRADA
    ============================================================ */
@@ -60,6 +67,7 @@
   align-items: center;
   justify-content: center;
 }
+
 /* ============================================================
    CONTENEDOR VISUAL
    ============================================================ */
@@ -73,6 +81,7 @@
   justify-content: center;
   text-align: center;
 }
+
 /* ============================================================
    TÍTULO PRINCIPAL
    ============================================================ */
@@ -88,6 +97,7 @@
   text-align: center;
   user-select: none;
 }
+
 .mi-estudio__intro-highlight {
   display: block;
   margin-top: var(--space-2);
@@ -95,6 +105,7 @@
   font-weight: 900;
   text-shadow: 0 0 100px var(--primary-bg);
 }
+
 /* ============================================================
    ACCIONES SECUNDARIAS
    ============================================================ */
@@ -105,11 +116,13 @@
   gap: var(--space-3);
   margin: var(--space-4) 0 0;
 }
+
 .mi-estudio__quick-actions-sep {
   width: 1px;
   height: 20px;
   background: var(--border-strong);
 }
+
 .mi-estudio__quick-action {
   display: inline-flex;
   align-items: center;
@@ -131,33 +144,40 @@
     color 0.2s linear,
     box-shadow 0.2s linear,
     transform 0.2s linear;
+
   i {
     color: var(--brand-dark);
   }
+
   &:hover {
     background: var(--brand);
     border-color: var(--brand-dark);
     color: var(--ink-on-primary);
     box-shadow: var(--shadow-md);
     transform: translateY(-1px);
+
     i {
       color: var(--ink-on-primary);
     }
   }
+
   &:active {
     transform: translateY(0);
   }
+
   &:focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
 }
+
 /* ============================================================
    REPASOS RECOMENDADOS DE HOY
    ============================================================ */
 .mi-estudio__recomendados {
   max-width: 900px;
 }
+
 .mi-estudio__recomendados-title {
   margin: 0 0 10px;
   color: var(--success);
@@ -167,17 +187,20 @@
   letter-spacing: 0.04em;
   text-align: center;
 }
+
 .mi-estudio__recomendados-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
 }
+
 .mi-estudio__recomendados-curso {
   background: var(--surface-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 10px 12px;
 }
+
 .mi-estudio__recomendados-curso-nombre {
   display: block;
   font-weight: var(--fw-semibold);
@@ -185,15 +208,18 @@
   color: var(--ink);
   margin-bottom: 4px;
 }
+
 .mi-estudio__recomendados-temas {
   margin: 0;
   padding-left: 16px;
   font-size: var(--fs-xs);
   color: var(--ink-soft);
+
   li {
     line-height: 1.4;
   }
 }
+
 /* ============================================================
    BOTÓN CONTINUAR
    ============================================================ */
@@ -205,6 +231,7 @@
   align-items: center;
   gap: var(--space-2);
 }
+
 .welcome-section__continuar-btn {
   width: 100%;
   max-width: 400px;
@@ -226,22 +253,27 @@
     transform .2s linear,
     box-shadow .2s linear,
     background .2s linear;
+
   &:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);
     background: var(--surface-hover);
+
     .welcome-section__continuar-arrow {
       animation: continuarArrow 0.8s ease-in-out infinite;
     }
   }
+
   &:active {
     transform: translateY(0);
   }
+
   &:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
   }
 }
+
 .welcome-section__continuar-indicator {
   flex-shrink: 0;
   color: var(--primary);
@@ -249,6 +281,7 @@
   font-weight: var(--fw-bold);
   line-height: 1;
 }
+
 .welcome-section__continuar-label {
   flex-shrink: 0;
   font-family: var(--font-body);
@@ -257,6 +290,7 @@
   line-height: 1.3;
   color: var(--ink);
 }
+
 .welcome-section__continuar-tema {
   min-width: 0;
   flex: 1;
@@ -269,6 +303,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .welcome-section__continuar-arrow {
   margin-left: auto;
   flex-shrink: 0;
@@ -276,6 +311,7 @@
   font-size: var(--fs-md);
   transition: transform 0.2s linear;
 }
+
 /* ============================================================
    PANEL DE SIMULACRO
    ============================================================ */
@@ -283,6 +319,7 @@
   width: 100%;
   box-sizing: border-box;
 }
+
 .welcome-section__simulacro-panel {
   width: 100%;
   max-width: 400px;
@@ -298,11 +335,13 @@
   transition:
     transform .2s ease,
     box-shadow .2s ease;
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
   }
 }
+
 /* ============================================================
    ICONO
    ============================================================ */
@@ -318,6 +357,7 @@
   color: #fff;
   font-size: 22px;
 }
+
 /* ============================================================
    INFORMACIÓN
    ============================================================ */
@@ -327,6 +367,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+
   strong {
     color: var(--ink);
     font-size: var(--fs-body);
@@ -334,6 +375,7 @@
     line-height: 1.3;
     text-transform: uppercase;
   }
+
   span {
     overflow: hidden;
     color: var(--ink-soft);
@@ -342,6 +384,7 @@
     text-overflow: ellipsis;
   }
 }
+
 /* ============================================================
    BOTÓN DE ACCIÓN DEL PANEL
    ============================================================ */
@@ -363,31 +406,38 @@
     background .2s ease,
     color .2s ease,
     transform .2s ease;
+
   &:hover {
     background: var(--brand);
     color: #fff;
     transform: translateX(2px);
   }
+
   &:active {
     transform: scale(.94);
   }
+
   &:focus-visible {
     outline: 2px solid var(--brand);
     outline-offset: 3px;
   }
 }
+
 /* ============================================================
    ANIMACIÓN
    ============================================================ */
 @keyframes continuarArrow {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(5px);
   }
 }
+
 /* ============================================================
    TABLET
    ============================================================ */
@@ -395,21 +445,26 @@
   .mi-estudio__intro-content {
     padding: 0 18px;
   }
+
   .mi-estudio__intro-title {
     font-size: clamp(2.15rem, 8vw, 3.5rem);
   }
+
   .welcome-section__continuar-btn,
   .welcome-section__simulacro-panel {
     max-width: 380px;
   }
+
   .welcome-section__continuar-btn {
     padding: 10px 14px;
   }
+
   .welcome-section__continuar-label,
   .welcome-section__continuar-tema {
     font-size: 0.9rem;
   }
 }
+
 /* ============================================================
    MÓVIL
    ============================================================ */
@@ -417,64 +472,79 @@
   .mi-estudio__intro {
     padding: 20px 0;
   }
+
   .mi-estudio__intro-content {
     width: 100%;
     padding: 0 14px;
   }
+
   .mi-estudio__intro-title {
     font-size: clamp(2rem, 10vw, 3rem);
     line-height: 1.08;
   }
+
   .mi-estudio__intro-highlight {
     margin-top: 4px;
   }
+
   .mi-estudio__quick-actions {
     gap: 10px;
     margin-top: 16px;
   }
+
   .mi-estudio__quick-action {
     padding: 7px 12px;
     font-size: 0.8rem;
   }
+
   .mi-estudio__quick-actions-sep {
     height: 18px;
   }
+
   .welcome-section__continuar-btn,
   .welcome-section__simulacro-panel {
     width: 100%;
     max-width: 100%;
   }
+
   .welcome-section__continuar-btn {
     margin-top: 14px;
     padding: 11px 12px;
     gap: 10px;
   }
+
   .welcome-section__continuar-indicator {
     font-size: 1rem;
   }
+
   .welcome-section__continuar-label,
   .welcome-section__continuar-tema {
     font-size: 0.88rem;
   }
+
   .welcome-section__continuar-arrow {
     font-size: 1rem;
   }
+
   .welcome-section__simulacro-panel {
     margin-top: 14px;
     padding: 12px 14px;
     gap: 10px;
   }
+
   .welcome-section__simulacro-icon {
     width: 44px;
     height: 44px;
     font-size: 20px;
   }
+
   .welcome-section__simulacro-btn {
     width: 36px;
     height: 36px;
     font-size: 17px;
   }
 }
+
 /* ============================================================
    MÓVILES MUY PEQUEÑOS
    ============================================================ */
@@ -482,65 +552,81 @@
   .mi-estudio__intro {
     padding: 16px 0;
   }
+
   .mi-estudio__intro-content {
     padding: 0 10px;
   }
+
   .mi-estudio__intro-title {
     font-size: 1.9rem;
     line-height: 1.08;
   }
+
   .mi-estudio__quick-actions {
     gap: 8px;
     margin-top: 14px;
   }
+
   .mi-estudio__quick-action {
     padding: 7px 10px;
     font-size: 0.76rem;
   }
+
   .mi-estudio__quick-actions-sep {
     height: 16px;
   }
+
   .welcome-section__continuar-btn {
     margin-top: 12px;
     padding: 10px 10px;
     gap: 8px;
   }
+
   .welcome-section__continuar-indicator {
     font-size: 0.95rem;
   }
+
   .welcome-section__continuar-label,
   .welcome-section__continuar-tema {
     font-size: 0.84rem;
   }
+
   .welcome-section__continuar-arrow {
     font-size: 0.95rem;
   }
+
   .welcome-section__simulacro-panel {
     margin-top: 12px;
     padding: 10px;
     gap: 8px;
   }
+
   .welcome-section__simulacro-icon {
     width: 40px;
     height: 40px;
     border-radius: 12px;
     font-size: 18px;
   }
+
   .welcome-section__simulacro-info {
     gap: 2px;
+
     strong {
       font-size: var(--fs-xs);
     }
+
     span {
       font-size: var(--fs-xs);
     }
   }
+
   .welcome-section__simulacro-btn {
     width: 34px;
     height: 34px;
     font-size: 16px;
   }
 }
+
 /* ============================================================
    MENSAJES DE ERROR
    ============================================================ */
@@ -558,6 +644,7 @@
   line-height: 1.4;
   text-align: center;
 }
+
 /* ============================================================
    PREGUNTA
    ============================================================ */
@@ -571,6 +658,7 @@
   justify-content: center;
   margin: 0 auto;
 }
+
 .mi-estudio__config-btn {
   position: absolute;
   top: 0.625rem;
@@ -588,11 +676,13 @@
   color: var(--ink);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-sm);
+
   &:active {
     border-bottom-width: 0.0625rem;
     transform: translateY(0.0625rem);
   }
 }
+
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
@@ -605,6 +695,7 @@
   margin: 2rem auto 0;
   margin-bottom: var(--space-6);
 }
+
 .mi-estudio__nav-btn {
   width: 3rem;
   height: 2.5rem;
@@ -619,18 +710,22 @@
   box-shadow: var(--shadow-sm);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s;
+
   &.is-active {
     background: var(--primary);
     border-bottom-color: var(--primary-dark);
     color: var(--ink-on-primary);
+
     &:hover {
       background: var(--primary-dark);
     }
+
     &:active {
       border-bottom-width: 0;
       transform: translateY(0.0625rem);
     }
   }
+
   &:disabled,
   &[aria-disabled="true"] {
     background: var(--surface-alt);
@@ -639,9 +734,11 @@
     box-shadow: none;
   }
 }
+
 .mi-estudio__nav-right {
   position: relative;
 }
+
 .mi-estudio__nav-flip {
   width: 3.5rem;
   height: 3.5rem;
@@ -657,15 +754,18 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-md);
   transition: all 0.15s;
+
   &:hover {
     background: var(--secondary);
     border-bottom-color: var(--secondary-dark);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.125rem);
   }
 }
+
 /* ============================================================
    FINALIZADO
    ============================================================ */
@@ -678,19 +778,23 @@
   gap: 1rem;
   text-align: center;
 }
+
 .mi-estudio__finished-emoji {
   font-size: 3.5rem;
 }
+
 .mi-estudio__finished-title {
   margin: 0;
   color: var(--secondary-dark);
   font-size: 1.625rem;
   font-weight: 800;
 }
+
 .mi-estudio__finished-sub {
   margin: 0;
   color: var(--ink-soft);
 }
+
 .mi-estudio__finished-btn {
   margin-top: 1.25rem;
   padding: 0.875rem 2rem;
@@ -702,31 +806,38 @@
   font-weight: 800;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s;
+
   &:hover {
     background: var(--primary-dark);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.0625rem);
   }
+
   &.is-outline {
     background: transparent;
     color: var(--ink-soft);
     border: 0.125rem solid var(--border-strong);
     border-bottom: 0.125rem solid var(--border-strong);
+
     &:hover {
       background: var(--surface-hover);
     }
   }
+
   &.is-inline {
     margin-top: 0;
   }
 }
+
 .mi-estudio__finished-btn-row {
   display: flex;
   gap: 0.75rem;
   margin-top: 1.25rem;
 }
+
 /* ============================================================
    CUENTA REGRESIVA
    ============================================================ */
@@ -738,17 +849,20 @@
   align-items: center;
   justify-content: center;
 }
+
 .mi-estudio__countdown-number {
   margin: 0;
   color: var(--ink);
   font-size: 5rem;
 }
+
 .mi-estudio__countdown-text {
   margin-top: 0.625rem;
   font-size: 1.2rem;
   opacity: 0.8;
   text-align: center;
 }
+
 /* ============================================================
    CONFIGURACIÓN
    ============================================================ */
@@ -766,6 +880,7 @@
   transition:
     opacity 0.3s linear,
     visibility 0s linear 0s;
+
   &.is-closed {
     opacity: 0;
     visibility: hidden;
@@ -774,18 +889,21 @@
       opacity 0.3s linear,
       visibility 0s linear 0.3s;
   }
+
   &:not(.is-closed) {
     .config-overlay__panel {
       transform: translateX(0);
     }
   }
 }
+
 .config-overlay__panel {
   max-width: min(20rem, 90vw);
   margin-right: 1rem;
   transform: translateX(130%);
   transition: transform 0.3s linear;
 }
+
 .config-overlay__confirm {
   position: absolute;
   top: 2.5rem;
@@ -796,6 +914,7 @@
   font-weight: 700;
   box-shadow: var(--shadow-lg);
 }
+
 .config-overlay__row {
   display: flex;
   flex-wrap: wrap;
@@ -803,12 +922,14 @@
   justify-content: center;
   gap: 2rem;
 }
+
 .config-overlay__item {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .config-overlay__btn {
   width: 3.5rem;
   height: 3.5rem;
@@ -823,16 +944,19 @@
   font-size: 1.375rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s;
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.0625rem);
   }
+
   &.is-armado {
     background: var(--primary);
     border-bottom-color: var(--primary-dark);
     color: var(--ink-on-primary);
   }
 }
+
 .config-overlay__label {
   margin-top: 0.625rem;
   padding: 0.25rem 0.625rem;
@@ -844,6 +968,7 @@
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
 }
+
 /* ============================================================
    AVISOS DE VIDAS
    ============================================================ */
@@ -861,6 +986,7 @@
   -webkit-backdrop-filter: blur(0.375rem);
   animation: vidasOverlayIn 0.18s linear-out;
 }
+
 .vidas-fullscreen__content {
   position: relative;
   width: min(27.5rem, 100%);
@@ -879,6 +1005,7 @@
     0 0 0 0.0625rem rgba(255, 255, 255, 0.03),
     0 0 2.5rem rgba(220, 38, 38, 0.08);
   animation: vidasModalIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+
   &::before {
     content: "";
     position: absolute;
@@ -893,6 +1020,7 @@
         transparent 100%);
     box-shadow: 0 0 1.125rem rgba(220, 38, 38, 0.55);
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -902,6 +1030,7 @@
     border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.035);
   }
 }
+
 /* ============================================================
    CORAZONES
    ============================================================ */
@@ -923,6 +1052,7 @@
     inset 0 0.0625rem 0 rgba(255, 255, 255, 0.025),
     0 0 1.25rem rgba(220, 38, 38, 0.06);
 }
+
 .vidas-fullscreen__heart {
   display: flex;
   align-items: center;
@@ -933,12 +1063,14 @@
     color 0.15s linear,
     transform 0.15s linear,
     opacity 0.15s linear;
+
   &.is-full {
     color: var(--danger);
     text-shadow:
       0 0 0.5rem rgba(220, 38, 38, 0.55),
       0 0 1.125rem rgba(220, 38, 38, 0.25);
   }
+
   &.is-a-punto {
     color: var(--danger);
     text-shadow:
@@ -946,12 +1078,14 @@
       0 0 1.25rem rgba(220, 38, 38, 0.3);
     animation: vidasHeartShake 0.35s linear-in-out infinite;
   }
+
   &.is-roto {
     color: rgba(255, 255, 255, 0.18);
     filter: grayscale(1);
     animation: vidasHeartBreakIn 0.3s linear-out;
   }
 }
+
 /* ============================================================
    TÍTULOS DE VIDAS
    ============================================================ */
@@ -962,6 +1096,7 @@
   font-family: var(--font-display);
   text-transform: uppercase;
 }
+
 .vidas-fullscreen__title {
   margin: 0 0 0.875rem;
   color: #fff;
@@ -970,11 +1105,13 @@
   letter-spacing: 0.03125rem;
   line-height: 1.2;
   text-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.35);
+
   &.is-tres {
     color: var(--warning);
     text-shadow:
       0 0 0.625rem rgba(245, 158, 11, 0.25);
   }
+
   &.is-una {
     color: var(--danger);
     text-shadow:
@@ -982,6 +1119,7 @@
     animation: vidasTitlePulse 1s linear-in-out infinite;
   }
 }
+
 .vidas-fullscreen__title-big {
   margin: 0 0 0.875rem;
   color: var(--danger);
@@ -993,6 +1131,7 @@
     0 0 0.625rem rgba(220, 38, 38, 0.55),
     0 0 1.875rem rgba(220, 38, 38, 0.25);
 }
+
 /* ============================================================
    TEXTO DE VIDAS
    ============================================================ */
@@ -1006,16 +1145,19 @@
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.6;
+
   &.is-muted {
     color: #aaa;
   }
 }
+
 .vidas-alert {
   position: relative;
   z-index: 1;
   width: min(21.25rem, 90vw);
   margin: 0 auto;
 }
+
 /* ============================================================
    ANIMACIONES
    ============================================================ */
@@ -1023,51 +1165,64 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 @keyframes vidasModalIn {
   from {
     opacity: 0;
     transform: scale(0.92) translateY(0.75rem);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
 }
+
 @keyframes vidasHeartShake {
+
   0%,
   100% {
     transform: rotate(0deg);
   }
+
   25% {
     transform: rotate(-10deg);
   }
+
   75% {
     transform: rotate(10deg);
   }
 }
+
 @keyframes vidasHeartBreakIn {
   0% {
     opacity: 0.3;
     transform: scale(1.5);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
   }
 }
+
 @keyframes vidasTitlePulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.025);
   }
 }
+
 /* ============================================================
    ALERTA SIN PREGUNTA
    ============================================================ */
@@ -1076,12 +1231,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+
   &__contenido {
     display: flex;
     align-items: center;
     gap: 0.625rem;
     color: var(--ink);
   }
+
   &__close {
     display: flex;
     align-items: center;
@@ -1093,6 +1250,7 @@
     cursor: url("/cursor_pointer.webp"), pointer !important;
   }
 }
+
 /* ============================================================
    TOAST: SUGERIR PANTALLA COMPLETA
    ============================================================ */
@@ -1104,17 +1262,20 @@
   background-color: var(--surface);
   border: 0.0625rem solid var(--primary);
   color: var(--ink);
+
   &-contenido {
     display: flex;
     align-items: center;
     gap: 0.625rem;
     color: var(--ink);
   }
+
   &-acciones {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
+
   &-btn {
     display: inline-flex;
     align-items: center;
@@ -1129,10 +1290,12 @@
     font-weight: 600;
     cursor: url("/cursor_pointer.webp"), pointer !important;
     transition: background-color 0.15s linear;
+
     &:hover {
       background-color: var(--primary-dark);
     }
   }
+
   &-close {
     display: flex;
     align-items: center;
@@ -1144,6 +1307,7 @@
     cursor: url("/cursor_pointer.webp"), pointer !important;
   }
 }
+
 /* ============================================================
    BOTONES PDF
    ============================================================ */
@@ -1155,6 +1319,7 @@
   margin-top: 1.25rem;
   margin-bottom: 2rem;
 }
+
 .mi-estudio__pdf-btn {
   width: 100%;
   display: inline-flex;
@@ -1172,14 +1337,17 @@
   text-decoration: none;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear-in-out;
+
   &:hover {
     border-color: var(--primary);
     background-color: var(--primary-bg);
   }
+
   &:active {
     transform: translateY(0.0625rem);
   }
 }
+
 /* ============================================================
    SUGERIR EXAMEN
    ============================================================ */
@@ -1193,6 +1361,7 @@
   margin: 2rem auto 2.5rem;
   text-align: center;
 }
+
 .mi-estudio__suggestion {
   width: 100%;
   max-width: 37.5rem;
@@ -1203,12 +1372,14 @@
   margin-top: 0;
   text-align: center;
 }
+
 .mi-estudio__sugerir-text {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9375rem;
   line-height: 1.5;
 }
+
 .mi-estudio__sugerir-btn {
   display: inline-flex;
   align-items: center;
@@ -1224,14 +1395,17 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s linear;
+
   &:hover {
     background: var(--primary-dark);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.1875rem);
   }
 }
+
 /* ============================================================
    MODAL DE SUGERENCIA
    ============================================================ */
@@ -1248,6 +1422,7 @@
   background: var(--overlay-strong);
   backdrop-filter: blur(0.3125rem);
 }
+
 .mi-estudio__modal {
   position: relative;
   width: 100%;
@@ -1262,10 +1437,12 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   animation: sugerencia-modal-in 0.2s linear-out;
+
   .mi-estudio__form {
     max-width: none;
   }
 }
+
 .mi-estudio__modal-close {
   position: absolute;
   top: 0.875rem;
@@ -1287,24 +1464,29 @@
     background 0.15s linear,
     color 0.15s linear,
     transform 0.15s linear;
+
   &:hover {
     background: var(--surface-hover);
     color: var(--ink);
   }
+
   &:active {
     transform: scale(0.94);
   }
 }
+
 @keyframes sugerencia-modal-in {
   from {
     opacity: 0;
     transform: translateY(0.75rem) scale(0.98);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
+
 /* ============================================================
    CABECERA DEL FORMULARIO
    ============================================================ */
@@ -1313,6 +1495,7 @@
   max-width: 37.5rem;
   text-align: left;
 }
+
 .mi-estudio__form-title {
   margin: 0 0 0.5rem;
   color: var(--ink);
@@ -1320,12 +1503,14 @@
   font-weight: 800;
   line-height: 1.2;
 }
+
 .mi-estudio__form-desc {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9375rem;
   line-height: 1.45;
 }
+
 /* ============================================================
    FORMULARIO
    ============================================================ */
@@ -1339,22 +1524,26 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .mi-estudio__form-row {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
+
 .mi-estudio__campo {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.4375rem;
   text-align: left;
+
   &--secundario {
     gap: 0.375rem;
   }
 }
+
 .mi-estudio__campo-label {
   display: block;
   margin: 0;
@@ -1362,18 +1551,21 @@
   font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.4;
+
   &--secundario {
     color: var(--ink-faint);
     font-size: 0.8125rem;
     font-weight: 600;
   }
 }
+
 .mi-estudio__campo-ayuda {
   margin: 0;
   color: var(--ink-faint);
   font-size: 0.75rem;
   line-height: 1.4;
 }
+
 /* ============================================================
    CAMPOS
    ============================================================ */
@@ -1395,10 +1587,12 @@
     border-color 0.2s linear,
     box-shadow 0.2s linear,
     background-color 0.2s linear;
+
   &:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 0.1875rem var(--primary-bg);
   }
+
   &:disabled {
     background: var(--surface-hover);
     color: var(--ink-soft);
@@ -1407,6 +1601,7 @@
     font-weight: 600;
   }
 }
+
 .mi-estudio__input,
 .mi-estudio__textarea {
   &::placeholder {
@@ -1414,14 +1609,17 @@
     font-size: 0.875rem;
   }
 }
+
 .mi-estudio__textarea {
   min-height: 6.875rem;
   resize: vertical;
+
   &--secundario {
     min-height: 4rem;
     font-size: 0.875rem;
   }
 }
+
 /* ============================================================
    SELECT
    ============================================================ */
@@ -1435,6 +1633,7 @@
   background-position: right 0.875rem center;
   background-size: 1rem;
 }
+
 /* ============================================================
    CHECKBOX Y RADIO
    ============================================================ */
@@ -1446,6 +1645,7 @@
   font-size: 0.875rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   user-select: none;
+
   input[type="checkbox"],
   input[type="radio"] {
     appearance: none;
@@ -1460,11 +1660,13 @@
     border-radius: var(--radius-sm);
     cursor: url("/cursor_pointer.webp"), pointer !important;
     transition: all 0.15s linear;
+
     &:checked {
       background: var(--primary);
       border-color: var(--primary-dark);
     }
   }
+
   input[type="checkbox"]:checked::before {
     content: "";
     width: 0.625rem;
@@ -1477,8 +1679,10 @@
         80% 0%,
         43% 62%);
   }
+
   input[type="radio"] {
     border-radius: 50%;
+
     &:checked::before {
       content: "";
       width: 0.5rem;
@@ -1488,6 +1692,7 @@
     }
   }
 }
+
 /* ============================================================
    DROPZONE
    ============================================================ */
@@ -1499,16 +1704,19 @@
   text-align: center;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear;
+
   &:hover,
   &.is-dragover {
     border-color: var(--primary);
     background: var(--primary-bg);
   }
 }
+
 /* ============================================================
    VALIDACIÓN
    ============================================================ */
 .mi-estudio__campo.has-error {
+
   .mi-estudio__input,
   .mi-estudio__select,
   .mi-estudio__textarea {
@@ -1516,6 +1724,7 @@
     background-color: rgba(239, 68, 68, 0.04);
   }
 }
+
 .mi-estudio__campo-error {
   display: flex;
   align-items: center;
@@ -1525,6 +1734,7 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
+
 /* ============================================================
    BOTÓN DE ENVÍO
    ============================================================ */
@@ -1542,17 +1752,21 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s linear;
+
   &:hover {
     background: var(--primary-dark);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.1875rem);
   }
+
   &.is-loading {
     opacity: 0.8;
     pointer-events: none;
     color: transparent !important;
+
     &::after {
       content: "";
       position: absolute;
@@ -1567,11 +1781,13 @@
     }
   }
 }
+
 @keyframes form-spinner {
   to {
     transform: rotate(360deg);
   }
 }
+
 /* ============================================================
    SUGERENCIA — ESTADOS DE CARGA
    ============================================================ */
@@ -1588,6 +1804,7 @@
   user-select: none;
   pointer-events: none;
 }
+
 .mi-estudio__suggestion-spinner {
   width: 1.0625rem;
   height: 1.0625rem;
@@ -1597,14 +1814,17 @@
   border-radius: 50%;
   animation: miEstudioSuggestionSpin 0.7s linear infinite;
 }
+
 @keyframes miEstudioSuggestionSpin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 .mi-estudio__suggestion-btn {
   display: flex;
   align-items: center;
@@ -1620,17 +1840,21 @@
   font-weight: 700;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear;
+
   &:hover {
     background-color: var(--primary-dark);
   }
+
   &:active {
     border-bottom-width: 0.0625rem;
     transform: translateY(0.125rem);
   }
+
   &:disabled {
     cursor: wait;
   }
 }
+
 /* ============================================================
    CONTENIDO DEL MODAL
    ============================================================ */
@@ -1642,6 +1866,7 @@
   margin-bottom: 1.25rem;
   padding-right: 2.75rem;
 }
+
 .mi-estudio__modal-title {
   margin: 0;
   color: var(--ink);
@@ -1649,25 +1874,30 @@
   font-weight: 800;
   line-height: 1.2;
 }
+
 .mi-estudio__modal-body {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 }
+
 .mi-estudio__modal-desc {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9375rem;
   line-height: 1.5;
+
   strong {
     color: var(--ink);
     font-weight: 700;
   }
 }
+
 .suguerir__title {
   margin: 0;
   text-transform: uppercase;
 }
+
 .mi-estudio__modal-footer {
   display: flex;
   align-items: center;
@@ -1675,6 +1905,7 @@
   gap: 0.625rem;
   margin-top: 1.5rem;
 }
+
 .mi-estudio__modal-cancel,
 .mi-estudio__modal-submit {
   display: inline-flex;
@@ -1689,28 +1920,34 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.15s linear;
 }
+
 .mi-estudio__modal-cancel {
   background: transparent;
   color: var(--ink-soft);
   border: 0.0625rem solid var(--border-strong);
+
   &:hover {
     background: var(--surface-hover);
     color: var(--ink);
   }
 }
+
 .mi-estudio__modal-submit {
   background: var(--primary);
   color: var(--ink-on-primary);
   border: none;
   border-bottom: 0.1875rem solid var(--primary-dark);
+
   &:hover {
     background: var(--primary-dark);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.125rem);
   }
 }
+
 /* ============================================================
    TEORÍA — ARTÍCULO WEB
    ============================================================ */
@@ -1719,6 +1956,7 @@
   max-width: 800px;
   width: 100%;
 }
+
 .teoria-aviso-uso {
   position: relative;
   max-width: 50rem;
@@ -1735,6 +1973,7 @@
   font-size: 0.82rem;
   line-height: 1.35;
 }
+
 .teoria-aviso-uso__icon {
   position: absolute;
   top: -0.625rem;
@@ -1750,21 +1989,25 @@
   border-radius: var(--radius-full);
   font-size: 0.9rem;
   transition: all 0.2s linear;
+
   &:hover {
     background: var(--danger-dark);
     scale: 0.95;
   }
 }
+
 .teoria-aviso-uso__mensajes {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
+
   span {
     display: flex;
     align-items: center;
     gap: 0.375rem;
   }
 }
+
 .teoria-etiqueta-wrap {
   display: flex;
   align-items: center;
@@ -1773,6 +2016,7 @@
   padding-bottom: 0.5rem;
   border-bottom: 0.0625rem solid var(--border);
 }
+
 .teoria-etiqueta {
   margin: var(--space-5) 0;
   background-color: var(--warning-bg);
@@ -1785,6 +2029,7 @@
   font-size: var(--fs-xl);
   font-weight: 900;
 }
+
 .teoria-punto {
   margin-bottom: var(--space-3);
   border-radius: var(--radius-md);
@@ -1793,30 +2038,29 @@
   transition: box-shadow 0.3s linear;
   border: 1px solid var(--ink);
 }
+
 .teoria-punto__fila {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
 
   >div {
     display: flex;
     align-items: center;
     gap: 10px;
+
   }
+}
+.arcade-game-container.teoria-card-unica:has(.teoria-etiqueta-checkbox:checked) {
+  border: 1px solid var(--success-dark) !important;
+  background-color: var(--success-bg);
 }
 .teoria-etiqueta-checkbox {
-  width:  .8rem;
-  height: .8rem;
-  flex-shrink: 0;
-  accent-color: var(--primary);
-  cursor: url("/cursor_pointer.webp"), pointer !important;
-  &.is-completado {
-    accent-color: var(--success);
-    cursor: default;
-  }
+  display: none;
 }
+
 .teoria-contenido-principal {
   color: var(--ink);
   font-family: var(--font-body);
@@ -1824,13 +2068,22 @@
   line-height: 1.1;
   font-weight: var(--fw-medium);
   cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: color .2s linear;
+  padding: 10px;
+  border: 1px solid transparent;
+  span {
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
 }
+
 /* ============================================================
    IMAGEN DEL PUNTO DE TEORÍA
    ============================================================ */
 .teoria-punto__imagen-wrap {
   margin: 0 0 1rem;
 }
+
 .teoria-punto__imagen {
   display: block;
   width: auto;
@@ -1842,6 +2095,7 @@
   box-shadow: var(--shadow-sm);
   object-fit: contain;
 }
+
 /* ============================================================
    EXPLICACIÓN EXTRA
    ============================================================ */
@@ -1851,19 +2105,23 @@
   font-size: 1.05rem;
   line-height: 1.7;
   font-style: italic;
+
   &__fila {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
   }
+
   &__texto {
     flex: 1;
   }
 }
+
 .teoria-explicacion-icon {
   color: var(--primary);
   font-size: 1.3rem;
 }
+
 /* ============================================================
    ACCIONES FINALES
    ============================================================ */
@@ -1875,6 +2133,7 @@
   width: 100%;
   margin-bottom: 2.5rem;
 }
+
 .teoria-boton-examen {
   display: inline-flex;
   align-items: center;
@@ -1898,17 +2157,20 @@
     background-color 0.2s linear,
     transform 0.2s linear,
     box-shadow 0.2s linear;
+
   &:hover {
     background: var(--primary-light);
     transform: translateY(-0.125rem);
     box-shadow: var(--shadow-lg);
   }
+
   &.is-bloqueado {
     background: var(--surface-alt);
     color: var(--ink-soft);
     opacity: 0.7;
     box-shadow: none;
-    cursor: not-allowed!important;
+    cursor: not-allowed !important;
+
     &:hover {
       background: var(--surface-alt);
       transform: none;
@@ -1916,19 +2178,23 @@
     }
   }
 }
+
 .teoria-boton-completar {
   background: var(--success);
   color: var(--ink-on-primary);
+
   &:hover {
     background: var(--success);
     color: var(--ink-on-primary);
     filter: brightness(1.1);
   }
+
   &.is-bloqueado {
     background: var(--success);
     color: var(--ink-on-primary);
     opacity: 0.5;
     cursor: not-allowed;
+
     &:hover {
       background: var(--success);
       color: var(--ink-on-primary);
@@ -1936,6 +2202,7 @@
     }
   }
 }
+
 .teoria-punto__game-btn {
   display: inline-flex;
   align-items: center;
@@ -1949,30 +2216,41 @@
   font-size: 1.1rem;
   line-height: 1;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition:all .3s linear;
+  transition: all .3s linear;
+
   &:hover {
     color: var(--warning-dark);
   }
+
   &:active {
     transform: scale(0.92);
   }
 }
+
 /* ============================================================
    TEORÍA — CARD ÚNICA (una a la vez)
    ============================================================ */
 .teoria-card-unica {
   padding: var(--space-4);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-6);
+
+  @media (max-width: 1024px) {
+    padding: var(--space-3);
+  }
+
 }
+
 .teoria-card-unica__inner {
   position: relative;
   z-index: 1;
 }
+
 .teoria-explicacion-extra--unida {
   background: transparent;
-  border-top: 3px dashed var(--border);
+  border-top: 3px solid var(--ink-faint);
   border-radius: 0;
 }
+
 .teoria-nav-botones {
   display: flex;
   align-items: center;
@@ -1980,6 +2258,7 @@
   gap: 0.75rem;
   margin: 0 0 1.5rem;
 }
+
 .teoria-nav-btn {
   display: inline-flex;
   align-items: center;
@@ -1994,38 +2273,47 @@
   font-size: 1.1rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: all 0.2s linear;
+
   &:hover:not(:disabled) {
     background: var(--surface-hover);
     transform: translateY(-0.0625rem);
   }
+
   &:active:not(:disabled) {
     transform: scale(0.94);
   }
+
   &:disabled {
     opacity: 0.4;
-    cursor: not-allowed!important;
+    cursor: not-allowed !important;
   }
 }
+
 .teoria-nav-btn--game {
   background: transparent;
   color: var(--warning);
   border-color: var(--warning);
+
   i {
     transition: all .3s linear;
   }
+
   &:hover:not(:disabled) {
     color: var(--warning-dark);
     background: var(--warning-bg);
   }
+
   &:hover i {
     scale: 1.2;
   }
 }
+
 .teoria-nav-btn--sm {
   width: 2rem;
   height: 2rem;
   font-size: 0.85rem;
 }
+
 /* ============================================================
    ALERTA DE FELICITACIÓN
    ============================================================ */
@@ -2048,31 +2336,37 @@
   transform: translateX(-50%);
   animation: congratulations-pop 0.3s linear-out;
 }
+
 .congratulations-icon {
   color: #2ecc71;
   font-size: 1.375rem;
 }
+
 .congratulations-title {
   margin: 0;
   color: var(--ink);
   font-size: 0.95rem;
   font-weight: 700;
 }
+
 .congratulations-text {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.8rem;
 }
+
 @keyframes congratulations-pop {
   0% {
     opacity: 0;
     transform: translateX(-50%) translateY(-1.25rem);
   }
+
   100% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
 }
+
 /* ============================================================
    PRÁCTICA DE EJERCICIOS
    ============================================================ */
@@ -2086,6 +2380,7 @@
   border-top: 0.25rem solid var(--brand);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
+
   &::before {
     content: "";
     position: absolute;
@@ -2098,6 +2393,7 @@
     pointer-events: none;
   }
 }
+
 .exercises-header {
   position: relative;
   display: flex;
@@ -2105,6 +2401,7 @@
   gap: 0.75rem;
   margin-bottom: 0.5rem;
 }
+
 .exercises-header-title {
   margin: 0;
   color: var(--brand-dark);
@@ -2112,6 +2409,7 @@
   font-size: 1.15rem;
   font-weight: 800;
 }
+
 .exercises-description {
   position: relative;
   margin: 0 0 1.25rem;
@@ -2119,11 +2417,13 @@
   font-size: 0.9rem;
   line-height: 1.5;
 }
+
 .exercises-buttons {
   position: relative;
   display: flex;
   justify-content: center;
 }
+
 .exercises-btn {
   display: inline-flex;
   align-items: center;
@@ -2140,24 +2440,29 @@
   box-shadow: var(--shadow-md);
   transition: all 0.15s;
 }
+
 .exercises-btn-primary {
   background: var(--brand);
   border-bottom-color: var(--brand-dark);
   color: var(--ink-on-primary);
+
   &:hover {
     background: var(--brand-dark);
     transform: translateY(-0.0625rem);
   }
+
   &:active {
     border-bottom-width: 0;
     transform: translateY(0.1875rem);
   }
 }
+
 .exercises-icon {
   width: 1.375rem;
   height: 1.375rem;
   font-size: 0.8rem;
 }
+
 /* ============================================================
    MODAL — REGRESAR A LA TEORÍA
    ============================================================ */
@@ -2176,6 +2481,7 @@
   box-shadow:
     0 1.875rem 5rem rgba(0, 0, 0, 0.55),
     0 0 0 0.0625rem rgba(255, 255, 255, 0.03);
+
   &::before {
     content: "";
     position: absolute;
@@ -2190,6 +2496,7 @@
         transparent 100%);
     box-shadow: 0 0 1.125rem rgba(220, 38, 38, 0.45);
   }
+
   &__title {
     position: relative;
     z-index: 1;
@@ -2200,6 +2507,7 @@
     font-weight: 800;
     letter-spacing: 0.0187rem;
   }
+
   &__subtitle {
     position: relative;
     z-index: 1;
@@ -2210,12 +2518,14 @@
     font-weight: 400;
     line-height: 1.4;
   }
+
   &__actions {
     position: relative;
     z-index: 1;
     display: flex;
     gap: 0.75rem;
   }
+
   &__btn {
     flex: 1;
     min-height: 2.875rem;
@@ -2232,19 +2542,23 @@
       border-color 0.12s linear,
       box-shadow 0.12s linear,
       color 0.12s linear;
+
     &:active {
       transform: scale(0.96);
     }
+
     &:focus-visible {
       outline: 0.125rem solid rgba(255, 255, 255, 0.8);
       outline-offset: 0.1875rem;
     }
+
     &.is-cancel {
       color: rgba(255, 255, 255, 0.88);
       background: rgba(255, 255, 255, 0.055);
       border: 0.0625rem solid rgba(255, 255, 255, 0.14);
       box-shadow:
         inset 0 0.0625rem 0 rgba(255, 255, 255, 0.035);
+
       &:hover {
         color: #fff;
         background: rgba(255, 255, 255, 0.09);
@@ -2253,11 +2567,13 @@
         box-shadow: 0 0.4375rem 1.125rem rgba(0, 0, 0, 0.22);
       }
     }
+
     &.is-confirm {
       color: #fff;
       background: var(--danger);
       border: 0.0625rem solid var(--danger);
       box-shadow: 0 0.3125rem 1.125rem rgba(220, 38, 38, 0.2);
+
       &:hover {
         color: #fff;
         background: var(--danger-dark);
@@ -2268,6 +2584,7 @@
     }
   }
 }
+
 /* ============================================================
    BARRA DE TEORÍA
    ============================================================ */
@@ -2284,6 +2601,7 @@
   background: var(--surface);
   border: 1px solid var(--ink);
   border-radius: 12px;
+
   /*
    * Solo se vuelve sticky cuando el usuario
    * abre la barra mediante el botón flotante.
@@ -2295,10 +2613,12 @@
     right: 0;
     z-index: 998;
   }
+
   &:has(.theory-search__input.has-results) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   > :first-child {
     flex: 1 1 100%;
     width: 100%;
@@ -2306,6 +2626,7 @@
     min-width: 0;
   }
 }
+
 /* ============================================================
    PREGUNTAR A CHATGPT
    ============================================================ */
@@ -2320,6 +2641,7 @@
   flex: 1 1 100%;
   background: transparent;
 }
+
 .teoria-chatgpt-bar__input {
   flex: 1 1 auto;
   min-width: 0;
@@ -2333,10 +2655,12 @@
   border: none;
   font-family: var(--font);
   font-size: 0.95rem;
+
   &::placeholder {
     color: var(--ink-faint);
   }
 }
+
 .teoria-chatgpt-bar__btn {
   flex: 0 0 auto;
   width: 42px;
@@ -2349,13 +2673,16 @@
   font-size: 1.05rem;
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: color 0.15s linear, transform 0.1s linear;
+
   &:hover {
     color: var(--primary-dark);
   }
+
   &:active {
     transform: scale(0.9);
   }
 }
+
 /* ============================================================
    BUSCADOR DE TEORÍA
    ============================================================ */
@@ -2369,9 +2696,11 @@
   min-width: 0;
   flex: 1 1 100%;
   background: transparent;
+
   &__toggle-btn {
     display: none;
   }
+
   &__wrap {
     position: relative;
     z-index: 101;
@@ -2380,6 +2709,7 @@
     min-width: 0;
     background: transparent;
   }
+
   &__input {
     position: relative;
     z-index: 102;
@@ -2398,15 +2728,18 @@
     transition:
       background-color 0.15s linear,
       color 0.15s linear;
+
     &.has-value {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom-width: 0;
     }
+
     &::placeholder {
       color: var(--ink);
     }
   }
+
   &__dropdown {
     position: absolute;
     top: 100%;
@@ -2426,6 +2759,7 @@
     border-bottom-right-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
   }
+
   &__item,
   &__item-seccion,
   &__item-fragmento,
@@ -2435,6 +2769,7 @@
     box-sizing: border-box;
     text-align: left;
   }
+
   &__item {
     display: block;
     padding: 0.4rem 0.7rem;
@@ -2444,22 +2779,27 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     transition: background-color 0.15s linear;
+
     /* Entre dos sugerencias queda una sola línea (no doble). */
-    & + & {
+    &+& {
       border-top-width: 0;
     }
+
     /* El borde exterior del dropdown ya cierra la lista. */
     &:first-child {
       border-top-width: 0;
     }
+
     &:last-child {
       border-bottom-width: 0;
     }
+
     &:hover,
     &.is-focused {
       background-color: var(--surface-hover);
     }
   }
+
   /* Sin margen/relleno propio: todas las sugerencias quedan alineadas
      con el mismo relleno del botón. */
   &__item-seccion,
@@ -2468,6 +2808,7 @@
     margin: 0;
     padding: 0;
   }
+
   /* Texto del punto, debajo del título cuando la coincidencia es un título. */
   &__item-texto {
     display: block;
@@ -2476,14 +2817,17 @@
     color: var(--ink-soft);
     font-size: 0.7rem;
   }
+
   &__item-badge {
     width: fit-content;
   }
+
   &__buscando,
   &__empty {
     padding: 0.65rem 0.85rem;
   }
 }
+
 /* ============================================================
    BOTÓN DE VOZ
    ============================================================ */
@@ -2512,10 +2856,12 @@
     color 0.2s linear,
     box-shadow 0.2s linear,
     transform 0.2s linear;
+
   &.is-off {
     background-color: var(--danger);
     border-color: var(--danger);
     color: var(--ink-on-primary);
+
     &:hover {
       background-color: var(--danger-dark);
       border-color: var(--danger-dark);
@@ -2523,10 +2869,12 @@
       box-shadow: var(--shadow-md);
     }
   }
+
   &.is-on {
     background-color: var(--success);
     border-color: var(--success);
     color: var(--ink-on-primary);
+
     &:hover {
       background-color: var(--success-dark);
       border-color: var(--success-dark);
@@ -2534,14 +2882,17 @@
       box-shadow: var(--shadow-md);
     }
   }
+
   &:active {
     transform: translateY(-50%) scale(0.96);
   }
+
   &:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
   }
 }
+
 /* ============================================================
    BOTÓN MINI CRONÓMETRO (junto al de voz, en la barra de teoría)
    ============================================================ */
@@ -2549,25 +2900,23 @@
   right: 84px;
   background-color: var(--primary);
   border-color: var(--primary);
+
   &:hover {
     background-color: var(--primary-dark);
     border-color: var(--primary-dark);
     box-shadow: var(--shadow-md);
   }
+
   &.is-active {
     box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--primary);
   }
 }
-/* ============================================================
-   BOTÓN DE MÚSICA (entre el cronómetro y el de voz, en la barra de teoría)
-   ============================================================ */
-.mi-estudio__voz-btn--musica {
-  right: 46px;
-}
+
 /* Deja espacio a la derecha para los tres botones (cronómetro + música + voz). */
 .teoria-sticky-bar .theory-search__input {
   padding-right: 128px;
 }
+
 /* ============================================================
    BOTÓN CIRCULAR PARA ABRIR BUSCADOR
    ============================================================ */
@@ -2589,21 +2938,26 @@
   box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: transform 0.15s linear, box-shadow 0.15s linear;
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
+
   &:active {
     transform: scale(0.94);
   }
+
   &:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
   }
+
   i {
     font-size: 17px;
   }
 }
+
 /* ============================================================
    RESPONSIVE — TABLET
    ============================================================ */
@@ -2611,10 +2965,12 @@
   .mi-estudio__intro-content {
     width: min(100%, 46rem);
   }
+
   .mi-estudio__intro-title {
     font-size: clamp(2.5rem, 7vw, 3.75rem);
   }
 }
+
 /* ============================================================
    RESPONSIVE — DESKTOP
    ============================================================ */
@@ -2623,20 +2979,24 @@
     padding-top: calc(var(--header-h) - 1rem);
   }
 }
+
 /* ============================================================
    RESPONSIVE — 40rem+
    ============================================================ */
 @media (min-width: 40rem) {
   .mi-estudio__form-row {
     flex-direction: row;
+
     .mi-estudio__campo {
       flex: 1;
     }
   }
+
   .mi-estudio__pdf-btn {
     width: auto;
   }
 }
+
 /* ============================================================
    RESPONSIVE — MÓVIL
    ============================================================ */
@@ -2644,119 +3004,152 @@
   .mi-estudio__home-screen {
     padding-bottom: var(--space-3);
   }
+
   .mi-estudio__intro-content {
     width: 100%;
   }
+
   .mi-estudio__intro-title {
     font-size: clamp(2.2rem, 10vw, 3rem);
     line-height: 1.08;
     letter-spacing: -0.025em;
   }
+
   .mi-estudio__intro-highlight {
     margin-top: var(--space-1);
   }
+
   .mi-estudio__quick-actions {
     margin-top: var(--space-4);
   }
+
   .welcome-section__continuar-btn {
     margin-top: var(--space-5);
     gap: var(--space-2);
   }
+
   .welcome-section__continuar-label {
     font-size: var(--fs-sm);
   }
+
   .welcome-section__continuar-arrow {
     font-size: var(--fs-body);
   }
+
   .vidas-fullscreen {
     padding: 0.75rem;
   }
+
   .vidas-fullscreen__content {
     width: 100%;
     padding: 1.875rem 1.25rem 1.375rem;
     border-radius: 0.75rem;
   }
+
   .vidas-fullscreen__hearts {
     min-height: 3.25rem;
     gap: 0.5625rem;
     margin-bottom: 0.9375rem;
     padding: 0.4375rem 0.875rem;
   }
+
   .vidas-fullscreen__heart {
     font-size: 1.75rem;
   }
+
   .vidas-fullscreen__title {
     font-size: 1.5625rem;
   }
+
   .vidas-fullscreen__title-big {
     font-size: 2.4rem;
   }
+
   .vidas-fullscreen__sub {
     font-size: 1rem;
     line-height: 1.55;
   }
+
   .teoria-etiqueta {
     font-size: 2rem;
   }
+
   .teoria-contenido-principal {
     font-size: 1.05rem;
   }
+
   .teoria-punto__imagen {
     max-height: 15rem;
   }
+
   .teoria-explicacion-extra {
     font-size: 1rem;
   }
+
   .teoria-acciones-final {
     flex-direction: column;
   }
+
   .teoria-boton-examen {
     width: 100%;
     padding: 1rem 1.25rem;
   }
+
   .retirada-modal {
     width: 100%;
     padding: 1.5rem 1.25rem 1.25rem;
     border-radius: 0.75rem;
   }
+
   .retirada-modal__title {
     font-size: 1.375rem;
   }
+
   .retirada-modal__btn {
     width: 100%;
   }
+
   .mi-estudio__modal-overlay {
     padding: 0.75rem;
     align-items: flex-start;
   }
+
   .mi-estudio__modal {
     margin-top: 0.75rem;
     max-height: calc(100vh - 1.5rem);
     padding: 1.375rem 1.125rem;
   }
+
   .mi-estudio__modal .mi-estudio__form-title {
     font-size: 1.375rem;
   }
+
   .mi-estudio__modal .mi-estudio__form-desc {
     font-size: 0.875rem;
   }
+
   .mi-estudio__form {
     margin-top: 1.25rem;
   }
+
   .mi-estudio__modal-header {
     margin-bottom: 1.125rem;
   }
+
   .mi-estudio__modal-title {
     font-size: 1.375rem;
   }
+
   .mi-estudio__modal-footer {
     flex-direction: column-reverse;
   }
+
   .mi-estudio__modal-cancel,
   .mi-estudio__modal-submit {
     width: 100%;
   }
 }
+
 /* ============================================================
    RESPONSIVE — TEORÍA PEQUEÑA
    ============================================================ */
@@ -2764,23 +3157,29 @@
   .teoria-etiqueta {
     font-size: 1rem;
   }
+
   .teoria-contenido-principal {
     font-size: 1.05rem;
   }
+
   .teoria-punto__imagen {
     max-height: 15rem;
   }
+
   .teoria-explicacion-extra {
     font-size: 1rem;
   }
+
   .teoria-acciones-final {
     flex-direction: column;
   }
+
   .teoria-boton-examen {
     width: 100%;
     padding: 1rem 1.25rem;
   }
 }
+
 /* ============================================================
    RESPONSIVE — MODAL PEQUEÑO
    ============================================================ */
@@ -2789,37 +3188,47 @@
     padding: 0.75rem;
     align-items: flex-start;
   }
+
   .mi-estudio__modal {
     margin-top: 0.75rem;
     max-height: calc(100vh - 1.5rem);
     padding: 1.375rem 1.125rem;
   }
+
   .mi-estudio__modal .mi-estudio__form-title {
     font-size: 1.375rem;
   }
+
   .mi-estudio__modal .mi-estudio__form-desc {
     font-size: 0.875rem;
   }
+
   .mi-estudio__form {
     margin-top: 1.25rem;
   }
+
   .mi-estudio__btn-submit {
     width: 100%;
   }
+
   .mi-estudio__modal-header {
     margin-bottom: 1.125rem;
   }
+
   .mi-estudio__modal-title {
     font-size: 1.375rem;
   }
+
   .mi-estudio__modal-footer {
     flex-direction: column-reverse;
   }
+
   .mi-estudio__modal-cancel,
   .mi-estudio__modal-submit {
     width: 100%;
   }
 }
+
 // ============================================================
 // SELECTOR DE BÚSQUEDA REUTILIZABLE
 // ============================================================
@@ -2838,15 +3247,18 @@
     border-color 0.2s linear,
     box-shadow 0.2s linear;
   z-index: 30;
+
   &:hover {
     background-color: var(--surface-hover);
   }
+
   &.is-abierto {
     background-color: var(--surface);
     border-color: var(--primary);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   // ==========================================================
   // CONTROL
   // ==========================================================
@@ -2867,11 +3279,13 @@
     text-align: left;
     cursor: pointer;
     box-sizing: border-box;
+
     >i:first-child {
       flex-shrink: 0;
       color: var(--primary);
       font-size: var(--fs-md);
     }
+
     >span {
       flex: 1;
       min-width: 0;
@@ -2879,6 +3293,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     >i:last-child {
       flex-shrink: 0;
       color: var(--ink-soft);
@@ -2886,6 +3301,7 @@
       transition: transform 0.2s linear;
     }
   }
+
   // ==========================================================
   // MENÚ
   // ==========================================================
@@ -2907,10 +3323,12 @@
     animation: selector-menu-entrada 0.2s ease-out;
     // Ocultar scrollbar del contenedor exterior
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
       display: none;
     }
   }
+
   // ==========================================================
   // BÚSQUEDA
   // ==========================================================
@@ -2923,6 +3341,7 @@
     padding: 4px;
     border-bottom: var(--nested-border);
     box-sizing: border-box;
+
     >i {
       position: absolute;
       left: 14px;
@@ -2930,6 +3349,7 @@
       font-size: 0.8rem;
       pointer-events: none;
     }
+
     input {
       width: 100%;
       height: 36px;
@@ -2943,14 +3363,17 @@
       font-family: inherit;
       font-size: var(--fs-sm);
       box-sizing: border-box;
+
       &::placeholder {
         color: var(--ink-faint);
       }
+
       &:focus {
         background: var(--surface-hover);
       }
     }
   }
+
   // ==========================================================
   // BOTÓN LIMPIAR
   // ==========================================================
@@ -2970,14 +3393,17 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
+
     &:hover {
       background: var(--surface-hover);
       color: var(--ink);
     }
+
     i {
       font-size: 0.7rem;
     }
   }
+
   // ==========================================================
   // OPCIONES / SUGERENCIAS
   // ==========================================================
@@ -2991,20 +3417,25 @@
     // Scrollbar ultradelgado
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
+
     &::-webkit-scrollbar {
       width: 1px;
     }
+
     &::-webkit-scrollbar-track {
       background: transparent;
     }
+
     &::-webkit-scrollbar-thumb {
       background: var(--border);
       border-radius: 999px;
     }
+
     &::-webkit-scrollbar-thumb:hover {
       background: var(--ink-faint);
     }
   }
+
   // ==========================================================
   // OPCIÓN
   // ==========================================================
@@ -3024,10 +3455,12 @@
     font-weight: var(--fw-semibold);
     cursor: pointer;
     box-sizing: border-box;
+
     >i:first-child {
       flex-shrink: 0;
       color: var(--primary);
     }
+
     >span {
       flex: 1;
       min-width: 0;
@@ -3035,18 +3468,22 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     >i:last-child {
       flex-shrink: 0;
       color: var(--success);
     }
+
     &:hover {
       background: var(--surface-hover);
     }
+
     &.is-seleccionado {
       background: var(--primary-bg);
       color: var(--primary);
     }
   }
+
   // ==========================================================
   // SIN RESULTADOS
   // ==========================================================
@@ -3063,6 +3500,7 @@
     box-sizing: border-box;
   }
 }
+
 // ============================================================
 // ANIMACIÓN DEL SELECTOR
 // ============================================================
@@ -3071,11 +3509,13 @@
     opacity: 0;
     transform: translateY(-6px) scaleY(0.97);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scaleY(1);
   }
 }
+
 // ============================================================
 // REDUCCIÓN DE MOVIMIENTO
 // ============================================================
@@ -3084,6 +3524,7 @@
     animation: none;
   }
 }
+
 // ============================================================
 // RESULTADOS — HEADER DEL BLOQUE
 // ============================================================
@@ -3092,6 +3533,7 @@
   justify-content: space-between;
   margin: var(--space-4) 0;
 }
+
 .mi-estudio__suggestion-actions {
   display: flex;
   justify-content: center;
@@ -3099,11 +3541,13 @@
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .mi-estudio__suggestion-btn--deco {
-  background: transparent!important;
+  background: transparent !important;
   color: var(--ink);
   border: 1px solid var(--border);
 }
+
 .mi-estudio__suggestion-btn--deco:hover {
   background: var(--surface-hover);
   border-color: var(--ink);

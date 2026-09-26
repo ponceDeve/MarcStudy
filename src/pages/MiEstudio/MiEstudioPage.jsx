@@ -11,7 +11,7 @@ import QuestionCard from "./QuestionCard";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
-import { reemplazarSimbolosParaVoz } from "../../lib/simbolosNotacion";
+
 import { resaltarPalabraTemporal, flashearFondoTemporal } from "../../utils/resaltarBusqueda";
 import TopBar from "./TopBar";
 import TheorySearchBar from "./TheorySearchBar";
@@ -21,7 +21,6 @@ import SearchModal from "../../components/SearchModal";
 import Modal from "../../components/Modal";
 import ModoEstudioModal from "./ModoEstudioModal";
 import PomodoroAlarmModal from "./PomodoroAlarmModal";
-import PomodoroWidget from "../../components/PomodoroWidget";
 import TopicsModal from "./TopicsModal";
 import ExercisesSection from "./ExercisesSection";
 import ConfirmacionSalida from "../../components/ConfirmacionSalida";
@@ -54,74 +53,6 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-function limpiarParaVoz(texto) {
-  if (!texto) return "";
-  return reemplazarSimbolosParaVoz(texto)
-    .replace(/\\\[|\\\]|\\\(|\\\)|\$\$|\$/g, "")
-    .replace(/\\[a-zA-Z]+/g, "")
-    .replace(/[{}^_]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-let vocesListasPromise = null;
-function obtenerVocesListas() {
-  if (vocesListasPromise) return vocesListasPromise;
-  vocesListasPromise = new Promise((resolve) => {
-    const voces = window.speechSynthesis.getVoices();
-    if (voces.length > 0) {
-      resolve(voces);
-      return;
-    }
-    window.speechSynthesis.onvoiceschanged = () => {
-      resolve(window.speechSynthesis.getVoices());
-    };
-    setTimeout(() => {
-      resolve(window.speechSynthesis.getVoices());
-    }, 1200);
-  });
-  return vocesListasPromise;
-}
-
-function useLecturaTeoriaVoz(texto, activo) {
-  useEffect(() => {
-    if (!activo || !texto || !("speechSynthesis" in window)) return;
-    let cancelado = false;
-    let timeoutId = null;
-    window.speechSynthesis.cancel();
-    function hablarConVoces(voces) {
-      if (cancelado) return;
-      const utter = new SpeechSynthesisUtterance(limpiarParaVoz(texto));
-      utter.lang = "es-PE";
-      utter.pitch = 0.55;
-      utter.rate = 0.92;
-      const nombresMachoAlfa = ["jorge", "diego", "pablo", "carlos", "miguel", "juan", "male"];
-      const vozGrave =
-        voces.find(
-          (v) =>
-            v.lang?.toLowerCase().startsWith("es") &&
-            nombresMachoAlfa.some((n) => v.name.toLowerCase().includes(n))
-        ) || voces.find((v) => v.lang?.toLowerCase().startsWith("es"));
-      if (vozGrave) utter.voice = vozGrave;
-      timeoutId = setTimeout(() => {
-        if (cancelado) return;
-        window.speechSynthesis.speak(utter);
-      }, 80);
-    }
-    const vocesYaListas = window.speechSynthesis.getVoices();
-    if (vocesYaListas.length > 0) {
-      hablarConVoces(vocesYaListas);
-    } else {
-      hablarConVoces([]);
-      obtenerVocesListas();
-    }
-    return () => {
-      cancelado = true;
-      if (timeoutId) clearTimeout(timeoutId);
-      if (window.speechSynthesis) window.speechSynthesis.cancel();
-    };
-  }, [texto, activo]);
-}
 
 function adaptarEjerciciosAparte(data) {
   if (!data || !Array.isArray(data.ejercicios) || data.ejercicios.length === 0) {
@@ -384,7 +315,6 @@ export default function MiEstudioPage() {
     return () => clearTimeout(avisoContinuarVacioTimeoutRef.current);
   }, []);
 
-  const [pomodoroMiniOpen, setPomodoroMiniOpen] = useState(false);
   const [temasOpen, setTemasOpen] = useState(false);
   const [score, setScore] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
@@ -699,7 +629,6 @@ ${teoria}`;
       );
       if (secIndex !== -1) {
         setTeoriaVistaIndex(secIndex);
-        setPuntoVozId(item.puntoId);
       }
       setSearchOpen(false);
       requestAnimationFrame(() => {
@@ -1378,7 +1307,6 @@ ${teoria}`;
   }
 
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-  const [lecturaTeoriaOn, setLecturaTeoriaOn] = useState(false);
   const [musicaTeoriaOn, setMusicaTeoriaOn] = useState(false);
   const musicaTeoriaRef = useRef(null);
   const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
@@ -1390,47 +1318,6 @@ ${teoria}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setPreguntaChatGpt("");
   }
-
-  const [puntoVozId, setPuntoVozId] = useState(null);
-
-  useEffect(() => {
-    if (stage === "theory" && seccionActual && seccionActual.puntos.length > 0) {
-      if (!seccionActual.puntos.some((p) => p.id === puntoVozId)) {
-        setPuntoVozId(seccionActual.puntos[0].id);
-      }
-    }
-  }, [stage, seccionActual, puntoVozId]);
-
-  useEffect(() => {
-    setLecturaTeoriaOn(false);
-    setPuntoVozId(null);
-  }, [topicData?.tema, topicData?.curso]);
-
-  const puntoVozActual = puntoVozId ? flatPuntos.find((p) => p.id === puntoVozId) : null;
-  const ultimaSeccionLeidaRef = useRef(null);
-
-  useEffect(() => {
-    ultimaSeccionLeidaRef.current = null;
-  }, [topicData?.tema, topicData?.curso]);
-
-  const textoParaVoz =
-    stage === "theory" && !isLevelMode
-      ? puntoVozActual
-        ? (() => {
-          const esNuevaSeccion = ultimaSeccionLeidaRef.current !== puntoVozActual.seccionTitulo;
-          ultimaSeccionLeidaRef.current = puntoVozActual.seccionTitulo;
-          return [
-            esNuevaSeccion ? puntoVozActual.seccionTitulo : null,
-            puntoVozActual.texto,
-            puntoVozActual.explicacion
-          ]
-            .filter(Boolean)
-            .join(". ");
-        })()
-        : topicData?.theory?.[0]?.titulo || null
-      : null;
-
-  useLecturaTeoriaVoz(textoParaVoz, lecturaTeoriaOn && stage === "theory" && !isLevelMode);
 
   useEffect(() => {
     if (!musicaTeoriaRef.current) {
@@ -1775,7 +1662,6 @@ ${teoria}`;
           </button>
         </div>
       )}
-      <PomodoroWidget open={pomodoroMiniOpen} onClose={() => setPomodoroMiniOpen(false)} />
       <Modal open={confirmSalirApp} onClose={cancelarSalirApp}>
         <h3 className="tema-modal-title">¿Salir de la aplicación?</h3>
         <p className="tema-modal-subtitle">Vas a salir de la web/aplicación. Tu progreso ya quedó guardado.</p>
@@ -1997,35 +1883,12 @@ ${teoria}`;
                   />
                   <button
                     type="button"
-                    onClick={() => setPomodoroMiniOpen((o) => !o)}
-                    className={`mi-estudio__voz-btn mi-estudio__voz-btn--cronometro${pomodoroMiniOpen ? " is-active" : ""}`}
-                    title="Mini cronómetro"
-                    aria-label="Mini cronómetro"
-                  >
-                    <i className="fa-solid fa-clock" />
-                  </button>
-                  <button
-                    type="button"
                     onClick={() => setMusicaTeoriaOn((v) => !v)}
                     className={`mi-estudio__voz-btn mi-estudio__voz-btn--musica ${musicaTeoriaOn ? "is-on" : "is-off"}`}
                     title={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
                     aria-label={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
                   >
                     <i className="fa-solid fa-music" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLecturaTeoriaOn((v) => !v)}
-                    className={`mi-estudio__voz-btn ${lecturaTeoriaOn ? "is-on" : "is-off"}`}
-                    title={
-                      lecturaTeoriaOn
-                        ? "Desactivar lectura en voz"
-                        : "Leer teoría en voz alta"
-                    }
-                  >
-                    <i
-                      className={`fa-solid ${lecturaTeoriaOn ? "fa-volume-high" : "fa-volume-xmark"}`}
-                    />
                   </button>
                 </div>
                 {mostrarBotonBuscador && !mostrarBarraTeoria && (
@@ -2050,14 +1913,13 @@ ${teoria}`;
                         <div
                           key={punto.id}
                           id={`punto-${punto.id}`}
-                          className={`arcade-game-container teoria-card-unica${puntoVozId === punto.id ? " is-leyendo" : ""}`}
+                          className={`arcade-game-container teoria-card-unica`}
                         >
                           <div className="arcade-grid" />
 
                           <div className="teoria-card-unica__inner">
                             <div
                               className="teoria-punto__fila"
-                              onClick={() => setPuntoVozId(punto.id)}
                             >
                               <div>
                                 <input
