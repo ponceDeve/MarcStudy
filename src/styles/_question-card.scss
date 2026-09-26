@@ -4,7 +4,7 @@
 .question-card {
   width: 100%;
   min-height: 400px;
-  padding: var(--space-4) var(--space-2);
+  padding: var(--space-2);
 }
 .question-card * {
   user-select: none;
@@ -19,20 +19,17 @@
    PREGUNTA
    ============================================================ */
 .question-card__q {
-  margin: 0 0 32px;
   color: var(--ink);
 }
 .question-card__q span {
-  font-size: 22px;
-  line-height: 1.4;
+  font-size: 20px;
 }
 .question-card__q-intro {
-  font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: start;
-  margin: 0 0 14px;
   user-select: none;
-  word-spacing: 10px;
+  word-spacing: 6px;
+  margin: 0;
 }
 .question-card__q-props {
   display: flex;
@@ -49,7 +46,9 @@
 }
 /* ============================================================
    ALTERNATIVAS
+
    ============================================================ */
+
 .question-card__options {
   display: flex;
   flex-direction: column;
@@ -58,15 +57,16 @@
   margin-bottom: 28px;
   width: 100%;
 }
+
 /* ============================================================
    ALTERNATIVA INDIVIDUAL
    ============================================================ */
+
 .question-card__opt {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 8px;
   margin: 0;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
@@ -84,9 +84,11 @@
     color 0.15s linear,
     opacity 0.15s linear;
 }
+
 /* ============================================================
    CÍRCULO
    ============================================================ */
+
 .question-card__opt-letter {
   display: inline-flex;
   align-items: center;
@@ -94,126 +96,160 @@
   flex: 0 0 32px;
   width: 32px;
   height: 32px;
-  border: 1.5px solid var(--border-strong);
   border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-strong);
   background: var(--surface);
   color: var(--ink-soft);
   font-family: var(--font);
   font-size: 18px;
   font-weight: var(--fw-bold);
   line-height: 1;
-  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear, transform 0.15s linear;
+  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear, transform 0.15s linear, border-radius 0.15s linear;
 }
+
 /* ============================================================
    TEXTO
    ============================================================ */
+
 .question-card__opt-text {
   flex: 1 1 auto;
   min-width: 0;
   color: var(--ink);
-  font-size: 22px ;
+  font-size: 18px;
 }
+
 /* ============================================================
    HOVER NORMAL
    SOLO FUNCIONA MIENTRAS NO HAYA NINGUNA SELECCIONADA
    ============================================================ */
+
 .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--primary-bg);
   color: var(--ink);
 }
+
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--ink);
 }
+
 .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
 }
+
 /* ============================================================
    SELECCIONADA
    Azul claro = interacción / elección del usuario
    ============================================================ */
+
 .question-card__opt.is-selected {
   background: var(--primary-bg);
   color: var(--ink);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-medium);
   cursor: default !important;
   border: 1px solid var(--primary-light);
 }
+
 .question-card__opt.is-selected .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
   color: var(--ink);
   transform: scale(1.04);
+  border-top-left-radius: var(--radius-md)!important;
+  border-bottom-left-radius: var(--radius-md)!important;
+  border-top-right-radius: var(--radius-full);
+  border-bottom-right-radius: var(--radius-full);
 }
+
 .question-card__opt.is-selected .question-card__opt-text {
   color: var(--ink);
 }
+
 /* ============================================================
    SELECCIONADA — SIN HOVER
    ============================================================ */
+
 .question-card__opt.is-selected:hover:not(:disabled) {
   background: var(--primary-bg);
   color: var(--ink);
   cursor: default !important;
 }
+
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-light);
   color: var(--ink);
   transform: scale(1.04);
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-full);
+  border-bottom-right-radius: var(--radius-full);
 }
+
 .question-card__opt.is-selected:hover:not(:disabled) .question-card__opt-text {
   color: var(--ink);
 }
+
 /* ============================================================
    DESPUÉS DE SELECCIONAR UNA ALTERNATIVA
    LAS DEMÁS YA NO TIENEN HOVER DE FONDO
    SOLO EL CÍRCULO CAMBIA
    ============================================================ */
+
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) {
   background: var(--surface);
   color: var(--ink);
 }
+
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-letter {
   border-color: var(--primary-light);
   background: var(--primary-bg);
   color: var(--primary-light);
 }
+
 .question-card:has(.question-card__opt.is-selected) .question-card__opt:hover:not(:disabled):not(.is-selected) .question-card__opt-text {
   color: var(--ink);
 }
+
 /* ============================================================
    CORRECTA
    Verde = resultado correcto
    ============================================================ */
+
 .question-card__opt.is-correct {
   background: var(--success-bg);
   color: var(--ink);
   border-color: var(--success);
 }
+
 .question-card__opt.is-correct .question-card__opt-letter {
   border-color: var(--success);
   background: var(--success);
   color: var(--ink);
 }
+
 .question-card__opt.is-correct .question-card__opt-text {
   color: var(--ink);
 }
+
 /* ============================================================
    INCORRECTA
    Rojo = respuesta incorrecta
    ============================================================ */
+
 .question-card__opt.is-wrong {
   background: var(--danger-bg);
   color: var(--ink);
   border-color: var(--danger);
 }
+
 .question-card__opt.is-wrong .question-card__opt-letter {
   border-color: var(--danger);
   background: var(--danger);
   color: var(--ink);
 }
+
 .question-card__opt.is-wrong .question-card__opt-text {
   color: var(--ink);
 }
@@ -257,7 +293,7 @@
   max-width: 100%;
   flex: 0 1 auto;
   align-items: center;
-  padding: 4px 6px;
+  padding: 0 6px;
 }
 /* ============================================================
    TEXTO CORTAS
@@ -641,11 +677,7 @@
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
-  .question-card__q {
-    margin-top: 16px;
-    margin-bottom: 24px;
-  }
-  .question-card__q-intro {
+  .question-card__q-intro span {
     font-size: 17px;
   }
   .question-card__opt {

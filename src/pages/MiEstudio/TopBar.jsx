@@ -47,6 +47,7 @@ export default function TopBar({
   onAbrirTemas,
   onAbandonarPregunta,
   onIrInicio,
+  temasOpen = false,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [temaOscuro, setTemaOscuro] = useTemaOscuro();
@@ -130,11 +131,13 @@ export default function TopBar({
     onClick: onAbandonarPregunta,
     className: "topbar__nav-btn--abandonar",
   };
-  const esPregunta = stage === "question";
+  const esPregunta = stage === "question" || stage === "exam";
   const botonesVisibles = esPregunta
     ? [botonAbandonar]
     : botonesPrincipales;
-  const botonesMenu = botonesVisibles;
+  // En "pregunta" el botón Abandonar ya se muestra directo en el nav;
+  // no hace falta el menú de hamburguesa duplicándolo.
+  const botonesMenu = esPregunta ? [] : botonesVisibles;
   const renderBoton = (
     b,
     cls,
@@ -260,7 +263,7 @@ export default function TopBar({
                   </span>
                 </div>
                 <span
-                  className={`topbar__expand-icon ${menuMobileOpen ? "is-open" : ""
+                  className={`topbar__expand-icon ${temasOpen ? "is-open" : ""
                     }`}
                   aria-hidden="true"
                 />

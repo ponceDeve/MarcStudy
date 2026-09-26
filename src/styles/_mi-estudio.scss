@@ -295,9 +295,9 @@
   min-width: 0;
   flex: 1;
   overflow: hidden;
-  color: var(--primary-dark);
+  color: var(--primary-light);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
   font-weight: var(--fw-normal);
   line-height: 1.4;
   white-space: nowrap;
@@ -322,11 +322,13 @@
 
 .welcome-section__simulacro-panel {
   width: 100%;
-  max-width: 400px;
+  max-width: 900px;
+  height: 150px;
   margin: var(--space-3) auto 0;
   padding: 14px 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
   box-sizing: border-box;
   border: 1px solid var(--brand);
@@ -370,10 +372,10 @@
 
   strong {
     color: var(--ink);
-    font-size: var(--fs-body);
     font-weight: var(--fw-bold);
     line-height: 1.3;
     text-transform: uppercase;
+    font-size: var(--fs-xl);
   }
 
   span {
@@ -382,6 +384,7 @@
     line-height: 1.4;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: var(--fs-md);
   }
 }
 
@@ -607,19 +610,6 @@
     border-radius: 12px;
     font-size: 18px;
   }
-
-  .welcome-section__simulacro-info {
-    gap: 2px;
-
-    strong {
-      font-size: var(--fs-xs);
-    }
-
-    span {
-      font-size: var(--fs-xs);
-    }
-  }
-
   .welcome-section__simulacro-btn {
     width: 34px;
     height: 34px;
@@ -2055,7 +2045,7 @@
 }
 .arcade-game-container.teoria-card-unica:has(.teoria-etiqueta-checkbox:checked) {
   border: 1px solid var(--success-dark) !important;
-  background-color: var(--success-bg);
+  box-shadow: inset 0 0 10px var(--success-dark);
 }
 .teoria-etiqueta-checkbox {
   display: none;

@@ -38,6 +38,23 @@
 .hud__vida-icon--lost {
   opacity: 0.3;
 }
+.hud__rendirse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--secondary);
+  cursor: pointer;
+  &:hover {
+    color: var(--secondary-dark);
+    background: var(--surface-hover, rgba(0, 0, 0, 0.05));
+  }
+}
 /* Toast base: solo estructura/posición. El color lo da la variante
    (.is-success para "guardado", el default de abajo para "sin preguntas") —
    antes ambos avisos compartían el mismo rojo, pensado solo para alertas. */

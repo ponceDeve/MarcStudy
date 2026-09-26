@@ -1581,7 +1581,8 @@ const TemaExamenView = forwardRef(
       claveTiempo,
       onTerminar,
       onFaseChange,
-      onVolverTeoria
+      onVolverTeoria,
+      onAbandonar
     },
     ref
   ) {
@@ -2222,17 +2223,7 @@ const TemaExamenView = forwardRef(
               tiempoTranscurrido
             )}
           </span>
-        </div>
 
-        <div
-          className={`arcade-game-container question-card question-card--${
-            preguntaActual.tipo ||
-            "opcion_multiple"
-          }`}
-          style={{
-            position: "relative"
-          }}
-        >
           {!rendido && (
             <button
               type="button"
@@ -2242,12 +2233,19 @@ const TemaExamenView = forwardRef(
                 )
               }
               title="Rendirse"
-              className="question-card__rendirse-btn"
+              className="hud__rendirse-btn"
             >
               <i className="fas fa-flag" />
             </button>
           )}
+        </div>
 
+        <div
+          className={`arcade-game-container question-card question-card--${
+            preguntaActual.tipo ||
+            "opcion_multiple"
+          }`}
+        >
           <div className="arcade-grid" />
 
           <div className="question-card__inner">

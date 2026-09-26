@@ -399,7 +399,7 @@ export default function MiEstudioPage() {
   }, []);
 
   useEffect(() => {
-    if (pantallaToastVisto || isFullscreen) return;
+    if (true || pantallaToastVisto || isFullscreen) return;
     const t = setTimeout(() => setPantallaToastVisible(true), 700);
     return () => clearTimeout(t);
   }, [pantallaToastVisto, isFullscreen]);
@@ -1576,7 +1576,7 @@ ${teoria}`;
             modoExamenTema
               ? faseExamenTema === "resultados"
                 ? "results"
-                : "question"
+                : "exam"
               : stage
           }
           tema={topicData.tema}
@@ -1584,6 +1584,7 @@ ${teoria}`;
           onAbrirBuscador={() => setSearchOpen(true)}
           onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
+          temasOpen={temasOpen}
           onGuardarRepaso={guardarParaRepaso}
           isFullscreen={isFullscreen}
           onToggleFullscreen={toggleFullscreen}
@@ -1601,7 +1602,7 @@ ${teoria}`;
           }
         />
       )}
-      {pantallaToastVisible && (
+      {false && pantallaToastVisible && (
         <div className={`repaso-toast is-top mi-estudio__pantalla-toast${pantallaToastSaliendo ? " is-saliendo" : ""}`}>
           <div className="mi-estudio__pantalla-toast-contenido">
             <i className="fas fa-expand" />
@@ -1799,6 +1800,9 @@ ${teoria}`;
                       <span className="welcome-section__simulacro-info">
                         <strong>Rendir simulacro</strong>
                         <span>Pon a prueba tus conocimientos</span>
+                      </span>
+                      <span className="welcome-section__simulacro-icon">
+                        <i className="bi bi-bullseye"></i>
                       </span>
                     </button>
                   </div>
@@ -2083,6 +2087,7 @@ ${teoria}`;
                     onTerminar={finalizarTemaDesdeExamen}
                     onFaseChange={setFaseExamenTema}
                     onVolverTeoria={volverATeoriaDesdeExamenTema}
+                    onAbandonar={pedirAbandonarPregunta}
                   />
                 </div>
               </div>

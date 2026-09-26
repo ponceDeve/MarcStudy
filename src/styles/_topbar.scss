@@ -208,6 +208,25 @@ body.is-header-oculto .topbar-wrapper {
     align-items: center;
     gap: 10px;
   }
+  &__brand {
+    &.btn__inicio {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+    }
+    &button.btn__inicio {
+      cursor: url("/cursor_pointer.webp"), pointer !important;
+      border-radius: 6px;
+      transition: background 0.2s linear;
+      &:hover {
+        background: var(--surface-hover);
+      }
+    }
+  }
   /* ============================================================
      NAVEGACIÓN
      ============================================================ */
