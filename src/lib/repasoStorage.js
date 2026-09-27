@@ -257,3 +257,47 @@ export function clasificarRepasos(log) {
     proximos
   };
 }
+// ── Repasos "vistos" (ya se dio click en Repasar) ───────────────────────
+// Se guarda en localStorage para que se recuerde aunque se cierre/vuelva
+// a abrir la app. Se identifica por id de la entrada + el número de
+// repaso (intervaloIdx), porque cada repaso de esa entrada es distinto.
+const REPASOS_VISTOS_KEY = "mi_estudio_repasos_vistos";
+export function claveRepasoVisto(id, intervaloIdx) {
+  return `${id}::${intervaloIdx}`;
+}
+export function leerRepasosVistos() {
+  try {
+    const raw = localStorage.getItem(REPASOS_VISTOS_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+export function marcarRepasoVisto(id, intervaloIdx) {
+  try {
+    const vistos = leerRepasosVistos();
+    const clave = claveRepasoVisto(id, intervaloIdx);
+    if (!vistos.includes(clave)) {
+      vistos.push(clave);
+      localStorage.setItem(
+        REPASOS_VISTOS_KEY,
+        JSON.stringify(vistos)
+      );
+    }
+  } catch {
+    /* noop */
+  }
+}
+export function limpiarRepasoVisto(id, intervaloIdx) {
+  try {
+    const vistos = leerRepasosVistos().filter(
+      (c) => c !== claveRepasoVisto(id, intervaloIdx)
+    );
+    localStorage.setItem(
+      REPASOS_VISTOS_KEY,
+      JSON.stringify(vistos)
+    );
+  } catch {
+    /* noop */
+  }
+}

@@ -202,7 +202,6 @@ Comprueba que:
 - no aparece «Ejercicio N»;
 - la distribución de «correct» es equilibrada;
 - el resultado final es JSON válido.`;
-
 export const examenMate = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE MATEMÁTICAS TIPO DECO (JSON)
 App de estudio · Admisión UNMSM
@@ -390,7 +389,6 @@ Comprueba que:
 - no aparece «Ejercicio N»;
 - «correct» está distribuido;
 - el JSON es válido.`;
-
 export const examenCiencia = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE CIENCIAS TIPO DECO (JSON)
 App de estudio · Admisión UNMSM

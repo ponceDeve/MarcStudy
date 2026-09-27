@@ -11,7 +11,6 @@ import QuestionCard from "./QuestionCard";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
-
 import { resaltarPalabraTemporal, flashearFondoTemporal } from "../../utils/resaltarBusqueda";
 import TopBar from "./TopBar";
 import TheorySearchBar from "./TheorySearchBar";
@@ -34,7 +33,6 @@ import { usePomodoro } from "../../context/PomodoroContext";
 import { shuffle } from "../../lib/shuffle";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
 import "katex/dist/katex.min.css";
-
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
   { type: "curso", nombre: curso.nombre },
   ...curso.temas.map((tema) => ({
@@ -44,7 +42,6 @@ const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
     archivo: tema.archivo
   }))
 ]);
-
 function normalizarTexto(texto) {
   return String(texto || "")
     .normalize("NFD")
@@ -52,8 +49,6 @@ function normalizarTexto(texto) {
     .toLowerCase()
     .trim();
 }
-
-
 function adaptarEjerciciosAparte(data) {
   if (!data || !Array.isArray(data.ejercicios) || data.ejercicios.length === 0) {
     return data;
@@ -85,7 +80,6 @@ function adaptarEjerciciosAparte(data) {
     examen: [...examenTeoria, ...ejercicios]
   };
 }
-
 export default function MiEstudioPage() {
   const [topicData, setTopicData] = useState(null);
   const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
@@ -97,9 +91,7 @@ export default function MiEstudioPage() {
     [flatPuntos]
   );
   const puntosTeoria = puntosBuscables;
-
   const [teoriaVistaIndex, setTeoriaVistaIndex] = useState(0);
-
   const seccionesAgrupadas = useMemo(() => {
     const grupos = [];
     let tituloActual = null;
@@ -114,15 +106,12 @@ export default function MiEstudioPage() {
     });
     return grupos;
   }, [puntosTeoria]);
-
   useEffect(() => {
     if (seccionesAgrupadas.length > 0 && teoriaVistaIndex >= seccionesAgrupadas.length) {
       setTeoriaVistaIndex(seccionesAgrupadas.length - 1);
     }
   }, [seccionesAgrupadas.length, teoriaVistaIndex]);
-
   const seccionActual = seccionesAgrupadas[teoriaVistaIndex] || null;
-
   const puntosEstables = useMemo(() => {
     return (topicData?.theory || []).flatMap((seccion, idxSeccion) =>
       seccion.puntos.map((p, idxPunto) => ({
@@ -150,7 +139,6 @@ export default function MiEstudioPage() {
   const [mostrarBotonBuscador, setMostrarBotonBuscador] = useState(false);
   const barraTeoriaRef = useRef(null);
   const { setFooterHidden } = useFooterVisibility();
-
   useEffect(() => {
     const manejarScroll = () => {
       if (window.scrollY > 80) {
@@ -165,7 +153,6 @@ export default function MiEstudioPage() {
       window.removeEventListener("scroll", manejarScroll);
     };
   }, []);
-
   useEffect(() => {
     if (!mostrarBarraTeoria) return;
     const manejarClickFuera = (e) => {
@@ -181,13 +168,11 @@ export default function MiEstudioPage() {
       document.removeEventListener("pointerdown", manejarClickFuera);
     };
   }, [mostrarBarraTeoria]);
-
   useEffect(() => {
     const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
     setFooterHidden(ocultar);
     return () => setFooterHidden(false);
   }, [topicData, stage, setFooterHidden]);
-
   useEffect(() => {
     if (!topicData?.curso || !topicData?.tema) return;
     const idsTeoriaNormal = flatPuntos
@@ -211,7 +196,6 @@ export default function MiEstudioPage() {
       localStorage.setItem("estrellasTemas", JSON.stringify(todasLasEstrellas));
     }
   }, [textosCompletados, flatPuntos, topicData]);
-
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (stage !== "theory" || (textosSeleccionados.length === 0 && textosCompletados.length === 0)) {
@@ -230,7 +214,6 @@ export default function MiEstudioPage() {
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [stage, textosSeleccionados, textosCompletados, topicData?.archivo]);
-
   const [countdown, setCountdown] = useState(0);
   const [vidas, setVidas] = useState(5);
   const [alertaVidas, setAlertaVidas] = useState(null);
@@ -240,7 +223,6 @@ export default function MiEstudioPage() {
   const vidaPerderRef = useRef(null);
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
-
   useEffect(() => {
     if (!alertaVidas) return;
     const delay = alertaVidas === "cero" ? 2500 : 3200;
@@ -250,7 +232,6 @@ export default function MiEstudioPage() {
     }, delay);
     return () => clearTimeout(t);
   }, [alertaVidas]);
-
   const [corazonRoto, setCorazonRoto] = useState(false);
   useEffect(() => {
     if (!alertaVidas) {
@@ -262,7 +243,6 @@ export default function MiEstudioPage() {
     }, 700);
     return () => clearTimeout(t);
   }, [alertaVidas]);
-
   function renderCorazonesVidas() {
     return (
       <div className="vidas-fullscreen__hearts">
@@ -283,7 +263,6 @@ export default function MiEstudioPage() {
       </div>
     );
   }
-
   const [examenPreguntas, setExamenPreguntas] = useState([]);
   const [nivelIndex, setNivelIndex] = useState(0);
   const [nivelMaxUnlocked, setNivelMaxUnlocked] = useState(0);
@@ -301,7 +280,6 @@ export default function MiEstudioPage() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [avisoContinuarVacio, setAvisoContinuarVacio] = useState(false);
   const avisoContinuarVacioTimeoutRef = useRef(null);
-
   function mostrarAvisoContinuarVacio() {
     clearTimeout(avisoContinuarVacioTimeoutRef.current);
     setAvisoContinuarVacio(true);
@@ -310,11 +288,9 @@ export default function MiEstudioPage() {
       2500
     );
   }
-
   useEffect(() => {
     return () => clearTimeout(avisoContinuarVacioTimeoutRef.current);
   }, []);
-
   const [temasOpen, setTemasOpen] = useState(false);
   const [score, setScore] = useState(0);
   const [wrongCount, setWrongCount] = useState(0);
@@ -333,7 +309,6 @@ export default function MiEstudioPage() {
   const [pomodoroAlarmaLabel, setPomodoroAlarmaLabel] = useState("");
   const pomodoroEstuvoCorriendoRef = useRef(false);
   const pomodoro = usePomodoro();
-
   useEffect(() => {
     if (pomodoro.isRunning) {
       pomodoroEstuvoCorriendoRef.current = true;
@@ -345,14 +320,12 @@ export default function MiEstudioPage() {
     }
     pomodoroEstuvoCorriendoRef.current = false;
   }, [pomodoro.isRunning, pomodoro.secondsLeft, pomodoro.label]);
-
   function irAPomodoroDesdeAlarma() {
     setPomodoroAlarmaAbierta(false);
     limpiarPomodoroCompartido();
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
-
   const { guardarBusqueda: guardarBusquedaInicio } = useSearchHistory();
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
   const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] = useState(false);
@@ -369,7 +342,6 @@ export default function MiEstudioPage() {
   const [pantallaToastVisible, setPantallaToastVisible] = useState(false);
   const [pantallaToastSaliendo, setPantallaToastSaliendo] = useState(false);
   const pantallaToastTimers = useRef([]);
-
   function cerrarPantallaToast() {
     setPantallaToastSaliendo(true);
     setPantallaToastVisto(true);
@@ -380,7 +352,6 @@ export default function MiEstudioPage() {
       }, 300)
     );
   }
-
   useEffect(() => {
     if (sinPreguntaAlerta && alertaNotificacionRef.current) {
       alertaNotificacionRef.current.currentTime = 0;
@@ -389,7 +360,6 @@ export default function MiEstudioPage() {
       });
     }
   }, [sinPreguntaAlerta]);
-
   useEffect(() => {
     return () => {
       repasoGuardadoTimers.current.forEach(clearTimeout);
@@ -397,13 +367,11 @@ export default function MiEstudioPage() {
       pantallaToastTimers.current.forEach(clearTimeout);
     };
   }, []);
-
   useEffect(() => {
     if (true || pantallaToastVisto || isFullscreen) return;
     const t = setTimeout(() => setPantallaToastVisible(true), 700);
     return () => clearTimeout(t);
   }, [pantallaToastVisto, isFullscreen]);
-
   useEffect(() => {
     function onFullscreenChange() {
       setIsFullscreen(!!document.fullscreenElement);
@@ -411,7 +379,6 @@ export default function MiEstudioPage() {
     document.addEventListener("fullscreenchange", onFullscreenChange);
     return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
   }, []);
-
   useEffect(() => {
     let timer = null;
     if (stage === "question" && countdown > 0) {
@@ -423,13 +390,11 @@ export default function MiEstudioPage() {
       if (timer) clearInterval(timer);
     };
   }, [stage, countdown]);
-
   useEffect(() => {
     if (topicData) {
       localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex.toString());
     }
   }, [cardIndex, topicData]);
-
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch((err) => {
@@ -439,7 +404,6 @@ export default function MiEstudioPage() {
       document.exitFullscreen();
     }
   }
-
   async function abrirTema(item) {
     window.scrollTo(0, 0);
     setLoading(true);
@@ -524,7 +488,6 @@ export default function MiEstudioPage() {
       setLoading(false);
     }
   }
-
   async function generarCuestionarioDECO() {
     if (!topicData) return;
     const teoria = (topicData.theory || [])
@@ -573,7 +536,6 @@ ${teoria}`;
       );
     }
   }
-
   function pedirAbrirTema(item) {
     const hayCambiosSinGuardar =
       stage === "theory" &&
@@ -588,7 +550,6 @@ ${teoria}`;
     }
     abrirTema(item);
   }
-
   function irADestinoSalida() {
     if (destinoSalida === "inicio") {
       setTopicData(null);
@@ -598,7 +559,6 @@ ${teoria}`;
     }
     setTemaProximoSalida(null);
   }
-
   function handleGuardarYSalir() {
     if (topicData?.archivo) {
       localStorage.setItem(
@@ -610,18 +570,15 @@ ${teoria}`;
     setMostrarConfirmacionSalida(false);
     irADestinoSalida();
   }
-
   function handleSalirSinGuardar() {
     huboCambiosSinGuardarRef.current = false;
     setMostrarConfirmacionSalida(false);
     irADestinoSalida();
   }
-
   function handleCancelarSalida() {
     setMostrarConfirmacionSalida(false);
     setTemaProximoSalida(null);
   }
-
   function seleccionarItem(item) {
     if (item.type === "contenido") {
       const secIndex = seccionesAgrupadas.findIndex(
@@ -664,14 +621,12 @@ ${teoria}`;
       pedirAbrirTema(item);
     }
   }
-
   const teoriaCompleta = useMemo(() => {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
       .map((p) => p.id);
     return idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => textosSeleccionados.includes(id));
   }, [flatPuntos, textosSeleccionados]);
-
   function intentarCompletarTema() {
     if (!teoriaCompleta) {
       sinPreguntaTimers.current.forEach(clearTimeout);
@@ -690,7 +645,6 @@ ${teoria}`;
     }
     finalizarTema();
   }
-
   function elegirModoEstudio(modo, opts = {}) {
     setPreguntaModoAbierta(false);
     setEsModoAdicionales(!!opts.soloAdicionales);
@@ -779,11 +733,9 @@ ${teoria}`;
       setAttemptKey(0);
     }
   }
-
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const [simulacroModalOpen, setSimulacroModalOpen] = useState(false);
-
   useEffect(() => {
     let q = searchParams.get("q");
     if (!q) {
@@ -805,7 +757,6 @@ ${teoria}`;
     }
     window.history.replaceState(null, "", window.location.pathname);
   }, []);
-
   function avanzarCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
@@ -874,7 +825,6 @@ ${teoria}`;
       finalizarTema();
     }
   }
-
   function retrocederCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
@@ -923,12 +873,10 @@ ${teoria}`;
       setCountdown(0);
     }
   }
-
   function reintentarPregunta() {
     setQuestionResult(null);
     setAttemptKey((k) => k + 1);
   }
-
   function finalizarTema() {
     if (esModoAdicionales) {
       const idsEjercicios = flatPuntos
@@ -954,12 +902,10 @@ ${teoria}`;
       }
     }
   }
-
   function volverATeoriaDesdeExamenTema() {
     setModoExamenTema(false);
     setStage("theory");
   }
-
   function finalizarTemaDesdeExamen() {
     setModoExamenTema(false);
     setStage("finished");
@@ -974,16 +920,13 @@ ${teoria}`;
       }
     }
   }
-
   function confirmarGuardarRepasoFinal(guardar) {
     if (guardar && topicData) {
       registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
     }
     setConfirmGuardarRepasoFinal(false);
   }
-
   const [botonArmado, setBotonArmado] = useState(null);
-
   function manejarBotonConfig(key, accion) {
     if (botonArmado === key) {
       accion();
@@ -992,7 +935,6 @@ ${teoria}`;
       setBotonArmado(key);
     }
   }
-
   function guardarParaRepaso() {
     if (!topicData) return;
     registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
@@ -1007,7 +949,6 @@ ${teoria}`;
       }, 2100)
     ];
   }
-
   function gameOver() {
     if (!topicData) return;
     localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
@@ -1030,7 +971,6 @@ ${teoria}`;
     setAttemptKey(0);
     setCountdown(0);
   }
-
   function rendirsePregunta() {
     setQuestionResult({ isCorrect: false, rendido: true, vidasEnEsteIntento: vidas });
     let vistaKeyRendido = null;
@@ -1059,7 +999,6 @@ ${teoria}`;
     }
     setWrongCount((w) => w + 1);
   }
-
   function manejarRespuesta(correcto) {
     setQuestionResult({ isCorrect: correcto, vidasEnEsteIntento: vidas });
     let vistaKey = null;
@@ -1178,7 +1117,6 @@ ${teoria}`;
       });
     }
   }
-
   function reiniciarTarjetas() {
     setCardIndex(0);
     setUltimoFlipIndex(0);
@@ -1194,7 +1132,6 @@ ${teoria}`;
     setConfirmGuardarRepasoFinal(false);
     setBotonArmado(null);
   }
-
   function verPreguntasVistas() {
     const lote = Object.entries(preguntasVistas)
       .map(([key, val]) => {
@@ -1231,7 +1168,6 @@ ${teoria}`;
       setRepasoDesdeTeoria(false);
     }
   }
-
   function salirDeRepaso() {
     setRepasoQuizActivo(false);
     setQuestionResult(null);
@@ -1241,19 +1177,15 @@ ${teoria}`;
       setRepasoDesdeTeoria(false);
     }
   }
-
   const [confirmSalirApp, setConfirmSalirApp] = useState(false);
   const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] = useState(false);
   const temaExamenViewRef = useRef(null);
-
   function pedirAbandonarPregunta() {
     setConfirmAbandonarPregunta(true);
   }
-
   function cancelarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
   }
-
   function confirmarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
     if (modoExamenTema && stage === "question" && temaExamenViewRef.current) {
@@ -1262,11 +1194,9 @@ ${teoria}`;
     }
     abandonarJuego();
   }
-
   function cancelarSalirApp() {
     setConfirmSalirApp(false);
   }
-
   function confirmarSalirApp() {
     if (typeof window !== "undefined" && window.Capacitor?.isNativePlatform?.()) {
       const AppPlugin = window.Capacitor.Plugins?.App;
@@ -1280,7 +1210,6 @@ ${teoria}`;
       window.location.href = "about:blank";
     }, 300);
   }
-
   function irAInicio() {
     const hayCambiosSinGuardar =
       stage === "theory" && topicData?.archivo && huboCambiosSinGuardarRef.current;
@@ -1293,7 +1222,6 @@ ${teoria}`;
     setTopicData(null);
     setStage("theory");
   }
-
   function abandonarJuego() {
     setStage("theory");
     setIsLevelMode(false);
@@ -1305,12 +1233,10 @@ ${teoria}`;
     setBotonArmado(null);
     setCountdown(0);
   }
-
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
   const [musicaTeoriaOn, setMusicaTeoriaOn] = useState(false);
   const musicaTeoriaRef = useRef(null);
   const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
-
   function enviarPreguntaChatGpt() {
     const pregunta = preguntaChatGpt.trim();
     if (!pregunta) return;
@@ -1318,7 +1244,6 @@ ${teoria}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setPreguntaChatGpt("");
   }
-
   useEffect(() => {
     if (!musicaTeoriaRef.current) {
       const audio = new Audio(`${import.meta.env.BASE_URL}sonidos/Paperback_Rain.mp3`);
@@ -1334,7 +1259,6 @@ ${teoria}`;
       }
     };
   }, []);
-
   useEffect(() => {
     const audio = musicaTeoriaRef.current;
     if (!audio) return;
@@ -1347,7 +1271,6 @@ ${teoria}`;
       audio.pause();
     }
   }, [musicaTeoriaOn]);
-
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -1357,7 +1280,6 @@ ${teoria}`;
         : modoEstudio === "solo_preguntas"
           ? examenPreguntas[cardIndex] || null
           : null;
-
   const [modoPruebaAvance, setModoPruebaAvance] = useState(false);
   useEffect(() => {
     function alternar() {
@@ -1374,21 +1296,17 @@ ${teoria}`;
     window.addEventListener("mp-toggle", alternar);
     return () => window.removeEventListener("mp-toggle", alternar);
   }, []);
-
   const canAdvance =
     modoPruebaAvance ||
     stage !== "question" ||
     Boolean(questionResult && questionResult.isCorrect);
-
   const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
   const hintBloqueoTimeoutRef = useRef(null);
-
   function mostrarHintBloqueo() {
     clearTimeout(hintBloqueoTimeoutRef.current);
     setHintBloqueoVisible(true);
     hintBloqueoTimeoutRef.current = setTimeout(() => setHintBloqueoVisible(false), 2000);
   }
-
   useEffect(() => {
     function onKeyDown(e) {
       const tagActivo = document.activeElement && document.activeElement.tagName;
@@ -1485,7 +1403,6 @@ ${teoria}`;
     reintentarPregunta,
     seccionesAgrupadas.length
   ]);
-
   useEffect(() => {
     function onKeyDown(e) {
       const tagActivo = document.activeElement && document.activeElement.tagName;
@@ -1526,24 +1443,20 @@ ${teoria}`;
     isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden, isFlipQuiz, quizBatch,
     quizPos, repasoQuizActivo, repasoQuizBatch, repasoQuizPos
   ]);
-
   const recomendacionesHoyInicio = useMemo(
     () => obtenerRecomendacionesHoy(),
     []
   );
-
   let ultimoTemaInicio = null;
   try {
     ultimoTemaInicio = JSON.parse(localStorage.getItem("ultimoTemaAbierto"));
   } catch {
     ultimoTemaInicio = null;
   }
-
   const wrapClass = [
     "mi-estudio__wrap",
     stage === "question" ? "is-question" : topicData ? "has-topbar" : "is-home"
   ].join(" ");
-
   const progresoPregunta = repasoQuizActivo
     ? { current: repasoQuizPos + 1, total: repasoQuizBatch.length }
     : isLevelMode
@@ -1553,11 +1466,9 @@ ${teoria}`;
         : modoEstudio === "solo_preguntas"
           ? { current: posOrden + 1, total: ordenPreguntas.length }
           : { current: cardIndex + 1, total: flatPuntos.length };
-
   const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
   const cursoEncontrado = manifest.cursos.find((c) => c.nombre === nombreCursoActivo);
   const temasDelCurso = cursoEncontrado ? cursoEncontrado.temas : [];
-
   return (
     <div className="mi-estudio">
       <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
@@ -1756,17 +1667,11 @@ ${teoria}`;
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">
                     Aprende y domina{" "}
-                    <span className="mi-estudio__intro-highlight">cada tema</span>
-                  </h1>
-                  <div className="welcome-section__continuar-wrapper">
-                    {avisoContinuarVacio && (
-                      <span className="aviso-bloqueo">
-                        No hay tema para continuar
-                      </span>
-                    )}
-                    <button
-                      type="button"
-                      className="welcome-section__continuar-btn"
+                    <span
+                      className="mi-estudio__intro-highlight mi-estudio__intro-highlight--continuar"
+                      role="button"
+                      title="Continuar con el ultimo tema"
+                      tabIndex={0}
                       onClick={() => {
                         if (!ultimoTemaInicio) {
                           mostrarAvisoContinuarVacio();
@@ -1779,30 +1684,30 @@ ${teoria}`;
                           archivo: ultimoTemaInicio.archivo
                         });
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.currentTarget.click();
+                        }
+                      }}
                     >
-                      <span className="welcome-section__continuar-label">
-                        Continuar:
+                      cada tema
+                    </span>
+                  </h1>
+                  <div className="welcome-section__continuar-wrapper">
+                    {avisoContinuarVacio && (
+                      <span className="aviso-bloqueo">
+                        No hay tema para continuar
                       </span>
-                      <span className="welcome-section__continuar-tema">
-                        {ultimoTemaInicio ? ultimoTemaInicio.tema : "..."}
-                      </span>
-                      <i className="bi bi-arrow-right welcome-section__continuar-arrow" />
-                    </button>
+                    )}
                     <button
                       type="button"
                       className="welcome-section__simulacro-panel"
                       onClick={() => setSimulacroModalOpen(true)}
                       aria-label="Rendir simulacro"
                     >
-                      <span className="welcome-section__simulacro-icon">
-                        <i className="bi bi-bullseye"></i>
-                      </span>
                       <span className="welcome-section__simulacro-info">
                         <strong>Rendir simulacro</strong>
                         <span>Pon a prueba tus conocimientos</span>
-                      </span>
-                      <span className="welcome-section__simulacro-icon">
-                        <i className="bi bi-bullseye"></i>
                       </span>
                     </button>
                   </div>
@@ -1859,7 +1764,6 @@ ${teoria}`;
                 </div>
               </div>
             )}
-
           </>
         )}
         {topicData && (stage === "theory" || stage === "question") && (
@@ -1912,7 +1816,6 @@ ${teoria}`;
                       <h3 className="teoria-etiqueta">
                         {seccionActual.titulo}
                       </h3>
-
                       {seccionActual.puntos.map((punto, i) => (
                         <div
                           key={punto.id}
@@ -1920,7 +1823,6 @@ ${teoria}`;
                           className={`arcade-game-container teoria-card-unica`}
                         >
                           <div className="arcade-grid" />
-
                           <div className="teoria-card-unica__inner">
                             <div
                               className="teoria-punto__fila"
@@ -1933,30 +1835,24 @@ ${teoria}`;
                                   checked={textosSeleccionados.includes(punto.id)}
                                   onChange={() => {
                                     const puntoId = punto.id;
-
                                     if (textosCompletados.includes(puntoId)) return;
-
                                     setTextosSeleccionados((prev) => {
                                       const newSelection = prev.includes(puntoId)
                                         ? prev.filter((t) => t !== puntoId)
                                         : [...prev, puntoId];
-
                                       const idsTeoriaNormal = flatPuntos
                                         .filter((p) => p.seccionTitulo !== "Ejercicios")
                                         .map((p) => p.id);
-
                                       if (
                                         idsTeoriaNormal.length > 0 &&
                                         idsTeoriaNormal.every((id) => newSelection.includes(id))
                                       ) {
                                         setMostrarCongratulations(true);
                                       }
-
                                       return newSelection;
                                     });
                                   }}
                                 />
-
                                 <label
                                   htmlFor={`checkbox-${punto.id}`}
                                   className="teoria-contenido-principal"
@@ -1968,7 +1864,6 @@ ${teoria}`;
                                 </label>
                               </div>
                             </div>
-
                             {punto.imagen && (
                               <div className="teoria-punto__imagen-wrap">
                                 <img
@@ -1983,7 +1878,6 @@ ${teoria}`;
                                 />
                               </div>
                             )}
-
                             {punto.explicacion && (
                               <div className="teoria-explicacion-extra teoria-explicacion-extra--unida">
                                 <div className="teoria-explicacion-extra__fila">
@@ -1999,7 +1893,6 @@ ${teoria}`;
                           </div>
                         </div>
                       ))}
-
                       <div className="teoria-nav-botones">
                         <button
                           type="button"
@@ -2011,7 +1904,6 @@ ${teoria}`;
                         >
                           <i className="fa-solid fa-arrow-left"></i>
                         </button>
-
                         <button
                           type="button"
                           className="teoria-nav-btn teoria-nav-btn--game"
@@ -2025,7 +1917,6 @@ ${teoria}`;
                         >
                           <i className="fa-solid fa-gamepad"></i>
                         </button>
-
                         <button
                           type="button"
                           className="teoria-nav-btn"
@@ -2043,7 +1934,6 @@ ${teoria}`;
                       </div>
                     </>
                   )}
-
                   <div className="teoria-acciones-final">
                     <button
                       className={`teoria-boton-examen${examenPreguntas.length > 0 ? "" : " is-bloqueado"}`}
@@ -2053,18 +1943,16 @@ ${teoria}`;
                       }
                       aria-disabled={examenPreguntas.length === 0}
                     >
-                      <i className="fa-solid fa-graduation-cap"></i> Ir al Examen
+                      Examen
                     </button>
-
                     <button
                       className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta ? "" : " is-bloqueado"}`}
                       onClick={intentarCompletarTema}
                       aria-disabled={!teoriaCompleta}
                     >
-                      <i className="fa-solid fa-check-circle"></i> Completar Tema
+                   Completar Tema
                     </button>
                   </div>
-
                   <ExercisesSection
                     examenPreguntas={(topicData?.examen || []).filter(
                       (_, i) => puntosEstables[i]?.seccionTitulo === "Ejercicios"

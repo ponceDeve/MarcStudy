@@ -1,6 +1,5 @@
 import temarioSesiones from "../data/temarioSesiones.json";
 import { leerLog, leerHistorialRotacion } from "./repasoStorage";
-
 export const GRUPOS_ROTACION = [
   ["Habilidad Verbal", "Educación Cívica", "Economía"],
   ["Lenguaje", "Geografía", "Álgebra"],
@@ -9,23 +8,18 @@ export const GRUPOS_ROTACION = [
   ["Historia del Perú", "Psicología", "Geometría"],
   ["Filosofía", "Biología", "Aritmética"]
 ];
-
 const NUM_GRUPOS = GRUPOS_ROTACION.length;
 export const NUM_TURNOS_POR_CURSO = 30;
 const TOPE_DIAS_BUSQUEDA = 20000;
-
 function numeroDeSemana(semanaKey) {
   return parseInt(semanaKey.replace("semana_", ""), 10);
 }
-
 function listaTemasDelCurso(curso) {
   const semanas = temarioSesiones[curso] || {};
-
   return Object.keys(semanas)
     .sort((a, b) => numeroDeSemana(a) - numeroDeSemana(b))
     .flatMap((semanaKey) => {
       const semana = numeroDeSemana(semanaKey);
-
       return semanas[semanaKey].flatMap((temasDeLaSesion) =>
         temasDeLaSesion.map((tema) => ({
           tema,
@@ -34,33 +28,25 @@ function listaTemasDelCurso(curso) {
       );
     });
 }
-
 function agruparEnTurnos(temasConSemana) {
   const total = temasConSemana.length;
   const base = Math.floor(total / NUM_TURNOS_POR_CURSO);
   const resto = total - base * NUM_TURNOS_POR_CURSO;
   const turnos = [];
   let cursor = 0;
-
   for (let i = 0; i < NUM_TURNOS_POR_CURSO; i++) {
     const esDeMayorCarga =
       i >= NUM_TURNOS_POR_CURSO - resto;
-
     const cantidad = base + (esDeMayorCarga ? 1 : 0);
-
     turnos.push(
       temasConSemana.slice(cursor, cursor + cantidad)
     );
-
     cursor += cantidad;
   }
-
   return turnos;
 }
-
 function turnoEstaCompleto(log, curso, turno) {
   if (turno.length === 0) return true;
-
   return turno.every(({ tema, semana }) =>
     log.some(
       (entrada) =>
@@ -70,7 +56,6 @@ function turnoEstaCompleto(log, curso, turno) {
     )
   );
 }
-
 function temasPendientesDeTurno(log, curso, turno) {
   return turno
     .filter(
@@ -84,63 +69,49 @@ function temasPendientesDeTurno(log, curso, turno) {
     )
     .map(({ tema }) => tema);
 }
-
 export function grupoDelDia(dia) {
   const semanaCiclo = Math.floor((dia - 1) / NUM_GRUPOS);
   const posicion = (dia - 1) % NUM_GRUPOS;
   const indice = (semanaCiclo + posicion) % NUM_GRUPOS;
-
   return GRUPOS_ROTACION[indice];
 }
-
 function calcularEstadoRotacion() {
   const log = [...leerLog(), ...leerHistorialRotacion()];
   const turnosPorCurso = {};
-
   Object.keys(temarioSesiones).forEach((curso) => {
     turnosPorCurso[curso] = agruparEnTurnos(
       listaTemasDelCurso(curso)
     );
   });
-
   const turnosDados = {};
-
   Object.keys(temarioSesiones).forEach((curso) => {
     turnosDados[curso] = 0;
   });
-
   let dia = 1;
-
   for (
     let intento = 0;
     intento < TOPE_DIAS_BUSQUEDA;
     intento++
   ) {
     const grupo = grupoDelDia(dia);
-
     const diaCompleto = grupo.every((curso) => {
       if (turnosDados[curso] >= NUM_TURNOS_POR_CURSO) {
         return true;
       }
-
       return turnoEstaCompleto(
         log,
         curso,
         turnosPorCurso[curso][turnosDados[curso]]
       );
     });
-
     if (!diaCompleto) break;
-
     grupo.forEach((curso) => {
       if (turnosDados[curso] < NUM_TURNOS_POR_CURSO) {
         turnosDados[curso] += 1;
       }
     });
-
     dia += 1;
   }
-
   return {
     dia,
     log,
@@ -148,12 +119,10 @@ function calcularEstadoRotacion() {
     turnosDados
   };
 }
-
 function turnoActualDeCurso(log, curso) {
   const turnos = agruparEnTurnos(
     listaTemasDelCurso(curso)
   );
-
   for (let i = 0; i < turnos.length; i++) {
     if (!turnoEstaCompleto(log, curso, turnos[i])) {
       return {
@@ -162,10 +131,8 @@ function turnoActualDeCurso(log, curso) {
       };
     }
   }
-
   return null;
 }
-
 function obtenerRecomendacionesPorRotacion() {
   const {
     dia,
@@ -173,7 +140,6 @@ function obtenerRecomendacionesPorRotacion() {
     turnosPorCurso,
     turnosDados
   } = calcularEstadoRotacion();
-
   return obtenerRecomendacionesParaDiaRotacion(
     dia,
     0,
@@ -182,7 +148,6 @@ function obtenerRecomendacionesPorRotacion() {
     turnosDados
   );
 }
-
 function obtenerRecomendacionesParaDiaRotacion(
   diaActual,
   desplazamiento,
@@ -194,11 +159,9 @@ function obtenerRecomendacionesParaDiaRotacion(
     1,
     diaActual + desplazamiento
   );
-
   const turnosDados = {
     ...turnosDadosActuales
   };
-
   if (desplazamiento > 0) {
     for (
       let dia = diaActual;
@@ -206,7 +169,6 @@ function obtenerRecomendacionesParaDiaRotacion(
       dia++
     ) {
       const grupo = grupoDelDia(dia);
-
       grupo.forEach((curso) => {
         if (
           turnosDados[curso] < NUM_TURNOS_POR_CURSO
@@ -222,7 +184,6 @@ function obtenerRecomendacionesParaDiaRotacion(
       dia--
     ) {
       const grupo = grupoDelDia(dia);
-
       grupo.forEach((curso) => {
         if (turnosDados[curso] > 0) {
           turnosDados[curso] -= 1;
@@ -230,9 +191,7 @@ function obtenerRecomendacionesParaDiaRotacion(
       });
     }
   }
-
   const grupo = grupoDelDia(diaObjetivo);
-
   return grupo
     .filter(
       (curso) =>
@@ -242,7 +201,6 @@ function obtenerRecomendacionesParaDiaRotacion(
       const numeroTurno = turnosDados[curso] + 1;
       const turno =
         turnosPorCurso[curso][turnosDados[curso]];
-
       return {
         curso,
         turno: numeroTurno,
@@ -256,13 +214,11 @@ function obtenerRecomendacionesParaDiaRotacion(
       };
     });
 }
-
 export function obtenerRecomendacionesDia(
   desplazamiento = 0,
   fecha = new Date()
 ) {
   const estado = calcularEstadoRotacion();
-
   return obtenerRecomendacionesParaDiaRotacion(
     estado.dia,
     desplazamiento,
@@ -271,13 +227,11 @@ export function obtenerRecomendacionesDia(
     estado.turnosDados
   );
 }
-
 export function obtenerRecomendacionesHoy(
   fecha = new Date()
 ) {
   return obtenerRecomendacionesDia(0, fecha);
 }
-
 export function obtenerNombresTemasRecomendadosHoy() {
   return obtenerRecomendacionesHoy().flatMap(
     (r) => r.temas

@@ -9,7 +9,6 @@
 // se incluye) y su "rasgo" (qué atributo distingue un tipo de otro en ese
 // curso en particular).
 // ─────────────────────────────────────────────────────────────────────────
-
 import {
   teoriaLetras,
   teoriaMate,
@@ -20,10 +19,8 @@ import {
   examenMate,
   examenCiencia
 } from "./promptsExamenTeoria";
-
 const NOTA_FORMULAS =
   "Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.";
-
 // arquetipo: "practico" (tipos de problema/pregunta, sin procedimientos de
 // resolución) | "historico" (hechos, causas, consecuencias) | "conceptual"
 // (definición, tipos, atributos — el resto de los cursos).
@@ -136,14 +133,12 @@ export const PROMPTS_REPASO = {
     formulas: false
   }
 };
-
 // Respaldo por si aparece un curso sin configuración propia.
 const CONFIG_GENERICA = {
   arquetipo: "conceptual",
   rasgo: "los rasgos que distinguen un tipo de otro dentro de este curso",
   formulas: false
 };
-
 // ─────────────────────────────────────────────────────────────────────────
 // Apuntes reales de pizarra (transcritos), solo como modelo de estilo y
 // brevedad. Se citan aparte y se aclara que no hay que copiar su contenido.
@@ -196,7 +191,6 @@ const EJEMPLOS_APUNTE = {
 - En toda reacción: Σ masa reactantes = Σ masa productos
 - Ejemplo: O₂ + 2 H₂ → 2 H₂O (32 g + 4 g → 36 g)`
 };
-
 // ─────────────────────────────────────────────────────────────────────────
 // Temario numerado, marcando el tema actual.
 // temarioCurso viene como "Semana N: tema1 | tema2 | ...", una línea por
@@ -217,7 +211,6 @@ function temarioNumerado(temarioCurso, tema) {
     .join("\n");
   return { total, lista };
 }
-
 function bloqueInvestigacion(c, u, up) {
   if (c.arquetipo === "practico") {
     return `INVESTIGACIÓN (obligatoria, antes de escribir)
@@ -249,13 +242,11 @@ No respondas de memoria. Usa búsqueda web.
 6. Busca los conceptos que suelen confundirse con este tema.
 Contrasta cada dato importante en al menos dos fuentes. Si no puedes confirmarlo, no lo escribas.`;
 }
-
 function bloqueLimite(c, total) {
   const extra = c.notaExtra ? ` ${c.notaExtra}` : "";
   return `LÍMITE CON OTROS TEMAS DEL TEMARIO
 El temario de abajo tiene un tema propio para cada cosa que ves numerada (${total} en total). Desarrolla ÚNICAMENTE el tema marcado con «← TEMA A DESARROLLAR». Si al investigarlo encuentras algo que en el temario tiene su propio número, nómbralo como máximo en una viñeta de conexión, sin desarrollarlo.${extra}`;
 }
-
 function bloqueAutorrevision(c, u, up) {
   let l1, l2, l3, l4;
   if (c.arquetipo === "historico") {
@@ -282,7 +273,6 @@ function bloqueAutorrevision(c, u, up) {
 - Verifica que no hayas desarrollado a fondo ningún tema que en el temario tenga su propio número.
 - Quita cualquier número de referencia, nota al pie o lista de fuentes que tu búsqueda haya generado. El apunte no lleva ninguna marca de dónde salió la información.`;
 }
-
 function bloqueIncluir(c, u, up) {
   let inc, exc;
   if (c.arquetipo === "historico") {
@@ -301,7 +291,6 @@ function bloqueIncluir(c, u, up) {
   }
   return `QUÉ INCLUIR\n${inc}\n\nQUÉ NO INCLUIR\n${exc}`;
 }
-
 export function construirPromptRepaso({
   curso,
   tema,
@@ -322,21 +311,14 @@ export function construirPromptRepaso({
   const avisoJson = paraJson
     ? "\nEste es el PASO 1 de 3: solo escribe los apuntes. En el siguiente mensaje te pediré convertirlos a JSON; no lo hagas todavía."
     : "";
-
   return `Actúa como profesor de ${curso} preuniversitario e investigador. Prepara apuntes para copiar a mi cuaderno sobre el tema marcado en el temario de abajo, para el examen de admisión de la UNMSM (Área C).
 No te doy apuntes: investiga tú solo. No muestres el proceso de investigación ni fuentes: nada de links, citas, notas ni marcadores como [1] o [cite]. No menciones la universidad, academias, profesores ni el examen dentro de los apuntes.${avisoJson}
-
 TEMARIO DE ${curso.toUpperCase()} (referencia, no lo desarrolles completo — ${total} temas)
 ${lista}
-
 ${bloqueInvestigacion(c, u, up)}
-
 ${bloqueLimite(c, total)}
-
 ${bloqueAutorrevision(c, u, up)}
-
 ${bloqueIncluir(c, u, up)}
-
 BREVEDAD (regla principal)
 - Una idea por viñeta, en fragmentos cortos: máximo 12 palabras. Sin oraciones largas ni explicaciones.
 - Máximo dos niveles de viñeta por ${u}.
@@ -344,7 +326,6 @@ BREVEDAD (regla principal)
 - Negrita solo en el término clave.
 - Si hay duda entre incluir o quitar algo, quítalo.
 ${notaFormulas}
-
 ${bloqueEjemplo}FORMATO
 - Un solo título, con el nombre del tema. No lo repitas.
 - Subtítulos cortos, uno por ${u}. Primero su dato o definición básica en una viñeta, luego lo demás si corresponde.
@@ -353,8 +334,6 @@ ${bloqueEjemplo}FORMATO
 - Termina con el último dato del tema: sin tabla resumen, sin fuentes, sin notas, sin conclusión y sin preguntas finales.
 - Sin introducción ni conclusión: solo los apuntes, en Markdown, listos para copiar.`;
 }
-
-
 // ─────────────────────────────────────────────────────────────────────────
 // PASO 2: convertir en JSON los apuntes del paso 1 (mensaje aparte).
 // Usa los mismos prompts de tarjetas de la carpeta promt/ (copiados en promptsJsonTeoria.js),
@@ -368,23 +347,18 @@ const CURSOS_JSON_MATE = [
   "Trigonometría"
 ];
 const CURSOS_JSON_CIENCIA = ["Biología", "Física", "Química"];
-
 function promptJsonBase(curso) {
   if (CURSOS_JSON_MATE.includes(curso)) return teoriaMate;
   if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
-
 export function construirPromptJson({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
-
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
 Devuelve únicamente el JSON, siguiendo todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
-
 ${promptJsonBase(curso)}`;
 }
-
 // ─────────────────────────────────────────────────────────────────────────
 // PASO 3: examen + ejercicios a partir del JSON de teoría del paso 2.
 // Usa los prompts examen_*.txt de la carpeta promt/, elegidos según el curso.
@@ -394,16 +368,12 @@ function promptExamenBase(curso) {
   if (CURSOS_JSON_CIENCIA.includes(curso)) return examenCiencia;
   return examenLetras;
 }
-
 export function construirPromptExamen({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
-
 PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que «recibes» en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
-
 ${promptExamenBase(curso)}`;
 }
-
 // ─────────────────────────────────────────────────────────────────────────
 // Copiar al portapapeles (con respaldo si el navegador no permite la API).
 // Devuelve true si se copió.
