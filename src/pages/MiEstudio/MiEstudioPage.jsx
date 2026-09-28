@@ -1286,7 +1286,7 @@ ${teoria}`;
   }
   useEffect(() => {
     if (!musicaTeoriaRef.current) {
-      const audio = new Audio(`${import.meta.env.BASE_URL}sonidos/Paperback_Rain.mp3`);
+      const audio = new Audio(`${import.meta.env.BASE_URL}sonidos/Steady_North.opus`);
       audio.loop = true;
       audio.volume = 0.35;
       musicaTeoriaRef.current = audio;
