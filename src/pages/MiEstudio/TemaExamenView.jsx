@@ -1596,30 +1596,29 @@ const TemaExamenView = forwardRef(
        FINALIZAR DESDE AFUERA
        ======================================================== */
     function finalizarAhora() {
-      setResultadosPorIndice(
-        (prev) => {
-          const nuevo = {
-            ...prev
-          };
-          preguntas.forEach(
-            (pregunta, i) => {
-              if (nuevo[i]) {
-                return;
-              }
-              const respuesta =
-                respuestasPorIndice[i] ??
-                null;
-              nuevo[i] =
-                calificarPreguntaTema(
-                  pregunta,
-                  respuesta
-                );
-            }
-          );
-          return nuevo;
+      const resultadosFinales = {
+        ...resultadosPorIndice
+      };
+      preguntas.forEach(
+        (pregunta, i) => {
+          if (resultadosFinales[i]) {
+            return;
+          }
+          const respuesta =
+            respuestasPorIndice[i] ??
+            null;
+          resultadosFinales[i] =
+            calificarPreguntaTema(
+              pregunta,
+              respuesta
+            );
         }
       );
+      setResultadosPorIndice(resultadosFinales);
       terminarPreguntas();
+      if (onTerminar) {
+        onTerminar(resultadosFinales);
+      }
     }
     /* ========================================================
        PREGUNTA RESPONDIDA

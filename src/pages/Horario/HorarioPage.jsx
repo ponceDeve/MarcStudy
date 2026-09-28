@@ -12,15 +12,16 @@ import coursesSemanas from "../../data/coursesSemanas.json";
 
 import { normalizarTexto } from "../../lib/buscador";
 
-import { DIAS_SEMANA, DIA_LABELS } from "../../lib/scheduleStorage";
-
-import { registrarCursoCompletado } from "../../lib/repasoStorage";
-
 import {
   leerProgresoHorario,
   grupoFijoDelDia,
   agregarParCurso,
+  diaSegunRecomendacion,
+  DIAS_SEMANA,
+  DIA_LABELS,
 } from "../../lib/horarioProgress";
+
+import { registrarCursoCompletado } from "../../lib/repasoStorage";
 
 import {
   limpiarPomodoroCompartido,
@@ -102,7 +103,8 @@ export default function HorarioPage() {
       "sabado",
     ];
 
-    return dias[new Date().getDay()];
+    const diaReal = dias[new Date().getDay()];
+    return diaSegunRecomendacion(diaReal);
   });
 
   const [activeCourseIdx, setActiveCourseIdx] = useState(null);
@@ -504,10 +506,23 @@ export default function HorarioPage() {
       activeCourse.subject === subject &&
       selectedDay === day
     ) {
-      const idx = getTaskIndex(day, subject);
+      // Se usa el progreso recién leído (no `progress` del render, que
+      // todavía tiene el índice anterior y dejaba el reloj en 25 min).
+      const idx = progresoActual[progressKey(day, subject)] || 0;
+      const siguiente = activeTasks[idx];
 
-      if (activeTasks[idx]) {
-        resetConSync(activeTasks[idx].duration);
+      if (siguiente) {
+        if (siguiente.type === "rest") {
+          // Terminó un pomodoro: pasa solo a los 5 min de descanso y arranca.
+          pomodoro.iniciar(
+            siguiente.duration,
+            `${subject} · Descanso`,
+            subject,
+            day
+          );
+        } else {
+          resetConSync(siguiente.duration);
+        }
       }
     }
   }
@@ -978,7 +993,6 @@ function cerrarCourseComplete() {
       <AppHeader
         section="pomodoro"
         onAbrirBuscador={() => setSearchOpen(true)}
-        onEditarHorario={() => navigate("/editar")}
       />
 
       <main className="horario__main">
@@ -1015,29 +1029,11 @@ function cerrarCourseComplete() {
             )}
 
             <div className="horario__timer-center">
-              {activeCourse && (
-                <p className="horario__timer-label">
-                  {activeCourse.subject} ·{" "}
-                  {activeTasks[activeTaskIdx]?.type === "rest"
-                    ? "Descanso"
-                    : activeTasks[activeTaskIdx]?.detail ||
-                      "Completado"}
-                </p>
-              )}
-
               {!activeCourse && manualBreak && (
                 <p className="horario__timer-label">
                   Descanso de {manualBreak} min
                 </p>
               )}
-
-              {!activeCourse &&
-                !manualBreak &&
-                cursoRapidoPreparado && (
-                  <p className="horario__timer-label">
-                    {cursoRapidoPreparado} · Pomodoro 1 de 4
-                  </p>
-                )}
 
               <h2 className="timer-font horario__timer-clock">
                 {formatted}
@@ -1056,9 +1052,7 @@ function cerrarCourseComplete() {
                 <button
                   onClick={iniciarConSync}
                   disabled={
-                    (!activeCourse &&
-                      !manualBreak &&
-                      !cursoRapidoPreparado) ||
+                    (!activeCourse && !manualBreak) ||
                     isRunning
                   }
                   className="horario__btn is-start"
@@ -1223,21 +1217,6 @@ function cerrarCourseComplete() {
                     </div>
                   </div>
                 </div>
-
-                <div className="horario__quick-course">
-                  <label className="horario__quick-course-label">
-                    Escoge un curso
-                  </label>
-
-                  <button
-                    type="button"
-                    onClick={() => setCursoPickerOpen(true)}
-                    className="horario__quick-course-select horario__quick-course-btn"
-                  >
-                    Selecciona un curso...
-                    <i className="fas fa-chevron-down" />
-                  </button>
-                </div>
               </div>
             )}
 
@@ -1332,6 +1311,10 @@ function cerrarCourseComplete() {
                   <button
                     type="button"
                     className="horario__add-pomodoro-btn"
+                    disabled={
+                      activeTasks.length === 0 ||
+                      activeTaskIdx < activeTasks.length
+                    }
                     onClick={() =>
                       agregarPomodoroCurso(
                         selectedDay,
@@ -1346,6 +1329,10 @@ function cerrarCourseComplete() {
                   <button
                     type="button"
                     className="horario__course-complete-btn"
+                    disabled={
+                      activeTasks.length === 0 ||
+                      activeTaskIdx < activeTasks.length
+                    }
                     onClick={() =>
                       pedirConfirmarCompletarCurso(
                         selectedDay,
@@ -1632,217 +1619,6 @@ function cerrarCourseComplete() {
               Confirmar
             </button>
           </div>
-        </div>
-      </Modal>
-
-      <Modal
-        open={cursoPickerOpen}
-        onClose={() => setCursoPickerOpen(false)}
-      >
-        <div className="tema-selector">
-          <h3 className="tema-selector__titulo">
-            Escoge un curso
-          </h3>
-          <div className="tema-selector__lista">
-            {manifest.cursos.map((c) => (
-              <button
-                key={c.nombre}
-                type="button"
-                onClick={() =>
-                  elegirCursoRapido(
-                    selectedDay,
-                    c.nombre
-                  )
-                }
-                className="tema-selector__boton"
-              >
-                {c.nombre}
-              </button>
-            ))}
-          </div>
-        </div>
-      </Modal>
-
-      <Modal
-        open={!!cursoRapidoDia}
-        onClose={cancelarCursoRapido}
-      >
-        <div className="tema-selector">
-          <h3 className="tema-selector__titulo">
-            {cursoRapidoNombre}
-          </h3>
-
-          <p className="tema-selector__descripcion">
-            Elige el tema que vas a repasar en{" "}
-            {cursoRapidoDia &&
-              DIA_LABELS[cursoRapidoDia]}
-            :
-          </p>
-
-          <div className="tema-selector__origen-tabs">
-            <button
-              type="button"
-              onClick={() => {
-                setOrigenTemaRapido("codigo");
-                setTemaRapidoElegido(null);
-              }}
-              className={`tema-selector__origen-tab ${
-                origenTemaRapido === "codigo"
-                  ? "is-active"
-                  : ""
-              }`}
-            >
-              Temas del curso
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                setOrigenTemaRapido("repaso");
-                setTemaRapidoElegido(null);
-              }}
-              className={`tema-selector__origen-tab ${
-                origenTemaRapido === "repaso"
-                  ? "is-active"
-                  : ""
-              }`}
-            >
-              Temario
-            </button>
-          </div>
-
-          {origenTemaRapido === "repaso" && (
-            <div className="tema-selector__semana-tabs">
-              <button
-                type="button"
-                className="tema-selector__semana-arrow"
-                onClick={() => {
-                  setSemanaPaginaRapido(
-                    (prev) => (prev - 1 + 2) % 2
-                  );
-                  setTemaRapidoElegido(null);
-                }}
-                aria-label="Semanas anteriores"
-              >
-                ‹
-              </button>
-
-              {[0, 1, 2, 3].map((offset) => {
-                const semana =
-                  semanaPaginaRapido * 4 +
-                  offset +
-                  1;
-
-                return (
-                  <button
-                    key={semana}
-                    type="button"
-                    onClick={() => {
-                      setSemanaTemaRapido(semana);
-                      setTemaRapidoElegido(null);
-                    }}
-                    className={`tema-selector__semana-tab ${
-                      semanaTemaRapido === semana
-                        ? "is-active"
-                        : ""
-                    }`}
-                  >
-                    S{semana}
-                  </button>
-                );
-              })}
-
-              <button
-                type="button"
-                className="tema-selector__semana-arrow"
-                onClick={() => {
-                  setSemanaPaginaRapido(
-                    (prev) => (prev + 1) % 2
-                  );
-                  setTemaRapidoElegido(null);
-                }}
-                aria-label="Siguientes semanas"
-              >
-                ›
-              </button>
-            </div>
-          )}
-
-          {origenTemaRapido !== null && (
-            <div className="tema-selector__lista">
-              {(
-                origenTemaRapido === "codigo"
-                  ? (
-                      manifest.cursos.find(
-                        (c) =>
-                          normalizarTexto(c.nombre) ===
-                          normalizarTexto(
-                            cursoRapidoNombre
-                          )
-                      )?.temas || []
-                    ).map((tema) => ({
-                      tema:
-                        typeof tema === "string"
-                          ? tema
-                          : tema.tema,
-                    }))
-                  : (
-                      buscarCursoSemanas(
-                        cursoRapidoNombre
-                      )?.[
-                        `semana_${semanaTemaRapido}`
-                      ] || []
-                    ).map((tema) => ({
-                      tema:
-                        typeof tema === "string"
-                          ? tema
-                          : tema.tema,
-                    }))
-              ).map((t) => (
-                <button
-                  key={t.tema}
-                  type="button"
-                  onClick={() =>
-                    setTemaRapidoElegido(t.tema)
-                  }
-                  className={`tema-selector__boton ${
-                    temaRapidoElegido === t.tema
-                      ? "is-selected"
-                      : ""
-                  }`}
-                >
-                  {t.tema}
-                </button>
-              ))}
-            </div>
-          )}
-
-          <div className="tema-selector__confirm-row">
-            <button
-              type="button"
-              onClick={cancelarCursoRapido}
-              className="tema-selector__confirm-btn is-cancelar"
-            >
-              Cancelar
-            </button>
-
-            <button
-              type="button"
-              onClick={confirmarCursoRapido}
-              disabled={!temaRapidoElegido}
-              className="tema-selector__confirm-btn is-aceptar"
-            >
-              Confirmar
-            </button>
-          </div>
-
-          <button
-            type="button"
-            onClick={omitirTemaRapidoEIniciar}
-            className="tema-selector__confirm-btn"
-          >
-            Omitir
-          </button>
         </div>
       </Modal>
     </div>

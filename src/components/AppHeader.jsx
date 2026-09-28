@@ -44,7 +44,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
 export default function AppHeader({
   onAbrirBuscador,
   section = "inicio",
-  onEditarHorario = null,
 }) {
   const [nombreUsuario, setNombreUsuario] = useLocalStorage(
     "miEstudio_nombreUsuario",
@@ -56,7 +55,14 @@ export default function AppHeader({
   );
   const [temaOscuro, setTemaOscuro] = useTemaOscuro();
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-  const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(false);
+  const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(() => {
+    if (nombreUsuario) return false;
+    try {
+      return sessionStorage.getItem("miEstudio_perfilOmitido") !== "1";
+    } catch {
+      return true;
+    }
+  });
   const [isFullscreen, setIsFullscreen] = useState(
     () => !!document.fullscreenElement
   );
@@ -223,14 +229,6 @@ export default function AppHeader({
               icon: "fa-solid fa-calendar-check",
               to: "/repaso",
             },
-            {
-              title: "Editar horario",
-              label: "Editar",
-              fullLabel: "Editar horario",
-              icon: "fa-solid fa-pen",
-              to: "/editar",
-              onClick: onEditarHorario,
-            },
           ]
           : []),
         // ========================================================
@@ -381,49 +379,30 @@ export default function AppHeader({
           {/* ==================================================
               LOGO + NOMBRE DEL USUARIO
               ================================================== */}
-          {nombreUsuario ? (
-            <button
-              type="button"
-              className="topbar__brand btn__inicio"
-              onClick={() => setEditarPerfilAbierto(true)}
-              title="Editar perfil"
+          <button
+            type="button"
+            className="topbar__brand btn__inicio"
+            onClick={() => setEditarPerfilAbierto(true)}
+            title="Editar perfil"
+          >
+            <img
+              src={
+                fotoUsuario ||
+                `${import.meta.env.BASE_URL}icon.png`
+              }
+              alt="Mi Estudio"
+              className={`topbar__brand-logo${fotoUsuario
+                  ? " topbar__brand-logo--foto"
+                  : ""
+                }`}
+            />
+            <span
+              className="topbar__brand-name"
+              title={nombreUsuario || "Mi Estudio"}
             >
-              <img
-                src={
-                  fotoUsuario ||
-                  `${import.meta.env.BASE_URL}icon.png`
-                }
-                alt="Mi Estudio"
-                className={`topbar__brand-logo${fotoUsuario
-                    ? " topbar__brand-logo--foto"
-                    : ""
-                  }`}
-              />
-              <span
-                className="topbar__brand-name"
-                title={nombreUsuario}
-              >
-                {nombreUsuario}
-              </span>
-            </button>
-          ) : (
-            <div className="topbar__brand btn__inicio">
-              <img
-                src={
-                  fotoUsuario ||
-                  `${import.meta.env.BASE_URL}icon.png`
-                }
-                alt="Mi Estudio"
-                className="topbar__brand-logo"
-              />
-              <Link
-                to="/"
-                className="topbar__brand-name topbar__brand-name--clickable"
-              >
-                Mi Estudio
-              </Link>
-            </div>
-          )}
+              {nombreUsuario || "Mi Estudio"}
+            </span>
+          </button>
           {/* ==================================================
               BUSCADOR
               ================================================== */}
@@ -550,19 +529,29 @@ export default function AppHeader({
       {/* ======================================================
           MODAL DE PERFIL
           ====================================================== */}
-      <EditarNombreModal
-        open={editarPerfilAbierto}
-        nombreActual={nombreUsuario}
-        fotoActual={fotoUsuario}
-        onGuardar={(n, f) => {
-          setNombreUsuario(n);
-          setFotoUsuario(f);
-          setEditarPerfilAbierto(false);
-        }}
-        onCancelar={() =>
-          setEditarPerfilAbierto(false)
-        }
-      />
+      {createPortal(
+        <EditarNombreModal
+          open={editarPerfilAbierto}
+          nombreActual={nombreUsuario || ""}
+          fotoActual={fotoUsuario}
+          onGuardar={(n, f) => {
+            setNombreUsuario(n);
+            setFotoUsuario(f);
+            setEditarPerfilAbierto(false);
+          }}
+          onCancelar={() => {
+            if (!nombreUsuario) {
+              try {
+                sessionStorage.setItem("miEstudio_perfilOmitido", "1");
+              } catch {
+                /* noop */
+              }
+            }
+            setEditarPerfilAbierto(false);
+          }}
+        />,
+        document.body
+      )}
     </div>
   );
 }

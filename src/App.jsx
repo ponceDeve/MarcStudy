@@ -1,9 +1,9 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MiEstudioPage from "./pages/MiEstudio/MiEstudioPage";
-import HorarioPage from "./pages/Horario/HorarioPage";
-import ScheduleEditor from "./pages/Horario/ScheduleEditor";
-import RepasoPage from "./pages/Repaso/RepasoPage";
-import ExamenPage from "./pages/Examen/ExamenPage";
+const HorarioPage = lazy(() => import("./pages/Horario/HorarioPage"));
+const RepasoPage = lazy(() => import("./pages/Repaso/RepasoPage"));
+const ExamenPage = lazy(() => import("./pages/Examen/ExamenPage"));
 import { PomodoroProvider } from "./context/PomodoroContext";
 import {
   FooterVisibilityProvider,
@@ -19,13 +19,14 @@ export default function App() {
     <BrowserRouter basename="/MarcStudy">
       <PomodoroProvider>
         <FooterVisibilityProvider>
-          <Routes>
-            <Route path="/" element={<MiEstudioPage />} />
-            <Route path="/pomodoro" element={<HorarioPage />} />
-            <Route path="/editar" element={<ScheduleEditor />} />
-            <Route path="/repaso" element={<RepasoPage />} />
-            <Route path="/examen" element={<ExamenPage />} />
-          </Routes>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<MiEstudioPage />} />
+              <Route path="/pomodoro" element={<HorarioPage />} />
+              <Route path="/repaso" element={<RepasoPage />} />
+              <Route path="/examen" element={<ExamenPage />} />
+            </Routes>
+          </Suspense>
           <AppFooterGate />
         </FooterVisibilityProvider>
       </PomodoroProvider>

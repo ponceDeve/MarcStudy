@@ -181,8 +181,15 @@ export default function MiEstudioPage() {
     const total = idsTeoriaNormal.length;
     if (total === 0) return;
     const correctas = textosCompletados.filter((id) => idsTeoriaNormal.includes(id)).length;
-    const tercio = total / 3;
-    const estrellas = Math.min(3, Math.floor(correctas / tercio));
+    const progreso = correctas / total;
+    const estrellas =
+      progreso >= 1
+        ? 3
+        : progreso >= 2 / 3
+          ? 2
+          : progreso >= 1 / 3
+            ? 1
+            : 0;
     const claveTema = `${topicData.curso}_${topicData.tema}`;
     let todasLasEstrellas = {};
     try {
@@ -906,8 +913,41 @@ ${teoria}`;
     setModoExamenTema(false);
     setStage("theory");
   }
-  function finalizarTemaDesdeExamen() {
+  function finalizarTemaDesdeExamen(resultadosPorIndice = {}) {
     setModoExamenTema(false);
+    // Sincronizar aciertos del modo Examen con el progreso de teoría (estrellas).
+    const idsAcertados = Object.entries(resultadosPorIndice)
+      .filter(([, estado]) => estado === "correcta")
+      .map(([indice]) => preguntasFinalesIds[Number(indice)])
+      .filter(Boolean)
+      .filter((id) => {
+        const punto = flatPuntos.find((p) => p.id === id);
+        return punto && punto.seccionTitulo !== "Ejercicios";
+      });
+    if (idsAcertados.length > 0) {
+      huboCambiosSinGuardarRef.current = true;
+      setTextosCompletados((prev) => {
+        const nuevos = idsAcertados.filter((id) => !prev.includes(id));
+        return nuevos.length > 0 ? [...prev, ...nuevos] : prev;
+      });
+      setTextosSeleccionados((prev) => {
+        const nuevos = idsAcertados.filter((id) => !prev.includes(id));
+        return nuevos.length > 0 ? [...prev, ...nuevos] : prev;
+      });
+    }
+    // Solo se muestra "Guardar tema" si con estos aciertos ya tiene las 3 estrellas
+    // (todas las preguntas de teoría correctas, sin contar Ejercicios).
+    const idsTeoriaNormal = flatPuntos
+      .filter((p) => p.seccionTitulo !== "Ejercicios")
+      .map((p) => p.id);
+    const completadosFinal = new Set([...textosCompletados, ...idsAcertados]);
+    const tresEstrellas =
+      idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => completadosFinal.has(id));
+    if (!tresEstrellas) {
+      setStage("theory");
+      setIsLevelMode(false);
+      return;
+    }
     setStage("finished");
     setConfirmGuardarRepasoFinal(true);
     setMostrarCongratulations(true);

@@ -469,6 +469,16 @@
   border-color: var(--ink);
 }
 
+.horario__add-pomodoro-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
+.horario__add-pomodoro-btn:disabled:hover {
+  background: var(--surface-alt);
+  border-color: var(--border);
+}
+
 .horario__course-complete-btn {
   display: flex;
   align-items: center;
@@ -489,6 +499,16 @@
 .horario__course-complete-btn:hover {
   background: var(--success-dark);
   border-color: var(--success-dark);
+}
+
+.horario__course-complete-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed !important;
+}
+
+.horario__course-complete-btn:disabled:hover {
+  background: var(--success);
+  border-color: var(--success);
 }
 
 /* ============================================================

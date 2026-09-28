@@ -11,26 +11,62 @@
 // sin que ningún componente de React esté montado.
 //
 // El curso del día en Horario ya NO sale de un horario configurado a
-// mano: sale fijo de GRUPOS_ROTACION (repasoRecomendado.js), asignado
-// siempre igual según el día de la semana (domingo repite el grupo del
-// lunes). Y la cantidad de pomodoros por curso ya no es fija: arranca en
+// mano: lunes a sábado salen fijos de GRUPOS_ROTACION
+// (repasoRecomendado.js), uno por día; domingo es un 7mo bloque fijo
+// aparte (Economía, Química, Física, los cursos con más temas), sin
+// tocar GRUPOS_ROTACION. Y la cantidad de pomodoros por curso ya no es
+// fija: arranca en
 // 1 par (pomodoro + descanso) y crece cada vez que el usuario aprieta
 // "+" en la lista de cursos del día — por eso se guarda aparte, en
 // PARES_KEY, en vez de leerse de un horario configurado.
 // ─────────────────────────────────────────────────────────────────────────
-import { GRUPOS_ROTACION } from "./repasoRecomendado";
-import { DIAS_SEMANA } from "./scheduleStorage";
+import { GRUPOS_ROTACION, obtenerRecomendacionesHoy } from "./repasoRecomendado";
 const PROGRESS_KEY = "horario_task_progress_v1";
 const PARES_KEY = "horario_pares_curso_v1";
 const POMODORO_MIN = 25;
 const REST_MIN = 5;
-// Curso(s) fijo(s) del día: siempre los mismos 3 cursos de
-// GRUPOS_ROTACION según el día de la semana, sin depender de avance ni
-// de fechas. domingo vuelve a repetir el grupo de lunes (ciclo de 6).
+export const DIAS_SEMANA = [
+  "lunes",
+  "martes",
+  "miercoles",
+  "jueves",
+  "viernes",
+  "sabado",
+  "domingo",
+];
+export const DIA_LABELS = {
+  lunes: "Lun",
+  martes: "Mar",
+  miercoles: "Mié",
+  jueves: "Jue",
+  viernes: "Vie",
+  sabado: "Sáb",
+  domingo: "Dom",
+};
+// Domingo es un 7mo bloque fijo aparte (no repite el grupo del lunes):
+// los 3 cursos con más temas. No se toca GRUPOS_ROTACION porque Inicio
+// y Repaso también dependen de esos 6 grupos.
+const BLOQUE_DOMINGO = ["Economía", "Química", "Física"];
+// Curso(s) fijo(s) del día: lunes a sábado salen de GRUPOS_ROTACION
+// (uno por día, en orden); domingo usa BLOQUE_DOMINGO. Son 7
+// rotaciones en total, sin depender de avance ni de fechas.
 export function grupoFijoDelDia(day) {
+  if (day === "domingo") return BLOQUE_DOMINGO;
   const idx = DIAS_SEMANA.indexOf(day);
-  if (idx === -1) return [];
-  return GRUPOS_ROTACION[idx % GRUPOS_ROTACION.length];
+  if (idx === -1 || idx >= GRUPOS_ROTACION.length) return [];
+  return GRUPOS_ROTACION[idx];
+}
+// Al entrar a Horario, el día que se abre por defecto ya no es el día
+// real del calendario: es el día (lunes-sábado) cuyo bloque fijo
+// coincide con lo que toca según el avance real (la misma rotación por
+// turnos que usan Inicio/Repaso, obtenerRecomendacionesHoy). Si no hay
+// recomendación (por ejemplo, todos los cursos llegaron a los 30
+// turnos), cae al día real como respaldo.
+export function diaSegunRecomendacion(diaReal) {
+  const curso = obtenerRecomendacionesHoy()[0]?.curso;
+  if (!curso) return diaReal;
+  const idx = GRUPOS_ROTACION.findIndex((g) => g.includes(curso));
+  return idx !== -1 ? DIAS_SEMANA[idx] : diaReal;
 }
 function progressKey(day, subject) {
   return `${day}::${subject}`;

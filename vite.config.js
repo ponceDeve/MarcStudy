@@ -24,17 +24,12 @@ export default defineConfig({
     redirigirRaizABase(),
     react(),
     VitePWA({
-      injectRegister: "inline",
-      registerType: "autoUpdate",
-      workbox: {
-        globPatterns: [
-          "**/*.{js,css,html,ico,png,svg,json,mp3,ttf,woff,woff2}",
-        ],
-        navigateFallback: "/MarcStudy/index.html",
-        navigateFallbackDenylist: [
-          /^\/MarcStudy\/PDFs\//,
-        ],
-        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.js",
+      injectRegister: "auto",
+      injectManifest: {
+        injectionPoint: undefined,
       },
       manifest: {
         name: "MarcStudy · Pomodoro",
