@@ -1,4 +1,4 @@
-import{f as e,g as t,r as n,t as r,v as i}from"./AppHeader-DlNUUGJ3.js";import{A as a,D as o,E as s,F as c,I as ee,L as l,M as u,N as te,O as d,P as ne,R as re,T as ie,j as ae,k as oe,v as se}from"./index-CGpFxj8d.js";import{t as f}from"./coursesSemanas-C-uNaywv.js";var p=i(t(),1),m="`",h=String.raw`═══════════════════════════════════════════════════════════════
+import{f as e,g as t,r as n,t as r,v as i}from"./AppHeader-DlNUUGJ3.js";import{A as a,D as o,E as s,F as c,I as ee,L as l,M as u,N as te,O as d,P as ne,R as re,T as ie,j as ae,k as oe,v as se}from"./index-BUs5kFAU.js";import{t as f}from"./coursesSemanas-C-uNaywv.js";var p=i(t(),1),m="`",h=String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE TARJETAS DE TEORÍA DE LETRAS (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
@@ -798,9 +798,12 @@ Forma:
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
 Cada pregunta evalúa su propio punto mediante aplicación, interpretación o inferencia, nunca mediante definición directa. No fusiones varios puntos en una sola pregunta.
 Usa únicamente información de los puntos del título.
+Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B
 Crea EXACTAMENTE 20 ejercicios, sin ningún valor «null».
 Ordénalos de dificultad creciente.
+Usa los cuatro tipos de la sección 2 («opcion_multiple», «verdadero_falso», «completar» y «relacionar»), alternándolos a lo largo de los 20.
+Cada ejercicio combina puntos de distintos títulos de toda la teoría recibida cuando esta tenga varios títulos, de modo que los 20 recorran toda la teoría.
 Cada ejercicio debe integrar obligatoriamente varios elementos de la teoría recibida. No construyas ejercicios que dependan de un único punto aislado cuando el tema permita combinar más información.
 La integración puede realizarse entre:
 - conceptos;
@@ -832,6 +835,7 @@ un título de 3 puntos: [pregunta, pregunta, pregunta].
 El arreglo «ejercicios» tiene exactamente 20 elementos y ninguno es «null».
 2. TIPOS Y CAMPOS EXACTOS
 No inventes campos ni cambies estos nombres.
+El Bloque A usa solo el tipo 2.1. El Bloque B usa los cuatro tipos (2.1, 2.2, 2.3 y 2.4).
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 Usa exactamente cinco alternativas.
@@ -842,16 +846,20 @@ No construyas las alternativas cambiando únicamente una palabra de una misma or
 Las alternativas deben poder tener estructuras sintácticas diferentes, inicios diferentes y órdenes diferentes.
 Cada una debe representar una interpretación, conclusión, clasificación, decisión, relación causal, contexto o explicación que podría parecer razonable al analizar rápidamente el caso.
 La correcta debe depender del análisis completo del caso y de la teoría.
+2.1b Variante «enunciados correctos» (sigue siendo «opcion_multiple», con los mismos campos):
+Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados numerados con números romanos (I., II., III. y, si son cuatro, IV.), cada uno separado por un salto de línea, y cierra pidiendo identificar cuáles son correctos o cuáles cumplen la condición del caso.
+Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
+Cada enunciado exige interpretar el caso; los falsos contienen un detalle conceptual sutil, no un error evidente.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta primero una situación, fragmento, afirmación o evidencia contextualizada.
-Incluye al menos tres proposiciones que exijan interpretar sus rasgos, consecuencias, intención, relación o contexto.
+Incluye tres o cuatro proposiciones que exijan interpretar sus rasgos, consecuencias, intención, relación o contexto.
 No uses definiciones aisladas.
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...", "opts": [["..."], ["..."], ["..."], ["..."], ["..."]], "correct": 0, "explicacion": "..." }
 «q» siempre es una cadena vacía «""».
 «textoConEspacios» presenta un caso breve que exige inferir relaciones, consecuencias, categorías, interpretaciones o características.
-Cada blanco se completa con una palabra o frase muy corta, de una o dos palabras.
+Usa uno, dos o tres blancos. Cada blanco se completa con una palabra o frase muy corta, de una o dos palabras.
 No pidas simplemente el nombre literal de una teoría, autor, obra o definición.
 Marca los blancos literalmente como «___1___», «___2___», etc.
 «opts» contiene exactamente cinco combos.
@@ -916,8 +924,10 @@ También puede utilizarse una pregunta explícita integrada dentro de la misma r
 Lo importante es que el interrogante pertenezca al planteamiento y no aparezca como una pregunta artificial separada del caso.
 No hagas preguntas que puedan resolverse por copiar literalmente una frase de la teoría.
 No preguntes directamente «¿qué es...?, ¿quién fue...?, ¿cuál es la definición...?».
-En el Bloque A, el caso no debe superar aproximadamente 45 palabras.
-En el Bloque B puede utilizarse más de una oración, sin superar aproximadamente 60 palabras.
+En el Bloque A, el caso no debe superar aproximadamente 80 palabras.
+En el Bloque B puede utilizarse más de una oración, sin superar aproximadamente 90 palabras.
+El JSON no lleva imágenes: todo dato que el caso necesite de un gráfico, mapa o esquema va escrito dentro del planteamiento.
+En Literatura, el caso puede ser un fragmento breve redactado por ti que ejemplifique los rasgos enseñados (sin nombrar obras ni autores que la teoría no mencione); la pregunta indaga qué se identifica, cuestiona o caracteriza en él.
 Cada palabra del caso debe aportar información útil para resolverlo.
 4. TEXTO, COMILLAS Y JSON
 Usa comillas dobles normales solo para la sintaxis JSON.
@@ -944,6 +954,8 @@ Comprueba que:
 - el segundo mensaje solo entrega JSON;
 - el arreglo «examen» tiene exactamente tantos elementos como puntos;
 - el arreglo «ejercicios» tiene exactamente 20 elementos;
+- todas las preguntas del Bloque A son «opcion_multiple»;
+- los ejercicios usan los cuatro tipos y combinan puntos de distintos títulos;
 - no existe «null» dentro de «ejercicios»;
 - cada pregunta del Bloque A corresponde únicamente a su título;
 - cada punto tiene exactamente una pregunta y ninguna pregunta fusiona varios puntos;
@@ -959,6 +971,9 @@ Comprueba que:
 - la correcta no destaca por longitud, vocabulario o estructura;
 - cada alternativa tiene máximo 5 palabras y un largo parecido al de las otras cuatro;
 - los casos son DECO y requieren análisis;
+- las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
+- «verdadero_falso» tiene tres o cuatro proposiciones;
+- «completar» tiene uno, dos o tres blancos;
 - el interrogante está integrado naturalmente en el planteamiento;
 - no se añade artificialmente una pregunta separada cuando no sea necesaria;
 - cada tipo tiene exactamente sus campos;
@@ -1005,10 +1020,13 @@ Forma:
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
 Cada pregunta evalúa su propio punto mediante aplicación y razonamiento: si el punto es una fórmula, ecuación o procedimiento, se resuelve; si es conceptual, se plantea una situación donde el concepto deba aplicarse o interpretarse, nunca por definición directa ni por simple reconocimiento. No fusiones varios puntos en una sola pregunta.
 No mezcles puntos de otros títulos.
+Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
 Ninguno puede ser «null».
 Los 20 deben utilizar exclusivamente la teoría recibida.
+Usa los cuatro tipos de la sección 2 («opcion_multiple», «verdadero_falso», «completar» y «relacionar»), alternándolos a lo largo de los 20.
+Cada ejercicio combina puntos de distintos títulos de toda la teoría recibida cuando esta tenga varios títulos, de modo que los 20 recorran toda la teoría.
 Cada ejercicio debe integrar obligatoriamente al menos dos elementos distintos de la teoría.
 Cuando el tema lo permita, integra tres o más elementos.
 No construyas ejercicios que puedan resolverse mediante una única sustitución directa en una fórmula.
@@ -1038,8 +1056,8 @@ al menos 3 elementos con análisis del procedimiento.
 No repitas consecutivamente la misma combinación de conceptos.
 No introduzcas conocimientos que no aparezcan en el JSON.
 1.3 Los Bloques A y B están separados.
-1.4 El Bloque B usa exclusivamente «opcion_multiple».
-1.5 En el Bloque B, las cinco alternativas son únicamente números: enteros, decimales o fracciones.
+1.4 El Bloque A usa exclusivamente «opcion_multiple». El Bloque B usa los cuatro tipos de la sección 2.
+1.5 En los ejercicios «opcion_multiple» del Bloque B, las cinco alternativas son únicamente números: enteros, decimales o fracciones.
 No escribas unidades, palabras, etiquetas ni letras dentro de las alternativas.
 1.6 CORRESPONDENCIA UNO A UNO
 El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos, en el mismo orden: la posición N es la pregunta del punto N.
@@ -1050,11 +1068,17 @@ No inventes campos ni cambies estos nombres.
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 En Bloque A, las alternativas pueden ser resultados, expresiones, estrategias, relaciones o decisiones matemáticas.
+Cuando el resultado sea una magnitud, las cinco alternativas llevan la misma unidad.
 En Bloque A, toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, con largo parecido entre las cinco.
-En Bloque B, las alternativas son únicamente resultados numéricos.
+En los ejercicios «opcion_multiple» del Bloque B, las alternativas son únicamente resultados numéricos.
+2.1b Variante «enunciados correctos» (sigue siendo «opcion_multiple», con los mismos campos):
+Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados matemáticos numerados con números romanos (I., II., III. y, si son cuatro, IV.), cada uno separado por un salto de línea, y cierra pidiendo identificar cuáles son correctos o cuáles cumplen la condición del caso.
+Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
+Cada enunciado exige analizar el procedimiento, resultado o condición del caso; los falsos contienen un error matemático plausible.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta una situación matemática antes de las proposiciones.
+Incluye tres o cuatro proposiciones.
 Las proposiciones deben exigir analizar el procedimiento, relación, resultado o condición del caso.
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...", "opts": [["..."], ["..."], ["..."], ["..."], ["..."]], "correct": 0, "explicacion": "..." }
@@ -1090,7 +1114,7 @@ El modelo debe identificar qué parte del procedimiento es determinante en cada 
 Los cinco resultados deben ser razonablemente cercanos o plausibles cuando el contexto matemático lo permita.
 No utilices un valor evidentemente absurdo solo para fabricar un distractor.
 En Bloque A, las alternativas no deben comenzar ni estructurarse todas de la misma manera.
-En Bloque B, al ser numéricas, evita que la correcta pueda identificarse por magnitud, cantidad de cifras o formato.
+En los ejercicios «opcion_multiple» del Bloque B, al ser numéricas, evita que la correcta pueda identificarse por magnitud, cantidad de cifras o formato.
 4. DISEÑO DECO
 El problema debe presentar una situación, patrón, relación, restricción, error, comparación, medición, representación o decisión.
 El interrogante debe integrarse naturalmente en el planteamiento.
@@ -1106,8 +1130,10 @@ No preguntes:
 - «¿qué significa esta fórmula?»;
 - «¿qué es...?».
 Si la teoría contiene una fórmula, presenta una situación donde el estudiante deba reconocer las magnitudes, plantear la relación, operar, verificar restricciones e interpretar.
-El Bloque A no debe superar aproximadamente 45 palabras.
-El Bloque B no debe superar aproximadamente 60 palabras.
+El Bloque A no debe superar aproximadamente 80 palabras.
+El Bloque B no debe superar aproximadamente 90 palabras.
+El JSON no lleva imágenes: todo dato de figura, gráfico o esquema que el problema necesite (medidas, coordenadas, porcentajes, posiciones, valores) va escrito dentro del planteamiento.
+Cuando el tema lo permita, lo que se pide corresponde a algo del relato (una cantidad de dinero, de personas, una altura, una temperatura, un tiempo) y se obtiene a partir de valores intermedios que el estudiante debe hallar antes, por ejemplo mediante una expresión que combina esos valores.
 5. NOTACIÓN Y JSON
 Usa KaTeX («$...$») solo cuando sea necesario.
 Cualquier comando con barra invertida debe encontrarse dentro de «$...$».
@@ -1135,6 +1161,8 @@ Comprueba que:
 - el primer mensaje solo enumera y calcula;
 - el segundo mensaje solo entrega JSON;
 - el arreglo «examen» tiene exactamente tantos elementos como puntos;
+- todas las preguntas del Bloque A son «opcion_multiple»;
+- el Bloque B usa los cuatro tipos y combina puntos de distintos títulos;
 - ningún punto del Bloque A queda sin pregunta y no hay «null» en «examen»;
 - los puntos conceptuales se evalúan mediante aplicación, no por definición directa;
 - cada pregunta del Bloque A usa únicamente información de su mismo título;
@@ -1149,6 +1177,9 @@ Comprueba que:
 - en el Bloque A, toda alternativa escrita con palabras tiene máximo 5 palabras;
 - no hay números absurdos utilizados únicamente como distractores;
 - el interrogante está integrado naturalmente en el planteamiento;
+- las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
+- «verdadero_falso» tiene tres o cuatro proposiciones;
+- los datos de figuras o gráficos están escritos en el texto;
 - no se depende de una pregunta artificial separada;
 - no aparece «Ejercicio N»;
 - «correct» está distribuido;
@@ -1190,10 +1221,13 @@ Forma:
 1.1 BLOQUE A
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
 Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta.
+Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
 Ninguno puede ser «null».
 Todos deben utilizar únicamente teoría recibida.
+Usa los cuatro tipos de la sección 2 («opcion_multiple», «verdadero_falso», «completar» y «relacionar»), alternándolos a lo largo de los 20.
+Cada ejercicio combina puntos de distintos títulos de toda la teoría recibida cuando esta tenga varios títulos, de modo que los 20 recorran toda la teoría.
 Cada ejercicio debe integrar obligatoriamente al menos dos elementos distintos de teoría.
 Cuando el tema lo permita, utiliza tres o más.
 No construyas ejercicios que puedan resolverse mediante una sola fórmula, una sola definición o un único dato aislado.
@@ -1228,9 +1262,9 @@ al menos 3 elementos con interpretación o análisis.
 No repitas consecutivamente la misma combinación de conceptos.
 No introduzcas conocimiento externo.
 1.3 Los Bloques A y B están separados.
-1.4 El Bloque B usa exclusivamente «opcion_multiple».
-1.5 En ejercicios cuantitativos de Física y Química, las alternativas son únicamente números: enteros, decimales o fracciones.
-No añadas palabras, unidades ni etiquetas.
+1.4 El Bloque A usa exclusivamente «opcion_multiple». El Bloque B usa los cuatro tipos de la sección 2.
+1.5 En los ejercicios «opcion_multiple» cuantitativos de Física y Química, las alternativas son números (enteros, decimales o fracciones) seguidos de la unidad de la magnitud pedida, la misma en las cinco.
+No añadas otras palabras ni etiquetas.
 En Biología conceptual, las alternativas pueden ser frases breves.
 Toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, sin explicación dentro, con largo parecido entre las cinco.
 1.6 CORRESPONDENCIA UNO A UNO
@@ -1238,15 +1272,22 @@ El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría 
 Cada posición lleva una pregunta. No uses «null» ni dejes ningún punto sin pregunta.
 El arreglo «ejercicios» tiene exactamente 20 elementos y ninguno es «null».
 2. TIPOS Y CAMPOS EXACTOS
+El Bloque A usa solo el tipo 2.1. El Bloque B usa los cuatro tipos (2.1, 2.2, 2.3 y 2.4).
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 Usa exactamente cinco alternativas.
 Las cinco deben competir dentro del mismo caso.
 No construyas cinco paráfrasis de una misma teoría.
 No copies una oración y cambies únicamente un término.
+2.1b Variante «enunciados correctos» (sigue siendo «opcion_multiple», con los mismos campos):
+Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados numerados con números romanos (I., II., III. y, si son cuatro, IV.), cada uno separado por un salto de línea, y cierra pidiendo identificar cuáles son correctos o cuáles cumplen la condición del caso.
+Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
+En Química, los enunciados también pueden ser ecuaciones o fórmulas numeradas y las alternativas parejas ordenadas como «IV – II».
+Cada enunciado exige interpretar el caso; los falsos contienen un detalle conceptual sutil, no un error evidente.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta primero una situación o evidencia.
+Incluye tres o cuatro proposiciones.
 Las proposiciones deben interpretar el caso.
 2.3 Completar:
 { "tipo": "completar", "q": "", "textoConEspacios": "...___1___...", "opts": [["..."], ["..."], ["..."], ["..."], ["..."]], "correct": 0, "explicacion": "..." }
@@ -1295,8 +1336,10 @@ No preguntes directamente:
 Si el punto contiene una fórmula, plantea una situación donde deba identificarse qué relación utilizar, realizar el procedimiento e interpretar el resultado.
 En Biología conceptual no inventes cálculos ni fórmulas.
 No uses KaTeX en preguntas de Biología conceptual.
-El Bloque A no debe superar aproximadamente 45 palabras.
-El Bloque B no debe superar aproximadamente 60 palabras.
+El Bloque A no debe superar aproximadamente 80 palabras.
+El Bloque B no debe superar aproximadamente 90 palabras.
+El JSON no lleva imágenes: todo dato de figura, gráfico o esquema que el problema necesite (medidas, coordenadas, porcentajes, posiciones, valores) va escrito dentro del planteamiento.
+En Física y Química, cuando el tema lo permita, lo que se pide corresponde a algo del relato (una rapidez, una intensidad, un volumen, una temperatura) y se obtiene a partir de valores intermedios que el estudiante debe hallar antes.
 5. NOTACIÓN Y JSON
 En Física y Química usa KaTeX solo cuando sea necesario.
 Cualquier comando con barra invertida debe estar dentro de «$...$».
@@ -1335,6 +1378,8 @@ Comprueba que:
 - el segundo mensaje solo entrega JSON;
 - «examen» tiene exactamente tantos elementos como puntos;
 - «ejercicios» tiene exactamente 20 elementos;
+- todas las preguntas del Bloque A son «opcion_multiple»;
+- los ejercicios usan los cuatro tipos y combinan puntos de distintos títulos;
 - ningún ejercicio del Bloque B es «null»;
 - cada pregunta del Bloque A corresponde únicamente a su título;
 - cada punto tiene exactamente una pregunta y ninguna pregunta fusiona varios puntos;
@@ -1351,13 +1396,16 @@ Comprueba que:
 - la correcta no destaca por pistas formales;
 - toda alternativa escrita con palabras tiene máximo 5 palabras;
 - el interrogante está integrado naturalmente en el planteamiento;
+- las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
+- «verdadero_falso» tiene tres o cuatro proposiciones;
+- los datos de figuras o gráficos están escritos en el texto;
 - no se añade una pregunta artificial separada cuando no sea necesaria;
-- las alternativas cuantitativas de Física y Química son únicamente números;
+- las alternativas de los ejercicios «opcion_multiple» cuantitativos de Física y Química son números con la misma unidad;
 - no aparece «Ejercicio N»;
 - la distribución de «correct» es equilibrada;
 - Biología conceptual no contiene KaTeX;
-- el Bloque A no supera aproximadamente 45 palabras por caso;
-- el Bloque B no supera aproximadamente 60 palabras por caso;
+- el Bloque A no supera aproximadamente 80 palabras por caso;
+- el Bloque B no supera aproximadamente 90 palabras por caso;
 - el resultado final es JSON válido.`,b=`Las fórmulas y operaciones se escriben en texto plano (x², √, ×, ÷, π), sin LaTeX; dentro de ellas se usan los símbolos matemáticos normales.`,x={"Habilidad Lógico Matemático":{arquetipo:`practico`,unidadSing:`tipo de problema`,unidadPlur:`tipos de problema`,rasgo:`atajos, propiedades o casos límite de ese tipo de problema`,formulas:!0},Aritmética:{arquetipo:`practico`,unidadSing:`tipo de problema`,unidadPlur:`tipos de problema`,rasgo:`las condiciones de validez de la propiedad (conjunto numérico, valores excluidos) y sus casos especiales`,formulas:!0},Álgebra:{arquetipo:`practico`,unidadSing:`tipo de problema`,unidadPlur:`tipos de problema`,rasgo:`las condiciones de existencia, restricciones y teoremas asociados`,formulas:!0},Geometría:{arquetipo:`practico`,unidadSing:`tipo de problema`,unidadPlur:`tipos de problema`,rasgo:`las condiciones del teorema y a qué tipo de figura se aplica`,formulas:!0},Trigonometría:{arquetipo:`practico`,unidadSing:`tipo de problema`,unidadPlur:`tipos de problema`,rasgo:`la condición de validez de la identidad y el cuadrante o rango donde aplica`,formulas:!0},"Habilidad Verbal":{arquetipo:`practico`,unidadSing:`tipo de pregunta`,unidadPlur:`tipos de pregunta`,rasgo:`las palabras clave del enunciado y los tipos de alternativa incorrecta de esa habilidad`,formulas:!1},"Historia Universal":{arquetipo:`historico`},"Historia del Perú":{arquetipo:`historico`},Biología:{arquetipo:`conceptual`,rasgo:`qué molécula interviene y en qué dirección cambia, tipo de reacción, energía, enzimas, u otro rasgo que los exámenes usen para diferenciarlos`,formulas:!1,notaExtra:`Un subtema que NO tenga su propio número en el temario (por ejemplo taxia, tropismo, nastia o movimiento dentro de Irritabilidad) va DENTRO del subtema al que pertenece, nunca como un subtítulo aparte.`},Física:{arquetipo:`conceptual`,rasgo:`si es escalar o vectorial, su fórmula con las unidades del Sistema Internacional, y sus condiciones de validez`,formulas:!0},Química:{arquetipo:`conceptual`,rasgo:`su fórmula, su nomenclatura, sus propiedades y el tipo de reacción en que participa`,formulas:!0},Economía:{arquetipo:`conceptual`,rasgo:`los agentes o variables que intervienen y, si tiene fórmula, sus unidades y cómo se interpreta`,formulas:!0},Lenguaje:{arquetipo:`conceptual`,rasgo:`su criterio de identificación, sus excepciones y un ejemplo propio de una línea`,formulas:!1},Literatura:{arquetipo:`conceptual`,rasgo:`autor u obra representativa, época y rasgo de estilo que lo distingue`,formulas:!1,notaExtra:`No copies fragmentos de obras ni versos: parafrasea siempre.`},Filosofía:{arquetipo:`conceptual`,rasgo:`representante, época y la tesis central que lo distingue de corrientes vecinas`,formulas:!1},Geografía:{arquetipo:`conceptual`,rasgo:`su ubicación, su causa y, si es un dato numérico, su unidad`,formulas:!1},"Educación Cívica":{arquetipo:`conceptual`,rasgo:`su función o atribución concreta y la norma que lo respalda`,formulas:!1},Psicología:{arquetipo:`conceptual`,rasgo:`el autor y su aporte, o los componentes y fases del proceso`,formulas:!1}},S={arquetipo:`conceptual`,rasgo:`los rasgos que distinguen un tipo de otro dentro de este curso`,formulas:!1},C={Literatura:`# Alejo Carpentier
 ## Etapa
 - Nueva narrativa hispanoamericana (consolidación)
