@@ -1,10 +1,8 @@
 // Service worker mínimo: NO guarda nada en caché y NO funciona offline.
 // Solo existe para que la web se pueda instalar como aplicación.
-
 self.addEventListener("install", () => {
   self.skipWaiting();
 });
-
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
@@ -23,6 +21,5 @@ self.addEventListener("activate", (event) => {
     })()
   );
 });
-
 // Todo va directo a internet, sin caché
 self.addEventListener("fetch", () => {});

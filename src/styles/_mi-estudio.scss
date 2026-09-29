@@ -1874,10 +1874,11 @@
   max-width: 400px;
   background: var(--primary);
   border: none;
+  border-bottom: 0.25rem solid var(--primary-dark);
   border-radius: var(--radius-full);
   font-family: var(--font-display);
   font-size: var(--fs-md);
-  padding: var(--space-2);
+  padding: 0.5rem 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.0312rem;
@@ -1885,10 +1886,14 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-md);
   transition: background-color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
-  &:hover {background: var(--primary-dark);transform: translateY(-0.125rem);box-shadow: var(--shadow-lg);
+  &:hover {
+    background: var(--primary-dark);
+    transform: translateY(-0.125rem);
+    box-shadow: var(--shadow-lg);
   }
   &.is-bloqueado {
     background: var(--surface-alt);
+    border-bottom-color: var(--surface-alt);
     opacity: 0.7;
     box-shadow: none;
     cursor: not-allowed !important;
@@ -1901,12 +1906,14 @@
 }
 .teoria-boton-completar {
   background: var(--success);
+  border-bottom: 0.25rem solid var(--success-dark);
   &:hover {
     background: var(--success);
     filter: brightness(1.1);
   }
   &.is-bloqueado {
     background: var(--success);
+    border-bottom: 0.25rem solid var(--success-dark);
     opacity: 0.5;
     cursor: not-allowed;
     &:hover {
@@ -1928,12 +1935,28 @@
   font-size: 1.1rem;
   line-height: 1;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   &:hover {
     color: var(--warning-dark);
   }
   &:active {
     transform: scale(0.92);
+  }
+}
+/* ============================================================
+   PANTALLAS PEQUEÑAS
+   ============================================================ */
+@media (max-width: 600px) {
+  .teoria-boton-examen {
+    padding: 0.35rem 0.8rem;
+  }
+}
+/* ============================================================
+   PANTALLAS MUY PEQUEÑAS
+   ============================================================ */
+@media (max-width: 400px) {
+  .teoria-boton-examen {
+    padding: 0.2rem 0.6rem;
   }
 }
 /* ============================================================
@@ -2323,12 +2346,13 @@
   background: var(--surface);
   border: 1px solid var(--ink);
   border-radius: 12px;
+  display: none;
   /*
    * Solo se vuelve sticky cuando el usuario
    * abre la barra mediante el botón flotante.
    */
   &.is-open {
-    position: sticky;
+    position: fixed;
     top: 10px;
     left: 0;
     right: 0;
@@ -2738,7 +2762,6 @@
   }
   .teoria-boton-examen {
     width: 100%;
-    padding: 1rem 1.25rem;
   }
   .retirada-modal {
     width: 100%;
@@ -2798,7 +2821,6 @@
   }
   .teoria-boton-examen {
     width: 100%;
-    padding: 1rem 1.25rem;
   }
 }
 /* ============================================================

@@ -1141,7 +1141,6 @@ export default function QuestionCard({
     </div>
   );
 }
-
 // ============================================================================
 // LECCIÓN DE INGLÉS (estilo Duolingo: una pantalla a la vez)
 // Cada sección muestra su teoría y enseguida sus ejercicios. Los ejercicios

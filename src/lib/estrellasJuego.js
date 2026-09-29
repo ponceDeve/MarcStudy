@@ -8,13 +8,10 @@
 //   }
 // "ids" son las preguntas que ya acertó (sin importar cuántos intentos
 // le tomó). Rendirse NO cuenta: solo cuenta cuando la acierta.
-
 const PREFIJO = "estrellasJuego_";
-
 function clave(curso, tema) {
   return `${PREFIJO}${curso}_${tema}`;
 }
-
 // floor(3 * aciertos / total):
 //   total 1  -> 0 o 3 estrellas
 //   total 2  -> 0, 1 o 3 estrellas
@@ -24,7 +21,6 @@ export function calcularEstrellas(aciertos, total) {
   const a = Math.min(Math.max(aciertos, 0), total);
   return Math.floor((3 * a) / total);
 }
-
 export function leerRegistroJuego(curso, tema) {
   try {
     const obj = JSON.parse(localStorage.getItem(clave(curso, tema)) || "{}");
@@ -33,7 +29,6 @@ export function leerRegistroJuego(curso, tema) {
     return {};
   }
 }
-
 function escribirRegistro(curso, tema, registro) {
   try {
     localStorage.setItem(clave(curso, tema), JSON.stringify(registro));
@@ -41,13 +36,11 @@ function escribirRegistro(curso, tema, registro) {
     // Si el almacenamiento falla, la barra sigue funcionando en memoria.
   }
 }
-
 // Ids acertados de un título (array vacío si no hay nada guardado).
 export function idsAcertadosDeTitulo(registro, titulo) {
   const entrada = registro?.[titulo];
   return Array.isArray(entrada?.ids) ? entrada.ids : [];
 }
-
 // Estrellas actuales de un título según lo guardado.
 export function estrellasDeTitulo(registro, titulo) {
   const entrada = registro?.[titulo];
@@ -55,7 +48,6 @@ export function estrellasDeTitulo(registro, titulo) {
   const ids = Array.isArray(entrada.ids) ? entrada.ids : [];
   return calcularEstrellas(ids.length, entrada.total);
 }
-
 // Marca una pregunta como acertada. Devuelve el registro actualizado
 // del título: { ids, total, estrellas }.
 export function registrarAciertoJuego(curso, tema, titulo, idPregunta, total) {
@@ -70,7 +62,6 @@ export function registrarAciertoJuego(curso, tema, titulo, idPregunta, total) {
     estrellas: calcularEstrellas(nuevosIds.length, total)
   };
 }
-
 // Game over: se pierde TODO el juego del tema, incluso si ya tenía 2
 // estrellas. No toca "estrellasTemas".
 export function borrarEstrellasJuego(curso, tema) {
@@ -80,7 +71,6 @@ export function borrarEstrellasJuego(curso, tema) {
     // nada que hacer
   }
 }
-
 // ---------------------------------------------------------------------------
 // Estrellas del EXAMEN del tema ("Omitir" / "Ir al examen").
 // Clave aparte de la del videojuego: el game over NO las borra (el examen
@@ -90,13 +80,10 @@ export function borrarEstrellasJuego(curso, tema) {
 //     ultimo: { estrellas, correctas, total }
 //   }
 // ---------------------------------------------------------------------------
-
 const PREFIJO_EXAMEN = "estrellasExamen_";
-
 function claveExamen(curso, tema) {
   return `${PREFIJO_EXAMEN}${curso}_${tema}`;
 }
-
 export function leerEstrellasExamen(curso, tema) {
   try {
     const obj = JSON.parse(localStorage.getItem(claveExamen(curso, tema)) || "null");
@@ -105,7 +92,6 @@ export function leerEstrellasExamen(curso, tema) {
     return null;
   }
 }
-
 // Guarda el resultado de un examen recién entregado y devuelve
 // { mejor, ultimo }. La "mejor" se reemplaza solo si el nuevo intento
 // tiene más estrellas, o las mismas pero mayor porcentaje de aciertos.

@@ -1,13 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-
 import { createPortal } from "react-dom";
-
 import { Link } from "react-router-dom";
-
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
-
 import { useTemaOscuro } from "../../hooks/useTemaOscuro";
-
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
@@ -17,7 +12,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           onClick={onClose}
         />
       )}
-
       <div
         className={`offcanvas offcanvas-end topbar__drawer ${
           isOpen ? "show" : ""
@@ -29,7 +23,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
           <h3 className="offcanvas-title topbar__drawer-title">
             {title}
           </h3>
-
           <button
             type="button"
             className="topbar__drawer-close"
@@ -39,7 +32,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
             <i className="fa-solid fa-times" />
           </button>
         </div>
-
         <div className="offcanvas-body topbar__drawer-list">
           {children}
         </div>
@@ -48,7 +40,6 @@ function SideDrawer({ title, isOpen, onClose, children }) {
     document.body
   );
 }
-
 export default function TopBar({
   tema,
   curso,
@@ -60,37 +51,28 @@ export default function TopBar({
   temasOpen = false,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-
   const [temaOscuro, setTemaOscuro] = useTemaOscuro();
-
   const [isFullscreen, setIsFullscreen] = useState(
     () => !!document.fullscreenElement
   );
-
   useAutoHideHeader(menuMobileOpen);
-
   const wrapperRef = useRef(null);
   const temaRef = useRef(null);
-
   const [temaOverflows, setTemaOverflows] = useState(false);
-
   useEffect(() => {
     function onFullscreenChange() {
       setIsFullscreen(!!document.fullscreenElement);
     }
-
     document.addEventListener(
       "fullscreenchange",
       onFullscreenChange
     );
-
     return () =>
       document.removeEventListener(
         "fullscreenchange",
         onFullscreenChange
       );
   }, []);
-
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement
@@ -100,27 +82,20 @@ export default function TopBar({
       document.exitFullscreen();
     }
   }
-
   useEffect(() => {
     const checkOverflow = () => {
       const wrapper = wrapperRef.current;
       const temaElement = temaRef.current;
-
       if (!wrapper || !temaElement) return;
-
       const firstText = temaElement.children[0];
-
       if (!firstText) {
         setTemaOverflows(false);
         return;
       }
-
       const wrapperWidth = wrapper.clientWidth;
       const textWidth = firstText.scrollWidth;
       const overflows = textWidth > wrapperWidth;
-
       setTemaOverflows(overflows);
-
       if (overflows) {
         wrapper.style.setProperty(
           "--scroll-dist",
@@ -130,29 +105,21 @@ export default function TopBar({
         wrapper.style.removeProperty("--scroll-dist");
       }
     };
-
     checkOverflow();
-
     const observer = new ResizeObserver(checkOverflow);
-
     if (wrapperRef.current) {
       observer.observe(wrapperRef.current);
     }
-
     window.addEventListener("resize", checkOverflow);
-
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", checkOverflow);
     };
   }, [tema]);
-
   const pomodoroTo = `/pomodoro?curso=${encodeURIComponent(
     curso
   )}&tema=${encodeURIComponent(tema)}`;
-
   const repasoTo = "/repaso";
-
   const botonesPrincipales = [
     {
       title: "Ir a Inicio",
@@ -161,7 +128,6 @@ export default function TopBar({
       icon: "fa-solid fa-house",
       onClick: onIrInicio,
     },
-
     {
       title: "Buscar otro tema",
       label: "Buscar",
@@ -169,7 +135,6 @@ export default function TopBar({
       icon: "fa-solid fa-magnifying-glass",
       onClick: onAbrirBuscador,
     },
-
     {
       title: "Ir a Mis Repasos",
       label: "Repaso",
@@ -177,7 +142,6 @@ export default function TopBar({
       icon: "fa-solid fa-calendar-check",
       to: repasoTo,
     },
-
     {
       title: "Ir al Pomodoro",
       label: "Pomodoro",
@@ -186,7 +150,6 @@ export default function TopBar({
       to: pomodoroTo,
     },
   ];
-
   const botonAbandonar = {
     title: "Abandonar pregunta",
     label: "Abandonar",
@@ -195,7 +158,6 @@ export default function TopBar({
     onClick: onAbandonarPregunta,
     className: "topbar__nav-btn--abandonar",
   };
-
   const botonFullscreen = {
     title: isFullscreen
       ? "Minimizar pantalla"
@@ -211,20 +173,16 @@ export default function TopBar({
       : "fa-solid fa-expand",
     onClick: toggleFullscreen,
   };
-
   const esPregunta =
     stage === "question" || stage === "exam";
-
   const botonesVisibles = esPregunta
     ? [botonAbandonar, botonFullscreen]
     : [...botonesPrincipales, botonFullscreen];
-
   // En "pregunta" el botón Abandonar ya se muestra
   // directo en el nav; no hace falta el menú de hamburguesa duplicándolo.
   const botonesMenu = esPregunta
     ? []
     : botonesVisibles;
-
   const renderBoton = (
     b,
     cls,
@@ -233,24 +191,19 @@ export default function TopBar({
     const content = (
       <>
         <i className={`${b.icon} topbar__btn-icon`} />
-
         <span className="topbar__btn-title">
           {b.label}
         </span>
       </>
     );
-
     const handleClick = () => {
       if (b.onClick) {
         b.onClick();
       }
-
       closeFn();
     };
-
     const buttonClass =
       `${cls} ${b.className || ""}`.trim();
-
     if (b.to) {
       return (
         <Link
@@ -264,7 +217,6 @@ export default function TopBar({
         </Link>
       );
     }
-
     return (
       <button
         key={b.title || b.label}
@@ -277,7 +229,6 @@ export default function TopBar({
       </button>
     );
   };
-
   const renderFila = (
     b,
     closeFn = () => {}
@@ -287,21 +238,17 @@ export default function TopBar({
         <span className="topbar__drawer-item-label">
           {b.fullLabel || b.label}
         </span>
-
         <i
           className={`${b.icon} topbar__drawer-item-icon`}
         />
       </>
     );
-
     const handleClick = () => {
       if (b.onClick) {
         b.onClick();
       }
-
       closeFn();
     };
-
     if (b.to) {
       return (
         <Link
@@ -315,7 +262,6 @@ export default function TopBar({
         </Link>
       );
     }
-
     return (
       <button
         key={b.title || b.label}
@@ -328,7 +274,6 @@ export default function TopBar({
       </button>
     );
   };
-
   return (
     <div className="topbar-wrapper">
       <div className="topbar">
@@ -355,7 +300,6 @@ export default function TopBar({
                       }`}
                     >
                       <span>{tema}</span>
-
                       {temaOverflows && (
                         <span aria-hidden="true">
                           {tema}
@@ -363,12 +307,10 @@ export default function TopBar({
                       )}
                     </span>
                   </div>
-
                   <span className="topbar__curso topbar__curso--clickable">
                     {curso}
                   </span>
                 </div>
-
                 <span
                   className={`topbar__expand-icon ${
                     temasOpen ? "is-open" : ""
@@ -378,7 +320,6 @@ export default function TopBar({
               </div>
             </button>
           </div>
-
           <div className="topbar__controls">
             {botonesVisibles.length > 0 && (
               <div
@@ -396,7 +337,6 @@ export default function TopBar({
                 )}
               </div>
             )}
-
             <button
               type="button"
               className={`topbar__theme-toggle ${
@@ -425,7 +365,6 @@ export default function TopBar({
                   aria-hidden="true"
                 />
               </span>
-
               <span className="topbar__theme-option topbar__theme-option--dark">
                 <i
                   className="fa-solid fa-moon"
@@ -433,7 +372,6 @@ export default function TopBar({
                 />
               </span>
             </button>
-
             {botonesMenu.length > 0 && (
               <button
                 type="button"
@@ -448,7 +386,6 @@ export default function TopBar({
             )}
           </div>
         </div>
-
         {botonesMenu.length > 0 && (
           <SideDrawer
             title="Menú"

@@ -23,7 +23,6 @@ export function EstrellasHud({ estrellas = 0 }) {
     </span>
   );
 }
-
 export default function Hud({ current, total, correct, wrong, vidas, estrellas }) {
   const conEstrellas = typeof estrellas === "number";
   return (

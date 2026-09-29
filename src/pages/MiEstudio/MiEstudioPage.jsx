@@ -1500,9 +1500,7 @@ ${teoria}`;
       const tagActivo = document.activeElement && document.activeElement.tagName;
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (searchOpen || configOpen || temasOpen || !topicData) return;
-
       const tecla = e.key.toLowerCase();
-
       // =========================
       // NAVEGACIÓN DE TEORÍA
       // =========================
@@ -1512,7 +1510,6 @@ ${teoria}`;
           setTeoriaVistaIndex((i) => Math.max(0, i - 1));
           return;
         }
-
         if (["arrowright", "arrowdown", "d", "s"].includes(tecla)) {
           e.preventDefault();
           setTeoriaVistaIndex((i) =>
@@ -1520,7 +1517,6 @@ ${teoria}`;
           );
           return;
         }
-
         // Z → videojuego de la sección actual
         if (tecla === "z") {
           e.preventDefault();
@@ -1531,7 +1527,6 @@ ${teoria}`;
           }
           return;
         }
-
         // V → examen
         if (tecla === "v") {
           e.preventDefault();
@@ -1540,14 +1535,12 @@ ${teoria}`;
           }
           return;
         }
-
         // M → ejercicios
         if (tecla === "m") {
           e.preventDefault();
           const idsEjercicios = flatPuntos
             .filter((p) => p.seccionTitulo === "Ejercicios")
             .map((p) => p.id);
-
           if (idsEjercicios.length > 0) {
             elegirModoEstudio("solo_preguntas", {
               soloAdicionales: true
@@ -1555,7 +1548,6 @@ ${teoria}`;
           }
           return;
         }
-
         // Enter → completar tema
         if (tecla === "enter") {
           e.preventDefault();
@@ -1563,17 +1555,14 @@ ${teoria}`;
           return;
         }
       }
-
       // =========================
       // VIDEOJUEGO / PREGUNTAS
       // =========================
       if (stage === "question") {
         if (countdown > 0) return;
-
         // Enter → avanzar o reintentar
         if (tecla === "enter") {
           e.preventDefault();
-
           if (questionResult && questionResult.isCorrect) {
             avanzarCard();
           } else if (questionResult && !questionResult.isCorrect) {
@@ -1581,28 +1570,23 @@ ${teoria}`;
           }
           return;
         }
-
         // Espacio → avanzar si está permitido
         if (tecla === " ") {
           e.preventDefault();
-
           if (canAdvance) {
             avanzarCard();
           }
           return;
         }
-
         // Flecha izquierda → anterior
         if (tecla === "arrowleft") {
           e.preventDefault();
           retrocederCard();
           return;
         }
-
         // Flecha derecha → siguiente
         if (tecla === "arrowright") {
           e.preventDefault();
-
           if (canAdvance) {
             avanzarCard();
           }
@@ -1610,9 +1594,7 @@ ${teoria}`;
         }
       }
     }
-
     window.addEventListener("keydown", onKeyDown);
-
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
@@ -2170,7 +2152,7 @@ ${teoria}`;
                       onClick={intentarCompletarTema}
                       aria-disabled={!teoriaCompleta}
                     >
-                      Completar Tema
+                      Completar
                     </button>
                   </div>
                   <ExercisesSection
