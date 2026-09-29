@@ -1799,16 +1799,7 @@
   border: 1px solid var(--ink);
 }
 .teoria-punto__fila {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: var(--space-4);
-  >div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  margin-bottom: var(--space-3);
 }
 .arcade-game-container.teoria-card-unica:has(.teoria-etiqueta-checkbox:checked) {
   border: 1px solid var(--success-dark) !important;
@@ -1950,7 +1941,7 @@
    ============================================================ */
 .teoria-card-unica {
   padding: var(--space-4);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   @media (max-width: 1024px) {
     padding: var(--space-3);
   }
