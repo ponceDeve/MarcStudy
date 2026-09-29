@@ -1500,40 +1500,141 @@ ${teoria}`;
       const tagActivo = document.activeElement && document.activeElement.tagName;
       if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
       if (searchOpen || configOpen || temasOpen || !topicData) return;
-      if (stage === "question" && countdown > 0) return;
-      if (e.key === "Enter") {
-        if (stage === "theory" && !isLevelMode) {
+
+      const tecla = e.key.toLowerCase();
+
+      // =========================
+      // NAVEGACIÓN DE TEORÍA
+      // =========================
+      if (stage === "theory" && !isLevelMode) {
+        if (["arrowleft", "arrowup", "a", "w"].includes(tecla)) {
+          e.preventDefault();
+          setTeoriaVistaIndex((i) => Math.max(0, i - 1));
+          return;
+        }
+
+        if (["arrowright", "arrowdown", "d", "s"].includes(tecla)) {
+          e.preventDefault();
+          setTeoriaVistaIndex((i) =>
+            Math.min(seccionesAgrupadas.length - 1, i + 1)
+          );
+          return;
+        }
+
+        // Z → videojuego de la sección actual
+        if (tecla === "z") {
+          e.preventDefault();
+          if (seccionActual?.puntos?.length > 0) {
+            elegirModoEstudio("solo_preguntas", {
+              seleccionEspecifica: seccionActual.puntos.map((p) => p.id)
+            });
+          }
+          return;
+        }
+
+        // V → examen
+        if (tecla === "v") {
           e.preventDefault();
           if (examenPreguntas.length > 0) {
-            elegirModoEstudio("solo_preguntas", { requiereSeleccion: true });
-          } else {
-            finalizarTema();
+            elegirModoEstudio("solo_preguntas");
           }
-        } else if (stage === "question" && questionResult && questionResult.isCorrect) {
-          e.preventDefault();
-          avanzarCard();
-        } else if (stage === "question" && questionResult && !questionResult.isCorrect) {
-          e.preventDefault();
-          reintentarPregunta();
+          return;
         }
-      } else if (e.key === " " || e.code === "Space") {
-        if (stage === "question") {
+
+        // M → ejercicios
+        if (tecla === "m") {
           e.preventDefault();
-          if (canAdvance) avanzarCard();
+          const idsEjercicios = flatPuntos
+            .filter((p) => p.seccionTitulo === "Ejercicios")
+            .map((p) => p.id);
+
+          if (idsEjercicios.length > 0) {
+            elegirModoEstudio("solo_preguntas", {
+              soloAdicionales: true
+            });
+          }
+          return;
         }
-      } else if (e.key === "ArrowLeft") {
-        if (stage === "question") retrocederCard();
-      } else if (e.key === "ArrowRight") {
-        if (stage === "question" && canAdvance) avanzarCard();
+
+        // Enter → completar tema
+        if (tecla === "enter") {
+          e.preventDefault();
+          intentarCompletarTema();
+          return;
+        }
+      }
+
+      // =========================
+      // VIDEOJUEGO / PREGUNTAS
+      // =========================
+      if (stage === "question") {
+        if (countdown > 0) return;
+
+        // Enter → avanzar o reintentar
+        if (tecla === "enter") {
+          e.preventDefault();
+
+          if (questionResult && questionResult.isCorrect) {
+            avanzarCard();
+          } else if (questionResult && !questionResult.isCorrect) {
+            reintentarPregunta();
+          }
+          return;
+        }
+
+        // Espacio → avanzar si está permitido
+        if (tecla === " ") {
+          e.preventDefault();
+
+          if (canAdvance) {
+            avanzarCard();
+          }
+          return;
+        }
+
+        // Flecha izquierda → anterior
+        if (tecla === "arrowleft") {
+          e.preventDefault();
+          retrocederCard();
+          return;
+        }
+
+        // Flecha derecha → siguiente
+        if (tecla === "arrowright") {
+          e.preventDefault();
+
+          if (canAdvance) {
+            avanzarCard();
+          }
+          return;
+        }
       }
     }
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [
-    stage, questionResult, searchOpen, configOpen, temasOpen, topicData, cardIndex,
-    flatPuntos, maxUnlocked, nivelIndex, examenPreguntas, nivelMaxUnlocked, canAdvance,
-    isLevelMode, countdown, modoEstudio, ordenPreguntas, posOrden, isFlipQuiz, quizBatch,
-    quizPos, repasoQuizActivo, repasoQuizBatch, repasoQuizPos
+    stage,
+    questionResult,
+    searchOpen,
+    configOpen,
+    temasOpen,
+    topicData,
+    canAdvance,
+    isLevelMode,
+    countdown,
+    examenPreguntas,
+    elegirModoEstudio,
+    finalizarTema,
+    avanzarCard,
+    retrocederCard,
+    reintentarPregunta,
+    seccionesAgrupadas.length,
+    seccionActual,
+    flatPuntos
   ]);
   const recomendacionesHoyInicio = useMemo(
     () => obtenerRecomendacionesHoy(),
@@ -2069,7 +2170,7 @@ ${teoria}`;
                       onClick={intentarCompletarTema}
                       aria-disabled={!teoriaCompleta}
                     >
-                   Completar Tema
+                      Completar Tema
                     </button>
                   </div>
                   <ExercisesSection
