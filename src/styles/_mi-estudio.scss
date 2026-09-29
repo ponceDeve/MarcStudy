@@ -1827,10 +1827,6 @@
   transition: color .2s linear;
   padding: 10px;
   border: 1px solid transparent;
-  span {
-    overflow-wrap: anywhere;
-    hyphens: auto;
-  }
 }
 /* ============================================================
    IMAGEN DEL PUNTO DE TEORÍA
@@ -1967,6 +1963,63 @@
   background: transparent;
   border-top: 3px solid var(--ink-faint);
   border-radius: 0;
+}
+/* ============================================================
+   TEORÍA DE INGLÉS (regla / ejemplo / vocabulario)
+   ============================================================ */
+.teoria-card-unica--regla {
+  border-left: 6px solid var(--primary);
+  background: var(--primary-bg);
+}
+.teoria-card-unica--regla .teoria-contenido-principal {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.teoria-card-unica--ejemplo .teoria-contenido-principal {
+  color: var(--brand-dark);
+  font-size: 1.35rem;
+  font-weight: var(--fw-bold);
+}
+.teoria-card-unica--ejemplo .teoria-explicacion-extra--unida {
+  border-top: 0;
+  font-style: italic;
+  color: var(--ink-soft);
+  padding-left: 10px;
+}
+.teoria-card-unica--vocab {
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.teoria-card-unica--vocab .teoria-card-unica__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.teoria-card-unica--vocab .teoria-explicacion-extra--unida {
+  border-top: 0;
+  background: var(--success-bg);
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+}
+.teoria-card-unica--ejemplo .teoria-punto__fila > div,
+.teoria-card-unica--vocab .teoria-punto__fila > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.teoria-audio-btn {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--brand-bg);
+  color: var(--brand-dark);
+  cursor: pointer;
+}
+.teoria-audio-btn:hover {
+  background: var(--brand-light);
 }
 .teoria-nav-botones {
   display: flex;

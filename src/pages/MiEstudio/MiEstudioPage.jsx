@@ -7,7 +7,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
-import QuestionCard from "./QuestionCard";
+import QuestionCard, { LeccionInglesa } from "./QuestionCard";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
@@ -31,6 +31,14 @@ import {
 } from "../../lib/pomodoroShared";
 import { usePomodoro } from "../../context/PomodoroContext";
 import { shuffle } from "../../lib/shuffle";
+import {
+  calcularEstrellas,
+  leerRegistroJuego,
+  idsAcertadosDeTitulo,
+  registrarAciertoJuego,
+  borrarEstrellasJuego,
+  guardarEstrellasExamen
+} from "../../lib/estrellasJuego";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
 import "katex/dist/katex.min.css";
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
@@ -227,6 +235,11 @@ export default function MiEstudioPage() {
   const [modoExamenTema, setModoExamenTema] = useState(false);
   const [faseExamenTema, setFaseExamenTema] = useState("preguntas");
   const [titulosFinalesExamen, setTitulosFinalesExamen] = useState([]);
+  // Videojuego con estrellas (separado de "estrellasTemas" del panel de niveles)
+  const [juegoTitulo, setJuegoTitulo] = useState(null);
+  const [juegoAcertadas, setJuegoAcertadas] = useState([]);
+  // true si el examen recién entregado dejó todo acertado (3 estrellas de tema)
+  const examenTresEstrellasRef = useRef(false);
   const vidaPerderRef = useRef(null);
   const ceroVidasRef = useRef(null);
   const alertaNotificacionRef = useRef(null);
@@ -724,6 +737,19 @@ ${teoria}`;
       setExamenPreguntas(preguntasFinales);
       setPreguntasFinalesIds(idsFinales);
       setTitulosFinalesExamen(titulosFinales);
+      examenTresEstrellasRef.current = false;
+      const esJuegoConEstrellas = !!opts.seleccionEspecifica || !!opts.soloAdicionales;
+      if (esJuegoConEstrellas && topicData) {
+        const tituloJuego = titulosFinales[0] || "Sin título";
+        const registroJuego = leerRegistroJuego(topicData.curso, topicData.tema);
+        setJuegoTitulo(tituloJuego);
+        setJuegoAcertadas(
+          idsAcertadosDeTitulo(registroJuego, tituloJuego).filter((id) => idsFinales.includes(id))
+        );
+      } else {
+        setJuegoTitulo(null);
+        setJuegoAcertadas([]);
+      }
       setModoExamenTema(!opts.seleccionEspecifica && !opts.soloAdicionales);
       if (!opts.seleccionEspecifica && !opts.soloAdicionales) {
         setFaseExamenTema("preguntas");
@@ -911,10 +937,40 @@ ${teoria}`;
   }
   function volverATeoriaDesdeExamenTema() {
     setModoExamenTema(false);
+    if (examenTresEstrellasRef.current) {
+      // Sale de los resultados con todo acertado: cierra el tema.
+      examenTresEstrellasRef.current = false;
+      setStage("finished");
+      setConfirmGuardarRepasoFinal(true);
+      setMostrarCongratulations(true);
+      if (topicData) {
+        const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
+        const id = `${topicData.curso}_${topicData.tema}`;
+        if (!completados.includes(id)) {
+          completados.push(id);
+          localStorage.setItem("temasCompletados", JSON.stringify(completados));
+        }
+      }
+      return;
+    }
     setStage("theory");
+    setIsLevelMode(false);
   }
   function finalizarTemaDesdeExamen(resultadosPorIndice = {}) {
-    setModoExamenTema(false);
+    // OJO: aquí NO se cierra el modo examen. TemaExamenView pasa solo a la
+    // fase "resultados" y se cierra con su botón de volver a la teoría.
+    // Guarda las estrellas del examen en localStorage (mejor marca + último).
+    if (topicData) {
+      const correctasExamen = Object.values(resultadosPorIndice).filter(
+        (estado) => estado === "correcta"
+      ).length;
+      guardarEstrellasExamen(
+        topicData.curso,
+        topicData.tema,
+        correctasExamen,
+        examenPreguntas.length
+      );
+    }
     // Sincronizar aciertos del modo Examen con el progreso de teoría (estrellas).
     const idsAcertados = Object.entries(resultadosPorIndice)
       .filter(([, estado]) => estado === "correcta")
@@ -943,22 +999,9 @@ ${teoria}`;
     const completadosFinal = new Set([...textosCompletados, ...idsAcertados]);
     const tresEstrellas =
       idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => completadosFinal.has(id));
-    if (!tresEstrellas) {
-      setStage("theory");
-      setIsLevelMode(false);
-      return;
-    }
-    setStage("finished");
-    setConfirmGuardarRepasoFinal(true);
-    setMostrarCongratulations(true);
-    if (topicData) {
-      const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
-      const id = `${topicData.curso}_${topicData.tema}`;
-      if (!completados.includes(id)) {
-        completados.push(id);
-        localStorage.setItem("temasCompletados", JSON.stringify(completados));
-      }
-    }
+    // Se recuerda si quedó todo acertado; el cierre del tema ocurre al salir
+    // de la pantalla de resultados (volverATeoriaDesdeExamenTema).
+    examenTresEstrellasRef.current = tresEstrellas;
   }
   function confirmarGuardarRepasoFinal(guardar) {
     if (guardar && topicData) {
@@ -996,6 +1039,8 @@ ${teoria}`;
     localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
     localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
+    borrarEstrellasJuego(topicData.curso, topicData.tema);
+    setJuegoAcertadas([]);
     setLevelCompletions({});
     setMaxUnlocked(0);
     setNivelCompletions({});
@@ -1069,6 +1114,13 @@ ${teoria}`;
     }
     if (correcto) {
       setScore((s) => s + 1);
+      if (juegoTitulo && topicData && modoEstudio === "solo_preguntas" && !isFlipQuiz && !isLevelMode && !repasoQuizActivo) {
+        const idJuego = preguntasFinalesIds[cardIndex];
+        if (idJuego) {
+          registrarAciertoJuego(topicData.curso, topicData.tema, juegoTitulo, idJuego, preguntasFinalesIds.length);
+          setJuegoAcertadas((prev) => (prev.includes(idJuego) ? prev : [...prev, idJuego]));
+        }
+      }
       let puntoIdRespondido = null;
       if (modoEstudio === "solo_preguntas" && preguntasFinalesIds[cardIndex]) {
         puntoIdRespondido = preguntasFinalesIds[cardIndex];
@@ -1506,6 +1558,18 @@ ${teoria}`;
         : modoEstudio === "solo_preguntas"
           ? { current: posOrden + 1, total: ordenPreguntas.length }
           : { current: cardIndex + 1, total: flatPuntos.length };
+  const juegoConEstrellas =
+    Boolean(juegoTitulo) &&
+    modoEstudio === "solo_preguntas" &&
+    !modoExamenTema &&
+    !repasoQuizActivo &&
+    !isFlipQuiz &&
+    !isLevelMode &&
+    preguntasFinalesIds.length > 0;
+  // undefined = el HUD no muestra estrellas (repaso, etc.)
+  const estrellasJuegoActuales = juegoConEstrellas
+    ? calcularEstrellas(juegoAcertadas.length, preguntasFinalesIds.length)
+    : undefined;
   const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
   const cursoEncontrado = manifest.cursos.find((c) => c.nombre === nombreCursoActivo);
   const temasDelCurso = cursoEncontrado ? cursoEncontrado.temas : [];
@@ -1806,7 +1870,21 @@ ${teoria}`;
             )}
           </>
         )}
-        {topicData && (stage === "theory" || stage === "question") && (
+        {topicData?.leccion && (
+          <LeccionInglesa
+            key={topicData.archivo}
+            data={topicData}
+            onSalir={() => setTopicData(null)}
+            onSiguiente={(() => {
+              const pos = temasDelCurso.findIndex((x) => x.archivo === topicData.archivo);
+              const sig = temasDelCurso[pos + 1];
+              return sig
+                ? () => abrirTema({ curso: topicData.curso, tema: sig.tema, archivo: sig.archivo })
+                : null;
+            })()}
+          />
+        )}
+        {topicData && !topicData.leccion && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage">
             {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__hud-wrap animate-fade-in">
@@ -1816,6 +1894,7 @@ ${teoria}`;
                   correct={score}
                   wrong={wrongCount}
                   vidas={vidas}
+                  estrellas={estrellasJuegoActuales}
                 />
               </div>
             )}

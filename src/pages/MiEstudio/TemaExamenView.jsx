@@ -18,8 +18,6 @@
      - Al terminar (completando todas o saliendo antes), se
        muestra una pantalla de resultados agrupada por el título
        de la sección de teoría de cada pregunta.
-     - Incluye un cronómetro que se pone en rojo si esta vez se
-       tarda más que la última vez que se hizo este mismo examen.
    ============================================================ */
 import {
   forwardRef,
@@ -32,6 +30,8 @@ import {
 import LatexText from "../../components/LatexText";
 import { shuffle } from "../../lib/shuffle";
 import { puntosDeEstado } from "../../lib/simulacroExamen";
+import { calcularEstrellas } from "../../lib/estrellasJuego";
+import { EstrellasHud } from "./Hud";
 const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
 /*
  * Mensajes de rendición para este modo. A diferencia de los que
@@ -212,14 +212,6 @@ function calificarPreguntaTema(
   return respuesta === pregunta.correct
     ? "correcta"
     : "incorrecta";
-}
-/* ============================================================
-   TIEMPO
-   ============================================================ */
-function formatearTiempo(segundosTotales) {
-  const m = Math.floor(segundosTotales / 60);
-  const s = segundosTotales % 60;
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 /* ============================================================
    SELECTOR DE BÚSQUEDA REUTILIZABLE
@@ -1369,7 +1361,6 @@ const TemaExamenView = forwardRef(
     {
       preguntas,
       titulos,
-      claveTiempo,
       onTerminar,
       onFaseChange,
       onVolverTeoria,
@@ -1417,50 +1408,14 @@ const TemaExamenView = forwardRef(
       toastVisible,
       setToastVisible
     ] = useState(false);
-    const tiempoInicioRef =
-      useRef(Date.now());
     const toastTimeoutRef =
       useRef(null);
-    const [
-      tiempoTranscurrido,
-      setTiempoTranscurrido
-    ] = useState(0);
-    const [tiempoAnterior] =
-      useState(() => {
-        const guardado =
-          localStorage.getItem(
-            claveTiempo
-          );
-        return guardado
-          ? parseInt(guardado, 10)
-          : null;
-      });
     /* ========================================================
        FASE
        ======================================================== */
     useEffect(() => {
       onFaseChange?.(fase);
     }, [fase, onFaseChange]);
-    /* ========================================================
-       CRONÓMETRO
-       ======================================================== */
-    useEffect(() => {
-      if (fase !== "preguntas") {
-        return;
-      }
-      const intervalo =
-        setInterval(() => {
-          setTiempoTranscurrido(
-            Math.floor(
-              (Date.now() -
-                tiempoInicioRef.current) /
-                1000
-            )
-          );
-        }, 1000);
-      return () =>
-        clearInterval(intervalo);
-    }, [fase]);
     useEffect(() => {
       return () => {
         if (toastTimeoutRef.current) {
@@ -1580,16 +1535,6 @@ const TemaExamenView = forwardRef(
        TERMINAR
        ======================================================== */
     function terminarPreguntas() {
-      const segundosFinal =
-        Math.floor(
-          (Date.now() -
-            tiempoInicioRef.current) /
-            1000
-        );
-      localStorage.setItem(
-        claveTiempo,
-        String(segundosFinal)
-      );
       setFase("resultados");
     }
     /* ========================================================
@@ -1711,10 +1656,6 @@ const TemaExamenView = forwardRef(
       respuestasPorIndice,
       resultadosPorIndice
     ]);
-    const tiempoExcedido =
-      tiempoAnterior !== null &&
-      tiempoTranscurrido >
-        tiempoAnterior;
     /* ========================================================
        PANTALLA DE RESULTADOS
        ======================================================== */
@@ -1816,6 +1757,25 @@ const TemaExamenView = forwardRef(
               {totalCorrectas}/
               {total} correctas
             </p>
+            <div
+              className="level-cell__estrellas"
+              style={{ fontSize: "2.4rem", marginTop: "10px", gap: "8px" }}
+              role="img"
+              aria-label={`${calcularEstrellas(totalCorrectas, total)} de 3 estrellas`}
+            >
+              {[1, 2, 3].map((n) => (
+                <span
+                  key={n}
+                  className={
+                    n <= calcularEstrellas(totalCorrectas, total)
+                      ? "is-activa"
+                      : ""
+                  }
+                >
+                  ★
+                </span>
+              ))}
+            </div>
           </div>
           {grupos.length > 1 && (
             <SelectorCurso
@@ -1907,19 +1867,17 @@ const TemaExamenView = forwardRef(
               {indice + 1}/{total}
             </span>
           </span>
-          <span
-            style={{
-              color: tiempoExcedido
-                ? "var(--danger)"
-                : "var(--ink-soft)",
-              fontWeight: 600
-            }}
-          >
-            <i className="fa-solid fa-stopwatch" />{" "}
-            {formatearTiempo(
-              tiempoTranscurrido
+          <EstrellasHud
+            estrellas={calcularEstrellas(
+              Object.values(
+                resultadosPorIndice
+              ).filter(
+                (estado) =>
+                  estado === "correcta"
+              ).length,
+              total
             )}
-          </span>
+          />
           {!rendido && (
             <button
               type="button"

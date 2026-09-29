@@ -874,6 +874,152 @@ function Relacionar({
   );
 }
 // ============================================================================
+// ESCRIBIR (respuesta escrita: curso de Inglés)
+// Cubre escribir palabra, completar, traducir, transformar, ordenar,
+// responder, dictado, deletrear y oración libre. Se compara contra
+// pregunta.respuestas, ignorando mayúsculas, espacios y punto final.
+// ============================================================================
+function normalizarRespuestaEscrita(texto, deletreo) {
+  let t = String(texto || "")
+    .replace(/[’‘`´]/g, "'")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .replace(/[.!?]+$/, "");
+  if (deletreo) t = t.replace(/[-\s]+/g, "-");
+  return t;
+}
+function esRespuestaEscritaCorrecta(pregunta, texto) {
+  const deletreo = pregunta.subtipo === "deletrear";
+  const dada = normalizarRespuestaEscrita(texto, deletreo);
+  if (!dada) return false;
+  const v = pregunta.validacion;
+  if (v) {
+    const palabras = dada.split(" ").filter(Boolean);
+    if (palabras.length < (v.minimoPalabras || 1)) return false;
+    const contiene = (v.debeContener || []).every((w) =>
+      dada.includes(String(w).toLowerCase())
+    );
+    if (!contiene) return false;
+    if (v.patron) {
+      try {
+        return new RegExp(v.patron, "i").test(dada);
+      } catch {
+        return true;
+      }
+    }
+    return true;
+  }
+  return (pregunta.respuestas || []).some(
+    (r) => normalizarRespuestaEscrita(r, deletreo) === dada
+  );
+}
+function Escribir({ pregunta, onRespondido, onReintentar }) {
+  const [texto, setTexto] = useState("");
+  const [answered, setAnswered] = useState(false);
+  const [wasCorrect, setWasCorrect] = useState(false);
+  const hurraRef = useRef(null);
+  const [avisoVisible, mostrarAviso] = useAvisoBloqueo();
+  function escuchar() {
+    const a = pregunta.audio;
+    if (!a || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const voz = new SpeechSynthesisUtterance(a.texto);
+    voz.lang = a.idioma || "en-US";
+    window.speechSynthesis.speak(voz);
+  }
+  useEffect(() => () => window.speechSynthesis?.cancel(), []);
+  function confirmar() {
+    if (answered) return;
+    if (!texto.trim()) {
+      mostrarAviso();
+      return;
+    }
+    const correct = esRespuestaEscritaCorrecta(pregunta, texto);
+    setWasCorrect(correct);
+    setAnswered(true);
+    if (correct && hurraRef.current) {
+      hurraRef.current.currentTime = 0;
+      hurraRef.current.play().catch(() => {});
+    }
+    onRespondido(correct);
+  }
+  const mostrarRespuesta =
+    answered && !wasCorrect && (pregunta.respuestas || [])[0];
+  return (
+    <>
+      <div className="question-card__q">
+        <p className="question-card__q-intro">
+          <LatexText>{pregunta.q || ""}</LatexText>
+        </p>
+      </div>
+      {pregunta.audio && (
+        <div className="question-card__type-wrap">
+          <button
+            type="button"
+            onClick={escuchar}
+            className="question-card__submit is-retry"
+          >
+            <i className="fas fa-volume-high" /> Escuchar
+          </button>
+        </div>
+      )}
+      <div className="question-card__type-wrap">
+        <input
+          type="text"
+          value={texto}
+          onChange={(e) => setTexto(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && confirmar()}
+          disabled={answered}
+          autoFocus
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          placeholder="Escribe tu respuesta"
+          className={`question-card__input ${
+            answered ? (wasCorrect ? "is-correct" : "is-wrong") : ""
+          }`}
+        />
+        {mostrarRespuesta && (
+          <p className="question-card__q-prop">
+            Respuesta: <strong>{pregunta.respuestas[0]}</strong>
+          </p>
+        )}
+        {!answered && (
+          <>
+            {avisoVisible && (
+              <span className="aviso-bloqueo">
+                Escribe algo antes de responder
+              </span>
+            )}
+            <button
+              type="button"
+              onClick={confirmar}
+              className="question-card__submit"
+            >
+              Responder
+            </button>
+          </>
+        )}
+        {answered && !wasCorrect && onReintentar && (
+          <button
+            type="button"
+            onClick={onReintentar}
+            className="question-card__submit is-retry"
+          >
+            Repetir <i className="fas fa-rotate-left" />
+          </button>
+        )}
+      </div>
+      <audio
+        ref={hurraRef}
+        src={`${import.meta.env.BASE_URL}sonidos/hurra-bob-esponja.mp3`}
+        preload="auto"
+      />
+    </>
+  );
+}
+// ============================================================================
 // QUESTION CARD
 // ============================================================================
 export default function QuestionCard({
@@ -940,6 +1086,8 @@ export default function QuestionCard({
   ) {
     Contenido =
       Relacionar;
+  } else if (pregunta.tipo === "escribir") {
+    Contenido = Escribir;
   }
   return (
     <div
@@ -990,6 +1138,232 @@ export default function QuestionCard({
           onRendirse?.();
         }}
       />
+    </div>
+  );
+}
+
+// ============================================================================
+// LECCIÓN DE INGLÉS (estilo Duolingo: una pantalla a la vez)
+// Cada sección muestra su teoría y enseguida sus ejercicios. Los ejercicios
+// fallados se repiten al final. Reutiliza Escribir y OpcionMultiple.
+// ============================================================================
+function hablarIngles(texto) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const v = new SpeechSynthesisUtterance(texto);
+  v.lang = "en-US";
+  window.speechSynthesis.speak(v);
+}
+function BotonAudio({ texto }) {
+  return (
+    <button
+      type="button"
+      className="leccion__audio"
+      title="Escuchar"
+      onClick={() => hablarIngles(texto)}
+    >
+      <i className="fas fa-volume-high" />
+    </button>
+  );
+}
+function TeoriaLeccion({ paso }) {
+  return (
+    <div className="leccion__tip">
+      <h2 className="leccion__titulo">{paso.titulo}</h2>
+      {paso.regla && <p className="leccion__regla">{paso.regla}</p>}
+      {paso.ejemplos.map((e, i) => (
+        <div key={i} className="leccion__ejemplo">
+          <BotonAudio texto={e.en} />
+          <div>
+            <div className="leccion__ejemplo-en">{e.en}</div>
+            <div className="leccion__ejemplo-es">{e.es}</div>
+          </div>
+        </div>
+      ))}
+      {paso.vocab.length > 0 && (
+        <div className="leccion__vocab">
+          {paso.vocab.map((v, i) => (
+            <div key={i} className="leccion__palabra">
+              <BotonAudio texto={v.en} />
+              <div>
+                <div className="leccion__ejemplo-en">
+                  {v.en} <span className="leccion__ipa">{v.ipa}</span>
+                </div>
+                <div className="leccion__ejemplo-es">{v.es}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+// Une cada teoría con los ejercicios que la siguen: la teoría se queda a la
+// izquierda mientras se resuelven sus ejercicios (a la derecha). Una teoría
+// sin ejercicios después sigue siendo una pantalla propia.
+function prepararLeccion(leccion) {
+  const salida = [];
+  let teoriaActual = null;
+  for (let k = 0; k < leccion.length; k++) {
+    const p = leccion[k];
+    if (p.t === "teoria") {
+      const sig = leccion[k + 1];
+      if (sig && sig.t === "ej") {
+        teoriaActual = p;
+      } else {
+        teoriaActual = null;
+        salida.push(p);
+      }
+    } else {
+      salida.push(teoriaActual ? { ...p, _teoria: teoriaActual } : p);
+    }
+  }
+  return salida;
+}
+export function LeccionInglesa({ data, onSalir, onSiguiente }) {
+  const inicial = prepararLeccion(data.leccion || []);
+  const totalEjercicios = inicial.filter((p) => p.t === "ej").length;
+  const [cola, setCola] = useState(inicial);
+  const [i, setI] = useState(0);
+  const [resultado, setResultado] = useState(null);
+  const [errores, setErrores] = useState(0);
+  const repetidos = useRef(new Set());
+  const terminado = i >= cola.length;
+  const paso = cola[i];
+  const precision =
+    totalEjercicios === 0 ? 1 : Math.max(0, 1 - errores / totalEjercicios);
+  const estrellas = precision >= 0.9 ? 3 : precision >= 0.7 ? 2 : 1;
+  useEffect(() => {
+    if (!terminado) return;
+    try {
+      const clave = `${data.curso}_${data.tema}`;
+      const todas = JSON.parse(localStorage.getItem("estrellasTemas") || "{}");
+      const previo = todas[clave]?.estrellas || 0;
+      if (estrellas >= previo) {
+        todas[clave] = {
+          estrellas,
+          correctas: totalEjercicios - errores,
+          total: totalEjercicios,
+        };
+        localStorage.setItem("estrellasTemas", JSON.stringify(todas));
+      }
+    } catch {
+      /* sin almacenamiento */
+    }
+  }, [terminado]);
+  function continuar() {
+    if (paso.t === "ej" && resultado === false && !repetidos.current.has(paso.id)) {
+      repetidos.current.add(paso.id);
+      setErrores((e) => e + 1);
+      setCola((c) => [...c, paso]);
+    }
+    setResultado(null);
+    setI(i + 1);
+  }
+  let cuerpo = null;
+  let pie = null;
+  if (terminado) {
+    cuerpo = (
+      <div className="leccion__tip leccion__fin">
+        <h2 className="leccion__titulo">¡Lección completada!</h2>
+        <div className="leccion__estrellas">
+          {[1, 2, 3].map((n) => (
+            <i key={n} className={`fas fa-star${n <= estrellas ? " is-on" : ""}`} />
+          ))}
+        </div>
+        <p className="leccion__regla">
+          Precisión: {Math.round(precision * 100)}% ({totalEjercicios - errores} de{" "}
+          {totalEjercicios} a la primera)
+        </p>
+      </div>
+    );
+    pie = (
+      <div className="leccion__pie">
+        <div className="leccion__pie-inner">
+          <button type="button" className="leccion__btn is-sec" onClick={onSalir}>
+            Salir
+          </button>
+          {onSiguiente && (
+            <button type="button" className="leccion__btn" onClick={onSiguiente}>
+              Siguiente lección
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  } else if (paso.t === "teoria") {
+    cuerpo = <TeoriaLeccion paso={paso} />;
+    pie = (
+      <div className="leccion__pie">
+        <div className="leccion__pie-inner">
+          <span />
+          <button type="button" className="leccion__btn" onClick={continuar}>
+            Continuar
+          </button>
+        </div>
+      </div>
+    );
+  } else {
+    const Contenido = paso.tipo === "escribir" ? Escribir : OpcionMultiple;
+    const ejercicio = (
+      <div className="leccion__ejercicio question-card__inner">
+        <Contenido
+          key={`${i}-${paso.id}`}
+          pregunta={paso}
+          onRespondido={(ok) => setResultado(ok)}
+        />
+      </div>
+    );
+    cuerpo = paso._teoria ? (
+      <div className="leccion__dos">
+        <div className="leccion__col leccion__col--teoria">
+          <TeoriaLeccion paso={paso._teoria} />
+        </div>
+        <div className="leccion__col leccion__col--ejercicio">{ejercicio}</div>
+      </div>
+    ) : (
+      ejercicio
+    );
+    if (resultado !== null) {
+      const correcta =
+        paso.tipo === "opcion_multiple" ? paso.opts[paso.correct] : null;
+      pie = (
+        <div className={`leccion__pie ${resultado ? "is-ok" : "is-mal"}`}>
+          <div className="leccion__pie-inner">
+            <div className="leccion__msg">
+              <strong>{resultado ? "¡Correcto!" : "Incorrecto"}</strong>
+              {!resultado && correcta && <div>Respuesta correcta: {correcta}</div>}
+              {!resultado && paso.explicacion && <div>{paso.explicacion}</div>}
+            </div>
+            <button type="button" className="leccion__btn" onClick={continuar}>
+              Continuar
+            </button>
+          </div>
+        </div>
+      );
+    }
+  }
+  return (
+    <div className="leccion">
+      <div className="leccion__top">
+        <button type="button" className="leccion__cerrar" title="Salir" onClick={onSalir}>
+          <i className="fas fa-xmark" />
+        </button>
+        <div className="leccion__barra">
+          <div
+            className="leccion__barra-relleno"
+            style={{ width: `${terminado ? 100 : (i / cola.length) * 100}%` }}
+          />
+        </div>
+      </div>
+      <div
+        className={`leccion__cuerpo${
+          !terminado && paso._teoria ? " leccion__cuerpo--ancho" : ""
+        }`}
+      >
+        {cuerpo}
+      </div>
+      {pie}
     </div>
   );
 }
