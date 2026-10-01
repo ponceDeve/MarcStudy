@@ -1051,11 +1051,80 @@
           },
           "autoaudio": true,
           "id": "n10-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Una docena de donas ",
+            {
+              "en": "are",
+              "es": "son"
+            },
+            " 12 donas: ",
+            {
+              "hueco": true,
+              "pista": "doce"
+            },
+            " donas."
+          ],
+          "respuestas": [
+            "twelve"
+          ],
+          "error": "La palabra es «twelve» (doce).",
+          "audio": {
+            "texto": "twelve",
+            "idioma": "en-US"
+          },
+          "id": "n10-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «thirty» en esta frase? Escríbelo en español",
+          "partes": [
+            "Esperas 30 minutos al médico: ",
+            {
+              "marca": true,
+              "en": "thirty"
+            },
+            " minutos."
+          ],
+          "respuestas": [
+            "treinta"
+          ],
+          "error": "«thirty» significa «treinta».",
+          "audio": {
+            "texto": "thirty",
+            "idioma": "en-US"
+          },
+          "id": "n10-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Tu bisabuela cumple 80 años: ",
+            {
+              "hueco": true,
+              "pista": "ochenta"
+            },
+            " años."
+          ],
+          "respuestas": [
+            "eighty"
+          ],
+          "error": "La palabra es «eighty» (ochenta).",
+          "audio": {
+            "texto": "eighty",
+            "idioma": "en-US"
+          },
+          "id": "n10-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

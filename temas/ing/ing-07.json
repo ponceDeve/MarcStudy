@@ -32,10 +32,10 @@
             " diferente."
           ],
           "opciones": [
-            "china",
-            "mexico",
+            "China",
+            "Mexico",
             "country",
-            "england"
+            "England"
           ],
           "respuestas": [
             "country"
@@ -80,7 +80,7 @@
             "."
           ],
           "opciones": [
-            "The united states",
+            "The United States",
             "England",
             "Italy",
             "Spain"
@@ -224,7 +224,7 @@
             "Germany",
             "Brazil",
             "England",
-            "The united states"
+            "The United States"
           ],
           "respuestas": [
             "Germany"
@@ -403,7 +403,7 @@
             "Mexico",
             "Brazil",
             "China",
-            "The united states"
+            "The United States"
           ],
           "respuestas": [
             "Brazil"
@@ -1080,11 +1080,100 @@
           },
           "autoaudio": true,
           "id": "n07-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «Spain» en esta frase? Escríbelo en español",
+          "partes": [
+            "La paella nació en Valencia, en ",
+            {
+              "marca": true,
+              "en": "Spain"
+            },
+            "."
+          ],
+          "respuestas": [
+            "España",
+            "espana"
+          ],
+          "error": "«Spain» significa «España».",
+          "audio": {
+            "texto": "Spain",
+            "idioma": "en-US"
+          },
+          "id": "n07-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Subes a la Torre Eiffel en París, ",
+            {
+              "hueco": true,
+              "pista": "Francia"
+            },
+            "."
+          ],
+          "respuestas": [
+            "France"
+          ],
+          "error": "La palabra es «France» (Francia).",
+          "audio": {
+            "texto": "France",
+            "idioma": "en-US"
+          },
+          "id": "n07-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Comes una pizza auténtica en Nápoles, en ",
+            {
+              "hueco": true,
+              "pista": "Italia"
+            },
+            "."
+          ],
+          "respuestas": [
+            "Italy"
+          ],
+          "error": "La palabra es «Italy» (Italia).",
+          "audio": {
+            "texto": "Italy",
+            "idioma": "en-US"
+          },
+          "id": "n07-s06-e13"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Miras la Estatua de la Libertad en Nueva York, en ",
+            {
+              "hueco": true,
+              "pista": "Estados Unidos"
+            },
+            "."
+          ],
+          "respuestas": [
+            "the United States",
+            "United States",
+            "the US",
+            "the USA"
+          ],
+          "error": "La palabra es «the United States» (Estados Unidos).",
+          "audio": {
+            "texto": "the United States",
+            "idioma": "en-US"
+          },
+          "id": "n07-s06-e14"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 14
       }
     }
   ],

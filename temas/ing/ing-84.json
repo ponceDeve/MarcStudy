@@ -1423,11 +1423,104 @@
             "minimoPalabras": 1
           },
           "ejemploRespuesta": "I gave him a book."
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «did» en esta frase? Escríbelo en español",
+          "partes": [
+            "Ana ",
+            {
+              "marca": true,
+              "en": "did"
+            },
+            " ejercicio por ",
+            {
+              "en": "the",
+              "es": "la"
+            },
+            " mañana."
+          ],
+          "respuestas": [
+            "hice, hizo (hacer)",
+            "hice, hizo",
+            "hice",
+            "hizo (hacer)",
+            "hizo"
+          ],
+          "error": "«did» significa «hice, hizo (hacer)».",
+          "audio": {
+            "texto": "did",
+            "idioma": "en-US"
+          },
+          "id": "n84-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Ana ",
+            {
+              "hueco": true,
+              "pista": "conseguí, obtuvo (obtener)"
+            },
+            " ",
+            {
+              "en": "a",
+              "es": "un"
+            },
+            " buen ",
+            {
+              "en": "gift",
+              "es": "regalo"
+            },
+            " ayer."
+          ],
+          "respuestas": [
+            "got"
+          ],
+          "error": "La palabra es «got» (conseguí, obtuvo (obtener)).",
+          "audio": {
+            "texto": "got",
+            "idioma": "en-US"
+          },
+          "id": "n84-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Ana ",
+            {
+              "hueco": true,
+              "pista": "tomé, tomó (tomar)"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "en": "bus",
+              "es": "autobús"
+            },
+            " esta mañana."
+          ],
+          "respuestas": [
+            "took"
+          ],
+          "error": "La palabra es «took» (tomé, tomó (tomar)).",
+          "audio": {
+            "texto": "took",
+            "idioma": "en-US"
+          },
+          "id": "n84-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

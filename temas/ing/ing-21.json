@@ -1112,11 +1112,94 @@
             "patron": "^(I|You|He|She|It|We|They|This|These)\\s+(am|is|are)\\b.*"
           },
           "ejemploRespuesta": "This is my baby."
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Una ",
+            {
+              "hueco": true,
+              "pista": "mujer"
+            },
+            " ",
+            {
+              "en": "with",
+              "es": "con"
+            },
+            " sombrero vende flores ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " la esquina."
+          ],
+          "respuestas": [
+            "woman"
+          ],
+          "error": "La palabra es «woman» (mujer).",
+          "audio": {
+            "texto": "woman",
+            "idioma": "en-US"
+          },
+          "id": "n21-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Una ",
+            {
+              "hueco": true,
+              "pista": "niña"
+            },
+            " ",
+            {
+              "en": "with",
+              "es": "con"
+            },
+            " trenzas dibuja un dragón en la acera."
+          ],
+          "respuestas": [
+            "girl"
+          ],
+          "error": "La palabra es «girl» (niña).",
+          "audio": {
+            "texto": "girl",
+            "idioma": "en-US"
+          },
+          "id": "n21-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Cuando cumples ",
+            {
+              "en": "eighteen",
+              "es": "dieciocho"
+            },
+            " ya eres un ",
+            {
+              "hueco": true,
+              "pista": "adulto"
+            },
+            "."
+          ],
+          "respuestas": [
+            "adult"
+          ],
+          "error": "La palabra es «adult» (adulto).",
+          "audio": {
+            "texto": "adult",
+            "idioma": "en-US"
+          },
+          "id": "n21-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

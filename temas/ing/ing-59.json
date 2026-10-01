@@ -1320,11 +1320,69 @@
           },
           "autoaudio": true,
           "id": "n59-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «bicycle» en esta frase? Escríbelo en español",
+          "partes": [
+            "Ana pedalea su ",
+            {
+              "marca": true,
+              "en": "bicycle"
+            },
+            " por ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "en": "park",
+              "es": "parque"
+            },
+            "."
+          ],
+          "respuestas": [
+            "bicicleta"
+          ],
+          "error": "«bicycle» significa «bicicleta».",
+          "audio": {
+            "texto": "bicycle",
+            "idioma": "en-US"
+          },
+          "id": "n59-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Carlos usa un casco ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " su ",
+            {
+              "hueco": true,
+              "pista": "motocicleta"
+            },
+            "."
+          ],
+          "respuestas": [
+            "motorcycle"
+          ],
+          "error": "La palabra es «motorcycle» (motocicleta).",
+          "audio": {
+            "texto": "motorcycle",
+            "idioma": "en-US"
+          },
+          "id": "n59-s06-e12"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 12
       }
     }
   ],
