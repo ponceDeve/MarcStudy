@@ -37,7 +37,7 @@
           ],
           "opciones": [
             "wedding",
-            "new year",
+            "New Year",
             "spring",
             "winter"
           ],
@@ -1452,11 +1452,148 @@
             "patron": "^(I|You|He|She|It|We|They)\\s+(am|is|are)\\b.*"
           },
           "ejemploRespuesta": "It is summer."
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «spring» en esta frase? Escríbelo en español",
+          "partes": [
+            {
+              "en": "The",
+              "es": "La"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "spring"
+            },
+            " viene después del invierno."
+          ],
+          "respuestas": [
+            "primavera"
+          ],
+          "error": "«spring» significa «primavera».",
+          "audio": {
+            "texto": "spring",
+            "idioma": "en-US"
+          },
+          "id": "n77-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «fall» en esta frase? Escríbelo en español",
+          "partes": [
+            {
+              "en": "The",
+              "es": "El"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "fall"
+            },
+            " viene después del verano."
+          ],
+          "respuestas": [
+            "otoño",
+            "otono"
+          ],
+          "error": "«fall» significa «otoño».",
+          "audio": {
+            "texto": "fall",
+            "idioma": "en-US"
+          },
+          "id": "n77-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «Christmas» en esta frase? Escríbelo en español",
+          "partes": [
+            {
+              "en": "In",
+              "es": "En"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "Christmas"
+            },
+            " ponemos ",
+            {
+              "en": "a",
+              "es": "un"
+            },
+            " ",
+            {
+              "en": "tree",
+              "es": "árbol"
+            },
+            " ",
+            {
+              "en": "with",
+              "es": "con"
+            },
+            " luces."
+          ],
+          "respuestas": [
+            "Navidad",
+            "navidad"
+          ],
+          "error": "«Christmas» significa «Navidad».",
+          "audio": {
+            "texto": "Christmas",
+            "idioma": "en-US"
+          },
+          "id": "n77-s06-e13"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «wedding» en esta frase? Escríbelo en español",
+          "partes": [
+            "Ana usa ",
+            {
+              "en": "a",
+              "es": "un"
+            },
+            " ",
+            {
+              "en": "dress",
+              "es": "vestido"
+            },
+            " elegante ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "la"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "wedding"
+            },
+            "."
+          ],
+          "respuestas": [
+            "boda"
+          ],
+          "error": "«wedding» significa «boda».",
+          "audio": {
+            "texto": "wedding",
+            "idioma": "en-US"
+          },
+          "id": "n77-s06-e14"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 14
       }
     }
   ],

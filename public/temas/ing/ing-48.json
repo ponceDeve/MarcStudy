@@ -1150,11 +1150,54 @@
             "idioma": "en-US"
           },
           "id": "n48-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Hace fresco, así que Ana se pone una ",
+            {
+              "hueco": true,
+              "pista": "chaqueta"
+            },
+            "."
+          ],
+          "respuestas": [
+            "jacket"
+          ],
+          "error": "La palabra es «jacket» (chaqueta).",
+          "audio": {
+            "texto": "jacket",
+            "idioma": "en-US"
+          },
+          "id": "n48-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «skirt» en esta frase? Escríbelo en español",
+          "partes": [
+            "La ",
+            {
+              "marca": true,
+              "en": "skirt"
+            },
+            " llega hasta las rodillas."
+          ],
+          "respuestas": [
+            "falda"
+          ],
+          "error": "«skirt» significa «falda».",
+          "audio": {
+            "texto": "skirt",
+            "idioma": "en-US"
+          },
+          "id": "n48-s06-e12"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 12
       }
     }
   ],

@@ -1161,11 +1161,85 @@
           },
           "autoaudio": true,
           "id": "n41-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «January» en esta frase? Escríbelo en español",
+          "partes": [
+            {
+              "en": "In",
+              "es": "En"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "January"
+            },
+            " hace frío en el norte."
+          ],
+          "respuestas": [
+            "enero"
+          ],
+          "error": "«January» significa «enero».",
+          "audio": {
+            "texto": "January",
+            "idioma": "en-US"
+          },
+          "id": "n41-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «May» en esta frase? Escríbelo en español",
+          "partes": [
+            "El mes de las flores ",
+            {
+              "en": "is",
+              "es": "es"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "May"
+            },
+            "."
+          ],
+          "respuestas": [
+            "mayo"
+          ],
+          "error": "«May» significa «mayo».",
+          "audio": {
+            "texto": "May",
+            "idioma": "en-US"
+          },
+          "id": "n41-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Después de julio viene ",
+            {
+              "hueco": true,
+              "pista": "agosto"
+            },
+            "."
+          ],
+          "respuestas": [
+            "August"
+          ],
+          "error": "La palabra es «August» (agosto).",
+          "audio": {
+            "texto": "August",
+            "idioma": "en-US"
+          },
+          "id": "n41-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

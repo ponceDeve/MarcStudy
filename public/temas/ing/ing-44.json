@@ -567,7 +567,7 @@
           "opciones": [
             "cook dinner",
             "get up",
-            "watch tv",
+            "watch TV",
             "go to work"
           ],
           "respuestas": [
@@ -1396,11 +1396,106 @@
             "idioma": "en-US"
           },
           "id": "n44-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «have breakfast» en esta frase? Escríbelo en español",
+          "partes": [
+            "Antes de ir a la escuela ",
+            {
+              "en": "I",
+              "es": "yo"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "have breakfast"
+            },
+            "."
+          ],
+          "respuestas": [
+            "desayunar"
+          ],
+          "error": "«have breakfast» significa «desayunar».",
+          "audio": {
+            "texto": "have breakfast",
+            "idioma": "en-US"
+          },
+          "id": "n44-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «cook dinner» en esta frase? Escríbelo en español",
+          "partes": [
+            "Al llegar a casa ",
+            {
+              "en": "I",
+              "es": "yo"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "cook dinner"
+            },
+            " una sopa rápida."
+          ],
+          "respuestas": [
+            "preparar la cena"
+          ],
+          "error": "«cook dinner» significa «preparar la cena».",
+          "audio": {
+            "texto": "cook dinner",
+            "idioma": "en-US"
+          },
+          "id": "n44-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Cuando ",
+            {
+              "en": "am",
+              "es": "estoy"
+            },
+            " ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " la cama ",
+            {
+              "en": "I",
+              "es": "yo"
+            },
+            " ",
+            {
+              "hueco": true,
+              "pista": "dormir"
+            },
+            " ",
+            {
+              "en": "eight",
+              "es": "ocho"
+            },
+            " horas."
+          ],
+          "respuestas": [
+            "sleep"
+          ],
+          "error": "La palabra es «sleep» (dormir).",
+          "audio": {
+            "texto": "sleep",
+            "idioma": "en-US"
+          },
+          "id": "n44-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

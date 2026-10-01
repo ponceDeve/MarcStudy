@@ -1046,11 +1046,75 @@
           },
           "autoaudio": true,
           "id": "n11-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Guardas tus cuadernos dentro de tu ",
+            {
+              "hueco": true,
+              "pista": "escritorio"
+            },
+            "."
+          ],
+          "respuestas": [
+            "desk"
+          ],
+          "error": "La palabra es «desk» (escritorio).",
+          "audio": {
+            "texto": "desk",
+            "idioma": "en-US"
+          },
+          "id": "n11-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "No sabes qué significa una palabra y la buscas en el ",
+            {
+              "hueco": true,
+              "pista": "diccionario"
+            },
+            "."
+          ],
+          "respuestas": [
+            "dictionary"
+          ],
+          "error": "La palabra es «dictionary» (diccionario).",
+          "audio": {
+            "texto": "dictionary",
+            "idioma": "en-US"
+          },
+          "id": "n11-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «backpack» en esta frase? Escríbelo en español",
+          "partes": [
+            "Olvidaste tu ",
+            {
+              "marca": true,
+              "en": "backpack"
+            },
+            " en el autobús."
+          ],
+          "respuestas": [
+            "mochila"
+          ],
+          "error": "«backpack» significa «mochila».",
+          "audio": {
+            "texto": "backpack",
+            "idioma": "en-US"
+          },
+          "id": "n11-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

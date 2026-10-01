@@ -1068,11 +1068,81 @@
             "patron": "^(I|You|He|She|It|We|They|This|These)\\s+(am|is|are)\\b.*"
           },
           "ejemploRespuesta": "This is my son."
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «mother» en esta frase? Escríbelo en español",
+          "partes": [
+            "Tu ",
+            {
+              "marca": true,
+              "en": "mother"
+            },
+            " te prepara el desayuno todos los días."
+          ],
+          "respuestas": [
+            "madre"
+          ],
+          "error": "«mother» significa «madre».",
+          "audio": {
+            "texto": "mother",
+            "idioma": "en-US"
+          },
+          "id": "n22-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «grandmother» en esta frase? Escríbelo en español",
+          "partes": [
+            "La mamá de tu mamá ",
+            {
+              "en": "is",
+              "es": "es"
+            },
+            " tu ",
+            {
+              "marca": true,
+              "en": "grandmother"
+            },
+            "."
+          ],
+          "respuestas": [
+            "abuela"
+          ],
+          "error": "«grandmother» significa «abuela».",
+          "audio": {
+            "texto": "grandmother",
+            "idioma": "en-US"
+          },
+          "id": "n22-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Tu ",
+            {
+              "hueco": true,
+              "pista": "abuelo"
+            },
+            " te enseña a jugar ajedrez."
+          ],
+          "respuestas": [
+            "grandfather"
+          ],
+          "error": "La palabra es «grandfather» (abuelo).",
+          "audio": {
+            "texto": "grandfather",
+            "idioma": "en-US"
+          },
+          "id": "n22-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

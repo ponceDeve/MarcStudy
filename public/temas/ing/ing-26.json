@@ -1300,11 +1300,91 @@
             "patron": "^(I|You|He|She|It|We|They)\\s+(am|is|are)\\b.*"
           },
           "ejemploRespuesta": "I am thirsty."
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Llueve, no hay internet y no tienes nada que hacer: ",
+            {
+              "en": "are",
+              "es": "estás"
+            },
+            " ",
+            {
+              "hueco": true,
+              "pista": "aburrido"
+            },
+            "."
+          ],
+          "respuestas": [
+            "bored"
+          ],
+          "error": "La palabra es «bored» (aburrido).",
+          "audio": {
+            "texto": "bored",
+            "idioma": "en-US"
+          },
+          "id": "n26-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «excited» en esta frase? Escríbelo en español",
+          "partes": [
+            "Esperas el último capítulo de tu serie favorita ",
+            {
+              "en": "and",
+              "es": "y"
+            },
+            " estás ",
+            {
+              "marca": true,
+              "en": "excited"
+            },
+            "."
+          ],
+          "respuestas": [
+            "emocionado",
+            "emocionada"
+          ],
+          "error": "«excited» significa «emocionado».",
+          "audio": {
+            "texto": "excited",
+            "idioma": "en-US"
+          },
+          "id": "n26-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Vas a hablar frente a toda la escuela ",
+            {
+              "en": "and",
+              "es": "y"
+            },
+            " estás ",
+            {
+              "hueco": true,
+              "pista": "nervioso"
+            },
+            "."
+          ],
+          "respuestas": [
+            "nervous"
+          ],
+          "error": "La palabra es «nervous» (nervioso).",
+          "audio": {
+            "texto": "nervous",
+            "idioma": "en-US"
+          },
+          "id": "n26-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

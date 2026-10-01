@@ -1134,11 +1134,102 @@
           },
           "autoaudio": true,
           "id": "n27-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "El sushi se enrolla ",
+            {
+              "en": "with",
+              "es": "con"
+            },
+            " alga y ",
+            {
+              "hueco": true,
+              "pista": "arroz"
+            },
+            "."
+          ],
+          "respuestas": [
+            "rice"
+          ],
+          "error": "La palabra es «rice» (arroz).",
+          "audio": {
+            "texto": "rice",
+            "idioma": "en-US"
+          },
+          "id": "n27-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Un ratón de caricatura persigue un trozo de ",
+            {
+              "hueco": true,
+              "pista": "queso"
+            },
+            "."
+          ],
+          "respuestas": [
+            "cheese"
+          ],
+          "error": "La palabra es «cheese» (queso).",
+          "audio": {
+            "texto": "cheese",
+            "idioma": "en-US"
+          },
+          "id": "n27-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «meat» en esta frase? Escríbelo en español",
+          "partes": [
+            "Un vegetariano no come ",
+            {
+              "marca": true,
+              "en": "meat"
+            },
+            "."
+          ],
+          "respuestas": [
+            "carne"
+          ],
+          "error": "«meat» significa «carne».",
+          "audio": {
+            "texto": "meat",
+            "idioma": "en-US"
+          },
+          "id": "n27-s06-e13"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «potato» en esta frase? Escríbelo en español",
+          "partes": [
+            "Preparas puré con una ",
+            {
+              "marca": true,
+              "en": "potato"
+            },
+            " hervida."
+          ],
+          "respuestas": [
+            "papa"
+          ],
+          "error": "«potato» significa «papa».",
+          "audio": {
+            "texto": "potato",
+            "idioma": "en-US"
+          },
+          "id": "n27-s06-e14"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 14
       }
     }
   ],

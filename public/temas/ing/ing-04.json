@@ -936,17 +936,17 @@
         {
           "id": "n04-s06-e07",
           "tipo": "oracion_libre",
-          "enunciado": "Escribe una oración con «two»: ___",
+          "enunciado": "Escribe una oración con «ten»: ___",
           "respuestas": [],
           "error": "Usa la palabra en una oración completa.",
           "validacion": {
             "debeContener": [
-              "two"
+              "ten"
             ],
             "minimoPalabras": 3,
             "patron": "^(I|You|He|She|It|We|They)\\s+(am|is|are)\\b.*"
           },
-          "ejemploRespuesta": "It is number two."
+          "ejemploRespuesta": "It is number ten."
         },
         {
           "tipo": "texto_mixto",
@@ -1012,11 +1012,54 @@
             "idioma": "en-US"
           },
           "id": "n04-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Un pulpo tiene 8 brazos: ",
+            {
+              "hueco": true,
+              "pista": "ocho"
+            },
+            " brazos."
+          ],
+          "respuestas": [
+            "eight"
+          ],
+          "error": "La palabra es «eight» (ocho).",
+          "audio": {
+            "texto": "eight",
+            "idioma": "en-US"
+          },
+          "id": "n04-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «nine» en esta frase? Escríbelo en español",
+          "partes": [
+            "Un equipo de béisbol tiene 9 jugadores en el campo: ",
+            {
+              "marca": true,
+              "en": "nine"
+            },
+            " jugadores."
+          ],
+          "respuestas": [
+            "nueve"
+          ],
+          "error": "«nine» significa «nueve».",
+          "audio": {
+            "texto": "nine",
+            "idioma": "en-US"
+          },
+          "id": "n04-s06-e12"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 12
       }
     }
   ],

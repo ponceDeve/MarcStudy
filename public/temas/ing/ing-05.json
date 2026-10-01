@@ -94,7 +94,7 @@
           "tipo": "elegir",
           "consigna": "Elige la palabra que completa el texto",
           "partes": [
-            "A mitad de la semana, el día del medio se llama ",
+            "El día que viene después del martes se llama ",
             {
               "hueco": true,
               "pista": "miércoles"
@@ -422,8 +422,8 @@
           "opciones": [
             "weekend",
             "today",
-            "tuesday",
-            "saturday"
+            "Tuesday",
+            "Saturday"
           ],
           "respuestas": [
             "weekend"
@@ -556,9 +556,9 @@
             "."
           ],
           "opciones": [
-            "wednesday",
+            "Wednesday",
             "today",
-            "saturday",
+            "Saturday",
             "day"
           ],
           "respuestas": [
@@ -1058,11 +1058,74 @@
             "patron": "^(I|You|He|She|It|We|They)\\s+(am|is|are)\\b.*"
           },
           "ejemploRespuesta": "It is Saturday."
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Siete días seguidos forman una ",
+            {
+              "hueco": true,
+              "pista": "semana"
+            },
+            "."
+          ],
+          "respuestas": [
+            "week"
+          ],
+          "error": "La palabra es «week» (semana).",
+          "audio": {
+            "texto": "week",
+            "idioma": "en-US"
+          },
+          "id": "n05-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "De la mañana a la noche pasa un ",
+            {
+              "hueco": true,
+              "pista": "día"
+            },
+            "."
+          ],
+          "respuestas": [
+            "day"
+          ],
+          "error": "La palabra es «day» (día).",
+          "audio": {
+            "texto": "day",
+            "idioma": "en-US"
+          },
+          "id": "n05-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Hoy es lunes; ",
+            {
+              "hueco": true,
+              "pista": "mañana"
+            },
+            " es martes."
+          ],
+          "respuestas": [
+            "tomorrow"
+          ],
+          "error": "La palabra es «tomorrow» (mañana).",
+          "audio": {
+            "texto": "tomorrow",
+            "idioma": "en-US"
+          },
+          "id": "n05-s06-e13"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 13
       }
     }
   ],

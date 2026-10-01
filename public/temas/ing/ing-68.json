@@ -1494,11 +1494,64 @@
           },
           "autoaudio": true,
           "id": "n68-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Ana ahorra su dinero ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "hueco": true,
+              "pista": "banco"
+            },
+            "."
+          ],
+          "respuestas": [
+            "bank"
+          ],
+          "error": "La palabra es «bank» (banco).",
+          "audio": {
+            "texto": "bank",
+            "idioma": "en-US"
+          },
+          "id": "n68-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «purse» en esta frase? Escríbelo en español",
+          "partes": [
+            "Ana lleva su ",
+            {
+              "marca": true,
+              "en": "purse"
+            },
+            " colgada del hombro."
+          ],
+          "respuestas": [
+            "cartera de mano"
+          ],
+          "error": "«purse» significa «cartera de mano».",
+          "audio": {
+            "texto": "purse",
+            "idioma": "en-US"
+          },
+          "id": "n68-s06-e12"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 12
       }
     }
   ],

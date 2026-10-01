@@ -123,7 +123,7 @@
             "."
           ],
           "opciones": [
-            "tv",
+            "TV",
             "bed",
             "stove",
             "closet"
@@ -303,7 +303,7 @@
           ],
           "opciones": [
             "sink",
-            "tv",
+            "TV",
             "carpet",
             "stove"
           ],
@@ -513,7 +513,7 @@
           ],
           "opciones": [
             "table",
-            "tv",
+            "TV",
             "sink",
             "fridge"
           ],
@@ -598,7 +598,7 @@
             "curtain",
             "sink",
             "carpet",
-            "tv"
+            "TV"
           ],
           "respuestas": [
             "sink"
@@ -1487,11 +1487,146 @@
           },
           "autoaudio": true,
           "id": "n51-s06-e10"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «sofa» en esta frase? Escríbelo en español",
+          "partes": [
+            {
+              "en": "The",
+              "es": "El"
+            },
+            " gato duerme ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "sofa"
+            },
+            "."
+          ],
+          "respuestas": [
+            "sofá",
+            "sofa"
+          ],
+          "error": "«sofa» significa «sofá».",
+          "audio": {
+            "texto": "sofa",
+            "idioma": "en-US"
+          },
+          "id": "n51-s06-e11"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            {
+              "en": "The",
+              "es": "Los"
+            },
+            " libros ",
+            {
+              "en": "are",
+              "es": "están"
+            },
+            " ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "hueco": true,
+              "pista": "estante"
+            },
+            "."
+          ],
+          "respuestas": [
+            "shelf"
+          ],
+          "error": "La palabra es «shelf» (estante).",
+          "audio": {
+            "texto": "shelf",
+            "idioma": "en-US"
+          },
+          "id": "n51-s06-e12"
+        },
+        {
+          "tipo": "texto_mixto",
+          "consigna": "Escribe en inglés la palabra que falta",
+          "partes": [
+            "Ana se peina frente al ",
+            {
+              "hueco": true,
+              "pista": "espejo"
+            },
+            "."
+          ],
+          "respuestas": [
+            "mirror"
+          ],
+          "error": "La palabra es «mirror» (espejo).",
+          "audio": {
+            "texto": "mirror",
+            "idioma": "en-US"
+          },
+          "id": "n51-s06-e13"
+        },
+        {
+          "tipo": "texto_mixto",
+          "modo": "significado",
+          "consigna": "¿Qué significa «fridge» en esta frase? Escríbelo en español",
+          "partes": [
+            "Luis guarda ",
+            {
+              "en": "the",
+              "es": "la"
+            },
+            " comida fría ",
+            {
+              "en": "in",
+              "es": "en"
+            },
+            " ",
+            {
+              "en": "the",
+              "es": "el"
+            },
+            " ",
+            {
+              "marca": true,
+              "en": "fridge"
+            },
+            "."
+          ],
+          "respuestas": [
+            "refrigerador"
+          ],
+          "error": "«fridge» significa «refrigerador».",
+          "audio": {
+            "texto": "fridge",
+            "idioma": "en-US"
+          },
+          "id": "n51-s06-e14"
         }
       ],
       "dominio": {
         "umbralAciertos": 0.8,
-        "minimoRespondidas": 10
+        "minimoRespondidas": 14
       }
     }
   ],
