@@ -1802,8 +1802,9 @@
   margin-bottom: var(--space-3);
 }
 .arcade-game-container.teoria-card-unica:has(.teoria-etiqueta-checkbox:checked) {
-  border: 1px solid var(--success-dark) !important;
-  box-shadow: inset 0 0 10px var(--success-dark);
+  outline: 1px solid var(--success) !important;
+  box-shadow: 0 0 5px var(--success) !important;
+  border:none;
 }
 .teoria-etiqueta-checkbox {
   display: none;
@@ -1816,7 +1817,6 @@
   font-weight: var(--fw-medium);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: color .2s linear;
-  padding: 10px;
   border: 1px solid transparent;
 }
 /* ============================================================
@@ -1882,7 +1882,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.0312rem;
-  color: var(--bg);
+  color: var(--ink-on-primary);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   box-shadow: var(--shadow-md);
   transition: background-color 0.2s linear, transform 0.2s linear, box-shadow 0.2s linear;
@@ -1963,8 +1963,11 @@
    TEORÍA — CARD ÚNICA (una a la vez)
    ============================================================ */
 .teoria-card-unica {
+  border: none;
   padding: var(--space-4);
   margin-bottom: var(--space-4);
+  transition: all .2s linear;
+  outline: 1px solid var(--border-strong);
   @media (max-width: 1024px) {
     padding: var(--space-3);
   }
