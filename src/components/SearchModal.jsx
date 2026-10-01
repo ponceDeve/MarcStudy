@@ -1,4 +1,5 @@
 import { useState,useMemo,useEffect,useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import manifest from "../data/manifest.json";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { buscarCoincidencia,buscarPosicion,extraerFragmento,puntajeDeTexto } from "../lib/buscador";
@@ -28,6 +29,12 @@ function normalizarTexto(texto){
     .replace(/[\u0300-\u036f]/g,"")
     .toLowerCase()
     .trim();
+}
+// Con true, Inglés no se despliega con "+" y al elegirlo se abre su propia página (/ingles).
+// Con false (actual) Inglés es un curso más de la lista y sus niveles salen en el buscador.
+const INGLES_EN_PAGINA_APARTE=false;
+function esCursoIngles(nombre){
+  return INGLES_EN_PAGINA_APARTE&&normalizarTexto(nombre)==="ingles";
 }
 function obtenerPalabras(texto){
   return normalizarTexto(texto).match(/[a-z0-9]+/g)||[];
@@ -557,6 +564,7 @@ export default function SearchModal({
   onSelect,
   contenidoTema=[]
 }){
+  const navigate=useNavigate();
   const [query,setQuery]=useState("");
   const [queryConfirmada,setQueryConfirmada]=useState("");
   const [inputFocused,setInputFocused]=useState(false);
@@ -733,6 +741,12 @@ export default function SearchModal({
     setInputFocused(false);
     setFocusedIdx(-1);
     setCursoAbierto(null);
+    const cursoDelItem=item.type==="curso"?item.nombre:item.curso;
+    if(esCursoIngles(cursoDelItem)){
+      onClose();
+      navigate("/ingles");
+      return;
+    }
     onSelect(item);
     onClose();
   }
@@ -743,6 +757,13 @@ export default function SearchModal({
     setFocusedIdx(-1);
   }
   function manejarClickCurso(curso){
+    if(esCursoIngles(curso)){
+      ejecutarBusqueda({
+        type:"curso",
+        nombre:curso
+      });
+      return;
+    }
     setCursoAbierto(actual=>{
       if(actual===curso){
         return null;
@@ -967,6 +988,7 @@ export default function SearchModal({
               )}
             </span>
           </button>
+          {!esCursoIngles(g.curso)&&(
           <button
             type="button"
             className={`search-course-toggle${
@@ -991,6 +1013,7 @@ export default function SearchModal({
               }`}
             />
           </button>
+          )}
         </div>
         <div
           className={`search-group__temas${

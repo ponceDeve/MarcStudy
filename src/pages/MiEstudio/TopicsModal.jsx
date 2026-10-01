@@ -256,6 +256,8 @@ export default function TopicsModal({
                   posicion === fila.length - 1;
                 const esFinalDeConexion =
                   esFinalDeFila && !esUltimoNivel;
+                const esCursoIngles =
+                  String(curso || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim() === "ingles";
                 const estrellasTema =
                   estrellasPorTema[
                     `${curso}_${item.tema}`
@@ -280,6 +282,7 @@ export default function TopicsModal({
                         manejarClickTema(item, index);
                       }}
                     >
+                      {!esCursoIngles && (
                       <div
                         className="level-cell__estrellas"
                         aria-hidden="true"
@@ -295,6 +298,7 @@ export default function TopicsModal({
                           </span>
                         ))}
                       </div>
+                      )}
                       <span className="level-btn__numero">
                         {index + 1}
                       </span>

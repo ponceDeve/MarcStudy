@@ -98,10 +98,16 @@ def reconstruir_manifest(archivos_json, manifest_path: Path):
             cursos_por_codigo[codigo] = curso
             cursos_creados += 1
             print(f"  + Curso: {nombre_curso} ({codigo})")
-        curso["temas"].append({
+        entrada = {
             "tema": nombre_tema,
             "archivo": archivo_relativo
-        })
+        }
+        if isinstance(tema_data.get("secciones"), list) and "id" in tema_data:
+            # niveles de inglés: la página /ingles los arma desde el manifest
+            entrada["nivelId"] = tema_data["id"]
+            entrada["nivelNombre"] = tema_data.get("nombre", nombre_tema)
+            entrada["nivelSecciones"] = len(tema_data["secciones"])
+        curso["temas"].append(entrada)
         temas_agregados += 1
         print(f"    + {nombre_tema}")
     with open(manifest_path, "w", encoding="utf-8") as f:

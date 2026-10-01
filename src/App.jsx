@@ -4,6 +4,7 @@ import MiEstudioPage from "./pages/MiEstudio/MiEstudioPage";
 const HorarioPage = lazy(() => import("./pages/Horario/HorarioPage"));
 const RepasoPage = lazy(() => import("./pages/Repaso/RepasoPage"));
 const ExamenPage = lazy(() => import("./pages/Examen/ExamenPage"));
+const InglesPage = lazy(() => import("./pages/Ingles/InglesPage"));
 import { PomodoroProvider } from "./context/PomodoroContext";
 import {
   FooterVisibilityProvider,
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/pomodoro" element={<HorarioPage />} />
               <Route path="/repaso" element={<RepasoPage />} />
               <Route path="/examen" element={<ExamenPage />} />
+              <Route path="/ingles" element={<InglesPage />} />
             </Routes>
           </Suspense>
           <AppFooterGate />

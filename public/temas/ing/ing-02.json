@@ -1,11 +1,17 @@
 {
   "curso": "Inglés",
-  "tema": "2. Pronombres Sujeto",
-  "leccion": [
+  "tema": "2. Pronombres sujeto",
+  "descripcion": "I, you, he, she, it, we, they",
+  "id": 2,
+  "nombre": "PRONOMBRES SUJETO",
+  "tipoNivel": "gramatica",
+  "objetivo": "Usar el pronombre sujeto correcto, que en inglés es obligatorio.",
+  "secciones": [
     {
-      "t": "teoria",
+      "id": "n02-s01",
+      "orden": 1,
       "titulo": "I, you, we",
-      "regla": "En inglés siempre se dice el sujeto: I am tired (no «Am tired»). I siempre va con mayúscula. you = tú, usted o ustedes. we = nosotros.",
+      "teoria": "En inglés **siempre** se dice el sujeto: I am tired (no «Am tired»). **I** siempre va con mayúscula. **you** = tú, usted o ustedes. **we** = nosotros.",
       "ejemplos": [
         {
           "en": "I am a student.",
@@ -20,80 +26,116 @@
           "es": "Estamos aquí."
         }
       ],
-      "vocab": []
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ am tired. (yo)",
-      "respuestas": [
-        "I"
+      "vocabulario": [],
+      "ejercicios": [
+        {
+          "tipo": "emparejar",
+          "consigna": "Une cada palabra con su significado",
+          "pares": [
+            {
+              "izq": "I",
+              "der": "yo"
+            },
+            {
+              "izq": "you",
+              "der": "tú"
+            },
+            {
+              "izq": "we",
+              "der": "nosotros"
+            }
+          ],
+          "ordenDer": [
+            2,
+            1,
+            0
+          ],
+          "respuestas": [
+            "listo"
+          ],
+          "id": "n02-s01-e01"
+        },
+        {
+          "tipo": "elegir",
+          "consigna": "Elige la palabra que completa la frase",
+          "enunciado": "___ am tired. (yo)",
+          "opciones": [
+            "I",
+            "You",
+            "It",
+            "He"
+          ],
+          "respuestas": [
+            "I"
+          ],
+          "error": "yo = **I**.",
+          "id": "n02-s01-e02"
+        },
+        {
+          "tipo": "elegir",
+          "consigna": "Elige la palabra que completa la frase",
+          "enunciado": "___ are students. (nosotros)",
+          "opciones": [
+            "We",
+            "It",
+            "You",
+            "He"
+          ],
+          "respuestas": [
+            "We"
+          ],
+          "error": "nosotros = **we**.",
+          "id": "n02-s01-e03"
+        },
+        {
+          "id": "n02-s01-e04",
+          "tipo": "completar",
+          "enunciado": "___ are happy. (tú)",
+          "respuestas": [
+            "You"
+          ],
+          "error": "tú = **you**."
+        },
+        {
+          "id": "n02-s01-e05",
+          "tipo": "escribir_palabra",
+          "enunciado": "Escribe el pronombre para: nosotros → ___",
+          "respuestas": [
+            "we"
+          ],
+          "error": "nosotros = we."
+        },
+        {
+          "tipo": "ordenar",
+          "consigna": "Arma la frase en inglés",
+          "pista": "Yo estoy cansado",
+          "palabras": [
+            "I",
+            "tired",
+            "is",
+            "are",
+            "am"
+          ],
+          "respuestas": [
+            "I am tired"
+          ],
+          "audio": {
+            "texto": "I am tired",
+            "idioma": "en-US"
+          },
+          "id": "n02-s01-e06"
+        }
       ],
-      "explicacion": "yo = I.",
-      "t": "ej",
-      "id": "n02-s01-e01"
+      "dominio": {
+        "umbralAciertos": 0.8,
+        "minimoRespondidas": 6
+      }
     },
     {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ are happy. (tú)",
-      "respuestas": [
-        "You"
-      ],
-      "explicacion": "tú = you.",
-      "t": "ej",
-      "id": "n02-s01-e02"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ are students. (nosotros)",
-      "respuestas": [
-        "We"
-      ],
-      "explicacion": "nosotros = we.",
-      "t": "ej",
-      "id": "n02-s01-e03"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "escribir_palabra",
-      "q": "Escribe el pronombre para: nosotros",
-      "respuestas": [
-        "we"
-      ],
-      "explicacion": "nosotros = we.",
-      "t": "ej",
-      "id": "n02-s01-e04"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Estoy cansado.",
-      "respuestas": [
-        "I am tired.",
-        "I'm tired."
-      ],
-      "explicacion": "No se omite el sujeto: I am.",
-      "t": "ej",
-      "id": "n02-s01-e05"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Estamos aquí.",
-      "respuestas": [
-        "We are here.",
-        "We're here."
-      ],
-      "explicacion": "No se omite el sujeto: We are.",
-      "t": "ej",
-      "id": "n02-s01-e06"
-    },
-    {
-      "t": "teoria",
+      "id": "n02-s02",
+      "orden": 2,
       "titulo": "He, she, it",
-      "regla": "he = un hombre o niño. she = una mujer o niña. it = cosas, animales y lugares.",
+      "teoria": "**he** = un hombre o niño. **she** = una mujer o niña. **it** = cosas, animales y lugares.",
       "ejemplos": [
         {
           "en": "He is a doctor.",
@@ -108,91 +150,116 @@
           "es": "Es una casa."
         }
       ],
-      "vocab": []
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a doctor. (un hombre)",
-      "respuestas": [
-        "He"
+      "vocabulario": [],
+      "ejercicios": [
+        {
+          "tipo": "emparejar",
+          "consigna": "Une cada palabra con su significado",
+          "pares": [
+            {
+              "izq": "he",
+              "der": "él"
+            },
+            {
+              "izq": "she",
+              "der": "ella"
+            },
+            {
+              "izq": "it",
+              "der": "eso"
+            }
+          ],
+          "ordenDer": [
+            1,
+            0,
+            2
+          ],
+          "respuestas": [
+            "listo"
+          ],
+          "id": "n02-s02-e01"
+        },
+        {
+          "tipo": "elegir",
+          "consigna": "Elige la palabra que completa la frase",
+          "enunciado": "___ is a doctor. (un hombre)",
+          "opciones": [
+            "He",
+            "She",
+            "You",
+            "I"
+          ],
+          "respuestas": [
+            "He"
+          ],
+          "error": "hombre = **he**.",
+          "id": "n02-s02-e02"
+        },
+        {
+          "tipo": "elegir",
+          "consigna": "Elige la palabra que completa la frase",
+          "enunciado": "___ is a house. (una cosa)",
+          "opciones": [
+            "It",
+            "We",
+            "He",
+            "She"
+          ],
+          "respuestas": [
+            "It"
+          ],
+          "error": "cosa = **it**.",
+          "id": "n02-s02-e03"
+        },
+        {
+          "id": "n02-s02-e04",
+          "tipo": "completar",
+          "enunciado": "___ is a teacher. (una mujer)",
+          "respuestas": [
+            "She"
+          ],
+          "error": "mujer = **she**."
+        },
+        {
+          "id": "n02-s02-e05",
+          "tipo": "completar",
+          "enunciado": "___ is a dog. (animal)",
+          "respuestas": [
+            "It"
+          ],
+          "error": "animal = **it**."
+        },
+        {
+          "tipo": "ordenar",
+          "consigna": "Arma la frase en inglés",
+          "pista": "Ella está aquí",
+          "palabras": [
+            "she",
+            "am",
+            "here",
+            "is",
+            "are"
+          ],
+          "respuestas": [
+            "she is here"
+          ],
+          "audio": {
+            "texto": "she is here",
+            "idioma": "en-US"
+          },
+          "id": "n02-s02-e06"
+        }
       ],
-      "explicacion": "hombre = he.",
-      "t": "ej",
-      "id": "n02-s02-e01"
+      "dominio": {
+        "umbralAciertos": 0.8,
+        "minimoRespondidas": 6
+      }
     },
     {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a teacher. (una mujer)",
-      "respuestas": [
-        "She"
-      ],
-      "explicacion": "mujer = she.",
-      "t": "ej",
-      "id": "n02-s02-e02"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a house. (una cosa)",
-      "respuestas": [
-        "It"
-      ],
-      "explicacion": "cosa = it.",
-      "t": "ej",
-      "id": "n02-s02-e03"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a dog. (animal)",
-      "respuestas": [
-        "It"
-      ],
-      "explicacion": "animal = it.",
-      "t": "ej",
-      "id": "n02-s02-e04"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "escribir_palabra",
-      "q": "Escribe el pronombre para: una mesa",
-      "respuestas": [
-        "it"
-      ],
-      "explicacion": "cosa = it.",
-      "t": "ej",
-      "id": "n02-s02-e05"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Ella es doctora.",
-      "respuestas": [
-        "She is a doctor.",
-        "She's a doctor."
-      ],
-      "explicacion": "mujer = she.",
-      "t": "ej",
-      "id": "n02-s02-e06"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Es un libro.",
-      "respuestas": [
-        "It is a book.",
-        "It's a book."
-      ],
-      "explicacion": "En inglés no se omite el sujeto: It is.",
-      "t": "ej",
-      "id": "n02-s02-e07"
-    },
-    {
-      "t": "teoria",
+      "id": "n02-s03",
+      "orden": 3,
       "titulo": "They y sustitución",
-      "regla": "they = varias personas o cosas. Un pronombre reemplaza al nombre: Ana is a doctor → She is a doctor.",
+      "teoria": "**they** = varias personas o cosas. Un pronombre reemplaza al nombre: Ana is a doctor → **She** is a doctor.",
       "ejemplos": [
         {
           "en": "Tom and Ana are here.",
@@ -207,247 +274,190 @@
           "es": "Ana y yo estamos felices."
         }
       ],
-      "vocab": []
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Ana is a doctor.",
-      "respuestas": [
-        "She is a doctor.",
-        "She's a doctor."
+      "vocabulario": [],
+      "ejercicios": [
+        {
+          "tipo": "emparejar",
+          "consigna": "Une cada palabra con su significado",
+          "pares": [
+            {
+              "izq": "they",
+              "der": "ellos"
+            },
+            {
+              "izq": "we",
+              "der": "nosotros"
+            },
+            {
+              "izq": "he",
+              "der": "él"
+            },
+            {
+              "izq": "she",
+              "der": "ella"
+            }
+          ],
+          "ordenDer": [
+            1,
+            2,
+            0,
+            3
+          ],
+          "respuestas": [
+            "listo"
+          ],
+          "id": "n02-s03-e01"
+        },
+        {
+          "id": "n02-s03-e02",
+          "tipo": "transformar",
+          "enunciado": "Cambia el sujeto por un pronombre: Ana is a doctor. → ___",
+          "respuestas": [
+            "She is a doctor.",
+            "She's a doctor."
+          ],
+          "error": "Ana es mujer → she."
+        },
+        {
+          "id": "n02-s03-e03",
+          "tipo": "transformar",
+          "enunciado": "Cambia el sujeto por un pronombre: Tom is tired. → ___",
+          "respuestas": [
+            "He is tired.",
+            "He's tired."
+          ],
+          "error": "Tom es hombre → he."
+        },
+        {
+          "id": "n02-s03-e04",
+          "tipo": "transformar",
+          "enunciado": "Cambia el sujeto por un pronombre: Tom and Ana are here. → ___",
+          "respuestas": [
+            "They are here.",
+            "They're here."
+          ],
+          "error": "Varias personas → they."
+        },
+        {
+          "id": "n02-s03-e05",
+          "tipo": "transformar",
+          "enunciado": "Cambia el sujeto por un pronombre: Ana and I are happy. → ___",
+          "respuestas": [
+            "We are happy.",
+            "We're happy."
+          ],
+          "error": "Ana y yo → we."
+        },
+        {
+          "tipo": "ordenar",
+          "consigna": "Arma la frase en inglés",
+          "pista": "Ellos están felices",
+          "palabras": [
+            "are",
+            "is",
+            "happy",
+            "am",
+            "they"
+          ],
+          "respuestas": [
+            "they are happy"
+          ],
+          "audio": {
+            "texto": "they are happy",
+            "idioma": "en-US"
+          },
+          "id": "n02-s03-e06"
+        }
       ],
-      "explicacion": "Ana es mujer → she.",
-      "t": "ej",
-      "id": "n02-s03-e01"
+      "dominio": {
+        "umbralAciertos": 0.8,
+        "minimoRespondidas": 6
+      }
     },
     {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Tom is tired.",
-      "respuestas": [
-        "He is tired.",
-        "He's tired."
-      ],
-      "explicacion": "Tom es hombre → he.",
-      "t": "ej",
-      "id": "n02-s03-e02"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Tom and Ana are here.",
-      "respuestas": [
-        "They are here.",
-        "They're here."
-      ],
-      "explicacion": "Varias personas → they.",
-      "t": "ej",
-      "id": "n02-s03-e03"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Ana and I are happy.",
-      "respuestas": [
-        "We are happy.",
-        "We're happy."
-      ],
-      "explicacion": "Ana y yo → we.",
-      "t": "ej",
-      "id": "n02-s03-e04"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ are students. (ellos)",
-      "respuestas": [
-        "They"
-      ],
-      "explicacion": "ellos = they.",
-      "t": "ej",
-      "id": "n02-s03-e05"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Ellas son doctoras.",
-      "respuestas": [
-        "They are doctors.",
-        "They're doctors."
-      ],
-      "explicacion": "varias personas → they.",
-      "t": "ej",
-      "id": "n02-s03-e06"
-    },
-    {
-      "t": "teoria",
+      "id": "n02-s04",
+      "orden": 4,
       "titulo": "Evaluación del nivel",
-      "regla": "Combina todo lo aprendido en PRONOMBRES SUJETO. No hay contenido nuevo.",
+      "teoria": "Combina todo lo aprendido en PRONOMBRES SUJETO. No hay contenido nuevo.",
       "ejemplos": [],
-      "vocab": []
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "escribir_palabra",
-      "q": "Escribe el pronombre para: nosotros",
-      "respuestas": [
-        "we"
+      "vocabulario": [],
+      "ejercicios": [
+        {
+          "id": "n02-s04-e01",
+          "tipo": "escribir_palabra",
+          "enunciado": "Escribe el pronombre para: una mesa → ___",
+          "respuestas": [
+            "it"
+          ],
+          "error": "cosa = it."
+        },
+        {
+          "id": "n02-s04-e02",
+          "tipo": "traducir",
+          "enunciado": "Estoy cansado. = ___",
+          "respuestas": [
+            "I am tired.",
+            "I'm tired."
+          ],
+          "error": "No se omite el sujeto: I am."
+        },
+        {
+          "id": "n02-s04-e03",
+          "tipo": "traducir",
+          "enunciado": "Es un libro. = ___",
+          "respuestas": [
+            "It is a book.",
+            "It's a book."
+          ],
+          "error": "En inglés no se omite el sujeto: It is."
+        },
+        {
+          "id": "n02-s04-e04",
+          "tipo": "completar",
+          "enunciado": "___ are students. (ellos)",
+          "respuestas": [
+            "They"
+          ],
+          "error": "ellos = **they**."
+        },
+        {
+          "id": "n02-s04-e05",
+          "tipo": "traducir",
+          "enunciado": "Ella es doctora. = ___",
+          "respuestas": [
+            "She is a doctor.",
+            "She's a doctor."
+          ],
+          "error": "mujer = she."
+        },
+        {
+          "id": "n02-s04-e06",
+          "tipo": "traducir",
+          "enunciado": "Ellas son doctoras. = ___",
+          "respuestas": [
+            "They are doctors.",
+            "They're doctors."
+          ],
+          "error": "varias personas → they."
+        },
+        {
+          "id": "n02-s04-e07",
+          "tipo": "traducir",
+          "enunciado": "Estamos aquí. = ___",
+          "respuestas": [
+            "We are here.",
+            "We're here."
+          ],
+          "error": "No se omite el sujeto: We are."
+        }
       ],
-      "explicacion": "nosotros = we.",
-      "t": "ej",
-      "id": "n02-s04-e01"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Ana and I are happy.",
-      "respuestas": [
-        "We are happy.",
-        "We're happy."
-      ],
-      "explicacion": "Ana y yo → we.",
-      "t": "ej",
-      "id": "n02-s04-e02"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a teacher. (una mujer)",
-      "respuestas": [
-        "She"
-      ],
-      "explicacion": "mujer = she.",
-      "t": "ej",
-      "id": "n02-s04-e03"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a house. (una cosa)",
-      "respuestas": [
-        "It"
-      ],
-      "explicacion": "cosa = it.",
-      "t": "ej",
-      "id": "n02-s04-e04"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Ella es doctora.",
-      "respuestas": [
-        "She is a doctor.",
-        "She's a doctor."
-      ],
-      "explicacion": "mujer = she.",
-      "t": "ej",
-      "id": "n02-s04-e05"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Estoy cansado.",
-      "respuestas": [
-        "I am tired.",
-        "I'm tired."
-      ],
-      "explicacion": "No se omite el sujeto: I am.",
-      "t": "ej",
-      "id": "n02-s04-e06"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Ana is a doctor.",
-      "respuestas": [
-        "She is a doctor.",
-        "She's a doctor."
-      ],
-      "explicacion": "Ana es mujer → she.",
-      "t": "ej",
-      "id": "n02-s04-e07"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "transformar",
-      "q": "Cambia el sujeto por un pronombre: Tom is tired.",
-      "respuestas": [
-        "He is tired.",
-        "He's tired."
-      ],
-      "explicacion": "Tom es hombre → he.",
-      "t": "ej",
-      "id": "n02-s04-e08"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ are happy. (tú)",
-      "respuestas": [
-        "You"
-      ],
-      "explicacion": "tú = you.",
-      "t": "ej",
-      "id": "n02-s04-e09"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ are students. (ellos)",
-      "respuestas": [
-        "They"
-      ],
-      "explicacion": "ellos = they.",
-      "t": "ej",
-      "id": "n02-s04-e10"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Es un libro.",
-      "respuestas": [
-        "It is a book.",
-        "It's a book."
-      ],
-      "explicacion": "En inglés no se omite el sujeto: It is.",
-      "t": "ej",
-      "id": "n02-s04-e11"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "completar",
-      "q": "___ is a dog. (animal)",
-      "respuestas": [
-        "It"
-      ],
-      "explicacion": "animal = it.",
-      "t": "ej",
-      "id": "n02-s04-e12"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Estamos aquí.",
-      "respuestas": [
-        "We are here.",
-        "We're here."
-      ],
-      "explicacion": "No se omite el sujeto: We are.",
-      "t": "ej",
-      "id": "n02-s04-e13"
-    },
-    {
-      "tipo": "escribir",
-      "subtipo": "traducir",
-      "q": "Escribe en inglés: Ellas son doctoras.",
-      "respuestas": [
-        "They are doctors.",
-        "They're doctors."
-      ],
-      "explicacion": "varias personas → they.",
-      "t": "ej",
-      "id": "n02-s04-e14"
+      "dominio": {
+        "umbralAciertos": 0.8,
+        "minimoRespondidas": 7
+      },
+      "tipo": "evaluacion"
     }
-  ]
+  ],
+  "requiere": 1,
+  "bloque": "Fundamentos"
 }

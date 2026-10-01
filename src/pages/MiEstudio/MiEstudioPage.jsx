@@ -8,6 +8,11 @@ import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import QuestionCard, { LeccionInglesa } from "./QuestionCard";
+import InglesNivelView from "../../components/InglesNivelView";
+import {
+  cargarProgreso as cargarProgresoIngles,
+  guardarProgreso as guardarProgresoIngles
+} from "../../lib/inglesProgreso";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
@@ -90,6 +95,7 @@ function adaptarEjerciciosAparte(data) {
 }
 export default function MiEstudioPage() {
   const [topicData, setTopicData] = useState(null);
+  const [progresoIngles, setProgresoIngles] = useState(cargarProgresoIngles);
   const [cursoSeleccionado, setCursoSeleccionado] = useState(null);
   const [, setLoading] = useState(false);
   const [, setError] = useState("");
@@ -424,6 +430,24 @@ export default function MiEstudioPage() {
       document.exitFullscreen();
     }
   }
+  function guardarResultadoIngles(idNivel, idSeccion, r) {
+    setProgresoIngles((prev) => {
+      const nivel = prev[idNivel] || { secciones: {} };
+      const antes = nivel.secciones[idSeccion] || {};
+      const mejor = Math.max(antes.mejor || 0, r.aciertos / r.total);
+      const nuevo = {
+        ...prev,
+        [idNivel]: {
+          secciones: {
+            ...nivel.secciones,
+            [idSeccion]: { mejor, dominada: !!antes.dominada || r.dominada }
+          }
+        }
+      };
+      guardarProgresoIngles(nuevo);
+      return nuevo;
+    });
+  }
   async function abrirTema(item) {
     window.scrollTo(0, 0);
     setLoading(true);
@@ -500,7 +524,8 @@ export default function MiEstudioPage() {
       setVidas(5);
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
-      setPreguntaModoAbierta(true);
+      // Inglés (niveles con secciones/leccion) no pregunta si mostrar la teoría
+      setPreguntaModoAbierta(!(data.secciones || data.leccion));
     } catch (e) {
       console.error("Error en abrirTema:", e);
       setError(`No pude cargar "${item.tema}". (${e.message})`);
@@ -1953,6 +1978,18 @@ ${teoria}`;
             )}
           </>
         )}
+        {topicData?.secciones && (
+          <div className="ingles-page">
+            <InglesNivelView
+              key={topicData.archivo}
+              nivel={{ id: topicData.id, archivo: topicData.archivo }}
+              datosIniciales={topicData}
+              progreso={progresoIngles}
+              alGuardar={guardarResultadoIngles}
+              alVolver={() => setTopicData(null)}
+            />
+          </div>
+        )}
         {topicData?.leccion && (
           <LeccionInglesa
             key={topicData.archivo}
@@ -1967,7 +2004,7 @@ ${teoria}`;
             })()}
           />
         )}
-        {topicData && !topicData.leccion && (stage === "theory" || stage === "question") && (
+        {topicData && !topicData.leccion && !topicData.secciones && (stage === "theory" || stage === "question") && (
           <div className="mi-estudio__stage">
             {stage === "question" && !modoExamenTema && (
               <div className="mi-estudio__hud-wrap animate-fade-in">
