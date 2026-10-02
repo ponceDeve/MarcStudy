@@ -79,12 +79,10 @@
   left: 0;
   right: 0;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, .97) 0,
-    rgba(0, 0, 0, .97) calc(100% - 28px),
-    rgba(0, 0, 0, 0) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, .97) 0,
+      rgba(0, 0, 0, .97) calc(100% - 28px),
+      rgba(0, 0, 0, 0) 100%);
 }
 
 .levels-modal__search {
@@ -252,6 +250,7 @@
    ============================================================ */
 
 .levels-modal__search--teoria {
+
   .theory-search,
   .theory-search__wrap {
     height: auto;
@@ -478,6 +477,25 @@
 .level-btn__numero {
   display: block;
   line-height: 1;
+}
+
+/* Nivel con estrellas: el número se cambia por una estrella del mismo
+   tamaño que el número. El color sube con las estrellas (1, 2 o 3). */
+.level-btn__numero--estrella {
+  font-family: system-ui, "Segoe UI Symbol", sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+.level-btn__numero--estrellas-1 {
+  color: #f5b301;
+}
+
+.level-btn__numero--estrellas-2 {
+  color: #ff7a00;
+}
+
+.level-btn__numero--estrellas-3 {
+  color: #b04bff;
 }
 
 /* ============================================================
@@ -835,12 +853,10 @@
   .levels-modal__search-row::before {
     top: 0;
     bottom: -20px;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, .97) 0,
-      rgba(0, 0, 0, .97) calc(100% - 20px),
-      rgba(0, 0, 0, 0) 100%
-    );
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, .97) 0,
+        rgba(0, 0, 0, .97) calc(100% - 20px),
+        rgba(0, 0, 0, 0) 100%);
   }
 
   .levels-modal__buscar {

@@ -563,9 +563,19 @@ export default function TopicsModal({
                           </div>
                         )}
 
-                        <span className="level-btn__numero">
-                          {index + 1}
-                        </span>
+                        {estrellasTema > 0 && !esCursoIngles ? (
+                          <span
+                            className={`level-btn__numero level-btn__numero--estrella level-btn__numero--estrellas-${estrellasTema}`}
+                            role="img"
+                            aria-label={`Nivel ${index + 1}, ${estrellasTema} ${estrellasTema === 1 ? "estrella" : "estrellas"}`}
+                          >
+                            ★
+                          </span>
+                        ) : (
+                          <span className="level-btn__numero">
+                            {index + 1}
+                          </span>
+                        )}
                       </button>
                     </div>
                   );
