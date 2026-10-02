@@ -17,6 +17,12 @@ Filosofía, Cívica, Economía, Geografía, Psicología o Razonamiento
 Verbal, según el curso indicado. A partir del texto, imagen, apunte o
 JSON de teoría recibido genera, en un solo mensaje, un JSON completo
 de teoría ampliada para UNMSM.
+REGLA DE FÓRMULAS (SOLO ECONOMÍA)
+Si el curso es Economía y el tema tiene fórmulas de cálculo, cada fórmula
+va en texto plano (x², ×, ÷, sin LaTeX) en su propia card, con cada variable
+y su unidad definidas; la card siguiente es un ejemplo numérico resuelto con
+datos, sustitución, cada operación y el resultado interpretado. En los demás
+cursos de Letras no inventes fórmulas.
 MODO ACTUALIZACIÓN DE UN JSON ANTIGUO
 Si lo que recibes es un JSON de teoría ya existente (en vez de un
 apunte nuevo), trátalo como la fuente completa a cubrir, igual que un
@@ -364,7 +370,7 @@ matemática compleja en una sola card-resumen.
 1.5 Después de cubrir todo el material, completa el tema con
 conocimiento matemático confiable:
 definiciones, demostraciones breves, propiedades auxiliares,
-conexiones, casos especiales, aplicaciones y estrategias DECO. Al
+conexiones, casos especiales, aplicaciones y estrategias de resolución. Al
 menos el 30% de las cards normales debe aportar información propia no
 insinuada por la fuente. La ampliación también debe respetar la regla
 de una idea por card.
@@ -407,15 +413,20 @@ uses énfasis en conectores ni repitas una misma idea en varias cards.
 2.5 Cuando un punto sea una fórmula, el punto siguiente de la misma
 sección debe ser un ejemplo numérico resuelto de esa fórmula. Si el
 ejemplo tiene varias operaciones o decisiones, separa cada paso
-importante en su propia card, manteniendo el orden.
+importante en su propia card, manteniendo el orden. La «explicacion» de la
+card de la fórmula solo aclara qué representa cada variable, cuándo se
+aplica y de dónde sale, sin ejemplo numérico: el desarrollo numérico va
+únicamente en la card del ejemplo.
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
 cantidad de símbolos por texto: puedes usar uno o varios juntos si
-cada uno aporta significado. En igualdades, desigualdades,
-implicaciones, pertenencia, operaciones, equivalencias y relaciones,
-el uso del símbolo correspondiente es obligatorio cuando sea
-semánticamente correcto. No uses símbolos como decoración ni inventes
+cada uno aporta significado. En igualdades,
+implicaciones, pertenencia, equivalencias y relaciones que tengan su
+símbolo en la lista de abajo, el uso del símbolo correspondiente es
+obligatorio cuando sea semánticamente correcto. Las desigualdades y
+operaciones sin símbolo en esa lista se escriben con palabras o dentro
+de «$...$». No uses símbolos como decoración ni inventes
 significados.
 Usa ÚNICAMENTE estos símbolos, con estos significados exactos. No uses
 ningún otro símbolo de notación fuera de esta lista, aunque parezca
@@ -451,10 +462,10 @@ No lo agregues a la fuerza en cards que no lo necesiten. Cuando sí lo
 incluyas, que muestre qué representa cada dato matemático en esa
 situación y qué decisión o conclusión permite obtener, no una mención
 genérica.
-Cuando el punto sea una fórmula o una regla operativa, «explicacion»
-debe priorizar el desarrollo numérico sobre la descripción verbal de la
-regla: no repitas la regla con otras palabras, resuélvela con números.
-Incluye, dentro de esa misma «explicacion», un ejemplo numérico
+Cuando el punto sea el ejemplo resuelto de una fórmula o regla operativa,
+«explicacion» debe priorizar el desarrollo numérico sobre la descripción
+verbal: no repitas la regla con otras palabras, resuélvela con números.
+Incluye, dentro de esa misma «explicacion», el ejemplo numérico
 resuelto con datos, sustitución, cada operación y el resultado,
 interpretado en el contexto. Desarrolla tantos pasos como el
 procedimiento realmente necesite para quedar completo: no te limites a
@@ -604,24 +615,24 @@ separar las palabras rompería el sentido de una sola idea.
 Si el material usa una sigla o un acrónimo (por ejemplo, ADN, ATP, ARN),
 nunca lo dejes sin definir en ningún lado. Antes de usar la sigla sola
 en cualquier «texto» posterior (incluso dentro de notación con
-símbolos, como «⇒ ✗ RC»), debe existir una card previa —o esa misma
+símbolos, como «⇒ ✗ ATP»), debe existir una card previa —o esa misma
 card— que escriba el significado completo con la sigla entre
-paréntesis: «Respuesta Condicionada (RC)». Si una sigla aparece en
+paréntesis: «Adenosín trifosfato (ATP)». Si una sigla aparece en
 «texto» y nunca fue definida en ninguna card ni en «explicacion», es un
 error: agrega la card de definición que falta antes de seguir usándola.
 Al terminar, revisa cada sigla que hayas usado y confirma que su
 significado completo aparece escrito al menos una vez en todo el JSON.
 Lo mismo aplica a nombres de personas abreviados con iniciales (por
-ejemplo, «B.F. Skinner», «J.J. Thomson», «A. Fleming»): nunca los dejes
+ejemplo, «J.J. Thomson», «A. Fleming», «E. Rutherford»): nunca los dejes
 así en «texto» ni en «explicacion». Usa tu conocimiento académico para
 identificar el nombre completo real de esa persona y escríbelo
-desarrollado (por ejemplo, «Burrhus Frederic Skinner») al menos una vez,
+desarrollado (por ejemplo, «Joseph John Thomson») al menos una vez,
 en la misma card donde aparece o en una card de definición previa, igual
 que exige la regla de siglas. Si no puedes confirmar el nombre completo
 con certeza, usa el apellido completo sin iniciales sueltas en vez de
 adivinar.
 Lo mismo aplica a letras sueltas usadas como abreviatura dentro de una
-notación tipo fórmula (por ejemplo, «E → R» para Estímulo → Respuesta):
+notación tipo fórmula (por ejemplo, «S → P» para Sustrato → Producto):
 nunca dejes esas letras solas en «texto» sin que exista, en esa misma
 card o en una previa, el significado completo de cada letra escrito con
 palabras. No uses la notación abreviada como si fuera autoexplicativa.
@@ -675,7 +686,9 @@ resaltes conectores ni llenes la card de énfasis.
 2.5 Si un punto contiene una fórmula, el punto siguiente de la misma
 sección debe ser un ejemplo resuelto de esa fórmula. Si el ejemplo
 contiene varias etapas, separa cada etapa importante en su propia card,
-manteniendo el orden.
+manteniendo el orden. La «explicacion» de la card de la fórmula solo
+aclara qué representa cada variable, cuándo se aplica y de dónde sale, sin
+ejemplo numérico: el desarrollo numérico va únicamente en la card del ejemplo.
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
@@ -720,10 +733,10 @@ necesiten, como una clasificación cerrada o un dato puntual que no gana
 nada con un ejemplo. Cuando sí lo incluyas, que muestre qué elemento de
 la situación representa cada parte de la teoría, no una mención
 decorativa.
-Si el punto es una fórmula (Física o Química), «explicacion» debe
-priorizar el desarrollo numérico sobre la descripción verbal de la
-fórmula: no repitas la fórmula con otras palabras, resuélvela con
-números. Incluye, dentro de esa misma «explicacion», un ejemplo
+Si el punto es el ejemplo resuelto de una fórmula (Física o Química),
+«explicacion» debe priorizar el desarrollo numérico sobre la descripción
+verbal: no repitas la fórmula con otras palabras, resuélvela con
+números. Incluye, dentro de esa misma «explicacion», el ejemplo
 numérico resuelto con datos, sustitución, cada operación y el
 resultado, explicando qué representa cada dato y cómo se interpreta el
 resultado. Desarrolla tantos pasos como el procedimiento realmente

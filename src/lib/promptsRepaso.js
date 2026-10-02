@@ -352,11 +352,23 @@ function promptJsonBase(curso) {
   if (CURSOS_JSON_CIENCIA.includes(curso)) return teoriaCiencia;
   return teoriaLetras;
 }
-export function construirPromptJson({ curso, tema }) {
+export function construirPromptJson({ curso, tema, temarioCurso }) {
+  const conCalculo =
+    CURSOS_JSON_MATE.includes(curso) || CURSOS_JSON_CIENCIA.includes(curso);
+  const { total, lista } = temarioNumerado(temarioCurso, tema);
+  const bloqueTemario = temarioCurso
+    ? `\n- No desarrolles ningún tema que en este temario tenga su propio número (${total} en total); solo el marcado con «← TEMA A DESARROLLAR».\nTEMARIO (referencia)\n${lista}`
+    : "\n- No desarrolles temas distintos al indicado en TEMA.";
+  const bloqueEjemplos = conCalculo
+    ? "\n- Todo ejemplo numérico que escribas se recalcula paso a paso y se verifica antes de entregar; usa los datos del apunte cuando existan."
+    : "";
   return `CURSO: ${curso}
 TEMA: ${tema}
 PASO 2 de 3: convierte en el JSON de este prompt los apuntes que escribiste en tu mensaje anterior. Ese texto es el material recibido que debes cubrir completo.
 Devuelve únicamente el JSON, siguiendo todas las reglas de abajo. Después te pediré el examen; no lo hagas todavía.
+PRIORIDAD EN ESTE FLUJO (prevalece sobre las reglas de abajo)
+- Los apuntes ya fueron investigados y verificados. La ampliación (regla 1.5) se limita a explicar el porqué, el contexto y los errores frecuentes de las mismas ideas: no agregues subtemas, fechas, nombres ni cifras que no estén en los apuntes y no puedas confirmar con certeza.
+- El material es texto: ignora lo que dicen las reglas sobre imágenes y sobre JSON antiguo.${bloqueEjemplos}${bloqueTemario}
 ${promptJsonBase(curso)}`;
 }
 // ─────────────────────────────────────────────────────────────────────────
@@ -372,6 +384,7 @@ export function construirPromptExamen({ curso, tema }) {
   return `CURSO: ${curso}
 TEMA: ${tema}
 PASO 3 de 3: usa como entrada el JSON de teoría que generaste en tu mensaje anterior. Ese JSON es el que «recibes» en el prompt de abajo. Sigue todas las reglas de abajo, incluido el flujo de dos mensajes.
+Si el JSON se corta por el límite de longitud, cuando te diga «continúa» sigue exactamente desde donde quedó, dentro del mismo bloque de código y sin repetir nada.
 ${promptExamenBase(curso)}`;
 }
 // ─────────────────────────────────────────────────────────────────────────

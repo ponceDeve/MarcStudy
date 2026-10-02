@@ -5,6 +5,8 @@ App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
 ROL Y ENTRADA
 Actúa como especialista en Lenguaje, Literatura, Historia, Filosofía, Cívica, Economía, Geografía, Psicología o Razonamiento Verbal, según el curso recibido, con nivel UNMSM. Recibirás un JSON de teoría con secciones («titulo») y, dentro de cada una, puntos con «texto» y «explicacion». No hay una sección «Ejercicios» ni marcadores «Ejercicio N»: los ejercicios los redactas tú (Bloque B).
+REGLA DE FÓRMULAS (SOLO ECONOMÍA)
+Si el curso es Economía y la teoría tiene fórmulas, incluye cálculos aplicados con las fórmulas en texto plano (sin LaTeX). En los ejercicios «opcion_multiple» cuantitativos las cinco alternativas son números con la misma unidad y los distractores salen de errores plausibles (unidad, despeje, signo, interpretación). Las demás reglas de Letras no cambian.
 FUENTE EXCLUSIVA DE CONOCIMIENTO
 Toda pregunta, alternativa, explicación y ejercicio debe poder resolverse EXCLUSIVAMENTE con la teoría recibida en el JSON.
 Puedes combinar varios puntos de la teoría, incluso puntos diferentes del mismo tema, pero no puedes introducir:
@@ -74,10 +76,10 @@ El Bloque A usa solo el tipo 2.1. El Bloque B usa los cuatro tipos (2.1, 2.2, 2.
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 Usa exactamente cinco alternativas.
-Cada alternativa tiene una sola idea y máximo 5 palabras, sin explicación ni justificación dentro. Las cinco tienen un largo parecido. El detalle sutil de un distractor se logra cambiando una palabra o frase corta, no alargando la oración.
+Cada alternativa tiene una sola idea y máximo 5 palabras, sin explicación ni justificación dentro. Las cinco tienen un largo parecido. El detalle sutil de un distractor se logra con una palabra o frase corta que cambie el sentido, sin alargar la oración.
 Las cinco deben responder al mismo caso o fragmento y competir entre sí.
 No redactes cinco paráfrasis de la teoría.
-No construyas las alternativas cambiando únicamente una palabra de una misma oración.
+No construyas las cinco como la misma oración con una palabra distinta: varía el arranque y la estructura aunque cada una sea corta.
 Las alternativas deben poder tener estructuras sintácticas diferentes, inicios diferentes y órdenes diferentes.
 Cada una debe representar una interpretación, conclusión, clasificación, decisión, relación causal, contexto o explicación que podría parecer razonable al analizar rápidamente el caso.
 La correcta debe depender del análisis completo del caso y de la teoría.
@@ -216,6 +218,7 @@ Comprueba que:
 - «relacionar» usa «1a - 2b - 3c»;
 - no aparece «Ejercicio N»;
 - la distribución de «correct» es equilibrada;
+- cada respuesta correcta se verificó de nuevo y exactamente una alternativa es correcta;
 - el resultado final es JSON válido.`;
 export const examenMate = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE MATEMÁTICAS TIPO DECO (JSON)
@@ -256,6 +259,7 @@ Forma:
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
 Cada pregunta evalúa su propio punto mediante aplicación y razonamiento: si el punto es una fórmula, ecuación o procedimiento, se resuelve; si es conceptual, se plantea una situación donde el concepto deba aplicarse o interpretarse, nunca por definición directa ni por simple reconocimiento. No fusiones varios puntos en una sola pregunta.
 No mezcles puntos de otros títulos.
+Si el punto es el ejemplo resuelto de una fórmula, la pregunta usa datos numéricos distintos a los del ejemplo.
 Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
@@ -419,6 +423,7 @@ Comprueba que:
 - no se depende de una pregunta artificial separada;
 - no aparece «Ejercicio N»;
 - «correct» está distribuido;
+- cada resultado se recalculó paso a paso y exactamente una alternativa es correcta;
 - el JSON es válido.`;
 export const examenCiencia = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE CIENCIAS TIPO DECO (JSON)
@@ -457,7 +462,7 @@ Forma:
 1. BLOQUES Y CANTIDAD
 1.1 BLOQUE A
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
-Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta.
+Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta. Si el punto es el ejemplo resuelto de una fórmula, la pregunta usa datos numéricos distintos a los del ejemplo.
 Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
@@ -585,7 +590,7 @@ En Biología conceptual no uses «$» ni comandos KaTeX.
 Para texto dentro de valores utiliza «».
 Para saltos de línea utiliza «\\n».
 Distribuye «correct» entre 0, 1, 2, 3 y 4 de forma pareja.
-No uses el mismo índice más de dos preguntas consecutivas.
+En un examen de N preguntas, ningún índice debe usarse más de ⌈N/5⌉+1 veces y no puede repetirse el mismo índice en más de dos preguntas consecutivas.
 6. EXPLICACIONES
 Las explicaciones deben utilizar únicamente la teoría recibida.
 En Bloque A explica:
@@ -643,4 +648,5 @@ Comprueba que:
 - Biología conceptual no contiene KaTeX;
 - el Bloque A no supera aproximadamente 80 palabras por caso;
 - el Bloque B no supera aproximadamente 90 palabras por caso;
+- cada respuesta correcta se verificó de nuevo (cálculos recalculados) y exactamente una alternativa es correcta;
 - el resultado final es JSON válido.`;

@@ -588,7 +588,11 @@ export default function RepasoPage() {
           })
         : paso === 3
           ? construirPromptExamen({ curso, tema })
-          : construirPromptJson({ curso, tema });
+          : construirPromptJson({
+              curso,
+              tema,
+              temarioCurso: armarTemarioCurso(curso)
+            });
     const clave = `${curso}|${tema}|${paso}`;
     const ok = await copiarTexto(texto);
     if (!ok) {

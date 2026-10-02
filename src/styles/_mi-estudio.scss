@@ -2355,11 +2355,21 @@
    * abre la barra mediante el botón flotante.
    */
   &.is-open {
-    position: fixed;
+    display: flex;
+    position: sticky;
+    /* Por defecto queda debajo del header (que es fixed y mide --header-h) */
+    top: calc(var(--header-h) + 10px);
+    transition: top 0.3s linear;
+    z-index: 997;
+    box-sizing: border-box;
+    height: 42px;
+    /* margin-bottom negativo = misma altura, para que al abrirse
+       la barra no empuje el contenido hacia abajo */
+    margin-bottom: -42px;
+  }
+  /* Header oculto (scroll hacia abajo): la barra sube al tope */
+  body.is-header-oculto &.is-open {
     top: 10px;
-    left: 0;
-    right: 0;
-    z-index: 998;
   }
   &:has(.theory-search__input.has-results) {
     border-bottom-left-radius: 0;

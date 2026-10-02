@@ -93,6 +93,17 @@ function adaptarEjerciciosAparte(data) {
     examen: [...examenTeoria, ...ejercicios]
   };
 }
+// Convierte data.theory en una lista plana de puntos con id estable
+// "idxSeccion-idxPunto" y el título de su sección.
+function aplanarTeoria(data) {
+  return (data?.theory || []).flatMap((seccion, idxSeccion) =>
+    seccion.puntos.map((p, idxPunto) => ({
+      ...p,
+      id: `${idxSeccion}-${idxPunto}`,
+      seccionTitulo: seccion.titulo
+    }))
+  );
+}
 export default function MiEstudioPage() {
   const [topicData, setTopicData] = useState(null);
   const [progresoIngles, setProgresoIngles] = useState(cargarProgresoIngles);
@@ -127,13 +138,7 @@ export default function MiEstudioPage() {
   }, [seccionesAgrupadas.length, teoriaVistaIndex]);
   const seccionActual = seccionesAgrupadas[teoriaVistaIndex] || null;
   const puntosEstables = useMemo(() => {
-    return (topicData?.theory || []).flatMap((seccion, idxSeccion) =>
-      seccion.puntos.map((p, idxPunto) => ({
-        ...p,
-        id: `${idxSeccion}-${idxPunto}`,
-        seccionTitulo: seccion.titulo
-      }))
-    );
+    return aplanarTeoria(topicData);
   }, [topicData]);
   const [preguntasFinalesIds, setPreguntasFinalesIds] = useState([]);
   const [cardIndex, setCardIndex] = useState(0);
@@ -460,13 +465,7 @@ export default function MiEstudioPage() {
       const res = await fetch(import.meta.env.BASE_URL + item.archivo);
       if (!res.ok) throw new Error("No se encontró el archivo del tema");
       const data = adaptarEjerciciosAparte(await res.json());
-      const puntos = (data.theory || []).flatMap((seccion, idxSeccion) =>
-        seccion.puntos.map((p, idxPunto) => ({
-          ...p,
-          id: `${idxSeccion}-${idxPunto}`,
-          seccionTitulo: seccion.titulo
-        }))
-      );
+      const puntos = aplanarTeoria(data);
       const examenList = data.examen || [];
       const storageCompletionsKey = `completions_${item.curso}_${item.tema}`;
       const storedCompletions = JSON.parse(localStorage.getItem(storageCompletionsKey) || "{}");
@@ -621,6 +620,7 @@ ${teoria}`;
     irADestinoSalida();
   }
   function handleCancelarSalida() {
+    contenidoPendienteRef.current = null;
     setMostrarConfirmacionSalida(false);
     setTemaProximoSalida(null);
   }
@@ -666,6 +666,52 @@ ${teoria}`;
       pedirAbrirTema(item);
     }
   }
+  // Puntos de teoría de un tema (sin abrirlo), para buscar dentro de él
+  // desde el mapa de temas. Se guarda en caché por archivo.
+  const cachePuntosTemaRef = useRef(new Map());
+  async function cargarPuntosTema(item) {
+    const cache = cachePuntosTemaRef.current;
+    if (cache.has(item.archivo)) return cache.get(item.archivo);
+    const res = await fetch(import.meta.env.BASE_URL + item.archivo);
+    if (!res.ok) throw new Error("No se encontró el archivo del tema");
+    const data = adaptarEjerciciosAparte(await res.json());
+    const puntos = aplanarTeoria(data).filter(
+      (p) => p.seccionTitulo !== "Ejercicios"
+    );
+    cache.set(item.archivo, puntos);
+    return puntos;
+  }
+  // Resultado elegido en el buscador del mapa: abre ese tema (si no es el
+  // que ya está abierto) y salta al punto encontrado.
+  const contenidoPendienteRef = useRef(null);
+  function abrirTemaEnPunto(temaItem, sel) {
+    setTemasOpen(false);
+    if (topicData?.archivo === temaItem.archivo && stage === "theory") {
+      seleccionarItem({ type: "contenido", ...sel });
+      return;
+    }
+    contenidoPendienteRef.current = { archivo: temaItem.archivo, sel };
+    pedirAbrirTema({
+      curso: nombreCursoActivo,
+      tema: temaItem.tema,
+      archivo: temaItem.archivo
+    });
+  }
+  useEffect(() => {
+    const pendiente = contenidoPendienteRef.current;
+    if (
+      !pendiente ||
+      topicData?.archivo !== pendiente.archivo ||
+      stage !== "theory" ||
+      seccionesAgrupadas.length === 0
+    ) {
+      return;
+    }
+    contenidoPendienteRef.current = null;
+    // Se vino a ver una parte concreta: no preguntar "teoría u omitir".
+    setPreguntaModoAbierta(false);
+    seleccionarItem({ type: "contenido", ...pendiente.sel });
+  });
   const teoriaCompleta = useMemo(() => {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
@@ -2376,6 +2422,8 @@ ${teoria}`;
           onSelectTema={(temaItem) => {
             pedirAbrirTema({ curso: nombreCursoActivo, tema: temaItem.tema, archivo: temaItem.archivo });
           }}
+          onCargarPuntos={cargarPuntosTema}
+          onSelectContenido={abrirTemaEnPunto}
         />
       )}
       <audio ref={vidaPerderRef} src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`} preload="auto" />
