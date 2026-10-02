@@ -346,99 +346,6 @@ body.is-header-oculto .topbar-wrapper {
     flex-shrink: 0;
     min-width: 0;
   }
-  &__theme-toggle {
-    position: relative;
-    width: 64px;
-    height: 32px;
-    padding: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-full);
-    background: var(--surface-alt);
-    flex-shrink: 0;
-    align-self: center;
-    cursor: url("/cursor_pointer.webp"), pointer !important;
-    box-sizing: border-box;
-    transition:
-      background 0.2s linear,
-      border-color 0.2s linear,
-      transform 0.15s linear;
-    &:hover {
-      border-color: var(--primary);
-    }
-    &:active {
-      transform: scale(0.96);
-    }
-    &:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 2px;
-    }
-  }
-  &__theme-option {
-    position: relative;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid transparent;
-    z-index: 1;
-    transition:
-      background 0.2s linear,
-      border-color 0.2s linear,
-      transform 0.2s linear;
-    i {
-      font-size: 15px;
-      line-height: 1;
-      pointer-events: none;
-      transition:
-        color 0.2s linear,
-        transform 0.2s linear;
-    }
-  }
-  &__theme-toggle.is-light {
-    background: var(--surface);
-    border-color: var(--border-strong);
-    .topbar__theme-option--light {
-      background: var(--ink);
-      border-color: var(--ink);
-      i {
-        color: #f5b400;
-        transform: scale(1.05);
-      }
-    }
-    .topbar__theme-option--dark {
-      background: transparent;
-      border-color: transparent;
-      i {
-        color: var(--ink-soft);
-        transform: scale(1);
-      }
-    }
-  }
-  &__theme-toggle.is-dark {
-    background: var(--surface-alt);
-    border-color: var(--border-strong);
-    .topbar__theme-option--light {
-      background: transparent;
-      border-color: transparent;
-      i {
-        color: var(--ink-soft);
-        transform: scale(1);
-      }
-    }
-    .topbar__theme-option--dark {
-      background: var(--ink);
-      border-color: var(--surface);
-      i {
-        color: var(--brand);
-        transform: scale(1.05);
-      }
-    }
-  }
   /* ============================================================
      BUSCADOR
      ============================================================ */
@@ -970,18 +877,6 @@ body.is-header-oculto .topbar-wrapper {
       gap: 5px;
       flex: 0 0 auto;
     }
-    &__theme-toggle {
-      width: 58px;
-      height: 30px;
-      padding: 2px;
-    }
-    &__theme-option {
-      width: 26px;
-      height: 26px;
-      i {
-        font-size: 12px;
-      }
-    }
     &__nav {
       display: none !important;
       &--question {
@@ -1127,18 +1022,6 @@ body.is-header-oculto .topbar-wrapper {
     }
     &__controls {
       gap: 4px;
-    }
-    &__theme-toggle {
-      width: 56px;
-      height: 29px;
-      padding: 2px;
-    }
-    &__theme-option {
-      width: 25px;
-      height: 25px;
-      i {
-        font-size: 11px;
-      }
     }
     &__control-btn,
     &__gear {

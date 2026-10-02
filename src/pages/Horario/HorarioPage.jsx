@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useEffect } from "react";
+import { useState, useRef, useMemo, useEffect, useLayoutEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { usePomodoro } from "../../context/PomodoroContext";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
@@ -95,6 +95,7 @@ export default function HorarioPage() {
     {}
   );
   const [pendingCompletarCurso, setPendingCompletarCurso] = useState(null);
+  const [confirmarReinicio, setConfirmarReinicio] = useState(false);
   const [mostrarConfirmacionCompletar, setMostrarConfirmacionCompletar] =
     useState(false);
   const [temaDesdeLink, setTemaDesdeLink] = useState(null);
@@ -169,6 +170,13 @@ export default function HorarioPage() {
     }, 3000);
     return () => clearTimeout(timer);
   }, [mostrarConfirmacionCompletar]);
+  useEffect(() => {
+    if (!confirmarReinicio) return;
+    const timer = setTimeout(() => {
+      setConfirmarReinicio(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [confirmarReinicio]);
   const activeTasks = useMemo(
     () => (activeCourse ? buildCourseTasks(activeCourse) : []),
     [activeCourse]
@@ -201,6 +209,33 @@ export default function HorarioPage() {
     isRunning,
   } = pomodoro;
   const reset = pomodoro.reiniciar;
+  const clockRef = useRef(null);
+  const clockTextRef = useRef(null);
+  useLayoutEffect(() => {
+    const box = clockRef.current;
+    const text = clockTextRef.current;
+    if (!box || !text) return;
+    let ultimoAncho = 0;
+    function ajustar() {
+      const disponible = box.clientWidth;
+      if (disponible <= 0) return;
+      ultimoAncho = disponible;
+      box.style.fontSize = "100px";
+      const ancho = text.getBoundingClientRect().width;
+      if (ancho > 0) {
+        box.style.fontSize = `${(disponible / ancho) * 100}px`;
+      }
+    }
+    ajustar();
+    const ro = new ResizeObserver(() => {
+      if (box.clientWidth !== ultimoAncho) ajustar();
+    });
+    ro.observe(box);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(ajustar);
+    }
+    return () => ro.disconnect();
+  }, [formatted.length]);
   const currentTaskDuration =
     totalSeconds > 0
       ? totalSeconds / 60
@@ -662,6 +697,19 @@ function cerrarCourseComplete() {
     setPendingCourseComplete(null);
     setTemaModalOpen(false);
   }
+  function pedirReiniciarCurso() {
+    if (!activeCourse) return;
+    if (!confirmarReinicio) {
+      setConfirmarReinicio(true);
+      return;
+    }
+    const key = progressKey(selectedDay, activeCourse.subject);
+    setProgress((prev) => ({ ...prev, [key]: 0 }));
+    setPares((prev) => ({ ...prev, [key]: 1 }));
+    setCompletados((prev) => ({ ...prev, [key]: false }));
+    detenerYReiniciar(POMODORO_MIN);
+    setConfirmarReinicio(false);
+  }
   function agregarPomodoroCurso(day, subject) {
     agregarParCurso(day, subject);
     setPares((prev) => ({
@@ -838,8 +886,10 @@ function cerrarCourseComplete() {
                   Descanso de {manualBreak} min
                 </p>
               )}
-              <h2 className="timer-font horario__timer-clock">
-                {formatted}
+              <h2 className="horario__timer-clock" ref={clockRef}>
+                <span ref={clockTextRef} className="horario__timer-text">
+                  {formatted}
+                </span>
               </h2>
               <div className="horario__progress-track">
                 <div
@@ -1085,6 +1135,23 @@ function cerrarCourseComplete() {
                 <div className="horario__task-actions">
                   <button
                     type="button"
+                    className="horario__reset-pomodoros-btn"
+                    disabled={
+                      isRunning ||
+                      (activeTaskIdx === 0 &&
+                        activeCourse.pomodoros <= 1 &&
+                        !completados[
+                          progressKey(selectedDay, activeCourse.subject)
+                        ])
+                    }
+                    onClick={pedirReiniciarCurso}
+                    title="Reiniciar pomodoros"
+                    aria-label={`Reiniciar pomodoros de ${activeCourse.subject}`}
+                  >
+                    <i className="fas fa-rotate-left" />
+                  </button>
+                  <button
+                    type="button"
                     className="horario__add-pomodoro-btn"
                     disabled={
                       activeTasks.length === 0 ||
@@ -1194,6 +1261,24 @@ function cerrarCourseComplete() {
                 pomodoros
               </span>
             </p>
+          </div>
+        </div>
+      )}
+      {confirmarReinicio && activeCourse && (
+        <div
+          className="horario__complete-confirm-toast horario__complete-confirm-toast--reset"
+          role="status"
+        >
+          <div className="horario__complete-confirm-toast-content">
+            <div className="horario__complete-confirm-toast-info">
+              <i className="fa-solid fa-rotate-left" />
+              <div>
+                <strong>
+                  ¿Reiniciar los pomodoros de {activeCourse.subject}?
+                </strong>
+                <small>Toca otra vez el botón para confirmar</small>
+              </div>
+            </div>
           </div>
         </div>
       )}

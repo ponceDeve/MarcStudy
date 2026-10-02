@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
-import { useTemaOscuro } from "../../hooks/useTemaOscuro";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
@@ -51,7 +50,6 @@ export default function TopBar({
   temasOpen = false,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-  const [temaOscuro, setTemaOscuro] = useTemaOscuro();
   const [isFullscreen, setIsFullscreen] = useState(
     () => !!document.fullscreenElement
   );
@@ -337,41 +335,6 @@ export default function TopBar({
                 )}
               </div>
             )}
-            <button
-              type="button"
-              className={`topbar__theme-toggle ${
-                temaOscuro ? "is-dark" : "is-light"
-              }`}
-              onClick={() =>
-                setTemaOscuro(
-                  (actual) => !actual
-                )
-              }
-              title={
-                temaOscuro
-                  ? "Cambiar a modo claro"
-                  : "Cambiar a modo oscuro"
-              }
-              aria-label={
-                temaOscuro
-                  ? "Cambiar a modo claro"
-                  : "Cambiar a modo oscuro"
-              }
-              aria-pressed={temaOscuro}
-            >
-              <span className="topbar__theme-option topbar__theme-option--light">
-                <i
-                  className="fa-solid fa-sun"
-                  aria-hidden="true"
-                />
-              </span>
-              <span className="topbar__theme-option topbar__theme-option--dark">
-                <i
-                  className="fa-solid fa-moon"
-                  aria-hidden="true"
-                />
-              </span>
-            </button>
             {botonesMenu.length > 0 && (
               <button
                 type="button"

@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
-import { useTemaOscuro } from "../hooks/useTemaOscuro";
 import EditarNombreModal from "./EditarNombreModal";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -53,7 +52,6 @@ export default function AppHeader({
     "miEstudio_fotoUsuario",
     null
   );
-  const [temaOscuro, setTemaOscuro] = useTemaOscuro();
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(() => {
     if (nombreUsuario) return false;
@@ -445,43 +443,6 @@ export default function AppHeader({
                   "topbar__nav-btn topbar__nav-btn--resultados-buscar"
                 )}
             </div>
-            {/* =================================================
-                TOGGLE MODO OSCURO
-                ================================================= */}
-            <button
-              type="button"
-              className={`topbar__theme-toggle ${temaOscuro ? "is-dark" : "is-light"
-                }`}
-              onClick={() =>
-                setTemaOscuro(
-                  (actual) => !actual
-                )
-              }
-              title={
-                temaOscuro
-                  ? "Cambiar a modo claro"
-                  : "Cambiar a modo oscuro"
-              }
-              aria-label={
-                temaOscuro
-                  ? "Cambiar a modo claro"
-                  : "Cambiar a modo oscuro"
-              }
-              aria-pressed={temaOscuro}
-            >
-              <span className="topbar__theme-option topbar__theme-option--light">
-                <i
-                  className="fa-solid fa-sun"
-                  aria-hidden="true"
-                />
-              </span>
-              <span className="topbar__theme-option topbar__theme-option--dark">
-                <i
-                  className="fa-solid fa-moon"
-                  aria-hidden="true"
-                />
-              </span>
-            </button>
             {/* =================================================
                 MENÚ HAMBURGUESA
                 ================================================= */}

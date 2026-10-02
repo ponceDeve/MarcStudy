@@ -1,5 +1,7 @@
 /* ============================================================
+
    LevelsModal
+
    ============================================================ */
 
 .levels-modal {
@@ -42,7 +44,9 @@
 }
 
 /* ============================================================
+
    Contenedor
+
    ============================================================ */
 
 .levels-modal__inner {
@@ -53,7 +57,9 @@
 }
 
 /* ============================================================
+
    Buscador + Cerrar mapa
+
    ============================================================ */
 
 .levels-modal__search-row {
@@ -185,12 +191,14 @@
   font-weight: 600;
   line-height: 1.3;
   display: block;
-  white-space: normal;      /* los nombres largos se parten en 2 líneas */
+  white-space: normal;
   overflow-wrap: anywhere;
 }
 
 /* ============================================================
+
    Botón Buscar (estilo base)
+
    ============================================================ */
 
 .levels-modal__buscar {
@@ -216,7 +224,9 @@
 }
 
 /* ============================================================
+
    Flecha para salir del mapa
+
    ============================================================ */
 
 .levels-modal__back {
@@ -251,7 +261,9 @@
 }
 
 /* ============================================================
+
    Botón Buscar
+
    ============================================================ */
 
 .levels-modal__buscar {
@@ -277,7 +289,9 @@
 }
 
 /* ============================================================
+
    Buscador dentro del tema elegido
+
    ============================================================ */
 
 .levels-modal__search--teoria {
@@ -322,7 +336,6 @@
     max-height: 22rem;
   }
 
-  /* Sugerencias de la búsqueda dentro del tema: texto más grande */
   .theory-search__item {
     padding: 12px 16px;
     font-size: 18px;
@@ -342,7 +355,9 @@
 }
 
 /* ============================================================
+
    Input con el nombre del tema: más grande
+
    ============================================================ */
 
 .levels-modal__search .home-search-input,
@@ -355,7 +370,9 @@
 }
 
 /* ============================================================
+
    El nombre del tema se ve con color fuerte
+
    ============================================================ */
 
 .levels-modal__search--teoria .theory-search__input::placeholder,
@@ -389,7 +406,9 @@
 }
 
 /* ============================================================
+
    Niveles
+
    ============================================================ */
 
 .level-tema-banner {
@@ -408,8 +427,7 @@
 }
 
 .level-cell {
-  --star-fs: clamp(0.8rem, 2.2vw, 1.35rem);   /* tamaño de las estrellas */
-
+  --star-fs: clamp(0.8rem, 2.2vw, 1.35rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -417,7 +435,9 @@
 }
 
 /* ============================================================
+
    Estrellas de cada nivel
+
    ============================================================ */
 
 .level-cell__estrellas {
@@ -441,7 +461,6 @@
   --ty: 0;
   --rot: 0deg;
   --s: 1;
-
   color: #d5d9e0;
   text-shadow:
     0 1px 2px rgba(0, 0, 0, .8),
@@ -517,10 +536,10 @@
 }
 
 /* ============================================================
+
    Botón circular del nivel
-   El "grosor" (canto oscuro de abajo) se hace con box-shadow,
-   así no depende de z-index ni de pseudo-elementos.
-   Para cambiar colores: --cara (parte de arriba) y --canto (borde de abajo).
+   El canto oscuro está únicamente abajo.
+
    ============================================================ */
 
 .level-btn {
@@ -549,17 +568,16 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   -webkit-tap-highlight-color: transparent;
 
-  /* canto sólido + sombra suave debajo + brillo arriba */
   box-shadow:
     0 var(--grosor) 0 var(--canto),
-    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, .45),
-    inset 0 4px 0 rgba(255, 255, 255, .25);
+    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, .45);
 
   transition: transform .1s linear, box-shadow .1s linear;
 }
 
 /* Al hacer hover la cara baja 3px y el canto se acorta 3px:
    la base queda en el mismo sitio y parece que se hunde */
+
 .level-btn:not(:disabled):hover {
   --grosor: 7px;
   transform: translateY(3px);
@@ -593,7 +611,9 @@
 }
 
 /* ============================================================
+
    Responsive: número + estrellas
+
    ============================================================ */
 
 @media (max-width: 1100px) {
@@ -652,12 +672,14 @@
   }
 
   .level-cell {
-    --star-fs: 1.05rem;
+    --star-fs: 1.2rem;
   }
 }
 
 /* ============================================================
+
    Estados (solo cambian las variables de color)
+
    ============================================================ */
 
 .level-btn.is-selected {
@@ -686,19 +708,21 @@
 }
 
 /* ============================================================
+
    Mapa de niveles: 18 por página (3 columnas x 6 filas)
+
    ============================================================ */
 
 .levels-map {
-  --map-gap: 64px;     /* horizontal: entre niveles de la misma fila */
-  --map-gap-y: 110px;  /* vertical: entre filas */
+  --map-gap: 64px;
+  --map-gap-y: 110px;
   --line-w: 6px;
 
   display: flex;
   flex-direction: column;
   gap: var(--map-gap-y);
   width: 100%;
-  max-width: 440px;   /* ancho del mapa: define el tamaño de los círculos */
+  max-width: 440px;
   margin: 0 auto;
   padding-top: 28px;
   padding-bottom: 24px;
@@ -756,7 +780,9 @@
 }
 
 /* ============================================================
+
    Líneas que conectan los niveles
+
    ============================================================ */
 
 .level-cell--h::after {
@@ -779,7 +805,6 @@
 }
 
 .level-cell--v::after {
-  /* espacio que ocupan las estrellas sobre el botón */
   --libre-estrellas: calc(var(--star-fs) * 2);
 
   content: "";
@@ -793,7 +818,9 @@
 }
 
 /* ============================================================
+
    Paginación
+
    ============================================================ */
 
 .levels-nav {
@@ -828,6 +855,7 @@
 .levels-nav__btn.is-activa {
   background: var(--primary-dark);
   border-color: var(--primary);
+  color: var(--ink-on-primary);
 }
 
 .levels-nav__btn:disabled {
@@ -990,7 +1018,9 @@
 }
 
 /* ============================================================
+
    TheorySearchModal.jsx
+
    ============================================================ */
 
 .theory-search-modal__results {
