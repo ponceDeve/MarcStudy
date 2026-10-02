@@ -1,4 +1,4 @@
-import{A as e,B as t,F as n,G as r,H as i,I as a,L as o,M as s,N as c,P as ee,R as l,U as te,V as ne,W as re,X as u,Y as ie,k as ae,q as oe,v as se,z as ce}from"./index-BIGOSrnx.js";import{t as d}from"./coursesSemanas-C-uNaywv.js";var f=u(ie(),1),p="`",m=String.raw`═══════════════════════════════════════════════════════════════
+import{A as e,B as t,F as n,G as r,H as i,I as a,L as o,M as s,N as c,P as ee,R as l,U as te,V as ne,W as re,X as u,Y as ie,k as ae,q as oe,v as se,z as ce}from"./index-DRRLu0WK.js";import{t as d}from"./coursesSemanas-C-uNaywv.js";var f=u(ie(),1),p="`",m=String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE TARJETAS DE TEORÍA DE LETRAS (JSON)
 App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
