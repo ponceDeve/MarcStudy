@@ -6,8 +6,9 @@ import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 
 import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
 
-// 18 niveles por página: 6 columnas x 3 filas (3 columnas x 6 filas en móvil).
+// 18 niveles por página: 3 columnas x 6 filas (en escritorio y en móvil).
 const NIVELES_POR_PAGINA = 18;
+const COLUMNAS = 3;
 
 export default function TopicsModal({
   open,
@@ -35,7 +36,7 @@ export default function TopicsModal({
 
   const [pagina, setPagina] = useState(0);
   const [direccion, setDireccion] = useState(null);
-  const [columnas, setColumnas] = useState(6);
+  const columnas = COLUMNAS;
   const [estrellasPorTema, setEstrellasPorTema] = useState({});
   const puntoInicioToque = useRef(null);
   const UMBRAL_ARRASTRE = 10;
@@ -86,19 +87,6 @@ export default function TopicsModal({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex, open]);
-
-  useEffect(() => {
-    const actualizarColumnas = () => {
-      setColumnas(window.innerWidth <= 640 ? 3 : 6);
-    };
-
-    actualizarColumnas();
-    window.addEventListener("resize", actualizarColumnas);
-
-    return () => {
-      window.removeEventListener("resize", actualizarColumnas);
-    };
-  }, []);
 
   // Al abrir, se muestra la página donde está el tema actual.
   useEffect(() => {
@@ -291,6 +279,17 @@ export default function TopicsModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="levels-modal__search-row">
+          {/* Flecha para salir del mapa */}
+          <button
+            type="button"
+            className="levels-modal__back"
+            aria-label="Salir del mapa"
+            title="Salir del mapa"
+            onClick={onClose}
+          >
+            <i className="fa-solid fa-arrow-left" />
+          </button>
+
           <div
             className={`home-search levels-modal__search ${
               itemActivo
@@ -444,10 +443,6 @@ export default function TopicsModal({
                         aria-hidden="true"
                       >
                         <div className="level-btn">
-                          <div className="level-cell__estrellas">
-                            <span>★</span>
-                          </div>
-
                           <span className="level-btn__numero">
                             0
                           </span>
@@ -509,6 +504,26 @@ export default function TopicsModal({
                           : ""
                       }`}
                     >
+                      {!esCursoIngles && (
+                        <div
+                          className="level-cell__estrellas"
+                          aria-hidden="true"
+                        >
+                          {[1, 2, 3].map((n) => (
+                            <span
+                              key={n}
+                              className={
+                                n <= estrellasTema
+                                  ? "is-activa"
+                                  : ""
+                              }
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
                       <button
                         className={`level-btn ${
                           esTemaActual
@@ -540,29 +555,6 @@ export default function TopicsModal({
                           );
                         }}
                       >
-                        {!esCursoIngles && (
-                          <div
-                            className="level-cell__estrellas"
-                            aria-hidden="true"
-                          >
-                            {[1, 2, 3].map(
-                              (n) => (
-                                <span
-                                  key={n}
-                                  className={
-                                    n <=
-                                    estrellasTema
-                                      ? "is-activa"
-                                      : ""
-                                  }
-                                >
-                                  ★
-                                </span>
-                              )
-                            )}
-                          </div>
-                        )}
-
                         {estrellasTema > 0 && !esCursoIngles ? (
                           <span
                             className={`level-btn__numero level-btn__numero--estrella level-btn__numero--estrellas-${estrellasTema}`}
@@ -646,15 +638,6 @@ export default function TopicsModal({
             </button>
           </div>
         )}
-
-        <div className="levels-modal__bottom-close">
-          <button
-            className="levels-modal__close"
-            onClick={onClose}
-          >
-            Cerrar
-          </button>
-        </div>
 
         {listaTemas.length === 0 && (
           <p className="levels-modal__empty">

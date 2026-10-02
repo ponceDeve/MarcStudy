@@ -7,13 +7,6 @@ import manifest from "../data/manifest.json";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 import {
-  buscarCoincidencia,
-  buscarPosicion,
-  extraerFragmento,
-  puntajeDeTexto
-} from "../lib/buscador";
-
-import {
   embeberTextos,
   similitudCoseno
 } from "../lib/semantico";
@@ -162,146 +155,40 @@ function ResaltarCoincidencia({texto,query}){
 
   if(indice!==-1){
     return (
-      <>
+      <span>
         {textoOriginal.slice(0,indice)}
         <span className="search-match">
           {textoOriginal.slice(indice,indice+busqueda.length)}
         </span>
         {textoOriginal.slice(indice+busqueda.length)}
-      </>
+      </span>
     );
   }
 
   const palabrasConsulta=obtenerPalabras(busqueda);
   const partes=textoOriginal.split(/(\s+)/);
 
-  return partes.map((parte,index)=>{
-    const limpio=parte.replace(/[.,;:!?()[\]{}"']/g,"");
-
-    const coincide=palabrasConsulta.some(
-      p=>palabrasCoinciden(p,limpio)
-    );
-
-    return coincide
-      ?(
-        <span
-          className="search-match"
-          key={index}
-        >
-          {parte}
-        </span>
-      )
-      :parte;
-  });
-}
-
-function ResaltarFragmento({
-  fragmento,
-  indice,
-  largoCoincidencia
-}){
-  if(indice==null||indice<0)return fragmento;
-
-  const coincidencia=fragmento.slice(
-    indice,
-    indice+largoCoincidencia
-  );
-
-  if(!coincidencia)return fragmento;
-
   return (
-    <>
-      {fragmento.slice(0,indice)}
-      <span className="search-match">
-        {coincidencia}
-      </span>
-      {fragmento.slice(indice+largoCoincidencia)}
-    </>
-  );
-}
+    <span>
+      {partes.map((parte,index)=>{
+        const limpio=parte.replace(/[.,;:!?()[\]{}"']/g,"");
 
-function armarFragmentoExplicacion(explicacion,query){
-  const indiceOriginal=buscarPosicion(
-    explicacion,
-    query
-  );
+        const coincide=palabrasConsulta.some(
+          p=>palabrasCoinciden(p,limpio)
+        );
 
-  const fragmento=extraerFragmento(
-    explicacion,
-    indiceOriginal
-  );
-
-  if(indiceOriginal==null){
-    return {
-      fragmento,
-      indice:null,
-      largo:0
-    };
-  }
-
-  const queryLimpia=query.trim();
-
-  return {
-    fragmento,
-    indice:buscarPosicion(
-      fragmento,
-      queryLimpia
-    ),
-    largo:queryLimpia.length
-  };
-}
-
-function buscarEnContenidoTema(contenidoTema,query){
-  const q=query.trim();
-
-  if(!q||contenidoTema.length===0)return [];
-
-  const resultados=[];
-
-  for(const punto of contenidoTema){
-    const matchTexto=buscarCoincidencia(
-      punto.texto,
-      q
-    );
-
-    if(matchTexto){
-      resultados.push({
-        type:"contenido",
-        puntoId:punto.id,
-        seccionTitulo:punto.seccionTitulo,
-        campo:"texto",
-        texto:punto.texto,
-        matchText:q,
-        _score:puntajeDeTexto(punto.texto,q)+500
-      });
-
-      continue;
-    }
-
-    const matchExplicacion=buscarCoincidencia(
-      punto.explicacion,
-      q
-    );
-
-    if(matchExplicacion){
-      resultados.push({
-        type:"contenido",
-        puntoId:punto.id,
-        seccionTitulo:punto.seccionTitulo,
-        campo:"explicacion",
-        texto:punto.texto,
-        explicacion:punto.explicacion,
-        matchText:q,
-        _score:puntajeDeTexto(
-          punto.explicacion,
-          q
-        )
-      });
-    }
-  }
-
-  return resultados.sort(
-    (a,b)=>b._score-a._score
+        return coincide
+          ?(
+            <span
+              className="search-match"
+              key={index}
+            >
+              {parte}
+            </span>
+          )
+          :parte;
+      })}
+    </span>
   );
 }
 
@@ -692,8 +579,7 @@ function construirItemsNavegables(grupos){
 export default function SearchModal({
   open,
   onClose,
-  onSelect,
-  contenidoTema=[]
+  onSelect
 }){
   const navigate=useNavigate();
 
@@ -854,21 +740,6 @@ export default function SearchModal({
       cancelado=true;
     };
   },[queryConfirmada,hayQuery]);
-
-  const resultadosContenido=useMemo(
-    ()=>hayQuery&&!cursoBusquedaSeleccionado
-      ?buscarEnContenidoTema(
-          contenidoTema,
-          queryConfirmada
-        )
-      :[],
-    [
-      queryConfirmada,
-      hayQuery,
-      contenidoTema,
-      cursoBusquedaSeleccionado
-    ]
-  );
 
   const grupos=useMemo(
     ()=>agruparResultados(fuertes),
@@ -1451,68 +1322,6 @@ export default function SearchModal({
           )}
 
         {mostrarResultados&&
-          !cursoBusquedaSeleccionado&&
-          resultadosContenido.length>0&&(
-            <div className="search-results">
-              <div className="search-group">
-                <p className="search-section-label">
-                  En este tema
-                </p>
-
-                {resultadosContenido.map(
-                  (r,idx)=>{
-                    const fragmento=
-                      r.campo==="explicacion"
-                        ?armarFragmentoExplicacion(
-                            r.explicacion,
-                            queryConfirmada
-                          )
-                        :null;
-
-                    return (
-                      <button
-                        type="button"
-                        key={`contenido-${r.puntoId}-${r.campo}-${idx}`}
-                        onClick={()=>
-                          ejecutarBusqueda(r)
-                        }
-                        className="search-result-item is-tema is-contenido"
-                      >
-                        {r.seccionTitulo&&(
-                          <p className="search-result-item__seccion">
-                            {r.seccionTitulo}
-                          </p>
-                        )}
-
-                        <p className="search-result-item__tema">
-                          {r.campo==="texto"?(
-                            <ResaltarCoincidencia
-                              texto={r.texto}
-                              query={queryConfirmada}
-                            />
-                          ):(
-                            <ResaltarFragmento
-                              fragmento={
-                                fragmento.fragmento
-                              }
-                              indice={
-                                fragmento.indice
-                              }
-                              largoCoincidencia={
-                                fragmento.largo
-                              }
-                            />
-                          )}
-                        </p>
-                      </button>
-                    );
-                  }
-                )}
-              </div>
-            </div>
-          )}
-
-        {mostrarResultados&&
           cursoBusquedaSeleccionado&&
           grupoCursoSeleccionado&&(
             <div className="search-results">
@@ -1544,7 +1353,6 @@ export default function SearchModal({
         {mostrarResultados&&
           !cursoBusquedaSeleccionado&&
           grupos.length===0&&
-          resultadosContenido.length===0&&
           !buscandoSemantica&&(
             <div className="search-results">
               <div className="search-group">
@@ -1560,8 +1368,7 @@ export default function SearchModal({
         {mostrarResultados&&
           !cursoBusquedaSeleccionado&&
           buscandoSemantica&&
-          grupos.length===0&&
-          resultadosContenido.length===0&&(
+          grupos.length===0&&(
             <div className="search-results">
               <div className="search-group">
                 <div className="search-result-item search-no-results search-loading">

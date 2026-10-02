@@ -94,7 +94,7 @@ body.is-header-oculto .topbar-wrapper {
      CURSO + TEMA
      ============================================================ */
   &__title-btn {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     min-width: 0;
     width: auto;
     max-width: 100%;
@@ -102,8 +102,8 @@ body.is-header-oculto .topbar-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: 4px;
     background: transparent;
     border: none;
     border-radius: 6px;
@@ -130,10 +130,11 @@ body.is-header-oculto .topbar-wrapper {
     }
   }
   &__title-box {
-    width: 100%;
+    width: auto;
     height: 100%;
     min-width: 0;
-    flex: 1 1 auto;
+    max-width: 100%;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -141,8 +142,8 @@ body.is-header-oculto .topbar-wrapper {
   }
   &__info-box {
     min-width: 0;
-    width: 100%;
-    flex: 1 1 auto;
+    width: auto;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -156,7 +157,7 @@ body.is-header-oculto .topbar-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 4px;
+    margin-left: 0;
   }
   &__tema-wrapper {
     width: 100%;
@@ -944,7 +945,7 @@ body.is-header-oculto .topbar-wrapper {
       width: 28px;
       height: 28px;
       flex: 0 0 28px;
-      margin-left: 3px;
+      margin-left: 0;
     }
     &__tema-wrapper {
       gap: 4px;
