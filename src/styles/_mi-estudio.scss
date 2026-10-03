@@ -1968,6 +1968,18 @@
     padding: var(--space-3);
   }
 }
+/* La palabra encontrada NO se pinta: solo se pinta la tarjeta */
+.teoria-busqueda-resaltado,
+mark.teoria-busqueda-resaltado,
+span.teoria-busqueda-resaltado {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border: 0 !important;
+  animation: none !important;
+}
 /* Caja encontrada con el buscador: cambia de fondo 1 segundo */
 .teoria-card-unica.punto-encontrado {
   animation: puntoEncontrado 1s linear;
@@ -2370,7 +2382,7 @@
     border-bottom: 1px solid var(--border);
   }
   &__title {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--ink);
   }
@@ -2423,8 +2435,8 @@
       border-radius: 14px 14px 14px 4px;
       background: var(--surface-hover);
       color: var(--ink);
-      font-size: 0.85rem;
-      line-height: 1.35;
+      font-size: 1.05rem;
+      line-height: 1.4;
       &--usuario {
         align-self: flex-end;
         border-radius: 14px 14px 4px 14px;
@@ -2445,7 +2457,7 @@
       border-radius: 999px;
       background: transparent;
       color: var(--ink);
-      font-size: 0.8rem;
+      font-size: 1rem;
       text-align: left;
       cursor: pointer;
       transition: background-color 0.15s linear;
@@ -2460,7 +2472,8 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       background: var(--surface);
-      font-size: 0.8rem;
+      font-size: 1rem;
+      line-height: 1.45;
       &:first-child,
       &:last-child,
       & + & {
@@ -2480,7 +2493,10 @@
       height: 48px;
       padding: 0 14px;
       border-radius: 0;
-      font-size: 0.875rem;
+      font-size: 1rem;
+    }
+    .theory-search__item-texto {
+      font-size: 0.9rem;
     }
     .theory-search__enviar {
       flex: none;
@@ -2489,7 +2505,7 @@
       border: none;
       background: transparent;
       color: var(--primary);
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       cursor: pointer;
     }
   }

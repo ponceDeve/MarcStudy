@@ -83,6 +83,13 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     promesa: null,
   });
   const idPeticionRef = useRef(0);
+  const inputRef = useRef(null);
+  // En el chat, el campo recibe el foco apenas se abre.
+  useEffect(() => {
+    if (!modoChat) return undefined;
+    const t = setTimeout(() => inputRef.current?.focus(), 50);
+    return () => clearTimeout(t);
+  }, [modoChat]);
   // Búsqueda "confirmada" con Enter: los resultados salen de aquí,
   // no de lo que se está escribiendo.
   const [queryBuscada, setQueryBuscada] = useState("");
@@ -368,7 +375,8 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
-    setQuery(queryLimpia);
+    // En el chat el campo se limpia al enviar, como en cualquier chat.
+    setQuery(modoChat ? "" : queryLimpia);
     setResultadoSemantico(null);
     setBusquedaLista(false);
     setQueryBuscada(queryLimpia);
@@ -377,12 +385,23 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
   }
   function buscarConEnter() {
     const queryLimpia = query.trim();
+    // Chat con el campo vacío: Enter elige el resultado enfocado con las flechas.
+    if (modoChat && queryLimpia === "") {
+      if (resultadosVisibles.length > 0 && focusedIdx >= 0) {
+        elegir(resultadosVisibles[focusedIdx]);
+      }
+      return;
+    }
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
     // Ya hay sugerencias visibles para este mismo texto:
     // Enter elige la enfocada con las flechas o, si no hay, la primera.
-    if (queryLimpia === queryBuscada && resultadosVisibles.length > 0) {
+    if (
+      !modoChat &&
+      queryLimpia === queryBuscada &&
+      resultadosVisibles.length > 0
+    ) {
       elegir(resultadosVisibles[focusedIdx >= 0 ? focusedIdx : 0]);
       return;
     }
@@ -454,7 +473,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     handleKeyDown(e);
   }
   /* ============================================================
-     SUGERENCIAS (primeros 3 títulos) — solo modo chat
+     SUGERENCIAS (todos los títulos) — solo modo chat
      ============================================================ */
   const sugerenciasTitulos = useMemo(() => {
     const vistos = [];
@@ -462,7 +481,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
       if (p.seccionTitulo && !vistos.includes(p.seccionTitulo)) {
         vistos.push(p.seccionTitulo);
       }
-      if (vistos.length === 3) break;
     }
     return vistos;
   }, [flatPuntos]);
@@ -477,14 +495,18 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     query.trim() === queryBuscada &&
     hayResultadosPendientes;
   // En el chat los resultados se quedan aunque el input pierda el foco.
-  const mostrarMensajesChat =
-    hayQuery && query.trim() === queryBuscada && hayResultadosPendientes;
+  const mostrarMensajesChat = hayQuery && hayResultadosPendientes;
   /* ============================================================
      ITEMS (texto y explicación COMPLETOS)
      ============================================================ */
   function renderItems() {
     return resultadosVisibles.map((r, idx) => {
-      const { punto, matchTitulo } = r;
+      const { punto, matchTitulo, matchExplicacion } = r;
+      // La explicación solo se muestra si la búsqueda coincidió con ella
+      // (o si el punto no tiene texto que mostrar).
+      const mostrarExplicacion =
+        !!punto.explicacion &&
+        (!!matchExplicacion || !punto.texto);
       return (
         <button
           key={punto.id}
@@ -511,7 +533,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
               />
             </span>
           ) : null}
-          {punto.explicacion ? (
+          {mostrarExplicacion ? (
             <span className="theory-search__item-texto">
               <ResaltarCoincidencia
                 texto={punto.explicacion}
@@ -525,6 +547,8 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
   }
   const inputEl = (
     <input
+      ref={inputRef}
+      autoFocus={modoChat}
       autoComplete="off"
       type="search"
       name="buscar-teoria"
@@ -564,9 +588,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
             </>
           ) : (
             <>
-              <div className="theory-search__burbuja">
-                Busca algo en la teoría
-              </div>
               {sugerenciasTitulos.length > 0 && (
                 <div className="theory-search__sugerencias">
                   {sugerenciasTitulos.map((titulo) => (

@@ -17,7 +17,6 @@ import {
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./Glossarytext";
-import { resaltarPalabraTemporal, flashearFondoTemporal } from "../../utils/resaltarBusqueda";
 import TopBar from "./TopBar";
 import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
@@ -632,17 +631,6 @@ ${teoria}`;
             void contenedorPunto.offsetWidth;
             contenedorPunto.classList.add("punto-encontrado");
             setTimeout(() => contenedorPunto.classList.remove("punto-encontrado"), 1000);
-          }
-          const selectorCampo =
-            item.campo === "explicacion"
-              ? ".teoria-explicacion-extra__texto"
-              : ".teoria-contenido-principal";
-          const contenedorCampo =
-            contenedorPunto?.querySelector(selectorCampo);
-          if (item.matchText && contenedorCampo) {
-            resaltarPalabraTemporal(contenedorCampo, item.matchText);
-          } else if (contenedorCampo) {
-            flashearFondoTemporal(contenedorCampo);
           }
         });
       });
