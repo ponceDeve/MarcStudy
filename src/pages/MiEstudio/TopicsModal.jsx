@@ -8,6 +8,7 @@ import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
 
 // 18 niveles por página: 3 columnas x 6 filas (en escritorio y en móvil).
 const NIVELES_POR_PAGINA = 18;
+
 const COLUMNAS = 3;
 
 // Barra de páginas: nunca se muestran todas a la vez. Siempre quedan visibles
@@ -20,9 +21,16 @@ const PAG_CASILLAS_MAX = 9;
 
 function calcularCasillasNumeros(ancho) {
   if (!ancho) return 7;
-  const botones = Math.floor((ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP));
+
+  const botones = Math.floor(
+    (ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP)
+  );
+
   // Se restan las 2 flechas.
-  return Math.max(PAG_CASILLAS_MIN, Math.min(PAG_CASILLAS_MAX, botones - 2));
+  return Math.max(
+    PAG_CASILLAS_MIN,
+    Math.min(PAG_CASILLAS_MAX, botones - 2)
+  );
 }
 
 // Devuelve números de página (base 0) y marcadores "gap-ini" / "gap-fin".
@@ -38,7 +46,10 @@ function armarPaginacion(total, actual, casillas) {
   if (actual <= casillas - 4) {
     // Cerca del inicio: 1 2 3 4 … N
     items = [
-      ...Array.from({ length: casillas - 2 }, (_, i) => i),
+      ...Array.from(
+        { length: casillas - 2 },
+        (_, i) => i
+      ),
       "gap-fin",
       ultima
     ];
@@ -54,11 +65,16 @@ function armarPaginacion(total, actual, casillas) {
     ];
   } else {
     // En medio: 1 … a-1 a a+1 … N
-    const inicio = actual - Math.floor((centro - 1) / 2);
+    const inicio =
+      actual - Math.floor((centro - 1) / 2);
+
     items = [
       0,
       "gap-ini",
-      ...Array.from({ length: centro }, (_, i) => inicio + i),
+      ...Array.from(
+        { length: centro },
+        (_, i) => inicio + i
+      ),
       "gap-fin",
       ultima
     ];
@@ -67,9 +83,13 @@ function armarPaginacion(total, actual, casillas) {
   // Si «…» solo esconde una página, se muestra esa página en su lugar.
   return items.map((it, i) => {
     if (typeof it !== "string") return it;
+
     const antes = items[i - 1];
     const despues = items[i + 1];
-    return despues - antes === 2 ? antes + 1 : it;
+
+    return despues - antes === 2
+      ? antes + 1
+      : it;
   });
 }
 
@@ -95,12 +115,17 @@ export default function TopicsModal({
   const modalRef = useRef(null);
 
   const itemActivo =
-    activeIndex !== null ? listaTemas[activeIndex] : null;
+    activeIndex !== null
+      ? listaTemas[activeIndex]
+      : null;
 
   const [pagina, setPagina] = useState(0);
   const [direccion, setDireccion] = useState(null);
   const columnas = COLUMNAS;
-  const [estrellasPorTema, setEstrellasPorTema] = useState({});
+
+  const [estrellasPorTema, setEstrellasPorTema] =
+    useState({});
+
   const puntoInicioToque = useRef(null);
   const UMBRAL_ARRASTRE = 10;
 
@@ -114,7 +139,9 @@ export default function TopicsModal({
 
     try {
       setEstrellasPorTema(
-        JSON.parse(localStorage.getItem("estrellasTemas") || "{}")
+        JSON.parse(
+          localStorage.getItem("estrellasTemas") || "{}"
+        )
       );
     } catch {
       setEstrellasPorTema({});
@@ -131,6 +158,7 @@ export default function TopicsModal({
     }
 
     let cancelado = false;
+
     setCargandoPuntos(true);
 
     onCargarPuntos(itemActivo)
@@ -160,7 +188,9 @@ export default function TopicsModal({
     );
 
     setPagina(
-      idx >= 0 ? Math.floor(idx / NIVELES_POR_PAGINA) : 0
+      idx >= 0
+        ? Math.floor(idx / NIVELES_POR_PAGINA)
+        : 0
     );
 
     setDireccion(null);
@@ -194,13 +224,18 @@ export default function TopicsModal({
     const dx = e.clientX - inicio.x;
     const dy = e.clientY - inicio.y;
 
-    return Math.sqrt(dx * dx + dy * dy) > UMBRAL_ARRASTRE;
+    return (
+      Math.sqrt(dx * dx + dy * dy) >
+      UMBRAL_ARRASTRE
+    );
   }
 
-  const temasConIndice = listaTemas.map((item, index) => ({
-    item,
-    index
-  }));
+  const temasConIndice = listaTemas.map(
+    (item, index) => ({
+      item,
+      index
+    })
+  );
 
   const temasFiltrados = busqueda.trim()
     ? buscarConPuntaje(
@@ -211,13 +246,14 @@ export default function TopicsModal({
     : temasConIndice;
 
   // Flechas y Enter en la lista de temas.
-  const { focusedIdx, handleKeyDown } = useArrowKeyList(
-    itemActivo ? [] : temasFiltrados,
-    ({ item }) => {
-      onSelectTema(item);
-      onClose();
-    }
-  );
+  const { focusedIdx, handleKeyDown } =
+    useArrowKeyList(
+      itemActivo ? [] : temasFiltrados,
+      ({ item }) => {
+        onSelectTema(item);
+        onClose();
+      }
+    );
 
   function onKeyDownNombres(e) {
     if (e.key === "Escape") {
@@ -240,7 +276,8 @@ export default function TopicsModal({
   const totalPaginas = Math.max(
     1,
     Math.ceil(
-      temasFiltrados.length / NIVELES_POR_PAGINA
+      temasFiltrados.length /
+        NIVELES_POR_PAGINA
     )
   );
 
@@ -262,7 +299,11 @@ export default function TopicsModal({
 
   const filasVisibles = [];
 
-  for (let r = 0; r < filasPorPagina; r++) {
+  for (
+    let r = 0;
+    r < filasPorPagina;
+    r++
+  ) {
     filasVisibles.push({
       filaIndex: r,
       fila: temasPagina.slice(
@@ -284,7 +325,9 @@ export default function TopicsModal({
     }
 
     setDireccion(
-      nueva > paginaActual ? "up" : "down"
+      nueva > paginaActual
+        ? "up"
+        : "down"
     );
 
     setPagina(nueva);
@@ -293,6 +336,7 @@ export default function TopicsModal({
   // Ancho real de la barra de páginas, para decidir cuántas casillas caben.
   const navRef = useRef(null);
   const [anchoNav, setAnchoNav] = useState(0);
+
   const hayNavegacion = totalPaginas > 1;
 
   useEffect(() => {
@@ -300,29 +344,42 @@ export default function TopicsModal({
 
     if (!el) return undefined;
 
-    const medir = () => setAnchoNav(el.clientWidth);
+    const medir = () =>
+      setAnchoNav(el.clientWidth);
 
     medir();
 
-    if (typeof ResizeObserver === "undefined") {
-      window.addEventListener("resize", medir);
+    if (
+      typeof ResizeObserver ===
+      "undefined"
+    ) {
+      window.addEventListener(
+        "resize",
+        medir
+      );
 
       return () =>
-        window.removeEventListener("resize", medir);
+        window.removeEventListener(
+          "resize",
+          medir
+        );
     }
 
-    const observador = new ResizeObserver(medir);
+    const observador =
+      new ResizeObserver(medir);
 
     observador.observe(el);
 
-    return () => observador.disconnect();
+    return () =>
+      observador.disconnect();
   }, [hayNavegacion, open]);
 
-  const elementosPaginacion = armarPaginacion(
-    totalPaginas,
-    paginaActual,
-    calcularCasillasNumeros(anchoNav)
-  );
+  const elementosPaginacion =
+    armarPaginacion(
+      totalPaginas,
+      paginaActual,
+      calcularCasillasNumeros(anchoNav)
+    );
 
   // El scroll empieza abajo.
   useEffect(() => {
@@ -336,7 +393,8 @@ export default function TopicsModal({
       }
     });
 
-    return () => cancelAnimationFrame(id);
+    return () =>
+      cancelAnimationFrame(id);
   }, [open, paginaActual, columnas]);
 
   return (
@@ -351,7 +409,9 @@ export default function TopicsModal({
     >
       <div
         className="levels-modal__inner"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) =>
+          e.stopPropagation()
+        }
       >
         <div className="levels-modal__search-row">
           {/* Flecha para salir del mapa */}
@@ -371,7 +431,9 @@ export default function TopicsModal({
                 ? "levels-modal__search--teoria"
                 : ""
             }`}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>
+              e.stopPropagation()
+            }
           >
             {itemActivo ? (
               <TheorySearchBar
@@ -395,7 +457,9 @@ export default function TopicsModal({
                   name="buscar-tema"
                   value={busqueda}
                   onChange={(e) => {
-                    setBusqueda(e.target.value);
+                    setBusqueda(
+                      e.target.value
+                    );
                     setPagina(0);
                     setDireccion(null);
                   }}
@@ -420,7 +484,8 @@ export default function TopicsModal({
 
                 {inputEnfocado && (
                   <div className="home-search-results">
-                    {temasFiltrados.length === 0 && (
+                    {temasFiltrados.length ===
+                      0 && (
                       <p className="search-empty">
                         Ningún tema coincide con "
                         {busqueda}".
@@ -440,7 +505,8 @@ export default function TopicsModal({
                             onClose();
                           }}
                           className={`home-search-result ${
-                            item.tema === temaActual ||
+                            item.tema ===
+                              temaActual ||
                             idx === focusedIdx
                               ? "is-focused"
                               : ""
@@ -465,12 +531,18 @@ export default function TopicsModal({
               type="button"
               className="levels-modal__buscar"
               disabled={
-                !itemActivo || cargandoPuntos
+                !itemActivo ||
+                cargandoPuntos
               }
               title={
                 itemActivo
                   ? "Buscar dentro de este tema"
                   : "Toca un tema del mapa para buscar dentro de él"
+              }
+              aria-label={
+                itemActivo
+                  ? "Buscar dentro de este tema"
+                  : "Selecciona un tema para buscar"
               }
               onMouseDown={(e) =>
                 e.preventDefault()
@@ -479,7 +551,10 @@ export default function TopicsModal({
                 barraTemaRef.current?.buscar()
               }
             >
-              Buscar
+              <i
+                className="fa-solid fa-magnifying-glass"
+                aria-hidden="true"
+              />
             </button>
           </div>
         </div>
@@ -491,7 +566,9 @@ export default function TopicsModal({
               ? `levels-map--anim-${direccion}`
               : ""
           }`}
-          style={{ "--cols": columnas }}
+          style={{
+            "--cols": columnas
+          }}
         >
           {filasVisibles.map(
             ({ fila, filaIndex }) => (
@@ -505,159 +582,180 @@ export default function TopicsModal({
               >
                 {Array.from({
                   length: columnas
-                }).map((_, posicion) => {
-                  const celda =
-                    fila[posicion];
+                }).map(
+                  (_, posicion) => {
+                    const celda =
+                      fila[posicion];
 
-                  // Casilla vacía de la última fila.
-                  if (!celda) {
-                    return (
-                      <div
-                        key={`vacio-${filaIndex}-${posicion}`}
-                        className="level-cell level-cell--empty"
-                        aria-hidden="true"
-                      >
-                        <div className="level-btn">
-                          <span className="level-btn__numero">
-                            0
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  }
-
-                  const { item, index } =
-                    celda;
-
-                  const esTemaActual =
-                    item.tema ===
-                    temaActual;
-
-                  const esArmado =
-                    activeIndex === index;
-
-                  const conectaFila =
-                    posicion <
-                    fila.length - 1;
-
-                  const hayFilaSiguiente =
-                    temasPagina.length >
-                    (filaIndex + 1) *
-                      columnas;
-
-                  const conectaArriba =
-                    posicion ===
-                      columnas - 1 &&
-                    hayFilaSiguiente;
-
-                  const esCursoIngles =
-                    String(curso || "")
-                      .normalize("NFD")
-                      .replace(
-                        /[\u0300-\u036f]/g,
-                        ""
-                      )
-                      .toLowerCase()
-                      .trim() ===
-                    "ingles";
-
-                  const estrellasTema =
-                    estrellasPorTema[
-                      `${curso}_${item.tema}`
-                    ]?.estrellas || 0;
-
-                  return (
-                    <div
-                      key={index}
-                      className={`level-cell ${
-                        conectaFila
-                          ? "level-cell--h"
-                          : ""
-                      } ${
-                        conectaArriba
-                          ? "level-cell--v"
-                          : ""
-                      } ${
-                        esCursoIngles
-                          ? "level-cell--sin-estrellas"
-                          : ""
-                      }`}
-                    >
-                      {!esCursoIngles && (
+                    // Casilla vacía de la última fila.
+                    if (!celda) {
+                      return (
                         <div
-                          className="level-cell__estrellas"
+                          key={`vacio-${filaIndex}-${posicion}`}
+                          className="level-cell level-cell--empty"
                           aria-hidden="true"
                         >
-                          {[1, 2, 3].map((n) => (
+                          <div className="level-btn">
+                            <span className="level-btn__numero">
+                              0
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    const {
+                      item,
+                      index
+                    } = celda;
+
+                    const esTemaActual =
+                      item.tema ===
+                      temaActual;
+
+                    const esArmado =
+                      activeIndex === index;
+
+                    const conectaFila =
+                      posicion <
+                      fila.length - 1;
+
+                    const hayFilaSiguiente =
+                      temasPagina.length >
+                      (filaIndex + 1) *
+                        columnas;
+
+                    const conectaArriba =
+                      posicion ===
+                        columnas - 1 &&
+                      hayFilaSiguiente;
+
+                    const esCursoIngles =
+                      String(curso || "")
+                        .normalize("NFD")
+                        .replace(
+                          /[\u0300-\u036f]/g,
+                          ""
+                        )
+                        .toLowerCase()
+                        .trim() ===
+                      "ingles";
+
+                    const estrellasTema =
+                      estrellasPorTema[
+                        `${curso}_${item.tema}`
+                      ]?.estrellas || 0;
+
+                    return (
+                      <div
+                        key={index}
+                        className={`level-cell ${
+                          conectaFila
+                            ? "level-cell--h"
+                            : ""
+                        } ${
+                          conectaArriba
+                            ? "level-cell--v"
+                            : ""
+                        } ${
+                          esCursoIngles
+                            ? "level-cell--sin-estrellas"
+                            : ""
+                        }`}
+                      >
+                        {!esCursoIngles && (
+                          <div
+                            className="level-cell__estrellas"
+                            aria-hidden="true"
+                          >
+                            {[1, 2, 3].map(
+                              (n) => (
+                                <span
+                                  key={n}
+                                  className={
+                                    n <=
+                                    estrellasTema
+                                      ? "is-activa"
+                                      : ""
+                                  }
+                                >
+                                  ★
+                                </span>
+                              )
+                            )}
+                          </div>
+                        )}
+
+                        <button
+                          className={`level-btn ${
+                            esTemaActual
+                              ? "is-current"
+                              : ""
+                          } ${
+                            esArmado
+                              ? "is-armado"
+                              : ""
+                          }`}
+                          onPointerDown={(e) =>
+                            manejarToqueInicial(
+                              item,
+                              e
+                            )
+                          }
+                          onClick={(e) => {
+                            e.stopPropagation();
+
+                            if (
+                              fueArrastre(e)
+                            ) {
+                              return;
+                            }
+
+                            manejarClickTema(
+                              item,
+                              index
+                            );
+                          }}
+                        >
+                          {estrellasTema >
+                            0 &&
+                          !esCursoIngles ? (
                             <span
-                              key={n}
-                              className={
-                                n <= estrellasTema
-                                  ? "is-activa"
-                                  : ""
-                              }
+                              className={`level-btn__numero level-btn__numero--estrella level-btn__numero--estrellas-${estrellasTema}`}
+                              role="img"
+                              aria-label={`Nivel ${
+                                index + 1
+                              }, ${
+                                estrellasTema
+                              } ${
+                                estrellasTema ===
+                                1
+                                  ? "estrella"
+                                  : "estrellas"
+                              }`}
                             >
                               ★
                             </span>
-                          ))}
-                        </div>
-                      )}
-
-                      <button
-                        className={`level-btn ${
-                          esTemaActual
-                            ? "is-current"
-                            : ""
-                        } ${
-                          esArmado
-                            ? "is-armado"
-                            : ""
-                        }`}
-                        onPointerDown={(e) =>
-                          manejarToqueInicial(
-                            item,
-                            e
-                          )
-                        }
-                        onClick={(e) => {
-                          e.stopPropagation();
-
-                          if (
-                            fueArrastre(e)
-                          ) {
-                            return;
-                          }
-
-                          manejarClickTema(
-                            item,
-                            index
-                          );
-                        }}
-                      >
-                        {estrellasTema > 0 && !esCursoIngles ? (
-                          <span
-                            className={`level-btn__numero level-btn__numero--estrella level-btn__numero--estrellas-${estrellasTema}`}
-                            role="img"
-                            aria-label={`Nivel ${index + 1}, ${estrellasTema} ${estrellasTema === 1 ? "estrella" : "estrellas"}`}
-                          >
-                            ★
-                          </span>
-                        ) : (
-                          <span className="level-btn__numero">
-                            {index + 1}
-                          </span>
-                        )}
-                      </button>
-                    </div>
-                  );
-                })}
+                          ) : (
+                            <span className="level-btn__numero">
+                              {index + 1}
+                            </span>
+                          )}
+                        </button>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             )
           )}
         </div>
 
         {totalPaginas > 1 && (
-          <div className="levels-nav" ref={navRef}>
+          <div
+            className="levels-nav"
+            ref={navRef}
+          >
             <button
               type="button"
               className="levels-nav__btn"
@@ -674,39 +772,40 @@ export default function TopicsModal({
               <i className="fa-solid fa-arrow-down" />
             </button>
 
-            {elementosPaginacion.map((n) =>
-              typeof n === "string" ? (
-                <span
-                  key={n}
-                  className="levels-nav__gap"
-                  aria-hidden="true"
-                >
-                  …
-                </span>
-              ) : (
-                <button
-                  key={n}
-                  type="button"
-                  className={`levels-nav__btn ${
-                    n === paginaActual
-                      ? "is-activa"
-                      : ""
-                  }`}
-                  aria-label={`Página ${
-                    n + 1
-                  }`}
-                  aria-current={
-                    n === paginaActual
-                      ? "page"
-                      : undefined
-                  }
-                  onClick={() =>
-                    irAPagina(n)
-                  }
-                >
-                  {n + 1}
-                </button>
-              )
+            {elementosPaginacion.map(
+              (n) =>
+                typeof n === "string" ? (
+                  <span
+                    key={n}
+                    className="levels-nav__gap"
+                    aria-hidden="true"
+                  >
+                    …
+                  </span>
+                ) : (
+                  <button
+                    key={n}
+                    type="button"
+                    className={`levels-nav__btn ${
+                      n === paginaActual
+                        ? "is-activa"
+                        : ""
+                    }`}
+                    aria-label={`Página ${
+                      n + 1
+                    }`}
+                    aria-current={
+                      n === paginaActual
+                        ? "page"
+                        : undefined
+                    }
+                    onClick={() =>
+                      irAPagina(n)
+                    }
+                  >
+                    {n + 1}
+                  </button>
+                )
             )}
 
             <button
