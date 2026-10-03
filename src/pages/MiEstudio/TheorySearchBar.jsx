@@ -2,8 +2,6 @@ import { useState, useRef, useEffect, useMemo, forwardRef, useImperativeHandle }
 import {
   puntajeDeTexto,
   buscarCoincidencia,
-  buscarPosicion,
-  extraerFragmento,
   normalizarTexto,
 } from "../../lib/buscador";
 import {
@@ -12,14 +10,13 @@ import {
   similitudCoseno,
 } from "../../lib/semantico";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
-const DEBOUNCE_SEMANTICO_MS = 350;
 const MIN_LARGO_QUERY_TEXTO = 2;
 const MIN_LARGO_QUERY_SEMANTICO = 4;
 const UMBRAL_SIMILITUD = 0.60;
 /* ============================================================
    RESALTAR COINCIDENCIA
    ============================================================ */
-// Resalta una coincidencia literal dentro de un texto.
+// Resalta una coincidencia literal dentro de un texto (completo).
 export function ResaltarCoincidencia({ texto, query }) {
   if (!query.trim()) {
     return texto;
@@ -50,57 +47,6 @@ export function ResaltarCoincidencia({ texto, query }) {
   );
 }
 /* ============================================================
-   RESALTAR FRAGMENTO
-   ============================================================ */
-// Resalta una coincidencia dentro de un fragmento ya recortado.
-function ResaltarFragmento({ fragmento, indice, largoCoincidencia }) {
-  if (indice == null || indice < 0) {
-    return fragmento;
-  }
-  const antes = fragmento.slice(0, indice);
-  const coincidencia = fragmento.slice(
-    indice,
-    indice + largoCoincidencia
-  );
-  const despues = fragmento.slice(indice + largoCoincidencia);
-  if (!coincidencia) {
-    return fragmento;
-  }
-  return (
-    <>
-      {antes}
-      <span className="search-match">{coincidencia}</span>
-      {despues}
-    </>
-  );
-}
-/* ============================================================
-   ARMAR FRAGMENTO DE EXPLICACIÓN
-   ============================================================ */
-// Busca dónde está la coincidencia dentro de la explicación
-// original y luego recalcula su posición dentro del fragmento.
-function armarFragmentoExplicacion(explicacion, query) {
-  const indiceOriginal = buscarPosicion(explicacion, query);
-  const fragmento = extraerFragmento(explicacion, indiceOriginal);
-  if (indiceOriginal == null) {
-    return {
-      fragmento,
-      indice: null,
-      largo: 0,
-    };
-  }
-  const queryLimpia = query.trim();
-  const indiceEnFragmento = buscarPosicion(
-    fragmento,
-    queryLimpia
-  );
-  return {
-    fragmento,
-    indice: indiceEnFragmento,
-    largo: queryLimpia.length,
-  };
-}
-/* ============================================================
    THEORY SEARCH BAR
    ============================================================ */
 // Buscador discreto para saltar a una tarjeta de teoría.
@@ -117,6 +63,9 @@ function armarFragmentoExplicacion(explicacion, query) {
 // 3. Con las sugerencias visibles, Enter de nuevo elige la enfocada
 //    (flechas) o la primera; también se puede hacer clic en una.
 //
+// Cada sugerencia muestra el texto y la explicación COMPLETOS
+// (sin recortar), con la coincidencia resaltada.
+//
 // Props opcionales (las usa el mapa de temas):
 // - placeholder: texto del input.
 // - ref.buscar(): lanza la búsqueda con lo escrito (botón "Buscar" externo).
@@ -124,14 +73,11 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
   flatPuntos = [],
   onSelect,
   placeholder = "Buscar título, texto o explicación...",
+  modoChat = false,
 }, ref) {
   const [query, setQuery] = useState("");
   const [buscadorFocus, setBuscadorFocus] = useState(false);
   const [buscandoSemantico, setBuscandoSemantico] = useState(false);
-  const [semantico, setSemantico] = useState({
-    query: "",
-    scores: {},
-  });
   const cacheEmbeddingsRef = useRef({
     flatPuntos: null,
     promesa: null,
@@ -157,12 +103,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     }
     return flatPuntos
       .map((punto) => {
-        /* --------------------------------------------------------
-           PUNTAJES
-           Los usamos para ordenar las coincidencias.
-           IMPORTANTE:
-           El puntaje por sí solo NO decide si se muestra.
-           -------------------------------------------------------- */
+        // Puntajes: solo sirven para ordenar las coincidencias.
         const scoreTitulo = puntajeDeTexto(
           punto.seccionTitulo || "",
           queryBuscada
@@ -183,11 +124,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
           mejorTextoOTitulo,
           scoreExplicacion
         );
-        /* --------------------------------------------------------
-           COINCIDENCIAS LITERALES REALES
-           Estas son las que determinan si la sugerencia
-           realmente puede mostrarse y resaltarse.
-           -------------------------------------------------------- */
+        // Coincidencias literales reales: deciden si se muestra.
         const matchTitulo = buscarCoincidencia(
           punto.seccionTitulo || "",
           queryLimpia
@@ -204,10 +141,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
           !!matchTitulo ||
           !!matchTexto ||
           !!matchExplicacion;
-        /* --------------------------------------------------------
-           DETERMINAR SI LA COINCIDENCIA ESTÁ SOLO
-           EN LA EXPLICACIÓN
-           -------------------------------------------------------- */
         const soloExplicacion =
           !!matchExplicacion &&
           !matchTitulo &&
@@ -225,11 +158,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
           soloExplicacion,
         };
       })
-      /* ----------------------------------------------------------
-         FILTRO IMPORTANTE
-         SOLO pasan los puntos que tienen una coincidencia
-         literal real.
-         ---------------------------------------------------------- */
+      // Solo pasan los puntos con coincidencia literal real.
       .filter(
         ({ tieneCoincidenciaReal }) =>
           tieneCoincidenciaReal
@@ -242,9 +171,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
   /* ============================================================
      RESULTADOS VISIBLES
      ============================================================ */
-  // Las sugerencias muestran únicamente coincidencias
-  // literales reales.
-  //
+  // Las sugerencias muestran únicamente coincidencias literales reales.
   // La búsqueda semántica NO se muestra automáticamente.
   const resultados = useMemo(() => {
     const queryLimpia = queryBuscada.trim();
@@ -297,9 +224,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
       ++idPeticionRef.current;
     setBuscandoSemantico(true);
     try {
-      /* ----------------------------------------------------------
-         CACHE DE EMBEDDINGS
-         ---------------------------------------------------------- */
+      // Cache de embeddings
       if (
         cacheEmbeddingsRef.current.flatPuntos !==
         flatPuntos
@@ -315,9 +240,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
           ),
         };
       }
-      /* ----------------------------------------------------------
-         GENERAR VECTOR DE LA QUERY Y OBTENER VECTORES
-         ---------------------------------------------------------- */
       const [
         vectoresPuntos,
         vectorQuery,
@@ -325,9 +247,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
         cacheEmbeddingsRef.current.promesa,
         embeberTexto(queryLimpia),
       ]);
-      /* ----------------------------------------------------------
-         COMPROBAR QUE SIGUE SIENDO LA MISMA PETICIÓN
-         ---------------------------------------------------------- */
+      // Comprobar que sigue siendo la misma petición
       if (
         miPeticion !==
         idPeticionRef.current
@@ -336,9 +256,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
       }
       let mejorPunto = null;
       let mejorSimilitud = -Infinity;
-      /* ----------------------------------------------------------
-         BUSCAR LA COINCIDENCIA SEMÁNTICA MÁS PARECIDA
-         ---------------------------------------------------------- */
       flatPuntos.forEach(
         (punto, i) => {
           const vector =
@@ -396,17 +313,11 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     const { punto } = resultado;
     const queryLimpia =
       queryBuscada.trim();
-    /* ----------------------------------------------------------
-       BUSCAR COINCIDENCIA EN TEXTO
-       ---------------------------------------------------------- */
     const matchTexto =
       buscarCoincidencia(
         punto.texto || "",
         queryLimpia
       );
-    /* ----------------------------------------------------------
-       BUSCAR COINCIDENCIA EN EXPLICACIÓN
-       ---------------------------------------------------------- */
     const matchExplicacion =
       buscarCoincidencia(
         punto.explicacion || "",
@@ -414,12 +325,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
       );
     let campo = null;
     let matchText = null;
-    /* ----------------------------------------------------------
-       PRIORIDAD:
-       1. Texto
-       2. Explicación
-       3. Semántico
-       ---------------------------------------------------------- */
+    // Prioridad: 1. Texto  2. Explicación  3. Semántico
     if (matchTexto) {
       campo = "texto";
       matchText =
@@ -437,26 +343,17 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
           matchExplicacion.largo
         );
     } else {
-      /* --------------------------------------------------------
-         NO EXISTE COINCIDENCIA LITERAL.
-         Esto ocurre únicamente cuando llegamos aquí mediante
-         búsqueda semántica.
-         -------------------------------------------------------- */
+      // Llegamos por búsqueda semántica (no hay coincidencia literal).
       campo = punto.explicacion
         ? "explicacion"
         : "texto";
     }
-    /* ----------------------------------------------------------
-       AVISAR AL COMPONENTE PADRE
-       ---------------------------------------------------------- */
     onSelect({
       puntoId: punto.id,
       campo,
       matchText,
     });
-    /* ----------------------------------------------------------
-       LIMPIAR BUSCADOR
-       ---------------------------------------------------------- */
+    // Limpiar buscador
     setQuery("");
     setQueryBuscada("");
     setResultadoSemantico(null);
@@ -466,11 +363,12 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
      ENTER
      ============================================================ */
   // Búsqueda nueva con lo escrito (Enter sin sugerencias o botón externo).
-  function ejecutarBusqueda() {
-    const queryLimpia = query.trim();
+  function ejecutarBusqueda(texto) {
+    const queryLimpia = (typeof texto === "string" ? texto : query).trim();
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
+    setQuery(queryLimpia);
     setResultadoSemantico(null);
     setBusquedaLista(false);
     setQueryBuscada(queryLimpia);
@@ -490,7 +388,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
     }
     ejecutarBusqueda();
   }
-  useImperativeHandle(ref, () => ({ buscar: ejecutarBusqueda }));
+  useImperativeHandle(ref, () => ({ buscar: () => ejecutarBusqueda() }));
   /* ============================================================
      SEMÁNTICO COMO RESPALDO
      ============================================================ */
@@ -542,174 +440,176 @@ const TheorySearchBar = forwardRef(function TheorySearchBar({
      TECLADO DEL INPUT
      ============================================================ */
   function onKeyDownInput(e) {
-    /* ----------------------------------------------------------
-       ESCAPE
-       ---------------------------------------------------------- */
     if (e.key === "Escape") {
       e.currentTarget.blur();
       setBuscadorFocus(false);
       return;
     }
-    /* ----------------------------------------------------------
-       ENTER
-       IMPORTANTE:
-       No dejamos que useArrowKeyList maneje Enter.
-       Enter tiene nuestro comportamiento personalizado.
-       ---------------------------------------------------------- */
+    // Enter tiene comportamiento propio (no lo maneja useArrowKeyList).
     if (e.key === "Enter") {
       e.preventDefault();
       buscarConEnter();
       return;
     }
-    /* ----------------------------------------------------------
-       FLECHAS
-       ---------------------------------------------------------- */
     handleKeyDown(e);
   }
   /* ============================================================
-     MOSTRAR DROPDOWN
+     SUGERENCIAS (primeros 3 títulos) — solo modo chat
      ============================================================ */
+  const sugerenciasTitulos = useMemo(() => {
+    const vistos = [];
+    for (const p of flatPuntos) {
+      if (p.seccionTitulo && !vistos.includes(p.seccionTitulo)) {
+        vistos.push(p.seccionTitulo);
+      }
+      if (vistos.length === 3) break;
+    }
+    return vistos;
+  }, [flatPuntos]);
+  /* ============================================================
+     MOSTRAR RESULTADOS
+     ============================================================ */
+  const hayResultadosPendientes =
+    resultadosVisibles.length > 0 || buscandoSemantico || busquedaLista;
   const mostrarDropdown =
     buscadorFocus &&
     hayQuery &&
     query.trim() === queryBuscada &&
-    (resultadosVisibles.length > 0 || buscandoSemantico || busquedaLista);
+    hayResultadosPendientes;
+  // En el chat los resultados se quedan aunque el input pierda el foco.
+  const mostrarMensajesChat =
+    hayQuery && query.trim() === queryBuscada && hayResultadosPendientes;
   /* ============================================================
-     RENDER
+     ITEMS (texto y explicación COMPLETOS)
+     ============================================================ */
+  function renderItems() {
+    return resultadosVisibles.map((r, idx) => {
+      const { punto, matchTitulo } = r;
+      return (
+        <button
+          key={punto.id}
+          type="button"
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={() => elegir(r)}
+          className={`theory-search__item ${idx === focusedIdx ? "is-focused" : ""}`}
+        >
+          {matchTitulo ? (
+            <span className="theory-search__item-seccion">
+              <strong>
+                <ResaltarCoincidencia
+                  texto={punto.seccionTitulo}
+                  query={queryBuscada}
+                />
+              </strong>
+            </span>
+          ) : null}
+          {punto.texto ? (
+            <span className="theory-search__item-seccion">
+              <ResaltarCoincidencia
+                texto={punto.texto}
+                query={r.esSemantico ? "" : queryBuscada}
+              />
+            </span>
+          ) : null}
+          {punto.explicacion ? (
+            <span className="theory-search__item-texto">
+              <ResaltarCoincidencia
+                texto={punto.explicacion}
+                query={r.esSemantico ? "" : queryBuscada}
+              />
+            </span>
+          ) : null}
+        </button>
+      );
+    });
+  }
+  const inputEl = (
+    <input
+      autoComplete="off"
+      type="search"
+      name="buscar-teoria"
+      value={query}
+      onChange={(e) => setQuery(e.target.value)}
+      onFocus={() => setBuscadorFocus(true)}
+      onBlur={() => setTimeout(() => setBuscadorFocus(false), 150)}
+      onKeyDown={onKeyDownInput}
+      placeholder={placeholder}
+      className={`theory-search__input ${mostrarDropdown ? "has-results" : ""}`}
+    />
+  );
+  /* ============================================================
+     RENDER — MODO CHAT
+     ============================================================ */
+  if (modoChat) {
+    return (
+      <div className="theory-search theory-search--chat">
+        <div className="theory-search__mensajes">
+          {mostrarMensajesChat ? (
+            <>
+              <div className="theory-search__burbuja theory-search__burbuja--usuario">
+                {queryBuscada}
+              </div>
+              {resultadosVisibles.length > 0 ? (
+                renderItems()
+              ) : busquedaLista && !buscandoSemantico ? (
+                <div className="theory-search__burbuja">
+                  No hay coincidencias
+                </div>
+              ) : null}
+              {buscandoSemantico && (
+                <div className="theory-search__burbuja">
+                  Buscando la coincidencia más parecida...
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="theory-search__burbuja">
+                Busca algo en la teoría
+              </div>
+              {sugerenciasTitulos.length > 0 && (
+                <div className="theory-search__sugerencias">
+                  {sugerenciasTitulos.map((titulo) => (
+                    <button
+                      key={titulo}
+                      type="button"
+                      className="theory-search__sugerencia"
+                      onClick={() => ejecutarBusqueda(titulo)}
+                    >
+                      {titulo}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </div>
+        <div className="theory-search__pie">
+          {inputEl}
+          <button
+            type="button"
+            className="theory-search__enviar"
+            onClick={buscarConEnter}
+            aria-label="Buscar"
+            title="Buscar"
+          >
+            <i className="fa-solid fa-paper-plane" />
+          </button>
+        </div>
+      </div>
+    );
+  }
+  /* ============================================================
+     RENDER — MODO NORMAL (mapa de temas)
      ============================================================ */
   return (
     <div className="theory-search">
       <div className="theory-search__wrap">
-        {/* ======================================================
-           INPUT
-           ====================================================== */}
-        <input
-          autoComplete="off"
-          type="search"
-          name="buscar-teoria"
-          value={query}
-          onChange={(e) =>
-            setQuery(
-              e.target.value
-            )
-          }
-          onFocus={() =>
-            setBuscadorFocus(true)
-          }
-          onBlur={() =>
-            setTimeout(
-              () =>
-                setBuscadorFocus(
-                  false
-                ),
-              150
-            )
-          }
-          onKeyDown={
-            onKeyDownInput
-          }
-          placeholder={placeholder}
-          className={`theory-search__input ${mostrarDropdown ? "has-results" : ""
-            }`}
-        />
-        {/* ======================================================
-           SUGERENCIAS
-           ====================================================== */}
+        {inputEl}
         {mostrarDropdown && (
           <div className="theory-search__dropdown">
             {resultadosVisibles.length > 0 ? (
-              resultadosVisibles.map(
-                (r, idx) => {
-                  const {
-                    punto,
-                    matchTitulo,
-                    matchTexto,
-                    matchExplicacion,
-                  } = r;
-                  /* ------------------------------------------------
-                     FRAGMENTO DE EXPLICACIÓN
-                     Solo se prepara si la coincidencia está
-                     únicamente en la explicación.
-                     ------------------------------------------------ */
-                  const soloExplicacion =
-                    !!matchExplicacion &&
-                    !matchTitulo &&
-                    !matchTexto;
-                  const datosFragmento =
-                    soloExplicacion
-                      ? armarFragmentoExplicacion(
-                        punto.explicacion ||
-                        "",
-                        queryBuscada
-                      )
-                      : null;
-                  return (
-                    <button
-                      key={punto.id}
-                      type="button"
-                      onMouseDown={(e) =>
-                        e.preventDefault()
-                      }
-                      onClick={() =>
-                        elegir(r)
-                      }
-                      className={`theory-search__item ${idx ===
-                        focusedIdx
-                        ? "is-focused"
-                        : ""
-                        }`}
-                    >
-                      {/* ------------------------------------------
-                         SOLO MOSTRAR LA COINCIDENCIA
-                         ------------------------------------------ */}
-                      {r.esSemantico ? (
-                        <span>
-                          {punto.texto || punto.explicacion}
-                        </span>
-                      ) : matchTitulo ? (
-                        <>
-                          <span className="theory-search__item-seccion">
-                            <ResaltarCoincidencia
-                              texto={
-                                punto.seccionTitulo
-                              }
-                              query={queryBuscada}
-                            />
-                          </span>
-                          {punto.texto ? (
-                            <span className="theory-search__item-texto">
-                              {punto.texto}
-                            </span>
-                          ) : null}
-                        </>
-                      ) : matchTexto ? (
-                        <span>
-                          <ResaltarCoincidencia
-                            texto={
-                              punto.texto
-                            }
-                            query={queryBuscada}
-                          />
-                        </span>
-                      ) : datosFragmento?.fragmento ? (
-                        <span className="theory-search__item-fragmento">
-                          <ResaltarFragmento
-                            fragmento={
-                              datosFragmento.fragmento
-                            }
-                            indice={
-                              datosFragmento.indice
-                            }
-                            largoCoincidencia={
-                              datosFragmento.largo
-                            }
-                          />
-                        </span>
-                      ) : null}
-                    </button>
-                  );
-                }
-              )
+              renderItems()
             ) : busquedaLista && !buscandoSemantico ? (
               <p className="theory-search__empty">
                 No hay coincidencias

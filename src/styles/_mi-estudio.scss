@@ -1968,6 +1968,16 @@
     padding: var(--space-3);
   }
 }
+/* Caja encontrada con el buscador: cambia de fondo 1 segundo */
+.teoria-card-unica.punto-encontrado {
+  animation: puntoEncontrado 1s linear;
+}
+@keyframes puntoEncontrado {
+  0%,
+  80% {
+    background-color: var(--primary-bg);
+  }
+}
 .teoria-card-unica__inner {
   position: relative;
   z-index: 1;
@@ -2332,50 +2342,156 @@
 /* ============================================================
    BARRA DE TEORÍA
    ============================================================ */
-.teoria-sticky-bar {
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto 24px;
-  position: relative;
-  z-index: 50;
+.teoria-buscador-wrap {
+  display: contents;
+}
+.teoria-chat {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 997;
+  width: min(340px, calc(100vw - 36px));
+  height: min(420px, calc(100dvh - var(--header-h) - 36px));
   display: flex;
-  align-items: stretch;
-  min-height: 42px;
-  padding: 0;
+  flex-direction: column;
+  box-sizing: border-box;
   background: var(--surface);
   border: 1px solid var(--ink);
-  border-radius: 12px;
-  display: none;
-  /*
-   * Solo se vuelve sticky cuando el usuario
-   * abre la barra mediante el botón flotante.
-   */
-  &.is-open {
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  &__head {
+    flex: none;
     display: flex;
-    position: sticky;
-    /* Por defecto queda debajo del header (que es fixed y mide --header-h) */
-    top: calc(var(--header-h) + 10px);
-    transition: top 0.3s linear;
-    z-index: 997;
-    box-sizing: border-box;
-    height: 42px;
-    /* margin-bottom negativo = misma altura, para que al abrirse
-       la barra no empuje el contenido hacia abajo */
-    margin-bottom: -42px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 6px 6px 14px;
+    border-bottom: 1px solid var(--border);
   }
-  /* Header oculto (scroll hacia abajo): la barra sube al tope */
-  body.is-header-oculto &.is-open {
-    top: 10px;
+  &__title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
   }
-  &:has(.theory-search__input.has-results) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  &__close {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.15s linear;
+    &:hover {
+      background-color: var(--surface-hover);
+    }
   }
-  > :first-child {
-    flex: 1 1 100%;
-    width: 100%;
-    height: 100%;
-    min-width: 0;
+  &__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .theory-search--chat {
+      flex: 1 1 auto;
+      min-height: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Zona de mensajes (arriba) */
+    .theory-search__mensajes {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px;
+    }
+    .theory-search__burbuja {
+      max-width: 90%;
+      padding: 8px 12px;
+      border-radius: 14px 14px 14px 4px;
+      background: var(--surface-hover);
+      color: var(--ink);
+      font-size: 0.85rem;
+      line-height: 1.35;
+      &--usuario {
+        align-self: flex-end;
+        border-radius: 14px 14px 4px 14px;
+        background: var(--primary);
+        color: var(--ink-on-primary);
+      }
+    }
+    .theory-search__sugerencias {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .theory-search__sugerencia {
+      max-width: 100%;
+      padding: 6px 12px;
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.15s linear;
+      &:hover {
+        background: var(--surface-hover);
+      }
+    }
+    /* Resultados como mensajes, con texto y explicación completos */
+    .theory-search__item {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      font-size: 0.8rem;
+      &:first-child,
+      &:last-child,
+      & + & {
+        border-width: 1px;
+      }
+    }
+    /* Campo de escribir (abajo) */
+    .theory-search__pie {
+      flex: none;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .theory-search__input {
+      flex: 1 1 auto;
+      min-width: 0;
+      height: 48px;
+      padding: 0 14px;
+      border-radius: 0;
+      font-size: 0.875rem;
+    }
+    .theory-search__enviar {
+      flex: none;
+      width: 44px;
+      height: 44px;
+      border: none;
+      background: transparent;
+      color: var(--primary);
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
   }
 }
 /* ============================================================
@@ -2654,6 +2770,10 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+  }
+  &.is-open {
+    background: var(--ink);
+    color: var(--surface);
   }
   &:active {
     transform: scale(0.94);

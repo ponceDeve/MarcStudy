@@ -48,6 +48,8 @@ export default function TopBar({
   onAbandonarPregunta,
   onIrInicio,
   temasOpen = false,
+  musicaOn = false,
+  onToggleMusica,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(
@@ -173,6 +175,10 @@ export default function TopBar({
   };
   const esPregunta =
     stage === "question" || stage === "exam";
+  // La bocina solo aparece dentro de un tema (teoría) o de una pregunta/examen.
+  const mostrarMusica =
+    typeof onToggleMusica === "function" &&
+    (stage === "theory" || esPregunta);
   const botonesVisibles = esPregunta
     ? [botonAbandonar, botonFullscreen]
     : [...botonesPrincipales, botonFullscreen];
@@ -334,6 +340,34 @@ export default function TopBar({
                   )
                 )}
               </div>
+            )}
+            {mostrarMusica && (
+              <button
+                type="button"
+                onClick={onToggleMusica}
+                title={
+                  musicaOn
+                    ? "Desactivar música"
+                    : "Activar música"
+                }
+                aria-label={
+                  musicaOn
+                    ? "Desactivar música"
+                    : "Activar música"
+                }
+                aria-pressed={musicaOn}
+                className={`topbar__control-btn topbar__control-btn--musica ${
+                  musicaOn ? "is-on" : "is-off"
+                }`}
+              >
+                <i
+                  className={
+                    musicaOn
+                      ? "fa-solid fa-volume-high"
+                      : "fa-solid fa-volume-xmark"
+                  }
+                />
+              </button>
             )}
             {botonesMenu.length > 0 && (
               <button

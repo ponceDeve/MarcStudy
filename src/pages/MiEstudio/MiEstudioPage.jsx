@@ -4,6 +4,7 @@ import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useMusicaFondo } from "../../lib/musicaFondo";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
@@ -155,23 +156,8 @@ export default function MiEstudioPage() {
   const [temaProximoSalida, setTemaProximoSalida] = useState(null);
   const [destinoSalida, setDestinoSalida] = useState("tema");
   const [mostrarBarraTeoria, setMostrarBarraTeoria] = useState(false);
-  const [mostrarBotonBuscador, setMostrarBotonBuscador] = useState(false);
   const barraTeoriaRef = useRef(null);
   const { setFooterHidden } = useFooterVisibility();
-  useEffect(() => {
-    const manejarScroll = () => {
-      if (window.scrollY > 80) {
-        setMostrarBotonBuscador(true);
-      } else {
-        setMostrarBotonBuscador(false);
-        setMostrarBarraTeoria(false);
-      }
-    };
-    window.addEventListener("scroll", manejarScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", manejarScroll);
-    };
-  }, []);
   useEffect(() => {
     if (!mostrarBarraTeoria) return;
     const manejarClickFuera = (e) => {
@@ -640,6 +626,13 @@ ${teoria}`;
             behavior: "smooth",
             block: "center"
           });
+          // Toda la caja cambia de fondo durante 1 segundo
+          if (contenedorPunto) {
+            contenedorPunto.classList.remove("punto-encontrado");
+            void contenedorPunto.offsetWidth;
+            contenedorPunto.classList.add("punto-encontrado");
+            setTimeout(() => contenedorPunto.classList.remove("punto-encontrado"), 1000);
+          }
           const selectorCampo =
             item.campo === "explicacion"
               ? ".teoria-explicacion-extra__texto"
@@ -1397,8 +1390,7 @@ ${teoria}`;
     setCountdown(0);
   }
   const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-  const [musicaTeoriaOn, setMusicaTeoriaOn] = useState(false);
-  const musicaTeoriaRef = useRef(null);
+  const { musicaOn: musicaTeoriaOn, alternarMusica } = useMusicaFondo();
   const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
   function enviarPreguntaChatGpt() {
     const pregunta = preguntaChatGpt.trim();
@@ -1407,33 +1399,6 @@ ${teoria}`;
     window.open(url, "_blank", "noopener,noreferrer");
     setPreguntaChatGpt("");
   }
-  useEffect(() => {
-    if (!musicaTeoriaRef.current) {
-      const audio = new Audio(`${import.meta.env.BASE_URL}sonidos/Steady_North.opus`);
-      audio.loop = true;
-      audio.volume = 0.35;
-      musicaTeoriaRef.current = audio;
-    }
-    return () => {
-      if (musicaTeoriaRef.current) {
-        musicaTeoriaRef.current.pause();
-        musicaTeoriaRef.current.src = "";
-        musicaTeoriaRef.current = null;
-      }
-    };
-  }, []);
-  useEffect(() => {
-    const audio = musicaTeoriaRef.current;
-    if (!audio) return;
-    if (musicaTeoriaOn) {
-      const resultado = audio.play();
-      if (resultado && typeof resultado.catch === "function") {
-        resultado.catch(() => { });
-      }
-    } else {
-      audio.pause();
-    }
-  }, [musicaTeoriaOn]);
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
     : isLevelMode
@@ -1754,6 +1719,8 @@ ${teoria}`;
           onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
           onAbrirTemas={() => setTemasOpen(true)}
           temasOpen={temasOpen}
+          musicaOn={musicaTeoriaOn}
+          onToggleMusica={alternarMusica}
           onGuardarRepaso={guardarParaRepaso}
           isFullscreen={isFullscreen}
           onToggleFullscreen={toggleFullscreen}
@@ -2066,35 +2033,46 @@ ${teoria}`;
             )}
             {stage === "theory" && flatPuntos.length > 0 && (
               <div className="mi-estudio__theory-wrap">
-                <div
-                  ref={barraTeoriaRef}
-                  className={`teoria-sticky-bar ${mostrarBarraTeoria ? "is-open" : ""}`}
-                >
-                  <TheorySearchBar
-                    flatPuntos={puntosTeoria}
-                    onSelect={(sel) => seleccionarItem({ type: "contenido", ...sel })}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setMusicaTeoriaOn((v) => !v)}
-                    className={`mi-estudio__voz-btn mi-estudio__voz-btn--musica ${musicaTeoriaOn ? "is-on" : "is-off"}`}
-                    title={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
-                    aria-label={musicaTeoriaOn ? "Desactivar música" : "Activar música"}
-                  >
-                    <i className="fa-solid fa-music" />
-                  </button>
+                <div ref={barraTeoriaRef} className="teoria-buscador-wrap">
+                  {mostrarBarraTeoria && (
+                    <div className="teoria-chat" role="dialog" aria-label="Buscar en la teoría">
+                      <div className="teoria-chat__head">
+                        <span className="teoria-chat__title">Buscar en la teoría</span>
+                        <button
+                          type="button"
+                          className="teoria-chat__close"
+                          onClick={() => setMostrarBarraTeoria(false)}
+                          aria-label="Cerrar buscador"
+                          title="Cerrar"
+                        >
+                          <i className="fa-solid fa-xmark" />
+                        </button>
+                      </div>
+                      <div className="teoria-chat__body">
+                        <TheorySearchBar
+                          modoChat
+                          placeholder="Escribe lo que buscas..."
+                          flatPuntos={puntosTeoria}
+                          onSelect={(sel) => {
+                            seleccionarItem({ type: "contenido", ...sel });
+                            setMostrarBarraTeoria(false);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {!mostrarBarraTeoria && (
+                    <button
+                      type="button"
+                      className="teoria-buscador-flotante"
+                      onClick={() => setMostrarBarraTeoria(true)}
+                      aria-label="Abrir buscador"
+                      title="Abrir buscador"
+                    >
+                      <i className="fa-solid fa-magnifying-glass" />
+                    </button>
+                  )}
                 </div>
-                {mostrarBotonBuscador && !mostrarBarraTeoria && (
-                  <button
-                    type="button"
-                    className="teoria-buscador-flotante"
-                    onClick={() => setMostrarBarraTeoria(true)}
-                    aria-label="Abrir buscador"
-                    title="Abrir buscador"
-                  >
-                    <i className="fa-solid fa-magnifying-glass" />
-                  </button>
-                )}
                 <div className="teoria-articulo-web">
                   {seccionActual && (
                     <>
