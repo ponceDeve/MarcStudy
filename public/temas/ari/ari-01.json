@@ -1,0 +1,207 @@
+{
+  "curso": "Aritmética",
+  "tema": "Lógica proposicional",
+  "glosario": {
+    "Lógica": "Ciencia que estudia las formas válidas de razonar.",
+    "Lógica proposicional": "Rama que estudia las proposiciones.",
+    "Enunciado": "Expresión del lenguaje que comunica algo.",
+    "Proposición": "Enunciado verdadero o falso, no ambos.",
+    "Valor de verdad": "Condición de verdadero o falso.",
+    "Proposición simple": "Proposición que no se divide en otras.",
+    "Proposición compuesta": "Proposiciones simples unidas con conectivos.",
+    "Enunciado abierto": "Enunciado con variable, sin valor de verdad.",
+    "Variable": "Símbolo que puede tomar distintos valores.",
+    "Silogismo": "Razonamiento de dos premisas y una conclusión.",
+    "Conectivo": "Término que une proposiciones.",
+    "Cuantificador": "Expresión que indica cuántos elementos cumplen algo."
+  },
+  "theory": [
+    {
+      "titulo": "Lógica",
+      "puntos": [
+        {
+          "texto": "«Lógica» = ciencia que estudia las formas válidas de razonar",
+          "explicacion": "Analiza cuándo una conclusión se sigue de lo que se afirmó. No estudia lo que se piensa, sino la corrección con que se razona."
+        },
+        {
+          "texto": "«Lógica proposicional» = rama que estudia las proposiciones y sus combinaciones",
+          "explicacion": "Trabaja con enunciados completos que pueden ser verdaderos o falsos, y con la forma en que se enlazan. Es la base para razonar en matemática."
+        }
+      ]
+    },
+    {
+      "titulo": "Aristóteles",
+      "puntos": [
+        {
+          "texto": "«Aristóteles» ⇒ fundador de la lógica",
+          "explicacion": "Filósofo griego del siglo IV a. C. Estudió las formas del razonamiento, sobre todo el silogismo. Sus obras de lógica se reunieron en el Órganon."
+        }
+      ]
+    },
+    {
+      "titulo": "George Boole",
+      "puntos": [
+        {
+          "texto": "«George Boole» ⇒ formalizó la lógica con métodos algebraicos",
+          "explicacion": "Matemático inglés del siglo XIX. Mostró que el razonamiento podía tratarse con operaciones parecidas a las del álgebra. Su trabajo es base de la computación."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado",
+      "puntos": [
+        {
+          "texto": "«Enunciado» = expresión del lenguaje que comunica algo",
+          "explicacion": "Es cualquier oración o fórmula. Algunos enunciados son proposiciones y otros no. Ejemplos: «hoy llueve» y «¡cuidado!»."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposición",
+      "puntos": [
+        {
+          "texto": "«Proposición» = enunciado que es verdadero o falso, pero no ambos",
+          "explicacion": "Afirma algo sobre la realidad o sobre objetos matemáticos de modo que se pueda decidir su valor de verdad. Ejemplos: «Lima es la capital del Perú» y $2+3=6$."
+        },
+        {
+          "texto": "Todo enunciado ≠ proposición",
+          "explicacion": "Una proposición es un tipo especial de enunciado. Las preguntas, las órdenes y los deseos son enunciados que no se pueden calificar de verdaderos o falsos."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor de verdad",
+      "puntos": [
+        {
+          "texto": "«Valor de verdad» = condición de verdadero o falso de una proposición",
+          "explicacion": "Se representa con $V$ si es verdadera y $F$ si es falsa. Toda proposición tiene exactamente uno de los dos."
+        },
+        {
+          "texto": "Proposición ⇒ tiene valor de verdad aunque se ignore",
+          "explicacion": "Basta que pueda decidirse en principio. «Hay vida en otro planeta» es una proposición, aunque hoy no se sepa si es verdadera o falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación de proposiciones",
+      "puntos": [
+        {
+          "texto": "Proposiciones ⇒ se representan con letras minúsculas",
+          "explicacion": "Se usan $p$, $q$, $r$, entre otras. Por ejemplo, $p$: «Lima es la capital del Perú», cuyo valor de verdad es $V$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de proposiciones",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $7$ es primo es $V$; $\\sqrt{16}=5$ es $F$",
+          "explicacion": "«$7$ es un número primo» es verdadera, porque solo tiene dos divisores. «$\\sqrt{16}=5$» es falsa, porque $\\sqrt{16}=4$. Ambas son proposiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado interrogativo",
+      "puntos": [
+        {
+          "texto": "Pregunta ✗ proposición",
+          "explicacion": "No afirma nada, solo solicita información. «¿Qué hora es?» no puede ser verdadera ni falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado imperativo",
+      "puntos": [
+        {
+          "texto": "Orden ✗ proposición",
+          "explicacion": "Expresa un mandato o un ruego, no una afirmación. «Cierra la puerta» no tiene valor de verdad."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado exclamativo",
+      "puntos": [
+        {
+          "texto": "Exclamación ✗ proposición",
+          "explicacion": "Expresa emoción o sorpresa y no afirma algo comprobable. «¡Qué bonito día!» no es verdadera ni falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado desiderativo",
+      "puntos": [
+        {
+          "texto": "Deseo ✗ proposición",
+          "explicacion": "Expresa una aspiración y no un hecho. «Ojalá llueva mañana» no puede calificarse como verdadera o falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado abierto",
+      "puntos": [
+        {
+          "texto": "«Enunciado abierto» = contiene una variable y no tiene valor de verdad",
+          "explicacion": "Mientras la variable no tenga un valor, no puede decidirse si es verdadero o falso. Ejemplo: $x+2=5$."
+        },
+        {
+          "texto": "Enunciado abierto → proposición ⇒ al dar valor a la variable",
+          "explicacion": "Si $x=3$, $x+2=5$ es $V$; si $x=4$, es $F$. También puede volverse proposición con cuantificadores, que se estudian aparte."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo de clasificación",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ clasificar cinco enunciados",
+          "explicacion": "«¿Qué hora es?» no es proposición. «$3+4=7$» es proposición verdadera. «Ojalá llueva» no es proposición. «$x>2$» es enunciado abierto. «El Sol es una estrella» es proposición verdadera."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposición simple",
+      "puntos": [
+        {
+          "texto": "«Proposición simple» = no se puede dividir en otras proposiciones",
+          "explicacion": "También se llama atómica. Ejemplo: «El agua hierve a $100\\ ^\\circ\\mathrm{C}$ al nivel del mar». Es el elemento básico de la lógica."
+        }
+      ]
+    },
+    {
+      "titulo": "Proposición compuesta",
+      "puntos": [
+        {
+          "texto": "«Proposición compuesta» = formada por simples unidas con conectivos",
+          "explicacion": "Ejemplo: «Llueve y hace frío». Su valor de verdad depende del de sus partes. Los conectivos y las tablas de verdad se desarrollan en sus propios temas."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio de identidad",
+      "puntos": [
+        {
+          "texto": "«Principio de identidad» ⇒ toda proposición es igual a sí misma",
+          "explicacion": "Una proposición mantiene su sentido y valor de verdad en un mismo razonamiento. Evita cambiar el significado a mitad del discurso."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio de no contradicción",
+      "puntos": [
+        {
+          "texto": "«No contradicción» ⇒ una proposición no es verdadera y falsa a la vez",
+          "explicacion": "Si «el número 8 es par» es verdadera, no puede ser falsa en el mismo sentido y momento. Impide afirmar y negar lo mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio del tercero excluido",
+      "puntos": [
+        {
+          "texto": "«Tercero excluido» ⇒ toda proposición es verdadera o falsa",
+          "explicacion": "No existe un tercer valor intermedio. Por eso una proposición como «$5$ es mayor que $3$» solo puede ser verdadera."
+        }
+      ]
+    }
+  ]
+}
