@@ -817,6 +817,11 @@
   z-index: 0;
 }
 
+/* Inglés no tiene estrellas: la línea vertical llega directo al nivel. */
+.level-cell--sin-estrellas.level-cell--v::after {
+  --libre-estrellas: 0px;
+}
+
 /* ============================================================
 
    Paginación
@@ -827,15 +832,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
   margin: var(--space-6) 0;
 }
 
+/* Los botones se encogen (hasta 34px) para que la barra nunca se salga. */
 .levels-nav__btn {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
+  flex: 0 1 44px;
+  min-width: 34px;
+  max-width: 44px;
+  aspect-ratio: 1;
   padding: 0;
   border-radius: var(--radius-md);
   border: 3px solid var(--border);
@@ -843,13 +850,27 @@
   color: var(--ink-soft);
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 16px;
+  font-size: clamp(13px, 3.8vw, 16px);
+  line-height: 1;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
   -webkit-tap-highlight-color: transparent;
   cursor: url("/cursor_pointer.webp"), pointer !important;
+}
+
+/* «…» entre números: ocupa una casilla pero más angosta. */
+.levels-nav__gap {
+  flex: 0 1 28px;
+  min-width: 14px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  user-select: none;
 }
 
 .levels-nav__btn.is-activa {

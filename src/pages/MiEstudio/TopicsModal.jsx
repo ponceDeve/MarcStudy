@@ -10,6 +10,69 @@ import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
 const NIVELES_POR_PAGINA = 18;
 const COLUMNAS = 3;
 
+// Barra de páginas: nunca se muestran todas a la vez. Siempre quedan visibles
+// la primera, la última, la actual y sus vecinas; lo demás se resume con «…».
+// La cantidad de casillas numéricas depende del ancho disponible.
+const PAG_BTN_MIN = 34; // ancho mínimo de un botón (px)
+const PAG_GAP = 6; // debe coincidir con el gap de .levels-nav
+const PAG_CASILLAS_MIN = 5;
+const PAG_CASILLAS_MAX = 9;
+
+function calcularCasillasNumeros(ancho) {
+  if (!ancho) return 7;
+  const botones = Math.floor((ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP));
+  // Se restan las 2 flechas.
+  return Math.max(PAG_CASILLAS_MIN, Math.min(PAG_CASILLAS_MAX, botones - 2));
+}
+
+// Devuelve números de página (base 0) y marcadores "gap-ini" / "gap-fin".
+function armarPaginacion(total, actual, casillas) {
+  if (total <= casillas) {
+    return Array.from({ length: total }, (_, i) => i);
+  }
+
+  const ultima = total - 1;
+  const centro = casillas - 4;
+  let items;
+
+  if (actual <= casillas - 4) {
+    // Cerca del inicio: 1 2 3 4 … N
+    items = [
+      ...Array.from({ length: casillas - 2 }, (_, i) => i),
+      "gap-fin",
+      ultima
+    ];
+  } else if (actual >= total - casillas + 3) {
+    // Cerca del final: 1 … N-3 N-2 N-1 N
+    items = [
+      0,
+      "gap-ini",
+      ...Array.from(
+        { length: casillas - 2 },
+        (_, i) => total - (casillas - 2) + i
+      )
+    ];
+  } else {
+    // En medio: 1 … a-1 a a+1 … N
+    const inicio = actual - Math.floor((centro - 1) / 2);
+    items = [
+      0,
+      "gap-ini",
+      ...Array.from({ length: centro }, (_, i) => inicio + i),
+      "gap-fin",
+      ultima
+    ];
+  }
+
+  // Si «…» solo esconde una página, se muestra esa página en su lugar.
+  return items.map((it, i) => {
+    if (typeof it !== "string") return it;
+    const antes = items[i - 1];
+    const despues = items[i + 1];
+    return despues - antes === 2 ? antes + 1 : it;
+  });
+}
+
 export default function TopicsModal({
   open,
   onClose,
@@ -227,26 +290,38 @@ export default function TopicsModal({
     setPagina(nueva);
   }
 
-  // Números de página visibles (máximo 5).
-  const VENTANA_PAGINAS = 5;
+  // Ancho real de la barra de páginas, para decidir cuántas casillas caben.
+  const navRef = useRef(null);
+  const [anchoNav, setAnchoNav] = useState(0);
+  const hayNavegacion = totalPaginas > 1;
 
-  const cantidadNumeros = Math.min(
-    VENTANA_PAGINAS,
-    totalPaginas
-  );
+  useEffect(() => {
+    const el = navRef.current;
 
-  const inicioNumeros = Math.max(
-    0,
-    Math.min(
-      paginaActual -
-        Math.floor(VENTANA_PAGINAS / 2),
-      totalPaginas - cantidadNumeros
-    )
-  );
+    if (!el) return undefined;
 
-  const numerosPagina = Array.from(
-    { length: cantidadNumeros },
-    (_, i) => inicioNumeros + i
+    const medir = () => setAnchoNav(el.clientWidth);
+
+    medir();
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", medir);
+
+      return () =>
+        window.removeEventListener("resize", medir);
+    }
+
+    const observador = new ResizeObserver(medir);
+
+    observador.observe(el);
+
+    return () => observador.disconnect();
+  }, [hayNavegacion, open]);
+
+  const elementosPaginacion = armarPaginacion(
+    totalPaginas,
+    paginaActual,
+    calcularCasillasNumeros(anchoNav)
   );
 
   // El scroll empieza abajo.
@@ -502,6 +577,10 @@ export default function TopicsModal({
                         conectaArriba
                           ? "level-cell--v"
                           : ""
+                      } ${
+                        esCursoIngles
+                          ? "level-cell--sin-estrellas"
+                          : ""
                       }`}
                     >
                       {!esCursoIngles && (
@@ -578,7 +657,7 @@ export default function TopicsModal({
         </div>
 
         {totalPaginas > 1 && (
-          <div className="levels-nav">
+          <div className="levels-nav" ref={navRef}>
             <button
               type="button"
               className="levels-nav__btn"
@@ -595,30 +674,40 @@ export default function TopicsModal({
               <i className="fa-solid fa-arrow-down" />
             </button>
 
-            {numerosPagina.map((n) => (
-              <button
-                key={n}
-                type="button"
-                className={`levels-nav__btn ${
-                  n === paginaActual
-                    ? "is-activa"
-                    : ""
-                }`}
-                aria-label={`Página ${
-                  n + 1
-                }`}
-                aria-current={
-                  n === paginaActual
-                    ? "page"
-                    : undefined
-                }
-                onClick={() =>
-                  irAPagina(n)
-                }
-              >
-                {n + 1}
-              </button>
-            ))}
+            {elementosPaginacion.map((n) =>
+              typeof n === "string" ? (
+                <span
+                  key={n}
+                  className="levels-nav__gap"
+                  aria-hidden="true"
+                >
+                  …
+                </span>
+              ) : (
+                <button
+                  key={n}
+                  type="button"
+                  className={`levels-nav__btn ${
+                    n === paginaActual
+                      ? "is-activa"
+                      : ""
+                  }`}
+                  aria-label={`Página ${
+                    n + 1
+                  }`}
+                  aria-current={
+                    n === paginaActual
+                      ? "page"
+                      : undefined
+                  }
+                  onClick={() =>
+                    irAPagina(n)
+                  }
+                >
+                  {n + 1}
+                </button>
+              )
+            )}
 
             <button
               type="button"
