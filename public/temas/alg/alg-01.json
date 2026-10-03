@@ -1,0 +1,242 @@
+{
+  "curso": "Álgebra",
+  "tema": "Números reales",
+  "glosario": {
+    "Número natural": "Número que sirve para contar.",
+    "Número entero": "Natural, su opuesto o cero.",
+    "Número racional": "Número que se expresa como fracción.",
+    "Número irracional": "Decimal infinito no periódico, no fraccionario.",
+    "Número real": "Racional o irracional; punto de la recta.",
+    "Recta real": "Recta que representa a todos los reales.",
+    "Fracción generatriz": "Fracción que origina un decimal periódico.",
+    "Periodo": "Cifras que se repiten en un decimal.",
+    "Decimal periódico puro": "El periodo empieza tras el punto decimal.",
+    "Decimal periódico mixto": "Hay cifras no periódicas antes del periodo.",
+    "Cuadrado perfecto": "Número cuya raíz cuadrada es entera.",
+    "Densidad": "Entre dos racionales siempre hay otro.",
+    "Contradicción": "Absurdo que invalida una suposición.",
+    "Número complejo": "Número que incluye raíces pares de negativos."
+  },
+  "theory": [
+    {
+      "titulo": "Números reales",
+      "puntos": [
+        {
+          "texto": "«Números reales» ($\\mathbb{R}$) = racionales + irracionales",
+          "explicacion": "Reúnen todos los números que corresponden a un punto de la recta numérica. Sirven para medir cantidades continuas como longitudes, tiempos o masas, mientras que los naturales solo cuentan."
+        },
+        {
+          "texto": "$\\mathbb{R}$ ⊃ $\\mathbb{Q}$ ⊃ $\\mathbb{Z}$ ⊃ $\\mathbb{N}$ ⇒ cada conjunto contiene al siguiente",
+          "explicacion": "Todo natural es entero, todo entero es racional y todo racional es real. Los conjuntos se ampliaron para resolver operaciones que el anterior no permitía, como restar o dividir. Error frecuente: creer que los irracionales están dentro de los racionales; son un conjunto aparte dentro de los reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Números naturales",
+      "puntos": [
+        {
+          "texto": "«Naturales» ($\\mathbb{N}$) = números que sirven para contar",
+          "explicacion": "Se escriben $\\mathbb{N}=\\{1,2,3,\\dots\\}$; algunos textos incluyen el cero y usan $\\mathbb{N}_0=\\{0,1,2,3,\\dots\\}$. Contar alumnos, prendas o monedas usa naturales. Error frecuente: dar por hecho que el cero es natural sin revisar la convención del texto."
+        },
+        {
+          "texto": "Naturales ⇒ la suma y el producto siempre dan otro natural",
+          "explicacion": "Por eso se dice que son cerrados en esas operaciones. No lo son en la resta: $3-5$ no es natural, y esa limitación dio origen a los enteros."
+        }
+      ]
+    },
+    {
+      "titulo": "Números enteros",
+      "puntos": [
+        {
+          "texto": "«Enteros» ($\\mathbb{Z}$) = naturales + opuestos + cero",
+          "explicacion": "$\\mathbb{Z}=\\{\\dots,-2,-1,0,1,2,\\dots\\}$. Permiten representar deudas, pérdidas y temperaturas bajo cero junto con ganancias y valores positivos. Resuelven la resta de naturales: $3-5=-2$."
+        },
+        {
+          "texto": "Enteros positivos ($\\mathbb{Z}^+$) = naturales",
+          "explicacion": "$\\mathbb{Z}^+=\\{1,2,3,\\dots\\}$. Coinciden con los naturales cuando estos no incluyen el cero."
+        },
+        {
+          "texto": "Enteros negativos ($\\mathbb{Z}^-$) = opuestos de los naturales",
+          "explicacion": "$\\mathbb{Z}^-=\\{\\dots,-3,-2,-1\\}$. Un saldo de $-20$ soles indica una deuda de 20 soles."
+        },
+        {
+          "texto": "El cero ≠ positivo ni negativo",
+          "explicacion": "Separa a los positivos de los negativos en la recta. Pertenece a los enteros, pero no a $\\mathbb{Z}^+$ ni a $\\mathbb{Z}^-$."
+        }
+      ]
+    },
+    {
+      "titulo": "Números racionales",
+      "puntos": [
+        {
+          "texto": "«Racionales» ($\\mathbb{Q}$) = números de la forma $\\frac{a}{b}$, $b \\neq 0$",
+          "explicacion": "Se define $\\mathbb{Q}=\\left\\{\\frac{a}{b} : a,b\\in\\mathbb{Z},\\ b\\neq 0\\right\\}$. Con ellos se reparten cantidades: tres panes entre cuatro personas dan $\\frac{3}{4}$ de pan a cada una."
+        },
+        {
+          "texto": "Denominador $0$ ⇒ la fracción no está definida",
+          "explicacion": "No existe un número que multiplicado por 0 dé 5, por eso $\\frac{5}{0}$ carece de valor. Tampoco $\\frac{0}{0}$ está determinado, porque cualquier número cumpliría la igualdad."
+        },
+        {
+          "texto": "Todo entero es racional: $a=\\frac{a}{1}$",
+          "explicacion": "Por ejemplo, $-7=\\frac{-7}{1}$ y $0=\\frac{0}{5}$. Esto confirma que los enteros están dentro de los racionales."
+        },
+        {
+          "texto": "Decimal exacto ⇒ racional",
+          "explicacion": "Un decimal con finitas cifras se escribe como fracción con denominador potencia de 10: $0.25=\\frac{25}{100}=\\frac{1}{4}$. S/ 2.50 equivalen a $\\frac{5}{2}$ soles."
+        },
+        {
+          "texto": "Decimal periódico ⇒ racional",
+          "explicacion": "Sus cifras se repiten de forma indefinida, como en $0.333\\ldots=\\frac{1}{3}$. Siempre existe una fracción que lo genera, llamada fracción generatriz."
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal periódico puro",
+      "puntos": [
+        {
+          "texto": "«Periódico puro» ⇒ el periodo empieza justo después del punto",
+          "explicacion": "Ejemplo: $0.\\overline{36}$, donde 36 es el periodo. En $0.1\\overline{6}$ el periodo no empieza de inmediato, por eso es mixto."
+        },
+        {
+          "texto": "«Generatriz» de periódico puro = periodo sobre nueves",
+          "explicacion": "Tiene tantos nueves como cifras tiene el periodo. Sale de restar $x$ a $10^n x$, donde $n$ es la cantidad de cifras del periodo: la parte decimal se cancela y queda el periodo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $0.\\overline{36}=\\frac{4}{11}$",
+          "explicacion": "Sea $x=0.\\overline{36}$. Como el periodo tiene dos cifras, $100x=36.\\overline{36}$. Al restar $x$ queda $99x=36$, luego $x=\\frac{36}{99}=\\frac{4}{11}$ al simplificar entre 9. Comprobación: $4\\div 11=0.3636\\ldots$"
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal periódico mixto",
+      "puntos": [
+        {
+          "texto": "«Periódico mixto» ⇒ hay cifras antes del periodo",
+          "explicacion": "Ejemplo: $0.1\\overline{6}$, donde el 1 no se repite y el 6 sí. Aparece en fracciones irreducibles cuyo denominador tiene el factor 2 o 5 junto con otro primo, como $\\frac{1}{6}$."
+        },
+        {
+          "texto": "«Generatriz» mixta = diferencia sobre nueves y ceros",
+          "explicacion": "El numerador es el número formado por la parte no periódica seguida del periodo, menos la parte no periódica. El denominador lleva tantos nueves como cifras del periodo y tantos ceros como cifras no periódicas."
+        },
+        {
+          "texto": "Ejemplo ⇒ $0.1\\overline{6}=\\frac{1}{6}$",
+          "explicacion": "Sea $x=0.1\\overline{6}$. Entonces $10x=1.\\overline{6}$ y $100x=16.\\overline{6}$. Al restar queda $90x=15$, luego $x=\\frac{15}{90}=\\frac{1}{6}$. Comprobación: $1\\div 6=0.1666\\ldots$"
+        }
+      ]
+    },
+    {
+      "titulo": "Densidad de racionales",
+      "puntos": [
+        {
+          "texto": "«Densidad» ⇒ entre dos racionales siempre hay otro",
+          "explicacion": "No existe un racional siguiente a otro: entre dos cualesquiera caben infinitos racionales. Por eso no se puede listar a los racionales en orden de uno en uno sobre la recta."
+        },
+        {
+          "texto": "Racional intermedio entre $p$ y $q$ = $\\frac{p+q}{2}$",
+          "explicacion": "Es el promedio de ambos, que siempre queda entre los dos. Al repetir el procedimiento con el nuevo número se obtienen más racionales intermedios."
+        },
+        {
+          "texto": "Ejemplo ⇒ entre $\\frac{1}{2}$ y $\\frac{3}{4}$ está $\\frac{5}{8}$",
+          "explicacion": "El promedio es $\\frac{\\frac{1}{2}+\\frac{3}{4}}{2}=\\frac{\\frac{5}{4}}{2}=\\frac{5}{8}$. Comprobación: $0.5<0.625<0.75$."
+        }
+      ]
+    },
+    {
+      "titulo": "Números irracionales",
+      "puntos": [
+        {
+          "texto": "«Irracionales» ($\\mathbb{I}$) = números que no se escriben como fracción",
+          "explicacion": "Su desarrollo decimal es infinito y no periódico, por lo que no se pueden expresar como $\\frac{a}{b}$ con enteros. Aparecen al medir: la diagonal de un cuadrado de lado 1 mide $\\sqrt{2}$."
+        },
+        {
+          "texto": "Decimal infinito no periódico ⇒ irracional",
+          "explicacion": "Un decimal sin periodo, como $0.101001000\\ldots$ (cada vez un cero más), es irracional aunque siga una regla de formación."
+        },
+        {
+          "texto": "«Raíz no exacta» ⇒ número irracional",
+          "explicacion": "La raíz de un natural que no es cuadrado perfecto es irracional: $\\sqrt{2}$, $\\sqrt{3}$, $\\sqrt{5}$. En cambio, $\\sqrt{4}=2$ y $\\sqrt{\\frac{9}{16}}=\\frac{3}{4}$ son racionales."
+        },
+        {
+          "texto": "«$\\pi$» = cociente entre circunferencia y diámetro",
+          "explicacion": "Vale $\\pi\\approx 3.14159\\ldots$ y es irracional. Error frecuente: creer que $\\pi=\\frac{22}{7}$ o $3.14$; esos son aproximaciones racionales."
+        },
+        {
+          "texto": "«$e$» = base de los logaritmos naturales",
+          "explicacion": "Leonhard Euler popularizó este número, $e\\approx 2.71828\\ldots$, que es irracional. Aparece en el crecimiento continuo, como el interés compuesto continuo."
+        },
+        {
+          "texto": "Racional + irracional ⇒ irracional",
+          "explicacion": "Si $r$ es racional y $s$ es irracional, $r+s$ es irracional: de lo contrario, $s=(r+s)-r$ sería racional. Ejemplo: $3+\\sqrt{2}$ es irracional."
+        },
+        {
+          "texto": "Irracional + irracional ≠ siempre irracional",
+          "explicacion": "Depende de los números: $\\sqrt{2}+(-\\sqrt{2})=0$ es racional, mientras que $\\sqrt{2}+\\sqrt{3}$ es irracional."
+        }
+      ]
+    },
+    {
+      "titulo": "Irracionalidad de $\\sqrt{2}$",
+      "puntos": [
+        {
+          "texto": "«$\\sqrt{2}$» no es racional ⇒ se prueba por contradicción",
+          "explicacion": "Se supone lo contrario y se llega a un absurdo. Supongamos $\\sqrt{2}=\\frac{a}{b}$ con $a$ y $b$ enteros sin factores comunes."
+        },
+        {
+          "texto": "Elevar al cuadrado ⇒ $a^2=2b^2$",
+          "explicacion": "De $\\sqrt{2}=\\frac{a}{b}$ se obtiene $2=\\frac{a^2}{b^2}$, y por tanto $a^2=2b^2$."
+        },
+        {
+          "texto": "$a^2$ es par ⇒ $a$ es par",
+          "explicacion": "Si $a$ fuera impar, $a^2$ también lo sería. Como $a^2=2b^2$ es par, $a$ es par y se puede escribir $a=2k$."
+        },
+        {
+          "texto": "Sustituir $a=2k$ ⇒ $b^2=2k^2$ ⇒ $b$ es par",
+          "explicacion": "Al sustituir queda $4k^2=2b^2$, es decir, $b^2=2k^2$. Entonces $b^2$ es par y, por el mismo razonamiento, $b$ es par."
+        },
+        {
+          "texto": "a y b pares ✓ factor común 2 ⇒ contradicción",
+          "explicacion": "Se había supuesto que $a$ y $b$ no tenían factores comunes. La contradicción muestra que $\\sqrt{2}$ no puede ser racional, es decir, es irracional."
+        }
+      ]
+    },
+    {
+      "titulo": "Recta real",
+      "puntos": [
+        {
+          "texto": "«Recta real» ⇒ cada real corresponde a un único punto",
+          "explicacion": "También se llama recta numérica. A cada real le corresponde un punto y a cada punto, un real. Por eso los reales no dejan huecos, a diferencia de los racionales, que sí los dejan en lugares como el que ocupa $\\sqrt{2}$."
+        },
+        {
+          "texto": "Origen = 0 ⇒ positivos a la derecha, negativos a la izquierda",
+          "explicacion": "La distancia entre puntos se mide con una unidad fija. En un termómetro, las temperaturas positivas quedan sobre el cero y las negativas bajo él."
+        },
+        {
+          "texto": "$\\sqrt{2}$ se ubica con un triángulo rectángulo y compás",
+          "explicacion": "Se construye un triángulo rectángulo de catetos 1; por el teorema de Pitágoras, su hipotenusa mide $\\sqrt{1^2+1^2}=\\sqrt{2}$. Con el compás se lleva esa longitud sobre la recta desde el cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces y reales",
+      "puntos": [
+        {
+          "texto": "Raíz par de un negativo ✗ número real",
+          "explicacion": "No existe un real cuyo cuadrado sea negativo, por lo que $\\sqrt{-4}$ no es real: pertenece a los números complejos. En cambio, $\\sqrt[3]{-8}=-2$ sí es real, porque la raíz impar de un negativo existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de reales",
+      "puntos": [
+        {
+          "texto": "Racionales ≠ irracionales ⇒ ningún real pertenece a ambos",
+          "explicacion": "Los dos conjuntos no comparten elementos y juntos forman los reales. Para clasificar un número se revisa su decimal: si es exacto o periódico, es racional; si es infinito sin periodo, es irracional."
+        },
+        {
+          "texto": "Ejemplo ⇒ clasificar cinco números reales",
+          "explicacion": "De $0.75$, $\\frac{2}{3}$, $\\sqrt{9}$, $\\sqrt{7}$ y $-4$, solo $\\sqrt{7}$ es irracional: $0.75=\\frac{3}{4}$, $\\sqrt{9}=3$ y $-4$ es entero, todos racionales."
+        }
+      ]
+    }
+  ]
+}
