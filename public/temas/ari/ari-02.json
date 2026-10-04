@@ -1,0 +1,151 @@
+{
+  "curso": "Aritmética",
+  "tema": "Conectivos lógicos",
+  "glosario": {
+    "Conectivo lógico": "Símbolo que une o modifica proposiciones.",
+    "Negación": "Invierte el valor de verdad.",
+    "Conjunción": "Une proposiciones con y.",
+    "Disyunción inclusiva": "Une proposiciones con o.",
+    "Disyunción exclusiva": "Solo una de las dos es verdadera.",
+    "Condicional": "Si antecedente, entonces consecuente.",
+    "Antecedente": "Parte condicionante de un condicional.",
+    "Consecuente": "Parte condicionada de un condicional.",
+    "Bicondicional": "Verdadero si ambos valores coinciden.",
+    "Proposición compuesta": "Proposiciones unidas con conectivos.",
+    "Proposición simple": "Proposición que no se divide en otras."
+  },
+  "theory": [
+    {
+      "titulo": "Conectivos lógicos",
+      "puntos": [
+        {
+          "texto": "«Conectivo lógico» = símbolo que une o modifica proposiciones",
+          "explicacion": "Con ellos se forman proposiciones compuestas a partir de proposiciones simples. Los principales son la negación, la conjunción, la disyunción, el condicional y el bicondicional."
+        },
+        {
+          "texto": "Conectivo ⇒ determina el valor de verdad de la proposición compuesta",
+          "explicacion": "El valor de la compuesta depende solo de los valores de las proposiciones simples y del conectivo que las une. Las tablas de verdad se desarrollan en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Negación",
+      "puntos": [
+        {
+          "texto": "«Negación» ($\\neg p$) ⇒ invierte el valor de verdad",
+          "explicacion": "Se lee no $p$. Si $p$ es verdadera, $\\neg p$ es falsa; si $p$ es falsa, $\\neg p$ es verdadera. También se escribe $\\sim p$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $p$: «$3>5$» es $F$, entonces $\\neg p$ es $V$",
+          "explicacion": "La proposición «$3>5$» es falsa. Su negación, «$3$ no es mayor que $5$», es verdadera."
+        },
+        {
+          "texto": "«No es cierto que» ⇒ expresa una negación",
+          "explicacion": "También lo hacen no y es falso que. Ejemplo: «no es cierto que $2$ sea impar» niega a «$2$ es impar»."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunción",
+      "puntos": [
+        {
+          "texto": "«Conjunción» ($p\\wedge q$) ⇒ une dos proposiciones con y",
+          "explicacion": "Se lee $p$ y $q$. Es verdadera solo cuando ambas proposiciones son verdaderas; en los demás casos es falsa."
+        },
+        {
+          "texto": "Ejemplo ⇒ «$2$ es par y $3$ es primo» es $V$",
+          "explicacion": "Las dos proposiciones son verdaderas, por lo que la conjunción es verdadera. Si una fuera falsa, como en «$2$ es par y $4$ es primo», sería falsa."
+        },
+        {
+          "texto": "«Pero» ⇒ se escribe como conjunción",
+          "explicacion": "También lo hacen sin embargo, aunque y además. Ejemplo: «es pobre pero honrado» equivale a «es pobre y es honrado»."
+        }
+      ]
+    },
+    {
+      "titulo": "Disyunción inclusiva",
+      "puntos": [
+        {
+          "texto": "«Disyunción» ($p\\vee q$) ⇒ une dos proposiciones con o",
+          "explicacion": "Se lee $p$ o $q$. Es falsa solo cuando ambas son falsas; basta que una sea verdadera para que sea verdadera. Incluye el caso en que ambas lo sean."
+        },
+        {
+          "texto": "Ejemplo ⇒ «$7<5$ o $7$ es primo» es $V$",
+          "explicacion": "La primera proposición es falsa y la segunda es verdadera. Como una de las dos es verdadera, la disyunción es verdadera."
+        }
+      ]
+    },
+    {
+      "titulo": "Disyunción exclusiva",
+      "puntos": [
+        {
+          "texto": "«Disyunción exclusiva» ($p\\,\\Delta\\,q$) ⇒ una sola es verdadera",
+          "explicacion": "Se lee o $p$ o $q$, pero no ambas. Es verdadera solo cuando las proposiciones tienen valores distintos. También se escribe $p\\veebar q$."
+        },
+        {
+          "texto": "Ejemplo ⇒ dos proposiciones verdaderas dan exclusiva falsa",
+          "explicacion": "Con «$4$ es par» y «$4$ es múltiplo de $2$», ambas verdaderas, la exclusiva es falsa: exige que solo una lo sea."
+        },
+        {
+          "texto": "«O … o» ⇒ suele indicar una disyunción exclusiva",
+          "explicacion": "También o bien … o bien. Solo una de las opciones puede cumplirse. Ejemplo: «o viajo a Lima o me quedo en Cusco»."
+        }
+      ]
+    },
+    {
+      "titulo": "Condicional",
+      "puntos": [
+        {
+          "texto": "«Condicional» ($p\\to q$) ⇒ si $p$, entonces $q$",
+          "explicacion": "La proposición $p$ se llama antecedente y $q$, consecuente. Es falsa solo cuando el antecedente es verdadero y el consecuente es falso."
+        },
+        {
+          "texto": "Ejemplo ⇒ «si $2+2=5$, entonces $3>10$» es $V$",
+          "explicacion": "El antecedente es falso y el consecuente también. Un condicional con antecedente falso siempre es verdadero."
+        },
+        {
+          "texto": "Ejemplo ⇒ «si $4$ es par, entonces $4$ es primo» es $F$",
+          "explicacion": "El antecedente es verdadero y el consecuente es falso, el único caso en que el condicional es falso."
+        },
+        {
+          "texto": "«Solo si» ⇒ se escribe como condicional, no al revés",
+          "explicacion": "«$p$ solo si $q$» se escribe $p\\to q$. También es condicional «es suficiente $p$ para $q$» y «es necesario $q$ para $p$». Error frecuente: invertir antecedente y consecuente."
+        }
+      ]
+    },
+    {
+      "titulo": "Bicondicional",
+      "puntos": [
+        {
+          "texto": "«Bicondicional» ($p\\leftrightarrow q$) ⇒ $p$ si y solo si $q$",
+          "explicacion": "Es verdadero cuando las dos proposiciones tienen el mismo valor de verdad, ambas verdaderas o ambas falsas. Es falso si los valores son distintos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $6$ es par $\\leftrightarrow$ $6$ es múltiplo de $2$ es $V$",
+          "explicacion": "Las dos proposiciones son verdaderas, así que tienen el mismo valor. El bicondicional es verdadero."
+        },
+        {
+          "texto": "Ejemplo ⇒ $5$ es impar $\\leftrightarrow$ $5$ es múltiplo de $2$ es $F$",
+          "explicacion": "La primera proposición es verdadera y la segunda es falsa. Los valores son distintos, por lo que el bicondicional es falso."
+        },
+        {
+          "texto": "«Si y solo si» ⇒ indica un bicondicional",
+          "explicacion": "También es necesario y suficiente, y cuando y solo cuando. Cada proposición implica a la otra."
+        }
+      ]
+    },
+    {
+      "titulo": "Ni … ni",
+      "puntos": [
+        {
+          "texto": "«Ni $p$ ni $q$» ⇒ equivale a $\\neg p\\wedge\\neg q$",
+          "explicacion": "Significa que ninguna de las dos proposiciones es verdadera. Es verdadera solo cuando ambas son falsas."
+        },
+        {
+          "texto": "Ejemplo ⇒ «ni $2$ es impar ni $3$ es par» es $V$",
+          "explicacion": "«$2$ es impar» es falsa y «$3$ es par» es falsa. Como ambas son falsas, la proposición es verdadera."
+        }
+      ]
+    }
+  ]
+}

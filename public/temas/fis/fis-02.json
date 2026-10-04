@@ -1,0 +1,352 @@
+{
+  "curso": "Física",
+  "tema": "Análisis dimensional",
+  "glosario": {
+    "Análisis dimensional": "Estudio de las dimensiones de las cantidades físicas.",
+    "Dimensión": "Naturaleza de una cantidad física.",
+    "Ecuación dimensional": "Expresión de una cantidad con dimensiones fundamentales.",
+    "Cantidad adimensional": "Cantidad cuya dimensión es uno.",
+    "Principio de homogeneidad": "Todos los términos tienen la misma dimensión.",
+    "Fórmula empírica": "Relación hallada con dimensiones y experimentos.",
+    "Constante adimensional": "Número sin dimensiones en una fórmula.",
+    "Peso específico": "Peso por unidad de volumen.",
+    "Caudal": "Volumen que circula por unidad de tiempo.",
+    "Frecuencia": "Número de ciclos por unidad de tiempo.",
+    "Período": "Tiempo de un ciclo completo."
+  },
+  "theory": [
+    {
+      "titulo": "Análisis dimensional",
+      "puntos": [
+        {
+          "texto": "«Análisis dimensional» = estudia las dimensiones de las cantidades físicas",
+          "explicacion": "Relaciona las cantidades derivadas con las fundamentales y permite verificar fórmulas, deducir unidades y hallar relaciones entre cantidades. Es una herramienta de comprobación, no de cálculo numérico."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión",
+      "puntos": [
+        {
+          "texto": "«Dimensión» = naturaleza de una cantidad física",
+          "explicacion": "Indica si una cantidad es una longitud, una masa o un tiempo, sin importar la unidad. Un metro y un pie tienen la misma dimensión: longitud."
+        },
+        {
+          "texto": "Dimensión ≠ unidad",
+          "explicacion": "La dimensión es la naturaleza; la unidad es el patrón. Una distancia siempre tiene dimensión de longitud, pero puede medirse en metros, pies o kilómetros."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación dimensional",
+      "puntos": [
+        {
+          "texto": "«Ecuación dimensional» ⇒ se escribe con corchetes, como $[A]$",
+          "explicacion": "El símbolo $[A]$ se lee dimensión de $A$. Expresa $A$ en función de las dimensiones fundamentales. Ejemplo: $[\\text{velocidad}]=\\mathrm{L}\\,\\mathrm{T}^{-1}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensiones fundamentales",
+      "puntos": [
+        {
+          "texto": "Longitud ⇒ dimensión $\\mathrm{L}$",
+          "explicacion": "Es la dimensión de toda distancia, ancho o altura."
+        },
+        {
+          "texto": "Masa ⇒ dimensión $\\mathrm{M}$",
+          "explicacion": "Es la dimensión de la cantidad de materia."
+        },
+        {
+          "texto": "Tiempo ⇒ dimensión $\\mathrm{T}$",
+          "explicacion": "Es la dimensión de toda duración."
+        },
+        {
+          "texto": "Temperatura termodinámica ⇒ dimensión $\\Theta$",
+          "explicacion": "Se representa con la letra griega theta mayúscula."
+        },
+        {
+          "texto": "Intensidad de corriente ⇒ dimensión $\\mathrm{I}$",
+          "explicacion": "Es la dimensión de la corriente eléctrica."
+        },
+        {
+          "texto": "Cantidad de sustancia ⇒ dimensión $\\mathrm{N}$",
+          "explicacion": "Es la dimensión del número de entidades elementales, medido en moles."
+        },
+        {
+          "texto": "Intensidad luminosa ⇒ dimensión $\\mathrm{J}$",
+          "explicacion": "Es la dimensión de la luz emitida en una dirección."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidades adimensionales",
+      "puntos": [
+        {
+          "texto": "Adimensional ⇒ su dimensión es $1$",
+          "explicacion": "Se cumple $[k]=1$ para números, ángulos, funciones trigonométricas, logaritmos y exponentes. También las constantes $\\pi$ y $e$ son adimensionales."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[\\pi]=1$ y $[\\text{ángulo}]=1$",
+          "explicacion": "Un ángulo es el cociente entre dos longitudes, la del arco y la del radio: las dimensiones se cancelan."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión del área",
+      "puntos": [
+        {
+          "texto": "Área ⇒ $[A]=\\mathrm{L}^2$",
+          "explicacion": "Se obtiene multiplicando dos longitudes: $[A]=\\mathrm{L}\\cdot\\mathrm{L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión del volumen",
+      "puntos": [
+        {
+          "texto": "Volumen ⇒ $[V]=\\mathrm{L}^3$",
+          "explicacion": "Resulta de multiplicar tres longitudes: $[V]=\\mathrm{L}\\cdot\\mathrm{L}\\cdot\\mathrm{L}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la velocidad",
+      "puntos": [
+        {
+          "texto": "Velocidad ⇒ $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$",
+          "explicacion": "La velocidad es longitud entre tiempo: $[v]=\\frac{\\mathrm{L}}{\\mathrm{T}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la aceleración",
+      "puntos": [
+        {
+          "texto": "Aceleración ⇒ $[a]=\\mathrm{L}\\,\\mathrm{T}^{-2}$",
+          "explicacion": "La aceleración es velocidad entre tiempo: $[a]=\\frac{\\mathrm{L}\\,\\mathrm{T}^{-1}}{\\mathrm{T}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la fuerza",
+      "puntos": [
+        {
+          "texto": "Fuerza ⇒ $[F]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Por $F=m\\,a$, se tiene $[F]=[m][a]=\\mathrm{M}\\cdot\\mathrm{L}\\,\\mathrm{T}^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión del trabajo",
+      "puntos": [
+        {
+          "texto": "Trabajo y energía ⇒ $\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Por $W=F\\,d$, se tiene $[W]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$. La energía tiene la misma dimensión que el trabajo."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la potencia",
+      "puntos": [
+        {
+          "texto": "Potencia ⇒ $[P]=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-3}$",
+          "explicacion": "La potencia es trabajo entre tiempo: $[P]=\\frac{\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}}{\\mathrm{T}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la presión",
+      "puntos": [
+        {
+          "texto": "Presión ⇒ $[p]=\\mathrm{M}\\,\\mathrm{L}^{-1}\\,\\mathrm{T}^{-2}$",
+          "explicacion": "La presión es fuerza entre área: $[p]=\\frac{\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}}{\\mathrm{L}^2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la densidad",
+      "puntos": [
+        {
+          "texto": "Densidad ⇒ $[\\rho]=\\mathrm{M}\\,\\mathrm{L}^{-3}$",
+          "explicacion": "La densidad es masa entre volumen: $[\\rho]=\\frac{\\mathrm{M}}{\\mathrm{L}^3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la frecuencia",
+      "puntos": [
+        {
+          "texto": "Frecuencia ⇒ $[f]=\\mathrm{T}^{-1}$",
+          "explicacion": "La frecuencia es el número de ciclos por unidad de tiempo, por lo que $[f]=\\frac{1}{\\mathrm{T}}$. El período, en cambio, tiene dimensión $\\mathrm{T}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión del caudal",
+      "puntos": [
+        {
+          "texto": "Caudal ⇒ $[Q]=\\mathrm{L}^3\\,\\mathrm{T}^{-1}$",
+          "explicacion": "El caudal es volumen entre tiempo: $[Q]=\\frac{\\mathrm{L}^3}{\\mathrm{T}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de la carga eléctrica",
+      "puntos": [
+        {
+          "texto": "Carga eléctrica ⇒ $[q]=\\mathrm{I}\\,\\mathrm{T}$",
+          "explicacion": "Por $q=I\\,t$, se tiene $[q]=\\mathrm{I}\\cdot\\mathrm{T}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión del peso específico",
+      "puntos": [
+        {
+          "texto": "Peso específico ⇒ $[\\gamma]=\\mathrm{M}\\,\\mathrm{L}^{-2}\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Es el peso por unidad de volumen: $\\gamma=\\rho\\,g$, luego $[\\gamma]=\\mathrm{M}\\,\\mathrm{L}^{-3}\\cdot\\mathrm{L}\\,\\mathrm{T}^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de las dimensiones",
+      "puntos": [
+        {
+          "texto": "Dimensiones ⇒ se operan como potencias",
+          "explicacion": "Siguen las reglas de los exponentes. Se desarrollan en las siguientes cartas, con un ejemplo cada una."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de dimensiones",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ $[A\\cdot B]=[A]\\,[B]$",
+          "explicacion": "La dimensión de un producto es el producto de las dimensiones."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[F\\,d]=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Con $[F]=\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}$ y $[d]=\\mathrm{L}$, el producto $F\\,d$ tiene dimensión $\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}=\\mathrm{M}\\,\\mathrm{L}^2\\,\\mathrm{T}^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente de dimensiones",
+      "puntos": [
+        {
+          "texto": "Cociente ⇒ $\\left[\\frac{A}{B}\\right]=\\frac{[A]}{[B]}$",
+          "explicacion": "La dimensión de un cociente es el cociente de las dimensiones."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\left[\\frac{d}{t}\\right]=\\mathrm{L}\\,\\mathrm{T}^{-1}$",
+          "explicacion": "Con $[d]=\\mathrm{L}$ y $[t]=\\mathrm{T}$, el cociente $\\frac{d}{t}$ tiene dimensión $\\frac{\\mathrm{L}}{\\mathrm{T}}=\\mathrm{L}\\,\\mathrm{T}^{-1}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencia de una dimensión",
+      "puntos": [
+        {
+          "texto": "Potencia ⇒ $[A^n]=[A]^n$",
+          "explicacion": "El exponente se aplica a la dimensión de la base."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[v^2]=\\mathrm{L}^2\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Con $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$, se tiene $[v^2]=(\\mathrm{L}\\,\\mathrm{T}^{-1})^2=\\mathrm{L}^2\\,\\mathrm{T}^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma y resta de dimensiones",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ $[A\\pm B]=[A]=[B]$",
+          "explicacion": "Solo se pueden sumar o restar cantidades de la misma dimensión, y el resultado conserva esa dimensión."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[x_0+v\\,t]=\\mathrm{L}$",
+          "explicacion": "Con $[x_0]=\\mathrm{L}$ y $[v\\,t]=\\mathrm{L}\\,\\mathrm{T}^{-1}\\cdot\\mathrm{T}=\\mathrm{L}$, ambos sumandos son longitudes y su suma también."
+        }
+      ]
+    },
+    {
+      "titulo": "Homogeneidad dimensional",
+      "puntos": [
+        {
+          "texto": "Principio ⇒ en una ecuación correcta todos los términos tienen la misma dimensión",
+          "explicacion": "Si una ecuación suma o iguala términos con dimensiones distintas, es incorrecta. Es la base de las aplicaciones del análisis dimensional."
+        },
+        {
+          "texto": "Ejemplo ⇒ $d=v\\,t$ es homogénea",
+          "explicacion": "Se tiene $[d]=\\mathrm{L}$ y $[v\\,t]=\\mathrm{L}\\,\\mathrm{T}^{-1}\\cdot\\mathrm{T}=\\mathrm{L}$. Ambos miembros coinciden, de modo que la fórmula puede ser correcta."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula incorrecta",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $v=a\\,t^2$ es incorrecta",
+          "explicacion": "Se tiene $[v]=\\mathrm{L}\\,\\mathrm{T}^{-1}$ y $[a\\,t^2]=\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{T}^2=\\mathrm{L}$. Las dimensiones no coinciden: la fórmula no puede ser cierta."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponentes y funciones",
+      "puntos": [
+        {
+          "texto": "Exponente ⇒ debe ser adimensional",
+          "explicacion": "En $e^{kt}$, el producto $kt$ debe ser adimensional. Lo mismo ocurre con el argumento de las funciones trigonométricas y de los logaritmos."
+        },
+        {
+          "texto": "Ejemplo ⇒ si $e^{kt}$, entonces $[k]=\\mathrm{T}^{-1}$",
+          "explicacion": "Como $[kt]=1$ y $[t]=\\mathrm{T}$, se obtiene $[k]=\\frac{1}{\\mathrm{T}}=\\mathrm{T}^{-1}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dimensión de una constante",
+      "puntos": [
+        {
+          "texto": "Aplicación ⇒ hallar la dimensión de una constante",
+          "explicacion": "Se despeja la constante de la fórmula y se aplican las dimensiones de las demás cantidades."
+        },
+        {
+          "texto": "Ejemplo ⇒ en $F=\\frac{G\\,m_1\\,m_2}{r^2}$, $[G]=\\mathrm{M}^{-1}\\,\\mathrm{L}^3\\,\\mathrm{T}^{-2}$",
+          "explicacion": "Se despeja $G=\\frac{F\\,r^2}{m_1\\,m_2}$. Entonces $[G]=\\frac{\\mathrm{M}\\,\\mathrm{L}\\,\\mathrm{T}^{-2}\\cdot\\mathrm{L}^2}{\\mathrm{M}^2}=\\mathrm{M}^{-1}\\,\\mathrm{L}^3\\,\\mathrm{T}^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas empíricas",
+      "puntos": [
+        {
+          "texto": "Aplicación ⇒ deducir cómo depende una cantidad de otras",
+          "explicacion": "Se supone una relación de potencias con exponentes desconocidos y se igualan las dimensiones. Sirve cuando no se conoce la fórmula exacta."
+        },
+        {
+          "texto": "Ejemplo ⇒ período de un péndulo $T=k\\,l^a g^b$",
+          "explicacion": "Se tiene $[T]=\\mathrm{T}$, $[l]=\\mathrm{L}$ y $[g]=\\mathrm{L}\\,\\mathrm{T}^{-2}$. Entonces $\\mathrm{T}=\\mathrm{L}^a(\\mathrm{L}\\,\\mathrm{T}^{-2})^b=\\mathrm{L}^{a+b}\\,\\mathrm{T}^{-2b}$."
+        },
+        {
+          "texto": "Resolución ⇒ $a=\\frac{1}{2}$ y $b=-\\frac{1}{2}$",
+          "explicacion": "Para que las dimensiones coincidan, $a+b=0$ y $-2b=1$. De la segunda, $b=-\\frac{1}{2}$ y de la primera, $a=\\frac{1}{2}$. Resulta $T=k\\sqrt{\\frac{l}{g}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Limitaciones",
+      "puntos": [
+        {
+          "texto": "Análisis dimensional ✗ determina constantes numéricas",
+          "explicacion": "Solo da la forma de la relación. El valor de la constante adimensional, como $k$, debe hallarse con experimentos o con otra teoría."
+        },
+        {
+          "texto": "Misma dimensión ≠ misma cantidad",
+          "explicacion": "El trabajo y el momento de una fuerza tienen la misma dimensión, aunque son cantidades distintas. Error frecuente: creer que una fórmula homogénea es siempre correcta."
+        }
+      ]
+    }
+  ]
+}
