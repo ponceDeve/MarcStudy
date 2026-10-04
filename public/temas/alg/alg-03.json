@@ -1,0 +1,250 @@
+{
+  "curso": "Álgebra",
+  "tema": "Relación de orden",
+  "glosario": {
+    "Relación de orden": "Permite comparar dos números reales.",
+    "Tricotomía": "Se cumple una sola relación entre dos reales.",
+    "Transitividad": "Si a<b y b<c, entonces a<c.",
+    "Desigualdad": "Comparación de números con un símbolo de orden.",
+    "Real positivo": "Real mayor que cero.",
+    "Real negativo": "Real menor que cero.",
+    "Media aritmética": "Promedio de dos números.",
+    "Doble desigualdad": "Dos desigualdades unidas con la misma variable.",
+    "Reflexiva": "Todo elemento se relaciona consigo mismo.",
+    "Antisimétrica": "Dos relaciones opuestas implican igualdad.",
+    "Relación total": "Todo par de elementos es comparable."
+  },
+  "theory": [
+    {
+      "titulo": "Relación de orden",
+      "puntos": [
+        {
+          "texto": "«Relación de orden» ⇒ permite comparar dos números reales",
+          "explicacion": "Para cualesquiera $a$ y $b$ reales se puede decidir si uno es menor, igual o mayor que el otro. Se define a partir de los reales positivos, $\\mathbb{R}^+$."
+        },
+        {
+          "texto": "Definición ⇒ $a<b$ si $b-a\\in\\mathbb{R}^+$",
+          "explicacion": "Un real es menor que otro cuando la diferencia entre el mayor y el menor es positiva. Así, $3<8$ porque $8-3=5$, que es positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Símbolos de orden",
+      "puntos": [
+        {
+          "texto": "Símbolos ⇒ $<$, $>$, $\\le$ y $\\ge$ comparan reales",
+          "explicacion": "Se cumple $a>b$ cuando $b<a$. Además $a\\le b$ significa $a<b$ o $a=b$. Ejemplo: $5\\ge5$ es verdadera y $5>5$ es falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Reales positivos y negativos",
+      "puntos": [
+        {
+          "texto": "Positivo ⇒ $a>0$; negativo ⇒ $a<0$",
+          "explicacion": "El cero no es positivo ni negativo. El conjunto de positivos es $\\mathbb{R}^+$ y el de negativos, $\\mathbb{R}^-$. En la recta, los positivos están a la derecha del cero y los negativos, a la izquierda."
+        }
+      ]
+    },
+    {
+      "titulo": "Tricotomía",
+      "puntos": [
+        {
+          "texto": "Tricotomía ⇒ para $a,b\\in\\mathbb{R}$ se cumple una sola: $a<b$, $a=b$ o $a>b$",
+          "explicacion": "Siempre ocurre exactamente una de las tres. No hay números incomparables ni casos en que valgan dos relaciones a la vez."
+        },
+        {
+          "texto": "Ejemplo ⇒ para $\\sqrt{2}$ y $1.5$ vale $\\sqrt{2}<1.5$",
+          "explicacion": "Como $\\sqrt{2}\\approx1.414$, se tiene $1.5-\\sqrt{2}>0$. Entre ambos, solo se cumple una relación."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden en la recta",
+      "puntos": [
+        {
+          "texto": "$a<b$ ⇔ $a$ está a la izquierda de $b$",
+          "explicacion": "En la recta numérica, los números crecen de izquierda a derecha. Por eso $-5<-2$ y $-2<0$, porque $-5$ queda a la izquierda de $-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Transitividad",
+      "puntos": [
+        {
+          "texto": "Transitiva ⇒ si $a<b$ y $b<c$, entonces $a<c$",
+          "explicacion": "Permite encadenar comparaciones."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2<5$ y $5<9$ dan $2<9$",
+          "explicacion": "Como $2$ es menor que $5$ y $5$ es menor que $9$, también $2$ es menor que $9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden y adición",
+      "puntos": [
+        {
+          "texto": "Adición ⇒ si $a<b$, entonces $a+c<b+c$",
+          "explicacion": "Se puede sumar el mismo real a ambos miembros sin cambiar el sentido de la desigualdad. Incluye el caso de $c$ negativo, que equivale a restar."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3<7$ da $3+(-5)<7+(-5)$, es decir, $-2<2$",
+          "explicacion": "Al sumar $-5$ a ambos miembros, la desigualdad se mantiene: $-2<2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicación por positivo",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ si $a<b$ y $c>0$, entonces $ac<bc$",
+          "explicacion": "Al multiplicar por un número positivo, la desigualdad conserva el sentido."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2<5$ y $c=3$ dan $6<15$",
+          "explicacion": "Se multiplican ambos miembros por $3$: $2\\cdot3=6$ y $5\\cdot3=15$, y $6<15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicación por negativo",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ si $a<b$ y $c<0$, entonces $ac>bc$",
+          "explicacion": "Al multiplicar por un número negativo, la desigualdad cambia de sentido. Error frecuente: olvidar invertirla."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2<5$ y $c=-3$ dan $-6>-15$",
+          "explicacion": "Se multiplican ambos miembros por $-3$: $2\\cdot(-3)=-6$ y $5\\cdot(-3)=-15$. Como $-6$ está a la derecha de $-15$, $-6>-15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de desigualdades",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ si $a<b$ y $c<d$, entonces $a+c<b+d$",
+          "explicacion": "Se pueden sumar miembro a miembro dos desigualdades del mismo sentido."
+        },
+        {
+          "texto": "Ejemplo ⇒ $1<2$ y $3<5$ dan $4<7$",
+          "explicacion": "Se suman los miembros: $1+3=4$ y $2+5=7$, y $4<7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de desigualdades",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ si $0<a<b$ y $0<c<d$, entonces $ac<bd$",
+          "explicacion": "Se pueden multiplicar miembro a miembro, pero solo si todos los números son positivos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2<3$ y $4<5$ dan $8<15$",
+          "explicacion": "Se multiplican los miembros: $2\\cdot4=8$ y $3\\cdot5=15$, y $8<15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Inverso y orden",
+      "puntos": [
+        {
+          "texto": "Inversos ⇒ si $0<a<b$, entonces $\\frac{1}{a}>\\frac{1}{b}$",
+          "explicacion": "Al tomar inversos de positivos, el sentido se invierte. Lo mismo ocurre si $a<b<0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2<4$ da $\\frac{1}{2}>\\frac{1}{4}$",
+          "explicacion": "Se tiene $0.5>0.25$. Con negativos: $-4<-2$ da $-\\frac{1}{4}>-\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrados",
+      "puntos": [
+        {
+          "texto": "Cuadrado ⇒ $a^2\\ge0$ para todo $a\\in\\mathbb{R}$",
+          "explicacion": "El cuadrado de un real nunca es negativo, y solo vale cero si $a=0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(-3)^2=9\\ge0$ y $0^2=0$",
+          "explicacion": "El cuadrado de un negativo es positivo, y por eso ningún cuadrado de real es negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias y orden",
+      "puntos": [
+        {
+          "texto": "Potencia ⇒ si $0<a<b$, entonces $a^2<b^2$",
+          "explicacion": "El cuadrado conserva el orden solo entre positivos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3<4$ da $9<16$",
+          "explicacion": "Al elevar al cuadrado se obtiene $3^2=9$ y $4^2=16$, y $9<16$."
+        },
+        {
+          "texto": "Con negativos ✗ conserva el orden",
+          "explicacion": "Ejemplo: $-4<3$, pero $(-4)^2=16>9=3^2$. Error frecuente: elevar al cuadrado ambos miembros sin revisar el signo."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces y orden",
+      "puntos": [
+        {
+          "texto": "Raíz cuadrada ⇒ si $0\\le a<b$, entonces $\\sqrt{a}<\\sqrt{b}$",
+          "explicacion": "La raíz cuadrada conserva el orden entre números no negativos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $9<25$ da $3<5$",
+          "explicacion": "Se tiene $\\sqrt{9}=3$ y $\\sqrt{25}=5$, y $3<5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Media aritmética",
+      "puntos": [
+        {
+          "texto": "Media ⇒ si $a<b$, entonces $a<\\frac{a+b}{2}<b$",
+          "explicacion": "El promedio de dos números diferentes siempre queda estrictamente entre ellos."
+        },
+        {
+          "texto": "Ejemplo ⇒ entre $2$ y $4$ está $3$",
+          "explicacion": "Se calcula $\\frac{2+4}{2}=3$, y $2<3<4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de fracciones",
+      "puntos": [
+        {
+          "texto": "Fracciones ⇒ si $b,d>0$, $\\frac{a}{b}<\\frac{c}{d}$ equivale a $ad<bc$",
+          "explicacion": "Se multiplica en cruz, que es posible porque los denominadores son positivos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\frac{3}{5}$ y $\\frac{4}{7}$ dan $\\frac{3}{5}>\\frac{4}{7}$",
+          "explicacion": "Se comparan $3\\cdot7=21$ y $4\\cdot5=20$. Como $21>20$, se concluye $\\frac{3}{5}>\\frac{4}{7}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Doble desigualdad",
+      "puntos": [
+        {
+          "texto": "Doble desigualdad ⇒ $a<x<b$ significa $a<x$ y $x<b$",
+          "explicacion": "El número $x$ queda entre $a$ y $b$. Ejemplo: con $-2<x<3$, valores posibles son $-1$, $0$ y $2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del símbolo menor o igual",
+      "puntos": [
+        {
+          "texto": "«Menor o igual» ⇒ es reflexiva, antisimétrica, transitiva y total",
+          "explicacion": "Reflexiva: $a\\le a$. Antisimétrica: si $a\\le b$ y $b\\le a$, entonces $a=b$. Transitiva: si $a\\le b$ y $b\\le c$, entonces $a\\le c$. Total: todo par es comparable."
+        }
+      ]
+    }
+  ]
+}
