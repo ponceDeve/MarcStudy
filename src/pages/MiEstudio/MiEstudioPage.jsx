@@ -1714,6 +1714,12 @@ ${teoria}`;
           onToggleFullscreen={toggleFullscreen}
           onAbandonarPregunta={pedirAbandonarPregunta}
           onIrInicio={irAInicio}
+          onVolverTeoria={
+            modoExamenTema &&
+            faseExamenTema === "resultados"
+              ? volverATeoriaDesdeExamenTema
+              : undefined
+          }
           pdfVerUrl={
             topicData?.archivo
               ? `${window.location.origin}${import.meta.env.BASE_URL}${topicData.archivo.replace(/^temas\//i, "PDFs/").replace(/\.json$/i, ".pdf")}`
@@ -2225,7 +2231,6 @@ ${teoria}`;
                     claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
                     onTerminar={finalizarTemaDesdeExamen}
                     onFaseChange={setFaseExamenTema}
-                    onVolverTeoria={volverATeoriaDesdeExamenTema}
                     onAbandonar={pedirAbandonarPregunta}
                   />
                 </div>

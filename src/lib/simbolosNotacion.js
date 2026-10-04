@@ -15,11 +15,19 @@ export const SIMBOLOS_NOTACION = {
   "⇒": "provoca",
   "✓": "necesita",
   "✗": "no tiene",
-  "+": "màs",
+  "+": "más",
   "↑": "aumenta",
   "↓": "disminuye",
   "≠": "se diferencia de",
   "≈": "es similar a",
+  "<": "es menor que",
+  ">": "es mayor que",
+  "≤": "es menor o igual que",
+  "≥": "es mayor o igual que",
+  "⊂": "está contenido en",
+  "∪": "unión",
+  "∩": "intersección",
+  "×": "multiplicado por",
 };
 // Ordenados de más largo a más corto (por si en el futuro se agrega
 // algún símbolo de más de un carácter) para que el regex no corte mal.

@@ -1,4 +1,12 @@
+import { useMemo } from "react";
 import LatexText from "../../components/LatexText";
+import {
+  claveCombinacion,
+  combinacionCorrectaVF,
+  formatearCombinacionVF,
+  generarAlternativasVF,
+  respuestaVFCompleta,
+} from "../../lib/verdaderoFalso";
 const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
 // ============================================================================
 // DETECTAR ESPACIOS DE COMPLETAR
@@ -39,19 +47,32 @@ export default function PreguntaSimulacro({
   onCambiar,
   modoResultado = false,
 }) {
+  const alternativasVF = useMemo(() => {
+    if (pregunta.tipo !== "verdadero_falso") return [];
+    return (
+      pregunta.alternativasVF ||
+      generarAlternativasVF(pregunta.proposiciones || [])
+    );
+  }, [pregunta]);
   // ==========================================================================
-  // VERDADERO / FALSO
+  // VERDADERO / FALSO (alternativas A–E como en QuestionCard / TemaExamenView)
   // ==========================================================================
   if (pregunta.tipo === "verdadero_falso") {
-    const marcas =
-      respuesta ||
-      Array(pregunta.proposiciones?.length || 0).fill(null);
-    function marcar(i, valor) {
-      if (modoResultado) return;
-      const copia = [...marcas];
-      copia[i] = valor;
-      onCambiar(copia);
-    }
+    const proposiciones = pregunta.proposiciones || [];
+    const correcta = combinacionCorrectaVF(proposiciones);
+    const claveCorrecta = claveCombinacion(correcta);
+    const respondida = respuestaVFCompleta(proposiciones, respuesta);
+    const claveRespuesta = respondida ? claveCombinacion(respuesta) : null;
+    // Si la respuesta guardada no está entre las alternativas (exámenes
+    // antiguos), se agrega para que siempre aparezca en los resultados.
+    const lista = alternativasVF.some((c) => claveCombinacion(c) === claveRespuesta)
+      || !respondida
+      ? alternativasVF
+      : [...alternativasVF.filter((c) => claveCombinacion(c) !== claveCorrecta), correcta, respuesta];
+    const alternativas = lista.filter(
+      (c, i, arr) =>
+        arr.findIndex((o) => claveCombinacion(o) === claveCombinacion(c)) === i
+    );
     return (
       <>
         {pregunta.q && (
@@ -60,65 +81,50 @@ export default function PreguntaSimulacro({
           </h3>
         )}
         <ol className="question-card__vf-list">
-          {(pregunta.proposiciones || []).map((prop, i) => {
-            const marcada = marcas[i];
-            const respondida =
-              marcada === true || marcada === false;
-            const filaEstado = modoResultado
-              ? !respondida
-                ? ""
-                : marcada === prop.correct
-                  ? "is-correct"
-                  : "is-wrong"
+          {proposiciones.map((prop, i) => (
+            <li key={i} className="question-card__vf-row">
+              <span className="question-card__vf-texto">
+                <LatexText>{prop.texto}</LatexText>
+              </span>
+              {modoResultado && (
+                <span className="question-card__vf-correcta">
+                  Correcta: {prop.correct ? "Verdadero" : "Falso"}
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
+        <div className="question-card__options question-card__options--completar">
+          {alternativas.map((combinacion, i) => {
+            const clave = claveCombinacion(combinacion);
+            const esCorrecta = clave === claveCorrecta;
+            const esMarcada = clave === claveRespuesta;
+            if (modoResultado && !esCorrecta && !esMarcada) return null;
+            const claseResultado = modoResultado
+              ? esCorrecta
+                ? "is-correct"
+                : "is-wrong"
               : "";
             return (
-              <li
-                key={i}
-                className={`question-card__vf-row ${filaEstado}`}
+              <button
+                key={clave}
+                type="button"
+                disabled={modoResultado}
+                onClick={() => onCambiar(combinacion)}
+                className={`question-card__opt ${
+                  esMarcada && !modoResultado ? "is-selected" : ""
+                } ${claseResultado}`}
               >
-                <span className="question-card__vf-texto">
-                  <LatexText>{prop.texto}</LatexText>
+                <span className="question-card__opt-letter">
+                  {LETRAS_ALTERNATIVAS[i] || String.fromCharCode(65 + i)}
                 </span>
-                <div className="question-card__vf-btns">
-                  <button
-                    type="button"
-                    disabled={modoResultado}
-                    onClick={() => marcar(i, true)}
-                    className={`question-card__vf-btn ${
-                      marcas[i] === true ? "is-selected" : ""
-                    }`}
-                  >
-                    V
-                  </button>
-                  <button
-                    type="button"
-                    disabled={modoResultado}
-                    onClick={() => marcar(i, false)}
-                    className={`question-card__vf-btn ${
-                      marcas[i] === false ? "is-selected" : ""
-                    }`}
-                  >
-                    F
-                  </button>
-                </div>
-                {modoResultado && !respondida && (
-                  <span className="question-card__vf-correcta">
-                    Correcta:{" "}
-                    {prop.correct ? "Verdadero" : "Falso"}
-                  </span>
-                )}
-                {modoResultado &&
-                  respondida &&
-                  marcada !== prop.correct && (
-                    <span className="question-card__vf-correcta">
-                      Correcta:{" "}
-                      {prop.correct ? "Verdadero" : "Falso"}
-                    </span>
-                  )}
-              </li>
+                <span className="question-card__opt-text">
+                  {formatearCombinacionVF(combinacion)}
+                </span>
+              </button>
             );
           })}
-        </ol>
+        </div>
       </>
     );
   }
@@ -408,3 +414,4 @@ export default function PreguntaSimulacro({
     </>
   );
 }
+p

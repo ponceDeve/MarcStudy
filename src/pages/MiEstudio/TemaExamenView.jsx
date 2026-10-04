@@ -28,6 +28,11 @@ import {
   useState
 } from "react";
 import LatexText from "../../components/LatexText";
+import {
+  claveCombinacion,
+  formatearCombinacionVF,
+  generarAlternativasVF,
+} from "../../lib/verdaderoFalso";
 import { shuffle } from "../../lib/shuffle";
 import { puntosDeEstado } from "../../lib/simulacroExamen";
 import { calcularEstrellas } from "../../lib/estrellasJuego";
@@ -79,99 +84,6 @@ function partirEnEspacios(textoConEspacios) {
     });
   }
   return partes;
-}
-/* ============================================================
-   COMBINACIONES VERDADERO / FALSO
-   Mismo sistema utilizado por QuestionCard.jsx:
-   - genera todas las combinaciones posibles
-   - identifica la combinación correcta
-   - prioriza distractores con menor distancia de Hamming
-   - conserva como máximo 5 alternativas
-   ============================================================ */
-function generarCombinacionesVF(cantidad) {
-  const total = 2 ** cantidad;
-  const combinaciones = [];
-  for (let numero = 0; numero < total; numero++) {
-    const combinacion = [];
-    for (let i = cantidad - 1; i >= 0; i--) {
-      combinacion.push(
-        Boolean((numero >> i) & 1)
-      );
-    }
-    combinaciones.push(combinacion);
-  }
-  return combinaciones;
-}
-function distanciaHamming(a, b) {
-  let distancia = 0;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      distancia++;
-    }
-  }
-  return distancia;
-}
-function claveCombinacion(combinacion) {
-  return combinacion
-    .map((valor) => (valor ? "V" : "F"))
-    .join("");
-}
-function generarAlternativasVF(proposiciones) {
-  const cantidad = proposiciones.length;
-  if (cantidad === 0) {
-    return [];
-  }
-  const correcta = proposiciones.map(
-    (prop) => prop.correct === true
-  );
-  const todas = generarCombinacionesVF(
-    cantidad
-  );
-  const otras = todas.filter(
-    (combinacion) =>
-      claveCombinacion(combinacion) !==
-      claveCombinacion(correcta)
-  );
-  const agrupadasPorDistancia = new Map();
-  otras.forEach((combinacion) => {
-    const distancia = distanciaHamming(
-      correcta,
-      combinacion
-    );
-    if (!agrupadasPorDistancia.has(distancia)) {
-      agrupadasPorDistancia.set(
-        distancia,
-        []
-      );
-    }
-    agrupadasPorDistancia
-      .get(distancia)
-      .push(combinacion);
-  });
-  const alternativas = [correcta];
-  const distancias = [
-    ...agrupadasPorDistancia.keys()
-  ].sort((a, b) => a - b);
-  for (const distancia of distancias) {
-    if (alternativas.length >= 5) {
-      break;
-    }
-    const grupo = shuffle(
-      agrupadasPorDistancia.get(distancia)
-    );
-    for (const combinacion of grupo) {
-      if (alternativas.length >= 5) {
-        break;
-      }
-      alternativas.push(combinacion);
-    }
-  }
-  return shuffle(alternativas);
-}
-function formatearCombinacionVF(combinacion) {
-  return combinacion
-    .map((valor) => (valor ? "V" : "F"))
-    .join("  ");
 }
 /* ============================================================
    CALIFICACIÓN
@@ -1363,7 +1275,6 @@ const TemaExamenView = forwardRef(
       titulos,
       onTerminar,
       onFaseChange,
-      onVolverTeoria,
       onAbandonar
     },
     ref
@@ -1738,57 +1649,38 @@ const TemaExamenView = forwardRef(
             )
           : 0;
       return (
-        <div className="resultados-examen container">
-          {onVolverTeoria && (
-            <button
-              type="button"
-              className="resultados-examen__volver-teoria"
-              title="Volver a la teoría"
-              onClick={onVolverTeoria}
-            >
-              <i className="fas fa-arrow-left" />
-            </button>
-          )}
+        <div className="resultados-examen">
           <div className="resultados-examen__resumen preguntas-normales">
-            <h1 className="resultados-examen__puntaje">
-              {puntajeTotal.toFixed(2)}
-            </h1>
-            <p className="resultados-examen__subtitulo">
-              {totalCorrectas}/
-              {total} correctas
-            </p>
-            <div
-              className="level-cell__estrellas"
-              style={{ fontSize: "2.4rem", marginTop: "10px", gap: "8px" }}
-              role="img"
-              aria-label={`${calcularEstrellas(totalCorrectas, total)} de 3 estrellas`}
-            >
-              {[1, 2, 3].map((n) => (
-                <span
-                  key={n}
-                  className={
-                    n <= calcularEstrellas(totalCorrectas, total)
-                      ? "is-activa"
-                      : ""
-                  }
-                >
-                  ★
-                </span>
-              ))}
+            <div className="resultados-examen__marcador">
+              <div className="resultados-examen__marcador-texto">
+                <h1 className="resultados-examen__puntaje">
+                  {puntajeTotal.toFixed(2)}
+                </h1>
+                <p className="resultados-examen__subtitulo">
+                  {totalCorrectas}/
+                  {total} correctas
+                </p>
+              </div>
+              <div
+                className="level-cell__estrellas"
+                role="img"
+                aria-label={`${calcularEstrellas(totalCorrectas, total)} de 3 estrellas`}
+              >
+                {[1, 2, 3].map((n) => (
+                  <span
+                    key={n}
+                    className={
+                      n <= calcularEstrellas(totalCorrectas, total)
+                        ? "is-activa"
+                        : ""
+                    }
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
-          {grupos.length > 1 && (
-            <SelectorCurso
-              grupos={grupos}
-              tituloSeleccionado={
-                grupoSeleccionado?.titulo ??
-                null
-              }
-              onSeleccionar={
-                setTituloSeleccionado
-              }
-            />
-          )}
           {grupoSeleccionado && (
             <section
               className="resultados-examen__bloque"
@@ -1797,11 +1689,23 @@ const TemaExamenView = forwardRef(
               }
             >
               <div className="resultados-examen__bloque-header">
-                <h2 className="resultados-examen__bloque-titulo">
-                  {
-                    grupoSeleccionado.titulo
-                  }
-                </h2>
+                {grupos.length > 1 ? (
+                  <SelectorCurso
+                    grupos={grupos}
+                    tituloSeleccionado={
+                      grupoSeleccionado.titulo
+                    }
+                    onSeleccionar={
+                      setTituloSeleccionado
+                    }
+                  />
+                ) : (
+                  <h2 className="resultados-examen__bloque-titulo">
+                    {
+                      grupoSeleccionado.titulo
+                    }
+                  </h2>
+                )}
                 <span className="resultados-examen__bloque-puntaje">
                   {puntajeGrupo.toFixed(2)} pts
                 </span>

@@ -8,6 +8,11 @@ import {
   useEffect,
 } from "react";
 import { shuffle } from "../../lib/shuffle";
+import {
+  claveCombinacion,
+  formatearCombinacionVF,
+  generarAlternativasVF,
+} from "../../lib/verdaderoFalso";
 import LatexText from "../../components/LatexText";
 import RendirseModal from "../../components/RendirseModal";
 import { useAvisoBloqueo } from "../../hooks/useAvisoBloqueo";
@@ -55,97 +60,6 @@ function partirEnEspacios(textoConEspacios) {
     });
   }
   return partes;
-}
-// ============================================================================
-// COMBINACIONES VERDADERO / FALSO
-// ============================================================================
-function generarCombinacionesVF(cantidad) {
-  const total = 2 ** cantidad;
-  const combinaciones = [];
-  for (let numero = 0; numero < total; numero++) {
-    const combinacion = [];
-    for (let i = cantidad - 1; i >= 0; i--) {
-      combinacion.push(
-        Boolean((numero >> i) & 1)
-      );
-    }
-    combinaciones.push(combinacion);
-  }
-  return combinaciones;
-}
-function distanciaHamming(a, b) {
-  let distancia = 0;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      distancia++;
-    }
-  }
-  return distancia;
-}
-function claveCombinacion(combinacion) {
-  return combinacion
-    .map((valor) => (valor ? "V" : "F"))
-    .join("");
-}
-function generarAlternativasVF(proposiciones) {
-  const cantidad = proposiciones.length;
-  if (cantidad === 0) {
-    return [];
-  }
-  const correcta = proposiciones.map(
-    (prop) => prop.correct === true
-  );
-  const todas = generarCombinacionesVF(
-    cantidad
-  );
-  const otras = todas.filter(
-    (combinacion) =>
-      claveCombinacion(combinacion) !==
-      claveCombinacion(correcta)
-  );
-  // Para que los distractores sean difíciles de descartar,
-  // se priorizan las combinaciones que cambian
-  // la menor cantidad posible de proposiciones.
-  const agrupadasPorDistancia = new Map();
-  otras.forEach((combinacion) => {
-    const distancia = distanciaHamming(
-      correcta,
-      combinacion
-    );
-    if (!agrupadasPorDistancia.has(distancia)) {
-      agrupadasPorDistancia.set(
-        distancia,
-        []
-      );
-    }
-    agrupadasPorDistancia
-      .get(distancia)
-      .push(combinacion);
-  });
-  const alternativas = [correcta];
-  const distancias = [
-    ...agrupadasPorDistancia.keys(),
-  ].sort((a, b) => a - b);
-  for (const distancia of distancias) {
-    if (alternativas.length >= 5) {
-      break;
-    }
-    const grupo = shuffle(
-      agrupadasPorDistancia.get(distancia)
-    );
-    for (const combinacion of grupo) {
-      if (alternativas.length >= 5) {
-        break;
-      }
-      alternativas.push(combinacion);
-    }
-  }
-  return shuffle(alternativas);
-}
-function formatearCombinacionVF(combinacion) {
-  return combinacion
-    .map((valor) => (valor ? "V" : "F"))
-    .join("  ");
 }
 // ============================================================================
 // LETRAS DE LAS ALTERNATIVAS

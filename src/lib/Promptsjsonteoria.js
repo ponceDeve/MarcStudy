@@ -17,12 +17,6 @@ Filosofía, Cívica, Economía, Geografía, Psicología o Razonamiento
 Verbal, según el curso indicado. A partir del texto, imagen, apunte o
 JSON de teoría recibido genera, en un solo mensaje, un JSON completo
 de teoría ampliada para UNMSM.
-REGLA DE FÓRMULAS (SOLO ECONOMÍA)
-Si el curso es Economía y el tema tiene fórmulas de cálculo, cada fórmula
-va en texto plano (x², ×, ÷, sin LaTeX) en su propia card, con cada variable
-y su unidad definidas; la card siguiente es un ejemplo numérico resuelto con
-datos, sustitución, cada operación y el resultado interpretado. En los demás
-cursos de Letras no inventes fórmulas.
 MODO ACTUALIZACIÓN DE UN JSON ANTIGUO
 Si lo que recibes es un JSON de teoría ya existente (en vez de un
 apunte nuevo), trátalo como la fuente completa a cubrir, igual que un
@@ -136,27 +130,27 @@ del curso.
 datos, lugares, etapas, actores o relaciones, crea cards distintas para
 cada elemento evaluable. No conviertas una imagen compleja en una sola
 card-resumen.
-1.5 Después de cubrir todo el material, amplía con conocimiento
-académico confiable y pertinente: contexto
-histórico, relaciones, comparaciones, excepciones y aplicaciones. Al
-menos el 30% de las cards normales debe aportar información propia no
-insinuada por la fuente. La ampliación también debe respetar la regla
-de una idea por card.
-1.6 Si el apunte da una conclusión sin contexto o justificación, crea
-una o varias cards nuevas y separadas —tantas como haga falta— que
-expliquen su origen. No te limites a una sola card si el contexto
-necesita más de una idea para quedar completo. No mezcles ese contexto
-con la card original.
+1.5 Después de cubrir todo el material, desarrolla —sin añadir datos
+nuevos— el porqué, las relaciones, las comparaciones y las excepciones que
+el material ya enuncia o insinúa. No introduzcas nombres, fechas, cifras ni
+hechos que no estén en el material recibido: si una card necesita un dato
+que el material no trae, no lo completes de memoria. Considera verificado
+el contenido del material y no lo contradigas. La ampliación también debe
+respetar la regla de una idea por card.
+1.6 Si el apunte da una conclusión sin contexto o justificación, crea una
+o varias cards nuevas y separadas que expliquen su origen usando
+únicamente lo que el material permite deducir. Si el material no alcanza
+para justificarla, no completes el contexto de memoria. No mezcles ese
+contexto con la card original.
 1.7 Cada subtema tiene su propio «titulo». No agrupes subtemas,
 categorías, periodos, autores, obras o temas distintos bajo un mismo
 título. Si el material contiene varios subtemas, crea objetos de sección
 separados, aunque alguno tenga una sola card. No concatenes varios
 títulos ni uses títulos paraguas.
-1.8 El campo «tema» debe tener solo una o dos palabras de contenido.
-No cuentes artículos, determinantes, preposiciones ni conectores como
-«el», «la», «los», «las», «de», «del», «y» u «o». Condensa el nombre
-del tema a sus palabras esenciales y no escribas una frase, oración,
-subtítulo largo ni lista.
+1.8 El campo «tema» se copia tal cual el nombre del tema recibido (la línea
+TEMA del encabezado o el título del apunte), sin condensarlo, resumirlo ni
+reformularlo. Solo si no se indica ningún tema, escribe el nombre del tema
+con un máximo de cuatro palabras de contenido, sin frases ni listas.
 1.9 Cada «titulo» debe ser corto, específico y tener como máximo cuatro
 palabras de contenido. No escribas oraciones, explicaciones ni títulos
 con «y», «o», «/» que agrupen subtemas distintos. La cantidad de
@@ -219,7 +213,7 @@ cerrada. Cuando sí lo incluyas, que muestre qué elemento de la situación
 representa la teoría y qué interpretación o consecuencia se obtiene, no
 una simple mención.
 Añade contexto histórico o académico y un error frecuente de examen
-cuando corresponda. No sacrifiques la separación atómica ni la
+solo cuando se desprendan del material recibido. No sacrifiques la separación atómica ni la
 información de la fuente por mantener la explicación corta.
 6. SIN SECCIÓN DE EJERCICIOS
 No agregues ninguna sección «Ejercicios» ni marcadores «Ejercicio N». Los
@@ -233,7 +227,7 @@ la última sección de teoría.
 uses comillas dobles escapadas.
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
-textos; que «tema» tiene solo una o dos palabras de contenido; que cada
+textos; que «tema» es idéntico al tema recibido; que cada
 «titulo» es corto y corresponde a un solo subtema; que no agrupaste ni
 concatenaste títulos; que cada idea independiente tiene su propia card
 con «texto» y «explicacion»; que no fusionaste listas, tablas, mapas,
@@ -331,8 +325,7 @@ dentro de «puntos». No unas dos ideas solo porque aparecen en la misma
 oración, párrafo, viñeta, tabla, fórmula o imagen. Si una oración
 contiene dos afirmaciones evaluables, divídela en dos cards. Si una
 fórmula tiene varias condiciones o variables, separa la fórmula, el
-significado de cada variable, sus restricciones y su uso en cards
-independientes cuando sean ideas evaluables.
+significado de cada variable, y sus restricciones en cards independientes cuando sean ideas evaluables (el ejemplo resuelto va dentro de la «explicacion» de la fórmula).
 No juntes dos o más nombres, sinónimos, términos o etiquetas dentro de
 un mismo «texto» separándolos con «o», «y», «/» o una coma, aunque se
 refieran al mismo concepto. Cada nombre alternativo va en su propia
@@ -367,28 +360,27 @@ escrito con palabras.
 etapas, coordenadas, flechas o relaciones, crea cards distintas para
 cada elemento y relación importante. No conviertas una imagen
 matemática compleja en una sola card-resumen.
-1.5 Después de cubrir todo el material, completa el tema con
-conocimiento matemático confiable:
-definiciones, demostraciones breves, propiedades auxiliares,
-conexiones, casos especiales, aplicaciones y estrategias de resolución. Al
-menos el 30% de las cards normales debe aportar información propia no
-insinuada por la fuente. La ampliación también debe respetar la regla
-de una idea por card.
+1.5 Después de cubrir todo el material, desarrolla solo lo que se deduce
+de él: demostraciones breves de lo que el material enuncia, casos
+especiales que se obtengan directamente y estrategias DECO para aplicarlo.
+No agregues fórmulas, propiedades ni datos que no estén en el material ni
+se deduzcan de él. Considera verificado el contenido del material y no lo
+contradigas. La ampliación también debe respetar la regla de una idea por
+card.
 1.6 Si una fórmula o resultado aparece sin justificación, crea una o
-varias cards nuevas y separadas —tantas como haga falta— para explicar
-de dónde se obtiene y con qué se relaciona. No te limites a una sola
-card si la justificación necesita más de una idea para quedar completa.
-No mezcles ese contexto con la card original.
+varias cards nuevas y separadas —tantas como haga falta— que muestren de
+dónde se obtiene mediante una deducción basada solo en lo que el material
+ya enuncia. Si no puede deducirse con lo recibido, no inventes la
+justificación. No mezcles ese contexto con la card original.
 1.7 Cada subtema tiene su propio «titulo». No agrupes subtemas,
 conceptos, propiedades, métodos o tipos distintos bajo un mismo título.
 Si el material contiene varios subtemas, crea objetos de sección
 separados, aunque alguno tenga una sola card. No concatenes varios
 títulos ni uses títulos paraguas.
-1.8 El campo «tema» debe tener solo una o dos palabras de contenido.
-No cuentes artículos, determinantes, preposiciones ni conectores como
-«el», «la», «los», «las», «de», «del», «y» u «o». Condensa el nombre
-del tema a sus palabras esenciales y no escribas una frase, oración,
-subtítulo largo ni lista.
+1.8 El campo «tema» se copia tal cual el nombre del tema recibido (la línea
+TEMA del encabezado o el título del apunte), sin condensarlo, resumirlo ni
+reformularlo. Solo si no se indica ningún tema, escribe el nombre del tema
+con un máximo de cuatro palabras de contenido, sin frases ni listas.
 1.9 Cada «titulo» debe ser corto, específico y tener como máximo cuatro
 palabras de contenido. No escribas oraciones, explicaciones ni títulos
 con «y», «o», «/» que agrupen subtemas distintos. La cantidad de
@@ -410,30 +402,28 @@ espacio.
 2.4 «texto» contiene como máximo unas doce palabras, sin contar
 símbolos. Resalta como máximo un término o fórmula clave con «». No
 uses énfasis en conectores ni repitas una misma idea en varias cards.
-2.5 Cuando un punto sea una fórmula, el punto siguiente de la misma
-sección debe ser un ejemplo numérico resuelto de esa fórmula. Si el
-ejemplo tiene varias operaciones o decisiones, separa cada paso
-importante en su propia card, manteniendo el orden. La «explicacion» de la
-card de la fórmula solo aclara qué representa cada variable, cuándo se
-aplica y de dónde sale, sin ejemplo numérico: el desarrollo numérico va
-únicamente en la card del ejemplo.
+2.5 Cuando un punto sea una fórmula, su ejemplo numérico resuelto va dentro de
+la «explicacion» de ese mismo punto (ver sección 5), no en una card aparte.
+No dupliques ese ejemplo en otra card.
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
 cantidad de símbolos por texto: puedes usar uno o varios juntos si
-cada uno aporta significado. En igualdades,
-implicaciones, pertenencia, equivalencias y relaciones que tengan su
-símbolo en la lista de abajo, el uso del símbolo correspondiente es
-obligatorio cuando sea semánticamente correcto. Las desigualdades y
-operaciones sin símbolo en esa lista se escriben con palabras o dentro
-de «$...$». No uses símbolos como decoración ni inventes
+cada uno aporta significado. En igualdades, desigualdades,
+implicaciones, pertenencia, operaciones, equivalencias y relaciones,
+el uso del símbolo correspondiente es obligatorio cuando sea
+semánticamente correcto. No uses símbolos como decoración ni inventes
 significados.
 Usa ÚNICAMENTE estos símbolos, con estos significados exactos. No uses
 ningún otro símbolo de notación fuera de esta lista, aunque parezca
 pertinente:
 «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o
 implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye;
-«≠» diferente; «≈» similar.
+«≠» diferente; «≈» similar; «<» menor que; «>» mayor que; «≤» menor o
+igual que; «≥» mayor o igual que; «⊂» está contenido en; «∪» unión;
+«∩» intersección; «×» multiplicado por. Esta restricción aplica solo a
+los símbolos de relación escritos directamente en «texto»: no limita el
+KaTeX dentro de «$...$» ni los signos de operación dentro de fórmulas.
 Prioriza los símbolos en «texto», no solo en «explicacion». No
 incluyas estos símbolos en «glosario»: el código los detecta y traduce
 por su cuenta, sin depender de lo que devuelva la IA.
@@ -462,10 +452,10 @@ No lo agregues a la fuerza en cards que no lo necesiten. Cuando sí lo
 incluyas, que muestre qué representa cada dato matemático en esa
 situación y qué decisión o conclusión permite obtener, no una mención
 genérica.
-Cuando el punto sea el ejemplo resuelto de una fórmula o regla operativa,
-«explicacion» debe priorizar el desarrollo numérico sobre la descripción
-verbal: no repitas la regla con otras palabras, resuélvela con números.
-Incluye, dentro de esa misma «explicacion», el ejemplo numérico
+Cuando el punto sea una fórmula o una regla operativa, «explicacion»
+debe priorizar el desarrollo numérico sobre la descripción verbal de la
+regla: no repitas la regla con otras palabras, resuélvela con números.
+Incluye, dentro de esa misma «explicacion», un ejemplo numérico
 resuelto con datos, sustitución, cada operación y el resultado,
 interpretado en el contexto. Desarrolla tantos pasos como el
 procedimiento realmente necesite para quedar completo: no te limites a
@@ -503,7 +493,7 @@ caracteres consecutivos. Revisa comandos como «\\frac», «\\sqrt»,
 dejes una sola barra invertida de KaTeX.
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
-textos; que «tema» tiene solo una o dos palabras de contenido; que cada
+textos; que «tema» es idéntico al tema recibido; que cada
 «titulo» es corto y corresponde a un solo subtema; que no agrupaste ni
 concatenaste títulos; que cada idea independiente tiene su propia card
 con «texto» y «explicacion»; que no fusionaste listas, gráficos,
@@ -513,7 +503,7 @@ acrónimo aparece sin su significado completo definido en alguna card;
 que ningún nombre de persona quede abreviado con iniciales sin su
 nombre completo escrito al menos una vez; que ninguna letra suelta de
 una notación quede sin su significado completo escrito con palabras;
-que cada fórmula tiene su ejemplo inmediato; que no agregaste ninguna sección «Ejercicios» y que el JSON es válido; que ninguna barra invertida
+que cada fórmula tiene su ejemplo numérico resuelto dentro de su «explicacion»; que no agregaste ninguna sección «Ejercicios» y que el JSON es válido; que ninguna barra invertida
 de KaTeX quedó fuera de un par «$...$» en ningún campo. Confirma
 además que no hayas
 eliminado ningún dato legible de la fuente, que solo hayas quitado
@@ -615,53 +605,52 @@ separar las palabras rompería el sentido de una sola idea.
 Si el material usa una sigla o un acrónimo (por ejemplo, ADN, ATP, ARN),
 nunca lo dejes sin definir en ningún lado. Antes de usar la sigla sola
 en cualquier «texto» posterior (incluso dentro de notación con
-símbolos, como «⇒ ✗ ATP»), debe existir una card previa —o esa misma
+símbolos, como «⇒ ✗ RC»), debe existir una card previa —o esa misma
 card— que escriba el significado completo con la sigla entre
-paréntesis: «Adenosín trifosfato (ATP)». Si una sigla aparece en
+paréntesis: «Respuesta Condicionada (RC)». Si una sigla aparece en
 «texto» y nunca fue definida en ninguna card ni en «explicacion», es un
 error: agrega la card de definición que falta antes de seguir usándola.
 Al terminar, revisa cada sigla que hayas usado y confirma que su
 significado completo aparece escrito al menos una vez en todo el JSON.
 Lo mismo aplica a nombres de personas abreviados con iniciales (por
-ejemplo, «J.J. Thomson», «A. Fleming», «E. Rutherford»): nunca los dejes
+ejemplo, «B.F. Skinner», «J.J. Thomson», «A. Fleming»): nunca los dejes
 así en «texto» ni en «explicacion». Usa tu conocimiento académico para
 identificar el nombre completo real de esa persona y escríbelo
-desarrollado (por ejemplo, «Joseph John Thomson») al menos una vez,
+desarrollado (por ejemplo, «Burrhus Frederic Skinner») al menos una vez,
 en la misma card donde aparece o en una card de definición previa, igual
 que exige la regla de siglas. Si no puedes confirmar el nombre completo
 con certeza, usa el apellido completo sin iniciales sueltas en vez de
 adivinar.
 Lo mismo aplica a letras sueltas usadas como abreviatura dentro de una
-notación tipo fórmula (por ejemplo, «S → P» para Sustrato → Producto):
+notación tipo fórmula (por ejemplo, «E → R» para Estímulo → Respuesta):
 nunca dejes esas letras solas en «texto» sin que exista, en esa misma
 card o en una previa, el significado completo de cada letra escrito con
 palabras. No uses la notación abreviada como si fuera autoexplicativa.
 1.4 Si un diagrama muestra partes, etapas, flechas o relaciones,
 convierte cada elemento y cada relación importante en cards distintas.
 Si una fórmula tiene varias variables o condiciones, separa la fórmula,
-el significado de cada variable, sus condiciones y su aplicación en
-cards independientes cuando sean ideas evaluables.
-1.5 Después de cubrir todo el material, amplía con conocimiento
-académico confiable: definiciones,
-propiedades, contexto, conexiones, casos especiales y métodos de
-resolución relevantes para UNMSM. Al menos el 30% de las cards normales
-debe aportar contexto o información propia no insinuada por la fuente.
-La ampliación también debe respetar la regla de una idea por card.
+el significado de cada variable, y sus condiciones en cards independientes cuando sean ideas evaluables (el ejemplo resuelto va dentro de la «explicacion» de la fórmula).
+1.5 Después de cubrir todo el material, desarrolla —sin añadir datos
+nuevos— el contexto, las relaciones, los casos especiales y los métodos de
+resolución que el material ya enuncia o permite deducir. No introduzcas
+leyes, fórmulas, valores, sustancias ni procesos que no estén en el
+material recibido. Considera verificado el contenido del material y no lo
+contradigas. La ampliación también debe respetar la regla de una idea por
+card.
 1.6 Si el apunte da una conclusión sin explicar su origen, crea una o
-varias cards nuevas y separadas —tantas como haga falta— que expliquen
-esa deducción o mecanismo. No te limites a una sola card si el
-contexto necesita más de una idea para quedar completo. No mezcles ese
-contexto con la card original.
+varias cards nuevas y separadas que expliquen esa deducción o mecanismo
+usando únicamente lo que el material permite deducir. Si el material no
+alcanza, no completes el mecanismo de memoria. No mezcles ese contexto
+con la card original.
 1.7 Cada subtema distinto tiene su propio «titulo». No agrupes
 subtemas, categorías, procesos o temas distintos bajo un mismo título.
 Si el material contiene varios subtemas, crea objetos de sección
 separados, aunque alguno tenga una sola card. No concatenes varios
 títulos ni uses títulos paraguas.
-1.8 El campo «tema» debe tener solo una o dos palabras de contenido.
-No cuentes artículos, determinantes, preposiciones ni conectores como
-«el», «la», «los», «las», «de», «del», «y» u «o». Condensa el nombre
-del tema a sus palabras esenciales y no escribas una frase, oración,
-subtítulo largo ni lista.
+1.8 El campo «tema» se copia tal cual el nombre del tema recibido (la línea
+TEMA del encabezado o el título del apunte), sin condensarlo, resumirlo ni
+reformularlo. Solo si no se indica ningún tema, escribe el nombre del tema
+con un máximo de cuatro palabras de contenido, sin frases ni listas.
 1.9 Cada «titulo» debe ser corto, específico y tener como máximo cuatro
 palabras de contenido. No escribas oraciones, explicaciones ni títulos
 con «y», «o», «/» que agrupen subtemas distintos. La cantidad de
@@ -683,12 +672,9 @@ ideas, divídela en varias cards. Nunca juntes ideas para ahorrar espacio.
 2.4 «texto» contiene como máximo unas doce palabras, sin contar
 símbolos. Resalta como máximo un término o fórmula clave con «». No
 resaltes conectores ni llenes la card de énfasis.
-2.5 Si un punto contiene una fórmula, el punto siguiente de la misma
-sección debe ser un ejemplo resuelto de esa fórmula. Si el ejemplo
-contiene varias etapas, separa cada etapa importante en su propia card,
-manteniendo el orden. La «explicacion» de la card de la fórmula solo
-aclara qué representa cada variable, cuándo se aplica y de dónde sale, sin
-ejemplo numérico: el desarrollo numérico va únicamente en la card del ejemplo.
+2.5 Si un punto contiene una fórmula, su ejemplo resuelto va dentro de la
+«explicacion» de ese mismo punto (ver sección 5), no en una card aparte.
+No dupliques ese ejemplo en otra card.
 3. SÍMBOLOS DE NOTACIÓN
 Usa símbolos directamente dentro de «texto» cuando expresen una
 relación, operación, condición, cambio o conclusión. No hay límite de
@@ -703,7 +689,11 @@ ningún otro símbolo de notación fuera de esta lista, aunque parezca
 pertinente:
 «=» igual; «→» produce; «⊃» contiene; «∈» pertenece; «⇒» causa o
 implica; «✓» requiere; «✗» carece; «+» más; «↑» aumenta; «↓» disminuye;
-«≠» diferente; «≈» similar.
+«≠» diferente; «≈» similar; «<» menor que; «>» mayor que; «≤» menor o
+igual que; «≥» mayor o igual que; «⊂» está contenido en; «∪» unión;
+«∩» intersección; «×» multiplicado por. Esta restricción aplica solo a
+los símbolos de relación escritos directamente en «texto»: no limita el
+KaTeX dentro de «$...$» ni los signos de operación dentro de fórmulas.
 Prioriza los símbolos en «texto», no solo en «explicacion». No
 incluyas estos símbolos en «glosario»: el código los detecta y traduce
 por su cuenta, sin depender de lo que devuelva la IA.
@@ -733,10 +723,10 @@ necesiten, como una clasificación cerrada o un dato puntual que no gana
 nada con un ejemplo. Cuando sí lo incluyas, que muestre qué elemento de
 la situación representa cada parte de la teoría, no una mención
 decorativa.
-Si el punto es el ejemplo resuelto de una fórmula (Física o Química),
-«explicacion» debe priorizar el desarrollo numérico sobre la descripción
-verbal: no repitas la fórmula con otras palabras, resuélvela con
-números. Incluye, dentro de esa misma «explicacion», el ejemplo
+Si el punto es una fórmula (Física o Química), «explicacion» debe
+priorizar el desarrollo numérico sobre la descripción verbal de la
+fórmula: no repitas la fórmula con otras palabras, resuélvela con
+números. Incluye, dentro de esa misma «explicacion», un ejemplo
 numérico resuelto con datos, sustitución, cada operación y el
 resultado, explicando qué representa cada dato y cómo se interpreta el
 resultado. Desarrolla tantos pasos como el procedimiento realmente
@@ -774,7 +764,7 @@ comandos como «\\frac», «\\sqrt», «\\times», «\\cdot» y «\\Delta» en
 «texto» y «explicacion». Nunca dejes una sola barra invertida de KaTeX.
 8. CONTROL FINAL
 Comprueba, antes de responder, que analizaste todas las imágenes y
-textos; que «tema» tiene solo una o dos palabras de contenido; que cada
+textos; que «tema» es idéntico al tema recibido; que cada
 «titulo» es corto y corresponde a un solo subtema; que no agrupaste ni
 concatenaste títulos; que cada idea independiente tiene su propia card
 con «texto» y «explicacion»; que no fusionaste listas, diagramas,
@@ -783,8 +773,7 @@ el glosario no contiene símbolos; que ninguna sigla o acrónimo aparece
 sin su significado completo definido en alguna card; que ningún nombre
 de persona quede abreviado con iniciales sin su nombre completo escrito
 al menos una vez; que ninguna letra suelta de una notación quede sin su
-significado completo escrito con palabras; que cada fórmula
-tiene su ejemplo inmediato; que no agregaste ninguna sección «Ejercicios» y que el JSON es válido. Confirma además que no hayas eliminado
+significado completo escrito con palabras; que cada fórmula tiene su ejemplo numérico resuelto dentro de su «explicacion»; que no agregaste ninguna sección «Ejercicios» y que el JSON es válido. Confirma además que no hayas eliminado
 ningún dato legible de la fuente, que solo hayas quitado redundancias
 creadas por ti, y que
 no haya comillas dobles escapadas ni comandos KaTeX con escapes

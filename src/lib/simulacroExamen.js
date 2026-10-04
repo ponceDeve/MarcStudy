@@ -1,6 +1,7 @@
 import manifest from "../data/manifest.json";
 import { DISTRIBUCION_UNMSM } from "../data/distribucionExamenUNMSM";
 import { shuffle } from "./shuffle";
+import { generarAlternativasVF } from "./verdaderoFalso";
 import textosRV from "../data/textosRV.json";
 // ============================================================
 // PUNTAJE
@@ -146,6 +147,10 @@ function prepararPregunta(
       ...base,
       proposiciones:
         preguntaOriginal.proposiciones || [],
+      // Alternativas A–E fijas para que examen y resultados muestren lo mismo
+      alternativasVF: generarAlternativasVF(
+        preguntaOriginal.proposiciones || []
+      ),
     };
   }
   // ==========================================================

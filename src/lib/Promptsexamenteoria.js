@@ -5,8 +5,6 @@ App de estudio · Admisión UNMSM
 ═══════════════════════════════════════════════════════════════
 ROL Y ENTRADA
 Actúa como especialista en Lenguaje, Literatura, Historia, Filosofía, Cívica, Economía, Geografía, Psicología o Razonamiento Verbal, según el curso recibido, con nivel UNMSM. Recibirás un JSON de teoría con secciones («titulo») y, dentro de cada una, puntos con «texto» y «explicacion». No hay una sección «Ejercicios» ni marcadores «Ejercicio N»: los ejercicios los redactas tú (Bloque B).
-REGLA DE FÓRMULAS (SOLO ECONOMÍA)
-Si el curso es Economía y la teoría tiene fórmulas, incluye cálculos aplicados con las fórmulas en texto plano (sin LaTeX). En los ejercicios «opcion_multiple» cuantitativos las cinco alternativas son números con la misma unidad y los distractores salen de errores plausibles (unidad, despeje, signo, interpretación). Las demás reglas de Letras no cambian.
 FUENTE EXCLUSIVA DE CONOCIMIENTO
 Toda pregunta, alternativa, explicación y ejercicio debe poder resolverse EXCLUSIVAMENTE con la teoría recibida en el JSON.
 Puedes combinar varios puntos de la teoría, incluso puntos diferentes del mismo tema, pero no puedes introducir:
@@ -76,10 +74,10 @@ El Bloque A usa solo el tipo 2.1. El Bloque B usa los cuatro tipos (2.1, 2.2, 2.
 2.1 Opción múltiple:
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 Usa exactamente cinco alternativas.
-Cada alternativa tiene una sola idea y máximo 5 palabras, sin explicación ni justificación dentro. Las cinco tienen un largo parecido. El detalle sutil de un distractor se logra con una palabra o frase corta que cambie el sentido, sin alargar la oración.
+Cada alternativa tiene una sola idea y máximo 7 palabras, sin explicación ni justificación dentro. Las cinco tienen un largo parecido. El detalle sutil de un distractor se logra cambiando una palabra o frase corta, no alargando la oración.
 Las cinco deben responder al mismo caso o fragmento y competir entre sí.
 No redactes cinco paráfrasis de la teoría.
-No construyas las cinco como la misma oración con una palabra distinta: varía el arranque y la estructura aunque cada una sea corta.
+No construyas las alternativas cambiando únicamente una palabra de una misma oración.
 Las alternativas deben poder tener estructuras sintácticas diferentes, inicios diferentes y órdenes diferentes.
 Cada una debe representar una interpretación, conclusión, clasificación, decisión, relación causal, contexto o explicación que podría parecer razonable al analizar rápidamente el caso.
 La correcta debe depender del análisis completo del caso y de la teoría.
@@ -87,6 +85,7 @@ La correcta debe depender del análisis completo del caso y de la teoría.
 Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados numerados con números romanos (I., II., III. y, si son cuatro, IV.), cada uno separado por un salto de línea, y cierra pidiendo identificar cuáles son correctos o cuáles cumplen la condición del caso.
 Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
 Cada enunciado exige interpretar el caso; los falsos contienen un detalle conceptual sutil, no un error evidente.
+Frecuencia: úsala en aproximadamente una de cada cuatro o cinco preguntas del examen y en 3 a 5 ejercicios del Bloque B, solo cuando el punto permita enunciados distintos y evaluables; no la uses en todas.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta primero una situación, fragmento, afirmación o evidencia contextualizada.
@@ -141,6 +140,8 @@ No hagas que la alternativa correcta destaque por ser:
 - gramaticalmente diferente;
 - la única que menciona el concepto central.
 Si una alternativa puede descartarse sin analizar el caso completo, debes regenerarla.
+El detalle sutil debe lograrse dentro del límite de palabras de las
+alternativas: un cambio de una palabra o frase corta, nunca una cláusula añadida.
 La similitud buscada es de plausibilidad y contexto, NO de redacción.
 3. DISEÑO DE LAS PREGUNTAS DECO
 Las preguntas deben presentar una situación, texto, fragmento, evidencia, caso o escenario que obligue a utilizar la teoría.
@@ -206,7 +207,7 @@ Comprueba que:
 - al menos dos distractores son plausibles;
 - ninguna alternativa puede descartarse por una pista superficial;
 - la correcta no destaca por longitud, vocabulario o estructura;
-- cada alternativa tiene máximo 5 palabras y un largo parecido al de las otras cuatro;
+- cada alternativa tiene máximo 7 palabras y un largo parecido al de las otras cuatro;
 - los casos son DECO y requieren análisis;
 - las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
 - «verdadero_falso» tiene tres o cuatro proposiciones;
@@ -218,7 +219,6 @@ Comprueba que:
 - «relacionar» usa «1a - 2b - 3c»;
 - no aparece «Ejercicio N»;
 - la distribución de «correct» es equilibrada;
-- cada respuesta correcta se verificó de nuevo y exactamente una alternativa es correcta;
 - el resultado final es JSON válido.`;
 export const examenMate = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE MATEMÁTICAS TIPO DECO (JSON)
@@ -259,7 +259,6 @@ Forma:
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
 Cada pregunta evalúa su propio punto mediante aplicación y razonamiento: si el punto es una fórmula, ecuación o procedimiento, se resuelve; si es conceptual, se plantea una situación donde el concepto deba aplicarse o interpretarse, nunca por definición directa ni por simple reconocimiento. No fusiones varios puntos en una sola pregunta.
 No mezcles puntos de otros títulos.
-Si el punto es el ejemplo resuelto de una fórmula, la pregunta usa datos numéricos distintos a los del ejemplo.
 Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
@@ -309,12 +308,13 @@ No inventes campos ni cambies estos nombres.
 { "tipo": "opcion_multiple", "q": "...", "opts": ["...", "...", "...", "...", "..."], "correct": 0, "explicacion": "..." }
 En Bloque A, las alternativas pueden ser resultados, expresiones, estrategias, relaciones o decisiones matemáticas.
 Cuando el resultado sea una magnitud, las cinco alternativas llevan la misma unidad.
-En Bloque A, toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, con largo parecido entre las cinco.
+En Bloque A, toda alternativa escrita con palabras tiene una sola idea y máximo 7 palabras, con largo parecido entre las cinco.
 En los ejercicios «opcion_multiple» del Bloque B, las alternativas son únicamente resultados numéricos.
 2.1b Variante «enunciados correctos» (sigue siendo «opcion_multiple», con los mismos campos):
 Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados matemáticos numerados con números romanos (I., II., III. y, si son cuatro, IV.), cada uno separado por un salto de línea, y cierra pidiendo identificar cuáles son correctos o cuáles cumplen la condición del caso.
 Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
 Cada enunciado exige analizar el procedimiento, resultado o condición del caso; los falsos contienen un error matemático plausible.
+Frecuencia: úsala en aproximadamente una de cada cuatro o cinco preguntas del examen y en 3 a 5 ejercicios del Bloque B, solo cuando el punto permita enunciados distintos y evaluables; no la uses en todas.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta una situación matemática antes de las proposiciones.
@@ -353,6 +353,7 @@ No existe un tipo de error obligatorio.
 El modelo debe identificar qué parte del procedimiento es determinante en cada problema y construir distractores a partir de errores diferentes.
 Los cinco resultados deben ser razonablemente cercanos o plausibles cuando el contexto matemático lo permita.
 No utilices un valor evidentemente absurdo solo para fabricar un distractor.
+En el Bloque A, las alternativas escritas con palabras mantienen el límite de 7 palabras: el error se logra cambiando una palabra o frase corta.
 En Bloque A, las alternativas no deben comenzar ni estructurarse todas de la misma manera.
 En los ejercicios «opcion_multiple» del Bloque B, al ser numéricas, evita que la correcta pueda identificarse por magnitud, cantidad de cifras o formato.
 4. DISEÑO DECO
@@ -414,7 +415,7 @@ Comprueba que:
 - ningún ejercicio requiere conocimiento externo al JSON;
 - ningún ejercicio se reduce a una sustitución directa aislada;
 - las alternativas numéricas proceden de errores matemáticos plausibles;
-- en el Bloque A, toda alternativa escrita con palabras tiene máximo 5 palabras;
+- en el Bloque A, toda alternativa escrita con palabras tiene máximo 7 palabras;
 - no hay números absurdos utilizados únicamente como distractores;
 - el interrogante está integrado naturalmente en el planteamiento;
 - las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
@@ -423,7 +424,6 @@ Comprueba que:
 - no se depende de una pregunta artificial separada;
 - no aparece «Ejercicio N»;
 - «correct» está distribuido;
-- cada resultado se recalculó paso a paso y exactamente una alternativa es correcta;
 - el JSON es válido.`;
 export const examenCiencia = String.raw`═══════════════════════════════════════════════════════════════
 PROMPT — GENERACIÓN DE EXAMEN DE CIENCIAS TIPO DECO (JSON)
@@ -462,7 +462,7 @@ Forma:
 1. BLOQUES Y CANTIDAD
 1.1 BLOQUE A
 Hay exactamente una pregunta por cada punto: un título de N puntos lleva N preguntas, una por punto y en el mismo orden.
-Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta. Si el punto es el ejemplo resuelto de una fórmula, la pregunta usa datos numéricos distintos a los del ejemplo.
+Cada pregunta evalúa su propio punto aplicándolo a un caso. No fusiones varios puntos en una sola pregunta.
 Todas las preguntas del Bloque A son «opcion_multiple».
 1.2 BLOQUE B — 20 EJERCICIOS INTEGRADORES
 Crea EXACTAMENTE 20 ejercicios.
@@ -508,7 +508,7 @@ No introduzcas conocimiento externo.
 1.5 En los ejercicios «opcion_multiple» cuantitativos de Física y Química, las alternativas son números (enteros, decimales o fracciones) seguidos de la unidad de la magnitud pedida, la misma en las cinco.
 No añadas otras palabras ni etiquetas.
 En Biología conceptual, las alternativas pueden ser frases breves.
-Toda alternativa escrita con palabras tiene una sola idea y máximo 5 palabras, sin explicación dentro, con largo parecido entre las cinco.
+Toda alternativa escrita con palabras tiene una sola idea y máximo 7 palabras, sin explicación dentro, con largo parecido entre las cinco.
 1.6 CORRESPONDENCIA UNO A UNO
 El arreglo «examen» tiene exactamente tantos elementos como puntos de teoría recibidos, en el mismo orden: la posición N es la pregunta del punto N.
 Cada posición lleva una pregunta. No uses «null» ni dejes ningún punto sin pregunta.
@@ -526,6 +526,7 @@ Dentro de «q», después del planteamiento, escribe tres o cuatro enunciados nu
 Las cinco alternativas son combinaciones distintas de esos números: mezcla «Solo II», pares como «I y III» y tríos como «II, III y IV».
 En Química, los enunciados también pueden ser ecuaciones o fórmulas numeradas y las alternativas parejas ordenadas como «IV – II».
 Cada enunciado exige interpretar el caso; los falsos contienen un detalle conceptual sutil, no un error evidente.
+Frecuencia: úsala en aproximadamente una de cada cuatro o cinco preguntas del examen y en 3 a 5 ejercicios del Bloque B, solo cuando el punto permita enunciados distintos y evaluables; no la uses en todas.
 2.2 Verdadero o falso:
 { "tipo": "verdadero_falso", "q": "...", "proposiciones": [ { "texto": "...", "correct": true }, { "texto": "...", "correct": false }, { "texto": "...", "correct": true } ], "explicacion": "..." }
 Presenta primero una situación o evidencia.
@@ -559,6 +560,8 @@ El distractor debe seguir pareciendo compatible con el contexto hasta que se con
 No utilices palabras absurdas ni afirmaciones obviamente falsas.
 La alternativa correcta no debe destacar por longitud, vocabulario técnico, precisión, estructura o posición.
 Si una alternativa puede descartarse sin analizar el caso, regénérala.
+El detalle sutil debe lograrse dentro del límite de palabras de las
+alternativas: un cambio de una palabra o frase corta, nunca una cláusula añadida.
 En Física y Química, los distractores numéricos deben proceder de errores plausibles de procedimiento, interpretación, unidades, signo, despeje, conversión, redondeo o aplicación de una relación.
 En Biología, los distractores deben surgir de confusiones plausibles entre funciones, procesos, condiciones, mecanismos, estructuras, consecuencias o relaciones enseñadas.
 4. DISEÑO DECO
@@ -636,7 +639,7 @@ Comprueba que:
 - no existe una palabra obligatoria para construir distractores;
 - los distractores son plausibles;
 - la correcta no destaca por pistas formales;
-- toda alternativa escrita con palabras tiene máximo 5 palabras;
+- toda alternativa escrita con palabras tiene máximo 7 palabras;
 - el interrogante está integrado naturalmente en el planteamiento;
 - las preguntas de «enunciados correctos» tienen tres o cuatro enunciados romanos y cinco combinaciones distintas;
 - «verdadero_falso» tiene tres o cuatro proposiciones;
@@ -648,5 +651,4 @@ Comprueba que:
 - Biología conceptual no contiene KaTeX;
 - el Bloque A no supera aproximadamente 80 palabras por caso;
 - el Bloque B no supera aproximadamente 90 palabras por caso;
-- cada respuesta correcta se verificó de nuevo (cálculos recalculados) y exactamente una alternativa es correcta;
 - el resultado final es JSON válido.`;
