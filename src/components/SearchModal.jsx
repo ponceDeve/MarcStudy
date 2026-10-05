@@ -1062,10 +1062,6 @@ export default function SearchModal({
       !esBusqueda||
       esCursoDeBusqueda;
 
-    const mostrarFlecha=
-      esBusqueda||
-      esCursoAbierto;
-
     return (
       <div
         key={`${
@@ -1082,6 +1078,10 @@ export default function SearchModal({
             className={`search-result-item is-curso${
               cursoIndex===focusedIdx
                 ?" is-focused"
+                :""
+            }${
+              esCursoAbierto
+                ?" is-open"
                 :""
             }`}
             onClick={()=>{
@@ -1100,30 +1100,14 @@ export default function SearchModal({
               }
             }}
           >
+            {esCursoAbierto&&(
+              <i className="fa-solid fa-arrow-left search-course-arrow" />
+            )}
+
             <span className="curso-title">
               {g.curso}
             </span>
           </button>
-
-          {mostrarFlecha&&(
-            <button
-              type="button"
-              className="search-course-back"
-              aria-label="Volver"
-              onClick={e=>{
-                e.stopPropagation();
-
-                if(esBusqueda){
-                  limpiarBusqueda();
-                  return;
-                }
-
-                volverCursos();
-              }}
-            >
-              <i className="fa-solid fa-arrow-left" />
-            </button>
-          )}
         </div>
 
         {mostrarTemas&&(
