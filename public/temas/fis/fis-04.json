@@ -1,0 +1,186 @@
+{
+  "curso": "Física",
+  "tema": "Adición de vectores",
+  "glosario": {
+    "Resultante": "Vector equivalente a la suma de varios.",
+    "Método del triángulo": "Suma de dos vectores en cadena.",
+    "Método del polígono": "Suma de varios vectores en cadena.",
+    "Método del paralelogramo": "Suma de dos vectores con origen común.",
+    "Polígono cerrado": "Polígono cuya resultante es cero.",
+    "Ley de cosenos": "Relaciona lados y un ángulo de un triángulo.",
+    "Ángulo entre vectores": "Ángulo al trazarlos con origen común.",
+    "Resta de vectores": "Suma del opuesto del segundo vector.",
+    "Equilibrio": "Estado con resultante de fuerzas nula."
+  },
+  "theory": [
+    {
+      "titulo": "Adición de vectores",
+      "puntos": [
+        {
+          "texto": "«Resultante» = vector único equivalente a la suma de varios",
+          "explicacion": "La suma de dos o más vectores se llama vector resultante, $\\vec{R}$. Produce el mismo efecto que todos juntos. Los métodos geométricos lo obtienen dibujando los vectores."
+        },
+        {
+          "texto": "Suma de vectores ≠ suma de módulos",
+          "explicacion": "Solo coinciden cuando los vectores están en la misma dirección y sentido. En los demás casos la resultante es menor que la suma de los módulos. Error frecuente: sumar los módulos sin considerar el ángulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Método del triángulo",
+      "puntos": [
+        {
+          "texto": "«Método del triángulo» = sumar dos vectores colocándolos uno tras otro",
+          "explicacion": "Se traslada el segundo vector hasta que su origen coincida con el extremo del primero. La resultante une el origen del primero con el extremo del segundo."
+        },
+        {
+          "texto": "Resultante ⇒ $\\vec{R}=\\vec{A}+\\vec{B}$ cierra el triángulo",
+          "explicacion": "Los vectores $\\vec{A}$ y $\\vec{B}$ van en cadena, uno tras otro. La resultante va desde el origen del primero hasta el final del último."
+        }
+      ]
+    },
+    {
+      "titulo": "Método del polígono",
+      "puntos": [
+        {
+          "texto": "«Método del polígono» = sumar varios vectores en cadena",
+          "explicacion": "Se dibujan uno tras otro, con el origen de cada uno en el extremo del anterior. La resultante une el primer origen con el último extremo."
+        },
+        {
+          "texto": "Polígono cerrado ⇒ la resultante es cero",
+          "explicacion": "Si el último extremo coincide con el primer origen, el polígono queda cerrado y la suma de los vectores es nula. Es la condición de equilibrio de fuerzas concurrentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Método del paralelogramo",
+      "puntos": [
+        {
+          "texto": "«Método del paralelogramo» = sumar dos vectores con el mismo origen",
+          "explicacion": "Se dibujan con origen común y se completa el paralelogramo. La resultante es la diagonal que parte del origen común."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo de la resultante",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $R=\\sqrt{A^2+B^2+2AB\\cos\\theta}$",
+          "explicacion": "Es el módulo de la resultante de dos vectores de módulos $A$ y $B$, donde $\\theta$ es el ángulo entre ellos. Se obtiene aplicando la ley de cosenos al paralelogramo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=8$, $B=6$ y $\\theta=60^\\circ$ dan $R\\approx12.2$",
+          "explicacion": "Se calcula $R=\\sqrt{64+36+2\\cdot8\\cdot6\\cdot\\cos60^\\circ}=\\sqrt{100+48}=\\sqrt{148}\\approx12.2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores en el mismo sentido",
+      "puntos": [
+        {
+          "texto": "Mismo sentido ($\\theta=0^\\circ$) ⇒ $R=A+B$",
+          "explicacion": "Es la resultante máxima. Los módulos se suman directamente."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=5$ y $B=3$ en el mismo sentido dan $R=8$",
+          "explicacion": "Como $\\theta=0^\\circ$, $\\cos0^\\circ=1$ y $R=\\sqrt{25+9+30}=\\sqrt{64}=8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores en sentidos opuestos",
+      "puntos": [
+        {
+          "texto": "Sentidos opuestos ($\\theta=180^\\circ$) ⇒ $R=|A-B|$",
+          "explicacion": "Es la resultante mínima. Los módulos se restan y el sentido es el del vector mayor."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=5$ y $B=3$ en sentidos opuestos dan $R=2$",
+          "explicacion": "Como $\\theta=180^\\circ$, $\\cos180^\\circ=-1$ y $R=\\sqrt{25+9-30}=\\sqrt{4}=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores perpendiculares",
+      "puntos": [
+        {
+          "texto": "Perpendiculares ($\\theta=90^\\circ$) ⇒ $R=\\sqrt{A^2+B^2}$",
+          "explicacion": "Como $\\cos90^\\circ=0$, desaparece el último término y se obtiene el teorema de Pitágoras."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=3$ y $B=4$ perpendiculares dan $R=5$",
+          "explicacion": "Se calcula $R=\\sqrt{9+16}=\\sqrt{25}=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores iguales a 120 grados",
+      "puntos": [
+        {
+          "texto": "Dos vectores de igual módulo $A$ con $\\theta=120^\\circ$ ⇒ $R=A$",
+          "explicacion": "Como $\\cos120^\\circ=-\\frac{1}{2}$, se tiene $R=\\sqrt{A^2+A^2-A^2}=A$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=B=10$ con $120^\\circ$ dan $R=10$",
+          "explicacion": "Se calcula $R=\\sqrt{100+100+2\\cdot100\\cdot(-0.5)}=\\sqrt{100}=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores iguales a 60 grados",
+      "puntos": [
+        {
+          "texto": "Dos vectores de igual módulo $A$ con $\\theta=60^\\circ$ ⇒ $R=A\\sqrt{3}$",
+          "explicacion": "Como $\\cos60^\\circ=\\frac{1}{2}$, se tiene $R=\\sqrt{A^2+A^2+A^2}=A\\sqrt{3}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=B=4$ con $60^\\circ$ dan $R=4\\sqrt{3}$",
+          "explicacion": "Se calcula $R=\\sqrt{16+16+2\\cdot16\\cdot0.5}=\\sqrt{48}=4\\sqrt{3}\\approx6.93$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango de la resultante",
+      "puntos": [
+        {
+          "texto": "Rango ⇒ $|A-B|\\le R\\le A+B$",
+          "explicacion": "La resultante de dos vectores nunca es menor que la diferencia de módulos ni mayor que su suma. El mínimo ocurre a $180^\\circ$ y el máximo, a $0^\\circ$."
+        },
+        {
+          "texto": "Ejemplo ⇒ con $A=7$ y $B=4$, $R$ puede valer entre $3$ y $11$",
+          "explicacion": "El mínimo es $7-4=3$ y el máximo es $7+4=11$. Cualquier ángulo intermedio da un valor dentro de ese rango."
+        }
+      ]
+    },
+    {
+      "titulo": "Dirección de la resultante",
+      "puntos": [
+        {
+          "texto": "Dirección ⇒ $\\tan\\alpha=\\frac{B\\sin\\theta}{A+B\\cos\\theta}$",
+          "explicacion": "El ángulo $\\alpha$ se mide desde el vector $\\vec{A}$ hasta la resultante. Permite hallar hacia dónde apunta."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=3$ y $B=4$ perpendiculares dan $\\alpha\\approx53^\\circ$",
+          "explicacion": "Con $\\theta=90^\\circ$: $\\tan\\alpha=\\frac{4\\cdot1}{3+0}=\\frac{4}{3}$, de donde $\\alpha\\approx53^\\circ$ respecto de $\\vec{A}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta de vectores",
+      "puntos": [
+        {
+          "texto": "Resta ⇒ $\\vec{D}=\\vec{A}-\\vec{B}=\\vec{A}+(-\\vec{B})$",
+          "explicacion": "Restar un vector es sumar su opuesto. Se invierte el sentido de $\\vec{B}$ y se aplica cualquier método de suma."
+        },
+        {
+          "texto": "Módulo de la diferencia ⇒ $D=\\sqrt{A^2+B^2-2AB\\cos\\theta}$",
+          "explicacion": "Aquí $\\theta$ es el ángulo entre $\\vec{A}$ y $\\vec{B}$ cuando se dibujan con el mismo origen."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=B=6$ con $\\theta=60^\\circ$ dan $D=6$",
+          "explicacion": "Se calcula $D=\\sqrt{36+36-2\\cdot36\\cdot0.5}=\\sqrt{36}=6$."
+        }
+      ]
+    }
+  ]
+}

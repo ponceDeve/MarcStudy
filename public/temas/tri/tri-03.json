@@ -1,0 +1,136 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Sistema centesimal",
+  "glosario": {
+    "Sistema centesimal": "Mide ángulos en grados centesimales.",
+    "Grado centesimal": "Un cuatrocientosavo de vuelta.",
+    "Minuto centesimal": "Un centésimo de grado centesimal.",
+    "Segundo centesimal": "Un centésimo de minuto centesimal.",
+    "Gradián": "Otro nombre del grado centesimal.",
+    "Ángulo recto": "Ángulo de un cuarto de vuelta.",
+    "Ángulo llano": "Ángulo de media vuelta.",
+    "Vuelta": "Giro completo."
+  },
+  "theory": [
+    {
+      "titulo": "Sistema centesimal",
+      "puntos": [
+        {
+          "texto": "«Sistema centesimal» = mide ángulos en grados, minutos y segundos centesimales",
+          "explicacion": "También se llama sistema francés. Su unidad principal es el grado centesimal, y la vuelta se divide en 400 partes iguales."
+        },
+        {
+          "texto": "Grado centesimal ($1^g$) = $\\frac{1}{400}$ de una vuelta",
+          "explicacion": "Una vuelta completa mide $400^g$. Se escribe con una letra g pequeña como exponente. También se llama gradián o grado nuevo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo recto en centesimales",
+      "puntos": [
+        {
+          "texto": "Ángulo recto ⇒ mide $100^g$",
+          "explicacion": "Es un cuarto de vuelta, es decir, $\\frac{400^g}{4}=100^g$. En el sistema sexagesimal mide $90^\\circ$."
+        },
+        {
+          "texto": "Ángulo llano ⇒ mide $200^g$",
+          "explicacion": "Es media vuelta, es decir, $\\frac{400^g}{2}=200^g$. En el sistema sexagesimal mide $180^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Minuto centesimal",
+      "puntos": [
+        {
+          "texto": "Minuto ($1^m$) ⇒ $\\frac{1}{100}$ de un grado centesimal",
+          "explicacion": "Es una subdivisión del grado. Se escribe con una m pequeña como exponente."
+        },
+        {
+          "texto": "Equivalencia ⇒ $1^g = 100^m$",
+          "explicacion": "Un grado centesimal contiene cien minutos centesimales."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2^g35^m = 235^m$",
+          "explicacion": "Se convierte el grado: $2^g=2\\cdot100^m=200^m$. Luego se suman los minutos: $200^m+35^m=235^m$."
+        }
+      ]
+    },
+    {
+      "titulo": "Segundo centesimal",
+      "puntos": [
+        {
+          "texto": "Segundo ($1^s$) ⇒ $\\frac{1}{100}$ de un minuto centesimal",
+          "explicacion": "Es la subdivisión del minuto. Se escribe con una s pequeña como exponente."
+        },
+        {
+          "texto": "Equivalencia ⇒ $1^m = 100^s$ y $1^g = 10\\,000^s$",
+          "explicacion": "Un minuto contiene cien segundos. Como $100\\cdot100=10\\,000$, un grado contiene $10\\,000^s$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $0.5^g = 50^m$",
+          "explicacion": "La parte decimal se pasa a minutos multiplicando por 100: $0.5\\cdot100^m=50^m$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ventaja del sistema centesimal",
+      "puntos": [
+        {
+          "texto": "Sistema centesimal ⇒ usa subdivisiones decimales",
+          "explicacion": "Cada unidad se divide en cien partes, por lo que las conversiones entre grados, minutos y segundos son sencillas. Se pasa de una unidad a otra solo moviendo la coma."
+        }
+      ]
+    },
+    {
+      "titulo": "Conversión entre sistemas",
+      "puntos": [
+        {
+          "texto": "Equivalencia ⇒ $360^\\circ = 400^g$",
+          "explicacion": "Una vuelta tiene la misma medida en los dos sistemas. De ahí se obtiene que $9^\\circ=10^g$."
+        },
+        {
+          "texto": "Fórmula ⇒ $\\frac{S}{360}=\\frac{C}{400}$, es decir, $\\frac{S}{9}=\\frac{C}{10}$",
+          "explicacion": "Aquí $S$ es el número de grados sexagesimales y $C$ el de grados centesimales de un mismo ángulo. Se obtiene simplificando entre $40$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $45^\\circ = 50^g$",
+          "explicacion": "Con $S=45$: $\\frac{45}{9}=5$, luego $\\frac{C}{10}=5$ y $C=50$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $80^g = 72^\\circ$",
+          "explicacion": "Con $C=80$: $\\frac{80}{10}=8$, luego $\\frac{S}{9}=8$ y $S=72$."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalencias útiles",
+      "puntos": [
+        {
+          "texto": "Equivalencia ⇒ $1^g = 0.9^\\circ = 54'$",
+          "explicacion": "Se obtiene de $\\frac{S}{9}=\\frac{C}{10}$ con $C=1$: $S=0.9$. Como $0.9^\\circ=0.9\\cdot60'=54'$."
+        },
+        {
+          "texto": "Equivalencia ⇒ $1^\\circ = \\frac{10}{9}\\,^g\\approx1.11^g$",
+          "explicacion": "Se obtiene de la misma relación con $S=1$: $C=\\frac{10}{9}\\approx1.111$."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema con S y C",
+      "puntos": [
+        {
+          "texto": "Planteamiento ⇒ $S+C=38$ con $\\frac{S}{9}=\\frac{C}{10}$",
+          "explicacion": "Se iguala cada razón a una constante $k$: $\\frac{S}{9}=\\frac{C}{10}=k$. Entonces $S=9k$ y $C=10k$."
+        },
+        {
+          "texto": "Resolución ⇒ $k=2$",
+          "explicacion": "Se sustituye en la suma: $9k+10k=38$, es decir, $19k=38$, de donde $k=2$."
+        },
+        {
+          "texto": "Resultado ⇒ $S=18$ y $C=20$",
+          "explicacion": "Con $k=2$: $S=9\\cdot2=18$ y $C=10\\cdot2=20$. Es decir, el ángulo mide $18^\\circ$ o $20^g$."
+        }
+      ]
+    }
+  ]
+}
