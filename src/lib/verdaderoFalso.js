@@ -1,5 +1,4 @@
 import { shuffle } from "./shuffle";
-
 // Misma lógica que usan QuestionCard.jsx y TemaExamenView.jsx.
 export function generarCombinacionesVF(cantidad) {
   const total = 2 ** cantidad;
@@ -13,7 +12,6 @@ export function generarCombinacionesVF(cantidad) {
   }
   return combinaciones;
 }
-
 function distanciaHamming(a, b) {
   let distancia = 0;
   for (let i = 0; i < a.length; i++) {
@@ -21,19 +19,15 @@ function distanciaHamming(a, b) {
   }
   return distancia;
 }
-
 export function claveCombinacion(combinacion) {
   return (combinacion || []).map((v) => (v ? "V" : "F")).join("");
 }
-
 export function formatearCombinacionVF(combinacion) {
   return combinacion.map((v) => (v ? "V" : "F")).join("  ");
 }
-
 export function combinacionCorrectaVF(proposiciones) {
   return (proposiciones || []).map((prop) => prop.correct === true);
 }
-
 export function generarAlternativasVF(proposiciones) {
   const cantidad = (proposiciones || []).length;
   if (cantidad === 0) return [];
@@ -58,7 +52,6 @@ export function generarAlternativasVF(proposiciones) {
   }
   return shuffle(alternativas);
 }
-
 // Respuesta completa = todas las proposiciones marcadas (V o F).
 export function respuestaVFCompleta(proposiciones, marcas) {
   return (

@@ -1,5 +1,4 @@
 import React from "react";
-
 // Convierte **negritas** en <strong>
 export default function Texto({ children }) {
   const partes = String(children || "").split(/(\*\*[^*]+\*\*)/g);

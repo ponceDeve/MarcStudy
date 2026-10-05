@@ -29,6 +29,7 @@ import TopicsModal from "./TopicsModal";
 import ExercisesSection from "./ExercisesSection";
 import ConfirmacionSalida from "../../components/ConfirmacionSalida";
 import CongratulationsAlert from "../../components/CongratulationsAlert";
+import RendirseModal from "../../components/RendirseModal";
 import {
   guardarRetorno,
   limpiarPomodoroCompartido,
@@ -132,7 +133,10 @@ export default function MiEstudioPage() {
     return grupos;
   }, [puntosTeoria]);
   useEffect(() => {
-    if (seccionesAgrupadas.length > 0 && teoriaVistaIndex >= seccionesAgrupadas.length) {
+    if (
+      seccionesAgrupadas.length > 0 &&
+      teoriaVistaIndex >= seccionesAgrupadas.length
+    ) {
       setTeoriaVistaIndex(seccionesAgrupadas.length - 1);
     }
   }, [seccionesAgrupadas.length, teoriaVistaIndex]);
@@ -173,7 +177,9 @@ export default function MiEstudioPage() {
     };
   }, [mostrarBarraTeoria]);
   useEffect(() => {
-    const ocultar = Boolean(topicData) && (stage === "theory" || stage === "question");
+    const ocultar =
+      Boolean(topicData) &&
+      (stage === "theory" || stage === "question");
     setFooterHidden(ocultar);
     return () => setFooterHidden(false);
   }, [topicData, stage, setFooterHidden]);
@@ -184,7 +190,9 @@ export default function MiEstudioPage() {
       .map((p) => p.id);
     const total = idsTeoriaNormal.length;
     if (total === 0) return;
-    const correctas = textosCompletados.filter((id) => idsTeoriaNormal.includes(id)).length;
+    const correctas = textosCompletados.filter(
+      (id) => idsTeoriaNormal.includes(id)
+    ).length;
     const progreso = correctas / total;
     const estrellas =
       progreso >= 1
@@ -197,19 +205,37 @@ export default function MiEstudioPage() {
     const claveTema = `${topicData.curso}_${topicData.tema}`;
     let todasLasEstrellas = {};
     try {
-      todasLasEstrellas = JSON.parse(localStorage.getItem("estrellasTemas") || "{}");
+      todasLasEstrellas = JSON.parse(
+        localStorage.getItem("estrellasTemas") || "{}"
+      );
     } catch {
       todasLasEstrellas = {};
     }
     const actual = todasLasEstrellas[claveTema];
-    if (!actual || actual.estrellas !== estrellas || actual.correctas !== correctas || actual.total !== total) {
-      todasLasEstrellas[claveTema] = { estrellas, correctas, total };
-      localStorage.setItem("estrellasTemas", JSON.stringify(todasLasEstrellas));
+    if (
+      !actual ||
+      actual.estrellas !== estrellas ||
+      actual.correctas !== correctas ||
+      actual.total !== total
+    ) {
+      todasLasEstrellas[claveTema] = {
+        estrellas,
+        correctas,
+        total
+      };
+      localStorage.setItem(
+        "estrellasTemas",
+        JSON.stringify(todasLasEstrellas)
+      );
     }
   }, [textosCompletados, flatPuntos, topicData]);
   useEffect(() => {
     const handleBeforeUnload = () => {
-      if (stage !== "theory" || (textosSeleccionados.length === 0 && textosCompletados.length === 0)) {
+      if (
+        stage !== "theory" ||
+        (textosSeleccionados.length === 0 &&
+          textosCompletados.length === 0)
+      ) {
         return;
       }
       if (topicData?.archivo) {
@@ -223,10 +249,17 @@ export default function MiEstudioPage() {
       }
     };
     window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, [stage, textosSeleccionados, textosCompletados, topicData?.archivo]);
+    return () =>
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [
+    stage,
+    textosSeleccionados,
+    textosCompletados,
+    topicData?.archivo
+  ]);
   const [countdown, setCountdown] = useState(0);
   const [vidas, setVidas] = useState(5);
+  const [mostrarModalRendirse, setMostrarModalRendirse] = useState(false);
   const [alertaVidas, setAlertaVidas] = useState(null);
   const [modoExamenTema, setModoExamenTema] = useState(false);
   const [faseExamenTema, setFaseExamenTema] = useState("preguntas");
@@ -264,17 +297,31 @@ export default function MiEstudioPage() {
       <div className="vidas-fullscreen__hearts">
         {Array.from({ length: 5 }).map((_, i) => {
           if (i < vidas) {
-            return <i key={i} className="bi bi-heart-fill vidas-fullscreen__heart is-full" />;
+            return (
+              <i
+                key={i}
+                className="bi bi-heart-fill vidas-fullscreen__heart is-full"
+              />
+            );
           }
           if (i === vidas) {
             return (
               <i
                 key={i}
-                className={`vidas-fullscreen__heart ${corazonRoto ? "bi bi-heartbreak is-roto" : "bi bi-heart-fill is-a-punto"}`}
+                className={`vidas-fullscreen__heart ${
+                  corazonRoto
+                    ? "bi bi-heartbreak is-roto"
+                    : "bi bi-heart-fill is-a-punto"
+                }`}
               />
             );
           }
-          return <i key={i} className="bi bi-heartbreak vidas-fullscreen__heart is-roto" />;
+          return (
+            <i
+              key={i}
+              className="bi bi-heartbreak vidas-fullscreen__heart is-roto"
+            />
+          );
         })}
       </div>
     );
@@ -305,7 +352,8 @@ export default function MiEstudioPage() {
     );
   }
   useEffect(() => {
-    return () => clearTimeout(avisoContinuarVacioTimeoutRef.current);
+    return () =>
+      clearTimeout(avisoContinuarVacioTimeoutRef.current);
   }, []);
   const [temasOpen, setTemasOpen] = useState(false);
   const [score, setScore] = useState(0);
@@ -317,7 +365,10 @@ export default function MiEstudioPage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [configOpen, setConfigOpen] = useState(false);
   const [confirmLeave, setConfirmLeave] = useState(false);
-  const [nombreUsuario, setNombreUsuario] = useLocalStorage("miEstudio_nombreUsuario", null);
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage(
+    "miEstudio_nombreUsuario",
+    null
+  );
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
   const [modoEstudio, setModoEstudio] = useState("completo");
   const [esModoAdicionales, setEsModoAdicionales] = useState(false);
@@ -330,7 +381,10 @@ export default function MiEstudioPage() {
       pomodoroEstuvoCorriendoRef.current = true;
       return;
     }
-    if (pomodoroEstuvoCorriendoRef.current && pomodoro.secondsLeft === 0) {
+    if (
+      pomodoroEstuvoCorriendoRef.current &&
+      pomodoro.secondsLeft === 0
+    ) {
       setPomodoroAlarmaLabel(pomodoro.label || "");
       setPomodoroAlarmaAbierta(true);
     }
@@ -344,19 +398,23 @@ export default function MiEstudioPage() {
   }
   const { guardarBusqueda: guardarBusquedaInicio } = useSearchHistory();
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
-  const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] = useState(false);
+  const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] =
+    useState(false);
   const repasoGuardadoTimers = useRef([]);
   const [sinPreguntaAlerta, setSinPreguntaAlerta] = useState(false);
   const [sinSeleccionAlerta, setSinSeleccionAlerta] = useState(false);
-  const [faltaCompletarTeoria, setFaltaCompletarTeoria] = useState(false);
+  const [faltaCompletarTeoria, setFaltaCompletarTeoria] =
+    useState(false);
   const [sinPreguntaSaliendo, setSinPreguntaSaliendo] = useState(false);
   const sinPreguntaTimers = useRef([]);
-  const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] = useState(false);
+  const [confirmGuardarRepasoFinal, setConfirmGuardarRepasoFinal] =
+    useState(false);
   // Solo en memoria: al no persistir en storage, el toast vuelve a
   // mostrarse en cada recarga de la página (F5), en vez de una sola vez.
   const [pantallaToastVisto, setPantallaToastVisto] = useState(false);
   const [pantallaToastVisible, setPantallaToastVisible] = useState(false);
-  const [pantallaToastSaliendo, setPantallaToastSaliendo] = useState(false);
+  const [pantallaToastSaliendo, setPantallaToastSaliendo] =
+    useState(false);
   const pantallaToastTimers = useRef([]);
   function cerrarPantallaToast() {
     setPantallaToastSaliendo(true);
@@ -372,7 +430,10 @@ export default function MiEstudioPage() {
     if (sinPreguntaAlerta && alertaNotificacionRef.current) {
       alertaNotificacionRef.current.currentTime = 0;
       alertaNotificacionRef.current.play().catch((err) => {
-        console.error("Error al reproducir sonido de alerta:", err);
+        console.error(
+          "Error al reproducir sonido de alerta:",
+          err
+        );
       });
     }
   }, [sinPreguntaAlerta]);
@@ -385,15 +446,25 @@ export default function MiEstudioPage() {
   }, []);
   useEffect(() => {
     if (true || pantallaToastVisto || isFullscreen) return;
-    const t = setTimeout(() => setPantallaToastVisible(true), 700);
+    const t = setTimeout(
+      () => setPantallaToastVisible(true),
+      700
+    );
     return () => clearTimeout(t);
   }, [pantallaToastVisto, isFullscreen]);
   useEffect(() => {
     function onFullscreenChange() {
       setIsFullscreen(!!document.fullscreenElement);
     }
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener(
+      "fullscreenchange",
+      onFullscreenChange
+    );
+    return () =>
+      document.removeEventListener(
+        "fullscreenchange",
+        onFullscreenChange
+      );
   }, []);
   useEffect(() => {
     let timer = null;
@@ -408,14 +479,22 @@ export default function MiEstudioPage() {
   }, [stage, countdown]);
   useEffect(() => {
     if (topicData) {
-      localStorage.setItem(`ultimaCard_${topicData.curso}_${topicData.tema}`, cardIndex.toString());
+      localStorage.setItem(
+        `ultimaCard_${topicData.curso}_${topicData.tema}`,
+        cardIndex.toString()
+      );
     }
   }, [cardIndex, topicData]);
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        console.error("Error al entrar en pantalla completa:", err);
-      });
+      document.documentElement
+        .requestFullscreen()
+        .catch((err) => {
+          console.error(
+            "Error al entrar en pantalla completa:",
+            err
+          );
+        });
     } else if (document.exitFullscreen) {
       document.exitFullscreen();
     }
@@ -424,13 +503,19 @@ export default function MiEstudioPage() {
     setProgresoIngles((prev) => {
       const nivel = prev[idNivel] || { secciones: {} };
       const antes = nivel.secciones[idSeccion] || {};
-      const mejor = Math.max(antes.mejor || 0, r.aciertos / r.total);
+      const mejor = Math.max(
+        antes.mejor || 0,
+        r.aciertos / r.total
+      );
       const nuevo = {
         ...prev,
         [idNivel]: {
           secciones: {
             ...nivel.secciones,
-            [idSeccion]: { mejor, dominada: !!antes.dominada || r.dominada }
+            [idSeccion]: {
+              mejor,
+              dominada: !!antes.dominada || r.dominada
+            }
           }
         }
       };
@@ -444,33 +529,62 @@ export default function MiEstudioPage() {
     setError("");
     localStorage.setItem(
       "ultimoTemaAbierto",
-      JSON.stringify({ curso: item.curso, tema: item.tema, archivo: item.archivo })
+      JSON.stringify({
+        curso: item.curso,
+        tema: item.tema,
+        archivo: item.archivo
+      })
     );
     try {
-      const res = await fetch(import.meta.env.BASE_URL + item.archivo);
-      if (!res.ok) throw new Error("No se encontró el archivo del tema");
+      const res = await fetch(
+        import.meta.env.BASE_URL + item.archivo
+      );
+      if (!res.ok) {
+        throw new Error("No se encontró el archivo del tema");
+      }
       const data = adaptarEjerciciosAparte(await res.json());
       const puntos = aplanarTeoria(data);
       const examenList = data.examen || [];
-      const storageCompletionsKey = `completions_${item.curso}_${item.tema}`;
-      const storedCompletions = JSON.parse(localStorage.getItem(storageCompletionsKey) || "{}");
+      const storageCompletionsKey =
+        `completions_${item.curso}_${item.tema}`;
+      const storedCompletions = JSON.parse(
+        localStorage.getItem(storageCompletionsKey) || "{}"
+      );
       setLevelCompletions(storedCompletions);
-      const storageMaxUnlKey = `maxUnlocked_${item.curso}_${item.tema}`;
-      const storedMax = parseInt(localStorage.getItem(storageMaxUnlKey) || "0", 10);
+      const storageMaxUnlKey =
+        `maxUnlocked_${item.curso}_${item.tema}`;
+      const storedMax = parseInt(
+        localStorage.getItem(storageMaxUnlKey) || "0",
+        10
+      );
       setMaxUnlocked(storedMax);
-      const storageNivelCompletionsKey = `examenCompletions_${item.curso}_${item.tema}`;
-      const storedNivelCompletions = JSON.parse(localStorage.getItem(storageNivelCompletionsKey) || "{}");
+      const storageNivelCompletionsKey =
+        `examenCompletions_${item.curso}_${item.tema}`;
+      const storedNivelCompletions = JSON.parse(
+        localStorage.getItem(storageNivelCompletionsKey) || "{}"
+      );
       setNivelCompletions(storedNivelCompletions);
-      const storageNivelMaxKey = `examenMaxUnlocked_${item.curso}_${item.tema}`;
-      const storedNivelMax = parseInt(localStorage.getItem(storageNivelMaxKey) || "0", 10);
+      const storageNivelMaxKey =
+        `examenMaxUnlocked_${item.curso}_${item.tema}`;
+      const storedNivelMax = parseInt(
+        localStorage.getItem(storageNivelMaxKey) || "0",
+        10
+      );
       setNivelMaxUnlocked(storedNivelMax);
       setExamenPreguntas(examenList);
       setNivelIndex(0);
-      const storageUltimaCardKey = `ultimaCard_${item.curso}_${item.tema}`;
-      let cardInicial = parseInt(localStorage.getItem(storageUltimaCardKey) || "0", 10);
+      const storageUltimaCardKey =
+        `ultimaCard_${item.curso}_${item.tema}`;
+      let cardInicial = parseInt(
+        localStorage.getItem(storageUltimaCardKey) || "0",
+        10
+      );
       if (cardInicial >= puntos.length) cardInicial = 0;
-      const storagePreguntasVistasKey = `preguntasVistas_${item.curso}_${item.tema}`;
-      const storedPreguntasVistas = JSON.parse(localStorage.getItem(storagePreguntasVistasKey) || "{}");
+      const storagePreguntasVistasKey =
+        `preguntasVistas_${item.curso}_${item.tema}`;
+      const storedPreguntasVistas = JSON.parse(
+        localStorage.getItem(storagePreguntasVistasKey) || "{}"
+      );
       setPreguntasVistas(storedPreguntasVistas);
       setTextosSeleccionados([]);
       setTextosCompletados([]);
@@ -478,15 +592,22 @@ export default function MiEstudioPage() {
       setEsModoAdicionales(false);
       huboCambiosSinGuardarRef.current = false;
       const storageTextosKey = `textos_${item.archivo}`;
-      const textosGuardados = localStorage.getItem(storageTextosKey);
+      const textosGuardados =
+        localStorage.getItem(storageTextosKey);
       if (textosGuardados) {
         try {
-          const { textos, completados } = JSON.parse(textosGuardados);
+          const { textos, completados } =
+            JSON.parse(textosGuardados);
           setTextosSeleccionados(textos || []);
           setTextosCompletados(completados || []);
         } catch { }
       }
-      setTopicData({ ...data, curso: item.curso, tema: item.tema, archivo: item.archivo });
+      setTopicData({
+        ...data,
+        curso: item.curso,
+        tema: item.tema,
+        archivo: item.archivo
+      });
       setFlatPuntos(puntos);
       setCardIndex(cardInicial);
       setUltimoFlipIndex(cardInicial);
@@ -506,6 +627,7 @@ export default function MiEstudioPage() {
       setSearchOpen(false);
       setCountdown(0);
       setVidas(5);
+      setMostrarModalRendirse(false);
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
       // Inglés (niveles con secciones/leccion) no pregunta si mostrar la teoría
@@ -529,7 +651,9 @@ export default function MiEstudioPage() {
           })
           .filter(Boolean)
           .join("\n\n");
-        return [titulo, puntos].filter(Boolean).join("\n\n");
+        return [titulo, puntos]
+          .filter(Boolean)
+          .join("\n\n");
       })
       .filter(Boolean)
       .join("\n\n");
@@ -555,9 +679,16 @@ TEORÍA:
 ${teoria}`;
     try {
       await navigator.clipboard.writeText(prompt);
-      window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+      window.open(
+        "https://chatgpt.com/",
+        "_blank",
+        "noopener,noreferrer"
+      );
     } catch (error) {
-      console.error("No se pudo copiar el cuestionario:", error);
+      console.error(
+        "No se pudo copiar el cuestionario:",
+        error
+      );
       window.open(
         `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
         "_blank",
@@ -592,7 +723,10 @@ ${teoria}`;
     if (topicData?.archivo) {
       localStorage.setItem(
         `textos_${topicData.archivo}`,
-        JSON.stringify({ textos: textosSeleccionados, completados: textosCompletados })
+        JSON.stringify({
+          textos: textosSeleccionados,
+          completados: textosCompletados
+        })
       );
     }
     huboCambiosSinGuardarRef.current = false;
@@ -612,7 +746,10 @@ ${teoria}`;
   function seleccionarItem(item) {
     if (item.type === "contenido") {
       const secIndex = seccionesAgrupadas.findIndex(
-        (sec) => sec.puntos.some((p) => p.id === item.puntoId)
+        (sec) =>
+          sec.puntos.some(
+            (p) => p.id === item.puntoId
+          )
       );
       if (secIndex !== -1) {
         setTeoriaVistaIndex(secIndex);
@@ -620,17 +757,30 @@ ${teoria}`;
       setSearchOpen(false);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          const contenedorPunto = document.getElementById(`punto-${item.puntoId}`);
+          const contenedorPunto =
+            document.getElementById(
+              `punto-${item.puntoId}`
+            );
           contenedorPunto?.scrollIntoView({
             behavior: "smooth",
             block: "center"
           });
           // Toda la caja cambia de fondo durante 1 segundo
           if (contenedorPunto) {
-            contenedorPunto.classList.remove("punto-encontrado");
+            contenedorPunto.classList.remove(
+              "punto-encontrado"
+            );
             void contenedorPunto.offsetWidth;
-            contenedorPunto.classList.add("punto-encontrado");
-            setTimeout(() => contenedorPunto.classList.remove("punto-encontrado"), 1000);
+            contenedorPunto.classList.add(
+              "punto-encontrado"
+            );
+            setTimeout(
+              () =>
+                contenedorPunto.classList.remove(
+                  "punto-encontrado"
+                ),
+              1000
+            );
           }
         });
       });
@@ -652,9 +802,15 @@ ${teoria}`;
   const cachePuntosTemaRef = useRef(new Map());
   async function cargarPuntosTema(item) {
     const cache = cachePuntosTemaRef.current;
-    if (cache.has(item.archivo)) return cache.get(item.archivo);
-    const res = await fetch(import.meta.env.BASE_URL + item.archivo);
-    if (!res.ok) throw new Error("No se encontró el archivo del tema");
+    if (cache.has(item.archivo)) {
+      return cache.get(item.archivo);
+    }
+    const res = await fetch(
+      import.meta.env.BASE_URL + item.archivo
+    );
+    if (!res.ok) {
+      throw new Error("No se encontró el archivo del tema");
+    }
     const data = adaptarEjerciciosAparte(await res.json());
     const puntos = aplanarTeoria(data).filter(
       (p) => p.seccionTitulo !== "Ejercicios"
@@ -667,11 +823,20 @@ ${teoria}`;
   const contenidoPendienteRef = useRef(null);
   function abrirTemaEnPunto(temaItem, sel) {
     setTemasOpen(false);
-    if (topicData?.archivo === temaItem.archivo && stage === "theory") {
-      seleccionarItem({ type: "contenido", ...sel });
+    if (
+      topicData?.archivo === temaItem.archivo &&
+      stage === "theory"
+    ) {
+      seleccionarItem({
+        type: "contenido",
+        ...sel
+      });
       return;
     }
-    contenidoPendienteRef.current = { archivo: temaItem.archivo, sel };
+    contenidoPendienteRef.current = {
+      archivo: temaItem.archivo,
+      sel
+    };
     pedirAbrirTema({
       curso: nombreCursoActivo,
       tema: temaItem.tema,
@@ -691,13 +856,21 @@ ${teoria}`;
     contenidoPendienteRef.current = null;
     // Se vino a ver una parte concreta: no preguntar "teoría u omitir".
     setPreguntaModoAbierta(false);
-    seleccionarItem({ type: "contenido", ...pendiente.sel });
+    seleccionarItem({
+      type: "contenido",
+      ...pendiente.sel
+    });
   });
   const teoriaCompleta = useMemo(() => {
     const idsTeoriaNormal = flatPuntos
       .filter((p) => p.seccionTitulo !== "Ejercicios")
       .map((p) => p.id);
-    return idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => textosSeleccionados.includes(id));
+    return (
+      idsTeoriaNormal.length === 0 ||
+      idsTeoriaNormal.every((id) =>
+        textosSeleccionados.includes(id)
+      )
+    );
   }, [flatPuntos, textosSeleccionados]);
   function intentarCompletarTema() {
     if (!teoriaCompleta) {
@@ -707,7 +880,10 @@ ${teoria}`;
       setSinPreguntaSaliendo(false);
       setSinPreguntaAlerta(true);
       sinPreguntaTimers.current = [
-        setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+        setTimeout(
+          () => setSinPreguntaSaliendo(true),
+          4000
+        ),
         setTimeout(() => {
           setSinPreguntaAlerta(false);
           setSinPreguntaSaliendo(false);
@@ -727,18 +903,46 @@ ${teoria}`;
       let titulosFinales = [];
       if (opts.soloAdicionales) {
         const itemsFinales = flatPuntos
-          .map((p, i) => ({ punto: p, pregunta: originalExamen[i] }))
-          .filter((x) => x.pregunta && x.punto?.seccionTitulo === "Ejercicios");
-        preguntasFinales = itemsFinales.map((x) => x.pregunta);
-        idsFinales = itemsFinales.map((x) => x.punto.id);
-        titulosFinales = itemsFinales.map((x) => x.punto.seccionTitulo);
+          .map((p, i) => ({
+            punto: p,
+            pregunta: originalExamen[i]
+          }))
+          .filter(
+            (x) =>
+              x.pregunta &&
+              x.punto?.seccionTitulo ===
+                "Ejercicios"
+          );
+        preguntasFinales = itemsFinales.map(
+          (x) => x.pregunta
+        );
+        idsFinales = itemsFinales.map(
+          (x) => x.punto.id
+        );
+        titulosFinales = itemsFinales.map(
+          (x) => x.punto.seccionTitulo
+        );
       } else if (opts.seleccionEspecifica) {
         const itemsFinales = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
-          .filter((p) => p.pregunta && opts.seleccionEspecifica.includes(p.id));
-        preguntasFinales = itemsFinales.map((p) => p.pregunta);
-        idsFinales = itemsFinales.map((p) => p.id);
-        titulosFinales = itemsFinales.map((p) => p.titulo);
+          .map((p, i) => ({
+            id: p.id,
+            pregunta: originalExamen[i],
+            titulo: p.seccionTitulo
+          }))
+          .filter(
+            (p) =>
+              p.pregunta &&
+              opts.seleccionEspecifica.includes(p.id)
+          );
+        preguntasFinales = itemsFinales.map(
+          (p) => p.pregunta
+        );
+        idsFinales = itemsFinales.map(
+          (p) => p.id
+        );
+        titulosFinales = itemsFinales.map(
+          (p) => p.titulo
+        );
       } else if (opts.requiereSeleccion) {
         if (textosSeleccionados.length === 0) {
           sinPreguntaTimers.current.forEach(clearTimeout);
@@ -747,7 +951,10 @@ ${teoria}`;
           setSinPreguntaSaliendo(false);
           setSinPreguntaAlerta(true);
           sinPreguntaTimers.current = [
-            setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+            setTimeout(
+              () => setSinPreguntaSaliendo(true),
+              4000
+            ),
             setTimeout(() => {
               setSinPreguntaAlerta(false);
               setSinPreguntaSaliendo(false);
@@ -755,19 +962,51 @@ ${teoria}`;
           ];
           return;
         }
-        const itemsPuntos = flatPuntos.map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }));
-        const itemsVinculadosTeoria = itemsPuntos.filter((p) => p.pregunta && textosSeleccionados.includes(p.id));
-        const itemsFinales = itemsVinculadosTeoria.length > 0 ? itemsVinculadosTeoria : itemsPuntos.filter((p) => p.pregunta);
-        preguntasFinales = itemsFinales.map((p) => p.pregunta);
-        idsFinales = itemsFinales.map((p) => p.id);
-        titulosFinales = itemsFinales.map((p) => p.titulo);
+        const itemsPuntos = flatPuntos.map(
+          (p, i) => ({
+            id: p.id,
+            pregunta: originalExamen[i],
+            titulo: p.seccionTitulo
+          })
+        );
+        const itemsVinculadosTeoria =
+          itemsPuntos.filter(
+            (p) =>
+              p.pregunta &&
+              textosSeleccionados.includes(p.id)
+          );
+        const itemsFinales =
+          itemsVinculadosTeoria.length > 0
+            ? itemsVinculadosTeoria
+            : itemsPuntos.filter(
+                (p) => p.pregunta
+              );
+        preguntasFinales = itemsFinales.map(
+          (p) => p.pregunta
+        );
+        idsFinales = itemsFinales.map(
+          (p) => p.id
+        );
+        titulosFinales = itemsFinales.map(
+          (p) => p.titulo
+        );
       } else {
         const itemsFinales = flatPuntos
-          .map((p, i) => ({ id: p.id, pregunta: originalExamen[i], titulo: p.seccionTitulo }))
+          .map((p, i) => ({
+            id: p.id,
+            pregunta: originalExamen[i],
+            titulo: p.seccionTitulo
+          }))
           .filter((p) => p.pregunta);
-        preguntasFinales = itemsFinales.map((p) => p.pregunta);
-        idsFinales = itemsFinales.map((p) => p.id);
-        titulosFinales = itemsFinales.map((p) => p.titulo);
+        preguntasFinales = itemsFinales.map(
+          (p) => p.pregunta
+        );
+        idsFinales = itemsFinales.map(
+          (p) => p.id
+        );
+        titulosFinales = itemsFinales.map(
+          (p) => p.titulo
+        );
       }
       if (preguntasFinales.length === 0) {
         sinPreguntaTimers.current.forEach(clearTimeout);
@@ -776,7 +1015,10 @@ ${teoria}`;
         setSinPreguntaSaliendo(false);
         setSinPreguntaAlerta(true);
         sinPreguntaTimers.current = [
-          setTimeout(() => setSinPreguntaSaliendo(true), 4000),
+          setTimeout(
+            () => setSinPreguntaSaliendo(true),
+            4000
+          ),
           setTimeout(() => {
             setSinPreguntaAlerta(false);
             setSinPreguntaSaliendo(false);
@@ -790,23 +1032,47 @@ ${teoria}`;
       setPreguntasFinalesIds(idsFinales);
       setTitulosFinalesExamen(titulosFinales);
       examenTresEstrellasRef.current = false;
-      const esJuegoConEstrellas = !!opts.seleccionEspecifica || !!opts.soloAdicionales;
+      const esJuegoConEstrellas =
+        !!opts.seleccionEspecifica ||
+        !!opts.soloAdicionales;
       if (esJuegoConEstrellas && topicData) {
-        const tituloJuego = titulosFinales[0] || "Sin título";
-        const registroJuego = leerRegistroJuego(topicData.curso, topicData.tema);
+        const tituloJuego =
+          titulosFinales[0] || "Sin título";
+        const registroJuego = leerRegistroJuego(
+          topicData.curso,
+          topicData.tema
+        );
         setJuegoTitulo(tituloJuego);
         setJuegoAcertadas(
-          idsAcertadosDeTitulo(registroJuego, tituloJuego).filter((id) => idsFinales.includes(id))
+          idsAcertadosDeTitulo(
+            registroJuego,
+            tituloJuego
+          ).filter((id) =>
+            idsFinales.includes(id)
+          )
         );
       } else {
         setJuegoTitulo(null);
         setJuegoAcertadas([]);
       }
-      setModoExamenTema(!opts.seleccionEspecifica && !opts.soloAdicionales);
-      if (!opts.seleccionEspecifica && !opts.soloAdicionales) {
+      setModoExamenTema(
+        !opts.seleccionEspecifica &&
+        !opts.soloAdicionales
+      );
+      if (
+        !opts.seleccionEspecifica &&
+        !opts.soloAdicionales
+      ) {
         setFaseExamenTema("preguntas");
       }
-      const orden = shuffle(Array.from({ length: preguntasFinales.length }, (_, i) => i));
+      const orden = shuffle(
+        Array.from(
+          {
+            length: preguntasFinales.length
+          },
+          (_, i) => i
+        )
+      );
       setOrdenPreguntas(orden);
       setPosOrden(0);
       setCardIndex(orden[0] ?? 0);
@@ -816,37 +1082,53 @@ ${teoria}`;
       setCountdown(0);
       setQuestionResult(null);
       setAttemptKey(0);
+      setMostrarModalRendirse(false);
     }
   }
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [simulacroModalOpen, setSimulacroModalOpen] = useState(false);
+  const [simulacroModalOpen, setSimulacroModalOpen] =
+    useState(false);
   useEffect(() => {
     let q = searchParams.get("q");
     if (!q) {
-      const temaPendiente = leerYLimpiarRetorno();
+      const temaPendiente =
+        leerYLimpiarRetorno();
       if (temaPendiente) q = temaPendiente;
     }
     if (!q) return;
     const qNorm = normalizarTexto(q);
     const temaMatch = OPCIONES_BUSQUEDA.find(
-      (item) => item.type === "tema" && normalizarTexto(item.tema) === qNorm
+      (item) =>
+        item.type === "tema" &&
+        normalizarTexto(item.tema) === qNorm
     );
     const cursoMatch = OPCIONES_BUSQUEDA.find(
-      (item) => item.type === "curso" && normalizarTexto(item.nombre) === qNorm
+      (item) =>
+        item.type === "curso" &&
+        normalizarTexto(item.nombre) === qNorm
     );
     if (temaMatch) {
       seleccionarItem(temaMatch);
     } else if (cursoMatch) {
       seleccionarItem(cursoMatch);
     }
-    window.history.replaceState(null, "", window.location.pathname);
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname
+    );
   }, []);
   function avanzarCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
-      if (repasoQuizPos < repasoQuizBatch.length - 1) {
-        setRepasoQuizPos(repasoQuizPos + 1);
+      if (
+        repasoQuizPos <
+        repasoQuizBatch.length - 1
+      ) {
+        setRepasoQuizPos(
+          repasoQuizPos + 1
+        );
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
       } else {
@@ -855,7 +1137,10 @@ ${teoria}`;
       return;
     }
     if (isLevelMode) {
-      if (nivelIndex < examenPreguntas.length - 1) {
+      if (
+        nivelIndex <
+        examenPreguntas.length - 1
+      ) {
         setNivelIndex(nivelIndex + 1);
         setQuestionResult(null);
         setAttemptKey(0);
@@ -865,7 +1150,10 @@ ${teoria}`;
       return;
     }
     if (isFlipQuiz) {
-      if (quizPos < quizBatch.length - 1) {
+      if (
+        quizPos <
+        quizBatch.length - 1
+      ) {
         setQuizPos(quizPos + 1);
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
@@ -875,7 +1163,10 @@ ${teoria}`;
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
         setCountdown(0);
-        if (cardIndex < flatPuntos.length - 1) {
+        if (
+          cardIndex <
+          flatPuntos.length - 1
+        ) {
           setCardIndex(cardIndex + 1);
           setStage("theory");
         } else {
@@ -885,10 +1176,16 @@ ${teoria}`;
       return;
     }
     if (modoEstudio === "solo_preguntas") {
-      if (posOrden < ordenPreguntas.length - 1) {
-        const siguientePos = posOrden + 1;
+      if (
+        posOrden <
+        ordenPreguntas.length - 1
+      ) {
+        const siguientePos =
+          posOrden + 1;
         setPosOrden(siguientePos);
-        setCardIndex(ordenPreguntas[siguientePos]);
+        setCardIndex(
+          ordenPreguntas[siguientePos]
+        );
         setStage("question");
         setIsLevelMode(false);
         setQuestionResult(null);
@@ -899,7 +1196,10 @@ ${teoria}`;
       }
       return;
     }
-    if (cardIndex < flatPuntos.length - 1) {
+    if (
+      cardIndex <
+      flatPuntos.length - 1
+    ) {
       setCardIndex(cardIndex + 1);
       setStage("theory");
       setIsLevelMode(false);
@@ -914,7 +1214,9 @@ ${teoria}`;
     if (stage === "theory") return;
     if (repasoQuizActivo) {
       if (repasoQuizPos > 0) {
-        setRepasoQuizPos(repasoQuizPos - 1);
+        setRepasoQuizPos(
+          repasoQuizPos - 1
+        );
         setQuestionResult(null);
         setAttemptKey((k) => k + 1);
       }
@@ -938,9 +1240,12 @@ ${teoria}`;
     }
     if (modoEstudio === "solo_preguntas") {
       if (posOrden > 0) {
-        const anteriorPos = posOrden - 1;
+        const anteriorPos =
+          posOrden - 1;
         setPosOrden(anteriorPos);
-        setCardIndex(ordenPreguntas[anteriorPos]);
+        setCardIndex(
+          ordenPreguntas[anteriorPos]
+        );
         setStage("question");
         setIsLevelMode(false);
         setQuestionResult(null);
@@ -965,10 +1270,20 @@ ${teoria}`;
   function finalizarTema() {
     if (esModoAdicionales) {
       const idsEjercicios = flatPuntos
-        .filter((p) => p.seccionTitulo === "Ejercicios")
+        .filter(
+          (p) =>
+            p.seccionTitulo ===
+            "Ejercicios"
+        )
         .map((p) => p.id);
-      huboCambiosSinGuardarRef.current = true;
-      setTextosSeleccionados((prev) => [...prev, ...idsEjercicios.filter((id) => !prev.includes(id))]);
+      huboCambiosSinGuardarRef.current =
+        true;
+      setTextosSeleccionados((prev) => [
+        ...prev,
+        ...idsEjercicios.filter(
+          (id) => !prev.includes(id)
+        )
+      ]);
     }
     if (!teoriaCompleta) {
       setStage("theory");
@@ -979,11 +1294,19 @@ ${teoria}`;
     setConfirmGuardarRepasoFinal(true);
     setMostrarCongratulations(true);
     if (topicData) {
-      const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
-      const id = `${topicData.curso}_${topicData.tema}`;
+      const completados = JSON.parse(
+        localStorage.getItem(
+          "temasCompletados"
+        ) || "[]"
+      );
+      const id =
+        `${topicData.curso}_${topicData.tema}`;
       if (!completados.includes(id)) {
         completados.push(id);
-        localStorage.setItem("temasCompletados", JSON.stringify(completados));
+        localStorage.setItem(
+          "temasCompletados",
+          JSON.stringify(completados)
+        );
       }
     }
   }
@@ -991,16 +1314,25 @@ ${teoria}`;
     setModoExamenTema(false);
     if (examenTresEstrellasRef.current) {
       // Sale de los resultados con todo acertado: cierra el tema.
-      examenTresEstrellasRef.current = false;
+      examenTresEstrellasRef.current =
+        false;
       setStage("finished");
       setConfirmGuardarRepasoFinal(true);
       setMostrarCongratulations(true);
       if (topicData) {
-        const completados = JSON.parse(localStorage.getItem("temasCompletados") || "[]");
-        const id = `${topicData.curso}_${topicData.tema}`;
+        const completados = JSON.parse(
+          localStorage.getItem(
+            "temasCompletados"
+          ) || "[]"
+        );
+        const id =
+          `${topicData.curso}_${topicData.tema}`;
         if (!completados.includes(id)) {
           completados.push(id);
-          localStorage.setItem("temasCompletados", JSON.stringify(completados));
+          localStorage.setItem(
+            "temasCompletados",
+            JSON.stringify(completados)
+          );
         }
       }
       return;
@@ -1008,14 +1340,20 @@ ${teoria}`;
     setStage("theory");
     setIsLevelMode(false);
   }
-  function finalizarTemaDesdeExamen(resultadosPorIndice = {}) {
+  function finalizarTemaDesdeExamen(
+    resultadosPorIndice = {}
+  ) {
     // OJO: aquí NO se cierra el modo examen. TemaExamenView pasa solo a la
     // fase "resultados" y se cierra con su botón de volver a la teoría.
     // Guarda las estrellas del examen en localStorage (mejor marca + último).
     if (topicData) {
-      const correctasExamen = Object.values(resultadosPorIndice).filter(
-        (estado) => estado === "correcta"
-      ).length;
+      const correctasExamen =
+        Object.values(
+          resultadosPorIndice
+        ).filter(
+          (estado) =>
+            estado === "correcta"
+        ).length;
       guardarEstrellasExamen(
         topicData.curso,
         topicData.tema,
@@ -1024,45 +1362,93 @@ ${teoria}`;
       );
     }
     // Sincronizar aciertos del modo Examen con el progreso de teoría (estrellas).
-    const idsAcertados = Object.entries(resultadosPorIndice)
-      .filter(([, estado]) => estado === "correcta")
-      .map(([indice]) => preguntasFinalesIds[Number(indice)])
+    const idsAcertados = Object.entries(
+      resultadosPorIndice
+    )
+      .filter(
+        ([, estado]) =>
+          estado === "correcta"
+      )
+      .map(
+        ([indice]) =>
+          preguntasFinalesIds[
+            Number(indice)
+          ]
+      )
       .filter(Boolean)
       .filter((id) => {
-        const punto = flatPuntos.find((p) => p.id === id);
-        return punto && punto.seccionTitulo !== "Ejercicios";
+        const punto = flatPuntos.find(
+          (p) => p.id === id
+        );
+        return (
+          punto &&
+          punto.seccionTitulo !==
+            "Ejercicios"
+        );
       });
     if (idsAcertados.length > 0) {
-      huboCambiosSinGuardarRef.current = true;
+      huboCambiosSinGuardarRef.current =
+        true;
       setTextosCompletados((prev) => {
-        const nuevos = idsAcertados.filter((id) => !prev.includes(id));
-        return nuevos.length > 0 ? [...prev, ...nuevos] : prev;
+        const nuevos =
+          idsAcertados.filter(
+            (id) => !prev.includes(id)
+          );
+        return nuevos.length > 0
+          ? [...prev, ...nuevos]
+          : prev;
       });
       setTextosSeleccionados((prev) => {
-        const nuevos = idsAcertados.filter((id) => !prev.includes(id));
-        return nuevos.length > 0 ? [...prev, ...nuevos] : prev;
+        const nuevos =
+          idsAcertados.filter(
+            (id) => !prev.includes(id)
+          );
+        return nuevos.length > 0
+          ? [...prev, ...nuevos]
+          : prev;
       });
     }
     // Solo se muestra "Guardar tema" si con estos aciertos ya tiene las 3 estrellas
     // (todas las preguntas de teoría correctas, sin contar Ejercicios).
     const idsTeoriaNormal = flatPuntos
-      .filter((p) => p.seccionTitulo !== "Ejercicios")
+      .filter(
+        (p) =>
+          p.seccionTitulo !==
+          "Ejercicios"
+      )
       .map((p) => p.id);
-    const completadosFinal = new Set([...textosCompletados, ...idsAcertados]);
+    const completadosFinal =
+      new Set([
+        ...textosCompletados,
+        ...idsAcertados
+      ]);
     const tresEstrellas =
-      idsTeoriaNormal.length === 0 || idsTeoriaNormal.every((id) => completadosFinal.has(id));
+      idsTeoriaNormal.length === 0 ||
+      idsTeoriaNormal.every((id) =>
+        completadosFinal.has(id)
+      );
     // Se recuerda si quedó todo acertado; el cierre del tema ocurre al salir
     // de la pantalla de resultados (volverATeoriaDesdeExamenTema).
-    examenTresEstrellasRef.current = tresEstrellas;
+    examenTresEstrellasRef.current =
+      tresEstrellas;
   }
-  function confirmarGuardarRepasoFinal(guardar) {
+  function confirmarGuardarRepasoFinal(
+    guardar
+  ) {
     if (guardar && topicData) {
-      registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
+      registrarCursoCompletado({
+        subject: topicData.curso,
+        tema: topicData.tema
+      });
     }
     setConfirmGuardarRepasoFinal(false);
   }
-  const [botonArmado, setBotonArmado] = useState(null);
-  function manejarBotonConfig(key, accion) {
+  const [botonArmado, setBotonArmado] =
+    useState(null);
+  function manejarBotonConfig(
+    key,
+    accion
+  ) {
     if (botonArmado === key) {
       accion();
       setBotonArmado(null);
@@ -1072,12 +1458,21 @@ ${teoria}`;
   }
   function guardarParaRepaso() {
     if (!topicData) return;
-    registrarCursoCompletado({ subject: topicData.curso, tema: topicData.tema });
-    repasoGuardadoTimers.current.forEach(clearTimeout);
+    registrarCursoCompletado({
+      subject: topicData.curso,
+      tema: topicData.tema
+    });
+    repasoGuardadoTimers.current.forEach(
+      clearTimeout
+    );
     setRepasoGuardadoSaliendo(false);
     setRepasoGuardadoMsg(true);
     repasoGuardadoTimers.current = [
-      setTimeout(() => setRepasoGuardadoSaliendo(true), 1800),
+      setTimeout(
+        () =>
+          setRepasoGuardadoSaliendo(true),
+        1800
+      ),
       setTimeout(() => {
         setRepasoGuardadoMsg(false);
         setRepasoGuardadoSaliendo(false);
@@ -1086,12 +1481,25 @@ ${teoria}`;
   }
   function gameOver() {
     if (!topicData) return;
-    localStorage.removeItem(`completions_${topicData.curso}_${topicData.tema}`);
-    localStorage.removeItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`);
-    localStorage.removeItem(`examenCompletions_${topicData.curso}_${topicData.tema}`);
-    localStorage.removeItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`);
-    localStorage.removeItem(`ultimaCard_${topicData.curso}_${topicData.tema}`);
-    borrarEstrellasJuego(topicData.curso, topicData.tema);
+    localStorage.removeItem(
+      `completions_${topicData.curso}_${topicData.tema}`
+    );
+    localStorage.removeItem(
+      `maxUnlocked_${topicData.curso}_${topicData.tema}`
+    );
+    localStorage.removeItem(
+      `examenCompletions_${topicData.curso}_${topicData.tema}`
+    );
+    localStorage.removeItem(
+      `examenMaxUnlocked_${topicData.curso}_${topicData.tema}`
+    );
+    localStorage.removeItem(
+      `ultimaCard_${topicData.curso}_${topicData.tema}`
+    );
+    borrarEstrellasJuego(
+      topicData.curso,
+      topicData.tema
+    );
     setJuegoAcertadas([]);
     setLevelCompletions({});
     setMaxUnlocked(0);
@@ -1109,124 +1517,290 @@ ${teoria}`;
     setCountdown(0);
   }
   function rendirsePregunta() {
-    setQuestionResult({ isCorrect: false, rendido: true, vidasEnEsteIntento: vidas });
+    setQuestionResult({
+      isCorrect: false,
+      rendido: true,
+      vidasEnEsteIntento: vidas
+    });
     let vistaKeyRendido = null;
     let vistaPreguntaRendido = null;
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKeyRendido = `ex-${item.puntoIndex}`;
-        vistaPreguntaRendido = item.pregunta;
+        vistaKeyRendido =
+          `ex-${item.puntoIndex}`;
+        vistaPreguntaRendido =
+          item.pregunta;
       }
     } else if (isLevelMode) {
-      vistaKeyRendido = `ex-${nivelIndex}`;
-      vistaPreguntaRendido = examenPreguntas[nivelIndex] || null;
-    } else if (modoEstudio === "solo_preguntas") {
-      vistaKeyRendido = `ex-${cardIndex}`;
-      vistaPreguntaRendido = examenPreguntas[cardIndex] || null;
+      vistaKeyRendido =
+        `ex-${nivelIndex}`;
+      vistaPreguntaRendido =
+        examenPreguntas[nivelIndex] ||
+        null;
+    } else if (
+      modoEstudio === "solo_preguntas"
+    ) {
+      vistaKeyRendido =
+        `ex-${cardIndex}`;
+      vistaPreguntaRendido =
+        examenPreguntas[cardIndex] ||
+        null;
     } else {
-      vistaKeyRendido = `pt-${cardIndex}`;
-      vistaPreguntaRendido = flatPuntos[cardIndex]?.pregunta || null;
+      vistaKeyRendido =
+        `pt-${cardIndex}`;
+      vistaPreguntaRendido =
+        flatPuntos[cardIndex]?.pregunta ||
+        null;
     }
-    if (vistaKeyRendido && vistaPreguntaRendido) {
+    if (
+      vistaKeyRendido &&
+      vistaPreguntaRendido
+    ) {
       setPreguntasFalladas((prev) => ({
         ...prev,
-        [vistaKeyRendido]: { pregunta: vistaPreguntaRendido }
+        [vistaKeyRendido]: {
+          pregunta:
+            vistaPreguntaRendido
+        }
       }));
     }
     setWrongCount((w) => w + 1);
   }
   function manejarRespuesta(correcto) {
-    setQuestionResult({ isCorrect: correcto, vidasEnEsteIntento: vidas });
+    setQuestionResult({
+      isCorrect: correcto,
+      vidasEnEsteIntento: vidas
+    });
     let vistaKey = null;
     let vistaPregunta = null;
     if (isFlipQuiz) {
       const item = quizBatch[quizPos];
       if (item) {
-        vistaKey = `ex-${item.puntoIndex}`;
-        vistaPregunta = item.pregunta;
+        vistaKey =
+          `ex-${item.puntoIndex}`;
+        vistaPregunta =
+          item.pregunta;
       }
     } else if (isLevelMode) {
-      vistaKey = `ex-${nivelIndex}`;
-      vistaPregunta = examenPreguntas[nivelIndex] || null;
-    } else if (modoEstudio === "solo_preguntas") {
-      vistaKey = `ex-${cardIndex}`;
-      vistaPregunta = examenPreguntas[cardIndex] || null;
+      vistaKey =
+        `ex-${nivelIndex}`;
+      vistaPregunta =
+        examenPreguntas[nivelIndex] ||
+        null;
+    } else if (
+      modoEstudio === "solo_preguntas"
+    ) {
+      vistaKey =
+        `ex-${cardIndex}`;
+      vistaPregunta =
+        examenPreguntas[cardIndex] ||
+        null;
     } else {
-      vistaKey = `pt-${cardIndex}`;
-      vistaPregunta = flatPuntos[cardIndex]?.pregunta || null;
+      vistaKey =
+        `pt-${cardIndex}`;
+      vistaPregunta =
+        flatPuntos[cardIndex]?.pregunta ||
+        null;
     }
-    if (vistaKey && vistaPregunta && topicData) {
+    if (
+      vistaKey &&
+      vistaPregunta &&
+      topicData
+    ) {
       setPreguntasVistas((prev) => {
         if (prev[vistaKey]) return prev;
-        const next = { ...prev, [vistaKey]: { pregunta: vistaPregunta } };
-        localStorage.setItem(`preguntasVistas_${topicData.curso}_${topicData.tema}`, JSON.stringify(next));
+        const next = {
+          ...prev,
+          [vistaKey]: {
+            pregunta: vistaPregunta
+          }
+        };
+        localStorage.setItem(
+          `preguntasVistas_${topicData.curso}_${topicData.tema}`,
+          JSON.stringify(next)
+        );
         return next;
       });
     }
     if (correcto) {
       setScore((s) => s + 1);
-      if (juegoTitulo && topicData && modoEstudio === "solo_preguntas" && !isFlipQuiz && !isLevelMode && !repasoQuizActivo) {
-        const idJuego = preguntasFinalesIds[cardIndex];
+      if (
+        juegoTitulo &&
+        topicData &&
+        modoEstudio ===
+          "solo_preguntas" &&
+        !isFlipQuiz &&
+        !isLevelMode &&
+        !repasoQuizActivo
+      ) {
+        const idJuego =
+          preguntasFinalesIds[cardIndex];
         if (idJuego) {
-          registrarAciertoJuego(topicData.curso, topicData.tema, juegoTitulo, idJuego, preguntasFinalesIds.length);
-          setJuegoAcertadas((prev) => (prev.includes(idJuego) ? prev : [...prev, idJuego]));
+          registrarAciertoJuego(
+            topicData.curso,
+            topicData.tema,
+            juegoTitulo,
+            idJuego,
+            preguntasFinalesIds.length
+          );
+          setJuegoAcertadas(
+            (prev) =>
+              prev.includes(idJuego)
+                ? prev
+                : [...prev, idJuego]
+          );
         }
       }
       let puntoIdRespondido = null;
-      if (modoEstudio === "solo_preguntas" && preguntasFinalesIds[cardIndex]) {
-        puntoIdRespondido = preguntasFinalesIds[cardIndex];
+      if (
+        modoEstudio ===
+          "solo_preguntas" &&
+        preguntasFinalesIds[cardIndex]
+      ) {
+        puntoIdRespondido =
+          preguntasFinalesIds[cardIndex];
       } else if (isFlipQuiz) {
-        const item = quizBatch[quizPos];
-        puntoIdRespondido = item ? flatPuntos[item.puntoIndex]?.id || null : null;
+        const item =
+          quizBatch[quizPos];
+        puntoIdRespondido = item
+          ? flatPuntos[
+              item.puntoIndex
+            ]?.id || null
+          : null;
       } else if (!isLevelMode) {
-        puntoIdRespondido = flatPuntos[cardIndex]?.id || null;
+        puntoIdRespondido =
+          flatPuntos[cardIndex]?.id ||
+          null;
       }
-      const puntoRespondido = puntoIdRespondido
-        ? flatPuntos.find((p) => p.id === puntoIdRespondido)
-        : null;
-      if (puntoIdRespondido && puntoRespondido?.seccionTitulo !== "Ejercicios") {
-        huboCambiosSinGuardarRef.current = true;
-        setTextosCompletados((prev) => (prev.includes(puntoIdRespondido) ? prev : [...prev, puntoIdRespondido]));
-        setTextosSeleccionados((prev) => {
-          if (prev.includes(puntoIdRespondido)) return prev;
-          const newSelection = [...prev, puntoIdRespondido];
-          const idsTeoriaNormal = flatPuntos
-            .filter((p) => p.seccionTitulo !== "Ejercicios")
-            .map((p) => p.id);
-          if (idsTeoriaNormal.length > 0 && idsTeoriaNormal.every((id) => newSelection.includes(id))) {
-            setMostrarCongratulations(true);
+      const puntoRespondido =
+        puntoIdRespondido
+          ? flatPuntos.find(
+              (p) =>
+                p.id ===
+                puntoIdRespondido
+            )
+          : null;
+      if (
+        puntoIdRespondido &&
+        puntoRespondido?.seccionTitulo !==
+          "Ejercicios"
+      ) {
+        huboCambiosSinGuardarRef.current =
+          true;
+        setTextosCompletados(
+          (prev) =>
+            prev.includes(
+              puntoIdRespondido
+            )
+              ? prev
+              : [
+                  ...prev,
+                  puntoIdRespondido
+                ]
+        );
+        setTextosSeleccionados(
+          (prev) => {
+            if (
+              prev.includes(
+                puntoIdRespondido
+              )
+            ) {
+              return prev;
+            }
+            const newSelection = [
+              ...prev,
+              puntoIdRespondido
+            ];
+            const idsTeoriaNormal =
+              flatPuntos
+                .filter(
+                  (p) =>
+                    p.seccionTitulo !==
+                    "Ejercicios"
+                )
+                .map((p) => p.id);
+            if (
+              idsTeoriaNormal.length >
+                0 &&
+              idsTeoriaNormal.every(
+                (id) =>
+                  newSelection.includes(
+                    id
+                  )
+              )
+            ) {
+              setMostrarCongratulations(
+                true
+              );
+            }
+            return newSelection;
           }
-          return newSelection;
-        });
+        );
       }
       if (isLevelMode) {
-        setNivelCompletions((prev) => {
-          const newCompletions = { ...prev, [nivelIndex]: (prev[nivelIndex] || 0) + 1 };
-          if (topicData) {
-            localStorage.setItem(`examenCompletions_${topicData.curso}_${topicData.tema}`, JSON.stringify(newCompletions));
+        setNivelCompletions(
+          (prev) => {
+            const newCompletions = {
+              ...prev,
+              [nivelIndex]:
+                (prev[nivelIndex] || 0) +
+                1
+            };
+            if (topicData) {
+              localStorage.setItem(
+                `examenCompletions_${topicData.curso}_${topicData.tema}`,
+                JSON.stringify(
+                  newCompletions
+                )
+              );
+            }
+            return newCompletions;
           }
-          return newCompletions;
-        });
+        );
         setNivelMaxUnlocked((m) => {
-          const nextMax = nivelIndex === m ? m + 1 : m;
+          const nextMax =
+            nivelIndex === m
+              ? m + 1
+              : m;
           if (topicData) {
-            localStorage.setItem(`examenMaxUnlocked_${topicData.curso}_${topicData.tema}`, nextMax);
+            localStorage.setItem(
+              `examenMaxUnlocked_${topicData.curso}_${topicData.tema}`,
+              nextMax
+            );
           }
           return nextMax;
         });
       } else {
-        setLevelCompletions((prev) => {
-          const newCompletions = { ...prev, [cardIndex]: (prev[cardIndex] || 0) + 1 };
-          if (topicData) {
-            localStorage.setItem(`completions_${topicData.curso}_${topicData.tema}`, JSON.stringify(newCompletions));
+        setLevelCompletions(
+          (prev) => {
+            const newCompletions = {
+              ...prev,
+              [cardIndex]:
+                (prev[cardIndex] || 0) +
+                1
+            };
+            if (topicData) {
+              localStorage.setItem(
+                `completions_${topicData.curso}_${topicData.tema}`,
+                JSON.stringify(
+                  newCompletions
+                )
+              );
+            }
+            return newCompletions;
           }
-          return newCompletions;
-        });
+        );
         setMaxUnlocked((m) => {
-          const nextMax = cardIndex === m ? m + 1 : m;
+          const nextMax =
+            cardIndex === m
+              ? m + 1
+              : m;
           if (topicData) {
-            localStorage.setItem(`maxUnlocked_${topicData.curso}_${topicData.tema}`, nextMax);
+            localStorage.setItem(
+              `maxUnlocked_${topicData.curso}_${topicData.tema}`,
+              nextMax
+            );
           }
           return nextMax;
         });
@@ -1236,11 +1810,14 @@ ${teoria}`;
       if (vistaKey && vistaPregunta) {
         setPreguntasFalladas((prev) => ({
           ...prev,
-          [vistaKey]: { pregunta: vistaPregunta }
+          [vistaKey]: {
+            pregunta: vistaPregunta
+          }
         }));
       }
       setVidas((prevVidas) => {
-        const nuevasVidas = prevVidas - 1;
+        const nuevasVidas =
+          prevVidas - 1;
         if (nuevasVidas === 3) {
           setAlertaVidas("tres");
         } else if (nuevasVidas === 1) {
@@ -1249,13 +1826,20 @@ ${teoria}`;
           setAlertaVidas("cero");
           if (ceroVidasRef.current) {
             ceroVidasRef.current.currentTime = 0;
-            ceroVidasRef.current.play().catch(() => { });
+            ceroVidasRef.current
+              .play()
+              .catch(() => {});
           }
           gameOver();
         }
-        if (nuevasVidas > 0 && vidaPerderRef.current) {
+        if (
+          nuevasVidas > 0 &&
+          vidaPerderRef.current
+        ) {
           vidaPerderRef.current.currentTime = 0;
-          vidaPerderRef.current.play().catch(() => { });
+          vidaPerderRef.current
+            .play()
+            .catch(() => {});
         }
         return nuevasVidas;
       });
@@ -1275,24 +1859,43 @@ ${teoria}`;
     setConfirmLeave(false);
     setConfirmGuardarRepasoFinal(false);
     setBotonArmado(null);
+    setMostrarModalRendirse(false);
   }
   function verPreguntasVistas() {
-    const lote = Object.entries(preguntasVistas)
+    const lote = Object.entries(
+      preguntasVistas
+    )
       .map(([key, val]) => {
-        if (val && typeof val === "object" && val.pregunta) {
-          return { key, pregunta: val.pregunta };
+        if (
+          val &&
+          typeof val === "object" &&
+          val.pregunta
+        ) {
+          return {
+            key,
+            pregunta: val.pregunta
+          };
         }
         const i = Number(key);
-        const pregunta = flatPuntos[i]?.pregunta;
-        return pregunta ? { key, pregunta } : null;
+        const pregunta =
+          flatPuntos[i]?.pregunta;
+        return pregunta
+          ? { key, pregunta }
+          : null;
       })
       .filter(Boolean);
     if (lote.length === 0) {
-      sinPreguntaTimers.current.forEach(clearTimeout);
+      sinPreguntaTimers.current.forEach(
+        clearTimeout
+      );
       setSinPreguntaSaliendo(false);
       setSinPreguntaAlerta(true);
       sinPreguntaTimers.current = [
-        setTimeout(() => setSinPreguntaSaliendo(true), 1950),
+        setTimeout(
+          () =>
+            setSinPreguntaSaliendo(true),
+          1950
+        ),
         setTimeout(() => {
           setSinPreguntaAlerta(false);
           setSinPreguntaSaliendo(false);
@@ -1321,9 +1924,14 @@ ${teoria}`;
       setRepasoDesdeTeoria(false);
     }
   }
-  const [confirmSalirApp, setConfirmSalirApp] = useState(false);
-  const [confirmAbandonarPregunta, setConfirmAbandonarPregunta] = useState(false);
-  const temaExamenViewRef = useRef(null);
+  const [confirmSalirApp, setConfirmSalirApp] =
+    useState(false);
+  const [
+    confirmAbandonarPregunta,
+    setConfirmAbandonarPregunta
+  ] = useState(false);
+  const temaExamenViewRef =
+    useRef(null);
   function pedirAbandonarPregunta() {
     setConfirmAbandonarPregunta(true);
   }
@@ -1332,7 +1940,11 @@ ${teoria}`;
   }
   function confirmarAbandonarPregunta() {
     setConfirmAbandonarPregunta(false);
-    if (modoExamenTema && stage === "question" && temaExamenViewRef.current) {
+    if (
+      modoExamenTema &&
+      stage === "question" &&
+      temaExamenViewRef.current
+    ) {
       temaExamenViewRef.current.finalizarAhora();
       return;
     }
@@ -1342,8 +1954,12 @@ ${teoria}`;
     setConfirmSalirApp(false);
   }
   function confirmarSalirApp() {
-    if (typeof window !== "undefined" && window.Capacitor?.isNativePlatform?.()) {
-      const AppPlugin = window.Capacitor.Plugins?.App;
+    if (
+      typeof window !== "undefined" &&
+      window.Capacitor?.isNativePlatform?.()
+    ) {
+      const AppPlugin =
+        window.Capacitor.Plugins?.App;
       if (AppPlugin?.exitApp) {
         AppPlugin.exitApp();
         return;
@@ -1351,12 +1967,15 @@ ${teoria}`;
     }
     window.close();
     setTimeout(() => {
-      window.location.href = "about:blank";
+      window.location.href =
+        "about:blank";
     }, 300);
   }
   function irAInicio() {
     const hayCambiosSinGuardar =
-      stage === "theory" && topicData?.archivo && huboCambiosSinGuardarRef.current;
+      stage === "theory" &&
+      topicData?.archivo &&
+      huboCambiosSinGuardarRef.current;
     if (hayCambiosSinGuardar) {
       setTemaProximoSalida(null);
       setDestinoSalida("inicio");
@@ -1376,82 +1995,174 @@ ${teoria}`;
     setConfirmGuardarRepasoFinal(false);
     setBotonArmado(null);
     setCountdown(0);
+    setMostrarModalRendirse(false);
   }
-  const current = isLevelMode ? examenPreguntas[nivelIndex] : flatPuntos[cardIndex];
-  const { musicaOn: musicaTeoriaOn, alternarMusica } = useMusicaFondo();
-  const [preguntaChatGpt, setPreguntaChatGpt] = useState("");
+  const current = isLevelMode
+    ? examenPreguntas[nivelIndex]
+    : flatPuntos[cardIndex];
+  const {
+    musicaOn: musicaTeoriaOn,
+    alternarMusica
+  } = useMusicaFondo();
+  const [preguntaChatGpt, setPreguntaChatGpt] =
+    useState("");
   function enviarPreguntaChatGpt() {
-    const pregunta = preguntaChatGpt.trim();
+    const pregunta =
+      preguntaChatGpt.trim();
     if (!pregunta) return;
-    const url = `https://chatgpt.com/?q=${encodeURIComponent(pregunta)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    const url =
+      `https://chatgpt.com/?q=${encodeURIComponent(
+        pregunta
+      )}`;
+    window.open(
+      url,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setPreguntaChatGpt("");
   }
   const preguntaActual = repasoQuizActivo
-    ? repasoQuizBatch[repasoQuizPos]?.pregunta || null
+    ? repasoQuizBatch[repasoQuizPos]
+        ?.pregunta || null
     : isLevelMode
       ? current
       : isFlipQuiz
-        ? quizBatch[quizPos]?.pregunta || null
-        : modoEstudio === "solo_preguntas"
-          ? examenPreguntas[cardIndex] || null
+        ? quizBatch[quizPos]
+            ?.pregunta || null
+        : modoEstudio ===
+            "solo_preguntas"
+          ? examenPreguntas[
+              cardIndex
+            ] || null
           : null;
-  const [modoPruebaAvance, setModoPruebaAvance] = useState(false);
+  const [
+    modoPruebaAvance,
+    setModoPruebaAvance
+  ] = useState(false);
   useEffect(() => {
     function alternar() {
-      setModoPruebaAvance((actual) => {
-        const nuevo = !actual;
-        alert(
-          nuevo
-            ? "Modo prueba activado: ya puedes avanzar sin responder."
-            : "Modo prueba desactivado."
-        );
-        return nuevo;
-      });
+      setModoPruebaAvance(
+        (actual) => {
+          const nuevo = !actual;
+          alert(
+            nuevo
+              ? "Modo prueba activado: ya puedes avanzar sin responder."
+              : "Modo prueba desactivado."
+          );
+          return nuevo;
+        }
+      );
     }
-    window.addEventListener("mp-toggle", alternar);
-    return () => window.removeEventListener("mp-toggle", alternar);
+    window.addEventListener(
+      "mp-toggle",
+      alternar
+    );
+    return () =>
+      window.removeEventListener(
+        "mp-toggle",
+        alternar
+      );
   }, []);
   const canAdvance =
     modoPruebaAvance ||
     stage !== "question" ||
-    Boolean(questionResult && questionResult.isCorrect);
-  const [hintBloqueoVisible, setHintBloqueoVisible] = useState(false);
-  const hintBloqueoTimeoutRef = useRef(null);
+    Boolean(
+      questionResult &&
+      questionResult.isCorrect
+    );
+  const [
+    hintBloqueoVisible,
+    setHintBloqueoVisible
+  ] = useState(false);
+  const hintBloqueoTimeoutRef =
+    useRef(null);
   function mostrarHintBloqueo() {
-    clearTimeout(hintBloqueoTimeoutRef.current);
+    clearTimeout(
+      hintBloqueoTimeoutRef.current
+    );
     setHintBloqueoVisible(true);
-    hintBloqueoTimeoutRef.current = setTimeout(() => setHintBloqueoVisible(false), 2000);
+    hintBloqueoTimeoutRef.current =
+      setTimeout(
+        () =>
+          setHintBloqueoVisible(false),
+        2000
+      );
   }
   useEffect(() => {
     function onKeyDown(e) {
-      const tagActivo = document.activeElement && document.activeElement.tagName;
-      if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
-      if (searchOpen || configOpen || temasOpen || !topicData) return;
-      const tecla = e.key.toLowerCase();
+      const tagActivo =
+        document.activeElement &&
+        document.activeElement.tagName;
+      if (
+        tagActivo === "INPUT" ||
+        tagActivo === "BUTTON" ||
+        tagActivo === "TEXTAREA"
+      ) {
+        return;
+      }
+      if (
+        searchOpen ||
+        configOpen ||
+        temasOpen ||
+        !topicData
+      ) {
+        return;
+      }
+      const tecla =
+        e.key.toLowerCase();
       // =========================
       // NAVEGACIÓN DE TEORÍA
       // =========================
-      if (stage === "theory" && !isLevelMode) {
-        if (["arrowleft", "arrowup", "a", "w"].includes(tecla)) {
+      if (
+        stage === "theory" &&
+        !isLevelMode
+      ) {
+        if (
+          [
+            "arrowleft",
+            "arrowup",
+            "a",
+            "w"
+          ].includes(tecla)
+        ) {
           e.preventDefault();
-          setTeoriaVistaIndex((i) => Math.max(0, i - 1));
+          setTeoriaVistaIndex(
+            (i) =>
+              Math.max(0, i - 1)
+          );
           return;
         }
-        if (["arrowright", "arrowdown", "d", "s"].includes(tecla)) {
+        if (
+          [
+            "arrowright",
+            "arrowdown",
+            "d",
+            "s"
+          ].includes(tecla)
+        ) {
           e.preventDefault();
-          setTeoriaVistaIndex((i) =>
-            Math.min(seccionesAgrupadas.length - 1, i + 1)
+          setTeoriaVistaIndex(
+            (i) =>
+              Math.min(
+                seccionesAgrupadas.length -
+                  1,
+                i + 1
+              )
           );
           return;
         }
         // Enter → entrar al videojuego/examen
         if (tecla === "enter") {
           e.preventDefault();
-          if (examenPreguntas.length > 0) {
-            elegirModoEstudio("solo_preguntas", {
-              requiereSeleccion: true
-            });
+          if (
+            examenPreguntas.length > 0
+          ) {
+            elegirModoEstudio(
+              "solo_preguntas",
+              {
+                requiereSeleccion: true
+              }
+            );
           } else {
             finalizarTema();
           }
@@ -1466,9 +2177,15 @@ ${teoria}`;
         // Enter → avanzar o reintentar
         if (tecla === "enter") {
           e.preventDefault();
-          if (questionResult && questionResult.isCorrect) {
+          if (
+            questionResult &&
+            questionResult.isCorrect
+          ) {
             avanzarCard();
-          } else if (questionResult && !questionResult.isCorrect) {
+          } else if (
+            questionResult &&
+            !questionResult.isCorrect
+          ) {
             reintentarPregunta();
           }
           return;
@@ -1497,9 +2214,15 @@ ${teoria}`;
         }
       }
     }
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener(
+      "keydown",
+      onKeyDown
+    );
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener(
+        "keydown",
+        onKeyDown
+      );
     };
   }, [
     stage,
@@ -1521,54 +2244,118 @@ ${teoria}`;
   ]);
   useEffect(() => {
     function onKeyDown(e) {
-      const tagActivo = document.activeElement && document.activeElement.tagName;
-      if (tagActivo === "INPUT" || tagActivo === "BUTTON" || tagActivo === "TEXTAREA") return;
-      if (searchOpen || configOpen || temasOpen || !topicData) return;
-      const tecla = e.key.toLowerCase();
+      const tagActivo =
+        document.activeElement &&
+        document.activeElement.tagName;
+      if (
+        tagActivo === "INPUT" ||
+        tagActivo === "BUTTON" ||
+        tagActivo === "TEXTAREA"
+      ) {
+        return;
+      }
+      if (
+        searchOpen ||
+        configOpen ||
+        temasOpen ||
+        !topicData
+      ) {
+        return;
+      }
+      const tecla =
+        e.key.toLowerCase();
       // =========================
       // NAVEGACIÓN DE TEORÍA
       // =========================
-      if (stage === "theory" && !isLevelMode) {
-        if (["arrowleft", "arrowup", "a", "w"].includes(tecla)) {
+      if (
+        stage === "theory" &&
+        !isLevelMode
+      ) {
+        if (
+          [
+            "arrowleft",
+            "arrowup",
+            "a",
+            "w"
+          ].includes(tecla)
+        ) {
           e.preventDefault();
-          setTeoriaVistaIndex((i) => Math.max(0, i - 1));
+          setTeoriaVistaIndex(
+            (i) =>
+              Math.max(0, i - 1)
+          );
           return;
         }
-        if (["arrowright", "arrowdown", "d", "s"].includes(tecla)) {
+        if (
+          [
+            "arrowright",
+            "arrowdown",
+            "d",
+            "s"
+          ].includes(tecla)
+        ) {
           e.preventDefault();
-          setTeoriaVistaIndex((i) =>
-            Math.min(seccionesAgrupadas.length - 1, i + 1)
+          setTeoriaVistaIndex(
+            (i) =>
+              Math.min(
+                seccionesAgrupadas.length -
+                  1,
+                i + 1
+              )
           );
           return;
         }
         // Z → videojuego de la sección actual
         if (tecla === "z") {
           e.preventDefault();
-          if (seccionActual?.puntos?.length > 0) {
-            elegirModoEstudio("solo_preguntas", {
-              seleccionEspecifica: seccionActual.puntos.map((p) => p.id)
-            });
+          if (
+            seccionActual?.puntos?.length >
+            0
+          ) {
+            elegirModoEstudio(
+              "solo_preguntas",
+              {
+                seleccionEspecifica:
+                  seccionActual.puntos.map(
+                    (p) => p.id
+                  )
+              }
+            );
           }
           return;
         }
         // V → examen
         if (tecla === "v") {
           e.preventDefault();
-          if (examenPreguntas.length > 0) {
-            elegirModoEstudio("solo_preguntas");
+          if (
+            examenPreguntas.length > 0
+          ) {
+            elegirModoEstudio(
+              "solo_preguntas"
+            );
           }
           return;
         }
         // M → ejercicios
         if (tecla === "m") {
           e.preventDefault();
-          const idsEjercicios = flatPuntos
-            .filter((p) => p.seccionTitulo === "Ejercicios")
-            .map((p) => p.id);
-          if (idsEjercicios.length > 0) {
-            elegirModoEstudio("solo_preguntas", {
-              soloAdicionales: true
-            });
+          const idsEjercicios =
+            flatPuntos
+              .filter(
+                (p) =>
+                  p.seccionTitulo ===
+                  "Ejercicios"
+              )
+              .map((p) => p.id);
+          if (
+            idsEjercicios.length > 0
+          ) {
+            elegirModoEstudio(
+              "solo_preguntas",
+              {
+                soloAdicionales: true
+              }
+            );
           }
           return;
         }
@@ -1587,9 +2374,15 @@ ${teoria}`;
         // Enter → avanzar o reintentar
         if (tecla === "enter") {
           e.preventDefault();
-          if (questionResult && questionResult.isCorrect) {
+          if (
+            questionResult &&
+            questionResult.isCorrect
+          ) {
             avanzarCard();
-          } else if (questionResult && !questionResult.isCorrect) {
+          } else if (
+            questionResult &&
+            !questionResult.isCorrect
+          ) {
             reintentarPregunta();
           }
           return;
@@ -1618,9 +2411,15 @@ ${teoria}`;
         }
       }
     }
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener(
+      "keydown",
+      onKeyDown
+    );
     return () => {
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener(
+        "keydown",
+        onKeyDown
+      );
     };
   }, [
     stage,
@@ -1642,53 +2441,115 @@ ${teoria}`;
     seccionActual,
     flatPuntos
   ]);
-  const recomendacionesHoyInicio = useMemo(
-    () => obtenerRecomendacionesHoy(),
-    []
-  );
+  const recomendacionesHoyInicio =
+    useMemo(
+      () =>
+        obtenerRecomendacionesHoy(),
+      []
+    );
   let ultimoTemaInicio = null;
   try {
-    ultimoTemaInicio = JSON.parse(localStorage.getItem("ultimoTemaAbierto"));
+    ultimoTemaInicio = JSON.parse(
+      localStorage.getItem(
+        "ultimoTemaAbierto"
+      )
+    );
   } catch {
     ultimoTemaInicio = null;
   }
   const wrapClass = [
     "mi-estudio__wrap",
-    stage === "question" ? "is-question" : topicData ? "has-topbar" : "is-home"
+    stage === "question"
+      ? "is-question"
+      : topicData
+        ? "has-topbar"
+        : "is-home"
   ].join(" ");
-  const progresoPregunta = repasoQuizActivo
-    ? { current: repasoQuizPos + 1, total: repasoQuizBatch.length }
-    : isLevelMode
-      ? { current: nivelIndex + 1, total: examenPreguntas.length }
-      : isFlipQuiz
-        ? { current: quizPos + 1, total: quizBatch.length }
-        : modoEstudio === "solo_preguntas"
-          ? { current: posOrden + 1, total: ordenPreguntas.length }
-          : { current: cardIndex + 1, total: flatPuntos.length };
+  const progresoPregunta =
+    repasoQuizActivo
+      ? {
+          current:
+            repasoQuizPos + 1,
+          total:
+            repasoQuizBatch.length
+        }
+      : isLevelMode
+        ? {
+            current:
+              nivelIndex + 1,
+            total:
+              examenPreguntas.length
+          }
+        : isFlipQuiz
+          ? {
+              current:
+                quizPos + 1,
+              total:
+                quizBatch.length
+            }
+          : modoEstudio ===
+              "solo_preguntas"
+            ? {
+                current:
+                  posOrden + 1,
+                total:
+                  ordenPreguntas.length
+              }
+            : {
+                current:
+                  cardIndex + 1,
+                total:
+                  flatPuntos.length
+              };
   const juegoConEstrellas =
     Boolean(juegoTitulo) &&
-    modoEstudio === "solo_preguntas" &&
+    modoEstudio ===
+      "solo_preguntas" &&
     !modoExamenTema &&
     !repasoQuizActivo &&
     !isFlipQuiz &&
     !isLevelMode &&
-    preguntasFinalesIds.length > 0;
+    preguntasFinalesIds.length >
+      0;
   // undefined = el HUD no muestra estrellas (repaso, etc.)
-  const estrellasJuegoActuales = juegoConEstrellas
-    ? calcularEstrellas(juegoAcertadas.length, preguntasFinalesIds.length)
-    : undefined;
-  const nombreCursoActivo = cursoSeleccionado || (topicData ? topicData.curso : null);
-  const cursoEncontrado = manifest.cursos.find((c) => c.nombre === nombreCursoActivo);
-  const temasDelCurso = cursoEncontrado ? cursoEncontrado.temas : [];
+  const estrellasJuegoActuales =
+    juegoConEstrellas
+      ? calcularEstrellas(
+          juegoAcertadas.length,
+          preguntasFinalesIds.length
+        )
+      : undefined;
+  const nombreCursoActivo =
+    cursoSeleccionado ||
+    (topicData
+      ? topicData.curso
+      : null);
+  const cursoEncontrado =
+    manifest.cursos.find(
+      (c) =>
+        c.nombre ===
+        nombreCursoActivo
+    );
+  const temasDelCurso =
+    cursoEncontrado
+      ? cursoEncontrado.temas
+      : [];
   return (
     <div className="mi-estudio">
-      <ModoEstudioModal open={preguntaModoAbierta} onElegir={elegirModoEstudio} />
+      <ModoEstudioModal
+        open={preguntaModoAbierta}
+        onElegir={elegirModoEstudio}
+      />
       <PomodoroAlarmModal
         open={pomodoroAlarmaAbierta}
         label={pomodoroAlarmaLabel}
-        onIrAPomodoro={irAPomodoroDesdeAlarma}
+        onIrAPomodoro={
+          irAPomodoroDesdeAlarma
+        }
         onClose={() => {
-          setPomodoroAlarmaAbierta(false);
+          setPomodoroAlarmaAbierta(
+            false
+          );
           limpiarPomodoroCompartido();
         }}
       />
@@ -1696,27 +2557,45 @@ ${teoria}`;
         <TopBar
           stage={
             modoExamenTema
-              ? faseExamenTema === "resultados"
+              ? faseExamenTema ===
+                "resultados"
                 ? "results"
                 : "exam"
               : stage
           }
           tema={topicData.tema}
           curso={topicData.curso}
-          onAbrirBuscador={() => setSearchOpen(true)}
-          onTogglePomodoroMini={() => setPomodoroMiniOpen((o) => !o)}
-          onAbrirTemas={() => setTemasOpen(true)}
+          onAbrirBuscador={() =>
+            setSearchOpen(true)
+          }
+          onTogglePomodoroMini={() =>
+            setPomodoroMiniOpen(
+              (o) => !o
+            )
+          }
+          onAbrirTemas={() =>
+            setTemasOpen(true)
+          }
           temasOpen={temasOpen}
           musicaOn={musicaTeoriaOn}
-          onToggleMusica={alternarMusica}
-          onGuardarRepaso={guardarParaRepaso}
+          onToggleMusica={
+            alternarMusica
+          }
+          onGuardarRepaso={
+            guardarParaRepaso
+          }
           isFullscreen={isFullscreen}
-          onToggleFullscreen={toggleFullscreen}
-          onAbandonarPregunta={pedirAbandonarPregunta}
+          onToggleFullscreen={
+            toggleFullscreen
+          }
+          onAbandonarPregunta={
+            pedirAbandonarPregunta
+          }
           onIrInicio={irAInicio}
           onVolverTeoria={
             modoExamenTema &&
-            faseExamenTema === "resultados"
+            faseExamenTema ===
+              "resultados"
               ? volverATeoriaDesdeExamenTema
               : undefined
           }
@@ -1732,42 +2611,66 @@ ${teoria}`;
           }
         />
       )}
-      {false && pantallaToastVisible && (
-        <div className={`repaso-toast is-top mi-estudio__pantalla-toast${pantallaToastSaliendo ? " is-saliendo" : ""}`}>
-          <div className="mi-estudio__pantalla-toast-contenido">
-            <i className="fas fa-expand" />
-            <span>Pantalla compelta</span>
+      {false &&
+        pantallaToastVisible && (
+          <div
+            className={`repaso-toast is-top mi-estudio__pantalla-toast${
+              pantallaToastSaliendo
+                ? " is-saliendo"
+                : ""
+            }`}
+          >
+            <div className="mi-estudio__pantalla-toast-contenido">
+              <i className="fas fa-expand" />
+              <span>
+                Pantalla compelta
+              </span>
+            </div>
+            <div className="mi-estudio__pantalla-toast-acciones">
+              <button
+                type="button"
+                className="mi-estudio__pantalla-toast-btn"
+                onClick={() => {
+                  toggleFullscreen();
+                  cerrarPantallaToast();
+                }}
+              >
+                Activar
+              </button>
+              <button
+                type="button"
+                className="mi-estudio__pantalla-toast-close"
+                onClick={
+                  cerrarPantallaToast
+                }
+                aria-label="Cerrar"
+                title="Cerrar"
+              >
+                <i className="fas fa-xmark" />
+              </button>
+            </div>
           </div>
-          <div className="mi-estudio__pantalla-toast-acciones">
-            <button
-              type="button"
-              className="mi-estudio__pantalla-toast-btn"
-              onClick={() => {
-                toggleFullscreen();
-                cerrarPantallaToast();
-              }}
-            >
-              Activar
-            </button>
-            <button
-              type="button"
-              className="mi-estudio__pantalla-toast-close"
-              onClick={cerrarPantallaToast}
-              aria-label="Cerrar"
-              title="Cerrar"
-            >
-              <i className="fas fa-xmark" />
-            </button>
-          </div>
-        </div>
-      )}
+        )}
       {repasoGuardadoMsg && (
-        <div className={`repaso-toast is-success${repasoGuardadoSaliendo ? " is-saliendo" : ""}`}>
-          <i className="fas fa-bookmark" /> Guardado para repasar
+        <div
+          className={`repaso-toast is-success${
+            repasoGuardadoSaliendo
+              ? " is-saliendo"
+              : ""
+          }`}
+        >
+          <i className="fas fa-bookmark" />{" "}
+          Guardado para repasar
         </div>
       )}
       {sinPreguntaAlerta && (
-        <div className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo ? " is-saliendo" : ""}`}>
+        <div
+          className={`repaso-toast is-top sin-pregunta-alerta${
+            sinPreguntaSaliendo
+              ? " is-saliendo"
+              : ""
+          }`}
+        >
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
             <span>
@@ -1775,16 +2678,29 @@ ${teoria}`;
                 ? "Dale check a toda la teoría antes de completar el tema"
                 : sinSeleccionAlerta
                   ? "Tildá al menos un punto de teoría para ir al examen"
-                  : <>No hay preguntas de "{topicData?.tema || "este tema"}"</>}
+                  : (
+                    <>
+                      No hay preguntas de "
+                      {topicData?.tema ||
+                        "este tema"}
+                      "
+                    </>
+                  )}
             </span>
           </div>
           <button
             type="button"
             className="sin-pregunta-alerta__close"
             onClick={() => {
-              sinPreguntaTimers.current.forEach(clearTimeout);
-              setSinPreguntaSaliendo(false);
-              setSinPreguntaAlerta(false);
+              sinPreguntaTimers.current.forEach(
+                clearTimeout
+              );
+              setSinPreguntaSaliendo(
+                false
+              );
+              setSinPreguntaAlerta(
+                false
+              );
             }}
             aria-label="Cerrar"
             title="Cerrar"
@@ -1793,83 +2709,233 @@ ${teoria}`;
           </button>
         </div>
       )}
-      <Modal open={confirmSalirApp} onClose={cancelarSalirApp}>
-        <h3 className="tema-modal-title">¿Salir de la aplicación?</h3>
-        <p className="tema-modal-subtitle">Vas a salir de la web/aplicación. Tu progreso ya quedó guardado.</p>
+      <Modal
+        open={confirmSalirApp}
+        onClose={cancelarSalirApp}
+      >
+        <h3 className="tema-modal-title">
+          ¿Salir de la aplicación?
+        </h3>
+        <p className="tema-modal-subtitle">
+          Vas a salir de la web/aplicación.
+          Tu progreso ya quedó guardado.
+        </p>
         <div className="tema-modal-actions">
-          <button type="button" className="btn-solid" onClick={cancelarSalirApp}>Cancelar</button>
-          <button type="button" className="btn-outline" onClick={confirmarSalirApp}>Sí, salir</button>
+          <button
+            type="button"
+            className="btn-solid"
+            onClick={
+              cancelarSalirApp
+            }
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            className="btn-outline"
+            onClick={
+              confirmarSalirApp
+            }
+          >
+            Sí, salir
+          </button>
         </div>
       </Modal>
-      <Modal open={confirmAbandonarPregunta} onClose={cancelarAbandonarPregunta} plain>
+      <Modal
+        open={confirmAbandonarPregunta}
+        onClose={
+          cancelarAbandonarPregunta
+        }
+        plain
+      >
         <div className="retirada-modal">
-          <h3 className="retirada-modal__title">Regresar a la teoría</h3>
-          <p className="retirada-modal__subtitle">¿Ya te rendiste, perdedor?</p>
+          <h3 className="retirada-modal__title">
+            Regresar a la teoría
+          </h3>
+          <p className="retirada-modal__subtitle">
+            ¿Ya te rendiste, perdedor?
+          </p>
           <div className="retirada-modal__actions">
-            <button type="button" className="retirada-modal__btn is-confirm" onClick={cancelarAbandonarPregunta}>Cancelar</button>
-            <button type="button" className="retirada-modal__btn is-cancel" onClick={confirmarAbandonarPregunta}>Regresar</button>
+            <button
+              type="button"
+              className="retirada-modal__btn is-confirm"
+              onClick={
+                cancelarAbandonarPregunta
+              }
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              className="retirada-modal__btn is-cancel"
+              onClick={
+                confirmarAbandonarPregunta
+              }
+            >
+              Regresar
+            </button>
           </div>
         </div>
       </Modal>
-      <div className={`config-overlay ${configOpen ? "" : "is-closed"}`} aria-hidden={!configOpen}>
+      <RendirseModal
+        abierto={mostrarModalRendirse}
+        vidas={vidas}
+        onContinuar={() =>
+          setMostrarModalRendirse(false)
+        }
+        onRendirse={() => {
+          setMostrarModalRendirse(false);
+          rendirsePregunta();
+        }}
+      />
+      <div
+        className={`config-overlay ${
+          configOpen ? "" : "is-closed"
+        }`}
+        aria-hidden={!configOpen}
+      >
         <div className="config-overlay__panel">
           {confirmLeave && (
-            <div className="config-overlay__confirm animate-bounce">Confirmar. Eres un perdedor.</div>
+            <div className="config-overlay__confirm animate-bounce">
+              Confirmar. Eres un perdedor.
+            </div>
           )}
           <div className="config-overlay__row">
             <div className="config-overlay__item">
               <button
-                onClick={() => manejarBotonConfig("continuar", () => {
-                  setConfigOpen(false);
-                  setConfirmLeave(false);
-                  setBotonArmado(null);
-                })}
-                className={`config-overlay__btn ${botonArmado === "continuar" ? "is-armado" : ""}`}
+                onClick={() =>
+                  manejarBotonConfig(
+                    "continuar",
+                    () => {
+                      setConfigOpen(
+                        false
+                      );
+                      setConfirmLeave(
+                        false
+                      );
+                      setBotonArmado(null);
+                    }
+                  )
+                }
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "continuar"
+                    ? "is-armado"
+                    : ""
+                }`}
               >
                 <i className="fas fa-play" />
               </button>
-              {botonArmado === "continuar" && <span className="config-overlay__label">Continuar</span>}
-            </div>
-            <div className="config-overlay__item">
-              <button
-                onClick={() => manejarBotonConfig("pantalla", toggleFullscreen)}
-                className={`config-overlay__btn ${botonArmado === "pantalla" ? "is-armado" : ""}`}
-              >
-                <i className={`fas ${isFullscreen ? "fa-compress" : "fa-expand"}`} />
-              </button>
-              {botonArmado === "pantalla" && (
-                <span className="config-overlay__label">{isFullscreen ? "Minimizar" : "Pantalla Completa"}</span>
+              {botonArmado ===
+                "continuar" && (
+                <span className="config-overlay__label">
+                  Continuar
+                </span>
               )}
             </div>
             <div className="config-overlay__item">
               <button
-                onClick={() => manejarBotonConfig("repasar", verPreguntasVistas)}
-                className={`config-overlay__btn ${botonArmado === "repasar" ? "is-armado" : ""}`}
+                onClick={() =>
+                  manejarBotonConfig(
+                    "pantalla",
+                    toggleFullscreen
+                  )
+                }
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "pantalla"
+                    ? "is-armado"
+                    : ""
+                }`}
+              >
+                <i
+                  className={`fas ${
+                    isFullscreen
+                      ? "fa-compress"
+                      : "fa-expand"
+                  }`}
+                />
+              </button>
+              {botonArmado ===
+                "pantalla" && (
+                <span className="config-overlay__label">
+                  {isFullscreen
+                    ? "Minimizar"
+                    : "Pantalla Completa"}
+                </span>
+              )}
+            </div>
+            <div className="config-overlay__item">
+              <button
+                onClick={() =>
+                  manejarBotonConfig(
+                    "repasar",
+                    verPreguntasVistas
+                  )
+                }
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "repasar"
+                    ? "is-armado"
+                    : ""
+                }`}
               >
                 <i className="fas fa-list-check" />
               </button>
-              {botonArmado === "repasar" && <span className="config-overlay__label">Repasar</span>}
+              {botonArmado ===
+                "repasar" && (
+                <span className="config-overlay__label">
+                  Repasar
+                </span>
+              )}
             </div>
             <div className="config-overlay__item">
               <button
                 onClick={() => {
-                  if (confirmLeave) abandonarJuego();
-                  else setConfirmLeave(true);
+                  if (confirmLeave)
+                    abandonarJuego();
+                  else
+                    setConfirmLeave(
+                      true
+                    );
                 }}
-                className={`config-overlay__btn ${confirmLeave ? "is-armado" : ""}`}
+                className={`config-overlay__btn ${
+                  confirmLeave
+                    ? "is-armado"
+                    : ""
+                }`}
               >
                 <i className="fas fa-door-open" />
               </button>
-              {confirmLeave && <span className="config-overlay__label">Abandonar</span>}
+              {confirmLeave && (
+                <span className="config-overlay__label">
+                  Abandonar
+                </span>
+              )}
             </div>
             <div className="config-overlay__item">
               <button
-                onClick={() => manejarBotonConfig("reiniciar", reiniciarTarjetas)}
-                className={`config-overlay__btn ${botonArmado === "reiniciar" ? "is-armado" : ""}`}
+                onClick={() =>
+                  manejarBotonConfig(
+                    "reiniciar",
+                    reiniciarTarjetas
+                  )
+                }
+                className={`config-overlay__btn ${
+                  botonArmado ===
+                  "reiniciar"
+                    ? "is-armado"
+                    : ""
+                }`}
               >
                 <i className="fas fa-rotate-left" />
               </button>
-              {botonArmado === "reiniciar" && <span className="config-overlay__label">Reiniciar</span>}
+              {botonArmado ===
+                "reiniciar" && (
+                <span className="config-overlay__label">
+                  Reiniciar
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -1879,7 +2945,9 @@ ${teoria}`;
           <>
             <AppHeader
               section="inicio"
-              onAbrirBuscador={() => setSearchOpen(true)}
+              onAbrirBuscador={() =>
+                setSearchOpen(true)
+              }
             />
             <div className="mi-estudio__home-screen container">
               <section className="mi-estudio__intro">
@@ -1898,13 +2966,19 @@ ${teoria}`;
                         }
                         seleccionarItem({
                           type: "tema",
-                          curso: ultimoTemaInicio.curso,
-                          tema: ultimoTemaInicio.tema,
-                          archivo: ultimoTemaInicio.archivo
+                          curso:
+                            ultimoTemaInicio.curso,
+                          tema:
+                            ultimoTemaInicio.tema,
+                          archivo:
+                            ultimoTemaInicio.archivo
                         });
                       }}
                       onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
+                        if (
+                          e.key === "Enter" ||
+                          e.key === " "
+                        ) {
                           e.currentTarget.click();
                         }
                       }}
@@ -1921,12 +2995,20 @@ ${teoria}`;
                     <button
                       type="button"
                       className="welcome-section__simulacro-panel"
-                      onClick={() => setSimulacroModalOpen(true)}
+                      onClick={() =>
+                        setSimulacroModalOpen(
+                          true
+                        )
+                      }
                       aria-label="Rendir simulacro"
                     >
                       <span className="welcome-section__simulacro-info">
-                        <strong>Rendir simulacro</strong>
-                        <span>Pon a prueba tus conocimientos</span>
+                        <strong>
+                          Rendir simulacro
+                        </strong>
+                        <span>
+                          Pon a prueba tus conocimientos
+                        </span>
                       </span>
                     </button>
                   </div>
@@ -1934,52 +3016,97 @@ ${teoria}`;
               </section>
               <SeleccionAreaModal
                 open={simulacroModalOpen}
-                onClose={() => setSimulacroModalOpen(false)}
+                onClose={() =>
+                  setSimulacroModalOpen(
+                    false
+                  )
+                }
                 onConfirmar={(area) => {
-                  setSimulacroModalOpen(false);
-                  navigate(`/examen?area=${area}`);
+                  setSimulacroModalOpen(
+                    false
+                  );
+                  navigate(
+                    `/examen?area=${area}`
+                  );
                 }}
               />
             </div>
-            {recomendacionesHoyInicio.length > 0 && (
+            {recomendacionesHoyInicio.length >
+              0 && (
               <div className="mi-estudio__recomendados container">
                 <div className="mi-estudio__recomendados-fecha">
                   {(() => {
-                    const ahora = new Date();
-                    const objetivo = new Date(2027, 2, 15);
+                    const ahora =
+                      new Date();
+                    const objetivo =
+                      new Date(
+                        2027,
+                        2,
+                        15
+                      );
                     let meses =
-                      (objetivo.getFullYear() - ahora.getFullYear()) * 12 +
-                      (objetivo.getMonth() - ahora.getMonth());
-                    const fechaMeses = new Date(ahora);
-                    fechaMeses.setMonth(fechaMeses.getMonth() + meses);
-                    if (fechaMeses > objetivo) {
-                      meses--;
-                      fechaMeses.setMonth(fechaMeses.getMonth() - 1);
-                    }
-                    const diasRestantes = Math.ceil(
-                      (objetivo - fechaMeses) / (1000 * 60 * 60 * 24)
+                      (objetivo.getFullYear() -
+                        ahora.getFullYear()) *
+                        12 +
+                      (objetivo.getMonth() -
+                        ahora.getMonth());
+                    const fechaMeses =
+                      new Date(ahora);
+                    fechaMeses.setMonth(
+                      fechaMeses.getMonth() +
+                        meses
                     );
-                    const semanas = Math.floor(diasRestantes / 7);
-                    const dias = diasRestantes % 7;
+                    if (
+                      fechaMeses >
+                      objetivo
+                    ) {
+                      meses--;
+                      fechaMeses.setMonth(
+                        fechaMeses.getMonth() -
+                          1
+                      );
+                    }
+                    const diasRestantes =
+                      Math.ceil(
+                        (objetivo -
+                          fechaMeses) /
+                          (1000 *
+                            60 *
+                            60 *
+                            24)
+                      );
+                    const semanas =
+                      Math.floor(
+                        diasRestantes /
+                          7
+                      );
+                    const dias =
+                      diasRestantes % 7;
                     return `${meses} meses · ${semanas} semanas · ${dias} días`;
                   })()}
                 </div>
                 <div className="mi-estudio__recomendados-grid">
-                  {recomendacionesHoyInicio.map((r) => (
-                    <div
-                      key={`${r.curso}-Turno${r.turno}`}
-                      className="mi-estudio__recomendados-curso"
-                    >
-                      <span className="mi-estudio__recomendados-curso-nombre">
-                        {r.curso}
-                      </span>
-                      <ul className="mi-estudio__recomendados-temas">
-                        {r.temas.map((tema) => (
-                          <li key={tema}>{tema}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                  {recomendacionesHoyInicio.map(
+                    (r) => (
+                      <div
+                        key={`${r.curso}-Turno${r.turno}`}
+                        className="mi-estudio__recomendados-curso"
+                      >
+                        <span className="mi-estudio__recomendados-curso-nombre">
+                          {r.curso}
+                        </span>
+                        <ul className="mi-estudio__recomendados-temas">
+                          {r.temas.map(
+                            (tema) => (
+                              <li key={tema}>
+                                {tema}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )
+                  )}
                 </div>
               </div>
             )}
@@ -1989,11 +3116,19 @@ ${teoria}`;
           <div className="ingles-page">
             <InglesNivelView
               key={topicData.archivo}
-              nivel={{ id: topicData.id, archivo: topicData.archivo }}
+              nivel={{
+                id: topicData.id,
+                archivo:
+                  topicData.archivo
+              }}
               datosIniciales={topicData}
               progreso={progresoIngles}
-              alGuardar={guardarResultadoIngles}
-              alVolver={() => setTopicData(null)}
+              alGuardar={
+                guardarResultadoIngles
+              }
+              alVolver={() =>
+                setTopicData(null)
+              }
             />
           </div>
         )}
@@ -2001,337 +3136,618 @@ ${teoria}`;
           <LeccionInglesa
             key={topicData.archivo}
             data={topicData}
-            onSalir={() => setTopicData(null)}
+            onSalir={() =>
+              setTopicData(null)
+            }
             onSiguiente={(() => {
-              const pos = temasDelCurso.findIndex((x) => x.archivo === topicData.archivo);
-              const sig = temasDelCurso[pos + 1];
+              const pos =
+                temasDelCurso.findIndex(
+                  (x) =>
+                    x.archivo ===
+                    topicData.archivo
+                );
+              const sig =
+                temasDelCurso[pos + 1];
               return sig
-                ? () => abrirTema({ curso: topicData.curso, tema: sig.tema, archivo: sig.archivo })
+                ? () =>
+                    abrirTema({
+                      curso:
+                        topicData.curso,
+                      tema: sig.tema,
+                      archivo:
+                        sig.archivo
+                    })
                 : null;
             })()}
           />
         )}
-        {topicData && !topicData.leccion && !topicData.secciones && (stage === "theory" || stage === "question") && (
-          <div className="mi-estudio__stage">
-            {stage === "question" && !modoExamenTema && (
-              <div className="mi-estudio__hud-wrap animate-fade-in">
-                <Hud
-                  current={progresoPregunta.current}
-                  total={progresoPregunta.total}
-                  correct={score}
-                  wrong={wrongCount}
-                  vidas={vidas}
-                  estrellas={estrellasJuegoActuales}
-                />
-              </div>
-            )}
-            {stage === "theory" && flatPuntos.length > 0 && (
-              <div className="mi-estudio__theory-wrap">
-                <div ref={barraTeoriaRef} className="teoria-buscador-wrap">
-                  {mostrarBarraTeoria && (
-                    <div className="teoria-chat" role="dialog" aria-label="Buscar en la teoría">
-                      <div className="teoria-chat__head">
-                        <span className="teoria-chat__title">Buscar en la teoría</span>
-                        <button
-                          type="button"
-                          className="teoria-chat__close"
-                          onClick={() => setMostrarBarraTeoria(false)}
-                          aria-label="Cerrar buscador"
-                          title="Cerrar"
-                        >
-                          <i className="fa-solid fa-xmark" />
-                        </button>
-                      </div>
-                      <div className="teoria-chat__body">
-                        <TheorySearchBar
-                          modoChat
-                          placeholder="Escribe lo que buscas..."
-                          flatPuntos={puntosTeoria}
-                          onSelect={(sel) => {
-                            seleccionarItem({ type: "contenido", ...sel });
-                            setMostrarBarraTeoria(false);
-                          }}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {!mostrarBarraTeoria && (
-                    <button
-                      type="button"
-                      className="teoria-buscador-flotante"
-                      onClick={() => setMostrarBarraTeoria(true)}
-                      aria-label="Abrir buscador"
-                      title="Abrir buscador"
-                    >
-                      <i className="fa-solid fa-magnifying-glass" />
-                    </button>
-                  )}
-                </div>
-                <div className="teoria-articulo-web">
-                  {seccionActual && (
-                    <>
-                      <h3 className="teoria-etiqueta">
-                        {seccionActual.titulo}
-                      </h3>
-                      {seccionActual.puntos.map((punto, i) => (
-                        <div
-                          key={punto.id}
-                          id={`punto-${punto.id}`}
-                          className={`arcade-game-container teoria-card-unica`}
-                        >
-                          <div className="arcade-grid" />
-                          <div className="teoria-card-unica__inner">
-                            <div
-                              className="teoria-punto__fila"
-                            >
-                              <div>
-                                <input
-                                  type="checkbox"
-                                  id={`checkbox-${punto.id}`}
-                                  className={`teoria-etiqueta-checkbox${textosCompletados.includes(punto.id) ? " is-completado" : ""}`}
-                                  checked={textosSeleccionados.includes(punto.id)}
-                                  onChange={() => {
-                                    const puntoId = punto.id;
-                                    if (textosCompletados.includes(puntoId)) return;
-                                    setTextosSeleccionados((prev) => {
-                                      const newSelection = prev.includes(puntoId)
-                                        ? prev.filter((t) => t !== puntoId)
-                                        : [...prev, puntoId];
-                                      const idsTeoriaNormal = flatPuntos
-                                        .filter((p) => p.seccionTitulo !== "Ejercicios")
-                                        .map((p) => p.id);
-                                      if (
-                                        idsTeoriaNormal.length > 0 &&
-                                        idsTeoriaNormal.every((id) => newSelection.includes(id))
-                                      ) {
-                                        setMostrarCongratulations(true);
-                                      }
-                                      return newSelection;
-                                    });
-                                  }}
-                                />
-                                <label
-                                  htmlFor={`checkbox-${punto.id}`}
-                                  className="teoria-contenido-principal"
-                                >
-                                  <GlossaryText
-                                    text={punto.texto}
-                                    glosario={topicData?.glosario}
-                                  />
-                                </label>
-                              </div>
-                            </div>
-                            {punto.imagen && (
-                              <div className="teoria-punto__imagen-wrap">
-                                <img
-                                  src={
-                                    /^(https?:)?\/\//i.test(punto.imagen)
-                                      ? punto.imagen
-                                      : `${import.meta.env.BASE_URL}${String(punto.imagen).replace(/^\/+/, "")}`
-                                  }
-                                  alt={punto.texto || "Imagen de la teoría"}
-                                  className="teoria-punto__imagen"
-                                  loading="lazy"
-                                />
-                              </div>
-                            )}
-                            {punto.explicacion && (
-                              <div className="teoria-explicacion-extra teoria-explicacion-extra--unida">
-                                <div className="teoria-explicacion-extra__fila">
-                                  <div className="teoria-explicacion-extra__texto">
-                                    <GlossaryText
-                                      text={punto.explicacion}
-                                      glosario={topicData?.glosario}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                      <div className="teoria-nav-botones">
-                        <button
-                          type="button"
-                          className="teoria-nav-btn"
-                          onClick={() => setTeoriaVistaIndex((i) => Math.max(0, i - 1))}
-                          disabled={teoriaVistaIndex === 0}
-                          title="Anterior"
-                          aria-label="Sección anterior"
-                        >
-                          <i className="fa-solid fa-arrow-left"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="teoria-nav-btn teoria-nav-btn--game"
-                          onClick={() =>
-                            elegirModoEstudio("solo_preguntas", {
-                              seleccionEspecifica: seccionActual.puntos.map((p) => p.id)
-                            })
-                          }
-                          title="Ir a las preguntas de esta sección"
-                          aria-label="Ir a las preguntas de esta sección"
-                        >
-                          <i className="fa-solid fa-gamepad"></i>
-                        </button>
-                        <button
-                          type="button"
-                          className="teoria-nav-btn"
-                          onClick={() =>
-                            setTeoriaVistaIndex((i) =>
-                              Math.min(seccionesAgrupadas.length - 1, i + 1)
-                            )
-                          }
-                          disabled={teoriaVistaIndex === seccionesAgrupadas.length - 1}
-                          title="Siguiente"
-                          aria-label="Sección siguiente"
-                        >
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </button>
-                      </div>
-                    </>
-                  )}
-                  <div className="teoria-acciones-final">
-                    <button
-                      className={`teoria-boton-examen${examenPreguntas.length > 0 ? "" : " is-bloqueado"}`}
-                      onClick={() =>
-                        examenPreguntas.length > 0 &&
-                        elegirModoEstudio("solo_preguntas")
+        {topicData &&
+          !topicData.leccion &&
+          !topicData.secciones &&
+          (stage === "theory" ||
+            stage === "question") && (
+            <div className="mi-estudio__stage">
+              {stage === "question" &&
+                !modoExamenTema && (
+                  <div className="mi-estudio__hud-wrap animate-fade-in">
+                    <Hud
+                      current={
+                        progresoPregunta.current
                       }
-                      aria-disabled={examenPreguntas.length === 0}
-                    >
-                      Examen
-                    </button>
-                    <button
-                      className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta ? "" : " is-bloqueado"}`}
-                      onClick={intentarCompletarTema}
-                      aria-disabled={!teoriaCompleta}
-                    >
-                      Completar
-                    </button>
-                  </div>
-                  <ExercisesSection
-                    examenPreguntas={(topicData?.examen || []).filter(
-                      (_, i) => puntosEstables[i]?.seccionTitulo === "Ejercicios"
-                    )}
-                    onModoEstudio={() =>
-                      elegirModoEstudio("solo_preguntas", { soloAdicionales: true })
-                    }
-                  />
-                </div>
-              </div>
-            )}
-            {stage === "question" && modoExamenTema && (
-              <div className="mi-estudio__question-stage">
-                <div className="mi-estudio__question-inner animate-fade-in">
-                  <TemaExamenView
-                    ref={temaExamenViewRef}
-                    preguntas={examenPreguntas}
-                    titulos={titulosFinalesExamen}
-                    claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
-                    onTerminar={finalizarTemaDesdeExamen}
-                    onFaseChange={setFaseExamenTema}
-                    onAbandonar={pedirAbandonarPregunta}
-                  />
-                </div>
-              </div>
-            )}
-            {stage === "question" && !modoExamenTema && (
-              <div className="mi-estudio__question-stage">
-                {countdown > 0 ? (
-                  <div className="mi-estudio__countdown-wrap animate-fade-in">
-                    <h2 className="mi-estudio__countdown-number">{countdown}</h2>
-                    <p className="mi-estudio__countdown-text">Intenta recordar la teoría antes de ver la pregunta...</p>
-                  </div>
-                ) : (
-                  <div className="mi-estudio__question-inner animate-fade-in">
-                    <QuestionCard
-                      key={`${repasoQuizActivo
-                        ? "repaso-" + repasoQuizPos
-                        : isLevelMode
-                          ? "nivel-" + nivelIndex
-                          : isFlipQuiz
-                            ? "flip-" + cardIndex + "-" + quizPos
-                            : "teoria-" + cardIndex
-                        }-${attemptKey}`}
-                      pregunta={preguntaActual}
-                      onRespondido={manejarRespuesta}
-                      onRendirse={rendirsePregunta}
-                      onReintentar={reintentarPregunta}
-                      onSiguiente={avanzarCard}
+                      total={
+                        progresoPregunta.total
+                      }
+                      correct={score}
+                      wrong={wrongCount}
                       vidas={vidas}
+                      estrellas={
+                        estrellasJuegoActuales
+                      }
+                      onRendirse={() =>
+                        setMostrarModalRendirse(
+                          true
+                        )
+                      }
                     />
                   </div>
                 )}
-              </div>
-            )}
-            {stage === "question" && !modoExamenTema && (
-              <div className="mi-estudio__nav">
-                <button
-                  onClick={retrocederCard}
-                  disabled={isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0}
-                  className={`mi-estudio__nav-btn ${(isLevelMode ? nivelIndex === 0 : isFlipQuiz ? quizPos === 0 : cardIndex === 0) ? "" : "is-active"}`}
-                  title="Anterior"
-                >
-                  <i className="fas fa-caret-left" />
-                </button>
-                <div className="mi-estudio__nav-right">
-                  {(() => {
-                    const esUltimo = repasoQuizActivo
-                      ? repasoQuizPos === repasoQuizBatch.length - 1
-                      : isLevelMode
-                        ? nivelIndex === examenPreguntas.length - 1
-                        : isFlipQuiz
-                          ? quizPos === quizBatch.length - 1
-                          : cardIndex === flatPuntos.length - 1;
-                    const bloqueado = !canAdvance;
-                    return (
-                      <>
-                        <button
-                          onClick={() => {
-                            if (bloqueado) {
-                              mostrarHintBloqueo();
-                              return;
-                            }
-                            avanzarCard();
-                          }}
-                          aria-disabled={bloqueado}
-                          className={`mi-estudio__nav-btn ${bloqueado ? "" : "is-active"}`}
-                          title="Siguiente"
+              {stage === "theory" &&
+                flatPuntos.length > 0 && (
+                  <div className="mi-estudio__theory-wrap">
+                    <div
+                      ref={barraTeoriaRef}
+                      className="teoria-buscador-wrap"
+                    >
+                      {mostrarBarraTeoria && (
+                        <div
+                          className="teoria-chat"
+                          role="dialog"
+                          aria-label="Buscar en la teoría"
                         >
-                          {esUltimo && canAdvance ? (
-                            <i className="fas fa-flag-checkered" />
-                          ) : (
-                            <i className="fas fa-caret-right" />
-                          )}
+                          <div className="teoria-chat__head">
+                            <span className="teoria-chat__title">
+                              Buscar en la teoría
+                            </span>
+                            <button
+                              type="button"
+                              className="teoria-chat__close"
+                              onClick={() =>
+                                setMostrarBarraTeoria(
+                                  false
+                                )
+                              }
+                              aria-label="Cerrar buscador"
+                              title="Cerrar"
+                            >
+                              <i className="fa-solid fa-xmark" />
+                            </button>
+                          </div>
+                          <div className="teoria-chat__body">
+                            <TheorySearchBar
+                              modoChat
+                              placeholder="Escribe lo que buscas..."
+                              flatPuntos={
+                                puntosTeoria
+                              }
+                              onSelect={(sel) => {
+                                seleccionarItem({
+                                  type: "contenido",
+                                  ...sel
+                                });
+                                setMostrarBarraTeoria(
+                                  false
+                                );
+                              }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                      {!mostrarBarraTeoria && (
+                        <button
+                          type="button"
+                          className="teoria-buscador-flotante"
+                          onClick={() =>
+                            setMostrarBarraTeoria(
+                              true
+                            )
+                          }
+                          aria-label="Abrir buscador"
+                          title="Abrir buscador"
+                        >
+                          <i className="fa-solid fa-magnifying-glass" />
                         </button>
-                        {!canAdvance && !esUltimo && hintBloqueoVisible && (
-                          <span className="aviso-bloqueo aviso-bloqueo--wrap">
-                            ¡Supera la pregunta para avanzar!
-                          </span>
+                      )}
+                    </div>
+                    <div className="teoria-articulo-web">
+                      {seccionActual && (
+                        <>
+                          <h3 className="teoria-etiqueta">
+                            {
+                              seccionActual.titulo
+                            }
+                          </h3>
+                          {seccionActual.puntos.map(
+                            (punto, i) => (
+                              <div
+                                key={
+                                  punto.id
+                                }
+                                id={`punto-${punto.id}`}
+                                className="arcade-game-container teoria-card-unica"
+                              >
+                                <div className="arcade-grid" />
+                                <div className="teoria-card-unica__inner">
+                                  <div className="teoria-punto__fila">
+                                    <div>
+                                      <input
+                                        type="checkbox"
+                                        id={`checkbox-${punto.id}`}
+                                        className={`teoria-etiqueta-checkbox${
+                                          textosCompletados.includes(
+                                            punto.id
+                                          )
+                                            ? " is-completado"
+                                            : ""
+                                        }`}
+                                        checked={textosSeleccionados.includes(
+                                          punto.id
+                                        )}
+                                        onChange={() => {
+                                          const puntoId =
+                                            punto.id;
+                                          if (
+                                            textosCompletados.includes(
+                                              puntoId
+                                            )
+                                          ) {
+                                            return;
+                                          }
+                                          setTextosSeleccionados(
+                                            (prev) => {
+                                              const newSelection =
+                                                prev.includes(
+                                                  puntoId
+                                                )
+                                                  ? prev.filter(
+                                                      (
+                                                        t
+                                                      ) =>
+                                                        t !==
+                                                        puntoId
+                                                    )
+                                                  : [
+                                                      ...prev,
+                                                      puntoId
+                                                    ];
+                                              const idsTeoriaNormal =
+                                                flatPuntos
+                                                  .filter(
+                                                    (
+                                                      p
+                                                    ) =>
+                                                      p.seccionTitulo !==
+                                                      "Ejercicios"
+                                                  )
+                                                  .map(
+                                                    (
+                                                      p
+                                                    ) =>
+                                                      p.id
+                                                  );
+                                              if (
+                                                idsTeoriaNormal.length >
+                                                  0 &&
+                                                idsTeoriaNormal.every(
+                                                  (
+                                                    id
+                                                  ) =>
+                                                    newSelection.includes(
+                                                      id
+                                                    )
+                                                )
+                                              ) {
+                                                setMostrarCongratulations(
+                                                  true
+                                                );
+                                              }
+                                              return newSelection;
+                                            }
+                                          );
+                                        }}
+                                      />
+                                      <label
+                                        htmlFor={`checkbox-${punto.id}`}
+                                        className="teoria-contenido-principal"
+                                      >
+                                        <GlossaryText
+                                          text={
+                                            punto.texto
+                                          }
+                                          glosario={
+                                            topicData?.glosario
+                                          }
+                                        />
+                                      </label>
+                                    </div>
+                                  </div>
+                                  {punto.imagen && (
+                                    <div className="teoria-punto__imagen-wrap">
+                                      <img
+                                        src={
+                                          /^(https?:)?\/\//i.test(
+                                            punto.imagen
+                                          )
+                                            ? punto.imagen
+                                            : `${import.meta.env.BASE_URL}${String(
+                                                punto.imagen
+                                              ).replace(
+                                                /^\/+/,
+                                                ""
+                                              )}`
+                                        }
+                                        alt={
+                                          punto.texto ||
+                                          "Imagen de la teoría"
+                                        }
+                                        className="teoria-punto__imagen"
+                                        loading="lazy"
+                                      />
+                                    </div>
+                                  )}
+                                  {punto.explicacion && (
+                                    <div className="teoria-explicacion-extra teoria-explicacion-extra--unida">
+                                      <div className="teoria-explicacion-extra__fila">
+                                        <div className="teoria-explicacion-extra__texto">
+                                          <GlossaryText
+                                            text={
+                                              punto.explicacion
+                                            }
+                                            glosario={
+                                              topicData?.glosario
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            )
+                          )}
+                          <div className="teoria-nav-botones">
+                            <button
+                              type="button"
+                              className="teoria-nav-btn"
+                              onClick={() =>
+                                setTeoriaVistaIndex(
+                                  (i) =>
+                                    Math.max(
+                                      0,
+                                      i - 1
+                                    )
+                                )
+                              }
+                              disabled={
+                                teoriaVistaIndex ===
+                                0
+                              }
+                              title="Anterior"
+                              aria-label="Sección anterior"
+                            >
+                              <i className="fa-solid fa-arrow-left" />
+                            </button>
+                            <button
+                              type="button"
+                              className="teoria-nav-btn teoria-nav-btn--game"
+                              onClick={() =>
+                                elegirModoEstudio(
+                                  "solo_preguntas",
+                                  {
+                                    seleccionEspecifica:
+                                      seccionActual.puntos.map(
+                                        (p) =>
+                                          p.id
+                                      )
+                                  }
+                                )
+                              }
+                              title="Ir a las preguntas de esta sección"
+                              aria-label="Ir a las preguntas de esta sección"
+                            >
+                              <i className="fa-solid fa-gamepad" />
+                            </button>
+                            <button
+                              type="button"
+                              className="teoria-nav-btn"
+                              onClick={() =>
+                                setTeoriaVistaIndex(
+                                  (i) =>
+                                    Math.min(
+                                      seccionesAgrupadas.length -
+                                        1,
+                                      i + 1
+                                    )
+                                )
+                              }
+                              disabled={
+                                teoriaVistaIndex ===
+                                seccionesAgrupadas.length -
+                                  1
+                              }
+                              title="Siguiente"
+                              aria-label="Sección siguiente"
+                            >
+                              <i className="fa-solid fa-arrow-right" />
+                            </button>
+                          </div>
+                        </>
+                      )}
+                      <div className="teoria-acciones-final">
+                        <button
+                          className={`teoria-boton-examen${
+                            examenPreguntas.length >
+                            0
+                              ? ""
+                              : " is-bloqueado"
+                          }`}
+                          onClick={() =>
+                            examenPreguntas.length >
+                              0 &&
+                            elegirModoEstudio(
+                              "solo_preguntas"
+                            )
+                          }
+                          aria-disabled={
+                            examenPreguntas.length ===
+                            0
+                          }
+                        >
+                          Examen
+                        </button>
+                        <button
+                          className={`teoria-boton-examen teoria-boton-completar${
+                            teoriaCompleta
+                              ? ""
+                              : " is-bloqueado"
+                          }`}
+                          onClick={
+                            intentarCompletarTema
+                          }
+                          aria-disabled={
+                            !teoriaCompleta
+                          }
+                        >
+                          Completar
+                        </button>
+                      </div>
+                      <ExercisesSection
+                        examenPreguntas={(
+                          topicData?.examen ||
+                          []
+                        ).filter(
+                          (_, i) =>
+                            puntosEstables[i]
+                              ?.seccionTitulo ===
+                            "Ejercicios"
                         )}
-                      </>
-                    );
-                  })()}
-                </div>
-              </div>
-            )}
-            {stage === "question" && !modoExamenTema && questionResult && (
-              <div className="mi-estudio__explanation-wrap">
-                <ExplanationPanel
-                  pregunta={preguntaActual}
-                  isCorrect={questionResult.isCorrect}
-                  onSiguiente={avanzarCard}
-                  onReintentar={reintentarPregunta}
-                  rendido={questionResult.rendido}
-                  onRendirse={rendirsePregunta}
-                  vidas={questionResult.vidasEnEsteIntento ?? vidas}
-                  vidasActuales={vidas}
-                />
-              </div>
-            )}
-          </div>
-        )}
+                        onModoEstudio={() =>
+                          elegirModoEstudio(
+                            "solo_preguntas",
+                            {
+                              soloAdicionales:
+                                true
+                            }
+                          )
+                        }
+                      />
+                    </div>
+                  </div>
+                )}
+              {stage === "question" &&
+                modoExamenTema && (
+                  <div className="mi-estudio__question-stage">
+                    <div className="mi-estudio__question-inner animate-fade-in">
+                      <TemaExamenView
+                        ref={
+                          temaExamenViewRef
+                        }
+                        preguntas={
+                          examenPreguntas
+                        }
+                        titulos={
+                          titulosFinalesExamen
+                        }
+                        claveTiempo={`tiempoExamenTema_${topicData?.curso}_${topicData?.tema}`}
+                        onTerminar={
+                          finalizarTemaDesdeExamen
+                        }
+                        onFaseChange={
+                          setFaseExamenTema
+                        }
+                        onAbandonar={
+                          pedirAbandonarPregunta
+                        }
+                      />
+                    </div>
+                  </div>
+                )}
+              {stage === "question" &&
+                !modoExamenTema && (
+                  <div className="mi-estudio__question-stage">
+                    {countdown > 0 ? (
+                      <div className="mi-estudio__countdown-wrap animate-fade-in">
+                        <h2 className="mi-estudio__countdown-number">
+                          {countdown}
+                        </h2>
+                        <p className="mi-estudio__countdown-text">
+                          Intenta recordar la teoría antes de ver la pregunta...
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="mi-estudio__question-inner animate-fade-in">
+                        <QuestionCard
+                          key={`${repasoQuizActivo
+                            ? "repaso-" +
+                              repasoQuizPos
+                            : isLevelMode
+                              ? "nivel-" +
+                                nivelIndex
+                              : isFlipQuiz
+                                ? "flip-" +
+                                  cardIndex +
+                                  "-" +
+                                  quizPos
+                                : "teoria-" +
+                                  cardIndex
+                            }-${attemptKey}`}
+                          pregunta={
+                            preguntaActual
+                          }
+                          onRespondido={
+                            manejarRespuesta
+                          }
+                          onReintentar={
+                            reintentarPregunta
+                          }
+                          onSiguiente={
+                            avanzarCard
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+              {stage === "question" &&
+                !modoExamenTema && (
+                  <div className="mi-estudio__nav">
+                    <button
+                      onClick={
+                        retrocederCard
+                      }
+                      disabled={
+                        isLevelMode
+                          ? nivelIndex ===
+                            0
+                          : isFlipQuiz
+                            ? quizPos === 0
+                            : cardIndex ===
+                              0
+                      }
+                      className={`mi-estudio__nav-btn ${
+                        (
+                          isLevelMode
+                            ? nivelIndex ===
+                              0
+                            : isFlipQuiz
+                              ? quizPos ===
+                                0
+                              : cardIndex ===
+                                0
+                        )
+                          ? ""
+                          : "is-active"
+                      }`}
+                      title="Anterior"
+                    >
+                      <i className="fas fa-caret-left" />
+                    </button>
+                    <div className="mi-estudio__nav-right">
+                      {(() => {
+                        const esUltimo =
+                          repasoQuizActivo
+                            ? repasoQuizPos ===
+                              repasoQuizBatch.length -
+                                1
+                            : isLevelMode
+                              ? nivelIndex ===
+                                examenPreguntas.length -
+                                  1
+                              : isFlipQuiz
+                                ? quizPos ===
+                                  quizBatch.length -
+                                    1
+                                : cardIndex ===
+                                  flatPuntos.length -
+                                    1;
+                        const bloqueado =
+                          !canAdvance;
+                        return (
+                          <>
+                            <button
+                              onClick={() => {
+                                if (
+                                  bloqueado
+                                ) {
+                                  mostrarHintBloqueo();
+                                  return;
+                                }
+                                avanzarCard();
+                              }}
+                              aria-disabled={
+                                bloqueado
+                              }
+                              className={`mi-estudio__nav-btn ${
+                                bloqueado
+                                  ? ""
+                                  : "is-active"
+                              }`}
+                              title="Siguiente"
+                            >
+                              {esUltimo &&
+                              canAdvance ? (
+                                <i className="fas fa-flag-checkered" />
+                              ) : (
+                                <i className="fas fa-caret-right" />
+                              )}
+                            </button>
+                            {!canAdvance &&
+                              !esUltimo &&
+                              hintBloqueoVisible && (
+                                <span className="aviso-bloqueo aviso-bloqueo--wrap">
+                                  ¡Supera la pregunta para avanzar!
+                                </span>
+                              )}
+                          </>
+                        );
+                      })()}
+                    </div>
+                  </div>
+                )}
+              {stage === "question" &&
+                !modoExamenTema &&
+                questionResult && (
+                  <div className="mi-estudio__explanation-wrap">
+                    <ExplanationPanel
+                      pregunta={
+                        preguntaActual
+                      }
+                      isCorrect={
+                        questionResult.isCorrect
+                      }
+                      onSiguiente={
+                        avanzarCard
+                      }
+                      onReintentar={
+                        reintentarPregunta
+                      }
+                      rendido={
+                        questionResult.rendido
+                      }
+                      onRendirse={
+                        rendirsePregunta
+                      }
+                      vidas={
+                        questionResult.vidasEnEsteIntento ??
+                        vidas
+                      }
+                      vidasActuales={
+                        vidas
+                      }
+                    />
+                  </div>
+                )}
+            </div>
+          )}
         {stage === "finished" && (
           <div className="mi-estudio__finished">
             {confirmGuardarRepasoFinal ? (
@@ -2339,15 +3755,31 @@ ${teoria}`;
                 <div className="mi-estudio__finished-emoji animate-bounce">
                   <i className="fas fa-thumbtack" />
                 </div>
-                <h2 className="mi-estudio__finished-title">¿Guardar este tema en tus repasos?</h2>
+                <h2 className="mi-estudio__finished-title">
+                  ¿Guardar este tema en tus repasos?
+                </h2>
                 <p className="mi-estudio__finished-sub">
                   Así te va a aparecer en la sección de Repasos para reforzarlo más adelante.
                 </p>
                 <div className="mi-estudio__finished-btn-row">
-                  <button onClick={() => confirmarGuardarRepasoFinal(true)} className="mi-estudio__finished-btn is-inline">
+                  <button
+                    onClick={() =>
+                      confirmarGuardarRepasoFinal(
+                        true
+                      )
+                    }
+                    className="mi-estudio__finished-btn is-inline"
+                  >
                     Sí, guardar
                   </button>
-                  <button onClick={() => confirmarGuardarRepasoFinal(false)} className="mi-estudio__finished-btn is-outline is-inline">
+                  <button
+                    onClick={() =>
+                      confirmarGuardarRepasoFinal(
+                        false
+                      )
+                    }
+                    className="mi-estudio__finished-btn is-outline is-inline"
+                  >
                     No, gracias
                   </button>
                 </div>
@@ -2358,10 +3790,19 @@ ${teoria}`;
                   <i className="fas fa-trophy" />
                 </div>
                 <h2 className="mi-estudio__finished-title">
-                  {nombreUsuario ? `¡Tema completado, ${nombreUsuario}!` : "¡Tema completado!"}
+                  {nombreUsuario
+                    ? `¡Tema completado, ${nombreUsuario}!`
+                    : "¡Tema completado!"}
                 </h2>
-                <p className="mi-estudio__finished-sub">Excelente trabajo leyendo toda la teoría.</p>
-                <button onClick={() => setTemasOpen(true)} className="mi-estudio__finished-btn">
+                <p className="mi-estudio__finished-sub">
+                  Excelente trabajo leyendo toda la teoría.
+                </p>
+                <button
+                  onClick={() =>
+                    setTemasOpen(true)
+                  }
+                  className="mi-estudio__finished-btn"
+                >
                   Elegir otro tema
                 </button>
               </>
@@ -2372,67 +3813,131 @@ ${teoria}`;
       {topicData && (
         <SeenQuestionsModal
           open={seenQuestionsOpen}
-          onClose={() => setSeenQuestionsOpen(false)}
-          preguntasVistas={preguntasVistas}
+          onClose={() =>
+            setSeenQuestionsOpen(false)
+          }
+          preguntasVistas={
+            preguntasVistas
+          }
           flatPuntos={flatPuntos}
         />
       )}
       <SearchModal
         open={searchOpen}
-        onClose={() => setSearchOpen(false)}
+        onClose={() =>
+          setSearchOpen(false)
+        }
         onSelect={seleccionarItem}
-        contenidoTema={stage === "theory" ? puntosTeoria : []}
+        contenidoTema={
+          stage === "theory"
+            ? puntosTeoria
+            : []
+        }
       />
       {nombreCursoActivo && (
         <TopicsModal
           open={temasOpen}
-          onClose={() => setTemasOpen(false)}
+          onClose={() =>
+            setTemasOpen(false)
+          }
           curso={nombreCursoActivo}
-          temaActual={topicData ? topicData.tema : null}
+          temaActual={
+            topicData
+              ? topicData.tema
+              : null
+          }
           listaTemas={temasDelCurso}
           onSelectTema={(temaItem) => {
-            pedirAbrirTema({ curso: nombreCursoActivo, tema: temaItem.tema, archivo: temaItem.archivo });
+            pedirAbrirTema({
+              curso: nombreCursoActivo,
+              tema: temaItem.tema,
+              archivo:
+                temaItem.archivo
+            });
           }}
-          onCargarPuntos={cargarPuntosTema}
-          onSelectContenido={abrirTemaEnPunto}
+          onCargarPuntos={
+            cargarPuntosTema
+          }
+          onSelectContenido={
+            abrirTemaEnPunto
+          }
         />
       )}
-      <audio ref={vidaPerderRef} src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`} preload="auto" />
-      <audio ref={ceroVidasRef} src={`${import.meta.env.BASE_URL}sonidos/cero-vidas.mp3`} preload="auto" />
-      <audio ref={alertaNotificacionRef} src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`} preload="auto" />
+      <audio
+        ref={vidaPerderRef}
+        src={`${import.meta.env.BASE_URL}sonidos/vida-perder.mp3`}
+        preload="auto"
+      />
+      <audio
+        ref={ceroVidasRef}
+        src={`${import.meta.env.BASE_URL}sonidos/cero-vidas.mp3`}
+        preload="auto"
+      />
+      <audio
+        ref={alertaNotificacionRef}
+        src={`${import.meta.env.BASE_URL}sonidos/notificacion.mp3`}
+        preload="auto"
+      />
       {alertaVidas === "tres" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h2 className="vidas-fullscreen__title is-tres"><i className="fas fa-triangle-exclamation" /> 3 vidas</h2>
+            <h2 className="vidas-fullscreen__title is-tres">
+              <i className="fas fa-triangle-exclamation" />{" "}
+              3 vidas
+            </h2>
             {renderCorazonesVidas()}
-            <p className="vidas-fullscreen__sub">No te confíes.</p>
+            <p className="vidas-fullscreen__sub">
+              No te confíes.
+            </p>
           </div>
         </div>
       )}
       {alertaVidas === "una" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h2 className="vidas-fullscreen__title is-una"><i className="fas fa-fire" /> 1 vida</h2>
+            <h2 className="vidas-fullscreen__title is-una">
+              <i className="fas fa-fire" />{" "}
+              1 vida
+            </h2>
             {renderCorazonesVidas()}
-            <p className="vidas-fullscreen__sub">Última oportunidad.</p>
+            <p className="vidas-fullscreen__sub">
+              Última oportunidad.
+            </p>
           </div>
         </div>
       )}
       {alertaVidas === "cero" && (
         <div className="vidas-fullscreen animate-fade-in">
           <div className="vidas-fullscreen__content">
-            <h1 className="vidas-fullscreen__title-big">GAME OVER</h1>
+            <h1 className="vidas-fullscreen__title-big">
+              GAME OVER
+            </h1>
             {renderCorazonesVidas()}
-            <p className="vidas-fullscreen__sub is-muted">Progreso reiniciado.</p>
+            <p className="vidas-fullscreen__sub is-muted">
+              Progreso reiniciado.
+            </p>
           </div>
         </div>
       )}
-      <CongratulationsAlert visible={mostrarCongratulations} onClose={() => setMostrarCongratulations(false)} />
+      <CongratulationsAlert
+        visible={mostrarCongratulations}
+        onClose={() =>
+          setMostrarCongratulations(
+            false
+          )
+        }
+      />
       <ConfirmacionSalida
         open={mostrarConfirmacionSalida}
-        onConfirm={handleGuardarYSalir}
-        onSalirSinGuardar={handleSalirSinGuardar}
-        onCancel={handleCancelarSalida}
+        onConfirm={
+          handleGuardarYSalir
+        }
+        onSalirSinGuardar={
+          handleSalirSinGuardar
+        }
+        onCancel={
+          handleCancelarSalida
+        }
       />
     </div>
   );

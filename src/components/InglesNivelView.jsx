@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Leccion from "./InglesLeccion";
-
 // Abre directo en la primera sesión pendiente. Una sesión a la vez, sin listas.
 export default function NivelView({ nivel, progreso, alGuardar, alVolver, datosIniciales }) {
   const [datos, setDatos] = useState(null);
   const [error, setError] = useState(null);
   const [idx, setIdx] = useState(0);
   const [intento, setIntento] = useState(0);
-
   useEffect(() => {
     setDatos(null); setError(null);
     const aplicar = (d) => {
@@ -23,10 +21,8 @@ export default function NivelView({ nivel, progreso, alGuardar, alVolver, datosI
       .then(aplicar)
       .catch((e) => setError(e.message));
   }, [nivel.archivo]); // eslint-disable-line
-
   if (error) return <div className="niv"><button type="button" className="ing-btn ing-btn--suave" onClick={alVolver}>←</button><p className="niv__error">{error}</p></div>;
   if (!datos) return <div className="niv"><p>Cargando...</p></div>;
-
   const seccion = datos.secciones[idx];
   const total = datos.secciones.length;
   return (

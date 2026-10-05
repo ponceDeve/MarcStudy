@@ -1,6 +1,6 @@
 // Hud.jsx
 //
-// HUD del videojuego: avance + (✓ ✗ juntos) + estrellas + vidas, todo en
+// HUD del videojuego: avance + estrellas + vidas + bandera, todo en
 // la misma fila. Las estrellas solo aparecen si se pasa la prop
 // "estrellas" (número 0..3); sin ella el HUD queda como antes.
 //
@@ -17,18 +17,31 @@ export function EstrellasHud({ estrellas = 0 }) {
           key={n}
           className={`${
             n <= estrellas ? "fa-solid" : "fa-regular"
-          } fa-star hud__estrella ${n <= estrellas ? "is-activa" : ""}`}
+          } fa-star hud__estrella ${
+            n <= estrellas ? "is-activa" : ""
+          }`}
         />
       ))}
     </span>
   );
 }
-export default function Hud({ current, total, correct, wrong, vidas, estrellas }) {
+export default function Hud({
+  current,
+  total,
+  correct,
+  wrong,
+  vidas,
+  estrellas,
+  onRendirse,
+}) {
   const conEstrellas = typeof estrellas === "number";
   return (
     <div className="hud">
       <span className="hud-avances">
-        Avance: <span className="hud__progress-value">{current}/{total}</span>
+        Avance:{" "}
+        <span className="hud__progress-value">
+          {current}/{total}
+        </span>
       </span>
       {conEstrellas && <EstrellasHud estrellas={estrellas} />}
       {typeof vidas === "number" && (
@@ -44,6 +57,17 @@ export default function Hud({ current, total, correct, wrong, vidas, estrellas }
             />
           ))}
         </span>
+      )}
+      {onRendirse && (
+        <button
+          type="button"
+          onClick={onRendirse}
+          title="Rendirse"
+          aria-label="Rendirse"
+          className="hud__rendirse-btn"
+        >
+          <i className="fas fa-flag" />
+        </button>
       )}
     </div>
   );

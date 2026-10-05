@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ETIQUETA, SIMBOLO, calcularEstado, calcularPorcentaje, columnasSegunAncho } from "../lib/inglesEstadoNivel";
-
 function NodoNivel({ nivel, estado, seleccionado, finDeFila, esUltimo, alSeleccionar }) {
   const porcentaje = calcularPorcentaje(nivel);
   const claseCelda = [
@@ -11,7 +10,6 @@ function NodoNivel({ nivel, estado, seleccionado, finDeFila, esUltimo, alSelecci
   ]
     .filter(Boolean)
     .join(" ");
-
   return (
     <div className={claseCelda}>
       <button
@@ -31,7 +29,6 @@ function NodoNivel({ nivel, estado, seleccionado, finDeFila, esUltimo, alSelecci
     </div>
   );
 }
-
 /**
  * Props:
  *  - niveles:        [{ id, nombre, total, hechas }]  (opcional)
@@ -40,16 +37,13 @@ function NodoNivel({ nivel, estado, seleccionado, finDeFila, esUltimo, alSelecci
 export default function RutaNiveles({ niveles = [], alSeleccionar }) {
   const [columnas, setColumnas] = useState(() => columnasSegunAncho(window.innerWidth));
   const [idSeleccionado, setIdSeleccionado] = useState(null);
-
   useEffect(() => {
     const actualizar = () => setColumnas(columnasSegunAncho(window.innerWidth));
     window.addEventListener("resize", actualizar);
     return () => window.removeEventListener("resize", actualizar);
   }, []);
-
   const filas = [];
   for (let i = 0; i < niveles.length; i += columnas) filas.push(niveles.slice(i, i + columnas));
-
   return (
     <div className="ruta" style={{ "--ruta-columnas": columnas }}>
       {filas.map((fila, iFila) => (

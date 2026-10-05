@@ -1,22 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import Texto from "./InglesTexto";
-
 import { revisar } from "../lib/inglesRespuestas";
-
 import { decir } from "../lib/inglesAudio";
-
 const ESPERA_SEG = 15; // hueco entre leer la teoría y la primera pregunta
-
 // Mensaje "Correcto" / "Incorrecto" debajo de la pregunta (apagado).
 const MOSTRAR_FEEDBACK = false;
-
 // Panel de teoría de esta sesión.
 function Teoria({ seccion }) {
   const [verEs, setVerEs] = useState(false);
-
   const lineas = (seccion.teoria || "").split("\n");
-
   return (
     <aside className="arcade-game-container teoria-card-unica ses__teoria-arcade">
       <div className="arcade-grid" />
@@ -28,7 +20,6 @@ function Teoria({ seccion }) {
             </p>
           ) : null
         )}
-
         {seccion.ejemplos && seccion.ejemplos.length > 0 && (
           <ul className="ses__ejemplos">
             {seccion.ejemplos.map((x, k) => (
@@ -50,13 +41,11 @@ function Teoria({ seccion }) {
             ))}
           </ul>
         )}
-
         {seccion.texto && (
           <>
             <p lang="en" className="ses__lectura">
               {seccion.texto.en}
             </p>
-
             <button
               type="button"
               className="ing-btn ing-btn--suave"
@@ -68,7 +57,6 @@ function Teoria({ seccion }) {
                 aria-hidden="true"
               />
             </button>{" "}
-
             <button
               type="button"
               className="ing-btn ing-btn--suave"
@@ -76,7 +64,6 @@ function Teoria({ seccion }) {
             >
               {verEs ? "Ocultar" : "Traducir"}
             </button>
-
             {verEs && (
               <p className="ses__trad">
                 {seccion.texto.es}
@@ -84,7 +71,6 @@ function Teoria({ seccion }) {
             )}
           </>
         )}
-
         {seccion.textosReferencia &&
           seccion.textosReferencia.map((t, k) => (
             <details key={k}>
@@ -96,54 +82,41 @@ function Teoria({ seccion }) {
     </aside>
   );
 }
-
 // Consigna que dice qué hay que escribir.
 // Se deduce del tipo de ejercicio y del enunciado,
 // sin tocar los JSON.
 function consignaDe(ej) {
   if (ej.consigna) return ej.consigna;
-
   const enun = ej.enunciado || "";
-
   switch (ej.tipo) {
     case "completar":
       if (enun.includes("(en español)")) {
         return "Escribe en español el significado de la palabra";
       }
-
       if (enun.includes(" = ___")) {
         return "Escribe en inglés la palabra que corresponde";
       }
-
       return "Completa la frase con la palabra que falta, en inglés";
-
     case "traducir":
       return "Traduce la frase al inglés";
-
     case "dictado":
       return "Escucha y escribe en inglés lo que oyes";
-
     case "responder_texto":
       return "Lee el texto y responde en inglés con una frase corta";
-
     case "verdadero_falso":
       return "Lee el texto y elige True o False";
-
     default:
       return null;
   }
 }
-
 // Frase con palabras en inglés tocables
 // y un hueco.
 function Frase({ partes, hueco }) {
   const [abierta, setAbierta] = useState(null);
-
   return partes.map((p, k) => {
     if (typeof p === "string") {
       return <span key={k}>{p}</span>;
     }
-
     if (p.hueco) {
       return (
         <span key={k} className="ses__hueco">
@@ -151,7 +124,6 @@ function Frase({ partes, hueco }) {
         </span>
       );
     }
-
     if (p.marca) {
       return (
         <mark
@@ -163,7 +135,6 @@ function Frase({ partes, hueco }) {
         </mark>
       );
     }
-
     return (
       <button
         key={k}
@@ -178,7 +149,6 @@ function Frase({ partes, hueco }) {
         }}
       >
         {p.en}
-
         {abierta === k && (
           <span className="ses__en-es">
             {p.es}
@@ -188,10 +158,8 @@ function Frase({ partes, hueco }) {
     );
   });
 }
-
 function BotonAudio({ audio }) {
   if (!audio) return null;
-
   return (
     <button
       type="button"
@@ -206,7 +174,6 @@ function BotonAudio({ audio }) {
     </button>
   );
 }
-
 // Texto corto con sentido:
 // mezcla español + palabras en inglés y un hueco.
 function TextoMixto({
@@ -221,7 +188,6 @@ function TextoMixto({
     ...ej.respuestas.map((r) => r.length),
     4
   );
-
   // Ejercicios de "significado":
   // la frase no trae hueco, el input va debajo.
   if (ej.modo === "significado") {
@@ -230,7 +196,6 @@ function TextoMixto({
         <p className="ses__consigna">
           {ej.consigna}
         </p>
-
         <p className="ses__mixto">
           <BotonAudio audio={ej.audio} />{" "}
           <Frase
@@ -238,7 +203,6 @@ function TextoMixto({
             hueco={() => null}
           />
         </p>
-
         <div className="ses__sig">
           <input
             ref={inputRef}
@@ -260,13 +224,11 @@ function TextoMixto({
       </>
     );
   }
-
   return (
     <>
       <p>
         {ej.consigna}
       </p>
-
       <p className="ses__mixto">
         <BotonAudio audio={ej.audio} />{" "}
         <Frase
@@ -292,7 +254,6 @@ function TextoMixto({
                 spellCheck="false"
                 aria-label="Palabra que falta"
               />
-
               {p.pista && (
                 <small className="ses__pista">
                   {" "}
@@ -306,7 +267,6 @@ function TextoMixto({
     </>
   );
 }
-
 // Opciones tocables.
 // Primero se selecciona y luego se confirma.
 function Elegir({
@@ -328,7 +288,6 @@ function Elegir({
                   {elegida ||
                     "\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0"}
                 </span>
-
                 {p.pista && (
                   <small className="ses__pista">
                     {" "}
@@ -345,15 +304,12 @@ function Elegir({
           {ej.enunciado}
         </p>
       )}
-
       <div className="ses__opciones">
         {ej.opciones.map((o) => {
           const seleccionada =
             !res && elegida === o;
-
           const incorrecta =
             res && !res.ok && elegida === o;
-
           return (
             <button
               key={o}
@@ -369,7 +325,6 @@ function Elegir({
           );
         })}
       </div>
-
       {!res && (
         <button
           type="button"
@@ -383,25 +338,20 @@ function Elegir({
     </>
   );
 }
-
 // Ordenar palabras (estilo Duolingo): se tocan las fichas para armar la frase en inglés.
 // Algunas fichas sobran a propósito (distractores).
 function Ordenar({ ej, res, alResponder }) {
   const [elegidas, setElegidas] = useState([]); // índices de ej.palabras, en el orden tocado
-
   // Al repetir el ejercicio se empieza de cero.
   useEffect(() => {
     if (!res) setElegidas([]);
   }, [res]);
-
   const usadas = new Set(elegidas);
   const frase = elegidas.map((i) => ej.palabras[i]);
-
   return (
     <>
       <p className="ses__consigna">{ej.consigna}</p>
       <p className="ses__enun">{ej.pista}</p>
-
       <div
         className={`ses__armada ${res ? (res.ok ? "ok" : "mal") : ""}`}
         aria-label="Tu frase"
@@ -421,7 +371,6 @@ function Ordenar({ ej, res, alResponder }) {
           </button>
         ))}
       </div>
-
       <div className="ses__fichas">
         {ej.palabras.map((w, i) => (
           <button
@@ -436,13 +385,11 @@ function Ordenar({ ej, res, alResponder }) {
           </button>
         ))}
       </div>
-
       {res && (
         <p className="ses__correcta" lang="en">
           <BotonAudio audio={ej.audio} /> {ej.respuestas[0]}
         </p>
       )}
-
       {!res && (
         <button
           type="button"
@@ -456,7 +403,6 @@ function Ordenar({ ej, res, alResponder }) {
     </>
   );
 }
-
 // Emparejar (estilo Duolingo): se toca una palabra de la izquierda y su pareja de la derecha.
 // Se permiten hasta 2 errores; con más, el ejercicio se repite al final.
 function Emparejar({ ej, res, alResponder }) {
@@ -464,7 +410,6 @@ function Emparejar({ ej, res, alResponder }) {
   const [hechos, setHechos] = useState([]);
   const [fallo, setFallo] = useState(null);
   const [errores, setErrores] = useState(0);
-
   useEffect(() => {
     if (!res) {
       setIzq(null);
@@ -473,9 +418,7 @@ function Emparejar({ ej, res, alResponder }) {
       setErrores(0);
     }
   }, [res]);
-
   const orden = ej.ordenDer || ej.pares.map((_, i) => i);
-
   function tocarDer(j) {
     if (res || izq === null || hechos.includes(j)) return;
     if (izq === j) {
@@ -493,7 +436,6 @@ function Emparejar({ ej, res, alResponder }) {
       setTimeout(() => setFallo(null), 500);
     }
   }
-
   return (
     <>
       <p className="ses__consigna">{ej.consigna}</p>
@@ -533,7 +475,6 @@ function Emparejar({ ej, res, alResponder }) {
     </>
   );
 }
-
 function Pregunta({
   ej,
   texto,
@@ -549,11 +490,9 @@ function Pregunta({
   if (ej.tipo === "ordenar") {
     return <Ordenar key={ej.id} ej={ej} res={res} alResponder={alResponderValor} />;
   }
-
   if (ej.tipo === "emparejar") {
     return <Emparejar key={ej.id} ej={ej} res={res} alResponder={alResponderValor} />;
   }
-
   if (ej.tipo === "elegir") {
     return (
       <Elegir
@@ -565,7 +504,6 @@ function Pregunta({
       />
     );
   }
-
   if (ej.tipo === "texto_mixto") {
     return (
       <TextoMixto
@@ -578,28 +516,22 @@ function Pregunta({
       />
     );
   }
-
   const partes = ej.enunciado.split("___");
-
   const largo = Math.max(
     ...(ej.respuestas && ej.respuestas.length
       ? ej.respuestas.map((r) => r.length)
       : [12])
   );
-
   const enLinea =
     partes.length === 2 &&
     ej.tipo !== "verdadero_falso" &&
     ej.tipo !== "oracion_libre" &&
     largo <= 28;
-
   const ancho = Math.min(
     Math.max(largo, 4),
     40
   );
-
   const consigna = consignaDe(ej);
-
   const campo = (extra = "") => (
     <input
       ref={inputRef}
@@ -625,7 +557,6 @@ function Pregunta({
       aria-label="Tu respuesta"
     />
   );
-
   const audio = ej.audio && (
     <button
       type="button"
@@ -644,7 +575,6 @@ function Pregunta({
       />
     </button>
   );
-
   if (enLinea) {
     return (
       <p className="ses__enun ses__enun--linea">
@@ -654,7 +584,6 @@ function Pregunta({
       </p>
     );
   }
-
   return (
     <>
       {consigna && (
@@ -662,18 +591,15 @@ function Pregunta({
           {consigna}
         </p>
       )}
-
       <p className="ses__enun">
         {audio}{" "}
         {ej.enunciado.replace(/___/g, "…")}
       </p>
-
       {ej.tipo !== "verdadero_falso" &&
         campo("ancho")}
     </>
   );
 }
-
 export default function Leccion({
   seccion,
   esUltima,
@@ -684,11 +610,9 @@ export default function Leccion({
   alSaltar,
 }) {
   const ejercicios = seccion.ejercicios;
-
   const [cola, setCola] = useState(() =>
     ejercicios.map((_, k) => k)
   );
-
   const [pos, setPos] = useState(0);
   const [texto, setTexto] = useState("");
   const [elegida, setElegida] = useState(null);
@@ -696,59 +620,45 @@ export default function Leccion({
   const [aciertos, setAciertos] = useState(0);
   const [fallados, setFallados] = useState([]);
   const [fin, setFin] = useState(null);
-
   const conEstudio =
     !seccion.texto &&
     !seccion.textosReferencia &&
     !["Evaluación", "Repaso", "Texto"].includes(
       seccion.titulo
     );
-
   // inicio = teoría + botón
   // espera = cuenta regresiva
   // preguntas = ejercicios
   const [fase, setFase] = useState(
     conEstudio ? "inicio" : "preguntas"
   );
-
   const [seg, setSeg] = useState(ESPERA_SEG);
-
   useEffect(() => {
     if (fase !== "espera") return undefined;
-
     if (seg <= 0) {
       setFase("preguntas");
       return undefined;
     }
-
     const t = setTimeout(
       () => setSeg((x) => x - 1),
       1000
     );
-
     return () => clearTimeout(t);
   }, [fase, seg]);
-
   const inputRef = useRef(null);
-
   const idx = cola[pos];
   const ej = ejercicios[idx];
-
   const esRepaso =
     fallados.includes(idx) &&
     pos >= ejercicios.length;
-
   useEffect(() => {
     if (fase !== "preguntas") return;
-
     setTexto("");
     setElegida(null);
     setRes(null);
-
     if (inputRef.current) {
       inputRef.current.focus();
     }
-
     if (
       ej.audio &&
       (
@@ -763,30 +673,22 @@ export default function Leccion({
       );
     }
   }, [pos, fase]);
-
   function iniciar() {
     setSeg(ESPERA_SEG);
     setFase("espera");
   }
-
   function volverTeoria() {
     setFase("inicio");
   }
-
   function comprobar(valor) {
     if (res) return;
-
     const v =
       valor !== undefined
         ? valor
         : texto;
-
     if (!String(v).trim()) return;
-
     const r = revisar(ej, v);
-
     setRes(r);
-
     if (r.ok) {
       if (!fallados.includes(idx)) {
         setAciertos((a) => a + 1);
@@ -796,51 +698,40 @@ export default function Leccion({
         ...f,
         idx,
       ]);
-
       setCola((c) => [
         ...c,
         idx,
       ]);
     }
   }
-
   function siguiente() {
     if (pos + 1 < cola.length) {
       setPos(pos + 1);
       return;
     }
-
     const total = ejercicios.length;
-
     const dom = seccion.dominio || {};
-
     const dominada =
       aciertos / total >=
       (dom.umbralAciertos || 0.8);
-
     const r = {
       aciertos,
       total,
       dominada,
     };
-
     setFin(r);
     alTerminar(r);
   }
-
   function repetirPregunta() {
     setRes(null);
     setElegida(null);
     setTexto("");
-
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }
-
   const onEnter = (e) => {
     if (e.key !== "Enter") return;
-
     if (res) {
       if (res.ok) {
         siguiente();
@@ -851,7 +742,6 @@ export default function Leccion({
       comprobar();
     }
   };
-
   return (
     <div
       className={`ses ${
@@ -864,7 +754,6 @@ export default function Leccion({
       {conEstudio && fase === "inicio" && (
         <>
           <Teoria seccion={seccion} />
-
           <div className="teoria-nav-botones">
             <button
               type="button"
@@ -876,7 +765,6 @@ export default function Leccion({
             >
               <i className="fa-solid fa-arrow-left" />
             </button>
-
             <button
               type="button"
               className="teoria-nav-btn teoria-nav-btn--game"
@@ -886,7 +774,6 @@ export default function Leccion({
             >
               <i className="fa-solid fa-gamepad" />
             </button>
-
             <button
               type="button"
               className="teoria-nav-btn"
@@ -900,7 +787,6 @@ export default function Leccion({
           </div>
         </>
       )}
-
       {/* EJERCICIOS */}
       {(!conEstudio || fase !== "inicio") && (
         <section
@@ -928,21 +814,17 @@ export default function Leccion({
                   />
                 </button>
               )}
-
               <p className="ses__enun">
                 {fin.dominada
                   ? "Sesión completada"
                   : "Repite la sesión"}
               </p>
-
               <p className="ses__nota">
                 {fin.aciertos} / {fin.total}
               </p>
-
               <p className="ses__err">
                 Aciertos a la primera. Lo que fallaste ya lo repetiste al final.
               </p>
-
               {fin.dominada ? (
                 <button
                   type="button"
@@ -979,14 +861,12 @@ export default function Leccion({
                     />
                   </button>
                 )}
-
                 <p className="ses__cuenta">
                   {pos + 1} / {cola.length}
                   {esRepaso &&
                     " · repaso de un error"}
                 </p>
               </div>
-
               <Pregunta
                 ej={ej}
                 texto={texto}
@@ -1003,7 +883,6 @@ export default function Leccion({
                 }}
                 alResponderValor={(v) => comprobar(v)}
               />
-
               {ej.tipo === "verdadero_falso" && (
                 <div className="ses__vf">
                   {["True", "False"].map((v) => (
@@ -1022,7 +901,6 @@ export default function Leccion({
                   ))}
                 </div>
               )}
-
               {MOSTRAR_FEEDBACK && res && (
                 <div
                   className={`ses__fb ${
@@ -1050,7 +928,6 @@ export default function Leccion({
                         />{" "}
                         Incorrecto
                       </div>
-
                       {pos < ejercicios.length && (
                         <div className="ses__err">
                           Volverá al final para que lo intentes otra vez.
@@ -1060,7 +937,6 @@ export default function Leccion({
                   )}
                 </div>
               )}
-
               {!res &&
                 ej.tipo !== "verdadero_falso" &&
                 ej.tipo !== "elegir" &&
@@ -1075,7 +951,6 @@ export default function Leccion({
                     Comprobar
                   </button>
                 )}
-
               {res && (
                 <button
                   type="button"

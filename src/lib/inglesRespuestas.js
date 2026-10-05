@@ -11,7 +11,6 @@ export function normalizar(t) {
     .replace(/^[¿¡]+/g, "")
     .trim();
 }
-
 // Devuelve { ok, mostrar } donde mostrar es la respuesta a enseñar si falló.
 export function revisar(ej, texto) {
   const t = normalizar(texto);

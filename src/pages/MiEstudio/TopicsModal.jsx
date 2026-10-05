@@ -1,16 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import { buscarConPuntaje } from "../../lib/buscador";
-
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
-
 import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
-
 // 18 niveles por página: 3 columnas x 6 filas (en escritorio y en móvil).
 const NIVELES_POR_PAGINA = 18;
-
 const COLUMNAS = 3;
-
 // Barra de páginas: nunca se muestran todas a la vez. Siempre quedan visibles
 // la primera, la última, la actual y sus vecinas; lo demás se resume con «…».
 // La cantidad de casillas numéricas depende del ancho disponible.
@@ -18,31 +12,25 @@ const PAG_BTN_MIN = 34; // ancho mínimo de un botón (px)
 const PAG_GAP = 6; // debe coincidir con el gap de .levels-nav
 const PAG_CASILLAS_MIN = 5;
 const PAG_CASILLAS_MAX = 9;
-
 function calcularCasillasNumeros(ancho) {
   if (!ancho) return 7;
-
   const botones = Math.floor(
     (ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP)
   );
-
   // Se restan las 2 flechas.
   return Math.max(
     PAG_CASILLAS_MIN,
     Math.min(PAG_CASILLAS_MAX, botones - 2)
   );
 }
-
 // Devuelve números de página (base 0) y marcadores "gap-ini" / "gap-fin".
 function armarPaginacion(total, actual, casillas) {
   if (total <= casillas) {
     return Array.from({ length: total }, (_, i) => i);
   }
-
   const ultima = total - 1;
   const centro = casillas - 4;
   let items;
-
   if (actual <= casillas - 4) {
     // Cerca del inicio: 1 2 3 4 … N
     items = [
@@ -67,7 +55,6 @@ function armarPaginacion(total, actual, casillas) {
     // En medio: 1 … a-1 a a+1 … N
     const inicio =
       actual - Math.floor((centro - 1) / 2);
-
     items = [
       0,
       "gap-ini",
@@ -79,20 +66,16 @@ function armarPaginacion(total, actual, casillas) {
       ultima
     ];
   }
-
   // Si «…» solo esconde una página, se muestra esa página en su lugar.
   return items.map((it, i) => {
     if (typeof it !== "string") return it;
-
     const antes = items[i - 1];
     const despues = items[i + 1];
-
     return despues - antes === 2
       ? antes + 1
       : it;
   });
 }
-
 export default function TopicsModal({
   open,
   onClose,
@@ -106,29 +89,22 @@ export default function TopicsModal({
   const [activeIndex, setActiveIndex] = useState(null);
   const [busqueda, setBusqueda] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
-
   // Contenido del tema elegido (para buscar dentro de él).
   const [puntosTema, setPuntosTema] = useState([]);
   const [cargandoPuntos, setCargandoPuntos] = useState(false);
-
   const barraTemaRef = useRef(null);
   const modalRef = useRef(null);
-
   const itemActivo =
     activeIndex !== null
       ? listaTemas[activeIndex]
       : null;
-
   const [pagina, setPagina] = useState(0);
   const [direccion, setDireccion] = useState(null);
   const columnas = COLUMNAS;
-
   const [estrellasPorTema, setEstrellasPorTema] =
     useState({});
-
   const puntoInicioToque = useRef(null);
   const UMBRAL_ARRASTRE = 10;
-
   useEffect(() => {
     if (!open) {
       setBusqueda("");
@@ -136,7 +112,6 @@ export default function TopicsModal({
       setInputEnfocado(false);
       return;
     }
-
     try {
       setEstrellasPorTema(
         JSON.parse(
@@ -147,20 +122,15 @@ export default function TopicsModal({
       setEstrellasPorTema({});
     }
   }, [open]);
-
   // Al elegir un tema se carga su contenido para poder buscar dentro.
   useEffect(() => {
     setPuntosTema([]);
-
     if (!open || !itemActivo || !onCargarPuntos) {
       setCargandoPuntos(false);
       return undefined;
     }
-
     let cancelado = false;
-
     setCargandoPuntos(true);
-
     onCargarPuntos(itemActivo)
       .then((puntos) => {
         if (!cancelado) setPuntosTema(puntos);
@@ -171,33 +141,25 @@ export default function TopicsModal({
       .finally(() => {
         if (!cancelado) setCargandoPuntos(false);
       });
-
     return () => {
       cancelado = true;
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex, open]);
-
   // Al abrir, se muestra la página donde está el tema actual.
   useEffect(() => {
     if (!open) return;
-
     const idx = listaTemas.findIndex(
       (t) => t.tema === temaActual
     );
-
     setPagina(
       idx >= 0
         ? Math.floor(idx / NIVELES_POR_PAGINA)
         : 0
     );
-
     setDireccion(null);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
-
   function manejarClickTema(item, index) {
     if (activeIndex === index) {
       onSelectTema(item);
@@ -205,38 +167,30 @@ export default function TopicsModal({
       setActiveIndex(null);
       return;
     }
-
     setActiveIndex(index);
   }
-
   function manejarToqueInicial(item, e) {
     puntoInicioToque.current = {
       x: e.clientX,
       y: e.clientY
     };
   }
-
   function fueArrastre(e) {
     const inicio = puntoInicioToque.current;
-
     if (!inicio) return false;
-
     const dx = e.clientX - inicio.x;
     const dy = e.clientY - inicio.y;
-
     return (
       Math.sqrt(dx * dx + dy * dy) >
       UMBRAL_ARRASTRE
     );
   }
-
   const temasConIndice = listaTemas.map(
     (item, index) => ({
       item,
       index
     })
   );
-
   const temasFiltrados = busqueda.trim()
     ? buscarConPuntaje(
         temasConIndice,
@@ -244,7 +198,6 @@ export default function TopicsModal({
         ({ item }) => item.tema
       )
     : temasConIndice;
-
   // Flechas y Enter en la lista de temas.
   const { focusedIdx, handleKeyDown } =
     useArrowKeyList(
@@ -254,13 +207,11 @@ export default function TopicsModal({
         onClose();
       }
     );
-
   function onKeyDownNombres(e) {
     if (e.key === "Escape") {
       e.currentTarget.blur();
       return;
     }
-
     // Con el input vacío, Enter solo actúa si se eligió con las flechas.
     if (
       e.key === "Enter" &&
@@ -269,10 +220,8 @@ export default function TopicsModal({
     ) {
       return;
     }
-
     handleKeyDown(e);
   }
-
   const totalPaginas = Math.max(
     1,
     Math.ceil(
@@ -280,25 +229,20 @@ export default function TopicsModal({
         NIVELES_POR_PAGINA
     )
   );
-
   const paginaActual = Math.min(
     pagina,
     totalPaginas - 1
   );
-
   const temasPagina = temasFiltrados.slice(
     paginaActual * NIVELES_POR_PAGINA,
     paginaActual * NIVELES_POR_PAGINA +
       NIVELES_POR_PAGINA
   );
-
   // Filas reales de la página, de abajo hacia arriba.
   const filasPorPagina = Math.ceil(
     temasPagina.length / columnas
   );
-
   const filasVisibles = [];
-
   for (
     let r = 0;
     r < filasPorPagina;
@@ -312,9 +256,7 @@ export default function TopicsModal({
       )
     });
   }
-
   filasVisibles.reverse();
-
   function irAPagina(nueva) {
     if (
       nueva === paginaActual ||
@@ -323,32 +265,23 @@ export default function TopicsModal({
     ) {
       return;
     }
-
     setDireccion(
       nueva > paginaActual
         ? "up"
         : "down"
     );
-
     setPagina(nueva);
   }
-
   // Ancho real de la barra de páginas, para decidir cuántas casillas caben.
   const navRef = useRef(null);
   const [anchoNav, setAnchoNav] = useState(0);
-
   const hayNavegacion = totalPaginas > 1;
-
   useEffect(() => {
     const el = navRef.current;
-
     if (!el) return undefined;
-
     const medir = () =>
       setAnchoNav(el.clientWidth);
-
     medir();
-
     if (
       typeof ResizeObserver ===
       "undefined"
@@ -357,46 +290,36 @@ export default function TopicsModal({
         "resize",
         medir
       );
-
       return () =>
         window.removeEventListener(
           "resize",
           medir
         );
     }
-
     const observador =
       new ResizeObserver(medir);
-
     observador.observe(el);
-
     return () =>
       observador.disconnect();
   }, [hayNavegacion, open]);
-
   const elementosPaginacion =
     armarPaginacion(
       totalPaginas,
       paginaActual,
       calcularCasillasNumeros(anchoNav)
     );
-
   // El scroll empieza abajo.
   useEffect(() => {
     if (!open) return undefined;
-
     const id = requestAnimationFrame(() => {
       const el = modalRef.current;
-
       if (el) {
         el.scrollTop = el.scrollHeight;
       }
     });
-
     return () =>
       cancelAnimationFrame(id);
   }, [open, paginaActual, columnas]);
-
   return (
     <div
       ref={modalRef}
@@ -424,7 +347,6 @@ export default function TopicsModal({
           >
             <i className="fa-solid fa-arrow-left" />
           </button>
-
           <div
             className={`home-search levels-modal__search ${
               itemActivo
@@ -481,7 +403,6 @@ export default function TopicsModal({
                   }
                   className="home-search-input"
                 />
-
                 {inputEnfocado && (
                   <div className="home-search-results">
                     {temasFiltrados.length ===
@@ -491,7 +412,6 @@ export default function TopicsModal({
                         {busqueda}".
                       </p>
                     )}
-
                     {temasFiltrados.map(
                       (
                         { item, index },
@@ -525,7 +445,6 @@ export default function TopicsModal({
                 )}
               </>
             )}
-
             {/* Botón Buscar */}
             <button
               type="button"
@@ -558,7 +477,6 @@ export default function TopicsModal({
             </button>
           </div>
         </div>
-
         <div
           key={paginaActual}
           className={`levels-map ${
@@ -586,7 +504,6 @@ export default function TopicsModal({
                   (_, posicion) => {
                     const celda =
                       fila[posicion];
-
                     // Casilla vacía de la última fila.
                     if (!celda) {
                       return (
@@ -603,33 +520,26 @@ export default function TopicsModal({
                         </div>
                       );
                     }
-
                     const {
                       item,
                       index
                     } = celda;
-
                     const esTemaActual =
                       item.tema ===
                       temaActual;
-
                     const esArmado =
                       activeIndex === index;
-
                     const conectaFila =
                       posicion <
                       fila.length - 1;
-
                     const hayFilaSiguiente =
                       temasPagina.length >
                       (filaIndex + 1) *
                         columnas;
-
                     const conectaArriba =
                       posicion ===
                         columnas - 1 &&
                       hayFilaSiguiente;
-
                     const esCursoIngles =
                       String(curso || "")
                         .normalize("NFD")
@@ -640,12 +550,10 @@ export default function TopicsModal({
                         .toLowerCase()
                         .trim() ===
                       "ingles";
-
                     const estrellasTema =
                       estrellasPorTema[
                         `${curso}_${item.tema}`
                       ]?.estrellas || 0;
-
                     return (
                       <div
                         key={index}
@@ -685,7 +593,6 @@ export default function TopicsModal({
                             )}
                           </div>
                         )}
-
                         <button
                           className={`level-btn ${
                             esTemaActual
@@ -704,13 +611,11 @@ export default function TopicsModal({
                           }
                           onClick={(e) => {
                             e.stopPropagation();
-
                             if (
                               fueArrastre(e)
                             ) {
                               return;
                             }
-
                             manejarClickTema(
                               item,
                               index
@@ -750,7 +655,6 @@ export default function TopicsModal({
             )
           )}
         </div>
-
         {totalPaginas > 1 && (
           <div
             className="levels-nav"
@@ -771,7 +675,6 @@ export default function TopicsModal({
             >
               <i className="fa-solid fa-arrow-down" />
             </button>
-
             {elementosPaginacion.map(
               (n) =>
                 typeof n === "string" ? (
@@ -807,7 +710,6 @@ export default function TopicsModal({
                   </button>
                 )
             )}
-
             <button
               type="button"
               className="levels-nav__btn"
@@ -826,7 +728,6 @@ export default function TopicsModal({
             </button>
           </div>
         )}
-
         {listaTemas.length === 0 && (
           <p className="levels-modal__empty">
             No hay temas registrados para este

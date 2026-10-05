@@ -1,5 +1,4 @@
 const KEY = "curso-ingles-progreso-v2";
-
 export function cargarProgreso() {
   try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; }
 }

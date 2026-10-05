@@ -2,9 +2,7 @@
 """
 Regenera public/temas/ing/ (ing-01..ing-98.json) a partir de scripts/ingles_original/.
 Después corre `python3 actualizar_manifest.py` para que el manifest se actualice.
-
 Uso:  python3 scripts/reestructurar_ingles.py
-
 - Lee SIEMPRE los originales (scripts/ingles_original/), así que se puede
   correr las veces que quieras sin acumular cambios.
 - Niveles no listados en NIVELES_NUEVOS se copian tal cual.
@@ -12,7 +10,6 @@ Uso:  python3 scripts/reestructurar_ingles.py
   texto mixto (español + inglés), repaso con palabras de niveles anteriores
   y evaluación en orden aleatorio.
 - Nivel 1 (TO BE): 39 sesiones -> 10, con opciones am/is/are y texto mixto.
-
 Marcas en los textos:
   <<en|es>>          palabra a practicar: se pregunta como hueco (pista = es)
   <<en|es|alt|alt>>  igual, con respuestas alternativas válidas
@@ -24,11 +21,9 @@ import random
 import re
 import shutil
 from pathlib import Path
-
 RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "scripts" / "ingles_original"
 DEST = RAIZ / "public" / "temas" / "ing"
-
 # --------------------------------------------------------------------------
 # TEXTOS MIXTOS (uno por nivel de vocabulario)
 # --------------------------------------------------------------------------
@@ -82,7 +77,6 @@ TEXTOS_VOCAB = {
         "<<book|libro>>. [[She is happy|Ella está feliz]] porque [[Luis is here|Luis está aquí]]."
     ),
 }
-
 # --------------------------------------------------------------------------
 # NIVEL 1 (TO BE): grupos de sesiones originales y texto de cada grupo
 # --------------------------------------------------------------------------
@@ -119,8 +113,6 @@ GRUPOS_N1 = [
      "<<She's|Ella es>> Sofía y <<they're|ellos son>> mis amigos. Luis "
      "<<isn't|no es>> mi hermano.»"),
 ]
-
-
 # --------------------------------------------------------------------------
 # FRASES CON CONTEXTO
 #   {}  = hueco de la palabra (su significado se toma de la lección)
@@ -227,13 +219,10 @@ FRASES = {
         "classroom": ["Ana estudia inglés en el {}.", "El profesor entra al {}."],
     },
 }
-
 # Si es True, cada nivel cierra con una sesión de texto largo (repite palabras ya preguntadas)
 USAR_TEXTOS = False
-
 # Respuestas alternativas válidas
 ALT = {"the United States": ["United States", "the US", "the USA"]}
-
 # Nivel 1: frases por grupo. <<en|es|alt...>> marca el hueco.
 FRASES_N1 = [
     ["Ana se presenta: «<<I|Yo>> [[am|soy]] Ana.»",
@@ -301,7 +290,6 @@ FRASES_N1 = [
      "Ana dice de Luis: «[[He|Él]] <<isn't|no es|is not>> [[a teacher|profesor]].»",
      "Ana dice de los niños: «[[They|Ellos]] <<aren't|no están|are not>> [[here|aquí]].»"],
 ]
-
 # Grupos de opciones para elegir (nivel 1)
 POOLS_N1 = [
     ["I", "you", "he", "she", "it", "we", "they"],
@@ -314,7 +302,6 @@ POOLS_N1 = [
     ["happy", "tired", "here"],
     ["a", "student", "teacher", "doctor"],
 ]
-
 FRASES.update({
     16: {
         "phone": ["Ana llama a su mamá con su {}.", "Luis recibe un mensaje en su {}."],
@@ -457,7 +444,6 @@ FRASES.update({
         "want": ["[[I|Yo]] {} un vaso de agua.", "[[They|Ellos]] {} una pizza."],
     },
 })
-
 TEXTOS_VOCAB.update({
     16: (
         "Ana sale de casa. Toma su <<phone|teléfono>>, su <<wallet|cartera>> y su "
@@ -519,7 +505,6 @@ TEXTOS_VOCAB.update({
         "<<cook|cocinar>> con mi mamá.»"
     ),
 })
-
 FRASES.update({
     38: {
         "nurse": ["Rosa cuida a los enfermos en el hospital: [[she is|ella es]] {}.", "La {} le pone una inyección al paciente."],
@@ -662,7 +647,6 @@ FRASES.update({
         "TV": ["Luis ve una película en la {}.", "Ana apaga la {} y se va a dormir."],
     },
 })
-
 TEXTOS_VOCAB.update({
     38: (
         "Ana conoce a los vecinos de su barrio. Rosa [[is a|es una]] <<nurse|enfermera>>. "
@@ -728,7 +712,6 @@ TEXTOS_VOCAB.update({
         "<<mirror|espejo>>. En la sala, la familia ve la [[TV|televisión]] en el [[sofa|sofá]]."
     ),
 })
-
 FRASES.update({
     55: {
         "dog": ["El {} ladra cuando llega el cartero.", "Luis pasea a su {} por el parque."],
@@ -1039,7 +1022,6 @@ FRASES.update({
         "mask": ["Tutankamón tenía una {} de oro.", "Ana se pone una {} en la fiesta."],
     },
 })
-
 # ======================= ESCENAS (lote 1) =======================
 FRASES_N1 = [
     ["Un pirata levanta su sombrero y ruge: «<<I|Yo>> [[am|soy]] el capitán Barbarroja.»",
@@ -1110,7 +1092,6 @@ FRASES_N1 = [
      "Niegas lo que dijo tu hermano: «[[He|Él]] <<isn't|no es|is not>> [[a doctor|doctor]].»",
      "Miras el asiento vacío: «[[They|Ellos]] <<aren't|no están|are not>> [[here|aquí]].»"],
 ]
-
 FRASES.update({
     3: {
         "hello": ["Tu abuela contesta la videollamada con rulos en el pelo y tú gritas: «¡{}, abuela!»", "El astronauta pisa la Luna y saluda a la cámara: «{} a todos en la Tierra.»"],
@@ -1280,7 +1261,6 @@ FRASES.update({
         "beautiful": ["Un arcoíris sobre el mar es {}.", "Un atardecer en la montaña es {}."],
     },
 })
-
 # ======================= ESCENAS (lote 2) =======================
 FRASES.update({
     26: {
@@ -1410,7 +1390,6 @@ FRASES.update({
         "sleep": ["Cuando estoy en la cama [[I|yo]] {} ocho horas.", "Todas las noches [[I|yo]] {} profundamente."],
     },
 })
-
 # --------------------------------------------------------------------------
 # Utilidades
 # --------------------------------------------------------------------------
@@ -1424,34 +1403,22 @@ def _con_curso(d):
         "descripcion": desc,
         **base,
     }
-
-
 def cargar(n):
     return json.loads((ORIG / f"nivel-{n:02d}.json").read_text(encoding="utf-8"))
-
-
 def guardar(n, d):
     (DEST / f"ing-{n:02d}.json").write_text(
         json.dumps(_con_curso(d), ensure_ascii=False, indent=2), encoding="utf-8"
     )
-
-
 def base_es(es):
     """Significado sin paréntesis ni alternativas, para evitar opciones ambiguas."""
     b = re.sub(r"\s*\(.*?\)", "", es).split(",")[0].strip().lower()
     return b
-
-
 def copia(e):
     return json.loads(json.dumps(e))
-
-
 def numerar(n, k, ejercicios):
     for j, e in enumerate(ejercicios, 1):
         e["id"] = f"n{n:02d}-s{k:02d}-e{j:02d}"
     return ejercicios
-
-
 def seccion(n, k, titulo, teoria, ejercicios, umbral=0.75, extra=None):
     numerar(n, k, ejercicios)
     s = {
@@ -1467,14 +1434,10 @@ def seccion(n, k, titulo, teoria, ejercicios, umbral=0.75, extra=None):
     if extra:
         s.update(extra)
     return s
-
-
 # --------------------------------------------------------------------------
 # Textos mixtos
 # --------------------------------------------------------------------------
 PAT = re.compile(r"(<<[^>]+>>|\[\[[^\]]+\]\])")
-
-
 def parsear_texto(t):
     partes = []
     for trozo in PAT.split(t):
@@ -1489,8 +1452,6 @@ def parsear_texto(t):
         else:
             partes.append(trozo)
     return partes
-
-
 def ejercicios_de_texto(t, error_prefijo="La palabra es", max_huecos=None):
     """Un ejercicio por hueco. Con max_huecos, solo algunos objetivos son hueco
     (repartidos por el texto); los demás se muestran en inglés, tocables."""
@@ -1519,8 +1480,6 @@ def ejercicios_de_texto(t, error_prefijo="La palabra es", max_huecos=None):
             "audio": {"texto": p["en"], "idioma": "en-US"},
         })
     return res
-
-
 # --------------------------------------------------------------------------
 # MEZCLA PROGRESIVA DE INGLÉS
 # A medida que sube el nivel, palabras sueltas de las frases pasan de español
@@ -1546,21 +1505,15 @@ ENLACE = {
 PROHIBIDAS = {"ver", "vino", "mañana", "tarde", "segundo", "café", "rosa", "bajo", "cambio", "cuenta",
               "punto", "cuarto", "sol", "luz", "no", "sí", "un", "una", "uno"}
 PALABRA = re.compile(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+")
-
-
 def clave_lexico(es):
     c = re.sub(r"\s*\(.*?\)", "", es)
     c = re.split(r"\s*[/,]\s*", c)[0].strip().lower()
     return c if (c and " " not in c and len(c) >= 3 and c not in PROHIBIDAS) else None
-
-
 def agregar_al_lexico(lexico, palabras_nivel):
     for w in palabras_nivel:
         k = clave_lexico(w["es"])
         if k and k not in lexico:
             lexico[k] = (w["en"], w["nivel"])
-
-
 def mezclar_ingles(frase, nivel, lexico, evitar, rng):
     """Cambia a inglés palabras sueltas del español que rodea a los huecos y marcas."""
     p = min(0.9, 0.25 + nivel / 80)
@@ -1593,8 +1546,6 @@ def mezclar_ingles(frase, nivel, lexico, evitar, rng):
         res.append(t[ultimo:])
         salida.append("".join(res))
     return "".join(salida)
-
-
 # --------------------------------------------------------------------------
 # Ejercicios a partir de una frase
 # --------------------------------------------------------------------------
@@ -1612,16 +1563,12 @@ def _partes_con_hueco(frase):
             salida.append(p)
     assert target is not None, frase
     return salida, target
-
-
 def _forma(x, ref):
     if x == "I":
         return "I"
     if ref[0].isupper():
         return x.capitalize()
     return x.lower()
-
-
 SINONIMOS_ES = {
     "un": ["una"], "una": ["un"],
     "nosotras": ["nosotros"], "nosotros": ["nosotras"],
@@ -1637,13 +1584,9 @@ SINONIMOS_ES = {
     "eres": ["estas"], "estas": ["eres"],
 }
 NIVELES_GENERO = {8, 23, 24, 26, 38}
-
-
 def _sin_tildes(t):
     import unicodedata
     return "".join(c for c in unicodedata.normalize("NFD", t) if unicodedata.category(c) != "Mn")
-
-
 def variantes_es(es, nivel=None):
     """Formas válidas de responder al significado en español (la 1.ª es la que se muestra)."""
     out = [es]
@@ -1674,8 +1617,6 @@ def variantes_es(es, nivel=None):
         if e not in out:
             out.append(e)
     return out
-
-
 def ej_significado(frase, nivel=None):
     """Frase con la palabra en inglés resaltada; se escribe su significado en español."""
     partes = parsear_texto(frase)
@@ -1698,8 +1639,6 @@ def ej_significado(frase, nivel=None):
         "error": f"«{t['en']}» significa «{t['es']}».",
         "audio": {"texto": t["en"], "idioma": "en-US"},
     }
-
-
 def ej_escribir(frase, dictado=False):
     partes, t = _partes_con_hueco(frase)
     e = {
@@ -1713,8 +1652,6 @@ def ej_escribir(frase, dictado=False):
     if dictado:
         e["autoaudio"] = True
     return e
-
-
 def ej_elegir(frase, opciones_base, rng):
     partes, t = _partes_con_hueco(frase)
     malas = [o for o in opciones_base if o.lower() != t["en"].lower()]
@@ -1729,8 +1666,6 @@ def ej_elegir(frase, opciones_base, rng):
         "error": f"La palabra es «{t['en']}» ({t['es']}).",
         "audio": {"texto": t["en"], "idioma": "en-US"},
     }
-
-
 # --------------------------------------------------------------------------
 # Vocabulario
 # --------------------------------------------------------------------------
@@ -1744,8 +1679,6 @@ def leer_palabras(d):
             "teoria": s["teoria"],
         })
     return palabras
-
-
 def frases_de(n, w, lexico=None, rng=None):
     """[frase1, frase2] con el hueco ya marcado como <<en|es|alt>>; mezcla inglés según el nivel."""
     crudas = FRASES[n][w["en"]]
@@ -1759,31 +1692,23 @@ def frases_de(n, w, lexico=None, rng=None):
             f = mezclar_ingles(f, n, lexico, evitar, r)
         out.append(f)
     return out
-
-
 def opciones_de(palabras, w):
     """Distractores: otras palabras del nivel cuyo significado no se confunda."""
     return [
         x["en"] for x in palabras
         if base_es(x["es"]) != base_es(w["es"]) and x["en"] != w["en"]
     ]
-
-
 def par_alterno(w, pos, palabras, rng, nivel=None):
     """1.ª pregunta de la palabra: alterna elegir / escribir según su posición en el nivel."""
     if pos % 2 == 0:
         return ej_elegir(w["f"][0], opciones_de(palabras, w) + [w["en"]], rng)
     return ej_escribir(w["f"][0])
-
-
 def sesion_palabras(n, k, grupo, palabras, rng, inicio):
     ej = [par_alterno(w, inicio + i, palabras, rng) for i, w in enumerate(grupo)]
     ej += [ej_significado(w["f"][1], n) for w in grupo]
     titulo = " · ".join(w["en"] for w in grupo)
     teoria = "\n".join(w["teoria"] for w in grupo)
     return seccion(n, k, titulo, teoria, ej)
-
-
 def repaso_vocab(n, k, previas, rng):
     """Solo palabras de niveles anteriores (las de este nivel ya tuvieron sus 2 preguntas)."""
     if len(previas) < 4:
@@ -1799,8 +1724,6 @@ def repaso_vocab(n, k, previas, rng):
         e["origen"] = p["nivel"]
         ej.append(e)
     return seccion(n, k, "Repaso", "Palabras de niveles anteriores.", ej)
-
-
 def construir_vocab(n, previas, lexico=None):
     d = cargar(n)
     palabras = leer_palabras(d)
@@ -1841,8 +1764,6 @@ def construir_vocab(n, previas, lexico=None):
     d["secciones"] = secs
     nuevas = [{"en": w["en"], "es": w["es"], "nivel": n, "f": w["f"]} for w in palabras]
     return d, nuevas
-
-
 # --------------------------------------------------------------------------
 # Nivel 1
 # --------------------------------------------------------------------------
@@ -1851,8 +1772,6 @@ def pool_de(en):
         if en.lower() in [x.lower() for x in p]:
             return p
     return None
-
-
 def _construir_nivel1_antiguo():
     d = cargar(1)
     por_titulo = {s["titulo"]: s for s in d["secciones"]}
@@ -1861,12 +1780,10 @@ def _construir_nivel1_antiguo():
     eval_ej = []
     for k, ((titulo, origenes, texto), frases) in enumerate(zip(GRUPOS_N1, FRASES_N1), 1):
         teoria = "\n".join(por_titulo[t]["teoria"] for t in origenes)
-
         por_target = {}
         for f in frases:
             _, t = _partes_con_hueco(f)
             por_target.setdefault(t["en"], []).append(f)
-
         primeras, segundas = [], []
         for i, (en, fs) in enumerate(por_target.items()):
             pool = pool_de(en)
@@ -1875,23 +1792,19 @@ def _construir_nivel1_antiguo():
             else:
                 primeras.append(ej_escribir(fs[0]))
             segundas.append(ej_significado(fs[1] if len(fs) > 1 else fs[0], 1))
-
         n_t = len(por_target)
         ej = primeras + segundas
         if USAR_TEXTOS:
             ej += ejercicios_de_texto(texto, max_huecos=max(1, n_t // 2))
         secs.append(seccion(1, k, titulo, teoria, ej))
-
         for i, (en, fs) in enumerate(list(por_target.items())[:2]):
             eval_ej.append(ej_escribir(fs[-1]) if i % 2 == 0 else ej_significado(fs[0], 1))
-
     ev = d["secciones"][-1]
     rng.shuffle(eval_ej)
     secs.append(seccion(1, len(secs) + 1, "Evaluación", ev["teoria"], eval_ej,
                         umbral=ev["dominio"].get("umbralAciertos", 0.8)))
     d["secciones"] = secs
     return d
-
 # --------------------------------------------------------------------------
 # NIVEL 1 (v2): sesiones chicas, 1 idea por card, teoría que explica el uso
 #   (titulo, teoria, [(grupo_viejo, [targets])...], [frases nuevas])
@@ -1904,8 +1817,6 @@ def _viejas(gi, *targets):
         if t["en"].lower() in ts:
             out.append(f)
     return out
-
-
 SESIONES_N1 = [
     ("I am",
      "**I** = yo\nSiempre se escribe con mayúscula.\n**am** = soy / estoy\n"
@@ -2014,8 +1925,6 @@ SESIONES_N1 = [
      ["Pruebas la sopa y dices: «[[It|Eso]] <<isn't|no está|is not>> caliente.»",
       "Tus calcetines no combinan: «[[They|Ellos]] <<aren't|no son|are not>> iguales.»"]),
 ]
-
-
 def construir_nivel1():
     d = cargar(1)
     rng = random.Random(1)
@@ -2025,13 +1934,11 @@ def construir_nivel1():
         for gi, ts in origenes:
             frases += _viejas(gi, *ts)
         frases += nuevas
-
         por_target = {}
         for f in frases:
             _, t = _partes_con_hueco(f)
             por_target.setdefault(t["en"], []).append(f)
         unico = len(por_target) == 1
-
         ej = []
         for i, (en, fs) in enumerate(por_target.items()):
             pool = pool_de(en)
@@ -2049,12 +1956,10 @@ def construir_nivel1():
                 ej.append(ej_significado(fs[1] if len(fs) > 1 else fs[0], 1))
         ej.sort(key=lambda e: 0 if e["tipo"] == "elegir" else (1 if e.get("modo") != "significado" else 2))
         secs.append(seccion(1, k, titulo, teoria, ej))
-
         mios = []
         for i, (en, fs) in enumerate(list(por_target.items())[:2]):
             mios.append(ej_escribir(fs[-1]) if i % 2 == 0 else ej_significado(fs[0], 1))
         evals.append(mios)
-
     # evaluación: 1.º un ejercicio de cada sesión, luego segundos, hasta 20
     eval_ej = [m[0] for m in evals if m] + [m[1] for m in evals if len(m) > 1]
     eval_ej = eval_ej[:20]
@@ -2064,9 +1969,6 @@ def construir_nivel1():
                         umbral=ev["dominio"].get("umbralAciertos", 0.8)))
     d["secciones"] = secs
     return d
-
-
-
 # --------------------------------------------------------------------------
 # Gramática (niveles ya escritos como frases): quitar repetición
 #   - máx. 2 ejercicios con la misma respuesta por sesión, máx. 1 dictado
@@ -2077,8 +1979,6 @@ def construir_nivel1():
 def _clave(e):
     r = (e.get("respuestas") or [""])[0]
     return re.sub(r"[^a-z0-9' ]", "", str(r).lower()).strip()
-
-
 def _elegible(e, pool):
     return (
         e["tipo"] == "completar"
@@ -2087,8 +1987,6 @@ def _elegible(e, pool):
         and len(e["respuestas"][0].split()) <= 2
         and e["respuestas"][0].lower() in [p.lower() for p in pool]
     )
-
-
 def _a_elegir_gram(e, pool, rng):
     r = e["respuestas"][0]
     malas = [p for p in pool if p.lower() != r.lower()]
@@ -2102,13 +2000,10 @@ def _a_elegir_gram(e, pool, rng):
         "respuestas": list(e["respuestas"]),
         "error": e.get("error", ""),
     }
-
-
 def construir_gramatica(n):
     d = cargar(n)
     rng = random.Random(n * 104729)
     sesiones, ev = d["secciones"][:-1], d["secciones"][-1]
-
     # opciones para elegir: respuestas de una palabra (o dos) de los "completar" del nivel
     pool = []
     for sec in d["secciones"]:
@@ -2117,7 +2012,6 @@ def construir_gramatica(n):
                 r = e["respuestas"][0]
                 if len(r.split()) <= 2 and r.lower() not in [x.lower() for x in pool]:
                     pool.append(r)
-
     retenidos = []
     for k, sec in enumerate(sesiones, 1):
         cuenta, dictados = collections.Counter(), 0
@@ -2164,7 +2058,6 @@ def construir_gramatica(n):
             "minimoRespondidas": len(out),
         }
         retenidos.append(quitar)
-
     # evaluación: primero lo que se apartó (no se preguntó antes), repartido entre sesiones
     nueva, cuenta = [], collections.Counter()
     for ronda in range(6):
@@ -2191,8 +2084,6 @@ def construir_gramatica(n):
         "minimoRespondidas": len(nueva),
     }
     return d
-
-
 # --------------------------------------------------------------------------
 # Alfabeto: letras en grupos de 4; por letra 1 dictado + 1 nombre -> letra
 # --------------------------------------------------------------------------
@@ -2227,8 +2118,6 @@ def construir_alfabeto():
     secs.append(ev)
     d["secciones"] = secs
     return d
-
-
 # --------------------------------------------------------------------------
 # Lectura: una pregunta de cada texto se aparta para la evaluación
 # --------------------------------------------------------------------------
@@ -2253,14 +2142,10 @@ def construir_lectura(n):
         "minimoRespondidas": len(apartadas),
     }
     return d
-
-
 # --------------------------------------------------------------------------
 # Principal
 # --------------------------------------------------------------------------
 NIVELES_VOCAB = sorted(FRASES.keys())
-
-
 # --------------------------------------------------------------------------
 # Ejercicios estilo Duolingo (niveles 1 a 5): ordenar palabras y emparejar
 #   nivel -> sesión -> {"emp": (consigna, [(izq, der)...]) | "auto", "ord": [(pista, respuesta, [sobran], [otras])]}
@@ -2268,7 +2153,6 @@ NIVELES_VOCAB = sorted(FRASES.keys())
 # --------------------------------------------------------------------------
 C_SIG = "Une cada palabra con su significado"
 C_FORMA = "Une cada forma corta con su forma completa"
-
 DUO = {
     1: {
         1: {"ord": [("Yo soy", "I am", ["is", "are"], [])]},
@@ -2331,8 +2215,6 @@ DUO = {
         4: {"emp": "auto", "ord": [("Mañana es martes", "tomorrow is Tuesday", ["today", "are"], [])]},
     },
 }
-
-
 def _pares_de_teoria(teoria):
     """Parejas (inglés, español) de una teoría de vocabulario: '**en**  /ipa/' + '= es'."""
     pares, en = [], None
@@ -2344,8 +2226,6 @@ def _pares_de_teoria(teoria):
             pares.append((en, l.strip().lstrip("= ").strip()))
             en = None
     return pares
-
-
 def _ej_emparejar(consigna, pares, rng):
     assert len({d for _, d in pares}) == len(pares), pares
     orden = list(range(len(pares)))
@@ -2358,8 +2238,6 @@ def _ej_emparejar(consigna, pares, rng):
         "ordenDer": orden,
         "respuestas": ["listo"],
     }
-
-
 def _ej_ordenar(pista, resp, sobran, otras, rng):
     fichas = resp.split() + list(sobran)
     original = list(fichas)
@@ -2373,8 +2251,6 @@ def _ej_ordenar(pista, resp, sobran, otras, rng):
         "respuestas": [resp] + list(otras),
         "audio": {"texto": resp, "idioma": "en-US"},
     }
-
-
 def agregar_duolingo(n, d):
     """Suma emparejar/ordenar a las sesiones indicadas en DUO. En vocabulario quita significados repetidos."""
     rng = random.Random(100 + n)
@@ -2382,7 +2258,6 @@ def agregar_duolingo(n, d):
         sec = d["secciones"][k - 1]
         ej = sec["ejercicios"]
         nuevos_emp, nuevos_ord = [], []
-
         emp = cfg.get("emp")
         if emp == "auto":
             pares = _pares_de_teoria(sec["teoria"])
@@ -2393,32 +2268,25 @@ def agregar_duolingo(n, d):
             nuevos_emp.append(_ej_emparejar(emp[0], emp[1], rng))
         for pista, resp, sobran, otras in cfg.get("ord", []):
             nuevos_ord.append(_ej_ordenar(pista, resp, sobran, otras, rng))
-
         sig = [e for e in ej if e.get("modo") == "significado"]
         if n in (1, 3, 4, 5):
             quitar = min(len(nuevos_emp) + len(nuevos_ord), max(len(sig) - 1, 0))
             for e in sig[len(sig) - quitar:]:
                 ej.remove(e)
-
         pos = next((i for i, e in enumerate(ej) if e.get("modo") == "significado"), len(ej))
         ej[pos:pos] = nuevos_ord
         ej[0:0] = nuevos_emp
         numerar(n, sec["orden"], ej)
         sec["dominio"]["minimoRespondidas"] = len(ej)
     return d
-
-
-
 def main():
     # 1) partir de los originales completos
     DEST.mkdir(parents=True, exist_ok=True)
     for f in sorted(ORIG.glob("nivel-*.json")):
         d0 = json.loads(f.read_text(encoding="utf-8"))
         guardar(d0["id"], d0)
-
     # 2) nivel 1
     guardar(1, agregar_duolingo(1, construir_nivel1()))
-
     # 3) vocabulario (el léxico previo se acumula en orden de nivel)
     previas = []
     lexico = {}
@@ -2427,7 +2295,6 @@ def main():
         guardar(n, agregar_duolingo(n, d))
         previas.extend(nuevas)
         agregar_al_lexico(lexico, nuevas)
-
     # 3b) gramática y alfabeto
     idx = json.loads((ORIG / "index.json").read_text(encoding="utf-8"))
     for nv in idx["niveles"]:
@@ -2436,7 +2303,6 @@ def main():
     guardar(6, construir_alfabeto())
     for n in (46, 60, 87, 98):
         guardar(n, construir_lectura(n))
-
     # 4) config: documentación de los tipos de ejercicio (ya no vive en public/)
     cfg = json.loads((ORIG / "config.json").read_text(encoding="utf-8"))
     cfg["version"] = 4
@@ -2455,7 +2321,5 @@ def main():
     )
     (RAIZ / "scripts" / "ingles_config.json").write_text(json.dumps(cfg, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Listo.")
-
-
 if __name__ == "__main__":
     main()
