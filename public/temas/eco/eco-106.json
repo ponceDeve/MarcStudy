@@ -1,0 +1,143 @@
+{
+  "curso": "Economía",
+  "tema": "Índice precios",
+  "glosario": {
+    "IPC": "Índice de variación de precios al consumidor",
+    "Año base": "Periodo de comparación con índice igual a 100",
+    "Canasta fija": "Canasta con cantidades constantes del año base",
+    "Inflación": "Aumento sostenido del nivel general de precios",
+    "Valor nominal": "Valor expresado en precios corrientes",
+    "Valor real": "Valor corregido por la variación de precios",
+    "Deflactar": "Quitar el efecto de los precios",
+    "Indexación": "Reajuste de montos según el índice de precios",
+    "Poder adquisitivo": "Capacidad del dinero para comprar bienes",
+    "Ponderación": "Peso de un bien en la canasta",
+    "Sesgo de sustitución": "Error por no considerar cambios de consumo",
+    "INEI": "Instituto Nacional de Estadística e Informática"
+  },
+  "theory": [
+    {
+      "titulo": "Índice de Precios al Consumidor",
+      "puntos": [
+        {
+          "texto": "«IPC» = índice que mide la variación de precios al consumidor",
+          "explicacion": "Compara el costo de una canasta de bienes y servicios consumidos por los hogares con su costo en un periodo base. Es la medida más usada de la inflación."
+        },
+        {
+          "texto": "IPC ✓ año base igual a 100",
+          "explicacion": "Al año o periodo de comparación se le asigna el valor 100. Un IPC de 110 indica que los precios son 10 % mayores que los del año base."
+        },
+        {
+          "texto": "IPC ✓ canasta fija con cantidades del año base",
+          "explicacion": "El índice sigue el costo de las mismas cantidades de cada producto, de modo que solo cambian los precios. La canasta de consumo se estudia como tema propio."
+        },
+        {
+          "texto": "IPC ⇒ lo calcula el Instituto Nacional de Estadística e Informática (INEI)",
+          "explicacion": "En el Perú, el INEI publica mensualmente el IPC de Lima Metropolitana. Es la referencia oficial para medir la variación de precios."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo",
+      "puntos": [
+        {
+          "texto": "IPC = costo de la canasta actual ÷ costo de la canasta base × 100",
+          "explicacion": "Fórmula: IPC = costo de la canasta en el periodo actual (soles) ÷ costo de la canasta en el año base (soles) × 100. El resultado no tiene unidad: es un índice."
+        },
+        {
+          "texto": "Ejemplo numérico: calcular el IPC",
+          "explicacion": "Datos: la canasta costaba 180 soles en el año base y cuesta 198 soles hoy. Sustitución: 198 ÷ 180 × 100. Resultado: 110. Interpretación: los precios subieron 10 % respecto del año base."
+        },
+        {
+          "texto": "Tasa de inflación = (IPC actual − IPC anterior) ÷ IPC anterior × 100",
+          "explicacion": "Fórmula: inflación (%) = (IPC del periodo actual − IPC del periodo anterior) ÷ IPC del periodo anterior × 100. Mide cuánto subieron los precios entre dos periodos."
+        },
+        {
+          "texto": "Ejemplo numérico: calcular la inflación con el IPC",
+          "explicacion": "Datos: IPC anterior de 110 e IPC actual de 115,5. Sustitución: (115,5 − 110) ÷ 110 × 100. Resultado: 5 %. Interpretación: los precios aumentaron 5 % entre los dos periodos."
+        },
+        {
+          "texto": "Variación del IPC ≠ nivel del IPC",
+          "explicacion": "El nivel indica cuánto subieron los precios desde la base; la variación, cuánto subieron entre dos periodos. Error frecuente: decir que un IPC de 110 equivale a una inflación de 110 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Ponderaciones",
+      "puntos": [
+        {
+          "texto": "IPC ⊃ rubros con distintos pesos",
+          "explicacion": "Cada grupo de bienes pesa según la parte del gasto de los hogares que representa. Ejemplo: alimentos y bebidas tiene el mayor peso."
+        },
+        {
+          "texto": "Precio de un bien pesado ↑ ⇒ IPC sube más",
+          "explicacion": "Un aumento del precio de un producto muy consumido, como el pan, afecta más al índice que el de un producto poco consumido."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor nominal",
+      "puntos": [
+        {
+          "texto": "«Valor nominal» = valor expresado en precios corrientes",
+          "explicacion": "Es la cifra que se paga o se cobra, sin descontar el efecto de la inflación. Ejemplo: un sueldo de 2 200 soles."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor real",
+      "puntos": [
+        {
+          "texto": "«Valor real» = valor corregido por la variación de precios",
+          "explicacion": "Indica cuánto se puede comprar realmente con una cantidad de dinero. Permite comparar montos de distintos años."
+        },
+        {
+          "texto": "Valor real = valor nominal ÷ IPC × 100",
+          "explicacion": "Fórmula: valor real (soles del año base) = valor nominal (soles) ÷ IPC × 100. Se llama deflactar."
+        },
+        {
+          "texto": "Ejemplo numérico: calcular un sueldo real",
+          "explicacion": "Datos: sueldo nominal de 2 200 soles e IPC de 110. Sustitución: 2 200 ÷ 110 × 100. Resultado: 2 000 soles. Interpretación: ese sueldo compra lo mismo que 2 000 soles del año base."
+        }
+      ]
+    },
+    {
+      "titulo": "Usos del IPC",
+      "puntos": [
+        {
+          "texto": "IPC ⇒ medir la inflación",
+          "explicacion": "Es el principal indicador del cambio general de precios. La inflación se estudia como tema propio."
+        },
+        {
+          "texto": "IPC ⇒ reajustar ingresos y contratos",
+          "explicacion": "Se usa para ajustar salarios, pensiones o alquileres y mantener su poder adquisitivo. A esto se le llama indexación."
+        },
+        {
+          "texto": "IPC ⇒ referencia para la meta de inflación",
+          "explicacion": "El Banco Central de Reserva usa su variación para evaluar si cumple la meta de inflación."
+        },
+        {
+          "texto": "IPC ⇒ deflactar series económicas",
+          "explicacion": "Permite convertir valores nominales en reales para comparar el crecimiento sin el efecto de los precios."
+        }
+      ]
+    },
+    {
+      "titulo": "Limitaciones",
+      "puntos": [
+        {
+          "texto": "«Sesgo de sustitución» = error por no considerar cambios de consumo",
+          "explicacion": "Con una canasta fija no se refleja que, si un producto sube mucho, las familias consumen menos de él y más de otro. Por eso el IPC puede sobrestimar el aumento del costo de vida."
+        },
+        {
+          "texto": "IPC ✗ refleja el gasto exacto de cada familia",
+          "explicacion": "Mide un promedio. Una familia con hábitos de consumo distintos al promedio vive una inflación diferente."
+        },
+        {
+          "texto": "IPC de Lima ≠ IPC de todo el país",
+          "explicacion": "El índice más conocido se refiere a Lima Metropolitana. Los precios en otras regiones pueden evolucionar de forma distinta."
+        }
+      ]
+    }
+  ]
+}
