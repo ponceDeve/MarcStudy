@@ -1,0 +1,180 @@
+{
+  "curso": "Álgebra",
+  "tema": "Propiedades valor",
+  "glosario": {
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Opuesto": "Número de igual magnitud y signo contrario.",
+    "Número real": "Número ubicable en la recta numérica.",
+    "Desigualdad triangular": "Suma de valores absolutos acota la suma.",
+    "Factor": "Número que se multiplica.",
+    "Sumando": "Número que se suma.",
+    "Denominador": "Número que divide en una fracción.",
+    "Raíz": "Operación inversa de la potencia."
+  },
+  "theory": [
+    {
+      "titulo": "No negatividad",
+      "puntos": [
+        {
+          "texto": "$|x| \\ge 0$ para todo real $x$",
+          "explicacion": "El valor absoluto de cualquier número real es positivo o cero porque mide una distancia. Se justifica con la definición: si $x \\ge 0$ se conserva y si $x < 0$ se cambia de signo a uno positivo."
+        },
+        {
+          "texto": "Ejemplo: $|-0.5|$ y $|0|$ no son negativos",
+          "explicacion": "Datos: $x = -0.5$ y $x = 0$. Como $-0.5 < 0$, $|-0.5| = -(-0.5) = 0.5$, que es mayor que cero. Como $0 \\ge 0$, $|0| = 0$. Resultado: ambos valores son mayores o iguales que cero."
+        },
+        {
+          "texto": "$|x| = 0$ ⇒ $x = 0$",
+          "explicacion": "El cero es el único número a distancia cero del origen. Por tanto, si el valor absoluto de una expresión es cero, esa expresión debe ser cero; esta idea se usa luego para resolver igualdades con barras."
+        },
+        {
+          "texto": "Ejemplo: $|x - 4| = 0$",
+          "explicacion": "Datos: el valor absoluto de $x - 4$ es cero. Como solo el cero tiene valor absoluto cero, $x - 4 = 0$. Despejando, $x = 4$. Resultado: la distancia entre $x$ y $4$ es cero solo cuando $x$ coincide con $4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Números opuestos",
+      "puntos": [
+        {
+          "texto": "$|-x| = |x|$ para todo real $x$",
+          "explicacion": "Un número y su opuesto están a la misma distancia del cero, por lo que tienen igual valor absoluto. Se justifica con la definición: si $x \\ge 0$, $-x \\le 0$ y su valor absoluto es $x$; si $x < 0$, $-x > 0$ y su valor absoluto es $-x$, igual que $|x|$."
+        },
+        {
+          "texto": "Ejemplo: $|-6|$ y $|6|$",
+          "explicacion": "Datos: $x = 6$. Se tiene $|-6| = 6$ porque $-6 < 0$, y $|6| = 6$ porque $6 \\ge 0$. Resultado: $|-6| = |6| = 6$; ambos números están a $6$ unidades del cero, por ejemplo, un pozo a 6 m de profundidad y una torre de 6 m de altura están igual de lejos del nivel del suelo."
+        },
+        {
+          "texto": "$|a - b| = |b - a|$",
+          "explicacion": "Aquí $a$ y $b$ son números reales cualesquiera. Es consecuencia de la propiedad de opuestos, porque $b - a = -(a - b)$. Significa que la distancia entre dos puntos no depende del orden en que se nombren."
+        },
+        {
+          "texto": "Ejemplo: $|3 - 10|$ y $|10 - 3|$",
+          "explicacion": "Datos: $a = 3$ y $b = 10$. Primero, $|3 - 10| = |-7| = 7$. Después, $|10 - 3| = |7| = 7$. Resultado: ambas expresiones valen $7$, igual que la distancia entre las casas ubicadas en los kilómetros $3$ y $10$ de una carretera."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto y cociente",
+      "puntos": [
+        {
+          "texto": "$|xy| = |x||y|$",
+          "explicacion": "Aquí $x$ e $y$ son números reales. El valor absoluto de un producto es el producto de los valores absolutos de sus factores, porque el signo del resultado se elimina al final y el tamaño se multiplica."
+        },
+        {
+          "texto": "Ejemplo: $|(-4)(3)|$",
+          "explicacion": "Datos: $x = -4$ e $y = 3$. Lado izquierdo: $(-4)(3) = -12$ y $|-12| = 12$. Lado derecho: $|-4||3| = 4 \\cdot 3 = 12$. Resultado: ambos lados valen $12$, así que la propiedad se cumple."
+        },
+        {
+          "texto": "Demostración: $|xy| = \\sqrt{(xy)^2}$ ⇒ $|x||y|$",
+          "explicacion": "Como $\\sqrt{t^2} = |t|$, se escribe $|xy| = \\sqrt{(xy)^2} = \\sqrt{x^2 y^2}$. Luego, como $x^2$ y $y^2$ no son negativos, la raíz de un producto es el producto de las raíces: $\\sqrt{x^2}\\sqrt{y^2} = |x||y|$."
+        },
+        {
+          "texto": "$\\left|\\dfrac{x}{y}\\right| = \\dfrac{|x|}{|y|}$ con $y \\ne 0$",
+          "explicacion": "Aquí $x$ e $y$ son números reales y el denominador $y$ no puede ser cero. Se obtiene aplicando la propiedad del producto a $x \\cdot \\frac{1}{y}$, considerando que $\\left|\\frac{1}{y}\\right| = \\frac{1}{|y|}$, ya que $|y| \\cdot \\left|\\frac{1}{y}\\right| = |1| = 1$."
+        },
+        {
+          "texto": "Ejemplo: $\\left|\\dfrac{-10}{5}\\right|$",
+          "explicacion": "Datos: $x = -10$ e $y = 5$. Lado izquierdo: $\\frac{-10}{5} = -2$ y $|-2| = 2$. Lado derecho: $\\frac{|-10|}{|5|} = \\frac{10}{5} = 2$. Resultado: ambos lados valen $2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrado y potencia",
+      "puntos": [
+        {
+          "texto": "$|x|^2 = x^2$ para todo real $x$",
+          "explicacion": "Elevar al cuadrado elimina el signo, y el valor absoluto también lo elimina, por lo que ambas operaciones dan el mismo resultado. Es una forma de ver que $\\sqrt{x^2} = |x|$ al despejar."
+        },
+        {
+          "texto": "Ejemplo: $|-5|^2$ y $(-5)^2$",
+          "explicacion": "Datos: $x = -5$. Lado izquierdo: $|-5| = 5$ y $5^2 = 25$. Lado derecho: $(-5)^2 = 25$. Resultado: ambos lados valen $25$, lo cual permite quitar las barras cuando una expresión con valor absoluto está elevada al cuadrado."
+        },
+        {
+          "texto": "$|x^n| = |x|^n$ para $n$ entero",
+          "explicacion": "Aquí $x$ es real y $n$ es un número entero positivo. Se obtiene aplicando varias veces la propiedad del producto, ya que $x^n$ es el producto de $x$ consigo mismo $n$ veces."
+        },
+        {
+          "texto": "Ejemplo: $|(-2)^3|$",
+          "explicacion": "Datos: $x = -2$ y $n = 3$. Lado izquierdo: $(-2)^3 = -8$ y $|-8| = 8$. Lado derecho: $|-2|^3 = 2^3 = 8$. Resultado: ambos lados valen $8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Acotación de x",
+      "puntos": [
+        {
+          "texto": "$-|x| \\le x \\le |x|$ para todo real $x$",
+          "explicacion": "Aquí $x$ es cualquier número real. Un número nunca supera a su valor absoluto ni es menor que el opuesto de este. Es la base para demostrar la desigualdad triangular."
+        },
+        {
+          "texto": "Ejemplo: $x = -4$ y $x = 3$",
+          "explicacion": "Para $x = -4$: $|-4| = 4$ y se cumple $-4 \\le -4 \\le 4$. Para $x = 3$: $|3| = 3$ y se cumple $-3 \\le 3 \\le 3$. Resultado: en ambos casos el número queda entre $-|x|$ y $|x|$, y toca uno de los extremos."
+        }
+      ]
+    },
+    {
+      "titulo": "Desigualdad triangular",
+      "puntos": [
+        {
+          "texto": "$|x + y| \\le |x| + |y|$",
+          "explicacion": "Aquí $x$ e $y$ son números reales. Su nombre viene de la geometría, donde un lado de un triángulo no supera la suma de los otros dos. Expresa que sumar primero y luego medir da una distancia menor o igual que medir cada uno por separado."
+        },
+        {
+          "texto": "Ejemplo: $x = -3$ e $y = 5$",
+          "explicacion": "Lado izquierdo: $|-3 + 5| = |2| = 2$. Lado derecho: $|-3| + |5| = 3 + 5 = 8$. Como $2 \\le 8$, la desigualdad se cumple. Resultado: al tener signos opuestos, se pierde parte del tamaño al sumar, como cuando un ingreso de 5 soles compensa un gasto de 3."
+        },
+        {
+          "texto": "Demostración, caso $x + y \\ge 0$",
+          "explicacion": "Como $|x + y| = x + y$ y se cumple $x \\le |x|$ e $y \\le |y|$, al sumar queda $x + y \\le |x| + |y|$. Por tanto $|x + y| \\le |x| + |y|$."
+        },
+        {
+          "texto": "Demostración, caso $x + y < 0$",
+          "explicacion": "Aquí $|x + y| = -(x + y) = (-x) + (-y)$. Como $-x \\le |x|$ y $-y \\le |y|$, al sumar queda $(-x) + (-y) \\le |x| + |y|$. Por tanto $|x + y| \\le |x| + |y|$."
+        },
+        {
+          "texto": "Igualdad si $xy \\ge 0$ ⇒ mismo signo",
+          "explicacion": "La igualdad $|x + y| = |x| + |y|$ ocurre cuando $x$ e $y$ tienen el mismo signo o alguno es cero, es decir, cuando $xy \\ge 0$. En ese caso no hay compensación al sumar."
+        },
+        {
+          "texto": "Ejemplo: $x = 2$ e $y = 5$; $x = -3$ e $y = -4$",
+          "explicacion": "Con $x = 2$ e $y = 5$: $|2 + 5| = 7$ y $|2| + |5| = 7$. Con $x = -3$ e $y = -4$: $|-3 + (-4)| = |-7| = 7$ y $|-3| + |-4| = 3 + 4 = 7$. Resultado: en ambos pares se cumple la igualdad porque no hay signos opuestos."
+        },
+        {
+          "texto": "$|x_1 + x_2 + \\cdots + x_n| \\le |x_1| + \\cdots + |x_n|$",
+          "explicacion": "Aquí $x_1, x_2, \\ldots, x_n$ son $n$ números reales. Es la extensión de la desigualdad triangular a varios sumandos y se obtiene aplicándola repetidamente."
+        },
+        {
+          "texto": "Ejemplo: $x_1 = 2$, $x_2 = -5$, $x_3 = 4$",
+          "explicacion": "Lado izquierdo: $|2 + (-5) + 4| = |1| = 1$. Lado derecho: $|2| + |-5| + |4| = 2 + 5 + 4 = 11$. Como $1 \\le 11$, la desigualdad se cumple. Resultado: la suma con signos mezclados es mucho menor que la suma de tamaños."
+        }
+      ]
+    },
+    {
+      "titulo": "Desigualdad triangular inversa",
+      "puntos": [
+        {
+          "texto": "$|x - y| \\ge \\big||x| - |y|\\big|$",
+          "explicacion": "Aquí $x$ e $y$ son números reales. Dice que la distancia entre dos números es al menos tan grande como la diferencia de sus tamaños. Se deduce de la desigualdad triangular escrita para $x = (x - y) + y$."
+        },
+        {
+          "texto": "Ejemplo: $x = -2$ e $y = 7$",
+          "explicacion": "Lado izquierdo: $|-2 - 7| = |-9| = 9$. Lado derecho: $\\big||-2| - |7|\\big| = |2 - 7| = |-5| = 5$. Como $9 \\ge 5$, la desigualdad se cumple. Resultado: los números con signos opuestos están más separados que sus tamaños."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores comunes",
+      "puntos": [
+        {
+          "texto": "$|x + y|$ ≠ $|x| + |y|$ en general",
+          "explicacion": "Solo coinciden cuando $x$ e $y$ tienen el mismo signo. Verificación con $x = -3$ e $y = 5$: $|-3 + 5| = 2$, pero $|-3| + |5| = 8$, de modo que no son iguales."
+        },
+        {
+          "texto": "$|x - y|$ ≠ $|x| - |y|$ en general",
+          "explicacion": "La diferencia de valores absolutos puede ser negativa, y un valor absoluto no lo es. Verificación con $x = 2$ e $y = 7$: $|2 - 7| = 5$, pero $|2| - |7| = -5$."
+        }
+      ]
+    }
+  ]
+}

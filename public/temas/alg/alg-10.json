@@ -1,0 +1,152 @@
+{
+  "curso": "Álgebra",
+  "tema": "Valor absoluto",
+  "glosario": {
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Recta numérica": "Recta donde se ubican los números reales.",
+    "Origen": "Punto que representa el cero.",
+    "Opuesto": "Número de igual magnitud y signo contrario.",
+    "Número real": "Número ubicable en la recta numérica.",
+    "Raíz cuadrada principal": "Raíz cuadrada no negativa de un número.",
+    "Signo de agrupación": "Símbolo que encierra una expresión.",
+    "Variable": "Símbolo que representa un número cualquiera.",
+    "Error absoluto": "Diferencia positiva entre medida y valor real.",
+    "Magnitud": "Tamaño de un número sin su signo."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El valor absoluto de $x$ = distancia de $x$ a $0$",
+          "explicacion": "Mide cuánto se aleja un número real del origen en la recta numérica, sin importar de qué lado esté, por lo que nunca es negativo. Ejemplo cotidiano: un termómetro marca 5 °C y otro marca -5 °C; ambos están a 5 grados del cero, aunque uno esté por encima y el otro por debajo."
+        },
+        {
+          "texto": "Notación: $|x|$ se lee valor absoluto de $x$",
+          "explicacion": "Las barras verticales encierran el número o la expresión cuyo tamaño se mide y funcionan como un solo signo de agrupación. No son paréntesis ni signo menos: para quitarlas hay que aplicar la definición, no simplemente borrarlas."
+        },
+        {
+          "texto": "$|x| = x$ si $x \\ge 0$; $|x| = -x$ si $x < 0$",
+          "explicacion": "Aquí $x$ es cualquier número real. Si $x$ es positivo o cero se conserva igual, y si es negativo se cambia de signo para obtener su opuesto, que es positivo. Esta definición por casos se obtiene de medir la distancia al cero, que no puede ser negativa."
+        },
+        {
+          "texto": "Ejemplo: $|7|$ y $|-7|$ por la definición",
+          "explicacion": "Datos: $x = 7$ y $x = -7$. Paso 1: como $7 \\ge 0$, se conserva y $|7| = 7$. Paso 2: como $-7 < 0$, se cambia el signo y $|-7| = -(-7) = 7$. Resultado: ambos valen $7$, porque los dos números están a $7$ unidades del cero."
+        },
+        {
+          "texto": "El cero ∈ primer caso de la definición",
+          "explicacion": "Como $0 \\ge 0$, se cumple $|0| = 0$. El cero es el único número que está a distancia cero del origen, y por eso su valor absoluto es cero."
+        },
+        {
+          "texto": "$|x|$ nunca es negativo",
+          "explicacion": "Siempre resulta positivo o cero porque mide una distancia: en el primer caso se conserva un número que ya es $\\ge 0$, y en el segundo se cambia el signo de un número negativo y se obtiene uno positivo. Error frecuente: pensar que el valor absoluto de un número negativo sigue siendo negativo."
+        },
+        {
+          "texto": "$|-5|$ ≠ $-5$",
+          "explicacion": "El signo menos dentro de las barras desaparece porque $-5 < 0$ y se aplica el segundo caso: $|-5| = 5$. En cambio, $-|5|$ lleva el signo fuera de las barras y sí vale $-5$. Ejemplo: $-|-2| = -(2) = -2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación geométrica",
+      "puntos": [
+        {
+          "texto": "En la recta, $|x|$ = longitud del segmento de $0$ a $x$",
+          "explicacion": "Cada número real corresponde a un punto de la recta numérica, y su valor absoluto es la longitud del segmento que lo une con el origen. Los números opuestos, como $3$ y $-3$, quedan a la misma distancia del cero y en lados contrarios."
+        },
+        {
+          "texto": "Distancia entre $a$ y $b$ = $|a - b|$",
+          "explicacion": "Aquí $a$ y $b$ son números reales ubicados en la recta, y el resultado es una longitud expresada en la unidad de la recta. Se usa el valor absoluto de la diferencia para que no importe cuál de los dos números se escriba primero. Cuando $b = 0$ se recupera la distancia al cero, $|a|$."
+        },
+        {
+          "texto": "Ejemplo: distancia entre $-2$ y $5$",
+          "explicacion": "Datos: $a = -2$ y $b = 5$. Sustitución: $|a - b| = |-2 - 5| = |-7|$. Como $-7 < 0$, $|-7| = 7$. Comprobación invirtiendo el orden: $|5 - (-2)| = |7| = 7$. Resultado: los puntos están a $7$ unidades. Es lo que recorre un ascensor que va del piso $-2$ (sótano) al piso $5$: $7$ pisos."
+        },
+        {
+          "texto": "$|x - c|$ = distancia de $x$ a $c$",
+          "explicacion": "Aquí $x$ es cualquier número real y $c$ un número fijo de referencia. Restar $c$ traslada el cero de la medición al punto $c$, de modo que la expresión indica a qué distancia está $x$ de ese punto. Es la fórmula de distancia entre dos puntos con $a = x$ y $b = c$."
+        },
+        {
+          "texto": "Ejemplo: $|x - 3|$ con $x = 8$ y con $x = -1$",
+          "explicacion": "Datos: $c = 3$. Para $x = 8$: $|8 - 3| = |5| = 5$. Para $x = -1$: $|-1 - 3| = |-4| = 4$. Resultado: el $8$ está a $5$ unidades del $3$ y el $-1$ está a $4$ unidades del $3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz y valor absoluto",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{x^2} = |x|$ para todo real $x$",
+          "explicacion": "La raíz cuadrada principal siempre da un resultado positivo o cero; al elevar al cuadrado desaparece el signo de $x$, y la raíz recupera solo su magnitud. Por eso la igualdad vale para cualquier número real $x$."
+        },
+        {
+          "texto": "Ejemplo: $\\sqrt{(-4)^2}$ y $\\sqrt{(2-5)^2}$",
+          "explicacion": "Primer caso: $(-4)^2 = 16$ y $\\sqrt{16} = 4$, que coincide con $|-4| = 4$. Segundo caso: $(2-5)^2 = (-3)^2 = 9$ y $\\sqrt{9} = 3$, que coincide con $|2-5| = |-3| = 3$. Resultado: en ambos casos la raíz da la magnitud, no el número negativo original."
+        },
+        {
+          "texto": "Caso $x \\ge 0$: $\\sqrt{x^2} = x$",
+          "explicacion": "Si $x$ no es negativo, ya es un número positivo o cero cuyo cuadrado es $x^2$, así que la raíz principal de $x^2$ es $x$. Este caso coincide con el primer renglón de la definición del valor absoluto."
+        },
+        {
+          "texto": "Caso $x < 0$: $\\sqrt{x^2} = -x$",
+          "explicacion": "Si $x$ es negativo, $-x$ es positivo y cumple $(-x)^2 = x^2$; como la raíz principal debe ser positiva, resulta $-x$. Este caso coincide con el segundo renglón de la definición del valor absoluto."
+        },
+        {
+          "texto": "Error frecuente: $\\sqrt{x^2} = x$ sin condición",
+          "explicacion": "Escribir $\\sqrt{x^2} = x$ es válido solo cuando $x \\ge 0$. Con $x = -3$ se tiene $\\sqrt{9} = 3$ y no $-3$; la forma correcta para cualquier real es $|x|$."
+        }
+      ]
+    },
+    {
+      "titulo": "Eliminar barras",
+      "puntos": [
+        {
+          "texto": "Quitar barras ⇒ estudiar el signo del interior",
+          "explicacion": "Si la expresión de adentro es mayor o igual que cero, se copia igual; si es negativa, se escribe con el signo cambiado. Cuando contiene una variable, su signo depende del valor de $x$, y hay que separar casos según el valor que hace cero a esa expresión."
+        },
+        {
+          "texto": "$|x - a| = x - a$ si $x \\ge a$; $= a - x$ si $x < a$",
+          "explicacion": "Aquí $a$ es un número real fijo y $x$ la variable. El punto $a$ es donde el interior se anula y separa los dos casos. Se deduce de la definición aplicada a la expresión $x - a$, cuyo opuesto es $-(x - a) = a - x$."
+        },
+        {
+          "texto": "Ejemplo: $|x - 3|$ con $x = 5$ y con $x = 1$",
+          "explicacion": "Datos: $a = 3$. Para $x = 5$: como $5 \\ge 3$, $|5 - 3| = 5 - 3 = 2$. Para $x = 1$: como $1 < 3$, $|1 - 3| = 3 - 1 = 2$. Resultado: ambos puntos están a $2$ unidades del $3$, uno a cada lado."
+        },
+        {
+          "texto": "Reescribir $|2x - 6|$ ⇒ dos casos según $x$",
+          "explicacion": "El interior $2x - 6$ vale cero en $x = 3$. Si $x \\ge 3$, el interior es positivo o cero y $|2x - 6| = 2x - 6$. Si $x < 3$, el interior es negativo y $|2x - 6| = -(2x - 6) = 6 - 2x$. Verificación: con $x = 4$ da $|2| = 2$ y $2(4) - 6 = 2$; con $x = 1$ da $|-4| = 4$ y $6 - 2(1) = 4$."
+        },
+        {
+          "texto": "$|x - 3|$ ≠ $|x| - 3$",
+          "explicacion": "Las barras afectan a toda la expresión que encierran, y no solo a la primera letra. Verificación con $x = 1$: $|1 - 3| = 2$, pero $|1| - 3 = -2$, de modo que las expresiones no son iguales."
+        }
+      ]
+    },
+    {
+      "titulo": "Evaluar con barras",
+      "puntos": [
+        {
+          "texto": "Prioridad ⇒ resolver primero el interior de las barras",
+          "explicacion": "Las barras agrupan como un paréntesis, así que se calculan las operaciones de adentro y luego se aplica la definición al resultado. Después se continúa con las demás operaciones del ejercicio."
+        },
+        {
+          "texto": "Ejemplo: $|-3| + |4 - 9| - |2 - 2|$",
+          "explicacion": "Paso 1: $|-3| = 3$. Paso 2: $|4 - 9| = |-5| = 5$. Paso 3: $|2 - 2| = |0| = 0$. Paso 4: $3 + 5 - 0 = 8$. Resultado: la expresión vale $8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Error absoluto",
+      "puntos": [
+        {
+          "texto": "Error absoluto = $|\\text{medido} - \\text{real}|$",
+          "explicacion": "El valor medido y el valor real se expresan en la misma unidad, y el resultado también. Se usa el valor absoluto porque interesa qué tan lejos quedó la medición, no si se pasó o se quedó corta."
+        },
+        {
+          "texto": "Ejemplo: error absoluto de dos balanzas",
+          "explicacion": "Datos: masa real 1.2 kg; la balanza A marca 1.15 kg y la balanza B marca 1.27 kg. Para A: $|1.15 - 1.2| = |-0.05| = 0.05$ kg. Para B: $|1.27 - 1.2| = |0.07| = 0.07$ kg. Resultado: como $0.05 < 0.07$, la balanza A se equivoca menos que la B en esa medición."
+        }
+      ]
+    }
+  ]
+}

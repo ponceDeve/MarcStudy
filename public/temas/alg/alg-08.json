@@ -1,0 +1,218 @@
+{
+  "curso": "Álgebra",
+  "tema": "Inecuaciones lineales",
+  "glosario": {
+    "inecuación": "Desigualdad con una incógnita por resolver",
+    "incógnita": "Valor desconocido que se debe hallar",
+    "coeficiente": "Número que multiplica a la incógnita",
+    "término independiente": "Número sin incógnita en una expresión",
+    "conjunto solución": "Valores que hacen verdadera la desigualdad",
+    "equivalentes": "Que tienen el mismo conjunto solución",
+    "intervalo": "Reales comprendidos entre dos extremos",
+    "desigualdad estricta": "Desigualdad con signo menor o mayor",
+    "mínimo común múltiplo": "Menor múltiplo positivo común a varios números",
+    "acotado": "Con extremos finitos a ambos lados",
+    "intersección": "Elementos comunes a dos o más conjuntos",
+    "conjunto vacío": "Conjunto sin ningún elemento"
+  },
+  "theory": [
+    {
+      "titulo": "Inecuación lineal",
+      "puntos": [
+        {
+          "texto": "«Inecuación lineal» = desigualdad con una incógnita de grado 1",
+          "explicacion": "Una inecuación compara dos expresiones con un signo de desigualdad en lugar del igual. Es lineal cuando la incógnita, la letra cuyo valor se busca, aparece solo con exponente 1."
+        },
+        {
+          "texto": "Forma general: «$ax+b>0$», con $a \\neq 0$",
+          "explicacion": "Aquí $a$ es el coeficiente de la incógnita $x$ y $b$ es el término independiente. El signo $>$ puede cambiarse por $<$, $\\geq$ o $\\leq$ y la forma sigue siendo lineal. Se obtiene pasando todos los términos a un miembro y reduciendo, hasta que quede un solo término con $x$ más un número."
+        },
+        {
+          "texto": "Ejemplo: $3x-6>0$ ⇒ $x>2$",
+          "explicacion": "Datos: $3x-6>0$. Se suma 6 a ambos miembros: $3x>6$. Se divide entre 3, que es positivo, así que el sentido no cambia: $x>2$. Solución: todos los números mayores que 2, es decir, el intervalo $(2;+\\infty)$. Verificación con $x=3$: $3(3)-6=3>0$, es verdadero; con $x=2$: $3(2)-6=0>0$, es falso, por eso 2 no pertenece."
+        },
+        {
+          "texto": "Inecuación lineal ⇒ infinitas soluciones",
+          "explicacion": "Mientras la ecuación $ax+b=0$ se cumple para un solo valor de $x$, la inecuación se cumple para todo un intervalo de valores, y su respuesta es un conjunto y no un número. Es como exigir gastar más de 20 soles: cualquier monto mayor sirve, no uno solo."
+        },
+        {
+          "texto": "Resolver = hallar el conjunto solución",
+          "explicacion": "El conjunto solución reúne todos los valores de $x$ que hacen verdadera la desigualdad. Dos inecuaciones son equivalentes cuando tienen el mismo conjunto solución, y se pasa de una a otra aplicando las propiedades de la desigualdad."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la desigualdad",
+      "puntos": [
+        {
+          "texto": "Sumar un número a ambos miembros ⇒ mismo sentido",
+          "explicacion": "Equivale a pasar un término de un miembro a otro cambiándole el signo; el orden entre ambos miembros se conserva."
+        },
+        {
+          "texto": "Restar un número a ambos miembros ⇒ mismo sentido",
+          "explicacion": "Quitar la misma cantidad a los dos lados no altera cuál es mayor, igual que retirar el mismo peso de dos bolsas no cambia cuál pesa más."
+        },
+        {
+          "texto": "Multiplicar por un positivo ⇒ mismo sentido",
+          "explicacion": "Al ampliar ambos lados en la misma proporción positiva se conserva la comparación: si $2<5$, entonces $2\\cdot 3<5\\cdot 3$, es decir, $6<15$."
+        },
+        {
+          "texto": "Dividir entre un positivo ⇒ mismo sentido",
+          "explicacion": "Dividir entre un positivo equivale a multiplicar por su inverso, que también es positivo, de modo que la comparación se conserva."
+        },
+        {
+          "texto": "Multiplicar por un negativo ⇒ sentido invertido",
+          "explicacion": "Al multiplicar por un negativo los números cambian de lado en la recta: $2<5$, pero $-2>-5$. Por eso $<$ pasa a $>$ y $\\leq$ pasa a $\\geq$."
+        },
+        {
+          "texto": "Dividir entre un negativo ⇒ sentido invertido",
+          "explicacion": "Dividir entre $-2$ equivale a multiplicar por $-\\frac{1}{2}$, que también es negativo, así que el sentido se invierte igual que al multiplicar."
+        },
+        {
+          "texto": "Ejemplo: $-2x>8$ ⇒ $x<-4$",
+          "explicacion": "Datos: $-2x>8$. Se divide entre $-2$, que es negativo, así que el sentido se invierte: $x<-4$. Solución: el intervalo $(-\\infty;-4)$. Verificación con $x=-5$: $-2(-5)=10>8$, es verdadero; con $x=0$: $0>8$, es falso, por eso 0 queda fuera."
+        },
+        {
+          "texto": "Error frecuente: olvidar invertir el sentido",
+          "explicacion": "Al despejar $x$ de $-3x>6$ es común escribir $x>-2$, pero lo correcto es $x<-2$. La prueba con $x=0$ lo delata: $-3(0)=0>6$ es falso, mientras que $0>-2$ sí sería verdadero."
+        },
+        {
+          "texto": "Con denominadores ✓ multiplicar por el mínimo común múltiplo (MCM)",
+          "explicacion": "El mínimo común múltiplo de los denominadores es positivo, así que elimina las fracciones sin invertir el sentido de la desigualdad."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{x}{2}+\\frac{x}{3}<5$ ⇒ $x<6$",
+          "explicacion": "Datos: $\\frac{x}{2}+\\frac{x}{3}<5$. El MCM de 2 y 3 es 6. Se multiplica todo por 6: $3x+2x<30$. Se reduce: $5x<30$. Se divide entre 5: $x<6$. Solución: $(-\\infty;6)$. Verificación con $x=0$: $0<5$, verdadero; con $x=6$: $3+2=5<5$, falso, por eso 6 queda fuera."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto solución",
+      "puntos": [
+        {
+          "texto": "«$x>c$» → intervalo $(c;+\\infty)$",
+          "explicacion": "El paréntesis en $c$ indica que ese valor no pertenece a la solución, porque la desigualdad es estricta y no incluye la igualdad."
+        },
+        {
+          "texto": "Ejemplo: $x>2$ → $(2;+\\infty)$",
+          "explicacion": "Datos: $x>2$. El 2 no pertenece, porque $2>2$ es falso, así que lleva paréntesis. Sí pertenecen, por ejemplo, 2,5 y 10. Solución: $(2;+\\infty)$."
+        },
+        {
+          "texto": "«$x\\geq c$» → intervalo $[c;+\\infty)$",
+          "explicacion": "El corchete en $c$ indica que ese valor sí pertenece, porque la desigualdad incluye la igualdad."
+        },
+        {
+          "texto": "Ejemplo: $x\\geq 4$ → $[4;+\\infty)$",
+          "explicacion": "Datos: $x\\geq 4$. El 4 sí pertenece, porque $4\\geq 4$ es verdadero, así que lleva corchete. El 3 no pertenece. Solución: $[4;+\\infty)$."
+        },
+        {
+          "texto": "«$x<c$» → intervalo $(-\\infty;c)$",
+          "explicacion": "Se lee como todos los números menores que $c$, sin incluirlo. El extremo $c$ lleva paréntesis por ser desigualdad estricta."
+        },
+        {
+          "texto": "Ejemplo: $x<-1$ → $(-\\infty;-1)$",
+          "explicacion": "Datos: $x<-1$. El $-1$ no pertenece, porque $-1<-1$ es falso; sí pertenecen $-2$ y $-10$. Solución: $(-\\infty;-1)$."
+        },
+        {
+          "texto": "«$x\\leq c$» → intervalo $(-\\infty;c]$",
+          "explicacion": "Se lee como todos los números menores o iguales que $c$. El extremo $c$ lleva corchete porque la desigualdad incluye la igualdad."
+        },
+        {
+          "texto": "Ejemplo: $x\\leq 3$ → $(-\\infty;3]$",
+          "explicacion": "Datos: $x\\leq 3$. El 3 sí pertenece, porque $3\\leq 3$ es verdadero; el 4 no pertenece. Solución: $(-\\infty;3]$."
+        },
+        {
+          "texto": "Infinito siempre lleva paréntesis",
+          "explicacion": "$+\\infty$ y $-\\infty$ no son números reales, solo indican que el intervalo continúa sin límite, así que nunca pueden pertenecer al conjunto y no admiten corchete."
+        }
+      ]
+    },
+    {
+      "titulo": "Cancelación de la incógnita",
+      "puntos": [
+        {
+          "texto": "Si $x$ se cancela ⇒ queda una desigualdad numérica",
+          "explicacion": "Ocurre cuando la incógnita tiene el mismo coeficiente a ambos lados; al reducir desaparece y queda una comparación entre números, como $3<7$, que ya no depende de $x$."
+        },
+        {
+          "texto": "Desigualdad numérica verdadera ⇒ solución todos los reales",
+          "explicacion": "Si la comparación resultante es cierta, se cumple para cualquier valor de $x$, porque la incógnita ya no influye. El conjunto solución es $\\mathbb{R}$."
+        },
+        {
+          "texto": "Ejemplo: $2x+3<2x+7$ ⇒ $\\mathbb{R}$",
+          "explicacion": "Datos: $2x+3<2x+7$. Se resta $2x$ en ambos miembros: $3<7$, que es verdadero. Solución: $\\mathbb{R}$. Verificación con $x=0$: $3<7$, verdadero; con $x=100$: $203<207$, verdadero."
+        },
+        {
+          "texto": "Desigualdad numérica falsa ⇒ sin solución (conjunto vacío)",
+          "explicacion": "Si la comparación resultante es falsa, ningún valor de $x$ la vuelve verdadera, porque la incógnita ya no influye. El conjunto solución es el vacío, $\\emptyset$."
+        },
+        {
+          "texto": "Ejemplo: $2x+5<2x+1$ ⇒ $\\emptyset$",
+          "explicacion": "Datos: $2x+5<2x+1$. Se resta $2x$ en ambos miembros: $5<1$, que es falso. Solución: $\\emptyset$. Verificación con $x=0$: $5<1$, falso; con $x=-100$: $-195<-199$, falso."
+        },
+        {
+          "texto": "Coeficiente de $x$ igual a 0 ⇒ ya no es de primer grado",
+          "explicacion": "La forma lineal exige $a \\neq 0$. Si $a=0$ desaparece la incógnita y el problema se reduce a decidir si una comparación numérica es verdadera o falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Doble inecuación",
+      "puntos": [
+        {
+          "texto": "«Doble inecuación» = $c<ax+b<d$ (también con $\\leq$)",
+          "explicacion": "Reúne dos desigualdades en una: $ax+b$ debe ser mayor que $c$ y a la vez menor que $d$. Sirve cuando una cantidad debe mantenerse entre dos límites, como una temperatura que debe quedar entre un mínimo y un máximo."
+        },
+        {
+          "texto": "Se opera en los tres miembros a la vez",
+          "explicacion": "Lo que se suma, resta, multiplica o divide se aplica igual a los tres miembros, de modo que ambas desigualdades se transforman juntas y siguen siendo equivalentes a la original."
+        },
+        {
+          "texto": "Ejemplo: $-1<2x+3\\leq 7$ ⇒ $-2<x\\leq 2$",
+          "explicacion": "Datos: $-1<2x+3\\leq 7$. Se resta 3 a los tres miembros: $-4<2x\\leq 4$. Se divide entre 2, que es positivo: $-2<x\\leq 2$. Solución: $(-2;2]$. Verificación con $x=2$: $2(2)+3=7$, cumple $\\leq 7$; con $x=-2$: $2(-2)+3=-1$, y $-1<-1$ es falso, por eso $-2$ queda fuera."
+        },
+        {
+          "texto": "Multiplicar por un negativo ⇒ invertir ambas desigualdades",
+          "explicacion": "Además de invertir cada signo, conviene reescribir el resultado con el menor valor a la izquierda para leer bien el intervalo."
+        },
+        {
+          "texto": "Ejemplo: $2<-x+1<5$ ⇒ $-4<x<-1$",
+          "explicacion": "Datos: $2<-x+1<5$. Se resta 1 a los tres miembros: $1<-x<4$. Se multiplica por $-1$ y se invierten ambos signos: $-1>x>-4$. Se reordena: $-4<x<-1$. Solución: $(-4;-1)$. Verificación con $x=-2$: $-(-2)+1=3$, y $2<3<5$ es verdadero."
+        },
+        {
+          "texto": "Solución de la doble inecuación = intervalo acotado",
+          "explicacion": "El resultado tiene extremos finitos a ambos lados, como $(-2;2]$, y cada extremo puede ser abierto o cerrado según el signo de la desigualdad correspondiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema de inecuaciones",
+      "puntos": [
+        {
+          "texto": "«Sistema de inecuaciones» = dos o más inecuaciones con la misma incógnita",
+          "explicacion": "Todas deben cumplirse al mismo tiempo para un mismo valor de $x$, por eso se resuelve cada una por separado antes de combinar los resultados."
+        },
+        {
+          "texto": "Solución del sistema = intersección de las soluciones",
+          "explicacion": "La intersección reúne solo los valores que pertenecen a todos los conjuntos solución a la vez; si un valor falla en una sola inecuación, queda fuera."
+        },
+        {
+          "texto": "Ejemplo: $x+1>3$ y $2x-1<9$ ⇒ $(2;5)$",
+          "explicacion": "Datos: $x+1>3$ y $2x-1<9$. Primera inecuación: $x>2$. Segunda: $2x<10$, luego $x<5$. Intersección: $2<x<5$. Solución: $(2;5)$. Verificación con $x=3$: $4>3$ y $5<9$, ambas verdaderas; con $x=5$: $2(5)-1=9<9$ es falso, por eso 5 queda fuera."
+        },
+        {
+          "texto": "Sin intersección ⇒ sistema sin solución",
+          "explicacion": "Si los conjuntos solución no se superponen, ningún valor cumple todas las inecuaciones a la vez y el sistema no tiene solución, $\\emptyset$."
+        },
+        {
+          "texto": "Ejemplo: $x>4$ y $x<1$ ⇒ $\\emptyset$",
+          "explicacion": "Datos: $x>4$ y $x<1$. Ningún número puede ser mayor que 4 y menor que 1 a la vez. Solución: $\\emptyset$. Verificación con $x=0$: no cumple $x>4$; con $x=5$: no cumple $x<1$."
+        },
+        {
+          "texto": "Inecuaciones de segundo grado ≠ lineales",
+          "explicacion": "Cuando la incógnita aparece al cuadrado dejan de ser lineales y requieren otros métodos, que se estudian en su propio tema. Lo mismo ocurre con las de valor absoluto y las fraccionarias."
+        }
+      ]
+    }
+  ]
+}

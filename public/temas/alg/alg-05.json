@@ -1,0 +1,151 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones de primer grado",
+  "glosario": {
+    "Ecuación": "Igualdad con incógnitas que se cumple a veces.",
+    "Incógnita": "Valor desconocido que se busca.",
+    "Solución": "Valor que verifica la ecuación.",
+    "Identidad": "Igualdad que se cumple para todos los valores.",
+    "Ecuaciones equivalentes": "Ecuaciones con las mismas soluciones.",
+    "Ecuación lineal": "Ecuación de primer grado.",
+    "Ecuación compatible determinada": "Tiene una única solución.",
+    "Ecuación indeterminada": "Tiene infinitas soluciones.",
+    "Ecuación incompatible": "No tiene solución.",
+    "Solución extraña": "Valor que anula un denominador y no sirve.",
+    "Mínimo común múltiplo": "Menor múltiplo común de varios números."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación",
+      "puntos": [
+        {
+          "texto": "«Ecuación» = igualdad con incógnitas que se cumple para ciertos valores",
+          "explicacion": "Por ejemplo, $x+3=8$ se cumple solo si $x=5$. Una igualdad que se cumple para todos los valores, como $2(x+1)=2x+2$, se llama identidad."
+        },
+        {
+          "texto": "Solución ⇒ valor de la incógnita que verifica la ecuación",
+          "explicacion": "También se llama raíz. Se comprueba sustituyéndola: con $x=5$ en $x+3=8$, se obtiene $5+3=8$, que es cierto."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones equivalentes",
+      "puntos": [
+        {
+          "texto": "«Ecuaciones equivalentes» = tienen las mismas soluciones",
+          "explicacion": "Se obtienen una de otra con transformaciones válidas. Por ejemplo, $x+3=8$ y $x=5$ son equivalentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformaciones válidas",
+      "puntos": [
+        {
+          "texto": "Transformación ⇒ sumar o restar el mismo número en ambos miembros",
+          "explicacion": "No cambia las soluciones. Ejemplo: de $x+3=8$, al restar $3$ en ambos miembros resulta $x=5$."
+        },
+        {
+          "texto": "Transformación ⇒ multiplicar o dividir ambos miembros por un número no nulo",
+          "explicacion": "No cambia las soluciones. Error frecuente: multiplicar o dividir por una expresión con la incógnita, que puede valer cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación de primer grado",
+      "puntos": [
+        {
+          "texto": "Forma general ⇒ $ax+b=0$, con $a\\neq0$",
+          "explicacion": "Se llama de primer grado porque la incógnita tiene exponente $1$. También se llama ecuación lineal."
+        },
+        {
+          "texto": "Solución ⇒ $x=-\\frac{b}{a}$",
+          "explicacion": "Se obtiene despejando: $ax=-b$ y luego dividiendo entre $a$. Es única cuando $a\\neq0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3x+5=20$ da $x=5$",
+          "explicacion": "Se resta $5$: $3x=15$. Luego se divide entre $3$: $x=5$. Comprobación: $3\\cdot5+5=20$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones con paréntesis",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $2(x-3)=x+4$ da $x=10$",
+          "explicacion": "Se aplica la distributiva: $2x-6=x+4$. Se pasan los términos con $x$ a un lado: $2x-x=4+6$, es decir, $x=10$. Comprobación: $2(10-3)=14=10+4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones con fracciones",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $\\frac{x}{2}+\\frac{x}{3}=5$ da $x=6$",
+          "explicacion": "Se multiplica por el mínimo común múltiplo, $6$: $3x+2x=30$. Entonces $5x=30$ y $x=6$. Comprobación: $3+2=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones literales",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ de $ax+b=c$ se obtiene $x=\\frac{c-b}{a}$, con $a\\neq0$",
+          "explicacion": "La incógnita es $x$ y las demás letras son constantes. Se despeja igual que en una ecuación numérica. Con $a=2$, $b=1$, $c=9$: $x=\\frac{9-1}{2}=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación compatible determinada",
+      "puntos": [
+        {
+          "texto": "Compatible determinada ⇒ tiene una única solución",
+          "explicacion": "Ocurre cuando $a\\neq0$ en $ax+b=0$. Ejemplo: $3x+5=20$ tiene como única solución $x=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación indeterminada",
+      "puntos": [
+        {
+          "texto": "Indeterminada ⇒ tiene infinitas soluciones",
+          "explicacion": "Ocurre cuando, al simplificar, queda $0x=0$. Ejemplo: $3(x+1)=3x+3$ es cierta para cualquier $x$, porque ambos miembros son iguales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación incompatible",
+      "puntos": [
+        {
+          "texto": "Incompatible ⇒ no tiene solución",
+          "explicacion": "Ocurre cuando, al simplificar, queda $0x=b$ con $b\\neq0$. Ejemplo: $2x+3=2x+7$ lleva a $3=7$, lo cual es imposible."
+        }
+      ]
+    },
+    {
+      "titulo": "Soluciones extrañas",
+      "puntos": [
+        {
+          "texto": "Solución extraña ⇒ valor que anula un denominador y no sirve",
+          "explicacion": "En ecuaciones con fracciones algebraicas se debe verificar el resultado. Ejemplo: en $\\frac{x}{x-2}=\\frac{2}{x-2}$ se obtiene $x=2$, que anula el denominador, de modo que la ecuación no tiene solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Problemas con ecuaciones",
+      "puntos": [
+        {
+          "texto": "Resolución ⇒ definir la incógnita, plantear la ecuación y resolverla",
+          "explicacion": "Primero se identifica qué se busca y se le asigna una letra. Luego se traduce el enunciado a una igualdad, se resuelve y se verifica la respuesta."
+        },
+        {
+          "texto": "Ejemplo ⇒ tres números consecutivos suman $72$",
+          "explicacion": "Sean $x$, $x+1$ y $x+2$. La ecuación es $x+(x+1)+(x+2)=72$, es decir, $3x+3=72$ y $x=23$. Los números son $23$, $24$ y $25$."
+        },
+        {
+          "texto": "Ejemplo ⇒ edades de Juan y Ana que sumarán $50$ en $5$ años",
+          "explicacion": "Juan tiene el triple de la edad de Ana. Sea $x$ la edad de Ana; Juan tiene $3x$. La ecuación es $(x+5)+(3x+5)=50$, es decir, $4x+10=50$ y $x=10$. Ana tiene $10$ años y Juan, $30$."
+        }
+      ]
+    }
+  ]
+}

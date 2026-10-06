@@ -1,0 +1,172 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones valor",
+  "glosario": {
+    "Incógnita": "Valor desconocido que se busca.",
+    "Conjunto solución": "Valores que cumplen la ecuación.",
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Conjunto vacío": "Conjunto sin ningún elemento.",
+    "Punto crítico": "Valor que anula una expresión interior.",
+    "Intervalo": "Tramo de la recta entre dos valores.",
+    "Factorizar": "Escribir como producto de factores.",
+    "Expresión algebraica": "Combinación de números y letras con operaciones."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación con barras",
+      "puntos": [
+        {
+          "texto": "Ecuación con valor absoluto ⇒ incógnita dentro de las barras",
+          "explicacion": "Es una igualdad en la que la incógnita aparece encerrada por el valor absoluto, como en $|x - 3| = 4$. Como el valor absoluto elimina el signo, suele haber dos números que la cumplen, por lo que no se resuelve igual que una ecuación lineal común."
+        },
+        {
+          "texto": "Conjunto solución = valores que cumplen la ecuación",
+          "explicacion": "Se escribe entre llaves, por ejemplo $\\{-2, 7\\}$ si los valores válidos son $-2$ y $7$. Una ecuación con valor absoluto puede tener dos, una o ninguna solución real."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso x igual a a",
+      "puntos": [
+        {
+          "texto": "Si $a > 0$: $|x| = a$ ⇒ $x = a$ o $x = -a$",
+          "explicacion": "Aquí $x$ es la incógnita y $a$ es un número real positivo. Se obtiene de la definición de valor absoluto: hay dos números a distancia $a$ del cero, uno a cada lado."
+        },
+        {
+          "texto": "Ejemplo: $|x| = 7$",
+          "explicacion": "Datos: $a = 7 > 0$. Aplicando la regla, $x = 7$ o $x = -7$. Verificación: $|7| = 7$ y $|-7| = 7$. Resultado: el conjunto solución es $\\{-7, 7\\}$."
+        },
+        {
+          "texto": "Si $a = 0$: $|A| = 0$ ⇒ $A = 0$",
+          "explicacion": "Aquí $A$ es la expresión encerrada por las barras. Solo el cero tiene valor absoluto cero, por lo que hay una única condición y, en general, una sola solución."
+        },
+        {
+          "texto": "Ejemplo: $|2x + 6| = 0$",
+          "explicacion": "Datos: $a = 0$. Entonces $2x + 6 = 0$. Despejando, $2x = -6$ y $x = -3$. Verificación: $|2(-3) + 6| = |0| = 0$. Resultado: la única solución es $x = -3$."
+        },
+        {
+          "texto": "Si $a < 0$: $|A| = a$ ✗ solución real",
+          "explicacion": "Un valor absoluto nunca es negativo, por lo que no existe ningún número real que lo iguale a un valor negativo. El conjunto solución es el conjunto vacío."
+        },
+        {
+          "texto": "Ejemplo: $|x - 1| = -3$",
+          "explicacion": "Datos: $a = -3 < 0$. Como $|x - 1| \\ge 0$ para cualquier $x$, no puede ser igual a $-3$. Resultado: el conjunto solución es $\\varnothing$, igual que una distancia de $-3$ kilómetros, que no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresión dentro de barras",
+      "puntos": [
+        {
+          "texto": "$|ax + b| = c$ con $c > 0$ ⇒ $ax + b = c$ o $ax + b = -c$",
+          "explicacion": "Aquí $a$, $b$ y $c$ son números reales, con $a \\ne 0$ y $c > 0$. Es el mismo caso anterior con la expresión $ax + b$ en lugar de $x$. Cada igualdad se resuelve como una ecuación lineal."
+        },
+        {
+          "texto": "Ejemplo: $|2x - 5| = 9$",
+          "explicacion": "Datos: $a = 2$, $b = -5$ y $c = 9$. Primera ecuación: $2x - 5 = 9$, luego $2x = 14$ y $x = 7$. Segunda ecuación: $2x - 5 = -9$, luego $2x = -4$ y $x = -2$. Verificación: $|2(7) - 5| = 9$ y $|2(-2) - 5| = |-9| = 9$. Resultado: $\\{-2, 7\\}$."
+        },
+        {
+          "texto": "$|x - c| = d$ con $d > 0$ ⇒ $x = c + d$ o $x = c - d$",
+          "explicacion": "Aquí $c$ es un punto fijo y $d$ una distancia positiva. Se interpreta como los puntos de la recta que están a distancia $d$ de $c$: uno a la derecha y otro a la izquierda."
+        },
+        {
+          "texto": "Ejemplo: $|x - 10| = 4$",
+          "explicacion": "Datos: $c = 10$ y $d = 4$. Se tiene $x = 10 + 4 = 14$ o $x = 10 - 4 = 6$. Verificación: $|14 - 10| = 4$ y $|6 - 10| = 4$. Resultado: $\\{6, 14\\}$, como las cuadras que están a 4 cuadras de la cuadra 10, hacia adelante y hacia atrás."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos valores absolutos",
+      "puntos": [
+        {
+          "texto": "$|A| = |B|$ ⇒ $A = B$ o $A = -B$",
+          "explicacion": "Aquí $A$ y $B$ son expresiones algebraicas. Dos expresiones tienen igual valor absoluto cuando son iguales u opuestas. Cada igualdad se resuelve por separado."
+        },
+        {
+          "texto": "Ejemplo: $|3x - 1| = |x + 5|$",
+          "explicacion": "Datos: $A = 3x - 1$ y $B = x + 5$. Caso $A = B$: $3x - 1 = x + 5$, luego $2x = 6$ y $x = 3$. Caso $A = -B$: $3x - 1 = -x - 5$, luego $4x = -4$ y $x = -1$. Verificación: con $x = 3$, $|8| = |8|$; con $x = -1$, $|-4| = |4|$. Resultado: $\\{-1, 3\\}$."
+        },
+        {
+          "texto": "Demostración: $|A| = |B|$ ⇒ $A^2 = B^2$",
+          "explicacion": "Elevar al cuadrado elimina las barras porque $|t|^2 = t^2$. Luego $A^2 - B^2 = 0$ equivale a $(A - B)(A + B) = 0$, y un producto es cero solo si algún factor lo es: $A = B$ o $A = -B$."
+        }
+      ]
+    },
+    {
+      "titulo": "Lado derecho con variable",
+      "puntos": [
+        {
+          "texto": "$|A| = B$ ⇒ $B \\ge 0$ y ($A = B$ o $A = -B$)",
+          "explicacion": "Aquí $A$ y $B$ son expresiones que pueden contener la incógnita. Como el valor absoluto no es negativo, primero se exige que $B \\ge 0$; después se resuelven $A = B$ y $A = -B$ y se aceptan solo las soluciones que cumplan esa condición."
+        },
+        {
+          "texto": "Ejemplo: $|x + 2| = 3x - 2$",
+          "explicacion": "Datos: $A = x + 2$ y $B = 3x - 2$. Condición: $3x - 2 \\ge 0$, o sea $x \\ge \\frac{2}{3}$. Caso $A = B$: $x + 2 = 3x - 2$, luego $x = 2$, que cumple la condición. Caso $A = -B$: $x + 2 = -3x + 2$, luego $x = 0$, que no cumple porque $0 < \\frac{2}{3}$. Verificación: $|2 + 2| = 4 = 3(2) - 2$. Resultado: $\\{2\\}$."
+        },
+        {
+          "texto": "Condición del lado derecho ⇒ descarta soluciones",
+          "explicacion": "Resolver las dos igualdades sin revisar la condición puede dar valores que no son soluciones de la ecuación original. Error frecuente: aceptar $x = 0$ en el ejemplo anterior, pues $|0 + 2| = 2$ y $3(0) - 2 = -2$ no coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos por intervalos",
+      "puntos": [
+        {
+          "texto": "Varias barras ⇒ puntos críticos y casos",
+          "explicacion": "Cuando hay dos o más valores absolutos con sumas o restas, se igualan a cero los interiores para hallar los puntos críticos, que dividen la recta en intervalos. En cada intervalo el signo de cada interior es fijo y se pueden quitar las barras."
+        },
+        {
+          "texto": "Ejemplo: $|x - 2| + |x + 1| = 7$, puntos críticos",
+          "explicacion": "Datos: dos interiores, $x - 2$ y $x + 1$. Se anulan en $x = 2$ y $x = -1$, que dividen la recta en tres intervalos: $x < -1$, $-1 \\le x < 2$ y $x \\ge 2$."
+        },
+        {
+          "texto": "Intervalo $x < -1$ en $|x - 2| + |x + 1| = 7$",
+          "explicacion": "Aquí ambos interiores son negativos, así que $|x - 2| = 2 - x$ y $|x + 1| = -x - 1$. La ecuación queda $(2 - x) + (-x - 1) = 7$, es decir $1 - 2x = 7$, luego $x = -3$. Como $-3 < -1$, cumple el intervalo y es solución."
+        },
+        {
+          "texto": "Intervalo $-1 \\le x < 2$ en la misma ecuación",
+          "explicacion": "Aquí $x - 2$ es negativo y $x + 1$ es positivo o cero, así que $|x - 2| = 2 - x$ y $|x + 1| = x + 1$. La ecuación queda $(2 - x) + (x + 1) = 7$, es decir $3 = 7$, que es falso. No hay soluciones en este intervalo."
+        },
+        {
+          "texto": "Intervalo $x \\ge 2$ en la misma ecuación",
+          "explicacion": "Aquí ambos interiores son positivos o cero, así que $|x - 2| = x - 2$ y $|x + 1| = x + 1$. La ecuación queda $(x - 2) + (x + 1) = 7$, es decir $2x - 1 = 7$, luego $x = 4$. Como $4 \\ge 2$, cumple el intervalo y es solución."
+        },
+        {
+          "texto": "Resultado del ejemplo: $\\{-3, 4\\}$",
+          "explicacion": "Se reúnen las soluciones de todos los intervalos. Verificación: con $x = -3$, $|-5| + |-2| = 7$; con $x = 4$, $|2| + |5| = 7$. Interpretación: son los puntos cuya suma de distancias a $2$ y a $-1$ es $7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable",
+      "puntos": [
+        {
+          "texto": "Sustitución $t = |x|$ ⇒ $t \\ge 0$",
+          "explicacion": "Cuando la incógnita aparece como $|x|$ y como $|x|^2$, se reemplaza $|x|$ por $t$ para obtener una ecuación común. Como $|x|^2 = x^2$ y $t$ es un valor absoluto, hay que exigir $t \\ge 0$ y, al final, regresar a $x$."
+        },
+        {
+          "texto": "Ejemplo: $|x|^2 - 5|x| + 6 = 0$",
+          "explicacion": "Con $t = |x|$ queda $t^2 - 5t + 6 = 0$, que se factoriza como $(t - 2)(t - 3) = 0$, de donde $t = 2$ o $t = 3$; ambos cumplen $t \\ge 0$. Volviendo a $x$: $|x| = 2$ da $x = \\pm 2$ y $|x| = 3$ da $x = \\pm 3$. Verificación: con $x = 2$, $4 - 10 + 6 = 0$; con $x = 3$, $9 - 15 + 6 = 0$. Resultado: $\\{-3, -2, 2, 3\\}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación y errores",
+      "puntos": [
+        {
+          "texto": "Verificar en la ecuación original ⇒ confirma soluciones",
+          "explicacion": "Al reemplazar cada valor en la ecuación inicial se comprueba que cumple la igualdad. Es indispensable cuando hay condiciones o intervalos, porque algunos valores resultan falsos."
+        },
+        {
+          "texto": "Error frecuente: omitir la solución negativa",
+          "explicacion": "Resolver $|x + 3| = 5$ solo con $x + 3 = 5$ da $x = 2$ y pierde la otra. El caso $x + 3 = -5$ da $x = -8$. Verificación: $|2 + 3| = 5$ y $|-8 + 3| = |-5| = 5$, así que $\\{-8, 2\\}$ es el conjunto solución."
+        },
+        {
+          "texto": "Número de soluciones en $|x - c| = d$ ⇒ 0, 1 o 2",
+          "explicacion": "Si $d < 0$ no hay solución, si $d = 0$ hay una sola ($x = c$) y si $d > 0$ hay dos ($x = c \\pm d$). Esta lectura permite anticipar el resultado antes de resolver."
+        }
+      ]
+    }
+  ]
+}
