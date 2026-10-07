@@ -586,47 +586,6 @@ body.modal-open {
   color: var(--ink);
 }
 /* =========================================================
-   RETIRADA MODAL
-   ========================================================= */
-.retirada-modal {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  padding: var(--space-5);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-sizing: border-box;
-  text-align: center;
-}
-.retirada-modal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 44px;
-  height: 4px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: var(--border);
-}
-.retirada-modal::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-}
-.retirada-modal button {
-  min-height: 40px;
-  padding: 0.6rem 1rem;
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-/* =========================================================
    MOBILE
    ========================================================= */
 @media (max-width: 480px) {
@@ -641,8 +600,7 @@ body.modal-open {
   .welcome-card,
   .pomo-alarm-card,
   .modo-estudio-card,
-  .editar-nombre-card,
-  .retirada-modal {
+  .editar-nombre-card {
     max-width: 100%;
     max-height: calc(100vh - (var(--space-3) * 2));
   }
@@ -652,8 +610,7 @@ body.modal-open {
   .welcome-card,
   .pomo-alarm-card,
   .modo-estudio-card,
-  .editar-nombre-card,
-  .retirada-modal {
+  .editar-nombre-card {
     padding: var(--space-4);
   }
   .welcome-nav {

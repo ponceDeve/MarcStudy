@@ -1,0 +1,157 @@
+{
+  "curso": "Física",
+  "tema": "Métodos analíticos",
+  "glosario": {
+    "Método analítico": "Suma de vectores con sus componentes.",
+    "Componente rectangular": "Proyección de un vector sobre un eje.",
+    "Vector unitario": "Vector de módulo uno.",
+    "Resultante": "Vector equivalente a la suma.",
+    "Cuadrante": "Una de las cuatro regiones del plano.",
+    "Teorema de Pitágoras": "Relación entre los lados de un triángulo rectángulo."
+  },
+  "theory": [
+    {
+      "titulo": "Métodos analíticos",
+      "puntos": [
+        {
+          "texto": "«Método analítico» = suma de vectores con sus componentes numéricas",
+          "explicacion": "Se descomponen los vectores en direcciones perpendiculares y se suman las componentes. Es más preciso que los métodos geométricos, porque se calcula con números."
+        },
+        {
+          "texto": "Vector en el plano ⇒ $\\vec{A}=A_x\\,\\hat{i}+A_y\\,\\hat{j}$",
+          "explicacion": "Aquí $A_x$ y $A_y$ son las componentes rectangulares, y $\\hat{i}$ y $\\hat{j}$ son los vectores unitarios de los ejes $x$ e $y$."
+        }
+      ]
+    },
+    {
+      "titulo": "Componentes rectangulares",
+      "puntos": [
+        {
+          "texto": "Componente en $x$ ⇒ $A_x=A\\cos\\theta$",
+          "explicacion": "Aquí $A$ es el módulo y $\\theta$ el ángulo medido desde el eje $x$ positivo. Es la proyección del vector sobre el eje horizontal."
+        },
+        {
+          "texto": "Componente en $y$ ⇒ $A_y=A\\sin\\theta$",
+          "explicacion": "Es la proyección del vector sobre el eje vertical."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A=10$ y $\\theta=30^\\circ$ dan $A_x\\approx8.66$ y $A_y=5$",
+          "explicacion": "Se calcula $A_x=10\\cos30^\\circ=10\\cdot0.866=8.66$ y $A_y=10\\sin30^\\circ=10\\cdot0.5=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo",
+      "puntos": [
+        {
+          "texto": "Módulo ⇒ $A=\\sqrt{A_x^2+A_y^2}$",
+          "explicacion": "Se obtiene con el teorema de Pitágoras sobre las componentes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A_x=3$ y $A_y=4$ dan $A=5$",
+          "explicacion": "Se calcula $A=\\sqrt{9+16}=\\sqrt{25}=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dirección",
+      "puntos": [
+        {
+          "texto": "Dirección ⇒ $\\tan\\theta=\\frac{A_y}{A_x}$",
+          "explicacion": "El ángulo $\\theta$ se mide desde el eje $x$ positivo. Hay que revisar los signos de las componentes para saber en qué cuadrante está."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A_x=3$ y $A_y=4$ dan $\\theta\\approx53^\\circ$",
+          "explicacion": "Se calcula $\\tan\\theta=\\frac{4}{3}$, de donde $\\theta\\approx53^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrantes",
+      "puntos": [
+        {
+          "texto": "Signos de las componentes ⇒ determinan el cuadrante del vector",
+          "explicacion": "En el primer cuadrante $A_x$ y $A_y$ son positivas. En el segundo, $A_x<0$ y $A_y>0$. En el tercero, ambas son negativas. En el cuarto, $A_x>0$ y $A_y<0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vectores unitarios",
+      "puntos": [
+        {
+          "texto": "Vector unitario ⇒ $\\hat{u}=\\frac{\\vec{A}}{|\\vec{A}|}$",
+          "explicacion": "Tiene módulo $1$ y la misma dirección y sentido que $\\vec{A}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\vec{A}=3\\hat{i}+4\\hat{j}$ da $\\hat{u}=0.6\\hat{i}+0.8\\hat{j}$",
+          "explicacion": "Como $|\\vec{A}|=5$, se divide cada componente entre $5$: $\\frac{3}{5}=0.6$ y $\\frac{4}{5}=0.8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma por componentes",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ $R_x=\\sum A_x$ y $R_y=\\sum A_y$",
+          "explicacion": "Se suman por separado las componentes en $x$ y en $y$ de todos los vectores. Con ellas se obtiene la resultante $\\vec{R}=R_x\\hat{i}+R_y\\hat{j}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(3\\hat{i}+4\\hat{j})+(-\\hat{i}+2\\hat{j})=2\\hat{i}+6\\hat{j}$",
+          "explicacion": "Se suman las componentes en $x$: $3+(-1)=2$. Y las componentes en $y$: $4+2=6$."
+        },
+        {
+          "texto": "Módulo de la resultante ⇒ $R=\\sqrt{40}\\approx6.32$",
+          "explicacion": "Con $R_x=2$ y $R_y=6$, se calcula $R=\\sqrt{4+36}=\\sqrt{40}\\approx6.32$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta por componentes",
+      "puntos": [
+        {
+          "texto": "Resta ⇒ $\\vec{A}-\\vec{B}=(A_x-B_x)\\hat{i}+(A_y-B_y)\\hat{j}$",
+          "explicacion": "Se restan componente a componente."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(3\\hat{i}+4\\hat{j})-(-\\hat{i}+2\\hat{j})=4\\hat{i}+2\\hat{j}$",
+          "explicacion": "Se calcula $3-(-1)=4$ y $4-2=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto por un escalar",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ $k\\vec{A}=kA_x\\hat{i}+kA_y\\hat{j}$",
+          "explicacion": "Se multiplican ambas componentes por el número $k$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2(3\\hat{i}+4\\hat{j})=6\\hat{i}+8\\hat{j}$",
+          "explicacion": "Se multiplica cada componente por $2$. El módulo se duplica: pasa de $5$ a $10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con ángulos",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $20$ al este y $10$ al norte dan $R\\approx22.4$",
+          "explicacion": "Se tiene $R_x=20$ y $R_y=10$. El módulo es $R=\\sqrt{400+100}=\\sqrt{500}\\approx22.4$."
+        },
+        {
+          "texto": "Dirección ⇒ $\\tan\\theta=\\frac{10}{20}$ da $\\theta\\approx26.6^\\circ$",
+          "explicacion": "El ángulo se mide desde el este hacia el norte. Resulta $\\theta=\\arctan0.5\\approx26.6^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ventajas del método",
+      "puntos": [
+        {
+          "texto": "Método analítico ⇒ sirve para sumar muchos vectores con cualquier ángulo",
+          "explicacion": "No requiere dibujar a escala. El resultado es exacto y se obtiene con cálculos sencillos. Es el método que se usa para resolver problemas de varias fuerzas."
+        }
+      ]
+    }
+  ]
+}

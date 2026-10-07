@@ -2741,42 +2741,40 @@ ${teoria}`;
           </button>
         </div>
       </Modal>
-      <Modal
-        open={confirmAbandonarPregunta}
-        onClose={
-          cancelarAbandonarPregunta
-        }
-        plain
-      >
-        <div className="retirada-modal">
-          <h3 className="retirada-modal__title">
-            Regresar a la teoría
-          </h3>
-          <p className="retirada-modal__subtitle">
-            ¿Ya te rendiste, perdedor?
-          </p>
-          <div className="retirada-modal__actions">
-            <button
-              type="button"
-              className="retirada-modal__btn is-confirm"
-              onClick={
-                cancelarAbandonarPregunta
-              }
-            >
-              Cancelar
-            </button>
-            <button
-              type="button"
-              className="retirada-modal__btn is-cancel"
-              onClick={
-                confirmarAbandonarPregunta
-              }
-            >
-              Regresar
-            </button>
+      {confirmAbandonarPregunta && (
+        <div
+          className="rendirse-modal-overlay"
+          onClick={cancelarAbandonarPregunta}
+        >
+          <div
+            className="rendirse-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="rendirse-modal__title">
+              Regresar a la teoría
+            </h3>
+            <p className="rendirse-modal__text">
+              ¿Ya te rendiste, perdedor?
+            </p>
+            <div className="rendirse-modal__actions">
+              <button
+                type="button"
+                className="rendirse-modal__btn is-confirm"
+                onClick={cancelarAbandonarPregunta}
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                className="rendirse-modal__btn is-cancel"
+                onClick={confirmarAbandonarPregunta}
+              >
+                Regresar
+              </button>
+            </div>
           </div>
         </div>
-      </Modal>
+      )}
       <RendirseModal
         abierto={mostrarModalRendirse}
         vidas={vidas}

@@ -38,7 +38,6 @@ export default function Hud({
   return (
     <div className="hud">
       <span className="hud-avances">
-        Avance:{" "}
         <span className="hud__progress-value">
           {current}/{total}
         </span>

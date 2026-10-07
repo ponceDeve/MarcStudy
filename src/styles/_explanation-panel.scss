@@ -116,21 +116,10 @@
   overflow: hidden;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: var(--bg);
+  background-color: var(--surface);
   border-radius: 14px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03), 0 0 40px rgba(220, 38, 38, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
   animation: rendirseModalIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.rendirse-modal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--danger);
-  box-shadow: 0 0 18px rgba(220, 38, 38, 0.55);
-  z-index: 10;
 }
 .rendirse-modal::after {
   content: "";

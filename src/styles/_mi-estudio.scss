@@ -2240,116 +2240,6 @@ span.teoria-busqueda-resaltado {
   font-size: 0.8rem;
 }
 /* ============================================================
-   MODAL — REGRESAR A LA TEORÍA
-   ============================================================ */
-.retirada-modal {
-  position: relative;
-  width: min(25rem, 100%);
-  overflow: hidden;
-  padding: 1.75rem 1.75rem 1.5rem;
-  background: linear-gradient(180deg,
-      #172033 0%,
-      #111827 52%,
-      #0b1120 100%);
-  border: 0.0625rem solid rgba(255, 255, 255, 0.12);
-  border-radius: 0.875rem;
-  text-align: center;
-  box-shadow:
-    0 1.875rem 5rem rgba(0, 0, 0, 0.55),
-    0 0 0 0.0625rem rgba(255, 255, 255, 0.03);
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 0.1875rem;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        var(--danger) 20%,
-        var(--danger) 80%,
-        transparent 100%);
-    box-shadow: 0 0 1.125rem rgba(220, 38, 38, 0.45);
-  }
-  &__title {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 0.5rem;
-    color: #fff;
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 0.0187rem;
-  }
-  &__subtitle {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 1.375rem;
-    color: rgba(255, 255, 255, 0.68);
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
-    font-weight: 400;
-    line-height: 1.4;
-  }
-  &__actions {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    gap: 0.75rem;
-  }
-  &__btn {
-    flex: 1;
-    min-height: 2.875rem;
-    padding: 0.625rem 1rem;
-    border-radius: 0.5rem;
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    font-weight: 800;
-    letter-spacing: 0.0187rem;
-    cursor: url("/cursor_pointer.webp"), pointer !important;
-    transition:
-      transform 0.12s linear,
-      background-color 0.12s linear,
-      border-color 0.12s linear,
-      box-shadow 0.12s linear,
-      color 0.12s linear;
-    &:active {
-      transform: scale(0.96);
-    }
-    &:focus-visible {
-      outline: 0.125rem solid rgba(255, 255, 255, 0.8);
-      outline-offset: 0.1875rem;
-    }
-    &.is-cancel {
-      color: rgba(255, 255, 255, 0.88);
-      background: rgba(255, 255, 255, 0.055);
-      border: 0.0625rem solid rgba(255, 255, 255, 0.14);
-      box-shadow:
-        inset 0 0.0625rem 0 rgba(255, 255, 255, 0.035);
-      &:hover {
-        color: #fff;
-        background: rgba(255, 255, 255, 0.09);
-        border-color: rgba(255, 255, 255, 0.24);
-        transform: translateY(-0.125rem);
-        box-shadow: 0 0.4375rem 1.125rem rgba(0, 0, 0, 0.22);
-      }
-    }
-    &.is-confirm {
-      color: #fff;
-      background: var(--danger);
-      border: 0.0625rem solid var(--danger);
-      box-shadow: 0 0.3125rem 1.125rem rgba(220, 38, 38, 0.2);
-      &:hover {
-        color: #fff;
-        background: var(--danger-dark);
-        border-color: var(--danger-dark);
-        transform: translateY(-0.125rem);
-        box-shadow: 0 0.5rem 1.375rem rgba(220, 38, 38, 0.3);
-      }
-    }
-  }
-}
-/* ============================================================
    BARRA DE TEORÍA
    ============================================================ */
 .teoria-buscador-wrap {
@@ -2934,17 +2824,6 @@ span.teoria-busqueda-resaltado {
     font-size: 1rem;
   }
   .teoria-boton-examen {
-    width: 100%;
-  }
-  .retirada-modal {
-    width: 100%;
-    padding: 1.5rem 1.25rem 1.25rem;
-    border-radius: 0.75rem;
-  }
-  .retirada-modal__title {
-    font-size: 1.375rem;
-  }
-  .retirada-modal__btn {
     width: 100%;
   }
   .mi-estudio__modal-overlay {

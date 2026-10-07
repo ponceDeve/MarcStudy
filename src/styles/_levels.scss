@@ -1,6 +1,7 @@
 /* ============================================================
    LevelsModal
    ============================================================ */
+
 .levels-modal {
   position: fixed;
   inset: 0;
@@ -17,15 +18,18 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .levels-modal::-webkit-scrollbar {
   display: none;
 }
+
 .levels-modal.is-closed {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity .25s linear, visibility 0s linear .25s;
 }
+
 .levels-modal__title {
   font-family: var(--font-display);
   font-size: clamp(18px, 3.6vw, 34px);
@@ -36,18 +40,22 @@
   text-align: center;
   margin: 0;
 }
+
 /* ============================================================
    Contenedor
    ============================================================ */
+
 .levels-modal__inner {
   max-width: 900px;
   width: 100%;
   text-align: center;
   margin: 0 !important;
 }
+
 /* ============================================================
-   Buscador + Cerrar mapa
+   Buscador
    ============================================================ */
+
 .levels-modal__search-row {
   position: sticky;
   top: 0;
@@ -63,6 +71,7 @@
   margin: 0 0 44px;
   z-index: 999;
 }
+
 .levels-modal__search-row::before {
   content: "";
   position: absolute;
@@ -79,6 +88,7 @@
     transparent 100%
   );
 }
+
 .levels-modal__search {
   position: relative;
   z-index: 10;
@@ -94,9 +104,11 @@
   border: 1px solid var(--border);
   border-radius: 30px;
 }
+
 /* ============================================================
    Input del buscador
    ============================================================ */
+
 .levels-modal__search .home-search-input {
   flex: 1;
   min-width: 0;
@@ -114,9 +126,11 @@
   box-shadow: none !important;
   transition: none;
 }
+
 .levels-modal__search .home-search-input::placeholder {
   color: var(--ink-faint);
 }
+
 .levels-modal__search .home-search-input:focus {
   border: none;
   border-bottom-color: transparent;
@@ -125,6 +139,7 @@
   outline: none !important;
   box-shadow: none !important;
 }
+
 .levels-modal__search .home-search-results {
   position: absolute;
   top: 100%;
@@ -145,9 +160,11 @@
   flex-direction: column;
   gap: 4px;
 }
+
 .levels-modal__search .home-search-results::-webkit-scrollbar {
   display: none;
 }
+
 .levels-modal__search .home-search-result {
   width: 100%;
   min-width: 0;
@@ -165,14 +182,17 @@
     color .15s linear,
     transform .1s linear;
 }
+
 .levels-modal__search .home-search-result:hover,
 .levels-modal__search .home-search-result.is-focused {
   background-color: var(--primary-bg);
   color: var(--ink);
 }
+
 .levels-modal__search .home-search-result:active {
   transform: translateX(1px);
 }
+
 .levels-modal__search .home-search-result p {
   margin: 0;
   padding: 12px 16px;
@@ -183,9 +203,11 @@
   white-space: normal;
   overflow-wrap: anywhere;
 }
+
 /* ============================================================
    Botón Buscar / Lupa
    ============================================================ */
+
 .levels-modal__buscar {
   position: static !important;
   flex: 0 0 var(--header-h, 64px);
@@ -215,71 +237,82 @@
     color .15s linear,
     opacity .15s linear;
 }
+
 .levels-modal__buscar i {
   font-size: 22px;
   line-height: 1;
 }
+
 .levels-modal__buscar:hover:not(:disabled) {
   background: var(--primary) !important;
   color: var(--ink-on-primary) !important;
   border-color: var(--primary) !important;
 }
+
 .levels-modal__buscar:active:not(:disabled) {
   transform: none;
 }
+
 .levels-modal__buscar:disabled {
   opacity: .45;
   cursor: not-allowed !important;
 }
+
 /* ============================================================
-   Flecha para salir del mapa
+   Botón Cerrar (debajo de la paginación)
    ============================================================ */
-.levels-modal__back {
-  flex-shrink: 0;
-  align-self: center;
-  width: var(--header-h, 64px);
-  height: var(--header-h, 64px);
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  font-size: 20px;
+
+.levels-modal__cerrar {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  min-height: 48px;
+  margin: var(--space-6) auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background: var(--danger);
+  color: var(--ink-on-primary);
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  letter-spacing: var(--space-1);
+  font-weight: 800;
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  box-shadow: var(--shadow-md);
   outline: none;
   -webkit-tap-highlight-color: transparent;
   transition:
     background .15s linear,
-    color .15s linear,
     border-color .15s linear,
     transform .1s linear;
 }
-.levels-modal__back:hover {
-  background: var(--danger);
-  border-color: var(--danger);
-  color: var(--ink-on-primary);
+
+.levels-modal__cerrar:hover {
+  background: var(--danger-dark);
+  border-color: var(--danger-dark);
 }
-.levels-modal__back:active {
-  transform: scale(.94);
+
+.levels-modal__cerrar:active {
+  transform: scale(.97);
 }
+
 /* ============================================================
    Buscador dentro del tema elegido
    ============================================================ */
+
 .levels-modal__search--teoria {
   .theory-search {
     flex: 1;
     min-width: 0;
     width: auto;
   }
+
   .theory-search__wrap {
     height: 100%;
     min-width: 0;
     z-index: auto;
   }
+
   .theory-search__input {
     flex: 1;
     width: 100%;
@@ -292,13 +325,16 @@
     background: transparent;
     border: none;
     border-radius: 0;
+
     &::placeholder {
       color: var(--ink-faint);
     }
+
     &:focus {
       border: none;
       outline: none;
     }
+
     &.has-results {
       border: none;
       border-bottom-color: transparent;
@@ -306,6 +342,7 @@
       border-bottom-right-radius: 0;
     }
   }
+
   .theory-search__dropdown {
     border-color: var(--secondary);
     border-top: none;
@@ -313,24 +350,29 @@
     text-align: left;
     max-height: 22rem;
   }
+
   .theory-search__item {
     padding: 12px 16px;
     font-size: 18px;
     line-height: 1.35;
   }
+
   .theory-search__item-texto {
     margin-top: 4px;
     font-size: 15px;
   }
+
   .theory-search__buscando,
   .theory-search__empty {
     padding: 14px 16px;
     font-size: 16px;
   }
 }
+
 /* ============================================================
    Input con el nombre del tema: más grande
    ============================================================ */
+
 .levels-modal__search .home-search-input,
 .levels-modal__search--teoria .theory-search__input {
   height: var(--header-h, 64px);
@@ -339,14 +381,17 @@
   font-weight: 800;
   text-overflow: ellipsis;
 }
+
 /* ============================================================
    El nombre del tema se ve con color fuerte
    ============================================================ */
+
 .levels-modal__search--teoria .theory-search__input::placeholder,
 .levels-modal__search .home-search-input::placeholder {
   color: var(--ink);
   opacity: 1;
 }
+
 .levels-modal__close-fixed {
   position: fixed;
   top: 72px;
@@ -364,14 +409,17 @@
   justify-content: center;
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
+
 .levels-modal__close-fixed:hover {
   background: var(--danger);
   border-color: var(--danger);
   color: var(--ink-on-primary);
 }
+
 /* ============================================================
    Niveles
    ============================================================ */
+
 .level-tema-banner {
   background: var(--bg);
   color: var(--accent);
@@ -386,6 +434,7 @@
   text-align: center;
   box-shadow: var(--shadow-md);
 }
+
 .level-cell {
   --star-fs: clamp(0.8rem, 2.2vw, 1.35rem);
   display: flex;
@@ -393,9 +442,11 @@
   align-items: center;
   position: relative;
 }
+
 /* ============================================================
    Estrellas de cada nivel
    ============================================================ */
+
 .level-cell__estrellas {
   position: absolute;
   bottom: 100%;
@@ -412,6 +463,7 @@
   white-space: nowrap;
   transition: transform .1s linear;
 }
+
 .level-cell__estrellas span {
   --ty: 0;
   --rot: 0deg;
@@ -429,6 +481,7 @@
     color .2s ease,
     transform .2s ease;
 }
+
 .level-cell__estrellas span.is-activa {
   color: #f5b301;
   text-shadow:
@@ -436,18 +489,23 @@
     0 0 4px rgba(245, 179, 1, .45);
   --s: 1.25;
 }
+
 /* Las 3 estrellas forman un arco */
+
 .level-cell__estrellas span:nth-child(1) {
   --ty: .7em;
   --rot: -22deg;
 }
+
 .level-cell__estrellas span:nth-child(2) {
   --ty: -.15em;
 }
+
 .level-cell__estrellas span:nth-child(3) {
   --ty: .7em;
   --rot: 22deg;
 }
+
 .level-tooltip {
   position: fixed;
   background: var(--bg);
@@ -471,6 +529,7 @@
     visibility 0s linear .15s;
   pointer-events: none;
 }
+
 .level-tooltip::after {
   content: "";
   position: absolute;
@@ -483,6 +542,7 @@
   border-right: 6px solid transparent;
   border-top: 6px solid var(--accent);
 }
+
 .level-tooltip.is-visible {
   opacity: 1;
   visibility: visible;
@@ -491,15 +551,19 @@
     opacity .15s linear,
     transform .15s linear,
     visibility 0s linear 0s;
+  pointer-events: none;
 }
+
 /* ============================================================
    Botón circular del nivel
    El canto oscuro está únicamente abajo.
    ============================================================ */
+
 .level-btn {
   --grosor: 10px;
   --cara: var(--surface);
   --canto: color-mix(in srgb, var(--cara) 45%, black);
+
   width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--cara);
@@ -527,149 +591,191 @@
     transform .1s linear,
     box-shadow .1s linear;
 }
+
 /* Al hacer hover la cara baja 3px y el canto se acorta 3px:
    la base queda en el mismo sitio y parece que se hunde */
+
 .level-btn:not(:disabled):hover {
   --grosor: 7px;
   transform: translateY(3px);
 }
+
 .level-btn:not(:disabled):active {
   --grosor: 3px;
   transform: translateY(7px);
 }
+
 .level-btn__numero {
   display: block;
   line-height: 1;
 }
+
 .level-btn__numero--estrella {
   font-family: system-ui, "Segoe UI Symbol", sans-serif;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
 }
+
 .level-btn__numero--estrellas-1 {
   color: #f5b301;
 }
+
 .level-btn__numero--estrellas-2 {
   color: #ff7a00;
 }
+
 .level-btn__numero--estrellas-3 {
   color: #b04bff;
 }
+
 /* ============================================================
    Responsive: número + estrellas
    ============================================================ */
+
 @media (max-width: 1100px) {
   .level-btn {
     font-size: 2.7rem;
   }
+
   .level-cell {
     --star-fs: 1.2rem;
   }
 }
+
 @media (max-width: 900px) {
   .level-btn {
     font-size: 2.4rem;
   }
+
   .level-cell {
     --star-fs: 1.2rem;
   }
 }
+
 @media (max-width: 750px) {
   .level-btn {
     font-size: 2.1rem;
   }
+
   .level-cell {
     --star-fs: 1.2rem;
   }
 }
+
 @media (max-width: 600px) {
   .level-btn {
     font-size: 1.9rem;
   }
+
   .level-cell {
     --star-fs: 1.15rem;
   }
 }
+
 @media (max-width: 480px) {
   .level-btn {
     font-size: 1.7rem;
   }
+
   .level-cell {
     --star-fs: 1.1rem;
   }
 }
+
 @media (max-width: 380px) {
   .level-btn {
     font-size: 1.5rem;
   }
+
   .level-cell {
     --star-fs: 1.2rem;
   }
 }
+
 /* ============================================================
    Estados (solo cambian las variables de color)
    ============================================================ */
+
 .level-btn.is-selected {
   --cara: var(--secondary);
   --canto: color-mix(in srgb, var(--secondary) 55%, black);
   color: var(--ink-on-primary);
 }
+
 .level-btn.is-armado {
   --cara: var(--brand);
   --canto: color-mix(in srgb, var(--brand) 55%, black);
   color: var(--ink-on-primary);
 }
+
 .level-btn:disabled {
   --cara: var(--surface-alt);
   --canto: color-mix(in srgb, var(--border) 50%, black);
   color: var(--ink-faint);
   cursor: not-allowed;
 }
+
 /* Las estrellas bajan junto con el nivel */
+
 .level-cell:has(.level-btn:not(:disabled):hover) .level-cell__estrellas {
   transform: translateY(3px);
 }
+
 /* ============================================================
    Mapa de niveles: 18 por página (3 columnas x 6 filas)
    ============================================================ */
+
 .levels-map {
   --map-gap: 64px;
   --map-gap-y: 110px;
+
   --line-w: 6px;
+
   display: flex;
   flex-direction: column;
   gap: var(--map-gap-y);
+
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
+
   padding-top: 28px;
   padding-bottom: 24px;
+
+  box-sizing: border-box;
 }
+
 .levels-map--anim-up {
   animation: levels-page-up .3s ease-out;
 }
+
 .levels-map--anim-down {
   animation: levels-page-down .3s ease-out;
 }
+
 @keyframes levels-page-up {
   from {
     opacity: 0;
     transform: translateY(32px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes levels-page-down {
   from {
     opacity: 0;
     transform: translateY(-32px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .levels-map__row {
   display: grid;
   grid-template-columns: repeat(
@@ -679,18 +785,23 @@
   gap: var(--map-gap);
   position: relative;
 }
+
 .levels-map__row--reverse {
   direction: rtl;
 }
+
 .levels-map__row--reverse .level-cell {
   direction: ltr;
 }
+
 .level-cell--empty {
   visibility: hidden;
 }
+
 /* ============================================================
    Líneas que conectan los niveles
    ============================================================ */
+
 .level-cell--h::after {
   content: "";
   position: absolute;
@@ -701,85 +812,133 @@
   transform: translateY(-50%);
   z-index: 0;
 }
+
 .levels-map__row:not(.levels-map__row--reverse) .level-cell--h::after {
   right: calc(var(--map-gap) * -1);
 }
+
 .levels-map__row--reverse .level-cell--h::after {
   left: calc(var(--map-gap) * -1);
 }
+
 .level-cell--v::after {
   --libre-estrellas: calc(var(--star-fs) * 2);
+
   content: "";
   position: absolute;
   bottom: calc(100% + var(--libre-estrellas));
   left: calc(50% - var(--line-w) / 2);
   width: 0;
+
   height: calc(
     50% +
     var(--map-gap-y) -
     var(--libre-estrellas)
   );
+
   border-left: var(--line-w) dashed var(--border-strong);
   z-index: 0;
 }
+
 /* Inglés no tiene estrellas: la línea vertical llega directo al nivel. */
+
 .level-cell--sin-estrellas.level-cell--v::after {
   --libre-estrellas: 0px;
 }
+
 /* ============================================================
    Paginación
    ============================================================ */
+
 .levels-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+
   gap: 6px;
+
+  /* La barra tiene exactamente el mismo ancho máximo que el mapa */
   width: 100%;
-  margin: var(--space-6) 0;
+  max-width: 440px;
+
+  margin: var(--space-6) auto;
+
+  box-sizing: border-box;
+
+  /* Nunca genera scroll horizontal */
+  overflow: hidden;
 }
-/* Los botones se encogen (hasta 34px) para que la barra nunca se salga. */
+
+/* Botones numéricos */
+
 .levels-nav__btn {
-  flex: 0 1 44px;
+  flex: 0 0 34px;
+
+  width: 34px;
   min-width: 34px;
-  max-width: 44px;
-  aspect-ratio: 1;
+  max-width: 34px;
+
+  height: 34px;
+
   padding: 0;
+
   border-radius: var(--radius-md);
   border: 3px solid var(--border);
+
   background: var(--surface);
   color: var(--ink-soft);
+
   font-family: var(--font-body);
   font-weight: 800;
   font-size: clamp(13px, 3.8vw, 16px);
   line-height: 1;
+
   white-space: nowrap;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   outline: none;
   -webkit-tap-highlight-color: transparent;
+
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
-/* «…» entre números: ocupa una casilla pero más angosta. */
-.levels-nav__gap {
-  flex: 0 1 28px;
-  min-width: 14px;
-  text-align: center;
-  color: var(--ink-faint);
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 1;
-  user-select: none;
-}
+
 .levels-nav__btn.is-activa {
   background: var(--primary-dark);
   border-color: var(--primary);
   color: var(--ink-on-primary);
 }
+
 .levels-nav__btn:disabled {
   opacity: .8;
   cursor: not-allowed !important;
 }
+
+/* «…» entre números */
+
+.levels-nav__gap {
+  flex: 0 0 14px;
+
+  width: 14px;
+  min-width: 14px;
+  max-width: 14px;
+
+  text-align: center;
+
+  color: var(--ink-faint);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+
+  user-select: none;
+}
+
+/* ============================================================
+   Temas
+   ============================================================ */
+
 .temas-modal-grid {
   display: grid;
   grid-template-columns: repeat(
@@ -791,6 +950,7 @@
   width: 100%;
   padding-bottom: 24px;
 }
+
 .tema-arcade-btn {
   width: 100%;
   padding: 16px 12px;
@@ -810,6 +970,7 @@
   text-align: center;
   line-height: 1.3;
 }
+
 .tema-arcade-btn:hover:not(:disabled) {
   background: var(--primary-bg);
   border: var(--nested-border);
@@ -818,23 +979,27 @@
   transform: translateY(3px);
   border-bottom-width: 3px;
 }
+
 .tema-arcade-btn.is-current {
   border-color: var(--accent);
   color: var(--accent-dark);
   box-shadow: 0 0 0 3px var(--accent-bg);
 }
+
 .tema-arcade-btn:disabled {
   background: var(--surface-alt);
   border-color: var(--border);
   color: var(--ink-faint);
   cursor: not-allowed;
 }
+
 .topbar__curso--clickable {
   cursor: url("/cursor_pointer.webp"), pointer !important;
   transition: opacity .2s, background-color .2s;
   border-radius: var(--radius-sm);
   display: inline-block;
 }
+
 @media (min-width: 1280px) {
   .temas-modal-grid {
     grid-template-columns: repeat(
@@ -842,29 +1007,35 @@
       minmax(180px, 1fr)
     );
   }
+
   .tema-arcade-btn {
     font-size: 16px;
     padding: 20px 16px;
   }
 }
+
 @media (max-width: 639px) {
   .levels-modal {
     padding: 0 12px 8px;
   }
+
   .levels-map {
     --map-gap: 56px;
     --map-gap-y: 90px;
   }
+
   .levels-modal__search-row {
     top: 0;
     gap: 8px;
     padding: 8px 0 0;
     margin-bottom: 32px;
   }
+
   .levels-modal__search-row::before {
     top: 0;
     bottom: -20px;
   }
+
   .levels-modal__buscar {
     flex: 0 0 52px;
     width: 52px;
@@ -874,9 +1045,11 @@
     font-size: 20px;
     border-radius: 0;
   }
+
   .levels-modal__buscar i {
     font-size: 20px;
   }
+
   .levels-modal__search {
     flex: 1;
     min-width: 0;
@@ -884,49 +1057,71 @@
     max-width: none;
     border-radius: 30px;
   }
+
   .levels-modal__search .home-search-input,
   .levels-modal__search--teoria .theory-search__input {
     height: 52px;
     padding: 0 16px;
     font-size: 16px;
   }
+
   .levels-modal__search .home-search-result p {
     padding: 10px 12px;
     font-size: 16px;
   }
+
   .levels-modal__search--teoria .theory-search__item {
     padding: 10px 12px;
     font-size: 16px;
   }
+
   .levels-modal__search--teoria .theory-search__item-texto {
     font-size: 14px;
   }
-  .levels-modal__back {
-    width: 52px;
-    height: 52px;
-    font-size: 18px;
+
+  .levels-nav {
+    gap: 5px;
+  }
+
+  .levels-nav__btn {
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    height: 32px;
+  }
+
+  .levels-nav__gap {
+    width: 12px;
+    min-width: 12px;
+    max-width: 12px;
   }
 }
+
 .levels-modal__empty {
   color: var(--ink-soft);
   margin-bottom: 20px;
   background: transparent !important;
   padding: 0 !important;
 }
+
 .levels-modal__counter {
   color: var(--ink-soft);
   font-size: 14px;
   margin-bottom: 12px;
 }
+
 .levels-modal--topics {
   z-index: 1000;
 }
+
 .levels-modal__inner--topics {
   margin-top: 76px;
 }
+
 /* ============================================================
    TheorySearchModal.jsx
    ============================================================ */
+
 .theory-search-modal__results {
   display: flex;
   flex-direction: column;
@@ -934,6 +1129,7 @@
   max-height: 50vh;
   overflow-y: auto;
 }
+
 .theory-search-modal__item {
   text-align: left;
   padding: 10px 12px;
@@ -942,14 +1138,17 @@
   background: var(--surface-alt);
   color: var(--ink);
 }
+
 .theory-search-modal__item-heading {
   margin: 0 0 2px;
   font-size: 12.5px;
   color: var(--ink-faint);
 }
+
 .theory-search-modal__item-text {
   margin: 0;
 }
+
 .theory-search-modal__empty {
   color: var(--ink-soft);
 }
