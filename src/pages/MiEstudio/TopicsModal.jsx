@@ -46,10 +46,15 @@ function armarPaginacion(total, actual, casillas) {
   // Primera + última + 2 gaps.
   const centro = casillas - 4;
 
-  let items;
+  // La página actual va en el centro de la ventana, con vecinos
+  // a ambos lados: 1 … 3 4 5 … 11. El «…» puede esconder una
+  // sola página.
+  const inicio =
+    actual - Math.floor(centro / 2);
 
-  if (actual <= casillas - 4) {
-    items = [
+  // Cerca del principio: bloque pegado al inicio.
+  if (inicio < 2) {
+    return [
       ...Array.from(
         { length: casillas - 2 },
         (_, i) => i
@@ -57,11 +62,11 @@ function armarPaginacion(total, actual, casillas) {
       "gap-fin",
       ultima,
     ];
-  } else if (
-    actual >=
-    total - casillas + 3
-  ) {
-    items = [
+  }
+
+  // Cerca del final: bloque pegado al final.
+  if (inicio + centro - 1 > ultima - 2) {
+    return [
       0,
       "gap-ini",
       ...Array.from(
@@ -70,40 +75,18 @@ function armarPaginacion(total, actual, casillas) {
           total - (casillas - 2) + i
       ),
     ];
-  } else {
-    const inicio =
-      actual - Math.floor(centro / 2);
-
-    items = [
-      0,
-      "gap-ini",
-      ...Array.from(
-        { length: centro },
-        (_, i) => inicio + i
-      ),
-      "gap-fin",
-      ultima,
-    ];
   }
 
-  return items.map((it, i) => {
-    if (typeof it !== "string") {
-      return it;
-    }
-
-    const antes = items[i - 1];
-    const despues = items[i + 1];
-
-    if (
-      typeof antes === "number" &&
-      typeof despues === "number" &&
-      despues - antes === 2
-    ) {
-      return antes + 1;
-    }
-
-    return it;
-  });
+  return [
+    0,
+    "gap-ini",
+    ...Array.from(
+      { length: centro },
+      (_, i) => inicio + i
+    ),
+    "gap-fin",
+    ultima,
+  ];
 }
 
 export default function TopicsModal({
