@@ -371,8 +371,14 @@ export default function TopicsModal({
 
     if (!el) return undefined;
 
+    // Al cambiar de página el mapa se vuelve a crear (key). El elemento
+    // viejo avisa un ancho 0: se ignora para no perder el ancho real.
     const medir = () => {
-      setAnchoMapa(el.clientWidth);
+      if (!el.isConnected) return;
+
+      const ancho = el.clientWidth;
+
+      if (ancho > 0) setAnchoMapa(ancho);
     };
 
     medir();
@@ -400,7 +406,7 @@ export default function TopicsModal({
 
     return () =>
       observador.disconnect();
-  }, [hayNavegacion, open]);
+  }, [hayNavegacion, open, paginaActual]);
 
   const elementosPaginacion =
     armarPaginacion(
