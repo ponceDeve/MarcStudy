@@ -1,0 +1,182 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Número de vueltas",
+  "glosario": {
+    "Vuelta": "Giro completo que regresa a la orientación inicial",
+    "Grado sexagesimal": "Una de 360 partes de una vuelta",
+    "Radián": "Unidad de ángulo; arco igual al radio",
+    "Circunferencia": "Línea curva cerrada equidistante de un centro",
+    "Radio": "Distancia del centro a la circunferencia",
+    "Diámetro": "Distancia entre puntos opuestos; doble del radio",
+    "Ángulo central": "Ángulo con vértice en el centro del arco",
+    "Arco": "Porción de una circunferencia",
+    "Trayectoria": "Camino que sigue un punto al moverse",
+    "Tramo": "Parte recta o curva de un recorrido",
+    "Tangentes": "Circunferencias que se tocan en un solo punto",
+    "Odómetro": "Instrumento que cuenta vueltas para medir distancia"
+  },
+  "theory": [
+    {
+      "titulo": "Vuelta completa",
+      "puntos": [
+        {
+          "texto": "Una «vuelta» completa = 360° = $2\\pi$ rad",
+          "explicacion": "Se llama vuelta al giro que deja a la rueda con la misma orientación con la que empezó. Ese giro se mide en grados sexagesimales (°) o en radianes (rad), y ambos describen el mismo ángulo, por eso se pasa de uno a otro con la equivalencia $\\pi$ rad = 180°. Un cuarto de vuelta son 90°, es decir $\\frac{\\pi}{2}$ rad; media vuelta son 180°, es decir $\\pi$ rad. Una puerta giratoria de hotel que da una vuelta completa gira 360° y su aspa vuelve a quedar donde estaba."
+        }
+      ]
+    },
+    {
+      "titulo": "Vueltas desde el ángulo",
+      "puntos": [
+        {
+          "texto": "Vueltas en radianes: $n = \\frac{\\theta}{2\\pi}$",
+          "explicacion": "Aquí $n$ es el número de vueltas y $\\theta$ el ángulo total girado, medido en radianes. Como cada vuelta equivale a $2\\pi$ rad, dividir el ángulo total entre $2\\pi$ cuenta cuántas vueltas completas caben en ese giro. Ejemplo: un ventilador gira $\\theta = 14\\pi$ rad, entonces $n = \\frac{14\\pi}{2\\pi} = 7$ vueltas. Si el cociente no es entero, la parte decimal es una vuelta incompleta: con $\\theta = 5\\pi$ rad resulta $n = \\frac{5\\pi}{2\\pi} = 2{,}5$, es decir, dos vueltas completas y media vuelta más."
+        },
+        {
+          "texto": "Vueltas en grados: $n = \\frac{\\theta}{360°}$",
+          "explicacion": "Aquí $\\theta$ es el ángulo total girado, medido en grados sexagesimales, y $n$ el número de vueltas. Se divide entre 360° porque esa es la medida de una vuelta. Ejemplo: la manija de una rueda de feria gira $\\theta = 1800°$, entonces $n = \\frac{1800°}{360°} = 5$ vueltas. Con $\\theta = 540°$ resulta $n = \\frac{540°}{360°} = 1{,}5$, una vuelta y media. Esta forma solo vale si $\\theta$ está en grados; si está en radianes se usa la forma con $2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rodar sin resbalar",
+      "puntos": [
+        {
+          "texto": "Rodar «sin resbalar» ⇒ el borde se va desenrollando sobre el piso",
+          "explicacion": "Una rueda rueda sin resbalar cuando no hay deslizamiento entre la llanta y la superficie: cada punto del borde toca el piso una vez y se despega. Por eso la longitud del borde que va tocando el suelo coincide con la distancia que avanza la rueda. Es la condición que permite relacionar vueltas con distancia. Si la rueda patina, como una llanta de auto sobre hielo, puede girar sin avanzar o avanzar sin girar, y las fórmulas de este tema dejan de valer."
+        },
+        {
+          "texto": "Una vuelta avanza $2\\pi r$ = circunferencia de la rueda",
+          "explicacion": "Aquí $r$ es el radio de la rueda. En una vuelta completa, todo el borde se apoya una vez en el piso, así que el avance es igual a la longitud de la circunferencia. Ejemplo: una rueda de radio $r = 30$ cm avanza por vuelta $2\\pi(30) = 60\\pi$ cm, que son aproximadamente 188,5 cm. Con ese dato, quien diseña un carrito sabe que cada vuelta lo acerca casi 1,9 m a la meta."
+        },
+        {
+          "texto": "Vueltas en tramo recto: $n = \\frac{d}{2\\pi r}$",
+          "explicacion": "Aquí $d$ es la distancia recorrida por la rueda, $r$ su radio y $n$ el número de vueltas. Se obtiene dividiendo la distancia total entre lo que avanza por vuelta, que es $2\\pi r$. Ejemplo: una rueda de radio $r = 0{,}5$ m recorre $d = 20\\pi$ m. Cada vuelta avanza $2\\pi(0{,}5) = \\pi$ m, entonces $n = \\frac{20\\pi}{\\pi} = 20$ vueltas."
+        },
+        {
+          "texto": "Con diámetro: $n = \\frac{d}{\\pi D}$",
+          "explicacion": "Aquí $D$ es el diámetro de la rueda, que vale $2r$, y $d$ la distancia recorrida. Sale de sustituir $2r = D$ en la fórmula con radio, de modo que una vuelta avanza $\\pi D$. Ejemplo: una rueda de diámetro $D = 1$ m recorre $d = 15\\pi$ m, entonces $n = \\frac{15\\pi}{\\pi(1)} = 15$ vueltas. Es la forma cómoda cuando los datos de la rueda vienen en diámetro, como en las medidas de las llantas."
+        },
+        {
+          "texto": "Distancia recorrida: $d = 2\\pi r\\, n$",
+          "explicacion": "Es el despeje de la fórmula de vueltas: si se conoce cuántas vueltas dio la rueda, la distancia sale de multiplicar ese número por lo que avanza en cada vuelta. Ejemplo: una rueda de radio $r = 0{,}4$ m da $n = 8$ vueltas, entonces $d = 2\\pi(0{,}4)(8) = 6{,}4\\pi \\approx 20{,}1$ m. Así funciona un odómetro, que cuenta vueltas de la rueda y las convierte en metros recorridos."
+        }
+      ]
+    },
+    {
+      "titulo": "Recorrido del centro",
+      "puntos": [
+        {
+          "texto": "Vueltas = «recorrido del centro» entre $2\\pi r$",
+          "explicacion": "La fórmula es $n = \\frac{L_c}{2\\pi r}$, donde $L_c$ es la longitud de la trayectoria que describe el centro de la rueda, $r$ su radio y $n$ el número de vueltas. Se usa el centro porque este avanza exactamente $r$ por cada radián que gira la rueda, así que su camino mide lo mismo que la longitud desenrollada del borde de radio $r$. En tramos curvos el camino del centro es distinto del camino del punto de contacto, y por eso conviene medir siempre el centro. Ejemplo: una rueda de radio $r = 2$ cm cuyo centro recorre $L_c = 24\\pi$ cm da $n = \\frac{24\\pi}{2\\pi(2)} = \\frac{24\\pi}{4\\pi} = 6$ vueltas."
+        },
+        {
+          "texto": "Sobre piso plano, recorrido del centro = distancia de la rueda",
+          "explicacion": "El centro de la rueda se mantiene a una altura $r$ del piso, así que su trayectoria es una recta paralela a la del piso y mide lo mismo que el tramo recorrido. Esto vale para cualquier tramo recto, también una rampa. Ejemplo: una rueda de radio 5 cm recorre un tramo recto de $40\\pi$ cm; el centro recorre también $L_c = 40\\pi$ cm y $n = \\frac{40\\pi}{2\\pi(5)} = \\frac{40\\pi}{10\\pi} = 4$ vueltas."
+        },
+        {
+          "texto": "Varios tramos ⇒ sumar los recorridos del centro",
+          "explicacion": "Cuando el camino tiene partes distintas, se halla cuánto recorre el centro en cada parte, se suman esas longitudes y recién entonces se divide entre $2\\pi r$. No se divide parte por parte con redondeos intermedios. Ejemplo: una rueda de radio $r = 3$ cm pasa por dos tramos rectos de $18\\pi$ cm y $12\\pi$ cm. El centro recorre $L_c = 18\\pi + 12\\pi = 30\\pi$ cm y $n = \\frac{30\\pi}{2\\pi(3)} = \\frac{30\\pi}{6\\pi} = 5$ vueltas."
+        }
+      ]
+    },
+    {
+      "titulo": "Longitud de arco",
+      "puntos": [
+        {
+          "texto": "Recorrido en curva = longitud de arco $s = \\theta r$",
+          "explicacion": "Esta fórmula tiene su propio tema en el temario y aquí solo se usa como herramienta: cuando el centro de la rueda describe un arco, su recorrido sale de multiplicar el ángulo central, en radianes, por el radio de ese arco. Aquí $s$ es la longitud del arco, $\\theta$ el ángulo central en radianes y $r$ el radio del arco. Ejemplo: un arco de $\\theta = \\frac{\\pi}{3}$ rad y radio 6 mide $s = \\frac{\\pi}{3}(6) = 2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rodar por fuera",
+      "puntos": [
+        {
+          "texto": "Por fuera de un arco, el centro describe un arco de radio $R+r$",
+          "explicacion": "Aquí $R$ es el radio del arco fijo sobre el que se rueda y $r$ el radio de la rueda. Al rodar por el exterior, la rueda y el arco son tangentes, es decir, se tocan en un solo punto, y el segmento que une sus centros pasa por ese punto de contacto, de modo que mide $R + r$. Como esa distancia no cambia, el centro de la rueda describe un arco concéntrico con el fijo y de radio $R+r$. Ejemplo: con $R = 6$ y $r = 2$, el centro avanza sobre un arco de radio $6+2 = 8$. Es lo que ocurre cuando una moneda rueda por el borde exterior de otra."
+        },
+        {
+          "texto": "Recorrido del centro por fuera: $L_c = \\theta (R+r)$",
+          "explicacion": "Aquí $\\theta$ es el ángulo central, en radianes, que barre el centro, y $L_c$ la longitud de su trayectoria. Resulta de aplicar la longitud de arco al arco de radio $R+r$. Ejemplo: con $R = 6$, $r = 2$ y $\\theta = \\frac{\\pi}{2}$, se obtiene $L_c = \\frac{\\pi}{2}(6+2) = \\frac{\\pi}{2}(8) = 4\\pi$ unidades de longitud."
+        },
+        {
+          "texto": "Vueltas por fuera: $n = \\frac{\\theta (R+r)}{2\\pi r}$",
+          "explicacion": "Se obtiene al sustituir $L_c = \\theta(R+r)$ en la fórmula de vueltas con el recorrido del centro. Aquí $\\theta$ está en radianes, $R$ es el radio del arco fijo y $r$ el de la rueda. Ejemplo: con $R = 9$, $r = 3$ y $\\theta = \\pi$, el centro recorre $L_c = \\pi(9+3) = 12\\pi$. Cada vuelta mide $2\\pi(3) = 6\\pi$, entonces $n = \\frac{12\\pi}{6\\pi} = 2$ vueltas."
+        },
+        {
+          "texto": "Vuelta completa por fuera: $n = \\frac{R+r}{r}$",
+          "explicacion": "Es el caso $\\theta = 2\\pi$, en que la rueda rodea toda la circunferencia fija. Al sustituir en la fórmula anterior, el $2\\pi$ del ángulo se cancela con el $2\\pi$ del denominador y queda $\\frac{R+r}{r}$. Ejemplo: con $R = 12$ y $r = 3$, $n = \\frac{12+3}{3} = \\frac{15}{3} = 5$ vueltas, aunque el centro de la rueda da una sola vuelta alrededor del círculo fijo."
+        },
+        {
+          "texto": "Por fuera hay una vuelta más que $\\frac{R}{r}$",
+          "explicacion": "Al separar $\\frac{R+r}{r}$ se obtiene $\\frac{R}{r} + 1$: la parte $\\frac{R}{r}$ corresponde a la longitud $2\\pi R$ de contacto sobre el círculo fijo, y el $+1$ aparece porque el centro recorre $2\\pi(R+r) = 2\\pi R + 2\\pi r$, es decir, un tramo extra de $2\\pi r$ que equivale a una vuelta de la rueda. Ejemplo: con $R = 4$ y $r = 1$, el contacto de $8\\pi$ daría 4 vueltas; el total real es $4 + 1 = 5$, que coincide con $\\frac{4+1}{1} = 5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rodar por dentro",
+      "puntos": [
+        {
+          "texto": "Por dentro de un arco, el centro describe un arco de radio $R-r$",
+          "explicacion": "Aquí $R$ es el radio del arco fijo y $r$ el de la rueda, con $r < R$ para que la rueda quepa. Al rodar por el interior, las circunferencias son tangentes y el segmento entre centros mide $R - r$, así que el centro de la rueda describe un arco concéntrico con el fijo y de radio $R-r$. Ejemplo: con $R = 10$ y $r = 4$, el centro avanza sobre un arco de radio $10-4 = 6$. Es lo que ocurre con una canica que rueda por dentro de un tazón."
+        },
+        {
+          "texto": "Recorrido del centro por dentro: $L_c = \\theta (R-r)$",
+          "explicacion": "Aquí $\\theta$ es el ángulo central, en radianes, que barre el centro, y $L_c$ la longitud de su trayectoria. Resulta de aplicar la longitud de arco al arco de radio $R-r$. Ejemplo: con $R = 10$, $r = 4$ y $\\theta = \\frac{\\pi}{3}$, se obtiene $L_c = \\frac{\\pi}{3}(10-4) = \\frac{\\pi}{3}(6) = 2\\pi$ unidades de longitud."
+        },
+        {
+          "texto": "Vueltas por dentro: $n = \\frac{\\theta (R-r)}{2\\pi r}$",
+          "explicacion": "Se obtiene al sustituir $L_c = \\theta(R-r)$ en la fórmula de vueltas con el recorrido del centro. Aquí $\\theta$ está en radianes. Ejemplo: con $R = 12$, $r = 3$ y $\\theta = \\pi$, el centro recorre $L_c = \\pi(12-3) = 9\\pi$. Cada vuelta mide $2\\pi(3) = 6\\pi$, entonces $n = \\frac{9\\pi}{6\\pi} = 1{,}5$ vueltas."
+        },
+        {
+          "texto": "Vuelta completa por dentro: $n = \\frac{R-r}{r}$",
+          "explicacion": "Es el caso $\\theta = 2\\pi$, en que la rueda recorre todo el interior de la circunferencia fija. El $2\\pi$ del ángulo se cancela con el del denominador y queda $\\frac{R-r}{r}$. Ejemplo: con $R = 15$ y $r = 5$, $n = \\frac{15-5}{5} = \\frac{10}{5} = 2$ vueltas."
+        },
+        {
+          "texto": "Por dentro hay una vuelta menos que $\\frac{R}{r}$",
+          "explicacion": "Al separar $\\frac{R-r}{r}$ se obtiene $\\frac{R}{r} - 1$: el centro recorre $2\\pi(R-r) = 2\\pi R - 2\\pi r$, es decir, a la longitud $2\\pi R$ de contacto se le resta un tramo de $2\\pi r$ que equivale a una vuelta de la rueda. Ejemplo: con $R = 8$ y $r = 2$, el contacto de $16\\pi$ daría 4 vueltas; el total real es $4 - 1 = 3$, que coincide con $\\frac{8-2}{2} = 3$."
+        },
+        {
+          "texto": "Caso límite $r = R$: el centro no se mueve",
+          "explicacion": "Si la rueda tiene el mismo radio que el arco fijo, la distancia entre centros $R - r$ vale cero, así que el centro no describe ningún recorrido y la fórmula da $n = 0$. En ese caso la rueda coincide con la pista y no hay rodamiento. Ejemplo: con $R = r = 5$, $n = \\frac{5-5}{5} = 0$. Una rueda con $r > R$ no cabe por dentro, por lo que ese caso no se plantea."
+        }
+      ]
+    },
+    {
+      "titulo": "Exterior frente a interior",
+      "puntos": [
+        {
+          "texto": "Exterior: radio $R+r$ ↑ vueltas; interior: radio $R-r$ ↓ vueltas",
+          "explicacion": "Para el mismo arco fijo y la misma rueda, rodar por fuera obliga al centro a recorrer un arco mayor que rodar por dentro, así que da más vueltas. En una vuelta completa, la diferencia siempre es de dos vueltas, porque $\\frac{R+r}{r} - \\frac{R-r}{r} = \\frac{2r}{r} = 2$. Ejemplo: con $R = 12$ y $r = 3$, por fuera $n = \\frac{12+3}{3} = 5$ y por dentro $n = \\frac{12-3}{3} = 3$; la diferencia es $5 - 3 = 2$ vueltas."
+        }
+      ]
+    },
+    {
+      "titulo": "Ruedas de distinto radio",
+      "puntos": [
+        {
+          "texto": "Misma distancia: $n_1 r_1 = n_2 r_2$",
+          "explicacion": "Aquí $n_1$ y $r_1$ son las vueltas y el radio de una rueda, y $n_2$ y $r_2$ los de la otra. Si ambas recorren la misma distancia $d$ sin resbalar, entonces $d = 2\\pi r_1 n_1 = 2\\pi r_2 n_2$, y al cancelar $2\\pi$ queda la igualdad. La rueda de menor radio da más vueltas. Ejemplo: una rueda de radio $r_1 = 40$ cm da $n_1 = 5$ vueltas; otra de radio $r_2 = 10$ cm da $n_2 = \\frac{5 \\times 40}{10} = 20$ vueltas en el mismo tramo."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Usar el diámetro como radio ⇒ la mitad de vueltas",
+          "explicacion": "Si en $n = \\frac{d}{2\\pi r}$ se escribe el diámetro en el lugar del radio, el denominador se duplica y el resultado sale la mitad del real. Ejemplo: una rueda de diámetro 1 m recorre $20\\pi$ m. Usando 1 como radio sale $n = \\frac{20\\pi}{2\\pi(1)} = 10$, pero el radio real es 0,5 m y $n = \\frac{20\\pi}{2\\pi(0{,}5)} = 20$ vueltas."
+        },
+        {
+          "texto": "En curvas, medir el contacto en vez del centro ⇒ error",
+          "explicacion": "En un arco, la trayectoria del punto de contacto y la del centro no miden lo mismo, y las vueltas se cuentan con la del centro. Ejemplo con $R = 12$ y $r = 3$ en vuelta completa: el contacto mide $2\\pi(12) = 24\\pi$ y daría $\\frac{24\\pi}{6\\pi} = 4$ vueltas. Correcto es 5 por fuera, porque el centro recorre $30\\pi$, y 3 por dentro, porque recorre $18\\pi$."
+        },
+        {
+          "texto": "En $\\theta(R \\pm r)$ el ángulo va en radianes, no en grados",
+          "explicacion": "Las fórmulas con $\\theta$ para el recorrido del centro suponen que el ángulo está en radianes; si viene en grados, primero se convierte con $180° = \\pi$ rad. Ejemplo: $R = 6$, $r = 2$ y $\\theta = 90°$ por fuera. Se convierte $90° = \\frac{\\pi}{2}$ rad, entonces $L_c = \\frac{\\pi}{2}(8) = 4\\pi$ y $n = \\frac{4\\pi}{2\\pi(2)} = 1$. Si se usara 90 como si fueran radianes saldría $n = \\frac{90(8)}{4\\pi} \\approx 57{,}3$, un valor absurdo."
+        }
+      ]
+    }
+  ]
+}

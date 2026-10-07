@@ -1,0 +1,204 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Razones trigonométricas de ángulos agudos",
+  "glosario": {
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Triángulo rectángulo": "Triángulo con un ángulo de 90 grados",
+    "Hipotenusa": "Lado opuesto al ángulo recto",
+    "Cateto": "Lado que forma el ángulo recto",
+    "Cociente": "Resultado de dividir dos números",
+    "Razón trigonométrica": "Cociente entre dos lados de triángulo rectángulo",
+    "Triángulos semejantes": "Misma forma, lados proporcionales",
+    "Pendiente": "Inclinación de una rampa o recta",
+    "Mnemotécnica": "Ayuda para recordar mediante letras o frases",
+    "Vértice": "Punto donde se unen dos lados",
+    "Numerador": "Número de arriba en una fracción",
+    "Denominador": "Número de abajo en una fracción"
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo agudo",
+      "puntos": [
+        {
+          "texto": "Ángulo agudo ($\\alpha$) = ángulo con medida < 90°",
+          "explicacion": "Aquí $\\alpha$ es la letra griega alfa y representa la medida del ángulo con el que se trabaja. Las razones trigonométricas de este tema se definen sobre ángulos agudos, que son los que miden más de 0° y menos de 90°. Todo triángulo rectángulo tiene dos ángulos agudos además del ángulo recto, y se puede elegir cualquiera de los dos como ángulo de referencia. Ejemplo: la inclinación de una rampa respecto del piso es un ángulo agudo, porque la rampa nunca llega a ser vertical."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo rectángulo",
+      "puntos": [
+        {
+          "texto": "Triángulo rectángulo = triángulo con un ángulo recto de 90°",
+          "explicacion": "Sus tres lados reciben nombres propios: la hipotenusa y los dos catetos. Todas las razones trigonométricas de un ángulo agudo se calculan con las longitudes de estos tres lados, por eso siempre se empieza dibujando o identificando un triángulo rectángulo. Ejemplo: una escalera apoyada en una pared vertical forma, con la pared y el piso, un triángulo rectángulo; el ángulo recto está entre la pared y el piso."
+        }
+      ]
+    },
+    {
+      "titulo": "Hipotenusa",
+      "puntos": [
+        {
+          "texto": "Hipotenusa (H) = lado opuesto al ángulo recto, el mayor",
+          "explicacion": "Aquí H es la longitud de la hipotenusa. Es el único lado que no forma parte del ángulo recto y siempre es más largo que cada uno de los catetos. No cambia de nombre al cambiar el ángulo agudo de referencia. Ejemplo: en la escalera apoyada en la pared, la escalera misma es la hipotenusa, porque queda frente al ángulo recto que forman pared y piso."
+        }
+      ]
+    },
+    {
+      "titulo": "Cateto opuesto",
+      "puntos": [
+        {
+          "texto": "Cateto opuesto (CO) ⊃ lado frente al ángulo agudo",
+          "explicacion": "Aquí CO es la longitud del cateto opuesto. Es el cateto que no toca el vértice del ángulo agudo de referencia, el que queda enfrente. Su papel depende del ángulo elegido: el mismo cateto es opuesto para un ángulo y no lo es para el otro. Ejemplo: en un triángulo con catetos 5 y 12 e hipotenusa 13, si el ángulo de referencia $\\alpha$ es el que queda frente al cateto de 5, entonces CO = 5; para el otro ángulo agudo, el cateto opuesto sería el de 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Cateto adyacente",
+      "puntos": [
+        {
+          "texto": "Cateto adyacente (CA) ⊃ cateto que forma el ángulo agudo",
+          "explicacion": "Aquí CA es la longitud del cateto adyacente. Es el cateto que, junto con la hipotenusa, forma el ángulo agudo de referencia; está pegado al vértice de ese ángulo. Como pasa con el cateto opuesto, depende del ángulo elegido. Ejemplo: en el triángulo de catetos 5 y 12 e hipotenusa 13, para el ángulo $\\alpha$ frente al cateto de 5 resulta CA = 12; si se toma el otro ángulo agudo, el cateto adyacente pasa a ser el de 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema de Pitágoras",
+      "puntos": [
+        {
+          "texto": "Teorema de Pitágoras: $H^2 = CO^2 + CA^2$",
+          "explicacion": "Relaciona los tres lados de un triángulo rectángulo: el cuadrado de la hipotenusa es la suma de los cuadrados de los catetos. Sirve para hallar el lado que falta antes de formar una razón trigonométrica. Ejemplo: un cable tensado va desde el suelo hasta lo alto de un poste de 12 m y está anclado a 5 m de la base del poste. Su largo es la hipotenusa: $H^2 = 12^2 + 5^2 = 144 + 25 = 169$, entonces $H = \\sqrt{169} = 13$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Razón trigonométrica",
+      "puntos": [
+        {
+          "texto": "Razón trigonométrica = cociente entre dos lados del triángulo rectángulo",
+          "explicacion": "Un cociente entre dos de los tres lados de un triángulo rectángulo, tomado con respecto a un ángulo agudo, recibe este nombre. Con los tres lados se pueden formar seis cocientes distintos, y cada uno tiene su nombre: seno, coseno, tangente, cotangente, secante y cosecante. Que sean cocientes quiere decir que no tienen unidad de medida: dividir metros entre metros da un número puro, por eso se pueden comparar triángulos de cualquier tamaño."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno",
+      "puntos": [
+        {
+          "texto": "Seno de $\\alpha$: $\\operatorname{sen}\\alpha = \\frac{CO}{H}$",
+          "explicacion": "Es el cociente entre el cateto opuesto y la hipotenusa. Ejemplo: una rampa sube una altura de 5 m a lo largo de una longitud inclinada de 13 m. El cateto opuesto al ángulo de inclinación $\\alpha$ es la altura y la hipotenusa es la rampa, entonces $\\operatorname{sen}\\alpha = \\frac{5}{13} \\approx 0{,}385$. El número dice que por cada metro de rampa se gana alrededor de 0,385 m de altura."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno",
+      "puntos": [
+        {
+          "texto": "Coseno de $\\alpha$: $\\cos\\alpha = \\frac{CA}{H}$",
+          "explicacion": "Es el cociente entre el cateto adyacente y la hipotenusa. Ejemplo: la misma rampa del ejemplo anterior avanza una distancia horizontal de 12 m a lo largo de 13 m de rampa. El cateto adyacente a $\\alpha$ es esa distancia horizontal, entonces $\\cos\\alpha = \\frac{12}{13} \\approx 0{,}923$. El número dice que por cada metro de rampa se avanza casi 0,923 m en horizontal."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente",
+      "puntos": [
+        {
+          "texto": "Tangente de $\\alpha$: $\\tan\\alpha = \\frac{CO}{CA}$",
+          "explicacion": "Es el cociente entre el cateto opuesto y el cateto adyacente; en ella no interviene la hipotenusa. Ejemplo: en la rampa de altura 5 m y avance horizontal 12 m, $\\tan\\alpha = \\frac{5}{12} \\approx 0{,}417$. Esto significa que la rampa sube unos 0,417 m por cada metro que se avanza en horizontal, que es justamente su pendiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente",
+      "puntos": [
+        {
+          "texto": "Cotangente de $\\alpha$: $\\cot\\alpha = \\frac{CA}{CO}$",
+          "explicacion": "Es el cociente entre el cateto adyacente y el cateto opuesto, es decir, la tangente con los catetos intercambiados. Ejemplo: en el triángulo de catetos 5 y 12, con $\\alpha$ frente al cateto de 5, $\\cot\\alpha = \\frac{12}{5} = 2{,}4$. En la rampa, indica que se avanzan 2,4 m en horizontal por cada metro de altura que se gana."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante",
+      "puntos": [
+        {
+          "texto": "Secante de $\\alpha$: $\\sec\\alpha = \\frac{H}{CA}$",
+          "explicacion": "Es el cociente entre la hipotenusa y el cateto adyacente. Ejemplo: en el triángulo de hipotenusa 13 y cateto adyacente 12, $\\sec\\alpha = \\frac{13}{12} \\approx 1{,}083$. En la rampa, indica que se recorren unos 1,083 m de rampa por cada metro avanzado en horizontal."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecante",
+      "puntos": [
+        {
+          "texto": "Cosecante de $\\alpha$: $\\csc\\alpha = \\frac{H}{CO}$",
+          "explicacion": "Es el cociente entre la hipotenusa y el cateto opuesto. Ejemplo: en el triángulo de hipotenusa 13 y cateto opuesto 5, $\\csc\\alpha = \\frac{13}{5} = 2{,}6$. En la rampa, indica que se recorren 2,6 m de rampa por cada metro de altura que se gana."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla mnemotécnica",
+      "puntos": [
+        {
+          "texto": "SOH-CAH-TOA = sen, cos y tan en orden",
+          "explicacion": "Es una regla para recordar las tres razones principales; sus letras son las iniciales de seno igual a opuesto sobre hipotenusa (SOH), coseno igual a adyacente sobre hipotenusa (CAH) y tangente igual a opuesto sobre adyacente (TOA). Ejemplo: en el triángulo de catetos 5 y 12 e hipotenusa 13, SOH da $\\frac{5}{13}$, CAH da $\\frac{12}{13}$ y TOA da $\\frac{5}{12}$, tomando como referencia el ángulo frente al cateto de 5. Las otras tres razones se obtienen con los mismos lados, cambiando de lugar el numerador y el denominador."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno y coseno",
+      "puntos": [
+        {
+          "texto": "Seno y coseno de un agudo: entre 0 y 1",
+          "explicacion": "En un ángulo agudo, cada cateto es menor que la hipotenusa, así que $\\frac{CO}{H}$ y $\\frac{CA}{H}$ son fracciones con numerador menor que denominador, y por eso $0 < \\operatorname{sen}\\alpha < 1$ y $0 < \\cos\\alpha < 1$. Ejemplo: en el triángulo 5, 12 y 13, $\\operatorname{sen}\\alpha = \\frac{5}{13} \\approx 0{,}385$ y $\\cos\\alpha = \\frac{12}{13} \\approx 0{,}923$; ambos están entre 0 y 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante y cosecante",
+      "puntos": [
+        {
+          "texto": "Secante y cosecante de un agudo: mayores que 1",
+          "explicacion": "Ambas tienen a la hipotenusa en el numerador, que es el lado mayor, así que el numerador es mayor que el denominador y por eso $\\sec\\alpha > 1$ y $\\csc\\alpha > 1$. Ejemplo: en el triángulo 5, 12 y 13, $\\sec\\alpha = \\frac{13}{12} \\approx 1{,}083$ y $\\csc\\alpha = \\frac{13}{5} = 2{,}6$; los dos superan a 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente y cotangente",
+      "puntos": [
+        {
+          "texto": "Tangente y cotangente de un agudo: positivas, sin tope",
+          "explicacion": "Ambas son cocientes entre dos catetos, así que siempre resultan positivas, y no están limitadas por 1 porque un cateto puede ser mayor o menor que el otro. Ejemplo: en el triángulo 5, 12 y 13, $\\tan\\alpha = \\frac{5}{12} \\approx 0{,}417$ es menor que 1 y $\\cot\\alpha = \\frac{12}{5} = 2{,}4$ es mayor que 1; con el otro ángulo agudo los valores se intercambian."
+        }
+      ]
+    },
+    {
+      "titulo": "Independencia del tamaño",
+      "puntos": [
+        {
+          "texto": "Razón de $\\alpha$ = mismo valor en triángulos semejantes",
+          "explicacion": "Dos triángulos rectángulos con el mismo ángulo agudo $\\alpha$ son semejantes: tienen la misma forma y sus lados son proporcionales. Por eso cada cociente de lados es igual en ambos y la razón depende solo del ángulo, no del tamaño del triángulo. Ejemplo: el triángulo de catetos 3 y 4 con hipotenusa 5 y el de catetos 6 y 8 con hipotenusa 10 tienen el mismo ángulo agudo frente al cateto menor; $\\operatorname{sen}\\alpha = \\frac{3}{5} = \\frac{6}{10}$ y $\\tan\\alpha = \\frac{3}{4} = \\frac{6}{8}$. Un plano a escala de una rampa tiene las mismas razones que la rampa real."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones desde un dato",
+      "puntos": [
+        {
+          "texto": "Dato de una razón ⇒ construir el triángulo y hallar el lado faltante",
+          "explicacion": "Cuando se da una razón como fracción, se dibuja un triángulo rectángulo cuyos lados cumplen esa fracción, se halla el lado que falta con el teorema de Pitágoras y luego se forman las demás razones. Como la razón no depende del tamaño, sirve cualquier múltiplo de los lados. Ejemplo: si $\\operatorname{sen}\\alpha = \\frac{8}{17}$, se toma CO = 8 y H = 17. Entonces $CA^2 = 17^2 - 8^2 = 289 - 64 = 225$ y $CA = 15$. Con eso, $\\cos\\alpha = \\frac{15}{17}$ y $\\tan\\alpha = \\frac{8}{15}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "El ángulo recto no sirve como ángulo de referencia",
+          "explicacion": "Las razones de este tema se definen para un ángulo agudo. Frente al ángulo recto el lado opuesto es la hipotenusa, y no hay un cateto opuesto ni adyacente que se pueda usar. Antes de nombrar los catetos, hay que marcar cuál de los dos ángulos agudos es el de referencia. Ejemplo: en el triángulo 5, 12 y 13, si se toma el ángulo frente al 5, el cateto opuesto es 5; si se toma el otro ángulo agudo, el cateto opuesto es 12; con el ángulo recto no se puede formar ninguna de estas razones."
+        },
+        {
+          "texto": "Seno mayor que 1 ⇒ se usó un cateto como hipotenusa",
+          "explicacion": "Como el seno de un ángulo agudo siempre es menor que 1, un resultado mayor que 1 delata que se puso en el denominador un lado que no es la hipotenusa. Ejemplo: en el triángulo de catetos 5 y 12 e hipotenusa 13, escribir $\\operatorname{sen}\\alpha = \\frac{12}{5} = 2{,}4$ es un error, porque 5 es un cateto. Lo correcto es dividir entre 13, la hipotenusa: $\\operatorname{sen}\\alpha = \\frac{5}{13}$ o, para el otro ángulo, $\\frac{12}{13}$."
+        }
+      ]
+    }
+  ]
+}
