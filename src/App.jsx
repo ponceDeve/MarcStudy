@@ -11,13 +11,19 @@ import {
   useFooterVisibility,
 } from "./context/FooterVisibilityContext";
 import AppFooter from "./components/AppFooter";
+import { useAtajosGlobales } from "./hooks/useAtajosGlobales";
 function AppFooterGate() {
   const { footerHidden } = useFooterVisibility();
   return footerHidden ? null : <AppFooter />;
 }
+function AtajosGlobales() {
+  useAtajosGlobales();
+  return null;
+}
 export default function App() {
   return (
     <BrowserRouter basename="/MarcStudy">
+      <AtajosGlobales />
       <PomodoroProvider>
         <FooterVisibilityProvider>
           <Suspense fallback={null}>

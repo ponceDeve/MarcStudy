@@ -26,7 +26,7 @@
 
 // mano: lunes a sábado salen fijos de GRUPOS_ROTACION
 
-// (repasoRecomendado.js), uno por día; domingo es un 7mo bloque fijo
+// (definidos aquí), uno por día; domingo es un 7mo bloque fijo
 
 // aparte (Economía, Química, Física, los cursos con más temas), sin
 
@@ -42,10 +42,15 @@
 
 // ─────────────────────────────────────────────────────────────────────────
 
-import {
-  GRUPOS_ROTACION,
-  obtenerRecomendacionesHoy,
-} from "./repasoRecomendado";
+// Cursos fijos de lunes a sábado (uno por día, en orden).
+const GRUPOS_ROTACION = [
+  ["Habilidad Verbal", "Educación Cívica", "Economía"],
+  ["Lenguaje", "Geografía", "Álgebra"],
+  ["Literatura", "Física", "Trigonometría"],
+  ["Historia Universal", "Química", "Habilidad Lógico Matemático"],
+  ["Historia del Perú", "Psicología", "Geometría"],
+  ["Filosofía", "Biología", "Aritmética"],
+];
 
 const PROGRESS_KEY = "horario_task_progress_v1";
 
@@ -79,9 +84,7 @@ export const DIA_LABELS = {
 
 // Domingo es un 7mo bloque fijo aparte (no repite el grupo del lunes):
 
-// los 3 cursos con más temas. No se toca GRUPOS_ROTACION porque Inicio
-
-// y Repaso también dependen de esos 6 grupos.
+// los 3 cursos con más temas.
 
 const BLOQUE_DOMINGO = ["Economía", "Química", "Física"];
 
@@ -101,26 +104,10 @@ export function grupoFijoDelDia(day) {
   return GRUPOS_ROTACION[idx];
 }
 
-// Al entrar a Horario, el día que se abre por defecto ya no es el día
-
-// real del calendario: es el día (lunes-sábado) cuyo bloque fijo
-
-// coincide con lo que toca según el avance real (la misma rotación por
-
-// turnos que usan Inicio/Repaso, obtenerRecomendacionesHoy). Si no hay
-
-// recomendación (por ejemplo, todos los cursos llegaron a los 30
-
-// turnos), cae al día real como respaldo.
+// Al entrar a Horario se abre el día real del calendario.
 
 export function diaSegunRecomendacion(diaReal) {
-  const curso = obtenerRecomendacionesHoy()[0]?.curso;
-
-  if (!curso) return diaReal;
-
-  const idx = GRUPOS_ROTACION.findIndex((g) => g.includes(curso));
-
-  return idx !== -1 ? DIAS_SEMANA[idx] : diaReal;
+  return diaReal;
 }
 
 function progressKey(day, subject) {

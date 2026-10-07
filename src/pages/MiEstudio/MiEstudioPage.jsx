@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
-import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useMusicaFondo } from "../../lib/musicaFondo";
 import { useSearchHistory } from "../../hooks/useSearchHistory";
@@ -46,6 +45,7 @@ import {
   guardarEstrellasExamen
 } from "../../lib/estrellasJuego";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
+import RelojPared from "../../components/RelojPared";
 import "katex/dist/katex.min.css";
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
   { type: "curso", nombre: curso.nombre },
@@ -2441,12 +2441,6 @@ ${teoria}`;
     seccionActual,
     flatPuntos
   ]);
-  const recomendacionesHoyInicio =
-    useMemo(
-      () =>
-        obtenerRecomendacionesHoy(),
-      []
-    );
   let ultimoTemaInicio = null;
   try {
     ultimoTemaInicio = JSON.parse(
@@ -3029,9 +3023,7 @@ ${teoria}`;
                 }}
               />
             </div>
-            {recomendacionesHoyInicio.length >
-              0 && (
-              <div className="mi-estudio__recomendados container">
+            <div className="mi-estudio__recomendados container">
                 <div className="mi-estudio__recomendados-fecha">
                   {(() => {
                     const ahora =
@@ -3083,31 +3075,8 @@ ${teoria}`;
                     return `${meses} meses · ${semanas} semanas · ${dias} días`;
                   })()}
                 </div>
-                <div className="mi-estudio__recomendados-grid">
-                  {recomendacionesHoyInicio.map(
-                    (r) => (
-                      <div
-                        key={`${r.curso}-Turno${r.turno}`}
-                        className="mi-estudio__recomendados-curso"
-                      >
-                        <span className="mi-estudio__recomendados-curso-nombre">
-                          {r.curso}
-                        </span>
-                        <ul className="mi-estudio__recomendados-temas">
-                          {r.temas.map(
-                            (tema) => (
-                              <li key={tema}>
-                                {tema}
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </div>
-                    )
-                  )}
-                </div>
+                <RelojPared />
               </div>
-            )}
           </>
         )}
         {topicData?.secciones && (

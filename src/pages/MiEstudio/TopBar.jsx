@@ -49,13 +49,8 @@ export default function TopBar({
   onIrInicio,
   onVolverTeoria,
   temasOpen = false,
-  musicaOn = false,
-  onToggleMusica,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(
-    () => !!document.fullscreenElement
-  );
   useAutoHideHeader(menuMobileOpen);
   // En los resultados del examen, el título curso/tema se reemplaza por
   // un botón "Volver" que regresa a la teoría.
@@ -65,29 +60,6 @@ export default function TopBar({
   const wrapperRef = useRef(null);
   const temaRef = useRef(null);
   const [temaOverflows, setTemaOverflows] = useState(false);
-  useEffect(() => {
-    function onFullscreenChange() {
-      setIsFullscreen(!!document.fullscreenElement);
-    }
-    document.addEventListener(
-      "fullscreenchange",
-      onFullscreenChange
-    );
-    return () =>
-      document.removeEventListener(
-        "fullscreenchange",
-        onFullscreenChange
-      );
-  }, []);
-  function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement
-        .requestFullscreen()
-        .catch(() => {});
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
   useEffect(() => {
     const checkOverflow = () => {
       const wrapper = wrapperRef.current;
@@ -164,31 +136,11 @@ export default function TopBar({
     onClick: onAbandonarPregunta,
     className: "topbar__nav-btn--abandonar",
   };
-  const botonFullscreen = {
-    title: isFullscreen
-      ? "Minimizar pantalla"
-      : "Pantalla completa",
-    label: isFullscreen
-      ? "Minimizar"
-      : "Agrandar",
-    fullLabel: isFullscreen
-      ? "Minimizar pantalla"
-      : "Pantalla completa",
-    icon: isFullscreen
-      ? "fa-solid fa-compress"
-      : "fa-solid fa-expand",
-    onClick: toggleFullscreen,
-    className: "topbar__nav-btn--fullscreen",
-  };
   const esPregunta =
     stage === "question" || stage === "exam";
-  // La bocina solo aparece dentro de un tema (teoría) o de una pregunta/examen.
-  const mostrarMusica =
-    typeof onToggleMusica === "function" &&
-    (stage === "theory" || esPregunta);
   const botonesVisibles = esPregunta
-    ? [botonAbandonar, botonFullscreen]
-    : [...botonesPrincipales, botonFullscreen];
+    ? [botonAbandonar]
+    : [...botonesPrincipales];
   // En "pregunta" el botón Abandonar ya se muestra
   // directo en el nav; no hace falta el menú de hamburguesa duplicándolo.
   const botonesMenu = esPregunta
@@ -361,34 +313,6 @@ export default function TopBar({
                   )
                 )}
               </div>
-            )}
-            {mostrarMusica && (
-              <button
-                type="button"
-                onClick={onToggleMusica}
-                title={
-                  musicaOn
-                    ? "Desactivar música"
-                    : "Activar música"
-                }
-                aria-label={
-                  musicaOn
-                    ? "Desactivar música"
-                    : "Activar música"
-                }
-                aria-pressed={musicaOn}
-                className={`topbar__control-btn topbar__control-btn--musica ${
-                  musicaOn ? "is-on" : "is-off"
-                }`}
-              >
-                <i
-                  className={
-                    musicaOn
-                      ? "fa-solid fa-volume-high"
-                      : "fa-solid fa-volume-xmark"
-                  }
-                />
-              </button>
             )}
             {botonesMenu.length > 0 && (
               <button

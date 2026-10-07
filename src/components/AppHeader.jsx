@@ -61,27 +61,9 @@ export default function AppHeader({
       return true;
     }
   });
-  const [isFullscreen, setIsFullscreen] = useState(
-    () => !!document.fullscreenElement
-  );
   const headerRef = useRef(null);
   const location = useLocation();
   useAutoHideHeader(menuMobileOpen);
-  useEffect(() => {
-    function onFullscreenChange() {
-      setIsFullscreen(!!document.fullscreenElement);
-    }
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    return () =>
-      document.removeEventListener("fullscreenchange", onFullscreenChange);
-  }, []);
-  function toggleFullscreen() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
-    } else if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
   // ============================================================
   // ALTURA DEL HEADER
   // ============================================================
@@ -244,16 +226,6 @@ export default function AppHeader({
           ]
           : []),
       ]),
-    // ==========================================================
-    // AGRANDAR / MINIMIZAR PANTALLA (todas las secciones)
-    // ==========================================================
-    {
-      title: isFullscreen ? "Minimizar pantalla" : "Pantalla completa",
-      label: isFullscreen ? "Minimizar" : "Agrandar",
-      fullLabel: isFullscreen ? "Minimizar pantalla" : "Pantalla completa",
-      icon: isFullscreen ? "fa-solid fa-compress" : "fa-solid fa-expand",
-      onClick: toggleFullscreen,
-    },
   ];
   // ============================================================
   // RUTA ACTIVA
