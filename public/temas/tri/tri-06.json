@@ -1,0 +1,142 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Área de sector circular",
+  "glosario": {
+    "Sector circular": "Región del círculo entre dos radios.",
+    "Área": "Medida de una superficie.",
+    "Círculo": "Región limitada por una circunferencia.",
+    "Semicírculo": "Mitad de un círculo.",
+    "Cuadrante": "Cuarto de un círculo.",
+    "Ángulo central": "Ángulo con vértice en el centro.",
+    "Fracción": "Parte de un todo."
+  },
+  "theory": [
+    {
+      "titulo": "Sector circular",
+      "puntos": [
+        {
+          "texto": "«Sector circular» = región del círculo limitada por dos radios y un arco",
+          "explicacion": "Es como una porción de pizza. Queda determinado por el radio y el ángulo central que forman los dos radios."
+        },
+        {
+          "texto": "Elementos ⇒ radio $R$, arco $L$ y ángulo central $\\theta$",
+          "explicacion": "El arco $L$ es la parte de la circunferencia que cierra el sector. El ángulo central $\\theta$ se mide en radianes."
+        }
+      ]
+    },
+    {
+      "titulo": "Área del círculo",
+      "puntos": [
+        {
+          "texto": "Área del círculo ⇒ $A=\\pi R^2$",
+          "explicacion": "Es el área cuando el ángulo central es una vuelta completa, $2\\pi$ radianes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $R=3$ da $A=9\\pi\\approx28.3$",
+          "explicacion": "Se calcula $A=\\pi\\cdot3^2=9\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fracción del círculo",
+      "puntos": [
+        {
+          "texto": "Sector ⇒ fracción $\\frac{\\theta}{2\\pi}$ del área del círculo",
+          "explicacion": "Un ángulo $\\theta$ es la fracción $\\frac{\\theta}{2\\pi}$ de una vuelta. El sector ocupa esa misma fracción del círculo."
+        }
+      ]
+    },
+    {
+      "titulo": "Área en función del ángulo",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $A=\\frac{\\theta R^2}{2}$",
+          "explicacion": "Aquí $A$ es el área del sector, $R$ el radio y $\\theta$ el ángulo central en radianes. Resulta de $\\frac{\\theta}{2\\pi}\\cdot\\pi R^2=\\frac{\\theta R^2}{2}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $R=4$ y $\\theta=\\frac{\\pi}{2}$ dan $A=4\\pi$",
+          "explicacion": "Se calcula $A=\\frac{\\frac{\\pi}{2}\\cdot16}{2}=\\frac{8\\pi}{2}=4\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Área en función del arco",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $A=\\frac{L\\,R}{2}$",
+          "explicacion": "Se obtiene sustituyendo $L=\\theta R$ en la fórmula anterior. Se parece al área de un triángulo, con el arco como base y el radio como altura."
+        },
+        {
+          "texto": "Ejemplo ⇒ $L=8$ y $R=6$ dan $A=24$",
+          "explicacion": "Se calcula $A=\\frac{8\\cdot6}{2}=24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Área con arco y ángulo",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $A=\\frac{L^2}{2\\theta}$",
+          "explicacion": "Se obtiene al reemplazar $R=\\frac{L}{\\theta}$ en $A=\\frac{LR}{2}$. Es útil si se conocen el arco y el ángulo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $L=10$ y $\\theta=2$ dan $A=25$",
+          "explicacion": "Se calcula $A=\\frac{100}{2\\cdot2}=25$."
+        }
+      ]
+    },
+    {
+      "titulo": "Área en grados",
+      "puntos": [
+        {
+          "texto": "En grados ⇒ $A=\\frac{\\pi R^2\\theta^\\circ}{360}$",
+          "explicacion": "Es la misma fórmula, con el ángulo en grados. El sector es la fracción $\\frac{\\theta^\\circ}{360}$ del círculo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $R=6$ y $\\theta=60^\\circ$ dan $A=6\\pi$",
+          "explicacion": "Se calcula $A=\\frac{\\pi\\cdot36\\cdot60}{360}=\\frac{2160\\pi}{360}=6\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Semicírculo ⇒ $\\theta=\\pi$ y $A=\\frac{\\pi R^2}{2}$",
+          "explicacion": "Es la mitad del círculo. Ejemplo: con $R=4$, $A=8\\pi$."
+        },
+        {
+          "texto": "Cuadrante ⇒ $\\theta=\\frac{\\pi}{2}$ y $A=\\frac{\\pi R^2}{4}$",
+          "explicacion": "Es un cuarto del círculo. Ejemplo: con $R=4$, $A=4\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de sectores",
+      "puntos": [
+        {
+          "texto": "Mismo radio ⇒ el área es proporcional al ángulo",
+          "explicacion": "Si se duplica el ángulo central, se duplica el área. Ejemplo: con $R=2$, los ángulos $\\frac{\\pi}{3}$ y $\\frac{2\\pi}{3}$ dan áreas $\\frac{2\\pi}{3}$ y $\\frac{4\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radio y área",
+      "puntos": [
+        {
+          "texto": "Mismo ángulo ⇒ el área es proporcional al cuadrado del radio",
+          "explicacion": "Si se duplica el radio, el área se multiplica por cuatro. Ejemplo: con $\\theta=1$, $R=1$ da $A=\\frac{1}{2}$ y $R=2$ da $A=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Longitud de arco y área",
+      "puntos": [
+        {
+          "texto": "Sector ⇒ relaciona el arco y el área",
+          "explicacion": "Con $A=\\frac{LR}{2}$ se puede hallar el área, el arco o el radio si se conocen dos de ellos. Ejemplo: con $A=24$ y $L=8$, $R=\\frac{2A}{L}=6$."
+        }
+      ]
+    }
+  ]
+}
