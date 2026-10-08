@@ -1,0 +1,210 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Periodo",
+  "glosario": {
+    "periodo": "menor longitud que repite la gráfica",
+    "función periódica": "repite sus valores a intervalos regulares",
+    "factor B": "número que multiplica a x dentro",
+    "desfase": "desplazamiento horizontal de la gráfica",
+    "recíproca": "uno dividido entre la función",
+    "valor absoluto": "valor sin su signo",
+    "cociente irracional": "razón que no es fracción de enteros",
+    "tangente": "cociente del seno entre el coseno",
+    "cotangente": "cociente del coseno entre el seno",
+    "secante": "recíproca del coseno",
+    "cosecante": "recíproca del seno",
+    "frecuencia": "ciclos que se repiten por unidad",
+    "amplitud": "mitad de la distancia entre máximo y mínimo"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Periodo»: menor $T>0$ con $f(x+T)=f(x)$",
+          "explicacion": "Es la longitud del tramo que se repite en la gráfica, y debe cumplirse para todo $x$ del dominio. Ejemplo: una noria que tarda 20 minutos en dar una vuelta repite la altura de una cabina cada 20 minutos, y su altura se modela con $y=\\operatorname{sen}\\frac{\\pi t}{10}$, cuyo periodo es $\\frac{2\\pi}{\\pi/10}=20$."
+        }
+      ]
+    },
+    {
+      "titulo": "Múltiplos del periodo",
+      "puntos": [
+        {
+          "texto": "Si $T$ es periodo, $nT$ también lo es",
+          "explicacion": "Repetir el desplazamiento $n$ veces devuelve el mismo valor, por eso se pide el menor positivo. Ejemplo: para $y=\\operatorname{sen} x$ también cumplen $4\\pi$, $6\\pi$ y $-2\\pi$, pero el periodo es $2\\pi$. Para la noria, también se repite cada 40 y cada 60 minutos, aunque el periodo es 20."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo del seno",
+      "puntos": [
+        {
+          "texto": "$y=\\operatorname{sen} x$ tiene periodo $2\\pi$",
+          "explicacion": "El punto del círculo trigonométrico regresa a su lugar tras una vuelta completa, de 360°. Ejemplo: $\\operatorname{sen}\\frac{\\pi}{6}=\\operatorname{sen}\\left(\\frac{\\pi}{6}+2\\pi\\right)=\\frac{1}{2}$. Con medio giro el seno cambia de signo, por eso $\\pi$ no sirve."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo del coseno",
+      "puntos": [
+        {
+          "texto": "$y=\\cos x$ tiene periodo $2\\pi$",
+          "explicacion": "Igual que el seno, necesita una vuelta completa, pues con $\\pi$ el coseno cambia de signo. Ejemplo: $\\cos\\frac{\\pi}{3}=\\cos\\left(\\frac{\\pi}{3}+2\\pi\\right)=\\frac{1}{2}$, pero $\\cos\\left(\\frac{\\pi}{3}+\\pi\\right)=-\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo de la tangente",
+      "puntos": [
+        {
+          "texto": "$y=\\tan x$ tiene periodo $\\pi$",
+          "explicacion": "Al sumar $\\pi$, seno y coseno cambian de signo a la vez y el cociente no cambia. Ejemplo: $\\tan\\frac{\\pi}{4}=\\tan\\frac{5\\pi}{4}=1$. Es el error más común: creer que es $2\\pi$ como el seno."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo de la cotangente",
+      "puntos": [
+        {
+          "texto": "$y=\\cot x$ tiene periodo $\\pi$",
+          "explicacion": "Es el cociente del coseno entre el seno, y ambos cambian de signo al sumar $\\pi$. Ejemplo: $\\cot\\frac{\\pi}{3}=\\cot\\frac{4\\pi}{3}=\\frac{\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo de la secante",
+      "puntos": [
+        {
+          "texto": "$y=\\sec x$ tiene periodo $2\\pi$",
+          "explicacion": "Es la recíproca del coseno, así que repite sus valores cuando lo hace el coseno. Ejemplo: $\\sec\\frac{\\pi}{3}=\\frac{1}{\\cos(\\pi/3)}=2$ y $\\sec\\left(\\frac{\\pi}{3}+2\\pi\\right)=2$; con $\\pi$ resultaría $-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo de la cosecante",
+      "puntos": [
+        {
+          "texto": "$y=\\csc x$ tiene periodo $2\\pi$",
+          "explicacion": "Es la recíproca del seno, así que repite sus valores cuando lo hace el seno. Ejemplo: $\\csc\\frac{\\pi}{6}=\\frac{1}{1/2}=2$ y $\\csc\\left(\\frac{\\pi}{6}+2\\pi\\right)=2$; con $\\pi$ resultaría $-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto del factor B",
+      "puntos": [
+        {
+          "texto": "Periodo de $f(Bx)$ = periodo básico $\\div\\ |B|$",
+          "explicacion": "Si $Bx$ debe avanzar un periodo básico, $x$ avanza esa longitud dividida entre $|B|$. Ejemplos: $y=\\operatorname{sen}3x$ tiene $T=\\frac{2\\pi}{3}$; $y=\\operatorname{sen}\\frac{x}{3}$ tiene $T=\\frac{2\\pi}{1/3}=6\\pi$; $y=\\tan2x$ tiene $T=\\frac{\\pi}{2}$; $y=\\cot\\frac{x}{4}$ tiene $T=4\\pi$; $y=\\sec\\frac{x}{2}$ tiene $T=4\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor B negativo",
+      "puntos": [
+        {
+          "texto": "Si $B<0$, el periodo usa $|B|$",
+          "explicacion": "El periodo es una longitud y no puede ser negativa; el signo solo refleja la gráfica. Ejemplo: $y=\\cos(-5x)$ tiene $T=\\frac{2\\pi}{5}$, igual que $y=\\cos5x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto de A y D",
+      "puntos": [
+        {
+          "texto": "Los factores $A$ y $D$ ✗ cambian el periodo",
+          "explicacion": "Multiplicar por $A$ o sumar $D$ solo estira o sube la gráfica. Ejemplo: $y=7\\operatorname{sen} x+3$ tiene el mismo periodo $2\\pi$ que $y=\\operatorname{sen} x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto del desfase",
+      "puntos": [
+        {
+          "texto": "En $f(Bx+C)$, el término $C$ ✗ cambia el periodo",
+          "explicacion": "El desfase mueve la gráfica de lado, sin alterar la longitud del ciclo. Ejemplo: $y=\\operatorname{sen}(3x-2)$ tiene $T=\\frac{2\\pi}{3}$, igual que $y=\\operatorname{sen}3x$; y $y=\\tan\\left(2x+\\frac{\\pi}{3}\\right)$ tiene $T=\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias pares",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}^{2}x$ y $\\cos^{2}x$ tienen periodo $\\pi$",
+          "explicacion": "Se reescriben como $\\operatorname{sen}^{2}x=\\frac{1-\\cos2x}{2}$ y $\\cos^{2}x=\\frac{1+\\cos2x}{2}$, y $\\cos2x$ tiene periodo $\\frac{2\\pi}{2}=\\pi$. Ejemplo: $\\operatorname{sen}^{2}\\frac{\\pi}{6}=\\frac{1}{4}$ y $\\operatorname{sen}^{2}\\left(\\frac{\\pi}{6}+\\pi\\right)=\\left(-\\frac{1}{2}\\right)^{2}=\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias impares",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}^{3}x$ conserva el periodo $2\\pi$",
+          "explicacion": "Elevar al cubo conserva el signo, así que sumar $\\pi$ vuelve a cambiar el valor. Ejemplo: $\\operatorname{sen}^{3}\\frac{\\pi}{6}=\\frac{1}{8}$ pero $\\operatorname{sen}^{3}\\left(\\frac{\\pi}{6}+\\pi\\right)=-\\frac{1}{8}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor absoluto",
+      "puntos": [
+        {
+          "texto": "$|\\operatorname{sen} x|$ tiene periodo $\\pi$",
+          "explicacion": "El valor absoluto vuelve positivos los valores negativos, de modo que la mitad de la onda se refleja y se repite cada $\\pi$. Ejemplo: $|\\operatorname{sen}\\frac{\\pi}{6}|=\\frac{1}{2}$ y $|\\operatorname{sen}\\frac{7\\pi}{6}|=\\left|-\\frac{1}{2}\\right|=\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de seno y coseno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen} x\\cos x$ tiene periodo $\\pi$",
+          "explicacion": "Equivale a $\\frac{1}{2}\\operatorname{sen}2x$, cuyo periodo es $\\frac{2\\pi}{2}=\\pi$. Ejemplo: en $x=\\frac{\\pi}{6}$ vale $\\frac{1}{2}\\cdot\\frac{\\sqrt{3}}{2}=\\frac{\\sqrt{3}}{4}$, y en $x=\\frac{7\\pi}{6}$ vale $\\left(-\\frac{1}{2}\\right)\\left(-\\frac{\\sqrt{3}}{2}\\right)=\\frac{\\sqrt{3}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de funciones",
+      "puntos": [
+        {
+          "texto": "Periodo de una suma = múltiplo común de los periodos",
+          "explicacion": "Se busca el menor número que contenga un número entero de veces a cada periodo. Ejemplo: $y=3\\operatorname{sen}2x+4\\cos3x$ tiene periodos $\\pi$ y $\\frac{2\\pi}{3}$; $\\pi\\cdot2=2\\pi$ y $\\frac{2\\pi}{3}\\cdot3=2\\pi$, luego $T=2\\pi$. Otro: $y=\\operatorname{sen} x+\\cos\\frac{x}{2}$ tiene periodos $2\\pi$ y $4\\pi$, y $T=4\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma sin periodo",
+      "puntos": [
+        {
+          "texto": "Si el cociente de periodos es irracional, la suma ✗ es periódica",
+          "explicacion": "No existen enteros positivos $m$ y $n$ que igualen $m$ veces un periodo con $n$ veces el otro. Ejemplo: $y=\\operatorname{sen} x+\\operatorname{sen}(\\pi x)$ tiene periodos $2\\pi$ y $2$, y su cociente $\\pi$ es irracional, por lo que no se repite nunca exactamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar B desde el periodo",
+      "puntos": [
+        {
+          "texto": "$B=\\frac{2\\pi}{T}$ para seno y coseno",
+          "explicacion": "Se despeja de $T=\\frac{2\\pi}{|B|}$ tomando $B>0$. Ejemplo: una onda de periodo $\\frac{\\pi}{2}$ se escribe $y=\\operatorname{sen}4x$, pues $B=\\frac{2\\pi}{\\pi/2}=4$; con la noria, $B=\\frac{2\\pi}{20}=\\frac{\\pi}{10}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo en la gráfica",
+      "puntos": [
+        {
+          "texto": "Periodo = distancia entre dos máximos consecutivos",
+          "explicacion": "Se puede leer directamente en la gráfica, restando las posiciones de dos máximos seguidos (o de dos puntos equivalentes seguidos). Ejemplo: $y=\\operatorname{sen}2x$ tiene máximos en $x=\\frac{\\pi}{4}$ y $x=\\frac{5\\pi}{4}$, y la distancia es $\\frac{5\\pi}{4}-\\frac{\\pi}{4}=\\pi$, igual que $\\frac{2\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Frecuencia y amplitud tienen tema propio",
+          "explicacion": "La frecuencia es el inverso del periodo y la amplitud mide la altura de la onda; ambas se estudian aparte. Aquí solo interesa la longitud del ciclo."
+        }
+      ]
+    }
+  ]
+}

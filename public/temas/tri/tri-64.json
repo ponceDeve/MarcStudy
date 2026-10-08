@@ -1,0 +1,196 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Funciones trigonométricas inversas",
+  "glosario": {
+    "función inversa": "función que deshace a otra función",
+    "función uno a uno": "cada salida proviene de una sola entrada",
+    "restricción": "limitar el dominio a un tramo",
+    "valor principal": "único ángulo que devuelve la inversa",
+    "periódica": "repite sus valores a intervalos regulares",
+    "dominio": "valores de entrada permitidos",
+    "rango": "valores de salida posibles",
+    "rama": "tramo de la gráfica donde no repite",
+    "razón trigonométrica": "cociente entre lados de un triángulo rectángulo",
+    "radián": "unidad de ángulo basada en el arco",
+    "cosecante": "recíproca del seno"
+  },
+  "theory": [
+    {
+      "titulo": "Función inversa",
+      "puntos": [
+        {
+          "texto": "«Función inversa»: $f^{-1}(f(x))=x$",
+          "explicacion": "Deshace lo que hizo la función original: si $f$ lleva $x$ a $y$, la inversa lleva $y$ de vuelta a $x$. Con el seno, $\\operatorname{sen}\\frac{\\pi}{6}=\\frac{1}{2}$, y la inversa devuelve $\\frac{\\pi}{6}$ al recibir $\\frac{1}{2}$. Si una rampa sube 1 m por cada 1 m que avanza, su tangente es 1 y la inversa permite recuperar su ángulo, 45°."
+        },
+        {
+          "texto": "$y=f^{-1}(x)$ implica $x=f(y)$",
+          "explicacion": "Para calcular una inversa se pregunta qué entrada de $f$ produce como salida el número $x$. Ejemplo: para hallar la inversa del seno en $\\frac{\\sqrt{2}}{2}$ se busca $y$ en $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$ con $\\operatorname{sen} y=\\frac{\\sqrt{2}}{2}$, y resulta $y=\\frac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condición uno a uno",
+      "puntos": [
+        {
+          "texto": "Tener inversa ✓ ser función uno a uno",
+          "explicacion": "Una función es uno a uno cuando cada valor de salida proviene de una sola entrada; así la inversa puede devolver un único resultado. Criterio gráfico: toda recta horizontal corta la gráfica a lo más una vez. Ejemplo: la recta $y=\\frac{1}{2}$ corta a $y=\\operatorname{sen} x$ en $\\frac{\\pi}{6}$, $\\frac{5\\pi}{6}$, $\\frac{13\\pi}{6}$, y así sin fin; el seno completo no es uno a uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Por qué restringir",
+      "puntos": [
+        {
+          "texto": "Seno, coseno y tangente ✗ son uno a uno en todo $\\mathbb{R}$",
+          "explicacion": "Al ser periódicas repiten sus valores, así que un mismo número aparece infinitas veces como salida y la inversa no sería una función. Ejemplo: $\\cos0=\\cos2\\pi=1$ y $\\tan\\frac{\\pi}{4}=\\tan\\frac{5\\pi}{4}=1$. La solución es elegir un tramo donde la función no repita valores."
+        },
+        {
+          "texto": "«Valor principal»: único ángulo que devuelve la inversa",
+          "explicacion": "Aunque muchos ángulos tengan la misma razón, la inversa entrega solo el que cae en el tramo elegido. Ejemplo: $\\operatorname{sen} x=\\frac{1}{2}$ se cumple en 30° y en 150°, pero el arco seno de $\\frac{1}{2}$ es solo $\\frac{\\pi}{6}$ (30°). Igualmente $\\cos x=-\\frac{1}{2}$ se cumple en 120° y en 240°, y el arco coseno de $-\\frac{1}{2}$ devuelve solo $\\frac{2\\pi}{3}$ (120°)."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricción del seno",
+      "puntos": [
+        {
+          "texto": "El seno se restringe a $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$",
+          "explicacion": "En ese tramo el seno crece de $-1$ a $1$ sin repetir valores y contiene a todos los ángulos agudos. Ejemplo: $\\operatorname{sen}\\left(-\\frac{\\pi}{2}\\right)=-1$, $\\operatorname{sen}0=0$, $\\operatorname{sen}\\frac{\\pi}{2}=1$, y el valor $\\frac{1}{2}$ aparece una sola vez, en $\\frac{\\pi}{6}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricción del coseno",
+      "puntos": [
+        {
+          "texto": "El coseno se restringe a $\\left[0,\\pi\\right]$",
+          "explicacion": "En ese tramo el coseno decrece de $1$ a $-1$ sin repetir valores. Ejemplo: $\\cos0=1$, $\\cos\\frac{\\pi}{2}=0$, $\\cos\\pi=-1$, y el valor $-\\frac{1}{2}$ aparece una sola vez, en $\\frac{2\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricción de la tangente",
+      "puntos": [
+        {
+          "texto": "La tangente se restringe a $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$",
+          "explicacion": "Los extremos se excluyen porque allí la tangente no existe; dentro del intervalo crece sin límite de un extremo a otro. Ejemplo: $\\tan\\left(-\\frac{\\pi}{4}\\right)=-1$, $\\tan0=0$, $\\tan\\frac{\\pi}{4}=1$, todos distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Nombre arco seno",
+      "puntos": [
+        {
+          "texto": "«Arco seno»: ángulo cuyo seno vale $x$",
+          "explicacion": "Se escribe $\\operatorname{arcsen} x$ y es la inversa del seno restringido. Ejemplo: $\\operatorname{arcsen}\\frac{\\sqrt{3}}{2}=\\frac{\\pi}{3}$ porque $\\operatorname{sen}\\frac{\\pi}{3}=\\frac{\\sqrt{3}}{2}$. En una rampa de 10 m que sube 5 m, el seno del ángulo es $\\frac{5}{10}$ y el ángulo es $\\operatorname{arcsen}\\frac{1}{2}=30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Nombre arco coseno",
+      "puntos": [
+        {
+          "texto": "«Arco coseno»: ángulo cuyo coseno vale $x$",
+          "explicacion": "Se escribe $\\arccos x$ y es la inversa del coseno restringido. Ejemplo: $\\arccos\\frac{\\sqrt{2}}{2}=\\frac{\\pi}{4}$ porque $\\cos\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Nombre arco tangente",
+      "puntos": [
+        {
+          "texto": "«Arco tangente»: ángulo cuya tangente vale $x$",
+          "explicacion": "Se escribe $\\arctan x$ y es la inversa de la tangente restringida. Ejemplo: $\\arctan\\sqrt{3}=\\frac{\\pi}{3}$ porque $\\tan\\frac{\\pi}{3}=\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación con exponente",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}^{-1}x$ significa lo mismo que $\\operatorname{arcsen} x$",
+          "explicacion": "El exponente $-1$ sobre el nombre de la función indica función inversa, y la lectura es la misma para $\\cos^{-1}x$ y $\\tan^{-1}x$. Ejemplo: $\\operatorname{sen}^{-1}\\left(\\frac{1}{2}\\right)=\\frac{\\pi}{6}$."
+        },
+        {
+          "texto": "$\\operatorname{sen}^{-1}x \\neq \\frac{1}{\\operatorname{sen} x}$",
+          "explicacion": "El exponente $-1$ no significa inverso multiplicativo; el inverso multiplicativo del seno es la cosecante. Ejemplo con $x=0{,}5$ radianes: $\\operatorname{sen}^{-1}(0{,}5)\\approx0{,}5236$, mientras que $\\frac{1}{\\operatorname{sen}0{,}5}\\approx\\frac{1}{0{,}4794}\\approx2{,}086$."
+        }
+      ]
+    },
+    {
+      "titulo": "Entrada y salida",
+      "puntos": [
+        {
+          "texto": "Entrada = razón, salida = ángulo",
+          "explicacion": "A una inversa se le da un número sin unidades y devuelve un ángulo, normalmente en radianes. Ejemplo: $\\arctan1=\\frac{\\pi}{4}$ rad, es decir 45°. Una escalera que sube 4 m por cada 3 m de base tiene tangente $\\frac{4}{3}$ y su ángulo de inclinación es $\\arctan\\frac{4}{3}\\approx53{,}13°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio y rango",
+      "puntos": [
+        {
+          "texto": "Dominio de $f^{-1}$ = rango de $f$ restringida",
+          "explicacion": "Al intercambiar entradas y salidas se intercambian también los conjuntos. Ejemplo: el seno restringido tiene rango $[-1,1]$, que pasa a ser el dominio del arco seno; su dominio $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$ pasa a ser el rango del arco seno."
+        },
+        {
+          "texto": "Arco seno: dominio $[-1,1]$, rango $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$",
+          "explicacion": "Resume la restricción del seno con sus conjuntos intercambiados. Ejemplo: $\\operatorname{arcsen}1=\\frac{\\pi}{2}$ pertenece al rango, y $\\operatorname{arcsen}2$ no existe porque 2 está fuera del dominio."
+        },
+        {
+          "texto": "Arco coseno: dominio $[-1,1]$, rango $\\left[0,\\pi\\right]$",
+          "explicacion": "Resume la restricción del coseno con sus conjuntos intercambiados. Ejemplo: $\\arccos(-1)=\\pi$ pertenece al rango, y $\\arccos(-3)$ no existe porque $-3$ está fuera del dominio."
+        },
+        {
+          "texto": "Arco tangente: dominio $\\mathbb{R}$, rango $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$",
+          "explicacion": "Resume la restricción de la tangente con sus conjuntos intercambiados; a diferencia de las otras dos no limita la entrada. Ejemplo: $\\arctan(100)$ existe y es cercano a $\\frac{\\pi}{2}$, pero nunca llega a ser $\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Composición directa",
+      "puntos": [
+        {
+          "texto": "$f(f^{-1}(x))=x$ si $x$ está en el dominio de $f^{-1}$",
+          "explicacion": "Primero se halla el ángulo y luego se calcula su razón, con lo que se recupera el número inicial. Ejemplo: $\\operatorname{sen}\\left(\\operatorname{arcsen}\\frac{1}{3}\\right)=\\frac{1}{3}$ y $\\cos(\\arccos(-0{,}8))=-0{,}8$. En cambio $\\operatorname{sen}(\\operatorname{arcsen}2)$ no existe, porque 2 no pertenece a $[-1,1]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Composición inversa",
+      "puntos": [
+        {
+          "texto": "$f^{-1}(f(x))=x$ solo si $x$ está en la rama restringida",
+          "explicacion": "Fuera de la rama, el resultado es el ángulo de la rama que tiene la misma razón. Ejemplo: $\\operatorname{arcsen}\\left(\\operatorname{sen}\\frac{5\\pi}{6}\\right)=\\operatorname{arcsen}\\frac{1}{2}=\\frac{\\pi}{6}\\neq\\frac{5\\pi}{6}$. Y $\\arccos\\left(\\cos\\frac{4\\pi}{3}\\right)=\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}\\neq\\frac{4\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica de la inversa",
+      "puntos": [
+        {
+          "texto": "La gráfica de $f^{-1}$ refleja la de $f$ respecto a $y=x$",
+          "explicacion": "Intercambiar entradas y salidas intercambia las coordenadas de cada punto. Ejemplo: el punto $\\left(\\frac{\\pi}{6},\\frac{1}{2}\\right)$ del seno restringido corresponde al punto $\\left(\\frac{1}{2},\\frac{\\pi}{6}\\right)$ del arco seno, y $\\left(\\frac{\\pi}{4},1\\right)$ de la tangente corresponde a $\\left(1,\\frac{\\pi}{4}\\right)$ del arco tangente."
+        }
+      ]
+    },
+    {
+      "titulo": "Otras inversas",
+      "puntos": [
+        {
+          "texto": "Existen también arco cotangente, arco secante y arco cosecante",
+          "explicacion": "Son las inversas de la cotangente, la secante y la cosecante, y se definen con el mismo recurso de restringir cada función a un tramo donde no repite valores."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con ecuaciones",
+      "puntos": [
+        {
+          "texto": "Resolver $\\operatorname{sen} x=k$ parte de $\\operatorname{arcsen} k$",
+          "explicacion": "La inversa entrega solo la solución del tramo principal; las demás se obtienen por periodicidad o simetría, algo que se desarrolla en las ecuaciones trigonométricas. Ejemplo: para $\\operatorname{sen} x=\\frac{1}{2}$ la solución base es $\\operatorname{arcsen}\\frac{1}{2}=\\frac{\\pi}{6}$."
+        }
+      ]
+    }
+  ]
+}

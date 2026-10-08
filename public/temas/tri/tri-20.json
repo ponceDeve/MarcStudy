@@ -1,0 +1,310 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos negativos",
+  "glosario": {
+    "ángulo negativo": "Ángulo generado por giro en sentido horario.",
+    "sentido horario": "Giro en la dirección de las manecillas.",
+    "sentido antihorario": "Giro contrario al de las manecillas.",
+    "lado inicial": "Rayo donde comienza la rotación del ángulo.",
+    "lado final": "Rayo donde termina la rotación del ángulo.",
+    "vértice": "Punto común de los dos lados.",
+    "magnitud": "Tamaño del giro sin considerar el signo.",
+    "ángulos opuestos": "Igual magnitud y sentido de giro contrario.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "posición normal": "Vértice en origen, lado inicial en abscisas positivas.",
+    "semieje": "Mitad de un eje, desde el origen.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "ángulos cuadrantales": "Ángulos con lado final sobre un eje.",
+    "ángulos coterminales": "Ángulos distintos con el mismo lado final.",
+    "radio vector": "Distancia del origen a un punto.",
+    "reflexión": "Imagen simétrica respecto a una recta.",
+    "recíproca": "Inverso multiplicativo de una cantidad.",
+    "pendiente": "Inclinación de una recta respecto a la horizontal.",
+    "razón trigonométrica": "Cociente entre dos medidas asociadas a un ángulo.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "cotangente": "Razón entre abscisa y ordenada.",
+    "secante": "Razón entre radio vector y abscisa.",
+    "cosecante": "Razón entre radio vector y ordenada.",
+    "función par": "Función que no cambia al invertir el signo.",
+    "función impar": "Función que cambia de signo al invertir la variable."
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo negativo",
+      "puntos": [
+        {
+          "texto": "Giro en sentido horario → «ángulo negativo»",
+          "explicacion": "Un ángulo se forma al girar un rayo alrededor del vértice, desde su lado inicial hasta su lado final. Cuando ese giro sigue el sentido de las manecillas del reloj, a la medida se le antepone el signo menos. Ejemplo cotidiano: si la manecilla de los minutos avanza un cuarto de vuelta, de la marca 12 a la marca 3, describe un giro horario de magnitud 90°, que se escribe $-90^\\circ$."
+        },
+        {
+          "texto": "Giro en sentido antihorario → ángulo positivo",
+          "explicacion": "Es la convención contraria y sirve de referencia para reconocer cuándo un ángulo es negativo. Si el mismo rayo gira un cuarto de vuelta contra el reloj, de la marca 12 a la marca 9, mide $+90^\\circ$; al girar de la marca 12 a la marca 3 mide $-90^\\circ$. La cantidad de giro es igual y el signo cambia solo por el sentido."
+        },
+        {
+          "texto": "El signo menos indica sentido, no «tamaño»",
+          "explicacion": "La cantidad de giro es la magnitud, es decir, el valor sin signo. El ángulo $-40^\\circ$ gira 40° igual que $+40^\\circ$, pero en sentido contrario. Por eso, aunque $-90^\\circ < 30^\\circ$ como números, el primero representa un giro mayor: $|-90^\\circ| = 90^\\circ > 30^\\circ$."
+        },
+        {
+          "texto": "Ángulos opuestos: $\\theta$ y $-\\theta$ suman $0^\\circ$",
+          "explicacion": "Si un rayo gira $\\theta$ y luego gira $-\\theta$, regresa a su posición inicial, y por eso la suma es nula. Ejemplo: una llave de agua se abre girándola $50^\\circ$ en sentido antihorario; para dejarla como estaba se gira $-50^\\circ$, y se cumple $50^\\circ + (-50^\\circ) = 0^\\circ$."
+        },
+        {
+          "texto": "Medida negativa también en radián (rad): $-\\frac{\\pi}{3}$ rad",
+          "explicacion": "El signo sigue la misma convención sin importar la unidad de medida. Para pasar a grados se usa $\\pi \\text{ rad} = 180^\\circ$: $-\\frac{\\pi}{3} \\times \\frac{180^\\circ}{\\pi} = -\\frac{180^\\circ}{3} = -60^\\circ$. Así, $-\\frac{\\pi}{3}$ rad es un giro horario de 60°."
+        }
+      ]
+    },
+    {
+      "titulo": "Posición normal",
+      "puntos": [
+        {
+          "texto": "Ángulo negativo en posición normal parte del eje X positivo",
+          "explicacion": "Para ubicar un ángulo negativo en el plano cartesiano se coloca el vértice en el origen y el lado inicial sobre el semieje positivo de abscisas; luego se gira en sentido horario la magnitud indicada y se obtiene el lado final. Ejemplo: para $-50^\\circ$ se gira 50° hacia abajo desde el semieje positivo de abscisas, de modo que el lado final queda bajo el eje horizontal."
+        },
+        {
+          "texto": "Giro horario recorre los cuadrantes en orden IV, III, II, I",
+          "explicacion": "Al girar en sentido horario desde el semieje positivo de abscisas se pasa primero por la región inferior derecha (cuadrante IV), luego por la inferior izquierda (III), después por la superior izquierda (II) y por último por la superior derecha (I). Es el orden inverso al de los ángulos positivos. Ejemplo: al pasar de $-80^\\circ$ a $-100^\\circ$ se cruza el semieje negativo de ordenadas y se cambia de IV a III."
+        }
+      ]
+    },
+    {
+      "titulo": "Ubicación por cuadrantes",
+      "puntos": [
+        {
+          "texto": "$-90^\\circ < \\theta < 0^\\circ$ ⇒ lado final en «cuadrante IV»",
+          "explicacion": "En este rango el giro horario aún no llega al semieje negativo de ordenadas, así que el lado final queda bajo el eje horizontal y a la derecha del eje vertical. Ejemplo: $-30^\\circ$, $-75^\\circ$ y $-89^\\circ$ pertenecen al cuadrante IV."
+        },
+        {
+          "texto": "$-180^\\circ < \\theta < -90^\\circ$ ⇒ lado final en «cuadrante III»",
+          "explicacion": "El giro ya pasó el semieje negativo de ordenadas pero todavía no llega al semieje negativo de abscisas. Ejemplo: $-135^\\circ$ gira 90° hasta el eje y 45° más, por lo que queda en el cuadrante III."
+        },
+        {
+          "texto": "$-270^\\circ < \\theta < -180^\\circ$ ⇒ lado final en «cuadrante II»",
+          "explicacion": "Tras superar el semieje negativo de abscisas, el giro continúa hacia la región superior izquierda. Ejemplo: $-200^\\circ$ gira 180° hasta el semieje negativo de abscisas y 20° más, por lo que queda en el cuadrante II."
+        },
+        {
+          "texto": "$-360^\\circ < \\theta < -270^\\circ$ ⇒ lado final en «cuadrante I»",
+          "explicacion": "Al superar el semieje positivo de ordenadas, el lado final se acerca de nuevo al semieje positivo de abscisas, completando casi una vuelta. Ejemplo: $-300^\\circ$ gira 270° hasta el semieje positivo de ordenadas y 30° más, por lo que queda en el cuadrante I."
+        },
+        {
+          "texto": "Múltiplos de $-90^\\circ$ ✗ «cuadrante»: el lado final cae sobre un eje",
+          "explicacion": "Cuando el lado final coincide con un semieje no está dentro de ninguna región. El ángulo $-90^\\circ$ queda en el semieje negativo de ordenadas, $-180^\\circ$ en el semieje negativo de abscisas, $-270^\\circ$ en el semieje positivo de ordenadas y $-360^\\circ$ en el semieje positivo de abscisas. Estos ángulos se estudian como ángulos cuadrantales."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalente positivo",
+      "puntos": [
+        {
+          "texto": "$-\\theta$ → equivalente positivo $360^\\circ - \\theta$",
+          "explicacion": "Girar $\\theta$ hacia atrás deja el rayo en la misma posición que girar $360^\\circ - \\theta$ hacia adelante, porque una vuelta completa mide 360°. Ejemplo: $-60^\\circ + 360^\\circ = 300^\\circ$, que también está en el cuadrante IV. Otro caso: $-135^\\circ + 360^\\circ = 225^\\circ$, en el cuadrante III."
+        },
+        {
+          "texto": "Fórmula válida si $0^\\circ < \\theta < 360^\\circ$",
+          "explicacion": "Cuando la magnitud supera una vuelta, un solo paso no basta y hay que sumar 360° tantas veces como haga falta hasta obtener una medida positiva. Ejemplo: $-400^\\circ + 360^\\circ = -40^\\circ$ sigue siendo negativo; se suma otra vuelta: $-40^\\circ + 360^\\circ = 320^\\circ$."
+        },
+        {
+          "texto": "En radianes: $-\\theta$ → equivalente positivo $2\\pi - \\theta$",
+          "explicacion": "Una vuelta completa mide $2\\pi$ rad, que reemplaza a 360°. Ejemplo: $-\\frac{\\pi}{6} + 2\\pi = -\\frac{\\pi}{6} + \\frac{12\\pi}{6} = \\frac{11\\pi}{6}$ rad."
+        },
+        {
+          "texto": "Equivalentes comparten lado final pero son ángulos «distintos»",
+          "explicacion": "Giran en sentidos contrarios y con magnitudes diferentes: $-60^\\circ$ gira 60° y $300^\\circ$ gira 300°, aunque ambos terminan en la misma posición. Esa coincidencia de lado final es lo que caracteriza a los ángulos coterminales, y por eso $-60^\\circ \\neq 300^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Seno (sen) del ángulo opuesto: $\\text{sen}(-\\theta) = -\\text{sen}\\,\\theta$",
+          "explicacion": "Se calcula el seno del ángulo positivo y se antepone el signo menos. Ejemplo: un dron desciende en línea recta 80 m formando $-30^\\circ$ con la horizontal; el cambio de altura es $80 \\cdot \\text{sen}(-30^\\circ)$. Como $\\text{sen}(-30^\\circ) = -\\text{sen}\\,30^\\circ = -\\frac{1}{2}$, resulta $80 \\cdot \\left(-\\frac{1}{2}\\right) = -40$ m: el dron baja 40 m."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Coseno (cos) del ángulo opuesto: $\\cos(-\\theta) = \\cos\\theta$",
+          "explicacion": "El signo del ángulo no altera el valor del coseno. Ejemplo: el mismo dron recorre 80 m formando $-60^\\circ$ con la horizontal; el avance horizontal es $80 \\cdot \\cos(-60^\\circ) = 80 \\cdot \\cos 60^\\circ = 80 \\cdot \\frac{1}{2} = 40$ m. El resultado es positivo: el signo del ángulo solo indica que el dron desciende."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Tangente (tan) del ángulo opuesto: $\\tan(-\\theta) = -\\tan\\theta$",
+          "explicacion": "Se calcula la tangente del ángulo positivo y se antepone el signo menos. Ejemplo: una rampa que desciende con inclinación $-45^\\circ$ tiene pendiente $\\tan(-45^\\circ) = -\\tan 45^\\circ = -1$. Por cada metro avanzado horizontalmente, la rampa baja 1 m."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Cotangente (cot) del ángulo opuesto: $\\cot(-\\theta) = -\\cot\\theta$",
+          "explicacion": "Se calcula la cotangente del ángulo positivo y se antepone el signo menos. Ejemplo: $\\cot(-30^\\circ) = -\\cot 30^\\circ = -\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Secante (sec) del ángulo opuesto: $\\sec(-\\theta) = \\sec\\theta$",
+          "explicacion": "La secante conserva su valor al invertir el sentido del giro. Ejemplo: $\\sec(-60^\\circ) = \\sec 60^\\circ = \\frac{1}{\\cos 60^\\circ} = \\frac{1}{\\frac{1}{2}} = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecante del ángulo opuesto",
+      "puntos": [
+        {
+          "texto": "Cosecante (csc) del ángulo opuesto: $\\csc(-\\theta) = -\\csc\\theta$",
+          "explicacion": "Se calcula la cosecante del ángulo positivo y se antepone el signo menos. Ejemplo: $\\csc(-30^\\circ) = -\\csc 30^\\circ = -\\frac{1}{\\text{sen}\\,30^\\circ} = -\\frac{1}{\\frac{1}{2}} = -2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad de razones",
+      "puntos": [
+        {
+          "texto": "Razones impares cambian de signo al invertir el giro",
+          "explicacion": "Son el seno, la tangente, la cotangente y la cosecante, que cumplen $f(-\\theta) = -f(\\theta)$ y por eso se llaman funciones impares. Ejemplos: $\\text{sen}(-45^\\circ) = -\\frac{\\sqrt{2}}{2}$, $\\tan(-60^\\circ) = -\\sqrt{3}$ y $\\csc(-45^\\circ) = -\\sqrt{2}$."
+        },
+        {
+          "texto": "Razones pares conservan su valor al invertir el giro",
+          "explicacion": "Son el coseno y la secante, que cumplen $f(-\\theta) = f(\\theta)$ y por eso se llaman funciones pares. Ejemplos: $\\cos(-45^\\circ) = \\frac{\\sqrt{2}}{2}$ y $\\sec(-45^\\circ) = \\sqrt{2}$, los mismos valores que para $45^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración con coordenadas",
+      "puntos": [
+        {
+          "texto": "Lado final de $-\\theta$ = reflejo del lado final de $\\theta$ en el eje X",
+          "explicacion": "Ambos ángulos parten del semieje positivo de abscisas y giran la misma magnitud, uno hacia arriba y otro hacia abajo, así que sus lados finales son imágenes simétricas respecto al eje horizontal. Ejemplo: para $\\theta = 30^\\circ$ el lado final sube 30° y para $-30^\\circ$ baja 30°."
+        },
+        {
+          "texto": "Reflejo de $P(x, y)$ en el eje X = $P'(x, -y)$",
+          "explicacion": "Reflejar respecto al eje horizontal conserva la abscisa y cambia el signo de la ordenada. Ejemplo: si $P(4, 3)$ está en el lado final de $\\theta$, entonces $P'(4, -3)$ está en el lado final de $-\\theta$."
+        },
+        {
+          "texto": "Ambos puntos tienen el mismo radio vector $r$",
+          "explicacion": "El radio vector es $r = \\sqrt{x^2 + y^2}$ y, como $(-y)^2 = y^2$, no cambia con la reflexión. Ejemplo: $r = \\sqrt{4^2 + 3^2} = 5$ y $r' = \\sqrt{4^2 + (-3)^2} = 5$."
+        },
+        {
+          "texto": "Seno: $\\text{sen}(-\\theta) = \\frac{-y}{r} = -\\text{sen}\\,\\theta$",
+          "explicacion": "La ordenada de $P'$ es $-y$ y el radio vector es el mismo, por lo que el cociente solo cambia de signo. Con $P(4, 3)$: $\\text{sen}\\,\\theta = \\frac{3}{5}$ y $\\text{sen}(-\\theta) = \\frac{-3}{5} = -\\frac{3}{5}$."
+        },
+        {
+          "texto": "Coseno: $\\cos(-\\theta) = \\frac{x}{r} = \\cos\\theta$",
+          "explicacion": "La abscisa de $P'$ es $x$ y el radio vector no cambia, por lo que el cociente es el mismo. Con $P(4, 3)$: $\\cos\\theta = \\frac{4}{5}$ y $\\cos(-\\theta) = \\frac{4}{5}$."
+        },
+        {
+          "texto": "Tangente: $\\tan(-\\theta) = \\frac{-y}{x} = -\\tan\\theta$",
+          "explicacion": "Solo la ordenada cambia de signo y la abscisa se mantiene. Con $P(4, 3)$: $\\tan\\theta = \\frac{3}{4}$ y $\\tan(-\\theta) = \\frac{-3}{4} = -\\frac{3}{4}$."
+        },
+        {
+          "texto": "Cotangente: $\\cot(-\\theta) = \\frac{1}{\\tan(-\\theta)} = -\\cot\\theta$",
+          "explicacion": "La cotangente es la recíproca de la tangente, así que hereda el signo menos. Con $P(4, 3)$: $\\cot\\theta = \\frac{4}{3}$ y $\\cot(-\\theta) = \\frac{1}{-\\frac{3}{4}} = -\\frac{4}{3}$."
+        },
+        {
+          "texto": "Secante: $\\sec(-\\theta) = \\frac{1}{\\cos(-\\theta)} = \\sec\\theta$",
+          "explicacion": "La secante es la recíproca del coseno, que no cambia al invertir el giro. Con $P(4, 3)$: $\\cos(-\\theta) = \\frac{4}{5}$ y $\\sec(-\\theta) = \\frac{5}{4} = \\sec\\theta$."
+        },
+        {
+          "texto": "Cosecante: $\\csc(-\\theta) = \\frac{1}{\\text{sen}(-\\theta)} = -\\csc\\theta$",
+          "explicacion": "La cosecante es la recíproca del seno, que sí cambia de signo. Con $P(4, 3)$: $\\text{sen}(-\\theta) = -\\frac{3}{5}$ y $\\csc(-\\theta) = \\frac{1}{-\\frac{3}{5}} = -\\frac{5}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de las razones",
+      "puntos": [
+        {
+          "texto": "Con $\\theta$ agudo, $-\\theta$ ∈ «cuadrante IV»",
+          "explicacion": "En el cuadrante IV el seno, la tangente, la cotangente y la cosecante son negativos, y el coseno y la secante son positivos, lo que coincide con las identidades del ángulo opuesto. Ejemplo: $\\text{sen}(-30^\\circ) = -\\frac{1}{2}$ es negativo y $\\cos(-30^\\circ) = \\frac{\\sqrt{3}}{2}$ es positivo."
+        },
+        {
+          "texto": "Signo de la razón de $-\\theta$ ⇒ lo fija su «cuadrante»",
+          "explicacion": "Cuando el ángulo negativo no proviene de uno agudo, el signo depende del cuadrante donde cae su lado final. Ejemplo: $-120^\\circ$ está en el cuadrante III, donde seno y coseno son negativos y la tangente es positiva; se comprueba con $\\tan(-120^\\circ) = -\\tan 120^\\circ = -(-\\sqrt{3}) = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Productos con opuestos",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}(-\\theta) \\cdot \\csc\\theta = -1$ si $\\text{sen}\\,\\theta \\neq 0$",
+          "explicacion": "Se reemplaza $\\text{sen}(-\\theta) = -\\text{sen}\\,\\theta$ y la cosecante por su recíproca: $(-\\text{sen}\\,\\theta) \\cdot \\frac{1}{\\text{sen}\\,\\theta} = -1$. Ejemplo con $\\theta = 30^\\circ$: $\\left(-\\frac{1}{2}\\right) \\cdot 2 = -1$. La condición evita dividir entre cero."
+        },
+        {
+          "texto": "$\\tan(-\\theta) \\cdot \\cot(-\\theta) = 1$",
+          "explicacion": "Cada factor lleva signo menos y el producto de dos negativos es positivo: $(-\\tan\\theta)(-\\cot\\theta) = \\tan\\theta \\cdot \\cot\\theta = 1$. Ejemplo con $\\theta = 45^\\circ$: $(-1) \\cdot (-1) = 1$. Requiere que ambas razones existan."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema con dato",
+      "puntos": [
+        {
+          "texto": "Datos: $\\text{sen}\\,x = \\frac{3}{5}$ con $x$ agudo; hallar $E = \\tan(-x) + \\cos(-x)$",
+          "explicacion": "Al ser $x$ agudo, todas sus razones son positivas. En un triángulo rectángulo, el seno es cateto opuesto sobre hipotenusa, así que el cateto opuesto mide 3 y la hipotenusa mide 5."
+        },
+        {
+          "texto": "Estrategia: extraer el signo con la «paridad» antes de operar",
+          "explicacion": "Se reescribe $\\tan(-x) = -\\tan x$ y $\\cos(-x) = \\cos x$ para trabajar solo con el ángulo positivo $x$. Así la expresión queda $E = -\\tan x + \\cos x$."
+        },
+        {
+          "texto": "Operación: hallar $\\cos x$ y $\\tan x$ con el triángulo",
+          "explicacion": "El cateto adyacente es $\\sqrt{5^2 - 3^2} = \\sqrt{16} = 4$. Entonces $\\cos x = \\frac{4}{5}$ y $\\tan x = \\frac{3}{4}$."
+        },
+        {
+          "texto": "Resultado: $E = -\\frac{3}{4} + \\frac{4}{5} = \\frac{1}{20}$",
+          "explicacion": "Con denominador común 20: $-\\frac{3}{4} = -\\frac{15}{20}$ y $\\frac{4}{5} = \\frac{16}{20}$, por lo que $E = \\frac{-15 + 16}{20} = \\frac{1}{20}$."
+        },
+        {
+          "texto": "Verificación: comparar valores decimales y signos",
+          "explicacion": "El coseno es positivo, $\\frac{4}{5} = 0{,}8$, y la tangente del ángulo opuesto es negativa, $-\\frac{3}{4} = -0{,}75$. La suma $0{,}8 - 0{,}75 = 0{,}05$ coincide con $\\frac{1}{20} = 0{,}05$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos límite",
+      "puntos": [
+        {
+          "texto": "La identidad vale solo si la razón existe en $\\theta$",
+          "explicacion": "Si una razón no está definida para $\\theta$, tampoco lo está para $-\\theta$. Ejemplo: $\\tan 90^\\circ$ no existe porque el coseno vale 0, y $\\tan(-90^\\circ) = \\frac{\\text{sen}(-90^\\circ)}{\\cos(-90^\\circ)} = \\frac{-1}{0}$ tampoco existe."
+        },
+        {
+          "texto": "Seno de $-90^\\circ$ = $-1$: lado final sobre el eje",
+          "explicacion": "Aplicando la identidad: $\\text{sen}(-90^\\circ) = -\\text{sen}\\,90^\\circ = -1$. Coincide con la ubicación del lado final en el semieje negativo de ordenadas, donde la ordenada vale $-r$ y el cociente $\\frac{-r}{r}$ es $-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "El signo menos no sale del «coseno» ni de la secante",
+          "explicacion": "Quitar el signo en estas razones lleva a un resultado de signo equivocado. Ejemplo: $\\cos(-60^\\circ) = \\cos 60^\\circ = \\frac{1}{2}$ y no $-\\frac{1}{2}$. Se confirma porque $-60^\\circ$ está en el cuadrante IV, donde el coseno es positivo."
+        },
+        {
+          "texto": "Al elevar al cuadrado, el signo desaparece",
+          "explicacion": "Un exponente par elimina el signo, de modo que $\\text{sen}^2(-\\theta) = \\text{sen}^2\\,\\theta$. Ejemplo: $\\text{sen}^2(-30^\\circ) = \\left(-\\frac{1}{2}\\right)^2 = \\frac{1}{4} = \\text{sen}^2\\,30^\\circ$."
+        },
+        {
+          "texto": "Opuesto $-\\theta$ ≠ complementario $90^\\circ - \\theta$",
+          "explicacion": "Invertir el giro solo cambia el signo de algunas razones, mientras que el complemento intercambia seno y coseno. Ejemplo con $\\theta = 30^\\circ$: $\\text{sen}(-30^\\circ) = -\\frac{1}{2}$, pero $\\text{sen}(90^\\circ - 30^\\circ) = \\text{sen}\\,60^\\circ = \\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Frecuencia",
+  "glosario": {
+    "frecuencia": "ciclos que se repiten por unidad",
+    "periodo": "longitud de un ciclo completo",
+    "ciclo": "tramo de gráfica que se repite",
+    "hercio": "unidad de frecuencia, ciclos por segundo",
+    "amplitud": "mitad de la distancia entre máximo y mínimo",
+    "desfase": "desplazamiento horizontal de la gráfica",
+    "función periódica": "repite sus valores a intervalos regulares",
+    "factor B": "número que multiplica a x dentro",
+    "tangente": "cociente del seno entre el coseno"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Frecuencia»: ciclos por unidad, $f=\\frac{1}{T}$",
+          "explicacion": "Cuenta cuántas veces se repite la gráfica en una unidad de la variable, y por eso es el inverso del periodo $T$. Ejemplo: si una onda tiene $T=\\frac{\\pi}{2}$, entonces $f=\\frac{1}{\\pi/2}=\\frac{2}{\\pi}$, aproximadamente 0,637 ciclos por unidad. Si una rueda gira completa cada 0,5 s ($T=0{,}5$), da $f=\\frac{1}{0{,}5}=2$ vueltas por segundo."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje del periodo",
+      "puntos": [
+        {
+          "texto": "$T=\\frac{1}{f}$",
+          "explicacion": "Permite pasar de la frecuencia al periodo. Ejemplo: una onda con $f=4$ ciclos por unidad tiene $T=\\frac{1}{4}$; si cada ciclo ocupa un cuarto de unidad, caben 4 en una unidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación inversa",
+      "puntos": [
+        {
+          "texto": "Periodo ↓ ⇒ frecuencia ↑",
+          "explicacion": "Un ciclo más corto permite que quepan más ciclos en la misma longitud. Ejemplo: $y=\\operatorname{sen} x$ tiene $T=2\\pi$ y $f=\\frac{1}{2\\pi}$, mientras que $y=\\operatorname{sen}2x$ tiene $T=\\pi$ y $f=\\frac{1}{\\pi}$, el doble de frecuencia porque el periodo se redujo a la mitad."
+        }
+      ]
+    },
+    {
+      "titulo": "Frecuencia del seno básico",
+      "puntos": [
+        {
+          "texto": "$y=\\operatorname{sen} x$ tiene $f=\\frac{1}{2\\pi}$",
+          "explicacion": "Su periodo es $2\\pi$, así que $f=\\frac{1}{2\\pi}$, aproximadamente 0,159 ciclos por unidad. Es decir, en 1 unidad de $x$ no se completa ni una quinta parte de un ciclo; hacen falta unas 6,28 unidades."
+        }
+      ]
+    },
+    {
+      "titulo": "Frecuencia del coseno básico",
+      "puntos": [
+        {
+          "texto": "$y=\\cos x$ tiene $f=\\frac{1}{2\\pi}$",
+          "explicacion": "Tiene el mismo periodo $2\\pi$ que el seno, por lo que comparte su frecuencia: unos 0,159 ciclos por unidad. Seno y coseno solo difieren en el desfase, no en la frecuencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula con B",
+      "puntos": [
+        {
+          "texto": "$y=A\\operatorname{sen}(Bx)$ tiene $f=\\frac{|B|}{2\\pi}$",
+          "explicacion": "Se obtiene de $T=\\frac{2\\pi}{|B|}$ y $f=\\frac{1}{T}$, luego $f=\\frac{|B|}{2\\pi}$; la misma fórmula vale para el coseno. Ejemplo: $y=3\\operatorname{sen}4x$ tiene $B=4$, $T=\\frac{2\\pi}{4}=\\frac{\\pi}{2}$ y $f=\\frac{4}{2\\pi}=\\frac{2}{\\pi}$, aproximadamente 0,637; coincide con $\\frac{1}{T}=\\frac{1}{\\pi/2}=\\frac{2}{\\pi}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ciclos en 2π",
+      "puntos": [
+        {
+          "texto": "$|B|$ = número de ciclos en un intervalo de longitud $2\\pi$",
+          "explicacion": "Algunos textos llaman frecuencia al factor $|B|$, porque indica cuántos ciclos caben en $2\\pi$. Ejemplo: $y=\\operatorname{sen}3x$ tiene $|B|=3$, es decir, tres ciclos completos en $2\\pi$ (cada uno de longitud $\\frac{2\\pi}{3}$); $y=\\cos\\frac{x}{2}$ tiene $|B|=\\frac{1}{2}$, o sea medio ciclo en $2\\pi$ y un ciclo completo en $4\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ciclos en un intervalo",
+      "puntos": [
+        {
+          "texto": "Ciclos en una longitud $L$ = $L \\times f$",
+          "explicacion": "Se multiplica la longitud del intervalo por la frecuencia, o se divide entre el periodo. Ejemplo: para $y=\\operatorname{sen}3x$, $T=\\frac{2\\pi}{3}$ y $f=\\frac{3}{2\\pi}$. En el intervalo $[0,2\\pi]$ hay $2\\pi\\cdot\\frac{3}{2\\pi}=3$ ciclos; en $[0,\\pi]$ hay $\\pi\\cdot\\frac{3}{2\\pi}=\\frac{3}{2}$ ciclos."
+        }
+      ]
+    },
+    {
+      "titulo": "Frecuencia de la tangente",
+      "puntos": [
+        {
+          "texto": "$y=A\\tan(Bx)$ tiene $f=\\frac{|B|}{\\pi}$",
+          "explicacion": "Como el periodo de la tangente transformada es $T=\\frac{\\pi}{|B|}$, su frecuencia es $\\frac{|B|}{\\pi}$. Ejemplo: $y=\\tan2x$ tiene $T=\\frac{\\pi}{2}$ y $f=\\frac{2}{\\pi}$, aproximadamente 0,637; a diferencia del seno, aquí aparece $\\pi$ y no $2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto de la amplitud",
+      "puntos": [
+        {
+          "texto": "El factor $A$ no cambia la frecuencia",
+          "explicacion": "Multiplicar por $A$ estira o comprime verticalmente, pero no altera la longitud de cada ciclo. Ejemplo: $y=5\\operatorname{sen} x$ y $y=\\operatorname{sen} x$ tienen ambas $T=2\\pi$ y $f=\\frac{1}{2\\pi}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto de los desplazamientos",
+      "puntos": [
+        {
+          "texto": "Los desplazamientos ✗ cambian la frecuencia",
+          "explicacion": "Mover la gráfica en horizontal o en vertical solo cambia su posición. Ejemplo: $y=\\operatorname{sen}\\left(x-\\frac{\\pi}{3}\\right)+2$ conserva $T=2\\pi$ y $f=\\frac{1}{2\\pi}$, igual que $y=\\operatorname{sen} x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor B negativo",
+      "puntos": [
+        {
+          "texto": "Si $B<0$, la frecuencia usa $|B|$",
+          "explicacion": "La frecuencia nunca es negativa; el signo de $B$ solo refleja la gráfica. Ejemplo: $y=\\operatorname{sen}(-3x)$ tiene $|B|=3$, $T=\\frac{2\\pi}{3}$ y $f=\\frac{3}{2\\pi}$, igual que $y=\\operatorname{sen}3x$."
+        }
+      ]
+    },
+    {
+      "titulo": "B desde frecuencia",
+      "puntos": [
+        {
+          "texto": "$B=2\\pi f$ para seno y coseno",
+          "explicacion": "Se despeja de $f=\\frac{|B|}{2\\pi}$ tomando $B>0$. Ejemplo: una onda de sonido de 440 ciclos por segundo se modela con $y=\\operatorname{sen}(880\\pi t)$, pues $B=2\\pi\\cdot440=880\\pi$ y su periodo es $\\frac{2\\pi}{880\\pi}=\\frac{1}{440}$ s. Con $f=3$ ciclos por unidad, $B=6\\pi$ y $T=\\frac{1}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "B desde periodo",
+      "puntos": [
+        {
+          "texto": "$B=\\frac{2\\pi}{T}$ para seno y coseno",
+          "explicacion": "Se despeja de $T=\\frac{2\\pi}{|B|}$. Ejemplo: una onda que se repite cada 4 unidades tiene $B=\\frac{2\\pi}{4}=\\frac{\\pi}{2}$ y se escribe $y=\\operatorname{sen}\\frac{\\pi x}{2}$; su frecuencia es $\\frac{1}{4}=0{,}25$ ciclos por unidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Hercio",
+      "puntos": [
+        {
+          "texto": "«Hercio» (Hz): un ciclo por segundo",
+          "explicacion": "Es la unidad de frecuencia cuando la variable es el tiempo en segundos. Ejemplo: la corriente de 50 Hz repite su onda 50 veces cada segundo, por lo que su periodo es $T=\\frac{1}{50}=0{,}02$ s. Una señal de 2 Hz tarda 0,5 s en cada ciclo."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor con el periodo",
+      "puntos": [
+        {
+          "texto": "Frecuencia ≠ periodo",
+          "explicacion": "Son magnitudes inversas, no iguales, y solo coinciden cuando valen 1. Ejemplo: para $y=\\operatorname{sen}4x$, el periodo es $\\frac{\\pi}{2}\\approx1{,}571$ y la frecuencia $\\frac{2}{\\pi}\\approx0{,}637$; confundir $B=4$ con el periodo o con la frecuencia es un error común."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Periodo y amplitud tienen tema propio",
+          "explicacion": "La frecuencia se calcula a partir del periodo, que se estudia aparte, y es independiente de la amplitud, que también tiene su propio tema. Aquí solo interesa cuántos ciclos se repiten por unidad."
+        }
+      ]
+    }
+  ]
+}

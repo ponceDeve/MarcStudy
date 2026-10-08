@@ -1,0 +1,296 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Reducción al primer cuadrante",
+  "glosario": {
+    "Reducción al primer cuadrante": "Expresar una razón con un ángulo agudo",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Ángulo agudo": "Ángulo mayor que 0° y menor que 90°",
+    "Ángulo de referencia": "Ángulo agudo con el que se reduce",
+    "Razón trigonométrica": "Cociente entre dos lados de un triángulo",
+    "Co-razón": "Razón del complemento: seno-coseno, tangente-cotangente",
+    "Razón recíproca": "Inverso multiplicativo de una razón trigonométrica",
+    "Cosecante": "Recíproca del seno",
+    "Secante": "Recíproca del coseno",
+    "Cotangente": "Recíproca de la tangente",
+    "Ordenada": "Coordenada vertical de un punto",
+    "Abscisa": "Coordenada horizontal de un punto"
+  },
+  "theory": [
+    {
+      "titulo": "Idea de la reducción",
+      "puntos": [
+        {
+          "texto": "«Reducir» un ángulo → expresar su razón con un ángulo agudo",
+          "explicacion": "Los valores exactos más usados de las razones trigonométricas se conocen para ángulos agudos como $30^\\circ$, $45^\\circ$ y $60^\\circ$. Un ángulo como $150^\\circ$, $225^\\circ$ o $330^\\circ$ no es agudo y no tiene un valor directo, de modo que se busca un ángulo agudo $\\theta$ cuya razón sea igual a la original o difiera solo en el signo y, a veces, en el nombre. Ese ángulo agudo es el ángulo de referencia. Por ejemplo, $150^\\circ$ se escribe como $180^\\circ - 30^\\circ$, y con eso $\\sin 150^\\circ$ se calcula a partir de $\\sin 30^\\circ = \\frac{1}{2}$."
+        },
+        {
+          "texto": "El ángulo de referencia θ es agudo: 0° < θ < 90°",
+          "explicacion": "La letra $\\theta$ representa el ángulo agudo de referencia, el que sobra o falta para llegar a un múltiplo de $90^\\circ$. Todas las formas de reducción se leen suponiendo que $\\theta$ es agudo, porque así se sabe en qué cuadrante cae cada una: $180^\\circ - \\theta$ queda entre $90^\\circ$ y $180^\\circ$, $180^\\circ + \\theta$ queda entre $180^\\circ$ y $270^\\circ$ y $360^\\circ - \\theta$ queda entre $270^\\circ$ y $360^\\circ$. La regla práctica de los signos se apoya en esa ubicación. Con $\\theta = 30^\\circ$, el ángulo $180^\\circ - 30^\\circ = 150^\\circ$ está en el segundo cuadrante, como se espera."
+        }
+      ]
+    },
+    {
+      "titulo": "Formas por cuadrante",
+      "puntos": [
+        {
+          "texto": "Cada cuadrante tiene dos formas de escribir su ángulo",
+          "explicacion": "Con $\\theta$ agudo, las formas que caen en el segundo cuadrante son $90^\\circ + \\theta$ y $180^\\circ - \\theta$; en el tercero, $180^\\circ + \\theta$ y $270^\\circ - \\theta$; en el cuarto, $270^\\circ + \\theta$ y $360^\\circ - \\theta$. Un mismo ángulo puede escribirse con cualquiera de las dos formas de su cuadrante: $150^\\circ$ es $90^\\circ + 60^\\circ$ o también $180^\\circ - 30^\\circ$, y $225^\\circ$ es $180^\\circ + 45^\\circ$ o también $270^\\circ - 45^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos por cuadrante",
+      "puntos": [
+        {
+          "texto": "Primer cuadrante: todas las razones son positivas",
+          "explicacion": "El seno y el coseno corresponden a la ordenada y la abscisa del punto del ángulo, y en el primer cuadrante ambas son positivas; por eso también la tangente y las razones recíprocas lo son. Con $30^\\circ$: $\\sin 30^\\circ = \\frac{1}{2}$, $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$ y $\\tan 30^\\circ = \\frac{\\sqrt{3}}{3}$, todas mayores que cero. Cuando una reducción termina en un ángulo agudo, el valor solo recibe el signo que corresponde al cuadrante del ángulo original."
+        },
+        {
+          "texto": "Segundo cuadrante: solo seno y cosecante son positivos",
+          "explicacion": "En el segundo cuadrante la ordenada es positiva y la abscisa es negativa, de modo que el seno es positivo y el coseno es negativo; la tangente, que es el cociente entre ambos, resulta negativa. La cosecante tiene el signo del seno, la secante el del coseno y la cotangente el de la tangente. Con $120^\\circ$: $\\sin 120^\\circ = \\frac{\\sqrt{3}}{2} > 0$, $\\cos 120^\\circ = -\\frac{1}{2} < 0$ y $\\tan 120^\\circ = -\\sqrt{3} < 0$."
+        },
+        {
+          "texto": "Tercer cuadrante: solo tangente y cotangente son positivas",
+          "explicacion": "En el tercer cuadrante la ordenada y la abscisa son negativas, así que el seno y el coseno son negativos; al dividirlos, los dos signos negativos se cancelan y la tangente resulta positiva. Con $210^\\circ$: $\\sin 210^\\circ = -\\frac{1}{2}$, $\\cos 210^\\circ = -\\frac{\\sqrt{3}}{2}$ y $\\tan 210^\\circ = \\frac{-1/2}{-\\sqrt{3}/2} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3} > 0$."
+        },
+        {
+          "texto": "Cuarto cuadrante: solo coseno y secante son positivos",
+          "explicacion": "En el cuarto cuadrante la abscisa es positiva y la ordenada es negativa, de modo que el coseno es positivo y el seno es negativo; la tangente resulta negativa. Con $330^\\circ$: $\\sin 330^\\circ = -\\frac{1}{2}$, $\\cos 330^\\circ = \\frac{\\sqrt{3}}{2}$ y $\\tan 330^\\circ = -\\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "El signo lo decide el cuadrante del ángulo original",
+          "explicacion": "El ángulo agudo $\\theta$ siempre tiene razones positivas, así que el signo no sale de $\\theta$ ni se adivina mirando el valor final: sale del lugar donde cae el ángulo que se reduce. Para $\\cos 150^\\circ$, el ángulo $150^\\circ$ está en el segundo cuadrante, donde el coseno es negativo; luego $\\cos 150^\\circ = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$. Mirar solo el ángulo agudo $30^\\circ$ llevaría al signo positivo, que es incorrecto."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla del nombre",
+      "puntos": [
+        {
+          "texto": "Con 180° o 360° de referencia, la razón mantiene su nombre",
+          "explicacion": "Cuando el ángulo se mide desde el eje horizontal, el que contiene los ángulos de $0^\\circ$ y $180^\\circ$, el triángulo de referencia solo se refleja y no se gira: el cateto que era vertical sigue vertical y el horizontal sigue horizontal. Por eso el seno se reduce a seno, el coseno a coseno y la tangente a tangente, y lo único que puede cambiar es el signo. Ejemplo: $\\tan 210^\\circ = \\tan(180^\\circ + 30^\\circ)$ se reduce a una tangente de $30^\\circ$, sin cambiar de nombre."
+        },
+        {
+          "texto": "Con 90° o 270° de referencia, la razón cambia de nombre",
+          "explicacion": "Cuando el ángulo se mide desde el eje vertical, el que contiene los ángulos de $90^\\circ$ y $270^\\circ$, el triángulo de referencia queda girado: el cateto que era vertical pasa a ser horizontal y viceversa, por lo que los papeles del cateto opuesto y del adyacente se intercambian. Por eso el seno se convierte en coseno y la tangente en cotangente. Ejemplo: $\\sin 120^\\circ = \\sin(90^\\circ + 30^\\circ)$ se reduce a un coseno de $30^\\circ$, con el signo que corresponde al segundo cuadrante."
+        },
+        {
+          "texto": "Co-razones: seno con coseno, tangente con cotangente, secante con cosecante",
+          "explicacion": "Al cambiar de nombre, cada razón pasa a su co-razón, la que corresponde al ángulo complementario. La relación es simétrica: el coseno pasa a seno, la cotangente a tangente y la cosecante a secante. Ejemplo: la co-razón de $\\tan 20^\\circ$ es $\\cot 20^\\circ$, y la de $\\sec 50^\\circ$ es $\\csc 50^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Múltiplos de 90°",
+      "puntos": [
+        {
+          "texto": "Con $n \\times 90^\\circ \\pm \\theta$: n par mantiene el nombre, n impar lo cambia",
+          "explicacion": "El número $n$ cuenta cuántos ángulos rectos hay en el ángulo de referencia. Si $n$ es par ($180^\\circ$ con $n = 2$, $360^\\circ$ con $n = 4$) el eje es horizontal y el nombre se mantiene. Si $n$ es impar ($90^\\circ$ con $n = 1$, $270^\\circ$ con $n = 3$) el eje es vertical y el nombre cambia a su co-razón. El signo se decide aparte, por el cuadrante del ángulo original. Ejemplo: $\\sin(270^\\circ + 30^\\circ)$ tiene $n = 3$, impar, así que pasa a coseno; como $300^\\circ$ está en el cuarto cuadrante, donde el seno es negativo, resulta $\\sin 300^\\circ = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 180° menos θ",
+      "puntos": [
+        {
+          "texto": "Seno del segundo cuadrante: «$\\sin(180^\\circ - \\theta) = \\sin\\theta$»",
+          "explicacion": "El ángulo $180^\\circ - \\theta$ se mide desde el eje horizontal, así que el nombre se mantiene, y cae en el segundo cuadrante, donde el seno es positivo; el signo resultante es +. Ejemplo con $\\theta = 30^\\circ$: $\\sin 150^\\circ = \\sin(180^\\circ - 30^\\circ) = \\sin 30^\\circ = \\frac{1}{2}$. El resultado positivo concuerda con el signo del seno en el segundo cuadrante."
+        },
+        {
+          "texto": "Coseno del segundo cuadrante: «$\\cos(180^\\circ - \\theta) = -\\cos\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $180^\\circ$, y el coseno es negativo en el segundo cuadrante, por lo que aparece el signo menos. Ejemplo con $\\theta = 60^\\circ$: $\\cos 120^\\circ = \\cos(180^\\circ - 60^\\circ) = -\\cos 60^\\circ = -\\frac{1}{2}$. El valor negativo concuerda con el signo del coseno en el segundo cuadrante."
+        },
+        {
+          "texto": "Tangente del segundo cuadrante: «$\\tan(180^\\circ - \\theta) = -\\tan\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $180^\\circ$, y la tangente es negativa en el segundo cuadrante. Ejemplo con $\\theta = 45^\\circ$: $\\tan 135^\\circ = \\tan(180^\\circ - 45^\\circ) = -\\tan 45^\\circ = -1$. El valor negativo concuerda con el signo de la tangente en el segundo cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 90° más θ",
+      "puntos": [
+        {
+          "texto": "Seno con $90^\\circ + \\theta$: «$\\sin(90^\\circ + \\theta) = \\cos\\theta$»",
+          "explicacion": "Como $90^\\circ$ es un eje vertical, el seno cambia a coseno; el ángulo cae en el segundo cuadrante, donde el seno es positivo, y el signo es +. Ejemplo con $\\theta = 30^\\circ$: $\\sin 120^\\circ = \\sin(90^\\circ + 30^\\circ) = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$. El resultado positivo concuerda con el signo del seno en el segundo cuadrante."
+        },
+        {
+          "texto": "Coseno con $90^\\circ + \\theta$: «$\\cos(90^\\circ + \\theta) = -\\sin\\theta$»",
+          "explicacion": "Con $90^\\circ$ el coseno cambia a seno, y como el coseno es negativo en el segundo cuadrante, aparece el signo menos. Ejemplo con $\\theta = 30^\\circ$: $\\cos 120^\\circ = \\cos(90^\\circ + 30^\\circ) = -\\sin 30^\\circ = -\\frac{1}{2}$. Este valor coincide con el obtenido por la forma $180^\\circ - 60^\\circ$, lo que confirma el resultado."
+        },
+        {
+          "texto": "Tangente con $90^\\circ + \\theta$: «$\\tan(90^\\circ + \\theta) = -\\cot\\theta$»",
+          "explicacion": "Con $90^\\circ$ la tangente cambia a cotangente, y la tangente es negativa en el segundo cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\tan 120^\\circ = \\tan(90^\\circ + 30^\\circ) = -\\cot 30^\\circ = -\\sqrt{3}$. Como comprobación, $\\frac{\\sin 120^\\circ}{\\cos 120^\\circ} = \\frac{\\sqrt{3}/2}{-1/2} = -\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 180° más θ",
+      "puntos": [
+        {
+          "texto": "Seno del tercer cuadrante: «$\\sin(180^\\circ + \\theta) = -\\sin\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $180^\\circ$, y el seno es negativo en el tercer cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\sin 210^\\circ = \\sin(180^\\circ + 30^\\circ) = -\\sin 30^\\circ = -\\frac{1}{2}$. El valor negativo concuerda con el signo del seno en el tercer cuadrante."
+        },
+        {
+          "texto": "Coseno del tercer cuadrante: «$\\cos(180^\\circ + \\theta) = -\\cos\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $180^\\circ$, y el coseno es negativo en el tercer cuadrante. Ejemplo con $\\theta = 45^\\circ$: $\\cos 225^\\circ = \\cos(180^\\circ + 45^\\circ) = -\\cos 45^\\circ = -\\frac{\\sqrt{2}}{2}$. El valor negativo concuerda con el signo del coseno en el tercer cuadrante."
+        },
+        {
+          "texto": "Tangente del tercer cuadrante: «$\\tan(180^\\circ + \\theta) = \\tan\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $180^\\circ$, y la tangente es positiva en el tercer cuadrante, así que no aparece ningún signo menos. Ejemplo con $\\theta = 60^\\circ$: $\\tan 240^\\circ = \\tan(180^\\circ + 60^\\circ) = \\tan 60^\\circ = \\sqrt{3}$. El valor positivo concuerda con el signo de la tangente en el tercer cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 270° menos θ",
+      "puntos": [
+        {
+          "texto": "Seno con $270^\\circ - \\theta$: «$\\sin(270^\\circ - \\theta) = -\\cos\\theta$»",
+          "explicacion": "Como $270^\\circ$ es un eje vertical, el seno cambia a coseno, y el seno es negativo en el tercer cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\sin 240^\\circ = \\sin(270^\\circ - 30^\\circ) = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$. El valor negativo concuerda con el signo del seno en el tercer cuadrante."
+        },
+        {
+          "texto": "Coseno con $270^\\circ - \\theta$: «$\\cos(270^\\circ - \\theta) = -\\sin\\theta$»",
+          "explicacion": "Con $270^\\circ$ el coseno cambia a seno, y el coseno es negativo en el tercer cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\cos 240^\\circ = \\cos(270^\\circ - 30^\\circ) = -\\sin 30^\\circ = -\\frac{1}{2}$. El valor negativo concuerda con el signo del coseno en el tercer cuadrante."
+        },
+        {
+          "texto": "Tangente con $270^\\circ - \\theta$: «$\\tan(270^\\circ - \\theta) = \\cot\\theta$»",
+          "explicacion": "Con $270^\\circ$ la tangente cambia a cotangente, y la tangente es positiva en el tercer cuadrante, así que no aparece signo menos. Ejemplo con $\\theta = 30^\\circ$: $\\tan 240^\\circ = \\tan(270^\\circ - 30^\\circ) = \\cot 30^\\circ = \\sqrt{3}$. Este valor coincide con $\\tan(180^\\circ + 60^\\circ) = \\tan 60^\\circ = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 360° menos θ",
+      "puntos": [
+        {
+          "texto": "Seno del cuarto cuadrante: «$\\sin(360^\\circ - \\theta) = -\\sin\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $360^\\circ$, y el seno es negativo en el cuarto cuadrante. Ejemplo con $\\theta = 60^\\circ$: $\\sin 300^\\circ = \\sin(360^\\circ - 60^\\circ) = -\\sin 60^\\circ = -\\frac{\\sqrt{3}}{2}$. El valor negativo concuerda con el signo del seno en el cuarto cuadrante."
+        },
+        {
+          "texto": "Coseno del cuarto cuadrante: «$\\cos(360^\\circ - \\theta) = \\cos\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $360^\\circ$, y el coseno es positivo en el cuarto cuadrante, así que no aparece signo menos. Ejemplo con $\\theta = 45^\\circ$: $\\cos 315^\\circ = \\cos(360^\\circ - 45^\\circ) = \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$. El valor positivo concuerda con el signo del coseno en el cuarto cuadrante."
+        },
+        {
+          "texto": "Tangente del cuarto cuadrante: «$\\tan(360^\\circ - \\theta) = -\\tan\\theta$»",
+          "explicacion": "El nombre se mantiene por usar $360^\\circ$, y la tangente es negativa en el cuarto cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\tan 330^\\circ = \\tan(360^\\circ - 30^\\circ) = -\\tan 30^\\circ = -\\frac{\\sqrt{3}}{3}$. El valor negativo concuerda con el signo de la tangente en el cuarto cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 270° más θ",
+      "puntos": [
+        {
+          "texto": "Seno con $270^\\circ + \\theta$: «$\\sin(270^\\circ + \\theta) = -\\cos\\theta$»",
+          "explicacion": "Con $270^\\circ$ el seno cambia a coseno, y el seno es negativo en el cuarto cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\sin 300^\\circ = \\sin(270^\\circ + 30^\\circ) = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$. Este valor coincide con $\\sin(360^\\circ - 60^\\circ) = -\\sin 60^\\circ = -\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Coseno con $270^\\circ + \\theta$: «$\\cos(270^\\circ + \\theta) = \\sin\\theta$»",
+          "explicacion": "Con $270^\\circ$ el coseno cambia a seno, y el coseno es positivo en el cuarto cuadrante, así que no aparece signo menos. Ejemplo con $\\theta = 30^\\circ$: $\\cos 300^\\circ = \\cos(270^\\circ + 30^\\circ) = \\sin 30^\\circ = \\frac{1}{2}$. Este valor coincide con $\\cos(360^\\circ - 60^\\circ) = \\cos 60^\\circ = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Tangente con $270^\\circ + \\theta$: «$\\tan(270^\\circ + \\theta) = -\\cot\\theta$»",
+          "explicacion": "Con $270^\\circ$ la tangente cambia a cotangente, y la tangente es negativa en el cuarto cuadrante. Ejemplo con $\\theta = 30^\\circ$: $\\tan 300^\\circ = \\tan(270^\\circ + 30^\\circ) = -\\cot 30^\\circ = -\\sqrt{3}$. Como comprobación, $\\frac{\\sin 300^\\circ}{\\cos 300^\\circ} = \\frac{-\\sqrt{3}/2}{1/2} = -\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos de reducción",
+      "puntos": [
+        {
+          "texto": "Reducir: ubicar el cuadrante, fijar el signo y elegir el nombre",
+          "explicacion": "El procedimiento tiene tres decisiones. Primero se ubica el cuadrante del ángulo original y con él se fija el signo de la razón. Luego se escribe el ángulo como un múltiplo de $90^\\circ$ más o menos un agudo $\\theta$, y ese múltiplo decide si el nombre se mantiene o cambia. Por último se evalúa la razón del ángulo agudo. Ejemplo con $\\cos 225^\\circ$: el ángulo $225^\\circ$ está en el tercer cuadrante, donde el coseno es negativo; se escribe $225^\\circ = 180^\\circ + 45^\\circ$ y, con $180^\\circ$, el nombre se mantiene; resulta $\\cos 225^\\circ = -\\cos 45^\\circ = -\\frac{\\sqrt{2}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos formas equivalentes",
+      "puntos": [
+        {
+          "texto": "Dos formas distintas del mismo ángulo dan el mismo valor",
+          "explicacion": "Como cada cuadrante admite dos formas, se puede elegir la más cómoda y usar la otra para comprobar. Con $240^\\circ$: por $180^\\circ + 60^\\circ$ se tiene $\\sin 240^\\circ = -\\sin 60^\\circ = -\\frac{\\sqrt{3}}{2}$; por $270^\\circ - 30^\\circ$ se tiene $\\sin 240^\\circ = -\\cos 30^\\circ = -\\frac{\\sqrt{3}}{2}$. Ambos resultados coinciden porque $\\sin 60^\\circ = \\cos 30^\\circ$; si dieran valores distintos habría un error de signo o de nombre."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción de la tangente",
+      "puntos": [
+        {
+          "texto": "La tangente se reduce como seno entre coseno",
+          "explicacion": "Las fórmulas de la tangente no hay que memorizarlas por separado: salen de dividir las del seno entre las del coseno. Para $180^\\circ + \\theta$: $\\tan(180^\\circ + \\theta) = \\frac{\\sin(180^\\circ + \\theta)}{\\cos(180^\\circ + \\theta)} = \\frac{-\\sin\\theta}{-\\cos\\theta} = \\tan\\theta$, porque los dos signos negativos se cancelan. Con $225^\\circ$: $\\sin 225^\\circ = -\\frac{\\sqrt{2}}{2}$ y $\\cos 225^\\circ = -\\frac{\\sqrt{2}}{2}$, y su cociente es $1 = \\tan 45^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones recíprocas",
+      "puntos": [
+        {
+          "texto": "La razón recíproca conserva el signo de su razón",
+          "explicacion": "Una razón y su recíproca son números inversos, y el inverso de un número tiene su mismo signo. Por eso la cosecante tiene el signo del seno, la secante el del coseno y la cotangente el de la tangente. Ejemplo: $\\sec 120^\\circ = \\frac{1}{\\cos 120^\\circ} = \\frac{1}{-\\frac{1}{2}} = -2$, negativa igual que el coseno en el segundo cuadrante."
+        },
+        {
+          "texto": "La razón recíproca sigue la misma regla de nombre que su razón",
+          "explicacion": "La cosecante se reduce igual que el seno, la secante igual que el coseno y la cotangente igual que la tangente: con $180^\\circ$ y $360^\\circ$ mantienen el nombre; con $90^\\circ$ y $270^\\circ$ pasan a su co-razón. Ejemplo: $\\csc 120^\\circ = \\csc(90^\\circ + 30^\\circ) = \\sec 30^\\circ = \\frac{2\\sqrt{3}}{3}$. Como comprobación, $\\sin 120^\\circ = \\frac{\\sqrt{3}}{2}$ y por tanto $\\csc 120^\\circ = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos que suman 180°",
+      "puntos": [
+        {
+          "texto": "Si α + β = 180° ⇒ sen α = sen β",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos cualesquiera. Si suman $180^\\circ$, entonces $\\beta = 180^\\circ - \\alpha$, y la forma del segundo cuadrante muestra que sus senos son iguales. Ejemplo con $\\alpha = 30^\\circ$ y $\\beta = 150^\\circ$: $\\sin 150^\\circ = \\sin(180^\\circ - 30^\\circ) = \\sin 30^\\circ = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Si α + β = 180° ⇒ los cosenos de α y β son opuestos",
+          "explicacion": "Como $\\beta = 180^\\circ - \\alpha$, se cumple $\\cos\\beta = -\\cos\\alpha$, de modo que la suma de ambos cosenos es cero. Ejemplo con $\\alpha = 30^\\circ$ y $\\beta = 150^\\circ$: $\\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$ y $\\cos 150^\\circ = -\\frac{\\sqrt{3}}{2}$, y su suma es $0$."
+        },
+        {
+          "texto": "Si α + β = 180° ⇒ las tangentes de α y β son opuestas",
+          "explicacion": "Como $\\beta = 180^\\circ - \\alpha$, se cumple $\\tan\\beta = -\\tan\\alpha$, de modo que la suma de ambas tangentes es cero. Ejemplo con $\\alpha = 45^\\circ$ y $\\beta = 135^\\circ$: $\\tan 45^\\circ = 1$ y $\\tan 135^\\circ = -1$, y su suma es $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos que suman 360°",
+      "puntos": [
+        {
+          "texto": "Si α + β = 360° ⇒ cos α = cos β",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos cualesquiera. Si suman $360^\\circ$, entonces $\\beta = 360^\\circ - \\alpha$, y la forma del cuarto cuadrante muestra que sus cosenos son iguales. Ejemplo con $\\alpha = 60^\\circ$ y $\\beta = 300^\\circ$: $\\cos 300^\\circ = \\cos(360^\\circ - 60^\\circ) = \\cos 60^\\circ = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Si α + β = 360° ⇒ los senos de α y β son opuestos",
+          "explicacion": "Como $\\beta = 360^\\circ - \\alpha$, se cumple $\\sin\\beta = -\\sin\\alpha$, de modo que la suma de ambos senos es cero. Ejemplo con $\\alpha = 60^\\circ$ y $\\beta = 300^\\circ$: $\\sin 60^\\circ = \\frac{\\sqrt{3}}{2}$ y $\\sin 300^\\circ = -\\frac{\\sqrt{3}}{2}$, y su suma es $0$."
+        },
+        {
+          "texto": "Si α + β = 360° ⇒ las tangentes de α y β son opuestas",
+          "explicacion": "Como $\\beta = 360^\\circ - \\alpha$, se cumple $\\tan\\beta = -\\tan\\alpha$, de modo que la suma de ambas tangentes es cero. Ejemplo con $\\alpha = 60^\\circ$ y $\\beta = 300^\\circ$: $\\tan 60^\\circ = \\sqrt{3}$ y $\\tan 300^\\circ = -\\sqrt{3}$, y su suma es $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción con radianes",
+      "puntos": [
+        {
+          "texto": "En radianes: 180° = π, 90° = $\\frac{\\pi}{2}$, 270° = $\\frac{3\\pi}{2}$, 360° = 2π",
+          "explicacion": "Las reglas de nombre y signo no cambian; solo se reemplazan los ángulos de referencia por sus valores en radianes. Las formas $\\pi - \\theta$, $\\pi + \\theta$ y $2\\pi - \\theta$ mantienen el nombre, mientras que $\\frac{\\pi}{2} \\pm \\theta$ y $\\frac{3\\pi}{2} \\pm \\theta$ lo cambian. Ejemplo: $\\cos\\left(\\pi - \\frac{\\pi}{3}\\right) = \\cos\\frac{2\\pi}{3} = -\\cos\\frac{\\pi}{3} = -\\frac{1}{2}$, negativo porque $\\frac{2\\pi}{3}$ está en el segundo cuadrante. Otro ejemplo: $\\sin\\left(\\frac{3\\pi}{2} + \\frac{\\pi}{6}\\right) = -\\cos\\frac{\\pi}{6} = -\\frac{\\sqrt{3}}{2}$, con cambio de nombre por usar $\\frac{3\\pi}{2}$ y signo negativo porque $\\frac{5\\pi}{3}$ está en el cuarto cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor: 180° contra 270°",
+      "puntos": [
+        {
+          "texto": "$\\sin(180^\\circ + \\theta)$ y $\\sin(270^\\circ + \\theta)$ son negativos pero distintos",
+          "explicacion": "Ambos ángulos caen en cuadrantes donde el seno es negativo, así que los dos resultados llevan signo menos, pero el nombre es diferente: $\\sin(180^\\circ + \\theta) = -\\sin\\theta$ y $\\sin(270^\\circ + \\theta) = -\\cos\\theta$. Con $\\theta = 30^\\circ$: $\\sin 210^\\circ = -\\frac{1}{2}$ y $\\sin 300^\\circ = -\\frac{\\sqrt{3}}{2}$. Revisar el múltiplo de $90^\\circ$ evita confundirlos."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Los ángulos negativos o mayores que una vuelta se tratan aparte",
+          "explicacion": "Esta reducción trabaja con ángulos entre $90^\\circ$ y $360^\\circ$. Los ángulos negativos y los mayores que una vuelta tienen su propio tema y se ajustan antes de aplicar estas formas. El ángulo $90^\\circ - \\theta$ ya es agudo, por lo que pertenece al tema de los ángulos complementarios."
+        }
+      ]
+    }
+  ]
+}

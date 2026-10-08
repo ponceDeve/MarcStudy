@@ -1,0 +1,170 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Identidades auxiliares",
+  "glosario": {
+    "Identidad auxiliar": "Atajo deducido de identidades fundamentales",
+    "Identidad fundamental": "Recíproca, de cociente o pitagórica básica",
+    "Identidad pitagórica": "Relación de cuadrados basada en Pitágoras",
+    "Recíproca": "Razón cuyo producto con otra es uno",
+    "Cociente": "Resultado de dividir dos cantidades",
+    "Binomio": "Expresión algebraica de dos términos",
+    "Suma de cubos": "Factorización de la suma de dos cubos",
+    "Diferencia de cuadrados": "Producto de suma por diferencia de dos cantidades",
+    "Razón trigonométrica": "Cociente entre dos medidas asociadas al ángulo",
+    "Miembro": "Cada lado de una igualdad",
+    "Potencia": "Producto repetido de una misma cantidad"
+  },
+  "theory": [
+    {
+      "titulo": "Identidad auxiliar",
+      "puntos": [
+        {
+          "texto": "Identidad auxiliar ⇒ consecuencia de las fundamentales",
+          "explicacion": "Una identidad auxiliar se deduce de las identidades recíprocas, de cociente y pitagóricas, y se usa como atajo para no repetir la deducción en cada problema. Ejemplo: $\\text{sen}^4 x + \\cos^4 x = 1 - 2\\,\\text{sen}^2 x \\cos^2 x$ evita desarrollar a mano; con $x = 45^\\circ$ da $\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$ y también $1 - 2 \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Identidad auxiliar ✗ reemplaza a las fundamentales",
+          "explicacion": "Las auxiliares dependen de las fundamentales: cada una se justifica con ellas y solo es válida donde las razones involucradas existen. Por eso, ante la duda, se vuelve a la deducción con seno, coseno y la identidad pitagórica. Ejemplo: $\\tan x + \\cot x = \\sec x \\csc x$ exige $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$, como las razones que la forman."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cuartas",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}^4 x + \\cos^4 x = 1 - 2\\,\\text{sen}^2 x \\cos^2 x$",
+          "explicacion": "Cambia una suma de potencias cuartas por una expresión con el producto de los cuadrados; vale para todo ángulo. Ejemplo con $x = 30^\\circ$: $\\text{sen}^4 30^\\circ = \\frac{1}{16}$ y $\\cos^4 30^\\circ = \\frac{9}{16}$, luego la suma es $\\frac{10}{16} = \\frac{5}{8}$. Por la fórmula: $\\text{sen}^2 30^\\circ \\cos^2 30^\\circ = \\frac{1}{4} \\times \\frac{3}{4} = \\frac{3}{16}$, entonces $1 - 2 \\times \\frac{3}{16} = \\frac{10}{16} = \\frac{5}{8}$."
+        },
+        {
+          "texto": "Deducción de $\\text{sen}^4 x + \\cos^4 x$",
+          "explicacion": "Se eleva al cuadrado la identidad fundamental: $\\left(\\text{sen}^2 x + \\cos^2 x\\right)^2 = 1$. Al desarrollar el cuadrado de un binomio queda $\\text{sen}^4 x + 2\\,\\text{sen}^2 x \\cos^2 x + \\cos^4 x = 1$, y al pasar el término central al otro lado resulta $\\text{sen}^4 x + \\cos^4 x = 1 - 2\\,\\text{sen}^2 x \\cos^2 x$. Ejemplo con $x = 60^\\circ$: $\\frac{9}{16} + \\frac{1}{16} = \\frac{10}{16}$ y $1 - 2 \\times \\frac{3}{16} = \\frac{10}{16}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de sextas",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}^6 x + \\cos^6 x = 1 - 3\\,\\text{sen}^2 x \\cos^2 x$",
+          "explicacion": "Cambia una suma de potencias sextas por una expresión con el producto de los cuadrados; vale para todo ángulo. Ejemplo con $x = 30^\\circ$: $\\text{sen}^6 30^\\circ = \\frac{1}{64}$ y $\\cos^6 30^\\circ = \\frac{27}{64}$, luego la suma es $\\frac{28}{64} = \\frac{7}{16}$. Por la fórmula: $1 - 3 \\times \\frac{3}{16} = 1 - \\frac{9}{16} = \\frac{7}{16}$."
+        },
+        {
+          "texto": "Deducción de $\\text{sen}^6 x + \\cos^6 x$",
+          "explicacion": "Se escribe la suma como suma de cubos de $\\text{sen}^2 x$ y $\\cos^2 x$: $\\left(\\text{sen}^2 x + \\cos^2 x\\right)\\left(\\text{sen}^4 x - \\text{sen}^2 x \\cos^2 x + \\cos^4 x\\right)$. El primer factor vale 1, y con $\\text{sen}^4 x + \\cos^4 x = 1 - 2\\,\\text{sen}^2 x \\cos^2 x$ el segundo es $1 - 3\\,\\text{sen}^2 x \\cos^2 x$. Ejemplo con $x = 45^\\circ$: $\\frac{1}{8} + \\frac{1}{8} = \\frac{1}{4}$ y $1 - 3 \\times \\frac{1}{4} = \\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente más cotangente",
+      "puntos": [
+        {
+          "texto": "$\\tan x + \\cot x = \\sec x \\csc x$ con $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$",
+          "explicacion": "Convierte una suma de tangente y cotangente en un producto de secante y cosecante. Ejemplo con $x = 30^\\circ$: $\\tan 30^\\circ + \\cot 30^\\circ = \\frac{\\sqrt{3}}{3} + \\sqrt{3} = \\frac{4\\sqrt{3}}{3}$, y $\\sec 30^\\circ \\csc 30^\\circ = \\frac{2\\sqrt{3}}{3} \\times 2 = \\frac{4\\sqrt{3}}{3}$, que coinciden."
+        },
+        {
+          "texto": "Deducción de $\\tan x + \\cot x$",
+          "explicacion": "Se escribe cada razón como cociente: $\\frac{\\text{sen}\\,x}{\\cos x} + \\frac{\\cos x}{\\text{sen}\\,x} = \\frac{\\text{sen}^2 x + \\cos^2 x}{\\text{sen}\\,x \\cos x}$. El numerador vale 1, así que queda $\\frac{1}{\\text{sen}\\,x \\cos x} = \\sec x \\csc x$. Ejemplo con $x = 60^\\circ$: $\\sqrt{3} + \\frac{\\sqrt{3}}{3} = \\frac{4\\sqrt{3}}{3}$ y $\\frac{1}{\\frac{\\sqrt{3}}{2} \\times \\frac{1}{2}} = \\frac{4}{\\sqrt{3}} = \\frac{4\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cuadrados recíprocos",
+      "puntos": [
+        {
+          "texto": "$\\sec^2 x + \\csc^2 x = \\sec^2 x \\csc^2 x$ con $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$",
+          "explicacion": "Convierte la suma de la secante y la cosecante al cuadrado en su producto. Ejemplo con $x = 45^\\circ$: $\\sec^2 45^\\circ + \\csc^2 45^\\circ = 2 + 2 = 4$, y $\\sec^2 45^\\circ \\csc^2 45^\\circ = 2 \\times 2 = 4$, que coinciden."
+        },
+        {
+          "texto": "Deducción de $\\sec^2 x + \\csc^2 x$",
+          "explicacion": "Se escribe cada razón con coseno y seno: $\\frac{1}{\\cos^2 x} + \\frac{1}{\\text{sen}^2 x} = \\frac{\\text{sen}^2 x + \\cos^2 x}{\\text{sen}^2 x \\cos^2 x}$. El numerador vale 1, así que queda $\\frac{1}{\\text{sen}^2 x \\cos^2 x} = \\sec^2 x \\csc^2 x$. Ejemplo con $x = 30^\\circ$: $\\frac{4}{3} + 4 = \\frac{16}{3}$ y $\\frac{4}{3} \\times 4 = \\frac{16}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma con tangentes cuadradas",
+      "puntos": [
+        {
+          "texto": "$\\sec^2 x + \\csc^2 x = \\tan^2 x + \\cot^2 x + 2$",
+          "explicacion": "Expresa la suma de secante y cosecante al cuadrado con tangente y cotangente al cuadrado; vale con $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$. Ejemplo con $x = 30^\\circ$: $\\tan^2 30^\\circ = \\frac{1}{3}$ y $\\cot^2 30^\\circ = 3$, entonces $\\frac{1}{3} + 3 + 2 = \\frac{16}{3}$, que es igual a $\\sec^2 30^\\circ + \\csc^2 30^\\circ = \\frac{4}{3} + 4 = \\frac{16}{3}$."
+        },
+        {
+          "texto": "Deducción de $\\tan^2 x + \\cot^2 x + 2$",
+          "explicacion": "Se usan las identidades pitagóricas $\\sec^2 x = 1 + \\tan^2 x$ y $\\csc^2 x = 1 + \\cot^2 x$ y se suman: $\\sec^2 x + \\csc^2 x = 1 + \\tan^2 x + 1 + \\cot^2 x$. Los dos unos suman 2. Ejemplo con $x = 60^\\circ$: $\\tan^2 60^\\circ = 3$ y $\\cot^2 60^\\circ = \\frac{1}{3}$, luego $3 + \\frac{1}{3} + 2 = \\frac{16}{3}$, y $\\sec^2 60^\\circ + \\csc^2 60^\\circ = 4 + \\frac{4}{3} = \\frac{16}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de binomios cuadrados",
+      "puntos": [
+        {
+          "texto": "$\\left(\\text{sen}\\,x + \\cos x\\right)^2 + \\left(\\text{sen}\\,x - \\cos x\\right)^2 = 2$",
+          "explicacion": "La suma de los cuadrados de la suma y de la diferencia de seno y coseno es constante para todo ángulo. Ejemplo con $x = 30^\\circ$: $\\left(\\frac{1}{2} + \\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{4 + 2\\sqrt{3}}{4}$ y $\\left(\\frac{1}{2} - \\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{4 - 2\\sqrt{3}}{4}$; al sumarlas queda $\\frac{8}{4} = 2$."
+        },
+        {
+          "texto": "Deducción de la suma de binomios",
+          "explicacion": "Al desarrollar ambos cuadrados, los productos $2\\,\\text{sen}\\,x \\cos x$ y $-2\\,\\text{sen}\\,x \\cos x$ se anulan y queda $2\\,\\text{sen}^2 x + 2\\cos^2 x = 2\\left(\\text{sen}^2 x + \\cos^2 x\\right) = 2$. Ejemplo con $x = 45^\\circ$: $\\left(\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2}\\right)^2 = \\left(\\sqrt{2}\\right)^2 = 2$ y $\\left(\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2}\\right)^2 = 0$, que suman 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante más tangente",
+      "puntos": [
+        {
+          "texto": "$\\left(\\sec x + \\tan x\\right)\\left(\\sec x - \\tan x\\right) = 1$ con $\\cos x \\ne 0$",
+          "explicacion": "El producto de la suma por la diferencia de secante y tangente es 1, por lo que cada factor es el inverso del otro. Ejemplo con $x = 60^\\circ$: $\\sec 60^\\circ + \\tan 60^\\circ = 2 + \\sqrt{3}$ y $\\sec 60^\\circ - \\tan 60^\\circ = 2 - \\sqrt{3}$; su producto es $4 - 3 = 1$."
+        },
+        {
+          "texto": "Deducción de $\\left(\\sec x + \\tan x\\right)\\left(\\sec x - \\tan x\\right)$",
+          "explicacion": "Es un producto de suma por diferencia, igual a $\\sec^2 x - \\tan^2 x$, y por la identidad pitagórica con tangente ese valor es 1. Ejemplo con $x = 30^\\circ$: $\\sec 30^\\circ + \\tan 30^\\circ = \\frac{2\\sqrt{3}}{3} + \\frac{\\sqrt{3}}{3} = \\sqrt{3}$ y $\\sec 30^\\circ - \\tan 30^\\circ = \\frac{\\sqrt{3}}{3}$; su producto es $\\frac{3}{3} = 1$."
+        },
+        {
+          "texto": "$\\frac{1}{\\sec x + \\tan x} = \\sec x - \\tan x$",
+          "explicacion": "Se obtiene de la identidad anterior: si el producto de ambos factores es 1, uno es el inverso del otro. Ejemplo con $x = 60^\\circ$: $\\frac{1}{2 + \\sqrt{3}} = 2 - \\sqrt{3}$, porque $\\left(2 + \\sqrt{3}\\right)\\left(2 - \\sqrt{3}\\right) = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de cuartas",
+      "puntos": [
+        {
+          "texto": "$\\csc^4 x - \\cot^4 x = \\csc^2 x + \\cot^2 x$ con $\\text{sen}\\,x \\ne 0$",
+          "explicacion": "La diferencia de cuartas potencias de cosecante y cotangente es igual a la suma de sus cuadrados. Ejemplo con $x = 30^\\circ$: $\\csc^4 30^\\circ = 16$ y $\\cot^4 30^\\circ = 9$, luego la diferencia es 7; y $\\csc^2 30^\\circ + \\cot^2 30^\\circ = 4 + 3 = 7$."
+        },
+        {
+          "texto": "Deducción de $\\csc^4 x - \\cot^4 x$",
+          "explicacion": "Se factoriza como diferencia de cuadrados: $\\left(\\csc^2 x - \\cot^2 x\\right)\\left(\\csc^2 x + \\cot^2 x\\right)$. El primer factor vale 1 por la identidad pitagórica con cotangente, y queda $\\csc^2 x + \\cot^2 x$. Ejemplo con $x = 60^\\circ$: $\\csc^4 60^\\circ = \\frac{16}{9}$ y $\\cot^4 60^\\circ = \\frac{1}{9}$, diferencia $\\frac{15}{9} = \\frac{5}{3}$; y $\\frac{4}{3} + \\frac{1}{3} = \\frac{5}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reconocer patrones",
+      "puntos": [
+        {
+          "texto": "Potencias cuarta o sexta de seno y coseno ⇒ auxiliar con $\\text{sen}^2 x \\cos^2 x$",
+          "explicacion": "Cuando un problema suma $\\text{sen}^4 x + \\cos^4 x$ o $\\text{sen}^6 x + \\cos^6 x$, conviene reemplazar por $1 - 2\\,\\text{sen}^2 x \\cos^2 x$ o $1 - 3\\,\\text{sen}^2 x \\cos^2 x$, así todo queda en función de un solo producto. Ejemplo: si $\\text{sen}^2 x \\cos^2 x = \\frac{1}{4}$, entonces $\\text{sen}^4 x + \\cos^4 x = 1 - 2 \\times \\frac{1}{4} = \\frac{1}{2}$ y $\\text{sen}^6 x + \\cos^6 x = 1 - 3 \\times \\frac{1}{4} = \\frac{1}{4}$."
+        },
+        {
+          "texto": "Suma de tangente y cotangente ⇒ producto de secante y cosecante",
+          "explicacion": "Si en una expresión aparece $\\tan x + \\cot x$, se reemplaza por $\\sec x \\csc x$, que es un solo término y suele simplificarse con otros factores. Ejemplo: $\\left(\\tan x + \\cot x\\right)\\text{sen}\\,x \\cos x = \\sec x \\csc x \\cdot \\text{sen}\\,x \\cos x = 1$, con $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}^4 x + \\cos^4 x ≠ 1$",
+          "explicacion": "Es un error pensar que, como $\\text{sen}^2 x + \\cos^2 x = 1$, la suma de cuartas también vale 1: la identidad fundamental solo vale para cuadrados. Ejemplo con $x = 45^\\circ$: $\\text{sen}^4 45^\\circ + \\cos^4 45^\\circ = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$, no 1."
+        },
+        {
+          "texto": "$\\tan x + \\cot x ≠ 1$",
+          "explicacion": "El producto $\\tan x \\cdot \\cot x$ vale 1, pero la suma no; confundir ambos es un error común. Ejemplo con $x = 45^\\circ$: $\\tan 45^\\circ + \\cot 45^\\circ = 1 + 1 = 2$, mientras que $\\tan 45^\\circ \\times \\cot 45^\\circ = 1$."
+        },
+        {
+          "texto": "$\\text{sen}^6 x + \\cos^6 x ≠ 1 - 2\\,\\text{sen}^2 x \\cos^2 x$",
+          "explicacion": "El coeficiente de la suma de sextas es 3, no 2; el 2 corresponde a la suma de cuartas. Ejemplo con $x = 30^\\circ$: $\\text{sen}^6 30^\\circ + \\cos^6 30^\\circ = \\frac{7}{16}$, pero $1 - 2 \\times \\frac{3}{16} = \\frac{10}{16}$, que es distinto."
+        }
+      ]
+    }
+  ]
+}

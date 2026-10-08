@@ -1,0 +1,127 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Razones trigonométricas recíprocas",
+  "glosario": {
+    "Recíproco": "Número que multiplicado por otro da uno",
+    "Razón trigonométrica": "Cociente entre dos lados de triángulo rectángulo",
+    "Seno": "Cociente de cateto opuesto entre hipotenusa",
+    "Cosecante": "Cociente de hipotenusa entre cateto opuesto",
+    "Coseno": "Cociente de cateto adyacente entre hipotenusa",
+    "Secante": "Cociente de hipotenusa entre cateto adyacente",
+    "Tangente": "Cociente de cateto opuesto entre adyacente",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Cateto": "Lado que forma el ángulo recto",
+    "Hipotenusa": "Lado opuesto al ángulo recto",
+    "Fracción": "Cociente indicado entre dos números"
+  },
+  "theory": [
+    {
+      "titulo": "Números recíprocos",
+      "puntos": [
+        {
+          "texto": "Recíprocos: $x \\cdot \\frac{1}{x} = 1$",
+          "explicacion": "Dos números son recíprocos cuando su producto vale 1, y el recíproco de un número se obtiene invirtiendo su fracción. Ejemplo: el recíproco de 4 es $\\frac{1}{4}$ porque $4 \\times \\frac{1}{4} = 1$, y el recíproco de $\\frac{3}{5}$ es $\\frac{5}{3}$ porque $\\frac{3}{5} \\times \\frac{5}{3} = \\frac{15}{15} = 1$. Esta idea es la base de las razones trigonométricas recíprocas."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones recíprocas",
+      "puntos": [
+        {
+          "texto": "Razones recíprocas = pares cuyo producto, para el mismo ángulo, es 1",
+          "explicacion": "De las seis razones trigonométricas de un ángulo agudo, tres son las inversas de las otras tres: seno con cosecante, coseno con secante y tangente con cotangente. Cada par usa los mismos dos lados del triángulo rectángulo, pero con el numerador y el denominador intercambiados, y por eso al multiplicarlas los lados se cancelan. Ejemplo: seno es cateto opuesto sobre hipotenusa y cosecante es hipotenusa sobre cateto opuesto; el producto es $\\frac{CO}{H} \\times \\frac{H}{CO} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Par seno-cosecante",
+      "puntos": [
+        {
+          "texto": "Seno y cosecante: $\\operatorname{sen}\\alpha \\cdot \\csc\\alpha = 1$",
+          "explicacion": "Aquí $\\alpha$ es un ángulo agudo. Como $\\csc\\alpha$ es el recíproco de $\\operatorname{sen}\\alpha$, también se escribe $\\csc\\alpha = \\frac{1}{\\operatorname{sen}\\alpha}$ y $\\operatorname{sen}\\alpha = \\frac{1}{\\csc\\alpha}$. Ejemplo: en un triángulo rectángulo de catetos 5 y 12 e hipotenusa 13, con $\\alpha$ frente al cateto de 5, resulta $\\operatorname{sen}\\alpha = \\frac{5}{13}$ y $\\csc\\alpha = \\frac{13}{5}$, y su producto es $\\frac{5}{13} \\times \\frac{13}{5} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Par coseno-secante",
+      "puntos": [
+        {
+          "texto": "Coseno y secante: $\\cos\\alpha \\cdot \\sec\\alpha = 1$",
+          "explicacion": "Aquí $\\alpha$ es un ángulo agudo. Se cumple $\\sec\\alpha = \\frac{1}{\\cos\\alpha}$ y $\\cos\\alpha = \\frac{1}{\\sec\\alpha}$. Ejemplo: en el triángulo de catetos 5 y 12 e hipotenusa 13, con $\\alpha$ frente al cateto de 5, el cateto adyacente es 12, entonces $\\cos\\alpha = \\frac{12}{13}$ y $\\sec\\alpha = \\frac{13}{12}$, y su producto es $\\frac{12}{13} \\times \\frac{13}{12} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Par tangente-cotangente",
+      "puntos": [
+        {
+          "texto": "Tangente y cotangente: $\\tan\\alpha \\cdot \\cot\\alpha = 1$",
+          "explicacion": "Aquí $\\alpha$ es un ángulo agudo. Se cumple $\\cot\\alpha = \\frac{1}{\\tan\\alpha}$ y $\\tan\\alpha = \\frac{1}{\\cot\\alpha}$. Ejemplo: en el triángulo de catetos 5 y 12 e hipotenusa 13, con $\\alpha$ frente al cateto de 5, resulta $\\tan\\alpha = \\frac{5}{12}$ y $\\cot\\alpha = \\frac{12}{5}$, y su producto es $\\frac{5}{12} \\times \\frac{12}{5} = 1$. En este par no interviene la hipotenusa."
+        }
+      ]
+    },
+    {
+      "titulo": "Mismo ángulo",
+      "puntos": [
+        {
+          "texto": "El producto vale 1 solo si las dos razones son del mismo ángulo",
+          "explicacion": "La cancelación de lados ocurre únicamente cuando ambas razones se calculan con el mismo ángulo agudo. Con ángulos distintos, los triángulos son distintos y el producto no tiene por qué valer 1. Ejemplo: $\\operatorname{sen} 20° \\approx 0{,}342$ y $\\csc 50° \\approx 1{,}305$, y su producto es aproximadamente $0{,}446$, no 1; en cambio, $\\operatorname{sen} 20° \\cdot \\csc 20° = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de ángulos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}A \\cdot \\csc B = 1$ ⇒ $A = B$ (ángulos agudos)",
+          "explicacion": "Como $\\csc B = \\frac{1}{\\operatorname{sen}B}$, el producto $\\operatorname{sen}A \\cdot \\csc B = 1$ equivale a $\\frac{\\operatorname{sen}A}{\\operatorname{sen}B} = 1$, es decir, $\\operatorname{sen}A = \\operatorname{sen}B$, y entre ángulos agudos eso solo ocurre si los ángulos son iguales. Lo mismo vale para coseno con secante y para tangente con cotangente. Ejemplo: si $\\operatorname{sen}(3x + 10°) \\cdot \\csc(2x + 30°) = 1$, se iguala $3x + 10° = 2x + 30°$, de donde $x = 20°$; los ángulos son $70°$ y $70°$, ambos agudos."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores mayores que 1",
+      "puntos": [
+        {
+          "texto": "sen y cos entre 0 y 1 ⇒ csc y sec > 1",
+          "explicacion": "El seno y el coseno de un ángulo agudo son fracciones menores que 1, y el recíproco de un número positivo menor que 1 es mayor que 1, así que cosecante y secante superan siempre a 1. Para tangente y cotangente no hay tope, pero si una es mayor que 1 su recíproca es menor que 1. Ejemplo: si $\\operatorname{sen}\\alpha = \\frac{5}{13}$, entonces $\\csc\\alpha = \\frac{13}{5} = 2{,}6$; si $\\tan\\alpha = \\frac{12}{5} = 2{,}4$, entonces $\\cot\\alpha = \\frac{5}{12} \\approx 0{,}417$."
+        }
+      ]
+    },
+    {
+      "titulo": "Invertir una fracción",
+      "puntos": [
+        {
+          "texto": "Dato de una razón ⇒ su recíproca se obtiene invirtiendo la fracción",
+          "explicacion": "Si se conoce una razón como fracción, su recíproca es la fracción con numerador y denominador intercambiados; si es un decimal, se calcula $1 \\div$ ese valor. Ejemplo: si $\\operatorname{sen}\\alpha = \\frac{3}{5}$, entonces $\\csc\\alpha = \\frac{5}{3}$. Si $\\sec\\alpha = \\frac{25}{7}$, entonces $\\cos\\alpha = \\frac{7}{25}$. Y si $\\tan\\alpha = 0{,}25$, entonces $\\cot\\alpha = \\frac{1}{0{,}25} = 4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducir expresiones",
+      "puntos": [
+        {
+          "texto": "Sumas con pares recíprocos: cada producto del mismo ángulo vale 1",
+          "explicacion": "En una expresión, cada producto de una razón por su recíproca del mismo ángulo se reemplaza por 1, y luego se efectúa lo que quede. Ejemplo: $E = \\operatorname{sen}40° \\cdot \\csc40° + 3\\tan10° \\cdot \\cot10°$. El primer producto vale 1 y el segundo vale $3 \\times 1 = 3$, entonces $E = 1 + 3 = 4$."
+        },
+        {
+          "texto": "Productos largos: reordenar para juntar cada razón con su recíproca",
+          "explicacion": "Como la multiplicación admite cambiar el orden de los factores, se agrupa cada razón con su recíproca del mismo ángulo y cada grupo vale 1. Ejemplo: $M = \\operatorname{sen}20° \\cdot \\tan50° \\cdot \\csc20° \\cdot \\cot50°$. Reordenando, $M = (\\operatorname{sen}20° \\cdot \\csc20°)(\\tan50° \\cdot \\cot50°) = 1 \\times 1 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Recíproca del seno es la cosecante, no la secante",
+          "explicacion": "Los nombres se parecen y se confunden: cosecante va con seno, secante va con coseno. Ejemplo: en el triángulo de catetos 3 y 4 e hipotenusa 5, con $\\alpha$ frente al cateto de 3, $\\operatorname{sen}\\alpha = \\frac{3}{5}$ y su recíproca es $\\csc\\alpha = \\frac{5}{3}$; la secante vale $\\sec\\alpha = \\frac{5}{4}$ porque es la recíproca del coseno, que es $\\frac{4}{5}$."
+        },
+        {
+          "texto": "Recíproca no es opuesta: $\\csc\\alpha \\neq -\\operatorname{sen}\\alpha$",
+          "explicacion": "Recíproco significa invertir la fracción, no cambiar de signo. Ejemplo: si $\\operatorname{sen}\\alpha = \\frac{3}{5}$, la cosecante vale $\\frac{5}{3}$, y no $-\\frac{3}{5}$; se comprueba porque $\\frac{3}{5} \\times \\frac{5}{3} = 1$, mientras que $\\frac{3}{5} \\times \\left(-\\frac{3}{5}\\right) = -\\frac{9}{25}$."
+        }
+      ]
+    }
+  ]
+}

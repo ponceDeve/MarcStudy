@@ -1796,6 +1796,31 @@
 }
 .teoria-punto__fila {
   margin-bottom: var(--space-3);
+  >div {
+    flex: 1;
+    min-width: 0;
+  }
+}
+.teoria-punto__juego {
+  background: var(--warning-bg);
+  width: 35px;
+  border-radius: var(--radius-full);
+  aspect-ratio: 1;
+  color: var(--warning);
+  border: 1px solid var(--warning);
+  font-size: 1.1rem;
+  position: absolute;
+  top:-15px;
+  right:-8px;
+  line-height: 1;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: all 0.3s linear;
+  &:hover {
+    color: var(--warning-dark);
+  }
+  &:active {
+    transform: scale(0.92);
+  }
 }
 .arcade-game-container.teoria-card-unica:has(.teoria-etiqueta-checkbox:checked) {
   outline: 1px solid var(--success) !important;
@@ -1987,10 +2012,6 @@ span.teoria-busqueda-resaltado {
   80% {
     background-color: var(--primary-bg);
   }
-}
-.teoria-card-unica__inner {
-  position: relative;
-  z-index: 1;
 }
 .teoria-explicacion-extra--unida {
   background: transparent;

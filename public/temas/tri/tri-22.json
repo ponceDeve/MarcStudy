@@ -1,0 +1,370 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos menores que una vuelta",
+  "glosario": {
+    "Vuelta": "Giro completo de trescientos sesenta grados",
+    "Cuadrante": "Cada una de cuatro regiones del plano",
+    "Ángulo agudo": "Ángulo entre cero y noventa grados",
+    "Ángulo de referencia": "Ángulo agudo formado con el eje horizontal",
+    "Ángulo cuadrantal": "Ángulo múltiplo de noventa grados",
+    "Co-razón": "Razón con la que se intercambia",
+    "Razón trigonométrica": "Cociente entre dos medidas asociadas al ángulo",
+    "Lado final": "Semirrecta donde termina el giro",
+    "Reducción": "Escribir una razón con ángulo agudo",
+    "Radio vector": "Distancia del origen al punto",
+    "Abscisa": "Coordenada horizontal de un punto",
+    "Ordenada": "Coordenada vertical de un punto",
+    "Recíproca": "Razón cuyo producto con otra es uno"
+  },
+  "theory": [
+    {
+      "titulo": "Menor que una vuelta",
+      "puntos": [
+        {
+          "texto": "Ángulo menor que una vuelta ⇒ $0^\\circ \\le \\theta < 360^\\circ$",
+          "explicacion": "Aquí $\\theta$ denota el ángulo dado. Una vuelta completa mide 360°, de modo que estos ángulos son los giros que no llegan a completarla. Su lado final queda en un cuadrante o sobre un eje, por eso no hace falta restar vueltas antes de reducir: la reducción al primer cuadrante se aplica directamente al valor dado. Por ejemplo, 215° es menor que 360°, así que se reduce tal cual."
+        },
+        {
+          "texto": "Cuadrante I: $0^\\circ < \\theta < 90^\\circ$",
+          "explicacion": "Los ángulos de este rango son agudos, así que ya están en el primer cuadrante y no necesitan reducción: sus razones se usan directamente. Por ejemplo, 50° ya es agudo y $\\text{sen}\\,50^\\circ$ se queda como está."
+        },
+        {
+          "texto": "Cuadrante II: $90^\\circ < \\theta < 180^\\circ$",
+          "explicacion": "El lado final queda arriba a la izquierda, con abscisa negativa y ordenada positiva. Estos ángulos sí se reducen. Por ejemplo, 120° está en este rango porque 90° < 120° < 180°."
+        },
+        {
+          "texto": "Cuadrante III: $180^\\circ < \\theta < 270^\\circ$",
+          "explicacion": "El lado final queda abajo a la izquierda, con abscisa y ordenada negativas. Estos ángulos sí se reducen. Por ejemplo, 240° está en este rango porque 180° < 240° < 270°."
+        },
+        {
+          "texto": "Cuadrante IV: $270^\\circ < \\theta < 360^\\circ$",
+          "explicacion": "El lado final queda abajo a la derecha, con abscisa positiva y ordenada negativa. Estos ángulos sí se reducen. Por ejemplo, 330° está en este rango porque 270° < 330° < 360°."
+        },
+        {
+          "texto": "Ángulo cuadrantal ✗ cuadrante: $90^\\circ$, $180^\\circ$, $270^\\circ$",
+          "explicacion": "Un ángulo cuadrantal coincide con un eje y no pertenece a ningún cuadrante. No se reduce con un ángulo agudo $\\alpha$, porque tendría que ser $\\alpha = 0^\\circ$ o $\\alpha = 90^\\circ$, que no son agudos; sus razones se leen directamente del eje. Por ejemplo, $\\tan\\,90^\\circ$ no está definida, algo que ninguna fórmula de reducción puede producir."
+        }
+      ]
+    },
+    {
+      "titulo": "Objetivo de la reducción",
+      "puntos": [
+        {
+          "texto": "Ángulo agudo $\\alpha$: $0^\\circ < \\alpha < 90^\\circ$",
+          "explicacion": "En todas las fórmulas de este tema, $\\alpha$ representa un ángulo agudo, es decir, estrictamente entre 0° y 90°. Esa condición es la que asegura que $180^\\circ - \\alpha$, $180^\\circ + \\alpha$, $360^\\circ - \\alpha$, $90^\\circ + \\alpha$, $270^\\circ - \\alpha$ y $270^\\circ + \\alpha$ caigan en el cuadrante indicado. Por ejemplo, con $\\alpha = 30^\\circ$ se tiene $180^\\circ - \\alpha = 150^\\circ$, que sí está en el segundo cuadrante."
+        },
+        {
+          "texto": "Reducir ⇒ escribir la razón con un ángulo agudo $\\alpha$",
+          "explicacion": "Las razones que se conocen de memoria son las de 30°, 45° y 60°, todas de ángulos agudos. Reducir significa reemplazar la razón de un ángulo mayor que 90° por la razón de un ángulo agudo $\\alpha$, afectada de un signo, para poder calcularla. Por ejemplo, $\\text{sen}\\,150^\\circ$ pasa a ser $\\text{sen}\\,30^\\circ = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo de referencia",
+      "puntos": [
+        {
+          "texto": "θ ∈ cuadrante II ⇒ $\\alpha = 180^\\circ - \\theta$",
+          "explicacion": "El ángulo agudo que forma el lado final con el eje horizontal es lo que le falta a $\\theta$ para llegar a 180°. Por eso se resta $\\theta$ de 180°. Ejemplo con $\\theta = 135^\\circ$: $135^\\circ$ está entre 90° y 180°, luego $\\alpha = 180^\\circ - 135^\\circ = 45^\\circ$, y $\\alpha$ es agudo."
+        },
+        {
+          "texto": "θ ∈ cuadrante III ⇒ $\\alpha = \\theta - 180^\\circ$",
+          "explicacion": "El lado final se pasa de 180°, y el agudo con el eje horizontal es ese exceso. Ejemplo con $\\theta = 240^\\circ$: $240^\\circ$ está entre 180° y 270°, luego $\\alpha = 240^\\circ - 180^\\circ = 60^\\circ$, y $\\alpha$ es agudo."
+        },
+        {
+          "texto": "θ ∈ cuadrante IV ⇒ $\\alpha = 360^\\circ - \\theta$",
+          "explicacion": "Al lado final le falta poco para completar la vuelta, y ese faltante es el agudo con el eje horizontal. Ejemplo con $\\theta = 330^\\circ$: $330^\\circ$ está entre 270° y 360°, luego $\\alpha = 360^\\circ - 330^\\circ = 30^\\circ$, y $\\alpha$ es agudo."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo según cuadrante",
+      "puntos": [
+        {
+          "texto": "Cuadrante I ⇒ todas las razones positivas",
+          "explicacion": "En el primer cuadrante abscisa y ordenada son positivas, y el radio vector siempre lo es; por eso los seis cocientes son positivos. Ejemplo: $\\cos\\,50^\\circ$ es positivo, igual que $\\tan\\,50^\\circ$."
+        },
+        {
+          "texto": "Cuadrante II ⇒ solo seno y cosecante positivos",
+          "explicacion": "Con abscisa negativa y ordenada positiva, solo los cocientes que usan la ordenada con el radio vector salen positivos; los demás se vuelven negativos. Ejemplo con 150°: $\\text{sen}\\,150^\\circ = \\frac{1}{2}$ es positivo, pero $\\cos\\,150^\\circ = -\\frac{\\sqrt{3}}{2}$ es negativo."
+        },
+        {
+          "texto": "Cuadrante III ⇒ solo tangente y cotangente positivas",
+          "explicacion": "Con abscisa y ordenada negativas, el cociente entre ellas es positivo, mientras que cualquier cociente con el radio vector es negativo. Ejemplo con 225°: $\\tan\\,225^\\circ = 1$ es positiva, pero $\\text{sen}\\,225^\\circ = -\\frac{\\sqrt{2}}{2}$ es negativo."
+        },
+        {
+          "texto": "Cuadrante IV ⇒ solo coseno y secante positivos",
+          "explicacion": "Con abscisa positiva y ordenada negativa, solo los cocientes que usan la abscisa con el radio vector salen positivos. Ejemplo con 330°: $\\cos\\,330^\\circ = \\frac{\\sqrt{3}}{2}$ es positivo, pero $\\tan\\,330^\\circ = -\\frac{\\sqrt{3}}{3}$ es negativa."
+        },
+        {
+          "texto": "El signo lo fija el cuadrante de $\\theta$, no el de $\\alpha$",
+          "explicacion": "El ángulo agudo $\\alpha$ tiene todas sus razones positivas, así que el signo del resultado debe tomarse del cuadrante donde cae el ángulo original $\\theta$ para la razón dada. Ejemplo: $\\theta = 210^\\circ$ está en el tercer cuadrante, donde el seno es negativo; con $\\alpha = 30^\\circ$ resulta $\\text{sen}\\,210^\\circ = -\\text{sen}\\,30^\\circ = -\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de reducción",
+      "puntos": [
+        {
+          "texto": "Base 180° ⇒ conserva el nombre de la razón",
+          "explicacion": "Cuando el ángulo se mide desde el eje horizontal negativo, la ordenada sigue siendo la ordenada y la abscisa sigue siendo la abscisa, solo cambian de signo. Por eso seno sigue siendo seno, coseno sigue siendo coseno, y así con las demás. Ejemplo: $\\cos\\,120^\\circ$, con $120^\\circ = 180^\\circ - 60^\\circ$, se reduce a coseno de 60° con signo negativo."
+        },
+        {
+          "texto": "Base 360° ⇒ conserva el nombre de la razón",
+          "explicacion": "Medir desde el eje horizontal positivo, ya sea hacia atrás desde la vuelta completa, deja la ordenada como ordenada y la abscisa como abscisa. El nombre no cambia y solo puede cambiar el signo. Ejemplo: $\\tan\\,315^\\circ$, con $315^\\circ = 360^\\circ - 45^\\circ$, se reduce a tangente de 45° con signo negativo."
+        },
+        {
+          "texto": "Base 90° ⇒ cambia a la co-razón",
+          "explicacion": "Al medir desde el eje vertical positivo, la ordenada del punto original pasa a ser la abscisa del nuevo punto y viceversa, de modo que el seno se convierte en coseno y así con los demás pares. Ejemplo: $\\text{sen}\\,120^\\circ$, con $120^\\circ = 90^\\circ + 30^\\circ$, se reduce a $\\cos\\,30^\\circ = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Base 270° ⇒ cambia a la co-razón",
+          "explicacion": "Medir desde el eje vertical negativo también intercambia los papeles de abscisa y ordenada, así que el nombre de la razón cambia a su co-razón. Ejemplo: $\\cos\\,240^\\circ$, con $240^\\circ = 270^\\circ - 30^\\circ$, se reduce a $-\\text{sen}\\,30^\\circ = -\\frac{1}{2}$."
+        },
+        {
+          "texto": "Co-razón del seno es el coseno",
+          "explicacion": "El seno y el coseno forman un par: al cambiar de nombre uno se reemplaza por el otro. Ejemplo: $\\text{sen}\\,(90^\\circ + 60^\\circ) = \\text{sen}\\,150^\\circ$ se escribe con coseno de 60°, cuyo valor es $\\frac{1}{2}$."
+        },
+        {
+          "texto": "Co-razón de la tangente es la cotangente",
+          "explicacion": "La tangente y la cotangente forman un par: al cambiar de nombre una se reemplaza por la otra. Ejemplo: $\\tan\\,(90^\\circ + 30^\\circ) = \\tan\\,120^\\circ$ se escribe con cotangente de 30°, cuyo valor es $\\sqrt{3}$, y con signo negativo resulta $-\\sqrt{3}$."
+        },
+        {
+          "texto": "Co-razón de la secante es la cosecante",
+          "explicacion": "La secante y la cosecante forman un par: al cambiar de nombre una se reemplaza por la otra. Ejemplo: $\\sec\\,(270^\\circ - 30^\\circ) = \\sec\\,240^\\circ$ se escribe con cosecante de 30°, cuyo valor es 2, y con signo negativo resulta $-2$."
+        },
+        {
+          "texto": "Reducción ✗ única: varias bases dan igual valor",
+          "explicacion": "Un mismo ángulo puede escribirse con más de una base, y todas las reducciones correctas llevan al mismo resultado. Ejemplo con 150°: usando $150^\\circ = 180^\\circ - 30^\\circ$ se obtiene $\\text{sen}\\,150^\\circ = \\text{sen}\\,30^\\circ = \\frac{1}{2}$; usando $150^\\circ = 90^\\circ + 60^\\circ$ se obtiene $\\text{sen}\\,150^\\circ = \\cos\\,60^\\circ = \\frac{1}{2}$. Ambos coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 180° − α",
+      "puntos": [
+        {
+          "texto": "$180^\\circ - \\alpha$ ∈ cuadrante II",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 180° resulta $90^\\circ < 180^\\circ - \\alpha < 180^\\circ$, que es el segundo cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $180^\\circ - \\alpha$ es $(-x; y)$: la ordenada y el radio se mantienen y la abscisa cambia de signo. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(180^\\circ - \\alpha) = \\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es positivo porque el seno es positivo en el segundo cuadrante. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $150^\\circ = 180^\\circ - 30^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\text{sen}(150^\\circ) = \\text{sen}(30^\\circ)$. Como $\\text{sen}(30^\\circ) = \\frac{1}{2}$, el resultado es $\\text{sen}(150^\\circ) = \\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\cos(180^\\circ - \\alpha) = -\\cos\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque el coseno es negativo en el segundo cuadrante. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $120^\\circ = 180^\\circ - 60^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\cos(120^\\circ) = -\\cos(60^\\circ)$. Como $\\cos(60^\\circ) = \\frac{1}{2}$, el resultado es $\\cos(120^\\circ) = -\\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\tan(180^\\circ - \\alpha) = -\\tan\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque la tangente es negativa en el segundo cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $135^\\circ = 180^\\circ - 45^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\tan(135^\\circ) = -\\tan(45^\\circ)$. Como $\\tan(45^\\circ) = 1$, el resultado es $\\tan(135^\\circ) = -1$."
+        },
+        {
+          "texto": "$\\cot(180^\\circ - \\alpha) = -\\cot\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque la cotangente es negativa en el segundo cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $150^\\circ = 180^\\circ - 30^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\cot(150^\\circ) = -\\cot(30^\\circ)$. Como $\\cot(30^\\circ) = \\sqrt{3}$, el resultado es $\\cot(150^\\circ) = -\\sqrt{3}$."
+        },
+        {
+          "texto": "$\\sec(180^\\circ - \\alpha) = -\\sec\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque la secante es negativa en el segundo cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $120^\\circ = 180^\\circ - 60^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\sec(120^\\circ) = -\\sec(60^\\circ)$. Como $\\sec(60^\\circ) = 2$, el resultado es $\\sec(120^\\circ) = -2$."
+        },
+        {
+          "texto": "$\\csc(180^\\circ - \\alpha) = \\csc\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es positivo porque la cosecante es positiva en el segundo cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $135^\\circ = 180^\\circ - 45^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\csc(135^\\circ) = \\csc(45^\\circ)$. Como $\\csc(45^\\circ) = \\sqrt{2}$, el resultado es $\\csc(135^\\circ) = \\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 180° + α",
+      "puntos": [
+        {
+          "texto": "$180^\\circ + \\alpha$ ∈ cuadrante III",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 180° resulta $180^\\circ < 180^\\circ + \\alpha < 270^\\circ$, que es el tercer cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $180^\\circ + \\alpha$ es $(-x; -y)$: abscisa y ordenada cambian de signo y el radio se mantiene. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(180^\\circ + \\alpha) = -\\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque el seno es negativo en el tercer cuadrante. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $225^\\circ = 180^\\circ + 45^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\text{sen}(225^\\circ) = -\\text{sen}(45^\\circ)$. Como $\\text{sen}(45^\\circ) = \\frac{\\sqrt{2}}{2}$, el resultado es $\\text{sen}(225^\\circ) = -\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "$\\cos(180^\\circ + \\alpha) = -\\cos\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque el coseno es negativo en el tercer cuadrante. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $210^\\circ = 180^\\circ + 30^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\cos(210^\\circ) = -\\cos(30^\\circ)$. Como $\\cos(30^\\circ) = \\frac{\\sqrt{3}}{2}$, el resultado es $\\cos(210^\\circ) = -\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "$\\tan(180^\\circ + \\alpha) = \\tan\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es positivo porque la tangente es positiva en el tercer cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $240^\\circ = 180^\\circ + 60^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\tan(240^\\circ) = \\tan(60^\\circ)$. Como $\\tan(60^\\circ) = \\sqrt{3}$, el resultado es $\\tan(240^\\circ) = \\sqrt{3}$."
+        },
+        {
+          "texto": "$\\cot(180^\\circ + \\alpha) = \\cot\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es positivo porque la cotangente es positiva en el tercer cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $225^\\circ = 180^\\circ + 45^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\cot(225^\\circ) = \\cot(45^\\circ)$. Como $\\cot(45^\\circ) = 1$, el resultado es $\\cot(225^\\circ) = 1$."
+        },
+        {
+          "texto": "$\\sec(180^\\circ + \\alpha) = -\\sec\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque la secante es negativa en el tercer cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $210^\\circ = 180^\\circ + 30^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\sec(210^\\circ) = -\\sec(30^\\circ)$. Como $\\sec(30^\\circ) = \\frac{2\\sqrt{3}}{3}$, el resultado es $\\sec(210^\\circ) = -\\frac{2\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\csc(180^\\circ + \\alpha) = -\\csc\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 180° mide desde el eje horizontal, y el signo es negativo porque la cosecante es negativa en el tercer cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $240^\\circ = 180^\\circ + 60^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\csc(240^\\circ) = -\\csc(60^\\circ)$. Como $\\csc(60^\\circ) = \\frac{2\\sqrt{3}}{3}$, el resultado es $\\csc(240^\\circ) = -\\frac{2\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 360° − α",
+      "puntos": [
+        {
+          "texto": "$360^\\circ - \\alpha$ ∈ cuadrante IV",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 360° resulta $270^\\circ < 360^\\circ - \\alpha < 360^\\circ$, que es el cuarto cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $360^\\circ - \\alpha$ es $(x; -y)$: la abscisa y el radio se mantienen y la ordenada cambia de signo. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(360^\\circ - \\alpha) = -\\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es negativo porque el seno es negativo en el cuarto cuadrante. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $300^\\circ = 360^\\circ - 60^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\text{sen}(300^\\circ) = -\\text{sen}(60^\\circ)$. Como $\\text{sen}(60^\\circ) = \\frac{\\sqrt{3}}{2}$, el resultado es $\\text{sen}(300^\\circ) = -\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "$\\cos(360^\\circ - \\alpha) = \\cos\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es positivo porque el coseno es positivo en el cuarto cuadrante. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $315^\\circ = 360^\\circ - 45^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\cos(315^\\circ) = \\cos(45^\\circ)$. Como $\\cos(45^\\circ) = \\frac{\\sqrt{2}}{2}$, el resultado es $\\cos(315^\\circ) = \\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "$\\tan(360^\\circ - \\alpha) = -\\tan\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es negativo porque la tangente es negativa en el cuarto cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $330^\\circ = 360^\\circ - 30^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\tan(330^\\circ) = -\\tan(30^\\circ)$. Como $\\tan(30^\\circ) = \\frac{\\sqrt{3}}{3}$, el resultado es $\\tan(330^\\circ) = -\\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\cot(360^\\circ - \\alpha) = -\\cot\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es negativo porque la cotangente es negativa en el cuarto cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $300^\\circ = 360^\\circ - 60^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\cot(300^\\circ) = -\\cot(60^\\circ)$. Como $\\cot(60^\\circ) = \\frac{\\sqrt{3}}{3}$, el resultado es $\\cot(300^\\circ) = -\\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\sec(360^\\circ - \\alpha) = \\sec\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es positivo porque la secante es positiva en el cuarto cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $315^\\circ = 360^\\circ - 45^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\sec(315^\\circ) = \\sec(45^\\circ)$. Como $\\sec(45^\\circ) = \\sqrt{2}$, el resultado es $\\sec(315^\\circ) = \\sqrt{2}$."
+        },
+        {
+          "texto": "$\\csc(360^\\circ - \\alpha) = -\\csc\\,\\alpha$",
+          "explicacion": "El nombre se conserva porque la base 360° mide desde el eje horizontal, y el signo es negativo porque la cosecante es negativa en el cuarto cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $330^\\circ = 360^\\circ - 30^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\csc(330^\\circ) = -\\csc(30^\\circ)$. Como $\\csc(30^\\circ) = 2$, el resultado es $\\csc(330^\\circ) = -2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 90° + α",
+      "puntos": [
+        {
+          "texto": "$90^\\circ + \\alpha$ ∈ cuadrante II",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 90° resulta $90^\\circ < 90^\\circ + \\alpha < 180^\\circ$, que es el segundo cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $90^\\circ + \\alpha$ es $(-y; x)$: la abscisa y la ordenada intercambian sus papeles y la nueva abscisa es negativa. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(90^\\circ + \\alpha) = \\cos\\,\\alpha$",
+          "explicacion": "El nombre cambia de seno a coseno porque la base 90° mide desde el eje vertical, y el signo es positivo porque el seno es positivo en el segundo cuadrante. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $120^\\circ = 90^\\circ + 30^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\text{sen}(120^\\circ) = \\cos(30^\\circ)$. Como $\\cos(30^\\circ) = \\frac{\\sqrt{3}}{2}$, el resultado es $\\text{sen}(120^\\circ) = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "$\\cos(90^\\circ + \\alpha) = -\\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre cambia de coseno a seno porque la base 90° mide desde el eje vertical, y el signo es negativo porque el coseno es negativo en el segundo cuadrante. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $135^\\circ = 90^\\circ + 45^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\cos(135^\\circ) = -\\text{sen}(45^\\circ)$. Como $\\text{sen}(45^\\circ) = \\frac{\\sqrt{2}}{2}$, el resultado es $\\cos(135^\\circ) = -\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "$\\tan(90^\\circ + \\alpha) = -\\cot\\,\\alpha$",
+          "explicacion": "El nombre cambia de tangente a cotangente porque la base 90° mide desde el eje vertical, y el signo es negativo porque la tangente es negativa en el segundo cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $150^\\circ = 90^\\circ + 60^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\tan(150^\\circ) = -\\cot(60^\\circ)$. Como $\\cot(60^\\circ) = \\frac{\\sqrt{3}}{3}$, el resultado es $\\tan(150^\\circ) = -\\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\cot(90^\\circ + \\alpha) = -\\tan\\,\\alpha$",
+          "explicacion": "El nombre cambia de cotangente a tangente porque la base 90° mide desde el eje vertical, y el signo es negativo porque la cotangente es negativa en el segundo cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $120^\\circ = 90^\\circ + 30^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\cot(120^\\circ) = -\\tan(30^\\circ)$. Como $\\tan(30^\\circ) = \\frac{\\sqrt{3}}{3}$, el resultado es $\\cot(120^\\circ) = -\\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\sec(90^\\circ + \\alpha) = -\\csc\\,\\alpha$",
+          "explicacion": "El nombre cambia de secante a cosecante porque la base 90° mide desde el eje vertical, y el signo es negativo porque la secante es negativa en el segundo cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $135^\\circ = 90^\\circ + 45^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\sec(135^\\circ) = -\\csc(45^\\circ)$. Como $\\csc(45^\\circ) = \\sqrt{2}$, el resultado es $\\sec(135^\\circ) = -\\sqrt{2}$."
+        },
+        {
+          "texto": "$\\csc(90^\\circ + \\alpha) = \\sec\\,\\alpha$",
+          "explicacion": "El nombre cambia de cosecante a secante porque la base 90° mide desde el eje vertical, y el signo es positivo porque la cosecante es positiva en el segundo cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $150^\\circ = 90^\\circ + 60^\\circ$, que está en el segundo cuadrante. Se sustituye: $\\csc(150^\\circ) = \\sec(60^\\circ)$. Como $\\sec(60^\\circ) = 2$, el resultado es $\\csc(150^\\circ) = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 270° − α",
+      "puntos": [
+        {
+          "texto": "$270^\\circ - \\alpha$ ∈ cuadrante III",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 270° resulta $180^\\circ < 270^\\circ - \\alpha < 270^\\circ$, que es el tercer cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $270^\\circ - \\alpha$ es $(-y; -x)$: abscisa y ordenada intercambian papeles y ambas quedan negativas. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(270^\\circ - \\alpha) = -\\cos\\,\\alpha$",
+          "explicacion": "El nombre cambia de seno a coseno porque la base 270° mide desde el eje vertical, y el signo es negativo porque el seno es negativo en el tercer cuadrante. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $210^\\circ = 270^\\circ - 60^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\text{sen}(210^\\circ) = -\\cos(60^\\circ)$. Como $\\cos(60^\\circ) = \\frac{1}{2}$, el resultado es $\\text{sen}(210^\\circ) = -\\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\cos(270^\\circ - \\alpha) = -\\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre cambia de coseno a seno porque la base 270° mide desde el eje vertical, y el signo es negativo porque el coseno es negativo en el tercer cuadrante. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $240^\\circ = 270^\\circ - 30^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\cos(240^\\circ) = -\\text{sen}(30^\\circ)$. Como $\\text{sen}(30^\\circ) = \\frac{1}{2}$, el resultado es $\\cos(240^\\circ) = -\\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\tan(270^\\circ - \\alpha) = \\cot\\,\\alpha$",
+          "explicacion": "El nombre cambia de tangente a cotangente porque la base 270° mide desde el eje vertical, y el signo es positivo porque la tangente es positiva en el tercer cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $225^\\circ = 270^\\circ - 45^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\tan(225^\\circ) = \\cot(45^\\circ)$. Como $\\cot(45^\\circ) = 1$, el resultado es $\\tan(225^\\circ) = 1$."
+        },
+        {
+          "texto": "$\\cot(270^\\circ - \\alpha) = \\tan\\,\\alpha$",
+          "explicacion": "El nombre cambia de cotangente a tangente porque la base 270° mide desde el eje vertical, y el signo es positivo porque la cotangente es positiva en el tercer cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $210^\\circ = 270^\\circ - 60^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\cot(210^\\circ) = \\tan(60^\\circ)$. Como $\\tan(60^\\circ) = \\sqrt{3}$, el resultado es $\\cot(210^\\circ) = \\sqrt{3}$."
+        },
+        {
+          "texto": "$\\sec(270^\\circ - \\alpha) = -\\csc\\,\\alpha$",
+          "explicacion": "El nombre cambia de secante a cosecante porque la base 270° mide desde el eje vertical, y el signo es negativo porque la secante es negativa en el tercer cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $240^\\circ = 270^\\circ - 30^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\sec(240^\\circ) = -\\csc(30^\\circ)$. Como $\\csc(30^\\circ) = 2$, el resultado es $\\sec(240^\\circ) = -2$."
+        },
+        {
+          "texto": "$\\csc(270^\\circ - \\alpha) = -\\sec\\,\\alpha$",
+          "explicacion": "El nombre cambia de cosecante a secante porque la base 270° mide desde el eje vertical, y el signo es negativo porque la cosecante es negativa en el tercer cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $225^\\circ = 270^\\circ - 45^\\circ$, que está en el tercer cuadrante. Se sustituye: $\\csc(225^\\circ) = -\\sec(45^\\circ)$. Como $\\sec(45^\\circ) = \\sqrt{2}$, el resultado es $\\csc(225^\\circ) = -\\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma 270° + α",
+      "puntos": [
+        {
+          "texto": "$270^\\circ + \\alpha$ ∈ cuadrante IV",
+          "explicacion": "Como $0^\\circ < \\alpha < 90^\\circ$, al operar con 270° resulta $270^\\circ < 270^\\circ + \\alpha < 360^\\circ$, que es el cuarto cuadrante. Si $P(x; y)$ es un punto del lado final de $\\alpha$, con radio vector $r$, el punto del ángulo $270^\\circ + \\alpha$ es $(y; -x)$: abscisa y ordenada intercambian papeles y la nueva ordenada es negativa. Con ese punto se obtienen las razones de las siguientes cards."
+        },
+        {
+          "texto": "$\\text{sen}(270^\\circ + \\alpha) = -\\cos\\,\\alpha$",
+          "explicacion": "El nombre cambia de seno a coseno porque la base 270° mide desde el eje vertical, y el signo es negativo porque el seno es negativo en el cuarto cuadrante. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $315^\\circ = 270^\\circ + 45^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\text{sen}(315^\\circ) = -\\cos(45^\\circ)$. Como $\\cos(45^\\circ) = \\frac{\\sqrt{2}}{2}$, el resultado es $\\text{sen}(315^\\circ) = -\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "$\\cos(270^\\circ + \\alpha) = \\text{sen}\\,\\alpha$",
+          "explicacion": "El nombre cambia de coseno a seno porque la base 270° mide desde el eje vertical, y el signo es positivo porque el coseno es positivo en el cuarto cuadrante. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $330^\\circ = 270^\\circ + 60^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\cos(330^\\circ) = \\text{sen}(60^\\circ)$. Como $\\text{sen}(60^\\circ) = \\frac{\\sqrt{3}}{2}$, el resultado es $\\cos(330^\\circ) = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "$\\tan(270^\\circ + \\alpha) = -\\cot\\,\\alpha$",
+          "explicacion": "El nombre cambia de tangente a cotangente porque la base 270° mide desde el eje vertical, y el signo es negativo porque la tangente es negativa en el cuarto cuadrante. Sale de dividir el seno reducido entre el coseno reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $300^\\circ = 270^\\circ + 30^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\tan(300^\\circ) = -\\cot(30^\\circ)$. Como $\\cot(30^\\circ) = \\sqrt{3}$, el resultado es $\\tan(300^\\circ) = -\\sqrt{3}$."
+        },
+        {
+          "texto": "$\\cot(270^\\circ + \\alpha) = -\\tan\\,\\alpha$",
+          "explicacion": "El nombre cambia de cotangente a tangente porque la base 270° mide desde el eje vertical, y el signo es negativo porque la cotangente es negativa en el cuarto cuadrante. Sale de dividir el coseno reducido entre el seno reducido. Ejemplo con $\\alpha = 45^\\circ$: el ángulo es $315^\\circ = 270^\\circ + 45^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\cot(315^\\circ) = -\\tan(45^\\circ)$. Como $\\tan(45^\\circ) = 1$, el resultado es $\\cot(315^\\circ) = -1$."
+        },
+        {
+          "texto": "$\\sec(270^\\circ + \\alpha) = \\csc\\,\\alpha$",
+          "explicacion": "El nombre cambia de secante a cosecante porque la base 270° mide desde el eje vertical, y el signo es positivo porque la secante es positiva en el cuarto cuadrante. Es la recíproca del coseno ya reducido. Ejemplo con $\\alpha = 60^\\circ$: el ángulo es $330^\\circ = 270^\\circ + 60^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\sec(330^\\circ) = \\csc(60^\\circ)$. Como $\\csc(60^\\circ) = \\frac{2\\sqrt{3}}{3}$, el resultado es $\\sec(330^\\circ) = \\frac{2\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "$\\csc(270^\\circ + \\alpha) = -\\sec\\,\\alpha$",
+          "explicacion": "El nombre cambia de cosecante a secante porque la base 270° mide desde el eje vertical, y el signo es negativo porque la cosecante es negativa en el cuarto cuadrante. Es la recíproca del seno ya reducido. Ejemplo con $\\alpha = 30^\\circ$: el ángulo es $300^\\circ = 270^\\circ + 30^\\circ$, que está en el cuarto cuadrante. Se sustituye: $\\csc(300^\\circ) = -\\sec(30^\\circ)$. Como $\\sec(30^\\circ) = \\frac{2\\sqrt{3}}{3}$, el resultado es $\\csc(300^\\circ) = -\\frac{2\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Signo de $\\alpha$ ≠ signo de $\\theta$",
+          "explicacion": "Tomar el signo de la razón del ángulo agudo $\\alpha$ lleva siempre a signo positivo y es un error: el signo correcto depende del cuadrante de $\\theta$. Ejemplo con $\\theta = 210^\\circ$ y $\\alpha = 30^\\circ$: $\\text{sen}\\,30^\\circ = \\frac{1}{2}$ es positivo, pero $\\text{sen}\\,210^\\circ = -\\frac{1}{2}$ porque el seno es negativo en el tercer cuadrante."
+        },
+        {
+          "texto": "$\\text{sen}(90^\\circ + \\alpha) ≠ \\text{sen}\\,\\alpha$",
+          "explicacion": "Con base 90° el nombre cambia, así que no puede quedar seno. Ejemplo con $\\alpha = 30^\\circ$: $\\text{sen}\\,120^\\circ = \\cos\\,30^\\circ = \\frac{\\sqrt{3}}{2}$, mientras que $\\text{sen}\\,30^\\circ = \\frac{1}{2}$; los dos valores son distintos."
+        },
+        {
+          "texto": "$\\tan(180^\\circ - \\alpha) ≠ \\tan\\,\\alpha$",
+          "explicacion": "Con base 180° el nombre se conserva pero la tangente es negativa en el segundo cuadrante, así que cambia de signo. Ejemplo con $\\alpha = 45^\\circ$: $\\tan\\,135^\\circ = -\\tan\\,45^\\circ = -1$, no 1."
+        },
+        {
+          "texto": "$\\tan(180^\\circ + \\alpha) = \\tan\\,\\alpha$ conserva el signo",
+          "explicacion": "En el tercer cuadrante la tangente es positiva, así que no cambia de signo aunque el seno y el coseno sí lo hagan; ambos signos negativos se cancelan en el cociente. Ejemplo con $\\alpha = 60^\\circ$: $\\tan\\,240^\\circ = \\frac{-\\frac{\\sqrt{3}}{2}}{-\\frac{1}{2}} = \\sqrt{3} = \\tan\\,60^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Límite del tema",
+      "puntos": [
+        {
+          "texto": "Ángulo ≥ $360^\\circ$ ⇒ se trata en otro tema",
+          "explicacion": "Los ángulos de una vuelta o más tienen su propio tratamiento y no se reducen con estas fórmulas directamente: primero habría que expresarlos como un ángulo menor que una vuelta. Aquí solo se reducen ángulos que ya son menores que 360°, por ejemplo 215° o 330°."
+        }
+      ]
+    }
+  ]
+}

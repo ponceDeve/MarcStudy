@@ -1,0 +1,257 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Función tangente",
+  "glosario": {
+    "función tangente": "cociente del seno entre el coseno",
+    "periodo": "menor desplazamiento que repite la gráfica",
+    "asíntota vertical": "recta vertical que la curva no toca",
+    "dominio": "valores de x donde la función existe",
+    "rango": "valores que toma la función",
+    "función impar": "cambia de signo con x",
+    "cero de una función": "valor de x donde la función vale cero",
+    "rama": "tramo de gráfica entre asíntotas consecutivas",
+    "pendiente": "cuánto sube una recta por unidad avanzada",
+    "cotangente": "recíproca de la tangente",
+    "amplitud": "mitad de la distancia entre máximo y mínimo",
+    "cuadrante": "cada una de las cuatro regiones del plano"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "Regla de la tangente: $\\tan x=\\frac{\\operatorname{sen} x}{\\cos x}$",
+          "explicacion": "Se evalúa dividiendo el seno entre el coseno del mismo ángulo, siempre que el coseno no sea cero. Ejemplo: para $x=\\frac{\\pi}{6}$ se tiene $\\operatorname{sen}\\frac{\\pi}{6}=\\frac{1}{2}$ y $\\cos\\frac{\\pi}{6}=\\frac{\\sqrt{3}}{2}$, entonces $\\tan\\frac{\\pi}{6}=\\frac{1/2}{\\sqrt{3}/2}=\\frac{1}{\\sqrt{3}}=\\frac{\\sqrt{3}}{3}$, que vale aproximadamente 0,577. En una rampa inclinada 30°, cada metro avanzado en horizontal sube unos 0,58 m."
+        },
+        {
+          "texto": "$\\tan x$ = pendiente de la recta con inclinación $x$",
+          "explicacion": "Una recta que pasa por el origen y forma el ángulo $x$ con el semieje positivo X sube $\\tan x$ unidades por cada unidad que avanza. Con $x=45°$ la pendiente es 1, con $x=60°$ es $\\sqrt{3}$ (aproximadamente 1,73) y con $x=135°$ es $-1$ porque la recta baja. Un techo inclinado 45° sube lo mismo que avanza; uno a 60° es más empinado."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\tan x$: $x \\neq \\frac{\\pi}{2}+n\\pi$, $n \\in \\mathbb{Z}$",
+          "explicacion": "Como $\\tan x$ es un cociente, el denominador $\\cos x$ no puede ser cero, y $\\cos x=0$ solo en $\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$, $-\\frac{\\pi}{2}$ y los ángulos que se obtienen sumando o restando $\\pi$ repetidas veces. Ejemplo: $x=\\frac{5\\pi}{2}$ corresponde a $n=2$ porque $\\frac{\\pi}{2}+2\\pi=\\frac{5\\pi}{2}$, así que $\\tan\\frac{5\\pi}{2}$ no existe. En cambio $\\cos\\frac{7\\pi}{6}=-\\frac{\\sqrt{3}}{2}\\neq0$ y por eso $\\tan\\frac{7\\pi}{6}=\\frac{\\sqrt{3}}{3}$ sí existe. Funciona como una calculadora que marca error al dividir entre cero."
+        },
+        {
+          "texto": "Dominio en grados: $x \\neq 90°+180°n$, $n \\in \\mathbb{Z}$",
+          "explicacion": "Es el mismo conjunto de ángulos excluidos, escrito en grados: $n=0$ da 90°, $n=1$ da 270°, $n=-1$ da $-90°$ y $n=2$ da 450°. Ejemplo: 450° está excluido ($90+180\\cdot2=450$), por lo que $\\tan450°$ no existe; en cambio 540° no tiene la forma $90°+180°n$ con $n$ entero (saldría $n=2{,}5$), así que existe y vale $\\tan540°=\\tan180°=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango",
+      "puntos": [
+        {
+          "texto": "Rango de $\\tan x$: todos los reales, $(-\\infty,\\infty)$",
+          "explicacion": "Al acercarse $x$ a 90° desde la izquierda, $\\cos x$ se aproxima a 0 por valores positivos mientras $\\operatorname{sen} x$ se acerca a 1, y el cociente crece sin límite; como la gráfica no se interrumpe dentro de cada rama, recorre todos los valores intermedios. Ejemplo numérico: $\\tan89°\\approx57{,}29$ y $\\tan89{,}9°\\approx572{,}96$. Del lado negativo, $\\tan(-89°)\\approx-57{,}29$, de modo que se alcanzan valores positivos y negativos de cualquier tamaño."
+        },
+        {
+          "texto": "$\\tan x$ ✗ máximo ✗ mínimo",
+          "explicacion": "Un máximo sería el mayor valor que alcanza la función, pero para cualquier número dado existe un ángulo cercano a 90° con tangente mayor. Ejemplo: $\\tan89{,}9999°\\approx572\\,958$, que ya supera $10^{5}$; acercándose más, supera cualquier cota. Lo mismo ocurre hacia abajo con ángulos cercanos a $-90°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo",
+      "puntos": [
+        {
+          "texto": "Periodo: $\\tan(x+\\pi)=\\tan x$",
+          "explicacion": "Al sumar $\\pi$, seno y coseno cambian de signo a la vez: $\\operatorname{sen}(x+\\pi)=-\\operatorname{sen} x$ y $\\cos(x+\\pi)=-\\cos x$, así el cociente no cambia. Ejemplo: $\\tan\\frac{5\\pi}{4}=\\frac{-\\sqrt{2}/2}{-\\sqrt{2}/2}=1$, igual que $\\tan\\frac{\\pi}{4}=1$. Cada media vuelta (180°) la tangente vuelve a tomar el mismo valor."
+        },
+        {
+          "texto": "El menor periodo positivo de $\\tan x$ es $\\pi$, no $2\\pi$",
+          "explicacion": "El número $2\\pi$ también cumple $\\tan(x+2\\pi)=\\tan x$, pero no es el menor, porque $\\pi$ ya lo cumple. Seno y coseno sí necesitan $2\\pi$ porque cambian de signo al sumar $\\pi$. Ejemplo: $\\tan30°=\\frac{\\sqrt{3}}{3}$ y $\\tan210°=\\frac{\\sqrt{3}}{3}$, con solo 180° de diferencia, antes de completar 360°."
+        },
+        {
+          "texto": "$\\tan(x+n\\pi)=\\tan x$ para $n \\in \\mathbb{Z}$",
+          "explicacion": "Se aplica el desplazamiento de $\\pi$ tantas veces como indique $n$, hacia la derecha o hacia la izquierda. Ejemplo: como $\\frac{13\\pi}{4}=\\frac{\\pi}{4}+3\\pi$, se tiene $\\tan\\frac{13\\pi}{4}=\\tan\\frac{\\pi}{4}=1$. También $-\\frac{3\\pi}{4}=\\frac{\\pi}{4}-\\pi$, luego $\\tan\\left(-\\frac{3\\pi}{4}\\right)=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad",
+      "puntos": [
+        {
+          "texto": "$\\tan x$ es impar: $\\tan(-x)=-\\tan x$",
+          "explicacion": "El seno es impar y el coseno es par, así que $\\tan(-x)=\\frac{-\\operatorname{sen} x}{\\cos x}=-\\tan x$. Ejemplo: $\\tan\\frac{\\pi}{3}=\\sqrt{3}$ y por tanto $\\tan\\left(-\\frac{\\pi}{3}\\right)=-\\sqrt{3}$. Una rampa que sube con cierto ángulo y otra que baja con el mismo ángulo tienen pendientes opuestas, $+\\sqrt{3}$ y $-\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo positivo",
+      "puntos": [
+        {
+          "texto": "$\\tan x > 0$ en los cuadrantes I y III",
+          "explicacion": "En el cuadrante I seno y coseno son positivos; en el III ambos son negativos; en los dos casos el cociente es positivo. Ejemplo: $\\tan30°=\\frac{\\sqrt{3}}{3}>0$ y $\\tan210°=\\frac{-1/2}{-\\sqrt{3}/2}=\\frac{\\sqrt{3}}{3}>0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo negativo",
+      "puntos": [
+        {
+          "texto": "$\\tan x < 0$ en los cuadrantes II y IV",
+          "explicacion": "En el cuadrante II el seno es positivo y el coseno negativo; en el IV ocurre al revés; el cociente resulta negativo. Ejemplo: $\\tan150°=\\frac{1/2}{-\\sqrt{3}/2}=-\\frac{\\sqrt{3}}{3}$ y $\\tan330°=\\frac{-1/2}{\\sqrt{3}/2}=-\\frac{\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros",
+      "puntos": [
+        {
+          "texto": "$\\tan x = 0$ ⇒ $x=n\\pi$, $n \\in \\mathbb{Z}$",
+          "explicacion": "Una fracción vale cero cuando su numerador es cero y su denominador no: $\\operatorname{sen} x=0$ ocurre en $0,\\pm\\pi,\\pm2\\pi,\\ldots$ y allí $\\cos x=\\pm1\\neq0$. Ejemplo: $\\tan3\\pi=0$ y $\\tan(-2\\pi)=0$; la gráfica corta el eje X en $-2\\pi,-\\pi,0,\\pi,2\\pi$ y corta el eje Y en el origen, porque $\\tan0=0$."
+        },
+        {
+          "texto": "Ceros y asíntotas se alternan cada $\\frac{\\pi}{2}$",
+          "explicacion": "Los ceros están en $n\\pi$ y las asíntotas en $\\frac{\\pi}{2}+n\\pi$, de modo que entre un cero y la asíntota siguiente hay $\\frac{\\pi}{2}$. Ejemplo: en el tramo de 0 a $\\pi$ hay un cero en 0, una asíntota en $\\frac{\\pi}{2}$ y otro cero en $\\pi$. Error frecuente: confundirlos; el cero de la tangente es el cero del seno, y la asíntota es el cero del coseno."
+        }
+      ]
+    },
+    {
+      "titulo": "Asíntotas verticales",
+      "puntos": [
+        {
+          "texto": "Asíntotas verticales: $x=\\frac{\\pi}{2}+n\\pi$",
+          "explicacion": "En esos valores $\\cos x=0$ y $\\operatorname{sen} x=\\pm1$, así el cociente crece sin límite en valor absoluto y la curva se acerca a la recta vertical sin tocarla. Ejemplo: $n=0$ da $x=\\frac{\\pi}{2}$, $n=-1$ da $x=-\\frac{\\pi}{2}$ y $n=1$ da $x=\\frac{3\\pi}{2}$. Numéricamente, en 89,99° el coseno vale apenas 0,0001745 y la tangente ya es aproximadamente 5729,6."
+        },
+        {
+          "texto": "Asíntotas consecutivas distan $\\pi$ entre sí",
+          "explicacion": "Es la misma longitud del periodo: cada rama de la gráfica ocupa un intervalo de ancho $\\pi$. Ejemplo: entre $-\\frac{\\pi}{2}$ y $\\frac{\\pi}{2}$ hay una distancia $\\pi$, y entre $\\frac{\\pi}{2}$ y $\\frac{3\\pi}{2}$ también. Para dibujar, desde una asíntota la siguiente queda $\\pi$ más adelante."
+        },
+        {
+          "texto": "Cerca de $\\frac{\\pi}{2}$: a la izquierda $\\tan x$ ↑, a la derecha ↓",
+          "explicacion": "Por la izquierda ($x<\\frac{\\pi}{2}$, cuadrante I) seno y coseno son positivos y el cociente es positivo y enorme; por la derecha (cuadrante II) el coseno es negativo y el cociente es negativo y enorme. Ejemplo: $\\tan89°\\approx57{,}29$ y $\\tan91°\\approx-57{,}29$."
+        }
+      ]
+    },
+    {
+      "titulo": "Crecimiento",
+      "puntos": [
+        {
+          "texto": "$\\tan x$ ↑ en cada $\\left(-\\frac{\\pi}{2}+n\\pi,\\ \\frac{\\pi}{2}+n\\pi\\right)$",
+          "explicacion": "Dentro de una rama, a mayor ángulo corresponde mayor tangente. Ejemplo en la rama central: $\\tan0=0<\\tan\\frac{\\pi}{4}=1<\\tan\\frac{\\pi}{3}=\\sqrt{3}$, con $\\sqrt{3}$ aproximadamente 1,73. En todo el dominio no es creciente: $\\frac{\\pi}{4}<\\frac{3\\pi}{4}$ pero $\\tan\\frac{\\pi}{4}=1>\\tan\\frac{3\\pi}{4}=-1$, porque entre ambos ángulos hay una asíntota."
+        }
+      ]
+    },
+    {
+      "titulo": "Rama central",
+      "puntos": [
+        {
+          "texto": "Puntos clave de la rama de $y=\\tan x$ entre $-\\frac{\\pi}{2}$ y $\\frac{\\pi}{2}$",
+          "explicacion": "Se trazan las asíntotas $x=-\\frac{\\pi}{2}$ y $x=\\frac{\\pi}{2}$ y se ubican los puntos $\\left(-\\frac{\\pi}{3},-\\sqrt{3}\\right)$, $\\left(-\\frac{\\pi}{4},-1\\right)$, $\\left(-\\frac{\\pi}{6},-\\frac{\\sqrt{3}}{3}\\right)$, $(0,0)$, $\\left(\\frac{\\pi}{6},\\frac{\\sqrt{3}}{3}\\right)$, $\\left(\\frac{\\pi}{4},1\\right)$ y $\\left(\\frac{\\pi}{3},\\sqrt{3}\\right)$. Luego se unen con una curva creciente que sube pegada a la asíntota derecha y baja pegada a la izquierda."
+        },
+        {
+          "texto": "La gráfica completa repite la rama central cada $\\pi$",
+          "explicacion": "La rama siguiente se obtiene desplazando la central $\\pi$ a la derecha: el punto $(0,0)$ pasa a $(\\pi,0)$, el punto $\\left(\\frac{\\pi}{4},1\\right)$ pasa a $\\left(\\frac{5\\pi}{4},1\\right)$ y el punto $\\left(-\\frac{\\pi}{4},-1\\right)$ pasa a $\\left(\\frac{3\\pi}{4},-1\\right)$. Comprobación: $\\tan\\frac{5\\pi}{4}=1$ y $\\tan\\frac{3\\pi}{4}=-1$."
+        },
+        {
+          "texto": "La gráfica de $\\tan x$ es simétrica respecto al origen",
+          "explicacion": "Es el reflejo geométrico de la imparidad: si el punto $(a,b)$ está en la gráfica, también está $(-a,-b)$. Ejemplo: $\\left(\\frac{\\pi}{4},1\\right)$ y $\\left(-\\frac{\\pi}{4},-1\\right)$. Basta dibujar la mitad derecha de la rama y reflejarla."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo transformado",
+      "puntos": [
+        {
+          "texto": "Periodo de $y=A\\tan(Bx)$: $T=\\frac{\\pi}{|B|}$",
+          "explicacion": "La tangente completa un periodo cuando $Bx$ avanza $\\pi$, es decir, cuando $x$ avanza $\\frac{\\pi}{|B|}$. Ejemplos: $y=3\\tan2x$ tiene $T=\\frac{\\pi}{2}$; $y=\\tan\\frac{x}{3}$ tiene $B=\\frac{1}{3}$ y $T=\\frac{\\pi}{1/3}=3\\pi$; $y=-4\\tan\\frac{3x}{2}$ tiene $T=\\frac{\\pi}{3/2}=\\frac{2\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Asíntotas transformadas",
+      "puntos": [
+        {
+          "texto": "Asíntotas de $y=A\\tan(Bx)$: $Bx=\\frac{\\pi}{2}+n\\pi$",
+          "explicacion": "Al despejar se obtiene $x=\\frac{\\pi}{2B}+\\frac{n\\pi}{B}$. Ejemplo con $y=\\tan2x$: $2x=\\frac{\\pi}{2}+n\\pi$ da $x=\\frac{\\pi}{4}+\\frac{n\\pi}{2}$, es decir $\\ldots,-\\frac{\\pi}{4},\\frac{\\pi}{4},\\frac{3\\pi}{4},\\ldots$, separadas $\\frac{\\pi}{2}$, que es su periodo."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio transformado",
+      "puntos": [
+        {
+          "texto": "Dominio de $y=\\tan(Bx)$: $Bx \\neq \\frac{\\pi}{2}+n\\pi$",
+          "explicacion": "Se excluyen exactamente los valores de $x$ donde hay asíntotas. Ejemplo con $y=\\tan3x$: $3x\\neq\\frac{\\pi}{2}+n\\pi$ da $x\\neq\\frac{\\pi}{6}+\\frac{n\\pi}{3}$; así $x=\\frac{\\pi}{6}$ y $x=\\frac{\\pi}{2}$ (con $n=1$) están excluidos, mientras que $x=\\frac{\\pi}{12}$ sí pertenece al dominio y $\\tan\\frac{\\pi}{4}=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros transformados",
+      "puntos": [
+        {
+          "texto": "Ceros de $y=A\\tan(Bx)$: $Bx=n\\pi$",
+          "explicacion": "Se despeja $x=\\frac{n\\pi}{B}$. Ejemplo con $y=\\tan2x$: los ceros son $0,\\frac{\\pi}{2},\\pi,\\ldots$. Con $y=5\\tan\\frac{x}{2}$: $\\frac{x}{2}=n\\pi$ da $x=2n\\pi$, o sea $0,2\\pi,4\\pi,\\ldots$."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto del factor A",
+      "puntos": [
+        {
+          "texto": "$|A| > 1$ estira y $|A| < 1$ comprime en vertical",
+          "explicacion": "Multiplica cada valor de $\\tan x$ por $A$ sin cambiar el periodo ni las asíntotas. Ejemplo: en $x=\\frac{\\pi}{4}$, $y=\\tan x$ vale 1, $y=3\\tan x$ vale 3 y $y=\\frac{1}{2}\\tan x$ vale 0,5; las tres tienen periodo $\\pi$ y asíntotas en $\\frac{\\pi}{2}+n\\pi$."
+        },
+        {
+          "texto": "$A < 0$ refleja la gráfica respecto al eje X",
+          "explicacion": "Cambia el signo de cada valor, de modo que la función pasa a decrecer en cada rama. Ejemplo: $y=-3\\tan x$ vale $-3$ en $x=\\frac{\\pi}{4}$ y vale $3$ en $x=-\\frac{\\pi}{4}$."
+        },
+        {
+          "texto": "La tangente ✗ amplitud",
+          "explicacion": "La amplitud mide la mitad de la distancia entre el máximo y el mínimo; como la tangente no tiene máximo ni mínimo, no existe. El factor $A$ solo estira la gráfica. Ejemplo: en $y=3\\tan x$ el 3 no es una amplitud, porque la función sigue tomando todos los valores reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto del factor B",
+      "puntos": [
+        {
+          "texto": "Si $B<0$: $\\tan(Bx)=-\\tan(|B|x)$",
+          "explicacion": "Se aplica la imparidad de la tangente: el signo negativo sale fuera, y el periodo se calcula con $|B|$. Ejemplo: $y=\\tan(-2x)=-\\tan2x$; en $x=\\frac{\\pi}{8}$ vale $\\tan\\left(-\\frac{\\pi}{4}\\right)=-1$, y su periodo es $\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Desplazamiento vertical",
+      "puntos": [
+        {
+          "texto": "$y=\\tan x+D$ desplaza la gráfica $D$ unidades en vertical",
+          "explicacion": "El rango sigue siendo todos los reales y las asíntotas no se mueven. Ejemplo con $y=\\tan x+1$: en $x=0$ vale 1, en $x=\\frac{\\pi}{4}$ vale 2, y vale 0 cuando $\\tan x=-1$, o sea en $x=-\\frac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Desplazamiento horizontal",
+      "puntos": [
+        {
+          "texto": "$y=\\tan(x-C)$ desplaza la gráfica $C$ unidades a la derecha",
+          "explicacion": "Las asíntotas pasan a $x=C+\\frac{\\pi}{2}+n\\pi$ y los ceros a $x=C+n\\pi$. Ejemplo con $y=\\tan\\left(x-\\frac{\\pi}{4}\\right)$: asíntotas en $\\frac{3\\pi}{4}+n\\pi$, ceros en $\\frac{\\pi}{4}+n\\pi$, y en $x=\\frac{\\pi}{2}$ vale $\\tan\\frac{\\pi}{4}=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente vecina",
+      "puntos": [
+        {
+          "texto": "$\\cot x=\\frac{1}{\\tan x}$ tiene asíntotas en $n\\pi$",
+          "explicacion": "Es la función que más se confunde con la tangente: sus asíntotas están donde $\\operatorname{sen} x=0$ y sus ceros donde $\\cos x=0$, además decrece en cada rama. Ejemplo: $\\tan\\frac{\\pi}{3}=\\sqrt{3}$ pero $\\cot\\frac{\\pi}{3}=\\frac{1}{\\sqrt{3}}$; en $x=\\frac{\\pi}{2}$ la tangente no existe y la cotangente vale 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Línea tangente y arco tangente tienen tema propio",
+          "explicacion": "La línea tangente del círculo trigonométrico representa geométricamente a $\\tan x$, y la función inversa de la tangente se estudia aparte. Aquí solo interesan las propiedades de $y=\\tan x$ como función."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Arco tangente",
+  "glosario": {
+    "arco tangente": "ángulo del tramo principal con esa tangente",
+    "dominio": "valores de entrada permitidos",
+    "rango": "valores de salida posibles",
+    "tramo principal": "intervalo donde la función no repite valores",
+    "asíntota horizontal": "recta horizontal a la que se acerca",
+    "función impar": "cambia de signo con x",
+    "creciente": "al aumentar x también aumenta la función",
+    "uno a uno": "cada salida proviene de una sola entrada",
+    "ángulos complementarios": "ángulos que suman noventa grados",
+    "cotangente": "recíproca de la tangente",
+    "radián": "unidad de ángulo basada en el arco"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "$y=\\arctan x$ implica $\\tan y=x$ con $y \\in \\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$",
+          "explicacion": "La definición exige dos condiciones: que la tangente del ángulo $y$ valga $x$ y que $y$ esté estrictamente entre $-90°$ y $90°$. Ejemplo: para $x=1$, $y=\\frac{\\pi}{4}$ cumple $\\tan\\frac{\\pi}{4}=1$ y está en el tramo. Una rampa que sube 3 m por cada 3 m que avanza tiene $\\tan y=1$, así que su ángulo es $y=\\arctan1=45°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\arctan x$: todos los reales",
+          "explicacion": "La tangente toma todos los valores reales en $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$, de modo que cualquier número es una razón posible. A diferencia del arco seno y el arco coseno, no limita la entrada. Ejemplo: $\\arctan1000\\approx1{,}5698$ rad (unos 89,94°) y $\\arctan(-1000)\\approx-1{,}5698$ existen sin problema."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango",
+      "puntos": [
+        {
+          "texto": "Rango de $\\arctan x$: $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$ sin extremos",
+          "explicacion": "El resultado queda entre $-90°$ y $90°$, y nunca llega a esos extremos porque la tangente no existe en ellos. Ejemplo: $\\arctan(10^{6})\\approx1{,}5707953$, un poco menor que $\\frac{\\pi}{2}\\approx1{,}5707963$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en cero",
+      "puntos": [
+        {
+          "texto": "$\\arctan0=0$",
+          "explicacion": "Se busca el ángulo del tramo con tangente 0: es 0, porque $\\tan0=0$. Es el punto por donde pasa la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √3/3",
+      "puntos": [
+        {
+          "texto": "$\\arctan\\frac{\\sqrt{3}}{3}=\\frac{\\pi}{6}$",
+          "explicacion": "Equivale a 30°, pues $\\tan30°=\\frac{\\sqrt{3}}{3}$, que es aproximadamente 0,577. Una rampa con esa pendiente forma 30° con el piso."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en uno",
+      "puntos": [
+        {
+          "texto": "$\\arctan1=\\frac{\\pi}{4}$",
+          "explicacion": "Equivale a 45°, pues $\\tan45°=1$. Una pendiente de 100 % corresponde a 45°, no a 90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √3",
+      "puntos": [
+        {
+          "texto": "$\\arctan\\sqrt{3}=\\frac{\\pi}{3}$",
+          "explicacion": "Equivale a 60°, pues $\\tan60°=\\sqrt{3}$, aproximadamente 1,732."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad",
+      "puntos": [
+        {
+          "texto": "$\\arctan(-x)=-\\arctan x$",
+          "explicacion": "Ocurre porque la tangente es impar y el tramo principal es simétrico respecto a 0. Ejemplo: $\\arctan(-1)=-\\frac{\\pi}{4}$, $\\arctan\\left(-\\sqrt{3}\\right)=-\\frac{\\pi}{3}$ y $\\arctan\\left(-\\frac{\\sqrt{3}}{3}\\right)=-\\frac{\\pi}{6}$. Basta conocer los valores positivos."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$\\arctan x$ ↑ en todo $\\mathbb{R}$",
+          "explicacion": "Si $a<b$, entonces $\\arctan a<\\arctan b$, porque la tangente restringida crece. Ejemplo: $\\frac{\\sqrt{3}}{3}<1<\\sqrt{3}$ da $\\frac{\\pi}{6}<\\frac{\\pi}{4}<\\frac{\\pi}{3}$, es decir $30°<45°<60°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Asíntota hacia la derecha",
+      "puntos": [
+        {
+          "texto": "Si $x$ crece, $\\arctan x$ se acerca a $\\frac{\\pi}{2}$",
+          "explicacion": "La gráfica tiene una asíntota horizontal en $y=\\frac{\\pi}{2}$ hacia la derecha: nunca llega a ella, aunque se acerca cada vez más. Ejemplo: $\\arctan10\\approx1{,}4711$, $\\arctan100\\approx1{,}5608$ y $\\arctan1000\\approx1{,}5698$, cada vez más cerca de 1,5708."
+        }
+      ]
+    },
+    {
+      "titulo": "Asíntota hacia la izquierda",
+      "puntos": [
+        {
+          "texto": "Si $x$ decrece, $\\arctan x$ se acerca a $-\\frac{\\pi}{2}$",
+          "explicacion": "La gráfica tiene una asíntota horizontal en $y=-\\frac{\\pi}{2}$ hacia la izquierda. Ejemplo: $\\arctan(-10)\\approx-1{,}4711$, $\\arctan(-100)\\approx-1{,}5608$ y $\\arctan(-1000)\\approx-1{,}5698$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica",
+      "puntos": [
+        {
+          "texto": "Gráfica de $y=\\arctan x$: curva creciente en forma de S",
+          "explicacion": "Pasa por $(-1,-\\frac{\\pi}{4})$, $(0,0)$ y $\\left(1,\\frac{\\pi}{4}\\right)$, y se pega a las rectas $y=\\pm\\frac{\\pi}{2}$ sin tocarlas. Es simétrica respecto al origen. Se obtiene reflejando respecto a $y=x$ la rama central de la tangente."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de arco tangente",
+      "puntos": [
+        {
+          "texto": "$\\tan(\\arctan x)=x$ para todo real $x$",
+          "explicacion": "El ángulo hallado, evaluado en la tangente, devuelve la razón de partida, sin restricción alguna sobre $x$. Ejemplo: $\\tan(\\arctan(-7))=-7$ y $\\tan(\\arctan0{,}25)=0{,}25$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arco tangente de tangente",
+      "puntos": [
+        {
+          "texto": "$\\arctan(\\tan x)=x$ para $-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}$",
+          "explicacion": "Solo se recupera el ángulo original si ya está en el tramo principal. Ejemplo: $\\arctan\\left(\\tan\\frac{\\pi}{6}\\right)=\\arctan\\frac{\\sqrt{3}}{3}=\\frac{\\pi}{6}$ y $\\arctan\\left(\\tan\\left(-\\frac{\\pi}{4}\\right)\\right)=-\\frac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos fuera del tramo",
+      "puntos": [
+        {
+          "texto": "$\\arctan(\\tan x)=x-n\\pi$ con $x-n\\pi$ en el tramo principal",
+          "explicacion": "Como la tangente tiene periodo $\\pi$, se resta el múltiplo de $\\pi$ que lleve al ángulo a $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$. Ejemplos: $x=\\frac{3\\pi}{4}$ con $n=1$ da $-\\frac{\\pi}{4}$, y se comprueba con $\\tan\\frac{3\\pi}{4}=-1$ y $\\arctan(-1)=-\\frac{\\pi}{4}$; $x=\\frac{5\\pi}{4}$ da $\\frac{\\pi}{4}$; $x=\\frac{7\\pi}{4}$ con $n=2$ da $-\\frac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno de arco tangente",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(\\arctan x)=\\frac{x}{\\sqrt{1+x^{2}}}$",
+          "explicacion": "Se construye un triángulo rectángulo con catetos $x$ y 1, de hipotenusa $\\sqrt{1+x^{2}}$; el seno del ángulo es el cateto opuesto entre la hipotenusa, y el signo lo da $x$. Ejemplo: con $x=\\frac{3}{4}$, la hipotenusa es $\\sqrt{1+\\frac{9}{16}}=\\frac{5}{4}$ y $\\operatorname{sen}(\\arctan x)=\\frac{3/4}{5/4}=\\frac{3}{5}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno de arco tangente",
+      "puntos": [
+        {
+          "texto": "$\\cos(\\arctan x)=\\frac{1}{\\sqrt{1+x^{2}}}$",
+          "explicacion": "Con el mismo triángulo de catetos $x$ y 1, el coseno es el cateto adyacente entre la hipotenusa; es positivo porque el ángulo está entre $-90°$ y $90°$. Ejemplo: con $x=\\frac{3}{4}$, $\\cos(\\arctan x)=\\frac{1}{5/4}=\\frac{4}{5}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Recíproco positivo",
+      "puntos": [
+        {
+          "texto": "$\\arctan x+\\arctan\\frac{1}{x}=\\frac{\\pi}{2}$ para $x > 0$",
+          "explicacion": "Para $x>0$ los dos ángulos son agudos y complementarios. Ejemplo: con $x=\\sqrt{3}$, $\\arctan\\sqrt{3}+\\arctan\\frac{1}{\\sqrt{3}}=\\frac{\\pi}{3}+\\frac{\\pi}{6}=\\frac{\\pi}{2}$."
+        },
+        {
+          "texto": "Deducción de $\\arctan x+\\arctan\\frac{1}{x}=\\frac{\\pi}{2}$",
+          "explicacion": "Sea $\\theta=\\arctan x$ con $x>0$, así que $\\theta\\in\\left(0,\\frac{\\pi}{2}\\right)$ y $\\tan\\theta=x$. Como $\\tan\\left(\\frac{\\pi}{2}-\\theta\\right)=\\frac{1}{\\tan\\theta}=\\frac{1}{x}$ y $\\frac{\\pi}{2}-\\theta$ queda en $\\left(0,\\frac{\\pi}{2}\\right)$, ese ángulo es $\\arctan\\frac{1}{x}$. Al sumar se obtiene $\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Recíproco negativo",
+      "puntos": [
+        {
+          "texto": "$\\arctan x+\\arctan\\frac{1}{x}=-\\frac{\\pi}{2}$ para $x < 0$",
+          "explicacion": "Por la paridad, para $x<0$ ambos ángulos son negativos y su suma es el opuesto del caso positivo. Ejemplo: con $x=-1$, $\\arctan(-1)+\\arctan(-1)=-\\frac{\\pi}{4}-\\frac{\\pi}{4}=-\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma si ab<1",
+      "puntos": [
+        {
+          "texto": "$\\arctan a+\\arctan b=\\arctan\\frac{a+b}{1-ab}$ si $ab < 1$",
+          "explicacion": "Es la fórmula de la suma de tangentes aplicada a los ángulos $\\arctan a$ y $\\arctan b$; la condición $ab<1$ asegura que la suma quede dentro del tramo principal. Ejemplo: con $a=\\frac{1}{2}$ y $b=\\frac{1}{3}$, $ab=\\frac{1}{6}<1$ y $\\frac{a+b}{1-ab}=\\frac{5/6}{5/6}=1$, así que $\\arctan\\frac{1}{2}+\\arctan\\frac{1}{3}=\\arctan1=\\frac{\\pi}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma si ab>1",
+      "puntos": [
+        {
+          "texto": "$\\arctan a+\\arctan b=\\pi+\\arctan\\frac{a+b}{1-ab}$ si $ab > 1$ y $a > 0$",
+          "explicacion": "Cuando ambos son positivos y $ab>1$, la suma de los ángulos supera $\\frac{\\pi}{2}$ y la fórmula sola da un ángulo negativo; se corrige sumando $\\pi$. Ejemplo: con $a=b=2$, $\\frac{a+b}{1-ab}=\\frac{4}{-3}$ y $\\arctan\\left(-\\frac{4}{3}\\right)\\approx-0{,}9273$; entonces la suma es $\\pi-0{,}9273\\approx2{,}2143$, que coincide con $2\\cdot\\arctan2\\approx2\\cdot1{,}1071$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de arcos tangente",
+      "puntos": [
+        {
+          "texto": "$\\arctan a=\\arctan b$ implica $a=b$",
+          "explicacion": "Como el arco tangente es uno a uno y no restringe la entrada, basta igualar los argumentos. Ejemplo: $\\arctan(2x-1)=\\arctan(x+3)$ da $2x-1=x+3$ y $x=4$; ambos argumentos valen 7 y $\\arctan7=\\arctan7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio con una fracción",
+      "puntos": [
+        {
+          "texto": "$\\arctan(g(x))$ existe donde $g(x)$ existe",
+          "explicacion": "El arco tangente no añade restricciones; solo importan las del argumento. Ejemplo: en $\\arctan\\left(\\frac{1}{x}\\right)$ el dominio es $x\\neq0$, y en $\\arctan(2x-1)$ es todo $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor con la recíproca",
+      "puntos": [
+        {
+          "texto": "$\\arctan x \\neq \\frac{1}{\\tan x}$",
+          "explicacion": "El arco tangente devuelve un ángulo; la recíproca de la tangente es la cotangente. Ejemplo con $x=1$ radián: $\\arctan1=\\frac{\\pi}{4}\\approx0{,}7854$, mientras que $\\frac{1}{\\tan1}\\approx\\frac{1}{1{,}5574}\\approx0{,}642$, calculando la tangente en radianes."
+        }
+      ]
+    }
+  ]
+}

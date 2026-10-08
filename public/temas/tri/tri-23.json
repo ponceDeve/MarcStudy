@@ -1,0 +1,153 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos mayores que una vuelta",
+  "glosario": {
+    "Vuelta": "Giro completo de trescientos sesenta grados",
+    "Cociente": "Resultado entero de una división",
+    "Residuo": "Sobrante de una división entera",
+    "Lado final": "Semirrecta donde termina el giro",
+    "Lado inicial": "Semirrecta donde empieza el giro",
+    "Cuadrante": "Cada una de cuatro regiones del plano",
+    "Ángulo agudo": "Ángulo entre cero y noventa grados",
+    "Ángulo cuadrantal": "Ángulo múltiplo de noventa grados",
+    "Razón trigonométrica": "Cociente entre dos medidas asociadas al ángulo",
+    "Radián": "Unidad angular; una vuelta mide dos pi",
+    "Reducción": "Escribir una razón con ángulo agudo",
+    "Abscisa": "Coordenada horizontal de un punto",
+    "Ordenada": "Coordenada vertical de un punto",
+    "Radio vector": "Distancia del origen al punto"
+  },
+  "theory": [
+    {
+      "titulo": "Mayor que una vuelta",
+      "puntos": [
+        {
+          "texto": "Ángulo mayor que una vuelta ⇒ $\\theta > 360^\\circ$",
+          "explicacion": "Aquí $\\theta$ denota el ángulo dado. El lado inicial gira más de una vuelta completa antes de detenerse, de modo que el valor numérico es grande aunque el lado final quede en un cuadrante o sobre un eje, como en cualquier otro ángulo. Por ejemplo, $2850^\\circ$ es mayor que $360^\\circ$ porque supera 360° en 2490°."
+        },
+        {
+          "texto": "Una vuelta = $360^\\circ$ = $2\\pi$ rad",
+          "explicacion": "La medida de una vuelta completa sirve para contar cuántas vueltas contiene un ángulo grande, en grados o en radianes. Ejemplo con 4 vueltas: en grados son $4 \\times 360^\\circ = 1440^\\circ$ y en radianes son $4 \\times 2\\pi = 8\\pi$. Una rueda que da 4 vueltas completas gira entonces $1440^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vueltas y residuo",
+      "puntos": [
+        {
+          "texto": "$\\theta = 360^\\circ n + r$, con $n \\ge 1$ entero",
+          "explicacion": "Todo ángulo mayor que una vuelta se descompone en $n$ vueltas completas más un sobrante $r$ (el residuo). Ejemplo con $\\theta = 2850^\\circ$: como $360 \\times 7 = 2520$ cabe y $360 \\times 8 = 2880$ ya se pasa, entonces $n = 7$ y $r = 2850 - 2520 = 330$. Así $2850^\\circ = 360^\\circ \\times 7 + 330^\\circ$. Para una rueda, significa 7 vueltas completas y 330° más de giro."
+        },
+        {
+          "texto": "$n$ = cociente entero de $\\theta$ entre $360^\\circ$",
+          "explicacion": "El cociente cuenta cuántas veces cabe una vuelta completa en el ángulo, sin tomar decimales. Ejemplo con $\\theta = 1240^\\circ$: $360 \\times 3 = 1080$ cabe y $360 \\times 4 = 1440$ no cabe, entonces $n = 3$. Ese 3 solo cuenta vueltas y no es el ángulo reducido."
+        },
+        {
+          "texto": "$r$ = residuo de dividir $\\theta$ entre $360^\\circ$",
+          "explicacion": "El residuo es lo que sobra después de quitar las $n$ vueltas completas. Ejemplo con $\\theta = 1240^\\circ$ y $n = 3$: $r = 1240 - 360 \\times 3 = 1240 - 1080 = 160$, luego $r = 160^\\circ$. El residuo es el ángulo que realmente determina la razón."
+        },
+        {
+          "texto": "Residuo ⇒ $0^\\circ \\le r < 360^\\circ$",
+          "explicacion": "El residuo nunca llega a 360° porque, de ser así, aún cabría otra vuelta completa y habría que contarla en $n$. Puede valer 0° cuando el ángulo es múltiplo exacto de 360°. Ejemplo: en $3620^\\circ$ caben 10 vueltas ($3600^\\circ$) y sobran $20^\\circ$, y $20^\\circ < 360^\\circ$."
+        },
+        {
+          "texto": "Lado final de $\\theta$ = lado final de $r$",
+          "explicacion": "Cada vuelta completa regresa el giro a su posición inicial, así que las $n$ vueltas no cambian dónde termina el lado final; solo importa el sobrante $r$. Ejemplo con $\\theta = 1470^\\circ$: $1470 = 360 \\times 4 + 30$, es decir 4 vueltas completas y $30^\\circ$, y el lado final queda donde termina un ángulo de $30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones tras vueltas",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}(360^\\circ n + r) = \\text{sen}\\,r$",
+          "explicacion": "La ordenada del punto del lado final no cambia al sumar vueltas completas, y el seno depende solo de ella y del radio. Ejemplo con $\\theta = 1470^\\circ$: $\\theta \\div 360$ da cociente 4 y residuo 30, pues $1440 + 30 = 1470$, es decir $1470^\\circ = 360^\\circ \\times 4 + 30^\\circ$. Se sustituye: $\\text{sen}(1470^\\circ) = \\text{sen}(30^\\circ)$. Como $\\text{sen}(30^\\circ) = \\frac{1}{2}$, el resultado es $\\text{sen}(1470^\\circ) = \\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\cos(360^\\circ n + r) = \\cos\\,r$",
+          "explicacion": "La abscisa del punto del lado final no cambia al sumar vueltas completas, y el coseno depende solo de ella y del radio. Ejemplo con $\\theta = 780^\\circ$: $\\theta \\div 360$ da cociente 2 y residuo 60, pues $720 + 60 = 780$, es decir $780^\\circ = 360^\\circ \\times 2 + 60^\\circ$. Se sustituye: $\\cos(780^\\circ) = \\cos(60^\\circ)$. Como $\\cos(60^\\circ) = \\frac{1}{2}$, el resultado es $\\cos(780^\\circ) = \\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\tan(360^\\circ n + r) = \\tan\\,r$",
+          "explicacion": "Abscisa y ordenada del punto del lado final no cambian al sumar vueltas completas, y la tangente es su cociente. Ejemplo con $\\theta = 405^\\circ$: $\\theta \\div 360$ da cociente 1 y residuo 45, pues $360 + 45 = 405$, es decir $405^\\circ = 360^\\circ \\times 1 + 45^\\circ$. Se sustituye: $\\tan(405^\\circ) = \\tan(45^\\circ)$. Como $\\tan(45^\\circ) = 1$, el resultado es $\\tan(405^\\circ) = 1$."
+        },
+        {
+          "texto": "$\\cot(360^\\circ n + r) = \\cot\\,r$",
+          "explicacion": "Abscisa y ordenada del punto del lado final no cambian al sumar vueltas completas, y la cotangente es su cociente. Ejemplo con $\\theta = 750^\\circ$: $\\theta \\div 360$ da cociente 2 y residuo 30, pues $720 + 30 = 750$, es decir $750^\\circ = 360^\\circ \\times 2 + 30^\\circ$. Se sustituye: $\\cot(750^\\circ) = \\cot(30^\\circ)$. Como $\\cot(30^\\circ) = \\sqrt{3}$, el resultado es $\\cot(750^\\circ) = \\sqrt{3}$."
+        },
+        {
+          "texto": "$\\sec(360^\\circ n + r) = \\sec\\,r$",
+          "explicacion": "La abscisa y el radio del punto del lado final no cambian al sumar vueltas completas, y la secante depende solo de ellos. Ejemplo con $\\theta = 1140^\\circ$: $\\theta \\div 360$ da cociente 3 y residuo 60, pues $1080 + 60 = 1140$, es decir $1140^\\circ = 360^\\circ \\times 3 + 60^\\circ$. Se sustituye: $\\sec(1140^\\circ) = \\sec(60^\\circ)$. Como $\\sec(60^\\circ) = 2$, el resultado es $\\sec(1140^\\circ) = 2$."
+        },
+        {
+          "texto": "$\\csc(360^\\circ n + r) = \\csc\\,r$",
+          "explicacion": "La ordenada y el radio del punto del lado final no cambian al sumar vueltas completas, y la cosecante depende solo de ellos. Ejemplo con $\\theta = 2205^\\circ$: $\\theta \\div 360$ da cociente 6 y residuo 45, pues $2160 + 45 = 2205$, es decir $2205^\\circ = 360^\\circ \\times 6 + 45^\\circ$. Se sustituye: $\\csc(2205^\\circ) = \\csc(45^\\circ)$. Como $\\csc(45^\\circ) = \\sqrt{2}$, el resultado es $\\csc(2205^\\circ) = \\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo del residuo",
+      "puntos": [
+        {
+          "texto": "Dividir $\\theta$ entre $360^\\circ$ ⇒ razón de $r$",
+          "explicacion": "Procedimiento general: se divide el ángulo entre 360° sin decimales, se toma el residuo $r$ y la razón buscada es la misma que la de $r$. Ejemplo con $\\text{sen}\\,3285^\\circ$: $360 \\times 9 = 3240$ cabe y $360 \\times 10 = 3600$ no; entonces $n = 9$ y $r = 3285 - 3240 = 45$. Resulta $\\text{sen}\\,3285^\\circ = \\text{sen}\\,45^\\circ = \\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "Múltiplo de $360^\\circ$ ⇒ razones de $0^\\circ$",
+          "explicacion": "Si el ángulo contiene solo vueltas completas, el residuo es 0° y las razones son las del lado inicial. Ejemplo con $1080^\\circ$: $360 \\times 3 = 1080$, entonces $r = 0$. Así $\\text{sen}\\,1080^\\circ = \\text{sen}\\,0^\\circ = 0$ y $\\cos\\,1080^\\circ = \\cos\\,0^\\circ = 1$."
+        },
+        {
+          "texto": "Residuo $90^\\circ$ ⇒ razones de $90^\\circ$",
+          "explicacion": "Cuando el residuo es un ángulo cuadrantal, las razones se leen del eje y no se reducen con un ángulo agudo. Ejemplo con $810^\\circ$: $360 \\times 2 = 720$ y $810 - 720 = 90$, entonces $r = 90^\\circ$. Así $\\text{sen}\\,810^\\circ = \\text{sen}\\,90^\\circ = 1$ y $\\cos\\,810^\\circ = \\cos\\,90^\\circ = 0$; por eso $\\tan\\,810^\\circ$ no está definida."
+        },
+        {
+          "texto": "Residuo agudo ⇒ razón directa de $r$",
+          "explicacion": "Cuando el residuo cae en el primer cuadrante todas las razones son positivas y no hace falta otra reducción. Ejemplo con $\\cos\\,1500^\\circ$: $360 \\times 4 = 1440$ y $1500 - 1440 = 60$, entonces $r = 60^\\circ$. Así $\\cos\\,1500^\\circ = \\cos\\,60^\\circ = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Residuo mayor que $90^\\circ$ ⇒ reducir además $r$",
+          "explicacion": "Si el residuo cae en el segundo, tercer o cuarto cuadrante, tras quitar las vueltas falta aplicar la reducción al primer cuadrante, que es otro tema del temario. Ejemplo con $\\text{sen}\\,870^\\circ$: $360 \\times 2 = 720$ y $870 - 720 = 150$, entonces $r = 150^\\circ$. Como $150^\\circ = 180^\\circ - 30^\\circ$ y el seno es positivo en el segundo cuadrante, $\\text{sen}\\,870^\\circ = \\text{sen}\\,30^\\circ = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso en radianes",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}(2\\pi n + r) = \\text{sen}\\,r$ en radianes",
+          "explicacion": "En radianes una vuelta mide $2\\pi$, así que quitar $n$ vueltas es restar $2\\pi n$ y la razón no cambia, igual que con 360°. Ejemplo con $\\text{sen}\\,\\frac{13\\pi}{6}$: como $\\frac{13\\pi}{6} = \\frac{12\\pi}{6} + \\frac{\\pi}{6} = 2\\pi + \\frac{\\pi}{6}$, se tiene $n = 1$ y $r = \\frac{\\pi}{6}$. Entonces $\\text{sen}\\,\\frac{13\\pi}{6} = \\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\frac{a\\pi}{b}$ ⇒ dividir $a$ entre $2b$",
+          "explicacion": "Una vuelta es $2\\pi = \\frac{2b\\pi}{b}$, así que cada vuelta suma $2b$ al numerador; el residuo de dividir $a$ entre $2b$ da el numerador del ángulo reducido. Ejemplo con $\\frac{25\\pi}{3}$: aquí $a = 25$ y $b = 3$, luego $2b = 6$; $25 \\div 6$ da cociente 4 y residuo 1. El ángulo reducido es $\\frac{\\pi}{3}$ y $\\cos\\,\\frac{25\\pi}{3} = \\cos\\,\\frac{\\pi}{3} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Cociente ≠ ángulo reducido",
+          "explicacion": "Un error común es usar el número de vueltas como si fuera el ángulo: el cociente solo cuenta vueltas, el ángulo reducido es el residuo. Ejemplo con $2850^\\circ$: el cociente es 7 y el residuo es $330^\\circ$, por lo que $\\text{sen}\\,2850^\\circ = \\text{sen}\\,330^\\circ = -\\frac{1}{2}$, y no $\\text{sen}\\,7^\\circ$."
+        },
+        {
+          "texto": "Media vuelta ≠ vuelta completa",
+          "explicacion": "Solo las vueltas completas de 360° dejan intactas todas las razones; sumar 180° puede cambiar el signo. Ejemplo con $r = 30^\\circ$: $\\text{sen}\\,390^\\circ = \\text{sen}\\,30^\\circ = \\frac{1}{2}$, pero $\\text{sen}\\,210^\\circ = -\\frac{1}{2}$, que es distinto."
+        },
+        {
+          "texto": "Restar una vuelta ✗ basta siempre",
+          "explicacion": "Restar 360° una sola vez deja un ángulo todavía mayor que una vuelta cuando $n \\ge 2$; hay que quitar las $n$ vueltas. Ejemplo con $1470^\\circ$: $1470 - 360 = 1110$, que sigue siendo mayor que 360°; hay que restar $360 \\times 4 = 1440$ para llegar a $30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Límite del tema",
+      "puntos": [
+        {
+          "texto": "Ángulo negativo ⇒ se trata en otro tema",
+          "explicacion": "Aquí el ángulo gira en sentido positivo y es mayor que una vuelta. Los ángulos que giran en sentido contrario tienen su propio tratamiento y no se reducen con la división entre 360° de esta forma. Por ejemplo, $-30^\\circ$ no es mayor que una vuelta."
+        }
+      ]
+    }
+  ]
+}

@@ -139,6 +139,10 @@ export default function MiEstudioPage() {
       setTeoriaVistaIndex(seccionesAgrupadas.length - 1);
     }
   }, [seccionesAgrupadas.length, teoriaVistaIndex]);
+  // Al cambiar de título/sección (flechas, botones o teclas) sube al inicio
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [teoriaVistaIndex]);
   const seccionActual = seccionesAgrupadas[teoriaVistaIndex] || null;
   const puntosEstables = useMemo(() => {
     return aplanarTeoria(topicData);
@@ -525,6 +529,8 @@ export default function MiEstudioPage() {
   }
   async function abrirTema(item) {
     window.scrollTo(0, 0);
+    // Quita el foco de cualquier botón/input para que las flechas funcionen sin hacer clic
+    document.activeElement?.blur?.();
     setLoading(true);
     setError("");
     localStorage.setItem(
@@ -2090,13 +2096,26 @@ ${teoria}`;
   }
   useEffect(() => {
     function onKeyDown(e) {
+      const tecla =
+        e.key.toLowerCase();
+      const el =
+        document.activeElement;
       const tagActivo =
-        document.activeElement &&
-        document.activeElement.tagName;
+        el && el.tagName;
+      const esCheckbox =
+        el && el.type === "checkbox";
+      // Escribiendo en un input/textarea: no tocar nada.
+      // Con checkbox o botón enfocado las flechas siguen funcionando.
       if (
-        tagActivo === "INPUT" ||
-        tagActivo === "BUTTON" ||
+        (tagActivo === "INPUT" &&
+          !esCheckbox) ||
         tagActivo === "TEXTAREA"
+      ) {
+        return;
+      }
+      if (
+        tagActivo === "BUTTON" &&
+        !tecla.startsWith("arrow")
       ) {
         return;
       }
@@ -2108,8 +2127,6 @@ ${teoria}`;
       ) {
         return;
       }
-      const tecla =
-        e.key.toLowerCase();
       // =========================
       // NAVEGACIÓN DE TEORÍA
       // =========================
@@ -2244,13 +2261,26 @@ ${teoria}`;
   ]);
   useEffect(() => {
     function onKeyDown(e) {
+      const tecla =
+        e.key.toLowerCase();
+      const el =
+        document.activeElement;
       const tagActivo =
-        document.activeElement &&
-        document.activeElement.tagName;
+        el && el.tagName;
+      const esCheckbox =
+        el && el.type === "checkbox";
+      // Escribiendo en un input/textarea: no tocar nada.
+      // Con checkbox o botón enfocado las flechas siguen funcionando.
       if (
-        tagActivo === "INPUT" ||
-        tagActivo === "BUTTON" ||
+        (tagActivo === "INPUT" &&
+          !esCheckbox) ||
         tagActivo === "TEXTAREA"
+      ) {
+        return;
+      }
+      if (
+        tagActivo === "BUTTON" &&
+        !tecla.startsWith("arrow")
       ) {
         return;
       }
@@ -2262,8 +2292,6 @@ ${teoria}`;
       ) {
         return;
       }
-      const tecla =
-        e.key.toLowerCase();
       // =========================
       // NAVEGACIÓN DE TEORÍA
       // =========================
@@ -3300,6 +3328,23 @@ ${teoria}`;
                                         />
                                       </label>
                                     </div>
+                                    <button
+                                      type="button"
+                                      className="teoria-punto__juego"
+                                      onClick={() =>
+                                        elegirModoEstudio(
+                                          "solo_preguntas",
+                                          {
+                                            seleccionEspecifica:
+                                              [punto.id]
+                                          }
+                                        )
+                                      }
+                                      title="Preguntas de este texto"
+                                      aria-label="Preguntas de este texto"
+                                    >
+                                      <i className="fa-solid fa-gamepad" />
+                                    </button>
                                   </div>
                                   {punto.imagen && (
                                     <div className="teoria-punto__imagen-wrap">

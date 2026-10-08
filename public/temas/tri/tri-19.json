@@ -1,0 +1,592 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos cuadrantales",
+  "glosario": {
+    "Ángulo cuadrantal": "Lado final sobre un eje coordenado.",
+    "Posición normal": "Vértice en origen, lado inicial en eje x.",
+    "Lado inicial": "Semirrecta desde donde empieza el giro.",
+    "Lado final": "Posición donde termina el giro del ángulo.",
+    "Semirrecta": "Parte de recta con un solo extremo.",
+    "Semieje": "Mitad de un eje, desde el origen.",
+    "Cuadrante": "Cada una de las cuatro regiones del plano.",
+    "Sentido antihorario": "Giro contrario al movimiento del reloj.",
+    "Sentido horario": "Giro en el mismo sentido del reloj.",
+    "Abscisa": "Coordenada horizontal x de un punto.",
+    "Ordenada": "Coordenada vertical y de un punto.",
+    "Radio vector": "Distancia del origen al punto, siempre positiva.",
+    "Razón trigonométrica": "Cociente entre coordenadas y radio vector.",
+    "Razón indefinida": "Razón con denominador cero; carece de valor.",
+    "Radián": "Unidad de ángulo; π rad = 180°.",
+    "Ángulo coterminal": "Ángulos con el mismo lado final.",
+    "Vuelta": "Giro completo de 360°.",
+    "Origen": "Punto de coordenadas (0; 0).",
+    "Entero": "Número sin parte decimal: positivo, negativo o cero."
+  },
+  "theory": [
+    {
+      "titulo": "Posición normal",
+      "puntos": [
+        {
+          "texto": "«Posición normal» ✓ vértice en el origen y lado inicial en X positivo",
+          "explicacion": "Fijar siempre la misma referencia permite comparar cualquier giro. El lado inicial es la semirrecta que sale del origen hacia la derecha (semieje X positivo) y el lado final es la semirrecta a la que se llega después de girar. La letra θ (theta) representa la medida del ángulo. Como una manecilla de reloj que parte de la posición de las 3 en punto: el lugar donde se detiene después de girar es el lado final."
+        },
+        {
+          "texto": "Giro «antihorario» → ángulo positivo",
+          "explicacion": "El sentido contrario al movimiento de las agujas del reloj es el sentido positivo por convención. Ejemplo: una manecilla que va de las 3 a las 12 en sentido contrario al reloj recorre un cuarto de vuelta y mide +90°."
+        },
+        {
+          "texto": "Giro «horario» → ángulo negativo",
+          "explicacion": "Si el giro sigue el sentido de las agujas del reloj, la medida lleva signo negativo. Ejemplo: una manecilla que va de las 3 a las 6 recorre un cuarto de vuelta en sentido horario y mide -90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo cuadrantal",
+      "puntos": [
+        {
+          "texto": "«Ángulo cuadrantal» ⇒ lado final sobre un eje coordenado",
+          "explicacion": "Para decidirlo se gira el lado inicial hasta su posición final y se observa dónde queda. Si cae exactamente sobre el eje X o sobre el eje Y, el ángulo es cuadrantal; si queda entre los ejes, no lo es. Ejemplos: 90° termina sobre el eje Y, por eso es cuadrantal; 45° termina entre los ejes y no lo es; 200° tampoco, porque pasa el semieje X negativo y queda debajo de él."
+        }
+      ]
+    },
+    {
+      "titulo": "Frontera de cuadrantes",
+      "puntos": [
+        {
+          "texto": "«Cuadrantal» ✗ cuadrante: queda en la frontera",
+          "explicacion": "Cada cuadrante es una región abierta entre dos semiejes: primer cuadrante 0° < θ < 90°, segundo 90° < θ < 180°, tercero 180° < θ < 270° y cuarto 270° < θ < 360°. Las desigualdades son estrictas, así que 90° no cumple 0° < θ < 90° ni 90° < θ < 180°: está justo en el límite entre ambos. Lo mismo ocurre con 0°, 180°, 270° y 360°."
+        }
+      ]
+    },
+    {
+      "titulo": "Semiejes posibles",
+      "puntos": [
+        {
+          "texto": "Cuatro semiejes posibles para un lado final cuadrantal",
+          "explicacion": "Los ejes cortan el plano en cuatro semirrectas que salen del origen: X positivo (derecha), Y positivo (arriba), X negativo (izquierda) e Y negativo (abajo). Un ángulo cuadrantal termina exactamente en una de ellas, y en cuál depende de cuántos cuartos de vuelta gire. Ejemplo: tres cuartos de vuelta antihorarios (270°) terminan en el semieje Y negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma general",
+      "puntos": [
+        {
+          "texto": "«Cuadrantal» = 90° × n, con n entero",
+          "explicacion": "Cada cuarto de vuelta de 90° lleva el lado final de un eje al siguiente, así que cualquier número entero de cuartos de vuelta termina sobre un eje; n es ese número de cuartos de vuelta y puede ser positivo, negativo o cero. Ejemplos: n = 3 da 90° × 3 = 270°; n = -2 da 90° × (-2) = -180°; n = 5 da 90° × 5 = 450°; n = 0 da 0°. Para comprobar un ángulo dado se divide entre 90°: 540° ÷ 90° = 6, que es entero, así que 540° es cuadrantal; 135° ÷ 90° = 1,5, que no es entero, así que 135° no lo es."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma en radianes",
+      "puntos": [
+        {
+          "texto": "«Cuadrantal» = $\\frac{\\pi}{2}$ × n radianes, con n entero",
+          "explicacion": "Como $\\pi$ rad = 180°, un cuarto de vuelta de 90° mide $\\frac{\\pi}{2}$ radianes (rad); por eso la regla en radianes usa múltiplos enteros de $\\frac{\\pi}{2}$. Ejemplos: n = 3 da $\\frac{\\pi}{2}$ × 3 = $\\frac{3\\pi}{2}$; n = -1 da $-\\frac{\\pi}{2}$; n = 6 da $3\\pi$. Para comprobar: $\\frac{5\\pi}{6}$ ÷ $\\frac{\\pi}{2}$ = $\\frac{5}{3}$, que no es entero, así que $\\frac{5\\pi}{6}$ no es cuadrantal."
+        }
+      ]
+    },
+    {
+      "titulo": "Eje según n",
+      "puntos": [
+        {
+          "texto": "n par ⇒ lado final sobre el eje X",
+          "explicacion": "Un número par de cuartos de vuelta equivale a un número entero de medias vueltas, y cada media vuelta lleva el lado final de un lado del eje X al lado opuesto del mismo eje. Ejemplos: 540° = 90° × 6 con n = 6 par termina sobre el eje X; 180° = 90° × 2 también."
+        },
+        {
+          "texto": "n impar ⇒ lado final sobre el eje Y",
+          "explicacion": "Un solo cuarto de vuelta lleva el lado final del eje X al eje Y, y sumar un número par de cuartos más mantiene el eje Y. Ejemplos: 270° = 90° × 3 con n = 3 impar termina sobre el eje Y; 450° = 90° × 5 con n = 5 también; en cambio 360° = 90° × 4 con n = 4 par queda sobre el eje X."
+        }
+      ]
+    },
+    {
+      "titulo": "Semieje según n",
+      "puntos": [
+        {
+          "texto": "n = 4k ⇒ semieje X positivo, con k entero",
+          "explicacion": "Cuatro cuartos de vuelta completan una vuelta y el lado final regresa al lado inicial, así que la posición se repite cada 4 unidades de n; k es un número entero cualquiera. Ejemplos: 720° = 90° × 8 con 8 = 4 × 2 termina en X positivo; también 0° (n = 0) y -360° (n = -4 = 4 × (-1))."
+        },
+        {
+          "texto": "n = 4k + 1 ⇒ semieje Y positivo, con k entero",
+          "explicacion": "Un cuarto de vuelta lleva de X positivo a Y positivo, y las vueltas completas k no cambian la posición. Ejemplos: 450° = 90° × 5 con 5 = 4 × 1 + 1 termina en Y positivo; también -270° = 90° × (-3) con -3 = 4 × (-1) + 1."
+        },
+        {
+          "texto": "n = 4k + 2 ⇒ semieje X negativo, con k entero",
+          "explicacion": "Media vuelta lleva de X positivo a X negativo, y las vueltas completas k no cambian la posición. Ejemplos: 540° = 90° × 6 con 6 = 4 × 1 + 2 termina en X negativo; también -180° = 90° × (-2) con -2 = 4 × (-1) + 2."
+        },
+        {
+          "texto": "n = 4k + 3 ⇒ semieje Y negativo, con k entero",
+          "explicacion": "Tres cuartos de vuelta llevan de X positivo a Y negativo, y las vueltas completas k no cambian la posición. Ejemplos: 630° = 90° × 7 con 7 = 4 × 1 + 3 termina en Y negativo; también -90° = 90° × (-1) con -1 = 4 × (-1) + 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Punto del lado final",
+      "puntos": [
+        {
+          "texto": "«Punto» P(x; y) sobre el lado final",
+          "explicacion": "Cualquier punto del lado final distinto del origen sirve para estudiar el ángulo. La abscisa x es la distancia horizontal con signo y la ordenada y es la distancia vertical con signo. Ejemplo: sobre el lado final de 90° está P(0; 3), con abscisa 0 y ordenada 3."
+        },
+        {
+          "texto": "Cuadrantal ⇒ una coordenada = 0 y la otra ≠ 0",
+          "explicacion": "El lado final está sobre un eje: sobre el eje X la ordenada vale 0 y sobre el eje Y la abscisa vale 0, y la otra coordenada no puede ser 0 porque el punto no es el origen. Ejemplos: P(-5; 0) está sobre el eje X; P(0; -2) está sobre el eje Y."
+        }
+      ]
+    },
+    {
+      "titulo": "Radio vector",
+      "puntos": [
+        {
+          "texto": "«Radio vector» r = $\\sqrt{x^2 + y^2}$ > 0",
+          "explicacion": "Es la distancia del origen al punto P(x; y), que se obtiene por el teorema de Pitágoras con catetos de longitud |x| y |y|; siempre es positivo porque el punto no es el origen. Ejemplos: P(0; -5) da r = $\\sqrt{0^2 + (-5)^2} = \\sqrt{25} = 5$; P(3; 4) da r = $\\sqrt{9 + 16} = 5$."
+        },
+        {
+          "texto": "Cuadrantal ⇒ r = coordenada no nula sin su signo",
+          "explicacion": "Si una coordenada es 0, la raíz $\\sqrt{x^2 + y^2}$ queda como la raíz del cuadrado de la otra coordenada, que es esa coordenada sin signo. Ejemplos: P(-7; 0) da r = $\\sqrt{49} = 7$; P(0; -2) da r = $\\sqrt{4} = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ubicación del lado final",
+      "puntos": [
+        {
+          "texto": "«0°» ⇒ lado final sobre X positivo",
+          "explicacion": "Sin giro, el lado final coincide con el lado inicial; sus puntos tienen la forma P(r; 0) con r > 0. Ejemplo: P(4; 0), con r = 4."
+        },
+        {
+          "texto": "«90°» ⇒ lado final sobre Y positivo",
+          "explicacion": "Un cuarto de vuelta antihorario sube el lado inicial hasta el eje Y; sus puntos tienen la forma P(0; r) con r > 0. Ejemplo: P(0; 3), con r = 3."
+        },
+        {
+          "texto": "«180°» ⇒ lado final sobre X negativo",
+          "explicacion": "Media vuelta lleva el lado inicial al lado opuesto del eje X; sus puntos tienen la forma P(-r; 0) con r > 0. Ejemplo: P(-5; 0), con r = 5."
+        },
+        {
+          "texto": "«270°» ⇒ lado final sobre Y negativo",
+          "explicacion": "Tres cuartos de vuelta llevan el lado inicial hasta abajo; sus puntos tienen la forma P(0; -r) con r > 0. Ejemplo: P(0; -2), con r = 2."
+        },
+        {
+          "texto": "«360°» ⇒ lado final sobre X positivo tras una vuelta",
+          "explicacion": "Una vuelta completa devuelve el lado final al lado inicial; sus puntos son los mismos que los de 0°, de la forma P(r; 0). Ejemplo: P(6; 0), con r = 6. Las medidas 0° y 360° son distintas, pero el lado final es el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrantales de una vuelta",
+      "puntos": [
+        {
+          "texto": "«Cuadrantales» de una vuelta: 0°, 90°, 180°, 270° y 360°",
+          "explicacion": "Son los valores de 90° × n con n = 0, 1, 2, 3 y 4, que recorren las cuatro direcciones del plano. Imagina una manecilla que parte de las 3 y gira en sentido contrario al reloj: a 90° apunta a las 12, a 180° a las 9, a 270° a las 6 y a 360° vuelve a las 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalencia en radianes",
+      "puntos": [
+        {
+          "texto": "«0°» = 0 rad",
+          "explicacion": "Se multiplica la medida en grados por $\\frac{\\pi}{180}$, porque $\\pi$ rad = 180°: $0^\\circ \\cdot \\frac{\\pi}{180} = 0$ rad. Un ángulo sin giro mide cero en cualquier unidad."
+        },
+        {
+          "texto": "«90°» = $\\frac{\\pi}{2}$ rad",
+          "explicacion": "Se multiplica por $\\frac{\\pi}{180}$: $90^\\circ \\cdot \\frac{\\pi}{180} = \\frac{90\\pi}{180} = \\frac{\\pi}{2}$ rad. Es la mitad de $\\pi$ rad porque 90° es la mitad de 180°."
+        },
+        {
+          "texto": "«180°» = $\\pi$ rad",
+          "explicacion": "Es la equivalencia base de la conversión: $180^\\circ \\cdot \\frac{\\pi}{180} = \\pi$ rad. Media vuelta mide $\\pi$ rad."
+        },
+        {
+          "texto": "«270°» = $\\frac{3\\pi}{2}$ rad",
+          "explicacion": "Se multiplica por $\\frac{\\pi}{180}$: $270^\\circ \\cdot \\frac{\\pi}{180} = \\frac{270\\pi}{180} = \\frac{3\\pi}{2}$ rad. Son tres cuartos de vuelta, cada uno de $\\frac{\\pi}{2}$ rad."
+        },
+        {
+          "texto": "«360°» = $2\\pi$ rad",
+          "explicacion": "Se multiplica por $\\frac{\\pi}{180}$: $360^\\circ \\cdot \\frac{\\pi}{180} = 2\\pi$ rad. Una vuelta completa son dos medias vueltas de $\\pi$ rad."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)» de θ = $\\frac{y}{r}$",
+          "explicacion": "Relaciona la ordenada con la distancia al origen: indica cuánto sube o baja el punto respecto de su distancia al origen. Ejemplo con P(0; 3) sobre el lado final de 90°: r = 3, entonces sen 90° = $\\frac{3}{3}$ = 1. Como r nunca es 0, el seno siempre existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno",
+      "puntos": [
+        {
+          "texto": "«Coseno (cos)» de θ = $\\frac{x}{r}$",
+          "explicacion": "Relaciona la abscisa con la distancia al origen: indica cuánto se desplaza el punto a la derecha o a la izquierda respecto de su distancia al origen. Ejemplo con P(4; 0) sobre el lado final de 0°: r = 4, entonces cos 0° = $\\frac{4}{4}$ = 1. Como r nunca es 0, el coseno siempre existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente",
+      "puntos": [
+        {
+          "texto": "«Tangente (tan)» de θ = $\\frac{y}{x}$, con x ≠ 0",
+          "explicacion": "Compara la ordenada con la abscisa; solo existe si la abscisa no es 0. Ejemplo con P(-5; 0) sobre el lado final de 180°: tan 180° = $\\frac{0}{-5}$ = 0. Con abscisa 0 la división no se puede hacer."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente",
+      "puntos": [
+        {
+          "texto": "«Cotangente (cot)» de θ = $\\frac{x}{y}$, con y ≠ 0",
+          "explicacion": "Compara la abscisa con la ordenada; solo existe si la ordenada no es 0. Ejemplo con P(0; -2) sobre el lado final de 270°: cot 270° = $\\frac{0}{-2}$ = 0. Con ordenada 0 la división no se puede hacer."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante",
+      "puntos": [
+        {
+          "texto": "«Secante (sec)» de θ = $\\frac{r}{x}$, con x ≠ 0",
+          "explicacion": "Compara la distancia al origen con la abscisa; solo existe si la abscisa no es 0. Ejemplo con P(-5; 0) sobre el lado final de 180°: r = 5, entonces sec 180° = $\\frac{5}{-5}$ = -1."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecante",
+      "puntos": [
+        {
+          "texto": "«Cosecante (csc)» de θ = $\\frac{r}{y}$, con y ≠ 0",
+          "explicacion": "Compara la distancia al origen con la ordenada; solo existe si la ordenada no es 0. Ejemplo con P(0; -2) sobre el lado final de 270°: r = 2, entonces csc 270° = $\\frac{2}{-2}$ = -1."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones de 0°",
+      "puntos": [
+        {
+          "texto": "«sen 0°» = 0",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, se calcula sen = $\\frac{0}{4}$ = 0. La ordenada vale 0, así que el numerador se anula y el cociente es 0. Con P(8; 0), al doble de distancia, resulta $\\frac{0}{8}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cos 0°» = 1",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, se calcula cos = $\\frac{4}{4}$ = 1. La abscisa es igual al radio vector: el punto está tan lejos en esa dirección como lo está del origen. Con P(8; 0), al doble de distancia, resulta $\\frac{8}{8}$ = 1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«tan 0°» = 0",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, se calcula tan = $\\frac{0}{4}$ = 0. La ordenada es 0 y la abscisa no, así que el cociente es 0. Con P(8; 0), al doble de distancia, resulta $\\frac{0}{8}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cot 0°» → indefinida",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, la razón queda cot = $\\frac{4}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(8; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«sec 0°» = 1",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, se calcula sec = $\\frac{4}{4}$ = 1. La abscisa tiene el mismo tamaño que el radio vector, así que el cociente es 1 o -1 según el signo de la abscisa. Con P(8; 0), al doble de distancia, resulta $\\frac{8}{8}$ = 1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«csc 0°» → indefinida",
+          "explicacion": "Con P(4; 0) sobre el lado final, r = 4, la razón queda csc = $\\frac{4}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(8; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones de 90°",
+      "puntos": [
+        {
+          "texto": "«sen 90°» = 1",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, se calcula sen = $\\frac{3}{3}$ = 1. La ordenada es igual al radio vector: el punto está tan lejos en esa dirección como lo está del origen. Con P(0; 6), al doble de distancia, resulta $\\frac{6}{6}$ = 1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cos 90°» = 0",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, se calcula cos = $\\frac{0}{3}$ = 0. La abscisa vale 0, así que el numerador se anula y el cociente es 0. Con P(0; 6), al doble de distancia, resulta $\\frac{0}{6}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«tan 90°» → indefinida",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, la razón queda tan = $\\frac{3}{0}$, una división entre 0 que no existe: la abscisa vale 0 porque el punto está sobre el eje Y. No se escribe «infinito»: la razón simplemente carece de valor. Con P(0; 6), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«cot 90°» = 0",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, se calcula cot = $\\frac{0}{3}$ = 0. La abscisa es 0 y la ordenada no, así que el cociente es 0. Con P(0; 6), al doble de distancia, resulta $\\frac{0}{6}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«sec 90°» → indefinida",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, la razón queda sec = $\\frac{3}{0}$, una división entre 0 que no existe: la abscisa vale 0 porque el punto está sobre el eje Y. No se escribe «infinito»: la razón simplemente carece de valor. Con P(0; 6), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«csc 90°» = 1",
+          "explicacion": "Con P(0; 3) sobre el lado final, r = 3, se calcula csc = $\\frac{3}{3}$ = 1. La ordenada tiene el mismo tamaño que el radio vector, así que el cociente es 1 o -1 según el signo de la ordenada. Con P(0; 6), al doble de distancia, resulta $\\frac{6}{6}$ = 1: el valor no depende del punto elegido."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones de 180°",
+      "puntos": [
+        {
+          "texto": "«sen 180°» = 0",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, se calcula sen = $\\frac{0}{5}$ = 0. La ordenada vale 0, así que el numerador se anula y el cociente es 0. Con P(-10; 0), al doble de distancia, resulta $\\frac{0}{10}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cos 180°» = -1",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, se calcula cos = $\\frac{-5}{5}$ = -1. La abscisa es igual a menos el radio vector: el punto está tan lejos en sentido negativo como lo está del origen, por eso el valor es negativo. Con P(-10; 0), al doble de distancia, resulta $\\frac{-10}{10}$ = -1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«tan 180°» = 0",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, se calcula tan = $\\frac{0}{-5}$ = 0. La ordenada es 0 y la abscisa no, así que el cociente es 0. Con P(-10; 0), al doble de distancia, resulta $\\frac{0}{-10}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cot 180°» → indefinida",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, la razón queda cot = $\\frac{-5}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(-10; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«sec 180°» = -1",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, se calcula sec = $\\frac{5}{-5}$ = -1. La abscisa tiene el mismo tamaño que el radio vector, así que el cociente es 1 o -1 según el signo de la abscisa. Con P(-10; 0), al doble de distancia, resulta $\\frac{10}{-10}$ = -1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«csc 180°» → indefinida",
+          "explicacion": "Con P(-5; 0) sobre el lado final, r = 5, la razón queda csc = $\\frac{5}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(-10; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones de 270°",
+      "puntos": [
+        {
+          "texto": "«sen 270°» = -1",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, se calcula sen = $\\frac{-2}{2}$ = -1. La ordenada es igual a menos el radio vector: el punto está tan lejos en sentido negativo como lo está del origen, por eso el valor es negativo. Con P(0; -4), al doble de distancia, resulta $\\frac{-4}{4}$ = -1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cos 270°» = 0",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, se calcula cos = $\\frac{0}{2}$ = 0. La abscisa vale 0, así que el numerador se anula y el cociente es 0. Con P(0; -4), al doble de distancia, resulta $\\frac{0}{4}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«tan 270°» → indefinida",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, la razón queda tan = $\\frac{-2}{0}$, una división entre 0 que no existe: la abscisa vale 0 porque el punto está sobre el eje Y. No se escribe «infinito»: la razón simplemente carece de valor. Con P(0; -4), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«cot 270°» = 0",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, se calcula cot = $\\frac{0}{-2}$ = 0. La abscisa es 0 y la ordenada no, así que el cociente es 0. Con P(0; -4), al doble de distancia, resulta $\\frac{0}{-4}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«sec 270°» → indefinida",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, la razón queda sec = $\\frac{2}{0}$, una división entre 0 que no existe: la abscisa vale 0 porque el punto está sobre el eje Y. No se escribe «infinito»: la razón simplemente carece de valor. Con P(0; -4), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«csc 270°» = -1",
+          "explicacion": "Con P(0; -2) sobre el lado final, r = 2, se calcula csc = $\\frac{2}{-2}$ = -1. La ordenada tiene el mismo tamaño que el radio vector, así que el cociente es 1 o -1 según el signo de la ordenada. Con P(0; -4), al doble de distancia, resulta $\\frac{4}{-4}$ = -1: el valor no depende del punto elegido."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones de 360°",
+      "puntos": [
+        {
+          "texto": "«sen 360°» = 0",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, se calcula sen = $\\frac{0}{6}$ = 0. La ordenada vale 0, así que el numerador se anula y el cociente es 0. Con P(12; 0), al doble de distancia, resulta $\\frac{0}{12}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cos 360°» = 1",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, se calcula cos = $\\frac{6}{6}$ = 1. La abscisa es igual al radio vector: el punto está tan lejos en esa dirección como lo está del origen. Con P(12; 0), al doble de distancia, resulta $\\frac{12}{12}$ = 1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«tan 360°» = 0",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, se calcula tan = $\\frac{0}{6}$ = 0. La ordenada es 0 y la abscisa no, así que el cociente es 0. Con P(12; 0), al doble de distancia, resulta $\\frac{0}{12}$ = 0: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«cot 360°» → indefinida",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, la razón queda cot = $\\frac{6}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(12; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        },
+        {
+          "texto": "«sec 360°» = 1",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, se calcula sec = $\\frac{6}{6}$ = 1. La abscisa tiene el mismo tamaño que el radio vector, así que el cociente es 1 o -1 según el signo de la abscisa. Con P(12; 0), al doble de distancia, resulta $\\frac{12}{12}$ = 1: el valor no depende del punto elegido."
+        },
+        {
+          "texto": "«csc 360°» → indefinida",
+          "explicacion": "Con P(6; 0) sobre el lado final, r = 6, la razón queda csc = $\\frac{6}{0}$, una división entre 0 que no existe: la ordenada vale 0 porque el punto está sobre el eje X. No se escribe «infinito»: la razón simplemente carece de valor. Con P(12; 0), al doble de distancia, el denominador sigue siendo 0, así que el resultado es el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Razón indefinida",
+      "puntos": [
+        {
+          "texto": "«Razón indefinida» ⇒ denominador = 0",
+          "explicacion": "La división entre 0 no tiene resultado, porque ningún número multiplicado por 0 da un numerador distinto de 0. Ejemplo cotidiano: repartir 6 caramelos entre 0 niños no tiene solución. Ejemplo con razones: con P(0; 3), tan 90° = $\\frac{3}{0}$ no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente indefinida",
+      "puntos": [
+        {
+          "texto": "tan θ → indefinida si x = 0",
+          "explicacion": "El denominador de la tangente es la abscisa, que vale 0 sobre el eje Y: en 90°, 270° y en 90° × n con n impar. Ejemplo: en 270° con P(0; -2) resulta $\\frac{-2}{0}$, que no existe; en cambio en 180° con P(-5; 0) resulta $\\frac{0}{-5}$ = 0, que sí existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante indefinida",
+      "puntos": [
+        {
+          "texto": "sec θ → indefinida si x = 0",
+          "explicacion": "También tiene la abscisa como denominador, así que falla en los mismos ángulos que la tangente: 90°, 270°, 450° y, en general, 90° × n con n impar. Ejemplo: en 90° con P(0; 3) resulta $\\frac{3}{0}$, que no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente indefinida",
+      "puntos": [
+        {
+          "texto": "cot θ → indefinida si y = 0",
+          "explicacion": "El denominador de la cotangente es la ordenada, que vale 0 sobre el eje X: en 0°, 180°, 360° y en 180° × n con n entero. Ejemplo: en 180° con P(-5; 0) resulta $\\frac{-5}{0}$, que no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecante indefinida",
+      "puntos": [
+        {
+          "texto": "csc θ → indefinida si y = 0",
+          "explicacion": "También tiene la ordenada como denominador, así que falla en los mismos ángulos que la cotangente: 0°, 180°, 360°. Ejemplo: en 0° con P(4; 0) resulta $\\frac{4}{0}$, que no existe; en 90° con P(0; 3) resulta $\\frac{3}{3}$ = 1, que sí existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Infinito no es valor",
+      "puntos": [
+        {
+          "texto": "tan 90° ≠ infinito: la razón está indefinida",
+          "explicacion": "Cerca de 90° la tangente crece sin parar, pero exactamente en 90° la división entre 0 no da ningún número. Ejemplos: tan 89° ≈ 57,29; tan 89,9° ≈ 573; y por el otro lado tan 90,1° ≈ -573. Por eso se dice que la razón es indefinida y no infinita."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno nulo",
+      "puntos": [
+        {
+          "texto": "sen θ = 0 ⇒ lado final sobre el eje X",
+          "explicacion": "El seno es $\\frac{y}{r}$ y se anula solo cuando y = 0, es decir, sobre el eje X: en los ángulos 180° × n con n entero. Ejemplos: 0°, 180°, 360°, 540° = 180° × 3 y -180° tienen seno 0; en cambio sen 90° = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno nulo",
+      "puntos": [
+        {
+          "texto": "cos θ = 0 ⇒ lado final sobre el eje Y",
+          "explicacion": "El coseno es $\\frac{x}{r}$ y se anula solo cuando x = 0, es decir, sobre el eje Y: en los ángulos 90° × n con n impar. Ejemplos: 90°, 270°, 450° = 90° × 5 y -90° tienen coseno 0; en cambio cos 180° = -1."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno y coseno",
+      "puntos": [
+        {
+          "texto": "En un cuadrantal sen o cos vale 0 y el otro vale 1 o -1",
+          "explicacion": "Una coordenada del punto vale 0 y la otra es igual a r o a -r, así que uno de los dos cocientes es 0 y el otro es 1 o -1; nunca valen 0 los dos, porque las dos coordenadas no pueden ser 0 a la vez. Ejemplo: con P(0; -2) sobre el lado final de 270°, sen 270° = $\\frac{-2}{2}$ = -1 y cos 270° = $\\frac{0}{2}$ = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrantales equivalentes",
+      "puntos": [
+        {
+          "texto": "Sumar o restar 360° ⇒ mismo lado final y mismas razones",
+          "explicacion": "Una vuelta completa devuelve el lado final a su lugar, así que las razones se repiten cada 360° (idea de los ángulos coterminales, que se desarrolla aparte). Ejemplo: 2430° ÷ 360° da cociente 6 y residuo 270° (360° × 6 = 2160° y 2430° - 2160° = 270°), entonces sen 2430° = sen 270° = -1. Con un ángulo negativo se suma 360°: -90° + 360° = 270°, de modo que cos(-90°) = cos 270° = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrante y cuadrantal",
+      "puntos": [
+        {
+          "texto": "«Cuadrante» ≠ cuadrantal",
+          "explicacion": "El cuadrante es una región del plano, una cuarta parte; el cuadrantal es un ángulo cuyo lado final está sobre un eje. Un cuadrantal no está en ningún cuadrante, y un ángulo que está en un cuadrante no es cuadrantal. Ejemplos: 135° está en el segundo cuadrante y no es cuadrantal; 180° es cuadrantal y no está en ningún cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Notables no cuadrantales",
+      "puntos": [
+        {
+          "texto": "«Notables» 30°, 45° y 60° ✗ lado final sobre un eje",
+          "explicacion": "Sus lados finales caen dentro del primer cuadrante y no son múltiplos enteros de 90°: 30° ÷ 90° = $\\frac{1}{3}$, 45° ÷ 90° = $\\frac{1}{2}$ y 60° ÷ 90° = $\\frac{2}{3}$. Por eso sus razones traen fracciones o radicales, mientras que el seno y el coseno de un cuadrantal solo valen 0, 1 o -1."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de 180°",
+      "puntos": [
+        {
+          "texto": "«tan 180°» = 0, aunque tan 90° esté indefinida",
+          "explicacion": "El denominador de la tangente es la abscisa: en 180° vale -5 con P(-5; 0), no 0, mientras que en 90° vale 0. Entonces tan 180° = $\\frac{0}{-5}$ = 0. Error frecuente: creer que la tangente de todo cuadrantal falla; solo falla donde x = 0, es decir, en 90° y 270°."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente de 90°",
+      "puntos": [
+        {
+          "texto": "«cot 90°» = 0, razón definida",
+          "explicacion": "El denominador de la cotangente es la ordenada: en 90° vale 3 con P(0; 3), no 0. Entonces cot 90° = $\\frac{0}{3}$ = 0. Error frecuente: confundirla con tan 90°, que sí está indefinida; la que falla en el eje Y es la tangente, no la cotangente."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresión con razón indefinida",
+      "puntos": [
+        {
+          "texto": "Razón indefinida en una expresión ⇒ expresión sin valor",
+          "explicacion": "No existe un número para reemplazar la razón, y sin reemplazo no se puede operar, aunque esa razón se multiplique por 0. Ejemplo: E = 2 + tan 90° no tiene valor, porque tan 90° no existe; en cambio F = 2 + tan 180° = 2 + 0 = 2 sí tiene valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de evaluación",
+      "puntos": [
+        {
+          "texto": "Datos: E = 3 sen 90° - 2 cos 180° + 5 tan 180°",
+          "explicacion": "Se pide el valor numérico de E. Aparecen tres razones de ángulos cuadrantales: sen 90°, cos 180° y tan 180°; ninguna tiene denominador 0, así que la expresión sí tiene valor."
+        },
+        {
+          "texto": "Estrategia: reemplazar cada razón por su valor",
+          "explicacion": "Se ubica cada ángulo sobre su semieje: 90° en Y positivo y 180° en X negativo. Con un punto de cada lado final se hallan los tres valores y luego se opera con la multiplicación antes que la suma y la resta."
+        },
+        {
+          "texto": "Operación: sustituir los tres valores y calcular",
+          "explicacion": "Con P(0; 3): sen 90° = $\\frac{3}{3}$ = 1. Con P(-4; 0): r = 4, cos 180° = $\\frac{-4}{4}$ = -1 y tan 180° = $\\frac{0}{-4}$ = 0. Entonces E = 3(1) - 2(-1) + 5(0) = 3 + 2 + 0 = 5."
+        },
+        {
+          "texto": "Resultado: E = 5",
+          "explicacion": "Los términos aportan 3, 2 y 0: el término con tangente no suma nada porque tan 180° = 0, y el signo menos delante de cos 180° = -1 lo convierte en una suma de 2."
+        },
+        {
+          "texto": "Verificación: recalcular con los valores de las razones",
+          "explicacion": "Con sen 90° = 1, cos 180° = -1 y tan 180° = 0 se obtiene 3 + 2 + 0 = 5, el mismo resultado. Además ninguna de las razones evaluadas está indefinida, así que la expresión sí tenía valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de ángulo",
+      "puntos": [
+        {
+          "texto": "Datos: θ cuadrantal, 0° < θ < 360° y cos θ = -1",
+          "explicacion": "Se pide hallar sen θ + tan θ + sec θ. El intervalo es abierto, así que 0° y 360° quedan excluidos y los cuadrantales posibles son 90°, 180° y 270°."
+        },
+        {
+          "texto": "Estrategia: deducir θ y luego evaluar las razones",
+          "explicacion": "Como cos θ = $\\frac{x}{r}$ = -1, se tiene x = -r; de x² + y² = r² resulta y = 0, así que el punto está en el semieje X negativo, que corresponde a 180° dentro del intervalo."
+        },
+        {
+          "texto": "Operación: evaluar las tres razones en 180°",
+          "explicacion": "Con P(-5; 0): r = 5. Entonces sen 180° = $\\frac{0}{5}$ = 0, tan 180° = $\\frac{0}{-5}$ = 0 y sec 180° = $\\frac{5}{-5}$ = -1. La suma es 0 + 0 + (-1) = -1."
+        },
+        {
+          "texto": "Resultado: sen θ + tan θ + sec θ = -1",
+          "explicacion": "Solo la secante aporta un valor distinto de 0, y es -1 porque la abscisa tiene signo negativo."
+        },
+        {
+          "texto": "Verificación: ningún otro cuadrantal cumple la condición",
+          "explicacion": "En el intervalo dado: cos 90° = 0, cos 180° = -1 y cos 270° = 0; solo 180° cumple, así que θ es único. Además ninguna de las tres razones evaluadas está indefinida en 180°."
+        }
+      ]
+    }
+  ]
+}
