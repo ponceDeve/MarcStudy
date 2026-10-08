@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, useEffect, useLayoutEffect } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 
 import { useSearchParams, useNavigate } from "react-router-dom";
 
@@ -36,6 +36,7 @@ import {
 import TemaModal from "../../components/TemaModal";
 import Modal from "../../components/Modal";
 import AppHeader from "../../components/AppHeader";
+import { RelojFlip } from "../../components/RelojPared";
 import SearchModal from "../../components/SearchModal";
 
 const POMODORO_MIN = 25;
@@ -256,55 +257,12 @@ export default function HorarioPage() {
   const pomodoro = usePomodoro();
 
   const {
-    formatted,
     secondsLeft,
     totalSeconds,
     isRunning,
   } = pomodoro;
 
   const reset = pomodoro.reiniciar;
-
-  const clockRef = useRef(null);
-  const clockTextRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const box = clockRef.current;
-    const text = clockTextRef.current;
-
-    if (!box || !text) return;
-
-    let ultimoAncho = 0;
-
-    function ajustar() {
-      const disponible = box.clientWidth;
-
-      if (disponible <= 0) return;
-
-      ultimoAncho = disponible;
-
-      box.style.fontSize = "100px";
-
-      const ancho = text.getBoundingClientRect().width;
-
-      if (ancho > 0) {
-        box.style.fontSize = `${(disponible / ancho) * 100}px`;
-      }
-    }
-
-    ajustar();
-
-    const ro = new ResizeObserver(() => {
-      if (box.clientWidth !== ultimoAncho) ajustar();
-    });
-
-    ro.observe(box);
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(ajustar);
-    }
-
-    return () => ro.disconnect();
-  }, [formatted.length]);
 
   const currentTaskDuration =
     totalSeconds > 0
@@ -1019,17 +977,7 @@ export default function HorarioPage() {
                 </p>
               )}
 
-              <h2
-                className="horario__timer-clock"
-                ref={clockRef}
-              >
-                <span
-                  ref={clockTextRef}
-                  className="horario__timer-text"
-                >
-                  {formatted}
-                </span>
-              </h2>
+              <RelojFlip segundos={secondsLeft} />
 
               <div className="horario__progress-track">
                 <div

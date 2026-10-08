@@ -315,6 +315,35 @@ export function RelojRegresivo({ segundos, urgente = false }) {
 }
 
 /*
+  ============================================================
+  RELOJ DEL POMODORO (hojas que pasan los números)
+  ============================================================
+
+  Mismo reloj de hojas, tamaño normal, en formato MM : SS (con horas
+  solo si hicieran falta). Solo dibuja los `segundos` que le pasan.
+*/
+
+export function RelojFlip({ segundos }) {
+  const p = partesCronometro(Math.max(0, segundos));
+
+  return (
+    <div
+      className="reloj-pared reloj-pared--pomodoro"
+      role="timer"
+      aria-label="Tiempo del pomodoro"
+    >
+      <BloqueTiempo
+        horas={dos(p.horas)}
+        minutos={dos(p.minutos)}
+        segundos={dos(p.segundos)}
+        verHoras={p.verHoras}
+        verMinutos
+      />
+    </div>
+  );
+}
+
+/*
   ------------------------------------------------------------
   COMPONENTE
   ------------------------------------------------------------
