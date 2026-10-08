@@ -1,10 +1,365 @@
 /* ============================================================
-   RELOJ DE PARED (Inicio, debajo de la cuenta regresiva)
+   RELOJ DE PARED - CUENTA REGRESIVA (FLIP CLOCK)
    ============================================================ */
+
 .reloj-pared {
-  display: block;
-  width: clamp(150px, 44vw, 220px);
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
   margin: 0 auto var(--space-4, 16px);
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.28));
+}
+
+.reloj-flap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1.2vw, 8px);
+}
+
+.reloj-flap__grupo {
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 0.8vw, 6px);
+}
+
+.reloj-flap__separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 clamp(1px, 0.4vw, 3px);
+
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(25px, 7vw, 38px);
+  font-weight: 700;
+  line-height: 1;
+
+  color: #34322e;
+
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------------------------
+   DÍGITO
+   La perspectiva va aquí porque las hojas son HIJAS DIRECTAS
+   de este elemento (la perspectiva solo afecta a hijos directos).
+   Sin overflow:hidden para que la hoja pueda "salirse" un poco
+   hacia el espectador mientras cae.
+   ------------------------------------------------------------ */
+
+.reloj-flap__digito {
+  position: relative;
+
+  width: clamp(38px, 11vw, 58px);
+  height: clamp(52px, 14vw, 76px);
+
+  perspective: 300px;
+
+  border-radius: 6px;
+  background: #252421;
+
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Línea central (bisagra) por encima de todo */
+.reloj-flap__digito::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 2px;
+  transform: translateY(-1px);
+
+  background: rgba(10, 10, 10, 0.72);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.035);
+
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------
+   MITADES (sirven tanto para lo fijo como para las hojas)
+   ------------------------------------------------------------ */
+
+.reloj-flap__mitad {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 50%;
+
+  overflow: hidden;
+
+  background: #302e2a;
+  backface-visibility: hidden;
+
+  color: #e5e0d5;
+
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(29px, 8vw, 43px);
+  font-weight: 700;
+  line-height: 1;
+
+  text-align: center;
+}
+
+.reloj-flap__mitad span {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 200%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reloj-flap__mitad--superior {
+  top: 0;
+  border-radius: 6px 6px 0 0;
+  transform-origin: bottom center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.reloj-flap__mitad--superior span {
+  top: 0;
+}
+
+.reloj-flap__mitad--inferior {
+  bottom: 0;
+  border-radius: 0 0 6px 6px;
+  transform-origin: top center;
+}
+
+.reloj-flap__mitad--inferior span {
+  bottom: 0;
+}
+
+/* ------------------------------------------------------------
+   HOJAS ANIMADAS
+   Duración total = 2 x --reloj-flap-tiempo (< 1 s para que
+   termine antes del siguiente segundo).
+   ------------------------------------------------------------ */
+
+.reloj-flap__digito {
+  --reloj-flap-tiempo: 300ms;
+}
+
+/* Sombra que se oscurece/aclara mientras la hoja se mueve */
+.reloj-flap__hoja::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 1) La cifra anterior (mitad de arriba) se dobla hacia abajo */
+.reloj-flap__hoja--arriba {
+  z-index: 10;
+
+  animation: reloj-flap-caer-arriba var(--reloj-flap-tiempo)
+    cubic-bezier(0.5, 0, 0.9, 0.6) both;
+}
+
+.reloj-flap__hoja--arriba::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
+  animation: reloj-flap-sombra-in var(--reloj-flap-tiempo) ease-in both;
+}
+
+/* 2) La cifra nueva (mitad de abajo) llega desde arriba */
+.reloj-flap__hoja--abajo {
+  z-index: 10;
+
+  animation: reloj-flap-caer-abajo var(--reloj-flap-tiempo)
+    cubic-bezier(0.1, 0.5, 0.4, 1) var(--reloj-flap-tiempo) both;
+}
+
+.reloj-flap__hoja--abajo::after {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.05));
+  animation: reloj-flap-sombra-out var(--reloj-flap-tiempo) ease-out
+    var(--reloj-flap-tiempo) both;
+}
+
+@keyframes reloj-flap-caer-arriba {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  99% {
+    transform: rotateX(-89deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes reloj-flap-caer-abajo {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes reloj-flap-sombra-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reloj-flap-sombra-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------
+   ETIQUETAS
+   ------------------------------------------------------------ */
+
+.reloj-flap__etiquetas {
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+
+  width: 100%;
+  margin-top: 7px;
+
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(7px, 1.8vw, 9px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  color: #77736b;
+
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   VARIANTE CON 3 O 4 CIFRAS DE HORAS
+   Dígitos un poco más pequeños para que quepan en el móvil.
+   ------------------------------------------------------------ */
+
+.reloj-pared--largo .reloj-flap {
+  gap: clamp(3px, 0.9vw, 6px);
+}
+
+.reloj-pared--largo .reloj-flap__grupo {
+  gap: clamp(2px, 0.6vw, 4px);
+}
+
+.reloj-pared--largo .reloj-flap__digito {
+  width: clamp(26px, 8.2vw, 44px);
+  height: clamp(38px, 11vw, 60px);
+}
+
+.reloj-pared--largo .reloj-flap__mitad {
+  font-size: clamp(21px, 6.2vw, 33px);
+}
+
+.reloj-pared--largo .reloj-flap__separador {
+  font-size: clamp(18px, 5.4vw, 30px);
+}
+
+/* ------------------------------------------------------------
+   VARIANTE COMPACTA (dentro del header, 64 px de alto)
+   Doble clase para ganar a las reglas normales y a las de "largo".
+   ------------------------------------------------------------ */
+
+.reloj-pared.reloj-pared--compacto {
+  margin: 0;
+}
+
+.reloj-pared--compacto .reloj-flap {
+  gap: 4px;
+}
+
+.reloj-pared--compacto .reloj-flap__grupo {
+  gap: 2px;
+}
+
+.reloj-pared.reloj-pared--compacto .reloj-flap__digito {
+  width: clamp(17px, 5.2vw, 26px);
+  height: clamp(26px, 7.6vw, 38px);
+
+  perspective: 160px;
+  border-radius: 4px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.reloj-pared.reloj-pared--compacto .reloj-flap__mitad {
+  font-size: clamp(14px, 4.2vw, 22px);
+}
+
+.reloj-pared--compacto .reloj-flap__mitad--superior {
+  border-radius: 4px 4px 0 0;
+}
+
+.reloj-pared--compacto .reloj-flap__mitad--inferior {
+  border-radius: 0 0 4px 4px;
+}
+
+.reloj-pared.reloj-pared--compacto .reloj-flap__separador {
+  margin: 0;
+  font-size: clamp(14px, 4vw, 22px);
+}
+
+/* Sin la línea de la bisagra en los relojes compactos. */
+.reloj-pared--compacto .reloj-flap__digito::after {
+  display: none;
+}
+
+/* Reloj regresivo del simulacro: últimos minutos en rojo. */
+.reloj-pared--urgente .reloj-flap__mitad {
+  color: #f87171;
+}
+
+/* El header recorta lo que se sale de su caja; con el reloj dejamos
+   que la hoja pueda sobresalir un poco mientras gira. */
+.topbar__content-box.topbar__content-box--reloj {
+  overflow: visible;
+}
+
+/* ------------------------------------------------------------
+   PANTALLAS PEQUEÑAS
+   ------------------------------------------------------------ */
+
+@media (max-width: 360px) {
+  .reloj-flap {
+    gap: 3px;
+  }
+
+  .reloj-flap__grupo {
+    gap: 2px;
+  }
+
+  .reloj-flap__separador {
+    margin: 0 1px;
+  }
+
+  .reloj-flap__digito {
+    width: 34px;
+    height: 48px;
+  }
 }

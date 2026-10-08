@@ -194,13 +194,12 @@ function PreguntaResultado({ item, numero, abierta, onToggle }) {
       >
         {ICONO_ESTADO[estado]}
         <span className="resultados-examen__pregunta-texto">
-          {abierta ? pregunta.tema || `Pregunta ${numero}` : `Pregunta ${numero}`}
-        </span>
-        <span className="resultados-examen__pregunta-estado">
-          {TEXTO_ESTADO[estado]}
+          {abierta && pregunta.tema
+            ? pregunta.tema
+            : `Pregunta ${numero} — ${TEXTO_ESTADO[estado]}`}
         </span>
         <span className="resultados-examen__pregunta-puntos">
-          {puntos > 0 ? `+${puntos}` : puntos}
+          {puntos > 0 ? `+${puntos.toFixed(2)}` : puntos}
         </span>
         <i
           className={`fas fa-chevron-${abierta ? "up" : "down"}`}
@@ -427,15 +426,19 @@ export default function ResultadosExamenPage({
     return mensaje;
   }
   return (
-    <div className="resultados-examen container">
-      <div className="resultados-examen__resumen">
-        <h1 className="resultados-examen__puntaje">
-          {puntajeTotal.toFixed(2)}
-        </h1>
-        <p className="resultados-examen__subtitulo">
-          Área {area} · {nombreArea} · {totalCorrectas}/
-          {totalPreguntas} correctas
-        </p>
+    <div className="resultados-examen resultados-examen--pagina container">
+      <div className="resultados-examen__resumen preguntas-normales">
+        <div className="resultados-examen__marcador resultados-examen__marcador--sin-estrellas">
+          <div className="resultados-examen__marcador-texto">
+            <h1 className="resultados-examen__puntaje">
+              {puntajeTotal.toFixed(2)}
+            </h1>
+            <p className="resultados-examen__subtitulo">
+              Área {area} · {nombreArea} · {totalCorrectas}/
+              {totalPreguntas} correctas
+            </p>
+          </div>
+        </div>
       </div>
       {grupoSeleccionado && (
         <section
@@ -445,24 +448,22 @@ export default function ResultadosExamenPage({
           <div className="resultados-examen__mensaje-principal">
             {obtenerMensajeDelCurso(grupoSeleccionado)}
           </div>
-          <SelectorCurso
-            grupos={grupos}
-            cursoSeleccionado={cursoSeleccionado}
-            onSeleccionar={setCursoSeleccionado}
-          />
-          <h2 className="resultados-examen__bloque-titulo">
-            <i
-              className={`bi ${ICONO_CURSO[grupoSeleccionado.curso] ||
-                "bi-journal-bookmark"
-                }`}
-            />
-            <span className="resultados-examen__bloque-nombre">
-              {grupoSeleccionado.nombre}
-            </span>
+          <div className="resultados-examen__bloque-header">
+            {grupos.length > 1 ? (
+              <SelectorCurso
+                grupos={grupos}
+                cursoSeleccionado={cursoSeleccionado}
+                onSeleccionar={setCursoSeleccionado}
+              />
+            ) : (
+              <h2 className="resultados-examen__bloque-titulo">
+                {grupoSeleccionado.nombre}
+              </h2>
+            )}
             <span className="resultados-examen__bloque-puntaje">
               {puntajeCurso.toFixed(2)} pts
             </span>
-          </h2>
+          </div>
           <ul className="resultados-examen__lista">
             {grupoSeleccionado.items.map((item, index) => (
               <PreguntaResultado

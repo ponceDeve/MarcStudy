@@ -43,43 +43,6 @@
       pointer-events: none;
     }
   }
-  &__timer {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
-    color: var(--ink);
-    font-size: var(--fs-lg);
-    font-weight: var(--fw-bold);
-    white-space: nowrap;
-    &.is-urgente {
-      color: var(--danger);
-    }
-  }
-  // ==========================================================
-  // RELOJ ANIMADO
-  // ==========================================================
-  &__clock {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    flex-shrink: 0;
-    overflow: visible;
-    vertical-align: middle;
-  }
-  &__clock-face {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-  }
-  &__clock-minute {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-  }
-  &__clock-center {
-    fill: currentColor;
-  }
   &__progreso {
     display: inline-block;
     color: var(--ink-faint);
@@ -125,16 +88,6 @@
   &__rv-texto {
     background: var(--surface-alt);
     border-left: 3px solid var(--primary);
-  }
-  &__curso-tag {
-    display: inline-block;
-    margin-bottom: var(--space-3);
-    padding: 2px 10px;
-    background: var(--primary-bg);
-    color: var(--primary);
-    border-radius: var(--radius-full);
-    font-size: var(--fs-xs);
-    font-weight: var(--fw-semibold);
   }
   // ==========================================================
   // NAVEGACIÓN
@@ -224,13 +177,6 @@
     &__topbar {
       gap: var(--space-2);
       padding: var(--space-2) var(--space-3);
-    }
-    &__timer {
-      font-size: var(--fs-md);
-    }
-    &__clock {
-      width: 1em;
-      height: 1em;
     }
     &__progreso {
       display: none;
@@ -385,6 +331,12 @@
 .resultados-examen {
   position: relative;
   max-width: var(--content-max-width);
+  // Página propia del simulacro: el header es fixed, así que se deja
+  // su altura libre arriba (igual que Repaso, Horario e Inglés).
+  &--pagina {
+    padding-top: calc(var(--header-h) + 36px);
+    padding-bottom: var(--space-5);
+  }
   // ==========================================================
   // RESUMEN
   // ==========================================================
@@ -424,6 +376,11 @@
     .resultados-examen__subtitulo {
       margin: 0;
     }
+  }
+  // Sin estrellas (simulacro): el texto queda centrado en la pantalla.
+  &__marcador--sin-estrellas &__marcador-texto {
+    align-items: center;
+    text-align: center;
   }
   &__puntaje {
     margin: 0;

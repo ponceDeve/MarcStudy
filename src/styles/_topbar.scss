@@ -1262,3 +1262,19 @@ body.is-header-oculto .topbar-wrapper {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+
+/* ============================================================
+   HEADER SIN HAMBURGUESA
+   Cuando solo hay un botón (p. ej. "Inicio" en los resultados del
+   simulacro) se muestra siempre, también en pantallas angostas, y
+   se oculta el menú hamburguesa. Va al final y con !important
+   porque los media queries de arriba usan !important.
+   ============================================================ */
+.topbar.topbar--sin-menu {
+  .topbar__nav {
+    display: flex !important;
+  }
+  .topbar__hamburger {
+    display: none !important;
+  }
+}

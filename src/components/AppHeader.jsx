@@ -43,6 +43,9 @@ function SideDrawer({ title, isOpen, onClose, children }) {
 export default function AppHeader({
   onAbrirBuscador,
   section = "inicio",
+  // Si es true, en pantallas angostas se muestran los botones del header
+  // directamente en vez del menú hamburguesa (útil cuando hay uno solo).
+  sinHamburguesa = false,
 }) {
   const [nombreUsuario, setNombreUsuario] = useLocalStorage(
     "miEstudio_nombreUsuario",
@@ -342,7 +345,7 @@ export default function AppHeader({
   return (
     <div className="topbar-wrapper">
       <div
-        className="topbar"
+        className={`topbar${sinHamburguesa ? " topbar--sin-menu" : ""}`}
         ref={headerRef}
       >
         <div className="topbar__inner">

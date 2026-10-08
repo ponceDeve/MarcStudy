@@ -1275,6 +1275,7 @@ const TemaExamenView = forwardRef(
       titulos,
       onTerminar,
       onFaseChange,
+      onIndiceChange,
       onAbandonar
     },
     ref
@@ -1327,6 +1328,10 @@ const TemaExamenView = forwardRef(
     useEffect(() => {
       onFaseChange?.(fase);
     }, [fase, onFaseChange]);
+    // Avisar a la página qué pregunta se está viendo (reinicia el cronómetro).
+    useEffect(() => {
+      onIndiceChange?.(indice);
+    }, [indice, onIndiceChange]);
     useEffect(() => {
       return () => {
         if (toastTimeoutRef.current) {

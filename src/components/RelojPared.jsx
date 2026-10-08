@@ -1,242 +1,405 @@
-import { useId, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-// Reloj de pared analógico. Marca la hora del sistema y se mueve solo.
-// Las manecillas se giran directamente en el DOM (sin estado de React),
-// así que el reloj no vuelve a renderizar nada ni a la página que lo
-// contiene.
+/*
+  ============================================================
+  RELOJ DE PARED - CUENTA REGRESIVA (FLIP CLOCK)
+  ============================================================
 
-const CENTRO = 100;
+  Cuenta regresiva hasta el 15 de marzo de 2027.
+  Formato: HHHH : MM : SS  (horas totales que faltan)
 
-const MARCAS = Array.from({ length: 60 }, (_, i) => {
-  const grande = i % 5 === 0;
-  const rad = (i * 6 * Math.PI) / 180;
-  const r1 = 88;
-  const r2 = grande ? 77 : 83;
-  return {
-    i,
-    grande,
-    x1: CENTRO + r1 * Math.sin(rad),
-    y1: CENTRO - r1 * Math.cos(rad),
-    x2: CENTRO + r2 * Math.sin(rad),
-    y2: CENTRO - r2 * Math.cos(rad),
-  };
-});
+  Cada dígito es una "hoja" de papel con dos mitades:
 
-const NUMEROS = Array.from({ length: 12 }, (_, k) => {
-  const n = k + 1;
-  const rad = (n * 30 * Math.PI) / 180;
-  return {
-    n,
-    x: CENTRO + 65 * Math.sin(rad),
-    y: CENTRO - 65 * Math.cos(rad),
-  };
-});
+    1. La mitad de ARRIBA de la cifra anterior se dobla hacia
+       abajo. Detrás de ella ya aparece la cifra NUEVA.
+    2. Cuando la hoja llega al centro, la mitad de ABAJO de la
+       cifra nueva termina de caer y tapa la cifra anterior.
 
-function girar(el, grados) {
-  if (el) {
-    el.setAttribute(
-      "transform",
-      `rotate(${grados} ${CENTRO} ${CENTRO})`
-    );
-  }
+  Toda la animación está en CSS (_reloj-pared.scss). React solo
+  decide cuándo cambia cada dígito.
+*/
+
+const OBJETIVO = new Date(2027, 2, 15, 0, 0, 0);
+
+const DIA_SEG = 24 * 60 * 60;
+
+// Suma n meses de calendario conservando la hora; si el día no existe
+// en el mes de destino (31 -> 30, 29 feb...) se usa el último día.
+function sumarMeses(fecha, n) {
+  const f = new Date(
+    fecha.getFullYear(),
+    fecha.getMonth() + n,
+    1,
+    fecha.getHours(),
+    fecha.getMinutes(),
+    fecha.getSeconds()
+  );
+  const ultimoDia = new Date(f.getFullYear(), f.getMonth() + 1, 0).getDate();
+  f.setDate(Math.min(fecha.getDate(), ultimoDia));
+  return f;
 }
 
-export default function RelojPared() {
-  const id = useId().replace(/:/g, "");
-  const horaRef = useRef(null);
-  const minutoRef = useRef(null);
-  const segundoRef = useRef(null);
+/*
+  UN SOLO CÁLCULO para todo.
 
-  useLayoutEffect(() => {
-    const reducirMovimiento =
-      window.matchMedia?.("(prefers-reduced-motion: reduce)")
-        .matches === true;
-    let raf = 0;
-    let intervalo = 0;
-
-    function pintar() {
-      const ahora = new Date();
-      // Con movimiento reducido el segundero salta de segundo en
-      // segundo; si no, barre de forma continua como un reloj real.
-      const seg =
-        ahora.getSeconds() +
-        (reducirMovimiento ? 0 : ahora.getMilliseconds() / 1000);
-      const min = ahora.getMinutes() + seg / 60;
-      const hor = (ahora.getHours() % 12) + min / 60;
-      girar(segundoRef.current, seg * 6);
-      girar(minutoRef.current, min * 6);
-      girar(horaRef.current, hor * 30);
-    }
-
-    pintar();
-    if (reducirMovimiento) {
-      intervalo = window.setInterval(pintar, 1000);
-    } else {
-      const bucle = () => {
-        pintar();
-        raf = requestAnimationFrame(bucle);
-      };
-      raf = requestAnimationFrame(bucle);
-    }
-    return () => {
-      window.clearInterval(intervalo);
-      cancelAnimationFrame(raf);
+  - Texto: meses de calendario + semanas + días (el día en curso
+    cuenta como un día, igual que un calendario).
+  - Reloj: TODO el tiempo que falta convertido a horas:minutos:segundos.
+    Las horas NO se reinician cada 24 h:  1 día = 24:00:00,
+    2 días = 48:00:00, 5 meses y 8 días = unas 3800 horas.
+*/
+function calcularRestante(ahoraMs) {
+  if (ahoraMs >= OBJETIVO.getTime()) {
+    return {
+      meses: 0,
+      semanas: 0,
+      dias: 0,
+      horas: "00",
+      minutos: "00",
+      segundos: "00",
     };
-  }, []);
+  }
+
+  const ahora = new Date(ahoraMs);
+
+  // ----- Reloj: tiempo total en horas -----
+  const total = Math.floor((OBJETIVO.getTime() - ahoraMs) / 1000);
+  const horas = Math.floor(total / 3600);
+  const minutos = Math.floor((total % 3600) / 60);
+  const segundos = total % 60;
+
+  // ----- Texto: meses + semanas + días -----
+  let meses =
+    (OBJETIVO.getFullYear() - ahora.getFullYear()) * 12 +
+    (OBJETIVO.getMonth() - ahora.getMonth());
+
+  while (meses > 0 && sumarMeses(ahora, meses) > OBJETIVO) meses--;
+
+  const base = sumarMeses(ahora, meses);
+  const resto = Math.floor((OBJETIVO.getTime() - base.getTime()) / 1000);
+  const diasTotales = Math.ceil(resto / DIA_SEG);
+
+  return {
+    meses,
+    semanas: Math.floor(diasTotales / 7),
+    dias: diasTotales % 7,
+    horas: String(horas).padStart(2, "0"),
+    minutos: String(minutos).padStart(2, "0"),
+    segundos: String(segundos).padStart(2, "0"),
+  };
+}
+
+/*
+  ------------------------------------------------------------
+  DÍGITO
+  ------------------------------------------------------------
+  Capas (de atrás hacia adelante):
+
+  - mitad superior fija  -> cifra NUEVA   (queda "detrás")
+  - mitad inferior fija  -> cifra ANTERIOR
+  - hoja de arriba       -> cifra ANTERIOR, cae hacia abajo
+  - hoja de abajo        -> cifra NUEVA, llega desde arriba
+
+  Cada cambio incrementa `clave`; al cambiar la key de las hojas,
+  React las vuelve a crear y la animación CSS arranca limpia
+  (sin timeouts ni lecturas de offsetWidth).
+*/
+
+function Digito({ valor }) {
+  const [estado, setEstado] = useState({
+    actual: valor,
+    anterior: valor,
+    clave: 0,
+  });
+
+  // Ajustar el estado durante el render cuando llega un valor nuevo.
+  if (valor !== estado.actual) {
+    setEstado({
+      actual: valor,
+      anterior: estado.actual,
+      clave: estado.clave + 1,
+    });
+  }
+
+  const { actual, anterior, clave } = estado;
 
   return (
-    <svg
-      className="reloj-pared"
-      viewBox="0 0 200 200"
-      role="img"
-      aria-label="Reloj analógico con la hora actual"
+    <div className="reloj-flap__digito" aria-hidden="true">
+      <div className="reloj-flap__mitad reloj-flap__mitad--superior">
+        <span>{actual}</span>
+      </div>
+
+      <div className="reloj-flap__mitad reloj-flap__mitad--inferior">
+        <span>{anterior}</span>
+      </div>
+
+      {clave > 0 && (
+        <>
+          <div
+            key={`arriba-${clave}`}
+            className="reloj-flap__mitad reloj-flap__mitad--superior reloj-flap__hoja reloj-flap__hoja--arriba"
+          >
+            <span>{anterior}</span>
+          </div>
+
+          <div
+            key={`abajo-${clave}`}
+            className="reloj-flap__mitad reloj-flap__mitad--inferior reloj-flap__hoja reloj-flap__hoja--abajo"
+          >
+            <span>{actual}</span>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+
+/*
+  ============================================================
+  CRONÓMETRO (cuánto tardas en responder)
+  ============================================================
+
+  Empieza en 00 y va creciendo:
+
+    - menos de 1 minuto  ->  SS            (00, 01, 02 ...)
+    - desde 1 minuto     ->  MM : SS       (01:00 ...)
+    - desde 1 hora       ->  HH : MM : SS
+
+  Se reinicia a 00 cada vez que cambia `clave` (nueva pregunta) y se
+  congela mientras `pausado` sea true (p. ej. ya respondiste).
+*/
+
+export function partesCronometro(totalSegundos) {
+  const s = Math.max(0, Math.floor(totalSegundos));
+  return {
+    horas: Math.floor(s / 3600),
+    minutos: Math.floor((s % 3600) / 60),
+    segundos: s % 60,
+    verMinutos: s >= 60,
+    verHoras: s >= 3600,
+  };
+}
+
+const dos = (n) => String(n).padStart(2, "0");
+
+// Bloque HH : MM : SS de hojas, compartido por Cronometro y RelojRegresivo.
+// Las horas y los minutos pueden ocultarse (Cronometro los muestra solo
+// cuando hacen falta).
+function BloqueTiempo({
+  horas,
+  minutos,
+  segundos,
+  verHoras = true,
+  verMinutos = true,
+}) {
+  return (
+    <div className="reloj-flap">
+      {verHoras && (
+        <div className="reloj-flap__grupo">
+          <Digito key="h1" valor={horas[0]} />
+          <Digito key="h0" valor={horas[1]} />
+          <span className="reloj-flap__separador" aria-hidden="true">
+            :
+          </span>
+        </div>
+      )}
+
+      {verMinutos && (
+        <div className="reloj-flap__grupo">
+          <Digito key="m1" valor={minutos[0]} />
+          <Digito key="m0" valor={minutos[1]} />
+          <span className="reloj-flap__separador" aria-hidden="true">
+            :
+          </span>
+        </div>
+      )}
+
+      <div className="reloj-flap__grupo">
+        <Digito key="s1" valor={segundos[0]} />
+        <Digito key="s0" valor={segundos[1]} />
+      </div>
+    </div>
+  );
+}
+
+export function Cronometro({ clave, pausado = false }) {
+  const [total, setTotal] = useState(0);
+  const acumuladoRef = useRef(0); // ms ya contados antes de la última pausa
+  const inicioRef = useRef(null); // marca de inicio del tramo en curso
+
+  // Nueva pregunta -> volver a 00.
+  useEffect(() => {
+    acumuladoRef.current = 0;
+    setTotal(0);
+  }, [clave]);
+
+  // Correr / pausar. El cleanup guarda lo que ya corrió el tramo.
+  useEffect(() => {
+    inicioRef.current = pausado ? null : Date.now();
+
+    const leer = () =>
+      acumuladoRef.current +
+      (inicioRef.current ? Date.now() - inicioRef.current : 0);
+
+    // Al pausar, mostrar el valor exacto en que se congeló.
+    if (pausado) setTotal(Math.floor(acumuladoRef.current / 1000));
+
+    const intervalo = pausado
+      ? null
+      : window.setInterval(() => {
+          setTotal(Math.floor(leer() / 1000));
+        }, 200);
+
+    return () => {
+      if (intervalo) window.clearInterval(intervalo);
+      if (inicioRef.current) {
+        acumuladoRef.current += Date.now() - inicioRef.current;
+        inicioRef.current = null;
+      }
+    };
+  }, [pausado, clave]);
+
+  const p = partesCronometro(total);
+  const sec = dos(p.segundos);
+  const min = dos(p.minutos);
+  const hor = dos(p.horas);
+
+  return (
+    <div
+      className="reloj-pared reloj-pared--compacto"
+      role="timer"
+      aria-label="Tiempo en esta pregunta"
     >
-      <defs>
-        <linearGradient id={`${id}-aro`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#4a4a4a" />
-          <stop offset="0.45" stopColor="#151515" />
-          <stop offset="1" stopColor="#050505" />
-        </linearGradient>
-        <linearGradient id={`${id}-bisel`} x1="1" y1="1" x2="0" y2="0">
-          <stop offset="0" stopColor="#5b5b5b" />
-          <stop offset="0.5" stopColor="#1b1b1b" />
-          <stop offset="1" stopColor="#0a0a0a" />
-        </linearGradient>
-        <radialGradient id={`${id}-esfera`} cx="0.4" cy="0.35" r="0.85">
-          <stop offset="0" stopColor="#ffffff" />
-          <stop offset="0.7" stopColor="#f6f5f1" />
-          <stop offset="1" stopColor="#e4e2dc" />
-        </radialGradient>
-        <linearGradient id={`${id}-borde`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#000" stopOpacity="0.38" />
-          <stop offset="0.6" stopColor="#000" stopOpacity="0.05" />
-          <stop offset="1" stopColor="#000" stopOpacity="0" />
-        </linearGradient>
-        <radialGradient id={`${id}-tapa`} cx="0.35" cy="0.3" r="0.9">
-          <stop offset="0" stopColor="#8a8a8a" />
-          <stop offset="0.5" stopColor="#2a2a2a" />
-          <stop offset="1" stopColor="#050505" />
-        </radialGradient>
-        <linearGradient id={`${id}-brillo`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#fff" stopOpacity="0.34" />
-          <stop offset="1" stopColor="#fff" stopOpacity="0" />
-        </linearGradient>
-        <clipPath id={`${id}-vidrio`}>
-          <circle cx={CENTRO} cy={CENTRO} r="91.5" />
-        </clipPath>
-        <filter
-          id={`${id}-sombra`}
-          x="-20%"
-          y="-20%"
-          width="140%"
-          height="140%"
-        >
-          <feDropShadow
-            dx="1.4"
-            dy="2.4"
-            stdDeviation="1.3"
-            floodColor="#000"
-            floodOpacity="0.3"
-          />
-        </filter>
-      </defs>
-
-      {/* Marco */}
-      <circle cx={CENTRO} cy={CENTRO} r="99" fill={`url(#${id}-aro)`} />
-      <circle cx={CENTRO} cy={CENTRO} r="95.5" fill={`url(#${id}-bisel)`} />
-
-      {/* Esfera */}
-      <circle cx={CENTRO} cy={CENTRO} r="91.5" fill={`url(#${id}-esfera)`} />
-      <circle
-        cx={CENTRO}
-        cy={CENTRO}
-        r="90.4"
-        fill="none"
-        stroke={`url(#${id}-borde)`}
-        strokeWidth="2.4"
+      <BloqueTiempo
+        horas={hor}
+        minutos={min}
+        segundos={sec}
+        verHoras={p.verHoras}
+        verMinutos={p.verMinutos}
       />
+    </div>
+  );
+}
 
-      {/* Marcas de minutos y de horas */}
-      {MARCAS.map((m) => (
-        <line
-          key={m.i}
-          x1={m.x1}
-          y1={m.y1}
-          x2={m.x2}
-          y2={m.y2}
-          stroke={m.grande ? "#161616" : "#4a4a4a"}
-          strokeWidth={m.grande ? 2.4 : 0.9}
-          strokeLinecap="butt"
-        />
-      ))}
+/*
+  ============================================================
+  RELOJ REGRESIVO (cuenta atrás del simulacro)
+  ============================================================
 
-      {/* Números */}
-      {NUMEROS.map((n) => (
-        <text
-          key={n.n}
-          x={n.x}
-          y={n.y}
-          dy="0.35em"
-          textAnchor="middle"
-          fontSize="17"
-          fontWeight="500"
-          fill="#1b1b1b"
-          fontFamily='Inter, "Helvetica Neue", Arial, sans-serif'
-        >
-          {n.n}
-        </text>
-      ))}
+  Mismo reloj de hojas que el Cronometro, pero SIN tiempo propio:
+  solo dibuja los `segundos` que le pasan (el simulacro ya los
+  calcula a partir de su hora de fin, así hay una sola fuente de
+  tiempo). Siempre muestra HH : MM : SS. Con `urgente` los dígitos
+  se ponen en rojo.
+*/
 
-      {/* Manecillas (la sombra queda fija mientras giran) */}
-      <g filter={`url(#${id}-sombra)`}>
-        <g ref={horaRef}>
-          <path
-            d="M100 36 L105.6 62 L103.4 112 L96.6 112 L94.4 62 Z"
-            fill="#383838"
-          />
-        </g>
-        <g ref={minutoRef}>
-          <path
-            d="M100 14 L102.8 70 L101.8 114 L98.2 114 L97.2 70 Z"
-            fill="#1c1c1c"
-          />
-        </g>
-        <g ref={segundoRef}>
-          <rect
-            x="98.4"
-            y="104"
-            width="3.2"
-            height="20"
-            rx="1.4"
-            fill="#111"
-          />
-          <line
-            x1={CENTRO}
-            y1="108"
-            x2={CENTRO}
-            y2="12"
-            stroke="#111"
-            strokeWidth="1.1"
-          />
-        </g>
-      </g>
+export function RelojRegresivo({ segundos, urgente = false }) {
+  const p = partesCronometro(segundos);
 
-      {/* Tapa central */}
-      <circle cx={CENTRO} cy={CENTRO} r="5.6" fill={`url(#${id}-tapa)`} />
-      <circle cx="98.8" cy="98.6" r="1.4" fill="#fff" opacity="0.35" />
+  return (
+    <div
+      className={`reloj-pared reloj-pared--compacto${
+        urgente ? " reloj-pared--urgente" : ""
+      }`}
+      role="timer"
+      aria-label="Tiempo restante del simulacro"
+    >
+      <BloqueTiempo
+        horas={dos(p.horas)}
+        minutos={dos(p.minutos)}
+        segundos={dos(p.segundos)}
+      />
+    </div>
+  );
+}
 
-      {/* Reflejo del vidrio */}
-      <g clipPath={`url(#${id}-vidrio)`}>
-        <ellipse
-          cx="70"
-          cy="44"
-          rx="52"
-          ry="26"
-          transform="rotate(-30 70 44)"
-          fill={`url(#${id}-brillo)`}
-          opacity="0.55"
-        />
-      </g>
-    </svg>
+/*
+  ------------------------------------------------------------
+  COMPONENTE
+  ------------------------------------------------------------
+*/
+
+export default function RelojPared({ compacto = false }) {
+  // Segundo actual (entero). Solo cambia una vez por segundo.
+  const [segundoActual, setSegundoActual] = useState(() =>
+    Math.floor(Date.now() / 1000)
+  );
+
+  useEffect(() => {
+    const intervalo = window.setInterval(() => {
+      setSegundoActual(Math.floor(Date.now() / 1000));
+    }, 200);
+
+    return () => window.clearInterval(intervalo);
+  }, []);
+
+  const { meses, semanas, dias, horas, minutos, segundos } =
+    calcularRestante(segundoActual * 1000);
+
+  // Las horas pueden tener 2, 3 o 4 cifras (p. ej. 3796).
+  const cifrasHoras = horas.split("");
+  const largo = cifrasHoras.length > 2;
+
+  return (
+    <>
+      {!compacto && (
+      <div className="mi-estudio__recomendados-fecha">
+        {`${meses} ${meses === 1 ? "mes" : "meses"} · ${semanas} ${
+          semanas === 1 ? "semana" : "semanas"
+        } · ${dias} ${dias === 1 ? "día" : "días"}`}
+      </div>
+      )}
+
+      <div
+        className={`reloj-pared${largo ? " reloj-pared--largo" : ""}${
+          compacto ? " reloj-pared--compacto" : ""
+        }`}
+        role="timer"
+        aria-label="Cuenta regresiva hasta el 15 de marzo de 2027"
+      >
+        <div className="reloj-flap">
+          {/* HORAS (totales) */}
+          <div className="reloj-flap__grupo">
+            {cifrasHoras.map((c, i) => (
+              // La key cuenta desde la derecha: si aparece o desaparece una
+              // cifra a la izquierda, las demás conservan su animación.
+              <Digito key={`h${cifrasHoras.length - 1 - i}`} valor={c} />
+            ))}
+            <span className="reloj-flap__separador" aria-hidden="true">
+              :
+            </span>
+          </div>
+
+          {/* MINUTOS */}
+          <div className="reloj-flap__grupo">
+            <Digito key="m1" valor={minutos[0]} />
+            <Digito key="m0" valor={minutos[1]} />
+            <span className="reloj-flap__separador" aria-hidden="true">
+              :
+            </span>
+          </div>
+
+          {/* SEGUNDOS */}
+          <div className="reloj-flap__grupo">
+            <Digito key="s1" valor={segundos[0]} />
+            <Digito key="s0" valor={segundos[1]} />
+          </div>
+        </div>
+
+        {!compacto && (
+          <div
+            className="reloj-flap__etiquetas"
+            style={{
+              gridTemplateColumns: `${cifrasHoras.length}fr 2fr 2fr`,
+            }}
+          >
+            <span>HORAS</span>
+            <span>MINUTOS</span>
+            <span>SEGUNDOS</span>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

@@ -10,6 +10,7 @@ import { AREAS_UNMSM } from "../../data/distribucionExamenUNMSM";
 import PreguntaSimulacro from "./PreguntaSimulacro";
 import ResultadosExamenPage from "./ResultadosExamenPage";
 import AbandonarSimulacroModal from "../../components/AbandonarSimulacroModal";
+import { RelojRegresivo } from "../../components/RelojPared";
 const DURACION_SEGUNDOS = 3 * 60 * 60;
 const STORAGE_KEY = "examen_simulacro_estado";
 const ICONO_CURSO = {
@@ -58,19 +59,6 @@ function guardarEstado(estado) {
 }
 function limpiarEstadoGuardado() {
   localStorage.removeItem(STORAGE_KEY);
-}
-function formatearTiempo(segundos) {
-  const s = Math.max(0, Math.round(segundos));
-  const h = String(
-    Math.floor(s / 3600)
-  ).padStart(2, "0");
-  const m = String(
-    Math.floor((s % 3600) / 60)
-  ).padStart(2, "0");
-  const ss = String(
-    s % 60
-  ).padStart(2, "0");
-  return `${h}:${m}:${ss}`;
 }
 function SelectorCurso({
   cursos,
@@ -432,10 +420,12 @@ export default function ExamenPage() {
    * ============================================================
    */
   useEffect(() => {
+    // "instant" ignora el scroll-behavior: smooth del html y salta
+    // directo al tope (con "auto" se animaba y podía quedarse a medias).
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "auto",
+      behavior: "instant",
     });
     /*
      * Al cambiar de curso, el header vuelve a aparecer.
@@ -544,7 +534,7 @@ export default function ExamenPage() {
   if (etapa === "resultados") {
     return (
       <>
-        <AppHeader section="examen" />
+        <AppHeader section="examen" sinHamburguesa />
         <ResultadosExamenPage
           resultados={resultados}
           area={area}
@@ -603,18 +593,6 @@ export default function ExamenPage() {
    */
   const totalRespondidas =
     Object.keys(respuestas).length;
-  /*
-   * ============================================================
-   * ROTACIÓN DE LA AGUJA
-   * ============================================================
-   */
-  const segundosTranscurridos =
-    DURACION_SEGUNDOS -
-    segundosLeft;
-  const rotacionAguja =
-    ((segundosTranscurridos / 60) *
-      6) %
-    360;
   /*
    * ============================================================
    * CONTEXTO DE TEXTOS RV
@@ -762,9 +740,6 @@ export default function ExamenPage() {
         key={pregunta.id}
         className="arcade-game-container question-card examen-page__card"
       >
-        <div className="examen-page__curso-tag">
-          {cursoActual.cursoNombre}
-        </div>
         <div className="question-card__inner">
           <PreguntaSimulacro
             pregunta={pregunta}
@@ -863,11 +838,6 @@ export default function ExamenPage() {
             className="examen-page__rv-grupo"
           >
             <div className="arcade-game-container question-card examen-page__card examen-page__rv-texto">
-              <div className="examen-page__curso-tag">
-                {
-                  cursoActual.cursoNombre
-                }
-              </div>
               {renderTextoRV(
                 bloque.textoRV
               )}
@@ -900,49 +870,10 @@ export default function ExamenPage() {
             : "is-hidden"
           }`}
       >
-        <span
-          className={`examen-page__timer ${segundosLeft <= 300
-              ? "is-urgente"
-              : ""
-            }`}
-        >
-          <svg
-            className="examen-page__clock"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            {/* Esfera del reloj */}
-            <circle
-              className="examen-page__clock-face"
-              cx="12"
-              cy="12"
-              r="9"
-            />
-            {/* Aguja */}
-            <line
-              className="examen-page__clock-minute"
-              x1="12"
-              y1="12"
-              x2="12"
-              y2="5"
-              style={{
-                transform: `rotate(${rotacionAguja}deg)`,
-                transformOrigin:
-                  "12px 12px",
-              }}
-            />
-            {/* Centro de la aguja */}
-            <circle
-              className="examen-page__clock-center"
-              cx="12"
-              cy="12"
-              r="1"
-            />
-          </svg>
-          {formatearTiempo(
-            segundosLeft
-          )}
-        </span>
+        <RelojRegresivo
+          segundos={segundosLeft}
+          urgente={segundosLeft <= 300}
+        />
         <span className="examen-page__progreso">
           Curso{" "}
           {cursos.length

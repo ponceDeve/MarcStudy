@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
+import { Cronometro } from "../../components/RelojPared";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
@@ -49,6 +50,8 @@ export default function TopBar({
   onIrInicio,
   onVolverTeoria,
   temasOpen = false,
+  claveCronometro,
+  cronometroPausado = false,
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   useAutoHideHeader(menuMobileOpen);
@@ -241,7 +244,13 @@ export default function TopBar({
     <div className="topbar-wrapper">
       <div className="topbar">
         <div className="topbar__inner">
-          <div className="topbar__content-box">
+          <div
+            className={`topbar__content-box${
+              esPregunta && !esResultados
+                ? " topbar__content-box--reloj"
+                : ""
+            }`}
+          >
             {esResultados ? (
               <button
                 type="button"
@@ -254,6 +263,11 @@ export default function TopBar({
                   Volver
                 </span>
               </button>
+            ) : esPregunta ? (
+              <Cronometro
+                clave={claveCronometro}
+                pausado={cronometroPausado}
+              />
             ) : (
               <button
                 type="button"

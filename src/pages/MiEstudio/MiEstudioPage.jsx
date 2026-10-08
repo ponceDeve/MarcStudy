@@ -45,7 +45,6 @@ import {
   guardarEstrellasExamen
 } from "../../lib/estrellasJuego";
 import SeleccionAreaModal from "../Examen/SeleccionAreaModal";
-import RelojPared from "../../components/RelojPared";
 import "katex/dist/katex.min.css";
 const OPCIONES_BUSQUEDA = manifest.cursos.flatMap((curso) => [
   { type: "curso", nombre: curso.nombre },
@@ -263,6 +262,7 @@ export default function MiEstudioPage() {
   const [alertaVidas, setAlertaVidas] = useState(null);
   const [modoExamenTema, setModoExamenTema] = useState(false);
   const [faseExamenTema, setFaseExamenTema] = useState("preguntas");
+  const [indiceExamenTema, setIndiceExamenTema] = useState(0);
   const [titulosFinalesExamen, setTitulosFinalesExamen] = useState([]);
   // Videojuego con estrellas (separado de "estrellasTemas" del panel de niveles)
   const [juegoTitulo, setJuegoTitulo] = useState(null);
@@ -2495,6 +2495,22 @@ ${teoria}`;
                 total:
                   flatPuntos.length
               };
+  // Cronómetro del header: se reinicia con cada pregunta y se congela
+  // cuando ya respondiste (o mientras corre la cuenta 3-2-1 del juego).
+  const claveCronometro = modoExamenTema
+    ? `examen-${indiceExamenTema}`
+    : `${
+        repasoQuizActivo
+          ? "repaso-" + repasoQuizPos
+          : isLevelMode
+            ? "nivel-" + nivelIndex
+            : isFlipQuiz
+              ? "flip-" + cardIndex + "-" + quizPos
+              : "teoria-" + cardIndex
+      }-${attemptKey}`;
+  const cronometroPausado =
+    !modoExamenTema &&
+    (countdown > 0 || questionResult !== null);
   const juegoConEstrellas =
     Boolean(juegoTitulo) &&
     modoEstudio ===
@@ -2559,6 +2575,8 @@ ${teoria}`;
           }
           tema={topicData.tema}
           curso={topicData.curso}
+          claveCronometro={claveCronometro}
+          cronometroPausado={cronometroPausado}
           onAbrirBuscador={() =>
             setSearchOpen(true)
           }
@@ -3023,60 +3041,6 @@ ${teoria}`;
                 }}
               />
             </div>
-            <div className="mi-estudio__recomendados container">
-                <div className="mi-estudio__recomendados-fecha">
-                  {(() => {
-                    const ahora =
-                      new Date();
-                    const objetivo =
-                      new Date(
-                        2027,
-                        2,
-                        15
-                      );
-                    let meses =
-                      (objetivo.getFullYear() -
-                        ahora.getFullYear()) *
-                        12 +
-                      (objetivo.getMonth() -
-                        ahora.getMonth());
-                    const fechaMeses =
-                      new Date(ahora);
-                    fechaMeses.setMonth(
-                      fechaMeses.getMonth() +
-                        meses
-                    );
-                    if (
-                      fechaMeses >
-                      objetivo
-                    ) {
-                      meses--;
-                      fechaMeses.setMonth(
-                        fechaMeses.getMonth() -
-                          1
-                      );
-                    }
-                    const diasRestantes =
-                      Math.ceil(
-                        (objetivo -
-                          fechaMeses) /
-                          (1000 *
-                            60 *
-                            60 *
-                            24)
-                      );
-                    const semanas =
-                      Math.floor(
-                        diasRestantes /
-                          7
-                      );
-                    const dias =
-                      diasRestantes % 7;
-                    return `${meses} meses · ${semanas} semanas · ${dias} días`;
-                  })()}
-                </div>
-                <RelojPared />
-              </div>
           </>
         )}
         {topicData?.secciones && (
@@ -3530,6 +3494,9 @@ ${teoria}`;
                         }
                         onFaseChange={
                           setFaseExamenTema
+                        }
+                        onIndiceChange={
+                          setIndiceExamenTema
                         }
                         onAbandonar={
                           pedirAbandonarPregunta
