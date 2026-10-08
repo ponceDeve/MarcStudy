@@ -341,6 +341,45 @@
   overflow: visible;
 }
 
+/* Reloj del header: se ve unos segundos y luego se oculta (sigue
+   contando); en su lugar aparece "Tocar" con un icono. */
+.reloj-oculto {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reloj-oculto__reloj {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.reloj-oculto.is-visible .reloj-oculto__reloj {
+  opacity: 1;
+}
+
+.reloj-oculto__hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: var(--fs-sm, 14px);
+  color: var(--ink-faint, #8a8a8a);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.reloj-oculto.is-visible .reloj-oculto__hint {
+  opacity: 0;
+}
+
 /* ------------------------------------------------------------
    PANTALLAS PEQUEÑAS
    ------------------------------------------------------------ */

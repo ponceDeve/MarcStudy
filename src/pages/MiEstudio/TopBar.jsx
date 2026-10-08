@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
 import { Cronometro } from "../../components/RelojPared";
+import RelojOculto from "../../components/RelojOculto";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
     <>
@@ -55,6 +56,10 @@ export default function TopBar({
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   useAutoHideHeader(menuMobileOpen);
+
+  const topbarRef = useRef(null);
+  const esPregunta =
+    stage === "question" || stage === "exam";
   // En los resultados del examen, el título curso/tema se reemplaza por
   // un botón "Volver" que regresa a la teoría.
   const esResultados =
@@ -139,8 +144,6 @@ export default function TopBar({
     onClick: onAbandonarPregunta,
     className: "topbar__nav-btn--abandonar",
   };
-  const esPregunta =
-    stage === "question" || stage === "exam";
   const botonesVisibles = esPregunta
     ? [botonAbandonar]
     : [...botonesPrincipales];
@@ -242,7 +245,7 @@ export default function TopBar({
   };
   return (
     <div className="topbar-wrapper">
-      <div className="topbar">
+      <div className="topbar" ref={topbarRef}>
         <div className="topbar__inner">
           <div
             className={`topbar__content-box${
@@ -264,10 +267,15 @@ export default function TopBar({
                 </span>
               </button>
             ) : esPregunta ? (
-              <Cronometro
+              <RelojOculto
+                contenedorRef={topbarRef}
                 clave={claveCronometro}
-                pausado={cronometroPausado}
-              />
+              >
+                <Cronometro
+                  clave={claveCronometro}
+                  pausado={cronometroPausado}
+                />
+              </RelojOculto>
             ) : (
               <button
                 type="button"

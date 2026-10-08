@@ -11,6 +11,7 @@ import PreguntaSimulacro from "./PreguntaSimulacro";
 import ResultadosExamenPage from "./ResultadosExamenPage";
 import AbandonarSimulacroModal from "../../components/AbandonarSimulacroModal";
 import { RelojRegresivo } from "../../components/RelojPared";
+import RelojOculto from "../../components/RelojOculto";
 const DURACION_SEGUNDOS = 3 * 60 * 60;
 const STORAGE_KEY = "examen_simulacro_estado";
 const ICONO_CURSO = {
@@ -870,10 +871,12 @@ export default function ExamenPage() {
             : "is-hidden"
           }`}
       >
-        <RelojRegresivo
-          segundos={segundosLeft}
-          urgente={segundosLeft <= 300}
-        />
+        <RelojOculto contenedorRef={topbarRef}>
+          <RelojRegresivo
+            segundos={segundosLeft}
+            urgente={segundosLeft <= 300}
+          />
+        </RelojOculto>
         <span className="examen-page__progreso">
           Curso{" "}
           {cursos.length
