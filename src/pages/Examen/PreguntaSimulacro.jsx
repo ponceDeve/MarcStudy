@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import LatexText from "../../components/LatexText";
 import {
   claveCombinacion,
@@ -8,6 +8,14 @@ import {
   respuestaVFCompleta,
 } from "../../lib/verdaderoFalso";
 const LETRAS_ALTERNATIVAS = ["A", "B", "C", "D", "E"];
+// Cantidad de letras que se pueden asignar en Relacionar: una por cada
+// elemento de la columna B (máximo A–E).
+function cantidadLetrasRelacionar(pregunta) {
+  const n = (pregunta.columnaB || []).length;
+  return n > 0
+    ? Math.min(n, LETRAS_ALTERNATIVAS.length)
+    : LETRAS_ALTERNATIVAS.length;
+}
 // ============================================================================
 // DETECTAR ESPACIOS DE COMPLETAR
 // ============================================================================
@@ -54,6 +62,70 @@ export default function PreguntaSimulacro({
       generarAlternativasVF(pregunta.proposiciones || [])
     );
   }, [pregunta]);
+  // Marcas visuales (Verdadero/Falso y Relacionar). Solo visuales: no afectan
+  // la respuesta, las alternativas A–E ni la calificación.
+  // Verdadero/Falso: marcas[i] = "verde" | "rojo" (sin clave = sin color).
+  // Relacionar: marcas[i] = índice de letra (0 = A ... 4 = E), sin clave = sin marcar.
+  // Las marcas pertenecen a la pregunta en pantalla: si cambia, empiezan vacías.
+  const [estadoMarcas, setEstadoMarcas] = useState({
+    pregunta: null,
+    marcas: {},
+  });
+  const marcas =
+    estadoMarcas.pregunta === pregunta
+      ? estadoMarcas.marcas
+      : {};
+  function actualizarMarcas(actualizador) {
+    setEstadoMarcas((prev) => {
+      const base =
+        prev.pregunta === pregunta ? prev.marcas : {};
+      return {
+        pregunta,
+        marcas: actualizador(base),
+      };
+    });
+  }
+  function alternarMarcaVF(i) {
+    actualizarMarcas((prev) => {
+      const siguiente = { ...prev };
+      if (prev[i] === undefined) {
+        siguiente[i] = "verde";
+      } else if (prev[i] === "verde") {
+        siguiente[i] = "rojo";
+      } else {
+        delete siguiente[i];
+      }
+      return siguiente;
+    });
+  }
+  function alternarMarcaRel(i) {
+    actualizarMarcas((prev) => {
+      const siguiente = { ...prev };
+      const actual =
+        prev[i] === undefined ? -1 : prev[i];
+      let nueva = null;
+      // Busca la siguiente letra libre (A → B → C → D → E); nunca duplica.
+      for (
+        let n = actual + 1;
+        n < cantidadLetrasRelacionar(pregunta);
+        n++
+      ) {
+        const ocupada = Object.keys(prev).some(
+          (k) => Number(k) !== i && prev[k] === n
+        );
+        if (!ocupada) {
+          nueva = n;
+          break;
+        }
+      }
+      if (nueva === null) {
+        delete siguiente[i];
+      } else {
+        siguiente[i] = nueva;
+      }
+      return siguiente;
+    });
+  }
   // ==========================================================================
   // VERDADERO / FALSO (alternativas A–E como en QuestionCard / TemaExamenView)
   // ==========================================================================
@@ -81,18 +153,41 @@ export default function PreguntaSimulacro({
           </h3>
         )}
         <ol className="question-card__vf-list">
-          {proposiciones.map((prop, i) => (
-            <li key={i} className="question-card__vf-row">
-              <span className="question-card__vf-texto">
-                <LatexText>{prop.texto}</LatexText>
-              </span>
-              {modoResultado && (
-                <span className="question-card__vf-correcta">
-                  Correcta: {prop.correct ? "Verdadero" : "Falso"}
+          {proposiciones.map((prop, i) => {
+            const marca = marcas[i];
+            let claseMarca = "";
+            if (!modoResultado) {
+              if (marca === "verde") {
+                claseMarca = " is-correct is-marca-v";
+              } else if (marca === "rojo") {
+                claseMarca = " is-wrong is-marca-f";
+              }
+            }
+            return (
+              <li
+                key={i}
+                className={`question-card__vf-row${
+                  modoResultado
+                    ? ""
+                    : " question-card__vf-row--marcable"
+                }${claseMarca}`}
+                onClick={
+                  modoResultado
+                    ? undefined
+                    : () => alternarMarcaVF(i)
+                }
+              >
+                <span className="question-card__vf-texto">
+                  <LatexText>{prop.texto}</LatexText>
                 </span>
-              )}
-            </li>
-          ))}
+                {modoResultado && (
+                  <span className="question-card__vf-correcta">
+                    Correcta: {prop.correct ? "Verdadero" : "Falso"}
+                  </span>
+                )}
+              </li>
+            );
+          })}
         </ol>
         <div className="question-card__options question-card__options--completar">
           {alternativas.map((combinacion, i) => {
@@ -260,18 +355,53 @@ export default function PreguntaSimulacro({
         )}
         <div className="question-card__match">
           <ul className="question-card__match-col">
-            {(pregunta.columnaA || []).map((item, i) => (
-              <li key={i}>
-                <LatexText>{item}</LatexText>
-              </li>
-            ))}
+            {(pregunta.columnaA || []).map((item, i) => {
+              const letraIdx = marcas[i];
+              const marcado =
+                !modoResultado && letraIdx !== undefined;
+              return (
+                <li
+                  key={i}
+                  className={`${
+                    modoResultado
+                      ? ""
+                      : "question-card__match-item"
+                  }${marcado ? ` is-marcado is-color-${i % 5}` : ""}`.trim() || undefined}
+                  onClick={
+                    modoResultado
+                      ? undefined
+                      : () => alternarMarcaRel(i)
+                  }
+                >
+                  {marcado && (
+                    <strong className="question-card__match-letra">
+                      {LETRAS_ALTERNATIVAS[letraIdx]})
+                    </strong>
+                  )}
+                  <LatexText>{item}</LatexText>
+                </li>
+              );
+            })}
           </ul>
           <ul className="question-card__match-col">
-            {(pregunta.columnaB || []).map((item, i) => (
-              <li key={i}>
-                <LatexText>{item}</LatexText>
-              </li>
-            ))}
+            {(pregunta.columnaB || []).map((item, i) => {
+              const duenio = Object.keys(marcas).find(
+                (k) => marcas[k] === i
+              );
+              const asignada = !modoResultado && duenio !== undefined;
+              return (
+                <li
+                  key={i}
+                  className={
+                    asignada
+                      ? `question-card__match-par is-color-${Number(duenio) % 5}`
+                      : undefined
+                  }
+                >
+                  <LatexText>{item}</LatexText>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="question-card__options question-card__options--relacionar">

@@ -70,6 +70,14 @@ const LETRAS_ALTERNATIVAS = [
   "D",
   "E",
 ];
+// Cantidad de letras que se pueden asignar en Relacionar: una por cada
+// elemento de la columna B (máximo A–E).
+function cantidadLetrasRelacionar(pregunta) {
+  const n = (pregunta.columnaB || []).length;
+  return n > 0
+    ? Math.min(n, LETRAS_ALTERNATIVAS.length)
+    : LETRAS_ALTERNATIVAS.length;
+}
 // ============================================================================
 // OPCIÓN MÚLTIPLE
 // ============================================================================
@@ -257,6 +265,10 @@ function VerdaderoFalso({
     useState(null);
   const [wasCorrect, setWasCorrect] =
     useState(false);
+  // Marcas visuales de cada proposición: sin color → "verde" → "rojo" → sin color.
+  // No intervienen en las alternativas A–E ni en la calificación.
+  const [marcasVF, setMarcasVF] =
+    useState({});
   const hurraRef = useRef(null);
   const [avisoVisible, mostrarAviso] =
     useAvisoBloqueo();
@@ -270,6 +282,19 @@ function VerdaderoFalso({
   function elegirOpcion(i) {
     if (answered) return;
     setChosenIdx(i);
+  }
+  function alternarMarcaVF(i) {
+    setMarcasVF((prev) => {
+      const siguiente = { ...prev };
+      if (prev[i] === undefined) {
+        siguiente[i] = "verde";
+      } else if (prev[i] === "verde") {
+        siguiente[i] = "rojo";
+      } else {
+        delete siguiente[i];
+      }
+      return siguiente;
+    });
   }
   function calificar() {
     if (answered) return;
@@ -304,18 +329,30 @@ function VerdaderoFalso({
         </h3>
       )}
       <ol className="question-card__vf-list">
-        {proposiciones.map((prop, i) => (
-          <li
-            key={i}
-            className="question-card__vf-row"
-          >
-            <span className="question-card__vf-texto">
-              <LatexText>
-                {prop.texto}
-              </LatexText>
-            </span>
-          </li>
-        ))}
+        {proposiciones.map((prop, i) => {
+          const marca = marcasVF[i];
+          let claseMarca = "";
+          if (marca === "verde") {
+            claseMarca = " is-correct is-marca-v";
+          } else if (marca === "rojo") {
+            claseMarca = " is-wrong is-marca-f";
+          }
+          return (
+            <li
+              key={i}
+              className={`question-card__vf-row question-card__vf-row--marcable${claseMarca}`}
+              onClick={() =>
+                alternarMarcaVF(i)
+              }
+            >
+              <span className="question-card__vf-texto">
+                <LatexText>
+                  {prop.texto}
+                </LatexText>
+              </span>
+            </li>
+          );
+        })}
       </ol>
       <div className="question-card__options question-card__options--vf">
         {alternativas.map(
@@ -624,6 +661,10 @@ function Relacionar({
     useState(null);
   const [wasCorrect, setWasCorrect] =
     useState(false);
+  // Marcas visuales de la columna A: { índiceDelElemento: índiceDeLetra }.
+  // No intervienen en las alternativas A–E ni en la calificación.
+  const [marcasRel, setMarcasRel] =
+    useState({});
   const hurraRef = useRef(null);
   const [avisoVisible, mostrarAviso] =
     useAvisoBloqueo();
@@ -642,6 +683,40 @@ function Relacionar({
   function elegirOpcion(i) {
     if (answered) return;
     setChosenIdx(i);
+  }
+  function alternarMarcaRel(i) {
+    setMarcasRel((prev) => {
+      const siguiente = { ...prev };
+      const actual =
+        prev[i] === undefined
+          ? -1
+          : prev[i];
+      let nueva = null;
+      // Busca la siguiente letra libre (A → B → C → D → E); nunca duplica.
+      for (
+        let n = actual + 1;
+        n < cantidadLetrasRelacionar(pregunta);
+        n++
+      ) {
+        const ocupada = Object.keys(
+          prev
+        ).some(
+          (k) =>
+            Number(k) !== i &&
+            prev[k] === n
+        );
+        if (!ocupada) {
+          nueva = n;
+          break;
+        }
+      }
+      if (nueva === null) {
+        delete siguiente[i];
+      } else {
+        siguiente[i] = nueva;
+      }
+      return siguiente;
+    });
   }
   function confirmarRespuesta() {
     if (answered) return;
@@ -675,24 +750,63 @@ function Relacionar({
       <div className="question-card__match question-card__match--relacionar">
         <ul className="question-card__match-col">
           {(pregunta.columnaA || []).map(
-            (item, i) => (
-              <li key={i}>
-                <LatexText>
-                  {item}
-                </LatexText>
-              </li>
-            )
+            (item, i) => {
+              const letraIdx =
+                marcasRel[i];
+              const marcado =
+                letraIdx !== undefined;
+              return (
+                <li
+                  key={i}
+                  className={`question-card__match-item${
+                    marcado
+                      ? ` is-marcado is-color-${i % 5}`
+                      : ""
+                  }`}
+                  onClick={() =>
+                    alternarMarcaRel(i)
+                  }
+                >
+                  {marcado && (
+                    <strong className="question-card__match-letra">
+                      {
+                        LETRAS_ALTERNATIVAS[
+                          letraIdx
+                        ]
+                      }
+                      )
+                    </strong>
+                  )}
+                  <LatexText>
+                    {item}
+                  </LatexText>
+                </li>
+              );
+            }
           )}
         </ul>
         <ul className="question-card__match-col">
           {(pregunta.columnaB || []).map(
-            (item, i) => (
-              <li key={i}>
-                <LatexText>
-                  {item}
-                </LatexText>
-              </li>
-            )
+            (item, i) => {
+              const duenio = Object.keys(marcasRel).find(
+                (k) => marcasRel[k] === i
+              );
+              const asignada = duenio !== undefined;
+              return (
+                <li
+                  key={i}
+                  className={
+                    asignada
+                      ? `question-card__match-par is-color-${Number(duenio) % 5}`
+                      : undefined
+                  }
+                >
+                  <LatexText>
+                    {item}
+                  </LatexText>
+                </li>
+              );
+            }
           )}
         </ul>
       </div>

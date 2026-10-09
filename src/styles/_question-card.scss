@@ -487,6 +487,65 @@
   border-color: var(--danger);
   background: var(--danger-bg);
 }
+/* ============================================================
+   MARCAS VISUALES (Verdadero/Falso y Relacionar)
+   Solo visuales: no afectan alternativas ni calificación.
+   ============================================================ */
+.question-card__vf-row--marcable {
+  cursor: pointer;
+  transition: none;
+}
+/* Marcas de Verdadero/Falso: usan el fondo de acierto/error
+   (is-correct / is-wrong) y cambian el número por V o F. */
+.question-card__vf-row.is-marca-v::before {
+  content: "V.";
+}
+.question-card__vf-row.is-marca-f::before {
+  content: "F.";
+}
+.question-card__match-col li.question-card__match-item {
+  cursor: pointer;
+  transition: none;
+}
+.question-card__match-col li.question-card__match-par {
+  transition: none;
+}
+/* Un color por letra: borde izquierdo del elemento de la columna A y del
+   elemento de la columna B que le corresponde, para unir ambas relaciones.
+   El fondo no cambia. */
+.question-card__match-col li.is-color-0 {
+  border-left: 4px solid #c026d3;
+}
+.question-card__match-col li.is-color-1 {
+  border-left: 4px solid #0891b2;
+}
+.question-card__match-col li.is-color-2 {
+  border-left: 4px solid #8b5a2b;
+}
+.question-card__match-col li.is-color-3 {
+  border-left: 4px solid #64748b;
+}
+.question-card__match-col li.is-color-4 {
+  border-left: 4px solid #701a75;
+}
+.question-card__match-letra {
+  margin-right: 8px;
+}
+.question-card__match-col li.is-color-0 .question-card__match-letra {
+  color: #c026d3;
+}
+.question-card__match-col li.is-color-1 .question-card__match-letra {
+  color: #0891b2;
+}
+.question-card__match-col li.is-color-2 .question-card__match-letra {
+  color: #8b5a2b;
+}
+.question-card__match-col li.is-color-3 .question-card__match-letra {
+  color: #64748b;
+}
+.question-card__match-col li.is-color-4 .question-card__match-letra {
+  color: #701a75;
+}
 .question-card__vf-texto {
   flex: 1 1 200px;
   font-size: 18px;
