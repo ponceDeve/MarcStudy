@@ -1,0 +1,336 @@
+{
+  "curso": "Álgebra",
+  "tema": "Inecuaciones fraccionarias",
+  "glosario": {
+    "inecuación": "Desigualdad con una incógnita.",
+    "desigualdad": "Comparación de dos expresiones con signos de orden.",
+    "polinomio": "Suma de términos con potencias enteras no negativas.",
+    "fracción algebraica": "Cociente de dos polinomios.",
+    "numerador": "Expresión superior de una fracción.",
+    "denominador": "Expresión inferior de una fracción.",
+    "cociente": "Resultado de dividir dos expresiones.",
+    "incógnita": "Variable cuyo valor se desea hallar.",
+    "raíz": "Valor que anula una expresión.",
+    "punto crítico": "Raíz del numerador o denominador.",
+    "conjunto solución": "Valores que verifican la desigualdad.",
+    "valores admisibles": "Valores donde la expresión está definida.",
+    "mínimo común múltiplo": "Menor expresión divisible entre todas las dadas.",
+    "factorizar": "Escribir como producto de factores.",
+    "multiplicidad": "Veces que se repite un factor.",
+    "discriminante": "Número que indica las raíces de un cuadrático.",
+    "coeficiente principal": "Coeficiente del término de mayor grado.",
+    "intervalo": "Conjunto de reales entre dos extremos.",
+    "unión": "Conjunto con elementos de ambos conjuntos.",
+    "intersección": "Elementos comunes a ambos conjuntos.",
+    "recta real": "Recta que representa los números reales.",
+    "recíproco": "Número que multiplicado da uno.",
+    "conjunto vacío": "Conjunto sin ningún elemento.",
+    "diferencia de cuadrados": "Producto notable de suma por diferencia.",
+    "extremo": "Valor límite de un intervalo.",
+    "equivalente": "Que tiene el mismo conjunto solución.",
+    "racional": "Que se expresa como cociente."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Inecuación fraccionaria» ⇒ variable en el denominador",
+          "explicacion": "Una inecuación fraccionaria es una desigualdad (con los signos $<$, $>$, $\\le$ o $\\ge$) en la que aparece al menos una fracción algebraica cuyo denominador es un polinomio que contiene a la incógnita. Un polinomio es una suma de términos de la forma $a_n x^n$ con exponentes enteros no negativos, y una fracción algebraica es un cociente $\\frac{P(x)}{Q(x)}$ de dos polinomios con $Q(x)$ distinto del polinomio cero. La condición clave es que la incógnita figure en el denominador: si el denominador es solo un número, la desigualdad sigue siendo lineal o cuadrática y no fraccionaria. Ejemplo: $\\frac{x+1}{x-2}\\ge 3$ es fraccionaria porque el denominador $x-2$ depende de $x$; en cambio $\\frac{x+1}{2}\\ge 3$ no lo es, pues el denominador $2$ es constante y basta multiplicar por $2$ (positivo) para obtener $x+1\\ge 6$, es decir $x\\ge 5$."
+        },
+        {
+          "texto": "Forma general: $\\frac{P(x)}{Q(x)}$ comparado con 0",
+          "explicacion": "Toda inecuación fraccionaria se puede llevar a una de cuatro formas: $\\frac{P(x)}{Q(x)}>0$, $\\frac{P(x)}{Q(x)}<0$, $\\frac{P(x)}{Q(x)}\\ge 0$ o $\\frac{P(x)}{Q(x)}\\le 0$, donde $P(x)$ es el polinomio del numerador, $Q(x)$ el polinomio del denominador y $Q(x)\\ne 0$. Se compara con cero porque el signo de un cociente se decide estudiando el signo de numerador y denominador, y esa información solo es directa cuando el otro miembro es $0$. Ejemplo: $\\frac{x+1}{x-2}\\ge 3$ no está en forma general; al restar $3$ en ambos miembros queda $\\frac{x+1}{x-2}-3\\ge 0$, que después de combinar las fracciones se convierte en $\\frac{7-2x}{x-2}\\ge 0$, ya en la forma $\\frac{P(x)}{Q(x)}\\ge 0$ con $P(x)=7-2x$ y $Q(x)=x-2$."
+        },
+        {
+          "texto": "Nombre alternativo: «inecuación racional»",
+          "explicacion": "La inecuación fraccionaria también se llama inecuación racional. El adjetivo «racional» proviene de que un cociente de dos polinomios se denomina expresión racional, de la misma manera que un cociente de dos enteros es un número racional. Ambos nombres designan exactamente el mismo tipo de desigualdad, de modo que lo estudiado bajo uno de ellos vale para el otro. Ejemplo: $\\frac{x-1}{x+2}>0$ puede describirse como inecuación fraccionaria o como inecuación racional, porque su miembro izquierdo es el cociente de los polinomios $x-1$ y $x+2$."
+        },
+        {
+          "texto": "Nombre alternativo: «inecuación con fracciones algebraicas»",
+          "explicacion": "Otra manera de nombrar el mismo tema es describirlo por su contenido: una inecuación en la que intervienen fracciones algebraicas, es decir, cocientes de polinomios con la incógnita en el denominador. Este nombre subraya que el trabajo central consiste en operar con fracciones algebraicas (sumar, restar, factorizar y simplificar) antes de estudiar signos. Ejemplo: $\\frac{1}{x}+\\frac{1}{x-2}\\le 0$ contiene dos fracciones algebraicas, con denominadores $x$ y $x-2$, y por eso pertenece a este tipo de inecuaciones."
+        },
+        {
+          "texto": "$S$ = conjunto solución de la inecuación",
+          "explicacion": "La letra $S$ se usa en este tema como abreviatura de «conjunto solución»: el conjunto formado por todos los números reales que, al sustituirse en lugar de $x$, hacen verdadera la desigualdad. Resolver una inecuación fraccionaria significa determinar $S$, que casi siempre es un intervalo o una unión de intervalos. Se verifica comprobando valores concretos. Ejemplo: para $\\frac{x-1}{x+2}>0$ se obtiene $S=(-\\infty,-2)\\cup(1,+\\infty)$; el valor $x=3$ está en $S$ porque $\\frac{3-1}{3+2}=\\frac{2}{5}>0$, mientras que $x=0$ no está porque $\\frac{0-1}{0+2}=-\\frac{1}{2}<0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores admisibles",
+      "puntos": [
+        {
+          "texto": "$Q(x)\\ne 0$ ⇒ el denominador nunca se anula",
+          "explicacion": "La división entre cero no está definida en los números reales, de modo que toda fracción algebraica $\\frac{P(x)}{Q(x)}$ exige $Q(x)\\ne 0$. Por eso, antes de operar, se resuelve la ecuación $Q(x)=0$ y se excluyen sus soluciones de cualquier respuesta posible. Esta restricción pertenece a la inecuación original y no desaparece aunque después se simplifique. Ejemplo: en $\\frac{x+3}{x-5}$ el denominador se anula cuando $x-5=0$, es decir, $x=5$. Verificación: al sustituir $x=5$ resulta $\\frac{8}{0}$, que carece de sentido; por tanto $x\\ne 5$."
+        },
+        {
+          "texto": "Valores admisibles = $\\mathbb{R}$ menos las raíces del denominador",
+          "explicacion": "El conjunto de valores admisibles es el conjunto de números reales para los cuales todas las fracciones de la inecuación están definidas. El símbolo $\\mathbb{R}$ denota el conjunto de los números reales y una raíz de un polinomio es un valor de $x$ que lo hace igual a cero. Así, el conjunto de valores admisibles es $\\mathbb{R}$ sin las raíces reales de cada denominador. Ejemplo: para $\\frac{x+1}{x^2-4}$ se resuelve $x^2-4=0$, es decir $(x-2)(x+2)=0$, con raíces $x=2$ y $x=-2$. El conjunto de valores admisibles es $\\mathbb{R}-\\{-2,2\\}$. Verificación: $x=2$ da $\\frac{3}{0}$ y $x=-2$ da $\\frac{-1}{0}$, ambos indefinidos; $x=0$ da $\\frac{1}{-4}$, que sí existe."
+        },
+        {
+          "texto": "Varios denominadores ⇒ excluir las raíces de todos",
+          "explicacion": "Si la inecuación contiene varias fracciones, cada una impone su propia restricción y los valores admisibles son los que cumplen todas a la vez; en consecuencia se excluyen las raíces de cada denominador. Ejemplo: en $\\frac{1}{x}+\\frac{1}{x-2}\\le 0$ el primer denominador exige $x\\ne 0$ y el segundo exige $x\\ne 2$, de modo que los valores admisibles son $\\mathbb{R}-\\{0,2\\}$. Verificación: $x=0$ vuelve indefinida la primera fracción ($\\frac{1}{0}$) y $x=2$ vuelve indefinida la segunda ($\\frac{1}{0}$); cualquier otro valor, como $x=1$, da $\\frac{1}{1}+\\frac{1}{-1}=0$, que está definido."
+        },
+        {
+          "texto": "Denominador sin raíces reales ⇒ ninguna restricción",
+          "explicacion": "Si $Q(x)$ no tiene raíces reales, nunca vale cero y el conjunto de valores admisibles es todo $\\mathbb{R}$. Un caso típico es un polinomio cuadrático $ax^2+bx+c$ con discriminante negativo, donde el discriminante es $\\Delta=b^2-4ac$. Ejemplo: $Q(x)=x^2+1$ cumple $\\Delta=0^2-4(1)(1)=-4<0$, así que $x^2+1=0$ no tiene solución real. Verificación: como $x^2\\ge 0$, se tiene $x^2+1\\ge 1>0$ para todo $x$, por lo que el denominador jamás se anula."
+        },
+        {
+          "texto": "$S$ ⊂ valores admisibles",
+          "explicacion": "El conjunto solución siempre está contenido en el conjunto de valores admisibles, porque un valor para el que la expresión no existe no puede satisfacer la desigualdad. Esta condición sirve como control final: si al resolver aparece en $S$ una raíz del denominador, hay un error. Ejemplo: en $\\frac{x+3}{x-5}\\le 0$ el método de signos produce el intervalo $[-3,5]$ antes de aplicar la restricción; como $x=5$ anula el denominador, se descarta y queda $S=[-3,5)$. Verificación: $x=5$ no puede estar en $S$ porque $\\frac{8}{0}$ no existe, y $x=-3$ sí pertenece porque $\\frac{0}{-8}=0\\le 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo del cociente",
+      "puntos": [
+        {
+          "texto": "$\\frac{a}{b}>0$ ⇒ $a$ y $b$ con el mismo signo",
+          "explicacion": "Un cociente de números reales es positivo cuando dividendo y divisor tienen el mismo signo. La razón es que dividir entre $b$ equivale a multiplicar por $\\frac{1}{b}$, y ese inverso conserva el signo de $b$. Quedan solo dos posibilidades, siempre con $b\\ne 0$: ($a>0$ y $b>0$) o ($a<0$ y $b<0$). Ejemplo: $\\frac{12}{4}=3>0$ con ambos positivos y $\\frac{-12}{-4}=3>0$ con ambos negativos. Contraejemplo: $\\frac{12}{-4}=-3$, que no es positivo porque los signos son distintos. Verificación: en los dos casos válidos el producto $ab$ es positivo ($12\\times 4=48$ y $(-12)\\times(-4)=48$)."
+        },
+        {
+          "texto": "$\\frac{a}{b}<0$ ⇒ $a$ y $b$ con signos contrarios",
+          "explicacion": "Un cociente es negativo cuando dividendo y divisor tienen signos opuestos, con $b\\ne 0$. Hay dos posibilidades: ($a>0$ y $b<0$) o ($a<0$ y $b>0$). Se sigue de la regla anterior: si los signos fueran iguales el cociente sería positivo, y si el numerador fuera cero el cociente sería cero, no negativo. Ejemplo: $\\frac{12}{-4}=-3<0$ y $\\frac{-12}{4}=-3<0$. Verificación: en ambos casos el producto $ab$ es negativo ($12\\times(-4)=-48$ y $(-12)\\times 4=-48$)."
+        },
+        {
+          "texto": "$\\frac{a}{b}=0$ ⇒ $a=0$ y $b\\ne 0$",
+          "explicacion": "Una fracción vale cero únicamente cuando su numerador es cero y su denominador es distinto de cero. Si el denominador también fuera cero, la expresión $\\frac{0}{0}$ no estaría definida y no valdría cero. Esta propiedad explica por qué las raíces del numerador pueden incluirse en la solución de una desigualdad no estricta, mientras que las raíces del denominador nunca. Ejemplo: $\\frac{x-1}{x+2}=0$ se cumple solo en $x=1$, pues allí el numerador vale $0$ y el denominador vale $3\\ne 0$. Verificación: $\\frac{1-1}{1+2}=\\frac{0}{3}=0$."
+        },
+        {
+          "texto": "$\\frac{a}{b}\\ge 0$ ⇒ ($a\\ge 0$ y $b>0$) o ($a\\le 0$ y $b<0$)",
+          "explicacion": "Un cociente es mayor o igual que cero cuando es positivo o es cero. Es positivo si los signos coinciden y es cero si $a=0$ con $b\\ne 0$. Por eso el denominador debe ser estrictamente positivo o estrictamente negativo, mientras que el numerador puede anularse. Quedan dos casos: $a\\ge 0$ junto con $b>0$, o $a\\le 0$ junto con $b<0$. Ejemplo: $\\frac{0}{5}=0\\ge 0$ cumple el primer caso, $\\frac{8}{2}=4\\ge 0$ también, y $\\frac{-8}{-2}=4\\ge 0$ cumple el segundo. Verificación: $\\frac{5}{0}$ no sirve porque $b=0$ no se permite."
+        },
+        {
+          "texto": "$\\frac{a}{b}\\le 0$ ⇒ ($a\\ge 0$ y $b<0$) o ($a\\le 0$ y $b>0$)",
+          "explicacion": "Un cociente es menor o igual que cero cuando es negativo o es cero. Es negativo si los signos son contrarios y es cero si $a=0$ con $b\\ne 0$. El denominador sigue siendo estrictamente positivo o estrictamente negativo, y el numerador puede ser cero. Resultan dos casos: $a\\ge 0$ junto con $b<0$, o $a\\le 0$ junto con $b>0$. Ejemplo: $\\frac{6}{-3}=-2\\le 0$ cumple el primer caso, $\\frac{-6}{3}=-2\\le 0$ cumple el segundo y $\\frac{0}{-3}=0\\le 0$ también cumple el primero. Verificación: $\\frac{6}{3}=2$ no es menor o igual que cero, y en ese caso $a>0$ y $b>0$ no pertenece a ninguna de las dos opciones."
+        },
+        {
+          "texto": "$\\frac{P}{Q}>0$ ⇒ $P\\times Q>0$",
+          "explicacion": "El signo de $\\frac{P}{Q}$ coincide con el signo de $P\\times Q$ siempre que $Q\\ne 0$. Demostración: $\\frac{P}{Q}=\\frac{P\\times Q}{Q^2}$ porque se multiplican numerador y denominador por $Q$; como $Q^2>0$ para todo $Q\\ne 0$, dividir entre $Q^2$ no cambia el signo, así que $\\frac{P}{Q}$ y $P\\times Q$ tienen el mismo signo. Por tanto $\\frac{P}{Q}>0$ es equivalente a $P\\times Q>0$ con $Q\\ne 0$, y $\\frac{P}{Q}<0$ es equivalente a $P\\times Q<0$. Ejemplo con $P=x-1$ y $Q=x+2$: si $x=3$, $\\frac{2}{5}>0$ y $2\\times 5=10>0$; si $x=-3$, $\\frac{-4}{-1}=4>0$ y $(-4)(-1)=4>0$; si $x=0$, $\\frac{-1}{2}<0$ y $(-1)(2)=-2<0$."
+        },
+        {
+          "texto": "$\\frac{P}{Q}\\ge 0$ ⇒ $P\\times Q\\ge 0$ con $Q\\ne 0$",
+          "explicacion": "La equivalencia con el producto también vale para desigualdades no estrictas, pero hay que añadir por separado la condición $Q\\ne 0$. Razón: el producto $P\\times Q$ se anula tanto cuando $P=0$ (que sí cumple la fracción) como cuando $Q=0$ (que hace indefinida la fracción); por eso las raíces de $Q$ deben retirarse del resultado. Ejemplo: $\\frac{x-1}{x+2}\\ge 0$ equivale a $(x-1)(x+2)\\ge 0$ con $x\\ne -2$. El producto da $S_{producto}=(-\\infty,-2]\\cup[1,+\\infty)$; al excluir $x=-2$ queda $(-\\infty,-2)\\cup[1,+\\infty)$. Verificación: $x=-2$ no existe en la fracción original, $x=1$ da $0\\ge 0$ y $x=2$ da $\\frac{1}{4}\\ge 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Error frecuente",
+      "puntos": [
+        {
+          "texto": "Multiplicar por $Q(x)$ sin conocer su signo ⇒ resultado incorrecto",
+          "explicacion": "No se puede pasar el denominador al otro miembro multiplicando mientras no se conozca el signo de $Q(x)$. Multiplicar por un número positivo conserva el sentido de la desigualdad, multiplicar por uno negativo lo invierte, y $Q(x)$ cambia de signo según el valor de $x$, de modo que no hay una única regla válida para todos los $x$. Ejemplo con $\\frac{x+1}{x-2}\\ge 3$: si se multiplica sin cuidado por $x-2$ como si fuera positivo, se obtiene $x+1\\ge 3x-6$, es decir $x\\le \\frac{7}{2}$, que es incorrecto. Verificación: $x=0$ cumple $x\\le \\frac{7}{2}$ pero $\\frac{0+1}{0-2}=-\\frac{1}{2}$ no es mayor o igual que $3$. La solución correcta es $\\left(2,\\frac{7}{2}\\right]$, y se obtiene dejando $0$ en un miembro y estudiando signos."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos críticos",
+      "puntos": [
+        {
+          "texto": "«Punto crítico» = valor de $x$ que anula numerador o denominador",
+          "explicacion": "Un punto crítico es un valor real de $x$ que hace cero el numerador o el denominador de la fracción ya factorizada. Son los únicos lugares donde el cociente puede cambiar de signo, y por eso se calculan siempre al comenzar el estudio de signos. Se obtienen resolviendo $P(x)=0$ y $Q(x)=0$. Ejemplo: en $\\frac{x-1}{x+2}$ se resuelve $x-1=0$, de donde $x=1$, y $x+2=0$, de donde $x=-2$; los puntos críticos son $-2$ y $1$. Verificación: en $x=1$ el cociente vale $0$ y en $x=-2$ el denominador vale $0$."
+        },
+        {
+          "texto": "Raíz del numerador ⇒ cociente = 0 ⇒ se incluye si hay $\\ge$ o $\\le$",
+          "explicacion": "Una raíz del numerador anula la fracción sin anular el denominador, de modo que el cociente vale exactamente $0$. Si la desigualdad es no estricta ($\\ge$ o $\\le$), ese valor la cumple y se incluye con corchete; si es estricta ($>$ o $<$), el valor no la cumple y se excluye con paréntesis. Ejemplo: $\\frac{x+3}{x-1}\\le 0$ tiene raíz del numerador $x=-3$; allí $\\frac{0}{-4}=0\\le 0$ es verdadero, así que $-3$ queda incluido. En $\\frac{x+3}{x-1}<0$ el mismo valor da $0<0$, que es falso, y queda excluido."
+        },
+        {
+          "texto": "Raíz del denominador ⇒ cociente no existe ⇒ nunca se incluye",
+          "explicacion": "Una raíz del denominador hace que la fracción esté indefinida, así que ese valor jamás pertenece al conjunto solución, sin importar el tipo de desigualdad ($<$, $>$, $\\le$ o $\\ge$). En la recta real se marca siempre con paréntesis. Ejemplo: en $\\frac{x+3}{x-1}\\le 0$ el valor $x=1$ anula el denominador; aunque la desigualdad sea no estricta, $\\frac{4}{0}$ no existe y $1$ se excluye, resultando $S=[-3,1)$. Verificación: $x=-3$ está en $S$ y $x=1$ queda fuera con paréntesis."
+        },
+        {
+          "texto": "Los puntos críticos dividen la recta en intervalos de signo constante",
+          "explicacion": "Los puntos críticos ordenados de menor a mayor parten la recta real en intervalos; dentro de cada uno el cociente conserva su signo, porque un polinomio solo puede cambiar de signo al pasar por una de sus raíces reales. Por eso basta evaluar el signo en un valor de prueba de cada intervalo. Ejemplo: con los puntos críticos $-2$ y $1$ de $\\frac{x-1}{x+2}$ resultan tres intervalos: $(-\\infty,-2)$, $(-2,1)$ y $(1,+\\infty)$. Valores de prueba: $x=-3$ da $\\frac{-4}{-1}=4>0$; $x=0$ da $\\frac{-1}{2}<0$; $x=2$ da $\\frac{1}{4}>0$. Los signos son $+$, $-$ y $+$ respectivamente."
+        },
+        {
+          "texto": "Círculo vacío ⇒ extremo excluido",
+          "explicacion": "En la recta real se dibuja un círculo vacío en los puntos críticos que no pertenecen a la solución: todas las raíces del denominador y las del numerador cuando la desigualdad es estricta ($<$ o $>$). Se traduce a un paréntesis al escribir el intervalo. Ejemplo: en $\\frac{x+3}{x-1}<0$ se dibujan círculos vacíos en $-3$ y en $1$, y la solución es $(-3,1)$. Verificación: $x=-3$ da $0<0$, falso, y $x=1$ no existe."
+        },
+        {
+          "texto": "Círculo lleno ⇒ extremo incluido",
+          "explicacion": "Se dibuja un círculo lleno en los puntos críticos que sí pertenecen a la solución, que son únicamente raíces del numerador cuando la desigualdad es no estricta ($\\le$ o $\\ge$). Se traduce a un corchete al escribir el intervalo. Ejemplo: para $\\frac{x+3}{x-1}\\le 0$ se dibuja un círculo lleno en $-3$ y uno vacío en $1$, y la solución se escribe $[-3,1)$. Verificación: $x=-3$ da $\\frac{0}{-4}=0\\le 0$, verdadero."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos del método",
+      "puntos": [
+        {
+          "texto": "Paso 1: dejar $0$ en un miembro",
+          "explicacion": "Se pasan todos los términos a un solo miembro mediante sumas o restas, de modo que el otro miembro quede en cero. Sumar o restar la misma expresión en ambos lados no altera el sentido de la desigualdad ni exige conocer signos, a diferencia de multiplicar. Ejemplo: $\\frac{x+1}{x-2}\\ge 3$ se transforma restando $3$ a ambos miembros en $\\frac{x+1}{x-2}-3\\ge 0$. Verificación: si $x=3$, el primer miembro original vale $4$ y $4\\ge 3$ es verdadero; en la forma transformada vale $4-3=1\\ge 0$, también verdadero."
+        },
+        {
+          "texto": "Paso 2: combinar en una sola fracción",
+          "explicacion": "Se escribe todo el miembro distinto de cero como una única fracción, usando el mínimo común múltiplo de los denominadores (el polinomio de menor grado que es múltiplo de todos ellos) y reduciendo el numerador. Ejemplo: $\\frac{x+1}{x-2}-3=\\frac{x+1}{x-2}-\\frac{3(x-2)}{x-2}=\\frac{x+1-3x+6}{x-2}=\\frac{7-2x}{x-2}$. Así la inecuación queda $\\frac{7-2x}{x-2}\\ge 0$. Verificación con $x=3$: $\\frac{7-6}{3-2}=1$, igual al valor $4-3=1$ obtenido antes."
+        },
+        {
+          "texto": "Paso 3: factorizar con coeficiente principal positivo",
+          "explicacion": "Se factorizan numerador y denominador y se procura que cada factor lineal tenga la forma $(x-a)$, es decir, con coeficiente positivo en $x$. Si un factor aparece como $(a-x)$, se saca el signo menos y se multiplica toda la desigualdad por $-1$, lo que invierte el sentido. Ejemplo: $\\frac{7-2x}{x-2}\\ge 0$ tiene numerador $7-2x=-(2x-7)$; al multiplicar por $-1$ resulta $\\frac{2x-7}{x-2}\\le 0$. Verificación con $x=3$: $\\frac{7-6}{3-2}=1\\ge 0$ en la forma anterior y $\\frac{6-7}{3-2}=-1\\le 0$ en la nueva, consistentes."
+        },
+        {
+          "texto": "Paso 4: hallar puntos críticos y restricciones",
+          "explicacion": "Se resuelven $P(x)=0$ y $Q(x)=0$ para localizar los puntos críticos y se anotan por separado cuáles provienen del denominador, porque estos nunca se incluyen. Ejemplo: en $\\frac{2x-7}{x-2}\\le 0$, el numerador $2x-7=0$ da $x=\\frac{7}{2}$ y el denominador $x-2=0$ da $x=2$. Los puntos críticos ordenados son $2$ y $\\frac{7}{2}$, y se debe tener $x\\ne 2$. Verificación: $x=\\frac{7}{2}$ da $\\frac{0}{\\frac{3}{2}}=0$, definido, y $x=2$ da $\\frac{-3}{0}$, indefinido."
+        },
+        {
+          "texto": "Paso 5: estudiar el signo en cada intervalo",
+          "explicacion": "Se ordenan los puntos críticos en la recta real y se determina el signo del cociente en cada intervalo, ya sea con un valor de prueba o con la alternancia de signos. Ejemplo para $\\frac{2x-7}{x-2}$ con puntos $2$ y $\\frac{7}{2}$: en $(-\\infty,2)$ se prueba $x=0$, que da $\\frac{-7}{-2}=\\frac{7}{2}>0$; en $\\left(2,\\frac{7}{2}\\right)$ se prueba $x=3$, que da $\\frac{-1}{1}=-1<0$; en $\\left(\\frac{7}{2},+\\infty\\right)$ se prueba $x=4$, que da $\\frac{1}{2}>0$. Los signos son $+$, $-$ y $+$."
+        },
+        {
+          "texto": "Paso 6: elegir intervalos y decidir extremos",
+          "explicacion": "Se toman los intervalos cuyo signo coincide con el que pide la desigualdad ($+$ para $>0$ o $\\ge 0$, $-$ para $<0$ o $\\le 0$) y se decide cada extremo: las raíces del numerador se incluyen solo si la desigualdad es no estricta, y las del denominador nunca. Ejemplo: $\\frac{2x-7}{x-2}\\le 0$ pide signo negativo o cero. El único intervalo negativo es $\\left(2,\\frac{7}{2}\\right)$. El extremo $\\frac{7}{2}$ es raíz del numerador y la desigualdad es no estricta, así que se incluye; el extremo $2$ es raíz del denominador y se excluye. Resultado: $S=\\left(2,\\frac{7}{2}\\right]$."
+        },
+        {
+          "texto": "Paso 7: verificar con valores de la inecuación original",
+          "explicacion": "La comprobación final se hace sobre la inecuación original, no sobre las formas transformadas, con valores dentro de cada intervalo y en los extremos. Ejemplo para $\\frac{x+1}{x-2}\\ge 3$ con $S=\\left(2,\\frac{7}{2}\\right]$: $x=3$ da $\\frac{4}{1}=4\\ge 3$, verdadero; $x=\\frac{7}{2}$ da $\\frac{\\frac{9}{2}}{\\frac{3}{2}}=3\\ge 3$, verdadero; $x=0$ da $-\\frac{1}{2}\\ge 3$, falso; $x=4$ da $\\frac{5}{2}=2.5\\ge 3$, falso; $x=2$ no existe. Los resultados coinciden con $S$."
+        }
+      ]
+    },
+    {
+      "titulo": "Alternancia de signos",
+      "puntos": [
+        {
+          "texto": "Factores $(x-a)$ ⇒ signo $+$ a la derecha y alterna",
+          "explicacion": "Si numerador y denominador están factorizados en factores lineales de la forma $(x-a)$ con coeficiente positivo, en el intervalo situado a la derecha del mayor punto crítico todos los factores son positivos y el cociente es positivo. Al cruzar hacia la izquierda un punto crítico solo cambia el signo del factor correspondiente, por lo que el signo del cociente se invierte en cada punto crítico de multiplicidad impar. Ejemplo: $\\frac{(x-3)(x+2)}{(x-1)(x+1)}$ tiene puntos críticos $-2,-1,1,3$. Los signos de derecha a izquierda son $+$ en $(3,+\\infty)$, $-$ en $(1,3)$, $+$ en $(-1,1)$, $-$ en $(-2,-1)$ y $+$ en $(-\\infty,-2)$. Verificación con $x=4$: $\\frac{(1)(6)}{(3)(5)}=\\frac{6}{15}>0$; con $x=2$: $\\frac{(-1)(4)}{(1)(3)}=-\\frac{4}{3}<0$; con $x=0$: $\\frac{(-3)(2)}{(-1)(1)}=6>0$."
+        },
+        {
+          "texto": "«Multiplicidad» = número de veces que se repite un factor",
+          "explicacion": "La multiplicidad de una raíz es el exponente con que aparece su factor en la factorización. Si el factor es $(x-a)^k$, la raíz $a$ tiene multiplicidad $k$. Es un dato necesario para aplicar la alternancia de signos, porque el efecto de la raíz depende de si $k$ es par o impar. Ejemplo: en $\\frac{(x-2)^2(x+1)}{x-4}$ la raíz $2$ tiene multiplicidad $2$, mientras que $-1$ y $4$ tienen multiplicidad $1$. Verificación: se desarrolla $(x-2)^2=(x-2)(x-2)$, donde el factor $(x-2)$ figura dos veces."
+        },
+        {
+          "texto": "Multiplicidad par ⇒ el signo no cambia",
+          "explicacion": "Un factor $(x-a)^k$ con $k$ par es siempre mayor o igual que cero, porque una potencia de exponente par de un número real no es negativa. Por eso, al cruzar el punto $a$ el signo del cociente no se invierte; solo en $x=a$ el cociente se anula si $a$ proviene del numerador. Ejemplo: en $\\frac{(x-2)^2(x+1)}{x-4}$ se tiene que a ambos lados de $2$ el signo es el mismo. Con $x=1$: $\\frac{(1)(2)}{-3}=-\\frac{2}{3}<0$, y con $x=3$: $\\frac{(1)(4)}{-1}=-4<0$. Ambos son negativos, lo que confirma que no hubo cambio al pasar por $2$."
+        },
+        {
+          "texto": "Multiplicidad impar ⇒ el signo cambia como con $(x-a)$",
+          "explicacion": "Un factor $(x-a)^k$ con $k$ impar tiene el mismo signo que $(x-a)$, porque $(x-a)^k=(x-a)\\times(x-a)^{k-1}$ y el segundo factor es una potencia par, no negativa. En consecuencia puede sustituirse por $(x-a)$ para estudiar signos, siempre que se conserve la raíz $a$ como punto crítico. Ejemplo: $\\frac{(x-1)^3}{x+2}\\ge 0$ equivale en signos a $\\frac{x-1}{x+2}\\ge 0$ con $x\\ne -2$, y su solución es $(-\\infty,-2)\\cup[1,+\\infty)$. Verificación: $x=2$ da $\\frac{1}{4}\\ge 0$, verdadero; $x=0$ da $\\frac{-1}{2}\\ge 0$, falso; $x=-3$ da $\\frac{-64}{-1}=64\\ge 0$, verdadero; $x=1$ da $0\\ge 0$, verdadero."
+        },
+        {
+          "texto": "Factor $(a-x)$ ⇒ extraer $-1$ e invertir la desigualdad",
+          "explicacion": "Un factor de la forma $(a-x)$ se reescribe como $-(x-a)$ para recuperar un coeficiente positivo en $x$. Al multiplicar toda la desigualdad por $-1$ para eliminar ese signo, el sentido de la desigualdad se invierte ($\\ge$ pasa a $\\le$ y viceversa). Ejemplo: $\\frac{3-x}{x+1}\\ge 0$ se convierte en $\\frac{x-3}{x+1}\\le 0$. Puntos críticos: $-1$ (denominador, excluido) y $3$ (numerador, incluido). Signos: $+$ en $(-\\infty,-1)$, $-$ en $(-1,3)$, $+$ en $(3,+\\infty)$. Se pide negativo o cero, por lo que $S=(-1,3]$. Verificación: $x=0$ da $\\frac{3}{1}=3\\ge 0$, verdadero; $x=3$ da $0\\ge 0$, verdadero; $x=4$ da $\\frac{-1}{5}\\ge 0$, falso."
+        },
+        {
+          "texto": "Cuadrático con $\\Delta<0$ y coeficiente principal positivo ⇒ siempre positivo",
+          "explicacion": "Un trinomio $ax^2+bx+c$ con $a>0$ y discriminante $\\Delta=b^2-4ac<0$ no tiene raíces reales y es positivo para todo $x$; por tanto no cambia de signo y puede eliminarse al estudiar signos, conservando el sentido de la desigualdad, ya que dividir entre un número positivo no lo altera. Ejemplo: $\\frac{x^2+x+1}{x-4}<0$. Aquí $\\Delta=1-4=-3<0$ y $a=1>0$, así que $x^2+x+1>0$. Entonces el signo del cociente es el de $x-4$ y la condición se reduce a $x-4<0$, es decir $x<4$. Resultado: $S=(-\\infty,4)$. Verificación: $x=0$ da $\\frac{1}{-4}<0$, verdadero; $x=5$ da $\\frac{31}{1}<0$, falso."
+        },
+        {
+          "texto": "Cuadrático con $\\Delta<0$ y coeficiente principal negativo ⇒ siempre negativo",
+          "explicacion": "Un trinomio $ax^2+bx+c$ con $a<0$ y $\\Delta<0$ es negativo para todo $x$. Se saca factor $-1$, lo que invierte la desigualdad, y el trinomio resultante, de coeficiente principal positivo, es positivo y puede eliminarse. Ejemplo: $\\frac{-x^2-x-1}{x-4}\\ge 0$ equivale a $\\frac{x^2+x+1}{x-4}\\le 0$. Como $x^2+x+1>0$ (con $\\Delta=-3$), el cociente nunca vale cero y solo queda $x-4<0$, es decir $x<4$. Resultado: $S=(-\\infty,4)$. Verificación: $x=0$ da $\\frac{-1}{-4}=\\frac{1}{4}\\ge 0$, verdadero; $x=5$ da $\\frac{-31}{1}\\ge 0$, falso."
+        },
+        {
+          "texto": "Cuadrático con raíces irracionales ⇒ factorizar con radicales",
+          "explicacion": "Si un cuadrático factorizable en reales tiene raíces irracionales, se factoriza con ellas y los puntos críticos quedan expresados con radicales; para $x^2-k$ con $k>0$ se usa la diferencia de cuadrados $x^2-k=(x-\\sqrt{k})(x+\\sqrt{k})$. Ejemplo: $\\frac{x^2-2}{x-1}\\ge 0$ tiene $x^2-2=(x-\\sqrt{2})(x+\\sqrt{2})$ y puntos críticos $-\\sqrt{2}\\approx -1.41$, $1$ y $\\sqrt{2}\\approx 1.41$. Signos de derecha a izquierda: $+$ en $(\\sqrt{2},+\\infty)$, $-$ en $(1,\\sqrt{2})$, $+$ en $(-\\sqrt{2},1)$, $-$ en $(-\\infty,-\\sqrt{2})$. Se pide positivo o cero: $S=[-\\sqrt{2},1)\\cup[\\sqrt{2},+\\infty)$. Verificación: $x=0$ da $\\frac{-2}{-1}=2\\ge 0$, verdadero; $x=1.2$ da $\\frac{-0.56}{0.2}=-2.8$, falso; $x=2$ da $\\frac{2}{1}=2$, verdadero; $x=-2$ da $\\frac{2}{-3}$, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos con ceros",
+      "puntos": [
+        {
+          "texto": "Factor común cancelado ⇒ la restricción se mantiene",
+          "explicacion": "Si numerador y denominador comparten un factor, se puede simplificar para estudiar signos, pero la raíz del factor cancelado sigue excluida porque la expresión original no existe allí. Las restricciones se leen siempre de la inecuación original. Ejemplo: $\\frac{(x-1)(x+2)}{(x-1)(x+3)}\\ge 0$ se simplifica a $\\frac{x+2}{x+3}\\ge 0$ con $x\\ne 1$ y $x\\ne -3$. Puntos críticos: $-3$ y $-2$. Signos: $+$ en $(-\\infty,-3)$, $-$ en $(-3,-2)$, $+$ en $(-2,+\\infty)$. Se pide positivo o cero: $(-\\infty,-3)\\cup[-2,+\\infty)$. Al retirar $x=1$ queda $S=(-\\infty,-3)\\cup[-2,1)\\cup(1,+\\infty)$. Verificación: $x=1$ da $\\frac{0}{0}$, indefinido; $x=0$ da $\\frac{(-1)(2)}{(-1)(3)}=\\frac{2}{3}\\ge 0$; $x=-2.5$ da $\\frac{(-3.5)(-0.5)}{(-3.5)(0.5)}=-1$, falso; $x=-4$ da $\\frac{(-5)(-2)}{(-5)(-1)}=2\\ge 0$."
+        },
+        {
+          "texto": "Cociente con numerador siempre positivo ⇒ signo del denominador",
+          "explicacion": "Cuando el numerador es positivo para todo $x$, el cociente tiene el mismo signo que el denominador. Ejemplo: $\\frac{x^2+1}{x-3}>0$. Como $x^2+1\\ge 1>0$, la desigualdad se reduce a $x-3>0$, es decir $x>3$, y $S=(3,+\\infty)$. Esto se justifica porque dividir un número positivo entre otro positivo da positivo y entre uno negativo da negativo, según la regla del signo del cociente; además el numerador nunca se anula, así que no hay puntos críticos provenientes de él y el único punto crítico es $x=3$, que se excluye por ser raíz del denominador. Verificación: $x=4$ da $\\frac{17}{1}>0$, verdadero; $x=0$ da $\\frac{1}{-3}>0$, falso; $x=3$ no existe."
+        },
+        {
+          "texto": "Cociente siempre positivo ⇒ $S=\\mathbb{R}$ o $S=\\varnothing$",
+          "explicacion": "Si numerador y denominador son positivos para todo $x$ real, el cociente es positivo siempre y la desigualdad $>0$ se cumple en todo $\\mathbb{R}$, mientras que $<0$ no se cumple nunca y el conjunto solución es el conjunto vacío $\\varnothing$. Ejemplo: $\\frac{x^2+1}{x^2+4}$ tiene numerador $\\ge 1$ y denominador $\\ge 4$, ambos positivos. Entonces $\\frac{x^2+1}{x^2+4}>0$ tiene $S=\\mathbb{R}$ y $\\frac{x^2+1}{x^2+4}<0$ tiene $S=\\varnothing$. Verificación: $x=0$ da $\\frac{1}{4}>0$; $x=3$ da $\\frac{10}{13}>0$; ningún valor da resultado negativo."
+        },
+        {
+          "texto": "Raíz de multiplicidad par en el numerador ⇒ punto aislado posible",
+          "explicacion": "En una desigualdad $\\ge 0$, una raíz de multiplicidad par del numerador anula la fracción sin cambiar el signo, y puede producir una solución aislada fuera de los intervalos de signo adecuado. Ejemplo: $\\frac{(x-2)^2(x+1)}{x-4}\\ge 0$. Puntos críticos: $-1$, $2$ (multiplicidad par) y $4$. Signos de derecha a izquierda: $+$ en $(4,+\\infty)$, $-$ en $(2,4)$, $-$ en $(-1,2)$ y $+$ en $(-\\infty,-1)$. Se pide positivo o cero: $(-\\infty,-1]\\cup(4,+\\infty)$ y además $x=2$, donde el cociente vale $0$. Por tanto $S=(-\\infty,-1]\\cup\\{2\\}\\cup(4,+\\infty)$. Verificación: $x=2$ da $\\frac{0}{-2}=0\\ge 0$, verdadero; $x=3$ da $\\frac{(1)(4)}{-1}=-4$, falso; $x=5$ da $\\frac{(9)(6)}{1}=54\\ge 0$, verdadero."
+        },
+        {
+          "texto": "Misma raíz de multiplicidad par con $\\le$ ⇒ queda dentro del intervalo",
+          "explicacion": "En una desigualdad $\\le 0$ la raíz de multiplicidad par del numerador ya está dentro del intervalo negativo, de modo que no produce un punto aislado: simplemente se incluye. Ejemplo: $\\frac{(x-2)^2(x+1)}{x-4}\\le 0$ con los mismos signos de la sección anterior: negativo en $(-1,2)$ y en $(2,4)$. El punto $2$ se incluye porque el cociente vale $0$, uniendo los dos intervalos; $-1$ también se incluye por ser raíz del numerador y $4$ se excluye. Resultado: $S=[-1,4)$. Verificación: $x=0$ da $\\frac{(4)(1)}{-4}=-1\\le 0$; $x=3$ da $-4\\le 0$; $x=-2$ da $\\frac{(16)(-1)}{-6}=\\frac{8}{3}$, falso; $x=2$ da $0\\le 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos con fracciones",
+      "puntos": [
+        {
+          "texto": "$\\frac{k}{x}>c$ ⇒ pasar $c$ y combinar",
+          "explicacion": "Una inecuación con la incógnita solo en el denominador de una fracción se resuelve dejando cero en un miembro y combinando. Ejemplo: $\\frac{1}{x}>2$ pasa a $\\frac{1}{x}-2>0$, luego $\\frac{1-2x}{x}>0$. Se multiplica por $-1$ e invierte: $\\frac{2x-1}{x}<0$. Puntos críticos: $0$ (excluido) y $\\frac{1}{2}$ (excluido por ser desigualdad estricta). Signos: $+$ en $(-\\infty,0)$, $-$ en $\\left(0,\\frac{1}{2}\\right)$, $+$ en $\\left(\\frac{1}{2},+\\infty\\right)$. Se pide negativo: $S=\\left(0,\\frac{1}{2}\\right)$. Verificación: $x=\\frac{1}{4}$ da $4>2$, verdadero; $x=1$ da $1>2$, falso; $x=-1$ da $-1>2$, falso."
+        },
+        {
+          "texto": "Suma de fracciones $\\le 0$ ⇒ mínimo común múltiplo",
+          "explicacion": "Cuando hay varias fracciones se combinan con el mínimo común múltiplo de los denominadores. Ejemplo: $\\frac{1}{x}+\\frac{1}{x-2}\\le 0$ da $\\frac{(x-2)+x}{x(x-2)}=\\frac{2x-2}{x(x-2)}\\le 0$, y al dividir entre $2$ (positivo) queda $\\frac{x-1}{x(x-2)}\\le 0$. Puntos críticos: $0$ y $2$ (excluidos) y $1$ (incluido). Signos de derecha a izquierda: $+$ en $(2,+\\infty)$, $-$ en $(1,2)$, $+$ en $(0,1)$, $-$ en $(-\\infty,0)$. Se pide negativo o cero: $S=(-\\infty,0)\\cup[1,2)$. Verificación: $x=-1$ da $-1+\\frac{1}{-3}\\approx -1.33\\le 0$; $x=0.5$ da $2+\\frac{1}{-1.5}\\approx 1.33$, falso; $x=1$ da $1-1=0\\le 0$; $x=1.5$ da $\\frac{2}{3}-2\\approx -1.33\\le 0$; $x=3$ da $\\frac{1}{3}+1$, falso."
+        },
+        {
+          "texto": "Fracciones en ambos miembros ⇒ restar y combinar",
+          "explicacion": "Si hay fracciones a ambos lados no se multiplica en cruz, porque no se conocen los signos de los denominadores; se pasa todo a un miembro y se combina. Ejemplo: $\\frac{2}{x-1}<\\frac{3}{x+2}$ pasa a $\\frac{2}{x-1}-\\frac{3}{x+2}<0$, es decir $\\frac{2(x+2)-3(x-1)}{(x-1)(x+2)}=\\frac{7-x}{(x-1)(x+2)}<0$. Se multiplica por $-1$ e invierte: $\\frac{x-7}{(x-1)(x+2)}>0$. Puntos críticos: $-2$, $1$ y $7$ (todos excluidos). Signos de derecha a izquierda: $+$ en $(7,+\\infty)$, $-$ en $(1,7)$, $+$ en $(-2,1)$, $-$ en $(-\\infty,-2)$. Se pide positivo: $S=(-2,1)\\cup(7,+\\infty)$. Verificación: $x=0$ da $-2<\\frac{3}{2}$, verdadero; $x=3$ da $1<\\frac{3}{5}$, falso; $x=8$ da $\\frac{2}{7}\\approx 0.286<0.3$, verdadero; $x=-3$ da $-0.5<-3$, falso."
+        },
+        {
+          "texto": "Denominador cuadrático ⇒ factorizar y usar alternancia",
+          "explicacion": "Si el numerador y el denominador son cuadráticos se factorizan ambos y se aplica la alternancia. Ejemplo: $\\frac{x^2-x-6}{x^2-1}\\ge 0$ se factoriza como $\\frac{(x-3)(x+2)}{(x-1)(x+1)}\\ge 0$, con puntos críticos $-2$, $3$ (incluidos) y $-1$, $1$ (excluidos). Signos de derecha a izquierda: $+$ en $(3,+\\infty)$, $-$ en $(1,3)$, $+$ en $(-1,1)$, $-$ en $(-2,-1)$, $+$ en $(-\\infty,-2)$. Se pide positivo o cero: $S=(-\\infty,-2]\\cup(-1,1)\\cup[3,+\\infty)$. Verificación: $x=-3$ da $\\frac{(-6)(-1)}{(-4)(-2)}=\\frac{6}{8}\\ge 0$; $x=-1.5$ da $\\frac{(-4.5)(0.5)}{(-2.5)(-0.5)}=-1.8$, falso; $x=0$ da $6\\ge 0$; $x=2$ da $-\\frac{4}{3}$, falso; $x=4$ da $\\frac{6}{15}\\ge 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Recíprocos",
+      "puntos": [
+        {
+          "texto": "$0<a<b$ ⇒ $\\frac{1}{a}>\\frac{1}{b}$ (mismo signo invierte)",
+          "explicacion": "Si dos números tienen el mismo signo y $a<b$, sus recíprocos cumplen $\\frac{1}{a}>\\frac{1}{b}$. Demostración: $\\frac{1}{a}-\\frac{1}{b}=\\frac{b-a}{ab}$; como $b-a>0$ y $ab>0$ (mismo signo), la diferencia es positiva. Ejemplos: con $a=2$ y $b=5$ se cumple $\\frac{1}{2}>\\frac{1}{5}$; con $a=-5$ y $b=-2$ (donde $-5<-2$) se cumple $\\frac{1}{-5}=-0.2>\\frac{1}{-2}=-0.5$. Verificación: $\\frac{b-a}{ab}=\\frac{3}{10}>0$ en el primero y $\\frac{-2-(-5)}{(-5)(-2)}=\\frac{3}{10}>0$ en el segundo."
+        },
+        {
+          "texto": "$a<0<b$ ⇒ $\\frac{1}{a}<\\frac{1}{b}$ (signos distintos conserva)",
+          "explicacion": "Si $a<0<b$, el recíproco de $a$ es negativo y el de $b$ es positivo, de modo que $\\frac{1}{a}<0<\\frac{1}{b}$ y el sentido de la desigualdad se conserva. Por eso la regla de inversión solo vale cuando ambos números tienen el mismo signo. Ejemplo: de $-2<3$ se obtiene $\\frac{1}{-2}=-0.5<\\frac{1}{3}\\approx 0.333$. Verificación: el miembro izquierdo es negativo y el derecho es positivo, así que la desigualdad es verdadera."
+        }
+      ]
+    },
+    {
+      "titulo": "Método por casos",
+      "puntos": [
+        {
+          "texto": "Resolver por casos de signo de numerador y denominador",
+          "explicacion": "Una alternativa a los puntos críticos es plantear los casos de signo del cociente y unir sus resultados. Para $\\frac{P}{Q}>0$ se resuelven los sistemas ($P>0$ y $Q>0$) y ($P<0$ y $Q<0$), y la solución es la unión de ambos. Ejemplo: $\\frac{x-1}{x+2}>0$. Caso 1: $x-1>0$ y $x+2>0$ da $x>1$ y $x>-2$, cuya intersección es $x>1$. Caso 2: $x-1<0$ y $x+2<0$ da $x<1$ y $x<-2$, cuya intersección es $x<-2$. Resultado: $S=(-\\infty,-2)\\cup(1,+\\infty)$. Verificación: $x=3$ da $\\frac{2}{5}>0$ y $x=-3$ da $\\frac{-4}{-1}=4>0$."
+        },
+        {
+          "texto": "Resolver con el producto equivalente $P\\times Q$",
+          "explicacion": "Como el signo de $\\frac{P}{Q}$ coincide con el de $P\\times Q$ cuando $Q\\ne 0$, se puede resolver la inecuación polinomial del producto y retirar después las raíces de $Q$. Ejemplo: $\\frac{x+3}{x-1}\\le 0$ equivale a $(x+3)(x-1)\\le 0$ con $x\\ne 1$. Los puntos críticos $-3$ y $1$ dividen la recta; el producto cuadrático es negativo entre ellos y cero en ellos, con solución $[-3,1]$. Al retirar $x=1$ queda $S=[-3,1)$. Verificación: $x=-3$ da $\\frac{0}{-4}=0\\le 0$; $x=0$ da $\\frac{3}{-1}=-3\\le 0$; $x=2$ da $\\frac{5}{1}$, falso; $x=1$ no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Escritura de la solución",
+      "puntos": [
+        {
+          "texto": "Solución ⇒ unión $\\cup$ de intervalos",
+          "explicacion": "El conjunto solución se escribe como un intervalo o como una unión de intervalos, donde el símbolo $\\cup$ reúne los elementos de ambos conjuntos. Cuando el signo buscado aparece en varios tramos separados de la recta, cada tramo es un intervalo y se unen. Ejemplo: $\\frac{x-1}{x+2}>0$ tiene signo positivo en $(-\\infty,-2)$ y en $(1,+\\infty)$, de modo que $S=(-\\infty,-2)\\cup(1,+\\infty)$. Verificación: $x=-3$ y $x=2$ pertenecen a $S$ y dan cocientes positivos ($4$ y $\\frac{1}{4}$); $x=0$ no pertenece y da $-\\frac{1}{2}$."
+        },
+        {
+          "texto": "Paréntesis ⇒ extremo excluido; corchete ⇒ extremo incluido",
+          "explicacion": "En la notación de intervalos un paréntesis indica que el extremo no pertenece al conjunto y un corchete indica que sí pertenece. Los extremos infinitos $-\\infty$ y $+\\infty$ no son números reales y siempre llevan paréntesis. En inecuaciones fraccionarias los corchetes aparecen solo en raíces del numerador con desigualdad no estricta. Ejemplo: en $\\frac{2x-7}{x-2}\\le 0$ se obtiene $S=\\left(2,\\frac{7}{2}\\right]$, con paréntesis en $2$ (raíz del denominador) y corchete en $\\frac{7}{2}$ (raíz del numerador). Verificación: $x=\\frac{7}{2}$ da $0\\le 0$, verdadero; $x=2$ da $\\frac{-3}{0}$, indefinido."
+        },
+        {
+          "texto": "Intervalos contiguos con extremo excluido ⇒ $\\mathbb{R}$ menos ese punto",
+          "explicacion": "Si dos intervalos se tocan en un punto que se excluye, la unión equivale a los números reales menos ese punto. Ejemplo: $\\frac{(x-1)^2}{(x-1)^2}>0$ con la restricción $x\\ne 1$ da $S=(-\\infty,1)\\cup(1,+\\infty)=\\mathbb{R}-\\{1\\}$, porque la fracción vale $1>0$ en todo punto en que existe. Verificación: $x=0$ da $\\frac{1}{1}=1>0$, $x=3$ da $\\frac{4}{4}=1>0$ y $x=1$ da $\\frac{0}{0}$, indefinido."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Intervalos (tema 04) ⇒ forma de escribir la solución",
+          "explicacion": "La notación de intervalos estudiada en el tema «Intervalos» es la herramienta con que se expresa el resultado de toda inecuación fraccionaria: intervalos abiertos, cerrados, semiabiertos e infinitos, y uniones entre ellos. Cada región de signo entre dos puntos críticos corresponde a un intervalo. Ejemplo: la solución $\\left(2,\\frac{7}{2}\\right]$ es un intervalo semiabierto, y $(-\\infty,-2)\\cup(1,+\\infty)$ es una unión de dos intervalos infinitos."
+        },
+        {
+          "texto": "Relación de orden (tema 03) ⇒ multiplicar por negativo invierte",
+          "explicacion": "Las propiedades del tema «Relación de orden» sustentan el método: sumar el mismo número a ambos miembros conserva la desigualdad, multiplicar por un positivo la conserva y multiplicar por un negativo la invierte. Por eso se deja cero en un miembro con sumas y restas, y solo se multiplica por $-1$ cuando se reescribe $(a-x)$ como $(x-a)$. Ejemplo: de $-2<3$ al multiplicar por $-1$ resulta $2>-3$, con el sentido invertido."
+        },
+        {
+          "texto": "Inecuaciones lineales (tema 08) ⇒ cada factor $(x-a)$ es un caso lineal",
+          "explicacion": "Cada factor lineal $(x-a)$ del numerador o del denominador se estudia como en las inecuaciones lineales: es positivo si $x>a$ y negativo si $x<a$. La tabla de signos de un cociente combina varias de esas desigualdades. Ejemplo: $x-3>0$ se cumple para $x>3$ y $x+2<0$ se cumple para $x<-2$; ambas condiciones son las que se combinan en el caso de $\\frac{x-3}{x+2}$."
+        },
+        {
+          "texto": "Inecuaciones cuadráticas (tema 09) ⇒ mismo método de puntos críticos",
+          "explicacion": "El tema «Inecuaciones cuadráticas» emplea el mismo procedimiento de puntos críticos y tabla de signos, ya que $P\\times Q\\ge 0$ es una inecuación polinomial. La diferencia es que aquí el denominador impone restricciones que deben retirarse del resultado. Si el denominador es una constante positiva, la inecuación deja de ser fraccionaria y se reduce a una polinomial. Ejemplo: $\\frac{x^2-x-6}{2}\\ge 0$ equivale a $x^2-x-6\\ge 0$, es decir $(x-3)(x+2)\\ge 0$, con $S=(-\\infty,-2]\\cup[3,+\\infty)$."
+        }
+      ]
+    }
+  ]
+}

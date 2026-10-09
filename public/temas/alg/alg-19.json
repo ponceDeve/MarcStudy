@@ -1,0 +1,275 @@
+{
+  "curso": "Álgebra",
+  "tema": "Sistema de ecuaciones lineales con dos variables",
+  "glosario": {
+    "ecuación lineal": "igualdad con variables de exponente uno",
+    "variable": "letra que representa un número desconocido",
+    "incógnita": "valor que se busca en una ecuación",
+    "coeficiente": "número que multiplica a una variable",
+    "término independiente": "número sin variable en una ecuación",
+    "solución": "valor que cumple la igualdad",
+    "par ordenado": "dos números donde importa el orden",
+    "sistema de ecuaciones": "conjunto de ecuaciones que se cumplen a la vez",
+    "compatible": "sistema que tiene al menos una solución",
+    "determinado": "sistema con una única solución",
+    "indeterminado": "sistema con infinitas soluciones",
+    "incompatible": "sistema sin ninguna solución",
+    "sistemas equivalentes": "sistemas con las mismas soluciones",
+    "recta": "línea sin curvatura que se extiende indefinidamente",
+    "pendiente": "inclinación de una recta respecto del eje horizontal",
+    "rectas secantes": "rectas que se cruzan en un punto",
+    "rectas paralelas": "rectas que nunca se cruzan",
+    "rectas coincidentes": "rectas que son la misma",
+    "despejar": "dejar una variable sola en un miembro",
+    "sustitución": "reemplazar una expresión por otra equivalente",
+    "mínimo común múltiplo": "menor número que es múltiplo de varios",
+    "sistema homogéneo": "sistema con términos independientes nulos",
+    "solución trivial": "solución donde todas las variables valen cero",
+    "parámetro": "letra fija que cambia el caso"
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación lineal",
+      "puntos": [
+        {
+          "texto": "ax + by = c es una ecuación lineal con dos variables",
+          "explicacion": "Una ecuación lineal con dos variables tiene la forma ax + by = c, donde x e y son las incógnitas (las variables) y a, b, c son números reales fijos. Se llama lineal porque x e y aparecen solo con exponente 1 y nunca multiplicadas entre sí. Ejemplos: 2x + 3y = 12 y x − y = 4 son lineales; x² + y = 3 no lo es por el exponente 2, y xy = 5 tampoco lo es por el producto de las variables."
+        },
+        {
+          "texto": "(a, b) ≠ (0, 0) para que la ecuación relacione a x e y",
+          "explicacion": "Si a = 0 y b = 0 a la vez, la ecuación queda 0 = c y las variables desaparecen: no restringe ningún par. Si c = 0 resulta 0 = 0, cierta para cualquier par; si c ≠ 0 resulta una igualdad falsa que ningún par cumple. Ejemplos: 0x + 0y = 0 se cumple con (7, −3) y con cualquier otro par; 0x + 0y = 5 equivale a 0 = 5, que nunca es cierta."
+        },
+        {
+          "texto": "Solución: par ordenado (x, y) que verifica la ecuación",
+          "explicacion": "Una solución es un par ordenado de números que, al reemplazar x e y, convierte la ecuación en una igualdad verdadera. Para comprobarlo se sustituye y se opera a cada lado. Ejemplo con 2x + 3y = 12: el par (3, 2) da 2·3 + 3·2 = 6 + 6 = 12, que es cierto, luego es solución. El par (1, 2) da 2·1 + 3·2 = 2 + 6 = 8 ≠ 12, luego no es solución."
+        },
+        {
+          "texto": "Una ecuación lineal tiene infinitas soluciones",
+          "explicacion": "Si b ≠ 0, se despeja y = (c − ax)/b y cada valor de x produce un valor de y, de modo que existen tantas soluciones como valores de x. Ejemplo con 2x + 3y = 12, es decir, y = (12 − 2x)/3. Con x = 0 resulta y = 4; con x = 3 resulta y = 2; con x = 6 resulta y = 0. Verificación: (0, 4) da 0 + 12 = 12 y (6, 0) da 12 + 0 = 12."
+        },
+        {
+          "texto": "Su gráfica es una recta en el plano",
+          "explicacion": "Cada solución (x, y) es un punto del plano y todas esas soluciones están alineadas, formando una recta. Los puntos de corte con los ejes se hallan con x = 0 (da y = c/b) y con y = 0 (da x = c/a), y bastan para trazarla. Ejemplo con 2x + 3y = 12: x = 0 da (0, 4) e y = 0 da (6, 0). Verificación: el punto (3, 2) está en la recta porque 6 + 6 = 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema de ecuaciones",
+      "puntos": [
+        {
+          "texto": "Sistema lineal: dos ecuaciones con las mismas variables x, y",
+          "explicacion": "Un sistema de dos ecuaciones lineales con dos variables se escribe $a_1x + b_1y = c_1$ y $a_2x + b_2y = c_2$. Los subíndices 1 y 2 indican la primera y la segunda ecuación: $a_1$ y $a_2$ son los coeficientes de x, $b_1$ y $b_2$ son los coeficientes de y, y $c_1$ y $c_2$ son los términos independientes. Ejemplo: en 2x + y = 7 y x − y = 2 se tiene $a_1 = 2$, $b_1 = 1$, $c_1 = 7$, $a_2 = 1$, $b_2 = -1$, $c_2 = 2$."
+        },
+        {
+          "texto": "Solución del sistema: par que verifica ambas ecuaciones",
+          "explicacion": "Una solución del sistema debe cumplir las dos ecuaciones al mismo tiempo; si cumple solo una, no es solución. Geométricamente, es un punto que pertenece a las dos rectas. Ejemplo con 2x + y = 7 y x − y = 2: el par (3, 1) da 6 + 1 = 7 y 3 − 1 = 2, luego es solución. El par (2, 3) da 4 + 3 = 7 pero 2 − 3 = −1 ≠ 2, luego no es solución."
+        },
+        {
+          "texto": "(x, y) ≠ (y, x): el orden del par importa",
+          "explicacion": "En el par ordenado el primer número es el valor de x y el segundo el de y; invertirlos cambia el par, y casi siempre deja de ser solución. Ejemplo con x + y = 5 y 2x − y = 1: el par (2, 3) da 2 + 3 = 5 y 4 − 3 = 1, luego es solución. El par (3, 2) da 3 + 2 = 5 pero 6 − 2 = 4 ≠ 1, luego no lo es."
+        },
+        {
+          "texto": "Verificar = sustituir el par en las dos ecuaciones",
+          "explicacion": "La verificación evita errores de cálculo: el par hallado se reemplaza en la primera y en la segunda ecuación, y ambas deben quedar como igualdades ciertas. Ejemplo: para 3x + 2y = 16 y 5x − 2y = 16 se obtuvo (4, 2). Primera: 3·4 + 2·2 = 12 + 4 = 16. Segunda: 5·4 − 2·2 = 20 − 4 = 16. Ambas se cumplen. Si solo una se cumpliera, habría un error."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación del sistema",
+      "puntos": [
+        {
+          "texto": "Compatible determinado ⇒ una única solución",
+          "explicacion": "Un sistema es compatible cuando tiene al menos una solución, y es determinado cuando esa solución es única; las rectas se cortan en un solo punto. Ejemplo: x + y = 7 y 2x − y = 2. Al sumar las ecuaciones queda 3x = 9, que da un solo valor x = 3, y entonces y = 4. Verificación: 3 + 4 = 7 y 6 − 4 = 2."
+        },
+        {
+          "texto": "Compatible indeterminado ⇒ infinitas soluciones",
+          "explicacion": "Un sistema compatible es indeterminado cuando tiene infinitas soluciones, porque las dos ecuaciones dicen lo mismo y en realidad hay una sola condición. Ejemplo: x − y = 2 y 2x − 2y = 4. La segunda es el doble de la primera. Las soluciones son los pares (t + 2, t); con t = 1 resulta (3, 1) y con t = 3 resulta (5, 3). Verificación de (5, 3): 5 − 3 = 2 y 10 − 6 = 4."
+        },
+        {
+          "texto": "Incompatible ⇒ ninguna solución",
+          "explicacion": "Un sistema es incompatible cuando sus ecuaciones se contradicen y ningún par las cumple a la vez. Ejemplo: x + 2y = 3 y 2x + 4y = 8. Al duplicar la primera resulta 2x + 4y = 6, y la segunda exige que ese mismo miembro valga 8; como 6 ≠ 8, ningún par puede cumplir ambas."
+        },
+        {
+          "texto": "Dos soluciones distintas ⇒ infinitas soluciones",
+          "explicacion": "Un sistema lineal nunca tiene exactamente dos soluciones. Si dos puntos distintos pertenecen a ambas rectas, las rectas coinciden (dos puntos determinan una recta) y todos sus puntos son solución. Ejemplo: x − y = 2 y 2x − 2y = 4 tienen las soluciones (3, 1) y (5, 3); el punto intermedio (4, 2) también lo es: 4 − 2 = 2 y 8 − 4 = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación geométrica",
+      "puntos": [
+        {
+          "texto": "Rectas secantes ⇒ sistema compatible determinado",
+          "explicacion": "Dos rectas con pendientes distintas se cruzan exactamente en un punto, y las coordenadas de ese punto son la única solución. Ejemplo: x + y = 5 tiene pendiente −1 (y = 5 − x) y x − y = 1 tiene pendiente 1 (y = x − 1). Al ser distintas, se cortan en (3, 2). Verificación: 3 + 2 = 5 y 3 − 2 = 1."
+        },
+        {
+          "texto": "Rectas coincidentes ⇒ sistema compatible indeterminado",
+          "explicacion": "Si las dos ecuaciones describen la misma recta, todos sus puntos son soluciones comunes. Ejemplo: x − y = 2 y 2x − 2y = 4 dan ambas y = x − 2: misma pendiente 1 y mismo corte −2 con el eje y. Cualquier punto de esa recta, como (0, −2), cumple las dos ecuaciones: 0 + 2 = 2 y 0 + 4 = 4."
+        },
+        {
+          "texto": "Rectas paralelas ⇒ sistema incompatible",
+          "explicacion": "Dos rectas con la misma pendiente y distinto corte con el eje y nunca se cruzan, así que no tienen puntos comunes. Ejemplo: x + 2y = 3 da y = −x/2 + 3/2 y 2x + 4y = 8 da y = −x/2 + 2. Ambas tienen pendiente −1/2, pero cortan al eje y en 3/2 y en 2, respectivamente; por eso no hay solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Criterio con coeficientes",
+      "puntos": [
+        {
+          "texto": "$\\frac{a_1}{a_2} \\neq \\frac{b_1}{b_2}$ ⇒ compatible determinado",
+          "explicacion": "Si los coeficientes de x e y no son proporcionales, las rectas tienen distinta pendiente y se cortan en un punto. La razón se escribe cuando $a_2 \\neq 0$ y $b_2 \\neq 0$. Ejemplo: 2x + 3y = 7 y 4x − y = 7. Razones: $\\frac{2}{4} = \\frac{1}{2}$ y $\\frac{3}{-1} = -3$, distintas, luego es determinado. Al multiplicar la segunda por 3 resulta 12x − 3y = 21, y al sumar con la primera 14x = 28, así que x = 2 e y = 1. Verificación: 4 + 3 = 7 y 8 − 1 = 7."
+        },
+        {
+          "texto": "$\\frac{a_1}{a_2} = \\frac{b_1}{b_2} = \\frac{c_1}{c_2}$ ⇒ compatible indeterminado",
+          "explicacion": "Si las tres razones son iguales, una ecuación es un múltiplo de la otra y representan la misma recta. Ejemplo: 2x + 3y = 5 y 4x + 6y = 10. Las razones son $\\frac{2}{4} = \\frac{3}{6} = \\frac{5}{10} = \\frac{1}{2}$, luego es indeterminado. Soluciones: (1, 1) da 2 + 3 = 5 y 4 + 6 = 10; (4, −1) da 8 − 3 = 5 y 16 − 6 = 10."
+        },
+        {
+          "texto": "$\\frac{a_1}{a_2} = \\frac{b_1}{b_2} \\neq \\frac{c_1}{c_2}$ ⇒ incompatible",
+          "explicacion": "Si los coeficientes de las variables son proporcionales pero los términos independientes no, las rectas son paralelas distintas. Ejemplo: 2x + 3y = 5 y 4x + 6y = 7. Las razones de los coeficientes son $\\frac{1}{2}$ y $\\frac{1}{2}$, y la de los términos independientes es $\\frac{5}{7}$, distinta. Verificación: al duplicar la primera resulta 4x + 6y = 10, que contradice 4x + 6y = 7."
+        },
+        {
+          "texto": "$a_1 b_2 - a_2 b_1 \\neq 0$ ⇒ compatible determinado",
+          "explicacion": "Es la misma condición de las razones sin divisiones, de modo que sirve incluso si algún coeficiente es cero: la proporción $\\frac{a_1}{a_2} = \\frac{b_1}{b_2}$ equivale a $a_1 b_2 = a_2 b_1$. Ejemplo 1: 2x + 3y = 7 y 4x − y = 7 dan 2(−1) − 4(3) = −14 ≠ 0, luego es determinado. Ejemplo 2: 3y = 6 y x + y = 5 tienen $a_1 = 0$, $b_1 = 3$, $a_2 = 1$, $b_2 = 1$ y dan 0·1 − 1·3 = −3 ≠ 0; resulta y = 2 y x = 3."
+        },
+        {
+          "texto": "$a_1 b_2 - a_2 b_1 = 0$ ⇒ no hay solución única",
+          "explicacion": "Si el valor es cero, las rectas son paralelas o coincidentes, y los términos independientes deciden cuál caso ocurre: infinitas soluciones o ninguna. Ejemplo: x + 2y = 3 y 2x + 4y = 8 dan 1·4 − 2·2 = 0. Como 2·3 = 6 ≠ 8, es incompatible. Con 2x + 4y = 6 sería indeterminado, porque la segunda ecuación es el doble de la primera."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas equivalentes",
+      "puntos": [
+        {
+          "texto": "Sistemas equivalentes = mismo conjunto de soluciones",
+          "explicacion": "Dos sistemas son equivalentes cuando todas las soluciones del primero lo son del segundo y viceversa. Todos los métodos de resolución consisten en pasar de un sistema a otro equivalente más simple. Ejemplo: x + y = 7 y 2x − y = 2 es equivalente a x + y = 7 y 3x = 9, porque ambos se resuelven con (3, 4): 3 + 4 = 7, 6 − 4 = 2 y 3·3 = 9."
+        },
+        {
+          "texto": "Multiplicar una ecuación por k ≠ 0 conserva las soluciones",
+          "explicacion": "Multiplicar ambos miembros por un número no nulo no cambia los pares que la cumplen, y se puede deshacer dividiendo entre k. Ejemplo: x + 2y = 3 multiplicada por 2 da 2x + 4y = 6. El par (1, 1) cumple ambas: 1 + 2 = 3 y 2 + 4 = 6. El par (2, 1) no cumple ninguna: 4 ≠ 3 y 8 ≠ 6."
+        },
+        {
+          "texto": "Sumar a una ecuación un múltiplo de la otra conserva las soluciones",
+          "explicacion": "Si un par cumple las dos ecuaciones, cumple también cualquier combinación de ellas, y la operación se puede deshacer restando el mismo múltiplo; por eso el sistema obtenido es equivalente. Ejemplo: en x + y = 7 y 2x − y = 2, se reemplaza la segunda por la suma de ambas y resulta 3x = 9. El par (3, 4) sigue cumpliendo todo: 3 + 4 = 7 y 9 = 9."
+        },
+        {
+          "texto": "Intercambiar el orden de las ecuaciones conserva las soluciones",
+          "explicacion": "Un sistema es una lista de condiciones que deben cumplirse todas, de modo que el orden en que se escriben no importa. Ejemplo: x + y = 7 y 2x − y = 2 tiene la misma solución que 2x − y = 2 y x + y = 7, a saber (3, 4)."
+        },
+        {
+          "texto": "Multiplicar una ecuación por 0 ✗ conserva las soluciones",
+          "explicacion": "Multiplicar por 0 convierte la ecuación en 0 = 0 y se pierde toda su información, porque la operación no se puede deshacer. Ejemplo: en x + y = 7 y 2x − y = 2, anular la primera deja 0 = 0 y 2x − y = 2, que tiene infinitas soluciones, como (0, −2). Pero (0, −2) no cumple la ecuación original x + y = 7, ya que 0 − 2 = −2 ≠ 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de sustitución",
+      "puntos": [
+        {
+          "texto": "Sustitución: despejar una variable y reemplazarla en la otra ecuación",
+          "explicacion": "Pasos: despejar una variable en una ecuación, sustituir esa expresión en la otra (queda una ecuación con una sola variable), resolverla, volver a la expresión despejada para hallar la otra variable y verificar. Ejemplo: x + y = 7 y 2x − y = 2. Despejar: y = 7 − x. Sustituir: 2x − (7 − x) = 2. Resolver: 3x − 7 = 2 ⇒ 3x = 9 ⇒ x = 3. Hallar y: y = 7 − 3 = 4. Verificación: 3 + 4 = 7 y 6 − 4 = 2."
+        },
+        {
+          "texto": "Despejar la variable de coeficiente 1 evita fracciones",
+          "explicacion": "Si alguna variable tiene coeficiente 1 o −1, despejarla no introduce divisiones y reduce errores. Ejemplo: 3x + y = 11 y 2x + 3y = 12. Despejar x daría x = (11 − y)/3, con fracciones; en cambio, y = 11 − 3x no las tiene. Sustituir: 2x + 3(11 − 3x) = 12 ⇒ 2x + 33 − 9x = 12 ⇒ −7x = −21 ⇒ x = 3. Entonces y = 11 − 9 = 2. Verificación: 9 + 2 = 11 y 6 + 6 = 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de igualación",
+      "puntos": [
+        {
+          "texto": "Igualación: despejar la misma variable en ambas y igualar",
+          "explicacion": "Pasos: despejar la misma variable en las dos ecuaciones, igualar las dos expresiones (ambas valen lo mismo), resolver la ecuación con una variable, calcular la otra variable y verificar. Ejemplo: 3x + y = 10 y x − y = 2. Despejar y: y = 10 − 3x e y = x − 2. Igualar: 10 − 3x = x − 2 ⇒ 12 = 4x ⇒ x = 3. Hallar y: y = 3 − 2 = 1. Verificación: 9 + 1 = 10 y 3 − 1 = 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de reducción",
+      "puntos": [
+        {
+          "texto": "Reducción: sumar o restar las ecuaciones para eliminar una variable",
+          "explicacion": "Cuando una variable tiene coeficientes opuestos en las dos ecuaciones, al sumarlas esa variable desaparece y queda una ecuación con una sola incógnita. Ejemplo: 3x + 2y = 16 y 5x − 2y = 16. Sumar: 8x = 32 ⇒ x = 4. Sustituir en la primera: 12 + 2y = 16 ⇒ y = 2. Verificación: 20 − 4 = 16 en la segunda."
+        },
+        {
+          "texto": "Coeficientes opuestos ⇒ sumar; coeficientes iguales ⇒ restar",
+          "explicacion": "Para eliminar una variable, las ecuaciones se suman si sus coeficientes son opuestos, y se restan si son iguales. Ejemplo: 4x + 3y = 17 y 4x − y = 5 tienen el mismo coeficiente 4 en x. Restar: (4x + 3y) − (4x − y) = 17 − 5 ⇒ 4y = 12 ⇒ y = 3. Sustituir: 4x − 3 = 5 ⇒ x = 2. Verificación: 8 + 9 = 17 y 8 − 3 = 5."
+        },
+        {
+          "texto": "Multiplicar las ecuaciones por constantes para igualar coeficientes",
+          "explicacion": "Si ningún coeficiente coincide, se multiplica cada ecuación por el número adecuado para que una variable tenga coeficientes opuestos; se usa el mínimo común múltiplo de los coeficientes. Ejemplo: 2x + 3y = 13 y 5x − 2y = 4. Para y: 3 y −2 tienen mínimo común múltiplo 6. Primera por 2: 4x + 6y = 26. Segunda por 3: 15x − 6y = 12. Sumar: 19x = 38 ⇒ x = 2. Entonces 4 + 3y = 13 ⇒ y = 3. Verificación: 10 − 6 = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Método gráfico",
+      "puntos": [
+        {
+          "texto": "Gráfico: la solución es el punto de corte de las rectas",
+          "explicacion": "Pasos: hallar dos puntos de cada recta (por ejemplo, los cortes con los ejes), trazar ambas rectas y leer el punto donde se cruzan; luego se verifica en las dos ecuaciones. Ejemplo: x + y = 5 pasa por (5, 0) y (0, 5); x − y = 1 pasa por (1, 0) y (0, −1). Las rectas se cruzan en (3, 2). Verificación: 3 + 2 = 5 y 3 − 2 = 1."
+        },
+        {
+          "texto": "El método gráfico da solo valores aproximados",
+          "explicacion": "Si el punto de corte no tiene coordenadas enteras, leerlo en el dibujo es impreciso, y por eso la solución exacta se obtiene con un método algebraico; el gráfico sirve para visualizar la clasificación del sistema. Ejemplo: x + y = 1 y x − y = 2. Al sumar resulta 2x = 3, así que x = 3/2, y entonces y = −1/2. Verificación: 3/2 − 1/2 = 1 y 3/2 + 1/2 = 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas con fracciones",
+      "puntos": [
+        {
+          "texto": "Multiplicar por el mínimo común múltiplo elimina denominadores",
+          "explicacion": "Si las ecuaciones tienen fracciones, se multiplica cada ecuación por el mínimo común múltiplo de sus denominadores; el sistema obtenido es equivalente y tiene coeficientes enteros. Ejemplo: x/2 + y/3 = 5 y x/3 − y/6 = 1. Primera por 6: 3x + 2y = 30. Segunda por 6: 2x − y = 6. Despejar: y = 2x − 6. Sustituir: 3x + 4x − 12 = 30 ⇒ 7x = 42 ⇒ x = 6 e y = 6. Verificación: 6/2 + 6/3 = 3 + 2 = 5 y 6/3 − 6/6 = 2 − 1 = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas incompatibles",
+      "puntos": [
+        {
+          "texto": "Incompatible ⇒ al reducir aparece 0 = k con k ≠ 0",
+          "explicacion": "Al intentar eliminar una variable, si desaparecen las dos y queda una igualdad falsa entre números, el sistema no tiene solución. Ejemplo: x + 2y = 3 y 2x + 4y = 8. Segunda menos el doble de la primera: (2x + 4y) − 2(x + 2y) = 8 − 6 ⇒ 0 = 2, que es imposible. Por tanto, el sistema es incompatible."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas indeterminados",
+      "puntos": [
+        {
+          "texto": "Indeterminado ⇒ al reducir aparece 0 = 0",
+          "explicacion": "Si al eliminar una variable desaparecen las dos y queda una igualdad verdadera, una ecuación es consecuencia de la otra y hay infinitas soluciones. Ejemplo: x − y = 2 y 2x − 2y = 4. Segunda menos el doble de la primera: (2x − 2y) − 2(x − y) = 4 − 4 ⇒ 0 = 0, que siempre es cierto."
+        },
+        {
+          "texto": "Soluciones: y = t libre y x despejada en función de t",
+          "explicacion": "Cuando hay infinitas soluciones, se elige una variable como parámetro t (puede valer cualquier número real) y la otra se despeja con la ecuación que queda. Ejemplo: de x − y = 2, con y = t resulta x = t + 2. Las soluciones son los pares (t + 2, t): con t = 0 resulta (2, 0) y con t = 3 resulta (5, 3). Verificación en 2x − 2y = 4: 2(t + 2) − 2t = 4 para todo t."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas homogéneos",
+      "puntos": [
+        {
+          "texto": "c₁ = 0 y c₂ = 0 ⇒ sistema homogéneo con solución (0, 0)",
+          "explicacion": "Un sistema es homogéneo cuando sus dos términos independientes son cero. Siempre admite la solución (0, 0), llamada solución trivial, porque $a_1 \\cdot 0 + b_1 \\cdot 0 = 0$ y $a_2 \\cdot 0 + b_2 \\cdot 0 = 0$. Por eso un sistema homogéneo nunca es incompatible. Ejemplo: 2x + y = 0 y x − y = 0 se cumplen con (0, 0): 0 + 0 = 0 y 0 − 0 = 0."
+        },
+        {
+          "texto": "Homogéneo ⇒ solo (0, 0) o infinitas soluciones",
+          "explicacion": "Si $a_1 b_2 - a_2 b_1 \\neq 0$, la única solución es (0, 0); si vale 0, hay infinitas soluciones, porque las ecuaciones son proporcionales. Ejemplo 1: 2x + y = 0 y x − y = 0 dan 2(−1) − 1·1 = −3 ≠ 0; al sumar queda 3x = 0, luego x = 0 e y = 0. Ejemplo 2: x + 2y = 0 y 2x + 4y = 0 dan 1·4 − 2·2 = 0; las soluciones son (−2t, t). Verificación con t = 1: −2 + 2 = 0 y −4 + 4 = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas con parámetro",
+      "puntos": [
+        {
+          "texto": "Con parámetro k: analizar $a_1 b_2 - a_2 b_1$ según k",
+          "explicacion": "Si un coeficiente depende de un parámetro k, se calcula $a_1 b_2 - a_2 b_1$ como expresión en k; los valores de k que lo hacen cero son los casos especiales y los demás dan sistema determinado. Ejemplo: x + 2y = 3 y 2x + ky = 6. Resulta 1·k − 2·2 = k − 4. Si k ≠ 4 es determinado; por ejemplo, con k = 1 el sistema x + 2y = 3 y 2x + y = 6 da y = 0 y x = 3. Si k = 4, la segunda ecuación es el doble de la primera, luego es indeterminado."
+        },
+        {
+          "texto": "El término independiente decide el caso especial de k",
+          "explicacion": "En el valor de k que anula $a_1 b_2 - a_2 b_1$, hay que comparar los términos independientes: si son proporcionales, es indeterminado; si no, es incompatible. Ejemplo: x + 2y = 3 y 2x + ky = 7. Con k = 4 queda 2x + 4y = 7, mientras que el doble de la primera da 2x + 4y = 6; como 6 ≠ 7, es incompatible. Con k = 1, es determinado: x = 3 − 2y, 6 − 4y + y = 7 ⇒ y = −1/3 y x = 11/3. Verificación: 11/3 − 2/3 = 3 y 22/3 − 1/3 = 7."
+        }
+      ]
+    }
+  ]
+}

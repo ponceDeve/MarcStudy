@@ -1,0 +1,564 @@
+{
+  "curso": "Álgebra",
+  "tema": "Propiedades de los números complejos",
+  "glosario": {
+    "complejo": "número formado por parte real e imaginaria",
+    "unidad imaginaria": "número cuyo cuadrado es menos uno",
+    "parte real": "término del complejo que no lleva i",
+    "parte imaginaria": "número real que multiplica a i",
+    "imaginario puro": "complejo sin parte real y no nulo",
+    "forma binomial": "escritura del complejo como suma de dos términos",
+    "conjugado": "complejo con parte imaginaria de signo contrario",
+    "módulo": "distancia del complejo al origen del plano",
+    "opuesto": "número que sumado al original da cero",
+    "inverso multiplicativo": "número que multiplicado por el original da uno",
+    "elemento neutro": "elemento que deja igual al operado",
+    "clausura": "operar elementos del conjunto da otro elemento",
+    "propiedad conmutativa": "el orden de los factores no importa",
+    "propiedad asociativa": "la forma de agrupar no altera el resultado",
+    "propiedad distributiva": "multiplicar una suma equivale a repartir el factor",
+    "campo": "conjunto donde se suma, multiplica y divide",
+    "cociente": "resultado de dividir un número entre otro",
+    "desigualdad triangular": "cota del módulo de una suma",
+    "residuo": "lo que sobra al dividir con cociente entero",
+    "periodo": "cantidad de pasos tras la cual se repite",
+    "raíz cuadrada": "número cuyo cuadrado es el número dado",
+    "raíz de un polinomio": "valor de la variable que lo anula",
+    "polinomio": "suma de potencias de una variable con coeficientes",
+    "coeficiente": "número que multiplica a una variable"
+  },
+  "theory": [
+    {
+      "titulo": "Notación básica",
+      "puntos": [
+        {
+          "texto": "ℂ = conjunto de los números a + bi con a, b ∈ ℝ",
+          "explicacion": "Un número complejo se escribe en forma binomial como a + bi, donde a y b son números reales e i es la unidad imaginaria. El símbolo ℂ reúne a todos estos números, del mismo modo que ℝ designa al conjunto de los números reales. Cada complejo queda determinado por el par ordenado (a, b): a es el término sin i y b es el número real que multiplica a i. Por ejemplo, 3 − 2i ∈ ℂ con a = 3 y b = −2; 7i ∈ ℂ con a = 0 y b = 7; y 5 ∈ ℂ con a = 5 y b = 0."
+        },
+        {
+          "texto": "i² = −1 define la unidad imaginaria i",
+          "explicacion": "Ningún número real x cumple x² = −1, porque todo cuadrado real es mayor o igual que cero. Para resolver esa carencia se introduce un nuevo número, i, que satisface i² = −1 y que obedece las reglas usuales del álgebra: conmutar, asociar y distribuir. Con esa única regla se simplifica cualquier expresión, pues cada vez que aparece i × i se reemplaza por −1. Ejemplo: (2i)(3i) = 2·3·i·i = 6i² = 6(−1) = −6. Verificación: el signo es negativo porque i × i = −1, y el factor numérico es 2·3 = 6."
+        },
+        {
+          "texto": "Re(z) = a e Im(z) = b si z = a + bi",
+          "explicacion": "Re es la abreviatura de «parte real» e Im es la abreviatura de «parte imaginaria». Si z = a + bi, Re(z) extrae el término que no lleva i, e Im(z) extrae únicamente el número real que multiplica a i, sin incluir la letra i. Por eso la parte imaginaria siempre es un número real. Ejemplo: z = 5 − 8i. Re(z) = 5 e Im(z) = −8 (no −8i). Verificación: Re(z) + Im(z)·i = 5 + (−8)i = 5 − 8i = z."
+        },
+        {
+          "texto": "ℝ ⊂ ℂ, pues todo real a equivale a a + 0i",
+          "explicacion": "Un número real a puede escribirse como a + 0i, con parte imaginaria nula; por eso cada real es un complejo y ℝ está contenido en ℂ. Además, las operaciones de los complejos coinciden con las de los reales cuando las partes imaginarias son cero, de modo que ℂ amplía a ℝ sin alterarlo. Ejemplo: 3 + 5 = 8 y (3 + 0i) + (5 + 0i) = 8 + 0i; 3·5 = 15 y (3 + 0i)(5 + 0i) = (15 − 0) + (0 + 0)i = 15 + 0i. Un complejo con parte imaginaria distinta de cero no es real."
+        },
+        {
+          "texto": "a + bi = c + di ⇒ a = c y b = d",
+          "explicacion": "Dos complejos son iguales solo cuando coinciden sus partes reales y sus partes imaginarias, porque el par (a, b) identifica de forma única a cada número. En las ecuaciones se aprovecha esto igualando parte real con parte real y parte imaginaria con parte imaginaria, lo que produce dos ecuaciones reales. Ejemplo: 2x + 3i = 8 + (y − 1)i. Partes reales: 2x = 8 ⇒ x = 4. Partes imaginarias: 3 = y − 1 ⇒ y = 4. Verificación: 2(4) + 3i = 8 + 3i y 8 + (4 − 1)i = 8 + 3i, que son iguales."
+        },
+        {
+          "texto": "a + bi = 0 ⇒ a = 0 y b = 0",
+          "explicacion": "Es el caso particular de la igualdad con c = 0 y d = 0: un complejo es nulo solo si sus dos partes son nulas. Basta que una de ellas sea distinta de cero para que el complejo no sea cero; por ejemplo, i ≠ 0 porque su parte imaginaria es 1. Ejemplo: (x − 2) + (y + 3)i = 0 ⇒ x − 2 = 0 y y + 3 = 0 ⇒ x = 2 y y = −3. Verificación: (2 − 2) + (−3 + 3)i = 0 + 0i = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma y producto",
+      "puntos": [
+        {
+          "texto": "(a + bi) + (c + di) = (a + c) + (b + d)i",
+          "explicacion": "La suma se define agrupando por separado las partes reales y las partes imaginarias, igual que se reducen términos semejantes en álgebra (los múltiplos de i son semejantes entre sí). Ejemplo: (3 + 2i) + (1 − 5i). Parte real: 3 + 1 = 4. Parte imaginaria: 2 + (−5) = −3. Resultado: 4 − 3i. Verificación: al quitar (1 − 5i) del resultado queda (4 − 1) + (−3 + 5)i = 3 + 2i, que es el primer sumando."
+        },
+        {
+          "texto": "(a + bi)(c + di) = (ac − bd) + (ad + bc)i",
+          "explicacion": "Se obtiene distribuyendo los cuatro productos y reemplazando i² por −1: ac + adi + bci + bdi² = (ac − bd) + (ad + bc)i. Ejemplo: (2 + 3i)(4 − 5i), con a = 2, b = 3, c = 4, d = −5. ac − bd = 8 − (3)(−5) = 8 + 15 = 23. ad + bc = 2(−5) + 3·4 = −10 + 12 = 2. Resultado: 23 + 2i. Verificación distribuyendo: 8 − 10i + 12i − 15i² = 8 + 2i + 15 = 23 + 2i."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la suma",
+      "puntos": [
+        {
+          "texto": "z, w ∈ ℂ ⇒ z + w ∈ ℂ",
+          "explicacion": "Es la propiedad de clausura de la suma: al sumar dos complejos nunca se sale del conjunto. Se cumple porque a + c y b + d son sumas de reales y, por tanto, reales; el resultado tiene la forma (a + c) + (b + d)i. Ejemplo: (3 + 2i) + (1 − 5i) = 4 − 3i, donde 4 y −3 son reales, luego 4 − 3i ∈ ℂ."
+        },
+        {
+          "texto": "z + w = w + z",
+          "explicacion": "Es la propiedad conmutativa de la suma. Se demuestra porque (a + c) + (b + d)i = (c + a) + (d + b)i, ya que la suma de reales es conmutativa. Ejemplo: z = 2 + 3i y w = −1 + 4i. z + w = (2 − 1) + (3 + 4)i = 1 + 7i. w + z = (−1 + 2) + (4 + 3)i = 1 + 7i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "(z + w) + u = z + (w + u)",
+          "explicacion": "Es la propiedad asociativa de la suma: la forma de agrupar tres sumandos no cambia el resultado, por lo que puede escribirse z + w + u sin paréntesis. Se justifica porque la suma de reales es asociativa en cada parte. Ejemplo: z = 1 + 2i, w = 3 − i, u = −2 + 5i. z + w = 4 + i, y (z + w) + u = 2 + 6i. w + u = 1 + 4i, y z + (w + u) = 2 + 6i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "z + 0 = z, con 0 = 0 + 0i",
+          "explicacion": "El complejo 0 + 0i es el elemento neutro de la suma, pues al sumarlo no cambia ninguna de las dos partes del otro número: (a + 0) + (b + 0)i = a + bi. Ejemplo: (5 − 7i) + (0 + 0i) = (5 + 0) + (−7 + 0)i = 5 − 7i. Este neutro es único: si otro complejo e cumpliera z + e = z para todo z, tomando z = 0 se obtendría e = 0."
+        },
+        {
+          "texto": "z + (−z) = 0, con −z = −a − bi",
+          "explicacion": "Todo complejo tiene un opuesto aditivo, que se obtiene cambiando el signo de ambas partes. Al sumarlos, cada parte se anula: (a − a) + (b − b)i = 0 + 0i. Ejemplo: z = 4 − 3i tiene opuesto −z = −4 + 3i. Verificación: (4 − 4) + (−3 + 3)i = 0 + 0i = 0. El opuesto de un complejo es único."
+        },
+        {
+          "texto": "z + w = z + u ⇒ w = u",
+          "explicacion": "Es la ley de cancelación de la suma. Se deduce sumando −z a ambos miembros y usando la asociatividad: (−z + z) + w = (−z + z) + u ⇒ 0 + w = 0 + u ⇒ w = u. Sirve para despejar sumandos desconocidos. Ejemplo: (4 − i) + w = 6 + 2i ⇒ w = (6 + 2i) − (4 − i) = 2 + 3i. Verificación: (4 − i) + (2 + 3i) = 6 + 2i."
+        },
+        {
+          "texto": "z − w = z + (−w) = (a − c) + (b − d)i",
+          "explicacion": "La resta se define como la suma del opuesto, lo que equivale a restar parte real con parte real y parte imaginaria con parte imaginaria. A diferencia de la suma, no es conmutativa: z − w = −(w − z). Ejemplo: (7 + 2i) − (3 + 5i) = (7 − 3) + (2 − 5)i = 4 − 3i. Verificación con el opuesto: (7 + 2i) + (−3 − 5i) = 4 − 3i. En cambio, (3 + 5i) − (7 + 2i) = −4 + 3i, que es el opuesto del resultado anterior."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del producto",
+      "puntos": [
+        {
+          "texto": "z, w ∈ ℂ ⇒ z × w ∈ ℂ",
+          "explicacion": "Es la propiedad de clausura del producto. Se cumple porque ac − bd y ad + bc se obtienen con sumas, restas y productos de reales, y por tanto son reales; así, el resultado tiene la forma de un complejo. Ejemplo: (2 + 3i)(4 − 5i) = 23 + 2i, donde 23 y 2 son reales, luego el resultado pertenece a ℂ."
+        },
+        {
+          "texto": "z × w = w × z",
+          "explicacion": "Es la propiedad conmutativa del producto. Se demuestra porque (ac − bd) + (ad + bc)i es igual a (ca − db) + (cb + da)i, ya que el producto y la suma de reales son conmutativos. Ejemplo: z = 2 + i y w = 3 − 2i. zw = 6 − 4i + 3i − 2i² = 6 − i + 2 = 8 − i. wz = (3 − 2i)(2 + i) = 6 + 3i − 4i − 2i² = 6 − i + 2 = 8 − i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "(z × w) × u = z × (w × u)",
+          "explicacion": "Es la propiedad asociativa del producto: la forma de agrupar tres factores no altera el resultado. Ejemplo: z = 1 + i, w = 2 − i, u = i. zw = (1 + i)(2 − i) = 2 − i + 2i − i² = 3 + i, y (zw)u = (3 + i)i = 3i + i² = −1 + 3i. wu = (2 − i)i = 2i − i² = 1 + 2i, y z(wu) = (1 + i)(1 + 2i) = 1 + 2i + i + 2i² = −1 + 3i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "z × 1 = z, con 1 = 1 + 0i",
+          "explicacion": "El complejo 1 + 0i es el elemento neutro del producto. Por la fórmula del producto, (a + bi)(1 + 0i) = (a·1 − b·0) + (a·0 + b·1)i = a + bi. Ejemplo: (3 − 4i)(1 + 0i). Parte real: 3·1 − (−4)(0) = 3. Parte imaginaria: 3·0 + (−4)(1) = −4. Resultado: 3 − 4i, igual al original."
+        },
+        {
+          "texto": "z(w + u) = zw + zu",
+          "explicacion": "Es la propiedad distributiva del producto respecto de la suma; vincula las dos operaciones y permite expandir y factorizar. Ejemplo: z = 2 + i, w = 1 + i, u = 3 − 2i. Por un lado, w + u = 4 − i y z(w + u) = (2 + i)(4 − i) = 8 − 2i + 4i − i² = 9 + 2i. Por otro lado, zw = (2 + i)(1 + i) = 1 + 3i y zu = (2 + i)(3 − 2i) = 8 − i, cuya suma es 9 + 2i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "z ≠ 0 ⇒ $z^{-1} = \\frac{a - bi}{a^2 + b^2}$",
+          "explicacion": "Todo complejo no nulo tiene inverso multiplicativo. Se construye multiplicando z = a + bi por a − bi, lo que produce el número real a² + b², distinto de cero cuando z ≠ 0; al dividir por él se obtiene 1. Ejemplo: z = 3 + 4i, con a² + b² = 9 + 16 = 25, luego $z^{-1} = \\frac{3 - 4i}{25} = \\frac{3}{25} - \\frac{4}{25}i$. Verificación: $(3 + 4i)(3 - 4i) = 9 + 16 = 25$ y $\\frac{25}{25} = 1$."
+        },
+        {
+          "texto": "0 ✗ inverso multiplicativo",
+          "explicacion": "El complejo 0 no puede tener inverso por dos razones. Primero, la fórmula del inverso exige dividir entre a² + b², que vale 0 solo cuando a = 0 y b = 0, pues una suma de cuadrados reales es cero únicamente si ambos son cero. Segundo, 0 × w = (0 + 0i)(c + di) = 0 + 0i para cualquier w, nunca 1. Ejemplo: 0 × (5 + 2i) = 0 ≠ 1, y ningún otro complejo cambia ese resultado."
+        },
+        {
+          "texto": "zw = 0 ⇒ z = 0 o w = 0",
+          "explicacion": "Es la propiedad del producto nulo y sustenta la resolución de ecuaciones factorizadas. Demostración: si z ≠ 0, existe $z^{-1}$ y al multiplicar zw = 0 por $z^{-1}$ resulta w = 0. Ejemplo: $(z - (1 + i))(z - (2 - i)) = 0$ ⇒ z − (1 + i) = 0 o z − (2 − i) = 0 ⇒ z = 1 + i o z = 2 − i. Verificación: con z = 1 + i el primer factor vale 0 y el producto es 0; con z = 2 − i el segundo factor vale 0 y el producto es 0."
+        },
+        {
+          "texto": "zw = zu y z ≠ 0 ⇒ w = u",
+          "explicacion": "Es la ley de cancelación del producto, que solo vale si el factor común no es cero. Se deduce multiplicando ambos miembros por $z^{-1}$. Ejemplo: (1 + i)w = (1 + i)(3 − 2i). Como 1 + i ≠ 0, w = 3 − 2i. Verificación: el miembro derecho es (1 + i)(3 − 2i) = 3 − 2i + 3i − 2i² = 5 + i, y dividiendo $w = \\frac{5 + i}{1 + i} = \\frac{(5 + i)(1 - i)}{2} = \\frac{6 - 4i}{2} = 3 - 2i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estructura de campo",
+      "puntos": [
+        {
+          "texto": "ℂ = campo con suma y producto",
+          "explicacion": "Un campo es un conjunto con dos operaciones que cumplen clausura, conmutatividad, asociatividad, elemento neutro, opuesto para la suma, inverso para todo elemento no nulo en el producto y la distributiva. Todas esas propiedades se verificaron para ℂ en las secciones anteriores. Su consecuencia práctica es que en ℂ siempre se puede sumar, restar, multiplicar y dividir entre números no nulos. Ejemplo: resolver (1 + i)z = 4 ⇒ $z = 4(1 + i)^{-1} = 4 \\cdot \\frac{1 - i}{2} = 2 - 2i$. Verificación: (1 + i)(2 − 2i) = 2 − 2i + 2i − 2i² = 2 + 2 = 4."
+        },
+        {
+          "texto": "ℂ ✗ orden compatible con suma y producto",
+          "explicacion": "En un campo ordenado todo número distinto de cero tiene cuadrado positivo. Si ℂ tuviera un orden así, i ≠ 0 implicaría i² > 0, es decir, −1 > 0; pero también 1 = 1² > 0, y sumando 1 + (−1) = 0 resultaría 0 > 0, que es absurdo. Por eso no se escriben desigualdades entre complejos no reales; solo se comparan sus módulos o sus partes reales e imaginarias por separado. Ejemplo: no tiene sentido afirmar 2 + i > 1 + 3i, pero sí comparar los módulos: √5 ≈ 2,24 es menor que √10 ≈ 3,16."
+        }
+      ]
+    },
+    {
+      "titulo": "Partes real e imaginaria",
+      "puntos": [
+        {
+          "texto": "Re(z + w) = Re(z) + Re(w)",
+          "explicacion": "La parte real de una suma es la suma de las partes reales, porque la suma de complejos opera parte con parte. Ejemplo: z = 2 + 3i y w = 4 − 5i. z + w = 6 − 2i, con Re(z + w) = 6. Por otro lado, Re(z) + Re(w) = 2 + 4 = 6. Ambos valores coinciden."
+        },
+        {
+          "texto": "Im(z + w) = Im(z) + Im(w)",
+          "explicacion": "La parte imaginaria de una suma es la suma de las partes imaginarias, por la misma razón que en la parte real. Ejemplo: z = 2 + 3i y w = 4 − 5i. z + w = 6 − 2i, con Im(z + w) = −2. Por otro lado, Im(z) + Im(w) = 3 + (−5) = −2. Ambos valores coinciden."
+        },
+        {
+          "texto": "Re(zw) = ac − bd ≠ Re(z) × Re(w)",
+          "explicacion": "El producto mezcla las partes de los factores: la parte real de zw incluye el término −bd, que proviene de i × i. Por eso la propiedad aditiva de la sección anterior no se extiende al producto. Ejemplo: z = 2 + 3i y w = 4 − 5i. zw = 23 + 2i, luego Re(zw) = 23. En cambio, Re(z) × Re(w) = 2 × 4 = 8, y 23 ≠ 8. Verificación de ac − bd: 2·4 − 3·(−5) = 8 + 15 = 23."
+        },
+        {
+          "texto": "i × (a + bi) = −b + ai",
+          "explicacion": "Multiplicar por i intercambia las partes y cambia un signo: i(a + bi) = ai + bi² = −b + ai. Por tanto, Re(iz) = −Im(z) e Im(iz) = Re(z). Ejemplo: z = 3 + 4i. iz = 3i + 4i² = −4 + 3i. Aquí Re(iz) = −4 = −Im(z) e Im(iz) = 3 = Re(z), como lo predice la fórmula con a = 3 y b = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición de conjugado",
+      "puntos": [
+        {
+          "texto": "$\\overline{a + bi} = a - bi$",
+          "explicacion": "El conjugado de un complejo se obtiene cambiando el signo de su parte imaginaria y conservando la parte real; se escribe con una barra sobre el número. Es la reflexión del número respecto del eje real. Ejemplos: el conjugado de 3 + 4i es 3 − 4i; el de −2 − 5i es −2 + 5i; el de 6 es 6; el de 7i es −7i."
+        },
+        {
+          "texto": "$\\overline{\\overline{z}} = z$",
+          "explicacion": "Conjugar dos veces devuelve el número original, porque el signo de la parte imaginaria se cambia y luego se vuelve a cambiar: el conjugado de a − bi es a + bi. Ejemplo: z = 5 − 2i. Primer conjugado: 5 + 2i. Segundo conjugado: 5 − 2i, que es z."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjugado y partes",
+      "puntos": [
+        {
+          "texto": "$z + \\overline{z} = 2\\,\\mathrm{Re}(z)$",
+          "explicacion": "Al sumar un complejo con su conjugado se cancelan las partes imaginarias y la parte real se duplica: (a + bi) + (a − bi) = 2a. De aquí se despeja Re(z) = (z + conjugado de z) ÷ 2, y se concluye que esta suma siempre es un número real. Ejemplo: z = 3 + 4i. (3 + 4i) + (3 − 4i) = 6 = 2·3 = 2 Re(z). Verificación con z = −1 + 5i: la suma es −2 = 2·(−1)."
+        },
+        {
+          "texto": "$z - \\overline{z} = 2i\\,\\mathrm{Im}(z)$",
+          "explicacion": "Al restar el conjugado se cancelan las partes reales y la parte imaginaria se duplica: (a + bi) − (a − bi) = 2bi. De aquí se despeja Im(z) = (z − conjugado de z) ÷ (2i), y se concluye que esta diferencia es cero o un imaginario puro. Ejemplo: z = 6 − 8i. z − conjugado = (6 − 8i) − (6 + 8i) = −16i = 2i(−8). Verificación: $\\mathrm{Im}(z) = \\frac{-16i}{2i} = -8$."
+        },
+        {
+          "texto": "z es real si y solo si $z = \\overline{z}$",
+          "explicacion": "Si z = a + bi, la igualdad a + bi = a − bi equivale a b = −b, es decir, 2b = 0, luego b = 0, que es la condición para ser real. Recíprocamente, si b = 0, el conjugado coincide con z. Ejemplo: z = −7 tiene conjugado −7, igual a z, y es real. En cambio, z = 2 + 3i tiene conjugado 2 − 3i, distinto de z, y no es real."
+        },
+        {
+          "texto": "z es imaginario puro si y solo si $\\overline{z} = -z$, con z ≠ 0",
+          "explicacion": "La igualdad a − bi = −a − bi equivale a a = −a, es decir, a = 0, que es la condición de parte real nula. Se excluye z = 0 porque cumple la igualdad pero tiene parte imaginaria nula, y por convención un imaginario puro tiene b ≠ 0. Ejemplo: z = 5i tiene conjugado −5i = −z, luego es imaginario puro. En cambio, z = 2 + 5i tiene conjugado 2 − 5i y −z = −2 − 5i, que no coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjugado en operaciones",
+      "puntos": [
+        {
+          "texto": "$\\overline{z + w} = \\overline{z} + \\overline{w}$",
+          "explicacion": "El conjugado de una suma es la suma de los conjugados, porque cambiar el signo de la parte imaginaria total equivale a cambiarlo en cada sumando: (a + c) − (b + d)i = (a − bi) + (c − di). Ejemplo: z = 2 + 3i y w = 1 − 4i. z + w = 3 − i, con conjugado 3 + i. Por otro lado, (2 − 3i) + (1 + 4i) = 3 + i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{z - w} = \\overline{z} - \\overline{w}$",
+          "explicacion": "El conjugado de una diferencia es la diferencia de los conjugados; se deduce de la propiedad de la suma aplicada a z + (−w). Ejemplo: z = 5 + 2i y w = 1 + 6i. z − w = 4 − 4i, con conjugado 4 + 4i. Por otro lado, (5 − 2i) − (1 − 6i) = 4 + 4i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{zw} = \\overline{z} \\times \\overline{w}$",
+          "explicacion": "Se demuestra conjugando la fórmula del producto: el conjugado de (ac − bd) + (ad + bc)i es (ac − bd) − (ad + bc)i, y esto es exactamente (a − bi)(c − di). Ejemplo: z = 1 + 2i y w = 3 − i. zw = 3 − i + 6i − 2i² = 5 + 5i, con conjugado 5 − 5i. Por otro lado, (1 − 2i)(3 + i) = 3 + i − 6i − 2i² = 5 − 5i. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{\\left(\\frac{z}{w}\\right)} = \\frac{\\overline{z}}{\\overline{w}}$ con w ≠ 0",
+          "explicacion": "Se deduce de la propiedad del producto: como z = (z/w)·w, al conjugar queda conjugado de z = conjugado de (z/w) × conjugado de w, y al dividir entre el conjugado de w (que es no nulo) resulta la igualdad. Ejemplo: z = 1 + i y w = 1 − i. z/w = i, con conjugado −i. Por otro lado, $\\frac{1 - i}{1 + i} = \\frac{(1 - i)^2}{2} = \\frac{-2i}{2} = -i$. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{z^n} = (\\overline{z})^n$ con n entero positivo",
+          "explicacion": "Se obtiene aplicando repetidamente la propiedad del producto: el conjugado de z × z × … × z es el producto de n conjugados. Ejemplo: z = 1 + i y n = 3. $z^3 = (1 + i)^2(1 + i) = 2i(1 + i) = -2 + 2i$, con conjugado −2 − 2i. Por otro lado, $(1 - i)^3 = (1 - i)^2(1 - i) = (-2i)(1 - i) = -2i + 2i^2 = -2 - 2i$. Ambos resultados coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjugado y polinomios",
+      "puntos": [
+        {
+          "texto": "P(z) = 0 ⇒ P($\\overline{z}$) = 0 si P tiene coeficientes reales",
+          "explicacion": "Si P(x) es un polinomio de coeficientes reales y z es una raíz, su conjugado también es raíz. Demostración: el conjugado de P(z) = 0 es 0; al conjugar sumas, productos y potencias, cada coeficiente real queda igual y cada z se convierte en su conjugado, de modo que el conjugado de P(z) es P(conjugado de z). Ejemplo: P(x) = x² − 2x + 5 con raíz 1 + 2i: (1 + 2i)² = −3 + 4i, −2(1 + 2i) = −2 − 4i, y −3 + 4i − 2 − 4i + 5 = 0. Verificación con 1 − 2i: (1 − 2i)² = −3 − 4i, −2(1 − 2i) = −2 + 4i, y −3 − 4i − 2 + 4i + 5 = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición de módulo",
+      "puntos": [
+        {
+          "texto": "$|a + bi| = \\sqrt{a^2 + b^2}$",
+          "explicacion": "El módulo mide la distancia desde el origen hasta el punto (a, b) que representa al complejo en el plano; la fórmula es el teorema de Pitágoras aplicado al triángulo de catetos |a| y |b|. Siempre se calcula con la raíz positiva. Ejemplos: $|3 + 4i| = \\sqrt{9 + 16} = 5$; $|-5 + 12i| = \\sqrt{25 + 144} = 13$; $|2i| = \\sqrt{0 + 4} = 2$."
+        },
+        {
+          "texto": "|z| ≥ 0 para todo z",
+          "explicacion": "El módulo nunca es negativo porque a² + b² es una suma de cuadrados reales, que es mayor o igual que cero, y la raíz cuadrada principal de un número no negativo es no negativa. Ejemplo: $|-3 + 4i| = \\sqrt{9 + 16} = 5 \\ge 0$ y |0| = 0 ≥ 0."
+        },
+        {
+          "texto": "|z| = 0 si y solo si z = 0",
+          "explicacion": "Si |z| = 0, entonces a² + b² = 0; como ambos cuadrados son no negativos, cada uno debe ser cero, luego a = 0 y b = 0. Recíprocamente, |0 + 0i| = 0. Ejemplo: $|1 + i| = \\sqrt{2} \\ne 0$ porque 1 + i no es el complejo nulo, mientras que |0 + 0i| = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo y conjugado",
+      "puntos": [
+        {
+          "texto": "$|\\overline{z}| = |z|$",
+          "explicacion": "Conjugar solo cambia el signo de b, y como b aparece elevado al cuadrado en la fórmula del módulo, el valor no cambia: $\\sqrt{a^2 + (-b)^2} = \\sqrt{a^2 + b^2}$. Ejemplo: z = 3 − 4i tiene módulo $\\sqrt{9 + 16} = 5$, y su conjugado 3 + 4i también tiene módulo 5."
+        },
+        {
+          "texto": "|−z| = |z|",
+          "explicacion": "Cambiar el signo de ambas partes no altera sus cuadrados, así que $\\sqrt{(-a)^2 + (-b)^2} = \\sqrt{a^2 + b^2}$. Geométricamente, z y −z están a la misma distancia del origen. Ejemplo: z = 3 − 4i y −z = −3 + 4i. $|-z| = \\sqrt{9 + 16} = 5 = |z|$."
+        },
+        {
+          "texto": "$|z|^2 = z \\times \\overline{z}$",
+          "explicacion": "Se obtiene multiplicando: (a + bi)(a − bi) = a² − b²i² = a² + b², que es el cuadrado del módulo. Muestra que z por su conjugado es siempre un número real no negativo y es la base para dividir complejos. Ejemplo: z = 2 + 3i. (2 + 3i)(2 − 3i) = 4 + 9 = 13, y $|z|^2 = (\\sqrt{13})^2 = 13$."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo en operaciones",
+      "puntos": [
+        {
+          "texto": "$|zw| = |z| \\times |w|$",
+          "explicacion": "Demostración: $|zw|^2 = zw\\,\\overline{zw} = (z\\overline{z})(w\\overline{w}) = |z|^2|w|^2$, y al extraer la raíz positiva resulta el producto de los módulos. Ejemplo: z = 1 + 2i y w = 3 − i. zw = 5 + 5i, luego $|zw| = \\sqrt{50} = 5\\sqrt{2}$. Por otro lado, $|z| = \\sqrt{5}$, $|w| = \\sqrt{10}$ y $\\sqrt{5}\\sqrt{10} = \\sqrt{50}$. Ambos valores coinciden."
+        },
+        {
+          "texto": "$\\left|\\frac{z}{w}\\right| = \\frac{|z|}{|w|}$ con w ≠ 0",
+          "explicacion": "Se deduce de la propiedad del producto: |z| = |(z/w)·w| = |z/w|·|w|, y al despejar se obtiene el cociente. Ejemplo: z = 6 + 8i y w = 3 + 4i. |z| = 10 y |w| = 5. Como z = 2w, z/w = 2 y |2| = 2. Verificación: |z|/|w| = 10/5 = 2."
+        },
+        {
+          "texto": "$|z^n| = |z|^n$",
+          "explicacion": "Se obtiene aplicando n veces la propiedad del módulo del producto. Ejemplo: z = 1 + i y n = 4. $(1 + i)^2 = 2i$ y $(1 + i)^4 = (2i)^2 = -4$, de modo que $|z^4| = 4$. Por otro lado, $|1 + i| = \\sqrt{2}$ y $(\\sqrt{2})^4 = 4$. Ambos valores coinciden."
+        },
+        {
+          "texto": "$|z^{-1}| = \\frac{1}{|z|}$ con z ≠ 0",
+          "explicacion": "Se deduce de |z|·|z⁻¹| = |z × z⁻¹| = |1| = 1, y luego se despeja |z⁻¹|. Ejemplo: z = 3 + 4i. Su inverso es $\\frac{3 - 4i}{25}$, de módulo $\\frac{\\sqrt{9 + 16}}{25} = \\frac{5}{25} = \\frac{1}{5}$. Por otro lado, 1/|z| = 1/5. Ambos valores coinciden."
+        },
+        {
+          "texto": "$|i^n| = 1$ para todo entero n",
+          "explicacion": "Como |i| = 1 y |zⁿ| = |z|ⁿ, resulta $|i^n| = 1^n = 1$ para exponentes positivos, y también para negativos porque $|i^{-n}| = \\frac{1}{|i|^n} = 1$. Todas las potencias de i están en la circunferencia de radio 1. Ejemplo: $i^{25} = i^1 = i$ y |i| = 1; además $|i^{-3}| = \\frac{1}{1^3} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo y partes",
+      "puntos": [
+        {
+          "texto": "$|\\mathrm{Re}(z)| \\le |z|$",
+          "explicacion": "Como a² ≤ a² + b², al extraer raíces positivas queda |a| ≤ √(a² + b²). La igualdad ocurre exactamente cuando b = 0, es decir, cuando z es real. Ejemplo: z = 3 − 4i. |Re(z)| = |3| = 3 y |z| = 5, luego 3 ≤ 5."
+        },
+        {
+          "texto": "$|\\mathrm{Im}(z)| \\le |z|$",
+          "explicacion": "Como b² ≤ a² + b², al extraer raíces positivas queda |b| ≤ √(a² + b²). La igualdad ocurre exactamente cuando a = 0, es decir, cuando z es imaginario puro o cero. Ejemplo: z = 3 − 4i. |Im(z)| = |−4| = 4 y |z| = 5, luego 4 ≤ 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Desigualdad triangular",
+      "puntos": [
+        {
+          "texto": "$|z + w|^2 = |z|^2 + 2\\,\\mathrm{Re}(z\\overline{w}) + |w|^2$",
+          "explicacion": "Se expande usando |u|² = u × conjugado de u: $(z + w)(\\overline{z} + \\overline{w}) = z\\overline{z} + z\\overline{w} + \\overline{z}w + w\\overline{w}$. Los términos centrales son un número y su conjugado, cuya suma es 2 Re(z × conjugado de w). Ejemplo: z = 1 + 2i y w = 3 − i. $z\\overline{w} = (1 + 2i)(3 + i) = 1 + 7i$, con Re = 1. Entonces 5 + 2(1) + 10 = 17. Verificación: z + w = 4 + i y |4 + i|² = 16 + 1 = 17."
+        },
+        {
+          "texto": "$|z + w| \\le |z| + |w|$",
+          "explicacion": "Es la desigualdad triangular. Demostración: por la fórmula anterior, $|z + w|^2 = |z|^2 + 2\\mathrm{Re}(z\\overline{w}) + |w|^2 \\le |z|^2 + 2|z||w| + |w|^2 = (|z| + |w|)^2$, pues $\\mathrm{Re}(u) \\le |u|$ y $|z\\overline{w}| = |z||w|$. Ejemplo: z = 3 + 4i y w = 5 + 12i. z + w = 8 + 16i, con $|z + w| = \\sqrt{320} = 8\\sqrt{5} \\approx 17{,}89$. Por otro lado, |z| + |w| = 5 + 13 = 18, y 17,89 ≤ 18."
+        },
+        {
+          "texto": "|z + w| = |z| + |w| si z = kw con k ≥ 0",
+          "explicacion": "La igualdad se alcanza cuando ambos complejos apuntan en la misma dirección desde el origen, es decir, cuando uno es un múltiplo no negativo del otro. Ejemplo: z = 1 + i y w = 2 + 2i, con z = (1/2)w. |z + w| = |3 + 3i| = 3√2 y |z| + |w| = √2 + 2√2 = 3√2: hay igualdad. En contraste, con w = −2 − 2i (k = −1/2 < 0) resulta |z + w| = |−1 − i| = √2, que es menor que |z| + |w| = 3√2."
+        },
+        {
+          "texto": "$|z - w| \\ge ||z| - |w||$",
+          "explicacion": "Es la desigualdad triangular inversa. Demostración: |z| = |(z − w) + w| ≤ |z − w| + |w|, luego |z| − |w| ≤ |z − w|; intercambiando los papeles de z y w se obtiene |w| − |z| ≤ |z − w|, y juntas dan el valor absoluto. Ejemplo: z = 5 + 12i y w = 3 + 4i. z − w = 2 + 8i, con $|z - w| = \\sqrt{68} \\approx 8{,}25$. Por otro lado, ||z| − |w|| = |13 − 5| = 8, y 8,25 ≥ 8."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad del paralelogramo",
+      "puntos": [
+        {
+          "texto": "$|z + w|^2 + |z - w|^2 = 2\\left(|z|^2 + |w|^2\\right)$",
+          "explicacion": "Se demuestra expandiendo ambos cuadrados con la fórmula de |z ± w|²: los términos con 2 Re(z × conjugado de w) aparecen con signos opuestos y se cancelan, dejando 2|z|² + 2|w|². Ejemplo: z = 1 + 2i y w = 3 − i. z + w = 4 + i, con |z + w|² = 17. z − w = −2 + 3i, con |z − w|² = 13. La suma es 30. Por otro lado, 2(5 + 10) = 30."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo y distancia",
+      "puntos": [
+        {
+          "texto": "|z − w| = distancia entre los puntos de z y w",
+          "explicacion": "Si z = a + bi y w = c + di, entonces z − w = (a − c) + (b − d)i, y su módulo es $\\sqrt{(a - c)^2 + (b - d)^2}$, que es la fórmula de la distancia entre los puntos (a, b) y (c, d) del plano. Ejemplo: z = 1 + 2i y w = 4 + 6i. z − w = −3 − 4i, con $|z - w| = \\sqrt{9 + 16} = 5$. Verificación: la distancia entre (1, 2) y (4, 6) es $\\sqrt{3^2 + 4^2} = 5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente complejo",
+      "puntos": [
+        {
+          "texto": "z ÷ w = z × $w^{-1}$ con w ≠ 0",
+          "explicacion": "El cociente se define como el producto por el inverso del divisor, y es la única solución x de wx = z. Se requiere w ≠ 0 porque 0 no tiene inverso. Ejemplo: (2 + i) ÷ (1 + i). Inverso: $(1 + i)^{-1} = \\frac{1 - i}{2}$. Producto: $(2 + i)\\cdot\\frac{1 - i}{2} = \\frac{2 - 2i + i - i^2}{2} = \\frac{3 - i}{2}$. Verificación: $(1 + i)\\cdot\\frac{3 - i}{2} = \\frac{3 - i + 3i - i^2}{2} = \\frac{4 + 2i}{2} = 2 + i$."
+        },
+        {
+          "texto": "$\\frac{z}{w} = \\frac{z\\overline{w}}{|w|^2}$ con w ≠ 0",
+          "explicacion": "Es el método práctico: se multiplican numerador y denominador por el conjugado del denominador, con lo cual el denominador se vuelve el número real |w|². Ejemplo: $\\frac{2 + 3i}{1 - 2i}$. Se multiplica por 1 + 2i: numerador (2 + 3i)(1 + 2i) = 2 + 4i + 3i + 6i² = −4 + 7i; denominador (1 − 2i)(1 + 2i) = 1 + 4 = 5. Resultado: $\\frac{-4 + 7i}{5}$. Verificación: (−4 + 7i)(1 − 2i) = −4 + 8i + 7i − 14i² = 10 + 15i, y 10 + 15i dividido entre 5 es 2 + 3i."
+        },
+        {
+          "texto": "$\\frac{z}{i} = -iz$",
+          "explicacion": "Como $\\frac{1}{i} = \\frac{i}{i \\cdot i} = \\frac{i}{-1} = -i$, dividir entre i equivale a multiplicar por −i. Ejemplo: $\\frac{3 + 2i}{i} = (3 + 2i)(-i) = -3i - 2i^2 = 2 - 3i$. Verificación: (2 − 3i)·i = 2i − 3i² = 3 + 2i."
+        }
+      ]
+    },
+    {
+      "titulo": "Primeras potencias de i",
+      "puntos": [
+        {
+          "texto": "$i^0 = 1$ e $i^1 = i$",
+          "explicacion": "Todo número distinto de cero elevado a la cero vale 1, y cualquier número elevado a la uno es él mismo; estas dos potencias inician la secuencia de i. Ejemplo: 5i⁰ + 2i¹ = 5(1) + 2(i) = 5 + 2i."
+        },
+        {
+          "texto": "$i^3 = i^2 \\times i = -i$",
+          "explicacion": "Se obtiene separando una i y usando i² = −1: i³ = i²·i = (−1)·i = −i. Ejemplo: (2i)³ = 8i³ = −8i. Verificación multiplicando: (2i)(2i)(2i) = (4i²)(2i) = (−4)(2i) = −8i."
+        },
+        {
+          "texto": "$i^4 = (i^2)^2 = 1$",
+          "explicacion": "Se obtiene agrupando de dos en dos: i⁴ = i²·i² = (−1)(−1) = 1. Esta igualdad es la causa de que las potencias de i se repitan cada cuatro pasos. Ejemplo: (3i)⁴ = 81i⁴ = 81. Verificación: (3i)² = 9i² = −9, y (−9)² = 81."
+        }
+      ]
+    },
+    {
+      "titulo": "Ciclo de potencias de i",
+      "puntos": [
+        {
+          "texto": "$i^{n+4} = i^n$ para todo entero n",
+          "explicacion": "Se demuestra con $i^{n+4} = i^n \\cdot i^4 = i^n \\cdot 1 = i^n$. Así, la secuencia i, −1, −i, 1 se repite indefinidamente, con periodo 4, tanto hacia exponentes mayores como hacia menores. Ejemplo: $i^9 = i^5 = i^1 = i$. Verificación: $i^9 = (i^4)^2 \\cdot i = 1 \\cdot i = i$."
+        },
+        {
+          "texto": "$i^n = i^r$ con r el residuo de n ÷ 4",
+          "explicacion": "Se escribe n = 4q + r con 0 ≤ r < 4, y entonces $i^n = (i^4)^q i^r = i^r$. Basta calcular el residuo r y usar la tabla 1, i, −1, −i para r = 0, 1, 2, 3. Ejemplos: 57 = 4·14 + 1 ⇒ $i^{57} = i$; 135 = 4·33 + 3 ⇒ $i^{135} = i^3 = -i$; 200 = 4·50 + 0 ⇒ $i^{200} = 1$. Verificación del primero: $(i^4)^{14} \\cdot i = 1 \\cdot i = i$."
+        },
+        {
+          "texto": "El residuo de n ÷ 4 depende de las dos últimas cifras",
+          "explicacion": "Como 100 es múltiplo de 4, al escribir n = 100k + m, con m formado por las dos últimas cifras, el residuo de n ÷ 4 es el de m ÷ 4. Esto acorta los cálculos con exponentes grandes. Ejemplo: $i^{2026}$. Las dos últimas cifras son 26, y 26 = 4·6 + 2, de modo que el residuo es 2 e $i^{2026} = i^2 = -1$. Verificación: 2026 = 4·506 + 2, con residuo 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponentes negativos de i",
+      "puntos": [
+        {
+          "texto": "$i^{-1} = -i$",
+          "explicacion": "Se obtiene de $\\frac{1}{i} = \\frac{i}{i^2} = \\frac{i}{-1} = -i$. Es el inverso multiplicativo de i. Ejemplo: $\\frac{5}{i} = 5(-i) = -5i$. Verificación: (−5i)·i = −5i² = 5."
+        },
+        {
+          "texto": "$i^{-n} = i^r$ con r el residuo de −n ÷ 4",
+          "explicacion": "El ciclo de periodo 4 también vale para exponentes negativos, así que se busca r con 0 ≤ r < 4 tal que −n = 4q + r (con q negativo). Ejemplos: −7 = 4(−2) + 1 ⇒ $i^{-7} = i$. Verificación: $i^{-7} = \\frac{1}{i^7} = \\frac{1}{i^3} = \\frac{1}{-i} = -\\frac{1}{i} = i$. Otro: −10 = 4(−3) + 2 ⇒ $i^{-10} = -1$. Verificación: $\\frac{1}{i^{10}} = \\frac{1}{i^2} = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sumas con potencias de i",
+      "puntos": [
+        {
+          "texto": "$i^n + i^{n+1} + i^{n+2} + i^{n+3} = 0$",
+          "explicacion": "Cuatro potencias consecutivas de i suman cero. Se demuestra factorizando: $i^n(1 + i + i^2 + i^3) = i^n(1 + i - 1 - i) = i^n \\cdot 0 = 0$. Ejemplo: n = 5. $i^5 + i^6 + i^7 + i^8 = i + (-1) + (-i) + 1 = 0$."
+        },
+        {
+          "texto": "$i^n \\times i^{n+1} \\times i^{n+2} \\times i^{n+3} = -1$",
+          "explicacion": "Cuatro potencias consecutivas de i se multiplican sumando exponentes: n + (n + 1) + (n + 2) + (n + 3) = 4n + 6 = 4(n + 1) + 2, de modo que el residuo es 2 y el producto es $i^2 = -1$. Ejemplo: n = 2. $i^2 \\cdot i^3 \\cdot i^4 \\cdot i^5 = (-1)(-i)(1)(i) = i \\cdot i = -1$. Verificación: 2 + 3 + 4 + 5 = 14 = 4·3 + 2."
+        },
+        {
+          "texto": "$\\sum_{k=0}^{n} i^k$ depende del residuo r de n ÷ 4",
+          "explicacion": "Los grupos de cuatro potencias consecutivas suman cero, así que solo importan los términos sobrantes: si r = 0 la suma vale 1; si r = 1, vale 1 + i; si r = 2, vale 1 + i − 1 = i; si r = 3, vale 1 + i − 1 − i = 0. Ejemplo: n = 10 ⇒ 11 términos. 10 = 4·2 + 2, luego r = 2 y la suma es i. Verificación: los términos k = 0 a 7 suman 0, y los restantes son $i^8 + i^9 + i^{10} = 1 + i - 1 = i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes de exponentes",
+      "puntos": [
+        {
+          "texto": "$z^m \\times z^n = z^{m+n}$",
+          "explicacion": "Al multiplicar potencias de igual base se suman los exponentes, porque se juntan m + n factores iguales a z. Ejemplo: z = 1 + i con m = 2 y n = 3. $(1 + i)^2 = 2i$ y $(1 + i)^3 = 2i(1 + i) = -2 + 2i$. Producto: $2i(-2 + 2i) = -4i + 4i^2 = -4 - 4i$. Verificación: $(1 + i)^5 = (1 + i)^4(1 + i) = (-4)(1 + i) = -4 - 4i$."
+        },
+        {
+          "texto": "$(z^m)^n = z^{mn}$",
+          "explicacion": "Elevar una potencia a otra potencia multiplica los exponentes, porque se repite n veces el bloque de m factores. Ejemplo: $((1 + i)^2)^3 = (2i)^3 = 8i^3 = -8i$. Verificación: $(1 + i)^6 = (1 + i)^4(1 + i)^2 = (-4)(2i) = -8i$."
+        },
+        {
+          "texto": "$(zw)^n = z^n w^n$",
+          "explicacion": "Elevar un producto a una potencia equivale a elevar cada factor, gracias a la conmutatividad y asociatividad del producto. Ejemplo: z = 1 + i, w = 1 − i, n = 3. zw = 1 − i² = 2, luego $(zw)^3 = 8$. Por otro lado, $z^3 = -2 + 2i$ y $w^3 = -2 - 2i$, y $(-2 + 2i)(-2 - 2i) = 4 + 4i - 4i - 4i^2 = 8$. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\left(\\frac{z}{w}\\right)^n = \\frac{z^n}{w^n}$ con w ≠ 0",
+          "explicacion": "Elevar un cociente a una potencia equivale a elevar numerador y denominador, porque dividir es multiplicar por el inverso y el inverso de wⁿ es $(w^{-1})^n$. Ejemplo: z = 1 + i, w = 1 − i, n = 3. Por un lado, $\\frac{1 + i}{1 - i} = i$ y $i^3 = -i$. Por otro lado, $\\frac{z^3}{w^3} = \\frac{-2 + 2i}{-2 - 2i} = \\frac{-1 + i}{-1 - i}$; multiplicando por −1 + i: $\\frac{(-1 + i)^2}{1 + 1} = \\frac{-2i}{2} = -i$. Ambos resultados coinciden."
+        },
+        {
+          "texto": "$z^0 = 1$ si z ≠ 0",
+          "explicacion": "Se define así para mantener la regla de la suma de exponentes: $z^m \\cdot z^0 = z^{m+0} = z^m$ obliga a que $z^0 = 1$. El caso z = 0 queda excluido porque $0^0$ no está definido. Ejemplo: $(2 - 3i)^0 = 1$."
+        },
+        {
+          "texto": "$z^{-n} = \\frac{1}{z^n}$ con z ≠ 0",
+          "explicacion": "Un exponente negativo indica el inverso de la potencia positiva, de modo que $z^n \\cdot z^{-n} = z^0 = 1$. Ejemplo: $(1 + i)^{-2} = \\frac{1}{(1 + i)^2} = \\frac{1}{2i} = \\frac{1}{2}(-i) = -\\frac{i}{2}$. Verificación: $\\left(-\\frac{i}{2}\\right)(2i) = -i^2 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades con 1 ± i",
+      "puntos": [
+        {
+          "texto": "$(1 + i)^2 = 2i$",
+          "explicacion": "Se obtiene expandiendo el cuadrado: $1 + 2i + i^2 = 1 + 2i - 1 = 2i$. Es un resultado que se reutiliza para calcular potencias de 1 + i. Verificación con módulos: $|1 + i|^2 = 2$ y $|2i| = 2$."
+        },
+        {
+          "texto": "$(1 - i)^2 = -2i$",
+          "explicacion": "Se obtiene expandiendo el cuadrado: $1 - 2i + i^2 = 1 - 2i - 1 = -2i$. Verificación con el conjugado: el conjugado de $(1 + i)^2 = 2i$ es $(1 - i)^2$, y el conjugado de 2i es −2i."
+        },
+        {
+          "texto": "$(1 + i)^4 = (1 - i)^4 = -4$",
+          "explicacion": "Se obtiene elevando al cuadrado los resultados anteriores: $(1 + i)^4 = (2i)^2 = 4i^2 = -4$ y $(1 - i)^4 = (-2i)^2 = 4i^2 = -4$. Ejemplo: $(1 + i)^8 = (-4)^2 = 16$. Verificación con módulos: $|1 + i|^8 = (\\sqrt{2})^8 = 16$."
+        },
+        {
+          "texto": "$\\frac{1 + i}{1 - i} = i$",
+          "explicacion": "Se multiplica numerador y denominador por 1 + i: $\\frac{(1 + i)^2}{(1 - i)(1 + i)} = \\frac{2i}{1 + 1} = i$. Verificación: i × (1 − i) = i − i² = 1 + i."
+        },
+        {
+          "texto": "$\\frac{1 - i}{1 + i} = -i$",
+          "explicacion": "Es el inverso del cociente anterior: $\\frac{1}{i} = -i$. También se obtiene multiplicando por 1 − i: $\\frac{(1 - i)^2}{2} = \\frac{-2i}{2} = -i$. Verificación: (−i)(1 + i) = −i − i² = 1 − i."
+        },
+        {
+          "texto": "$(1 + i)^{4k} = (-4)^k$",
+          "explicacion": "Se obtiene de $(1 + i)^4 = -4$ y de la ley de potencia de una potencia. Ejemplo: $(1 + i)^{20} = ((1 + i)^4)^5 = (-4)^5 = -1024$. Verificación: $(1 + i)^{20} = ((1 + i)^2)^{10} = (2i)^{10} = 1024\\,i^{10} = 1024(-1) = -1024$, pues 10 = 4·2 + 2."
+        },
+        {
+          "texto": "$\\left(\\frac{1 + i}{1 - i}\\right)^n = i^n$",
+          "explicacion": "Como $\\frac{1 + i}{1 - i} = i$, elevar el cociente a n equivale a calcular $i^n$, que se resuelve con el residuo de n ÷ 4. Ejemplo: n = 83. 83 = 4·20 + 3, luego el resultado es $i^3 = -i$. Verificación con n = 2: $\\frac{(1 + i)^2}{(1 - i)^2} = \\frac{2i}{-2i} = -1 = i^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrado y cubo",
+      "puntos": [
+        {
+          "texto": "$(a + bi)^2 = (a^2 - b^2) + 2abi$",
+          "explicacion": "Se obtiene expandiendo: $a^2 + 2abi + b^2 i^2 = (a^2 - b^2) + 2abi$. Ejemplo: $(3 + 2i)^2$ con a = 3 y b = 2. Parte real: 9 − 4 = 5. Parte imaginaria: 2·3·2 = 12. Resultado: 5 + 12i. Verificación con la fórmula del producto: ac − bd = 9 − 4 = 5 y ad + bc = 6 + 6 = 12."
+        },
+        {
+          "texto": "$(a + bi)^3 = (a^3 - 3ab^2) + (3a^2 b - b^3)i$",
+          "explicacion": "Se obtiene multiplicando $(a + bi)^2$ por a + bi: la parte real es $(a^2 - b^2)a - 2ab \\cdot b = a^3 - 3ab^2$ y la parte imaginaria es $(a^2 - b^2)b + 2ab \\cdot a = 3a^2 b - b^3$. Ejemplo: $(1 + 2i)^3$ con a = 1 y b = 2. Parte real: 1 − 3·1·4 = −11. Parte imaginaria: 3·1·2 − 8 = −2. Resultado: −11 − 2i. Verificación: $(1 + 2i)^2 = -3 + 4i$ y (−3 + 4i)(1 + 2i) = −3 − 6i + 4i + 8i² = −11 − 2i."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de números negativos",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{-a} = i\\sqrt{a}$ para a > 0",
+          "explicacion": "La raíz cuadrada principal de un real negativo se define con i, porque $(i\\sqrt{a})^2 = i^2 a = -a$. Ejemplos: $\\sqrt{-16} = 4i$, y se verifica con $(4i)^2 = 16i^2 = -16$. Además, $\\sqrt{-12} = i\\sqrt{12} = 2i\\sqrt{3}$, y $(2i\\sqrt{3})^2 = 4 \\cdot i^2 \\cdot 3 = -12$."
+        },
+        {
+          "texto": "$\\sqrt{-a}\\sqrt{-b} = -\\sqrt{ab}$ con a, b > 0",
+          "explicacion": "Se obtiene con $(i\\sqrt{a})(i\\sqrt{b}) = i^2\\sqrt{ab} = -\\sqrt{ab}$. Por eso la regla $\\sqrt{x}\\sqrt{y} = \\sqrt{xy}$ solo vale cuando x e y no son negativos a la vez. Ejemplo: $\\sqrt{-4}\\sqrt{-9} = (2i)(3i) = 6i^2 = -6$, mientras que $\\sqrt{36} = 6$, de modo que los resultados difieren en el signo."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces cuadradas complejas",
+      "puntos": [
+        {
+          "texto": "Si $w^2 = z$ y z ≠ 0, las raíces cuadradas de z son w y −w",
+          "explicacion": "Como $(-w)^2 = w^2 = z$, si w es raíz entonces −w también lo es. No hay otras: si $x^2 = w^2$, entonces $(x - w)(x + w) = 0$ y, por el producto nulo, x = w o x = −w. Ejemplo: z = −4 tiene raíces 2i y −2i, pues $(2i)^2 = -4$ y $(-2i)^2 = -4$."
+        },
+        {
+          "texto": "$(x + yi)^2 = a + bi$ ⇒ $x^2 - y^2 = a$ y $2xy = b$",
+          "explicacion": "Para hallar la raíz cuadrada de a + bi se plantea que (x + yi)² = (x² − y²) + 2xy·i y se iguala con a + bi, parte real con parte real y parte imaginaria con parte imaginaria. Ejemplo: raíz de 3 + 4i. Se plantea x² − y² = 3 y 2xy = 4. Estas dos ecuaciones se completan con la que aparece en la siguiente tarjeta."
+        },
+        {
+          "texto": "$x^2 = \\frac{|z| + a}{2}$ y $y^2 = \\frac{|z| - a}{2}$",
+          "explicacion": "Como $|w|^2 = |z|$, se cumple x² + y² = |z|. Sumando esta ecuación con x² − y² = a se obtiene 2x² = |z| + a, y restándola se obtiene 2y² = |z| − a. Ejemplo: z = 3 + 4i, con |z| = 5. x² = (5 + 3)/2 = 4 ⇒ x = ±2. y² = (5 − 3)/2 = 1 ⇒ y = ±1. Faltan los signos, que fija 2xy = b."
+        },
+        {
+          "texto": "El signo de xy es el de b",
+          "explicacion": "Como 2xy = b, si b > 0 las partes x e y tienen igual signo, y si b < 0 tienen signos contrarios; esto elige dos de las cuatro combinaciones. Ejemplos: z = 3 + 4i, b = 4 > 0 ⇒ ±(2 + i); verificación: (2 + i)² = 4 + 4i − 1 = 3 + 4i. z = −5 + 12i, |z| = 13 ⇒ x² = 4, y² = 9, b > 0 ⇒ ±(2 + 3i); verificación: (2 + 3i)² = 4 + 12i − 9 = −5 + 12i. z = 8 − 6i, |z| = 10 ⇒ x² = 9, y² = 1, b < 0 ⇒ ±(3 − i); verificación: (3 − i)² = 9 − 6i − 1 = 8 − 6i."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones con z",
+      "puntos": [
+        {
+          "texto": "Ecuación con z y $\\overline{z}$ ⇒ sustituir z = x + yi",
+          "explicacion": "Estrategia: se reemplaza z por x + yi y el conjugado por x − yi, se simplifica y se igualan partes reales e imaginarias para obtener un sistema de dos ecuaciones reales. Ejemplo: $z + 2\\overline{z} = 6 - 3i$. Datos: (x + yi) + 2(x − yi) = 3x − yi. Igualdad: 3x − yi = 6 − 3i ⇒ 3x = 6 y −y = −3 ⇒ x = 2 y y = 3. Resultado: z = 2 + 3i. Verificación: (2 + 3i) + 2(2 − 3i) = 2 + 3i + 4 − 6i = 6 − 3i."
+        },
+        {
+          "texto": "Ecuación con |z| ⇒ sustituir z = x + yi y comprobar",
+          "explicacion": "Se sustituye z = x + yi y |z| = √(x² + y²); al aislar la raíz y elevar al cuadrado puede aparecer una solución falsa, por lo que el resultado se comprueba. Ejemplo: $z + |z| = 2 + i$. Partes imaginarias: y = 1. Partes reales: $x + \\sqrt{x^2 + 1} = 2$ ⇒ $\\sqrt{x^2 + 1} = 2 - x$ ⇒ x² + 1 = 4 − 4x + x² ⇒ x = 3/4. Verificación: 2 − x = 5/4 ≥ 0 y $\\sqrt{\\frac{9}{16} + 1} = \\frac{5}{4}$. Resultado: z = 3/4 + i, con 3/4 + 5/4 + i = 2 + i."
+        }
+      ]
+    }
+  ]
+}

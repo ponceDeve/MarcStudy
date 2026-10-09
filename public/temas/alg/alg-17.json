@@ -1,0 +1,273 @@
+{
+  "curso": "Álgebra",
+  "tema": "Módulo y conjugado de un número complejo",
+  "glosario": {
+    "complejo conjugado": "Complejo con parte imaginaria de signo opuesto.",
+    "conjugado": "Complejo con parte imaginaria de signo opuesto.",
+    "par conjugado": "Dos complejos conjugados entre sí.",
+    "módulo": "Distancia del complejo al origen.",
+    "valor absoluto": "Distancia de un número al origen.",
+    "parte real": "Término sin la unidad imaginaria.",
+    "parte imaginaria": "Coeficiente real de la unidad imaginaria.",
+    "unidad imaginaria": "Número cuyo cuadrado vale menos uno.",
+    "imaginario puro": "Complejo con parte real cero.",
+    "plano complejo": "Plano donde se ubican los complejos.",
+    "eje real": "Eje horizontal del plano complejo.",
+    "teorema de Pitágoras": "Relación entre catetos e hipotenusa.",
+    "hipotenusa": "Lado opuesto al ángulo recto.",
+    "desigualdad triangular": "Módulo de suma no supera suma de módulos.",
+    "circunferencia": "Puntos a igual distancia de un centro.",
+    "radio": "Distancia del centro a la circunferencia.",
+    "inverso multiplicativo": "Número que multiplicado da uno.",
+    "discriminante": "Número que indica el tipo de raíces.",
+    "coeficiente": "Número que multiplica a una variable.",
+    "polinomio": "Suma de términos con potencias enteras.",
+    "raíz": "Valor que anula una expresión.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "ordenada": "Coordenada vertical de un punto."
+  },
+  "theory": [
+    {
+      "titulo": "Conjugado",
+      "puntos": [
+        {
+          "texto": "«Conjugado» de $z=a+bi$ ⇒ $\\overline{z}=a-bi$",
+          "explicacion": "El conjugado de un número complejo se obtiene cambiando el signo de su parte imaginaria y conservando la parte real. Se denota $\\overline{z}$ y se lee «$z$ conjugado». La definición solo exige que $a$ y $b$ sean reales, de modo que todo complejo tiene exactamente un conjugado, que también es complejo. Ejemplos: el conjugado de $3+4i$ es $3-4i$; el de $5-2i$ es $5+2i$; el de $-7i$ es $7i$. Verificación: en cada caso la parte real no cambia ($3$, $5$, $0$) y la parte imaginaria cambia de signo ($4\\to-4$, $-2\\to 2$, $-7\\to 7$)."
+        },
+        {
+          "texto": "Nombre alternativo: «complejo conjugado»",
+          "explicacion": "El conjugado de $z$ también se llama complejo conjugado de $z$. Ambos nombres designan al número $\\overline{z}=a-bi$. Cuando dos complejos son conjugados el uno del otro se dice que forman un par conjugado. Ejemplo: $2+5i$ y $2-5i$ forman un par conjugado. Verificación: el conjugado de $2+5i$ es $2-5i$ y el conjugado de $2-5i$ es $2+5i$."
+        },
+        {
+          "texto": "Conjugado de un real $a$ ⇒ $\\overline{a}=a$",
+          "explicacion": "Los números reales forman parte de los complejos con parte imaginaria cero, de modo que la regla general de conjugación también se aplica a ellos y da un resultado especialmente simple. Un número real es un complejo con parte imaginaria cero, y al cambiar el signo de cero no cambia nada, así que su conjugado es él mismo. Ejemplos: $\\overline{7}=7$ y $\\overline{-3}=-3$. Verificación: $7=7+0i$ y su conjugado es $7-0i=7$."
+        },
+        {
+          "texto": "$\\overline{i}=-i$ ⇒ conjugado de la unidad imaginaria",
+          "explicacion": "La unidad imaginaria es el complejo básico del que se construyen los demás, así que conviene conocer su conjugado de memoria: aparece en casi todos los cálculos con conjugados. La unidad imaginaria $i=0+1i$ tiene parte imaginaria $1$, y su conjugado cambia ese signo: $\\overline{i}=0-1i=-i$. Ejemplo: $\\overline{3i}=-3i$. Verificación: $i+\\overline{i}=i+(-i)=0$, resultado real, como corresponde a la suma de un complejo con su conjugado."
+        },
+        {
+          "texto": "$\\overline{\\overline{z}}=z$ ⇒ doble conjugado",
+          "explicacion": "Conjugar es una operación que se deshace a sí misma: aplicarla dos veces equivale a no hacer nada. Esta propiedad permite pasar de un lado a otro de una igualdad conjugando ambos miembros sin perder información. Conjugar dos veces devuelve el complejo original, porque se cambia dos veces el signo de la parte imaginaria. Demostración: $\\overline{a+bi}=a-bi$ y $\\overline{a-bi}=a+bi$. Ejemplo: $\\overline{\\overline{2-5i}}=\\overline{2+5i}=2-5i$. Verificación: el resultado coincide con $z=2-5i$."
+        },
+        {
+          "texto": "Conjugado ⇒ reflexión respecto al eje real",
+          "explicacion": "En el plano complejo el punto $(a,b)$ se refleja en el punto $(a,-b)$ al conjugar, es decir, el conjugado es el simétrico del complejo respecto al eje horizontal (eje real). Ejemplo: $3+4i$ corresponde al punto $(3,4)$ y su conjugado $3-4i$ al punto $(3,-4)$. Verificación: ambos puntos tienen la misma abscisa $3$ y ordenadas opuestas $4$ y $-4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas con conjugado",
+      "puntos": [
+        {
+          "texto": "$z+\\overline{z}=2a$ ⇒ suma con el conjugado",
+          "explicacion": "Esta fórmula muestra que al sumar un complejo con su conjugado desaparece toda la parte imaginaria; el resultado es siempre un número real, por lo que sirve para extraer la parte real. La suma de un complejo con su conjugado es el real igual al doble de la parte real, porque las partes imaginarias se cancelan. Demostración: $(a+bi)+(a-bi)=2a+0i=2a$. Ejemplo: $(3+4i)+(3-4i)=6$. Verificación: $2a=2\\times 3=6$."
+        },
+        {
+          "texto": "$z-\\overline{z}=2bi$ ⇒ diferencia con el conjugado",
+          "explicacion": "En contraste con la suma, al restar el conjugado desaparece la parte real y queda solo un término imaginario, de modo que el resultado es un imaginario puro o cero. La diferencia entre un complejo y su conjugado es un imaginario puro igual al doble de la parte imaginaria multiplicada por $i$, porque las partes reales se cancelan. Demostración: $(a+bi)-(a-bi)=0+2bi=2bi$. Ejemplo: $(3+4i)-(3-4i)=8i$. Verificación: $2bi=2\\times 4\\times i=8i$."
+        },
+        {
+          "texto": "$z\\overline{z}=a^2+b^2$ ⇒ producto con el conjugado",
+          "explicacion": "Esta propiedad es la más usada con el conjugado, pues convierte un complejo en un número real sin necesitar más datos que sus partes. El producto de un complejo por su conjugado es el real no negativo $a^2+b^2$. Demostración: $(a+bi)(a-bi)=a^2-b^2i^2=a^2+b^2$. Este resultado es la base para dividir complejos y para definir el módulo. Ejemplos: $(3+4i)(3-4i)=9+16=25$ y $(1-i)(1+i)=1+1=2$. Verificación: $9-16i^2=9+16=25$."
+        },
+        {
+          "texto": "$\\mathrm{Re}(z)=\\frac{z+\\overline{z}}{2}$ ⇒ parte real",
+          "explicacion": "Las partes de un complejo pueden expresarse únicamente con $z$ y su conjugado, lo que resulta útil cuando se trabaja con expresiones sin descomponerlas en $a$ y $b$. Despejando de $z+\\overline{z}=2a$ se obtiene la parte real como el promedio del complejo y su conjugado. Aquí $\\mathrm{Re}(z)$ significa «parte real de $z$». Ejemplo: para $z=3+4i$ resulta $\\frac{(3+4i)+(3-4i)}{2}=\\frac{6}{2}=3$. Verificación: $3$ es la parte real de $3+4i$."
+        },
+        {
+          "texto": "$\\mathrm{Im}(z)=\\frac{z-\\overline{z}}{2i}$ ⇒ parte imaginaria",
+          "explicacion": "Igual que la parte real, la parte imaginaria se obtiene combinando $z$ y su conjugado; aquí es necesario dividir entre $2i$ porque la diferencia $z-\\overline{z}$ resulta imaginaria pura. Despejando de $z-\\overline{z}=2bi$ se obtiene la parte imaginaria dividiendo entre $2i$. Aquí $\\mathrm{Im}(z)$ significa «parte imaginaria de $z$». Ejemplo: para $z=3+4i$ resulta $\\frac{(3+4i)-(3-4i)}{2i}=\\frac{8i}{2i}=4$. Verificación: $4$ es la parte imaginaria de $3+4i$."
+        },
+        {
+          "texto": "$z=\\overline{z}$ ⇒ $z$ es real",
+          "explicacion": "Un complejo es igual a su conjugado exactamente cuando su parte imaginaria es cero. Demostración: $a+bi=a-bi$ implica $b=-b$, es decir $2b=0$ y $b=0$; recíprocamente, si $b=0$ ambos lados valen $a$. Ejemplo: $z=5$ cumple $\\overline{z}=5=z$, mientras que $z=5+i$ cumple $\\overline{z}=5-i\\ne z$. Verificación: la igualdad solo se cumple cuando $b=0$."
+        },
+        {
+          "texto": "$z=-\\overline{z}$ ⇒ $z$ es imaginario puro o cero",
+          "explicacion": "Esta condición describe los complejos situados sobre el eje imaginario y complementa la condición de ser real; juntas permiten clasificar un complejo con una sola igualdad con su conjugado. Un complejo es igual al opuesto de su conjugado exactamente cuando su parte real es cero. Demostración: $a+bi=-(a-bi)=-a+bi$ implica $a=-a$, es decir $a=0$. Ejemplo: $z=3i$ cumple $-\\overline{z}=-(-3i)=3i=z$. Verificación: $z=3+i$ no cumple la condición, pues $-\\overline{z}=-3-i\\ne z$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjugado y operaciones",
+      "puntos": [
+        {
+          "texto": "$\\overline{z_1+z_2}=\\overline{z_1}+\\overline{z_2}$",
+          "explicacion": "El conjugado respeta las operaciones, lo que permite conjugar una expresión término a término. Las cinco propiedades siguientes (suma, resta, producto, cociente y potencia) expresan esta compatibilidad. El conjugado de una suma es la suma de los conjugados. Demostración: con $z_1=a+bi$ y $z_2=c+di$, $\\overline{z_1+z_2}=\\overline{(a+c)+(b+d)i}=(a+c)-(b+d)i=(a-bi)+(c-di)$. Ejemplo: $z_1=3+2i$ y $z_2=1-5i$ dan $z_1+z_2=4-3i$ y su conjugado es $4+3i$; por otro lado $\\overline{z_1}+\\overline{z_2}=(3-2i)+(1+5i)=4+3i$. Verificación: ambos resultados son $4+3i$."
+        },
+        {
+          "texto": "$\\overline{z_1-z_2}=\\overline{z_1}-\\overline{z_2}$",
+          "explicacion": "El conjugado de una diferencia es la diferencia de los conjugados, porque restar es sumar el opuesto y el conjugado conserva la suma. Ejemplo: con $z_1=3+2i$ y $z_2=1-5i$, $z_1-z_2=2+7i$ y su conjugado es $2-7i$; además $\\overline{z_1}-\\overline{z_2}=(3-2i)-(1+5i)=2-7i$. Verificación: los dos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{z_1z_2}=\\overline{z_1}\\ \\overline{z_2}$",
+          "explicacion": "Esta propiedad es la más importante de las que relacionan conjugado y operaciones, porque sustenta las demás: el cociente y la potencia se deducen de ella. El conjugado de un producto es el producto de los conjugados. Demostración: $z_1z_2=(ac-bd)+(ad+bc)i$, cuyo conjugado es $(ac-bd)-(ad+bc)i$; y $(a-bi)(c-di)=ac-adi-bci+bdi^2=(ac-bd)-(ad+bc)i$. Ejemplo: $z_1=2+i$ y $z_2=1+3i$ dan $z_1z_2=-1+7i$ y su conjugado $-1-7i$; además $(2-i)(1-3i)=2-6i-i+3i^2=-1-7i$. Verificación: ambos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{\\left(\\frac{z_1}{z_2}\\right)}=\\frac{\\overline{z_1}}{\\overline{z_2}}$ con $z_2\\ne 0$",
+          "explicacion": "La compatibilidad del conjugado con el producto se extiende a la división, pues dividir es multiplicar por el inverso. Es la propiedad que justifica conjugar numerador y denominador por separado. El conjugado de un cociente es el cociente de los conjugados. Se deduce de la propiedad del producto aplicada a $z_1\\times\\frac{1}{z_2}$. Ejemplo: $\\frac{2+3i}{1-2i}=\\frac{-4+7i}{5}$, cuyo conjugado es $\\frac{-4-7i}{5}$; por otro lado $\\frac{2-3i}{1+2i}=\\frac{(2-3i)(1-2i)}{5}=\\frac{2-4i-3i+6i^2}{5}=\\frac{-4-7i}{5}$. Verificación: los dos resultados coinciden."
+        },
+        {
+          "texto": "$\\overline{z^n}=\\left(\\overline{z}\\right)^n$ ⇒ conjugado de una potencia",
+          "explicacion": "Una potencia con exponente entero positivo es un producto repetido, así que la propiedad del producto se aplica $n$ veces y permite conjugar la base en lugar del resultado. El conjugado de una potencia es la potencia del conjugado, por aplicar repetidamente la propiedad del producto. Ejemplo: $(1+i)^2=2i$ tiene conjugado $-2i$, y $(1-i)^2=1-2i+i^2=-2i$. Verificación: los dos resultados son $-2i$."
+        },
+        {
+          "texto": "$\\overline{kz}=k\\overline{z}$ si $k\\in\\mathbb{R}$",
+          "explicacion": "Es un caso particular de la propiedad del producto con $z_1=k$ real, pero se usa con tanta frecuencia que se enuncia aparte. Un factor real sale del conjugado sin cambiar, porque el real es su propio conjugado. Ejemplo: $\\overline{3(2+i)}=\\overline{6+3i}=6-3i$ y $3\\overline{(2+i)}=3(2-i)=6-3i$. Verificación: ambos resultados coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Módulo",
+      "puntos": [
+        {
+          "texto": "«Módulo» de $z=a+bi$ ⇒ $|z|=\\sqrt{a^2+b^2}$",
+          "explicacion": "El módulo de un complejo es la raíz cuadrada no negativa de la suma de los cuadrados de sus partes real e imaginaria. Se denota $|z|$ y mide el tamaño del complejo. Siempre es un número real mayor o igual que cero. Ejemplos: $|3+4i|=\\sqrt{9+16}=5$; $|5-12i|=\\sqrt{25+144}=13$; $|1+i|=\\sqrt{2}$. Verificación: $5^2=25=9+16$ y $13^2=169=25+144$."
+        },
+        {
+          "texto": "Nombre alternativo: «valor absoluto» de un complejo",
+          "explicacion": "La palabra «módulo» y la expresión «valor absoluto» se usan indistintamente para complejos; el segundo nombre recuerda que el módulo extiende la noción de valor absoluto de los reales. El módulo de un complejo también se llama valor absoluto del complejo. Ejemplo: el valor absoluto de $-6+8i$ es $\\sqrt{36+64}=10$. Verificación: $10^2=100=36+64$."
+        },
+        {
+          "texto": "$|z|$ ⇒ distancia del punto $(a,b)$ al origen",
+          "explicacion": "En el plano complejo el módulo es la distancia entre el origen y el punto $(a,b)$. Por el teorema de Pitágoras, esa distancia es la hipotenusa de un triángulo rectángulo de catetos $|a|$ y $|b|$. Ejemplo: el punto $(3,4)$ está a $\\sqrt{3^2+4^2}=5$ unidades del origen. Verificación: $3^2+4^2=25=5^2$."
+        },
+        {
+          "texto": "Módulo de un real $a$ ⇒ $|a|=\\sqrt{a^2}$ como valor absoluto",
+          "explicacion": "Si $z=a$ es real, $|a+0i|=\\sqrt{a^2}$, que coincide con el valor absoluto de $a$ visto en el tema «Valor absoluto». Así el módulo generaliza el valor absoluto a los complejos. Ejemplos: $|-7|=\\sqrt{49}=7$ y $|5|=5$. Verificación: coinciden con el valor absoluto real."
+        },
+        {
+          "texto": "Módulo de $bi$ ⇒ $|bi|=|b|$",
+          "explicacion": "Los imaginarios puros están sobre el eje vertical del plano complejo, de modo que su distancia al origen es simplemente el valor absoluto de su coeficiente. Para un imaginario puro $0+bi$, el módulo es $\\sqrt{0+b^2}=|b|$. Ejemplos: $|-2i|=\\sqrt{4}=2$ y $|i|=1$. Verificación: $(-2)^2=4$ y $1^2=1$."
+        },
+        {
+          "texto": "$|0|=0$ ⇒ módulo del cero",
+          "explicacion": "El módulo mide el tamaño de un complejo, y el único complejo de tamaño nulo es el que está sobre el origen. El complejo cero tiene módulo cero, pues $\\sqrt{0^2+0^2}=0$, y es el único con esa propiedad. Ejemplo: $|0+0i|=0$. Verificación: cualquier otro complejo tiene $a^2+b^2>0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del módulo",
+      "puntos": [
+        {
+          "texto": "$|z|\\ge 0$ y $|z|=0$ ⇒ $z=0$",
+          "explicacion": "El módulo nunca es negativo y vale cero solo para el cero. Demostración: $a^2+b^2\\ge 0$ y es igual a cero solo si $a=0$ y $b=0$. Ejemplo: $|2-i|=\\sqrt{5}>0$ y $|0|=0$. Verificación: cualquier complejo no nulo tiene alguna parte distinta de cero."
+        },
+        {
+          "texto": "$|z|^2=z\\overline{z}$ ⇒ cuadrado del módulo",
+          "explicacion": "Esta igualdad une el módulo con el conjugado y es la herramienta que permite demostrar casi todas las propiedades del módulo sin recurrir a raíces cuadradas. El cuadrado del módulo es igual al producto del complejo por su conjugado. Demostración: $z\\overline{z}=a^2+b^2=\\left(\\sqrt{a^2+b^2}\\right)^2=|z|^2$. Ejemplo: para $z=3+4i$, $z\\overline{z}=25$ y $|z|^2=5^2=25$. Verificación: ambos valores coinciden."
+        },
+        {
+          "texto": "$|z|=|\\overline{z}|=|-z|$ ⇒ mismo módulo",
+          "explicacion": "La reflexión sobre el eje real y la reflexión respecto al origen conservan la distancia al origen, de modo que los tres complejos están sobre una misma circunferencia con centro en el origen. Un complejo, su conjugado y su opuesto tienen el mismo módulo, porque las partes solo cambian de signo y aparecen elevadas al cuadrado. Ejemplo: $z=3-4i$, $\\overline{z}=3+4i$ y $-z=-3+4i$ tienen módulo $5$. Verificación: $\\sqrt{9+16}=5$ en los tres casos."
+        },
+        {
+          "texto": "$|z_1z_2|=|z_1||z_2|$ ⇒ módulo del producto",
+          "explicacion": "El módulo es compatible con el producto: no se necesita calcular el producto para conocer su tamaño. El módulo de un producto es el producto de los módulos. Demostración: $|z_1z_2|^2=z_1z_2\\overline{z_1z_2}=(z_1\\overline{z_1})(z_2\\overline{z_2})=|z_1|^2|z_2|^2$, y se extrae raíz cuadrada. Ejemplo: $z_1=1+i$ y $z_2=3+4i$ dan $z_1z_2=-1+7i$ con $|z_1z_2|=\\sqrt{50}=5\\sqrt{2}$, y $|z_1||z_2|=\\sqrt{2}\\times 5$. Verificación: ambos valores son $5\\sqrt{2}$."
+        },
+        {
+          "texto": "$\\left|\\frac{z_1}{z_2}\\right|=\\frac{|z_1|}{|z_2|}$ con $z_2\\ne 0$",
+          "explicacion": "Igual que con el producto, el tamaño de un cociente se obtiene sin efectuar la división, siempre que el divisor no sea cero. El módulo de un cociente es el cociente de los módulos. Se deduce del módulo del producto. Ejemplo: $\\frac{2+3i}{1-2i}=\\frac{-4+7i}{5}$ tiene módulo $\\frac{\\sqrt{65}}{5}$, y $\\frac{|2+3i|}{|1-2i|}=\\frac{\\sqrt{13}}{\\sqrt{5}}=\\frac{\\sqrt{65}}{5}$. Verificación: ambos resultados coinciden."
+        },
+        {
+          "texto": "$|z^n|=|z|^n$ ⇒ módulo de una potencia",
+          "explicacion": "Como una potencia es un producto repetido, el módulo de la potencia se obtiene elevando el módulo de la base al mismo exponente. El módulo de una potencia es la potencia del módulo, por aplicar repetidamente la regla del producto. Ejemplo: $(1+i)^4=-4$ tiene módulo $4$, y $|1+i|^4=(\\sqrt{2})^4=4$. Verificación: ambos resultados valen $4$."
+        },
+        {
+          "texto": "$|\\mathrm{Re}(z)|\\le |z|$ y $|\\mathrm{Im}(z)|\\le |z|$",
+          "explicacion": "El módulo es mayor o igual que el valor absoluto de cada parte, porque $\\sqrt{a^2+b^2}\\ge\\sqrt{a^2}=|a|$ y también $\\ge|b|$. La igualdad se da cuando la otra parte es cero. Ejemplo: para $3+4i$, $|3|=3\\le 5$ y $|4|=4\\le 5$. Verificación: $z=-2$ da $|\\mathrm{Re}(z)|=2=|z|$."
+        },
+        {
+          "texto": "$|z_1+z_2|\\le |z_1|+|z_2|$ ⇒ desigualdad triangular",
+          "explicacion": "Esta desigualdad expresa que en un triángulo cada lado es menor o igual que la suma de los otros dos, y es una de las propiedades más importantes del módulo. El módulo de una suma no supera la suma de los módulos. Demostración: $|z_1+z_2|^2=|z_1|^2+2\\mathrm{Re}(z_1\\overline{z_2})+|z_2|^2\\le|z_1|^2+2|z_1||z_2|+|z_2|^2=(|z_1|+|z_2|)^2$, y se extrae raíz. Ejemplo: $z_1=3$ y $z_2=4i$ dan $|z_1+z_2|=|3+4i|=5\\le 3+4=7$. Verificación: la igualdad se da cuando ambos tienen la misma dirección, por ejemplo $|1+i|+|2+2i|=\\sqrt{2}+2\\sqrt{2}=3\\sqrt{2}=|3+3i|$."
+        },
+        {
+          "texto": "$\\big||z_1|-|z_2|\\big|\\le |z_1-z_2|$ ⇒ desigualdad triangular inversa",
+          "explicacion": "Es una consecuencia directa de la desigualdad triangular, y acota la diferencia de tamaños de dos complejos con la distancia entre ellos. La diferencia de módulos no supera el módulo de la diferencia. Demostración: $|z_1|=|(z_1-z_2)+z_2|\\le|z_1-z_2|+|z_2|$, de donde $|z_1|-|z_2|\\le|z_1-z_2|$, y lo mismo intercambiando los papeles. Ejemplo: $z_1=3+4i$ y $z_2=1$ dan $\\big|5-1\\big|=4\\le|2+4i|=\\sqrt{20}\\approx 4.47$. Verificación: $4\\le 4.47$ es verdadero."
+        }
+      ]
+    },
+    {
+      "titulo": "Distancia y regiones",
+      "puntos": [
+        {
+          "texto": "$|z_1-z_2|$ ⇒ distancia entre dos complejos",
+          "explicacion": "La noción de módulo se extiende de distancia al origen a distancia entre dos puntos cualesquiera del plano, restando primero los complejos. El módulo de la diferencia es la distancia entre los puntos que representan a los complejos. Con $z_1=a+bi$ y $z_2=c+di$ resulta $|z_1-z_2|=\\sqrt{(a-c)^2+(b-d)^2}$. Ejemplo: $z_1=1+2i$ y $z_2=4+6i$ dan $z_1-z_2=-3-4i$ y $|z_1-z_2|=\\sqrt{9+16}=5$. Verificación: la fórmula da $\\sqrt{(1-4)^2+(2-6)^2}=\\sqrt{25}=5$."
+        },
+        {
+          "texto": "$|z-z_0|=r$ ⇒ circunferencia de centro $z_0$ y radio $r$",
+          "explicacion": "Los complejos que están a distancia $r>0$ del complejo fijo $z_0$ forman una circunferencia de centro $z_0$ y radio $r$. Ejemplo: $|z-(1+2i)|=3$ describe la circunferencia de centro $(1,2)$ y radio $3$. Verificación: $z=4+2i$ cumple $|3+0i|=3$, $z=1+5i$ cumple $|0+3i|=3$ y $z=-2+2i$ cumple $|-3|=3$."
+        },
+        {
+          "texto": "$|z|<r$ ⇒ interior del círculo",
+          "explicacion": "La condición $|z|<r$ describe los complejos que están a distancia menor que $r$ del origen, es decir, el interior de la circunferencia $|z|=r$. La condición $|z|>r$ describe el exterior. Ejemplo: con $r=5$, $3+0i$ cumple $|z|=3<5$ y está dentro, mientras que $4+4i$ cumple $|z|=\\sqrt{32}\\approx 5.66>5$ y está fuera. Verificación: $3+4i$ cumple $|z|=5$ y está sobre la circunferencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Inverso y división",
+      "puntos": [
+        {
+          "texto": "$\\frac{1}{z}=\\frac{\\overline{z}}{|z|^2}$ ⇒ inverso",
+          "explicacion": "Calcular el inverso es el caso más simple de división, y por eso es la base para dividir cualquier par de complejos. El inverso de un complejo no nulo se obtiene multiplicando numerador y denominador por el conjugado, ya que $z\\overline{z}=|z|^2$ es real. Demostración: $\\frac{1}{z}=\\frac{\\overline{z}}{z\\overline{z}}=\\frac{\\overline{z}}{|z|^2}$. Ejemplo: $\\frac{1}{3+4i}=\\frac{3-4i}{25}=\\frac{3}{25}-\\frac{4}{25}i$. Verificación: $(3+4i)\\left(\\frac{3-4i}{25}\\right)=\\frac{25}{25}=1$."
+        },
+        {
+          "texto": "$\\frac{z_1}{z_2}=\\frac{z_1\\overline{z_2}}{|z_2|^2}$ ⇒ división",
+          "explicacion": "La división de complejos se reduce a una multiplicación mediante el conjugado del divisor; esta fórmula resume el procedimiento completo. Para dividir se multiplica numerador y denominador por el conjugado del divisor, y el denominador queda real. Ejemplo: $\\frac{2+3i}{1-2i}$ tiene $\\overline{z_2}=1+2i$ y $|z_2|^2=1+4=5$; el numerador es $(2+3i)(1+2i)=2+4i+3i+6i^2=-4+7i$, y el cociente es $\\frac{-4+7i}{5}$. Verificación: $\\left(\\frac{-4+7i}{5}\\right)(1-2i)=\\frac{-4+8i+7i-14i^2}{5}=\\frac{10+15i}{5}=2+3i$."
+        },
+        {
+          "texto": "$\\left|\\frac{1}{z}\\right|=\\frac{1}{|z|}$ ⇒ módulo del inverso",
+          "explicacion": "Es un caso particular del módulo de un cociente con numerador $1$, y muestra que los complejos grandes tienen inversos pequeños y viceversa. El módulo del inverso es el inverso del módulo, por la regla del cociente. Ejemplo: $\\left|\\frac{1}{3+4i}\\right|=\\left|\\frac{3-4i}{25}\\right|=\\frac{5}{25}=\\frac{1}{5}$. Verificación: $\\frac{1}{|3+4i|}=\\frac{1}{5}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz con módulo",
+      "puntos": [
+        {
+          "texto": "$x^2=\\frac{|z|+a}{2}$ y $y^2=\\frac{|z|-a}{2}$ ⇒ raíz cuadrada",
+          "explicacion": "El módulo da una vía directa para hallar raíces cuadradas de un complejo: en vez de resolver una ecuación bicuadrada, se obtienen $x^2$ e $y^2$ mediante fórmulas. Para hallar $\\sqrt{a+bi}=x+yi$ se usan $x^2-y^2=a$ y $x^2+y^2=|z|$, pues $|x+yi|^2=|(x+yi)^2|=|z|$. Sumando y restando ambas ecuaciones se obtiene $x^2=\\frac{|z|+a}{2}$ y $y^2=\\frac{|z|-a}{2}$. Ejemplo: $\\sqrt{3+4i}$ con $|z|=5$ da $x^2=\\frac{5+3}{2}=4$ y $y^2=\\frac{5-3}{2}=1$. Verificación: $x^2-y^2=4-1=3$ y $2xy=2\\times 2\\times 1=4$ con $x=2$, $y=1$."
+        },
+        {
+          "texto": "Signo de $y$ ⇒ igual al de $b$ cuando $x>0$",
+          "explicacion": "Como $2xy=b$, los números $x$ e $y$ tienen el mismo signo si $b>0$ y signos opuestos si $b<0$. Ejemplos: $\\sqrt{3+4i}=\\pm(2+i)$ con $b>0$; $\\sqrt{3-4i}=\\pm(2-i)$ con $b<0$; $\\sqrt{-5+12i}$ con $|z|=13$ da $x^2=4$, $y^2=9$ y raíces $\\pm(2+3i)$; $\\sqrt{-3-4i}$ con $|z|=5$ da $x^2=1$, $y^2=4$ y raíces $\\pm(1-2i)$. Verificación: $(2-i)^2=3-4i$, $(2+3i)^2=-5+12i$ y $(1-2i)^2=-3-4i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones complejas",
+      "puntos": [
+        {
+          "texto": "Ecuación con $z$ y $\\overline{z}$ ⇒ sustituir $z=a+bi$",
+          "explicacion": "Cuando una ecuación mezcla un complejo y su conjugado no se puede despejar de forma directa; la estrategia general es descomponer en partes real e imaginaria. Si la ecuación contiene $z$ y $\\overline{z}$ se sustituye $z=a+bi$ y $\\overline{z}=a-bi$, y se igualan partes real e imaginaria. Ejemplo: $z+2\\overline{z}=3-4i$ da $a+bi+2a-2bi=3a-bi=3-4i$, de donde $a=1$ y $b=4$, es decir $z=1+4i$. Verificación: $\\overline{z}=1-4i$ y $z+2\\overline{z}=1+4i+2-8i=3-4i$."
+        },
+        {
+          "texto": "Ecuación con módulo ⇒ $a^2+b^2=r^2$",
+          "explicacion": "Una condición sobre el módulo es una ecuación real en $a$ y $b$, de modo que el problema se resuelve con las técnicas habituales del álgebra real. Una condición $|z|=r$ equivale a $a^2+b^2=r^2$, que se combina con otra condición sobre $a$ o $b$. Ejemplo: $z\\overline{z}=13$ y $\\mathrm{Re}(z)=2$ equivalen a $a^2+b^2=13$ y $a=2$, luego $4+b^2=13$ y $b=\\pm 3$, es decir $z=2+3i$ o $z=2-3i$. Verificación: $|2+3i|^2=4+9=13$."
+        },
+        {
+          "texto": "Polinomio con coeficientes reales ⇒ raíces complejas en pares",
+          "explicacion": "Si un polinomio $p$ con coeficientes reales cumple $p(z)=0$, también $p(\\overline{z})=0$. Demostración: el conjugado de $p(z)$ es $p(\\overline{z})$ porque los coeficientes reales no cambian y el conjugado respeta sumas y productos, y el conjugado de $0$ es $0$. Ejemplo: $x^2-2x+5=0$ tiene raíz $1+2i$ y también $1-2i$. Verificación: $(1+2i)^2-2(1+2i)+5=1+4i-4-2-4i+5=0$ y $(1-2i)^2-2(1-2i)+5=1-4i-4-2+4i+5=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Representación binomial (tema 16) ⇒ base de las fórmulas",
+          "explicacion": "El tema «Representación binomial» define las operaciones con $a+bi$, que aquí se usan para demostrar cada propiedad del conjugado y del módulo. La división del tema anterior se explica ahora con $\\frac{1}{z}=\\frac{\\overline{z}}{|z|^2}$. Ejemplo: $(a+bi)(a-bi)=a^2+b^2$ ya se había obtenido como producto de binomios. Verificación: $(3+4i)(3-4i)=25=|3+4i|^2$."
+        },
+        {
+          "texto": "Valor absoluto (tema 10) ⇒ el módulo lo generaliza",
+          "explicacion": "El módulo de un complejo real coincide con el valor absoluto estudiado en «Valor absoluto», y comparte propiedades: nunca es negativo, vale cero solo en el cero y cumple la desigualdad triangular. Ejemplo: $|-5|=5$ como real y $|-5+0i|=\\sqrt{25}=5$ como complejo. Verificación: ambos valores coinciden."
+        },
+        {
+          "texto": "Ecuaciones de segundo grado (tema 06) ⇒ raíces conjugadas",
+          "explicacion": "Cuando una ecuación cuadrática de coeficientes reales tiene discriminante negativo sus dos raíces son complejos conjugados. Ejemplo: $x^2+2x+5=0$ tiene $\\Delta=-16$ y raíces $-1+2i$ y $-1-2i$. Verificación: una es el conjugado de la otra, y su suma $-2$ es igual a $-\\frac{b}{a}$."
+        }
+      ]
+    }
+  ]
+}
