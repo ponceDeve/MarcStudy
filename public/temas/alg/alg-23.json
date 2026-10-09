@@ -1,0 +1,226 @@
+{
+  "curso": "Álgebra",
+  "tema": "Sistema de inecuaciones de primer grado con dos variables",
+  "glosario": {
+    "inecuación": "desigualdad con variables desconocidas",
+    "desigualdad": "comparación entre dos expresiones",
+    "desigualdad estricta": "comparación que excluye la igualdad",
+    "variable": "letra que representa un número desconocido",
+    "par ordenado": "dos números donde importa el orden",
+    "solución": "valor que cumple la desigualdad",
+    "semiplano": "mitad del plano limitada por una recta",
+    "recta frontera": "recta que separa dos semiplanos",
+    "punto de prueba": "punto usado para decidir el semiplano",
+    "sistema de inecuaciones": "inecuaciones que deben cumplirse a la vez",
+    "región solución": "conjunto de pares que cumplen el sistema",
+    "intersección": "parte común de varios conjuntos",
+    "recta vertical": "recta paralela al eje de las ordenadas",
+    "recta horizontal": "recta paralela al eje de las abscisas",
+    "eje": "recta numérica de referencia del plano",
+    "origen": "punto donde se cruzan los ejes",
+    "primer cuadrante": "zona con coordenadas no negativas",
+    "restricciones de no negatividad": "condiciones que exigen variables no negativas",
+    "vértice": "punto donde se cortan dos fronteras",
+    "región acotada": "región encerrada en un polígono",
+    "región no acotada": "región que se extiende sin límite",
+    "región vacía": "región sin ningún par solución",
+    "mínimo común múltiplo": "menor número que es múltiplo de varios",
+    "polígono": "figura cerrada formada por segmentos"
+  },
+  "theory": [
+    {
+      "titulo": "Inecuación lineal",
+      "puntos": [
+        {
+          "texto": "ax + by < c es una inecuación lineal con dos variables",
+          "explicacion": "Una inecuación lineal con dos variables compara la expresión ax + by con el número c mediante uno de los símbolos <, >, ≤ o ≥. Las letras x e y son las variables, y a, b, c son números reales con a y b no ambos cero. Las variables aparecen solo con exponente 1 y sin multiplicarse entre sí. Ejemplos: 2x + 3y ≤ 12 y x − y > 2 son de este tipo; x² + y < 3 no lo es por el exponente 2. Al cambiar el símbolo por «=» se obtiene la ecuación de la recta que limita la región solución."
+        },
+        {
+          "texto": "ax + by + c ≥ 0 es una forma equivalente",
+          "explicacion": "Cuando el número c está sumado en el mismo miembro que las variables, se pasa al otro miembro cambiando de signo y queda ax + by ≥ −c; el sentido del símbolo no cambia porque solo se suma un número a ambos lados. Ejemplo: 2x − y + 3 ≥ 0 equivale a 2x − y ≥ −3. Verificación con (0, 0): 0 − 0 + 3 = 3 ≥ 0 y 0 − 0 = 0 ≥ −3, ambas ciertas; con (−4, 0): −8 + 3 = −5 ≥ 0 es falsa y −8 ≥ −3 también es falsa."
+        },
+        {
+          "texto": "Solución: par ordenado (x, y) que cumple la desigualdad",
+          "explicacion": "Un par ordenado es solución si, al reemplazar x e y, la desigualdad resulta verdadera. Con los símbolos ≤ y ≥ la igualdad también cumple; con < y > no. Ejemplo con 2x + 3y ≤ 12: el par (1, 2) da 2 + 6 = 8 ≤ 12, cierto; el par (4, 3) da 8 + 9 = 17 ≤ 12, falso; el par (6, 0) da 12 ≤ 12, cierto. Con 2x + 3y < 12 el par (6, 0) ya no sería solución, pues 12 < 12 es falso."
+        },
+        {
+          "texto": "Una inecuación lineal tiene infinitas soluciones",
+          "explicacion": "Si un par cumple la desigualdad de forma estricta, los pares próximos también la cumplen, de modo que las soluciones no se pueden enumerar: forman una región del plano que no tiene límite en la dirección en que se aleja de la recta. Ejemplo con 2x + 3y ≤ 12: son soluciones (0, 0), (1, 1), (0, 4) y (−5, 2). Verificación del último: −10 + 6 = −4 ≤ 12."
+        },
+        {
+          "texto": "El conjunto solución es un semiplano",
+          "explicacion": "Una recta divide el plano en dos mitades llamadas semiplanos. Los pares con ax + by menor que c quedan en una mitad y los que dan mayor que c en la otra, de modo que el conjunto solución de una inecuación lineal es una de esas mitades, con o sin la recta. Ejemplo con 2x + 3y ≤ 12: el par (0, 0) da 0 < 12 y el par (6, 6) da 30 > 12; están en mitades opuestas de la recta 2x + 3y = 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Recta frontera",
+      "puntos": [
+        {
+          "texto": "Recta frontera: ax + by = c",
+          "explicacion": "Es la recta que se obtiene al reemplazar el símbolo de desigualdad por «=», y separa los pares que cumplen la desigualdad de los que no la cumplen. Los puntos de la propia recta cumplen la igualdad. Ejemplo con 2x + 3y ≤ 12: la frontera es 2x + 3y = 12, que contiene a (6, 0) y a (0, 4), pues 12 = 12 en ambos. Del lado de (0, 0) se tiene 2x + 3y < 12 y del lado de (6, 6) se tiene 2x + 3y > 12."
+        },
+        {
+          "texto": "Símbolos ≤ y ≥ ⇒ frontera continua incluida",
+          "explicacion": "Con ≤ o ≥ se permite la igualdad, así que los puntos de la recta son soluciones y la frontera se dibuja con trazo continuo, como parte de la región. Ejemplo: x + y ≥ 2. El par (1, 1) está en la recta y cumple 2 ≥ 2, por lo que es solución; el par (3, 0) cumple 3 ≥ 2 y también es solución; el par (0, 1) da 1 ≥ 2, falso."
+        },
+        {
+          "texto": "Símbolos < y > ⇒ frontera discontinua excluida",
+          "explicacion": "Con < o > la igualdad no cumple, así que los puntos de la recta no son soluciones y la frontera se dibuja con trazo discontinuo, para indicar que no pertenece a la región. Ejemplo: x − y > 2. El par (3, 1) está en la recta y da 2 > 2, falso, luego no es solución; el par (4, 1) da 3 > 2, cierto, luego sí es solución."
+        },
+        {
+          "texto": "Los cortes con los ejes bastan para trazar la frontera",
+          "explicacion": "Para trazar una recta bastan dos puntos. Con x = 0 se obtiene y = c/b (si b ≠ 0) y con y = 0 se obtiene x = c/a (si a ≠ 0), que son los cortes con los ejes. Ejemplo con 3x + 2y = 12: con x = 0 resulta 2y = 12, luego y = 6, y con y = 0 resulta 3x = 12, luego x = 4. La recta pasa por (0, 6) y (4, 0). Verificación: 3·4 + 2·0 = 12 y 3·0 + 2·6 = 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Punto de prueba",
+      "puntos": [
+        {
+          "texto": "Punto de prueba: sustituir un punto fuera de la frontera",
+          "explicacion": "Para saber cuál semiplano es la solución se elige un punto que no esté en la recta, se reemplaza en la desigualdad y se decide: si resulta verdadera, se sombrea el lado donde está el punto; si resulta falsa, se sombrea el lado contrario. Ejemplo con 2x + 3y ≤ 12 y el punto (0, 0): 0 ≤ 12 es cierto, luego se sombrea el lado del origen. Verificación: (1, 2) está en ese lado y cumple 8 ≤ 12; (5, 5) está en el lado contrario y da 25 ≤ 12, falso."
+        },
+        {
+          "texto": "El origen (0, 0) es el punto de prueba más cómodo",
+          "explicacion": "Cuando c ≠ 0 la recta no pasa por el origen, y reemplazar (0, 0) da siempre la comparación 0 con c, sin operaciones. Ejemplo con x − y > 2: 0 − 0 > 2 es falso, luego se sombrea el lado contrario al origen. Verificación: (4, 0) está en ese lado y cumple 4 − 0 = 4 > 2; (0, 0) no cumple."
+        },
+        {
+          "texto": "c = 0 ⇒ la frontera pasa por el origen: usar otro punto",
+          "explicacion": "Si c = 0 la recta ax + by = 0 contiene al origen, y este no sirve como punto de prueba porque está sobre la frontera. Se elige un punto fácil que no esté en la recta, como (1, 0) o (0, 1). Ejemplo: y ≥ 2x. Con (1, 0): 0 ≥ 2 es falso, luego se sombrea el lado contrario a (1, 0), que es el lado de arriba de la recta y = 2x. Verificación: (0, 1) da 1 ≥ 0, cierto."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje de y",
+      "puntos": [
+        {
+          "texto": "b > 0 ⇒ ax + by < c equivale a $y < \\frac{c - ax}{b}$",
+          "explicacion": "Si b es positivo, dividir entre b conserva el sentido del símbolo. Con y menor que la expresión, la región queda por debajo de la recta; con y mayor, queda por encima. Ejemplo con 2x + 3y ≤ 12: b = 3 > 0 y resulta $y \\le \\frac{12 - 2x}{3} = 4 - \\frac{2x}{3}$, región bajo la recta. Verificación: (0, 0) da 0 ≤ 4 y también 0 ≤ 12, ambas ciertas."
+        },
+        {
+          "texto": "b < 0 ⇒ dividir entre b invierte el símbolo",
+          "explicacion": "Si b es negativo, al dividir ambos miembros entre b el sentido de la desigualdad se invierte, y esto cambia el lado de la recta que es solución. Ejemplo: 2x − 3y < 6. Se pasa 2x: −3y < 6 − 2x. Se divide entre −3 y se invierte: $y > \\frac{2x - 6}{3} = \\frac{2x}{3} - 2$, región sobre la recta. Verificación: (0, 0) da 0 > −2 y también 0 < 6, ambas ciertas."
+        },
+        {
+          "texto": "x > k ⇒ semiplano a la derecha de la vertical x = k",
+          "explicacion": "La ecuación x = k es una recta vertical y todos los pares con primera coordenada mayor que k quedan a su derecha. Ejemplo: x > 2 con frontera discontinua. El par (3, 5) cumple 3 > 2; el par (2, 0) está en la frontera y no cumple; el par (1, 0) da 1 > 2, falso."
+        },
+        {
+          "texto": "x < k ⇒ semiplano a la izquierda de la vertical x = k",
+          "explicacion": "Los pares con primera coordenada menor que k quedan a la izquierda de la recta vertical x = k. Ejemplo: x ≤ 2 con frontera continua. El par (1, 7) cumple 1 ≤ 2; el par (2, −3) está en la frontera y cumple 2 ≤ 2; el par (3, 0) da 3 ≤ 2, falso."
+        },
+        {
+          "texto": "y > k ⇒ semiplano sobre la horizontal y = k",
+          "explicacion": "La ecuación y = k es una recta horizontal y todos los pares con segunda coordenada mayor que k quedan por encima. Ejemplo: y ≥ 1 con frontera continua. El par (0, 3) cumple 3 ≥ 1; el par (5, 1) está en la frontera y cumple 1 ≥ 1; el par (0, 0) da 0 ≥ 1, falso."
+        },
+        {
+          "texto": "y < k ⇒ semiplano bajo la horizontal y = k",
+          "explicacion": "Los pares con segunda coordenada menor que k quedan por debajo de la recta horizontal y = k. Ejemplo: y < 1 con frontera discontinua. El par (4, 0) cumple 0 < 1; el par (4, 1) está en la frontera y no cumple; el par (4, 2) da 2 < 1, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Inecuaciones equivalentes",
+      "puntos": [
+        {
+          "texto": "Sumar la misma expresión a ambos lados conserva el símbolo",
+          "explicacion": "Dos inecuaciones son equivalentes si tienen las mismas soluciones. Sumar o restar un mismo número o expresión en ambos miembros no cambia el sentido ni el conjunto solución. Ejemplo: x + 2y − 3 < 1 equivale a x + 2y < 4 (se suma 3). Verificación: (0, 0) da −3 < 1 y 0 < 4, ambas ciertas; (4, 0) da 1 < 1 y 4 < 4, ambas falsas."
+        },
+        {
+          "texto": "Multiplicar por un número positivo conserva el símbolo",
+          "explicacion": "Multiplicar ambos miembros por un número positivo mantiene el sentido; se usa para eliminar denominadores multiplicando por el mínimo común múltiplo. Ejemplo: $\\frac{x}{2} + \\frac{y}{3} \\le 1$ por 6 da 3x + 2y ≤ 6. Verificación: (2, 0) da 1 ≤ 1 y 6 ≤ 6, ambas ciertas; (2, 1) da $1 + \\frac{1}{3} = \\frac{4}{3} \\le 1$, falsa, y 8 ≤ 6, falsa."
+        },
+        {
+          "texto": "Multiplicar por un número negativo invierte el símbolo",
+          "explicacion": "Al multiplicar ambos miembros por un número negativo el sentido de la desigualdad se invierte, porque se refleja la recta numérica. Ejemplo: −x + 2y < 4 por −1 da x − 2y > −4. Verificación: (4, 0) da −4 < 4 y 4 > −4, ambas ciertas; (0, 3) da 6 < 4 y −6 > −4, ambas falsas."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema de inecuaciones",
+      "puntos": [
+        {
+          "texto": "Sistema: varias inecuaciones lineales con las mismas variables",
+          "explicacion": "Un sistema de inecuaciones lineales con dos variables es un conjunto de dos o más desigualdades en x e y que deben cumplirse al mismo tiempo. Ejemplo: x + y ≤ 4, x ≥ 0 e y ≥ 0 forman un sistema de tres inecuaciones; cada una limita la región con una recta frontera."
+        },
+        {
+          "texto": "Solución del sistema: par que cumple todas las inecuaciones",
+          "explicacion": "Un par es solución del sistema solo si cumple cada una de las desigualdades; basta que falle una para descartarlo. Ejemplo con x + y ≤ 4, x ≥ 0, y ≥ 0: el par (1, 1) da 2 ≤ 4, 1 ≥ 0 y 1 ≥ 0, todas ciertas. El par (3, 3) da 6 ≤ 4, falso, luego no es solución aunque cumple las otras dos."
+        },
+        {
+          "texto": "Región solución = semiplano₁ ∩ semiplano₂ ∩ …",
+          "explicacion": "Como cada inecuación define un semiplano y el par debe cumplirlas todas, el conjunto solución es la intersección de los semiplanos. Se obtiene sombreando cada semiplano y quedándose con la parte común. Ejemplo: x + y < 4 y x − y > 0. El par (3, 0) da 3 < 4 y 3 > 0, ambas ciertas. El par (0, 3) da 3 < 4 pero −3 > 0 es falso. El par (3, 3) da 0 > 0 falso y 6 < 4 falso."
+        },
+        {
+          "texto": "Cruce de fronteras estrictas ✗ solución",
+          "explicacion": "Un punto donde se cortan dos fronteras pertenece a la región solo si todas las desigualdades que pasan por él son ≤ o ≥. Si alguna es estricta, el punto queda fuera. Ejemplo: x + y < 4 y x − y > 0 se cortan en (2, 2): da 4 < 4 y 0 > 0, ambas falsas, luego (2, 2) no es solución. Con x + y ≤ 4 y x − y ≥ 0 sí lo sería, pues 4 ≤ 4 y 0 ≥ 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Resolución gráfica",
+      "puntos": [
+        {
+          "texto": "Pasos: graficar fronteras, probar un punto, intersectar",
+          "explicacion": "Procedimiento: (1) trazar la recta frontera de cada inecuación, continua con ≤ o ≥ y discontinua con < o >; (2) hallar el semiplano de cada una con un punto de prueba; (3) sombrear la parte común a todos; (4) verificar con un punto de la región. Ejemplo: x + y ≤ 4, x ≥ 0, y ≥ 0. Fronteras: x + y = 4 por (4, 0) y (0, 4), el eje y (x = 0) y el eje x (y = 0), las tres continuas. Punto (1, 1): 2 ≤ 4, 1 ≥ 0 y 1 ≥ 0 son ciertas, luego la región contiene a (1, 1): es el triángulo de vértices (0, 0), (4, 0) y (0, 4)."
+        },
+        {
+          "texto": "x ≥ 0 e y ≥ 0 ⇒ primer cuadrante",
+          "explicacion": "Estas dos condiciones se llaman restricciones de no negatividad: x ≥ 0 deja el lado derecho del eje y, e y ≥ 0 deja el lado superior del eje x, y su intersección es el primer cuadrante, incluidos los ejes. Ejemplo: (2, 3) cumple ambas; (−1, 2) da −1 ≥ 0, falso; (3, −2) da −2 ≥ 0, falso; (0, 0) y (5, 0) cumplen porque los ejes están incluidos."
+        },
+        {
+          "texto": "Verificar con un punto dentro y otro fuera",
+          "explicacion": "Para comprobar el sombreado se reemplaza un punto de la región, que debe cumplir todas las inecuaciones, y un punto fuera, que debe fallar al menos una. Ejemplo con x + y ≤ 4, x ≥ 0, y ≥ 0: el punto (1, 1) cumple las tres; el punto (3, 3) da 6 ≤ 4, falso, y el punto (−1, 2) da −1 ≥ 0, falso; ambos quedan fuera."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de región",
+      "puntos": [
+        {
+          "texto": "Región acotada: encerrada en un polígono",
+          "explicacion": "Una región es acotada cuando se puede encerrar en un círculo de radio finito; en un sistema lineal es un polígono, como un triángulo o un cuadrilátero. Ejemplo: x ≥ 0, y ≥ 0, x + y ≤ 4 es un triángulo. Está acotada porque x + y ≤ 4 con x, y ≥ 0 obliga a x ≤ 4 e y ≤ 4. Verificación: el par más alejado posible, (4, 0), cumple 4 ≤ 4."
+        },
+        {
+          "texto": "Región no acotada: se extiende sin límite",
+          "explicacion": "Si alguna dirección permite pares tan lejanos como se quiera, la región no es acotada. Ejemplo: x ≥ 0, y ≥ 0, x + y ≥ 2. Los pares (100, 100) y (0, 1000) cumplen todas las desigualdades: 200 ≥ 2 y 1000 ≥ 2, luego la región crece sin cota hacia la derecha y hacia arriba."
+        },
+        {
+          "texto": "Región vacía ⇒ sistema sin solución",
+          "explicacion": "Si las desigualdades se contradicen, ningún par las cumple y la región es vacía; geométricamente los semiplanos no tienen parte común. Ejemplo: x + y ≤ 1 y x + y ≥ 3. Un par cumpliría 3 ≤ x + y ≤ 1, lo cual exige 3 ≤ 1, que es falso. Verificación: (0, 0) da 0 ≥ 3, falso; (2, 2) da 4 ≤ 1, falso."
+        },
+        {
+          "texto": "1 ≤ x + y ≤ 3 ⇒ franja entre rectas paralelas",
+          "explicacion": "Una desigualdad doble equivale al sistema de dos inecuaciones, x + y ≥ 1 y x + y ≤ 3, cuyas fronteras son paralelas, y su intersección es la franja que queda entre ellas, incluidas ambas rectas. Ejemplo: (1, 1) da 2, entre 1 y 3, luego es solución. (0, 0) da 0 ≥ 1, falso; (2, 2) da 4 ≤ 3, falso. La franja no está acotada."
+        }
+      ]
+    },
+    {
+      "titulo": "Vértices de la región",
+      "puntos": [
+        {
+          "texto": "Vértice: cruce de dos rectas frontera de la región",
+          "explicacion": "Un vértice es un punto donde se cortan dos fronteras y que además cumple todas las demás inecuaciones. Para hallarlo se resuelve el sistema de dos ecuaciones formado por esas fronteras, con cualquiera de los métodos de los sistemas lineales. Ejemplo: x + y = 6 y x = 4. Sustituir: 4 + y = 6, luego y = 2. El vértice es (4, 2). Verificación: 4 + 2 = 6 y x = 4."
+        },
+        {
+          "texto": "Ejemplo: x ≥ 0, y ≥ 0, x + y ≤ 6, x ≤ 4",
+          "explicacion": "Se cruzan las fronteras de dos en dos y se conservan los cruces que cumplen todo. x = 0 con y = 0: (0, 0), cumple todo. y = 0 con x = 4: (4, 0), cumple todo. x = 4 con x + y = 6: (4, 2), cumple todo. x = 0 con x + y = 6: (0, 6), cumple todo. El cruce de y = 0 con x + y = 6 da (6, 0), que no es vértice porque 6 ≤ 4 es falso. La región es el cuadrilátero de vértices (0, 0), (4, 0), (4, 2) y (0, 6)."
+        },
+        {
+          "texto": "Un cruce que incumple otra desigualdad ✗ vértice",
+          "explicacion": "Dos rectas frontera siempre se cruzan en un punto (si no son paralelas), pero ese punto es vértice solo si cumple las demás inecuaciones. Se comprueba sustituyéndolo. Ejemplo con x ≥ 0, y ≥ 0, x + y ≤ 6, x ≤ 4: el cruce (6, 0) de y = 0 y x + y = 6 da x ≤ 4 como 6 ≤ 4, falso, luego se descarta. El cruce (4, 2) da 4 ≥ 0, 2 ≥ 0, 6 ≤ 6 y 4 ≤ 4, todas ciertas, luego se conserva."
+        }
+      ]
+    },
+    {
+      "titulo": "Soluciones enteras",
+      "puntos": [
+        {
+          "texto": "Contar los pares enteros dentro de la región",
+          "explicacion": "Para hallar los pares con coordenadas enteras se recorre cada valor entero de x y se cuentan los enteros y que cumplen las desigualdades. Ejemplo: x ≥ 0, y ≥ 0, x + y ≤ 2. Con x = 0, y puede ser 0, 1 o 2 (3 pares). Con x = 1, y puede ser 0 o 1 (2 pares). Con x = 2, y solo puede ser 0 (1 par). Con x = 3 ya no hay, pues 3 ≤ 2 es falso. Total: 3 + 2 + 1 = 6 pares: (0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (2, 0). Verificación: cada uno cumple x + y ≤ 2."
+        }
+      ]
+    }
+  ]
+}

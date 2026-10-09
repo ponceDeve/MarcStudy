@@ -1,0 +1,573 @@
+{
+  "curso": "Álgebra",
+  "tema": "Radicación",
+  "glosario": {
+    "radicación": "Operación inversa de la potenciación.",
+    "raíz n-ésima": "Número que elevado a n da el radicando.",
+    "índice": "Número que indica el orden de la raíz.",
+    "radicando": "Expresión situada bajo el signo radical.",
+    "radical": "Expresión formada por signo, índice y radicando.",
+    "coeficiente": "Número que multiplica a un radical.",
+    "raíz principal": "Raíz no negativa cuando el índice es par.",
+    "raíz exacta": "Raíz cuyo valor es un número entero.",
+    "potencia perfecta": "Número que es potencia entera de otro entero.",
+    "cuadrado perfecto": "Cuadrado de un número entero.",
+    "cubo perfecto": "Cubo de un número entero.",
+    "número irracional": "Real que no se escribe como fracción.",
+    "número racional": "Número escrito como fracción de enteros.",
+    "exponente fraccionario": "Exponente expresado como fracción de enteros.",
+    "valor absoluto": "Distancia de un número al cero.",
+    "radicales homogéneos": "Radicales con el mismo índice.",
+    "radicales semejantes": "Radicales con igual índice e igual radicando.",
+    "radicales equivalentes": "Radicales escritos distinto pero con igual valor.",
+    "índice común": "Índice igual obtenido para varios radicales.",
+    "mínimo común múltiplo": "Menor múltiplo positivo común a varios números.",
+    "factores primos": "Números primos cuyo producto da el número.",
+    "extracción de factores": "Sacar factores del radicando como coeficiente.",
+    "introducción de factores": "Meter un coeficiente dentro del radicando.",
+    "radical simplificado": "Radical sin factores extraíbles ni índice reducible.",
+    "monomio": "Expresión algebraica con un solo término.",
+    "trinomio cuadrado perfecto": "Trinomio igual al cuadrado de un binomio.",
+    "racionalización": "Eliminar radicales del denominador.",
+    "factor racionalizante": "Expresión que vuelve racional el denominador.",
+    "conjugado": "Binomio igual al dado con signo central opuesto.",
+    "diferencia de cuadrados": "Producto de binomios conjugados que resta cuadrados.",
+    "radical doble": "Radical que contiene otro radical sumado.",
+    "radical infinito": "Radicales anidados que se repiten sin fin.",
+    "número complejo": "Número formado por parte real e imaginaria.",
+    "denominador": "Parte inferior de una fracción."
+  },
+  "theory": [
+    {
+      "titulo": "Definición de radicación",
+      "puntos": [
+        {
+          "texto": "«Radicación» es la operación inversa de la potenciación",
+          "explicacion": "La potenciación parte de una base y un exponente para obtener una potencia; la radicación recorre el camino contrario: se conoce la potencia y el exponente, y se busca la base. Como $2^5=32$, al conocer 32 y el exponente 5 se recupera la base 2 y se escribe $\\sqrt[5]{32}=2$. De igual modo, $3^4=81$ conduce a $\\sqrt[4]{81}=3$. Esta relación permite apoyarse en todas las leyes de la potenciación del tema anterior para deducir las leyes de los radicales."
+        },
+        {
+          "texto": "Definición: $\\sqrt[n]{a}=b$ ⇒ $b^n=a$",
+          "explicacion": "Las dos afirmaciones son equivalentes: decir que $b$ es la raíz n-ésima de $a$ significa exactamente que $b$ elevado a $n$ da $a$. Aquí $n$ es un entero con $n\\geq 2$. Ejemplos: $\\sqrt{81}=9$ porque $9^2=81$; $\\sqrt[3]{27}=3$ porque $3^3=27$; $\\sqrt[3]{-8}=-2$ porque $(-2)^3=-8$. Para comprobar cualquier raíz basta elevar el resultado al índice y comparar con el radicando."
+        },
+        {
+          "texto": "El «índice» $n$ indica el orden de la raíz",
+          "explicacion": "El índice es un número natural $n\\geq 2$ escrito pequeño en la parte superior izquierda del signo radical; indica cuántos factores iguales se multiplican para reconstruir el radicando. En $\\sqrt[4]{16}$ el índice es 4 porque $2\\cdot2\\cdot2\\cdot2=16$. Un mismo radicando con índices distintos da raíces distintas: $\\sqrt{64}=8$ (pues $8^2=64$), pero $\\sqrt[3]{64}=4$ (pues $4^3=64$)."
+        },
+        {
+          "texto": "El «radicando» $a$ es la cantidad bajo el signo radical",
+          "explicacion": "El radicando es la potencia conocida de la cual se busca la raíz. En $\\sqrt[3]{125}$ el radicando es 125. También puede ser una expresión algebraica: en $\\sqrt{x^2+1}$ el radicando es $x^2+1$. El signo del radicando y la paridad del índice deciden si la raíz existe en los números reales, tema que se desarrolla en la sección siguiente."
+        },
+        {
+          "texto": "La «raíz» $b$ es el resultado de la radicación",
+          "explicacion": "En $\\sqrt{49}=7$ el número 7 es la raíz, porque cumple $7^2=49$. Para evitar ambigüedades se dice «raíz n-ésima de $a$» cuando se habla de la operación completa y «raíz» cuando se habla solo del valor obtenido. Toda raíz queda verificada al elevarla al índice: $7^2=49$."
+        },
+        {
+          "texto": "El «signo radical» agrupa el índice y el radicando",
+          "explicacion": "La barra horizontal del signo radical se extiende sobre todo el radicando, de modo que $\\sqrt{9+16}$ significa la raíz de la suma ya efectuada: $\\sqrt{9+16}=\\sqrt{25}=5$. Es distinto de $\\sqrt{9}+16=3+16=19$, donde la barra cubre solo el 9. Por eso, al escribir una raíz de una suma o diferencia, el radicando debe quedar completamente bajo la barra."
+        },
+        {
+          "texto": "Raíz cuadrada: el índice 2 se omite, $\\sqrt{a}=\\sqrt[2]{a}$",
+          "explicacion": "Por ser la raíz más frecuente, el índice 2 no se escribe. $\\sqrt{a}$ busca el número cuyo cuadrado es $a$: $\\sqrt{121}=11$ porque $11^2=121$ y $\\sqrt{0.25}=0.5$ porque $0.5^2=0.25$. Cuando aparece un signo radical sin índice, siempre debe entenderse índice 2."
+        },
+        {
+          "texto": "Raíz cúbica: índice 3, $\\sqrt[3]{a}$",
+          "explicacion": "La raíz cúbica busca el número cuyo cubo es el radicando: $\\sqrt[3]{125}=5$ porque $5^3=125$ y $\\sqrt[3]{-27}=-3$ porque $(-3)^3=-27$. A diferencia de la raíz cuadrada, existe para cualquier radicando real, positivo, negativo o cero, como se justifica en la sección de existencia de raíces."
+        },
+        {
+          "texto": "«Radical» nombra la raíz escrita con signo radical",
+          "explicacion": "En los textos, «radical» designa la expresión completa formada por signo, índice y radicando, como $\\sqrt[5]{7}$ o $3\\sqrt{2}$. Cuando delante hay un número que multiplica, ese número se llama coeficiente del radical: en $3\\sqrt{2}$ el coeficiente es 3."
+        },
+        {
+          "texto": "«Raíz n-ésima» es el nombre general con índice $n$",
+          "explicacion": "Se lee «raíz ene-ésima de $a$» y representa a todas las raíces según el valor de $n$: raíz cuadrada ($n=2$), cúbica ($n=3$), cuarta ($n=4$), quinta ($n=5$) y así sucesivamente. Ejemplo: $\\sqrt[4]{81}=3$ es la raíz cuarta de 81 porque $3^4=81$."
+        },
+        {
+          "texto": "$\\sqrt[n]{0}=0$",
+          "explicacion": "El único número cuya potencia n-ésima es cero es el propio cero, porque un producto de factores iguales solo se anula si el factor es cero. Por eso $\\sqrt{0}=0$, $\\sqrt[3]{0}=0$ y $\\sqrt[7]{0}=0$ para cualquier índice."
+        },
+        {
+          "texto": "$\\sqrt[n]{1}=1$",
+          "explicacion": "Como $1^n=1$ para cualquier $n$, el número 1 es raíz de 1. Con índice par también $(-1)^n=1$, pero el signo radical designa solo la raíz principal no negativa, así que $\\sqrt{1}=1$ y $\\sqrt[4]{1}=1$. Con índice impar la única raíz real es 1: $\\sqrt[5]{1}=1$."
+        },
+        {
+          "texto": "«Raíz exacta» ⇒ radicando es potencia perfecta",
+          "explicacion": "Un número es potencia perfecta de índice $n$ cuando es igual a $k^n$ con $k$ entero; entonces su raíz n-ésima es exactamente $k$. Ejemplos: $125=5^3$ da $\\sqrt[3]{125}=5$ y $1296=6^4$ da $\\sqrt[4]{1296}=6$ (comprobación: $6\\cdot6=36$, $36\\cdot36=1296$). Si el radicando no es potencia perfecta, la raíz no es exacta y resulta un número irracional."
+        }
+      ]
+    },
+    {
+      "titulo": "Existencia de raíces",
+      "puntos": [
+        {
+          "texto": "Índice impar ⇒ existe una única raíz real",
+          "explicacion": "Para $n$ impar la potencia $x^n$ conserva el signo y crece estrictamente al aumentar $x$: los negativos dan negativos, los positivos dan positivos. Por eso cada número real $a$ es la potencia n-ésima de exactamente un real $b$, con el mismo signo que $a$. Ejemplos: $\\sqrt[5]{32}=2$ porque $2^5=32$; $\\sqrt[5]{-32}=-2$ porque $(-2)^5=-32$. No hay restricción sobre el radicando."
+        },
+        {
+          "texto": "Índice impar ⇒ $\\sqrt[n]{-a}=-\\sqrt[n]{a}$",
+          "explicacion": "Demostración: si $b^n=a$, entonces $(-b)^n=(-1)^n b^n=-a$, porque $(-1)$ elevado a un exponente impar vale $-1$. Luego $-b$ es la raíz de $-a$. Ejemplo: $\\sqrt[3]{-64}=-\\sqrt[3]{64}=-4$; verificación: $(-4)^3=-64$. Esta propiedad permite sacar el signo negativo del radicando y trabajar solo con números positivos."
+        },
+        {
+          "texto": "Índice par y $a>0$ ⇒ dos raíces reales opuestas",
+          "explicacion": "Con $n$ par, $(-b)^n=b^n$, así que $b$ y $-b$ cumplen la misma ecuación $x^n=a$. Ejemplos: $x^4=16$ tiene soluciones $x=2$ y $x=-2$ porque $2^4=16$ y $(-2)^4=16$; $x^2=49$ tiene soluciones $7$ y $-7$. El signo radical, sin embargo, designa solo una de ellas, la positiva, como se indica en la tarjeta de raíz principal."
+        },
+        {
+          "texto": "Índice par y $a<0$ ⇒ no existe raíz real",
+          "explicacion": "Toda potencia de exponente par de un número real es mayor o igual que cero, de modo que nunca puede igualar a un radicando negativo. Por eso $\\sqrt{-9}$ y $\\sqrt[4]{-16}$ no son números reales, y la ecuación $x^2=-4$ no tiene solución real. Con índice par el radicando debe ser mayor o igual que cero."
+        },
+        {
+          "texto": "La «raíz principal» es la no negativa si el índice es par",
+          "explicacion": "Por convención, el signo radical con índice par y $a\\geq0$ representa solo la raíz no negativa: $\\sqrt{16}=4$, no $\\pm4$. Para indicar ambas raíces se antepone $\\pm$: las soluciones de $x^2=16$ son $x=\\pm\\sqrt{16}=\\pm4$. Consecuencia: $\\sqrt[n]{a}\\geq0$ para $n$ par, así que $\\sqrt{x-2}+3$ nunca es menor que 3. Comprobación: $-5$ también cumple $(-5)^2=25$, pero $\\sqrt{25}=5$ porque 5 es la raíz principal."
+        },
+        {
+          "texto": "Índice par ✓ radicando $f(x)\\geq 0$",
+          "explicacion": "Para hallar los valores de la variable que permiten calcular $\\sqrt[n]{f(x)}$ con $n$ par, se plantea la desigualdad $f(x)\\geq0$ y se resuelve. Ejemplo 1: $\\sqrt{x-3}$ exige $x-3\\geq0$, es decir $x\\geq3$; con $x=7$ resulta $\\sqrt{4}=2$, mientras que $x=1$ da $\\sqrt{-2}$, no real. Ejemplo 2: $\\sqrt{x^2-4}$ exige $x^2-4\\geq0$, es decir $x\\leq-2$ o $x\\geq2$; con $x=3$ resulta $\\sqrt{5}$, y con $x=0$ resulta $\\sqrt{-4}$, no real."
+        },
+        {
+          "texto": "Índice impar ✗ restricción sobre el radicando",
+          "explicacion": "Como toda raíz de índice impar existe en los reales, $\\sqrt[n]{f(x)}$ está definida para todos los valores de $x$ en los que $f(x)$ esté definida. Ejemplo: $\\sqrt[3]{x-3}$ con $x=11$ da $\\sqrt[3]{8}=2$, y con $x=1$ da $\\sqrt[3]{-2}\\approx-1.26$ (pues $1.26^3\\approx2$), un número real negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz y valor absoluto",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{x^2}=|x|$",
+          "explicacion": "Demostración: $|x|\\geq0$ y $|x|^2=x^2$, de modo que $|x|$ es el número no negativo cuyo cuadrado es $x^2$; esa es precisamente la raíz principal. No puede escribirse simplemente $x$, porque $x$ puede ser negativo. Ejemplo: con $x=-7$, $\\sqrt{(-7)^2}=\\sqrt{49}=7=|-7|$. Así, $\\sqrt{(x-3)^2}=|x-3|$, y las barras solo se quitan si se conoce el signo de $x-3$; con $x=1$: $\\sqrt{(1-3)^2}=\\sqrt{4}=2=|1-3|$."
+        },
+        {
+          "texto": "$\\sqrt[n]{x^n}=|x|$ con $n$ par",
+          "explicacion": "La potencia par elimina el signo de $x$, y la raíz principal devuelve el valor no negativo. Ejemplos: $\\sqrt[4]{(-3)^4}=\\sqrt[4]{81}=3=|-3|$ y $\\sqrt[6]{(-2)^6}=\\sqrt[6]{64}=2=|-2|$. Sin las barras, el resultado sería negativo y contradiría que la raíz principal es no negativa."
+        },
+        {
+          "texto": "$\\sqrt[n]{x^n}=x$ con $n$ impar",
+          "explicacion": "La potencia impar conserva el signo de $x$ y existe una única raíz real, de modo que la raíz devuelve exactamente $x$. Ejemplos: $\\sqrt[3]{(-3)^3}=\\sqrt[3]{-27}=-3$ y $\\sqrt[5]{2^5}=2$. Aquí no hacen falta barras de valor absoluto."
+        },
+        {
+          "texto": "$\\sqrt{x^{2k}}=|x|^k$",
+          "explicacion": "Como $x^{2k}=(x^k)^2$, la raíz principal da $|x^k|=|x|^k$. Ejemplo: $\\sqrt{x^6}=|x|^3$; con $x=-2$: $\\sqrt{64}=8=|-2|^3$. Cuando $k$ es par, $|x|^k=x^k$ porque la potencia ya es no negativa; por ejemplo, $\\sqrt{x^4}=x^2$ sin barras."
+        },
+        {
+          "texto": "Elevar la raíz al índice: $(\\sqrt[n]{a})^n=a$",
+          "explicacion": "Es la definición de raíz leída al revés: si $b=\\sqrt[n]{a}$, entonces $b^n=a$. Ejemplos: $(\\sqrt{7})^2=7$, $(\\sqrt[3]{-5})^3=-5$ y $(\\sqrt[4]{3})^4=3$. Con $n$ par se exige $a\\geq0$, porque de lo contrario la raíz no existe en los reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponente fraccionario",
+      "puntos": [
+        {
+          "texto": "$a^{1/n}=\\sqrt[n]{a}$",
+          "explicacion": "Se define así para que siga valiendo la ley de potencia de una potencia: $(a^{1/n})^n=a^{(1/n)\\cdot n}=a^1=a$, es decir, $a^{1/n}$ es un número cuya potencia n-ésima es $a$. Con $n$ par se exige $a\\geq0$. Ejemplos: $27^{1/3}=\\sqrt[3]{27}=3$, $16^{1/4}=\\sqrt[4]{16}=2$ y $49^{1/2}=7$."
+        },
+        {
+          "texto": "$a^{m/n}=\\sqrt[n]{a^m}$",
+          "explicacion": "Se escribe $\\dfrac{m}{n}=m\\cdot\\dfrac{1}{n}$ y se aplica la ley de potencia de una potencia: $a^{m/n}=(a^m)^{1/n}=\\sqrt[n]{a^m}$. El denominador del exponente pasa a ser el índice y el numerador, el exponente del radicando. Ejemplos: $8^{2/3}=\\sqrt[3]{8^2}=\\sqrt[3]{64}=4$; $16^{3/4}=\\sqrt[4]{16^3}=\\sqrt[4]{4096}=8$, pues $8^4=4096$."
+        },
+        {
+          "texto": "$a^{-m/n}=\\dfrac{1}{\\sqrt[n]{a^m}}$ con $a\\neq0$",
+          "explicacion": "El exponente negativo indica el recíproco: $a^{-p}=\\dfrac{1}{a^p}$, aplicado a $p=\\dfrac{m}{n}$. Ejemplos: $8^{-2/3}=\\dfrac{1}{8^{2/3}}=\\dfrac{1}{\\sqrt[3]{64}}=\\dfrac14$; $16^{-3/4}=\\dfrac{1}{\\sqrt[4]{4096}}=\\dfrac18$; $25^{-1/2}=\\dfrac{1}{5}$."
+        },
+        {
+          "texto": "Con base negativa, simplificar antes la fracción del exponente",
+          "explicacion": "Dos fracciones iguales pueden dar resultados distintos si se aplican mecánicamente a una base negativa: $(-8)^{1/3}=-2$, pero leer $(-8)^{2/6}$ como $\\sqrt[6]{(-8)^2}=\\sqrt[6]{64}=2$ contradice ese valor aunque $\\frac26=\\frac13$. Para evitar la contradicción se reduce primero la fracción a su forma irreducible y después se evalúa. Con base positiva el problema no aparece."
+        },
+        {
+          "texto": "Las leyes de exponentes siguen valiendo con exponentes fraccionarios",
+          "explicacion": "Producto de potencias de igual base: $a^p\\cdot a^q=a^{p+q}$. Ejemplo: $2^{1/2}\\cdot2^{1/3}=2^{5/6}=\\sqrt[6]{32}$. Comprobación con radicales: $\\sqrt{2}\\cdot\\sqrt[3]{2}=\\sqrt[6]{2^3}\\cdot\\sqrt[6]{2^2}=\\sqrt[6]{2^5}=\\sqrt[6]{32}$. Así se deducen todas las propiedades de los radicales: se pasan a exponente fraccionario, se aplican las leyes de la potenciación y se regresa a la forma radical."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de un producto",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[n]{ab}=\\sqrt[n]{a}\\cdot\\sqrt[n]{b}$",
+          "explicacion": "Demostración: $(ab)^{1/n}=a^{1/n}b^{1/n}$. Vale para cualquier cantidad de factores. Condición: $a\\geq0$ y $b\\geq0$ si $n$ es par; sin restricción si $n$ es impar. Ejemplos: $\\sqrt{4\\cdot9}=\\sqrt{36}=6=2\\cdot3$; $\\sqrt[3]{8\\cdot27}=\\sqrt[3]{216}=6=2\\cdot3$; $\\sqrt[3]{(-8)\\cdot27}=\\sqrt[3]{-216}=-6=(-2)\\cdot3$."
+        },
+        {
+          "texto": "$\\sqrt{ab}\\neq\\sqrt{a}\\cdot\\sqrt{b}$ si $a<0$ y $b<0$",
+          "explicacion": "Con índice par, el producto de dos negativos es positivo y su raíz existe, pero los factores por separado no tienen raíz real. Ejemplo: $\\sqrt{(-4)(-9)}=\\sqrt{36}=6$, mientras que $\\sqrt{-4}\\cdot\\sqrt{-9}$ no está definido en los reales. Con índice impar no hay problema: $\\sqrt[3]{(-8)(-27)}=\\sqrt[3]{216}=6=(-2)(-3)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de un cociente",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[n]{\\dfrac{a}{b}}=\\dfrac{\\sqrt[n]{a}}{\\sqrt[n]{b}}$ con $b\\neq0$",
+          "explicacion": "Demostración: $\\left(\\dfrac{a}{b}\\right)^{1/n}=\\dfrac{a^{1/n}}{b^{1/n}}$. Con $n$ par se exige $a\\geq0$ y $b>0$. Ejemplos: $\\sqrt{\\dfrac{49}{16}}=\\dfrac{7}{4}$; $\\sqrt[3]{\\dfrac{27}{8}}=\\dfrac{3}{2}$; $\\sqrt[4]{\\dfrac{81}{16}}=\\dfrac{3}{2}$, porque $3^4=81$ y $2^4=16$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de una raíz",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[m]{\\sqrt[n]{a}}=\\sqrt[mn]{a}$",
+          "explicacion": "Demostración: $(a^{1/n})^{1/m}=a^{1/(mn)}$. Los índices se multiplican, y con tres o más raíces anidadas se multiplican todos. Ejemplos: $\\sqrt[3]{\\sqrt{64}}=\\sqrt[6]{64}=2$, porque $2^6=64$; $\\sqrt{\\sqrt[4]{16}}=\\sqrt[8]{16}=\\sqrt[8]{2^4}=\\sqrt{2}$, dividiendo índice y exponente entre 4."
+        },
+        {
+          "texto": "El orden de las raíces sucesivas no altera el resultado",
+          "explicacion": "Como $mn=nm$, se cumple $\\sqrt[m]{\\sqrt[n]{a}}=\\sqrt[n]{\\sqrt[m]{a}}$, lo que permite elegir el orden más cómodo. Ejemplo: $\\sqrt[3]{\\sqrt{64}}=\\sqrt[3]{8}=2$ y $\\sqrt{\\sqrt[3]{64}}=\\sqrt{4}=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencia de una raíz",
+      "puntos": [
+        {
+          "texto": "$(\\sqrt[n]{a})^m=\\sqrt[n]{a^m}$",
+          "explicacion": "Demostración: $(a^{1/n})^m=a^{m/n}=(a^m)^{1/n}$. Es útil porque permite elevar primero el radicando y luego extraer la raíz, o al revés, según convenga. Ejemplos: $(\\sqrt[3]{4})^3=\\sqrt[3]{64}=4$; $(\\sqrt{3})^4=\\sqrt{81}=9$; $(\\sqrt[5]{2})^{10}=\\sqrt[5]{2^{10}}=2^2=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Amplificación y simplificación",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[n]{a^m}=\\sqrt[np]{a^{mp}}$",
+          "explicacion": "Multiplicar el índice y el exponente del radicando por un mismo entero $p\\geq1$ no cambia el valor, porque la fracción $\\dfrac{m}{n}$ es igual a $\\dfrac{mp}{np}$. Ejemplo: $\\sqrt[3]{2^2}=\\sqrt[6]{2^4}$, pues ambos valen $2^{2/3}$; es decir, $\\sqrt[3]{4}=\\sqrt[6]{16}\\approx1.5874$. Se exige $a\\geq0$ si el índice es par."
+        },
+        {
+          "texto": "Simplificar: dividir índice y exponentes entre un divisor común",
+          "explicacion": "Es el proceso inverso: si el índice y todos los exponentes del radicando tienen un divisor común, se divide entre él. Ejemplos: $\\sqrt[6]{3^2}=3^{2/6}=3^{1/3}=\\sqrt[3]{3}$; $\\sqrt[10]{32}=\\sqrt[10]{2^5}=\\sqrt{2}$, porque $2^{5/10}=2^{1/2}$. Se supone radicando no negativo cuando el índice es par."
+        },
+        {
+          "texto": "«Radicales equivalentes» tienen igual valor con índices distintos",
+          "explicacion": "Dos radicales son equivalentes si, tras amplificar o simplificar, coinciden. Ejemplo: $\\sqrt[3]{5}=\\sqrt[9]{5^3}=\\sqrt[9]{125}$. Comprobación: al elevar ambos a la novena potencia resulta $(\\sqrt[3]{5})^9=5^3=125$ y $(\\sqrt[9]{125})^9=125$. Del mismo modo, $\\sqrt{7}=\\sqrt[4]{49}$."
+        },
+        {
+          "texto": "Índice común: usar el «mínimo común múltiplo» de los índices",
+          "explicacion": "Procedimiento: (1) se calcula el mínimo común múltiplo de los índices; (2) se divide entre cada índice para hallar el factor $p$ de amplificación; (3) se eleva cada radicando a su $p$. Ejemplo con $\\sqrt{2}$, $\\sqrt[3]{3}$ y $\\sqrt[4]{5}$: el mínimo común múltiplo de 2, 3 y 4 es 12; los factores son 6, 4 y 3; resulta $\\sqrt[12]{2^6}=\\sqrt[12]{64}$, $\\sqrt[12]{3^4}=\\sqrt[12]{81}$ y $\\sqrt[12]{5^3}=\\sqrt[12]{125}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Extracción de factores",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[n]{a^n b}=a\\sqrt[n]{b}$",
+          "explicacion": "Demostración: por la raíz de un producto, $\\sqrt[n]{a^n b}=\\sqrt[n]{a^n}\\cdot\\sqrt[n]{b}=a\\sqrt[n]{b}$ (con $a\\geq0$ si $n$ es par). Ejemplos: $\\sqrt{72}=\\sqrt{6^2\\cdot2}=6\\sqrt{2}$, con comprobación $(6\\sqrt2)^2=36\\cdot2=72$; $\\sqrt[3]{54}=\\sqrt[3]{3^3\\cdot2}=3\\sqrt[3]{2}$, con comprobación $3^3\\cdot2=54$."
+        },
+        {
+          "texto": "$\\sqrt[n]{a^{qn+r}}=a^q\\sqrt[n]{a^r}$",
+          "explicacion": "Al dividir el exponente del radicando entre el índice, el cociente $q$ sale del radical como exponente y el resto $r$ permanece dentro. Ejemplo: $\\sqrt[3]{2^8}$: $8=2\\cdot3+2$, luego $\\sqrt[3]{2^8}=2^2\\sqrt[3]{2^2}=4\\sqrt[3]{4}$; comprobación: $(4\\sqrt[3]{4})^3=64\\cdot4=256=2^8$. Con variable no negativa: $\\sqrt{x^7}=x^3\\sqrt{x}$; para $x=2$, $\\sqrt{128}\\approx11.314$ y $8\\sqrt{2}\\approx11.314$."
+        },
+        {
+          "texto": "Extraer factores usando la descomposición en factores primos",
+          "explicacion": "Pasos: se descompone el radicando en factores primos, se agrupan los exponentes según el índice y se extraen los factores que completan grupos. Ejemplo: $\\sqrt{180}=\\sqrt{2^2\\cdot3^2\\cdot5}=2\\cdot3\\sqrt{5}=6\\sqrt{5}$; comprobación: $6^2\\cdot5=180$. Ejemplo con índice 3: $\\sqrt[3]{2^4\\cdot3^6\\cdot5}=2\\cdot3^2\\sqrt[3]{2\\cdot5}=18\\sqrt[3]{10}$; comprobación: $18^3\\cdot10=58320=16\\cdot729\\cdot5$."
+        },
+        {
+          "texto": "Un «radical simplificado» cumple tres condiciones",
+          "explicacion": "(1) Cada exponente del radicando es menor que el índice. (2) El índice y los exponentes del radicando no tienen un divisor común mayor que 1. (3) El radicando no contiene fracciones y no hay radicales en el denominador. Ejemplo: $\\sqrt[6]{2^4\\cdot3^2}$ no está simplificado porque 6, 4 y 2 tienen divisor común 2; al dividir resulta $\\sqrt[3]{2^2\\cdot3}=\\sqrt[3]{12}$, que sí lo está."
+        }
+      ]
+    },
+    {
+      "titulo": "Introducción de factores",
+      "puntos": [
+        {
+          "texto": "$a\\sqrt[n]{b}=\\sqrt[n]{a^n b}$ con $a\\geq0$",
+          "explicacion": "Es la operación inversa de la extracción: el coeficiente se eleva al índice y se multiplica por el radicando. Ejemplos: $3\\sqrt{2}=\\sqrt{3^2\\cdot2}=\\sqrt{18}$; $2\\sqrt[3]{5}=\\sqrt[3]{2^3\\cdot5}=\\sqrt[3]{40}$. Esta forma es la que se usa para comparar radicales o combinarlos bajo una sola raíz."
+        },
+        {
+          "texto": "El signo negativo ✗ entra en raíces de índice par",
+          "explicacion": "Con índice par solo ingresa la parte positiva del coeficiente; el signo permanece fuera: $-3\\sqrt{2}=-\\sqrt{18}$, ya que $\\sqrt{-18}$ no es real. Con índice impar el signo sí puede entrar: $-2\\sqrt[3]{3}=\\sqrt[3]{-24}$, con comprobación $(-2\\sqrt[3]{3})^3=-8\\cdot3=-24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radicales homogéneos y semejantes",
+      "puntos": [
+        {
+          "texto": "«Radicales homogéneos» tienen el mismo índice",
+          "explicacion": "Los radicales $\\sqrt{2}$, $\\sqrt{7}$ y $3\\sqrt{11}$ son homogéneos porque todos tienen índice 2, aunque sus radicandos difieran. En cambio, $\\sqrt{2}$ y $\\sqrt[3]{2}$ no son homogéneos. Solo los radicales homogéneos pueden multiplicarse o dividirse directamente."
+        },
+        {
+          "texto": "«Radicales semejantes» tienen igual índice e igual radicando",
+          "explicacion": "Solo se diferencian en el coeficiente: $5\\sqrt{3}$ y $-2\\sqrt{3}$ son semejantes, mientras que $5\\sqrt{3}$ y $5\\sqrt{2}$ no lo son, y tampoco $\\sqrt{3}$ y $\\sqrt[3]{3}$. Únicamente los radicales semejantes pueden sumarse o restarse en un solo término."
+        },
+        {
+          "texto": "Radicales distintos pueden volverse semejantes al simplificar",
+          "explicacion": "Antes de decidir si dos radicales son semejantes conviene extraer todos los factores posibles. Ejemplo: $\\sqrt{12}=\\sqrt{2^2\\cdot3}=2\\sqrt{3}$ y $\\sqrt{27}=\\sqrt{3^2\\cdot3}=3\\sqrt{3}$ son semejantes aunque sus radicandos originales sean 12 y 27."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de radicales",
+      "puntos": [
+        {
+          "texto": "$a\\sqrt[n]{c}+b\\sqrt[n]{c}=(a+b)\\sqrt[n]{c}$",
+          "explicacion": "Se aplica la propiedad distributiva sacando el radical como factor común. Ejemplos: $3\\sqrt{5}+4\\sqrt{5}=7\\sqrt{5}\\approx15.652$, y numéricamente $3(2.236)+4(2.236)\\approx15.652$; $6\\sqrt[3]{2}-2\\sqrt[3]{2}=4\\sqrt[3]{2}$."
+        },
+        {
+          "texto": "Para sumar radicales: simplificar y agrupar semejantes",
+          "explicacion": "Pasos: extraer factores de cada radical, agrupar los semejantes y sumar sus coeficientes. Ejemplo 1: $\\sqrt{12}+\\sqrt{27}-\\sqrt{75}=2\\sqrt3+3\\sqrt3-5\\sqrt3=(2+3-5)\\sqrt3=0$, pues $75=5^2\\cdot3$. Ejemplo 2: $\\sqrt[3]{16}+\\sqrt[3]{54}-\\sqrt[3]{2}=2\\sqrt[3]{2}+3\\sqrt[3]{2}-\\sqrt[3]{2}=4\\sqrt[3]{2}$, pues $16=2^3\\cdot2$ y $54=3^3\\cdot2$."
+        },
+        {
+          "texto": "Radicales no semejantes ✗ se reducen a un solo término",
+          "explicacion": "$\\sqrt{2}+\\sqrt{3}$ no es igual a $\\sqrt{5}$: numéricamente $1.414+1.732\\approx3.146$, mientras que $\\sqrt{5}\\approx2.236$. Al elevar al cuadrado se confirma: $(\\sqrt2+\\sqrt3)^2=5+2\\sqrt6\\neq5$. La suma queda indicada tal cual."
+        },
+        {
+          "texto": "$\\sqrt{a+b}\\neq\\sqrt{a}+\\sqrt{b}$",
+          "explicacion": "La raíz no se distribuye sobre la suma. Ejemplo: $\\sqrt{9+16}=\\sqrt{25}=5$, pero $\\sqrt{9}+\\sqrt{16}=3+4=7$. Lo correcto es calcular primero la suma bajo el radical, o bien elevar al cuadrado la suma de raíces: $(\\sqrt a+\\sqrt b)^2=a+b+2\\sqrt{ab}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de radicales",
+      "puntos": [
+        {
+          "texto": "$a\\sqrt[n]{b}\\cdot c\\sqrt[n]{d}=ac\\sqrt[n]{bd}$",
+          "explicacion": "Se multiplican los coeficientes entre sí y los radicandos entre sí, siempre que el índice sea el mismo; luego se simplifica. Ejemplo: $2\\sqrt3\\cdot5\\sqrt6=10\\sqrt{18}=10\\cdot3\\sqrt2=30\\sqrt2$, pues $\\sqrt{18}=\\sqrt{3^2\\cdot2}=3\\sqrt2$. Verificación numérica: $3.464\\cdot12.247\\approx42.426$ y $30\\sqrt2\\approx42.426$."
+        },
+        {
+          "texto": "Distinto índice: reducir a índice común antes de multiplicar",
+          "explicacion": "Ejemplo: $\\sqrt{2}\\cdot\\sqrt[3]{3}$. El mínimo común múltiplo de 2 y 3 es 6; $\\sqrt2=\\sqrt[6]{2^3}=\\sqrt[6]{8}$ y $\\sqrt[3]{3}=\\sqrt[6]{3^2}=\\sqrt[6]{9}$. Entonces el producto es $\\sqrt[6]{8\\cdot9}=\\sqrt[6]{72}$. Verificación numérica: $1.4142\\cdot1.4422\\approx2.0397$ y $72^{1/6}\\approx2.0397$."
+        },
+        {
+          "texto": "$\\sqrt[m]{a}\\cdot\\sqrt[n]{a}=\\sqrt[mn]{a^{m+n}}$",
+          "explicacion": "Con igual radicando y distinto índice, los exponentes fraccionarios se suman: $a^{1/m}\\cdot a^{1/n}=a^{(m+n)/(mn)}$. Ejemplo con $m=2$, $n=3$: $\\sqrt{2}\\cdot\\sqrt[3]{2}=\\sqrt[6]{2^5}=\\sqrt[6]{32}$, que ya se obtuvo por índice común."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente de radicales",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{a\\sqrt[n]{b}}{c\\sqrt[n]{d}}=\\dfrac{a}{c}\\sqrt[n]{\\dfrac{b}{d}}$",
+          "explicacion": "Con el mismo índice se dividen coeficientes entre sí y radicandos entre sí. Ejemplo: $\\dfrac{6\\sqrt{50}}{3\\sqrt{2}}=2\\sqrt{\\dfrac{50}{2}}=2\\sqrt{25}=10$. Verificación numérica: $6\\cdot7.0711\\approx42.426$, $3\\cdot1.4142\\approx4.243$ y $42.426/4.243\\approx10$."
+        },
+        {
+          "texto": "Distinto índice: reducir a índice común antes de dividir",
+          "explicacion": "Ejemplo: $\\dfrac{\\sqrt[3]{2}}{\\sqrt{2}}$. Con índice común 6: $\\dfrac{\\sqrt[6]{2^2}}{\\sqrt[6]{2^3}}=\\sqrt[6]{\\dfrac{4}{8}}=\\sqrt[6]{\\dfrac12}$. Verificación: $\\dfrac{1.2599}{1.4142}\\approx0.8909$ y $2^{-1/6}\\approx0.8909$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencia con coeficiente",
+      "puntos": [
+        {
+          "texto": "$(a\\sqrt[n]{b})^m=a^m\\sqrt[n]{b^m}$",
+          "explicacion": "El exponente se aplica al coeficiente y al radical por separado, por la ley de potencia de un producto. Ejemplo: $(2\\sqrt3)^3=2^3\\sqrt{3^3}=8\\sqrt{27}=8\\cdot3\\sqrt3=24\\sqrt3$. Verificación numérica: $(3.4641)^3\\approx41.569$ y $24\\sqrt3\\approx41.569$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radical con coeficiente anidado",
+      "puntos": [
+        {
+          "texto": "$\\sqrt[m]{a\\sqrt[n]{b}}=\\sqrt[mn]{a^n b}$",
+          "explicacion": "Se introduce el coeficiente dentro del radical interior, $a\\sqrt[n]{b}=\\sqrt[n]{a^nb}$, y luego se aplica la raíz de una raíz. Ejemplo: $\\sqrt{2\\sqrt2}$: $2\\sqrt2=\\sqrt{8}$, así que $\\sqrt{\\sqrt8}=\\sqrt[4]{8}$. Verificación numérica: $\\sqrt{2.8284}\\approx1.6818$ y $8^{1/4}\\approx1.6818$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de radicales",
+      "puntos": [
+        {
+          "texto": "Igual índice: $\\sqrt[n]{a}<\\sqrt[n]{b}$ cuando $a<b$",
+          "explicacion": "La raíz de índice $n$ con radicandos no negativos conserva el orden, porque su potencia n-ésima también lo conserva. Ejemplos: $\\sqrt{7}<\\sqrt{11}$ y $\\sqrt[3]{5}<\\sqrt[3]{9}$; basta comparar los radicandos."
+        },
+        {
+          "texto": "Distinto índice: comparar tras reducir a índice común",
+          "explicacion": "Ejemplo: comparar $\\sqrt3$ y $\\sqrt[3]{5}$. Con índice común 6: $\\sqrt[6]{27}$ y $\\sqrt[6]{25}$; como $27>25$, resulta $\\sqrt3>\\sqrt[3]{5}$ (numéricamente $1.732>1.710$). Otro ejemplo: $\\sqrt[3]{4}=\\sqrt[12]{256}$ y $\\sqrt[4]{6}=\\sqrt[12]{216}$, luego $\\sqrt[3]{4}>\\sqrt[4]{6}$ ($1.587>1.565$)."
+        },
+        {
+          "texto": "Ordenar varios radicales usando un mismo índice",
+          "explicacion": "Ejemplo: ordenar $\\sqrt2$, $\\sqrt[3]{3}$ y $\\sqrt[6]{10}$. Con índice 6: $\\sqrt[6]{8}$, $\\sqrt[6]{9}$ y $\\sqrt[6]{10}$; como $8<9<10$, se tiene $\\sqrt2<\\sqrt[3]{3}<\\sqrt[6]{10}$ ($1.414<1.442<1.468$). Con coeficientes se introducen primero: $2\\sqrt3=\\sqrt{12}$ y $3\\sqrt2=\\sqrt{18}$, luego $2\\sqrt3<3\\sqrt2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de monomios",
+      "puntos": [
+        {
+          "texto": "Raíz de monomio: raíz del coeficiente y exponentes ÷ índice",
+          "explicacion": "Se extrae la raíz del coeficiente y se divide cada exponente de las variables entre el índice. Ejemplos: $\\sqrt[3]{27x^6y^3}=3x^2y$, porque $3^3=27$, $6/3=2$ y $3/3=1$; $\\sqrt{16x^4y^8}=4x^2y^4$. Con índice par, si un exponente final queda impar se escribe con valor absoluto: $\\sqrt{x^6}=|x|^3$."
+        },
+        {
+          "texto": "Exponentes no divisibles: extraer parcialmente",
+          "explicacion": "Cada variable se trata con la regla del cociente y el resto del exponente. Ejemplo: $\\sqrt{50x^5y}=\\sqrt{5^2\\cdot2\\cdot x^4\\cdot x\\cdot y}=5x^2\\sqrt{2xy}$ para $x\\geq0$ y $y\\geq0$. Verificación con $x=1$ y $y=2$: $\\sqrt{100}=10$ y $5\\sqrt{4}=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz de polinomios",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{x^2\\pm2xy+y^2}=|x\\pm y|$",
+          "explicacion": "El radicando es un trinomio cuadrado perfecto, es decir, el cuadrado de un binomio, de modo que la raíz principal es el valor absoluto de ese binomio. Ejemplo: $\\sqrt{x^2+6x+9}=|x+3|$; con $x=-5$ se obtiene $\\sqrt{25-30+9}=\\sqrt4=2=|-5+3|$."
+        },
+        {
+          "texto": "$\\sqrt[3]{x^3+3x^2y+3xy^2+y^3}=x+y$",
+          "explicacion": "El radicando es el cubo de un binomio, y la raíz cúbica real devuelve el binomio sin valor absoluto. Ejemplo: $\\sqrt[3]{a^3+6a^2+12a+8}=a+2$, tomando $x=a$ y $y=2$: $3a^2\\cdot2=6a^2$, $3a\\cdot4=12a$ y $2^3=8$. Verificación con $a=1$: $\\sqrt[3]{27}=3=1+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de raíces exactas",
+      "puntos": [
+        {
+          "texto": "Raíz exacta por descomposición en factores primos",
+          "explicacion": "Se descompone el radicando en factores primos y se divide cada exponente entre el índice. Ejemplo 1: $\\sqrt{144}=\\sqrt{2^4\\cdot3^2}=2^2\\cdot3=12$. Ejemplo 2: $\\sqrt[3]{1728}=\\sqrt[3]{2^6\\cdot3^3}=2^2\\cdot3=12$. Si algún exponente no es múltiplo del índice, la raíz no es exacta y queda un radical por extracción de factores."
+        },
+        {
+          "texto": "Potencias perfectas frecuentes",
+          "explicacion": "Cuadrados perfectos: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225. Cubos perfectos: 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000. Cuartas potencias: 16, 81, 256, 625. Quintas potencias: 32, 243. Reconocerlas acelera la extracción de factores; por ejemplo, $\\sqrt{196}=14$ y $\\sqrt[3]{343}=7$."
+        },
+        {
+          "texto": "Estimar una raíz no exacta entre dos enteros",
+          "explicacion": "Si $k^n<a<(k+1)^n$, entonces $k<\\sqrt[n]{a}<k+1$, porque la potencia conserva el orden. Ejemplo: $3^2=9<10<16=4^2$, luego $3<\\sqrt{10}<4$; probando decimales, $3.1^2=9.61$ y $3.2^2=10.24$, así que $\\sqrt{10}$ está entre 3.1 y 3.2, y $3.16^2=9.9856$ lo acota aún más. Otro: $7^2=49<50<64=8^2$, luego $7<\\sqrt{50}<8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces irracionales",
+      "puntos": [
+        {
+          "texto": "Raíz no exacta de un entero ⇒ número irracional",
+          "explicacion": "Demostración: supóngase $\\sqrt[n]{a}=\\dfrac{p}{q}$ con fracción irreducible. Entonces $p^n=a\\,q^n$, y todo primo que divida a $q$ dividiría a $p^n$ y por tanto a $p$, contradiciendo la irreductibilidad; luego $q=1$ y la raíz sería un entero, es decir, exacta. Por contraposición, si la raíz no es exacta no puede escribirse como fracción."
+        },
+        {
+          "texto": "$\\sqrt{2}$ ∈ números irracionales",
+          "explicacion": "Si $\\sqrt2$ fuera racional sería, por la tarjeta anterior, un entero; pero $1^2=1<2<4=2^2$ obliga a $1<\\sqrt2<2$, y no hay enteros entre 1 y 2. Por tanto $\\sqrt2$ es irracional, y lo mismo ocurre con $\\sqrt3$, $\\sqrt5$, $\\sqrt[3]{2}$ y toda raíz no exacta de un entero."
+        }
+      ]
+    },
+    {
+      "titulo": "Racionalización",
+      "puntos": [
+        {
+          "texto": "«Racionalización» elimina radicales del denominador",
+          "explicacion": "Consiste en transformar una fracción con radicales en el denominador en otra equivalente cuyo denominador es racional. Por ejemplo, $\\dfrac{1}{\\sqrt2}$ se convierte en $\\dfrac{\\sqrt2}{2}$, que es más fácil de calcular y de comparar."
+        },
+        {
+          "texto": "El «factor racionalizante» vuelve racional el denominador",
+          "explicacion": "Es la expresión por la que se multiplican numerador y denominador. Su elección depende de la forma del denominador: un radical solo, un binomio con raíces cuadradas o un binomio con raíces cúbicas, según las tarjetas siguientes."
+        },
+        {
+          "texto": "Multiplicar numerador y denominador por lo mismo conserva el valor",
+          "explicacion": "Es multiplicar la fracción por $\\dfrac{k}{k}=1$ con $k\\neq0$. Por ejemplo, $\\dfrac{1}{\\sqrt2}\\cdot\\dfrac{\\sqrt2}{\\sqrt2}=\\dfrac{\\sqrt2}{2}$; numéricamente $\\dfrac{1}{1.4142}\\approx0.7071$ y $\\dfrac{1.4142}{2}\\approx0.7071$."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt{b}}=\\dfrac{A\\sqrt{b}}{b}$",
+          "explicacion": "Al multiplicar por $\\sqrt b$, el denominador pasa a $\\sqrt b\\cdot\\sqrt b=b$. Ejemplo: $\\dfrac{6}{\\sqrt3}=\\dfrac{6\\sqrt3}{3}=2\\sqrt3$; verificación numérica: $6/1.7321\\approx3.4641$ y $2\\sqrt3\\approx3.4641$."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt[n]{b^m}}=\\dfrac{A\\sqrt[n]{b^{n-m}}}{b}$ con $m<n$",
+          "explicacion": "El factor racionalizante es $\\sqrt[n]{b^{n-m}}$, porque $\\sqrt[n]{b^m}\\cdot\\sqrt[n]{b^{n-m}}=\\sqrt[n]{b^n}=b$. Ejemplo: $\\dfrac{5}{\\sqrt[3]{4}}=\\dfrac{5}{\\sqrt[3]{2^2}}$; se multiplica por $\\sqrt[3]{2}$ y resulta $\\dfrac{5\\sqrt[3]{2}}{2}$. Verificación numérica: $5/1.5874\\approx3.1498$ y $5(1.2599)/2\\approx3.1498$."
+        },
+        {
+          "texto": "Extraer factores del denominador antes de racionalizar",
+          "explicacion": "Si el exponente del radicando es mayor o igual que el índice, primero se simplifica. Ejemplo: $\\dfrac{1}{\\sqrt8}=\\dfrac{1}{2\\sqrt2}$ y luego $\\dfrac{1}{2\\sqrt2}\\cdot\\dfrac{\\sqrt2}{\\sqrt2}=\\dfrac{\\sqrt2}{4}$. Verificación numérica: $1/2.8284\\approx0.35355$ y $\\sqrt2/4\\approx0.35355$."
+        },
+        {
+          "texto": "El «conjugado» de $\\sqrt a+\\sqrt b$ es $\\sqrt a-\\sqrt b$",
+          "explicacion": "Dos binomios son conjugados si solo difieren en el signo central. Su producto es una diferencia de cuadrados: $(\\sqrt a+\\sqrt b)(\\sqrt a-\\sqrt b)=(\\sqrt a)^2-(\\sqrt b)^2=a-b$, un número sin radicales. Ejemplo: $(\\sqrt5+1)(\\sqrt5-1)=5-1=4$."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt a+\\sqrt b}=\\dfrac{A(\\sqrt a-\\sqrt b)}{a-b}$",
+          "explicacion": "Se multiplica por el conjugado del denominador. Ejemplo: $\\dfrac{1}{\\sqrt3+\\sqrt2}=\\dfrac{\\sqrt3-\\sqrt2}{3-2}=\\sqrt3-\\sqrt2$. Verificación numérica: $1/3.1463\\approx0.3178$ y $1.7321-1.4142\\approx0.3178$. La condición es $a\\neq b$ para que el denominador final no sea cero."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt a-\\sqrt b}=\\dfrac{A(\\sqrt a+\\sqrt b)}{a-b}$",
+          "explicacion": "El conjugado de la diferencia es la suma, y el producto vuelve a ser $a-b$. Ejemplo: $\\dfrac{4}{\\sqrt5-1}=\\dfrac{4(\\sqrt5+1)}{5-1}=\\sqrt5+1$. Verificación numérica: $4/1.2361\\approx3.2361$ y $\\sqrt5+1\\approx3.2361$."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt[3]{a}+\\sqrt[3]{b}}=\\dfrac{A(\\sqrt[3]{a^2}-\\sqrt[3]{ab}+\\sqrt[3]{b^2})}{a+b}$",
+          "explicacion": "Se usa la identidad $(x+y)(x^2-xy+y^2)=x^3+y^3$ con $x=\\sqrt[3]a$ y $y=\\sqrt[3]b$, que convierte el denominador en $a+b$. Ejemplo: $\\dfrac{1}{\\sqrt[3]{2}+1}=\\dfrac{\\sqrt[3]{4}-\\sqrt[3]{2}+1}{2+1}$. Verificación numérica: $1/2.2599\\approx0.44249$ y $(1.5874-1.2599+1)/3\\approx0.44249$."
+        },
+        {
+          "texto": "$\\dfrac{A}{\\sqrt[3]{a}-\\sqrt[3]{b}}=\\dfrac{A(\\sqrt[3]{a^2}+\\sqrt[3]{ab}+\\sqrt[3]{b^2})}{a-b}$",
+          "explicacion": "Se usa $(x-y)(x^2+xy+y^2)=x^3-y^3$ con $x=\\sqrt[3]a$ y $y=\\sqrt[3]b$. Ejemplo: $\\dfrac{1}{\\sqrt[3]{3}-\\sqrt[3]{2}}=\\sqrt[3]{9}+\\sqrt[3]{6}+\\sqrt[3]{4}$, porque $a-b=3-2=1$. Verificación numérica: $1/0.18233\\approx5.4846$ y $2.0801+1.8171+1.5874\\approx5.4846$."
+        },
+        {
+          "texto": "Índice 4 con diferencia: factor $x^3+x^2y+xy^2+y^3$",
+          "explicacion": "Como $(x-y)(x^3+x^2y+xy^2+y^3)=x^4-y^4$, para $x=\\sqrt[4]a$ y $y=\\sqrt[4]b$ el denominador se vuelve $a-b$. Ejemplo: $\\dfrac{1}{\\sqrt[4]{2}-1}=\\sqrt[4]{8}+\\sqrt[4]{4}+\\sqrt[4]{2}+1$, pues $a-b=2-1=1$. Verificación numérica: $1/0.18921\\approx5.2852$ y $1.6818+1.4142+1.1892+1\\approx5.2852$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radicales dobles",
+      "puntos": [
+        {
+          "texto": "«Radical doble» contiene otro radical sumado o restado",
+          "explicacion": "Tiene la forma $\\sqrt{A\\pm\\sqrt{B}}$, con un radical dentro de otro radical. En algunos casos puede transformarse en una suma o diferencia de radicales simples, que es más fácil de manejar."
+        },
+        {
+          "texto": "$\\sqrt{A\\pm\\sqrt B}=\\sqrt{\\dfrac{A+C}{2}}\\pm\\sqrt{\\dfrac{A-C}{2}}$ con $C=\\sqrt{A^2-B}$",
+          "explicacion": "Demostración: al elevar al cuadrado el lado derecho resulta $\\dfrac{A+C}{2}+\\dfrac{A-C}{2}\\pm2\\sqrt{\\dfrac{A^2-C^2}{4}}=A\\pm\\sqrt{A^2-C^2}=A\\pm\\sqrt B$, porque $C^2=A^2-B$. Conviene aplicarla cuando $A^2-B$ es cuadrado perfecto. Ejemplo: $\\sqrt{11+6\\sqrt2}$ con $A=11$ y $B=72$: $C=\\sqrt{121-72}=7$; resulta $\\sqrt{9}+\\sqrt{2}=3+\\sqrt2$. Verificación: $(3+\\sqrt2)^2=9+6\\sqrt2+2=11+6\\sqrt2$."
+        },
+        {
+          "texto": "$\\sqrt{(a+b)\\pm2\\sqrt{ab}}=\\sqrt a\\pm\\sqrt b$",
+          "explicacion": "Es el método práctico: se buscan dos números cuya suma sea el término sin radical y cuyo producto sea el radicando interior. Demostración: $(\\sqrt a\\pm\\sqrt b)^2=a+b\\pm2\\sqrt{ab}$. Ejemplo: $\\sqrt{5+2\\sqrt6}$: $3+2=5$ y $3\\cdot2=6$, luego es $\\sqrt3+\\sqrt2$. Ejemplo: $\\sqrt{8-2\\sqrt{15}}$: $5+3=8$ y $5\\cdot3=15$, luego es $\\sqrt5-\\sqrt3$; verificación numérica: $\\sqrt{0.2540}\\approx0.5040$ y $2.2361-1.7321\\approx0.5040$."
+        },
+        {
+          "texto": "Reescribir el término con radical como $2\\sqrt{ab}$",
+          "explicacion": "Si el término con radical no tiene coeficiente 2, se transforma: $k\\sqrt{m}=2\\cdot\\dfrac{k}{2}\\sqrt{m}=2\\sqrt{\\dfrac{k^2m}{4}}$. Ejemplo: $11+6\\sqrt2$: $6\\sqrt2=2\\cdot3\\sqrt2=2\\sqrt{18}$; se buscan dos números de suma 11 y producto 18: 9 y 2. Entonces $\\sqrt{11+6\\sqrt2}=\\sqrt9+\\sqrt2=3+\\sqrt2$."
+        },
+        {
+          "texto": "Con signo menos: restar el radical menor del mayor",
+          "explicacion": "La raíz principal es no negativa, de modo que el resultado debe ser positivo: se escribe $\\sqrt a-\\sqrt b$ con $a\\geq b$. Ejemplo: $\\sqrt{7-4\\sqrt3}=\\sqrt{7-2\\sqrt{12}}$; los números de suma 7 y producto 12 son 4 y 3, luego es $\\sqrt4-\\sqrt3=2-\\sqrt3$ y no $\\sqrt3-2$, que es negativo. Verificación numérica: $\\sqrt{0.0718}\\approx0.2679$ y $2-1.7321\\approx0.2679$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radicales infinitos",
+      "puntos": [
+        {
+          "texto": "«Radical infinito» repite su patrón sin fin",
+          "explicacion": "Es un conjunto de radicales anidados cuyo patrón se repite indefinidamente, como $\\sqrt{2+\\sqrt{2+\\sqrt{2+\\cdots}}}$. Se supone que representa un número real positivo $S$; la clave es que lo que queda dentro de la primera raíz es de nuevo la misma expresión $S$, lo que conduce a una ecuación."
+        },
+        {
+          "texto": "$\\sqrt{a+\\sqrt{a+\\cdots}}=\\dfrac{1+\\sqrt{1+4a}}{2}$",
+          "explicacion": "Al llamar $S$ al valor, se cumple $S=\\sqrt{a+S}$, es decir, $S^2=a+S$, o $S^2-S-a=0$; la raíz positiva es la indicada. Ejemplo: con $a=2$, $S^2-S-2=0$ da $(S-2)(S+1)=0$, luego $S=2$. Con $a=12$: $S^2-S-12=0$, $(S-4)(S+3)=0$, luego $S=4$."
+        },
+        {
+          "texto": "$\\sqrt{a-\\sqrt{a-\\cdots}}=\\dfrac{-1+\\sqrt{1+4a}}{2}$",
+          "explicacion": "Ahora $S=\\sqrt{a-S}$, de donde $S^2=a-S$, o $S^2+S-a=0$; se toma la raíz positiva. Ejemplo: con $a=6$, $S^2+S-6=0$ da $(S+3)(S-2)=0$, luego $S=2$. Con $a=20$: $S=\\dfrac{-1+\\sqrt{81}}{2}=4$, y se verifica $4^2=16=20-4$."
+        },
+        {
+          "texto": "$\\sqrt[n]{a\\sqrt[n]{a\\cdots}}=\\sqrt[n-1]{a}$",
+          "explicacion": "Con $S=\\sqrt[n]{aS}$ se eleva a la $n$: $S^n=aS$, y al dividir entre $S>0$ queda $S^{n-1}=a$. Ejemplo: $\\sqrt{5\\sqrt{5\\sqrt{5\\cdots}}}=5$ (con $n=2$) y $\\sqrt[3]{4\\sqrt[3]{4\\cdots}}=\\sqrt[2]{4}=2$ (con $n=3$), pues $2^3=8=4\\cdot2$."
+        },
+        {
+          "texto": "Raíces finitas anidadas: $x^{(2^k-1)/2^k}$",
+          "explicacion": "Con $k$ raíces cuadradas de la forma $\\sqrt{x\\sqrt{x\\cdots\\sqrt{x}}}$, los exponentes se acumulan: para $k=3$, $\\sqrt{x\\sqrt{x\\sqrt{x}}}$ da $x^{1/2}\\cdot x^{1/4}\\cdot x^{1/8}=x^{7/8}$, y en general $x^{(2^k-1)/2^k}$. Ejemplo con $x=256$: $\\sqrt{256}=16$, luego $\\sqrt{256\\cdot16}=64$ y $\\sqrt{256\\cdot64}=128$; coincide con $256^{7/8}=2^7=128$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Radicación ⊂ leyes de la potenciación",
+          "explicacion": "Toda propiedad de los radicales se deduce de las leyes de exponentes del tema anterior, mediante $a^{1/n}=\\sqrt[n]{a}$. Por ejemplo, la raíz de un producto sale de $(ab)^{1/n}=a^{1/n}b^{1/n}$ y la raíz de una raíz sale de $(a^{1/n})^{1/m}=a^{1/(mn)}$."
+        },
+        {
+          "texto": "Raíces pares de negativos ∈ números complejos",
+          "explicacion": "En los reales, $\\sqrt{-1}$ no existe; los números complejos introducen la unidad imaginaria $i$ con $i^2=-1$, de modo que $\\sqrt{-1}=i$ y $\\sqrt{-9}=3i$. En este tema, salvo que se diga lo contrario, todo es real."
+        },
+        {
+          "texto": "Los radicales no exactos ∈ números irracionales",
+          "explicacion": "Los números reales se dividen en racionales e irracionales; las raíces no exactas de enteros, como $\\sqrt2$ y $\\sqrt[3]{5}$, son ejemplos de irracionales. Por eso se trabaja con ellas en forma de radical, o se aproximan con decimales como $\\sqrt2\\approx1.414$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de simplificación",
+      "puntos": [
+        {
+          "texto": "Orden recomendado para simplificar una expresión radical",
+          "explicacion": "(1) Verificar la existencia de las raíces según índice y radicando. (2) Extraer los factores posibles de cada radical. (3) Simplificar índice y exponentes. (4) Reducir radicales semejantes. (5) Racionalizar si hay radicales en el denominador. Ejemplo: $\\dfrac{\\sqrt{12}+\\sqrt{27}}{\\sqrt3}=\\dfrac{2\\sqrt3+3\\sqrt3}{\\sqrt3}=\\dfrac{5\\sqrt3}{\\sqrt3}=5$; verificación numérica: $(3.4641+5.1962)/1.7321\\approx5$."
+        },
+        {
+          "texto": "Verificar un resultado elevándolo al índice",
+          "explicacion": "Para confirmar una simplificación se eleva el resultado al índice y se compara con el radicando original. Ejemplo: se afirma $\\sqrt[3]{54}=3\\sqrt[3]{2}$; se comprueba $(3\\sqrt[3]{2})^3=27\\cdot2=54$. Otro: $\\sqrt{7-4\\sqrt3}=2-\\sqrt3$ se comprueba con $(2-\\sqrt3)^2=4-4\\sqrt3+3=7-4\\sqrt3$."
+        }
+      ]
+    }
+  ]
+}
