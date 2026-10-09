@@ -1,0 +1,161 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos complementarios",
+  "glosario": {
+    "Ángulos complementarios": "Ángulos cuya suma es 90°",
+    "Complemento": "Ángulo que falta para llegar a 90°",
+    "Ángulo agudo": "Ángulo mayor que 0° y menor que 90°",
+    "Co-razón": "Razón que se intercambia con la del complemento",
+    "Cotangente": "Recíproca de la tangente",
+    "Secante": "Recíproca del coseno",
+    "Cosecante": "Recíproca del seno",
+    "Cateto opuesto": "Cateto frente al ángulo considerado",
+    "Cateto adyacente": "Cateto que forma el ángulo considerado",
+    "Hipotenusa": "Lado opuesto al ángulo recto",
+    "Ángulos suplementarios": "Ángulos cuya suma es 180°",
+    "Razón recíproca": "Inverso multiplicativo de una razón trigonométrica"
+  },
+  "theory": [
+    {
+      "titulo": "Ángulos complementarios",
+      "puntos": [
+        {
+          "texto": "Ángulos complementarios: dos ángulos que suman 90°",
+          "explicacion": "El complemento de un ángulo $\\theta$ es lo que le falta para llegar a $90^\\circ$, es decir $90^\\circ - \\theta$. Ejemplo: el complemento de $25^\\circ$ es $90^\\circ - 25^\\circ = 65^\\circ$, y juntos suman $90^\\circ$. Si $2x$ y $3y$ son complementarios, se plantea $2x + 3y = 90^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo rectángulo",
+      "puntos": [
+        {
+          "texto": "En un triángulo rectángulo los ángulos agudos son complementarios",
+          "explicacion": "Los tres ángulos de un triángulo suman $180^\\circ$ y el ángulo recto aporta $90^\\circ$, de modo que los dos agudos $A$ y $B$ suman los $90^\\circ$ restantes. Ejemplo: si $A = 35^\\circ$, entonces $B = 90^\\circ - 35^\\circ = 55^\\circ$."
+        },
+        {
+          "texto": "Lo opuesto a un ángulo agudo es adyacente a su complemento",
+          "explicacion": "En un triángulo rectángulo, el cateto $a$ está opuesto al ángulo $A$ y es adyacente al ángulo $B$, mientras que el cateto $b$ está opuesto a $B$ y es adyacente a $A$. Esta inversión de papeles es la razón de que cada razón de un ángulo coincida con la co-razón de su complemento. Ejemplo con catetos $a = 3$, $b = 4$ e hipotenusa $c = 5$: el seno de $A$ es $\\frac{3}{5}$ y el coseno de $B$ también es $\\frac{3}{5}$, porque ambos usan el cateto de longitud $3$ dividido entre la hipotenusa."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno y coseno",
+      "puntos": [
+        {
+          "texto": "Seno del complemento: «$\\sin(90^\\circ - \\theta) = \\cos\\theta$»",
+          "explicacion": "El cateto opuesto al ángulo $90^\\circ - \\theta$ es el cateto adyacente a $\\theta$, por lo que ambas razones usan el mismo cateto sobre la hipotenusa. Ejemplo con $\\theta = 30^\\circ$: $\\sin 60^\\circ = \\sin(90^\\circ - 30^\\circ) = \\cos 30^\\circ = \\frac{\\sqrt{3}}{2}$, que es el valor conocido de $\\sin 60^\\circ$."
+        },
+        {
+          "texto": "Coseno del complemento: «$\\cos(90^\\circ - \\theta) = \\sin\\theta$»",
+          "explicacion": "El cateto adyacente al ángulo $90^\\circ - \\theta$ es el cateto opuesto a $\\theta$, por lo que ambas razones usan el mismo cateto sobre la hipotenusa. Ejemplo con $\\theta = 30^\\circ$: $\\cos 60^\\circ = \\cos(90^\\circ - 30^\\circ) = \\sin 30^\\circ = \\frac{1}{2}$, que es el valor conocido de $\\cos 60^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente y cotangente",
+      "puntos": [
+        {
+          "texto": "Tangente del complemento: «$\\tan(90^\\circ - \\theta) = \\cot\\theta$»",
+          "explicacion": "La tangente del complemento divide el cateto opuesto a $90^\\circ - \\theta$ entre su adyacente, que es el cociente inverso al de $\\theta$, es decir, la cotangente de $\\theta$. Ejemplo con $\\theta = 30^\\circ$: $\\tan 60^\\circ = \\tan(90^\\circ - 30^\\circ) = \\cot 30^\\circ = \\sqrt{3}$."
+        },
+        {
+          "texto": "Cotangente del complemento: «$\\cot(90^\\circ - \\theta) = \\tan\\theta$»",
+          "explicacion": "La cotangente del complemento divide el cateto adyacente a $90^\\circ - \\theta$ entre su opuesto, que es el cociente de la tangente de $\\theta$. Ejemplo con $\\theta = 60^\\circ$: $\\cot 30^\\circ = \\cot(90^\\circ - 60^\\circ) = \\tan 60^\\circ = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante y cosecante",
+      "puntos": [
+        {
+          "texto": "Secante del complemento: «$\\sec(90^\\circ - \\theta) = \\csc\\theta$»",
+          "explicacion": "La secante divide la hipotenusa entre el cateto adyacente; en el complemento ese cateto es el opuesto a $\\theta$, por lo que resulta la cosecante de $\\theta$. Ejemplo con $\\theta = 30^\\circ$: $\\sec 60^\\circ = \\sec(90^\\circ - 30^\\circ) = \\csc 30^\\circ = 2$."
+        },
+        {
+          "texto": "Cosecante del complemento: «$\\csc(90^\\circ - \\theta) = \\sec\\theta$»",
+          "explicacion": "La cosecante divide la hipotenusa entre el cateto opuesto; en el complemento ese cateto es el adyacente a $\\theta$, por lo que resulta la secante de $\\theta$. Ejemplo con $\\theta = 60^\\circ$: $\\csc 30^\\circ = \\csc(90^\\circ - 60^\\circ) = \\sec 60^\\circ = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Co-razones",
+      "puntos": [
+        {
+          "texto": "Co-razón: razón que se intercambia con la de su complemento",
+          "explicacion": "Las parejas de co-razones son seno con coseno, tangente con cotangente y secante con cosecante, y la relación vale en los dos sentidos. Ejemplo: la co-razón de $\\sin 40^\\circ$ es $\\cos 40^\\circ$, y como $40^\\circ$ y $50^\\circ$ son complementarios, $\\sin 40^\\circ = \\cos 50^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno igual a coseno",
+      "puntos": [
+        {
+          "texto": "Si sen α = cos β ⇒ α + β = 90°",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos agudos. Como $\\cos\\beta = \\sin(90^\\circ - \\beta)$ y el seno de ángulos agudos toma valores distintos para ángulos distintos, de la igualdad se deduce $\\alpha = 90^\\circ - \\beta$. Ejemplo: $\\sin(x + 10^\\circ) = \\cos 70^\\circ$ ⇒ $x + 10^\\circ + 70^\\circ = 90^\\circ$ ⇒ $x = 10^\\circ$. Comprobación: $\\sin 20^\\circ = \\cos 70^\\circ$, porque $20^\\circ + 70^\\circ = 90^\\circ$."
+        },
+        {
+          "texto": "Si tan α = cot β ⇒ α + β = 90°",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos agudos. Como $\\cot\\beta = \\tan(90^\\circ - \\beta)$, de la igualdad se deduce que $\\alpha = 90^\\circ - \\beta$. Ejemplo: $\\tan 2x = \\cot(x + 30^\\circ)$ ⇒ $2x + x + 30^\\circ = 90^\\circ$ ⇒ $3x = 60^\\circ$ ⇒ $x = 20^\\circ$. Comprobación: $\\tan 40^\\circ = \\cot 50^\\circ$, porque $40^\\circ + 50^\\circ = 90^\\circ$."
+        },
+        {
+          "texto": "Si sec α = csc β ⇒ α + β = 90°",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos agudos. Como $\\csc\\beta = \\sec(90^\\circ - \\beta)$, de la igualdad se deduce que $\\alpha = 90^\\circ - \\beta$. Ejemplo: $\\sec 3x = \\csc(x + 50^\\circ)$ ⇒ $3x + x + 50^\\circ = 90^\\circ$ ⇒ $4x = 40^\\circ$ ⇒ $x = 10^\\circ$. Comprobación: $\\sec 30^\\circ = \\csc 60^\\circ = \\frac{2\\sqrt{3}}{3}$, porque $30^\\circ + 60^\\circ = 90^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Límite de la deducción",
+      "puntos": [
+        {
+          "texto": "Con ángulos no agudos, sen α = cos β no obliga a α + β = 90°",
+          "explicacion": "La deducción de la suma $90^\\circ$ exige que ambos ángulos sean agudos; si alguno no lo es, pueden coincidir los valores sin que los ángulos sean complementarios. Ejemplo: $\\sin 150^\\circ = \\frac{1}{2}$ y $\\cos 60^\\circ = \\frac{1}{2}$ son iguales, pero $150^\\circ + 60^\\circ = 210^\\circ$, que no es $90^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de tangentes",
+      "puntos": [
+        {
+          "texto": "Si α + β = 90° ⇒ tan α × tan β = 1",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son dos ángulos agudos. Como $\\tan\\beta = \\tan(90^\\circ - \\alpha) = \\cot\\alpha$ y la cotangente es el inverso de la tangente, el producto de ambas tangentes vale $1$. Ejemplo: $\\tan 20^\\circ \\times \\tan 70^\\circ = \\tan 20^\\circ \\times \\cot 20^\\circ = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente de co-razones",
+      "puntos": [
+        {
+          "texto": "Una razón dividida entre la co-razón de su complemento vale 1",
+          "explicacion": "Como la co-razón del complemento es igual a la razón original, el cociente es una cantidad dividida entre sí misma. Ejemplo: $\\frac{\\sin 25^\\circ}{\\cos 65^\\circ} = \\frac{\\sin 25^\\circ}{\\sin 25^\\circ} = 1$, porque $\\cos 65^\\circ = \\sin(90^\\circ - 65^\\circ) = \\sin 25^\\circ$. De la misma forma, $\\frac{\\sin 20^\\circ}{\\cos 70^\\circ} + \\frac{\\tan 10^\\circ}{\\cot 80^\\circ} = 1 + 1 = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo de 45°",
+      "puntos": [
+        {
+          "texto": "El ángulo de 45° es complementario de sí mismo ⇒ sen 45° = cos 45°",
+          "explicacion": "Como $45^\\circ + 45^\\circ = 90^\\circ$, cada razón de $45^\\circ$ es igual a su co-razón. Ejemplo: $\\sin 45^\\circ = \\cos 45^\\circ = \\frac{\\sqrt{2}}{2}$, $\\tan 45^\\circ = \\cot 45^\\circ = 1$ y $\\sec 45^\\circ = \\csc 45^\\circ = \\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor: suplementarios",
+      "puntos": [
+        {
+          "texto": "Los suplementarios suman 180° y conservan el seno, no lo intercambian",
+          "explicacion": "Dos ángulos que suman $180^\\circ$ tienen el mismo seno y cosenos opuestos, a diferencia de los complementarios, que intercambian seno y coseno. Ejemplo: $\\sin 30^\\circ = \\cos 60^\\circ = \\frac{1}{2}$ por ser complementarios, mientras que $\\sin 30^\\circ = \\sin 150^\\circ = \\frac{1}{2}$ por ser suplementarios y $\\cos 150^\\circ = -\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Las razones recíprocas tienen su propio tema",
+          "explicacion": "La cotangente, la secante y la cosecante se usan aquí como razones recíprocas de la tangente, el coseno y el seno; su estudio completo corresponde a otro tema."
+        }
+      ]
+    }
+  ]
+}
