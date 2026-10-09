@@ -14,7 +14,7 @@
   overflow-y: auto;
   opacity: 1;
   visibility: visible;
-  transition: opacity .25s linear, visibility 0s linear 0s;
+  transition: opacity 0.25s linear, visibility 0s linear 0s;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -27,7 +27,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity .25s linear, visibility 0s linear .25s;
+  transition: opacity 0.25s linear, visibility 0s linear 0.25s;
 }
 
 .levels-modal__title {
@@ -36,7 +36,7 @@
   font-weight: 800;
   color: var(--ink);
   text-transform: uppercase;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   text-align: center;
   margin: 0;
 }
@@ -59,7 +59,7 @@
 .levels-modal__search-row {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +69,6 @@
   background: none;
   padding: 12px 0 0;
   margin: 0 0 44px;
-  z-index: 999;
 }
 
 .levels-modal__search-row::before {
@@ -178,9 +177,9 @@
   color: var(--ink);
   padding: 0;
   transition:
-    background-color .15s linear,
-    color .15s linear,
-    transform .1s linear;
+    background-color 0.15s linear,
+    color 0.15s linear,
+    transform 0.1s linear;
 }
 
 .levels-modal__search .home-search-result:hover,
@@ -233,9 +232,9 @@
   outline: none;
   -webkit-tap-highlight-color: transparent;
   transition:
-    background .15s linear,
-    color .15s linear,
-    opacity .15s linear;
+    background 0.15s linear,
+    color 0.15s linear,
+    opacity 0.15s linear;
 }
 
 .levels-modal__buscar i {
@@ -254,46 +253,170 @@
 }
 
 .levels-modal__buscar:disabled {
-  opacity: .45;
+  opacity: 0.45;
   cursor: not-allowed !important;
 }
 
 /* ============================================================
-   Botón Cerrar (debajo de la paginación)
+   Acciones: volver al mapa y cerrar
    ============================================================ */
 
-.levels-modal__cerrar {
-  display: block;
+.levels-modal__acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
   max-width: 440px;
-  min-height: 48px;
   margin: var(--space-6) auto;
-  padding: 0 16px;
+}
+
+.levels-modal__volver,
+.levels-modal__cerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
-  background: var(--danger);
-  color: var(--ink-on-primary);
-  border: 1px solid var(--danger);
-  border-radius: var(--radius-md);
+  min-height: 48px;
+  margin: 0;
+  padding: 0 16px;
   font-family: var(--font-body);
   font-size: var(--fs-lg);
-  letter-spacing: var(--space-1);
   font-weight: 800;
-  cursor: url("/cursor_pointer.webp"), pointer !important;
+  letter-spacing: var(--space-1);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius-md);
   outline: none;
   -webkit-tap-highlight-color: transparent;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
   transition:
-    background .15s linear,
-    border-color .15s linear,
-    transform .1s linear;
+    background 0.15s linear,
+    border-color 0.15s linear,
+    color 0.15s linear,
+    opacity 0.15s linear,
+    transform 0.1s linear;
+}
+
+/* Botón de volver con flecha dibujada en CSS */
+
+.levels-modal__volver {
+  flex: 0 0 64px;
+  width: 64px;
+  min-width: 64px;
+  padding: 0;
+  color: var(--ink-on-primary);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+/* La flecha queda inmóvil por defecto */
+
+.levels-modal__flecha {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 28px;
+  flex: 0 0 36px;
+}
+
+.levels-modal__flecha-linea {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 29px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.levels-modal__flecha-punta {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  z-index: 1;
+  width: 17px;
+  height: 17px;
+  box-sizing: border-box;
+  border-left: 7px solid currentColor;
+  border-bottom: 7px solid currentColor;
+  border-radius: 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* La punta se desliza repetidamente al pasar el cursor */
+
+.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
+  animation: flecha-va-y-viene 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flecha-va-y-viene {
+  from {
+    left: 3px;
+  }
+
+  to {
+    left: -5px;
+  }
+}
+
+.levels-modal__volver:hover:not(:disabled) {
+  background: var(--primary-bg);
+}
+
+/* Al pasar el cursor solo la punta cambia de color */
+
+.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
+  color: var(--primary);
+}
+
+.levels-modal__volver:active:not(:disabled),
+.levels-modal__cerrar:active {
+  transform: scale(0.97);
+}
+
+/* La flecha se deshabilita en el mapa normal */
+
+.levels-modal__volver:disabled,
+.levels-modal__volver--deshabilitado {
+  opacity: 0.35;
+  color: var(--ink-faint);
+  background: transparent;
+  cursor: not-allowed !important;
+}
+
+.levels-modal__volver:disabled .levels-modal__flecha-punta {
+  animation: none;
+  border-color: currentColor;
+}
+
+.levels-modal__volver:disabled .levels-modal__flecha-linea {
+  background: currentColor;
+}
+
+.levels-modal__volver:focus-visible,
+.levels-modal__cerrar:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Botón de cerrar */
+
+.levels-modal__cerrar {
+  flex: 1;
+  width: auto;
+  max-width: none;
+  min-width: 0;
+  color: var(--ink-on-primary);
+  background: var(--danger);
+  border: 1px solid var(--danger);
 }
 
 .levels-modal__cerrar:hover {
   background: var(--danger-dark);
   border-color: var(--danger-dark);
-}
-
-.levels-modal__cerrar:active {
-  transform: scale(.97);
 }
 
 /* ============================================================
@@ -452,7 +575,7 @@
   bottom: 100%;
   left: 0;
   right: 0;
-  margin-bottom: .35em;
+  margin-bottom: 0.35em;
   z-index: 2;
   pointer-events: none;
   display: flex;
@@ -461,7 +584,7 @@
   line-height: 1;
   font-size: var(--star-fs);
   white-space: nowrap;
-  transition: transform .1s linear;
+  transition: transform 0.1s linear;
 }
 
 .level-cell__estrellas span {
@@ -469,40 +592,31 @@
   --rot: 0deg;
   --s: 1;
   color: #d5d9e0;
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, .8),
-    0 0 3px rgba(0, 0, 0, .55);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 3px rgba(0, 0, 0, 0.55);
   display: inline-block;
-  transform:
-    translateY(var(--ty))
-    rotate(var(--rot))
-    scale(var(--s));
+  transform: translateY(var(--ty)) rotate(var(--rot)) scale(var(--s));
   transition:
-    color .2s ease,
-    transform .2s ease;
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .level-cell__estrellas span.is-activa {
   color: #f5b301;
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, .8),
-    0 0 4px rgba(245, 179, 1, .45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(245, 179, 1, 0.45);
   --s: 1.25;
 }
 
-/* Las 3 estrellas forman un arco */
-
 .level-cell__estrellas span:nth-child(1) {
-  --ty: .7em;
+  --ty: 0.7em;
   --rot: -22deg;
 }
 
 .level-cell__estrellas span:nth-child(2) {
-  --ty: -.15em;
+  --ty: -0.15em;
 }
 
 .level-cell__estrellas span:nth-child(3) {
-  --ty: .7em;
+  --ty: 0.7em;
   --rot: 22deg;
 }
 
@@ -524,9 +638,9 @@
   visibility: hidden;
   transform: translateY(4px);
   transition:
-    opacity .15s linear,
-    transform .15s linear,
-    visibility 0s linear .15s;
+    opacity 0.15s linear,
+    transform 0.15s linear,
+    visibility 0s linear 0.15s;
   pointer-events: none;
 }
 
@@ -548,22 +662,20 @@
   visibility: visible;
   transform: translateY(0);
   transition:
-    opacity .15s linear,
-    transform .15s linear,
+    opacity 0.15s linear,
+    transform 0.15s linear,
     visibility 0s linear 0s;
   pointer-events: none;
 }
 
 /* ============================================================
    Botón circular del nivel
-   El canto oscuro está únicamente abajo.
    ============================================================ */
 
 .level-btn {
   --grosor: 10px;
   --cara: var(--surface);
   --canto: color-mix(in srgb, var(--cara) 45%, black);
-
   width: 100%;
   aspect-ratio: 1 / 1;
   background: var(--cara);
@@ -586,14 +698,11 @@
   -webkit-tap-highlight-color: transparent;
   box-shadow:
     0 var(--grosor) 0 var(--canto),
-    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, .45);
+    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, 0.45);
   transition:
-    transform .1s linear,
-    box-shadow .1s linear;
+    transform 0.1s linear,
+    box-shadow 0.1s linear;
 }
-
-/* Al hacer hover la cara baja 3px y el canto se acorta 3px:
-   la base queda en el mismo sitio y parece que se hunde */
 
 .level-btn:not(:disabled):hover {
   --grosor: 7px;
@@ -612,7 +721,7 @@
 
 .level-btn__numero--estrella {
   font-family: system-ui, "Segoe UI Symbol", sans-serif;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .level-btn__numero--estrellas-1 {
@@ -692,7 +801,7 @@
 }
 
 /* ============================================================
-   Estados (solo cambian las variables de color)
+   Estados
    ============================================================ */
 
 .level-btn.is-selected {
@@ -714,8 +823,6 @@
   cursor: not-allowed;
 }
 
-/* Las estrellas bajan junto con el nivel */
-
 .level-cell:has(.level-btn:not(:disabled):hover) .level-cell__estrellas {
   transform: translateY(3px);
 }
@@ -727,29 +834,24 @@
 .levels-map {
   --map-gap: 64px;
   --map-gap-y: 110px;
-
   --line-w: 6px;
-
   display: flex;
   flex-direction: column;
   gap: var(--map-gap-y);
-
   width: 100%;
   max-width: 440px;
   margin: 0 auto;
-
   padding-top: 28px;
   padding-bottom: 24px;
-
   box-sizing: border-box;
 }
 
 .levels-map--anim-up {
-  animation: levels-page-up .3s ease-out;
+  animation: levels-page-up 0.3s ease-out;
 }
 
 .levels-map--anim-down {
-  animation: levels-page-down .3s ease-out;
+  animation: levels-page-down 0.3s ease-out;
 }
 
 @keyframes levels-page-up {
@@ -778,10 +880,7 @@
 
 .levels-map__row {
   display: grid;
-  grid-template-columns: repeat(
-    var(--cols, 6),
-    minmax(0, 1fr)
-  );
+  grid-template-columns: repeat(var(--cols, 6), minmax(0, 1fr));
   gap: var(--map-gap);
   position: relative;
 }
@@ -823,24 +922,15 @@
 
 .level-cell--v::after {
   --libre-estrellas: calc(var(--star-fs) * 2);
-
   content: "";
   position: absolute;
   bottom: calc(100% + var(--libre-estrellas));
   left: calc(50% - var(--line-w) / 2);
   width: 0;
-
-  height: calc(
-    50% +
-    var(--map-gap-y) -
-    var(--libre-estrellas)
-  );
-
+  height: calc(50% + var(--map-gap-y) - var(--libre-estrellas));
   border-left: var(--line-w) dashed var(--border-strong);
   z-index: 0;
 }
-
-/* Inglés no tiene estrellas: la línea vertical llega directo al nivel. */
 
 .level-cell--sin-estrellas.level-cell--v::after {
   --libre-estrellas: 0px;
@@ -854,54 +944,35 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   gap: 6px;
-
-  /* La barra tiene exactamente el mismo ancho máximo que el mapa */
   width: 100%;
   max-width: 440px;
-
   margin: var(--space-6) auto;
-
   box-sizing: border-box;
-
-  /* Nunca genera scroll horizontal */
   overflow: hidden;
 }
 
-/* Botones numéricos */
-
 .levels-nav__btn {
   flex: 0 0 34px;
-
   width: 34px;
   min-width: 34px;
   max-width: 34px;
-
   height: 34px;
-
   padding: 0;
-
   border-radius: var(--radius-md);
   border: 3px solid var(--border);
-
   background: var(--surface);
   color: var(--ink-soft);
-
   font-family: var(--font-body);
   font-weight: 800;
   font-size: clamp(13px, 3.8vw, 16px);
   line-height: 1;
-
   white-space: nowrap;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   outline: none;
   -webkit-tap-highlight-color: transparent;
-
   cursor: url("/cursor_pointer.webp"), pointer !important;
 }
 
@@ -912,26 +983,20 @@
 }
 
 .levels-nav__btn:disabled {
-  opacity: .8;
+  opacity: 0.8;
   cursor: not-allowed !important;
 }
 
-/* «…» entre números */
-
 .levels-nav__gap {
   flex: 0 0 14px;
-
   width: 14px;
   min-width: 14px;
   max-width: 14px;
-
   text-align: center;
-
   color: var(--ink-faint);
   font-weight: 800;
   font-size: 18px;
   line-height: 1;
-
   user-select: none;
 }
 
@@ -941,10 +1006,7 @@
 
 .temas-modal-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(140px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 14px;
   justify-content: center;
   width: 100%;
@@ -963,7 +1025,7 @@
   font-weight: 700;
   border-radius: var(--radius-md);
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: all .1s linear-in-out;
+  transition: all 0.1s linear;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -995,17 +1057,14 @@
 
 .topbar__curso--clickable {
   cursor: url("/cursor_pointer.webp"), pointer !important;
-  transition: opacity .2s, background-color .2s;
+  transition: opacity 0.2s, background-color 0.2s;
   border-radius: var(--radius-sm);
   display: inline-block;
 }
 
 @media (min-width: 1280px) {
   .temas-modal-grid {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(180px, 1fr)
-    );
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 
   .tema-arcade-btn {
@@ -1013,6 +1072,10 @@
     padding: 20px 16px;
   }
 }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 
 @media (max-width: 639px) {
   .levels-modal {
@@ -1094,6 +1157,26 @@
     width: 12px;
     min-width: 12px;
     max-width: 12px;
+  }
+
+  .levels-modal__acciones {
+    gap: 8px;
+  }
+
+  .levels-modal__volver,
+  .levels-modal__cerrar {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .levels-modal__volver {
+    flex-basis: 58px;
+    width: 58px;
+    min-width: 58px;
+  }
+
+  .levels-modal__flecha {
+    transform: scale(0.9);
   }
 }
 
