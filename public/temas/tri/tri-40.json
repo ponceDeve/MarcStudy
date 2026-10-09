@@ -1,0 +1,212 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ley de cosenos",
+  "glosario": {
+    "Ley de cosenos": "Relación entre tres lados y un ángulo.",
+    "Lado opuesto": "Lado frente a un ángulo dado.",
+    "Ángulo comprendido": "Ángulo entre dos lados dados.",
+    "Coseno": "Razón trigonométrica abreviada cos.",
+    "Ángulo agudo": "Ángulo menor que 90°.",
+    "Ángulo obtuso": "Ángulo mayor que 90° y menor que 180°.",
+    "Teorema de Pitágoras": "Relación entre catetos e hipotenusa.",
+    "Triángulo acutángulo": "Triángulo con tres ángulos agudos.",
+    "Triángulo obtusángulo": "Triángulo con un ángulo obtuso.",
+    "Altura": "Perpendicular desde un vértice al lado opuesto."
+  },
+  "theory": [
+    {
+      "titulo": "Ley de cosenos",
+      "puntos": [
+        {
+          "texto": "«Ley de cosenos»: $a^2 = b^2 + c^2 - 2bc\\cos A$",
+          "explicacion": "El cuadrado de un lado es la suma de los cuadrados de los otros dos menos el doble de su producto por el coseno del ángulo comprendido entre ellos. Aquí A, B y C son los ángulos del triángulo, a, b y c son los lados opuestos a ellos, y cos es la abreviatura de coseno. Ejemplo: con b = 5, c = 8 y A = 60°, a² = 25 + 64 - 2 × 5 × 8 × $\\frac{1}{2}$ = 49, y a = 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley para el lado b",
+      "puntos": [
+        {
+          "texto": "«Ley de cosenos» para b: $b^2 = a^2 + c^2 - 2ac\\cos B$",
+          "explicacion": "Es la misma estructura con otro lado: el lado buscado es b, los otros dos son a y c, y el ángulo que aparece es el comprendido entre ellos, B. Ejemplo: con a = 7, c = 8 y B ≈ 38,21° (cos B = $\\frac{11}{14}$), b² = 49 + 64 - 2 × 7 × 8 × $\\frac{11}{14}$ = 113 - 88 = 25, y b = 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley para el lado c",
+      "puntos": [
+        {
+          "texto": "«Ley de cosenos» para c: $c^2 = a^2 + b^2 - 2ab\\cos C$",
+          "explicacion": "El lado buscado es c, los otros dos son a y b, y el ángulo que aparece es el comprendido entre ellos, C. Ejemplo: con a = 7, b = 5 y cos C = $\\frac{1}{7}$, c² = 49 + 25 - 2 × 7 × 5 × $\\frac{1}{7}$ = 74 - 10 = 64, y c = 8."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo entre los lados",
+      "puntos": [
+        {
+          "texto": "El ángulo del coseno es el comprendido entre los otros dos lados",
+          "explicacion": "Al despejar un lado, el ángulo que se usa es el que está frente a él, es decir, el que queda entre los dos lados conocidos; usar otro ángulo da un resultado incorrecto. Ejemplo: para hallar a con b = 5 y c = 8, el ángulo necesario es A (60°), no B ni C."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo con la ley",
+      "puntos": [
+        {
+          "texto": "Despejar el ángulo: $\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}$",
+          "explicacion": "Se pasa el término del coseno al otro lado y se divide entre 2bc; con las otras dos letras se obtienen cos B y cos C de forma análoga. Ejemplo: con a = 7, b = 5 y c = 8, cos A = $\\frac{25 + 64 - 49}{2 \\times 5 \\times 8}$ = $\\frac{40}{80}$ = $\\frac{1}{2}$, y A = 60°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo B con la ley",
+      "puntos": [
+        {
+          "texto": "Despejar B: $\\cos B = \\frac{a^2 + c^2 - b^2}{2ac}$",
+          "explicacion": "El lado b va restando y los lados que forman el ángulo B van sumando. Ejemplo: con a = 7, b = 5 y c = 8, cos B = $\\frac{49 + 64 - 25}{2 \\times 7 \\times 8}$ = $\\frac{88}{112}$ = $\\frac{11}{14}$, y B ≈ 38,21°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo C con la ley",
+      "puntos": [
+        {
+          "texto": "Despejar C: $\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}$",
+          "explicacion": "El lado c va restando y los lados que forman el ángulo C van sumando. Ejemplo: con a = 7, b = 5 y c = 8, cos C = $\\frac{49 + 25 - 64}{2 \\times 7 \\times 5}$ = $\\frac{10}{70}$ = $\\frac{1}{7}$, y C ≈ 81,79°."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso LAL",
+      "puntos": [
+        {
+          "texto": "Caso LAL ⇒ lado opuesto con la ley de cosenos",
+          "explicacion": "LAL es la sigla de lado-ángulo-lado: dos lados y el ángulo comprendido entre ellos. El lado que falta sale directamente de la fórmula, y después se hallan los ángulos que faltan. Ejemplo: b = 5, c = 8 y A = 60° dan a = 7. Real: dos caminos rectos de 5 km y 8 km que salen de un mismo punto formando 60° terminan en puntos separados 7 km."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso LLL",
+      "puntos": [
+        {
+          "texto": "Caso LLL ⇒ ángulos con la ley de cosenos",
+          "explicacion": "LLL es la sigla de lado-lado-lado: se conocen los tres lados y cada ángulo se despeja con su fórmula. El triángulo existe solo si cada lado es menor que la suma de los otros dos. Ejemplo: 4, 5 y 6 existen porque 6 < 4 + 5; 3, 4 y 8 no, porque 8 > 3 + 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo mayor primero",
+      "puntos": [
+        {
+          "texto": "En LLL ⇒ hallar primero el ángulo opuesto al lado mayor",
+          "explicacion": "El coseno distingue ángulos agudos y obtusos por su signo, así que el ángulo mayor queda bien determinado; los demás ángulos son agudos y pueden hallarse con la ley de senos sin ambigüedad. Ejemplo: con lados 4, 5 y 6, el mayor ángulo está frente al lado 6: cos C = $\\frac{16 + 25 - 36}{2 \\times 4 \\times 5}$ = $\\frac{1}{8}$, y C ≈ 82,82°."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno negativo",
+      "puntos": [
+        {
+          "texto": "Ángulo obtuso ⇒ coseno negativo ⇒ el término se suma",
+          "explicacion": "Si un ángulo mide más de 90°, su coseno es negativo, y el término -2bc cos A se vuelve positivo, así que el lado opuesto resulta mayor que en un triángulo con ángulo recto. Ejemplo: con b = 3, c = 5 y A = 120° (cos A = $\\frac{-1}{2}$), a² = 9 + 25 - 2 × 3 × 5 × $\\frac{-1}{2}$ = 34 + 15 = 49, y a = 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso de ángulo recto",
+      "puntos": [
+        {
+          "texto": "A = 90° ⇒ la ley se reduce a a² = b² + c²",
+          "explicacion": "Como cos 90° = 0, el último término desaparece y queda el teorema de Pitágoras, que es un caso particular de la ley de cosenos. Ejemplo: con b = 3, c = 4 y A = 90°, a² = 9 + 16 - 0 = 25, y a = 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipo según los lados",
+      "puntos": [
+        {
+          "texto": "Lado mayor al cuadrado vs suma de cuadrados ⇒ tipo de triángulo",
+          "explicacion": "Si a es el lado mayor, el signo de cos A decide: a² < b² + c² da cos A > 0 y triángulo acutángulo; a² = b² + c² da cos A = 0 y triángulo rectángulo; a² > b² + c² da cos A < 0 y triángulo obtusángulo. Ejemplo: lados 3, 4 y 6 dan 36 > 9 + 16, así que es obtusángulo, con cos C = $\\frac{-11}{24}$ y C ≈ 117,28°."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción de la ley",
+      "puntos": [
+        {
+          "texto": "Altura sobre c ⇒ a² = h² + (c - b cos A)²",
+          "explicacion": "Se traza la altura h desde C hasta el lado c: h = b sen A y la parte del lado c más lejana de A mide c - b cos A. Por el teorema de Pitágoras, a² = h² + (c - b cos A)² = b² sen² A + c² - 2bc cos A + b² cos² A = b² + c² - 2bc cos A, porque sen² A + cos² A = 1. Comprobación con b = 6, c = 7 y A = 40°: h ≈ 3,857, c - b cos A ≈ 2,404, y h² + 2,404² ≈ 20,65, igual a 36 + 49 - 84 × 0,7660 ≈ 20,65."
+        }
+      ]
+    },
+    {
+      "titulo": "Error de signo",
+      "puntos": [
+        {
+          "texto": "Error: sumar 2bc cos A en vez de restarlo",
+          "explicacion": "La fórmula resta el término; si se suma con ángulo agudo, el resultado sale demasiado grande. Ejemplo: con b = 5, c = 8 y A = 60°, restar da 89 - 40 = 49 (a = 7); sumar daría 89 + 40 = 129 (a ≈ 11,36), incorrecto."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley de senos aparte",
+      "puntos": [
+        {
+          "texto": "LAL y LLL ✗ par lado-ángulo opuesto ⇒ senos no sirve primero",
+          "explicacion": "La ley de senos necesita un lado junto con su ángulo opuesto; en LAL y LLL no hay ninguno, así que se empieza con la ley de cosenos y luego, si conviene, se sigue con senos. Ejemplo: b = 5, c = 8 y A = 60° no contienen el par a-A, porque a es lo que se busca."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema LAL",
+      "puntos": [
+        {
+          "texto": "Datos: b = 5, c = 8 y A = 60°",
+          "explicacion": "Se pide el lado a y después los ángulos B y C. Los datos son dos lados y el ángulo comprendido entre ellos."
+        },
+        {
+          "texto": "Estrategia: ley de cosenos y luego ángulos",
+          "explicacion": "Se calcula a con la ley de cosenos; después se despeja un ángulo con la ley de cosenos y el último se obtiene restando de 180°."
+        },
+        {
+          "texto": "Operación: hallar a, B y C",
+          "explicacion": "a² = 25 + 64 - 2 × 5 × 8 × $\\frac{1}{2}$ = 49, y a = 7. cos B = $\\frac{49 + 64 - 25}{2 \\times 7 \\times 8}$ = $\\frac{11}{14}$, y B ≈ 38,21°. C = 180° - 60° - 38,21° ≈ 81,79°."
+        },
+        {
+          "texto": "Resultado: a = 7, B ≈ 38,21° y C ≈ 81,79°",
+          "explicacion": "El lado mayor, 8, está frente al ángulo mayor, C ≈ 81,79°, como corresponde."
+        },
+        {
+          "texto": "Verificación: ley de senos con los tres pares",
+          "explicacion": "$\\frac{7}{\\mathrm{sen}\\,60°}$ ≈ 8,083, $\\frac{5}{\\mathrm{sen}\\,38{,}21°}$ ≈ 8,083 y $\\frac{8}{\\mathrm{sen}\\,81{,}79°}$ ≈ 8,083: los tres cocientes coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema LLL",
+      "puntos": [
+        {
+          "texto": "Datos: lados 4, 5 y 6",
+          "explicacion": "Se pide hallar los tres ángulos. No hay ángulos conocidos, así que se usa la ley de cosenos."
+        },
+        {
+          "texto": "Estrategia: ángulo mayor primero con cosenos",
+          "explicacion": "El ángulo mayor está frente al lado 6; después se halla otro ángulo con la ley de cosenos y el último se obtiene restando de 180°."
+        },
+        {
+          "texto": "Operación: hallar C, A y B",
+          "explicacion": "cos C = $\\frac{16 + 25 - 36}{40}$ = $\\frac{1}{8}$, y C ≈ 82,82°. cos A = $\\frac{25 + 36 - 16}{60}$ = 0,75, y A ≈ 41,41°. B = 180° - 82,82° - 41,41° ≈ 55,77°."
+        },
+        {
+          "texto": "Resultado: A ≈ 41,41°, B ≈ 55,77° y C ≈ 82,82°",
+          "explicacion": "Los ángulos crecen con los lados opuestos: 4 < 5 < 6 corresponde a 41,41° < 55,77° < 82,82°."
+        },
+        {
+          "texto": "Verificación: suma de ángulos y ley de senos",
+          "explicacion": "41,41° + 55,77° + 82,82° = 180°. Además $\\frac{4}{\\mathrm{sen}\\,41{,}41°}$ ≈ 6,05 y $\\frac{6}{\\mathrm{sen}\\,82{,}82°}$ ≈ 6,05."
+        }
+      ]
+    }
+  ]
+}

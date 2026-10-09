@@ -1,0 +1,188 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Gráficas de seno y coseno",
+  "glosario": {
+    "senoide": "Gráfica de la función seno.",
+    "cosenoide": "Gráfica de la función coseno.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "extremo": "Punto donde termina el arco.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "línea seno": "Segmento vertical que mide la ordenada.",
+    "línea coseno": "Segmento horizontal que mide la abscisa.",
+    "máximo": "Mayor valor que toma la curva.",
+    "mínimo": "Menor valor que toma la curva.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "periodo": "Longitud tras la cual la curva se repite.",
+    "simetría": "Correspondencia de puntos respecto a un eje."
+  },
+  "theory": [
+    {
+      "titulo": "Senoide",
+      "puntos": [
+        {
+          "texto": "«Senoide»: gráfica de $y = \\text{sen}\\,x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\text{sen}\\,x)$, con el arco $x$ en radianes (rad) sobre el eje horizontal y el seno (sen) sobre el eje vertical. Muchos fenómenos oscilantes, como el movimiento de un resorte que sube y baja, tienen esta forma ondulada."
+        },
+        {
+          "texto": "Construcción: cada altura es la línea seno del arco",
+          "explicacion": "Se toma el arco $x$ en la circunferencia trigonométrica, se mide la ordenada de su extremo y se traslada esa altura sobre la vertical de $x$. Ejemplo: para $x = \\frac{\\pi}{6}$ la ordenada del extremo es $\\frac{1}{2}$, y se marca el punto $\\left(\\frac{\\pi}{6}, \\frac{1}{2}\\right)$."
+        },
+        {
+          "texto": "Escala horizontal en radianes: $\\pi \\approx 3{,}14$",
+          "explicacion": "Las marcas del eje horizontal son múltiplos de $\\frac{\\pi}{2}$. Ejemplo: $\\frac{\\pi}{2} \\approx 1{,}57$, $\\pi \\approx 3{,}14$, $\\frac{3\\pi}{2} \\approx 4{,}71$ y $2\\pi \\approx 6{,}28$."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos de la senoide",
+      "puntos": [
+        {
+          "texto": "Punto $(0, 0)$: la senoide parte del origen",
+          "explicacion": "Con arco 0 el extremo es $A(1,0)$ y su ordenada es 0. Ejemplo: $\\text{sen}\\,0 = 0$."
+        },
+        {
+          "texto": "Máximo en $\\left(\\frac{\\pi}{2}, 1\\right)$",
+          "explicacion": "Con arco $\\frac{\\pi}{2}$ el extremo es el punto más alto, $B(0,1)$. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{2} = 1$ es el mayor valor de la curva."
+        },
+        {
+          "texto": "Corte con el eje horizontal en $(\\pi, 0)$",
+          "explicacion": "Con arco $\\pi$ el extremo es $A'(-1,0)$, sobre el eje horizontal. Ejemplo: $\\text{sen}\\,\\pi = 0$."
+        },
+        {
+          "texto": "Mínimo en $\\left(\\frac{3\\pi}{2}, -1\\right)$",
+          "explicacion": "Con arco $\\frac{3\\pi}{2}$ el extremo es el punto más bajo, $B'(0,-1)$. Ejemplo: $\\text{sen}\\,\\frac{3\\pi}{2} = -1$ es el menor valor de la curva."
+        },
+        {
+          "texto": "Corte con el eje horizontal en $(2\\pi, 0)$",
+          "explicacion": "Con arco $2\\pi$ el extremo regresa a $A$. Ejemplo: $\\text{sen}\\,2\\pi = 0$, y ahí termina un recorrido completo de la curva."
+        },
+        {
+          "texto": "Altura $\\frac{1}{2}$ en $x = \\frac{\\pi}{6}$ y en $x = \\frac{5\\pi}{6}$",
+          "explicacion": "Dos arcos distintos del intervalo tienen la misma ordenada en el extremo. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$ y $\\text{sen}\\,\\frac{5\\pi}{6} = \\frac{1}{2}$, así que la curva pasa por dos puntos a la misma altura."
+        }
+      ]
+    },
+    {
+      "titulo": "Tramos de la senoide",
+      "puntos": [
+        {
+          "texto": "Senoide positiva en $(0, \\pi)$, negativa en $(\\pi, 2\\pi)$",
+          "explicacion": "La curva está sobre el eje horizontal mientras el extremo está en el semiplano superior, y bajo él cuando está en el inferior. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{2} = 1 > 0$ y $\\text{sen}\\,\\frac{3\\pi}{2} = -1 < 0$."
+        },
+        {
+          "texto": "Senoide ↑ en $\\left[0, \\frac{\\pi}{2}\\right]$",
+          "explicacion": "La curva sube de 0 a 1. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = 0{,}5$ queda entre $\\text{sen}\\,0 = 0$ y $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "Senoide ↓ en $\\left[\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right]$",
+          "explicacion": "La curva baja de 1 a $-1$ y cruza el eje horizontal en $\\pi$. Ejemplo: $\\text{sen}\\,\\frac{5\\pi}{6} = 0{,}5$ queda entre $1$ y $\\text{sen}\\,\\pi = 0$."
+        },
+        {
+          "texto": "Senoide ↑ en $\\left[\\frac{3\\pi}{2}, 2\\pi\\right]$",
+          "explicacion": "La curva sube de $-1$ a 0. Ejemplo: $\\text{sen}\\,\\frac{7\\pi}{4} \\approx -0{,}71$ queda entre $-1$ y $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosenoide",
+      "puntos": [
+        {
+          "texto": "«Cosenoide»: gráfica de $y = \\cos x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\cos x)$, con el arco $x$ en el eje horizontal y el coseno (cos) en el eje vertical. Ejemplo: $x = \\frac{\\pi}{3}$ da el punto $\\left(\\frac{\\pi}{3}, \\frac{1}{2}\\right)$."
+        },
+        {
+          "texto": "Construcción: cada altura es la línea coseno del arco",
+          "explicacion": "Se toma el arco $x$ en la circunferencia trigonométrica, se mide la abscisa de su extremo y se traslada ese valor sobre la vertical de $x$. Ejemplo: para $x = \\frac{2\\pi}{3}$ la abscisa del extremo es $-\\frac{1}{2}$, y se marca el punto $\\left(\\frac{2\\pi}{3}, -\\frac{1}{2}\\right)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos de la cosenoide",
+      "puntos": [
+        {
+          "texto": "Máximo en $(0, 1)$: la cosenoide parte arriba",
+          "explicacion": "Con arco 0 el extremo es $A(1,0)$ y su abscisa es 1. Ejemplo: $\\cos 0 = 1$."
+        },
+        {
+          "texto": "Corte con el eje horizontal en $\\left(\\frac{\\pi}{2}, 0\\right)$",
+          "explicacion": "Con arco $\\frac{\\pi}{2}$ el extremo es $B(0,1)$, de abscisa 0. Ejemplo: $\\cos\\frac{\\pi}{2} = 0$."
+        },
+        {
+          "texto": "Mínimo en $(\\pi, -1)$",
+          "explicacion": "Con arco $\\pi$ el extremo es $A'(-1,0)$. Ejemplo: $\\cos\\pi = -1$ es el menor valor de la curva."
+        },
+        {
+          "texto": "Corte con el eje horizontal en $\\left(\\frac{3\\pi}{2}, 0\\right)$",
+          "explicacion": "Con arco $\\frac{3\\pi}{2}$ el extremo es $B'(0,-1)$, de abscisa 0. Ejemplo: $\\cos\\frac{3\\pi}{2} = 0$."
+        },
+        {
+          "texto": "Máximo en $(2\\pi, 1)$: cierra el recorrido",
+          "explicacion": "Con arco $2\\pi$ el extremo regresa a $A$. Ejemplo: $\\cos 2\\pi = 1$, igual que $\\cos 0$."
+        },
+        {
+          "texto": "Altura $\\frac{1}{2}$ en $x = \\frac{\\pi}{3}$ y en $x = \\frac{5\\pi}{3}$",
+          "explicacion": "Dos arcos distintos del intervalo tienen la misma abscisa en el extremo. Ejemplo: $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$ y $\\cos\\frac{5\\pi}{3} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tramos de la cosenoide",
+      "puntos": [
+        {
+          "texto": "Cosenoide positiva en $\\left[0, \\frac{\\pi}{2}\\right) \\cup \\left(\\frac{3\\pi}{2}, 2\\pi\\right]$",
+          "explicacion": "La curva está sobre el eje horizontal mientras el extremo está a la derecha del eje vertical. Ejemplo: $\\cos\\frac{\\pi}{3} = \\frac{1}{2} > 0$ y $\\cos\\frac{5\\pi}{3} = \\frac{1}{2} > 0$."
+        },
+        {
+          "texto": "Cosenoide negativa en $\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$",
+          "explicacion": "La curva queda bajo el eje horizontal mientras el extremo está a la izquierda del eje vertical. Ejemplo: $\\cos\\pi = -1 < 0$."
+        },
+        {
+          "texto": "Cosenoide ↓ en $[0, \\pi]$",
+          "explicacion": "La curva baja de 1 a $-1$. Ejemplo: $\\cos\\frac{\\pi}{3} = 0{,}5$ queda entre $\\cos 0 = 1$ y $\\cos\\pi = -1$."
+        },
+        {
+          "texto": "Cosenoide ↑ en $[\\pi, 2\\pi]$",
+          "explicacion": "La curva sube de $-1$ a 1. Ejemplo: $\\cos\\frac{5\\pi}{3} = 0{,}5$ queda entre $\\cos\\pi = -1$ y $\\cos 2\\pi = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones entre curvas",
+      "puntos": [
+        {
+          "texto": "Ambas curvas están acotadas entre $-1$ y $1$",
+          "explicacion": "Las ordenadas y las abscisas del círculo trigonométrico no superan 1 en valor absoluto, por lo que ninguna curva sale de la franja entre $y = -1$ e $y = 1$. Ejemplo: no existe un punto de la senoide con altura 2."
+        },
+        {
+          "texto": "Las curvas se cortan en $x = \\frac{\\pi}{4}$",
+          "explicacion": "En ese arco el extremo está a igual distancia de ambos ejes. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{4} = \\cos\\frac{\\pi}{4} = \\frac{\\sqrt{2}}{2} \\approx 0{,}71$."
+        },
+        {
+          "texto": "Las curvas se cortan también en $x = \\frac{5\\pi}{4}$",
+          "explicacion": "El extremo está en el tercer cuadrante, con abscisa y ordenada iguales y negativas. Ejemplo: $\\text{sen}\\,\\frac{5\\pi}{4} = \\cos\\frac{5\\pi}{4} = -\\frac{\\sqrt{2}}{2} \\approx -0{,}71$."
+        },
+        {
+          "texto": "Cosenoide = senoide desplazada $\\frac{\\pi}{2}$ a la izquierda",
+          "explicacion": "Se cumple $\\cos x = \\text{sen}\\left(x + \\frac{\\pi}{2}\\right)$. Ejemplo: en $x = 0$, $\\text{sen}\\,\\frac{\\pi}{2} = 1 = \\cos 0$, y en $x = \\frac{\\pi}{2}$, $\\text{sen}\\,\\pi = 0 = \\cos\\frac{\\pi}{2}$."
+        },
+        {
+          "texto": "Senoide simétrica respecto al origen",
+          "explicacion": "Esto expresa que $\\text{sen}(-x) = -\\text{sen}\\,x$. Ejemplo: $\\text{sen}\\left(-\\frac{\\pi}{2}\\right) = -1$, el opuesto de $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "Cosenoide simétrica respecto al eje vertical",
+          "explicacion": "Esto expresa que $\\cos(-x) = \\cos x$. Ejemplo: $\\cos\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2} = \\cos\\frac{\\pi}{3}$."
+        },
+        {
+          "texto": "Ambas curvas se repiten cada $2\\pi$",
+          "explicacion": "Una vuelta completa devuelve el extremo al mismo punto, por lo que el patrón se copia a la derecha y a la izquierda. Ejemplo: $\\text{sen}\\,\\frac{5\\pi}{2} = \\text{sen}\\left(\\frac{\\pi}{2} + 2\\pi\\right) = 1$. La medida exacta de esa repetición se estudia como periodo."
+        }
+      ]
+    }
+  ]
+}

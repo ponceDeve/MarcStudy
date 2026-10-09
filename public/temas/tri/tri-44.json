@@ -1,0 +1,161 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulo de depresión",
+  "glosario": {
+    "ángulo de depresión": "Ángulo bajo la horizontal hacia un objeto bajo.",
+    "línea horizontal": "Recta paralela al suelo por el ojo.",
+    "línea visual": "Recta que une el ojo con el objeto.",
+    "observador": "Persona que mira un objeto desde un punto.",
+    "cateto opuesto": "Lado del triángulo frente al ángulo.",
+    "cateto adyacente": "Lado del triángulo junto al ángulo.",
+    "hipotenusa": "Lado más largo del triángulo rectángulo.",
+    "tangente": "Razón entre cateto opuesto y adyacente.",
+    "seno": "Razón entre cateto opuesto e hipotenusa.",
+    "cotangente": "Razón entre cateto adyacente y opuesto.",
+    "ángulos alternos internos": "Ángulos iguales entre paralelas y una transversal.",
+    "transversal": "Recta que corta a dos rectas paralelas.",
+    "ángulo de elevación": "Ángulo sobre la horizontal hacia un objeto alto.",
+    "ángulos complementarios": "Ángulos cuya suma es noventa grados.",
+    "posición normal": "Vértice en origen, lado inicial en abscisas positivas.",
+    "ángulo negativo": "Ángulo generado por giro en sentido horario."
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo de depresión",
+      "puntos": [
+        {
+          "texto": "«Ángulo de depresión»: ángulo bajo la horizontal hacia un objeto bajo",
+          "explicacion": "Se mide entre la línea horizontal que pasa por el ojo del observador y la línea visual dirigida a un objeto ubicado por debajo de ese nivel. Ejemplo: al mirar desde una terraza un auto estacionado en la calle, el ángulo que forma la mirada con la horizontal es el de depresión."
+        },
+        {
+          "texto": "El ángulo se mide hacia abajo desde la horizontal",
+          "explicacion": "La horizontal es el lado de partida y la línea visual es el lado final, que queda por debajo. No se mide desde la vertical. Ejemplo: si la mirada baja 25° respecto a la horizontal, el ángulo de depresión es $25^\\circ$."
+        },
+        {
+          "texto": "El observador está más alto que el objeto",
+          "explicacion": "La horizontal pasa por el ojo del observador y el objeto queda debajo de ella. Ejemplo: un vigía en lo alto de un faro observa un bote en el mar, que está bajo su nivel de visión."
+        },
+        {
+          "texto": "Rango del ángulo: $0^\\circ < \\beta < 90^\\circ$",
+          "explicacion": "Con $0^\\circ$ el objeto está sobre la horizontal y no hay depresión; con $90^\\circ$ estaría justo debajo del observador y no se forma triángulo, pues la distancia horizontal sería nula."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo rectángulo asociado",
+      "puntos": [
+        {
+          "texto": "Cateto opuesto = diferencia de alturas entre el ojo y el objeto",
+          "explicacion": "Es el lado vertical del triángulo. Ejemplo: si el ojo está a 50 m del suelo y el objeto a 20 m, el cateto opuesto mide $50 - 20 = 30$ m."
+        },
+        {
+          "texto": "Cateto adyacente = distancia horizontal entre ambos",
+          "explicacion": "Es el lado apoyado sobre la horizontal del observador. Ejemplo: si el objeto está a 40 m de la base del edificio, el cateto adyacente mide 40 m."
+        },
+        {
+          "texto": "Hipotenusa = línea visual",
+          "explicacion": "Une el ojo con el objeto y es el lado más largo. Ejemplo: con catetos de 30 m y 40 m, la línea visual mide $\\sqrt{30^2 + 40^2} = 50$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos alternos internos",
+      "puntos": [
+        {
+          "texto": "Depresión desde el observador = elevación desde el objeto",
+          "explicacion": "La horizontal del observador y el suelo son paralelos, y la línea visual los corta como transversal, por lo que los ángulos alternos internos son iguales. Ejemplo: si un vigía ve un bote con depresión de $30^\\circ$, desde el bote se ve al vigía con elevación de $30^\\circ$."
+        },
+        {
+          "texto": "El ángulo del triángulo en el objeto vale $\\beta$",
+          "explicacion": "Por la igualdad anterior, el ángulo agudo del triángulo en el vértice del objeto es el mismo $\\beta$ y no su complemento. Ejemplo: con $\\beta = 30^\\circ$ el otro ángulo agudo mide $90^\\circ - 30^\\circ = 60^\\circ$ y está en el ojo del observador."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo con tangente",
+      "puntos": [
+        {
+          "texto": "Altura entre ojo y objeto = distancia × tangente (tan): $h = d\\,\\tan\\beta$",
+          "explicacion": "La tangente relaciona el cateto opuesto con el adyacente. Ejemplo: desde una terraza se ve un auto a 30 m de la base con depresión de $45^\\circ$; entonces $h = 30 \\cdot \\tan 45^\\circ = 30$ m, y el ojo está 30 m más alto que el auto."
+        },
+        {
+          "texto": "Distancia horizontal = altura dividida por la tangente: $d = \\frac{h}{\\tan\\beta}$",
+          "explicacion": "Se despeja la distancia cuando se conoce la altura. Ejemplo: un faro está 40 m sobre el mar y un bote se ve con $30^\\circ$ de depresión; entonces $d = \\frac{40}{\\tan 30^\\circ} = 40\\sqrt{3} \\approx 69{,}3$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo con seno",
+      "puntos": [
+        {
+          "texto": "Línea visual = altura dividida por el seno (sen): $L = \\frac{h}{\\text{sen}\\,\\beta}$",
+          "explicacion": "El seno relaciona el cateto opuesto con la hipotenusa. Ejemplo: con el mismo faro de 40 m y $\\beta = 30^\\circ$, $L = \\frac{40}{\\text{sen}\\,30^\\circ} = \\frac{40}{\\frac{1}{2}} = 80$ m, que es la distancia en línea recta del ojo al bote."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura del objeto",
+      "puntos": [
+        {
+          "texto": "Altura del objeto = altura del ojo menos $h$",
+          "explicacion": "El triángulo da cuánto más bajo está el objeto, y falta restarlo de la altura del ojo sobre el suelo. Ejemplo: el ojo está a 80 m del suelo y $h = 30$ m; el objeto se encuentra a $80 - 30 = 50$ m del suelo."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación del ángulo",
+      "puntos": [
+        {
+          "texto": "Al alejarse el objeto, el ángulo de depresión ↓",
+          "explicacion": "La altura del ojo sobre el objeto es la misma y la distancia horizontal crece, por lo que la tangente baja. Ejemplo: con un faro de 40 m, a $d = 40$ m se tiene $\\tan\\beta = 1$ y $\\beta = 45^\\circ$; a $d = 40\\sqrt{3}$ m se tiene $\\tan\\beta = \\frac{1}{\\sqrt{3}}$ y $\\beta = 30^\\circ$."
+        },
+        {
+          "texto": "Al acercarse el objeto, el ángulo de depresión ↑",
+          "explicacion": "La distancia horizontal se reduce con la misma altura, y la tangente aumenta. Ejemplo: con el faro de 40 m, a $d = \\frac{40}{\\sqrt{3}}$ m se tiene $\\tan\\beta = \\sqrt{3}$ y $\\beta = 60^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos objetos alineados",
+      "puntos": [
+        {
+          "texto": "Datos: azotea de 60 m, depresiones de $45^\\circ$ y $30^\\circ$",
+          "explicacion": "Desde la azotea de un edificio de 60 m se ven dos autos alineados con la base, uno con depresión de $45^\\circ$ y otro con $30^\\circ$. Se pide la distancia entre ellos, tomando el ojo al nivel de la azotea."
+        },
+        {
+          "texto": "Estrategia: distancia de cada auto con cotangente (cot) y restar",
+          "explicacion": "La distancia horizontal es $d = h\\,\\cot\\beta$. El auto con $45^\\circ$ está más cerca: $d_1 = 60\\,\\cot 45^\\circ = 60$. El auto con $30^\\circ$ está más lejos: $d_2 = 60\\,\\cot 30^\\circ = 60\\sqrt{3}$."
+        },
+        {
+          "texto": "Operación: $d_2 - d_1 = 60\\sqrt{3} - 60$",
+          "explicacion": "Se factoriza 60: $60\\sqrt{3} - 60 = 60(\\sqrt{3} - 1)$."
+        },
+        {
+          "texto": "Resultado: distancia $\\approx 43{,}9$ m",
+          "explicacion": "Con $\\sqrt{3} \\approx 1{,}732$: $60 \\cdot 0{,}732 = 43{,}92$ m, que es la separación entre los dos autos."
+        },
+        {
+          "texto": "Verificación: la tangente del segundo auto debe dar $30^\\circ$",
+          "explicacion": "$\\tan\\beta_2 = \\frac{60}{60\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$, que corresponde a $30^\\circ$, y $\\tan\\beta_1 = \\frac{60}{60} = 1$ corresponde a $45^\\circ$. Ambos coinciden con los datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La depresión no se mide desde la vertical: $90^\\circ - \\beta$",
+          "explicacion": "El ángulo entre la línea visual y la vertical es el complemento de la depresión. Ejemplo: con $\\beta = 30^\\circ$, ese ángulo mide $90^\\circ - 30^\\circ = 60^\\circ$ y no es el de depresión."
+        },
+        {
+          "texto": "Depresión ≠ «elevación»: cambia el lado de la horizontal",
+          "explicacion": "La depresión se mide hacia abajo de la horizontal y la elevación hacia arriba, aunque ambas puedan tener igual valor en una observación mutua. Ejemplo: mirar un bote desde un faro es depresión; mirar el faro desde el bote es elevación."
+        },
+        {
+          "texto": "Depresión $\\beta$ = ángulo negativo $-\\beta$ en posición normal",
+          "explicacion": "Medir hacia abajo equivale a un giro horario desde la horizontal, que es un ángulo negativo. Ejemplo: una depresión de $30^\\circ$ corresponde a $-30^\\circ$, cuyo seno (sen) es $\\text{sen}(-30^\\circ) = -\\frac{1}{2}$, signo que indica descenso."
+        }
+      ]
+    }
+  ]
+}

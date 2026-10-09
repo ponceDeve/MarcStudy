@@ -1,0 +1,147 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ley de proyecciones",
+  "glosario": {
+    "Ley de proyecciones": "Cada lado suma las proyecciones de los otros.",
+    "Proyección": "Sombra perpendicular de un segmento sobre otro.",
+    "Lado opuesto": "Lado frente a un ángulo dado.",
+    "Coseno": "Razón trigonométrica abreviada cos.",
+    "Altura": "Perpendicular desde un vértice al lado opuesto.",
+    "Ángulo obtuso": "Ángulo mayor que 90° y menor que 180°.",
+    "Ángulo recto": "Ángulo de 90°.",
+    "Ángulo adyacente": "Ángulo junto a un lado dado."
+  },
+  "theory": [
+    {
+      "titulo": "Proyección de un lado",
+      "puntos": [
+        {
+          "texto": "«Proyección» de un lado sobre otro = lado × coseno del ángulo",
+          "explicacion": "La proyección de un lado sobre otro lado es la longitud de la sombra que el primero proyecta sobre el segundo cuando la luz cae perpendicular a este; vale la longitud del lado por el coseno del ángulo que forman (cos es la abreviatura de coseno). Ejemplo: un lado de 8 que forma 60° con otro proyecta 8 × cos 60° = 8 × $\\frac{1}{2}$ = 4 sobre él."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley para el lado a",
+      "puntos": [
+        {
+          "texto": "«Ley de proyecciones» para a: $a = b\\cos C + c\\cos B$",
+          "explicacion": "Cada lado es la suma de las proyecciones de los otros dos sobre él. Aquí A, B y C son los ángulos del triángulo y a, b y c los lados opuestos. Ejemplo con a = 7, b = 5, c = 8, cos B = $\\frac{11}{14}$ y cos C = $\\frac{1}{7}$: a = 5 × $\\frac{1}{7}$ + 8 × $\\frac{11}{14}$ = $\\frac{5}{7}$ + $\\frac{44}{7}$ = $\\frac{49}{7}$ = 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley para el lado b",
+      "puntos": [
+        {
+          "texto": "«Ley de proyecciones» para b: $b = a\\cos C + c\\cos A$",
+          "explicacion": "Los lados que se proyectan sobre b son a y c, con los ángulos C y A, que son los que b forma con ellos. Ejemplo con a = 7, c = 8, cos A = $\\frac{1}{2}$ y cos C = $\\frac{1}{7}$: b = 7 × $\\frac{1}{7}$ + 8 × $\\frac{1}{2}$ = 1 + 4 = 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley para el lado c",
+      "puntos": [
+        {
+          "texto": "«Ley de proyecciones» para c: $c = a\\cos B + b\\cos A$",
+          "explicacion": "Los lados que se proyectan sobre c son a y b, con los ángulos B y A. Ejemplo con a = 7, b = 5, cos A = $\\frac{1}{2}$ y cos B = $\\frac{11}{14}$: c = 7 × $\\frac{11}{14}$ + 5 × $\\frac{1}{2}$ = $\\frac{11}{2}$ + $\\frac{5}{2}$ = 8."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de las letras",
+      "puntos": [
+        {
+          "texto": "Lado buscado = cada otro lado × coseno del ángulo entre ambos",
+          "explicacion": "En a = b cos C + c cos B, el coseno de C acompaña a b y el de B acompaña a c; cada lado se multiplica por el coseno del ángulo que forma con el lado que se proyecta. Ejemplo: en b = a cos C + c cos A, el lado a va con C y el lado c va con A; no se puede cambiar el emparejamiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo recto",
+      "puntos": [
+        {
+          "texto": "Ángulo recto ⇒ una proyección vale 0",
+          "explicacion": "Como cos 90° = 0, la proyección con ese ángulo desaparece y el lado queda con una sola proyección. Ejemplo: en un triángulo con C = 90°, a = 3, b = 4 y c = 5, a = b cos C + c cos B = 4 × 0 + 5 × $\\frac{3}{5}$ = 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo obtuso",
+      "puntos": [
+        {
+          "texto": "Ángulo obtuso ⇒ coseno negativo ⇒ se resta la proyección",
+          "explicacion": "Con un ángulo obtuso la proyección cae fuera del lado y su signo es negativo, pero la fórmula sigue valiendo sin cambios. Ejemplo con a = 6, b = 3, c = 4, cos A = $\\frac{-11}{24}$ y cos C = $\\frac{29}{36}$: b = a cos C + c cos A = 6 × $\\frac{29}{36}$ + 4 × $\\frac{-11}{24}$ = $\\frac{29}{6}$ - $\\frac{11}{6}$ = 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción con la altura",
+      "puntos": [
+        {
+          "texto": "Altura sobre a ⇒ a = b cos C + c cos B",
+          "explicacion": "Se traza la altura desde el vértice A hasta el lado a; esa altura divide a en dos partes: la parte pegada a C mide b cos C y la parte pegada a B mide c cos B, y la suma de las dos partes es a. Comprobación con A = 40°, B = 60° y a = 10, de modo que C = 80°, b ≈ 13,47 y c ≈ 15,32: b cos 80° + c cos 60° ≈ 13,47 × 0,1736 + 15,32 × 0,5 ≈ 2,34 + 7,66 = 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso de la ley",
+      "puntos": [
+        {
+          "texto": "Dos lados y sus cosenos ⇒ tercer lado sin ley de cosenos",
+          "explicacion": "Si se conocen los otros dos lados y los cosenos de los dos ángulos adyacentes al lado buscado, basta una suma de dos productos. Ejemplo: con b = 5, c = 8, cos B = $\\frac{11}{14}$ y cos C = $\\frac{1}{7}$, a = 5 × $\\frac{1}{7}$ + 8 × $\\frac{11}{14}$ = 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema del lado",
+      "puntos": [
+        {
+          "texto": "Datos: b = 5, c = 8, cos B = 11/14 y cos C = 1/7",
+          "explicacion": "Se pide el lado a. Se conocen los otros dos lados y los cosenos de los ángulos B y C, que son los que aparecen en la ley de proyecciones para a."
+        },
+        {
+          "texto": "Estrategia: sumar las dos proyecciones sobre a",
+          "explicacion": "El lado a es la suma de la proyección de b y la de c sobre él, con los cosenos de C y B: a = b cos C + c cos B."
+        },
+        {
+          "texto": "Operación: sustituir y sumar",
+          "explicacion": "a = 5 × $\\frac{1}{7}$ + 8 × $\\frac{11}{14}$ = $\\frac{5}{7}$ + $\\frac{88}{14}$ = $\\frac{5}{7}$ + $\\frac{44}{7}$ = $\\frac{49}{7}$ = 7."
+        },
+        {
+          "texto": "Resultado: a = 7",
+          "explicacion": "El lado a mide 7, que es la suma de una proyección de $\\frac{5}{7}$ y otra de $\\frac{44}{7}$."
+        },
+        {
+          "texto": "Verificación: ley de cosenos para a",
+          "explicacion": "Con cos A = $\\frac{1}{2}$, a² = 25 + 64 - 2 × 5 × 8 × $\\frac{1}{2}$ = 49, y a = 7, que coincide."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de simplificación",
+      "puntos": [
+        {
+          "texto": "Datos: $E = \\frac{b\\cos C + c\\cos B}{a}$",
+          "explicacion": "Se pide simplificar E en un triángulo con lados a, b, c y ángulos opuestos A, B, C. El numerador tiene la forma de la ley de proyecciones para a."
+        },
+        {
+          "texto": "Estrategia: reconocer la ley de proyecciones",
+          "explicacion": "La suma b cos C + c cos B es la suma de las proyecciones de b y c sobre a, que vale a."
+        },
+        {
+          "texto": "Operación: reemplazar el numerador",
+          "explicacion": "E = $\\frac{a}{a}$ con a ≠ 0, porque a es la longitud de un lado."
+        },
+        {
+          "texto": "Resultado: E = 1",
+          "explicacion": "Para cualquier triángulo, la suma de proyecciones dividida entre el lado vale 1."
+        },
+        {
+          "texto": "Verificación: probar con el triángulo 7, 5, 8",
+          "explicacion": "Con a = 7, b = 5, c = 8: $\\frac{5 \\times \\frac{1}{7} + 8 \\times \\frac{11}{14}}{7}$ = $\\frac{7}{7}$ = 1."
+        }
+      ]
+    }
+  ]
+}

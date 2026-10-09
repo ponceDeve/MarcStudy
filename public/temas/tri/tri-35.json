@@ -1,0 +1,203 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Transformación de producto a suma o diferencia",
+  "glosario": {
+    "Seno": "Razón entre ordenada y distancia al origen",
+    "Coseno": "Razón entre abscisa y distancia al origen",
+    "Desarrollar": "Abrir un producto en una suma",
+    "Función impar": "Cambia de signo al invertir el ángulo",
+    "Función par": "No cambia al invertir el ángulo",
+    "Identidad": "Igualdad válida para todos los valores admitidos",
+    "Posición normal": "Vértice en origen, lado inicial en X positivo",
+    "Lado final": "Lado donde termina el giro"
+  },
+  "theory": [
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el seno es la ordenada de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 90°, con el punto (0, 3), sen 90° = 3/3 = 1; además sen 30° = 1/2."
+        },
+        {
+          "texto": "«Coseno (cos)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el coseno es la abscisa de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 180°, con el punto (-5, 0), cos 180° = -5/5 = -1; además cos 60° = 1/2."
+        },
+        {
+          "texto": "A y B denotan las medidas de dos ángulos cualesquiera",
+          "explicacion": "Las letras permiten escribir fórmulas válidas para cualquier par de ángulos. Ejemplo: A = 60° y B = 30° es un par posible, y A = 30° con B = 90° es otro."
+        }
+      ]
+    },
+    {
+      "titulo": "Idea central",
+      "puntos": [
+        {
+          "texto": "Convierte productos de senos o cosenos en sumas o restas",
+          "explicacion": "Equivale a desarrollar, que es abrir un producto en una suma, igual que 2 × (3 + 5) = 6 + 10. Sirve cuando un producto de razones estorba y conviene una suma más fácil de manejar. Ejemplo: 2 × sen 90° × cos 30° = 2 × 1 × $\\frac{\\sqrt{3}}{2}$ = $\\sqrt{3}$, y la suma sen 120° + sen 60° = $\\frac{\\sqrt{3}}{2}$ + $\\frac{\\sqrt{3}}{2}$ = $\\sqrt{3}$."
+        },
+        {
+          "texto": "Los ángulos nuevos son la suma y la diferencia",
+          "explicacion": "En el resultado aparecen los ángulos A + B y A - B, calculados con los ángulos de los factores del producto. Ejemplo: en 2 × sen 90° × cos 30° se tiene A = 90° y B = 30°, así que los ángulos nuevos son 90° + 30° = 120° y 90° - 30° = 60°."
+        },
+        {
+          "texto": "Las fórmulas se escriben para el doble del producto",
+          "explicacion": "Cada identidad tiene 2 delante del producto, porque al sumar o restar dos identidades de ángulos compuestos el mismo término aparece dos veces. Por eso, cuando el producto no trae el 2, se debe dividir el resultado entre 2. Ejemplo: 2 × sen 90° × cos 30° = $\\sqrt{3}$, pero sen 90° × cos 30° = $\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno por coseno",
+      "puntos": [
+        {
+          "texto": "Sumar las identidades de seno deja 2 × sen A × cos B",
+          "explicacion": "Las identidades sen(A + B) = sen A cos B + cos A sen B y sen(A - B) = sen A cos B - cos A sen B se suman: los términos cos A sen B se cancelan y sen A cos B queda dos veces, es decir sen(A + B) + sen(A - B) = 2 sen A cos B. Con A = 90° y B = 30°: sen 120° + sen 60° = $\\sqrt{3}$ y 2 × sen 90° × cos 30° = $\\sqrt{3}$."
+        },
+        {
+          "texto": "«2 sen A cos B» = sen(A + B) + sen(A menos B)",
+          "explicacion": "El producto se reemplaza por la suma de dos senos con la suma y la diferencia de los ángulos. Ejemplo con A = 60° y B = 30°: 2 × sen 60° × cos 30° = 2 × $\\frac{\\sqrt{3}}{2}$ × $\\frac{\\sqrt{3}}{2}$ = 3/2; y sen 90° + sen 30° = 1 + 1/2 = 3/2."
+        },
+        {
+          "texto": "En sen A cos B, el orden de los ángulos importa",
+          "explicacion": "El seno es una función impar, es decir sen(-θ) = -sen θ, así que sen(A - B) y sen(B - A) son opuestos. Ejemplo con A = 30° y B = 90°: 2 × sen 30° × cos 90° = 2 × 1/2 × 0 = 0; con el orden correcto, sen 120° + sen(-60°) = $\\frac{\\sqrt{3}}{2}$ + (-$\\frac{\\sqrt{3}}{2}$) = 0; con el orden invertido, sen 120° + sen 60° = $\\sqrt{3}$, que es incorrecto."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno por seno",
+      "puntos": [
+        {
+          "texto": "Restar las identidades de seno deja 2 × cos A × sen B",
+          "explicacion": "Al restar sen(A - B) = sen A cos B - cos A sen B de sen(A + B) = sen A cos B + cos A sen B, los términos sen A cos B se cancelan y cos A sen B queda dos veces: sen(A + B) - sen(A - B) = 2 cos A sen B. Con A = 60° y B = 30°: sen 90° - sen 30° = 1 - 1/2 = 1/2 y 2 × cos 60° × sen 30° = 2 × 1/2 × 1/2 = 1/2."
+        },
+        {
+          "texto": "«2 cos A sen B» = sen(A + B) menos sen(A menos B)",
+          "explicacion": "El producto se reemplaza por la resta de dos senos, en ese orden. Ejemplo con A = 120° y B = 30°: 2 × cos 120° × sen 30° = 2 × (-1/2) × 1/2 = -1/2; y sen 150° - sen 90° = 1/2 - 1 = -1/2."
+        },
+        {
+          "texto": "Se puede reordenar el producto y usar seno por coseno",
+          "explicacion": "Como 2 cos A sen B = 2 sen B cos A, también se cumple 2 cos A sen B = sen(B + A) + sen(B - A). Ejemplo con A = 60° y B = 30°: sen 90° + sen(-30°) = 1 + (-1/2) = 1/2, igual a 2 × cos 60° × sen 30° = 1/2."
+        },
+        {
+          "texto": "cos A sen B ≠ sen A cos B",
+          "explicacion": "Aunque ambos productos usan seno y coseno, sus resultados difieren: en el segundo la resta de senos lleva signo más. Ejemplo con A = 60° y B = 30°: 2 × sen 60° × cos 30° = 3/2, pero 2 × cos 60° × sen 30° = 1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno por coseno",
+      "puntos": [
+        {
+          "texto": "Sumar las identidades de coseno deja 2 × cos A × cos B",
+          "explicacion": "Las identidades cos(A + B) = cos A cos B - sen A sen B y cos(A - B) = cos A cos B + sen A sen B se suman: los términos sen A sen B se cancelan y cos A cos B queda dos veces, es decir cos(A + B) + cos(A - B) = 2 cos A cos B. Con A = 60° y B = 30°: cos 90° + cos 30° = 0 + $\\frac{\\sqrt{3}}{2}$ = $\\frac{\\sqrt{3}}{2}$ y 2 × cos 60° × cos 30° = 2 × 1/2 × $\\frac{\\sqrt{3}}{2}$ = $\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "«2 cos A cos B» = cos(A + B) + cos(A menos B)",
+          "explicacion": "El producto se reemplaza por la suma de dos cosenos con la suma y la diferencia de los ángulos. Ejemplo con A = 60° y B = 0°: 2 × cos 60° × cos 0° = 2 × 1/2 × 1 = 1; y cos 60° + cos 60° = 1/2 + 1/2 = 1."
+        },
+        {
+          "texto": "En cos A cos B, el orden de los ángulos no importa",
+          "explicacion": "El coseno es una función par, es decir cos(-θ) = cos θ, así que cos(A - B) = cos(B - A). Ejemplo con A = 30° y B = 60°: cos 90° + cos(-30°) = 0 + $\\frac{\\sqrt{3}}{2}$ = $\\frac{\\sqrt{3}}{2}$, igual que con A = 60° y B = 30°: cos 90° + cos 30° = $\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno por seno",
+      "puntos": [
+        {
+          "texto": "Restar las identidades de coseno deja 2 × sen A × sen B",
+          "explicacion": "Al restar cos(A + B) = cos A cos B - sen A sen B de cos(A - B) = cos A cos B + sen A sen B, los términos cos A cos B se cancelan y sen A sen B queda dos veces: cos(A - B) - cos(A + B) = 2 sen A sen B. Con A = 60° y B = 30°: cos 30° - cos 90° = $\\frac{\\sqrt{3}}{2}$ - 0 = $\\frac{\\sqrt{3}}{2}$ y 2 × sen 60° × sen 30° = 2 × $\\frac{\\sqrt{3}}{2}$ × 1/2 = $\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "«2 sen A sen B» = cos(A menos B) menos cos(A + B)",
+          "explicacion": "El producto se reemplaza por la resta de dos cosenos, comenzando por el de la diferencia. Ejemplo con A = 75° y B = 15°: 2 × sen 75° × sen 15° = cos 60° - cos 90° = 1/2 - 0 = 1/2."
+        },
+        {
+          "texto": "Si se invierte la resta de cosenos, el resultado cambia de signo",
+          "explicacion": "cos(A + B) - cos(A - B) es el opuesto de cos(A - B) - cos(A + B). Ejemplo con A = 60° y B = 30°: el orden correcto da cos 30° - cos 90° = $\\frac{\\sqrt{3}}{2}$, y el invertido da cos 90° - cos 30° = -$\\frac{\\sqrt{3}}{2}$, que es incorrecto."
+        },
+        {
+          "texto": "En sen A sen B, el orden de los ángulos no importa",
+          "explicacion": "Como cos(A - B) = cos(B - A), el resultado no cambia al intercambiar A y B. Ejemplo con A = 30° y B = 60°: cos(-30°) - cos 90° = $\\frac{\\sqrt{3}}{2}$ - 0 = $\\frac{\\sqrt{3}}{2}$, igual que con A = 60° y B = 30°."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto sin factor 2",
+      "puntos": [
+        {
+          "texto": "Sin el 2, cada producto vale la mitad de la suma",
+          "explicacion": "Se divide entre 2 la fórmula correspondiente, por ejemplo sen A cos B = (1/2)[sen(A + B) + sen(A - B)]. Ejemplo exacto con A = 75° y B = 15°: sen 75° × cos 15° = (1/2)[sen 90° + sen 60°] = (1/2)(1 + $\\frac{\\sqrt{3}}{2}$) = $\\frac{2 + \\sqrt{3}}{4}$, aproximadamente 0,9330."
+        },
+        {
+          "texto": "Una fórmula con coeficiente distinto de 2 se ajusta multiplicando y dividiendo",
+          "explicacion": "Si el coeficiente no es 2, se escribe el 2 multiplicando y se compensa. Ejemplo: 6 × sen A × cos B = 3 × (2 × sen A × cos B) = 3 × [sen(A + B) + sen(A - B)]; con A = 90° y B = 30°: 6 × 1 × $\\frac{\\sqrt{3}}{2}$ = 3 × $\\sqrt{3}$ y 3 × [sen 120° + sen 60°] = 3 × $\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos con incógnita",
+      "puntos": [
+        {
+          "texto": "Permite reescribir productos como sen 5x × cos 3x en sumas",
+          "explicacion": "Con A = 5x y B = 3x, A + B = 8x y A - B = 2x, así que sen 5x cos 3x = (1/2)(sen 8x + sen 2x). Ejemplo con x = 10°: sen 50° × cos 30° ≈ 0,7660 × 0,8660 ≈ 0,6634, y (1/2)(sen 80° + sen 20°) ≈ (1/2)(0,9848 + 0,3420) ≈ 0,6634."
+        }
+      ]
+    },
+    {
+      "titulo": "Tres factores",
+      "puntos": [
+        {
+          "texto": "Un producto de tres factores se transforma de dos en dos",
+          "explicacion": "Se agrupan dos factores, se aplica la fórmula y luego se repite con el resultado. Con A = B = x, 2 sen x cos x = sen 2x + sen 0° = sen 2x, así que sen x cos x cos 2x = (1/2) sen 2x cos 2x = (1/4) sen 4x. Ejemplo con x = 15°: sen 15° cos 15° cos 30° = (1/4) × sen 60° = (1/4) × $\\frac{\\sqrt{3}}{2}$ = $\\frac{\\sqrt{3}}{8}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "2 sen A cos B ≠ sen A + cos B",
+          "explicacion": "Un producto de razones no se reemplaza por la suma de las mismas razones, sino por senos de la suma y la diferencia de los ángulos. Ejemplo con A = 60° y B = 30°: 2 × sen 60° × cos 30° = 3/2, mientras que sen 60° + cos 30° = $\\frac{\\sqrt{3}}{2}$ + $\\frac{\\sqrt{3}}{2}$ = $\\sqrt{3}$."
+        },
+        {
+          "texto": "Olvidar dividir entre 2 duplica el valor correcto",
+          "explicacion": "Si el producto no trae el 2, la suma debe multiplicarse por 1/2. Ejemplo: sen 90° × cos 30° = $\\frac{\\sqrt{3}}{2}$, pero sen 120° + sen 60° = $\\sqrt{3}$, el doble."
+        },
+        {
+          "texto": "Usar el signo más en cos A sen B",
+          "explicacion": "La fórmula de coseno por seno lleva una resta de senos, no una suma. Ejemplo con A = 60° y B = 30°: el valor correcto es sen 90° - sen 30° = 1/2, y con el signo más sale sen 90° + sen 30° = 3/2."
+        },
+        {
+          "texto": "En sen A sen B la resta de cosenos tiene orden fijo",
+          "explicacion": "La fórmula comienza con cos(A - B) y resta cos(A + B); al revés, el resultado es negativo. Ejemplo con A = 75° y B = 15°: cos 60° - cos 90° = 1/2, mientras que cos 90° - cos 60° = -1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo guiado",
+      "puntos": [
+        {
+          "texto": "Datos: E = sen 105° × sen 15°",
+          "explicacion": "E denota el valor del producto que se quiere calcular. Es un producto de dos senos de ángulos sin valor conocido, así que corresponde la fórmula de seno por seno, con A = 105° y B = 15°."
+        },
+        {
+          "texto": "Estrategia: sen A sen B = (1/2)[cos(A menos B) menos cos(A + B)]",
+          "explicacion": "Como el producto no trae el 2, se usa la mitad de la fórmula. Se calculan los ángulos nuevos: A - B = 105° - 15° = 90° y A + B = 105° + 15° = 120°."
+        },
+        {
+          "texto": "Operación: E = (1/2)[cos 90° menos cos 120°]",
+          "explicacion": "Se reemplazan los valores conocidos: cos 90° = 0 y cos 120° = -1/2. Entonces E = (1/2)[0 - (-1/2)] = (1/2) × (1/2) = 1/4."
+        },
+        {
+          "texto": "Resultado: E = 1/4",
+          "explicacion": "El valor exacto del producto es 1/4, es decir 0,25."
+        },
+        {
+          "texto": "Verificación con valores aproximados: ≈ 0,25",
+          "explicacion": "Con sen 105° ≈ 0,9659 y sen 15° ≈ 0,2588, el producto es 0,9659 × 0,2588 ≈ 0,2500, que coincide con el valor exacto."
+        }
+      ]
+    }
+  ]
+}

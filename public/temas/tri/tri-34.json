@@ -1,0 +1,272 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Transformación de suma o diferencia a producto",
+  "glosario": {
+    "Seno": "Razón entre ordenada y distancia al origen",
+    "Coseno": "Razón entre abscisa y distancia al origen",
+    "Tangente": "Cociente entre seno y coseno",
+    "Cotangente": "Cociente entre coseno y seno",
+    "Semisuma": "Suma de dos ángulos dividida entre dos",
+    "Semidiferencia": "Resta de dos ángulos dividida entre dos",
+    "Progresión aritmética": "Sucesión con diferencia constante entre términos",
+    "Ángulos complementarios": "Ángulos cuya suma es 90°",
+    "Identidad": "Igualdad válida para todos los valores admitidos",
+    "Posición normal": "Vértice en origen, lado inicial en X positivo",
+    "Lado final": "Lado donde termina el giro"
+  },
+  "theory": [
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el seno es la ordenada de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 90°, con el punto (0, 3), sen 90° = 3/3 = 1; además sen 30° = 1/2."
+        },
+        {
+          "texto": "«Coseno (cos)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el coseno es la abscisa de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 180°, con el punto (-5, 0), cos 180° = -5/5 = -1; además cos 60° = 1/2."
+        },
+        {
+          "texto": "«Tangente (tan)»: seno entre coseno",
+          "explicacion": "Se calcula como tan θ = sen θ / cos θ, donde θ (theta) es la medida del ángulo. Ejemplo: tan 60° = sen 60° / cos 60° = $\\frac{\\sqrt{3}}{2}$ / $\\frac{1}{2}$ = $\\sqrt{3}$."
+        },
+        {
+          "texto": "«Cotangente (cot)»: coseno entre seno",
+          "explicacion": "Se calcula como cot θ = cos θ / sen θ. Ejemplo: cot 60° = cos 60° / sen 60° = $\\frac{1}{2}$ / $\\frac{\\sqrt{3}}{2}$ = $\\frac{1}{\\sqrt{3}}$."
+        },
+        {
+          "texto": "A y B denotan las medidas de dos ángulos cualesquiera",
+          "explicacion": "Las letras permiten escribir fórmulas válidas para cualquier par de ángulos. Ejemplo: A = 150° y B = 30° es un par posible, y A = 0° con B = 60° es otro."
+        }
+      ]
+    },
+    {
+      "titulo": "Semisuma y semidiferencia",
+      "puntos": [
+        {
+          "texto": "«Semisuma»: suma de dos ángulos dividida entre 2",
+          "explicacion": "Es el promedio de los dos ángulos. Ejemplo: para A = 150° y B = 30°, la semisuma es (150° + 30°)/2 = 180°/2 = 90°."
+        },
+        {
+          "texto": "«Semidiferencia»: resta de dos ángulos dividida entre 2",
+          "explicacion": "Es la mitad de la resta entre A y B, en ese orden. Ejemplo: para A = 150° y B = 30°, la semidiferencia es (150° - 30°)/2 = 120°/2 = 60°. Si el orden se invierte, el signo cambia: (30° - 150°)/2 = -60°."
+        },
+        {
+          "texto": "Antes de sustituir se calculan semisuma y semidiferencia",
+          "explicacion": "Los ángulos del producto no son A ni B, sino estos dos promedios, así que conviene hallarlos primero y anotarlos. Ejemplo: para A = 60° y B = 0°, la semisuma es 30° y la semidiferencia es 30°."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable",
+      "puntos": [
+        {
+          "texto": "Cambio de variable: A = x + y, $B = x - y$",
+          "explicacion": "Se introducen dos ángulos auxiliares x e y para que A sea su suma y B su resta; así las identidades de suma y diferencia de ángulos se pueden leer como sumas de dos razones con ángulos A y B. Ejemplo: con x = 90° e y = 30°, A = 120° y B = 60°."
+        },
+        {
+          "texto": "Despejar da x = semisuma de A y B",
+          "explicacion": "Al sumar A = x + y con B = x - y, los términos con y se cancelan y queda A + B = 2x, de donde x = (A + B)/2. Ejemplo: con A = 120° y B = 60°, x = 180°/2 = 90°, el ángulo auxiliar original."
+        },
+        {
+          "texto": "Despejar da y = semidiferencia de A y B",
+          "explicacion": "Al restar B = x - y de A = x + y, los términos con x se cancelan y queda A - B = 2y, de donde y = (A - B)/2. Ejemplo: con A = 120° y B = 60°, y = 60°/2 = 30°, el otro ángulo auxiliar original."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de senos",
+      "puntos": [
+        {
+          "texto": "Sumar las identidades de seno deja 2 × sen x × cos y",
+          "explicacion": "Las identidades sen(x + y) = sen x cos y + cos x sen y y sen(x - y) = sen x cos y - cos x sen y se suman: los términos cos x sen y se cancelan y sen x cos y queda dos veces, es decir sen(x + y) + sen(x - y) = 2 sen x cos y. Con x = 90° e y = 30°: sen 120° + sen 60° = $\\sqrt{3}$ y 2 × sen 90° × cos 30° = 2 × 1 × $\\frac{\\sqrt{3}}{2}$ = $\\sqrt{3}$."
+        },
+        {
+          "texto": "«sen A + sen B» = 2 × seno de semisuma × coseno de semidiferencia",
+          "explicacion": "Como x + y = A y x - y = B, la suma deja $\\text{sen}\\,A + \\text{sen}\\,B = 2\\,\\text{sen}\\frac{A+B}{2}\\,\\text{cos}\\frac{A-B}{2}$. Ejemplo con A = 150° y B = 30°: sen 150° + sen 30° = 1/2 + 1/2 = 1; con semisuma 90° y semidiferencia 60°, 2 × sen 90° × cos 60° = 2 × 1 × 1/2 = 1."
+        },
+        {
+          "texto": "El producto de suma de senos usa seno y coseno",
+          "explicacion": "El factor con la semisuma es seno y el factor con la semidiferencia es coseno, nunca al revés. Ejemplo: en sen 150° + sen 30° el seno va con 90° y el coseno con 60°, por lo que el producto es 2 × sen 90° × cos 60° y no 2 × sen 60° × cos 90°, que daría 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta de senos",
+      "puntos": [
+        {
+          "texto": "Restar las identidades de seno deja 2 × cos x × sen y",
+          "explicacion": "Al restar sen(x - y) = sen x cos y - cos x sen y de sen(x + y) = sen x cos y + cos x sen y, los términos sen x cos y se cancelan y cos x sen y queda dos veces: sen(x + y) - sen(x - y) = 2 cos x sen y. Con x = 60° e y = 30°: sen 90° - sen 30° = 1 - 1/2 = 1/2 y 2 × cos 60° × sen 30° = 2 × 1/2 × 1/2 = 1/2."
+        },
+        {
+          "texto": "«sen A menos sen B» = 2 × coseno de semisuma × seno de semidiferencia",
+          "explicacion": "Con x = semisuma y y = semidiferencia se obtiene $\\text{sen}\\,A - \\text{sen}\\,B = 2\\,\\text{cos}\\frac{A+B}{2}\\,\\text{sen}\\frac{A-B}{2}$. Ejemplo con A = 90° y B = 30°: sen 90° - sen 30° = 1 - 1/2 = 1/2; con semisuma 60° y semidiferencia 30°, 2 × cos 60° × sen 30° = 2 × 1/2 × 1/2 = 1/2."
+        },
+        {
+          "texto": "El producto de resta de senos usa coseno y seno",
+          "explicacion": "El factor con la semisuma es coseno y el factor con la semidiferencia es seno, al revés de la suma de senos. Ejemplo: en sen 90° - sen 30° el coseno va con 60° y el seno con 30°; si se intercambian, 2 × sen 60° × cos 30° = 3/2, que no coincide con 1/2."
+        },
+        {
+          "texto": "Si B > A, la resta de senos sale negativa",
+          "explicacion": "La semidiferencia (A - B)/2 es negativa y sen(-θ) = -sen θ, así que el resultado conserva el signo correcto. Ejemplo: sen 30° - sen 90° = 1/2 - 1 = -1/2; con semisuma 60° y semidiferencia -30°, 2 × cos 60° × sen(-30°) = 2 × 1/2 × (-1/2) = -1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cosenos",
+      "puntos": [
+        {
+          "texto": "Sumar las identidades de coseno deja 2 × cos x × cos y",
+          "explicacion": "Las identidades cos(x + y) = cos x cos y - sen x sen y y cos(x - y) = cos x cos y + sen x sen y se suman: los términos sen x sen y se cancelan y cos x cos y queda dos veces, es decir cos(x + y) + cos(x - y) = 2 cos x cos y. Con x = 45° e y = 45°: cos 90° + cos 0° = 0 + 1 = 1 y 2 × cos 45° × cos 45° = 2 × 1/2 = 1."
+        },
+        {
+          "texto": "«cos A + cos B» = 2 × coseno de semisuma × coseno de semidiferencia",
+          "explicacion": "Con x = semisuma y y = semidiferencia se obtiene $\\text{cos}\\,A + \\text{cos}\\,B = 2\\,\\text{cos}\\frac{A+B}{2}\\,\\text{cos}\\frac{A-B}{2}$. Ejemplo con A = 60° y B = 0°: cos 60° + cos 0° = 1/2 + 1 = 3/2; con semisuma 30° y semidiferencia 30°, 2 × cos 30° × cos 30° = 2 × 3/4 = 3/2."
+        },
+        {
+          "texto": "El producto de suma de cosenos usa dos cosenos",
+          "explicacion": "Ambos factores son coseno, uno con la semisuma y otro con la semidiferencia, y no aparece ningún seno. Ejemplo: en cos 60° + cos 0° los dos factores son cos 30°, y el producto vale 2 × $\\frac{\\sqrt{3}}{2}$ × $\\frac{\\sqrt{3}}{2}$ = 3/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta de cosenos",
+      "puntos": [
+        {
+          "texto": "Restar las identidades de coseno deja 2 × sen x × sen y",
+          "explicacion": "Al restar cos(x + y) = cos x cos y - sen x sen y de cos(x - y) = cos x cos y + sen x sen y, los términos cos x cos y se cancelan y sen x sen y queda dos veces: cos(x - y) - cos(x + y) = 2 sen x sen y. Con x = 60° e y = 30°: cos 30° - cos 90° = $\\frac{\\sqrt{3}}{2}$ - 0 = $\\frac{\\sqrt{3}}{2}$ y 2 × sen 60° × sen 30° = 2 × $\\frac{\\sqrt{3}}{2}$ × 1/2 = $\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "«Resta de cosenos» = menos 2 × sen semisuma × sen semidiferencia",
+          "explicacion": "Como A = x + y y B = x - y, se tiene cos A - cos B = cos(x + y) - cos(x - y) = -2 sen x sen y, es decir $\\text{cos}\\,A - \\text{cos}\\,B = -2\\,\\text{sen}\\frac{A+B}{2}\\,\\text{sen}\\frac{A-B}{2}$. Ejemplo con A = 0° y B = 60°: cos 0° - cos 60° = 1 - 1/2 = 1/2; con semisuma 30° y semidiferencia -30°, -2 × sen 30° × sen(-30°) = -2 × 1/2 × (-1/2) = 1/2."
+        },
+        {
+          "texto": "La resta de cosenos lleva un signo menos delante",
+          "explicacion": "Es la única de las cuatro fórmulas con el signo menos fuera de los factores, porque cos(x + y) está restando. Ejemplo: sin el signo, 2 × sen 30° × sen(-30°) = 2 × 1/2 × (-1/2) = -1/2, que es el opuesto del valor correcto 1/2 de cos 0° - cos 60°."
+        },
+        {
+          "texto": "Invertir la resta interna elimina el signo menos",
+          "explicacion": "Como sen(-θ) = -sen θ, el signo menos se absorbe al invertir la resta: $\\text{cos}\\,A - \\text{cos}\\,B = 2\\,\\text{sen}\\frac{A+B}{2}\\,\\text{sen}\\frac{B-A}{2}$. Ejemplo con A = 0° y B = 60°: 2 × sen 30° × sen 30° = 2 × 1/2 × 1/2 = 1/2, igual a cos 0° - cos 60° = 1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de tangentes",
+      "puntos": [
+        {
+          "texto": "«Suma de tangentes» = sen(A + B) entre cos A × cos B",
+          "explicacion": "Se escribe tan = sen/cos y se suman las fracciones: $\\frac{\\text{sen}\\,A}{\\text{cos}\\,A} + \\frac{\\text{sen}\\,B}{\\text{cos}\\,B} = \\frac{\\text{sen}\\,A\\,\\text{cos}\\,B + \\text{cos}\\,A\\,\\text{sen}\\,B}{\\text{cos}\\,A\\,\\text{cos}\\,B} = \\frac{\\text{sen}(A+B)}{\\text{cos}\\,A\\,\\text{cos}\\,B}$, siempre que cos A y cos B no valgan 0. Ejemplo con A = 60° y B = 30°: tan 60° + tan 30° = $\\sqrt{3}$ + $\\frac{1}{\\sqrt{3}}$ = $\\frac{4}{\\sqrt{3}}$, y sen 90° / (cos 60° × cos 30°) = 1 / ($\\frac{1}{2}$ × $\\frac{\\sqrt{3}}{2}$) = $\\frac{4}{\\sqrt{3}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta de tangentes",
+      "puntos": [
+        {
+          "texto": "«Resta de tangentes» = seno de la diferencia entre cos A × cos B",
+          "explicacion": "Igual que la suma, pero con la resta de fracciones: $\\text{tan}\\,A - \\text{tan}\\,B = \\frac{\\text{sen}\\,A\\,\\text{cos}\\,B - \\text{cos}\\,A\\,\\text{sen}\\,B}{\\text{cos}\\,A\\,\\text{cos}\\,B} = \\frac{\\text{sen}(A-B)}{\\text{cos}\\,A\\,\\text{cos}\\,B}$. Ejemplo con A = 60° y B = 30°: tan 60° - tan 30° = $\\sqrt{3}$ - $\\frac{1}{\\sqrt{3}}$ = $\\frac{2}{\\sqrt{3}}$, y sen 30° / (cos 60° × cos 30°) = $\\frac{1}{2}$ / ($\\frac{1}{2}$ × $\\frac{\\sqrt{3}}{2}$) = $\\frac{2}{\\sqrt{3}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cotangentes",
+      "puntos": [
+        {
+          "texto": "«Suma de cotangentes» = sen(A + B) entre sen A × sen B",
+          "explicacion": "Se escribe cot = cos/sen y se suman las fracciones: $\\frac{\\text{cos}\\,A}{\\text{sen}\\,A} + \\frac{\\text{cos}\\,B}{\\text{sen}\\,B} = \\frac{\\text{cos}\\,A\\,\\text{sen}\\,B + \\text{sen}\\,A\\,\\text{cos}\\,B}{\\text{sen}\\,A\\,\\text{sen}\\,B} = \\frac{\\text{sen}(A+B)}{\\text{sen}\\,A\\,\\text{sen}\\,B}$, siempre que sen A y sen B no valgan 0. Ejemplo con A = 60° y B = 30°: cot 60° + cot 30° = $\\frac{1}{\\sqrt{3}}$ + $\\sqrt{3}$ = $\\frac{4}{\\sqrt{3}}$, y sen 90° / (sen 60° × sen 30°) = 1 / ($\\frac{\\sqrt{3}}{2}$ × $\\frac{1}{2}$) = $\\frac{4}{\\sqrt{3}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta de cotangentes",
+      "puntos": [
+        {
+          "texto": "«Resta de cotangentes» = sen(B menos A) entre sen A × sen B",
+          "explicacion": "Al restar las fracciones, el numerador queda $\\text{cos}\\,A\\,\\text{sen}\\,B - \\text{sen}\\,A\\,\\text{cos}\\,B = \\text{sen}(B-A)$, por lo que $\\text{cot}\\,A - \\text{cot}\\,B = \\frac{\\text{sen}(B-A)}{\\text{sen}\\,A\\,\\text{sen}\\,B}$. Ejemplo con A = 30° y B = 60°: cot 30° - cot 60° = $\\sqrt{3}$ - $\\frac{1}{\\sqrt{3}}$ = $\\frac{2}{\\sqrt{3}}$, y sen 30° / (sen 30° × sen 60°) = 1 / $\\frac{\\sqrt{3}}{2}$ = $\\frac{2}{\\sqrt{3}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente y semisuma",
+      "puntos": [
+        {
+          "texto": "Suma de senos entre suma de cosenos = tan de la semisuma",
+          "explicacion": "Al reemplazar ambas sumas por productos, el factor $\\text{cos}\\frac{A-B}{2}$ se cancela y queda $\\frac{\\text{sen}\\,A + \\text{sen}\\,B}{\\text{cos}\\,A + \\text{cos}\\,B} = \\text{tan}\\frac{A+B}{2}$, siempre que el factor cancelado no valga 0. Ejemplo con A = 90° y B = 30°: (1 + 1/2) / (0 + $\\frac{\\sqrt{3}}{2}$) = $\\sqrt{3}$, y tan 60° = $\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente y semidiferencia",
+      "puntos": [
+        {
+          "texto": "Resta de senos entre suma de cosenos = tan de la semidiferencia",
+          "explicacion": "Al reemplazar ambas expresiones por productos, el factor $\\text{cos}\\frac{A+B}{2}$ se cancela y queda $\\frac{\\text{sen}\\,A - \\text{sen}\\,B}{\\text{cos}\\,A + \\text{cos}\\,B} = \\text{tan}\\frac{A-B}{2}$, siempre que el factor cancelado no valga 0. Ejemplo con A = 90° y B = 30°: (1 - 1/2) / (0 + $\\frac{\\sqrt{3}}{2}$) = $\\frac{1}{\\sqrt{3}}$, y tan 30° = $\\frac{1}{\\sqrt{3}}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tres ángulos en progresión",
+      "puntos": [
+        {
+          "texto": "Con tres términos en progresión aritmética se agrupan los extremos",
+          "explicacion": "Una progresión aritmética es una sucesión con diferencia constante entre términos, como x, 3x, 5x. Se suman los extremos con la fórmula de suma de senos, que produce el factor sen 3x, y este queda como factor común: $\\text{sen}\\,x + \\text{sen}\\,3x + \\text{sen}\\,5x = 2\\,\\text{sen}\\,3x\\,\\text{cos}\\,2x + \\text{sen}\\,3x = \\text{sen}\\,3x\\,(2\\,\\text{cos}\\,2x + 1)$. Ejemplo con x = 30°: sen 30° + sen 90° + sen 150° = 1/2 + 1 + 1/2 = 2, y sen 90° × (2 × cos 60° + 1) = 1 × (1 + 1) = 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno más coseno",
+      "puntos": [
+        {
+          "texto": "sen A + cos B no se transforma directamente",
+          "explicacion": "Las razones deben ser de la misma clase. Si no lo son, se convierte una usando ángulos complementarios, que suman 90°, porque cos B = sen(90° - B). Ejemplo: sen 50° + cos 40° = sen 50° + sen(90° - 40°) = sen 50° + sen 50° = 2 × sen 50°, que ya es un producto."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "sen A + sen B ≠ sen(A + B)",
+          "explicacion": "El seno no se distribuye sobre una suma de ángulos. Con A = 90° y B = 90°: sen 90° + sen 90° = 1 + 1 = 2, mientras que sen 180° = 0."
+        },
+        {
+          "texto": "Olvidar el factor 2 da la mitad del valor correcto",
+          "explicacion": "Toda fórmula de suma a producto comienza con 2 (o con -2). Ejemplo: sen 150° + sen 30° = 1, pero sen 90° × cos 60° = 1/2, la mitad."
+        },
+        {
+          "texto": "Intercambiar seno y coseno en sen A menos sen B",
+          "explicacion": "La resta de senos usa coseno de la semisuma y seno de la semidiferencia. Ejemplo con A = 90° y B = 30°: el valor correcto es 2 × cos 60° × sen 30° = 1/2, mientras que el intercambio 2 × sen 60° × cos 30° da 3/2."
+        },
+        {
+          "texto": "Usar A y B en lugar de semisuma y semidiferencia",
+          "explicacion": "Los ángulos de los factores son los promedios, no los originales. Ejemplo: sen 150° + sen 30° = 1, pero 2 × sen 150° × cos 30° = 2 × 1/2 × $\\frac{\\sqrt{3}}{2}$ = $\\frac{\\sqrt{3}}{2}$, que es distinto."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo guiado",
+      "puntos": [
+        {
+          "texto": "Datos: E = cos 75° menos cos 15°",
+          "explicacion": "E denota el valor de la expresión que se quiere calcular. Es una resta de cosenos de ángulos sin valor conocido, así que corresponde la fórmula de resta de cosenos, con A = 75° y B = 15°."
+        },
+        {
+          "texto": "Estrategia: hallar semisuma y semidiferencia de 75° y 15°",
+          "explicacion": "Los ángulos de los factores serán promedios de valor conocido. Semisuma: (75° + 15°)/2 = 90°/2 = 45°. Semidiferencia: (75° - 15°)/2 = 60°/2 = 30°."
+        },
+        {
+          "texto": "Operación: E = -2 × sen 45° × sen 30°",
+          "explicacion": "Se aplica cos A - cos B = -2 sen(semisuma) sen(semidiferencia) con sen 45° = $\\frac{\\sqrt{2}}{2}$ y sen 30° = 1/2. Entonces E = -2 × $\\frac{\\sqrt{2}}{2}$ × 1/2 = -$\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "Resultado: E = menos raíz de 2 entre 2",
+          "explicacion": "El valor exacto es $E = -\\frac{\\sqrt{2}}{2}$, aproximadamente -0,7071."
+        },
+        {
+          "texto": "Verificación: cos 75° y cos 15° aproximados dan -0,7071",
+          "explicacion": "Con cos 75° ≈ 0,2588 y cos 15° ≈ 0,9659, la resta es 0,2588 - 0,9659 = -0,7071, que coincide con el valor exacto."
+        }
+      ]
+    }
+  ]
+}

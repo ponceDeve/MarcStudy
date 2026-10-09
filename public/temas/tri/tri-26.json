@@ -1,0 +1,165 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos compuestos",
+  "glosario": {
+    "Ángulo compuesto": "Ángulo expresado como suma o diferencia de otros",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Racionalizar": "Eliminar raíces del denominador de una fracción",
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Radián": "Unidad de ángulo; arco igual al radio",
+    "Altura": "Segmento perpendicular de un vértice al lado opuesto",
+    "Cociente": "Resultado de dividir dos números",
+    "Descomponer": "Escribir como suma o diferencia de otros"
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo compuesto",
+      "puntos": [
+        {
+          "texto": "Ángulo compuesto = suma o diferencia de ángulos conocidos",
+          "explicacion": "Un ángulo compuesto se escribe como $A + B$ o $A - B$, donde A y B son ángulos cuyas razones ya se conocen. Sirve para hallar razones de ángulos que no aparecen entre los notables, descomponiéndolos en ángulos que sí se conocen. Ejemplo: 75° no es un ángulo notable, pero se puede escribir como $45° + 30°$, y 15° como $45° - 30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "No es lineal",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(A+B) \\neq \\operatorname{sen}A + \\operatorname{sen}B$",
+          "explicacion": "La razón de una suma de ángulos no es la suma de las razones, y lo mismo ocurre con la diferencia y con las demás razones. Ejemplo: con $A = 30°$ y $B = 60°$, $\\operatorname{sen}(30° + 60°) = \\operatorname{sen}90° = 1$, pero $\\operatorname{sen}30° + \\operatorname{sen}60° = \\frac{1}{2} + \\frac{\\sqrt{3}}{2} \\approx 1{,}366$, que no es 1. Hacen falta fórmulas especiales."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno de la suma",
+      "puntos": [
+        {
+          "texto": "Seno de la suma: $\\operatorname{sen}(A+B) = \\operatorname{sen}A\\cos B + \\cos A\\operatorname{sen}B$",
+          "explicacion": "Cada término mezcla el seno de un ángulo con el coseno del otro. Ejemplo: para hallar $\\operatorname{sen}75°$ se escribe $75° = 45° + 30°$, con $\\operatorname{sen}45° = \\cos45° = \\frac{\\sqrt{2}}{2}$, $\\operatorname{sen}30° = \\frac{1}{2}$ y $\\cos30° = \\frac{\\sqrt{3}}{2}$. Entonces $\\operatorname{sen}75° = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno de la diferencia",
+      "puntos": [
+        {
+          "texto": "Seno de la diferencia: $\\operatorname{sen}(A-B) = \\operatorname{sen}A\\cos B - \\cos A\\operatorname{sen}B$",
+          "explicacion": "Tiene la misma forma que la suma, pero con signo menos entre los dos términos. Ejemplo: para $\\operatorname{sen}15°$ se escribe $15° = 45° - 30°$, y resulta $\\operatorname{sen}15° = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno de la suma",
+      "puntos": [
+        {
+          "texto": "Coseno de la suma: $\\cos(A+B) = \\cos A\\cos B - \\operatorname{sen}A\\operatorname{sen}B$",
+          "explicacion": "Cada término usa dos cosenos o dos senos, y el signo entre ellos es menos. Ejemplo: para $\\cos75°$ con $75° = 45° + 30°$, $\\cos75° = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} - \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno de la diferencia",
+      "puntos": [
+        {
+          "texto": "Coseno de la diferencia: $\\cos(A-B) = \\cos A\\cos B + \\operatorname{sen}A\\operatorname{sen}B$",
+          "explicacion": "Usa los mismos productos que la suma, pero el signo entre ellos es más. Ejemplo: para $\\cos15°$ con $15° = 45° - 30°$, $\\cos15° = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de la suma",
+      "puntos": [
+        {
+          "texto": "Tangente de la suma: $\\tan(A+B) = \\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B}$",
+          "explicacion": "El denominador debe ser distinto de cero. Ejemplo: para $\\tan75°$ con $75° = 45° + 30°$, se usa $\\tan45° = 1$ y $\\tan30° = \\frac{\\sqrt{3}}{3}$. Entonces $\\tan75° = \\frac{1 + \\frac{\\sqrt{3}}{3}}{1 - \\frac{\\sqrt{3}}{3}} = \\frac{3 + \\sqrt{3}}{3 - \\sqrt{3}}$, y al racionalizar resulta $\\frac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de la diferencia",
+      "puntos": [
+        {
+          "texto": "Tangente de la diferencia: $\\tan(A-B) = \\frac{\\tan A - \\tan B}{1 + \\tan A\\tan B}$",
+          "explicacion": "El signo del numerador y el del denominador son contrarios a los de la suma. Ejemplo: para $\\tan15°$ con $15° = 45° - 30°$, $\\tan15° = \\frac{1 - \\frac{\\sqrt{3}}{3}}{1 + \\frac{\\sqrt{3}}{3}} = \\frac{3 - \\sqrt{3}}{3 + \\sqrt{3}}$, y al racionalizar resulta $\\frac{12 - 6\\sqrt{3}}{6} = 2 - \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen: seno de suma",
+      "puntos": [
+        {
+          "texto": "Seno de la suma: se deduce con áreas de triángulos",
+          "explicacion": "Se toma un triángulo cuyo vértice O tiene ángulo $\\alpha + \\beta$ y una altura OH que lo divide en $\\alpha$ y $\\beta$; sean $m$ y $n$ los lados que salen de O. La altura mide $h = m\\cos\\alpha = n\\cos\\beta$. El área total es $\\frac{1}{2} m n \\operatorname{sen}(\\alpha + \\beta)$ y también es la suma de las áreas de los dos triángulos parciales, $\\frac{1}{2} h \\cdot m\\operatorname{sen}\\alpha + \\frac{1}{2} h \\cdot n\\operatorname{sen}\\beta$. Al igualar y dividir entre $\\frac{1}{2} m n$ queda $\\operatorname{sen}(\\alpha + \\beta) = \\frac{h}{n}\\operatorname{sen}\\alpha + \\frac{h}{m}\\operatorname{sen}\\beta = \\cos\\beta\\operatorname{sen}\\alpha + \\cos\\alpha\\operatorname{sen}\\beta$. Esta deducción vale para $\\alpha$ y $\\beta$ agudos."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen: diferencias",
+      "puntos": [
+        {
+          "texto": "Las fórmulas de diferencia salen de las de suma al cambiar B por $-B$",
+          "explicacion": "Se usa que $\\operatorname{sen}(-B) = -\\operatorname{sen}B$ y $\\cos(-B) = \\cos B$. Ejemplo: $\\operatorname{sen}(A - B) = \\operatorname{sen}(A + (-B)) = \\operatorname{sen}A\\cos(-B) + \\cos A\\operatorname{sen}(-B) = \\operatorname{sen}A\\cos B - \\cos A\\operatorname{sen}B$, que es la fórmula del seno de la diferencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Elegir la descomposición",
+      "puntos": [
+        {
+          "texto": "Descomponer el ángulo en notables: $75° = 45° + 30°$, $105° = 60° + 45°$",
+          "explicacion": "Para aplicar las fórmulas hay que escribir el ángulo pedido como suma o diferencia de ángulos cuyas razones se conocen, como 30°, 45° y 60°. Suele haber varias descomposiciones y todas dan el mismo resultado. Ejemplo: $\\operatorname{sen}105° = \\operatorname{sen}(60° + 45°) = \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} + \\frac{1}{2} \\cdot \\frac{\\sqrt{2}}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Con ángulos aproximados",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}16° = \\operatorname{sen}(53° - 37°) = \\frac{7}{25}$",
+          "explicacion": "Con los valores aproximados $\\operatorname{sen}53° = \\frac{4}{5}$, $\\cos53° = \\frac{3}{5}$, $\\operatorname{sen}37° = \\frac{3}{5}$ y $\\cos37° = \\frac{4}{5}$, se tiene $\\operatorname{sen}(53° - 37°) = \\frac{4}{5} \\cdot \\frac{4}{5} - \\frac{3}{5} \\cdot \\frac{3}{5} = \\frac{16}{25} - \\frac{9}{25} = \\frac{7}{25}$. Coincide con el valor aproximado del seno de 16°, tomado del triángulo de lados 7, 24 y 25."
+        }
+      ]
+    },
+    {
+      "titulo": "Comprobación con 90°",
+      "puntos": [
+        {
+          "texto": "Comprobar: $\\cos(37° + 53°) = \\cos90° = 0$",
+          "explicacion": "Una forma de verificar una fórmula es aplicarla a una suma cuyo resultado se conoce. Con $\\cos37° = \\frac{4}{5}$, $\\operatorname{sen}37° = \\frac{3}{5}$, $\\cos53° = \\frac{3}{5}$ y $\\operatorname{sen}53° = \\frac{4}{5}$, resulta $\\cos(37° + 53°) = \\frac{4}{5} \\cdot \\frac{3}{5} - \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{12}{25} - \\frac{12}{25} = 0$, que es el valor de $\\cos90°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones dadas",
+      "puntos": [
+        {
+          "texto": "Si se dan $\\operatorname{sen}A$ y $\\cos B$ ⇒ hallar $\\cos A$ y $\\operatorname{sen}B$ con triángulos",
+          "explicacion": "Cuando A y B son agudos y solo se conocen algunas razones, las que faltan se obtienen de un triángulo rectángulo con el teorema de Pitágoras, y luego se aplica la fórmula. Ejemplo: si $\\operatorname{sen}A = \\frac{3}{5}$ y $\\cos B = \\frac{5}{13}$, el triángulo 3-4-5 da $\\cos A = \\frac{4}{5}$ y el triángulo 5-12-13 da $\\operatorname{sen}B = \\frac{12}{13}$. Entonces $\\operatorname{sen}(A + B) = \\frac{3}{5} \\cdot \\frac{5}{13} + \\frac{4}{5} \\cdot \\frac{12}{13} = \\frac{15}{65} + \\frac{48}{65} = \\frac{63}{65}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radianes y grados",
+      "puntos": [
+        {
+          "texto": "Las fórmulas valen en grados y en radianes",
+          "explicacion": "Lo que cambia es la forma de escribir los ángulos, no las fórmulas. Ejemplo: $\\operatorname{sen}\\left(\\frac{\\pi}{4} + \\frac{\\pi}{6}\\right)$ equivale a $\\operatorname{sen}(45° + 30°)$ y da $\\frac{\\sqrt{6} + \\sqrt{2}}{4}$, el mismo valor obtenido con grados."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Signo del coseno invertido ⇒ error",
+          "explicacion": "En el coseno de la suma el signo es menos, y en el de la diferencia es más; es lo contrario de lo que ocurre con el seno. Ejemplo: escribir $\\cos(30° + 60°) = \\cos30°\\cos60° + \\operatorname{sen}30°\\operatorname{sen}60°$ da $\\frac{\\sqrt{3}}{4} + \\frac{\\sqrt{3}}{4} = \\frac{\\sqrt{3}}{2}$, pero $\\cos90° = 0$. Con el signo correcto, $\\frac{\\sqrt{3}}{4} - \\frac{\\sqrt{3}}{4} = 0$."
+        },
+        {
+          "texto": "Tangente de la suma como suma de tangentes ⇒ error",
+          "explicacion": "La fórmula tiene un denominador $1 - \\tan A\\tan B$ que no puede omitirse. Ejemplo: $\\tan45° + \\tan30° = 1 + \\frac{\\sqrt{3}}{3} \\approx 1{,}577$, mientras que $\\tan75° = 2 + \\sqrt{3} \\approx 3{,}732$."
+        }
+      ]
+    }
+  ]
+}

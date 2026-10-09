@@ -1,0 +1,101 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos múltiples",
+  "glosario": {
+    "Ángulo múltiplo": "Ángulo que es un número entero de veces otro",
+    "Múltiplo": "Resultado de multiplicar un número por un entero",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Radián": "Unidad de ángulo; arco igual al radio",
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Coterminales": "Ángulos con el mismo lado final"
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo múltiplo",
+      "puntos": [
+        {
+          "texto": "Ángulo múltiplo de A = $nA$ con n entero positivo",
+          "explicacion": "Aquí A es un ángulo y n un número entero positivo que indica cuántas veces se toma ese ángulo. Así, 2A es el doble de A, 3A es el triple de A y 4A es el cuádruple. Los ángulos múltiples se estudian porque sus razones trigonométricas se expresan con las razones del ángulo A. Ejemplo: si $A = 25°$, los múltiplos son $2A = 50°$, $3A = 75°$ y $4A = 100°$."
+        }
+      ]
+    },
+    {
+      "titulo": "No es lineal",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}2A \\neq 2\\operatorname{sen}A$ y $\\cos2A \\neq 2\\cos A$",
+          "explicacion": "Duplicar un ángulo no duplica sus razones. Ejemplo: con $A = 30°$, $\\operatorname{sen}2A = \\operatorname{sen}60° = \\frac{\\sqrt{3}}{2} \\approx 0{,}866$, pero $2\\operatorname{sen}30° = 2 \\cdot \\frac{1}{2} = 1$. Con el coseno ocurre lo mismo: $\\cos60° = \\frac{1}{2}$, mientras que $2\\cos30° = \\sqrt{3} \\approx 1{,}732$. Por eso hacen falta fórmulas propias para cada múltiplo."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación de múltiplos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}2A$, $2\\operatorname{sen}A$ y $\\operatorname{sen}^2A$ son distintos",
+          "explicacion": "En $\\operatorname{sen}2A$ el 2 multiplica al ángulo; en $2\\operatorname{sen}A$ multiplica al resultado del seno; y en $\\operatorname{sen}^2A$ el exponente indica elevar al cuadrado el seno de A. Ejemplo: con $A = 30°$, $\\operatorname{sen}2A = \\operatorname{sen}60° \\approx 0{,}866$, $2\\operatorname{sen}A = 1$ y $\\operatorname{sen}^2A = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalo del múltiplo",
+      "puntos": [
+        {
+          "texto": "A agudo ⇒ $0° < 2A < 180°$ y $0° < 3A < 270°$",
+          "explicacion": "Si A está entre 0° y 90°, multiplicar el ángulo por n multiplica también los extremos del intervalo por n. Esto permite saber en qué cuadrantes puede caer el múltiplo. Ejemplo: si A es agudo, 2A puede ser un ángulo del cuadrante I o II, mientras que 4A puede llegar hasta el cuadrante IV."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrante del múltiplo",
+      "puntos": [
+        {
+          "texto": "Cuadrante de $nA$ ⇒ ubicar la medida de $nA$ entre los cuartos de vuelta",
+          "explicacion": "Para conocer el cuadrante de un múltiplo, se calcula su medida y se compara con 90°, 180°, 270° y 360°. Ejemplo: con $A = 50°$, $2A = 100°$ pertenece al cuadrante II; $3A = 150°$, al II; $4A = 200°$, al III; $5A = 250°$, al III; y $6A = 300°$, al IV. El cuadrante determina los signos de las razones del múltiplo."
+        }
+      ]
+    },
+    {
+      "titulo": "Múltiplo en radianes",
+      "puntos": [
+        {
+          "texto": "En radianes: $2A$, $3A$, ... se multiplican igual",
+          "explicacion": "La multiplicación del ángulo no depende de la unidad. Ejemplo: si $A = \\frac{\\pi}{8}$ rad, entonces $2A = \\frac{\\pi}{4}$ rad, que equivale a 45°, y $4A = \\frac{\\pi}{2}$ rad, que equivale a 90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Notable como múltiplo",
+      "puntos": [
+        {
+          "texto": "Elegir A para que $nA$ sea un ángulo notable",
+          "explicacion": "Cuando un problema pide razones de un ángulo múltiplo, conviene identificar si $nA$ coincide con un ángulo cuyas razones se conocen. Ejemplo: si $A = 15°$, entonces $2A = 30°$, $3A = 45°$, $4A = 60°$ y $6A = 90°$; así, $\\operatorname{sen}4A = \\operatorname{sen}60° = \\frac{\\sqrt{3}}{2}$ y $\\tan3A = \\tan45° = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Múltiplo y coterminales",
+      "puntos": [
+        {
+          "texto": "Ángulos múltiples ⇒ $nA$ puede superar 360° y se reduce restando vueltas",
+          "explicacion": "Si $nA$ sobrepasa una vuelta completa, su lado final coincide con el de un ángulo coterminal menor, que se obtiene restando 360° las veces que haga falta. Ejemplo: con $A = 130°$, $3A = 390°$, que es coterminal con $390° - 360° = 30°$, así que $3A$ termina en el cuadrante I."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Duplicar la razón en lugar del ángulo ⇒ error",
+          "explicacion": "Para $\\operatorname{sen}2A$ se duplica el ángulo, no el valor del seno. Ejemplo: con $A = 30°$, escribir $\\operatorname{sen}2A = 2\\operatorname{sen}30° = 1$ es incorrecto, porque $\\operatorname{sen}60° \\approx 0{,}866$."
+        },
+        {
+          "texto": "Suponer que el múltiplo conserva el cuadrante de A",
+          "explicacion": "El cuadrante de $nA$ se decide con la medida de $nA$, no con la de A. Ejemplo: $A = 70°$ es del cuadrante I, pero $2A = 140°$ es del cuadrante II y $4A = 280°$ es del cuadrante IV."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Línea cosecante",
+  "glosario": {
+    "línea cosecante": "Segmento del origen al eje vertical.",
+    "cosecante": "Inverso multiplicativo del seno.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "recta tangente": "Recta que toca la circunferencia en un punto.",
+    "recta secante": "Recta que corta la circunferencia en dos puntos.",
+    "extremo": "Punto donde termina el arco.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "radio vector": "Distancia del origen a un punto.",
+    "perpendicular": "Que forma ángulo recto con otra recta.",
+    "hipotenusa": "Lado más largo del triángulo rectángulo.",
+    "cateto opuesto": "Lado del triángulo frente al ángulo.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "línea secante": "Segmento del origen a un punto del eje.",
+    "reflejo": "Imagen simétrica respecto a una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Línea cosecante",
+      "puntos": [
+        {
+          "texto": "«Línea cosecante»: segmento del origen al punto $Q$ sobre el eje vertical",
+          "explicacion": "Se traza la recta tangente a la circunferencia trigonométrica en el extremo $P$ del arco, y $Q$ es el punto donde esa recta corta al eje vertical. La medida con signo del segmento $OQ$ es la cosecante (csc) del arco. Ejemplo: es como el punto de una pared vertical donde llega un cable tenso que sale rozando una rueda de radio 1 m."
+        },
+        {
+          "texto": "Valor de la línea cosecante = ordenada de $Q$: $\\csc\\theta = y_Q$",
+          "explicacion": "Como la tangente en $P$ es perpendicular a $OP$, el triángulo $OPQ$ es rectángulo en $P$ y el seno (sen) cumple $\\text{sen}\\,\\theta = \\frac{OP}{OQ} = \\frac{1}{OQ}$. Ejemplo: para $P(0{,}6;\\ 0{,}8)$, $OQ = \\frac{1}{0{,}8} = \\frac{5}{4}$ y $Q\\left(0, \\frac{5}{4}\\right)$, con el arco medido en radianes (rad)."
+        },
+        {
+          "texto": "Cosecante = inverso del seno: $\\csc\\theta = \\frac{1}{\\text{sen}\\,\\theta}$",
+          "explicacion": "Esta relación vale mientras el seno no sea cero. Ejemplo: con $\\text{sen}\\,\\theta = \\frac{1}{2}$ resulta $\\csc\\theta = \\frac{1}{\\frac{1}{2}} = 2$."
+        },
+        {
+          "texto": "Línea cosecante hacia arriba ⇒ positiva; hacia abajo ⇒ negativa",
+          "explicacion": "El signo depende de si $Q$ queda arriba o abajo del origen. Ejemplo: $Q(0, 2)$ da una cosecante de $+2$, y $Q(0, -2)$ da $-2$."
+        },
+        {
+          "texto": "Con altura $h$, la hipotenusa es $h\\csc\\theta$",
+          "explicacion": "Es la relación entre cateto opuesto e hipotenusa en un triángulo rectángulo: hipotenusa igual a cateto opuesto por la cosecante. Ejemplo: una rampa que sube 3 m con inclinación de $30^\\circ$ mide $3 \\cdot \\csc 30^\\circ = 3 \\cdot 2 = 6$ m de largo."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo por cuadrante",
+      "puntos": [
+        {
+          "texto": "Arco en «cuadrante I» ⇒ línea cosecante positiva",
+          "explicacion": "El punto $Q$ queda arriba del origen. Ejemplo: $\\csc\\frac{\\pi}{6} = 2 > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante II» ⇒ línea cosecante positiva",
+          "explicacion": "El punto $Q$ sigue arriba del origen. Ejemplo: $\\csc\\frac{5\\pi}{6} = 2 > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante III» ⇒ línea cosecante negativa",
+          "explicacion": "El punto $Q$ queda abajo del origen. Ejemplo: $\\csc\\frac{7\\pi}{6} = -2 < 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante IV» ⇒ línea cosecante negativa",
+          "explicacion": "El punto $Q$ sigue abajo del origen. Ejemplo: $\\csc\\frac{11\\pi}{6} = -2 < 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores y rango",
+      "puntos": [
+        {
+          "texto": "Rango: $\\csc\\theta \\le -1$ o $\\csc\\theta \\ge 1$",
+          "explicacion": "Como $|\\text{sen}\\,\\theta| \\le 1$, su inverso tiene valor absoluto de al menos 1, y nunca queda en el intervalo abierto entre $-1$ y $1$. Ejemplo: no existe un arco con $\\csc\\theta = 0{,}5$, porque exigiría $\\text{sen}\\,\\theta = 2$."
+        },
+        {
+          "texto": "Valores de menor tamaño: $\\csc\\frac{\\pi}{2} = 1$ y $\\csc\\frac{3\\pi}{2} = -1$",
+          "explicacion": "En esos arcos el extremo está en $B$ y en $B'$, donde la tangente en $P$ es horizontal y corta el eje vertical en el mismo punto. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{2} = 1$ da $\\csc\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "No existe en $0$, $\\pi$ ni $2\\pi$",
+          "explicacion": "La tangente en $P$ es vertical y paralela al eje vertical, así que nunca lo corta. Ejemplo: $\\csc\\pi$ no está definida, porque $\\text{sen}\\,\\pi = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación por cuadrante",
+      "puntos": [
+        {
+          "texto": "En el primer cuadrante, la línea cosecante ↓ hacia $1$",
+          "explicacion": "Al crecer el arco de $0$ a $\\frac{\\pi}{2}$, el seno sube hacia 1 y la cosecante baja desde valores muy grandes. Ejemplo: $\\csc\\frac{\\pi}{6} = 2$ es mayor que $\\csc\\frac{\\pi}{3} \\approx 1{,}15$."
+        },
+        {
+          "texto": "En el segundo cuadrante, la línea cosecante ↑ desde $1$",
+          "explicacion": "Al crecer el arco de $\\frac{\\pi}{2}$ a $\\pi$, el seno baja hacia 0 y la cosecante crece sin límite. Ejemplo: $\\csc\\frac{2\\pi}{3} \\approx 1{,}15$ es menor que $\\csc\\frac{5\\pi}{6} = 2$."
+        },
+        {
+          "texto": "En el tercer cuadrante, la línea cosecante ↑ hacia $-1$",
+          "explicacion": "Al crecer el arco de $\\pi$ a $\\frac{3\\pi}{2}$, la cosecante pasa de valores muy negativos a $-1$. Ejemplo: $\\csc\\frac{7\\pi}{6} = -2$ es menor que $\\csc\\frac{4\\pi}{3} \\approx -1{,}15$."
+        },
+        {
+          "texto": "En el cuarto cuadrante, la línea cosecante ↓ desde $-1$",
+          "explicacion": "Al crecer el arco de $\\frac{3\\pi}{2}$ a $2\\pi$, la cosecante baja de $-1$ hacia valores muy negativos. Ejemplo: $\\csc\\frac{5\\pi}{3} \\approx -1{,}15$ es mayor que $\\csc\\frac{11\\pi}{6} = -2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos negativos",
+      "puntos": [
+        {
+          "texto": "Arco negativo: la línea cosecante cambia de signo",
+          "explicacion": "El extremo de $-\\theta$ es el reflejo del de $\\theta$ en el eje horizontal, y su ordenada cambia de signo. Ejemplo: $\\csc\\left(-\\frac{\\pi}{6}\\right) = -\\csc\\frac{\\pi}{6} = -2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresiones con cosecante",
+      "puntos": [
+        {
+          "texto": "Rango de $3\\csc\\theta + 1$: $E \\le -2$ o $E \\ge 4$",
+          "explicacion": "Se parte de $\\csc\\theta \\ge 1$ o $\\csc\\theta \\le -1$, se multiplica por 3 y luego se suma 1. Ejemplo: $3(1) + 1 = 4$ y $3(-1) + 1 = -2$, así que $E$ no toma valores entre $-2$ y $4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La línea secante se mide sobre el eje horizontal",
+          "explicacion": "La línea cosecante se mide sobre el eje vertical, y la secante sobre el horizontal, aunque ambas se obtienen con la tangente en $P$. Ejemplo: para $\\theta = \\frac{\\pi}{6}$, la cosecante vale $2$ y la secante vale $\\frac{2}{\\sqrt{3}} \\approx 1{,}15$."
+        },
+        {
+          "texto": "Línea cosecante ≠ recta secante de una circunferencia",
+          "explicacion": "La recta secante corta una circunferencia en dos puntos, y la línea cosecante es un segmento con signo del círculo trigonométrico. Ejemplo: una recta que pasa por dos puntos de una pista circular es secante en el primer sentido."
+        }
+      ]
+    }
+  ]
+}

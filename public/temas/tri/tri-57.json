@@ -1,0 +1,136 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Función coseno",
+  "glosario": {
+    "función coseno": "Regla que asigna a un arco su abscisa.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "extremo": "Punto donde termina el arco.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "cosenoide": "Gráfica de la función coseno.",
+    "senoide": "Gráfica de la función seno.",
+    "máximo": "Mayor valor que toma la curva.",
+    "mínimo": "Menor valor que toma la curva.",
+    "cero de una función": "Valor de x donde la función vale cero.",
+    "función par": "No cambia al invertir el signo.",
+    "periodo": "Longitud tras la cual la curva se repite.",
+    "complemento": "Lo que falta para completar noventa grados.",
+    "reflejo": "Imagen simétrica respecto a una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Función coseno",
+      "puntos": [
+        {
+          "texto": "«Función coseno»: $g(x) = \\cos x$ asigna a cada arco la abscisa de su extremo",
+          "explicacion": "El coseno (cos) del arco $x$, medido en radianes (rad), es la abscisa del extremo en la circunferencia trigonométrica. Ejemplo: para $x = \\frac{\\pi}{3}$ el extremo es $\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$ y $g\\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Está definida para todo número real",
+          "explicacion": "Todo arco tiene un extremo con abscisa. Ejemplo: $g(100)$ y $g\\left(-\\frac{\\pi}{4}\\right)$ existen. Los conjuntos de entradas y salidas se estudian con detalle como dominio y rango."
+        },
+        {
+          "texto": "Sus valores quedan entre $-1$ y $1$",
+          "explicacion": "La abscisa de un punto de la circunferencia de radio 1 no supera 1 en valor absoluto. Ejemplo: $g(x) = -2$ no tiene solución, y $g(x) = -0{,}5$ sí la tiene."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores notables",
+      "puntos": [
+        {
+          "texto": "$g\\left(\\frac{\\pi}{6}\\right) = \\frac{\\sqrt{3}}{2}$",
+          "explicacion": "El extremo del arco $\\frac{\\pi}{6}$ tiene abscisa $\\frac{\\sqrt{3}}{2}$. Ejemplo: $\\frac{\\sqrt{3}}{2} \\approx 0{,}87$, cercano al radio completo porque el arco es pequeño."
+        },
+        {
+          "texto": "$g\\left(\\frac{\\pi}{4}\\right) = \\frac{\\sqrt{2}}{2}$",
+          "explicacion": "El extremo del arco $\\frac{\\pi}{4}$ tiene abscisa y ordenada iguales, y $x^2 + y^2 = 1$ da $2x^2 = 1$. Ejemplo: $x = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2} \\approx 0{,}71$."
+        },
+        {
+          "texto": "$g\\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2}$",
+          "explicacion": "El extremo del arco $\\frac{\\pi}{3}$ tiene abscisa $\\frac{1}{2}$. Ejemplo: $\\frac{1}{2}$ es menor que $g\\left(\\frac{\\pi}{6}\\right) \\approx 0{,}87$, porque el extremo se acerca al eje vertical."
+        },
+        {
+          "texto": "$g(0) = 1$, $g\\left(\\frac{\\pi}{2}\\right) = 0$, $g(\\pi) = -1$",
+          "explicacion": "Son los valores en los puntos donde el extremo está sobre un eje. Ejemplo: $g(0) = 1$ y $g(\\pi) = -1$ marcan el máximo y el mínimo en ese tramo."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica",
+      "puntos": [
+        {
+          "texto": "La gráfica es la cosenoide: pasa por $(0, 1)$",
+          "explicacion": "Como $g(0) = 1$, la curva parte de su máximo y baja. Ejemplo: $g\\left(\\frac{\\pi}{3}\\right) = 0{,}5$ ya queda por debajo de 1."
+        },
+        {
+          "texto": "Máximo $1$ en $x = 2k\\pi$",
+          "explicacion": "El extremo está en $A(1,0)$ tras $k$ vueltas completas. Ejemplo: $g(0) = 1$ y $g(2\\pi) = 1$."
+        },
+        {
+          "texto": "Mínimo $-1$ en $x = \\pi + 2k\\pi$",
+          "explicacion": "El extremo está en $A'(-1,0)$. Ejemplo: $g(\\pi) = -1$ y $g(3\\pi) = -1$."
+        },
+        {
+          "texto": "Ceros en $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "El extremo está sobre el eje vertical. Ejemplo: $g\\left(\\frac{\\pi}{2}\\right) = g\\left(\\frac{3\\pi}{2}\\right) = g\\left(-\\frac{\\pi}{2}\\right) = 0$."
+        },
+        {
+          "texto": "$g$ ↓ en $[0, \\pi]$",
+          "explicacion": "El extremo se desplaza de $A$ a $A'$ por arriba. Ejemplo: $g\\left(\\frac{\\pi}{3}\\right) = 0{,}5$ es mayor que $g\\left(\\frac{2\\pi}{3}\\right) = -0{,}5$."
+        },
+        {
+          "texto": "$g$ ↑ en $[\\pi, 2\\pi]$",
+          "explicacion": "El extremo regresa de $A'$ a $A$ por abajo. Ejemplo: $g\\left(\\frac{4\\pi}{3}\\right) = -0{,}5$ es menor que $g\\left(\\frac{5\\pi}{3}\\right) = 0{,}5$."
+        },
+        {
+          "texto": "$g$ positiva en $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, negativa en $\\left(\\frac{\\pi}{2}, \\frac{3\\pi}{2}\\right)$",
+          "explicacion": "El signo sigue al del semiplano donde queda el extremo. Ejemplo: $g(0) = 1 > 0$ y $g(\\pi) = -1 < 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Función par: $g(-x) = g(x)$",
+          "explicacion": "El extremo de $-x$ es el reflejo del de $x$ en el eje horizontal y conserva su abscisa. Ejemplo: $g\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2} = g\\left(\\frac{\\pi}{3}\\right)$."
+        },
+        {
+          "texto": "Se repite cada $2\\pi$: $g(x + 2\\pi) = g(x)$",
+          "explicacion": "Una vuelta completa devuelve el extremo al mismo punto. Ejemplo: $g\\left(\\frac{13\\pi}{3}\\right) = g\\left(\\frac{\\pi}{3} + 4\\pi\\right) = \\frac{1}{2}$. Esa propiedad se estudia como periodo."
+        },
+        {
+          "texto": "Relación con el seno (sen): $g(x) = \\text{sen}\\left(\\frac{\\pi}{2} - x\\right)$",
+          "explicacion": "El coseno de un arco es el seno de su complemento. Ejemplo: con $x = \\frac{\\pi}{3}$, $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2} = g\\left(\\frac{\\pi}{3}\\right)$."
+        },
+        {
+          "texto": "La cosenoide es la senoide desplazada: $g(x) = \\text{sen}\\left(x + \\frac{\\pi}{2}\\right)$",
+          "explicacion": "Cada valor del coseno aparece en el seno $\\frac{\\pi}{2}$ antes. Ejemplo: $g(0) = 1 = \\text{sen}\\,\\frac{\\pi}{2}$ y $g\\left(\\frac{\\pi}{2}\\right) = 0 = \\text{sen}\\,\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicación cotidiana",
+      "puntos": [
+        {
+          "texto": "Posición horizontal de un asiento de rueda de la fortuna: $d(x) = 10\\,g(x)$",
+          "explicacion": "La rueda tiene radio 10 m y $d$ se mide desde el eje vertical del centro, siendo $x$ el arco recorrido desde el punto más a la derecha. Ejemplo: en $x = 0$, $d = 10$ m a la derecha; en $x = \\pi$, $d = -10$ m, es decir, 10 m a la izquierda."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "Función coseno ≠ función seno",
+          "explicacion": "Ambas tienen la misma forma, pero la coseno parte de 1 y la seno parte de 0. Ejemplo: $g(0) = \\cos 0 = 1$ y $\\text{sen}\\,0 = 0$."
+        }
+      ]
+    }
+  ]
+}

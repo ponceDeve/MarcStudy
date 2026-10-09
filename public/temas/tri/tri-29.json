@@ -1,0 +1,155 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulo doble",
+  "glosario": {
+    "Ángulo doble": "Ángulo que mide el doble de otro",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Identidad": "Igualdad que se cumple para todo valor permitido",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Condensar": "Reducir una expresión a una sola razón",
+    "Cuadrante": "Cada una de las cuatro regiones del plano"
+  },
+  "theory": [
+    {
+      "titulo": "Origen del ángulo doble",
+      "puntos": [
+        {
+          "texto": "Ángulo doble: $2A = A + A$",
+          "explicacion": "Las fórmulas del ángulo doble salen de las de la suma al tomar los dos ángulos iguales, $B = A$. Ejemplo: en $\\operatorname{sen}(A + B) = \\operatorname{sen}A\\cos B + \\cos A\\operatorname{sen}B$, al reemplazar B por A queda $\\operatorname{sen}2A = \\operatorname{sen}A\\cos A + \\cos A\\operatorname{sen}A = 2\\operatorname{sen}A\\cos A$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno del ángulo doble",
+      "puntos": [
+        {
+          "texto": "Seno doble: $\\operatorname{sen}2A = 2\\operatorname{sen}A\\cos A$",
+          "explicacion": "Es el doble del producto del seno por el coseno del ángulo A. Ejemplo: con $A = 30°$, $\\operatorname{sen}60° = 2 \\cdot \\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}$, que es el valor conocido del seno de 60°."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno doble: diferencia",
+      "puntos": [
+        {
+          "texto": "Coseno doble: $\\cos2A = \\cos^2A - \\operatorname{sen}^2A$",
+          "explicacion": "Sale de $\\cos(A + B) = \\cos A\\cos B - \\operatorname{sen}A\\operatorname{sen}B$ con $B = A$. Ejemplo: con $A = 30°$, $\\cos60° = \\left(\\frac{\\sqrt{3}}{2}\\right)^2 - \\left(\\frac{1}{2}\\right)^2 = \\frac{3}{4} - \\frac{1}{4} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno doble con coseno",
+      "puntos": [
+        {
+          "texto": "Coseno doble: $\\cos2A = 2\\cos^2A - 1$",
+          "explicacion": "Se obtiene de la forma anterior al reemplazar $\\operatorname{sen}^2A = 1 - \\cos^2A$. Sirve cuando solo se conoce el coseno de A. Ejemplo: con $A = 30°$, $\\cos60° = 2 \\cdot \\frac{3}{4} - 1 = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno doble con seno",
+      "puntos": [
+        {
+          "texto": "Coseno doble: $\\cos2A = 1 - 2\\operatorname{sen}^2A$",
+          "explicacion": "Se obtiene al reemplazar $\\cos^2A = 1 - \\operatorname{sen}^2A$ en $\\cos^2A - \\operatorname{sen}^2A$. Sirve cuando solo se conoce el seno de A. Ejemplo: con $A = 30°$, $\\cos60° = 1 - 2 \\cdot \\frac{1}{4} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente del ángulo doble",
+      "puntos": [
+        {
+          "texto": "Tangente doble: $\\tan2A = \\frac{2\\tan A}{1 - \\tan^2A}$",
+          "explicacion": "Sale de la fórmula de la tangente de la suma con $B = A$; el denominador debe ser distinto de cero. Ejemplo: con $A = 30°$ y $\\tan30° = \\frac{\\sqrt{3}}{3}$, $\\tan60° = \\frac{2 \\cdot \\frac{\\sqrt{3}}{3}}{1 - \\frac{1}{3}} = \\frac{\\frac{2\\sqrt{3}}{3}}{\\frac{2}{3}} = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente del ángulo doble",
+      "puntos": [
+        {
+          "texto": "Cotangente doble: $\\cot2A = \\frac{\\cot^2A - 1}{2\\cot A}$",
+          "explicacion": "Sale de la fórmula de la cotangente de la suma con $B = A$. Ejemplo: con $A = 30°$ y $\\cot30° = \\sqrt{3}$, $\\cot60° = \\frac{3 - 1}{2\\sqrt{3}} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno doble con tangente",
+      "puntos": [
+        {
+          "texto": "Seno doble: $\\operatorname{sen}2A = \\frac{2\\tan A}{1 + \\tan^2A}$",
+          "explicacion": "Es útil cuando el dato es la tangente de A. Ejemplo: si $\\tan A = \\frac{3}{4}$, $\\operatorname{sen}2A = \\frac{2 \\cdot \\frac{3}{4}}{1 + \\frac{9}{16}} = \\frac{\\frac{3}{2}}{\\frac{25}{16}} = \\frac{24}{25}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno doble con tangente",
+      "puntos": [
+        {
+          "texto": "Coseno doble: $\\cos2A = \\frac{1 - \\tan^2A}{1 + \\tan^2A}$",
+          "explicacion": "Es útil cuando el dato es la tangente de A. Ejemplo: si $\\tan A = \\frac{3}{4}$, $\\cos2A = \\frac{1 - \\frac{9}{16}}{1 + \\frac{9}{16}} = \\frac{\\frac{7}{16}}{\\frac{25}{16}} = \\frac{7}{25}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción de potencias",
+      "puntos": [
+        {
+          "texto": "$1 + \\cos2A = 2\\cos^2A$ y $1 - \\cos2A = 2\\operatorname{sen}^2A$",
+          "explicacion": "Se obtienen despejando $\\cos^2A$ y $\\operatorname{sen}^2A$ de las fórmulas del coseno doble; permiten reemplazar un cuadrado por una razón del ángulo doble. Ejemplo: con $A = 30°$, $1 + \\cos60° = \\frac{3}{2} = 2 \\cdot \\frac{3}{4}$, y $1 - \\cos60° = \\frac{1}{2} = 2 \\cdot \\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato del seno",
+      "puntos": [
+        {
+          "texto": "Dato de $\\operatorname{sen}A$ ⇒ hallar $\\cos A$ con un triángulo y aplicar la fórmula",
+          "explicacion": "Para un ángulo agudo se construye el triángulo rectángulo con ese seno, se halla el lado que falta y se calculan las razones de 2A. Ejemplo: si $\\operatorname{sen}A = \\frac{3}{5}$, el triángulo 3-4-5 da $\\cos A = \\frac{4}{5}$. Entonces $\\operatorname{sen}2A = 2 \\cdot \\frac{3}{5} \\cdot \\frac{4}{5} = \\frac{24}{25}$ y $\\cos2A = \\frac{16}{25} - \\frac{9}{25} = \\frac{7}{25}$, de modo que $\\tan2A = \\frac{24}{7}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato de la tangente",
+      "puntos": [
+        {
+          "texto": "Dato de $\\tan A$ ⇒ usar las fórmulas en tangente",
+          "explicacion": "Se evita construir el triángulo, porque tanto el seno como el coseno doble se expresan solo con la tangente. Ejemplo: si $\\tan A = \\frac{4}{3}$, $\\operatorname{sen}2A = \\frac{2 \\cdot \\frac{4}{3}}{1 + \\frac{16}{9}} = \\frac{24}{25}$ y $\\cos2A = \\frac{1 - \\frac{16}{9}}{1 + \\frac{16}{9}} = -\\frac{7}{25}$. El coseno es negativo porque A supera 45° y $2A$ supera 90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato del coseno",
+      "puntos": [
+        {
+          "texto": "Dato de $\\cos A$ ⇒ usar $\\cos2A = 2\\cos^2A - 1$",
+          "explicacion": "Es la forma más directa cuando solo se conoce el coseno. Ejemplo: si $\\cos A = \\frac{5}{13}$, $\\cos2A = 2 \\cdot \\frac{25}{169} - 1 = \\frac{50}{169} - \\frac{169}{169} = -\\frac{119}{169}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condensar productos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}A\\cos A = \\frac{1}{2}\\operatorname{sen}2A$",
+          "explicacion": "Es el despeje de la fórmula del seno doble y permite reemplazar un producto por una sola razón. Ejemplo: $\\operatorname{sen}15°\\cos15° = \\frac{1}{2}\\operatorname{sen}30° = \\frac{1}{2} \\cdot \\frac{1}{2} = \\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\cos2A = \\cos^2A + \\operatorname{sen}^2A$ ⇒ error",
+          "explicacion": "En la fórmula del coseno doble los dos cuadrados se restan; si se suman, el resultado es siempre 1. Ejemplo: con $A = 30°$, $\\frac{3}{4} + \\frac{1}{4} = 1$, mientras que $\\cos60° = \\frac{1}{2}$."
+        },
+        {
+          "texto": "$\\cos2A = 2\\cos^2A + 1$ ⇒ error de signo",
+          "explicacion": "La fórmula correcta resta 1. Ejemplo: con $A = 30°$, $2 \\cdot \\frac{3}{4} + 1 = \\frac{5}{2}$, un valor imposible para un coseno, mientras que $2 \\cdot \\frac{3}{4} - 1 = \\frac{1}{2}$ es correcto."
+        }
+      ]
+    }
+  ]
+}

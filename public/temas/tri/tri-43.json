@@ -1,0 +1,159 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulo de elevación",
+  "glosario": {
+    "ángulo de elevación": "Ángulo sobre la horizontal hacia un objeto alto.",
+    "línea horizontal": "Recta paralela al suelo por el ojo.",
+    "línea visual": "Recta que une el ojo con el objeto.",
+    "observador": "Persona que mira un objeto desde un punto.",
+    "cateto opuesto": "Lado del triángulo frente al ángulo.",
+    "cateto adyacente": "Lado del triángulo junto al ángulo.",
+    "hipotenusa": "Lado más largo del triángulo rectángulo.",
+    "tangente": "Razón entre cateto opuesto y adyacente.",
+    "seno": "Razón entre cateto opuesto e hipotenusa.",
+    "coseno": "Razón entre cateto adyacente e hipotenusa.",
+    "cotangente": "Razón entre cateto adyacente y opuesto.",
+    "ángulos alternos internos": "Ángulos iguales entre paralelas y una transversal.",
+    "ángulo de depresión": "Ángulo bajo la horizontal hacia un objeto bajo.",
+    "ángulos complementarios": "Ángulos cuya suma es noventa grados."
+  },
+  "theory": [
+    {
+      "titulo": "Ángulo de elevación",
+      "puntos": [
+        {
+          "texto": "«Ángulo de elevación»: ángulo sobre la horizontal hacia un objeto alto",
+          "explicacion": "Se mide entre la línea horizontal que pasa por el ojo del observador y la línea visual dirigida a un objeto ubicado por encima de ese nivel. Ejemplo: al mirar la punta de un poste más alto que tus ojos, el ángulo que forma tu mirada con la horizontal es el de elevación."
+        },
+        {
+          "texto": "Línea horizontal: referencia que pasa por el ojo del observador",
+          "explicacion": "La referencia es el nivel del ojo y no el suelo. Ejemplo: si los ojos están a 1,6 m del piso, la horizontal está a 1,6 m de altura, y toda altura del objeto se cuenta desde ese nivel."
+        },
+        {
+          "texto": "Línea visual: recta que une el ojo con el objeto",
+          "explicacion": "Es el otro lado del ángulo y apunta al punto observado, como la cima de una torre o el extremo de un poste. Su longitud es la distancia en línea recta entre el ojo y ese punto."
+        },
+        {
+          "texto": "El ángulo se mide hacia arriba desde la horizontal",
+          "explicacion": "La horizontal es el lado de partida y la línea visual es el lado final. No se mide desde la vertical ni desde el suelo. Ejemplo: si la mirada sube 30° respecto a la horizontal, el ángulo de elevación es $30^\\circ$."
+        },
+        {
+          "texto": "Rango del ángulo: $0^\\circ < \\alpha < 90^\\circ$",
+          "explicacion": "Con $0^\\circ$ el objeto está sobre la horizontal y no hay elevación; con $90^\\circ$ el objeto estaría justo encima del observador y la distancia horizontal sería nula, por lo que no se forma triángulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo rectángulo asociado",
+      "puntos": [
+        {
+          "texto": "Cateto opuesto = altura del objeto sobre el nivel del ojo",
+          "explicacion": "El triángulo tiene un vértice en el ojo y otro en el objeto, y su lado vertical mide cuánto sube el objeto respecto de la horizontal. Ejemplo: si la punta de un poste está a 6,6 m del suelo y los ojos a 1,6 m, el cateto opuesto mide $6{,}6 - 1{,}6 = 5$ m."
+        },
+        {
+          "texto": "Cateto adyacente = distancia horizontal hasta el pie del objeto",
+          "explicacion": "Es el lado que se apoya sobre la horizontal del observador. Ejemplo: si el observador está a 20 m de la base de un edificio, el cateto adyacente mide 20 m."
+        },
+        {
+          "texto": "Hipotenusa = línea visual",
+          "explicacion": "Es el lado más largo del triángulo y une el ojo con el objeto. Ejemplo: si el cateto opuesto mide 3 m y el adyacente 4 m, la línea visual mide $\\sqrt{3^2 + 4^2} = 5$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura con tangente",
+      "puntos": [
+        {
+          "texto": "Altura = distancia × tangente (tan): $h = d\\,\\tan\\alpha$",
+          "explicacion": "La tangente relaciona el cateto opuesto con el adyacente. Ejemplo: un árbol se ve con elevación de $45^\\circ$ desde 20 m de su base; entonces $h = 20 \\cdot \\tan 45^\\circ = 20 \\cdot 1 = 20$ m, es decir, la copa está 20 m sobre el nivel del ojo."
+        },
+        {
+          "texto": "Distancia = altura dividida por la tangente: $d = \\frac{h}{\\tan\\alpha}$",
+          "explicacion": "Se despeja la distancia horizontal cuando se conoce la altura. Ejemplo: una antena se eleva 30 m sobre el nivel del ojo y se ve con $60^\\circ$; entonces $d = \\frac{30}{\\tan 60^\\circ} = \\frac{30}{\\sqrt{3}} = 10\\sqrt{3} \\approx 17{,}3$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura con seno",
+      "puntos": [
+        {
+          "texto": "Altura = línea visual × seno (sen): $h = L\\,\\text{sen}\\,\\alpha$",
+          "explicacion": "El seno relaciona el cateto opuesto con la hipotenusa, y sirve cuando se conoce la longitud de la línea visual. Ejemplo: un volantín con 50 m de hilo tenso forma $30^\\circ$ con la horizontal; entonces $h = 50 \\cdot \\text{sen}\\,30^\\circ = 50 \\cdot \\frac{1}{2} = 25$ m sobre las manos."
+        }
+      ]
+    },
+    {
+      "titulo": "Distancia con coseno",
+      "puntos": [
+        {
+          "texto": "Distancia horizontal = línea visual × coseno (cos): $d = L\\cos\\alpha$",
+          "explicacion": "El coseno relaciona el cateto adyacente con la hipotenusa. Ejemplo: una cuerda tensa de 40 m forma $60^\\circ$ con la horizontal; entonces $d = 40 \\cdot \\cos 60^\\circ = 40 \\cdot \\frac{1}{2} = 20$ m de distancia horizontal."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura total",
+      "puntos": [
+        {
+          "texto": "Altura total = $h$ + altura del observador",
+          "explicacion": "La altura obtenida con la trigonometría se mide desde el ojo, así que falta sumar lo que hay entre el suelo y el ojo. Ejemplo: a 40 m de un edificio se ve su azotea con $45^\\circ$ y los ojos están a 1,6 m; entonces $h = 40 \\cdot \\tan 45^\\circ = 40$ m y la altura total es $40 + 1{,}6 = 41{,}6$ m."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación del ángulo",
+      "puntos": [
+        {
+          "texto": "Al acercarse al objeto, el ángulo de elevación ↑",
+          "explicacion": "La altura sobre el ojo se mantiene y la distancia horizontal disminuye, por lo que la tangente crece. Ejemplo: una torre sobresale 30 m del nivel del ojo; a 30 m se tiene $\\tan\\alpha = 1$, o sea $45^\\circ$, y a $10\\sqrt{3}$ m se tiene $\\tan\\alpha = \\frac{30}{10\\sqrt{3}} = \\sqrt{3}$, o sea $60^\\circ$."
+        },
+        {
+          "texto": "Al alejarse del objeto, el ángulo de elevación ↓",
+          "explicacion": "La distancia horizontal aumenta con la misma altura, y la tangente se reduce. Ejemplo: con la misma torre de 30 m sobre el ojo, a $30\\sqrt{3}$ m se tiene $\\tan\\alpha = \\frac{30}{30\\sqrt{3}} = \\frac{1}{\\sqrt{3}}$, o sea $30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos observaciones",
+      "puntos": [
+        {
+          "texto": "Datos: elevación de $30^\\circ$, avance de 20 m, elevación de $60^\\circ$",
+          "explicacion": "Un observador ve la cima de una torre con $30^\\circ$ de elevación desde el punto $A$; luego avanza 20 m hacia la base y la ve con $60^\\circ$ desde el punto $B$. Se pide la altura $h$ de la cima sobre el nivel del ojo."
+        },
+        {
+          "texto": "Estrategia: expresar cada distancia con cotangente (cot) y restar",
+          "explicacion": "La distancia horizontal es $d = h\\,\\cot\\alpha$. Desde $A$ resulta $d_A = h\\,\\cot 30^\\circ = h\\sqrt{3}$ y desde $B$ resulta $d_B = h\\,\\cot 60^\\circ = \\frac{h}{\\sqrt{3}}$. Como avanzó 20 m, $d_A - d_B = 20$."
+        },
+        {
+          "texto": "Operación: $h\\sqrt{3} - \\frac{h}{\\sqrt{3}} = 20$",
+          "explicacion": "Con denominador común: $\\frac{3h - h}{\\sqrt{3}} = \\frac{2h}{\\sqrt{3}} = 20$. Despejando: $h = \\frac{20\\sqrt{3}}{2} = 10\\sqrt{3}$."
+        },
+        {
+          "texto": "Resultado: $h = 10\\sqrt{3} \\approx 17{,}3$ m",
+          "explicacion": "La cima está unas 17,3 m sobre el nivel del ojo. Si el observador tiene los ojos a 1,6 m, la torre mide aproximadamente $17{,}3 + 1{,}6 = 18{,}9$ m."
+        },
+        {
+          "texto": "Verificación: las distancias deben restar 20 m",
+          "explicacion": "Con $h = 10\\sqrt{3}$: $d_B = \\frac{10\\sqrt{3}}{\\sqrt{3}} = 10$ m y $d_A = 10\\sqrt{3} \\cdot \\sqrt{3} = 30$ m. La diferencia es $30 - 10 = 20$ m, que coincide con el avance."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La elevación no se mide desde la vertical: $90^\\circ - \\alpha$",
+          "explicacion": "El ángulo con la vertical es el complemento del de elevación. Ejemplo: si la elevación es $30^\\circ$, el ángulo entre la línea visual y la vertical mide $90^\\circ - 30^\\circ = 60^\\circ$, y no debe usarse como elevación."
+        },
+        {
+          "texto": "Elevación ≠ «depresión»: cambia el lado de la horizontal",
+          "explicacion": "La elevación se mide hacia arriba de la horizontal y la depresión hacia abajo, y esta última se estudia como tema aparte. Ejemplo: mirar la cima de un cerro es elevación; mirar desde la cima un pueblo en el valle es depresión."
+        },
+        {
+          "texto": "Observación mutua: elevación desde $A$ = depresión desde el objeto",
+          "explicacion": "Las dos horizontales son paralelas y la línea visual es una transversal, así que los ángulos alternos internos son iguales. Ejemplo: si desde el suelo se ve una azotea con elevación de $40^\\circ$, desde la azotea se ve al observador con depresión de $40^\\circ$."
+        }
+      ]
+    }
+  ]
+}

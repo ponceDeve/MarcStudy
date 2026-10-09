@@ -1,0 +1,152 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Línea coseno",
+  "glosario": {
+    "línea coseno": "Segmento horizontal que mide la abscisa.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "extremo": "Punto donde termina el arco.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "radio vector": "Distancia del origen a un punto.",
+    "eje de cosenos": "Eje horizontal del círculo trigonométrico.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "rango": "Conjunto de valores que toma una expresión.",
+    "línea seno": "Segmento vertical que mide la ordenada.",
+    "reflejo": "Imagen simétrica respecto a una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Línea coseno",
+      "puntos": [
+        {
+          "texto": "«Línea coseno»: segmento horizontal del extremo del arco al eje vertical",
+          "explicacion": "Se traza desde el extremo $P$ del arco $\\theta$, sobre la circunferencia trigonométrica de radio 1, hasta el eje de ordenadas. Su medida con signo es el coseno (cos) del arco. Ejemplo: la sombra horizontal de un punto del borde de un reloj sobre la línea de las 12 a las 6 representa esa línea."
+        },
+        {
+          "texto": "Valor de la línea coseno = abscisa del extremo: $\\cos\\theta = x_P$",
+          "explicacion": "Con radio 1, el cociente entre la abscisa y el radio vector es igual a la abscisa. Ejemplo: para $\\theta = \\frac{\\pi}{6}$ radianes (rad), el extremo es $P\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$, y entonces $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Eje de cosenos = eje horizontal",
+          "explicacion": "Sobre el eje de abscisas se leen los valores de la línea coseno, de $-1$ a $1$. Ejemplo: el punto $(-0{,}6, 0)$ de ese eje marca un coseno de $-0{,}6$."
+        },
+        {
+          "texto": "Línea coseno hacia la derecha ⇒ positiva; hacia la izquierda ⇒ negativa",
+          "explicacion": "El signo depende de si el extremo está a la derecha o a la izquierda del eje vertical. Ejemplo: un extremo con abscisa $0{,}8$ da $+0{,}8$, y uno con abscisa $-0{,}8$ da $-0{,}8$."
+        },
+        {
+          "texto": "Con radio $r$, la abscisa es $r\\cos\\theta$",
+          "explicacion": "En una circunferencia de radio $r$, el desplazamiento horizontal del extremo respecto al centro se escala por $r$. Ejemplo: en una rueda de la fortuna de radio 10 m, un asiento en $\\theta = \\frac{\\pi}{3}$ está a $10 \\cdot \\frac{1}{2} = 5$ m a la derecha del eje vertical del centro."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo por cuadrante",
+      "puntos": [
+        {
+          "texto": "Arco en «cuadrante I» ⇒ línea coseno positiva",
+          "explicacion": "El extremo está a la derecha del eje vertical. Ejemplo: $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2} > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante II» ⇒ línea coseno negativa",
+          "explicacion": "El extremo pasa a la izquierda del eje vertical. Ejemplo: $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2} < 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante III» ⇒ línea coseno negativa",
+          "explicacion": "El extremo sigue a la izquierda del eje vertical. Ejemplo: $\\cos\\frac{7\\pi}{6} = -\\frac{\\sqrt{3}}{2} < 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante IV» ⇒ línea coseno positiva",
+          "explicacion": "El extremo vuelve a la derecha del eje vertical. Ejemplo: $\\cos\\frac{5\\pi}{3} = \\frac{1}{2} > 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores extremos",
+      "puntos": [
+        {
+          "texto": "Rango: $-1 \\le \\cos\\theta \\le 1$",
+          "explicacion": "La abscisa de un punto de la circunferencia de radio 1 no puede superar 1 ni bajar de $-1$. Ejemplo: no existe un arco con $\\cos\\theta = -2$."
+        },
+        {
+          "texto": "Máximo: $\\cos 0 = 1$",
+          "explicacion": "El extremo está en el punto más a la derecha, $A(1,0)$. Ejemplo: $\\cos 2\\pi = 1$ también, porque una vuelta completa regresa a $A$."
+        },
+        {
+          "texto": "Mínimo: $\\cos\\pi = -1$",
+          "explicacion": "El extremo está en el punto más a la izquierda, $A'(-1,0)$. Ejemplo: la línea coseno de $\\pi$ tiene longitud 1 y apunta hacia la izquierda."
+        },
+        {
+          "texto": "Extremo sobre el eje vertical ⇒ línea coseno nula",
+          "explicacion": "El extremo tiene abscisa 0, así que el segmento horizontal se reduce a un punto. Ejemplo: $\\cos\\frac{\\pi}{2} = 0$ y $\\cos\\frac{3\\pi}{2} = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación por cuadrante",
+      "puntos": [
+        {
+          "texto": "En el primer cuadrante, la línea coseno ↓ de $1$ a $0$",
+          "explicacion": "Al crecer el arco de $0$ a $\\frac{\\pi}{2}$, el extremo se acerca al eje vertical. Ejemplo: $\\cos\\frac{\\pi}{6} \\approx 0{,}87$ es mayor que $\\cos\\frac{\\pi}{3} = 0{,}5$."
+        },
+        {
+          "texto": "En el segundo cuadrante, la línea coseno ↓ de $0$ a $-1$",
+          "explicacion": "Al crecer el arco de $\\frac{\\pi}{2}$ a $\\pi$, el extremo se aleja hacia la izquierda. Ejemplo: $\\cos\\frac{2\\pi}{3} = -0{,}5$ es mayor que $\\cos\\frac{5\\pi}{6} \\approx -0{,}87$."
+        },
+        {
+          "texto": "En el tercer cuadrante, la línea coseno ↑ de $-1$ a $0$",
+          "explicacion": "Al crecer el arco de $\\pi$ a $\\frac{3\\pi}{2}$, el extremo regresa hacia el eje vertical. Ejemplo: $\\cos\\frac{7\\pi}{6} \\approx -0{,}87$ es menor que $\\cos\\frac{4\\pi}{3} = -0{,}5$."
+        },
+        {
+          "texto": "En el cuarto cuadrante, la línea coseno ↑ de $0$ a $1$",
+          "explicacion": "Al crecer el arco de $\\frac{3\\pi}{2}$ a $2\\pi$, el extremo se desplaza hacia la derecha. Ejemplo: $\\cos\\frac{5\\pi}{3} = 0{,}5$ es menor que $\\cos\\frac{11\\pi}{6} \\approx 0{,}87$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparar cosenos",
+      "puntos": [
+        {
+          "texto": "En cuadrantes I y II, mayor arco ⇒ menor coseno",
+          "explicacion": "El extremo se desplaza hacia la izquierda y el orden de los arcos se invierte en los cosenos. Ejemplo: $0{,}5 < 1$ y $\\cos 0{,}5 \\approx 0{,}88 > \\cos 1 \\approx 0{,}54$; también $2 < 3$ y $\\cos 2 \\approx -0{,}42 > \\cos 3 \\approx -0{,}99$."
+        },
+        {
+          "texto": "En cuadrantes III y IV, mayor arco ⇒ mayor coseno",
+          "explicacion": "El extremo se desplaza hacia la derecha y el orden de los arcos se conserva en los cosenos. Ejemplo: $5 < 6$ y $\\cos 5 \\approx 0{,}28 < \\cos 6 \\approx 0{,}96$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango de expresiones",
+      "puntos": [
+        {
+          "texto": "Rango de $5\\cos\\theta - 1$: $-6 \\le E \\le 4$",
+          "explicacion": "Se parte de $-1 \\le \\cos\\theta \\le 1$, se multiplica por 5 y luego se resta 1. Ejemplo: $5(-1) - 1 = -6$ y $5(1) - 1 = 4$."
+        },
+        {
+          "texto": "Con coeficiente negativo, los extremos se invierten: $3 - 2\\cos\\theta$",
+          "explicacion": "Multiplicar por un número negativo cambia el sentido de la desigualdad. Ejemplo: con $\\cos\\theta = 1$ resulta $3 - 2 = 1$, y con $\\cos\\theta = -1$ resulta $3 + 2 = 5$, así que el rango es $1 \\le E \\le 5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos negativos",
+      "puntos": [
+        {
+          "texto": "Arco negativo: la línea coseno no cambia",
+          "explicacion": "El extremo de $-\\theta$ es el reflejo del de $\\theta$ en el eje horizontal y conserva su abscisa. Ejemplo: $\\cos\\left(-\\frac{\\pi}{3}\\right) = \\cos\\frac{\\pi}{3} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La línea seno se mide sobre el eje vertical",
+          "explicacion": "Es el segmento vertical del extremo al eje horizontal, y no debe confundirse con la línea coseno, que es horizontal. Ejemplo: para $P(-0{,}6;\\ 0{,}8)$, la línea coseno vale $-0{,}6$ y la línea seno vale $0{,}8$."
+        }
+      ]
+    }
+  ]
+}

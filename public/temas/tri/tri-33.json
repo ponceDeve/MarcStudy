@@ -1,0 +1,83 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Transformaciones trigonométricas",
+  "glosario": {
+    "Transformación trigonométrica": "Reescribir una expresión en otra forma equivalente",
+    "Equivalente": "Que tiene el mismo valor en toda situación",
+    "Factorizar": "Escribir una expresión como producto",
+    "Semisuma": "Mitad de la suma de dos ángulos",
+    "Semidiferencia": "Mitad de la diferencia de dos ángulos",
+    "Ángulo compuesto": "Ángulo expresado como suma o diferencia de otros",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector"
+  },
+  "theory": [
+    {
+      "titulo": "Transformación trigonométrica",
+      "puntos": [
+        {
+          "texto": "Transformar = reescribir una expresión con otra forma equivalente",
+          "explicacion": "Una transformación trigonométrica cambia la forma de una expresión sin cambiar su valor: la nueva expresión da el mismo resultado para cualquier ángulo permitido. En este tema las transformaciones pasan de una suma o diferencia de razones a un producto, o al revés. Ejemplo: $\\operatorname{sen}90° + \\operatorname{sen}30° = 1 + \\frac{1}{2} = \\frac{3}{2}$ y el producto $2\\operatorname{sen}60°\\cos30° = 2 \\cdot \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{3}{2}$ son dos formas del mismo número."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos sentidos",
+      "puntos": [
+        {
+          "texto": "Suma o diferencia ⇒ producto, y producto ⇒ suma o diferencia",
+          "explicacion": "El primer sentido se llama factorizar, porque la suma queda convertida en producto. El segundo desdobla un producto en una suma o diferencia. Ambos usan las mismas fórmulas de los ángulos compuestos, leídas en direcciones opuestas. Ejemplo: del dato $\\operatorname{sen}90° + \\operatorname{sen}30° = \\frac{3}{2}$ se pasa al producto $2\\operatorname{sen}60°\\cos30°$, y de ese producto se vuelve a la suma; además, el producto $\\operatorname{sen}60°\\cos30° = \\frac{3}{4}$ es la mitad de $\\frac{3}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Para qué sirve",
+      "puntos": [
+        {
+          "texto": "Productos ⇒ simplificar fracciones y resolver ecuaciones",
+          "explicacion": "Un producto igualado a cero se resuelve igualando a cero cada factor, y una fracción con productos permite cancelar factores comunes; con sumas, ninguna de estas ayudas está disponible. Por eso conviene transformar sumas en productos antes de resolver o simplificar. Ejemplo algebraico: $(x - 2)(x + 3) = 0$ da de inmediato $x = 2$ o $x = -3$, mientras que $x^2 + x - 6 = 0$, escrita como suma, no muestra las soluciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Semisuma y semidiferencia",
+      "puntos": [
+        {
+          "texto": "Dados A y B: $X = \\frac{A+B}{2}$ y $Y = \\frac{A-B}{2}$",
+          "explicacion": "Aquí X es la semisuma, la mitad de la suma de los ángulos, e Y la semidiferencia, la mitad de su diferencia. Estos dos ángulos permiten escribir A y B como ángulos compuestos: $A = X + Y$ y $B = X - Y$. Ejemplo: con $A = 75°$ y $B = 15°$, $X = \\frac{90°}{2} = 45°$ e $Y = \\frac{60°}{2} = 30°$; se comprueba que $45° + 30° = 75°$ y $45° - 30° = 15°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de transformación",
+      "puntos": [
+        {
+          "texto": "Método: renombrar $A = X + Y$ y $B = X - Y$ y aplicar fórmulas compuestas",
+          "explicacion": "Al escribir cada ángulo con X e Y, la suma de razones se convierte en una combinación de razones compuestas que se simplifica. Ejemplo: $\\operatorname{sen}75° + \\operatorname{sen}15° = \\operatorname{sen}(45° + 30°) + \\operatorname{sen}(45° - 30°) = 2\\operatorname{sen}45°\\cos30° = 2 \\cdot \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{6}}{2}$. Los valores $\\operatorname{sen}75° \\approx 0{,}966$ y $\\operatorname{sen}15° \\approx 0{,}259$ suman $1{,}225$, que es $\\frac{\\sqrt{6}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuándo usar cada sentido",
+      "puntos": [
+        {
+          "texto": "Suma o resta de razones ⇒ factorizar; producto de razones ⇒ desdoblar",
+          "explicacion": "Si la expresión contiene $\\operatorname{sen}A + \\operatorname{sen}B$, conviene pasar a producto; si contiene un producto como $\\operatorname{sen}A\\cos B$ y se necesitan sumas, conviene desdoblar. Ejemplo: en una ecuación como $\\operatorname{sen}75° + \\operatorname{sen}15°$ dividida entre otra expresión, el producto permite cancelar factores; en cambio, para sumar varios productos como $\\operatorname{sen}60°\\cos30°$, conviene desdoblar cada uno en suma."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}A + \\operatorname{sen}B \\neq \\operatorname{sen}(A + B)$",
+          "explicacion": "La suma de dos senos no es el seno de la suma. Ejemplo: con $A = B = 30°$, $\\operatorname{sen}30° + \\operatorname{sen}30° = 1$, pero $\\operatorname{sen}60° = \\frac{\\sqrt{3}}{2} \\approx 0{,}866$."
+        },
+        {
+          "texto": "$\\operatorname{sen}A + \\operatorname{sen}B \\neq \\operatorname{sen}A\\operatorname{sen}B$",
+          "explicacion": "Transformar una suma en producto no significa multiplicar las razones tal cual, hace falta la fórmula adecuada con los ángulos semisuma y semidiferencia. Ejemplo: con $A = 60°$ y $B = 30°$, $\\operatorname{sen}60° + \\operatorname{sen}30° = \\frac{\\sqrt{3} + 1}{2} \\approx 1{,}366$, mientras que el producto $\\operatorname{sen}60°\\operatorname{sen}30° = \\frac{\\sqrt{3}}{4} \\approx 0{,}433$."
+        }
+      ]
+    }
+  ]
+}
