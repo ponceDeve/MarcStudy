@@ -399,7 +399,6 @@ export default function MiEstudioPage() {
     if (topicData?.tema) guardarRetorno(topicData.tema);
     navigate("/pomodoro");
   }
-  const { guardarBusqueda: guardarBusquedaInicio } = useSearchHistory();
   const [repasoGuardadoMsg, setRepasoGuardadoMsg] = useState(false);
   const [repasoGuardadoSaliendo, setRepasoGuardadoSaliendo] =
     useState(false);
@@ -791,7 +790,6 @@ ${teoria}`;
       });
       return;
     }
-    guardarBusquedaInicio(item);
     if (item.type === "curso") {
       setCursoSeleccionado(item.nombre);
       setTemasOpen(true);
