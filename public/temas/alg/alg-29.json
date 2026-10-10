@@ -1,0 +1,218 @@
+{
+  "curso": "Álgebra",
+  "tema": "Grado de expresiones algebraicas",
+  "glosario": {
+    "Grado": "Mayor exponente con coeficiente no nulo.",
+    "Grado relativo": "Mayor exponente de una variable dada.",
+    "Grado absoluto": "Mayor suma de exponentes entre los términos.",
+    "Monomio": "Polinomio de un solo término.",
+    "Coeficiente principal": "Coeficiente del término de mayor grado.",
+    "Polinomio reducido": "Polinomio sin términos semejantes.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes cero.",
+    "Polinomio constante": "Polinomio formado solo por un número.",
+    "Cancelación": "Anulación de términos opuestos al sumar.",
+    "Composición": "Reemplazar la variable por otro polinomio.",
+    "Residuo": "Polinomio que sobra en una división.",
+    "Cociente": "Resultado de dividir un polinomio entre otro.",
+    "División exacta": "División cuyo residuo es el polinomio nulo.",
+    "Raíz exacta": "Raíz que resulta ser un polinomio.",
+    "Índice": "Número que indica el orden de la raíz."
+  },
+  "theory": [
+    {
+      "titulo": "Grado de polinomio",
+      "puntos": [
+        {
+          "texto": "«Grado» de un polinomio: mayor exponente con coeficiente no nulo",
+          "explicacion": "El grado de un polinomio en una variable es el mayor exponente de la variable que acompaña a un coeficiente distinto de cero. En $P(x)=4x^5-3x^2+7$ el mayor exponente es 5 y su coeficiente 4 no es cero, así que el grado es 5. En $Q(x)=0x^6+2x^3-1$ el término con exponente 6 tiene coeficiente cero y no cuenta, de modo que el grado es 3. El grado resume de un vistazo qué tan alta es la potencia dominante del polinomio."
+        },
+        {
+          "texto": "Notación $\\operatorname{gr}(P)$: «gr» abrevia la palabra grado",
+          "explicacion": "Para escribir las propiedades de forma compacta, el grado del polinomio $P$ se denota $\\operatorname{gr}(P)$, donde «gr» es la abreviatura de la palabra grado. Así, para $P(x)=4x^5-3x^2+7$ se escribe $\\operatorname{gr}(P)=5$. Cuando se habla del grado respecto de una variable concreta se añade la variable como subíndice, por ejemplo $\\operatorname{gr}_x(P)$, y se llama grado relativo."
+        },
+        {
+          "texto": "Reducir antes de determinar el grado",
+          "explicacion": "El grado debe calcularse sobre el polinomio reducido, es decir, después de sumar los términos semejantes, porque la reducción puede eliminar el término de mayor exponente. En $(x^3+2x)-x^3$ parece haber un término de exponente 3, pero al reducir queda $2x$, cuyo grado es 1. Del mismo modo, $(x+1)^2-x^2=x^2+2x+1-x^2=2x+1$ tiene grado 1 y no 2."
+        },
+        {
+          "texto": "Polinomio constante no nulo ⇒ grado 0",
+          "explicacion": "Un número real distinto de cero es un polinomio de grado 0, porque se puede escribir como $a=ax^0$, con exponente 0 y coeficiente no nulo. Así, $\\operatorname{gr}(7)=0$ y $\\operatorname{gr}(-\\frac{3}{5})=0$. Este grado es el menor que puede tener un polinomio no nulo, y es el que resulta cuando se multiplica o se divide de manera que desaparece toda la variable."
+        },
+        {
+          "texto": "Polinomio nulo ⇒ grado no definido",
+          "explicacion": "El polinomio nulo $0$ no tiene ningún coeficiente distinto de cero, por lo que no existe un mayor exponente que lo determine y su grado no se define. No debe confundirse con el polinomio constante 5, de grado 0. Esta distinción es importante al multiplicar: $0\\cdot P(x)=0$ no tiene grado, aunque $\\operatorname{gr}(P)$ exista."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de monomio",
+      "puntos": [
+        {
+          "texto": "«Grado relativo» de un monomio: exponente de una variable dada",
+          "explicacion": "El grado relativo de un monomio respecto de una variable es el exponente con el que esa variable aparece en él. En $5x^3y^2z$ el grado relativo respecto de $x$ es 3, respecto de $y$ es 2 y respecto de $z$ es 1, porque z equivale a $z^1$. Si la variable no aparece, su grado relativo es 0."
+        },
+        {
+          "texto": "«Grado absoluto» de un monomio: suma de los exponentes de sus variables",
+          "explicacion": "El grado absoluto de un monomio es la suma de los exponentes de todas sus variables. Para $5x^3y^2z$: $3+2+1=6$. Para $-2x^4y$: $4+1=5$. El coeficiente no interviene. Con una sola variable el grado absoluto coincide con el exponente, como en $7x^4$, que tiene grado absoluto 4."
+        },
+        {
+          "texto": "Monomio constante ⇒ grado absoluto 0",
+          "explicacion": "Un monomio constante como 9 no tiene variables, así que no hay exponentes que sumar o la suma es 0: $9=9x^0$ tiene grado absoluto 0 y grado relativo 0 respecto de cualquier variable. Se trata del mismo caso del polinomio constante no nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado en varias variables",
+      "puntos": [
+        {
+          "texto": "«Grado relativo» de un polinomio: mayor exponente de esa variable",
+          "explicacion": "El grado relativo de un polinomio respecto de una variable es el mayor exponente con que esa variable aparece en cualquiera de sus términos. Para $P(x,y)=3x^4y^2-2x^3y^5+x^2y$ los exponentes de $x$ son 4, 3 y 2, de modo que $\\operatorname{gr}_x(P)=4$. Los exponentes de $y$ son 2, 5 y 1, de modo que $\\operatorname{gr}_y(P)=5$."
+        },
+        {
+          "texto": "«Grado absoluto» de un polinomio: mayor grado absoluto de sus términos",
+          "explicacion": "El grado absoluto de un polinomio con varias variables es el mayor de los grados absolutos de sus términos. En $P(x,y)=3x^4y^2-2x^3y^5+x^2y$ los grados absolutos de los términos son $4+2=6$, $3+5=8$ y $2+1=3$, así que el grado absoluto de $P$ es 8. No se suman los grados relativos: $4+5=9$ no es el grado absoluto, porque $x^4$ y $y^5$ no aparecen en el mismo término."
+        },
+        {
+          "texto": "Una sola variable ⇒ grado relativo = grado absoluto",
+          "explicacion": "Cuando el polinomio tiene una sola variable, el grado relativo y el grado absoluto son el mismo número: el mayor exponente. En $P(x)=2x^5-x+3$ ambos son 5. Por eso en polinomios de una variable basta decir «grado» sin especificar. En cambio, con dos o más variables ambos grados pueden diferir: en $x^3y^2$ el grado relativo respecto de $x$ es 3, el de $y$ es 2 y el absoluto es 5."
+        },
+        {
+          "texto": "Grado absoluto ≥ grado relativo de cada variable",
+          "explicacion": "El grado absoluto de un polinomio nunca es menor que su grado relativo respecto de ninguna variable, porque en el término donde esa variable alcanza su mayor exponente, el grado absoluto del término ya es al menos ese exponente. En el ejemplo $P(x,y)=3x^4y^2-2x^3y^5+x^2y$: grado absoluto 8, $\\operatorname{gr}_x(P)=4$ y $\\operatorname{gr}_y(P)=5$, y se cumple $8\\geq 5$ y $8\\geq 4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de suma",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(P+Q)$ ≤ máximo entre $\\operatorname{gr}(P)$ y $\\operatorname{gr}(Q)$",
+          "explicacion": "Al sumar o restar dos polinomios, ningún término puede tener un exponente mayor que los que ya existían, por lo que el grado del resultado nunca supera al mayor de los dos grados. Con $P(x)=x^3+2x$ y $Q(x)=x^2+1$ se obtiene $P+Q=x^3+x^2+2x+1$, de grado 3, que es el máximo entre 3 y 2. Puede ser menor si hay cancelaciones, como se ve a continuación."
+        },
+        {
+          "texto": "Grados distintos ⇒ el grado de la suma es el mayor",
+          "explicacion": "Si $\\operatorname{gr}(P)\\neq\\operatorname{gr}(Q)$, el término de mayor exponente pertenece a un solo polinomio y no puede cancelarse, así que $\\operatorname{gr}(P\\pm Q)=\\max\\{\\operatorname{gr}(P),\\operatorname{gr}(Q)\\}$. Ejemplo: $(x^4+x)+(3x^2-1)=x^4+3x^2+x-1$, de grado 4; y también $(x^4+x)-(3x^2-1)=x^4-3x^2+x+1$, de grado 4. La razón es que, al no coincidir los grados, el término de mayor exponente no tiene otro término de su mismo exponente con el que pueda cancelarse, y por eso permanece en el resultado."
+        },
+        {
+          "texto": "Grados iguales ⇒ el grado de la suma puede disminuir",
+          "explicacion": "Si $P$ y $Q$ tienen el mismo grado, los términos principales pueden anularse. Con $P(x)=x^3+2x$ y $Q(x)=-x^3+x^2$: $P+Q=x^2+2x$, de grado 2, menor que 3. Con $P(x)=5x^2+x$ y $Q(x)=5x^2-3$: $P-Q=x+3$, de grado 1. La disminución ocurre cuando los coeficientes principales suman cero en la suma, o son iguales en la resta."
+        },
+        {
+          "texto": "Grados iguales sin cancelación ⇒ el grado se conserva",
+          "explicacion": "Si dos polinomios tienen el mismo grado $n$ y sus coeficientes principales no se anulan al combinarlos, el resultado también tiene grado $n$. Por ejemplo, $(2x^2+1)+(3x^2)=5x^2+1$, de grado 2, porque $2+3=5\\neq 0$. Y $(2x^2+1)-(3x^2)=-x^2+1$, de grado 2, porque $2-3=-1\\neq 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de producto",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(P\\cdot Q)=\\operatorname{gr}(P)+\\operatorname{gr}(Q)$",
+          "explicacion": "El grado del producto de dos polinomios no nulos es la suma de sus grados. Razón: el término de mayor exponente del producto sale de multiplicar los términos de mayor exponente de cada factor, $a_nx^n\\cdot b_mx^m=a_nb_mx^{n+m}$, y como $a_n\\neq 0$ y $b_m\\neq 0$, el producto $a_nb_m$ no es cero. Ejemplo: $(x^2+1)(x^3-2x)=x^5-2x^3+x^3-2x=x^5-x^3-2x$, de grado 5, y $2+3=5$."
+        },
+        {
+          "texto": "Coeficiente principal del producto = producto de los coeficientes principales",
+          "explicacion": "El coeficiente principal de $P\\cdot Q$ es $a_nb_m$, el producto de los coeficientes principales de los factores. Para $(2x^2+1)(3x^3-x)$ el coeficiente principal es $2\\cdot 3=6$. Verificación desarrollando: $6x^5-2x^3+3x^3-x=6x^5+x^3-x$, cuyo término principal es $6x^5$, de grado $2+3=5$. Este dato permite conocer el término de mayor grado del producto sin multiplicar todos los términos, y también explica por qué el producto de dos polinomios no nulos nunca es el polinomio nulo."
+        },
+        {
+          "texto": "Producto de varios factores: suma de todos los grados",
+          "explicacion": "La propiedad del producto se extiende a cualquier cantidad de factores no nulos: el grado es la suma de los grados de todos ellos. En $(x+1)(x^2-1)(x^3+2)$ los grados son 1, 2 y 3, y el grado del producto es $1+2+3=6$. Verificación: el término principal es $x\\cdot x^2\\cdot x^3=x^6$, con coeficiente $1\\cdot1\\cdot1=1\\neq 0$."
+        },
+        {
+          "texto": "Producto con varias variables: el grado absoluto también suma",
+          "explicacion": "Para polinomios con varias variables, el grado absoluto del producto es la suma de los grados absolutos de los factores, y también se suman los grados relativos respecto de cada variable. Ejemplo con monomios: $(x^2y)(xy^3)=x^3y^4$, y los grados absolutos cumplen $3+4=7$, que es $(2+1)+(1+3)=3+4$. Así, $\\operatorname{gr}_x=3=2+1$ y $\\operatorname{gr}_y=4=1+3$."
+        },
+        {
+          "texto": "Multiplicar por una constante no nula conserva el grado",
+          "explicacion": "Un número distinto de cero tiene grado 0, y al sumar 0 al grado del otro factor no cambia nada. Por eso $5(x^2+1)=5x^2+5$ sigue teniendo grado 2. Si la constante fuera cero, el resultado es el polinomio nulo, cuyo grado no se define."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de cociente",
+      "puntos": [
+        {
+          "texto": "División exacta ⇒ grado del cociente = $\\operatorname{gr}(P)-\\operatorname{gr}(Q)$",
+          "explicacion": "Si $P$ se divide exactamente entre $Q$ y el cociente es $C$, entonces $P=Q\\cdot C$ y, por la propiedad del producto, $\\operatorname{gr}(P)=\\operatorname{gr}(Q)+\\operatorname{gr}(C)$. De ahí que $\\operatorname{gr}(C)=\\operatorname{gr}(P)-\\operatorname{gr}(Q)$. Ejemplo: $x^5-x^3-2x=(x^2+1)(x^3-2x)$, así que al dividir entre $x^2+1$ el cociente es $x^3-2x$, de grado $5-2=3$."
+        },
+        {
+          "texto": "División con residuo: grado del residuo menor que el del divisor",
+          "explicacion": "Cuando la división no es exacta, $P=Q\\cdot C+R$ con $\\operatorname{gr}(R)<\\operatorname{gr}(Q)$, y el cociente conserva $\\operatorname{gr}(C)=\\operatorname{gr}(P)-\\operatorname{gr}(Q)$. Ejemplo: $x^3+2x+1$ dividido entre $x+1$ da cociente $x^2-x+3$ y residuo $-2$. Verificación: $(x+1)(x^2-x+3)=x^3+2x+3$ y sumando $-2$ resulta $x^3+2x+1$. El cociente tiene grado $3-1=2$, y el residuo, de grado 0, es menor que 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de potencia",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(P^n)=n\\cdot\\operatorname{gr}(P)$",
+          "explicacion": "Elevar un polinomio a la potencia entera positiva $n$ es multiplicarlo por sí mismo $n$ veces, y por la propiedad del producto los grados se suman $n$ veces. Así, $\\operatorname{gr}(P^n)=n\\cdot\\operatorname{gr}(P)$. Ejemplo: $P(x)=x^2+x+1$ tiene grado 2, y $P^3$ tiene grado $3\\cdot2=6$, con término principal $(x^2)^3=x^6$."
+        },
+        {
+          "texto": "Coeficiente principal de $P^n$ = (coeficiente principal de $P$) elevado a $n$",
+          "explicacion": "Si el coeficiente principal de $P$ es $a$, el de $P^n$ es $a^n$. Para $P(x)=2x^3-x$: $\\operatorname{gr}(P^4)=4\\cdot3=12$ y el coeficiente principal de $P^4$ es $2^4=16$, así que el término principal es $16x^{12}$. Esto ahorra desarrollar todo el polinomio cuando solo se necesita el término de mayor grado."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de raíz",
+      "puntos": [
+        {
+          "texto": "Raíz exacta de índice $k$ ⇒ grado = $\\operatorname{gr}(P)\\div k$",
+          "explicacion": "Si la raíz de índice $k$ de un polinomio $P$ es exacta y da el polinomio $R$, entonces $R^k=P$ y, por la propiedad de la potencia, $k\\cdot\\operatorname{gr}(R)=\\operatorname{gr}(P)$. De ahí que $\\operatorname{gr}(R)=\\operatorname{gr}(P)\\div k$. Ejemplo: $\\sqrt{x^4+2x^2+1}=x^2+1$, porque $(x^2+1)^2=x^4+2x^2+1$; el grado de la raíz es $4\\div 2=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de composición",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(P(Q(x)))=\\operatorname{gr}(P)\\cdot\\operatorname{gr}(Q)$",
+          "explicacion": "Al reemplazar $x$ en $P$ por el polinomio $Q(x)$, el término principal $a_nx^n$ de $P$ se convierte en $a_n(Q(x))^n$, cuyo grado es $n\\cdot\\operatorname{gr}(Q)$ por la propiedad de la potencia, y ningún otro término de $P$ alcanza ese grado. Ejemplo: $P(x)=x^2+1$ y $Q(x)=2x^3-1$ dan $P(Q(x))=(2x^3-1)^2+1=4x^6-4x^3+2$, de grado 6, y $2\\cdot3=6$."
+        },
+        {
+          "texto": "$P(x+a)$ tiene el mismo grado que $P(x)$",
+          "explicacion": "Reemplazar $x$ por $x+a$ es una composición con un polinomio de grado 1, así que el grado se multiplica por 1 y no cambia. Ejemplo: $P(x)=x^2$ da $P(x+3)=(x+3)^2=x^2+6x+9$, de grado 2. Lo mismo ocurre con $P(x-5)$ o con $P(2x)$. Verificación con un polinomio cúbico: $P(x)=x^3$ da $P(x-1)=x^3-3x^2+3x-1$, de grado 3, igual que $P$. Lo que cambia son los demás coeficientes, no el grado ni el coeficiente principal."
+        },
+        {
+          "texto": "$P(x^k)$ tiene grado $k\\cdot\\operatorname{gr}(P)$",
+          "explicacion": "Reemplazar $x$ por $x^k$ es una composición con un polinomio de grado $k$, y el grado se multiplica por $k$. Ejemplo: $P(x)=x^3+x$ da $P(x^2)=x^6+x^2$, de grado 6, que es $2\\cdot3$. Verificación del coeficiente principal con $P(x)=2x^2+1$ y $k=3$: $P(x^3)=2x^6+1$, de grado 6, que es $3\\cdot 2$, y su coeficiente principal sigue siendo 2. Solo cambia el exponente, porque cada potencia $x^j$ se transforma en $x^{3j}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar constantes",
+      "puntos": [
+        {
+          "texto": "Grado dado ⇒ anular los coeficientes de mayor exponente",
+          "explicacion": "Para que un polinomio con constantes tenga un grado determinado, deben ser cero los coeficientes de los exponentes mayores y distinto de cero el del exponente del grado. Sea $P(x)=(a-3)x^4+(b+2)x^3+x$ de grado 3. El término $x^4$ debe desaparecer, así que $a-3=0$ y $a=3$. El término $x^3$ debe permanecer, así que $b+2\\neq 0$ y $b\\neq -2$. Verificación con $a=3$ y $b=1$: $P(x)=0x^4+3x^3+x=3x^3+x$, de grado 3."
+        },
+        {
+          "texto": "Grado absoluto dado ⇒ igualar el mayor grado de los términos",
+          "explicacion": "Sea $P(x,y)=x^{n+2}y^3+x^2y^n$ con grado absoluto 9. Los grados de los términos son $(n+2)+3=n+5$ y $2+n$. Como $n+5>n+2$, el mayor es $n+5$, y se resuelve $n+5=9$, de donde $n=4$. Verificación: $P(x,y)=x^6y^3+x^2y^4$ tiene términos de grados 9 y 6, y el mayor es 9."
+        },
+        {
+          "texto": "Grado relativo dado ⇒ igualar el mayor exponente de esa variable",
+          "explicacion": "Sea $P(x,y)=2x^my^3+x^2y^{m+1}$ con grado relativo respecto de $x$ igual a 5. Los exponentes de $x$ son $m$ y 2, y el mayor debe ser 5, lo que obliga a $m=5$. Verificación: $P(x,y)=2x^5y^3+x^2y^6$ tiene $\\operatorname{gr}_x=5$ y $\\operatorname{gr}_y=6$. Si en lugar de 5 se pidiera grado relativo 1 respecto de $x$, no habría solución, porque el segundo término ya tiene $x^2$ y el mayor exponente nunca sería menor que 2. Siempre conviene comprobar que el valor hallado haga mayor al término correcto."
+        },
+        {
+          "texto": "Grado de un producto dado ⇒ sumar los grados de los factores",
+          "explicacion": "Sea $(x^{m+1}-x)(x^{2m}+3)$ de grado 10. Los grados de los factores son $m+1$ y $2m$, y su suma es $3m+1$. Se resuelve $3m+1=10$, de donde $m=3$. Verificación: los factores son $x^4-x$ y $x^6+3$, de grados 4 y 6, y el producto tiene grado $4+6=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Tema 28: grado como parte de la definición",
+          "explicacion": "El grado de un polinomio de una variable se introdujo en el tema 28 junto con el coeficiente principal y el término independiente. Aquí se amplía a varias variables con los grados relativo y absoluto, y se estudia cómo cambia el grado al operar."
+        },
+        {
+          "texto": "Temas 30 al 35: las operaciones y la división usan estas propiedades",
+          "explicacion": "La adición, la sustracción y la multiplicación de polinomios usan las reglas de grado de este tema para anticipar el grado del resultado, y el algoritmo de la división se apoya en que el residuo tiene grado menor que el divisor. Anticipar el grado permite detectar errores antes de terminar el cálculo."
+        }
+      ]
+    }
+  ]
+}

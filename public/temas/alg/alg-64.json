@@ -1,0 +1,187 @@
+{
+  "curso": "Álgebra",
+  "tema": "Funciones inversas",
+  "glosario": {
+    "función inversa": "Función que deshace a otra función.",
+    "función": "Regla que asigna un solo valor de salida.",
+    "dominio": "Conjunto de valores de entrada.",
+    "rango": "Conjunto de valores que realmente toma.",
+    "codominio": "Conjunto de llegada declarado de la función.",
+    "inyectiva": "Valores distintos dan imágenes distintas.",
+    "sobreyectiva": "Función cuyo rango es todo el codominio.",
+    "biyectiva": "Función inyectiva y sobreyectiva a la vez.",
+    "composición": "Aplicar una función al resultado de otra.",
+    "monótona": "Que solo crece o solo decrece.",
+    "estrictamente creciente": "Aumenta siempre al aumentar la variable.",
+    "estrictamente decreciente": "Disminuye siempre al aumentar la variable.",
+    "recíproco": "Número que multiplicado da uno.",
+    "simetría": "Reflejo respecto de una recta.",
+    "restringir el dominio": "Limitar los valores de entrada permitidos.",
+    "completar cuadrados": "Reescribir un trinomio como cuadrado más constante.",
+    "vértice": "Punto extremo de una parábola."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función inversa» ⇒ $f^{-1}(y)=x$ si $f(x)=y$",
+          "explicacion": "La función inversa de $f$ es la función que deshace lo que hace $f$: si $f$ lleva $x$ en $y$, la inversa lleva $y$ en $x$. Se denota $f^{-1}$ y existe cuando $f$ es biyectiva, es decir, inyectiva y sobreyectiva sobre su codominio. Su dominio es el rango de $f$ y su rango es el dominio de $f$. Ejemplo: $f(x)=2x+1$ lleva $3$ en $7$, y su inversa lleva $7$ en $3$. Verificación: $f(3)=2(3)+1=7$ y $f^{-1}(7)=\\frac{7-1}{2}=3$."
+        },
+        {
+          "texto": "Nombre alternativo: «función recíproca»",
+          "explicacion": "Conviene distinguir los dos usos de la palabra recíproco: el recíproco de un número es su inverso multiplicativo, mientras que la función recíproca es la que deshace a otra función; el contexto indica de cuál se trata. La función inversa también se llama función recíproca en algunos textos; no debe confundirse con el recíproco $\\frac{1}{f(x)}$ de un número. Ejemplo: la función recíproca de $f(x)=x+4$ es $f^{-1}(x)=x-4$. Verificación: $f(5)=9$ y $f^{-1}(9)=5$."
+        },
+        {
+          "texto": "$f^{-1}(x)\\ne\\frac{1}{f(x)}$ ⇒ el $-1$ no es un exponente",
+          "explicacion": "En la notación $f^{-1}$, el $-1$ indica función inversa, no una potencia. La inversa deshace la función; el recíproco $\\frac{1}{f(x)}$ es la fracción con numerador uno. Ejemplo: con $f(x)=2x+1$, $f^{-1}(3)=\\frac{3-1}{2}=1$, mientras que $\\frac{1}{f(3)}=\\frac{1}{7}$. Verificación: $f(1)=3$, de modo que $f^{-1}(3)=1$, y $f(3)=7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condición de existencia",
+      "puntos": [
+        {
+          "texto": "$f$ invertible ⇒ $f$ es inyectiva",
+          "explicacion": "Para que la inversa sea una función, cada valor $y$ debe provenir de un único $x$; por eso $f$ debe ser inyectiva. Si dos entradas distintas dan la misma salida, no se sabe a cuál volver. Ejemplo: $f(x)=x^2$ en $\\mathbb{R}$ no es invertible porque $f(2)=f(-2)=4$. Verificación: la inversa tendría que asignar a $4$ tanto $2$ como $-2$."
+        },
+        {
+          "texto": "Rango como codominio ⇒ condición de sobreyectividad",
+          "explicacion": "Cuando $f$ es inyectiva pero no sobreyectiva, se toma como codominio el rango, con lo que se vuelve biyectiva y admite inversa definida en ese rango. Ejemplo: $f(x)=2^x$ tiene rango $(0,+\\infty)$; como función de $\\mathbb{R}$ en $(0,+\\infty)$ es biyectiva y su inversa es $\\log_2 x$. Verificación: $2^3=8$ y $\\log_2 8=3$."
+        },
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva ⇒ invertible",
+          "explicacion": "Una función estrictamente creciente o estrictamente decreciente es inyectiva, porque nunca repite valores, y por tanto es invertible en su rango. Ejemplo: $f(x)=x^3$ es estrictamente creciente en $\\mathbb{R}$ y tiene inversa $f^{-1}(x)=\\sqrt[3]{x}$. Verificación: $f(2)=8$ y $f^{-1}(8)=2$."
+        },
+        {
+          "texto": "Prueba de la recta horizontal ⇒ cada recta corta la gráfica una vez",
+          "explicacion": "Una función es invertible en un conjunto si toda recta horizontal corta su gráfica a lo sumo una vez. Ejemplo: $f(x)=x^2$ falla porque $y=4$ corta en $x=2$ y $x=-2$; $f(x)=x^3$ cumple la prueba. Verificación: $2^2=(-2)^2=4$ y $x^3=8$ solo para $x=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$f^{-1}(f(x))=x$ para todo $x$ del dominio de $f$",
+          "explicacion": "Esta igualdad es la definición operativa de inversa por un lado: la inversa actúa después de $f$ y anula su efecto sobre cualquier valor del dominio; se usa para verificar que una inversa calculada es correcta. Aplicar $f$ y luego $f^{-1}$ devuelve el valor original, porque la inversa deshace a la función. Ejemplo: con $f(x)=2x+1$ y $f^{-1}(x)=\\frac{x-1}{2}$, $f^{-1}(f(5))=f^{-1}(11)=\\frac{11-1}{2}=5$. Verificación: $f(5)=2(5)+1=11$."
+        },
+        {
+          "texto": "$f(f^{-1}(y))=y$ para todo $y$ del rango de $f$",
+          "explicacion": "Esta igualdad es la otra mitad de la definición de inversa: $f$ actúa después de la inversa y anula su efecto sobre cualquier valor del rango de $f$. Junto con la igualdad anterior, permite comprobar una inversa. Aplicar $f^{-1}$ y luego $f$ también devuelve el valor original. Ejemplo: $f(f^{-1}(7))=f(3)=2(3)+1=7$. Verificación: $f^{-1}(7)=\\frac{7-1}{2}=3$."
+        },
+        {
+          "texto": "Dominio de $f^{-1}$ = rango de $f$",
+          "explicacion": "Los valores que $f^{-1}$ puede recibir son justo los que $f$ produce. Ejemplo: $f(x)=\\sqrt{x-1}$ tiene rango $[0,+\\infty)$, así que $f^{-1}$ está definida para $x\\ge 0$. Verificación: $f^{-1}(x)=x^2+1$ se puede evaluar en $x=0$ y da $1$, y $f(1)=0$."
+        },
+        {
+          "texto": "Rango de $f^{-1}$ = dominio de $f$",
+          "explicacion": "Los valores que $f^{-1}$ produce son los de entrada de $f$. Ejemplo: $f(x)=\\sqrt{x-1}$ tiene dominio $[1,+\\infty)$, por lo que $f^{-1}(x)=x^2+1$ con $x\\ge 0$ tiene valores $\\ge 1$. Verificación: el menor valor de $x^2+1$ para $x\\ge 0$ es $1$."
+        },
+        {
+          "texto": "$(f^{-1})^{-1}=f$ ⇒ la inversa de la inversa",
+          "explicacion": "Esto ocurre porque invertir intercambia las funciones de entrada y salida, y hacerlo dos veces restituye el orden original; la inversa de la inversa existe porque $f^{-1}$ también es biyectiva. Invertir dos veces devuelve la función original. Ejemplo: $f(x)=2x+1$ tiene inversa $f^{-1}(x)=\\frac{x-1}{2}$; la inversa de esta se obtiene de $y=\\frac{x-1}{2}$, que da $x=2y+1$, es decir $2x+1$. Verificación: coincide con $f$."
+        },
+        {
+          "texto": "$(g\\circ f)^{-1}=f^{-1}\\circ g^{-1}$ ⇒ inversa de la composición",
+          "explicacion": "La inversa de una composición invierte el orden: primero se deshace $g$ y luego $f$. Ejemplo: con $f(x)=x+1$ y $g(x)=2x$, $(g\\circ f)(x)=2x+2$ y su inversa es $\\frac{x-2}{2}$. Además $g^{-1}(x)=\\frac{x}{2}$ y $f^{-1}(x)=x-1$, y $(f^{-1}\\circ g^{-1})(x)=\\frac{x}{2}-1=\\frac{x-2}{2}$. Verificación: ambos resultados coinciden."
+        },
+        {
+          "texto": "Gráfica de $f^{-1}$ ⇒ simétrica a la de $f$ respecto de $y=x$",
+          "explicacion": "El punto $(a,b)$ está en la gráfica de $f$ si y solo si $(b,a)$ está en la de $f^{-1}$; por eso las gráficas son reflejos una de otra en la recta $y=x$. Ejemplo: $f(x)=2x+1$ pasa por $(0,1)$ y $(1,3)$, y $f^{-1}$ pasa por $(1,0)$ y $(3,1)$. Verificación: $f^{-1}(1)=\\frac{1-1}{2}=0$ y $f^{-1}(3)=\\frac{3-1}{2}=1$."
+        },
+        {
+          "texto": "$f$ creciente ⇒ $f^{-1}$ creciente",
+          "explicacion": "La monotonía se conserva al invertir, porque al intercambiar los papeles de $x$ e $y$ un par de puntos ordenados crecientemente sigue ordenado de igual forma; si $f$ es decreciente, su inversa también lo es. La inversa de una función estrictamente creciente es estrictamente creciente, y la de una estrictamente decreciente es estrictamente decreciente. Ejemplo: $f(x)=2x+1$ es creciente y $f^{-1}(x)=\\frac{x-1}{2}$ también. Verificación: $f^{-1}(3)=1<f^{-1}(5)=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de la inversa",
+      "puntos": [
+        {
+          "texto": "Paso 1: comprobar que $f$ es inyectiva",
+          "explicacion": "Antes de buscar la inversa se verifica que $f$ no repita valores en el dominio dado; si los repite, se restringe el dominio. Ejemplo: $f(x)=3x-2$ es inyectiva porque $3x_1-2=3x_2-2$ implica $x_1=x_2$. Verificación: la ecuación se reduce a $x_1=x_2$."
+        },
+        {
+          "texto": "Paso 2: escribir $y=f(x)$",
+          "explicacion": "Reescribir con $y$ es solo un cambio de notación, pero deja claro que se trabaja con una relación entre dos variables de la que se despejará una de ellas; no se altera la función. Se reemplaza $f(x)$ por $y$ para trabajar con una ecuación en dos variables. Ejemplo: $f(x)=3x-2$ se escribe $y=3x-2$. Verificación: es la misma relación entre $x$ e $y$."
+        },
+        {
+          "texto": "Paso 3: despejar $x$ en función de $y$",
+          "explicacion": "Este es el paso central del método: se resuelve la ecuación para $x$ usando operaciones inversas (sumar y restar, multiplicar y dividir, elevar y extraer raíz) en el orden contrario al que aplicó la función. Se aísla $x$ con operaciones inversas hasta tener $x$ igual a una expresión en $y$. Ejemplo: $y=3x-2$ da $y+2=3x$ y $x=\\frac{y+2}{3}$. Verificación: al sustituir en $3x-2$ resulta $y$."
+        },
+        {
+          "texto": "Paso 4: intercambiar $x$ e $y$ ⇒ nombre habitual",
+          "explicacion": "El cambio de letras es una convención: la función inversa se escribe con $x$ como variable independiente, aunque la expresión hallada esté en términos de $y$. El resultado no cambia, solo el nombre de la variable. Para escribir la inversa con $x$ como variable de entrada se cambian las letras: $f^{-1}(x)=$ la expresión hallada. Ejemplo: de $x=\\frac{y+2}{3}$ resulta $f^{-1}(x)=\\frac{x+2}{3}$. Verificación: $f(4)=10$ y $f^{-1}(10)=\\frac{12}{3}=4$."
+        },
+        {
+          "texto": "Paso 5: indicar dominio y rango de $f^{-1}$",
+          "explicacion": "Se escribe el dominio de $f^{-1}$ como el rango de $f$ y su rango como el dominio de $f$. Ejemplo: $f(x)=3x-2$ de $\\mathbb{R}$ en $\\mathbb{R}$ da $f^{-1}$ de $\\mathbb{R}$ en $\\mathbb{R}$. Verificación: la función lineal con $m\\ne 0$ tiene rango $\\mathbb{R}$."
+        },
+        {
+          "texto": "Paso 6: verificar con las composiciones",
+          "explicacion": "La verificación final consiste en componer la función y su inversa en ambos órdenes y comprobar que el resultado es la identidad $x$; si no lo es, hay un error en el despeje o en las restricciones de dominio. Se comprueba que $f(f^{-1}(x))=x$ y $f^{-1}(f(x))=x$. Ejemplo: $f(f^{-1}(x))=3\\cdot\\frac{x+2}{3}-2=x+2-2=x$ y $f^{-1}(f(x))=\\frac{3x-2+2}{3}=x$. Verificación: ambas composiciones dan $x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de inversas",
+      "puntos": [
+        {
+          "texto": "$f(x)=mx+b$ con $m\\ne 0$ ⇒ $f^{-1}(x)=\\frac{x-b}{m}$",
+          "explicacion": "La fórmula general sirve para cualquier función lineal no constante: la inversa de una recta de pendiente $m$ es otra recta de pendiente $\\frac{1}{m}$, y ambas se reflejan sobre la recta $y=x$. Para una función lineal, $y=mx+b$ da $x=\\frac{y-b}{m}$, y la inversa es $f^{-1}(x)=\\frac{x-b}{m}$. Ejemplo: $f(x)=-4x+3$ da $x=\\frac{y-3}{-4}$, es decir $f^{-1}(x)=\\frac{3-x}{4}$. Verificación: $f(2)=-5$ y $f^{-1}(-5)=\\frac{3+5}{4}=2$."
+        },
+        {
+          "texto": "$f(x)=x^3$ ⇒ $f^{-1}(x)=\\sqrt[3]{x}$",
+          "explicacion": "El cubo es inyectivo en todos los reales porque es estrictamente creciente, y la raíz cúbica existe para negativos, de modo que no hace falta restringir el dominio y la inversa está definida en todo $\\mathbb{R}$. De $y=x^3$ se despeja $x=\\sqrt[3]{y}$, que existe para todo real. Ejemplo: $f(-2)=-8$ y $f^{-1}(-8)=\\sqrt[3]{-8}=-2$. Verificación: $(-2)^3=-8$."
+        },
+        {
+          "texto": "$f(x)=\\frac{ax+b}{cx+d}$ ⇒ despejar con denominadores",
+          "explicacion": "Se multiplica por el denominador, se agrupan los términos con $x$ y se factoriza. Ejemplo: $f(x)=\\frac{x+3}{x-2}$ con $x\\ne 2$ da $y(x-2)=x+3$, es decir $xy-2y=x+3$, $x(y-1)=2y+3$ y $x=\\frac{2y+3}{y-1}$. Así $f^{-1}(x)=\\frac{2x+3}{x-1}$ con $x\\ne 1$. Verificación: $f(3)=\\frac{6}{1}=6$ y $f^{-1}(6)=\\frac{15}{5}=3$."
+        },
+        {
+          "texto": "$f(x)=x^2$ con $x\\ge 0$ ⇒ $f^{-1}(x)=\\sqrt{x}$",
+          "explicacion": "Al restringir el dominio a $x\\ge 0$ la función es inyectiva y la inversa es la raíz cuadrada. Ejemplo: $f(5)=25$ y $f^{-1}(25)=5$. Verificación: $\\sqrt{25}=5$."
+        },
+        {
+          "texto": "$f(x)=x^2$ con $x\\le 0$ ⇒ $f^{-1}(x)=-\\sqrt{x}$",
+          "explicacion": "Al restringir el dominio a $x\\le 0$ la inversa debe devolver valores negativos, por lo que es $-\\sqrt{x}$. Ejemplo: $f(-3)=9$ y $f^{-1}(9)=-\\sqrt{9}=-3$. Verificación: $(-3)^2=9$."
+        },
+        {
+          "texto": "$f(x)=\\sqrt{x-1}$ ⇒ $f^{-1}(x)=x^2+1$ con $x\\ge 0$",
+          "explicacion": "La raíz cuadrada con corrimiento tiene dominio $[1,+\\infty)$ y rango $[0,+\\infty)$; la inversa es la rama derecha de una parábola desplazada, definida solo para $x\\ge 0$, que es el rango de $f$. De $y=\\sqrt{x-1}$, con $y\\ge 0$, se obtiene $y^2=x-1$ y $x=y^2+1$. Ejemplo: $f(5)=2$ y $f^{-1}(2)=2^2+1=5$. Verificación: $\\sqrt{5-1}=2$."
+        },
+        {
+          "texto": "$f(x)=x^2-4x+3$ con $x\\ge 2$ ⇒ $f^{-1}(x)=2+\\sqrt{x+1}$",
+          "explicacion": "Una función cuadrática solo es inyectiva en uno de los lados de su vértice; se elige el lado $x\\ge 2$, donde crece, y se completa el cuadrado para despejar $x$ con la raíz positiva que corresponde a ese lado. Completando cuadrados, $y=(x-2)^2-1$, luego $y+1=(x-2)^2$ y, con $x\\ge 2$, $x=2+\\sqrt{y+1}$. La inversa es $f^{-1}(x)=2+\\sqrt{x+1}$ con $x\\ge -1$. Ejemplo: $f(5)=25-20+3=8$ y $f^{-1}(8)=2+\\sqrt{9}=5$. Verificación: el vértice $(2,-1)$ da $f^{-1}(-1)=2$."
+        },
+        {
+          "texto": "$f(x)=2^x$ y $f^{-1}(x)=\\log_2 x$ ⇒ par exponencial-logarítmico",
+          "explicacion": "La exponencial y el logaritmo de la misma base son el ejemplo fundamental de funciones inversas: el uno deshace al otro, con dominio de la inversa $(0,+\\infty)$ y rango $\\mathbb{R}$. La función exponencial y la logarítmica de igual base son inversas entre sí: $2^x=y$ equivale a $x=\\log_2 y$. Ejemplo: $f(3)=8$ y $f^{-1}(8)=\\log_2 8=3$. Verificación: $2^3=8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Funciones inyectivas (tema 63) ⇒ condición necesaria",
+          "explicacion": "Sin inyectividad la inversa no puede ser una función, porque asignaría varios valores a una misma entrada; por eso es la primera condición que se verifica antes de calcular una inversa. El tema «Funciones inyectivas» da el criterio para saber si una función se puede invertir. Ejemplo: $f(x)=3x-2$ es inyectiva y por tanto invertible. Verificación: $3x_1-2=3x_2-2$ implica $x_1=x_2$."
+        },
+        {
+          "texto": "Funciones sobreyectivas (tema 64) ⇒ ajustar el codominio",
+          "explicacion": "Con inyectividad y sobreyectividad la función es biyectiva y la inversa está definida en todo el codominio; si la función no es sobreyectiva, se toma el rango como codominio. El tema «Funciones sobreyectivas» explica cómo tomar el rango como codominio para completar la biyección. Ejemplo: $2^x$ de $\\mathbb{R}$ en $(0,+\\infty)$ es biyectiva. Verificación: cada $y>0$ tiene un único $x=\\log_2 y$."
+        },
+        {
+          "texto": "Funciones crecientes y decrecientes (tema 62) ⇒ monotonía asegura inversa",
+          "explicacion": "La monotonía estricta es la forma más práctica de justificar la inyectividad en funciones concretas, porque un crecimiento o decrecimiento estricto nunca repite valores y permite asegurar la existencia de inversa. El tema «Funciones crecientes y decrecientes» muestra que la monotonía estricta implica inyectividad y, en consecuencia, invertibilidad. Ejemplo: $f(x)=-2x+5$ es decreciente y su inversa es $\\frac{5-x}{2}$. Verificación: $f(1)=3$ y $f^{-1}(3)=\\frac{5-3}{2}=1$."
+        },
+        {
+          "texto": "Función exponencial (tema 66) ⇒ su inversa es el logaritmo",
+          "explicacion": "La función exponencial es estrictamente monótona y su rango es $(0,+\\infty)$, de modo que es invertible; su inversa es el logaritmo, que se estudia en los temas siguientes. El tema «Función exponencial» presenta $a^x$, cuya inversa es el logaritmo del tema «Función logarítmica». Ejemplo: $f(x)=3^x$ tiene $f^{-1}(x)=\\log_3 x$. Verificación: $3^2=9$ y $\\log_3 9=2$."
+        }
+      ]
+    }
+  ]
+}

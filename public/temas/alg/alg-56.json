@@ -1,0 +1,218 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función cuadrática",
+  "glosario": {
+    "Función cuadrática": "Función polinómica de segundo grado.",
+    "Parábola": "Curva gráfica de una función cuadrática.",
+    "Vértice": "Punto extremo de una parábola.",
+    "Eje de simetría": "Recta vertical que pasa por el vértice.",
+    "Forma canónica": "Escritura donde se ve el vértice.",
+    "Completar cuadrados": "Escribir un trinomio como cuadrado más constante.",
+    "Discriminante": "Expresión b al cuadrado menos cuatro a c.",
+    "Cero de una función": "Entrada cuya salida es cero.",
+    "Cero doble": "Cero con multiplicidad dos.",
+    "Mínimo": "Menor valor que alcanza la función.",
+    "Máximo": "Mayor valor que alcanza la función.",
+    "Forma factorizada": "Escritura como producto de factores.",
+    "Intercepto": "Punto donde la gráfica corta un eje.",
+    "Rango": "Conjunto de salidas alcanzadas.",
+    "Tangente": "Recta que toca la curva en un punto."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función cuadrática»: $f(x)=ax^2+bx+c$ con $a\\neq0$",
+          "explicacion": "Una función cuadrática es una función real cuya regla es un polinomio de segundo grado: $f(x)=ax^2+bx+c$, con $a$, $b$, $c$ reales y $a\\neq0$. Si $a=0$ la regla se reduce a una función lineal. Su dominio es $\\mathbb{R}$. Ejemplos: $f(x)=x^2-4x+3$, con $a=1$, $b=-4$ y $c=3$; y $g(x)=-2x^2+8$, con $a=-2$, $b=0$ y $c=8$."
+        },
+        {
+          "texto": "Términos: cuadrático $ax^2$, lineal $bx$, independiente $c$",
+          "explicacion": "En $f(x)=ax^2+bx+c$ el término $ax^2$ es el cuadrático, $bx$ es el lineal y $c$ es el independiente. Los dos últimos pueden ser cero, pero el primero no. En $h(x)=3x^2-12x$ el término independiente es 0; en $k(x)=x^2+5$ el término lineal es 0; ambas siguen siendo cuadráticas."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica parabólica",
+      "puntos": [
+        {
+          "texto": "«Parábola»: gráfica de la función cuadrática",
+          "explicacion": "La gráfica de una función cuadrática es una curva llamada parábola, simétrica respecto de una recta vertical, que tiene un único punto de cambio de dirección, el vértice. A diferencia de la recta, la parábola se curva: la salida cambia más rápido cuanto más lejos se está del vértice. Para $f(x)=x^2$ pasa por $(0,0)$, $(1,1)$, $(2,4)$, $(-1,1)$ y $(-2,4)$."
+        },
+        {
+          "texto": "$a>0$ ⇒ abre hacia arriba; $a<0$ ⇒ abre hacia abajo",
+          "explicacion": "El signo del coeficiente $a$ decide hacia dónde abre la parábola. Si $a>0$, abre hacia arriba y el vértice es su punto más bajo. Si $a<0$, abre hacia abajo y el vértice es su punto más alto. Con $f(x)=x^2-4x+3$ ($a=1$) abre hacia arriba; con $g(x)=-x^2+4x+1$ ($a=-1$) abre hacia abajo."
+        },
+        {
+          "texto": "$|a|$ grande ⇒ parábola angosta; $|a|$ pequeño ⇒ ancha",
+          "explicacion": "El valor absoluto de $a$ controla qué tan cerrada es la parábola. Con $f(x)=x^2$, en $x=1$ la salida es 1; con $g(x)=3x^2$ es 3, y la curva sube más rápido, así que es más angosta; con $h(x)=\\frac{1}{2}x^2$ es $\\frac{1}{2}$ y es más ancha."
+        }
+      ]
+    },
+    {
+      "titulo": "Vértice",
+      "puntos": [
+        {
+          "texto": "Vértice $V(h,k)$: $h=-\\frac{b}{2a}$ y $k=f(h)$",
+          "explicacion": "La abscisa del vértice de $f(x)=ax^2+bx+c$ es $h=-\\frac{b}{2a}$ y su ordenada es $k=f(h)$. Para $f(x)=x^2-4x+3$: $h=-\\frac{-4}{2}=2$ y $k=f(2)=4-8+3=-1$. El vértice es $(2,-1)$. Para $g(x)=-x^2+4x+1$: $h=-\\frac{4}{-2}=2$ y $k=-4+8+1=5$, con vértice $(2,5)$. La fórmula de $h$ sale de que el vértice está en el punto medio de los dos ceros, cuya suma es $-\\frac{b}{a}$. Se aplica aunque la parábola no corte al eje horizontal. Con $f(x)=x^2+2x+5$: $h=-\\frac{2}{2}=-1$ y $k=1-2+5=4$, con vértice $(-1,4)$."
+        },
+        {
+          "texto": "Ordenada del vértice: $k=c-\\frac{b^2}{4a}$",
+          "explicacion": "Al reemplazar $h=-\\frac{b}{2a}$ en $f$ se obtiene $k=c-\\frac{b^2}{4a}$, que también se escribe $k=-\\frac{b^2-4ac}{4a}=-\\frac{\\Delta}{4a}$ con $\\Delta=b^2-4ac$. Para $f(x)=x^2-4x+3$: $\\Delta=16-12=4$ y $k=-\\frac{4}{4}=-1$, igual que antes. Para $g(x)=-x^2+4x+1$: $k=1-\\frac{16}{-4}=1+4=5$, igual que al evaluar $g(2)=-4+8+1=5$. Esta fórmula evita evaluar la función, aunque en la práctica casi siempre es más corto calcular $h$ y luego $f(h)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma canónica",
+      "puntos": [
+        {
+          "texto": "Forma canónica: $f(x)=a(x-h)^2+k$",
+          "explicacion": "Toda función cuadrática se puede escribir como $f(x)=a(x-h)^2+k$, donde $V(h,k)$ es el vértice. Esta forma muestra de inmediato el vértice y el sentido de apertura. La expresión $(x-h)^2$ es no negativa y vale cero en $x=h$, y de ahí que $k$ sea el mínimo si $a>0$ y el máximo si $a<0$."
+        },
+        {
+          "texto": "Completar cuadrados: ejemplo resuelto",
+          "explicacion": "Para $f(x)=2x^2-8x+5$: se factoriza $2$ de los términos en $x$: $f(x)=2(x^2-4x)+5$. Se completa el cuadrado sumando y restando $4$ dentro del paréntesis: $2(x^2-4x+4-4)+5=2(x-2)^2-8+5=2(x-2)^2-3$. El vértice es $(2,-3)$. Verificación: $f(2)=8-16+5=-3$. El procedimiento tiene tres pasos: sacar $a$ como factor común de los términos con $x$; sumar y restar dentro del paréntesis el cuadrado de la mitad del coeficiente de $x$, aquí $(-2)^2=4$; y agrupar el trinomio como cuadrado, sacando el término restado multiplicado por $a$, que aquí es $2\\cdot(-4)=-8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Eje de simetría",
+      "puntos": [
+        {
+          "texto": "«Eje de simetría»: la recta vertical $x=h$",
+          "explicacion": "La parábola es simétrica respecto de la recta vertical que pasa por el vértice, $x=-\\frac{b}{2a}$. Esto significa que $f(h+t)=f(h-t)$ para todo $t$. Con $f(x)=x^2-4x+3$ y $h=2$: $f(3)=0$ y $f(1)=0$, los dos a distancia 1 del eje, y $f(4)=3$ y $f(0)=3$, a distancia 2. Cada punto de un lado tiene su reflejo en el otro."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango y extremo",
+      "puntos": [
+        {
+          "texto": "$a>0$: mínimo $k$ y rango $[k,+\\infty)$",
+          "explicacion": "Si la parábola abre hacia arriba, el vértice es el punto más bajo: la función tiene un valor mínimo $k$, alcanzado en $x=h$, y el rango es $[k,+\\infty)$. Para $f(x)=x^2-4x+3$ el mínimo es $-1$ y el rango es $[-1,+\\infty)$."
+        },
+        {
+          "texto": "$a<0$: máximo $k$ y rango $(-\\infty,k]$",
+          "explicacion": "Si la parábola abre hacia abajo, el vértice es el punto más alto: la función tiene un valor máximo $k$, alcanzado en $x=h$, y el rango es $(-\\infty,k]$. Para $g(x)=-x^2+4x+1$ el máximo es 5 y el rango es $(-\\infty,5]$."
+        },
+        {
+          "texto": "Máximo producto con suma fija",
+          "explicacion": "Para dos números con suma 10, el producto de uno de ellos $x$ por el otro es $p(x)=x(10-x)=-x^2+10x$. Como $a=-1<0$, el máximo está en el vértice: $h=-\\frac{10}{-2}=5$ y $p(5)=25$. El producto máximo es 25 cuando ambos números valen 5. Verificación: con $x=4$ el producto es $24<25$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intercepto vertical",
+      "puntos": [
+        {
+          "texto": "Intercepto con el eje $y$: el punto $(0,c)$",
+          "explicacion": "Como $f(0)=c$, la parábola corta al eje vertical en $(0,c)$. Para $f(x)=x^2-4x+3$ es $(0,3)$, y para $g(x)=-2x^2+8$ es $(0,8)$. Junto con su reflejo respecto del eje de simetría, $(2h,c)$, da dos puntos de la gráfica: para $f$ son $(0,3)$ y $(4,3)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros y discriminante",
+      "puntos": [
+        {
+          "texto": "Ceros: $x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}$ con $\\Delta=b^2-4ac$",
+          "explicacion": "Los ceros de la función son las soluciones de $ax^2+bx+c=0$, que se calculan con la fórmula general. Para $f(x)=x^2-4x+3$: $\\Delta=16-12=4$ y $x=\\frac{4\\pm2}{2}$, que da $x=3$ y $x=1$. Verificación: $f(3)=9-12+3=0$ y $f(1)=1-4+3=0$. La fórmula resuelve $ax^2+bx+c=0$ para cualquier trinomio. Con $2x^2-8x+6$: $\\Delta=64-48=16$ y $x=\\frac{8\\pm4}{4}$, que da $x=3$ y $x=1$. Cuando el trinomio se factoriza con facilidad, se puede evitar la fórmula, pero el discriminante siempre indica cuántos ceros reales hay."
+        },
+        {
+          "texto": "$\\Delta>0$ ⇒ dos ceros reales distintos",
+          "explicacion": "Si el discriminante es positivo, la parábola corta al eje horizontal en dos puntos. Es el caso de $f(x)=x^2-4x+3$, con $\\Delta=4$. El vértice queda debajo del eje si la parábola abre hacia arriba, y por encima si abre hacia abajo."
+        },
+        {
+          "texto": "$\\Delta=0$ ⇒ un cero doble, vértice sobre el eje",
+          "explicacion": "Si el discriminante es cero, la parábola toca el eje horizontal en un solo punto, que es su vértice. Para $f(x)=x^2-6x+9$: $\\Delta=36-36=0$ y $x=\\frac{6}{2}=3$. Como $f(x)=(x-3)^2$, el vértice es $(3,0)$ y el cero tiene multiplicidad 2. Como $k=-\\frac{\\Delta}{4a}=0$, la ordenada del vértice es cero y la parábola queda apoyada en el eje horizontal. La función se escribe $a(x-h)^2$, con signo constante: si $a>0$, $f(x)\\geq0$ siempre, y solo se anula en $x=h$."
+        },
+        {
+          "texto": "$\\Delta<0$ ⇒ ningún cero real",
+          "explicacion": "Si el discriminante es negativo, la parábola no corta al eje horizontal. Para $f(x)=x^2+2x+5$: $\\Delta=4-20=-16<0$. El vértice es $(-1,4)$, por encima del eje, y como abre hacia arriba, toda salida es positiva: $f(x)\\geq4>0$. La función tiene entonces signo constante: si $a>0$, es siempre positiva, y si $a<0$, siempre negativa. Esto se usa en las inecuaciones cuadráticas, donde un trinomio con discriminante negativo no cambia de signo."
+        },
+        {
+          "texto": "Suma y producto de ceros: $-\\frac{b}{a}$ y $\\frac{c}{a}$",
+          "explicacion": "Si los ceros son $x_1$ y $x_2$, se cumple $x_1+x_2=-\\frac{b}{a}$ y $x_1x_2=\\frac{c}{a}$. Para $f(x)=x^2-4x+3$ los ceros son 1 y 3: la suma es $4=-\\frac{-4}{1}$ y el producto es $3=\\frac{3}{1}$. El punto medio de los ceros, $\\frac{x_1+x_2}{2}=-\\frac{b}{2a}$, es la abscisa del vértice."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma factorizada",
+      "puntos": [
+        {
+          "texto": "Forma factorizada: $f(x)=a(x-x_1)(x-x_2)$",
+          "explicacion": "Si la función tiene ceros reales $x_1$ y $x_2$, se escribe $f(x)=a(x-x_1)(x-x_2)$. Para $f(x)=2x^2-8x+6$ los ceros son 1 y 3, y $f(x)=2(x-1)(x-3)$. Verificación: $2(x^2-4x+3)=2x^2-8x+6$. El vértice está en $h=\\frac{1+3}{2}=2$, con $k=f(2)=8-16+6=-2$. El coeficiente $a$ no se pierde al factorizar: $(x-1)(x-3)$ sola daría $x^2-4x+3$, con otro vértice y otro corte con el eje vertical. Con la forma factorizada se leen los ceros de inmediato y el vértice como punto medio de ellos."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de $f$",
+      "puntos": [
+        {
+          "texto": "Signo de la función cuadrática según los ceros",
+          "explicacion": "Con dos ceros $x_1<x_2$ y $a>0$, la función es positiva fuera del intervalo $[x_1,x_2]$ y negativa dentro. Para $f(x)=x^2-4x+3$ con ceros 1 y 3: $f(x)>0$ si $x<1$ o $x>3$, y $f(x)<0$ si $1<x<3$. Verificación: $f(0)=3>0$, $f(2)=-1<0$ y $f(4)=3>0$. Si $a<0$ los signos se invierten."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "Crecimiento a cada lado del vértice",
+          "explicacion": "Si $a>0$, la función decrece en $(-\\infty,h]$ y crece en $[h,+\\infty)$. Para $f(x)=x^2-4x+3$ con $h=2$: $f(0)=3$, $f(1)=0$, $f(2)=-1$ bajan; $f(3)=0$, $f(4)=3$ suben. Si $a<0$ ocurre al revés: crece hasta el vértice y luego decrece. Por esto la función cuadrática no es inyectiva en $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar la regla",
+      "puntos": [
+        {
+          "texto": "Regla con vértice y un punto",
+          "explicacion": "Si se conoce el vértice $(h,k)$ y otro punto, se usa $f(x)=a(x-h)^2+k$ y se halla $a$. Con vértice $(2,-1)$ y punto $(0,3)$: $3=a(0-2)^2-1$, que da $4a=4$ y $a=1$. La regla es $f(x)=(x-2)^2-1=x^2-4x+3$. Verificación: $f(0)=3$. El método es: se reemplaza el vértice en la forma canónica, se reemplaza el punto conocido para obtener una ecuación en $a$, y se resuelve. Si se pide la forma general, se desarrolla el cuadrado: $(x-2)^2-1=x^2-4x+4-1=x^2-4x+3$."
+        },
+        {
+          "texto": "Regla con dos ceros y un punto",
+          "explicacion": "Si se conocen los ceros $x_1,x_2$ y otro punto, se usa $f(x)=a(x-x_1)(x-x_2)$. Con ceros 1 y 3 y el punto $(0,6)$: $6=a(-1)(-3)=3a$, de donde $a=2$. La regla es $f(x)=2(x-1)(x-3)=2x^2-8x+6$. Verificación: $f(0)=6$. El punto adicional es necesario: con solo los dos ceros, $a$ queda libre y hay infinitas parábolas. Con ceros 1 y 3, $a=2$ da $2x^2-8x+6$, mientras que $a=1$ da $x^2-4x+3$, y ambas tienen los mismos ceros."
+        },
+        {
+          "texto": "Regla con tres puntos: sistema de ecuaciones",
+          "explicacion": "Con tres puntos se plantean tres ecuaciones para $a$, $b$ y $c$. Sea $f(0)=1$, $f(1)=2$ y $f(2)=7$. De $f(0)=1$ resulta $c=1$. De $f(1)=2$: $a+b+1=2$, o sea $a+b=1$. De $f(2)=7$: $4a+2b+1=7$, o sea $2a+b=3$. Restando: $a=2$ y $b=-1$. La regla es $f(x)=2x^2-x+1$. Verificación: $f(2)=8-2+1=7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intersecciones",
+      "puntos": [
+        {
+          "texto": "Parábola y recta: resolver $f(x)=g(x)$",
+          "explicacion": "Los puntos donde se cortan la parábola $f(x)=x^2$ y la recta $g(x)=x+2$ se hallan resolviendo $x^2=x+2$, es decir $x^2-x-2=0$, que se factoriza $(x-2)(x+1)=0$, con $x=2$ y $x=-1$. Los puntos son $(2,4)$ y $(-1,1)$. Verificación: $g(2)=4$ y $g(-1)=1$. Si el discriminante fuera cero, la recta sería tangente."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto de coeficientes",
+      "puntos": [
+        {
+          "texto": "Coeficiente $c$: altura del corte vertical",
+          "explicacion": "El término independiente $c$ es la ordenada del punto donde la parábola corta al eje vertical. Si se cambia $c$ en $f(x)=x^2-4x+c$ sin tocar $a$ ni $b$, la parábola se traslada verticalmente: con $c=3$ el vértice es $(2,-1)$, y con $c=5$ es $(2,1)$. El eje de simetría no cambia, porque depende solo de $a$ y $b$."
+        },
+        {
+          "texto": "Coeficiente $b=0$ ⇒ función par",
+          "explicacion": "Si $b=0$, la regla es $f(x)=ax^2+c$ y se cumple $f(-x)=f(x)$, de modo que la función es par y el eje de simetría es el eje vertical, con vértice $(0,c)$. Con $f(x)=-2x^2+8$: vértice $(0,8)$, y los ceros son $x=\\pm2$, porque $-2x^2+8=0$ da $x^2=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 5, 50 y 55: ecuaciones y relaciones",
+          "explicacion": "Los ceros de la función cuadrática son las soluciones de una ecuación de segundo grado; las relaciones entre raíces y coeficientes del tema 50 dan su suma y producto, y la función lineal del tema 55 es el caso $a=0$ que queda excluido."
+        },
+        {
+          "texto": "Temas 57 al 65: más funciones y propiedades",
+          "explicacion": "La función cuadrática sirve de ejemplo para la monotonía, la paridad, la inyectividad y las funciones inversas: restringida a un lado del vértice es inyectiva y tiene inversa, que es una función raíz cuadrada trasladada. Por ejemplo, la función $f(x)=x^2$ restringida a $[0,+\\infty)$ es inyectiva y su inversa es $f^{-1}(x)=\\sqrt{x}$, la función del tema 57, mientras que sin la restricción dos entradas, $x$ y $-x$, comparten la misma salida."
+        }
+      ]
+    }
+  ]
+}

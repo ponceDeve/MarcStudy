@@ -1,0 +1,226 @@
+{
+  "curso": "Álgebra",
+  "tema": "Dominio y rango",
+  "glosario": {
+    "Dominio": "Conjunto de entradas permitidas.",
+    "Rango": "Conjunto de salidas alcanzadas.",
+    "Dominio natural": "Mayor conjunto donde la regla está definida.",
+    "Codominio": "Conjunto de llegada declarado.",
+    "Radicando": "Expresión dentro de un radical.",
+    "Índice": "Número que indica el orden de la raíz.",
+    "Intersección": "Elementos comunes a dos conjuntos.",
+    "Unión": "Elementos que están en alguno de los conjuntos.",
+    "Intervalo": "Conjunto de reales entre dos extremos.",
+    "Función racional": "Cociente de dos polinomios.",
+    "Función irracional": "Función con la variable bajo radical.",
+    "Completar cuadrados": "Escribir un trinomio como cuadrado más constante.",
+    "Función por tramos": "Función con distinta regla en cada parte.",
+    "Desigualdad": "Relación de orden entre dos expresiones.",
+    "Proyección": "Sombra de una curva sobre un eje."
+  },
+  "theory": [
+    {
+      "titulo": "Dominio natural",
+      "puntos": [
+        {
+          "texto": "«Dominio» de $f$: valores de $x$ donde $f(x)$ es real",
+          "explicacion": "El dominio de una función real es el conjunto de todos los números reales $x$ para los cuales la regla de correspondencia produce un número real. Si el enunciado no indica otra cosa, se toma el mayor conjunto posible, llamado dominio natural. Se denota $\\operatorname{Dom}(f)$ y se expresa con intervalos o con la notación de conjuntos. Por ejemplo, para $f(x)=\\frac{1}{x-3}$ el dominio es $\\mathbb{R}\\setminus\\{3\\}$, es decir, todos los reales menos 3."
+        },
+        {
+          "texto": "Tres restricciones básicas del dominio",
+          "explicacion": "Al hallar el dominio de una regla hay tres restricciones frecuentes: el denominador no puede ser cero; el radicando de una raíz de índice par no puede ser negativo; y el argumento de un logaritmo debe ser positivo. Si no aparece ninguna, el dominio es $\\mathbb{R}$. Se identifica cada restricción en la regla, se plantea como condición sobre $x$ y se resuelve; si hay varias, el dominio es la intersección de todas."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomios",
+      "puntos": [
+        {
+          "texto": "Función polinómica ⇒ dominio $\\mathbb{R}$",
+          "explicacion": "Un polinomio solo involucra sumas, restas y productos, operaciones que se pueden efectuar con cualquier número real, así que su dominio es todo $\\mathbb{R}$. Para $f(x)=2x^3-5x^2+4x-7$ no hay ninguna restricción: se puede evaluar en $x=100$, en $x=-0.5$ o en cualquier otro número. Esto incluye a las funciones constante, lineal y cuadrática."
+        }
+      ]
+    },
+    {
+      "titulo": "Denominadores",
+      "puntos": [
+        {
+          "texto": "Denominador: resolver $Q(x)=0$ y excluir las soluciones",
+          "explicacion": "En $f(x)=\\frac{P(x)}{Q(x)}$ el dominio excluye los valores que hacen cero al denominador. Para $f(x)=\\frac{x+1}{x^2-4}$ se resuelve $x^2-4=0$, que da $x=2$ y $x=-2$, de modo que $\\operatorname{Dom}(f)=\\mathbb{R}\\setminus\\{-2,2\\}$. El numerador no impone restricciones: aunque se anule, la fracción está definida y vale cero."
+        },
+        {
+          "texto": "Denominador cuadrático: factorizar para hallar exclusiones",
+          "explicacion": "Si el denominador es un trinomio, se factoriza para encontrar sus ceros. En $f(x)=\\frac{1}{x^2-5x+6}$ se tiene $x^2-5x+6=(x-2)(x-3)$, con ceros $x=2$ y $x=3$. El dominio es $\\mathbb{R}\\setminus\\{2,3\\}$. Verificación: $f(0)=\\frac{1}{6}$ está definida, mientras que en $x=2$ el denominador vale $4-10+6=0$."
+        },
+        {
+          "texto": "No simplificar antes de hallar el dominio",
+          "explicacion": "El dominio se halla con la regla original, antes de simplificar. En $f(x)=\\frac{x^2-1}{x-1}$ el denominador se anula en $x=1$, de modo que $\\operatorname{Dom}(f)=\\mathbb{R}\\setminus\\{1\\}$, aunque la expresión se simplifique a $x+1$ para $x\\neq1$. Por eso $f$ y $g(x)=x+1$ no son la misma función: $g$ está definida en $x=1$ y $f$ no."
+        }
+      ]
+    },
+    {
+      "titulo": "Radicales",
+      "puntos": [
+        {
+          "texto": "Raíz de índice par ⇒ radicando mayor o igual que cero",
+          "explicacion": "Una raíz de índice par, como la raíz cuadrada, solo está definida en los reales cuando el radicando no es negativo. Para $f(x)=\\sqrt{2x-6}$ se exige $2x-6\\geq0$, que da $x\\geq3$, y el dominio es $[3,+\\infty)$. Verificación: $f(3)=0$ y $f(5)=2$ están definidas, mientras que $f(2)=\\sqrt{-2}$ no es real."
+        },
+        {
+          "texto": "Raíz de índice impar ⇒ sin restricción",
+          "explicacion": "Una raíz de índice impar, como la raíz cúbica, existe para cualquier número real, positivo, negativo o cero. Para $f(x)=\\sqrt[3]{x-1}$ el dominio es $\\mathbb{R}$. Verificación: $f(9)=2$, $f(1)=0$ y $f(-7)=-2$, porque $(-2)^3=-8=-7-1$. La razón es que un número negativo sí tiene raíz cúbica real, porque el cubo de un número negativo es negativo. Esto distingue la raíz de índice impar de la raíz cuadrada, que exige radicando no negativo, y permite que su dominio dependa solo de las demás partes de la regla."
+        },
+        {
+          "texto": "Raíz en el denominador ⇒ radicando mayor que cero",
+          "explicacion": "Cuando una raíz de índice par está en el denominador, el radicando debe ser estrictamente positivo: no puede ser negativo, y tampoco cero porque el denominador se anularía. Para $f(x)=\\frac{1}{\\sqrt{x-1}}$ se exige $x-1>0$, que da $x>1$, y el dominio es $(1,+\\infty)$. En $x=1$ el denominador sería $\\sqrt{0}=0$."
+        },
+        {
+          "texto": "Radicando cuadrático: resolver la desigualdad",
+          "explicacion": "Para $f(x)=\\sqrt{9-x^2}$ se exige $9-x^2\\geq0$, es decir $x^2\\leq9$, que equivale a $-3\\leq x\\leq3$, y el dominio es $[-3,3]$. Para $g(x)=\\sqrt{x^2-4}$ se exige $x^2\\geq4$, que da $x\\leq-2$ o $x\\geq2$, y el dominio es $(-\\infty,-2]\\cup[2,+\\infty)$. Verificación: $g(3)=\\sqrt{5}$ está definida y $g(0)=\\sqrt{-4}$ no."
+        }
+      ]
+    },
+    {
+      "titulo": "Desigualdades en dominio",
+      "puntos": [
+        {
+          "texto": "Radicando trinomio: factorizar y analizar signos",
+          "explicacion": "Para $f(x)=\\sqrt{x^2-5x+6}$ se exige $x^2-5x+6\\geq0$, es decir $(x-2)(x-3)\\geq0$. El producto es no negativo cuando ambos factores tienen el mismo signo o alguno es cero: $x\\leq2$ o $x\\geq3$. El dominio es $(-\\infty,2]\\cup[3,+\\infty)$. Verificación: en $x=2.5$ el radicando vale $6.25-12.5+6=-0.25$, negativo, y el valor 2.5 queda fuera del dominio."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones combinadas",
+      "puntos": [
+        {
+          "texto": "Raíz y denominador a la vez: intersectar condiciones",
+          "explicacion": "Cuando hay varias restricciones, el dominio es la intersección de todas ellas. Para $f(x)=\\frac{\\sqrt{x+2}}{x-1}$ la raíz exige $x\\geq-2$ y el denominador exige $x\\neq1$. El dominio es $[-2,+\\infty)$ sin el 1, es decir, $[-2,1)\\cup(1,+\\infty)$. Verificación: $f(-2)=0$ está definida y $f(1)$ no."
+        },
+        {
+          "texto": "Dos raíces: intersectar los intervalos",
+          "explicacion": "Para $f(x)=\\sqrt{x-1}\\cdot\\sqrt{5-x}$ la primera raíz exige $x\\geq1$ y la segunda exige $x\\leq5$. La intersección es $[1,5]$. Si ambas raíces estuvieran en una fracción, $\\frac{\\sqrt{x-1}}{\\sqrt{5-x}}$, la segunda raíz iría en el denominador y exigiría $x<5$, con dominio $[1,5)$. Se resuelve cada condición por separado y se toma la parte común de las soluciones. Verificación del producto: $f(3)=\\sqrt{2}\\cdot\\sqrt{2}=2$ está definida, y $f(6)$ no lo está porque $\\sqrt{5-6}=\\sqrt{-1}$ no es real."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones entre funciones",
+      "puntos": [
+        {
+          "texto": "Dominio de $f\\pm g$ y $f\\cdot g$: intersección",
+          "explicacion": "El dominio de la suma, la resta y el producto de dos funciones es la intersección de sus dominios, porque la operación solo se puede realizar donde ambas funciones están definidas. Con $f(x)=\\sqrt{x}$ y $g(x)=\\sqrt{4-x}$: $\\operatorname{Dom}(f)=[0,+\\infty)$ y $\\operatorname{Dom}(g)=(-\\infty,4]$, de modo que el dominio de $f+g$ es $[0,4]$."
+        },
+        {
+          "texto": "Dominio de $\\frac{f}{g}$: intersección y $g(x)\\neq0$",
+          "explicacion": "El dominio del cociente es la intersección de los dominios sin los valores donde $g(x)=0$. Con las mismas funciones, $g(x)=\\sqrt{4-x}$ se anula en $x=4$, así que el dominio de $\\frac{f}{g}$ es $[0,4)$. Verificación: $\\left(\\frac{f}{g}\\right)(0)=0$ está definida y en $x=4$ el denominador es cero."
+        },
+        {
+          "texto": "Dominio de $f\\circ g$: $x$ en $\\operatorname{Dom}(g)$ con $g(x)$ en $\\operatorname{Dom}(f)$",
+          "explicacion": "Para componer, $x$ debe estar en el dominio de $g$ y además $g(x)$ debe estar en el dominio de $f$. Con $f(x)=\\sqrt{x}$ y $g(x)=x-2$: $\\operatorname{Dom}(g)=\\mathbb{R}$, y se exige $g(x)\\geq0$, es decir $x-2\\geq0$, de modo que el dominio de $f\\circ g$ es $[2,+\\infty)$. Verificación: $(f\\circ g)(6)=\\sqrt{4}=2$ y $(f\\circ g)(1)=\\sqrt{-1}$ no es real."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio restringido",
+      "puntos": [
+        {
+          "texto": "Dominio impuesto: $x$ en un intervalo dado",
+          "explicacion": "A veces el enunciado fija el dominio, y entonces es ese dominio, no el natural. La función $f(x)=x^2$ con $x\\in[0,3]$ tiene dominio $[0,3]$ aunque la regla permita cualquier real. Funciones con la misma regla pero distinto dominio son funciones distintas, y su rango también puede diferir."
+        }
+      ]
+    },
+    {
+      "titulo": "Concepto de rango",
+      "puntos": [
+        {
+          "texto": "«Rango» de $f$: valores $y$ para los que existe $x$ con $f(x)=y$",
+          "explicacion": "El rango es el conjunto de todas las salidas posibles: un número $y$ está en el rango si existe algún $x$ del dominio con $f(x)=y$. Se denota $\\operatorname{Ran}(f)$. Se puede hallar despejando $x$ en función de $y$, completando cuadrados, acotando la expresión con desigualdades o analizando la gráfica. El rango siempre es un subconjunto del codominio."
+        },
+        {
+          "texto": "Rango de funciones constantes y lineales",
+          "explicacion": "Una función constante $f(x)=c$ tiene rango $\\{c\\}$, un conjunto con un solo elemento. Una función lineal $f(x)=ax+b$ con $a\\neq0$ y dominio $\\mathbb{R}$ tiene rango $\\mathbb{R}$, porque para cualquier $y$ se puede despejar $x=\\frac{y-b}{a}$. Con dominio restringido, como $f(x)=2x+1$ en $(1,3]$, el rango es $(3,7]$: $f(1)=3$ no se alcanza y $f(3)=7$ sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango cuadrático",
+      "puntos": [
+        {
+          "texto": "Completar cuadrados para hallar el rango",
+          "explicacion": "Para $f(x)=x^2-4x+7$ se completa el cuadrado: $f(x)=(x-2)^2+3$. Como $(x-2)^2\\geq0$ y vale 0 en $x=2$, el valor mínimo es 3 y el rango es $[3,+\\infty)$. Verificación: $f(2)=4-8+7=3$ y $f(0)=7$, ambos mayores o iguales que 3. El procedimiento general para $ax^2+bx+c$ con $a>0$ es escribir $a(x-h)^2+k$; entonces el rango es $[k,+\\infty)$, y con $a<0$ es $(-\\infty,k]$, siendo $k$ el valor de la función en $x=h$."
+        },
+        {
+          "texto": "Cuadrática con coeficiente negativo: rango acotado superiormente",
+          "explicacion": "Para $f(x)=-x^2+2x+3$ se completa el cuadrado: $f(x)=-(x-1)^2+4$. Como $-(x-1)^2\\leq0$, el valor máximo es 4, alcanzado en $x=1$, y el rango es $(-\\infty,4]$. Verificación: $f(1)=-1+2+3=4$ y $f(0)=3$, menor que 4. El signo del coeficiente de $x^2$ decide hacia dónde abre la parábola: abre hacia abajo cuando es negativo y entonces tiene un máximo. El vértice está en $(1,4)$, y desde ahí los valores solo descienden, de modo que no existe ninguna salida mayor que 4."
+        },
+        {
+          "texto": "Raíz más una constante: rango desde la constante",
+          "explicacion": "Para $f(x)=\\sqrt{x-1}+2$ el dominio es $[1,+\\infty)$ y $\\sqrt{x-1}\\geq0$, con mínimo 0 en $x=1$. Por tanto $f(x)\\geq2$ y el rango es $[2,+\\infty)$. Verificación: $f(1)=2$ y $f(5)=\\sqrt{4}+2=4$, valores del rango. La constante sumada desplaza el rango: sin el 2 el rango sería $[0,+\\infty)$, y con él pasa a $[2,+\\infty)$. Si se restara, como en $\\sqrt{x-1}-2$, el rango sería $[-2,+\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango por despeje",
+      "puntos": [
+        {
+          "texto": "Función fraccionaria: despejar $x$ en función de $y$",
+          "explicacion": "Para $f(x)=\\frac{2x+1}{x-3}$ se escribe $y=\\frac{2x+1}{x-3}$ y se despeja $x$: $y(x-3)=2x+1$, que da $yx-3y=2x+1$, es decir $x(y-2)=3y+1$, y $x=\\frac{3y+1}{y-2}$. Esta expresión existe si $y\\neq2$, así que el rango es $\\mathbb{R}\\setminus\\{2\\}$. Verificación: $f(4)=\\frac{9}{1}=9$, y con $y=9$ resulta $x=\\frac{28}{7}=4$. El método consiste en tratar $y$ como un número fijo, despejar $x$ y ver para qué valores de $y$ la expresión obtenida tiene sentido. El valor $y=2$ no se alcanza, porque haría cero al denominador $y-2$ y no existiría ningún $x$."
+        },
+        {
+          "texto": "Rango de $f(x)=\\frac{1}{x}$",
+          "explicacion": "De $y=\\frac{1}{x}$ se despeja $x=\\frac{1}{y}$, que existe si $y\\neq0$. El rango es $\\mathbb{R}\\setminus\\{0\\}$: nunca se obtiene 0, porque una fracción de numerador 1 no se anula. Este es el ejemplo básico de una función cuyo rango excluye un valor."
+        },
+        {
+          "texto": "Función simplificada: excluir el valor que falta",
+          "explicacion": "Para $f(x)=\\frac{x^2-1}{x-1}$ el dominio es $\\mathbb{R}\\setminus\\{1\\}$ y, para $x\\neq1$, $f(x)=x+1$. La salida 2 correspondería a $x=1$, que está excluido, así que el rango es $\\mathbb{R}\\setminus\\{2\\}$. Verificación: $f(0)=1$ y $f(2)=3$ están en el rango, y 2 no se alcanza."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango por acotación",
+      "puntos": [
+        {
+          "texto": "Acotar con desigualdades: $f(x)=\\frac{3}{x^2+1}$",
+          "explicacion": "Como $x^2\\geq0$, se tiene $x^2+1\\geq1$, y al tomar inversos positivos $0<\\frac{1}{x^2+1}\\leq1$. Multiplicando por 3: $0<f(x)\\leq3$. El valor 3 se alcanza en $x=0$, y el 0 nunca. El rango es $(0,3]$. Verificación: $f(0)=3$ y $f(1)=\\frac{3}{2}$, dentro del intervalo. Al tomar inversos se invierte el sentido de la desigualdad: de $x^2+1\\geq1$ se pasa a $\\frac{1}{x^2+1}\\leq1$. El 0 queda fuera del rango porque una fracción con numerador positivo no puede ser cero, y el 3 sí está porque se alcanza en $x=0$."
+        },
+        {
+          "texto": "Rango de una función en un dominio restringido",
+          "explicacion": "Para $f(x)=x^2$ con dominio $[-1,2]$ se evalúa en los extremos y en el punto donde la función cambia de dirección: $f(-1)=1$, $f(0)=0$ y $f(2)=4$. El menor valor es 0 y el mayor es 4, y el rango es $[0,4]$. Sin la restricción el rango sería $[0,+\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones por tramos",
+      "puntos": [
+        {
+          "texto": "Dominio y rango de una función por tramos: unión de tramos",
+          "explicacion": "El dominio es la unión de los dominios de los tramos y el rango es la unión de los rangos de cada tramo. Sea $f(x)=x+1$ si $x<0$ y $f(x)=x^2$ si $x\\geq0$. El dominio es $(-\\infty,0)\\cup[0,+\\infty)=\\mathbb{R}$. El primer tramo da el rango $(-\\infty,1)$ y el segundo da $[0,+\\infty)$, cuya unión es $\\mathbb{R}$. Verificación: $f(-5)=-4$ y $f(3)=9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tablas y gráficas",
+      "puntos": [
+        {
+          "texto": "Dominio y rango de pares ordenados",
+          "explicacion": "Cuando la función se da como conjunto de pares, el dominio son las primeras componentes y el rango son las segundas, sin repeticiones. En $f=\\{(1,2),(2,3),(3,2)\\}$: $\\operatorname{Dom}(f)=\\{1,2,3\\}$ y $\\operatorname{Ran}(f)=\\{2,3\\}$. El valor 2 se escribe una sola vez en el rango, aunque aparezca en dos pares."
+        },
+        {
+          "texto": "Lectura en la gráfica: proyecciones sobre los ejes",
+          "explicacion": "En una gráfica, el dominio es la proyección de la curva sobre el eje horizontal y el rango es su proyección sobre el eje vertical. Para la parábola $y=x^2$, la curva se extiende a la izquierda y a la derecha sin límite, así que el dominio es $\\mathbb{R}$, y nunca baja de 0, así que el rango es $[0,+\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Tema 4: los intervalos expresan dominio y rango",
+          "explicacion": "Los intervalos del tema 4 y sus operaciones, unión e intersección, son la herramienta para escribir el resultado: $[-2,1)\\cup(1,+\\infty)$ es un ejemplo de dominio expresado con ellos. Las desigualdades de los temas de inecuaciones sirven para resolver las condiciones del radicando."
+        },
+        {
+          "texto": "Temas 53 al 58: usos del dominio y el rango",
+          "explicacion": "Los temas siguientes sobre tablas, gráficas y funciones particulares requieren conocer el dominio y el rango: la función raíz cuadrada tiene dominio $[0,+\\infty)$, la lineal tiene dominio $\\mathbb{R}$ y la cuadrática tiene rango determinado por su vértice. Por ejemplo, al graficar la función cuadrática el rango dice hasta dónde sube o baja la curva, y al componer funciones el dominio decide en qué valores la composición tiene sentido."
+        }
+      ]
+    }
+  ]
+}

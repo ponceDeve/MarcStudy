@@ -1,0 +1,193 @@
+{
+  "curso": "Álgebra",
+  "tema": "Funciones inyectivas",
+  "glosario": {
+    "Función inyectiva": "Imágenes distintas para valores distintos.",
+    "Contraejemplo": "Caso concreto que refuta una afirmación.",
+    "Contrarrecíproco": "Forma lógica equivalente de una implicación.",
+    "Dominio": "Conjunto de valores permitidos de la variable.",
+    "Rango": "Conjunto de valores que toma la función.",
+    "Imagen": "Valor que la función asigna a un elemento.",
+    "Recta horizontal": "Recta paralela al eje de abscisas.",
+    "Abscisa": "Coordenada horizontal de un punto.",
+    "Vértice": "Punto donde la parábola cambia de sentido.",
+    "Estrictamente monótona": "Siempre creciente o siempre decreciente.",
+    "Función constante": "Función con el mismo valor siempre.",
+    "Función por tramos": "Función con fórmulas distintas según el intervalo.",
+    "Conjuntos disjuntos": "Conjuntos sin elementos en común.",
+    "Función inversa": "Función que deshace la acción de otra.",
+    "Composición": "Aplicar una función al resultado de otra.",
+    "Par ordenado": "Pareja de valores en orden fijo.",
+    "Restricción del dominio": "Limitar la función a parte del dominio.",
+    "Intervalo": "Conjunto de reales entre dos extremos.",
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Raíz cuadrada principal": "Raíz cuadrada no negativa de un número.",
+    "Uno a uno": "Otro nombre de función inyectiva."
+  },
+  "theory": [
+    {
+      "titulo": "Función inyectiva",
+      "puntos": [
+        {
+          "texto": "Función inyectiva: $x_1 \\neq x_2 \\Rightarrow f(x_1) \\neq f(x_2)$",
+          "explicacion": "Una función es inyectiva si elementos distintos del dominio siempre tienen imágenes distintas: nunca dos valores diferentes de $x$ producen el mismo valor de $f(x)$. Ejemplo: $f(x)=3x-2$ es inyectiva, pues $f(1)=1$, $f(2)=4$ y $f(3)=7$ son distintos. En una función inyectiva, cada valor del rango proviene de un único valor del dominio."
+        },
+        {
+          "texto": "Definición equivalente: $f(x_1)=f(x_2) \\Rightarrow x_1=x_2$",
+          "explicacion": "Es el contrarrecíproco de la definición anterior y es la forma que se usa para demostrar inyectividad: se supone que dos imágenes son iguales y se deduce que los valores originales coinciden. Ejemplo: si $f(x)=5x+1$ y $f(a)=f(b)$, entonces $5a+1=5b+1$, luego $5a=5b$ y $a=b$."
+        },
+        {
+          "texto": "Función uno a uno: otro nombre de la función inyectiva",
+          "explicacion": "Se la llama función uno a uno porque cada elemento del dominio se corresponde con una imagen propia y ninguna imagen se comparte. Es el mismo concepto: una función es uno a uno exactamente cuando es inyectiva. En la lista de pares $\\{(1,4),(2,6),(3,8)\\}$ las segundas componentes son todas distintas."
+        },
+        {
+          "texto": "Inyección: sustantivo para una función inyectiva",
+          "explicacion": "En lenguaje más formal, a una función inyectiva se la denomina inyección. La expresión «inyectividad» designa la propiedad. Las tres expresiones, inyectiva, uno a uno e inyección, son equivalentes y se usan según el texto o el contexto."
+        },
+        {
+          "texto": "Función no inyectiva: existen $x_1 \\neq x_2$ con $f(x_1)=f(x_2)$",
+          "explicacion": "Para probar que una función no es inyectiva basta encontrar un solo par de valores distintos con la misma imagen, llamado contraejemplo. Ejemplo: $f(x)=x^2$ no es inyectiva en $\\mathbb{R}$ porque $f(-2)=4=f(2)$. No hace falta analizar otros valores: con un contraejemplo la propiedad queda refutada."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración algebraica",
+      "puntos": [
+        {
+          "texto": "Método: suponer $f(a)=f(b)$ y deducir $a=b$",
+          "explicacion": "El procedimiento tiene cuatro pasos: escribir la hipótesis $f(a)=f(b)$, sustituir la regla de la función, operar algebraicamente y llegar a $a=b$. Si se llega a ese resultado, la función es inyectiva; si en cambio las operaciones permiten que $a$ y $b$ sean distintos, se busca un contraejemplo. Es un método general, válido para cualquier función dada por una fórmula."
+        },
+        {
+          "texto": "Ejemplo: $f(x)=3x-2$ es inyectiva",
+          "explicacion": "Se supone $f(a)=f(b)$, es decir, $3a-2=3b-2$. Sumando $2$ a ambos miembros se obtiene $3a=3b$, y dividiendo entre $3$, $a=b$. Por tanto la función es inyectiva. Verificación numérica: $f(1)=1$, $f(4)=10$ y $f(-1)=-5$, todos distintos. Gráficamente coincide con una recta de pendiente $3$, que sube de forma constante y nunca repite una altura, razón por la cual ninguna imagen se repite. El mismo procedimiento funciona para cualquier función lineal con pendiente distinta de cero."
+        },
+        {
+          "texto": "Ejemplo: $f(x)=\\dfrac{2x+1}{x-3}$ es inyectiva en $x \\neq 3$",
+          "explicacion": "Se supone $\\dfrac{2a+1}{a-3}=\\dfrac{2b+1}{b-3}$ con $a,b \\neq 3$. Multiplicando en cruz: $(2a+1)(b-3)=(2b+1)(a-3)$. Desarrollando: $2ab-6a+b-3=2ab-6b+a-3$. Cancelando $2ab$ y $-3$ queda $-6a+b=-6b+a$, es decir $7b=7a$ y $a=b$. Verificación: $f(0)=-\\dfrac{1}{3}$, $f(1)=-\\dfrac{3}{2}$ y $f(4)=9$, todos distintos. Obsérvese que la demostración exige $a \\neq 3$ y $b \\neq 3$ porque el dominio excluye $x=3$, donde el denominador se anula; en ese valor la función no está definida y no puede compararse con ningún otro."
+        },
+        {
+          "texto": "Ejemplo: $f(x)=x^2-4x+3$ = función no inyectiva",
+          "explicacion": "Se buscan dos valores distintos con la misma imagen. Con $x=0$: $f(0)=3$. Con $x=4$: $f(4)=16-16+3=3$. Como $0 \\neq 4$ y $f(0)=f(4)=3$, la función no es inyectiva. Estos valores son simétricos respecto del vértice $x=2$: $0=2-2$ y $4=2+2$."
+        },
+        {
+          "texto": "Parábola: $f(h-t)=f(h+t)$ ⇒ no inyectiva en $\\mathbb{R}$",
+          "explicacion": "En una función cuadrática, los valores simétricos respecto de la abscisa del vértice $h$ tienen igual imagen, por lo que siempre existen pares distintos con la misma imagen y la función no es inyectiva en todo $\\mathbb{R}$. Ejemplo: para $f(x)=(x-1)^2+2$ el vértice está en $h=1$ y $f(-1)=4+2=6=f(3)=4+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Criterio gráfico",
+      "puntos": [
+        {
+          "texto": "Prueba de la recta horizontal",
+          "explicacion": "Una función es inyectiva si y solo si toda recta horizontal corta a su gráfica a lo sumo en un punto. Si alguna recta horizontal la corta en dos o más puntos, esos puntos tienen la misma altura y distinta abscisa, es decir, dos valores distintos de $x$ con igual imagen. Esta prueba permite decidir la inyectividad a simple vista cuando se conoce la gráfica."
+        },
+        {
+          "texto": "Ejemplo gráfico: $y=x^2$ y la recta $y=4$",
+          "explicacion": "La recta horizontal $y=4$ corta la parábola $y=x^2$ en los puntos $(-2,4)$ y $(2,4)$, de modo que $f(x)=x^2$ no es inyectiva en $\\mathbb{R}$. La recta $y=-1$ no corta la gráfica en ningún punto, lo cual no contradice la inyectividad, pues se exige a lo sumo un corte, no exactamente uno."
+        },
+        {
+          "texto": "Recta horizontal con $f(x)=3x-2$: exactamente un corte",
+          "explicacion": "La gráfica de $f(x)=3x-2$ es una recta oblicua. Cualquier recta horizontal $y=c$ la corta en un único punto, el que cumple $3x-2=c$, es decir $x=\\dfrac{c+2}{3}$. Por ejemplo, $y=7$ corta en $x=3$, pues $3(3)-2=7$. Esto confirma la inyectividad."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones conocidas",
+      "puntos": [
+        {
+          "texto": "Lineal: $f(x)=mx+b$ es inyectiva si $m \\neq 0$",
+          "explicacion": "Si $f(a)=f(b)$ entonces $ma+b=mb+b$, de donde $ma=mb$ y, al dividir entre $m \\neq 0$, $a=b$. Si $m=0$ la función es constante, $f(x)=b$, y toma el mismo valor en todos los puntos, por lo que no es inyectiva. Ejemplo: $f(x)=-4x+1$ es inyectiva, mientras que $f(x)=5$ no lo es, ya que $f(0)=f(1)=5$."
+        },
+        {
+          "texto": "Cuadrática en $\\mathbb{R}$: no es inyectiva",
+          "explicacion": "La parábola siempre tiene una recta horizontal que la corta en dos puntos, salvo la que pasa por el vértice, que la toca en uno solo. Por eso la función $ax^2+bx+c$ no es inyectiva en todo $\\mathbb{R}$. Ejemplo: $f(x)=-x^2+6x-5$ cumple $f(2)=3=f(4)$, pues $-4+12-5=3$ y $-16+24-5=3$."
+        },
+        {
+          "texto": "Cuadrática restringida a un lado del vértice ⇒ inyectiva",
+          "explicacion": "Si el dominio se restringe a $[x_v,+\\infty)$ o a $(-\\infty,x_v]$, donde $x_v$ es la abscisa del vértice, la función es estrictamente monótona y, por tanto, inyectiva. Ejemplo: $f(x)=(x-1)^2+2$ con dominio $[1,+\\infty)$ es inyectiva y su rango es $[2,+\\infty)$. Con $f(a)=f(b)$ se obtiene $(a-1)^2=(b-1)^2$ y, como $a-1 \\geq 0$ y $b-1 \\geq 0$, resulta $a=b$."
+        },
+        {
+          "texto": "Raíz cuadrada: $\\sqrt{a}=\\sqrt{b} \\Rightarrow a=b$",
+          "explicacion": "Si $\\sqrt{a}=\\sqrt{b}$ con $a,b \\geq 0$, al elevar ambos miembros al cuadrado se obtiene $a=b$. Por tanto $f(x)=\\sqrt{x}$ es inyectiva en su dominio $[0,+\\infty)$. Ejemplo: $\\sqrt{x}=5$ solo se cumple con $x=25$. La función $a\\sqrt{x-h}+k$ también es inyectiva, porque solo traslada y estira."
+        },
+        {
+          "texto": "Valor absoluto en $\\mathbb{R}$: no es inyectiva",
+          "explicacion": "Valores opuestos tienen igual valor absoluto: $|-3|=3=|3|$, de modo que $f(x)=|x|$ no es inyectiva. Lo mismo ocurre con $a|x-h|+k$, pues $f(h-t)=f(h+t)$. Ejemplo: $f(x)=2|x-1|-6$ cumple $f(-2)=0=f(4)$, pues $2|-3|-6=0$ y $2|3|-6=0$. Gráficamente, la recta horizontal $y=0$ corta la «V» en dos puntos, lo que incumple la prueba de la recta horizontal y confirma que la función repite valores a ambos lados del vértice."
+        },
+        {
+          "texto": "Valor absoluto restringido a un lado del vértice ⇒ inyectiva",
+          "explicacion": "Con dominio $[0,+\\infty)$, $|x|$ coincide con $x$; con dominio $(-\\infty,0]$ coincide con $-x$, y en ambos casos es lineal con pendiente no nula. Ejemplo: $f(x)=|x-2|$ con dominio $[2,+\\infty)$ es $f(x)=x-2$, inyectiva, con rango $[0,+\\infty)$. De igual forma, con dominio $(-\\infty,2]$ la función es $f(x)=2-x$, también inyectiva, con el mismo rango. Cada restricción deja una sola rama de la «V», y una rama recta con pendiente no nula nunca repite una altura."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva",
+          "explicacion": "Si una función es estrictamente creciente o estrictamente decreciente en un intervalo, valores distintos tienen imágenes ordenadas y por tanto distintas. Prueba: si $x_1<x_2$ entonces $f(x_1)<f(x_2)$ o $f(x_1)>f(x_2)$, y en ambos casos $f(x_1) \\neq f(x_2)$. Ejemplo: $f(x)=\\sqrt{x}$ es creciente y por eso inyectiva."
+        },
+        {
+          "texto": "Inyectiva no siempre es monótona: caso $f(x)=\\dfrac{1}{x}$",
+          "explicacion": "La función $\\dfrac{1}{x}$ es inyectiva en $x \\neq 0$, pues $\\dfrac{1}{a}=\\dfrac{1}{b}$ implica $a=b$, pero no es monótona en todo su dominio: $f(-1)=-1<f(1)=1$, mientras que $f(1)=1>f(2)=\\dfrac{1}{2}$. El recíproco del resultado anterior es falso. La monotonía estricta es una condición suficiente para la inyectividad, pero no necesaria: la función $\\dfrac{1}{x}$ es decreciente en $(-\\infty,0)$ y en $(0,+\\infty)$ por separado, y las imágenes de ambas partes no se solapan (negativas a la izquierda, positivas a la derecha)."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones por tramos",
+      "puntos": [
+        {
+          "texto": "Por tramos: inyectiva si cada tramo lo es y las imágenes no se solapan",
+          "explicacion": "Una función definida por tramos es inyectiva cuando cada tramo es inyectivo y los conjuntos de imágenes de tramos distintos no se intersectan. Ejemplo: $f(x)=x$ si $x<0$ y $f(x)=x+1$ si $x \\geq 0$. El primer tramo toma valores en $(-\\infty,0)$ y el segundo en $[1,+\\infty)$, conjuntos disjuntos, de modo que $f$ es inyectiva."
+        },
+        {
+          "texto": "Ejemplo no inyectivo: $f(x)=x$ si $x \\leq 1$; $f(x)=4-x$ si $x>1$",
+          "explicacion": "El primer tramo toma valores en $(-\\infty,1]$ y el segundo en $(-\\infty,3)$; esos conjuntos se solapan, así que puede haber repeticiones. En efecto $f(0)=0$ y $f(4)=4-4=0$, con $0 \\neq 4$. Por tanto la función no es inyectiva."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones",
+      "puntos": [
+        {
+          "texto": "Si $f$ es inyectiva: $f(a)=f(b) \\Rightarrow a=b$",
+          "explicacion": "Esta implicación permite resolver ecuaciones donde ambos miembros están afectados por la misma función inyectiva, igualando directamente los argumentos. Ejemplo: $\\sqrt{x+1}=\\sqrt{2x-3}$ da $x+1=2x-3$, luego $x=4$. Verificación: $\\sqrt{5}=\\sqrt{5}$. En funciones no inyectivas esto no es válido: $a^2=b^2$ no implica $a=b$."
+        },
+        {
+          "texto": "Una función inyectiva: $f(x)=c$ tiene a lo sumo una solución",
+          "explicacion": "Si hubiera dos soluciones distintas, dos valores distintos tendrían la misma imagen $c$, lo cual contradice la inyectividad. Ejemplo: $f(x)=2x+3$ y $f(x)=11$ dan $2x=8$ y $x=4$, única solución; $f(x)=c$ para cualquier $c$ real tiene exactamente una solución, $x=\\dfrac{c-3}{2}$."
+        },
+        {
+          "texto": "Inyectiva ⇒ existe función inversa definida en el rango",
+          "explicacion": "Cuando $f$ es inyectiva, cada $y$ del rango proviene de un único $x$, de modo que se puede definir $f^{-1}(y)=x$. Ejemplo: $f(x)=2x+3$ tiene inversa $f^{-1}(y)=\\dfrac{y-3}{2}$. Verificación: $f(2)=7$ y $f^{-1}(7)=\\dfrac{7-3}{2}=2$. Este tema se desarrolla en la sección de funciones inversas."
+        },
+        {
+          "texto": "Composición de inyectivas es inyectiva",
+          "explicacion": "Si $f$ y $g$ son inyectivas y $g(f(a))=g(f(b))$, la inyectividad de $g$ da $f(a)=f(b)$, y la de $f$ da $a=b$. Ejemplo: $f(x)=x+1$ y $g(x)=2x$ dan $g(f(x))=2x+2$, que es inyectiva: $2a+2=2b+2$ implica $a=b$. El orden importa para aplicar las hipótesis: primero se usa la inyectividad de la función exterior $g$ para pasar de $g(f(a))=g(f(b))$ a $f(a)=f(b)$, y después la de la interior $f$. Con $a=1$ y $b=3$, por ejemplo, se obtiene $4$ y $8$, valores distintos, como corresponde."
+        },
+        {
+          "texto": "Función dada por pares: inyectiva si las segundas componentes son distintas",
+          "explicacion": "En una representación tabular o por pares ordenados, se revisan las imágenes: si alguna se repite, la función no es inyectiva. El conjunto $\\{(1,3),(2,5),(3,7)\\}$ es inyectivo porque $3$, $5$ y $7$ son distintos. El conjunto $\\{(1,3),(2,5),(3,3)\\}$ no lo es, porque $f(1)=f(3)=3$."
+        },
+        {
+          "texto": "Inyectiva con dominio de $n$ elementos ⇒ rango de $n$ elementos",
+          "explicacion": "Si la función es inyectiva, cada elemento del dominio tiene una imagen distinta, de modo que el rango tiene tantos elementos como el dominio. Ejemplo: con dominio $\\{1,2,3,4\\}$ y $f(x)=2x+1$ las imágenes son $3$, $5$, $7$, $9$, cuatro valores distintos. Si el rango tuviera menos elementos, la función no sería inyectiva."
+        }
+      ]
+    },
+    {
+      "titulo": "Restringir dominio",
+      "puntos": [
+        {
+          "texto": "Método: restringir el dominio para lograr inyectividad",
+          "explicacion": "Si una función no es inyectiva, se puede elegir un subconjunto del dominio donde sí lo sea, normalmente un intervalo de monotonía estricta. Se localizan los puntos donde cambia el comportamiento (el vértice, por ejemplo) y se toma uno de los lados. Esto es el paso previo para construir una función inversa de funciones como $x^2$ o $|x|$."
+        },
+        {
+          "texto": "Ejemplo: $f(x)=x^2$ con dominio $[0,+\\infty)$",
+          "explicacion": "Si $a,b \\geq 0$ y $a^2=b^2$, entonces $(a-b)(a+b)=0$. Como $a+b>0$ salvo que ambos sean cero, resulta $a-b=0$ y $a=b$. Por eso la función es inyectiva con rango $[0,+\\infty)$. Ejemplo: $f(3)=9$ y el único valor no negativo con imagen $9$ es $3$."
+        }
+      ]
+    }
+  ]
+}

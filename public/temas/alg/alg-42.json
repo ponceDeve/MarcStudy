@@ -1,0 +1,370 @@
+{
+  "curso": "Álgebra",
+  "tema": "Binomio de Newton",
+  "glosario": {
+    "binomio": "Expresión algebraica de dos términos.",
+    "factorial": "Producto de los naturales hasta un número.",
+    "número natural": "Entero positivo usado para contar.",
+    "número combinatorio": "Número de formas de elegir sin orden.",
+    "coeficiente binomial": "Otro nombre del número combinatorio.",
+    "combinaciones": "Grupos de elementos elegidos sin importar orden.",
+    "triángulo de Pascal": "Tabla triangular de números combinatorios.",
+    "desarrollo": "Potencia escrita como suma de términos.",
+    "término": "Cada sumando de una expresión algebraica.",
+    "coeficiente": "Número que multiplica a una variable.",
+    "sumatoria": "Suma de términos indicada con un índice.",
+    "simetría": "Igualdad entre extremos opuestos de una lista.",
+    "inducción matemática": "Demostración por caso base y paso siguiente.",
+    "término central": "Término que ocupa el medio del desarrollo.",
+    "término independiente": "Término que no contiene la variable.",
+    "unidad imaginaria": "Número cuyo cuadrado es menos uno.",
+    "polinomio": "Suma de monomios con exponentes naturales.",
+    "grado": "Mayor exponente de la variable.",
+    "exponente": "Número que indica la potencia.",
+    "potencia": "Producto de factores iguales."
+  },
+  "theory": [
+    {
+      "titulo": "Factorial de un número",
+      "puntos": [
+        {
+          "texto": "«Factorial» de $n$: $n!=n(n-1)(n-2)\\cdots2\\cdot1$",
+          "explicacion": "El factorial de un número natural $n$ es el producto de todos los números naturales desde 1 hasta $n$, y se lee «n factorial». Crece con gran rapidez, por lo que aparece al contar ordenaciones. Ejemplos: $4!=4\\cdot3\\cdot2\\cdot1=24$; $5!=120$; $6!=720$; $7!=5040$, comprobación: $7\\cdot720=5040$. Se utiliza para definir los números combinatorios que aparecen en los coeficientes del desarrollo de un binomio."
+        },
+        {
+          "texto": "$0!=1$",
+          "explicacion": "Es una convención necesaria para que la relación $n!=n\\cdot(n-1)!$ siga valiendo cuando $n=1$: $1!=1\\cdot0!$ obliga a $0!=1$. También corresponde a que el producto de ningún factor vale 1. Gracias a ella, las fórmulas de los números combinatorios funcionan en los extremos $k=0$ y $k=n$, por ejemplo $\\dfrac{5!}{0!\\,5!}=1$."
+        },
+        {
+          "texto": "$n!=n\\cdot(n-1)!$",
+          "explicacion": "Se obtiene separando el primer factor del producto: $n!=n\\cdot[(n-1)(n-2)\\cdots1]$. Permite reducir factoriales grandes a otros más pequeños. Ejemplos: $6!=6\\cdot5!=6\\cdot120=720$ y $8!=8\\cdot7\\cdot6!$. La misma idea sirve para escribir $n!=n(n-1)(n-2)!$ y así sucesivamente, hasta el factorial que interese conservar."
+        },
+        {
+          "texto": "Simplificar cocientes de factoriales cancelando el factor común",
+          "explicacion": "Se escribe el factorial mayor hasta llegar al menor y se cancela la parte común. Ejemplo 1: $\\dfrac{10!}{7!}=\\dfrac{10\\cdot9\\cdot8\\cdot7!}{7!}=10\\cdot9\\cdot8=720$. Ejemplo 2: $\\dfrac{7!}{4!\\,3!}=\\dfrac{7\\cdot6\\cdot5\\cdot4!}{4!\\cdot6}=\\dfrac{210}{6}=35$. Este procedimiento evita calcular factoriales enormes y es la base del cálculo práctico de los números combinatorios."
+        },
+        {
+          "texto": "$(a+b)!\\neq a!+b!$",
+          "explicacion": "El factorial no se distribuye sobre la suma ni sobre el producto. Contraejemplo: $(3+2)!=5!=120$, pero $3!+2!=6+2=8$. Tampoco $(2n)!=2\\cdot n!$: con $n=2$, $4!=24$ y $2\\cdot2!=4$. Cada factorial debe calcularse sobre el número completo que lo acompaña."
+        }
+      ]
+    },
+    {
+      "titulo": "Número combinatorio",
+      "puntos": [
+        {
+          "texto": "«Número combinatorio»: $\\dbinom{n}{k}=\\dfrac{n!}{k!\\,(n-k)!}$",
+          "explicacion": "Se lee «n sobre k» y se define para enteros $n$ y $k$ con $0\\leq k\\leq n$. Cuenta de cuántas maneras se pueden elegir $k$ elementos de un grupo de $n$. Ejemplo: $\\dbinom{5}{2}=\\dfrac{5!}{2!\\,3!}=\\dfrac{120}{2\\cdot6}=10$. Verificación: $10$ también aparece en la fila 5 del triángulo de Pascal. Sus valores son los coeficientes del desarrollo de un binomio."
+        },
+        {
+          "texto": "Condición: $0\\leq k\\leq n$ con $n$ y $k$ enteros",
+          "explicacion": "Fuera de ese rango la expresión $(n-k)!$ o $k!$ no tendría sentido, porque el factorial solo se define para enteros no negativos. Por ejemplo, $\\dbinom{3}{5}$ pediría $(3-5)!=(-2)!$, que no existe. En este tema los números combinatorios siempre cumplen la condición, y $n$ es un entero no negativo."
+        },
+        {
+          "texto": "«Coeficiente binomial» es otro nombre del número combinatorio",
+          "explicacion": "Se llama así porque los números $\\dbinom{n}{k}$ son los coeficientes que multiplican a cada término en el desarrollo de $(a+b)^n$. Por ejemplo, en $(a+b)^3=a^3+3a^2b+3ab^2+b^3$ los coeficientes 1, 3, 3 y 1 son $\\dbinom30$, $\\dbinom31$, $\\dbinom32$ y $\\dbinom33$."
+        },
+        {
+          "texto": "«Combinaciones» es otro nombre del número combinatorio",
+          "explicacion": "También se escribe $C(n,k)$, con la letra $C$ inicial de la palabra combinaciones, y se lee «combinaciones de $n$ elementos tomados de $k$ en $k$». Ejemplo: $C(5,2)=\\dbinom52=10$. En este tema se usa la notación $\\dbinom nk$."
+        },
+        {
+          "texto": "$\\dbinom nk$ = formas de elegir $k$ elementos de $n$ sin orden",
+          "explicacion": "En una elección sin orden, el grupo $\\{A,B\\}$ es el mismo que $\\{B,A\\}$. Ejemplo: con los elementos $A,B,C,D$ hay $\\dbinom42=6$ grupos de dos: $AB$, $AC$, $AD$, $BC$, $BD$ y $CD$. Esta interpretación explica por qué los números combinatorios cuentan cuántas veces aparece cada término en un desarrollo."
+        },
+        {
+          "texto": "$\\dbinom nk=\\dfrac{n(n-1)\\cdots(n-k+1)}{k!}$",
+          "explicacion": "Se obtiene de la definición cancelando $(n-k)!$ entre el numerador y el denominador: queda un numerador con $k$ factores decrecientes que empiezan en $n$, y el denominador $k!$. Ejemplos: $\\dbinom73=\\dfrac{7\\cdot6\\cdot5}{3\\cdot2\\cdot1}=\\dfrac{210}{6}=35$ y $\\dbinom{10}{4}=\\dfrac{10\\cdot9\\cdot8\\cdot7}{4\\cdot3\\cdot2\\cdot1}=\\dfrac{5040}{24}=210$. Esta forma es la que más se usa al calcular, porque exige multiplicar solo $k$ factores. Se aplica cuando $k$ es pequeño; si $k$ es grande, conviene usar antes la simetría y trabajar con $n-k$. Ejemplo adicional: $\\dbinom{9}{7}=\\dbinom92=\\dfrac{9\\cdot8}{2}=36$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de combinatorios",
+      "puntos": [
+        {
+          "texto": "$\\dbinom n0=\\dbinom nn=1$",
+          "explicacion": "Por la definición: $\\dbinom n0=\\dfrac{n!}{0!\\,n!}=1$ y $\\dbinom nn=\\dfrac{n!}{n!\\,0!}=1$. Representan los coeficientes del primer y del último término del desarrollo, es decir, de $a^n$ y de $b^n$. Ejemplos: $\\dbinom90=1$ y $\\dbinom99=1$. Esto significa que, en el desarrollo, los dos términos de los extremos siempre llevan coeficiente 1: $(x+5)^6$ comienza con $x^6$ y termina con $5^6=15625$. La propiedad vale para cualquier $n$ entero no negativo, incluso $n=0$, donde $\\dbinom00=1$."
+        },
+        {
+          "texto": "$\\dbinom n1=\\dbinom n{n-1}=n$",
+          "explicacion": "Se tiene $\\dbinom n1=\\dfrac{n!}{1!\\,(n-1)!}=\\dfrac{n\\cdot(n-1)!}{(n-1)!}=n$, y lo mismo para $\\dbinom n{n-1}$. Ejemplo: $\\dbinom{12}{1}=12$ y $\\dbinom{12}{11}=12$. Son los coeficientes del segundo término y del penúltimo en el desarrollo de $(a+b)^n$. Se aplica para escribir de inmediato el segundo término del desarrollo: en $(a+b)^7$ es $7a^6b$. Por simetría, el penúltimo término es $7ab^6$. Esta propiedad evita calcular factoriales cuando $k$ es 1 o $n-1$."
+        },
+        {
+          "texto": "Simetría: $\\dbinom nk=\\dbinom n{n-k}$",
+          "explicacion": "Demostración: $\\dbinom n{n-k}=\\dfrac{n!}{(n-k)!\\,[n-(n-k)]!}=\\dfrac{n!}{(n-k)!\\,k!}=\\dbinom nk$. Sirve para trabajar con el menor de los dos números. Ejemplo: $\\dbinom86=\\dbinom82=\\dfrac{8\\cdot7}{2\\cdot1}=28$. La causa es que elegir $k$ elementos para tomar equivale a elegir los $n-k$ elementos que se dejan. Se aplica para simplificar el cálculo cuando $k$ es mayor que $\\dfrac n2$. Ejemplo adicional: $\\dbinom{10}{8}=\\dbinom{10}{2}=\\dfrac{10\\cdot9}{2}=45$."
+        },
+        {
+          "texto": "Regla de Pascal: $\\dbinom nk+\\dbinom n{k+1}=\\dbinom{n+1}{k+1}$",
+          "explicacion": "Demostración: $\\dfrac{n!}{k!\\,(n-k)!}+\\dfrac{n!}{(k+1)!\\,(n-k-1)!}=\\dfrac{n!\\,[(k+1)+(n-k)]}{(k+1)!\\,(n-k)!}=\\dfrac{(n+1)!}{(k+1)!\\,(n-k)!}$. Se cumple para $0\\leq k\\leq n-1$. Ejemplo: $\\dbinom52+\\dbinom53=10+10=20=\\dbinom63$. Es la regla con la que se construye el triángulo de Pascal. Su sentido geométrico es que cada número del triángulo es la suma de los dos que están justo encima. Se usa para construir filas sucesivas sin factoriales y para probar el teorema del binomio por inducción. Otro ejemplo: $\\dbinom31+\\dbinom32=3+3=6=\\dbinom42$."
+        },
+        {
+          "texto": "$\\dbinom n{k+1}=\\dbinom nk\\cdot\\dfrac{n-k}{k+1}$",
+          "explicacion": "Demostración: al dividir las fórmulas factoriales, $\\dfrac{k!\\,(n-k)!}{(k+1)!\\,(n-k-1)!}=\\dfrac{n-k}{k+1}$. Permite obtener cada coeficiente a partir del anterior. Ejemplo con $n=6$: $\\dbinom62=15$, luego $\\dbinom63=15\\cdot\\dfrac{6-2}{2+1}=15\\cdot\\dfrac43=20$, y $\\dbinom64=20\\cdot\\dfrac{6-3}{3+1}=15$. Se aplica para generar una fila completa de coeficientes con pocas operaciones, empezando por $\\dbinom n0=1$. Ejemplo con $n=5$: $1$, $1\\cdot\\dfrac51=5$, $5\\cdot\\dfrac42=10$, $10\\cdot\\dfrac33=10$, $10\\cdot\\dfrac24=5$, $5\\cdot\\dfrac15=1$."
+        },
+        {
+          "texto": "$\\dbinom na=\\dbinom nb$ con $a\\neq b$ ⇒ $a+b=n$",
+          "explicacion": "Consecuencia de la simetría: dos combinatorios del mismo $n$ solo coinciden si los índices son iguales o suman $n$. Ejemplo: para resolver $\\dbinom x2=\\dbinom x6$, como $2\\neq6$, se plantea $2+6=x$, es decir $x=8$; verificación: $\\dbinom82=28$ y $\\dbinom86=28$."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo de Pascal",
+      "puntos": [
+        {
+          "texto": "El «triángulo de Pascal» ordena los $\\dbinom nk$ por filas",
+          "explicacion": "La fila $n$ contiene los $n+1$ números $\\dbinom n0,\\dbinom n1,\\dots,\\dbinom nn$. Su nombre recuerda a Blaise Pascal, matemático francés. Las filas 0 a 6 son: 1; 1 1; 1 2 1; 1 3 3 1; 1 4 6 4 1; 1 5 10 10 5 1; 1 6 15 20 15 6 1. La fila 4, por ejemplo, contiene $\\dbinom40=1$, $\\dbinom41=4$, $\\dbinom42=6$, $\\dbinom43=4$ y $\\dbinom44=1$."
+        },
+        {
+          "texto": "Construcción: extremos 1 y cada número = suma de los dos superiores",
+          "explicacion": "Se coloca 1 al principio y al final de cada fila y cada número intermedio se calcula sumando los dos números que están encima, por la regla de Pascal. Ejemplo: para obtener la fila 6 desde la fila 5 (1, 5, 10, 10, 5, 1) se calcula $1$, $1+5=6$, $5+10=15$, $10+10=20$, $10+5=15$, $5+1=6$ y $1$."
+        },
+        {
+          "texto": "Filas 7 y 8 del triángulo",
+          "explicacion": "Fila 7: 1, 7, 21, 35, 35, 21, 7, 1. Fila 8: 1, 8, 28, 56, 70, 56, 28, 8, 1. Comprobación de la fila 8 desde la 7: $7+21=28$, $21+35=56$ y $35+35=70$. Conocer estas filas permite desarrollar binomios hasta la potencia 8 sin calcular factoriales."
+        },
+        {
+          "texto": "La fila $n$ ⇒ coeficientes de $(a+b)^n$",
+          "explicacion": "Los números de la fila $n$, leídos de izquierda a derecha, son los coeficientes de los términos de $(a+b)^n$ ordenados con potencias decrecientes de $a$. Ejemplo: la fila 4 es 1, 4, 6, 4, 1 y corresponde a $(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4$."
+        },
+        {
+          "texto": "Cada fila del triángulo es simétrica",
+          "explicacion": "Se lee igual de izquierda a derecha que de derecha a izquierda, porque $\\dbinom nk=\\dbinom n{n-k}$. Ejemplo: la fila 6 (1, 6, 15, 20, 15, 6, 1) es simétrica respecto del 20 central. Por esta simetría basta calcular la mitad de cada fila."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema del binomio",
+      "puntos": [
+        {
+          "texto": "«Binomio» es una expresión con dos términos",
+          "explicacion": "Un binomio es una suma o diferencia de dos términos, como $x+3$, $2x-y$ o $\\sqrt2+1$. Para tratar los casos generales se usa $a+b$, donde $a$ y $b$ representan los dos términos. El problema del tema es calcular su potencia $(a+b)^n$ sin multiplicar $n$ veces."
+        },
+        {
+          "texto": "Teorema: $(a+b)^n=\\displaystyle\\sum_{k=0}^{n}\\dbinom nk a^{n-k}b^k$",
+          "explicacion": "Con $n$ entero no negativo, el desarrollo de la potencia de un binomio es la suma de los términos $\\dbinom nk a^{n-k}b^k$ para $k=0,1,\\dots,n$. Ejemplo: $(x+2)^4=x^4+4x^3\\cdot2+6x^2\\cdot4+4x\\cdot8+16=x^4+8x^3+24x^2+32x+16$. Verificación con $x=1$: $3^4=81$ y $1+8+24+32+16=81$. Para aplicarlo, se identifican $a$, $b$ y $n$, se calculan los coeficientes $\\dbinom nk$ para $k=0,\\dots,n$ y se arma cada término. Condiciones: $n$ entero con $n\\geq0$; los términos $a$ y $b$ pueden ser números, variables o expresiones. Ejemplo adicional: $(x+1)^3=x^3+3x^2+3x+1$."
+        },
+        {
+          "texto": "«Sumatoria»: $\\displaystyle\\sum_{k=0}^{n}$ suma desde $k=0$ hasta $k=n$",
+          "explicacion": "El símbolo $\\Sigma$ indica una suma de varios términos que dependen de un índice $k$ que toma los valores enteros desde el límite inferior hasta el superior. Ejemplo: $\\displaystyle\\sum_{k=0}^{3}(2k+1)=1+3+5+7=16$. En el teorema del binomio, el índice $k$ recorre las posiciones de los términos del desarrollo."
+        },
+        {
+          "texto": "Desarrollo extendido: $a^n+\\dbinom n1a^{n-1}b+\\cdots+b^n$",
+          "explicacion": "Escrito sin sumatoria, el primer término es $a^n$ con coeficiente 1 y el último es $b^n$ con coeficiente 1; los intermedios llevan los coeficientes $\\dbinom n1,\\dbinom n2,\\dots$. Ejemplo con $n=3$: $(a+b)^3=a^3+3a^2b+3ab^2+b^3$. Verificación con $a=b=1$: $2^3=8$ y $1+3+3+1=8$."
+        },
+        {
+          "texto": "«Binomio de Newton» recuerda a Isaac Newton",
+          "explicacion": "El nombre honra a Isaac Newton, matemático y físico inglés. En la práctica, «binomio de Newton» designa la fórmula que desarrolla $(a+b)^n$ mediante los coeficientes binomiales. Conviene distinguir nombre y contenido: el teorema es un resultado sobre potencias de dos términos, mientras que el nombre solo reconoce a la persona asociada a él. Por ello, en los problemas aparece tanto «binomio de Newton» como «desarrollo de $(a+b)^n$», con el mismo significado."
+        },
+        {
+          "texto": "«Teorema binomial» es otro nombre del teorema",
+          "explicacion": "Así se llama también al resultado que expresa $(a+b)^n$ como suma de términos con coeficientes binomiales. Equivale a la «fórmula del binomio» y a la expresión «desarrollo del binomio». Cuando un problema pide aplicar el teorema binomial, se espera usar la fórmula con coeficientes combinatorios para escribir la potencia como suma de términos. Ejemplo: aplicarlo a $(x+y)^2$ da $x^2+2xy+y^2$, con coeficientes $\\dbinom20=1$, $\\dbinom21=2$ y $\\dbinom22=1$."
+        },
+        {
+          "texto": "«Desarrollo» es la suma de términos igual a la potencia",
+          "explicacion": "Desarrollar $(a+b)^n$ consiste en reescribirlo como una suma de monomios, sin paréntesis ni potencias del binomio. Por ejemplo, el desarrollo de $(x+1)^2$ es $x^2+2x+1$. En un desarrollo correcto, el valor numérico coincide con el del binomio original para cualquier valor de las variables, lo que permite verificarlo. Ejemplo: con $x=2$, $(x+1)^2=9$ y $x^2+2x+1=4+4+1=9$. No debe confundirse con elevar cada término al exponente por separado."
+        },
+        {
+          "texto": "Cada término tiene la forma $\\dbinom nk a^{n-k}b^k$",
+          "explicacion": "Cada término es el producto de tres partes: el coeficiente binomial $\\dbinom nk$, la potencia $a^{n-k}$ y la potencia $b^k$, con $k=0,1,\\dots,n$. Ejemplo: en $(a+b)^5$, el término con $k=2$ es $\\dbinom52a^{3}b^{2}=10a^3b^2$. Para escribir un término concreto basta reemplazar $k$: el primer término es $k=0$, el segundo $k=1$, y así sucesivamente, de modo que el término de lugar $p$ corresponde a $k=p-1$. Ejemplo en $(x+2)^5$: el tercer término ($k=2$) es $\\dbinom52x^3\\cdot2^2=40x^3$."
+        },
+        {
+          "texto": "El desarrollo tiene $n+1$ términos",
+          "explicacion": "Como $k$ toma los valores $0,1,\\dots,n$, hay $n+1$ valores y por tanto $n+1$ términos, siempre que no se reduzcan términos semejantes. Ejemplo: $(a+b)^4$ tiene 5 términos y $(a+b)^6$ tiene 7. Un binomio elevado a 0 tiene un único término, el número 1."
+        },
+        {
+          "texto": "En cada término los exponentes suman $n$",
+          "explicacion": "En el término de índice $k$, el exponente de $a$ es $n-k$ y el de $b$ es $k$, y su suma es $(n-k)+k=n$. Ejemplos en $(a+b)^5$: $a^4b$ tiene $4+1=5$ y $a^3b^2$ tiene $3+2=5$. Esta propiedad ayuda a detectar errores en un desarrollo."
+        },
+        {
+          "texto": "El exponente de $a$ ↓ y el de $b$ ↑ término a término",
+          "explicacion": "El exponente de $a$ comienza en $n$ y disminuye en 1 en cada término hasta llegar a 0; el exponente de $b$ comienza en 0 y aumenta en 1 hasta llegar a $n$. Ejemplo con $n=3$: $a^3b^0,\\ a^2b^1,\\ a^1b^2,\\ a^0b^3$."
+        },
+        {
+          "texto": "Casos $n=0$ y $n=1$",
+          "explicacion": "Con $n=0$ se tiene $(a+b)^0=1$ si $a+b\\neq0$, y la fórmula da $\\dbinom00a^0b^0=1$. Con $n=1$, $(a+b)^1=\\dbinom10a+\\dbinom11b=a+b$. Son los casos más sencillos y coinciden con la definición de potencia. Estos casos sirven como comprobación de la fórmula y como base de la inducción. También muestran por qué el desarrollo de $(a+b)^n$ tiene $n+1$ términos: con $n=0$ hay un término y con $n=1$ hay dos. Ejemplo: $(x+4)^0=1$ y $(x+4)^1=x+4$."
+        },
+        {
+          "texto": "El exponente $n$ ∈ números naturales",
+          "explicacion": "La fórmula es una suma finita solo cuando $n$ es 0 o un entero positivo. Con exponentes negativos o fraccionarios, como $(a+b)^{1/2}$, el desarrollo no es una suma finita de términos, y esos casos no se tratan con este teorema. Ejemplo válido: $n=7$."
+        },
+        {
+          "texto": "$(a+b)^n\\neq a^n+b^n$ si $n\\geq2$",
+          "explicacion": "El desarrollo contiene además términos intermedios con $a$ y $b$ multiplicados. Contraejemplo: $(1+2)^2=9$, pero $1^2+2^2=5$; la diferencia es el término intermedio $2ab=2\\cdot1\\cdot2=4$. Esta confusión es uno de los errores más frecuentes al elevar un binomio a una potencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomio con resta",
+      "puntos": [
+        {
+          "texto": "$(a-b)^n=\\displaystyle\\sum_{k=0}^{n}(-1)^k\\dbinom nk a^{n-k}b^k$",
+          "explicacion": "Se obtiene escribiendo $a-b=a+(-b)$ y aplicando el teorema: $(-b)^k=(-1)^kb^k$. Ejemplo: $(x-1)^5=x^5-5x^4+10x^3-10x^2+5x-1$. Verificación con $x=2$: $(2-1)^5=1$ y $32-80+80-40+10-1=1$. Se aplica el mismo procedimiento que para la suma, pero llevando el signo de $-b$ en cada potencia. Condición: $n$ entero no negativo. Ejemplo adicional: $(x-2)^3=x^3-6x^2+12x-8$; verificación con $x=3$: $1^3=1$ y $27-54+36-8=1$."
+        },
+        {
+          "texto": "En $(a-b)^n$ los signos se alternan entre positivo y negativo",
+          "explicacion": "Los términos con $k$ par llevan signo positivo y los de $k$ impar, negativo, porque $(-1)^k$ vale $1$ o $-1$. El último término $(-b)^n$ es positivo si $n$ es par y negativo si $n$ es impar. Ejemplos: $(a-b)^4=a^4-4a^3b+6a^2b^2-4ab^3+b^4$ termina en $+b^4$, y $(a-b)^3=a^3-3a^2b+3ab^2-b^3$ termina en $-b^3$."
+        },
+        {
+          "texto": "$(-a-b)^n=(-1)^n(a+b)^n$",
+          "explicacion": "Se saca el factor $-1$ de ambos términos, $-a-b=-(a+b)$, y se aplica la potencia al producto. Con $n$ par el resultado conserva los signos del desarrollo de $(a+b)^n$; con $n$ impar los invierte todos. Ejemplo: $(-x-2)^3=-(x+2)^3=-x^3-6x^2-12x-8$. Verificación con $x=0$: $(-2)^3=-8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración del teorema",
+      "puntos": [
+        {
+          "texto": "Idea combinatoria: elegir $a$ o $b$ en cada factor",
+          "explicacion": "La potencia $(a+b)^n$ es el producto de $n$ factores iguales $(a+b)$. Al multiplicar, cada término se forma tomando $a$ o $b$ de cada factor. Un término con $k$ letras $b$ y $n-k$ letras $a$ se forma tantas veces como maneras hay de escoger los $k$ factores que aportan $b$, es decir, $\\dbinom nk$. Ejemplo: en $(a+b)^3$ el término $ab^2$ aparece $\\dbinom32=3$ veces, por eso el desarrollo contiene $3ab^2$."
+        },
+        {
+          "texto": "Demostración por inducción: caso base $n=1$",
+          "explicacion": "En la inducción matemática se comprueba el primer caso y luego se prueba que, si vale para $n$, también vale para $n+1$. Para $n=1$, $(a+b)^1=a+b$ y la fórmula da $\\dbinom10a+\\dbinom11b=a+b$, por lo que se cumple."
+        },
+        {
+          "texto": "Paso inductivo: multiplicar el desarrollo por $(a+b)$",
+          "explicacion": "Se supone cierta la fórmula para $n$ y se multiplica por $(a+b)$. El coeficiente de $a^{n+1-k}b^k$ resulta de sumar dos aportes: $\\dbinom nk$ (al multiplicar por $a$) y $\\dbinom n{k-1}$ (al multiplicar por $b$), que suman $\\dbinom{n+1}k$ por la regla de Pascal. Ejemplo de $n=2$ a $n=3$: $(a^2+2ab+b^2)(a+b)=a^3+3a^2b+3ab^2+b^3$; el coeficiente de $a^2b$ es $2+1=3=\\dbinom31$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del desarrollo",
+      "puntos": [
+        {
+          "texto": "Los coeficientes equidistantes de los extremos son iguales",
+          "explicacion": "El coeficiente del término de índice $k$ es $\\dbinom nk$ y el del término de índice $n-k$ es $\\dbinom n{n-k}$; por simetría son iguales. Ejemplo: en $(a+b)^6$ los coeficientes son 1, 6, 15, 20, 15, 6, 1, y los pares extremos coinciden: $1$ y $1$, $6$ y $6$, $15$ y $15$."
+        },
+        {
+          "texto": "$\\dbinom n0+\\dbinom n1+\\cdots+\\dbinom nn=2^n$",
+          "explicacion": "Se obtiene haciendo $a=b=1$ en el teorema: $(1+1)^n=\\sum\\dbinom nk$. Ejemplo con $n=5$: $1+5+10+10+5+1=32=2^5$. Es decir, la suma de los números de la fila $n$ del triángulo de Pascal es $2^n$. La fórmula permite calcular rápido la suma de los coeficientes de una fila sin sumar uno por uno. Ejemplo con $n=8$: $1+8+28+56+70+56+28+8+1=256=2^8$. Se aplica a cualquier $n$ entero no negativo."
+        },
+        {
+          "texto": "Suma alternada de la fila $n$ = 0 si $n\\geq1$",
+          "explicacion": "Con $a=1$ y $b=-1$: $(1-1)^n=0$, de modo que $\\dbinom n0-\\dbinom n1+\\dbinom n2-\\cdots=0$. Ejemplo con $n=4$: $1-4+6-4+1=0$. Se exige $n\\geq1$ porque $0^0$ no se define. El resultado indica que los términos con signo positivo y negativo se compensan exactamente. Ejemplo con $n=5$: $1-5+10-10+5-1=0$. Se aplica para verificar una fila del triángulo de Pascal o para comprobar un desarrollo de $(a-b)^n$ con $a=b=1$."
+        },
+        {
+          "texto": "Suma de coeficientes de lugar par = suma de lugar impar = $2^{n-1}$",
+          "explicacion": "Si la suma total es $2^n$ y la alternada es 0, los coeficientes de lugar impar (k par) y los de lugar par (k impar) suman lo mismo, cada grupo $\\dfrac{2^n}{2}=2^{n-1}$. Ejemplo con $n=4$: $1+6+1=8$ y $4+4=8$, que es $2^3$."
+        },
+        {
+          "texto": "El coeficiente mayor está en el centro de la fila",
+          "explicacion": "Por la relación $\\dbinom n{k+1}=\\dbinom nk\\cdot\\dfrac{n-k}{k+1}$, los coeficientes aumentan mientras $\\dfrac{n-k}{k+1}>1$ y luego disminuyen; junto con la simetría, el máximo queda en el centro. Ejemplos: en la fila 6, 1, 6, 15, 20, 15, 6, 1, el mayor es 20; en la fila 5, 1, 5, 10, 10, 5, 1, el mayor es 10 y se repite."
+        }
+      ]
+    },
+    {
+      "titulo": "Término central",
+      "puntos": [
+        {
+          "texto": "$n$ par ⇒ un término central, en el lugar $\\dfrac n2+1$",
+          "explicacion": "Con $n$ par hay $n+1$ términos, un número impar, así que existe exactamente un término en el medio. Ocupa el lugar $\\dfrac n2+1$ y su coeficiente es $\\dbinom n{n/2}$. Ejemplo: en $(a+b)^6$ es el cuarto término, $20a^3b^3$, pues $\\dbinom63=20$; en $(a+b)^4$ es el tercero, $6a^2b^2$."
+        },
+        {
+          "texto": "$n$ impar ⇒ dos términos centrales, en los lugares $\\dfrac{n+1}2$ y $\\dfrac{n+3}2$",
+          "explicacion": "Con $n$ impar hay $n+1$ términos, un número par, y por eso quedan dos términos en el centro, con coeficientes iguales $\\dbinom n{(n-1)/2}=\\dbinom n{(n+1)/2}$. Ejemplo: en $(a+b)^5$ ocupan los lugares 3 y 4, con términos $10a^3b^2$ y $10a^2b^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de coeficientes",
+      "puntos": [
+        {
+          "texto": "Suma de coeficientes de un polinomio = valor en $x=1$",
+          "explicacion": "Al reemplazar la variable por 1, cada potencia vale 1 y solo quedan los coeficientes. Para $(ax+b)^n$ la suma es $(a+b)^n$. Ejemplo: $(2x+1)^3=8x^3+12x^2+6x+1$ y la suma es $8+12+6+1=27=(2+1)^3$. Incluye el término independiente. Conviene aplicarlo antes de desarrollar: para $(3x-2)^5$ la suma de coeficientes es $(3-2)^5=1$ sin necesidad de expandir. Si el binomio tiene una resta, los coeficientes negativos se cuentan con su signo."
+        },
+        {
+          "texto": "Con dos variables, se reemplazan ambas por 1",
+          "explicacion": "Se hace $x=1$ y $y=1$ en el binomio. Ejemplo: en $(2x-3y)^4=16x^4-96x^3y+216x^2y^2-216xy^3+81y^4$, la suma de coeficientes es $16-96+216-216+81=1$, que coincide con $(2-3)^4=1$. La razón es la misma que con una variable: al sustituir por 1 desaparecen las potencias de las variables. Ejemplo adicional: la suma de coeficientes de $(x+2y)^3$ es $(1+2)^3=27$, y en el desarrollo $x^3+6x^2y+12xy^2+8y^3$ se tiene $1+6+12+8=27$."
+        },
+        {
+          "texto": "Término independiente = valor del desarrollo en $x=0$",
+          "explicacion": "El término independiente es el que no contiene la variable; se obtiene sustituyendo $x=0$ cuando el desarrollo no tiene potencias negativas de $x$. Ejemplos: en $(x+2)^4$ es $2^4=16$ y en $(2x-3)^3$ es $(-3)^3=-27$. Si el desarrollo contiene potencias negativas de $x$, como en $\\left(x+\\dfrac1x\\right)^4$, la sustitución $x=0$ no sirve y el término independiente se identifica por el exponente cero de $x$; en ese caso vale 6. Ejemplo adicional: en $(x-1)^5$ es $(-1)^5=-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Desarrollo con coeficientes",
+      "puntos": [
+        {
+          "texto": "Procedimiento para desarrollar $(ax+b)^n$",
+          "explicacion": "Pasos: (1) identificar $n$ y los dos términos; (2) escribir los coeficientes binomiales de la fila $n$; (3) escribir las potencias decrecientes del primer término y crecientes del segundo, elevando también sus coeficientes; (4) multiplicar cada término; (5) verificar sustituyendo valores. Ejemplo: $(3x+1)^3$ usa los coeficientes 1, 3, 3, 1: $(3x)^3+3(3x)^2+3(3x)+1=27x^3+27x^2+9x+1$. Verificación con $x=1$: $4^3=64$ y $27+27+9+1=64$."
+        },
+        {
+          "texto": "Con dos términos con coeficiente: $(2x-3y)^4$",
+          "explicacion": "Se aplica la fila 4 (1, 4, 6, 4, 1) con $a=2x$ y $b=-3y$: $(2x)^4=16x^4$; $4(2x)^3(-3y)=-96x^3y$; $6(2x)^2(-3y)^2=216x^2y^2$; $4(2x)(-3y)^3=-216xy^3$; $(-3y)^4=81y^4$. Resultado: $16x^4-96x^3y+216x^2y^2-216xy^3+81y^4$. Verificación con $x=y=1$: $(2-3)^4=1$. Al elevar el producto de un coeficiente por una variable, se eleva cada factor: $(2x)^3=8x^3$ y $(-3y)^3=-27y^3$. Los signos alternan porque el segundo término es negativo. Conviene escribir los paréntesis para no perder signos ni coeficientes."
+        },
+        {
+          "texto": "Con potencias de $x$: $(x^2+3)^3$",
+          "explicacion": "Al elevar una potencia a otra se multiplican los exponentes: $(x^2)^k=x^{2k}$. Con la fila 3: $(x^2)^3+3(x^2)^2\\cdot3+3x^2\\cdot9+27=x^6+9x^4+27x^2+27$. Verificación con $x=1$: $4^3=64$ y $1+9+27+27=64$. El error frecuente es olvidar que $(x^2)^3=x^6$ y no $x^5$. Se aplica la ley de potencia de una potencia en cada término. Ejemplo adicional: en el término $3(x^2)^2\\cdot3=9x^4$ se multiplican los coeficientes $3\\cdot3=9$ y se eleva $x^2$ al cuadrado."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomio con recíproco",
+      "puntos": [
+        {
+          "texto": "$\\left(x+\\dfrac1x\\right)^4$ ⇒ potencias de $x$ de $4$ a $-4$",
+          "explicacion": "El segundo término tiene exponente $-1$, de modo que $b^k=x^{-k}$ y cada término resulta $\\dbinom4k x^{4-k}x^{-k}=\\dbinom4k x^{4-2k}$. Con la fila 4: $x^4+4x^2+6+\\dfrac4{x^2}+\\dfrac1{x^4}$. El término central es el 6, que no contiene a $x$. Verificación con $x=1$: $2^4=16$ y $1+4+6+4+1=16$."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomios con radicales",
+      "puntos": [
+        {
+          "texto": "Con radicales: usar $(\\sqrt a)^2=a$ al desarrollar",
+          "explicacion": "Se aplica el teorema normalmente y luego se simplifican las potencias de los radicales con $(\\sqrt a)^2=a$, agrupando por un lado los términos enteros y por otro los que llevan el radical. Ejemplo 1: $(\\sqrt2+1)^3=2\\sqrt2+3\\cdot2+3\\sqrt2+1=7+5\\sqrt2$; verificación: $2.4142^3\\approx14.071$ y $7+5(1.4142)\\approx14.071$. Ejemplo 2: $(\\sqrt3-1)^4=9-12\\sqrt3+18-4\\sqrt3+1=28-16\\sqrt3$; verificación numérica: $0.7321^4\\approx0.2872$ y $28-16(1.7321)\\approx0.2872$."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomios con complejos",
+      "puntos": [
+        {
+          "texto": "Con la unidad imaginaria: $i^2=-1$ ⇒ $(1+i)^4=-4$",
+          "explicacion": "La unidad imaginaria $i$ cumple $i^2=-1$, y de ahí $i^3=-i$ e $i^4=1$. Con el teorema: $(1+i)^4=1+4i+6i^2+4i^3+i^4=1+4i-6-4i+1=-4$. Comprobación: $(1+i)^2=2i$ y $(2i)^2=-4$. Otro ejemplo: $(1-i)^3=1-3i+3i^2-i^3=1-3i-3+i=-2-2i$. Las potencias de $i$ se repiten cada cuatro: $i,-1,-i,1$. Por eso, tras aplicar el teorema, cada potencia de $i$ se reemplaza por su valor y se agrupan las partes reales e imaginarias. El método es válido para cualquier $n$ entero no negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias numéricas",
+      "puntos": [
+        {
+          "texto": "Descomponer el número en un binomio con potencias de 10",
+          "explicacion": "Para calcular mentalmente una potencia se escribe la base como $100\\pm1$ o $10\\pm1$ y se usa el teorema. Ejemplo 1: $101^3=(100+1)^3=1\\,000\\,000+30\\,000+300+1=1\\,030\\,301$. Ejemplo 2: $99^3=(100-1)^3=1\\,000\\,000-30\\,000+300-1=970\\,299$. Ejemplo 3: $11^4=(10+1)^4=10\\,000+4\\,000+600+40+1=14\\,641$. La idea es elegir una base cercana a una potencia de 10 y aplicar el teorema, donde los términos son fáciles de calcular porque son múltiplos de potencias de 10. Funciona mejor cuando el segundo término es pequeño, como 1 o 2; por ejemplo, $102^2=(100+2)^2=10\\,000+400+4=10\\,404$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aproximación de potencias",
+      "puntos": [
+        {
+          "texto": "$(1+x)^n\\approx1+nx$ si $x$ es pequeño",
+          "explicacion": "Los términos siguientes del desarrollo contienen $x^2$, $x^3$, etc., que son mucho menores cuando $x$ es muy pequeño, así que se desprecian y quedan los dos primeros términos. Ejemplo: $1.01^5\\approx1+5(0.01)=1.05$, mientras que el valor exacto es $1.0510100501$. Ejemplo: $0.98^4=(1-0.02)^4\\approx1-4(0.02)=0.92$, y el valor exacto es $0.92236816$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Productos notables ⊂ casos de $n=2$ y $n=3$",
+          "explicacion": "El cuadrado y el cubo de un binomio son los casos $n=2$ y $n=3$: la fila 2 (1, 2, 1) da $(a+b)^2=a^2+2ab+b^2$ y la fila 3 (1, 3, 3, 1) da $(a+b)^3=a^3+3a^2b+3ab^2+b^3$. El teorema generaliza esos resultados a cualquier exponente natural."
+        },
+        {
+          "texto": "El desarrollo de $(x+c)^n$ es un polinomio de grado $n$",
+          "explicacion": "Al desarrollar, la mayor potencia de $x$ es $x^n$ con coeficiente 1 y la menor es $c^n$, el término independiente. Ejemplo: $(x+2)^4=x^4+8x^3+24x^2+32x+16$ es un polinomio de grado 4 con cinco términos. Esto conecta el teorema con las operaciones con polinomios: el desarrollo es un polinomio completo y ordenado en potencias decrecientes de $x$, con $n+1$ términos. Ejemplo adicional: $(x-1)^3=x^3-3x^2+3x-1$ tiene grado 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de verificación",
+      "puntos": [
+        {
+          "texto": "Verificar un desarrollo con un valor numérico",
+          "explicacion": "Se sustituye un valor sencillo de la variable en el binomio y en el desarrollo y se comparan los resultados. Ejemplo: se afirma $(x+2)^4=x^4+8x^3+24x^2+32x+16$; con $x=1$ ambos lados valen 81. Los valores $x=1$ y $x=-1$ son útiles porque no cambian el valor de las potencias, salvo el signo."
+        }
+      ]
+    }
+  ]
+}

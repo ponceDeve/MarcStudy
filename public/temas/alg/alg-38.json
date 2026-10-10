@@ -1,0 +1,229 @@
+{
+  "curso": "Álgebra",
+  "tema": "Método de Horner",
+  "glosario": {
+    "método de Horner": "División de polinomios mediante tabla de coeficientes",
+    "método de Ruffini": "División rápida entre un divisor lineal",
+    "método clásico": "Procedimiento de división larga de polinomios",
+    "dividendo": "Polinomio que se divide",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "coeficiente": "Factor numérico de un término",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "divisor lineal": "Divisor de grado uno",
+    "divisor mónico": "Divisor con coeficiente principal uno",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "polinomio ordenado": "Términos escritos por exponentes decrecientes",
+    "polinomio completo": "Polinomio con todos los exponentes presentes",
+    "división exacta": "División cuyo resto es nulo",
+    "tabla de Horner": "Tabla con coeficientes del dividendo y divisor",
+    "opuesto": "Número con el mismo valor y signo contrario",
+    "término independiente": "Término sin letras",
+    "algoritmo": "Procedimiento de pasos que termina",
+    "raíz del divisor": "Valor de la variable que anula el divisor",
+    "columna": "Línea vertical de números de la tabla",
+    "factor": "Polinomio que divide exactamente a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Idea del método",
+      "puntos": [
+        {
+          "texto": "«Método de Horner» = división con tabla de coeficientes",
+          "explicacion": "El método de Horner divide dos polinomios trabajando solo con coeficientes, dispuestos en una tabla. Lleva el nombre del matemático británico William George Horner. Cada columna se completa con productos y sumas, y el cociente y el resto se leen de los resultados. Aplica el algoritmo de la división, por lo que da el mismo cociente y el mismo resto que el método clásico, pero con la ventaja de eliminar las letras y los exponentes durante el cálculo."
+        },
+        {
+          "texto": "Horner ⊃ Ruffini",
+          "explicacion": "A diferencia del método de Ruffini, que solo admite divisores de primer grado, el método de Horner sirve para divisores de cualquier grado mayor o igual que $1$. Cuando el divisor es lineal, la tabla de Horner se reduce a la de Ruffini. Ejemplo: dividir entre $x^2-x+1$ (grado $2$) solo es posible por el método clásico o por Horner."
+        },
+        {
+          "texto": "Condición: ordenar y completar ambos polinomios",
+          "explicacion": "Dividendo y divisor deben escribirse ordenados con exponentes decrecientes y completos, con coeficiente $0$ en los exponentes que falten. Ejemplo: $x^4-1$ se escribe $1,\\,0,\\,0,\\,0,\\,-1$ y $x^2+1$ se escribe $1,\\,0,\\,1$. Verificación: se anota un coeficiente por cada exponente, desde el mayor hasta $0$, de modo que las columnas correspondan a las mismas potencias."
+        }
+      ]
+    },
+    {
+      "titulo": "Disposición de la tabla",
+      "puntos": [
+        {
+          "texto": "Fila superior = coeficientes del dividendo",
+          "explicacion": "Los coeficientes del dividendo, de mayor a menor exponente, se escriben en una fila horizontal. Si $D$ es de grado $n$, hay $n+1$ coeficientes, uno por columna. Ejemplo: para $x^4-3x^3+2x^2+x-5$ la fila superior es $1,\\,-3,\\,2,\\,1,\\,-5$, cinco columnas porque el grado es $4$."
+        },
+        {
+          "texto": "Columna izquierda = primer coeficiente de $d$, luego los demás con signo cambiado",
+          "explicacion": "A la izquierda de la tabla se escribe, en la fila de arriba, el coeficiente principal del divisor, y debajo, en orden, los demás coeficientes del divisor con el signo cambiado. Ejemplo: para $d=x^2-x+1$, los coeficientes son $1,\\,-1,\\,1$; la columna izquierda es $1$ arriba y luego $1$ y $-1$. Verificación: $-(-1)=1$ y $-(1)=-1$. Esta cantidad de filas bajo el primero es igual al grado del divisor."
+        },
+        {
+          "texto": "Línea vertical ⇒ separa las últimas $m$ columnas",
+          "explicacion": "Sea $m$ el grado del divisor. Se traza una línea vertical que deja a su derecha las últimas $m$ columnas de la tabla, que corresponden al resto. A la izquierda quedan $n-m+1$ columnas, donde $n$ es el grado del dividendo, que dan los coeficientes del cociente. Ejemplo: con $n=4$ y $m=2$, la línea deja tres columnas a la izquierda y dos a la derecha."
+        },
+        {
+          "texto": "Cociente tiene $n-m+1$ coeficientes",
+          "explicacion": "El cociente tiene grado $n-m$ y por tanto $n-m+1$ coeficientes, uno por cada columna a la izquierda de la línea. Ejemplo: $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$ tiene $4-2+1=3$ coeficientes en el cociente. Verificación: el cociente es de grado $2$, con términos en $x^2$, $x$ y el independiente, es decir, tres."
+        },
+        {
+          "texto": "Resto tiene a lo más $m$ coeficientes",
+          "explicacion": "Las $m$ columnas a la derecha de la línea dan los coeficientes del resto, que es de grado a lo más $m-1$. Ejemplo: con divisor de grado $2$, el resto tiene la forma $ax+b$ (dos coeficientes). Si los números de esas columnas son $0$, el resto correspondiente se anula; si todos son $0$, la división es exacta."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento del método",
+      "puntos": [
+        {
+          "texto": "Signos cambiados ⇒ restar sumando",
+          "explicacion": "En el método clásico, cada paso resta el producto de un término del cociente por el divisor. En la tabla, los coeficientes del divisor se escriben con el signo cambiado para que esa resta se efectúe como una suma de columnas. Ejemplo: con $b=1$ y $d=x^2-x+1$, restar $x^2-x+1$ equivale a sumar $-x^2+x-1$, cuyos coeficientes $+1$ (de $x$) y $-1$ (independiente) son los números de la columna izquierda."
+        },
+        {
+          "texto": "Dividir entre $d_m$ ⇒ coeficiente del cociente",
+          "explicacion": "Cada suma de columna a la izquierda de la línea es el coeficiente principal del dividendo parcial; al dividirla entre el coeficiente principal $d_m$ del divisor se obtiene el siguiente coeficiente del cociente, igual que en el paso de dividir términos principales del método clásico. Ejemplo: en el ejemplo con $d=2x^2-x+3$, la suma $-8+2=-6$ da el coeficiente $\\frac{-6}{2}=-3$."
+        },
+        {
+          "texto": "Columnas del resto ✗ dividir",
+          "explicacion": "Las sumas a la derecha de la línea ya no se dividen entre $d_m$, pues no generan más términos del cociente: lo que queda tiene grado menor que el divisor y es el resto. Ejemplo: en el ejemplo con $d=2x^2-x+3$, las sumas $1$ y $2$ de las dos últimas columnas se leen directamente como $R=x+2$, sin dividirlas entre $2$."
+        },
+        {
+          "texto": "Productos desplazados una columna",
+          "explicacion": "El producto del coeficiente del cociente por cada número de la columna izquierda se escribe una columna a la derecha de la anterior, y cada fila más abajo se desplaza una columna más, porque corresponde a un exponente menor. Ejemplo: con $b=1$ y números izquierdos $1$ y $-1$, los productos $1$ y $-1$ se colocan en la columna siguiente y en la que sigue a esta."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos del método",
+      "puntos": [
+        {
+          "texto": "Paso 1: primer coeficiente del cociente",
+          "explicacion": "La primera columna solo contiene el primer coeficiente del dividendo, $c_n$; se divide entre $d_m$ para obtener el primer coeficiente del cociente, $b_1=\\frac{c_n}{d_m}$. Ejemplo: en $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$: $b_1=\\frac{1}{1}=1$. Verificación: $x^2\\cdot x^2=x^4$."
+        },
+        {
+          "texto": "Paso 2: multiplicar por los números de la columna izquierda",
+          "explicacion": "El coeficiente del cociente recién obtenido se multiplica por cada número bajo $d_m$ en la columna izquierda, y los productos se escriben en filas, cada uno una columna más a la derecha que el anterior. Ejemplo: $1\\cdot1=1$ en la segunda columna y $1\\cdot(-1)=-1$ en la tercera. Verificación: cada producto corresponde a un término del producto $1\\cdot(x^2-x+1)$ con signo cambiado."
+        },
+        {
+          "texto": "Paso 3: sumar la columna y dividir",
+          "explicacion": "En la siguiente columna se suma el coeficiente del dividendo con los productos que ya cayeron en ella, y el resultado se divide entre $d_m$ para obtener el siguiente coeficiente del cociente. Ejemplo: $-3+1=-2$, y $\\frac{-2}{1}=-2$. Verificación: coincide con el segundo paso del método clásico."
+        },
+        {
+          "texto": "Paso 4: repetir hasta la línea vertical",
+          "explicacion": "Los pasos de multiplicar y sumar se repiten columna por columna hasta llegar a la línea vertical, usando siempre el último coeficiente del cociente. Ejemplo: tras $-2$, se obtienen productos $-2$ y $2$; la tercera columna suma $2+(-2)+(-1)=-1$ y da el tercer coeficiente. Al llegar a la línea ya se tienen todos los coeficientes del cociente."
+        },
+        {
+          "texto": "Paso 5: sumar las columnas del resto",
+          "explicacion": "Para las columnas a la derecha de la línea se suma cada columna completa (coeficiente del dividendo más los productos que cayeron en ella) sin dividir. Los resultados son los coeficientes del resto, en orden decreciente. Ejemplo: $1+(-1)+2=2$ y $-5+1=-4$, de modo que $R=2x-4$."
+        },
+        {
+          "texto": "Paso 6: verificar $d\\,q+R=D$",
+          "explicacion": "Se multiplica el divisor por el cociente y se suma el resto para comparar con el dividendo. Ejemplo: $(x^2-x+1)(x^2-2x-1)=x^4-3x^3+2x^2-x-1$ y al sumar $2x-4$ resulta $x^4-3x^3+2x^2+x-5$, el dividendo. Si no coincide, hay error en alguna suma o producto de la tabla."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 1: divisor mónico",
+      "puntos": [
+        {
+          "texto": "Datos: $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$",
+          "explicacion": "Fila superior: $1,\\,-3,\\,2,\\,1,\\,-5$. Divisor con coeficientes $1,\\,-1,\\,1$, de grado $m=2$ y mónico. Columna izquierda: $1$ arriba, luego $1$ y $-1$ (signos cambiados). Como $n=4$ y $m=2$, el cociente tiene $3$ coeficientes y la línea vertical deja dos columnas a la derecha."
+        },
+        {
+          "texto": "Cociente: $1,\\,-2,\\,-1$",
+          "explicacion": "Columna 1: suma $1$, $b_1=1$; productos $1$ (columna 2) y $-1$ (columna 3). Columna 2: $-3+1=-2$, $b_2=-2$; productos $-2$ (columna 3) y $2$ (columna 4). Columna 3: $2+(-2)+(-1)=-1$, $b_3=-1$; productos $-1$ (columna 4) y $1$ (columna 5). El cociente es $q=x^2-2x-1$."
+        },
+        {
+          "texto": "Resto: $2$ y $-4$",
+          "explicacion": "Columna 4: $1+(-1)+2=2$. Columna 5: $-5+1=-4$. Estas dos sumas no se dividen. El resto es $R=2x-4$, de grado $1<2$. Verificación: coincide con el resto que se obtiene por el método clásico para la misma división."
+        },
+        {
+          "texto": "Verificación del ejemplo 1",
+          "explicacion": "$(x^2-x+1)(x^2-2x-1)=x^4-2x^3-x^2-x^3+2x^2+x+x^2-2x-1=x^4-3x^3+2x^2-x-1$. Al sumar $R=2x-4$: $x^4-3x^3+2x^2-x-1+2x-4=x^4-3x^3+2x^2+x-5=D$. La identidad se cumple. Comprobación con $x=1$: $D(1)=-4$ y $d(1)q(1)+R(1)=1\\cdot(-2)+(-2)=-4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 2: no mónico",
+      "puntos": [
+        {
+          "texto": "Datos: $4x^4-8x^3+11x^2-9x+5$ entre $2x^2-x+3$",
+          "explicacion": "Fila superior: $4,\\,-8,\\,11,\\,-9,\\,5$. Coeficientes del divisor: $2,\\,-1,\\,3$, con $m=2$. Columna izquierda: $2$ arriba y, con signo cambiado, $1$ y $-3$. Como $n=4$, el cociente tiene $3$ coeficientes y se divide entre $2$ cada suma antes de la línea."
+        },
+        {
+          "texto": "Cociente: $2,\\,-3,\\,1$",
+          "explicacion": "Columna 1: suma $4$, $b_1=\\frac{4}{2}=2$; productos $2\\cdot1=2$ (columna 2) y $2\\cdot(-3)=-6$ (columna 3). Columna 2: $-8+2=-6$, $b_2=\\frac{-6}{2}=-3$; productos $-3$ (columna 3) y $9$ (columna 4). Columna 3: $11+(-6)+(-3)=2$, $b_3=\\frac{2}{2}=1$; productos $1$ (columna 4) y $-3$ (columna 5). Cociente: $q=2x^2-3x+1$."
+        },
+        {
+          "texto": "Resto: $1$ y $2$",
+          "explicacion": "Columna 4: $-9+9+1=1$. Columna 5: $5+(-3)=2$. No se dividen entre $2$. El resto es $R=x+2$. Verificación: $(2x^2-x+3)(2x^2-3x+1)=4x^4-8x^3+11x^2-10x+3$ y al sumar $x+2$ resulta $4x^4-8x^3+11x^2-9x+5$, el dividendo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 3: divisor cúbico",
+      "puntos": [
+        {
+          "texto": "Datos: $x^5+2x^4-3x^2+x-1$ entre $x^3-x+2$",
+          "explicacion": "Dividendo completo: $1,\\,2,\\,0,\\,-3,\\,1,\\,-1$. Divisor completo: $1,\\,0,\\,-1,\\,2$, con $m=3$. Columna izquierda: $1$ arriba y, con signo cambiado, $0$, $1$ y $-2$. Como $n=5$ y $m=3$, el cociente tiene $5-3+1=3$ coeficientes y a la derecha de la línea quedan $3$ columnas."
+        },
+        {
+          "texto": "Cociente: $1,\\,2,\\,1$",
+          "explicacion": "Columna 1: $1$, $b_1=1$; productos $0$ (col. 2), $1$ (col. 3), $-2$ (col. 4). Columna 2: $2+0=2$, $b_2=2$; productos $0$ (col. 3), $2$ (col. 4), $-4$ (col. 5). Columna 3: $0+1+0=1$, $b_3=1$; productos $0$ (col. 4), $1$ (col. 5), $-2$ (col. 6). Cociente: $q=x^2+2x+1$."
+        },
+        {
+          "texto": "Resto: $-3,\\,-2,\\,-3$",
+          "explicacion": "Columna 4: $-3+(-2)+2+0=-3$. Columna 5: $1+(-4)+1=-2$. Columna 6: $-1+(-2)=-3$. El resto es $R=-3x^2-2x-3$, de grado $2<3$. Verificación: $(x^3-x+2)(x^2+2x+1)=x^5+2x^4+3x+2$ y al sumar $R$ resulta $x^5+2x^4-3x^2+x-1$, el dividendo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 4: división exacta",
+      "puntos": [
+        {
+          "texto": "$x^4-1$ entre $x^2+1$ ⇒ resto nulo",
+          "explicacion": "Dividendo completo: $1,\\,0,\\,0,\\,0,\\,-1$. Divisor: $1,\\,0,\\,1$; columna izquierda: $1$, $0$ y $-1$. Columna 1: $1$, $b_1=1$; productos $0$ y $-1$. Columna 2: $0+0=0$, $b_2=0$; productos $0$ y $0$. Columna 3: $0+(-1)+0=-1$, $b_3=-1$; productos $0$ y $1$. Columna 4: $0+0+0=0$. Columna 5: $-1+1=0$. Cociente $q=x^2-1$ y resto $0$. Verificación: $(x^2+1)(x^2-1)=x^4-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso del divisor lineal",
+      "puntos": [
+        {
+          "texto": "Divisor lineal ⇒ Horner = Ruffini",
+          "explicacion": "Si el divisor es $x-a$ (mónico), la columna izquierda tiene un solo número bajo el primero: $-(-a)=a$, que es la raíz de Ruffini, y la línea vertical deja una sola columna a la derecha para el resto. Ejemplo: $2x^3-5x^2+4x-7$ entre $x-2$: columna izquierda $1$ y $2$. Se obtiene $b_1=2$, producto $4$; $-5+4=-1$, producto $-2$; $4-2=2$, producto $4$; resto $-7+4=-3$. Resultado $q=2x^2-x+2$ y $R=-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "No cambiar los signos del divisor",
+          "explicacion": "Si se escriben los coeficientes del divisor sin cambiar signo, las sumas de columna calculan algo distinto de la resta. Ejemplo: en el ejemplo 1, usar $-1$ y $1$ en la columna izquierda daría $-3+(-1)=-4$ en la segunda columna, en lugar de $-2$. Verificación: la segunda suma correcta es $-3+1=-2$."
+        },
+        {
+          "texto": "Olvidar dividir entre $d_m$",
+          "explicacion": "Con divisor no mónico, cada suma antes de la línea debe dividirse entre el coeficiente principal para obtener el coeficiente del cociente. Ejemplo: en el ejemplo 2, usar $4$ como primer coeficiente en lugar de $2$ daría un cociente doble. Verificación: el cociente correcto, multiplicado por el divisor, reconstruye el dividendo."
+        },
+        {
+          "texto": "Dividir también las columnas del resto",
+          "explicacion": "Las sumas a la derecha de la línea son el resto tal como están; dividirlas altera el resto. Ejemplo: en el ejemplo 2, las sumas $1$ y $2$ dan $R=x+2$ y no $\\frac{1}{2}x+1$. Verificación: solo $R=x+2$ cumple la identidad con el cociente hallado."
+        },
+        {
+          "texto": "Línea vertical mal ubicada",
+          "explicacion": "La línea debe dejar a su derecha exactamente $m$ columnas, donde $m$ es el grado del divisor. Ejemplo: con divisor de grado $2$ y dividendo de grado $4$, la línea separa $3$ columnas a la izquierda y $2$ a la derecha. Verificación: $3+2=5=n+1$ columnas."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Horner ⊂ algoritmo de la división",
+          "explicacion": "El método de Horner aplica el algoritmo de la división, así que, por la unicidad del cociente y el resto, da el mismo resultado que el método clásico y que Ruffini cuando este es aplicable. Ejemplo: $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$ da $q=x^2-2x-1$ y $R=2x-4$ por cualquiera de los métodos."
+        },
+        {
+          "texto": "Horner → teoremas del resto y del factor",
+          "explicacion": "El resto que entrega la tabla permite verificar si el divisor es factor (resto $0$) y obtener restos sin dividir por completo en divisores lineales. En divisores de mayor grado, el resto es un polinomio de grado menor. Ejemplo: $x^4-1$ entre $x^2+1$ da resto $0$, de modo que $x^4-1=(x^2+1)(x^2-1)$."
+        }
+      ]
+    }
+  ]
+}

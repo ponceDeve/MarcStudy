@@ -1,0 +1,212 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función par e impar",
+  "glosario": {
+    "función par": "Función con salida igual para entradas opuestas.",
+    "función impar": "Función con salidas opuestas para entradas opuestas.",
+    "dominio": "Conjunto de valores de entrada.",
+    "dominio simétrico": "Dominio que contiene al opuesto de cada elemento.",
+    "simetría": "Reflejo respecto de una recta o punto.",
+    "eje de ordenadas": "Eje vertical del plano cartesiano.",
+    "origen": "Punto donde se cruzan los ejes.",
+    "función constante": "Función con el mismo valor siempre.",
+    "función nula": "Función que vale cero siempre.",
+    "contraejemplo": "Caso que muestra que una afirmación falla.",
+    "polinomio": "Suma de términos con potencias enteras.",
+    "exponente": "Número de veces que se repite la base.",
+    "composición": "Aplicar una función al resultado de otra.",
+    "función cuadrática": "Función polinomial de segundo grado.",
+    "valor absoluto": "Distancia de un número al origen.",
+    "raíz": "Valor que anula una expresión."
+  },
+  "theory": [
+    {
+      "titulo": "Simetría del dominio",
+      "puntos": [
+        {
+          "texto": "Dominio simétrico ⇒ si $x\\in D$ entonces $-x\\in D$",
+          "explicacion": "Un conjunto $D$ de números reales es simétrico respecto al origen cuando, para cada $x$ que pertenece a $D$, también $-x$ pertenece a $D$. Esta condición es indispensable para hablar de función par o impar, porque ambas definiciones comparan $f(x)$ con $f(-x)$ y ambos valores deben existir. Ejemplos: $[-3,3]$, $\\mathbb{R}$ y $\\mathbb{R}-\\{0\\}$ son simétricos; $[0,5]$ y $\\mathbb{R}-\\{1\\}$ no lo son. Verificación: en $[0,5]$ el número $2$ está, pero $-2$ no; en $\\mathbb{R}-\\{1\\}$ está $-1$, pero $1$ no."
+        },
+        {
+          "texto": "Dominio no simétrico ⇒ la función no es par ni impar",
+          "explicacion": "Si el dominio no es simétrico, existe un $x$ del dominio con $-x$ fuera de él, de modo que $f(-x)$ no existe y no se puede cumplir ninguna de las dos igualdades. Ejemplo: $f(x)=\\sqrt{x}$ tiene dominio $[0,+\\infty)$; el valor $x=4$ está en el dominio, pero $-4$ no, por lo que $f$ no es par ni impar. Verificación: $\\sqrt{-4}$ no es un número real."
+        }
+      ]
+    },
+    {
+      "titulo": "Definiciones",
+      "puntos": [
+        {
+          "texto": "«Función par» ⇒ $f(-x)=f(x)$ para todo $x\\in D$",
+          "explicacion": "Una función $f$ es par si su dominio es simétrico y, para todo $x$ del dominio, $f(-x)=f(x)$. En una función par, entradas opuestas producen la misma salida. Ejemplo: $f(x)=x^2$ es par, porque $f(-3)=(-3)^2=9=3^2=f(3)$, y en general $(-x)^2=x^2$. Verificación: $f(-2)=4=f(2)$ y $f(-5)=25=f(5)$."
+        },
+        {
+          "texto": "«Función impar» ⇒ $f(-x)=-f(x)$ para todo $x\\in D$",
+          "explicacion": "Una función $f$ es impar si su dominio es simétrico y, para todo $x$ del dominio, $f(-x)=-f(x)$. En una función impar, entradas opuestas producen salidas opuestas. Ejemplo: $f(x)=x^3$ es impar, porque $f(-2)=(-2)^3=-8=-(2^3)=-f(2)$, y en general $(-x)^3=-x^3$. Verificación: $f(-1)=-1=-f(1)$ y $f(-3)=-27=-f(3)$."
+        },
+        {
+          "texto": "Función sin paridad ⇒ ni par ni impar",
+          "explicacion": "Una función puede no ser par ni impar: basta que exista algún $x$ con $f(-x)\\ne f(x)$ y algún $x$ (puede ser el mismo) con $f(-x)\\ne -f(x)$. Ejemplo: $f(x)=x+1$ cumple $f(1)=2$ y $f(-1)=0$; como $0\\ne 2$ no es par, y como $0\\ne -2$ no es impar. Verificación: ni $f(-1)=f(1)$ ni $f(-1)=-f(1)$."
+        },
+        {
+          "texto": "$f(x)=0$ ⇒ única función par e impar a la vez",
+          "explicacion": "La función nula es la única que cumple ambas definiciones. Demostración: si $f$ es par e impar, $f(x)=f(-x)=-f(x)$, de donde $2f(x)=0$ y $f(x)=0$ para todo $x$. Ejemplo: $f(x)=0$ en $\\mathbb{R}$ cumple $f(-4)=0=f(4)=-f(4)$. Verificación: cualquier función no nula viola al menos una de las dos igualdades."
+        },
+        {
+          "texto": "$f$ impar y $0\\in D$ ⇒ $f(0)=0$",
+          "explicacion": "Si una función impar está definida en cero, entonces $f(0)=-f(0)$, es decir $2f(0)=0$ y $f(0)=0$. Ejemplo: $f(x)=x^3-x$ es impar y $f(0)=0$. Verificación: $0^3-0=0$. En cambio, $f(x)=\\frac{1}{x}$ es impar y no está definida en $0$, por lo que no contradice la regla."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación gráfica",
+      "puntos": [
+        {
+          "texto": "Función par ⇒ gráfica simétrica respecto del eje $y$",
+          "explicacion": "Si $f$ es par, el punto $(x,y)$ está en la gráfica si y solo si $(-x,y)$ también está, lo que equivale a una simetría respecto del eje vertical. Ejemplo: $f(x)=x^2$ contiene a $(2,4)$ y a $(-2,4)$. Verificación: doblar el plano sobre el eje $y$ hace coincidir las dos mitades de la parábola."
+        },
+        {
+          "texto": "Función impar ⇒ gráfica simétrica respecto del origen",
+          "explicacion": "Si $f$ es impar, el punto $(x,y)$ está en la gráfica si y solo si $(-x,-y)$ también está, lo que equivale a una simetría respecto del origen, es decir, un giro de $180^\\circ$. Ejemplo: $f(x)=x^3$ contiene a $(2,8)$ y a $(-2,-8)$. Verificación: $f(-2)=-8$."
+        },
+        {
+          "texto": "Completar la gráfica ⇒ usar la paridad",
+          "explicacion": "Si se conoce la gráfica de una función par o impar para $x\\ge 0$, se completa con la simetría correspondiente. Ejemplo: si $f$ es par y pasa por $(1,3)$ y $(4,0)$, también pasa por $(-1,3)$ y $(-4,0)$; si $f$ es impar con esos mismos puntos, pasa por $(-1,-3)$ y $(-4,0)$. Verificación: en un punto del eje $x$, $-0=0$, de modo que ambas simetrías coinciden."
+        },
+        {
+          "texto": "Ceros simétricos ⇒ si $a$ es cero, $-a$ también",
+          "explicacion": "Esta propiedad permite hallar todos los ceros de una función par o impar a partir de los que están en el semieje positivo, y sirve para comprobar rápidamente si una función con ceros no simétricos puede ser par o impar: si no lo son, no lo es. Si $f$ es par o impar y $f(a)=0$, entonces $f(-a)=0$, porque $f(-a)=\\pm f(a)=0$. Ejemplo: $f(x)=x^3-x=x(x-1)(x+1)$ es impar con ceros $-1$, $0$ y $1$. Verificación: $f(-1)=-1+1=0$, $f(0)=0$ y $f(1)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones conocidas",
+      "puntos": [
+        {
+          "texto": "$f(x)=x^n$ con $n$ par ⇒ función par",
+          "explicacion": "Los exponentes pares eliminan el signo de la variable, porque un número negativo elevado a un exponente par es positivo. Por eso todas las potencias pares, como $x^2$, $x^4$ y $x^6$, son funciones pares, y lo mismo vale para sus sumas. Si el exponente es un entero par, $(-x)^n=x^n$. Ejemplo: $f(x)=x^4$ cumple $f(-2)=16=f(2)$. Verificación: $(-2)^4=16$."
+        },
+        {
+          "texto": "$f(x)=x^n$ con $n$ impar ⇒ función impar",
+          "explicacion": "Los exponentes impares conservan el signo de la variable: un número negativo elevado a un exponente impar es negativo. Por eso las potencias impares, como $x$, $x^3$ y $x^5$, son funciones impares, y lo mismo vale para sus sumas. Si el exponente es un entero impar, $(-x)^n=-x^n$. Ejemplo: $f(x)=x^5$ cumple $f(-2)=-32=-f(2)$. Verificación: $(-2)^5=-32$."
+        },
+        {
+          "texto": "$f(x)=|x|$ ⇒ función par",
+          "explicacion": "La función valor absoluto es el ejemplo más usado de función par no polinomial; su gráfica en forma de V tiene vértice en el origen y es simétrica respecto del eje vertical, de modo que $|x|$ no distingue entre entradas opuestas. El valor absoluto de un número es igual al de su opuesto, de modo que $f(-x)=|-x|=|x|=f(x)$. Ejemplo: $f(-7)=7=f(7)$. Verificación: la gráfica en forma de V es simétrica respecto del eje $y$."
+        },
+        {
+          "texto": "$f(x)=mx$ ⇒ función impar",
+          "explicacion": "La gráfica de $y=mx$ es una recta que pasa por el origen y es simétrica respecto de él: al girarla $180^\\circ$ queda igual. Por eso las funciones lineales homogéneas son impares, con cualquier pendiente $m$. Toda función lineal sin término independiente es impar: $f(-x)=m(-x)=-mx=-f(x)$. Ejemplo: $f(x)=3x$ cumple $f(-2)=-6=-f(2)$. Verificación: la recta pasa por el origen y es simétrica respecto de él."
+        },
+        {
+          "texto": "$f(x)=mx+b$ con $m\\ne 0$ y $b\\ne 0$ ⇒ ni par ni impar",
+          "explicacion": "La función lineal con término independiente y pendiente distintos de cero no cumple ninguna de las dos igualdades. Demostración: $f(-x)=-mx+b$; es igual a $f(x)=mx+b$ solo si $m=0$, y es igual a $-f(x)=-mx-b$ solo si $b=0$. Ejemplo: $f(x)=2x+1$ da $f(1)=3$ y $f(-1)=-1$. Verificación: $-1\\ne 3$ y $-1\\ne -3$."
+        },
+        {
+          "texto": "$f(x)=c$ constante ⇒ función par",
+          "explicacion": "Una función constante tiene una gráfica horizontal que es simétrica respecto del eje vertical, así que siempre es par; solo en el caso particular $c=0$ también es impar, porque la recta coincide con el eje horizontal. Una función constante cumple $f(-x)=c=f(x)$ y por tanto es par; es impar solo si $c=0$. Ejemplo: $f(x)=5$ da $f(-3)=5=f(3)$. Verificación: la gráfica es una recta horizontal, simétrica respecto del eje $y$."
+        },
+        {
+          "texto": "$f(x)=ax^2+bx+c$ ⇒ par si y solo si $b=0$",
+          "explicacion": "Para la función cuadrática, $f(-x)=ax^2-bx+c$, igual a $f(x)=ax^2+bx+c$ exactamente cuando $b=0$. Ejemplos: $x^2-4$ es par; $x^2+x$ no es par ni impar, pues $f(1)=2$ y $f(-1)=0$. Verificación: el eje de simetría de la parábola es $x=-\\frac{b}{2a}$, que coincide con el eje $y$ solo si $b=0$."
+        },
+        {
+          "texto": "$f(x)=\\frac{1}{x}$ ⇒ función impar",
+          "explicacion": "La función recíproca es impar y tiene dominio simétrico sin el cero; su gráfica, una hipérbola con dos ramas en el primer y tercer cuadrante, es simétrica respecto del origen, y por eso cada punto $(a,b)$ tiene su pareja $(-a,-b)$. Su dominio $\\mathbb{R}-\\{0\\}$ es simétrico y $f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$. Ejemplo: $f(-4)=-\\frac{1}{4}=-f(4)$. Verificación: la hipérbola es simétrica respecto del origen."
+        },
+        {
+          "texto": "$f(x)=\\sqrt{x}$ ⇒ ni par ni impar",
+          "explicacion": "La raíz cuadrada solo está definida para valores no negativos, y su gráfica es media parábola acostada; al no existir la parte izquierda, no hay simetría posible respecto del eje vertical ni del origen. Su dominio $[0,+\\infty)$ no es simétrico, por lo que no puede ser par ni impar. Ejemplo: $f(4)=2$ existe pero $f(-4)$ no. Verificación: $\\sqrt{-4}$ no es real."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento",
+      "puntos": [
+        {
+          "texto": "Paso 1: comprobar que el dominio es simétrico",
+          "explicacion": "Antes de calcular nada se halla el dominio y se verifica que $x\\in D$ implique $-x\\in D$; si no es así, la función no es par ni impar. Ejemplo: $f(x)=\\frac{x^2}{x^2-1}$ tiene dominio $\\mathbb{R}-\\{-1,1\\}$, simétrico. Verificación: excluye $1$ y también $-1$."
+        },
+        {
+          "texto": "Paso 2: calcular $f(-x)$ y simplificar",
+          "explicacion": "Reemplazar $x$ por $-x$ exige cuidado con los paréntesis y los signos: $(-x)^2=x^2$ pero $-x^2$ es distinto; un error en este paso conduce a conclusiones falsas sobre la paridad de la función. Se reemplaza $x$ por $-x$ en la fórmula, respetando paréntesis, y se simplifica. Ejemplo: $f(-x)=\\frac{(-x)^2}{(-x)^2-1}=\\frac{x^2}{x^2-1}$. Verificación: el signo desaparece porque $(-x)^2=x^2$."
+        },
+        {
+          "texto": "Paso 3: comparar con $f(x)$ y con $-f(x)$",
+          "explicacion": "La comparación decide la clasificación: si el resultado coincide con $f(x)$ para todo $x$, la función es par; si coincide con $-f(x)$, es impar; si no coincide con ninguna, la función no tiene paridad, y se justifica con un valor numérico. Se compara el resultado con $f(x)$ para decidir si es par y con $-f(x)$ para decidir si es impar. Ejemplo: $f(-x)=\\frac{x^2}{x^2-1}=f(x)$, de modo que $f$ es par. Verificación: $f(2)=\\frac{4}{3}$ y $f(-2)=\\frac{4}{3}$."
+        },
+        {
+          "texto": "Paso 4: concluir o dar un contraejemplo",
+          "explicacion": "Si $f(-x)=f(x)$ para todo $x$, es par; si $f(-x)=-f(x)$ para todo $x$, es impar; si falla en algún valor, se da un contraejemplo numérico. Ejemplo: $f(x)=x^2+x$ da $f(2)=6$ y $f(-2)=2$, que difiere de $6$ y de $-6$. Verificación: no es par ni impar."
+        },
+        {
+          "texto": "Fracción racional ⇒ comprobar numerador y denominador",
+          "explicacion": "Una fracción de polinomios es par si numerador y denominador tienen igual paridad, e impar si tienen paridad distinta; esto abrevia el cálculo, aunque siempre conviene comprobarlo con $f(-x)$ para evitar errores. En un cociente, la paridad del resultado se deduce de la de numerador y denominador. Ejemplo: $f(x)=\\frac{x}{x^2+1}$ tiene dominio $\\mathbb{R}$ y $f(-x)=\\frac{-x}{x^2+1}=-f(x)$, de modo que es impar. Verificación: $f(1)=\\frac{1}{2}$ y $f(-1)=-\\frac{1}{2}$."
+        },
+        {
+          "texto": "Dominio no simétrico en una fracción ⇒ ni par ni impar",
+          "explicacion": "Aunque la fórmula parezca simétrica, un dominio no simétrico impide la paridad. Ejemplo: $f(x)=\\frac{x+1}{x-1}$ tiene dominio $\\mathbb{R}-\\{1\\}$; el valor $-1$ está en el dominio pero su opuesto $1$ no. Verificación: $f(-1)=\\frac{0}{-2}=0$ existe, pero $f(1)$ no existe, por lo que no se puede comparar $f(-1)$ con $\\pm f(1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con funciones",
+      "puntos": [
+        {
+          "texto": "Par $\\pm$ par ⇒ par; impar $\\pm$ impar ⇒ impar",
+          "explicacion": "Las reglas para sumar funciones de igual paridad son análogas a las de sumar números pares o impares en otros contextos; permiten decidir la paridad de una suma sin calcular $f(-x)$ en la expresión completa. La suma o diferencia de dos funciones con la misma paridad conserva esa paridad. Demostración para pares: $(f+g)(-x)=f(-x)+g(-x)=f(x)+g(x)$; para impares: $(f+g)(-x)=-f(x)-g(x)=-(f+g)(x)$. Ejemplo: $x^2+x^4$ es par y $x^3+x$ es impar. Verificación: $(-2)^2+(-2)^4=20=2^2+2^4$ y $(-2)^3+(-2)=-10=-(8+2)$."
+        },
+        {
+          "texto": "Par $+$ impar ⇒ ni par ni impar (salvo la función nula)",
+          "explicacion": "La suma de una función par y una impar, ambas no nulas, no es par ni impar. Ejemplo: $x^2+x$ con $x^2$ par y $x$ impar da $f(2)=6$ y $f(-2)=2$. Verificación: $2\\ne 6$ y $2\\ne -6$."
+        },
+        {
+          "texto": "Producto de dos funciones ⇒ par si ambas tienen igual paridad",
+          "explicacion": "El producto de dos pares es par, el de dos impares es par y el de una par con una impar es impar. Ejemplos: $x^2\\times x^4=x^6$ es par; $x\\times x^3=x^4$ es par; $x^2\\times x=x^3$ es impar. Verificación: la regla sigue la de los signos al multiplicar $(+1)$ por $(+1)$, $(-1)$ por $(-1)$ y $(+1)$ por $(-1)$."
+        },
+        {
+          "texto": "Cociente de funciones ⇒ misma regla que el producto",
+          "explicacion": "El cociente de dos funciones de igual paridad es par y el de dos de distinta paridad es impar, con el divisor distinto de cero. Ejemplos: $\\frac{x^3}{x}=x^2$ es par; $\\frac{x^2}{x}=x$ es impar. Verificación: $\\frac{(-2)^3}{-2}=4=\\frac{2^3}{2}$ y $\\frac{(-2)^2}{-2}=-2=-\\frac{2^2}{2}$."
+        },
+        {
+          "texto": "Composición ⇒ depende de las paridades de $f$ y $g$",
+          "explicacion": "Si $g$ es par o impar y $f$ es par, $f\\circ g$ es par; si $f$ y $g$ son impares, $f\\circ g$ es impar. Ejemplos: $f(x)=x^2$ y $g(x)=x^3$ dan $(f\\circ g)(x)=x^6$, par; $f(x)=x^3$ y $g(x)=x$ dan $x^3$, impar. Verificación: $f(g(-x))=f(-g(x))=f(g(x))$ si $f$ es par."
+        }
+      ]
+    },
+    {
+      "titulo": "Descomposición",
+      "puntos": [
+        {
+          "texto": "Toda $f$ con $D$ simétrico ⇒ suma de una par y una impar",
+          "explicacion": "Esta descomposición muestra que la paridad es una forma de «separar» una función en dos partes con simetrías opuestas; es única, y la parte par y la impar se obtienen promediando la función con su reflejo. Si el dominio es simétrico, $f(x)=f_p(x)+f_i(x)$ con $f_p(x)=\\frac{f(x)+f(-x)}{2}$ (par) y $f_i(x)=\\frac{f(x)-f(-x)}{2}$ (impar). Ejemplo: $f(x)=x^3+2x^2-x+4$ da $f_p(x)=\\frac{4x^2+8}{2}=2x^2+4$ y $f_i(x)=\\frac{2x^3-2x}{2}=x^3-x$. Verificación: $(2x^2+4)+(x^3-x)=x^3+2x^2-x+4$."
+        },
+        {
+          "texto": "Polinomio ⇒ separar potencias pares e impares",
+          "explicacion": "En un polinomio, la parte par es la suma de los términos de exponente par (incluido el término independiente) y la parte impar es la de los de exponente impar. Ejemplo: $x^4-3x^2+5$ es par, porque solo tiene exponentes pares. Verificación: $f(-2)=16-12+5=9=f(2)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Dominio y rango (tema 52) ⇒ condición de simetría",
+          "explicacion": "Calcular el dominio es el primer paso para estudiar la paridad: si no es simétrico, la función no puede ser par ni impar, y no hace falta calcular $f(-x)$; esto ahorra trabajo y evita errores. El tema «Dominio y rango» da el método para hallar el dominio, que debe ser simétrico. Ejemplo: $f(x)=\\sqrt{4-x^2}$ tiene dominio $[-2,2]$, simétrico, y es par. Verificación: $f(-1)=\\sqrt{3}=f(1)$."
+        },
+        {
+          "texto": "Representación gráfica (tema 54) ⇒ reconocer simetrías",
+          "explicacion": "La gráfica ofrece un criterio visual para la paridad: simetría respecto del eje vertical indica función par, y simetría respecto del origen indica función impar; el criterio algebraico confirma lo que se observa en la gráfica. El tema «Representación gráfica de una función» permite identificar la paridad por la simetría de la gráfica. Ejemplo: la parábola $y=x^2-4$ es simétrica respecto del eje $y$. Verificación: pasa por $(2,0)$ y $(-2,0)$."
+        },
+        {
+          "texto": "Función valor absoluto (tema 58) ⇒ ejemplo básico de función par",
+          "explicacion": "El valor absoluto es la función par más simple fuera de las potencias, y combinaciones como $|x|-3$ o $2|x|$ conservan la paridad; en cambio, $|x-1|$ no es par porque su vértice está desplazado del eje vertical. El tema «Función valor absoluto» estudia $|x|$, que es par; la gráfica en V es simétrica respecto del eje $y$. Ejemplo: $f(x)=|x|+1$ es par. Verificación: $f(-3)=4=f(3)$."
+        },
+        {
+          "texto": "Funciones monótonas (tema 61) ⇒ una impar monótona lo es en ambos lados",
+          "explicacion": "Si una función impar crece en $[0,+\\infty)$, también crece en $(-\\infty,0]$, por la simetría respecto del origen; en una función par, el comportamiento a la izquierda es el opuesto al de la derecha. Ejemplo: $x^3$ es impar y creciente en todo $\\mathbb{R}$; $x^2$ es par, decreciente en $(-\\infty,0]$ y creciente en $[0,+\\infty)$. Verificación: $(-2)^3=-8<-1=(-1)^3$."
+        }
+      ]
+    }
+  ]
+}

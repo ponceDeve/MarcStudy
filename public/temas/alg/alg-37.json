@@ -1,0 +1,228 @@
+{
+  "curso": "Álgebra",
+  "tema": "Método de Ruffini",
+  "glosario": {
+    "método de Ruffini": "División rápida entre un divisor lineal",
+    "divisor lineal": "Divisor de grado uno",
+    "dividendo": "Polinomio que se divide",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "coeficiente": "Factor numérico de un término",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "raíz del divisor": "Valor de la variable que anula el divisor",
+    "polinomio ordenado": "Términos escritos por exponentes decrecientes",
+    "polinomio completo": "Polinomio con todos los exponentes presentes",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "división exacta": "División cuyo resto es nulo",
+    "división inexacta": "División cuyo resto no es nulo",
+    "factor": "Polinomio que divide exactamente a otro",
+    "valor numérico": "Resultado de reemplazar la variable por un número",
+    "esquema de Ruffini": "Tabla con coeficientes y raíz del divisor",
+    "término independiente": "Término sin letras",
+    "algoritmo": "Procedimiento de pasos que termina",
+    "identidad": "Igualdad válida para todo valor de la variable",
+    "fracción": "Cociente de dos números enteros",
+    "opuesto": "Número con el mismo valor y signo contrario"
+  },
+  "theory": [
+    {
+      "titulo": "Idea del método",
+      "puntos": [
+        {
+          "texto": "«Método de Ruffini» = división rápida entre divisor lineal",
+          "explicacion": "El método de Ruffini es un procedimiento abreviado para dividir un polinomio entre un divisor de primer grado, como $x-2$ o $2x-1$. En lugar de escribir letras y exponentes, se trabaja solo con los coeficientes ordenados en una tabla, que se completa con multiplicaciones y sumas. Su nombre recuerda al matemático italiano Paolo Ruffini. Produce los mismos resultados que el método clásico, pues ambos aplican el algoritmo de la división, pero con menos escritura y menos riesgo de errores de signo."
+        },
+        {
+          "texto": "Divisor lineal ✓ condición del método",
+          "explicacion": "El método solo se aplica cuando el divisor es un polinomio de grado $1$, de la forma $x-a$ o, más en general, $ax+b$ con $a\\neq0$. Para divisores de grado mayor, como $x^2+1$, la tabla simple no funciona y se usa el método clásico o el de Horner. Ejemplo: $2x^3-5x^2+4x-7$ entre $x-2$ admite Ruffini; entre $x^2+x+1$ no."
+        },
+        {
+          "texto": "Ventaja: solo coeficientes",
+          "explicacion": "El método elimina las letras y los exponentes durante el cálculo, y conserva únicamente los coeficientes en el orden decreciente de los términos. Los exponentes se recuperan al final, porque cada coeficiente del cociente tiene un grado determinado por su posición. Ejemplo: de $2x^3-5x^2+4x-7$ solo se anotan $2,\\,-5,\\,4,\\,-7$, y las operaciones se reducen a multiplicar por un número y sumar."
+        }
+      ]
+    },
+    {
+      "titulo": "Preparación del esquema",
+      "puntos": [
+        {
+          "texto": "Ordenar y completar el dividendo",
+          "explicacion": "Antes de armar la tabla, el dividendo se escribe ordenado con exponentes decrecientes y completo, anotando $0$ en cada exponente que falte. Ejemplo: $x^4+3x^3-2x+5$ no tiene término en $x^2$, y se completa como $x^4+3x^3+0x^2-2x+5$; sus coeficientes son $1,\\,3,\\,0,\\,-2,\\,5$. Verificación: se lista un coeficiente por cada exponente de $4$ a $0$, es decir, cinco coeficientes."
+        },
+        {
+          "texto": "«Raíz del divisor» = valor que anula al divisor",
+          "explicacion": "La raíz del divisor es el número que se coloca a la izquierda de la tabla; se obtiene igualando el divisor a cero y despejando la variable. Ejemplo: $x-2=0\\Rightarrow x=2$, y $x+3=0\\Rightarrow x=-3$. Con $2x-1=0$ se obtiene $x=\\frac{1}{2}$. Verificación: al reemplazar la raíz en el divisor da $0$; por ejemplo $-3+3=0$."
+        },
+        {
+          "texto": "Disposición: coeficientes arriba, raíz a la izquierda, resultados abajo",
+          "explicacion": "En la fila superior se escriben los coeficientes del dividendo. A la izquierda va la raíz del divisor, separada por una línea vertical. Debajo de los coeficientes se deja una fila para los productos y, bajo una línea horizontal, una fila para los resultados. La columna del primer coeficiente solo tendrá el valor que se baja; las demás columnas recibirán un producto y una suma."
+        },
+        {
+          "texto": "$\\operatorname{gr}(q)=\\operatorname{gr}(D)-1$",
+          "explicacion": "Aquí $\\operatorname{gr}(P)$ designa el grado del polinomio $P$. Al dividir entre un divisor lineal, el cociente tiene un grado menos que el dividendo, y el resto es un número. Ejemplo: si $D=2x^3-5x^2+4x-7$ tiene grado $3$, el cociente tiene grado $2$. En la fila de resultados hay cuatro números: los tres primeros son los coeficientes de $q$ y el último es el resto."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos del método",
+      "puntos": [
+        {
+          "texto": "Paso 1: bajar el primer coeficiente",
+          "explicacion": "El primer coeficiente del dividendo se baja sin modificar a la fila de resultados; será el coeficiente principal del cociente. Ejemplo: en $2x^3-5x^2+4x-7$ entre $x-2$, se baja $2$. Verificación: el coeficiente principal del cociente coincide con el del dividendo cuando el divisor es mónico (de coeficiente principal $1$)."
+        },
+        {
+          "texto": "Paso 2: multiplicar por la raíz y colocar bajo el siguiente",
+          "explicacion": "El número recién obtenido en la fila de resultados se multiplica por la raíz del divisor, y el producto se escribe debajo del siguiente coeficiente del dividendo. Ejemplo con raíz $2$ y número $2$: $2\\cdot2=4$, que se coloca bajo $-5$. Verificación: $4$ proviene de una multiplicación de la raíz por el número anterior."
+        },
+        {
+          "texto": "Paso 3: sumar la columna",
+          "explicacion": "En esa columna se suma el coeficiente del dividendo con el producto escrito debajo, y el resultado se anota en la fila de resultados. Ejemplo: $-5+4=-1$. Verificación: en el método clásico se resta el producto del divisor por el término del cociente; aquí el producto aparece sumado porque el divisor $x-a$ contiene $-a$ y la resta ya está incorporada."
+        },
+        {
+          "texto": "Paso 4: repetir hasta la última columna",
+          "explicacion": "Los pasos 2 y 3 se repiten columna por columna, usando siempre el último resultado obtenido. Ejemplo: con $-1$: $-1\\cdot2=-2$ y $4+(-2)=2$; luego $2\\cdot2=4$ y $-7+4=-3$. El proceso termina al sumar la última columna, la del término independiente."
+        },
+        {
+          "texto": "Paso 5: leer cociente y resto",
+          "explicacion": "El último número de la fila de resultados es el resto $R$. Los números anteriores son los coeficientes del cociente, en orden decreciente y comenzando por el grado $\\operatorname{gr}(D)-1$. Ejemplo: los resultados $2,\\,-1,\\,2,\\,-3$ dan $q=2x^2-x+2$ y $R=-3$. El resto no lleva letra, pues es una constante."
+        },
+        {
+          "texto": "Paso 6: verificar $(x-a)\\,q+R=D$",
+          "explicacion": "Se multiplica el divisor por el cociente y se suma el resto. Ejemplo: $(x-2)(2x^2-x+2)=2x^3-x^2+2x-4x^2+2x-4=2x^3-5x^2+4x-4$, y al sumar $-3$ resulta $2x^3-5x^2+4x-7=D$. La verificación confirma que la tabla se llenó correctamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento del método",
+      "puntos": [
+        {
+          "texto": "Coeficientes: $D=c_nx^n+\\cdots+c_0$ y $q=b_{n-1}x^{n-1}+\\cdots+b_0$",
+          "explicacion": "Para justificar el método se nombran los coeficientes del dividendo $c_n,\\ldots,c_0$ y los del cociente $b_{n-1},\\ldots,b_0$. Se parte de la identidad $D=(x-a)q+R$ del algoritmo de la división. Al desarrollar $(x-a)q+R$ se obtiene $b_{n-1}x^n+(b_{n-2}-ab_{n-1})x^{n-1}+\\cdots+(b_{k-1}-ab_k)x^k+\\cdots+(R-ab_0)$. Igualando coeficientes con los de $D$ se deducen las reglas siguientes."
+        },
+        {
+          "texto": "$b_{n-1}=c_n$",
+          "explicacion": "Al comparar los coeficientes de $x^n$ en ambos miembros de la identidad se obtiene $c_n=b_{n-1}$. Es la regla de bajar el primer coeficiente. Ejemplo: en $2x^3-5x^2+4x-7$ entre $x-2$, $c_3=2$, de modo que $b_2=2$."
+        },
+        {
+          "texto": "$b_{k-1}=c_k+a\\,b_k$",
+          "explicacion": "Al comparar los coeficientes de $x^k$ se obtiene $c_k=b_{k-1}-ab_k$, y despejando, $b_{k-1}=c_k+ab_k$. Es la regla de multiplicar por la raíz $a$ el resultado anterior y sumarlo al coeficiente siguiente. Ejemplo con $a=2$: $b_1=c_2+a\\,b_2=-5+2\\cdot2=-1$, y $b_0=c_1+a\\,b_1=4+2\\cdot(-1)=2$."
+        },
+        {
+          "texto": "$R=c_0+a\\,b_0$",
+          "explicacion": "Al comparar los términos independientes se obtiene $c_0=R-ab_0$, y despejando, $R=c_0+ab_0$. Es la regla que produce el último número de la tabla como resto. Ejemplo: $R=c_0+a\\,b_0=-7+2\\cdot2=-3$, que coincide con el resto del ejemplo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 1: raíz positiva",
+      "puntos": [
+        {
+          "texto": "Datos: $2x^3-5x^2+4x-7$ entre $x-2$",
+          "explicacion": "El dividendo está ordenado y completo, con coeficientes $2,\\,-5,\\,4,\\,-7$. El divisor es $x-2$, y su raíz es $a=2$ (porque $x-2=0\\Rightarrow x=2$). Como $\\operatorname{gr}(D)=3$, el cociente tendrá grado $2$ y la fila de resultados tendrá cuatro números."
+        },
+        {
+          "texto": "Cálculo: $2\\to-1\\to2\\to-3$",
+          "explicacion": "Se baja $2$. Luego: $2\\cdot2=4$ y $-5+4=-1$. Después: $-1\\cdot2=-2$ y $4+(-2)=2$. Finalmente: $2\\cdot2=4$ y $-7+4=-3$. La fila de resultados queda $2,\\,-1,\\,2,\\,-3$. Verificación de cada columna: $-5+4=-1$; $4-2=2$; $-7+4=-3$."
+        },
+        {
+          "texto": "Resultado: $q=2x^2-x+2$ y $R=-3$",
+          "explicacion": "Los tres primeros números son los coeficientes del cociente, desde $x^2$: $q(x)=2x^2-x+2$. El último número es el resto: $R=-3$. Verificación: $(x-2)(2x^2-x+2)+(-3)=2x^3-5x^2+4x-4-3=2x^3-5x^2+4x-7$. Este resultado coincide con el del método clásico."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor mónico lineal",
+      "puntos": [
+        {
+          "texto": "$x+a=0\\Rightarrow$ raíz $=-a$",
+          "explicacion": "Cuando el divisor es $x+a$, su raíz es el opuesto de $a$, porque $x+a=0$ da $x=-a$. Ejemplo: para $x+3$ la raíz es $-3$, y para $x+\\frac{1}{2}$ es $-\\frac{1}{2}$. Verificación: $-3+3=0$. Colocar $+3$ en lugar de $-3$ es un error frecuente que cambia por completo el resultado."
+        },
+        {
+          "texto": "Ejemplo con coeficiente nulo: $x^4+3x^3-2x+5$ entre $x+3$",
+          "explicacion": "Coeficientes completos: $1,\\,3,\\,0,\\,-2,\\,5$; raíz $a=-3$. Se baja $1$. Luego: $1\\cdot(-3)=-3$ y $3-3=0$; $0\\cdot(-3)=0$ y $0+0=0$; $0\\cdot(-3)=0$ y $-2+0=-2$; $-2\\cdot(-3)=6$ y $5+6=11$. Resultados: $1,\\,0,\\,0,\\,-2,\\,11$. Entonces $q=x^3-2$ y $R=11$. Verificación: $(x+3)(x^3-2)=x^4+3x^3-2x-6$, y al sumar $11$ resulta $x^4+3x^3-2x+5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor no mónico",
+      "puntos": [
+        {
+          "texto": "$ax+b=0\\Rightarrow$ raíz $=-\\frac{b}{a}$",
+          "explicacion": "Si el divisor tiene coeficiente principal $a\\neq1$, la raíz que se coloca en la tabla es $-\\frac{b}{a}$, obtenida al despejar $x$ en $ax+b=0$. Ejemplo: $2x-1=0\\Rightarrow x=\\frac{1}{2}$, y $3x+2=0\\Rightarrow x=-\\frac{2}{3}$. Verificación: $2\\cdot\\frac{1}{2}-1=0$."
+        },
+        {
+          "texto": "Cociente verdadero $q=\\frac{Q}{a}$ si el divisor es $ax+b$",
+          "explicacion": "Al usar la raíz $-\\frac{b}{a}$ la tabla divide entre $x+\\frac{b}{a}$, no entre $ax+b$. Como $ax+b=a\\left(x+\\frac{b}{a}\\right)$, se tiene $D=\\left(x+\\frac{b}{a}\\right)(a\\,q)+R$, donde $q$ es el cociente entre $ax+b$. La tabla entrega $Q=a\\,q$, así que $q=\\frac{Q}{a}$, y el resto $R$ no cambia. Hay que dividir todos los coeficientes obtenidos entre $a$, salvo el resto."
+        },
+        {
+          "texto": "Resto ✗ se divide entre $a$",
+          "explicacion": "El resto que entrega la tabla ya es el resto de la división entre $ax+b$, y no debe dividirse entre $a$. Se deduce de la identidad $D=\\left(x+\\frac{b}{a}\\right)Q+R=(ax+b)\\frac{Q}{a}+R$, en la que $R$ aparece igual. Ejemplo: en $6x^3+x^2-5x+2$ entre $2x-1$ el resto es $\\frac{1}{2}$, aunque el cociente sí se divide entre $2$."
+        },
+        {
+          "texto": "Ejemplo: $6x^3+x^2-5x+2$ entre $2x-1$",
+          "explicacion": "Coeficientes $6,\\,1,\\,-5,\\,2$; raíz $a=\\frac{1}{2}$. Se baja $6$. Luego: $6\\cdot\\frac{1}{2}=3$ y $1+3=4$; $4\\cdot\\frac{1}{2}=2$ y $-5+2=-3$; $-3\\cdot\\frac{1}{2}=-\\frac{3}{2}$ y $2-\\frac{3}{2}=\\frac{1}{2}$. La tabla da $Q=6x^2+4x-3$ y $R=\\frac{1}{2}$. Se divide $Q$ entre $2$: $q=3x^2+2x-\\frac{3}{2}$. Verificación: $(2x-1)\\left(3x^2+2x-\\frac{3}{2}\\right)=6x^3+x^2-5x+\\frac{3}{2}$, y al sumar $\\frac{1}{2}$ resulta $6x^3+x^2-5x+2$."
+        },
+        {
+          "texto": "Ejemplo exacto: $3x^3+5x^2+5x+2$ entre $3x+2$",
+          "explicacion": "Coeficientes $3,\\,5,\\,5,\\,2$; raíz $a=-\\frac{2}{3}$. Se baja $3$. Luego: $3\\cdot\\left(-\\frac{2}{3}\\right)=-2$ y $5-2=3$; $3\\cdot\\left(-\\frac{2}{3}\\right)=-2$ y $5-2=3$; $3\\cdot\\left(-\\frac{2}{3}\\right)=-2$ y $2-2=0$. La tabla da $Q=3x^2+3x+3$ y $R=0$. Se divide entre $3$: $q=x^2+x+1$. Verificación: $(3x+2)(x^2+x+1)=3x^3+5x^2+5x+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "Resto $0$ ⇒ divisor es factor del dividendo",
+          "explicacion": "Si el último número de la tabla es $0$, la división es exacta y el divisor es un factor del dividendo. Ejemplo: $x^3-1$ entre $x-1$ tiene coeficientes $1,\\,0,\\,0,\\,-1$ y raíz $1$. Se baja $1$; $1\\cdot1=1$ y $0+1=1$; $1\\cdot1=1$ y $0+1=1$; $1\\cdot1=1$ y $-1+1=0$. Resultado: $q=x^2+x+1$ y $R=0$. Verificación: $(x-1)(x^2+x+1)=x^3-1$."
+        },
+        {
+          "texto": "Resto = valor numérico de $D$ en la raíz",
+          "explicacion": "El último número de la tabla coincide con el valor numérico $D(a)$ del dividendo en la raíz $a$ del divisor, resultado conocido como teorema del resto. Ejemplo: en $x^4+3x^3-2x+5$ entre $x+3$, con $a=-3$: $D(-3)=81+3(-27)-2(-3)+5=81-81+6+5=11$, el mismo resto obtenido por la tabla. Esto permite calcular valores numéricos de un polinomio con el esquema."
+        },
+        {
+          "texto": "Dividendo de grado $1$ ⇒ cociente constante",
+          "explicacion": "Si el dividendo es de primer grado, la tabla tiene dos coeficientes: el primero es el cociente (una constante) y el segundo es el resto. Ejemplo: $3x+7$ entre $x-2$, con $a=2$. Se baja $3$; $3\\cdot2=6$ y $7+6=13$. Resultado: $q=3$ y $R=13$. Verificación: $3(x-2)+13=3x+7$."
+        },
+        {
+          "texto": "$\\operatorname{gr}(D)=0$ ⇒ $q=0$ y $R=D$",
+          "explicacion": "Si el dividendo es una constante $c$, solo hay un coeficiente: se baja y es directamente el resto, y el cociente es cero. Ejemplo: $5$ entre $x-3$ da $q=0$ y $R=5$. Verificación: $(x-3)\\cdot0+5=5$. El resto es $5$, de grado menor que el del divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Raíz con signo equivocado",
+          "explicacion": "Usar la raíz con el signo del divisor produce un resto y un cociente erróneos. Ejemplo: en $x^4+3x^3-2x+5$ entre $x+3$, usar $3$ en lugar de $-3$ da el resto $D(3)=81+81-6+5=161$, en lugar del correcto $11$. Verificación: el valor correcto es $D(-3)=11$."
+        },
+        {
+          "texto": "Olvidar el coeficiente $0$ del término faltante",
+          "explicacion": "Si no se completa el dividendo, la tabla tiene menos columnas que exponentes y los coeficientes quedan en la posición equivocada. Ejemplo: $x^3-1$ debe escribirse $1,\\,0,\\,0,\\,-1$; usar solo $1,\\,-1$ daría un resultado de grado incorrecto. Verificación: debe haber $\\operatorname{gr}(D)+1$ coeficientes."
+        },
+        {
+          "texto": "Olvidar dividir el cociente entre $a$",
+          "explicacion": "Con divisor $ax+b$, usar los números de la tabla como cociente sin dividirlos entre $a$ da un cociente $a$ veces mayor. Ejemplo: en $6x^3+x^2-5x+2$ entre $2x-1$, la tabla da $6x^2+4x-3$, pero el cociente correcto es $3x^2+2x-\\frac{3}{2}$. Verificación: al multiplicar por $2x-1$ solo el cociente correcto reconstruye el dividendo."
+        },
+        {
+          "texto": "Divisor no lineal ⇒ ✗ aplicar Ruffini simple",
+          "explicacion": "La tabla con una sola raíz solo describe divisores de grado $1$. Con un divisor como $x^2+x+1$ el procedimiento daría un resultado sin sentido, porque cada paso necesita restar un múltiplo de un polinomio de dos términos. Para esos casos se usa el método clásico o el método de Horner."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Ruffini ⊂ método clásico",
+          "explicacion": "El método de Ruffini es un caso particular del método clásico cuando el divisor es lineal, escrito sin letras. Por la unicidad del algoritmo de la división, ambos dan el mismo cociente y el mismo resto. Ejemplo: $2x^3-5x^2+4x-7$ entre $x-2$ da $q=2x^2-x+2$ y $R=-3$ con cualquiera de los dos."
+        },
+        {
+          "texto": "Ruffini → teoremas del resto y del factor",
+          "explicacion": "El último número de la tabla es $D(a)$, lo que anticipa el teorema del resto; y si es $0$, el divisor es factor, lo que anticipa el teorema del factor. El método de Horner generaliza la tabla a divisores de mayor grado. Ejemplo: $x^3-1$ con raíz $1$ da resto $0$, así que $x-1$ es factor de $x^3-1$."
+        }
+      ]
+    }
+  ]
+}

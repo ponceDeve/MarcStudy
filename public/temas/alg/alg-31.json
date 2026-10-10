@@ -1,0 +1,216 @@
+{
+  "curso": "Álgebra",
+  "tema": "Sustracción de polinomios",
+  "glosario": {
+    "Polinomio": "Suma finita de monomios.",
+    "Minuendo": "Polinomio del que se resta.",
+    "Sustraendo": "Polinomio que se resta.",
+    "Diferencia": "Resultado de restar sustraendo al minuendo.",
+    "Opuesto": "Polinomio con todos los signos cambiados.",
+    "Términos semejantes": "Términos con la misma parte literal.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes cero.",
+    "Coeficiente principal": "Coeficiente del término de mayor grado.",
+    "Signos de agrupación": "Paréntesis, corchetes y llaves.",
+    "Valor numérico": "Resultado de reemplazar la variable por un número.",
+    "Propiedad conmutativa": "El orden de los elementos no importa.",
+    "Propiedad asociativa": "La agrupación de elementos no importa.",
+    "Término independiente": "Término que no contiene la variable."
+  },
+  "theory": [
+    {
+      "titulo": "Sustracción de polinomios",
+      "puntos": [
+        {
+          "texto": "«Sustracción de polinomios»: sumar al minuendo el opuesto del sustraendo",
+          "explicacion": "Restar el polinomio $Q$ del polinomio $P$ significa sumar a $P$ el opuesto de $Q$: $P-Q=P+(-Q)$. De este modo la sustracción se reduce a una adición ya conocida. Por ejemplo, $(5x^2+3)-(2x^2+x)=(5x^2+3)+(-2x^2-x)=3x^2-x+3$. Verificación en $x=1$: $8-3=5$ y el resultado vale $3-1+3=5$."
+        },
+        {
+          "texto": "«Minuendo»: polinomio del que se resta",
+          "explicacion": "En $P-Q$, el minuendo es $P$, el polinomio del cual se quita algo. Se escribe primero y conserva todos sus signos. En $(5x^2+3)-(2x^2+x)$ el minuendo es $5x^2+3$. Identificarlo con claridad evita invertir el orden de la operación. En una resta escrita como $A-B-C$, el minuendo de la primera operación es $A$; el resultado de esa operación pasa a ser el minuendo de la siguiente resta."
+        },
+        {
+          "texto": "«Sustraendo»: polinomio que se resta",
+          "explicacion": "En $P-Q$, el sustraendo es $Q$, el polinomio que se quita del minuendo. Es el único cuyos signos cambian al operar. En $(5x^2+3)-(2x^2+x)$ el sustraendo es $2x^2+x$, y su opuesto, $-2x^2-x$, es lo que realmente se suma. Si el sustraendo tiene varios términos, todos van entre paréntesis, porque el signo menos afecta a cada uno de ellos y no solo al primero."
+        },
+        {
+          "texto": "«Diferencia»: resultado de la sustracción",
+          "explicacion": "La diferencia es el polinomio que resulta de restar el sustraendo al minuendo. En $(5x^2+3)-(2x^2+x)$ la diferencia es $3x^2-x+3$. La diferencia es el polinomio que, sumado al sustraendo, devuelve el minuendo: $(3x^2-x+3)+(2x^2+x)=5x^2+3$. Su grado depende de los grados del minuendo y del sustraendo y puede ser menor que ambos si los términos principales se cancelan, por ejemplo $(x^2+1)-(x^2-3)=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Opuesto de polinomio",
+      "puntos": [
+        {
+          "texto": "«Opuesto» de $Q$: cambiar el signo de todos sus términos",
+          "explicacion": "El opuesto de un polinomio $Q$ se denota $-Q$ y se obtiene cambiando el signo de cada coeficiente, incluido el término independiente. Para $Q=2x^3+x^2-3x+6$ el opuesto es $-Q=-2x^3-x^2+3x-6$. Se cumple $Q+(-Q)=0$, porque cada par de coeficientes opuestos suma cero."
+        },
+        {
+          "texto": "Paréntesis precedido de $-$ ⇒ cambian todos los signos",
+          "explicacion": "Al quitar un paréntesis precedido de signo menos, cada término de su interior cambia de signo. Así, $(4x^2+3x-5)-(x^2-2x+8)=4x^2+3x-5-x^2+2x-8=3x^2+5x-13$. Verificación en $x=1$: $(4+3-5)-(1-2+8)=2-7=-5$, y el resultado vale $3+5-13=-5$. El error más común es cambiar solo el primer signo del paréntesis, por lo que conviene cambiar uno por uno, hasta el último término."
+        }
+      ]
+    },
+    {
+      "titulo": "Método horizontal",
+      "puntos": [
+        {
+          "texto": "Sustracción horizontal: quitar paréntesis y reducir",
+          "explicacion": "En el método horizontal se escribe $P-Q$ en una línea, se eliminan los paréntesis cambiando los signos del sustraendo y se reducen los términos semejantes. Con $P=5x^3-2x^2+4x-1$ y $Q=2x^3+x^2-3x+6$: $P-Q=5x^3-2x^2+4x-1-2x^3-x^2+3x-6=(5-2)x^3+(-2-1)x^2+(4+3)x+(-1-6)=3x^3-3x^2+7x-7$. Verificación en $x=2$: $P(2)=40-8+8-1=39$, $Q(2)=16+4-6+6=20$, $39-20=19$, y el resultado vale $24-12+14-7=19$."
+        }
+      ]
+    },
+    {
+      "titulo": "Método vertical",
+      "puntos": [
+        {
+          "texto": "Sustracción vertical: cambiar signos del sustraendo y sumar columnas",
+          "explicacion": "En el método vertical se ordena y completa cada polinomio con ceros, se escribe el sustraendo con los signos cambiados debajo del minuendo y se suma cada columna. Sea $A=x^4+3x^2-5$ y $B=2x^3-x^2+4$. Completados: $A=x^4+0x^3+3x^2+0x-5$ y $B=0x^4+2x^3-x^2+0x+4$. Opuesto de $B$: $-2x^3+x^2-4$. Columnas: $x^4$: 1; $x^3$: $0-2=-2$; $x^2$: $3+1=4$; $x$: 0; constante: $-5-4=-9$. La diferencia es $x^4-2x^3+4x^2-9$. Verificación en $x=1$: $A(1)=-1$, $B(1)=5$ y $-1-5=-6$; el resultado vale $1-2+4-9=-6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación",
+      "puntos": [
+        {
+          "texto": "Diferencia + sustraendo = minuendo",
+          "explicacion": "La sustracción se comprueba sumando la diferencia y el sustraendo, que debe dar el minuendo. Con $P-Q=3x^3-3x^2+7x-7$ y $Q=2x^3+x^2-3x+6$: $(3x^3-3x^2+7x-7)+(2x^3+x^2-3x+6)=5x^3-2x^2+4x-1=P$. Esta comprobación detecta errores de signo, que son los más frecuentes en la sustracción. Otra comprobación consiste en evaluar en un número: si en $x=2$ el minuendo vale 39 y el sustraendo vale 20, la diferencia debe valer 19, y así ocurre con $3(8)-3(4)+7(2)-7=19$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "No conmutativa: $P-Q=-(Q-P)$",
+          "explicacion": "Restar en orden inverso da el polinomio opuesto: $P-Q$ y $Q-P$ tienen los mismos coeficientes con signos contrarios. Con $P-Q=3x^3-3x^2+7x-7$ se tiene $Q-P=-3x^3+3x^2-7x+7=-(P-Q)$. Solo coinciden si $P=Q$, caso en que ambas valen cero. Por eso el orden en un enunciado verbal es esencial. Con valores en $x=2$: $P(2)-Q(2)=39-20=19$ y $Q(2)-P(2)=20-39=-19$, que son números opuestos."
+        },
+        {
+          "texto": "No asociativa: $(P-Q)-R$ ≠ $P-(Q-R)$",
+          "explicacion": "La forma de agrupar cambia el resultado. Con $P=x^2$, $Q=x$ y $R=1$: $(P-Q)-R=(x^2-x)-1=x^2-x-1$, mientras que $P-(Q-R)=x^2-(x-1)=x^2-x+1$. Los resultados difieren en el término independiente, así que al restar varios polinomios hay que respetar el orden de izquierda a derecha."
+        },
+        {
+          "texto": "$P-P=0$",
+          "explicacion": "Restar un polinomio de sí mismo da el polinomio nulo, porque cada coeficiente se anula al restarse consigo mismo: $(3x^2-5x+2)-(3x^2-5x+2)=(3-3)x^2+(-5+5)x+(2-2)=0$. Es el caso de la propiedad del opuesto, ya que $P-P=P+(-P)=0$. Se usa para verificar que dos polinomios son iguales: su diferencia debe ser el polinomio nulo."
+        },
+        {
+          "texto": "$P-0=P$",
+          "explicacion": "Restar el polinomio nulo no modifica el minuendo, porque cada coeficiente se resta con cero: $(3x^2-5x+2)-0=3x^2-5x+2$. El polinomio nulo es el elemento neutro de la adición, y el opuesto de cero es el propio cero, por lo que la sustracción no altera nada."
+        },
+        {
+          "texto": "$0-P=-P$",
+          "explicacion": "Restar $P$ al polinomio nulo da el opuesto de $P$, con todos los signos cambiados: $0-(3x^2-5x+2)=-3x^2+5x-2$. Es la forma más directa de obtener el opuesto de un polinomio, y explica por qué el signo menos delante de un paréntesis cambia todos los signos de su interior."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto en coeficientes",
+      "puntos": [
+        {
+          "texto": "Coeficiente de $x^k$ en $P-Q$ = $a_k-b_k$",
+          "explicacion": "El coeficiente de cada exponente en la diferencia es la resta de los coeficientes del minuendo y del sustraendo. Con $P=5x^3-2x^2+4x-1$ y $Q=2x^3+x^2-3x+6$: $5-2=3$; $-2-1=-3$; $4-(-3)=7$; $-1-6=-7$. Resulta $3x^3-3x^2+7x-7$. Si uno de los polinomios no tiene un exponente, su coeficiente cuenta como cero."
+        },
+        {
+          "texto": "Valor de la diferencia: $(P-Q)(a)=P(a)-Q(a)$",
+          "explicacion": "El valor de la diferencia en un número es la diferencia de los valores de los polinomios en ese número. Con $P$ y $Q$ anteriores, en $x=0$: $P(0)-Q(0)=-1-6=-7$, que es el término independiente de la diferencia. En $x=1$: $P(1)=6$, $Q(1)=6$ y $6-6=0$; el resultado vale $3-3+7-7=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de la diferencia",
+      "puntos": [
+        {
+          "texto": "Grados iguales y coeficientes principales iguales ⇒ el grado baja",
+          "explicacion": "En una resta, el término principal desaparece cuando los dos polinomios tienen el mismo grado y el mismo coeficiente principal. Con $P=3x^3+x$ y $Q=3x^3-2$: $P-Q=3x^3+x-3x^3+2=x+2$, de grado 1, menor que 3. En la adición, en cambio, la cancelación requería coeficientes principales opuestos."
+        },
+        {
+          "texto": "Grados distintos ⇒ el grado de la diferencia es el mayor",
+          "explicacion": "Si el minuendo y el sustraendo tienen grados diferentes, el término de mayor exponente no se cancela, y la diferencia tiene el mayor de los dos grados. Ejemplo: $(x^4+x)-(3x^2-1)=x^4-3x^2+x+1$, de grado 4, el mayor entre 4 y 2. Ejemplo con el sustraendo de mayor grado: $(x^2)-(x^3)=-x^3+x^2$, de grado 3, con coeficiente principal $-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Varias variables",
+      "puntos": [
+        {
+          "texto": "Restar polinomios en dos variables: misma parte literal",
+          "explicacion": "Se reúnen los términos con la misma parte literal completa, restando los coeficientes. Sean $P=4x^2y-3xy+2y^2$ y $Q=x^2y+5xy-y^2$. Entonces $P-Q=(4-1)x^2y+(-3-5)xy+(2+1)y^2=3x^2y-8xy+3y^2$. Verificación en $x=1$ y $y=2$: $P=8-6+8=10$, $Q=2+10-4=8$ y $10-8=2$; el resultado vale $6-16+12=2$. Los términos $x^2y$ y $xy^2$ no son semejantes, aunque sus coeficientes sean iguales, porque los exponentes de cada variable difieren: por eso no se reducen entre sí, y cada uno se opera solo con su pareja de igual parte literal."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes fraccionarios",
+      "puntos": [
+        {
+          "texto": "Restar polinomios con coeficientes fraccionarios",
+          "explicacion": "Los coeficientes fraccionarios se restan con denominador común. Sean $P=\\frac{3}{4}x^2-\\frac{1}{2}x+2$ y $Q=\\frac{1}{4}x^2+\\frac{1}{3}x-\\frac{1}{2}$. Coeficiente de $x^2$: $\\frac{3}{4}-\\frac{1}{4}=\\frac{1}{2}$. De $x$: $-\\frac{1}{2}-\\frac{1}{3}=-\\frac{5}{6}$. Constantes: $2-(-\\frac{1}{2})=\\frac{5}{2}$. La diferencia es $\\frac{1}{2}x^2-\\frac{5}{6}x+\\frac{5}{2}$. Verificación en $x=2$: $P(2)=3-1+2=4$ y $Q(2)=1+\\frac{2}{3}-\\frac{1}{2}=\\frac{7}{6}$, de modo que $P(2)-Q(2)=4-\\frac{7}{6}=\\frac{17}{6}$. El resultado vale $2-\\frac{5}{3}+\\frac{5}{2}=\\frac{12-10+15}{6}=\\frac{17}{6}$. Coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones combinadas",
+      "puntos": [
+        {
+          "texto": "Restar varios polinomios: de izquierda a derecha",
+          "explicacion": "En $P-Q-R$ se cambian los signos de $Q$ y de $R$ y se reducen todos los términos semejantes. Con $P=3x^2+2x+1$, $Q=x^2-x+4$ y $R=2x^2+3x-5$: $3x^2+2x+1-x^2+x-4-2x^2-3x+5=(3-1-2)x^2+(2+1-3)x+(1-4+5)=2$. Verificación en $x=1$: $P(1)=6$, $Q(1)=4$, $R(1)=0$ y $6-4-0=2$. El resultado es un polinomio constante, de grado 0."
+        },
+        {
+          "texto": "Sumas y restas combinadas: cambiar solo signos tras $-$",
+          "explicacion": "Cuando se combinan sumas y restas, solo cambian de signo los términos de los paréntesis que van precedidos por un signo menos. En $(x^2+x)+(2x^2-3)-(x-5)$ se obtiene $x^2+x+2x^2-3-x+5=3x^2+2$, porque los términos en $x$ se cancelan y $-3+5=2$. Verificación en $x=1$: $2+(-1)-(-4)=5$ y $3+2=5$."
+        },
+        {
+          "texto": "Signos de agrupación anidados: de adentro hacia afuera",
+          "explicacion": "Cuando hay paréntesis dentro de corchetes, se eliminan primero los signos de agrupación interiores y luego los exteriores, aplicando en cada uno la regla del signo que los precede. En $5x-[2x-(x-3)]$: el paréntesis interior, precedido de menos, da $-x+3$; el corchete queda $2x-x+3=x+3$; luego $5x-(x+3)=4x-3$. Verificación en $x=2$: $10-[4-(-1)]=10-5=5$ y $4(2)-3=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciados con palabras",
+      "puntos": [
+        {
+          "texto": "«Restar $A$ de $B$» ⇒ $B-A$",
+          "explicacion": "En el lenguaje verbal, restar $A$ de $B$ significa que $B$ es el minuendo y $A$ el sustraendo: la operación es $B-A$. Ejemplo: restar $x^2-3$ de $2x^2+x$ es $(2x^2+x)-(x^2-3)=x^2+x+3$. Verificación en $x=1$: $3-(-2)=5$ y $1+1+3=5$. Una expresión equivalente es restar $A$ a $B$, que también significa $B-A$. El minuendo es siempre el polinomio que aparece después de la palabra de, y el sustraendo el que aparece inmediatamente después de restar."
+        },
+        {
+          "texto": "«$A$ menos $B$» ⇒ $A-B$",
+          "explicacion": "La expresión $A$ menos $B$ se escribe tal como se lee, con $A$ primero: $A-B$. Ejemplo: $x^2-3$ menos $2x^2+x$ es $(x^2-3)-(2x^2+x)=-x^2-x-3$. Por tanto $x^2-3$ menos $2x^2+x$ no es lo mismo que restar $x^2-3$ de $2x^2+x$: los resultados son opuestos."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio faltante",
+      "puntos": [
+        {
+          "texto": "Sustraendo faltante = minuendo menos diferencia",
+          "explicacion": "Si $P-Q=D$, entonces $Q=P-D$. Ejemplo: ¿qué polinomio se debe restar a $3x^2+x-5$ para obtener $x^2-2x+1$? $Q=(3x^2+x-5)-(x^2-2x+1)=3x^2+x-5-x^2+2x-1=2x^2+3x-6$. Verificación: $(3x^2+x-5)-(2x^2+3x-6)=x^2-2x+1$. Esto sale de despejar en $P-Q=D$: si se suma $Q$ a ambos lados queda $P=D+Q$, y si se resta $D$ queda $Q=P-D$. El mismo razonamiento da el minuendo faltante: $P=D+Q$."
+        },
+        {
+          "texto": "Lo que falta para pasar de $A$ a $B$ = $B-A$",
+          "explicacion": "El polinomio que se debe sumar a $A$ para obtener $B$ es $B-A$. Ejemplo: para pasar de $A=x^2+1$ a $B=3x^2-x+4$ se necesita $B-A=3x^2-x+4-x^2-1=2x^2-x+3$. Verificación: $A+(B-A)=x^2+1+2x^2-x+3=3x^2-x+4=B$. Es la misma idea de la sustracción como diferencia entre dos polinomios. Si se parte de $B$ y se resta lo obtenido, se regresa a $A$: $B-(B-A)=A$, lo que confirma que $B-A$ es el polinomio buscado."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar constantes",
+      "puntos": [
+        {
+          "texto": "Diferencia conocida ⇒ igualar coeficientes",
+          "explicacion": "Sean $P=ax^2+bx+3$ y $Q=2x^2-x+c$ con $P-Q=x^2+4x-2$. La diferencia es $(a-2)x^2+(b+1)x+(3-c)$. Al igualar coeficientes: $a-2=1$ da $a=3$; $b+1=4$ da $b=3$; $3-c=-2$ da $c=5$. Verificación: $P=3x^2+3x+3$, $Q=2x^2-x+5$ y $P-Q=x^2+4x-2$. Los pasos son: efectuar la resta con las constantes como números, igualar los coeficientes de cada exponente con los del polinomio dado y resolver cada ecuación de primer grado. Se cuida el signo del sustraendo, de ahí que aparezcan $b+1$ y $3-c$ y no $b-1$ ni $c-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 28 al 30: la sustracción se apoya en ellos",
+          "explicacion": "La sustracción usa los términos semejantes y el valor numérico del tema 28, las propiedades del grado del tema 29 y, sobre todo, la adición del tema 30, porque restar es sumar el opuesto. Por ejemplo, el grado de la diferencia se predice con las mismas reglas que el grado de la suma."
+        },
+        {
+          "texto": "Tema 32: la multiplicación usa sumas y restas",
+          "explicacion": "La multiplicación de polinomios genera productos parciales que luego se reducen sumando y restando términos semejantes. Por ejemplo, $(x-2)(x+3)=x^2+3x-2x-6=x^2+x-6$, donde $3x-2x$ es una resta de términos semejantes. Dominar los signos de la sustracción evita errores en esa reducción."
+        }
+      ]
+    }
+  ]
+}

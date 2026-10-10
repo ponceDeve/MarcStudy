@@ -1,0 +1,274 @@
+{
+  "curso": "Álgebra",
+  "tema": "Algoritmo de la división",
+  "glosario": {
+    "polinomio": "Suma finita de monomios con exponentes naturales",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "dividendo": "Polinomio que se divide",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "residuo": "Otro nombre de resto",
+    "división exacta": "División cuyo resto es el polinomio nulo",
+    "división inexacta": "División cuyo resto no es nulo",
+    "algoritmo": "Procedimiento de pasos que termina",
+    "identidad": "Igualdad válida para todo valor de la variable",
+    "polinomio nulo": "Polinomio con todos sus coeficientes cero",
+    "polinomio constante": "Polinomio sin parte literal",
+    "polinomio mónico": "Polinomio con coeficiente principal uno",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "término principal": "Término de mayor grado",
+    "término independiente": "Término sin letras",
+    "polinomio ordenado": "Términos escritos por exponentes decrecientes",
+    "polinomio completo": "Polinomio con todos los exponentes presentes",
+    "dividendo parcial": "Resultado intermedio tras restar un producto",
+    "valor numérico": "Resultado de reemplazar la variable por un número",
+    "unicidad": "Existe una sola solución posible",
+    "factor": "Polinomio que divide exactamente a otro",
+    "divisor lineal": "Divisor de grado uno",
+    "monomio": "Polinomio de un solo término",
+    "número entero": "Número natural, su opuesto o cero",
+    "suma de coeficientes": "Valor del polinomio en uno"
+  },
+  "theory": [
+    {
+      "titulo": "Elementos de la división",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(P)$ = grado del polinomio $P$",
+          "explicacion": "El grado de un polinomio no nulo es el mayor exponente de la variable que tiene coeficiente distinto de cero, y se escribe $\\operatorname{gr}(P)$. Este símbolo se usa a lo largo de todo el tema para comparar polinomios. Por ejemplo, para $P(x)=x^3+2x^2-x+5$ se tiene $\\operatorname{gr}(P)=3$, porque el término de mayor exponente es $x^3$ y su coeficiente es $1\\neq0$. Para $Q(x)=7$, constante no nula, $\\operatorname{gr}(Q)=0$. El polinomio nulo no tiene grado definido."
+        },
+        {
+          "texto": "«Dividendo» = polinomio $D(x)$ que se divide",
+          "explicacion": "El dividendo es el polinomio que se reparte entre el divisor y se representa con $D(x)$. En la identidad del algoritmo aparece como el resultado total que se reconstruye: divisor por cociente más resto. Ejemplo: en la división de $x^3+2x^2-x+5$ entre $x-1$, el dividendo es $D(x)=x^3+2x^2-x+5$. Puede tener cualquier grado, incluso menor que el del divisor, y también puede ser el polinomio nulo."
+        },
+        {
+          "texto": "«Divisor» = polinomio $d(x)$ entre el cual se divide",
+          "explicacion": "El divisor es el polinomio por el que se divide y se escribe con letra minúscula, $d(x)$, para distinguirlo del dividendo. Debe ser distinto del polinomio nulo, pues dividir entre cero no está definido. Ejemplo: al dividir $x^3+2x^2-x+5$ entre $x-1$, el divisor es $d(x)=x-1$, de grado $1$. Su grado y su coeficiente principal determinan el grado del cociente y el máximo grado posible del resto."
+        },
+        {
+          "texto": "«Cociente» = polinomio $q(x)$ resultado de la división",
+          "explicacion": "El cociente $q(x)$ es el polinomio por el que hay que multiplicar al divisor para acercarse al dividendo lo más posible sin pasarse en grado. Se construye término a término, de mayor a menor grado. Ejemplo: en $x^3+2x^2-x+5$ entre $x-1$, el cociente es $q(x)=x^2+3x+2$. Verificación parcial: $(x-1)(x^2+3x+2)=x^3+2x^2-x-2$, que se parece al dividendo salvo por una constante."
+        },
+        {
+          "texto": "«Resto» = polinomio $R(x)$ que sobra al dividir",
+          "explicacion": "El resto $R(x)$ es lo que queda del dividendo cuando ya no se puede seguir restando múltiplos del divisor sin igualar o superar su grado. Es nulo o de grado menor que el del divisor. Ejemplo: en $x^3+2x^2-x+5$ entre $x-1$, el resto es $R(x)=7$. Verificación: $(x-1)(x^2+3x+2)=x^3+2x^2-x-2$, y al sumar $7$ se obtiene $x^3+2x^2-x+5$."
+        },
+        {
+          "texto": "«Residuo» = resto",
+          "explicacion": "Residuo es un nombre alterno de resto, y en los textos aparece indistintamente. Ambos designan al polinomio $R(x)$ de la identidad $D(x)=d(x)q(x)+R(x)$. Por ejemplo, en $x^2+3x+5$ entre $x+1$ el cociente es $x+2$ y el residuo (o resto) es $3$, pues $(x+1)(x+2)=x^2+3x+2$ y $x^2+3x+2+3=x^2+3x+5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Enunciado del algoritmo",
+      "puntos": [
+        {
+          "texto": "Algoritmo: $D(x)=d(x)\\,q(x)+R(x)$",
+          "explicacion": "Dados dos polinomios $D(x)$ y $d(x)$ con $d(x)\\neq0$, el algoritmo de la división asegura que se pueden hallar polinomios $q(x)$ y $R(x)$ que cumplen $D(x)=d(x)q(x)+R(x)$. Es la versión para polinomios de la división de números enteros. Ejemplo: con $D(x)=x^3+2x^2-x+5$ y $d(x)=x-1$, resulta $q(x)=x^2+3x+2$ y $R(x)=7$. Verificación: $(x-1)(x^2+3x+2)=x^3+3x^2+2x-x^2-3x-2=x^3+2x^2-x-2$, y $x^3+2x^2-x-2+7=x^3+2x^2-x+5$."
+        },
+        {
+          "texto": "Condición del resto: $R(x)=0$ o $\\operatorname{gr}(R)<\\operatorname{gr}(d)$",
+          "explicacion": "Para que el cociente y el resto queden bien determinados, el resto debe ser el polinomio nulo o tener grado estrictamente menor que el del divisor. Si no se cumple, aún se puede restar otro múltiplo del divisor, de modo que la división no ha terminado. Ejemplo: al dividir $x^3+2x^2-x+5$ entre $x-1$, el resto debe ser constante, pues $\\operatorname{gr}(d)=1$; y es $R=7$, de grado $0<1$. Un resto como $x+3$ indicaría que falta un paso."
+        },
+        {
+          "texto": "Divisor $d(x)\\neq0$ ✓ en el algoritmo",
+          "explicacion": "El algoritmo exige que el divisor no sea el polinomio nulo. Si $d(x)=0$, la identidad $D(x)=0\\cdot q(x)+R(x)$ obligaría a $R(x)=D(x)$ para cualquier $q(x)$, y el cociente no quedaría determinado; además no existiría la condición de grado sobre el resto. Con un divisor distinto de cero, incluso constante como $d(x)=2$, la división siempre puede efectuarse. Ejemplo: $4x+6$ entre $2$ da cociente $2x+3$ y resto $0$."
+        },
+        {
+          "texto": "Cociente y resto ∈ únicos",
+          "explicacion": "Para cada pareja de polinomios $D(x)$ y $d(x)$, con $d(x)\\neq0$, existe un único cociente $q(x)$ y un único resto $R(x)$ que satisfacen el algoritmo. No hay dos respuestas posibles distintas, y por eso cualquier método de división (clásico, Ruffini o Horner) debe llegar al mismo resultado. Ejemplo: $x^2+3x+5$ entre $x+1$ da siempre $q=x+2$ y $R=3$; probar $q=x+1$ obligaría a $R=x+4$, de grado $1$, que no es menor que $\\operatorname{gr}(d)=1$."
+        },
+        {
+          "texto": "Analogía con enteros: $47=5\\times9+2$",
+          "explicacion": "La división de polinomios imita la de números enteros, donde $N=d\\cdot q+r$ con $0\\leq r<d$. Así, $47=5\\cdot9+2$, con resto $2$ menor que el divisor $5$. En los polinomios la condición «el resto es menor» se reemplaza por «el resto tiene grado menor» que el divisor. Verificación entera: $5\\cdot9=45$ y $45+2=47$. Esta analogía explica por qué se dice que $d$ divide a $D$ cuando el resto es cero."
+        },
+        {
+          "texto": "Identidad ∈ válida para todo valor de $x$",
+          "explicacion": "La igualdad $D(x)=d(x)q(x)+R(x)$ es una identidad: se cumple al sustituir cualquier número real por $x$, no solo para algunos valores. Esto permite evaluar ambos miembros en un número elegido y obtener relaciones entre valores numéricos. Ejemplo con $D=x^2+3x+5$, $d=x+1$, $q=x+2$, $R=3$ y $x=2$: $D(2)=4+6+5=15$, y $d(2)q(2)+R=3\\cdot4+3=15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grados en la división",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{gr}(q)=\\operatorname{gr}(D)-\\operatorname{gr}(d)$",
+          "explicacion": "Si $D\\neq0$ y $\\operatorname{gr}(D)\\geq\\operatorname{gr}(d)$, el cociente tiene grado igual a la diferencia de los grados. Se deduce de la identidad: $\\operatorname{gr}(d\\,q)=\\operatorname{gr}(d)+\\operatorname{gr}(q)$ y, como $R$ tiene menor grado que $d$, el término de mayor grado de $D$ proviene de $d\\,q$; así $\\operatorname{gr}(D)=\\operatorname{gr}(d)+\\operatorname{gr}(q)$. Ejemplo: $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$ tiene $\\operatorname{gr}(q)=4-2=2$, y el cociente es $x^2-2x-1$."
+        },
+        {
+          "texto": "$\\operatorname{gr}(R)\\leq\\operatorname{gr}(d)-1$",
+          "explicacion": "El resto tiene como máximo un grado menos que el divisor, porque debe ser nulo o de grado menor. Así, si el divisor es de grado $2$, el resto es a lo más de grado $1$ (de la forma $ax+b$), y si el divisor es lineal, el resto es una constante. Ejemplo: al dividir entre $x^2-x+1$, el resto de la división de $x^4-3x^3+2x^2+x-5$ es $2x-4$, de grado $1=2-1$. Verificación: $1\\leq2-1$."
+        },
+        {
+          "texto": "$\\operatorname{gr}(D)<\\operatorname{gr}(d)$ ⇒ $q=0$, $R=D$",
+          "explicacion": "Si el dividendo tiene grado menor que el divisor, no se puede restar ningún múltiplo del divisor sin aumentar el grado, por lo que el cociente es cero y el resto es el propio dividendo. Se cumple la identidad con $q=0$: $D=d\\cdot0+D$, y $\\operatorname{gr}(R)=\\operatorname{gr}(D)<\\operatorname{gr}(d)$. Ejemplo: $x+3$ entre $x^2+1$ da $q=0$ y $R=x+3$. Verificación: $(x^2+1)\\cdot0+(x+3)=x+3$."
+        },
+        {
+          "texto": "Divisor lineal ⇒ resto constante",
+          "explicacion": "Cuando el divisor es de grado $1$, como $x-a$ o $ax+b$, el resto debe tener grado menor que $1$, o sea, es un número (posiblemente cero). Este hecho es la base del teorema del resto. Ejemplo: $x^3+2x^2-x+5$ entre $x-1$ da resto $7$. Verificación evaluando el dividendo en $x=1$: $1+2-1+5=7$, igual al resto."
+        },
+        {
+          "texto": "Divisor constante ⇒ resto $0$",
+          "explicacion": "Si el divisor es un número $c\\neq0$, que es un polinomio de grado $0$, el resto sería de grado menor que $0$, o sea, no puede existir un polinomio no nulo con esa propiedad, así que $R=0$ y el cociente es $\\frac{D(x)}{c}$. Ejemplo: $(6x^2+4)\\div2=3x^2+2$. Verificación: $2(3x^2+2)=6x^2+4$ y el resto es $0$."
+        },
+        {
+          "texto": "Dividendo nulo ⇒ $q=0$ y $R=0$",
+          "explicacion": "Si $D(x)=0$ y $d(x)\\neq0$, la identidad $0=d(x)q(x)+R(x)$ se cumple con $q=0$ y $R=0$, que es la única solución por unicidad. Ejemplo: $0$ entre $x+1$ da cociente $0$ y resto $0$. Verificación: $(x+1)\\cdot0+0=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de división",
+      "puntos": [
+        {
+          "texto": "«División exacta» ⇒ $R(x)=0$",
+          "explicacion": "La división es exacta cuando el resto es el polinomio nulo; entonces $D(x)=d(x)q(x)$ y el dividendo es múltiplo del divisor. Ejemplo: $x^2-1$ entre $x-1$. Se obtiene $q=x+1$ y $R=0$. Verificación: $(x-1)(x+1)=x^2-1$. En este caso el dividendo se factoriza como producto de divisor y cociente."
+        },
+        {
+          "texto": "«División inexacta» ⇒ $R(x)\\neq0$",
+          "explicacion": "La división es inexacta si el resto no es nulo; entonces $D(x)=d(x)q(x)+R(x)$ con $R(x)\\neq0$ y $\\operatorname{gr}(R)<\\operatorname{gr}(d)$. Ejemplo: $x^2+3x+5$ entre $x+1$ da $q=x+2$ y $R=3\\neq0$. Verificación: $(x+1)(x+2)=x^2+3x+2$ y $x^2+3x+2+3=x^2+3x+5$. Un resto no nulo indica que $d(x)$ no es factor de $D(x)$."
+        },
+        {
+          "texto": "$R(x)=0$ ⇒ $d(x)$ es factor de $D(x)$",
+          "explicacion": "Cuando el resto es cero, el divisor es un factor del dividendo, y también lo es el cociente. Esto convierte la división en una herramienta de factorización. Ejemplo: $x^3+8$ entre $x+2$ da $q=x^2-2x+4$ y $R=0$, de modo que $x^3+8=(x+2)(x^2-2x+4)$. Verificación: $(x+2)(x^2-2x+4)=x^3-2x^2+4x+2x^2-4x+8=x^3+8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Preparación de polinomios",
+      "puntos": [
+        {
+          "texto": "Ordenar ⇒ exponentes en orden decreciente",
+          "explicacion": "Antes de dividir, el dividendo y el divisor se escriben ordenados con exponentes decrecientes de la variable, de modo que el término principal aparezca primero. Esto es necesario porque cada paso usa el término de mayor grado. Ejemplo: $5-x+3x^2$ se ordena como $3x^2-x+5$. Verificación: contiene los mismos términos $3x^2$, $-x$ y $5$, solo que reordenados."
+        },
+        {
+          "texto": "Completar ⇒ coeficiente $0$ en exponentes faltantes",
+          "explicacion": "Si falta algún exponente intermedio, se escribe con coeficiente cero para mantener alineados los términos semejantes durante las restas. Ejemplo: $x^4-3x+1$ se completa como $x^4+0x^3+0x^2-3x+1$. Verificación: los términos añadidos valen $0$, así que el polinomio no cambia. En un polinomio de grado $n$ completo hay $n+1$ coeficientes."
+        },
+        {
+          "texto": "Ordenar y completar ✓ también el divisor",
+          "explicacion": "El divisor debe prepararse igual que el dividendo: ordenado y, si es necesario, completo. Un divisor como $x^2+1$ se trata como $x^2+0x+1$ al alinear términos durante las restas. Ejemplo: dividir $x^4-1$ (completo: $x^4+0x^3+0x^2+0x-1$) entre $x^2+1$ (completo: $x^2+0x+1$). Verificación: la forma completa del divisor mantiene el coeficiente de $x$ igual a $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo: datos",
+      "puntos": [
+        {
+          "texto": "Datos: $D(x)=x^4-3x^3+2x^2+x-5$ entre $d(x)=x^2-x+1$",
+          "explicacion": "Se desea dividir $D(x)=x^4-3x^3+2x^2+x-5$ entre $d(x)=x^2-x+1$. Ambos están ordenados y completos: $D$ tiene exponentes $4,3,2,1,0$ y $d$ tiene exponentes $2,1,0$. Los grados son $\\operatorname{gr}(D)=4$ y $\\operatorname{gr}(d)=2$, por lo que se espera cociente de grado $4-2=2$ y resto de grado a lo más $1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo: pasos",
+      "puntos": [
+        {
+          "texto": "Estrategia: dividir términos principales",
+          "explicacion": "En cada paso se divide el término de mayor grado del dividendo parcial entre el término de mayor grado del divisor; el resultado es el siguiente término del cociente. Luego se multiplica ese término por todo el divisor y se resta del dividendo parcial. El proceso se repite hasta que el grado del dividendo parcial sea menor que $\\operatorname{gr}(d)=2$."
+        },
+        {
+          "texto": "Paso 1: $x^4\\div x^2=x^2$",
+          "explicacion": "Primer término del cociente: $\\frac{x^4}{x^2}=x^2$. Se multiplica por el divisor: $x^2(x^2-x+1)=x^4-x^3+x^2$. Se resta del dividendo: $(x^4-3x^3+2x^2+x-5)-(x^4-x^3+x^2)=-2x^3+x^2+x-5$. Verificación: $-3x^3-(-x^3)=-2x^3$ y $2x^2-x^2=x^2$. El nuevo dividendo parcial tiene grado $3\\geq2$, así que se continúa."
+        },
+        {
+          "texto": "Paso 2: $-2x^3\\div x^2=-2x$",
+          "explicacion": "Segundo término: $\\frac{-2x^3}{x^2}=-2x$. Producto: $-2x(x^2-x+1)=-2x^3+2x^2-2x$. Resta: $(-2x^3+x^2+x-5)-(-2x^3+2x^2-2x)=-x^2+3x-5$. Verificación: $x^2-2x^2=-x^2$ y $x-(-2x)=3x$. El dividendo parcial es de grado $2\\geq2$, así que se sigue."
+        },
+        {
+          "texto": "Paso 3: $-x^2\\div x^2=-1$",
+          "explicacion": "Tercer término: $\\frac{-x^2}{x^2}=-1$. Producto: $-1(x^2-x+1)=-x^2+x-1$. Resta: $(-x^2+3x-5)-(-x^2+x-1)=2x-4$. Verificación: $3x-x=2x$ y $-5-(-1)=-4$. Ahora el grado es $1<2$, por lo que la división termina."
+        },
+        {
+          "texto": "Resultado: $q(x)=x^2-2x-1$ y $R(x)=2x-4$",
+          "explicacion": "Los términos del cociente se leen de los pasos: $x^2$, $-2x$ y $-1$, de modo que $q(x)=x^2-2x-1$. El último dividendo parcial es el resto: $R(x)=2x-4$, de grado $1$, menor que $\\operatorname{gr}(d)=2$. Se cumple la condición del algoritmo, y por tanto la división está terminada."
+        },
+        {
+          "texto": "Verificación: $d\\,q+R=D$",
+          "explicacion": "Se comprueba la identidad: $(x^2-x+1)(x^2-2x-1)=x^4-2x^3-x^2-x^3+2x^2+x+x^2-2x-1=x^4-3x^3+2x^2-x-1$. Al sumar el resto $2x-4$: $x^4-3x^3+2x^2-x-1+2x-4=x^4-3x^3+2x^2+x-5$, que es el dividendo. La identidad se cumple y el resultado es correcto."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos adicionales",
+      "puntos": [
+        {
+          "texto": "División con polinomio incompleto",
+          "explicacion": "Sea $x^4-1$ entre $x^2+1$. Se completa el dividendo: $x^4+0x^3+0x^2+0x-1$. Paso 1: $\\frac{x^4}{x^2}=x^2$; $x^2(x^2+1)=x^4+x^2$; resta: $-x^2-1$. Paso 2: $\\frac{-x^2}{x^2}=-1$; $-1(x^2+1)=-x^2-1$; resta: $0$. Resultado: $q=x^2-1$ y $R=0$. Verificación: $(x^2+1)(x^2-1)=x^4-1$."
+        },
+        {
+          "texto": "División con divisor de coeficiente principal $\\neq1$",
+          "explicacion": "Sea $6x^3+x^2-5x+2$ entre $2x-1$. Paso 1: $\\frac{6x^3}{2x}=3x^2$; $3x^2(2x-1)=6x^3-3x^2$; resta: $4x^2-5x+2$. Paso 2: $\\frac{4x^2}{2x}=2x$; $2x(2x-1)=4x^2-2x$; resta: $-3x+2$. Paso 3: $\\frac{-3x}{2x}=-\\frac{3}{2}$; $-\\frac{3}{2}(2x-1)=-3x+\\frac{3}{2}$; resta: $\\frac{1}{2}$. Resultado: $q=3x^2+2x-\\frac{3}{2}$ y $R=\\frac{1}{2}$. Verificación: $(2x-1)q=6x^3+x^2-5x+\\frac{3}{2}$, y al sumar $\\frac{1}{2}$ resulta $6x^3+x^2-5x+2$."
+        },
+        {
+          "texto": "Divisor mónico ⇒ cociente con coeficientes enteros",
+          "explicacion": "Si el divisor es mónico (coeficiente principal $1$) y el dividendo tiene coeficientes enteros, cada paso divide entre $1$, de modo que los coeficientes del cociente y del resto resultan enteros. Ejemplo: en $x^4-3x^3+2x^2+x-5$ entre $x^2-x+1$ salen $1,-2,-1$ y $2,-4$. En cambio, entre un divisor como $2x-1$ pueden aparecer fracciones, como $-\\frac{3}{2}$ en el ejemplo anterior."
+        },
+        {
+          "texto": "División por monomio ⇒ término a término",
+          "explicacion": "Cuando el divisor es un monomio, se divide cada término del dividendo entre él y el resto es nulo si todos los exponentes alcanzan. Ejemplo: $(6x^3-9x^2+3x)\\div3x=2x^2-3x+1$. Verificación: $3x\\cdot2x^2=6x^3$, $3x\\cdot(-3x)=-9x^2$ y $3x\\cdot1=3x$. Si algún término no se puede dividir, queda en el resto, como en $(x^3+2x)\\div x^2$, que da $q=x$ y $R=2x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Unicidad del resultado",
+      "puntos": [
+        {
+          "texto": "Demostración: $d\\,(q_1-q_2)=R_2-R_1$",
+          "explicacion": "Supóngase que existen dos parejas, $D=d\\,q_1+R_1=d\\,q_2+R_2$, ambas con resto nulo o de grado menor que $\\operatorname{gr}(d)$. Restando se obtiene $d\\,(q_1-q_2)=R_2-R_1$. Si $q_1\\neq q_2$, el miembro izquierdo tiene grado $\\operatorname{gr}(d)+\\operatorname{gr}(q_1-q_2)\\geq\\operatorname{gr}(d)$, pero el derecho es nulo o de grado menor que $\\operatorname{gr}(d)$. Esa contradicción obliga a $q_1=q_2$, y entonces $R_1=R_2$."
+        },
+        {
+          "texto": "Existencia: cada paso baja el grado",
+          "explicacion": "El procedimiento de división siempre termina porque en cada paso se elimina el término principal del dividendo parcial: el grado del nuevo dividendo parcial es estrictamente menor que el anterior. Como los grados son números naturales, después de una cantidad finita de pasos el grado queda menor que $\\operatorname{gr}(d)$, o el polinomio se anula. En el ejemplo, los grados fueron $4\\to3\\to2\\to1$, tres pasos, hasta quedar $2x-4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del cociente",
+      "puntos": [
+        {
+          "texto": "Multiplicar $D$ y $d$ por $k\\neq0$ ⇒ $q$ igual, $R$ multiplicado por $k$",
+          "explicacion": "Si el dividendo y el divisor se multiplican por un mismo número $k\\neq0$, el cociente no cambia y el resto queda multiplicado por $k$. Se deduce de $kD=(kd)q+kR$, que sigue cumpliendo la condición de grado. Ejemplo: $x^2+3x+5$ entre $x+1$ da $q=x+2$ y $R=3$. Multiplicando por $2$: $2x^2+6x+10$ entre $2x+2$ da $q=x+2$ y $R=6$. Verificación: $(2x+2)(x+2)=2x^2+6x+4$ y $4+6=10$."
+        },
+        {
+          "texto": "Multiplicar solo $D$ por $k$ ⇒ $q$ y $R$ multiplicados por $k$",
+          "explicacion": "Si solo el dividendo se multiplica por $k\\neq0$, tanto el cociente como el resto quedan multiplicados por $k$. Se deduce de $kD=d\\,(kq)+kR$. Ejemplo con $k=3$: $3x^2+9x+15$ entre $x+1$ da $q=3x+6$ y $R=9$. Verificación: $(x+1)(3x+6)=3x^2+9x+6$ y $6+9=15$."
+        },
+        {
+          "texto": "Multiplicar solo $d$ por $k$ ⇒ $q$ dividido entre $k$, $R$ igual",
+          "explicacion": "Si solo el divisor se multiplica por $k\\neq0$, el resto no cambia y el cociente queda dividido entre $k$. Se deduce de $D=(kd)\\cdot\\frac{q}{k}+R$. Ejemplo con $k=2$: $x^2+3x+5$ entre $2x+2$ da $q=\\frac{x}{2}+1$ y $R=3$. Verificación: $(2x+2)\\left(\\frac{x}{2}+1\\right)=x^2+2x+x+2=x^2+3x+2$ y $2+3=5$."
+        },
+        {
+          "texto": "Valor numérico: $D(a)=d(a)\\,q(a)+R(a)$",
+          "explicacion": "Como la identidad vale para todo $x$, al sustituir un número $a$ se relacionan sus valores. Ejemplo con $D=x^2+3x+5$, $d=x+1$, $q=x+2$, $R=3$ y $a=2$: $D(2)=4+6+5=15$, $d(2)=3$, $q(2)=4$ y $R(2)=3$. Se cumple $3\\cdot4+3=15$. Esta relación sirve para verificar una división y para hallar restos sin dividir."
+        },
+        {
+          "texto": "Suma de coeficientes: $D(1)=d(1)\\,q(1)+R(1)$",
+          "explicacion": "La suma de coeficientes de un polinomio es su valor en $x=1$. Al sustituir $a=1$ en la identidad se obtiene una verificación rápida. Ejemplo: $D=x^2+3x+5$ da $D(1)=9$; $d(1)=2$; $q(1)=3$; $R(1)=3$. Se cumple $2\\cdot3+3=9$. En el ejemplo principal, $D(1)=1-3+2+1-5=-4$, $d(1)=1$, $q(1)=-2$ y $R(1)=-2$, con $1\\cdot(-2)+(-2)=-4$."
+        },
+        {
+          "texto": "Término independiente: $D(0)=d(0)\\,q(0)+R(0)$",
+          "explicacion": "El término independiente de un polinomio es su valor en $x=0$, así que la identidad da una verificación con los términos independientes. Ejemplo: $D=x^2+3x+5$ da $D(0)=5$; $d(0)=1$; $q(0)=2$; $R(0)=3$. Se cumple $1\\cdot2+3=5$. En el ejemplo principal: $D(0)=-5$, $d(0)=1$, $q(0)=-1$ y $R(0)=-4$, con $1\\cdot(-1)+(-4)=-5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Algoritmo ⇒ fundamento de los métodos de división",
+          "explicacion": "El método clásico, el método de Ruffini y el método de Horner son formas de calcular el cociente y el resto que garantiza este algoritmo, y cualquiera de ellos entrega el mismo resultado por unicidad. El teorema del resto y el teorema del factor se deducen del caso en que el divisor es lineal. Ejemplo: con divisor $x-1$, el resto $R=D(1)$."
+        },
+        {
+          "texto": "División de polinomios ⊃ algoritmo",
+          "explicacion": "El tema de división de polinomios presenta qué es dividir y sus partes; este tema fija la regla que justifica el resultado: $D=d\\,q+R$ con resto nulo o de menor grado. Usa lo visto en polinomios, grado de expresiones algebraicas, sustracción y multiplicación, porque cada paso resta un producto y la verificación multiplica divisor por cociente."
+        },
+        {
+          "texto": "División exacta ⇒ factorización",
+          "explicacion": "Cuando la división es exacta, el dividendo queda escrito como producto de divisor y cociente, lo que es un paso de factorización. Ejemplo: $x^3+8=(x+2)(x^2-2x+4)$, con $R=0$. Verificación: $(x+2)(x^2-2x+4)=x^3+8$. Este resultado se usa luego al factorizar polinomios y al buscar sus raíces."
+        }
+      ]
+    }
+  ]
+}

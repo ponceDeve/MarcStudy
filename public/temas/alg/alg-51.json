@@ -1,0 +1,255 @@
+{
+  "curso": "Álgebra",
+  "tema": "Funciones reales de variable real",
+  "glosario": {
+    "Función": "Regla que asigna a cada entrada una salida.",
+    "Dominio": "Conjunto de entradas permitidas.",
+    "Rango": "Conjunto de salidas alcanzadas.",
+    "Codominio": "Conjunto de llegada declarado.",
+    "Variable independiente": "Variable cuyo valor se elige libremente.",
+    "Variable dependiente": "Variable cuyo valor depende de otra.",
+    "Imagen": "Salida que corresponde a una entrada.",
+    "Preimagen": "Entrada que produce una salida dada.",
+    "Par ordenado": "Pareja de valores con orden fijo.",
+    "Relación": "Conjunto de pares ordenados.",
+    "Regla de correspondencia": "Fórmula que define la salida.",
+    "Gráfica": "Conjunto de puntos entrada y salida.",
+    "Cero de una función": "Entrada cuya salida es cero.",
+    "Composición": "Aplicar una función al resultado de otra.",
+    "Función constante": "Función con la misma salida siempre.",
+    "Función por tramos": "Función con distinta regla en cada parte.",
+    "Radicando": "Expresión dentro de un radical.",
+    "Intercepto": "Punto donde la gráfica corta un eje."
+  },
+  "theory": [
+    {
+      "titulo": "Idea de función",
+      "puntos": [
+        {
+          "texto": "«Función»: regla que asigna a cada entrada una sola salida",
+          "explicacion": "Una función es una regla que a cada valor permitido de entrada le hace corresponder exactamente un valor de salida. La idea esencial es que no puede haber ambigüedad: dado un valor de entrada, la salida es única. Por ejemplo, la regla «a cada número, asignar su doble» es una función, porque el doble de 3 es 6 y no hay otra posibilidad. En cambio, la regla «a cada número positivo, asignar un número cuyo cuadrado sea él» no es función, porque al 4 le corresponden 2 y $-2$."
+        },
+        {
+          "texto": "Una entrada ⇒ una sola salida; varias entradas, misma salida",
+          "explicacion": "La condición de unicidad se exige a las entradas, no a las salidas. En $f(x)=x^2$ la entrada 3 produce 9 y la entrada $-3$ también produce 9: dos entradas distintas con la misma salida, y es perfectamente una función. Lo que está prohibido es que una misma entrada produzca dos salidas distintas."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición formal",
+      "puntos": [
+        {
+          "texto": "«Función» $f:A\\to B$: cada $x\\in A$ tiene un único $y\\in B$",
+          "explicacion": "Una función $f$ de un conjunto $A$ en un conjunto $B$ es una correspondencia que asigna a cada elemento $x$ de $A$ exactamente un elemento $y$ de $B$, que se llama imagen de $x$ y se escribe $y=f(x)$. Se denota $f:A\\to B$. El conjunto $A$ se llama dominio y el conjunto $B$ se llama codominio, o conjunto de llegada. Los elementos de $B$ que realmente se alcanzan forman el rango."
+        },
+        {
+          "texto": "«Dominio»: conjunto de entradas permitidas",
+          "explicacion": "El dominio de una función es el conjunto de todos los valores de $x$ para los que la función está definida. Se denota $\\operatorname{Dom}(f)$. En $f(x)=\\frac{1}{x-2}$ el dominio es $\\mathbb{R}\\setminus\\{2\\}$, porque en $x=2$ el denominador se anula. El estudio detallado del dominio y del rango corresponde al tema siguiente."
+        },
+        {
+          "texto": "«Rango»: conjunto de salidas alcanzadas",
+          "explicacion": "El rango, también llamado imagen o recorrido de la función, es el conjunto de los valores $f(x)$ que se obtienen cuando $x$ recorre el dominio. Se denota $\\operatorname{Ran}(f)$. En $f(x)=x^2$ con dominio $\\mathbb{R}$, el rango es $[0,+\\infty)$, porque un cuadrado nunca es negativo y todo número no negativo es el cuadrado de alguien."
+        },
+        {
+          "texto": "«Codominio»: conjunto donde se declaran las salidas",
+          "explicacion": "El codominio es el conjunto $B$ declarado como conjunto de llegada y puede ser más grande que el rango. Para $f(x)=x^2$ se puede declarar $f:\\mathbb{R}\\to\\mathbb{R}$; el codominio es $\\mathbb{R}$, pero el rango es $[0,+\\infty)$, de modo que los números negativos pertenecen al codominio sin ser salidas de $f$."
+        }
+      ]
+    },
+    {
+      "titulo": "Función real",
+      "puntos": [
+        {
+          "texto": "«Función real de variable real»: dominio y codominio dentro de $\\mathbb{R}$",
+          "explicacion": "Una función real de variable real es aquella cuyo dominio es un subconjunto de los números reales y cuyas salidas también son números reales. Las entradas son números y las salidas son números, por lo que se pueden representar en un plano cartesiano. Son de este tipo $f(x)=2x+1$, $g(x)=x^2-3x+1$ y $h(x)=\\sqrt{x}$. Este es el tipo de función que estudia todo el curso."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "Notación $y=f(x)$: $x$ variable independiente, $y$ dependiente",
+          "explicacion": "En $y=f(x)$, la letra $x$ representa la entrada y se llama variable independiente, porque se elige libremente dentro del dominio. La letra $y$ representa la salida y se llama variable dependiente, porque su valor depende del que se elija para $x$. La notación $f(x)$ se lee «f de x» y significa el valor que la función $f$ asigna a $x$. No es un producto de $f$ por $x$."
+        },
+        {
+          "texto": "«Imagen» de $a$: el valor $f(a)$",
+          "explicacion": "La imagen de un número $a$ del dominio es el valor $f(a)$, la salida que la función asigna a $a$. Para $f(x)=x^2-3x+1$: la imagen de 2 es $f(2)=4-6+1=-1$, y la imagen de $-1$ es $f(-1)=1+3+1=5$. La imagen de 0 es $f(0)=1$."
+        },
+        {
+          "texto": "«Preimagen» de $b$: entradas cuya imagen es $b$",
+          "explicacion": "Una preimagen de $b$ es una entrada $x$ del dominio tal que $f(x)=b$. Puede haber una, varias o ninguna. Para $f(x)=x^2$: las preimágenes de 9 son 3 y $-3$; la preimagen de 0 es solo 0; y 5 no tiene preimagen negativa porque $x^2=-5$ no tiene solución real. Para hallar preimágenes se resuelve la ecuación $f(x)=b$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pares ordenados",
+      "puntos": [
+        {
+          "texto": "Función como conjunto de pares $(x,y)$",
+          "explicacion": "Una función de dominio finito se puede dar como un conjunto de pares ordenados $(x,y)$, donde $y=f(x)$. El conjunto $f=\\{(1,2),(2,3),(3,2)\\}$ describe una función con dominio $\\{1,2,3\\}$ y rango $\\{2,3\\}$. La gráfica de una función cualquiera es el conjunto $\\{(x,f(x)):x\\in\\operatorname{Dom}(f)\\}$ de todos esos pares."
+        },
+        {
+          "texto": "Condición de función: sin dos pares con igual primera componente",
+          "explicacion": "Un conjunto de pares ordenados es una función si no contiene dos pares distintos con la misma primera componente. El conjunto $\\{(1,2),(2,3),(3,2)\\}$ es función: aunque 1 y 3 comparten la segunda componente 2, las primeras son distintas. El conjunto $\\{(1,2),(1,3),(2,4)\\}$ no es función, porque la entrada 1 tiene dos salidas, 2 y 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de correspondencia",
+      "puntos": [
+        {
+          "texto": "«Regla de correspondencia»: fórmula que define $f(x)$",
+          "explicacion": "La regla de correspondencia es la expresión algebraica que indica qué hacer con $x$ para obtener $f(x)$. En $f(x)=x^2-3x+1$ la regla es: elevar al cuadrado, restar el triple de $x$ y sumar 1. Si no se indica el dominio, se entiende que es el mayor conjunto de números reales donde la fórmula tiene sentido."
+        },
+        {
+          "texto": "Evaluar $f(a+1)$: reemplazar $x$ por la expresión",
+          "explicacion": "Para evaluar una función en una expresión, se reemplaza cada $x$ de la regla por la expresión entera entre paréntesis. Con $f(x)=x^2-3x+1$: $f(a+1)=(a+1)^2-3(a+1)+1=a^2+2a+1-3a-3+1=a^2-a-1$. Verificación con $a=1$: $f(2)=-1$ y $1-1-1=-1$. Es un error frecuente escribir $f(a+1)=f(a)+1$: la función no se distribuye. Con la misma función, $f(a)+1=a^2-3a+2$, que es distinto de $a^2-a-1$. El reemplazo debe hacerse en cada aparición de $x$, incluidos los exponentes y los coeficientes."
+        },
+        {
+          "texto": "Evaluar en valores donde la regla no tiene sentido",
+          "explicacion": "Si al reemplazar la entrada aparece una operación indefinida, ese valor no pertenece al dominio. Con $f(x)=\\frac{x+1}{x-2}$: $f(0)=\\frac{1}{-2}=-\\frac{1}{2}$ y $f(3)=\\frac{4}{1}=4$, pero $f(2)$ no está definida, porque el denominador es 0. Antes de evaluar conviene comprobar que el valor está en el dominio."
+        },
+        {
+          "texto": "Hallar $f(x)$ a partir de $f(x+1)$",
+          "explicacion": "Sea $f(x+1)=2x+3$. Se introduce $u=x+1$, de modo que $x=u-1$, y entonces $f(u)=2(u-1)+3=2u+1$. Por tanto $f(x)=2x+1$. Verificación: $f(x+1)=2(x+1)+1=2x+3$, y en $x=1$ se tiene $f(2)=5$ y $2(1)+3=5$. Esta técnica se llama cambio de variable: se renombra la expresión interna, se despeja $x$ en función de la nueva letra y se reemplaza en la regla dada. Al final se vuelve a llamar $x$ a la variable. También se puede usar $f(x)=f((x-1)+1)$ y reemplazar $x$ por $x-1$ en la regla."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación y función",
+      "puntos": [
+        {
+          "texto": "«Relación»: conjunto de pares sin condición de unicidad",
+          "explicacion": "Una relación entre dos conjuntos es cualquier conjunto de pares ordenados. Una función es una relación especial en la que cada entrada aparece en un solo par. La relación $x^2+y^2=1$ no es función, porque con $x=0$ resultan $y=1$ y $y=-1$. Toda función es una relación, pero no toda relación es una función."
+        },
+        {
+          "texto": "$y=x^2$ es función; $x=y^2$ no lo es",
+          "explicacion": "En $y=x^2$ cada $x$ da un solo valor de $y$, de modo que es función de $x$. En $x=y^2$, al despejar $y=\\pm\\sqrt{x}$, cada $x>0$ da dos valores de $y$: con $x=4$ resultan $y=2$ y $y=-2$. Por eso $y$ no es función de $x$ en esa relación, aunque la misma igualdad sí expresa a $x$ como función de $y$, con regla $x=y^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Prueba de la vertical",
+      "puntos": [
+        {
+          "texto": "Prueba de la recta vertical: ninguna vertical corta dos veces",
+          "explicacion": "Una curva en el plano es la gráfica de una función de $x$ si y solo si ninguna recta vertical la corta en más de un punto. Una recta vertical $x=a$ representa una entrada fija; si cortara en dos puntos, esa entrada tendría dos salidas. La parábola $y=x^2$ pasa la prueba. La circunferencia $x^2+y^2=1$ no la pasa, porque la recta $x=0$ la corta en $(0,1)$ y $(0,-1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Formas de representación",
+      "puntos": [
+        {
+          "texto": "Cuatro formas de dar una función",
+          "explicacion": "Una función se puede dar mediante una fórmula, como $f(x)=2x+1$; una tabla de valores, como $x:1,2,3$ con $y:3,5,7$; una gráfica en el plano cartesiano; o un diagrama de flechas que une cada entrada con su salida. Cada forma tiene ventajas: la fórmula permite calcular cualquier valor, la tabla muestra casos concretos y la gráfica muestra el comportamiento global. Las representaciones tabular y gráfica se estudian en los temas siguientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de funciones",
+      "puntos": [
+        {
+          "texto": "Funciones iguales: mismo dominio y misma regla",
+          "explicacion": "Dos funciones son iguales cuando tienen el mismo dominio y asignan la misma salida a cada entrada. Las funciones $f(x)=x$ y $g(x)=\\frac{x^2}{x}$ no son iguales: $f$ está definida en todo $\\mathbb{R}$, mientras que $g$ no lo está en 0, y por eso sus dominios difieren aunque, donde ambas existen, $g(x)=x$. Igualdad de funciones exige comparar dominios antes de simplificar."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de funciones",
+      "puntos": [
+        {
+          "texto": "«Función constante»: $f(x)=c$",
+          "explicacion": "Una función constante asigna la misma salida a toda entrada. Para $f(x)=5$ se tiene $f(-3)=5$, $f(0)=5$ y $f(10)=5$. Su dominio es $\\mathbb{R}$ y su rango es el conjunto $\\{5\\}$, con un solo elemento. Su gráfica es una recta horizontal."
+        },
+        {
+          "texto": "«Función identidad»: $f(x)=x$",
+          "explicacion": "La función identidad asigna a cada número ese mismo número: $f(2)=2$, $f(-7)=-7$. Su dominio y su rango son $\\mathbb{R}$, y su gráfica es la recta que pasa por el origen con pendiente 1, es decir, la diagonal del primer y tercer cuadrante."
+        },
+        {
+          "texto": "«Función polinómica»: regla dada por un polinomio",
+          "explicacion": "Una función polinómica tiene como regla de correspondencia un polinomio, como $f(x)=2x^3-5x^2+4x-7$. Su dominio es todo $\\mathbb{R}$, porque un polinomio se puede evaluar en cualquier número real. Las funciones lineal y cuadrática son casos particulares, de grados 1 y 2."
+        },
+        {
+          "texto": "«Función racional»: cociente de polinomios",
+          "explicacion": "Una función racional tiene la forma $f(x)=\\frac{P(x)}{Q(x)}$ con $P$ y $Q$ polinomios y $Q$ no nulo. Su dominio excluye los valores que anulan al denominador. En $f(x)=\\frac{x+1}{x^2-4}$ el denominador se anula en $x=2$ y $x=-2$, y el dominio es $\\mathbb{R}\\setminus\\{-2,2\\}$."
+        },
+        {
+          "texto": "«Función irracional»: variable bajo radical",
+          "explicacion": "Una función irracional contiene la variable dentro de un radical, como $f(x)=\\sqrt{x-1}$. Si el índice es par, el radicando debe ser no negativo, y esto limita el dominio: $x-1\\geq0$ da $x\\geq1$, y el dominio es $[1,+\\infty)$. Si el índice es impar, como en $\\sqrt[3]{x}$, el dominio es todo $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Función por tramos",
+      "puntos": [
+        {
+          "texto": "«Función por tramos»: regla distinta en cada parte del dominio",
+          "explicacion": "Una función definida por tramos usa reglas diferentes según el valor de $x$. Sea $f(x)=x+1$ si $x<0$ y $f(x)=x^2$ si $x\\geq0$. Para evaluar se elige la regla que corresponde: $f(-2)=-2+1=-1$; $f(0)=0^2=0$; $f(3)=9$. Los tramos no deben solaparse, para que cada entrada tenga una sola salida."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros e intercepto",
+      "puntos": [
+        {
+          "texto": "«Cero» de una función: valor $x$ con $f(x)=0$",
+          "explicacion": "Un cero de $f$ es un valor de $x$ del dominio donde la salida es cero, y corresponde a un punto donde la gráfica toca el eje horizontal. Para $f(x)=x^2-3x+2$ se resuelve $x^2-3x+2=0$, que da $(x-1)(x-2)=0$, con ceros $x=1$ y $x=2$. Verificación: $f(1)=1-3+2=0$ y $f(2)=4-6+2=0$."
+        },
+        {
+          "texto": "Intercepto con el eje vertical: el punto $(0,f(0))$",
+          "explicacion": "La gráfica corta al eje vertical en el punto $(0,f(0))$, siempre que 0 esté en el dominio, y solo puede hacerlo una vez, porque la entrada 0 tiene una sola salida. Para $f(x)=x^2-3x+2$ es $f(0)=2$, y el punto es $(0,2)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones entre funciones",
+      "puntos": [
+        {
+          "texto": "Suma, resta y producto: operar las reglas",
+          "explicacion": "Con $f(x)=2x+1$ y $g(x)=x^2$ se definen $(f+g)(x)=f(x)+g(x)=x^2+2x+1$, $(f-g)(x)=-x^2+2x+1$ y $(f\\cdot g)(x)=2x^3+x^2$. El dominio de cada una es la intersección de los dominios de $f$ y $g$. Verificación en $x=1$: $f(1)=3$ y $g(1)=1$, de modo que $(f+g)(1)=4$ y $(f\\cdot g)(1)=3$, valores que coinciden con $1+2+1=4$ y $2+1=3$."
+        },
+        {
+          "texto": "Cociente de funciones: excluir los ceros del divisor",
+          "explicacion": "El cociente $\\left(\\frac{f}{g}\\right)(x)=\\frac{f(x)}{g(x)}$ está definido donde ambas funciones lo están y además $g(x)\\neq0$. Con $f(x)=2x+1$ y $g(x)=x^2$: $\\left(\\frac{f}{g}\\right)(x)=\\frac{2x+1}{x^2}$, con dominio $\\mathbb{R}\\setminus\\{0\\}$. Los ceros del divisor se hallan resolviendo $g(x)=0$: aquí $x^2=0$ da $x=0$. Aunque el numerador $2x+1$ esté definido en todo $\\mathbb{R}$, el cociente no puede evaluarse en 0, por lo que ese valor se excluye del dominio."
+        }
+      ]
+    },
+    {
+      "titulo": "Composición",
+      "puntos": [
+        {
+          "texto": "«Composición» $(f\\circ g)(x)=f(g(x))$",
+          "explicacion": "Componer es aplicar primero $g$ y luego $f$ al resultado. Con $f(x)=2x+1$ y $g(x)=x^2$: $(f\\circ g)(x)=f(x^2)=2x^2+1$. La composición está definida para los $x$ del dominio de $g$ cuya imagen $g(x)$ pertenece al dominio de $f$. Verificación en $x=1$: $g(1)=1$ y $f(1)=3$, y $2(1)+1=3$."
+        },
+        {
+          "texto": "La composición no es conmutativa",
+          "explicacion": "En general $f\\circ g$ y $g\\circ f$ son distintas. Con $f(x)=2x+1$ y $g(x)=x^2$: $(f\\circ g)(x)=2x^2+1$ y $(g\\circ f)(x)=(2x+1)^2=4x^2+4x+1$. En $x=1$: la primera vale 3 y la segunda vale 9, así que difieren. Esto contrasta con la suma y el producto de funciones, que sí son conmutativos. Otro ejemplo: con $f(x)=x+1$ y $g(x)=x^2$, $(f\\circ g)(x)=x^2+1$ y $(g\\circ f)(x)=(x+1)^2=x^2+2x+1$, que también son distintas. El orden en que se aplican las funciones cambia el resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar constantes",
+      "puntos": [
+        {
+          "texto": "Función lineal por dos valores conocidos",
+          "explicacion": "Sea $f(x)=ax+b$ con $f(1)=5$ y $f(2)=8$. Se plantea $a+b=5$ y $2a+b=8$. Restando la primera de la segunda: $a=3$. Entonces $b=2$. La función es $f(x)=3x+2$. Verificación: $f(1)=3+2=5$ y $f(2)=6+2=8$. El método es plantear una ecuación por cada valor conocido, con $a$ y $b$ como incógnitas, y resolver el sistema de dos ecuaciones. Con $f(1)=5$ y $f(2)=8$, la diferencia de salidas, $8-5=3$, dividida entre la diferencia de entradas, $2-1=1$, da directamente $a=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 52 al 54: dominio, tabla y gráfica",
+          "explicacion": "Este tema fija la idea de función. El tema 52 estudia con detalle cómo hallar dominio y rango, el tema 53 la representación en tablas y el tema 54 la representación gráfica en el plano cartesiano. Todo lo definido aquí, como imagen, preimagen, ceros e intercepto, se usa en esos temas. Por ejemplo, para graficar una función se calcula una tabla de valores evaluando la regla en varias entradas."
+        },
+        {
+          "texto": "Temas 55 en adelante: funciones particulares",
+          "explicacion": "A partir del tema 55 se estudian funciones particulares: lineal, cuadrática, raíz cuadrada, valor absoluto, exponencial y logarítmica. Todas son casos de la definición vista aquí, y comparten las ideas de dominio, rango, imagen y ceros. Por ejemplo, la función lineal $f(x)=ax+b$ es una función polinómica de grado 1, y la función raíz cuadrada $f(x)=\\sqrt{x}$ es un caso de función irracional con dominio $[0,+\\infty)$."
+        }
+      ]
+    }
+  ]
+}

@@ -15,7 +15,7 @@ import {
 } from "../../lib/inglesProgreso";
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
-import GlossaryText from "./Glossarytext";
+import GlossaryText from "./GlossaryText";
 import TopBar from "./TopBar";
 import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";

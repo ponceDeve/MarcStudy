@@ -1,0 +1,200 @@
+{
+  "curso": "Álgebra",
+  "tema": "Representación gráfica de una función",
+  "glosario": {
+    "Plano cartesiano": "Plano con dos ejes perpendiculares.",
+    "Abscisa": "Coordenada horizontal de un punto.",
+    "Ordenada": "Coordenada vertical de un punto.",
+    "Origen": "Punto donde se cortan los ejes.",
+    "Cuadrante": "Cada una de las cuatro regiones del plano.",
+    "Gráfica": "Conjunto de puntos entrada y salida.",
+    "Intercepto": "Punto donde la gráfica corta un eje.",
+    "Cero de una función": "Entrada cuya salida es cero.",
+    "Vértice": "Punto extremo de una parábola.",
+    "Traslación": "Desplazamiento sin cambiar la forma.",
+    "Reflexión": "Imagen especular respecto de un eje.",
+    "Simetría": "Correspondencia de la gráfica consigo misma.",
+    "Función par": "Función simétrica respecto del eje vertical.",
+    "Función impar": "Función simétrica respecto del origen.",
+    "Parábola": "Curva gráfica de una función cuadrática.",
+    "Punto abierto": "Punto de la gráfica que no se incluye."
+  },
+  "theory": [
+    {
+      "titulo": "Plano cartesiano",
+      "puntos": [
+        {
+          "texto": "«Plano cartesiano»: dos ejes perpendiculares que se cortan en el origen",
+          "explicacion": "El plano cartesiano está formado por dos rectas numéricas perpendiculares: el eje horizontal, llamado eje de las abscisas o eje $x$, y el eje vertical, llamado eje de las ordenadas o eje $y$. Se cortan en el origen, el punto $(0,0)$. Cada punto del plano se identifica con un par ordenado $(a,b)$, donde $a$ es la distancia horizontal con signo al origen y $b$ es la distancia vertical con signo."
+        },
+        {
+          "texto": "Cuatro cuadrantes según los signos de las coordenadas",
+          "explicacion": "Los ejes dividen al plano en cuatro cuadrantes. En el primero ambas coordenadas son positivas: $(+,+)$. En el segundo, $x$ es negativa e $y$ positiva: $(-,+)$. En el tercero ambas son negativas: $(-,-)$. En el cuarto, $x$ es positiva e $y$ negativa: $(+,-)$. Ejemplos: $(-3,2)$ está en el segundo cuadrante y $(4,-1)$ en el cuarto. Un punto como $(0,5)$ está sobre el eje $y$ y no pertenece a ningún cuadrante."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica de función",
+      "puntos": [
+        {
+          "texto": "«Gráfica» de $f$: puntos $(x,f(x))$ con $x$ en el dominio",
+          "explicacion": "La gráfica de una función $f$ es el conjunto de todos los puntos del plano de la forma $(x,f(x))$, donde $x$ recorre el dominio. La abscisa de cada punto es una entrada y su ordenada es la salida correspondiente. Un punto $(a,b)$ está en la gráfica si y solo si $f(a)=b$. Para $f(x)=2x-1$, el punto $(3,5)$ está en la gráfica porque $f(3)=5$, pero $(3,4)$ no lo está."
+        },
+        {
+          "texto": "Prueba de la recta vertical",
+          "explicacion": "Una curva es la gráfica de una función de $x$ si ninguna recta vertical la corta en más de un punto, porque cada entrada tiene una sola salida. La parábola $y=x^2$ cumple la prueba; la circunferencia $x^2+y^2=1$ no la cumple, pues la recta $x=0$ la corta en $(0,1)$ y en $(0,-1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Trazar una gráfica",
+      "puntos": [
+        {
+          "texto": "Trazar por puntos: tabla, puntos y unión",
+          "explicacion": "El método básico para graficar consiste en construir una tabla de valores, ubicar los puntos en el plano y unirlos con una línea continua si la función está definida en un intervalo. Para $f(x)=x^2-2x$ la tabla $x:-1,0,1,2,3$ con $y:3,0,-1,0,3$ da los puntos $(-1,3)$, $(0,0)$, $(1,-1)$, $(2,0)$ y $(3,3)$. Al unirlos se obtiene una parábola cuyo punto más bajo es $(1,-1)$."
+        },
+        {
+          "texto": "Incluir intercepto, ceros y puntos especiales",
+          "explicacion": "Una gráfica es más fiel si la tabla incluye los puntos clave: el intercepto con el eje $y$, que es $(0,f(0))$; los ceros, donde la curva corta al eje $x$; y los extremos del dominio. Para $f(x)=x^2-3x+2$: el intercepto es $(0,2)$ y los ceros son $x=1$ y $x=2$, que se obtienen de $(x-1)(x-2)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Leer una gráfica",
+      "puntos": [
+        {
+          "texto": "Evaluar $f(a)$ en la gráfica: subir desde $x=a$",
+          "explicacion": "Para hallar $f(a)$ se ubica $a$ en el eje horizontal, se sube o baja hasta la curva y se lee la ordenada del punto. Si la gráfica pasa por $(2,-1)$, entonces $f(2)=-1$. Si la vertical $x=a$ no corta la gráfica, $a$ no pertenece al dominio."
+        },
+        {
+          "texto": "Resolver $f(x)=b$: horizontal en la gráfica",
+          "explicacion": "Para hallar las entradas con salida $b$ se traza la recta horizontal $y=b$ y se leen las abscisas de sus cortes con la curva. En la parábola $y=x^2$, la recta $y=4$ la corta en $(-2,4)$ y $(2,4)$, y las soluciones de $x^2=4$ son $x=-2$ y $x=2$. Si la horizontal no corta la gráfica, $b$ no está en el rango."
+        },
+        {
+          "texto": "Dominio y rango en la gráfica: proyecciones",
+          "explicacion": "El dominio se lee proyectando la curva sobre el eje horizontal, y el rango se lee proyectando la curva sobre el eje vertical. Para $y=\\sqrt{x}$ la curva solo existe a la derecha del origen, así que el dominio es $[0,+\\infty)$, y nunca baja de 0, así que el rango es $[0,+\\infty)$. Un punto cerrado indica que ese valor se incluye y un punto abierto indica que no."
+        },
+        {
+          "texto": "Ceros e intercepto en la gráfica",
+          "explicacion": "Los ceros de la función son las abscisas de los puntos donde la curva corta al eje horizontal. El intercepto con el eje vertical es la ordenada del punto donde la curva corta a ese eje, que es $f(0)$. Para $f(x)=x^2-3x+2$ la curva corta al eje horizontal en $x=1$ y $x=2$ y al eje vertical en $y=2$. Una función puede tener varios ceros, pero a lo sumo un intercepto con el eje vertical."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de la función",
+      "puntos": [
+        {
+          "texto": "$f(x)>0$ donde la curva está sobre el eje horizontal",
+          "explicacion": "La función es positiva en los valores de $x$ donde su gráfica está por encima del eje horizontal, y negativa donde está por debajo. Para $f(x)=x^2-3x+2$ la curva está por encima en $x<1$ y en $x>2$, y por debajo entre 1 y 2. Verificación: $f(0)=2>0$, $f(1.5)=2.25-4.5+2=-0.25<0$ y $f(3)=2>0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones básicas",
+      "puntos": [
+        {
+          "texto": "Gráfica de la función constante: recta horizontal",
+          "explicacion": "La gráfica de $f(x)=c$ es una recta horizontal que pasa por $(0,c)$, porque todas las salidas valen $c$. Con $f(x)=3$ pasa por $(-2,3)$, $(0,3)$ y $(5,3)$. Su rango es $\\{3\\}$. No sube ni baja, y por eso su cambio entre salidas es siempre cero. Es la única función cuya gráfica es horizontal. Su intercepto con el eje vertical es $(0,3)$ y no tiene ceros, porque $f(x)=3$ nunca vale 0."
+        },
+        {
+          "texto": "Gráfica de la función identidad: diagonal",
+          "explicacion": "La gráfica de $f(x)=x$ es la recta que pasa por el origen y por los puntos $(1,1)$, $(2,2)$ y $(-3,-3)$, con igual ordenada que abscisa. Divide a los cuadrantes primero y tercero en dos partes iguales. Cada punto de la recta tiene las dos coordenadas iguales, y por eso es la gráfica de $f(x)=x$. Su único cero es $x=0$, y su intercepto con el eje vertical es $(0,0)$. Sube de izquierda a derecha, y esa inclinación corresponde a pendiente 1."
+        },
+        {
+          "texto": "Gráfica de $f(x)=x^2$: parábola con vértice en el origen",
+          "explicacion": "La gráfica de $f(x)=x^2$ es una parábola que abre hacia arriba, con vértice en $(0,0)$, y pasa por $(1,1)$, $(-1,1)$, $(2,4)$ y $(-2,4)$. Es simétrica respecto del eje vertical, porque $f(-x)=f(x)$. Su rango es $[0,+\\infty)$. Es la gráfica de partida para las parábolas más generales, que se obtienen con traslaciones, reflexiones y estiramientos. El punto más bajo, el vértice, es el único cero de la función, porque $x^2=0$ solo se cumple en $x=0$."
+        },
+        {
+          "texto": "Gráfica de $f(x)=x^3$: curva con simetría central",
+          "explicacion": "La gráfica de $f(x)=x^3$ pasa por $(-2,-8)$, $(-1,-1)$, $(0,0)$, $(1,1)$ y $(2,8)$. Sube de izquierda a derecha, y es simétrica respecto del origen, porque $f(-x)=-f(x)$. Su dominio y su rango son $\\mathbb{R}$. A diferencia de la parábola, esta curva no tiene un punto más bajo ni uno más alto: baja sin límite hacia la izquierda y sube sin límite hacia la derecha. En el origen se aplana un momento y luego sigue subiendo. Su único cero es $x=0$."
+        },
+        {
+          "texto": "Gráfica de $f(x)=\\sqrt{x}$: media parábola horizontal",
+          "explicacion": "La gráfica de $f(x)=\\sqrt{x}$ parte del origen y pasa por $(1,1)$, $(4,2)$ y $(9,3)$. Solo existe para $x\\geq0$ y crece cada vez más despacio. Su dominio y su rango son $[0,+\\infty)$. La curva es la mitad superior de la parábola $x=y^2$, es decir, la parte donde $y\\geq0$. Es la reflexión de la rama derecha de $y=x^2$ respecto de la recta $y=x$. Su único cero es $x=0$, y su intercepto es el origen."
+        },
+        {
+          "texto": "Gráfica de $f(x)=\\frac{1}{x}$: dos ramas sin cortar los ejes",
+          "explicacion": "La gráfica de $f(x)=\\frac{1}{x}$ tiene dos ramas: una en el primer cuadrante, con puntos como $(1,1)$ y $(2,\\frac{1}{2})$, y otra en el tercero, con puntos como $(-1,-1)$ y $(-2,-\\frac{1}{2})$. No corta al eje vertical, porque $x=0$ no está en el dominio, ni al horizontal, porque $\\frac{1}{x}$ nunca es cero. La curva se acerca a los ejes sin tocarlos."
+        }
+      ]
+    },
+    {
+      "titulo": "Función por tramos",
+      "puntos": [
+        {
+          "texto": "Gráfica por tramos: puntos abiertos y cerrados",
+          "explicacion": "Cada tramo se grafica en su parte del dominio, y en los valores frontera se usa un punto cerrado donde el valor se incluye y un punto abierto donde no. Sea $f(x)=x+1$ si $x<0$ y $f(x)=x^2$ si $x\\geq0$. El primer tramo es una recta que llega a $(0,1)$ con punto abierto, porque $x<0$ excluye al 0. El segundo tramo es una parábola que parte de $(0,0)$ con punto cerrado. La gráfica da un salto en $x=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Traslaciones",
+      "puntos": [
+        {
+          "texto": "Traslación vertical: $f(x)+k$",
+          "explicacion": "Sumar una constante $k$ a la regla desplaza la gráfica $k$ unidades hacia arriba si $k>0$ y $|k|$ unidades hacia abajo si $k<0$. La gráfica de $g(x)=x^2+2$ es la de $y=x^2$ subida 2 unidades: su vértice pasa de $(0,0)$ a $(0,2)$, y se cumple $g(0)=2$."
+        },
+        {
+          "texto": "Traslación horizontal: $f(x-h)$",
+          "explicacion": "Reemplazar $x$ por $x-h$ desplaza la gráfica $h$ unidades hacia la derecha si $h>0$ y $|h|$ unidades hacia la izquierda si $h<0$. La gráfica de $h(x)=(x-3)^2$ es la de $y=x^2$ movida 3 unidades a la derecha: su vértice es $(3,0)$, y se cumple $h(3)=0$. La gráfica de $(x+1)^2$ se mueve 1 unidad a la izquierda, con vértice $(-1,0)$."
+        },
+        {
+          "texto": "Traslación combinada: $f(x-h)+k$",
+          "explicacion": "Las dos traslaciones se combinan: $g(x)=(x-2)^2+1$ es la parábola $y=x^2$ movida 2 unidades a la derecha y 1 hacia arriba, con vértice $(2,1)$. Cada punto $(a,b)$ de la original pasa a $(a+2,b+1)$: el punto $(1,1)$ pasa a $(3,2)$, y se verifica $g(3)=1+1=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reflexiones y estiramientos",
+      "puntos": [
+        {
+          "texto": "Reflexión respecto del eje horizontal: $-f(x)$",
+          "explicacion": "Cambiar el signo de la salida refleja la gráfica respecto del eje horizontal: cada punto $(a,b)$ pasa a $(a,-b)$. La gráfica de $g(x)=-x^2$ es la parábola $y=x^2$ vuelta hacia abajo: el punto $(1,1)$ pasa a $(1,-1)$, y su rango es $(-\\infty,0]$."
+        },
+        {
+          "texto": "Reflexión respecto del eje vertical: $f(-x)$",
+          "explicacion": "Cambiar $x$ por $-x$ refleja la gráfica respecto del eje vertical: cada punto $(a,b)$ pasa a $(-a,b)$. La gráfica de $g(x)=\\sqrt{-x}$ es la de $\\sqrt{x}$ reflejada: el punto $(4,2)$ pasa a $(-4,2)$, y su dominio es $(-\\infty,0]$. Verificación: $g(-4)=\\sqrt{4}=2$."
+        },
+        {
+          "texto": "Estiramiento vertical: $a\\cdot f(x)$",
+          "explicacion": "Multiplicar la salida por una constante $a>0$ estira la gráfica verticalmente si $a>1$ y la comprime si $0<a<1$. La gráfica de $g(x)=2x^2$ es más angosta que la de $y=x^2$: en $x=1$ vale 2 en lugar de 1. La gráfica de $\\frac{1}{2}x^2$ es más ancha: en $x=2$ vale 2 en lugar de 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Simetrías",
+      "puntos": [
+        {
+          "texto": "Función par: $f(-x)=f(x)$, simétrica respecto del eje vertical",
+          "explicacion": "Una función es par si al cambiar $x$ por $-x$ la salida no cambia, y su gráfica es simétrica respecto del eje vertical. La función $f(x)=x^2$ es par: $f(-2)=4=f(2)$. Su gráfica a la izquierda del eje es el reflejo de la gráfica a la derecha."
+        },
+        {
+          "texto": "Función impar: $f(-x)=-f(x)$, simétrica respecto del origen",
+          "explicacion": "Una función es impar si al cambiar $x$ por $-x$ la salida cambia de signo, y su gráfica es simétrica respecto del origen. La función $f(x)=x^3$ es impar: $f(-2)=-8=-f(2)$. Si $(a,b)$ está en la gráfica, también lo está $(-a,-b)$. El tema 59 estudia ambas con detalle."
+        }
+      ]
+    },
+    {
+      "titulo": "Intersección de gráficas",
+      "puntos": [
+        {
+          "texto": "Cortes de dos gráficas: resolver $f(x)=g(x)$",
+          "explicacion": "Las abscisas de los puntos donde se cortan las gráficas de $f$ y $g$ son las soluciones de $f(x)=g(x)$, y las ordenadas son el valor común. Para $f(x)=x$ y $g(x)=x^2$: $x=x^2$ da $x(x-1)=0$, con $x=0$ y $x=1$. Los puntos de corte son $(0,0)$ y $(1,1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 51 al 53: base de la gráfica",
+          "explicacion": "La gráfica reúne las ideas de función, dominio y rango y la tabla de valores de los temas 51 al 53: cada par de la tabla es un punto, y el dominio y el rango se leen como proyecciones."
+        },
+        {
+          "texto": "Temas 55 al 65: análisis con gráficas",
+          "explicacion": "Los temas siguientes aplican la lectura de gráficas a funciones concretas, a la paridad, a la monotonía, a la inyectividad y a las funciones inversas. En todos ellos se usa la gráfica para reconocer propiedades antes de demostrarlas."
+        }
+      ]
+    }
+  ]
+}

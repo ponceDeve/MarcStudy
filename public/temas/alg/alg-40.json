@@ -1,0 +1,219 @@
+{
+  "curso": "Álgebra",
+  "tema": "Teorema del factor",
+  "glosario": {
+    "teorema del factor": "Resto nulo indica que el divisor es factor",
+    "teorema del resto": "Relaciona el resto con el valor numérico",
+    "factor": "Polinomio que divide exactamente a otro",
+    "factorizar": "Escribir como producto de factores",
+    "raíz de un polinomio": "Valor que anula al polinomio",
+    "cero de un polinomio": "Otro nombre de raíz de un polinomio",
+    "valor numérico": "Resultado de reemplazar la variable por un número",
+    "divisible": "Que se divide con resto nulo",
+    "división exacta": "División cuyo resto es nulo",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "término independiente": "Término sin letras",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "polinomio mónico": "Polinomio con coeficiente principal uno",
+    "número racional": "Número que es cociente de dos enteros",
+    "fracción irreducible": "Fracción sin factores comunes",
+    "divisor de un entero": "Entero que divide exactamente a otro",
+    "multiplicidad": "Veces que un factor se repite",
+    "raíz simple": "Raíz de multiplicidad uno",
+    "raíz doble": "Raíz de multiplicidad dos",
+    "parámetro": "Letra de valor fijo aún desconocido",
+    "método de Ruffini": "División rápida entre un divisor lineal",
+    "sistema de ecuaciones": "Conjunto de ecuaciones con incógnitas comunes",
+    "polinomio": "Suma finita de monomios con exponentes naturales",
+    "binomio": "Expresión de dos términos",
+    "suma de coeficientes": "Valor del polinomio en uno"
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado del teorema",
+      "puntos": [
+        {
+          "texto": "«Teorema del factor»: $P(a)=0$ ⇒ $x-a$ es factor",
+          "explicacion": "Si el valor numérico de un polinomio $P(x)$ en $x=a$ es cero, entonces $x-a$ es un factor de $P(x)$, es decir, $P(x)=(x-a)q(x)$ para algún polinomio $q(x)$. Se deduce del teorema del resto: el resto de dividir entre $x-a$ vale $P(a)=0$. Ejemplo: $P(x)=x^3-6x^2+11x-6$ cumple $P(1)=1-6+11-6=0$, así que $x-1$ es factor. Verificación: $x^3-6x^2+11x-6=(x-1)(x^2-5x+6)$."
+        },
+        {
+          "texto": "Recíproco: $x-a$ es factor ⇒ $P(a)=0$",
+          "explicacion": "Si $x-a$ es factor de $P(x)$, entonces $P(x)=(x-a)q(x)$, y al reemplazar $x=a$ se obtiene $P(a)=(a-a)q(a)=0$. Es el sentido inverso del teorema y completa la equivalencia: $x-a$ es factor exactamente cuando $P(a)=0$. Ejemplo: $P(x)=(x-2)(x+3)$ cumple $P(2)=0\\cdot5=0$ y $P(-3)=(-5)\\cdot0=0$."
+        },
+        {
+          "texto": "«Raíz de un polinomio» = valor $a$ con $P(a)=0$",
+          "explicacion": "Una raíz de $P(x)$ es un número $a$ que anula al polinomio. Con esta palabra, el teorema se enuncia así: $a$ es raíz de $P$ exactamente cuando $x-a$ es factor de $P$. Ejemplo: $P(x)=x^2-5x+6$ tiene raíces $2$ y $3$, pues $P(2)=4-10+6=0$ y $P(3)=9-15+6=0$. Verificación: $x^2-5x+6=(x-2)(x-3)$."
+        },
+        {
+          "texto": "«Cero de un polinomio» = raíz",
+          "explicacion": "Cero de un polinomio es otro nombre de raíz: designa un valor de $x$ en el que el polinomio vale $0$. Ejemplo: $x=-1$ es un cero de $x^2+x$, pues $(-1)^2+(-1)=0$. Verificación: $x^2+x=x(x+1)$, y $x+1$ es factor."
+        },
+        {
+          "texto": "$P(a)\\neq0$ ⇒ $x-a$ ✗ factor",
+          "explicacion": "Si el valor numérico no es cero, el resto de dividir entre $x-a$ es distinto de cero y $x-a$ no es factor. Ejemplo: $P(x)=x^2+1$ cumple $P(1)=2\\neq0$, de modo que $x-1$ no es factor. Verificación: la división de $x^2+1$ entre $x-1$ da cociente $x+1$ y resto $2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración del teorema",
+      "puntos": [
+        {
+          "texto": "Paso 1: dividir $P(x)$ entre $x-a$",
+          "explicacion": "Por el algoritmo de la división, $P(x)=(x-a)q(x)+R$, con $R$ constante. Ejemplo: $x^3-6x^2+11x-6$ entre $x-1$ da $q=x^2-5x+6$ y $R=0$. Verificación: $(x-1)(x^2-5x+6)=x^3-6x^2+11x-6$."
+        },
+        {
+          "texto": "Paso 2: el resto vale $P(a)$",
+          "explicacion": "Por el teorema del resto, $R=P(a)$, de modo que $P(x)=(x-a)q(x)+P(a)$. Ejemplo: con $P(x)=x^2-5x+7$ y $a=2$: $P(2)=4-10+7=1$, y $x^2-5x+7=(x-2)(x-3)+1$. Verificación: $(x-2)(x-3)=x^2-5x+6$ y $6+1=7$."
+        },
+        {
+          "texto": "Paso 3: $P(a)=0$ ⇒ $P(x)=(x-a)\\,q(x)$",
+          "explicacion": "Si $P(a)=0$, el último término desaparece y queda $P(x)=(x-a)q(x)$: el polinomio es múltiplo de $x-a$, o sea, $x-a$ es factor. Ejemplo: para $x^2-5x+6$ y $a=2$: $P(2)=0$ y $x^2-5x+6=(x-2)(x-3)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor ax más b",
+      "puntos": [
+        {
+          "texto": "$P\\left(-\\frac{b}{a}\\right)=0$ ⇒ $ax+b$ es factor",
+          "explicacion": "Un factor de la forma $ax+b$ con $a\\neq0$ cumple $ax+b=a\\left(x+\\frac{b}{a}\\right)$, de modo que $ax+b$ es factor de $P$ exactamente cuando $x+\\frac{b}{a}$ lo es, es decir, cuando $P\\left(-\\frac{b}{a}\\right)=0$. Ejemplo: $P(x)=3x^3+5x^2+5x+2$ y $3x+2$: $x=-\\frac{2}{3}$ y $P\\left(-\\frac{2}{3}\\right)=-\\frac{8}{9}+\\frac{20}{9}-\\frac{30}{9}+\\frac{18}{9}=0$. Verificación: $(3x+2)(x^2+x+1)=3x^3+5x^2+5x+2$."
+        },
+        {
+          "texto": "Ejemplo: $2x^3-3x^2-3x+2$ con $2x-1$",
+          "explicacion": "Se iguala $2x-1=0$, de donde $x=\\frac{1}{2}$. Se calcula $P\\left(\\frac{1}{2}\\right)=\\frac{2}{8}-\\frac{3}{4}-\\frac{3}{2}+2=\\frac{1}{4}-\\frac{3}{4}-\\frac{6}{4}+\\frac{8}{4}=0$. Entonces $2x-1$ es factor. Verificación: $(2x-1)(x^2-x-2)=2x^3-2x^2-4x-x^2+x+2=2x^3-3x^2-3x+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidad de raíces",
+      "puntos": [
+        {
+          "texto": "Raíces distintas ⇒ factores distintos",
+          "explicacion": "Si $a$ y $b$ son raíces distintas de $P$, entonces $(x-a)(x-b)$ es factor de $P$. Se deduce así: $P=(x-a)q$; al reemplazar $x=b$ resulta $0=P(b)=(b-a)q(b)$, y como $b-a\\neq0$, queda $q(b)=0$, de modo que $x-b$ es factor de $q$. Ejemplo: $x^2-5x+6$ tiene raíces $2$ y $3$ y $(x-2)(x-3)=x^2-5x+6$."
+        },
+        {
+          "texto": "Polinomio de grado $n$ ⇒ a lo más $n$ raíces",
+          "explicacion": "Un polinomio no nulo de grado $n$ tiene como máximo $n$ raíces distintas. Cada raíz aporta un factor lineal distinto, y el producto de $k$ factores lineales tiene grado $k$, que no puede superar el grado $n$ del polinomio. Ejemplo: $x^3-6x^2+11x-6$ tiene grado $3$ y raíces $1$, $2$ y $3$; ninguna cuarta raíz es posible. Verificación: $(x-1)(x-2)(x-3)=x^3-6x^2+11x-6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces racionales",
+      "puntos": [
+        {
+          "texto": "Posibles raíces enteras de un polinomio mónico",
+          "explicacion": "Si $P$ es mónico con coeficientes enteros, toda raíz entera divide al término independiente. Se deduce de $P(a)=0$: $a^n+c_{n-1}a^{n-1}+\\cdots+c_1a+c_0=0$, luego $c_0=-a(\\cdots)$ es múltiplo de $a$. Ejemplo: en $x^3-6x^2+11x-6$ los candidatos son $\\pm1,\\pm2,\\pm3,\\pm6$; se prueba $P(1)=0$, $P(2)=8-24+22-6=0$ y $P(3)=27-54+33-6=0$."
+        },
+        {
+          "texto": "Raíz racional $\\frac{p}{q}$ ⇒ $p$ divide al término independiente",
+          "explicacion": "Sea $P(x)=c_nx^n+\\cdots+c_0$ con coeficientes enteros y $\\frac{p}{q}$ una raíz en fracción irreducible. Al sustituir y multiplicar por $q^n$ se tiene $c_np^n+c_{n-1}p^{n-1}q+\\cdots+c_0q^n=0$, de donde $p$ divide a $c_0q^n$. Como $p$ y $q$ no tienen factores comunes, $p$ divide a $c_0$. Ejemplo: en $2x^3-3x^2-3x+2$, $p$ divide a $2$, así que $p\\in\\{\\pm1,\\pm2\\}$."
+        },
+        {
+          "texto": "Raíz racional $\\frac{p}{q}$ ⇒ $q$ divide al coeficiente principal",
+          "explicacion": "Con la misma igualdad $c_np^n+c_{n-1}p^{n-1}q+\\cdots+c_0q^n=0$, se observa que $q$ divide a $c_np^n$, y como $p$ y $q$ no tienen factores comunes, $q$ divide a $c_n$. Ejemplo: en $2x^3-3x^2-3x+2$, $q$ divide a $2$, así que $q\\in\\{1,2\\}$ y los candidatos son $\\pm1,\\pm2,\\pm\\frac{1}{2}$."
+        },
+        {
+          "texto": "Ejemplo: raíces de $2x^3-3x^2-3x+2$",
+          "explicacion": "Candidatos: $\\pm1,\\pm2,\\pm\\frac{1}{2}$. Se calcula $P(1)=2-3-3+2=-2\\neq0$. Luego $P(2)=16-12-6+2=0$, $P(-1)=-2-3+3+2=0$ y $P\\left(\\frac{1}{2}\\right)=\\frac{1}{4}-\\frac{3}{4}-\\frac{3}{2}+2=0$. Las tres raíces son $2$, $-1$ y $\\frac{1}{2}$. Verificación: $(x-2)(x+1)(2x-1)=(x^2-x-2)(2x-1)=2x^3-3x^2-3x+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factorización con Ruffini",
+      "puntos": [
+        {
+          "texto": "Estrategia: hallar una raíz y dividir",
+          "explicacion": "Para factorizar un polinomio, se busca una raíz $a$ probando candidatos, se divide entre $x-a$ con Ruffini y se repite con el cociente, cuyo grado es menor. El proceso termina cuando el cociente es de segundo grado resoluble o de primer grado. Ejemplo: en $x^3-6x^2+11x-6$ se prueba $a=1$, que es raíz, y se divide."
+        },
+        {
+          "texto": "Ejemplo: Ruffini de $x^3-6x^2+11x-6$ con raíz $1$",
+          "explicacion": "Coeficientes $1,\\,-6,\\,11,\\,-6$ y raíz $1$. Se baja $1$; $1\\cdot1=1$ y $-6+1=-5$; $-5\\cdot1=-5$ y $11-5=6$; $6\\cdot1=6$ y $-6+6=0$. Cociente $x^2-5x+6$ y resto $0$. Verificación: $(x-1)(x^2-5x+6)=x^3-6x^2+11x-6$."
+        },
+        {
+          "texto": "Factorización final: $(x-1)(x-2)(x-3)$",
+          "explicacion": "El cociente $x^2-5x+6$ se factoriza buscando dos números que sumen $-5$ y multipliquen $6$: $-2$ y $-3$. Entonces $x^2-5x+6=(x-2)(x-3)$ y $x^3-6x^2+11x-6=(x-1)(x-2)(x-3)$. Verificación: $(x-2)(x-3)=x^2-5x+6$ y el producto con $x-1$ da el polinomio original."
+        },
+        {
+          "texto": "Suma de coeficientes $=0$ ⇒ $x=1$ es raíz",
+          "explicacion": "Como $P(1)$ es la suma de los coeficientes, si esta vale cero, $x=1$ es raíz y $x-1$ es factor. Ejemplo: $x^3-6x^2+11x-6$ da $1-6+11-6=0$. Verificación: por Ruffini con raíz $1$ el resto es $0$."
+        },
+        {
+          "texto": "$P(-1)=0$ ⇒ $x+1$ es factor",
+          "explicacion": "Como $P(-1)$ es la suma alternada de los coeficientes, si vale cero entonces $x+1$ es factor. Ejemplo: $P(x)=x^3+2x^2-5x-6$ da $P(-1)=-1+2+5-6=0$. Ruffini con raíz $-1$ y coeficientes $1,\\,2,\\,-5,\\,-6$ da $1\\to1\\to-6\\to0$, cociente $x^2+x-6=(x+3)(x-2)$. Entonces $P(x)=(x+1)(x+3)(x-2)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicidad de raíz",
+      "puntos": [
+        {
+          "texto": "«Multiplicidad» = veces que se repite el factor",
+          "explicacion": "Una raíz $a$ tiene multiplicidad $k$ cuando $(x-a)^k$ divide a $P(x)$ pero $(x-a)^{k+1}$ no. Una raíz de multiplicidad $1$ se llama simple y una de multiplicidad $2$, doble. Ejemplo: $x^3-3x^2+4$ cumple $P(2)=8-12+4=0$; Ruffini con raíz $2$ y coeficientes $1,\\,-3,\\,0,\\,4$ da $1\\to-1\\to-2\\to0$ y cociente $x^2-x-2=(x-2)(x+1)$. Entonces $P(x)=(x-2)^2(x+1)$: $2$ es raíz doble y $-1$ es simple."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomios divisibles",
+      "puntos": [
+        {
+          "texto": "$x^n-a^n$ es divisible entre $x-a$",
+          "explicacion": "Al evaluar en $x=a$ se obtiene $a^n-a^n=0$ para todo $n$ natural, de modo que $x-a$ es factor de $x^n-a^n$. Ejemplo: $x^5-32$ con $a=2$: $2^5-32=0$. Verificación: por Ruffini con raíz $2$ y coeficientes $1,\\,0,\\,0,\\,0,\\,0,\\,-32$ el resto es $0$."
+        },
+        {
+          "texto": "$x^n+a^n$ divisible entre $x+a$ ⇒ $n$ impar",
+          "explicacion": "Se evalúa en $x=-a$: $(-a)^n+a^n$, que vale $0$ si $n$ es impar y $2a^n$ si $n$ es par. Ejemplo: $x^3+27$ entre $x+3$: $(-3)^3+27=0$, divisible. En cambio, $x^2+9$ entre $x+3$ da $9+9=18\\neq0$, y no es divisible. Verificación: $x^3+27=(x+3)(x^2-3x+9)$."
+        },
+        {
+          "texto": "$x^n-a^n$ divisible entre $x+a$ ⇒ $n$ par",
+          "explicacion": "Se evalúa en $x=-a$: $(-a)^n-a^n$, que vale $0$ si $n$ es par y $-2a^n$ si $n$ es impar. Ejemplo: $x^4-16$ entre $x+2$: $(-2)^4-16=0$, divisible. En cambio, $x^3-8$ entre $x+2$ da $-8-8=-16\\neq0$. Verificación: $x^4-16=(x+2)(x^3-2x^2+4x-8)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar parámetros",
+      "puntos": [
+        {
+          "texto": "Un factor conocido ⇒ una ecuación en el parámetro",
+          "explicacion": "Si se sabe que $x-a$ es factor de un polinomio con un parámetro, se plantea $P(a)=0$ y se despeja. Ejemplo: $P(x)=x^3+kx^2-4x+4$ con factor $x-2$: $P(2)=8+4k-8+4=4k+4=0\\Rightarrow k=-1$. Verificación: con $k=-1$, $P(2)=8-4-8+4=0$."
+        },
+        {
+          "texto": "Dos factores conocidos ⇒ sistema de ecuaciones",
+          "explicacion": "Si dos factores lineales distintos dan dos parámetros, se plantea $P(a)=0$ y $P(b)=0$. Ejemplo: $P(x)=x^3+mx^2+nx-6$ con factores $x-1$ y $x-2$: $P(1)=1+m+n-6=0$ da $m+n=5$; $P(2)=8+4m+2n-6=0$ da $2m+n=-1$. Restando, $m=-6$ y $n=11$. Verificación: $P(x)=x^3-6x^2+11x-6=(x-1)(x-2)(x-3)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Signo de la raíz",
+          "explicacion": "Para el factor $x+3$ la raíz es $-3$, no $3$. Ejemplo: $x^2+x-6$ cumple $P(-3)=9-3-6=0$, así que $x+3$ es factor, mientras que $P(3)=9+3-6=6\\neq0$. Verificación: $x^2+x-6=(x+3)(x-2)$."
+        },
+        {
+          "texto": "Probar solo algunos candidatos",
+          "explicacion": "Un polinomio puede tener raíces entre candidatos que no se probaron, o fraccionarias. Ejemplo: en $2x^3-3x^2-3x+2$, buscar solo enteros encuentra $2$ y $-1$ pero omite $\\frac{1}{2}$. Verificación: $P\\left(\\frac{1}{2}\\right)=0$."
+        },
+        {
+          "texto": "Divisor no lineal ⇒ ✗ aplicar sin cuidado",
+          "explicacion": "El teorema del factor, tal como se enunció, trata de factores de primer grado. Para un divisor de segundo grado, la condición es que el resto sea nulo al dividir, no que se anule en un número. Ejemplo: $x^2+1$ no tiene raíces reales, pero $x^4-1=(x^2+1)(x^2-1)$ sí la tiene como factor."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Teorema del factor ⊂ teorema del resto",
+          "explicacion": "Es el caso particular del teorema del resto con resto cero. Usa el algoritmo de la división y el método de Ruffini para hallar el cociente. Ejemplo: $P(x)=x^3-6x^2+11x-6$ con $a=1$: resto $P(1)=0$ y cociente $x^2-5x+6$."
+        },
+        {
+          "texto": "Teorema del factor → factorización y raíces",
+          "explicacion": "Permite factorizar polinomios de grado mayor que $2$ y se apoya en la idea de que un polinomio de grado $n$ tiene a lo más $n$ raíces, que se retoma en el teorema fundamental del álgebra y en las relaciones entre raíces y coeficientes. Ejemplo: $x^3-6x^2+11x-6$ tiene raíces $1,2,3$, con suma $6$ igual al opuesto del coeficiente de $x^2$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "curso": "Álgebra",
+  "tema": "Multiplicación de polinomios",
+  "glosario": {
+    "Polinomio": "Suma finita de monomios.",
+    "Factor": "Cada expresión que se multiplica.",
+    "Producto": "Resultado de una multiplicación.",
+    "Producto parcial": "Producto de un término por otro término.",
+    "Propiedad distributiva": "Multiplicar distribuyéndose sobre una suma.",
+    "Términos semejantes": "Términos con la misma parte literal.",
+    "Coeficiente principal": "Coeficiente del término de mayor grado.",
+    "Término independiente": "Término que no contiene la variable.",
+    "Elemento neutro": "Elemento que no altera al operar.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes cero.",
+    "Clausura": "Resultado que permanece dentro del mismo conjunto.",
+    "Monomio": "Polinomio de un solo término.",
+    "Parte literal": "Letras de un término con sus exponentes.",
+    "Potencia": "Producto repetido de una misma base.",
+    "Valor numérico": "Resultado de reemplazar la variable por un número."
+  },
+  "theory": [
+    {
+      "titulo": "Multiplicación de polinomios",
+      "puntos": [
+        {
+          "texto": "«Multiplicación de polinomios»: multiplicar cada término por cada término",
+          "explicacion": "Multiplicar dos polinomios consiste en multiplicar cada término del primero por cada término del segundo, y luego reducir los términos semejantes del resultado. Esto se basa en la propiedad distributiva de la multiplicación respecto de la suma. Si el primer polinomio tiene $m$ términos y el segundo tiene $n$ términos, se obtienen $m\\cdot n$ productos parciales antes de reducir. El resultado es un nuevo polinomio, llamado producto, y los polinomios que se multiplican se llaman factores."
+        },
+        {
+          "texto": "Productos parciales: $m\\cdot n$ antes de reducir",
+          "explicacion": "Antes de reducir hay un producto parcial por cada pareja formada por un término del primer factor y un término del segundo. En $(x^2+x+1)(x^2-x+1)$ ambos factores tienen tres términos, y se forman $3\\cdot3=9$ productos: $x^4-x^3+x^2+x^3-x^2+x+x^2-x+1$. Al reducir los semejantes queda $x^4+x^2+1$. Contar los productos parciales permite comprobar que no se omitió ninguno."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de monomios",
+      "puntos": [
+        {
+          "texto": "Producto de monomios: multiplicar coeficientes y sumar exponentes",
+          "explicacion": "Para multiplicar monomios se multiplican los coeficientes entre sí y las partes literales entre sí, usando la ley $x^a\\cdot x^b=x^{a+b}$ para cada variable. Ejemplo: $(3x^2y)(-2xy^3)$. Coeficientes: $3\\cdot(-2)=-6$. Variable $x$: $x^{2+1}=x^3$. Variable $y$: $y^{1+3}=y^4$. El producto es $-6x^3y^4$. Verificación en $x=1$ y $y=1$: $3\\cdot(-2)=-6$ y el resultado vale $-6$."
+        },
+        {
+          "texto": "Regla de signos: iguales dan $+$, distintos dan $-$",
+          "explicacion": "Al multiplicar los coeficientes se aplica la regla de signos: el producto de dos signos iguales es positivo y el de dos signos distintos es negativo. Así, $(-2x)(-3x^2)=6x^3$, porque $(-2)(-3)=6$ y $x\\cdot x^2=x^3$. En cambio $(-2x)(3x^2)=-6x^3$. Con tres factores negativos el resultado es negativo: $(-x)(-x)(-x)=-x^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Monomio por polinomio",
+      "puntos": [
+        {
+          "texto": "Monomio por polinomio: propiedad distributiva",
+          "explicacion": "Para multiplicar un monomio por un polinomio se multiplica el monomio por cada término del polinomio, conservando los signos que correspondan. Ejemplo: $2x(x^2-3x+4)=2x\\cdot x^2+2x\\cdot(-3x)+2x\\cdot4=2x^3-6x^2+8x$. Verificación en $x=1$: $2(1-3+4)=4$ y el resultado vale $2-6+8=4$. Aquí no hay términos semejantes que reducir, porque cada producto tiene distinto exponente."
+        },
+        {
+          "texto": "Multiplicar por $-1$ ⇒ cambian todos los signos",
+          "explicacion": "Multiplicar un polinomio por $-1$ da su opuesto: cada término cambia de signo. Así, $-1\\cdot(3x^2-5x+2)=-3x^2+5x-2$. Esta idea explica por qué un signo menos delante de un paréntesis cambia todos los signos de su interior, y relaciona la multiplicación con la sustracción."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio por polinomio",
+      "puntos": [
+        {
+          "texto": "Método horizontal: distribuir y reducir",
+          "explicacion": "En el método horizontal se escribe el producto indicado, se multiplica cada término del primer factor por todo el segundo factor y se reducen los términos semejantes. Ejemplo: $(2x-3)(x^2+4x-5)=2x\\cdot(x^2+4x-5)-3\\cdot(x^2+4x-5)=2x^3+8x^2-10x-3x^2-12x+15=2x^3+5x^2-22x+15$. Verificación en $x=2$: $(1)(7)=7$ y el resultado vale $16+20-44+15=7$."
+        },
+        {
+          "texto": "Ordenar los productos parciales por exponente",
+          "explicacion": "Al desarrollar conviene escribir los productos parciales agrupados por el factor que los genera y, antes de reducir, ubicar los términos del mismo exponente juntos. En el ejemplo anterior, los términos de $x^2$ son $8x^2$ y $-3x^2$, que suman $5x^2$; los de $x$ son $-10x$ y $-12x$, que suman $-22x$. Ordenar evita olvidar términos semejantes y errores de signo."
+        }
+      ]
+    },
+    {
+      "titulo": "Método vertical",
+      "puntos": [
+        {
+          "texto": "Producto vertical: multiplicar fila por fila y sumar columnas",
+          "explicacion": "En el método vertical se escribe un factor debajo del otro, ambos ordenados y completos, y se multiplica el factor superior por cada término del inferior, colocando cada producto parcial desplazado según el exponente. Luego se suman las columnas. Sea $(x^3-2x+1)(x^2+3)$ con el primero completado: $x^3+0x^2-2x+1$. Multiplicando por 3: $3x^3+0x^2-6x+3$. Multiplicando por $x^2$: $x^5+0x^4-2x^3+x^2$. Al sumar por columnas: $x^5+0x^4+(3-2)x^3+x^2-6x+3=x^5+x^3+x^2-6x+3$. Verificación en $x=2$: $5\\cdot7=35$ y el resultado vale $32+8+4-12+3=35$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes separados",
+      "puntos": [
+        {
+          "texto": "Coeficientes separados: multiplicar listas de coeficientes",
+          "explicacion": "Si los factores son de una variable, ordenados y completos, se pueden multiplicar solo sus coeficientes, y el exponente de cada término del resultado se deduce del grado. Sean $(2x^2+x-3)(x-4)$ con coeficientes $[2,\\,1,\\,-3]$ y $[1,\\,-4]$. El producto tiene grado $2+1=3$ y cuatro coeficientes: $2\\cdot1=2$; $2\\cdot(-4)+1\\cdot1=-7$; $1\\cdot(-4)+(-3)\\cdot1=-7$; $(-3)\\cdot(-4)=12$. Resulta $2x^3-7x^2-7x+12$. Verificación en $x=1$: $0\\cdot(-3)=0$ y el resultado vale $2-7-7+12=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Clausura: el producto de polinomios es un polinomio",
+          "explicacion": "Multiplicar dos polinomios produce siempre otro polinomio, porque los exponentes se suman y siguen siendo enteros no negativos, y los coeficientes se multiplican y siguen siendo reales. Por ejemplo, $(x+1)(x-2)=x^2-x-2$ es un polinomio. Esta propiedad asegura que, al multiplicar repetidamente, el resultado sigue siendo un polinomio al que se pueden aplicar las mismas definiciones de grado, coeficiente principal y término independiente vistas en temas anteriores."
+        },
+        {
+          "texto": "Conmutativa: $P\\cdot Q=Q\\cdot P$",
+          "explicacion": "El orden de los factores no altera el producto. Con $P=x+1$ y $Q=x-2$: $PQ=x^2-2x+x-2=x^2-x-2$ y $QP=x^2+x-2x-2=x^2-x-2$. Resultan iguales, porque los mismos productos parciales aparecen en distinto orden. Esta propiedad permite escribir primero el factor que resulte más cómodo, por ejemplo el de menos términos. Se cumple porque la multiplicación de coeficientes reales y la suma de exponentes son conmutativas: $a_kb_j=b_ja_k$ y $k+j=j+k$ para cada pareja de términos."
+        },
+        {
+          "texto": "Asociativa: $(PQ)R=P(QR)$",
+          "explicacion": "La forma de agrupar tres factores no altera el producto. Con $P=x+1$, $Q=x-1$ y $R=x+2$: $(PQ)R=(x^2-1)(x+2)=x^3+2x^2-x-2$. Y $P(QR)=(x+1)(x^2+x-2)=x^3+x^2-2x+x^2+x-2=x^3+2x^2-x-2$. Son iguales. Gracias a esta propiedad, un producto de varios factores no necesita paréntesis y se puede calcular en el orden que resulte más sencillo, por ejemplo multiplicando primero los dos factores de menor tamaño. Verificación en $x=1$: $(0)(0)(3)=0$ en ambos desarrollos, pues $x^3+2x^2-x-2$ vale $1+2-1-2=0$."
+        },
+        {
+          "texto": "Distributiva: $P(Q+R)=PQ+PR$",
+          "explicacion": "La multiplicación se distribuye sobre la suma, y por esta propiedad funciona todo el procedimiento. Con $P=x$, $Q=x+1$ y $R=x-3$: $P(Q+R)=x(2x-2)=2x^2-2x$, y $PQ+PR=(x^2+x)+(x^2-3x)=2x^2-2x$. Ambos coinciden. Esta es la propiedad que justifica multiplicar un monomio por cada término de un polinomio, y de ella se deduce el método general de distribuir cada término de un factor sobre el otro. También funciona en sentido inverso, y entonces se llama sacar factor común."
+        },
+        {
+          "texto": "Elemento neutro: $1\\cdot P=P$",
+          "explicacion": "El polinomio constante 1 es el elemento neutro de la multiplicación: multiplicar por 1 deja cada término sin cambio. Con $P=3x^2-5x+2$: $1\\cdot P=3x^2-5x+2$. Por eso $P\\cdot1$ y $1\\cdot P$ son iguales a $P$. El neutro es único: si otro polinomio $N$ cumpliera $N\\cdot P=P$ para todo $P$, tomando $P=1$ se obtendría $N=1$. Esta propiedad se usa al reescribir expresiones, por ejemplo $x^2+1=1\\cdot(x^2+1)$, sin alterar su valor."
+        },
+        {
+          "texto": "Producto por el polinomio nulo: $P\\cdot0=0$",
+          "explicacion": "Multiplicar cualquier polinomio por el polinomio nulo da el polinomio nulo, porque cada término se multiplica por cero. Por ejemplo, $(3x^2-5x+2)\\cdot0=0$. Una consecuencia es que, si el producto de dos polinomios es nulo, alguno de los factores es nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes del producto",
+      "puntos": [
+        {
+          "texto": "Término independiente del producto = producto de independientes",
+          "explicacion": "El término independiente de $P\\cdot Q$ es $P(0)\\cdot Q(0)$, el producto de los términos independientes de los factores. En $(x+2)(x-5)=x^2-3x-10$, los independientes son 2 y $-5$, y $2\\cdot(-5)=-10$, que coincide con el término independiente del producto. Esto ocurre porque en x = 0 todos los términos con variable se anulan y solo sobreviven los términos independientes de cada factor, que se multiplican entre sí. Sirve para comprobar el desarrollo sin calcular los demás coeficientes."
+        },
+        {
+          "texto": "Suma de coeficientes del producto = $P(1)\\cdot Q(1)$",
+          "explicacion": "La suma de los coeficientes de un polinomio es su valor en $x=1$, y como el valor del producto es el producto de los valores, la suma de coeficientes del producto es el producto de las sumas de coeficientes de los factores. En $(x+2)(x-5)$: $P(1)=3$, $Q(1)=-4$ y $3\\cdot(-4)=-12$. En $x^2-3x-10$ los coeficientes suman $1-3-10=-12$."
+        },
+        {
+          "texto": "Coeficiente principal del producto = producto de coeficientes principales",
+          "explicacion": "El término de mayor grado del producto sale de multiplicar los términos de mayor grado de los factores. En $(2x^2+1)(3x^3-x)$ el coeficiente principal es $2\\cdot3=6$ y el grado es $2+3=5$. Al desarrollar: $6x^5-2x^3+3x^3-x=6x^5+x^3-x$, cuyo término principal es $6x^5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor del producto",
+      "puntos": [
+        {
+          "texto": "$(P\\cdot Q)(a)=P(a)\\cdot Q(a)$",
+          "explicacion": "El valor del producto en un número es el producto de los valores de los factores en ese número, y esta propiedad sirve para comprobar el desarrollo. Con $(x+2)(x-5)=x^2-3x-10$ en $x=3$: $P(3)=5$, $Q(3)=-2$ y $5\\cdot(-2)=-10$. El resultado vale $9-9-10=-10$. Si ambos valores no coinciden, hay un error en el desarrollo."
+        }
+      ]
+    },
+    {
+      "titulo": "Varias variables",
+      "puntos": [
+        {
+          "texto": "Producto de polinomios en dos variables",
+          "explicacion": "Se multiplica cada término del primer factor por cada término del segundo, aplicando las leyes de exponentes para cada variable por separado, y se reducen los términos de igual parte literal. Ejemplo: $(2x+y)(x^2-xy+3y^2)=2x^3-2x^2y+6xy^2+x^2y-xy^2+3y^3=2x^3-x^2y+5xy^2+3y^3$. Verificación en $x=1$ y $y=2$: $(4)(11)=44$ y el resultado vale $2-2+20+24=44$."
+        }
+      ]
+    },
+    {
+      "titulo": "Más de dos factores",
+      "puntos": [
+        {
+          "texto": "Producto de tres factores: multiplicar de dos en dos",
+          "explicacion": "Con más de dos factores se multiplican primero dos y el resultado se multiplica por el tercero, y así sucesivamente, gracias a la propiedad asociativa. Ejemplo: $(x-1)(x+2)(x-3)$. Primero $(x-1)(x+2)=x^2+x-2$. Luego $(x^2+x-2)(x-3)=x^3+x^2-2x-3x^2-3x+6=x^3-2x^2-5x+6$. Verificación en $x=0$: $(-1)(2)(-3)=6$ y el resultado vale 6; en $x=1$ ambos valen 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencia como producto",
+      "puntos": [
+        {
+          "texto": "Potencia de un polinomio: producto repetido",
+          "explicacion": "Elevar un polinomio a una potencia entera positiva equivale a multiplicarlo por sí mismo ese número de veces. Ejemplo: $(x+3)^2=(x+3)(x+3)=x^2+3x+3x+9=x^2+6x+9$. Con exponente 3: $(x-2)^3=(x-2)(x-2)^2=(x-2)(x^2-4x+4)=x^3-4x^2+4x-2x^2+8x-8=x^3-6x^2+12x-8$. Verificación en $x=3$: $(3-2)^3=1$ y el resultado vale $27-54+36-8=1$. No es válido distribuir el exponente: $(x+3)^2$ no es $x^2+9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes fraccionarios",
+      "puntos": [
+        {
+          "texto": "Multiplicar polinomios con coeficientes fraccionarios",
+          "explicacion": "Los coeficientes fraccionarios se multiplican como fracciones. Sea $(\\frac{1}{2}x+3)(\\frac{2}{3}x-\\frac{1}{4})$. Productos parciales: $\\frac{1}{2}\\cdot\\frac{2}{3}x^2=\\frac{1}{3}x^2$; $\\frac{1}{2}\\cdot(-\\frac{1}{4})x=-\\frac{1}{8}x$; $3\\cdot\\frac{2}{3}x=2x$; $3\\cdot(-\\frac{1}{4})=-\\frac{3}{4}$. Al reducir: $\\frac{1}{3}x^2+\\frac{15}{8}x-\\frac{3}{4}$. Verificación en $x=6$: $(3+3)(4-\\frac{1}{4})=6\\cdot\\frac{15}{4}=\\frac{45}{2}$, y el resultado vale $12+\\frac{45}{4}-\\frac{3}{4}=\\frac{45}{2}$. Una alternativa es multiplicar cada factor por su mínimo común múltiplo para tener coeficientes enteros, operar y dividir después: $(\\frac{1}{2}x+3)=\\frac{1}{2}(x+6)$ y $(\\frac{2}{3}x-\\frac{1}{4})=\\frac{1}{12}(8x-3)$, y el producto es $\\frac{1}{24}(8x^2+45x-18)$, equivalente al resultado anterior."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar constantes",
+      "puntos": [
+        {
+          "texto": "Producto conocido ⇒ igualar coeficientes",
+          "explicacion": "Sea $(ax+2)(3x-b)=6x^2+2x-4$. El desarrollo es $3ax^2+(6-ab)x-2b$. Al igualar coeficientes: $3a=6$ da $a=2$; $-2b=-4$ da $b=2$; y el término en $x$ debe cumplir $6-ab=6-4=2$, lo que confirma los valores. Verificación: $(2x+2)(3x-2)=6x^2-4x+6x-4=6x^2+2x-4$. Los pasos son: desarrollar el producto con las constantes como números, igualar los coeficientes de cada exponente con los del polinomio dado y resolver las ecuaciones que resulten. Si las ecuaciones no son compatibles entre sí, no existen constantes que cumplan la igualdad."
+        },
+        {
+          "texto": "Producto con suma y producto de constantes",
+          "explicacion": "En $(x+a)(x+b)=x^2+(a+b)x+ab$, igualar con $x^2-5x+6$ da $a+b=-5$ y $ab=6$. Los números que cumplen ambas condiciones son $-2$ y $-3$, porque $-2+(-3)=-5$ y $(-2)(-3)=6$. Verificación: $(x-2)(x-3)=x^2-3x-2x+6=x^2-5x+6$. Esta idea reaparece al factorizar. La regla general es que el coeficiente de $x$ es la suma $a+b$ y el término independiente es el producto $ab$. Por ejemplo, $(x+4)(x-1)=x^2+3x-4$: $4+(-1)=3$ y $4\\cdot(-1)=-4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 26, 29 y 30: base de la multiplicación",
+          "explicacion": "La multiplicación usa las leyes de exponentes de la potenciación del tema 26, la regla del grado del producto del tema 29 y la reducción de términos semejantes que se practicó al sumar en el tema 30. Por ejemplo, el grado del producto $(x^2+1)(x^3-2x)$ se anticipa como $2+3=5$."
+        },
+        {
+          "texto": "Temas 33, 41 y 46: continuación",
+          "explicacion": "Los polinomios especiales, los productos notables y la factorización parten de esta operación: los productos notables son productos cuyo resultado se reconoce sin desarrollar, y la factorización es el proceso inverso de la multiplicación, que recupera los factores a partir del producto."
+        }
+      ]
+    }
+  ]
+}

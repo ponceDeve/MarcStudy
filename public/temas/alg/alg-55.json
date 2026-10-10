@@ -1,0 +1,209 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función lineal",
+  "glosario": {
+    "Función lineal": "Función de la forma m x más b.",
+    "Función afín": "Función lineal con término independiente no nulo.",
+    "Pendiente": "Cambio de la salida por unidad de entrada.",
+    "Intercepto": "Punto donde la gráfica corta un eje.",
+    "Ordenada en el origen": "Valor de la función cuando x es cero.",
+    "Cero de una función": "Entrada cuya salida es cero.",
+    "Recta": "Línea que no cambia de dirección.",
+    "Rectas paralelas": "Rectas con la misma pendiente.",
+    "Rectas perpendiculares": "Rectas que forman ángulo recto.",
+    "Colineales": "Puntos situados sobre una misma recta.",
+    "Proporcionalidad directa": "Salida proporcional a la entrada.",
+    "Tasa de cambio": "Variación de la salida respecto de la entrada.",
+    "Función creciente": "Función cuya salida aumenta al aumentar la entrada.",
+    "Función decreciente": "Función cuya salida disminuye al aumentar la entrada.",
+    "Función inversa": "Función que deshace a otra función."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función lineal»: $f(x)=mx+b$ con $m$ y $b$ reales",
+          "explicacion": "Una función lineal es una función real cuya regla de correspondencia es un polinomio de grado a lo más 1: $f(x)=mx+b$, donde $m$ y $b$ son números reales fijos. Su dominio es $\\mathbb{R}$. Ejemplos: $f(x)=2x+1$, $g(x)=-3x+5$ y $h(x)=\\frac{1}{2}x$. Su gráfica es siempre una recta no vertical, de ahí el nombre de lineal."
+        },
+        {
+          "texto": "«Función afín» = función lineal con término $b$",
+          "explicacion": "En algunos textos se reserva el nombre de lineal para $f(x)=mx$, la que pasa por el origen, y se llama afín a $f(x)=mx+b$ con $b\\neq0$. En este curso se usa la palabra lineal para ambas, y se distingue el caso $b=0$ como función de proporcionalidad directa. Conviene reconocer los dos nombres."
+        },
+        {
+          "texto": "Dominio $\\mathbb{R}$; rango $\\mathbb{R}$ si $m\\neq0$",
+          "explicacion": "Como $mx+b$ se puede evaluar en cualquier real, el dominio es $\\mathbb{R}$. Si $m\\neq0$, para cada salida $y$ existe la entrada $x=\\frac{y-b}{m}$, así que el rango es $\\mathbb{R}$. Si $m=0$ la función es constante, $f(x)=b$, y el rango es $\\{b\\}$. Para $f(x)=2x+1$ y la salida 9, se halla $x=\\frac{9-1}{2}=4$, y se cumple $f(4)=9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pendiente",
+      "puntos": [
+        {
+          "texto": "«Pendiente» $m$: cambio de $y$ por cada unidad de $x$",
+          "explicacion": "La pendiente de la función $f(x)=mx+b$ es el número $m$, que mide cuánto cambia la salida cuando la entrada aumenta una unidad. Si $x$ aumenta 1, $f(x)$ aumenta $m$. En $f(x)=2x+1$ la pendiente es 2: $f(3)=7$ y $f(4)=9$, y la diferencia es 2. Una pendiente grande significa una recta muy inclinada."
+        },
+        {
+          "texto": "Pendiente por dos puntos: $m=\\frac{y_2-y_1}{x_2-x_1}$",
+          "explicacion": "Dados dos puntos distintos $(x_1,y_1)$ y $(x_2,y_2)$ de la recta, con $x_1\\neq x_2$, la pendiente es el cociente entre el cambio vertical y el cambio horizontal. Con $(1,3)$ y $(4,9)$: $m=\\frac{9-3}{4-1}=\\frac{6}{3}=2$. El resultado no depende de qué punto se tome primero: $\\frac{3-9}{1-4}=\\frac{-6}{-3}=2$."
+        },
+        {
+          "texto": "Pendiente constante en toda la recta",
+          "explicacion": "En una recta, la pendiente calculada con cualquier par de puntos es la misma. Con $f(x)=2x+1$: entre $x=0$ y $x=1$ la salida pasa de 1 a 3; entre $x=2$ y $x=5$ pasa de 5 a 11, y $\\frac{11-5}{5-2}=2$. Esta constancia es lo que caracteriza a las funciones lineales."
+        }
+      ]
+    },
+    {
+      "titulo": "Intercepto y cero",
+      "puntos": [
+        {
+          "texto": "«Intercepto» con el eje $y$: $b=f(0)$",
+          "explicacion": "La gráfica corta al eje vertical en el punto $(0,b)$, porque $f(0)=m\\cdot0+b=b$. En $f(x)=2x+1$ el intercepto es $(0,1)$. En $g(x)=-3x+5$ es $(0,5)$. Este valor se llama también ordenada en el origen. Es el único punto de la gráfica sobre el eje vertical, porque la entrada 0 tiene una sola salida. Se lee directamente de la regla escrita en la forma $mx+b$: basta mirar el término sin $x$. Cuando $b=0$ el intercepto es el origen."
+        },
+        {
+          "texto": "Cero de la función: $x=-\\frac{b}{m}$",
+          "explicacion": "El cero se obtiene resolviendo $mx+b=0$, que da $x=-\\frac{b}{m}$ cuando $m\\neq0$. Para $f(x)=3x-6$: $3x=6$ da $x=2$, y el corte con el eje horizontal es $(2,0)$. Verificación: $f(2)=6-6=0$. Si $m=0$ y $b\\neq0$ no hay ceros, y si $m=0$ y $b=0$ todo $x$ es cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de la pendiente",
+      "puntos": [
+        {
+          "texto": "$m>0$ ⇒ la recta sube de izquierda a derecha",
+          "explicacion": "Si la pendiente es positiva, al aumentar $x$ aumenta $f(x)$: la función es creciente. Para $f(x)=2x+1$: $f(0)=1$, $f(1)=3$, $f(2)=5$. La salida es positiva a la derecha del cero y negativa a su izquierda: $f(x)>0$ si $x>-\\frac{1}{2}$. Cuanto mayor es $m$, más empinada es la recta. Con $f(x)=5x+1$ la salida sube 5 unidades por cada unidad de $x$, mientras que con $f(x)=\\frac{1}{2}x+1$ solo sube media unidad, de modo que su gráfica es más tendida."
+        },
+        {
+          "texto": "$m<0$ ⇒ la recta baja de izquierda a derecha",
+          "explicacion": "Si la pendiente es negativa, al aumentar $x$ disminuye $f(x)$: la función es decreciente. Para $g(x)=-3x+5$: $g(0)=5$, $g(1)=2$, $g(2)=-1$. La salida es positiva a la izquierda del cero $x=\\frac{5}{3}$ y negativa a su derecha. Cuanto mayor es $|m|$, más empinada es la bajada. Con $g(x)=-3x+5$ la salida baja 3 unidades por cada unidad de $x$. Verificación del cero: $g(\\frac{5}{3})=-5+5=0$, y para $x$ mayores la salida es negativa."
+        },
+        {
+          "texto": "$m=0$ ⇒ recta horizontal",
+          "explicacion": "Si la pendiente es cero, la función es constante: $f(x)=b$ y su gráfica es una recta horizontal, que no sube ni baja. Para $f(x)=4$, toda entrada da salida 4. La función constante no es creciente ni decreciente en sentido estricto."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "$b=0$: la recta pasa por el origen",
+          "explicacion": "Cuando $b=0$, la función es $f(x)=mx$ y su gráfica pasa por $(0,0)$. En este caso las salidas son proporcionales a las entradas: si $x$ se duplica, $f(x)$ se duplica. Con $f(x)=3x$: $f(2)=6$ y $f(4)=12$. Se llama función de proporcionalidad directa."
+        },
+        {
+          "texto": "Recta vertical: no es la gráfica de una función",
+          "explicacion": "La recta $x=a$ es vertical y no es la gráfica de ninguna función, porque la entrada $a$ tendría infinitas salidas. Tampoco tiene pendiente definida, pues el cambio horizontal es cero y no se puede dividir. Por eso la función lineal siempre es una recta no vertical."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica",
+      "puntos": [
+        {
+          "texto": "Graficar una recta con dos puntos",
+          "explicacion": "Como dos puntos determinan una recta, para graficar una función lineal basta calcular dos valores y unirlos con una línea que se prolonga en ambos sentidos. Con $f(x)=2x+1$: $f(0)=1$ y $f(2)=5$ dan los puntos $(0,1)$ y $(2,5)$. Conviene verificar con un tercero: $f(1)=3$, y el punto $(1,3)$ está sobre la recta."
+        },
+        {
+          "texto": "Graficar con intercepto y pendiente",
+          "explicacion": "Se marca el intercepto $(0,b)$ y desde allí se avanza 1 unidad a la derecha y $m$ unidades hacia arriba, o hacia abajo si $m<0$. Para $f(x)=2x+1$: se parte de $(0,1)$, se avanza 1 a la derecha y 2 hacia arriba, y se llega a $(1,3)$. Para $g(x)=-3x+5$: de $(0,5)$ se llega a $(1,2)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Formas de la recta",
+      "puntos": [
+        {
+          "texto": "Forma punto-pendiente: $y-y_1=m(x-x_1)$",
+          "explicacion": "Si se conoce la pendiente $m$ y un punto $(x_1,y_1)$, la recta cumple $y-y_1=m(x-x_1)$. Con $m=-2$ y el punto $(3,1)$: $y-1=-2(x-3)$, que da $y=-2x+7$. Verificación: $f(3)=-6+7=1$. Esta forma sale de la definición de pendiente: para un punto cualquiera $(x,y)$ de la recta, $\\frac{y-y_1}{x-x_1}=m$, y al multiplicar por $x-x_1$ se obtiene la ecuación. Es la forma más cómoda cuando se da un punto y la pendiente, y luego se despeja $y$ para tener la regla."
+        },
+        {
+          "texto": "Forma general: $Ax+By+C=0$ con $B\\neq0$",
+          "explicacion": "Toda recta no vertical se puede escribir como $Ax+By+C=0$, y al despejar $y$ resulta $y=-\\frac{A}{B}x-\\frac{C}{B}$, de modo que $m=-\\frac{A}{B}$ y $b=-\\frac{C}{B}$. Con $3x+2y-6=0$: $y=-\\frac{3}{2}x+3$, con $m=-\\frac{3}{2}$ y $b=3$. Verificación: el punto $(2,0)$ cumple $6+0-6=0$. Si $B=0$, la ecuación es $Ax+C=0$, una recta vertical que no es gráfica de función. La forma general es útil porque describe cualquier recta, y de ella se leen la pendiente y el intercepto despejando $y$."
+        },
+        {
+          "texto": "Forma de interceptos: $\\frac{x}{a}+\\frac{y}{b}=1$",
+          "explicacion": "Si la recta corta a los ejes en $(a,0)$ y $(0,b)$ con $a,b\\neq0$, su ecuación es $\\frac{x}{a}+\\frac{y}{b}=1$. La recta $\\frac{x}{2}+\\frac{y}{3}=1$ corta a los ejes en $(2,0)$ y $(0,3)$, y al multiplicar por 6 se obtiene $3x+2y=6$, la misma recta del ejemplo anterior. Su pendiente es $-\\frac{b}{a}=-\\frac{3}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar la regla",
+      "puntos": [
+        {
+          "texto": "Regla lineal por dos valores conocidos",
+          "explicacion": "Sea $f(2)=7$ y $f(-1)=-2$. La pendiente es $m=\\frac{7-(-2)}{2-(-1)}=\\frac{9}{3}=3$. Luego $b=f(2)-2m=7-6=1$. La regla es $f(x)=3x+1$. Verificación: $f(-1)=-3+1=-2$. El método es: primero se calcula la pendiente con la diferencia de salidas entre la diferencia de entradas; luego se reemplaza uno de los valores en $f(x)=mx+b$ y se despeja $b$. Con $f(2)=7$ y $m=3$: $7=6+b$ da $b=1$. Se puede comprobar con el otro valor conocido."
+        },
+        {
+          "texto": "Regla lineal por pendiente y un punto",
+          "explicacion": "Con $m=-2$ y $f(1)=4$ se tiene $f(x)=-2x+b$ y $4=-2+b$, de donde $b=6$ y $f(x)=-2x+6$. Verificación: $f(1)=-2+6=4$. Si en cambio se da el punto $(x_1,y_1)$, el valor es $b=y_1-mx_1$. Este procedimiento es el mismo que la forma punto-pendiente, pero escrito con la función. Otra comprobación: con $f(x)=-2x+6$, el cero es $x=3$ y el intercepto es $(0,6)$, valores coherentes con una recta que baja 2 unidades por cada unidad que avanza $x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tasa de cambio",
+      "puntos": [
+        {
+          "texto": "$f(x+h)-f(x)=mh$: el cambio depende solo de $h$",
+          "explicacion": "En una función lineal, el cambio de la salida al avanzar $h$ en la entrada es siempre $mh$, sin importar el punto de partida. Con $f(x)=2x+1$: $f(5)-f(2)=11-5=6=2\\cdot3$. Esta tasa de cambio constante es la propiedad que distingue a las funciones lineales de las demás."
+        }
+      ]
+    },
+    {
+      "titulo": "Paralelas y perpendiculares",
+      "puntos": [
+        {
+          "texto": "Rectas paralelas ⇒ misma pendiente",
+          "explicacion": "Dos rectas no verticales son paralelas si y solo si tienen la misma pendiente y distinto intercepto. Las rectas $y=2x+1$ e $y=2x-5$ son paralelas: ambas tienen $m=2$ y no se cortan. Si además tienen igual intercepto, son la misma recta."
+        },
+        {
+          "texto": "Rectas perpendiculares ⇒ producto de pendientes igual a $-1$",
+          "explicacion": "Dos rectas no verticales son perpendiculares si y solo si el producto de sus pendientes es $-1$, es decir $m_1m_2=-1$. Las rectas $y=2x+1$ e $y=-\\frac{1}{2}x+3$ lo son, porque $2\\cdot(-\\frac{1}{2})=-1$. La pendiente de una perpendicular es el inverso y opuesto de la dada."
+        }
+      ]
+    },
+    {
+      "titulo": "Intersección de rectas",
+      "puntos": [
+        {
+          "texto": "Cortar dos rectas: igualar las reglas",
+          "explicacion": "El punto donde se cortan las gráficas de $f$ y $g$ se halla resolviendo $f(x)=g(x)$. Para $f(x)=2x+1$ y $g(x)=-x+7$: $2x+1=-x+7$ da $3x=6$ y $x=2$. Entonces $y=f(2)=5$. Verificación: $g(2)=-2+7=5$. El punto de corte es $(2,5)$. Si al igualar las reglas resulta una ecuación sin solución, como $2x+1=2x+5$ que da $1=5$, las rectas son paralelas y no se cortan. Si resulta una identidad, como $2x+1=2x+1$, las rectas coinciden y tienen infinitos puntos comunes."
+        }
+      ]
+    },
+    {
+      "titulo": "Colinealidad",
+      "puntos": [
+        {
+          "texto": "Tres puntos colineales ⇒ pendientes iguales",
+          "explicacion": "Tres puntos están sobre una misma recta si la pendiente entre el primero y el segundo es igual a la pendiente entre el segundo y el tercero. Con $(1,3)$, $(2,5)$ y $(4,9)$: $\\frac{5-3}{2-1}=2$ y $\\frac{9-5}{4-2}=2$, de modo que son colineales, y están en $y=2x+1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Inversa y composición",
+      "puntos": [
+        {
+          "texto": "Inversa de una función lineal: despejar $x$",
+          "explicacion": "Si $m\\neq0$, la función $f(x)=mx+b$ tiene inversa $f^{-1}(x)=\\frac{x-b}{m}$, que también es lineal. Para $f(x)=2x+1$: de $y=2x+1$ se despeja $x=\\frac{y-1}{2}$, y $f^{-1}(x)=\\frac{x-1}{2}$. Verificación: $f(f^{-1}(x))=2\\cdot\\frac{x-1}{2}+1=x$. El procedimiento es escribir $y=f(x)$, despejar $x$ en función de $y$ e intercambiar los nombres de las variables. La gráfica de la inversa es la reflexión de la gráfica de $f$ respecto de la recta $y=x$. Por ejemplo, $(2,5)$ está en $f$ y $(5,2)$ está en $f^{-1}$, porque $f^{-1}(5)=\\frac{5-1}{2}=2$."
+        },
+        {
+          "texto": "Composición de lineales: se multiplican las pendientes",
+          "explicacion": "La composición de dos funciones lineales es lineal, y su pendiente es el producto de las pendientes. Con $f(x)=2x+1$ y $g(x)=3x-2$: $(f\\circ g)(x)=2(3x-2)+1=6x-3$, con pendiente $6=2\\cdot3$. Verificación en $x=1$: $g(1)=1$ y $f(1)=3$, y $6-3=3$. El intercepto del resultado combina ambos: aquí $-3=2\\cdot(-2)+1$. Además, $g\\circ f$ no tiene por qué coincidir con $f\\circ g$: $(g\\circ f)(x)=3(2x+1)-2=6x+1$, con la misma pendiente pero distinto intercepto."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 5 y 20: ecuaciones y sistemas lineales",
+          "explicacion": "Hallar el cero de una función lineal es resolver una ecuación de primer grado del tema 5, y hallar el corte de dos rectas es resolver un sistema de dos ecuaciones lineales, de los temas anteriores sobre sistemas."
+        },
+        {
+          "texto": "Temas 56 al 65: de la lineal a las demás",
+          "explicacion": "La función lineal es el modelo más sencillo de las funciones crecientes y decrecientes, inyectivas y sobreyectivas, y de las funciones inversas, y sirve de comparación para la cuadrática y las demás funciones de los temas siguientes. Por ejemplo, una función lineal con $m\\neq0$ es inyectiva y sobreyectiva sobre $\\mathbb{R}$, y por eso tiene función inversa, mientras que la función cuadrática, que no es inyectiva, necesita restricciones del dominio."
+        }
+      ]
+    }
+  ]
+}

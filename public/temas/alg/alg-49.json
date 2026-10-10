@@ -1,0 +1,184 @@
+{
+  "curso": "Álgebra",
+  "tema": "Teorema fundamental del álgebra",
+  "glosario": {
+    "teorema fundamental del álgebra": "Todo polinomio no constante tiene raíz compleja",
+    "raíz": "Valor que anula el polinomio",
+    "multiplicidad": "Veces que se repite una raíz",
+    "raíz simple": "Raíz de multiplicidad uno",
+    "raíz doble": "Raíz de multiplicidad dos",
+    "número complejo": "Número de la forma a más bi",
+    "unidad imaginaria": "Número cuyo cuadrado es menos uno",
+    "conjugado": "Número complejo con parte imaginaria opuesta",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "polinomio mónico": "Polinomio con coeficiente principal uno",
+    "factor primo": "Factor que no se descompone en menores",
+    "discriminante": "Expresión que decide el tipo de raíces",
+    "inducción": "Demostración paso a paso desde un caso base",
+    "teorema del factor": "Binomio lineal es factor si evaluación es cero",
+    "regla de Ruffini": "Método para dividir entre un binomio lineal",
+    "grado": "Mayor exponente de la variable",
+    "corolario": "Resultado que se deduce directamente de un teorema",
+    "ecuación polinómica": "Ecuación que iguala un polinomio a cero",
+    "coeficientes racionales": "Coeficientes que son fracciones de enteros",
+    "coeficientes reales": "Coeficientes que son números reales",
+    "factor lineal": "Factor de primer grado"
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado del teorema",
+      "puntos": [
+        {
+          "texto": "«Teorema fundamental del álgebra» ⇒ todo polinomio no constante tiene una raíz compleja",
+          "explicacion": "El teorema fundamental del álgebra afirma que todo polinomio de grado $n \\ge 1$ con coeficientes complejos tiene al menos una raíz en el conjunto de los números complejos. Los coeficientes reales son un caso particular, porque todo número real es complejo. Ejemplo: $x^2 + 1$ no tiene raíces reales, pero tiene la raíz compleja $i$, donde $i$ es la unidad imaginaria que cumple $i^2 = -1$: en efecto, $i^2 + 1 = -1 + 1 = 0$."
+        },
+        {
+          "texto": "«Teorema de d'Alembert-Gauss» = nombre alternativo del teorema fundamental",
+          "explicacion": "El teorema fundamental del álgebra se conoce también como teorema de d'Alembert-Gauss, en reconocimiento a Jean le Rond d'Alembert, quien hizo un primer intento de demostración, y a Carl Friedrich Gauss, quien publicó su primera demostración en su tesis doctoral de 1799 y dio otras después. Ambos nombres designan el mismo enunciado."
+        },
+        {
+          "texto": "«Raíz» de un polinomio → valor que lo anula",
+          "explicacion": "Una raíz de $P(x)$ es un número $r$ (real o complejo) tal que $P(r) = 0$. Es también una solución de la ecuación $P(x) = 0$. Ejemplo: para $P(x) = x^2 - 2x + 5$ el número $1 + 2i$ es raíz, porque $P(1 + 2i) = (1 + 2i)^2 - 2(1 + 2i) + 5 = (1 + 4i - 4) - 2 - 4i + 5 = 0$."
+        },
+        {
+          "texto": "Grado n ≥ 1 ✓ requerido para el teorema",
+          "explicacion": "El teorema exige que el polinomio sea de grado al menos $1$, es decir, no constante. Un polinomio constante distinto de cero, como $P(x) = 5$, no tiene ninguna raíz, porque nunca vale cero. Ejemplo: $P(x) = 3x + 6$ es de grado $1$ y tiene la raíz $-2$, mientras que $P(x) = 5$ carece de raíces."
+        },
+        {
+          "texto": "Los números complejos bastan ⇒ no se necesita ampliar más el conjunto",
+          "explicacion": "Una consecuencia notable es que no hace falta inventar números nuevos para resolver ecuaciones polinómicas: con los complejos toda ecuación $P(x) = 0$ de grado al menos $1$ tiene solución. Ejemplo: la ecuación $x^2 + 1 = 0$ no tenía solución real, y al introducir $i$ queda resuelta; ninguna ecuación posterior, por ejemplo $x^4 + x^2 + 1 = 0$, exige nuevos números."
+        }
+      ]
+    },
+    {
+      "titulo": "Número de raíces",
+      "puntos": [
+        {
+          "texto": "Polinomio de grado n ⇒ exactamente n raíces complejas contando multiplicidad",
+          "explicacion": "Una consecuencia del teorema fundamental es que un polinomio de grado $n$ tiene exactamente $n$ raíces complejas si cada raíz se cuenta tantas veces como indica su multiplicidad. Ejemplo: $P(x) = (x - 1)^2(x + 3)$ tiene grado $3$ y sus raíces son $1$ (dos veces) y $-3$ (una vez), con un total de $2 + 1 = 3$ raíces contadas con multiplicidad."
+        },
+        {
+          "texto": "«Multiplicidad» de una raíz → exponente de su factor en la factorización",
+          "explicacion": "La multiplicidad de una raíz $r$ es el mayor entero $m$ tal que $(x - r)^m$ divide al polinomio. Una raíz de multiplicidad $1$ es simple, de multiplicidad $2$ es doble y de multiplicidad $3$ es triple. Ejemplo: en $(x - 1)^2(x + 3)$ la raíz $1$ tiene multiplicidad $2$ y la raíz $-3$ tiene multiplicidad $1$."
+        },
+        {
+          "texto": "Multiplicidad por Ruffini → dividir repetidamente entre $x - r$",
+          "explicacion": "Para hallar la multiplicidad de una raíz $r$ se divide el polinomio entre $x - r$ con la regla de Ruffini y se repite la división en el cociente mientras el residuo sea cero; el número de divisiones exactas es la multiplicidad. Ejemplo con $P(x) = x^3 - 3x + 2$ y $r = 1$: coeficientes $1, 0, -3, 2$ dan $1, 1, -2$ con residuo $0$; luego $1, 1, -2$ dan $1, 2$ con residuo $0$; luego $1, 2$ dan $1$ con residuo $3 \\ne 0$. Hubo dos divisiones exactas, así que la multiplicidad es $2$ y $P(x) = (x - 1)^2(x + 2)$."
+        },
+        {
+          "texto": "Polinomio de grado n ⇒ a lo sumo n raíces distintas",
+          "explicacion": "Como la factorización tiene $n$ factores lineales, el polinomio no puede tener más de $n$ raíces distintas; si alguna se repite, tiene menos. Ejemplo: $x^2 - 1$ tiene $2$ raíces distintas ($1$ y $-1$), pero $(x - 1)^2$ tiene una sola raíz distinta, $1$, con multiplicidad $2$. Un polinomio de grado $3$ no puede tener cuatro raíces distintas."
+        },
+        {
+          "texto": "Factorización compleja: $P(x) = a_n(x - r_1)(x - r_2) \\cdots (x - r_n)$",
+          "explicacion": "Si $P(x) = a_nx^n + \\cdots + a_0$ tiene grado $n$ y sus raíces complejas son $r_1, r_2, \\dots, r_n$ (contando multiplicidad), entonces $P(x) = a_n(x - r_1)(x - r_2) \\cdots (x - r_n)$, donde $a_n$ es el coeficiente principal. Ejemplo: $2x^2 - 4x + 2 = 2(x - 1)(x - 1) = 2(x - 1)^2$, con $a_n = 2$ y raíces $1$ y $1$."
+        },
+        {
+          "texto": "Sobre los complejos los factores primos son de primer grado",
+          "explicacion": "Como todo polinomio se descompone en factores lineales con coeficientes complejos, los únicos factores primos (irreducibles) sobre los complejos son los polinomios de primer grado. Ejemplo: $x^2 + 1$ es primo sobre los reales, pero sobre los complejos se descompone como $(x + i)(x - i)$; en efecto, $(x + i)(x - i) = x^2 - i^2 = x^2 + 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración del corolario",
+      "puntos": [
+        {
+          "texto": "Corolario: n raíces, por inducción con el teorema del factor",
+          "explicacion": "Del teorema fundamental se obtiene la existencia de $n$ raíces así: $P(x)$ de grado $n \\ge 1$ tiene una raíz $r_1$; por el teorema del factor, $P(x) = (x - r_1)Q(x)$ con $Q$ de grado $n - 1$. Si $n - 1 \\ge 1$, $Q$ tiene otra raíz $r_2$ y $Q(x) = (x - r_2)Q_2(x)$, y así sucesivamente hasta quedar un polinomio constante, que es el coeficiente principal $a_n$. Resulta $P(x) = a_n(x - r_1) \\cdots (x - r_n)$. Ejemplo con $x^3 - 6x^2 + 11x - 6$: raíz $1$ da $(x - 1)(x^2 - 5x + 6)$, y luego $x^2 - 5x + 6 = (x - 2)(x - 3)$."
+        },
+        {
+          "texto": "Construir un polinomio a partir de sus raíces",
+          "explicacion": "Dadas las raíces $r_1, \\dots, r_n$ y el coeficiente principal $a_n$, el polinomio es $a_n(x - r_1) \\cdots (x - r_n)$. Ejemplo: con raíces $1, 2, 3$ y $a_n = 1$ resulta $(x - 1)(x - 2)(x - 3) = (x^2 - 3x + 2)(x - 3) = x^3 - 3x^2 - 3x^2 + 9x + 2x - 6 = x^3 - 6x^2 + 11x - 6$. Si $a_n = 2$, el polinomio sería el doble: $2x^3 - 12x^2 + 22x - 12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes reales",
+      "puntos": [
+        {
+          "texto": "Coeficientes reales ⇒ raíces no reales en pares conjugados",
+          "explicacion": "Si $P(x)$ tiene coeficientes reales y $a + bi$ (con $b \\ne 0$) es raíz, entonces su conjugado $a - bi$ también es raíz, con la misma multiplicidad. Se llama conjugado de $a + bi$ al número $a - bi$. Ejemplo: $P(x) = x^2 - 2x + 5$ tiene la raíz $1 + 2i$ y también $1 - 2i$; suman $2$ y su producto es $(1 + 2i)(1 - 2i) = 1 + 4 = 5$, coincidiendo con los coeficientes."
+        },
+        {
+          "texto": "Demostración: $P(\\bar{z}) = \\overline{P(z)}$ si los coeficientes son reales",
+          "explicacion": "Si los coeficientes de $P$ son reales, el conjugado de una suma o un producto es la suma o el producto de los conjugados, y los coeficientes reales no cambian al conjugarse; por tanto $\\overline{P(z)} = P(\\bar{z})$. Si $P(z) = 0$, entonces $P(\\bar{z}) = \\overline{0} = 0$, de modo que $\\bar{z}$ también es raíz. Ejemplo con $P(x) = x^2 + 1$ y $z = i$: $P(-i) = (-i)^2 + 1 = -1 + 1 = 0$, y $-i$ es el conjugado de $i$."
+        },
+        {
+          "texto": "Cantidad de raíces no reales de un polinomio real ⇒ par",
+          "explicacion": "Como las raíces no reales vienen en pares conjugados, su número total (contando multiplicidad) es par. Ejemplo: un polinomio real de grado $4$ puede tener $0$, $2$ o $4$ raíces no reales; $x^4 - 1 = (x - 1)(x + 1)(x^2 + 1)$ tiene dos raíces reales ($1$ y $-1$) y dos no reales ($i$ y $-i$)."
+        },
+        {
+          "texto": "Grado impar con coeficientes reales ⇒ al menos una raíz real",
+          "explicacion": "Si el grado es impar y los coeficientes son reales, el número de raíces no reales es par, y el total de raíces es impar, así que debe quedar al menos una raíz real. Ejemplo: $x^3 - 1 = (x - 1)(x^2 + x + 1)$ tiene la raíz real $1$ y dos no reales, $\\frac{-1 + i\\sqrt{3}}{2}$ y $\\frac{-1 - i\\sqrt{3}}{2}$, que provienen de $x^2 + x + 1$ con discriminante $1 - 4 = -3$."
+        },
+        {
+          "texto": "Factorización real: factores de primer grado o cuadráticos con discriminante < 0",
+          "explicacion": "Sobre los reales, todo polinomio con coeficientes reales se descompone en factores de primer grado y factores de segundo grado sin raíces reales (de discriminante negativo). Cada par de raíces conjugadas $a \\pm bi$ produce un factor cuadrático real. Ejemplo: $x^4 + 4 = (x^2 + 2x + 2)(x^2 - 2x + 2)$, cuyos factores tienen discriminante $4 - 8 = -4$ y raíces $-1 \\pm i$ y $1 \\pm i$."
+        },
+        {
+          "texto": "Raíces $a \\pm bi$ ⇒ factor real $x^2 - 2ax + a^2 + b^2$",
+          "explicacion": "Al multiplicar $(x - (a + bi))(x - (a - bi))$ se obtiene $(x - a)^2 - (bi)^2 = x^2 - 2ax + a^2 + b^2$, un polinomio con coeficientes reales. Ejemplo: las raíces $1 \\pm 2i$ tienen $a = 1$ y $b = 2$, de modo que el factor es $x^2 - 2x + 1 + 4 = x^2 - 2x + 5$. Verificación: $(x - 1 - 2i)(x - 1 + 2i) = (x - 1)^2 - (2i)^2 = x^2 - 2x + 1 + 4$."
+        },
+        {
+          "texto": "Ejemplo: polinomio mónico real con raíces $2$, $1 + i$ y $1 - i$",
+          "explicacion": "El polinomio mónico (coeficiente principal $1$) es $(x - 2)(x - 1 - i)(x - 1 + i)$. El producto de los dos últimos factores es $(x - 1)^2 - i^2 = x^2 - 2x + 2$. Entonces $(x - 2)(x^2 - 2x + 2) = x^3 - 2x^2 + 2x - 2x^2 + 4x - 4 = x^3 - 4x^2 + 6x - 4$. Verificación: en $x = 2$ vale $8 - 16 + 12 - 4 = 0$."
+        },
+        {
+          "texto": "Coeficientes racionales y raíz $a + \\sqrt{b}$ ⇒ también $a - \\sqrt{b}$",
+          "explicacion": "Si el polinomio tiene coeficientes racionales y una raíz de la forma $a + \\sqrt{b}$ con $a$ racional y $\\sqrt{b}$ irracional, entonces $a - \\sqrt{b}$ también es raíz. Ejemplo: $x^2 - 2x - 1$ tiene la raíz $1 + \\sqrt{2}$ y también $1 - \\sqrt{2}$. Verificación: $(1 + \\sqrt{2})^2 - 2(1 + \\sqrt{2}) - 1 = 1 + 2\\sqrt{2} + 2 - 2 - 2\\sqrt{2} - 1 = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces de ecuaciones",
+      "puntos": [
+        {
+          "texto": "Ecuación de segundo grado ⇒ siempre 2 raíces complejas",
+          "explicacion": "Toda ecuación $ax^2 + bx + c = 0$ con $a \\ne 0$ tiene dos raíces complejas contando multiplicidad: si el discriminante $b^2 - 4ac$ es positivo hay dos reales distintas; si es cero hay una real doble; si es negativo hay dos complejas conjugadas. Ejemplo: $x^2 + 2x + 5 = 0$ tiene discriminante $4 - 20 = -16$, y sus raíces son $\\frac{-2 \\pm 4i}{2} = -1 \\pm 2i$."
+        },
+        {
+          "texto": "Ecuación cúbica real ⇒ 3 raíces, al menos una real",
+          "explicacion": "Una ecuación de tercer grado tiene tres raíces complejas contando multiplicidad. Con coeficientes reales, o bien las tres son reales, o bien una es real y dos son conjugadas no reales. Ejemplo: $x^3 - 6x^2 + 11x - 6 = 0$ tiene tres raíces reales ($1, 2, 3$); $x^3 - 1 = 0$ tiene una real ($1$) y dos conjugadas no reales."
+        },
+        {
+          "texto": "Ecuación de grado n ⇒ n raíces; la suma de multiplicidades es n",
+          "explicacion": "Cualquier ecuación polinómica de grado $n$ tiene $n$ soluciones complejas si se cuentan con su multiplicidad. Esto sirve como verificación al resolver: si se hallan menos raíces de las que indica el grado, faltan raíces o hay una raíz repetida. Ejemplo: $x^4 - 1 = 0$ tiene cuatro raíces: $1$, $-1$, $i$ y $-i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de resolución",
+      "puntos": [
+        {
+          "texto": "Estrategia → hallar raíces racionales, dividir, repetir con el cociente",
+          "explicacion": "Para hallar todas las raíces de un polinomio con coeficientes enteros se buscan las raíces racionales posibles con el teorema de las raíces racionales, se divide entre el factor correspondiente con Ruffini y se repite el proceso con el cociente; al llegar a un trinomio de segundo grado se resuelve con la fórmula, que puede dar raíces complejas. Ejemplo: $x^3 - x^2 + x - 1$ tiene la raíz $1$ (pues $1 - 1 + 1 - 1 = 0$); queda $x^2 + 1$, cuyas raíces son $i$ y $-i$."
+        },
+        {
+          "texto": "Verificación → contar las raíces y comprobar que suman n",
+          "explicacion": "Después de hallar las raíces, se cuenta con multiplicidad: deben sumar el grado del polinomio. Ejemplo: $x^3 - x^2 + x - 1 = (x - 1)(x^2 + 1) = (x - 1)(x - i)(x + i)$ tiene tres raíces, $1$, $i$ y $-i$, y el grado es $3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con temas previos",
+      "puntos": [
+        {
+          "texto": "Temas 15 al 18 «Números complejos» → raíces no reales y conjugados",
+          "explicacion": "El teorema fundamental utiliza los números complejos (tema 15), su forma binomial (tema 16), el módulo y el conjugado (tema 17) y sus propiedades (tema 18). Ejemplo: para $z = 1 + 2i$ el conjugado es $\\bar{z} = 1 - 2i$ y el producto $z \\bar{z} = 1 + 4 = 5$ es real, propiedad usada para formar factores cuadráticos reales."
+        },
+        {
+          "texto": "Tema 06 «Ecuaciones de segundo grado» → caso n = 2 con discriminante",
+          "explicacion": "El tema 06 muestra que una ecuación de segundo grado tiene dos soluciones, reales o complejas conjugadas, según el discriminante; es el caso $n = 2$ del teorema fundamental. Ejemplo: $x^2 - 4x + 13 = 0$ tiene discriminante $16 - 52 = -36$ y raíces $\\frac{4 \\pm 6i}{2} = 2 \\pm 3i$."
+        },
+        {
+          "texto": "Tema 40 «Teorema del factor» → cada raíz da un factor lineal",
+          "explicacion": "El teorema del factor establece que $r$ es raíz de $P$ si y solo si $x - r$ es factor de $P$, y es el paso que se repite en la demostración del corolario. Ejemplo: $P(x) = x^3 - 8$ cumple $P(2) = 0$, luego $x - 2$ es factor y $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$."
+        },
+        {
+          "texto": "Tema 46 «Factorización» → factorización real y compleja de polinomios",
+          "explicacion": "El tema 46 desarrolla la descomposición en factores primos sobre los racionales; este tema completa el panorama: sobre los reales los factores primos son de grado uno o dos, y sobre los complejos solo de grado uno. Ejemplo: $x^4 - 16 = (x - 2)(x + 2)(x^2 + 4)$ sobre los reales y $(x - 2)(x + 2)(x - 2i)(x + 2i)$ sobre los complejos."
+        }
+      ]
+    }
+  ]
+}
