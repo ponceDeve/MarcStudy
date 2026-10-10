@@ -217,13 +217,14 @@
 .glossary-term {
   position: relative;
   display: inline;
-  color: var(--success);
+  background: var(--primary-dark);
+  color: var(--ink-on-primary);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   text-underline-offset: 3px;
   border-radius: 4px;
   transition: background-color 0.2s linear;
   white-space: nowrap;
-  padding: 0 2px;
+  padding: 0 6px;
 }
 /* Símbolos matemáticos/científicos (=, +, ≠, ≈, ↑, ↓, etc.) del
    glosario: mismo trato (subrayado, tooltip) pero con un color
