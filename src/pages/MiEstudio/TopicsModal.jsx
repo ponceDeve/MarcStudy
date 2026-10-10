@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { buscarConPuntaje } from "../../lib/buscador";
+import { puntajeDeTexto } from "../../lib/buscador";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
 
@@ -11,15 +11,32 @@ const PAG_GAP = 6;
 const PAG_CASILLAS_MIN = 5;
 const PAG_CASILLAS_MAX = 11;
 
+// Si algún tema coincide de forma directa (ej. "India" con "india"), se
+// descartan las coincidencias aproximadas (typos o letras sueltas), que
+// traían temas sin relación como "Segunda Revolución Industrial" o
+// "Primera Guerra Mundial". Las aproximadas solo se muestran cuando no
+// hay ninguna coincidencia directa.
+const PUNTAJE_FUERTE = 400;
+
+function filtrarTemas(items, query) {
+  const puntuados = items
+    .map((it) => ({ it, score: puntajeDeTexto(it.item.tema, query) }))
+    .filter((r) => r.score > 0);
+
+  const hayFuerte = puntuados.some((r) => r.score >= PUNTAJE_FUERTE);
+
+  return puntuados
+    .filter((r) => !hayFuerte || r.score >= PUNTAJE_FUERTE)
+    .sort((a, b) => b.score - a.score)
+    .map((r) => r.it);
+}
+
 function calcularCasillasNumeros(ancho) {
   if (!ancho) return PAG_CASILLAS_MIN;
 
   const botones = Math.floor((ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP));
 
-  return Math.max(
-    PAG_CASILLAS_MIN,
-    Math.min(PAG_CASILLAS_MAX, botones)
-  );
+  return Math.max(PAG_CASILLAS_MIN, Math.min(PAG_CASILLAS_MAX, botones));
 }
 
 function armarPaginacion(total, actual, casillas) {
@@ -71,6 +88,7 @@ export default function TopicsModal({
 }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const [busqueda, setBusqueda] = useState("");
+  const [textoInput, setTextoInput] = useState("");
   const [inputEnfocado, setInputEnfocado] = useState(false);
   const [puntosTema, setPuntosTema] = useState([]);
   const [cargandoPuntos, setCargandoPuntos] = useState(false);
@@ -78,6 +96,8 @@ export default function TopicsModal({
   const [direccion, setDireccion] = useState(null);
   const [estrellasPorTema, setEstrellasPorTema] = useState({});
   const [anchoMapa, setAnchoMapa] = useState(0);
+  const [modoTeoria, setModoTeoria] = useState(false);
+  const [mostrarNombreTema, setMostrarNombreTema] = useState(false);
 
   const barraTemaRef = useRef(null);
   const modalRef = useRef(null);
@@ -86,24 +106,25 @@ export default function TopicsModal({
 
   const UMBRAL_ARRASTRE = 10;
 
-  const itemActivo =
-    activeIndex !== null ? listaTemas[activeIndex] : null;
-
-  const hayTemaSeleccionado = itemActivo !== null;
+  const itemActivo = activeIndex !== null ? listaTemas[activeIndex] : null;
 
   // La flecha solo se habilita cuando la búsqueda de niveles cambió el mapa
   // (hay texto en el buscador). Seleccionar un nivel no la habilita.
   const hayBusqueda = busqueda.trim() !== "";
+  const puedeVolver = hayBusqueda || itemActivo !== null;
 
   useEffect(() => {
     if (!open) {
       setBusqueda("");
+      setTextoInput("");
       setActiveIndex(null);
       setInputEnfocado(false);
       setPuntosTema([]);
       setCargandoPuntos(false);
       setPagina(0);
       setDireccion(null);
+      setModoTeoria(false);
+      setMostrarNombreTema(false);
       return;
     }
 
@@ -118,6 +139,7 @@ export default function TopicsModal({
 
   useEffect(() => {
     setPuntosTema([]);
+    setModoTeoria(false);
 
     if (!open || !itemActivo || !onCargarPuntos) {
       setCargandoPuntos(false);
@@ -155,9 +177,7 @@ export default function TopicsModal({
 
     const idx = listaTemas.findIndex((t) => t.tema === temaActual);
 
-    setPagina(
-      idx >= 0 ? Math.floor(idx / NIVELES_POR_PAGINA) : 0
-    );
+    setPagina(idx >= 0 ? Math.floor(idx / NIVELES_POR_PAGINA) : 0);
 
     setDireccion(null);
   }, [open, listaTemas, temaActual]);
@@ -170,6 +190,8 @@ export default function TopicsModal({
       return;
     }
 
+    setModoTeoria(false);
+    setMostrarNombreTema(true);
     setActiveIndex(index);
   }
 
@@ -192,15 +214,28 @@ export default function TopicsModal({
   }
 
   function volverAlMapa() {
+    // Si hay un tema seleccionado, la flecha solo lo deselecciona.
+    if (itemActivo) {
+      setActiveIndex(null);
+      setModoTeoria(false);
+      setMostrarNombreTema(false);
+      setPuntosTema([]);
+      setCargandoPuntos(false);
+      return;
+    }
+
     if (!hayBusqueda) return;
 
     setActiveIndex(null);
     setBusqueda("");
+    setTextoInput("");
     setPagina(0);
     setDireccion(null);
     setInputEnfocado(false);
     setPuntosTema([]);
     setCargandoPuntos(false);
+    setModoTeoria(false);
+    setMostrarNombreTema(false);
 
     barraTemaRef.current?.limpiar?.();
     barraTemaRef.current?.reset?.();
@@ -212,15 +247,15 @@ export default function TopicsModal({
   }));
 
   const temasFiltrados = busqueda.trim()
-    ? buscarConPuntaje(
-        temasConIndice,
-        busqueda,
-        ({ item }) => item.tema
-      )
+    ? filtrarTemas(temasConIndice, busqueda)
+    : temasConIndice;
+
+  const temasDesplegable = textoInput.trim()
+    ? filtrarTemas(temasConIndice, textoInput)
     : temasConIndice;
 
   const { focusedIdx, handleKeyDown } = useArrowKeyList(
-    itemActivo ? [] : temasFiltrados,
+    temasDesplegable,
     ({ item }) => {
       onSelectTema(item);
       onClose();
@@ -233,7 +268,7 @@ export default function TopicsModal({
       return;
     }
 
-    if (e.key === "Enter" && !busqueda.trim() && focusedIdx < 0) {
+    if (e.key === "Enter" && !textoInput.trim() && focusedIdx < 0) {
       return;
     }
 
@@ -258,21 +293,14 @@ export default function TopicsModal({
   for (let r = 0; r < filasPorPagina; r++) {
     filasVisibles.push({
       filaIndex: r,
-      fila: temasPagina.slice(
-        r * COLUMNAS,
-        r * COLUMNAS + COLUMNAS
-      ),
+      fila: temasPagina.slice(r * COLUMNAS, r * COLUMNAS + COLUMNAS),
     });
   }
 
   filasVisibles.reverse();
 
   function irAPagina(nueva) {
-    if (
-      nueva === paginaActual ||
-      nueva < 0 ||
-      nueva >= totalPaginas
-    ) {
+    if (nueva === paginaActual || nueva < 0 || nueva >= totalPaginas) {
       return;
     }
 
@@ -355,11 +383,11 @@ export default function TopicsModal({
         <div className="levels-modal__search-row">
           <div
             className={`home-search levels-modal__search ${
-              itemActivo ? "levels-modal__search--teoria" : ""
+              modoTeoria ? "levels-modal__search--teoria" : ""
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            {itemActivo ? (
+            {itemActivo && modoTeoria ? (
               <TheorySearchBar
                 key={itemActivo.archivo}
                 ref={barraTemaRef}
@@ -376,34 +404,51 @@ export default function TopicsModal({
                   autoComplete="off"
                   type="search"
                   name="buscar-tema"
-                  value={busqueda}
+                  value={
+                    mostrarNombreTema && itemActivo
+                      ? itemActivo.tema
+                      : textoInput
+                  }
                   onChange={(e) => {
+                    setMostrarNombreTema(false);
+                    setTextoInput(e.target.value);
                     setBusqueda(e.target.value);
                     setPagina(0);
                     setDireccion(null);
                   }}
-                  onFocus={() => setInputEnfocado(true)}
+                  onFocus={() => {
+                    setInputEnfocado(true);
+                    setMostrarNombreTema(false);
+                    setTextoInput("");
+                  }}
                   onBlur={() =>
-                    setTimeout(() => setInputEnfocado(false), 150)
+                    setTimeout(() => {
+                      setInputEnfocado(false);
+                      if (itemActivo) {
+                        setMostrarNombreTema(true);
+                      }
+                    }, 150)
                   }
                   onKeyDown={onKeyDownNombres}
                   placeholder={
-                    curso
-                      ? `Temas de ${curso}`
-                      : "Buscar tema por nombre..."
+                    itemActivo
+                      ? "Buscar otro tema..."
+                      : curso
+                        ? `Temas de ${curso}`
+                        : "Buscar tema por nombre..."
                   }
                   className="home-search-input"
                 />
 
                 {inputEnfocado && (
                   <div className="home-search-results">
-                    {temasFiltrados.length === 0 && (
+                    {temasDesplegable.length === 0 && (
                       <p className="search-empty">
-                        Ningún tema coincide con "{busqueda}".
+                        Ningún tema coincide con "{textoInput}".
                       </p>
                     )}
 
-                    {temasFiltrados.map(({ item, index }, idx) => (
+                    {temasDesplegable.map(({ item, index }, idx) => (
                       <button
                         key={index}
                         type="button"
@@ -413,8 +458,7 @@ export default function TopicsModal({
                           onClose();
                         }}
                         className={`home-search-result ${
-                          item.tema === temaActual ||
-                          idx === focusedIdx
+                          item.tema === temaActual || idx === focusedIdx
                             ? "is-focused"
                             : ""
                         }`}
@@ -422,7 +466,7 @@ export default function TopicsModal({
                         <p>
                           <ResaltarCoincidencia
                             texto={item.tema}
-                            query={busqueda}
+                            query={textoInput}
                           />
                         </p>
                       </button>
@@ -438,21 +482,26 @@ export default function TopicsModal({
               disabled={!itemActivo || cargandoPuntos}
               title={
                 itemActivo
-                  ? "Buscar dentro de este tema"
+                  ? modoTeoria
+                    ? "Buscar dentro de este tema"
+                    : "Buscar dentro de este tema (pulsa para activar)"
                   : "Toca un tema del mapa para buscar dentro de él"
               }
               aria-label={
-                itemActivo
+                modoTeoria
                   ? "Buscar dentro de este tema"
-                  : "Selecciona un tema para buscar"
+                  : "Activar búsqueda dentro del tema"
               }
               onMouseDown={(e) => e.preventDefault()}
-              onClick={() => barraTemaRef.current?.buscar?.()}
+              onClick={() => {
+                if (!modoTeoria) {
+                  setModoTeoria(true);
+                  return;
+                }
+                barraTemaRef.current?.buscar?.();
+              }}
             >
-              <i
-                className="fa-solid fa-magnifying-glass"
-                aria-hidden="true"
-              />
+              <i className="fa-solid fa-magnifying-glass" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -469,9 +518,7 @@ export default function TopicsModal({
             <div
               key={filaIndex}
               className={`levels-map__row ${
-                filaIndex % 2 === 1
-                  ? "levels-map__row--reverse"
-                  : ""
+                filaIndex % 2 === 1 ? "levels-map__row--reverse" : ""
               }`}
             >
               {Array.from({ length: COLUMNAS }).map((_, posicion) => {
@@ -501,27 +548,19 @@ export default function TopicsModal({
                   posicion === COLUMNAS - 1 && hayFilaSiguiente;
 
                 const estrellasTema =
-                  estrellasPorTema[`${curso}_${item.tema}`]
-                    ?.estrellas || 0;
+                  estrellasPorTema[`${curso}_${item.tema}`]?.estrellas || 0;
 
                 return (
                   <div
                     key={index}
                     className={`level-cell ${
                       conectaFila ? "level-cell--h" : ""
-                    } ${
-                      conectaArriba ? "level-cell--v" : ""
-                    } ${
-                      esCursoIngles
-                        ? "level-cell--sin-estrellas"
-                        : ""
+                    } ${conectaArriba ? "level-cell--v" : ""} ${
+                      esCursoIngles ? "level-cell--sin-estrellas" : ""
                     }`}
                   >
                     {!esCursoIngles && (
-                      <div
-                        className="level-cell__estrellas"
-                        aria-hidden="true"
-                      >
+                      <div className="level-cell__estrellas" aria-hidden="true">
                         {[1, 2, 3].map((n) => (
                           <span
                             key={n}
@@ -538,9 +577,7 @@ export default function TopicsModal({
                       className={`level-btn ${
                         esTemaActual ? "is-current" : ""
                       } ${esArmado ? "is-armado" : ""}`}
-                      onPointerDown={(e) =>
-                        manejarToqueInicial(item, e)
-                      }
+                      onPointerDown={(e) => manejarToqueInicial(item, e)}
                       onClick={(e) => {
                         e.stopPropagation();
 
@@ -558,17 +595,13 @@ export default function TopicsModal({
                           className={`level-btn__numero level-btn__numero--estrella level-btn__numero--estrellas-${estrellasTema}`}
                           role="img"
                           aria-label={`Nivel ${index + 1}, ${estrellasTema} ${
-                            estrellasTema === 1
-                              ? "estrella"
-                              : "estrellas"
+                            estrellasTema === 1 ? "estrella" : "estrellas"
                           }`}
                         >
                           ★
                         </span>
                       ) : (
-                        <span className="level-btn__numero">
-                          {index + 1}
-                        </span>
+                        <span className="level-btn__numero">{index + 1}</span>
                       )}
                     </button>
                   </div>
@@ -617,15 +650,13 @@ export default function TopicsModal({
           <button
             type="button"
             className={`levels-modal__volver ${
-              !hayBusqueda
-                ? "levels-modal__volver--deshabilitado"
-                : ""
+              !puedeVolver ? "levels-modal__volver--deshabilitado" : ""
             }`}
             onClick={volverAlMapa}
-            disabled={!hayBusqueda}
+            disabled={!puedeVolver}
             aria-label="Volver al mapa completo"
             title={
-              hayBusqueda
+              puedeVolver
                 ? "Volver al mapa completo"
                 : "Ya estás en el mapa completo"
             }
