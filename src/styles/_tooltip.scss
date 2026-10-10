@@ -217,8 +217,8 @@
 .glossary-term {
   position: relative;
   display: inline;
-  background: var(--primary-dark);
-  color: var(--ink-on-primary);
+  color: var(--primary-dark);
+  text-decoration: dashed underline var(--primary-dark);
   cursor: url("/cursor_pointer.webp"), pointer !important;
   text-underline-offset: 3px;
   border-radius: 4px;
@@ -233,6 +233,7 @@
 .glossary-term--simbolo {
   color: var(--brand);
   background:transparent;
+  text-decoration: none;
 }
 .glossary-term--simbolo:hover {
   color: var(--brand-dark);

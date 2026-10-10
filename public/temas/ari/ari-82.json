@@ -1,0 +1,150 @@
+{
+  "curso": "Aritmética",
+  "tema": "Espacio muestral",
+  "glosario": {
+    "espacio muestral": "Conjunto de todos los resultados posibles",
+    "evento": "Subconjunto del espacio muestral formado por resultados",
+    "evento simple": "Evento formado por un único resultado",
+    "evento compuesto": "Evento formado por dos o más resultados",
+    "evento seguro": "Evento que contiene todo el espacio muestral",
+    "evento imposible": "Evento sin ningún resultado posible",
+    "evento complementario": "Evento formado por los resultados que no ocurren",
+    "eventos mutuamente excluyentes": "Eventos que no pueden ocurrir a la vez"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de espacio muestral",
+      "puntos": [
+        {
+          "texto": "El «espacio muestral» reúne todos los resultados posibles de un experimento.",
+          "explicacion": "El espacio muestral es el conjunto de todos los resultados que puede dar un experimento aleatorio, descrito en el tema 81. Antes de estudiar la probabilidad de cualquier suceso es necesario conocer ese conjunto, porque cada resultado observado pertenece a él. Describirlo con precisión define el marco en el que se trabaja, y se considera el primer paso de cualquier análisis de un fenómeno aleatorio."
+        },
+        {
+          "texto": "El espacio muestral se escribe con la letra griega omega, $\\Omega$.",
+          "explicacion": "La letra $\\Omega$ es la notación habitual para el espacio muestral, y permite distinguirlo de los eventos, que se nombran con letras mayúsculas como A o B. Su número de elementos se escribe $n(\\Omega)$, con la misma notación de cardinalidad estudiada en el tema 10. Esta convención se mantiene en todos los temas de probabilidad del curso."
+        },
+        {
+          "texto": "Cada resultado del espacio muestral aparece una sola vez.",
+          "explicacion": "Como el espacio muestral es un conjunto, cada resultado se lista una única vez, aunque se obtenga repetidamente al realizar el experimento. Los resultados también deben ser mutuamente excluyentes, es decir, al realizarse el experimento ocurre uno y solo uno de ellos. Esta exigencia evita contar dos veces el mismo desenlace al calcular probabilidades."
+        },
+        {
+          "texto": "Un espacio muestral debe incluir todos los desenlaces posibles.",
+          "explicacion": "Si el espacio muestral omite algún resultado posible, los cálculos posteriores serán incorrectos, porque el conjunto de referencia no cubre todo lo que puede ocurrir. Por eso, al describir un experimento, conviene verificar que cada desenlace observable tenga su lugar. La exhaustividad es una condición de construcción del espacio, no un resultado que se deduce después."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de espacios muestrales",
+      "puntos": [
+        {
+          "texto": "Lanzar una moneda una vez tiene dos resultados posibles.",
+          "explicacion": "El espacio muestral de un lanzamiento de moneda es el conjunto que contiene cara y sello. Si la moneda cae de canto, lo que ocurre casi nunca, se considera convencionalmente fuera del modelo. Este espacio es el más simple de todos los espacios muestrales, y sirve de base para describir espacios más complejos."
+        },
+        {
+          "texto": "Lanzar dos monedas produce cuatro resultados ordenados.",
+          "explicacion": "Al lanzar dos monedas se distingue cuál es la primera y cuál es la segunda, por lo que los resultados son cara-cara, cara-sello, sello-cara y sello-sello. Si el orden no se distingue, se obtendrían solo tres resultados, por lo que la elección de qué se considera un resultado debe quedar explícita. El espacio muestral depende de la descripción del experimento."
+        },
+        {
+          "texto": "Lanzar un dado tiene seis resultados posibles.",
+          "explicacion": "El espacio muestral de un dado de seis caras es el conjunto de los números del uno al seis. Cada número corresponde a una cara distinta, y los seis resultados son mutuamente excluyentes. Este espacio es finito y se describe por extensión, como se estudió en el tema 07."
+        },
+        {
+          "texto": "Lanzar dos dados tiene treinta y seis resultados ordenados posibles.",
+          "explicacion": "El espacio muestral de dos dados se obtiene combinando cada resultado del primero con cada resultado del segundo, lo que corresponde al producto cartesiano estudiado en el tema 14. Como cada dado tiene seis resultados, el número total de pares ordenados es seis por seis, es decir, treinta y seis. Este cálculo muestra cómo un espacio muestral crece rápidamente al combinar experimentos."
+        },
+        {
+          "texto": "Un espacio muestral puede ser finito o infinito.",
+          "explicacion": "Un espacio muestral es finito cuando tiene una cantidad limitada de resultados, como en los dados o las monedas. Es infinito cuando admite una cantidad sin límite de resultados, y su estudio requiere las herramientas de cardinalidad del tema 10. La distinción entre finito e infinito determina qué métodos de cálculo pueden aplicarse."
+        },
+        {
+          "texto": "Contar lanzamientos hasta el primer sello produce un espacio infinito numerable.",
+          "explicacion": "Si se lanza una moneda hasta obtener el primer sello, el número de lanzamientos necesarios puede ser uno, dos, tres y así sucesivamente, sin límite. Los resultados se pueden ordenar en una sucesión, por lo que el espacio es infinito numerable, como se estudió en el tema 10. La posibilidad de un número ilimitado de lanzamientos es la característica que lo hace infinito."
+        }
+      ]
+    },
+    {
+      "titulo": "Concepto de evento",
+      "puntos": [
+        {
+          "texto": "Un «evento» es un subconjunto del espacio muestral.",
+          "explicacion": "Un evento es cualquier colección de resultados del espacio muestral, escrita como un subconjunto de $\\Omega$, por ejemplo $A \\subset \\Omega$. Puede contener un solo resultado, varios o ninguno. La idea de subconjunto es la misma que la de la relación de inclusión estudiada en el tema 11, aplicada ahora a resultados de un experimento."
+        },
+        {
+          "texto": "Un evento ocurre si el resultado observado pertenece a él.",
+          "explicacion": "Realizado el experimento, se observa un único resultado. Se dice que un evento ocurre cuando ese resultado pertenece al subconjunto que lo define. Así, el evento «salir número par» ocurre si el resultado del dado es dos, cuatro o seis. Esta forma de decidir si un evento ocurrió es la base de su uso en la probabilidad."
+        },
+        {
+          "texto": "Un «evento simple» contiene exactamente un resultado.",
+          "explicacion": "Los eventos simples son los subconjuntos formados por un único resultado del espacio muestral. En el lanzamiento de un dado, obtener un tres es un evento simple. Los eventos simples son los bloques elementales a partir de los cuales se construyen todos los demás eventos del espacio."
+        },
+        {
+          "texto": "Un «evento compuesto» contiene dos o más resultados.",
+          "explicacion": "Un evento compuesto agrupa varios resultados del espacio muestral, como obtener un número par en un dado, que reúne dos, cuatro y seis. Todo evento compuesto puede descomponerse en eventos simples, lo que facilita su análisis. La distinción entre simple y compuesto es útil al contar casos favorables en el tema 84."
+        },
+        {
+          "texto": "El «evento seguro» es el propio espacio muestral completo.",
+          "explicacion": "El evento seguro contiene todos los resultados posibles, por lo que siempre ocurre al realizar el experimento. Por ejemplo, en el lanzamiento de un dado, que el resultado sea un número del uno al seis es un evento seguro. Aunque parezca trivial, es un evento de referencia importante para las operaciones con eventos."
+        },
+        {
+          "texto": "El «evento imposible» es el conjunto vacío, sin ningún resultado.",
+          "explicacion": "El evento imposible no contiene ningún resultado del espacio muestral y, por tanto, nunca ocurre al realizar el experimento. Se representa con el símbolo $\\emptyset$, el conjunto vacío estudiado en el tema 08. En el dado, obtener un siete es un evento imposible, porque ese resultado no está en el espacio."
+        },
+        {
+          "texto": "El «evento complementario» contiene los resultados que no están en A.",
+          "explicacion": "Dado un evento A, su complementario, escrito como $A^c$, contiene los resultados del espacio muestral que no pertenecen a A. Ocurre exactamente cuando A no ocurre. Por ejemplo, si A es obtener un número par en un dado, su complementario es obtener un número impar, porque ambos eventos reúnen todos los resultados sin solaparse. Esta relación corresponde al complemento de conjuntos estudiado en el tema 13, y su uso permite calcular un evento a partir del contrario."
+        },
+        {
+          "texto": "Dos «eventos mutuamente excluyentes» no comparten ningún resultado.",
+          "explicacion": "Dos eventos mutuamente excluyentes son disjuntos, es decir, su intersección es el conjunto vacío, como se vio en el tema 13. Por ejemplo, en el dado, obtener un número par y obtener un tres no pueden ocurrir a la vez. Esta condición es importante al sumar probabilidades de eventos distintos, un tema que se desarrolla en el tema 83."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con eventos",
+      "puntos": [
+        {
+          "texto": "La unión de eventos ocurre si ocurre al menos uno.",
+          "explicacion": "La unión de los eventos A y B, escrita como $A \\cup B$, contiene los resultados que pertenecen a alguno de los dos. Ocurre cuando se produce A, cuando se produce B o cuando se producen ambos. Esta operación sigue las mismas reglas de unión de conjuntos estudiadas en el tema 13."
+        },
+        {
+          "texto": "La intersección de dos eventos ocurre si ocurren ambos a la vez.",
+          "explicacion": "La intersección de A y B, escrita como $A \\cap B$, contiene los resultados comunes a ambos eventos. Solo ocurre cuando se producen los dos a la vez. Su cálculo sigue las reglas del tema 13, y es la base para identificar eventos compatibles e incompatibles."
+        },
+        {
+          "texto": "Las operaciones con eventos siguen las reglas de la teoría de conjuntos.",
+          "explicacion": "Como cada evento es un subconjunto del espacio muestral, la unión, la intersección y el complemento cumplen las propiedades estudiadas en el tema 13, incluidas las leyes de De Morgan. Esta correspondencia permite razonar sobre eventos sin necesidad de nuevas reglas. Su aplicación en el cálculo de probabilidades se desarrolla en los temas 83 a 86."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia del espacio muestral",
+      "puntos": [
+        {
+          "texto": "Andréi Kolmogórov formalizó la probabilidad a partir de espacios muestrales en 1933.",
+          "explicacion": "Andréi Kolmogórov, matemático soviético nacido en 1903 y fallecido en 1987, publicó en 1933 la obra «Grundbegriffe der Wahrscheinlichkeitsrechnung», en la que presentó la probabilidad como una medida definida sobre un espacio de resultados. Su formulación axiomática se convirtió en el marco estándar de la teoría de probabilidades."
+        },
+        {
+          "texto": "Pierre-Simon Laplace describió en 1812 el cálculo con casos igualmente posibles.",
+          "explicacion": "Pierre-Simon Laplace, matemático francés nacido en 1749 y fallecido en 1827, expuso en 1812 la «Théorie analytique des probabilités», donde describió el cálculo de probabilidades a partir de casos igualmente posibles. Esa idea exige haber enumerado previamente todos los resultados del espacio muestral, por lo que el concepto de espacio es antecedente directo del cálculo clásico."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Olvidar resultados posibles al listar el espacio muestral es un error.",
+          "explicacion": "Al construir el espacio muestral, es fácil omitir algún resultado, sobre todo cuando el experimento tiene varias etapas. Un espacio incompleto produce probabilidades erróneas, porque el total de referencia no corresponde a todos los desenlaces. Una verificación útil es comprobar que el número de resultados coincide con el cálculo del producto de las etapas."
+        },
+        {
+          "texto": "Contar resultados sin considerar el orden puede subestimar el espacio muestral.",
+          "explicacion": "En dos dados, el resultado dos y cinco puede obtenerse como primero dos y segundo cinco, o al revés. Si se cuentan solo las combinaciones sin orden, se pierden casos distintos. Decidir si el orden importa es una condición que debe fijarse antes de listar los resultados."
+        },
+        {
+          "texto": "Confundir un resultado con un evento es un error frecuente.",
+          "explicacion": "Un resultado es un elemento del espacio muestral, mientras que un evento es un subconjunto del espacio muestral que puede contener uno o varios resultados. Confundirlos lleva a tratar un número como si fuera un conjunto de resultados, lo que altera las operaciones. La diferencia es la misma que la estudiada entre elemento y subconjunto en los temas 09 y 11."
+        }
+      ]
+    }
+  ]
+}

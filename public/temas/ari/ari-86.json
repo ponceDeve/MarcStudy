@@ -1,0 +1,136 @@
+{
+  "curso": "Aritmética",
+  "tema": "Probabilidad total",
+  "glosario": {
+    "probabilidad total": "Probabilidad de un evento calculada sobre una partición",
+    "partición": "Familia de eventos disjuntos que cubre el espacio",
+    "diagrama de árbol": "Representación gráfica de etapas y ramas con probabilidades",
+    "rama": "Camino del diagrama que une etapas consecutivas"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de partición",
+      "puntos": [
+        {
+          "texto": "Una «partición» divide el espacio muestral en eventos disjuntos que lo cubren.",
+          "explicacion": "Una partición del espacio muestral es una familia de eventos B1, B2, hasta Bn que cumplen dos condiciones: son disjuntos dos a dos, es decir, no comparten resultados, y su unión es el espacio muestral completo. Cada resultado del experimento pertenece a uno y solo uno de los eventos de la partición. Esta estructura permite descomponer cualquier evento en partes que se pueden estudiar por separado."
+        },
+        {
+          "texto": "En una partición, cada resultado pertenece a exactamente un evento.",
+          "explicacion": "La exclusión mutua de los eventos de la partición garantiza que no haya resultados contados dos veces al sumar sus probabilidades. La cobertura total garantiza que ningún resultado quede sin clasificar. Ambas condiciones son necesarias, porque si falta alguna, la descomposición del evento deja de ser correcta."
+        },
+        {
+          "texto": "Una partición puede estar formada por dos o más eventos.",
+          "explicacion": "El caso más sencillo es una partición de dos eventos, formada por un evento B y su complementario. Con más eventos se obtienen particiones de tres, cuatro o más partes, como ocurre cuando un experimento se realiza en varias fuentes o categorías. La cantidad de eventos depende de cómo se decida clasificar los resultados."
+        },
+        {
+          "texto": "Los eventos de una partición deben tener probabilidad positiva.",
+          "explicacion": "Como la probabilidad total utiliza probabilidades condicionales dadas las partes de la partición, cada parte debe tener probabilidad mayor que cero, según lo estudiado en el tema 85. Un evento de probabilidad cero no aporta nada a la suma y, además, no permite condicionar. Si aparece una parte así, puede eliminarse de la partición sin alterar el resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de la probabilidad total",
+      "puntos": [
+        {
+          "texto": "La «probabilidad total» descompone $P(A)$ en la suma de sus partes.",
+          "explicacion": "Si B1, B2, hasta Bn forman una partición del espacio muestral, la probabilidad de un evento A se obtiene como la suma de las probabilidades de A dado cada Bi multiplicadas por la probabilidad de cada Bi. Se escribe $\\sum_{1 \\le i \\le n} P(A \\mid B_i)\\,P(B_i)$. Esta fórmula permite calcular la probabilidad de A cuando resulta difícil medirla directamente, pero sí se conocen las partes."
+        },
+        {
+          "texto": "Cada sumando es una probabilidad condicional por una probabilidad simple.",
+          "explicacion": "El sumando correspondiente a Bi combina dos datos: la probabilidad de que ocurra Bi y la probabilidad de A dentro de Bi. Multiplicarlos equivale a calcular la probabilidad de la intersección de A con Bi, según la regla del producto del tema 85. Por eso la suma total equivale a la suma de las probabilidades de las intersecciones de A con cada parte."
+        },
+        {
+          "texto": "La probabilidad total se justifica por la aditividad de eventos disjuntos.",
+          "explicacion": "Como los eventos de la partición son disjuntos y cubren el espacio, el evento A se puede escribir como la unión de las intersecciones de A con cada Bi, y estas intersecciones también son disjuntas. Por el tercer axioma de probabilidad estudiado en el tema 83, la probabilidad de A es la suma de las probabilidades de esas intersecciones. Esta justificación muestra que la fórmula no es una regla arbitraria."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo de máquinas",
+      "puntos": [
+        {
+          "texto": "Con tres máquinas, la probabilidad de pieza defectuosa es 3,2 %.",
+          "explicacion": "La máquina 1 produce el 50 % de las piezas, con 2 % de defectuosas; la máquina 2 produce el 30 %, con 4 % de defectuosas; y la máquina 3 produce el 20 %, con 5 % de defectuosas. Como las máquinas forman una partición de la producción, la probabilidad de que una pieza tomada al azar sea defectuosa es la suma de los tres productos, es decir, 0,01 más 0,012 más 0,01, que da 0,032, o sea 3,2 %."
+        },
+        {
+          "texto": "Cada máquina aporta un sumando: su proporción por su tasa de defecto.",
+          "explicacion": "El sumando de cada máquina se obtiene multiplicando la proporción de piezas que produce por la probabilidad de defecto dentro de su producción. La máquina 1 aporta 0,01, la máquina 2 aporta 0,012 y la máquina 3 aporta 0,01. Esta descomposición permite identificar qué máquina contribuye más a las piezas defectuosas, aunque no produzca la mayor cantidad."
+        },
+        {
+          "texto": "Cada sumando debe usar la probabilidad de su propia parte.",
+          "explicacion": "En el ejemplo de las máquinas, si se multiplicara la proporción de cada máquina por la tasa de defecto de otra, la suma cambiaría. Cada tasa de defecto debe corresponder a la máquina que la produce. Por eso conviene escribir cada sumando junto con la parte a la que pertenece antes de sumar."
+        }
+      ]
+    },
+    {
+      "titulo": "Diagrama de árbol",
+      "puntos": [
+        {
+          "texto": "Un «diagrama de árbol» organiza etapas y ramas con probabilidades.",
+          "explicacion": "El diagrama de árbol es una representación gráfica en la que cada etapa se dibuja como un nodo y cada posible resultado de esa etapa como una rama. Las probabilidades se escriben sobre las ramas, de modo que el árbol muestra la estructura del experimento completo. Es un recurso muy útil para problemas con varias etapas consecutivas."
+        },
+        {
+          "texto": "Cada «rama» multiplica las probabilidades de su camino.",
+          "explicacion": "La probabilidad de un camino completo, desde el inicio hasta un resultado final, se obtiene multiplicando las probabilidades de las ramas que lo forman. Esta regla es la regla del producto aplicada a etapas sucesivas, estudiada en el tema 85. Así, cada hoja del árbol tiene una probabilidad que corresponde a una combinación de etapas."
+        },
+        {
+          "texto": "Sumar los caminos a un mismo resultado da su probabilidad total.",
+          "explicacion": "Si un resultado final puede alcanzarse por varios caminos, su probabilidad total es la suma de las probabilidades de esos caminos. Esta suma es la misma operación que la fórmula de la probabilidad total, aplicada sobre las ramas del árbol. El diagrama permite visualizar con claridad qué caminos contribuyen al evento."
+        },
+        {
+          "texto": "Las ramas que salen de un mismo nodo suman uno.",
+          "explicacion": "Desde cada nodo, las ramas corresponden a los resultados de una partición de la etapa, así que sus probabilidades deben sumar uno. Este control es útil para verificar el diagrama antes de calcular. Si la suma no es uno, algún resultado no está representado o alguna probabilidad está mal asignada."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo de urnas",
+      "puntos": [
+        {
+          "texto": "Con dos urnas equiprobables, la probabilidad de bola roja es un medio.",
+          "explicacion": "Se elige una urna al azar, con probabilidad un medio para cada una. La urna A tiene tres bolas rojas y una azul, y la urna B tiene una roja y tres azules. Dado que se elige A, la probabilidad de roja es tres cuartos, y dado B es un cuarto. La probabilidad total es un medio por tres cuartos más un medio por un cuarto, que da tres octavos más un octavo, es decir, un medio."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "La probabilidad total necesita las condicionales estudiadas en el tema 85.",
+          "explicacion": "Cada sumando de la fórmula es una probabilidad condicional, por lo que sin el concepto de condicional no es posible aplicarla. La probabilidad total es, en cierto modo, la combinación de las condicionales sobre una partición. Por eso su estudio se apoya directamente en el tema 85 y en la noción de espacio reducido."
+        },
+        {
+          "texto": "La probabilidad total se apoya en las operaciones con eventos.",
+          "explicacion": "Las partes de una partición son eventos del espacio muestral, y la descomposición de un evento usa uniones e intersecciones de eventos. Por eso la probabilidad total depende de las operaciones con eventos vistas en el tema 82 y de las propiedades de conjuntos del tema 13."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Thomas Bayes publicó póstumamente su ensayo sobre probabilidad en 1763.",
+          "explicacion": "Thomas Bayes, ministro presbiteriano inglés, falleció en 1761. Su ensayo «An Essay towards solving a Problem in the Doctrine of Chances» fue presentado a la Royal Society en 1763 por Richard Price, quien lo editó. En él se estudian probabilidades de causas a partir de efectos observados, un problema que se relaciona con la probabilidad condicional y la probabilidad total, aunque su desarrollo corresponde a cursos posteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Tratar eventos solapados como partición es un error.",
+          "explicacion": "Si dos eventos comparten resultados, no forman una partición, y sumar sus probabilidades cuenta esos resultados dos veces. Antes de aplicar la fórmula conviene verificar que los eventos sean disjuntos y que cubran el espacio. Esta comprobación es la primera condición de la fórmula de la probabilidad total."
+        },
+        {
+          "texto": "Omitir una parte de la partición produce sumas menores que la correcta.",
+          "explicacion": "Si falta un evento de la partición, la suma de sus probabilidades no alcanza uno, y el resultado subestima la probabilidad de A. Un control útil consiste en verificar que las probabilidades de las partes suman uno antes de calcular la probabilidad total."
+        },
+        {
+          "texto": "Intercambiar $P(A \\mid B_i)$ con $P(B_i \\mid A)$ es un error.",
+          "explicacion": "La fórmula exige la probabilidad de A dentro de cada parte, y no la probabilidad de cada parte dentro de A. Intercambiar ambas condicionales produce un resultado distinto, como se estudió en el tema 85. Escribir cada sumando con la condición correcta evita este error."
+        }
+      ]
+    }
+  ]
+}

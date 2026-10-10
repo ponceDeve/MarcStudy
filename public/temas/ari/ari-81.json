@@ -1,0 +1,150 @@
+{
+  "curso": "Aritmética",
+  "tema": "Fenómeno aleatorio",
+  "glosario": {
+    "fenómeno aleatorio": "Fenómeno cuyo resultado no se predice con certeza",
+    "fenómeno determinista": "Fenómeno cuyo resultado se predice con certeza",
+    "experimento aleatorio": "Proceso repetible cuyo resultado es incierto",
+    "resultado": "Posible desenlace observable de un experimento",
+    "frecuencia relativa": "Cociente entre apariciones y número de repeticiones",
+    "regularidad estadística": "Estabilidad de frecuencias relativas al repetir",
+    "ley de los grandes números": "Frecuencias relativas se estabilizan con más repeticiones"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de fenómeno aleatorio",
+      "puntos": [
+        {
+          "texto": "Un «fenómeno aleatorio» tiene un resultado incierto antes de observarlo.",
+          "explicacion": "Un fenómeno aleatorio es aquel cuyo resultado, en una ocasión concreta, no puede anticiparse con certeza a partir de la información disponible. La incertidumbre se refiere al resultado individual y no implica que el fenómeno carezca de estructura. La teoría de probabilidades estudia estos fenómenos justamente porque, aunque cada resultado sea incierto, el conjunto de resultados posibles y sus frecuencias sí pueden describirse de manera precisa."
+        },
+        {
+          "texto": "Un «fenómeno determinista» tiene un resultado previsible con certeza.",
+          "explicacion": "En un fenómeno determinista, las mismas condiciones iniciales producen siempre el mismo resultado, y ese resultado puede calcularse. Un ejemplo es el tiempo que tarda en caer un objeto desde una altura conocida, cuando se conocen las condiciones del entorno. La distinción entre determinista y aleatorio no depende de la complejidad del fenómeno, sino de si su resultado está fijado por las condiciones de partida que se pueden controlar o medir."
+        },
+        {
+          "texto": "La incertidumbre del fenómeno aleatorio se refiere al resultado individual.",
+          "explicacion": "Que un resultado individual no pueda predecirse no significa que el fenómeno sea desordenado. Al repetir el experimento muchas veces, los resultados muestran patrones estables que se pueden describir con frecuencias. Por eso la estadística distingue entre la incertidumbre de cada caso y la regularidad del conjunto, aspectos que el resto de este tema desarrolla."
+        },
+        {
+          "texto": "Un fenómeno aleatorio puede repetirse bajo condiciones similares.",
+          "explicacion": "La posibilidad de repetición es la condición que permite estudiar un fenómeno aleatorio de forma científica. Si cada observación ocurriera en condiciones completamente distintas, no sería posible comparar resultados ni calcular frecuencias. Por eso el estudio de estos fenómenos supone que las condiciones del experimento se mantienen razonablemente constantes entre repeticiones."
+        }
+      ]
+    },
+    {
+      "titulo": "Experimento aleatorio",
+      "puntos": [
+        {
+          "texto": "Un «experimento aleatorio» es un proceso repetible con resultado incierto.",
+          "explicacion": "Un experimento aleatorio es una acción bien definida que puede realizarse varias veces y cuyo resultado no se conoce antes de realizarla. Para que sea útil, debe describirse con precisión qué se hace y qué se observa. Por ejemplo, lanzar una moneda y anotar la cara superior es un experimento aleatorio, mientras que simplemente mencionar que va a llover no lo es."
+        },
+        {
+          "texto": "Cada «resultado» es un posible desenlace observable del experimento.",
+          "explicacion": "Un resultado es cada una de las posibles respuestas que puede dar el experimento al observarlo. Al lanzar una moneda, los resultados posibles son cara y sello. Identificar correctamente los resultados es el primer paso para estudiar cualquier experimento aleatorio, y su conjunto completo se trata en el tema 82, sobre el espacio muestral."
+        },
+        {
+          "texto": "Lanzar un dado es un experimento aleatorio típico.",
+          "explicacion": "Al lanzar un dado de seis caras, el resultado es el número que queda en la cara superior, que puede ser cualquiera de los seis valores. Como el lanzamiento se puede repetir en condiciones muy parecidas y el resultado no se conoce de antemano, cumple las condiciones de un experimento aleatorio. Este ejemplo se usa con frecuencia en la enseñanza porque sus resultados son fáciles de describir."
+        },
+        {
+          "texto": "Extraer una bola de una urna con colores distintos es aleatorio.",
+          "explicacion": "Cuando las bolas están mezcladas y se extrae una sin mirar, el color obtenido no puede anticiparse con certeza. El experimento se repite devolviendo la bola a la urna, lo que permite estudiar las frecuencias de cada color. Este modelo de urna se usó en el desarrollo histórico de la probabilidad como representación de casos equiprobables."
+        }
+      ]
+    },
+    {
+      "titulo": "Frecuencia relativa",
+      "puntos": [
+        {
+          "texto": "La «frecuencia relativa» mide las apariciones de un resultado frente al total.",
+          "explicacion": "Si un resultado aparece a veces en n repeticiones del experimento, su frecuencia relativa es el cociente entre esas apariciones y el número total de repeticiones. Como las apariciones nunca superan el total, esta frecuencia siempre está entre cero y uno. Se calcula de forma sencilla y es la herramienta básica para describir la regularidad de un fenómeno aleatorio."
+        },
+        {
+          "texto": "La «regularidad estadística» aparece al repetir muchas veces el experimento.",
+          "explicacion": "Cuando el número de repeticiones crece, las frecuencias relativas de los resultados tienden a estabilizarse en valores casi fijos. Esta estabilidad se observa de forma clara en lanzamientos repetidos de una moneda, donde la proporción de caras se acerca a un valor cuando el número de lanzamientos aumenta. La regularidad no garantiza que cada resultado individual se repita en proporción exacta."
+        },
+        {
+          "texto": "La «ley de los grandes números» describe la estabilización de las frecuencias.",
+          "explicacion": "La ley de los grandes números establece que, al aumentar el número de repeticiones de un experimento aleatorio, la frecuencia relativa de un resultado se aproxima a un valor fijo. La formulación rigurosa de esta ley se desarrolla en cursos superiores, pero su idea básica se puede observar en la experiencia de repetir un mismo experimento muchas veces."
+        },
+        {
+          "texto": "Las frecuencias relativas varían mucho cuando hay pocas repeticiones.",
+          "explicacion": "Con pocos lanzamientos, la proporción de caras puede alejarse bastante de la mitad, incluso si la moneda es equilibrada. Este fenómeno se debe a que las muestras pequeñas son más sensibles al azar. Por eso no conviene sacar conclusiones sobre la regularidad de un fenómeno a partir de una cantidad muy pequeña de repeticiones."
+        }
+      ]
+    },
+    {
+      "titulo": "Incertidumbre y regularidad",
+      "puntos": [
+        {
+          "texto": "La aleatoriedad individual no impide reconocer regularidades en conjunto.",
+          "explicacion": "Aunque no se pueda predecir el resultado de una sola observación, sí se pueden describir las proporciones con que aparecen los resultados en muchas observaciones. Esta combinación de incertidumbre individual y regularidad colectiva es la característica central de los fenómenos aleatorios. Permite tomar decisiones razonables a partir de datos, sin requerir una predicción exacta de cada caso."
+        },
+        {
+          "texto": "Un resultado aleatorio no es un resultado sin causa.",
+          "explicacion": "Que un fenómeno sea aleatorio en su descripción no equivale a que carezca de causas. Muchas veces el resultado depende de condiciones que no se controlan o no se conocen con detalle, como pequeñas variaciones en la forma de lanzar una moneda. Por eso se describe como aleatorio desde el punto de vista del observador, que trabaja con la información disponible."
+        },
+        {
+          "texto": "Predecir con certeza un resultado aleatorio individual no es posible.",
+          "explicacion": "La imposibilidad de predecir un resultado individual se deduce de la falta de información completa sobre las condiciones del experimento. Aun así, se pueden hacer afirmaciones sobre la frecuencia de los resultados a largo plazo. Esta diferencia entre predecir un caso y describir un conjunto es la que separa el estudio de los fenómenos aleatorios de la predicción determinista."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos cotidianos",
+      "puntos": [
+        {
+          "texto": "Lanzar una moneda equilibrada produce cara o sello de forma incierta.",
+          "explicacion": "Antes de lanzar la moneda, no se sabe si caerá con cara o con sello hacia arriba. Si la moneda está equilibrada, ninguno de los dos resultados se favorece de manera sistemática. Este ejemplo es el modelo más sencillo de fenómeno aleatorio, y es el que se usa para introducir la noción de frecuencia relativa."
+        },
+        {
+          "texto": "La caída libre de un objeto con condiciones fijas es determinista.",
+          "explicacion": "Si se conocen la altura, la masa y las condiciones del entorno, el tiempo de caída de un objeto puede calcularse con las leyes de la física. Repetir el experimento en las mismas condiciones produce el mismo resultado. Este ejemplo contrasta con el lanzamiento de una moneda, donde las condiciones iniciales no pueden controlarse con la misma precisión."
+        },
+        {
+          "texto": "Sortear un premio entre participantes es un fenómeno aleatorio.",
+          "explicacion": "En un sorteo, cada participante tiene una posibilidad de resultar elegido, y el ganador no puede anticiparse antes de realizar el sorteo. La regla de elección es conocida, pero el resultado concreto no lo es. Por eso el sorteo se considera un experimento aleatorio, con resultados posibles claramente definidos."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de la probabilidad",
+      "puntos": [
+        {
+          "texto": "Gerolamo Cardano escribió sobre juegos de azar en el siglo XVI.",
+          "explicacion": "Gerolamo Cardano, matemático, médico y jugador italiano, escribió hacia 1564 el «Liber de ludo aleae», un tratado sobre juegos de dados y azar. La obra se publicó póstumamente en 1663. En ella, Cardano analizó la frecuencia de los resultados en los dados y es considerado uno de los primeros en estudiar sistemáticamente los fenómenos aleatorios."
+        },
+        {
+          "texto": "Blaise Pascal intercambió cartas sobre problemas de azar en 1654.",
+          "explicacion": "Blaise Pascal, matemático y filósofo francés, mantuvo en 1654 una correspondencia con Pierre de Fermat sobre problemas de reparto de apuestas en juegos interrumpidos. Esas cartas se consideran un punto de partida de la teoría de probabilidades como disciplina matemática. El intercambio se refería a cómo repartir justamente lo apostado, un problema que requería comparar resultados posibles."
+        },
+        {
+          "texto": "Pierre de Fermat participó en la correspondencia sobre problemas de azar.",
+          "explicacion": "Pierre de Fermat, jurista y matemático francés nacido en 1607 y fallecido en 1665, discutió con Pascal el reparto de apuestas en juegos interrumpidos. Sus soluciones se basaban en considerar todos los desenlaces posibles, lo que anticipa la noción de espacio muestral que se estudia en el tema 82."
+        },
+        {
+          "texto": "Jakob Bernoulli publicó en 1713 la obra «Ars Conjectandi».",
+          "explicacion": "Jakob Bernoulli, matemático suizo fallecido en 1705, dejó inédita la obra «Ars Conjectandi», que apareció póstumamente en 1713. En ella formuló un resultado que relaciona el número de repeticiones de un experimento con la aproximación de su frecuencia relativa, antecedente directo de la ley de los grandes números."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Creer que un resultado debe compensarse pronto es un error frecuente.",
+          "explicacion": "Después de varias caras seguidas en una moneda equilibrada, algunas personas piensan que el sello está más cerca de aparecer. Esta idea, conocida como falacia del jugador, es incorrecta porque cada lanzamiento es independiente de los anteriores. La compensación de frecuencias ocurre solo a largo plazo y no implica que los resultados pasados afecten a los futuros."
+        },
+        {
+          "texto": "Sacar conclusiones con muy pocas repeticiones es un error común.",
+          "explicacion": "Una serie corta de resultados puede mostrar proporciones muy alejadas de las esperadas, por lo que no permite juzgar la regularidad del fenómeno. Antes de interpretar una frecuencia conviene considerar el número de repeticiones en que se basa. Esta precaución evita afirmaciones injustificadas sobre fenómenos aleatorios."
+        },
+        {
+          "texto": "Confundir aleatorio con desordenado es un error conceptual.",
+          "explicacion": "Un fenómeno aleatorio puede tener una estructura muy clara en el conjunto de sus resultados, aunque el resultado individual sea incierto. Llamarlo desordenado oculta esa regularidad, que es precisamente lo que la probabilidad estudia. Distinguir ambas ideas permite interpretar correctamente las frecuencias y las predicciones."
+        }
+      ]
+    }
+  ]
+}

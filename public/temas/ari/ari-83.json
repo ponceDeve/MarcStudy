@@ -1,0 +1,129 @@
+{
+  "curso": "Aritmética",
+  "tema": "Noción de probabilidad",
+  "glosario": {
+    "probabilidad": "Medida numérica de la posibilidad de un evento",
+    "axiomas de probabilidad": "Reglas básicas que toda probabilidad debe cumplir",
+    "no negatividad": "Probabilidad nunca es un valor negativo",
+    "enfoque frecuentista": "Probabilidad como límite de frecuencias relativas",
+    "enfoque clásico": "Probabilidad como cociente de casos favorables",
+    "enfoque subjetivo": "Probabilidad como grado de creencia personal",
+    "complementario": "Evento formado por los resultados que no ocurren"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de probabilidad",
+      "puntos": [
+        {
+          "texto": "La «probabilidad» mide la posibilidad de que ocurra un evento.",
+          "explicacion": "La probabilidad es un número que asigna a cada evento de un espacio muestral un valor que expresa qué tan posible es que ocurra. Se construye a partir de los eventos definidos en el tema 82 y de los resultados del experimento descrito en el tema 81. Su estudio consiste en establecer reglas para asignar estos números de forma coherente y en deducir las consecuencias de esas reglas."
+        },
+        {
+          "texto": "La probabilidad de un evento A se escribe $P(A)$.",
+          "explicacion": "La notación $P(A)$ indica la probabilidad del evento A, y se lee como «probabilidad de A». Se trata de una función que toma como entrada un subconjunto del espacio muestral y devuelve un número. Esta forma de escribir permite comparar eventos distintos y aplicar las reglas que se estudian en este tema."
+        },
+        {
+          "texto": "Una probabilidad cercana a uno indica que el evento es muy probable.",
+          "explicacion": "Cuanto más se acerca $P(A)$ al valor uno, mayor es la posibilidad de que el evento A ocurra al realizar el experimento. Este valor se interpreta en la escala habitual de cero a uno, donde uno corresponde al evento seguro. Interpretar la probabilidad como una posición en esa escala es una forma sencilla de comparar eventos."
+        },
+        {
+          "texto": "Una probabilidad cercana a cero indica que el evento es poco probable.",
+          "explicacion": "Cuando $P(A)$ se acerca a cero, el evento A tiene pocas posibilidades de ocurrir. El valor cero corresponde al evento imposible, cuya ocurrencia está descartada. Un valor pequeño no equivale a imposibilidad, sino a una posibilidad reducida que debe interpretarse en el contexto del experimento."
+        }
+      ]
+    },
+    {
+      "titulo": "Axiomas de probabilidad",
+      "puntos": [
+        {
+          "texto": "Los «axiomas de probabilidad» son reglas que toda probabilidad debe cumplir.",
+          "explicacion": "Los axiomas son afirmaciones básicas que se aceptan sin demostración y de las que se deducen las demás propiedades de la probabilidad. Garantizan que las asignaciones de probabilidad sean coherentes entre sí, sin contradicciones. La formulación axiomática moderna fue presentada por Andréi Kolmogórov, como se indicó en el tema 82, y es el marco estándar de la teoría."
+        },
+        {
+          "texto": "La «no negatividad» exige $P(A) \\ge 0$ para cualquier evento.",
+          "explicacion": "El primer axioma establece que la probabilidad de cualquier evento es un número mayor o igual que cero. Un valor negativo no tendría sentido como medida de posibilidad. Esta condición junto con las siguientes garantiza que los valores de probabilidad estén en una escala acotada y coherente."
+        },
+        {
+          "texto": "La probabilidad del espacio muestral completo es uno.",
+          "explicacion": "El segundo axioma establece que $P(\\Omega)$ vale uno, porque al realizar el experimento ocurre siempre algún resultado del espacio muestral. Este valor corresponde al evento seguro, y fija la escala superior de la probabilidad. Todos los demás eventos reciben valores que se miden respecto de este total."
+        },
+        {
+          "texto": "La probabilidad del evento imposible es cero.",
+          "explicacion": "Un evento imposible no contiene ningún resultado del espacio muestral, por lo que nunca ocurre. Su probabilidad es cero, lo que se escribe $P(\\emptyset)$ igual a cero. Esta propiedad se deduce de los axiomas y de la definición del evento imposible estudiada en el tema 82."
+        },
+        {
+          "texto": "Para eventos excluyentes, la probabilidad de la unión es la suma.",
+          "explicacion": "El tercer axioma establece que si dos eventos son mutuamente excluyentes, la probabilidad de que ocurra uno de ellos es la suma de sus probabilidades. Por ejemplo, en un dado, la probabilidad de obtener un número par es la suma de las probabilidades de obtener dos, cuatro o seis. La condición de exclusión es imprescindible, porque si los eventos se solapan, sumar contaría dos veces los resultados comunes."
+        },
+        {
+          "texto": "Si A está contenido en B, la probabilidad de A no supera la de B.",
+          "explicacion": "Cuando todos los resultados de A pertenecen también a B, la probabilidad de A no puede superar la de B, porque B incluye todos los casos favorables de A y quizá otros. Esta propiedad se deduce del tercer axioma y de la relación de inclusión estudiada en el tema 11. Es útil para comparar eventos sin calcular sus valores exactos."
+        }
+      ]
+    },
+    {
+      "titulo": "Probabilidad del complementario",
+      "puntos": [
+        {
+          "texto": "La probabilidad del complementario es uno menos la del evento.",
+          "explicacion": "Como un evento y su complementario reúnen todos los resultados del espacio sin solaparse, sus probabilidades suman uno. Por eso la probabilidad de $A^c$ es uno menos $P(A)$. Esta relación es una de las más usadas en problemas de probabilidad, porque a veces el evento contrario es más sencillo de calcular."
+        },
+        {
+          "texto": "El complementario permite calcular «al menos uno» con más facilidad.",
+          "explicacion": "Para calcular la probabilidad de obtener al menos una cara en tres lanzamientos de moneda, conviene calcular primero la de no obtener ninguna, que es un caso único, y restarla de uno. Como la probabilidad de no obtener caras en tres lanzamientos es un octavo, la probabilidad buscada es siete octavos. Este método evita enumerar todos los casos favorables."
+        }
+      ]
+    },
+    {
+      "titulo": "Enfoques de la probabilidad",
+      "puntos": [
+        {
+          "texto": "El «enfoque frecuentista» define la probabilidad como límite de frecuencias relativas.",
+          "explicacion": "Según este enfoque, la probabilidad de un evento es el valor al que tienden sus frecuencias relativas cuando el número de repeticiones aumenta indefinidamente. Esta idea se relaciona con la regularidad estadística estudiada en el tema 81. Richard von Mises la propuso como fundamento de la probabilidad, y su formulación fue objeto de debate en la historia de la disciplina."
+        },
+        {
+          "texto": "El «enfoque clásico» define la probabilidad como cociente de casos favorables.",
+          "explicacion": "Según este enfoque, cuando todos los resultados son igualmente posibles, la probabilidad de un evento es el número de casos favorables dividido entre el número total de casos. Su cálculo requiere contar, lo que lo conecta con el análisis combinatorio del tema 76. Pierre-Simon Laplace fue uno de sus principales desarrolladores, como se indicó en el tema 82."
+        },
+        {
+          "texto": "El «enfoque subjetivo» interpreta la probabilidad como grado de creencia.",
+          "explicacion": "En este enfoque, la probabilidad expresa el grado de confianza que una persona tiene sobre la ocurrencia de un evento, dadas sus informaciones. Bruno de Finetti, matemático italiano, fue uno de sus principales defensores en el siglo XX. Su interpretación se aplica cuando no es posible repetir el experimento ni contar casos igualmente posibles."
+        },
+        {
+          "texto": "Los enfoques distintos coinciden en cumplir los axiomas básicos.",
+          "explicacion": "Aunque el significado de la probabilidad cambie según el enfoque, todos aceptan los mismos axiomas de no negatividad, normalización y aditividad para eventos excluyentes. Por eso los resultados deducidos de los axiomas son válidos en cualquier interpretación. Las diferencias aparecen en cómo se asignan las probabilidades y en cómo se justifican."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación de valores",
+      "puntos": [
+        {
+          "texto": "Una probabilidad no garantiza el resultado de una sola ocurrencia.",
+          "explicacion": "Un evento con probabilidad alta puede no ocurrir en una observación concreta, y uno con probabilidad baja puede ocurrir. La probabilidad describe la proporción esperada a largo plazo y no fija lo que sucede en un caso individual. Esta distinción es esencial para interpretar correctamente los resultados de los experimentos aleatorios."
+        },
+        {
+          "texto": "Una probabilidad baja no equivale a un evento imposible.",
+          "explicacion": "Un evento de probabilidad pequeña, pero positiva, todavía puede ocurrir. Solo los eventos con probabilidad cero están descartados de forma absoluta. Confundir ambos casos lleva a afirmar que algo no ocurrirá cuando en realidad tiene una posibilidad real de suceder."
+        },
+        {
+          "texto": "En espacios infinitos, probabilidad uno no siempre significa evento seguro.",
+          "explicacion": "En algunos espacios infinitos existen eventos que tienen probabilidad uno sin ser iguales al espacio completo, porque siempre queda algún resultado excluido de medida nula. Este caso requiere la teoría de la medida y no se desarrolla en el nivel preuniversitario. Lo relevante aquí es que la equivalencia entre probabilidad uno y evento seguro se da con seguridad solo en espacios finitos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Sumar probabilidades de eventos que se solapan es un error.",
+          "explicacion": "Si dos eventos comparten resultados, sumar sus probabilidades cuenta esos resultados dos veces. La forma correcta debe restar la probabilidad de la intersección, cálculo que se desarrolla en los temas posteriores de probabilidad. Reconocer si los eventos son excluyentes es el primer paso antes de sumar."
+        },
+        {
+          "texto": "Confundir probabilidad con certeza es un error frecuente.",
+          "explicacion": "Una probabilidad alta no equivale a certeza, y una probabilidad baja no equivale a imposibilidad. La certeza corresponde solo al valor uno en espacios finitos, y la imposibilidad, al valor cero. Mantener esta distinción permite interpretar las respuestas sin exagerar ni minimizar la incertidumbre."
+        }
+      ]
+    }
+  ]
+}

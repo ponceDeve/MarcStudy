@@ -1,0 +1,211 @@
+{
+  "curso": "Aritmética",
+  "tema": "Cuartiles",
+  "glosario": {
+    "Cuartiles": "Valores que dividen los datos en cuatro partes",
+    "Medidas de posición": "Valores que indican un lugar en la distribución",
+    "Mediana": "Valor central de los datos ordenados",
+    "Percentil": "Valor que deja un porcentaje por debajo",
+    "Frecuencia acumulada": "Suma de frecuencias hasta un valor",
+    "Datos agrupados": "Datos organizados en intervalos de clase",
+    "Clase cuartílica": "Clase donde se alcanza el cuartil",
+    "Amplitud": "Longitud de un intervalo de clase",
+    "Ojiva": "Polígono de frecuencias acumuladas",
+    "Rango intercuartil": "Diferencia entre tercer y primer cuartil",
+    "Rango semiintercuartil": "Mitad del rango intercuartil",
+    "Medida de dispersión": "Valor que mide la variación de los datos",
+    "Diagrama de caja": "Gráfico basado en los cuartiles",
+    "Valor atípico": "Dato inusualmente alejado del resto",
+    "Valores extremos": "Datos muy alejados del resto",
+    "Coeficiente de asimetría": "Valor que mide la falta de simetría",
+    "Medidas resistentes": "Medidas poco afectadas por valores extremos",
+    "Terciles": "Valores que dividen los datos en tres partes",
+    "Medida de tendencia central": "Valor que representa el centro de los datos"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Cuartiles» = valores que dividen los datos en cuatro partes",
+          "explicacion": "Los cuartiles son los valores que, en un conjunto de datos ordenados, lo separan en cuatro grupos con aproximadamente la misma cantidad de datos, cada uno con cerca de la cuarta parte del total. Son medidas de posición: señalan lugares dentro de la distribución y no su centro, aunque uno de ellos, el segundo, coincide con la mediana."
+        },
+        {
+          "texto": "Existen tres cuartiles: $Q_1$, $Q_2$ y $Q_3$",
+          "explicacion": "Para obtener cuatro partes se requieren tres puntos de corte, por lo que hay tres cuartiles, simbolizados $Q_1$, $Q_2$ y $Q_3$, o $Q_k$ con $k = 1, 2, 3$. La letra $Q$ proviene de la palabra inglesa quartile, equivalente a cuartil, y los valores se expresan en las unidades de los datos."
+        },
+        {
+          "texto": "$Q_1$ deja el 25% de los datos por debajo",
+          "explicacion": "El primer cuartil, también llamado cuartil inferior, es el valor que deja aproximadamente la cuarta parte de los datos por debajo y las tres cuartas partes por encima. Separa el grupo de los valores más bajos del resto de la distribución."
+        },
+        {
+          "texto": "$Q_2$ deja el 50% de los datos por debajo",
+          "explicacion": "El segundo cuartil deja la mitad de los datos por debajo y la mitad por encima. Ocupa el centro de la distribución y, por esa razón, se le conoce con otro nombre: la mediana, que se trata en el tema 70."
+        },
+        {
+          "texto": "$Q_3$ deja el 75% de los datos por debajo",
+          "explicacion": "El tercer cuartil, también llamado cuartil superior, es el valor que deja aproximadamente las tres cuartas partes de los datos por debajo y la cuarta parte restante por encima. Aísla el grupo de los valores más altos."
+        },
+        {
+          "texto": "Cuatro grupos de cerca del 25% cada uno",
+          "explicacion": "Los tres cuartiles forman cuatro grupos: los datos hasta $Q_1$, los comprendidos entre $Q_1$ y $Q_2$, los comprendidos entre $Q_2$ y $Q_3$, y los mayores que $Q_3$. Cada grupo reúne cerca de $\\frac{n}{4}$ datos, donde $n$ es el total, y el 50% central de los datos queda entre $Q_1$ y $Q_3$."
+        },
+        {
+          "texto": "Cuartiles = percentiles 25, 50 y 75",
+          "explicacion": "El percentil $P_k$ es el valor que deja el $k$% de los datos por debajo. Los cuartiles coinciden con tres percentiles: $Q_1 = P_{25}$, $Q_2 = P_{50}$ y $Q_3 = P_{75}$. Esta equivalencia permite trasladar los métodos de cálculo de cuartiles a percentiles y viceversa."
+        },
+        {
+          "texto": "Ordenamiento previo ✓ para calcular cuartiles",
+          "explicacion": "Los cuartiles dependen de la posición de los datos, por lo que se debe ordenar el conjunto de menor a mayor antes de ubicarlos. Hallar posiciones sobre una lista desordenada produce valores que no dividen la distribución en cuartos."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "Posición de $Q_k$ = $\\frac{k\\,n}{4}$",
+          "explicacion": "Con la convención más usada en la enseñanza preuniversitaria, se calcula la posición $p = \\frac{k\\,n}{4}$, con $k = 1, 2, 3$ y $n$ el número de datos. Si $p$ es entero, el cuartil es el promedio del dato de la posición $p$ y el de la posición $p + 1$; si no lo es, se toma el dato de la posición entera inmediatamente superior."
+        },
+        {
+          "texto": "Ejemplo con posiciones enteras: $Q_1 = 6$, $Q_2 = 8{,}5$, $Q_3 = 12$",
+          "explicacion": "Con los datos ordenados 3, 5, 7, 8, 9, 11, 13, 14 se tiene $n = 8$ y las posiciones son $2, 4$ y $6$. Entonces $Q_1 = \\frac{5 + 7}{2} = 6$, $Q_2 = \\frac{8 + 9}{2} = 8{,}5$ y $Q_3 = \\frac{11 + 13}{2} = 12$. El valor $Q_2$ es también la mediana del conjunto."
+        },
+        {
+          "texto": "Ejemplo con posiciones no enteras: $Q_1 = 9$, $Q_2 = 16{,}5$, $Q_3 = 23$",
+          "explicacion": "Con los datos ordenados 4, 7, 9, 12, 15, 18, 20, 23, 25, 30 se tiene $n = 10$. Las posiciones son $2{,}5$, $5$ y $7{,}5$. La primera y la tercera no son enteras y se redondean a 3 y 8, de modo que $Q_1 = 9$ y $Q_3 = 23$. La segunda es entera: $Q_2 = \\frac{15 + 18}{2} = 16{,}5$."
+        },
+        {
+          "texto": "Otro método: medianas de cada mitad",
+          "explicacion": "Otra forma de hallar los cuartiles consiste en calcular $Q_2$ como la mediana de todos los datos, y luego $Q_1$ como la mediana de la mitad inferior y $Q_3$ como la mediana de la mitad superior. Cuando $n$ es impar, algunos textos excluyen la mediana de ambas mitades y otros la incluyen en las dos, lo que puede modificar $Q_1$ y $Q_3$."
+        },
+        {
+          "texto": "Los métodos difieren ⇒ declarar el criterio usado",
+          "explicacion": "Con los datos 2, 4, 5, 7, 8, 10, 11, 13, 15 ($n = 9$), la posición $\\frac{k\\,n}{4}$ da $Q_1 = 5$ y $Q_3 = 11$; las medianas de las mitades que excluyen el dato central dan $Q_1 = 4{,}5$ y $Q_3 = 12$. Las fuentes no coinciden en una definición única, por lo que se debe aplicar un solo criterio en cada problema y declararlo."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla de frecuencias",
+      "puntos": [
+        {
+          "texto": "Regla: primer valor con $F_i$ no menor que $\\frac{k\\,n}{4}$",
+          "explicacion": "Con datos en tabla de frecuencias se calcula $\\frac{k\\,n}{4}$ y se busca el primer valor $x_i$ cuya frecuencia acumulada $F_i$ sea mayor o igual que esa cantidad. Si $F_i$ es mayor, el cuartil es $x_i$; si es exactamente igual, el cuartil es el promedio de $x_i$ y del valor siguiente."
+        },
+        {
+          "texto": "Ejemplo con tabla: $Q_1 = 2$, $Q_2 = 3$, $Q_3 = 4$",
+          "explicacion": "Los valores $1, 2, 3, 4, 5$ tienen frecuencias $5, 8, 10, 6, 3$, con $n = 32$ y acumuladas $5, 13, 23, 29, 32$. Las cantidades buscadas son $8$, $16$ y $24$. El primer $F_i \\ge 8$ es 13 (valor 2); el primer $F_i \\ge 16$ es 23 (valor 3); y el primer $F_i \\ge 24$ es 29 (valor 4). Por tanto, $Q_1 = 2$, $Q_2 = 3$ y $Q_3 = 4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos agrupados",
+      "puntos": [
+        {
+          "texto": "«Clase cuartílica» = clase donde se alcanza $\\frac{k\\,n}{4}$",
+          "explicacion": "En datos agrupados en intervalos, la clase cuartílica de $Q_k$ es el primer intervalo cuya frecuencia acumulada alcanza o supera $\\frac{k\\,n}{4}$. Los tres cuartiles pueden estar en clases distintas o varios de ellos en la misma clase."
+        },
+        {
+          "texto": "Fórmula del cuartil para datos agrupados",
+          "explicacion": "El cuartil $Q_k$ de datos agrupados se calcula con $$Q_k = L_i + \\frac{\\frac{k\\,n}{4} - F_{i-1}}{f_i}\\, A$$ donde $L_i$ es el límite inferior de la clase cuartílica, $F_{i-1}$ la frecuencia acumulada de la clase anterior, $f_i$ su frecuencia absoluta y $A$ su amplitud. Para $k = 2$ se obtiene la fórmula de la mediana."
+        },
+        {
+          "texto": "Ejemplo agrupado: $Q_1 \\approx 26{,}67$",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$, frecuencias $4, 9, 15, 8, 4$ y acumuladas $4, 13, 28, 36, 40$, se tiene $n = 40$ y $\\frac{n}{4} = 10$. La clase cuartílica es $20-30$, con $F_{i-1} = 4$, $f_i = 9$ y $A = 10$. Entonces $Q_1 = 20 + \\frac{10 - 4}{9}\\cdot 10 \\approx 26{,}67$."
+        },
+        {
+          "texto": "Ejemplo agrupado: $Q_2 \\approx 34{,}67$",
+          "explicacion": "Con los mismos datos, $\\frac{2n}{4} = 20$ y la clase cuartílica es $30-40$, con $F_{i-1} = 13$ y $f_i = 15$. Entonces $Q_2 = 30 + \\frac{20 - 13}{15}\\cdot 10 \\approx 34{,}67$, resultado idéntico al de la mediana, como corresponde."
+        },
+        {
+          "texto": "Ejemplo agrupado: $Q_3 = 42{,}5$",
+          "explicacion": "Con los mismos datos, $\\frac{3n}{4} = 30$ y la clase cuartílica es $40-50$, con $F_{i-1} = 28$, $f_i = 8$ y $A = 10$. Entonces $Q_3 = 40 + \\frac{30 - 28}{8}\\cdot 10 = 42{,}5$."
+        },
+        {
+          "texto": "Ojiva: leer $Q_k$ a la altura de $\\frac{k\\,n}{4}$",
+          "explicacion": "En la ojiva, el polígono de frecuencias acumuladas, se ubican en el eje vertical las alturas $\\frac{n}{4}$, $\\frac{n}{2}$ y $\\frac{3n}{4}$, o los porcentajes 25%, 50% y 75% si la acumulada es relativa, y se baja al eje horizontal para leer cada cuartil."
+        }
+      ]
+    },
+    {
+      "titulo": "Medidas derivadas",
+      "puntos": [
+        {
+          "texto": "«Rango intercuartil» = $Q_3 - Q_1$",
+          "explicacion": "El rango intercuartil es la diferencia entre el tercer y el primer cuartil. Mide la amplitud del 50% central de los datos y, por eso, es una medida de dispersión que no se ve afectada por los valores extremos. En el ejemplo de datos agrupados vale $42{,}5 - 26{,}67 \\approx 15{,}83$."
+        },
+        {
+          "texto": "«Rango semiintercuartil» = $\\frac{Q_3 - Q_1}{2}$",
+          "explicacion": "El rango semiintercuartil, o desviación cuartil, es la mitad del rango intercuartil: $\\frac{Q_3 - Q_1}{2}$. Informa de la distancia típica entre la mediana y cada extremo del 50% central. En el ejemplo de datos agrupados vale aproximadamente $7{,}92$."
+        },
+        {
+          "texto": "Diagrama de caja: caja de $Q_1$ a $Q_3$",
+          "explicacion": "El diagrama de caja y bigotes, introducido por el estadístico estadounidense John Wilder Tukey en 1977, dibuja una caja que va de $Q_1$ a $Q_3$ con una línea en $Q_2$, y bigotes hacia los valores menor y mayor no atípicos. Resume en un solo gráfico la posición, la dispersión y la simetría de los datos."
+        },
+        {
+          "texto": "Valor atípico ⇒ fuera de $Q_1 - 1{,}5\\,RIC$ y $Q_3 + 1{,}5\\,RIC$",
+          "explicacion": "Según el criterio de Tukey, un dato es atípico si es menor que $Q_1 - 1{,}5\\,RIC$ o mayor que $Q_3 + 1{,}5\\,RIC$, donde $RIC$ es el rango intercuartil $Q_3 - Q_1$. Con $Q_1 = 6$ y $Q_3 = 12$, el rango intercuartil es 6 y los límites son $-3$ y $21$; un dato de 30 sería atípico."
+        },
+        {
+          "texto": "Coeficiente de asimetría de Bowley",
+          "explicacion": "El coeficiente de asimetría de Bowley, propuesto por el estadístico británico Arthur Lyon Bowley, se define como $$\\frac{Q_3 + Q_1 - 2\\,Q_2}{Q_3 - Q_1}$$ y toma valores entre $-1$ y $1$. Un valor cercano a cero indica distribución casi simétrica, uno positivo indica cola larga hacia los valores altos y uno negativo indica cola larga hacia los bajos."
+        },
+        {
+          "texto": "Ejemplo: Bowley ≈ $-0{,}01$ ⇒ casi simétrica",
+          "explicacion": "Con $Q_1 \\approx 26{,}67$, $Q_2 \\approx 34{,}67$ y $Q_3 = 42{,}5$ del ejemplo agrupado, el numerador es $42{,}5 + 26{,}67 - 2(34{,}67) \\approx -0{,}17$ y el denominador es $15{,}83$. El coeficiente vale aproximadamente $-0{,}01$, muy cercano a cero, por lo que la distribución se considera prácticamente simétrica."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$Q_1 \\le Q_2 \\le Q_3$",
+          "explicacion": "Como los cuartiles corresponden a posiciones crecientes en la lista ordenada, siempre se cumple que $Q_1$ es menor o igual que $Q_2$, y este menor o igual que $Q_3$. La igualdad aparece cuando hay muchos datos repetidos."
+        },
+        {
+          "texto": "Cuartiles ≠ afectados por valores extremos",
+          "explicacion": "Los cuartiles dependen de posiciones y no de la magnitud de los datos extremos, por lo que un dato muy grande o muy pequeño no los modifica. Esto los hace medidas resistentes y justifica su uso para describir distribuciones asimétricas o con datos atípicos."
+        },
+        {
+          "texto": "Datos transformados con $a > 0$ ⇒ $Q_k$ se transforma igual",
+          "explicacion": "Si cada dato $x$ se convierte en $ax + b$ con $a > 0$, el orden se conserva y se cumple $Q_k(aX + b) = a\\,Q_k(X) + b$. Si $a < 0$, el orden se invierte y los cuartiles $Q_1$ y $Q_3$ intercambian sus papeles."
+        },
+        {
+          "texto": "$Q_2 = Me$",
+          "explicacion": "El segundo cuartil es la mediana, y por tanto se puede calcular con las mismas reglas que la mediana de los datos no agrupados, de tabla de frecuencias o agrupados. Es el único cuartil que además es una medida de tendencia central."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparaciones",
+      "puntos": [
+        {
+          "texto": "Cuartiles ≠ terciles: cuatro partes frente a tres",
+          "explicacion": "Los cuartiles producen cuatro grupos con tres puntos de corte, uno de los cuales es la mediana; los terciles (tema 71) producen tres grupos con dos puntos de corte, ninguno de los cuales es la mediana. En ambos se usa el mismo tipo de fórmula, cambiando el denominador de la posición."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: usar posición $\\frac{k\\,n}{2}$ o $\\frac{k\\,n}{3}$",
+          "explicacion": "La posición de un cuartil se calcula con denominador 4, igual al número de partes. Utilizar $\\frac{k\\,n}{3}$ lleva a terciles, y $\\frac{n}{2}$ a la mediana, valores distintos de los pedidos. Para evitar el error conviene recordar que el denominador de la posición coincide siempre con la cantidad de partes iguales en que se divide el conjunto de datos ordenados."
+        },
+        {
+          "texto": "Error: confundir $Q_3 - Q_1$ con $Q_3 + Q_1$",
+          "explicacion": "El rango intercuartil se obtiene restando los cuartiles. Sumarlos, o restar en el orden contrario, produce un número que no mide dispersión; la resta con el mayor primero asegura un resultado no negativo, ya que $Q_3$ nunca es menor que $Q_1$. Además, la suma de ambos cuartiles interviene únicamente dentro del coeficiente de asimetría de Bowley, donde se compara con el doble de $Q_2$."
+        },
+        {
+          "texto": "Error: tomar $Q_1$ como la cuarta parte del valor máximo",
+          "explicacion": "Los cuartiles dividen la cantidad de datos en cuartos, no el intervalo de valores. Por ello $Q_1$ no equivale al 25% del dato mayor ni a un cuarto del rango; su valor depende de cómo se distribuyen los datos."
+        },
+        {
+          "texto": "Error: mezclar métodos de cálculo en el mismo problema",
+          "explicacion": "Calcular $Q_1$ con la posición $\\frac{n}{4}$ y $Q_3$ con la mediana de la mitad superior produce resultados que no son comparables entre sí. Conviene elegir un solo método para los tres cuartiles y mantenerlo desde el inicio hasta el final del cálculo, de manera que las comparaciones y el rango intercuartil resulten coherentes."
+        }
+      ]
+    }
+  ]
+}

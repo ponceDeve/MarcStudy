@@ -1,0 +1,154 @@
+{
+  "curso": "Aritmética",
+  "tema": "Desviación estándar",
+  "glosario": {
+    "Desviación estándar": "Raíz cuadrada positiva de la varianza",
+    "Varianza": "Promedio de los cuadrados de las desviaciones",
+    "Medida de dispersión": "Valor que mide la variación de los datos",
+    "Media aritmética": "Suma de datos dividida entre su cantidad",
+    "Desviación media absoluta": "Promedio de los valores absolutos de las desviaciones",
+    "Corrección de Bessel": "División entre n menos uno",
+    "Marca de clase": "Punto medio de un intervalo",
+    "Valores extremos": "Datos muy alejados del resto",
+    "Rango intercuartil": "Diferencia entre tercer y primer cuartil",
+    "Distribución normal": "Distribución simétrica con forma de campana",
+    "Puntaje estándar": "Distancia a la media en desviaciones",
+    "Coeficiente de variación": "Cociente entre dispersión y media"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Desviación estándar» = raíz cuadrada de la varianza",
+          "explicacion": "La desviación estándar, también llamada desviación típica, es la raíz cuadrada positiva de la varianza (tema 73). Es una medida de dispersión que indica, en las mismas unidades de los datos, cuánto se alejan en promedio los datos de su media aritmética (tema 66). Mientras mayor es su valor, más dispersos están los datos."
+        },
+        {
+          "texto": "Notación: $\\sigma$ poblacional y $s$ muestral",
+          "explicacion": "La desviación estándar de una población se simboliza con $\\sigma$, la letra griega sigma, y la de una muestra con $s$. Se cumple $\\sigma = \\sqrt{\\sigma^2}$ y $s = \\sqrt{s^2}$. También se escribe $DE$ o $DS$, abreviaturas de desviación estándar y desviación típica, respectivamente."
+        },
+        {
+          "texto": "Raíz cuadrada ⇒ vuelve a las unidades originales",
+          "explicacion": "La varianza está expresada en unidades al cuadrado, lo que dificulta su interpretación directa. Al extraer la raíz cuadrada, la medida queda en las mismas unidades que los datos: si los datos están en kilogramos, la desviación estándar también. Esta es la razón principal por la que se prefiere en la descripción de la dispersión."
+        },
+        {
+          "texto": "Desviación estándar ≠ promedio de las desviaciones",
+          "explicacion": "La desviación estándar no es el promedio simple de las desviaciones absolutas, sino la raíz del promedio de sus cuadrados, por lo que concede mayor peso a las desviaciones grandes. Su valor es siempre mayor o igual que la desviación media absoluta, que es el promedio de los valores absolutos de las desviaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "Fórmula poblacional: $\\sigma = \\sqrt{\\frac{\\sum (x_i - \\mu)^2}{N}}$",
+          "explicacion": "Con todos los datos de la población, $$\\sigma = \\sqrt{\\frac{\\sum (x_i - \\mu)^2}{N}}$$ donde $\\mu$ es la media poblacional, $x_i$ cada dato y $N$ el número de datos. El procedimiento consiste en hallar la media, restarla a cada dato, elevar al cuadrado, promediar y extraer la raíz."
+        },
+        {
+          "texto": "Fórmula desarrollada: $\\sigma = \\sqrt{\\frac{\\sum x_i^2}{N} - \\mu^2}$",
+          "explicacion": "Equivale a la anterior y se obtiene de la fórmula desarrollada de la varianza: $$\\sigma = \\sqrt{\\frac{\\sum x_i^2}{N} - \\mu^2}$$ Es la más cómoda cuando la media no es entera, porque solo requiere la suma de los datos y la suma de sus cuadrados."
+        },
+        {
+          "texto": "Fórmula muestral: $s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$",
+          "explicacion": "Para una muestra de $n$ datos con media $\\bar{x}$ se usa $$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$ El denominador $n - 1$ proviene de la corrección de Bessel de la varianza. Algunos textos preuniversitarios dividen entre $n$ aun para conjuntos de datos, por lo que se debe seguir el criterio indicado."
+        },
+        {
+          "texto": "Ejemplo: 2, 4, 4, 4, 5, 5, 7, 9 ⇒ $\\sigma = 2$",
+          "explicacion": "La media es 5 y la suma de los cuadrados de las desviaciones es 32. La varianza poblacional es $\\frac{32}{8} = 4$ y la desviación estándar es $\\sigma = \\sqrt{4} = 2$. Los datos se alejan, en el sentido cuadrático promedio, 2 unidades de la media."
+        },
+        {
+          "texto": "Mismo ejemplo como muestra ⇒ $s \\approx 2{,}14$",
+          "explicacion": "Si los datos se consideran una muestra, la varianza es $\\frac{32}{7} \\approx 4{,}57$ y la desviación estándar es $s = \\sqrt{4{,}57} \\approx 2{,}14$. Es mayor que la poblacional porque se divide entre un número menor."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla y datos agrupados",
+      "puntos": [
+        {
+          "texto": "Fórmula con frecuencias",
+          "explicacion": "Si los valores $x_i$ tienen frecuencias absolutas $f_i$ y $n = \\sum f_i$, $$\\sigma = \\sqrt{\\frac{\\sum f_i (x_i - \\bar{x})^2}{n}} = \\sqrt{\\frac{\\sum f_i x_i^2}{n} - \\bar{x}^2}$$ En datos agrupados, $x_i$ es la marca de clase, el punto medio de cada intervalo."
+        },
+        {
+          "texto": "Ejemplo con tabla: valores 1, 2, 3 ⇒ $\\sigma = 0{,}7$",
+          "explicacion": "Los valores $1, 2, 3$ con frecuencias $2, 5, 3$ tienen media $2{,}1$ y varianza $0{,}49$. Por tanto $\\sigma = \\sqrt{0{,}49} = 0{,}7$. Es un ejemplo en que la raíz es exacta y que muestra que una desviación menor que 1 es posible cuando los datos están muy concentrados cerca de la media."
+        },
+        {
+          "texto": "Ejemplo agrupado: $\\sigma \\approx 11{,}07$",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$ y frecuencias $4, 9, 15, 8, 4$, la varianza calculada con marcas de clase es $122{,}44$ (tema 73). Entonces $\\sigma = \\sqrt{122{,}44} \\approx 11{,}07$. El resultado es aproximado porque se reemplazan los datos por las marcas de clase."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Desviación estándar nunca es negativa",
+          "explicacion": "Por definición es la raíz cuadrada positiva de la varianza, que no es negativa. Su valor mínimo es cero, y solo se alcanza cuando todos los datos son iguales entre sí y a la media."
+        },
+        {
+          "texto": "Desviación estándar = 0 ⇒ datos iguales",
+          "explicacion": "Si $\\sigma = 0$, la varianza es nula y todos los términos $(x_i - \\mu)^2$ son cero, de modo que cada dato coincide con la media. Basta un dato distinto de los demás para que $\\sigma$ sea positiva."
+        },
+        {
+          "texto": "Datos + constante b → desviación estándar sin cambio",
+          "explicacion": "Al sumar una constante $b$ a todos los datos, la media se traslada en $b$ y las desviaciones no cambian. Por lo tanto $\\sigma(X + b) = \\sigma(X)$. La desviación estándar mide separaciones entre datos y no su ubicación."
+        },
+        {
+          "texto": "Datos multiplicados por a → desviación multiplicada por $|a|$",
+          "explicacion": "Al multiplicar todos los datos por una constante $a$, las desviaciones quedan multiplicadas por $a$ y la raíz de $a^2$ es el valor absoluto $|a|$. Así, $\\sigma(aX) = |a|\\,\\sigma(X)$ y $\\sigma(aX + b) = |a|\\,\\sigma(X)$. Si $a$ es negativo, el resultado sigue siendo positivo."
+        },
+        {
+          "texto": "Desviación estándar ↑ con valores extremos",
+          "explicacion": "Como se basa en cuadrados de desviaciones, un dato muy alejado de la media aumenta mucho su valor. Es una medida sensible a los valores extremos, a diferencia del rango intercuartil (tema 72). Por ello, cuando existen datos atípicos, la desviación estándar puede dar una imagen exagerada de la dispersión de la mayor parte de los datos."
+        },
+        {
+          "texto": "Desviación estándar y la media ⇒ se usan juntas",
+          "explicacion": "La media aritmética indica el centro de los datos y la desviación estándar indica su dispersión, por lo que se reportan juntas, por ejemplo como $\\bar{x} \\pm s$. Ninguna de las dos describe por sí sola la distribución."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación",
+      "puntos": [
+        {
+          "texto": "Regla empírica: 68% a 1σ, 95% a 2σ, 99,7% a 3σ",
+          "explicacion": "Para una distribución normal aproximada, es decir, simétrica y con forma de campana, cerca del 68% de los datos está a menos de una desviación estándar de la media, cerca del 95% a menos de dos y cerca del 99,7% a menos de tres. Es una regla aproximada que no vale para cualquier distribución."
+        },
+        {
+          "texto": "Desigualdad de Chebyshev ⇒ cota para cualquier distribución",
+          "explicacion": "Pafnuty Chebyshev, matemático ruso (1821-1894), demostró que, para cualquier distribución y para $k > 1$, al menos una proporción $1 - \\frac{1}{k^2}$ de los datos está a menos de $k$ desviaciones estándar de la media. Para $k = 2$ la cota es 75% y para $k = 3$ es cerca de 88,9%."
+        },
+        {
+          "texto": "Puntaje estándar: $z = \\frac{x - \\bar{x}}{s}$",
+          "explicacion": "El puntaje estándar mide a cuántas desviaciones estándar se encuentra un dato respecto de la media. Un valor $z = 2$ indica que el dato supera a la media en dos desviaciones estándar y $z = -1$ indica que está una desviación por debajo de ella."
+        },
+        {
+          "texto": "Origen del término: Karl Pearson, 1893",
+          "explicacion": "Karl Pearson, estadístico británico, introdujo la expresión desviación estándar en 1893, para el valor representado por la letra sigma. Antes se usaban denominaciones como error medio cuadrático, y la nueva expresión se difundió rápidamente en los trabajos de estadística posteriores y se mantiene hasta hoy."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: olvidar extraer la raíz cuadrada",
+          "explicacion": "Entregar la varianza como si fuera la desviación estándar es un error común, que se detecta porque el valor queda en unidades al cuadrado. En el ejemplo de 2, 4, 4, 4, 5, 5, 7, 9 la varianza es 4 y la desviación estándar es 2."
+        },
+        {
+          "texto": "Error: extraer la raíz a cada término",
+          "explicacion": "La raíz cuadrada se aplica al promedio completo de los cuadrados, no a cada desviación al cuadrado. Extraer raíces término a término devolvería los valores absolutos de las desviaciones y produciría su promedio, que es la desviación media, no la estándar."
+        },
+        {
+          "texto": "Error: sumar o restar desviaciones estándar de conjuntos",
+          "explicacion": "La desviación estándar no es aditiva: la de un conjunto unido no es la suma ni el promedio de las desviaciones de sus partes. Es necesario recalcular a partir de los datos o de las varianzas y medias de cada parte."
+        },
+        {
+          "texto": "Error: comparar desviaciones de datos con unidades distintas",
+          "explicacion": "Una desviación de 5 kilogramos y otra de 5 centímetros no son comparables. Tampoco lo son dos desviaciones de conjuntos con medias muy diferentes. Para ello se recurre al coeficiente de variación (tema 75), que expresa la dispersión como fracción de la media y no tiene unidades."
+        }
+      ]
+    }
+  ]
+}

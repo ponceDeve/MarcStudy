@@ -1,0 +1,233 @@
+{
+  "curso": "Aritmética",
+  "tema": "Mediana",
+  "glosario": {
+    "Mediana": "Valor central de los datos ordenados",
+    "Medida de tendencia central": "Valor que representa el centro de los datos",
+    "Variable ordinal": "Variable con categorías ordenadas naturalmente",
+    "Escala nominal": "Categorías sin orden entre sí",
+    "Frecuencia acumulada": "Suma de frecuencias hasta un valor",
+    "Clase mediana": "Primera clase que alcanza la mitad",
+    "Datos agrupados": "Datos organizados en intervalos de clase",
+    "Amplitud": "Longitud de un intervalo de clase",
+    "Interpolación lineal": "Estimación suponiendo reparto uniforme",
+    "Ojiva": "Polígono de frecuencias acumuladas",
+    "Clase abierta": "Intervalo sin límite inferior o superior",
+    "Cuartil": "Valor que divide los datos en cuatro partes",
+    "Percentil": "Valor que deja un porcentaje por debajo",
+    "Datos atípicos": "Datos inusualmente alejados del resto",
+    "Asimetría": "Falta de simetría de una distribución",
+    "Moda": "Valor de mayor frecuencia absoluta",
+    "Medida resistente": "Medida poco afectada por valores extremos"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Mediana» = valor central de los datos ordenados",
+          "explicacion": "La mediana es la medida de tendencia central que ocupa la posición central de un conjunto de datos una vez ordenados de menor a mayor. Es el valor que separa el conjunto en dos mitades: la mitad inferior de los datos es menor o igual que ella y la mitad superior es mayor o igual. Es una de las medidas de tendencia central introducidas en el tema 65."
+        },
+        {
+          "texto": "El símbolo «Me» = mediana de los datos",
+          "explicacion": "La mediana se representa con el símbolo $Me$, abreviatura de la palabra mediana. Se expresa en las mismas unidades que los datos. Por ejemplo, $Me = 5$ indica que, al ordenar los datos, el valor 5 deja la mitad de ellos por debajo y la mitad por encima."
+        },
+        {
+          "texto": "Ordenamiento previo ✓ para hallar la mediana",
+          "explicacion": "La mediana se define a partir de la posición de los datos, por lo que antes de buscarla es indispensable ordenarlos de menor a mayor, o de mayor a menor. Calcularla sobre los datos en el orden en que fueron recogidos es un error, porque la posición central de la lista desordenada no tiene relación con el valor central."
+        },
+        {
+          "texto": "Mediana divide el conjunto en dos mitades iguales",
+          "explicacion": "Al ubicarse en el centro de los datos ordenados, la mediana deja aproximadamente el 50% de las observaciones a cada lado. Esta propiedad de partición es la razón por la que se le considera un valor típico del conjunto y la hace equivalente al segundo cuartil (tema 72)."
+        },
+        {
+          "texto": "Notación de posición: $x_{(k)}$",
+          "explicacion": "Para indicar el lugar que ocupa un dato en la lista ordenada se utiliza la notación $x_{(k)}$, que representa el dato de la posición $k$. Así, $x_{(1)}$ es el menor y $x_{(n)}$ es el mayor, donde $n$ es el número total de datos. La notación separa la posición del valor, dos ideas que suelen confundirse."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "n impar ⇒ posición central $\\frac{n+1}{2}$",
+          "explicacion": "Cuando el número de datos $n$ es impar, existe un único dato en el centro de la lista ordenada y la mediana es ese dato: $Me = x_{\\left(\\frac{n+1}{2}\\right)}$. Antes y después de esa posición queda la misma cantidad de datos, exactamente $\\frac{n-1}{2}$ a cada lado."
+        },
+        {
+          "texto": "Ejemplo impar: 7, 3, 9, 1, 5 → Me = 5",
+          "explicacion": "Se ordenan los datos: 1, 3, 5, 7, 9. Como $n = 5$ es impar, la posición central es $\\frac{5+1}{2} = 3$. El tercer dato de la lista ordenada es 5, de modo que $Me = 5$. Dos datos quedan por debajo y dos por encima."
+        },
+        {
+          "texto": "n par ⇒ promedio de los dos datos centrales",
+          "explicacion": "Cuando $n$ es par hay dos datos centrales, en las posiciones $\\frac{n}{2}$ y $\\frac{n}{2} + 1$, y la mediana es su media aritmética: $$Me = \\frac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2}$$ De este modo se obtiene un valor que deja exactamente la mitad de los datos a cada lado."
+        },
+        {
+          "texto": "Ejemplo par: 2, 4, 6, 8 → Me = 5",
+          "explicacion": "Con $n = 4$ los datos centrales ocupan las posiciones 2 y 3, y valen 4 y 6. La mediana es $\\frac{4 + 6}{2} = 5$. Dos datos quedan por debajo de 5 y dos por encima."
+        },
+        {
+          "texto": "n par: la mediana puede no pertenecer a los datos",
+          "explicacion": "A diferencia de lo que ocurre con n impar, cuando n es par la mediana es un promedio y puede resultar un valor que no figura en la lista, como el 5 en el conjunto 2, 4, 6, 8. Solo coincide con un dato cuando los dos valores centrales son iguales, caso en el que la mediana es ese valor repetido."
+        },
+        {
+          "texto": "Procedimiento para datos no agrupados",
+          "explicacion": "Los pasos son: primero, ordenar los datos de menor a mayor; segundo, contar cuántos datos hay, $n$; tercero, decidir si $n$ es impar o par; cuarto, tomar el dato central si es impar o promediar los dos centrales si es par. Cada paso depende del anterior, por lo que no se debe omitir ninguno."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla de frecuencias",
+      "puntos": [
+        {
+          "texto": "«Frecuencia acumulada» = datos hasta un valor",
+          "explicacion": "La frecuencia absoluta acumulada $F_i$ es la suma de las frecuencias de todos los valores menores o iguales que $x_i$: $F_i = f_1 + f_2 + \\dots + f_i$. Su último valor es el total de datos $n$. Indica cuántos datos hay hasta cierto valor, por lo que permite ubicar posiciones sin escribir la lista completa."
+        },
+        {
+          "texto": "Regla: primer valor con $F_i$ no menor que $\\frac{n}{2}$",
+          "explicacion": "Se calcula $\\frac{n}{2}$ y se busca el primer valor $x_i$ cuya frecuencia acumulada cumpla $F_i \\ge \\frac{n}{2}$. Si $F_i > \\frac{n}{2}$, la mediana es $x_i$. Si $F_i = \\frac{n}{2}$, lo cual solo ocurre con $n$ par, la mediana es $\\frac{x_i + x_{i+1}}{2}$, porque el dato de la posición $\\frac{n}{2}$ es $x_i$ y el siguiente pertenece al valor $x_{i+1}$."
+        },
+        {
+          "texto": "Ejemplo con tabla: $F_i > \\frac{n}{2}$ ⇒ Me = 3",
+          "explicacion": "Los valores $1, 2, 3, 4, 5$ tienen frecuencias $4, 6, 9, 5, 2$, con $n = 26$. Las frecuencias acumuladas son $4, 10, 19, 24, 26$. Como $\\frac{n}{2} = 13$, el primer $F_i$ mayor o igual a 13 es 19, que corresponde al valor 3, y como 19 supera a 13, $Me = 3$."
+        },
+        {
+          "texto": "Ejemplo con tabla: $F_i = \\frac{n}{2}$ ⇒ Me = 2,5",
+          "explicacion": "Los valores $1, 2, 3, 4$ tienen frecuencias $3, 5, 2, 6$, con $n = 16$. Las frecuencias acumuladas son $3, 8, 10, 16$. Como $\\frac{n}{2} = 8$ y $F_2 = 8$ coincide exactamente, la mediana es el promedio entre el valor 2 y el valor siguiente, 3: $Me = \\frac{2 + 3}{2} = 2{,}5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos agrupados",
+      "puntos": [
+        {
+          "texto": "«Clase mediana» = primera clase con $F_i$ no menor que $\\frac{n}{2}$",
+          "explicacion": "En una tabla de datos agrupados en intervalos, la clase mediana es el primer intervalo cuya frecuencia acumulada alcanza o supera la mitad de los datos, $\\frac{n}{2}$. La mediana se encuentra dentro de esa clase, pero su valor exacto se estima por interpolación porque los datos individuales no se conocen."
+        },
+        {
+          "texto": "Elementos de la clase mediana",
+          "explicacion": "Para la fórmula se necesitan: $L_i$, el límite inferior de la clase mediana; $A$, su amplitud; $f_i$, su frecuencia absoluta; $F_{i-1}$, la frecuencia acumulada de la clase anterior; y $n$, el total de datos. La cantidad $\\frac{n}{2} - F_{i-1}$ indica cuántos datos faltan, dentro de la clase mediana, para llegar a la mitad."
+        },
+        {
+          "texto": "Fórmula de la mediana para datos agrupados",
+          "explicacion": "La mediana de datos agrupados se calcula con $$Me = L_i + \\frac{\\frac{n}{2} - F_{i-1}}{f_i}\\, A$$ La fracción indica qué parte de la clase mediana es necesario recorrer desde su límite inferior para completar la mitad de los datos, y se multiplica por la amplitud para convertirla en unidades de la variable."
+        },
+        {
+          "texto": "Interpolación lineal ⇒ datos distribuidos uniformemente en la clase",
+          "explicacion": "La fórmula supone que los datos de la clase mediana están repartidos de manera uniforme a lo largo del intervalo. Bajo esa hipótesis, la proporción de datos necesarios coincide con la proporción de la amplitud recorrida. Por ello el resultado es una estimación y no el valor exacto de la mediana de los datos originales."
+        },
+        {
+          "texto": "Ejemplo agrupado: Me ≈ 34,67",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$ y frecuencias $4, 9, 15, 8, 4$, se tiene $n = 40$ y las acumuladas son $4, 13, 28, 36, 40$. Como $\\frac{n}{2} = 20$, la clase mediana es $30-40$, con $F_{i-1} = 13$, $f_i = 15$ y $A = 10$. Entonces $Me = 30 + \\frac{20 - 13}{15}\\cdot 10 \\approx 34{,}67$."
+        },
+        {
+          "texto": "$F_{i-1} = \\frac{n}{2}$ ⇒ mediana en el límite inferior",
+          "explicacion": "Si la frecuencia acumulada de la clase anterior ya es exactamente la mitad de los datos, el numerador de la fórmula es cero y resulta $Me = L_i$. El valor central se ubica entonces justo en el límite entre dos clases, lo que concuerda con la regla de promediar valores centrales cuando la mitad coincide con una frecuencia acumulada."
+        },
+        {
+          "texto": "Ojiva: la mediana está donde la acumulada es el 50%",
+          "explicacion": "La ojiva es el polígono de frecuencias acumuladas, un gráfico que relaciona cada límite de clase con su frecuencia acumulada. Para hallar la mediana se ubica en el eje vertical la mitad del total de datos, $\\frac{n}{2}$, o el 50% si la acumulada es relativa, y se baja hasta el eje horizontal desde el punto correspondiente de la ojiva."
+        },
+        {
+          "texto": "Amplitudes desiguales ⇒ misma fórmula de la mediana",
+          "explicacion": "La fórmula de la mediana se aplica sin cambios cuando las clases tienen amplitudes distintas, porque trabaja con frecuencias acumuladas y con la amplitud $A$ de la propia clase mediana. Esto la diferencia de la moda de datos agrupados (tema 69), que sí requiere densidades de frecuencia."
+        },
+        {
+          "texto": "Clases abiertas ⇒ mediana calculable",
+          "explicacion": "Una clase abierta carece de límite inferior o superior, por ejemplo la clase «60 o más». Como la mediana depende de las frecuencias acumuladas y no de los valores de los extremos, puede calcularse aunque existan clases abiertas, siempre que la clase mediana sea cerrada."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Mediana = siempre existe y es única",
+          "explicacion": "Todo conjunto de datos numéricos ordenables tiene una mediana bien definida y un solo valor para ella. Esta unicidad la distingue de la moda, que puede no existir o tener varios valores, y es una de sus ventajas como medida de tendencia central."
+        },
+        {
+          "texto": "Mediana ≠ afectada por valores extremos",
+          "explicacion": "Como la mediana depende de la posición central y no de la magnitud de los datos, cambiar el valor del dato mayor o del menor no la modifica mientras ocupen los extremos de la lista. Por esta razón se dice que es una medida resistente o robusta."
+        },
+        {
+          "texto": "Mediana ∈ variables ordinales",
+          "explicacion": "Una variable ordinal tiene categorías con un orden natural, como los grados de instrucción. Para ellas se puede ordenar los datos y ubicar el central, de modo que la mediana es aplicable. No lo es en una escala nominal, donde las categorías carecen de orden."
+        },
+        {
+          "texto": "Datos transformados ⇒ Me(aX + b) = a Me(X) + b",
+          "explicacion": "Si cada dato $x$ se transforma en $ax + b$, la mediana de los nuevos datos es $a \\cdot Me + b$, donde $Me$ es la mediana original. Esto vale para cualquier constante $a$, incluso negativa, porque la transformación conserva o invierte el orden, y la posición central permanece como centro."
+        },
+        {
+          "texto": "Mediana minimiza la suma de desviaciones absolutas",
+          "explicacion": "La suma $\\sum |x_i - c|$ toma su valor mínimo cuando $c$ es la mediana. La idea es que, al mover $c$ hacia la derecha, se acerca a los datos que están a su derecha pero se aleja de los que están a su izquierda; el balance se logra cuando hay igual cantidad de datos a ambos lados, es decir, en el centro de la lista."
+        },
+        {
+          "texto": "Mediana ✗ tratamiento algebraico",
+          "explicacion": "La mediana de un conjunto formado al reunir dos grupos no puede obtenerse a partir de las medianas de cada grupo. Es necesario volver a ordenar todos los datos o recalcular con las frecuencias acumuladas totales. Esta limitación comparte con la moda."
+        },
+        {
+          "texto": "Mediana = segundo cuartil",
+          "explicacion": "Como los cuartiles dividen los datos en cuatro partes iguales, el segundo cuartil deja la mitad de los datos por debajo y es idéntico a la mediana: $Q_2 = Me$. También coincide con el percentil 50 (el valor que deja el 50% de los datos por debajo). Los cuartiles se desarrollan en el tema 72."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación con otras medidas",
+      "puntos": [
+        {
+          "texto": "Distribución simétrica ⇒ media = mediana",
+          "explicacion": "Cuando los datos se distribuyen simétricamente alrededor de su centro, el valor central y el promedio coinciden. Si además la distribución es unimodal, la moda (tema 69) también coincide con ellos. Esta igualdad se rompe cuando la distribución presenta asimetría."
+        },
+        {
+          "texto": "Asimetría positiva ⇒ moda, mediana y media en orden creciente",
+          "explicacion": "En una distribución con cola larga hacia los valores grandes, los datos elevados arrastran a la media aritmética (tema 66) hacia la derecha en mayor grado que a la mediana. El orden resultante es moda menor que mediana y esta menor que media."
+        },
+        {
+          "texto": "Asimetría negativa ⇒ media, mediana y moda en orden creciente",
+          "explicacion": "En una distribución con cola larga hacia los valores pequeños, los datos bajos arrastran a la media hacia la izquierda más que a la mediana. El orden resultante es media menor que mediana y esta menor que moda, es decir, el inverso del caso de asimetría positiva."
+        },
+        {
+          "texto": "Mediana ≠ media con datos atípicos",
+          "explicacion": "En el conjunto 1, 2, 3, 4, 100 la media aritmética es $\\frac{110}{5} = 22$, valor superior a cuatro de los cinco datos, mientras que la mediana es 3 y describe mejor la parte central. Por eso se prefiere la mediana cuando existen datos atípicos o distribuciones asimétricas."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Dos datos centrales iguales ⇒ Me = ese valor",
+          "explicacion": "Si en un conjunto con n par los dos datos centrales son iguales, su promedio es ese mismo valor y la mediana pertenece a los datos. En 2, 5, 5, 9 los centrales son 5 y 5, por lo que $Me = 5$. El procedimiento no cambia; solo el resultado coincide con un dato."
+        },
+        {
+          "texto": "Valores repetidos en el centro",
+          "explicacion": "Cuando el valor central aparece varias veces, la mediana sigue siendo ese valor, y no se debe contar solo una de las repeticiones ni descartar las demás. Cada repetición ocupa su propia posición en la lista ordenada y debe contarse para determinar $n$ y las posiciones centrales."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: no ordenar los datos",
+          "explicacion": "Tomar el dato del medio de la lista tal como fue dada produce un valor sin relación con la mediana. Por ejemplo, en 9, 1, 5, 7, 3 el dato del centro de la lista es 5 por casualidad, pero en 9, 1, 3, 7, 5 resultaría 3, aunque la mediana de ambos conjuntos es 5."
+        },
+        {
+          "texto": "Error: confundir la posición con el valor de la mediana",
+          "explicacion": "La fórmula $\\frac{n+1}{2}$ entrega el lugar que ocupa el dato central y no su valor. Con $n = 9$ la posición es 5, pero la mediana es el valor que se encuentra en esa posición y que puede ser cualquier número. Responder con la posición es un error común."
+        },
+        {
+          "texto": "Error: con n par, tomar solo uno de los centrales",
+          "explicacion": "Cuando el número de datos es par hay dos posiciones centrales, y la mediana se obtiene con el promedio de ambos datos. Elegir uno solo ignora la mitad de la información central y desplaza el resultado, salvo que ambos sean iguales."
+        },
+        {
+          "texto": "Error: usar $f_i$ en lugar de $F_i$ al buscar la clase",
+          "explicacion": "La clase mediana se determina con las frecuencias acumuladas y no con las frecuencias absolutas simples. Buscar la clase de mayor frecuencia absoluta lleva a la clase modal, y no necesariamente a la clase mediana, aunque en algunos conjuntos coincidan."
+        },
+        {
+          "texto": "Error: usar $F_i$ en vez de $F_{i-1}$ en la fórmula",
+          "explicacion": "En la fórmula de datos agrupados se resta la frecuencia acumulada de la clase anterior, $F_{i-1}$, porque se quiere saber cuántos datos faltan dentro de la clase mediana. Restar $F_i$ o usar $n$ en lugar de $\\frac{n}{2}$ produce valores fuera de la clase mediana."
+        }
+      ]
+    }
+  ]
+}

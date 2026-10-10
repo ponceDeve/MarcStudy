@@ -1,0 +1,140 @@
+{
+  "curso": "Aritmética",
+  "tema": "Probabilidad condicional",
+  "glosario": {
+    "probabilidad condicional": "Probabilidad de un evento sabiendo que otro ocurrió",
+    "espacio muestral reducido": "Resultados compatibles con la información conocida",
+    "regla del producto": "Probabilidad de la intersección como producto",
+    "eventos independientes": "Uno no altera la probabilidad del otro",
+    "eventos dependientes": "Ocurrencia de uno modifica la probabilidad del otro"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de condicional",
+      "puntos": [
+        {
+          "texto": "La «probabilidad condicional» mide la probabilidad de A sabiendo que B ocurrió.",
+          "explicacion": "La probabilidad condicional modifica la probabilidad de un evento cuando se dispone de información adicional. Si se sabe que B ha ocurrido, la pregunta por A cambia, porque solo importan los resultados compatibles con B. Este concepto es fundamental para razonar con información parcial y se apoya en las probabilidades de eventos y de intersecciones estudiadas en los temas 82 y 83."
+        },
+        {
+          "texto": "La probabilidad condicional se escribe $P(A \\mid B)$.",
+          "explicacion": "La barra vertical en $P(A \\mid B)$ separa el evento de interés del evento que se supone ocurrido. Se lee «probabilidad de A dado B», y no debe confundirse con la probabilidad de la intersección. Esta notación es la base para distinguir las probabilidades que cambian con la información de las que no cambian."
+        },
+        {
+          "texto": "Conocer B transforma el espacio muestral en el «espacio muestral reducido».",
+          "explicacion": "Cuando se sabe que B ocurrió, los únicos resultados que siguen siendo posibles son los que pertenecen a B. Ese conjunto, llamado espacio muestral reducido, actúa como nuevo universo para calcular la probabilidad de A. Pensar en este espacio reducido es la forma más intuitiva de entender la condicional."
+        },
+        {
+          "texto": "La probabilidad condicional exige que $P(B)$ sea mayor que cero.",
+          "explicacion": "Solo se puede condicionar a eventos que tienen probabilidad positiva, porque la fórmula divide entre $P(B)$. Si B es imposible, no tiene sentido preguntar por la probabilidad de A dado B, pues la información es contradictoria. Esta condición debe verificarse antes de aplicar cualquier cálculo."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de la condicional",
+      "puntos": [
+        {
+          "texto": "$P(A \\mid B)$ es la intersección dividida entre $P(B)$.",
+          "explicacion": "La fórmula establece que la probabilidad de A dado B es el cociente $\\frac{P(A \\cap B)}{P(B)}$. Tiene sentido porque, al condicionar, el numerador recoge los casos en que ocurren A y B, y el denominador el total de casos compatibles con B. Esta expresión se deduce directamente de la idea de espacio muestral reducido."
+        },
+        {
+          "texto": "Calcular $P(A \\mid B)$ exige contar casos favorables dentro de B.",
+          "explicacion": "En la práctica, se identifican los resultados de B y, dentro de ellos, los que también pertenecen a A. El cociente entre ambos conteos, si se usa el mismo criterio para contar, da la probabilidad condicional. Esta forma de calcular se puede aplicar con la regla de Laplace del tema 84 cuando el espacio es finito y equiprobable."
+        },
+        {
+          "texto": "En un dado, par dado mayor que tres tiene probabilidad dos tercios.",
+          "explicacion": "Sea B el evento obtener un número mayor que tres, es decir, cuatro, cinco o seis. Dentro de B, los pares son cuatro y seis, por lo que hay dos casos favorables entre tres posibles. La probabilidad condicional es dos tercios. Este ejemplo muestra cómo la información cambia la probabilidad de forma visible."
+        },
+        {
+          "texto": "Sin condicionar, par en un dado tiene probabilidad un medio.",
+          "explicacion": "Sin información adicional, los casos posibles son seis y los pares son tres, por lo que la probabilidad es un medio. Comparado con el ejemplo anterior, saber que el resultado es mayor que tres aumenta la probabilidad de que sea par. Esta comparación permite comprobar que la condicional no equivale a la probabilidad simple."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla del producto",
+      "puntos": [
+        {
+          "texto": "La «regla del producto» calcula la intersección usando la condicional.",
+          "explicacion": "Despejando la fórmula de la condicional se obtiene que la probabilidad de la intersección de A y B es $P(B)$ multiplicada por $P(A \\mid B)$. Esta regla permite calcular la probabilidad de que ocurran dos eventos seguidos cuando se conoce la probabilidad del segundo dado el primero. Es una de las herramientas más usadas en problemas de extracciones."
+        },
+        {
+          "texto": "La regla del producto puede aplicarse en cadena a varios eventos.",
+          "explicacion": "Para tres eventos, la probabilidad de la intersección se obtiene multiplicando la probabilidad del primero por la del segundo dado el primero y por la del tercero dados los dos anteriores. Cada factor se calcula sobre el espacio reducido que deja la información previa. La cadena permite describir experimentos secuenciales paso a paso."
+        },
+        {
+          "texto": "Dos ases seguidos, sin reposición, tienen probabilidad $\\frac{1}{130}$.",
+          "explicacion": "En una baraja de cuarenta cartas hay cuatro ases. La probabilidad de que la primera carta sea un as es cuatro cuarentavos, que se simplifica a un décimo. Si ya salió un as, quedan tres ases entre treinta y nueve cartas, así que la segunda probabilidad condicional es tres trigésimos novenos. El producto da tres entre trescientos noventa, que se simplifica a uno entre ciento treinta."
+        }
+      ]
+    },
+    {
+      "titulo": "Eventos independientes",
+      "puntos": [
+        {
+          "texto": "Dos «eventos independientes» no modifican la probabilidad uno del otro.",
+          "explicacion": "Los eventos A y B son independientes cuando saber que B ocurrió no cambia la probabilidad de A, es decir, cuando $P(A \\mid B)$ coincide con $P(A)$. La independencia es una propiedad del modelo de probabilidad, y en la práctica se verifica por las características del experimento o por el enunciado."
+        },
+        {
+          "texto": "Para eventos independientes, la intersección es el producto de probabilidades.",
+          "explicacion": "Si A y B son independientes, la regla del producto se simplifica y la probabilidad de la intersección es el producto de sus probabilidades individuales. Por ejemplo, la probabilidad de que dos lanzamientos de dado den seis en ambos es un sexto por un sexto, es decir, un trigésimo sexto. Esta simplificación es la razón por la que la independencia se usa tanto en los cálculos."
+        },
+        {
+          "texto": "En dos lanzamientos de un dado, los resultados son independientes.",
+          "explicacion": "El resultado del primer lanzamiento no altera las probabilidades del segundo, porque el dado no guarda memoria de lo ocurrido. Por eso la probabilidad del segundo resultado es la misma que tendría sin condicionar. Esta situación de repetición con reemplazo es el modelo típico de eventos independientes."
+        },
+        {
+          "texto": "Extraer cartas sin reposición produce eventos dependientes.",
+          "explicacion": "En el ejemplo de los ases sin reposición, la primera extracción cambia la composición de la baraja, de modo que la segunda probabilidad depende de la primera. Los eventos son dependientes porque la ocurrencia de uno modifica la probabilidad del otro. Distinguir este caso del anterior evita aplicar la independencia de forma incorrecta."
+        },
+        {
+          "texto": "Eventos mutuamente excluyentes con probabilidad positiva son dependientes.",
+          "explicacion": "Si A y B no pueden ocurrir a la vez y ambos tienen probabilidad positiva, saber que B ocurrió hace imposible A, de modo que $P(A \\mid B)$ vale cero, distinto de $P(A)$. Por tanto, la exclusión mutua implica dependencia, y no independencia. Esta distinción es una de las confusiones más frecuentes de la materia."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación de la condicional",
+      "puntos": [
+        {
+          "texto": "La condicional cambia la probabilidad solo cuando la información es relevante.",
+          "explicacion": "Si la información conocida no afecta al evento de interés, la probabilidad condicional coincide con la probabilidad original. Esto ocurre precisamente en los eventos independientes. Por eso, antes de calcular, conviene preguntarse si el dato adicional aporta algo sobre el evento."
+        },
+        {
+          "texto": "Condicionar a un evento seguro no cambia la probabilidad.",
+          "explicacion": "Como el evento seguro contiene todos los resultados posibles, saber que ocurrió no reduce el espacio muestral. Por tanto, $P(A \\mid \\Omega)$ coincide con $P(A)$. Este caso extremo ilustra que la condicional mide cuánto reduce la información el espacio de resultados posibles."
+        },
+        {
+          "texto": "A dado B no equivale a B dado A.",
+          "explicacion": "En un dado, la probabilidad de obtener seis sabiendo que salió par es un tercio, porque hay tres pares y uno de ellos es seis. En cambio, la probabilidad de obtener par sabiendo que salió seis es uno, porque seis es par. Confundir ambos sentidos cambia por completo el resultado, y el orden de la condición debe leerse con cuidado."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Andréi Kolmogórov definió la probabilidad condicional en su obra de 1933.",
+          "explicacion": "Andréi Kolmogórov, en su formalización axiomática de 1933 mencionada en el tema 82, definió la probabilidad condicional como cociente entre la probabilidad de la intersección y la probabilidad del evento condicionante. Esta definición hizo posible tratar la condicional dentro del mismo marco que el resto de la teoría de probabilidades."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir $P(A \\mid B)$ con $P(B \\mid A)$ es un error frecuente.",
+          "explicacion": "Los dos valores suelen ser distintos, como muestra el ejemplo del dado en el que la probabilidad de seis dado par y la de par dado seis valen un tercio y uno, respectivamente. Intercambiar el orden de la condición altera el cálculo. Antes de operar conviene identificar con precisión cuál es el evento condicionante."
+        },
+        {
+          "texto": "Dividir entre cero al condicionar a un evento imposible es un error.",
+          "explicacion": "Si $P(B)$ es cero, la fórmula de la condicional no tiene sentido porque el denominador se anula. Un error habitual es aplicar la fórmula sin verificar que el evento condicionante es posible. Antes de dividir conviene comprobar que el evento condicionante tiene probabilidad positiva."
+        },
+        {
+          "texto": "Suponer independencia sin verificarla es un error frecuente.",
+          "explicacion": "Es común multiplicar probabilidades como si los eventos fueran independientes, aunque el experimento no lo permita. En extracciones sin reposición o en situaciones donde un resultado influye en el siguiente, el producto simple da resultados incorrectos. La independencia debe justificarse antes de aplicarla."
+        }
+      ]
+    }
+  ]
+}

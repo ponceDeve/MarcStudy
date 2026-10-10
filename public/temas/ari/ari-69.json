@@ -1,0 +1,257 @@
+{
+  "curso": "Aritmética",
+  "tema": "Moda",
+  "glosario": {
+    "Moda": "Valor de mayor frecuencia absoluta",
+    "Frecuencia absoluta": "Veces que se repite un valor",
+    "Frecuencia modal": "Mayor frecuencia absoluta observada",
+    "Medida de tendencia central": "Valor que representa el centro de los datos",
+    "Unimodal": "Con una única moda",
+    "Bimodal": "Con dos modas",
+    "Multimodal": "Con tres o más modas",
+    "Amodal": "Sin moda",
+    "Tabla de frecuencias": "Tabla de valores con sus repeticiones",
+    "Variable cualitativa": "Variable que expresa cualidades no numéricas",
+    "Escala nominal": "Categorías sin orden entre sí",
+    "Datos agrupados": "Datos organizados en intervalos de clase",
+    "Clase modal": "Intervalo de mayor frecuencia",
+    "Amplitud": "Longitud de un intervalo de clase",
+    "Densidad de frecuencia": "Frecuencia dividida entre la amplitud",
+    "Histograma": "Gráfico de barras contiguas por intervalos",
+    "Marca de clase": "Punto medio de un intervalo",
+    "Valores extremos": "Datos muy alejados del resto",
+    "Distribución simétrica": "Distribución con la misma forma a ambos lados"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Moda» = valor que más se repite",
+          "explicacion": "La moda es la medida de tendencia central que señala el valor de la variable con mayor frecuencia absoluta dentro de un conjunto de datos. Su nombre evoca aquello que está en boga, es decir, lo más habitual. Se obtiene por simple conteo, sin sumar ni ordenar los datos, lo que la distingue de la media aritmética (tema 66) y de la mediana (tema 70), cuyo cálculo exige operaciones u ordenamiento previo."
+        },
+        {
+          "texto": "El símbolo «Mo» = moda de los datos",
+          "explicacion": "La moda se representa con el símbolo $Mo$, a veces escrito $M_o$, abreviatura de la palabra moda. Se expresa en las mismas unidades que los datos: si los datos son edades en años, la moda es una cantidad de años. La igualdad $Mo = 5$ indica que el valor 5 es el que más se repite."
+        },
+        {
+          "texto": "«Frecuencia absoluta» = veces que aparece un valor",
+          "explicacion": "La frecuencia absoluta de un valor $x_i$ es la cantidad de veces que ese valor aparece en los datos y se denota $f_i$. La suma de todas las frecuencias absolutas es el número total de datos $n$. La moda es el valor $x_i$ cuya frecuencia $f_i$ resulta la mayor, por lo que este concepto es el requisito previo para hallarla."
+        },
+        {
+          "texto": "«Frecuencia modal» = mayor frecuencia absoluta",
+          "explicacion": "La frecuencia modal es el número de repeticiones del valor modal, es decir, el máximo de las frecuencias $f_i$. Se trata de una cantidad de veces y no de un valor de la variable, por lo que no debe confundirse con la moda misma. En el conjunto 3, 5, 5, 7, 5 la frecuencia modal es 3, mientras que la moda es 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "Procedimiento: contar las repeticiones de cada valor",
+          "explicacion": "Primero se identifican los valores distintos del conjunto; luego se cuenta cuántas veces aparece cada uno; después se compara esa cantidad entre todos los valores y, por último, se elige el valor con el conteo mayor. No es obligatorio ordenar los datos, aunque hacerlo facilita el conteo al agrupar los valores iguales."
+        },
+        {
+          "texto": "Ejemplo: 3, 5, 5, 7, 8, 5, 9, 7 → Mo = 5",
+          "explicacion": "Al contar las repeticiones se obtiene: 3 aparece una vez, 5 aparece tres veces, 7 aparece dos veces, 8 aparece una vez y 9 aparece una vez. La mayor frecuencia es 3 y corresponde al valor 5, de modo que $Mo = 5$. El valor 7, con frecuencia 2, no es moda porque existe otro valor que se repite más."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de moda",
+      "puntos": [
+        {
+          "texto": "«Unimodal» = una sola moda",
+          "explicacion": "Un conjunto de datos es unimodal cuando exactamente un valor tiene la frecuencia máxima. Es el caso más común y el que permite hablar de la moda como un único valor representativo. Por ejemplo, en 4, 6, 6, 6, 9 solo el 6 alcanza la frecuencia máxima, que es 3."
+        },
+        {
+          "texto": "«Bimodal» = dos modas",
+          "explicacion": "Un conjunto es bimodal cuando dos valores distintos comparten la frecuencia máxima. En 2, 2, 3, 4, 4, 5 los valores 2 y 4 aparecen dos veces cada uno y ningún otro se repite tanto, de modo que las modas son 2 y 4. Gráficamente, la distribución presenta dos picos de igual altura."
+        },
+        {
+          "texto": "«Multimodal» = tres o más modas",
+          "explicacion": "Un conjunto es multimodal cuando tres o más valores comparten la frecuencia máxima; con tres modas también se le llama trimodal. En 1, 1, 2, 2, 3, 3, 4 los valores 1, 2 y 3 aparecen dos veces cada uno y son las tres modas. El término multimodal suele englobar también a la distribución bimodal."
+        },
+        {
+          "texto": "«Amodal» = sin moda",
+          "explicacion": "Un conjunto es amodal cuando todos sus valores tienen la misma frecuencia, por ejemplo cuando ningún valor se repite, como en 1, 2, 3, 4. En ese caso no hay un valor que destaque sobre los demás, por lo que se afirma que la moda no existe."
+        },
+        {
+          "texto": "Frecuencias iguales: dos criterios sobre la moda",
+          "explicacion": "Los textos no coinciden sobre el caso en que todos los valores tienen la misma frecuencia. La versión más difundida en la enseñanza preuniversitaria afirma que no hay moda; otra versión, más formal, considera que todos los valores son modas porque todos alcanzan la frecuencia máxima. Se recomienda indicar el criterio adoptado cuando se presente este caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla de frecuencias",
+      "puntos": [
+        {
+          "texto": "Tabla de frecuencias: Mo = valor de mayor frecuencia",
+          "explicacion": "Cuando los datos se presentan en una tabla de frecuencias, la moda se lee directamente en la columna de frecuencias absolutas, sin necesidad de contar. Si los valores $0, 1, 2, 3, 4$ tienen frecuencias $3, 7, 12, 5, 3$ con $n = 30$, la mayor frecuencia es 12 y está asociada al valor 2, por lo que $Mo = 2$. La respuesta es el valor 2 y no la frecuencia 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Variables cualitativas",
+      "puntos": [
+        {
+          "texto": "La moda se aplica a variables cualitativas",
+          "explicacion": "Una variable cualitativa expresa cualidades o categorías, como el color preferido o la ciudad de origen. Mientras que la media aritmética exige operar con números y la mediana exige un orden, la moda solo requiere contar cuántas veces aparece cada categoría. Por eso la categoría con más repeticiones es la moda, aunque sus elementos no sean numéricos."
+        },
+        {
+          "texto": "Escala nominal ⇒ la moda es la única medida central",
+          "explicacion": "En una escala nominal las categorías no tienen un orden entre sí, de modo que no se pueden ordenar ni sumar. Al faltar orden, la mediana carece de sentido, y al faltar valores numéricos, la media también. La moda queda como la única medida de tendencia central aplicable a este tipo de datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos agrupados",
+      "puntos": [
+        {
+          "texto": "«Clase modal» = clase de mayor frecuencia",
+          "explicacion": "Cuando los datos están organizados en intervalos de clase con igual amplitud, la clase modal es el intervalo con la mayor frecuencia absoluta. La moda se encuentra dentro de esa clase, pero su valor exacto no se conoce porque los datos individuales ya no se distinguen. Por ello se utiliza una fórmula de interpolación para ubicarla dentro del intervalo."
+        },
+        {
+          "texto": "Elementos de la clase modal",
+          "explicacion": "Para aplicar la fórmula se identifican los siguientes elementos de la clase modal: $L_i$, el límite inferior de la clase; $A$, la amplitud, o longitud del intervalo; $f_i$, la frecuencia de la clase modal; $f_{i-1}$, la frecuencia de la clase anterior; y $f_{i+1}$, la frecuencia de la clase siguiente."
+        },
+        {
+          "texto": "Diferencia $d_1$ con la clase anterior",
+          "explicacion": "La diferencia $d_1$ es la frecuencia de la clase modal menos la frecuencia de la clase anterior: $d_1 = f_i - f_{i-1}$. Mide cuánto sobresale la clase modal respecto de la clase que la precede; mientras mayor sea, más se acerca la moda al extremo superior del intervalo."
+        },
+        {
+          "texto": "Diferencia $d_2$ con la clase siguiente",
+          "explicacion": "La diferencia $d_2$ es la frecuencia de la clase modal menos la frecuencia de la clase siguiente: $d_2 = f_i - f_{i+1}$. Mide cuánto sobresale la clase modal respecto de la clase que la sigue; mientras mayor sea, más se acerca la moda al extremo inferior del intervalo."
+        },
+        {
+          "texto": "Fórmula de la moda para datos agrupados",
+          "explicacion": "La moda de datos agrupados con clases de igual amplitud se calcula con la fórmula de interpolación $$Mo = L_i + \\frac{d_1}{d_1 + d_2}\\, A$$ donde $L_i$ es el límite inferior de la clase modal, $A$ su amplitud, y $d_1$ y $d_2$ las diferencias con las clases vecina anterior y siguiente. Esta expresión se asocia con el nombre de Czuber."
+        },
+        {
+          "texto": "La fórmula reparte la amplitud entre $d_1$ y $d_2$",
+          "explicacion": "La fracción $\\frac{d_1}{d_1 + d_2}$ indica qué parte de la amplitud se avanza desde el límite inferior. Si la clase anterior es mucho menor que la modal, $d_1$ es grande y la moda se desplaza hacia arriba; si la clase siguiente es mucho menor, $d_2$ es grande y la moda se desplaza hacia abajo. La moda se inclina así hacia la clase vecina de mayor frecuencia."
+        },
+        {
+          "texto": "$d_1 = d_2$ ⇒ moda en el centro de la clase",
+          "explicacion": "Cuando las dos clases vecinas tienen la misma frecuencia, se cumple $d_1 = d_2$ y la fracción vale $\\frac{1}{2}$. Entonces la moda coincide con el punto medio de la clase modal, es decir, $Mo = L_i + \\frac{A}{2}$."
+        },
+        {
+          "texto": "$d_1 > d_2$ ⇒ moda cerca del límite superior",
+          "explicacion": "Si la clase anterior tiene menor frecuencia que la siguiente, entonces $d_1 > d_2$ y la fracción supera $\\frac{1}{2}$. La moda queda en la mitad superior de la clase modal, más próxima a la clase siguiente, que es la vecina más numerosa."
+        },
+        {
+          "texto": "$d_1 < d_2$ ⇒ moda cerca del límite inferior",
+          "explicacion": "Si la clase anterior tiene mayor frecuencia que la siguiente, entonces $d_1 < d_2$ y la fracción es menor que $\\frac{1}{2}$. La moda queda en la mitad inferior de la clase modal, más próxima a la clase anterior, que es la vecina más numerosa."
+        },
+        {
+          "texto": "Ejemplo agrupado: Mo ≈ 34,62",
+          "explicacion": "Sean las clases $10-20, 20-30, 30-40, 40-50, 50-60$ con frecuencias $4, 9, 15, 8, 4$. La clase modal es $30-40$ porque su frecuencia 15 es la mayor. Se tiene $d_1 = 15 - 9 = 6$, $d_2 = 15 - 8 = 7$ y $A = 10$. Entonces $Mo = 30 + \\frac{6}{6+7}\\cdot 10 = 30 + 4{,}615 \\approx 34{,}62$."
+        },
+        {
+          "texto": "Amplitudes desiguales ⇒ densidad de frecuencia",
+          "explicacion": "Si las clases no tienen la misma amplitud, la frecuencia no sirve para comparar, porque un intervalo más ancho acumula más datos solo por su tamaño. Se calcula la densidad de frecuencia $h_i = \\frac{f_i}{A_i}$ de cada clase; la clase modal es la de mayor densidad, y en la fórmula las diferencias se calculan con densidades: $d_1 = h_i - h_{i-1}$ y $d_2 = h_i - h_{i+1}$."
+        },
+        {
+          "texto": "Clase modal en un extremo: vecino = 0",
+          "explicacion": "Si la clase modal es la primera o la última de la tabla, falta una clase vecina. Por convención se toma como cero la frecuencia de la clase inexistente, de modo que $d_1 = f_i$ cuando no hay clase anterior, o $d_2 = f_i$ cuando no hay clase siguiente. Esta es una convención de cálculo y no un resultado teórico."
+        },
+        {
+          "texto": "Método gráfico: intersección en el histograma",
+          "explicacion": "El histograma es el gráfico de barras contiguas que representa los intervalos de clase. Para hallar la moda gráficamente se une el vértice superior izquierdo de la barra modal con el vértice superior izquierdo de la barra siguiente, y el vértice superior derecho de la barra modal con el vértice superior derecho de la barra anterior. La abscisa del punto de cruce de ambos segmentos es la moda y coincide con la fórmula."
+        },
+        {
+          "texto": "Aproximación: Mo ≈ marca de clase modal",
+          "explicacion": "La marca de clase es el punto medio de un intervalo: $\\frac{L_i + L_s}{2}$, donde $L_s$ es el límite superior. Algunos textos elementales toman la marca de la clase modal como valor aproximado de la moda. Esta aproximación equivale a suponer $d_1 = d_2$ y es menos precisa que la fórmula de interpolación."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Moda ≠ afectada por valores extremos",
+          "explicacion": "Los valores extremos son datos muy alejados del resto. Como la moda depende solo de la frecuencia de los valores, un dato aislado muy grande o muy pequeño no la modifica. En 3, 5, 5, 7, 100 la moda es 5, igual que en 3, 5, 5, 7, 9, mientras que la media aritmética sí cambia notablemente."
+        },
+        {
+          "texto": "Moda puede no ser única ni existir",
+          "explicacion": "A diferencia de la media y la mediana, que siempre existen y son únicas, la moda puede tener varios valores, como en los conjuntos bimodales y multimodales, o no existir, como en los amodales. Esta falta de unicidad limita su uso cuando se necesita un único valor representativo."
+        },
+        {
+          "texto": "Datos no agrupados ⇒ Mo ∈ datos observados",
+          "explicacion": "Cuando los datos no están agrupados, la moda es siempre uno de los valores realmente observados, pues se elige entre ellos por su frecuencia. Con datos agrupados esto deja de ser cierto: la fórmula de interpolación produce un valor dentro de la clase modal que puede no coincidir con ningún dato."
+        },
+        {
+          "texto": "Moda ✗ tratamiento algebraico",
+          "explicacion": "No es posible obtener la moda de un conjunto unido a partir de las modas de sus partes. Si un grupo tiene moda 5 y otro tiene moda 8, la moda del conjunto total puede ser 5, 8 o un tercer valor, según las frecuencias totales. Por eso se dice que la moda no admite tratamiento algebraico."
+        },
+        {
+          "texto": "Datos + constante b → Mo + b",
+          "explicacion": "Si a todos los datos se les suma un mismo número $b$, las frecuencias no cambian y solo se desplazan los valores. Por tanto, la moda también se desplaza en esa cantidad: $Mo(X + b) = Mo(X) + b$. Por ejemplo, si la moda de unas notas es 12 y se suman 2 puntos a todas, la nueva moda es 14."
+        },
+        {
+          "texto": "Datos multiplicados por k → moda multiplicada por k",
+          "explicacion": "Si todos los datos se multiplican por una constante $k$ distinta de cero, cada valor conserva su frecuencia y solo cambia su magnitud. En consecuencia, $Mo(kX) = k \\cdot Mo(X)$. Esta propiedad, junto con la anterior, indica que la moda se transforma igual que los datos bajo cambios lineales."
+        },
+        {
+          "texto": "Moda agrupada depende de las clases elegidas",
+          "explicacion": "Al agrupar los mismos datos con distintos límites o amplitudes de clase se pueden obtener clases modales diferentes y, por tanto, valores distintos de la moda. La moda de datos agrupados es una estimación que depende de cómo se construyó la tabla, no una propiedad fija del conjunto original."
+        }
+      ]
+    },
+    {
+      "titulo": "Ventajas y limitaciones",
+      "puntos": [
+        {
+          "texto": "Ventaja: cálculo sencillo y aplicable a cualquier escala",
+          "explicacion": "La moda se obtiene por conteo, no requiere operaciones aritméticas y se puede usar con datos numéricos y no numéricos. Además, puede determinarse aun cuando existan clases abiertas en los extremos de la tabla, siempre que la clase modal sea cerrada, porque no depende de los límites de las clases extremas."
+        },
+        {
+          "texto": "Limitación: ignora la mayoría de los datos",
+          "explicacion": "La moda solo considera el valor más repetido y no tiene en cuenta los demás datos ni su magnitud. Dos conjuntos con distribuciones muy distintas pueden tener la misma moda, de modo que esta medida resume poco la información total del conjunto."
+        },
+        {
+          "texto": "Limitación: inestable con pocos datos",
+          "explicacion": "Con muestras pequeñas, un cambio de un solo dato puede modificar la moda o hacerla desaparecer, ya que las diferencias entre frecuencias son mínimas. Su confiabilidad aumenta cuando el número de datos es grande y existe una diferencia clara entre la frecuencia modal y las demás."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otras medidas",
+      "puntos": [
+        {
+          "texto": "Relación empírica de Pearson entre media, moda y mediana",
+          "explicacion": "Para distribuciones unimodales con asimetría moderada, Karl Pearson, estadístico británico (1857-1936), observó que $\\bar{x} - Mo \\approx 3(\\bar{x} - Me)$, donde $\\bar{x}$ es la media aritmética y $Me$ la mediana. Es una regla empírica, no un teorema exacto, y solo ofrece una estimación aproximada."
+        },
+        {
+          "texto": "Moda ≈ tres veces la mediana menos dos veces la media",
+          "explicacion": "Al despejar la moda en la relación empírica de Pearson se obtiene $Mo \\approx 3\\,Me - 2\\,\\bar{x}$. Esta expresión permite estimar la moda cuando se conocen la media aritmética (tema 66) y la mediana (tema 70) de una distribución moderadamente asimétrica y unimodal."
+        },
+        {
+          "texto": "Distribución simétrica unimodal ⇒ media = mediana = moda",
+          "explicacion": "Una distribución simétrica tiene la misma forma a ambos lados de su centro. Si además es unimodal, el pico coincide con el centro, y la media aritmética, la mediana y la moda toman el mismo valor. Cuando la distribución se vuelve asimétrica, estas tres medidas se separan."
+        },
+        {
+          "texto": "Origen del término moda: Karl Pearson, 1895",
+          "explicacion": "Karl Pearson, matemático y estadístico británico, introdujo el término moda en 1895, en sus trabajos sobre curvas de frecuencia asimétricas, para designar el valor de mayor frecuencia de una distribución. Desde entonces se incorporó al conjunto de medidas de tendencia central."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: responder con la frecuencia en lugar del valor",
+          "explicacion": "La moda es el valor de la variable que más se repite, no el número de repeticiones. En 7, 7, 7, 4, 9 la frecuencia modal es 3, pero la moda es 7. Para evitar la confusión conviene escribir siempre la respuesta con el nombre de la variable y su unidad."
+        },
+        {
+          "texto": "Error: suponer que la moda siempre es única",
+          "explicacion": "Al encontrar un valor con frecuencia alta no se debe dejar de revisar los demás conteos. Si otro valor repite la misma frecuencia, también es moda. Cerrar el conteo antes de tiempo lleva a ignorar las distribuciones bimodales o multimodales."
+        },
+        {
+          "texto": "Error: intercambiar $d_1$ y $d_2$ en la fórmula",
+          "explicacion": "En la fórmula de la moda agrupada, $d_1$ se calcula con la clase anterior y va en el numerador; $d_2$ se calcula con la clase siguiente. Si se intercambian, el resultado equivale a $L_i + \\frac{d_2}{d_1 + d_2}A$, que desplaza la moda hacia el lado contrario al de la clase vecina más numerosa y da un valor incorrecto."
+        }
+      ]
+    }
+  ]
+}

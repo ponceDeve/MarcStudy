@@ -1,0 +1,135 @@
+{
+  "curso": "Aritmética",
+  "tema": "Coeficiente de variación",
+  "glosario": {
+    "Coeficiente de variación": "Cociente entre desviación estándar y media",
+    "Desviación estándar": "Raíz cuadrada positiva de la varianza",
+    "Media aritmética": "Suma de datos dividida entre su cantidad",
+    "Dispersión relativa": "Dispersión medida respecto de la media",
+    "Dispersión absoluta": "Dispersión expresada en unidades de los datos",
+    "Varianza": "Promedio de los cuadrados de las desviaciones",
+    "Homogéneo": "Con poca variación relativa entre los datos",
+    "Cero absoluto": "Cero que significa ausencia de la magnitud",
+    "Escalas de intervalo": "Escalas con cero arbitrario"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Coeficiente de variación» = desviación estándar entre media",
+          "explicacion": "El coeficiente de variación es el cociente entre la desviación estándar (tema 74) y la media aritmética (tema 66) de un conjunto de datos. Mide la dispersión relativa: expresa cuántas veces cabe la dispersión en el tamaño de la media, y por eso se interpreta como una proporción del promedio."
+        },
+        {
+          "texto": "Notación: $CV$ o $V$",
+          "explicacion": "El coeficiente de variación se representa con $CV$, abreviatura de coeficiente de variación, y en algunos textos con $V$. Se calcula como $CV = \\frac{\\sigma}{\\mu}$ para una población y $CV = \\frac{s}{\\bar{x}}$ para una muestra, y suele multiplicarse por 100 para expresarlo en porcentaje."
+        },
+        {
+          "texto": "Fórmula: $CV = \\frac{\\sigma}{|\\bar{x}|} \\cdot 100\\%$",
+          "explicacion": "En forma porcentual, $$CV = \\frac{\\sigma}{|\\bar{x}|} \\cdot 100\\%$$ donde $\\sigma$ es la desviación estándar y $\\bar{x}$ la media. Se usa el valor absoluto de la media para que el coeficiente sea no negativo, aunque en la práctica se aplica a datos con media positiva."
+        },
+        {
+          "texto": "Dispersión absoluta ≠ dispersión relativa",
+          "explicacion": "La varianza y la desviación estándar son medidas de dispersión absoluta: dependen de las unidades y del tamaño de los datos. El coeficiente de variación es una medida de dispersión relativa porque divide la dispersión entre la media; no tiene unidades y permite comparaciones que las medidas absolutas no permiten."
+        },
+        {
+          "texto": "Coeficiente de variación ✗ unidades",
+          "explicacion": "Al dividir dos cantidades expresadas en la misma unidad, la unidad se cancela. Por ello el coeficiente de variación es un número sin dimensiones, que puede compararse entre conjuntos de datos medidos en unidades distintas, como kilogramos y centímetros."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento",
+      "puntos": [
+        {
+          "texto": "Pasos para hallar el coeficiente de variación",
+          "explicacion": "Primero se calcula la media aritmética del conjunto; segundo, se calcula su desviación estándar; tercero, se divide la desviación estándar entre la media; y cuarto, si se pide en porcentaje, se multiplica por 100. Es indispensable usar el mismo criterio de población o muestra en la media y la desviación."
+        },
+        {
+          "texto": "Ejemplo: 2, 4, 4, 4, 5, 5, 7, 9 ⇒ $CV = 40\\%$",
+          "explicacion": "La media es 5 y la desviación estándar poblacional es 2. Entonces $CV = \\frac{2}{5} = 0{,}4$, es decir, 40%. Significa que la desviación estándar equivale al 40% de la media, de modo que los datos presentan una variación relativa considerable respecto de su promedio. Para interpretar el valor conviene compararlo con el de otros conjuntos."
+        },
+        {
+          "texto": "Ejemplo agrupado: $CV \\approx 31{,}84\\%$",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$ y frecuencias $4, 9, 15, 8, 4$, la media es $34{,}75$ y la desviación estándar es aproximadamente $11{,}07$. Entonces $CV = \\frac{11{,}07}{34{,}75} \\approx 0{,}3184$, es decir, cerca de 31,84%."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso en comparaciones",
+      "puntos": [
+        {
+          "texto": "Uso: comparar la homogeneidad de dos conjuntos",
+          "explicacion": "Un conjunto es más homogéneo cuanto menor es su coeficiente de variación. Para comparar dos grupos de datos se calcula el coeficiente de cada uno y se considera más homogéneo, o menos disperso, al de menor valor. Es el criterio adecuado cuando las medias son diferentes."
+        },
+        {
+          "texto": "Ejemplo: desviación mayor pero coeficiente menor",
+          "explicacion": "El grupo A tiene media 50 y desviación estándar 5, y el grupo B tiene media 200 y desviación estándar 10. Aunque la desviación de B es mayor, $CV_A = \\frac{5}{50} = 10\\%$ y $CV_B = \\frac{10}{200} = 5\\%$. Relativamente a su promedio, B es el grupo más homogéneo."
+        },
+        {
+          "texto": "Uso: comparar variables con unidades distintas",
+          "explicacion": "Con el coeficiente de variación puede compararse la dispersión de la estatura, en centímetros, con la del peso, en kilogramos, de un mismo grupo, algo imposible con la desviación estándar. Se considera más variable la característica con mayor coeficiente."
+        },
+        {
+          "texto": "Umbrales de homogeneidad ⇒ criterios no universales",
+          "explicacion": "Algunos textos proponen valores de referencia, por ejemplo considerar homogéneo un conjunto con coeficiente menor que cierto porcentaje, pero estos umbrales varían entre autores y áreas de estudio. No existe un límite aceptado de manera universal, y las comparaciones deben hacerse entre coeficientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Datos multiplicados por $a > 0$ → coeficiente sin cambio",
+          "explicacion": "Si todos los datos se multiplican por una constante positiva $a$, la media y la desviación estándar quedan multiplicadas por $a$ y el cociente no cambia: $CV(aX) = CV(X)$. Por ello es independiente de la escala, como el cambio de metros a centímetros."
+        },
+        {
+          "texto": "Datos + constante b → coeficiente cambia",
+          "explicacion": "Al sumar una constante $b$ a todos los datos, la desviación estándar permanece igual pero la media cambia, por lo que el coeficiente de variación se modifica. No es invariante bajo traslaciones, y por eso depende de dónde se ubique el cero de la escala."
+        },
+        {
+          "texto": "Coeficiente de variación ✓ media distinta de cero",
+          "explicacion": "El cociente no está definido si la media es cero, y es poco confiable si la media es muy cercana a cero, porque el valor se vuelve muy grande aun con dispersiones moderadas. En tales casos conviene usar la desviación estándar."
+        },
+        {
+          "texto": "Coeficiente de variación ✓ escala con cero absoluto",
+          "explicacion": "Solo tiene sentido en variables con cero absoluto, como longitud, masa o tiempo, donde el cero significa ausencia de la magnitud. En escalas de intervalo, como la temperatura en grados Celsius, el cero es arbitrario y el coeficiente depende de esa elección."
+        },
+        {
+          "texto": "Coeficiente de variación = 0 ⇒ datos iguales",
+          "explicacion": "El coeficiente vale cero únicamente si la desviación estándar es cero, es decir, cuando todos los datos son iguales, siempre que la media no sea nula. A mayor coeficiente, mayor dispersión relativa; a menor coeficiente, los datos se concentran más alrededor de su media y el conjunto es más uniforme."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen",
+      "puntos": [
+        {
+          "texto": "Karl Pearson propuso el coeficiente de variación en 1896",
+          "explicacion": "El estadístico británico Karl Pearson introdujo el coeficiente de variación en 1896 como una medida de variabilidad que permite comparar series de datos de distinta magnitud. Desde entonces se utiliza en estadística descriptiva y en diversas áreas de aplicación."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: dividir la media entre la desviación",
+          "explicacion": "El coeficiente se obtiene dividiendo la desviación estándar entre la media, y no al revés. Invertir el cociente entrega el inverso del coeficiente, que no mide dispersión relativa y se interpreta de manera opuesta: un valor grande indicaría poca dispersión, lo contrario de lo correcto."
+        },
+        {
+          "texto": "Error: usar la varianza en lugar de la desviación",
+          "explicacion": "Dividir la varianza entre la media mezcla unidades al cuadrado con unidades simples y no es el coeficiente de variación. Debe usarse siempre la desviación estándar, que está en las mismas unidades de la media."
+        },
+        {
+          "texto": "Error: olvidar multiplicar por 100 al dar el porcentaje",
+          "explicacion": "Un resultado de 0,4 equivale a 40%. Si el enunciado solicita el porcentaje, se debe multiplicar por 100 y escribir el símbolo de porcentaje; si solicita el cociente, se deja como número decimal. Confundir ambas presentaciones lleva a respuestas cien veces mayores o menores que las correctas."
+        },
+        {
+          "texto": "Error: comparar por desviación estándar con medias distintas",
+          "explicacion": "Elegir el conjunto de menor desviación estándar como el más homogéneo es incorrecto si las medias son diferentes. Se debe comparar el coeficiente de variación, que toma en cuenta el tamaño de la media. Por ejemplo, una desviación de 10 es grande si la media es 20, pero pequeña si la media es 2000, y solo el cociente refleja esa diferencia."
+        }
+      ]
+    }
+  ]
+}
