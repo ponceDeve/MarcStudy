@@ -1,4 +1,5 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import { useFloatingTooltip } from "../../hooks/useFloatingTooltip";
@@ -352,40 +353,31 @@ export default function GlossaryText({
   text,
   glosario = {}
 }) {
-  const [
-    activo,
-    setActivo
-  ] = useState(null);
-  const triggerRefs =
-    useRef({});
-  const tooltipRefs =
-    useRef({});
+  const [activo, setActivo] = useState(null);
+  const triggerRefs = useRef({});
+  const tooltipRefs = useRef({});
+
   const {
     visible,
-    shift,
+    pos,
     mostrarEn,
     ocultar,
     ajustarPosicion
   } = useFloatingTooltip();
-  const glosarioCombinado =
-    useMemo(
-      () => ({
-        ...SIMBOLOS_NOTACION,
-        ...(glosario || {})
-      }),
-      [glosario]
-    );
-  const partes = useMemo(
-    () =>
-      construirPartes(
-        text,
-        glosarioCombinado
-      ),
-    [
-      text,
-      glosarioCombinado
-    ]
+
+  const glosarioCombinado = useMemo(
+    () => ({
+      ...SIMBOLOS_NOTACION,
+      ...(glosario || {})
+    }),
+    [glosario]
   );
+
+  const partes = useMemo(
+    () => construirPartes(text, glosarioCombinado),
+    [text, glosarioCombinado]
+  );
+
   const mostrarTooltip = (i) => {
     setActivo(i);
     mostrarEn();
@@ -396,106 +388,109 @@ export default function GlossaryText({
       );
     });
   };
+
   const ocultarTooltip = () => {
     setActivo(null);
     ocultar();
   };
+
+  // Mientras la nube está abierta: recolocarla si cambia la pantalla
+  // y cerrarla al hacer scroll (está fija en pantalla, no sigue a la palabra).
+  useEffect(() => {
+    if (activo === null) return;
+    const alResize = () =>
+      ajustarPosicion(
+        triggerRefs.current[activo],
+        tooltipRefs.current[activo]
+      );
+    const alScroll = () => {
+      setActivo(null);
+      ocultar();
+    };
+    window.addEventListener("resize", alResize);
+    window.addEventListener("scroll", alScroll, true);
+    return () => {
+      window.removeEventListener("resize", alResize);
+      window.removeEventListener("scroll", alScroll, true);
+    };
+  }, [activo, ajustarPosicion, ocultar]);
+
   return (
     <span
       onClick={() => {
-        setActivo(null);
-        ocultar();
+        ocultarTooltip();
       }}
     >
-      {partes.map(
-        (parte, i) => {
-          if (
-            parte.tipo === "formula"
-          ) {
-            return renderFormula(
-              parte.valor,
-              `formula-${i}`,
-              parte.displayMode
-            );
-          }
-          if (
-            parte.tipo === "texto"
-          ) {
-            return (
-              <span key={i}>
-                {renderLatex(
-                  parte.valor
-                )}
-              </span>
-            );
-          }
-          const esVisible =
-            visible &&
-            activo === i;
-          const simbolo =
-            esSimbolo(
-              parte.valor
-            );
+      {partes.map((parte, i) => {
+        if (parte.tipo === "formula") {
+          return renderFormula(
+            parte.valor,
+            `formula-${i}`,
+            parte.displayMode
+          );
+        }
+        if (parte.tipo === "texto") {
           return (
-            <span
-              key={i}
-              className="glossary-term-wrap"
-              onMouseEnter={() => {
-                mostrarTooltip(i);
-              }}
-              onMouseLeave={() => {
+            <span key={i}>{renderLatex(parte.valor)}</span>
+          );
+        }
+
+        const esVisible = visible && activo === i;
+        const simbolo = esSimbolo(parte.valor);
+
+        return (
+          <span
+            key={i}
+            className="glossary-term-wrap"
+            onMouseEnter={() => {
+              mostrarTooltip(i);
+            }}
+            onMouseLeave={() => {
+              ocultarTooltip();
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (activo === i) {
                 ocultarTooltip();
+              } else {
+                mostrarTooltip(i);
+              }
+            }}
+          >
+            <span
+              ref={(el) => {
+                triggerRefs.current[i] = el;
               }}
-              onClick={(e) => {
-                e.stopPropagation();
-                if (
-                  activo === i
-                ) {
-                  ocultarTooltip();
-                } else {
-                  mostrarTooltip(i);
-                }
-              }}
+              className={`glossary-term${
+                simbolo ? " glossary-term--simbolo" : ""
+              }`}
             >
-              <span
-                ref={(el) => {
-                  triggerRefs.current[i] =
-                    el;
-                }}
-                className={`glossary-term${
-                  simbolo
-                    ? " glossary-term--simbolo"
-                    : ""
-                }`}
-              >
-                {renderLatex(
-                  parte.valor
-                )}
-              </span>
-              {esVisible && (
+              {renderLatex(parte.valor)}
+            </span>
+            {esVisible &&
+              createPortal(
                 <span
                   ref={(el) => {
-                    tooltipRefs.current[i] =
-                      el;
+                    tooltipRefs.current[i] = el;
                   }}
-                  className="glossary-tooltip"
+                  className={`glossary-tooltip${
+                    pos.below ? " glossary-tooltip--below" : ""
+                  }`}
                   style={{
-                    "--tt-shift":
-                      `${shift}px`
+                    left: `${pos.left}px`,
+                    top: `${pos.top}px`,
+                    "--tt-arrow": `${pos.arrow}px`,
+                    visibility: pos.ready ? "visible" : "hidden"
                   }}
                 >
                   <span className="glossary-tooltip__arrow" />
-                  {renderLatex(
-                    glosarioCombinado[
-                      parte.key
-                    ]
-                  )}
-                </span>
+                  {renderLatex(glosarioCombinado[parte.key])}
+                </span>,
+                document.body
               )}
-            </span>
-          );
-        }
-      )}
+          </span>
+        );
+      })}
     </span>
   );
 }

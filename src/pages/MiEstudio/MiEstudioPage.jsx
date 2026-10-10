@@ -4,7 +4,6 @@ import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useMusicaFondo } from "../../lib/musicaFondo";
-import { useSearchHistory } from "../../hooks/useSearchHistory";
 import AppHeader from "../../components/AppHeader";
 import { useFooterVisibility } from "../../context/FooterVisibilityContext";
 import QuestionCard, { LeccionInglesa } from "./QuestionCard";
