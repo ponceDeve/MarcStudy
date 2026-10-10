@@ -1,0 +1,137 @@
+{
+  "curso": "Aritmética",
+  "tema": "Mezcla y aleación",
+  "glosario": {
+    "mezcla": "Unión de sustancias que conservan sus propiedades",
+    "precio medio": "Precio por unidad de toda la mezcla",
+    "grado de pureza": "Porcentaje de sustancia pura en la mezcla",
+    "grado medio": "Grado de pureza de toda la mezcla",
+    "aleación": "Mezcla de metales fundidos",
+    "ley": "Peso de metal fino entre peso total",
+    "liga": "Metal de menor valor añadido a la aleación",
+    "metal fino": "Metal precioso contenido en la aleación",
+    "quilate": "Unidad de ley: veinticuatroavo de la masa",
+    "regla del aspa": "Método para hallar proporciones de una mezcla"
+  },
+  "theory": [
+    {
+      "titulo": "Mezcla",
+      "puntos": [
+        {
+          "texto": "«Mezcla» = unión de sustancias que conservan sus propiedades",
+          "explicacion": "Una mezcla es la unión de dos o más sustancias, llamadas componentes, de modo que cada una conserva sus propiedades y no se transforma en otra. En aritmética interesan las mezclas de ingredientes de distinto precio o de distinta calidad, cuyo resultado se describe con una cantidad total y una característica media. La cantidad total de la mezcla es la suma de las cantidades de los componentes, y la característica media, como el precio por unidad o el porcentaje de pureza, se obtiene ponderando las de los componentes por sus cantidades."
+        },
+        {
+          "texto": "Mezcla directa e inversa ≠ el mismo problema",
+          "explicacion": "En la mezcla directa se conocen las cantidades y las características de los componentes, y se busca la característica media de la mezcla. En la mezcla inversa se conoce la característica media y las de los componentes, y se buscan las cantidades o las proporciones en que deben mezclarse. La primera se resuelve con un promedio ponderado y la segunda con la regla del aspa o con ecuaciones, y reconocer cuál es la que se pide es el primer paso de cada problema."
+        }
+      ]
+    },
+    {
+      "titulo": "Precio medio",
+      "puntos": [
+        {
+          "texto": "«Precio medio» = costo total entre cantidad total",
+          "explicacion": "El precio medio de una mezcla es el precio por unidad de cantidad de toda la mezcla. Si se mezclan cantidades $c_1, c_2, \\ldots, c_n$ de ingredientes con precios unitarios $p_1, p_2, \\ldots, p_n$, el costo total es $c_1 p_1 + c_2 p_2 + \\cdots + c_n p_n$ y el precio medio es $P_m = \\frac{c_1 p_1 + c_2 p_2 + \\cdots + c_n p_n}{c_1 + c_2 + \\cdots + c_n}$. Es un promedio ponderado: cada precio pesa tanto como la cantidad que se emplea del ingrediente. Con 20 unidades a 5 y 30 unidades a 8, es $\\frac{100 + 240}{50} = 6{,}8$."
+        },
+        {
+          "texto": "Precio medio entre el menor y el mayor precio",
+          "explicacion": "El precio medio de una mezcla siempre está comprendido entre el menor y el mayor de los precios de los ingredientes, y coincide con ellos solo si todos son iguales. Es una consecuencia de que se trata de un promedio ponderado con pesos positivos. Esta propiedad sirve como verificación: un precio medio fuera de ese intervalo indica un error, y también limita los valores posibles cuando se plantea el problema inverso."
+        },
+        {
+          "texto": "Precio de venta de la mezcla ⇒ aplicar la ganancia",
+          "explicacion": "Cuando se vende la mezcla con una ganancia o una pérdida, el precio de venta se calcula a partir del precio medio como costo, aplicando las reglas del tema 51 (Reglas comerciales). Por ejemplo, con un precio medio de 6,8 y una ganancia del 25 % sobre el costo, el precio de venta es $6{,}8\\cdot 1{,}25 = 8{,}5$. Debe evitarse calcular la ganancia sobre cada ingrediente por separado, pues el resultado debe referirse al costo de la mezcla completa."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla del aspa",
+      "puntos": [
+        {
+          "texto": "«Regla del aspa» = hallar proporciones de dos componentes",
+          "explicacion": "La regla del aspa permite hallar en qué proporción deben mezclarse dos ingredientes de precios $p_1 < p_2$ para obtener un precio medio $p_m$ dado. Se escriben los precios en una columna con $p_m$ en medio, y se restan en diagonal: la cantidad del ingrediente de precio $p_1$ es proporcional a $p_2 - p_m$ y la del de precio $p_2$ es proporcional a $p_m - p_1$. Con $p_1 = 5$, $p_2 = 8$ y $p_m = 6{,}8$, resultan 1,2 y 1,8, es decir, la proporción 2 a 3, que coincide con 20 y 30 unidades."
+        },
+        {
+          "texto": "Fundamento del aspa: ganancia = pérdida",
+          "explicacion": "La regla del aspa se deduce de que, en la mezcla, lo que se gana al vender el ingrediente barato al precio medio es igual a lo que se pierde con el caro. En efecto, $c_1(p_m - p_1) = c_2(p_2 - p_m)$, de donde $\\frac{c_1}{c_2} = \\frac{p_2 - p_m}{p_m - p_1}$. Las diferencias con el precio medio actúan como pesos inversos de las cantidades: el ingrediente más cercano al precio medio es el que más se emplea."
+        },
+        {
+          "texto": "Mezcla de tres o más ingredientes",
+          "explicacion": "Con tres o más ingredientes el problema admite varias soluciones, pues hay más incógnitas que condiciones. Se pueden aplicar reglas del aspa por parejas, uniendo un ingrediente de precio menor que el medio con uno de precio mayor, y sumando las cantidades obtenidas para cada ingrediente. Cada elección de parejas da una solución distinta, todas válidas, de modo que el enunciado debe fijar alguna condición adicional para que la solución sea única."
+        }
+      ]
+    },
+    {
+      "titulo": "Mezclas alcohólicas",
+      "puntos": [
+        {
+          "texto": "«Grado de pureza» = porcentaje de sustancia pura",
+          "explicacion": "El grado de pureza de una mezcla de líquidos, por ejemplo alcohol y agua, es el porcentaje de sustancia pura respecto del volumen total. Una mezcla de 40 litros con 10 litros de alcohol puro tiene un grado de pureza del 25 %. El volumen de sustancia pura de una mezcla se obtiene multiplicando el volumen total por el grado dividido entre 100, y el resto es la sustancia añadida, usualmente agua."
+        },
+        {
+          "texto": "«Grado medio» de la mezcla de dos líquidos",
+          "explicacion": "Al mezclar volúmenes $V_1$ y $V_2$ de líquidos con grados $g_1$ y $g_2$, el volumen de sustancia pura se suma, y el grado medio es $g_m = \\frac{V_1 g_1 + V_2 g_2}{V_1 + V_2}$. Es el mismo promedio ponderado del precio medio, con el grado como característica. Para obtener 50 % mezclando alcoholes de 70 % y 20 %, la regla del aspa da $50 - 20 = 30$ para el de 70 % y $70 - 50 = 20$ para el de 20 %, es decir, la proporción 3 a 2."
+        },
+        {
+          "texto": "Agregar agua ⇒ el grado disminuye",
+          "explicacion": "Cuando se agrega agua a una mezcla, el volumen de sustancia pura no cambia y solo aumenta el volumen total. Si el volumen inicial es $V$ con grado $g$ y se agregan $a$ unidades de agua, el nuevo grado es $g' = \\frac{g\\,V}{V + a}$. Con 30 litros al 40 % y 10 litros de agua, resulta $\\frac{40\\cdot 30}{40} = 30\\%$. El agua puede tratarse como un ingrediente de grado 0 en la regla del aspa."
+        }
+      ]
+    },
+    {
+      "titulo": "Aleación",
+      "puntos": [
+        {
+          "texto": "«Aleación» = mezcla de metales fundidos",
+          "explicacion": "Una aleación es la mezcla de dos o más metales, obtenida por fusión conjunta, de modo que forma un material único. Suele tener propiedades distintas de las de los metales que la componen, como mayor dureza. En los metales preciosos, la aleación se hace con otro metal de menor valor para abaratar o endurecer la pieza, y en las cuestiones de aritmética se analiza cuánto metal precioso contiene."
+        },
+        {
+          "texto": "«Metal fino» = metal precioso de la aleación",
+          "explicacion": "En una aleación de metal precioso, el metal fino es el metal valioso cuya cantidad se quiere medir, como el oro o la plata. Su peso es la parte útil de la pieza desde el punto de vista del valor. El peso total de la aleación es la suma del peso del metal fino y el peso del otro metal que lo acompaña, y la relación entre ambos pesos determina la ley de la aleación."
+        },
+        {
+          "texto": "«Liga» = metal de menor valor añadido",
+          "explicacion": "La liga es el metal de menor valor que se añade al metal fino al formar la aleación, ya sea para endurecerla o para abaratarla. Su peso es la diferencia entre el peso total y el peso del metal fino. Las aleaciones de metales preciosos se describen indicando qué parte de su peso es metal fino, y por tanto qué parte es liga, a través de la ley."
+        },
+        {
+          "texto": "«Ley» = peso de metal fino entre peso total",
+          "explicacion": "La ley de una aleación es el cociente entre el peso del metal fino y el peso total, y se expresa $L = \\frac{P_{\\text{fino}}}{P_{\\text{total}}}$. Es un número entre 0 y 1, que se suele dar en milésimas. Una aleación de ley 0,750 contiene 750 gramos de metal fino por cada 1000 gramos de aleación. La ley del metal puro es 1 y la de la liga es 0, y el peso de liga es $P_{\\text{total}}(1 - L)$."
+        },
+        {
+          "texto": "«Quilate» = veinticuatroavo de la masa de oro",
+          "explicacion": "El quilate es la unidad con que se mide la ley del oro: el oro puro equivale a 24 quilates, y una aleación de $q$ quilates contiene $\\frac{q}{24}$ de oro, de modo que su ley es $L = \\frac{q}{24}$. El oro de 18 quilates tiene ley $\\frac{18}{24} = 0{,}750$, y el de 12 quilates tiene ley 0,500. No debe confundirse con el quilate como unidad de masa de las gemas, que es una unidad distinta."
+        },
+        {
+          "texto": "Ley media de una aleación de dos aleaciones",
+          "explicacion": "Al fundir pesos $P_1$ y $P_2$ de aleaciones con leyes $L_1$ y $L_2$, el peso de metal fino se suma, y la ley de la nueva aleación es $L_m = \\frac{P_1 L_1 + P_2 L_2}{P_1 + P_2}$. Es un promedio ponderado por los pesos. Con 60 gramos de ley 0,900 y 40 gramos de ley 0,600, es $\\frac{54 + 24}{100} = 0{,}78$. La regla del aspa se aplica igual que en las mezclas, con las leyes como características."
+        },
+        {
+          "texto": "Agregar metal ⇒ cambia la ley",
+          "explicacion": "Si a una aleación de peso $P$ y ley $L$ se le agrega metal fino puro, la nueva ley es $\\frac{P L + x}{P + x}$, y si se le agrega liga pura, es $\\frac{P L}{P + x}$. El metal fino puede tratarse como un ingrediente de ley 1 y la liga como uno de ley 0 en la regla del aspa. Con 100 gramos de ley 0,600 y la adición de 50 gramos de oro puro, la ley pasa a $\\frac{60 + 50}{150} \\approx 0{,}733$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: promediar los precios sin ponderar",
+          "explicacion": "El error más frecuente es calcular el precio medio, el grado medio o la ley media como promedio simple de los valores de los componentes, ignorando las cantidades. El promedio simple solo coincide con el ponderado cuando las cantidades son iguales. Con 20 unidades a 5 y 30 unidades a 8, el promedio simple sería 6,5 y el correcto es 6,8."
+        },
+        {
+          "texto": "Error: invertir las diferencias en el aspa",
+          "explicacion": "Otro error es asignar a cada ingrediente la diferencia equivocada al usar la regla del aspa. La cantidad de cada ingrediente es proporcional a la diferencia del otro ingrediente con el precio medio, no a la propia. Una forma de verificar es comprobar que el ingrediente más cercano al precio medio resulte el de mayor cantidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Arquímedes y la corona (siglo III a. C.)",
+          "explicacion": "Según el relato del arquitecto romano Vitruvio, del siglo I a. C., Arquímedes de Siracusa, matemático griego del siglo III a. C., fue encargado de averiguar si una corona de oro había sido adulterada con plata, es decir, si era una aleación y no oro puro. El relato, cuya veracidad histórica se discute, es un ejemplo clásico de un problema de aleaciones y de cómo medir las proporciones de los metales que la componen."
+        }
+      ]
+    }
+  ]
+}

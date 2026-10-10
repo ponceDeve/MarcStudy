@@ -1,0 +1,160 @@
+{
+  "curso": "Aritmética",
+  "tema": "Formas de reconocer el decimal que se origina de una fracción irreducible",
+  "glosario": {
+    "fracción irreducible": "Fracción cuyos términos son primos entre sí",
+    "decimal exacto": "Decimal con una cantidad finita de cifras",
+    "decimal periódico puro": "Cifras se repiten desde el primer decimal",
+    "decimal periódico mixto": "Antes de repetirse hay cifras no periódicas",
+    "período": "Grupo de cifras que se repite indefinidamente",
+    "parte no periódica": "Cifras decimales antes del período",
+    "descomposición canónica": "Producto de primos distintos elevados a exponentes",
+    "factor primo": "Número primo que divide a otro número",
+    "número primo": "Entero mayor que uno con solo dos divisores",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno"
+  },
+  "theory": [
+    {
+      "titulo": "Idea central",
+      "puntos": [
+        {
+          "texto": "El tipo de decimal de $\\frac{a}{b}$ depende de los primos de $b$",
+          "explicacion": "Para saber si una fracción produce un decimal exacto, periódico puro o periódico mixto no es necesario dividir: basta descomponer el denominador de la fracción irreducible en factores primos y observar cuáles aparecen. La razón es que la base del sistema decimal es diez, cuyos únicos factores primos son dos y cinco, y solo los denominadores formados con esos factores se pueden convertir en potencias de diez."
+        },
+        {
+          "texto": "La fracción debe ser «irreducible» antes de aplicar el criterio",
+          "explicacion": "El criterio solo es válido cuando el numerador y el denominador son primos entre sí. Si la fracción no es irreducible, el denominador puede contener factores primos que en realidad se cancelan. Por ejemplo, tres doceavos tiene en el denominador un factor tres, pero al simplificar es un cuarto, cuyo decimal es exacto. Por eso siempre se simplifica primero."
+        },
+        {
+          "texto": "Se descompone el denominador en «factores primos» y se observa $2$ y $5$",
+          "explicacion": "Después de simplificar, se escribe el denominador como producto de primos con sus exponentes, es decir, su descomposición canónica. Se observa si los primos son solo dos y cinco, si no aparece ninguno de ellos, o si aparecen mezclados con otros. Esa observación determina el tipo de decimal, como se detalla en las secciones siguientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal exacto",
+      "puntos": [
+        {
+          "texto": "Denominador solo con $2$ y $5$ ⇒ «decimal exacto»",
+          "explicacion": "Si la fracción irreducible tiene un denominador cuyos únicos factores primos son dos, cinco o ambos, el decimal es exacto. La razón es que se puede multiplicar numerador y denominador por los factores faltantes hasta que el denominador sea una potencia de diez, y una fracción con denominador potencia de diez es un decimal con cantidad finita de cifras."
+        },
+        {
+          "texto": "Cifras decimales ⇒ mayor exponente entre $2$ y $5$ del denominador",
+          "explicacion": "Si el denominador es dos elevado a un exponente por cinco elevado a otro exponente, la cantidad de cifras decimales es el mayor de los dos exponentes. Se justifica porque para completar una potencia de diez se multiplica por los factores que faltan hasta igualar ambos exponentes, y la potencia de diez resultante tiene ese exponente mayor, que es el número de ceros del denominador y de cifras decimales."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{3}{8}$, $8$ es $2^{3}$ ⇒ $0.375$ con tres cifras",
+          "explicacion": "El denominador ocho es dos elevado a la tres, solo tiene el factor dos, y el mayor exponente es tres, de modo que el decimal es exacto con tres cifras decimales. Al dividir tres entre ocho se obtiene cero punto trescientos setenta y cinco, lo cual comprueba el criterio."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{7}{20}$, $20$ es $2^{2}\\cdot 5$ ⇒ $0.35$ con dos cifras",
+          "explicacion": "El denominador veinte tiene los factores dos al cuadrado y cinco, solo dos y cinco, y el mayor exponente es dos, de modo que el decimal es exacto con dos cifras. Al dividir siete entre veinte resulta cero punto treinta y cinco. Otra forma de comprobarlo es amplificar la fracción por cinco, lo que da treinta y cinco centésimos, es decir, una fracción de denominador cien con dos ceros, igual a la cantidad de cifras decimales anunciada."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{80}$, $80$ es $2^{4}\\cdot 5$ ⇒ $0.0125$ con cuatro cifras",
+          "explicacion": "El denominador ochenta es dos a la cuarta por cinco, y el mayor exponente es cuatro. El decimal es exacto con cuatro cifras decimales, lo que coincide con la división de uno entre ochenta, que da cero punto cero uno dos cinco. El cero inicial cuenta como cifra decimal."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{9}{40}$, $40$ es $2^{3}\\cdot 5$ ⇒ $0.225$ con tres cifras",
+          "explicacion": "El denominador cuarenta es dos al cubo por cinco, y el mayor exponente es tres, de modo que el decimal tiene tres cifras decimales. La división de nueve entre cuarenta da cero punto doscientos veinticinco, lo cual confirma el criterio. También puede amplificarse la fracción por veinticinco para obtener doscientos veinticinco milésimos, con denominador mil, que tiene tres ceros como las tres cifras decimales."
+        }
+      ]
+    },
+    {
+      "titulo": "Periódico puro",
+      "puntos": [
+        {
+          "texto": "Denominador sin $2$ ni $5$ ⇒ «decimal periódico puro»",
+          "explicacion": "Si el denominador de la fracción irreducible no tiene como factores primos ni al dos ni al cinco, el decimal es periódico puro, y el período empieza inmediatamente después del separador decimal. La razón es que el denominador es primo con diez, lo que permite que la fracción se pueda escribir con un denominador formado solo por nueves."
+        },
+        {
+          "texto": "Período: menor cantidad de cifras ⇒ $10^{k}$ menos $1$ múltiplo de $b$",
+          "explicacion": "La cantidad de cifras del período es el menor entero positivo $k$ tal que el número formado por $k$ nueves es múltiplo del denominador $b$. Esto ocurre porque la fracción se puede escribir con denominador de nueves, que corresponde a un número de la forma diez elevado a $k$ menos uno. Es un resultado que se aplica con el denominador irreducible."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{3}$ ⇒ $0.\\overline{3}$ con período de una cifra",
+          "explicacion": "El denominador tres no tiene factores dos ni cinco, por lo que el decimal es periódico puro. El menor número de nueves múltiplo de tres es nueve, que tiene una cifra, de modo que el período tiene una cifra. La división de uno entre tres lo confirma."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{5}{11}$ ⇒ $0.\\overline{45}$ con período de dos cifras",
+          "explicacion": "El denominador once no tiene factores dos ni cinco. Nueve no es múltiplo de once, pero noventa y nueve sí lo es, porque noventa y nueve es nueve por once. Por eso el período tiene dos cifras, y la división de cinco entre once da cero punto cuarenta y cinco repetido."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{7}$ ⇒ $0.\\overline{142857}$ con período de seis cifras",
+          "explicacion": "El denominador siete no tiene factores dos ni cinco. El menor número de nueves múltiplo de siete es novecientos noventa y nueve mil novecientos noventa y nueve, que tiene seis cifras, y es siete por ciento cuarenta y dos mil ochocientos cincuenta y siete. Por eso el período tiene seis cifras."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{13}$ ⇒ $0.\\overline{076923}$ con período de seis cifras",
+          "explicacion": "El denominador trece no tiene factores dos ni cinco, y el menor número de nueves múltiplo de trece es el de seis cifras. El período es cero siete seis nueve dos tres, con el cero inicial incluido, ya que cuenta como cifra del período. Como seis es el mayor período posible para el denominador trece, que sería doce, no se alcanza el máximo, pero sí es un divisor de doce, como asegura la propiedad de los denominadores primos. Se comprueba porque novecientos noventa y nueve mil novecientos noventa y nueve es trece por setenta y seis mil novecientos veintitrés."
+        },
+        {
+          "texto": "Si $b$ es primo, el período divide a $b$ menos $1$",
+          "explicacion": "Cuando el denominador es un número primo distinto de dos y de cinco, la cantidad de cifras del período es un divisor de $b$ menos uno, y puede ser igual a ese valor. Por ejemplo, para siete el período tiene seis cifras, que es siete menos uno, y para once tiene dos cifras, que divide a diez. Es una consecuencia del pequeño teorema de Fermat, enunciado por el matemático francés Pierre de Fermat en el siglo XVII, y sirve para acotar el período."
+        }
+      ]
+    },
+    {
+      "titulo": "Periódico mixto",
+      "puntos": [
+        {
+          "texto": "Denominador con $2$ o $5$ y otro primo ⇒ «decimal periódico mixto»",
+          "explicacion": "Si la fracción irreducible tiene un denominador que contiene al dos o al cinco, y además algún otro factor primo, el decimal es periódico mixto. Hay cifras no periódicas, debidas a los factores dos y cinco, y un período, debido a los demás factores. Es el tipo intermedio entre el exacto y el periódico puro."
+        },
+        {
+          "texto": "Cifras no periódicas ⇒ mayor exponente entre $2$ y $5$ del denominador",
+          "explicacion": "La cantidad de cifras de la parte no periódica es el mayor exponente con que aparecen el dos y el cinco en el denominador. Es la misma regla del decimal exacto aplicada solo a los factores dos y cinco. Los demás factores primos del denominador determinan el período, de la misma manera que en el periódico puro."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{6}$, $6$ es $2\\cdot 3$ ⇒ $0.1\\overline{6}$",
+          "explicacion": "El denominador seis tiene el factor dos y el factor tres. El exponente de dos es uno, así que hay una cifra no periódica, y el factor tres produce un período de una cifra. La división de uno entre seis da cero punto uno seis repetido."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{7}{12}$, $12$ es $2^{2}\\cdot 3$ ⇒ $0.58\\overline{3}$",
+          "explicacion": "El denominador doce tiene el factor dos al cuadrado y el factor tres. Hay dos cifras no periódicas y un período de una cifra. La división de siete entre doce da cero punto cincuenta y ocho tres repetido, lo cual coincide con el criterio. Se puede verificar que la parte no periódica no depende del factor tres: al ignorar ese factor, siete entre cuatro daría un decimal exacto de dos cifras, que son justamente las cifras no periódicas observadas."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{15}$, $15$ es $3\\cdot 5$ ⇒ $0.0\\overline{6}$",
+          "explicacion": "El denominador quince tiene los factores tres y cinco. El exponente de cinco es uno, así que hay una cifra no periódica, que es cero, y el factor tres produce un período de una cifra. La división de uno entre quince da cero punto cero seis repetido."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{22}$, $22$ es $2\\cdot 11$ ⇒ $0.0\\overline{45}$",
+          "explicacion": "El denominador veintidós tiene los factores dos y once. El exponente de dos es uno, así que hay una cifra no periódica, que es cero, y el factor once produce un período de dos cifras. La división de uno entre veintidós da cero punto cero cuarenta y cinco repetido."
+        }
+      ]
+    },
+    {
+      "titulo": "Resumen",
+      "puntos": [
+        {
+          "texto": "Solo $2$ y $5$ ⇒ exacto; ninguno ⇒ puro; mezcla ⇒ mixto",
+          "explicacion": "El criterio completo se resume así: si el denominador irreducible solo tiene los factores dos y cinco, el decimal es exacto; si no tiene ninguno de los dos, es periódico puro; y si tiene alguno de ellos junto con otros primos, es periódico mixto. Con esto se puede clasificar cualquier fracción sin efectuar la división."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{3}{12}$ ⇒ simplificar a $\\frac{1}{4}$ ⇒ decimal exacto",
+          "explicacion": "Tres doceavos parece tener un factor tres en el denominador y sugeriría un decimal periódico, pero al simplificar entre tres resulta un cuarto, cuyo denominador es dos al cuadrado. El decimal es exacto, cero punto veinticinco. El ejemplo muestra por qué es indispensable simplificar antes de aplicar el criterio."
+        },
+        {
+          "texto": "Enteros ⇒ denominador $1$ ⇒ decimal exacto sin cifras decimales",
+          "explicacion": "Un número entero se escribe como una fracción de denominador uno, que no tiene factores primos, y se considera un decimal exacto sin cifras decimales distintas de cero. Es el caso extremo del criterio, compatible con la definición de decimal exacto. Por ejemplo, cinco se escribe cinco sobre uno, y su parte decimal es cero, de modo que no existe ninguna cifra decimal distinta de cero ni período que determinar, y el número entero se clasifica sin necesidad de dividir."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: aplicar el criterio sin simplificar",
+          "explicacion": "Si se descompone el denominador de una fracción reducible, se pueden obtener conclusiones erróneas sobre el tipo de decimal. Siempre se debe simplificar primero y luego aplicar el criterio. Es el error más frecuente de este tema y se evita verificando que el numerador y el denominador sean primos entre sí."
+        },
+        {
+          "texto": "Error: creer que un denominador par siempre da decimal mixto",
+          "explicacion": "Un denominador par no implica un decimal mixto: si solo tiene los factores dos y cinco, el decimal es exacto, como en un octavo o un veinteavo. Lo que determina el tipo es la presencia de otros factores primos además de dos y cinco, no el hecho de que el denominador sea par."
+        },
+        {
+          "texto": "Error: ubicar mal el cero inicial en el decimal",
+          "explicacion": "En cero punto cero seis repetido, el cero inicial pertenece a la parte no periódica, y en cero punto cero siete seis nueve dos tres repetido, el cero pertenece al período. Un cero cuenta como cifra al medir la longitud de cada parte, y olvidarlo da una longitud incorrecta."
+        }
+      ]
+    }
+  ]
+}

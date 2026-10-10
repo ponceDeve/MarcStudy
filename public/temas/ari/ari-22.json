@@ -1,0 +1,183 @@
+{
+  "curso": "Aritmética",
+  "tema": "Algoritmo de la división de Euclides",
+  "glosario": {
+    "algoritmo de la división": "Teorema que garantiza cociente y residuo únicos",
+    "dividendo": "Número que se divide",
+    "divisor": "Número entre el cual se divide",
+    "cociente": "Veces que el divisor cabe en el dividendo",
+    "residuo": "Lo que sobra al dividir",
+    "división exacta": "División con residuo cero",
+    "división inexacta": "División con residuo distinto de cero",
+    "parte entera": "Mayor entero que no supera al número",
+    "alteración de términos": "Cambio de dividendo y divisor por un factor",
+    "principio del buen orden": "Todo conjunto no vacío de naturales tiene mínimo"
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado",
+      "puntos": [
+        {
+          "texto": "«Algoritmo de la división»: $D = d \\cdot q + r$",
+          "explicacion": "El algoritmo de la división, o teorema de la división, afirma que para todo entero $D$ y todo entero positivo $d$ existen enteros $q$ y $r$, únicos, tales que $D = d \\cdot q + r$ con $0 \\le r < d$. No es un procedimiento de cálculo en sentido estricto, sino un teorema de existencia y unicidad que fundamenta toda la aritmética de la divisibilidad. Recibe el nombre de Euclides porque su idea se remonta al método de restas sucesivas de los Elementos."
+        }
+      ]
+    },
+    {
+      "titulo": "Términos",
+      "puntos": [
+        {
+          "texto": "«Dividendo» $D$: el número que se divide",
+          "explicacion": "Es el entero que se reparte o se descompone en grupos de tamaño igual al divisor. En la igualdad $D = d \\cdot q + r$ es el término que queda aislado, igual a la suma del producto del divisor por el cociente más el residuo."
+        },
+        {
+          "texto": "«Divisor» $d$: el número entre el cual se divide",
+          "explicacion": "Es el entero positivo que indica el tamaño de cada grupo, o el número de grupos, en que se divide el dividendo. En el enunciado del teorema se exige $d > 0$ y, en cualquier caso, $d \\ne 0$, porque la división entre cero no está definida."
+        },
+        {
+          "texto": "«Cociente» $q$: veces que el divisor cabe en el dividendo",
+          "explicacion": "Es el mayor entero $q$ tal que $d \\cdot q$ no supera al dividendo. Expresa la cantidad de grupos completos de tamaño $d$ que pueden formarse con $D$ unidades. Si el dividendo y el divisor son naturales, el cociente es un entero no negativo."
+        },
+        {
+          "texto": "«Residuo» $r$: lo que sobra al dividir",
+          "explicacion": "También llamado resto, es la cantidad de unidades del dividendo que no alcanzan a formar un grupo completo de tamaño $d$. Se obtiene como $r = D - d \\cdot q$ y es el término que mide cuánto falta para que la división sea exacta."
+        }
+      ]
+    },
+    {
+      "titulo": "Condición del residuo",
+      "puntos": [
+        {
+          "texto": "El residuo cumple $0 \\le r < d$",
+          "explicacion": "La condición $r < d$ es esencial para la unicidad. Si el residuo fuera igual o mayor que el divisor, aún cabría otro grupo completo y el cociente podría aumentarse en una unidad. Por ejemplo, $50 = 7 \\cdot 6 + 8$ no es una división válida porque 8 supera a 7; la correcta es $50 = 7 \\cdot 7 + 1$."
+        },
+        {
+          "texto": "Residuo máximo $= d - 1$",
+          "explicacion": "Como el residuo es un entero menor que $d$, el mayor valor que puede tomar es $d - 1$. Al dividir entre 12, el residuo máximo es 11. Un residuo igual a $d - 1$ indica que faltaría una sola unidad para completar un grupo más."
+        },
+        {
+          "texto": "Residuo mínimo: 0 si es exacta, 1 si es inexacta",
+          "explicacion": "El menor residuo posible es 0, que ocurre cuando el dividendo es múltiplo del divisor. Si la división no es exacta, el residuo es al menos 1. Por lo tanto, al dividir entre $d$ hay exactamente $d$ valores posibles del residuo: $0, 1, 2, \\ldots, d - 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de división",
+      "puntos": [
+        {
+          "texto": "«División exacta»: residuo $r = 0$",
+          "explicacion": "Cuando el residuo es cero, $D = d \\cdot q$ y el dividendo es múltiplo del divisor. Esta situación define la divisibilidad, que se estudia en el tema 24. En una división exacta el cociente es el valor entero del cociente decimal $D \\div d$."
+        },
+        {
+          "texto": "«División inexacta»: residuo $0 < r < d$",
+          "explicacion": "Si el residuo es positivo, el dividendo no es múltiplo del divisor y el cociente solo aproxima al valor de la división. Esta división puede expresarse por defecto o por exceso, procedimientos que se estudian en el tema 23."
+        },
+        {
+          "texto": "Si $D < d$, entonces $q = 0$ y $r = D$",
+          "explicacion": "Cuando el dividendo es menor que el divisor, no cabe ningún grupo completo; el cociente es cero y todo el dividendo queda como residuo. Por ejemplo, $7 = 12 \\cdot 0 + 7$. Esta división cumple la condición $0 \\le r < d$ y es un caso válido del teorema."
+        }
+      ]
+    },
+    {
+      "titulo": "Existencia y unicidad",
+      "puntos": [
+        {
+          "texto": "Existencia: restas sucesivas y «principio del buen orden»",
+          "explicacion": "Para $D \\ge 0$, se considera el conjunto de los números $D - d \\cdot k$ que son no negativos. Por el principio del buen orden, todo conjunto no vacío de naturales tiene un mínimo; sea $r$ ese mínimo, con $k = q$. Si $r \\ge d$, entonces $r - d$ pertenecería al conjunto y sería menor, lo que contradice la minimalidad. Por tanto $r < d$ y $D = d \\cdot q + r$. Este argumento formaliza el método de restas sucesivas."
+        },
+        {
+          "texto": "Unicidad: el cociente y el residuo son únicos",
+          "explicacion": "Si existieran dos representaciones $D = d \\cdot q + r = d \\cdot q\\prime + r\\prime$ con $0 \\le r, r\\prime < d$, restarlas daría $d(q - q\\prime) = r\\prime - r$. El segundo miembro tiene valor absoluto menor que $d$ y el primero es múltiplo de $d$; así ambos deben ser cero. De ello resulta $r = r\\prime$ y $q = q\\prime$."
+        },
+        {
+          "texto": "El cociente es la parte entera de $D \\div d$",
+          "explicacion": "Para $d > 0$, $q = \\lfloor D \\div d \\rfloor$, la parte entera del cociente decimal, es decir, el mayor entero que no supera a $D \\div d$. Así, $347 \\div 12 = 28{,}91\\ldots$ tiene parte entera 28, que es el cociente de la división de 347 entre 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Comprobación",
+      "puntos": [
+        {
+          "texto": "Prueba de la división: multiplicar y sumar el residuo",
+          "explicacion": "Una división se comprueba verificando que $d \\cdot q + r$ reproduce el dividendo y que $r < d$. Para $347 \\div 12$ resulta $q = 28$ y $r = 11$, pues $12 \\cdot 28 = 336$ y $336 + 11 = 347$. Además $11 < 12$, de modo que la división es correcta."
+        }
+      ]
+    },
+    {
+      "titulo": "Dividendo negativo",
+      "puntos": [
+        {
+          "texto": "Con $D < 0$ el residuo sigue siendo no negativo",
+          "explicacion": "El teorema exige $0 \\le r < d$ también cuando el dividendo es negativo; en ese caso el cociente es negativo y el residuo no. Por ejemplo, $-17 = 5 \\cdot (-4) + 3$, con $q = -4$ y $r = 3$. Elegir $q = -3$ daría residuo $-2$, que no cumple la condición. Esta convención mantiene la unicidad del par $(q, r)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Alteración de términos",
+      "puntos": [
+        {
+          "texto": "«Alteración de términos»: $D$ y $d$ por $n$ ⇒ residuo por $n$",
+          "explicacion": "Si se multiplican el dividendo y el divisor por un mismo entero positivo $n$, el cociente no cambia y el residuo queda multiplicado por $n$. Partiendo de $347 = 12 \\cdot 28 + 11$ resulta $1041 = 36 \\cdot 28 + 33$, con residuo $33 = 3 \\cdot 11$. Se cumple porque $nD = nd \\cdot q + nr$ y $nr < nd$."
+        },
+        {
+          "texto": "Dividendo y divisor entre $n$ ⇒ cociente igual y residuo entre $n$",
+          "explicacion": "Si $n$ es un divisor común del dividendo y del divisor, al dividir ambos entre $n$ el cociente permanece igual y el residuo también se divide entre $n$. De $1041 = 36 \\cdot 28 + 33$ se obtiene $347 = 12 \\cdot 28 + 11$. El residuo es múltiplo de $n$ porque $r = D - d \\cdot q$ lo es."
+        },
+        {
+          "texto": "Solo el dividendo $\\times n$: reducir si $rn \\ge d$",
+          "explicacion": "Al multiplicar solo el dividendo por $n$, el cociente y el residuo parecen quedar multiplicados por $n$, pero el residuo $rn$ debe seguir siendo menor que $d$. Si no lo es, se divide $rn$ entre $d$ y el cociente resultante se suma a $nq$. Para $347 = 12 \\cdot 28 + 11$ y $n = 2$: $694 = 12 \\cdot 57 + 10$, porque $22 = 12 + 10$ y el cociente pasa de 56 a 57."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango del dividendo",
+      "puntos": [
+        {
+          "texto": "Con $d$ y $q$ dados: $dq \\le D \\le dq + d - 1$",
+          "explicacion": "Fijados el divisor y el cociente, el dividendo puede variar según el residuo, que recorre de 0 a $d - 1$. Por eso el dividendo toma valores desde $d \\cdot q$ hasta $d \\cdot q + (d - 1)$, en total $d$ valores posibles. Esta observación permite hallar los dividendos mínimo y máximo que dan un cociente determinado."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor cero",
+      "puntos": [
+        {
+          "texto": "El divisor $d = 0$ no está definido",
+          "explicacion": "Si $d = 0$ se tendría $D = 0 \\cdot q + r = r$ con $r < 0$, lo cual es imposible, porque el residuo no puede ser negativo ni menor que cero. La división entre cero carece de sentido en $\\mathbb{Z}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reseña histórica",
+      "puntos": [
+        {
+          "texto": "Euclides sistematizó el método de restas sucesivas",
+          "explicacion": "Euclides de Alejandría, matemático griego del siglo III a. C., expuso en el Libro VII de los Elementos un procedimiento de restas sucesivas para comparar dos números. El enunciado actual del algoritmo de la división, con cociente y residuo únicos, es una formulación posterior que recoge esa idea. El procedimiento de Euclides para hallar el máximo común divisor se estudia en el tema 34."
+        }
+      ]
+    },
+    {
+      "titulo": "Distinciones",
+      "puntos": [
+        {
+          "texto": "Algoritmo de la división ≠ algoritmo de Euclides del máximo común divisor",
+          "explicacion": "El algoritmo de la división asegura la existencia y unicidad de $q$ y $r$ en una sola división. El algoritmo de Euclides del máximo común divisor, tema 34, aplica esa división varias veces para hallar el mayor divisor común de dos números. El primero es una herramienta del segundo."
+        },
+        {
+          "texto": "Cociente entero ≠ cociente decimal",
+          "explicacion": "El cociente $q$ del algoritmo es un entero que acompaña a un residuo, mientras que el cociente decimal $D \\div d$ incorpora el residuo como una parte fraccionaria $r \\div d$. Así, $347 \\div 12 = 28 + 11 \\div 12$. La representación decimal de fracciones se estudia en el tema 39."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Residuo mayor o igual que el divisor ⇒ división incompleta",
+          "explicacion": "Cuando el residuo es igual o mayor que el divisor, todavía cabe un grupo adicional y el cociente debe aumentarse. Es el error típico al aplicar a mano la división, como obtener residuo 15 al dividir entre 12. La corrección consiste en restar el divisor del residuo y sumar uno al cociente."
+        }
+      ]
+    }
+  ]
+}

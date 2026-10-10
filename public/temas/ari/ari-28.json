@@ -1,0 +1,144 @@
+{
+  "curso": "Aritmética",
+  "tema": "Cantidad de divisores",
+  "glosario": {
+    "cantidad de divisores": "Número de divisores positivos de un entero",
+    "descomposición canónica": "Factorización con primos distintos y exponentes",
+    "divisor propio": "Divisor positivo distinto del propio número",
+    "divisor compuesto": "Divisor mayor que 1 que no es primo",
+    "cuadrado perfecto": "Número que es el cuadrado de un entero",
+    "divisor par": "Divisor múltiplo de dos",
+    "divisor impar": "Divisor que no es múltiplo de dos",
+    "función multiplicativa": "Función que respeta productos de primos entre sí"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Cantidad de divisores»: $CD(N)$",
+          "explicacion": "La cantidad de divisores de un entero positivo $N$ es el número de enteros positivos que dividen exactamente a $N$, incluidos el 1 y el propio $N$. Se denota $CD(N)$, abreviatura de cantidad de divisores; en otros textos se escribe $d(N)$ o con la letra griega tau. Por ejemplo, $CD(12) = 6$, pues sus divisores son 1, 2, 3, 4, 6 y 12."
+        },
+        {
+          "texto": "Los divisores se cuentan solo entre los positivos",
+          "explicacion": "En el conjunto de los enteros cada divisor tiene un opuesto que también divide al número, como se vio en el tema 24; por convención, la cantidad de divisores cuenta únicamente los positivos. Si se contaran ambos signos, el total sería el doble de $CD(N)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula",
+      "puntos": [
+        {
+          "texto": "Con la «descomposición canónica»: $CD(N) = (a_1 + 1) \\cdots (a_k + 1)$",
+          "explicacion": "Si la «descomposición canónica» de $N$ es $N = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}$, la cantidad de divisores es el producto de cada exponente aumentado en una unidad. Por ejemplo, $360 = 2^3 \\cdot 3^2 \\cdot 5$ tiene $CD(360) = (3+1)(2+1)(1+1) = 24$ divisores."
+        },
+        {
+          "texto": "Justificación: cada exponente del divisor tiene $a_i + 1$ valores",
+          "explicacion": "Todo divisor positivo de $N$ es de la forma $p_1^{b_1} \\cdots p_k^{b_k}$ con $0 \\le b_i \\le a_i$, como se vio en el tema 26. Para cada primo hay $a_i + 1$ valores posibles del exponente, $0, 1, \\ldots, a_i$, y las elecciones son independientes; por el principio multiplicativo, el total es el producto."
+        },
+        {
+          "texto": "Potencia de un primo: $CD(p^a) = a + 1$",
+          "explicacion": "Los divisores de $p^a$ son $1, p, p^2, \\ldots, p^a$, que son $a + 1$ números. Por ejemplo, $CD(2^5) = 6$, con divisores 1, 2, 4, 8, 16 y 32. Es el caso más simple de la fórmula general, con un solo primo y un solo factor $a + 1$, y muestra que el exponente cero genera el divisor 1 y que cada exponente adicional agrega un divisor nuevo."
+        },
+        {
+          "texto": "Número primo: $CD(p) = 2$",
+          "explicacion": "Un primo $p$ tiene como únicos divisores positivos a 1 y a $p$, por lo que $CD(p) = 2$, caso particular de la fórmula con $a = 1$. Recíprocamente, un entero con exactamente dos divisores es primo."
+        },
+        {
+          "texto": "«Función multiplicativa»: $CD(mn) = CD(m) CD(n)$ si son primos entre sí",
+          "explicacion": "Cuando $m$ y $n$ son primos entre sí, tema 31, no comparten primos y las descomposiciones se unen sin superposición, de modo que la cantidad de divisores es el producto de las cantidades. Se dice por ello que la cantidad de divisores es una función multiplicativa. Por ejemplo, $CD(72) = CD(8) \\cdot CD(9) = 4 \\cdot 3 = 12$."
+        },
+        {
+          "texto": "Potencia de $N$: $CD(N^k) = (ka_1 + 1) \\cdots (ka_r + 1)$",
+          "explicacion": "Al elevar $N$ a la potencia $k$ cada exponente se multiplica por $k$, de modo que la fórmula se aplica con los nuevos exponentes. Por ejemplo, $12 = 2^2 \\cdot 3$ y $12^2 = 2^4 \\cdot 3^2$, por lo que $CD(12^2) = 5 \\cdot 3 = 15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación de divisores",
+      "puntos": [
+        {
+          "texto": "Un divisor es la unidad, un primo o un compuesto",
+          "explicacion": "Los divisores positivos de $N$ se agrupan en tres clases: el 1, los divisores primos y los divisores compuestos. Así, $CD(N) = 1 + (\\text{primos}) + (\\text{compuestos})$. Esta partición permite contar una clase a partir de las otras."
+        },
+        {
+          "texto": "Divisores primos: tantos como primos distintos en $N$",
+          "explicacion": "Cada primo que aparece en la descomposición es un divisor primo, de modo que hay $k$ divisores primos si $N$ tiene $k$ primos distintos. Para $360 = 2^3 \\cdot 3^2 \\cdot 5$ hay 3 divisores primos: 2, 3 y 5."
+        },
+        {
+          "texto": "«Divisor compuesto»: son $CD(N) - 1 - k$",
+          "explicacion": "Restando al total la unidad y los $k$ divisores primos se obtienen los divisores compuestos. Para 360 hay $24 - 1 - 3 = 20$ divisores compuestos. El número $N$ está incluido entre ellos si es compuesto."
+        },
+        {
+          "texto": "«Divisor propio»: son $CD(N) - 1$",
+          "explicacion": "Son los divisores positivos de $N$ distintos de $N$. Su cantidad es $CD(N) - 1$. Por ejemplo, 12 tiene $6 - 1 = 5$ divisores propios: 1, 2, 3, 4 y 6. Los números 1 y los primos tienen, respectivamente, cero y un divisor propio."
+        },
+        {
+          "texto": "Divisores de $N$ que son múltiplos de $d$: $CD(N \\div d)$",
+          "explicacion": "Si $d$ divide a $N$, los divisores de $N$ que son múltiplos de $d$ son de la forma $d \\cdot t$ con $t$ divisor de $N \\div d$, por lo que su cantidad es $CD(N \\div d)$. Por ejemplo, los divisores de 360 múltiplos de 10 son tantos como los de 36, a saber 9."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisores pares e impares",
+      "puntos": [
+        {
+          "texto": "«Divisor impar»: son $CD(M)$ si $N = 2^a M$ con $M$ impar",
+          "explicacion": "Un divisor es impar cuando no contiene el factor 2, es decir, cuando el exponente de 2 es cero; por eso los divisores impares de $N$ son los divisores de la parte impar $M$ y su cantidad es $CD(M)$. Para 360 es $CD(45) = 6$."
+        },
+        {
+          "texto": "«Divisor par»: son $a \\cdot CD(M)$ si $N = 2^a M$",
+          "explicacion": "Los divisores pares tienen exponente de 2 entre 1 y $a$, es decir, $a$ valores, y por cada elección los de la parte impar son $CD(M)$. Para 360, que tiene $a = 3$ y $CD(45) = 6$, hay $3 \\cdot 6 = 18$ divisores pares, y $18 + 6 = 24$ en total."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrados perfectos",
+      "puntos": [
+        {
+          "texto": "$CD(N)$ es impar ⇒ $N$ es «cuadrado perfecto»",
+          "explicacion": "Los divisores de un número se agrupan en parejas $d$ y $N \\div d$, y esas parejas tienen dos elementos distintos salvo cuando $d = \\sqrt{N}$. Por tanto, la cantidad de divisores es impar exactamente cuando $N$ es cuadrado perfecto, lo que equivale a que todos los exponentes sean pares y todos los factores $a_i + 1$ sean impares. Por ejemplo, $CD(36) = 9$."
+        },
+        {
+          "texto": "Divisores que son cuadrados perfectos: $\\prod (\\lfloor a_i \\div 2 \\rfloor + 1)$",
+          "explicacion": "Un divisor es cuadrado perfecto si todos sus exponentes son pares y no superan a $a_i$, lo que da $\\lfloor a_i \\div 2 \\rfloor + 1$ opciones por primo. Para $360 = 2^3 \\cdot 3^2 \\cdot 5$ resulta $2 \\cdot 2 \\cdot 1 = 4$ divisores cuadrados perfectos: 1, 4, 9 y 36."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos con cantidad dada",
+      "puntos": [
+        {
+          "texto": "$CD(N) = 3$ ⇒ $N$ es el cuadrado de un primo",
+          "explicacion": "La factorización de $CD(N) = 3$ solo admite el producto de un factor, $a + 1 = 3$, por lo que $N = p^2$ con $p$ primo. Por ejemplo, 49 tiene tres divisores: 1, 7 y 49."
+        },
+        {
+          "texto": "Formas de escribir $N$ como producto de dos factores",
+          "explicacion": "Cada pareja de divisores complementarios $d$ y $N \\div d$ define una forma de escribir $N$ como producto de dos factores sin importar el orden. Si $CD(N)$ es par hay $CD(N) \\div 2$ formas, y si es impar hay $(CD(N) + 1) \\div 2$, pues el producto de $\\sqrt{N}$ por sí mismo cuenta como una. Para 12, hay 3 formas: $1 \\cdot 12$, $2 \\cdot 6$ y $3 \\cdot 4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento de listado",
+      "puntos": [
+        {
+          "texto": "Listar los divisores con la tabla de potencias",
+          "explicacion": "Para enumerar los divisores de $N$ se escribe una fila con las potencias del primer primo, $1, p_1, \\ldots, p_1^{a_1}$, y se multiplica por las potencias del siguiente primo, y así sucesivamente. Para $60 = 2^2 \\cdot 3 \\cdot 5$: 1, 2, 4; luego 3, 6, 12; luego 5, 10, 20, 15, 30, 60. En total son 12 divisores, valor confirmado por $(2+1)(1+1)(1+1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Olvidar sumar 1 a cada exponente",
+          "explicacion": "El factor correspondiente a cada primo es $a_i + 1$ y no $a_i$, porque el exponente cero también genera divisores. Con $12 = 2^2 \\cdot 3$, el cálculo correcto es $3 \\cdot 2 = 6$ y no $2 \\cdot 1 = 2$."
+        },
+        {
+          "texto": "Aplicar la fórmula sin la descomposición canónica",
+          "explicacion": "La fórmula exige primos distintos con sus exponentes totales. Si se factoriza como $12 = 4 \\cdot 3$, con 4 compuesto, el producto $(1+1)(1+1)$ no da el total. Hay que descomponer por completo para obtener $2^2 \\cdot 3$."
+        }
+      ]
+    }
+  ]
+}

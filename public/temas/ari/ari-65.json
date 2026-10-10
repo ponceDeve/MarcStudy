@@ -1,0 +1,252 @@
+{
+  "curso": "Aritmética",
+  "tema": "Medidas de tendencia central",
+  "glosario": {
+    "medida de tendencia central": "Valor que representa el centro de los datos.",
+    "media aritmética": "Suma de datos dividida entre su cantidad.",
+    "media geométrica": "Raíz del producto de datos positivos.",
+    "media armónica": "Inverso del promedio de los inversos.",
+    "moda": "Valor de mayor frecuencia.",
+    "mediana": "Valor central de los datos ordenados.",
+    "valor atípico": "Dato muy alejado del resto.",
+    "distribución simétrica": "Datos repartidos igual a ambos lados.",
+    "asimetría positiva": "Cola larga hacia los valores altos.",
+    "asimetría negativa": "Cola larga hacia los valores bajos.",
+    "unimodal": "Con una sola moda.",
+    "bimodal": "Con dos modas.",
+    "multimodal": "Con más de dos modas.",
+    "medida de dispersión": "Mide cuánto se alejan los datos del centro.",
+    "medida de posición": "Ubica valores que dividen datos ordenados."
+  },
+  "theory": [
+    {
+      "titulo": "Concepto central",
+      "puntos": [
+        {
+          "texto": "«Medida de tendencia central» = valor que representa el centro de los datos",
+          "explicacion": "Una medida de tendencia central es un número que resume un conjunto de datos indicando el valor alrededor del cual tienden a agruparse. Sustituye a una lista extensa por un solo valor representativo, lo que permite describir y comparar conjuntos. Procede de la estadística descriptiva, cuyos elementos básicos, como las tablas de frecuencias, se estudian en el tema 64, Elementos de estadística."
+        },
+        {
+          "texto": "Finalidad = resumir muchos datos en un valor típico",
+          "explicacion": "Cuando se dispone de muchos datos resulta difícil captarlos de un vistazo. La medida de tendencia central responde a la pregunta de cuál es un valor típico del conjunto. No existe una única respuesta correcta: según la forma de definir lo típico, se obtienen medidas distintas, cada una con ventajas y limitaciones."
+        },
+        {
+          "texto": "Notación general = datos $x_1, x_2, \\ldots, x_n$ con $n$ datos",
+          "explicacion": "Para un conjunto de $n$ datos se escriben los valores como $x_1, x_2, \\ldots, x_n$. En una tabla de frecuencias, cada valor $x_i$ (o cada marca de clase, si hay intervalos) tiene una frecuencia absoluta $f_i$ y $\\sum f_i = n$. Estas letras se usan con el mismo sentido en todas las medidas de tendencia central."
+        },
+        {
+          "texto": "Datos no agrupados ≠ datos agrupados en la forma de calcular",
+          "explicacion": "Las medidas se calculan de manera distinta según los datos estén dados uno por uno o agrupados en una tabla con frecuencias o en intervalos de clase. En el segundo caso, cada intervalo se representa por su marca de clase, por lo que el resultado es una aproximación. El método de cálculo de cada medida se desarrolla en su propio tema, del 66 al 70."
+        }
+      ]
+    },
+    {
+      "titulo": "Medidas principales",
+      "puntos": [
+        {
+          "texto": "Media aritmética = punto de equilibrio de los datos",
+          "explicacion": "La media aritmética es el promedio habitual: la suma de los datos dividida entre su cantidad. Puede interpretarse como el punto de equilibrio del conjunto, pues la suma de las desviaciones de los datos respecto de ella es cero. Se simboliza $\\bar{x}$ y es la medida más usada. Su cálculo y sus propiedades se estudian en el tema 66, Media aritmética."
+        },
+        {
+          "texto": "Media geométrica = raíz del producto, para factores de cambio",
+          "explicacion": "La media geométrica de $n$ datos positivos es la raíz $n$-ésima de su producto. Es la medida apropiada para promediar factores multiplicativos, como tasas de crecimiento sucesivas, porque conserva el producto total. Se estudia en el tema 67, Media geométrica."
+        },
+        {
+          "texto": "Media armónica = inverso del promedio de los inversos",
+          "explicacion": "La media armónica de $n$ datos positivos es el inverso de la media aritmética de sus inversos. Es la medida apropiada para promediar razones donde interviene un denominador fijo, como velocidades en tramos de igual distancia. Se estudia en el tema 68, Media armónica."
+        },
+        {
+          "texto": "Moda = valor que más se repite",
+          "explicacion": "La moda es el valor de mayor frecuencia en el conjunto. Es la única medida de tendencia central aplicable a variables cualitativas nominales, y siempre es un valor realmente observado. Se escribe $Mo$ y se estudia en el tema 69, Moda."
+        },
+        {
+          "texto": "Mediana = valor central de los datos ordenados",
+          "explicacion": "La mediana es el valor que, con los datos ordenados de menor a mayor, deja la mitad de ellos por debajo y la mitad por encima. Se escribe $Me$ y se estudia en el tema 70, Mediana. Es la segunda de las medidas de posición que dividen los datos en partes iguales; las demás, terciles y cuartiles, se tratan en los temas 71 y 72."
+        },
+        {
+          "texto": "Tres medias clásicas = aritmética, geométrica y armónica",
+          "explicacion": "Las medias aritmética, geométrica y armónica forman la familia de medias clásicas, llamadas medias pitagóricas por su origen en la proporción numérica de la tradición pitagórica. Cada una promedia de una manera distinta, y por eso, salvo que los datos sean todos iguales, dan valores diferentes para un mismo conjunto."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades comunes",
+      "puntos": [
+        {
+          "texto": "Propiedad de internalidad = toda media está entre mínimo y máximo",
+          "explicacion": "El valor de una medida de tendencia central cae entre el menor y el mayor de los datos: $x_{\\min} \\leq \\text{medida} \\leq x_{\\max}$. Si resultara fuera de ese intervalo, no podría considerarse representativa. La propiedad se cumple para las medias, la mediana y la moda."
+        },
+        {
+          "texto": "Datos iguales ⇒ todas las medidas coinciden con ese valor",
+          "explicacion": "Si todos los datos son iguales a un número $c$, la media aritmética, la geométrica, la armónica, la mediana y la moda valen $c$. Es el caso extremo en que no hay variación y el centro es evidente."
+        },
+        {
+          "texto": "Cambio de origen y escala = medida aritmética, mediana y moda lo siguen",
+          "explicacion": "Si cada dato se transforma como $y = a\\,x + b$, la media aritmética, la mediana y la moda de los nuevos datos son $a$ veces la medida original más $b$. Por ejemplo, convertir temperaturas de grados Celsius a Fahrenheit transforma de la misma manera su promedio. Esta propiedad simplifica cálculos al restar un valor común a todos los datos."
+        },
+        {
+          "texto": "Media geométrica y armónica ✗ cambio de origen",
+          "explicacion": "Las medias geométrica y armónica siguen un cambio de escala, $a\\,x$ con $a > 0$, pero no un cambio de origen: sumar una constante a todos los datos no suma esa constante a estas medias. Por ello no deben calcularse con datos desplazados."
+        },
+        {
+          "texto": "Unidades = la medida se expresa en la unidad de los datos",
+          "explicacion": "Todas las medidas de tendencia central se expresan en la misma unidad que los datos: si los datos son estaturas en metros, el centro también está en metros. Esta propiedad permite interpretar el resultado directamente y distingue estas medidas de otras, como la varianza, que cambia la unidad."
+        },
+        {
+          "texto": "Moda siempre es un dato observado",
+          "explicacion": "La moda es siempre uno de los valores que aparecen en el conjunto. La media aritmética no necesita serlo: el promedio de 2 y 3 es 2,5, valor ausente. La mediana, con cantidad par de datos, es el punto medio de los dos centrales y puede no ser un dato. Esto importa cuando la variable es discreta y el promedio carece de sentido literal, como 2,5 hijos por familia."
+        },
+        {
+          "texto": "Unicidad: media y mediana únicas, moda unimodal, bimodal o multimodal",
+          "explicacion": "Para un conjunto dado existe una sola media aritmética y una sola mediana. La moda, en cambio, puede no existir, si todos los valores tienen igual frecuencia, o ser varias, si varios valores comparten la frecuencia máxima. Un conjunto con una moda es unimodal, con dos es bimodal y con más es multimodal."
+        },
+        {
+          "texto": "Valor atípico = dato muy alejado del resto",
+          "explicacion": "Un valor atípico es un dato muy distinto de los demás, ya sea por un error de registro o por una observación realmente extrema. Afecta de manera distinta a cada medida y es una de las razones principales para escoger entre ellas."
+        },
+        {
+          "texto": "Media aritmética sensible a valores atípicos",
+          "explicacion": "Como la media aritmética usa todos los datos, un valor atípico la desplaza hacia él. En los datos 4, 5, 6, 5, 100 la media es 24 y no representa a ninguno de los datos habituales, mientras que la mediana, 5, sí. La suma de las desviaciones respecto de la media es cero, de modo que un valor muy grande arrastra el equilibrio."
+        },
+        {
+          "texto": "Mediana y moda resistentes a valores atípicos",
+          "explicacion": "La mediana depende solo de la posición central y la moda solo de la frecuencia, por lo que no cambian al hacer más extremo un valor atípico. En 4, 5, 6, 5, 100 la mediana es 5 y la moda es 5; si 100 se reemplazara por 1000, ambas seguirían siendo 5. Por eso se prefieren cuando hay valores extremos."
+        }
+      ]
+    },
+    {
+      "titulo": "Medida según variable",
+      "puntos": [
+        {
+          "texto": "Variable nominal ⇒ solo la moda",
+          "explicacion": "Con variables cualitativas nominales no hay orden ni operaciones numéricas, así que solo puede calcularse la moda, que indica la categoría más frecuente. No tiene sentido hablar de mediana ni de promedio del color preferido."
+        },
+        {
+          "texto": "Variable ordinal ⇒ moda y mediana",
+          "explicacion": "En una variable ordinal las categorías tienen orden, de modo que además de la moda puede hallarse la mediana, la categoría central de los datos ordenados. No procede la media aritmética porque la distancia entre categorías no está definida."
+        },
+        {
+          "texto": "Variable de intervalo o razón ⇒ todas las medidas",
+          "explicacion": "Con variables cuantitativas pueden calcularse la media aritmética, la mediana y la moda. Las medias geométrica y armónica exigen además datos positivos y, en la práctica, escala de razón, pues dependen de productos y cocientes de los valores. Las escalas de medición se estudian en el tema 64."
+        },
+        {
+          "texto": "Media geométrica y armónica ✓ datos positivos",
+          "explicacion": "La media geométrica requiere datos positivos porque involucra una raíz de índice cualquiera de un producto, y la armónica requiere datos distintos de cero porque usa sus inversos. Si hay datos nulos o negativos, estas medias no están definidas o pierden significado."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de medias",
+      "puntos": [
+        {
+          "texto": "Desigualdad de medias = armónica, geométrica, aritmética en orden creciente",
+          "explicacion": "Para datos positivos, las tres medias cumplen $$H \\leq G \\leq \\bar{x}$$ donde $H$ es la media armónica, $G$ la geométrica y $\\bar{x}$ la aritmética, y las igualdades valen solo cuando todos los datos son iguales. Para 2 y 8 se tiene $H = 3{,}2$, $G = 4$ y $\\bar{x} = 5$."
+        },
+        {
+          "texto": "Dos números positivos: producto de aritmética y armónica = cuadrado de geométrica",
+          "explicacion": "Para dos números positivos $a$ y $b$, se cumple $\\bar{x}\\cdot H = G^2$, es decir, la media geométrica es la media geométrica de las otras dos. Con $a = 2$ y $b = 8$ se verifica: $5 \\cdot 3{,}2 = 16 = 4^2$. De esa relación y de la desigualdad se deduce la ordenación entre las tres medias."
+        },
+        {
+          "texto": "Idea de la demostración: el cuadrado de una diferencia no es negativo",
+          "explicacion": "Para dos números positivos, $(\\sqrt{a} - \\sqrt{b})^2 \\geq 0$ equivale a $a + b \\geq 2\\sqrt{ab}$, es decir, la media aritmética es mayor o igual que la geométrica. Aplicando lo mismo a los inversos de los números se obtiene que la geométrica es mayor o igual que la armónica. Para más de dos datos la demostración usa inducción o desigualdades más generales."
+        },
+        {
+          "texto": "Sensibilidad de las medias a valores grandes y pequeños",
+          "explicacion": "La media aritmética da más peso a los valores grandes, la armónica a los pequeños y la geométrica ocupa un lugar intermedio. Con un dato muy pequeño cercano a cero, la media armónica se acerca a cero aunque los demás sean grandes."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma de la distribución",
+      "puntos": [
+        {
+          "texto": "Distribución simétrica ⇒ media = mediana = moda",
+          "explicacion": "Una distribución es simétrica cuando los datos se reparten de igual modo a ambos lados del centro. Si además es unimodal, la media aritmética, la mediana y la moda coinciden. Es el caso de los datos 2, 3, 4, 4, 4, 5, 6, cuya media, mediana y moda valen 4."
+        },
+        {
+          "texto": "Asimetría positiva ⇒ moda, mediana y media en ese orden",
+          "explicacion": "En una distribución con cola larga hacia los valores altos, o asimétrica positiva, los valores altos atraen a la media más que a la mediana, y se cumple generalmente $Mo < Me < \\bar{x}$. Es típico de la distribución de ingresos, donde pocos ingresos muy altos elevan el promedio por encima de la mediana."
+        },
+        {
+          "texto": "Asimetría negativa ⇒ media, mediana y moda en ese orden",
+          "explicacion": "En una distribución con cola larga hacia los valores bajos, o asimétrica negativa, la media queda por debajo de la mediana y esta por debajo de la moda: $\\bar{x} < Me < Mo$. Ocurre, por ejemplo, con las notas de un examen fácil, donde pocas notas muy bajas reducen el promedio."
+        },
+        {
+          "texto": "Relación empírica de Pearson = $Mo \\approx 3Me - 2\\bar{x}$",
+          "explicacion": "Para distribuciones unimodales con asimetría moderada, Karl Pearson, matemático británico, observó la relación aproximada $$Mo \\approx 3\\,Me - 2\\,\\bar{x}$$ Si la media vale 10 y la mediana 9, la moda estimada es $27 - 20 = 7$, valor coherente con una cola hacia los valores altos. Es solo una estimación y no una igualdad exacta."
+        },
+        {
+          "texto": "Distribución bimodal ⇒ la media puede caer en un valle",
+          "explicacion": "Cuando los datos forman dos grupos separados, la media puede ubicarse entre ambos, en una zona donde casi no hay datos, y no representa a ninguno. En 1, 1, 2, 9, 9, 10 la media es 5,3, valor que no está cerca de ningún dato, mientras que las dos modas, 1 y 9, describen mejor los dos grupos."
+        }
+      ]
+    },
+    {
+      "titulo": "Elección de la medida",
+      "puntos": [
+        {
+          "texto": "Preferir media aritmética = datos simétricos sin atípicos",
+          "explicacion": "La media aritmética es la medida preferida cuando los datos son cuantitativos, se distribuyen de forma aproximadamente simétrica y no hay valores atípicos, porque emplea toda la información y es la base de otras medidas. Es también la más conveniente para cálculos posteriores."
+        },
+        {
+          "texto": "Preferir mediana = datos asimétricos o con atípicos",
+          "explicacion": "La mediana es preferible cuando la distribución es asimétrica o hay valores atípicos, porque no se desplaza por los extremos. Se usa para describir ingresos, precios de viviendas o tiempos de espera, donde pocos valores muy grandes distorsionarían el promedio."
+        },
+        {
+          "texto": "Preferir moda = variables nominales o valor más frecuente",
+          "explicacion": "La moda se prefiere con variables cualitativas o cuando interesa el valor más común, como la talla de calzado más vendida. Es fácil de obtener y no requiere operaciones, pero puede ser inestable en conjuntos pequeños."
+        },
+        {
+          "texto": "Preferir media geométrica = factores de cambio sucesivos",
+          "explicacion": "La media geométrica es adecuada cuando los datos son factores por los que se multiplica una cantidad, como incrementos porcentuales sucesivos, pues el producto de los factores promedio reproduce el crecimiento total. La media aritmética de esos factores sobrestimaría el crecimiento."
+        },
+        {
+          "texto": "Preferir media armónica = razones con numerador fijo",
+          "explicacion": "La media armónica es adecuada para promediar razones cuando el numerador es el mismo en todos los casos, como velocidades de un mismo recorrido en tramos de igual longitud. En esos casos la media aritmética de las velocidades daría un valor erróneo."
+        }
+      ]
+    },
+    {
+      "titulo": "Límites del centro",
+      "puntos": [
+        {
+          "texto": "Medida de tendencia central ≠ medida de dispersión",
+          "explicacion": "El centro no describe cuánto se alejan los datos de él. Los conjuntos 4, 5, 6 y 1, 5, 9 tienen media 5 y son muy distintos en dispersión. Para completar la descripción se emplean las medidas de dispersión: varianza, desviación estándar y coeficiente de variación, que se estudian en los temas 73 al 75."
+        },
+        {
+          "texto": "Medida de tendencia central ≠ medida de posición",
+          "explicacion": "Las medidas de posición, como terciles y cuartiles, ubican valores que dividen el conjunto ordenado en partes de igual frecuencia y no buscan un centro. La mediana es un caso en que ambas ideas coinciden, pues es el centro y el valor que divide en dos mitades. Terciles y cuartiles se estudian en los temas 71 y 72."
+        },
+        {
+          "texto": "Error frecuente: la mitad de los datos está sobre la media",
+          "explicacion": "Es falso que la media aritmética deje la mitad de los datos por encima y la mitad por debajo; esa propiedad corresponde a la mediana. En los datos 1, 2, 3, 4, 90 la media es 20 y cuatro de los cinco datos están por debajo de ella."
+        },
+        {
+          "texto": "Error frecuente: promediar promedios sin considerar los tamaños",
+          "explicacion": "El promedio de dos promedios coincide con el promedio general solo si los grupos tienen el mismo tamaño. Si un grupo de 10 datos tiene media 8 y otro de 30 datos tiene media 4, el promedio general es $(80 + 120)/40 = 5$, no $(8+4)/2 = 6$. Hay que ponderar por el tamaño de cada grupo, tema que se desarrolla en el tema 66."
+        },
+        {
+          "texto": "Error frecuente: usar la media aritmética con variables ordinales",
+          "explicacion": "Codificar categorías ordinales con números, como 1 para deficiente y 3 para bueno, y promediarlas supone que las distancias entre categorías son iguales, lo cual no está garantizado. Para variables ordinales corresponde la mediana o la moda."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de medias",
+      "puntos": [
+        {
+          "texto": "Tradición pitagórica → tres medias clásicas",
+          "explicacion": "En la tradición pitagórica, desarrollada desde el siglo VI a. C., se estudiaron las medias aritmética, geométrica y armónica como medios entre dos números en el marco de las proporciones y de la teoría musical. A Arquitas de Tarento, matemático griego del siglo IV a. C., se le asocia el estudio de la proporción armónica."
+        },
+        {
+          "texto": "Pappus de Alejandría (siglo IV d. C.) → diez medias",
+          "explicacion": "Pappus de Alejandría, matemático griego, describió en el libro III de su Colección matemática diez medias distintas entre dos magnitudes, entre ellas las tres clásicas. Su obra recogió y sistematizó resultados anteriores de la geometría griega."
+        },
+        {
+          "texto": "Thomas Simpson (1755) → promediar observaciones",
+          "explicacion": "Thomas Simpson, matemático inglés, defendió en un escrito de 1755 que tomar la media de varias observaciones de una misma magnitud reduce el error respecto de una observación aislada. Su argumento contribuyó a que el promedio se adoptara como práctica habitual en la astronomía y las ciencias de la medición."
+        }
+      ]
+    }
+  ]
+}

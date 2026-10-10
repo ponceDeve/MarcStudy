@@ -1,0 +1,173 @@
+{
+  "curso": "Aritmética",
+  "tema": "Propiedades fundamentales de las proporciones",
+  "glosario": {
+    "proporción": "Igualdad de dos razones.",
+    "extremos": "Primer y cuarto término de una proporción.",
+    "medios": "Segundo y tercer término de una proporción.",
+    "propiedad fundamental": "Producto de extremos igual al producto de medios.",
+    "inversión": "Intercambio de antecedente y consecuente en ambas razones.",
+    "alternancia": "Intercambio de los términos medios entre sí.",
+    "composición": "Suma del consecuente al antecedente en cada razón.",
+    "descomposición": "Resta del consecuente al antecedente en cada razón.",
+    "proporción continua": "Proporción cuyos términos medios son iguales.",
+    "media proporcional": "Término medio de una proporción geométrica continua.",
+    "proporción aritmética": "Igualdad de dos razones aritméticas.",
+    "términos homogéneos": "Términos de la misma magnitud."
+  },
+  "theory": [
+    {
+      "titulo": "Propiedad fundamental",
+      "puntos": [
+        {
+          "texto": "«Propiedad fundamental»: producto de extremos = producto de medios",
+          "explicacion": "En toda proporción geométrica $\\frac{a}{b}$ igual a $\\frac{c}{d}$, el producto de los extremos $a$ y $d$ es igual al producto de los medios $b$ y $c$. La propiedad se demuestra multiplicando ambos miembros de la igualdad por el producto $bd$, que no es cero: de un lado queda $ad$ y del otro $bc$. Es la propiedad central de las proporciones, porque de ella se deducen casi todas las demás, y se conoce también como multiplicación cruzada. Las proporciones se definen en el tema 47."
+        },
+        {
+          "texto": "Recíproca: $ad$ = $bc$ ⇒ proporción",
+          "explicacion": "Si el producto de dos números es igual al producto de otros dos y ninguno es cero, esos cuatro números forman una proporción en la que los factores de un producto son los extremos y los del otro son los medios. La recíproca se obtiene dividiendo ambos miembros de $ad$ igual a $bc$ entre $bd$. Permite comprobar si cuatro números forman proporción sin calcular los cocientes."
+        },
+        {
+          "texto": "Término desconocido ⇒ producto opuesto entre el término conocido",
+          "explicacion": "Un extremo desconocido es el producto de los medios dividido entre el otro extremo, y un medio desconocido es el producto de los extremos dividido entre el otro medio. Estas reglas son consecuencia directa de la propiedad fundamental y permiten completar proporciones. Por ejemplo, en tres sobre $x$ igual a nueve sobre doce, el medio $x$ vale tres por doce dividido entre nueve, es decir, cuatro."
+        }
+      ]
+    },
+    {
+      "titulo": "Reordenamiento de términos",
+      "puntos": [
+        {
+          "texto": "«Inversión»: $\\frac{b}{a}$ igual $\\frac{d}{c}$",
+          "explicacion": "Si en ambas razones se intercambian antecedente y consecuente, la igualdad se conserva. Se justifica porque el producto de extremos y de medios sigue siendo el mismo, o porque los recíprocos de dos números iguales son iguales. Por ejemplo, de tres quintos igual a seis décimos se obtiene cinco tercios igual a diez sextos."
+        },
+        {
+          "texto": "«Alternancia»: $\\frac{a}{c}$ igual $\\frac{b}{d}$",
+          "explicacion": "Si se intercambian los términos medios entre sí, la proporción se conserva, porque el producto de extremos y de medios no cambia. De tres quintos igual a seis décimos resulta tres sextos igual a cinco décimos, y ambas razones valen un medio. Con términos que representan magnitudes distintas, la alternancia compara cantidades que ya no son homogéneas y debe usarse con cuidado."
+        },
+        {
+          "texto": "Intercambiar los extremos conserva la proporción",
+          "explicacion": "Intercambiar entre sí los extremos produce $\\frac{d}{b}$ igual a $\\frac{c}{a}$, que mantiene el mismo producto de extremos y de medios. Es una consecuencia de aplicar sucesivamente la inversión y la alternancia. Por ejemplo, de tres quintos igual a seis décimos, al intercambiar los extremos tres y diez se obtiene diez quintos igual a seis tercios, y ambas razones valen dos. La propiedad es útil cuando conviene colocar la incógnita en el lugar de un medio o de un extremo para despejarla con mayor facilidad."
+        },
+        {
+          "texto": "De una proporción se obtienen 8 ordenamientos",
+          "explicacion": "Al disponer los cuatro términos de modo que el producto de extremos siga igualando al de medios, hay dos opciones para elegir qué producto corresponde a los extremos, dos para ordenar los extremos y dos para ordenar los medios, y resultan ocho proporciones. Todas expresan la misma relación y se obtienen combinando inversión, alternancia y el cambio de lado de la igualdad."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma y resta",
+      "puntos": [
+        {
+          "texto": "«Composición»: $\\frac{a \\text{ más } b}{b}$ igual $\\frac{c \\text{ más } d}{d}$",
+          "explicacion": "Si a cada antecedente se le suma su consecuente y se divide entre el consecuente, las razones siguen siendo iguales. La justificación es que sumar uno a ambos miembros de la proporción original deja $\\frac{a}{b}$ sumado con uno igual a $\\frac{c}{d}$ sumado con uno, que es $\\frac{a \\text{ más } b}{b}$ igual a $\\frac{c \\text{ más } d}{d}$. También vale al dividir entre los antecedentes: $\\frac{a \\text{ más } b}{a}$ igual a $\\frac{c \\text{ más } d}{c}$."
+        },
+        {
+          "texto": "«Descomposición»: $\\frac{a-b}{b}$ igual $\\frac{c-d}{d}$",
+          "explicacion": "Es la propiedad análoga con restas: al restar uno a ambos miembros de la proporción original se obtiene $\\frac{a-b}{b}$ igual a $\\frac{c-d}{d}$. También vale con los antecedentes como denominadores. Esta propiedad se usa cuando el dato de un problema es la diferencia de dos cantidades que guardan una razón."
+        },
+        {
+          "texto": "Composición y descomposición: $\\frac{a \\text{ más } b}{a-b}$ igual $\\frac{c \\text{ más } d}{c-d}$",
+          "explicacion": "Al dividir miembro a miembro las igualdades de composición y de descomposición con los mismos denominadores, se obtiene que la razón de la suma a la diferencia es igual en ambas razones. La propiedad exige que $a$ y $b$ sean distintos y que $c$ y $d$ sean distintos, pues de lo contrario el denominador se anula."
+        },
+        {
+          "texto": "Si $a:b$ = 3:5 y $a \\text{ más } b$ = 40 → 15 y 25",
+          "explicacion": "Por composición, la suma $a \\text{ más } b$ dividida entre $b$ vale tres sumado con cinco, dividido entre cinco, es decir, ocho quintos. Como $a \\text{ más } b$ es cuarenta, $b$ vale cuarenta por cinco entre ocho, o sea veinticinco, y $a$ vale quince. Se comprueba que quince sobre veinticinco es tres quintos."
+        },
+        {
+          "texto": "Si $a:b$ = 9:4 y $a-b$ = 20 → 36 y 16",
+          "explicacion": "Por descomposición, $a-b$ dividida entre $b$ vale nueve menos cuatro, dividido entre cuatro, es decir, cinco cuartos. Como $a-b$ es veinte, $b$ vale veinte por cuatro entre cinco, o sea dieciséis, y $a$ vale treinta y seis. Se comprueba que treinta y seis sobre dieciséis es nueve cuartos."
+        },
+        {
+          "texto": "Si $a:b$ = 7:3 y $a \\text{ más } b$ = 50 → 35 y 15",
+          "explicacion": "Por composición y descomposición, $a \\text{ más } b$ dividida entre $a-b$ vale siete más tres, dividido entre siete menos tres, es decir, diez cuartos o cinco medios. Como $a \\text{ más } b$ es cincuenta, $a-b$ vale veinte. De ahí $a$ vale treinta y cinco y $b$ vale quince, y se verifica que su razón es siete a tres."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias, raíces y productos",
+      "puntos": [
+        {
+          "texto": "Potencia $n$ de una proporción ⇒ nueva proporción",
+          "explicacion": "Si se eleva cada término de una proporción a un mismo exponente natural $n$, se obtiene otra proporción: $\\frac{a^n}{b^n}$ igual a $\\frac{c^n}{d^n}$. Se deduce elevando ambos miembros de la igualdad de razones a la potencia $n$. Una proporción con razón dos tercios da, al cuadrado, cuatro novenos en ambas razones."
+        },
+        {
+          "texto": "Raíz de una proporción positiva ⇒ nueva proporción",
+          "explicacion": "Si los términos son positivos, al extraer la raíz de un mismo orden a cada término se mantiene la proporción. Se restringe a positivos para que las raíces de índice par tengan un único valor real positivo. La propiedad es la inversa de la de potencias y se usa para hallar términos conociendo sumas de cuadrados."
+        },
+        {
+          "texto": "Producto de proporciones término a término",
+          "explicacion": "Si dos proporciones se multiplican término a término, el resultado es otra proporción: de $\\frac{a}{b}$ igual a $\\frac{c}{d}$ y $\\frac{e}{f}$ igual a $\\frac{g}{h}$ se obtiene $\\frac{ae}{bf}$ igual a $\\frac{cg}{dh}$. Lo mismo ocurre al dividirlas término a término, siempre que los divisores no sean cero. La suma de antecedentes entre suma de consecuentes se estudia en el tema 46."
+        }
+      ]
+    },
+    {
+      "titulo": "Proporción continua",
+      "puntos": [
+        {
+          "texto": "Continua ⇒ $b^2$ = $ac$",
+          "explicacion": "En la proporción continua $\\frac{a}{b}$ igual a $\\frac{b}{c}$ el producto de extremos es $ac$ y el de medios es $b^2$, de modo que el cuadrado del término medio iguala al producto de los extremos. Por ello el término medio es la media proporcional de los extremos, y se calcula con la raíz cuadrada para números positivos."
+        },
+        {
+          "texto": "Continua ⇒ razón de extremos = cuadrado de la razón",
+          "explicacion": "En una proporción continua, la razón del primer extremo al último es el cuadrado de la razón del primero al término medio, pues $\\frac{a}{c}$ es el producto de $\\frac{a}{b}$ por $\\frac{b}{c}$ y ambas razones son iguales. Con los números cuatro, seis y nueve, la razón de los extremos es cuatro novenos, que coincide con el cuadrado de dos tercios."
+        }
+      ]
+    },
+    {
+      "titulo": "Proporción aritmética",
+      "puntos": [
+        {
+          "texto": "Suma de extremos = suma de medios",
+          "explicacion": "En la proporción aritmética $a-b$ igual a $c-d$, la suma de los extremos $a$ y $d$ es igual a la suma de los medios $b$ y $c$. Se demuestra sumando $b$ y $d$ a ambos miembros. Con doce, nueve, ocho y cinco, que cumplen doce menos nueve igual a ocho menos cinco, la suma de extremos es diecisiete y la de medios también."
+        },
+        {
+          "texto": "Alternancia e inversión también valen en la aritmética",
+          "explicacion": "Intercambiar los medios da $a-c$ igual a $b-d$, y cambiar el orden de los términos de cada razón da $b-a$ igual a $d-c$. Ambas propiedades se deducen de la suma de extremos y medios. Con doce, nueve, ocho y cinco se verifica que doce menos ocho y nueve menos cinco valen cuatro."
+        },
+        {
+          "texto": "Continua aritmética ⇒ doble del medio = suma de extremos",
+          "explicacion": "En la proporción aritmética continua $a-b$ igual a $b-c$, el doble de $b$ es igual a la suma de $a$ y $c$. Por eso la media diferencial es la semisuma de los extremos, y los tres términos forman una progresión aritmética."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones",
+      "puntos": [
+        {
+          "texto": "Denominadores y diferencias ✗ nulos",
+          "explicacion": "Las propiedades de las proporciones geométricas exigen que ningún denominador sea cero. En la composición y descomposición, además, las diferencias que figuran como denominadores no pueden ser cero. Si no se cumplen estas condiciones, las expresiones carecen de sentido y no se pueden aplicar las igualdades."
+        },
+        {
+          "texto": "Alternancia con «términos homogéneos»",
+          "explicacion": "Al alternar los medios, se comparan antecedentes entre sí y consecuentes entre sí, y esas razones solo tienen significado si los términos correspondientes son de la misma magnitud. En proporciones puramente numéricas no hay inconveniente, pero en problemas con magnitudes conviene verificar la homogeneidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Aplicar composición solo a un miembro",
+          "explicacion": "La composición debe aplicarse a las dos razones de la proporción, sumando consecuente a antecedente en cada una, y manteniendo el mismo denominador en ambos lados. Si se suma en un solo miembro, la igualdad deja de cumplirse. Por ejemplo, de tres quintos igual a seis décimos no se deduce que ocho quintos sea igual a seis décimos."
+        },
+        {
+          "texto": "Sumar extremos y medios en proporciones geométricas",
+          "explicacion": "La igualdad entre suma de extremos y suma de medios es propia de la proporción aritmética. En la geométrica, lo que se iguala es el producto. Con tres, cinco, seis y diez, la suma de extremos es trece y la de medios once, pero el producto de ambos pares es treinta."
+        },
+        {
+          "texto": "Confundir inversión con alternancia",
+          "explicacion": "La inversión cambia antecedente y consecuente dentro de cada razón, mientras que la alternancia intercambia los medios. De tres quintos igual a seis décimos, la inversión da cinco tercios igual a diez sextos y la alternancia da tres sextos igual a cinco décimos. Son operaciones diferentes aunque ambas conserven la proporción."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia",
+      "puntos": [
+        {
+          "texto": "Los Elementos de Euclides contienen alternando, invirtiendo, componiendo y separando",
+          "explicacion": "El libro V de los Elementos de Euclides de Alejandría, del siglo III antes de nuestra era, demuestra para magnitudes las transformaciones de proporciones que la tradición latina denominó alternando, invertendo, componendo y separando. Estas operaciones equivalen a la alternancia, inversión, composición y descomposición actuales, y se apoyan en la teoría de proporciones atribuida a Eudoxo de Cnido, del siglo IV antes de nuestra era."
+        }
+      ]
+    }
+  ]
+}

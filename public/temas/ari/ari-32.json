@@ -1,0 +1,141 @@
+{
+  "curso": "Aritmética",
+  "tema": "Función de Euler",
+  "glosario": {
+    "función de Euler": "Cuenta los enteros hasta N primos con N",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno",
+    "número primo": "Entero mayor que uno con solo dos divisores",
+    "potencia de un primo": "Un primo elevado a un exponente entero",
+    "función multiplicativa": "Respeta productos de números primos entre sí",
+    "descomposición canónica": "Producto de primos distintos elevados a exponentes",
+    "divisor": "Entero positivo que divide exactamente a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "La «función de Euler» $\\varphi(N)$ cuenta enteros hasta $N$ primos con $N$",
+          "explicacion": "La función de Euler asigna a cada entero positivo $N$ la cantidad de números del conjunto $1, 2, \\ldots, N$ que son primos entre sí con $N$, es decir, que no comparten con $N$ ningún divisor común distinto de $1$. Se denota $\\varphi(N)$ y también se le llama función indicatriz de Euler o función totiente. Es un resultado de conteo, de modo que siempre es un entero positivo."
+        },
+        {
+          "texto": "$k$ cuenta en $\\varphi(N)$ si $k$, $N$ son «primos entre sí»",
+          "explicacion": "Para saber si un número del conjunto cuenta, se comprueba si es primo entre sí con $N$. Eso equivale a verificar que el único divisor común de ambos sea el $1$. Los números que comparten un factor primo con $N$ no se cuentan. La noción de primos entre sí se desarrolla en el tema 31 (Números primos entre sí), y aquí se utiliza como criterio de selección."
+        },
+        {
+          "texto": "Leonhard Euler estudió esta función en el siglo XVIII",
+          "explicacion": "El matemático suizo Leonhard Euler estudió esta función en el siglo XVIII, en el marco de sus trabajos sobre propiedades de los números enteros, y de él toma su nombre. El símbolo $\\varphi$ para designarla fue introducido más tarde por el matemático alemán Carl Friedrich Gauss en su obra Disquisitiones Arithmeticae, publicada en 1801, según la historia de la teoría de números."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(12)$ vale $4$, con $1, 5, 7, 11$",
+          "explicacion": "Para $N$ igual a $12$ se revisan los números del $1$ al $12$. Comparten factor con $12$ los números $2, 3, 4, 6, 8, 9, 10, 12$, y quedan sin compartirlo $1, 5, 7, 11$. Por eso $\\varphi(12)$ vale cuatro. El ejemplo muestra el procedimiento de conteo directo, que resulta largo cuando $N$ es grande y motiva la fórmula general del tema."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(10)$ vale $4$, con $1, 3, 7, 9$",
+          "explicacion": "Los números del $1$ al $10$ que no comparten divisor con $10$ son $1, 3, 7, 9$, porque los demás son pares o múltiplos de $5$. En consecuencia, $\\varphi(10)$ vale cuatro. Los dos ejemplos de $10$ y de $12$ muestran que números distintos pueden tener el mismo valor de la función de Euler."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos básicos",
+      "puntos": [
+        {
+          "texto": "$\\varphi(1)$ vale $1$",
+          "explicacion": "El único número que se considera es el propio $1$, que es primo entre sí con $1$ porque su único divisor común es $1$. Por eso la función de Euler en uno vale uno. Este caso se toma como convención natural y mantiene el cumplimiento de las propiedades generales de la función, entre ellas la multiplicidad y la suma sobre divisores."
+        },
+        {
+          "texto": "$N$ es un «número primo» $p$ ⇒ $\\varphi(p)$ vale $p$ menos $1$",
+          "explicacion": "Un número primo solo tiene como divisores a $1$ y a sí mismo, de modo que todos los enteros menores que $p$ son primos entre sí con $p$, y solo $p$ queda excluido. Hay entonces $p$ menos uno números que cuentan. Ejemplos: $\\varphi(7)$ vale $6$ y $\\varphi(13)$ vale $12$. Es el valor máximo posible de la función para un $N$ dado."
+        },
+        {
+          "texto": "$N$ es una «potencia de un primo» ⇒ $\\varphi(p^{a})$ = $p^{a-1}(p-1)$",
+          "explicacion": "Los números del $1$ al $p^{a}$ que no son primos con $p^{a}$ son exactamente los múltiplos de $p$, y hay $p^{a-1}$ de ellos. Al restar esa cantidad del total $p^{a}$ quedan $p^{a-1}$ multiplicado por $p$ menos uno. Ejemplos: $\\varphi(9)$ vale $6$, pues $9$ es $3^{2}$, y $\\varphi(16)$ vale $8$, pues $16$ es $2^{4}$."
+        },
+        {
+          "texto": "$N$ mayor que $1$ ⇒ $\\varphi(N)$ menor que $N$",
+          "explicacion": "En el conjunto de $1$ a $N$ el propio $N$ nunca es primo con $N$ cuando $N$ es mayor que uno, así que al menos ese número queda fuera. Por eso el valor de la función no supera $N$ menos uno, y solo lo alcanza cuando $N$ es primo, pues en cualquier otro caso queda fuera algún otro múltiplo de un divisor de $N$. Esta cota sirve para estimar o descartar valores posibles."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicatividad",
+      "puntos": [
+        {
+          "texto": "«Función multiplicativa»: $\\varphi(mn)$ = $\\varphi(m)\\varphi(n)$ si $m$, $n$ son primos entre sí",
+          "explicacion": "Una función multiplicativa es aquella cuyo valor en un producto de números primos entre sí es el producto de sus valores. La función de Euler cumple esa propiedad. La condición de ser primos entre sí es indispensable: $\\varphi(2)$ vale $1$, y $\\varphi(4)$ vale $2$, pero $\\varphi(8)$ vale $4$, que no coincide con el producto $2$ por $2$."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(12)$ = $\\varphi(4)\\varphi(3)$",
+          "explicacion": "Como $4$ y $3$ son primos entre sí y su producto es $12$, el valor de la función en $12$ es el producto de los valores en $4$ y en $3$. Como $\\varphi(4)$ vale $2$ y $\\varphi(3)$ vale $2$, el producto es $4$, lo que coincide con el conteo directo realizado antes. El ejemplo confirma la propiedad con cálculo comprobado."
+        },
+        {
+          "texto": "$m$, $n$ no primos entre sí ⇒ falla la multiplicatividad",
+          "explicacion": "La propiedad solo vale cuando los factores no comparten divisores. Para $m$ igual a $6$ y $n$ igual a $10$, el producto $60$ da un valor de $16$ en la función, mientras que el producto de $\\varphi(6)$, que es $2$, por $\\varphi(10)$, que es $4$, da $8$. Aplicarla sin verificar la condición es un error frecuente."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula general",
+      "puntos": [
+        {
+          "texto": "$N$ en «descomposición canónica» ⇒ $\\varphi(N)$ = $N(1-\\frac{1}{p})(1-\\frac{1}{q})\\cdots$",
+          "explicacion": "Si $N$ se escribe como producto de primos distintos $p$, $q$, y así sucesivamente, elevados a sus exponentes, la función de Euler resulta de multiplicar $N$ por un factor de uno menos el inverso de cada primo que lo divide. Solo intervienen los primos distintos, no sus exponentes. La descomposición canónica se obtiene aplicando el teorema fundamental de la aritmética, tema 26."
+        },
+        {
+          "texto": "Fórmula equivalente: $\\varphi(N)$ = $p^{a-1}(p-1)\\,q^{b-1}(q-1)\\cdots$",
+          "explicacion": "La fórmula anterior puede escribirse factor por factor: por cada primo $p$ con exponente $a$ aparece $p^{a-1}$ multiplicado por $p$ menos uno. Es el resultado de aplicar la multiplicatividad y la fórmula de la potencia de un primo, y resulta cómoda cuando la descomposición canónica ya está escrita."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(36)$ vale $12$",
+          "explicacion": "Como $36$ es $2^{2}\\cdot 3^{2}$, los primos distintos son $2$ y $3$. La fórmula da $36$ por un medio por dos tercios, que es $12$. Con la forma equivalente se obtiene $2^{1}\\cdot 1\\cdot 3^{1}\\cdot 2$, que también es $12$. El conteo directo de los números del $1$ al $36$ primos con $36$ confirma el valor."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(100)$ vale $40$",
+          "explicacion": "El número $100$ es $2^{2}\\cdot 5^{2}$. Con la fórmula, $100$ por un medio por cuatro quintos da $40$. Esto indica que de los cien primeros enteros, cuarenta son primos entre sí con cien. Es un ejemplo típico de problema donde la fórmula resuelve en segundos lo que por conteo directo exigiría revisar cien números."
+        },
+        {
+          "texto": "Ejemplo: $\\varphi(72)$ vale $24$",
+          "explicacion": "Al descomponer $72$ como $2^{3}\\cdot 3^{2}$ y aplicar la forma factor por factor, se obtiene $2^{2}\\cdot 1\\cdot 3^{1}\\cdot 2$, que es $24$. Con la otra forma, $72$ por un medio por dos tercios da el mismo resultado. Ambos procedimientos coinciden y se pueden usar para comprobarse mutuamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$\\varphi(N)$ es par para todo $N$ mayor que $2$",
+          "explicacion": "Los enteros primos con $N$ aparecen en parejas formadas por $k$ y $N$ menos $k$, que son distintos cuando $N$ es mayor que dos, porque el único caso en que coincidirían es $k$ igual a la mitad de $N$, y ese número comparte con $N$ un divisor mayor que uno. Al formar parejas, la cantidad total es par. Ejemplos: $\\varphi(7)$ vale $6$ y $\\varphi(12)$ vale $4$."
+        },
+        {
+          "texto": "Suma de los primos con $N$ ⇒ $\\frac{N\\,\\varphi(N)}{2}$ para $N$ mayor que $2$",
+          "explicacion": "Como los números primos con $N$ se agrupan en parejas $k$ y $N$ menos $k$ cuya suma es $N$, y hay la mitad de $\\varphi(N)$ parejas, la suma de todos ellos es $N$ por $\\varphi(N)$ entre dos. Ejemplo: para $N$ igual a $12$ los números $1, 5, 7, 11$ suman $24$, que coincide con $12$ por $4$ entre dos."
+        },
+        {
+          "texto": "Cantidad de enteros hasta $N$ no primos con $N$ ⇒ $N$ menos $\\varphi(N)$",
+          "explicacion": "El conjunto de $1$ a $N$ se divide en los números primos con $N$ y en los que comparten algún divisor con $N$. Al restar el valor de la función del total se obtiene la cantidad de los segundos. Ejemplo: de los $12$ primeros enteros, $4$ son primos con $12$ y $8$ no lo son."
+        },
+        {
+          "texto": "Suma de $\\varphi(d)$ sobre los «divisores» $d$ de $N$ ⇒ $N$",
+          "explicacion": "Esta propiedad, atribuida a Carl Friedrich Gauss, afirma que al sumar los valores de la función en todos los divisores positivos de $N$ se recupera $N$. Ejemplo: los divisores de $12$ son $1, 2, 3, 4, 6, 12$, con valores $1, 1, 2, 2, 2, 4$ que suman $12$. Es una forma de comprobar cálculos de la función."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso posterior",
+      "puntos": [
+        {
+          "texto": "El teorema de Euler usa $\\varphi(N)$ en restos de potencias",
+          "explicacion": "Cuando $a$ y $N$ son primos entre sí, $a$ elevado a $\\varphi(N)$ deja residuo $1$ al dividirse entre $N$. Este resultado, demostrado por Leonhard Euler en el siglo XVIII, permite simplificar restos de potencias grandes. Su aplicación en problemas corresponde al tema 25 (Restos potenciales), y aquí solo se señala la utilidad de la función."
+        },
+        {
+          "texto": "Error: contar $N$ como primo con $N$ para $N$ mayor que $1$",
+          "explicacion": "El número $N$ comparte con sí mismo el divisor $N$, que es distinto de $1$ cuando $N$ es mayor que uno, por lo que no cuenta. Incluirlo aumenta el resultado en uno. En cambio, para $N$ igual a $1$ sí cuenta, y por eso $\\varphi(1)$ vale uno. Distinguir ambos casos evita errores de conteo."
+        },
+        {
+          "texto": "Error: aplicar la fórmula usando exponentes en lugar de primos distintos",
+          "explicacion": "En el factor $1-\\frac{1}{p}$ solo intervienen los primos distintos de $N$, no cuántas veces se repiten. Si se usara cada factor primo repetido, el resultado sería menor que el correcto. Para $36$, los primos distintos son $2$ y $3$, y se multiplican solo dos factores, no cuatro."
+        }
+      ]
+    }
+  ]
+}

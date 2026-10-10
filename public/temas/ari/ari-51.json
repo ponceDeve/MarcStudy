@@ -1,0 +1,215 @@
+{
+  "curso": "Aritmética",
+  "tema": "Reglas comerciales",
+  "glosario": {
+    "precio de costo": "Monto que el vendedor pagó por el bien",
+    "precio de venta": "Monto que cobra el vendedor",
+    "precio fijado": "Precio anunciado antes de descontar",
+    "descuento": "Rebaja concedida sobre el precio fijado",
+    "ganancia bruta": "Precio de venta menos precio de costo",
+    "ganancia neta": "Ganancia bruta menos los gastos",
+    "pérdida": "Excedente del costo sobre el precio de venta",
+    "gastos": "Desembolsos adicionales de la operación",
+    "recargo": "Aumento sobre el costo al fijar el precio",
+    "base": "Cantidad sobre la que se calcula el porcentaje"
+  },
+  "theory": [
+    {
+      "titulo": "Reglas comerciales",
+      "puntos": [
+        {
+          "texto": "«Reglas comerciales» → relaciones entre los precios de una compraventa",
+          "explicacion": "Las reglas comerciales son el conjunto de relaciones aritméticas que vinculan los distintos precios que intervienen cuando un bien se adquiere y luego se vende: el precio de costo, el precio de venta, el precio fijado, la ganancia, la pérdida, los gastos y el descuento. Todas se reducen a sumas, restas y cálculos de tanto por ciento, de modo que dependen de lo aprendido en el tema 49 (Porcentajes) y en el tema 50 (Variación porcentual). El estudio consiste en reconocer qué cantidad es conocida, cuál es la incógnita y sobre qué cantidad se calcula cada porcentaje, pues en esa última elección está la principal dificultad del tema."
+        },
+        {
+          "texto": "«Operación comercial» = adquirir un bien + venderlo después",
+          "explicacion": "Una operación comercial consta de dos momentos sucesivos. En el primero, quien comercia adquiere o produce un bien y desembolsa una cantidad de dinero; en el segundo, entrega el bien a otra persona y recibe a cambio otra cantidad. La comparación entre lo recibido y lo desembolsado determina el resultado: hay ganancia si lo recibido es mayor, pérdida si es menor, y ninguna de las dos si ambos montos coinciden. Las reglas comerciales no describen la conducta de las personas, sino únicamente estas cantidades de dinero, razón por la cual todo problema del tema puede traducirse a ecuaciones entre precios."
+        }
+      ]
+    },
+    {
+      "titulo": "Precio de costo",
+      "puntos": [
+        {
+          "texto": "«Precio de costo» = dinero que se paga por el bien",
+          "explicacion": "El precio de costo, también llamado costo o precio de compra, es la cantidad de dinero que el vendedor desembolsó para adquirir o producir el bien. Se representa con $P_C$ y es el punto de referencia con el que se compara el precio de venta: si este lo supera, la operación deja ganancia, y si queda por debajo, deja pérdida. Además, salvo que el problema indique otra cosa, es la base sobre la cual se calculan los tantos por ciento de ganancia o de pérdida, convención que se desarrolla más adelante en este mismo tema."
+        },
+        {
+          "texto": "Costo total = precio de compra + «gastos»",
+          "explicacion": "Cuando la operación origina desembolsos adicionales a la compra, como el traslado, el almacenamiento o los impuestos, estos se llaman gastos. Algunos textos los suman al precio de costo, de modo que el costo total es la suma del precio de compra y los gastos; otros mantienen el costo separado y restan los gastos después, al pasar de la ganancia bruta a la ganancia neta. Ambas formas conducen al mismo resultado siempre que los gastos se consideren una sola vez, y el error típico es descontarlos dos veces. Por eso conviene leer el enunciado para saber si el costo dado ya los incluye."
+        }
+      ]
+    },
+    {
+      "titulo": "Precio de venta",
+      "puntos": [
+        {
+          "texto": "«Precio de venta» = dinero que recibe el vendedor",
+          "explicacion": "El precio de venta, representado por $P_V$, es la cantidad que efectivamente cobra el vendedor por el bien una vez concluida la operación. Si no hubo rebaja alguna, coincide con el precio fijado; si se aplicó un descuento, es el precio fijado ya reducido. Esta distinción es esencial: la ganancia o la pérdida se calculan siempre con el precio de venta real y no con el precio anunciado, porque lo que determina el resultado es el dinero que de verdad llega a manos del vendedor."
+        }
+      ]
+    },
+    {
+      "titulo": "Precio fijado",
+      "puntos": [
+        {
+          "texto": "«Precio fijado» = precio anunciado antes del descuento",
+          "explicacion": "El precio fijado, llamado también precio de lista, precio marcado o precio de catálogo, es el que el vendedor señala al ofrecer el bien. Se denota $P_F$ y es el precio sobre el cual se calcula cualquier descuento. Suele establecerse por encima del costo para dejar un margen, pero no está obligado a cobrarse íntegro: el comprador puede obtener una rebaja y entonces pagará un precio de venta menor. Si el enunciado no menciona ninguna rebaja, se toma el precio fijado como precio de venta."
+        },
+        {
+          "texto": "«Precio de venta» = precio fijado menos descuento",
+          "explicacion": "El descuento es la rebaja que el vendedor concede sobre el precio fijado y se denota $D$. La relación $P_V = P_F - D$ expresa que el comprador paga el precio anunciado reducido en esa cantidad, y de ella se obtiene también $P_F = P_V + D$. Cuando el descuento se da como tanto por ciento $d\\%$, se calcula sobre el precio fijado, de modo que $D = P_F\\cdot\\frac{d}{100}$ y por tanto $P_V = P_F\\left(1-\\frac{d}{100}\\right)$. El descuento aplicado a documentos de crédito es otro asunto (se estudia en el tema 58, Descuento comercial) y los descuentos aplicados uno tras otro se estudian en el tema 52 (Descuentos y aumentos sucesivos)."
+        }
+      ]
+    },
+    {
+      "titulo": "Ganancia",
+      "puntos": [
+        {
+          "texto": "«Ganancia bruta» = precio de venta menos precio de costo",
+          "explicacion": "La ganancia bruta es el excedente del precio de venta sobre el precio de costo y se calcula como $G_B = P_V - P_C$, con la condición de que $P_V$ sea mayor que $P_C$. De la misma relación se obtiene que $P_V = P_C + G_B$ y que $P_C = P_V - G_B$, tres formas equivalentes de una sola igualdad. Se llama bruta porque aún no se han considerado los gastos adicionales de la operación. Su valor es positivo; cuando la resta daría un resultado negativo, la operación no deja ganancia sino pérdida."
+        },
+        {
+          "texto": "«Ganancia neta» = ganancia bruta menos gastos",
+          "explicacion": "La ganancia neta es lo que realmente queda al vendedor después de cubrir los gastos de la operación: $G_N = G_B - \\text{gastos}$. Si el costo dado ya incluye los gastos, la ganancia bruta calculada con ese costo es directamente la ganancia neta y no debe restarse nada más. Cuando los gastos superan la ganancia bruta, la ganancia neta resulta negativa, lo que significa que la operación, en conjunto, termina con pérdida aunque el precio de venta haya superado al precio de compra."
+        }
+      ]
+    },
+    {
+      "titulo": "Pérdida",
+      "puntos": [
+        {
+          "texto": "«Pérdida» = precio de costo menos precio de venta",
+          "explicacion": "Hay pérdida cuando el vendedor recibe menos de lo que desembolsó, es decir, cuando $P_V$ es menor que $P_C$. Se calcula como $\\text{pérdida} = P_C - P_V$, de donde $P_V = P_C - \\text{pérdida}$ y $P_C = P_V + \\text{pérdida}$. Igual que la ganancia, puede darse como cantidad de dinero o como tanto por ciento, y en este último caso la base de comparación puede ser el precio de costo o el precio de venta, según indique el enunciado."
+        },
+        {
+          "texto": "Precio de venta = precio de costo ⇒ ni ganancia ni pérdida",
+          "explicacion": "Cuando el precio de venta es igual al precio de costo, la operación se cierra sin ganancia ni pérdida. Es el caso límite entre los dos resultados posibles y sirve para fijar umbrales: cualquier precio de venta por encima del costo produce ganancia y cualquiera por debajo produce pérdida. Además, ganancia y pérdida son resultados excluyentes: una misma venta no puede producir ambas, y por eso en cada problema solo una de las dos cantidades es distinta de cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad comercial",
+      "puntos": [
+        {
+          "texto": "«Precio fijado» menos descuento = precio de costo + ganancia",
+          "explicacion": "Combinando las relaciones anteriores se obtiene la igualdad central del tema: $P_F - D = P_V = P_C + G$. El primer tramo describe el paso del precio anunciado al precio cobrado; el segundo, el paso de lo cobrado al costo más la ganancia. Cuando hay pérdida se escribe $P_F - D = P_V = P_C - \\text{pérdida}$. Con esta cadena es posible plantear casi cualquier problema: se ubica cada dato en su lugar, se despeja la incógnita y, si el enunciado entrega porcentajes, cada uno se convierte primero en cantidad usando su base correspondiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Base del porcentaje",
+      "puntos": [
+        {
+          "texto": "Sin «base» indicada, el porcentaje se toma sobre el costo",
+          "explicacion": "Un tanto por ciento de ganancia o de pérdida solo tiene sentido si se sabe sobre qué cantidad se calcula, es decir, cuál es su base. Por convención, cuando el enunciado dice que se gana el 20 % sin más precisión, se entiende que la ganancia es el 20 % del precio de costo. Solo cuando el texto señala expresamente que el porcentaje es sobre el precio de venta, sobre el precio fijado o sobre otra cantidad, se cambia la base. Esta convención explica por qué muchos problemas se resuelven asignando al costo el valor 100 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Ganancia sobre costo",
+      "puntos": [
+        {
+          "texto": "Ganancia sobre costo ⇒ precio de venta = costo + ganancia",
+          "explicacion": "Si la ganancia es el $g\\%$ del precio de costo, entonces $G = P_C\\cdot\\frac{g}{100}$ y el precio de venta es $P_V = P_C\\left(1+\\frac{g}{100}\\right)$. El factor $1+\\frac{g}{100}$ indica que el precio de venta equivale al $100\\%+g\\%$ del costo. Por ejemplo, con un costo de 80 y una ganancia del 25 % sobre el costo, la ganancia es 20 y el precio de venta es 100. Esta forma permite hallar el costo cuando se conoce el precio de venta, dividiendo este entre el factor."
+        }
+      ]
+    },
+    {
+      "titulo": "Pérdida sobre costo",
+      "puntos": [
+        {
+          "texto": "Pérdida sobre costo ⇒ precio de venta ↓ respecto del costo",
+          "explicacion": "Si la pérdida es el $p\\%$ del precio de costo, entonces $\\text{pérdida} = P_C\\cdot\\frac{p}{100}$ y el precio de venta es $P_V = P_C\\left(1-\\frac{p}{100}\\right)$. El factor $1-\\frac{p}{100}$ muestra que el precio de venta es el $100\\%-p\\%$ del costo. Con un costo de 200 y una pérdida del 15 % sobre el costo, la pérdida es 30 y el precio de venta es 170. Como la base es el costo, este porcentaje de pérdida no puede superar el 100 %, pues el precio de venta no puede ser negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ganancia sobre venta",
+      "puntos": [
+        {
+          "texto": "Ganancia sobre la venta ⇒ costo = venta menos ganancia",
+          "explicacion": "Si el enunciado indica que la ganancia es el $g\\%$ del precio de venta, entonces $G = P_V\\cdot\\frac{g}{100}$ y, como $P_C = P_V - G$, resulta $P_C = P_V\\left(1-\\frac{g}{100}\\right)$, o de forma equivalente $P_V = \\frac{P_C}{1-\\frac{g}{100}}$. La base es ahora el precio de venta, que en una ganancia es mayor que el costo, así que el mismo porcentaje representa más dinero que si se hubiera calculado sobre el costo. Con un precio de venta de 100 y una ganancia del 20 % sobre la venta, el costo es 80."
+        }
+      ]
+    },
+    {
+      "titulo": "Pérdida sobre venta",
+      "puntos": [
+        {
+          "texto": "Pérdida sobre la venta ⇒ costo = venta + pérdida",
+          "explicacion": "Si la pérdida es el $p\\%$ del precio de venta, entonces $\\text{pérdida} = P_V\\cdot\\frac{p}{100}$ y, como $P_C = P_V + \\text{pérdida}$, se obtiene $P_C = P_V\\left(1+\\frac{p}{100}\\right)$. Con un precio de venta de 100 y una pérdida del 20 % sobre la venta, el costo es 120. Dado que la base es el precio de venta, que en este caso es menor que el costo, el porcentaje puede superar el 100 % cuando se vende a menos de la mitad del costo: si el costo es el triple de la venta, la pérdida es el 200 % del precio de venta."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de base",
+      "puntos": [
+        {
+          "texto": "«Ganancia» sobre la venta ≠ ganancia sobre el costo",
+          "explicacion": "Una misma ganancia produce porcentajes distintos según la base elegida. Si es el $g\\%$ de la venta, su porcentaje sobre el costo es $\\frac{100g}{100-g}\\%$; recíprocamente, si es el $c\\%$ del costo, es el $\\frac{100c}{100+c}\\%$ de la venta. Con venta 100 y ganancia 20, el costo es 80 y la ganancia equivale al 25 % del costo; a la inversa, con costo 80 y ganancia del 25 % sobre el costo, la venta es 100 y la ganancia es el 20 % de la venta. Ambas fórmulas se deducen dividiendo la ganancia entre cada base y usando que la venta es costo más ganancia."
+        },
+        {
+          "texto": "Ganancia sobre costo puede superar 100 %; sobre venta no",
+          "explicacion": "El porcentaje de ganancia sobre el costo puede tomar cualquier valor positivo e incluso superar el 100 %: si el precio de venta es el triple del costo, la ganancia es el doble del costo, es decir, el 200 % de este. En cambio, el porcentaje de ganancia sobre el precio de venta es siempre menor que el 100 %, porque la ganancia es solo una parte de ese precio; en el ejemplo anterior equivale a dos tercios del precio de venta, aproximadamente el 66,7 %. Con la pérdida ocurre lo contrario: sobre el costo nunca pasa del 100 %, mientras que sobre la venta puede superarlo."
+        }
+      ]
+    },
+    {
+      "titulo": "Precio con recargo",
+      "puntos": [
+        {
+          "texto": "«Precio fijado» = costo + recargo del vendedor",
+          "explicacion": "Para dejar margen de negociación, el vendedor suele fijar el precio sumando al costo una cantidad llamada recargo, expresada en dinero o como tanto por ciento del costo. Si el recargo es el $a\\%$ del costo, entonces $P_F = P_C\\left(1+\\frac{a}{100}\\right)$. Este recargo no es todavía la ganancia: la ganancia real depende del descuento que después se conceda, porque $G = P_V - P_C$ y $P_V$ resulta de rebajar el precio fijado. Solo cuando no se concede descuento, el recargo y la ganancia son iguales."
+        },
+        {
+          "texto": "Recargo y descuento tienen bases distintas",
+          "explicacion": "Cuando se vende con un descuento del $d\\%$ sobre un precio fijado que incluía un recargo del $a\\%$ sobre el costo, ambos porcentajes tienen bases diferentes: el recargo toma como base el costo y el descuento toma como base el precio fijado. Los une la igualdad $P_V = P_C\\left(1+\\frac{a}{100}\\right)\\left(1-\\frac{d}{100}\\right)$. Con costo 100, recargo del 40 % y descuento del 10 %, el precio fijado es 140, el precio de venta es 126 y la ganancia es 26, que es el 26 % del costo y no el resultado de restar 10 a 40. Este caso es un aumento seguido de un descuento, que se generaliza en el tema 52."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos artículos iguales",
+      "puntos": [
+        {
+          "texto": "Mismo costo, ganancia y pérdida iguales ⇒ resultado nulo",
+          "explicacion": "Si dos artículos tienen el mismo precio de costo y uno se vende con una ganancia del $x\\%$ del costo y el otro con una pérdida del $x\\%$ del costo, la ganancia de uno compensa exactamente la pérdida del otro, porque ambas valen $P_C\\cdot\\frac{x}{100}$. El resultado global es nulo y el dinero total recibido coincide con el desembolsado. Este caso conviene reconocerlo para no confundirlo con el siguiente, donde lo que coincide es el precio de venta y no el costo, y el resultado cambia por completo."
+        },
+        {
+          "texto": "Mismo precio de venta, ganancia y pérdida iguales ⇒ pérdida",
+          "explicacion": "Si dos artículos se venden al mismo precio $S$, uno con ganancia del $x\\%$ sobre su costo y otro con pérdida del $x\\%$ sobre su costo, los costos son distintos: $\\frac{S}{1+\\frac{x}{100}}$ y $\\frac{S}{1-\\frac{x}{100}}$. El costo total es $\\frac{2S}{1-\\left(\\frac{x}{100}\\right)^2}$, mayor que lo recibido, que es $2S$. La pérdida neta es entonces el $\\frac{x^2}{100}\\%$ del costo total; con $x = 20$ resulta una pérdida del 4 %. El resultado se explica porque el artículo vendido con pérdida tenía un costo más alto, de modo que su porcentaje se aplicó sobre una base mayor."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: calcular el porcentaje sobre la base equivocada",
+          "explicacion": "El error más común es aplicar un tanto por ciento sobre una cantidad distinta de la que indica el enunciado: calcular la ganancia sobre el precio de venta cuando se pedía sobre el costo, o el descuento sobre el costo en lugar de hacerlo sobre el precio fijado. Como cada base es una cantidad diferente, el resultado cambia. Para evitarlo conviene escribir junto a cada porcentaje su base (costo, venta o precio fijado) y asignar el valor 100 % a esa base antes de operar."
+        },
+        {
+          "texto": "Error: sumar porcentajes con bases distintas",
+          "explicacion": "Otro error consiste en sumar o restar porcentajes que tienen bases diferentes. Un recargo del 30 % sobre el costo seguido de un descuento del 10 % sobre el precio fijado no produce una ganancia del 20 % del costo: con costo 100 el precio fijado es 130, el precio de venta es 117 y la ganancia es 17. Solo pueden combinarse directamente los porcentajes calculados sobre una misma base. La solución es convertir cada porcentaje en un factor o trabajar con una cantidad concreta, usualmente 100."
+        },
+        {
+          "texto": "Error: olvidar los gastos de la operación",
+          "explicacion": "Un tercer error es ignorar los gastos o contarlos dos veces. Si el enunciado menciona gastos de traslado, de almacenamiento u otros, la ganancia que queda al vendedor es la ganancia neta, menor que la bruta. Si el costo ya los incluía y además se restan de la ganancia bruta, se produce una doble deducción que subestima la ganancia. Es recomendable fijar al inicio si el precio de costo dado es solo el de compra o es el costo total, y mantener ese criterio en todo el problema."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "«Liber Abaci» (1202) trata precios, trueque y ganancias",
+          "explicacion": "Leonardo de Pisa, conocido como Fibonacci, matemático italiano, publicó en 1202 el Liber Abaci, tratado que difundió en Europa occidental la numeración indoarábiga y la aritmética que se practicaba en el comercio del Mediterráneo. Entre sus capítulos figuran problemas sobre el cálculo del precio de las mercancías, el trueque y la ganancia, lo que muestra que estas relaciones forman parte de la aritmética práctica desde la Edad Media. Su resolución se apoyaba en proporciones y en la regla de tres (se estudia en el tema 55, Regla de tres simple)."
+        },
+        {
+          "texto": "«Summa» de Luca Pacioli (1494) incluye aritmética mercantil",
+          "explicacion": "Luca Pacioli, fraile franciscano y matemático italiano, publicó en Venecia en 1494 la Summa de arithmetica, geometria, proportioni et proportionalita, enciclopedia matemática de su tiempo. Además de aritmética y geometría, la obra contiene una sección dedicada a la contabilidad por partida doble, que organiza el registro de las operaciones de compra y venta de los comerciantes. Por esa razón se considera una fuente histórica importante para el estudio de las operaciones comerciales y de los cálculos de costo, venta y ganancia."
+        }
+      ]
+    }
+  ]
+}

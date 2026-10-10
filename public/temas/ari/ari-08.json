@@ -1,0 +1,113 @@
+{
+  "curso": "Aritmética",
+  "tema": "Conjuntos especiales",
+  "glosario": {
+    "conjunto vacío": "Conjunto que carece de elementos",
+    "conjunto unitario": "Conjunto con exactamente un elemento",
+    "conjunto universal": "Conjunto que contiene todos los elementos considerados",
+    "conjunto finito": "Conjunto con una cantidad limitada de elementos",
+    "conjunto infinito": "Conjunto sin una cantidad finita de elementos",
+    "conjunto de conjuntos": "Colección cuyos elementos también son conjuntos",
+    "subconjunto": "Conjunto cuyos elementos están todos en otro"
+  },
+  "theory": [
+    {
+      "titulo": "Conjunto vacío",
+      "puntos": [
+        {
+          "texto": "El «conjunto vacío» no tiene ningún elemento.",
+          "explicacion": "El conjunto vacío es la colección que no contiene ningún objeto. Se representa con el símbolo $\\emptyset$ o, en algunos textos, con un par de llaves sin nada dentro, aunque esta última notación se usa menos. Aunque no tenga elementos, el conjunto vacío es un objeto matemático bien definido, porque es posible decidir con certeza que ningún objeto le pertenece. Su existencia es necesaria para que las operaciones entre conjuntos siempre tengan resultado, como se verá al estudiar la intersección en el tema 13."
+        },
+        {
+          "texto": "Solo existe un conjunto vacío, porque todos los vacíos son iguales.",
+          "explicacion": "Si dos conjuntos no tienen elementos, cada uno de ellos está contenido en el otro, porque no hay ningún elemento que incumpla la condición de inclusión. Por la definición de igualdad de conjuntos, ambos son iguales. Por tanto, cualquier conjunto sin elementos es el mismo conjunto vacío, y no hay varios conjuntos vacíos distintos. Esta conclusión depende de que la igualdad se defina por sus elementos, criterio que se formaliza en el tema 11."
+        },
+        {
+          "texto": "Un conjunto puede ser vacío por la propiedad que lo define.",
+          "explicacion": "Algunos conjuntos se describen mediante una propiedad que ningún objeto cumple. Por ejemplo, el conjunto de los números pares primos mayores que dos se escribe como $\\{x \\mid x \\text{ es un número par primo mayor que } 2\\}$. Como el único número primo par es el 2, la propiedad no se cumple para ningún número mayor que dos, y el conjunto es vacío. Reconocer estos casos evita errores al trabajar con descripciones por comprensión."
+        },
+        {
+          "texto": "El conjunto vacío es subconjunto de cualquier conjunto.",
+          "explicacion": "El conjunto vacío cumple la definición de subconjunto de cualquier conjunto dado, porque no tiene ningún elemento que pueda incumplir la condición. Esta propiedad, que suele generar dudas, se estudia con detalle en la relación de inclusión del tema 11. Su uso es frecuente en demostraciones, porque permite asegurar que ciertos casos son válidos sin necesidad de verificar elementos concretos."
+        },
+        {
+          "texto": "El conjunto $\\{\\emptyset\\}$ no está vacío, porque contiene un elemento.",
+          "explicacion": "El conjunto $\\{\\emptyset\\}$ tiene exactamente un elemento, que es el conjunto vacío. Aunque el vacío no tenga elementos, la colección que lo contiene sí tiene uno, por lo que no es un conjunto vacío. Esta distinción es fundamental para no confundir un conjunto con el conjunto que lo tiene como único elemento, y se retoma en el tema 12, al estudiar el conjunto potencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto unitario",
+      "puntos": [
+        {
+          "texto": "El «conjunto unitario» tiene exactamente un elemento.",
+          "explicacion": "Un conjunto unitario es el que contiene un único elemento, como el conjunto formado solo por el número 5, que se escribe $\\{5\\}$. Su definición exige que la cantidad de elementos sea exactamente uno, lo que lo distingue tanto del conjunto vacío como de los conjuntos con dos o más elementos. La cantidad de elementos de un conjunto se estudia con detalle en la cardinalidad del tema 10."
+        },
+        {
+          "texto": "Un conjunto unitario no es igual a su único elemento.",
+          "explicacion": "El número 5 es un objeto, mientras que $\\{5\\}$ es el conjunto que tiene a 5 como elemento. Confundir ambos conceptos produce errores en todos los temas posteriores, porque las operaciones y las relaciones se aplican de manera diferente a un objeto y a un conjunto. La relación entre un elemento y el conjunto que lo contiene se estudia en el tema 09, relación de pertenencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto universal",
+      "puntos": [
+        {
+          "texto": "El «conjunto universal» contiene todos los elementos considerados.",
+          "explicacion": "El conjunto universal, habitualmente representado con la letra U, es el conjunto que reúne todos los objetos que se consideran en un problema concreto. Todos los demás conjuntos del problema se tratan como subconjuntos de U. Su uso permite definir operaciones como el complemento, que se estudia en el tema 13, porque sin un universo de referencia no es posible determinar qué elementos quedan fuera de un conjunto."
+        },
+        {
+          "texto": "El conjunto universal depende del contexto en que se trabaja.",
+          "explicacion": "No existe un único conjunto universal para todas las situaciones. Si el problema trata de números pares, el universo puede ser el conjunto de los números naturales; si trata de figuras geométricas del plano, el universo serán las figuras consideradas. Por eso el universo debe declararse en cada problema, ya que el mismo conjunto puede tener complementos distintos según el universo elegido."
+        },
+        {
+          "texto": "Todo conjunto considerado es subconjunto del universal.",
+          "explicacion": "Si U es el conjunto universal de un contexto, cualquier conjunto A de ese contexto cumple que todos sus elementos pertenecen a U, por lo que A está incluido en U. Esta relación de inclusión se estudia en el tema 11. Esta propiedad permite representar gráficamente todos los conjuntos dentro de un mismo rectángulo, como se hace en los diagramas del tema 15."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjuntos finitos e infinitos",
+      "puntos": [
+        {
+          "texto": "Un «conjunto finito» tiene una cantidad limitada de elementos.",
+          "explicacion": "Un conjunto es finito cuando sus elementos pueden contarse y el proceso de conteo termina en un número natural. Por ejemplo, el conjunto de las vocales del alfabeto castellano tiene cinco elementos. La cantidad exacta de elementos de un conjunto finito se llama cardinal, y su cálculo se desarrolla en el tema 10. El carácter finito de un conjunto depende de que exista una cantidad concreta de elementos, no de cuán grande sea."
+        },
+        {
+          "texto": "Un «conjunto infinito» no tiene una cantidad finita de elementos.",
+          "explicacion": "Un conjunto es infinito cuando, por más elementos que se cuenten, siempre queda otro por contar. El conjunto de los números naturales es el ejemplo clásico, porque después de cualquier número natural existe otro mayor. Los conjuntos infinitos no pueden describirse listando todos sus elementos, por lo que se describen por comprensión. Su comparación de tamaños, que es un problema más profundo, se estudia en el tema 10."
+        },
+        {
+          "texto": "El conjunto vacío es un conjunto finito.",
+          "explicacion": "El conjunto vacío tiene cero elementos, que es una cantidad finita, por lo que cumple la definición de conjunto finito. Esta observación evita la confusión frecuente de pensar que los conjuntos especiales forman una categoría aparte. Su cardinal es cero, como se verá en el tema 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto de conjuntos",
+      "puntos": [
+        {
+          "texto": "Un «conjunto de conjuntos» tiene conjuntos como elementos.",
+          "explicacion": "Un conjunto de conjuntos es una colección cuyos elementos son, a su vez, conjuntos. Por ejemplo, la colección formada por el conjunto $\\{1\\}$ y el conjunto $\\{2, 3\\}$ es un conjunto de conjuntos. Esta estructura permite agrupar conjuntos bajo una misma colección, y se usa con frecuencia en la teoría de conjuntos. La relación entre un conjunto y sus elementos cuando estos son conjuntos se estudia en el tema 09."
+        },
+        {
+          "texto": "El conjunto $\\{\\{1\\}, \\{2, 3\\}\\}$ tiene dos elementos.",
+          "explicacion": "La colección $\\{\\{1\\}, \\{2, 3\\}\\}$ contiene dos objetos distintos, que son los conjuntos $\\{1\\}$ y $\\{2, 3\\}$, así que su cardinal es dos. Aunque cada uno de sus elementos contenga varios números, lo que se cuenta son los elementos del conjunto exterior. Esta distinción de niveles es clave para contar correctamente, y el cálculo de la cardinalidad se desarrolla en el tema 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir $\\emptyset$ con $\\{\\emptyset\\}$ es un error frecuente.",
+          "explicacion": "El símbolo $\\emptyset$ representa el conjunto sin elementos, mientras que $\\{\\emptyset\\}$ representa un conjunto con un elemento. Confundirlos cambia la cantidad de elementos y, por tanto, el resultado de cualquier conteo. La regla práctica es verificar siempre si dentro de las llaves aparece algún objeto, porque la presencia del vacío como elemento no lo convierte en vacío."
+        },
+        {
+          "texto": "Llamar «infinito» a un conjunto muy grande es un error conceptual.",
+          "explicacion": "Un conjunto muy grande, como el de los granos de arena de una playa, sigue siendo finito, aunque su cantidad sea difícil de calcular. Un conjunto infinito es aquel que no tiene una cantidad finita de elementos, sin importar cuán grande sea su cardinal. La diferencia es de naturaleza, no de tamaño, y la confusión entre ambos conceptos lleva a errores al clasificar un conjunto."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "curso": "Aritmética",
+  "tema": "División por defecto y por exceso",
+  "glosario": {
+    "división por defecto": "División cuyo cociente es menor que el exacto",
+    "división por exceso": "División cuyo cociente es mayor que el exacto",
+    "cociente por defecto": "Mayor entero con producto no superior al dividendo",
+    "cociente por exceso": "Menor entero con producto no inferior al dividendo",
+    "residuo por defecto": "Lo que sobra al dividir por defecto",
+    "residuo por exceso": "Lo que falta para el múltiplo siguiente",
+    "división inexacta": "División con residuo distinto de cero",
+    "parte entera": "Mayor entero que no supera al número",
+    "función techo": "Menor entero no menor que el número",
+    "múltiplo": "Resultado de multiplicar por un entero",
+    "resto mínimo": "El menor de los dos residuos"
+  },
+  "theory": [
+    {
+      "titulo": "Idea general",
+      "puntos": [
+        {
+          "texto": "Toda división inexacta admite dos aproximaciones: por defecto y por exceso",
+          "explicacion": "Cuando el dividendo $D$ no es múltiplo del divisor $d$, el valor exacto de $D \\div d$ no es entero y queda situado entre dos enteros consecutivos. Es posible aproximarlo por el entero menor, que da la división por defecto, o por el entero mayor, que da la división por exceso. Ambas expresiones parten del algoritmo de la división del tema 22 y solo tienen sentido distinto cuando el residuo no es cero."
+        }
+      ]
+    },
+    {
+      "titulo": "División por defecto",
+      "puntos": [
+        {
+          "texto": "«División por defecto»: $D = d \\cdot q_d + r_d$",
+          "explicacion": "La división por defecto es la expresión que se obtiene aplicando el algoritmo de la división con $0 < r_d < d$ cuando la división es inexacta. El subíndice $d$ en $q_d$ y $r_d$ recuerda que se trata del cociente y del residuo por defecto, y no debe confundirse con el divisor $d$. Es la división que se efectúa habitualmente a mano."
+        },
+        {
+          "texto": "«Cociente por defecto»: mayor $q$ con $dq$ no mayor que $D$",
+          "explicacion": "El cociente por defecto es el mayor número de grupos completos de tamaño $d$ que caben en $D$. Es menor que el valor exacto de la división: $q_d < D \\div d$ cuando la división es inexacta. Para $D = 347$ y $d = 12$ es $q_d = 28$, porque $12 \\cdot 28 = 336 \\le 347$ y $12 \\cdot 29 = 348 > 347$."
+        },
+        {
+          "texto": "«Residuo por defecto» $r_d$: lo que sobra",
+          "explicacion": "Es la parte del dividendo que no alcanza a formar un grupo completo y se obtiene como $r_d = D - d \\cdot q_d$. En la división inexacta cumple $1 \\le r_d \\le d - 1$. Indica cuántas unidades hay que restar a $D$ para obtener un múltiplo del divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "División por exceso",
+      "puntos": [
+        {
+          "texto": "«División por exceso»: $D = d \\cdot q_e - r_e$",
+          "explicacion": "La división por exceso expresa al dividendo como un múltiplo del divisor menos una cantidad. Se llama por exceso porque el producto $d \\cdot q_e$ supera al dividendo. El subíndice $e$ en $q_e$ y $r_e$ distingue estas cantidades de las obtenidas por defecto. En la división inexacta cumple $0 < r_e < d$."
+        },
+        {
+          "texto": "«Cociente por exceso»: menor $q$ con $dq$ no menor que $D$",
+          "explicacion": "El cociente por exceso es el menor número de grupos de tamaño $d$ que alcanzan o superan al dividendo. Es mayor que el valor exacto: $q_e > D \\div d$. Para $347 \\div 12$ es $q_e = 29$, pues $12 \\cdot 29 = 348 \\ge 347$ y $12 \\cdot 28 = 336 < 347$."
+        },
+        {
+          "texto": "«Residuo por exceso» $r_e$: lo que falta para el múltiplo siguiente",
+          "explicacion": "Es la cantidad que debe sumarse a $D$ para obtener el siguiente múltiplo del divisor, de modo que $D + r_e = d \\cdot q_e$. Para $347 \\div 12$ vale $r_e = 348 - 347 = 1$. Mientras el residuo por defecto mide lo que sobra, el residuo por exceso mide lo que falta."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones",
+      "puntos": [
+        {
+          "texto": "Cociente por exceso $= q_d + 1$",
+          "explicacion": "Como los múltiplos consecutivos del divisor son $d \\cdot q_d$ y $d \\cdot (q_d + 1)$ y el dividendo queda entre ambos, el menor múltiplo no inferior a $D$ corresponde a $q_d + 1$. Entonces $q_e = q_d + 1$ siempre que la división sea inexacta."
+        },
+        {
+          "texto": "Suma de residuos $r_d + r_e = d$",
+          "explicacion": "De $D = d \\cdot q_d + r_d$ y $D = d \\cdot (q_d + 1) - r_e$ se obtiene, al igualar, $r_d + r_e = d$. Cada residuo es el complemento del otro respecto del divisor, idea análoga al complemento aritmético del tema 20, que completa respecto de una potencia de diez. Para $347 \\div 12$: $11 + 1 = 12$."
+        },
+        {
+          "texto": "Residuos extremos: si uno es $d - 1$, el otro es 1",
+          "explicacion": "Como ambos residuos son enteros positivos que suman $d$, el mayor valor posible de uno es $d - 1$, caso en que el otro vale 1. Así, el residuo por exceso es mínimo cuando el residuo por defecto es máximo, como en la división de 347 entre 12, y viceversa."
+        },
+        {
+          "texto": "Residuos iguales ⇒ el divisor es par",
+          "explicacion": "Si $r_d = r_e$, entonces $2 r_d = d$, de modo que $d$ es par y cada residuo es $d \\div 2$. Por ejemplo, al dividir 17 entre 6, los residuos son $r_d = 5$ y $r_e = 1$; en cambio, al dividir 15 entre 6 resulta $r_d = 3$ y $r_e = 3$, porque 6 es par y 15 queda exactamente a la mitad entre 12 y 18."
+        },
+        {
+          "texto": "«Resto mínimo»: el menor de los dos residuos",
+          "explicacion": "Entre $r_d$ y $r_e$ el menor no supera $d \\div 2$, porque su suma es $d$. Ese valor mínimo indica cuál de los dos múltiplos del divisor está más cerca del dividendo: si $r_d < r_e$ el múltiplo inferior es el más próximo, y si $r_e < r_d$ lo es el superior."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación decimal",
+      "puntos": [
+        {
+          "texto": "$q_d < D \\div d < q_e$: los cocientes acotan al exacto",
+          "explicacion": "El valor exacto de una división inexacta queda entre sus cocientes por defecto y por exceso, que son enteros consecutivos. Para $347 \\div 12 = 28{,}91\\ldots$ se cumple $28 < 28{,}91\\ldots < 29$. El cociente exacto puede escribirse como $q_d + r_d \\div d$."
+        },
+        {
+          "texto": "Con parte entera y «función techo»: $q_d = \\lfloor D \\div d \\rfloor$, $q_e = \\lceil D \\div d \\rceil$",
+          "explicacion": "La parte entera de un número real es el mayor entero que no lo supera, y se denota con $\\lfloor \\cdot \\rfloor$; la función techo es el menor entero que no es menor que el número, y se denota con $\\lceil \\cdot \\rceil$. El cociente por defecto es la parte entera de $D \\div d$ y el cociente por exceso es el techo de $D \\div d$. En una división exacta ambos valores coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "División exacta",
+      "puntos": [
+        {
+          "texto": "En la división exacta no hay diferencia entre defecto y exceso",
+          "explicacion": "Si el dividendo es múltiplo del divisor, el residuo es cero y los cocientes por defecto y por exceso coinciden, de modo que $q_e = q_d$ y $r_d = r_e = 0$. La relación $q_e = q_d + 1$ solo vale para divisiones inexactas. Por ello los conceptos de este tema se aplican a divisiones con residuo distinto de cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Dividendo negativo",
+      "puntos": [
+        {
+          "texto": "Con $D < 0$ las relaciones se mantienen",
+          "explicacion": "Para $-17 \\div 5$ la división por defecto es $-17 = 5 \\cdot (-4) + 3$, con $q_d = -4$ y $r_d = 3$. La división por exceso es $-17 = 5 \\cdot (-3) - 2$, con $q_e = -3$ y $r_e = 2$. Se cumplen $q_e = q_d + 1$ y $r_d + r_e = 5$. Aquí el cociente por defecto es el menor, de modo que resulta más negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos",
+      "puntos": [
+        {
+          "texto": "Ejemplo: $1000 \\div 7$",
+          "explicacion": "Como $7 \\cdot 142 = 994$, la división por defecto tiene $q_d = 142$ y $r_d = 6$. Como $7 \\cdot 143 = 1001$, la división por exceso tiene $q_e = 143$ y $r_e = 1$, pues $1001 - 1000 = 1$. Se comprueba que $142 + 1 = 143$ y $6 + 1 = 7$."
+        },
+        {
+          "texto": "Ejemplo: $347 \\div 12$",
+          "explicacion": "Por defecto, $347 = 12 \\cdot 28 + 11$; por exceso, $347 = 12 \\cdot 29 - 1$. Los cocientes son consecutivos, 28 y 29, y los residuos suman 12. El valor decimal 28,91... se acerca más al cociente por exceso, lo que coincide con que el residuo por exceso, 1, sea el menor."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicación al dividendo",
+      "puntos": [
+        {
+          "texto": "$D + r_e$ es múltiplo de $d$",
+          "explicacion": "Sumar al dividendo el residuo por exceso produce el siguiente múltiplo del divisor, $d \\cdot q_e$. Esta propiedad se emplea para hallar cuánto falta para alcanzar un múltiplo y se vincula con la divisibilidad del tema 24."
+        },
+        {
+          "texto": "$D - r_d$ es múltiplo de $d$",
+          "explicacion": "Restar al dividendo el residuo por defecto produce el múltiplo del divisor inmediatamente anterior, $d \\cdot q_d$. Así, para hallar el mayor múltiplo de $d$ que no supera a $D$, basta restar a $D$ el residuo por defecto."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Cociente por exceso ≠ cociente redondeado",
+          "explicacion": "Redondear el cociente decimal puede dar el valor por defecto o el valor por exceso según qué parte fraccionaria predomine, mientras que el cociente por exceso siempre es el entero superior. Por ejemplo, $1000 \\div 7 = 142{,}85\\ldots$ se redondea a 143, que coincide con el cociente por exceso, pero $1002 \\div 7 = 143{,}14\\ldots$ se redondea a 143 y su cociente por exceso es 144."
+        },
+        {
+          "texto": "$D = d \\cdot q_e + r_e$ ≠ división por exceso",
+          "explicacion": "En la división por exceso el residuo se resta, no se suma: $D = d \\cdot q_e - r_e$. Sumarlo daría un valor mayor que $d \\cdot q_e$, que ya supera al dividendo. Comprobar siempre la igualdad con el signo menos evita este error."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "curso": "Aritmética",
+  "tema": "Generatriz",
+  "glosario": {
+    "fracción generatriz": "Fracción irreducible que origina un decimal",
+    "decimal exacto": "Decimal con una cantidad finita de cifras",
+    "decimal periódico puro": "Cifras se repiten desde el primer decimal",
+    "decimal periódico mixto": "Antes de repetirse hay cifras no periódicas",
+    "período": "Grupo de cifras que se repite indefinidamente",
+    "parte no periódica": "Cifras decimales antes del período",
+    "parte entera": "Cifras a la izquierda del punto decimal",
+    "fracción irreducible": "Fracción cuyos términos son primos entre sí",
+    "máximo común divisor": "Mayor de los divisores comunes de varios números"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "La «fracción generatriz» de un decimal es la fracción que lo origina",
+          "explicacion": "La fracción generatriz de un número decimal es la fracción que, al dividir su numerador entre su denominador, produce ese decimal. Se llama generatriz porque genera el decimal. Al buscarla se obtiene la fracción irreducible. Es el proceso inverso al estudiado en el tema 39 (Representación decimal de una fracción), donde se pasa de la fracción al decimal."
+        },
+        {
+          "texto": "Solo los decimales exactos y periódicos tienen fracción generatriz",
+          "explicacion": "Un decimal tiene fracción generatriz únicamente si es exacto, periódico puro o periódico mixto. Los decimales infinitos sin período, como la raíz cuadrada de dos, no pueden escribirse como cociente de enteros y, por tanto, carecen de generatriz. Esto muestra que los racionales son precisamente los números con representación decimal exacta o periódica."
+        },
+        {
+          "texto": "Los tres casos: decimal exacto, periódico puro y periódico mixto",
+          "explicacion": "Según el tipo de decimal, el procedimiento para hallar la generatriz cambia. En el decimal exacto, el denominador es una potencia de diez. En el periódico puro, el denominador está formado por nueves. En el periódico mixto, el denominador está formado por nueves seguidos de ceros. Cada caso se estudia por separado en este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal exacto",
+      "puntos": [
+        {
+          "texto": "«Decimal exacto» ⇒ cifras decimales sobre $10^{n}$, con $n$ cifras",
+          "explicacion": "Para hallar la generatriz de un decimal exacto se escribe como numerador el número sin el separador decimal y como denominador la unidad seguida de tantos ceros como cifras decimales tenga el número. Luego se simplifica la fracción. Se justifica porque cada cifra decimal representa una fracción de denominador potencia de diez, y el conjunto equivale a una sola fracción con la mayor de esas potencias."
+        },
+        {
+          "texto": "Ejemplo: $0.75$ ⇒ $\\frac{75}{100}$ ⇒ $\\frac{3}{4}$",
+          "explicacion": "El número cero punto setenta y cinco tiene dos cifras decimales, de modo que su fracción es setenta y cinco centésimos. Al dividir numerador y denominador entre veinticinco, que es su máximo común divisor, se obtiene tres cuartos, que es la generatriz irreducible. Se puede comprobar dividiendo tres entre cuatro, que devuelve el decimal de partida, y confirma que la simplificación no cambió el valor de la fracción, solo su escritura."
+        },
+        {
+          "texto": "Ejemplo: $2.5$ ⇒ $\\frac{25}{10}$ ⇒ $\\frac{5}{2}$",
+          "explicacion": "El número dos punto cinco tiene una cifra decimal, así que se escribe como veinticinco décimos. Al simplificar entre cinco se obtiene cinco medios, que como número mixto es dos y un medio. La parte entera queda incluida en el numerador al escribir el número sin separador."
+        },
+        {
+          "texto": "Ejemplo: $0.125$ ⇒ $\\frac{125}{1000}$ ⇒ $\\frac{1}{8}$",
+          "explicacion": "El número cero punto ciento veinticinco tiene tres cifras decimales, de modo que se escribe como ciento veinticinco milésimos. Al dividir ambos términos entre ciento veinticinco, que es su máximo común divisor, se obtiene un octavo. Con tres cifras decimales el denominador es mil, y como mil tiene solo los factores dos y cinco, la fracción simplificada conserva un denominador sin otros primos, rasgo propio de todos los decimales exactos."
+        }
+      ]
+    },
+    {
+      "titulo": "Periódico puro",
+      "puntos": [
+        {
+          "texto": "«Decimal periódico puro» ⇒ período sobre tantos nueves como cifras tiene",
+          "explicacion": "Si la parte entera es cero, la generatriz es una fracción cuyo numerador es el período y cuyo denominador es un número formado por tantos nueves como cifras tiene el período. Luego se simplifica. Si hay parte entera, se suma a la fracción obtenida, o se aplica la regla con el número completo y se resta la parte entera en el numerador."
+        },
+        {
+          "texto": "Demostración: $x$ = $0.\\overline{ab}$ ⇒ cien veces $x$ menos $x$ vale $ab$",
+          "explicacion": "Si $x$ es cero con período de dos cifras, al multiplicar por cien el período pasa a la parte entera y se obtiene un número con la misma parte decimal que $x$. Al restar $x$ de cien veces $x$ desaparece la parte decimal, y queda noventa y nueve veces $x$ igual al período. Por eso $x$ es el período dividido entre noventa y nueve."
+        },
+        {
+          "texto": "Ejemplo: $0.\\overline{3}$ ⇒ $\\frac{3}{9}$ ⇒ $\\frac{1}{3}$",
+          "explicacion": "El período tiene una cifra, el tres, de modo que el denominador es nueve y la fracción es tres novenos. Al simplificar entre tres se obtiene un tercio. Es el decimal periódico más conocido. La demostración de la regla muestra que nueve veces la cantidad es tres, de modo que la cantidad vale un tercio, y la división de uno entre tres reproduce el decimal de partida, con la cifra tres repetida sin fin."
+        },
+        {
+          "texto": "Ejemplo: $0.\\overline{45}$ ⇒ $\\frac{45}{99}$ ⇒ $\\frac{5}{11}$",
+          "explicacion": "El período tiene dos cifras, el cuarenta y cinco, de modo que el denominador es noventa y nueve y la fracción es cuarenta y cinco sobre noventa y nueve. Al dividir entre nueve, que es el máximo común divisor, se obtiene cinco onceavos. La comprobación consiste en dividir cinco entre once, que da cero punto cuarenta y cinco repetido, igual al decimal de partida, y muestra que cuando el denominador tiene dos nueves el período tiene dos cifras."
+        },
+        {
+          "texto": "Ejemplo: $2.\\overline{3}$ ⇒ $\\frac{21}{9}$ ⇒ $\\frac{7}{3}$",
+          "explicacion": "Con parte entera dos y período tres, el número completo menos la parte entera da veintitrés menos dos, que es veintiuno, y el denominador es nueve. La fracción es veintiún novenos, que al simplificar entre tres da siete tercios. Equivale a dos más un tercio."
+        },
+        {
+          "texto": "Ejemplo: $0.\\overline{9}$ ⇒ $\\frac{9}{9}$ vale $1$",
+          "explicacion": "Al aplicar la regla, la fracción es nueve novenos, que es igual a uno. Por eso cero punto nueve periódico es otra escritura del número uno, y no un número menor. Es un resultado consistente con la demostración, que muestra que noventa y nueve veces $x$ es nueve, y por tanto $x$ vale uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Periódico mixto",
+      "puntos": [
+        {
+          "texto": "«Decimal periódico mixto» ⇒ numerador: todo menos la «parte no periódica»",
+          "explicacion": "Para el decimal periódico mixto con parte entera cero, el numerador de la generatriz es el número formado por la parte no periódica seguida del período, menos la parte no periódica. El denominador tiene tantos nueves como cifras tiene el período, seguidos de tantos ceros como cifras tiene la parte no periódica. Luego se simplifica."
+        },
+        {
+          "texto": "Demostración: $x$ = $0.1\\overline{6}$ ⇒ cien veces $x$ menos diez veces $x$",
+          "explicacion": "Si $x$ es cero con una cifra no periódica y un período de una cifra, diez veces $x$ deja la parte no periódica antes del separador y cien veces $x$ deja también el período. Al restar diez veces $x$ de cien veces $x$ desaparece la parte decimal y queda noventa veces $x$ igual a dieciséis menos uno. Por eso $x$ es quince entre noventa."
+        },
+        {
+          "texto": "Ejemplo: $0.1\\overline{6}$ ⇒ $\\frac{16-1}{90}$ ⇒ $\\frac{1}{6}$",
+          "explicacion": "La parte no periódica es uno y el período es seis. El numerador es dieciséis menos uno, que es quince, y el denominador es noventa, formado por un nueve y un cero. Al simplificar quince sobre noventa entre quince se obtiene un sexto. Al dividir uno entre seis se recupera el decimal de partida, con el uno como cifra no periódica y el seis como período, lo cual confirma el procedimiento y el conteo de nueves y ceros del denominador."
+        },
+        {
+          "texto": "Ejemplo: $0.2\\overline{45}$ ⇒ $\\frac{245-2}{990}$ ⇒ $\\frac{27}{110}$",
+          "explicacion": "La parte no periódica es dos y el período es cuarenta y cinco. El numerador es doscientos cuarenta y cinco menos dos, que es doscientos cuarenta y tres, y el denominador es novecientos noventa, con dos nueves y un cero. Al dividir entre nueve se obtiene veintisiete sobre ciento diez."
+        },
+        {
+          "texto": "Ejemplo: $0.0\\overline{3}$ ⇒ $\\frac{3-0}{90}$ ⇒ $\\frac{1}{30}$",
+          "explicacion": "La parte no periódica es cero y el período es tres. El numerador es tres menos cero, que es tres, y el denominador es noventa. Al simplificar entre tres se obtiene un treintavo. Un cero en la parte no periódica cuenta como cifra al fijar los ceros del denominador."
+        },
+        {
+          "texto": "Ejemplo: $3.1\\overline{45}$ ⇒ $\\frac{3145-31}{990}$ ⇒ $\\frac{173}{55}$",
+          "explicacion": "Con parte entera tres, parte no periódica uno y período cuarenta y cinco, se toma el número completo sin separador hasta el período, que es tres mil ciento cuarenta y cinco, menos el número sin período, que es treinta y uno. La diferencia es tres mil ciento catorce y el denominador novecientos noventa. Al dividir entre dieciocho se obtiene ciento setenta y tres sobre cincuenta y cinco."
+        }
+      ]
+    },
+    {
+      "titulo": "Comprobación",
+      "puntos": [
+        {
+          "texto": "Se comprueba dividiendo la generatriz ⇒ decimal original",
+          "explicacion": "Para verificar el resultado se divide el numerador entre el denominador de la fracción hallada y se compara con el decimal dado. Por ejemplo, veintisiete entre ciento diez da cero punto dos cuatro cinco cuatro cinco, que coincide con el decimal original. Es un método seguro para detectar errores en el conteo de nueves o ceros."
+        },
+        {
+          "texto": "La generatriz ⇒ fracción simplificada con el «máximo común divisor»",
+          "explicacion": "Al terminar, se simplifica la fracción dividiendo numerador y denominador entre su máximo común divisor, que se calcula con los métodos de los temas 33 y 34. Así se obtiene la generatriz en su forma irreducible. Si no se simplifica, la fracción sigue siendo correcta, pero no es la forma canónica."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: poner nueves en lugar de ceros o al revés",
+          "explicacion": "En el denominador del periódico mixto, los nueves corresponden al período y los ceros a la parte no periódica, y en ese orden. Invertirlos cambia el valor. Por ejemplo, para cero punto uno seis periódico, el denominador es noventa y no nueve cero. Conviene contar las cifras de cada parte antes de escribir el denominador."
+        },
+        {
+          "texto": "Error: restar el número completo en lugar de la parte no periódica",
+          "explicacion": "En el numerador del periódico mixto se resta solo la parte no periódica, y no el número completo ni el período. Si el número tiene parte entera, esta se incluye en ambos términos de la resta, como se ve en tres punto uno cuarenta y cinco periódico. Restar otra cantidad produce una fracción distinta."
+        },
+        {
+          "texto": "Error: olvidar simplificar el resultado",
+          "explicacion": "La generatriz se presenta como fracción irreducible. Por ejemplo, quince sobre noventa es correcto pero se debe simplificar a un sexto. Se verifica con el máximo común divisor del numerador y del denominador: si es distinto de uno, aún se puede dividir ambos términos entre él. Dejar la fracción sin simplificar no cambia su valor, pero no es la forma que piden los problemas."
+        }
+      ]
+    }
+  ]
+}

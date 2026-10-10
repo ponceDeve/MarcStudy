@@ -14,6 +14,7 @@
   opacity: 1;
   visibility: visible;
   transition: opacity .25s linear, visibility 0s linear 0s;
+
   &.is-closed {
     opacity: 0;
     visibility: hidden;
@@ -21,6 +22,7 @@
     transition: opacity .25s linear, visibility 0s linear .25s;
   }
 }
+
 /* ============================================================
    SEARCH BOX
    ============================================================ */
@@ -29,23 +31,28 @@
   width: 100%;
   max-width: 42rem;
   margin-top: 100px;
+
   &:has(.search-results) {
     .search-input-row {
       border-radius: 30px 30px 0 0;
     }
+
     .search-input-lupa {
       border-radius: 50% 50% 0 50%;
     }
   }
+
   &:not(:has(.search-results)) {
     .search-input-row {
       border-radius: 30px;
     }
+
     .search-input-lupa {
       border-radius: 50%;
     }
   }
 }
+
 /* ============================================================
    SALUDO
    ============================================================ */
@@ -59,10 +66,12 @@
   font-size: clamp(26px, 6vw, 38px);
   font-weight: 800;
   color: var(--ink-on-primary);
+
   &__nombre {
     font-weight: 800;
   }
 }
+
 /* ============================================================
    INPUT ROW
    ============================================================ */
@@ -77,14 +86,17 @@
   border-radius: 30px;
   z-index: 2;
   overflow: hidden;
+
   &:focus-within {
     border-color: var(--border-strong);
     box-shadow: 0 0 0 2px rgba(0, 0, 0, .04);
   }
+
   &.has-query {
     border-radius: 30px 30px 0 0;
   }
 }
+
 /* ============================================================
    INPUT
    ============================================================ */
@@ -99,17 +111,21 @@
   padding: 14px 112px 14px 56px;
   font-family: var(--font-body);
   font-size: 16px;
+
   &:focus {
     outline: none;
     box-shadow: none;
   }
+
   &::placeholder {
     color: var(--ink-faint);
   }
+
   &::-webkit-search-cancel-button {
     display: none;
   }
 }
+
 /* ============================================================
    LUPA
    ============================================================ */
@@ -133,13 +149,16 @@
   z-index: 3;
   font: inherit;
   transition: background-color .15s linear, transform .1s linear;
+
   &:hover {
     background: var(--secondary-dark);
   }
+
   &:active {
     transform: scale(.96);
   }
 }
+
 /* ============================================================
    LUPA (BOTÓN, A LA IZQUIERDA DEL INPUT)
    ============================================================ */
@@ -161,18 +180,22 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   z-index: 4;
   transition: color .15s linear, transform .1s linear;
+
   i {
     color: inherit;
     font-size: 18px;
     line-height: 1;
   }
+
   &:hover {
     color: var(--primary);
   }
+
   &:active {
     transform: translateY(-50%) scale(.9);
   }
 }
+
 /* ============================================================
    BOTÓN LIMPIAR
    ============================================================ */
@@ -194,20 +217,24 @@
   cursor: url("/cursor_pointer.webp"), pointer !important;
   z-index: 4;
   transition: color .15s linear, transform .1s linear;
+
   i {
     color: inherit;
     font-size: 20px;
     line-height: 1;
   }
+
   &:hover {
     background: transparent;
     color: var(--danger);
   }
+
   &:active {
     background: transparent;
     transform: translateY(-50%) scale(.9);
   }
 }
+
 /* ============================================================
    RESULTADOS
    ============================================================ */
@@ -220,12 +247,14 @@
   text-transform: uppercase;
   letter-spacing: .04em;
 }
+
 .search-result-item__seccion {
   margin: 0 0 2px;
   color: var(--ink-faint);
   font-size: 12px;
   font-weight: 600;
 }
+
 .search-results {
   width: 100%;
   display: flex;
@@ -238,38 +267,48 @@
   border-top: none;
   border-radius: 0;
   box-shadow: none;
-  max-height: 400px;
+
+  /* Aprovecha el alto disponible debajo del buscador */
+  max-height: calc(100dvh - 200px);
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-bottom: var(--space-5);
+
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px;
   }
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     background: var(--primary);
     border-radius: var(--radius-full);
   }
+
   &::-webkit-scrollbar-thumb:hover {
     background: var(--primary-hover);
   }
+
   scrollbar-width: thin;
   scrollbar-color: var(--primary) transparent;
 }
+
 /* ============================================================
    GRUPO
    ============================================================ */
 .search-group {
   width: 100%;
   background: var(--surface);
+
   &:not(:first-child) {
     border-top: 1px solid var(--border);
   }
 }
+
 /* ============================================================
    FILA DEL CURSO
    ============================================================ */
@@ -282,10 +321,12 @@
   gap: var(--space-4);
   background: transparent;
   transition: background-color .15s linear;
+
   &.is-open {
     background-color: var(--primary-bg);
   }
 }
+
 /* ============================================================
    TEMAS DEL CURSO
    ============================================================ */
@@ -301,15 +342,18 @@
     opacity .2s ease,
     visibility .28s ease;
 }
+
 .search-group__temas.is-open {
   grid-template-rows: 1fr;
   height: auto;
   opacity: 1;
   visibility: visible;
 }
+
 .search-group__temas > * {
   min-height: 0;
 }
+
 /* ============================================================
    RESULTADO BASE
    ============================================================ */
@@ -327,13 +371,16 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
+
   &:focus {
     outline: none;
   }
+
   &:active {
     transform: translateX(1px);
   }
 }
+
 /* ============================================================
    CURSO
    ============================================================ */
@@ -355,6 +402,7 @@
   background: transparent;
   border: none;
   outline: none;
+
   .curso-title {
     display: block;
     width: auto;
@@ -367,23 +415,29 @@
     text-decoration: none;
     white-space: nowrap;
   }
+
   &:hover,
   &.is-focused {
     color: var(--primary);
   }
+
   &.is-open {
     color: var(--primary-dark);
   }
+
   &:focus-visible {
     background-color: var(--primary-bg);
   }
+
   &:active {
     transform: translateX(1px);
   }
+
   .search-match {
     background: transparent;
   }
 }
+
 /* ============================================================
    BOTÓN + / − DEL CURSO
    ============================================================ */
@@ -406,26 +460,32 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
+
   i {
     font-size: 20px;
     line-height: 1;
   }
+
   &:hover {
     background-color: var(--primary-bg);
     color: var(--primary);
   }
+
   &:focus-visible {
     background-color: var(--primary-bg);
     color: var(--primary);
     outline: none;
   }
+
   &:active {
     transform: scale(.92);
   }
+
   &.is-open {
     color: var(--primary);
   }
 }
+
 /* ============================================================
    TEMA
    ============================================================ */
@@ -441,19 +501,23 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
+
   &:hover,
   &.is-focused {
     background-color: rgba(0, 0, 0, .1);
     color: var(--ink);
   }
+
   &:focus-visible {
     background-color: rgba(0, 0, 0, .1);
     outline: none;
   }
+
   &:active {
     transform: translateX(1px);
   }
 }
+
 /* ============================================================
    TEXTO DEL TEMA
    ============================================================ */
@@ -467,16 +531,19 @@
   font-size: 20px;
   display: flex;
 }
+
 .search-topic-number {
   font-weight: 700;
   color: var(--ink-faint);
   margin-right: 4px;
 }
+
 .search-result-item__curso {
   font-size: 14px;
   color: var(--ink-soft);
   margin: 0;
 }
+
 /* ============================================================
    TÍTULO DE CURSO
    ============================================================ */
@@ -484,6 +551,7 @@
   display: block;
   width: auto;
 }
+
 /* ============================================================
    COINCIDENCIA
    ============================================================ */
@@ -491,9 +559,11 @@
   color: var(--accent);
   border-radius: 2px;
 }
+
 .search-result-item.is-curso .search-match {
   background: transparent;
 }
+
 /* ============================================================
    CARGANDO BÚSQUEDA SEMÁNTICA
    ============================================================ */
@@ -505,11 +575,13 @@
   color: var(--ink-soft);
   cursor: default;
   background: transparent;
+
   &:hover,
   &.is-focused {
     background: transparent;
     color: var(--ink-soft);
   }
+
   .search-result-item__tema {
     display: flex;
     align-items: center;
@@ -520,11 +592,13 @@
     line-height: 1;
     cursor: default !important;
   }
+
   .search-result-item__tema::before {
     content: "Buscando";
     font-size: 14px;
     font-weight: 500;
   }
+
   .search-result-item__tema::after {
     content: "";
     width: 5px;
@@ -538,6 +612,7 @@
     animation: search-dots-wave 1.2s ease-in-out infinite;
   }
 }
+
 @keyframes search-dots-wave {
   0%,
   100% {
@@ -546,24 +621,28 @@
       10px 0 currentColor,
       20px 0 currentColor;
   }
+
   15% {
     transform: translateY(-5px);
     box-shadow:
       10px 0 currentColor,
       20px 0 currentColor;
   }
+
   30% {
     transform: translateY(0);
     box-shadow:
       10px -5px currentColor,
       20px 0 currentColor;
   }
+
   45% {
     transform: translateY(0);
     box-shadow:
       10px 0 currentColor,
       20px -5px currentColor;
   }
+
   60% {
     transform: translateY(0);
     box-shadow:
@@ -571,6 +650,7 @@
       20px 0 currentColor;
   }
 }
+
 /* ============================================================
    SIN RESULTADOS
    ============================================================ */
@@ -586,6 +666,7 @@
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+
 .search-no-results {
   cursor: default;
   font-size: 40px;
@@ -593,12 +674,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:hover,
   &.is-focused {
     background: transparent;
     color: var(--ink-soft);
   }
 }
+
 /* ============================================================
    BUSCADOR INICIAL
    ============================================================ */
@@ -606,6 +689,7 @@
   position: relative;
   width: 100%;
   max-width: var(--content-max-width);
+
   .search-history,
   .search-empty {
     position: absolute;
@@ -616,14 +700,17 @@
     z-index: 20;
     box-shadow: var(--shadow-md);
   }
+
   .search-empty {
     border-top: none;
     border-radius: 0 0 30px 30px;
   }
 }
+
 .mi-estudio__intro > .home-search {
   display: none;
 }
+
 /* ============================================================
    RESULTADOS DEL BUSCADOR INICIAL
    ============================================================ */
@@ -643,6 +730,7 @@
   border-radius: 0 0 30px 30px;
   box-shadow: var(--shadow-md);
 }
+
 /* ============================================================
    BUSCADOR DE NIVELES
    ============================================================ */
@@ -650,6 +738,7 @@
   position: relative;
   width: 100%;
   margin-bottom: 24px;
+
   .home-search-input {
     width: 100%;
     box-sizing: border-box;
@@ -664,15 +753,18 @@
     transition:
       border-color .2s linear,
       box-shadow .2s linear;
+
     &::placeholder {
       color: var(--ink-faint);
     }
+
     &:focus {
       border-color: var(--secondary);
       outline: none;
     }
   }
 }
+
 /* ============================================================
    RESULTADOS DE NIVELES
    ============================================================ */
@@ -693,17 +785,21 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+
   &::-webkit-scrollbar {
     width: 6px;
   }
+
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: var(--border-strong);
     border-radius: var(--radius-full);
   }
 }
+
 /* ============================================================
    RESULTADO DE NIVEL
    ============================================================ */
@@ -721,18 +817,22 @@
     background-color .15s linear,
     color .15s linear,
     transform .1s linear;
+
   &:hover,
   &.is-focused {
     background-color: var(--surface-hover);
     color: var(--ink);
   }
+
   &:focus-visible {
     background-color: var(--surface-hover);
     outline: none;
   }
+
   &:active {
     transform: translateX(1px);
   }
+
   p {
     margin: 0;
     font-size: .95rem;
@@ -741,6 +841,7 @@
     align-items: center;
   }
 }
+
 /* ============================================================
    NÚMERO DEL NIVEL
    ============================================================ */
@@ -748,6 +849,7 @@
   opacity: .6;
   margin-right: 8px;
 }
+
 /* ============================================================
    VACÍO DE NIVELES
    ============================================================ */
@@ -755,6 +857,7 @@
   color: var(--ink-soft);
   margin-bottom: 20px;
 }
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -762,46 +865,57 @@
   .search-overlay {
     padding: 0 10px;
   }
+
   .search-box {
     margin-top: 70px;
     max-width: 100%;
   }
+
   .search-input {
     padding: 13px 104px 13px 48px;
     font-size: 15px;
   }
+
   .search-input-lupa-izq {
     left: 12px;
     width: 32px;
     height: 32px;
+
     i {
       font-size: 16px;
     }
   }
+
   .search-input-clear {
     right: 48px;
     width: 34px;
     height: 34px;
+
     i {
       font-size: 18px;
     }
   }
+
   .search-input-lupa {
     width: 52px;
   }
+
   .search-results {
-    max-height: min(400px, calc(100vh - 150px));
+    max-height: calc(100dvh - 150px);
     padding: var(--space-2);
   }
+
   .search-course-toggle {
     flex-basis: 26px;
     width: 26px;
   }
+
   .search-result-item.is-curso,
   .search-result-item.is-tema {
     padding-left: var(--space-2);
     padding-right: var(--space-2);
   }
+
   @media (max-width: 400px) {
     .search-result-item.is-curso,
     .search-result-item.is-tema {
@@ -810,11 +924,16 @@
     }
   }
 }
+
+/* ============================================================
+   PANTALLAS BAJAS
+   ============================================================ */
 @media (max-height: 600px) {
   .search-box {
     margin-top: 40px;
   }
+
   .search-results {
-    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 100px);
   }
 }

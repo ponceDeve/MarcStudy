@@ -1,0 +1,126 @@
+{
+  "curso": "Aritmética",
+  "tema": "Base de un sistema de numeración",
+  "glosario": {
+    "base": "Número de cifras distintas que usa un sistema",
+    "valor posicional": "Valor que toma una cifra según su lugar",
+    "potencia de la base": "Potencia de la base asociada a cada posición",
+    "subíndice de base": "Número escrito abajo que indica la base",
+    "sistema decimal": "Sistema de base diez",
+    "sistema binario": "Base dos, con cifras cero y uno",
+    "sistema hexadecimal": "Base dieciséis, con letras de A a F"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de base",
+      "puntos": [
+        {
+          "texto": "La «base» de un sistema de numeración es la cantidad de cifras distintas que usa.",
+          "explicacion": "La base determina cuántos símbolos básicos tiene el sistema y, a partir de ellos, cómo se agrupan las unidades en posiciones sucesivas. Cada vez que se acumulan tantas unidades como indica la base, se forma una unidad de orden superior. Por eso la base es el parámetro que organiza toda la escritura de los números en un sistema posicional, como se vio en el tema 17."
+        },
+        {
+          "texto": "Las cifras de un sistema de base $b$ van desde $0$ hasta $b - 1$.",
+          "explicacion": "En una base b se usan b cifras, empezando por el cero y terminando en b menos uno. Por ejemplo, en base cinco las cifras son 0, 1, 2, 3 y 4, y en base dos son solo 0 y 1. Una cifra nunca puede ser igual o mayor que la base, porque en ese caso correspondería a una unidad de orden superior y debería escribirse con otra posición."
+        },
+        {
+          "texto": "La base debe ser un número natural mayor o igual que dos.",
+          "explicacion": "Una base uno no permite formar un sistema posicional útil, porque solo habría una cifra y todos los números tendrían que escribirse repitiéndola. Por eso el sistema de base uno, llamado unario, se usa solo en contextos muy específicos, como contar marcas. Los sistemas posicionales de interés comienzan en base dos y son los que se estudian en este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor posicional",
+      "puntos": [
+        {
+          "texto": "El «valor posicional» de una cifra es la base elevada a su posición.",
+          "explicacion": "En un número escrito en base b, la cifra de la posición k, contada desde la derecha y empezando en cero, vale la cifra multiplicada por la base elevada a k. Así, en el número 302 de base diez, el 3 vale trescientos porque ocupa la posición dos, y el 2 vale dos porque ocupa la posición cero. Este principio es la base del cálculo del valor de cualquier número en un sistema posicional."
+        },
+        {
+          "texto": "El valor de un número es la suma de sus cifras multiplicadas por potencias de la base.",
+          "explicacion": "Para obtener el valor en base diez de un número escrito en otra base, se multiplica cada cifra por la potencia de la base correspondiente a su posición y se suman los resultados. Por ejemplo, el número $(101)_2$ vale uno por cuatro, cero por dos y uno por uno, es decir, cinco. Este procedimiento se usa en la práctica para leer números de cualquier base, y su aplicación sistemática se desarrolla en el tema 19."
+        },
+        {
+          "texto": "Cada posición representa una potencia de la base, consecutiva a la anterior.",
+          "explicacion": "Las posiciones de un número corresponden a potencias sucesivas de la base: uno, base, base al cuadrado, base al cubo, y así sucesivamente. Esta regularidad hace que cada posición sea exactamente base veces mayor que la posición de su derecha. La propiedad es la que da coherencia a todo el sistema y permite pasar de un número a otro con reglas uniformes."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación en distintas bases",
+      "puntos": [
+        {
+          "texto": "El «subíndice de base» indica la base en que está escrito un número.",
+          "explicacion": "Cuando un número aparece en una base distinta de la decimal, se escribe el subíndice con la base, entre paréntesis o a la derecha. Por ejemplo, $(101)_2$ indica el número formado por las cifras uno, cero y uno escritas en base dos. Sin este subíndice, la misma cadena de cifras puede representar valores diferentes, por lo que la notación evita confusiones."
+        },
+        {
+          "texto": "En base diez los subíndices suelen omitirse, porque es la base habitual.",
+          "explicacion": "Se acepta omitir el subíndice cuando el contexto indica claramente que se trabaja en base diez. Sin embargo, al mezclar varias bases en un mismo problema, es necesario escribirlo siempre para evitar errores. La omisión es una convención práctica y no cambia el valor del número."
+        },
+        {
+          "texto": "En bases mayores que diez se usan letras para las cifras que faltan.",
+          "explicacion": "Como las cifras del sistema decimal son solo diez, las bases superiores necesitan símbolos adicionales. La convención habitual usa letras, con A para diez, B para once, y así sucesivamente. En base dieciséis, por ejemplo, se usan las cifras del cero al nueve y las letras de la A a la F."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas usuales",
+      "puntos": [
+        {
+          "texto": "El «sistema decimal» tiene base diez y usa las cifras del cero al nueve.",
+          "explicacion": "El sistema decimal es el más usado en la vida cotidiana y en la mayor parte de la matemática escrita. Su base diez se relaciona con el hecho de que tenemos diez dedos, hipótesis que ha sido propuesta por historiadores, aunque no es una explicación comprobada. Sus cifras y su valor posicional son los que hemos usado como referencia en todos los temas anteriores."
+        },
+        {
+          "texto": "El «sistema binario» tiene base dos y usa solo las cifras cero y uno.",
+          "explicacion": "El sistema binario describe los números con dos cifras, lo que lo hace adecuado para representar estados de dos valores, como encendido y apagado. Gottfried Wilhelm Leibniz lo estudió con detalle y publicó su exposición en 1703. Su estructura es la misma que la de cualquier sistema posicional, solo cambia la base."
+        },
+        {
+          "texto": "El «sistema hexadecimal» tiene base dieciséis y usa letras de la A a la F.",
+          "explicacion": "El sistema hexadecimal necesita dieciséis cifras, por lo que incorpora las letras A a F como valores diez a quince. Se usa con frecuencia para expresar números largos de forma compacta, porque cada cifra hexadecimal equivale a cuatro cifras binarias. Su estructura posicional es idéntica a la de los demás sistemas."
+        },
+        {
+          "texto": "La base sesenta se usa para medir ángulos y el tiempo.",
+          "explicacion": "La base sesenta, o sexagesimal, aparece en la división de la hora en sesenta minutos y del minuto en sesenta segundos, así como en la medida de ángulos en grados, minutos y segundos. Su origen se remonta a la numeración de Mesopotamia, que usaba esta base en sus cálculos. Su uso práctico no requiere conocer su historia, pero explica la forma de sus unidades."
+        }
+      ]
+    },
+    {
+      "titulo": "Lectura de números",
+      "puntos": [
+        {
+          "texto": "Un número en base $b$ solo puede contener cifras menores que $b$.",
+          "explicacion": "Si una cadena contiene una cifra igual o mayor que la base, no es un número válido en esa base. Por ejemplo, el número 312 no existe en base tres, porque aparece la cifra 3, que es igual a la base. Esta verificación es el primer paso para leer correctamente cualquier número escrito en un sistema desconocido."
+        },
+        {
+          "texto": "Las cifras de un número se leen de derecha a izquierda para asignar posiciones.",
+          "explicacion": "La posición cero corresponde a la cifra de más a la derecha, y las posiciones aumentan hacia la izquierda. Esta convención permite asignar a cada cifra su potencia de la base sin ambigüedad. Leer en sentido inverso, desde la derecha, es la forma correcta de aplicar el valor posicional."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de las bases",
+      "puntos": [
+        {
+          "texto": "Gottfried Wilhelm Leibniz expuso la aritmética binaria en 1703.",
+          "explicacion": "Gottfried Wilhelm Leibniz, filósofo y matemático alemán nacido en 1646 y fallecido en 1716, presentó en 1703 la exposición de la aritmética binaria en la que usó solo los símbolos cero y uno. Su trabajo mostró que todos los números podían representarse con esos dos símbolos y dio origen a la notación que se usa en la computación moderna. Leibniz también propuso ideas sobre la lógica que se estudian en otros temas del curso."
+        },
+        {
+          "texto": "Las bases distintas de diez tuvieron usos en culturas antiguas.",
+          "explicacion": "La base veinte de los mayas y la base sesenta de Mesopotamia muestran que las culturas antiguas eligieron bases diferentes según sus necesidades. Aunque la base diez domina hoy, el estudio de las bases históricas permite comprender por qué se adoptaron. Cada sistema responde a un contexto y a un modo distinto de agrupar las cantidades."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Usar una cifra mayor o igual que la base es un error de escritura.",
+          "explicacion": "Escribir en base cinco la cifra 7 no tiene sentido, porque el sistema solo tiene cifras hasta el 4. Este error suele aparecer al copiar números o al aplicar la base de manera automática. Antes de operar conviene revisar que todas las cifras sean válidas en la base indicada."
+        },
+        {
+          "texto": "Olvidar el subíndice de base al mezclar bases produce resultados erróneos.",
+          "explicacion": "Cuando un mismo problema trabaja con varias bases, la cadena $10$ representa dos números distintos: diez en base diez y dos en base dos. Si no se escribe el subíndice, es imposible saber cuál es el valor real. Por eso conviene indicar siempre la base en cada número que aparezca."
+        }
+      ]
+    }
+  ]
+}

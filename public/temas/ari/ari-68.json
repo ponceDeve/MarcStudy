@@ -1,0 +1,135 @@
+{
+  "curso": "Aritmética",
+  "tema": "Media armónica",
+  "glosario": {
+    "media armónica": "Inverso del promedio de los inversos.",
+    "inverso": "Número que multiplicado por el dato da uno.",
+    "progresión armónica": "Sucesión cuyos inversos forman progresión aritmética.",
+    "serie armónica": "Suma de los inversos de los naturales.",
+    "media armónica ponderada": "Media armónica con pesos para cada dato."
+  },
+  "theory": [
+    {
+      "titulo": "Definición armónica",
+      "puntos": [
+        {
+          "texto": "«Media armónica» = $n$ dividido entre la suma de los inversos",
+          "explicacion": "La media armónica de $n$ números distintos de cero $x_1, x_2, \\ldots, x_n$ es $$H = \\frac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}$$ Equivale al inverso de la media aritmética de los inversos de los datos. Es una de las tres medias clásicas que se comparan en el tema 65, Medidas de tendencia central."
+        },
+        {
+          "texto": "Media armónica de dos números = $2ab/(a+b)$",
+          "explicacion": "Para dos números positivos $a$ y $b$ la fórmula se simplifica a $$H = \\frac{2ab}{a+b}$$ Con 6 y 12 resulta $H = 144/18 = 8$. Es el doble del producto dividido entre la suma, y se obtiene de $n = 2$ en la definición, operando $\\frac{1}{a} + \\frac{1}{b} = \\frac{a+b}{ab}$."
+        },
+        {
+          "texto": "Cálculo con datos no agrupados = $n$ entre la suma de inversos",
+          "explicacion": "Para datos dados uno por uno se suman sus inversos y se divide la cantidad de datos entre esa suma. Con 2, 3 y 6, los inversos suman $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{6} = 1$ y $H = 3/1 = 3$. Con 20, 30 y 60 los inversos suman $\\frac{3 + 2 + 1}{60} = 0{,}1$ y $H = 3/0{,}1 = 30$."
+        },
+        {
+          "texto": "Media armónica con frecuencias = $n$ entre suma de cocientes",
+          "explicacion": "Si el valor $x_i$ aparece $f_i$ veces, la media armónica es $$H = \\frac{n}{\\sum f_i/x_i}, \\qquad n = \\sum f_i$$ Con el valor 2 una vez y el valor 4 dos veces, $n = 3$, la suma es $\\frac{1}{2} + \\frac{2}{4} = 1$ y $H = 3$. Con datos agrupados se usan las marcas de clase."
+        },
+        {
+          "texto": "Media armónica = inverso del promedio de los inversos",
+          "explicacion": "Si se define $y_i = 1/x_i$, el promedio de los $y_i$ es $\\bar{y}$ y la media armónica es $1/\\bar{y}$. Por eso se dice que es la media aritmética en la escala de inversos, así como la media geométrica lo es en la escala logarítmica. Esta relación explica la mayoría de sus propiedades."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones armónicas",
+      "puntos": [
+        {
+          "texto": "Datos no nulos ✓ media armónica",
+          "explicacion": "La definición usa los inversos, así que ningún dato puede ser cero. Si algún dato fuera cero, el inverso no existe y la media armónica no está definida. Esta restricción es más severa que en la media aritmética, que admite el cero sin dificultad, y se parece a la de la media geométrica, que exige datos positivos. Antes de aplicar la fórmula debe verificarse que ningún dato sea nulo, incluso cuando proviene de una tabla de frecuencias."
+        },
+        {
+          "texto": "Datos del mismo signo ✓ media armónica",
+          "explicacion": "Cuando los datos son todos positivos, la media armónica queda entre el menor y el mayor y es una medida de tendencia central. Con datos de signos mezclados, la suma de inversos puede anularse y la media pierde sentido, por lo que en la práctica se emplea con datos positivos."
+        },
+        {
+          "texto": "Datos iguales ⇒ media armónica igual a ese valor",
+          "explicacion": "Si todos los datos valen $c \\neq 0$, la suma de inversos es $n/c$ y $H = c$. Para datos positivos distintos, la media armónica queda estrictamente entre el menor y el mayor. Esto refleja la propiedad general de que una medida de tendencia central no puede salirse del recorrido de los datos, propiedad que se comenta en el tema 65, y es útil para detectar errores de cálculo: un resultado fuera de ese intervalo indica que se confundió algún paso."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones armónicas",
+      "puntos": [
+        {
+          "texto": "Velocidad media en tramos de igual distancia = media armónica",
+          "explicacion": "Si un recorrido se hace en tramos de igual longitud con velocidades distintas, la velocidad media es la media armónica de las velocidades, pues el tiempo total es proporcional a la suma de inversos. Con ida a 60 kilómetros por hora y vuelta a 40, resulta $2\\cdot 60\\cdot 40/100 = 48$ kilómetros por hora, y no 50, que daría la media aritmética."
+        },
+        {
+          "texto": "Tramos de igual tiempo ⇒ media aritmética",
+          "explicacion": "Si en cambio los tramos duran igual tiempo, la distancia total es la suma de las distancias de cada tramo y la velocidad media es la media aritmética de las velocidades. La distinción entre tramos de igual distancia y de igual tiempo decide qué media usar: no puede aplicarse una sin comprobar cuál de las dos cantidades es constante."
+        },
+        {
+          "texto": "Tres tramos de igual distancia = media armónica de tres velocidades",
+          "explicacion": "Con velocidades de 20, 30 y 60 kilómetros por hora en tres tramos de igual longitud, la velocidad media es $3/(\\frac{1}{20} + \\frac{1}{30} + \\frac{1}{60}) = 3/0{,}1 = 30$ kilómetros por hora. Se verifica con un tramo de 60 kilómetros cada uno: los tiempos son 3, 2 y 1 horas, total 6 horas por 180 kilómetros, es decir, 30."
+        },
+        {
+          "texto": "Precio medio con monto fijo gastado = media armónica de precios",
+          "explicacion": "Si se gasta la misma cantidad de dinero en cada compra a precios unitarios distintos, el precio medio por unidad es la media armónica de los precios, porque el dinero total es fijo y lo que varía es la cantidad comprada. Si se gastan 60 en kilos a 2 y 60 en kilos a 3, se obtienen 30 y 20 kilos, es decir, 50 kilos por 120: precio medio de 2,4, igual a $2\\cdot 2\\cdot 3/5$."
+        },
+        {
+          "texto": "Trabajo en conjunto = mitad de la media armónica de los tiempos",
+          "explicacion": "Si dos máquinas hacen un mismo trabajo por separado en $a$ y $b$ horas, juntas lo hacen en $\\frac{ab}{a+b}$ horas, que es la mitad de la media armónica de $a$ y $b$. Con 6 y 12 horas, el tiempo conjunto es $72/18 = 4$ horas, y la media armónica es 8. Esto se debe a que se suman los rendimientos, que son los inversos de los tiempos."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades armónicas",
+      "puntos": [
+        {
+          "texto": "Multiplicar cada dato por una constante multiplica la media",
+          "explicacion": "Si cada dato se multiplica por $a > 0$, la media armónica queda multiplicada por $a$, pues los inversos se dividen entre $a$ y la media de inversos también. Con 6 y 12 la media es 8, y con 12 y 24 es 16. Sumar una constante a los datos no produce el mismo efecto, como se indica en el tema 65."
+        },
+        {
+          "texto": "Media armónica = fuerte influencia de los datos pequeños",
+          "explicacion": "Los datos pequeños tienen inversos grandes, que dominan la suma del denominador y hacen que la media armónica se acerque al menor valor. En 1, 100 y 100 la media aritmética es 67, mientras que la armónica es $3/(1 + 0{,}02) \\approx 2{,}94$. Se vuelve nula si un dato tiende a cero."
+        },
+        {
+          "texto": "Media armónica ponderada = suma de pesos entre suma de cocientes",
+          "explicacion": "Con pesos $w_i$ la media armónica ponderada es $$H_w = \\frac{\\sum w_i}{\\sum w_i/x_i}$$ Sirve para velocidades cuando las distancias son distintas: 120 kilómetros a 60 y 80 kilómetros a 40 tardan 2 y 2 horas, y la velocidad media es $200/4 = 50$ kilómetros por hora, con las distancias como pesos."
+        },
+        {
+          "texto": "Progresión armónica = inversos en progresión aritmética",
+          "explicacion": "Una sucesión es una progresión armónica cuando los inversos de sus términos forman una progresión aritmética. Así, $\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{6}$ es armónica porque 2, 4 y 6 son aritméticos. Cada término es la media armónica de sus vecinos: $H(\\frac{1}{2}, \\frac{1}{6}) = \\frac{1}{4}$. La progresión aritmética se estudia en el tema 61."
+        },
+        {
+          "texto": "Serie armónica = suma de los inversos de los naturales",
+          "explicacion": "La serie armónica $1 + \\frac{1}{2} + \\frac{1}{3} + \\cdots$ debe su nombre a que cada término es la media armónica de los dos términos vecinos. Su comportamiento divergente se estudia en el tema 63, Sumatorias y series."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores armónicos",
+      "puntos": [
+        {
+          "texto": "Error frecuente: promediar velocidades con la media aritmética",
+          "explicacion": "Para tramos de igual distancia, promediar las velocidades con la media aritmética da un valor mayor al real, porque se invierte mayor tiempo a la velocidad menor. Ida a 60 y vuelta a 40 no es 50: el viaje redondo de 200 kilómetros, con 100 de ida y 100 de vuelta, tarda $100/60 + 100/40 = 4\\tfrac{1}{6}$ horas, de modo que la media es 48."
+        },
+        {
+          "texto": "Error frecuente: confundir la media armónica con el inverso de la media",
+          "explicacion": "La media armónica no es el inverso de la media aritmética de los datos, sino el inverso de la media aritmética de los inversos. Para 2 y 6 la media aritmética es 4 y su inverso es 0,25, mientras que la media armónica es 3. Se deben invertir primero los datos y luego promediar."
+        },
+        {
+          "texto": "Error frecuente: usar $n$ en el numerador sin contar frecuencias",
+          "explicacion": "Con tabla de frecuencias, el numerador es el total de datos, es decir, la suma de las frecuencias absolutas, y el denominador es $\\sum f_i/x_i$. Poner la cantidad de filas en el numerador omite los datos repetidos."
+        },
+        {
+          "texto": "Error frecuente: invertir el resultado final",
+          "explicacion": "Después de calcular la media de los inversos, hay que invertirla para volver a la escala original. Quien deja el resultado como promedio de inversos obtiene un número del orden de los inversos y no de los datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia armónica",
+      "puntos": [
+        {
+          "texto": "Tradición pitagórica → proporción musical 6, 8, 9 y 12",
+          "explicacion": "En la tradición pitagórica, las longitudes de cuerda 12, 8 y 6 producen la octava, la quinta y la cuarta; el número 8 es la media armónica de 6 y 12, y el 9 es su media aritmética. La proporción 6, 8, 9, 12 reunía ambas medias y recibió el nombre de proporción musical. De esa relación con la armonía proviene el nombre de la media armónica."
+        }
+      ]
+    }
+  ]
+}

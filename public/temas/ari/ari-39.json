@@ -1,0 +1,136 @@
+{
+  "curso": "Aritmética",
+  "tema": "Representación decimal de una fracción",
+  "glosario": {
+    "representación decimal": "Escritura con parte entera y decimal",
+    "parte entera": "Cifras a la izquierda del punto decimal",
+    "parte decimal": "Cifras a la derecha del punto decimal",
+    "decimal exacto": "Decimal con una cantidad finita de cifras",
+    "decimal periódico puro": "Cifras se repiten desde el primer decimal",
+    "decimal periódico mixto": "Antes de repetirse hay cifras no periódicas",
+    "período": "Grupo de cifras que se repite indefinidamente",
+    "parte no periódica": "Cifras decimales antes del período",
+    "residuo": "Lo que sobra en una división no exacta",
+    "división larga": "Procedimiento de dividir cifra por cifra"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "La «representación decimal» de $\\frac{a}{b}$ resulta de dividir $a$ entre $b$",
+          "explicacion": "Toda fracción indica una división, y al efectuarla se obtiene un número escrito en forma decimal, es decir, con una parte entera, un separador decimal y una parte decimal. Esa escritura es la representación decimal de la fracción. El proceso no siempre termina: en algunos casos las cifras decimales continúan indefinidamente, pero siempre siguen un patrón que se repite, como se demuestra en este tema."
+        },
+        {
+          "texto": "El número decimal tiene «parte entera» y «parte decimal»",
+          "explicacion": "La parte entera está formada por las cifras a la izquierda del separador decimal y la parte decimal por las que quedan a la derecha. En el número tres con setenta y cinco centésimos, la parte entera es tres y la parte decimal es setenta y cinco. El separador decimal es una coma o un punto, según la costumbre de cada país, y en estos textos se usa el punto."
+        },
+        {
+          "texto": "Cada cifra decimal vale décimos, centésimos, milésimos, y así sucesivamente",
+          "explicacion": "Las posiciones a la derecha del separador decimal representan fracciones cuyo denominador es una potencia de diez: la primera posición son décimos, la segunda centésimos, la tercera milésimos, y así sucesivamente. Por eso el número cero punto setenta y cinco equivale a siete décimos más cinco centésimos, que es setenta y cinco centésimos. Esta organización es la base del sistema decimal."
+        },
+        {
+          "texto": "La fracción con denominador $10^{n}$ ⇒ decimal exacto inmediato",
+          "explicacion": "Una fracción cuyo denominador es una potencia de diez se escribe como decimal con tantas cifras decimales como ceros tiene el denominador. Por ejemplo, setenta y cinco centésimos es cero punto setenta y cinco. Estas se llaman fracciones decimales. Las demás fracciones requieren dividir el numerador entre el denominador."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento",
+      "puntos": [
+        {
+          "texto": "Se divide el numerador entre el denominador con la «división larga»",
+          "explicacion": "Para obtener la representación decimal se divide el numerador entre el denominador. Cuando el dividendo se agota y aún queda residuo, se escribe un cero a la derecha del residuo, se coloca el separador decimal en el cociente y se continúa dividiendo. Cada paso produce una cifra decimal. El procedimiento termina cuando el residuo es cero o cuando se repite un residuo anterior."
+        },
+        {
+          "texto": "Residuo cero ⇒ el decimal termina",
+          "explicacion": "Si en algún paso el residuo es cero, la división es exacta y no hay más cifras. El decimal tiene una cantidad finita de cifras. Ejemplo: tres cuartos da cociente cero punto setenta y cinco, con residuos tres, dos, cero. Al aparecer el residuo cero, el proceso termina."
+        },
+        {
+          "texto": "Residuo repetido ⇒ las cifras se repiten desde ese punto",
+          "explicacion": "Si aparece un residuo que ya apareció antes, a partir de ahí los cálculos son idénticos a los anteriores, de modo que las cifras del cociente se repiten indefinidamente. Ejemplo: un tercio produce siempre residuo uno, y por eso la cifra tres se repite sin fin. La repetición de un residuo es la señal para detener la división y escribir el período."
+        },
+        {
+          "texto": "Residuos menores que $b$ ⇒ período de hasta $b$ menos $1$ cifras",
+          "explicacion": "En una división entre $b$, los residuos posibles son los enteros de cero a $b$ menos uno. Como hay una cantidad limitada de residuos no nulos, después de un número finito de pasos el residuo es cero o se repite uno anterior. Este es el argumento que demuestra que toda fracción tiene representación decimal exacta o periódica, y que el período tiene a lo sumo $b$ menos uno cifras."
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal exacto",
+      "puntos": [
+        {
+          "texto": "«Decimal exacto» ⇒ cantidad finita de cifras decimales",
+          "explicacion": "Un decimal exacto es aquel cuya parte decimal tiene una cantidad finita de cifras, porque la división termina con residuo cero. Ejemplos: tres cuartos es cero punto setenta y cinco, y tres octavos es cero punto trescientos setenta y cinco. Los números enteros pueden verse como decimales exactos sin cifras decimales distintas de cero."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{3}{8}$ vale $0.375$",
+          "explicacion": "Al dividir tres entre ocho se obtiene cero y residuo tres; luego treinta entre ocho da tres con residuo seis; sesenta entre ocho da siete con residuo cuatro; cuarenta entre ocho da cinco con residuo cero. El cociente es cero punto trescientos setenta y cinco, con tres cifras decimales, y el proceso termina."
+        }
+      ]
+    },
+    {
+      "titulo": "Decimal periódico",
+      "puntos": [
+        {
+          "texto": "«Período» ⇒ grupo de cifras que se repite sin fin",
+          "explicacion": "En un decimal periódico, el período es el grupo de cifras que se repite indefinidamente después de cierto lugar decimal. Se escribe una sola vez y se señala con una raya o arco sobre las cifras. Por ejemplo, cero punto tres tres tres, con la cifra tres que se repite, se escribe $0.\\overline{3}$, y el período es una cifra."
+        },
+        {
+          "texto": "«Decimal periódico puro» ⇒ el período empieza en el primer decimal",
+          "explicacion": "Un decimal periódico puro es aquel cuyo período comienza inmediatamente después del separador decimal, sin cifras intermedias. Ejemplos: un tercio es $0.\\overline{3}$ y cinco onceavos es $0.\\overline{45}$. En este último, el período es cuarenta y cinco, que tiene dos cifras. La característica distintiva de este tipo es que, al restar la parte entera, toda la parte decimal es periódica, sin cifras previas que no se repitan, lo que simplifica la obtención de su fracción generatriz."
+        },
+        {
+          "texto": "«Decimal periódico mixto» ⇒ cifras no periódicas antes del período",
+          "explicacion": "Un decimal periódico mixto es aquel que tiene, entre el separador decimal y el período, una o más cifras que no se repiten. Esas cifras forman la parte no periódica. Ejemplo: un sexto es $0.1\\overline{6}$, donde el uno es la parte no periódica y el seis es el período."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{1}{7}$ vale $0.\\overline{142857}$ con período de seis cifras",
+          "explicacion": "Los residuos sucesivos al dividir uno entre siete son uno, tres, dos, seis, cuatro y cinco, y luego vuelve a aparecer el uno. Hay seis residuos distintos y por eso el período tiene seis cifras, que son uno, cuatro, dos, ocho, cinco y siete. Es el máximo posible para el denominador siete, que es $b$ menos uno."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{7}{12}$ vale $0.58\\overline{3}$",
+          "explicacion": "Al dividir siete entre doce se obtienen las cifras cinco y ocho, y luego el residuo cuatro produce siempre la cifra tres. Por eso la parte no periódica es cincuenta y ocho y el período es tres. Es un decimal periódico mixto, con dos cifras no periódicas y una periódica."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{5}{11}$ vale $0.\\overline{45}$",
+          "explicacion": "Al dividir cinco entre once, el primer residuo es seis y el siguiente es cinco, que ya apareció al inicio, por lo que las cifras cuatro y cinco se repiten. El período es cuarenta y cinco y, como empieza en el primer decimal, el decimal es periódico puro."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación",
+      "puntos": [
+        {
+          "texto": "Toda fracción ⇒ decimal exacto, periódico puro o periódico mixto",
+          "explicacion": "Como consecuencia de que los residuos se repiten, la representación decimal de cualquier fracción pertenece a uno de tres tipos: exacto, periódico puro o periódico mixto. Qué tipo corresponde a cada fracción se determina por el denominador de su forma irreducible, como se estudia en el tema 41. El proceso inverso, que obtiene la fracción a partir del decimal, se estudia en el tema 40."
+        },
+        {
+          "texto": "Decimal infinito no periódico ≠ decimal de una fracción",
+          "explicacion": "Existen números cuya escritura decimal tiene infinitas cifras sin ningún período, como la raíz cuadrada de dos. Esos números no pueden escribirse como cociente de enteros, es decir, no son racionales. En consecuencia, la propiedad de ser exacto o periódico caracteriza a los números racionales y los distingue de los demás."
+        },
+        {
+          "texto": "Fracción propia ⇒ parte entera cero",
+          "explicacion": "Si la fracción es propia, el numerador es menor que el denominador, y por eso la parte entera de su representación decimal es cero. En cambio, una fracción impropia tiene parte entera distinta de cero, que coincide con el entero del número mixto equivalente. Ejemplo: siete tercios es dos con tres periódico."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: detener la división antes de que se repita un residuo",
+          "explicacion": "Para decidir el período es necesario continuar hasta que aparezca un residuo repetido. Detenerse antes puede hacer creer que el decimal es exacto o que el período es más corto. Conviene anotar los residuos obtenidos para detectar la repetición. Una práctica útil es escribir al lado de cada cifra del cociente el residuo que la originó, de manera que cuando un residuo reaparece se identifica de inmediato el punto exacto donde comienza el período y su longitud."
+        },
+        {
+          "texto": "Error: incluir en el período cifras que no se repiten",
+          "explicacion": "El período debe contener solo las cifras que se repiten desde cierto punto. En cero punto uno seis seis seis, el uno no pertenece al período, porque no se repite. Si se incluyera, se escribiría mal la parte no periódica y se obtendría una fracción incorrecta al buscar la generatriz."
+        },
+        {
+          "texto": "Error: redondear y creer que el decimal es exacto",
+          "explicacion": "Cuando se redondea un decimal periódico a pocas cifras, se obtiene un número aproximado que ya no es igual a la fracción. Por ejemplo, cero punto tres tres no es un tercio, aunque se le parezca. Para trabajar con exactitud se debe conservar la notación de período."
+        }
+      ]
+    }
+  ]
+}

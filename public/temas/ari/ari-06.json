@@ -1,0 +1,143 @@
+{
+  "curso": "Aritmética",
+  "tema": "Cuantificadores",
+  "glosario": {
+    "cuantificador": "Símbolo que indica cuántos elementos cumplen",
+    "predicado": "Expresión que se vuelve proposición al fijar objetos",
+    "universo de discurso": "Conjunto de objetos sobre los que se cuantifica",
+    "cuantificador universal": "Afirma que todos los elementos cumplen el predicado",
+    "cuantificador existencial": "Afirma que algún elemento cumple el predicado",
+    "testigo": "Elemento que verifica un cuantificador existencial",
+    "negación de cuantificador": "Regla que intercambia universal y existencial al negar",
+    "proposición categórica": "Enunciado que relaciona dos clases de objetos",
+    "forma A": "Proposición categórica universal afirmativa",
+    "forma E": "Proposición categórica universal negativa",
+    "forma I": "Proposición categórica particular afirmativa",
+    "forma O": "Proposición categórica particular negativa"
+  },
+  "theory": [
+    {
+      "titulo": "Predicados y variables",
+      "puntos": [
+        {
+          "texto": "Un «predicado» se vuelve proposición al asignarle un objeto.",
+          "explicacion": "Un predicado es una expresión que contiene una o más variables y que se convierte en proposición cuando se asigna un valor concreto a cada variable. Por ejemplo, $P(x)$ puede representar «x es un número par», y mientras x no tenga un valor, la expresión no es verdadera ni falsa. Al reemplazar x por 6 se obtiene una proposición verdadera, y al reemplazarla por 7, una falsa. Los predicados extienden la lógica proposicional, porque permiten tratar la estructura interna de los enunciados, que en el tema 04 se trataba como una unidad."
+        },
+        {
+          "texto": "Las «variables» de un predicado toman valores de un universo.",
+          "explicacion": "Las variables de un predicado, habitualmente representadas con letras como x, y o z, reciben sus valores de un conjunto de objetos. Cada variable puede tomar cualquier valor de ese conjunto, pero no valores fuera de él. El uso de letras diferentes para variables distintas evita confusiones cuando un enunciado relaciona dos o más objetos. Esta idea prepara el estudio de los conjuntos, que se desarrolla en los temas 07 y 08."
+        },
+        {
+          "texto": "El «universo de discurso» limita los objetos sobre los que se cuantifica.",
+          "explicacion": "El universo de discurso es el conjunto de objetos que se consideran al formular un enunciado cuantificado. Un mismo predicado puede ser verdadero o falso según el universo elegido: la condición «x más uno es cero» es falsa si el universo son los números naturales, pero verdadera si el universo son los números enteros. Por esta razón, todo enunciado cuantificado debe indicar explícitamente o por el contexto cuál es su universo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuantificador universal",
+      "puntos": [
+        {
+          "texto": "El «cuantificador universal» afirma que todos los elementos cumplen un predicado.",
+          "explicacion": "El cuantificador universal, escrito como $\\forall x\\, P(x)$ y leído «para todo x, P(x)», afirma que el predicado se cumple para cada elemento del universo. La afirmación es verdadera si no existe ningún elemento que incumpla el predicado, y falsa en caso contrario. Por ejemplo, «todo número natural es mayor o igual que cero» es verdadera, mientras que «todos los números primos son impares» es falsa, porque el número 2 es primo y no es impar."
+        },
+        {
+          "texto": "Basta un solo caso que falle para refutar una afirmación universal.",
+          "explicacion": "Para demostrar que un enunciado universal es falso basta encontrar un elemento que no cumpla el predicado, llamado contraejemplo. Esta es una de las asimetrías más importantes de la lógica: confirmar un enunciado universal exige revisar todos los casos del universo, mientras que refutarlo exige un único caso. Por eso el número 2 basta para mostrar que no todos los primos son impares, aunque hay infinitos primos impares."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuantificador existencial",
+      "puntos": [
+        {
+          "texto": "El «cuantificador existencial» afirma que al menos un elemento cumple el predicado.",
+          "explicacion": "El cuantificador existencial, escrito como $\\exists x\\, P(x)$ y leído «existe x tal que P(x)», afirma que hay al menos un elemento del universo que cumple el predicado. La afirmación es falsa solo cuando ningún elemento lo cumple. Por ejemplo, «existe un número primo par» es verdadera, porque el número 2 cumple ambas condiciones, mientras que «existe un número natural menor que cero» es falsa, porque ningún natural es menor que cero."
+        },
+        {
+          "texto": "Un solo caso verdadero basta para verificar un cuantificador existencial.",
+          "explicacion": "Para comprobar que un enunciado existencial es verdadero basta exhibir un elemento que cumpla el predicado. Esta asimetría es opuesta a la del cuantificador universal: aquí un caso confirma la afirmación, mientras que para negarla hay que revisar todo el universo. Esta forma de verificación es la base de las demostraciones de existencia en matemáticas, que suelen construir el objeto buscado."
+        },
+        {
+          "texto": "El «testigo» es el elemento que hace verdadera la afirmación existencial.",
+          "explicacion": "Un testigo es el objeto concreto que sirve para comprobar un enunciado existencial. En el ejemplo «existe un número primo par», el testigo es el número 2, porque cumple las dos condiciones. No todos los enunciados existenciales permiten encontrar un testigo de forma explícita, y en esos casos la existencia se prueba por otros medios, como un argumento que descarte la posibilidad de no existir."
+        }
+      ]
+    },
+    {
+      "titulo": "Negación de cuantificadores",
+      "puntos": [
+        {
+          "texto": "Negar «para todo» produce «existe al menos uno que no cumple».",
+          "explicacion": "La negación de un enunciado universal equivale a un enunciado existencial sobre el predicado negado, lo que se expresa como $\\neg\\forall x\\, P(x) \\equiv \\exists x\\, \\neg P(x)$. Para que no todos cumplan una propiedad, es suficiente que alguno no la cumpla. Por ejemplo, la negación de «todos los números pares son mayores que cinco» es «existe un número par que no es mayor que cinco», y el número 2 lo verifica."
+        },
+        {
+          "texto": "Negar «existe» produce «ningún elemento cumple el predicado».",
+          "explicacion": "La negación de un enunciado existencial equivale a un enunciado universal sobre el predicado negado, lo que se escribe como $\\neg\\exists x\\, P(x) \\equiv \\forall x\\, \\neg P(x)$. Si ningún elemento cumple una propiedad, entonces todos los elementos la incumplen. Así, la negación de «existe un número primo mayor que mil» es «todos los números mayores que mil no son primos», lo que se comprueba con la definición de número primo."
+        },
+        {
+          "texto": "La «negación de cuantificador» intercambia universal y existencial.",
+          "explicacion": "Al negar un cuantificador, el universal se convierte en existencial y el existencial en universal, mientras que el predicado se niega. Esta regla es general y se aplica de forma sucesiva cuando hay varios cuantificadores en la misma fórmula. Su uso correcto permite reescribir enunciados de manera equivalente, lo cual es útil en demostraciones por reducción al absurdo."
+        },
+        {
+          "texto": "«Todos cumplen» negado no significa «ninguno cumple».",
+          "explicacion": "La confusión más frecuente al negar un enunciado universal consiste en pensar que su negación es que ninguno cumple la propiedad. En realidad, basta con que uno solo no la cumpla. Confundir ambas afirmaciones lleva a conclusiones incorrectas, porque «ninguno cumple» es una afirmación más fuerte que la negación de «todos cumplen». La distinción debe revisarse siempre al traducir enunciados negados."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación aristotélica",
+      "puntos": [
+        {
+          "texto": "La «proposición categórica» relaciona dos clases mediante «todo» o «algún».",
+          "explicacion": "Aristóteles estudió enunciados que relacionan dos clases de objetos, llamadas sujeto y predicado, mediante palabras como «todo», «ningún» o «algún». Estos enunciados, llamados categóricos, se clasifican en cuatro formas según su cantidad, universal o particular, y su calidad, afirmativa o negativa. La tradición medieval los designó con las vocales A, E, I y O, tomadas de las palabras latinas afirmo y nego. Esta clasificación fue el primer sistema sistemático de lógica de enunciados cuantificados."
+        },
+        {
+          "texto": "La «forma A» afirma que todo S es P.",
+          "explicacion": "La forma A es una proposición universal afirmativa, que afirma que cada elemento de la clase S pertenece a la clase P. Su negación no es una forma E, sino una forma O, que afirma que algún S no es P. Por ejemplo, «todo número par es divisible entre dos» es una forma A verdadera, y su contraejemplo tendría que ser un número par que no sea divisible entre dos."
+        },
+        {
+          "texto": "La «forma E» afirma que ningún S es P.",
+          "explicacion": "La forma E es una proposición universal negativa, que establece que ningún elemento de la clase S pertenece a la clase P. Equivale a la afirmación de que todo S no es P. Por ejemplo, «ningún número primo es mayor que cinco» es falsa, porque el 7 es primo y es mayor que cinco. Su negación, la forma O «algún número primo es mayor que cinco», es verdadera por el mismo motivo."
+        },
+        {
+          "texto": "La «forma I» afirma que algún S es P.",
+          "explicacion": "La forma I es una proposición particular afirmativa, que afirma que al menos un elemento de la clase S pertenece a la clase P. Corresponde al cuantificador existencial aplicado a la conjunción de los predicados S y P. Por ejemplo, «algún número primo es par» es verdadera, porque el número 2 cumple ambas condiciones a la vez."
+        },
+        {
+          "texto": "La «forma O» afirma que algún S no es P.",
+          "explicacion": "La forma O es una proposición particular negativa y es la negación de la forma A. Establece que existe al menos un elemento de S que no pertenece a P. Por ejemplo, «algún número primo no es impar» es verdadera, porque el número 2 es primo y no es impar. La relación entre las formas A, E, I y O se estudió durante siglos en la lógica tradicional como el cuadro de oposiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de los cuantificadores",
+      "puntos": [
+        {
+          "texto": "Gottlob Frege introdujo los cuantificadores en 1879.",
+          "explicacion": "Gottlob Frege incorporó los cuantificadores a su notación en la obra «Begriffsschrift», publicada en 1879. Con ellos pudo formalizar enunciados que el lenguaje tradicional expresaba de manera imprecisa, y así ampliar la lógica de proposiciones hacia la lógica de predicados. Esta innovación es uno de los fundamentos de la lógica matemática contemporánea."
+        },
+        {
+          "texto": "Charles Sanders Peirce propuso notaciones para los cuantificadores en 1885.",
+          "explicacion": "Charles Sanders Peirce, filósofo y lógico estadounidense nacido en 1839 y fallecido en 1914, presentó en 1885 un trabajo sobre el álgebra de la lógica en el que propuso notaciones para los cuantificadores universal y existencial, emparentadas con los signos de sumatoria y producto. Su propuesta fue independiente del trabajo de Frege, y ambas contribuyeron al desarrollo de la lógica de predicados."
+        },
+        {
+          "texto": "Los símbolos actuales $\\forall$ y $\\exists$ se consolidaron en el siglo XX.",
+          "explicacion": "Las notaciones modernas para el cuantificador universal y el existencial se impusieron de forma gradual durante el siglo XX, a medida que la lógica matemática se estandarizaba. Antes existían varias notaciones distintas, por lo que los textos de esa época no siempre coinciden en sus símbolos. Al estudiar cuantificadores conviene reconocer las dos notaciones más usadas, y comprender que representan la misma idea."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir el universal con el existencial es un error frecuente.",
+          "explicacion": "Un error típico consiste en leer «para todo» como «existe» o viceversa, lo que altera por completo el valor de verdad del enunciado. Por ejemplo, «existe un número natural mayor que todos los demás» es falsa, mientras que «para todo número natural existe otro mayor» es verdadera. El orden de los cuantificadores y su tipo deben leerse siempre de izquierda a derecha, porque cambiarlos modifica el significado de la fórmula."
+        },
+        {
+          "texto": "Un predicado sin variable asignada no tiene valor de verdad.",
+          "explicacion": "Una expresión como $P(x)$ no puede evaluarse como verdadera o falsa mientras x no tenga un valor o no esté cuantificada. Escribir un predicado como si fuera una proposición es un error de sintaxis que oculta la diferencia entre el enunciado y la función proposicional. Antes de juzgar cualquier enunciado cuantificado conviene verificar que todas sus variables estén ligadas por un cuantificador o por una asignación explícita."
+        }
+      ]
+    }
+  ]
+}

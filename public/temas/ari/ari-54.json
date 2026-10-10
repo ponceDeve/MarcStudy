@@ -1,0 +1,154 @@
+{
+  "curso": "Aritmética",
+  "tema": "Reparto proporcional",
+  "glosario": {
+    "reparto proporcional": "División de una cantidad en partes proporcionales",
+    "índices": "Números a los que son proporcionales las partes",
+    "constante de reparto": "Valor de cada parte por unidad de índice",
+    "reparto directo": "Partes directamente proporcionales a los índices",
+    "reparto inverso": "Partes inversamente proporcionales a los índices",
+    "reparto compuesto": "Reparto con varios criterios de proporcionalidad",
+    "regla de compañía": "Reparto de ganancias según aportes y tiempos",
+    "socio": "Persona que aporta capital a una compañía",
+    "capital": "Dinero aportado por un socio"
+  },
+  "theory": [
+    {
+      "titulo": "Reparto proporcional",
+      "puntos": [
+        {
+          "texto": "«Reparto proporcional» = dividir una cantidad en partes proporcionales",
+          "explicacion": "El reparto proporcional consiste en dividir una cantidad total $N$ en varias partes que guardan una relación de proporcionalidad con números dados. Se llama cantidad a repartir al total $N$, partes a las porciones en que se divide y números proporcionales a aquellos con los que cada parte guarda proporción. La división cumple siempre dos condiciones: la suma de las partes es igual a $N$ y los cocientes entre cada parte y su número proporcional son iguales. Se apoya en la proporcionalidad entre magnitudes (se estudia en el tema 53, Magnitudes proporcionales directa e inversa)."
+        },
+        {
+          "texto": "Los «índices» = números a los que son proporcionales las partes",
+          "explicacion": "Los números dados para efectuar el reparto se llaman índices o números proporcionales. Cada parte se asocia con el índice que ocupa su mismo lugar, por lo que el orden en que se escriben es relevante. Si todos los índices se multiplican o se dividen por un mismo número distinto de cero, los índices resultantes son equivalentes a los primeros y el reparto no cambia. Esto permite simplificar los índices antes de operar, por ejemplo, reemplazar 4, 6 y 10 por 2, 3 y 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Reparto directo",
+      "puntos": [
+        {
+          "texto": "«Reparto directo» → partes proporcionales a los índices",
+          "explicacion": "En el reparto directo, las partes $P_1, P_2, \\ldots, P_n$ son directamente proporcionales a los índices $a_1, a_2, \\ldots, a_n$, es decir, $\\frac{P_1}{a_1} = \\frac{P_2}{a_2} = \\cdots = \\frac{P_n}{a_n} = k$. Un índice mayor produce una parte mayor, y la proporción entre las partes es la misma que entre los índices. El caso más simple, con un solo criterio, se llama reparto directo simple, y sirve de modelo a los demás tipos de reparto."
+        },
+        {
+          "texto": "«Constante de reparto» = valor de cada parte por unidad de índice",
+          "explicacion": "En un reparto directo, la constante de reparto $k$ es el valor que corresponde a cada unidad de índice. Como la suma de las partes es $N$ y cada parte vale $k\\cdot a_i$, se cumple $N = k\\,(a_1 + a_2 + \\cdots + a_n)$, de donde $k = \\frac{N}{a_1 + a_2 + \\cdots + a_n}$. El cálculo de esta constante es el paso clave del método, pues una vez conocida, cada parte se obtiene multiplicándola por el índice respectivo."
+        },
+        {
+          "texto": "Parte = cantidad por índice, dividida entre la suma de índices",
+          "explicacion": "Cada parte del reparto directo se calcula como $P_i = N\\cdot\\frac{a_i}{a_1 + a_2 + \\cdots + a_n}$. Es una consecuencia directa de la constante de reparto: la parte es el producto de la constante y el índice. Esta fórmula expresa que cada parte es la fracción de la cantidad total que representa su índice respecto de la suma de todos los índices, por lo que la suma de las partes siempre es igual a la cantidad repartida."
+        },
+        {
+          "texto": "Procedimiento del reparto directo en cuatro pasos",
+          "explicacion": "El reparto directo se resuelve en cuatro pasos: primero, anotar los índices y simplificarlos si es posible; segundo, sumarlos; tercero, dividir la cantidad a repartir entre esa suma para obtener la constante de reparto; y cuarto, multiplicar la constante por cada índice. Se comprueba el resultado sumando las partes, que deben dar la cantidad total. Por ejemplo, para repartir 360 en partes proporcionales a 2, 3 y 5, la suma de índices es 10, la constante es 36 y las partes son 72, 108 y 180, que suman 360."
+        },
+        {
+          "texto": "Índices iguales ⇒ partes iguales",
+          "explicacion": "Cuando todos los índices son iguales, el reparto es en partes iguales: cada una vale $\\frac{N}{n}$, donde $n$ es el número de partes. Es el caso límite del reparto proporcional, pues el cociente entre dos partes cualesquiera es 1 y la constante de reparto coincide con cada parte. Por ejemplo, al repartir 120 entre cuatro partes con índices iguales, cada parte vale 30. Esta observación permite comprobar resultados: si dos índices iguales producen partes distintas, existe un error de cálculo en la suma de índices o en la constante."
+        }
+      ]
+    },
+    {
+      "titulo": "Reparto inverso",
+      "puntos": [
+        {
+          "texto": "«Reparto inverso» → partes proporcionales a los inversos de los índices",
+          "explicacion": "En el reparto inverso, las partes son inversamente proporcionales a los índices, o lo que es equivalente, directamente proporcionales a los inversos $\\frac{1}{a_1}, \\frac{1}{a_2}, \\ldots, \\frac{1}{a_n}$. A mayor índice, menor parte. La fórmula de cada parte es $P_i = N\\cdot\\frac{1/a_i}{\\sum 1/a_j}$, donde la suma del denominador recorre todos los índices. Este tipo de reparto se reduce al directo reemplazando los índices por sus inversos."
+        },
+        {
+          "texto": "Reparto inverso ⇒ multiplicar los inversos por el mínimo común múltiplo",
+          "explicacion": "Para evitar trabajar con fracciones en el reparto inverso, se multiplican los inversos de los índices por el mínimo común múltiplo de los índices, con lo que se obtienen números enteros proporcionales a ellos. Por ejemplo, para repartir 420 en partes inversamente proporcionales a 2, 3 y 6, los inversos $\\frac{1}{2}, \\frac{1}{3}, \\frac{1}{6}$ se multiplican por 6 y resultan 3, 2 y 1; la suma es 6, la constante es 70 y las partes son 210, 140 y 70, que suman 420."
+        }
+      ]
+    },
+    {
+      "titulo": "Índices fraccionarios",
+      "puntos": [
+        {
+          "texto": "Índices fraccionarios ⇒ enteros equivalentes",
+          "explicacion": "Si los índices son fracciones, se multiplican todos por el mínimo común múltiplo de los denominadores, con lo que se obtienen índices enteros equivalentes, pues multiplicar todos los índices por un mismo número no altera el reparto. Por ejemplo, para repartir 230 en partes proporcionales a $\\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}$, el mínimo común múltiplo de los denominadores es 12, los índices pasan a 6, 8 y 9, la suma es 23, la constante es 10 y las partes son 60, 80 y 90, que suman 230."
+        },
+        {
+          "texto": "Índices decimales ⇒ enteros equivalentes",
+          "explicacion": "Si los índices son números decimales, se multiplican todos por una potencia de 10 que elimine las comas, y si resulta posible se simplifican dividiendo entre un divisor común. Con los índices 0,5; 1,5 y 2, se multiplica por 10 y resultan 5, 15 y 20, que se simplifican dividiendo entre 5 a 1, 3 y 4. Para repartir 640, la suma de índices es 8, la constante es 80 y las partes son 80, 240 y 320, que suman 640."
+        }
+      ]
+    },
+    {
+      "titulo": "Reparto compuesto",
+      "puntos": [
+        {
+          "texto": "«Reparto compuesto» = reparto con varios criterios",
+          "explicacion": "El reparto compuesto es aquel en que las partes dependen de dos o más criterios a la vez, directos o inversos. Se resuelve formando un índice único por cada parte: el producto de los índices de los criterios directos dividido entre el producto de los índices de los criterios inversos. Así, si las partes son directamente proporcionales a $a_i$ y a $c_i$, e inversamente proporcionales a $b_i$, el índice efectivo es $\\frac{a_i\\, c_i}{b_i}$. Luego se aplica el procedimiento del reparto directo simple."
+        },
+        {
+          "texto": "Ejemplo de reparto compuesto con tres partes",
+          "explicacion": "Para repartir 1020 en partes directamente proporcionales a 2, 3 y 4 y también a 5, 4 y 3, se multiplican los índices parte a parte y resultan 10, 12 y 12, que se simplifican a 5, 6 y 6. La suma es 17, la constante es $\\frac{1020}{17} = 60$ y las partes son 300, 360 y 360, que suman 1020. El resultado muestra que el segundo criterio compensa en parte al primero, pues las partes segunda y tercera terminan iguales aunque sus índices del primer criterio sean distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos auxiliares",
+      "puntos": [
+        {
+          "texto": "Una parte conocida ⇒ la constante de reparto",
+          "explicacion": "Si el enunciado da el valor de una de las partes y no el total, la constante de reparto se obtiene dividiendo esa parte entre su índice: $k = \\frac{P_i}{a_i}$. Con ella se calculan las demás partes y la cantidad total. Por ejemplo, si las partes son proporcionales a 3, 5 y 7 y la parte mayor vale 91, la constante es $\\frac{91}{7} = 13$, las partes son 39, 65 y 91 y la cantidad repartida es 195."
+        },
+        {
+          "texto": "Diferencia conocida ⇒ la constante de reparto",
+          "explicacion": "Si el enunciado da la diferencia entre dos partes, la constante se calcula dividiendo esa diferencia entre la diferencia de los índices correspondientes: $k = \\frac{P_i - P_j}{a_i - a_j}$. Es válido porque cada parte es el producto de la constante por su índice. Por ejemplo, si dos partes son proporcionales a 7 y 4 y su diferencia es 36, la constante es $\\frac{36}{3} = 12$ y las partes son 84 y 48, cuya diferencia es 36."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de compañía",
+      "puntos": [
+        {
+          "texto": "«Regla de compañía» = reparto de ganancias según aportes",
+          "explicacion": "La regla de compañía es la aplicación del reparto proporcional a la distribución de las ganancias o pérdidas de una sociedad entre sus socios. El socio es la persona que aporta capital, es decir, dinero para el negocio. El criterio de reparto es que cada socio recibe en proporción a lo que aportó, de modo que quien aporta más capital obtiene mayor parte del resultado. Las pérdidas se reparten con el mismo criterio que las ganancias."
+        },
+        {
+          "texto": "Compañía simple ⇒ reparto directo según capitales de los socios",
+          "explicacion": "En la compañía simple todos los socios mantienen su capital durante el mismo tiempo, por lo que las ganancias se reparten en forma directamente proporcional a los capitales aportados. Se aplica el reparto directo con los capitales como índices. Por ejemplo, si dos socios aportan 3000 y 2000 y la ganancia es 500, los índices simplificados son 3 y 2, la constante es 100 y las partes son 300 y 200."
+        },
+        {
+          "texto": "Compañía compuesta ⇒ capitales por tiempos",
+          "explicacion": "En la compañía compuesta los socios aportan capitales distintos durante tiempos distintos, y la parte de cada uno es proporcional al producto de su capital por el tiempo en que estuvo invertido. Los índices son entonces los productos $C_i\\cdot t_i$, y se aplica el reparto directo. Por ejemplo, si un socio aporta 3000 durante 12 meses y otro 4000 durante 6 meses, los índices son 36000 y 24000, que se simplifican a 3 y 2; con una ganancia de 500, reciben 300 y 200."
+        },
+        {
+          "texto": "Capital variable ⇒ suma de productos capital por tiempo",
+          "explicacion": "Si un socio cambia su capital durante el período, su índice es la suma de los productos del capital por el tiempo en cada tramo en que se mantuvo constante: $C_1 t_1 + C_2 t_2 + \\cdots$. Es una consecuencia de que el aporte total, medido en capital por tiempo, es la suma de los aportes de cada tramo. Una vez calculado el índice de cada socio, se reparte la ganancia en forma directa."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: confundir el reparto directo con el inverso",
+          "explicacion": "Un error habitual es usar los índices tal como vienen cuando el enunciado pide proporcionalidad inversa, o bien invertirlos cuando es directa. Para evitarlo, se identifica con cuidado la expresión: directamente proporcional a los índices, o inversamente proporcional a ellos. En el segundo caso hay que reemplazar cada índice por su inverso antes de sumar. Un control útil es verificar que, en el reparto inverso, el índice mayor recibe la parte menor."
+        },
+        {
+          "texto": "Error: no comprobar que las partes suman el total",
+          "explicacion": "Otro error es omitir la comprobación final. Como la suma de las partes debe ser igual a la cantidad repartida, un total distinto revela un error de cálculo en la suma de índices, en la constante o en las multiplicaciones. También conviene verificar que cada parte conserve la proporción con su índice, es decir, que los cocientes entre cada parte y su índice sean iguales. Estas dos comprobaciones requieren pocos pasos y detectan casi todos los errores."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Fibonacci: problemas de compañías en el «Liber Abaci»",
+          "explicacion": "Leonardo de Pisa, conocido como Fibonacci, matemático italiano, incluyó en el Liber Abaci, publicado en 1202, problemas sobre la distribución de ganancias entre socios en las compañías mercantiles, que se resolvían con proporciones. Estos problemas muestran que el reparto proporcional se desarrolló dentro de la aritmética comercial de la Edad Media, junto con la regla de tres, y que sus métodos pasaron después a los textos de aritmética de los siglos posteriores."
+        },
+        {
+          "texto": "Pacioli: reparto de apuestas en la «Summa» (1494)",
+          "explicacion": "Luca Pacioli, fraile franciscano y matemático italiano, planteó en la Summa de arithmetica, geometria, proportioni et proportionalita, publicada en Venecia en 1494, el problema de repartir la apuesta de un juego interrumpido en proporción a los puntos que había conseguido cada jugador. La solución proporcional fue luego criticada por otros matemáticos, pero el problema es un antecedente histórico de la aplicación del reparto proporcional a situaciones de incertidumbre."
+        }
+      ]
+    }
+  ]
+}

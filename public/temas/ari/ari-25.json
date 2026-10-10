@@ -1,0 +1,136 @@
+{
+  "curso": "Aritmética",
+  "tema": "Restos potenciales",
+  "glosario": {
+    "restos potenciales": "Restos de dividir potencias sucesivas de una base",
+    "ciclo": "Grupo de restos que se repite",
+    "periodo": "Cantidad de restos distintos del ciclo",
+    "módulo": "Divisor entre el cual se calculan los restos",
+    "resto": "Lo que sobra al dividir",
+    "base": "Número que se eleva a las potencias",
+    "exponente": "Número de veces que se multiplica la base",
+    "residuo negativo": "Resto expresado como múltiplo menos una cantidad",
+    "cifra de las unidades": "Última cifra de un numeral"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Restos potenciales»: restos de $a^0, a^1, a^2, \\ldots$ entre $m$",
+          "explicacion": "Los restos potenciales son los restos que resultan al dividir entre un número $m$ las potencias sucesivas de una base $a$, es decir, $a^0, a^1, a^2, a^3, \\ldots$. Se estudian porque, al seguir el exponente creciendo, los restos no se disponen al azar sino que se repiten en grupos fijos. Esta regularidad permite hallar el resto de una potencia enorme sin calcularla y se apoya en la división entera del tema 22 y en la divisibilidad del tema 24."
+        },
+        {
+          "texto": "Notación: $a^n = \\overset{\\circ}{m} + r$",
+          "explicacion": "La igualdad $a^n = \\overset{\\circ}{m} + r$ indica que $a^n$ es un múltiplo de $m$ más $r$, de modo que $r$ es el resto de dividir $a^n$ entre $m$, con $0 \\le r < m$. El número $m$ recibe el nombre de «módulo». Por ejemplo, $2^5 = 32 = \\overset{\\circ}{7} + 4$, de manera que el resto de $2^5$ entre 7 es 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con restos",
+      "puntos": [
+        {
+          "texto": "El resto de una suma es la suma de los restos",
+          "explicacion": "Si $A = \\overset{\\circ}{m} + r_1$ y $B = \\overset{\\circ}{m} + r_2$, entonces $A + B = \\overset{\\circ}{m} + (r_1 + r_2)$. El resto de la suma se obtiene sumando los restos y, si el resultado alcanza o supera a $m$, reduciéndolo de nuevo entre $m$. Por ejemplo, $17 + 19$ entre 5: los restos son 2 y 4, suman 6, que deja resto 1; en efecto, $36 = 5 \\cdot 7 + 1$."
+        },
+        {
+          "texto": "El resto de un producto es el producto de los restos",
+          "explicacion": "Si $A = \\overset{\\circ}{m} + r_1$ y $B = \\overset{\\circ}{m} + r_2$, entonces $A \\cdot B = \\overset{\\circ}{m} + r_1 r_2$, porque los productos que contienen al múltiplo de $m$ son múltiplos de $m$. Por ejemplo, $17 \\cdot 19$ entre 5: los restos son 2 y 4, su producto 8 deja resto 3 y $323 = 5 \\cdot 64 + 3$."
+        },
+        {
+          "texto": "Resto de una potencia: $(\\overset{\\circ}{m} + r)^n = \\overset{\\circ}{m} + r^n$",
+          "explicacion": "La potencia de un número que deja resto $r$ entre $m$ deja el mismo resto que $r^n$. Esto reduce el cálculo de una potencia grande al de una potencia de la base reducida. Por ejemplo, $23^{10}$ entre 7: como $23 = \\overset{\\circ}{7} + 2$, el resto es el de $2^{10} = 1024$ entre 7, que es 2, pues $1024 = 7 \\cdot 146 + 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ciclo de restos",
+      "puntos": [
+        {
+          "texto": "Los restos potenciales se repiten en un «ciclo»",
+          "explicacion": "Dado que cada resto determina el siguiente, y existen solo $m$ restos posibles, la sucesión de restos de las potencias acaba por repetir un valor y, a partir de él, se repite siempre la misma secuencia. A ese grupo de restos que se repite se le llama ciclo. Por ejemplo, las potencias de 2 entre 7 dan 1, 2, 4, 1, 2, 4, ... con el ciclo 1, 2, 4."
+        },
+        {
+          "texto": "«Periodo»: cantidad de restos que forman el ciclo",
+          "explicacion": "El periodo es la cantidad de restos que contiene el ciclo antes de repetirse; también se llama longitud del ciclo y, en algunos textos, gaussiano. Para la base 2 entre 7 el periodo es 3. Para la base 3 entre 7 los restos son 1, 3, 2, 6, 4, 5, de periodo 6."
+        },
+        {
+          "texto": "$a^n$ y $a^{n+T}$ dejan el mismo resto si $T$ es el periodo",
+          "explicacion": "Si el periodo es $T$, los exponentes que difieren en un múltiplo de $T$ producen el mismo resto, de modo que $a^{n + T} = \\overset{\\circ}{m} + r$ cuando $a^n = \\overset{\\circ}{m} + r$. En la práctica, el resto de $a^n$ coincide con el del exponente reducido al residuo de $n$ entre $T$, siempre que el ciclo comience en el exponente cero."
+        },
+        {
+          "texto": "Cálculo: dividir el exponente entre el periodo",
+          "explicacion": "Para hallar el resto de $a^n$ entre $m$, se calcula el periodo $T$, se divide $n$ entre $T$ y se toma el residuo $s$, que indica la posición dentro del ciclo. Para $3^{100}$ entre 7, el periodo es 6, $100 = 6 \\cdot 16 + 4$ y el resto es el de $3^4 = 81$ entre 7, a saber 4, ya que $81 = 7 \\cdot 11 + 4$."
+        },
+        {
+          "texto": "Base y módulo primos entre sí ⇒ ciclo desde el resto 1",
+          "explicacion": "Cuando la base y el módulo no tienen divisores comunes distintos de 1, es decir, son primos entre sí, tema 31, el ciclo de restos es puro: incluye el resto 1 y se reinicia en él. Por ejemplo, 3 y 7 son primos entre sí, y los restos 1, 3, 2, 6, 4, 5 vuelven a empezar con 1. Además, el periodo divide al valor de la función de Euler del módulo, tema 32."
+        },
+        {
+          "texto": "Base y módulo con factor común ⇒ restos previos al ciclo",
+          "explicacion": "Si la base y el módulo comparten un factor, los primeros restos pueden no repetirse nunca, y el ciclo comienza más adelante. Por ejemplo, las potencias de 2 entre 12 dan 1, 2, 4, 8, 4, 8, ...: los restos 1 y 2 aparecen una sola vez y después se repite el ciclo 4, 8. En estos casos se excluyen los restos iniciales antes de dividir el exponente."
+        }
+      ]
+    },
+    {
+      "titulo": "Restos negativos",
+      "puntos": [
+        {
+          "texto": "«Residuo negativo»: $\\overset{\\circ}{m} - k = \\overset{\\circ}{m} + (m - k)$",
+          "explicacion": "Un número que es un múltiplo de $m$ menos $k$ equivale a un múltiplo de $m$ más $m - k$. Esta equivalencia permite usar «residuos negativos», que acortan los cálculos cuando el resto está cerca de $m$. Así, $19 = \\overset{\\circ}{4} - 1 = \\overset{\\circ}{4} + 3$."
+        },
+        {
+          "texto": "Base $\\overset{\\circ}{m} - 1$: $(\\overset{\\circ}{m} - 1)^n = \\overset{\\circ}{m} + (-1)^n$",
+          "explicacion": "Si la base es un múltiplo de $m$ menos uno, sus potencias dejan resto 1 con exponente par y resto $m - 1$ con exponente impar. Por ejemplo, $10 = \\overset{\\circ}{11} - 1$, de modo que $10^{n}$ deja resto 1 si $n$ es par y 10 si $n$ es impar. El periodo es 2 y esta propiedad justifica el criterio de divisibilidad por 11."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Base múltiplo del módulo: todos los restos desde $a^1$ son cero",
+          "explicacion": "Si $a = \\overset{\\circ}{m}$, cada potencia con exponente positivo también es múltiplo de $m$, por lo que el resto es 0 desde $a^1$ en adelante. Así, las potencias de 6 entre 3 dan 1, 0, 0, 0, ..."
+        },
+        {
+          "texto": "Base $\\overset{\\circ}{m} + 1$: todos los restos son 1",
+          "explicacion": "Si $a = \\overset{\\circ}{m} + 1$, entonces $a^n = \\overset{\\circ}{m} + 1^n = \\overset{\\circ}{m} + 1$ para todo exponente $n$. Por ejemplo, las potencias de 10 entre 9 dejan siempre resto 1, de modo que el periodo es 1; esto sustenta los criterios de divisibilidad por 3 y por 9."
+        }
+      ]
+    },
+    {
+      "titulo": "Cifra de las unidades",
+      "puntos": [
+        {
+          "texto": "La «cifra de las unidades» es el resto entre 10",
+          "explicacion": "La última cifra de un número natural es el resto de dividirlo entre 10, por lo que se estudia con restos potenciales de módulo 10. Con base 7 se obtiene 1, 7, 9, 3, 1, 7, 9, 3, ..., de periodo 4. Para $7^{2026}$, $2026 = 4 \\cdot 506 + 2$ y la cifra de las unidades es la de $7^2 = 49$, es decir, 9."
+        },
+        {
+          "texto": "Bases terminadas en 2, 3, 7 u 8 tienen periodo 4",
+          "explicacion": "Las potencias de un número terminado en 2 dan las cifras 2, 4, 8, 6; en 3 dan 3, 9, 7, 1; en 7 dan 7, 9, 3, 1; y en 8 dan 8, 4, 2, 6. En todos los casos, la cifra de las unidades se repite cada cuatro exponentes. Por eso basta dividir el exponente entre 4 y observar el residuo."
+        },
+        {
+          "texto": "Bases terminadas en 4 o 9 tienen periodo 2",
+          "explicacion": "Las potencias de un número terminado en 4 alternan las cifras 4 y 6; las de un número terminado en 9 alternan 9 y 1. El periodo es 2 y la cifra depende de que el exponente sea impar o par."
+        },
+        {
+          "texto": "Bases terminadas en 0, 1, 5 o 6 no cambian la cifra",
+          "explicacion": "Las potencias de un número terminado en 0, 1, 5 o 6 conservan la misma cifra de las unidades, 0, 1, 5 y 6 respectivamente, para cualquier exponente positivo. El periodo de su cifra de las unidades es 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Dividir el exponente entre el módulo ≠ dividirlo entre el periodo",
+          "explicacion": "El exponente debe dividirse entre la longitud del ciclo y no entre el módulo. Para $3^{100}$ entre 7, el divisor correcto es 6 y no 7. Usar el módulo produce restos que no corresponden a la secuencia real, ya que el ciclo se repite cada $T$ exponentes y no cada $m$. Por ejemplo, $100 = 7 \\cdot 14 + 2$ llevaría a calcular $3^2 = 9$, de resto 2, resultado incorrecto frente al valor 4 hallado con el periodo 6."
+        },
+        {
+          "texto": "Residuo 0 al dividir el exponente ⇒ último resto del ciclo",
+          "explicacion": "Si el exponente es múltiplo del periodo, el resto de la potencia es el que cierra el ciclo cuando los restos se cuentan desde el exponente 1. Con la base 3 entre 7, los restos desde $3^1$ son 3, 2, 6, 4, 5, 1, y $3^6$ deja resto 1, el sexto de la lista; lo mismo ocurre con $3^{12}$. Tomar el primer resto de la lista en lugar del último es un error de conteo."
+        }
+      ]
+    }
+  ]
+}

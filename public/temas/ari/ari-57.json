@@ -1,0 +1,147 @@
+{
+  "curso": "Aritmética",
+  "tema": "Interés simple",
+  "glosario": {
+    "capital": "Dinero prestado o depositado al inicio",
+    "interés": "Pago por el uso del capital",
+    "tasa de interés": "Porcentaje del capital que se paga por período",
+    "tiempo": "Duración durante la cual se presta el capital",
+    "monto": "Suma del capital y el interés",
+    "interés simple": "Interés calculado siempre sobre el capital inicial",
+    "año comercial": "Año de 360 días con meses de 30",
+    "año civil": "Año de 365 o 366 días",
+    "tasa promedio": "Tasa única equivalente para varios capitales"
+  },
+  "theory": [
+    {
+      "titulo": "Interés simple",
+      "puntos": [
+        {
+          "texto": "«Interés simple» = pago calculado siempre sobre el capital inicial",
+          "explicacion": "El interés simple es el interés que se calcula únicamente sobre el capital original durante todo el tiempo de la operación, sin sumar a la base los intereses que se van generando. Por ello el interés producido en cada período es el mismo, y el interés total crece de forma proporcional al tiempo. La operación se produce cuando una persona entrega un capital a otra por un lapso determinado y recibe, además de la devolución del capital, un pago adicional por haberlo cedido. Su cálculo es una aplicación del tanto por ciento (se estudia en el tema 49, Porcentajes) combinado con la proporcionalidad (se estudia en el tema 53, Magnitudes proporcionales directa e inversa)."
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos",
+      "puntos": [
+        {
+          "texto": "«Capital» = dinero prestado o depositado al inicio",
+          "explicacion": "El capital es la cantidad de dinero que se presta, se deposita o se invierte al comienzo de la operación y sobre la cual se calcula el interés. Se representa con $C$ y es la base del cálculo, por lo que el interés es directamente proporcional a él: si el capital se duplica, el interés también se duplica, siempre que la tasa y el tiempo permanezcan iguales."
+        },
+        {
+          "texto": "«Interés» = pago por el uso del capital",
+          "explicacion": "El interés es la retribución que se paga por usar un capital ajeno durante cierto tiempo. Se representa con $I$ y es una cantidad de dinero que se suma al capital devuelto. Su valor depende de tres factores: el capital, la tasa y el tiempo, y es directamente proporcional a cada uno de ellos cuando los otros dos se mantienen constantes, por lo que el interés es un caso de proporcionalidad compuesta."
+        },
+        {
+          "texto": "«Tasa de interés» = porcentaje del capital por período",
+          "explicacion": "La tasa de interés es el tanto por ciento del capital que se paga por cada unidad de tiempo, que puede ser un año, un semestre, un mes o un día. Se representa con $r\\%$ y siempre debe indicar el período al que se refiere, como en «5 % anual» o «2 % mensual». Dos tasas con períodos distintos no pueden compararse ni usarse en una misma fórmula sin convertirlas primero a un período común."
+        },
+        {
+          "texto": "«Tiempo» = duración de la operación",
+          "explicacion": "El tiempo es el lapso durante el cual el capital permanece prestado o invertido. Se representa con $t$ y se expresa en la misma unidad del período de la tasa: años si la tasa es anual, meses si es mensual y días si es diaria. Cuando el tiempo viene dado en otra unidad, debe convertirse antes de aplicar la fórmula, o bien usar la fórmula adaptada a esa unidad, como se verá al estudiar el año comercial."
+        },
+        {
+          "texto": "«Monto» = capital + interés",
+          "explicacion": "El monto es la suma del capital y del interés generado al final de la operación: $M = C + I$. Es la cantidad total que se recibe o se paga al vencer el plazo. De esta igualdad se despeja $I = M - C$ y $C = M - I$, y sustituyendo la fórmula del interés se obtiene $M = C\\left(1+\\frac{r\\,t}{100}\\right)$, que expresa que el monto crece linealmente con el tiempo."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula del interés",
+      "puntos": [
+        {
+          "texto": "Interés = capital por tasa por tiempo, entre 100",
+          "explicacion": "La fórmula del interés simple es $I = \\frac{C\\cdot r\\cdot t}{100}$, donde $C$ es el capital, $r$ es la tasa en tanto por ciento por período y $t$ es el tiempo medido en esos mismos períodos. Se deduce de que el interés de un período es el $r\\%$ del capital, es decir, $C\\cdot\\frac{r}{100}$, y que en $t$ períodos se obtiene $t$ veces ese valor. Con un capital de 5000, una tasa del 12 % anual y 3 años, el interés es $\\frac{5000\\cdot 12\\cdot 3}{100} = 1800$ y el monto es 6800."
+        },
+        {
+          "texto": "Interés con tiempo en meses: división entre 1200",
+          "explicacion": "Si la tasa es anual y el tiempo está dado en meses, como un año tiene 12 meses, la fórmula se convierte en $I = \\frac{C\\cdot r\\cdot m}{1200}$, donde $m$ es el número de meses. El divisor 1200 resulta de multiplicar 100 por 12. Si la tasa fuera mensual y el tiempo en meses, se usa la fórmula básica con divisor 100. Con un capital de 2400, una tasa del 1,5 % mensual y 8 meses, el interés es $\\frac{2400\\cdot 1{,}5\\cdot 8}{100} = 288$."
+        },
+        {
+          "texto": "Interés con tiempo en días: división entre 36000",
+          "explicacion": "Si la tasa es anual y el tiempo está dado en días, se divide entre 36000, que resulta de multiplicar 100 por 360 días del año comercial: $I = \\frac{C\\cdot r\\cdot d}{36000}$, con $d$ el número de días. Con un capital de 7200, una tasa del 10 % anual y 90 días, el interés es $\\frac{7200\\cdot 10\\cdot 90}{36000} = 180$. Cuando se usa el año civil, el divisor es 36500, con lo cual el resultado es ligeramente menor."
+        }
+      ]
+    },
+    {
+      "titulo": "Año comercial",
+      "puntos": [
+        {
+          "texto": "«Año comercial» = 360 días con meses de 30",
+          "explicacion": "Para simplificar los cálculos, en las operaciones financieras se suele convenir un año comercial de 360 días, formado por 12 meses de 30 días cada uno. Con esta convención, el interés calculado se llama interés comercial u ordinario. Es la convención que usan la mayoría de los problemas de aritmética salvo que se indique otra, y conduce a divisores sencillos como 1200 y 36000."
+        },
+        {
+          "texto": "«Año civil» = 365 o 366 días",
+          "explicacion": "El año civil es el año del calendario, que tiene 365 días y, en los años bisiestos, 366 días. El interés calculado con los días reales del calendario se llama interés exacto, y su fórmula con tiempo en días es $I = \\frac{C\\cdot r\\cdot d}{36500}$ cuando el año tiene 365 días. Como 365 es mayor que 360, el interés exacto resulta algo menor que el comercial para los mismos datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje de variables",
+      "puntos": [
+        {
+          "texto": "Capital = 100 por interés, entre tasa por tiempo",
+          "explicacion": "Despejando el capital de la fórmula del interés se obtiene $C = \\frac{100\\cdot I}{r\\cdot t}$. Es útil cuando se conoce el interés producido y se desea saber qué capital lo generó. Con un interés de 300, una tasa del 7,5 % anual y 2 años, el capital es $\\frac{100\\cdot 300}{7{,}5\\cdot 2} = 2000$. También puede hallarse el capital a partir del monto mediante $C = \\frac{M}{1 + \\frac{r\\,t}{100}}$."
+        },
+        {
+          "texto": "Tasa = 100 por interés, entre capital por tiempo",
+          "explicacion": "Despejando la tasa se obtiene $r = \\frac{100\\cdot I}{C\\cdot t}$, donde $t$ debe estar en el período al que se quiere referir la tasa. Con un capital de 2000, un interés de 300 y 2 años, la tasa es $\\frac{100\\cdot 300}{2000\\cdot 2} = 7{,}5\\%$ anual. Si el tiempo se hubiera dado en meses, la tasa resultante sería mensual."
+        },
+        {
+          "texto": "Tiempo = 100 por interés, entre capital por tasa",
+          "explicacion": "Despejando el tiempo se obtiene $t = \\frac{100\\cdot I}{C\\cdot r}$, expresado en el período de la tasa. Con un capital de 2000, un interés de 300 y una tasa del 7,5 % anual, el tiempo es $\\frac{100\\cdot 300}{2000\\cdot 7{,}5} = 2$ años. Si se desea en meses, se multiplica por 12, de modo que el resultado es 24 meses. La fórmula exige que el interés, el capital y la tasa estén en las mismas unidades monetarias y que la tasa se exprese como tanto por ciento del período anual, de lo contrario el tiempo hallado no tendrá la unidad esperada."
+        }
+      ]
+    },
+    {
+      "titulo": "Duplicación del capital",
+      "puntos": [
+        {
+          "texto": "Capital duplicado ⇒ tasa por tiempo = 100",
+          "explicacion": "El monto es el doble del capital cuando el interés es igual al capital, es decir, cuando $\\frac{C\\cdot r\\cdot t}{100} = C$, lo que equivale a $r\\cdot t = 100$. Con una tasa anual de $r\\%$, el tiempo de duplicación es $\\frac{100}{r}$ años. Con una tasa del 5 % anual, el capital se duplica en 20 años. El mismo razonamiento da el tiempo para triplicarse, que es $\\frac{200}{r}$ años, pues el interés debe ser el doble del capital."
+        }
+      ]
+    },
+    {
+      "titulo": "Varios capitales",
+      "puntos": [
+        {
+          "texto": "«Tasa promedio» de varios capitales con igual tiempo",
+          "explicacion": "Cuando varios capitales $C_1, C_2, \\ldots$ se colocan durante el mismo tiempo a tasas distintas $r_1, r_2, \\ldots$, la tasa promedio es la tasa única que produciría el mismo interés total sobre el capital total, y vale $r = \\frac{C_1 r_1 + C_2 r_2 + \\cdots}{C_1 + C_2 + \\cdots}$. Con 4000 al 6 % y 6000 al 8 %, es $\\frac{4000\\cdot 6 + 6000\\cdot 8}{10000} = 7{,}2\\%$. Es un promedio ponderado por los capitales."
+        }
+      ]
+    },
+    {
+      "titulo": "Simple frente a compuesto",
+      "puntos": [
+        {
+          "texto": "Interés simple ≠ interés compuesto",
+          "explicacion": "En el interés simple el interés de cada período se calcula siempre sobre el capital inicial, y por eso el monto crece en forma lineal con el tiempo. En el interés compuesto los intereses ganados se suman al capital y producen a su vez nuevo interés, y por eso el crecimiento es exponencial. Aquí se estudia solo el interés simple. Para un mismo capital y una misma tasa, ambos coinciden en el primer período y después el compuesto resulta mayor."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: mezclar unidades de tasa y de tiempo",
+          "explicacion": "El error más frecuente es usar una tasa anual con un tiempo en meses o en días sin convertir, o una tasa mensual con un tiempo en años. La fórmula exige que la tasa y el tiempo estén referidos al mismo período. Para evitarlo se escribe junto a cada dato su unidad y se convierte antes de operar, o bien se usa la fórmula con el divisor adecuado, 100, 1200 o 36000."
+        },
+        {
+          "texto": "Error: confundir interés con monto",
+          "explicacion": "Otro error es entregar como respuesta el interés cuando se pedía el monto, o a la inversa. El interés es solo el pago por el uso del capital, mientras que el monto incluye también el capital. Con un capital de 5000 y un interés de 1800, el monto es 6800. Conviene releer qué cantidad pide el enunciado antes de responder."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Préstamos con interés en la antigua Mesopotamia",
+          "explicacion": "Los textos en tablillas de arcilla de la antigua Mesopotamia registran préstamos de plata y de cebada con un pago adicional por su uso, lo que muestra que el interés es una práctica comercial muy antigua. Los escribas calculaban intereses sobre el capital prestado y los documentos fijaban plazos y tasas. Estos registros se cuentan entre las fuentes más antiguas del cálculo de intereses que luego desarrolló la aritmética comercial."
+        }
+      ]
+    }
+  ]
+}

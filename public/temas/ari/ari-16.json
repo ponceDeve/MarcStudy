@@ -1,0 +1,148 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sistema de números naturales",
+  "glosario": {
+    "número natural": "Número usado para contar, sin fracciones ni negativos",
+    "conjunto de los naturales": "Colección de todos los números naturales",
+    "sucesor": "Número que sigue inmediatamente a otro",
+    "axiomas de Peano": "Reglas que definen el sistema de números naturales",
+    "inducción matemática": "Método que demuestra propiedades para todos los naturales",
+    "principio del buen orden": "Todo subconjunto no vacío tiene un mínimo",
+    "cerradura": "Resultado siempre perteneciente al mismo conjunto",
+    "antecesor": "Número que precede inmediatamente a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de número natural",
+      "puntos": [
+        {
+          "texto": "Un «número natural» es un número usado para contar objetos.",
+          "explicacion": "Los números naturales son los que sirven para contar elementos de un conjunto finito y para ordenarlos en una sucesión. No incluyen fracciones, decimales ni números negativos, que se estudian en los temas 21 y 36. El conjunto de los naturales se escribe con la letra N y es el punto de partida de todo el sistema numérico que se construye en el curso."
+        },
+        {
+          "texto": "El conjunto de los naturales se escribe $\\mathbb{N}$.",
+          "explicacion": "La notación $\\mathbb{N}$ representa el conjunto de todos los números naturales. Con frecuencia se incluye o se excluye el cero según el texto, y esta discrepancia es una convención de notación. En este curso el cero se considera un número natural, y el conjunto se escribe como cero, uno, dos, y así sucesivamente, sin límite superior."
+        },
+        {
+          "texto": "El conjunto de los naturales es infinito y no tiene elemento máximo.",
+          "explicacion": "Dado cualquier número natural, siempre existe otro mayor, por ejemplo su sucesor. Por eso el conjunto no puede listarse por completo y su cardinal no es un número natural, como se vio en el tema 10. La ausencia de máximo distingue a los naturales de un conjunto finito y es una de sus propiedades más importantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesor y antecesor",
+      "puntos": [
+        {
+          "texto": "El «sucesor» de un natural n es el número que sigue inmediatamente a n.",
+          "explicacion": "Todo número natural tiene un único sucesor, que se obtiene sumando uno al número dado. Así, el sucesor de cinco es seis y el de cero es uno. La operación de pasar al sucesor es la que genera toda la sucesión de los naturales a partir del cero, y es la base de la definición axiomática del sistema."
+        },
+        {
+          "texto": "El «antecesor» de un natural distinto de cero es el número que lo precede.",
+          "explicacion": "Todo número natural distinto de cero tiene un antecesor, que se obtiene restando uno. El cero no tiene antecesor entre los naturales, porque no existe ningún natural que lo preceda. Esta excepción es importante en las demostraciones y en la definición de la resta, que se estudia en el tema 21."
+        }
+      ]
+    },
+    {
+      "titulo": "Axiomas de Peano",
+      "puntos": [
+        {
+          "texto": "Los «axiomas de Peano» definen el sistema de números naturales.",
+          "explicacion": "Un axioma es una afirmación aceptada sin demostración, a partir de la cual se deducen las demás propiedades. Los axiomas de Peano establecen que existe un primer natural, el cero, que todo natural tiene un sucesor y que ciertas condiciones garantizan que la sucesión no se repite. Con ellos se puede construir todo el sistema numérico de forma rigurosa."
+        },
+        {
+          "texto": "El cero no es sucesor de ningún número natural.",
+          "explicacion": "Este axioma garantiza que el cero es el punto de partida de la sucesión, es decir, que no aparece en ninguna cadena de sucesores. Sin esta condición, podría existir un natural anterior al cero, y la sucesión dejaría de tener un inicio definido. Es un axioma que parece evidente, pero que cumple una función esencial en la definición."
+        },
+        {
+          "texto": "Dos naturales con el mismo sucesor son el mismo número.",
+          "explicacion": "Esta condición garantiza que la función sucesor no repite valores, de modo que cada número natural aparece una sola vez en la sucesión. Sin ella, dos caminos distintos podrían llegar al mismo número, y el sistema tendría ambigüedades. Junto con el axioma anterior, asegura que la sucesión de naturales sea una lista ordenada sin repeticiones."
+        },
+        {
+          "texto": "El principio de inducción es un axioma de los naturales.",
+          "explicacion": "El último axioma de Peano afirma que si un subconjunto de los naturales contiene al cero y contiene al sucesor de cada uno de sus elementos, entonces contiene todos los naturales. Este axioma es la base de la inducción matemática, un método de demostración que se explica en una card posterior de este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Inducción matemática",
+      "puntos": [
+        {
+          "texto": "La «inducción matemática» demuestra propiedades para todos los naturales.",
+          "explicacion": "Para demostrar que una propiedad P se cumple para todos los naturales, se verifica primero que se cumple para el cero y luego que, si se cumple para un natural cualquiera, también se cumple para su sucesor. Con estos dos pasos se concluye que la propiedad vale para todos los naturales, porque cada uno se alcanza a partir del cero por sucesión."
+        },
+        {
+          "texto": "El primer paso de la inducción es la base, con el caso inicial.",
+          "explicacion": "La base de la inducción es la comprobación de la propiedad en el primer caso, normalmente el cero o el uno según el enunciado. Sin esta comprobación el argumento no tiene punto de partida, y la conclusión queda sin fundamento. Muchos errores en demostraciones por inducción se deben a omitir la base."
+        },
+        {
+          "texto": "El paso inductivo supone la propiedad para un natural y la prueba para su sucesor.",
+          "explicacion": "En el paso inductivo se supone que la propiedad es válida para un número natural cualquiera, llamada hipótesis de inducción, y se demuestra que entonces también lo es para su sucesor. Esta suposición es válida porque solo se usa para deducir el caso siguiente. Con la base y el paso inductivo, la propiedad queda demostrada para todos los naturales."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden de los naturales",
+      "puntos": [
+        {
+          "texto": "Un natural es menor que otro si aparece antes en la sucesión.",
+          "explicacion": "El orden de los naturales se define a partir de la sucesión: a es menor que b cuando b puede obtenerse de a sumando un número natural distinto de cero. Así, tres es menor que siete, porque siete se alcanza desde tres mediante sucesores repetidos. Este orden es total, pues dados dos naturales siempre uno es menor, mayor o igual que el otro."
+        },
+        {
+          "texto": "El principio del buen orden afirma que todo subconjunto no vacío tiene un mínimo.",
+          "explicacion": "Todo conjunto no vacío de números naturales tiene un elemento menor que todos los demás. Este principio es equivalente a la inducción matemática y se usa en demostraciones por contradicción. Por ejemplo, el conjunto de los naturales mayores que diez tiene como mínimo al once."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones y cerradura",
+      "puntos": [
+        {
+          "texto": "La «cerradura» indica que una operación produce siempre un natural.",
+          "explicacion": "Decimos que la suma y el producto son cerrados en los naturales, porque sumar o multiplicar dos naturales siempre da otro natural. Esta propiedad no se cumple en todas las operaciones: la resta y la división no siempre producen naturales, como se verá en los temas 21 y 22. Por eso la cerradura es una condición que debe verificarse para cada operación."
+        },
+        {
+          "texto": "La suma de naturales es conmutativa y asociativa.",
+          "explicacion": "El orden de los sumandos no altera el resultado, y el agrupamiento de tres o más sumandos tampoco. Estas propiedades permiten reorganizar sumas largas sin cambiar su valor. Se demuestran a partir de los axiomas de Peano mediante inducción, y son la base de los cálculos aritméticos."
+        },
+        {
+          "texto": "El producto de naturales es conmutativo y asociativo.",
+          "explicacion": "Como en la suma, el orden y el agrupamiento no cambian el resultado al multiplicar naturales. Estas propiedades justifican los cálculos de productos largos y la reorganización de factores. Junto con la suma, permiten describir la aritmética de los naturales de forma coherente."
+        },
+        {
+          "texto": "El producto es distributivo respecto de la suma en los naturales.",
+          "explicacion": "Multiplicar un número por una suma equivale a multiplicarlo por cada sumando y luego sumar los resultados. Por ejemplo, tres por la suma de dos y cuatro es igual a tres por dos más tres por cuatro. Esta propiedad permite calcular productos complejos descomponiendo los factores y es clave en el cálculo mental."
+        },
+        {
+          "texto": "Cero y uno son elementos neutros de la suma y del producto.",
+          "explicacion": "El cero no altera un número al sumarlo, y el uno no lo altera al multiplicarlo. Estas identidades son las bases del cálculo, porque definen los valores que dejan intacto cualquier natural. El cero tiene además la propiedad de anular cualquier producto en el que aparezca."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia del sistema",
+      "puntos": [
+        {
+          "texto": "Richard Dedekind formalizó los números naturales en 1888.",
+          "explicacion": "Richard Dedekind, matemático alemán nacido en 1831 y fallecido en 1916, publicó en 1888 la obra «Was sind und was sollen die Zahlen?», en la que definió los números naturales a partir de la noción de sistema infinito y de la función sucesor. Su trabajo fue el antecedente directo de la axiomatización de Peano."
+        },
+        {
+          "texto": "Giuseppe Peano publicó sus axiomas de los naturales en 1889.",
+          "explicacion": "Giuseppe Peano, matemático italiano nacido en 1858 y fallecido en 1932, expuso en 1889 los axiomas que llevan su nombre en la obra «Arithmetices principia, nova methodo exposita». Su formulación se convirtió en la presentación estándar del sistema de los naturales y se usa en la mayoría de los textos de fundamentos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Pensar que el cero no es un número natural es un error de convención.",
+          "explicacion": "Algunos textos excluyen el cero del conjunto de los naturales, pero en este curso se incluye. La discrepancia no afecta a las propiedades del sistema, aunque sí a la forma de enunciar algunos resultados. Lo importante es indicar en cada problema qué convención se usa para evitar confusiones."
+        },
+        {
+          "texto": "Creer que la resta de naturales siempre produce un natural es un error.",
+          "explicacion": "Restar un número mayor de uno menor produce un resultado que no pertenece a los naturales. Por ejemplo, tres menos cinco no es un natural. Esta limitación motiva la construcción de los números enteros en el tema 21, donde la resta se vuelve siempre posible."
+        }
+      ]
+    }
+  ]
+}

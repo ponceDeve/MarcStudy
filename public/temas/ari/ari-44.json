@@ -1,0 +1,218 @@
+{
+  "curso": "Aritmética",
+  "tema": "Propiedades fundamentales",
+  "glosario": {
+    "número racional": "Cociente de enteros con divisor no nulo.",
+    "fracciones equivalentes": "Fracciones distintas que representan el mismo número.",
+    "fracción irreducible": "Fracción con numerador y denominador primos entre sí.",
+    "cerradura": "Resultado de operar siempre pertenece al conjunto.",
+    "conmutativa": "Cambiar el orden no altera el resultado.",
+    "asociativa": "Cambiar la agrupación no altera el resultado.",
+    "elemento neutro": "Elemento que no modifica el resultado al operar.",
+    "opuesto": "Número que sumado con otro da cero.",
+    "inverso multiplicativo": "Número que multiplicado por otro da uno.",
+    "distributiva": "Multiplicar una suma equivale a multiplicar cada sumando.",
+    "cuerpo": "Conjunto con operaciones que cumplen todas esas propiedades.",
+    "tricotomía": "De dos números exactamente una relación se cumple.",
+    "transitividad": "Relación que se transmite por una cadena.",
+    "densidad": "Entre dos números distintos siempre existe otro.",
+    "número irracional": "Número real que no es racional.",
+    "propiedad arquimediana": "Algún múltiplo de un positivo supera cualquier número."
+  },
+  "theory": [
+    {
+      "titulo": "Marco del tema",
+      "puntos": [
+        {
+          "texto": "«Número racional» = cociente de enteros con divisor no nulo",
+          "explicacion": "Un número racional es el que puede escribirse como $\\frac{a}{b}$ con $a$ y $b$ enteros y $b$ distinto de cero. El conjunto de todos ellos se designa con $\\mathbb{Q}$, inicial de la palabra cociente. Su definición y su construcción se estudian en el tema 36, Sistema de números racionales, y la fracción como objeto de estudio se desarrolla en el tema 37. Este tema reúne las propiedades que se cumplen en todo el conjunto y que justifican las reglas de cálculo con fracciones."
+        },
+        {
+          "texto": "$\\mathbb{Q}$ ⊃ enteros ⊃ naturales",
+          "explicacion": "Todo entero es un número racional, porque $a$ puede escribirse como $\\frac{a}{1}$, y todo natural es entero. Por eso el conjunto de los racionales contiene a los enteros y estos a los naturales. Las propiedades de los racionales incluyen, como casos particulares, las de los enteros, aunque en los racionales aparece una propiedad que los enteros no tienen: la existencia de inverso multiplicativo para todo número no nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad y equivalencia",
+      "puntos": [
+        {
+          "texto": "$\\frac{a}{b}$ = $\\frac{c}{d}$ si y solo si $ad$ = $bc$",
+          "explicacion": "Dos fracciones representan el mismo número racional exactamente cuando el producto del numerador de la primera por el denominador de la segunda es igual al producto del denominador de la primera por el numerador de la segunda. La regla se justifica multiplicando ambos miembros de la igualdad de fracciones por el producto $bd$, que no es cero. Es el criterio empleado para decidir si dos fracciones distintas son equivalentes, y recibe el nombre de multiplicación cruzada."
+        },
+        {
+          "texto": "Propiedad fundamental: multiplicar numerador y denominador por un mismo entero no nulo",
+          "explicacion": "Si el numerador y el denominador de una fracción se multiplican o se dividen por un mismo entero distinto de cero, el valor de la fracción no cambia. Así, $\\frac{2}{3}$ y $\\frac{10}{15}$ son fracciones equivalentes, pues $2 \\cdot 15$ y $3 \\cdot 10$ son ambos treinta. Esta propiedad justifica tanto la amplificación como la simplificación, y es la base para reducir fracciones a un común denominador al operarlas."
+        },
+        {
+          "texto": "Todo racional tiene una única fracción irreducible",
+          "explicacion": "Cada número racional se representa mediante infinitas fracciones equivalentes, pero solo una de ellas es irreducible con denominador positivo. Se obtiene dividiendo numerador y denominador entre su máximo común divisor, y sirve como representante canónico del número. Dos fracciones son equivalentes si y solo si tienen la misma fracción irreducible, lo que permite comparar racionales sin recurrir a la multiplicación cruzada."
+        },
+        {
+          "texto": "Regla del signo: $\\frac{-a}{b}$ igual $\\frac{a}{-b}$ igual $-\\frac{a}{b}$",
+          "explicacion": "El signo negativo de una fracción puede colocarse indistintamente en el numerador, en el denominador o delante de toda la fracción, y los tres casos representan el mismo número. Esta propiedad se obtiene de la multiplicación cruzada, pues $(-a) \\cdot b$ y $a \\cdot (-b)$ coinciden. Por convención se escribe el signo en el numerador, de modo que el denominador resulte siempre positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cerradura y operaciones",
+      "puntos": [
+        {
+          "texto": "«Cerradura»: suma, resta y producto de racionales ∈ $\\mathbb{Q}$",
+          "explicacion": "La suma, la resta y el producto de dos racionales siempre dan otro racional. Con fracciones, la suma de $\\frac{a}{b}$ y $\\frac{c}{d}$ tiene como numerador el producto $ad$ sumado con el producto $bc$ y como denominador el producto $bd$, que es no nulo. La resta es análoga con el numerador restado, y el producto de dos fracciones es la fracción de numerador $ac$ y denominador $bd$. Estas fórmulas muestran que el resultado cumple la definición de racional."
+        },
+        {
+          "texto": "Cociente de racionales ∈ $\\mathbb{Q}$ ✓ divisor no nulo",
+          "explicacion": "El cociente de dos racionales es otro racional siempre que el divisor sea distinto de cero. Se calcula multiplicando el dividendo por el inverso del divisor: $\\frac{a}{b}$ dividido entre $\\frac{c}{d}$ resulta $\\frac{ad}{bc}$, con $c$ distinto de cero. La división entre cero no está definida, porque ningún número multiplicado por cero da un número no nulo. Esta es la diferencia esencial con los enteros, donde el cociente exacto no siempre existe."
+        },
+        {
+          "texto": "Propiedad «conmutativa» de suma y producto",
+          "explicacion": "El orden de los sumandos no altera la suma, y el orden de los factores no altera el producto: para racionales $r$ y $s$, $r$ sumado con $s$ coincide con $s$ sumado con $r$, y $r \\cdot s$ coincide con $s \\cdot r$. La propiedad se deduce de la conmutatividad en los enteros aplicada a numeradores y denominadores. No vale para la resta ni para la división, razón por la cual esas operaciones requieren respetar el orden de sus términos."
+        },
+        {
+          "texto": "Propiedad «asociativa» de suma y producto",
+          "explicacion": "Al sumar o multiplicar tres racionales, el resultado no depende de cómo se agrupen: $(r \\cdot s) \\cdot t$ coincide con $r \\cdot (s \\cdot t)$, y análogamente con la suma. Se hereda de la asociatividad en los enteros. Gracias a ella se pueden sumar o multiplicar varios racionales sin paréntesis, y se puede elegir la agrupación que simplifique el cálculo."
+        },
+        {
+          "texto": "«Elemento neutro»: cero para la suma, uno para el producto",
+          "explicacion": "Sumar cero a cualquier racional lo deja igual, y multiplicarlo por uno también. El cero y el uno son, por eso, los elementos neutros de la suma y del producto, y cada uno es único. Pueden escribirse con cualquier fracción equivalente, como $\\frac{0}{5}$ para el cero y $\\frac{7}{7}$ para el uno, lo que se usa al reducir fracciones a un denominador común."
+        },
+        {
+          "texto": "Todo racional tiene «opuesto» aditivo",
+          "explicacion": "Para cada racional $\\frac{a}{b}$ existe otro, $-\\frac{a}{b}$, tal que ambos sumados dan cero. Este número es único y se llama opuesto. La existencia del opuesto permite definir la resta como suma del opuesto y asegura que toda ecuación de la forma $r$ sumado con $x$ igual a $s$ tenga solución en los racionales."
+        },
+        {
+          "texto": "Todo racional no nulo tiene «inverso multiplicativo»",
+          "explicacion": "Para cada racional no nulo $\\frac{a}{b}$, el número $\\frac{b}{a}$ es tal que al multiplicarlos resulta uno. Se denomina inverso multiplicativo o recíproco. El cero carece de inverso, pues ningún número multiplicado por cero da uno. La existencia del inverso permite definir la división y resolver ecuaciones de la forma $r \\cdot x$ igual a $s$ con $r$ distinto de cero, hecho que no ocurre en los enteros."
+        },
+        {
+          "texto": "Propiedad «distributiva» del producto sobre la suma",
+          "explicacion": "Multiplicar un racional por una suma equivale a multiplicarlo por cada sumando y sumar los productos: $r \\cdot (s \\; \\text{sumado con} \\; t)$ coincide con $r \\cdot s$ sumado con $r \\cdot t$. Es la única propiedad que relaciona las dos operaciones y justifica procesos como sacar factor común o desarrollar productos. Se hereda de la distributividad en los enteros."
+        },
+        {
+          "texto": "Producto nulo ⇒ algún factor es cero",
+          "explicacion": "Si el producto de dos racionales es cero, al menos uno de los factores es cero. Se prueba así: si el primer factor no fuera cero, tendría inverso multiplicativo, y multiplicar por él ambos miembros obligaría al segundo factor a ser cero. Esta propiedad es la que permite resolver ecuaciones factorizadas, igualando a cero cada factor por separado."
+        },
+        {
+          "texto": "Racionales con estas propiedades forman un «cuerpo»",
+          "explicacion": "Un conjunto con suma y producto que cumplen cerradura, conmutativa, asociativa, elementos neutros, opuestos, inversos de los no nulos y distributiva se denomina cuerpo. Los racionales son un cuerpo, mientras que los enteros no lo son porque carecen de inversos multiplicativos, salvo el uno y el menos uno. Esta estructura asegura que en $\\mathbb{Q}$ se puede resolver toda ecuación de primer grado con coeficientes racionales."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden",
+      "puntos": [
+        {
+          "texto": "«Tricotomía»: dos racionales cumplen exactamente una relación",
+          "explicacion": "Dados dos racionales cualesquiera $r$ y $s$, se cumple una y solo una de las tres relaciones: $r$ menor que $s$, $r$ igual a $s$, o $r$ mayor que $s$. Esta propiedad hace que el conjunto de racionales esté totalmente ordenado y que cada uno pueda situarse en una recta numérica respecto a los demás. Es la base de las comparaciones de fracciones."
+        },
+        {
+          "texto": "Comparar fracciones con denominadores positivos por productos cruzados",
+          "explicacion": "Si $b$ y $d$ son positivos, la fracción $\\frac{a}{b}$ es menor que $\\frac{c}{d}$ si y solo si $ad$ es menor que $bc$. La regla se obtiene multiplicando ambos lados por el producto positivo $bd$, que no cambia el sentido de la desigualdad. Por ejemplo, $\\frac{3}{4}$ es menor que $\\frac{4}{5}$ porque $3 \\cdot 5$, que es quince, es menor que $4 \\cdot 4$, que es dieciséis."
+        },
+        {
+          "texto": "«Transitividad»: $r<s$ y $s<t$ ⇒ $r<t$",
+          "explicacion": "Si un racional es menor que otro y este es menor que un tercero, el primero es menor que el tercero. La propiedad permite encadenar desigualdades y ordenar listas de racionales mediante comparaciones sucesivas. Vale también para la igualdad y para la relación mayor que."
+        },
+        {
+          "texto": "Suma de un mismo racional conserva el orden",
+          "explicacion": "Si $r$ es menor que $s$ y se suma el mismo racional $t$ a ambos, la desigualdad se conserva: $r$ sumado con $t$ es menor que $s$ sumado con $t$. Se llama monotonía de la suma y justifica pasar términos de un miembro a otro en una desigualdad. Es válida para cualquier $t$, positivo, negativo o cero."
+        },
+        {
+          "texto": "Multiplicar por positivo conserva el orden; por negativo lo invierte",
+          "explicacion": "Si $r$ es menor que $s$ y se multiplica por un racional positivo $t$, la desigualdad se conserva. Si $t$ es negativo, el sentido se invierte: $r \\cdot t$ resulta mayor que $s \\cdot t$. Por ejemplo, un medio es menor que tres cuartos, pero al multiplicar por menos dos quedan menos uno y menos tres medios, y menos uno es mayor. Olvidar esta inversión es un error común al resolver desigualdades."
+        }
+      ]
+    },
+    {
+      "titulo": "Densidad",
+      "puntos": [
+        {
+          "texto": "«Densidad»: entre dos racionales distintos existe otro",
+          "explicacion": "Entre dos racionales distintos siempre hay otro racional, por ejemplo su media aritmética, que es la mitad de su suma. Entre $\\frac{1}{3}$ y $\\frac{1}{2}$ se encuentra $\\frac{5}{12}$, pues equivalen a cuatro doceavos y seis doceavos y la media es cinco doceavos. Esta propiedad es característica de los racionales y los distingue de los enteros, donde entre dos consecutivos no hay ningún otro."
+        },
+        {
+          "texto": "Entre dos racionales hay infinitos racionales",
+          "explicacion": "Si entre dos racionales siempre se puede intercalar otro, repitiendo la operación con los números ya obtenidos se obtienen cada vez más racionales sin límite. Por tanto, cualquier intervalo, por pequeño que sea, contiene infinitos racionales. La consecuencia es que no existe un racional siguiente a otro dado ni un racional positivo menor que todos los demás."
+        },
+        {
+          "texto": "$\\mathbb{Q}$ ✗ primer ni último elemento",
+          "explicacion": "El conjunto de los racionales no tiene un elemento mínimo ni uno máximo: para cualquier racional $r$, el racional $r$ menos uno es menor y el racional $r$ más uno es mayor. En este sentido se parece a los enteros, pero se diferencia de ellos porque ningún racional tiene un sucesor inmediato. Con los naturales ocurre al revés: existe un primer elemento, pero no existe un último."
+        },
+        {
+          "texto": "«Propiedad arquimediana»: múltiplos de un positivo superan a cualquier racional",
+          "explicacion": "Para cualquier racional positivo $r$ y cualquier racional $s$, existe un entero positivo $m$ tal que $m \\cdot r$ supera a $s$. Significa que no existen racionales positivos infinitamente pequeños ni infinitamente grandes respecto de otros. La propiedad debe su nombre a Arquímedes de Siracusa, quien la utilizó de forma implícita en sus cálculos de áreas y volúmenes."
+        }
+      ]
+    },
+    {
+      "titulo": "Representación decimal",
+      "puntos": [
+        {
+          "texto": "Todo racional ∈ decimal exacto o periódico",
+          "explicacion": "Al dividir el numerador entre el denominador de una fracción irreducible, los residuos son enteros menores que el denominador, por lo que solo hay una cantidad finita de posibilidades y alguno debe repetirse o anularse. Si llega a cero, el decimal es exacto; si se repite un residuo, las cifras se repiten desde ese punto y el decimal es periódico. El estudio detallado se hace en los temas 39, 40 y 41."
+        },
+        {
+          "texto": "Todo decimal exacto o periódico ∈ $\\mathbb{Q}$",
+          "explicacion": "Recíprocamente, todo decimal exacto o periódico se puede escribir como una fracción, llamada su generatriz, procedimiento que se desarrolla en el tema 40. Por tanto, los racionales son exactamente los números cuya representación decimal termina o se repite. Esta caracterización permite reconocer si un número es racional observando solo sus cifras."
+        }
+      ]
+    },
+    {
+      "titulo": "Límites de los racionales",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{2}$ es irracional: demostración por contradicción",
+          "explicacion": "Se supone que la raíz cuadrada de dos es una fracción irreducible $\\frac{a}{b}$. Entonces el cuadrado de $a$ es dos veces el cuadrado de $b$, de modo que $a^2$ es par, lo que obliga a que $a$ sea par, digamos $a$ igual a dos veces $c$. Al sustituir resulta que $b^2$ es dos veces $c^2$, y entonces $b$ también es par. Pero $a$ y $b$ no pueden ser ambos pares si la fracción es irreducible, lo que es una contradicción. Aristóteles menciona en sus Analíticos primeros esta demostración por paridad."
+        },
+        {
+          "texto": "«Número irracional» = número real no racional",
+          "explicacion": "Los números reales que no son racionales se llaman irracionales. Su representación decimal es ilimitada y no periódica, lo que los distingue de los decimales exactos y periódicos. Ejemplos clásicos son la raíz cuadrada de dos y el número $\\pi$. Su existencia muestra que los racionales no bastan para medir todas las longitudes."
+        },
+        {
+          "texto": "$\\mathbb{Q}$ ≠ completo: huecos entre racionales",
+          "explicacion": "Aunque los racionales son densos, la recta numérica tiene puntos que no corresponden a ningún racional. Existen sucesiones de racionales cada vez más próximas entre sí, como las aproximaciones decimales de la raíz cuadrada de dos, cuyo límite no es un racional. Richard Dedekind publicó en 1872 su obra Continuidad y números irracionales, donde construyó los números reales mediante cortaduras de racionales para llenar esos huecos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Sumar numeradores y denominadores por separado",
+          "explicacion": "Un error muy frecuente es sumar las fracciones $\\frac{1}{2}$ y $\\frac{1}{3}$ como $\\frac{2}{5}$. La suma correcta requiere un denominador común: $\\frac{3}{6}$ sumado con $\\frac{2}{6}$ da $\\frac{5}{6}$. El resultado erróneo ni siquiera es coherente, porque $\\frac{2}{5}$ es menor que $\\frac{1}{2}$, y la suma de dos positivos debe superar a cada sumando."
+        },
+        {
+          "texto": "Sumar el mismo número a numerador y denominador",
+          "explicacion": "La propiedad fundamental vale para productos y cocientes, no para sumas. Sumar el mismo número a ambos términos cambia el valor de la fracción: $\\frac{1}{2}$ es distinta de $\\frac{2}{3}$, que resulta de sumar uno a numerador y denominador. Para obtener una fracción equivalente hay que multiplicar o dividir ambos términos por el mismo entero distinto de cero."
+        },
+        {
+          "texto": "Mayor denominador ⇒ mayor fracción",
+          "explicacion": "Con numeradores iguales y positivos, la fracción es menor cuanto mayor es el denominador, porque la unidad se divide en más partes. Así, $\\frac{1}{5}$ es menor que $\\frac{1}{3}$. Confundir este criterio lleva a ordenar mal las fracciones, por lo que conviene comparar siempre mediante productos cruzados o llevándolas a un denominador común."
+        },
+        {
+          "texto": "Intentar dividir entre cero o invertir el cero",
+          "explicacion": "El cero no tiene inverso multiplicativo ni puede ser divisor. Expresiones como $\\frac{5}{0}$ carecen de sentido, y también la fracción $\\frac{0}{0}$. Una consecuencia es que, al simplificar una ecuación, no se puede dividir entre una expresión sin comprobar antes que no se anula."
+        }
+      ]
+    },
+    {
+      "titulo": "Distinciones",
+      "puntos": [
+        {
+          "texto": "Racional ≠ fracción",
+          "explicacion": "Un número racional es un valor y una fracción es una forma de escribirlo. Cada racional se representa con infinitas fracciones equivalentes. La distinción importa porque las propiedades de este tema se refieren al valor, es decir, a la clase de fracciones equivalentes, y no a la escritura particular elegida."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia",
+      "puntos": [
+        {
+          "texto": "El papiro Rhind (hacia 1650 a. C.) trata fracciones unitarias",
+          "explicacion": "El papiro Rhind es un documento matemático del antiguo Egipto copiado hacia el año 1650 antes de nuestra era por el escriba Ahmes. Contiene una tabla que expresa fracciones de numerador dos como sumas de fracciones unitarias, es decir, de numerador uno. Constituye una de las primeras fuentes escritas sobre el cálculo con racionales."
+        }
+      ]
+    }
+  ]
+}

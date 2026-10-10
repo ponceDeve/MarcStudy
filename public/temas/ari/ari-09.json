@@ -1,0 +1,120 @@
+{
+  "curso": "Aritmética",
+  "tema": "Relación de pertenencia",
+  "glosario": {
+    "pertenencia": "Relación entre objeto y conjunto que lo contiene",
+    "no pertenencia": "Negación de la relación de pertenencia",
+    "noción primitiva": "Concepto que se acepta sin definición previa",
+    "teoría axiomática": "Sistema que parte de axiomas sin definiciones previas",
+    "épsilon": "Letra griega base del símbolo de pertenencia"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de pertenencia",
+      "puntos": [
+        {
+          "texto": "La «pertenencia» relaciona un objeto con el conjunto que lo contiene.",
+          "explicacion": "La pertenencia es la relación básica de la teoría de conjuntos. Establece si un objeto forma parte de un conjunto, es decir, si es uno de sus elementos. Esta relación no compara conjuntos entre sí, sino que vincula un objeto individual con una colección. Toda la lógica de conjuntos se apoya en ella, porque la igualdad, la inclusión y las operaciones se definen en última instancia a partir de qué elementos pertenecen a cada conjunto."
+        },
+        {
+          "texto": "La pertenencia se escribe a ∈ A y se lee «a pertenece a A».",
+          "explicacion": "El símbolo ∈ se coloca entre el elemento y el conjunto, de modo que la expresión a ∈ A afirma que a es un elemento de A. La letra minúscula representa el objeto y la mayúscula el conjunto, según la convención del tema 07. Por ejemplo, 3 ∈ {1, 2, 3} es una afirmación verdadera, porque el número 3 aparece en la lista de elementos del conjunto."
+        },
+        {
+          "texto": "La «no pertenencia» se escribe con $\\notin$.",
+          "explicacion": "La negación de la pertenencia se expresa con el signo $\\notin$, que se lee «no pertenece a». Así, la expresión $4 \\notin \\{1, 2, 3\\}$ es verdadera, porque el número 4 no está en la lista. La no pertenencia es la negación exacta de la pertenencia: para cualquier objeto y cualquier conjunto, exactamente una de las dos relaciones se cumple, como se desarrolla en la siguiente card."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la pertenencia",
+      "puntos": [
+        {
+          "texto": "Todo objeto pertenece o no pertenece a un conjunto dado.",
+          "explicacion": "Dado un conjunto bien definido, cualquier objeto cumple una sola de las dos posibilidades: pertenecer al conjunto o no pertenecer a él. No existe un término medio. Esta propiedad se deriva de la exigencia de que los conjuntos estén bien definidos, estudiada en el tema 07, y permite decidir con certeza la validez de cada afirmación de pertenencia."
+        },
+        {
+          "texto": "Un conjunto puede ser elemento de otro conjunto.",
+          "explicacion": "La pertenencia no se restringe a los objetos simples, porque un conjunto también puede ser elemento de otro. Por ejemplo, en el conjunto $\\{\\{1, 2\\}, 3\\}$, el conjunto $\\{1, 2\\}$ es un elemento, mientras que los números 1 y 2 no lo son directamente. Esta distinción de niveles es la base de las estructuras jerárquicas de conjuntos que se estudian en el tema 08."
+        },
+        {
+          "texto": "La pertenencia relaciona elementos con conjuntos, no conjuntos con conjuntos.",
+          "explicacion": "Para comprobar si un conjunto pertenece a otro, hay que verificar si aparece como uno de sus elementos, y no si sus elementos están contenidos en el otro. Por ejemplo, $\\{1\\} \\in \\{1, 2\\}$ es falsa, porque el conjunto $\\{1\\}$ no aparece como elemento de $\\{1, 2\\}$, aunque el número 1 sí pertenezca a él. La relación entre un conjunto contenido en otro es distinta y se estudia en el tema 11."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de pertenencia",
+      "puntos": [
+        {
+          "texto": "El conjunto vacío no pertenece a sí mismo.",
+          "explicacion": "Como el conjunto vacío no tiene elementos, ningún objeto le pertenece, y en particular él mismo no le pertenece. La afirmación $\\emptyset \\notin \\emptyset$ es, por tanto, verdadera. Este resultado es un caso sencillo de la relación de no pertenencia, y muestra que un conjunto no siempre puede contenerse a sí mismo como elemento."
+        },
+        {
+          "texto": "El número 3 pertenece al conjunto de los números primos.",
+          "explicacion": "El número 3 cumple la propiedad de tener exactamente dos divisores positivos, que son 1 y él mismo, por lo que es un número primo. Como el conjunto de los números primos está formado por todos los números que cumplen esa propiedad, el 3 es uno de sus elementos. La definición del número primo se estudia en el tema 27, por lo que aquí solo se usa como ejemplo de pertenencia."
+        },
+        {
+          "texto": "El número 1 no pertenece al conjunto de los números primos.",
+          "explicacion": "El número 1 tiene un único divisor positivo, que es él mismo, por lo que no cumple la condición de tener exactamente dos divisores. Por ello no pertenece al conjunto de los números primos, y la afirmación $1 \\notin \\{\\text{números primos}\\}$ es verdadera. Este caso se usa con frecuencia para recordar que el 1 no es primo, un hecho que el curso desarrolla en el tema 27."
+        }
+      ]
+    },
+    {
+      "titulo": "Pertenencia e inclusión",
+      "puntos": [
+        {
+          "texto": "Pertenencia e inclusión no son la misma relación.",
+          "explicacion": "La pertenencia relaciona un objeto con un conjunto, mientras que la inclusión relaciona dos conjuntos. Por ejemplo, $2 \\in \\{1, 2, 3\\}$ es verdadera, pero $\\{2\\} \\subset \\{1, 2, 3\\}$ también lo es, mientras que $\\{2\\} \\in \\{1, 2, 3\\}$ es falsa. Confundir ambas relaciones es uno de los errores más frecuentes en el tema, y la inclusión se desarrolla por separado en el tema 11."
+        },
+        {
+          "texto": "Usar ∈ para decir que todos los elementos de A están en B es un error.",
+          "explicacion": "La expresión $A \\in B$ es sintácticamente correcta cuando A es un objeto que puede estar dentro de B, y puede ser verdadera o falsa. Sin embargo, si la intención es afirmar que todos los elementos de A están en B, la pertenencia no es el símbolo adecuado, porque esa afirmación corresponde a la inclusión, que relaciona dos conjuntos. Por eso conviene leer cada símbolo según lo que relaciona y verificar que el tipo de cada objeto coincida con el símbolo elegido."
+        }
+      ]
+    },
+    {
+      "titulo": "Noción primitiva",
+      "puntos": [
+        {
+          "texto": "En la teoría axiomática, la pertenencia es una noción primitiva.",
+          "explicacion": "Una noción primitiva es un concepto que se acepta sin definición previa, y su significado se fija mediante axiomas. La pertenencia se toma como primitiva porque cualquier definición de ella requeriría otra relación previa, lo que llevaría a un círculo. En lugar de definirla, la teoría axiomática enuncia reglas que describen cómo se comporta, por ejemplo, cuándo dos conjuntos tienen los mismos elementos."
+        },
+        {
+          "texto": "Ernst Zermelo formuló los primeros axiomas de la teoría de conjuntos en 1908.",
+          "explicacion": "Ernst Zermelo, matemático alemán nacido en 1871 y fallecido en 1953, presentó en 1908 un conjunto de axiomas para la teoría de conjuntos, con el objetivo de evitar las paradojas que habían aparecido en la teoría ingenua. Sus axiomas tratan la pertenencia como relación primitiva y permiten construir los conjuntos de forma controlada. Este sistema es el punto de partida de la teoría axiomática moderna."
+        },
+        {
+          "texto": "Abraham Fraenkel completó en 1922 el sistema axiomático de Zermelo.",
+          "explicacion": "Abraham Fraenkel, matemático alemán nacido en 1891 y fallecido en 1965, añadió en 1922 un axioma que faltaba en el sistema de Zermelo, lo que dio origen al sistema que hoy se llama Zermelo-Fraenkel. Este sistema sigue siendo el más usado en los fundamentos de las matemáticas. Su aporte mantiene la pertenencia como noción primitiva, sin cambiar su papel en la teoría."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia del símbolo",
+      "puntos": [
+        {
+          "texto": "Giuseppe Peano introdujo el símbolo de pertenencia en 1889.",
+          "explicacion": "Giuseppe Peano, matemático italiano nacido en 1858 y fallecido en 1932, empleó en 1889 un signo de pertenencia en su obra «Arithmetices principia, nova methodo exposita», con el que formalizó los axiomas de los números naturales. Su notación fue la primera que representó la relación de pertenencia con un símbolo específico, y de ella deriva el signo que se usa hoy."
+        },
+        {
+          "texto": "El símbolo ∈ deriva de la letra griega «épsilon».",
+          "explicacion": "El signo de pertenencia tiene su origen en la letra épsilon del alfabeto griego, cuya inicial coincide con la palabra griega para «es». Esta relación lingüística explica por qué la pertenencia se lee como «es elemento de» o «pertenece a». La forma del símbolo se estilizó en la notación matemática moderna, y hoy se usa en todos los textos de teoría de conjuntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir el número 1 con $\\{1\\}$ es un error frecuente.",
+          "explicacion": "El número 1 es un objeto, mientras que $\\{1\\}$ es un conjunto con un único elemento. Por eso $1 \\in \\{1\\}$ es verdadera, pero $\\{1\\} \\in \\{1\\}$ es falsa, porque el conjunto $\\{1\\}$ no es elemento de sí mismo. Esta diferencia es la base de los errores de nivel que aparecen en el tema 08 y en los posteriores."
+        },
+        {
+          "texto": "Confundir ∈ con $\\subset$ altera el significado de la relación.",
+          "explicacion": "El símbolo ∈ se usa entre un objeto y un conjunto, mientras que el símbolo de inclusión se usa entre dos conjuntos. Intercambiarlos cambia completamente el sentido de la afirmación, y puede producir conclusiones falsas en razonamientos que parecen correctos. La revisión del tipo de cada objeto antes de escribir el símbolo evita este error."
+        }
+      ]
+    }
+  ]
+}

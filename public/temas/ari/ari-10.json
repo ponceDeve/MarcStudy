@@ -1,0 +1,130 @@
+{
+  "curso": "Aritmética",
+  "tema": "Cardinalidad",
+  "glosario": {
+    "cardinal": "Número de elementos distintos de un conjunto",
+    "cardinalidad": "Medida del número de elementos de un conjunto",
+    "equipotentes": "Conjuntos que admiten correspondencia uno a uno",
+    "correspondencia uno a uno": "Emparejamiento que une elementos sin repetir ni sobrar",
+    "conjunto numerable": "Conjunto infinito que puede ordenarse en sucesión",
+    "conjunto no numerable": "Conjunto infinito que no admite enumeración completa",
+    "argumento diagonal": "Demostración que usa la diagonal de una lista"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de cardinal",
+      "puntos": [
+        {
+          "texto": "El «cardinal» de un conjunto es su número de elementos distintos.",
+          "explicacion": "El cardinal de un conjunto es la cantidad de elementos distintos que contiene. Se obtiene contando cada objeto una sola vez, de modo que los elementos repetidos no aumentan el resultado. Para un conjunto finito, el cardinal es un número natural, mientras que para un conjunto infinito no existe un número finito que lo represente. Esta noción es la base para comparar conjuntos según su tamaño, y se desarrolla en las demás cards de este tema."
+        },
+        {
+          "texto": "La «cardinalidad» se escribe $n(A)$ y se lee número de elementos de A.",
+          "explicacion": "La notación $n(A)$ indica la cardinalidad del conjunto A. Algunos textos usan en su lugar el símbolo $\\#A$, con el mismo significado. La letra n proviene de la palabra número, y el paréntesis encierra el conjunto cuyo cardinal se calcula. Así, $n(\\{a, b, c\\})$ representa la cantidad de elementos del conjunto formado por a, b y c, que es tres."
+        },
+        {
+          "texto": "Los elementos repetidos se cuentan una sola vez.",
+          "explicacion": "Como un conjunto no distingue entre apariciones repetidas de un mismo objeto, el cardinal considera cada elemento distinto una única vez. Por ejemplo, el conjunto $\\{1, 1, 2\\}$ es el mismo que $\\{1, 2\\}$, y su cardinalidad es dos. Esta regla es esencial al contar, porque una lista con repeticiones puede dar una cantidad mayor que el número real de elementos distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Cardinal de casos especiales",
+      "puntos": [
+        {
+          "texto": "El conjunto vacío tiene cardinal cero.",
+          "explicacion": "El conjunto vacío no tiene ningún elemento, por lo que su cardinal es cero. Este valor es el punto de partida de la escala de cardinales finitos, y permite describir incluso la ausencia de elementos con un número. El conjunto vacío y su papel en las relaciones entre conjuntos se estudian en el tema 08."
+        },
+        {
+          "texto": "Un conjunto unitario tiene cardinal uno.",
+          "explicacion": "Un conjunto unitario contiene exactamente un elemento, de modo que su cardinal es uno. Por ejemplo, el conjunto $\\{5\\}$ tiene cardinal uno, aunque el número 5 sea distinto del conjunto que lo contiene. La distinción entre un objeto y el conjunto que lo tiene como elemento se estudia en el tema 09, y el concepto de conjunto unitario en el tema 08."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjuntos finitos",
+      "puntos": [
+        {
+          "texto": "Un «conjunto finito» tiene cardinal que es un número natural.",
+          "explicacion": "Un conjunto es finito cuando su cardinal es un número natural, es decir, cuando sus elementos pueden contarse y el conteo termina. Los números naturales se estudian en el tema 16, y en este punto basta reconocer que el cardinal de un conjunto finito puede escribirse como cero, uno, dos, y así sucesivamente. Un conjunto que no cumple esta condición es infinito y no tiene cardinal natural."
+        },
+        {
+          "texto": "Contar exige asignar a cada elemento un número sin repetir.",
+          "explicacion": "Contar un conjunto finito consiste en emparejar cada elemento con un número natural, empezando por el primero y avanzando sin repetir ni omitir ninguno. El último número utilizado indica el cardinal del conjunto. Este procedimiento funciona porque cada elemento recibe un único número y cada número corresponde a un solo elemento, lo que anticipa la idea de correspondencia uno a uno que se estudia más adelante en el tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjuntos equipotentes",
+      "puntos": [
+        {
+          "texto": "Dos conjuntos son «equipotentes» si admiten correspondencia uno a uno.",
+          "explicacion": "Dos conjuntos son equipotentes cuando existe una manera de emparejar cada elemento de uno con un único elemento del otro, sin dejar elementos sin pareja. Esta relación compara conjuntos por su tamaño sin necesidad de contar sus elementos. Para conjuntos finitos coincide con la igualdad de cardinales, mientras que para conjuntos infinitos es el criterio principal de comparación."
+        },
+        {
+          "texto": "Dos conjuntos finitos son equipotentes si tienen el mismo cardinal.",
+          "explicacion": "Si dos conjuntos finitos tienen el mismo número de elementos, siempre es posible emparejarlos uno a uno, y recíprocamente. Por ello, para conjuntos finitos, la equipotencia y la igualdad de cardinales son dos formas equivalentes de decir lo mismo. Por ejemplo, el conjunto de las vocales y el conjunto de los días de un fin de semana son equipotentes, porque ambos tienen cinco elementos, y en este caso el conteo confirma la correspondencia."
+        },
+        {
+          "texto": "La «correspondencia uno a uno» empareja cada elemento con uno solo.",
+          "explicacion": "Una correspondencia uno a uno, también llamada biyección, es una relación que asigna a cada elemento de un conjunto exactamente un elemento del otro, de modo que ningún elemento queda sin pareja ni se repite. Es la herramienta central para comparar tamaños de conjuntos, incluidos los infinitos, y su formalización corresponde a las funciones estudiadas en el curso de álgebra."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjuntos infinitos",
+      "puntos": [
+        {
+          "texto": "Un «conjunto infinito» puede corresponder uno a uno con una parte propia.",
+          "explicacion": "Richard Dedekind propuso como criterio de infinitud que un conjunto es infinito si puede ponerse en correspondencia uno a uno con una parte propia de sí mismo. Un ejemplo clásico es la correspondencia $n \\mapsto 2n$ entre los naturales y los números pares, que son una parte propia de los naturales. Como los pares son parte de los naturales y sin embargo tienen el mismo tamaño, el criterio muestra que el infinito tiene propiedades distintas a las de los conjuntos finitos."
+        },
+        {
+          "texto": "Galileo Galilei observó que los cuadrados naturales son tan numerosos como los naturales.",
+          "explicacion": "Galileo Galilei, científico italiano nacido en 1564 y fallecido en 1642, notó en su obra «Discorsi e dimostrazioni matematiche intorno a due nuove scienze», publicada en 1638, que los cuadrados de los números naturales pueden emparejarse uno a uno con los naturales mismos, aunque sean una parte de ellos. Galileo consideró que esta paradoja mostraba los límites de aplicar a los infinitos las nociones de mayor y menor, idea que Cantor retomó más tarde."
+        },
+        {
+          "texto": "Georg Cantor demostró que existen infinitos de distinto tamaño.",
+          "explicacion": "Georg Cantor, matemático alemán nacido en 1845 y fallecido en 1918, mostró en 1874 que los números reales no pueden ponerse en correspondencia uno a uno con los naturales, lo que significa que los reales forman un infinito de tamaño mayor. Este resultado fue el primero en demostrar que no todos los infinitos son iguales, y abrió el estudio sistemático de los cardinales infinitos."
+        },
+        {
+          "texto": "Un «conjunto numerable» puede ponerse en sucesión con todos sus elementos.",
+          "explicacion": "Un conjunto infinito es numerable cuando sus elementos pueden listarse en una sucesión, de modo que cada elemento aparezca en algún lugar de la lista. Los números naturales son numerables de forma directa, y también lo son los números enteros y los racionales, aunque su listado requiere un orden cuidadoso. La numerabilidad es el tipo de infinitud más sencillo, y su contraparte es el conjunto no numerable."
+        },
+        {
+          "texto": "Los números reales forman un «conjunto no numerable» según el argumento diagonal.",
+          "explicacion": "Cantor demostró en 1891 que los números reales no pueden enumerarse en una sucesión completa, mediante un «argumento diagonal» que construye un número real distinto de todos los de cualquier lista propuesta. Si la lista pretendiera contenerlos todos, el número construido con las cifras de la diagonal sería diferente de cada uno en al menos una cifra. Por eso los reales son no numerables y tienen un tamaño infinito mayor que el de los naturales."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del cardinal",
+      "puntos": [
+        {
+          "texto": "Conjuntos iguales tienen el mismo cardinal.",
+          "explicacion": "Dos conjuntos iguales contienen exactamente los mismos elementos, por lo que cuentan la misma cantidad de objetos distintos. Esta propiedad es inmediata a partir de la definición de igualdad, que se estudia en el tema 11, y permite usar el cardinal para verificar si dos descripciones de un conjunto son equivalentes."
+        },
+        {
+          "texto": "Si A está contenido en B y ambos son finitos, $n(A) \\le n(B)$.",
+          "explicacion": "Cuando un conjunto finito está contenido en otro finito, la cantidad de sus elementos no puede superar la del conjunto que lo contiene. La desigualdad $n(A) \\le n(B)$ expresa esta idea, y la igualdad se cumple solo cuando ambos conjuntos son iguales. La relación de contención se estudia en el tema 11, y la operación de unión que relaciona los cardinales se desarrolla en el tema 13."
+        },
+        {
+          "texto": "El cardinal de un conjunto no depende del orden de sus elementos.",
+          "explicacion": "Al contar los elementos de un conjunto, el resultado es el mismo sin importar en qué orden se recorran. Por ejemplo, $\\{a, b, c\\}$ y $\\{c, a, b\\}$ tienen cardinal tres. Esta independencia del orden distingue a los conjuntos de las sucesiones, en las que sí importa la posición de cada término, como se estudia en el tema 60."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir el cardinal con el valor de sus elementos es frecuente.",
+          "explicacion": "El cardinal de un conjunto cuenta cuántos elementos tiene, no suma ni multiplica sus valores. Por ejemplo, el conjunto $\\{10, 20\\}$ tiene cardinal dos, aunque la suma de sus elementos sea treinta. Confundir ambos conceptos produce resultados absurdos al contar, por lo que conviene verificar siempre qué se pide antes de calcular."
+        },
+        {
+          "texto": "Afirmar que dos infinitos tienen igual tamaño por ser infinitos es un error.",
+          "explicacion": "Que dos conjuntos sean infinitos no garantiza que tengan el mismo tamaño, como muestra la diferencia entre los números naturales y los reales. Para comparar infinitos hay que verificar si existe una correspondencia uno a uno entre ellos. Esta distinción es uno de los resultados más importantes de la teoría y se usa en todos los temas que estudian conjuntos infinitos."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "curso": "Aritmética",
+  "tema": "Determinación de conjuntos",
+  "glosario": {
+    "conjunto": "Colección de objetos bien definidos",
+    "elemento": "Objeto que pertenece a un conjunto",
+    "bien definido": "Criterio que decide pertenencia sin ambigüedad",
+    "determinación por extensión": "Enumeración de todos los elementos del conjunto",
+    "determinación por comprensión": "Descripción mediante una propiedad común a los elementos",
+    "llaves": "Signos que encierran los elementos de un conjunto",
+    "puntos suspensivos": "Signos que indican continuación de un patrón evidente"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de conjunto",
+      "puntos": [
+        {
+          "texto": "Un «conjunto» es una colección de objetos bien definidos.",
+          "explicacion": "Un conjunto es una colección de objetos que se consideran como una totalidad. Los objetos que lo forman se llaman elementos. Para que una colección sea un conjunto, debe existir un criterio que permita decidir con certeza si cualquier objeto pertenece o no a ella. Por ejemplo, «los números pares menores que diez» es un conjunto, porque sabemos exactamente qué números lo integran. En cambio, una colección como «los días buenos del año» no es un conjunto, porque su criterio depende de la opinión de quien lo juzga."
+        },
+        {
+          "texto": "Un conjunto exige un criterio «bien definido» de pertenencia.",
+          "explicacion": "El criterio de pertenencia debe ser objetivo y aplicable a cualquier objeto, sin depender de la intención o del juicio de quien lo analiza. Esta exigencia garantiza que dos personas que aplican el mismo criterio obtengan el mismo resultado. Cuando la descripción es vaga o ambigua, la colección no define un conjunto en sentido estricto, y conviene reformular la propiedad hasta que la pertenencia quede resuelta."
+        },
+        {
+          "texto": "Los objetos de un conjunto se llaman «elementos».",
+          "explicacion": "Los elementos pueden ser números, letras, personas, figuras o incluso otros conjuntos, según el contexto. Un conjunto no puede contener un elemento dos veces con efectos distintos, y el orden en que se listan no tiene significado. Lo que define al conjunto es únicamente qué elementos contiene. Esta distinción entre el conjunto y sus elementos es la base de la relación de pertenencia, que se estudia en el tema 09."
+        },
+        {
+          "texto": "Los conjuntos se nombran con letras mayúsculas.",
+          "explicacion": "Por convención, los conjuntos se designan con letras mayúsculas como A, B, C o U, mientras que sus elementos se escriben con letras minúsculas o con sus propios símbolos numéricos. Esta distinción de tipografía evita confundir un conjunto con uno de sus elementos. La elección de la letra es libre, pero conviene usar letras que recuerden el contenido, como V para las vocales, cuando eso facilite la lectura del ejercicio."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinación por extensión",
+      "puntos": [
+        {
+          "texto": "La «determinación por extensión» enumera todos los elementos del conjunto.",
+          "explicacion": "La determinación por extensión describe un conjunto listando uno por uno todos sus elementos. Es el método más directo y resulta práctico cuando el número de elementos es pequeño. Por ejemplo, el conjunto de las vocales del alfabeto castellano se escribe enumerando a, e, i, o y u. El método es claro para conjuntos finitos, aunque se vuelve impracticable cuando la lista es muy extensa, y no puede aplicarse de forma completa a un conjunto infinito."
+        },
+        {
+          "texto": "Los elementos se escriben separados por comas, entre «llaves».",
+          "explicacion": "Las llaves son los signos que encierran la lista de elementos, y las comas separan a cada uno de ellos. Así, el conjunto formado por los números 1, 2 y 3 se escribe como $\\{1, 2, 3\\}$. Esta notación es universal en matemáticas y permite distinguir un conjunto de sus elementos, porque el número 1 no es lo mismo que el conjunto que lo contiene."
+        },
+        {
+          "texto": "El orden de los elementos no cambia el conjunto.",
+          "explicacion": "Dos listas que contienen los mismos elementos describen el mismo conjunto, sin importar en qué orden aparezcan. Por ejemplo, $\\{1, 2, 3\\}$ y $\\{3, 1, 2\\}$ son el mismo conjunto. El orden sí importa en otras estructuras, como las sucesiones, pero los conjuntos se definen solo por su contenido, y esta diferencia debe tenerse presente al estudiar las sucesiones en el tema 60."
+        },
+        {
+          "texto": "Repetir un elemento no crea un elemento nuevo.",
+          "explicacion": "Si un elemento aparece varias veces en la lista, el conjunto lo contiene una sola vez. Por eso la notación $\\{1, 1, 2\\}$ describe el mismo conjunto que $\\{1, 2\\}$. La repetición puede parecer inofensiva, pero es importante al contar elementos, porque el cardinal se calcula sobre los elementos distintos, como se estudia en el tema 10."
+        },
+        {
+          "texto": "Los «puntos suspensivos» reemplazan elementos de un patrón evidente.",
+          "explicacion": "Los puntos suspensivos indican que la lista continúa siguiendo un patrón claro, y solo deben usarse cuando ese patrón es inequívoco. Por ejemplo, $\\{1, 2, 3, \\ldots, 10\\}$ describe los números del 1 al 10 de manera comprensible. Si el patrón no es evidente, la notación se vuelve ambigua, porque distintos lectores pueden continuar la lista de maneras diferentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinación por comprensión",
+      "puntos": [
+        {
+          "texto": "La «determinación por comprensión» enuncia una propiedad común a los elementos.",
+          "explicacion": "La determinación por comprensión describe un conjunto mediante una propiedad que cumplen todos sus elementos y solo ellos. Es el método apropiado cuando el conjunto es grande o infinito, porque no requiere listar sus elementos. Por ejemplo, el conjunto de los números pares mayores que cero y menores que diez puede describirse por su propiedad, en lugar de enumerar sus elementos. Ambos métodos son equivalentes cuando describen exactamente el mismo conjunto."
+        },
+        {
+          "texto": "La notación $\\{x \\mid P(x)\\}$ se lee como «los x tales que P(x)».",
+          "explicacion": "En la notación de comprensión, la letra x representa un elemento genérico, la barra vertical se lee como «tal que» y $P(x)$ es la propiedad que deben cumplir los elementos. Así, $\\{x \\mid x \\text{ es par y } 0 < x < 10\\}$ describe el mismo conjunto que la lista de los números pares del 2 al 8. La barra no es un conectivo lógico, sino un separador que introduce la propiedad."
+        },
+        {
+          "texto": "Una propiedad válida debe decidir la pertenencia de cualquier objeto.",
+          "explicacion": "Para que una descripción por comprensión sea correcta, cada objeto del universo debe poder clasificarse como perteneciente o no perteneciente al conjunto. Si la propiedad es vaga, como «los números grandes», algunos objetos quedan en una zona gris y el conjunto no está bien determinado. La solución es precisar la propiedad, por ejemplo, con un límite numérico exacto."
+        }
+      ]
+    },
+    {
+      "titulo": "Elección del método",
+      "puntos": [
+        {
+          "texto": "Un conjunto pequeño y finito se determina mejor por extensión.",
+          "explicacion": "Cuando un conjunto tiene pocos elementos, listarlos es la forma más clara y segura de describirlo, porque el lector puede verificar cada elemento sin interpretar una propiedad. Por ejemplo, el conjunto de los divisores positivos de 6 se escribe como $\\{1, 2, 3, 6\\}$ con total precisión. La extensión evita errores de interpretación en situaciones donde la propiedad sería más compleja que la lista misma."
+        },
+        {
+          "texto": "Un conjunto infinito se determina habitualmente por comprensión.",
+          "explicacion": "Un conjunto infinito no puede listarse completo, así que su descripción debe basarse en una propiedad que permita reconocer a cada uno de sus elementos. Por ejemplo, el conjunto de los números pares positivos se describe como el conjunto de los números que son múltiplos de dos. Esta forma de descripción es la que permite trabajar con conjuntos infinitos sin contradicciones, como se estudiará al tratar la cardinalidad en el tema 10."
+        },
+        {
+          "texto": "Dos descripciones distintas pueden determinar el mismo conjunto.",
+          "explicacion": "Un mismo conjunto puede describirse de varias formas. Por ejemplo, $\\{1, 2, 3\\}$ y $\\{x \\mid x \\text{ es entero y } 0 < x < 4\\}$ determinan el mismo conjunto, porque sus elementos coinciden exactamente. Reconocer esta equivalencia es útil para comparar conjuntos escritos con notaciones diferentes, y para decidir cuál descripción es más conveniente en un problema concreto."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjuntos numéricos de referencia",
+      "puntos": [
+        {
+          "texto": "Los conjuntos numéricos básicos se estudian en temas posteriores.",
+          "explicacion": "Los conjuntos de números naturales, enteros y racionales se describen con los métodos de este tema, pero su estudio detallado corresponde a otros temas del curso. Los números naturales se desarrollan en el tema 16, los enteros en el tema 21 y los racionales en el tema 36. Aquí solo se usan como ejemplos de conjuntos bien definidos, sin desarrollar sus propiedades."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de la teoría",
+      "puntos": [
+        {
+          "texto": "Georg Cantor es considerado fundador de la teoría de conjuntos.",
+          "explicacion": "Georg Cantor, matemático alemán nacido en 1845 y fallecido en 1918, desarrolló en la segunda mitad del siglo XIX los primeros resultados sistemáticos sobre conjuntos infinitos. Su trabajo introdujo la idea de comparar conjuntos según su tamaño, y dio origen a una disciplina que se convirtió en el fundamento común de las matemáticas. La teoría de conjuntos que se estudia en el curso es una versión elemental de las ideas que Cantor formuló."
+        },
+        {
+          "texto": "Richard Dedekind contribuyó a la noción precisa de conjunto.",
+          "explicacion": "Richard Dedekind, matemático alemán nacido en 1831 y fallecido en 1916, trabajó en la fundamentación de los números y en la noción de conjunto como colección de objetos determinada por sus elementos. Sus aportes se consideran antecedentes directos de la formalización moderna de los conjuntos. Su obra complementa la de Cantor, aunque ambos trabajaron de manera independiente en distintos aspectos del problema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Una descripción vaga no determina un conjunto.",
+          "explicacion": "Expresiones como «los jóvenes altos» o «las cosas importantes» no permiten decidir con certeza qué objetos pertenecen a la colección, porque dependen del criterio de quien las interpreta. Un conjunto requiere una propiedad precisa, y la falta de precisión impide aplicar cualquier razonamiento sobre él. Por eso, en los ejercicios de este tema, toda descripción debe revisarse para asegurar que su criterio sea objetivo."
+        },
+        {
+          "texto": "Usar puntos suspensivos sin patrón claro produce ambigüedad.",
+          "explicacion": "Los puntos suspensivos son útiles solo cuando el lector puede inferir con seguridad los elementos omitidos. Una lista como $\\{2, 3, 5, \\ldots\\}$ es ambigua, porque podría continuar con los números primos o con otra secuencia. En ese caso conviene describir el conjunto por comprensión, con una propiedad que no deje dudas sobre sus elementos."
+        }
+      ]
+    }
+  ]
+}

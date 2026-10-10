@@ -1,0 +1,314 @@
+{
+  "curso": "Aritmética",
+  "tema": "Elementos de estadística",
+  "glosario": {
+    "estadística": "Ciencia que organiza e interpreta datos.",
+    "estadística descriptiva": "Resume los datos observados.",
+    "estadística inferencial": "Generaliza de la muestra a la población.",
+    "dato": "Valor observado de una característica.",
+    "población": "Conjunto de todos los individuos de estudio.",
+    "muestra": "Subconjunto observado de la población.",
+    "censo": "Observación de toda la población.",
+    "parámetro": "Valor que resume a la población.",
+    "estadístico": "Valor calculado con los datos muestrales.",
+    "variable": "Característica que varía entre individuos.",
+    "variable cualitativa": "Variable cuyos valores son categorías.",
+    "variable cuantitativa": "Variable cuyos valores son números.",
+    "variable cuantitativa discreta": "Variable de valores aislados contados.",
+    "variable cuantitativa continua": "Variable que toma cualquier valor del intervalo.",
+    "muestreo": "Procedimiento para seleccionar la muestra.",
+    "estrato": "Grupo homogéneo dentro de la población.",
+    "sesgo": "Error sistemático de la muestra.",
+    "frecuencia absoluta": "Cantidad de veces que aparece un valor.",
+    "frecuencia relativa": "Frecuencia absoluta dividida entre el total.",
+    "frecuencia absoluta acumulada": "Suma de frecuencias hasta un valor.",
+    "rango": "Diferencia entre máximo y mínimo.",
+    "marca de clase": "Punto medio de un intervalo.",
+    "histograma": "Barras contiguas sobre intervalos de clase.",
+    "ojiva": "Gráfico de frecuencias acumuladas.",
+    "polígono de frecuencias": "Línea que une marcas de clase."
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de estadística",
+      "puntos": [
+        {
+          "texto": "«Estadística» = ciencia que organiza e interpreta datos",
+          "explicacion": "La estadística es la disciplina que se ocupa de recoger, organizar, presentar, analizar e interpretar datos para describir fenómenos y apoyar decisiones. Su materia prima son los datos, observaciones o mediciones de una o varias características de un grupo de individuos u objetos. Dentro de este tema se estudian sus elementos básicos: población, muestra, variables, tablas de frecuencias y gráficos; las medidas que resumen los datos se tratan en los temas siguientes."
+        },
+        {
+          "texto": "Dato = valor observado de una característica",
+          "explicacion": "Un dato es el valor que se registra al observar o medir una característica en un individuo. Puede ser una categoría, como el color de ojos, o un número, como la estatura. El conjunto de todos los datos recogidos en un estudio forma la información en bruto que luego se ordena en tablas y se representa en gráficos."
+        },
+        {
+          "texto": "«Estadística descriptiva» = resumir datos con tablas, gráficos y medidas",
+          "explicacion": "La estadística descriptiva reúne los procedimientos para organizar y resumir los datos observados, sin ir más allá de ellos: construye tablas de frecuencias, elabora gráficos y calcula medidas de tendencia central (temas 65 al 72) y de dispersión (temas 73 al 75). Sus conclusiones se refieren únicamente al conjunto de datos que se tiene."
+        },
+        {
+          "texto": "«Estadística inferencial» = generalizar de la muestra a la población",
+          "explicacion": "La estadística inferencial usa los datos de una muestra para formular conclusiones sobre la población de la que procede, acompañadas de una medida de su grado de incertidumbre. Se apoya en la teoría de probabilidades, que se introduce en los temas 81 al 86. Su aplicación depende de que la muestra haya sido seleccionada con un procedimiento adecuado."
+        }
+      ]
+    },
+    {
+      "titulo": "Población y muestra",
+      "puntos": [
+        {
+          "texto": "«Población» = conjunto de todos los individuos de estudio",
+          "explicacion": "La población es el conjunto completo de individuos, objetos o mediciones sobre los cuales se desea obtener información. Su definición debe ser precisa respecto de qué elementos incluye, dónde y cuándo. Puede ser finita, como los alumnos de un colegio, o infinita, como todos los lanzamientos posibles de una moneda. Su tamaño se representa con la letra $N$."
+        },
+        {
+          "texto": "«Muestra» = subconjunto observado de la población",
+          "explicacion": "La muestra es un subconjunto de la población que se selecciona para ser observado en lugar de la población completa. Su tamaño se representa con $n$ y se cumple $n \\leq N$. Se recurre a ella cuando observar toda la población es muy costoso, lento o imposible, por ejemplo cuando la medición destruye el objeto observado."
+        },
+        {
+          "texto": "Individuo = unidad que se observa",
+          "explicacion": "El individuo o unidad estadística es cada elemento de la población sobre el que se registra algún dato. No tiene que ser una persona: puede ser un animal, un objeto, un hogar o un instante. Los datos de un estudio son los valores que toma la característica en cada individuo."
+        },
+        {
+          "texto": "«Censo» = observar a todos los individuos de la población",
+          "explicacion": "Un censo es el estudio en que se recoge información de todos los individuos de la población, sin dejar ninguno. Proporciona valores exactos, pero requiere mucho tiempo y recursos y no es posible cuando la población es infinita o la observación destruye al individuo. Por eso suele sustituirse por el estudio de una muestra."
+        },
+        {
+          "texto": "«Parámetro» = valor que resume a la población",
+          "explicacion": "Un parámetro es una cantidad que describe una característica de toda la población, como su promedio o su proporción. Su valor es fijo, pero suele desconocerse. Se designa con letras griegas en los textos de estadística inferencial."
+        },
+        {
+          "texto": "«Estadístico» = valor calculado con los datos de la muestra",
+          "explicacion": "Un estadístico es una cantidad calculada a partir de los datos de una muestra y se usa para estimar el parámetro correspondiente. A diferencia del parámetro, su valor cambia de una muestra a otra. Distinguir ambos conceptos evita atribuir a la población un resultado que solo se observó en una muestra."
+        },
+        {
+          "texto": "Muestra representativa = refleja las características de la población",
+          "explicacion": "Una muestra es representativa cuando reproduce, en proporción, las características relevantes de la población, de modo que lo que se observe en ella pueda extenderse con razonable confianza. La representatividad depende del procedimiento de selección más que del tamaño: una muestra grande pero mal elegida puede ser engañosa."
+        }
+      ]
+    },
+    {
+      "titulo": "Variables estadísticas",
+      "puntos": [
+        {
+          "texto": "«Variable estadística» = característica que varía entre individuos",
+          "explicacion": "Una variable estadística es la característica que se observa en los individuos y que puede tomar valores distintos de un individuo a otro, como la estatura, la edad o el color preferido. Se denota con letras mayúsculas como $X$, y sus valores concretos con minúsculas $x_1, x_2, \\ldots$. Según la naturaleza de esos valores, se clasifican en cualitativas y cuantitativas."
+        },
+        {
+          "texto": "Variable cualitativa = valores son cualidades o categorías",
+          "explicacion": "Una variable cualitativa, o categórica, expresa atributos o categorías no numéricas, como el estado civil, el color de ojos o el distrito de residencia. Aunque se codifiquen con números, los códigos solo identifican categorías y no admiten operaciones aritméticas con sentido. Se divide en nominal y ordinal."
+        },
+        {
+          "texto": "Variable cualitativa nominal = categorías sin orden",
+          "explicacion": "En una variable nominal, las categorías son simplemente nombres que identifican clases y no tienen un orden natural: el grupo sanguíneo, el color preferido o el departamento de nacimiento. Solo se puede decir si dos individuos pertenecen o no a la misma categoría."
+        },
+        {
+          "texto": "Variable cualitativa ordinal = categorías con orden natural",
+          "explicacion": "En una variable ordinal, las categorías tienen un orden natural, pero la distancia entre ellas no está definida: el grado de instrucción (primaria, secundaria, superior) o la calificación (deficiente, regular, bueno). Se puede decir cuál categoría es mayor, pero no cuánto mayor."
+        },
+        {
+          "texto": "Variable cuantitativa = valores son números medidos o contados",
+          "explicacion": "Una variable cuantitativa expresa cantidades numéricas obtenidas por conteo o por medición, de modo que tiene sentido operar con sus valores y compararlas por diferencia. Se divide en discretas y continuas, según el conjunto de valores que pueden tomar."
+        },
+        {
+          "texto": "Variable cuantitativa discreta = valores aislados, resultado de contar",
+          "explicacion": "Una variable discreta toma valores separados entre sí, por lo general números enteros, y proviene de contar: número de hijos, de hermanos o de aciertos en una prueba. Entre dos valores consecutivos no hay valores posibles intermedios."
+        },
+        {
+          "texto": "Variable cuantitativa continua = cualquier valor en un intervalo",
+          "explicacion": "Una variable continua puede tomar cualquier valor dentro de un intervalo y proviene de medir: estatura, peso, tiempo o temperatura. En la práctica, los valores se registran con cierta precisión, pero se consideran continuos por poder ser tan precisos como se desee."
+        },
+        {
+          "texto": "Escala de intervalo = orden y distancia sin cero absoluto",
+          "explicacion": "En la escala de intervalo, las diferencias entre valores tienen significado, pero el cero es una convención y no indica ausencia de la magnitud. Un ejemplo es la temperatura en grados Celsius: la diferencia entre 20 y 30 grados es igual a la de 30 a 40, pero 40 grados no es el doble de caliente que 20."
+        },
+        {
+          "texto": "Escala de razón = orden, distancia y cero absoluto",
+          "explicacion": "En la escala de razón, además de orden y distancia, el cero indica ausencia total de la magnitud, de modo que los cocientes tienen sentido: 40 kilogramos es el doble de 20. Son de este tipo el peso, la longitud, el tiempo transcurrido y los conteos."
+        },
+        {
+          "texto": "Cuatro escalas de medición = nominal, ordinal, de intervalo y de razón",
+          "explicacion": "La clasificación en cuatro niveles fue propuesta por Stanley Smith Stevens, psicólogo estadounidense, en 1946. Cada escala permite más operaciones que la anterior: la nominal solo distingue, la ordinal ordena, la de intervalo mide diferencias y la de razón permite cocientes. El nivel de la variable determina qué medidas y gráficos son apropiados."
+        }
+      ]
+    },
+    {
+      "titulo": "Técnicas de muestreo",
+      "puntos": [
+        {
+          "texto": "«Muestreo» = procedimiento para seleccionar la muestra",
+          "explicacion": "El muestreo es el conjunto de procedimientos para elegir los individuos de la muestra a partir de la población. Se divide en probabilístico, donde cada individuo tiene una probabilidad conocida de ser elegido, y no probabilístico, donde la selección depende del criterio del investigador. Solo el primero permite estimar el error cometido al generalizar."
+        },
+        {
+          "texto": "Muestreo aleatorio simple = todos tienen igual probabilidad de elegirse",
+          "explicacion": "En el muestreo aleatorio simple, todos los subconjuntos posibles de $n$ individuos tienen la misma probabilidad de ser la muestra. Se aplica numerando a los individuos y sorteando los números, por ejemplo con una tabla de números aleatorios. Es el más sencillo, pero exige contar con la lista completa de la población."
+        },
+        {
+          "texto": "Muestreo estratificado = muestra proporcional en cada estrato",
+          "explicacion": "En el muestreo estratificado la población se divide en grupos homogéneos llamados estratos, como niveles de instrucción o zonas geográficas, y de cada estrato se extrae una muestra aleatoria, por lo general en proporción a su tamaño. Garantiza que todos los estratos estén representados."
+        },
+        {
+          "texto": "Muestreo sistemático = un individuo cada $k$ posiciones",
+          "explicacion": "En el muestreo sistemático se ordena la población, se calcula el intervalo de selección $k = N/n$ (redondeado) y se elige al azar un punto de partida entre los primeros $k$ individuos; luego se toma uno de cada $k$. Es fácil de aplicar, pero puede sesgarse si la lista tiene un patrón periódico."
+        },
+        {
+          "texto": "Muestreo por conglomerados = elegir grupos completos",
+          "explicacion": "En el muestreo por conglomerados, la población se divide en grupos naturales, como colegios o manzanas, que se parecen entre sí, y se eligen al azar algunos grupos completos para observar a todos sus integrantes. Reduce costos cuando la población está dispersa, aunque suele ser menos preciso."
+        },
+        {
+          "texto": "Muestreo no probabilístico ⇒ riesgo de sesgo",
+          "explicacion": "En los procedimientos no probabilísticos, como el muestreo por conveniencia, se toma a los individuos más accesibles. Pueden producir sesgo, es decir, errores sistemáticos que hacen que la muestra no refleje a la población. Por eso sus resultados no deben generalizarse sin reservas."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla de frecuencias",
+      "puntos": [
+        {
+          "texto": "«Tabla de frecuencias» = valores con la cantidad de veces que ocurren",
+          "explicacion": "La tabla de distribución de frecuencias organiza los datos: en una columna se anotan los valores o categorías de la variable y en las otras las frecuencias correspondientes. Resume muchos datos en pocas filas y es el paso previo a los gráficos y al cálculo de medidas. El número de valores distintos o de clases se representa con $k$."
+        },
+        {
+          "texto": "Frecuencia absoluta = cantidad de veces que aparece un valor",
+          "explicacion": "La frecuencia absoluta $f_i$ es el número de veces que se repite el valor $x_i$ en la muestra. Las frecuencias absolutas son enteros no negativos y su suma es el tamaño de la muestra: $f_1 + f_2 + \\cdots + f_k = n$."
+        },
+        {
+          "texto": "Frecuencia relativa = frecuencia absoluta dividida entre el total",
+          "explicacion": "La frecuencia relativa de un valor es $$h_i = \\frac{f_i}{n}$$ y expresa la proporción de datos que toman ese valor. Cumple $0 \\leq h_i \\leq 1$ y la suma de todas es igual a 1. Permite comparar muestras de tamaños distintos."
+        },
+        {
+          "texto": "Frecuencia porcentual = frecuencia relativa por cien",
+          "explicacion": "La frecuencia porcentual es $h_i \\times 100$ y expresa la proporción como porcentaje; la suma de todas las porcentuales es 100. Es la forma más usada para presentar resultados al público, aunque los porcentajes como tema aparte se estudian en el tema 49, Porcentajes."
+        },
+        {
+          "texto": "Frecuencia absoluta acumulada = suma de frecuencias hasta ese valor",
+          "explicacion": "La frecuencia absoluta acumulada $F_i$ es el número de datos menores o iguales que el valor $x_i$: $F_i = f_1 + f_2 + \\cdots + f_i$. Solo tiene sentido en variables que admiten orden, es decir, ordinales o cuantitativas. La última es igual al tamaño de la muestra: $F_k = n$."
+        },
+        {
+          "texto": "Frecuencia relativa acumulada = proporción de datos hasta ese valor",
+          "explicacion": "La frecuencia relativa acumulada es $H_i = F_i/n$ o, de manera equivalente, $H_i = h_1 + \\cdots + h_i$. Indica qué proporción de los datos es menor o igual que $x_i$; la última vale 1. Es la base de la ojiva y de la lectura de posiciones relativas."
+        },
+        {
+          "texto": "Tabla con datos no agrupados = un valor por fila",
+          "explicacion": "Cuando la variable tiene pocos valores distintos, cada valor ocupa una fila. Por ejemplo, para las notas 10, 12, 12, 14, 10, 12, 16, 14, 12, 10 ($n = 10$) se obtiene: 10 con $f = 3$, 12 con $f = 4$, 14 con $f = 2$ y 16 con $f = 1$; las frecuencias relativas son 0,3; 0,4; 0,2 y 0,1, y las acumuladas absolutas son 3, 7, 9 y 10."
+        },
+        {
+          "texto": "Tabla con datos agrupados = intervalos de clase",
+          "explicacion": "Cuando hay muchos valores distintos, o la variable es continua, los datos se agrupan en intervalos de clase y se anota cuántos datos caen en cada uno. Se pierde el valor exacto de cada dato, pero se gana claridad. Los intervalos no deben traslaparse y deben cubrir todos los datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos de clase",
+      "puntos": [
+        {
+          "texto": "Rango = valor máximo menos valor mínimo",
+          "explicacion": "El rango, o amplitud total, es $R = x_{\\max} - x_{\\min}$, la diferencia entre el mayor y el menor de los datos. Mide la extensión que abarcan los datos y es el punto de partida para fijar la amplitud de los intervalos. Algunos textos agregan una unidad cuando los datos son enteros; la convención usada debe mantenerse en todo el cálculo."
+        },
+        {
+          "texto": "Regla de Sturges = $k = 1 + 3{,}322 \\log n$",
+          "explicacion": "La regla de Sturges sugiere el número de intervalos $$k = 1 + 3{,}322\\,\\log_{10} n$$ redondeado al entero más cercano. Fue propuesta por Herbert Sturges, estadístico estadounidense, en 1926. Para $n = 40$ resulta $k = 1 + 3{,}322 \\cdot 1{,}602 \\approx 6{,}3$, es decir, 6 intervalos. Es una orientación, no una ley."
+        },
+        {
+          "texto": "Amplitud de clase = rango dividido entre el número de intervalos",
+          "explicacion": "La amplitud, o ancho de clase, es $$A = \\frac{R}{k}$$ redondeada hacia arriba con la precisión de los datos, para que los intervalos abarquen todos los valores. Si el mínimo es 10 y el máximo es 45, con $k = 6$, resulta $R = 35$ y $A = 35/6 \\approx 5{,}8$, que se toma como 6."
+        },
+        {
+          "texto": "Límites de clase = valores extremos de cada intervalo",
+          "explicacion": "Cada intervalo se escribe con su límite inferior $a_i$ y su límite superior $b_i$, con $b_i - a_i = A$. Con amplitud constante, el límite superior de un intervalo es el inferior del siguiente. El primer intervalo comienza en un valor igual o menor al mínimo de los datos."
+        },
+        {
+          "texto": "Convención de intervalos = cerrado a la izquierda y abierto a la derecha",
+          "explicacion": "Para que cada dato pertenezca a un solo intervalo, se acuerda que cada intervalo $[a_i, b_i)$ incluya su límite inferior y excluya el superior, con excepción del último, que puede incluir ambos. Así, un dato igual a 16 se cuenta en $[16, 22)$ y no en $[10, 16)$."
+        },
+        {
+          "texto": "Marca de clase = punto medio del intervalo",
+          "explicacion": "La marca de clase de un intervalo es $x_i = (a_i + b_i)/2$, el punto medio. Representa a todos los datos del intervalo en los cálculos y gráficos. El intervalo $[16, 22)$ tiene marca de clase 19. Su uso supone que los datos se reparten de manera aproximadamente uniforme dentro de cada intervalo."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráficos estadísticos",
+      "puntos": [
+        {
+          "texto": "Diagrama de barras = barras separadas para cada valor",
+          "explicacion": "El diagrama de barras representa cada categoría o valor mediante una barra cuya altura es proporcional a su frecuencia. Las barras tienen igual ancho y están separadas entre sí. Se usa para variables cualitativas y para cuantitativas discretas."
+        },
+        {
+          "texto": "Histograma = barras contiguas sobre intervalos",
+          "explicacion": "El histograma representa las frecuencias de una variable continua con rectángulos unidos cuyas bases son los intervalos de clase y cuyas alturas son proporcionales a las frecuencias. No hay espacios entre rectángulos porque los intervalos son consecutivos. Con amplitudes iguales, la altura es la frecuencia; con distintas, es la frecuencia dividida entre la amplitud."
+        },
+        {
+          "texto": "Histograma ≠ diagrama de barras",
+          "explicacion": "Aunque se parecen, el histograma representa variables continuas agrupadas, con barras contiguas cuya área expresa la frecuencia; el diagrama de barras representa categorías o valores aislados, con barras separadas cuya altura expresa la frecuencia. Emplear un histograma para una variable cualitativa es un error."
+        },
+        {
+          "texto": "Polígono de frecuencias = línea que une marcas de clase",
+          "explicacion": "El polígono de frecuencias se traza uniendo con segmentos los puntos formados por la marca de clase de cada intervalo y su frecuencia. Para cerrarlo, se añade un intervalo vacío a cada extremo. Permite comparar distribuciones superponiendo varios polígonos."
+        },
+        {
+          "texto": "Ojiva = gráfico de frecuencias acumuladas",
+          "explicacion": "La ojiva es la línea que une los puntos formados por el límite superior de cada intervalo y su frecuencia acumulada, partiendo de cero en el límite inferior del primer intervalo. Es creciente y termina en $n$ o en 1. Permite leer cuántos datos son menores que un valor dado."
+        },
+        {
+          "texto": "Gráfico circular = sectores proporcionales a la frecuencia",
+          "explicacion": "El gráfico circular divide un círculo en sectores cuyo ángulo central es $h_i \\times 360$ grados. Muestra las proporciones de un todo y se emplea sobre todo con variables cualitativas con pocas categorías. Por ejemplo, si una categoría tiene frecuencia relativa 0,25, su sector mide $0{,}25 \\times 360 = 90$ grados. Con muchas categorías los sectores se vuelven pequeños y difíciles de comparar, por lo que en esos casos resulta preferible un diagrama de barras."
+        },
+        {
+          "texto": "Diagrama de tallos y hojas = datos separados en tallo y hoja",
+          "explicacion": "El diagrama de tallos y hojas muestra los datos separando cada valor en tallo, las cifras iniciales, y hoja, la última cifra, de modo que conserva los valores originales mientras exhibe la forma de la distribución. Lo popularizó John Wilder Tukey, estadístico estadounidense, en su libro Exploratory Data Analysis, de 1977."
+        },
+        {
+          "texto": "Pictograma = dibujos que representan cantidades",
+          "explicacion": "El pictograma usa un dibujo que representa una cantidad fija, repetido tantas veces como corresponda a cada categoría. Es ilustrativo y llamativo, pero menos preciso que las barras cuando se necesitan fracciones del dibujo. Para que la comparación sea correcta, todos los dibujos deben tener el mismo tamaño y la leyenda debe indicar cuántas unidades representa cada uno; si se agranda el dibujo en lugar de repetirlo, la impresión visual exagera las diferencias."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error frecuente: confundir parámetro con estadístico",
+          "explicacion": "Afirmar que el promedio de una muestra es el promedio de la población confunde un estadístico con el parámetro. El estadístico solo estima el parámetro y puede variar entre muestras. Si dos muestras distintas de una misma población dan promedios diferentes, ambos son estadísticos válidos, mientras que el parámetro poblacional es un único valor fijo, que puede seguir siendo desconocido. Es conveniente indicar siempre si una cifra proviene de una muestra o de toda la población."
+        },
+        {
+          "texto": "Error frecuente: clasificar la variable por su codificación",
+          "explicacion": "Una variable no es cuantitativa solo porque sus categorías estén codificadas con números. El número de documento o el código de distrito identifican categorías y no tiene sentido promediarlos. Debe clasificarse según lo que representa."
+        },
+        {
+          "texto": "Error frecuente: intervalos que se traslapan o dejan huecos",
+          "explicacion": "Si dos intervalos comparten valores, un dato puede contarse dos veces; si hay huecos, algún dato queda fuera. Con la convención de cerrado a la izquierda y abierto a la derecha, los límites coinciden sin repetir ningún dato."
+        },
+        {
+          "texto": "Error frecuente: acumular frecuencias de variables nominales",
+          "explicacion": "Las frecuencias acumuladas solo tienen sentido cuando los valores tienen un orden. En una variable nominal como el color preferido, el orden de las categorías es arbitrario y la acumulada cambiaría con solo reordenarlas. Por ejemplo, la frecuencia acumulada hasta el color verde sería distinta según se ordenen los colores alfabéticamente o por preferencia. En esos casos se usan solo las frecuencias absolutas, relativas y porcentuales, que no dependen del orden de las categorías."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia estadística",
+      "puntos": [
+        {
+          "texto": "John Graunt (1662) → análisis de registros de mortalidad",
+          "explicacion": "John Graunt, comerciante inglés, publicó en 1662 sus Observaciones naturales y políticas sobre los boletines de mortalidad, donde organizó los registros de fallecimientos de Londres y observó regularidades en ellos. Se considera una de las primeras obras de análisis estadístico de datos."
+        },
+        {
+          "texto": "Gottfried Achenwall (1749) → término Statistik",
+          "explicacion": "A Gottfried Achenwall, economista alemán de la Universidad de Gotinga, se atribuye el uso del término alemán Statistik hacia 1749, con el sentido de descripción de los hechos notables del Estado. De allí proviene la palabra estadística."
+        },
+        {
+          "texto": "William Playfair (1786, 1801) → gráficos de barras y circular",
+          "explicacion": "William Playfair, ingeniero y economista escocés, introdujo el gráfico de barras en su Atlas comercial y político, de 1786, y el gráfico circular en su Breviario estadístico, de 1801, para presentar datos económicos. Con ellos buscó que las cifras de comercio y de deuda de las naciones pudieran compararse de un vistazo, sin recorrer largas tablas numéricas. Sus gráficos se consideran el origen de la representación gráfica moderna de datos estadísticos."
+        },
+        {
+          "texto": "Adolphe Quetelet (1835) → estadística aplicada a lo social",
+          "explicacion": "Adolphe Quetelet, astrónomo y estadístico belga, aplicó en su obra Sobre el hombre, de 1835, los métodos estadísticos al estudio de fenómenos sociales y de las características físicas de las personas, y propuso el concepto de hombre medio."
+        },
+        {
+          "texto": "Florence Nightingale (1858) → diagrama de áreas polares",
+          "explicacion": "Florence Nightingale, enfermera y estadística británica, utilizó en 1858 un diagrama de áreas polares, de sectores circulares con radios proporcionales a la mortalidad, para mostrar que la mayoría de muertes en el ejército británico durante la guerra de Crimea se debía a enfermedades prevenibles."
+        },
+        {
+          "texto": "Karl Pearson (1891) → término histograma",
+          "explicacion": "Karl Pearson, matemático y estadístico británico, empleó la palabra histograma en 1891, en sus conferencias, para designar el gráfico de barras contiguas de una distribución de frecuencias. Desde entonces el término designa la representación de variables continuas agrupadas en intervalos. Pearson fue además una figura central en el desarrollo de la estadística matemática de fines del siglo XIX y comienzos del siglo XX."
+        }
+      ]
+    }
+  ]
+}

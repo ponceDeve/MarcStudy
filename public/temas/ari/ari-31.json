@@ -1,0 +1,137 @@
+{
+  "curso": "Aritmética",
+  "tema": "Números primos entre sí",
+  "glosario": {
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno",
+    "primos dos a dos": "Cada pareja del grupo es primos entre sí",
+    "divisor común": "Número que divide a cada uno de varios",
+    "número primo": "Entero mayor que uno con solo dos divisores",
+    "números consecutivos": "Enteros que se siguen en el orden natural",
+    "fracción irreducible": "Fracción cuyos términos son primos entre sí",
+    "máximo común divisor": "Mayor de los divisores comunes de varios números"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "Dos enteros «primos entre sí» tienen como único divisor común $1$",
+          "explicacion": "Dos números enteros positivos son primos entre sí cuando el único entero positivo que divide a ambos es el $1$. También se les llama coprimos. La definición no exige que los números sean primos: el $8$ y el $15$ son compuestos y, sin embargo, son primos entre sí, porque los divisores de $8$ son $1, 2, 4, 8$, los de $15$ son $1, 3, 5, 15$ y solo el $1$ aparece en ambas listas."
+        },
+        {
+          "texto": "Primos entre sí ⇒ su máximo común divisor es $1$",
+          "explicacion": "El máximo común divisor de varios números es el mayor de sus divisores comunes. Si el único divisor común es $1$, ese mayor divisor común es necesariamente $1$, y recíprocamente. Por eso la condición de ser primos entre sí se enuncia también como máximo común divisor igual a uno. El cálculo del máximo común divisor se desarrolla en el tema 33 (Máximo Común Divisor)."
+        },
+        {
+          "texto": "«PESI» es la sigla de primos entre sí",
+          "explicacion": "En los textos preuniversitarios de habla hispana se usa la sigla PESI como abreviatura de primos entre sí, para escribir de forma compacta enunciados como el de que dos números son PESI. Esta sigla es una convención de la enseñanza de la Aritmética y no un símbolo matemático universal, por lo que conviene escribir su significado completo cuando se resuelve un problema."
+        },
+        {
+          "texto": "«Divisor común» ≠ «número primo»: no son sinónimos",
+          "explicacion": "Un divisor común es cualquier número que divide a la vez a todos los números considerados, mientras que un número primo es un entero mayor que uno con solo dos divisores. Dos números pueden ser primos entre sí sin ser primos, como el $9$ y el $10$, y dos números primos distintos siempre son primos entre sí. Distinguir ambas ideas evita confusiones frecuentes al leer enunciados."
+        },
+        {
+          "texto": "Ejemplo: $12$ y $35$ son primos entre sí",
+          "explicacion": "Los divisores positivos de $12$ son $1, 2, 3, 4, 6, 12$ y los de $35$ son $1, 5, 7, 35$. El único número que aparece en las dos listas es el $1$, de modo que $12$ y $35$ son primos entre sí aunque ninguno de los dos sea primo. Ejemplo contrario: $12$ y $18$ comparten los divisores $1, 2, 3, 6$ y por eso no son primos entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Varios números",
+      "puntos": [
+        {
+          "texto": "Grupo «primos entre sí» ⇒ su único divisor común es $1$",
+          "explicacion": "Para más de dos números, la definición se extiende de forma natural: el grupo es primos entre sí cuando el único entero positivo que divide a todos ellos al mismo tiempo es $1$. La condición se refiere al grupo completo y no exige nada sobre cada pareja por separado, lo que da lugar a la distinción entre ser primos entre sí en conjunto y serlo dos a dos."
+        },
+        {
+          "texto": "Grupo «primos dos a dos» ⇒ cada pareja es primos entre sí",
+          "explicacion": "Un grupo de números es primos dos a dos cuando cualquier pareja que se extraiga del grupo está formada por números primos entre sí. Es una condición más fuerte que la del grupo en conjunto, pues exige revisar todas las parejas. Por ejemplo, $4$, $9$ y $25$ son primos dos a dos porque $4$ y $9$, $4$ y $25$, $9$ y $25$ son primos entre sí."
+        },
+        {
+          "texto": "Primos dos a dos ⇒ primos entre sí en conjunto; el recíproco ✗",
+          "explicacion": "Si todas las parejas son primos entre sí, el único divisor común de todo el grupo solo puede ser $1$, de modo que el grupo es primos entre sí en conjunto. El recíproco no es cierto: los números $6$, $10$ y $15$ no tienen otro divisor común que el $1$, pero $6$ y $10$ comparten el $2$, $6$ y $15$ comparten el $3$ y $10$ y $15$ comparten el $5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos básicos",
+      "puntos": [
+        {
+          "texto": "El número $1$ es primo entre sí con cualquier entero",
+          "explicacion": "Como el único divisor positivo de $1$ es él mismo, el único divisor común posible de $1$ y de cualquier otro número es $1$. Por eso el $1$ forma pareja de primos entre sí con todos los enteros, incluido él mismo. Este caso trivial se usa como punto de partida en el estudio de la función de Euler, tema 32."
+        },
+        {
+          "texto": "Dos números primos distintos son primos entre sí",
+          "explicacion": "Un número primo solo tiene dos divisores positivos, el $1$ y él mismo. Si dos primos son distintos, ninguno es divisor del otro, de modo que el único divisor común es $1$. Por ejemplo, $11$ y $13$ son primos entre sí. La propiedad se extiende a cualquier colección de primos distintos, que son primos dos a dos."
+        },
+        {
+          "texto": "$p$ primo que no divide a $N$ ⇒ primos entre sí",
+          "explicacion": "Los únicos divisores de un primo $p$ son $1$ y $p$. Si $p$ no divide a $N$, el único divisor común de $p$ y $N$ es $1$. Si $p$ divide a $N$, en cambio, $p$ es divisor común y los números no son primos entre sí. Esta regla permite decidir rápidamente: el $7$ y el $30$ son primos entre sí, pero el $7$ y el $35$ no."
+        },
+        {
+          "texto": "Dos números «consecutivos» siempre son primos entre sí",
+          "explicacion": "Un divisor común de $n$ y $n$ más uno debería dividir también a su diferencia, que es $1$, y el único entero positivo que divide a $1$ es el propio $1$. Por tanto, dos números consecutivos no pueden compartir otro divisor que el $1$. Ejemplos: $14$ y $15$, $99$ y $100$."
+        },
+        {
+          "texto": "Dos impares consecutivos son primos entre sí",
+          "explicacion": "Los impares consecutivos difieren en $2$, así que un divisor común dividiría a $2$ y solo podría ser $1$ o $2$. Como ambos números son impares, el $2$ no puede dividirlos, y el único divisor común queda reducido a $1$. Ejemplos: $15$ y $17$, $49$ y $51$. Esta propiedad se usa con frecuencia en problemas que piden justificar que dos números no comparten factores."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$a$ divide a $bc$, $a$ primo con $b$ ⇒ $a$ divide a $c$",
+          "explicacion": "Esta propiedad, conocida como lema de Euclides en su forma general, afirma que cuando un número divide a un producto y no comparte factores con uno de los dos factores, debe dividir necesariamente al otro. Se usa para simplificar divisibilidades. Ejemplo: si $7$ divide a $3$ por un número $x$ y $7$ y $3$ son primos entre sí, entonces $7$ divide a $x$."
+        },
+        {
+          "texto": "$a$ primo con $b$ y con $c$ ⇒ primo con $bc$",
+          "explicacion": "Si $a$ no comparte ningún factor primo con $b$ ni con $c$, tampoco puede compartir ninguno con el producto, pues los primos de $bc$ son los de $b$ junto con los de $c$. Por eso un número primo entre sí con cada factor de un producto es primo entre sí con el producto completo. Ejemplo: $5$ es primo con $6$ y con $7$, y por tanto es primo con $42$."
+        },
+        {
+          "texto": "Si $a$ y $b$ son primos entre sí ⇒ sus potencias también",
+          "explicacion": "Dos números primos entre sí no comparten factores primos, y elevar un número a una potencia no introduce factores primos nuevos, solo cambia los exponentes. Por tanto, $a$ elevado a $m$ y $b$ elevado a $n$ son primos entre sí para cualesquiera exponentes positivos $m$ y $n$. Ejemplo: $2^{5}$ y $3^{4}$ son primos entre sí."
+        },
+        {
+          "texto": "$a$, $b$ primos entre sí ⇒ $a$ + $b$ es primo con cada uno",
+          "explicacion": "Un divisor común de la suma de $a$ y $b$ y de $a$ dividiría también a $b$, que es la diferencia entre ambos. Como $a$ y $b$ solo comparten el $1$, ese divisor solo puede ser $1$. Lo mismo ocurre con $b$. Ejemplo: $8$ y $15$ son primos entre sí, su suma es $23$ y $23$ es primo con $8$ y con $15$."
+        },
+        {
+          "texto": "$a$, $b$ primos entre sí ⇒ $ab$ es primo con $a$ + $b$",
+          "explicacion": "El producto de $a$ por $b$ y la suma de $a$ y $b$ no comparten primos, porque cualquier primo que divida al producto divide a $a$ o a $b$, y la suma es prima con ambos. Ejemplo: $8$ y $15$ tienen producto $120$ y suma $23$, y $120$ y $23$ son primos entre sí, ya que $23$ es primo y no divide a $120$."
+        },
+        {
+          "texto": "$a$, $b$ primos entre sí dividen a $N$ ⇒ $ab$ divide a $N$",
+          "explicacion": "Si dos números que no comparten factores dividen a un mismo número, su producto también lo divide, pues cada uno aporta sus propios factores primos sin solaparse. La condición de ser primos entre sí es indispensable: $4$ y $6$ dividen a $12$, pero su producto $24$ no lo divide. Con $3$ y $4$, que sí son primos entre sí, el producto $12$ divide a $12$ y a $24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fracción irreducible",
+      "puntos": [
+        {
+          "texto": "Una «fracción irreducible» tiene numerador y denominador primos entre sí",
+          "explicacion": "Una fracción no puede simplificarse cuando numerador y denominador no tienen divisor común distinto de $1$, es decir, cuando son primos entre sí. Por ejemplo, $\\frac{8}{15}$ es irreducible. Si el numerador y el denominador comparten algún divisor mayor que uno, la fracción puede simplificarse hasta llegar a una forma irreducible. El estudio de las fracciones se desarrolla en el tema 37 (Fracción ordinaria)."
+        },
+        {
+          "texto": "Dividir dos números entre su máximo común divisor ⇒ cocientes primos entre sí",
+          "explicacion": "Al dividir cada uno de dos números entre su máximo común divisor, abreviado MCD, se obtienen dos cocientes primos entre sí; si compartieran otro factor, el máximo común divisor sería mayor. Por ejemplo, el MCD de $24$ y $36$ es $12$, y los cocientes $2$ y $3$ son primos entre sí. Este resultado explica el método de simplificar una fracción hasta su forma irreducible."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparaciones",
+      "puntos": [
+        {
+          "texto": "Primos entre sí ≠ «número primo»",
+          "explicacion": "Ser primo es una propiedad de un solo número, mientras que ser primos entre sí es una relación entre dos o más números. Un número primo solo tiene dos divisores, pero dos números compuestos como $4$ y $9$ pueden ser primos entre sí. Confundir ambas ideas es un error frecuente al interpretar la palabra primo dentro de la expresión primos entre sí."
+        },
+        {
+          "texto": "Error: creer que dos números primos entre sí deben ser primos",
+          "explicacion": "No es necesario que ninguno de los dos números sea primo. Basta con que no compartan factores primos. El par $9$ y $16$, formado por dos compuestos, es primos entre sí, porque los factores primos de $9$ son solo el $3$ y los de $16$ solo el $2$. Revisar las descomposiciones en factores primos de ambos números es la forma más segura de comprobar la propiedad."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "curso": "Aritmética",
+  "tema": "Tautologías y contradicciones",
+  "glosario": {
+    "tautología": "Fórmula verdadera en todos los casos posibles",
+    "contradicción": "Fórmula falsa en todos los casos posibles",
+    "contingencia": "Verdadera en unos casos, falsa en otros",
+    "equivalencia lógica": "Fórmulas con igual valor de verdad siempre",
+    "principio de identidad": "Toda proposición equivale a sí misma",
+    "principio de no contradicción": "Ninguna proposición es verdadera y falsa",
+    "principio del tercio excluido": "Toda proposición o su negación es verdadera",
+    "modus ponens": "Inferencia válida que afirma el antecedente",
+    "modus tollens": "Inferencia válida que niega el consecuente",
+    "doble negación": "Negar dos veces produce la proposición original",
+    "contraejemplo": "Caso que hace falsa una fórmula universal",
+    "tabla de verdad": "Cuadro con todos los valores de una fórmula"
+  },
+  "theory": [
+    {
+      "titulo": "Clasificación de fórmulas",
+      "puntos": [
+        {
+          "texto": "Una «tautología» es verdadera en todos los casos posibles.",
+          "explicacion": "Una tautología es una fórmula proposicional cuyo valor de verdad es verdadero para todas las combinaciones posibles de valores de sus variables. Su verdad no depende de los hechos del mundo, sino de su propia estructura lógica. El nombre procede del griego y significa, en sentido literal, decir lo mismo, porque la fórmula no afirma nada nuevo sobre los objetos que trata. La forma más simple de tautología es $p \\lor \\neg p$, que es verdadera tanto si p es verdadera como si es falsa, como puede comprobarse en su tabla de verdad."
+        },
+        {
+          "texto": "Una «contradicción» es falsa en todos los casos posibles.",
+          "explicacion": "Una contradicción es una fórmula que toma el valor falso en todas las combinaciones de valores de sus variables. Expresa una imposibilidad lógica, porque ninguna asignación de valores de verdad puede hacerla verdadera. El ejemplo básico es $p \\land \\neg p$, pues una proposición y su negación no pueden ser verdaderas a la vez. Las contradicciones son útiles en las demostraciones indirectas, porque al suponer que un enunciado conduce a una contradicción se concluye que el enunciado es falso."
+        },
+        {
+          "texto": "Una «contingencia» es verdadera en unos casos y falsa en otros.",
+          "explicacion": "Una contingencia es una fórmula cuyo valor de verdad depende de los valores asignados a sus variables. Es la categoría más común, porque la mayoría de las fórmulas proposicionales no son ni siempre verdaderas ni siempre falsas. Por ejemplo, $p \\land q$ es verdadera solo cuando ambas variables lo son, y falsa en los demás casos. Para clasificar una fórmula como contingencia basta encontrar una asignación que la haga verdadera y otra que la haga falsa."
+        },
+        {
+          "texto": "Toda fórmula es exactamente tautología, contradicción o contingencia.",
+          "explicacion": "Las tres categorías son exhaustivas, porque cualquier fórmula cumple una de estas condiciones: es verdadera en todos los casos, es falsa en todos los casos o cambia de valor según la asignación. Además son excluyentes, ya que ninguna fórmula puede pertenecer a dos categorías a la vez. Esta clasificación permite describir el comportamiento de una fórmula sin conocer el contenido de sus proposiciones, lo cual es el objetivo central de la lógica proposicional."
+        }
+      ]
+    },
+    {
+      "titulo": "Principios clásicos",
+      "puntos": [
+        {
+          "texto": "El «principio de identidad» afirma que toda proposición equivale a sí misma.",
+          "explicacion": "El principio de identidad establece que cada proposición es lógicamente equivalente a sí misma, lo que se expresa con la fórmula $p \\leftrightarrow p$. Es una tautología porque su bicondicional es verdadera en ambos valores de p. Aunque parezca trivial, es la base sobre la que se construye la noción de igualdad lógica entre fórmulas, y todas las demostraciones que comparan enunciados la presuponen implícitamente."
+        },
+        {
+          "texto": "El «principio de no contradicción» excluye que una proposición sea verdadera y falsa.",
+          "explicacion": "Este principio afirma que ninguna proposición puede ser verdadera y falsa al mismo tiempo, y se formula como $\\neg(p \\land \\neg p)$. Es una tautología, pues la expresión resulta verdadera en todos los casos. Aristóteles lo consideró el principio más seguro de todos y lo formuló en su «Metafísica», por lo que la lógica clásica lo tomó como condición básica para cualquier razonamiento coherente."
+        },
+        {
+          "texto": "El «principio del tercio excluido» afirma que p o su negación es verdadera.",
+          "explicacion": "Este principio establece que, para cualquier proposición, la proposición misma o su negación debe ser verdadera, lo que se expresa como $p \\lor \\neg p$. Se conoce con el nombre latino de «tertium non datur», y la tradición lo atribuye a Aristóteles. Su contenido es el mismo que el de la tautología del tema, pero su alcance filosófico es mayor, porque implica que no existe un tercer valor de verdad. Los sistemas lógicos que admiten valores intermedios lo rechazan, lo que muestra que se trata de una elección de sistema."
+        }
+      ]
+    },
+    {
+      "titulo": "Equivalencia lógica",
+      "puntos": [
+        {
+          "texto": "Dos fórmulas están en «equivalencia lógica» si coinciden en todos los casos.",
+          "explicacion": "Dos fórmulas son lógicamente equivalentes cuando toman el mismo valor de verdad para cada combinación de valores de sus variables. La equivalencia se escribe como $P \\equiv Q$ y se usa para sustituir una fórmula por otra sin cambiar el significado del enunciado. Es una relación de igualdad lógica, y su estudio permite simplificar fórmulas complejas antes de evaluarlas en una tabla de verdad."
+        },
+        {
+          "texto": "Una equivalencia se comprueba con la bicondicional, que debe ser tautología.",
+          "explicacion": "La forma más directa de probar que $P \\equiv Q$ es verificar que la bicondicional $P \\leftrightarrow Q$ es una tautología. Si esta bicondicional es verdadera en todos los casos, las dos fórmulas coinciden siempre, y por tanto son equivalentes. El procedimiento vincula dos ideas del curso: la bicondicional, estudiada en el tema 02, y la verificación mediante tablas, desarrollada en el tema 03."
+        },
+        {
+          "texto": "Todas las tautologías son equivalentes entre sí.",
+          "explicacion": "Como cada tautología toma el valor verdadero en todos los casos, dos tautologías cualesquiera coinciden en todos sus valores y por tanto son equivalentes. La misma razón aplica a las contradicciones, que toman el valor falso en todos los casos. Esta propiedad muestra que la equivalencia lógica no distingue entre fórmulas que tienen la misma estructura de valores, aunque sus componentes sean diferentes."
+        },
+        {
+          "texto": "Todas las contradicciones son equivalentes entre sí.",
+          "explicacion": "Dos contradicciones cualesquiera toman el valor falso en todos los casos, de modo que coinciden en su tabla de verdad y son equivalentes. Esta igualdad no significa que expresen lo mismo en lenguaje natural, sino que tienen el mismo comportamiento lógico. Por esa razón la lógica proposicional trabaja con la tabla de valores y no con el contenido concreto de los enunciados."
+        }
+      ]
+    },
+    {
+      "titulo": "Tautologías básicas",
+      "puntos": [
+        {
+          "texto": "El «modus ponens» parte de una condicional y de su antecedente.",
+          "explicacion": "El modus ponens es una forma válida de razonamiento: si el antecedente de una condicional es verdadero, entonces su consecuente también lo es. La fórmula que lo representa es una tautología, porque la conjunción de las premisas implica la conclusión en todos los casos. Según los testimonios antiguos, los estoicos estudiaron esta forma de inferencia como una de sus formas básicas de razonamiento, y su uso sigue siendo fundamental en las demostraciones matemáticas."
+        },
+        {
+          "texto": "El «modus tollens» niega el consecuente y concluye la negación del antecedente.",
+          "explicacion": "El modus tollens es otra forma válida de razonamiento: si una condicional es verdadera y su consecuente es falso, entonces su antecedente también debe ser falso. Su validez se comprueba con la tabla de verdad, en la que no aparece ningún caso donde las premisas sean verdaderas y la conclusión falsa. Es la forma que se usa en las demostraciones por contrarrecíproco, en las que se prueba que la negación del consecuente conduce a la negación del antecedente."
+        },
+        {
+          "texto": "La «doble negación» equivale a la proposición original.",
+          "explicacion": "Negar dos veces una proposición devuelve la proposición original, lo que se expresa con la equivalencia $\\neg\\neg p \\leftrightarrow p$. La bicondicional es una tautología, porque ambos lados tienen siempre el mismo valor. Esta regla permite eliminar negaciones redundantes en una fórmula, y se usa con frecuencia en la simplificación de expresiones antes de evaluarlas."
+        }
+      ]
+    },
+    {
+      "titulo": "Métodos de verificación",
+      "puntos": [
+        {
+          "texto": "La «tabla de verdad» revela si una fórmula es tautología.",
+          "explicacion": "Para verificar si una fórmula es tautología se construye una tabla que recorre todas las combinaciones de valores de sus variables. Si una fórmula tiene n variables, la tabla tiene $2^n$ filas, una por cada combinación posible. Si la última columna contiene solo valores verdaderos, la fórmula es una tautología; si contiene solo valores falsos, es una contradicción; y si aparecen ambos valores, es una contingencia. El método siempre da una respuesta definitiva, aunque su extensión crece rápidamente con el número de variables."
+        },
+        {
+          "texto": "El método abreviado busca un caso que haga falsa la fórmula.",
+          "explicacion": "El método abreviado supone que la fórmula es falsa y trata de asignar valores a las variables que lo hagan posible. Si no existe ninguna asignación consistente, la fórmula es una tautología, porque la suposición de que sea falsa lleva a una contradicción. Si se encuentra una asignación consistente, la fórmula no es tautología. Este método evita construir la tabla completa y resulta más eficiente cuando hay muchas variables."
+        },
+        {
+          "texto": "Un «contraejemplo» basta para descartar una fórmula universal.",
+          "explicacion": "Un contraejemplo es una asignación de valores que hace falsa una fórmula que debería ser verdadera en todos los casos. Para descartar que una fórmula sea tautología basta un solo contraejemplo, mientras que para confirmarla es necesario comprobar todos los casos posibles. Esta asimetría es la base de muchos razonamientos lógicos, porque refutar una afirmación general exige menos trabajo que demostrarla."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir contingencia con tautología es un error frecuente.",
+          "explicacion": "Muchos estudiantes consideran tautológica cualquier fórmula que parece verdadera en los casos que observan, sin comprobar todas las combinaciones. Una contingencia puede ser verdadera en varias filas y falsa en otras, por lo que solo la tabla completa permite distinguirlas. La regla práctica es no concluir nada a partir de algunas filas y revisar siempre la columna final de toda la tabla."
+        },
+        {
+          "texto": "Una tautología no aporta información sobre ningún hecho concreto.",
+          "explicacion": "Como una tautología es verdadera sin importar los valores de sus variables, no restringe ninguna situación posible. Por eso no sirve para afirmar algo sobre el mundo, aunque sí sea útil como herramienta de verificación de razonamientos. Confundir su validez formal con la verdad de un enunciado concreto es un error de interpretación que conviene evitar."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia del término",
+      "puntos": [
+        {
+          "texto": "Ludwig Wittgenstein difundió el término «tautología» en 1921.",
+          "explicacion": "Ludwig Wittgenstein, filósofo de origen austríaco nacido en 1889 y fallecido en 1951, empleó la palabra tautología en su obra «Tractatus Logico-Philosophicus», publicada en 1921. En ella sostuvo que las tautologías y contradicciones no describen ningún estado del mundo, sino que son los límites de la estructura lógica. Esta caracterización influyó en el uso moderno del término, que se generalizó en la lógica matemática del siglo XX."
+        },
+        {
+          "texto": "Aristóteles formuló el principio de no contradicción en su «Metafísica».",
+          "explicacion": "La formulación aristotélica del principio de no contradicción aparece en el libro IV de la «Metafísica», donde se plantea como principio que no admite demostración y que toda discusión racional debe presuponer. Aunque Aristóteles no usó la notación simbólica moderna, su formulación es el antecedente directo de la fórmula $\\neg(p \\land \\neg p)$ estudiada en el curso. Este principio se convirtió después en pilar de la lógica clásica."
+        }
+      ]
+    }
+  ]
+}

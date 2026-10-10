@@ -1,0 +1,228 @@
+{
+  "curso": "Aritmética",
+  "tema": "Números avales",
+  "glosario": {
+    "número aval": "Número con parte fraccionaria escrito en cualquier base.",
+    "base": "Unidades de un orden que forman el siguiente.",
+    "cifra": "Símbolo de valor menor que la base.",
+    "parte entera": "Cifras escritas a la izquierda del punto aval.",
+    "parte fraccionaria": "Cifras escritas a la derecha del punto aval.",
+    "punto aval": "Signo que separa parte entera y fraccionaria.",
+    "valor posicional": "Valor que adquiere una cifra según su lugar.",
+    "descomposición polinómica": "Suma de cifras por potencias de base.",
+    "aval exacto": "Aval con cantidad finita de cifras fraccionarias.",
+    "aval periódico puro": "Aval cuyo periodo comienza tras el punto.",
+    "aval periódico mixto": "Aval con cifras fraccionarias previas al periodo.",
+    "periodo": "Grupo de cifras que se repite indefinidamente.",
+    "anteperiodo": "Cifras fraccionarias situadas antes del periodo.",
+    "generatriz": "Fracción que origina un aval.",
+    "fracción ordinaria": "Cociente de enteros con divisor no nulo."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Número aval» = número con parte fraccionaria escrito en base $n$",
+          "explicacion": "Un número aval es aquel que se escribe en un sistema de numeración posicional de base $n$ y que, además de cifras enteras, posee cifras fraccionarias separadas de las primeras por un punto. El término pertenece a la tradición escolar de la Aritmética y sirve para generalizar la idea de número decimal a cualquier base entera mayor que uno. Su estudio es necesario porque los cambios de base del tema 19 solo trataban números enteros; los avales extienden esos mismos principios posicionales a números que no son enteros."
+        },
+        {
+          "texto": "Aval en base 10 = número decimal",
+          "explicacion": "Cuando la base es diez, el número aval coincide con el número decimal, de modo que lo decimal es el caso particular de lo aval. La palabra decimal alude precisamente a la base diez y por eso no se emplea con propiedad si la base es distinta: un número con parte fraccionaria escrito en base cinco no es decimal, sino aval en base cinco. En consecuencia, todo lo que se afirma de los avales vale para los decimales, pero la afirmación inversa no es cierta."
+        },
+        {
+          "texto": "«Base» $n$ ✓ entero mayor que 1",
+          "explicacion": "La base de un aval debe ser un número entero mayor que uno, porque con base uno no existirían cifras distintas de cero y con base cero o negativa no se podría formar la sucesión de potencias que da el valor posicional. La base se escribe como subíndice entre paréntesis a la derecha del numeral, por ejemplo $(5)$ para base cinco. Cuando el subíndice se omite, se entiende que el numeral está en base diez."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "Escritura general $\\overline{a_k \\ldots a_0,b_1 b_2 \\ldots b_m}_{(n)}$",
+          "explicacion": "La barra superior indica que las letras representan cifras y no factores de un producto. Las cifras $a_k$ hasta $a_0$ forman la parte entera, la coma separa ambas partes y las cifras $b_1$ hasta $b_m$ forman la parte fraccionaria. El subíndice $(n)$ indica la base en que está escrito todo el numeral, de modo que ambas partes comparten la misma base. Esta escritura es la que se usa para enunciar las reglas generales de conversión."
+        },
+        {
+          "texto": "«Parte entera» = cifras a la izquierda del punto aval",
+          "explicacion": "La parte entera reúne las cifras situadas a la izquierda del punto aval y representa la cantidad de unidades completas del número. Se lee y se evalúa igual que un numeral entero de la misma base, con pesos que son potencias de $n$ de exponente cero en adelante. Si el aval es menor que uno, la parte entera es la cifra cero, que suele escribirse explícitamente para no dejar el punto sin cifra a su izquierda."
+        },
+        {
+          "texto": "«Parte fraccionaria» = cifras a la derecha del punto aval",
+          "explicacion": "La parte fraccionaria reúne las cifras situadas a la derecha del punto aval y representa una cantidad menor que una unidad. Cada una de sus cifras expresa cuántas partes iguales, de un tamaño que depende de la base, contiene el número. Su valor siempre es mayor o igual que cero y estrictamente menor que uno, porque ninguna cifra supera $n-1$ y la suma completa de todos esos pesos máximos solo alcanza la unidad en el límite."
+        },
+        {
+          "texto": "«Punto aval» separa parte entera y fraccionaria",
+          "explicacion": "El punto aval es el signo que marca el lugar donde terminan las unidades enteras y comienzan las fracciones de unidad. Puede escribirse como punto o como coma según la convención local; en la escritura de esta teoría se usa la coma. Su posición fija el valor de todas las cifras, de modo que desplazarlo hacia la derecha o la izquierda cambia el valor del número multiplicándolo o dividiéndolo por potencias de la base."
+        },
+        {
+          "texto": "«Cifra» de base $n$ ∈ valores de 0 hasta $n-1$",
+          "explicacion": "Cada cifra de un aval en base $n$ debe ser un entero entre cero y $n-1$, ambos incluidos. Esta limitación es la misma que rige para los numerales enteros y se debe a que $n$ unidades de un orden se agrupan formando una unidad del orden siguiente. Cuando la base es mayor que diez, las cifras iguales o superiores a diez se representan con símbolos propios, como letras o grupos de dígitos entre paréntesis, para no confundirlas con dos cifras."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor posicional",
+      "puntos": [
+        {
+          "texto": "Primera cifra tras el punto ⇒ peso $n^{-1}$",
+          "explicacion": "La primera cifra fraccionaria ocupa el primer orden después del punto y vale la cifra multiplicada por $n^{-1}$, es decir, la cifra dividida entre la base. Es consecuencia de que la unidad se divide en $n$ partes iguales y cada una de ellas es el primer orden fraccionario. Si la base es diez, esas partes son las décimas; en otras bases reciben nombres análogos solo de manera descriptiva, como tercios en base tres o cuartos en base cuatro."
+        },
+        {
+          "texto": "Cada lugar a la derecha ↓ el peso $n$ veces",
+          "explicacion": "Al avanzar un lugar hacia la derecha, el peso de la cifra se divide entre la base, de modo que la segunda cifra fraccionaria pesa $n^{-2}$, la tercera $n^{-3}$ y así sucesivamente. Esta regla es la continuación natural del sistema posicional entero, en el cual cada lugar hacia la izquierda multiplica el peso por $n$. Por eso los exponentes disminuyen de uno en uno a lo largo de todo el numeral, pasando de positivos a cero en la unidad y luego a negativos."
+        },
+        {
+          "texto": "«Descomposición polinómica» del aval en base $n$",
+          "explicacion": "La descomposición polinómica expresa el valor del aval como el producto de cada cifra por su peso, sumando después todos los productos. Para la parte entera se usan las potencias $n^i$ con $i$ desde cero hasta $k$, y para la parte fraccionaria las potencias $n^{-j}$ con $j$ desde uno hasta $m$. Con símbolos, el valor es $\\sum a_i n^{i}$ para la parte entera, sumado con $\\sum b_j n^{-j}$ para la parte fraccionaria. Es la herramienta que justifica todos los métodos de conversión posteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Aval a decimal",
+      "puntos": [
+        {
+          "texto": "Aval → base 10 por descomposición polinómica",
+          "explicacion": "Para escribir un aval en base diez se multiplica cada cifra por la potencia de la base que le corresponde, con exponentes negativos para las fraccionarias, y se calculan los productos en base diez. Después se suman los resultados, obteniendo un número decimal. El procedimiento está justificado porque la descomposición polinómica da el valor exacto del número sin depender de la base en que se escribió. Es necesario evaluar las potencias de la base original, no las de diez."
+        },
+        {
+          "texto": "$101,011_{(2)}$ → 5,375 en base 10",
+          "explicacion": "La parte entera $101_{(2)}$ vale cuatro, más cero, más uno, es decir, cinco. En la parte fraccionaria, la primera cifra es cero y no aporta; la segunda cifra uno pesa $2^{-2}$, o sea un cuarto, es decir, 0,25; la tercera cifra uno pesa $2^{-3}$, o sea un octavo, es decir, 0,125. Al sumar cinco con 0,25 y con 0,125 resulta 5,375, que equivale a la fracción $\\frac{43}{8}$."
+        },
+        {
+          "texto": "$3,24_{(5)}$ → 3,56 en base 10",
+          "explicacion": "La parte entera es tres. La primera cifra fraccionaria, dos, pesa $5^{-1}$ y aporta dos quintos, es decir, 0,4. La segunda cifra, cuatro, pesa $5^{-2}$ y aporta cuatro veinticincoavos, es decir, 0,16. Al sumar tres con 0,4 y con 0,16 resulta 3,56, que equivale a la fracción $\\frac{89}{25}$. El ejemplo muestra que un aval exacto en una base puede dar un decimal exacto con otra cantidad de cifras."
+        }
+      ]
+    },
+    {
+      "titulo": "Aval a fracción",
+      "puntos": [
+        {
+          "texto": "Aval con $m$ cifras fraccionarias → entero entre $n^m$",
+          "explicacion": "Si se desplaza el punto $m$ lugares hacia la derecha, el número se multiplica por $n^m$ y queda un numeral entero formado por todas las cifras. Por eso el aval equivale al cociente $\\frac{\\overline{a_k\\ldots a_0 b_1\\ldots b_m}_{(n)}}{n^m}$, donde el numerador se lee como entero de base $n$ y el denominador es la potencia de la base. La fracción obtenida puede simplificarse, pero conviene recordar que su denominador solo tiene factores primos que dividen a la base."
+        },
+        {
+          "texto": "$0,12_{(3)}$ → $\\frac{5}{9}$",
+          "explicacion": "El aval tiene dos cifras fraccionarias, por lo que el denominador es $3^2$, o sea nueve. El numerador es el numeral $12_{(3)}$ leído como entero, que vale uno por tres y dos unidades, es decir, cinco. La fracción $\\frac{5}{9}$ ya es irreducible porque cinco no comparte factores con nueve. Comprobando por descomposición, un tercio por uno y dos novenos dan tres novenos y dos novenos, es decir, cinco novenos."
+        },
+        {
+          "texto": "$11,01_{(2)}$ → $\\frac{13}{4}$",
+          "explicacion": "Con dos cifras fraccionarias el denominador es $2^2$, o sea cuatro. El numeral $1101_{(2)}$ leído como entero vale ocho, más cuatro, más uno, es decir, trece. La fracción resultante es $\\frac{13}{4}$, equivalente a 3,25. El resultado coincide con el cálculo directo: la parte entera $11_{(2)}$ vale tres y la parte fraccionaria $0,01_{(2)}$ vale un cuarto."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros no significativos",
+      "puntos": [
+        {
+          "texto": "Ceros a la derecha de la parte fraccionaria no cambian el valor",
+          "explicacion": "Agregar o quitar ceros al final de la parte fraccionaria no modifica el valor, porque cada cero aporta cero multiplicado por su peso. Por ejemplo, $0,4_{(5)}$ y $0,40_{(5)}$ valen ambos cuatro quintos: el segundo se calcula como el entero $40_{(5)}$, que es veinte, dividido entre $5^2$, o sea veinticinco, y esa fracción se simplifica a cuatro quintos. Esta propiedad permite igualar la cantidad de cifras fraccionarias al comparar dos avales."
+        },
+        {
+          "texto": "Ceros a la izquierda de la parte entera no cambian el valor",
+          "explicacion": "Los ceros colocados antes de la primera cifra significativa de la parte entera tampoco alteran el valor, pues aportan cero multiplicado por potencias positivas de la base. Así, $007,2_{(8)}$ y $7,2_{(8)}$ representan el mismo número. La propiedad solo vale para ceros situados en los extremos del numeral; un cero situado entre dos cifras o inmediatamente después del punto sí cambia el valor de las cifras que le siguen."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de avales",
+      "puntos": [
+        {
+          "texto": "Misma base: comparar de izquierda a derecha",
+          "explicacion": "Cuando dos avales están en la misma base se comparan primero las partes enteras y, si son iguales, las cifras fraccionarias una por una desde la izquierda, hasta hallar la primera diferencia. Es válido porque cada cifra tiene un peso mayor que la suma máxima posible de todas las cifras que le siguen. Por ejemplo, $0,3_{(4)}$ es mayor que $0,23_{(4)}$ porque, al completar con un cero a $0,30_{(4)}$, la primera cifra fraccionaria tres supera a dos."
+        },
+        {
+          "texto": "Distinta base: cifras iguales ≠ valores iguales",
+          "explicacion": "Si los avales están en bases distintas no se pueden comparar cifra a cifra, pues el mismo símbolo representa valores diferentes. Se convierten ambos a una base común, normalmente la base diez, o a fracciones. Por ejemplo, $0,1_{(2)}$ vale un medio y $0,1_{(3)}$ vale un tercio, de modo que el primero es mayor aunque en ambos aparezca la cifra uno en el primer orden."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación",
+      "puntos": [
+        {
+          "texto": "«Aval exacto» = finitas cifras fraccionarias",
+          "explicacion": "Un aval exacto tiene una cantidad finita de cifras fraccionarias distintas de cero. Siempre equivale a una fracción cuyo denominador es una potencia de la base, como se vio al convertir a fracción. Un ejemplo es $0,12_{(3)}$. La condición para que una fracción irreducible origine un aval exacto en una base dada se estudia en el tema 43, al representar números en otra base."
+        },
+        {
+          "texto": "«Aval periódico puro» = periodo desde el punto",
+          "explicacion": "Es el aval cuyas cifras fraccionarias se repiten indefinidamente en un mismo grupo que empieza inmediatamente después del punto. El grupo se señala con una barra sobre sus cifras, por ejemplo $0,\\overline{12}_{(3)}$ representa 0,121212 y así sin fin en base tres. Estos avales provienen de fracciones irreducibles cuyo denominador no comparte factores primos con la base."
+        },
+        {
+          "texto": "«Aval periódico mixto» = anteperiodo + periodo",
+          "explicacion": "Es el aval cuyas cifras fraccionarias comienzan con un grupo que no se repite y continúan con un periodo que sí se repite. Por ejemplo, $0,2\\overline{1}_{(3)}$ tiene anteperiodo igual a dos y periodo igual a uno. Este caso aparece cuando el denominador de la fracción irreducible tiene tanto factores primos de la base como factores primos que no la dividen."
+        },
+        {
+          "texto": "«Periodo» y anteperiodo ∈ parte fraccionaria",
+          "explicacion": "El periodo es el menor grupo de cifras que se repite indefinidamente, y el anteperiodo es el conjunto de cifras fraccionarias que preceden a la primera aparición de ese grupo. En un aval periódico puro el anteperiodo no existe. La cantidad de cifras del periodo y del anteperiodo determina el denominador de la generatriz, como se verá en la sección siguiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Generatriz en base n",
+      "puntos": [
+        {
+          "texto": "«Generatriz» de periódico puro: periodo entre $n^p-1$",
+          "explicacion": "Si el periodo tiene $p$ cifras, el aval periódico puro equivale a la fracción $\\frac{\\overline{a_1\\ldots a_p}_{(n)}}{n^p-1}$, con numerador leído como entero en base $n$. La justificación consiste en llamar $x$ al aval y observar que al desplazar el punto $p$ lugares el número se multiplica por $n^p$ y resulta el periodo seguido otra vez de $x$; al restar $x$ queda el periodo igual a $x$ por $n^p-1$. Así, $0,\\overline{12}_{(3)}$ equivale a cinco entre ocho, porque $12_{(3)}$ vale cinco y $3^2-1$ vale ocho."
+        },
+        {
+          "texto": "Generatriz de periódico mixto: numerador por diferencia",
+          "explicacion": "En un aval periódico mixto con anteperiodo de $q$ cifras y periodo de $p$ cifras, el numerador se obtiene restando el anteperiodo del numeral formado por el anteperiodo seguido del periodo, ambos leídos como enteros en base $n$. El denominador es $n^p-1$ multiplicado por $n^q$. Por ejemplo, $0,2\\overline{1}_{(3)}$ da numerador $21_{(3)}$ menos $2_{(3)}$, o sea siete menos dos, es decir, cinco, y denominador dos por tres, es decir, seis; resulta cinco sextos. La regla coincide con la que se emplea en base diez, estudiada en el tema 40."
+        },
+        {
+          "texto": "$0,1\\overline{01}_{(2)}$ → $\\frac{2}{3}$",
+          "explicacion": "El anteperiodo es uno, con una cifra, y el periodo es cero uno, con dos cifras. El numeral formado por anteperiodo y periodo es $101_{(2)}$, que vale cinco; el anteperiodo $1_{(2)}$ vale uno, de modo que el numerador es cuatro. El denominador es $2^2-1$, o sea tres, multiplicado por $2^1$, es decir, seis. La fracción cuatro sextos se simplifica a dos tercios, que coincide con la generatriz del aval puro $0,\\overline{10}_{(2)}$, pues ambos son el mismo número."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Periodo de cifra máxima ⇒ valor entero",
+          "explicacion": "Un aval cuyo periodo consiste únicamente en la cifra $n-1$ equivale a un número entero: por la regla del periódico puro, su generatriz es $\\frac{n-1}{n-1}$, es decir, uno. Así, $0,\\overline{2}_{(3)}$ vale uno y $0,\\overline{1}_{(2)}$ también. En consecuencia, un mismo número puede tener dos escrituras diferentes, una finita y otra periódica, igual que 0,999 con nueves infinitos y 1 en base diez. Por convención se prefiere la escritura finita."
+        },
+        {
+          "texto": "Parte fraccionaria nula ⇒ aval es entero",
+          "explicacion": "Si todas las cifras fraccionarias son cero, el aval representa un número entero y la parte fraccionaria puede omitirse. Así, $5,0_{(7)}$ y $5_{(7)}$ son el mismo número. Es el caso opuesto al aval con parte entera nula, en el que la cifra cero de la izquierda se escribe para que el numeral no comience con el punto, como en $0,4_{(5)}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Cifra mayor o igual que la base ⇒ numeral inválido",
+          "explicacion": "Un error común es escribir cifras iguales o mayores que la base: por ejemplo, $2,5_{(5)}$ no existe, porque en base cinco las cifras válidas son cero, uno, dos, tres y cuatro. Conviene verificar siempre que cada cifra, tanto entera como fraccionaria, sea menor que la base antes de operar. Cuando una cifra supera ese límite, el numeral está mal escrito o la base indicada es incorrecta."
+        },
+        {
+          "texto": "Usar potencias de 10 en lugar de potencias de $n$",
+          "explicacion": "Al descomponer un aval para pasarlo a base diez, se debe multiplicar por potencias de la base original, no de diez. Calcular una descomposición con peso diez simplemente lee las mismas cifras como si fueran un decimal y da un valor falso. También es frecuente usar exponentes positivos en la parte fraccionaria, cuando para esas cifras todos los exponentes son negativos y van decreciendo desde menos uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Distinciones",
+      "puntos": [
+        {
+          "texto": "Aval ≠ fracción ordinaria como escritura",
+          "explicacion": "Un aval y una fracción ordinaria pueden representar el mismo número racional con escrituras distintas: una posicional con punto y otra con numerador y denominador. La fracción ordinaria se estudia en el tema 37 y no depende de ninguna base, mientras que el aval siempre se escribe en una base concreta. Convertir de uno a otro es el contenido de la generatriz y de la representación en otra base."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia",
+      "puntos": [
+        {
+          "texto": "Babilonios usaron fracciones posicionales de base 60",
+          "explicacion": "Los matemáticos babilonios, en el segundo milenio antes de nuestra era, escribían números con cifras posicionales de base sesenta y también con parte fraccionaria, aunque sin un signo explícito de separación. La tablilla YBC 7289, fechada aproximadamente entre los años 1800 y 1600 antes de nuestra era, da la raíz cuadrada de dos como 1;24,51,10 en base sesenta, valor próximo a 1,41421296. Es uno de los primeros ejemplos conocidos de avales."
+        },
+        {
+          "texto": "Simon Stevin publicó fracciones decimales en 1585",
+          "explicacion": "Simon Stevin, matemático flamenco que vivió entre 1548 y 1620, publicó en 1585 el tratado De Thiende, en francés La Disme, donde expuso de manera sistemática el uso de fracciones decimales y de sus operaciones. Su obra extendió a la parte fraccionaria el principio posicional de base diez, que es el caso particular decimal de los avales."
+        }
+      ]
+    }
+  ]
+}
