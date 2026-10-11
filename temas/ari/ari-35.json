@@ -1,0 +1,138 @@
+{
+  "curso": "Aritmética",
+  "tema": "Mínimo Común Múltiplo",
+  "glosario": {
+    "mínimo común múltiplo": "Menor de los múltiplos comunes positivos de varios",
+    "múltiplo": "Resultado de multiplicar un número por un entero",
+    "múltiplo común": "Múltiplo de cada uno de varios números",
+    "máximo común divisor": "Mayor de los divisores comunes de varios números",
+    "descomposición canónica": "Producto de primos distintos elevados a exponentes",
+    "factores primos comunes y no comunes": "Todos los primos que aparecen en algún número",
+    "descomposición simultánea": "Dividir a la vez entre primos divisores",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El «mínimo común múltiplo» es el menor de los múltiplos comunes positivos",
+          "explicacion": "Un múltiplo de un número es el resultado de multiplicarlo por un entero. Un múltiplo común de varios números es un entero positivo que es múltiplo de cada uno de ellos. Entre todos los múltiplos comunes positivos existe siempre uno menor que los demás, que recibe el nombre de mínimo común múltiplo. Existe porque el producto de los números es un múltiplo común, y todo conjunto no vacío de enteros positivos tiene un menor elemento."
+        },
+        {
+          "texto": "$MCM(A,B)$ denota el mínimo común múltiplo de $A$ y $B$",
+          "explicacion": "La abreviatura MCM significa mínimo común múltiplo. Se escribe $MCM(A,B)$ para dos números y $MCM(A,B,C)$ para tres, y así sucesivamente. En algunos textos se usan las letras $m.c.m.$ o la sigla inglesa $\\mathrm{lcm}$, que significa least common multiple, es decir, menor múltiplo común. Todas estas notaciones designan el mismo concepto."
+        },
+        {
+          "texto": "Todo «múltiplo común» de varios números es múltiplo de su $MCM$",
+          "explicacion": "Esta es la propiedad fundamental del mínimo común múltiplo: los múltiplos comunes de varios números son exactamente los múltiplos de su mínimo común múltiplo. Por ejemplo, los múltiplos comunes de $12$ y $18$ son $36, 72, 108, \\ldots$, todos múltiplos de $36$. Esta propiedad permite describir infinitos múltiplos comunes a partir de un solo número."
+        },
+        {
+          "texto": "Ejemplo: múltiplos de $12$ y de $18$ ⇒ $MCM(12,18)$ vale $36$",
+          "explicacion": "Los primeros múltiplos de $12$ son $12, 24, 36, 48, 60, 72$ y los de $18$ son $18, 36, 54, 72$. El primer número que aparece en ambas listas es $36$, que es el mínimo común múltiplo, y el siguiente es $72$. Este método de listar múltiplos sirve para números pequeños y resulta largo cuando los números son grandes."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de factorización",
+      "puntos": [
+        {
+          "texto": "$MCM$ ⇒ producto de factores primos comunes y no comunes, mayor exponente",
+          "explicacion": "Para hallar el mínimo común múltiplo con la descomposición canónica de cada número, se toman todos los primos que aparecen en alguno de los números, comunes o no, y cada uno se eleva al mayor exponente con que aparece. El producto de esos factores es el mínimo común múltiplo. El procedimiento se justifica porque un múltiplo común debe contener cada primo con un exponente al menos igual al mayor presente."
+        },
+        {
+          "texto": "Ejemplo: $12$ es $2^{2}\\cdot 3$ y $18$ es $2\\cdot 3^{2}$ ⇒ $MCM$ vale $2^{2}\\cdot 3^{2}$",
+          "explicacion": "Los primos que aparecen son el $2$ y el $3$. El mayor exponente del $2$ es dos, que aparece en el $12$, y el mayor exponente del $3$ es dos, que aparece en el $18$. El producto $2^{2}\\cdot 3^{2}$ vale $36$, que coincide con el resultado obtenido al listar los múltiplos comunes."
+        },
+        {
+          "texto": "Ejemplo: $MCM(8,12,20)$ vale $120$",
+          "explicacion": "Las descomposiciones son $8$ igual a $2^{3}$, $12$ igual a $2^{2}\\cdot 3$ y $20$ igual a $2^{2}\\cdot 5$. Los primos presentes son $2$, $3$ y $5$, con mayores exponentes tres, uno y uno. El producto $2^{3}\\cdot 3\\cdot 5$ da $120$, resultado que puede comprobarse verificando que $120$ es divisible entre $8$, $12$ y $20$."
+        },
+        {
+          "texto": "Un primo presente en algún número ⇒ interviene en el $MCM$",
+          "explicacion": "A diferencia del máximo común divisor, que solo usa los primos presentes en todos los números, el mínimo común múltiplo incluye también los primos que aparecen en un solo número. Un múltiplo común debe ser divisible entre cada número, de modo que debe contener todos los primos de todos ellos. Omitir un primo no común es un error que produce un número que no es múltiplo de todos."
+        }
+      ]
+    },
+    {
+      "titulo": "Descomposición simultánea",
+      "puntos": [
+        {
+          "texto": "«Descomposición simultánea»: dividir entre primos que dividan a alguno",
+          "explicacion": "Este método consiste en escribir los números en una fila y dividirlos entre un primo que divida al menos a uno de ellos; los números que no son divisibles entre ese primo se bajan sin cambio. Se repite el proceso hasta que todos los cocientes sean uno. El producto de los primos usados es el mínimo común múltiplo."
+        },
+        {
+          "texto": "Ejemplo: $6$, $10$, $15$ ⇒ $MCM$ vale $30$",
+          "explicacion": "Al dividir entre $2$ se obtiene $3, 5, 15$, pues el $15$ se baja sin cambio. Luego entre $3$ resultan $1, 5, 5$ y entre $5$ resultan $1, 1, 1$. El producto de los primos usados, $2$, $3$ y $5$, es $30$, que es el mínimo común múltiplo. Se comprueba que $30$ es divisible entre $6$, entre $10$ y entre $15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con el MCD",
+      "puntos": [
+        {
+          "texto": "$MCD(A,B)$ por $MCM(A,B)$ = $A$ por $B$",
+          "explicacion": "Para dos números, el producto de su máximo común divisor, abreviado MCD, por su mínimo común múltiplo es igual al producto de los dos números. Es una relación que se verifica con la descomposición canónica: cada primo aporta el menor exponente al máximo común divisor y el mayor al mínimo común múltiplo, y para cada primo la suma del menor y del mayor exponente coincide con la suma de los exponentes que tiene en los dos números. El tema 33 estudia el máximo común divisor."
+        },
+        {
+          "texto": "$MCM(A,B)$ = $\\frac{A\\cdot B}{MCD(A,B)}$",
+          "explicacion": "Al despejar el mínimo común múltiplo en la relación anterior se obtiene una fórmula que lo calcula a partir del máximo común divisor, que puede hallarse con el algoritmo de Euclides, tema 34. Ejemplo: para $24$ y $36$, el máximo común divisor es $12$ y el producto es $864$, por lo que el mínimo común múltiplo es $864$ entre $12$, es decir, $72$."
+        },
+        {
+          "texto": "Con tres números la relación del producto no se cumple",
+          "explicacion": "La relación entre producto, máximo común divisor y mínimo común múltiplo solo es válida para dos números. Con tres números como $6$, $10$ y $15$, el máximo común divisor es $1$ y el mínimo común múltiplo es $30$, pero el producto de los tres es $900$, que no coincide con el producto de $1$ por $30$."
+        },
+        {
+          "texto": "El $MCD$ divide al $MCM$",
+          "explicacion": "El máximo común divisor divide a cada uno de los números, y cada número divide al mínimo común múltiplo, de modo que el máximo común divisor divide al mínimo común múltiplo. Ejemplo: para $24$ y $36$, el máximo común divisor es $12$ y el mínimo común múltiplo es $72$, que es múltiplo de $12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Números «primos entre sí» ⇒ $MCM$ es su producto",
+          "explicacion": "Si los números no tienen factores primos comunes, el máximo común divisor es uno y la relación anterior indica que el mínimo común múltiplo es el producto de los números. Ejemplo: $8$ y $15$ son primos entre sí y su mínimo común múltiplo es $120$. Para tres números solo vale si son primos dos a dos."
+        },
+        {
+          "texto": "$A$ múltiplo de $B$ ⇒ $MCM(A,B)$ = $A$",
+          "explicacion": "Si $A$ es múltiplo de $B$, entonces $A$ es un múltiplo común de ambos y ningún múltiplo común positivo puede ser menor que $A$, pues debe ser múltiplo de $A$. Por tanto, el mínimo común múltiplo es $A$. Ejemplo: como $48$ es múltiplo de $12$, $MCM(48,12)$ vale $48$."
+        },
+        {
+          "texto": "$MCM(kA,kB)$ = $k\\cdot MCM(A,B)$",
+          "explicacion": "Al multiplicar todos los números por un mismo factor $k$, el mínimo común múltiplo queda multiplicado por $k$. Ejemplo: como $MCM(4,6)$ vale $12$, $MCM(40,60)$ vale $120$. La propiedad inversa también es válida: al dividir todos los números entre un divisor común, el mínimo común múltiplo queda dividido entre ese divisor."
+        },
+        {
+          "texto": "$MCM(A,B,C)$ = $MCM(MCM(A,B),C)$",
+          "explicacion": "El mínimo común múltiplo puede calcularse en etapas: primero entre dos números y luego entre ese resultado y el tercero. La propiedad se debe a que los múltiplos comunes de tres números son los múltiplos comunes de los dos primeros que además lo son del tercero. Ejemplo: $MCM(8,12)$ es $24$ y $MCM(24,20)$ es $120$, igual que $MCM(8,12,20)$."
+        },
+        {
+          "texto": "Dos números «consecutivos» ⇒ $MCM$ es su producto",
+          "explicacion": "Dos enteros consecutivos son primos entre sí, así que su mínimo común múltiplo es su producto. Ejemplo: $MCM(14,15)$ vale $210$. Es un caso particular de la propiedad de los números primos entre sí, y permite calcular el resultado de inmediato sin descomponer en factores primos."
+        },
+        {
+          "texto": "Múltiplos comunes menores que $N$ ⇒ cociente entero de $N$ entre $MCM$",
+          "explicacion": "Como los múltiplos comunes son los múltiplos del mínimo común múltiplo, la cantidad de múltiplos comunes positivos que no superan $N$ es la parte entera del cociente de $N$ entre el mínimo común múltiplo. Ejemplo: los múltiplos comunes de $12$ y $18$ menores o iguales que $200$ son $36, 72, 108, 144, 180$, que son cinco, y $200$ entre $36$ da $5$ con residuo."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: tomar el menor exponente en lugar del mayor",
+          "explicacion": "El mínimo común múltiplo usa el mayor exponente de cada primo, porque un múltiplo común debe contener al menos las potencias presentes en el número que más tiene. Usar el menor exponente corresponde al máximo común divisor y entrega un número que no es múltiplo de todos."
+        },
+        {
+          "texto": "Error: confundir mínimo común múltiplo con máximo común divisor",
+          "explicacion": "El mínimo común múltiplo es mayor o igual que cada uno de los números dados, mientras que el máximo común divisor es menor o igual que todos ellos. Al verificar un resultado, el mínimo común múltiplo debe ser divisible entre cada número y el máximo común divisor debe dividir a cada número."
+        },
+        {
+          "texto": "Error: dar el producto de los números como mínimo común múltiplo",
+          "explicacion": "El producto de los números es un múltiplo común, pero solo es el mínimo cuando los números son primos entre sí. Con $12$ y $18$ el producto es $216$, mientras que el mínimo común múltiplo es $36$. Para evitar el error se debe comprobar si existe un múltiplo común menor."
+        }
+      ]
+    }
+  ]
+}

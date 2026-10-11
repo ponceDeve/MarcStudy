@@ -1,0 +1,187 @@
+{
+  "curso": "Aritmética",
+  "tema": "Combinaciones",
+  "glosario": {
+    "Combinación": "Subconjunto de elementos sin importar el orden",
+    "Coeficiente binomial": "Número de combinaciones de n en k",
+    "Análisis combinatorio": "Técnicas para contar configuraciones",
+    "Variaciones": "Agrupaciones donde importa el orden",
+    "Factorial": "Producto de enteros consecutivos desde uno",
+    "Regla de Pascal": "Cada combinación suma dos de la fila anterior",
+    "Conjunto potencia": "Conjunto de todos los subconjuntos",
+    "Triángulo de Pascal": "Tabla triangular de coeficientes binomiales",
+    "Combinación con repetición": "Elección sin orden con elementos repetibles",
+    "Principio de adición": "Total de alternativas excluyentes es la suma",
+    "Principio de multiplicación": "Total de etapas sucesivas es el producto"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Combinación» = subconjunto de $k$ elementos entre $n$",
+          "explicacion": "Una combinación de $n$ elementos tomados de $k$ en $k$ es cada subconjunto formado por $k$ elementos distintos escogidos entre los $n$ de un conjunto. Lo único que distingue a una combinación de otra es cuáles elementos la integran; el orden en que se nombran no interviene. Es una técnica del análisis combinatorio (tema 76)."
+        },
+        {
+          "texto": "Combinación ✓ sin repetición ✗ importa el orden",
+          "explicacion": "Los rasgos de una combinación son que ningún elemento aparece dos veces y que cambiar el orden de los elementos no produce una combinación nueva. Con las letras A, B y C, las agrupaciones AB y BA son la misma combinación, y solo existen tres combinaciones de 2 en 2: AB, AC y BC."
+        },
+        {
+          "texto": "Notación: $C_n^k$, $C(n,k)$, $\\binom{n}{k}$",
+          "explicacion": "El número de combinaciones de $n$ elementos tomados de $k$ en $k$ se escribe $C_n^k$ o $C(n,k)$. También se escribe $\\binom{n}{k}$, que se lee «n sobre k» y recibe el nombre de coeficiente binomial. En algunos textos aparece $_nC_k$. Siempre se cumple $0 \\le k \\le n$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula",
+      "puntos": [
+        {
+          "texto": "Deducción: variaciones entre ordenaciones",
+          "explicacion": "Cada combinación de $k$ elementos puede ordenarse de $k!$ maneras, y cada ordenación es una variación (tema 78). Por tanto, el número de variaciones es $k!$ veces el de combinaciones: $V_n^k = C_n^k \\cdot k!$. Al despejar se obtiene la fórmula de las combinaciones."
+        },
+        {
+          "texto": "Fórmula: $C_n^k = \\frac{n!}{k!\\,(n-k)!}$",
+          "explicacion": "El número de combinaciones es $$C_n^k = \\frac{n!}{k!\\,(n-k)!}$$ con $0 \\le k \\le n$. Se obtiene dividiendo el número de variaciones $\\frac{n!}{(n-k)!}$ entre las $k!$ ordenaciones de cada grupo, y utiliza el factorial (tema 77)."
+        },
+        {
+          "texto": "Fórmula práctica: producto de $k$ factores entre $k!$",
+          "explicacion": "En la práctica se usa $C_n^k = \\frac{n(n-1)\\cdots(n-k+1)}{k!}$, con $k$ factores decrecientes en el numerador y el factorial de $k$ en el denominador. Evita calcular factoriales grandes y se puede simplificar durante el cálculo. Por ejemplo, $C_8^3 = \\frac{8 \\cdot 7 \\cdot 6}{3 \\cdot 2 \\cdot 1} = 56$, donde el 6 del numerador se cancela con el 3 y el 2 del denominador, de modo que solo queda multiplicar $8 \\cdot 7$."
+        },
+        {
+          "texto": "Ejemplo: $C_5^3 = 10$",
+          "explicacion": "Con 5 elementos tomados de 3 en 3, $C_5^3 = \\frac{5 \\cdot 4 \\cdot 3}{3 \\cdot 2 \\cdot 1} = \\frac{60}{6} = 10$. Con factoriales, $\\frac{5!}{3!\\,2!} = \\frac{120}{12} = 10$. Las 10 combinaciones, escritas con las letras A, B, C, D y E, son ABC, ABD, ABE, ACD, ACE, ADE, BCD, BCE, BDE y CDE, cada una contada una sola vez sin importar el orden."
+        },
+        {
+          "texto": "Ejemplo: comité de 3 entre 10 personas ⇒ 120",
+          "explicacion": "Para formar un comité de 3 personas entre 10, el orden no importa, ya que el comité es el mismo cualquiera sea el orden en que se nombre. El total es $C_{10}^3 = \\frac{10 \\cdot 9 \\cdot 8}{6} = 120$."
+        },
+        {
+          "texto": "Ejemplo: saludos entre 10 personas ⇒ 45",
+          "explicacion": "Si cada persona saluda una vez a cada una de las demás, cada saludo corresponde a un par de personas sin importar el orden. El total es $C_{10}^2 = \\frac{10 \\cdot 9}{2} = 45$ saludos."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$C_n^0 = C_n^n = 1$",
+          "explicacion": "Existe una sola manera de no elegir ningún elemento, el subconjunto vacío, y una sola de elegirlos todos. La fórmula lo confirma: $\\frac{n!}{0!\\,n!} = 1$ y $\\frac{n!}{n!\\,0!} = 1$, con la convención $0! = 1$."
+        },
+        {
+          "texto": "$C_n^1 = n$",
+          "explicacion": "Elegir un solo elemento entre $n$ se hace de $n$ maneras, una por cada elemento. La fórmula entrega $\\frac{n!}{1!\\,(n-1)!} = n$, resultado que coincide con el de las variaciones de un elemento. Con un solo lugar por ocupar el orden no interviene, por lo que combinaciones y variaciones coinciden, y ambas son iguales al número de elementos del conjunto."
+        },
+        {
+          "texto": "Simetría: $C_n^k = C_n^{n-k}$",
+          "explicacion": "Elegir $k$ elementos equivale a elegir los $n - k$ que se dejan fuera, por lo que ambas cantidades son iguales. Sirve para simplificar cálculos: $C_{10}^8 = C_{10}^2 = 45$. Calcular dos factores en lugar de ocho reduce el trabajo, y la simetría también ayuda a verificar resultados, pues dos coeficientes simétricos de una misma fila del triángulo de Pascal deben ser iguales."
+        },
+        {
+          "texto": "Regla de Pascal: $C_n^k = C_{n-1}^{k-1} + C_{n-1}^k$",
+          "explicacion": "Al elegir $k$ elementos entre $n$, un elemento fijo o forma parte del grupo, y entonces faltan $k - 1$ por elegir entre los $n - 1$ restantes, o no forma parte, y se eligen los $k$ entre los $n - 1$ restantes. La suma de ambos casos da el total."
+        },
+        {
+          "texto": "Suma de todas las combinaciones = $2^n$",
+          "explicacion": "La suma $C_n^0 + C_n^1 + \\cdots + C_n^n$ cuenta todos los subconjuntos de un conjunto de $n$ elementos, que son $2^n$ (conjunto potencia, tema 12). Cada elemento puede pertenecer o no a un subconjunto, y por el principio de multiplicación hay $2 \\cdot 2 \\cdots 2 = 2^n$ posibilidades."
+        },
+        {
+          "texto": "Relación: $C_n^k = \\frac{n}{k}\\,C_{n-1}^{k-1}$",
+          "explicacion": "Se obtiene desarrollando la fórmula con factoriales y sacando un factor $n$ en el numerador y un factor $k$ en el denominador. Permite calcular combinaciones sucesivas a partir de otras ya conocidas. Por ejemplo, conociendo $C_4^1 = 4$ se obtiene $C_5^2 = \\frac{5}{2} \\cdot 4 = 10$. La relación también aparece al simplificar cocientes de combinaciones consecutivas."
+        },
+        {
+          "texto": "Igualdad $C_n^a = C_n^b$ ⇒ $a = b$ o $a + b = n$",
+          "explicacion": "Por la simetría, dos combinaciones del mismo $n$ son iguales cuando sus valores de $k$ son iguales o suman $n$. Esta propiedad se usa para resolver ecuaciones combinatorias, descartando soluciones que no cumplan las condiciones de existencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo de Pascal",
+      "puntos": [
+        {
+          "texto": "«Triángulo de Pascal» = tabla de combinaciones",
+          "explicacion": "El triángulo de Pascal es una disposición triangular en que la fila $n$ contiene los valores $C_n^0, C_n^1, \\dots, C_n^n$. Cada número es la suma de los dos que tiene encima, según la regla de Pascal, y los bordes valen 1."
+        },
+        {
+          "texto": "Primeras cinco filas del triángulo de Pascal",
+          "explicacion": "Las filas 0 a 4 son: $1$; $1, 1$; $1, 2, 1$; $1, 3, 3, 1$; y $1, 4, 6, 4, 1$. La fila 5 es $1, 5, 10, 10, 5, 1$, que confirma $C_5^3 = 10$. La simetría de cada fila refleja la igualdad $C_n^k = C_n^{n-k}$."
+        },
+        {
+          "texto": "Blaise Pascal: «Traité du triangle arithmétique»",
+          "explicacion": "Blaise Pascal, matemático y físico francés, estudió esta disposición en su tratado sobre el triángulo aritmético, redactado en 1654 y publicado en 1665. La disposición ya era conocida antes en otras culturas, entre ellas la china y la india, pero Pascal la desarrolló de forma sistemática."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones",
+      "puntos": [
+        {
+          "texto": "Elementos obligados ⇒ elegir los restantes",
+          "explicacion": "Si en la elección debe estar un elemento determinado, se elige este y se completa el grupo con los restantes. De un grupo de 8 personas, los comités de 3 que incluyen a una persona dada son $C_7^2 = 21$; los que la excluyen son $C_7^3 = 35$, y la suma es $C_8^3 = 56$."
+        },
+        {
+          "texto": "Casos «por lo menos» ⇒ por casos o por complemento",
+          "explicacion": "Para contar elecciones con al menos cierta cantidad de elementos de un tipo se suman los casos posibles o se resta del total el caso contrario. En 5 hombres y 4 mujeres, los grupos de 4 con al menos 2 mujeres son $6 \\cdot 10 + 4 \\cdot 5 + 1 = 81$, que coincide con $126 - 45 = 81$."
+        },
+        {
+          "texto": "Elecciones de varios grupos ⇒ multiplicar combinaciones",
+          "explicacion": "Cuando se eligen elementos de grupos distintos, cada elección es una etapa independiente y sus resultados se multiplican. Elegir 2 hombres entre 5 y 2 mujeres entre 4 se hace de $C_5^2 \\cdot C_4^2 = 10 \\cdot 6 = 60$ maneras."
+        },
+        {
+          "texto": "Formación de grupos distinguibles ⇒ combinaciones sucesivas",
+          "explicacion": "Para repartir 9 personas en tres equipos distintos de 3 se elige el primer equipo, luego el segundo entre las restantes y el tercero queda determinado: $C_9^3 \\cdot C_6^3 \\cdot C_3^3 = 84 \\cdot 20 \\cdot 1 = 1680$. Si los equipos no se distinguen, se divide entre $3!$ y resultan 280."
+        },
+        {
+          "texto": "Geometría: $C_n^2$ segmentos y $C_n^3$ triángulos",
+          "explicacion": "Con $n$ puntos de un plano, tres de ellos nunca alineados, cada par determina un segmento y cada trío un triángulo, de modo que hay $C_n^2$ segmentos y $C_n^3$ triángulos. Las diagonales de un polígono de $n$ lados son $C_n^2 - n = \\frac{n(n-3)}{2}$; un hexágono tiene 9."
+        }
+      ]
+    },
+    {
+      "titulo": "Combinaciones con repetición",
+      "puntos": [
+        {
+          "texto": "«Combinación con repetición» = elementos que pueden repetirse",
+          "explicacion": "En una combinación con repetición se eligen $k$ elementos de $n$ tipos, pudiendo tomar varias unidades del mismo tipo, y no importa el orden. Se denota $CR_n^k$. Se denota $CR_n^k$. Es el caso contrario a la combinación simple, en que cada elemento se usa a lo sumo una vez, y aparece, por ejemplo, al repartir objetos idénticos entre varias personas."
+        },
+        {
+          "texto": "Fórmula: $CR_n^k = C_{n+k-1}^k$",
+          "explicacion": "El número de combinaciones con repetición es $CR_n^k = C_{n+k-1}^{k} = \\frac{(n+k-1)!}{k!\\,(n-1)!}$. Se justifica representando cada elección con $k$ marcas y $n - 1$ separadores, y contando las posiciones de las marcas entre las $n + k - 1$ totales."
+        },
+        {
+          "texto": "Ejemplo: 3 bolas de helado entre 4 sabores ⇒ 20",
+          "explicacion": "Si se escogen 3 bolas entre 4 sabores y se puede repetir sabor, sin importar el orden, el total es $CR_4^3 = C_6^3 = 20$. Si no se pudiera repetir, serían $C_4^3 = 4$. Al permitir repeticiones se agregan combinaciones como dos bolas de un sabor y una de otro, o tres bolas del mismo sabor, que no existen en las combinaciones simples."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación",
+      "puntos": [
+        {
+          "texto": "Combinaciones ≠ variaciones: orden indiferente frente a relevante",
+          "explicacion": "Para los mismos $n$ y $k$, las variaciones (tema 78) cuentan $k!$ veces más agrupaciones que las combinaciones, porque distinguen el orden. La pregunta de decisión es si cambiar el orden de los elementos elegidos da un resultado distinto."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: usar combinaciones cuando el orden importa",
+          "explicacion": "Al asignar cargos distintos, como presidente y secretario, el orden distingue los resultados y corresponden variaciones (tema 78). Usar combinaciones divide el total entre $k!$ y subestima el resultado. Por ejemplo, para elegir presidente y secretario entre 5 personas, la respuesta correcta es $V_5^2 = 20$, mientras que $C_5^2 = 10$ cuenta una sola vez cada pareja, sin distinguir quién ocupa cada cargo."
+        },
+        {
+          "texto": "Error: olvidar la simetría al simplificar",
+          "explicacion": "Calcular $C_{20}^{18}$ con 18 factores es innecesario, pues $C_{20}^{18} = C_{20}^2 = 190$. Usar la simetría reduce el trabajo y los errores de cálculo. Siempre conviene elegir el menor entre $k$ y $n - k$ al aplicar la fórmula práctica, porque así el numerador tiene menos factores y el cálculo se vuelve más corto."
+        },
+        {
+          "texto": "Error: sumar en vez de multiplicar elecciones independientes",
+          "explicacion": "Cuando se eligen elementos de grupos distintos al mismo tiempo, las combinaciones se multiplican. Se suman solo cuando se trata de casos excluyentes entre sí, según el principio de adición (tema 76). Por ejemplo, elegir 2 hombres y 2 mujeres a la vez exige multiplicar $C_5^2 \\cdot C_4^2$, mientras que elegir un grupo de 2 hombres o un grupo de 2 mujeres, pero no ambos, exige sumar."
+        },
+        {
+          "texto": "Error: confundir $C_n^k$ con $\\frac{n!}{k!}$",
+          "explicacion": "La fórmula completa tiene en el denominador el producto $k!\\,(n-k)!$. Escribir solo $\\frac{n!}{k!}$ omite el factor $(n-k)!$ y produce un valor mayor que el correcto. Con $n = 5$ y $k = 3$ se obtendría $\\frac{120}{6} = 20$ en lugar de 10."
+        }
+      ]
+    }
+  ]
+}

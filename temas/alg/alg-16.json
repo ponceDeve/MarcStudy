@@ -1,0 +1,224 @@
+{
+  "curso": "Álgebra",
+  "tema": "Representación binomial",
+  "glosario": {
+    "forma binomial": "Escritura a más bi de un complejo.",
+    "forma algebraica": "Otro nombre de la forma binomial.",
+    "forma rectangular": "Escritura por coordenadas rectangulares del punto.",
+    "unidad imaginaria": "Número cuyo cuadrado vale menos uno.",
+    "número complejo": "Número de la forma a más bi.",
+    "parte real": "Término sin la unidad imaginaria.",
+    "parte imaginaria": "Coeficiente real que acompaña a la unidad imaginaria.",
+    "término imaginario": "Término que contiene la unidad imaginaria.",
+    "imaginario puro": "Complejo con parte real cero.",
+    "binomio": "Expresión de dos términos.",
+    "opuesto": "Número que sumado da cero.",
+    "inverso multiplicativo": "Número que multiplicado da uno.",
+    "propiedad distributiva": "Multiplicar una suma por cada sumando.",
+    "propiedad conmutativa": "El orden no altera el resultado.",
+    "términos semejantes": "Términos con la misma parte literal.",
+    "residuo": "Sobrante de una división entera.",
+    "discriminante": "Número que indica el tipo de raíces.",
+    "ecuación bicuadrada": "Ecuación de cuarto grado sin términos impares.",
+    "factorizar": "Escribir como producto de factores.",
+    "racionalizar": "Eliminar raíces del denominador.",
+    "minuendo": "Cantidad de la que se resta.",
+    "sustraendo": "Cantidad que se resta.",
+    "plano complejo": "Plano donde se ubican los complejos."
+  },
+  "theory": [
+    {
+      "titulo": "Forma binomial",
+      "puntos": [
+        {
+          "texto": "«Forma binomial» ⇒ $z=a+bi$ con $a,b\\in\\mathbb{R}$",
+          "explicacion": "La forma binomial es la escritura de un número complejo como la suma de un número real $a$ y un múltiplo real $b$ de la unidad imaginaria $i$, con $i^2=-1$. Se llama binomial porque tiene dos términos: $a$ y $bi$. Cada complejo $z$ admite una única escritura de este tipo, pues $a$ y $b$ quedan determinados por el par $(a,b)$. Con esta forma se pueden operar los complejos con las reglas usuales del álgebra, reemplazando $i^2$ por $-1$ cuando aparece. Ejemplo: $z=3+4i$ tiene $a=3$ y $b=4$; $z=5-2i$ tiene $a=5$ y $b=-2$, ya que $5-2i=5+(-2)i$. Verificación: $3+4i$ corresponde al par $(3,4)$ y $5-2i$ al par $(5,-2)$."
+        },
+        {
+          "texto": "$(a,b)=a+bi$ ⇒ equivalencia con el par",
+          "explicacion": "El par ordenado $(a,b)$ y la expresión $a+bi$ representan el mismo complejo. La equivalencia se justifica porque $(a,b)=(a,0)+(b,0)(0,1)$, y al identificar $(a,0)$ con $a$, $(b,0)$ con $b$ y $(0,1)$ con $i$ resulta $a+bi$. Con ella se pasa de una notación a otra según convenga: pares para definir y demostrar, binomios para calcular. Ejemplo: $(2,-7)=2-7i$ y $-4+i=(-4,1)$. Verificación: la parte real es el primer componente y el coeficiente de $i$ es el segundo."
+        },
+        {
+          "texto": "Nombre alternativo: «forma algebraica»",
+          "explicacion": "La forma binomial recibe también el nombre de forma algebraica, porque permite calcular con el complejo mediante las operaciones del álgebra: sumar, multiplicar y factorizar términos. El nombre contrasta con otras maneras de escribir un complejo, como el par ordenado. Ejemplo: $2+3i$ en forma algebraica es lo mismo que $(2,3)$ como par. Verificación: ambos tienen parte real $2$ y parte imaginaria $3$."
+        },
+        {
+          "texto": "Nombre alternativo: «forma rectangular»",
+          "explicacion": "Otro nombre de la forma binomial es forma rectangular, que alude a las coordenadas rectangulares $(a,b)$ del punto asociado al complejo en el plano. Ejemplo: $-1+2i$ en forma rectangular corresponde al punto $(-1,2)$ del plano complejo. Verificación: el punto está $1$ unidad a la izquierda del origen y $2$ hacia arriba."
+        },
+        {
+          "texto": "Parte imaginaria de $a+bi$ es $b$ ⇒ no es $bi$",
+          "explicacion": "En $z=a+bi$ la parte real es $a$ y la parte imaginaria es el número real $b$, el coeficiente que acompaña a $i$; el término $bi$ se llama término imaginario, y no es la parte imaginaria. Confundir ambos es un error frecuente. Ejemplos: para $z=5-2i$ la parte real es $5$ y la parte imaginaria es $-2$; para $z=-3i$ la parte real es $0$ y la parte imaginaria es $-3$; para $z=7$ la parte imaginaria es $0$. Verificación: se reescribe cada complejo como $a+bi$ y se leen $a$ y $b$: $5+(-2)i$, $0+(-3)i$ y $7+0i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "$b=0$ ⇒ $z=a$ es real",
+          "explicacion": "Un complejo queda determinado por dos números reales, su parte real y su parte imaginaria. Si la segunda es nula, el complejo no aporta nada «imaginario» y se comporta como un real ordinario, de modo que los números reales son el caso particular de los complejos con $b=0$. Cuando la parte imaginaria es cero, el término $bi$ desaparece y el complejo se reduce al número real $a$. Por eso todo real es un complejo y $\\mathbb{R}\\subset\\mathbb{C}$. Ejemplo: $7=7+0i$ y $-\\frac{1}{2}=-\\frac{1}{2}+0i$. Verificación: al operar, $(7+0i)+(3+0i)=10+0i=10$, igual que $7+3=10$."
+        },
+        {
+          "texto": "$a=0$ y $b\\ne 0$ ⇒ $z=bi$ es imaginario puro",
+          "explicacion": "Si la parte real es cero y la imaginaria no, el complejo se escribe $bi$ y se llama imaginario puro. Es un múltiplo real de la unidad imaginaria. Ejemplos: $3i$, $-5i$ y $\\frac{1}{2}i$ son imaginarios puros. Su cuadrado es siempre un real negativo: $(bi)^2=b^2i^2=-b^2$. Verificación: $(3i)^2=9i^2=-9$ y $(-5i)^2=25i^2=-25$."
+        },
+        {
+          "texto": "$a=0$ y $b=0$ ⇒ $z=0$",
+          "explicacion": "El complejo cero se escribe $0+0i=0$. Es el único complejo con ambas partes nulas, se considera real y funciona como neutro de la suma, es decir, sumarlo a cualquier complejo no lo modifica. Ejemplo: $(3+4i)+0=3+4i$. Verificación: al sumar partes reales $3+0=3$ y partes imaginarias $4+0=4$."
+        },
+        {
+          "texto": "$i=0+1i$ ⇒ parte imaginaria $1$",
+          "explicacion": "La unidad imaginaria suele tratarse como un símbolo aparte, pero también es un complejo más y, como tal, tiene una parte real y una parte imaginaria bien definidas que se leen igual que en cualquier otro binomio. La propia unidad imaginaria es un complejo con parte real $0$ y parte imaginaria $1$, de manera que $i=0+1i$. Con esto se aplican a $i$ las mismas fórmulas generales. Ejemplo: $i+(2-3i)=(0+2)+(1-3)i=2-2i$. Verificación: la parte imaginaria de $i$ es $1$, y $1+(-3)=-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad binomial",
+      "puntos": [
+        {
+          "texto": "$a+bi=c+di$ ⇒ $a=c$ y $b=d$",
+          "explicacion": "Dos complejos en forma binomial son iguales cuando tienen la misma parte real y la misma parte imaginaria. Una igualdad entre complejos equivale a dos igualdades entre reales, lo que permite resolver incógnitas. Ejemplo: $(2x-1)+(y+3)i=5-2i$ da $2x-1=5$, de donde $x=3$, y $y+3=-2$, de donde $y=-5$. Verificación: con $x=3$ y $y=-5$ el primer miembro es $5+(-2)i=5-2i$, igual al segundo."
+        },
+        {
+          "texto": "$a+bi=0$ ⇒ $a=0$ y $b=0$",
+          "explicacion": "Un complejo es cero únicamente cuando sus dos partes son cero, caso particular de la igualdad con $c=d=0$. Se usa para despejar incógnitas cuando una expresión compleja se iguala a cero. Ejemplo: $(x-4)+(x+y)i=0$ da $x-4=0$, es decir $x=4$, y $x+y=0$, es decir $y=-4$. Verificación: con $x=4$ y $y=-4$ queda $0+0i=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma y resta",
+      "puntos": [
+        {
+          "texto": "Suma: $(a+bi)+(c+di)=(a+c)+(b+d)i$",
+          "explicacion": "Se suman las partes reales entre sí y las partes imaginarias entre sí, agrupando términos semejantes: los reales con los reales y los múltiplos de $i$ con los múltiplos de $i$. Ejemplo: $(3+2i)+(1-5i)=(3+1)+(2-5)i=4-3i$. Verificación: la parte real es $3+1=4$ y la parte imaginaria es $2+(-5)=-3$."
+        },
+        {
+          "texto": "Opuesto: $-(a+bi)=-a-bi$",
+          "explicacion": "Todo complejo tiene un opuesto, es decir, otro complejo que sumado con él da el neutro de la suma, que es el cero. Como la suma se calcula parte a parte, el opuesto también se calcula parte a parte. El opuesto de un complejo se obtiene cambiando el signo de ambos términos, y la suma del complejo con su opuesto es cero. Ejemplo: el opuesto de $3+2i$ es $-3-2i$, pues $(3+2i)+(-3-2i)=0+0i=0$. Verificación: $3-3=0$ y $2-2=0$."
+        },
+        {
+          "texto": "Resta: $(a+bi)-(c+di)=(a-c)+(b-d)i$",
+          "explicacion": "La resta de complejos se define como la suma del primero con el opuesto del segundo, igual que en los reales. Por eso el procedimiento es el mismo de la suma, con la precaución de cambiar el signo de los dos términos del sustraendo, y no solo del primero. Restar equivale a sumar el opuesto, de modo que se cambia el signo de cada término del sustraendo y se agrupan términos semejantes. Ejemplo: $(3+2i)-(1-5i)=3+2i-1+5i=(3-1)+(2+5)i=2+7i$. Verificación: se comprueba sumando, $(2+7i)+(1-5i)=3+2i$, el minuendo."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicación",
+      "puntos": [
+        {
+          "texto": "Producto por real: $k(a+bi)=ka+kbi$",
+          "explicacion": "Un número real es un complejo con parte imaginaria cero, de modo que multiplicarlo por un complejo es un caso particular del producto general. Aplicando la propiedad distributiva y la regla de los signos, el real $k$ multiplica a cada término del binomio por separado. Multiplicar un complejo por un número real $k$ equivale a multiplicar por $k$ cada una de sus partes, por la propiedad distributiva. Ejemplo: $3(2-5i)=6-15i$. Verificación: $3\\times 2=6$ y $3\\times(-5)=-15$."
+        },
+        {
+          "texto": "Producto: $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$",
+          "explicacion": "El producto de complejos es la operación que da estructura al conjunto, y se calcula como el producto de dos binomios: cada término del primero se multiplica por cada término del segundo y luego se agrupan términos semejantes. El único dato nuevo es que la combinación $i\\times i$ vale $-1$. El producto se obtiene aplicando la propiedad distributiva y reemplazando $i^2$ por $-1$. Demostración: $(a+bi)(c+di)=ac+adi+bci+bdi^2=(ac-bd)+(ad+bc)i$. Ejemplo: $(2+3i)(4-i)=8-2i+12i-3i^2=8+10i+3=11+10i$. Verificación: coincide con el producto de pares $(2,3)(4,-1)=(11,10)$, con $ac-bd=8+3$ y $ad+bc=-2+12$."
+        },
+        {
+          "texto": "Producto por $i$: $i(a+bi)=-b+ai$",
+          "explicacion": "Multiplicar por la unidad imaginaria es una operación frecuente, y conviene conocer su efecto directo sobre las partes del complejo, sin repetir cada vez el desarrollo del producto de dos binomios. Multiplicar por $i$ intercambia las partes y cambia un signo: $i(a+bi)=ai+bi^2=-b+ai$. Ejemplo: $i(3+4i)=3i+4i^2=-4+3i$. Verificación: la parte real nueva es $-4$, el opuesto de la parte imaginaria $4$, y la parte imaginaria nueva es $3$, la parte real original."
+        },
+        {
+          "texto": "El producto es conmutativo ⇒ $z_1z_2=z_2z_1$",
+          "explicacion": "Las propiedades conmutativa, asociativa y distributiva que valen para los reales también valen para los complejos. Esto asegura que el cálculo algebraico habitual, como reordenar factores o sacar factor común, se puede usar con confianza. El orden de los factores no altera el producto de complejos porque las expresiones $ac-bd$ y $ad+bc$ no cambian al intercambiar $(a,b)$ con $(c,d)$. Ejemplo: $(2+i)(3-i)=6-2i+3i-i^2=7+i$ y $(3-i)(2+i)=6+3i-2i-i^2=7+i$. Verificación: ambos resultados son $7+i$."
+        },
+        {
+          "texto": "Propiedad distributiva ⇒ $z_1(z_2+z_3)=z_1z_2+z_1z_3$",
+          "explicacion": "La distributiva relaciona la suma con el producto y es la propiedad que justifica el desarrollo de productos de binomios, de modo que sea cual sea el camino de cálculo, el resultado final es el mismo. El producto de complejos se distribuye sobre la suma, igual que en los reales. Ejemplo con $z_1=1+i$, $z_2=2-i$, $z_3=3+2i$: $z_2+z_3=5+i$ y $z_1(z_2+z_3)=(1+i)(5+i)=5+i+5i+i^2=4+6i$. Por otro lado $z_1z_2=2-i+2i-i^2=3+i$ y $z_1z_3=3+2i+3i+2i^2=1+5i$, cuya suma es $4+6i$. Verificación: ambos caminos dan $4+6i$."
+        },
+        {
+          "texto": "$(a+bi)^2=(a^2-b^2)+2abi$",
+          "explicacion": "Elevar un binomio complejo al cuadrado es un caso particular del producto de dos binomios iguales, pero tiene su propia fórmula porque se presenta con mucha frecuencia, por ejemplo al verificar raíces o al resolver ecuaciones cuadráticas. El cuadrado de un binomio complejo se desarrolla como en los reales, con $(bi)^2=-b^2$. Demostración: $(a+bi)^2=a^2+2abi+b^2i^2=(a^2-b^2)+2abi$. Ejemplo: $(3+4i)^2=9+24i+16i^2=-7+24i$. Verificación: la fórmula da $a^2-b^2=9-16=-7$ y $2ab=24$."
+        },
+        {
+          "texto": "$(1+i)^2=2i$ y $(1-i)^2=-2i$",
+          "explicacion": "Los complejos $1+i$ y $1-i$ aparecen muy a menudo como ejemplos y como bases de potencias, y sus cuadrados son especialmente sencillos, lo que permite calcular potencias mayores con rapidez al elevar repetidamente al cuadrado. Los cuadrados de $1+i$ y $1-i$ son imaginarios puros. Demostración: $(1+i)^2=1+2i+i^2=2i$ y $(1-i)^2=1-2i+i^2=-2i$. Ejemplo de uso: $(1+i)^4=(2i)^2=4i^2=-4$. Verificación: $(1-i)^4=(-2i)^2=-4$, igual que el anterior."
+        },
+        {
+          "texto": "$(a+bi)(a-bi)=a^2+b^2$",
+          "explicacion": "Este producto es la versión compleja del producto notable suma por diferencia: los términos imaginarios se cancelan en la suma central y el resultado es siempre un número real, no negativo. Es la clave para eliminar $i$ de un denominador. El producto de dos complejos con la misma parte real y partes imaginarias opuestas es el real $a^2+b^2$. Demostración: $(a+bi)(a-bi)=a^2-(bi)^2=a^2-b^2i^2=a^2+b^2$. Ejemplo: $(3+4i)(3-4i)=9+16=25$. Verificación: $9-16i^2=9+16=25$."
+        },
+        {
+          "texto": "$x^2+k^2=(x+ki)(x-ki)$ ⇒ factorización compleja",
+          "explicacion": "En los reales una suma de cuadrados no se factoriza, pero en los complejos sí, porque $-k^2=(ki)^2$. Esto permite expresar cualquier polinomio cuadrático en factores lineales y es el fundamento de la factorización compleja. Una suma de cuadrados se factoriza con complejos como diferencia de cuadrados, aplicando $(x+ki)(x-ki)=x^2-k^2i^2=x^2+k^2$. Ejemplo: $x^2+9=(x+3i)(x-3i)$. Verificación: $(x+3i)(x-3i)=x^2-9i^2=x^2+9$."
+        }
+      ]
+    },
+    {
+      "titulo": "División",
+      "puntos": [
+        {
+          "texto": "División: multiplicar por el complejo con parte imaginaria opuesta",
+          "explicacion": "Para dividir $\\frac{a+bi}{c+di}$ con $c+di\\ne 0$ se multiplican numerador y denominador por $c-di$, el complejo de igual parte real y parte imaginaria opuesta, lo que convierte el denominador en el real $c^2+d^2$. Es un procedimiento análogo a racionalizar un denominador con raíces. Resultado general: $\\frac{a+bi}{c+di}=\\frac{(ac+bd)+(bc-ad)i}{c^2+d^2}$. Demostración: $(a+bi)(c-di)=ac-adi+bci-bdi^2=(ac+bd)+(bc-ad)i$ y $(c+di)(c-di)=c^2+d^2$. Ejemplo: $\\frac{2+3i}{1-2i}$ con $a=2$, $b=3$, $c=1$, $d=-2$ da $\\frac{(2-6)+(3+4)i}{1+4}=\\frac{-4+7i}{5}$. Verificación: $\\left(\\frac{-4+7i}{5}\\right)(1-2i)=\\frac{-4+8i+7i-14i^2}{5}=\\frac{10+15i}{5}=2+3i$."
+        },
+        {
+          "texto": "$\\frac{1}{a+bi}=\\frac{a-bi}{a^2+b^2}$ ⇒ inverso",
+          "explicacion": "El inverso multiplicativo es el caso particular de la división en que el numerador es $1$, y es la herramienta que permite dividir entre cualquier complejo distinto de cero, ya que dividir equivale a multiplicar por el inverso. El inverso multiplicativo de un complejo no nulo se obtiene multiplicando numerador y denominador de $\\frac{1}{a+bi}$ por $a-bi$. Demostración: $\\frac{1}{a+bi}=\\frac{a-bi}{(a+bi)(a-bi)}=\\frac{a-bi}{a^2+b^2}$. Ejemplos: $\\frac{1}{3+4i}=\\frac{3-4i}{25}=\\frac{3}{25}-\\frac{4}{25}i$; $\\frac{1}{i}=\\frac{0-1i}{1}=-i$. Verificación: $(3+4i)\\left(\\frac{3-4i}{25}\\right)=\\frac{25}{25}=1$ y $i\\times(-i)=-i^2=1$."
+        },
+        {
+          "texto": "Paso 1 de la división: identificar el denominador",
+          "explicacion": "El método de división se aplica en pasos ordenados, y el primero es decidir con qué número se amplía la fracción. La elección no es arbitraria: debe ser tal que el denominador resulte real después de multiplicar. Se identifica el denominador $c+di$ y se escribe el complejo por el que se multiplicará, $c-di$, que cambia solo el signo de la parte imaginaria. Ejemplo: en $\\frac{5+i}{2-i}$ el denominador es $2-i$ y se multiplica por $2+i$. Verificación: $(2-i)(2+i)=4-i^2=5$, que es real."
+        },
+        {
+          "texto": "Paso 2 de la división: desarrollar el numerador",
+          "explicacion": "Una vez elegido el multiplicador, la fracción se amplía y el numerador se desarrolla como un producto de binomios. En este paso es donde interviene $i^2=-1$ y donde conviene cuidar los signos de los términos cruzados. Se multiplica el numerador por el complejo elegido y se reemplaza $i^2$ por $-1$. Ejemplo: $(5+i)(2+i)=10+5i+2i+i^2=10+7i-1=9+7i$. Verificación: la parte real es $10-1=9$ y la parte imaginaria es $5+2=7$."
+        },
+        {
+          "texto": "Paso 3 de la división: separar partes",
+          "explicacion": "Cuando el denominador ya es un número real, la fracción deja de ser un cociente de complejos y se separa en dos fracciones reales, una para la parte real y otra para la parte imaginaria, que se simplifican si es posible. El denominador ahora es real, así que se divide cada parte del numerador entre ese real, obteniendo la forma binomial del cociente. Ejemplo: $\\frac{9+7i}{5}=\\frac{9}{5}+\\frac{7}{5}i$. Verificación: $\\left(\\frac{9}{5}+\\frac{7}{5}i\\right)(2-i)=\\frac{18-9i+14i-7i^2}{5}=\\frac{25+5i}{5}=5+i$, el numerador original."
+        },
+        {
+          "texto": "Despejar $z$ en $(c+di)z=w$ ⇒ $z=\\frac{w}{c+di}$",
+          "explicacion": "Las ecuaciones con una incógnita compleja se resuelven con la misma lógica que las lineales reales: se aísla la incógnita con la operación inversa, que aquí es la división entre un complejo no nulo. Una ecuación lineal en la incógnita compleja $z$ se resuelve dividiendo ambos miembros entre el coeficiente, que debe ser distinto de cero. Ejemplo: $(2+i)z=4+3i$ da $z=\\frac{4+3i}{2+i}=\\frac{(4+3i)(2-i)}{5}=\\frac{8-4i+6i-3i^2}{5}=\\frac{11+2i}{5}$. Verificación: $(2+i)\\left(\\frac{11+2i}{5}\\right)=\\frac{22+4i+11i+2i^2}{5}=\\frac{20+15i}{5}=4+3i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias y reducción",
+      "puntos": [
+        {
+          "texto": "Reducir potencias de $i$ antes de operar",
+          "explicacion": "Cuando en una expresión aparecen potencias altas de $i$, se reducen primero con el residuo del exponente entre $4$, usando $i^0=1$, $i^1=i$, $i^2=-1$, $i^3=-i$. Ejemplo: $i^{13}+i^{22}$ tiene $13=4\\times 3+1$, luego $i^{13}=i$, y $22=4\\times 5+2$, luego $i^{22}=-1$, y el resultado es $-1+i$. Verificación: $i^{13}=(i^4)^3\\times i=i$ y $i^{22}=(i^4)^5\\times i^2=-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz cuadrada binomial",
+      "puntos": [
+        {
+          "texto": "Planteo: $\\sqrt{a+bi}=x+yi$ con $x,y\\in\\mathbb{R}$",
+          "explicacion": "Las raíces cuadradas de un complejo también son complejos, y se buscan en forma binomial con coeficientes reales desconocidos $x$ e $y$. El planteo transforma el problema en un sistema de ecuaciones entre números reales. Para hallar las raíces cuadradas de $a+bi$ se busca un complejo $x+yi$ con $x$ e $y$ reales tal que $(x+yi)^2=a+bi$. Al desarrollar el cuadrado queda $(x^2-y^2)+2xyi=a+bi$. Ejemplo: para $\\sqrt{3+4i}$ se plantea $(x+yi)^2=3+4i$. Verificación: la ecuación en binomios obliga a igualar partes real e imaginaria."
+        },
+        {
+          "texto": "Sistema $x^2-y^2=a$ y $2xy=b$",
+          "explicacion": "La igualdad de dos complejos se cumple solo si coinciden ambas partes, así que de una ecuación compleja salen dos ecuaciones reales con las incógnitas $x$ e $y$, una por cada parte. Por la igualdad de complejos, $(x^2-y^2)+2xyi=a+bi$ equivale a las dos ecuaciones reales $x^2-y^2=a$ y $2xy=b$. Ejemplo: para $3+4i$ se obtiene $x^2-y^2=3$ y $2xy=4$, es decir $xy=2$. Verificación: se identifica $a=3$ y $b=4$."
+        },
+        {
+          "texto": "Resolver el sistema ⇒ ecuación bicuadrada en $x$",
+          "explicacion": "Se despeja $y=\\frac{b}{2x}$ en la segunda ecuación y se sustituye en la primera, lo que produce una ecuación bicuadrada en $x$. Ejemplo: de $xy=2$ se tiene $y=\\frac{2}{x}$ y entonces $x^2-\\frac{4}{x^2}=3$, que al multiplicar por $x^2$ da $x^4-3x^2-4=0$, es decir $(x^2-4)(x^2+1)=0$. Como $x$ es real, $x^2+1\\ne 0$ y queda $x^2=4$, es decir $x=\\pm 2$. Verificación: $x=2$ da $4^2-3\\times 4-4=0$."
+        },
+        {
+          "texto": "Raíces: $x+yi$ y $-(x+yi)$",
+          "explicacion": "Si un complejo $w$ cumple $w^2=z$, también $-w$ lo cumple, porque $(-w)^2=w^2$. Por eso todo complejo no nulo tiene exactamente dos raíces cuadradas, opuestas entre sí, igual que ocurre con los reales positivos. Cada valor de $x$ da un $y$, y las dos soluciones son opuestas. Ejemplo: para $x=2$, $y=\\frac{2}{2}=1$, y para $x=-2$, $y=-1$, por lo que las raíces cuadradas de $3+4i$ son $2+i$ y $-2-i$. Verificación: $(2+i)^2=4+4i-1=3+4i$ y $(-2-i)^2=4+4i-1=3+4i$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Números complejos (tema 15) ⇒ el par pasa a binomio",
+          "explicacion": "El tema anterior construyó el conjunto $\\mathbb{C}$ con pares ordenados y estableció las propiedades de la unidad imaginaria; ahora esa información se traduce a una notación que facilita los cálculos. El tema «Números complejos» definió el complejo como par ordenado y la unidad imaginaria; la forma binomial es la notación práctica de esos pares. Ejemplo: la regla del producto de pares $(a,b)(c,d)=(ac-bd,ad+bc)$ se obtiene de multiplicar binomios con $i^2=-1$. Verificación: $(2+3i)(4-i)=11+10i$ y $(2,3)(4,-1)=(11,10)$."
+        },
+        {
+          "texto": "Ecuaciones de segundo grado (tema 06) ⇒ raíces con $i$",
+          "explicacion": "El tema «Ecuaciones de segundo grado» dejaba sin solución real los casos con discriminante negativo; con la forma binomial esas soluciones se escriben completas y se pueden verificar con las operaciones de este tema. Las raíces de $ax^2+bx+c=0$ con discriminante negativo se escriben en forma binomial. Ejemplo: $x^2+2x+5=0$ tiene $\\Delta=-16$ y raíces $-1+2i$ y $-1-2i$. Verificación: $(-1+2i)+(-1-2i)=-2$, igual a $-\\frac{b}{a}$."
+        },
+        {
+          "texto": "Ecuaciones bicuadradas (tema 07) ⇒ se usan al hallar raíces",
+          "explicacion": "La raíz cuadrada de un complejo conduce a una ecuación bicuadrada $x^4-ax^2-\\frac{b^2}{4}=0$. Se resuelve como en el tema «Ecuaciones bicuadradas», con el cambio $t=x^2$. Ejemplo: $x^4-3x^2-4=0$ con $t=x^2$ da $t^2-3t-4=0$, es decir $t=4$ o $t=-1$. Verificación: $t=4$ da $x=\\pm 2$ y $t=-1$ no da $x$ real."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "curso": "Aritmética",
+  "tema": "Media geométrica",
+  "glosario": {
+    "media geométrica": "Raíz enésima del producto de datos positivos.",
+    "media proporcional": "Término medio de una proporción continua.",
+    "factores de crecimiento": "Números por los que se multiplica una cantidad.",
+    "logaritmo": "Exponente al que se eleva la base.",
+    "progresión geométrica": "Sucesión donde se multiplica por una constante."
+  },
+  "theory": [
+    {
+      "titulo": "Definición geométrica",
+      "puntos": [
+        {
+          "texto": "«Media geométrica» = raíz enésima del producto de $n$ datos positivos",
+          "explicacion": "La media geométrica de $n$ números positivos $x_1, x_2, \\ldots, x_n$ es la raíz de índice $n$ de su producto: $$G = \\sqrt[n]{x_1\\,x_2 \\cdots x_n}$$ Es el número que, multiplicado por sí mismo $n$ veces, reproduce el producto de los datos. Es una de las tres medias clásicas que se comparan en el tema 65, Medidas de tendencia central."
+        },
+        {
+          "texto": "Media geométrica de dos números = $\\sqrt{ab}$",
+          "explicacion": "Para dos números positivos $a$ y $b$, la media geométrica es $\\sqrt{a\\,b}$. Para 2 y 8 resulta $\\sqrt{16} = 4$, que cumple $4^2 = 2\\cdot 8$. El nombre de media proporcional se justifica porque $a/G = G/b$, es decir, $G$ es el término medio de una proporción continua."
+        },
+        {
+          "texto": "Cálculo con datos no agrupados = multiplicar y extraer la raíz",
+          "explicacion": "Para datos dados uno por uno, se multiplican todos y se extrae la raíz cuyo índice es la cantidad de datos. Con 1, 3 y 9 el producto es 27 y $G = \\sqrt[3]{27} = 3$; con 4, 6 y 9 el producto es 216 y $G = \\sqrt[3]{216} = 6$. Cuando la raíz no es exacta, se aproxima con calculadora o logaritmos."
+        },
+        {
+          "texto": "Media geométrica con frecuencias = producto de potencias",
+          "explicacion": "Si el valor $x_i$ aparece $f_i$ veces, el producto de todos los datos es $\\prod x_i^{\\,f_i}$ y $$G = \\sqrt[n]{x_1^{f_1}\\,x_2^{f_2}\\cdots x_k^{f_k}}, \\qquad n = \\sum f_i$$ Con 2 apareciendo dos veces y 8 dos veces, el producto es $2^2\\cdot 8^2 = 256$, $n = 4$ y $G = \\sqrt[4]{256} = 4$. Con datos agrupados se usan las marcas de clase."
+        },
+        {
+          "texto": "Media geométrica ponderada = producto de potencias según los pesos",
+          "explicacion": "Cuando los datos tienen pesos $w_i$, la media geométrica ponderada es $$G_w = \\left(\\prod x_i^{\\,w_i}\\right)^{1/\\sum w_i}$$ El caso con frecuencias es el que toma como pesos las frecuencias absolutas. Con el dato 2 de peso 1 y el dato 8 de peso 3, resulta $(2\\cdot 8^3)^{1/4} = 1024^{1/4} = 4\\sqrt{2}\\approx 5{,}66$, valor más cercano al dato de mayor peso."
+        },
+        {
+          "texto": "Media geométrica con logaritmos = antilogaritmo del promedio de logaritmos",
+          "explicacion": "Tomando logaritmos, $\\log G = \\frac{1}{n}\\sum \\log x_i$: el logaritmo de la media geométrica es la media aritmética de los logaritmos de los datos. Por eso, $G$ se calcula promediando los logaritmos y luego deshaciendo el logaritmo. Con 10, 100 y 1000, los logaritmos decimales 1, 2 y 3 tienen promedio 2 y $G = 10^2 = 100$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones de la media",
+      "puntos": [
+        {
+          "texto": "Datos positivos ✓ media geométrica",
+          "explicacion": "La definición exige datos positivos, porque la raíz de índice par de un producto negativo no es un número real y porque los logaritmos solo existen para números positivos. Si algún dato es negativo, la media geométrica no tiene sentido como medida de tendencia central."
+        },
+        {
+          "texto": "Un dato nulo ⇒ media geométrica nula",
+          "explicacion": "Si algún dato es cero, el producto es cero y la media geométrica también. Aunque matemáticamente esté definida, un solo cero anula el resultado sin importar los demás datos, por lo que no es una medida informativa en esos casos."
+        },
+        {
+          "texto": "Datos iguales ⇒ media geométrica igual a ese valor",
+          "explicacion": "Si todos los datos valen $c > 0$, el producto es $c^n$ y $G = c$. En los demás casos, la media geométrica de datos positivos distintos queda estrictamente entre el menor y el mayor de los datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades geométricas",
+      "puntos": [
+        {
+          "texto": "Producto de los datos = media geométrica elevada a $n$",
+          "explicacion": "De la definición se sigue $G^n = x_1\\,x_2\\cdots x_n$. Esta relación permite recuperar el producto total conociendo la media y la cantidad, y es la herramienta análoga a la de la suma total en la media aritmética: aquí lo que se conserva es el producto."
+        },
+        {
+          "texto": "Multiplicar cada dato por una constante multiplica la media",
+          "explicacion": "Si cada dato se multiplica por $a > 0$, la nueva media geométrica es $a\\,G$. Esto se debe a que el producto queda multiplicado por $a^n$ y la raíz de índice $n$ devuelve el factor $a$. Esta propiedad no se extiende a sumar una constante, como se indica en el tema 65."
+        },
+        {
+          "texto": "Producto de dos listas = producto de sus medias geométricas",
+          "explicacion": "Si se multiplican dos listas de datos positivos término a término, la media geométrica del resultado es el producto de las medias geométricas de cada lista. Análogamente, la media geométrica de los cocientes es el cociente de las medias geométricas. La media aritmética no tiene esta propiedad."
+        },
+        {
+          "texto": "Media geométrica de los inversos = inverso de la media geométrica",
+          "explicacion": "Si se reemplaza cada dato por su inverso, la media geométrica de los inversos es $1/G$. Esta simetría entre un dato y su inverso es lo que hace a la media geométrica adecuada para razones, pues no depende de cuál de las dos cantidades se coloque como numerador."
+        },
+        {
+          "texto": "Media geométrica de una progresión geométrica = semiproducto de extremos",
+          "explicacion": "En una progresión geométrica, la media geométrica de todos los términos es $\\sqrt{a_1 a_n}$, porque el producto de términos equidistantes de los extremos es constante. En 2, 4, 8, 16, 32 resulta $\\sqrt{2\\cdot 32} = 8$, que coincide con el término central. Este resultado procede del tema 61, Progresiones aritméticas y geométricas."
+        },
+        {
+          "texto": "Altura de un triángulo rectángulo = media geométrica de los segmentos",
+          "explicacion": "En un triángulo rectángulo, la altura trazada sobre la hipotenusa divide a esta en dos segmentos de longitudes $m$ y $n$ y cumple $h^2 = m\\,n$, es decir, $h$ es la media geométrica de $m$ y $n$. Se deduce de la semejanza de los dos triángulos que quedan formados, y es una interpretación geométrica de la media."
+        },
+        {
+          "texto": "Medios geométricos = interpolación entre dos números",
+          "explicacion": "Los medios geométricos insertados entre dos números forman con ellos una progresión geométrica, y cuando solo se inserta uno es la media geométrica de los extremos. El procedimiento general de interpolación geométrica se estudia en el tema 61."
+        }
+      ]
+    },
+    {
+      "titulo": "Usos de la media",
+      "puntos": [
+        {
+          "texto": "Promedio de factores de crecimiento = media geométrica",
+          "explicacion": "Si una cantidad se multiplica sucesivamente por los factores $f_1, f_2, \\ldots, f_n$, el factor medio por período es la media geométrica de ellos, porque aplicado $n$ veces produce el mismo resultado total. Es el procedimiento correcto para promediar variaciones porcentuales sucesivas; las variaciones porcentuales se estudian en el tema 50."
+        },
+        {
+          "texto": "Aumentos de 21 y 44 por ciento = tasa media de 32",
+          "explicacion": "Un aumento de 21 por ciento equivale al factor 1,21 y uno de 44 por ciento al factor 1,44. La media geométrica es $\\sqrt{1{,}21\\cdot 1{,}44} = \\sqrt{1{,}7424} = 1{,}32$, de modo que la tasa media por período es 32 por ciento. La media aritmética de las tasas daría 32,5 por ciento, que sobrestima el crecimiento real."
+        },
+        {
+          "texto": "Variaciones con signo opuesto = factores menores que uno",
+          "explicacion": "Una disminución se representa con un factor menor que 1: una baja de 50 por ciento equivale a 0,5. Un aumento de 50 por ciento seguido de una baja de 50 por ciento da factores 1,5 y 0,5, cuya media geométrica es $\\sqrt{0{,}75} \\approx 0{,}866$, es decir, una pérdida media de aproximadamente 13,4 por ciento por período, y no una variación nula como sugeriría la media aritmética."
+        },
+        {
+          "texto": "Tasa media por período = media geométrica de factores menos uno",
+          "explicacion": "Una vez hallado el factor medio $G$, la tasa media de variación por período es $G - 1$, expresada como porcentaje al multiplicar por cien. Con $G = 1{,}32$ la tasa media es 0,32, es decir, 32 por ciento. Si $G$ resulta menor que 1, la tasa media es negativa y representa una disminución."
+        },
+        {
+          "texto": "Cantidad final = cantidad inicial por $G^n$",
+          "explicacion": "Si $G$ es el factor medio de $n$ períodos, la cantidad final es la inicial multiplicada por $G^n$, que coincide con el producto de todos los factores. Esta relación permite estimar el valor tras $n$ períodos con una tasa constante equivalente a las tasas variables observadas."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error frecuente: promediar tasas porcentuales con la media aritmética",
+          "explicacion": "Sumar las tasas de crecimiento y dividir entre la cantidad de períodos ignora que cada tasa se aplica sobre el resultado anterior. La media aritmética de las tasas sobrestima el crecimiento medio; debe convertirse cada tasa a factor, calcular la media geométrica y restar uno."
+        },
+        {
+          "texto": "Error frecuente: usar la cantidad de filas como índice de la raíz",
+          "explicacion": "Con una tabla de frecuencias, el índice de la raíz es el total de datos, es decir, la suma de las frecuencias absolutas, y no la cantidad de filas. Usar el número de filas cambia el resultado, porque no cuenta los datos repetidos."
+        },
+        {
+          "texto": "Error frecuente: aplicar la media geométrica con datos no positivos",
+          "explicacion": "Con datos cero o negativos la raíz del producto o bien se anula o bien no existe en los reales, y la media pierde significado. Antes de calcular se debe comprobar que todos los datos sean positivos."
+        },
+        {
+          "texto": "Error frecuente: sumar los datos en lugar de multiplicarlos",
+          "explicacion": "La media geométrica trabaja con el producto, no con la suma. Sumar y extraer raíz es un cálculo distinto que no representa ninguna de las medias clásicas. Un control útil es verificar que $G^n$ coincida con el producto de los datos."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia geométrica",
+      "puntos": [
+        {
+          "texto": "Euclides (siglo III a. C.) → media proporcional",
+          "explicacion": "Euclides de Alejandría, matemático griego, expone en el libro VI de sus Elementos la construcción del segmento medio proporcional entre dos segmentos dados, que en lenguaje actual es la media geométrica de sus longitudes. Es la forma geométrica más antigua conservada de esta media, y de ella procede el nombre de media proporcional."
+        }
+      ]
+    }
+  ]
+}

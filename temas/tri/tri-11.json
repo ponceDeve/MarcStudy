@@ -1,0 +1,188 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Área triangular",
+  "glosario": {
+    "Región triangular": "Superficie limitada por un triángulo.",
+    "Área": "Medida de una superficie.",
+    "Base": "Lado sobre el que se mide la altura.",
+    "Altura": "Distancia del vértice opuesto a la base.",
+    "Semiperímetro": "Mitad de la suma de los lados.",
+    "Fórmula de Herón": "Área a partir de los tres lados.",
+    "Inradio": "Radio de la circunferencia inscrita.",
+    "Circunradio": "Radio de la circunferencia circunscrita.",
+    "Ángulo comprendido": "Ángulo formado entre dos lados.",
+    "Ángulo suplementario": "Ángulo que sumado da 180 grados.",
+    "Paralelogramo": "Cuadrilátero de lados opuestos paralelos."
+  },
+  "theory": [
+    {
+      "titulo": "Área de una región triangular",
+      "puntos": [
+        {
+          "texto": "«Región triangular» = superficie limitada por un triángulo",
+          "explicacion": "Su área mide cuánta superficie encierra. En este tema, los lados se llaman $a$, $b$ y $c$ y se oponen a los ángulos $A$, $B$ y $C$. El área se escribe $S$."
+        },
+        {
+          "texto": "Área ⇒ se puede hallar con distintos datos del triángulo",
+          "explicacion": "Depende de qué se conozca: base y altura, dos lados y el ángulo entre ellos, los tres lados o el radio de una circunferencia asociada. Cada caso tiene su fórmula."
+        }
+      ]
+    },
+    {
+      "titulo": "Base y altura",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $S=\\frac{b\\,h}{2}$",
+          "explicacion": "Aquí $b$ es una base y $h$ la altura correspondiente, la distancia desde el vértice opuesto a la recta de la base. Es la fórmula básica."
+        },
+        {
+          "texto": "Ejemplo ⇒ $b=10$ y $h=6$ dan $S=30$",
+          "explicacion": "Se calcula $S=\\frac{10\\cdot6}{2}=30$."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura con trigonometría",
+      "puntos": [
+        {
+          "texto": "Altura ⇒ $h=c\\,\\sin B$",
+          "explicacion": "Si se conocen el lado $c$ y el ángulo $B$ que forma con la base $a$, la altura sobre $a$ es el cateto opuesto al ángulo $B$ en el triángulo rectángulo formado."
+        },
+        {
+          "texto": "Ejemplo ⇒ $c=8$ y $B=30^\\circ$ dan $h=4$",
+          "explicacion": "Se calcula $h=8\\sin30^\\circ=8\\cdot0.5=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos lados y el ángulo comprendido",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $S=\\frac{1}{2}\\,a\\,b\\,\\sin C$",
+          "explicacion": "Aquí $a$ y $b$ son dos lados y $C$ es el ángulo que forman entre sí. Se obtiene al reemplazar la altura $h=a\\sin C$ en $S=\\frac{b\\,h}{2}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $a=8$, $b=5$ y $C=30^\\circ$ dan $S=10$",
+          "explicacion": "Se calcula $S=\\frac{1}{2}\\cdot8\\cdot5\\cdot\\sin30^\\circ=20\\cdot0.5=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo recto",
+      "puntos": [
+        {
+          "texto": "Caso $C=90^\\circ$ ⇒ $S=\\frac{a\\,b}{2}$",
+          "explicacion": "Como $\\sin90^\\circ=1$, la fórmula se reduce al producto de los catetos entre dos."
+        },
+        {
+          "texto": "Ejemplo ⇒ catetos $6$ y $8$ dan $S=24$",
+          "explicacion": "Se calcula $S=\\frac{6\\cdot8}{2}=24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo obtuso",
+      "puntos": [
+        {
+          "texto": "Ángulo obtuso ⇒ $\\sin(180^\\circ-C)=\\sin C$",
+          "explicacion": "El seno de un ángulo obtuso es igual al de su suplemento. Por eso la fórmula $S=\\frac{1}{2}ab\\sin C$ vale también si $C$ es obtuso."
+        },
+        {
+          "texto": "Ejemplo ⇒ $a=6$, $b=4$ y $C=150^\\circ$ dan $S=6$",
+          "explicacion": "Como $\\sin150^\\circ=\\sin30^\\circ=0.5$, se calcula $S=\\frac{1}{2}\\cdot6\\cdot4\\cdot0.5=6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo equilátero",
+      "puntos": [
+        {
+          "texto": "Equilátero ⇒ $S=\\frac{a^2\\sqrt{3}}{4}$",
+          "explicacion": "Aquí $a$ es la longitud de cada lado. Se obtiene de $S=\\frac{1}{2}a^2\\sin60^\\circ$, con $\\sin60^\\circ=\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $a=4$ da $S=4\\sqrt{3}\\approx6.93$",
+          "explicacion": "Se calcula $S=\\frac{16\\sqrt{3}}{4}=4\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de Herón",
+      "puntos": [
+        {
+          "texto": "Herón ⇒ $S=\\sqrt{p(p-a)(p-b)(p-c)}$",
+          "explicacion": "Permite hallar el área con solo los tres lados. Aquí $p$ es el semiperímetro, $p=\\frac{a+b+c}{2}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ lados $3$, $4$ y $5$ dan $S=6$",
+          "explicacion": "El semiperímetro es $p=\\frac{3+4+5}{2}=6$. Entonces $S=\\sqrt{6\\cdot3\\cdot2\\cdot1}=\\sqrt{36}=6$."
+        },
+        {
+          "texto": "Ejemplo ⇒ lados $13$, $14$ y $15$ dan $S=84$",
+          "explicacion": "El semiperímetro es $p=21$. Entonces $S=\\sqrt{21\\cdot8\\cdot7\\cdot6}=\\sqrt{7056}=84$."
+        }
+      ]
+    },
+    {
+      "titulo": "Inradio",
+      "puntos": [
+        {
+          "texto": "Con el inradio ⇒ $S=r\\,p$",
+          "explicacion": "Aquí $r$ es el radio de la circunferencia inscrita, tangente a los tres lados, y $p$ es el semiperímetro."
+        },
+        {
+          "texto": "Ejemplo ⇒ $r=1$ y $p=6$ dan $S=6$",
+          "explicacion": "Se calcula $S=1\\cdot6=6$. Corresponde al triángulo de lados $3$, $4$ y $5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Circunradio",
+      "puntos": [
+        {
+          "texto": "Con el circunradio ⇒ $S=\\frac{a\\,b\\,c}{4R}$",
+          "explicacion": "Aquí $R$ es el radio de la circunferencia circunscrita, que pasa por los tres vértices."
+        },
+        {
+          "texto": "Ejemplo ⇒ lados $3$, $4$, $5$ y $R=2.5$ dan $S=6$",
+          "explicacion": "En el triángulo rectángulo, $R$ es la mitad de la hipotenusa. Se calcula $S=\\frac{3\\cdot4\\cdot5}{4\\cdot2.5}=\\frac{60}{10}=6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar un ángulo con el área",
+      "puntos": [
+        {
+          "texto": "Despeje ⇒ $\\sin C=\\frac{2S}{a\\,b}$",
+          "explicacion": "Se obtiene al despejar $\\sin C$ de $S=\\frac{1}{2}ab\\sin C$. Sirve cuando se conocen el área y dos lados."
+        },
+        {
+          "texto": "Ejemplo ⇒ $a=10$, $b=6$ y $S=15$ dan $C=30^\\circ$ o $150^\\circ$",
+          "explicacion": "Se calcula $\\sin C=\\frac{30}{60}=0.5$. Hay dos ángulos posibles en un triángulo: $30^\\circ$ y $150^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Paralelogramo",
+      "puntos": [
+        {
+          "texto": "Paralelogramo ⇒ $S=a\\,b\\,\\sin\\theta$",
+          "explicacion": "Aquí $a$ y $b$ son lados consecutivos y $\\theta$ es el ángulo entre ellos. Es el doble del área de cada triángulo que determina una diagonal."
+        },
+        {
+          "texto": "Ejemplo ⇒ $a=7$, $b=4$ y $\\theta=30^\\circ$ dan $S=14$",
+          "explicacion": "Se calcula $S=7\\cdot4\\cdot0.5=14$."
+        }
+      ]
+    },
+    {
+      "titulo": "Elección de la fórmula",
+      "puntos": [
+        {
+          "texto": "Datos del triángulo ⇒ determinan la fórmula que se usa",
+          "explicacion": "Con base y altura, la básica. Con dos lados y el ángulo entre ellos, la del seno. Con los tres lados, Herón. Con un radio, la del inradio o el circunradio. Error frecuente: usar el ángulo equivocado, que debe estar entre los lados."
+        }
+      ]
+    }
+  ]
+}

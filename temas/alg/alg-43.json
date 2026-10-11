@@ -1,0 +1,167 @@
+{
+  "curso": "Álgebra",
+  "tema": "Término general del binomio",
+  "glosario": {
+    "término general": "Fórmula de cualquier término del desarrollo.",
+    "lugar": "Posición de un término en el desarrollo.",
+    "binomio": "Expresión algebraica de dos términos.",
+    "número combinatorio": "Número de formas de elegir sin orden.",
+    "coeficiente": "Número que multiplica a una variable.",
+    "exponente": "Número que indica la potencia.",
+    "potencia": "Producto de factores iguales.",
+    "término central": "Término que ocupa el medio del desarrollo.",
+    "término independiente": "Término que no contiene la variable.",
+    "desarrollo": "Potencia escrita como suma de términos.",
+    "triángulo de Pascal": "Tabla triangular de números combinatorios.",
+    "exponente fraccionario": "Exponente expresado como fracción de enteros."
+  },
+  "theory": [
+    {
+      "titulo": "Término general",
+      "puntos": [
+        {
+          "texto": "«Término general»: $T_{k+1}=\\dbinom nk a^{n-k}b^k$",
+          "explicacion": "Es la expresión que representa cualquier término del desarrollo de $(a+b)^n$, con $k=0,1,\\dots,n$; al reemplazar $k$ por un valor concreto se obtiene un término específico sin desarrollar todo el binomio. La letra $T$ es la inicial de la palabra término y el subíndice $k+1$ indica el lugar que ocupa. Ejemplo: en $(x+2)^7$, el término con $k=4$ es $T_5=\\dbinom74x^{3}\\cdot2^4=35\\cdot16\\,x^3=560x^3$."
+        },
+        {
+          "texto": "El subíndice $k+1$ indica el lugar del término",
+          "explicacion": "El primer término corresponde a $k=0$, el segundo a $k=1$, el tercero a $k=2$, y así sucesivamente; por eso el término de índice $k$ ocupa el lugar $k+1$. Ejemplo: $T_1=\\dbinom n0a^n$ es el primer término y $T_{n+1}=\\dbinom nnb^n$ es el último, de modo que el desarrollo tiene $n+1$ términos."
+        },
+        {
+          "texto": "Significado de cada parte de $T_{k+1}$",
+          "explicacion": "El factor $\\dbinom nk$ es el coeficiente binomial, $a^{n-k}$ es la potencia decreciente del primer término del binomio y $b^k$ es la potencia creciente del segundo; $n$ es el exponente del binomio. Ejemplo: en $(a+b)^5$, $T_3$ tiene $k=2$, luego $\\dbinom52=10$, $a^{3}$ y $b^{2}$, es decir $10a^3b^2$."
+        },
+        {
+          "texto": "Condición: $k$ entero con $0\\leq k\\leq n$",
+          "explicacion": "El índice $k$ solo toma valores enteros desde 0 hasta $n$, porque el número combinatorio $\\dbinom nk$ solo existe en ese rango. Si un problema conduce a un $k$ fraccionario, negativo o mayor que $n$, el término buscado no existe en el desarrollo. Ejemplo: en $(x+1)^5$ no existe $T_8$ porque exigiría $k=7>5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Lugar del término",
+      "puntos": [
+        {
+          "texto": "Término de lugar $p$ ⇒ $k=p-1$",
+          "explicacion": "Cuando un problema pide el término de un lugar dado, se resta 1 al lugar para obtener $k$ y se sustituye en la fórmula. Ejemplo: el quinto término de $(x+2)^7$ tiene $k=5-1=4$, luego $T_5=\\dbinom74x^3\\cdot2^4=35\\cdot16x^3=560x^3$. Comprobación: la suma de los exponentes $3+4=7$ coincide con $n$."
+        },
+        {
+          "texto": "Lugar $p$ contado desde el final ⇒ $k=n+1-p$",
+          "explicacion": "Contar desde el final equivale a contar desde el principio en el lugar $n+2-p$, porque hay $n+1$ términos; el índice correspondiente es $k=n+1-p$. Ejemplo: el tercer término desde el final de $(x+1)^8$ es el de lugar $8+2-3=7$, con $k=6$: $T_7=\\dbinom86x^2=28x^2$. Comprobación: los últimos términos son $\\dots,28x^2,8x,1$, y el tercero desde el final es $28x^2$."
+        },
+        {
+          "texto": "Lugar que ocupa un término dado ⇒ $k+1$",
+          "explicacion": "Si se conoce el término, se identifica $k$ por el exponente de alguna de las partes y el lugar es $k+1$. Ejemplo: en $(x+2)^5$, el término con $x^3$ tiene exponente de $x$ igual a $5-k=3$, luego $k=2$ y ocupa el lugar $3$: $T_3=\\dbinom52x^3\\cdot2^2=40x^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomio con resta",
+      "puntos": [
+        {
+          "texto": "$(a-b)^n$ ⇒ $T_{k+1}=(-1)^k\\dbinom nk a^{n-k}b^k$",
+          "explicacion": "Se obtiene escribiendo $a-b=a+(-b)$, de modo que $(-b)^k=(-1)^kb^k$: los términos de lugar par (índice $k$ impar) son negativos y los de lugar impar son positivos. Ejemplo: el cuarto término de $(x-2)^5$ tiene $k=3$, luego $T_4=(-1)^3\\dbinom53x^2\\cdot2^3=-10\\cdot8x^2=-80x^2$."
+        },
+        {
+          "texto": "Con coeficientes: elevar coeficiente y variable en cada parte",
+          "explicacion": "Cuando los términos del binomio llevan coeficientes, la potencia se aplica al coeficiente y a la variable juntos, y el signo de $b$ se conserva dentro del paréntesis. Ejemplo: en $(3x-2y)^4$, $T_3$ tiene $k=2$: $\\dbinom42(3x)^2(-2y)^2=6\\cdot9x^2\\cdot4y^2=216x^2y^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias de x",
+      "puntos": [
+        {
+          "texto": "$(ax^p+bx^q)^n$ ⇒ exponente de $x$ es $p(n-k)+qk$",
+          "explicacion": "El término general es $T_{k+1}=\\dbinom nk a^{n-k}b^k\\,x^{p(n-k)+qk}$, porque se aplica la ley de potencia de una potencia a cada parte y luego se suman los exponentes de $x$. Ejemplo: en $(2x^2+3x)^4$, el exponente es $2(4-k)+k=8-k$, y el término con $x^6$ requiere $k=2$: $\\dbinom42\\cdot2^2\\cdot3^2\\,x^6=6\\cdot4\\cdot9\\,x^6=216x^6$."
+        },
+        {
+          "texto": "Exponente de $x$ en $\\left(x^2+\\dfrac1x\\right)^6$ es $12-3k$",
+          "explicacion": "Con $a=x^2$ y $b=x^{-1}$: $T_{k+1}=\\dbinom6k(x^2)^{6-k}(x^{-1})^k=\\dbinom6kx^{12-2k-k}=\\dbinom6kx^{12-3k}$. Los términos son $x^{12}$, $6x^9$, $15x^6$, $20x^3$, $15$, $6x^{-3}$ y $x^{-6}$. Comprobación con $x=1$: $2^6=64$ y $1+6+15+20+15+6+1=64$. Este exponente permite localizar de inmediato qué valor de $k$ produce cada potencia: por ejemplo, $x^9$ aparece con $k=1$ y $x^{-3}$ con $k=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Término que contiene x^m",
+      "puntos": [
+        {
+          "texto": "Para hallar el término con $x^m$: igualar el exponente a $m$",
+          "explicacion": "Procedimiento: (1) escribir $T_{k+1}$ con su exponente de $x$; (2) igualar ese exponente a $m$; (3) resolver para $k$; (4) comprobar que $k$ sea entero con $0\\leq k\\leq n$; (5) calcular el término. Ejemplo: en $(x+2)^5$, el exponente de $x$ es $5-k$; con $5-k=3$ resulta $k=2$, y el término es $\\dbinom52x^3\\cdot2^2=40x^3$, de coeficiente 40."
+        },
+        {
+          "texto": "Coeficiente de $x^3$ en $\\left(x^2+\\dfrac1x\\right)^6$",
+          "explicacion": "El exponente es $12-3k$; al igualar $12-3k=3$ se obtiene $k=3$, que es entero y está entre 0 y 6. El término es $T_4=\\dbinom63x^3=20x^3$, de modo que el coeficiente es 20. Con $12-3k=6$ resulta $k=2$ y el coeficiente de $x^6$ es $\\dbinom62=15$."
+        },
+        {
+          "texto": "Si $k$ no es entero en $[0,n]$ ⇒ el término no existe",
+          "explicacion": "Al resolver la ecuación del exponente puede salir un $k$ fraccionario o fuera de rango; entonces el desarrollo no contiene la potencia pedida, y el coeficiente es 0. Ejemplo: en $\\left(x^2+\\dfrac1x\\right)^6$, $12-3k=5$ da $k=\\dfrac73$, que no es entero; por lo tanto no existe término con $x^5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Término independiente",
+      "puntos": [
+        {
+          "texto": "Término independiente ⇒ exponente de $x$ igual a 0",
+          "explicacion": "El término independiente es el que no contiene la variable; se halla igualando a cero el exponente de $x$ en $T_{k+1}$ y resolviendo para $k$. Ejemplo: en $\\left(x^2+\\dfrac1x\\right)^6$, $12-3k=0$ da $k=4$, y el término es $T_5=\\dbinom64=15$. Comprobación: en el desarrollo listado, el término sin $x$ es 15."
+        },
+        {
+          "texto": "No siempre existe término independiente",
+          "explicacion": "Existe solo si la ecuación del exponente da un $k$ entero entre 0 y $n$. Ejemplo: en $(x+2)^5$ el exponente de $x$ es $5-k$ y $5-k=0$ da $k=5$, de modo que el término independiente es $2^5=32$. En cambio, en $\\left(x^2+\\dfrac1x\\right)^5$, el exponente es $10-3k$ y $10-3k=0$ da $k=\\dfrac{10}{3}$, que no es entero: no hay término independiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Término central",
+      "puntos": [
+        {
+          "texto": "$n$ par ⇒ término central $T_{\\frac n2+1}=\\dbinom n{n/2}a^{n/2}b^{n/2}$",
+          "explicacion": "Con $n$ par hay un número impar de términos, $n+1$, y el del medio tiene índice $k=\\dfrac n2$. Ejemplo: en $(x+y)^6$, $k=3$ y el término central es $T_4=\\dbinom63x^3y^3=20x^3y^3$. Es el de mayor coeficiente de todo el desarrollo, y en él los exponentes de $x$ e $y$ son iguales a $\\dfrac n2=3$."
+        },
+        {
+          "texto": "$n$ impar ⇒ dos términos centrales con $k=\\dfrac{n-1}2$ y $k=\\dfrac{n+1}2$",
+          "explicacion": "Con $n$ impar el número de términos $n+1$ es par, así que hay dos términos en el medio, de lugares $\\dfrac{n+1}2$ y $\\dfrac{n+3}2$. Ejemplo: en $(x+1)^7$, los índices son $k=3$ y $k=4$: $T_4=\\dbinom73x^4=35x^4$ y $T_5=\\dbinom74x^3=35x^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Razón entre términos",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{T_{k+2}}{T_{k+1}}=\\dfrac{n-k}{k+1}\\cdot\\dfrac ba$",
+          "explicacion": "Demostración: el cociente de coeficientes es $\\dfrac{\\dbinom n{k+1}}{\\dbinom nk}=\\dfrac{n-k}{k+1}$ y el cociente de potencias es $\\dfrac{a^{n-k-1}b^{k+1}}{a^{n-k}b^k}=\\dfrac ba$. Permite obtener cada término a partir del anterior. Ejemplo: en $(x+2)^5$, con $k=1$: $\\dfrac{T_3}{T_2}=\\dfrac{4}{2}\\cdot\\dfrac2x=\\dfrac4x$, y en efecto $\\dfrac{40x^3}{10x^4}=\\dfrac4x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponentes fraccionarios",
+      "puntos": [
+        {
+          "texto": "Con raíces: escribir $\\sqrt{x}=x^{1/2}$ antes de aplicar la fórmula",
+          "explicacion": "Se transforma cada radical en exponente fraccionario para poder sumar exponentes. Ejemplo: en $\\left(\\sqrt x+\\dfrac1x\\right)^9$, el término general es $\\dbinom9k(x^{1/2})^{9-k}(x^{-1})^k=\\dbinom9kx^{\\frac{9-3k}{2}}$. Para el término independiente, $9-3k=0$ da $k=3$ y el término es $\\dbinom93=84$. Para $x^{3/2}$, $9-3k=3$ da $k=2$ y el coeficiente es $\\dbinom92=36$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de resolución",
+      "puntos": [
+        {
+          "texto": "Orden recomendado para resolver problemas de término general",
+          "explicacion": "(1) Identificar $a$, $b$ y $n$, con sus signos. (2) Escribir $T_{k+1}$ con coeficientes y exponentes. (3) Simplificar el exponente de $x$. (4) Plantear la condición del enunciado: lugar, exponente o independencia. (5) Resolver para $k$ y comprobar que sea entero con $0\\leq k\\leq n$. (6) Calcular el término. Ejemplo: el quinto término de $(x+2)^7$ lleva $k=4$ y resulta $560x^3$."
+        },
+        {
+          "texto": "Verificar sumando los exponentes y probando con $x=1$",
+          "explicacion": "En $(a+b)^n$ los exponentes de $a$ y $b$ de cada término deben sumar $n$; en $T_5$ de $(x+2)^7$, $3+4=7$. Además, la suma de todos los términos con $x=1$ debe valer $(1+2)^7=2187$. Estas comprobaciones detectan errores de signo, de coeficiente o de exponente."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Término general ⊂ teorema del binomio",
+          "explicacion": "El término general es la forma individual del teorema del binomio: sin escribir todo el desarrollo, se obtiene el término que se necesita. Usa los números combinatorios y la simetría del triángulo de Pascal del tema anterior, por ejemplo $\\dbinom{8}{6}=\\dbinom82=28$."
+        }
+      ]
+    }
+  ]
+}

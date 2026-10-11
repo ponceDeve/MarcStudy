@@ -1,0 +1,191 @@
+{
+  "curso": "Álgebra",
+  "tema": "Polinomios especiales",
+  "glosario": {
+    "Polinomio ordenado": "Exponentes de una variable en secuencia.",
+    "Orden descendente": "Exponentes de mayor a menor.",
+    "Orden ascendente": "Exponentes de menor a mayor.",
+    "Polinomio completo": "Contiene todos los exponentes hasta cero.",
+    "Polinomio incompleto": "Le falta algún exponente intermedio.",
+    "Polinomio homogéneo": "Todos los términos tienen igual grado absoluto.",
+    "Grado de homogeneidad": "Grado común de los términos de un homogéneo.",
+    "Polinomios idénticos": "Polinomios con coeficientes iguales término a término.",
+    "Idénticamente nulo": "Polinomio con todos los coeficientes cero.",
+    "Polinomio constante": "Polinomio cuyo valor no depende de la variable.",
+    "Polinomio mónico": "Polinomio de coeficiente principal uno.",
+    "Polinomio simétrico": "Polinomio invariante al intercambiar las variables.",
+    "Grado absoluto": "Suma de los exponentes de un término.",
+    "Coeficiente principal": "Coeficiente del término de mayor grado.",
+    "Términos semejantes": "Términos con la misma parte literal.",
+    "Término independiente": "Término que no contiene la variable.",
+    "Identidad": "Igualdad verdadera para todos los valores."
+  },
+  "theory": [
+    {
+      "titulo": "Polinomio ordenado",
+      "puntos": [
+        {
+          "texto": "«Polinomio ordenado»: exponentes de una variable en secuencia",
+          "explicacion": "Un polinomio es ordenado respecto de una variable cuando los exponentes de esa variable, leídos de izquierda a derecha, van siempre en aumento o siempre en disminución. Es un polinomio especial porque su escritura sigue una regla. $x^5-3x^3+x-8$ está ordenado respecto de $x$, con exponentes $5,3,1,0$ que disminuyen. En $P(x,y)=x^4+x^2y-xy^3$ los exponentes de $x$ son $4,2,1$, así que está ordenado respecto de $x$, pero los de $y$ son $0,1,3$, de modo que respecto de $y$ está ordenado en sentido opuesto."
+        },
+        {
+          "texto": "«Orden descendente»: exponentes de mayor a menor",
+          "explicacion": "En el orden descendente cada término tiene un exponente menor que el anterior. Es la forma usual de escribir un polinomio y la que facilita identificar el coeficiente principal, que queda al inicio. Ejemplo: $2x^4-x^3+5x-7$. Si el polinomio está desordenado, como $5x-7+2x^4-x^3$, se reordena sin cambiar ningún signo: cada término lleva su signo consigo."
+        },
+        {
+          "texto": "«Orden ascendente»: exponentes de menor a mayor",
+          "explicacion": "En el orden ascendente cada término tiene un exponente mayor que el anterior, de modo que el término independiente queda primero. Ejemplo: $-7+5x-x^3+2x^4$. Es la misma expresión que $2x^4-x^3+5x-7$, escrita en sentido contrario. Se usa, por ejemplo, para alinear términos en ciertos métodos de división."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio completo",
+      "puntos": [
+        {
+          "texto": "«Polinomio completo»: aparecen todos los exponentes hasta el cero",
+          "explicacion": "Un polinomio en una variable es completo cuando contiene todos los exponentes enteros desde el grado $n$ hasta 0, incluido el término independiente, sin que falte ninguno. $x^3-2x^2+x+9$ es completo, con exponentes $3,2,1,0$. $x^3-2x^2+9$ no lo es, porque falta el exponente 1. Los coeficientes pueden ser cualquier número no nulo en los términos presentes."
+        },
+        {
+          "texto": "Completo de grado $n$ ⇒ $n+1$ términos",
+          "explicacion": "Los exponentes de un polinomio completo de grado $n$ son $n,n-1,\\dots,1,0$, que son $n+1$ números, y cada uno aparece una vez, así que el polinomio tiene $n+1$ términos. Ejemplo: un polinomio completo con 8 términos tiene grado 7. Recíprocamente, el polinomio completo $x^3-2x^2+x+9$ tiene grado 3 y $3+1=4$ términos."
+        },
+        {
+          "texto": "Polinomio incompleto ⇒ completar con coeficientes cero",
+          "explicacion": "Un polinomio incompleto se puede completar escribiendo los exponentes que faltan con coeficiente cero, sin cambiar su valor. $x^4+3x-2$ se completa como $x^4+0x^3+0x^2+3x-2$, con 5 términos, que es $4+1$. Este paso es necesario en los métodos que trabajan solo con coeficientes."
+        },
+        {
+          "texto": "Completo respecto de $x$ en dos variables",
+          "explicacion": "Con dos variables, un polinomio es completo respecto de $x$ cuando los exponentes de $x$ son consecutivos desde el mayor hasta 0. $P(x,y)=x^3+x^2y+xy^2+y^3$ es completo respecto de $x$, con exponentes $3,2,1,0$. En cambio $x^3+xy^2+y^3$ no lo es, porque falta el exponente 2 de $x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Completo y ordenado",
+      "puntos": [
+        {
+          "texto": "Completo y ordenado ⇒ exponentes consecutivos",
+          "explicacion": "Si un polinomio es completo y ordenado, sus exponentes son números consecutivos que aumentan o disminuyen de uno en uno. Esto permite plantear ecuaciones. Sea $P(x)=4+2x^{a-1}+3x^{b+1}+x^{c+2}$ completo y ordenado en forma ascendente. Los exponentes deben ser $0,1,2,3$: el término independiente 4 corresponde al exponente 0. Entonces $a-1=1$ da $a=2$; $b+1=2$ da $b=1$; $c+2=3$ da $c=1$. Verificación: $P(x)=4+2x+3x^2+x^3$, completo y ascendente, de grado 3 y cuatro términos."
+        },
+        {
+          "texto": "Exponente repetido ⇒ términos semejantes",
+          "explicacion": "Si dos exponentes resultan iguales, los términos son semejantes y deben reducirse antes de decidir si el polinomio es completo. Por ejemplo, $x^2+3x^2+x+1$ se reduce a $4x^2+x+1$, que es completo de grado 2 con 3 términos, aunque inicialmente tenía 4 términos escritos. El número de términos de un polinomio completo se cuenta después de reducir."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio homogéneo",
+      "puntos": [
+        {
+          "texto": "«Polinomio homogéneo»: todos sus términos con el mismo grado absoluto",
+          "explicacion": "Un polinomio en varias variables es homogéneo cuando todos sus términos tienen el mismo grado absoluto, que se llama grado de homogeneidad. $P(x,y)=3x^4-2x^3y+5x^2y^2-y^4$ es homogéneo de grado 4: los grados de los términos son $4$, $3+1$, $2+2$ y $4$. En cambio $x^2+xy+y$ no es homogéneo, porque los grados son 2, 2 y 1."
+        },
+        {
+          "texto": "Homogéneo con tres variables",
+          "explicacion": "La definición no cambia con más variables: el grado absoluto de cada término es la suma de los exponentes de todas sus variables. $x^2y+yz^2+xyz$ es homogéneo de grado 3, porque los términos tienen grados $2+1$, $1+2$ y $1+1+1$. Cualquier monomio es por sí solo un polinomio homogéneo, de grado igual a su grado absoluto."
+        },
+        {
+          "texto": "Hallar exponentes para que sea homogéneo",
+          "explicacion": "Sea $P(x,y)=2x^{m+1}y^2+x^4y^n+y^7$ homogéneo de grado 7. El término $y^7=x^0y^7$ tiene grado 7, lo que fija el grado de homogeneidad. Para el primer término: $(m+1)+2=7$ da $m=4$. Para el segundo: $4+n=7$ da $n=3$. Verificación: $P(x,y)=2x^5y^2+x^4y^3+y^7$, con grados $7$, $7$ y $7$."
+        },
+        {
+          "texto": "Homogéneo de grado $k$ ⇒ $P(tx,ty)=t^kP(x,y)$",
+          "explicacion": "Al multiplicar todas las variables por un número $t$, cada término de grado $k$ se multiplica por $t^k$, así que todo el polinomio queda multiplicado por $t^k$. Ejemplo con $P(x,y)=x^2-3xy+y^2$, de grado 2 y $t=2$: $P(2x,2y)=4x^2-12xy+4y^2=4P(x,y)$, y $4=2^2$. En un polinomio no homogéneo la propiedad falla: con $Q(x,y)=x^2+y$ se obtiene $Q(2x,2y)=4x^2+2y$, que no es múltiplo de $Q$."
+        },
+        {
+          "texto": "Suma de homogéneos del mismo grado ⇒ homogéneo",
+          "explicacion": "La suma de dos polinomios homogéneos del mismo grado es homogéneo de ese grado, porque no aparecen términos de otro grado. Ejemplo: $(x^2+xy)+(3x^2-y^2)=4x^2+xy-y^2$, homogéneo de grado 2. Si los grados difieren, el resultado no es homogéneo: $x^2+xy^2$ tiene términos de grados 2 y 3."
+        },
+        {
+          "texto": "Producto de homogéneos ⇒ homogéneo de grado suma",
+          "explicacion": "El producto de un polinomio homogéneo de grado $j$ por uno homogéneo de grado $k$ es homogéneo de grado $j+k$, porque cada producto parcial suma los grados de sus factores. Ejemplo: $(x+y)(x^2-xy+y^2)=x^3-x^2y+xy^2+x^2y-xy^2+y^3=x^3+y^3$, homogéneo de grado $1+2=3$. La razón es que cada producto parcial multiplica un término de grado $j$ por uno de grado $k$, y la suma de sus exponentes da $j+k$ en todos los casos, de modo que todos los términos del producto tienen el mismo grado absoluto, y la reducción posterior no cambia ese grado."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomios idénticos",
+      "puntos": [
+        {
+          "texto": "«Polinomios idénticos»: coeficientes iguales en cada término semejante",
+          "explicacion": "Dos polinomios son idénticos cuando, una vez ordenados y reducidos, tienen los mismos coeficientes en los términos semejantes, y por tanto toman el mismo valor para cualquier valor de las variables. Se escribe $P(x)\\equiv Q(x)$. Si $ax^2+bx+c\\equiv3x^2-2x+5$, entonces $a=3$, $b=-2$ y $c=5$. Los términos que faltan en un polinomio se toman con coeficiente cero."
+        },
+        {
+          "texto": "Identidad con productos: igualar coeficientes",
+          "explicacion": "Se desarrollan los productos, se reduce y se igualan coeficientes. Ejemplo: $(x+a)(x+b)\\equiv x^2+7x+12$ da $x^2+(a+b)x+ab$, así que $a+b=7$ y $ab=12$. Los números que cumplen ambas condiciones son 3 y 4. Verificación: $(x+3)(x+4)=x^2+7x+12$. Este procedimiento solo requiere desarrollar el producto en forma general y comparar. Cuando el sistema de ecuaciones $a+b=7$ y $ab=12$ se resuelve probando pares de números cuyo producto es 12, se encuentran 1 y 12, 2 y 6, 3 y 4; solo el último par suma 7."
+        },
+        {
+          "texto": "Identidad con constantes en ambos lados",
+          "explicacion": "Sea $a(x-1)+b(x+2)\\equiv5x+4$. Se desarrolla: $(a+b)x+(-a+2b)$. Al igualar coeficientes: $a+b=5$ y $-a+2b=4$. Sumando ambas ecuaciones: $3b=9$, de modo que $b=3$ y $a=2$. Verificación: $2(x-1)+3(x+2)=2x-2+3x+6=5x+4$. El método consiste en desarrollar los productos con las constantes, agrupar los términos con $x$ y los independientes, e igualar con el polinomio dado. Se obtiene un sistema de dos ecuaciones lineales con dos incógnitas, que se resuelve por reducción o por sustitución."
+        },
+        {
+          "texto": "Identidad: asignar valores a la variable",
+          "explicacion": "Como una identidad se cumple para todo valor, se pueden elegir valores que anulen términos. En $a(x-1)+b(x+2)\\equiv5x+4$, con $x=1$ queda $3b=9$, de donde $b=3$. Con $x=-2$ queda $-3a=-6$, de donde $a=2$. Es el mismo resultado que por coeficientes, y suele ser más rápido cuando los factores se anulan fácilmente."
+        },
+        {
+          "texto": "Polinomios idénticos ⇒ mismo grado",
+          "explicacion": "Si dos polinomios son idénticos, tienen el mismo grado y el mismo coeficiente principal, porque tienen exactamente los mismos coeficientes. Esto permite deducir grados: si $P(x)\\equiv Q(x)$ y $Q$ es de grado 4, entonces $P$ también es de grado 4. Y recíprocamente, polinomios de grados distintos nunca son idénticos."
+        }
+      ]
+    },
+    {
+      "titulo": "Idénticamente nulo",
+      "puntos": [
+        {
+          "texto": "«Polinomio idénticamente nulo»: todos sus coeficientes son cero",
+          "explicacion": "Un polinomio es idénticamente nulo cuando vale cero para todos los valores de la variable, lo cual ocurre únicamente si todos sus coeficientes son cero. Se escribe $P(x)\\equiv0$. Si $(a-2)x^2+(b+3)x+(c-1)\\equiv0$, entonces $a-2=0$, $b+3=0$ y $c-1=0$, de donde $a=2$, $b=-3$ y $c=1$."
+        },
+        {
+          "texto": "Idénticamente nulo con dos variables",
+          "explicacion": "Con dos variables se igualan a cero los coeficientes de cada parte literal. Si $(a-1)x^2+(b-2)xy+(c+3)y^2\\equiv0$, entonces $a-1=0$, $b-2=0$ y $c+3=0$, de donde $a=1$, $b=2$ y $c=-3$. Verificación: con estos valores el polinomio queda $0x^2+0xy+0y^2=0$. La razón es que cada parte literal, como $x^2$, $xy$ o $y^2$, es una potencia distinta de las variables, y ninguna puede cancelarse con otra, por lo que cada coeficiente debe ser cero por separado."
+        },
+        {
+          "texto": "Valer cero en algunos valores ✗ ser idénticamente nulo",
+          "explicacion": "Que un polinomio valga cero en algunos números no lo hace idénticamente nulo. Por ejemplo, $x^2-1$ vale cero en $x=1$ y en $x=-1$, pero en $x=2$ vale 3, así que no es nulo. Un polinomio no nulo de grado $n$ no puede anularse en más de $n$ valores distintos, y por eso un polinomio que se anula en infinitos valores es idénticamente nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio constante",
+      "puntos": [
+        {
+          "texto": "«Polinomio constante»: coeficientes de la variable iguales a cero",
+          "explicacion": "Un polinomio es constante cuando su valor es el mismo para todo valor de la variable, lo que sucede si todos los coeficientes de los términos con variable son cero. Sea $(a-3)x^2+(b+1)x+7$ constante: $a-3=0$ da $a=3$ y $b+1=0$ da $b=-1$. Verificación: queda $0x^2+0x+7=7$. El valor constante es el término independiente, 7."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio mónico",
+      "puntos": [
+        {
+          "texto": "«Polinomio mónico»: coeficiente principal igual a 1",
+          "explicacion": "Un polinomio es mónico cuando el coeficiente de su término de mayor grado es 1. $x^3-2x+5$ es mónico, mientras que $2x^3-2x+5$ no lo es. Para volver mónico un polinomio no nulo se divide entre su coeficiente principal: $2x^2-6x+4$ dividido entre 2 es $x^2-3x+2$. El producto de polinomios mónicos es mónico, porque el coeficiente principal del producto es $1\\cdot1=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio simétrico",
+      "puntos": [
+        {
+          "texto": "«Polinomio simétrico»: no cambia al intercambiar $x$ e $y$",
+          "explicacion": "Un polinomio en $x$ e $y$ es simétrico cuando $P(x,y)=P(y,x)$, es decir, al intercambiar las variables el polinomio queda igual. $x^2+xy+y^2$ es simétrico, y también $x^3+y^3$ y $x^2y+xy^2$. En cambio $x^2+y$ no lo es, porque al intercambiar queda $y^2+x$. Verificación numérica con $P=x^2+xy+y^2$: $P(1,2)=1+2+4=7$ y $P(2,1)=4+2+1=7$."
+        },
+        {
+          "texto": "Hallar constantes para que sea simétrico",
+          "explicacion": "Sea $P(x,y)=ax^3+2x^2y+bxy^2+4y^3$ simétrico. Al intercambiar $x$ e $y$ queda $ay^3+2xy^2+bx^2y+4x^3$. Igualando coeficientes de cada parte literal: $x^3$: $a=4$; $x^2y$: $2=b$; $xy^2$: $b=2$; $y^3$: $4=a$. Entonces $a=4$ y $b=2$. Verificación: $P=4x^3+2x^2y+2xy^2+4y^3$, y al intercambiar vuelve a ser $4y^3+2y^2x+2yx^2+4x^3$, el mismo polinomio."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 28 al 32: base de los polinomios especiales",
+          "explicacion": "Los polinomios especiales usan las definiciones de polinomio, grado, coeficiente y valor numérico de los temas 28 y 29, y las operaciones de los temas 30 al 32 para reconocer, por ejemplo, que el producto de homogéneos es homogéneo."
+        },
+        {
+          "texto": "Temas 34 en adelante: uso en la división",
+          "explicacion": "Los polinomios ordenados y completos son los que requiere el algoritmo de la división de polinomios y sus métodos clásicos, como el de Ruffini y el de Horner, que trabajan con listas de coeficientes. Los polinomios idénticos justifican los métodos de coeficientes indeterminados."
+        }
+      ]
+    }
+  ]
+}

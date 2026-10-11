@@ -1,0 +1,136 @@
+{
+  "curso": "Aritmética",
+  "tema": "Relación de inclusión",
+  "glosario": {
+    "subconjunto": "Conjunto cuyos elementos están todos en otro",
+    "inclusión propia": "Inclusión con al menos un elemento adicional",
+    "conjunto vacío": "Conjunto que carece de elementos",
+    "igualdad de conjuntos": "Conjuntos con exactamente los mismos elementos",
+    "reflexiva": "Propiedad de estar contenido en uno mismo",
+    "antisimétrica": "Inclusiones mutuas implican igualdad de conjuntos",
+    "transitiva": "Inclusión encadenada conserva la contención"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de inclusión",
+      "puntos": [
+        {
+          "texto": "Un «subconjunto» tiene todos sus elementos dentro de otro conjunto.",
+          "explicacion": "Un conjunto A es subconjunto de otro conjunto B cuando cada elemento de A también es elemento de B. Esta definición no exige que A tenga menos elementos que B, ni que los dos conjuntos sean distintos. Es la base de la relación de inclusión, que organiza los conjuntos según su contenido. En la teoría de conjuntos, los subconjuntos son la materia prima de las demás construcciones, como el conjunto potencia que se estudia en el tema 12."
+        },
+        {
+          "texto": "La inclusión se escribe $A \\subset B$ y se lee «A está contenido en B».",
+          "explicacion": "El símbolo de inclusión se coloca entre dos conjuntos y afirma que el primero está contenido en el segundo. Por ejemplo, $\\{1, 2\\} \\subset \\{1, 2, 3\\}$ es verdadera, porque los elementos 1 y 2 están en el conjunto de la derecha. La expresión debe leerse siempre en el orden escrito, ya que la inclusión no es simétrica en general: si el primer conjunto contiene elementos que el segundo no tiene, la afirmación es falsa."
+        },
+        {
+          "texto": "También puede leerse como B ⊃ A, «B contiene a A».",
+          "explicacion": "La inclusión admite una notación inversa, en la que el conjunto mayor se escribe a la izquierda y el signo indica que contiene al conjunto menor. Así, $\\{1, 2, 3\\} \\supset \\{1, 2\\}$ dice exactamente lo mismo que $\\{1, 2\\} \\subset \\{1, 2, 3\\}$. Ambas notaciones son equivalentes, y la elección entre una u otra depende de qué conjunto interesa destacar en el enunciado."
+        },
+        {
+          "texto": "Un conjunto A está contenido en B si cada elemento de A está en B.",
+          "explicacion": "La definición de inclusión se lee con la idea de que todo objeto que pertenece a A también pertenece a B. En lenguaje lógico corresponde a la afirmación de que, para cualquier objeto, si pertenece a A entonces pertenece a B. Esta formulación usa la pertenencia del tema 09 y la cuantificación del tema 06, que muestran por qué la inclusión se comprueba elemento por elemento."
+        }
+      ]
+    },
+    {
+      "titulo": "Inclusión propia",
+      "puntos": [
+        {
+          "texto": "La «inclusión propia» exige al menos un elemento de B que no esté en A.",
+          "explicacion": "Una inclusión es propia cuando A está contenido en B y, además, B tiene algún elemento que A no tiene. Se escribe $A \\subsetneq B$ o, en muchos textos, con el mismo símbolo de inclusión acompañado de una aclaración. Por ejemplo, $\\{1\\} \\subsetneq \\{1, 2\\}$ es una inclusión propia, porque el 2 pertenece a B y no a A. La distinción es importante porque no todas las inclusiones son estrictas."
+        },
+        {
+          "texto": "Todo conjunto está contenido en sí mismo, en inclusión no propia.",
+          "explicacion": "Cada conjunto A cumple que todos sus elementos pertenecen a A, por lo que $A \\subset A$ es verdadera. Esta inclusión no es propia, porque no existe ningún elemento de A que falte en A. La propiedad permite que la relación de inclusión incluya también el caso de igualdad, y es una de las propiedades que se estudian en las siguientes cards."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto vacío en la inclusión",
+      "puntos": [
+        {
+          "texto": "El conjunto vacío está contenido en cualquier conjunto.",
+          "explicacion": "Como el conjunto vacío no tiene elementos, no existe ningún elemento suyo que incumpla la condición de pertenecer al otro conjunto. Por esa razón la afirmación $\\emptyset \\subset B$ es verdadera para cualquier conjunto B. Este resultado se llama verdadero por vacuidad, porque la condición se cumple sin que haya casos que comprobar. Las propiedades del conjunto vacío se estudian en el tema 08."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de conjuntos",
+      "puntos": [
+        {
+          "texto": "La «igualdad de conjuntos» exige inclusión mutua entre ambos.",
+          "explicacion": "Dos conjuntos A y B son iguales cuando cada uno está contenido en el otro, es decir, cuando $A \\subset B$ y $B \\subset A$ se cumplen a la vez. Esta condición equivale a decir que ambos tienen exactamente los mismos elementos. Por ejemplo, $\\{1, 2\\}$ y $\\{2, 1\\}$ son iguales, porque cada uno contiene los mismos elementos que el otro. La doble inclusión es el método estándar para demostrar que dos conjuntos son iguales."
+        },
+        {
+          "texto": "Un conjunto con elementos repetidos o en otro orden sigue siendo el mismo.",
+          "explicacion": "Como un conjunto se define por sus elementos, ni el orden de listado ni la repetición de un elemento cambian el conjunto. Así, $\\{a, b, a\\}$ y $\\{b, a\\}$ son iguales, porque ambos tienen los mismos elementos distintos. Esta consecuencia de la definición evita contar dos veces los objetos, y se relaciona con la cardinalidad estudiada en el tema 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la inclusión",
+      "puntos": [
+        {
+          "texto": "La inclusión es «reflexiva»: todo conjunto está contenido en sí mismo.",
+          "explicacion": "Una relación es reflexiva cuando cada objeto se relaciona consigo mismo. La inclusión lo cumple, porque para todo conjunto A se tiene $A \\subset A$. Esta propiedad distingue a la inclusión de la inclusión propia, que nunca es reflexiva. Junto con la antisimetría y la transitividad, la reflexividad permite estudiar la inclusión como relación de orden parcial, idea que va más allá de este tema."
+        },
+        {
+          "texto": "La inclusión es «antisimétrica»: inclusiones mutuas implican igualdad.",
+          "explicacion": "Una relación es antisimétrica cuando, si dos objetos se relacionan en ambos sentidos, son el mismo objeto. En la inclusión, si $A \\subset B$ y $B \\subset A$, entonces A y B son iguales. Esta propiedad justifica el método de la doble inclusión para demostrar igualdades de conjuntos, y se aplica en todos los razonamientos donde se comparan dos descripciones de un mismo conjunto."
+        },
+        {
+          "texto": "La inclusión es «transitiva»: si $A \\subset B$ y $B \\subset C$, entonces $A \\subset C$.",
+          "explicacion": "Una relación es transitiva cuando el encadenamiento de dos relaciones produce la misma relación entre los extremos. Si todos los elementos de A están en B, y todos los de B están en C, entonces todos los de A están en C. Esta cadena de razonamiento es frecuente en demostraciones, porque permite conectar conjuntos mediante intermedios."
+        }
+      ]
+    },
+    {
+      "titulo": "Negación de la inclusión",
+      "puntos": [
+        {
+          "texto": "«No está contenido» significa que existe un elemento de A fuera de B.",
+          "explicacion": "La negación de $A \\subset B$ se escribe $A \\not\\subset B$, y significa que hay al menos un elemento de A que no pertenece a B. Por ejemplo, $\\{1, 4\\} \\not\\subset \\{1, 2, 3\\}$ es verdadera, porque el 4 está en el primer conjunto y no en el segundo. La negación de la inclusión no equivale a que ningún elemento de A esté en B, sino a que al menos uno quede fuera."
+        },
+        {
+          "texto": "Para refutar una inclusión basta un elemento de A fuera de B.",
+          "explicacion": "Para demostrar que una inclusión es falsa no hace falta revisar todos los elementos, basta encontrar uno de A que no pertenezca a B. Este elemento funciona como contraejemplo, y la técnica es la misma que se usa con los enunciados universales del tema 06. Esta asimetría entre confirmar y refutar aparece constantemente en los razonamientos sobre conjuntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Inclusión y otras representaciones",
+      "puntos": [
+        {
+          "texto": "Los diagramas representan la inclusión mediante regiones contenidas.",
+          "explicacion": "En los diagramas de Venn, un subconjunto se dibuja como una región completamente dentro de otra, y la inclusión propia se reconoce porque la región mayor tiene una zona exterior a la menor. Esta representación permite visualizar la relación antes de comprobarla con elementos concretos. Los diagramas se estudian con detalle en el tema 15."
+        },
+        {
+          "texto": "El conjunto potencia reúne todos los subconjuntos de un conjunto.",
+          "explicacion": "Para un conjunto dado, el conjunto potencia es la colección de todos sus subconjuntos, incluidos el conjunto vacío y el propio conjunto. Esta construcción depende por completo de la relación de inclusión, por lo que su estudio se desarrolla en el tema 12, donde se contarán los subconjuntos de un conjunto finito."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento axiomático",
+      "puntos": [
+        {
+          "texto": "La inclusión se define a partir de la pertenencia en la teoría axiomática.",
+          "explicacion": "En la teoría axiomática, la inclusión no es una noción primitiva, sino una relación definida a partir de la pertenencia. Dos conjuntos se relacionan por inclusión cuando cada elemento de uno pertenece al otro. Por esta razón, la inclusión depende de la noción primitiva estudiada en el tema 09, y no requiere axiomas propios."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Afirmar que una inclusión implica siempre igualdad es un error.",
+          "explicacion": "Cuando $A \\subset B$ se cumple, no necesariamente $A$ y $B$ son el mismo conjunto, porque B puede tener elementos que A no tiene. Por ejemplo, $\\{1\\} \\subset \\{1, 2\\}$ es verdadera, pero los dos conjuntos son distintos. La igualdad exige la doble inclusión, y confundir ambas relaciones lleva a conclusiones incorrectas en los razonamientos sobre conjuntos."
+        },
+        {
+          "texto": "Olvidar el caso del conjunto vacío es un error frecuente.",
+          "explicacion": "Al estudiar las inclusiones es fácil pasar por alto el conjunto vacío, que siempre está contenido en cualquier conjunto y también cumple las propiedades de la relación. Ignorarlo puede producir conteos incompletos de subconjuntos o demostraciones que parecen cerradas cuando no lo son. Conviene recordar su presencia en cualquier lista de subconjuntos."
+        }
+      ]
+    }
+  ]
+}

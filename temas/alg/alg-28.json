@@ -1,0 +1,355 @@
+{
+  "curso": "Álgebra",
+  "tema": "Polinomios",
+  "glosario": {
+    "Término algebraico": "Producto de un coeficiente por una parte literal.",
+    "Coeficiente": "Número que multiplica a la parte literal.",
+    "Parte literal": "Letras de un término con sus exponentes.",
+    "Variable": "Letra que puede tomar distintos valores.",
+    "Monomio": "Polinomio de un solo término.",
+    "Binomio": "Polinomio de dos términos.",
+    "Trinomio": "Polinomio de tres términos.",
+    "Polinomio": "Suma finita de monomios.",
+    "Grado": "Mayor exponente con coeficiente no nulo.",
+    "Coeficiente principal": "Coeficiente del término de mayor exponente.",
+    "Término independiente": "Término que no contiene la variable.",
+    "Polinomio constante": "Polinomio formado solo por el término independiente.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes iguales a cero.",
+    "Polinomio mónico": "Polinomio de coeficiente principal igual a uno.",
+    "Polinomio ordenado": "Términos escritos según el exponente de la variable.",
+    "Polinomio completo": "Contiene todos los exponentes hasta el cero.",
+    "Polinomio incompleto": "Le falta algún exponente intermedio.",
+    "Términos semejantes": "Términos con la misma parte literal.",
+    "Polinomio reducido": "Polinomio sin términos semejantes.",
+    "Valor numérico": "Resultado de reemplazar la variable por un número.",
+    "Cero de un polinomio": "Número que anula el polinomio.",
+    "Raíz": "Otro nombre del cero de un polinomio.",
+    "Identidad": "Igualdad verdadera para todos los valores.",
+    "Radical": "Expresión con raíz.",
+    "Exponente": "Número que indica la potencia de la base."
+  },
+  "theory": [
+    {
+      "titulo": "Término algebraico",
+      "puntos": [
+        {
+          "texto": "«Término algebraico»: producto de un coeficiente por una parte literal",
+          "explicacion": "Un término algebraico es una expresión formada por un número, llamado coeficiente, multiplicado por una o más letras con sus exponentes, que forman la parte literal. En 7x^3y el coeficiente es 7 y la parte literal es x^3y. En -x^2 el coeficiente es -1, porque el signo y el número 1 no se escriben. Un número solo, como 5, es un término cuyo coeficiente es 5 y que no tiene parte literal. Estos elementos son la base para definir monomios y polinomios."
+        },
+        {
+          "texto": "«Parte literal»: letras con sus exponentes",
+          "explicacion": "La parte literal reúne las variables de un término junto con el exponente de cada una. En 4x^2y^3 la parte literal es x^2y^3: la variable x tiene exponente 2 y la variable y tiene exponente 3. Dos términos con la misma parte literal pueden sumarse o restarse en un solo término; si las partes literales difieren aunque sea en un exponente, como x^2y y xy^2, no pueden reducirse entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Monomio",
+      "puntos": [
+        {
+          "texto": "«Monomio»: término con exponentes enteros no negativos",
+          "explicacion": "Un monomio es un término algebraico en el que cada variable tiene como exponente un número entero mayor o igual que cero, y que no tiene variables en denominadores ni bajo radicales. Son monomios 4x^2, -3xy^2, x y el número 7. No son monomios $3x^{-2}$ por su exponente negativo, $\\sqrt{x}$ por tener la variable bajo un radical, $\\frac{2}{x}$ por tener la variable en el denominador ni $2^x$ por tener la variable en el exponente."
+        },
+        {
+          "texto": "Monomio de una variable: $ax^n$ con $n$ entero, $n\\geq 0$",
+          "explicacion": "En una sola variable, un monomio tiene la forma $ax^n$, donde $a$ es un número real llamado coeficiente y $n$ es un entero mayor o igual que cero. Si $n=0$ resulta $ax^0=a$, un número constante. Por ejemplo, $-5x^4$ tiene $a=-5$ y $n=4$; $\\frac{3}{4}x$ tiene $a=\\frac{3}{4}$ y $n=1$, porque la fracción solo afecta al coeficiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio",
+      "puntos": [
+        {
+          "texto": "«Polinomio»: suma finita de monomios",
+          "explicacion": "Un polinomio es una expresión algebraica que se obtiene sumando un número finito de monomios. La resta se interpreta como suma de un monomio con coeficiente negativo. Por ejemplo, 2x^3 - 5x^2 + 4x - 7 es un polinomio porque equivale a 2x^3 + (-5x^2) + 4x + (-7). Cada monomio es un caso particular de polinomio con un solo término."
+        },
+        {
+          "texto": "«Término» de un polinomio: cada monomio sumando",
+          "explicacion": "Los términos de un polinomio son los monomios que lo componen. El polinomio 2x^3 - 5x^2 + 4x - 7 tiene cuatro términos: 2x^3, -5x^2, 4x y -7. Cada término conserva el signo que lo precede. Antes de contar términos conviene reducir los semejantes, porque 3x + 2x es en realidad un único término 5x."
+        },
+        {
+          "texto": "Un polinomio ✗ exponentes negativos ni fraccionarios",
+          "explicacion": "Todas las variables de un polinomio deben tener exponentes enteros mayores o iguales que cero. Así, x^3 + 2x es polinomio, pero $x^{-1}+2$ no lo es, porque tiene un exponente negativo, y $x^{\\frac{1}{2}}+1$ tampoco lo es, porque el exponente es fraccionario. Esta condición proviene de las propiedades de la potenciación con exponentes enteros positivos y del cero."
+        },
+        {
+          "texto": "Un polinomio ✗ variable en el denominador",
+          "explicacion": "Una variable no puede aparecer en un denominador. Por tanto $\\frac{3}{x}$ y $\\frac{1}{x+1}$ no son polinomios. En cambio $\\frac{x}{2}$ y $\\frac{x^2+1}{3}$ sí lo son, porque dividir entre un número fijo equivale a multiplicar por un coeficiente: $\\frac{x}{2}=\\frac{1}{2}x$ y $\\frac{x^2+1}{3}=\\frac{1}{3}x^2+\\frac{1}{3}$. La diferencia está en qué cambia al dividir: dividir entre un número fijo no modifica el tipo de potencia de la variable, mientras que dividir entre una expresión con x equivale a una potencia negativa de x, y eso rompe la condición de exponentes enteros no negativos."
+        },
+        {
+          "texto": "Un polinomio ✗ variable bajo radical",
+          "explicacion": "La variable no puede estar dentro de un radical. Entonces $\\sqrt{x}+1$ y $\\sqrt[3]{x^2}$ no son polinomios. Un radical que solo contiene números es parte de un coeficiente: $\\sqrt{2}\\,x+1$ sí es un polinomio, cuyo coeficiente principal $\\sqrt{2}$ es un número real fijo. Esta restricción relaciona el tema con la radicación."
+        },
+        {
+          "texto": "Un polinomio ✗ variable en el exponente",
+          "explicacion": "Una expresión como $2^x+x$ no es un polinomio, pues la variable x está en el exponente. En un polinomio la variable siempre es la base y el exponente es un número entero fijo mayor o igual que cero, como en x^2 o x^5. Las expresiones con la variable en el exponente se estudian como funciones exponenciales."
+        },
+        {
+          "texto": "Coeficientes: números reales fijos",
+          "explicacion": "Los coeficientes de un polinomio son números reales que no dependen de la variable. Pueden ser enteros, fracciones o irracionales, como en $3x^2-\\frac{1}{2}x+\\sqrt{5}$. Pueden también ser cero, caso en el que el término correspondiente no aparece. Ningún coeficiente puede depender de x: si una letra multiplica a la variable, como en $x\\cdot x$, el producto se escribe x^2 y no es un coeficiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma general",
+      "puntos": [
+        {
+          "texto": "Forma general: $P(x)=a_nx^n+\\cdots+a_1x+a_0$",
+          "explicacion": "Todo polinomio en una variable puede escribirse como $P(x)=a_nx^n+a_{n-1}x^{n-1}+\\cdots+a_1x+a_0$, donde $n$ es un entero mayor o igual que cero y los números $a_n,\\dots,a_0$ son los coeficientes. Cada exponente de x desde $n$ hasta 0 aparece una vez, aunque su coeficiente pueda ser cero. Por ejemplo, 2x^3 - 5x^2 + 4x - 7 tiene $n=3$, $a_3=2$, $a_2=-5$, $a_1=4$ y $a_0=-7$."
+        },
+        {
+          "texto": "Notación $P(x)$: polinomio de variable $x$",
+          "explicacion": "La notación $P(x)$ se lee «P de x» y nombra al polinomio indicando cuál es su variable. Se pueden usar otras letras mayúsculas como $Q(x)$ o $R(x)$ para distinguir varios polinomios, y otras variables como $P(t)$ o $P(y)$. La letra entre paréntesis es la variable que se reemplazará al calcular valores. La notación $P(x)=2x^3-5x^2+4x-7$ define el polinomio y también deja preparada la evaluación."
+        },
+        {
+          "texto": "Coeficiente $a_k$ acompaña a $x^k$",
+          "explicacion": "El subíndice de cada coeficiente coincide con el exponente de la variable que acompaña. En $P(x)=2x^3-5x^2+4x-7$: $a_3=2$ acompaña a x^3; $a_2=-5$ acompaña a x^2; $a_1=4$ acompaña a x; y $a_0=-7$ acompaña a x^0=1. Leer los coeficientes por su subíndice evita confundir su orden cuando el polinomio está desordenado o incompleto."
+        },
+        {
+          "texto": "«Coeficiente principal» $a_n$: el del mayor exponente",
+          "explicacion": "El coeficiente principal es el coeficiente del término de mayor exponente, siempre que sea distinto de cero. En $P(x)=2x^3-5x^2+4x-7$ es $a_3=2$. En $Q(x)=5-x^2$, el mayor exponente es 2 y su coeficiente es -1, así que el coeficiente principal de Q es -1 aunque el término 5 aparezca primero escrito. Por eso hay que identificar el exponente mayor y no la posición."
+        },
+        {
+          "texto": "«Término independiente» $a_0$: no contiene la variable",
+          "explicacion": "El término independiente es el término sin variable, es decir, el de exponente cero. En $P(x)=2x^3-5x^2+4x-7$ es -7. Si el polinomio no muestra un término constante, como en $Q(x)=x^2+3x$, el término independiente es 0. Tiene un papel especial al evaluar, porque $P(0)=a_0$. Se le llama independiente porque su valor no cambia cuando x toma otros valores: en $P(x)=2x^3-5x^2+4x-7$ el término -7 es el mismo para x = 0, x = 2 o x = 10."
+        },
+        {
+          "texto": "«Polinomio» ✓ función $x$ → $P(x)$ con dominio los números reales",
+          "explicacion": "Cada polinomio define una función que asigna a cada número real x el número real $P(x)$. Como solo intervienen sumas, restas y productos de x consigo mismo, la evaluación se puede realizar para cualquier número real, sin ninguna restricción. Por ejemplo, para $P(x)=2x^3-5x^2+4x-7$ se calcula $P(2)=-3$ y $P(-1)=-18$. El dominio de un polinomio es el conjunto de todos los números reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación por términos",
+      "puntos": [
+        {
+          "texto": "«Monomio»: polinomio de un solo término",
+          "explicacion": "Un monomio es un polinomio con un único término, como 5x^4, -3x o 8. Cuando un polinomio tiene un solo término ya está reducido, y su grado coincide con el exponente de la variable. Esta clasificación se aplica después de reducir los términos semejantes, porque 3x^2 + 4x^2 equivale al monomio 7x^2."
+        },
+        {
+          "texto": "«Binomio»: polinomio de dos términos",
+          "explicacion": "Un binomio es un polinomio con exactamente dos términos no semejantes, como x + 5, 3x^2 - 7 o 2x^3 - x. La expresión 3x + 4x no es un binomio, porque sus términos son semejantes y se reducen a 7x. Los binomios aparecen en productos notables, como el cuadrado de un binomio, que se estudia en temas posteriores."
+        },
+        {
+          "texto": "«Trinomio»: polinomio de tres términos",
+          "explicacion": "Un trinomio es un polinomio con exactamente tres términos no semejantes, como x^2 + 5x + 6, 2x^3 - x + 4 o x^4 + x^2 + 1. Entre los trinomios destacan los de segundo grado, de la forma $ax^2+bx+c$, que serán factorizados y resueltos como ecuaciones en otros temas."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado básico",
+      "puntos": [
+        {
+          "texto": "«Grado» de un monomio en una variable = su exponente",
+          "explicacion": "El grado de un monomio $ax^n$, con $a\\neq 0$, es el exponente $n$ de la variable. Así, 5x^4 tiene grado 4; -3x tiene grado 1, porque x equivale a x^1; y el número 8 tiene grado 0, porque 8 = 8x^0. El grado indica cuán alta es la potencia de la variable y es la primera característica que se mira de un monomio."
+        },
+        {
+          "texto": "«Grado» de un polinomio: mayor exponente con coeficiente no nulo",
+          "explicacion": "El grado de un polinomio de una variable es el mayor exponente de x cuyo coeficiente es distinto de cero. En $P(x)=2x^3-5x^2+4x-7$ el grado es 3. En $R(x)=0x^4+3x^2-1$ el término 0x^4 no cuenta, de modo que el grado es 2 y no 4. Si el polinomio no está reducido, hay que reducirlo primero: $5x^3-5x^3+2x^2+x$ se reduce a $2x^2+x$ y su grado es 2."
+        },
+        {
+          "texto": "Polinomio constante no nulo ⇒ grado 0",
+          "explicacion": "Un polinomio constante, como $P(x)=5$, no contiene variable visible. Su único término es 5 = 5x^0, de exponente 0 y coeficiente distinto de cero, por lo que su grado es 0. Todo número real distinto de cero es un polinomio de grado cero. En cambio, el polinomio constante cero, que es el polinomio nulo, se trata aparte. Por ejemplo, $P(x)=-3$ tiene grado 0, mientras que $P(x)=0$ no tiene grado definido."
+        },
+        {
+          "texto": "Polinomio nulo ⇒ sin grado definido",
+          "explicacion": "El polinomio nulo $P(x)=0$ tiene todos sus coeficientes iguales a cero, así que no existe un coeficiente distinto de cero que determine un mayor exponente. Por esa razón no se le asigna grado, o se dice que su grado no está definido. Es distinto del polinomio constante 5, que sí tiene grado 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos básicos",
+      "puntos": [
+        {
+          "texto": "«Polinomio constante»: $P(x)=a_0$",
+          "explicacion": "Es el polinomio que solo tiene término independiente. Si $a_0\\neq 0$ su grado es 0, y su valor numérico es el mismo para cualquier x: en $P(x)=5$, se cumple $P(0)=5$, $P(2)=5$ y $P(-7)=5$. En una tabla de valores, un polinomio constante muestra siempre el mismo resultado: para $P(x)=5$ se obtiene 5 en x = -1, x = 0 y x = 4. Cuando $a_0=0$ el polinomio constante es el polinomio nulo, que no tiene grado definido."
+        },
+        {
+          "texto": "«Polinomio lineal»: grado 1, $ax+b$ con $a\\neq 0$",
+          "explicacion": "Un polinomio lineal tiene como mayor exponente 1, por lo que su forma es $ax+b$ con $a\\neq 0$. Por ejemplo, $P(x)=3x-2$ cumple $P(0)=-2$ y $P(2)=3(2)-2=4$. Este polinomio está relacionado con las ecuaciones de primer grado y con la función lineal. El coeficiente $a$ no puede ser cero, porque en ese caso el término en x desaparece y queda un polinomio constante. Para $P(x)=3x-2$ el valor que lo anula es x = $\\frac{2}{3}$, ya que $3\\cdot\\frac{2}{3}-2=0$."
+        },
+        {
+          "texto": "«Polinomio cuadrático»: grado 2, $ax^2+bx+c$ con $a\\neq 0$",
+          "explicacion": "Un polinomio cuadrático tiene mayor exponente 2, y su forma es $ax^2+bx+c$ con $a\\neq 0$. Por ejemplo, $P(x)=x^2-5x+6$ cumple $P(0)=6$ y $P(1)=1-5+6=2$. Se relaciona con las ecuaciones de segundo grado y la función cuadrática. Si $a=0$, el término x^2 desaparece y el polinomio pasa a ser lineal o constante. En el ejemplo, los valores que anulan $P(x)=x^2-5x+6$ son x = 2 y x = 3, porque $4-10+6=0$ y $9-15+6=0$."
+        },
+        {
+          "texto": "«Polinomio cúbico»: grado 3, $ax^3+bx^2+cx+d$ con $a\\neq 0$",
+          "explicacion": "Un polinomio cúbico tiene mayor exponente 3, y su forma es $ax^3+bx^2+cx+d$ con $a\\neq 0$. El polinomio $P(x)=2x^3-5x^2+4x-7$ es cúbico; sus cuatro coeficientes son 2, -5, 4 y -7, con coeficiente principal 2 y término independiente -7. La condición $a\\neq 0$ garantiza que el grado sea realmente 3. Para evaluar el ejemplo, $P(1)=2-5+4-7=-6$ y $P(0)=-7$, valores que se obtienen directamente de los coeficientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden y completitud",
+      "puntos": [
+        {
+          "texto": "«Polinomio ordenado»: exponentes en orden decreciente o creciente",
+          "explicacion": "Un polinomio está ordenado cuando sus términos están escritos según el exponente de la variable. En orden descendente se escribe de mayor a menor exponente, y en orden ascendente de menor a mayor. El polinomio x^4 + 3x - 2 está ordenado descendentemente; el mismo polinomio ordenado ascendentemente es -2 + 3x + x^4. Ordenar facilita identificar coeficientes y operar."
+        },
+        {
+          "texto": "«Polinomio completo»: aparecen todos los exponentes desde el mayor hasta 0",
+          "explicacion": "Un polinomio es completo cuando contiene un término por cada exponente desde el grado hasta el exponente 0, incluido el término independiente. El polinomio 2x^3 - 5x^2 + 4x - 7 es completo porque tiene x^3, x^2, x y un término constante. Un polinomio como x^4 + 3x - 2 no es completo porque faltan x^3 y x^2."
+        },
+        {
+          "texto": "«Polinomio incompleto»: falta algún exponente",
+          "explicacion": "Un polinomio es incompleto cuando le falta al menos un término de los exponentes intermedios o el término independiente. Para trabajar con él se completa con términos de coeficiente cero. Así, x^4 + 3x - 2 se escribe x^4 + 0x^3 + 0x^2 + 3x - 2. El valor del polinomio no cambia, porque sumar términos nulos no altera nada."
+        },
+        {
+          "texto": "Completo de grado $n$ ⇒ $n+1$ términos",
+          "explicacion": "Los exponentes de un polinomio completo de grado $n$ son $n, n-1,\\dots,1,0$, que son $n+1$ números. Por tanto tiene $n+1$ coeficientes, cualesquiera de ellos nulos salvo el principal. Ejemplo: x^4 + 0x^3 + 0x^2 + 3x - 2 tiene grado 4 y cinco términos, y se cumple 4 + 1 = 5. Verificación con el cúbico 2x^3 - 5x^2 + 4x - 7: grado 3 y cuatro términos, y 3 + 1 = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio mónico",
+      "puntos": [
+        {
+          "texto": "«Polinomio mónico»: coeficiente principal $a_n=1$",
+          "explicacion": "Un polinomio es mónico cuando su coeficiente principal es 1. Son mónicos x^3 - 2x + 5 y x^2 - 3x + 2, mientras que 2x^2 - 6x + 4 no lo es porque su coeficiente principal es 2. Los polinomios mónicos son útiles porque sus coeficientes son más sencillos de manejar, y en temas posteriores simplifican las divisiones."
+        },
+        {
+          "texto": "Dividir entre $a_n$ convierte en mónico",
+          "explicacion": "Si se divide cada término de un polinomio entre su coeficiente principal $a_n\\neq 0$, se obtiene un polinomio mónico con las mismas raíces. Por ejemplo, $2x^2-6x+4$ dividido entre 2 es $x^2-3x+2$. Verificación en x = 1: $2-6+4=0$ y $1-3+2=0$; en x = 2: $8-12+4=0$ y $4-6+2=0$. Ambos se anulan en los mismos valores, aunque no son el mismo polinomio."
+        }
+      ]
+    },
+    {
+      "titulo": "Términos semejantes",
+      "puntos": [
+        {
+          "texto": "«Términos semejantes»: misma parte literal",
+          "explicacion": "Dos términos son semejantes cuando tienen exactamente la misma parte literal, es decir, las mismas variables con los mismos exponentes; solo pueden diferir en el coeficiente. Son semejantes 3x^2 y -7x^2, y también 4xy y xy. No son semejantes 3x^2 y 3x, ni x^2y y xy^2, porque los exponentes difieren."
+        },
+        {
+          "texto": "Reducir términos semejantes: sumar sus coeficientes",
+          "explicacion": "Para reducir términos semejantes se suman sus coeficientes y se conserva la parte literal. En 3x^2 - 5x + 2x^2 + 7x - 4 se agrupan: (3 + 2)x^2 + (-5 + 7)x - 4 = 5x^2 + 2x - 4. Verificación en x = 1: el original da 3 - 5 + 2 + 7 - 4 = 3, y el reducido da 5 + 2 - 4 = 3. Esto justifica la propiedad distributiva aplicada en sentido inverso."
+        },
+        {
+          "texto": "«Polinomio reducido»: sin términos semejantes",
+          "explicacion": "Un polinomio reducido no contiene dos términos semejantes. El grado, el coeficiente principal y el número de términos solo se determinan correctamente después de reducir. El polinomio 5x^3 - 5x^3 + 2x^2 + x parece de grado 3, pero se reduce a 2x^2 + x, de grado 2 y coeficiente principal 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor numérico",
+      "puntos": [
+        {
+          "texto": "«Valor numérico» $P(a)$: reemplazar $x$ por $a$",
+          "explicacion": "El valor numérico de $P(x)$ en $x=a$ se obtiene sustituyendo la variable por el número $a$ y realizando las operaciones. Para $P(x)=2x^3-5x^2+4x-7$: $P(2)=2(8)-5(4)+4(2)-7=16-20+8-7=-3$. Y $P(3)=2(27)-5(9)+4(3)-7=54-45+12-7=14$. Se respeta la jerarquía de operaciones: primero potencias, luego productos y al final sumas y restas. El resultado depende del polinomio y del número elegido: el mismo polinomio da -3 en x = 2 y 14 en x = 3. Cada evaluación es un cálculo independiente."
+        },
+        {
+          "texto": "Evaluar en números negativos: usar paréntesis",
+          "explicacion": "Al sustituir un número negativo se encierra entre paréntesis, para que el exponente y los signos se apliquen correctamente. Para $P(x)=2x^3-5x^2+4x-7$: $P(-1)=2(-1)^3-5(-1)^2+4(-1)-7=-2-5-4-7=-18$. Se cumple que $(-1)^3=-1$ y $(-1)^2=1$. Olvidar el paréntesis, por ejemplo escribir $-1^2=-1$, produce un resultado distinto y erróneo. Otro ejemplo con el mismo polinomio: $P(-2)=2(-8)-5(4)+4(-2)-7=-16-20-8-7=-51$. Un número negativo elevado a un exponente impar da resultado negativo, y a un exponente par da resultado positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores notables",
+      "puntos": [
+        {
+          "texto": "$P(0)$ = término independiente",
+          "explicacion": "Al sustituir x = 0, todos los términos con variable se anulan y solo queda $a_0$. Por tanto $P(0)=a_0$. Con $P(x)=2x^3-5x^2+4x-7$: $P(0)=0-0+0-7=-7$, que coincide con el término independiente. Esto vale para cualquier polinomio y se verifica en $Q(x)=x^2+3x$, que no muestra término constante: $Q(0)=0+0=0$, y su término independiente es 0. También en $R(x)=4x^5-2x+9$: $R(0)=9$. Conocer $P(0)$ equivale a conocer $a_0$ sin desarrollar nada."
+        },
+        {
+          "texto": "$P(1)$ = suma de los coeficientes",
+          "explicacion": "Como $1^k=1$ para cualquier exponente k, al sustituir x = 1 queda $P(1)=a_n+\\cdots+a_1+a_0$, la suma de todos los coeficientes. Con $P(x)=2x^3-5x^2+4x-7$: $P(1)=2-5+4-7=-6$, y la suma de coeficientes 2 + (-5) + 4 + (-7) = -6. Esta propiedad permite hallar la suma de coeficientes sin desarrollar el polinomio."
+        },
+        {
+          "texto": "$P(-1)$ = suma alternada de los coeficientes",
+          "explicacion": "Como $(-1)^k$ vale 1 si k es par y -1 si k es impar, $P(-1)$ resta los coeficientes de exponente impar y suma los de exponente par. En $P(x)=2x^3-5x^2+4x-7$: $P(-1)=-2-5-4-7=-18$, que es $-a_3+a_2-a_1+a_0=-2+(-5)-4+(-7)$. La alternancia aparece porque las potencias de -1 alternan entre 1 y -1. Si el polinomio fuera x^2 - 3x + 2, se obtendría $P(-1)=1+3+2=6$, que coincide con $a_2-a_1+a_0=1-(-3)+2$."
+        },
+        {
+          "texto": "$\\frac{P(1)+P(-1)}{2}$ = suma de coeficientes de exponente par",
+          "explicacion": "Al sumar $P(1)$ y $P(-1)$, los coeficientes de exponente impar se cancelan y los de exponente par se duplican. Con $P(1)=-6$ y $P(-1)=-18$: $\\frac{-6+(-18)}{2}=-12$, y los coeficientes de exponente par son $a_2=-5$ y $a_0=-7$, cuya suma es -12. Se incluye el término independiente porque su exponente 0 es par."
+        },
+        {
+          "texto": "$\\frac{P(1)-P(-1)}{2}$ = suma de coeficientes de exponente impar",
+          "explicacion": "Al restar $P(-1)$ de $P(1)$, los coeficientes de exponente par se cancelan y los de exponente impar se duplican. Con $P(1)=-6$ y $P(-1)=-18$: $\\frac{-6-(-18)}{2}=6$, y los coeficientes de exponente impar son $a_3=2$ y $a_1=4$, cuya suma es 6. La verificación para otro polinomio, $x^2-3x+2$: $P(1)=0$ y $P(-1)=6$, de modo que $\\frac{0-6}{2}=-3$, y el único coeficiente de exponente impar es $a_1=-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cero de polinomio",
+      "puntos": [
+        {
+          "texto": "«Cero» de un polinomio: $a$ tal que $P(a)=0$",
+          "explicacion": "Un cero de $P(x)$ es un número a para el cual el valor numérico es cero. Para $Q(x)=x^2-5x+6$: $Q(2)=4-10+6=0$, $Q(3)=9-15+6=0$, y por tanto 2 y 3 son ceros. En cambio $Q(1)=1-5+6=2$, distinto de cero, y 1 no es cero de Q. Los ceros son los números que resuelven la ecuación $P(x)=0$."
+        },
+        {
+          "texto": "«Raíz» de un polinomio = cero del polinomio",
+          "explicacion": "Raíz es el nombre alternativo de cero de un polinomio: dos palabras para el mismo concepto. Decir que 2 es raíz de $x^2-5x+6$ es lo mismo que decir que $P(2)=0$. Relaciones más profundas entre raíces, factores y coeficientes se estudian en los temas del teorema del factor y del teorema fundamental del álgebra."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio nulo",
+      "puntos": [
+        {
+          "texto": "«Polinomio nulo»: todos los coeficientes valen 0",
+          "explicacion": "El polinomio nulo es el que tiene todos sus coeficientes iguales a cero: $0x^n+\\cdots+0x+0=0$. Vale cero para cualquier valor de x, por lo que todo número real es un cero suyo. Es el polinomio con el que se compara a otros para saber si son idénticos, porque $P(x)=Q(x)$ equivale a que $P(x)-Q(x)$ sea nulo."
+        },
+        {
+          "texto": "Polinomio nulo ⇒ todos sus coeficientes valen 0",
+          "explicacion": "Si un polinomio vale cero para todo valor de x, entonces todos sus coeficientes son cero. Esta propiedad permite determinar constantes. Si $(a-2)x^2+(b+3)x+(c-1)$ vale cero para todo x, se cumple $a-2=0$, $b+3=0$ y $c-1=0$, de donde $a=2$, $b=-3$ y $c=1$. Verificación: queda $0x^2+0x+0$, el polinomio nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de polinomios",
+      "puntos": [
+        {
+          "texto": "«Polinomios iguales»: coeficientes iguales término a término",
+          "explicacion": "Dos polinomios son iguales cuando, una vez ordenados y reducidos, tienen los mismos coeficientes en cada exponente. De $ax^2+bx+c=3x^2-2x+5$ se deduce $a=3$, $b=-2$ y $c=5$. Se pueden incluir términos con coeficiente cero: $ax^3+bx+c=x^3+4$ da $a=1$, $b=0$ y $c=4$. Esta igualdad se llama también identidad cuando se cumple para todos los valores de x."
+        },
+        {
+          "texto": "Comparar coeficientes: ejemplo resuelto",
+          "explicacion": "Sea $(a+1)x^2+(b-2)x+(c+3)=4x^2+6x+1$. Se igualan los coeficientes de cada exponente: $a+1=4$ da $a=3$; $b-2=6$ da $b=8$; $c+3=1$ da $c=-2$. Verificación: $(3+1)x^2+(8-2)x+(-2+3)=4x^2+6x+1$. Se cumple, y las constantes son $a=3$, $b=8$, $c=-2$. Este procedimiento funciona porque dos polinomios iguales deben coincidir en cada exponente por separado; de lo contrario, la diferencia entre ambos sería un polinomio no nulo que se anula para todo x, lo cual no puede ocurrir."
+        },
+        {
+          "texto": "Identidad polinómica con productos: ejemplo resuelto",
+          "explicacion": "Sea $a(x+1)+b(x-1)=3x+5$ para todo x. Se desarrolla: $ax+a+bx-b=(a+b)x+(a-b)$. Al comparar coeficientes: $a+b=3$ y $a-b=5$. Sumando: $2a=8$, de modo que $a=4$, y entonces $b=-1$. Verificación: $4(x+1)-1(x-1)=4x+4-x+1=3x+5$. Se cumple. El paso clave es agrupar los términos en x y los términos constantes antes de comparar: el lado izquierdo desarrollado es $(a+b)x+(a-b)$ y el derecho ya está en la forma $3x+5$, de modo que cada coeficiente se iguala con su pareja del mismo exponente."
+        },
+        {
+          "texto": "Asignar valores a $x$ en una identidad",
+          "explicacion": "Como una identidad polinómica se cumple para todo valor de x, se pueden elegir valores convenientes que anulen términos. En $a(x+1)+b(x-1)=3x+5$, con x = 1 resulta $2a=8$, de donde $a=4$. Con x = -1 resulta $-2b=2$, de donde $b=-1$. Es el mismo resultado que por comparación de coeficientes, y suele ahorrar cálculos."
+        }
+      ]
+    },
+    {
+      "titulo": "Varias variables",
+      "puntos": [
+        {
+          "texto": "«Polinomio en dos variables»: suma de monomios en $x$ y $y$",
+          "explicacion": "Un polinomio en dos variables es una suma de monomios en los que aparecen $x$ e $y$ con exponentes enteros mayores o iguales que cero, y se denota $P(x,y)$. Por ejemplo, $P(x,y)=3x^2y-2xy^3+5$ tiene tres términos: 3x^2y, -2xy^3 y 5. Las mismas restricciones que en una variable siguen valiendo: no hay denominadores, radicales ni exponentes variables con las variables."
+        },
+        {
+          "texto": "Valor numérico de $P(x,y)$: reemplazar ambas variables",
+          "explicacion": "Se reemplaza cada variable por su valor. Para $P(x,y)=3x^2y-2xy^3+5$: $P(1,2)=3(1)(2)-2(1)(8)+5=6-16+5=-5$. Y $P(2,-1)=3(4)(-1)-2(2)(-1)+5=-12+4+5=-3$. Se respeta el orden de la notación: el primer valor es para x y el segundo para y. Los exponentes se aplican solo al valor de su variable: en $-2xy^3$ con y = 2 se calcula $2^3=8$, y con y = -1 se calcula $(-1)^3=-1$. Verificación del signo en $P(2,-1)$: $-2\\cdot 2\\cdot(-1)=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Evaluación en expresiones",
+      "puntos": [
+        {
+          "texto": "Evaluar $P$ en una expresión: reemplazar $x$ por ella",
+          "explicacion": "Para calcular $P(2x-1)$ con $P(x)=3x+2$, se reemplaza cada x por la expresión completa entre paréntesis: $P(2x-1)=3(2x-1)+2=6x-3+2=6x-1$. Verificación con x = 1: $P(1)=5$ y $6(1)-1=5$. El mismo método sirve para $P(Q(x))$: si $P(x)=x^2+1$ y $Q(x)=2x-3$, resulta $P(Q(x))=(2x-3)^2+1=4x^2-12x+10$, y en x = 2 se tiene $P(1)=2$ y $16-24+10=2$."
+        },
+        {
+          "texto": "Hallar $P(x)$ a partir de $P(x+2)$",
+          "explicacion": "Sea $P(x+2)=x^2+3x+1$. Se introduce $u=x+2$, de modo que $x=u-2$. Entonces $P(u)=(u-2)^2+3(u-2)+1=u^2-4u+4+3u-6+1=u^2-u-1$. Por tanto $P(x)=x^2-x-1$. Verificación: con x = 0, $P(2)=4-2-1=1$ y el lado derecho vale 1; con x = 1, $P(3)=9-3-1=5$ y el lado derecho vale $1+3+1=5$. Este procedimiento se llama cambio de variable: se renombra la expresión del paréntesis, se despeja x en función de la nueva letra y se sustituye. Al final se vuelve a escribir la letra x como variable del polinomio."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 25 al 27: base de la definición",
+          "explicacion": "El concepto de polinomio parte de las expresiones algebraicas del tema 25, usa las propiedades de la potenciación del tema 26 para los exponentes enteros no negativos, y excluye las variables bajo radical, relacionadas con el tema 27 de radicación. Por ejemplo, la restricción de exponentes enteros no negativos viene directamente de las potencias estudiadas en el tema 26, y la exclusión de $\\sqrt{x}$ proviene de que un radical con variable no tiene la forma de una potencia entera."
+        },
+        {
+          "texto": "Temas 29 en adelante: grado y operaciones",
+          "explicacion": "Lo visto aquí prepara el estudio detallado del grado de expresiones algebraicas, de la adición, sustracción y multiplicación de polinomios, de los polinomios especiales y de la división de polinomios. Todos usan la forma general, los coeficientes, el grado y el valor numérico definidos en este tema."
+        }
+      ]
+    }
+  ]
+}

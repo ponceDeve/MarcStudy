@@ -1,0 +1,116 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulos coterminales",
+  "glosario": {
+    "Ángulos coterminales": "Ángulos en posición normal con el mismo lado final",
+    "Posición normal": "Vértice en origen y lado inicial en eje positivo",
+    "Lado final": "Posición del rayo al terminar el giro",
+    "Vuelta completa": "Giro de 360 grados",
+    "Múltiplo": "Resultado de multiplicar un número por un entero",
+    "Entero": "Número sin parte decimal, positivo o negativo",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Radián": "Unidad de ángulo; arco igual al radio",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Radio vector": "Distancia del origen a un punto del lado final"
+  },
+  "theory": [
+    {
+      "titulo": "Ángulos coterminales",
+      "puntos": [
+        {
+          "texto": "Coterminales = ángulos en posición normal con el mismo lado final",
+          "explicacion": "Dos ángulos son coterminales cuando, al dibujarlos en posición normal, sus lados finales coinciden, aunque hayan dado una cantidad distinta de vueltas. Ejemplo: el ángulo de 60° y el de 420° terminan en el mismo lado, porque 420° es una vuelta completa de 360° más 60° adicionales; la aguja de un reloj de pared que gira 60° queda en la misma posición que si gira 420°."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de coterminales",
+      "puntos": [
+        {
+          "texto": "Coterminales: $\\alpha - \\beta = 360° \\cdot n$ con n entero",
+          "explicacion": "Aquí $\\alpha$ y $\\beta$ son las medidas de los dos ángulos y n es la cantidad de vueltas completas que los separa, un número entero. Dos ángulos coterminales solo se diferencian en vueltas completas, y por eso su diferencia es múltiplo de 360°. Ejemplo: $420° - 60° = 360° = 360° \\times 1$, así que son coterminales con n = 1; y $780° - 60° = 720° = 360° \\times 2$, con n = 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar coterminales sumando",
+      "puntos": [
+        {
+          "texto": "Coterminal de $\\theta$: $\\theta + 360° \\cdot n$",
+          "explicacion": "Aquí $\\theta$ es el ángulo dado y n un entero. Sumar vueltas completas da un ángulo mayor con el mismo lado final. Ejemplo: para $\\theta = 50°$, con n = 1 resulta $50° + 360° = 410°$ y con n = 2 resulta $50° + 720° = 770°$; los tres ángulos, 50°, 410° y 770°, comparten lado final."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar coterminales restando",
+      "puntos": [
+        {
+          "texto": "Restar vueltas completas ⇒ otro coterminal más pequeño",
+          "explicacion": "Restar 360° o un múltiplo de 360° quita vueltas completas sin cambiar el lado final. Ejemplo: de 750° se obtiene $750° - 360° = 390°$ y luego $390° - 360° = 30°$; los ángulos 750°, 390° y 30° son coterminales, y el menor de ellos es 30°."
+        }
+      ]
+    },
+    {
+      "titulo": "Prueba de coterminalidad",
+      "puntos": [
+        {
+          "texto": "Coterminales ⇔ la diferencia de sus medidas es múltiplo de 360°",
+          "explicacion": "Para decidir si dos ángulos son coterminales se resta uno del otro y se verifica si el resultado se puede dividir exactamente entre 360°. Ejemplo: 1110° y 30° dan $1110° - 30° = 1080° = 360° \\times 3$, por tanto son coterminales. En cambio, 500° y 40° dan $500° - 40° = 460°$, que no es múltiplo de 360° porque $\\frac{460}{360}$ no es entero, y por eso no son coterminales."
+        }
+      ]
+    },
+    {
+      "titulo": "Coterminales en radianes",
+      "puntos": [
+        {
+          "texto": "En radianes: coterminales ⇒ $\\alpha - \\beta = 2\\pi \\cdot n$",
+          "explicacion": "Como una vuelta completa mide $2\\pi$ rad, en radianes la diferencia debe ser múltiplo de $2\\pi$. Ejemplo: $\\frac{\\pi}{6}$ rad y $\\frac{13\\pi}{6}$ rad dan $\\frac{13\\pi}{6} - \\frac{\\pi}{6} = \\frac{12\\pi}{6} = 2\\pi$, así que son coterminales con n = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Mismo cuadrante",
+      "puntos": [
+        {
+          "texto": "Coterminales ⇒ pertenecen al mismo cuadrante",
+          "explicacion": "El cuadrante depende solo de dónde queda el lado final, y los coterminales comparten lado final. Ejemplo: 200° pertenece al cuadrante III y su coterminal $200° + 360° = 560°$ también termina en el cuadrante III."
+        }
+      ]
+    },
+    {
+      "titulo": "Mismas razones",
+      "puntos": [
+        {
+          "texto": "Coterminales ⇒ mismas razones trigonométricas",
+          "explicacion": "Las razones se calculan con un punto del lado final, y si el lado final es el mismo, las razones son iguales. Ejemplo: si el lado final de $\\theta$ pasa por $P(-3; 4)$, con $r = 5$, entonces $\\operatorname{sen}\\theta = \\frac{4}{5}$ y $\\cos\\theta = -\\frac{3}{5}$. Los ángulos $\\theta + 360°$ y $\\theta + 720°$ tienen el mismo lado final y por eso también cumplen $\\operatorname{sen} = \\frac{4}{5}$ y $\\cos = -\\frac{3}{5}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones con coterminales",
+      "puntos": [
+        {
+          "texto": "Dato de coterminalidad ⇒ igualar la diferencia a $360° \\cdot n$",
+          "explicacion": "Cuando dos ángulos con una incógnita son coterminales, se plantea que su diferencia es 360° por un entero n y se despeja. Luego se elige el valor de n que cumpla lo que pide el problema. Ejemplo: si $5x$ y $x + 40°$ son coterminales, $5x - (x + 40°) = 360° \\cdot n$, es decir $4x - 40° = 360° \\cdot n$ y $x = 10° + 90° \\cdot n$. Con n = 1 resulta $x = 100°$, y los ángulos miden 500° y 140°, cuya diferencia es 360°."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Coterminales no miden lo mismo, solo comparten lado final",
+          "explicacion": "Que dos ángulos sean coterminales no significa que valgan igual. Ejemplo: 60° y 420° son coterminales y miden distinto; lo que coincide es su lado final y, por tanto, sus razones trigonométricas."
+        },
+        {
+          "texto": "Diferencia de 180° ⇒ no son coterminales",
+          "explicacion": "Media vuelta lleva el lado final al lado opuesto, no al mismo lado. Ejemplo: 30° y 210° se diferencian en 180°, y sus lados finales apuntan en direcciones contrarias, uno en el cuadrante I y el otro en el III; para ser coterminales la diferencia tendría que ser 360° o un múltiplo de 360°."
+        },
+        {
+          "texto": "Sumar 180° en lugar de 360° ⇒ obtener un ángulo no coterminal",
+          "explicacion": "Para pasar a un coterminal hay que agregar vueltas completas de 360°. Ejemplo: a partir de 50°, sumar 180° da 230°, que pertenece al cuadrante III y no comparte lado final con 50°; sumar 360° da 410°, que sí es coterminal con 50°."
+        }
+      ]
+    }
+  ]
+}

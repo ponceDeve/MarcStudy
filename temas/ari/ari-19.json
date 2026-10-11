@@ -1,0 +1,129 @@
+{
+  "curso": "Aritmética",
+  "tema": "Cambios de base",
+  "glosario": {
+    "cambio de base": "Transformación de un número a otra base",
+    "divisiones sucesivas": "Divisiones repetidas por la base para obtener cifras",
+    "resto": "Residuo de una división entera",
+    "agrupamiento": "Bloques de cifras que equivalen a una cifra",
+    "base intermedia": "Base decimal usada como puente entre dos bases",
+    "verificación": "Comprobación del resultado convirtiendo de vuelta"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de cambio",
+      "puntos": [
+        {
+          "texto": "Un «cambio de base» expresa el mismo número con cifras de otra base.",
+          "explicacion": "Cambiar de base consiste en representar una misma cantidad con un sistema de cifras distinto. El número que se transforma conserva su valor, pero su escritura cambia por completo. Este proceso permite trabajar con la representación más conveniente para cada tarea, como usar base dos en sistemas electrónicos o base diez en la vida cotidiana, y se apoya en el valor posicional estudiado en el tema 18."
+        },
+        {
+          "texto": "El valor del número no cambia, solo cambia su representación.",
+          "explicacion": "Un número escrito en base dos y el mismo número escrito en base diez representan la misma cantidad, aunque tengan cifras diferentes. Esta distinción evita un error habitual, que consiste en pensar que al cambiar de base cambia el número. Lo que se transforma es el símbolo, y por eso el resultado de un cambio puede comprobarse convirtiendo de vuelta a la base original."
+        }
+      ]
+    },
+    {
+      "titulo": "De base b a diez",
+      "puntos": [
+        {
+          "texto": "Para pasar de base $b$ a diez se suman cifras multiplicadas por potencias de $b$.",
+          "explicacion": "Cada cifra se multiplica por la potencia de la base que corresponde a su posición, y los productos se suman. Por ejemplo, $(1011)_2$ vale uno por ocho, cero por cuatro, uno por dos y uno por uno, es decir, once. Este procedimiento funciona para cualquier base y es la aplicación directa del valor posicional."
+        },
+        {
+          "texto": "El método de Horner evita calcular potencias grandes al convertir a diez.",
+          "explicacion": "William George Horner, matemático británico nacido en 1786 y fallecido en 1837, describió en 1819 un procedimiento que consiste en empezar con la primera cifra, multiplicarla por la base y sumar la siguiente cifra, y repetir ese paso hasta el final. Con $(1011)_2$ se obtiene uno, luego dos, luego cinco y finalmente once. El resultado es el mismo que con potencias, pero requiere menos operaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "De diez a base b",
+      "puntos": [
+        {
+          "texto": "Para pasar de diez a base $b$ se usan divisiones sucesivas entre $b$.",
+          "explicacion": "Se divide el número entre la base, se anota el resto y se repite el proceso con el cociente hasta que el cociente sea menor que la base. Cada división entera separa la unidad de la siguiente potencia de la base, y los restos son las cifras buscadas. Este método se basa en el algoritmo de la división entera, que se estudia en los temas 22 y 23."
+        },
+        {
+          "texto": "Cada resto está entre cero y la base menos uno.",
+          "explicacion": "Al dividir entre b, el resto siempre es menor que b y no negativo, por lo que es una cifra válida en esa base. Esta propiedad garantiza que el método produzca solo cifras permitidas por el sistema. Si un resto apareciera igual o mayor que la base, la división no estaría completa."
+        },
+        {
+          "texto": "Las cifras se leen en orden inverso al de obtención de los restos.",
+          "explicacion": "El primer resto obtenido corresponde a la cifra de menor posición, es decir, la de más a la derecha. Por eso la cifra final se escribe en primer lugar, y la primera en el último. Escribir los restos en el orden en que aparecen produce un número incorrecto, por lo que esta regla debe seguirse siempre."
+        },
+        {
+          "texto": "El último cociente, menor que la base, da la cifra de mayor posición.",
+          "explicacion": "El proceso termina cuando el cociente ya es menor que la base. Ese último cociente no puede dividirse más sin producir cero, y por eso se escribe como la cifra más a la izquierda del número. Así se completa la conversión, con todas las cifras de los restos y la última cifra del cociente."
+        },
+        {
+          "texto": "Ejemplo: 13 en base dos es $(1101)_2$.",
+          "explicacion": "Al dividir 13 entre 2 se obtiene cociente 6 y resto 1. Luego 6 entre 2 da cociente 3 y resto 0, después 3 entre 2 da cociente 1 y resto 1, y por último 1 entre 2 da cociente 0 y resto 1. Leyendo los restos de abajo hacia arriba se obtiene 1101, que vale ocho más cuatro más uno, es decir, trece."
+        },
+        {
+          "texto": "Ejemplo: 45 en base ocho es $(55)_8$.",
+          "explicacion": "Al dividir 45 entre 8 se obtiene cociente 5 y resto 5. Como 5 es menor que 8, el proceso termina, y la cifra final es el cociente 5. Leyendo de abajo hacia arriba se obtiene 55, que en base ocho vale cinco por ocho más cinco, es decir, cuarenta y cinco."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambios por agrupamiento",
+      "puntos": [
+        {
+          "texto": "Entre bases potencias una de otra, las cifras se convierten por bloques.",
+          "explicacion": "Cuando una base es potencia de la otra, como dos y ocho, o dos y dieciséis, cada bloque de cifras de la base menor equivale a una cifra de la base mayor. Esta correspondencia permite convertir sin pasar por diez, lo que resulta muy práctico con números binarios largos. El método requiere conocer las equivalencias de cada bloque."
+        },
+        {
+          "texto": "Cada cifra octal equivale a tres cifras binarias.",
+          "explicacion": "Como ocho es dos elevado a tres, cada cifra octal se representa con tres cifras binarias, desde el 000 para el cero hasta el 111 para el siete. Para pasar de binario a octal se agrupan las cifras de tres en tres desde la derecha. Por ejemplo, $(1011001)_2$ se agrupa como 1, 011 y 001, y da $(131)_8$."
+        },
+        {
+          "texto": "Cada cifra hexadecimal equivale a cuatro cifras binarias.",
+          "explicacion": "Como dieciséis es dos elevado a cuatro, cada cifra hexadecimal corresponde a un bloque de cuatro cifras binarias. Por ejemplo, $(10110101)_2$ se agrupa como 1011 y 0101, que equivalen a B y 5, por lo que el resultado es $(B5)_{16}$. Este método es la forma habitual de compactar números binarios largos."
+        },
+        {
+          "texto": "El «agrupamiento» se hace desde la derecha, completando con ceros.",
+          "explicacion": "Si el número de cifras binarias no es múltiplo del tamaño del bloque, se añaden ceros a la izquierda hasta completar el último grupo. Agrupar desde la izquierda puede dar bloques incompletos y resultados erróneos. Los ceros añadidos no cambian el valor del número, porque las posiciones más altas no aportan nada."
+        }
+      ]
+    },
+    {
+      "titulo": "Bases no relacionadas",
+      "puntos": [
+        {
+          "texto": "Entre bases no relacionadas por potencias, la «base intermedia» es diez.",
+          "explicacion": "Cuando no existe una relación de potencias entre dos bases, el cambio se realiza en dos etapas: primero se convierte el número a base diez y luego se pasa de diez a la base de destino. La base diez actúa como puente entre ambos sistemas. Este procedimiento es general y funciona para cualquier par de bases."
+        },
+        {
+          "texto": "Por ejemplo, $(13)_5$ se pasa a diez y luego a base siete.",
+          "explicacion": "El número $(13)_5$ vale uno por cinco más tres, es decir, ocho. Al dividir ocho entre siete se obtiene cociente uno y resto uno, por lo que el resultado en base siete es $(11)_7$. Así el número ocho se expresa con dos cifras iguales a uno en base siete."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación y alcance",
+      "puntos": [
+        {
+          "texto": "La «verificación» consiste en convertir el resultado de vuelta a la base original.",
+          "explicacion": "Después de un cambio de base conviene comprobar el resultado realizando la conversión inversa. Si se obtiene el número original, el cambio es correcto. Este control es breve y evita errores en las divisiones o en las equivalencias de bloques."
+        },
+        {
+          "texto": "Los cambios de base de números con parte decimal se estudian en el tema 43.",
+          "explicacion": "Los métodos de este tema se aplican a números enteros. Cuando el número tiene parte decimal o fraccionaria, el procedimiento de multiplicar por la base y tomar partes enteras es distinto y se desarrolla en el tema 43, sobre la representación de un número decimal en otra base. Aquí no se trabaja con esos casos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Leer los restos en el orden en que se obtienen es un error frecuente.",
+          "explicacion": "Al dividir sucesivamente, el primer resto ocupa la posición de las unidades y el último las de mayor orden. Si se escriben en el orden de obtención, el número resultante es distinto del correcto, aunque se hayan calculado bien las divisiones. Conviene escribir los restos en una columna y leerla de abajo hacia arriba."
+        },
+        {
+          "texto": "Confundir la base de origen con la base de destino altera el resultado.",
+          "explicacion": "Al convertir, es fácil dividir entre la base equivocada o interpretar un número con la base de destino en lugar de la de origen. Esto produce resultados que parecen válidos pero que representan otra cantidad. Antes de operar conviene escribir explícitamente ambas bases con sus subíndices."
+        }
+      ]
+    }
+  ]
+}

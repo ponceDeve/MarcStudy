@@ -1,0 +1,150 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Gráficas",
+  "glosario": {
+    "tabla de valores": "Lista de arcos y sus valores.",
+    "gráfica": "Dibujo de los puntos de una función.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "senoide": "Gráfica de la función seno.",
+    "cosenoide": "Gráfica de la función coseno.",
+    "asíntota": "Recta a la que la curva se acerca.",
+    "rama": "Trozo de curva entre dos asíntotas.",
+    "máximo": "Mayor valor que toma la curva.",
+    "mínimo": "Menor valor que toma la curva.",
+    "reflexión": "Imagen simétrica respecto a una recta.",
+    "traslación": "Desplazamiento de la gráfica sin deformarla.",
+    "valor absoluto": "Distancia de un número al cero.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "secante": "Inverso multiplicativo del coseno.",
+    "cosecante": "Inverso multiplicativo del seno."
+  },
+  "theory": [
+    {
+      "titulo": "Construcción de gráficas",
+      "puntos": [
+        {
+          "texto": "Se arma una «tabla de valores» con arcos y sus imágenes",
+          "explicacion": "Se eligen arcos $x$ en radianes (rad), se calculan los valores de la función y se ubican los puntos en el plano. Ejemplo para $y = \\text{sen}\\,x$, donde el seno (sen) es la altura: $x = 0, \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6}, \\pi$ da $y = 0, \\frac{1}{2}, 1, \\frac{1}{2}, 0$."
+        },
+        {
+          "texto": "Los puntos se unen con una curva suave, no con segmentos",
+          "explicacion": "Las funciones trigonométricas no tienen esquinas, salvo cuando se les aplica valor absoluto. Ejemplo: entre $(0, 0)$ y $\\left(\\frac{\\pi}{2}, 1\\right)$ la curva sube redondeada, sin quiebres."
+        },
+        {
+          "texto": "Referencias del eje horizontal: $\\frac{\\pi}{2} \\approx 1{,}57$, $\\pi \\approx 3{,}14$",
+          "explicacion": "Con $\\pi \\approx 3{,}14$ se ubican las marcas: $\\frac{3\\pi}{2} \\approx 4{,}71$ y $2\\pi \\approx 6{,}28$. Ejemplo: el máximo del seno en $x = \\frac{\\pi}{2}$ se dibuja un poco después del 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica del seno",
+      "puntos": [
+        {
+          "texto": "$y = \\text{sen}\\,x$ corta el eje horizontal en $x = k\\pi$",
+          "explicacion": "Son los arcos con extremo sobre el eje horizontal. Ejemplo: en $[0, 2\\pi]$ los cortes son $0$, $\\pi$ y $2\\pi$."
+        },
+        {
+          "texto": "$y = \\text{sen}\\,x$ corta el eje vertical en $(0, 0)$",
+          "explicacion": "Se evalúa en $x = 0$. Ejemplo: $\\text{sen}\\,0 = 0$, así que pasa por el origen."
+        },
+        {
+          "texto": "$y = \\text{sen}\\,x$ tiene máximo $1$ en $x = \\frac{\\pi}{2} + 2k\\pi$",
+          "explicacion": "El extremo está en el punto más alto de la circunferencia. Ejemplo: $x = \\frac{\\pi}{2}$ y $x = \\frac{5\\pi}{2}$ dan $y = 1$."
+        },
+        {
+          "texto": "$y = \\text{sen}\\,x$ tiene mínimo $-1$ en $x = \\frac{3\\pi}{2} + 2k\\pi$",
+          "explicacion": "El extremo está en el punto más bajo de la circunferencia. Ejemplo: $x = \\frac{3\\pi}{2}$ y $x = -\\frac{\\pi}{2}$ dan $y = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica del coseno",
+      "puntos": [
+        {
+          "texto": "$y = \\cos x$ corta el eje horizontal en $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "Son los arcos con extremo sobre el eje vertical, donde el coseno (cos) vale 0. Ejemplo: en $[0, 2\\pi]$ los cortes son $\\frac{\\pi}{2}$ y $\\frac{3\\pi}{2}$."
+        },
+        {
+          "texto": "$y = \\cos x$ corta el eje vertical en $(0, 1)$",
+          "explicacion": "Se evalúa en $x = 0$. Ejemplo: $\\cos 0 = 1$, así que la curva parte de su máximo."
+        },
+        {
+          "texto": "$y = \\cos x$ tiene máximo $1$ en $x = 2k\\pi$ y mínimo $-1$ en $x = \\pi + 2k\\pi$",
+          "explicacion": "El extremo está en $A(1,0)$ o en $A'(-1,0)$. Ejemplo: $\\cos 0 = 1$ y $\\cos\\pi = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica de la tangente",
+      "puntos": [
+        {
+          "texto": "$y = \\tan x$ tiene asíntotas en $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "Son los arcos donde la tangente (tan) no existe, y la curva se aleja sin límite al acercarse. Ejemplo: en $x = \\frac{\\pi}{2}$ y $x = -\\frac{\\pi}{2}$ hay asíntotas."
+        },
+        {
+          "texto": "$y = \\tan x$ pasa por $(0, 0)$, $\\left(\\frac{\\pi}{4}, 1\\right)$ y $\\left(-\\frac{\\pi}{4}, -1\\right)$",
+          "explicacion": "Son los tres puntos que guían la rama central. Ejemplo: $\\tan\\frac{\\pi}{4} = 1$ y $\\tan\\left(-\\frac{\\pi}{4}\\right) = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reflexión",
+      "puntos": [
+        {
+          "texto": "$y = -f(x)$ refleja la gráfica en el eje horizontal",
+          "explicacion": "Cada altura cambia de signo. Ejemplo: $y = -\\text{sen}\\,x$ vale $-1$ en $x = \\frac{\\pi}{2}$ y vale $1$ en $x = \\frac{3\\pi}{2}$, al revés que $y = \\text{sen}\\,x$."
+        },
+        {
+          "texto": "$y = |f(x)|$ refleja hacia arriba las partes negativas",
+          "explicacion": "Las alturas negativas pasan a ser positivas y la curva queda en $y \\ge 0$. Ejemplo: $y = |\\text{sen}\\,x|$ vale $1$ tanto en $x = \\frac{\\pi}{2}$ como en $x = \\frac{3\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Traslación vertical",
+      "puntos": [
+        {
+          "texto": "$y = f(x) + k$ sube la gráfica $k$ unidades",
+          "explicacion": "Se suma $k$ a cada altura, y con $k$ negativo la gráfica baja. Ejemplo: $y = \\text{sen}\\,x + 2$ vale $3$ en $x = \\frac{\\pi}{2}$ y $1$ en $x = \\frac{3\\pi}{2}$."
+        },
+        {
+          "texto": "La recta $y = k$ es el centro de $y = \\text{sen}\\,x + k$",
+          "explicacion": "La curva oscila por encima y por debajo de esa recta, por la misma distancia. Ejemplo: $y = \\text{sen}\\,x + 2$ oscila entre 1 y 3 alrededor de $y = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Traslación horizontal",
+      "puntos": [
+        {
+          "texto": "$y = f(x - c)$ desplaza la gráfica $c$ unidades a la derecha",
+          "explicacion": "Cada punto se mueve $c$ hacia la derecha, y con $c$ negativo, hacia la izquierda. Ejemplo: el máximo de $y = \\text{sen}\\left(x - \\frac{\\pi}{3}\\right)$ ocurre en $x = \\frac{\\pi}{2} + \\frac{\\pi}{3} = \\frac{5\\pi}{6}$, pues $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "$y = \\text{sen}\\left(x + \\frac{\\pi}{2}\\right)$ coincide con $y = \\cos x$",
+          "explicacion": "Desplazar el seno $\\frac{\\pi}{2}$ a la izquierda produce la cosenoide. Ejemplo: en $x = 0$, $\\text{sen}\\,\\frac{\\pi}{2} = 1 = \\cos 0$."
+        },
+        {
+          "texto": "$y = \\text{sen}\\left(x - \\frac{\\pi}{2}\\right)$ coincide con $y = -\\cos x$",
+          "explicacion": "Desplazar el seno $\\frac{\\pi}{2}$ a la derecha produce la cosenoide reflejada. Ejemplo: en $x = 0$, $\\text{sen}\\left(-\\frac{\\pi}{2}\\right) = -1 = -\\cos 0$."
+        },
+        {
+          "texto": "$y = \\cos\\left(x - \\frac{\\pi}{2}\\right)$ coincide con $y = \\text{sen}\\,x$",
+          "explicacion": "Desplazar el coseno $\\frac{\\pi}{2}$ a la derecha produce la senoide. Ejemplo: en $x = \\frac{\\pi}{2}$, $\\cos 0 = 1 = \\text{sen}\\,\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráficas de otras razones",
+      "puntos": [
+        {
+          "texto": "$y = \\sec x$ y $y = \\csc x$ no tienen puntos con $|y| < 1$",
+          "explicacion": "La secante (sec) y la cosecante (csc) nunca quedan entre $-1$ y $1$. Ejemplo: la curva de $y = \\sec x$ toca la recta $y = 1$ en $x = 0$, pero nunca pasa por debajo."
+        }
+      ]
+    }
+  ]
+}

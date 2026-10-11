@@ -1,0 +1,313 @@
+{
+  "curso": "Álgebra",
+  "tema": "Inecuaciones cuadráticas",
+  "glosario": {
+    "Inecuación cuadrática": "Desigualdad con incógnita elevada al cuadrado.",
+    "Conjunto Solución": "Valores de la incógnita que cumplen la desigualdad.",
+    "Coeficiente principal": "Número que multiplica a la incógnita al cuadrado.",
+    "Desigualdad estricta": "Usa menor que o mayor que, sin igualdad.",
+    "Desigualdad no estricta": "Usa menor o igual, o mayor o igual.",
+    "Punto crítico": "Raíz que divide la recta en intervalos.",
+    "Discriminante": "Expresión que indica cuántas raíces reales hay.",
+    "Raíz doble": "Raíz que aparece repetida en el trinomio.",
+    "Trinomio": "Expresión algebraica de tres términos.",
+    "Trinomio cuadrado perfecto": "Trinomio igual al cuadrado de un binomio.",
+    "Unión de intervalos": "Conjunto que reúne los valores de ambos intervalos.",
+    "Conjunto vacío": "Conjunto sin ningún elemento.",
+    "Números reales": "Todos los números de la recta numérica."
+  },
+  "theory": [
+    {
+      "titulo": "Inecuación cuadrática",
+      "puntos": [
+        {
+          "texto": "«Inecuación cuadrática» = desigualdad con incógnita de segundo grado",
+          "explicacion": "Se diferencia de una ecuación cuadrática en que no pide valores exactos, sino todo un conjunto de valores que hacen cierta la desigualdad. Por eso su respuesta suele ser un intervalo o la unión de dos intervalos."
+        },
+        {
+          "texto": "Forma general: «$ax^2+bx+c>0$» con a ≠ 0",
+          "explicacion": "Aquí $x$ es la incógnita, $a$ es el coeficiente principal, $b$ el coeficiente de $x$ y $c$ el término independiente. Se aplica a cualquier desigualdad de segundo grado una vez que un lado queda igual a cero. Si $a=0$ la expresión baja a primer grado, por eso se exige $a\\neq 0$."
+        },
+        {
+          "texto": "Identificar coeficientes en $x^2-5x+6>0$",
+          "explicacion": "Se compara con la forma general $ax^2+bx+c$. El término con $x^2$ no muestra número, luego $a=1$. El término con $x$ es $-5x$, luego $b=-5$. El término sin $x$ es $+6$, luego $c=6$. Resultado: $a=1$, $b=-5$, $c=6$."
+        },
+        {
+          "texto": "Desigualdad «estricta» ⇒ las raíces no son solución",
+          "explicacion": "Con $<$ o $>$ el trinomio nunca vale cero en la solución, así que los valores donde vale cero quedan fuera y los intervalos son abiertos."
+        },
+        {
+          "texto": "Desigualdad «no estricta» ⇒ las raíces sí son solución",
+          "explicacion": "Con $\\leq$ o $\\geq$ se admite que el trinomio valga cero, así que las raíces se incluyen y los extremos de los intervalos son cerrados."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunto solución",
+      "puntos": [
+        {
+          "texto": "«Conjunto Solución (CS)» = valores de la incógnita que cumplen la desigualdad",
+          "explicacion": "Se escribe con intervalos y uniones de intervalos. Puede ser un intervalo, dos intervalos separados, un solo número, el conjunto vacío o todos los números reales, según el signo y las raíces del trinomio."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos críticos",
+      "puntos": [
+        {
+          "texto": "«Puntos críticos» = raíces de $ax^2+bx+c=0$",
+          "explicacion": "Son los valores donde el trinomio vale cero. Dividen la recta real en intervalos, y dentro de cada intervalo el signo del trinomio no cambia, porque para cambiar de signo tendría que pasar por cero."
+        },
+        {
+          "texto": "Raíces distintas ⇒ el trinomio cambia de signo en cada raíz",
+          "explicacion": "Al cruzar una raíz simple, el trinomio pasa de positivo a negativo o al revés. Por eso los signos de los intervalos se alternan."
+        },
+        {
+          "texto": "Raíz doble ⇒ el trinomio no cambia de signo",
+          "explicacion": "Al ser una raíz repetida, el trinomio toca el cero y vuelve a tener el mismo signo. Es el caso del cuadrado perfecto, que nunca es negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Discriminante",
+      "puntos": [
+        {
+          "texto": "«Discriminante»: $\\Delta=b^2-4ac$",
+          "explicacion": "La letra griega delta representa el discriminante, calculado con los coeficientes $a$, $b$ y $c$. Indica cuántas raíces reales tiene el trinomio y se aplica antes de resolver para saber qué caso se tiene. Proviene de la expresión dentro de la raíz en la fórmula general de la ecuación cuadrática."
+        },
+        {
+          "texto": "Calcular el discriminante de $x^2-5x+6$",
+          "explicacion": "Datos: $a=1$, $b=-5$, $c=6$. Sustitución: $\\Delta=(-5)^2-4\\cdot 1\\cdot 6$. Operaciones: $(-5)^2=25$ y $4\\cdot 1\\cdot 6=24$. Resultado: $\\Delta=25-24=1$. Como es positivo, hay dos raíces reales distintas."
+        },
+        {
+          "texto": "$\\Delta>0$ ⇒ dos raíces reales distintas",
+          "explicacion": "El trinomio se anula en dos puntos y cambia de signo en cada uno. La solución depende de si se pide el signo de los extremos o el del centro."
+        },
+        {
+          "texto": "$\\Delta=0$ ⇒ una raíz doble",
+          "explicacion": "El trinomio es un cuadrado perfecto y toca el eje en un solo punto. Su signo es el mismo a ambos lados de la raíz."
+        },
+        {
+          "texto": "$\\Delta<0$ ⇒ sin raíces reales",
+          "explicacion": "El trinomio nunca vale cero, así que su signo es siempre el mismo: el del coeficiente principal. La solución será todos los reales o ningún valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de puntos críticos",
+      "puntos": [
+        {
+          "texto": "Paso 1: dejar un lado de la desigualdad igual a cero",
+          "explicacion": "Se pasan todos los términos a un solo lado. Así se compara el trinomio con cero y se puede estudiar su signo."
+        },
+        {
+          "texto": "Paso 2: hacer positivo el coeficiente principal",
+          "explicacion": "Si $a$ es negativo se multiplica toda la desigualdad por $-1$ y se invierte el sentido. Con $a$ positivo los signos de los intervalos son siempre más, menos, más."
+        },
+        {
+          "texto": "Paso 3: hallar las raíces del trinomio",
+          "explicacion": "Se factoriza o se usa la fórmula general. Las raíces obtenidas son los puntos críticos que se ubicarán en la recta."
+        },
+        {
+          "texto": "Paso 4: ubicar las raíces en la recta y marcar los intervalos",
+          "explicacion": "Con dos raíces distintas quedan tres intervalos. Se marca cada raíz con punto vacío si la desigualdad es estricta y con punto lleno si no lo es."
+        },
+        {
+          "texto": "Paso 5: colocar signos alternados empezando por más a la derecha",
+          "explicacion": "Con $a>0$, el trinomio es positivo para valores muy grandes. Al ir hacia la izquierda, el signo cambia en cada raíz: más, menos, más."
+        },
+        {
+          "texto": "Paso 6: elegir los intervalos del signo pedido",
+          "explicacion": "Si se pide $>0$ se toman los intervalos con signo más, y si se pide $<0$ el de signo menos. Los extremos se incluyen solo cuando la desigualdad lo permite."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso mayor que cero",
+      "puntos": [
+        {
+          "texto": "«$(x-r_1)(x-r_2)>0$» con $r_1<r_2$ ⇒ $x<r_1$ o $x>r_2$",
+          "explicacion": "Aquí $r_1$ y $r_2$ son las dos raíces, con $r_1$ la menor. Se aplica cuando $\\Delta>0$ y $a>0$. La solución queda fuera de las raíces, porque los extremos de la recta tienen signo más."
+        },
+        {
+          "texto": "Resolver $x^2-5x+6>0$",
+          "explicacion": "Factorización: buscamos dos números que sumen $-5$ y multipliquen $6$; son $-2$ y $-3$, luego $(x-2)(x-3)>0$. Raíces: $x=2$ y $x=3$. Signos de izquierda a derecha: más, menos, más. Se piden los intervalos de signo más, sin incluir las raíces. Resultado: $CS=(-\\infty,2)\\cup(3,+\\infty)$. Verificación: con $x=0$ vale $6>0$, y con $x=2{,}5$ vale $-0{,}25$, que no cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso menor que cero",
+      "puntos": [
+        {
+          "texto": "«$(x-r_1)(x-r_2)<0$» con $r_1<r_2$ ⇒ $r_1<x<r_2$",
+          "explicacion": "Se aplica cuando $\\Delta>0$ y $a>0$. La solución queda entre las raíces, el único intervalo donde el trinomio es negativo."
+        },
+        {
+          "texto": "Resolver $x^2-x-6<0$",
+          "explicacion": "Factorización: dos números que sumen $-1$ y multipliquen $-6$ son $-3$ y $2$, luego $(x-3)(x+2)<0$. Raíces: $x=-2$ y $x=3$. Signos: más, menos, más. Se pide el intervalo de signo menos. Resultado: $CS=(-2,3)$. Verificación: con $x=0$ vale $-6<0$ y con $x=4$ vale $6$, que no cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Desigualdad no estricta",
+      "puntos": [
+        {
+          "texto": "«$\\leq$ o $\\geq$» ⇒ se incluyen las raíces en el CS",
+          "explicacion": "Se resuelve igual que el caso estricto, pero los intervalos resultantes son cerrados en las raíces. Se aplica cuando el trinomio puede valer cero."
+        },
+        {
+          "texto": "Resolver $x^2-x-6\\leq 0$",
+          "explicacion": "Se parte de las raíces $x=-2$ y $x=3$ halladas antes. El signo menos está entre las raíces y, como ahora el cero sí cuenta, se incluyen ambas. Resultado: $CS=[-2,3]$. Verificación: con $x=3$ vale $9-3-6=0$, que cumple $\\leq 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficiente negativo",
+      "puntos": [
+        {
+          "texto": "Multiplicar por $-1$ ⇒ invertir el sentido de la desigualdad",
+          "explicacion": "Multiplicar por un número negativo invierte el orden de los números. Por eso $<$ pasa a $>$ y $\\leq$ pasa a $\\geq$. Se hace para que $a$ quede positivo y poder usar las reglas habituales."
+        },
+        {
+          "texto": "Resolver $-x^2+4x-3\\geq 0$",
+          "explicacion": "Como $a=-1$, se multiplica por $-1$ y se invierte: $x^2-4x+3\\leq 0$. Factorización: $(x-1)(x-3)\\leq 0$. Raíces: $x=1$ y $x=3$. El signo menos está entre ellas y se incluyen por ser no estricta. Resultado: $CS=[1,3]$. Verificación: con $x=2$, $-4+8-3=1\\geq 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficiente distinto de uno",
+      "puntos": [
+        {
+          "texto": "Con $a\\neq 1$ ⇒ se usa la fórmula general para hallar las raíces",
+          "explicacion": "Cuando el trinomio no se factoriza fácilmente, las raíces se obtienen con $x=\\dfrac{-b\\pm\\sqrt{\\Delta}}{2a}$. La resolución de la ecuación asociada es el tema de las ecuaciones de segundo grado."
+        },
+        {
+          "texto": "Resolver $2x^2-3x-2<0$",
+          "explicacion": "Datos: $a=2$, $b=-3$, $c=-2$. Discriminante: $\\Delta=9+16=25$. Raíces: $x=\\dfrac{3\\pm 5}{4}$, es decir $x=2$ y $x=-\\dfrac{1}{2}$. Como $a>0$, los signos son más, menos, más y se pide el de signo menos. Resultado: $CS=\\left(-\\dfrac{1}{2},2\\right)$. Verificación: con $x=0$ vale $-2<0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz doble",
+      "puntos": [
+        {
+          "texto": "«$(x-r)^2>0$» ⇒ todos los reales excepto $r$",
+          "explicacion": "El cuadrado de un número real nunca es negativo y vale cero solo en $x=r$. Por eso, con desigualdad estricta, se excluye únicamente la raíz."
+        },
+        {
+          "texto": "Resolver $x^2-6x+9>0$",
+          "explicacion": "Se reconoce un trinomio cuadrado perfecto: $x^2-6x+9=(x-3)^2$. Entonces la inecuación es $(x-3)^2>0$. El cuadrado es positivo para todo valor, salvo cuando $x-3=0$, o sea $x=3$. Resultado: $CS=\\mathbb{R}-\\{3\\}$. Verificación: con $x=3$ vale $0$, que no cumple $>0$."
+        },
+        {
+          "texto": "«$(x-r)^2\\geq 0$» ⇒ todos los números reales",
+          "explicacion": "Un cuadrado siempre es mayor o igual que cero, de modo que la desigualdad se cumple para cualquier valor de $x$."
+        },
+        {
+          "texto": "«$(x-r)^2<0$» ⇒ conjunto vacío",
+          "explicacion": "Ningún cuadrado real es negativo, así que no existe un valor de $x$ que cumpla la desigualdad."
+        },
+        {
+          "texto": "«$(x-r)^2\\leq 0$» ⇒ solo $x=r$",
+          "explicacion": "El cuadrado puede valer cero pero no menos; entonces la única solución es el valor que lo anula."
+        },
+        {
+          "texto": "Resolver $x^2-4x+4\\leq 0$",
+          "explicacion": "Se reconoce el cuadrado perfecto $x^2-4x+4=(x-2)^2$, luego $(x-2)^2\\leq 0$. Solo puede cumplirse con igualdad: $x-2=0$, o sea $x=2$. Resultado: $CS=\\{2\\}$. Verificación: con $x=2$ vale $0$ y con $x=3$ vale $1$, que no cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Sin raíces reales",
+      "puntos": [
+        {
+          "texto": "$\\Delta<0$ y $a>0$ ⇒ el trinomio es siempre positivo",
+          "explicacion": "Sin raíces el trinomio no cambia de signo, y para $x$ grande es positivo, así que lo es en todos los reales. Se llama trinomio positivo definido."
+        },
+        {
+          "texto": "Resolver $x^2+2x+5>0$",
+          "explicacion": "Datos: $a=1$, $b=2$, $c=5$. Discriminante: $\\Delta=4-20=-16$, que es negativo. Como $a>0$, el trinomio es siempre positivo. Resultado: $CS=\\mathbb{R}$. Verificación: con $x=-1$ vale $1-2+5=4>0$."
+        },
+        {
+          "texto": "$\\Delta<0$ y $a>0$ con $<0$ ⇒ conjunto vacío",
+          "explicacion": "Si el trinomio siempre es positivo, nunca puede ser negativo, de modo que no existe ninguna solución."
+        },
+        {
+          "texto": "Resolver $x^2+x+1<0$",
+          "explicacion": "Datos: $a=1$, $b=1$, $c=1$. Discriminante: $\\Delta=1-4=-3$, negativo. El trinomio es siempre positivo, así que no puede ser menor que cero. Resultado: $CS=\\varnothing$. Verificación: con $x=0$ vale $1$, que no cumple."
+        },
+        {
+          "texto": "$\\Delta<0$ y $a<0$ ⇒ el trinomio es siempre negativo",
+          "explicacion": "Es el caso opuesto: el signo constante es el del coeficiente principal, ahora negativo. Se llama trinomio negativo definido."
+        },
+        {
+          "texto": "Resolver $-x^2+2x-5<0$",
+          "explicacion": "Datos: $a=-1$, $b=2$, $c=-5$. Discriminante: $\\Delta=4-20=-16$, negativo. Como $a<0$, el trinomio es siempre negativo. Resultado: $CS=\\mathbb{R}$. Verificación: con $x=0$ vale $-5<0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomio con cuadrado",
+      "puntos": [
+        {
+          "texto": "«$x^2<c$» con $c>0$ ⇒ $-\\sqrt{c}<x<\\sqrt{c}$",
+          "explicacion": "Se obtiene factorizando $x^2-c=(x-\\sqrt{c})(x+\\sqrt{c})<0$, con raíces $-\\sqrt{c}$ y $\\sqrt{c}$, y tomando el intervalo entre ellas."
+        },
+        {
+          "texto": "Resolver $x^2<9$",
+          "explicacion": "Aquí $c=9$ y $\\sqrt{9}=3$. Por la regla, $-3<x<3$. Resultado: $CS=(-3,3)$. Verificación: con $x=2$, $4<9$ cumple; con $x=4$, $16<9$ no cumple."
+        },
+        {
+          "texto": "«$x^2>c$» con $c>0$ ⇒ $x<-\\sqrt{c}$ o $x>\\sqrt{c}$",
+          "explicacion": "Es el caso opuesto: factorizando, se toman los intervalos que quedan fuera de las raíces $-\\sqrt{c}$ y $\\sqrt{c}$."
+        },
+        {
+          "texto": "Resolver $x^2\\geq 16$",
+          "explicacion": "Aquí $c=16$ y $\\sqrt{16}=4$. Por la regla, $x\\leq -4$ o $x\\geq 4$, con extremos incluidos por ser no estricta. Resultado: $CS=(-\\infty,-4]\\cup[4,+\\infty)$. Verificación: con $x=-5$, $25\\geq 16$ cumple; con $x=0$ no cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicación en áreas",
+      "puntos": [
+        {
+          "texto": "Terreno rectangular de lados $x$ y $x-4$ con área mayor que 21",
+          "explicacion": "Planteamiento: $x(x-4)>21$, es decir $x^2-4x-21>0$. Factorización: $(x-7)(x+3)>0$. Raíces: $x=7$ y $x=-3$. La solución matemática es $x<-3$ o $x>7$. Como $x$ es una longitud y $x-4$ también, debe cumplirse $x>4$, así que se descarta $x<-3$. Conclusión: el lado $x$ debe medir más de 7 metros. Verificación: con $x=8$ el área es $8\\cdot 4=32>21$, y con $x=7$ es exactamente $21$, que no cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Dividir entre $x$ ⇒ se pierde parte de la solución",
+          "explicacion": "Como $x$ puede ser negativo o cero, dividir por $x$ altera el sentido o elimina una solución. Se debe pasar todo a un lado y factorizar, no simplificar."
+        },
+        {
+          "texto": "Resolver $x^2>3x$ sin dividir entre $x$",
+          "explicacion": "Se pasa todo a un lado: $x^2-3x>0$. Factorización: $x(x-3)>0$. Raíces: $x=0$ y $x=3$. Signos: más, menos, más. Se piden los de signo más. Resultado: $CS=(-\\infty,0)\\cup(3,+\\infty)$. Dividir entre $x$ habría dado solo $x>3$ y perdería los negativos. Verificación: con $x=-1$, $1>-3$ cumple."
+        },
+        {
+          "texto": "No invertir el signo al multiplicar por $-1$",
+          "explicacion": "Es el error más común con coeficiente negativo. Por ejemplo, $-x^2<-4$ se convierte en $x^2>4$, no en $x^2<4$."
+        },
+        {
+          "texto": "Confundir los intervalos de afuera con el de adentro",
+          "explicacion": "Con $a>0$ y raíces distintas, mayor que cero se resuelve afuera y menor que cero se resuelve adentro. Un buen control es probar un valor de cada intervalo."
+        },
+        {
+          "texto": "Escribir un solo intervalo cuando la solución son dos",
+          "explicacion": "Con $>0$ y raíces distintas la solución es la unión de dos intervalos separados, nunca un intervalo único que pase por las raíces."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexiones",
+      "puntos": [
+        {
+          "texto": "Conexión: se apoya en ecuaciones de segundo grado e intervalos",
+          "explicacion": "Las raíces se obtienen resolviendo la ecuación asociada, y el resultado se escribe con la notación de intervalos. Ambos conceptos tienen su propio tema."
+        }
+      ]
+    }
+  ]
+}

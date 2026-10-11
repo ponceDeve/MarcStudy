@@ -1,0 +1,332 @@
+{
+  "curso": "Álgebra",
+  "tema": "Método de Cramer",
+  "glosario": {
+    "sistema lineal": "Conjunto de ecuaciones de primer grado.",
+    "ecuación lineal": "Ecuación de primer grado.",
+    "incógnita": "Variable cuyo valor se desea hallar.",
+    "coeficiente": "Número que multiplica a una variable.",
+    "término independiente": "Número sin incógnita en la ecuación.",
+    "sistema cuadrado": "Sistema con igual número de ecuaciones e incógnitas.",
+    "forma estándar": "Incógnitas ordenadas a un lado, números al otro.",
+    "matriz": "Arreglo rectangular de números.",
+    "fila": "Línea horizontal de una matriz.",
+    "columna": "Línea vertical de una matriz.",
+    "matriz cuadrada": "Matriz con igual número de filas y columnas.",
+    "orden": "Número de filas de una matriz cuadrada.",
+    "determinante": "Número asociado a una matriz cuadrada.",
+    "matriz de coeficientes": "Matriz formada por los coeficientes del sistema.",
+    "diagonal principal": "Elementos desde arriba izquierda hasta abajo derecha.",
+    "diagonal secundaria": "Elementos desde arriba derecha hasta abajo izquierda.",
+    "regla de Sarrus": "Cálculo del determinante de orden tres.",
+    "menor": "Determinante tras eliminar una fila y columna.",
+    "cofactor": "Menor multiplicado por su signo.",
+    "matriz transpuesta": "Matriz con filas y columnas intercambiadas.",
+    "matriz triangular": "Matriz con ceros bajo la diagonal.",
+    "regla de Cramer": "Solución mediante cocientes de determinantes.",
+    "determinante principal": "Determinante de la matriz de coeficientes.",
+    "sistema compatible": "Sistema que tiene al menos una solución.",
+    "sistema determinado": "Sistema con una única solución.",
+    "sistema indeterminado": "Sistema con infinitas soluciones.",
+    "sistema incompatible": "Sistema sin solución.",
+    "sistema homogéneo": "Sistema con términos independientes nulos.",
+    "solución trivial": "Solución con todas las incógnitas en cero.",
+    "proporcional": "Que guarda la misma razón.",
+    "pendiente": "Inclinación de una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Sistemas lineales cuadrados",
+      "puntos": [
+        {
+          "texto": "«Sistema lineal» ⇒ ecuaciones de primer grado con las mismas incógnitas",
+          "explicacion": "Una ecuación lineal es una igualdad en la que cada incógnita aparece elevada solo a la primera potencia y sin multiplicarse con otra incógnita, por ejemplo $2x+3y=8$. Un sistema lineal es un conjunto de varias ecuaciones lineales que se consideran a la vez, y su solución es el conjunto de valores de las incógnitas que verifican todas las ecuaciones simultáneamente. Ejemplo: el sistema $2x+3y=8$ y $x-y=-1$ tiene como solución $x=1$ y $y=2$. Verificación: $2(1)+3(2)=8$ y $1-2=-1$, de modo que ambos valores satisfacen las dos ecuaciones."
+        },
+        {
+          "texto": "«Sistema cuadrado» ⇒ número de ecuaciones = número de incógnitas",
+          "explicacion": "Un sistema cuadrado tiene tantas ecuaciones como incógnitas: $2\\times 2$ si son dos ecuaciones con dos incógnitas y $3\\times 3$ si son tres con tres. Es la condición necesaria para poder aplicar el método de Cramer, porque este método usa determinantes y estos solo se definen para matrices cuadradas. Ejemplo: $x+y=3$ y $x-y=1$ es un sistema $2\\times 2$ y puede resolverse con Cramer; en cambio $x+y+z=6$ y $x-y=0$ tiene dos ecuaciones y tres incógnitas, no es cuadrado y el método no se aplica. Verificación: se cuentan ecuaciones e incógnitas, y deben coincidir."
+        },
+        {
+          "texto": "Forma estándar ⇒ incógnitas a la izquierda y términos independientes a la derecha",
+          "explicacion": "Para usar determinantes el sistema debe estar ordenado: en cada ecuación las incógnitas aparecen en el mismo orden en el miembro izquierdo y el término independiente, es decir, el número sin incógnita, queda en el miembro derecho. Si una incógnita falta en una ecuación, se completa con coeficiente $0$. El sistema general de dos incógnitas es $a_1x+b_1y=c_1$ y $a_2x+b_2y=c_2$; el de tres incógnitas es $a_1x+b_1y+c_1z=d_1$, $a_2x+b_2y+c_2z=d_2$ y $a_3x+b_3y+c_3z=d_3$. Ejemplo: $2x=3y+1$ junto con $y=x-1$ se ordena como $2x-3y=1$ y $x-y=1$. Verificación: las dos ecuaciones ordenadas equivalen a las originales al pasar términos de un miembro a otro."
+        },
+        {
+          "texto": "Coeficientes ⇒ números que multiplican a las incógnitas",
+          "explicacion": "En la forma estándar los coeficientes son los números que acompañan a cada incógnita, con su signo, y se escriben con el mismo orden en todas las ecuaciones. Un coeficiente cero indica que la incógnita no aparece. Ejemplo: en $x+y=3$ y $y+z=5$ y $x+z=4$, ordenado como $x+y+0z=3$, $0x+y+z=5$ y $x+0y+z=4$, los coeficientes de $x$ son $1,0,1$, los de $y$ son $1,1,0$ y los de $z$ son $0,1,1$. Verificación: cada columna de coeficientes tiene tres números, uno por ecuación."
+        },
+        {
+          "texto": "Términos independientes ⇒ números del miembro derecho",
+          "explicacion": "Los términos independientes son los números que quedan al otro lado del signo igual, sin incógnitas. En el método de Cramer sustituyen a una columna de coeficientes para formar los determinantes de las incógnitas. Ejemplo: en $2x+3y=8$ y $x-y=-1$ los términos independientes son $8$ y $-1$. Verificación: son los números que no están multiplicados por $x$ ni por $y$."
+        }
+      ]
+    },
+    {
+      "titulo": "Matrices y determinantes",
+      "puntos": [
+        {
+          "texto": "«Matriz» ⇒ arreglo rectangular de números en filas y columnas",
+          "explicacion": "Una matriz es una tabla rectangular de números ordenados en filas (horizontales) y columnas (verticales). Cada número es un elemento y se identifica por la fila y la columna en que está. Una matriz con $m$ filas y $n$ columnas tiene tamaño $m\\times n$. Ejemplo: la tabla con filas $(2,\\ 3)$ y $(1,\\ -1)$ es una matriz de $2$ filas y $2$ columnas. Verificación: se cuentan las filas y columnas para obtener el tamaño."
+        },
+        {
+          "texto": "«Matriz cuadrada» ⇒ igual número de filas y columnas",
+          "explicacion": "Una matriz es cuadrada cuando tiene el mismo número $n$ de filas y de columnas; se dice entonces que su orden es $n$. Solo las matrices cuadradas tienen determinante. Ejemplos: la matriz de filas $(2,3)$ y $(1,-1)$ es cuadrada de orden $2$; una matriz de filas $(1,2,3)$ y $(4,5,6)$ tiene $2$ filas y $3$ columnas y no es cuadrada. Verificación: orden $2$ en el primer caso y tamaño $2\\times 3$ en el segundo."
+        },
+        {
+          "texto": "«Matriz de coeficientes» ⇒ coeficientes ordenados del sistema",
+          "explicacion": "La matriz de coeficientes de un sistema cuadrado reúne los coeficientes de las incógnitas, con una fila por ecuación y una columna por incógnita. Su determinante es el determinante principal del sistema. Ejemplo: para $2x+3y=8$ y $x-y=-1$ la matriz de coeficientes tiene primera fila $(2,\\ 3)$ y segunda fila $(1,\\ -1)$. Verificación: la primera columna contiene los coeficientes de $x$ y la segunda los de $y$."
+        },
+        {
+          "texto": "«Determinante» ⇒ número asociado a una matriz cuadrada",
+          "explicacion": "El determinante es un único número real que se calcula a partir de los elementos de una matriz cuadrada, mediante reglas definidas para cada orden. Se escribe encerrando la matriz entre barras verticales, o como $\\det(A)$ donde $\\det$ abrevia «determinante» y $A$ es la matriz. Ejemplo: el determinante de la matriz de filas $(2,3)$ y $(1,-1)$ se escribe $\\begin{vmatrix} 2 & 3 \\\\ 1 & -1 \\end{vmatrix}$ y vale $2(-1)-3(1)=-5$. Verificación: el resultado es un solo número, $-5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinante de orden 2",
+      "puntos": [
+        {
+          "texto": "$\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}=ad-bc$ ⇒ diagonal principal menos secundaria",
+          "explicacion": "El determinante de una matriz de orden $2$ es el producto de los elementos de la diagonal principal ($a$ y $d$, de arriba a la izquierda hacia abajo a la derecha) menos el producto de los elementos de la diagonal secundaria ($b$ y $c$). Ejemplo: $\\begin{vmatrix} 3 & -2 \\\\ 4 & 5 \\end{vmatrix}=3\\times 5-(-2)\\times 4=15+8=23$. Otro: $\\begin{vmatrix} 2 & 3 \\\\ 1 & -1 \\end{vmatrix}=2(-1)-3(1)=-2-3=-5$. Verificación: se repite el cálculo identificando bien los signos de cada producto."
+        }
+      ]
+    },
+    {
+      "titulo": "Determinante de orden 3",
+      "puntos": [
+        {
+          "texto": "Regla de Sarrus ⇒ seis productos con signo",
+          "explicacion": "La regla de Sarrus, atribuida al matemático francés Pierre Frédéric Sarrus, calcula el determinante de orden $3$ como la suma de tres productos positivos menos la suma de tres productos negativos. Para una matriz con elementos $a_{ij}$ (fila $i$, columna $j$): $\\Delta=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}$. Ejemplo con $\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}$: positivos $1(-1)(-1)=1$, $1\\cdot 1\\cdot 1=1$, $1\\cdot 2\\cdot 2=4$, suma $6$; negativos $1(-1)(1)=-1$, $1\\cdot 1\\cdot 2=2$, $1\\cdot 2(-1)=-2$, suma $-1$. Resultado: $6-(-1)=7$. Verificación: el desarrollo por cofactores de la card siguiente también da $7$."
+        },
+        {
+          "texto": "«Menor» $M_{ij}$ ⇒ determinante al quitar fila $i$ y columna $j$",
+          "explicacion": "El menor de un elemento de una matriz de orden $3$ es el determinante de orden $2$ que queda al eliminar la fila y la columna donde está ese elemento. Se denota $M_{ij}$ para el elemento de la fila $i$ y la columna $j$. Ejemplo con $\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}$: $M_{11}=\\begin{vmatrix} -1 & 1 \\\\ 2 & -1 \\end{vmatrix}=1-2=-1$, $M_{12}=\\begin{vmatrix} 2 & 1 \\\\ 1 & -1 \\end{vmatrix}=-2-1=-3$ y $M_{13}=\\begin{vmatrix} 2 & -1 \\\\ 1 & 2 \\end{vmatrix}=4+1=5$. Verificación: cada menor se obtiene tachando fila y columna del elemento."
+        },
+        {
+          "texto": "«Cofactor» $C_{ij}=(-1)^{i+j}M_{ij}$ ⇒ menor con signo",
+          "explicacion": "El cofactor de un elemento es su menor multiplicado por $(-1)^{i+j}$, que vale $+1$ si $i+j$ es par y $-1$ si es impar. El patrón de signos para orden $3$ es $+\\ -\\ +$ en la primera fila, $-\\ +\\ -$ en la segunda y $+\\ -\\ +$ en la tercera. Ejemplo con los menores anteriores: $C_{11}=(+1)(-1)=-1$, $C_{12}=(-1)(-3)=3$ y $C_{13}=(+1)(5)=5$. Verificación: $C_{12}$ lleva signo negativo porque $1+2=3$ es impar."
+        },
+        {
+          "texto": "Desarrollo por cofactores ⇒ $\\Delta=a_{11}C_{11}+a_{12}C_{12}+a_{13}C_{13}$",
+          "explicacion": "El determinante de orden $3$ es la suma de cada elemento de una fila (o columna) multiplicado por su cofactor; el resultado no depende de la fila o columna elegida. Ejemplo con la primera fila de $\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}$: $\\Delta=1(-1)+1(3)+1(5)=-1+3+5=7$. Verificación: coincide con el resultado de la regla de Sarrus."
+        },
+        {
+          "texto": "Desarrollar por la fila con más ceros ⇒ menos cálculos",
+          "explicacion": "Como el desarrollo puede hacerse por cualquier fila o columna, conviene elegir la que tenga más ceros, pues cada cero anula un término. Ejemplo: en $\\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix}$ se desarrolla por la segunda fila $(0,1,1)$: $\\Delta=0\\cdot C_{21}+1\\cdot C_{22}+1\\cdot C_{23}$, con $C_{22}=+\\begin{vmatrix} 1 & 0 \\\\ 1 & 1 \\end{vmatrix}=1$ y $C_{23}=-\\begin{vmatrix} 1 & 1 \\\\ 1 & 0 \\end{vmatrix}=-(0-1)=1$, de donde $\\Delta=1+1=2$. Verificación: por la regla de Sarrus los productos positivos son $1\\cdot 1\\cdot 1=1$, $1\\cdot 1\\cdot 1=1$ y $0\\cdot 0\\cdot 0=0$, con suma $2$, y los negativos son $0\\cdot 1\\cdot 1=0$, $1\\cdot 1\\cdot 0=0$ y $1\\cdot 0\\cdot 1=0$, con suma $0$; el determinante es $2-0=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del determinante",
+      "puntos": [
+        {
+          "texto": "Intercambiar dos filas ⇒ el determinante cambia de signo",
+          "explicacion": "Si se intercambian dos filas (o dos columnas) de una matriz cuadrada, el determinante se multiplica por $-1$. Ejemplo en orden $2$: $\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}=4-6=-2$ y al intercambiar las filas $\\begin{vmatrix} 3 & 4 \\\\ 1 & 2 \\end{vmatrix}=6-4=2$. Verificación: $2=-(-2)$."
+        },
+        {
+          "texto": "Dos filas iguales ⇒ determinante $=0$",
+          "explicacion": "Si una matriz tiene dos filas (o dos columnas) iguales, su determinante vale cero. Razón: intercambiar esas filas no cambia la matriz pero cambia el signo del determinante, de modo que $\\Delta=-\\Delta$ y por tanto $\\Delta=0$. Ejemplo: $\\begin{vmatrix} 2 & 5 \\\\ 2 & 5 \\end{vmatrix}=10-10=0$. Verificación: el cálculo directo confirma el cero."
+        },
+        {
+          "texto": "Fila de ceros ⇒ determinante $=0$",
+          "explicacion": "Si todos los elementos de una fila (o columna) son cero, el determinante es cero, porque cada término del desarrollo contiene un factor nulo. Ejemplo: $\\begin{vmatrix} 0 & 0 \\\\ 3 & 4 \\end{vmatrix}=0\\times 4-0\\times 3=0$. Verificación: el desarrollo por esa fila da $0\\cdot C_{11}+0\\cdot C_{12}=0$."
+        },
+        {
+          "texto": "Filas proporcionales ⇒ determinante $=0$",
+          "explicacion": "Si una fila es un múltiplo de otra (o una columna de otra), el determinante vale cero. Ejemplo: $\\begin{vmatrix} 1 & 2 \\\\ 3 & 6 \\end{vmatrix}=1\\times 6-2\\times 3=6-6=0$, pues la segunda fila es $3$ veces la primera. Verificación: sacando el factor $3$ de la segunda fila queda $3\\times\\begin{vmatrix} 1 & 2 \\\\ 1 & 2 \\end{vmatrix}=3\\times 0=0$, con dos filas iguales."
+        },
+        {
+          "texto": "Multiplicar una fila por $k$ ⇒ el determinante se multiplica por $k$",
+          "explicacion": "Si todos los elementos de una fila (o columna) se multiplican por un número $k$, el determinante queda multiplicado por $k$. Equivalentemente, un factor común de una fila puede sacarse del determinante. Ejemplo: $\\begin{vmatrix} 3 & 6 \\\\ 3 & 4 \\end{vmatrix}=12-18=-6$ y $3\\times\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}=3\\times(-2)=-6$. Verificación: la primera fila $(3,6)$ es $3$ veces $(1,2)$."
+        },
+        {
+          "texto": "Sumar a una fila un múltiplo de otra ⇒ no cambia el determinante",
+          "explicacion": "Reemplazar una fila por ella misma más un múltiplo de otra fila no altera el valor del determinante. Se usa para generar ceros y simplificar el cálculo. Ejemplo: en $\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}=-2$ se sustituye la segunda fila por (segunda fila) $-3\\times$ (primera fila), es decir $(3-3,\\ 4-6)=(0,-2)$, y $\\begin{vmatrix} 1 & 2 \\\\ 0 & -2 \\end{vmatrix}=-2-0=-2$. Verificación: ambos determinantes valen $-2$."
+        },
+        {
+          "texto": "Transponer la matriz ⇒ el determinante no cambia",
+          "explicacion": "La transpuesta de una matriz se obtiene escribiendo sus filas como columnas, y tiene el mismo determinante que la original. Por eso toda propiedad enunciada para filas vale también para columnas. Ejemplo: $\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}=-2$ y su transpuesta $\\begin{vmatrix} 1 & 3 \\\\ 2 & 4 \\end{vmatrix}=4-6=-2$. Verificación: ambos valores son iguales."
+        },
+        {
+          "texto": "Matriz triangular ⇒ determinante = producto de la diagonal",
+          "explicacion": "Una matriz triangular es la que tiene ceros por debajo (o por encima) de la diagonal principal. Su determinante es el producto de los elementos de la diagonal principal. Ejemplo: $\\begin{vmatrix} 2 & 5 & 1 \\\\ 0 & 3 & 4 \\\\ 0 & 0 & 6 \\end{vmatrix}$ tiene diagonal $2,3,6$ y determinante $2\\times 3\\times 6=36$. Verificación: desarrollando por la primera columna, $2\\times\\begin{vmatrix} 3 & 4 \\\\ 0 & 6 \\end{vmatrix}=2\\times(18-0)=36$."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de Cramer",
+      "puntos": [
+        {
+          "texto": "«Regla de Cramer» ⇒ cada incógnita es un cociente de determinantes",
+          "explicacion": "La regla de Cramer resuelve un sistema lineal cuadrado expresando cada incógnita como el cociente de dos determinantes: el numerador es el determinante que resulta de sustituir, en la matriz de coeficientes, la columna de esa incógnita por la columna de términos independientes, y el denominador es el determinante de la matriz de coeficientes. Es válida cuando este último es distinto de cero. Ejemplo: para $x+y=3$ y $x-y=1$, $x=\\frac{\\begin{vmatrix} 3 & 1 \\\\ 1 & -1 \\end{vmatrix}}{\\begin{vmatrix} 1 & 1 \\\\ 1 & -1 \\end{vmatrix}}=\\frac{-4}{-2}=2$. Verificación: con $y=1$, $2+1=3$ y $2-1=1$."
+        },
+        {
+          "texto": "Nombre alternativo: «método de Cramer»",
+          "explicacion": "La regla de Cramer también se llama método de Cramer o método de los determinantes, porque la solución se obtiene calculando determinantes. Los tres nombres designan el mismo procedimiento. Ejemplo: resolver $x+y=3$ y $x-y=1$ con determinantes es aplicar el método de Cramer. Verificación: el procedimiento no requiere eliminar ni sustituir incógnitas."
+        },
+        {
+          "texto": "Origen del nombre ⇒ matemático suizo Gabriel Cramer",
+          "explicacion": "La regla lleva el nombre del matemático suizo Gabriel Cramer, quien la publicó en su obra sobre curvas algebraicas. El nombre se refiere al método de solución y no a una propiedad del sistema: resolver «por la regla de Cramer» significa calcular cada incógnita como cociente de determinantes. Ejemplo: en $x+y=3$ y $x-y=1$, $x=\\frac{-4}{-2}=2$ y $y=\\frac{\\begin{vmatrix} 1 & 3 \\\\ 1 & 1 \\end{vmatrix}}{-2}=\\frac{1-3}{-2}=1$. Verificación: $2+1=3$ y $2-1=1$."
+        },
+        {
+          "texto": "$\\Delta$ ⇒ determinante de la matriz de coeficientes",
+          "explicacion": "El determinante del sistema, también llamado determinante principal, se denota $\\Delta$ y es el determinante de la matriz de coeficientes. Es el denominador común de todas las incógnitas. Ejemplo: para $2x+3y=8$ y $x-y=-1$, $\\Delta=\\begin{vmatrix} 2 & 3 \\\\ 1 & -1 \\end{vmatrix}=2(-1)-3(1)=-5$. Verificación: se calcula con la regla de orden $2$, diagonal principal menos diagonal secundaria."
+        },
+        {
+          "texto": "$\\Delta_x$ ⇒ cambiar la columna de $x$ por los términos independientes",
+          "explicacion": "El determinante $\\Delta_x$ se forma con la matriz de coeficientes sustituyendo la columna de los coeficientes de $x$ por la columna de los términos independientes; las demás columnas no cambian. Igual se definen $\\Delta_y$ (cambiando la columna de $y$) y $\\Delta_z$ (cambiando la de $z$). Ejemplo: en $2x+3y=8$ y $x-y=-1$, $\\Delta_x=\\begin{vmatrix} 8 & 3 \\\\ -1 & -1 \\end{vmatrix}=8(-1)-3(-1)=-8+3=-5$ y $\\Delta_y=\\begin{vmatrix} 2 & 8 \\\\ 1 & -1 \\end{vmatrix}=2(-1)-8(1)=-10$. Verificación: en $\\Delta_x$ la primera columna es $(8,-1)$ y la segunda sigue siendo $(3,-1)$."
+        },
+        {
+          "texto": "Cramer ✓ sistema cuadrado con $\\Delta\\ne 0$",
+          "explicacion": "La regla de Cramer se aplica únicamente si el sistema es cuadrado y su determinante principal es distinto de cero. Si el sistema no es cuadrado no hay determinante principal, y si $\\Delta=0$ las fracciones $\\frac{\\Delta_x}{\\Delta}$ carecen de sentido por dividir entre cero; en ese caso se analizan los determinantes para clasificar el sistema o se usa otro método. Ejemplo: en $x+2y=3$ y $2x+4y=7$, $\\Delta=1\\times 4-2\\times 2=0$, por lo que la regla no se puede aplicar. Verificación: la división $\\frac{\\Delta_x}{0}$ no está definida."
+        },
+        {
+          "texto": "Deducción para dos incógnitas ⇒ $\\Delta\\times x=\\Delta_x$",
+          "explicacion": "Dado $a_1x+b_1y=c_1$ y $a_2x+b_2y=c_2$, se multiplica la primera ecuación por $b_2$ y la segunda por $b_1$ y se restan: $(a_1b_2-a_2b_1)x=c_1b_2-c_2b_1$, es decir $\\Delta\\times x=\\Delta_x$ con $\\Delta=a_1b_2-a_2b_1$ y $\\Delta_x=c_1b_2-c_2b_1$. Si $\\Delta\\ne 0$ se despeja $x=\\frac{\\Delta_x}{\\Delta}$. Del mismo modo, multiplicando por $a_2$ y por $a_1$ y restando, $\\Delta\\times y=\\Delta_y$ con $\\Delta_y=a_1c_2-a_2c_1$. Ejemplo con $2x+3y=8$ y $x-y=-1$: $\\Delta=-5$ y $\\Delta_x=8(-1)-(-1)(3)=-5$, luego $-5x=-5$ y $x=1$. Verificación: coincide con la solución $x=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cramer con dos variables",
+      "puntos": [
+        {
+          "texto": "$x=\\frac{\\Delta_x}{\\Delta}$ y $y=\\frac{\\Delta_y}{\\Delta}$ ⇒ sistema $2\\times 2$",
+          "explicacion": "Para el sistema $a_1x+b_1y=c_1$ y $a_2x+b_2y=c_2$ con $\\Delta=\\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}\\ne 0$, la solución única es $x=\\frac{\\Delta_x}{\\Delta}$ y $y=\\frac{\\Delta_y}{\\Delta}$, donde $\\Delta_x=\\begin{vmatrix} c_1 & b_1 \\\\ c_2 & b_2 \\end{vmatrix}$ y $\\Delta_y=\\begin{vmatrix} a_1 & c_1 \\\\ a_2 & c_2 \\end{vmatrix}$. Ejemplo: $2x+3y=8$ y $x-y=-1$ dan $\\Delta=2(-1)-3(1)=-5$, $\\Delta_x=8(-1)-3(-1)=-5$ y $\\Delta_y=2(-1)-8(1)=-10$, de donde $x=\\frac{-5}{-5}=1$ y $y=\\frac{-10}{-5}=2$. Verificación: $2(1)+3(2)=8$ y $1-2=-1$."
+        },
+        {
+          "texto": "Solución fraccionaria ⇒ el cociente puede no ser entero",
+          "explicacion": "Las soluciones son cocientes de determinantes y pueden ser fracciones; se simplifican al final. Ejemplo: $3x+2y=7$ y $5x-4y=3$ dan $\\Delta=3(-4)-2(5)=-22$, $\\Delta_x=7(-4)-2(3)=-34$ y $\\Delta_y=3(3)-7(5)=-26$, de donde $x=\\frac{-34}{-22}=\\frac{17}{11}$ y $y=\\frac{-26}{-22}=\\frac{13}{11}$. Verificación: $3\\times\\frac{17}{11}+2\\times\\frac{13}{11}=\\frac{77}{11}=7$ y $5\\times\\frac{17}{11}-4\\times\\frac{13}{11}=\\frac{33}{11}=3$."
+        },
+        {
+          "texto": "Ordenar antes de aplicar ⇒ pasar términos al miembro correcto",
+          "explicacion": "Si el sistema no está en forma estándar, primero se ordena. Ejemplo: $2x=3y+1$ y $y=x-1$ se escriben $2x-3y=1$ y $x-y=1$. Entonces $\\Delta=2(-1)-(-3)(1)=-2+3=1$, $\\Delta_x=1(-1)-(-3)(1)=2$ y $\\Delta_y=2(1)-1(1)=1$, de donde $x=2$ y $y=1$. Verificación: $2(2)-3(1)=1$ y $2-1=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cramer con tres variables",
+      "puntos": [
+        {
+          "texto": "$x=\\frac{\\Delta_x}{\\Delta}$, $y=\\frac{\\Delta_y}{\\Delta}$, $z=\\frac{\\Delta_z}{\\Delta}$ ⇒ sistema $3\\times 3$",
+          "explicacion": "Para un sistema de tres ecuaciones con tres incógnitas y $\\Delta\\ne 0$, cada incógnita es el cociente de su determinante y $\\Delta$. Ejemplo: $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$. $\\Delta=\\begin{vmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}=7$ (por Sarrus o cofactores). $\\Delta_x=\\begin{vmatrix} 6 & 1 & 1 \\\\ 3 & -1 & 1 \\\\ 2 & 2 & -1 \\end{vmatrix}=6(1-2)-1(-3-2)+1(6+2)=-6+5+8=7$. $\\Delta_y=\\begin{vmatrix} 1 & 6 & 1 \\\\ 2 & 3 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}=1(-3-2)-6(-2-1)+1(4-3)=-5+18+1=14$. $\\Delta_z=\\begin{vmatrix} 1 & 1 & 6 \\\\ 2 & -1 & 3 \\\\ 1 & 2 & 2 \\end{vmatrix}=1(-2-6)-1(4-3)+6(4+1)=-8-1+30=21$. Así $x=\\frac{7}{7}=1$, $y=\\frac{14}{7}=2$ y $z=\\frac{21}{7}=3$. Verificación: $1+2+3=6$, $2-2+3=3$ y $1+4-3=2$."
+        },
+        {
+          "texto": "Coeficiente $0$ ⇒ completar con ceros antes de calcular",
+          "explicacion": "Cuando una incógnita no aparece en una ecuación se escribe con coeficiente cero. Ejemplo: $x+y=3$, $y+z=5$, $x+z=4$ se ordenan como $x+y+0z=3$, $0x+y+z=5$, $x+0y+z=4$. Entonces $\\Delta=\\begin{vmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\\\ 1 & 0 & 1 \\end{vmatrix}=2$, $\\Delta_x=\\begin{vmatrix} 3 & 1 & 0 \\\\ 5 & 1 & 1 \\\\ 4 & 0 & 1 \\end{vmatrix}=3(1)-1(5-4)+0=2$, $\\Delta_y=\\begin{vmatrix} 1 & 3 & 0 \\\\ 0 & 5 & 1 \\\\ 1 & 4 & 1 \\end{vmatrix}=1(5-4)-3(0-1)+0=4$ y $\\Delta_z=\\begin{vmatrix} 1 & 1 & 3 \\\\ 0 & 1 & 5 \\\\ 1 & 0 & 4 \\end{vmatrix}=1(4-0)-1(0-5)+3(0-1)=6$. Resultado: $x=1$, $y=2$, $z=3$. Verificación: $1+2=3$, $2+3=5$ y $1+3=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación del sistema",
+      "puntos": [
+        {
+          "texto": "«Sistema compatible determinado» ⇒ una única solución",
+          "explicacion": "Un sistema es compatible cuando tiene al menos una solución y es determinado cuando esa solución es única. Con Cramer se reconoce porque $\\Delta\\ne 0$. Ejemplo: $2x+3y=8$ y $x-y=-1$ tiene $\\Delta=-5\\ne 0$ y su única solución es $(1,2)$. Verificación: $\\Delta\\ne 0$ asegura que $x=\\frac{\\Delta_x}{\\Delta}$ y $y=\\frac{\\Delta_y}{\\Delta}$ están definidos."
+        },
+        {
+          "texto": "«Sistema incompatible» ⇒ no tiene solución",
+          "explicacion": "Un sistema es incompatible cuando ninguna combinación de valores verifica todas las ecuaciones. Ejemplo: $x+2y=3$ y $2x+4y=7$ es incompatible: si $x+2y=3$, entonces $2x+4y=6\\ne 7$. Verificación: las dos ecuaciones se contradicen."
+        },
+        {
+          "texto": "«Sistema compatible indeterminado» ⇒ infinitas soluciones",
+          "explicacion": "Un sistema es indeterminado cuando tiene más de una solución y, de hecho, infinitas. Ejemplo: $x+2y=3$ y $2x+4y=6$ son la misma condición porque la segunda es el doble de la primera, y todo par $(3-2t,\\ t)$ es solución. Verificación: con $t=1$, $(1,1)$ da $1+2=3$ y $2+4=6$."
+        },
+        {
+          "texto": "Dos incógnitas ⇒ rectas que se cortan, paralelas o coincidentes",
+          "explicacion": "Cada ecuación $ax+by=c$ con $a$ y $b$ no ambos cero representa una recta en el plano. Si $\\Delta\\ne 0$ las rectas tienen pendientes distintas y se cortan en un solo punto (compatible determinado); si $\\Delta=0$ tienen la misma dirección y son paralelas distintas (incompatible) o la misma recta (indeterminado). Ejemplo: $x+2y=3$ y $2x+4y=7$ son paralelas distintas y $x+2y=3$ y $2x+4y=6$ coinciden. Verificación: ambos pares tienen $\\Delta=1\\times 4-2\\times 2=0$."
+        },
+        {
+          "texto": "$\\frac{a_1}{a_2}\\ne\\frac{b_1}{b_2}$ ⇒ $\\Delta\\ne 0$",
+          "explicacion": "Si $a_2$ y $b_2$ no son cero, $\\Delta=a_1b_2-a_2b_1=0$ equivale a $\\frac{a_1}{a_2}=\\frac{b_1}{b_2}$ (se divide entre $a_2b_2$). Por tanto, si las razones de coeficientes son distintas, $\\Delta\\ne 0$ y hay solución única. Ejemplo: $2x+3y=5$ y $4x+6y=7$ tienen $\\frac{2}{4}=\\frac{3}{6}$, y $\\Delta=12-12=0$. En cambio $2x+3y=5$ y $4x+5y=7$ tienen $\\frac{2}{4}\\ne\\frac{3}{5}$ y $\\Delta=10-12=-2\\ne 0$. Verificación: coincide el criterio de razones con el cálculo del determinante."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso del determinante cero",
+      "puntos": [
+        {
+          "texto": "$\\Delta=0$ y algún $\\Delta_i\\ne 0$ ⇒ incompatible",
+          "explicacion": "De la deducción $\\Delta\\times x=\\Delta_x$ y $\\Delta\\times y=\\Delta_y$ válida para cualquier solución, si $\\Delta=0$ se debería tener $\\Delta_x=0$ y $\\Delta_y=0$. Si alguno de ellos es distinto de cero, no puede existir solución y el sistema es incompatible. Ejemplo: $x+2y=3$ y $2x+4y=7$ dan $\\Delta=0$ y $\\Delta_x=\\begin{vmatrix} 3 & 2 \\\\ 7 & 4 \\end{vmatrix}=12-14=-2\\ne 0$. Verificación: ya se vio que $x+2y=3$ obliga a $2x+4y=6\\ne 7$."
+        },
+        {
+          "texto": "$\\Delta=\\Delta_x=\\Delta_y=0$ ⇒ indeterminado en dos incógnitas",
+          "explicacion": "En un sistema $2\\times 2$ con algún coeficiente distinto de cero, si $\\Delta=\\Delta_x=\\Delta_y=0$ las dos ecuaciones son proporcionales y representan la misma condición, de modo que hay infinitas soluciones. Ejemplo: $x+2y=3$ y $2x+4y=6$ dan $\\Delta=0$, $\\Delta_x=\\begin{vmatrix} 3 & 2 \\\\ 6 & 4 \\end{vmatrix}=12-12=0$ y $\\Delta_y=\\begin{vmatrix} 1 & 3 \\\\ 2 & 6 \\end{vmatrix}=6-6=0$, con soluciones $x=3-2y$. Verificación: $(1,1)$ y $(3,0)$ verifican ambas ecuaciones."
+        },
+        {
+          "texto": "$\\Delta=0$ en tres incógnitas ⇒ analizar con otro método",
+          "explicacion": "En un sistema $3\\times 3$, si $\\Delta=0$ y algún $\\Delta_i\\ne 0$ el sistema es incompatible, pero si $\\Delta=\\Delta_x=\\Delta_y=\\Delta_z=0$ no se puede decidir con estos determinantes, pues el sistema puede ser indeterminado o incompatible. Ejemplos: $x+y+z=1$, $2x+2y+2z=2$, $3x+3y+3z=3$ tiene todos los determinantes nulos y es indeterminado; $x+y+z=1$, $x+y+z=2$, $x+y+z=3$ también los tiene nulos y es incompatible. Verificación: en el segundo, una misma suma $x+y+z$ no puede valer a la vez $1$, $2$ y $3$."
+        },
+        {
+          "texto": "$\\Delta=0$ y $\\Delta_x\\ne 0$ en tres incógnitas ⇒ incompatible",
+          "explicacion": "Ejemplo: $x+y+z=1$, $2x+2y+2z=3$, $x-y+z=0$. La segunda fila es el doble de la primera, así que $\\Delta=0$. Además $\\Delta_x=\\begin{vmatrix} 1 & 1 & 1 \\\\ 3 & 2 & 2 \\\\ 0 & -1 & 1 \\end{vmatrix}=1(2+2)-1(3-0)+1(-3-0)=4-3-3=-2\\ne 0$. Por tanto el sistema es incompatible. Verificación: la primera ecuación da $x+y+z=1$ y la segunda exige $2(x+y+z)=3$, es decir $x+y+z=1.5$, contradicción."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas homogéneos",
+      "puntos": [
+        {
+          "texto": "«Sistema homogéneo» ⇒ todos los términos independientes = 0",
+          "explicacion": "Un sistema es homogéneo cuando todos sus términos independientes son cero. Siempre es compatible, porque todas las incógnitas iguales a cero lo verifican; esa solución se llama solución trivial. Ejemplo: $2x-y=0$ y $x+y=0$ es homogéneo y $(0,0)$ es solución. Verificación: $2(0)-0=0$ y $0+0=0$."
+        },
+        {
+          "texto": "Homogéneo con $\\Delta\\ne 0$ ⇒ solo la solución trivial",
+          "explicacion": "En un sistema homogéneo cuadrado con $\\Delta\\ne 0$, los determinantes $\\Delta_x$, $\\Delta_y$ y $\\Delta_z$ tienen una columna de ceros y valen cero, por lo que $x=y=z=0$. Ejemplos: $2x-y=0$ y $x+y=0$ tienen $\\Delta=2(1)-(-1)(1)=3\\ne 0$ y $\\Delta_x=\\Delta_y=0$, luego $(0,0)$ es la única solución. El sistema $x+y+z=0$, $2x-y+z=0$, $x+2y-z=0$ tiene $\\Delta=7\\ne 0$ y solo admite $(0,0,0)$. Verificación: $7x=\\Delta_x=0$ implica $x=0$."
+        },
+        {
+          "texto": "Homogéneo con $\\Delta=0$ ⇒ infinitas soluciones",
+          "explicacion": "Si el sistema homogéneo cuadrado tiene $\\Delta=0$, además de la solución trivial existen infinitas soluciones no triviales. Ejemplos: $x+2y=0$ y $3x+6y=0$ tienen $\\Delta=6-6=0$ y soluciones $x=-2y$, como $(-2,1)$: $-2+2=0$ y $-6+6=0$. El sistema $x+y+z=0$, $2x+2y+2z=0$, $x-y+z=0$ tiene $\\Delta=0$ y soluciones $(t,0,-t)$: de la primera ecuación $x+z=-y$ y de la tercera $x+z=y$, luego $y=-y$, es decir $y=0$, y entonces $z=-x$. Verificación: $(1,0,-1)$ da $1+0-1=0$, $2+0-2=0$ y $1-0-1=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento paso a paso",
+      "puntos": [
+        {
+          "texto": "Paso 1: comprobar que es cuadrado y ordenar",
+          "explicacion": "Se cuenta el número de ecuaciones y de incógnitas; deben ser iguales. Luego se escribe cada ecuación con las incógnitas en el mismo orden a la izquierda, los términos independientes a la derecha y cero donde falte una incógnita. Ejemplo: $2x+3y=8$ y $x-y=-1$ tiene $2$ ecuaciones y $2$ incógnitas y ya está en forma estándar. Verificación: coeficientes $2,3$ y $1,-1$, términos independientes $8$ y $-1$."
+        },
+        {
+          "texto": "Paso 2: calcular $\\Delta$",
+          "explicacion": "Se forma la matriz de coeficientes y se calcula su determinante con la regla de orden $2$ o la de orden $3$. Ejemplo: $\\Delta=\\begin{vmatrix} 2 & 3 \\\\ 1 & -1 \\end{vmatrix}=2(-1)-3(1)=-2-3=-5$. Verificación: se repasa el signo de cada producto."
+        },
+        {
+          "texto": "Paso 3: decidir con el valor de $\\Delta$",
+          "explicacion": "Si $\\Delta\\ne 0$ se continúa con los determinantes de las incógnitas. Si $\\Delta=0$ no se divide: se calculan $\\Delta_x$, $\\Delta_y$ (y $\\Delta_z$) para clasificar el sistema. Ejemplo: $\\Delta=-5\\ne 0$ permite continuar. Verificación: el denominador $-5$ no es cero."
+        },
+        {
+          "texto": "Paso 4: calcular $\\Delta_x$, $\\Delta_y$ y $\\Delta_z$",
+          "explicacion": "Para cada incógnita se sustituye su columna por la de términos independientes y se calcula el determinante. Ejemplo: $\\Delta_x=\\begin{vmatrix} 8 & 3 \\\\ -1 & -1 \\end{vmatrix}=-8+3=-5$ y $\\Delta_y=\\begin{vmatrix} 2 & 8 \\\\ 1 & -1 \\end{vmatrix}=-2-8=-10$. Verificación: solo cambia una columna en cada determinante."
+        },
+        {
+          "texto": "Paso 5: dividir cada determinante entre $\\Delta$",
+          "explicacion": "Se obtiene cada incógnita con $x=\\frac{\\Delta_x}{\\Delta}$, $y=\\frac{\\Delta_y}{\\Delta}$ y, si hay, $z=\\frac{\\Delta_z}{\\Delta}$. Ejemplo: $x=\\frac{-5}{-5}=1$ y $y=\\frac{-10}{-5}=2$. Verificación: dos negativos dan cociente positivo."
+        },
+        {
+          "texto": "Paso 6: verificar en todas las ecuaciones",
+          "explicacion": "Se sustituyen los valores en cada ecuación original y se comprueba que todas se cumplen. Ejemplo: en $2x+3y=8$ y $x-y=-1$ con $x=1$ y $y=2$: $2(1)+3(2)=8$ y $1-2=-1$. Verificación: las dos igualdades son verdaderas."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Sistemas con dos variables (tema 19) ⇒ Cramer los resuelve",
+          "explicacion": "El tema «Sistema de ecuaciones lineales con dos variables» resolvía sistemas por sustitución, igualación y reducción; el método de Cramer da la solución con una fórmula general. Ejemplo: $x+y=3$ y $x-y=1$ da $x=2$ y $y=1$ por cualquiera de los métodos. Verificación: $\\frac{\\Delta_x}{\\Delta}=\\frac{-4}{-2}=2$."
+        },
+        {
+          "texto": "Sistemas con tres variables (tema 20) ⇒ Cramer con determinantes de orden 3",
+          "explicacion": "El tema «Sistema de ecuaciones lineales con tres variables» introdujo sistemas $3\\times 3$; Cramer los resuelve con determinantes de orden $3$, sin eliminar incógnitas. Ejemplo: $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$ da $(1,2,3)$. Verificación: las tres ecuaciones se cumplen."
+        },
+        {
+          "texto": "Ecuaciones de primer grado (tema 05) ⇒ cada ecuación del sistema es lineal",
+          "explicacion": "Cada ecuación de un sistema lineal es una ecuación de primer grado, estudiada en el tema «Ecuaciones de primer grado». Ejemplo: de $2x+3y=8$ con $y=2$ se obtiene $2x=2$ y $x=1$. Verificación: coincide con la solución por Cramer."
+        },
+        {
+          "texto": "Método de Gauss (tema 22) ⇒ alternativa para sistemas mayores",
+          "explicacion": "El tema siguiente, «Método de Gauss», resuelve sistemas por eliminación sucesiva y es útil cuando $\\Delta=0$ o el sistema es grande; Cramer es práctico para órdenes $2$ y $3$ con $\\Delta\\ne 0$. Ejemplo: el sistema indeterminado $x+y+z=1$, $2x+2y+2z=2$, $3x+3y+3z=3$ se analiza con Gauss y no con Cramer. Verificación: en este caso todos los determinantes son cero."
+        }
+      ]
+    }
+  ]
+}

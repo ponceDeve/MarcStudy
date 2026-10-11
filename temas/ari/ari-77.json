@@ -1,0 +1,168 @@
+{
+  "curso": "Aritmética",
+  "tema": "Factorial de un número natural",
+  "glosario": {
+    "Factorial": "Producto de enteros consecutivos desde uno",
+    "Número natural": "Entero usado para contar",
+    "Convención": "Acuerdo de definición sin demostración",
+    "Propiedad recursiva": "Relación que usa el valor anterior",
+    "Producto vacío": "Producto sin factores, igual a uno",
+    "Función gamma": "Extensión del factorial a otros números",
+    "Parte entera": "Mayor entero menor o igual al número",
+    "Análisis combinatorio": "Técnicas para contar configuraciones",
+    "Principio de multiplicación": "Total de etapas sucesivas es el producto",
+    "Permutaciones": "Ordenaciones de todos los elementos",
+    "Variaciones": "Agrupaciones donde importa el orden",
+    "Coprimos": "Enteros sin divisores comunes mayores que uno"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Factorial» de $n$ = producto de los enteros de 1 a $n$",
+          "explicacion": "El factorial de un número natural $n$ es el producto de todos los números naturales desde 1 hasta $n$: $$n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 3 \\cdot 2 \\cdot 1$$ Se lee «n factorial». Solo está definido para números naturales y el cero, y es el elemento básico de las fórmulas del análisis combinatorio (tema 76)."
+        },
+        {
+          "texto": "Notación: el signo de exclamación $n!$",
+          "explicacion": "El factorial de $n$ se escribe $n!$, con un signo de exclamación después del número. El signo afecta únicamente al número o a la expresión entre paréntesis que lo precede: $3 + 2!$ vale $3 + 2 = 5$, mientras que $(3 + 2)!$ vale $5! = 120$."
+        },
+        {
+          "texto": "Negativos y fracciones ✗ tienen factorial elemental",
+          "explicacion": "En este nivel el factorial solo se define para el cero y los enteros positivos. No existen $(-3)!$ ni $\\left(\\frac{1}{2}\\right)!$ como productos de enteros consecutivos. Una extensión a otros números se obtiene en matemática superior mediante la función gamma, que no corresponde a este tema."
+        },
+        {
+          "texto": "Factorial = producto de números consecutivos descendentes",
+          "explicacion": "La expresión $n!$ es un producto de $n$ factores que disminuyen de uno en uno desde $n$ hasta 1. Por esa razón crece muy rápido: cada vez que $n$ aumenta en una unidad, el factorial se multiplica por el nuevo valor de $n$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores iniciales",
+      "puntos": [
+        {
+          "texto": "$0! = 1$ por convención",
+          "explicacion": "Por definición se establece $0! = 1$. Esta convención no es una demostración, sino una definición que mantiene la coherencia de las fórmulas: permite que la relación $n! = n \\cdot (n-1)!$ valga para $n = 1$, ya que $1! = 1 \\cdot 0!$ exige $0! = 1$, y que las fórmulas combinatorias funcionen cuando se eligen todos o ningún elemento."
+        },
+        {
+          "texto": "Otra justificación: una sola ordenación de cero objetos",
+          "explicacion": "El factorial cuenta las maneras de ordenar $n$ objetos distintos (tema 79). Con cero objetos existe exactamente una manera de ordenarlos: no hacer nada. Por eso resulta natural que $0! = 1$. También equivale al producto vacío, que vale 1."
+        },
+        {
+          "texto": "$1! = 1$",
+          "explicacion": "El factorial de 1 es el producto de un solo factor, el propio 1. Así, $0! = 1! = 1$, y esta igualdad entre dos valores distintos de $n$ es un caso particular que debe recordarse al resolver ecuaciones con factoriales."
+        },
+        {
+          "texto": "Tabla de factoriales de 0 a 10",
+          "explicacion": "Los valores son: $0! = 1$, $1! = 1$, $2! = 2$, $3! = 6$, $4! = 24$, $5! = 120$, $6! = 720$, $7! = 5040$, $8! = 40320$, $9! = 362880$ y $10! = 3628800$. Memorizarlos hasta $6!$ o $7!$ agiliza los cálculos."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad recursiva",
+      "puntos": [
+        {
+          "texto": "Propiedad recursiva: $n! = n \\cdot (n-1)!$",
+          "explicacion": "El factorial de $n$ es igual a $n$ multiplicado por el factorial del número anterior. Se cumple porque $n!$ contiene todos los factores de $(n-1)!$ más el factor $n$. Por ejemplo, $6! = 6 \\cdot 5! = 6 \\cdot 120 = 720$. Esta relación permite calcular factoriales sucesivos."
+        },
+        {
+          "texto": "Generalización: $n! = n(n-1)\\cdots(k+1)\\,k!$",
+          "explicacion": "Se puede detener el desarrollo en cualquier factor $k$ menor que $n$ y dejar el resto expresado como $k!$. Por ejemplo, $7! = 7 \\cdot 6 \\cdot 5!$. Esto es lo que permite simplificar cocientes de factoriales cancelando el factorial común."
+        }
+      ]
+    },
+    {
+      "titulo": "Simplificación",
+      "puntos": [
+        {
+          "texto": "Cociente de factoriales: cancelar el factorial menor",
+          "explicacion": "Para simplificar $\\frac{n!}{k!}$ con $n > k$ se desarrolla el factorial mayor hasta $k!$ y se cancela. Por ejemplo, $\\frac{8!}{6!} = \\frac{8 \\cdot 7 \\cdot 6!}{6!} = 56$. Se evita calcular los factoriales completos, que son números muy grandes, y el resultado se obtiene con pocos productos. El mismo procedimiento sirve con letras: $\\frac{n!}{(n-2)!} = n(n-1)$."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{(n+1)!}{(n-1)!} = (n+1)\\,n$",
+          "explicacion": "Se desarrolla $(n+1)! = (n+1)\\cdot n \\cdot (n-1)!$ y se cancela el factor común $(n-1)!$, de donde el cociente queda $(n+1)\\,n$. El resultado es válido para $n \\ge 1$, para que $(n-1)!$ esté definido, y en ese conjunto la expresión se reduce a un producto de dos factores consecutivos, un polinomio de segundo grado en $n$."
+        },
+        {
+          "texto": "Suma de factoriales ⇒ sacar factor común",
+          "explicacion": "Para simplificar $n! + (n-1)!$ se extrae el factorial menor como factor común: $(n-1)!\\,(n + 1)$. Por ejemplo, $5! + 4! = 4!\\,(5 + 1) = 24 \\cdot 6 = 144$, que coincide con $120 + 24$."
+        },
+        {
+          "texto": "Ecuación con factoriales: $\\frac{(n+2)!}{n!} = 20$",
+          "explicacion": "Se desarrolla $(n+2)! = (n+2)(n+1)\\,n!$ y se cancela $n!$, quedando $(n+2)(n+1) = 20$. Como $5 \\cdot 4 = 20$, resulta $n + 1 = 4$ y $n = 3$. El valor debe ser un entero no negativo, y solo se acepta la solución que cumpla esa condición."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "(a + b)! ≠ a! + b!",
+          "explicacion": "El factorial no es distributivo respecto de la suma. Con $a = 2$ y $b = 3$, $(2 + 3)! = 120$, mientras que $2! + 3! = 8$. Cada vez que aparezca una suma dentro del factorial, se debe calcular primero la suma."
+        },
+        {
+          "texto": "(ab)! ≠ a! b!",
+          "explicacion": "Tampoco es distributivo respecto del producto. Con $a = 2$ y $b = 3$, $(2 \\cdot 3)! = 720$, mientras que $2! \\cdot 3! = 12$. La propiedad no es válida, por lo que no se debe separar el factorial de un producto."
+        },
+        {
+          "texto": "Factorial ↑ al aumentar $n$",
+          "explicacion": "Para $n \\ge 1$ cada factorial es mayor o igual que el anterior: $n! \\ge (n-1)!$, con igualdad solo cuando $n = 1$. A partir de $n = 2$ crece de manera estricta y con rapidez mayor que cualquier potencia fija."
+        },
+        {
+          "texto": "$n!$ es divisible entre todo entero de 1 a $n$",
+          "explicacion": "Como $n!$ contiene como factores a todos los enteros desde 1 hasta $n$, es múltiplo de cada uno de ellos y también de su producto cuando son coprimos. Por ejemplo, $7! = 5040$ es múltiplo de 2, 3, 4, 5, 6 y 7."
+        },
+        {
+          "texto": "Ceros finales de $n!$ ⇒ potencias de 5 contenidas",
+          "explicacion": "Cada cero final proviene de un factor 10, es decir, de un par de factores 2 y 5. Como los factores 2 abundan más que los 5, la cantidad de ceros finales es la cantidad de factores 5: $\\left\\lfloor \\frac{n}{5} \\right\\rfloor + \\left\\lfloor \\frac{n}{25} \\right\\rfloor + \\left\\lfloor \\frac{n}{125} \\right\\rfloor + \\cdots$, donde $\\lfloor x \\rfloor$ es la parte entera de $x$."
+        },
+        {
+          "texto": "Ejemplo: $10!$ termina en 2 ceros y $25!$ en 6",
+          "explicacion": "Para $10!$ se tiene $\\lfloor 10/5 \\rfloor = 2$, y en efecto $10! = 3\\,628\\,800$ termina en dos ceros. Para $25!$ se tiene $\\lfloor 25/5 \\rfloor + \\lfloor 25/25 \\rfloor = 5 + 1 = 6$ ceros finales."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con el conteo",
+      "puntos": [
+        {
+          "texto": "$n!$ = maneras de ordenar $n$ objetos distintos",
+          "explicacion": "Por el principio de multiplicación (tema 76), el primer lugar se llena de $n$ maneras, el segundo de $n - 1$, y así hasta el último, de una manera, lo que da $n!$ ordenaciones. Estas son las permutaciones de $n$ objetos, que se estudian en el tema 79."
+        },
+        {
+          "texto": "$\\frac{n!}{(n-k)!}$ = ordenaciones de $k$ entre $n$",
+          "explicacion": "El cociente $\\frac{n!}{(n-k)!} = n(n-1)\\cdots(n-k+1)$ cuenta las maneras de ordenar $k$ objetos elegidos entre $n$. Es la fórmula de las variaciones, que se desarrolla en el tema 78, y muestra cómo los factoriales se simplifican al contar."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen",
+      "puntos": [
+        {
+          "texto": "Christian Kramp: notación $n!$, 1808",
+          "explicacion": "El matemático alsaciano Christian Kramp introdujo en 1808 el signo de exclamación para el factorial, en su obra Éléments d'arithmétique universelle. Antes se usaban otras notaciones, y la propuesta de Kramp se impuso por su simplicidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: considerar que $0! = 0$",
+          "explicacion": "El factorial de cero vale 1, no 0. Tomar $0! = 0$ anula los productos en las fórmulas combinatorias y produce resultados absurdos, como que no existe ninguna manera de ordenar cero objetos o que se divide entre cero al elegir todos los elementos de un conjunto."
+        },
+        {
+          "texto": "Error: distribuir el factorial sobre sumas y productos",
+          "explicacion": "Escribir $(a + b)! = a! + b!$ o $(ab)! = a!\\,b!$ es incorrecto. El factorial se aplica al resultado completo de la expresión entre paréntesis y no a cada término por separado. Por eso conviene efectuar primero la operación dentro del paréntesis y recién después calcular el factorial del resultado obtenido."
+        },
+        {
+          "texto": "Error: calcular los factoriales completos al simplificar",
+          "explicacion": "Calcular $8!$ y $6!$ por separado antes de dividir complica el trabajo y favorece errores aritméticos. Es más eficiente desarrollar solo hasta el factorial común y cancelarlo. Con $8!$ y $6!$ basta escribir $8 \\cdot 7 \\cdot 6!$ sobre $6!$, de modo que quedan únicamente dos factores por multiplicar."
+        },
+        {
+          "texto": "Error: aceptar soluciones con valores no enteros o negativos",
+          "explicacion": "Al resolver ecuaciones con factoriales, las soluciones deben ser enteros no negativos, y los argumentos de cada factorial también. Una solución algebraica que haga negativo algún argumento, como $n - 3$ con $n = 2$, debe descartarse."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "curso": "Aritmética",
+  "tema": "Descuento comercial",
+  "glosario": {
+    "letra de cambio": "Documento que ordena pagar una suma fija",
+    "valor nominal": "Cantidad escrita en el documento",
+    "fecha de vencimiento": "Día en que el documento debe pagarse",
+    "descuento comercial": "Interés sobre el valor nominal por anticipar",
+    "valor actual comercial": "Valor nominal menos el descuento comercial",
+    "descuento racional": "Interés sobre el valor actual por anticipar",
+    "valor actual racional": "Capital que produce el valor nominal al vencer",
+    "tasa de descuento": "Porcentaje que se descuenta por período",
+    "tiempo de anticipación": "Plazo entre el pago y el vencimiento"
+  },
+  "theory": [
+    {
+      "titulo": "Descuento comercial",
+      "puntos": [
+        {
+          "texto": "«Descuento comercial» = interés sobre el valor nominal por anticipar",
+          "explicacion": "El descuento comercial es la rebaja que se aplica al valor nominal de un documento de crédito cuando se paga antes de su fecha de vencimiento. Se calcula como un interés simple sobre el valor nominal durante el tiempo que falta para el vencimiento. Quien adelanta el pago recibe menos que el valor escrito en el documento, y la diferencia compensa el uso del dinero durante el plazo anticipado. No debe confundirse con el descuento aplicado al precio de un bien (se estudia en el tema 51, Reglas comerciales), pues aquí se trata de documentos que vencen en una fecha futura."
+        }
+      ]
+    },
+    {
+      "titulo": "Documento de crédito",
+      "puntos": [
+        {
+          "texto": "«Letra de cambio» = documento que ordena pagar una suma",
+          "explicacion": "La letra de cambio es un documento de crédito mediante el cual una persona, llamada girador, ordena a otra, llamada girado, pagar una suma determinada a un tercero, llamado beneficiario, en una fecha fijada. El documento puede transferirse antes de su vencimiento, y quien la recibe puede cobrarla antes cediéndola a cambio de una cantidad menor. El mismo mecanismo se aplica a otros documentos con vencimiento, como los pagarés, que son promesas escritas de pago."
+        },
+        {
+          "texto": "«Valor nominal» = cantidad escrita en el documento",
+          "explicacion": "El valor nominal es la cantidad de dinero que figura en el documento y que debe pagarse en la fecha de vencimiento. Se representa con $V_N$ y es la base sobre la cual se calcula el descuento comercial. Aunque el documento pueda cobrarse antes, su valor nominal no cambia: lo que cambia es el valor que efectivamente se recibe al anticipar el cobro."
+        },
+        {
+          "texto": "«Fecha de vencimiento» = día del pago del documento",
+          "explicacion": "La fecha de vencimiento es el día en que el documento debe ser pagado por su valor nominal. El tiempo que falta entre el día en que se descuenta y esa fecha es el tiempo de anticipación. Cuando el documento se paga exactamente en su fecha de vencimiento, ese tiempo es cero y no hay descuento alguno, pues no se está adelantando nada."
+        },
+        {
+          "texto": "«Tiempo de anticipación» = plazo antes del vencimiento",
+          "explicacion": "El tiempo de anticipación es el lapso entre el día en que se descuenta el documento y su fecha de vencimiento. Se representa con $t$ y se expresa en la misma unidad que el período de la tasa, ya sea años, meses o días. A mayor tiempo de anticipación mayor es el descuento, porque el dinero se recibe con más antelación."
+        },
+        {
+          "texto": "«Tasa de descuento» = porcentaje descontado por período",
+          "explicacion": "La tasa de descuento es el tanto por ciento del valor nominal que se descuenta por cada unidad de tiempo de anticipación, y se representa con $r\\%$. Como en el interés simple (se estudia en el tema 57, Interés simple), siempre debe indicar el período al que se refiere, como anual, mensual o diaria, y debe coincidir con la unidad del tiempo de anticipación."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo del descuento",
+      "puntos": [
+        {
+          "texto": "Descuento comercial = valor nominal por tasa por tiempo, entre 100",
+          "explicacion": "La fórmula del descuento comercial es $D_C = \\frac{V_N\\cdot r\\cdot t}{100}$, con $r$ en tanto por ciento por período y $t$ en los mismos períodos. Tiene la misma forma que el interés simple con el valor nominal en lugar del capital. Con tiempo en meses y tasa anual el divisor es 1200, y con tiempo en días y tasa anual es 36000, siguiendo la convención del año comercial. Con un valor nominal de 6000, una tasa anual del 12 % y 60 días, el descuento es $\\frac{6000\\cdot 12\\cdot 60}{36000} = 120$."
+        },
+        {
+          "texto": "«Valor actual comercial» = valor nominal menos descuento",
+          "explicacion": "El valor actual comercial es la cantidad que efectivamente se recibe al descontar el documento: $V_A = V_N - D_C$. Sustituyendo la fórmula del descuento, $V_A = V_N\\left(1 - \\frac{r\\,t}{100}\\right)$. En el ejemplo del valor nominal 6000 con descuento 120, el valor actual comercial es 5880. De la relación se obtiene también $V_N = V_A + D_C$, que une las tres cantidades del problema."
+        },
+        {
+          "texto": "Valor nominal conocido el valor actual comercial",
+          "explicacion": "Cuando se conoce el valor actual comercial y se pide el valor nominal, se despeja de $V_A = V_N\\left(1 - \\frac{r\\,t}{100}\\right)$ para obtener $V_N = \\frac{V_A}{1 - \\frac{r\\,t}{100}}$. Con un valor actual de 5880, una tasa anual del 12 % y 60 días, el factor es $1 - 0{,}02 = 0{,}98$, y el valor nominal es $\\frac{5880}{0{,}98} = 6000$. Este cálculo exige que $r\\,t$ sea menor que 100."
+        }
+      ]
+    },
+    {
+      "titulo": "Descuento racional",
+      "puntos": [
+        {
+          "texto": "«Descuento racional» = interés sobre el valor actual",
+          "explicacion": "El descuento racional, llamado también descuento matemático, es el interés simple que produce el valor actual racional durante el tiempo de anticipación, con la misma tasa. Se calcula como $D_R = \\frac{V_R\\cdot r\\cdot t}{100}$, donde $V_R$ es el valor actual racional. A diferencia del comercial, la base no es el valor nominal sino lo que realmente se recibe, por lo que el descuento resulta menor."
+        },
+        {
+          "texto": "«Valor actual racional» = capital que produce el nominal",
+          "explicacion": "El valor actual racional es el capital que, colocado a la tasa dada durante el tiempo de anticipación, produce un monto igual al valor nominal. Se cumple $V_N = V_R\\left(1+\\frac{r\\,t}{100}\\right)$, de donde $V_R = \\frac{V_N}{1+\\frac{r\\,t}{100}}$. El descuento racional es entonces $D_R = V_N - V_R = \\frac{V_N\\cdot r\\,t}{100 + r\\,t}$. Con valor nominal 6000, tasa anual del 12 % y 60 días, $V_R \\approx 5882{,}35$ y $D_R \\approx 117{,}65$."
+        },
+        {
+          "texto": "Descuento comercial mayor que descuento racional",
+          "explicacion": "Con los mismos datos, el descuento comercial siempre es mayor que el racional, porque se calcula sobre el valor nominal, que es mayor que el valor actual racional. Se cumple la relación $D_C = D_R\\left(1+\\frac{r\\,t}{100}\\right)$. En el ejemplo, 120 es mayor que 117,65. La diferencia es pequeña cuando $r\\,t$ es pequeño y crece cuando el plazo o la tasa aumentan."
+        },
+        {
+          "texto": "Diferencia de descuentos = interés del descuento racional",
+          "explicacion": "La diferencia entre el descuento comercial y el racional es igual al interés simple del descuento racional durante el mismo tiempo: $D_C - D_R = \\frac{D_R\\cdot r\\,t}{100}$. Una forma equivalente es $D_C - D_R = \\frac{D_C\\cdot D_R}{V_N}$. En el ejemplo, $120 - 117{,}65 = 2{,}35$, que coincide con el 2 % de 117,65, pues $\\frac{r\\,t}{100} = 0{,}02$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tasa equivalente",
+      "puntos": [
+        {
+          "texto": "Descuento comercial ⇒ tasa de interés efectiva mayor",
+          "explicacion": "Quien recibe el valor actual comercial y paga el valor nominal al vencer realiza una operación cuyo interés, medido sobre lo recibido, es mayor que la tasa de descuento. Si $i = \\frac{r\\,t}{100}$ es la tasa de descuento del período, la tasa de interés equivalente del período es $\\frac{i}{1-i}$. Con $i = 0{,}02$ resulta $\\frac{0{,}02}{0{,}98} \\approx 2{,}04\\%$. Esto ocurre porque el descuento se calcula sobre el valor nominal y el interés sobre lo que realmente se recibe."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: calcular el descuento sobre el valor actual",
+          "explicacion": "Un error común es aplicar la tasa al valor actual cuando el problema pide el descuento comercial, o al valor nominal cuando pide el racional. La base del descuento comercial es siempre el valor nominal y la del racional es el valor actual racional. Debe leerse con atención qué tipo de descuento se solicita antes de elegir la fórmula."
+        },
+        {
+          "texto": "Error: confundir descuento con valor actual",
+          "explicacion": "Otro error es responder con el descuento cuando se pregunta cuánto se recibe, o a la inversa. El descuento es lo que se rebaja; el valor actual es lo que se cobra, y su suma es el valor nominal. En el ejemplo, el descuento es 120 y el valor actual comercial es 5880, que suman 6000."
+        },
+        {
+          "texto": "Error: usar tasa y tiempo en unidades distintas",
+          "explicacion": "Igual que en el interés simple, la tasa y el tiempo de anticipación deben estar en la misma unidad. Si la tasa es anual y el tiempo está en días, el divisor es 36000; si el tiempo está en meses, es 1200. Mezclar unidades conduce a descuentos que difieren en factores de 12 o de 360 respecto del valor correcto."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Letra de cambio en el comercio medieval italiano",
+          "explicacion": "La letra de cambio se desarrolló en el comercio de las ciudades italianas durante la Edad Media, cuando los mercaderes necesitaban transferir dinero entre plazas distintas sin transportar monedas. Con el tiempo, los documentos con vencimiento comenzaron a cederse antes de su fecha a cambio de una cantidad menor, práctica que dio origen al descuento. La aritmética comercial de ese período, como la de Fibonacci y Pacioli, incluye los cálculos de intereses y rebajas que se aplican a estas operaciones."
+        }
+      ]
+    }
+  ]
+}

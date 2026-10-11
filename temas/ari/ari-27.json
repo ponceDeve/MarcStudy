@@ -1,0 +1,127 @@
+{
+  "curso": "Aritmética",
+  "tema": "Número primo y número compuesto",
+  "glosario": {
+    "número primo": "Entero mayor que 1 con dos divisores",
+    "número compuesto": "Entero mayor que 1 con varios divisores",
+    "criba de Eratóstenes": "Método que tacha múltiplos para hallar primos",
+    "primos gemelos": "Dos primos cuya diferencia es dos",
+    "divisor": "Número que divide exactamente a otro",
+    "múltiplo": "Resultado de multiplicar por un entero",
+    "raíz cuadrada": "Número que elevado al cuadrado da el dado",
+    "prueba de primalidad": "Procedimiento para decidir si un número es primo"
+  },
+  "theory": [
+    {
+      "titulo": "Definiciones",
+      "puntos": [
+        {
+          "texto": "«Número primo»: entero mayor que 1 con exactamente dos divisores",
+          "explicacion": "Un número primo es un entero $p > 1$ cuyos únicos divisores positivos son 1 y $p$. Por ejemplo, 7 es primo porque solo es divisible entre 1 y 7. Los primos son los bloques con los que se construyen todos los enteros mayores que 1, según el teorema fundamental de la aritmética, tema 26."
+        },
+        {
+          "texto": "«Número compuesto»: entero mayor que 1 con más de dos divisores",
+          "explicacion": "Un número compuesto es un entero mayor que 1 que admite algún divisor distinto de 1 y de sí mismo, y por tanto puede escribirse como producto de dos enteros menores. Por ejemplo, $12 = 3 \\cdot 4$ es compuesto, y sus divisores son 1, 2, 3, 4, 6 y 12. El menor compuesto es 4."
+        },
+        {
+          "texto": "El número 1 no es primo ni compuesto",
+          "explicacion": "El 1 tiene un único divisor positivo, él mismo, así que no cumple la condición de los primos, que exige exactamente dos divisores, ni la de los compuestos, que exige más de dos. Se le llama unidad. Excluirlo de los primos asegura la unicidad de la factorización prima."
+        },
+        {
+          "texto": "El 0 tampoco es primo ni compuesto",
+          "explicacion": "El 0 es divisible entre cualquier entero no nulo, de modo que tiene infinitos divisores, pero no es un entero mayor que 1. Por la definición, queda fuera de ambos grupos, y suele considerarse un caso aparte."
+        },
+        {
+          "texto": "El 2 es el único primo par",
+          "explicacion": "Todo número par mayor que 2 es divisible entre 2 y entre sí mismo, por lo que posee al menos un divisor adicional y es compuesto. Así, el 2 es el único primo par y todos los demás primos son impares. Es también el menor de los primos."
+        },
+        {
+          "texto": "Primeros primos: 2, 3, 5, 7, 11, 13, ...",
+          "explicacion": "Los primos menores que 100 son 25 y son 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89 y 97. Memorizar los primeros primos agiliza la factorización y las pruebas de primalidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "El menor divisor mayor que 1 de un entero es primo",
+          "explicacion": "Si $d$ es el menor divisor de $n$ mayor que 1 y $d$ fuera compuesto, tendría un divisor menor mayor que 1, que también dividiría a $n$, lo que contradice la elección de $d$. Por tanto, $d$ es primo. De aquí se deduce que todo entero mayor que 1 tiene al menos un divisor primo."
+        },
+        {
+          "texto": "Compuesto $n$: divisor primo no mayor que su «raíz cuadrada»",
+          "explicacion": "Si $n = a \\cdot b$ con $1 < a \\le b$, entonces $a^2 \\le a \\cdot b = n$, y así $a \\le \\sqrt{n}$. Un divisor primo de $a$ es también divisor de $n$ y no supera a $\\sqrt{n}$. Este hecho permite probar la primalidad con un número reducido de divisiones."
+        },
+        {
+          "texto": "Todo primo mayor que 3 tiene la forma $6k \\pm 1$",
+          "explicacion": "Los enteros se escriben como $6k$, $6k + 1$, $6k + 2$, $6k + 3$, $6k + 4$ o $6k + 5$. Los de la forma $6k$, $6k + 2$ y $6k + 4$ son pares, y $6k + 3$ es múltiplo de 3; solo quedan $6k + 1$ y $6k + 5 = 6(k + 1) - 1$. La propiedad es necesaria, no suficiente: $25 = 6 \\cdot 4 + 1$ es compuesto."
+        },
+        {
+          "texto": "Dos primos distintos no tienen divisores comunes salvo el 1",
+          "explicacion": "Como cada primo solo tiene los divisores 1 y él mismo, dos primos distintos solo comparten el divisor 1. Por eso se dice que son primos entre sí, concepto que se desarrolla en el tema 31."
+        }
+      ]
+    },
+    {
+      "titulo": "Infinitud",
+      "puntos": [
+        {
+          "texto": "Existen infinitos primos",
+          "explicacion": "Euclides de Alejandría, matemático griego del siglo III a. C., demostró en el Libro IX de los Elementos que no hay una lista finita que contenga a todos los primos. Supóngase que $p_1, \\ldots, p_n$ fueran todos; el número $N = p_1 p_2 \\cdots p_n + 1$ no es divisible por ninguno de ellos, por lo que es primo o tiene un divisor primo que no está en la lista, lo cual es una contradicción."
+        }
+      ]
+    },
+    {
+      "titulo": "Criba y pruebas",
+      "puntos": [
+        {
+          "texto": "«Criba de Eratóstenes»: tachar múltiplos para hallar primos",
+          "explicacion": "Eratóstenes de Cirene, matemático griego del siglo III a. C., describió un método para hallar los primos hasta un límite $N$. Se listan los enteros desde 2; se conserva el 2 y se tachan sus múltiplos; luego se conserva el siguiente número no tachado y se tachan sus múltiplos, y se repite hasta alcanzar $\\sqrt{N}$. Los números que quedan sin tachar son primos."
+        },
+        {
+          "texto": "Criba: basta tachar los múltiplos de primos hasta $\\sqrt{N}$",
+          "explicacion": "Todo compuesto menor o igual que $N$ tiene un divisor primo no mayor que $\\sqrt{N}$, de modo que ya queda tachado cuando se procesan los primos hasta esa cota. Para hallar los primos menores que 100 basta tachar los múltiplos de 2, 3, 5 y 7, porque $\\sqrt{100} = 10$."
+        },
+        {
+          "texto": "«Prueba de primalidad»: dividir entre primos hasta la raíz cuadrada",
+          "explicacion": "Para decidir si $n$ es primo se divide entre los primos que no superan $\\sqrt{n}$ usando los criterios del tema 24. Si ninguno divide a $n$, es primo. Para $n = 211$, $\\sqrt{211} \\approx 14{,}5$ y se prueban 2, 3, 5, 7, 11 y 13, ninguno de los cuales lo divide; por tanto, 211 es primo. En cambio, 221 es divisible entre 13 y es compuesto, pues $221 = 13 \\cdot 17$."
+        }
+      ]
+    },
+    {
+      "titulo": "Primos gemelos",
+      "puntos": [
+        {
+          "texto": "«Primos gemelos»: primos que difieren en 2",
+          "explicacion": "Dos primos son gemelos cuando su diferencia es 2, como 11 y 13, o 17 y 19. Con excepción del par 3 y 5, uno de ellos es de la forma $6k - 1$ y el otro $6k + 1$. Si existen infinitos pares de primos gemelos es un problema abierto de la teoría de números."
+        }
+      ]
+    },
+    {
+      "titulo": "Distinciones",
+      "puntos": [
+        {
+          "texto": "Primo ≠ primos entre sí ≠ impar",
+          "explicacion": "Un número primo se define por sus propios divisores; dos números son primos entre sí cuando su único divisor común positivo es 1, aunque cada uno sea compuesto, como 8 y 15; y los impares no son necesariamente primos, como 9 o 15. Son nociones distintas que se confunden con frecuencia."
+        },
+        {
+          "texto": "Número compuesto ≠ número par",
+          "explicacion": "Los compuestos incluyen pares como 4 y 10, pero también impares como 9, 15 y 21. Todo par mayor que 2 es compuesto, pues es divisible entre 2, pero no todo compuesto es par. El criterio que define a un compuesto es la existencia de un divisor distinto de 1 y del propio número, no la paridad."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Considerar primos a los impares",
+          "explicacion": "Existen impares compuestos: 9, 15, 21, 25, 27 y 33, entre otros. Para confirmar la primalidad no basta con que el número sea impar; hay que comprobar que no tenga divisores primos hasta su raíz cuadrada."
+        },
+        {
+          "texto": "Probar divisores solo hasta la mitad del número",
+          "explicacion": "No es necesario dividir hasta $n \\div 2$; basta llegar a $\\sqrt{n}$. Si se probara solo con unos pocos primos pequeños, sin llegar a la raíz cuadrada, se podría concluir erróneamente que un compuesto es primo, como 169, que no es divisible entre 2, 3, 5, 7 ni 11, pero sí entre 13."
+        }
+      ]
+    }
+  ]
+}

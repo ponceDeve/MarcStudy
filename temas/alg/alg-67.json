@@ -1,0 +1,197 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función logarítmica",
+  "glosario": {
+    "función logarítmica": "Función inversa de la exponencial.",
+    "logaritmo": "Exponente al que se eleva la base.",
+    "base": "Número que se eleva al exponente.",
+    "argumento": "Número cuyo logaritmo se calcula.",
+    "dominio": "Conjunto de valores de entrada.",
+    "rango": "Conjunto de valores que realmente toma.",
+    "asíntota vertical": "Recta vertical a la que tiende la gráfica.",
+    "creciente": "Función que aumenta al aumentar la variable.",
+    "decreciente": "Función que disminuye al aumentar la variable.",
+    "inyectiva": "Valores distintos dan imágenes distintas.",
+    "biyectiva": "Función inyectiva y sobreyectiva a la vez.",
+    "función inversa": "Función que deshace a otra función.",
+    "logaritmo decimal": "Logaritmo de base diez.",
+    "logaritmo natural": "Logaritmo de base e.",
+    "reflexión": "Imagen simétrica respecto de una recta.",
+    "desplazamiento": "Traslado de la gráfica sin deformarla.",
+    "inecuación fraccionaria": "Desigualdad con la incógnita en el denominador."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función logarítmica» $f(x)=\\log_a x$ con $a>0$ y $a\\ne 1$",
+          "explicacion": "La función logarítmica de base $a$ es la función $f(x)=\\log_a x$, donde $\\log_a x$ es el exponente al que hay que elevar $a$ para obtener $x$. Su dominio es $(0,+\\infty)$ y su rango es $\\mathbb{R}$. Es la función inversa de la exponencial $a^x$. Ejemplo: $f(x)=\\log_2 x$ da $f(8)=3$ porque $2^3=8$, y $f\\left(\\frac{1}{4}\\right)=-2$ porque $2^{-2}=\\frac{1}{4}$. Verificación: $2^3=8$ y $2^{-2}=\\frac{1}{4}$."
+        },
+        {
+          "texto": "$y=\\log_a x\\iff a^y=x$ ⇒ equivalencia fundamental",
+          "explicacion": "Escribir $y=\\log_a x$ es lo mismo que escribir $a^y=x$, con $x>0$. Esta equivalencia permite pasar de la forma logarítmica a la exponencial y viceversa, y es la que se usa para calcular valores y resolver ecuaciones. Ejemplo: $\\log_3 81=4$ equivale a $3^4=81$. Verificación: $3\\times 3\\times 3\\times 3=81$."
+        },
+        {
+          "texto": "Base $a>0$ y $a\\ne 1$ ⇒ condición de la base",
+          "explicacion": "La base debe ser positiva y distinta de uno por las mismas razones que en la exponencial: con $a=1$ se tendría $1^y=1$ para todo $y$, y con $a<0$ las potencias no serían reales en general. Ejemplo: $\\log_1 5$ no está definido porque $1^y=5$ no tiene solución. Verificación: $1^y=1$ para todo $y$."
+        },
+        {
+          "texto": "$\\log x$ ⇒ logaritmo decimal de base $10$",
+          "explicacion": "Es la base que traen las calculadoras científicas y la usada en escalas de medición; al omitirla se evita escribir un subíndice, pero hay que recordar que se trata de la base diez, y que cumple todas las propiedades de los logaritmos. Cuando no se escribe la base, $\\log x$ indica el logaritmo en base diez. Ejemplo: $\\log 1000=3$ y $\\log 0.01=-2$. Verificación: $10^3=1000$ y $10^{-2}=0.01$."
+        },
+        {
+          "texto": "$\\ln x$ ⇒ logaritmo natural de base $e$",
+          "explicacion": "La base $e$ es irracional y surge en el crecimiento continuo; el logaritmo natural es el que aparece con más frecuencia en cálculo y en las fórmulas de modelación, y su gráfica es la de una función logarítmica de base mayor que uno. El logaritmo natural, $\\ln x$, tiene como base el número $e\\approx 2.71828$ y es el inverso de $e^x$. Ejemplo: $\\ln e=1$ y $\\ln e^3=3$. Verificación: $e^1=e$ y $e^3=e^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio y rango",
+      "puntos": [
+        {
+          "texto": "Dominio $(0,+\\infty)$ ⇒ solo argumentos positivos",
+          "explicacion": "Como $a^y>0$ siempre, la ecuación $a^y=x$ solo tiene solución si $x>0$; por tanto el logaritmo está definido únicamente para argumentos positivos. Ejemplo: $\\log_2(-4)$ y $\\log_2 0$ no existen, mientras que $\\log_2 4=2$. Verificación: $2^y=-4$ y $2^y=0$ no tienen solución."
+        },
+        {
+          "texto": "Rango $\\mathbb{R}$ ⇒ el logaritmo toma cualquier valor real",
+          "explicacion": "Aunque el dominio solo contiene números positivos, el logaritmo puede valer cualquier número real: valores grandes negativos para argumentos cercanos a cero y valores grandes positivos para argumentos muy grandes. Para todo número real $y$ existe $x=a^y>0$ con $\\log_a x=y$, por lo que el rango es todo $\\mathbb{R}$. Ejemplo: el valor $y=-5$ lo toma $\\log_2$ en $x=2^{-5}=\\frac{1}{32}$. Verificación: $\\log_2\\frac{1}{32}=-5$."
+        },
+        {
+          "texto": "Dominio de $\\log_a g(x)$ ⇒ $g(x)>0$",
+          "explicacion": "El dominio de una composición con logaritmo se halla exigiendo que el argumento sea positivo, lo que lleva a resolver una inecuación sobre $g(x)$: lineal, cuadrática o fraccionaria según su forma. Si el argumento es una expresión $g(x)$, el dominio es el conjunto de valores donde $g(x)>0$. Ejemplo: $f(x)=\\log(x^2-4)$ exige $x^2-4>0$, es decir $x<-2$ o $x>2$. Verificación: $f(3)=\\log 5$ existe, mientras que $f(0)=\\log(-4)$ no existe."
+        },
+        {
+          "texto": "Argumento fraccionario ⇒ dominio por inecuación fraccionaria",
+          "explicacion": "Cuando el argumento es un cociente, el dominio se halla con el estudio de signos de una inecuación fraccionaria. Ejemplo: $f(x)=\\log_2\\frac{x-1}{x+2}$ exige $\\frac{x-1}{x+2}>0$, es decir $x<-2$ o $x>1$. Verificación: $f(2)=\\log_2\\frac{1}{4}=-2$ existe y $f(0)=\\log_2\\left(-\\frac{1}{2}\\right)$ no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica y propiedades",
+      "puntos": [
+        {
+          "texto": "Punto $(1,0)$ ⇒ toda gráfica pasa por él",
+          "explicacion": "Este punto de referencia es común a todas las gráficas logarítmicas, sin importar la base, y es la imagen del punto $(0,1)$ de la exponencial al reflejar sobre la recta $y=x$. Como $\\log_a 1=0$ para cualquier base válida, todas las gráficas $y=\\log_a x$ cortan al eje horizontal en $(1,0)$. Ejemplo: $\\log_2 1=0$ y $\\log_5 1=0$. Verificación: $2^0=1$ y $5^0=1$."
+        },
+        {
+          "texto": "Punto $(a,1)$ ⇒ la base se lee en $y=1$",
+          "explicacion": "Este segundo punto de referencia, junto con $(1,0)$, permite trazar la gráfica de cualquier logaritmo con solo conocer su base; es el reflejo del punto $(1,a)$ de la exponencial. Como $\\log_a a=1$, la gráfica pasa por $(a,1)$, lo que permite hallar la base a partir de la gráfica. Ejemplo: $y=\\log_3 x$ pasa por $(3,1)$. Verificación: $3^1=3$."
+        },
+        {
+          "texto": "Sin ordenada en el origen ⇒ no corta al eje $y$",
+          "explicacion": "La ausencia de corte con el eje vertical es consecuencia del dominio: $x=0$ no es un argumento válido, y la gráfica se acerca al eje sin tocarlo, como lo hace la exponencial con el eje horizontal. Como $x=0$ no pertenece al dominio, la gráfica no corta el eje vertical. Ejemplo: $\\log_2 0$ no existe. Verificación: $2^y=0$ no tiene solución."
+        },
+        {
+          "texto": "Asíntota vertical $x=0$ ⇒ la gráfica se acerca sin tocar",
+          "explicacion": "La gráfica se acerca al eje vertical cuando $x$ tiende a cero por la derecha, sin tocarlo. Ejemplo: $\\log_2\\frac{1}{8}=-3$ y $\\log_2\\frac{1}{1024}=-10$ decrecen sin límite. Verificación: ambos valores son números reales, pero $x=0$ no está en el dominio."
+        },
+        {
+          "texto": "Un cero en $x=1$ ⇒ único corte con el eje horizontal",
+          "explicacion": "Este es el único valor en que la función se anula, porque $a^0=1$ y la exponencial es inyectiva; sirve para dividir el dominio en dos tramos de signo constante. La ecuación $\\log_a x=0$ equivale a $x=a^0=1$, por lo que la función tiene exactamente un cero. Ejemplo: $\\log_3 x=0$ da $x=1$. Verificación: $3^0=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$a>1$ ⇒ función creciente",
+          "explicacion": "La monotonía creciente es consecuencia de que la exponencial de base mayor que uno también lo es: la inversa de una función creciente es creciente. Es la propiedad que se usa al resolver inecuaciones logarítmicas. Si la base es mayor que uno, a mayor argumento mayor logaritmo: $0<x_1<x_2$ implica $\\log_a x_1<\\log_a x_2$. Ejemplo: $\\log_2 4=2<\\log_2 8=3$. Verificación: la gráfica sube, pero cada vez más lentamente."
+        },
+        {
+          "texto": "$0<a<1$ ⇒ función decreciente",
+          "explicacion": "La inversa de una función decreciente es decreciente; por eso con base entre cero y uno el logaritmo disminuye al aumentar el argumento, y el sentido de las desigualdades se invierte al resolver inecuaciones. Si la base está entre cero y uno, a mayor argumento menor logaritmo. Ejemplo: $\\log_{1/2}4=-2>\\log_{1/2}8=-3$. Verificación: $\\left(\\frac{1}{2}\\right)^{-2}=4$ y $\\left(\\frac{1}{2}\\right)^{-3}=8$."
+        },
+        {
+          "texto": "Signo del logaritmo ⇒ depende de $x$ y de la base",
+          "explicacion": "El signo se decide comparando el argumento con uno, que es el único cero de la función: a un lado del uno el logaritmo es positivo y al otro es negativo, según la base. Con $a>1$: $\\log_a x<0$ si $0<x<1$ y $\\log_a x>0$ si $x>1$; con $0<a<1$ ocurre lo contrario. Ejemplo: $\\log_2\\frac{1}{2}=-1<0$ y $\\log_{1/2}\\frac{1}{2}=1>0$. Verificación: $2^{-1}=\\frac{1}{2}$ y $\\left(\\frac{1}{2}\\right)^1=\\frac{1}{2}$."
+        },
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva",
+          "explicacion": "La inyectividad permite eliminar logaritmos en ecuaciones y es la que garantiza que el logaritmo tenga inversa, que es la exponencial de la misma base. Como el logaritmo siempre crece o siempre decrece, no repite valores: $\\log_a x_1=\\log_a x_2$ implica $x_1=x_2$. Ejemplo: $\\log_2 x=\\log_2 7$ implica $x=7$. Verificación: la recta horizontal $y=\\log_2 7$ corta la gráfica una sola vez."
+        },
+        {
+          "texto": "Crecimiento lento ⇒ duplicar $x$ suma $1$ si $a=2$",
+          "explicacion": "La función logarítmica crece mucho más despacio que la exponencial: para que el valor aumente en una unidad hay que multiplicar el argumento por la base, y por eso se usa en escalas que comprimen magnitudes muy grandes. El logaritmo crece muy lentamente: $\\log_a(ax)=\\log_a x+1$, de modo que multiplicar el argumento por la base suma uno. Ejemplo: $\\log_2 16=4$ y $\\log_2 32=5$. Verificación: $2^4=16$ y $2^5=32$."
+        }
+      ]
+    },
+    {
+      "titulo": "Biyectividad e inversa",
+      "puntos": [
+        {
+          "texto": "$f:(0,+\\infty)\\to\\mathbb{R}$ ⇒ biyectiva",
+          "explicacion": "Con dominio $(0,+\\infty)$ y codominio $\\mathbb{R}$, el logaritmo es biyectivo, de modo que cada número real es el logaritmo de exactamente un número positivo; esto le da una función inversa bien definida. El logaritmo es inyectivo por ser monótono y sobreyectivo porque su rango es $\\mathbb{R}$, es decir, es biyectivo. Ejemplo: cada real $y$ tiene un único $x=2^y$ con $\\log_2 x=y$. Verificación: para $y=3$, $x=8$."
+        },
+        {
+          "texto": "Inversa de $\\log_a x$ ⇒ $a^x$",
+          "explicacion": "Que el logaritmo y la exponencial sean inversos significa que cada uno anula al otro al componerlos, en ambos órdenes, siempre que se respeten sus dominios: $x>0$ en el primer caso y cualquier real en el segundo. La inversa del logaritmo es la exponencial de igual base: $\\log_a(a^x)=x$ y $a^{\\log_a x}=x$. Ejemplo: $\\log_5 5^7=7$ y $5^{\\log_5 3}=3$. Verificación: por definición, $\\log_5 3$ es el exponente que da $3$ al elevar $5$."
+        },
+        {
+          "texto": "Gráfica de $\\log_a x$ ⇒ simétrica a la de $a^x$ respecto de $y=x$",
+          "explicacion": "La simetría respecto de la recta $y=x$ intercambia el eje horizontal con el vertical: la asíntota horizontal de la exponencial se convierte en la asíntota vertical del logaritmo, y el punto $(0,1)$ se convierte en $(1,0)$. Los puntos $(b,c)$ de $a^x$ corresponden a los $(c,b)$ de $\\log_a x$. Ejemplo: $3^x$ pasa por $(2,9)$, y $\\log_3 x$ pasa por $(9,2)$. Verificación: $3^2=9$ y $\\log_3 9=2$."
+        },
+        {
+          "texto": "$\\log_{1/a}x=-\\log_a x$ ⇒ base recíproca",
+          "explicacion": "Este resultado se obtiene con el cambio de base: $\\log_{1/a}x=\\frac{\\log_a x}{\\log_a(1/a)}=\\frac{\\log_a x}{-1}$. Permite escribir un logaritmo de base fraccionaria con una base mayor que uno. El logaritmo en base $\\frac{1}{a}$ es el opuesto del de base $a$, lo que equivale a reflejar la gráfica respecto del eje horizontal. Ejemplo: $\\log_{1/2}8=-3=-\\log_2 8$. Verificación: $\\left(\\frac{1}{2}\\right)^{-3}=8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformaciones",
+      "puntos": [
+        {
+          "texto": "$f(x)=\\log_a(x-h)$ ⇒ desplazamiento horizontal",
+          "explicacion": "Restar $h$ al argumento desplaza la gráfica $h$ unidades a la derecha; la asíntota pasa a $x=h$ y el dominio a $(h,+\\infty)$. Ejemplo: $f(x)=\\log_2(x-1)$ tiene dominio $x>1$ y pasa por $(2,0)$. Verificación: $f(2)=\\log_2 1=0$ y $f(3)=\\log_2 2=1$."
+        },
+        {
+          "texto": "$f(x)=\\log_a x+k$ ⇒ desplazamiento vertical",
+          "explicacion": "Un desplazamiento vertical no modifica el dominio ni la asíntota vertical; solo traslada los puntos hacia arriba o abajo, de modo que el cero de la función se mueve de $x=1$ a $x=a^{-k}$. Sumar $k$ desplaza la gráfica $k$ unidades hacia arriba; el dominio y la asíntota no cambian. Ejemplo: $f(x)=\\log_2 x+3$ pasa por $(1,3)$ y $(2,4)$. Verificación: $f(1)=0+3=3$ y $f(2)=1+3=4$."
+        },
+        {
+          "texto": "$f(x)=\\log_a(x-h)+k$ ⇒ asíntota $x=h$ y punto $(h+1,k)$",
+          "explicacion": "Esta es la forma general con desplazamientos: la asíntota vertical es $x=h$, el dominio es $(h,+\\infty)$ y el punto de referencia $(1,0)$ se traslada a $(h+1,k)$. Combinando ambos, la asíntota es $x=h$ y el punto $(1,0)$ pasa a $(h+1,k)$. Ejemplo: $f(x)=\\log_2(x-1)+3$ tiene asíntota $x=1$, dominio $x>1$ y pasa por $(2,3)$ y $(3,4)$. Verificación: $f(2)=\\log_2 1+3=3$ y $f(3)=\\log_2 2+3=4$."
+        },
+        {
+          "texto": "$f(x)=\\log_a(-x)$ ⇒ reflexión sobre el eje $y$",
+          "explicacion": "El cambio de $x$ por $-x$ exige que el argumento $-x$ sea positivo, es decir $x<0$; la gráfica es la imagen especular de la original respecto del eje vertical y la asíntota sigue siendo $x=0$. Cambiar $x$ por $-x$ refleja la gráfica respecto del eje vertical; el dominio pasa a $(-\\infty,0)$. Ejemplo: $f(x)=\\log_2(-x)$ da $f(-8)=3$. Verificación: $\\log_2 8=3$."
+        },
+        {
+          "texto": "$f(x)=-\\log_a x$ ⇒ reflexión sobre el eje $x$",
+          "explicacion": "La reflexión respecto del eje horizontal cambia la monotonía de la función: si la base es mayor que uno, la función pasa a ser decreciente; el dominio y la asíntota no cambian. El signo menos refleja la gráfica respecto del eje horizontal; equivale a usar la base recíproca. Ejemplo: $f(x)=-\\log_2 x$ da $f(8)=-3$. Verificación: $-\\log_2 8=-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar la base",
+      "puntos": [
+        {
+          "texto": "Un punto $(x_0,y_0)$ ⇒ despejar $a$ de $a^{y_0}=x_0$",
+          "explicacion": "Si la gráfica de $\\log_a x$ pasa por un punto conocido, se sustituye y se pasa a forma exponencial para hallar $a$. Ejemplo: pasa por $(9,2)$, luego $a^2=9$ y $a=3$. Otro: pasa por $(8,3)$, luego $a^3=8$ y $a=2$. Verificación: $\\log_3 9=2$ y $\\log_2 8=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función exponencial (tema 66) ⇒ su inversa",
+          "explicacion": "El logaritmo es la inversa de la exponencial estudiada en el tema «Función exponencial»; el dominio de uno es el rango del otro. Ejemplo: $2^x$ tiene rango $(0,+\\infty)$ y $\\log_2 x$ tiene dominio $(0,+\\infty)$. Verificación: $2^3=8$ y $\\log_2 8=3$."
+        },
+        {
+          "texto": "Funciones inversas (tema 65) ⇒ método de inversión",
+          "explicacion": "El procedimiento general de inversión aplicado a la exponencial es el que define el logaritmo: se escribe $y=a^x$, se despeja $x$ y se obtiene $x=\\log_a y$; luego se intercambian las letras. El tema «Funciones inversas» da el método para obtener la inversa; despejando $x$ de $y=a^x$ se obtiene la definición de logaritmo. Ejemplo: $y=2^x$ da $x=\\log_2 y$. Verificación: $f^{-1}(f(3))=\\log_2 8=3$."
+        },
+        {
+          "texto": "Logaritmos y propiedades (tema 68) ⇒ reglas de cálculo",
+          "explicacion": "El siguiente tema desarrolla la definición de logaritmo y sus propiedades (producto, cociente, potencia y cambio de base), que son las reglas que se aplican para simplificar expresiones y resolver ecuaciones. El tema siguiente, «Logaritmos y propiedades», estudia las reglas para operar con logaritmos. Ejemplo: $\\log_2 8+\\log_2 4=\\log_2 32=5$. Verificación: $3+2=5$."
+        },
+        {
+          "texto": "Inecuaciones fraccionarias (tema 14) ⇒ dominio de argumentos racionales",
+          "explicacion": "Cuando el argumento del logaritmo es un cociente de polinomios, el dominio se halla con los puntos críticos y la tabla de signos del tema de inecuaciones fraccionarias. El tema «Inecuaciones fraccionarias» se aplica para hallar dominios de logaritmos con cocientes. Ejemplo: $\\frac{x-1}{x+2}>0$ da $x<-2$ o $x>1$. Verificación: $x=2$ da $\\frac{1}{4}>0$."
+        }
+      ]
+    }
+  ]
+}

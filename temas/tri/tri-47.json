@@ -1,0 +1,153 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Línea seno",
+  "glosario": {
+    "línea seno": "Segmento vertical que mide la ordenada.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "extremo": "Punto donde termina el arco.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "radio vector": "Distancia del origen a un punto.",
+    "perpendicular": "Que forma ángulo recto con otra recta.",
+    "eje de senos": "Eje vertical del círculo trigonométrico.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "rango": "Conjunto de valores que toma una expresión.",
+    "línea coseno": "Segmento horizontal que mide la abscisa.",
+    "reflejo": "Imagen simétrica respecto a una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Línea seno",
+      "puntos": [
+        {
+          "texto": "«Línea seno»: segmento vertical del extremo del arco al eje horizontal",
+          "explicacion": "Se traza desde el extremo $P$ del arco $\\theta$ perpendicular al eje horizontal de la circunferencia trigonométrica, que tiene radio 1 y centro en el origen. Su medida con signo es el seno (sen) del arco. Ejemplo: la sombra vertical de un punto de un reloj sobre la línea que va de las 9 a las 3 representa esa línea."
+        },
+        {
+          "texto": "Valor de la línea seno = ordenada del extremo: $\\text{sen}\\,\\theta = y_P$",
+          "explicacion": "Con radio 1, el cociente entre la ordenada y el radio vector es igual a la ordenada. Ejemplo: para $\\theta = \\frac{\\pi}{6}$ radianes (rad), el extremo es $P\\left(\\frac{\\sqrt{3}}{2}, \\frac{1}{2}\\right)$, y entonces $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Eje de senos = eje vertical",
+          "explicacion": "Sobre el eje de ordenadas se leen los valores de la línea seno, de $-1$ a $1$. Ejemplo: el punto $(0, 0{,}5)$ de ese eje marca un seno de $0{,}5$."
+        },
+        {
+          "texto": "Línea seno hacia arriba ⇒ positiva; hacia abajo ⇒ negativa",
+          "explicacion": "El signo depende de si el extremo está arriba o abajo del eje horizontal. Ejemplo: un extremo con ordenada $0{,}8$ da una línea seno de $+0{,}8$, y uno con ordenada $-0{,}8$ da $-0{,}8$."
+        },
+        {
+          "texto": "Con radio $r$, la ordenada es $r\\,\\text{sen}\\,\\theta$",
+          "explicacion": "En una circunferencia de radio $r$ la altura del extremo respecto al centro se escala por $r$. Ejemplo: en una rueda de la fortuna de radio 10 m, un asiento en $\\theta = \\frac{\\pi}{6}$ está a $10 \\cdot \\frac{1}{2} = 5$ m sobre el nivel del centro."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo por cuadrante",
+      "puntos": [
+        {
+          "texto": "Arco en «cuadrante I» ⇒ línea seno positiva",
+          "explicacion": "El extremo está arriba del eje horizontal. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2} > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante II» ⇒ línea seno positiva",
+          "explicacion": "El extremo sigue arriba del eje horizontal. Ejemplo: $\\text{sen}\\,\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2} > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante III» ⇒ línea seno negativa",
+          "explicacion": "El extremo está debajo del eje horizontal. Ejemplo: $\\text{sen}\\,\\frac{7\\pi}{6} = -\\frac{1}{2} < 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante IV» ⇒ línea seno negativa",
+          "explicacion": "El extremo sigue debajo del eje horizontal. Ejemplo: $\\text{sen}\\,\\frac{5\\pi}{3} = -\\frac{\\sqrt{3}}{2} < 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores extremos",
+      "puntos": [
+        {
+          "texto": "Rango: $-1 \\le \\text{sen}\\,\\theta \\le 1$",
+          "explicacion": "La ordenada de un punto de la circunferencia de radio 1 no puede superar 1 ni bajar de $-1$. Ejemplo: no existe un arco con $\\text{sen}\\,\\theta = 1{,}5$."
+        },
+        {
+          "texto": "Máximo: $\\text{sen}\\,\\frac{\\pi}{2} = 1$",
+          "explicacion": "El extremo está en el punto más alto, $B(0,1)$. Ejemplo: ningún otro arco del primer giro tiene una línea seno mayor que 1."
+        },
+        {
+          "texto": "Mínimo: $\\text{sen}\\,\\frac{3\\pi}{2} = -1$",
+          "explicacion": "El extremo está en el punto más bajo, $B'(0,-1)$. Ejemplo: la línea seno de $\\frac{3\\pi}{2}$ tiene longitud 1 y apunta hacia abajo."
+        },
+        {
+          "texto": "Extremo sobre el eje horizontal ⇒ línea seno nula",
+          "explicacion": "El extremo tiene ordenada 0, así que el segmento vertical se reduce a un punto. Ejemplo: $\\text{sen}\\,0 = 0$, $\\text{sen}\\,\\pi = 0$ y $\\text{sen}\\,2\\pi = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación por cuadrante",
+      "puntos": [
+        {
+          "texto": "En el primer cuadrante, la línea seno ↑ de $0$ a $1$",
+          "explicacion": "A medida que el arco crece de $0$ a $\\frac{\\pi}{2}$, el extremo sube. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = 0{,}5$ es menor que $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "En el segundo cuadrante, la línea seno ↓ de $1$ a $0$",
+          "explicacion": "Cuando el arco crece de $\\frac{\\pi}{2}$ a $\\pi$, el extremo baja hacia el eje horizontal. Ejemplo: $\\text{sen}\\,\\frac{2\\pi}{3} \\approx 0{,}87$ es menor que $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "En el tercer cuadrante, la línea seno ↓ de $0$ a $-1$",
+          "explicacion": "Cuando el arco crece de $\\pi$ a $\\frac{3\\pi}{2}$, el extremo sigue bajando. Ejemplo: $\\text{sen}\\,\\frac{7\\pi}{6} = -0{,}5$ es mayor que $\\text{sen}\\,\\frac{3\\pi}{2} = -1$."
+        },
+        {
+          "texto": "En el cuarto cuadrante, la línea seno ↑ de $-1$ a $0$",
+          "explicacion": "Cuando el arco crece de $\\frac{3\\pi}{2}$ a $2\\pi$, el extremo vuelve a subir. Ejemplo: $\\text{sen}\\,\\frac{5\\pi}{3} \\approx -0{,}87$ es menor que $\\text{sen}\\,2\\pi = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparar senos",
+      "puntos": [
+        {
+          "texto": "En el primer cuadrante, mayor arco ⇒ mayor seno",
+          "explicacion": "Como el extremo sube, el orden de los arcos se conserva en los senos. Ejemplo: $0{,}5 < 1$ y $\\text{sen}\\,0{,}5 \\approx 0{,}48 < \\text{sen}\\,1 \\approx 0{,}84$."
+        },
+        {
+          "texto": "En el segundo cuadrante, mayor arco ⇒ menor seno",
+          "explicacion": "Como el extremo baja, el orden de los arcos se invierte en los senos. Ejemplo: $2 < 3$ y $\\text{sen}\\,2 \\approx 0{,}91 > \\text{sen}\\,3 \\approx 0{,}14$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango de expresiones",
+      "puntos": [
+        {
+          "texto": "Rango de $3\\,\\text{sen}\\,\\theta + 2$: $-1 \\le E \\le 5$",
+          "explicacion": "Se parte de $-1 \\le \\text{sen}\\,\\theta \\le 1$, se multiplica por 3 y luego se suma 2. Ejemplo: $3(-1) + 2 = -1$ y $3(1) + 2 = 5$, así que la expresión varía entre $-1$ y $5$."
+        },
+        {
+          "texto": "Con coeficiente negativo, los extremos se invierten: $2 - 4\\,\\text{sen}\\,\\theta$",
+          "explicacion": "Multiplicar por un número negativo cambia el sentido de la desigualdad. Ejemplo: con $\\text{sen}\\,\\theta = 1$ resulta $2 - 4 = -2$, y con $\\text{sen}\\,\\theta = -1$ resulta $2 + 4 = 6$, así que el rango es $-2 \\le E \\le 6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos negativos",
+      "puntos": [
+        {
+          "texto": "Arco negativo: la línea seno cambia de signo",
+          "explicacion": "El extremo de $-\\theta$ es el reflejo del de $\\theta$ en el eje horizontal. Ejemplo: $\\text{sen}\\left(-\\frac{\\pi}{6}\\right) = -\\text{sen}\\,\\frac{\\pi}{6} = -\\frac{1}{2}$, con la línea dirigida hacia abajo."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La «línea coseno» se mide sobre el eje horizontal",
+          "explicacion": "Es el segmento horizontal del extremo al eje vertical, y no debe confundirse con la línea seno, que es vertical. Ejemplo: para $P\\left(\\frac{3}{5}, \\frac{4}{5}\\right)$, la línea seno mide $\\frac{4}{5}$ y la línea coseno mide $\\frac{3}{5}$."
+        }
+      ]
+    }
+  ]
+}

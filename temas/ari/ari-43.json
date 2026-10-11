@@ -1,0 +1,198 @@
+{
+  "curso": "Aritmética",
+  "tema": "Representación de un número decimal en otra base",
+  "glosario": {
+    "base": "Unidades de un orden que forman el siguiente.",
+    "número decimal": "Número con parte fraccionaria escrito en base diez.",
+    "parte entera": "Cifras escritas a la izquierda del punto.",
+    "parte fraccionaria": "Cifras escritas a la derecha del punto.",
+    "multiplicaciones sucesivas": "Multiplicar la parte fraccionaria por la base repetidamente.",
+    "aval exacto": "Aval con cantidad finita de cifras fraccionarias.",
+    "aval periódico puro": "Aval cuyo periodo comienza tras el punto.",
+    "aval periódico mixto": "Aval con cifras previas al periodo.",
+    "periodo": "Grupo de cifras que se repite indefinidamente.",
+    "anteperiodo": "Cifras fraccionarias situadas antes del periodo.",
+    "fracción irreducible": "Fracción con numerador y denominador primos entre sí.",
+    "factor primo": "Número primo que divide a otro número.",
+    "primos entre sí": "Números cuyo único divisor común es uno.",
+    "residuo": "Valor sobrante tras una división."
+  },
+  "theory": [
+    {
+      "titulo": "Planteamiento",
+      "puntos": [
+        {
+          "texto": "Objetivo: número decimal → numeral aval en base $n$",
+          "explicacion": "Representar un número decimal en otra base consiste en hallar el numeral de base $n$ que tiene exactamente el mismo valor que el número dado en base diez. Si el número tiene parte fraccionaria, el resultado es un aval, cuya estructura y valor posicional se estudian en el tema 42, Números avales. El proceso es el inverso de pasar un aval a base diez por descomposición polinómica, y su fundamento es que cada cifra fraccionaria se obtiene separando una unidad del total que queda."
+        },
+        {
+          "texto": "Parte entera y parte fraccionaria se convierten por separado",
+          "explicacion": "El número se divide en su parte entera y su parte fraccionaria, porque cada una sigue un procedimiento distinto y no se mezclan entre sí. Una vez obtenidos ambos resultados, se escribe primero el numeral entero, luego el punto aval y después las cifras fraccionarias, todo en la misma base. Esta separación es válida porque el punto aval divide el numeral en pesos que son potencias de la base con exponente no negativo y potencias con exponente negativo."
+        },
+        {
+          "texto": "Parte entera: divisiones sucesivas entre $n$",
+          "explicacion": "La parte entera se convierte dividiendo repetidamente entre la base y leyendo los residuos desde el último hasta el primero, procedimiento que se estudia en el tema 19, Cambios de base. Aquí solo interesa recordar que el último cociente, junto con los residuos en orden inverso, forman las cifras enteras del nuevo numeral. Por tanto, este tema se centra únicamente en la parte fraccionaria, que requiere un método diferente."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento del método",
+      "puntos": [
+        {
+          "texto": "Multiplicar por $n$ aísla la primera cifra fraccionaria",
+          "explicacion": "Sea $f$ un número mayor o igual que cero y menor que uno, cuyo numeral en base $n$ es $0,b_1 b_2 b_3\\ldots$. Multiplicar por $n$ desplaza el punto un lugar a la derecha, y el resultado es $b_1$ como parte entera y $0,b_2 b_3\\ldots$ como parte fraccionaria. Por eso la parte entera del producto es precisamente la primera cifra fraccionaria, y la parte fraccionaria sobrante contiene todas las demás cifras, que se obtienen repitiendo el mismo paso."
+        },
+        {
+          "texto": "Cada cifra obtenida ∈ valores de 0 hasta $n-1$",
+          "explicacion": "Como la parte fraccionaria es menor que uno, el producto por $n$ es menor que $n$, y su parte entera es un número entre cero y $n-1$. Esto garantiza que cada cifra obtenida es una cifra válida de la base $n$, sin necesidad de ajustes posteriores. Si en algún paso la parte entera del producto fuera igual o mayor que $n$, significaría que se cometió un error de cálculo en el producto anterior."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicaciones sucesivas",
+      "puntos": [
+        {
+          "texto": "Paso 1: multiplicar la parte fraccionaria por $n$",
+          "explicacion": "Se toma la parte fraccionaria del número decimal y se multiplica por la base de destino. Si el número original es mayor que uno, la parte entera ya se convirtió aparte y aquí solo se usa la parte fraccionaria, sin ella. Por ejemplo, para pasar $0,375$ a base dos se multiplica $0,375$ por dos y resulta $0,75$, producto cuya parte entera es cero."
+        },
+        {
+          "texto": "Paso 2: la parte entera del producto es la cifra",
+          "explicacion": "La parte entera del producto, que es un número entre cero y $n-1$, se anota como la siguiente cifra fraccionaria del resultado. Luego esa parte entera se descarta y solo se conserva la parte fraccionaria del producto para el paso siguiente. Descartarla es necesario porque ya fue registrada como cifra y mantenerla alteraría el valor de los productos posteriores."
+        },
+        {
+          "texto": "Paso 3: repetir hasta fracción cero o repetición",
+          "explicacion": "El proceso se repite hasta que la parte fraccionaria que queda sea cero, caso en que el aval es exacto, o hasta que una parte fraccionaria ya obtenida vuelva a aparecer, caso en que las cifras se repiten desde ese punto y el aval es periódico. La repetición se detecta comparando las partes fraccionarias de los productos y no las cifras, pues una misma cifra puede aparecer varias veces sin que haya comenzado el periodo."
+        },
+        {
+          "texto": "Orden de lectura: cifras en el orden obtenido",
+          "explicacion": "Las cifras fraccionarias se escriben en el mismo orden en que se obtienen, de arriba hacia abajo, y la primera obtenida es la que sigue inmediatamente al punto aval. Esto es opuesto a lo que ocurre con la parte entera, donde los residuos se leen desde el último hasta el primero. La diferencia se explica porque las divisiones sucesivas extraen primero la cifra de menor peso, mientras que las multiplicaciones sucesivas extraen primero la de mayor peso."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos exactos",
+      "puntos": [
+        {
+          "texto": "$0,375$ → $0,011_{(2)}$",
+          "explicacion": "Se multiplica $0,375$ por dos y resulta $0,75$, de parte entera cero, que es la primera cifra. Se multiplica $0,75$ por dos y resulta $1,5$, de parte entera uno, que es la segunda cifra, y queda la parte fraccionaria $0,5$. Se multiplica $0,5$ por dos y resulta $1,0$, de parte entera uno, que es la tercera cifra, y la parte fraccionaria queda en cero, de modo que el proceso termina. Comprobación: un cuarto más un octavo es tres octavos, o sea $0,375$."
+        },
+        {
+          "texto": "$7,625$ → $111,101_{(2)}$",
+          "explicacion": "La parte entera siete se convierte por divisiones sucesivas entre dos y resulta $111_{(2)}$. La parte fraccionaria $0,625$ se multiplica por dos y da $1,25$, con cifra uno; la parte fraccionaria $0,25$ da $0,5$, con cifra cero; la parte fraccionaria $0,5$ da $1,0$, con cifra uno, y el proceso termina. Las cifras fraccionarias son uno, cero, uno. Se unen ambas partes con el punto aval y resulta $111,101_{(2)}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos periódicos",
+      "puntos": [
+        {
+          "texto": "$0,2$ → $0,\\overline{0121}_{(3)}$ periódico puro",
+          "explicacion": "Se multiplica por tres: $0,2$ da $0,6$ con cifra cero; $0,6$ da $1,8$ con cifra uno; $0,8$ da $2,4$ con cifra dos; $0,4$ da $1,2$ con cifra uno, y queda otra vez la parte fraccionaria $0,2$, que es la inicial. Como la parte fraccionaria inicial reaparece, el periodo es cero, uno, dos, uno, y empieza en la primera cifra. Se comprueba con la generatriz: $0121_{(3)}$ vale dieciséis y $3^4-1$ vale ochenta, de modo que resulta dieciséis ochentavos, es decir, un quinto."
+        },
+        {
+          "texto": "$0,1$ → $0,0\\overline{0011}_{(2)}$ periódico mixto",
+          "explicacion": "Se multiplica por dos: $0,1$ da $0,2$ con cifra cero; $0,2$ da $0,4$ con cifra cero; $0,4$ da $0,8$ con cifra cero; $0,8$ da $1,6$ con cifra uno; $0,6$ da $1,2$ con cifra uno, y reaparece $0,2$. La parte fraccionaria $0,1$ inicial no vuelve a aparecer, por eso la primera cifra, cero, es anteperiodo, y el periodo es cero, cero, uno, uno. Este resultado explica por qué una cantidad tan simple en base diez no puede escribirse de forma exacta en base dos."
+        },
+        {
+          "texto": "$2,3$ → $2,1\\overline{2}_{(5)}$ periódico mixto",
+          "explicacion": "La parte entera dos se escribe igual en base cinco. La parte fraccionaria $0,3$ multiplicada por cinco da $1,5$, con cifra uno y parte fraccionaria $0,5$; luego $0,5$ por cinco da $2,5$, con cifra dos y otra vez parte fraccionaria $0,5$. La parte fraccionaria $0,5$ se repite, de modo que la cifra uno es anteperiodo y la cifra dos es el periodo. Se comprueba con la generatriz de base cinco: el numeral $12_{(5)}$ vale siete y el anteperiodo $1_{(5)}$ vale uno, de modo que el numerador es seis; el denominador es cuatro por cinco, es decir, veinte. Resultan seis veinteavos, que equivalen a tres décimos, o sea $0,3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Variante con fracciones",
+      "puntos": [
+        {
+          "texto": "Fracción $\\frac{a}{b}$: multiplicar el residuo por $n$ y dividir",
+          "explicacion": "Cuando el número se da como fracción, se puede operar sin decimales: se multiplica el numerador por la base, se divide entre el denominador, el cociente es la cifra y el residuo reemplaza al numerador en el paso siguiente. Es equivalente al método de multiplicaciones sucesivas, pues la parte fraccionaria en cada paso es el residuo dividido entre el denominador. Así se evitan errores de redondeo y se detecta la repetición comparando residuos enteros."
+        },
+        {
+          "texto": "$\\frac{3}{7}$ → $0,\\overline{011}_{(2)}$",
+          "explicacion": "Con numerador tres y denominador siete: tres por dos es seis, cociente cero, residuo seis; seis por dos es doce, cociente uno, residuo cinco; cinco por dos es diez, cociente uno, residuo tres. El residuo tres es el inicial, por lo que el periodo es cero, uno, uno. Se comprueba con la generatriz: $011_{(2)}$ vale tres y $2^3-1$ vale siete, de modo que resulta tres séptimos."
+        }
+      ]
+    },
+    {
+      "titulo": "Criterio de exactitud",
+      "puntos": [
+        {
+          "texto": "Fracción irreducible: aval exacto ⇒ factores primos del denominador dividen a $n$",
+          "explicacion": "Una fracción irreducible $\\frac{a}{b}$ origina un aval exacto en base $n$ si y solo si todo factor primo de $b$ divide a $n$. La razón es que un aval exacto de $m$ cifras equivale a un entero entre $n^m$, de modo que $b$ debe dividir a $n^m$; recíprocamente, si cada factor primo de $b$ divide a $n$, existe un exponente $m$ suficientemente grande para que $b$ divida a $n^m$. En base diez la condición es que los únicos factores primos de $b$ sean dos y cinco, caso estudiado en el tema 41."
+        },
+        {
+          "texto": "Cantidad de cifras fraccionarias = menor $m$ con $b$ divisor de $n^m$",
+          "explicacion": "En un aval exacto, la cantidad de cifras fraccionarias es el menor exponente $m$ tal que el denominador de la fracción irreducible divide a $n^m$. Por ejemplo, $\\frac{3}{8}$ en base dos tiene tres cifras, pues ocho divide a $2^3$ y no a $2^2$; el resultado es $0,011_{(2)}$. Del mismo modo, $\\frac{1}{12}$ en base seis tiene dos cifras, pues doce divide a $6^2$, que es treinta y seis, y no a seis; resulta $0,03_{(6)}$."
+        },
+        {
+          "texto": "$\\frac{1}{6}$ ≠ aval exacto en base 10 pero = $0,2_{(12)}$",
+          "explicacion": "El denominador seis tiene los factores primos dos y tres. En base diez, tres no divide a diez, por lo que la fracción no origina un aval exacto, sino periódico mixto. En base doce, en cambio, ambos factores primos dividen a doce, y como seis divide a doce, basta una cifra fraccionaria: doce entre seis es dos, y la fracción vale dos doceavos, es decir, $0,2_{(12)}$. La exactitud depende, por tanto, de la base elegida."
+        }
+      ]
+    },
+    {
+      "titulo": "Periodo y anteperiodo",
+      "puntos": [
+        {
+          "texto": "Denominador coprimo con $n$ ⇒ periódico puro",
+          "explicacion": "Si el denominador de la fracción irreducible y la base son primos entre sí, es decir, si no comparten ningún factor primo, se obtiene un aval periódico puro. En este caso el periodo comienza inmediatamente después del punto y su longitud es el menor entero $p$ tal que el denominador divide a $n^p-1$. Por ejemplo, $\\frac{1}{3}$ en base dos da periodo de longitud dos, pues tres divide a $2^2-1$, y resulta $0,\\overline{01}_{(2)}$."
+        },
+        {
+          "texto": "Longitud del periodo menor que el denominador",
+          "explicacion": "La longitud del periodo no puede superar el denominador menos uno, porque en el proceso de multiplicaciones sucesivas los residuos son enteros menores que el denominador y distintos de cero, de modo que alguno debe repetirse tras como máximo $b-1$ pasos. Por ejemplo, $\\frac{1}{7}$ en base diez tiene periodo de longitud seis, que es el máximo posible, porque siete divide a $10^6-1$, que es 999999, y no a las potencias menores. Esto asegura que todo racional origina un aval exacto o periódico."
+        },
+        {
+          "texto": "Denominador mixto ⇒ periódico mixto",
+          "explicacion": "Si el denominador de la fracción irreducible se descompone como producto de un factor $b_1$, formado solo por factores primos de la base, y un factor $b_2$, mayor que uno y primo con la base, se obtiene un aval periódico mixto. La longitud del anteperiodo es el menor $k$ tal que $b_1$ divide a $n^k$, y la longitud del periodo es el menor $p$ tal que $b_2$ divide a $n^p-1$. Por ejemplo, $\\frac{1}{6}$ en base dos tiene $b_1$ igual a dos y $b_2$ igual a tres, de donde resulta anteperiodo de una cifra y periodo de dos: $0,0\\overline{01}_{(2)}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aproximación",
+      "puntos": [
+        {
+          "texto": "Detener en $m$ cifras ⇒ error menor que $n^{-m}$",
+          "explicacion": "Si el proceso se detiene tras $m$ cifras fraccionarias, el número obtenido es una aproximación por defecto del valor real. El error es menor que $n^{-m}$ porque lo que falta por añadir es una parte fraccionaria menor que uno desplazada $m$ lugares. Esto permite acotar la aproximación elegida: para un error menor que una milésima en base dos bastan diez cifras fraccionarias, porque $2^{-10}$ es menor que $0,001$."
+        }
+      ]
+    },
+    {
+      "titulo": "Atajo entre bases",
+      "puntos": [
+        {
+          "texto": "Base potencia de otra: agrupar cifras desde el punto",
+          "explicacion": "Si una base es potencia de la otra, la conversión puede hacerse agrupando cifras sin pasar por base diez. Para pasar de base dos a base ocho, se agrupan las cifras de tres en tres, a partir del punto aval, hacia la izquierda en la parte entera y hacia la derecha en la fraccionaria, completando con ceros a la derecha si hace falta. Por ejemplo, $11,0101_{(2)}$ se agrupa como $011$ y $010$ y $100$, que valen tres, dos y cuatro, y resulta $3,24_{(8)}$."
+        },
+        {
+          "texto": "Base distinta de 10: convertir pasando por base 10",
+          "explicacion": "Para pasar un aval de una base $m$ a otra base $n$, ninguna de las cuales es diez ni potencia de la otra, se convierte primero a base diez por descomposición polinómica y luego se aplica el método de este tema. La base diez actúa como intermediaria, pues es donde se conocen y se calculan fácilmente las operaciones. El procedimiento es válido porque el valor del número no depende de la base en que se escriba."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Multiplicar el número completo en cada paso",
+          "explicacion": "Un error habitual es multiplicar por la base el número completo, incluida la parte entera ya obtenida, en lugar de multiplicar solo la parte fraccionaria que queda. Eso mezcla la cifra recién obtenida con el valor que debe seguir procesándose y produce cifras erróneas. Conviene anotar en cada paso la parte entera del producto y trabajar luego únicamente con lo que quedó a la derecha del punto."
+        },
+        {
+          "texto": "Leer las cifras fraccionarias en orden inverso",
+          "explicacion": "Otro error es leer las cifras fraccionarias de abajo hacia arriba, por analogía con los residuos de la parte entera. Las cifras fraccionarias deben leerse en el orden en que se obtuvieron, pues la primera es la que tiene mayor peso. Invertir el orden da un número distinto, aunque contenga las mismas cifras."
+        },
+        {
+          "texto": "Detectar el periodo comparando cifras",
+          "explicacion": "Es frecuente suponer que el periodo comienza cuando una cifra se repite, pero lo que debe repetirse es la parte fraccionaria de los productos. Por ejemplo, en la conversión de $0,1$ a base dos aparecen varias cifras cero y uno antes de que reaparezca una parte fraccionaria anterior. Mientras no se repita esa parte fraccionaria no puede afirmarse que el periodo haya comenzado."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia",
+      "puntos": [
+        {
+          "texto": "Gottfried Leibniz expuso la aritmética binaria en 1703",
+          "explicacion": "Gottfried Wilhelm Leibniz, filósofo y matemático alemán que vivió entre 1646 y 1716, presentó en 1703 su explicación de la aritmética binaria ante la Academia Real de Ciencias de París. En ella mostró cómo representar cualquier número solo con las cifras cero y uno y cómo operar con ellas. Su trabajo hizo evidente que el valor de un número no depende de la base elegida, idea esencial para representar un número decimal en otra base."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sistema de números enteros",
+  "glosario": {
+    "entero": "Número natural, su opuesto o cero",
+    "entero positivo": "Entero mayor que cero",
+    "entero negativo": "Entero menor que cero",
+    "opuesto": "Entero que sumado al dado da cero",
+    "valor absoluto": "Distancia de un entero al cero",
+    "recta numérica": "Recta donde cada entero ocupa un punto",
+    "cerradura": "Resultado de la operación pertenece al conjunto",
+    "propiedad conmutativa": "El orden de los términos no altera",
+    "propiedad asociativa": "La agrupación de términos no altera",
+    "propiedad distributiva": "Producto sobre una suma se reparte",
+    "elemento neutro": "Valor que no modifica al operar",
+    "inverso aditivo": "Otro nombre del opuesto",
+    "ley de signos": "Regla del signo en productos y cocientes",
+    "signo de agrupación": "Símbolo que encierra una operación",
+    "potenciación": "Multiplicar un número por sí mismo varias veces",
+    "sucesor": "Entero que sigue a otro",
+    "antecesor": "Entero que precede a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El conjunto $\\mathbb{Z}$ reúne positivos, cero y negativos",
+          "explicacion": "El sistema de los números enteros, representado con la letra $\\mathbb{Z}$, que proviene de la palabra alemana Zahlen, números, es el conjunto $\\{\\ldots,-3,-2,-1,0,1,2,3,\\ldots\\}$. Surge de una limitación del conjunto de los números naturales, tratado en el tema 16: la sustracción $a - b$ no tiene solución natural cuando $a < b$. Al incorporar los opuestos de los naturales y el cero, toda sustracción entre enteros produce un resultado dentro del mismo conjunto."
+        },
+        {
+          "texto": "$\\mathbb{Z}$ ⊃ $\\mathbb{N}$: los naturales son enteros positivos",
+          "explicacion": "Todo número natural es también un número entero, de modo que el conjunto de los enteros contiene al de los naturales. Los enteros ampliados añaden los negativos, que no son naturales. La pertenencia del cero al conjunto de los naturales depende de la convención adoptada en cada texto, pero en $\\mathbb{Z}$ el cero siempre es un elemento y ocupa una posición central entre positivos y negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Subconjuntos",
+      "puntos": [
+        {
+          "texto": "«Entero positivo»: elemento de $\\mathbb{Z}^{+}$, es decir 1, 2, 3, ...",
+          "explicacion": "Un entero positivo es un entero mayor que cero. Su conjunto es $\\mathbb{Z}^{+}=\\{1,2,3,\\ldots\\}$ y coincide con los números naturales sin el cero. Los enteros positivos se escriben con o sin el signo más delante, de modo que $+5$ y $5$ representan el mismo número."
+        },
+        {
+          "texto": "«Entero negativo»: elemento de $\\mathbb{Z}^{-}$, es decir $-1, -2, -3, \\ldots$",
+          "explicacion": "Un entero negativo es un entero menor que cero y se escribe con el signo menos delante. Su conjunto es $\\mathbb{Z}^{-}=\\{-1,-2,-3,\\ldots\\}$. Cada entero negativo es el opuesto de un entero positivo, y el signo menos es obligatorio para distinguirlo."
+        },
+        {
+          "texto": "El cero no es positivo ni negativo",
+          "explicacion": "El cero ocupa una clase propia dentro de $\\mathbb{Z}$, porque no es mayor ni menor que cero. Por ello $\\mathbb{Z} = \\mathbb{Z}^{-} \\cup \\{0\\} \\cup \\mathbb{Z}^{+}$, unión de tres conjuntos que no comparten elementos. El cero es además el elemento neutro de la adición y es su propio opuesto."
+        },
+        {
+          "texto": "Enteros no nulos: $\\mathbb{Z}^{*}=\\mathbb{Z}-\\{0\\}$",
+          "explicacion": "El conjunto de enteros no nulos se obtiene quitando el cero al conjunto $\\mathbb{Z}$. Se emplea siempre que el cero debe excluirse, por ejemplo cuando un entero actúa como divisor en una división. Contiene tanto positivos como negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Recta numérica",
+      "puntos": [
+        {
+          "texto": "Cada entero ocupa un punto de la «recta numérica»",
+          "explicacion": "Sobre una recta se elige un punto como origen, que representa al 0, y un segmento como unidad. Los enteros positivos se ubican a la derecha del origen, a distancias iguales a la unidad, y los negativos a la izquierda, con la misma separación. La recta numérica permite visualizar el orden de los enteros y la simetría de cada positivo con su opuesto respecto del cero."
+        },
+        {
+          "texto": "Opuesto de $a$: $-a$, con $a + (-a) = 0$",
+          "explicacion": "El opuesto de un entero $a$ es el entero $-a$ que sumado con $a$ da cero. En la recta numérica es el punto simétrico de $a$ respecto del origen: el opuesto de 7 es $-7$ y el de $-4$ es 4. El opuesto de 0 es 0. También recibe el nombre de inverso aditivo, y su existencia es lo que permite definir la resta."
+        },
+        {
+          "texto": "El opuesto del opuesto devuelve el número",
+          "explicacion": "Se cumple $-(-a) = a$, porque $a$ es el entero que sumado con $-a$ da cero. En la recta numérica, tomar dos veces el simétrico respecto del origen regresa al punto de partida. La propiedad explica por qué dos signos menos consecutivos equivalen a un signo más, como en $-(-6)=6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor absoluto",
+      "puntos": [
+        {
+          "texto": "«Valor absoluto»: distancia del entero al cero",
+          "explicacion": "El valor absoluto de $a$, escrito $|a|$, mide la distancia entre $a$ y el origen en la recta numérica, sin considerar el sentido. Se define por casos: $|a| = a$ si $a \\ge 0$ y $|a| = -a$ si $a < 0$. Así $|8|=8$ y $|-8|=8$. El valor absoluto de un entero nunca es negativo y vale cero únicamente cuando el entero es cero."
+        },
+        {
+          "texto": "Opuestos tienen igual valor absoluto",
+          "explicacion": "Como $a$ y $-a$ están a la misma distancia del cero, $|a| = |-a|$. Por ejemplo, $|-15| = |15| = 15$. Esta propiedad se usa para comparar enteros negativos y para operar con signos distintos, procedimientos en los que solo importan las magnitudes."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden",
+      "puntos": [
+        {
+          "texto": "Orden: $a < b$ si $b - a$ es positivo",
+          "explicacion": "Un entero es menor que otro cuando la diferencia entre el mayor y el menor es un entero positivo. En la recta numérica, el menor queda a la izquierda del mayor. Esta definición extiende el orden de los naturales y es compatible con la adición: si $a < b$, entonces $a + c < b + c$ para todo entero $c$."
+        },
+        {
+          "texto": "Todo negativo es menor que cero y que todo positivo",
+          "explicacion": "Los enteros negativos se ubican a la izquierda del cero y de los positivos, de modo que $-100 < 0 < 1$. Un entero negativo, por grande que sea su valor absoluto, es siempre menor que cualquier entero positivo. La ordenación completa de los enteros va de los negativos más alejados hacia los positivos más alejados."
+        },
+        {
+          "texto": "Entre negativos, mayor valor absoluto ⇒ número menor",
+          "explicacion": "Al comparar dos enteros negativos, el que tiene mayor valor absoluto está más lejos del cero hacia la izquierda y por tanto es el menor. Así $-9 < -2$, pese a que 9 es mayor que 2. El error habitual consiste en trasladar el criterio de los naturales, que no aplica cuando el signo es negativo."
+        },
+        {
+          "texto": "$\\mathbb{Z}$ no tiene primer ni último elemento",
+          "explicacion": "Para cualquier entero existe uno mayor y uno menor, de modo que el conjunto no está acotado ni superior ni inferiormente. Por esa razón no hay un entero que sea el más pequeño de todos ni otro que sea el más grande, a diferencia de los naturales, que sí tienen un primer elemento. Entre dos enteros consecutivos no hay otro entero, y esta propiedad se describe diciendo que el orden de $\\mathbb{Z}$ es discreto."
+        },
+        {
+          "texto": "El «sucesor» de $a$ es $a+1$",
+          "explicacion": "El sucesor de un entero es el entero que le sigue inmediatamente en la recta numérica, y se obtiene sumándole una unidad. El sucesor de $-1$ es 0 y el de 0 es 1. Todo entero tiene exactamente un sucesor, lo que expresa que el orden de los enteros avanza sin interrupción en el sentido positivo."
+        },
+        {
+          "texto": "El «antecesor» de $a$ es $a-1$",
+          "explicacion": "El antecesor de un entero es el entero que lo precede inmediatamente, y se obtiene restándole una unidad. El antecesor de 1 es 0 y el de 0 es $-1$. A diferencia de los naturales, donde el cero no tiene antecesor, todo entero posee antecesor, de modo que el orden también se extiende sin interrupción hacia los negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Adición",
+      "puntos": [
+        {
+          "texto": "Signos iguales: se suman los valores absolutos y se conserva el signo",
+          "explicacion": "Si ambos sumandos son positivos o ambos negativos, la suma tiene el mismo signo y su valor absoluto es la suma de los valores absolutos. Por ejemplo, $(-8) + (-5) = -13$. Equivale a acumular desplazamientos en el mismo sentido sobre la recta numérica."
+        },
+        {
+          "texto": "Signos distintos: se resta el menor valor absoluto del mayor",
+          "explicacion": "Cuando los sumandos tienen signos distintos, el resultado lleva el signo del sumando de mayor valor absoluto, y su magnitud es la diferencia de los valores absolutos. Por ejemplo, $(-9)+4=-5$ y $9+(-4)=5$. Si los valores absolutos son iguales, la suma es cero, pues los sumandos son opuestos."
+        },
+        {
+          "texto": "Propiedad conmutativa de la adición",
+          "explicacion": "Para todo par de enteros, $a + b = b + a$. El orden de los sumandos no altera la suma: $(-3) + 8 = 8 + (-3) = 5$. La propiedad permite reordenar términos para agrupar los de igual signo."
+        },
+        {
+          "texto": "Propiedad asociativa de la adición",
+          "explicacion": "Para tres enteros cualesquiera, $(a + b) + c = a + (b + c)$. La forma de agrupar los sumandos no cambia el resultado, por lo que la expresión $a+b+c$ no necesita paréntesis. Se aprovecha para sumar primero los términos que facilitan el cálculo."
+        },
+        {
+          "texto": "Elemento neutro de la adición: el cero",
+          "explicacion": "El cero cumple $a + 0 = 0 + a = a$ para todo entero $a$. Al sumarlo no se modifica el valor del otro sumando, por eso recibe el nombre de elemento neutro aditivo. Es único dentro de $\\mathbb{Z}$."
+        },
+        {
+          "texto": "Todo entero tiene inverso aditivo",
+          "explicacion": "Para cada entero $a$ existe $-a$ tal que $a + (-a) = 0$. Esta propiedad, ausente en los naturales, es la que distingue a los enteros y hace que toda ecuación $a + x = b$ tenga solución en $\\mathbb{Z}$, a saber $x = b + (-a)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustracción",
+      "puntos": [
+        {
+          "texto": "Restar es sumar el opuesto",
+          "explicacion": "La sustracción se define como $a - b = a + (-b)$. Así, $5 - (-3) = 5 + 3 = 8$ y $(-2) - 7 = (-2) + (-7) = -9$. Esta definición reduce toda resta a una adición y explica por qué restar un entero negativo aumenta el resultado."
+        },
+        {
+          "texto": "La resta no es conmutativa ni asociativa",
+          "explicacion": "En general $a - b \\ne b - a$, pues $5 - 3 = 2$ mientras que $3 - 5 = -2$; los resultados son opuestos. Tampoco es asociativa: $(8 - 4) - 2 = 2$, pero $8 - (4 - 2) = 6$. Por esto en las restas encadenadas el orden y la agrupación deben respetarse."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicación",
+      "puntos": [
+        {
+          "texto": "«Ley de signos»: signos iguales ⇒ producto positivo",
+          "explicacion": "El producto de dos enteros positivos o de dos enteros negativos es positivo, y su valor absoluto es el producto de los valores absolutos. Por ejemplo, $(-6)(-7) = 42$. La regla se fundamenta en que multiplicar por un negativo invierte el sentido, de modo que dos inversiones sucesivas lo restituyen."
+        },
+        {
+          "texto": "Signos distintos ⇒ producto negativo",
+          "explicacion": "Cuando un factor es positivo y el otro negativo, el producto es negativo, con valor absoluto igual al producto de los valores absolutos: $(-6)(7) = -42$. Se justifica porque $6 \\cdot 7$ sumas de $-6$ producen un desplazamiento total hacia la izquierda."
+        },
+        {
+          "texto": "Cantidad par de factores negativos ⇒ producto positivo",
+          "explicacion": "En un producto de varios factores no nulos, el signo depende de cuántos son negativos. Si la cantidad es par, los signos se compensan por pares y el producto es positivo; si es impar, es negativo. Por ejemplo, $(-2)(-3)(-4) = -24$, con tres factores negativos."
+        },
+        {
+          "texto": "Multiplicar por cero ⇒ cero",
+          "explicacion": "Para todo entero $a$, $a \\cdot 0 = 0$. El cero es absorbente respecto de la multiplicación: el producto es nulo en cuanto un factor es cero, sin importar el valor de los demás factores. Por ejemplo, $(-15) \\cdot 0 = 0$ y $0 \\cdot 238 = 0$. Esta propiedad se deduce de la distributiva, ya que $a \\cdot 0 = a(0+0) = a \\cdot 0 + a \\cdot 0$, y la única forma de que ello ocurra es que $a \\cdot 0 = 0$."
+        },
+        {
+          "texto": "Producto nulo: $a \\cdot b = 0$ ⇒ uno de los factores es cero",
+          "explicacion": "Si el producto de dos enteros es cero, al menos uno de ellos es cero. En $\\mathbb{Z}$ no existen factores no nulos cuyo producto sea cero. Esta propiedad permite resolver ecuaciones factorizadas y es la base de la propiedad cancelativa."
+        },
+        {
+          "texto": "Propiedad conmutativa de la multiplicación",
+          "explicacion": "Para dos enteros cualesquiera, $a \\cdot b = b \\cdot a$. El orden de los factores no altera el producto, como en $(-4)(5) = (5)(-4) = -20$. La propiedad se cumple para cualquier combinación de signos y permite reordenar los factores para multiplicar primero los que resultan más sencillos. Junto con la asociativa, hace que el producto de varios enteros no dependa de la manera en que se ordenen o agrupen sus factores."
+        },
+        {
+          "texto": "Propiedad asociativa de la multiplicación",
+          "explicacion": "Para tres enteros, $(a \\cdot b) \\cdot c = a \\cdot (b \\cdot c)$. La agrupación de los factores no cambia el producto, lo que permite multiplicar en el orden más cómodo. Por ejemplo, $((-2) \\cdot 5) \\cdot (-3) = (-10)(-3) = 30$ y $(-2) \\cdot (5 \\cdot (-3)) = (-2)(-15) = 30$. Gracias a ella la expresión $a \\cdot b \\cdot c$ carece de ambigüedad y no requiere paréntesis."
+        },
+        {
+          "texto": "Elemento neutro de la multiplicación: el uno",
+          "explicacion": "Se cumple $a \\cdot 1 = a$ para todo entero. Multiplicar por 1 no modifica el número, por eso 1 es el elemento neutro multiplicativo. Multiplicar por $-1$ produce, en cambio, el opuesto: $a \\cdot (-1) = -a$."
+        },
+        {
+          "texto": "Propiedad distributiva del producto sobre la suma",
+          "explicacion": "Para tres enteros, $a(b + c) = ab + ac$. Un factor que multiplica a una suma se reparte entre los sumandos. Por ejemplo, $(-3)(4 + 5) = -12 + (-15) = -27$. Es la propiedad que vincula la multiplicación con la adición y permite extraer factor común."
+        },
+        {
+          "texto": "Propiedad cancelativa: $ac = bc$ con $c \\ne 0$ ⇒ $a = b$",
+          "explicacion": "Si dos productos son iguales y el factor común es distinto de cero, los otros factores son iguales. Se deduce de la propiedad de producto nulo, porque $ac - bc = (a - b)c = 0$ obliga a $a - b = 0$. No es válida si $c = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potenciación",
+      "puntos": [
+        {
+          "texto": "«Potenciación»: base negativa y exponente par ⇒ positiva",
+          "explicacion": "La potenciación con exponente natural repite la multiplicación de la base. Si la base es negativa y el exponente es par, los factores negativos se agrupan en pares y la potencia es positiva: $(-2)^4 = 16$."
+        },
+        {
+          "texto": "Base negativa y exponente impar ⇒ potencia negativa",
+          "explicacion": "Con exponente impar queda un factor negativo sin compensar y la potencia es negativa: $(-2)^3 = -8$. En ambos casos el valor absoluto de la potencia es la potencia del valor absoluto de la base."
+        }
+      ]
+    },
+    {
+      "titulo": "Cerradura",
+      "puntos": [
+        {
+          "texto": "«Cerradura»: suma, resta y producto de enteros ∈ $\\mathbb{Z}$",
+          "explicacion": "La adición, la sustracción y la multiplicación son operaciones cerradas en $\\mathbb{Z}$, es decir, el resultado de operar dos enteros es siempre un entero. La cerradura de la resta es la ventaja de los enteros frente a los naturales, donde la diferencia puede no existir."
+        },
+        {
+          "texto": "La división no siempre ∈ $\\mathbb{Z}$",
+          "explicacion": "El cociente de dos enteros solo es entero si el dividendo es múltiplo del divisor: $12 \\div 4 = 3$, pero $7 \\div 2$ no es entero. Cuando es exacta, la división cumple la ley de signos del producto. La imposibilidad general de dividir motiva la creación de los racionales, tema 36, y el estudio de la división entera, tema 22."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones combinadas",
+      "puntos": [
+        {
+          "texto": "Jerarquía: potencias, productos y cocientes, luego sumas y restas",
+          "explicacion": "En una expresión con varias operaciones se efectúan primero las potencias, luego las multiplicaciones y divisiones de izquierda a derecha y, al final, las sumas y restas. Por ejemplo, $-3 + 2 \\cdot (-4)^2 - 10 = -3 + 2 \\cdot 16 - 10 = -3 + 32 - 10 = 19$."
+        },
+        {
+          "texto": "Cada «signo de agrupación» se resuelve de dentro hacia afuera",
+          "explicacion": "Paréntesis, corchetes y llaves indican qué operaciones deben realizarse primero. Se resuelve el signo más interno y se continúa hacia afuera. Por ejemplo, $20 - [3 + (-4)(5)] = 20 - [3 - 20] = 20 - (-17) = 37$."
+        },
+        {
+          "texto": "Un menos delante de un agrupador invierte los signos interiores",
+          "explicacion": "Al suprimir un agrupador precedido de signo menos, cada término interior cambia de signo: $-(a - b + c) = -a + b - c$. Se justifica porque restar una suma equivale a sumar su opuesto, y el opuesto de una suma es la suma de los opuestos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$-3^2 \\ne (-3)^2$",
+          "explicacion": "En $-3^2$ el exponente afecta solo al 3, por lo que el resultado es $-(3^2) = -9$. En $(-3)^2$ la base incluye el signo y el resultado es 9. Los paréntesis determinan cuál es la base de la potencia."
+        },
+        {
+          "texto": "El signo menos tiene dos usos: resta y número negativo",
+          "explicacion": "El mismo símbolo indica la operación de restar entre dos términos y el carácter negativo de un entero. En $5 - (-3)$ el primero es una resta y el segundo forma parte del número $-3$. Distinguirlos evita errores al escribir $5 - -3$ o al reducir signos."
+        },
+        {
+          "texto": "Restar un negativo ⇒ el resultado aumenta",
+          "explicacion": "Como $a - (-b) = a + b$, restar un entero negativo equivale a sumar su valor absoluto. Por ejemplo, $5 - (-3) = 8$, mayor que 5. El error común es conservar el signo menos y obtener 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Reseña histórica",
+      "puntos": [
+        {
+          "texto": "Los matemáticos chinos usaban varillas rojas y negras",
+          "explicacion": "En la antigua China, los cálculos con varillas distinguían las cantidades positivas de las negativas mediante dos colores, rojo y negro. Los textos matemáticos chinos clásicos trabajaban con cantidades de signo opuesto al resolver sistemas de ecuaciones. Es uno de los antecedentes más antiguos del uso de números negativos."
+        },
+        {
+          "texto": "Brahmagupta formuló reglas con fortunas y deudas en el año 628",
+          "explicacion": "Brahmagupta, matemático indio, expuso en su obra Brahmasphutasiddhanta, del año 628, reglas para operar con cantidades positivas, negativas y cero, interpretadas como fortunas y deudas. Estableció, por ejemplo, que la suma de dos deudas es una deuda y que el producto de una deuda y una fortuna es una deuda. Estas reglas anticipan la ley de signos moderna."
+        }
+      ]
+    }
+  ]
+}

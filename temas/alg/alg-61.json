@@ -1,0 +1,202 @@
+{
+  "curso": "Álgebra",
+  "tema": "Funciones monótonas",
+  "glosario": {
+    "función monótona": "Función que solo crece o solo decrece.",
+    "estrictamente creciente": "Aumenta siempre al aumentar la variable.",
+    "estrictamente decreciente": "Disminuye siempre al aumentar la variable.",
+    "no decreciente": "Nunca disminuye al aumentar la variable.",
+    "no creciente": "Nunca aumenta al aumentar la variable.",
+    "intervalo": "Conjunto de reales entre dos extremos.",
+    "función constante": "Función con el mismo valor siempre.",
+    "vértice": "Punto extremo de una parábola.",
+    "tasa de variación media": "Cociente de cambios de salida y entrada.",
+    "inyectiva": "Valores distintos dan imágenes distintas.",
+    "función inversa": "Función que deshace a otra función.",
+    "composición": "Aplicar una función al resultado de otra.",
+    "extremo relativo": "Máximo o mínimo en un entorno del punto.",
+    "factorizar": "Escribir como producto de factores.",
+    "recíproco": "Número que multiplicado da uno.",
+    "función por tramos": "Función definida con distintas fórmulas por intervalos."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función monótona» ⇒ solo crece o solo decrece en un intervalo",
+          "explicacion": "Una función es monótona en un intervalo $I$ cuando, al aumentar la variable dentro de $I$, la función nunca cambia de dirección: o bien no decrece, o bien no crece. Es una propiedad que se estudia sobre intervalos concretos y no siempre sobre todo el dominio. Ejemplo: $f(x)=x^2$ es monótona en $[0,+\\infty)$ (crece) y en $(-\\infty,0]$ (decrece), pero no en todo $\\mathbb{R}$. Verificación: $f(-2)=4>f(0)=0<f(2)=4$ cambia de dirección en $0$."
+        },
+        {
+          "texto": "«Función estrictamente creciente» ⇒ $x_1<x_2$ implica $f(x_1)<f(x_2)$",
+          "explicacion": "Una función es estrictamente creciente en $I$ si, para cualesquiera $x_1<x_2$ de $I$, se cumple $f(x_1)<f(x_2)$: mayor entrada, mayor salida. Ejemplo: $f(x)=2x+1$ en $\\mathbb{R}$: si $x_1<x_2$ entonces $2x_1+1<2x_2+1$. Verificación: $f(1)=3<f(4)=9$."
+        },
+        {
+          "texto": "«Función estrictamente decreciente» ⇒ $x_1<x_2$ implica $f(x_1)>f(x_2)$",
+          "explicacion": "Una función es estrictamente decreciente en $I$ si, para cualesquiera $x_1<x_2$ de $I$, se cumple $f(x_1)>f(x_2)$: mayor entrada, menor salida. Ejemplo: $f(x)=-3x+2$ en $\\mathbb{R}$. Verificación: $f(1)=-1>f(4)=-10$."
+        },
+        {
+          "texto": "«Función no decreciente» ⇒ $x_1<x_2$ implica $f(x_1)\\le f(x_2)$",
+          "explicacion": "Una función es no decreciente (creciente en sentido amplio) si nunca baja: puede subir o mantenerse constante. Ejemplo: $f(x)=0$ si $x\\le 1$ y $f(x)=x-1$ si $x>1$ es no decreciente: vale $0$ hasta $1$ y luego sube. Verificación: $f(0)=0\\le f(1)=0\\le f(3)=2$."
+        },
+        {
+          "texto": "«Función no creciente» ⇒ $x_1<x_2$ implica $f(x_1)\\ge f(x_2)$",
+          "explicacion": "Una función es no creciente (decreciente en sentido amplio) si nunca sube: puede bajar o mantenerse constante. Ejemplo: $f(x)=1$ si $x\\le 0$ y $f(x)=1-x$ si $0<x\\le 1$ y $f(x)=0$ si $x>1$ es no creciente. Verificación: $f(-3)=1\\ge f(0.5)=0.5\\ge f(2)=0$."
+        },
+        {
+          "texto": "Función constante ⇒ monótona en sentido amplio",
+          "explicacion": "Una función constante $f(x)=c$ cumple $f(x_1)\\le f(x_2)$ y $f(x_1)\\ge f(x_2)$ al mismo tiempo, por lo que es no decreciente y no creciente a la vez, pero no es estrictamente creciente ni decreciente. Ejemplo: $f(x)=4$. Verificación: $f(1)=f(5)=4$."
+        },
+        {
+          "texto": "Estrictamente monótona ⇒ estrictamente creciente o estrictamente decreciente",
+          "explicacion": "Una función es estrictamente monótona en $I$ cuando es estrictamente creciente en todo $I$ o estrictamente decreciente en todo $I$; en ese caso no repite valores. Ejemplo: $f(x)=x^3$ es estrictamente monótona en $\\mathbb{R}$. Verificación: $x_1<x_2$ implica $x_1^3<x_2^3$."
+        },
+        {
+          "texto": "Intervalo de monotonía ⇒ mayor intervalo donde se mantiene el comportamiento",
+          "explicacion": "Los intervalos de monotonía son los intervalos del dominio donde la función es monótona del mismo tipo. Ejemplo: $f(x)=-x^2+4x$ es estrictamente creciente en $(-\\infty,2]$ y estrictamente decreciente en $[2,+\\infty)$. Verificación: $f(1)=3$, $f(2)=4$, $f(3)=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones conocidas",
+      "puntos": [
+        {
+          "texto": "$f(x)=mx+b$ ⇒ monotonía según el signo de $m$",
+          "explicacion": "Si $m>0$ la función lineal es estrictamente creciente; si $m<0$, estrictamente decreciente; si $m=0$, es constante. Ejemplos: $2x+1$ crece, $-3x+2$ decrece y $5$ es constante. Verificación: $f(x_2)-f(x_1)=m(x_2-x_1)$ tiene el signo de $m$ cuando $x_2>x_1$."
+        },
+        {
+          "texto": "$f(x)=a(x-h)^2+k$ ⇒ cambio de monotonía en $x=h$",
+          "explicacion": "Una parábola cambia de dirección en su vértice: con $a>0$ decrece en $(-\\infty,h]$ y crece en $[h,+\\infty)$; con $a<0$ ocurre lo contrario. Ejemplo: $f(x)=(x-2)^2-1$ decrece en $(-\\infty,2]$ y crece en $[2,+\\infty)$. Verificación: $f(1)=0$, $f(2)=-1$, $f(3)=0$."
+        },
+        {
+          "texto": "$f(x)=\\sqrt{x}$ ⇒ estrictamente creciente en $[0,+\\infty)$",
+          "explicacion": "Cuanto mayor es el radicando no negativo, mayor es su raíz cuadrada. Ejemplo: $\\sqrt{4}=2<\\sqrt{9}=3$. Verificación: si $0\\le x_1<x_2$, entonces $\\sqrt{x_1}<\\sqrt{x_2}$."
+        },
+        {
+          "texto": "$f(x)=|x|$ ⇒ decrece en $(-\\infty,0]$ y crece en $[0,+\\infty)$",
+          "explicacion": "El valor absoluto cambia de dirección en el origen. Ejemplo: $|-3|=3>|-1|=1$ y $|1|=1<|3|=3$. Verificación: $f(-3)>f(-1)>f(0)<f(1)<f(3)$."
+        },
+        {
+          "texto": "$f(x)=x^3$ ⇒ estrictamente creciente en $\\mathbb{R}$",
+          "explicacion": "Si $x_1<x_2$, la diferencia $x_2^3-x_1^3=(x_2-x_1)(x_2^2+x_1x_2+x_1^2)$ es positiva, porque el primer factor es positivo y el segundo también, ya que $x_2^2+x_1x_2+x_1^2=\\left(x_1+\\frac{x_2}{2}\\right)^2+\\frac{3x_2^2}{4}>0$ cuando $x_1<x_2$. Ejemplo: $(-2)^3=-8<(1)^3=1$. Verificación: $-8<1$."
+        },
+        {
+          "texto": "$f(x)=\\frac{1}{x}$ ⇒ decreciente en cada intervalo, no en el dominio completo",
+          "explicacion": "La función recíproca es estrictamente decreciente en $(-\\infty,0)$ y en $(0,+\\infty)$, pero no en $\\mathbb{R}-\\{0\\}$ en conjunto, porque $f(-1)=-1<f(1)=1$ aunque $-1<1$. Ejemplo: en $(0,+\\infty)$, $f(1)=1>f(2)=\\frac{1}{2}$. Verificación: la comparación $f(-1)<f(1)$ rompe el decrecimiento en el dominio completo."
+        },
+        {
+          "texto": "Función por tramos ⇒ analizar cada tramo y las uniones",
+          "explicacion": "En una función definida por tramos se estudia la monotonía en cada tramo y se verifica el comportamiento en los puntos de unión. Ejemplo: $f(x)=x$ si $x<0$ y $f(x)=x+1$ si $x\\ge 0$ es estrictamente creciente en cada tramo, y como $f(0)=1>f(-0.1)=-0.1$, lo es también en todo $\\mathbb{R}$. Verificación: $f(-1)=-1<f(0)=1<f(2)=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pruebas algebraicas",
+      "puntos": [
+        {
+          "texto": "Paso 1: tomar $x_1<x_2$ en el intervalo",
+          "explicacion": "Se eligen dos valores arbitrarios del intervalo con $x_1<x_2$, sin sustituir números concretos. Ejemplo: sean $x_1<x_2$ en $[2,+\\infty)$ para la función $f(x)=x^2-4x$. Verificación: la prueba debe valer para cualquier par."
+        },
+        {
+          "texto": "Paso 2: calcular y factorizar $f(x_2)-f(x_1)$",
+          "explicacion": "Se resta $f(x_1)$ de $f(x_2)$ y se factoriza para que aparezca el factor $x_2-x_1$. Ejemplo: $f(x_2)-f(x_1)=x_2^2-4x_2-x_1^2+4x_1=(x_2-x_1)(x_2+x_1-4)$. Verificación: al expandir se recupera la expresión original."
+        },
+        {
+          "texto": "Paso 3: determinar el signo de la diferencia",
+          "explicacion": "Como $x_2-x_1>0$, el signo de la diferencia lo da el otro factor. Ejemplo: si $x_1,x_2\\ge 2$ con $x_1<x_2$, entonces $x_1+x_2>4$ y $x_2+x_1-4>0$, de modo que $f(x_2)-f(x_1)>0$. Verificación: $f(3)-f(2)=-3-(-4)=1>0$."
+        },
+        {
+          "texto": "Paso 4: concluir la monotonía",
+          "explicacion": "Si la diferencia es positiva para todo par, la función es estrictamente creciente; si es negativa, estrictamente decreciente. Ejemplo: $f(x)=x^2-4x$ es estrictamente creciente en $[2,+\\infty)$. Verificación: $f(2)=-4<f(3)=-3<f(4)=0$."
+        },
+        {
+          "texto": "Ejemplo con cociente ⇒ $f(x)=\\frac{1}{x}$ en $(0,+\\infty)$",
+          "explicacion": "Para $0<x_1<x_2$, $f(x_2)-f(x_1)=\\frac{1}{x_2}-\\frac{1}{x_1}=\\frac{x_1-x_2}{x_1x_2}<0$, porque el numerador es negativo y el denominador es positivo. Entonces $f$ es estrictamente decreciente en $(0,+\\infty)$. Ejemplo: $f(1)=1>f(2)=\\frac{1}{2}>f(4)=\\frac{1}{4}$. Verificación: los valores bajan al aumentar $x$."
+        },
+        {
+          "texto": "Tasa de variación media ⇒ $\\frac{f(x_2)-f(x_1)}{x_2-x_1}$",
+          "explicacion": "El cociente incremental mide cuánto cambia la función por unidad de variable entre dos puntos; si es positivo para todo par del intervalo, la función es estrictamente creciente, y si es negativo, estrictamente decreciente. Ejemplo: para $f(x)=2x+3$, entre $x=1$ y $x=4$, $\\frac{11-5}{4-1}=2>0$. Verificación: $f(1)=5$ y $f(4)=11$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ creciente $+$ creciente es creciente",
+          "explicacion": "La suma de dos funciones estrictamente crecientes en un intervalo es estrictamente creciente, y análogamente con decrecientes. Ejemplo: $f(x)=x$ y $g(x)=x^3$ dan $x+x^3$, creciente. Verificación: $x_1<x_2$ implica $x_1<x_2$ y $x_1^3<x_2^3$, y se suman."
+        },
+        {
+          "texto": "Opuesto ⇒ $-f$ invierte la monotonía",
+          "explicacion": "Si $f$ es estrictamente creciente, $-f$ es estrictamente decreciente, y viceversa. Ejemplo: $f(x)=x^3$ crece y $-x^3$ decrece. Verificación: $f(1)=1<f(2)=8$ y $-f(1)=-1>-f(2)=-8$."
+        },
+        {
+          "texto": "Composición ⇒ mismo tipo da creciente, distinto da decreciente",
+          "explicacion": "Si $f$ y $g$ son ambas crecientes o ambas decrecientes, $f\\circ g$ es creciente; si una crece y la otra decrece, $f\\circ g$ decrece. Ejemplo: $f(x)=-x$ (decrece) y $g(x)=1-x$ (decrece) dan $(f\\circ g)(x)=x-1$, creciente. Verificación: $f(g(0))=-1<f(g(3))=2$."
+        },
+        {
+          "texto": "Inversa ⇒ conserva el tipo de monotonía",
+          "explicacion": "Si $f$ es estrictamente creciente, su inversa también es estrictamente creciente; si es decreciente, la inversa también. Ejemplo: $f(x)=2x+1$ crece y $f^{-1}(x)=\\frac{x-1}{2}$ también. Verificación: $f^{-1}(3)=1<f^{-1}(7)=3$."
+        },
+        {
+          "texto": "Recíproco de positivas ⇒ invierte la monotonía",
+          "explicacion": "Si $f>0$ en un intervalo y es creciente, $\\frac{1}{f}$ es decreciente allí, y viceversa. Ejemplo: $f(x)=x$ en $(0,+\\infty)$ crece y $\\frac{1}{x}$ decrece. Verificación: $f(1)=1<f(2)=2$ y $\\frac{1}{1}>\\frac{1}{2}$."
+        },
+        {
+          "texto": "Producto ⇒ no hay regla general",
+          "explicacion": "El producto de dos funciones crecientes no siempre es creciente. Ejemplo: $f(x)=x$ es creciente en $\\mathbb{R}$, pero $f(x)\\times f(x)=x^2$ no lo es: decrece en $(-\\infty,0]$. Verificación: $(-3)^2=9>(-1)^2=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Consecuencias",
+      "puntos": [
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva",
+          "explicacion": "Una función estrictamente monótona nunca repite valores: si $x_1\\ne x_2$, uno es menor que el otro y las imágenes difieren. Ejemplo: $f(x)=x^3$. Verificación: $f(x_1)=f(x_2)$ implicaría $x_1=x_2$."
+        },
+        {
+          "texto": "Inyectiva sin ser monótona ⇒ el recíproco es falso",
+          "explicacion": "Una función puede ser inyectiva sin ser monótona. Ejemplo: $f(x)=\\frac{1}{x}$ en $\\mathbb{R}-\\{0\\}$ es inyectiva y no es monótona, pues $f(-1)=-1<f(1)=1$ pero $f(-2)=-\\frac{1}{2}>f(-1)=-1$. Verificación: $\\frac{1}{x_1}=\\frac{1}{x_2}$ implica $x_1=x_2$."
+        },
+        {
+          "texto": "$f$ estrictamente creciente ⇒ $f(a)<f(b)\\iff a<b$",
+          "explicacion": "En una función estrictamente creciente se pueden comparar salidas comparando entradas, y al revés. Ejemplo: como $\\sqrt{x}$ crece, $\\sqrt{10}<\\sqrt{11}$ porque $10<11$. Verificación: $\\sqrt{10}\\approx 3.16<\\sqrt{11}\\approx 3.32$."
+        },
+        {
+          "texto": "$f$ estrictamente monótona ⇒ $f(x)=c$ tiene a lo sumo una solución",
+          "explicacion": "Como $f$ no repite valores, una ecuación $f(x)=c$ tiene como máximo una solución. Ejemplo: $x^3+x=10$ tiene la solución $x=2$, y como $x^3+x$ es creciente, no hay otra. Verificación: $2^3+2=10$."
+        },
+        {
+          "texto": "Cambio de monotonía ⇒ extremo relativo",
+          "explicacion": "Si una función pasa de crecer a decrecer en un punto, ese punto es un máximo relativo; si pasa de decrecer a crecer, es un mínimo relativo. Ejemplo: $f(x)=-x^2+4x$ crece hasta $x=2$ y decrece después; su máximo es $f(2)=4$. Verificación: $f(1)=3$ y $f(3)=3$ son menores."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función lineal (tema 55) ⇒ monotonía por la pendiente",
+          "explicacion": "El tema «Función lineal» da la pendiente $m$, cuyo signo decide si la función crece o decrece. Ejemplo: $y=-2x+5$ decrece. Verificación: $m=-2<0$."
+        },
+        {
+          "texto": "Función cuadrática (tema 56) ⇒ monotonía a cada lado del vértice",
+          "explicacion": "El tema «Función cuadrática» da el vértice, que separa los intervalos de crecimiento y decrecimiento. Ejemplo: $x^2-6x$ tiene vértice en $x=3$. Verificación: $-\\frac{b}{2a}=3$."
+        },
+        {
+          "texto": "Función par e impar (tema 59) ⇒ monotonía y simetría",
+          "explicacion": "El tema «Función par e impar» muestra que una función impar creciente en $[0,+\\infty)$ también lo es en $(-\\infty,0]$, mientras que una par tiene monotonía opuesta a cada lado. Ejemplo: $x^3$ crece en todo $\\mathbb{R}$. Verificación: $f(-2)=-8<f(-1)=-1$."
+        },
+        {
+          "texto": "Funciones crecientes y decrecientes (tema 62) ⇒ desarrolla los casos",
+          "explicacion": "El tema siguiente desarrolla con más detalle las funciones crecientes y decrecientes y su lectura en gráficas. Ejemplo: $f(x)=(x-2)^2-1$ decrece hasta $x=2$. Verificación: $f(1)=0>f(2)=-1$."
+        },
+        {
+          "texto": "Funciones inyectivas (tema 63) ⇒ la monotonía estricta garantiza inyectividad",
+          "explicacion": "El tema «Funciones inyectivas» usa la monotonía estricta como criterio práctico de inyectividad. Ejemplo: $f(x)=3x-1$ es inyectiva por ser estrictamente creciente. Verificación: $3x_1-1=3x_2-1$ implica $x_1=x_2$."
+        }
+      ]
+    }
+  ]
+}

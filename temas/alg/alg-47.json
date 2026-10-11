@@ -1,0 +1,217 @@
+{
+  "curso": "Álgebra",
+  "tema": "Máximo Común Divisor de polinomios",
+  "glosario": {
+    "divisor común": "Polinomio que divide exactamente a varios",
+    "máximo común divisor": "Divisor común de mayor grado",
+    "primos entre sí": "Polinomios cuyo único divisor común es constante",
+    "coprimos": "Otro nombre de primos entre sí",
+    "factor primo": "Factor que no se descompone en menores",
+    "factorización": "Escribir un polinomio como producto de factores",
+    "algoritmo de Euclides": "Divisiones sucesivas para hallar el máximo común divisor",
+    "residuo": "Lo que sobra en una división",
+    "cociente": "Resultado de una división",
+    "algoritmo de la división": "Dividendo igual divisor por cociente más residuo",
+    "polinomio mónico": "Polinomio con coeficiente principal uno",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "monomio": "Polinomio de un solo término",
+    "constante": "Número que no depende de la variable",
+    "mínimo común múltiplo": "Polinomio de menor grado divisible por todos",
+    "fracción irreducible": "Fracción cuyos términos son primos entre sí",
+    "fracción algebraica": "Cociente de dos polinomios",
+    "raíz": "Valor que anula el polinomio",
+    "regla de Ruffini": "Método para dividir entre un binomio lineal",
+    "teorema del factor": "Binomio lineal es factor si evaluación es cero",
+    "teorema del resto": "Residuo se obtiene evaluando en la raíz"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de divisor común",
+      "puntos": [
+        {
+          "texto": "«Divisor común» → polinomio que divide exactamente a varios polinomios",
+          "explicacion": "Un polinomio $d(x)$ es divisor común de $A(x)$ y $B(x)$ cuando divide exactamente a ambos, es decir, cuando las dos divisiones dejan residuo cero. Dos polinomios pueden tener varios divisores comunes. Ejemplo: $A = x^2 - 1$ y $B = x^2 - 3x + 2$ se factorizan como $A = (x + 1)(x - 1)$ y $B = (x - 1)(x - 2)$; el polinomio $x - 1$ divide a ambos, así que es divisor común. También lo es cualquier constante no nula, como $5$."
+        },
+        {
+          "texto": "«Máximo Común Divisor» (MCD) → divisor común de mayor grado",
+          "explicacion": "El Máximo Común Divisor (MCD) de dos o más polinomios es el divisor común de mayor grado: todos los demás divisores comunes lo dividen a él. Se escribe $\\text{MCD}(A, B)$. Ejemplo: para $A = (x + 1)(x - 1)$ y $B = (x - 1)(x - 2)$, el único divisor común no constante es $x - 1$ (salvo constantes), de modo que $\\text{MCD}(A, B) = x - 1$. Su grado, $1$, es el mayor entre los divisores comunes."
+        },
+        {
+          "texto": "MCD → único salvo una constante multiplicativa",
+          "explicacion": "El MCD de polinomios queda determinado salvo un factor constante no nulo: si $d(x)$ es un MCD, también lo es $3d(x)$ o $-d(x)$, porque multiplicar por una constante no cambia qué polinomios lo dividen. Por eso se acostumbra elegir una forma estándar: el coeficiente principal igual a $1$ (polinomio mónico) o, con coeficientes enteros, incluir el MCD numérico de los coeficientes. Ejemplo: $x - 1$ y $2x - 2$ son el mismo MCD salvo la constante $2$."
+        },
+        {
+          "texto": "«Polinomios primos entre sí» ⇒ MCD = 1",
+          "explicacion": "Dos polinomios son primos entre sí, o coprimos, cuando su único divisor común es una constante, es decir, cuando su MCD es $1$ (salvo constante). No tienen factores primos comunes. Ejemplo: $x + 1$ y $x - 1$ son primos entre sí, porque son de primer grado, distintos y ninguno divide al otro; también $x^2 + 1$ y $x - 3$ lo son."
+        },
+        {
+          "texto": "MCD de monomios → MCD numérico × variables comunes de menor exponente",
+          "explicacion": "Para monomios, el MCD se forma con el máximo común divisor de los coeficientes y cada variable común elevada a su menor exponente. Ejemplo: $\\text{MCD}(12a^3b^2,\\ 18a^2b^3)$. El MCD de $12$ y $18$ es $6$; para $a$ los exponentes $3$ y $2$ dan $2$; para $b$ los exponentes $2$ y $3$ dan $2$. Resultado: $6a^2b^2$. Verificación: $\\frac{12a^3b^2}{6a^2b^2} = 2a$ y $\\frac{18a^2b^3}{6a^2b^2} = 3b$, ambos exactos."
+        },
+        {
+          "texto": "Divisores comunes ⇒ grado del MCD ≤ menor grado de los polinomios",
+          "explicacion": "Como el MCD divide a todos los polinomios, su grado no puede superar el grado del polinomio de menor grado (si no es cero). Ejemplo: si $A$ tiene grado $3$ y $B$ tiene grado $2$, el grado de $\\text{MCD}(A, B)$ es a lo sumo $2$; en $A = x^3 - 6x^2 + 11x - 6$ y $B = x^2 - 3x + 2$, el MCD es $B$, de grado $2$, que es el máximo posible."
+        },
+        {
+          "texto": "Si B divide exactamente a A ⇒ MCD(A, B) = B",
+          "explicacion": "Cuando uno de los polinomios divide exactamente al otro, el menor es el MCD, pues es divisor de sí mismo y de $A$. Ejemplo: $x^2 - 1$ y $x - 1$: como $x^2 - 1 = (x - 1)(x + 1)$, el MCD es $x - 1$. Otro: $x^3 - 6x^2 + 11x - 6$ dividido entre $x^2 - 3x + 2$ da cociente $x - 3$ y residuo $0$, así que el MCD es $x^2 - 3x + 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "MCD por factorización",
+      "puntos": [
+        {
+          "texto": "Método de factorización → producto de factores primos comunes",
+          "explicacion": "El MCD se halla factorizando cada polinomio completamente, tomando los factores primos que aparecen en todos los polinomios, cada uno con su menor exponente, y multiplicándolos. Pasos: factorizar, identificar factores comunes, elegir el menor exponente de cada uno y multiplicar. Es el método más rápido cuando los polinomios son fáciles de factorizar."
+        },
+        {
+          "texto": "Ejemplo de factorización: $x^2 - 4$, $x^2 + 4x + 4$ y $x^2 + 2x$",
+          "explicacion": "Paso 1, factorizar: $x^2 - 4 = (x + 2)(x - 2)$; $x^2 + 4x + 4 = (x + 2)^2$; $x^2 + 2x = x(x + 2)$. Paso 2, factores comunes: solo $x + 2$ aparece en los tres. Paso 3, menor exponente: $x + 2$ aparece con exponentes $1$, $2$ y $1$, así que se toma $1$. Resultado: $\\text{MCD} = x + 2$. Verificación: $\\frac{x^2 - 4}{x + 2} = x - 2$, $\\frac{x^2 + 4x + 4}{x + 2} = x + 2$ y $\\frac{x^2 + 2x}{x + 2} = x$, todos exactos."
+        },
+        {
+          "texto": "Menor exponente ⇒ evita incluir factores que no son comunes a todos",
+          "explicacion": "Si un factor primo aparece con exponentes distintos, solo se puede exigir el menor, porque un exponente mayor ya no dividiría al polinomio que lo tiene con menor potencia. Ejemplo con $A = x^2(x - 1)^3(x + 2)$ y $B = x(x - 1)^2(x + 2)^2$: $x$ tiene exponentes $2$ y $1$ (menor: $1$); $x - 1$ tiene $3$ y $2$ (menor: $2$); $x + 2$ tiene $1$ y $2$ (menor: $1$). Resultado: $\\text{MCD} = x(x - 1)^2(x + 2)$."
+        },
+        {
+          "texto": "Factor ausente en alguno ⇒ no forma parte del MCD",
+          "explicacion": "Un factor primo que falta en alguno de los polinomios no puede ser parte del MCD, porque no dividiría a ese polinomio. Ejemplo: $A = x(x + 1)$ y $B = (x + 1)(x - 3)$: el factor $x$ está solo en $A$ y $x - 3$ solo en $B$; el único común es $x + 1$, por lo que $\\text{MCD}(A, B) = x + 1$."
+        },
+        {
+          "texto": "Coeficientes numéricos → incluir el MCD numérico de las constantes",
+          "explicacion": "Cuando los polinomios tienen coeficientes enteros, se factoriza cada uno extrayendo su constante y se multiplica el MCD de esas constantes por el producto de los factores primos comunes. Ejemplo: $12x^3 - 12x = 12x(x + 1)(x - 1)$ y $18x^2 - 18 = 18(x + 1)(x - 1)$. El MCD de $12$ y $18$ es $6$; los factores comunes son $x + 1$ y $x - 1$. Resultado: $6(x + 1)(x - 1) = 6x^2 - 6$. Verificación: $\\frac{12x^3 - 12x}{6x^2 - 6} = 2x$ y $\\frac{18x^2 - 18}{6x^2 - 6} = 3$, ambos exactos."
+        },
+        {
+          "texto": "Ejemplo con tres factores: $x^3 - 2x^2 - x + 2$ y $x^3 + x^2 - 4x - 4$",
+          "explicacion": "Se factoriza por agrupación: $x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x - 2) = (x - 2)(x^2 - 1) = (x - 2)(x - 1)(x + 1)$ y $x^3 + x^2 - 4x - 4 = x^2(x + 1) - 4(x + 1) = (x + 1)(x^2 - 4) = (x + 1)(x + 2)(x - 2)$. Los factores comunes son $x - 2$ y $x + 1$, ambos con exponente $1$. Resultado: $\\text{MCD} = (x - 2)(x + 1) = x^2 - x - 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Algoritmo de Euclides",
+      "puntos": [
+        {
+          "texto": "«Algoritmo de Euclides» → divisiones sucesivas hasta residuo cero",
+          "explicacion": "El algoritmo de Euclides halla el MCD sin factorizar, mediante divisiones sucesivas. Se divide el polinomio de mayor grado entre el de menor grado; luego el divisor se divide entre el residuo; luego ese residuo entre el nuevo residuo; y así hasta que una división sea exacta. El último residuo distinto de cero es el MCD. Es el método general, útil cuando los polinomios son difíciles de factorizar."
+        },
+        {
+          "texto": "MCD(A, B) = MCD(B, R), con R residuo de A entre B",
+          "explicacion": "Si $A = B \\cdot Q + R$ (algoritmo de la división), entonces $A$ y $B$ tienen los mismos divisores comunes que $B$ y $R$: lo que divide a $A$ y a $B$ divide a $R = A - BQ$, y lo que divide a $B$ y a $R$ divide a $A = BQ + R$. Por eso $\\text{MCD}(A, B) = \\text{MCD}(B, R)$, y el problema se reduce a polinomios de menor grado. Ejemplo con enteros: $48 = 2 \\times 18 + 12$ y $\\text{MCD}(48, 18) = \\text{MCD}(18, 12) = 6$."
+        },
+        {
+          "texto": "Analogía con enteros: $\\text{MCD}(48, 18)$ por divisiones sucesivas",
+          "explicacion": "El procedimiento es el mismo que con números: $48 = 2 \\times 18 + 12$; $18 = 1 \\times 12 + 6$; $12 = 2 \\times 6 + 0$. El último residuo distinto de cero es $6$, así que $\\text{MCD}(48, 18) = 6$. Con polinomios, «mayor» se refiere al grado, y el proceso termina porque el grado de los residuos disminuye en cada paso."
+        },
+        {
+          "texto": "Terminación ⇒ residuo cero o residuo constante no nulo",
+          "explicacion": "El proceso termina porque cada residuo tiene grado menor que el divisor anterior, y los grados no pueden bajar indefinidamente. Hay dos finales posibles: si un residuo es cero, el residuo anterior es el MCD; si un residuo es una constante no nula, el MCD es $1$ (los polinomios son primos entre sí), porque una constante divide a todo y el proceso no puede continuar."
+        },
+        {
+          "texto": "Residuo → multiplicar o dividir por una constante no nula",
+          "explicacion": "Durante el algoritmo se puede multiplicar o dividir un residuo por una constante no nula, porque una constante no cambia los divisores comunes; sirve para evitar fracciones. No se debe multiplicar ni dividir por polinomios no constantes sin analizar si son factores comunes. Ejemplo: un residuo $2x + 2$ puede reemplazarse por $x + 1$ al dividir entre $2$."
+        },
+        {
+          "texto": "Ejemplo de Euclides: $x^3 + x^2 + x + 1$ y $x^2 - 1$",
+          "explicacion": "Se divide $A = x^3 + x^2 + x + 1$ entre $B = x^2 - 1$: el primer término del cociente es $x$ ($x \\cdot (x^2 - 1) = x^3 - x$); el resto parcial es $x^2 + 2x + 1$; el segundo término es $1$ ($1 \\cdot (x^2 - 1) = x^2 - 1$); el residuo es $2x + 2$. Entonces $A = (x + 1)B + (2x + 2)$. Verificación: $(x + 1)(x^2 - 1) = x^3 + x^2 - x - 1$, y sumando $2x + 2$ resulta $x^3 + x^2 + x + 1$. Se simplifica el residuo a $x + 1$ dividiendo entre $2$."
+        },
+        {
+          "texto": "Continuación del ejemplo: dividir $x^2 - 1$ entre $x + 1$",
+          "explicacion": "Se divide el divisor anterior $x^2 - 1$ entre el residuo simplificado $x + 1$: $\\frac{x^2 - 1}{x + 1} = x - 1$ con residuo $0$. La división es exacta, así que el último residuo distinto de cero, $x + 1$, es el MCD. Resultado: $\\text{MCD}(x^3 + x^2 + x + 1,\\ x^2 - 1) = x + 1$. Verificación por factorización: $x^3 + x^2 + x + 1 = (x + 1)(x^2 + 1)$ y $x^2 - 1 = (x + 1)(x - 1)$, con factor común $x + 1$."
+        },
+        {
+          "texto": "Ejemplo de Euclides con grados iguales: $x^3 - 2x^2 - x + 2$ y $x^3 + x^2 - 4x - 4$",
+          "explicacion": "Se divide $A = x^3 - 2x^2 - x + 2$ entre $B = x^3 + x^2 - 4x - 4$: el cociente es $1$ y el residuo es $A - B = -3x^2 + 3x + 6 = -3(x^2 - x - 2)$. Se simplifica el residuo dividiendo entre $-3$: $x^2 - x - 2$. Luego se divide $B$ entre $x^2 - x - 2$: $x \\cdot (x^2 - x - 2) = x^3 - x^2 - 2x$, el resto parcial es $2x^2 - 2x - 4$, y $2 \\cdot (x^2 - x - 2) = 2x^2 - 2x - 4$; el cociente es $x + 2$ y el residuo es $0$. Resultado: $\\text{MCD} = x^2 - x - 2$, igual al obtenido por factorización."
+        },
+        {
+          "texto": "Ejemplo de polinomios primos entre sí: $x^2 + x + 1$ y $x - 1$",
+          "explicacion": "Se divide $x^2 + x + 1$ entre $x - 1$: el cociente es $x + 2$ y el residuo es $3$, pues $(x - 1)(x + 2) = x^2 + x - 2$ y $x^2 + x + 1 - (x^2 + x - 2) = 3$. El residuo es una constante no nula, así que el MCD es $1$ y los polinomios son primos entre sí. Verificación con el teorema del resto: el residuo de dividir entre $x - 1$ es el valor en $x = 1$, que es $1 + 1 + 1 = 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "MCD de varios polinomios",
+      "puntos": [
+        {
+          "texto": "MCD(A, B, C) = MCD(MCD(A, B), C)",
+          "explicacion": "Para tres o más polinomios se halla el MCD de los dos primeros y luego el MCD de ese resultado con el tercero, y así sucesivamente. Ejemplo con $A = x^2 - 4$, $B = x^2 + 4x + 4$ y $C = x^2 + 2x$: $\\text{MCD}(A, B) = \\text{MCD}\\big((x + 2)(x - 2),\\ (x + 2)^2\\big) = x + 2$, y luego $\\text{MCD}(x + 2,\\ x(x + 2)) = x + 2$. Resultado: $x + 2$, el mismo que por factorización directa."
+        },
+        {
+          "texto": "MCD de varios polinomios por factorización → factores comunes a todos",
+          "explicacion": "Al factorizar todos los polinomios a la vez, el MCD toma solo los factores primos que aparecen en todos, con el menor exponente. Basta que un factor falte en uno de ellos para quedar fuera. Ejemplo: $A = (x - 1)^2(x + 3)$, $B = (x - 1)(x + 3)^2$ y $C = (x - 1)(x + 2)$ tienen en común solo $x - 1$ (el factor $x + 3$ no está en $C$), así que $\\text{MCD} = x - 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del MCD",
+      "puntos": [
+        {
+          "texto": "MCD(PA, PB) = P × MCD(A, B)",
+          "explicacion": "Si ambos polinomios se multiplican por un mismo polinomio $P$, su MCD queda multiplicado por $P$. Ejemplo: $A = x + 1$ y $B = x - 1$ son primos entre sí, con MCD igual a $1$; multiplicados por $P = x + 2$ dan $(x + 2)(x + 1)$ y $(x + 2)(x - 1)$, cuyo MCD es $x + 2 = P \\times 1$."
+        },
+        {
+          "texto": "MCD(A, B) = MCD($A - QB$, B) para cualquier polinomio Q",
+          "explicacion": "Restar a $A$ un múltiplo cualquiera de $B$ no cambia el MCD, porque los divisores comunes de $A$ y $B$ son también divisores de $A - QB$. Es la base del algoritmo de Euclides. Ejemplo: $A = x^2 + x + 1$ y $B = x - 1$ con $Q = x + 2$ dan $A - QB = 3$, así que $\\text{MCD}(A, B) = \\text{MCD}(3, x - 1) = 1$."
+        },
+        {
+          "texto": "Cocientes por el MCD ⇒ polinomios primos entre sí",
+          "explicacion": "Si $d = \\text{MCD}(A, B)$ y se escribe $A = d \\cdot A'$ y $B = d \\cdot B'$, entonces $A'$ y $B'$ son primos entre sí; es una forma de comprobar el resultado. Ejemplo: con $A = x^3 - 2x^2 - x + 2$, $B = x^3 + x^2 - 4x - 4$ y $d = x^2 - x - 2$ resultan $A' = x - 1$ y $B' = x + 2$, y $\\text{MCD}(x - 1,\\ x + 2) = 1$ porque su diferencia es la constante $3$."
+        },
+        {
+          "texto": "Producto de dos polinomios = MCD × Mínimo Común Múltiplo (MCM)",
+          "explicacion": "Para dos polinomios $A$ y $B$, el producto $A \\times B$ es igual al producto de su MCD por su Mínimo Común Múltiplo (MCM), salvo una constante; el MCM es el polinomio de menor grado que es divisible por ambos y se estudia en el tema siguiente. Ejemplo: $A = x^2 - 1 = (x - 1)(x + 1)$ y $B = x^2 - x - 2 = (x - 2)(x + 1)$ tienen $\\text{MCD} = x + 1$ y $\\text{MCM} = (x - 1)(x + 1)(x - 2)$. Verificación: $A \\times B = (x - 1)(x + 1)^2(x - 2)$ y $\\text{MCD} \\times \\text{MCM} = (x + 1)(x - 1)(x + 1)(x - 2)$, que coinciden."
+        },
+        {
+          "texto": "Raíces comunes de A y B = raíces del MCD",
+          "explicacion": "Los valores de $x$ que anulan a la vez a $A$ y a $B$ son exactamente las raíces del MCD. Ejemplo: $A = x^3 - 2x^2 - x + 2$ tiene raíces $2$, $1$ y $-1$; $B = x^3 + x^2 - 4x - 4$ tiene raíces $-1$, $-2$ y $2$; las raíces comunes son $2$ y $-1$, que son las raíces del MCD $x^2 - x - 2 = (x - 2)(x + 1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Simplificación de fracciones",
+      "puntos": [
+        {
+          "texto": "Fracción algebraica ⇒ dividir numerador y denominador entre el MCD",
+          "explicacion": "Para simplificar una fracción de polinomios, se divide el numerador y el denominador entre el MCD de ambos; la fracción resultante es irreducible, porque sus términos quedan primos entre sí. Ejemplo: $\\frac{x^3 - 2x^2 - x + 2}{x^3 + x^2 - 4x - 4}$ con $\\text{MCD} = x^2 - x - 2$ da $\\frac{x - 1}{x + 2}$. Verificación en $x = 3$: la fracción original vale $\\frac{27 - 18 - 3 + 2}{27 + 9 - 12 - 4} = \\frac{8}{20} = \\frac{2}{5}$ y la simplificada vale $\\frac{2}{5}$."
+        },
+        {
+          "texto": "Fracción irreducible ⇒ numerador y denominador con MCD = 1",
+          "explicacion": "Una fracción algebraica es irreducible cuando el MCD de su numerador y su denominador es $1$; ya no puede simplificarse más. Ejemplo: $\\frac{x - 1}{x + 2}$ es irreducible, porque $x - 1$ y $x + 2$ son primos entre sí. En cambio, $\\frac{x^2 - 1}{x - 1}$ no lo es, porque el MCD es $x - 1$ y se simplifica a $x + 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de resolución",
+      "puntos": [
+        {
+          "texto": "Estrategia → factorizar si es sencillo; si no, Euclides",
+          "explicacion": "Cuando los polinomios se factorizan con facilidad, el método de factorización es más corto. Si son de grado alto o no se ve cómo factorizarlos, se aplica el algoritmo de Euclides, que siempre funciona. Ejemplo: $x^2 - 4$ y $x^2 + 4x + 4$ se factorizan de inmediato; en cambio, para dos polinomios de grado cinco con coeficientes grandes conviene Euclides."
+        },
+        {
+          "texto": "Verificación → comprobar que el MCD divide exactamente a cada polinomio",
+          "explicacion": "Para validar el resultado se divide cada polinomio entre el MCD hallado y se comprueba que el residuo sea cero; además, los cocientes deben ser primos entre sí. Ejemplo: para $\\text{MCD} = x + 1$ de $x^3 + x^2 + x + 1$ y $x^2 - 1$, las divisiones dan $x^2 + 1$ y $x - 1$ con residuo $0$, y esos cocientes son primos entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con temas previos",
+      "puntos": [
+        {
+          "texto": "Tema 35 «Algoritmo de la división» → base del algoritmo de Euclides",
+          "explicacion": "Cada paso del algoritmo de Euclides es una división $A = B \\cdot Q + R$ con residuo de menor grado que el divisor, tal como se estudió en el tema 35. Ejemplo: $x^3 + x^2 + x + 1 = (x + 1)(x^2 - 1) + (2x + 2)$ es una aplicación directa."
+        },
+        {
+          "texto": "Tema 37 «Método de Ruffini» → dividir cuando el divisor es lineal",
+          "explicacion": "Cuando uno de los divisores en el algoritmo es de primer grado, la regla de Ruffini acelera la división. Ejemplo: para dividir $x^2 + x + 1$ entre $x - 1$ con raíz $1$ y coeficientes $1, 1, 1$: se baja $1$; $1 + 1 = 2$; $1 + 2 = 3$. El cociente es $x + 2$ y el residuo es $3$."
+        },
+        {
+          "texto": "Tema 40 «Teorema del factor» → comprobar factores comunes",
+          "explicacion": "El teorema del factor permite verificar si un binomio $x - r$ divide a un polinomio evaluando en $x = r$. Ejemplo: $x - 2$ divide a $x^3 - 2x^2 - x + 2$ porque su valor en $x = 2$ es $8 - 8 - 2 + 2 = 0$, y también divide a $x^3 + x^2 - 4x - 4$ porque su valor en $x = 2$ es $8 + 4 - 8 - 4 = 0$; por eso $x - 2$ es factor común."
+        },
+        {
+          "texto": "Tema 46 «Factorización» → base del método por factores primos",
+          "explicacion": "El método de factorización para el MCD requiere factorizar completamente cada polinomio con los recursos del tema 46: factor común, agrupación, identidades, aspa y divisores binómicos. Ejemplo: $x^3 + x^2 - 4x - 4 = (x + 1)(x + 2)(x - 2)$ se obtiene por agrupación y diferencia de cuadrados."
+        }
+      ]
+    }
+  ]
+}

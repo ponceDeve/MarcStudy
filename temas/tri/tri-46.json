@@ -1,0 +1,138 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Arcos dirigidos",
+  "glosario": {
+    "arco dirigido": "Arco con origen, extremo y sentido definidos.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "origen de arcos": "Punto donde comienza la medición de arcos.",
+    "extremo": "Punto donde termina el arco.",
+    "sentido antihorario": "Giro contrario al de las manecillas.",
+    "sentido horario": "Giro en la dirección de las manecillas.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "ángulo central": "Ángulo con vértice en el centro.",
+    "posición normal": "Vértice en origen, lado inicial en abscisas positivas.",
+    "arcos opuestos": "Arcos de igual medida y sentido contrario.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "arcos cuadrantales": "Arcos con extremo sobre un eje.",
+    "eje horizontal": "Eje de abscisas del plano cartesiano.",
+    "simetría": "Correspondencia de puntos respecto a una recta.",
+    "vuelta": "Recorrido completo de la circunferencia."
+  },
+  "theory": [
+    {
+      "titulo": "Arco dirigido",
+      "puntos": [
+        {
+          "texto": "«Arco dirigido»: arco con origen en $A$ y extremo $P$ recorrido con sentido",
+          "explicacion": "Se mide sobre la circunferencia trigonométrica, que tiene radio 1 y centro en el origen, desde el punto $A(1,0)$ hasta un punto $P$. El sentido del recorrido determina el signo de su medida. Ejemplo: un corredor que parte del punto de las 3 en una pista circular describe un arco dirigido hasta donde se detiene."
+        },
+        {
+          "texto": "Sentido antihorario → arco positivo",
+          "explicacion": "Es el recorrido contrario al de las manecillas del reloj. Ejemplo: al ir de $A(1,0)$ a $B(0,1)$ por el camino corto se recorre un cuarto de vuelta antihoraria, y el arco mide $+\\frac{\\pi}{2}$ radianes (rad)."
+        },
+        {
+          "texto": "Sentido horario → arco negativo",
+          "explicacion": "Es el recorrido en el mismo sentido que las manecillas. Ejemplo: el segundero recorre 15 s en un cuarto de vuelta horaria, y el arco que describe mide $-\\frac{\\pi}{2}$ rad."
+        },
+        {
+          "texto": "Medida del arco = longitud recorrida con signo",
+          "explicacion": "Como el radio es 1, la longitud recorrida coincide con la medida del ángulo central en radianes. Ejemplo: media circunferencia mide $\\frac{2\\pi}{2} = \\pi$ y el arco correspondiente en sentido antihorario es $+\\pi$."
+        },
+        {
+          "texto": "Arco en posición normal: origen siempre en $A(1,0)$",
+          "explicacion": "Todos los arcos se miden desde el mismo punto, de modo que el extremo $P$ queda determinado por la medida con signo. Ejemplo: los arcos $\\frac{\\pi}{3}$ y $-\\frac{\\pi}{3}$ parten ambos de $A$ y terminan en puntos distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos opuestos",
+      "puntos": [
+        {
+          "texto": "Arcos $\\theta$ y $-\\theta$: extremos simétricos respecto al eje horizontal",
+          "explicacion": "Si el extremo del arco $\\theta$ es $P(x, y)$, el del arco $-\\theta$ es $P'(x, -y)$. Ejemplo: para $\\theta = \\frac{\\pi}{3}$, $P\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$ y $P'\\left(\\frac{1}{2}, -\\frac{\\sqrt{3}}{2}\\right)$."
+        },
+        {
+          "texto": "Arco $-\\theta$ y arco $2\\pi - \\theta$ terminan en el mismo punto",
+          "explicacion": "Recorrer $\\theta$ hacia atrás deja en el mismo lugar que recorrer $2\\pi - \\theta$ hacia adelante, porque una vuelta mide $2\\pi$. Ejemplo: $-\\frac{\\pi}{3}$ y $2\\pi - \\frac{\\pi}{3} = \\frac{5\\pi}{3}$ comparten extremo."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos con igual extremo",
+      "puntos": [
+        {
+          "texto": "Arcos con el mismo extremo se diferencian en $2\\pi k$, con $k$ entero",
+          "explicacion": "Cada vuelta completa suma o resta $2\\pi$ sin cambiar el punto final. Ejemplo: al arco $\\frac{\\pi}{3}$ se le suman $2\\pi$ y resulta $\\frac{7\\pi}{3}$; se le resta $2\\pi$ y resulta $\\frac{\\pi}{3} - 2\\pi = -\\frac{5\\pi}{3}$."
+        },
+        {
+          "texto": "Dos arcos con el mismo extremo pueden ser «distintos»",
+          "explicacion": "Comparten el punto final, pero sus medidas, sentidos y recorridos son diferentes. Ejemplo: $\\frac{\\pi}{3}$ y $-\\frac{5\\pi}{3}$ terminan en el mismo punto, pero uno es positivo y mide $\\frac{\\pi}{3}$, y el otro es negativo y recorre casi una vuelta, $\\frac{5\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos cuadrantales",
+      "puntos": [
+        {
+          "texto": "Múltiplos de $\\frac{\\pi}{2}$: extremo sobre $A$, $B$, $A'$ o $B'$",
+          "explicacion": "Los puntos son $A(1,0)$, $B(0,1)$, $A'(-1,0)$ y $B'(0,-1)$, y ninguno pertenece a un cuadrante. Ejemplo: $\\frac{3\\pi}{2}$ termina en $B'$, $\\pi$ termina en $A'$ y $-\\frac{\\pi}{2}$ también termina en $B'$."
+        }
+      ]
+    },
+    {
+      "titulo": "Menos de una vuelta",
+      "puntos": [
+        {
+          "texto": "Arco menor que una vuelta: $0 \\le \\theta < 2\\pi$ rad",
+          "explicacion": "Cubre la circunferencia exactamente una vez, y cada punto tiene un único arco positivo en ese rango. Ejemplo: $\\frac{5\\pi}{3}$ cumple la condición, mientras que $\\frac{7\\pi}{3}$ ya supera una vuelta y se estudia con arcos mayores."
+        }
+      ]
+    },
+    {
+      "titulo": "Referencias numéricas",
+      "puntos": [
+        {
+          "texto": "Valores aproximados: $\\frac{\\pi}{2} \\approx 1{,}57$, $\\pi \\approx 3{,}14$",
+          "explicacion": "Con $\\pi \\approx 3{,}14$ se obtienen las divisiones del círculo: $\\frac{\\pi}{2} \\approx 1{,}57$ y $\\pi \\approx 3{,}14$. Sirven para ubicar arcos dados solo con un número."
+        },
+        {
+          "texto": "Valores aproximados: $\\frac{3\\pi}{2} \\approx 4{,}71$, $2\\pi \\approx 6{,}28$",
+          "explicacion": "Con $\\pi \\approx 3{,}14$: $\\frac{3\\pi}{2} = 1{,}5 \\cdot 3{,}14 = 4{,}71$ y $2\\pi = 2 \\cdot 3{,}14 = 6{,}28$. Completan las cuatro fronteras entre cuadrantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Ubicar arcos en radianes",
+      "puntos": [
+        {
+          "texto": "Arco de 1 rad ⇒ extremo en «cuadrante I»",
+          "explicacion": "Se compara con las referencias: $0 < 1 < 1{,}57$."
+        },
+        {
+          "texto": "Arco de 2 rad ⇒ extremo en «cuadrante II»",
+          "explicacion": "Se compara con las referencias: $1{,}57 < 2 < 3{,}14$."
+        },
+        {
+          "texto": "Arco de 3 rad ⇒ extremo en «cuadrante II»",
+          "explicacion": "Se compara con las referencias: $1{,}57 < 3 < 3{,}14$, aunque queda muy cerca del semieje negativo de abscisas."
+        },
+        {
+          "texto": "Arco de 4 rad ⇒ extremo en «cuadrante III»",
+          "explicacion": "Se compara con las referencias: $3{,}14 < 4 < 4{,}71$."
+        },
+        {
+          "texto": "Arco de 5 rad ⇒ extremo en «cuadrante IV»",
+          "explicacion": "Se compara con las referencias: $4{,}71 < 5 < 6{,}28$."
+        },
+        {
+          "texto": "Arco de 6 rad ⇒ extremo en «cuadrante IV»",
+          "explicacion": "Se compara con las referencias: $4{,}71 < 6 < 6{,}28$, y queda muy cerca del origen de arcos."
+        },
+        {
+          "texto": "Arco negativo: se ubica girando en sentido horario",
+          "explicacion": "Por ejemplo, para $-2$ rad se recorren 2 radianes en sentido horario: $1{,}57 < 2 < 3{,}14$ indica que se pasa el semieje negativo de ordenadas y el extremo queda en el cuadrante III."
+        }
+      ]
+    }
+  ]
+}

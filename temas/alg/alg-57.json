@@ -1,0 +1,211 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función raíz cuadrada",
+  "glosario": {
+    "Raíz cuadrada principal": "Raíz cuadrada no negativa de un número.",
+    "Radicando": "Expresión situada dentro del signo radical.",
+    "Dominio": "Conjunto de valores permitidos de la variable.",
+    "Rango": "Conjunto de valores que toma la función.",
+    "Estrictamente creciente": "Aumenta siempre que aumenta la variable.",
+    "Mínimo absoluto": "Menor valor que toma la función.",
+    "Inyectiva": "Valores distintos tienen imágenes distintas.",
+    "Función inversa": "Función que deshace la acción de otra.",
+    "Traslación": "Desplazamiento de la gráfica sin deformarla.",
+    "Reflexión": "Gráfica volteada respecto de un eje.",
+    "Solución extraña": "Valor obtenido que no cumple la ecuación original.",
+    "Punto inicial": "Extremo donde comienza la gráfica.",
+    "Razón de cambio": "Variación de la función entre variación de x.",
+    "Acotada": "Con valores que no superan cierto límite.",
+    "Valor absoluto": "Distancia de un número al cero."
+  },
+  "theory": [
+    {
+      "titulo": "Raíz cuadrada",
+      "puntos": [
+        {
+          "texto": "Raíz cuadrada principal: $\\sqrt{x}$ = número no negativo cuyo cuadrado es $x$",
+          "explicacion": "Para $x \\geq 0$, la raíz cuadrada principal $\\sqrt{x}$ es el único número mayor o igual que cero que, elevado al cuadrado, da $x$. Así, $\\sqrt{9}=3$ porque $3 \\geq 0$ y $3^2=9$; aunque $(-3)^2=9$ también, el valor $-3$ no es la raíz principal. Esta convención hace que $\\sqrt{x}$ tenga un único valor para cada $x$, requisito indispensable para que defina una función."
+        },
+        {
+          "texto": "$\\sqrt{x} \\geq 0$ para todo $x$ del dominio",
+          "explicacion": "Por definición, la raíz cuadrada principal nunca es negativa. Por eso la ecuación $\\sqrt{x}=-2$ no tiene solución real: ningún valor de $x$ produce una raíz negativa. Esta propiedad determina el rango de la función raíz cuadrada y permite descartar de inmediato ecuaciones o soluciones que obliguen a la raíz a ser negativa."
+        },
+        {
+          "texto": "$\\sqrt{x^2}=|x|$ para todo real $x$",
+          "explicacion": "Al elevar $x$ al cuadrado se pierde su signo, y la raíz principal devuelve siempre un número no negativo, que es el valor absoluto de $x$. Con $x=-5$: $\\sqrt{(-5)^2}=\\sqrt{25}=5=|-5|$. Con $x=5$: $\\sqrt{5^2}=5=|5|$. Solo cuando $x \\geq 0$ se cumple $\\sqrt{x^2}=x$; escribir siempre $\\sqrt{x^2}=x$ es un error cuando $x$ puede ser negativo."
+        },
+        {
+          "texto": "$\\sqrt{a+b} \\neq \\sqrt{a}+\\sqrt{b}$ en general",
+          "explicacion": "La raíz cuadrada no se distribuye sobre la suma. Con $a=9$ y $b=16$: $\\sqrt{9+16}=\\sqrt{25}=5$, mientras que $\\sqrt{9}+\\sqrt{16}=3+4=7$, y $5 \\neq 7$. Lo que sí es válido es la propiedad del producto: $\\sqrt{ab}=\\sqrt{a}\\sqrt{b}$ cuando $a \\geq 0$ y $b \\geq 0$; por ejemplo, $\\sqrt{4 \\cdot 9}=\\sqrt{36}=6=2 \\cdot 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Función raíz cuadrada",
+      "puntos": [
+        {
+          "texto": "Función raíz cuadrada: $f(x)=\\sqrt{x}$",
+          "explicacion": "La función raíz cuadrada asigna a cada número real no negativo $x$ su raíz cuadrada principal. Su regla es $f(x)=\\sqrt{x}$. Algunos valores: $f(0)=0$, $f(1)=1$, $f(4)=2$, $f(9)=3$, $f(16)=4$ y $f(\\dfrac{1}{4})=\\dfrac{1}{2}$. Es una función real de variable real porque a cada $x$ del dominio le corresponde exactamente un valor de $f(x)$."
+        },
+        {
+          "texto": "Dominio de $f(x)=\\sqrt{x}$ = $[0, +\\infty)$",
+          "explicacion": "En los números reales no existe la raíz cuadrada de un número negativo, de modo que el radicando debe cumplir $x \\geq 0$. El dominio es entonces el intervalo $[0, +\\infty)$, que incluye el $0$ porque $\\sqrt{0}=0$. Por ejemplo, $f(-4)$ no está definido, mientras que $f(25)=5$ sí lo está."
+        },
+        {
+          "texto": "Rango de $f(x)=\\sqrt{x}$ = $[0, +\\infty)$",
+          "explicacion": "Como la raíz principal nunca es negativa, ningún valor menor que $0$ pertenece al rango. Además, todo $y \\geq 0$ se obtiene: basta tomar $x=y^2$, pues $f(y^2)=\\sqrt{y^2}=|y|=y$. Por ejemplo, para obtener $y=7$ se toma $x=49$. Por tanto el rango es $[0, +\\infty)$."
+        },
+        {
+          "texto": "Gráfica: mitad de una parábola de eje horizontal",
+          "explicacion": "La gráfica de $y=\\sqrt{x}$ es la rama superior de la parábola $x=y^2$, es decir, nace en el origen, sube hacia la derecha y se aplana progresivamente. Pasa por los puntos $(0,0)$, $(1,1)$, $(4,2)$ y $(9,3)$. No existe a la izquierda del eje vertical, porque el dominio solo contiene valores no negativos."
+        },
+        {
+          "texto": "Intersección con los ejes: solo el origen $(0,0)$",
+          "explicacion": "Con el eje vertical se obtiene $f(0)=0$, es decir, el punto $(0,0)$. Con el eje horizontal se resuelve $\\sqrt{x}=0$, cuya única solución es $x=0$ porque $\\sqrt{x}=0$ implica $x=(\\sqrt{x})^2=0$. Ambas intersecciones coinciden en el origen, que además es el punto donde comienza la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{x}$ es estrictamente creciente en $[0, +\\infty)$",
+          "explicacion": "Si $0 \\leq a < b$, entonces $\\sqrt{a} < \\sqrt{b}$. Demostración: si fuera $\\sqrt{a} \\geq \\sqrt{b}$, al elevar al cuadrado ambos miembros no negativos se obtendría $a \\geq b$, lo cual contradice $a < b$. Ejemplo: $a=4$ y $b=9$ dan $\\sqrt{4}=2 < 3=\\sqrt{9}$."
+        },
+        {
+          "texto": "Crecimiento cada vez más lento: pendientes decrecientes",
+          "explicacion": "Aunque la función crece, lo hace cada vez más despacio. La razón de cambio $\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$ entre puntos consecutivos disminuye: de $x=0$ a $x=1$ vale $\\dfrac{1-0}{1-0}=1$; de $1$ a $4$ vale $\\dfrac{2-1}{4-1}=\\dfrac{1}{3}$; de $4$ a $9$ vale $\\dfrac{3-2}{9-4}=\\dfrac{1}{5}$. Por eso la gráfica se curva hacia abajo y se aplana."
+        },
+        {
+          "texto": "Mínimo absoluto $0$ en $x=0$; sin máximo",
+          "explicacion": "Como $\\sqrt{x} \\geq 0$ y $\\sqrt{0}=0$, el valor $0$ es el menor que toma la función y se alcanza en $x=0$. No existe un máximo, pues para cualquier número $M$ positivo basta tomar $x=M^2+1$ para obtener $\\sqrt{x}>M$. La función está acotada inferiormente pero no superiormente."
+        },
+        {
+          "texto": "$\\sqrt{x}$ = función ni par ni impar",
+          "explicacion": "Una función par o impar exige que el dominio sea simétrico respecto del origen: si $x$ está en el dominio, $-x$ también. El dominio $[0, +\\infty)$ no cumple esa condición, ya que $4$ está en él y $-4$ no. Por eso la función raíz cuadrada no puede ser par ni impar."
+        },
+        {
+          "texto": "Inyectiva: $\\sqrt{a}=\\sqrt{b} \\Rightarrow a=b$",
+          "explicacion": "Si dos números no negativos tienen la misma raíz, al elevar al cuadrado ambos lados se obtiene $a=b$. Equivalentemente, cada valor del rango proviene de un único valor de $x$. Gráficamente, ninguna recta horizontal corta a la gráfica más de una vez. Por ejemplo, $\\sqrt{x}=3$ solo se cumple con $x=9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Función inversa",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{x}$ es la inversa de $x^2$ restringida a $x \\geq 0$",
+          "explicacion": "La función $g(x)=x^2$ con dominio $[0, +\\infty)$ es inyectiva y su rango es $[0, +\\infty)$. Su inversa es $g^{-1}(x)=\\sqrt{x}$. Se comprueba con dos composiciones: $\\sqrt{x^2}=x$ si $x \\geq 0$, y $(\\sqrt{x})^2=x$ si $x \\geq 0$. Por ejemplo, $g(5)=25$ y $\\sqrt{25}=5$. Sin restringir el dominio, $x^2$ no sería inyectiva y no tendría inversa."
+        },
+        {
+          "texto": "Las gráficas de $x^2$ ($x \\geq 0$) y $\\sqrt{x}$ son simétricas respecto de $y=x$",
+          "explicacion": "Las gráficas de una función y de su inversa son reflejos una de otra respecto de la recta $y=x$. Si $(2,4)$ está en la gráfica de $x^2$ con $x \\geq 0$, el punto $(4,2)$ está en la de $\\sqrt{x}$; igualmente $(3,9)$ corresponde a $(9,3)$. Los puntos de la gráfica de $\\sqrt{x}$ que están sobre la recta $y=x$ son aquellos con $\\sqrt{x}=x$."
+        },
+        {
+          "texto": "Cruce con $y=x$: $\\sqrt{x}=x$ ⇒ $x=0$ o $x=1$",
+          "explicacion": "Al elevar al cuadrado, $\\sqrt{x}=x$ se transforma en $x=x^2$, es decir $x^2-x=0$ y $x(x-1)=0$, con soluciones $x=0$ y $x=1$. Ambas verifican la ecuación original: $\\sqrt{0}=0$ y $\\sqrt{1}=1$. Entre $0$ y $1$ la gráfica de $\\sqrt{x}$ queda por encima de la recta $y=x$ (por ejemplo, $\\sqrt{\\dfrac{1}{4}}=\\dfrac{1}{2} > \\dfrac{1}{4}$) y a partir de $1$ queda por debajo ($\\sqrt{4}=2<4$)."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformaciones",
+      "puntos": [
+        {
+          "texto": "Forma general: $f(x)=a\\sqrt{x-h}+k$",
+          "explicacion": "Toda función raíz cuadrada transformada se escribe así, con $a \\neq 0$. El número $h$ desplaza la gráfica horizontalmente, $k$ la desplaza verticalmente y $a$ la estira, comprime o refleja. El punto inicial de la gráfica, que desempeña el papel del vértice, es $(h,k)$. Con $a=1$, $h=0$ y $k=0$ se recupera $\\sqrt{x}$."
+        },
+        {
+          "texto": "Traslación horizontal: $\\sqrt{x-h}$ mueve la gráfica $h$ unidades",
+          "explicacion": "Sustituir $x$ por $x-h$ desplaza la gráfica $h$ unidades a la derecha si $h>0$ y $|h|$ unidades a la izquierda si $h<0$. En $f(x)=\\sqrt{x+3}$ se tiene $h=-3$: el punto inicial es $(-3,0)$ y el dominio pasa a ser $[-3, +\\infty)$. Por ejemplo, $f(1)=\\sqrt{4}=2$."
+        },
+        {
+          "texto": "Traslación vertical: $\\sqrt{x}+k$ mueve la gráfica $k$ unidades",
+          "explicacion": "Sumar $k$ al resultado desplaza la gráfica $k$ unidades hacia arriba si $k>0$ y hacia abajo si $k<0$. En $f(x)=\\sqrt{x}-2$ el punto inicial es $(0,-2)$ y el rango es $[-2, +\\infty)$. Por ejemplo, $f(9)=3-2=1$ y $f(4)=2-2=0$, de modo que la gráfica corta el eje horizontal en $x=4$."
+        },
+        {
+          "texto": "Reflexión: $a<0$ voltea la gráfica sobre el eje horizontal",
+          "explicacion": "Con $a<0$ la función $a\\sqrt{x-h}+k$ decrece, porque multiplicar por un número negativo invierte el orden. La gráfica de $-\\sqrt{x}$ es el reflejo de la de $\\sqrt{x}$ respecto del eje horizontal: sus valores son $0$, $-1$, $-2$, $-3$ para $x=0, 1, 4, 9$, y su rango es $(-\\infty, 0]$."
+        },
+        {
+          "texto": "Reflexión horizontal: $\\sqrt{-x}$ tiene dominio $(-\\infty, 0]$",
+          "explicacion": "Para que $\\sqrt{-x}$ esté definido se necesita $-x \\geq 0$, es decir $x \\leq 0$. La gráfica es el reflejo de $\\sqrt{x}$ respecto del eje vertical. Por ejemplo, $\\sqrt{-(-4)}=\\sqrt{4}=2$ y $\\sqrt{-(-9)}=3$. Esta función es decreciente, pues al aumentar $x$ hacia $0$ el valor $-x$ disminuye."
+        },
+        {
+          "texto": "Estiramiento: $|a|>1$ alarga y $0<|a|<1$ comprime",
+          "explicacion": "El factor $a$ multiplica las alturas. En $2\\sqrt{x}$ los valores de $x=0, 1, 4, 9$ pasan de $0, 1, 2, 3$ a $0, 2, 4, 6$, de modo que la gráfica sube más rápido. En $\\dfrac{1}{2}\\sqrt{x}$ los valores son $0, \\dfrac{1}{2}, 1, \\dfrac{3}{2}$, y la gráfica sube más despacio."
+        },
+        {
+          "texto": "Dominio de $a\\sqrt{x-h}+k$ con $a>0$: $[h, +\\infty)$; rango: $[k, +\\infty)$",
+          "explicacion": "El radicando $x-h$ debe ser no negativo, lo que da $x \\geq h$. El valor mínimo de $\\sqrt{x-h}$ es $0$ en $x=h$, por lo que el mínimo de la función es $k$ y el rango es $[k, +\\infty)$. Ejemplo: $f(x)=3\\sqrt{x-2}+1$ tiene dominio $[2, +\\infty)$ y rango $[1, +\\infty)$, con $f(2)=1$ y $f(11)=3(3)+1=10$."
+        },
+        {
+          "texto": "Con $a<0$: dominio $[h, +\\infty)$ y rango $(-\\infty, k]$",
+          "explicacion": "El dominio no cambia, pues depende solo del radicando. Pero ahora el valor $k$ es el máximo, porque $a\\sqrt{x-h} \\leq 0$. Ejemplo: $f(x)=-2\\sqrt{x+1}+3$ tiene punto inicial $(-1,3)$, dominio $[-1, +\\infty)$ y rango $(-\\infty, 3]$. Pasa por $(0,1)$ porque $-2(1)+3=1$, y por $(3,-1)$ porque $-2(2)+3=-1$."
+        },
+        {
+          "texto": "Ejemplo: cortes de $f(x)=-2\\sqrt{x+1}+3$ con los ejes",
+          "explicacion": "Con el eje vertical: $f(0)=-2\\sqrt{1}+3=1$, luego el punto es $(0,1)$. Con el eje horizontal: $-2\\sqrt{x+1}+3=0$ da $\\sqrt{x+1}=\\dfrac{3}{2}$; al elevar al cuadrado, $x+1=\\dfrac{9}{4}$ y $x=\\dfrac{5}{4}$. Verificación: $\\sqrt{\\dfrac{9}{4}}=\\dfrac{3}{2}$ y $-2 \\cdot \\dfrac{3}{2}+3=-3+3=0$. Así, la gráfica corta el eje vertical en $(0,1)$ y el eje horizontal en $\\left(\\dfrac{5}{4},0\\right)$, y ambos puntos son coherentes con el rango $(-\\infty, 3]$ y con el dominio $[-1, +\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio con radicando",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\sqrt{ax+b}$: condición $ax+b \\geq 0$",
+          "explicacion": "Para hallar el dominio de una raíz cuadrada con una expresión lineal en el radicando se resuelve la inecuación $ax+b \\geq 0$. Si $a>0$ se obtiene $x \\geq -\\dfrac{b}{a}$ y si $a<0$ se obtiene $x \\leq -\\dfrac{b}{a}$, porque al dividir entre un número negativo la desigualdad cambia de sentido. Esta regla emplea las inecuaciones lineales del tema correspondiente."
+        },
+        {
+          "texto": "Ejemplo: dominio de $\\sqrt{2x-6}$ = $[3, +\\infty)$",
+          "explicacion": "Se plantea $2x-6 \\geq 0$, de donde $2x \\geq 6$ y $x \\geq 3$. Verificación: con $x=3$, $\\sqrt{0}=0$ está definido; con $x=2$, $\\sqrt{-2}$ no lo está; con $x=5$, $\\sqrt{4}=2$. El dominio es $[3, +\\infty)$ y el rango es $[0, +\\infty)$."
+        },
+        {
+          "texto": "Ejemplo: dominio de $\\sqrt{5-x}$ = $(-\\infty, 5]$",
+          "explicacion": "Se plantea $5-x \\geq 0$, de donde $-x \\geq -5$ y, al multiplicar por $-1$ e invertir la desigualdad, $x \\leq 5$. Verificación: con $x=5$, $\\sqrt{0}=0$; con $x=1$, $\\sqrt{4}=2$; con $x=6$, $\\sqrt{-1}$ no existe. El dominio es $(-\\infty, 5]$ y la función es decreciente."
+        },
+        {
+          "texto": "Dominio de $\\sqrt{x^2-4}$: $(-\\infty,-2] \\cup [2, +\\infty)$",
+          "explicacion": "Se requiere $x^2-4 \\geq 0$, es decir $(x-2)(x+2) \\geq 0$. Los puntos críticos son $-2$ y $2$; el producto es no negativo cuando ambos factores tienen el mismo signo o alguno vale cero, lo que ocurre para $x \\leq -2$ o $x \\geq 2$. Verificación: $x=3$ da $\\sqrt{5}$, $x=0$ da $\\sqrt{-4}$ que no existe y $x=-3$ da $\\sqrt{5}$."
+        },
+        {
+          "texto": "Dominio de $\\sqrt{4-x^2}$: $[-2, 2]$",
+          "explicacion": "Se requiere $4-x^2 \\geq 0$, o sea $x^2 \\leq 4$, que equivale a $|x| \\leq 2$ y a $-2 \\leq x \\leq 2$. Verificación: $x=0$ da $\\sqrt{4}=2$, $x=2$ da $\\sqrt{0}=0$ y $x=3$ da $\\sqrt{-5}$, que no existe. El rango es $[0,2]$, pues el radicando varía de $0$ a $4$."
+        },
+        {
+          "texto": "Raíz en denominador: radicando $>0$",
+          "explicacion": "Si la raíz aparece en un denominador, como en $\\dfrac{1}{\\sqrt{x-1}}$, el radicando no solo debe ser no negativo sino distinto de cero, ya que no se puede dividir entre $0$. Se exige $x-1>0$, es decir $x>1$, y el dominio es $(1, +\\infty)$. Por ejemplo, $x=5$ da $\\dfrac{1}{2}$, mientras que $x=1$ queda excluido."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones con raíz",
+      "puntos": [
+        {
+          "texto": "Resolver $\\sqrt{x+1}=3$: aislar y elevar al cuadrado",
+          "explicacion": "Con la raíz ya aislada, se elevan al cuadrado ambos miembros: $x+1=9$, luego $x=8$. Verificación: $\\sqrt{8+1}=\\sqrt{9}=3$. Como en este caso el segundo miembro es positivo y la raíz principal es no negativa, la solución es válida. Elevar al cuadrado puede introducir soluciones falsas, por eso siempre se comprueba el resultado."
+        },
+        {
+          "texto": "$\\sqrt{x}=c$ con $c<0$ ⇒ sin solución",
+          "explicacion": "Como la raíz principal es no negativa, una ecuación como $\\sqrt{x+5}=-2$ no tiene solución real, aunque al elevar al cuadrado se obtendría $x+5=4$ y $x=-1$. Al comprobar, $\\sqrt{-1+5}=\\sqrt{4}=2 \\neq -2$. Reconocer esta situación al inicio evita cálculos innecesarios."
+        },
+        {
+          "texto": "Solución extraña: elevar al cuadrado exige verificación",
+          "explicacion": "Al elevar ambos miembros al cuadrado se pierde el signo, por lo que se pueden añadir soluciones que no cumplen la ecuación original. Ejemplo: $\\sqrt{x+2}=x$ da $x+2=x^2$, es decir $x^2-x-2=0$, con $x=2$ o $x=-1$. Con $x=2$: $\\sqrt{4}=2$ es verdadero. Con $x=-1$: $\\sqrt{1}=1 \\neq -1$, falso. La única solución es $x=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Dominio y rango: la raíz restringe ambos conjuntos",
+          "explicacion": "El tema de dominio y rango enseña a hallar los valores permitidos y los valores alcanzados. En la función raíz cuadrada el radicando limita el dominio, y el signo de la raíz principal limita el rango. Para $f(x)=\\sqrt{x-3}+2$ el dominio es $[3, +\\infty)$ y el rango $[2, +\\infty)$, con $f(3)=2$ y $f(7)=4$."
+        },
+        {
+          "texto": "Función cuadrática: $\\sqrt{x}$ invierte la rama derecha de $x^2$",
+          "explicacion": "La función cuadrática estudiada antes tiene gráfica parabólica y no es inyectiva en todo su dominio. Al restringirla a $x \\geq 0$ se vuelve inyectiva y su inversa es la raíz cuadrada. Así, la gráfica de $\\sqrt{x}$ es la rama superior de la parábola $x=y^2$, es decir, la misma parábola con los ejes intercambiados."
+        }
+      ]
+    }
+  ]
+}

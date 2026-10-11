@@ -1,0 +1,147 @@
+{
+  "curso": "Aritmética",
+  "tema": "Diagramas de Venn y Carroll",
+  "glosario": {
+    "diagrama de Venn": "Representación de conjuntos mediante regiones superpuestas",
+    "diagrama de Euler": "Círculos que representan relaciones entre conjuntos",
+    "diagrama de Carroll": "Tabla rectangular que clasifica objetos por atributos",
+    "región": "Zona del diagrama que representa una combinación",
+    "universo": "Conjunto que contiene todos los objetos considerados",
+    "atributo": "Propiedad que divide el universo en dos clases",
+    "clase": "Subconjunto definido por un atributo"
+  },
+  "theory": [
+    {
+      "titulo": "Diagramas de Venn",
+      "puntos": [
+        {
+          "texto": "Un «diagrama de Venn» representa conjuntos mediante regiones de un plano.",
+          "explicacion": "Un diagrama de Venn utiliza figuras cerradas, habitualmente círculos, para representar conjuntos. La posición relativa de las figuras muestra qué elementos comparten los conjuntos y cuáles pertenecen a uno solo. El diagrama no indica cantidades por sí mismo, sino la forma en que se combinan los conjuntos. John Venn lo presentó en 1880 como una manera visual de representar proposiciones y razonamientos lógicos."
+        },
+        {
+          "texto": "El rectángulo exterior representa el universo de los objetos considerados.",
+          "explicacion": "El rectángulo que encierra todas las figuras corresponde al conjunto universal, que reúne los objetos del problema. Todo lo que queda fuera de los círculos pertenece al universo, pero no a ninguno de los conjuntos representados. Esta convención permite leer el complemento de cada conjunto como la zona exterior a su círculo, como se estudió en el tema 08."
+        },
+        {
+          "texto": "Cada círculo representa un conjunto contenido en el universo.",
+          "explicacion": "Cada figura cerrada del diagrama agrupa los elementos que pertenecen a un conjunto determinado. Los elementos ubicados dentro del círculo cumplen la propiedad que lo define, y los ubicados fuera no la cumplen. Por eso el círculo reproduce visualmente la idea de pertenencia estudiada en el tema 09."
+        },
+        {
+          "texto": "Cada región del diagrama corresponde a una combinación de pertenencias.",
+          "explicacion": "Con dos conjuntos, el diagrama tiene cuatro regiones: solo en el primero, solo en el segundo, en ambos y en ninguno. Con tres conjuntos aparecen ocho regiones, y en general un diagrama de n conjuntos tiene $2^n$ regiones interiores al universo. Esta correspondencia entre regiones y combinaciones es la base para contar elementos en problemas de clasificación."
+        }
+      ]
+    },
+    {
+      "titulo": "Lectura de regiones",
+      "puntos": [
+        {
+          "texto": "La zona común a dos círculos representa su intersección.",
+          "explicacion": "Los elementos que están dentro de ambos círculos pertenecen a los dos conjuntos a la vez, lo que corresponde a la intersección estudiada en el tema 13. En el diagrama se identifica como la región donde las figuras se superponen. Leer esta región correctamente es el primer paso para resolver problemas que piden elementos comunes."
+        },
+        {
+          "texto": "La parte de un círculo que no toca el otro representa su diferencia.",
+          "explicacion": "La zona que pertenece a un círculo, pero queda fuera del otro, representa los elementos del primer conjunto que no están en el segundo. Corresponde a la diferencia estudiada en el tema 13. Al leer el diagrama, conviene identificar primero qué círculo se nombra en primer lugar, porque la diferencia no es simétrica."
+        },
+        {
+          "texto": "La zona fuera de todos los círculos representa lo que no pertenece a ningún conjunto.",
+          "explicacion": "Esta región contiene los elementos del universo que no están en ninguno de los conjuntos representados. Su lectura corresponde al complemento de la unión de los conjuntos, operación que se estudia en el tema 13. En muchos problemas esta zona se obtiene por diferencia, restando del total las cantidades de las demás regiones."
+        },
+        {
+          "texto": "La unión se representa con todas las zonas que pertenecen a algún círculo.",
+          "explicacion": "La unión de dos conjuntos abarca las dos figuras completas, incluida la zona común. Para leerla se suman mentalmente las regiones que pertenecen a al menos un conjunto, sin contar dos veces la intersección. La unión es una de las operaciones básicas del tema 13, y su representación en diagramas facilita comprobar sus propiedades."
+        }
+      ]
+    },
+    {
+      "titulo": "Diagramas de Euler",
+      "puntos": [
+        {
+          "texto": "Los «diagramas de Euler» muestran relaciones de inclusión y disjunción entre conjuntos.",
+          "explicacion": "Los diagramas de Euler usan círculos que pueden estar contenidos unos en otros, separados o parcialmente superpuestos según la relación entre los conjuntos. Un círculo dentro de otro indica inclusión, y dos círculos separados indican que los conjuntos son disjuntos. Leonhard Euler los propuso en sus cartas dirigidas a una princesa de Alemania, publicadas en 1768."
+        },
+        {
+          "texto": "Un diagrama de Euler no siempre muestra todas las combinaciones posibles.",
+          "explicacion": "A diferencia del diagrama de Venn, el de Euler dibuja solo las relaciones que existen entre los conjuntos del problema. Por eso puede omitir regiones que no contienen elementos según el enunciado, lo que lo hace más sencillo pero menos completo. Si el problema requiere contar todas las combinaciones, conviene usar el diagrama de Venn."
+        }
+      ]
+    },
+    {
+      "titulo": "Diagramas de Carroll",
+      "puntos": [
+        {
+          "texto": "El «diagrama de Carroll» organiza objetos en una tabla de doble entrada.",
+          "explicacion": "El diagrama de Carroll divide el universo en casillas dispuestas en una tabla, de modo que cada fila y cada columna corresponden a un atributo. Esta forma de clasificar resulta muy clara cuando los datos se describen mediante propiedades de tipo sí o no. Lewis Carroll, seudónimo de Charles Lutwidge Dodgson, lo empleó en su obra «Symbolic Logic», publicada en 1896."
+        },
+        {
+          "texto": "Cada atributo se divide en dos clases: la que lo tiene y la que no lo tiene.",
+          "explicacion": "Para cada atributo, el universo se separa en dos partes complementarias, una que cumple la propiedad y otra que no la cumple. En la tabla, cada clase ocupa una fila o una columna. Esta división garantiza que todos los objetos del universo queden clasificados sin solapamientos ni vacíos de clasificación."
+        },
+        {
+          "texto": "Cada casilla representa una combinación de atributos.",
+          "explicacion": "Con dos atributos, la tabla tiene cuatro casillas, que corresponden a las combinaciones del tipo con el atributo y sin él, en ambos casos. Cuando hay tres atributos, la tabla se amplía a ocho casillas. Cada casilla reúne los objetos que cumplen exactamente la combinación indicada en su fila y columna."
+        },
+        {
+          "texto": "Una «x» en una casilla indica que existe al menos un objeto en ella.",
+          "explicacion": "Carroll utilizaba la letra x para señalar que una casilla contiene algún objeto y el cero para indicar que está vacía. Esta convención permite representar enunciados como «algún objeto cumple tal combinación» sin necesidad de listar objetos concretos. La x marca existencia, mientras que el cero marca ausencia, lo que la distingue de una simple casilla sin marca."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de diagramas",
+      "puntos": [
+        {
+          "texto": "El diagrama de Venn muestra regiones, y el de Carroll, casillas.",
+          "explicacion": "Ambos representan las mismas combinaciones de atributos, pero con formas distintas. El de Venn se basa en figuras superpuestas y es natural para la intersección y la unión, mientras que el de Carroll se basa en una tabla y es más cómodo para clasificar datos con atributos binarios. La elección depende de cómo esté formulado el problema."
+        },
+        {
+          "texto": "Con cuatro conjuntos, el diagrama de Venn pierde claridad.",
+          "explicacion": "Aunque es posible dibujar un diagrama de Venn con cuatro figuras, la cantidad de regiones y la forma de las figuras complica su lectura. Con cinco o más conjuntos el dibujo se vuelve difícil de interpretar. En esos casos suele ser más eficiente usar una tabla o un método algebraico, que se estudian en otros temas del curso."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso en problemas",
+      "puntos": [
+        {
+          "texto": "Un diagrama permite contar elementos sumando cantidades por región.",
+          "explicacion": "Al asignar a cada región la cantidad de elementos que contiene, el total de un conjunto se obtiene sumando las regiones que lo forman. Esta forma de contar evita errores al tratar elementos que pertenecen a varios conjuntos. Para la fórmula general de la unión, que corrige los elementos contados dos veces, se remite al tema 13."
+        },
+        {
+          "texto": "Los datos de la intersección se colocan primero en la región central.",
+          "explicacion": "Cuando un problema da la cantidad de elementos comunes a varios conjuntos, conviene empezar por esa región, porque es la que aparece en todas las demás. Después se calculan las regiones de cada conjunto restando lo ya colocado. Esta estrategia reduce el número de operaciones y disminuye los errores."
+        },
+        {
+          "texto": "La región que el enunciado no menciona se obtiene por diferencia.",
+          "explicacion": "Si el total del universo es conocido, la cantidad de la región no mencionada se calcula restando del total la suma de las cantidades ya ubicadas. Por ejemplo, si de cien personas se conocen los datos de todas las regiones salvo una, esa región se obtiene por resta. Este cálculo utiliza las propiedades de la diferencia y del complemento del tema 13."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de los diagramas",
+      "puntos": [
+        {
+          "texto": "John Venn presentó sus diagramas en 1880.",
+          "explicacion": "John Venn, lógico y clérigo británico nacido en 1834 y fallecido en 1923, publicó en 1880 el artículo «On the Diagrammatic and Mechanical Representation of Propositions and Reasonings» en la revista Philosophical Magazine. En él propuso representar proposiciones y razonamientos mediante círculos que se cruzan, lo que dio origen al diagrama que hoy lleva su nombre."
+        },
+        {
+          "texto": "Charles Lutwidge Dodgson, conocido como Lewis Carroll, publicó «Symbolic Logic» en 1896.",
+          "explicacion": "Charles Lutwidge Dodgson, matemático británico nacido en 1832 y fallecido en 1898, es más conocido por su seudónimo Lewis Carroll. En la primera parte de su obra «Symbolic Logic», publicada en 1896, desarrolló métodos gráficos para resolver problemas de clasificación, entre ellos el diagrama de tabla que lleva su nombre."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Olvidar la región exterior al contar produce resultados incompletos.",
+          "explicacion": "Los elementos que no pertenecen a ningún conjunto están en la región exterior del universo, y si no se incluyen en el conteo el total no coincide con el dato del problema. Antes de cerrar cualquier cálculo conviene verificar que la suma de todas las regiones, incluida la exterior, sea igual al total del universo."
+        },
+        {
+          "texto": "Confundir el diagrama de Euler con el de Venn es frecuente.",
+          "explicacion": "El diagrama de Euler omite regiones vacías y el de Venn las muestra todas. Usar un diagrama de Euler para resolver un problema que exige contar combinaciones puede dejar fuera casos válidos. Al elegir el diagrama conviene revisar si el enunciado pide todas las combinaciones o solo las relaciones entre conjuntos."
+        }
+      ]
+    }
+  ]
+}

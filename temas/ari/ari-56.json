@@ -1,0 +1,138 @@
+{
+  "curso": "Aritmética",
+  "tema": "Regla de tres compuesta",
+  "glosario": {
+    "regla de tres compuesta": "Método con tres o más magnitudes proporcionales",
+    "incógnita": "Valor desconocido que se busca",
+    "razones de variación": "Cocientes entre el nuevo valor y el anterior",
+    "magnitud": "Propiedad que puede medirse y expresarse en números",
+    "reglas simples sucesivas": "Resolver por etapas, una magnitud cada vez",
+    "constante de proporcionalidad": "Valor fijo del cociente o del producto",
+    "eficiencia": "Capacidad de producir más trabajo en igual tiempo",
+    "dificultad": "Mayor exigencia de la obra por realizar"
+  },
+  "theory": [
+    {
+      "titulo": "Regla de tres compuesta",
+      "puntos": [
+        {
+          "texto": "«Regla de tres compuesta» = hallar un valor con tres o más magnitudes",
+          "explicacion": "La regla de tres compuesta es un procedimiento que permite calcular un valor desconocido cuando en el problema intervienen tres o más magnitudes relacionadas entre sí por proporcionalidad directa o inversa. Se diferencia de la regla de tres simple (se estudia en el tema 55, Regla de tres simple) en que allí solo participan dos magnitudes y aquí participan varias, de modo que el valor buscado depende a la vez de todas las demás. Se fundamenta en la proporcionalidad compuesta (se estudia en el tema 53, Magnitudes proporcionales directa e inversa), según la cual una magnitud puede ser proporcional a varias a la vez."
+        },
+        {
+          "texto": "Condición: cada magnitud actúa de forma independiente",
+          "explicacion": "Para aplicar la regla de tres compuesta se exige que la magnitud de la incógnita guarde una relación de proporcionalidad, directa o inversa, con cada una de las demás magnitudes cuando estas se consideran por separado, manteniendo constantes las restantes. Esa independencia permite combinar los efectos multiplicándolos. Si alguna de las relaciones no es proporcional, el resultado carece de validez, y por ello antes de plantear los cálculos se analiza el comportamiento de cada magnitud frente a la incógnita."
+        }
+      ]
+    },
+    {
+      "titulo": "Disposición de datos",
+      "puntos": [
+        {
+          "texto": "Tabla con una columna por magnitud",
+          "explicacion": "Los datos se ordenan en una tabla de dos filas y tantas columnas como magnitudes haya. La primera fila contiene los valores de la situación conocida y la segunda, los valores de la situación en que se pregunta, con la incógnita $x$ en la columna de la magnitud buscada. Cada columna reúne valores de una misma magnitud, de modo que se pueden comparar entre sí sin mezclar unidades. Esta disposición ordena el razonamiento y evita confundir qué valor corresponde a cada magnitud."
+        },
+        {
+          "texto": "Cada magnitud se compara con la «incógnita»",
+          "explicacion": "El paso decisivo de la regla de tres compuesta es comparar cada magnitud con la que contiene la incógnita, una por una, suponiendo que las demás permanecen fijas. Si al aumentar la magnitud considerada aumenta la incógnita, la relación es directa; si al aumentar la magnitud considerada disminuye la incógnita, la relación es inversa. La comparación debe hacerse siempre con la incógnita y no entre las otras magnitudes, pues una relación entre dos magnitudes distintas de la incógnita no determina el factor que se necesita."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula general",
+      "puntos": [
+        {
+          "texto": "Incógnita = valor conocido por las «razones de variación»",
+          "explicacion": "Sea $b$ el valor conocido de la magnitud de la incógnita en la primera situación. Para cada otra magnitud, con valores $a_i$ en la primera situación y $a_i'$ en la segunda, la razón de variación es $\\frac{a_i'}{a_i}$ si la relación con la incógnita es directa y $\\frac{a_i}{a_i'}$ si es inversa. Entonces $x = b\\cdot r_1\\cdot r_2\\cdots r_n$, donde $r_i$ son las razones de variación. Cada razón es el factor por el que cambia la incógnita debido a esa magnitud, y el producto reúne todos los efectos."
+        },
+        {
+          "texto": "Magnitud con igual valor en ambas situaciones ⇒ factor 1",
+          "explicacion": "Cuando una magnitud tiene el mismo valor en la situación conocida y en la situación pedida, su razón de variación es 1 y no modifica el resultado. Por eso esa magnitud puede omitirse del cálculo sin alterar la respuesta. Esta observación simplifica problemas en los que aparecen datos que no cambian entre las dos situaciones, y permite reconocer cuáles magnitudes influyen realmente en la incógnita."
+        }
+      ]
+    },
+    {
+      "titulo": "Reglas simples sucesivas",
+      "puntos": [
+        {
+          "texto": "«Reglas simples sucesivas» = resolver por etapas",
+          "explicacion": "Un problema compuesto puede resolverse aplicando una regla de tres simple para cada magnitud, una a la vez, usando el resultado de cada etapa como dato de la siguiente. Se parte del valor conocido y se modifica según una magnitud; luego se modifica el resultado según la siguiente, y así hasta agotarlas. El orden de las etapas no altera el resultado final, porque se están multiplicando las mismas razones de variación, y la multiplicación es conmutativa. Es un método más largo, pero muestra por qué funciona la fórmula general."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de la constante",
+      "puntos": [
+        {
+          "texto": "«Constante de proporcionalidad» compuesta entre dos situaciones",
+          "explicacion": "Si la incógnita $B$ es directamente proporcional a las magnitudes $D$ y inversamente proporcional a las magnitudes $C$, el cociente $\\frac{B\\cdot C}{D}$ es constante, y se iguala entre la situación conocida y la situación pedida. Se despeja $x$ de esa igualdad. Es el mismo resultado de la fórmula general, expresado como igualdad de dos expresiones constantes. Resulta cómodo cuando intervienen muchas magnitudes, pues basta distribuir cada una en el numerador o el denominador según su relación con la incógnita."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos resueltos",
+      "puntos": [
+        {
+          "texto": "Ejemplo con dos relaciones directas",
+          "explicacion": "Si 6 máquinas producen 300 piezas en 10 días, se busca cuántas piezas producirán 8 máquinas en 15 días. La cantidad de piezas es directamente proporcional al número de máquinas y a los días. Entonces $x = 300\\cdot\\frac{8}{6}\\cdot\\frac{15}{10} = 600$. Se comprueba la coherencia: al aumentar tanto las máquinas como los días, la producción debe aumentar, y 600 es mayor que 300. El resultado coincide con aplicar dos reglas simples en sucesión: 400 piezas con 8 máquinas en 10 días y luego 600 con 15 días."
+        },
+        {
+          "texto": "Ejemplo con dos relaciones inversas",
+          "explicacion": "Si 12 obreros trabajando 8 horas diarias terminan una obra en 15 días, se busca en cuántos días la terminarán 10 obreros trabajando 9 horas diarias. Los días son inversamente proporcionales al número de obreros y a las horas diarias. Entonces $x = 15\\cdot\\frac{12}{10}\\cdot\\frac{8}{9} = 16$. Es coherente: hay menos obreros, lo que alarga el plazo, y más horas por día, lo que lo acorta, con un efecto neto de un día adicional."
+        },
+        {
+          "texto": "Ejemplo con relación directa e inversa",
+          "explicacion": "Si 10 obreros hacen 120 metros de una obra en 12 días, se busca en cuántos días harán 8 obreros 160 metros. Los días son directamente proporcionales a la cantidad de obra e inversamente proporcionales al número de obreros. Entonces $x = 12\\cdot\\frac{160}{120}\\cdot\\frac{10}{8} = 20$. El resultado es mayor que 12 porque la obra es mayor y los obreros son menos, dos efectos que alargan el plazo."
+        }
+      ]
+    },
+    {
+      "titulo": "Magnitudes adicionales",
+      "puntos": [
+        {
+          "texto": "«Eficiencia» de los trabajadores ⇒ más obra en igual tiempo",
+          "explicacion": "En los problemas de obras puede intervenir la eficiencia, que mide la capacidad de realizar más trabajo en el mismo tiempo. La obra realizada es directamente proporcional a la eficiencia, y el tiempo necesario para una obra dada es inversamente proporcional a ella. Se trata como una magnitud más, con su propio valor en cada situación y su propia razón de variación, de modo que no exige un método distinto."
+        },
+        {
+          "texto": "«Dificultad» de la obra ⇒ más tiempo o menos obra",
+          "explicacion": "La dificultad es una magnitud que expresa la mayor o menor exigencia de la obra. Para un mismo tiempo y un mismo grupo de trabajadores, la obra realizada es inversamente proporcional a la dificultad; el tiempo necesario para una obra dada es directamente proporcional a ella. Igual que la eficiencia, se incorpora como una magnitud más a la tabla y su razón de variación se multiplica con las demás."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación",
+      "puntos": [
+        {
+          "texto": "Comprobar la coherencia del resultado",
+          "explicacion": "Terminado el cálculo conviene comprobar que el resultado concuerda con el sentido de las variaciones. Si todas las razones de variación son mayores que 1, la incógnita debe ser mayor que el dato; si todas son menores que 1, debe ser menor. Cuando hay razones mayores y menores que 1 se compara el producto con 1. Esta verificación cuesta poco y permite detectar errores como una razón invertida o un dato mal ubicado."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: comparar las magnitudes entre sí",
+          "explicacion": "Un error habitual es decidir si una magnitud es directa o inversa comparándola con otra distinta de la incógnita, en vez de con la incógnita misma. Por ejemplo, entre el número de obreros y las horas diarias existe una relación inversa para una obra fija, pero eso no dice nada sobre cómo afectan por separado al tiempo requerido. La relación que determina cada factor es siempre la de esa magnitud con la incógnita."
+        },
+        {
+          "texto": "Error: tratar todas las magnitudes como directas",
+          "explicacion": "Otro error es multiplicar todas las razones en sentido directo sin analizar cada magnitud. Esto produce resultados incoherentes cuando alguna relación es inversa, como obtener que al agregar obreros aumente el tiempo de una obra. Debe evaluarse una por una la relación con la incógnita y solo después elegir entre la razón directa y la inversa."
+        },
+        {
+          "texto": "Error: no unificar las unidades",
+          "explicacion": "También es común operar con unidades distintas para una misma magnitud, por ejemplo, días y semanas, o horas y minutos. Todas las cantidades de una misma magnitud deben expresarse en una sola unidad antes de formar las razones, porque el cociente entre valores en unidades distintas carece de sentido. La conversión se hace al comenzar y la respuesta se expresa en la unidad que pida el enunciado."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Regla de cinco en la India: «Līlāvatī» (1150)",
+          "explicacion": "Los matemáticos de la India extendieron la regla de tres a problemas con más magnitudes, con reglas de cinco, siete y nueve términos, que corresponden a la regla de tres compuesta. Bhāskara, matemático indio conocido como Bhāskara II, trató estas reglas en su obra Līlāvatī, escrita hacia 1150. La regla consistía en reunir los términos en dos grupos y operar con ellos como en la regla simple, lo que equivale a la fórmula de las razones de variación."
+        }
+      ]
+    }
+  ]
+}

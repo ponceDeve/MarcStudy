@@ -1,0 +1,132 @@
+{
+  "curso": "Aritmética",
+  "tema": "Algoritmo de Euclides",
+  "glosario": {
+    "algoritmo de Euclides": "Divisiones sucesivas que dan el máximo común divisor",
+    "máximo común divisor": "Mayor de los divisores comunes de varios números",
+    "algoritmo": "Lista finita de pasos ordenados para resolver",
+    "dividendo": "Número que se reparte en una división",
+    "divisor": "Entero positivo que divide exactamente a otro",
+    "cociente": "Resultado entero de una división",
+    "residuo": "Lo que sobra en una división no exacta",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno",
+    "división exacta": "División cuyo residuo es cero"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El «algoritmo de Euclides» calcula el máximo común divisor por divisiones sucesivas",
+          "explicacion": "El algoritmo de Euclides es un procedimiento que halla el máximo común divisor de dos enteros positivos mediante una cadena de divisiones, sin necesidad de descomponer los números en factores primos. Un algoritmo es una lista finita de pasos ordenados que conduce siempre al resultado. Su ventaja principal aparece con números grandes, donde factorizar es difícil y listar divisores es impracticable."
+        },
+        {
+          "texto": "Euclides lo describe en sus «Elementos», libro VII, siglo III a. C.",
+          "explicacion": "El matemático griego Euclides, que vivió en Alejandría hacia el siglo III a. C., presenta este procedimiento en el libro VII de su obra Elementos, en las proposiciones primera y segunda, donde lo usa para decidir si dos números son primos entre sí y para hallar su mayor medida común. Es uno de los algoritmos más antiguos que se conservan por escrito."
+        },
+        {
+          "texto": "El algoritmo se apoya en la «división exacta» y en el «residuo»",
+          "explicacion": "Una división exacta es aquella cuyo residuo es cero, y el residuo es lo que sobra al repartir el dividendo en partes iguales según el divisor. El algoritmo hace divisiones sucesivas hasta obtener una división exacta. La división euclidiana con dividendo, divisor, cociente y residuo se estudia en el tema 22 (Algoritmo de la división de Euclides)."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento",
+      "puntos": [
+        {
+          "texto": "$MCD(A,B)$ = $MCD(B,r)$ siendo $r$ el residuo de dividir $A$ entre $B$",
+          "explicacion": "Cuando se divide $A$ entre $B$, con cociente $q$ y residuo $r$, se cumple que $A$ es igual a $B$ por $q$ más $r$. Todo divisor común de $A$ y $B$ divide a $r$, y todo divisor común de $B$ y $r$ divide a $A$. Por tanto, ambas parejas tienen los mismos divisores comunes y el mismo máximo común divisor. Esta igualdad es la base de todo el procedimiento."
+        },
+        {
+          "texto": "El residuo es cero ⇒ el divisor es el $MCD$",
+          "explicacion": "Si la división de $A$ entre $B$ es exacta, $B$ divide a $A$, y por lo tanto el máximo común divisor de $A$ y $B$ es $B$. Es el caso en que se detiene el algoritmo, y el divisor de esa última división exacta es el resultado buscado. Por eso se dice que el máximo común divisor es el último divisor utilizado, que coincide con el último residuo distinto de cero."
+        },
+        {
+          "texto": "Los residuos disminuyen en cada paso ⇒ el algoritmo termina",
+          "explicacion": "Cada residuo es menor que el divisor de su división y ese residuo pasa a ser el siguiente divisor, por lo que se forma una sucesión estrictamente decreciente de enteros no negativos. Una sucesión así no puede continuar indefinidamente, de modo que tarde o temprano se llega a residuo cero y el procedimiento concluye en un número finito de pasos."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento",
+      "puntos": [
+        {
+          "texto": "Paso $1$: dividir el mayor entre el menor y hallar el residuo",
+          "explicacion": "Se toma el número mayor como dividendo y el menor como divisor. Se calcula el cociente entero y el residuo de esa división. Si el residuo es cero, el menor de los números es el máximo común divisor y el procedimiento termina de inmediato. En caso contrario se pasa al paso siguiente con el residuo obtenido."
+        },
+        {
+          "texto": "Paso $2$: el divisor pasa a dividendo y el residuo a divisor",
+          "explicacion": "Con el residuo distinto de cero, se repite la división tomando como nuevo dividendo al divisor anterior y como nuevo divisor al residuo anterior. Se obtiene un nuevo cociente y un nuevo residuo. La repetición de este paso es lo que da al algoritmo el carácter de divisiones sucesivas y garantiza que los números involucrados sean cada vez menores."
+        },
+        {
+          "texto": "Paso $3$: repetir hasta residuo cero; el último divisor es el $MCD$",
+          "explicacion": "El proceso se repite mientras el residuo sea distinto de cero. La división en que el residuo resulta cero es la última, y su divisor es el máximo común divisor de los dos números iniciales. Conviene comprobar el resultado verificando que ese número divide a los dos datos originales."
+        },
+        {
+          "texto": "Disposición práctica: cocientes arriba, residuos abajo",
+          "explicacion": "Para trabajar de forma ordenada se usa una tabla en la que los cocientes se escriben en una fila superior y los residuos en la inferior, a la derecha de los números iniciales. Cada residuo se calcula con los dos números anteriores de la fila inferior. Esta disposición reduce errores y se usa de forma habitual en los textos preuniversitarios."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos",
+      "puntos": [
+        {
+          "texto": "Ejemplo: $MCD(252,105)$ vale $21$",
+          "explicacion": "Se divide $252$ entre $105$ y resulta cociente $2$ y residuo $42$. Luego $105$ entre $42$ da cociente $2$ y residuo $21$. Después $42$ entre $21$ da cociente $2$ y residuo $0$. El último divisor es $21$, que es el máximo común divisor, y se comprueba que $21$ divide a $252$ y a $105$."
+        },
+        {
+          "texto": "Ejemplo: $MCD(1071,462)$ vale $21$",
+          "explicacion": "La división de $1071$ entre $462$ da cociente $2$ y residuo $147$. Luego $462$ entre $147$ da cociente $3$ y residuo $21$. Finalmente $147$ entre $21$ da cociente $7$ y residuo $0$. El máximo común divisor es $21$, y se comprueba por factorización que $1071$ es $3^{2}\\cdot 7\\cdot 17$ y $462$ es $2\\cdot 3\\cdot 7\\cdot 11$, cuyos primos comunes dan $3\\cdot 7$."
+        },
+        {
+          "texto": "Ejemplo: $MCD(35,12)$ vale $1$ ⇒ son «primos entre sí»",
+          "explicacion": "La división de $35$ entre $12$ da cociente $2$ y residuo $11$. Luego $12$ entre $11$ da cociente $1$ y residuo $1$. Finalmente $11$ entre $1$ da cociente $11$ y residuo $0$. El último divisor es $1$, así que $35$ y $12$ son primos entre sí. Este resultado muestra cómo el algoritmo decide si dos números son primos entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Varios números",
+      "puntos": [
+        {
+          "texto": "$MCD(A,B,C)$ ⇒ algoritmo con $A$, $B$ y luego con $C$",
+          "explicacion": "Para tres números, se aplica el algoritmo a dos de ellos y luego al resultado y al tercer número. Para más números, se repite el proceso, tomando siempre el último máximo común divisor obtenido. Este método se basa en la propiedad de que el máximo común divisor puede calcularse en etapas, que se estudia en el tema 33."
+        },
+        {
+          "texto": "Ejemplo: $MCD(48,72,120)$ ⇒ primero $24$, luego $24$",
+          "explicacion": "El algoritmo aplicado a $48$ y $72$ da $24$. Luego, al aplicarlo a $24$ y $120$, la división de $120$ entre $24$ es exacta y el resultado es $24$. El máximo común divisor de los tres números es $24$, valor que coincide con el obtenido por descomposición en factores primos."
+        }
+      ]
+    },
+    {
+      "titulo": "Variantes",
+      "puntos": [
+        {
+          "texto": "Restos por exceso ⇒ menos pasos en algunos casos",
+          "explicacion": "En lugar de usar siempre el residuo por defecto, se puede usar el residuo por exceso cuando es menor, lo que reduce el número de divisiones en algunos casos. Las divisiones por defecto y por exceso se estudian en el tema 23, y la validez del método se mantiene porque la igualdad entre los máximos comunes divisores se conserva con ambos tipos de residuo."
+        },
+        {
+          "texto": "Peor caso: números consecutivos de Fibonacci (Gabriel Lamé, 1844)",
+          "explicacion": "El matemático francés Gabriel Lamé demostró en 1844 que el número de divisiones del algoritmo no supera cinco veces la cantidad de cifras decimales del menor de los dos números. El peor caso se presenta con dos términos consecutivos de la sucesión de Fibonacci, cuyas divisiones dan siempre cociente uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: detenerse antes de llegar al residuo cero",
+          "explicacion": "El resultado es el último divisor, el de la división con residuo cero. Detenerse en un residuo intermedio da un número mayor que el máximo común divisor, porque todavía no divide a los dos datos. Para evitarlo, siempre se debe continuar hasta que una división sea exacta."
+        },
+        {
+          "texto": "Error: confundir el último cociente con el $MCD$",
+          "explicacion": "En la última división, el cociente no es el máximo común divisor, sino el divisor. En el ejemplo de $252$ y $105$, el último cociente es $2$, mientras que el máximo común divisor es $21$. Para evitar la confusión se subraya el divisor de la última división antes de dar la respuesta."
+        },
+        {
+          "texto": "Error: dividir el menor entre el mayor en el primer paso",
+          "explicacion": "Si se divide el menor entre el mayor, el cociente es cero y el residuo es el propio número menor, de modo que el primer paso solo intercambia el orden de los números. No es un error en el resultado final, pero hace perder un paso. Por eso se recomienda empezar siempre con el mayor como dividendo."
+        }
+      ]
+    }
+  ]
+}

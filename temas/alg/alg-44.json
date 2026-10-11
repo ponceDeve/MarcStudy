@@ -1,0 +1,224 @@
+{
+  "curso": "Álgebra",
+  "tema": "Cocientes notables",
+  "glosario": {
+    "cociente notable": "División exacta de binomios con patrón fijo.",
+    "binomio": "Expresión algebraica de dos términos.",
+    "división exacta": "División cuyo resto es cero.",
+    "resto": "Lo que sobra al dividir.",
+    "teorema del resto": "El resto es el valor del polinomio.",
+    "dividendo": "Expresión que se divide.",
+    "divisor": "Expresión por la que se divide.",
+    "cociente": "Resultado de una división.",
+    "exponente": "Número que indica la potencia.",
+    "potencia": "Producto de factores iguales.",
+    "término": "Cada sumando de una expresión algebraica.",
+    "coeficiente": "Número que multiplica a una variable.",
+    "método de Ruffini": "Método de división con coeficientes y raíz.",
+    "factorización": "Escribir una expresión como producto.",
+    "productos notables": "Productos con resultado conocido sin multiplicar.",
+    "diferencia de cuadrados": "Producto de suma por diferencia de bases."
+  },
+  "theory": [
+    {
+      "titulo": "Cociente notable",
+      "puntos": [
+        {
+          "texto": "«Cociente notable»: división exacta de binomios con patrón fijo",
+          "explicacion": "Es el cociente de dos binomios cuya división tiene resto cero y cuyo resultado se escribe directamente siguiendo un patrón, sin efectuar la división paso a paso. Se presenta cuando el dividendo es una suma o diferencia de potencias con el mismo exponente y el divisor es la suma o diferencia de las bases. Ejemplo más sencillo: $\\dfrac{x^2-9}{x-3}=x+3$, pues $x^2-9=(x-3)(x+3)$."
+        },
+        {
+          "texto": "Los cuatro tipos son $\\dfrac{x^n\\pm a^n}{x\\pm a}$",
+          "explicacion": "Combinando los signos del dividendo y del divisor aparecen cuatro casos: $\\dfrac{x^n-a^n}{x-a}$, $\\dfrac{x^n-a^n}{x+a}$, $\\dfrac{x^n+a^n}{x+a}$ y $\\dfrac{x^n+a^n}{x-a}$. No todos son exactos: cada uno exige una condición sobre el exponente $n$, que se justifica con el teorema del resto en las secciones siguientes."
+        },
+        {
+          "texto": "Condición: $n$ entero con $n\\geq2$",
+          "explicacion": "El exponente $n$ es un número natural. Con $n=1$ el cociente es trivial, como $\\dfrac{x-a}{x-a}=1$, por lo que el caso interesante comienza en $n=2$. Ejemplo con $n=2$: $\\dfrac{x^2-a^2}{x-a}=x+a$, que tiene $n=2$ términos. Los exponentes no pueden ser fraccionarios ni negativos, porque el cociente debe ser un polinomio con $n$ términos. Esta condición se aplica tanto a las cuatro formas con una sola variable como a las formas generalizadas con dos variables, donde el exponente equivalente es la razón $r$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta entre resta",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{x^n-a^n}{x-a}=x^{n-1}+x^{n-2}a+\\cdots+a^{n-1}$ para todo $n$",
+          "explicacion": "Es exacto para cualquier $n$ natural y todos los términos del cociente son positivos. Ejemplo con $n=5$: $\\dfrac{x^5-a^5}{x-a}=x^4+x^3a+x^2a^2+xa^3+a^4$. Verificación con $x=2$ y $a=1$: $\\dfrac{32-1}{2-1}=31$ y $16+8+4+2+1=31$. Por eso se la considera el caso base de los cocientes notables: los demás se obtienen cambiando signos. Se aplica sin ninguna restricción sobre $n$ y se reconoce porque el dividendo es una diferencia de potencias iguales y el divisor es la diferencia de las bases. Ejemplo adicional con $n=2$: $\\dfrac{x^2-a^2}{x-a}=x+a$."
+        },
+        {
+          "texto": "Caso $n=3$: $\\dfrac{x^3-a^3}{x-a}=x^2+xa+a^2$",
+          "explicacion": "Corresponde a la diferencia de cubos, que se factoriza como $x^3-a^3=(x-a)(x^2+xa+a^2)$. Verificación con $x=3$ y $a=1$: $\\dfrac{27-1}{3-1}=13$ y $9+3+1=13$. Para aplicarlo se identifican las bases cúbicas: por ejemplo, $\\dfrac{x^3-8}{x-2}$ tiene $a=2$ porque $8=2^3$, y resulta $x^2+2x+4$. Verificación con $x=3$: $\\dfrac{27-8}{3-2}=19$ y $9+6+4=19$."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta entre suma",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{x^n-a^n}{x+a}$ es exacto ⇒ $n$ par",
+          "explicacion": "Con $n$ par el cociente es $x^{n-1}-x^{n-2}a+x^{n-3}a^2-\\cdots-a^{n-1}$, con signos alternados que empiezan en positivo y terminan en negativo. Ejemplo con $n=4$: $\\dfrac{x^4-a^4}{x+a}=x^3-x^2a+xa^2-a^3$. Verificación con $x=3$ y $a=1$: $\\dfrac{81-1}{3+1}=20$ y $27-9+3-1=20$. La razón de que $n$ deba ser par es que solo entonces $(-a)^n=a^n$ y el resto se anula. Se reconoce porque el dividendo es una diferencia y el divisor una suma. Ejemplo adicional con $n=2$: $\\dfrac{x^2-a^2}{x+a}=x-a$."
+        },
+        {
+          "texto": "$\\dfrac{x^n-a^n}{x+a}$ con $n$ impar ⇒ no es exacto",
+          "explicacion": "Con $n$ impar el resto es distinto de cero, de modo que no es un cociente notable. Ejemplo con $n=3$: $\\dfrac{x^3-a^3}{x+a}$ deja resto $-2a^3$. Verificación numérica con $x=2$ y $a=1$: $\\dfrac{8-1}{2+1}=\\dfrac73$, que no es entero."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma entre suma",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{x^n+a^n}{x+a}$ es exacto ⇒ $n$ impar",
+          "explicacion": "Con $n$ impar el cociente es $x^{n-1}-x^{n-2}a+\\cdots+a^{n-1}$, con signos alternados que empiezan y terminan en positivo. Ejemplo con $n=5$: $\\dfrac{x^5+a^5}{x+a}=x^4-x^3a+x^2a^2-xa^3+a^4$. Verificación con $x=2$ y $a=1$: $\\dfrac{32+1}{2+1}=11$ y $16-8+4-2+1=11$. La razón de que $n$ deba ser impar es que solo entonces $(-a)^n=-a^n$ y el resto se anula. Se reconoce porque tanto el dividendo como el divisor son sumas. Ejemplo adicional con $n=3$: $\\dfrac{x^3+a^3}{x+a}=x^2-xa+a^2$."
+        },
+        {
+          "texto": "Caso $n=3$: $\\dfrac{x^3+a^3}{x+a}=x^2-xa+a^2$",
+          "explicacion": "Es la suma de cubos, que se factoriza como $x^3+a^3=(x+a)(x^2-xa+a^2)$. Verificación con $x=3$ y $a=1$: $\\dfrac{27+1}{3+1}=7$ y $9-3+1=7$. Para aplicarlo se identifican las bases cúbicas: por ejemplo, $\\dfrac{x^3+27}{x+3}$ tiene $a=3$ porque $27=3^3$, y resulta $x^2-3x+9$. Verificación con $x=1$: $\\dfrac{1+27}{1+3}=7$ y $1-3+9=7$."
+        },
+        {
+          "texto": "$\\dfrac{x^n+a^n}{x+a}$ con $n$ par ⇒ no es exacto",
+          "explicacion": "Con $n$ par el resto vale $2a^n$, distinto de cero. Ejemplo con $n=4$: $\\dfrac{x^4+a^4}{x+a}$ deja resto $2a^4$. Verificación numérica con $x=2$ y $a=1$: $\\dfrac{16+1}{2+1}=\\dfrac{17}3$, que no es entero. Por eso, antes de aplicar el patrón, debe verificarse la paridad del exponente: una suma de potencias pares entre $x+a$ no se divide exactamente. Se reconoce porque el dividendo tiene exponente par, como $x^2+a^2$ o $x^6+a^6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma entre resta",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{x^n+a^n}{x-a}$ nunca es exacto",
+          "explicacion": "El resto es $2a^n$, que es distinto de cero mientras $a\\neq0$, sea cual sea el exponente $n$. Por eso este caso no produce un cociente notable. Ejemplo con $n=2$: $x^2+a^2=(x-a)(x+a)+2a^2$, de modo que el resto es $2a^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración con el resto",
+      "puntos": [
+        {
+          "texto": "Teorema del resto: dividir entre $x-c$ ⇒ resto = valor en $x=c$",
+          "explicacion": "El resto de dividir un polinomio entre $x-c$ es el valor numérico del polinomio cuando $x=c$. Para el divisor $x-a$ se toma $c=a$, y para $x+a$ se toma $c=-a$. Si el resultado es cero, la división es exacta. Ejemplo: $\\dfrac{x^2-1}{x-1}$ tiene resto $1^2-1=0$."
+        },
+        {
+          "texto": "$x^n-a^n$ entre $x-a$: resto $a^n-a^n=0$",
+          "explicacion": "Al reemplazar $x=a$ queda $a^n-a^n=0$ para cualquier $n$, de modo que la división es siempre exacta. Ejemplo: con $n=5$ el resto de $\\dfrac{x^5-a^5}{x-a}$ es $a^5-a^5=0$. Esto concuerda con el teorema del factor: si el valor del polinomio en $x=a$ es cero, el divisor $x-a$ es un factor exacto del polinomio. Ejemplo con $n=2$: $x^2-a^2$ en $x=a$ vale $0$."
+        },
+        {
+          "texto": "$x^n-a^n$ entre $x+a$: resto $(-a)^n-a^n$ ⇒ 0 si $n$ par",
+          "explicacion": "Al reemplazar $x=-a$ resulta $(-a)^n-a^n$. Si $n$ es par, $(-a)^n=a^n$ y el resto es 0; si $n$ es impar, $(-a)^n=-a^n$ y el resto es $-2a^n$. Ejemplos: con $n=4$ el resto es $a^4-a^4=0$, y con $n=3$ el resto es $-a^3-a^3=-2a^3$."
+        },
+        {
+          "texto": "$x^n+a^n$ entre $x+a$: resto $(-a)^n+a^n$ ⇒ 0 si $n$ impar",
+          "explicacion": "Con $x=-a$ se obtiene $(-a)^n+a^n$. Si $n$ es impar, $(-a)^n=-a^n$ y el resto es 0; si $n$ es par, el resto es $2a^n$. Ejemplos: con $n=5$ el resto es $-a^5+a^5=0$, y con $n=4$ el resto es $a^4+a^4=2a^4$."
+        },
+        {
+          "texto": "$x^n+a^n$ entre $x-a$: resto $a^n+a^n=2a^n$",
+          "explicacion": "Con $x=a$ resulta $a^n+a^n=2a^n$, que no se anula para $a\\neq0$, de modo que la división nunca es exacta. Ejemplo: con $n=3$, el resto de $\\dfrac{x^3+a^3}{x-a}$ es $2a^3$. Se concluye que $x-a$ no es factor de $x^n+a^n$. Se aplica siempre que el dividendo sea una suma de potencias y el divisor una resta, sin importar si $n$ es par o impar. Ejemplo con $n=4$: el resto de $\\dfrac{x^4+a^4}{x-a}$ es $2a^4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reglas del desarrollo",
+      "puntos": [
+        {
+          "texto": "El cociente tiene $n$ términos",
+          "explicacion": "El primer término es $x^{n-1}$ y el último es $a^{n-1}$, y entre ambos hay un término por cada exponente intermedio: en total $n$ términos. Ejemplo: el cociente de $\\dfrac{x^5-a^5}{x-a}$ tiene 5 términos: $x^4$, $x^3a$, $x^2a^2$, $xa^3$ y $a^4$."
+        },
+        {
+          "texto": "Exponente de $x$ ↓ de $n-1$ a 0 y de $a$ ↑ de 0 a $n-1$",
+          "explicacion": "En cada término los dos exponentes suman $n-1$: el de $x$ disminuye de uno en uno y el de $a$ aumenta de uno en uno. Ejemplo con $n=4$: $x^3a^0$, $x^2a^1$, $x^1a^2$, $x^0a^3$, y cada suma de exponentes es $3$."
+        },
+        {
+          "texto": "Los coeficientes del cociente son 1 o $-1$",
+          "explicacion": "Todos los términos tienen coeficiente 1 en valor absoluto; solo cambia el signo según el caso. Esto se comprueba con la división por el método de Ruffini: para $\\dfrac{x^3-1}{x-1}$, los coeficientes del dividendo son 1, 0, 0 y −1, y la fila resultante es 1, 1, 1 con resto 0, es decir $x^2+x+1$."
+        },
+        {
+          "texto": "Divisor $x-a$ ⇒ todos los signos positivos",
+          "explicacion": "Cuando el divisor es una resta, el cociente no cambia de signo: todos los términos se suman. Ejemplo: $\\dfrac{x^4-a^4}{x-a}=x^3+x^2a+xa^2+a^3$. Verificación con $x=2$ y $a=1$: $\\dfrac{16-1}{2-1}=15$ y $8+4+2+1=15$. Se aplica en el caso de resta entre resta, para cualquier $n$. Conviene escribir primero los exponentes de $x$ de mayor a menor y luego los de $a$ de menor a mayor, con signo positivo en todos los términos. Ejemplo adicional con $n=3$: $x^2+xa+a^2$."
+        },
+        {
+          "texto": "Divisor $x+a$ ⇒ signos alternados desde positivo",
+          "explicacion": "Cuando el divisor es una suma, los signos del cociente se alternan empezando por el positivo. Si el número de términos $n$ es par, el último término es negativo; si $n$ es impar, es positivo. Ejemplos: $x^3-x^2a+xa^2-a^3$ (con $n=4$) termina en negativo, y $x^2-xa+a^2$ (con $n=3$) termina en positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Condición de cociente notable",
+      "puntos": [
+        {
+          "texto": "$\\dfrac{x^m\\pm y^n}{x^p\\pm y^q}$ notable ⇒ $\\dfrac mp=\\dfrac nq=r$ entero",
+          "explicacion": "Se reconoce porque las potencias del dividendo se pueden escribir como $r$-ésimas potencias de las bases del divisor: $x^m=(x^p)^r$ y $y^n=(y^q)^r$. Entonces equivale a $\\dfrac{X^r\\pm Y^r}{X\\pm Y}$ con $X=x^p$ y $Y=y^q$. Ejemplo: $\\dfrac{x^{20}-y^{12}}{x^5-y^3}$ cumple $\\dfrac{20}5=\\dfrac{12}3=4$, luego es un cociente notable de 4 términos."
+        },
+        {
+          "texto": "El número de términos es $r=\\dfrac mp=\\dfrac nq$",
+          "explicacion": "Una vez comprobada la condición, el cociente tiene tantos términos como indica la razón $r$. Ejemplo: $\\dfrac{x^{15}-y^{10}}{x^3-y^2}$ tiene $\\dfrac{15}3=\\dfrac{10}2=5$ términos: $x^{12}+x^9y^2+x^6y^4+x^3y^6+y^8$. Verificación con $x=2$ y $y=1$: $\\dfrac{32768-1}{8-1}=4681$ y $4096+512+64+8+1=4681$. La razón $r$ debe ser un entero positivo; si $\\dfrac mp$ no es entero, no hay cociente notable. Se calcula con cualquiera de las dos razones, que deben coincidir. Ejemplo adicional: $\\dfrac{x^{12}-y^{8}}{x^3-y^2}$ tiene $\\dfrac{12}3=\\dfrac82=4$ términos."
+        },
+        {
+          "texto": "Si las razones difieren ⇒ no es cociente notable",
+          "explicacion": "Cuando $\\dfrac mp\\neq\\dfrac nq$, no se pueden escribir las dos potencias con el mismo exponente respecto de las bases del divisor. Ejemplo: en $\\dfrac{x^9-y^4}{x^3-y^2}$, $\\dfrac93=3$ y $\\dfrac42=2$ son distintos, de modo que no es notable."
+        },
+        {
+          "texto": "Resta entre resta ⇒ cualquier $r$",
+          "explicacion": "En $\\dfrac{x^m-y^n}{x^p-y^q}$ con $\\dfrac mp=\\dfrac nq=r$, la división es exacta para cualquier valor natural de $r$, porque en la forma $\\dfrac{X^r-Y^r}{X-Y}$ el resto $Y^r-Y^r=0$. Ejemplo: $\\dfrac{x^{20}-y^{12}}{x^5-y^3}$ con $r=4$ y $\\dfrac{x^{15}-y^{10}}{x^3-y^2}$ con $r=5$ son notables. Esta es la única combinación sin restricción sobre $r$; las otras dos combinaciones con solución exigen paridad. Ejemplo adicional: $\\dfrac{x^{6}-y^{9}}{x^2-y^3}$ tiene $r=3$ y resulta $x^4+x^2y^3+y^6$."
+        },
+        {
+          "texto": "Resta entre suma ⇒ $r$ par",
+          "explicacion": "En $\\dfrac{x^m-y^n}{x^p+y^q}$ se exige $r$ par. Ejemplo: $\\dfrac{x^{12}-y^8}{x^3+y^2}$ tiene $r=\\dfrac{12}3=\\dfrac82=4$, y resulta $x^9-x^6y^2+x^3y^4-y^6$. Verificación con $x=2$ y $y=1$: $\\dfrac{4096-1}{8+1}=455$ y $512-64+8-1=455$. La condición proviene de la forma $\\dfrac{X^r-Y^r}{X+Y}$, exacta solo con $r$ par. Contraejemplo: $\\dfrac{x^{9}-y^{6}}{x^3+y^2}$ tiene $r=3$, impar, y por eso no es notable. Se reconoce porque el dividendo es una resta y el divisor una suma."
+        },
+        {
+          "texto": "Suma entre suma ⇒ $r$ impar",
+          "explicacion": "En $\\dfrac{x^m+y^n}{x^p+y^q}$ se exige $r$ impar. Ejemplo: $\\dfrac{x^{15}+y^{10}}{x^3+y^2}$ tiene $r=5$, y resulta $x^{12}-x^9y^2+x^6y^4-x^3y^6+y^8$. Verificación con $x=2$ y $y=1$: $\\dfrac{32768+1}{8+1}=3641$ y $4096-512+64-8+1=3641$. La condición proviene de la forma $\\dfrac{X^r+Y^r}{X+Y}$, exacta solo con $r$ impar. Contraejemplo: $\\dfrac{x^{12}+y^{8}}{x^3+y^2}$ tiene $r=4$, par, y por eso no es notable. Se reconoce porque tanto el dividendo como el divisor son sumas."
+        },
+        {
+          "texto": "Suma entre resta ⇒ nunca es notable",
+          "explicacion": "En $\\dfrac{x^m+y^n}{x^p-y^q}$ el resto es distinto de cero para cualquier $r$, por lo que no se obtiene un cociente notable aunque se cumpla $\\dfrac mp=\\dfrac nq$. Es el único signo que no admite ningún valor de $r$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores desconocidos",
+      "puntos": [
+        {
+          "texto": "Hallar un exponente desconocido: igualar las razones",
+          "explicacion": "Se calcula la razón con los exponentes conocidos y se iguala a la razón con la incógnita. Ejemplo 1: en $\\dfrac{x^{m}-y^{40}}{x^3-y^8}$, $\\dfrac{40}8=5$, luego $\\dfrac m3=5$ y $m=15$; comprobación: $\\dfrac{x^{15}-y^{40}}{x^3-y^8}$ con $r=5$ en ambas razones. Ejemplo 2: en $\\dfrac{x^{m}-y^{36}}{x^2-y^3}$, $\\dfrac{36}3=12$, luego $\\dfrac m2=12$ y $m=24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Bases con coeficientes",
+      "puntos": [
+        {
+          "texto": "Identificar las bases elevadas al mismo exponente",
+          "explicacion": "Cuando los términos llevan coeficientes, se escribe cada uno como potencia $n$-ésima: $32x^5=(2x)^5$ y $y^{10}=(y^2)^5$. Ejemplo: $\\dfrac{32x^5+y^{10}}{2x+y^2}$ tiene $n=5$ impar con suma entre suma, luego es notable y vale $16x^4-8x^3y^2+4x^2y^4-2xy^6+y^8$. Verificación con $x=1$ y $y=1$: $\\dfrac{32+1}{2+1}=11$ y $16-8+4-2+1=11$."
+        },
+        {
+          "texto": "Con potencias de $x$ en las bases",
+          "explicacion": "Se escribe cada término como potencia de la base del divisor. Ejemplo: $\\dfrac{x^6-64}{x^2-4}$ cumple $x^6=(x^2)^3$ y $64=4^3$, luego $n=3$ y el cociente es $(x^2)^2+x^2\\cdot4+4^2=x^4+4x^2+16$. Verificación con $x=3$: $\\dfrac{729-64}{9-4}=133$ y $81+36+16=133$. El procedimiento general es: escribir cada término como potencia con el mismo exponente $n$, identificar las bases, decidir si el cociente es notable según los signos y aplicar el patrón con esas bases. Ejemplo adicional: $\\dfrac{x^{4}-16}{x-2}$ con $n=4$ da $x^3+2x^2+4x+8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación del cociente",
+      "puntos": [
+        {
+          "texto": "Verificar multiplicando el cociente por el divisor",
+          "explicacion": "Al multiplicar el cociente por el divisor debe reproducirse el dividendo. En el caso $x-a$, los términos intermedios se cancelan en pares: $(x-a)(x^4+x^3a+x^2a^2+xa^3+a^4)=x^5-a^5$. Con $x=2$ y $a=1$: $(2-1)(16+8+4+2+1)=31=2^5-1$. Con el divisor $x+a$ ocurre lo mismo con los signos alternados: $(x+a)(x^3-x^2a+xa^2-a^3)=x^4-a^4$. Esta comprobación detecta errores de signo y de cantidad de términos antes de dar por buena la respuesta."
+        },
+        {
+          "texto": "Verificar con el método de Ruffini",
+          "explicacion": "Se dividen los coeficientes del dividendo entre la raíz del divisor. Ejemplo: $\\dfrac{x^3-1}{x-1}$ tiene coeficientes 1, 0, 0, −1 y raíz 1; el procedimiento da 1, 1, 1 y resto 0, es decir, el cociente $x^2+x+1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Cociente notable ⇒ factorización de $x^n\\pm a^n$",
+          "explicacion": "Si la división es exacta, el dividendo es el producto del divisor por el cociente: $x^n-a^n=(x-a)(x^{n-1}+\\cdots+a^{n-1})$. Ejemplo: $x^4-1=(x-1)(x^3+x^2+x+1)$; verificación con $x=2$: $15=1\\cdot15$. Esto permite reescribir un polinomio como producto, que es la finalidad de la factorización. Ejemplo adicional: $x^5+1=(x+1)(x^4-x^3+x^2-x+1)$; verificación con $x=2$: $33=3\\cdot11$."
+        },
+        {
+          "texto": "Casos $n=2$ y $n=3$ ⊂ productos notables",
+          "explicacion": "El caso $n=2$ es la diferencia de cuadrados, $x^2-a^2=(x-a)(x+a)$, y el caso $n=3$ contiene la diferencia y la suma de cubos. Los cocientes notables generalizan esas factorizaciones a cualquier exponente natural. Ejemplo con $n=2$: $x^2-25=(x-5)(x+5)$. Ejemplo con $n=3$: $x^3-27=(x-3)(x^2+3x+9)$ y $x^3+27=(x+3)(x^2-3x+9)$. Verificación de la primera con $x=4$: $64-27=37$ y $(4-3)(16+12+9)=37$."
+        }
+      ]
+    }
+  ]
+}

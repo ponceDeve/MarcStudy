@@ -1,0 +1,212 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sucesiones",
+  "glosario": {
+    "sucesión": "Lista ordenada de números según una ley",
+    "término": "Cada elemento de una sucesión",
+    "lugar": "Posición que ocupa un término",
+    "término general": "Fórmula que da el término de cualquier lugar",
+    "sucesión finita": "Sucesión con un último término",
+    "sucesión infinita": "Sucesión sin último término",
+    "ley de formación": "Regla que genera los términos",
+    "recurrencia": "Regla que usa términos anteriores",
+    "sucesión creciente": "Cada término es mayor que el anterior",
+    "sucesión decreciente": "Cada término es menor que el anterior",
+    "sucesión alternada": "Sucesión cuyos signos se alternan",
+    "sucesión literal": "Sucesión formada por letras",
+    "número triangular": "Suma de los primeros números naturales"
+  },
+  "theory": [
+    {
+      "titulo": "Sucesión",
+      "puntos": [
+        {
+          "texto": "«Sucesión» = lista ordenada de números según una ley",
+          "explicacion": "Una sucesión es un conjunto de elementos dispuestos en un orden determinado, de modo que a cada posición, o lugar, le corresponde un único elemento. Cuando los elementos son números, se llama sucesión numérica, y se la escribe como $a_1, a_2, a_3, \\ldots$. Formalmente, es una función cuyo dominio son los números naturales positivos: a cada número natural $n$ se le asigna un valor $a_n$. El orden es esencial, por lo que las sucesiones 1, 2, 3 y 3, 2, 1 son distintas aunque tengan los mismos elementos."
+        },
+        {
+          "texto": "«Término» = cada elemento de la sucesión",
+          "explicacion": "Cada número de una sucesión se llama término. El primer término se escribe $a_1$, el segundo $a_2$, y en general el término que ocupa el lugar $n$ se escribe $a_n$. Los términos pueden repetirse dentro de una misma sucesión, como ocurre en la sucesión constante 5, 5, 5, ..., y el lugar sirve para distinguir entre términos con el mismo valor."
+        },
+        {
+          "texto": "«Lugar» = posición que ocupa un término",
+          "explicacion": "El lugar, índice o posición de un término es el número natural que indica el orden en que aparece. El término $a_n$ ocupa el lugar $n$. Se debe distinguir con claridad entre el lugar y el valor del término: en la sucesión 4, 7, 10, 13, el término de lugar 3 tiene valor 10, y el valor 13 ocupa el lugar 4. Esta distinción es fuente de muchos errores en los problemas."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos por longitud",
+      "puntos": [
+        {
+          "texto": "«Sucesión finita» = sucesión con un último término",
+          "explicacion": "Una sucesión finita tiene un número limitado de términos y, por tanto, un último término. Si tiene $m$ términos, se escribe $a_1, a_2, \\ldots, a_m$. Por ejemplo, la lista de los números pares menores que 20, que es 2, 4, 6, ..., 18, tiene 9 términos. En una sucesión finita puede preguntarse por la cantidad de términos, y ese número es parte del enunciado o se deduce de él."
+        },
+        {
+          "texto": "«Sucesión infinita» = sucesión sin último término",
+          "explicacion": "Una sucesión infinita no tiene último término: para cada término existe uno que le sigue. Se indica con puntos suspensivos al final, como en 1, 4, 9, 16, ... Aunque tiene infinitos términos, cada uno ocupa un lugar determinado y puede calcularse a partir de su ley de formación, de modo que es posible conocer cualquier término sin escribirlos todos."
+        }
+      ]
+    },
+    {
+      "titulo": "Formas de definir",
+      "puntos": [
+        {
+          "texto": "Definir por enumeración de los primeros términos",
+          "explicacion": "Una sucesión puede darse escribiendo los primeros términos, como 3, 7, 11, 15, ..., y dejando que el lector descubra la regla. Es la forma más usual en los problemas de razonamiento, pero no define la sucesión de manera única, porque varias reglas distintas pueden coincidir en los primeros términos y diferir después. Por eso se acepta como respuesta la regla más sencilla que explique todos los términos dados."
+        },
+        {
+          "texto": "«Término general» = fórmula del término de lugar n",
+          "explicacion": "El término general es una fórmula que expresa $a_n$ en función de $n$, de modo que permite calcular el término de cualquier lugar. Por ejemplo, $a_n = 3n + 2$ da los términos 5, 8, 11, 14, ... para $n = 1, 2, 3, 4$. Es la manera más directa de definir una sucesión, pues evita calcular los términos anteriores, y de ella se deducen los términos, los lugares y las propiedades de la sucesión."
+        },
+        {
+          "texto": "«Recurrencia» = regla que usa términos anteriores",
+          "explicacion": "Una sucesión puede definirse por recurrencia: se dan uno o más primeros términos y una regla que calcula cada término a partir de los anteriores. Por ejemplo, $a_1 = 2$ y $a_{n+1} = 3\\,a_n$ producen 2, 6, 18, 54, ... Para obtener un término lejano hay que calcular todos los anteriores, salvo que se halle una fórmula general. La recurrencia es natural cuando la ley de formación se describe por pasos."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculos con términos",
+      "puntos": [
+        {
+          "texto": "Hallar el término de un lugar dado",
+          "explicacion": "Para obtener el término de un lugar dado, se reemplaza $n$ por ese número en la fórmula del término general. Si $a_n = n^2 + 1$, el término de lugar 10 es $a_{10} = 10^2 + 1 = 101$. Es un cálculo directo, sin necesidad de conocer los términos anteriores, y es una de las ventajas del término general frente a la recurrencia."
+        },
+        {
+          "texto": "Hallar el lugar de un término dado",
+          "explicacion": "Para saber en qué lugar aparece un valor dado, se iguala el término general al valor y se resuelve la ecuación para $n$. En la sucesión $a_n = 3n + 2$, el valor 77 cumple $3n + 2 = 77$, de donde $n = 25$, y ocupa el lugar 25. El resultado es un número de lugar, no un valor de la sucesión, y debe interpretarse como tal."
+        },
+        {
+          "texto": "Un valor pertenece si el lugar es natural",
+          "explicacion": "Un número es término de la sucesión solo si el valor de $n$ que resulta de la ecuación es un número natural positivo. En la sucesión $a_n = 3n + 2$, el valor 50 cumple $n = 16$ y es término; en cambio, 51 da $n = \\frac{49}{3}$, que no es natural, y por lo tanto no pertenece a la sucesión. Es una condición necesaria que a menudo se olvida verificar."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley de formación",
+      "puntos": [
+        {
+          "texto": "«Ley de formación» = regla que genera los términos",
+          "explicacion": "La ley de formación es la regla que determina cómo se obtiene cada término de una sucesión. Puede ser una operación con el lugar, una operación con el término anterior o una combinación de ambas. Descubrirla a partir de los primeros términos es un proceso de razonamiento inductivo, en el cual se examinan las diferencias, los cocientes y otras relaciones entre términos consecutivos, y se comprueba la regla hallada con todos los términos dados."
+        },
+        {
+          "texto": "La ley de formación no siempre es única",
+          "explicacion": "Los primeros términos de una sucesión no determinan de manera única su ley. Por ejemplo, 1, 2, 4, ... puede continuar con 8 si la ley es duplicar, dando $a_n = 2^{n-1}$, o con 7 si la ley suma uno más cada vez, dando $a_n = \\frac{n(n-1)}{2} + 1$, con términos 1, 2, 4, 7, 11. Por eso los problemas indican la cantidad de términos o piden la regla más natural, y en los exámenes se considera la ley más simple coherente con todos los datos."
+        },
+        {
+          "texto": "Ley aditiva: se suma una cantidad constante",
+          "explicacion": "En algunas sucesiones cada término se obtiene sumando al anterior una cantidad constante, positiva o negativa. Por ejemplo, 5, 9, 13, 17, ... suma 4 cada vez. Estas sucesiones se conocen como progresiones aritméticas, y su estudio completo corresponde al tema 61 (Progresiones aritméticas y geométricas). Basta aquí reconocer que las diferencias entre términos consecutivos son iguales."
+        },
+        {
+          "texto": "Ley multiplicativa: se multiplica por una constante",
+          "explicacion": "En otras sucesiones cada término se obtiene multiplicando al anterior por una constante. Por ejemplo, 3, 6, 12, 24, ... multiplica por 2 cada vez. Se las conoce como progresiones geométricas y se estudian con detalle en el tema 61 (Progresiones aritméticas y geométricas). El indicio para reconocerlas es que los cocientes entre términos consecutivos son iguales."
+        },
+        {
+          "texto": "Ley polinómica: las diferencias forman otra sucesión",
+          "explicacion": "Cuando las diferencias entre términos consecutivos no son constantes, se puede calcular la sucesión de diferencias y examinarla de nuevo. Si las diferencias de segundo orden son constantes, el término general es una expresión cuadrática en $n$. Estas sucesiones y las de orden superior se estudian en el tema 62 (Sucesiones cuadráticas y de orden superior). Aquí se reconoce que una sucesión no es aditiva ni multiplicativa cuando sus diferencias y sus cocientes no son constantes."
+        },
+        {
+          "texto": "«Sucesión alternada» = signos que se alternan",
+          "explicacion": "Una sucesión alternada tiene términos cuyo signo cambia de positivo a negativo de manera sucesiva. Se obtiene multiplicando el término general por $(-1)^n$ o por $(-1)^{n+1}$, según el signo con que comienza. Por ejemplo, $a_n = (-1)^{n+1}\\cdot n$ da 1, $-2$, 3, $-4$, ... El valor absoluto sigue su propia ley y el signo se agrega aparte."
+        },
+        {
+          "texto": "Sucesiones intercaladas: dos leyes en lugares impares y pares",
+          "explicacion": "Una sucesión intercalada combina dos sucesiones más simples, una que ocupa los lugares impares y otra que ocupa los pares. Por ejemplo, 2, 1, 4, 3, 6, 5, ... intercala los números pares 2, 4, 6 en los lugares impares con los impares 1, 3, 5 en los pares. Para analizarlas se separan los términos por lugares y se busca la ley de cada grupo por separado."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "«Sucesión creciente» = cada término mayor que el anterior",
+          "explicacion": "Una sucesión es creciente cuando cada término es mayor que el anterior, es decir, $a_{n+1} > a_n$ para todo lugar $n$. Por ejemplo, 2, 5, 8, 11, ... Se reconoce porque las diferencias entre términos consecutivos son todas positivas. Su gráfica asciende de izquierda a derecha y el primer término es el menor de todos."
+        },
+        {
+          "texto": "«Sucesión decreciente» = cada término menor que el anterior",
+          "explicacion": "Una sucesión es decreciente cuando cada término es menor que el anterior, es decir, $a_{n+1} < a_n$ para todo $n$. Por ejemplo, 20, 15, 10, 5, ... Se reconoce porque las diferencias entre términos consecutivos son todas negativas. Si todos los términos son iguales, la sucesión es constante y no es creciente ni decreciente. En una sucesión decreciente de números positivos, los términos se acercan a cero sin alcanzarlo cuando las diferencias disminuyen, y el primer término es el mayor de todos."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesiones notables",
+      "puntos": [
+        {
+          "texto": "Números pares: término general 2n",
+          "explicacion": "La sucesión de los números pares es 2, 4, 6, 8, ... con término general $a_n = 2n$. Es una de las sucesiones más sencillas de los números naturales y sirve como bloque para construir otras, como las sucesiones intercaladas. Sus términos aumentan de dos en dos, de modo que es una sucesión de ley aditiva con diferencia constante 2."
+        },
+        {
+          "texto": "Números impares: término general 2n menos 1",
+          "explicacion": "La sucesión de los números impares es 1, 3, 5, 7, ... con término general $a_n = 2n - 1$. Cada término es el que resulta de restar 1 al número par del mismo lugar. Sus términos aumentan de dos en dos, y el término de lugar 10 es $2\\cdot 10 - 1 = 19$. También sirve como bloque para construir otras sucesiones, como las intercaladas."
+        },
+        {
+          "texto": "Cuadrados perfectos: término general n al cuadrado",
+          "explicacion": "La sucesión de los cuadrados perfectos es 1, 4, 9, 16, ... con término general $a_n = n^2$. Cada término resulta de multiplicar el lugar por sí mismo. Aparece con frecuencia en los problemas porque su ley es sencilla pero no es aditiva ni multiplicativa: las diferencias entre términos consecutivos son 3, 5, 7, ..., que forman la sucesión de los impares a partir de 3."
+        },
+        {
+          "texto": "Cubos perfectos: término general n al cubo",
+          "explicacion": "La sucesión de los cubos perfectos es 1, 8, 27, 64, ... con término general $a_n = n^3$. Cada término resulta de multiplicar tres veces el lugar por sí mismo. Sus diferencias consecutivas son 7, 19, 37, ..., que no son constantes ni forman una progresión aritmética, por lo que la sucesión no es de ley aditiva, y sus diferencias de segundo orden tampoco son constantes."
+        },
+        {
+          "texto": "Potencias de dos: 2 elevado a n",
+          "explicacion": "La sucesión de las potencias de 2 es 2, 4, 8, 16, ... con término general $a_n = 2^n$. Es una sucesión de ley multiplicativa, con cociente constante 2 entre términos consecutivos, y crece con mucha rapidez. Su término general tiene el lugar como exponente, a diferencia de los cuadrados, donde el lugar es la base."
+        },
+        {
+          "texto": "«Número triangular» = suma de los primeros naturales",
+          "explicacion": "Los números triangulares son 1, 3, 6, 10, 15, ..., cada uno de los cuales es la suma de los primeros números naturales: $1$, $1+2$, $1+2+3$, y así sucesivamente. Su término general es $a_n = \\frac{n(n+1)}{2}$. Se llaman así porque los puntos correspondientes pueden ordenarse en forma de triángulo. La fórmula se estudia en el tema 63 (Sumatorias y series)."
+        },
+        {
+          "texto": "Sucesión de Fibonacci ⇒ cada término suma los dos anteriores",
+          "explicacion": "La sucesión de Fibonacci comienza con 1, 1 y cada término siguiente es la suma de los dos anteriores: $a_n = a_{n-1} + a_{n-2}$. Resulta 1, 1, 2, 3, 5, 8, 13, 21, ... Es el ejemplo más conocido de una sucesión definida por recurrencia con dos términos iniciales, y requiere conocer los dos términos previos para obtener el siguiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesiones literales",
+      "puntos": [
+        {
+          "texto": "«Sucesión literal» = sucesión formada por letras",
+          "explicacion": "Una sucesión literal está formada por letras del alfabeto, ordenadas según una ley. Para descubrirla se reemplaza cada letra por el número del lugar que ocupa en el alfabeto, de modo que la sucesión literal se convierte en una numérica. En el alfabeto español de 27 letras, A ocupa el lugar 1, B el 2 y así sucesivamente hasta Z en el 27. Así, la sucesión A, C, E, G, ... corresponde a 1, 3, 5, 7, ..., es decir, a los lugares impares del alfabeto."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencias consecutivas",
+      "puntos": [
+        {
+          "texto": "Diferencias entre términos consecutivos revelan la ley",
+          "explicacion": "Para descubrir la ley de una sucesión numérica, se calculan las diferencias entre cada término y el anterior. Si son constantes, la ley es aditiva; si no lo son, se calculan sus propias diferencias. Los cocientes entre términos consecutivos se examinan para detectar una ley multiplicativa. Estas dos herramientas son el procedimiento general para investigar una sucesión desconocida, y se desarrollan en los temas 61 y 62."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: confundir el lugar con el valor del término",
+          "explicacion": "Es habitual confundir el lugar del término, que es la posición, con su valor. Al preguntar por el término de lugar 10, se pide el valor que ocupa esa posición, y al preguntar en qué lugar está el valor 77, se pide la posición. Cambiar el significado produce resultados erróneos. Conviene escribir siempre la notación $a_n$ y distinguir $n$ de $a_n$."
+        },
+        {
+          "texto": "Error: suponer que la ley es única",
+          "explicacion": "Otro error es creer que los primeros términos determinan la sucesión de manera única, y por ello descartar otras leyes razonables. Cuando se piden términos lejanos, es importante comprobar la ley con todos los términos dados y no solo con los primeros. Un mayor número de términos de la sucesión reduce la ambigüedad, aunque no la elimina por completo."
+        },
+        {
+          "texto": "Error: empezar a contar en cero",
+          "explicacion": "También se comete el error de numerar el primer término como lugar 0, cuando el término general está definido a partir de $n = 1$. Con $a_n = 3n + 2$, el primer término es $a_1 = 5$, no $a_0 = 2$. Si el enunciado numera los lugares desde 0, debe respetarse esa convención en todo el problema, ajustando las fórmulas."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Fibonacci: la sucesión de los conejos (1202)",
+          "explicacion": "Leonardo de Pisa, conocido como Fibonacci, matemático italiano, planteó en el Liber Abaci, publicado en 1202, un problema sobre la reproducción de conejos cuyas cantidades sucesivas forman la sucesión 1, 1, 2, 3, 5, 8, ... El problema no se propuso para estudiar la sucesión misma, sino como ejercicio de aritmética, y la sucesión recibió después el nombre de su autor. Es uno de los primeros ejemplos de una sucesión definida por recurrencia."
+        },
+        {
+          "texto": "Pitagóricos: números figurados, entre ellos los triangulares",
+          "explicacion": "Los pitagóricos, miembros de la escuela fundada por Pitágoras de Samos en el siglo VI a. C., estudiaron los números figurados, que son los que pueden representarse con puntos formando figuras geométricas, como los triangulares y los cuadrados. Estos números forman sucesiones con leyes sencillas y fueron una de las primeras investigaciones sistemáticas sobre sucesiones en la matemática griega."
+        }
+      ]
+    }
+  ]
+}

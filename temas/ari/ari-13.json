@@ -1,0 +1,168 @@
+{
+  "curso": "Aritmética",
+  "tema": "Operaciones con conjuntos",
+  "glosario": {
+    "unión": "Elementos que pertenecen a alguno de los conjuntos",
+    "intersección": "Elementos comunes a todos los conjuntos considerados",
+    "diferencia": "Elementos de un conjunto ausentes en otro",
+    "complemento": "Elementos del universo que no pertenecen al conjunto",
+    "diferencia simétrica": "Elementos presentes en exactamente uno de ellos",
+    "disjuntos": "Conjuntos cuya intersección es vacía",
+    "leyes de De Morgan": "Reglas que relacionan complemento con unión e intersección",
+    "inclusión-exclusión": "Cálculo del cardinal de una unión"
+  },
+  "theory": [
+    {
+      "titulo": "Unión de conjuntos",
+      "puntos": [
+        {
+          "texto": "La «unión» de dos conjuntos reúne los elementos que pertenecen a alguno de ellos.",
+          "explicacion": "La unión de los conjuntos A y B, escrita como $A \\cup B$, es el conjunto formado por todos los elementos que están en A, en B o en ambos. Un elemento repetido en los dos conjuntos aparece una sola vez en la unión. Por ejemplo, $\\{1, 2\\} \\cup \\{2, 3\\}$ es $\\{1, 2, 3\\}$, porque el 2 se cuenta una única vez. La unión es la operación más directa entre conjuntos y sirve de base para varias de las propiedades que se estudian a continuación."
+        },
+        {
+          "texto": "La unión es «conmutativa»: el orden de los conjuntos no altera el resultado.",
+          "explicacion": "Una operación es conmutativa cuando el orden de sus operandos no cambia el resultado. En la unión se cumple que $A \\cup B$ y $B \\cup A$ contienen exactamente los mismos elementos. Esta propiedad se sigue de que la unión se define por la pertenencia a alguno de los conjuntos, y la pertenencia no depende del orden en que se escriban."
+        },
+        {
+          "texto": "La unión es «asociativa»: al agrupar tres conjuntos, el resultado no cambia.",
+          "explicacion": "Una operación es asociativa cuando el agrupamiento de sus operandos no altera el resultado. Para la unión, $(A \\cup B) \\cup C$ y $A \\cup (B \\cup C)$ tienen los mismos elementos, lo que permite escribir la unión de varios conjuntos sin paréntesis. Esta propiedad es útil al unir más de dos conjuntos, porque permite calcularla en el orden que resulte más cómodo."
+        },
+        {
+          "texto": "La unión es «idempotente»: $A \\cup A$ tiene los mismos elementos que A.",
+          "explicacion": "Al unir un conjunto consigo mismo no aparecen elementos nuevos, porque todos ya pertenecen a A. Por eso $A \\cup A$ coincide con A. La idempotencia es una propiedad que no tienen las operaciones numéricas ordinarias, y resulta característica de las operaciones sobre conjuntos."
+        },
+        {
+          "texto": "El conjunto vacío es elemento neutro de la unión.",
+          "explicacion": "Un elemento neutro de una operación es aquel que, al combinarlo con cualquier otro, deja el resultado sin cambios. Como el conjunto vacío no aporta elementos, la unión de $A$ con $\\emptyset$ produce A. Esta propiedad muestra el papel del conjunto vacío como neutro de la operación, en paralelo con el cero en la suma de números."
+        }
+      ]
+    },
+    {
+      "titulo": "Intersección de conjuntos",
+      "puntos": [
+        {
+          "texto": "La «intersección» reúne los elementos comunes a los conjuntos.",
+          "explicacion": "La intersección de A y B, escrita como $A \\cap B$, contiene únicamente los elementos que pertenecen a ambos conjuntos. Por ejemplo, $\\{1, 2\\} \\cap \\{2, 3\\}$ es $\\{2\\}$, porque el 2 es el único elemento compartido. Si no hay elementos comunes, la intersección es el conjunto vacío, y en ese caso los conjuntos no comparten ningún objeto."
+        },
+        {
+          "texto": "Dos conjuntos son «disjuntos» si su intersección es vacía.",
+          "explicacion": "Dos conjuntos disjuntos no tienen ningún elemento en común. Esta condición se expresa como $A \\cap B$ igual al conjunto vacío, y es útil para separar colecciones que no se superponen. Por ejemplo, el conjunto de los números pares y el conjunto de los números impares son disjuntos, porque ningún número cumple ambas condiciones a la vez."
+        },
+        {
+          "texto": "La intersección es «conmutativa»: el orden de los conjuntos no altera el resultado.",
+          "explicacion": "Como la intersección se define por la pertenencia a ambos conjuntos, el orden en que se escriben no influye en el resultado. Por eso $A \\cap B$ y $B \\cap A$ contienen los mismos elementos, al igual que ocurre con la unión. Esta coincidencia de propiedades entre unión e intersección es una de las razones por las que ambas operaciones se estudian juntas."
+        },
+        {
+          "texto": "La intersección es «asociativa»: el agrupamiento no altera el resultado.",
+          "explicacion": "La intersección de tres conjuntos da el mismo resultado sin importar cómo se agrupen los dos primeros. Así, $(A \\cap B) \\cap C$ y $A \\cap (B \\cap C)$ contienen exactamente los elementos que pertenecen a los tres conjuntos. Esta propiedad permite escribir intersecciones de varios conjuntos sin paréntesis."
+        },
+        {
+          "texto": "La intersección es «distributiva» respecto de la unión.",
+          "explicacion": "La distributiva establece que $A \\cap (B \\cup C)$ tiene los mismos elementos que $(A \\cap B) \\cup (A \\cap C)$. Esta regla se parece a la propiedad distributiva de la multiplicación respecto de la suma, aunque en conjuntos funciona en ambos sentidos. Su uso permite reorganizar expresiones complejas y simplificarlas antes de contar elementos."
+        },
+        {
+          "texto": "La unión es «distributiva» respecto de la intersección.",
+          "explicacion": "La segunda forma de distributiva establece que $A \\cup (B \\cap C)$ tiene los mismos elementos que $(A \\cup B) \\cap (A \\cup C)$. A diferencia de la aritmética ordinaria, en conjuntos ambas operaciones admiten distribuirse una sobre la otra. Esta simetría entre unión e intersección es una característica estructural del álgebra de conjuntos, que se relaciona con el álgebra de Boole estudiada en el tema 04."
+        },
+        {
+          "texto": "El conjunto universal es elemento neutro de la intersección.",
+          "explicacion": "Si U es el conjunto universal, la intersección de cualquier conjunto A con U produce A, porque todos los elementos de A ya pertenecen a U. Por eso U cumple en la intersección el mismo papel que el conjunto vacío en la unión, pero con la operación contraria. Esta dualidad entre ambas operaciones se utiliza con frecuencia en las demostraciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de conjuntos",
+      "puntos": [
+        {
+          "texto": "La «diferencia» de A menos B reúne los elementos de A que no están en B.",
+          "explicacion": "La diferencia entre A y B se escribe $A \\setminus B$ y contiene solo los elementos de A que no pertenecen a B. Por ejemplo, $\\{1, 2, 3\\} \\setminus \\{2\\}$ es $\\{1, 3\\}$, porque el 2 queda eliminado. Esta operación no es simétrica, ya que retira de A los elementos comunes, pero no los que estén únicamente en B."
+        },
+        {
+          "texto": "La diferencia no es conmutativa: $A \\setminus B$ y $B \\setminus A$ son, en general, distintos.",
+          "explicacion": "Para comprobar la falta de conmutatividad basta un ejemplo: si A es $\\{1, 2\\}$ y B es $\\{2, 3\\}$, entonces $A \\setminus B$ es $\\{1\\}$ y $B \\setminus A$ es $\\{3\\}$. Como se trata de conjuntos distintos, el orden importa. Por esta razón la diferencia debe leerse siempre en el orden escrito, a diferencia de la unión y la intersección."
+        },
+        {
+          "texto": "El conjunto $A \\setminus B$ es vacío cuando A está contenido en B.",
+          "explicacion": "Si todos los elementos de A pertenecen a B, ninguno queda después de retirar los de B, y la diferencia no contiene elementos. Esta equivalencia conecta la diferencia con la inclusión estudiada en el tema 11. Recíprocamente, si la diferencia es vacía, A debe estar contenido en B."
+        }
+      ]
+    },
+    {
+      "titulo": "Complemento de conjuntos",
+      "puntos": [
+        {
+          "texto": "El «complemento» de A reúne los elementos del universo que no están en A.",
+          "explicacion": "El complemento de A, escrito como $A^c$ o como $\\overline{A}$, es el conjunto de todos los elementos del universo U que no pertenecen a A. Depende por completo del universo elegido, y por eso el universo debe declararse en cada problema, como se indicó en el tema 08. Por ejemplo, si U es el conjunto de los números del 1 al 5 y A es $\\{1, 2\\}$, entonces $A^c$ es $\\{3, 4, 5\\}$."
+        },
+        {
+          "texto": "El complemento de A equivale a $U \\setminus A$.",
+          "explicacion": "Esta igualdad muestra que el complemento es un caso particular de la diferencia, en el que el conjunto del cual se retira A es el universo. Así, cada propiedad de la diferencia puede aplicarse al complemento, siempre que se considere el universo correcto. La relación entre ambas operaciones simplifica el estudio de los complementos."
+        },
+        {
+          "texto": "El complemento del complemento devuelve el conjunto original.",
+          "explicacion": "Al complementar dos veces un conjunto, se obtienen de nuevo los elementos de A, porque lo que no está fuera de A es A mismo. Por eso $(A^c)^c$ es igual a A. Esta propiedad se llama involución y permite eliminar complementos repetidos en expresiones largas."
+        },
+        {
+          "texto": "La unión de A con su complemento es el universo.",
+          "explicacion": "Todo elemento del universo pertenece a A o no pertenece a A, por lo que la unión de A con $A^c$ contiene todos los elementos de U. Esta propiedad refleja el principio del tercio excluido del tema 05, trasladado al lenguaje de conjuntos. Así, $A \\cup A^c$ equivale a U."
+        },
+        {
+          "texto": "La intersección de A con su complemento es vacía.",
+          "explicacion": "Ningún elemento puede pertenecer a A y a su complemento a la vez, porque el complemento reúne precisamente lo que no está en A. Por eso $A \\cap A^c$ es el conjunto vacío. Esta propiedad corresponde al principio de no contradicción estudiado en el tema 05, trasladado a conjuntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia simétrica",
+      "puntos": [
+        {
+          "texto": "La «diferencia simétrica» reúne elementos que pertenecen a exactamente uno de los conjuntos.",
+          "explicacion": "La diferencia simétrica de A y B, escrita como $A \\triangle B$, contiene los elementos que están en uno de los conjuntos pero no en el otro. Se obtiene como la unión de las dos diferencias, por lo que $A \\triangle B$ equivale a $(A \\setminus B) \\cup (B \\setminus A)$. Por ejemplo, para $\\{1, 2\\}$ y $\\{2, 3\\}$ la diferencia simétrica es $\\{1, 3\\}$, porque el 2 está en ambos y queda excluido."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes de De Morgan",
+      "puntos": [
+        {
+          "texto": "Las «leyes de De Morgan» relacionan complemento con unión e intersección.",
+          "explicacion": "Las leyes de De Morgan describen cómo el complemento se distribuye sobre la unión y la intersección, invirtiendo la operación. Son el equivalente, para conjuntos, de las equivalencias lógicas entre negación de conjunciones y disyunciones estudiadas en los temas 02 y 05. Su aplicación permite transformar complementos de expresiones complejas en complementos de conjuntos simples."
+        },
+        {
+          "texto": "El complemento de una unión es la intersección de los complementos.",
+          "explicacion": "La primera ley establece que $(A \\cup B)^c$ equivale a $A^c \\cap B^c$. Un elemento queda fuera de la unión cuando no está ni en A ni en B, es decir, cuando pertenece a los complementos de ambos conjuntos a la vez. Esta ley es la más utilizada en problemas de conteo, porque convierte una unión complicada en una intersección más sencilla."
+        },
+        {
+          "texto": "El complemento de una intersección es la unión de los complementos.",
+          "explicacion": "La segunda ley establece que $(A \\cap B)^c$ equivale a $A^c \\cup B^c$. Un elemento queda fuera de la intersección cuando no está en A o no está en B, lo que equivale a pertenecer al complemento de al menos uno de los dos conjuntos. Junto con la primera ley, forma el par de identidades que describe la dualidad entre unión e intersección."
+        },
+        {
+          "texto": "Augustus De Morgan formuló estas leyes en su obra de lógica de 1847.",
+          "explicacion": "Augustus De Morgan, matemático y lógico británico nacido en 1806 y fallecido en 1871, publicó en 1847 la obra «Formal Logic», en la que estudió la negación de conjunciones y disyunciones. Sus resultados, aplicados a conjuntos, dieron lugar a las leyes que llevan su nombre. Las versiones lógicas de estas leyes se retoman en el tema 05, al tratar equivalencias entre proposiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Cardinal de una unión",
+      "puntos": [
+        {
+          "texto": "La «inclusión-exclusión» calcula el cardinal de una unión.",
+          "explicacion": "Para contar los elementos de la unión de A y B, se suman los cardinales de ambos conjuntos y se resta el cardinal de la intersección, porque los elementos comunes se contarían dos veces. La fórmula es $n(A \\cup B)$, que equivale a $n(A)$ más $n(B)$ menos $n(A \\cap B)$. Por ejemplo, si A tiene cinco elementos, B tiene cuatro y tienen dos en común, la unión tiene siete elementos. El cardinal se estudia en el tema 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir unión con intersección es un error frecuente.",
+          "explicacion": "La unión reúne elementos de alguno de los conjuntos, mientras que la intersección reúne solo los comunes. Confundir ambas operaciones cambia la cantidad de elementos del resultado: la unión siempre tiene al menos tantos elementos como cada conjunto, y la intersección nunca tiene más que el menor de ellos. Una verificación rápida con un ejemplo pequeño evita este error."
+        },
+        {
+          "texto": "Olvidar el universal al calcular complementos produce resultados erróneos.",
+          "explicacion": "El complemento de un conjunto solo tiene sentido respecto de un universo declarado. Si se calcula sin indicarlo, el mismo conjunto puede tener complementos distintos según el contexto. Por eso, antes de aplicar cualquier regla de complemento, conviene escribir explícitamente cuál es el conjunto universal del problema."
+        }
+      ]
+    }
+  ]
+}

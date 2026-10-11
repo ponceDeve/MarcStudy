@@ -1,0 +1,220 @@
+{
+  "curso": "Aritmética",
+  "tema": "Producto de divisores",
+  "glosario": {
+    "divisor": "Entero positivo que divide exactamente a otro",
+    "divisor complementario": "Divisor que junto a otro forma el número",
+    "producto de divisores": "Resultado de multiplicar todos los divisores positivos",
+    "cantidad de divisores": "Total de divisores positivos de un número",
+    "cuadrado perfecto": "Número cuya raíz cuadrada es un entero",
+    "número primo": "Entero mayor que uno con solo dos divisores",
+    "descomposición canónica": "Producto de primos distintos elevados a exponentes",
+    "divisor propio": "Divisor de un número distinto del propio número"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El «producto de divisores» de $N$ multiplica todos sus divisores positivos",
+          "explicacion": "El producto de divisores es el número que resulta de multiplicar entre sí todos los divisores positivos de un entero positivo $N$, sin omitir ninguno y sin repetir ninguno. Se trata de un resultado distinto de la suma de divisores y de la cantidad de divisores, que son otras magnitudes asociadas al mismo número. El interés del tema está en que este producto, que a simple vista exigiría listar y multiplicar todos los divisores, puede calcularse con una fórmula muy corta que depende solo de $N$ y de cuántos divisores tiene."
+        },
+        {
+          "texto": "Un «divisor» de $N$ es un entero positivo que lo divide exactamente",
+          "explicacion": "Un divisor de $N$ es un entero positivo $d$ tal que la división de $N$ entre $d$ da un cociente entero y residuo cero. En este tema solo se consideran divisores positivos, de modo que $1$ y el propio $N$ siempre están entre ellos. La noción general de divisibilidad y sus propiedades se estudia en el tema 24 (Divisibilidad); aquí basta con tener presente que cada divisor se puede nombrar y que el conjunto de divisores de $N$ es finito."
+        },
+        {
+          "texto": "$P(N)$ denota el producto de divisores de $N$",
+          "explicacion": "La notación $P(N)$ se lee como producto de los divisores de $N$. La letra $N$ indica el número cuyos divisores se multiplican y la letra $P$ recuerda la palabra producto. Esta notación es una convención de los textos de Aritmética preuniversitaria y no un símbolo universal, por lo que conviene escribirla siempre junto con su significado completo cuando se resuelve un problema."
+        },
+        {
+          "texto": "$CD(N)$ denota la «cantidad de divisores» positivos de $N$",
+          "explicacion": "La abreviatura $CD(N)$ significa cantidad de divisores de $N$, es decir, cuántos divisores positivos tiene el número. Su cálculo a partir de la descomposición en factores primos se estudia en el tema 28 (Cantidad de divisores). En el producto de divisores esta cantidad cumple un papel central, porque determina cuántos factores se multiplican y, como se verá, cuántas parejas de divisores se pueden formar."
+        },
+        {
+          "texto": "Ejemplo: divisores de $12$ son $1, 2, 3, 4, 6, 12$ y $P(12)$ vale $1728$",
+          "explicacion": "El número $12$ tiene seis divisores positivos: $1$, $2$, $3$, $4$, $6$ y $12$. Al multiplicarlos se obtiene $1\\cdot 2\\cdot 3\\cdot 4\\cdot 6\\cdot 12$, que da $1728$. Este valor coincide con $12^{3}$, hecho que no es casual y que la fórmula general explica más adelante. El ejemplo sirve de modelo para comprobar cada propiedad del tema con cálculo directo."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisores complementarios",
+      "puntos": [
+        {
+          "texto": "Cada divisor $d$ de $N$ tiene un «divisor complementario» $\\frac{N}{d}$",
+          "explicacion": "Si $d$ divide exactamente a $N$, el cociente $\\frac{N}{d}$ es también un entero positivo que divide a $N$. A los dos números $d$ y $\\frac{N}{d}$ se les llama divisores complementarios, porque uno completa al otro para formar $N$. Esta correspondencia reparte todos los divisores en parejas y es la idea sobre la que se apoya la fórmula del producto de divisores."
+        },
+        {
+          "texto": "El producto de dos divisores complementarios siempre vale $N$",
+          "explicacion": "Por construcción, $d$ multiplicado por $\\frac{N}{d}$ da exactamente $N$. Como esto ocurre con cada pareja, el producto de los dos miembros de cualquier pareja complementaria es siempre el mismo número, $N$, sin importar qué divisor se escoja. Esta constancia permite sustituir una multiplicación larga por una potencia de $N$."
+        },
+        {
+          "texto": "La pareja formada por $1$ y $N$ es la primera pareja",
+          "explicacion": "El divisor más pequeño, $1$, tiene como complementario a $N$, el divisor más grande. Al ordenar los divisores de menor a mayor, la primera pareja une el primer divisor con el último, la segunda pareja une el segundo con el penúltimo, y así sucesivamente hacia el centro de la lista. Este orden garantiza que ningún divisor quede fuera de una pareja y que ninguno se use dos veces."
+        },
+        {
+          "texto": "Ejemplo: parejas de $12$ son $1$-$12$, $2$-$6$, $3$-$4$",
+          "explicacion": "Para $N$ igual a doce, las tres parejas complementarias son $1$ con $12$, $2$ con $6$ y $3$ con $4$. Cada una multiplica a $12$, y como hay tres parejas, el producto de los seis divisores equivale a multiplicar $12$ tres veces, es decir, $12^{3}$. El ejemplo muestra de forma concreta el mecanismo que se generaliza en la fórmula."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula general",
+      "puntos": [
+        {
+          "texto": "$P(N)$ = $N^{\\frac{CD(N)}{2}}$",
+          "explicacion": "Esta es la fórmula fundamental del tema: el producto de los divisores de $N$ es $N$ elevado a la mitad de la cantidad de divisores. Para usarla basta conocer $N$ y $CD(N)$, sin necesidad de escribir la lista de divisores. La fórmula es válida para todo entero positivo $N$, tenga la cantidad de divisores par o impar, aunque en el segundo caso el exponente sea una fracción que debe interpretarse con una raíz cuadrada."
+        },
+        {
+          "texto": "$P(N)$ elevado al cuadrado = $N$ elevado a $CD(N)$",
+          "explicacion": "Una forma equivalente y útil para demostrar la fórmula consiste en elevar al cuadrado el producto de divisores. Si los divisores se escriben de menor a mayor y luego de mayor a menor, y se multiplican ambas listas posición por posición, cada par de factores correspondientes es una pareja complementaria cuyo producto vale $N$. Como hay $CD(N)$ posiciones, el resultado es $N^{CD(N)}$, y al extraer la raíz cuadrada se obtiene la fórmula general."
+        },
+        {
+          "texto": "Si $CD(N)$ es par ⇒ hay $\\frac{CD(N)}{2}$ parejas, cada una con producto $N$",
+          "explicacion": "Cuando la cantidad de divisores es par, todos los divisores se agrupan en parejas completas, ninguno queda solo. El número de parejas es la mitad de la cantidad de divisores y cada pareja aporta un factor $N$ al producto total. Por eso el producto es $N$ elevado a ese número de parejas, que es un entero, y la fórmula se obtiene de manera directa."
+        },
+        {
+          "texto": "Si $CD(N)$ es impar ⇒ el divisor $\\sqrt{N}$ queda sin pareja",
+          "explicacion": "Cuando la cantidad de divisores es impar, uno de los divisores es su propio complementario, y ese divisor es la raíz cuadrada de $N$. Las demás parejas completas aportan cada una un factor $N$, y el divisor central aporta un factor $\\sqrt{N}$, que equivale a medio factor $N$. Al sumar, el producto total contiene $N$ elevado a una cantidad con mitad, lo que coincide con el exponente $\\frac{CD(N)}{2}$ de la fórmula general."
+        },
+        {
+          "texto": "Otra forma: $P(N)$ = $\\sqrt{N}^{\\,CD(N)}$",
+          "explicacion": "Como $N^{\\frac{CD(N)}{2}}$ equivale a elevar la raíz cuadrada de $N$ a la cantidad de divisores, la fórmula puede escribirse con una raíz. Esta expresión es cómoda cuando $N$ es un cuadrado perfecto, porque la raíz es un entero y el cálculo evita exponentes fraccionarios. También deja claro que el resultado siempre es un entero, aun cuando el exponente de $N$ sea una fracción."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidad par",
+      "puntos": [
+        {
+          "texto": "$CD(N)$ par ⇒ $N$ no es un «cuadrado perfecto»",
+          "explicacion": "Un número es un cuadrado perfecto cuando su raíz cuadrada es un entero. Esa raíz sería un divisor que no tiene pareja distinta, por lo que la cantidad de divisores resulta impar. En consecuencia, si la cantidad de divisores es par, el número no es un cuadrado perfecto. La relación entre cuadrados perfectos y cantidad de divisores se estudia con detalle en el tema 28 (Cantidad de divisores); aquí solo se usa como criterio para saber qué caso aplicar."
+        },
+        {
+          "texto": "Ejemplo: $N$ = $60$, $CD(60)$ = $12$ ⇒ $P(60)$ = $60^{6}$",
+          "explicacion": "El número $60$ se descompone como $2^{2}\\cdot 3\\cdot 5$ y tiene doce divisores positivos: $1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60$. Se forman seis parejas complementarias, entre ellas $1$ con $60$, $2$ con $30$ y $3$ con $20$, y cada una multiplica $60$. El producto de todos los divisores es entonces $60^{6}$, que vale $46656000000$ al realizar el cálculo directo."
+        },
+        {
+          "texto": "Ejemplo: $N$ = $6$ tiene $4$ divisores ⇒ $P(6)$ = $6^{2}$",
+          "explicacion": "Los divisores de $6$ son $1$, $2$, $3$ y $6$, de modo que forman dos parejas: $1$ con $6$ y $2$ con $3$. Cada pareja multiplica $6$, así que el producto es $6\\cdot 6$, es decir, $36$. El resultado coincide con $1\\cdot 2\\cdot 3\\cdot 6$ calculado de forma directa y confirma el caso de cantidad par con un número pequeño."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidad impar",
+      "puntos": [
+        {
+          "texto": "$CD(N)$ impar ⇒ $N$ es un «cuadrado perfecto»",
+          "explicacion": "Si la cantidad de divisores es impar, necesariamente existe un divisor que es su propio complementario, y eso solo ocurre cuando $N$ es el cuadrado de un entero. Por tanto, una cantidad impar de divisores identifica a los cuadrados perfectos. Este hecho permite decidir antes de calcular si el exponente de la fórmula será un entero o una fracción que debe leerse mediante una raíz cuadrada."
+        },
+        {
+          "texto": "Ejemplo: $N$ = $36$, $CD(36)$ = $9$ ⇒ $P(36)$ = $6^{9}$",
+          "explicacion": "El número $36$ tiene nueve divisores: $1, 2, 3, 4, 6, 9, 12, 18, 36$. Hay cuatro parejas completas, cada una con producto $36$, y el divisor central $6$ queda solo. El producto total es $36^{4}\\cdot 6$, que equivale a $6^{8}\\cdot 6$ y, por tanto, a $6^{9}$, igual a $10077696$. La fórmula $36^{\\frac{9}{2}}$ da el mismo valor al interpretar la potencia fraccionaria como $\\sqrt{36}$ elevada a $9$."
+        },
+        {
+          "texto": "El exponente fraccionario se interpreta como raíz cuadrada",
+          "explicacion": "Cuando $CD(N)$ es impar, el exponente $\\frac{CD(N)}{2}$ no es un entero y la potencia $N^{\\frac{CD(N)}{2}}$ debe leerse como la raíz cuadrada de $N$ elevada a $CD(N)$. Como en ese caso $N$ es un cuadrado perfecto, la raíz es un entero y el resultado también lo es. Dejar el exponente fraccionario sin interpretar es una fuente común de errores de cálculo."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencia de primo",
+      "puntos": [
+        {
+          "texto": "Si $N$ es un «número primo» $p$ ⇒ $P(p)$ = $p$",
+          "explicacion": "Un número primo tiene exactamente dos divisores positivos, $1$ y él mismo. Su producto es $1\\cdot p$, es decir, $p$. La fórmula general lo confirma, porque $CD(p)$ vale dos y $p^{\\frac{2}{2}}$ es $p$. El caso sirve como comprobación elemental de que la fórmula no contradice el resultado obtenido por multiplicación directa."
+        },
+        {
+          "texto": "Si $N$ = $p^{a}$ ⇒ divisores son $1, p, p^{2}, \\ldots, p^{a}$",
+          "explicacion": "Cuando $N$ es la potencia de un único primo, sus divisores son las potencias sucesivas de ese primo, desde la potencia cero hasta la potencia $a$. Hay $a$ aumentado en uno divisores. Al multiplicarlos se suman los exponentes, y el exponente total de $p$ es la suma de los enteros desde cero hasta $a$. Esa suma coincide con el exponente $\\frac{a\\cdot CD(N)}{2}$ que entrega la fórmula general."
+        },
+        {
+          "texto": "Ejemplo: $N$ = $16$ ⇒ $P(16)$ = $2^{10}$",
+          "explicacion": "El número $16$ es $2^{4}$ y sus divisores son $1, 2, 4, 8, 16$, es decir, cinco divisores. El producto es $2$ elevado a la suma de los exponentes cero, uno, dos, tres y cuatro, que es diez, es decir, $2^{10}$, igual a $1024$. La fórmula general da $16^{\\frac{5}{2}}$, que es $4^{5}$, el mismo valor. El ejemplo reúne en un solo caso el criterio de cuadrado perfecto y la regla de la potencia de un primo."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma canónica",
+      "puntos": [
+        {
+          "texto": "«Descomposición canónica»: $N$ es producto de primos con exponentes",
+          "explicacion": "La descomposición canónica de $N$ escribe el número como un producto de primos distintos, cada uno elevado a un exponente entero positivo, por ejemplo $p^{a}\\cdot q^{b}$. Es la forma estándar para estudiar divisores. El teorema que garantiza que esta descomposición existe y es única se estudia en el tema 26 (Teorema fundamental de la aritmética)."
+        },
+        {
+          "texto": "El exponente de cada primo $p$ en $P(N)$ es $\\frac{a\\cdot CD(N)}{2}$",
+          "explicacion": "Como $P(N)$ es $N$ elevado a $\\frac{CD(N)}{2}$, al sustituir $N$ por su descomposición canónica y aplicar la propiedad de potencia de una potencia, cada exponente $a$ de la descomposición queda multiplicado por $\\frac{CD(N)}{2}$. Por eso el producto de divisores tiene los mismos primos que $N$, con exponentes proporcionales a los de $N$. Este resultado permite escribir $P(N)$ ya factorizado."
+        },
+        {
+          "texto": "Ejemplo: $N$ = $72$ ⇒ $P(72)$ = $2^{18}\\cdot 3^{12}$",
+          "explicacion": "El número $72$ se descompone como $2^{3}\\cdot 3^{2}$ y tiene doce divisores. El exponente de $2$ en el producto es $3\\cdot 6$, que da dieciocho, y el exponente de $3$ es $2\\cdot 6$, que da doce. Por eso $P(72)$ es $2^{18}\\cdot 3^{12}$, igual a $72^{6}$, cuyo valor es $139314069504$. El cálculo directo con los doce divisores de $72$ confirma este resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Productos parciales",
+      "puntos": [
+        {
+          "texto": "Producto de divisores propios = $\\frac{P(N)}{N}$",
+          "explicacion": "Los textos no coinciden en la definición de divisor propio. Algunos llaman propios a todos los divisores menores que $N$, incluido el $1$, y otros solo a los distintos de $1$ y de $N$. Como multiplicar por $1$ no cambia un producto, ambas convenciones dan el mismo resultado: el producto de los divisores propios es $P(N)$ dividido entre $N$. Con la fórmula general, ese cociente es $N$ elevado a $\\frac{CD(N)-2}{2}$."
+        },
+        {
+          "texto": "Ejemplo: divisores propios de $12$ ⇒ producto $144$",
+          "explicacion": "Al excluir el propio $12$ de la lista de divisores, quedan $1, 2, 3, 4, 6$, cuyo producto es $144$. Este valor es $1728$ dividido entre $12$, y también $12^{2}$, porque la cantidad de divisores de $12$ es seis y el exponente $\\frac{6-2}{2}$ vale dos. El ejemplo confirma la regla de los productos parciales con cálculo directo."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar datos desconocidos",
+      "puntos": [
+        {
+          "texto": "Conocidos $P(N)$ y $CD(N)$ ⇒ $N$ se obtiene extrayendo una raíz",
+          "explicacion": "Como $P(N)$ es $N$ elevado a $\\frac{CD(N)}{2}$, si se conocen el producto y la cantidad de divisores, el número se recupera elevando el producto al exponente inverso, $\\frac{2}{CD(N)}$. Ejemplo: si un número tiene seis divisores y su producto es $1728$, entonces $N^{3}$ vale $1728$ y $N$ es $12$. Este procedimiento aparece con frecuencia en problemas que dan el producto y piden el número."
+        },
+        {
+          "texto": "Conocidos $P(N)$ y $N$ ⇒ el exponente da $\\frac{CD(N)}{2}$",
+          "explicacion": "Si el producto de divisores se expresa como una potencia de $N$, el exponente de esa potencia es la mitad de la cantidad de divisores. Por ejemplo, si $P(N)$ es $N^{6}$, entonces $CD(N)$ vale doce, pues $\\frac{CD(N)}{2}$ es seis. Esta lectura del exponente permite deducir cuántos divisores tiene un número sin listarlos."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparaciones",
+      "puntos": [
+        {
+          "texto": "Producto de divisores ≠ suma de divisores",
+          "explicacion": "La suma de divisores se calcula con una fórmula que depende de cada primo de la descomposición canónica y se estudia en el tema 29 (Suma de divisores). El producto de divisores, en cambio, depende de $N$ y de la cantidad de divisores, y se reduce a una sola potencia. Confundir ambas fórmulas lleva a resultados incorrectos, pues responden a preguntas distintas."
+        },
+        {
+          "texto": "Producto de divisores ≠ producto de factores primos",
+          "explicacion": "El producto de divisores multiplica todos los divisores positivos, compuestos y no compuestos, incluidos $1$ y $N$. El producto de los factores primos de la descomposición, en cambio, multiplica solo los primos, con o sin repetición según el exponente. Para $12$, los divisores dan $1728$, mientras que los primos $2, 2, 3$ solo dan $12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: usar $N^{CD(N)}$ en lugar de $N^{\\frac{CD(N)}{2}}$",
+          "explicacion": "Cada pareja de divisores aporta un único factor $N$, no dos, de modo que el exponente es la mitad de la cantidad de divisores. Usar la cantidad completa duplica el exponente y da como resultado el cuadrado del producto correcto. Comprobar con un número pequeño como $6$, cuyo producto es $36$ y no $1296$, ayuda a evitar la confusión."
+        },
+        {
+          "texto": "Error: omitir $1$ o $N$ al listar los divisores",
+          "explicacion": "Los divisores de $N$ siempre incluyen a $1$ y a $N$. Omitir el $N$ cambia el producto dividiéndolo entre $N$, y la cantidad de divisores que se usa en la fórmula debe incluir ambos extremos. Contar todos los divisores positivos antes de aplicar la fórmula evita este tipo de error."
+        },
+        {
+          "texto": "Error: contar dos veces la raíz de un cuadrado perfecto",
+          "explicacion": "En un cuadrado perfecto, el divisor $\\sqrt{N}$ es su propio complementario y aparece una sola vez en la lista de divisores. Al formar parejas no debe duplicarse. La fórmula general ya considera este caso correctamente, de modo que solo se produce el error cuando se cuentan las parejas a mano."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso especial",
+      "puntos": [
+        {
+          "texto": "Si $N$ = $1$ ⇒ $CD(1)$ = $1$ y $P(1)$ = $1$",
+          "explicacion": "El número $1$ tiene un único divisor positivo, él mismo, por lo que su producto de divisores es $1$. La fórmula general lo confirma, pues $1$ elevado a cualquier exponente da $1$. El caso es compatible con la regla de los cuadrados perfectos, porque $1$ es el cuadrado de $1$ y tiene una cantidad impar de divisores."
+        }
+      ]
+    }
+  ]
+}

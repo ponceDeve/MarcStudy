@@ -1,0 +1,152 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Dominio y rango",
+  "glosario": {
+    "dominio": "Conjunto de entradas de la función.",
+    "rango": "Conjunto de valores que toma la función.",
+    "intervalo": "Conjunto de números entre dos extremos.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "extremo": "Punto donde termina el arco.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "cotangente": "Razón entre abscisa y ordenada.",
+    "secante": "Inverso multiplicativo del coseno.",
+    "cosecante": "Inverso multiplicativo del seno.",
+    "números reales": "Todos los números de la recta numérica.",
+    "valor absoluto": "Distancia de un número al cero.",
+    "raíz cuadrada": "Número cuyo cuadrado es el dado.",
+    "cuadrante": "Cada una de las cuatro regiones del plano."
+  },
+  "theory": [
+    {
+      "titulo": "Dominio",
+      "puntos": [
+        {
+          "texto": "«Dominio»: conjunto de valores de $x$ para los que la función existe",
+          "explicacion": "Es el conjunto de entradas permitidas. En las funciones trigonométricas, $x$ es un arco en radianes (rad), y se excluyen los valores que obligan a dividir entre cero. Ejemplo: para la tangente (tan), el arco $\\frac{\\pi}{2}$ queda excluido porque el coseno (cos) de $\\frac{\\pi}{2}$ vale 0."
+        },
+        {
+          "texto": "«Rango»: conjunto de valores que toma la función",
+          "explicacion": "Es el conjunto de salidas posibles, es decir, las alturas que alcanza la gráfica. Ejemplo: para el seno (sen), la salida más alta es 1 y la más baja es $-1$, así que ningún valor fuera de ese intervalo es salida."
+        },
+        {
+          "texto": "Notación de intervalos: $[a, b]$ incluye extremos; $(a, b)$ no",
+          "explicacion": "El corchete indica que el extremo pertenece al conjunto y el paréntesis, que no. Ejemplo: $[-1, 1]$ incluye $-1$ y $1$, mientras que $(-1, 1)$ los deja fuera."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno y coseno",
+      "puntos": [
+        {
+          "texto": "Dominio del seno: $\\mathbb{R}$",
+          "explicacion": "Todo arco tiene un extremo con ordenada. Ejemplo: $\\text{sen}\\,100$ y $\\text{sen}\\left(-\\frac{\\pi}{4}\\right)$ existen."
+        },
+        {
+          "texto": "Rango del seno: $[-1, 1]$",
+          "explicacion": "La ordenada de la circunferencia de radio 1 no supera 1 en valor absoluto, y alcanza ambos extremos. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{2} = 1$ y $\\text{sen}\\,\\frac{3\\pi}{2} = -1$."
+        },
+        {
+          "texto": "Dominio del coseno: $\\mathbb{R}$",
+          "explicacion": "Todo arco tiene un extremo con abscisa. Ejemplo: $\\cos 100$ y $\\cos\\left(-\\frac{\\pi}{4}\\right)$ existen."
+        },
+        {
+          "texto": "Rango del coseno: $[-1, 1]$",
+          "explicacion": "La abscisa no supera 1 en valor absoluto, y alcanza ambos extremos. Ejemplo: $\\cos 0 = 1$ y $\\cos\\pi = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente y cotangente",
+      "puntos": [
+        {
+          "texto": "Dominio de la tangente: $\\mathbb{R}$ sin $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "Se excluyen los arcos donde el coseno vale 0, con $k$ entero. Ejemplo: se excluyen $\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$ y $-\\frac{\\pi}{2}$, pero $\\pi$ sí pertenece al dominio y $\\tan\\pi = 0$."
+        },
+        {
+          "texto": "Rango de la tangente: $\\mathbb{R}$",
+          "explicacion": "La línea tangente toma cualquier valor real. Ejemplo: $\\tan x = 100$ y $\\tan x = -100$ tienen solución."
+        },
+        {
+          "texto": "Dominio de la cotangente (cot): $\\mathbb{R}$ sin $x = k\\pi$",
+          "explicacion": "Se excluyen los arcos donde el seno vale 0, con $k$ entero. Ejemplo: se excluyen $0$, $\\pi$ y $2\\pi$, pero $\\frac{\\pi}{2}$ sí pertenece al dominio y $\\cot\\frac{\\pi}{2} = 0$."
+        },
+        {
+          "texto": "Rango de la cotangente: $\\mathbb{R}$",
+          "explicacion": "La línea cotangente toma cualquier valor real. Ejemplo: $\\cot x = 100$ y $\\cot x = -100$ tienen solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante y cosecante",
+      "puntos": [
+        {
+          "texto": "Dominio de la secante (sec): $\\mathbb{R}$ sin $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "Se excluyen los arcos donde el coseno vale 0, igual que en la tangente. Ejemplo: $\\sec\\frac{\\pi}{2}$ no existe, y $\\sec 0 = 1$ sí."
+        },
+        {
+          "texto": "Rango de la secante: $(-\\infty, -1] \\cup [1, \\infty)$",
+          "explicacion": "Como el valor absoluto del coseno no supera 1, el de la secante no baja de 1. Ejemplo: $\\sec x = 0{,}5$ no tiene solución, y $\\sec x = -3$ sí."
+        },
+        {
+          "texto": "Dominio de la cosecante (csc): $\\mathbb{R}$ sin $x = k\\pi$",
+          "explicacion": "Se excluyen los arcos donde el seno vale 0, igual que en la cotangente. Ejemplo: $\\csc 0$ no existe, y $\\csc\\frac{\\pi}{2} = 1$ sí."
+        },
+        {
+          "texto": "Rango de la cosecante: $(-\\infty, -1] \\cup [1, \\infty)$",
+          "explicacion": "Como el valor absoluto del seno no supera 1, el de la cosecante no baja de 1. Ejemplo: $\\csc x = 0$ no tiene solución, y $\\csc x = 2$ sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio de expresiones",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\tan 2x$: $x \\neq \\frac{\\pi}{4} + \\frac{k\\pi}{2}$",
+          "explicacion": "Se exige $2x \\neq \\frac{\\pi}{2} + k\\pi$ y se divide entre 2. Ejemplo: $x = \\frac{\\pi}{4}$ queda excluido porque $\\tan\\frac{\\pi}{2}$ no existe, mientras que $x = \\frac{\\pi}{2}$ sí pertenece, porque $\\tan\\pi = 0$."
+        },
+        {
+          "texto": "Dominio de $\\frac{1}{\\text{sen}\\,x}$: $x \\neq k\\pi$",
+          "explicacion": "El denominador no puede ser cero. Ejemplo: $x = \\pi$ queda excluido, y $x = \\frac{\\pi}{6}$ da $\\frac{1}{\\frac{1}{2}} = 2$."
+        },
+        {
+          "texto": "Dominio de $\\sqrt{\\text{sen}\\,x}$: $x \\in [2k\\pi,\\ \\pi + 2k\\pi]$",
+          "explicacion": "La raíz cuadrada exige $\\text{sen}\\,x \\ge 0$, y el seno es no negativo en el primer y segundo cuadrantes, incluidos los ejes. Ejemplo: $x = \\frac{\\pi}{2}$ pertenece porque $\\sqrt{1} = 1$, mientras que $x = \\frac{3\\pi}{2}$ no pertenece porque $\\text{sen}\\,\\frac{3\\pi}{2} = -1 < 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango de expresiones",
+      "puntos": [
+        {
+          "texto": "Rango de $3\\,\\text{sen}\\,x + 2$: $[-1, 5]$",
+          "explicacion": "Se parte de $-1 \\le \\text{sen}\\,x \\le 1$, se multiplica por 3 y luego se suma 2. Ejemplo: $3(-1) + 2 = -1$ y $3(1) + 2 = 5$."
+        },
+        {
+          "texto": "Rango de $2 - 4\\cos x$: $[-2, 6]$",
+          "explicacion": "Multiplicar por un número negativo invierte los extremos. Ejemplo: con $\\cos x = 1$ resulta $2 - 4 = -2$, y con $\\cos x = -1$ resulta $2 + 4 = 6$."
+        },
+        {
+          "texto": "Rango de $\\text{sen}^2 x$: $[0, 1]$",
+          "explicacion": "Un cuadrado nunca es negativo, y el seno alcanza valores de $-1$ a 1. Ejemplo: $\\text{sen}^2\\,\\frac{\\pi}{2} = 1$ y $\\text{sen}^2\\,0 = 0$."
+        },
+        {
+          "texto": "Rango de $3 - 2\\,\\text{sen}^2 x$: $[1, 3]$",
+          "explicacion": "Se parte de $0 \\le \\text{sen}^2 x \\le 1$, se multiplica por $-2$ y se suma 3. Ejemplo: $3 - 2(1) = 1$ y $3 - 2(0) = 3$."
+        },
+        {
+          "texto": "Rango de $|\\cos x|$: $[0, 1]$",
+          "explicacion": "El valor absoluto elimina la parte negativa. Ejemplo: $|\\cos\\pi| = |-1| = 1$ y $|\\cos\\frac{\\pi}{2}| = 0$."
+        },
+        {
+          "texto": "Rango de $\\tan x + 5$: $\\mathbb{R}$",
+          "explicacion": "Sumar una constante desplaza todos los valores sin acotarlos. Ejemplo: para obtener 105 basta $\\tan x = 100$."
+        }
+      ]
+    }
+  ]
+}

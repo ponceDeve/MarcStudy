@@ -1,0 +1,1 @@
+self.addEventListener(`install`,()=>{self.skipWaiting()}),self.addEventListener(`activate`,e=>{e.waitUntil((async()=>{let e=await caches.keys();await Promise.all(e.filter(e=>/workbox|precache/i.test(e)).map(e=>caches.delete(e))),await self.clients.claim(),(await self.clients.matchAll({type:`window`})).forEach(e=>e.navigate(e.url))})())}),self.addEventListener(`fetch`,()=>{});

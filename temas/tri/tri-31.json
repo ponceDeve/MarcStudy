@@ -1,0 +1,150 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulo triple",
+  "glosario": {
+    "Ángulo triple": "Ángulo que mide el triple de otro",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Ángulo doble": "Ángulo que mide el doble de otro",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Factorizar": "Escribir una expresión como producto",
+    "Cubo": "Tercera potencia de un número",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados"
+  },
+  "theory": [
+    {
+      "titulo": "Origen del ángulo triple",
+      "puntos": [
+        {
+          "texto": "Ángulo triple: $3A = 2A + A$",
+          "explicacion": "Las fórmulas del ángulo triple se deducen aplicando la suma de ángulos a $2A$ y $A$, y luego las fórmulas del ángulo doble. Ejemplo: $\\operatorname{sen}3A = \\operatorname{sen}2A\\cos A + \\cos2A\\operatorname{sen}A = 2\\operatorname{sen}A\\cos^2A + (1 - 2\\operatorname{sen}^2A)\\operatorname{sen}A$. Al reemplazar $\\cos^2A = 1 - \\operatorname{sen}^2A$ y reducir, queda $3\\operatorname{sen}A - 4\\operatorname{sen}^3A$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno del ángulo triple",
+      "puntos": [
+        {
+          "texto": "Seno triple: $\\operatorname{sen}3A = 3\\operatorname{sen}A - 4\\operatorname{sen}^3A$",
+          "explicacion": "Solo usa el seno de A, elevado a la primera y a la tercera potencia. Ejemplo: con $A = 30°$, $\\operatorname{sen}90° = 3 \\cdot \\frac{1}{2} - 4 \\cdot \\frac{1}{8} = \\frac{3}{2} - \\frac{1}{2} = 1$, que es el valor conocido del seno de 90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno del ángulo triple",
+      "puntos": [
+        {
+          "texto": "Coseno triple: $\\cos3A = 4\\cos^3A - 3\\cos A$",
+          "explicacion": "Solo usa el coseno de A. Obsérvese que aquí el término con el cubo es el positivo, al revés que en el seno. Ejemplo: con $A = 30°$, $\\cos90° = 4\\left(\\frac{\\sqrt{3}}{2}\\right)^3 - 3 \\cdot \\frac{\\sqrt{3}}{2} = \\frac{3\\sqrt{3}}{2} - \\frac{3\\sqrt{3}}{2} = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente del ángulo triple",
+      "puntos": [
+        {
+          "texto": "Tangente triple: $\\tan3A = \\frac{3\\tan A - \\tan^3A}{1 - 3\\tan^2A}$",
+          "explicacion": "El denominador debe ser distinto de cero. Ejemplo: con $A = 45°$, $\\tan135° = \\frac{3 \\cdot 1 - 1}{1 - 3 \\cdot 1} = \\frac{2}{-2} = -1$, que es el valor de la tangente de 135°."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente del ángulo triple",
+      "puntos": [
+        {
+          "texto": "Cotangente triple: $\\cot3A = \\frac{\\cot^3A - 3\\cot A}{3\\cot^2A - 1}$",
+          "explicacion": "Es la inversa de la tangente triple escrita con cotangentes. Ejemplo: con $A = 45°$, $\\cot135° = \\frac{1 - 3}{3 - 1} = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno triple factorizado",
+      "puntos": [
+        {
+          "texto": "Seno triple: $\\operatorname{sen}3A = \\operatorname{sen}A\\,(3 - 4\\operatorname{sen}^2A)$",
+          "explicacion": "Se obtiene sacando el seno de A como factor común. Permite simplificar cocientes con $\\operatorname{sen}A$. Ejemplo: con $A = 30°$, $\\operatorname{sen}90° = \\frac{1}{2}\\left(3 - 4 \\cdot \\frac{1}{4}\\right) = \\frac{1}{2} \\cdot 2 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno triple factorizado",
+      "puntos": [
+        {
+          "texto": "Coseno triple: $\\cos3A = \\cos A\\,(4\\cos^2A - 3)$",
+          "explicacion": "Se obtiene sacando el coseno de A como factor común. Ejemplo: con $A = 30°$, $\\cos90° = \\frac{\\sqrt{3}}{2}\\left(4 \\cdot \\frac{3}{4} - 3\\right) = \\frac{\\sqrt{3}}{2} \\cdot 0 = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente del seno triple",
+      "puntos": [
+        {
+          "texto": "$\\frac{\\operatorname{sen}3A}{\\operatorname{sen}A} = 3 - 4\\operatorname{sen}^2A = 2\\cos2A + 1$",
+          "explicacion": "Al dividir el seno triple entre el seno de A, el factor común se cancela. La segunda igualdad sale de $\\cos2A = 1 - 2\\operatorname{sen}^2A$. Ejemplo: con $A = 30°$, $\\frac{\\operatorname{sen}90°}{\\operatorname{sen}30°} = \\frac{1}{1/2} = 2$; también $3 - 4 \\cdot \\frac{1}{4} = 2$ y $2\\cos60° + 1 = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cociente del coseno triple",
+      "puntos": [
+        {
+          "texto": "$\\frac{\\cos3A}{\\cos A} = 4\\cos^2A - 3 = 2\\cos2A - 1$",
+          "explicacion": "Al dividir el coseno triple entre el coseno de A, el factor común se cancela. La segunda igualdad sale de $\\cos2A = 2\\cos^2A - 1$. Ejemplo: con $A = 30°$, $\\frac{\\cos90°}{\\cos30°} = 0$; también $4 \\cdot \\frac{3}{4} - 3 = 0$ y $2\\cos60° - 1 = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato del seno",
+      "puntos": [
+        {
+          "texto": "Dato de $\\operatorname{sen}A$ ⇒ $\\operatorname{sen}3A = 3\\operatorname{sen}A - 4\\operatorname{sen}^3A$",
+          "explicacion": "Se reemplaza directamente el valor del seno. Ejemplo: si $\\operatorname{sen}A = \\frac{3}{5}$, $\\operatorname{sen}3A = 3 \\cdot \\frac{3}{5} - 4 \\cdot \\frac{27}{125} = \\frac{225}{125} - \\frac{108}{125} = \\frac{117}{125}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato del coseno",
+      "puntos": [
+        {
+          "texto": "Dato de $\\cos A$ ⇒ $\\cos3A = 4\\cos^3A - 3\\cos A$",
+          "explicacion": "Se reemplaza directamente el valor del coseno. Ejemplo: si $\\cos A = \\frac{4}{5}$, $\\cos3A = 4 \\cdot \\frac{64}{125} - 3 \\cdot \\frac{4}{5} = \\frac{256}{125} - \\frac{300}{125} = -\\frac{44}{125}$. El signo negativo indica que $3A$ cae en un cuadrante donde el coseno es negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato de la tangente",
+      "puntos": [
+        {
+          "texto": "Dato de $\\tan A$ ⇒ usar la tangente triple",
+          "explicacion": "Se reemplaza el valor de la tangente en la fórmula. Ejemplo: si $\\tan A = \\frac{3}{4}$, $\\tan3A = \\frac{\\frac{9}{4} - \\frac{27}{64}}{1 - \\frac{27}{16}} = \\frac{\\frac{117}{64}}{-\\frac{11}{16}} = -\\frac{117}{44}$. Es el mismo ángulo de los dos ejemplos anteriores, y se verifica que $\\frac{117/125}{-44/125} = -\\frac{117}{44}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Triple con denominador cero",
+      "puntos": [
+        {
+          "texto": "Denominador $1 - 3\\tan^2A = 0$ ⇒ $\\tan3A$ no está definida",
+          "explicacion": "Cuando el denominador de la tangente triple vale cero, el ángulo triple tiene lado final sobre el eje y, y su tangente no existe. Ejemplo: con $A = 30°$, $\\tan^2A = \\frac{1}{3}$, por lo que $1 - 3 \\cdot \\frac{1}{3} = 0$, y $3A = 90°$, cuya tangente no está definida."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}3A = 3\\operatorname{sen}A$ ⇒ error",
+          "explicacion": "Triplicar el ángulo no triplica el seno; falta el término con el cubo. Ejemplo: con $A = 30°$, $3\\operatorname{sen}30° = \\frac{3}{2}$, un valor imposible para un seno, mientras que $\\operatorname{sen}90° = 1$."
+        },
+        {
+          "texto": "Signos intercambiados en el coseno triple ⇒ error",
+          "explicacion": "En el coseno triple el término positivo es el del cubo. Ejemplo: con $A = 45°$, $3\\cos A - 4\\cos^3A = \\frac{3\\sqrt{2}}{2} - \\sqrt{2} = \\frac{\\sqrt{2}}{2}$, pero $\\cos135° = -\\frac{\\sqrt{2}}{2}$; con la fórmula correcta, $4\\left(\\frac{\\sqrt{2}}{2}\\right)^3 - 3 \\cdot \\frac{\\sqrt{2}}{2} = -\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "Omitir el cubo: $3\\operatorname{sen}A - 4\\operatorname{sen}A$ ⇒ error",
+          "explicacion": "El segundo término lleva el seno elevado al cubo. Ejemplo: con $A = 30°$, $3 \\cdot \\frac{1}{2} - 4 \\cdot \\frac{1}{2} = -\\frac{1}{2}$, que no es $\\operatorname{sen}90° = 1$."
+        }
+      ]
+    }
+  ]
+}

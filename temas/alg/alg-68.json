@@ -1,0 +1,192 @@
+{
+  "curso": "Álgebra",
+  "tema": "Logaritmos y propiedades",
+  "glosario": {
+    "logaritmo": "Exponente al que se eleva la base.",
+    "base": "Número que se eleva al exponente.",
+    "argumento": "Número cuyo logaritmo se calcula.",
+    "exponente": "Número de veces que se repite la base.",
+    "potencia": "Producto repetido de un mismo factor.",
+    "logaritmo decimal": "Logaritmo de base diez.",
+    "logaritmo natural": "Logaritmo de base e.",
+    "cologaritmo": "Logaritmo del inverso de un número.",
+    "antilogaritmo": "Número cuyo logaritmo es un valor dado.",
+    "cambio de base": "Reescribir un logaritmo con otra base.",
+    "regla de la cadena": "Producto de logaritmos encadenados que se simplifica.",
+    "radicando": "Expresión dentro de la raíz.",
+    "índice": "Número que indica el orden de la raíz.",
+    "valor absoluto": "Distancia de un número al origen.",
+    "propiedad": "Regla que se cumple siempre.",
+    "función inversa": "Función que deshace a otra función.",
+    "demostración": "Razonamiento que justifica una propiedad."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Logaritmo» $\\log_a b=c\\iff a^c=b$",
+          "explicacion": "El logaritmo en base $a$ de un número $b$ es el exponente $c$ al que hay que elevar la base $a$ para obtener $b$. Se exige $a>0$, $a\\ne 1$ y $b>0$. Con esta definición el logaritmo traduce una potencia en una pregunta sobre el exponente. Ejemplo: $\\log_2 32=5$ porque $2^5=32$, y $\\log_{10}0.001=-3$ porque $10^{-3}=0.001$. Verificación: $2\\times2\\times2\\times2\\times2=32$ y $\\frac{1}{1000}=0.001$."
+        },
+        {
+          "texto": "Elementos del logaritmo ⇒ base, argumento y resultado",
+          "explicacion": "En $\\log_a b=c$, $a$ es la base, $b$ es el argumento (o número) y $c$ es el logaritmo. En la forma exponencial $a^c=b$, la base es la misma, $c$ es el exponente y $b$ es la potencia. Ejemplo: en $\\log_3 81=4$ la base es $3$, el argumento es $81$ y el logaritmo es $4$. Verificación: $3^4=81$."
+        },
+        {
+          "texto": "Restricciones ⇒ $a>0$, $a\\ne 1$, $b>0$",
+          "explicacion": "La base debe ser positiva y distinta de uno, y el argumento debe ser positivo, porque $a^c>0$ para todo $c$ real y $1^c=1$ no permite obtener otros valores. Ejemplo: $\\log_2(-8)$ no existe, ni $\\log_1 5$. Verificación: $2^c=-8$ no tiene solución real."
+        },
+        {
+          "texto": "Logaritmo decimal ⇒ base $10$",
+          "explicacion": "Es el logaritmo más usado en las ciencias y en las escalas de medición, porque nuestro sistema numérico es de base diez: el logaritmo decimal de una potencia de diez es su exponente, y cada unidad que sube equivale a multiplicar el número por diez. El logaritmo decimal es el de base diez y se escribe $\\log b$ sin base. Ejemplo: $\\log 1000=3$ y $\\log 0.1=-1$. Verificación: $10^3=1000$ y $10^{-1}=0.1$."
+        },
+        {
+          "texto": "Logaritmo natural ⇒ base $e$",
+          "explicacion": "El logaritmo natural es el de uso corriente en cálculo y en problemas de crecimiento continuo; cumple todas las propiedades generales de los logaritmos, y su gráfica es la de una función logarítmica de base mayor que uno. El logaritmo natural es el de base $e\\approx 2.71828$ y se escribe $\\ln b$. Ejemplo: $\\ln e^5=5$. Verificación: $e^5=e^5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Logaritmos básicos",
+      "puntos": [
+        {
+          "texto": "$\\log_a 1=0$ ⇒ logaritmo de uno",
+          "explicacion": "Este resultado vale para cualquier base válida y sirve como punto de partida en muchas simplificaciones: por ejemplo, al aplicar la propiedad del cociente a dos argumentos iguales se obtiene $\\log_a\\frac{x}{x}=\\log_a 1=0$. Como $a^0=1$ para toda base válida, el logaritmo de uno es cero en cualquier base. Ejemplo: $\\log_7 1=0$ y $\\ln 1=0$. Verificación: $7^0=1$ y $e^0=1$."
+        },
+        {
+          "texto": "$\\log_a a=1$ ⇒ logaritmo de la base",
+          "explicacion": "Esta igualdad permite simplificar logaritmos cuyo argumento coincide con la base y se usa en el cambio de base: al dividir $\\log_a a$ entre $\\log_a b$ se obtiene el inverso de $\\log_a b$. Como $a^1=a$, el logaritmo de la base en sí misma es uno. Ejemplo: $\\log_5 5=1$ y $\\log 10=1$. Verificación: $5^1=5$ y $10^1=10$."
+        },
+        {
+          "texto": "$\\log_a a^n=n$ ⇒ potencia de la base",
+          "explicacion": "Esta propiedad combina la definición con la del exponente: el logaritmo anula la potencia de igual base, de modo que $\\log_a a^n$ vale $n$ incluso cuando $n$ es negativo o fraccionario. Como $a^n=a^n$, el logaritmo de una potencia de la base es su exponente. Ejemplo: $\\log_2 64=\\log_2 2^6=6$ y $\\log_3\\frac{1}{27}=\\log_3 3^{-3}=-3$. Verificación: $2^6=64$ y $3^{-3}=\\frac{1}{27}$."
+        },
+        {
+          "texto": "$a^{\\log_a b}=b$ ⇒ potencia de un logaritmo",
+          "explicacion": "Elevar la base al logaritmo de $b$ devuelve $b$, porque ese logaritmo es justamente el exponente que da $b$. Se exige $b>0$. Ejemplo: $5^{\\log_5 7}=7$ y $10^{\\log 3}=3$. Verificación: $\\log_5 7$ es el exponente tal que $5^{\\log_5 7}=7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades operativas",
+      "puntos": [
+        {
+          "texto": "$\\log_a(xy)=\\log_a x+\\log_a y$ ⇒ producto",
+          "explicacion": "El logaritmo de un producto es la suma de los logaritmos de los factores, con $x>0$ y $y>0$. Demostración: sean $\\log_a x=m$ y $\\log_a y=n$; entonces $x=a^m$, $y=a^n$ y $xy=a^{m+n}$, luego $\\log_a(xy)=m+n$. Ejemplo: $\\log_2(4\\times 8)=\\log_2 4+\\log_2 8=2+3=5$. Verificación: $\\log_2 32=5$."
+        },
+        {
+          "texto": "$\\log_a\\frac{x}{y}=\\log_a x-\\log_a y$ ⇒ cociente",
+          "explicacion": "El logaritmo de un cociente es la diferencia de los logaritmos, con $x>0$ y $y>0$. Demostración: con $x=a^m$ y $y=a^n$, $\\frac{x}{y}=a^{m-n}$. Ejemplo: $\\log_2 48-\\log_2 3=\\log_2\\frac{48}{3}=\\log_2 16=4$. Verificación: $\\log_2 48\\approx 5.585$, $\\log_2 3\\approx 1.585$ y la diferencia es $4$."
+        },
+        {
+          "texto": "$\\log_a x^n=n\\log_a x$ ⇒ potencia",
+          "explicacion": "La propiedad de la potencia permite bajar el exponente como coeficiente, y es la herramienta que resuelve las ecuaciones exponenciales, donde la incógnita está en el exponente; exige argumento positivo. El logaritmo de una potencia es el exponente por el logaritmo de la base de la potencia, con $x>0$. Demostración: con $x=a^m$, $x^n=a^{mn}$ y $\\log_a x^n=mn=n\\log_a x$. Ejemplo: $\\log_2 8^2=2\\log_2 8=6$. Verificación: $\\log_2 64=6$."
+        },
+        {
+          "texto": "$\\log_a\\sqrt[n]{x}=\\frac{1}{n}\\log_a x$ ⇒ raíz",
+          "explicacion": "La raíz es una potencia de exponente fraccionario, y por eso se aplica la propiedad de la potencia con exponente $\\frac{1}{n}$; el argumento debe ser positivo, y el índice $n$ se entiende como número natural mayor que uno. Como $\\sqrt[n]{x}=x^{1/n}$, el logaritmo de una raíz es el logaritmo del radicando dividido entre el índice. Ejemplo: $\\log_5\\sqrt{5}=\\frac{1}{2}\\log_5 5=\\frac{1}{2}$ y $\\log_2\\sqrt[3]{16}=\\frac{1}{3}\\times 4=\\frac{4}{3}$. Verificación: $5^{1/2}=\\sqrt{5}$."
+        },
+        {
+          "texto": "$\\log_a\\frac{1}{x}=-\\log_a x$ ⇒ inverso",
+          "explicacion": "Esta propiedad se obtiene al aplicar la del cociente con numerador uno y usar $\\log_a 1=0$, y es útil para pasar un logaritmo con argumento fraccionario a un logaritmo con argumento mayor que uno. El logaritmo del inverso de un número es el opuesto de su logaritmo. Es un caso del cociente con numerador uno. Ejemplo: $\\log_3\\frac{1}{9}=-\\log_3 9=-2$. Verificación: $3^{-2}=\\frac{1}{9}$."
+        },
+        {
+          "texto": "Cologaritmo ⇒ $\\mathrm{colog}_a b=-\\log_a b$",
+          "explicacion": "El cologaritmo aparece en textos antiguos y de preparación para cambiar un logaritmo de un número pequeño por uno de signo contrario; no es una operación nueva, sino un nombre para el opuesto del logaritmo. El cologaritmo de un número es el logaritmo de su inverso, es decir, el opuesto de su logaritmo. Aquí $\\mathrm{colog}_a$ abrevia «cologaritmo en base $a$». Ejemplo: $\\mathrm{colog}_2 8=-\\log_2 8=-3$. Verificación: $\\log_2\\frac{1}{8}=-3$."
+        },
+        {
+          "texto": "Antilogaritmo ⇒ $\\mathrm{antilog}_a c=a^c$",
+          "explicacion": "El antilogaritmo es la operación que se aplica para recuperar el número a partir de su logaritmo, y coincide con elevar la base al valor dado; es la misma función exponencial vista como inversa del logaritmo. El antilogaritmo es la operación inversa del logaritmo: devuelve el número cuyo logaritmo es $c$. Aquí $\\mathrm{antilog}_a$ abrevia «antilogaritmo en base $a$». Ejemplo: $\\mathrm{antilog}_2 5=2^5=32$. Verificación: $\\log_2 32=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de base",
+      "puntos": [
+        {
+          "texto": "$\\log_b x=\\frac{\\log_a x}{\\log_a b}$ ⇒ cambio de base",
+          "explicacion": "Cualquier logaritmo se puede expresar con otra base válida $a$ dividiendo el logaritmo del argumento entre el de la base. Demostración: sea $\\log_b x=c$, entonces $x=b^c$; aplicando $\\log_a$, $\\log_a x=c\\log_a b$, luego $c=\\frac{\\log_a x}{\\log_a b}$. Ejemplo: $\\log_4 8=\\frac{\\log_2 8}{\\log_2 4}=\\frac{3}{2}$. Verificación: $4^{3/2}=8$."
+        },
+        {
+          "texto": "$\\log_b a=\\frac{1}{\\log_a b}$ ⇒ inversión de base y argumento",
+          "explicacion": "Esta propiedad muestra que intercambiar base y argumento da el inverso multiplicativo; se obtiene del cambio de base y se usa para simplificar productos y cocientes de logaritmos con bases cruzadas. Intercambiar base y argumento invierte el logaritmo. Se obtiene del cambio de base con $x=a$: $\\log_b a=\\frac{\\log_a a}{\\log_a b}=\\frac{1}{\\log_a b}$. Ejemplo: $\\log_2 8=3$ y $\\log_8 2=\\frac{1}{3}$. Verificación: $8^{1/3}=2$."
+        },
+        {
+          "texto": "$\\log_a b\\times\\log_b c=\\log_a c$ ⇒ regla de la cadena",
+          "explicacion": "El producto de dos logaritmos encadenados se simplifica al eliminar la base y el argumento intermedios. Demostración: $\\frac{\\ln b}{\\ln a}\\times\\frac{\\ln c}{\\ln b}=\\frac{\\ln c}{\\ln a}$. Ejemplo: $\\log_2 3\\times\\log_3 8=\\log_2 8=3$. Verificación: $\\log_2 3\\approx 1.585$ y $\\log_3 8\\approx 1.893$, con producto $\\approx 3$."
+        },
+        {
+          "texto": "$\\log_{a^n}b^m=\\frac{m}{n}\\log_a b$ ⇒ potencias en base y argumento",
+          "explicacion": "Esta propiedad generaliza el cambio de base cuando tanto la base como el argumento son potencias de una misma base; evita recurrir a una calculadora y es útil cuando los números son potencias de $2$, $3$ o $5$. Si la base y el argumento son potencias, los exponentes salen como un cociente. Demostración: $\\log_{a^n}b^m=\\frac{m\\log_a b}{n\\log_a a}=\\frac{m}{n}\\log_a b$. Ejemplo: $\\log_{8}16=\\log_{2^3}2^4=\\frac{4}{3}$. Verificación: $8^{4/3}=\\left(8^{1/3}\\right)^4=2^4=16$."
+        },
+        {
+          "texto": "$a^{\\log_b c}=c^{\\log_b a}$ ⇒ intercambio de base y argumento en la potencia",
+          "explicacion": "Esta igualdad es menos conocida, pero útil para simplificar potencias en que el exponente es un logaritmo; se prueba tomando logaritmos de ambos lados, y mantiene la condición de que $a$, $b$ y $c$ sean positivos y las bases distintas de uno. Al aplicar $\\log_b$ a ambos miembros resultan $\\log_b c\\times\\log_b a$ en los dos, de modo que son iguales. Ejemplo: $2^{\\log_3 9}=2^2=4$ y $9^{\\log_3 2}=\\left(3^2\\right)^{\\log_3 2}=\\left(3^{\\log_3 2}\\right)^2=2^2=4$. Verificación: ambos valores son $4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculos con valores dados",
+      "puntos": [
+        {
+          "texto": "Datos $\\log 2\\approx 0.3010$ y $\\log 3\\approx 0.4771$ ⇒ calcular otros",
+          "explicacion": "Con las propiedades del producto, el cociente y la potencia se obtienen otros logaritmos decimales a partir de $\\log 2\\approx 0.3010$ y $\\log 3\\approx 0.4771$. Ejemplos: $\\log 6=\\log 2+\\log 3\\approx 0.7781$; $\\log 12=2\\log 2+\\log 3\\approx 0.6020+0.4771=1.0791$; $\\log 5=\\log\\frac{10}{2}=1-\\log 2\\approx 0.6990$. Verificación: $10^{0.6990}\\approx 5$."
+        },
+        {
+          "texto": "Logaritmo de potencias de $10$ ⇒ exponente directo",
+          "explicacion": "En el logaritmo decimal las potencias de diez son los valores de referencia; cuando el argumento no es una potencia exacta de diez, el valor se estima entre dos enteros consecutivos, por ejemplo, $\\log 500$ está entre $2$ y $3$. El logaritmo decimal de una potencia de diez es su exponente. Ejemplo: $\\log 10000=4$ y $\\log 0.001=-3$. Verificación: $10^4=10000$ y $10^{-3}=0.001$."
+        },
+        {
+          "texto": "Simplificar sumas de logaritmos ⇒ juntar con el producto",
+          "explicacion": "Cuando una expresión tiene varios logaritmos de la misma base sumados, se aplica la propiedad del producto de derecha a izquierda para obtener un solo logaritmo; luego se evalúa el argumento si es una potencia exacta de la base. Una suma de logaritmos de la misma base se reduce a un solo logaritmo de un producto. Ejemplo: $\\log_2 6+\\log_2\\frac{4}{3}=\\log_2\\left(6\\times\\frac{4}{3}\\right)=\\log_2 8=3$. Verificación: $\\log_2 6\\approx 2.585$, $\\log_2\\frac{4}{3}\\approx 0.415$ y la suma es $3$."
+        },
+        {
+          "texto": "Simplificar restas de logaritmos ⇒ juntar con el cociente",
+          "explicacion": "De forma análoga, una resta de logaritmos con igual base se reduce a un solo logaritmo de un cociente; luego se calcula el valor si el cociente es una potencia exacta de la base. Una resta de logaritmos de la misma base se reduce a un solo logaritmo de un cociente. Ejemplo: $\\log_3 54-\\log_3 2=\\log_3 27=3$. Verificación: $3^3=27$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\log_a(x+y)\\ne\\log_a x+\\log_a y$ ⇒ la suma no se separa",
+          "explicacion": "Este es uno de los errores más comunes: el logaritmo solo transforma productos, cocientes y potencias, no sumas ni restas; para operar con una suma dentro del logaritmo se calcula primero el resultado de la suma. El logaritmo de una suma no es la suma de logaritmos; solo el producto se convierte en suma. Ejemplo: $\\log_2(4+4)=\\log_2 8=3$, pero $\\log_2 4+\\log_2 4=4$. Verificación: $3\\ne 4$."
+        },
+        {
+          "texto": "$(\\log_a x)^n\\ne n\\log_a x$ ⇒ potencia del logaritmo",
+          "explicacion": "La propiedad de la potencia afecta al argumento del logaritmo, no al logaritmo elevado a una potencia; es un error confundir $\\log_a x^n$ con $(\\log_a x)^n$, que son expresiones distintas con valores distintos. La propiedad de la potencia se aplica al argumento, no al logaritmo completo. Ejemplo: $(\\log_2 8)^2=3^2=9$, pero $2\\log_2 8=6$. Verificación: $9\\ne 6$."
+        },
+        {
+          "texto": "$\\frac{\\log_a x}{\\log_a y}\\ne\\log_a x-\\log_a y$ ⇒ cociente de logaritmos",
+          "explicacion": "El cociente de dos logaritmos de igual base no se puede simplificar con la propiedad del cociente de logaritmos, que se aplica al argumento; solo corresponde a un cambio de base cuando se interpreta como $\\log_y x$. Un cociente de logaritmos no es un logaritmo de cociente; solo $\\log_a\\frac{x}{y}$ se convierte en resta. Ejemplo: $\\frac{\\log_2 8}{\\log_2 2}=\\frac{3}{1}=3$, pero $\\log_2 8-\\log_2 2=2$. Verificación: $3\\ne 2$; el cociente corresponde al cambio de base $\\log_2 8=3$."
+        },
+        {
+          "texto": "Argumentos negativos ⇒ usar valor absoluto en las propiedades",
+          "explicacion": "Las propiedades del producto y el cociente exigen argumentos positivos; si el producto es positivo porque los dos factores son negativos, se usan valores absolutos para que cada logaritmo tenga sentido. Si el producto o cociente es positivo porque ambos factores son negativos, las propiedades se aplican con valores absolutos: $\\log_a(xy)=\\log_a|x|+\\log_a|y|$. Ejemplo: $\\log_2[(-4)(-8)]=\\log_2 32=5=\\log_2 4+\\log_2 8$. Verificación: $\\log_2(-4)$ y $\\log_2(-8)$ por separado no existen."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función exponencial (tema 66) ⇒ el logaritmo es su exponente",
+          "explicacion": "El logaritmo es la función inversa de la exponencial: la ecuación $a^x=b$ equivale a $x=\\log_a b$, de modo que toda propiedad de las potencias tiene una propiedad equivalente en los logaritmos. El tema «Función exponencial» define $a^x$, y el logaritmo es su inversa. Ejemplo: $2^x=8$ da $x=\\log_2 8=3$. Verificación: $2^3=8$."
+        },
+        {
+          "texto": "Función logarítmica (tema 67) ⇒ gráfica y dominio",
+          "explicacion": "El tema anterior estudia la gráfica y el dominio del logaritmo; las propiedades de este tema se aplican para simplificar sus expresiones, siempre dentro del dominio de argumentos positivos. El tema «Función logarítmica» estudia la gráfica de $\\log_a x$ con dominio $(0,+\\infty)$. Ejemplo: $\\log_2 x$ pasa por $(1,0)$ y $(2,1)$. Verificación: $\\log_2 1=0$ y $\\log_2 2=1$."
+        },
+        {
+          "texto": "Ecuaciones exponenciales (tema 69) ⇒ logaritmos para despejar",
+          "explicacion": "La definición de logaritmo y las propiedades de este tema son las herramientas con las que se despejan exponentes en el tema siguiente: se aplica logaritmo a ambos miembros y se baja el exponente. El tema siguiente, «Ecuaciones exponenciales», usa $a^x=b\\iff x=\\log_a b$ para despejar el exponente. Ejemplo: $2^x=10$ da $x=\\log_2 10$. Verificación: $2^{\\log_2 10}=10$."
+        },
+        {
+          "texto": "Potenciación (tema 26) ⇒ propiedades de exponentes",
+          "explicacion": "Cada propiedad de los logaritmos corresponde a una ley de la potenciación: el producto de potencias de igual base suma exponentes, el cociente los resta, la potencia de una potencia los multiplica, y la raíz los divide. Las propiedades de los logaritmos son la versión «en el exponente» de las leyes de la potenciación: producto, cociente, potencia y raíz. Ejemplo: $2^3\\times 2^2=2^5$ corresponde a $3+2=5$. Verificación: $8\\times 4=32=2^5$."
+        }
+      ]
+    }
+  ]
+}

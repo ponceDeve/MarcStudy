@@ -1,0 +1,155 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Línea cotangente",
+  "glosario": {
+    "línea cotangente": "Segmento sobre la tangente en B.",
+    "cotangente": "Razón entre abscisa y ordenada.",
+    "recta tangente": "Recta que toca la circunferencia en un punto.",
+    "eje de cotangentes": "Recta horizontal tangente en el punto B.",
+    "extremo": "Punto donde termina el arco.",
+    "prolongar": "Extender una recta más allá de su extremo.",
+    "triángulos semejantes": "Triángulos con ángulos iguales y lados proporcionales.",
+    "recíproca": "Inverso multiplicativo de una cantidad.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "reflejo": "Imagen simétrica respecto a una recta.",
+    "línea tangente": "Segmento sobre la tangente en A.",
+    "complemento": "Lo que falta para completar noventa grados."
+  },
+  "theory": [
+    {
+      "titulo": "Línea cotangente",
+      "puntos": [
+        {
+          "texto": "«Línea cotangente»: segmento sobre la tangente en $B$ hasta el punto $C$",
+          "explicacion": "La recta tangente a la circunferencia trigonométrica en $B(0,1)$ es horizontal. El punto $C$ es donde esa recta se cruza con la recta que contiene el radio hasta el extremo $P$ del arco. La medida con signo del segmento $BC$ es la cotangente (cot) del arco. Ejemplo: es como la sombra horizontal que proyecta un rayo inclinado sobre un techo plano ubicado a 1 m."
+        },
+        {
+          "texto": "Eje de cotangentes = recta horizontal $y = 1$",
+          "explicacion": "Es la recta tangente en $B$, y sobre ella se leen los valores de la línea cotangente tomando $B$ como cero. Ejemplo: el punto $(2, 1)$ de esa recta marca una cotangente de 2."
+        },
+        {
+          "texto": "Valor de la línea cotangente = abscisa de $C$: $\\cot\\theta = x_C$",
+          "explicacion": "Como $B$ tiene abscisa 0 y está a distancia 1 de $O$, la longitud con signo de $BC$ es igual a la abscisa de $C$. Ejemplo: para $\\theta = \\frac{\\pi}{4}$ radianes (rad), $C(1, 1)$ y $\\cot\\frac{\\pi}{4} = 1$."
+        },
+        {
+          "texto": "Línea cotangente hacia la derecha ⇒ positiva; hacia la izquierda ⇒ negativa",
+          "explicacion": "El signo depende de si $C$ queda a la derecha o a la izquierda de $B$. Ejemplo: $C(1{,}5;\\ 1)$ da una cotangente de $+1{,}5$, y $C(-1{,}5;\\ 1)$ da $-1{,}5$."
+        },
+        {
+          "texto": "En cuadrantes III y IV hay que prolongar el radio",
+          "explicacion": "Con ordenada negativa el radio apunta hacia abajo y no alcanza la recta $y = 1$, por lo que se prolonga en sentido opuesto. Ejemplo: para $\\theta = \\frac{7\\pi}{6}$, $P\\left(-\\frac{\\sqrt{3}}{2}, -\\frac{1}{2}\\right)$ y la prolongación corta la recta en $C(\\sqrt{3}, 1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo con coordenadas",
+      "puntos": [
+        {
+          "texto": "$\\cot\\theta = \\frac{x}{y}$ por triángulos semejantes",
+          "explicacion": "Los triángulos $O B C$ y $O N P$, con $N$ el pie de la horizontal desde $P$ sobre el eje vertical, son semejantes, así que $\\frac{BC}{OB} = \\frac{x}{y}$ con $OB = 1$. Ejemplo: para $P(0{,}6;\\ 0{,}8)$, $\\cot\\theta = \\frac{0{,}6}{0{,}8} = \\frac{3}{4}$ y $C\\left(\\frac{3}{4}, 1\\right)$."
+        },
+        {
+          "texto": "Cotangente = recíproca de la tangente (tan) donde ambas existen",
+          "explicacion": "Como $\\tan\\theta = \\frac{y}{x}$ y $\\cot\\theta = \\frac{x}{y}$, su producto es 1. Ejemplo: con $\\tan\\theta = \\frac{4}{3}$ resulta $\\cot\\theta = \\frac{3}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo por cuadrante",
+      "puntos": [
+        {
+          "texto": "Arco en «cuadrante I» ⇒ línea cotangente positiva",
+          "explicacion": "El punto $C$ queda a la derecha de $B$. Ejemplo: $\\cot\\frac{\\pi}{6} = \\sqrt{3} > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante II» ⇒ línea cotangente negativa",
+          "explicacion": "El punto $C$ queda a la izquierda de $B$. Ejemplo: $\\cot\\frac{5\\pi}{6} = -\\sqrt{3} < 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante III» ⇒ línea cotangente positiva",
+          "explicacion": "El radio prolongado corta la recta $y = 1$ a la derecha de $B$. Ejemplo: $\\cot\\frac{7\\pi}{6} = \\sqrt{3} > 0$."
+        },
+        {
+          "texto": "Arco en «cuadrante IV» ⇒ línea cotangente negativa",
+          "explicacion": "El radio prolongado corta la recta $y = 1$ a la izquierda de $B$. Ejemplo: $\\cot\\frac{11\\pi}{6} = -\\sqrt{3} < 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Línea cotangente nula en $\\frac{\\pi}{2}$ y $\\frac{3\\pi}{2}$",
+          "explicacion": "El extremo está sobre el eje vertical y $C$ coincide con $B$. Ejemplo: $\\cot\\frac{\\pi}{2} = 0$ y $\\cot\\frac{3\\pi}{2} = 0$."
+        },
+        {
+          "texto": "No existe en $0$, $\\pi$ ni $2\\pi$",
+          "explicacion": "El radio es horizontal y paralelo a la recta $y = 1$, así que nunca la corta. Ejemplo: $\\cot 0$ no está definida, pues $\\frac{x}{y} = \\frac{1}{0}$."
+        },
+        {
+          "texto": "No tiene cota: toma cualquier valor real",
+          "explicacion": "A medida que el arco se acerca a $0$, el punto $C$ se aleja sin límite. Ejemplo: con $\\theta$ muy pequeño puede resultar $\\cot\\theta = 100$, o un valor mayor."
+        },
+        {
+          "texto": "Con $\\tan\\theta$ inexistente, $\\cot\\theta$ no es su recíproca",
+          "explicacion": "En $\\theta = \\frac{\\pi}{2}$ la tangente no existe pero la cotangente vale 0, así que la relación de recíprocas solo vale cuando ambas existen y son distintas de cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación por cuadrante",
+      "puntos": [
+        {
+          "texto": "En el primer cuadrante, la línea cotangente ↓ hacia $0$",
+          "explicacion": "Al crecer el arco de $0$ a $\\frac{\\pi}{2}$, el punto $C$ se acerca a $B$. Ejemplo: $\\cot\\frac{\\pi}{6} \\approx 1{,}73$, $\\cot\\frac{\\pi}{4} = 1$ y $\\cot\\frac{\\pi}{3} \\approx 0{,}58$."
+        },
+        {
+          "texto": "En el segundo cuadrante, la línea cotangente ↓ desde $0$",
+          "explicacion": "Al crecer el arco de $\\frac{\\pi}{2}$ a $\\pi$, la cotangente pasa de 0 a valores muy negativos. Ejemplo: $\\cot\\frac{2\\pi}{3} \\approx -0{,}58$ es mayor que $\\cot\\frac{5\\pi}{6} \\approx -1{,}73$."
+        },
+        {
+          "texto": "En el tercer cuadrante, la línea cotangente ↓ hacia $0$",
+          "explicacion": "Al crecer el arco de $\\pi$ a $\\frac{3\\pi}{2}$, la cotangente baja de valores muy grandes a 0. Ejemplo: $\\cot\\frac{7\\pi}{6} \\approx 1{,}73$ es mayor que $\\cot\\frac{4\\pi}{3} \\approx 0{,}58$."
+        },
+        {
+          "texto": "En el cuarto cuadrante, la línea cotangente ↓ desde $0$",
+          "explicacion": "Al crecer el arco de $\\frac{3\\pi}{2}$ a $2\\pi$, la cotangente pasa de 0 a valores muy negativos. Ejemplo: $\\cot\\frac{5\\pi}{3} \\approx -0{,}58$ es mayor que $\\cot\\frac{11\\pi}{6} \\approx -1{,}73$."
+        },
+        {
+          "texto": "Dentro de un cuadrante, mayor arco ⇒ menor cotangente",
+          "explicacion": "El orden de los arcos se invierte en las cotangentes mientras no se cruce $0$, $\\pi$ ni $2\\pi$. Ejemplo: $2 < 3$ y $\\cot 2 \\approx -0{,}46 > \\cot 3 \\approx -7{,}02$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos negativos",
+      "puntos": [
+        {
+          "texto": "Arco negativo: la línea cotangente cambia de signo",
+          "explicacion": "El extremo de $-\\theta$ es el reflejo del de $\\theta$ en el eje horizontal. Ejemplo: $\\cot\\left(-\\frac{\\pi}{4}\\right) = -\\cot\\frac{\\pi}{4} = -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con complemento",
+      "puntos": [
+        {
+          "texto": "$\\cot\\theta = \\tan\\left(\\frac{\\pi}{2} - \\theta\\right)$ en el primer cuadrante",
+          "explicacion": "La línea cotangente de un arco coincide con la línea tangente de su complemento. Ejemplo: $\\cot\\frac{\\pi}{6} = \\sqrt{3}$ y $\\tan\\frac{\\pi}{3} = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "La «línea tangente» se mide sobre la recta $x = 1$",
+          "explicacion": "Es la medida sobre la tangente en $A(1,0)$ y no sobre la tangente en $B$. Ejemplo: para $\\theta = \\frac{\\pi}{3}$, la línea tangente vale $\\sqrt{3}$ y la línea cotangente vale $\\frac{\\sqrt{3}}{3}$."
+        }
+      ]
+    }
+  ]
+}

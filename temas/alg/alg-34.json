@@ -1,0 +1,203 @@
+{
+  "curso": "Álgebra",
+  "tema": "División de polinomios",
+  "glosario": {
+    "Dividendo": "Polinomio que se divide.",
+    "Divisor": "Polinomio entre el que se divide.",
+    "Cociente": "Resultado de la división.",
+    "Residuo": "Polinomio que sobra en la división.",
+    "División exacta": "División con residuo nulo.",
+    "División inexacta": "División con residuo no nulo.",
+    "Divisible": "Que se divide exactamente.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes cero.",
+    "Polinomio completo": "Contiene todos los exponentes hasta cero.",
+    "Polinomio ordenado": "Exponentes de una variable en secuencia.",
+    "Monomio": "Polinomio de un solo término.",
+    "Factor": "Polinomio que divide exactamente a otro.",
+    "Grado": "Mayor exponente con coeficiente no nulo.",
+    "Identidad": "Igualdad verdadera para todos los valores."
+  },
+  "theory": [
+    {
+      "titulo": "División de polinomios",
+      "puntos": [
+        {
+          "texto": "«División de polinomios»: hallar cociente y residuo de $D$ entre $d$",
+          "explicacion": "Dividir el polinomio $D(x)$ entre el polinomio $d(x)$, no nulo, consiste en hallar dos polinomios $q(x)$ y $r(x)$ tales que $D(x)=d(x)\\cdot q(x)+r(x)$, donde el grado de $r$ es menor que el grado de $d$ o $r$ es el polinomio nulo. Es la operación inversa de la multiplicación, ampliada con un residuo para los casos en que el producto no coincide exactamente. Por ejemplo, al dividir $x^3+2x+1$ entre $x+1$ se obtiene cociente $x^2-x+3$ y residuo $-2$."
+        },
+        {
+          "texto": "«Dividendo» $D(x)$: polinomio que se divide",
+          "explicacion": "El dividendo es el polinomio que se reparte o descompone, y se escribe primero. En la división de $x^3+2x+1$ entre $x+1$, el dividendo es $x^3+2x+1$. Es el polinomio que debe recuperarse al calcular $d\\cdot q+r$."
+        },
+        {
+          "texto": "«Divisor» $d(x)$: polinomio entre el que se divide",
+          "explicacion": "El divisor es el polinomio por el cual se divide al dividendo y debe ser distinto del polinomio nulo. En la división de $x^3+2x+1$ entre $x+1$, el divisor es $x+1$. Su grado determina el grado máximo permitido para el residuo."
+        },
+        {
+          "texto": "«Cociente» $q(x)$: resultado de la división",
+          "explicacion": "El cociente es el polinomio que, multiplicado por el divisor, se aproxima al dividendo lo más posible sin excederlo en grado. En la división de $x^3+2x+1$ entre $x+1$, el cociente es $x^2-x+3$. Si la división es exacta, es el polinomio por el que hay que multiplicar al divisor para obtener el dividendo."
+        },
+        {
+          "texto": "«Residuo» $r(x)$: lo que sobra en la división",
+          "explicacion": "El residuo es el polinomio que queda al final y que ya no puede dividirse porque su grado es menor que el del divisor. En $x^3+2x+1$ entre $x+1$ el residuo es $-2$, un polinomio constante, de grado 0, menor que el grado 1 del divisor. Si el residuo es el polinomio nulo, la división es exacta."
+        },
+        {
+          "texto": "Notación: $D(x)$ dividendo, $d(x)$ divisor, $q(x)$ cociente, $r(x)$ residuo",
+          "explicacion": "Se usa $D(x)$ con mayúscula para el dividendo y $d(x)$ con minúscula para el divisor, para distinguirlos. El cociente se escribe $q(x)$ y el residuo $r(x)$, letras que recuerdan las palabras cociente y residuo. Con esta notación la relación fundamental es $D(x)=d(x)\\cdot q(x)+r(x)$. Cuando el contexto es claro se omite la variable y se escribe $D=d\\cdot q+r$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones de la división",
+      "puntos": [
+        {
+          "texto": "El divisor ≠ polinomio nulo",
+          "explicacion": "No se puede dividir entre el polinomio nulo, así como no se puede dividir un número entre cero. Si $d=0$, el producto $d\\cdot q$ siempre vale cero y no puede recuperar a un dividendo distinto de cero. Todo divisor debe tener al menos un coeficiente no nulo, es decir, un grado definido."
+        },
+        {
+          "texto": "La división de polinomios no siempre da un polinomio",
+          "explicacion": "El cociente exacto de dos polinomios no siempre es un polinomio: $\\frac{x}{x+1}$ no es un polinomio, porque no existe un polinomio $q$ tal que $(x+1)q=x$. Esto es lo que obliga a definir la división con residuo: se busca el cociente polinómico más cercano y se deja lo que sobra como residuo. Los polinomios no son cerrados bajo la división, a diferencia de lo que ocurre con la suma y la multiplicación."
+        }
+      ]
+    },
+    {
+      "titulo": "Grados en la división",
+      "puntos": [
+        {
+          "texto": "Cociente: $\\operatorname{gr}(q)=\\operatorname{gr}(D)-\\operatorname{gr}(d)$",
+          "explicacion": "Cuando el grado del dividendo es mayor o igual que el del divisor, el cociente tiene grado igual a la diferencia de los grados. Ejemplo: $x^3+2x+1$ entre $x+1$ tiene dividendo de grado 3 y divisor de grado 1, así que el cociente es de grado $3-1=2$, que corresponde a $x^2-x+3$. La razón es que $d\\cdot q$ debe tener el mismo grado que $D$, y en un producto los grados se suman."
+        },
+        {
+          "texto": "Residuo: $\\operatorname{gr}(r)<\\operatorname{gr}(d)$",
+          "explicacion": "El residuo tiene siempre grado menor que el divisor, o es el polinomio nulo. Si el divisor tiene grado 2, el residuo puede ser de grado 1, de grado 0 o nulo, pero nunca de grado 2 o mayor, porque entonces aún se podría dividir una vez más. Con divisor $x+1$, de grado 1, el residuo es una constante, como $-2$."
+        },
+        {
+          "texto": "Grado del dividendo < grado del divisor ⇒ $q=0$ y $r=D$",
+          "explicacion": "Si el dividendo tiene menor grado que el divisor, no se puede formar ningún múltiplo del divisor que quepa en el dividendo: el cociente es cero y el residuo es el mismo dividendo. Ejemplo: $(x+3)\\div(x^2+1)$ da $q=0$ y $r=x+3$, y se cumple $x+3=(x^2+1)\\cdot0+(x+3)$, con $\\operatorname{gr}(r)=1<2$."
+        },
+        {
+          "texto": "Número de términos del cociente completo = $\\operatorname{gr}(q)+1$",
+          "explicacion": "Si el cociente es un polinomio completo, tiene tantos términos como su grado más uno. Al dividir un polinomio completo de grado 5 entre uno de grado 2, el cociente tiene grado 3 y, si es completo, $3+1=4$ términos. Este conteo ayuda a verificar que no se omitió ningún término al desarrollar la división."
+        }
+      ]
+    },
+    {
+      "titulo": "División de monomios",
+      "puntos": [
+        {
+          "texto": "Cociente de monomios: dividir coeficientes y restar exponentes",
+          "explicacion": "Para dividir monomios se dividen los coeficientes y se restan los exponentes de cada variable, según la ley $\\frac{x^a}{x^b}=x^{a-b}$. Ejemplo: $\\frac{12x^5y^3}{4x^2y}$. Coeficientes: $12\\div4=3$. Variable $x$: $x^{5-2}=x^3$. Variable $y$: $y^{3-1}=y^2$. El cociente es $3x^3y^2$. Verificación: $4x^2y\\cdot3x^3y^2=12x^5y^3$."
+        },
+        {
+          "texto": "Cociente de monomios con signos negativos",
+          "explicacion": "Se aplica la regla de signos de la división, igual que la de la multiplicación: signos iguales dan positivo y signos distintos dan negativo. Ejemplo: $\\frac{-12x^5}{4x^2}=-3x^3$. Y $\\frac{-12x^5}{-4x^2}=3x^3$. Verificación del primero: $4x^2\\cdot(-3x^3)=-12x^5$."
+        },
+        {
+          "texto": "Exponente del dividendo < exponente del divisor ⇒ no es polinomio",
+          "explicacion": "Si en alguna variable el exponente del dividendo es menor que el del divisor, la resta de exponentes sería negativa y el cociente no es un polinomio. Ejemplo: $\\frac{x^2}{x^3}=x^{-1}$, que no es polinomio. En ese caso el cociente se deja como fracción, o bien se considera que el cociente es cero y el residuo es el dividendo."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio entre monomio",
+      "puntos": [
+        {
+          "texto": "Polinomio entre monomio: dividir cada término",
+          "explicacion": "Para dividir un polinomio entre un monomio se divide cada término del polinomio entre el monomio, aplicando la propiedad distributiva de la división: $\\frac{a+b+c}{m}=\\frac{a}{m}+\\frac{b}{m}+\\frac{c}{m}$. Ejemplo: $\\frac{6x^4-9x^3+3x^2}{3x^2}=2x^2-3x+1$. Verificación en $x=2$: el numerador vale $96-72+12=36$, el denominador vale 12 y el cociente es 3; el resultado vale $8-6+1=3$."
+        },
+        {
+          "texto": "Residuo no nulo al dividir entre monomio",
+          "explicacion": "Si algún término del polinomio tiene exponente menor que el del monomio divisor, ese término no se puede dividir y pasa al residuo. Ejemplo: $(x^3+2x^2+x)\\div x^2$ da cociente $x+2$ y residuo $x$, porque $x^3\\div x^2=x$, $2x^2\\div x^2=2$ y el término $x$ no es divisible entre $x^2$. Verificación: $x^2(x+2)+x=x^3+2x^2+x$."
+        },
+        {
+          "texto": "División entre una constante: dividir cada coeficiente",
+          "explicacion": "Dividir un polinomio entre un número distinto de cero equivale a dividir cada coeficiente entre ese número. Ejemplo: $(4x^2-6x+2)\\div2=2x^2-3x+1$, con residuo 0. El grado no cambia. Es un caso particular de división entre monomio, con el divisor de grado 0, y siempre es exacta."
+        }
+      ]
+    },
+    {
+      "titulo": "División exacta",
+      "puntos": [
+        {
+          "texto": "«División exacta»: residuo igual al polinomio nulo",
+          "explicacion": "Una división es exacta cuando el residuo es el polinomio nulo, de modo que $D=d\\cdot q$. Ejemplo: $(x^2-5x+6)\\div(x-2)=x-3$, y se verifica que $(x-2)(x-3)=x^2-5x+6$. En una división exacta el divisor y el cociente son factores del dividendo, y se dice que el dividendo es divisible entre el divisor."
+        },
+        {
+          "texto": "Divisor y cociente son factores del dividendo",
+          "explicacion": "En una división exacta $D=d\\cdot q$, así que tanto $d$ como $q$ son factores de $D$. En $x^2-5x+6=(x-2)(x-3)$, los factores son $x-2$ y $x-3$. Por eso la división sirve para factorizar: si se conoce un factor de un polinomio, se divide para hallar el otro."
+        }
+      ]
+    },
+    {
+      "titulo": "División inexacta",
+      "puntos": [
+        {
+          "texto": "«División inexacta»: residuo distinto del polinomio nulo",
+          "explicacion": "Una división es inexacta cuando el residuo no es el polinomio nulo, por lo que $D=d\\cdot q+r$ con $r\\neq0$. Ejemplo: $(2x^3-3x^2+4x-5)\\div(x^2-2x+1)$ da cociente $2x+1$ y residuo $4x-6$. Verificación: $(x^2-2x+1)(2x+1)=2x^3-3x^2+1$ y al sumar $4x-6$ resulta $2x^3-3x^2+4x-5$. El residuo, de grado 1, es menor que el grado 2 del divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "Unicidad",
+      "puntos": [
+        {
+          "texto": "El cociente y el residuo son únicos",
+          "explicacion": "Para cada pareja de polinomios $D$ y $d\\neq0$ existe un único cociente y un único residuo que cumplen la relación con $\\operatorname{gr}(r)<\\operatorname{gr}(d)$. Razón: si hubiera dos soluciones $D=dq_1+r_1=dq_2+r_2$, entonces $d(q_1-q_2)=r_2-r_1$. Si $q_1\\neq q_2$, el lado izquierdo tendría grado al menos $\\operatorname{gr}(d)$, pero el lado derecho tiene grado menor que $\\operatorname{gr}(d)$, lo cual es imposible. Por tanto $q_1=q_2$ y $r_1=r_2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación",
+      "puntos": [
+        {
+          "texto": "Comprobar con $D=d\\cdot q+r$",
+          "explicacion": "El resultado de cualquier división se comprueba multiplicando divisor por cociente y sumando el residuo, lo que debe dar el dividendo. En $x^3+2x+1\\div(x+1)$ con $q=x^2-x+3$ y $r=-2$: $(x+1)(x^2-x+3)=x^3-x^2+3x+x^2-x+3=x^3+2x+3$, y al sumar $-2$ resulta $x^3+2x+1$. Esta comprobación detecta errores de signo y de exponentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Preparación del dividendo",
+      "puntos": [
+        {
+          "texto": "Ordenar y completar antes de dividir",
+          "explicacion": "Antes de dividir se ordenan dividendo y divisor en el mismo sentido, normalmente descendente, y se completa el dividendo con ceros en los exponentes que falten. Ejemplo: en $3x^4+2x-1$ falta $x^3$ y $x^2$, y se escribe $3x^4+0x^3+0x^2+2x-1$. Sin completar, las columnas de los exponentes quedan desalineadas y se cometen errores."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor numérico",
+      "puntos": [
+        {
+          "texto": "$D(a)=d(a)\\cdot q(a)+r(a)$",
+          "explicacion": "Como la igualdad $D=dq+r$ es una identidad, se cumple para todo valor de $x$. Con $D=2x^3-3x^2+4x-5$, $d=x^2-2x+1$, $q=2x+1$ y $r=4x-6$ en $x=2$: $D(2)=16-12+8-5=7$; $d(2)=4-4+1=1$; $q(2)=5$; $r(2)=8-6=2$. Entonces $1\\cdot5+2=7$, que coincide con $D(2)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisibilidad",
+      "puntos": [
+        {
+          "texto": "«Divisible»: el residuo de dividir $D$ entre $d$ es nulo",
+          "explicacion": "Un polinomio $D$ es divisible entre $d$ cuando la división es exacta, es decir, cuando existe un polinomio $q$ con $D=d\\cdot q$. Es la misma idea de divisibilidad entre números enteros. $x^2-5x+6$ es divisible entre $x-2$, pero $x^2-5x+7$ no lo es, porque deja residuo 1."
+        },
+        {
+          "texto": "Suma de divisibles entre $d$ ⇒ divisible entre $d$",
+          "explicacion": "Si dos polinomios son divisibles entre $d$, su suma también lo es, porque $d\\cdot q_1+d\\cdot q_2=d(q_1+q_2)$. Con $d=x-2$: $x^2-5x+6=(x-2)(x-3)$ y $x^2-4=(x-2)(x+2)$ son divisibles entre $d$, y su suma $2x^2-5x+2=(x-2)(2x-1)$ también lo es."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 35 al 38: métodos para dividir",
+          "explicacion": "El tema 35 formaliza el algoritmo de la división, y los temas 36, 37 y 38 desarrollan los métodos clásico, de Ruffini y de Horner, que son procedimientos para calcular el cociente y el residuo. Todos usan la relación $D=d\\cdot q+r$ y la preparación del dividendo vista aquí."
+        },
+        {
+          "texto": "Temas 39 y 40: residuo y factores",
+          "explicacion": "El teorema del resto y el teorema del factor, de los temas 39 y 40, permiten hallar el residuo de dividir entre un binomio de primer grado sin efectuar la división, y decidir si un binomio es factor de un polinomio."
+        }
+      ]
+    }
+  ]
+}

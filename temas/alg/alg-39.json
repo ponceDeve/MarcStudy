@@ -1,0 +1,216 @@
+{
+  "curso": "Álgebra",
+  "tema": "Teorema del resto",
+  "glosario": {
+    "teorema del resto": "Relaciona el resto con el valor numérico",
+    "teorema del residuo": "Otro nombre del teorema del resto",
+    "teorema del factor": "Resto nulo indica que el divisor es factor",
+    "algoritmo de la división": "Garantiza cociente y resto únicos",
+    "dividendo": "Polinomio que se divide",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "residuo": "Otro nombre de resto",
+    "valor numérico": "Resultado de reemplazar la variable por un número",
+    "divisor lineal": "Divisor de grado uno",
+    "raíz del divisor": "Valor de la variable que anula el divisor",
+    "división exacta": "División cuyo resto es nulo",
+    "factor": "Polinomio que divide exactamente a otro",
+    "divisible": "Que se divide con resto nulo",
+    "identidad": "Igualdad válida para todo valor de la variable",
+    "término independiente": "Término sin letras",
+    "suma de coeficientes": "Valor del polinomio en uno",
+    "parámetro": "Letra de valor fijo aún desconocido",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "constante": "Cantidad cuyo valor no cambia",
+    "sistema de ecuaciones": "Conjunto de ecuaciones con incógnitas comunes",
+    "sustitución": "Reemplazo de letras por valores dados",
+    "polinomio": "Suma finita de monomios con exponentes naturales",
+    "método de Ruffini": "División rápida entre un divisor lineal"
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado del teorema",
+      "puntos": [
+        {
+          "texto": "«Teorema del resto»: resto de $P(x)\\div(x-a)$ = $P(a)$",
+          "explicacion": "Si un polinomio $P(x)$ se divide entre un divisor de la forma $x-a$, el resto es el valor numérico de $P$ en $x=a$, es decir, $R=P(a)$. Esto permite hallar el resto sin efectuar la división. Ejemplo: $P(x)=x^3+2x^2-x+5$ entre $x-1$ tiene resto $P(1)=1+2-1+5=7$. Verificación por división: $x^3+2x^2-x+5=(x-1)(x^2+3x+2)+7$, pues $(x-1)(x^2+3x+2)=x^3+2x^2-x-2$ y $-2+7=5$."
+        },
+        {
+          "texto": "«Teorema del residuo» = teorema del resto",
+          "explicacion": "Teorema del residuo es otro nombre del teorema del resto, porque residuo y resto designan lo mismo: el polinomio que sobra de la división. Ambos nombres expresan que el resto de dividir $P(x)$ entre $x-a$ vale $P(a)$. Ejemplo: el residuo de $x^2+3x+5$ entre $x-2$ es $P(2)=4+6+5=15$, valor que coincide con el resto de la división."
+        },
+        {
+          "texto": "Divisor lineal ⇒ resto constante",
+          "explicacion": "Como el divisor tiene grado $1$, el algoritmo de la división exige que el resto sea nulo o de grado menor que $1$, o sea, un número. Por eso el resto se puede igualar con un valor numérico. Ejemplo: al dividir $2x^3-5x^2+4x-7$ entre $x-2$ el resto es $-3$, un número, no una expresión con $x$. Verificación: el resto vale lo mismo para cualquier valor de $x$."
+        },
+        {
+          "texto": "«Valor numérico» $P(a)$ = reemplazar $x$ por $a$",
+          "explicacion": "El valor numérico $P(a)$ es el número que resulta al sustituir la variable por $a$ y efectuar las operaciones. Ejemplo: para $P(x)=2x^3-5x^2+4x-7$ y $a=2$: $P(2)=2\\cdot8-5\\cdot4+4\\cdot2-7=16-20+8-7=-3$. Verificación: $16-20=-4$, $-4+8=4$ y $4-7=-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Demostración del teorema",
+      "puntos": [
+        {
+          "texto": "Paso 1: $P(x)=(x-a)\\,q(x)+R$ con $R$ constante",
+          "explicacion": "Por el algoritmo de la división, al dividir $P(x)$ entre $x-a$ existen un cociente $q(x)$ y un resto $R$ tales que $P(x)=(x-a)q(x)+R$. Como el divisor es de grado $1$, el resto es un número. Esta igualdad es una identidad, válida para todo valor de $x$, lo que permite sustituir un valor conveniente. Ejemplo: $x^2+3x+5=(x-2)(x+5)+15$, pues $(x-2)(x+5)=x^2+3x-10$ y $-10+15=5$."
+        },
+        {
+          "texto": "Paso 2: sustituir $x=a$",
+          "explicacion": "Al reemplazar $x$ por $a$ en la identidad, el factor $x-a$ se anula: $P(a)=(a-a)q(a)+R=0\\cdot q(a)+R=R$. Se obtiene así $R=P(a)$. Ejemplo con $x^2+3x+5=(x-2)(x+5)+15$ y $a=2$: el miembro izquierdo vale $4+6+5=15$ y el derecho $0\\cdot7+15=15$. Verificación: ambos coinciden con el resto."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla práctica",
+      "puntos": [
+        {
+          "texto": "Paso 1: igualar el divisor a cero",
+          "explicacion": "Para hallar el resto sin dividir, se iguala el divisor a cero. Ejemplo: para el divisor $x-2$ se escribe $x-2=0$. Esta ecuación define el valor de $x$ que anula al divisor, que es el único en el que el término $(x-2)q(x)$ de la identidad desaparece."
+        },
+        {
+          "texto": "Paso 2: despejar la variable",
+          "explicacion": "Se resuelve la ecuación del paso anterior para obtener el valor de $x$. Ejemplo: de $x-2=0$ se obtiene $x=2$. Verificación: al reemplazar $x=2$ en $x-2$ se obtiene $0$. Este número es el que se sustituirá en el dividendo."
+        },
+        {
+          "texto": "Paso 3: sustituir en el dividendo",
+          "explicacion": "Se reemplaza la variable del dividendo por el valor hallado. Ejemplo: para $P(x)=2x^3-5x^2+4x-7$ con $x=2$: $P(2)=2(2)^3-5(2)^2+4(2)-7$. Se recomienda encerrar el valor entre paréntesis, sobre todo si es negativo, para no confundir signos ni exponentes."
+        },
+        {
+          "texto": "Paso 4: calcular ⇒ resto",
+          "explicacion": "Se efectúan las operaciones y el número obtenido es el resto. Ejemplo: $2(8)-5(4)+4(2)-7=16-20+8-7=-3$, de modo que el resto es $-3$. Verificación por Ruffini con raíz $2$ y coeficientes $2,\\,-5,\\,4,\\,-7$: $2\\to-1\\to2\\to-3$, el último número es $-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor x más a",
+      "puntos": [
+        {
+          "texto": "Divisor $x+a$ ⇒ resto $P(-a)$",
+          "explicacion": "Si el divisor es $x+a$, se iguala a cero: $x+a=0\\Rightarrow x=-a$, de modo que el resto es $P(-a)$. Ejemplo: $P(x)=2x^3-3x^2+x-4$ entre $x+1$: $x=-1$, $P(-1)=2(-1)^3-3(-1)^2+(-1)-4=-2-3-1-4=-10$. Verificación por Ruffini con raíz $-1$ y coeficientes $2,\\,-3,\\,1,\\,-4$: $2\\to-5\\to6\\to-10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor ax más b",
+      "puntos": [
+        {
+          "texto": "Divisor $ax+b$ ⇒ resto $P\\left(-\\frac{b}{a}\\right)$",
+          "explicacion": "Si el divisor es $ax+b$ con $a\\neq0$, se iguala a cero: $ax+b=0\\Rightarrow x=-\\frac{b}{a}$, y el resto es $P\\left(-\\frac{b}{a}\\right)$. La deducción es la misma que para $x-a$: de $P(x)=(ax+b)q(x)+R$ se sustituye $x=-\\frac{b}{a}$, y el término con el divisor se anula. Ejemplo: $P(x)=2x^3-3x^2+x-4$ entre $2x-1$: $x=\\frac{1}{2}$ y $P\\left(\\frac{1}{2}\\right)=\\frac{2}{8}-\\frac{3}{4}+\\frac{1}{2}-4=\\frac{1}{4}-\\frac{3}{4}+\\frac{2}{4}-4=-4$."
+        },
+        {
+          "texto": "Resto de $ax+b$ ✗ dividir entre $a$",
+          "explicacion": "El resto obtenido al sustituir $x=-\\frac{b}{a}$ ya es el resto de la división entre $ax+b$; no se divide entre $a$. Solo el cociente de la tabla de Ruffini se divide entre $a$. Ejemplo: $P(x)=6x^3+x^2-5x+2$ entre $2x-1$ tiene resto $P\\left(\\frac{1}{2}\\right)=\\frac{6}{8}+\\frac{1}{4}-\\frac{5}{2}+2=\\frac{3}{4}+\\frac{1}{4}-\\frac{5}{2}+2=\\frac{1}{2}$. Verificación: coincide con el resto $\\frac{1}{2}$ de la división."
+        },
+        {
+          "texto": "Resto $0$ con $3x+2$: $3x^3+5x^2+5x+2$",
+          "explicacion": "Igualando el divisor a cero, $3x+2=0\\Rightarrow x=-\\frac{2}{3}$. Se calcula $P\\left(-\\frac{2}{3}\\right)=3\\left(-\\frac{8}{27}\\right)+5\\cdot\\frac{4}{9}+5\\left(-\\frac{2}{3}\\right)+2=-\\frac{8}{9}+\\frac{20}{9}-\\frac{30}{9}+\\frac{18}{9}=0$. El resto es $0$: la división es exacta. Verificación: $(3x+2)(x^2+x+1)=3x^3+5x^2+5x+2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor de mayor grado",
+      "puntos": [
+        {
+          "texto": "Divisor cuadrático ⇒ igualar a cero y reemplazar potencias",
+          "explicacion": "Cuando el divisor es de grado mayor que $1$, se iguala a cero y se despeja la mayor potencia de $x$; luego se reemplaza esa potencia en el dividendo hasta que quede un polinomio de grado menor que el divisor, que es el resto. Se justifica porque en $P=d\\,q+R$ el término $d\\,q$ vale cero cuando $d=0$, de modo que $P$ y $R$ tienen el mismo valor bajo esa relación. Ejemplo: $x^5+2x^3-x+4$ entre $x^2-3$: se usa $x^2=3$."
+        },
+        {
+          "texto": "Ejemplo: $x^5+2x^3-x+4$ entre $x^2-3$",
+          "explicacion": "Con $x^2=3$: $x^5=x\\cdot(x^2)^2=x\\cdot9=9x$ y $2x^3=2x\\cdot x^2=2x\\cdot3=6x$. Entonces $R=9x+6x-x+4=14x+4$. Verificación por división: $(x^2-3)(x^3+5x)=x^5+5x^3-3x^3-15x=x^5+2x^3-15x$, y al restar de $P$ queda $14x+4$, de grado $1<2$."
+        },
+        {
+          "texto": "Ejemplo: $x^4+3x^3-x+2$ entre $x^2+1$",
+          "explicacion": "Con $x^2=-1$: $x^4=(x^2)^2=1$ y $x^3=x\\cdot x^2=-x$, de modo que $3x^3=-3x$. Entonces $R=1-3x-x+2=-4x+3$. Verificación: $(x^2+1)(x^2+3x-1)=x^4+3x^3+3x-1$, y $P-(x^4+3x^3+3x-1)=-x+2-3x+1=-4x+3$."
+        },
+        {
+          "texto": "Potencias altas ⇒ agrupar en potencias del divisor",
+          "explicacion": "Para exponentes grandes, se escribe cada potencia usando la relación del divisor. Ejemplo: $x^{20}+x^{10}+1$ entre $x^2+1$, con $x^2=-1$: $x^{20}=(x^2)^{10}=(-1)^{10}=1$ y $x^{10}=(x^2)^5=(-1)^5=-1$. Entonces $R=1-1+1=1$. Verificación: el resto es una constante, de grado menor que $2$, como exige el algoritmo."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor producto",
+      "puntos": [
+        {
+          "texto": "Divisor $(x-a)(x-b)$ ⇒ resto $mx+n$",
+          "explicacion": "Si el divisor es $(x-a)(x-b)$ con $a\\neq b$, tiene grado $2$ y el resto es a lo más de grado $1$: $R=mx+n$. Se cumple $P(x)=(x-a)(x-b)q(x)+mx+n$. Al sustituir $x=a$ y $x=b$ el divisor se anula y quedan $P(a)=ma+n$ y $P(b)=mb+n$, un sistema de ecuaciones del que se obtienen $m$ y $n$."
+        },
+        {
+          "texto": "Ejemplo: $x^3-2x+1$ entre $(x-1)(x-2)$",
+          "explicacion": "Se evalúa: $P(1)=1-2+1=0$ y $P(2)=8-4+1=5$. El sistema es $m+n=0$ y $2m+n=5$. Restando: $m=5$, y $n=-5$. Resto: $R=5x-5$. Verificación: $P-R=x^3-2x+1-5x+5=x^3-7x+6=(x-1)(x-2)(x+3)$, que es múltiplo del divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Divisor $x-1$ ⇒ resto = suma de coeficientes",
+          "explicacion": "Como $P(1)$ es la suma de los coeficientes de $P$, el resto de dividir entre $x-1$ es esa suma. Ejemplo: $P(x)=3x^3-2x^2+x-5$ da $P(1)=3-2+1-5=-3$. Verificación: por Ruffini con raíz $1$ y coeficientes $3,\\,-2,\\,1,\\,-5$: $3\\to1\\to2\\to-3$."
+        },
+        {
+          "texto": "Divisor $x$ ⇒ resto = término independiente",
+          "explicacion": "Dividir entre $x$ equivale a hacer $x=0$, y $P(0)$ es el término independiente. Ejemplo: $P(x)=3x^3-2x^2+x-5$ da $P(0)=-5$. Verificación: $P(x)=x(3x^2-2x+1)-5$, de modo que el cociente es $3x^2-2x+1$ y el resto es $-5$."
+        },
+        {
+          "texto": "Resto $0$ ⇒ divisor es factor",
+          "explicacion": "Cuando $P(a)=0$ la división entre $x-a$ es exacta y $x-a$ es factor de $P(x)$; este resultado se desarrolla como teorema del factor. Ejemplo: $x^3-7x+6$ con $a=1$: $1-7+6=0$, así que $x-1$ es factor, y $x^3-7x+6=(x-1)(x^2+x-6)$. Verificación: $(x-1)(x^2+x-6)=x^3+x^2-6x-x^2-x+6=x^3-7x+6$."
+        },
+        {
+          "texto": "Dividendo constante ⇒ resto = esa constante",
+          "explicacion": "Si $P(x)=c$, su valor es $c$ para todo $x$, así que el resto de dividir entre cualquier $x-a$ es $c$. Ejemplo: $P(x)=5$ entre $x-3$ da resto $P(3)=5$. Verificación: $5=(x-3)\\cdot0+5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones del teorema",
+      "puntos": [
+        {
+          "texto": "Hallar un parámetro conocido el resto",
+          "explicacion": "Si se conoce el resto, se plantea la ecuación $P(a)=R$ y se despeja el parámetro. Ejemplo: $P(x)=x^3+kx^2-2x+5$ deja resto $9$ al dividir entre $x-2$. $P(2)=8+4k-4+5=4k+9$. Se plantea $4k+9=9\\Rightarrow k=0$. Verificación: con $k=0$, $P(2)=8-4+5=9$."
+        },
+        {
+          "texto": "Hallar un parámetro para divisibilidad",
+          "explicacion": "Si el divisor debe ser factor, se exige resto $0$. Ejemplo: $P(x)=x^3+kx-6$ es divisible por $x-2$ si $P(2)=0$: $8+2k-6=0\\Rightarrow k=-1$. Verificación: con $k=-1$, $P(x)=x^3-x-6$ y $P(2)=8-2-6=0$."
+        },
+        {
+          "texto": "Calcular valores numéricos con Ruffini",
+          "explicacion": "El último número de la tabla de Ruffini es el resto, y por el teorema del resto es $P(a)$; así se calcula un valor numérico sin efectuar potencias. Ejemplo: para $P(x)=x^4+3x^3-2x+5$ y $a=-3$, los coeficientes $1,\\,3,\\,0,\\,-2,\\,5$ dan $1\\to0\\to0\\to-2\\to11$. Verificación: $P(-3)=81-81+6+5=11$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Signo de la raíz del divisor",
+          "explicacion": "Para el divisor $x+1$ debe usarse $x=-1$, no $x=1$. Ejemplo: $P(x)=2x^3-3x^2+x-4$ da $P(-1)=-10$, que es el resto correcto; usar $x=1$ daría $P(1)=-4$, que es el resto de dividir entre $x-1$. Verificación: $x+1=0\\Rightarrow x=-1$."
+        },
+        {
+          "texto": "Olvidar $-\\frac{b}{a}$ en $ax+b$",
+          "explicacion": "En un divisor como $2x-1$ debe sustituirse $x=\\frac{1}{2}$, no $x=1$ ni $x=-1$. Ejemplo: $P(x)=6x^3+x^2-5x+2$ tiene resto $P\\left(\\frac{1}{2}\\right)=\\frac{1}{2}$ al dividir entre $2x-1$, mientras que $P(1)=4$ y $P(-1)=2$ corresponden a las divisiones entre $x-1$ y $x+1$. Verificación: $2\\cdot\\frac{1}{2}-1=0$."
+        },
+        {
+          "texto": "Divisor de grado $\\geq2$ ✗ evaluar en un solo número",
+          "explicacion": "Con un divisor como $x^2-3$ el resto es un polinomio de grado a lo más $1$, y no un número. Se debe reemplazar $x^2=3$ y no evaluar en un único valor. Ejemplo: el resto de $x^5+2x^3-x+4$ entre $x^2-3$ es $14x+4$; evaluar en $x=\\sqrt{3}$ da $14\\sqrt{3}+4$, que es solo el valor numérico de ese resto."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Teorema del resto ⊂ algoritmo de la división",
+          "explicacion": "Es una consecuencia directa de $P=(x-a)q+R$ cuando el divisor es lineal, y concuerda con los métodos de división, porque el último número de Ruffini es $P(a)$. Ejemplo: por el método clásico, $2x^3-5x^2+4x-7$ entre $x-2$ da resto $-3$, igual que $P(2)=-3$."
+        },
+        {
+          "texto": "Teorema del resto → teorema del factor",
+          "explicacion": "Si $P(a)=0$, el divisor $x-a$ es un factor de $P(x)$; la recíproca también es cierta. Esta idea fundamenta la búsqueda de factores y raíces de polinomios en los temas siguientes. Ejemplo: $x^3-7x+6$ tiene factor $x-1$ porque $P(1)=0$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "curso": "Aritmética",
+  "tema": "Teorema fundamental de la aritmética",
+  "glosario": {
+    "teorema fundamental de la aritmética": "Todo entero mayor que 1 factoriza en primos",
+    "factorización prima": "Producto de primos igual al número",
+    "descomposición canónica": "Factorización con primos distintos y exponentes",
+    "exponente": "Veces que se repite un factor",
+    "cuadrado perfecto": "Número que es el cuadrado de un entero",
+    "cubo perfecto": "Número que es el cubo de un entero",
+    "lema de Euclides": "Primo que divide producto divide un factor",
+    "unicidad": "Existe una sola representación posible"
+  },
+  "theory": [
+    {
+      "titulo": "Enunciado",
+      "puntos": [
+        {
+          "texto": "«Teorema fundamental de la aritmética»: factorización prima única",
+          "explicacion": "El teorema afirma que todo número entero mayor que 1 puede escribirse como producto de números primos y que esa escritura es única, salvo el orden de los factores. Es fundamental porque convierte a los primos en los componentes básicos de todos los enteros, a la manera en que los átomos lo son de la materia. Los conceptos de primo y compuesto se desarrollan en el tema 27."
+        },
+        {
+          "texto": "«Descomposición canónica»: $N = p_1^{a_1} \\cdot p_2^{a_2} \\cdots p_k^{a_k}$",
+          "explicacion": "Al agrupar los factores primos repetidos se obtiene la descomposición canónica, en la que $p_1 < p_2 < \\cdots < p_k$ son primos distintos y los $a_i$ son enteros positivos llamados exponentes. Por ejemplo, $360 = 2^3 \\cdot 3^2 \\cdot 5$. Cada número mayor que 1 tiene exactamente una descomposición canónica, y es la forma de trabajo para los temas siguientes."
+        },
+        {
+          "texto": "El número 1 queda fuera: es el producto vacío",
+          "explicacion": "El 1 no es primo ni tiene descomposición propia, porque se considera el producto de cero factores primos. Si se aceptara como primo, la unicidad fallaría, ya que $6 = 2 \\cdot 3 = 1 \\cdot 2 \\cdot 3 = 1 \\cdot 1 \\cdot 2 \\cdot 3$, con infinitas escrituras. Esta es una razón de peso para que el 1 se excluya de los primos."
+        }
+      ]
+    },
+    {
+      "titulo": "Existencia",
+      "puntos": [
+        {
+          "texto": "Existencia: todo compuesto se descompone en factores menores",
+          "explicacion": "Se razona por inducción sobre $N$. Si $N$ es primo, ya es su propia factorización. Si es compuesto, se escribe $N = a \\cdot b$ con $1 < a, b < N$; por hipótesis, $a$ y $b$ se descomponen en primos, y al unir ambas factorizaciones se obtiene la de $N$. Así se demuestra que siempre existe al menos una factorización prima."
+        },
+        {
+          "texto": "Procedimiento: dividir sucesivamente entre primos",
+          "explicacion": "Para hallar la descomposición se divide el número entre el menor primo que lo divide, luego se repite con el cociente, y así hasta llegar a 1. Para 360: $360 \\div 2 = 180$, $180 \\div 2 = 90$, $90 \\div 2 = 45$, $45 \\div 3 = 15$, $15 \\div 3 = 5$, $5 \\div 5 = 1$. Los divisores usados son $2, 2, 2, 3, 3, 5$, que dan $2^3 \\cdot 3^2 \\cdot 5$. Los criterios de divisibilidad del tema 24 agilizan la elección de los primos."
+        }
+      ]
+    },
+    {
+      "titulo": "Unicidad",
+      "puntos": [
+        {
+          "texto": "«Lema de Euclides»: primo que divide a $ab$ divide a un factor",
+          "explicacion": "Si un primo $p$ divide a un producto $ab$, entonces divide a $a$ o divide a $b$. La razón es que, si $p$ no divide a $a$, los números $p$ y $a$ son primos entre sí y, por la propiedad del tema 24, $p$ divide a $b$. El resultado, expuesto por Euclides de Alejandría en el Libro VII de los Elementos, es la pieza clave de la unicidad."
+        },
+        {
+          "texto": "«Unicidad»: dos factorizaciones coinciden salvo el orden",
+          "explicacion": "Si $p_1 p_2 \\cdots p_r = q_1 q_2 \\cdots q_s$ son dos factorizaciones en primos, el primo $p_1$ divide al segundo miembro, y por el lema de Euclides divide a algún $q_j$; como $q_j$ es primo, $p_1 = q_j$. Se cancela ese factor y se repite el argumento con los restantes. Al final, ambos productos tienen los mismos primos con las mismas repeticiones."
+        },
+        {
+          "texto": "La unicidad falla en otros sistemas numéricos",
+          "explicacion": "En el conjunto de los números de la forma $4k + 1$, con producto usual, hay números primos en ese conjunto, no divisibles por otros del mismo conjunto, que dan dos factorizaciones distintas: $693 = 9 \\cdot 77 = 21 \\cdot 33$. Esto muestra que la unicidad no es obvia, sino una propiedad especial de los enteros."
+        }
+      ]
+    },
+    {
+      "titulo": "Consecuencias",
+      "puntos": [
+        {
+          "texto": "Producto de números: se suman los exponentes de cada primo",
+          "explicacion": "Si $A = 2^3 \\cdot 3$ y $B = 2^2 \\cdot 5$, entonces $A \\cdot B = 2^5 \\cdot 3 \\cdot 5$. Cada primo conserva su identidad en el producto, y su exponente es la suma de los exponentes que tiene en cada factor. Esta propiedad se deduce directamente de la unicidad de la descomposición."
+        },
+        {
+          "texto": "Un número divide a otro ⇒ sus exponentes no superan los del otro",
+          "explicacion": "Un número $A$ divide a $B$ si y solo si cada primo de $A$ aparece en $B$ con exponente igual o mayor. Por ejemplo, $12 = 2^2 \\cdot 3$ divide a $360 = 2^3 \\cdot 3^2 \\cdot 5$ porque $2 \\le 3$ y $1 \\le 2$. Por el contrario, $16 = 2^4$ no divide a 360, pues $4 > 3$."
+        },
+        {
+          "texto": "Divisores de $N$: primos de $N$ con exponentes menores o iguales",
+          "explicacion": "Todo divisor positivo de $N = p_1^{a_1} \\cdots p_k^{a_k}$ tiene la forma $p_1^{b_1} \\cdots p_k^{b_k}$ con $0 \\le b_i \\le a_i$. Esta caracterización permite enumerar los divisores y es el fundamento de las fórmulas de cantidad, suma y producto de divisores de los temas 28 a 30."
+        },
+        {
+          "texto": "«Cuadrado perfecto»: todos los exponentes son pares",
+          "explicacion": "Un entero es cuadrado perfecto si y solo si todos los exponentes de su descomposición canónica son pares, porque $\\left(p_1^{b_1} \\cdots p_k^{b_k}\\right)^2$ duplica cada exponente. Por ejemplo, $144 = 2^4 \\cdot 3^2$ es cuadrado perfecto, mientras que $360 = 2^3 \\cdot 3^2 \\cdot 5$ no lo es."
+        },
+        {
+          "texto": "«Cubo perfecto»: todos los exponentes son múltiplos de 3",
+          "explicacion": "Un entero es cubo perfecto si y solo si todos los exponentes de su descomposición canónica son múltiplos de 3. Por ejemplo, $216 = 2^3 \\cdot 3^3$ es un cubo perfecto, pues $6^3 = 216$. Se generaliza a las potencias de exponente $n$, que exigen exponentes múltiplos de $n$."
+        },
+        {
+          "texto": "Menor factor para completar un cuadrado perfecto",
+          "explicacion": "Para convertir un número en cuadrado perfecto multiplicándolo por el menor entero posible, se multiplica por los primos con exponente impar. Con $360 = 2^3 \\cdot 3^2 \\cdot 5$ los exponentes impares son los de 2 y 5, de modo que se multiplica por $2 \\cdot 5 = 10$ para obtener $3600 = 60^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reseña histórica",
+      "puntos": [
+        {
+          "texto": "Euclides expuso un enunciado parcial en el Libro IX",
+          "explicacion": "Euclides de Alejandría, matemático griego del siglo III a. C., demostró en el Libro IX de los Elementos que un número que es el menor divisible por ciertos primos no es medido por ningún otro primo, resultado que anticipa la unicidad. No formuló el teorema como se enuncia hoy."
+        },
+        {
+          "texto": "Gauss dio el enunciado y la demostración explícitos en 1801",
+          "explicacion": "Carl Friedrich Gauss, matemático alemán, incluyó en las Disquisitiones Arithmeticae, publicadas en 1801, el enunciado y la demostración explícitos de la unicidad de la factorización prima. Desde entonces el resultado se conoce como teorema fundamental de la aritmética."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Dejar factores compuestos en la descomposición",
+          "explicacion": "Todos los factores de la descomposición deben ser primos. Escribir $60 = 6 \\cdot 10$ no es una factorización prima, porque 6 y 10 son compuestos; la correcta es $2^2 \\cdot 3 \\cdot 5$. Se debe continuar hasta que ningún factor se pueda descomponer más."
+        },
+        {
+          "texto": "Olvidar los exponentes al agrupar factores",
+          "explicacion": "Al reunir los factores repetidos, el exponente es la cantidad de veces que el primo aparece, y no se puede omitir ni confundir con el primo. Así, $2 \\cdot 2 \\cdot 2 \\cdot 3 \\cdot 3$ es $2^3 \\cdot 3^2 = 72$ y no $2 \\cdot 3 \\cdot 3$. Una descomposición con exponentes erróneos no reproduce el número."
+        }
+      ]
+    }
+  ]
+}

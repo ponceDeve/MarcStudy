@@ -1,0 +1,161 @@
+{
+  "curso": "Aritmética",
+  "tema": "Variación porcentual",
+  "glosario": {
+    "variación porcentual": "Cambio de una cantidad expresado como porcentaje.",
+    "valor inicial": "Valor de la cantidad antes del cambio.",
+    "valor final": "Valor de la cantidad después del cambio.",
+    "aumento porcentual": "Variación porcentual que incrementa la cantidad.",
+    "disminución porcentual": "Variación porcentual que reduce la cantidad.",
+    "factor de variación": "Cociente entre valor final y valor inicial.",
+    "puntos porcentuales": "Diferencia entre dos tantos por ciento.",
+    "tanto por ciento": "Razón de una cantidad respecto de cien.",
+    "magnitudes inversamente proporcionales": "Magnitudes cuyo producto permanece constante."
+  },
+  "theory": [
+    {
+      "titulo": "Concepto",
+      "puntos": [
+        {
+          "texto": "«Variación porcentual» = cambio expresado como porcentaje del valor inicial",
+          "explicacion": "Cuando una cantidad cambia de valor, la variación porcentual indica cuánto cambió respecto de lo que valía al principio, medido en tanto por ciento. Permite comparar cambios de cantidades de tamaños distintos, ya que se expresa en relación con la cantidad de partida. Utiliza las nociones de porcentaje y de tanto por ciento estudiadas en el tema 49."
+        },
+        {
+          "texto": "Valor inicial = cantidad base del 100%",
+          "explicacion": "En toda variación porcentual, la cantidad base es el valor inicial, es decir, el valor de la cantidad antes del cambio, y a él corresponde el cien por ciento. El valor final es el que adquiere tras el cambio. El error más común es tomar el valor final como base."
+        },
+        {
+          "texto": "Variación porcentual = $\\frac{V_f-V_i}{V_i}$ por 100",
+          "explicacion": "La variación porcentual se calcula restando el valor inicial $V_i$ del valor final $V_f$, dividiendo entre el valor inicial y multiplicando por cien. El numerador es el cambio absoluto, que es la diferencia entre ambos valores, y el cociente lo compara con la base. La fórmula es un caso del cálculo del tanto por ciento en que el porcentaje es el cambio."
+        },
+        {
+          "texto": "Resultado positivo ⇒ aumento; negativo ⇒ disminución",
+          "explicacion": "Si el valor final supera al inicial, la variación porcentual es positiva y se habla de aumento porcentual; si es menor, es negativa y se habla de disminución porcentual. Cuando ambos valores coinciden, la variación es cero. En el lenguaje habitual se omite el signo y se indica con las palabras aumento o disminución."
+        }
+      ]
+    },
+    {
+      "titulo": "Aumentos y disminuciones",
+      "puntos": [
+        {
+          "texto": "«Aumento porcentual» $r\\%$: final = inicial por $(100 \\text{ más } r)\\%$",
+          "explicacion": "Un aumento de $r$ por ciento significa que el valor final es el inicial más $r$ por ciento del inicial, es decir, el ciento más $r$ por ciento del valor inicial. Por eso se multiplica el valor inicial por el tanto por uno que resulta de sumar uno y $\\frac{r}{100}$. Es más directo que calcular el aumento y luego sumarlo."
+        },
+        {
+          "texto": "«Disminución porcentual» $r\\%$: final = inicial por $(100-r)\\%$",
+          "explicacion": "Una disminución de $r$ por ciento significa que el valor final es el cien menos $r$ por ciento del valor inicial. Por eso se multiplica el valor inicial por el tanto por uno que resulta de restar de uno el cociente $\\frac{r}{100}$. Esta disminución nunca puede superar el cien por ciento, pues dejaría un valor negativo."
+        },
+        {
+          "texto": "Aumentar 20% a 250 → 300",
+          "explicacion": "El valor final es el ciento veinte por ciento de doscientos cincuenta, es decir, doscientos cincuenta por uno coma dos, que da trescientos. Se verifica calculando el veinte por ciento de doscientos cincuenta, que es cincuenta, y sumándolo al valor inicial."
+        },
+        {
+          "texto": "Disminuir 30% a 250 → 175",
+          "explicacion": "El valor final es el setenta por ciento de doscientos cincuenta, es decir, doscientos cincuenta por cero coma siete, que da ciento setenta y cinco. Se verifica calculando el treinta por ciento de doscientos cincuenta, que es setenta y cinco, y restándolo."
+        },
+        {
+          "texto": "Valor final 150 tras aumento de 25% → inicial 120",
+          "explicacion": "Si el aumento fue del veinticinco por ciento, el valor final es el ciento veinticinco por ciento del inicial, de modo que el inicial se obtiene dividiendo ciento cincuenta entre uno coma veinticinco, lo que da ciento veinte. Este tipo de cálculo recupera la base a partir del valor final."
+        },
+        {
+          "texto": "De 80 a 100 → aumento de 25%",
+          "explicacion": "El cambio absoluto es veinte, y respecto del valor inicial ochenta representa veinte entre ochenta, que es cero coma veinticinco, o veinticinco por ciento. Se trata de un aumento porcentual, porque el valor final es mayor que el inicial. Si el mismo cambio se midiera respecto del valor final, cien, el resultado sería veinte por ciento, de modo que la elección de la base determina el valor que se obtiene y debe ser siempre el valor inicial."
+        },
+        {
+          "texto": "De 100 a 80 → disminución de 20%, no de 25%",
+          "explicacion": "Ahora el cambio absoluto es de veinte, pero el valor inicial es cien, de modo que el cambio es el veinte por ciento. El mismo cambio de valores produce porcentajes distintos al invertir el sentido, porque la base es diferente. Por eso un aumento y una disminución del mismo porcentaje no se anulan."
+        },
+        {
+          "texto": "Aumento de 100% duplica; disminución de 100% anula",
+          "explicacion": "Un aumento del cien por ciento deja el valor final igual al doble del inicial, y uno de doscientos por ciento lo triplica. En cambio, una disminución del cien por ciento deja la cantidad en cero, y no existen disminuciones mayores. Los aumentos, en cambio, no tienen tope."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor de variación",
+      "puntos": [
+        {
+          "texto": "«Factor de variación» = valor final entre valor inicial",
+          "explicacion": "El factor de variación es el número por el que hay que multiplicar el valor inicial para obtener el final. Si es mayor que uno, hubo aumento, y si está entre cero y uno, disminución. Se relaciona con el porcentaje así: el factor es el tanto por uno del valor final respecto del inicial, de modo que el factor uno coma quince corresponde a un aumento de quince por ciento y el cero coma sesenta a una disminución de cuarenta por ciento."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación de productos",
+      "puntos": [
+        {
+          "texto": "Factores varían $a\\%$ y $b\\%$ ⇒ producto varía $a$ más $b$ más $\\frac{ab}{100}$",
+          "explicacion": "Si un producto de dos factores cambia porque cada uno cambia, los factores de variación se multiplican. Para aumentos de $a$ y $b$ por ciento, el producto aumenta en $a$ más $b$ más $\\frac{ab}{100}$ por ciento. Con aumentos de veinte y diez por ciento, el producto aumenta veinte más diez más dos, es decir, treinta y dos por ciento, porque uno coma dos por uno coma uno da uno coma treinta y dos. El caso de variaciones aplicadas una tras otra sobre la misma cantidad se estudia en el tema 52."
+        },
+        {
+          "texto": "Lados $20\\%$ ↑ y $20\\%$ ↓ ⇒ área $4\\%$ ↓",
+          "explicacion": "En un rectángulo cuyo largo aumenta veinte por ciento y cuyo ancho disminuye veinte por ciento, el área se multiplica por uno coma dos y por cero coma ocho, que da cero coma noventa y seis. El área disminuye cuatro por ciento, aunque los porcentajes de los lados parecen compensarse."
+        },
+        {
+          "texto": "Lado del cuadrado $10\\%$ ↑ ⇒ área $21\\%$ ↑",
+          "explicacion": "El área de un cuadrado es el cuadrado de su lado, de modo que el factor de variación es uno coma uno al cuadrado, que da uno coma veintiuno. El área aumenta veintiuno por ciento, más que el diez por ciento del lado, porque el cambio afecta a las dos dimensiones."
+        },
+        {
+          "texto": "Arista del cubo $10\\%$ ↑ ⇒ volumen $33,1\\%$ ↑",
+          "explicacion": "El volumen de un cubo es la tercera potencia de su arista, de modo que el factor de variación es uno coma uno al cubo, que da uno coma trescientos treinta y uno. El volumen aumenta treinta y tres coma uno por ciento, porque la variación actúa sobre las tres dimensiones."
+        },
+        {
+          "texto": "Radio del círculo $20\\%$ ↑ ⇒ área $44\\%$ ↑",
+          "explicacion": "El área de un círculo es proporcional al cuadrado de su radio, de manera que el factor de variación es uno coma dos al cuadrado, que da uno coma cuarenta y cuatro. El área aumenta cuarenta y cuatro por ciento, sin importar el valor de la constante de proporcionalidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Magnitudes inversas",
+      "puntos": [
+        {
+          "texto": "Producto constante: $A$ ↑ $r\\%$ ⇒ $B$ ↓ $\\frac{100r}{100 \\text{ más } r}\\%$",
+          "explicacion": "Si dos cantidades son inversamente proporcionales, su producto permanece constante, y el factor de variación de una es el recíproco del de la otra. Si $A$ aumenta $r$ por ciento, $B$ queda multiplicada por el recíproco de uno más $\\frac{r}{100}$, lo que supone una disminución de cien por $r$ entre cien más $r$ por ciento. Con $A$ aumentando veinticinco por ciento, $B$ disminuye veinte por ciento, porque uno entre uno coma veinticinco es cero coma ocho."
+        },
+        {
+          "texto": "$A$ ↓ $20\\%$ ⇒ $B$ ↑ $25\\%$ si el producto es constante",
+          "explicacion": "Si $A$ disminuye veinte por ciento, su factor es cero coma ocho, y el de $B$ es el recíproco, uno coma veinticinco. $B$ aumenta veinticinco por ciento. Se ve así que las variaciones porcentuales de magnitudes inversamente proporcionales no son iguales en valor absoluto."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos porcentuales",
+      "puntos": [
+        {
+          "texto": "«Puntos porcentuales»: diferencia entre dos tantos por ciento",
+          "explicacion": "Cuando una cantidad ya es un tanto por ciento y cambia a otro, la diferencia entre ambos se mide en puntos porcentuales. Pasar del veinte al veinticinco por ciento es un aumento de cinco puntos porcentuales, mientras que la variación porcentual relativa es de veinticinco por ciento, porque cinco es la cuarta parte de veinte. Distinguirlos evita confusiones al interpretar cambios de tantos por ciento."
+        }
+      ]
+    },
+    {
+      "titulo": "Recuperar el valor inicial",
+      "puntos": [
+        {
+          "texto": "Tras aumentar $r\\%$, volver exige disminuir $\\frac{100r}{100 \\text{ más } r}\\%$",
+          "explicacion": "El cambio de sentido no se compensa con el mismo porcentaje, pues la nueva base es mayor. Si un valor aumenta veinte por ciento, hay que reducirlo en cien veces veinte entre ciento veinte, o sea dieciséis y dos tercios por ciento, para recuperar el valor inicial, porque uno coma dos por cinco sextos da uno."
+        },
+        {
+          "texto": "Tras disminuir $r\\%$, volver exige aumentar $\\frac{100r}{100-r}\\%$",
+          "explicacion": "Si un valor disminuye veinte por ciento, hay que aumentarlo en cien veces veinte entre ochenta, o sea veinticinco por ciento, para recuperar el valor inicial, porque cero coma ocho por uno coma veinticinco da uno. La base de la nueva variación es el valor ya disminuido."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Tomar el valor final como base",
+          "explicacion": "La variación porcentual se refiere siempre al valor inicial. Si se calcula respecto del valor final, el resultado cambia: de ochenta a cien, la variación respecto del inicial es de veinticinco por ciento y respecto del final sería de veinte por ciento. En el enunciado, la base suele ser la cantidad de partida."
+        },
+        {
+          "texto": "Compensar un aumento con una disminución igual",
+          "explicacion": "Aumentar veinte por ciento y luego disminuir veinte por ciento no devuelve el valor original, pues los porcentajes se aplican sobre bases distintas. El resultado final es el noventa y seis por ciento del inicial. Para volver al valor inicial hay que aplicar la disminución calculada para esa base."
+        },
+        {
+          "texto": "Sumar las variaciones de los factores sin el término cruzado",
+          "explicacion": "Al calcular la variación de un producto no basta con sumar los porcentajes de cambio de cada factor, porque falta el término de producto cruzado. Con aumentos de veinte y diez por ciento, la suma da treinta por ciento, pero el aumento real es treinta y dos por ciento."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "curso": "Álgebra",
+  "tema": "Inecuaciones logarítmicas",
+  "glosario": {
+    "inecuación logarítmica": "Desigualdad con la incógnita dentro de un logaritmo.",
+    "logaritmo": "Exponente al que se eleva la base.",
+    "argumento": "Número cuyo logaritmo se calcula.",
+    "base": "Número que se eleva al exponente.",
+    "dominio": "Valores permitidos para la variable.",
+    "creciente": "Función que aumenta al aumentar la variable.",
+    "decreciente": "Función que disminuye al aumentar la variable.",
+    "monotonía": "Comportamiento de crecer o decrecer siempre.",
+    "intersección": "Elementos comunes a ambos conjuntos.",
+    "logaritmo natural": "Logaritmo de base e.",
+    "cambio de variable": "Sustitución de una expresión por una letra.",
+    "conjunto vacío": "Conjunto sin ningún elemento.",
+    "intervalo": "Conjunto de reales entre dos extremos.",
+    "inecuación fraccionaria": "Desigualdad con la incógnita en el denominador.",
+    "forma exponencial": "Escritura del logaritmo como potencia."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Inecuación logarítmica» ⇒ la incógnita está en un logaritmo",
+          "explicacion": "Una inecuación logarítmica es una desigualdad (con $<$, $>$, $\\le$ o $\\ge$) en la que la incógnita aparece en el argumento de uno o más logaritmos. Su conjunto solución es la parte del dominio donde la desigualdad se cumple, y casi siempre resulta un intervalo o una unión de intervalos. Ejemplo: $\\log_2(x-1)>3$ es logarítmica; $x=10$ la cumple porque $\\log_2 9\\approx 3.17>3$, y $x=3$ no, porque $\\log_2 2=1<3$. Verificación: el conjunto solución es $x>9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio del logaritmo",
+      "puntos": [
+        {
+          "texto": "Argumento $>0$ ⇒ condición de existencia",
+          "explicacion": "El logaritmo de base $a>0$, $a\\ne 1$ solo existe si su argumento es estrictamente positivo. En una inecuación se plantea esta condición para cada logaritmo antes de operar, porque la solución final debe pertenecer a ella. Ejemplo: en $\\log_2(x-1)$ se exige $x-1>0$, es decir $x>1$. Verificación: $x=1$ da argumento cero y $x=0$ da $-1$, ambos inválidos."
+        },
+        {
+          "texto": "Dominio ⇒ intersección de las condiciones de cada logaritmo",
+          "explicacion": "Si la inecuación tiene varios logaritmos, el dominio es la intersección de las condiciones de todos los argumentos. Ejemplo: en $\\log_3(2x-1)\\le\\log_3(x+4)$ se exige $2x-1>0$ y $x+4>0$, es decir $x>\\frac{1}{2}$ y $x>-4$, de modo que el dominio es $x>\\frac{1}{2}$. Verificación: $x=0$ cumple la segunda condición pero no la primera."
+        },
+        {
+          "texto": "Solución final ⇒ intersecar con el dominio",
+          "explicacion": "Después de resolver la desigualdad entre los argumentos, se intersecta el resultado con el dominio, y esa intersección es el conjunto solución. Ejemplo: si la desigualdad da $x\\le 5$ y el dominio es $x>\\frac{1}{2}$, la solución es $\\left(\\frac{1}{2},5\\right]$. Verificación: $x=0$ cumple $x\\le 5$ pero no el dominio y queda fuera."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía del logaritmo",
+      "puntos": [
+        {
+          "texto": "Base $a>1$ ⇒ $\\log_a f>\\log_a g$ equivale a $f>g>0$",
+          "explicacion": "Con base mayor que uno la función logarítmica es estrictamente creciente: al mayor argumento le corresponde el mayor logaritmo. Por eso la desigualdad entre los logaritmos conserva el sentido entre los argumentos, siempre con ambos positivos. Ejemplo: $\\log_2 x>\\log_2 3$ equivale a $x>3$. Verificación: $x=4$ da $2>1.58$, verdadero; $x=2$ da $1>1.58$, falso."
+        },
+        {
+          "texto": "Base $0<a<1$ ⇒ $\\log_a f>\\log_a g$ equivale a $0<f<g$",
+          "explicacion": "Con base entre cero y uno la función logarítmica es estrictamente decreciente: al mayor argumento le corresponde el menor logaritmo. Por eso el sentido de la desigualdad se invierte al pasar a los argumentos, y ambos deben ser positivos. Ejemplo: $\\log_{1/2}x>\\log_{1/2}3$ equivale a $0<x<3$. Verificación: $x=2$ da $\\log_{1/2}2=-1>\\log_{1/2}3\\approx-1.58$, verdadero; $x=4$ da $-2>-1.58$, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de resolución",
+      "puntos": [
+        {
+          "texto": "Paso 1: hallar el dominio",
+          "explicacion": "El dominio se calcula antes de operar porque las propiedades de los logaritmos pueden ampliar los valores permitidos, y la solución final debe pertenecer al dominio original; para ello se exige que cada argumento sea positivo y se intersectan las condiciones. Se plantea que cada argumento sea positivo y se intersectan las condiciones. Ejemplo: en $\\log_2 x+\\log_2(x-2)>3$ se exige $x>0$ y $x-2>0$, es decir $x>2$. Verificación: $x=1$ no cumple $x-2>0$."
+        },
+        {
+          "texto": "Paso 2: reducir a un logaritmo por miembro con la misma base",
+          "explicacion": "Se usan las propiedades del producto, el cociente, la potencia y el cambio de base para dejar un solo logaritmo en cada miembro, o un logaritmo igualado a un número. Ejemplo: $\\log_2 x+\\log_2(x-2)=\\log_2[x(x-2)]$. Verificación: la propiedad del producto exige argumentos positivos, que ya garantiza el dominio."
+        },
+        {
+          "texto": "Paso 3: aplicar la monotonía según la base",
+          "explicacion": "Se quitan los logaritmos conservando el sentido de la desigualdad si la base es mayor que uno, e invirtiéndolo si está entre cero y uno. Ejemplo: $\\log_2[x(x-2)]>3=\\log_2 8$ con base $2>1$ da $x(x-2)>8$. Verificación: el sentido $>$ se conserva."
+        },
+        {
+          "texto": "Paso 4: resolver la desigualdad resultante",
+          "explicacion": "La desigualdad entre los argumentos ya no contiene logaritmos y se resuelve con las técnicas del tema correspondiente: lineal, cuadrática, por puntos críticos o fraccionaria. El resultado todavía no es la solución, porque falta intersecarlo con el dominio. La desigualdad entre argumentos puede ser lineal, cuadrática o racional y se resuelve con los métodos conocidos. Ejemplo: $x^2-2x-8>0$ da $(x-4)(x+2)>0$ con $x<-2$ o $x>4$. Verificación: $x=5$ da $25-10-8=7>0$, verdadero; $x=0$ da $0-0-8=-8>0$, falso."
+        },
+        {
+          "texto": "Paso 5: intersecar con el dominio y comprobar",
+          "explicacion": "La solución es la intersección del resultado con el dominio, y se comprueban valores. Ejemplo: la condición «$x<-2$ o $x>4$» junto con el dominio $x>2$ da $x>4$. Con $x=5$: $\\log_2 5+\\log_2 3=\\log_2 15\\approx 3.91>3$, verdadero; con $x=3$: $\\log_2 3+\\log_2 1\\approx 1.58>3$, falso. Verificación: $S=(4,+\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Logaritmo frente a número",
+      "puntos": [
+        {
+          "texto": "$\\log_a f>c$ con $a>1$ ⇒ $f>a^c$",
+          "explicacion": "Con base mayor que uno se pasa a forma exponencial conservando el sentido y se mantiene la condición $f>0$ del dominio, que queda incluida porque $a^c>0$. Ejemplo: $\\log_2(x-1)>3$ da $x-1>2^3=8$ y $x>9$. Dominio: $x>1$. Solución: $(9,+\\infty)$. Verificación: $x=10$ da $\\log_2 9\\approx 3.17>3$; $x=9$ da $\\log_2 8=3>3$, falso."
+        },
+        {
+          "texto": "$\\log_a f<c$ con $a>1$ ⇒ $0<f<a^c$",
+          "explicacion": "Con base mayor que uno, el logaritmo menor que $c$ implica el argumento menor que $a^c$, pero siempre positivo. Ejemplo: $\\log_2(x-1)<3$ da $0<x-1<8$, es decir $1<x<9$. Verificación: $x=5$ da $\\log_2 4=2<3$, verdadero; $x=10$ da $\\log_2 9>3$, falso; $x=1$ no existe."
+        },
+        {
+          "texto": "$\\log_a f>c$ con $0<a<1$ ⇒ $0<f<a^c$",
+          "explicacion": "Con base entre cero y uno, el sentido se invierte al pasar a forma exponencial, y el argumento debe seguir siendo positivo. Ejemplo: $\\log_{1/2}x>2$ da $0<x<\\left(\\frac{1}{2}\\right)^2=\\frac{1}{4}$. Verificación: $x=\\frac{1}{8}$ da $\\log_{1/2}\\frac{1}{8}=3>2$, verdadero; $x=\\frac{1}{2}$ da $1>2$, falso."
+        },
+        {
+          "texto": "$\\log_a f<c$ con $0<a<1$ ⇒ $f>a^c$",
+          "explicacion": "En este caso el sentido se invierte al pasar a forma exponencial por ser decreciente la función; además el argumento ya es positivo porque $f>a^c>0$, de modo que no hace falta añadir otra condición de dominio. Con base entre cero y uno, el logaritmo menor que $c$ corresponde a un argumento mayor que $a^c$. Ejemplo: $\\log_{1/2}x<2$ da $x>\\frac{1}{4}$. Verificación: $x=1$ da $\\log_{1/2}1=0<2$, verdadero; $x=\\frac{1}{8}$ da $3<2$, falso."
+        },
+        {
+          "texto": "$\\log_a f\\ge 0$ ⇒ $f\\ge 1$ si $a>1$ y $0<f\\le 1$ si $0<a<1$",
+          "explicacion": "Como $\\log_a 1=0$, el signo del logaritmo se decide comparando el argumento con uno. Ejemplos: $\\log_2 x\\ge 0$ da $x\\ge 1$; $\\log_{1/2}x\\ge 0$ da $0<x\\le 1$. Verificación: $x=2$ da $\\log_2 2=1\\ge 0$ y $\\log_{1/2}2=-1<0$; $x=\\frac{1}{2}$ da $\\log_2\\frac{1}{2}=-1<0$ y $\\log_{1/2}\\frac{1}{2}=1\\ge 0$."
+        },
+        {
+          "texto": "$\\log_a f\\ge c$ ⇒ extremo $a^c$ incluido",
+          "explicacion": "En desigualdades no estrictas el valor $f=a^c$, donde hay igualdad, sí pertenece a la solución. Ejemplo: $\\log_3(x+2)\\ge 2$ da $x+2\\ge 9$ y $x\\ge 7$. Dominio: $x>-2$. Verificación: $x=7$ da $\\log_3 9=2\\ge 2$, verdadero; $x=6$ da $\\log_3 8\\approx 1.89\\ge 2$, falso."
+        },
+        {
+          "texto": "$\\ln f<c$ ⇒ $0<f<e^c$",
+          "explicacion": "El logaritmo natural tiene base $e\\approx 2.718>1$, así que se conserva el sentido y se incluye la condición $f>0$. Ejemplo: $\\ln x<1$ da $0<x<e$. Verificación: $x=2$ da $\\ln 2\\approx 0.69<1$, verdadero; $x=3$ da $\\ln 3\\approx 1.10<1$, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos con dos logaritmos",
+      "puntos": [
+        {
+          "texto": "Misma base mayor que 1 ⇒ comparar argumentos",
+          "explicacion": "Cuando ambos miembros son un solo logaritmo de la misma base mayor que uno, se aplica la monotonía creciente y el sentido de la desigualdad se conserva entre los argumentos, a los que se añade la condición de ser positivos. Ejemplo: $\\log_3(2x-1)\\le\\log_3(x+4)$ da, con base $3>1$, $2x-1\\le x+4$ y $x\\le 5$. Dominio: $x>\\frac{1}{2}$. Solución: $\\left(\\frac{1}{2},5\\right]$. Verificación: $x=5$ da $\\log_3 9\\le\\log_3 9$; $x=6$ da $\\log_3 11\\le\\log_3 10$, falso; $x=1$ da $\\log_3 1\\le\\log_3 5$, verdadero."
+        },
+        {
+          "texto": "Misma base entre 0 y 1 ⇒ invertir y mantener el dominio",
+          "explicacion": "Con base entre cero y uno el sentido se invierte, pero la condición de positividad de los argumentos sigue siendo la misma y se escribe como parte del planteo: $0<f\\le g$. De ahí se obtiene el conjunto solución con la intersección. Ejemplo: $\\log_{1/2}(x+1)\\ge\\log_{1/2}(3-x)$ con base entre $0$ y $1$ da $0<x+1\\le 3-x$. Dominio: $x>-1$ y $x<3$. De $x+1\\le 3-x$ resulta $x\\le 1$. Solución: $(-1,1]$. Verificación: $x=0$ da $0\\ge\\log_{1/2}3\\approx-1.58$, verdadero; $x=2$ da $\\log_{1/2}3\\ge\\log_{1/2}1=0$, falso."
+        },
+        {
+          "texto": "Suma de logaritmos ⇒ juntar y resolver",
+          "explicacion": "Se aplica primero la propiedad del producto, válida solo en el dominio, para obtener un único logaritmo, y luego se compara el argumento con $a^c$; el resultado de la desigualdad cuadrática se intersecta con el dominio. Ejemplo: $\\log_2 x+\\log_2(x-2)>3$ da $\\log_2[x^2-2x]>3$, luego $x^2-2x>8$ y $(x-4)(x+2)>0$. Con el dominio $x>2$ queda $x>4$. Verificación: $x=5$ da $\\log_2 15\\approx 3.91>3$, verdadero; $x=3$ da $\\log_2 3\\approx 1.58>3$, falso."
+        },
+        {
+          "texto": "Argumento fraccionario ⇒ combinar con inecuación fraccionaria",
+          "explicacion": "Cuando el argumento es una fracción, el dominio y la desigualdad requieren estudiar signos del cociente, como en el tema «Inecuaciones fraccionarias». Ejemplo: $\\log_2\\frac{x-1}{x+2}>0$ exige $\\frac{x-1}{x+2}>0$, con $x<-2$ o $x>1$, y $\\frac{x-1}{x+2}>1$, es decir $\\frac{x-1-(x+2)}{x+2}=\\frac{-3}{x+2}>0$, que da $x<-2$. Intersección: $x<-2$. Verificación: $x=-3$ da $\\frac{-4}{-1}=4$ y $\\log_2 4=2>0$; $x=2$ da $\\frac{1}{4}$ y $\\log_2\\frac{1}{4}=-2$, falso."
+        },
+        {
+          "texto": "$t=\\log_a x$ ⇒ inecuación cuadrática en $t$",
+          "explicacion": "Si aparece $(\\log_a x)^2$, se hace $t=\\log_a x$ y se resuelve la cuadrática; después $x=a^t$ con el sentido que corresponda. Ejemplo: $(\\log_2 x)^2-3\\log_2 x+2<0$ da $t^2-3t+2<0$, es decir $(t-1)(t-2)<0$ y $1<t<2$. Entonces $1<\\log_2 x<2$ da $2<x<4$. Verificación: $x=3$ da $t\\approx 1.585$ y $2.51-4.75+2=-0.24<0$, verdadero; $x=5$ da $t\\approx 2.32$ y $5.39-6.97+2=0.42<0$, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "$\\log x^2$ frente a $2\\log x$ ⇒ el dominio cambia",
+          "explicacion": "El dominio de $\\log_a x^2$ es $x\\ne 0$, mientras que el de $2\\log_a x$ es $x>0$, por lo que aplicar la propiedad de la potencia puede perder soluciones negativas. Ejemplo: $\\log_2 x^2>2$ da $x^2>4$ con $x\\ne 0$, es decir $x<-2$ o $x>2$; en cambio $2\\log_2 x>2$ da $x>0$ y $x>2$, es decir $x>2$. Verificación: $x=-3$ da $\\log_2 9\\approx 3.17>2$, verdadero para la primera; para la segunda $\\log_2(-3)$ no existe."
+        },
+        {
+          "texto": "Desigualdad imposible ⇒ sin solución",
+          "explicacion": "Esta situación aparece cuando, al eliminar los logaritmos por monotonía, queda una desigualdad numérica falsa; entonces ningún valor del dominio cumple la inecuación y el conjunto solución es vacío. Si tras aplicar la monotonía la desigualdad entre argumentos es falsa para todo valor, la solución es vacía. Ejemplo: $\\log_2 x>\\log_2(x+1)$ da $x>x+1$, es decir $0>1$, imposible. Verificación: $\\log_2$ es creciente y $x<x+1$ siempre."
+        },
+        {
+          "texto": "Dominio vacío ⇒ sin solución",
+          "explicacion": "Si las condiciones de existencia no tienen valores en común, no hay solución. Ejemplo: $\\log_2 x<\\log_2(-x)$ exige $x>0$ y $-x>0$, es decir $x>0$ y $x<0$, imposible. Verificación: ningún número es positivo y negativo a la vez."
+        },
+        {
+          "texto": "Argumento siempre positivo ⇒ dominio $\\mathbb{R}$",
+          "explicacion": "Cuando el argumento es positivo para todo real, el dominio es todo $\\mathbb{R}$ y solo se aplica la desigualdad. Ejemplo: $\\log_2(x^2+1)>0$ da $x^2+1>1$, es decir $x^2>0$ y $x\\ne 0$. Solución: $\\mathbb{R}-\\{0\\}$. Verificación: $x=0$ da $\\log_2 1=0>0$, falso; $x=1$ da $\\log_2 2=1>0$, verdadero."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función logarítmica (tema 67) ⇒ crece o decrece según la base",
+          "explicacion": "La monotonía de la función logarítmica es el fundamento de toda la técnica: sin saber si crece o decrece según la base, no se podría decidir si el sentido de la desigualdad se conserva o se invierte al eliminar los logaritmos. El tema «Función logarítmica» establece que $\\log_a x$ crece si $a>1$ y decrece si $0<a<1$, lo que decide si se invierte la desigualdad. Ejemplo: $\\log_2 4<\\log_2 8$ y $\\log_{1/2}4>\\log_{1/2}8$. Verificación: $2<3$ y $-2>-3$."
+        },
+        {
+          "texto": "Ecuaciones logarítmicas (tema 70) ⇒ dominio y propiedades",
+          "explicacion": "Las reglas de dominio y las propiedades de los logaritmos del tema «Ecuaciones logarítmicas» se usan igual, con la diferencia de que al final se mantiene o invierte el sentido. Ejemplo: $\\log_2 x=3$ da $x=8$ y $\\log_2 x>3$ da $x>8$. Verificación: $\\log_2 9>3$."
+        },
+        {
+          "texto": "Inecuaciones exponenciales (tema 71) ⇒ problema inverso",
+          "explicacion": "El tema «Inecuaciones exponenciales» usa la monotonía de $a^x$; las inecuaciones logarítmicas usan la de $\\log_a x$, y ambas se resuelven con la misma regla sobre la base. Ejemplo: $2^x>8$ da $x>3$ y $\\log_2 x>3$ da $x>8$. Verificación: $2^4=16>8$ y $\\log_2 16=4>3$."
+        },
+        {
+          "texto": "Inecuaciones fraccionarias (tema 14) ⇒ argumentos racionales",
+          "explicacion": "Cuando el argumento del logaritmo es un cociente de polinomios, tanto la condición de dominio como la desigualdad entre argumentos son inecuaciones fraccionarias, que se resuelven con puntos críticos y tabla de signos. El estudio de signos de cocientes del tema «Inecuaciones fraccionarias» se emplea cuando el argumento del logaritmo es una fracción. Ejemplo: $\\frac{x-1}{x+2}>0$ da $x<-2$ o $x>1$. Verificación: $x=2$ da $\\frac{1}{4}>0$."
+        }
+      ]
+    }
+  ]
+}

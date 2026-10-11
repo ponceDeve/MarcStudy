@@ -1,0 +1,202 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función exponencial",
+  "glosario": {
+    "función exponencial": "Función con la variable en el exponente.",
+    "base": "Número que se eleva al exponente.",
+    "exponente": "Número de veces que se repite la base.",
+    "potencia": "Producto repetido de un mismo factor.",
+    "dominio": "Conjunto de valores de entrada.",
+    "rango": "Conjunto de valores que realmente toma.",
+    "asíntota": "Recta a la que se acerca la gráfica.",
+    "creciente": "Función que aumenta al aumentar la variable.",
+    "decreciente": "Función que disminuye al aumentar la variable.",
+    "inyectiva": "Valores distintos dan imágenes distintas.",
+    "biyectiva": "Función inyectiva y sobreyectiva a la vez.",
+    "función inversa": "Función que deshace a otra función.",
+    "número de Euler": "Constante cercana a 2,71828.",
+    "ordenada en el origen": "Valor de la función cuando x vale cero.",
+    "reflexión": "Imagen simétrica respecto de una recta.",
+    "desplazamiento": "Traslado de la gráfica sin deformarla.",
+    "irracional": "Número que no es cociente de enteros."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Función exponencial» $f(x)=a^x$ con $a>0$ y $a\\ne 1$",
+          "explicacion": "Una función exponencial es una función en la que la variable independiente está en el exponente: $f(x)=a^x$, donde la base $a$ es un número positivo distinto de uno. Su dominio es $\\mathbb{R}$, pues se puede elevar $a$ a cualquier exponente real, y su rango es $(0,+\\infty)$. Se distingue de la función potencia $x^n$, donde la variable está en la base. Ejemplo: $f(x)=3^x$ da $f(2)=9$, $f(0)=1$ y $f(-1)=\\frac{1}{3}$. Verificación: $3^2=9$, $3^0=1$ y $3^{-1}=\\frac{1}{3}$."
+        },
+        {
+          "texto": "Base $a>0$ y $a\\ne 1$ ⇒ razón de la restricción",
+          "explicacion": "Si $a=1$ la función es constante, $1^x=1$, y no tiene el comportamiento exponencial; si $a<0$, potencias como $(-2)^{1/2}$ no son reales, y si $a=0$, la expresión $0^x$ no está definida para $x\\le 0$. Ejemplo: $f(x)=(-2)^x$ no define un número real para $x=\\frac{1}{2}$. Verificación: $\\sqrt{-2}$ no es real."
+        },
+        {
+          "texto": "Forma general $f(x)=C\\times a^x$ ⇒ coeficiente $C$",
+          "explicacion": "Un coeficiente $C\\ne 0$ multiplica la función y la estira o la refleja. Con $C>0$ el rango sigue siendo $(0,+\\infty)$ y con $C<0$ es $(-\\infty,0)$. Ejemplo: $f(x)=5\\times 2^x$ da $f(0)=5$ y $f(1)=10$; $g(x)=-3\\times 2^x$ da $g(0)=-3$. Verificación: $f(0)=5\\times 1=5$ y $g(0)=-3\\times 1=-3$."
+        },
+        {
+          "texto": "Exponente real ⇒ $a^{p/q}=\\sqrt[q]{a^p}$",
+          "explicacion": "Las potencias de exponente racional se definen mediante raíces, y las de exponente irracional se obtienen aproximando el exponente con racionales, de modo que $a^x$ está definida para todo real. Ejemplo: $8^{2/3}=\\sqrt[3]{8^2}=4$ y $3^{1/2}=\\sqrt{3}\\approx 1.732$. Verificación: $\\sqrt[3]{64}=4$ y $1.732^2\\approx 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de potencias",
+      "puntos": [
+        {
+          "texto": "$a^{x+y}=a^x\\times a^y$ ⇒ la suma de exponentes es producto",
+          "explicacion": "Sumar exponentes en una misma base corresponde a multiplicar las potencias, porque $a^x$ son $x$ factores iguales a $a$ y $a^y$ son $y$ más; con exponentes reales la propiedad se conserva por definición de la potencia. Con ella se justifica que $a^{x+h}=a^x\\times a^h$. Esta propiedad convierte sumas en el exponente en productos de potencias y es la que da carácter de crecimiento por factor constante a la función exponencial. Ejemplo: $2^{3+2}=2^3\\times 2^2=8\\times 4=32$. Verificación: $2^5=32$."
+        },
+        {
+          "texto": "$a^{x-y}=\\frac{a^x}{a^y}$ ⇒ la resta de exponentes es cociente",
+          "explicacion": "Esta propiedad es la inversa de la anterior y sirve para simplificar cocientes de potencias de igual base; exige que la base sea distinta de cero y vale para cualquier par de exponentes reales, positivos o negativos. Restar exponentes equivale a dividir las potencias. Ejemplo: $3^{5-2}=\\frac{3^5}{3^2}=\\frac{243}{9}=27$. Verificación: $3^3=27$."
+        },
+        {
+          "texto": "$(a^x)^y=a^{xy}$ ⇒ potencia de potencia",
+          "explicacion": "Elevar una potencia a un exponente repite el grupo de factores y por eso los exponentes se multiplican; se usa, por ejemplo, para escribir $4^x=(2^2)^x=2^{2x}$ y comparar funciones exponenciales de bases distintas. Elevar una potencia a otro exponente multiplica los exponentes. Ejemplo: $(2^3)^2=2^6=64$. Verificación: $8^2=64$."
+        },
+        {
+          "texto": "$a^{-x}=\\frac{1}{a^x}=\\left(\\frac{1}{a}\\right)^x$ ⇒ exponente negativo",
+          "explicacion": "Esta propiedad explica por qué la gráfica de $a^{-x}$ es la reflexión de la de $a^x$ respecto del eje vertical, y por qué una base entre cero y uno puede escribirse como el recíproco de una base mayor que uno. Un exponente negativo invierte la potencia y equivale a usar la base recíproca. Ejemplo: $2^{-3}=\\frac{1}{8}=\\left(\\frac{1}{2}\\right)^3$. Verificación: $8\\times\\frac{1}{8}=1$."
+        },
+        {
+          "texto": "$(ab)^x=a^xb^x$ ⇒ potencia de un producto",
+          "explicacion": "Cada factor de la base queda elevado al exponente. Se aplica para separar bases compuestas, por ejemplo $6^x=2^x\\times 3^x$, al simplificar expresiones o resolver ecuaciones exponenciales. El exponente se distribuye entre los factores de la base. Ejemplo: $(2\\times 3)^2=2^2\\times 3^2=36$. Verificación: $6^2=36$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica y propiedades",
+      "puntos": [
+        {
+          "texto": "Dominio $\\mathbb{R}$ y rango $(0,+\\infty)$",
+          "explicacion": "Estas dos características se deducen de la definición: se puede elevar una base positiva a cualquier exponente real, y el resultado es siempre positivo; por eso en la gráfica no hay puntos a la izquierda ni por debajo del eje horizontal que falten ni sobren. Para $f(x)=a^x$ la variable puede ser cualquier real, y los valores siempre son positivos: nunca son cero ni negativos. Ejemplo: $2^{-10}=\\frac{1}{1024}>0$ y $2^{10}=1024$. Verificación: la gráfica queda siempre por encima del eje horizontal."
+        },
+        {
+          "texto": "Punto $(0,1)$ ⇒ toda gráfica pasa por él",
+          "explicacion": "Este punto es un dato de referencia útil para graficar: todas las funciones $a^x$ lo comparten sin importar la base, y por eso la ordenada en el origen de una exponencial pura siempre es uno. Como $a^0=1$ para cualquier base válida, todas las gráficas $y=a^x$ cortan al eje vertical en $(0,1)$. Ejemplo: $2^0=1$, $5^0=1$ y $\\left(\\frac{1}{3}\\right)^0=1$. Verificación: la ordenada en el origen vale uno en los tres casos."
+        },
+        {
+          "texto": "Punto $(1,a)$ ⇒ la base se lee en $x=1$",
+          "explicacion": "Este segundo punto de referencia permite dibujar la gráfica rápidamente con solo conocer la base: se ubican $(0,1)$ y $(1,a)$, y se traza una curva que se aproxima al eje horizontal por un lado. Como $a^1=a$, la gráfica de $y=a^x$ pasa por $(1,a)$, lo que permite hallar la base a partir de la gráfica. Ejemplo: $y=3^x$ pasa por $(1,3)$ y $y=\\left(\\frac{1}{2}\\right)^x$ pasa por $\\left(1,\\frac{1}{2}\\right)$. Verificación: $3^1=3$ y $\\left(\\frac{1}{2}\\right)^1=\\frac{1}{2}$."
+        },
+        {
+          "texto": "Sin intersección con el eje $x$ ⇒ nunca vale cero",
+          "explicacion": "La gráfica nunca toca el eje horizontal, porque una potencia de base positiva no vale cero; ese eje actúa como asíntota. La función exponencial pura carece de ceros, y por eso la ecuación $a^x=0$ no tiene solución. La ecuación $a^x=0$ no tiene solución, así que la gráfica no corta el eje horizontal. Ejemplo: $2^x=0$ no tiene solución. Verificación: $2^x>0$ para todo $x$."
+        },
+        {
+          "texto": "Asíntota horizontal $y=0$ ⇒ la gráfica se acerca sin tocar",
+          "explicacion": "La gráfica de $y=a^x$ se acerca al eje horizontal cuando $x$ tiende a $-\\infty$ si $a>1$ y cuando $x$ tiende a $+\\infty$ si $0<a<1$, sin llegar a tocarlo; esa recta es una asíntota horizontal. Ejemplo: $2^{-5}=\\frac{1}{32}$ y $2^{-10}=\\frac{1}{1024}$ se acercan a $0$. Verificación: nunca son iguales a cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$a>1$ ⇒ función creciente",
+          "explicacion": "Cuanto mayor es el exponente, más veces se multiplica la base mayor que uno, y el valor crece; el crecimiento es cada vez más rápido, y por eso este tipo de función modela procesos de crecimiento. Si la base es mayor que uno, a mayor exponente mayor valor: $x_1<x_2$ implica $a^{x_1}<a^{x_2}$. Ejemplo: $2^1=2<2^3=8$. Verificación: la gráfica sube de izquierda a derecha."
+        },
+        {
+          "texto": "$0<a<1$ ⇒ función decreciente",
+          "explicacion": "Cuanto mayor es el exponente, más veces se multiplica una fracción menor que uno, y el valor disminuye acercándose a cero; por eso este tipo de función modela procesos de decaimiento. Si la base está entre cero y uno, a mayor exponente menor valor: $x_1<x_2$ implica $a^{x_1}>a^{x_2}$. Ejemplo: $\\left(\\frac{1}{2}\\right)^1=\\frac{1}{2}>\\left(\\frac{1}{2}\\right)^3=\\frac{1}{8}$. Verificación: la gráfica baja de izquierda a derecha."
+        },
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva",
+          "explicacion": "La inyectividad es la propiedad que permite igualar exponentes en ecuaciones exponenciales y es necesaria para que exista la función inversa, que es el logaritmo. Como la exponencial siempre crece o siempre decrece, nunca repite valores, y por tanto es inyectiva: $a^x=a^y$ implica $x=y$. Ejemplo: $2^x=2^5$ implica $x=5$. Verificación: la recta horizontal $y=32$ corta la gráfica solo en $x=5$."
+        },
+        {
+          "texto": "$f(x+1)=a\\times f(x)$ ⇒ crecimiento por factor constante",
+          "explicacion": "Esta propiedad caracteriza a las funciones exponenciales: cada aumento unitario de $x$ multiplica el valor por una constante, a diferencia de las lineales, donde se suma una constante. Por eso modelan procesos de crecimiento porcentual constante. Al aumentar $x$ en una unidad, el valor se multiplica por la base. Ejemplo: $f(x)=2^x$ da $f(3)=8$ y $f(4)=16=2\\times 8$. Verificación: $\\frac{2^{x+1}}{2^x}=2$."
+        },
+        {
+          "texto": "Mayor base ⇒ mayor crecimiento para $x>0$",
+          "explicacion": "La comparación entre bases depende del signo del exponente: para exponentes positivos la mayor base da el mayor valor, y para exponentes negativos ocurre lo contrario; ambas gráficas se cortan solo en $(0,1)$. Si $a>b>1$, entonces $a^x>b^x$ para $x>0$ y $a^x<b^x$ para $x<0$. Ejemplo: $2^2=4<3^2=9$, y $2^{-1}=\\frac{1}{2}>3^{-1}=\\frac{1}{3}$. Verificación: las gráficas se cruzan en $(0,1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sobreyectividad e inversa",
+      "puntos": [
+        {
+          "texto": "$f:\\mathbb{R}\\to(0,+\\infty)$ ⇒ biyectiva",
+          "explicacion": "Esta restricción del codominio al rango convierte la exponencial en una función biyectiva, condición necesaria para que tenga inversa; con codominio $\\mathbb{R}$ no sería sobreyectiva, pues no alcanza los valores no positivos. Con codominio igual al rango, la exponencial es inyectiva y sobreyectiva, es decir, biyectiva. Ejemplo: para $y=8$ existe un único $x=3$ con $2^3=8$. Verificación: $f$ no repite valores y cubre todos los positivos."
+        },
+        {
+          "texto": "Inversa de $a^x$ ⇒ $\\log_a x$",
+          "explicacion": "Por ser biyectiva, la exponencial tiene una función inversa, el logaritmo en base $a$, que se estudia en el tema «Función logarítmica». Ejemplo: $2^3=8$ equivale a $\\log_2 8=3$. Verificación: $\\log_2 8$ es el exponente al que se eleva $2$ para dar $8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Transformaciones",
+      "puntos": [
+        {
+          "texto": "$f(x)=a^{-x}=\\left(\\frac{1}{a}\\right)^x$ ⇒ reflexión sobre el eje $y$",
+          "explicacion": "Esta transformación se reconoce al notar que $x$ aparece con signo negativo en el exponente; invierte la monotonía: si $a>1$, la función $a^{-x}$ decrece, y si $0<a<1$, crece. La gráfica de $a^{-x}$ es la de $a^x$ reflejada respecto del eje vertical, y equivale a la exponencial de base $\\frac{1}{a}$. Ejemplo: $2^{-x}=\\left(\\frac{1}{2}\\right)^x$ decrece, con $f(3)=\\frac{1}{8}$ y $f(-3)=8$. Verificación: $2^{-3}=\\frac{1}{8}$ y $2^{3}=8$."
+        },
+        {
+          "texto": "$f(x)=-a^x$ ⇒ reflexión sobre el eje $x$",
+          "explicacion": "La reflexión respecto del eje horizontal invierte los valores: lo que estaba arriba pasa a abajo; la asíntota sigue siendo $y=0$, ahora por debajo, y el punto $(0,1)$ pasa a $(0,-1)$. El signo menos refleja la gráfica respecto del eje horizontal: el rango pasa a ser $(-\\infty,0)$. Ejemplo: $f(x)=-2^x$ da $f(0)=-1$ y $f(3)=-8$. Verificación: $2^x>0$ implica $-2^x<0$."
+        },
+        {
+          "texto": "$f(x)=a^{x-h}$ ⇒ desplazamiento horizontal de $h$",
+          "explicacion": "El desplazamiento horizontal cambia la posición del punto de referencia: el valor uno se alcanza en $x=h$ en vez de $x=0$, pero no modifica la asíntota ni el rango. Restar $h$ al exponente desplaza la gráfica $h$ unidades a la derecha, y sumarlo, a la izquierda. El punto $(0,1)$ pasa a $(h,1)$. Ejemplo: $f(x)=2^{x-3}$ pasa por $(3,1)$. Verificación: $2^{3-3}=1$."
+        },
+        {
+          "texto": "$f(x)=a^x+k$ ⇒ desplazamiento vertical de $k$",
+          "explicacion": "El desplazamiento vertical mueve toda la gráfica, incluida la asíntota horizontal; el dominio no cambia y el rango pasa de $(0,+\\infty)$ a $(k,+\\infty)$. Sumar $k$ desplaza la gráfica $k$ unidades hacia arriba, la asíntota pasa a $y=k$ y el rango a $(k,+\\infty)$. Ejemplo: $f(x)=2^x-3$ tiene asíntota $y=-3$ y rango $(-3,+\\infty)$. Verificación: $f(0)=1-3=-2$ y $f(x)>-3$ siempre."
+        },
+        {
+          "texto": "$f(x)=a^{x-h}+k$ ⇒ asíntota $y=k$ y punto $(h,1+k)$",
+          "explicacion": "Al combinar los dos desplazamientos, la asíntota y el punto de referencia se mueven: la asíntota queda en $y=k$ y el punto $(0,1)$ pasa a $(h,1+k)$; con ellos se grafica la función trasladada. Combinando ambos desplazamientos, la asíntota es $y=k$ y el punto $(0,1)$ pasa a $(h,1+k)$. Ejemplo: $f(x)=2^{x-1}+3$ tiene asíntota $y=3$, pasa por $(1,4)$, y su ordenada en el origen es $f(0)=2^{-1}+3=3.5$. Verificación: $2^{1-1}+3=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar la base",
+      "puntos": [
+        {
+          "texto": "Un punto $(x_0,y_0)$ ⇒ despejar $a$ de $a^{x_0}=y_0$",
+          "explicacion": "Si la gráfica de $a^x$ pasa por un punto conocido, se sustituye y se despeja $a$, tomando la raíz positiva. Ejemplo: pasa por $(2,9)$, luego $a^2=9$ y $a=3$. Otro: pasa por $\\left(-1,\\frac{1}{2}\\right)$, luego $a^{-1}=\\frac{1}{2}$ y $a=2$. Verificación: $3^2=9$ y $2^{-1}=\\frac{1}{2}$."
+        },
+        {
+          "texto": "Valor inicial y un punto ⇒ determinar $C$ y $a$ en $C\\times a^x$",
+          "explicacion": "En la forma general con coeficiente, el valor en $x=0$ es el coeficiente $C$, porque $a^0=1$; con él y un segundo punto se despeja la base, y así se determina completamente la función. Con dos puntos de $f(x)=C\\times a^x$ se halla primero $C=f(0)$ y luego $a$. Ejemplo: $f(0)=5$ y $f(2)=45$ dan $C=5$ y $5a^2=45$, es decir $a^2=9$ y $a=3$. Verificación: $f(2)=5\\times 9=45$."
+        }
+      ]
+    },
+    {
+      "titulo": "El número $e$",
+      "puntos": [
+        {
+          "texto": "$f(x)=e^x$ ⇒ exponencial de base $e\\approx 2.71828$",
+          "explicacion": "La base $e$ es la más usada en cálculo porque simplifica fórmulas de crecimiento continuo; la función $e^x$ cumple las mismas propiedades que cualquier exponencial de base mayor que uno, y su inversa es el logaritmo natural. La exponencial natural tiene base $e\\approx 2.71828$, el número de Euler (por Leonhard Euler), irracional que aparece en procesos de crecimiento continuo. Ejemplo: $e^0=1$ y $e^1\\approx 2.718$. Verificación: como $e>1$, la función es creciente."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Funciones inyectivas (tema 63) ⇒ la exponencial es inyectiva",
+          "explicacion": "La inyectividad de la exponencial se deduce de su monotonía estricta, y es la que justifica el método de igualar bases en las ecuaciones exponenciales y la existencia de la función inversa. El tema «Funciones inyectivas» explica que una función monótona estricta no repite valores; la exponencial es un caso. Ejemplo: $2^x=2^y$ implica $x=y$. Verificación: la gráfica cumple la prueba de la recta horizontal."
+        },
+        {
+          "texto": "Funciones sobreyectivas (tema 64) ⇒ sobreyectiva sobre $(0,+\\infty)$",
+          "explicacion": "Para que la exponencial sea sobreyectiva el codominio debe ser $(0,+\\infty)$; con otro codominio, como $\\mathbb{R}$, quedan valores sin preimagen, como $-1$ o $0$. El tema «Funciones sobreyectivas» permite ver que la exponencial es sobreyectiva si el codominio es $(0,+\\infty)$. Ejemplo: $y=\\frac{1}{4}$ proviene de $x=-2$. Verificación: $2^{-2}=\\frac{1}{4}$."
+        },
+        {
+          "texto": "Funciones inversas (tema 65) ⇒ logaritmo",
+          "explicacion": "La exponencial cumple las condiciones del tema de funciones inversas, porque es biyectiva de $\\mathbb{R}$ en $(0,+\\infty)$; el procedimiento de despejar $x$ de $y=a^x$ da la definición de logaritmo. El tema «Funciones inversas» da el método para hallar $f^{-1}$; para la exponencial resulta el logaritmo. Ejemplo: $f(x)=2^x$ tiene $f^{-1}(x)=\\log_2 x$. Verificación: $f^{-1}(f(3))=\\log_2 8=3$."
+        },
+        {
+          "texto": "Función logarítmica (tema 67) ⇒ inversa de la exponencial",
+          "explicacion": "El siguiente tema estudia la función logarítmica, que es la inversa de la exponencial: su dominio es el rango de la exponencial y su rango es el dominio de esta, es decir, $\\mathbb{R}$. El tema siguiente estudia la función inversa de la exponencial, con dominio $(0,+\\infty)$. Ejemplo: $3^x$ y $\\log_3 x$ se reflejan sobre la recta $y=x$. Verificación: $3^2=9$ y $\\log_3 9=2$."
+        }
+      ]
+    }
+  ]
+}

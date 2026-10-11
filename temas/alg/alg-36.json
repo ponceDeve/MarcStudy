@@ -1,0 +1,238 @@
+{
+  "curso": "Álgebra",
+  "tema": "Método clásico",
+  "glosario": {
+    "método clásico": "Procedimiento de división larga de polinomios",
+    "división larga": "Otro nombre del método clásico",
+    "algoritmo": "Procedimiento de pasos que termina",
+    "polinomio": "Suma finita de monomios con exponentes naturales",
+    "grado": "Mayor exponente con coeficiente no nulo",
+    "dividendo": "Polinomio que se divide",
+    "divisor": "Polinomio entre el cual se divide",
+    "cociente": "Polinomio resultado de la división",
+    "resto": "Polinomio que sobra al dividir",
+    "dividendo parcial": "Resultado intermedio tras restar un producto",
+    "término principal": "Término de mayor grado",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "polinomio ordenado": "Términos escritos por exponentes decrecientes",
+    "polinomio completo": "Polinomio con todos los exponentes presentes",
+    "polinomio homogéneo": "Todos sus términos tienen el mismo grado",
+    "división exacta": "División cuyo resto es nulo",
+    "división inexacta": "División cuyo resto no es nulo",
+    "término independiente": "Término sin letras",
+    "valor numérico": "Resultado de reemplazar la variable por un número",
+    "opuesto": "Número con el mismo valor y signo contrario",
+    "exponente": "Indica cuántas veces se repite la base",
+    "coeficiente": "Factor numérico de un término",
+    "divisor lineal": "Divisor de grado uno",
+    "factor": "Polinomio que divide exactamente a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Idea del método",
+      "puntos": [
+        {
+          "texto": "«Método clásico» = división larga de polinomios",
+          "explicacion": "El método clásico es el procedimiento general para dividir un polinomio entre otro: se halla el cociente un término a la vez, de mayor a menor grado, restando en cada paso un múltiplo del divisor. Es la versión algebraica de la división larga con números. No pide que el divisor tenga una forma especial, por eso sirve para cualquier divisor distinto de cero, a diferencia de los métodos que se estudian después y que exigen divisores lineales. Todo lo que hace es aplicar, paso a paso, el algoritmo de la división."
+        },
+        {
+          "texto": "«División larga» = método clásico",
+          "explicacion": "División larga es otro nombre del método clásico, que alude a la disposición del cálculo en columnas con muchas líneas de restas sucesivas. Ambos nombres designan el mismo procedimiento: dividir el término principal, multiplicar por el divisor, restar y repetir. Por ejemplo, al dividir $x^2+3x+2$ entre $x+1$, el método da cociente $x+2$ y resto $0$, pues $(x+1)(x+2)=x^2+3x+2$."
+        },
+        {
+          "texto": "Fundamento: $D=d\\,q+R$",
+          "explicacion": "Cada paso del método construye un término de $q$ y resta del dividendo el producto de ese término por $d$. Al acabar, todo lo restado suma $d\\cdot q$ y lo que queda es $R$, de modo que $D=d\\,q+R$. Ejemplo: en $x^2+3x+2$ entre $x+1$, se resta primero $x(x+1)=x^2+x$ y queda $2x+2$; luego se resta $2(x+1)=2x+2$ y queda $0$. Lo restado en total es $(x+2)(x+1)=x^2+3x+2=D$."
+        },
+        {
+          "texto": "Condición de parada: $R=0$ o $\\operatorname{gr}(R)<\\operatorname{gr}(d)$",
+          "explicacion": "Aquí $\\operatorname{gr}(P)$ es el grado del polinomio $P$, o sea, su mayor exponente con coeficiente no nulo. El método se detiene cuando el dividendo parcial es nulo o tiene grado menor que el del divisor, porque ya no se puede dividir su término principal entre el del divisor con exponente natural. Ejemplo: entre $x^2+1$, el dividendo parcial $3x+5$ es de grado $1<2$, así que ese es el resto; en cambio $3x^2+5$ aún permite dividir."
+        }
+      ]
+    },
+    {
+      "titulo": "Preparación del cálculo",
+      "puntos": [
+        {
+          "texto": "Ordenar ⇒ exponentes decrecientes en ambos polinomios",
+          "explicacion": "Dividendo y divisor se escriben con la misma letra y con los exponentes de mayor a menor, porque cada paso usa el término principal. Ejemplo: $5-x+3x^2$ se ordena como $3x^2-x+5$ y $1+x$ como $x+1$. Verificación: los términos son los mismos, solo cambió su posición. Sin este orden, el primer término del dividendo no sería el de mayor grado y la división saldría mal."
+        },
+        {
+          "texto": "Completar ⇒ términos faltantes con coeficiente $0$",
+          "explicacion": "Los exponentes ausentes se escriben con coeficiente cero para que las restas queden alineadas columna por columna. Ejemplo: $x^5-2x^3+x-4$ se completa como $x^5+0x^4-2x^3+0x^2+x-4$. Un divisor como $x^2+x+1$ ya es completo. Verificación: añadir términos $0\\cdot x^k$ no cambia el valor del polinomio, pero sí ordena el cálculo."
+        },
+        {
+          "texto": "Disposición: dividendo a la izquierda, divisor y cociente a la derecha",
+          "explicacion": "El dividendo se escribe a la izquierda, el divisor a la derecha, y debajo de este se va escribiendo el cociente, separados por una línea. Debajo del dividendo se anotan los productos con signo cambiado y los resultados de cada resta. Esta disposición reproduce la división larga de números enteros y evita confundir términos de distinto grado, pues cada columna corresponde a una misma potencia de la variable."
+        },
+        {
+          "texto": "Cantidad de términos de $q$ = $\\operatorname{gr}(D)-\\operatorname{gr}(d)+1$",
+          "explicacion": "Si $\\operatorname{gr}(D)\\geq\\operatorname{gr}(d)$, el cociente tiene grado $\\operatorname{gr}(D)-\\operatorname{gr}(d)$, y como se cuentan los exponentes desde ese grado hasta $0$, hay un término más que la diferencia de grados (incluyendo posibles ceros). Ejemplo: $x^5-2x^3+x-4$ entre $x^2+x+1$ da $5-2+1=4$ términos: $x^3,\\,-x^2,\\,-2x,\\,3$. Esto es también la cantidad de pasos que hace falta."
+        }
+      ]
+    },
+    {
+      "titulo": "Pasos del método",
+      "puntos": [
+        {
+          "texto": "Paso 1: dividir términos principales",
+          "explicacion": "Se divide el término principal del dividendo parcial entre el término principal del divisor; el resultado es el siguiente término del cociente. Se dividen los coeficientes y se restan los exponentes de la misma letra. Ejemplo: $\\frac{-6x^5}{3x^2}=-2x^3$, pues $\\frac{-6}{3}=-2$ y $5-2=3$. Verificación: $3x^2\\cdot(-2x^3)=-6x^5$."
+        },
+        {
+          "texto": "Paso 2: multiplicar el término hallado por el divisor",
+          "explicacion": "El término del cociente que acaba de obtenerse se multiplica por todos los términos del divisor, no solo por el primero. Ejemplo: con término $2x$ y divisor $x^2-x+1$, el producto es $2x(x^2-x+1)=2x^3-2x^2+2x$. Verificación: $2x\\cdot x^2=2x^3$; $2x\\cdot(-x)=-2x^2$; $2x\\cdot1=2x$. Este producto es lo que se va a restar del dividendo parcial."
+        },
+        {
+          "texto": "Paso 3: restar el producto del dividendo parcial",
+          "explicacion": "Se resta el producto del paso anterior, escrito debajo del dividendo parcial con los términos semejantes en la misma columna. Para restar, se cambia el signo de cada término del producto y se suma. Ejemplo: $(x^2+3x)-(x^2+x)$ se calcula con $-x^2-x$ y da $2x$. Verificación: $3x-x=2x$ y $x^2-x^2=0$. El término principal siempre se anula."
+        },
+        {
+          "texto": "Restar ⇒ cambiar el signo de cada término",
+          "explicacion": "Restar un polinomio equivale a sumar su opuesto, es decir, el polinomio con todos los signos cambiados. Ejemplo: $(-3x^3+2x^2)-(-2x^3+x^2-x)$ equivale a $(-3x^3+2x^2)+(2x^3-x^2+x)=-x^3+x^2+x$. Verificación: $-3x^3+2x^3=-x^3$; $2x^2-x^2=x^2$; $0+x=x$. Olvidar cambiar un solo signo es el error más común del método."
+        },
+        {
+          "texto": "Paso 4: bajar términos ⇒ nuevo dividendo parcial",
+          "explicacion": "Después de restar, se tienen los términos restantes de grado menor, y se escribe junto a ellos el resto del dividendo original, formando un nuevo dividendo parcial. Ejemplo: si tras restar queda $-x^2+3x$ y falta bajar $-5$, el dividendo parcial es $-x^2+3x-5$. Con este polinomio se repite desde el paso 1, hasta que su grado sea menor que $\\operatorname{gr}(d)$."
+        },
+        {
+          "texto": "Paso 5: el último dividendo parcial = resto",
+          "explicacion": "Cuando el dividendo parcial es nulo o de grado menor que el divisor, ya no se divide más, y ese polinomio es el resto $R(x)$. Los términos del cociente son, en orden, los hallados en cada paso. Ejemplo: si la última resta da $2x-4$ y el divisor es de grado $2$, entonces $R=2x-4$, porque $1<2$."
+        },
+        {
+          "texto": "Paso 6: verificar $d\\,q+R=D$",
+          "explicacion": "Se comprueba multiplicando divisor por cociente, sumando el resto y comparando con el dividendo original. Ejemplo: si $D=x^2+3x+5$, $d=x+1$, $q=x+2$ y $R=3$: $(x+1)(x+2)=x^2+3x+2$ y $x^2+3x+2+3=x^2+3x+5=D$. Si no coincide, hay error de signos o de alineación y conviene revisar las restas."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 1: datos",
+      "puntos": [
+        {
+          "texto": "Datos: $2x^3-5x^2+4x-7$ entre $x-2$",
+          "explicacion": "Se divide $D(x)=2x^3-5x^2+4x-7$ entre $d(x)=x-2$. Ambos están ordenados y completos. Como $\\operatorname{gr}(D)=3$ y $\\operatorname{gr}(d)=1$, el cociente tendrá grado $3-1=2$ y habrá $3$ pasos; el resto será una constante, por ser el divisor lineal."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 1: pasos",
+      "puntos": [
+        {
+          "texto": "Paso 1: $2x^3\\div x=2x^2$",
+          "explicacion": "Primer término: $\\frac{2x^3}{x}=2x^2$. Producto: $2x^2(x-2)=2x^3-4x^2$. Resta: $(2x^3-5x^2+4x-7)-(2x^3-4x^2)=-x^2+4x-7$. Verificación: $-5x^2-(-4x^2)=-x^2$, y $2x^3-2x^3=0$. El dividendo parcial es de grado $2\\geq1$, así que continúa."
+        },
+        {
+          "texto": "Paso 2: $-x^2\\div x=-x$",
+          "explicacion": "Segundo término: $\\frac{-x^2}{x}=-x$. Producto: $-x(x-2)=-x^2+2x$. Resta: $(-x^2+4x-7)-(-x^2+2x)=2x-7$. Verificación: $4x-2x=2x$ y $-x^2+x^2=0$. El grado $1$ aún es mayor o igual que $\\operatorname{gr}(d)=1$, por lo que sigue otro paso."
+        },
+        {
+          "texto": "Paso 3: $2x\\div x=2$",
+          "explicacion": "Tercer término: $\\frac{2x}{x}=2$. Producto: $2(x-2)=2x-4$. Resta: $(2x-7)-(2x-4)=-3$. Verificación: $-7-(-4)=-3$. El dividendo parcial $-3$ es de grado $0<1$, así que el método se detiene."
+        },
+        {
+          "texto": "Resultado: $q=2x^2-x+2$ y $R=-3$",
+          "explicacion": "Los términos del cociente son $2x^2$, $-x$ y $2$, así que $q(x)=2x^2-x+2$. El último dividendo parcial es el resto: $R(x)=-3$, de grado $0$, menor que $\\operatorname{gr}(d)=1$. Como el resto es distinto de cero, la división es inexacta."
+        },
+        {
+          "texto": "Verificación del ejemplo 1",
+          "explicacion": "Se multiplica: $(x-2)(2x^2-x+2)=2x^3-x^2+2x-4x^2+2x-4=2x^3-5x^2+4x-4$. Al sumar el resto $-3$: $2x^3-5x^2+4x-4-3=2x^3-5x^2+4x-7=D$. Verificación adicional con $x=1$: $D(1)=2-5+4-7=-6$, y $d(1)q(1)+R=(-1)(3)+(-3)=-6$."
+        },
+        {
+          "texto": "Con divisor $x-2$ ⇒ $R=D(2)$",
+          "explicacion": "Como el divisor es lineal, el resto es el valor del dividendo en el número que anula al divisor, aquí $x=2$. Cálculo: $D(2)=2\\cdot8-5\\cdot4+4\\cdot2-7=16-20+8-7=-3$. Coincide con el resto hallado por división. Esta relación es el teorema del resto, que se estudia en otro tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 2: divisor cuadrático",
+      "puntos": [
+        {
+          "texto": "Datos: $x^5-2x^3+x-4$ entre $x^2+x+1$",
+          "explicacion": "Se divide $D(x)=x^5-2x^3+x-4$ entre $d(x)=x^2+x+1$. El dividendo está incompleto y se completa: $x^5+0x^4-2x^3+0x^2+x-4$. Como $\\operatorname{gr}(D)-\\operatorname{gr}(d)=3$, el cociente tiene grado $3$ y la división requiere $4$ pasos; el resto será de grado a lo más $1$."
+        },
+        {
+          "texto": "Paso 1: $x^5\\div x^2=x^3$",
+          "explicacion": "Término: $x^3$. Producto: $x^3(x^2+x+1)=x^5+x^4+x^3$. Resta: $(x^5+0x^4-2x^3+0x^2+x-4)-(x^5+x^4+x^3)=-x^4-3x^3+0x^2+x-4$. Verificación: $0x^4-x^4=-x^4$ y $-2x^3-x^3=-3x^3$."
+        },
+        {
+          "texto": "Paso 2: $-x^4\\div x^2=-x^2$",
+          "explicacion": "Término: $-x^2$. Producto: $-x^2(x^2+x+1)=-x^4-x^3-x^2$. Resta: $(-x^4-3x^3+0x^2+x-4)-(-x^4-x^3-x^2)=-2x^3+x^2+x-4$. Verificación: $-3x^3-(-x^3)=-2x^3$ y $0x^2-(-x^2)=x^2$."
+        },
+        {
+          "texto": "Paso 3: $-2x^3\\div x^2=-2x$",
+          "explicacion": "Término: $-2x$. Producto: $-2x(x^2+x+1)=-2x^3-2x^2-2x$. Resta: $(-2x^3+x^2+x-4)-(-2x^3-2x^2-2x)=3x^2+3x-4$. Verificación: $x^2-(-2x^2)=3x^2$ y $x-(-2x)=3x$."
+        },
+        {
+          "texto": "Paso 4: $3x^2\\div x^2=3$",
+          "explicacion": "Término: $3$. Producto: $3(x^2+x+1)=3x^2+3x+3$. Resta: $(3x^2+3x-4)-(3x^2+3x+3)=-7$. Verificación: $-4-3=-7$, y los términos de $x^2$ y de $x$ se anulan. El dividendo parcial $-7$ es de grado $0<2$, así que se detiene."
+        },
+        {
+          "texto": "Resultado y verificación: $q=x^3-x^2-2x+3$, $R=-7$",
+          "explicacion": "Los términos hallados dan $q(x)=x^3-x^2-2x+3$ y el último dividendo parcial es $R(x)=-7$. Verificación: $(x^2+x+1)(x^3-x^2-2x+3)=x^5-x^4-2x^3+3x^2+x^4-x^3-2x^2+3x+x^3-x^2-2x+3=x^5-2x^3+x+3$. Al sumar $-7$: $x^5-2x^3+x+3-7=x^5-2x^3+x-4=D$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo 3: dos variables",
+      "puntos": [
+        {
+          "texto": "Polinomios homogéneos ⇒ ordenar respecto de una letra",
+          "explicacion": "Cuando hay dos letras, se elige una (por ejemplo $x$) y se ordena el polinomio con sus exponentes decrecientes; en un polinomio homogéneo todos los términos tienen el mismo grado total. Ejemplo: $x^3-y^3$ se completa respecto de $x$ como $x^3+0x^2y+0xy^2-y^3$, y el divisor $x-y$ ya está ordenado. Verificación: los términos añadidos valen cero."
+        },
+        {
+          "texto": "Ejemplo: $(x^3-y^3)\\div(x-y)$",
+          "explicacion": "Paso 1: $\\frac{x^3}{x}=x^2$; $x^2(x-y)=x^3-x^2y$; resta: $x^2y-y^3$ (con los $0xy^2$ aún por bajar). Paso 2: $\\frac{x^2y}{x}=xy$; $xy(x-y)=x^2y-xy^2$; resta: $xy^2-y^3$. Paso 3: $\\frac{xy^2}{x}=y^2$; $y^2(x-y)=xy^2-y^3$; resta: $0$. Resultado: $q=x^2+xy+y^2$ y $R=0$. Verificación: $(x-y)(x^2+xy+y^2)=x^3-y^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "Término de $q$ nulo ⇒ escribir $0$ en el cociente",
+          "explicacion": "Si después de una resta el dividendo parcial no tiene el exponente siguiente, el término del cociente correspondiente es $0$ y se debe conservar en su lugar. Ejemplo: $9x^3-6x^2+3x-2$ entre $3x-2$. Paso 1: $\\frac{9x^3}{3x}=3x^2$; $3x^2(3x-2)=9x^3-6x^2$; resta: $0x^2+3x-2$. Como falta el término en $x^2$, el siguiente término de $q$ es $0\\cdot x$. Paso 2: $\\frac{3x}{3x}=1$; $1(3x-2)$; resta: $0$. Resultado: $q=3x^2+0x+1=3x^2+1$ y $R=0$. Verificación: $(3x-2)(3x^2+1)=9x^3+3x-6x^2-2$."
+        },
+        {
+          "texto": "Divisor con coeficiente principal $\\neq1$",
+          "explicacion": "Se dividen los coeficientes principales en cada paso, lo cual puede producir cocientes con coeficientes fraccionarios. Ejemplo: $8x^2+2x-3$ entre $2x+3$. Paso 1: $\\frac{8x^2}{2x}=4x$; $4x(2x+3)=8x^2+12x$; resta: $-10x-3$. Paso 2: $\\frac{-10x}{2x}=-5$; $-5(2x+3)=-10x-15$; resta: $12$. Resultado: $q=4x-5$ y $R=12$. Verificación: $(2x+3)(4x-5)=8x^2+2x-15$ y $-15+12=-3$."
+        },
+        {
+          "texto": "$\\operatorname{gr}(D)<\\operatorname{gr}(d)$ ⇒ no hay pasos",
+          "explicacion": "Si el dividendo tiene grado menor que el divisor, no se realiza ninguna resta: el cociente es $0$ y el resto es el dividendo. Ejemplo: $x+3$ entre $x^2+1$ da $q=0$ y $R=x+3$, porque $x$ no se puede dividir entre $x^2$ con exponente natural. Verificación: $(x^2+1)\\cdot0+x+3=x+3$."
+        },
+        {
+          "texto": "Resto $0$ ⇒ $d$ es factor de $D$",
+          "explicacion": "Cuando el último dividendo parcial es nulo, la división es exacta y el dividendo se escribe como producto del divisor y el cociente. Ejemplo: $x^3-y^3=(x-y)(x^2+xy+y^2)$, y también $9x^3-6x^2+3x-2=(3x-2)(3x^2+1)$. Esta factorización se aprovecha en temas posteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Olvidar cambiar signos al restar",
+          "explicacion": "Si se resta sumando el producto sin cambiar signos, el término principal no se anula y el resultado es incorrecto. Ejemplo: $(x^2+3x)-(x^2+x)$ debe dar $2x$; si se suma por descuido, sale $2x^2+4x$, de grado igual al anterior, lo que delata el error. Verificación: $3x-x=2x$."
+        },
+        {
+          "texto": "No completar ⇒ columnas desalineadas",
+          "explicacion": "Si se omiten los términos de coeficiente cero, los términos de distinto grado quedan en la misma columna y las restas combinan términos no semejantes. Ejemplo: en $x^3+1$ entre $x+1$ debe escribirse $x^3+0x^2+0x+1$. Verificación: el cociente correcto es $x^2-x+1$, pues $(x+1)(x^2-x+1)=x^3+1$."
+        },
+        {
+          "texto": "Detenerse antes ⇒ resto con grado $\\geq$ el del divisor",
+          "explicacion": "Si el último dividendo parcial aún tiene grado mayor o igual que el divisor, la división no ha terminado. Ejemplo: al dividir entre $x-2$, un resto $2x-7$ de grado $1\\geq1$ pide un paso más, el cual da $2$ como último término del cociente y resto $-3$. Verificación: tras ese paso, el grado es $0<1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Método clásico → algoritmo de la división",
+          "explicacion": "El método clásico aplica paso a paso el algoritmo de la división, que garantiza que existen un único cociente y un único resto con $D=d\\,q+R$. Por la unicidad, cualquier método que se use después (Ruffini, Horner) debe dar el mismo resultado que este. Ejemplo: $2x^3-5x^2+4x-7$ entre $x-2$ da $q=2x^2-x+2$ y $R=-3$ por cualquier método."
+        },
+        {
+          "texto": "Método clásico ⊂ casos con divisor general",
+          "explicacion": "Los métodos de Ruffini y Horner son atajos del método clásico para casos más restringidos: divisores lineales o con coeficientes ordenados en tabla. El método clásico, en cambio, funciona con cualquier divisor y es el que justifica a los demás. Usa lo visto en multiplicación y sustracción de polinomios, pues en cada paso se multiplica un monomio por el divisor y luego se resta."
+        }
+      ]
+    }
+  ]
+}

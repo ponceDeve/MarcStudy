@@ -1,0 +1,192 @@
+{
+  "curso": "Álgebra",
+  "tema": "Adición de polinomios",
+  "glosario": {
+    "Polinomio": "Suma finita de monomios.",
+    "Término": "Cada monomio sumando de un polinomio.",
+    "Términos semejantes": "Términos con la misma parte literal.",
+    "Coeficiente": "Número que multiplica la parte literal.",
+    "Sumando": "Polinomio que participa en una suma.",
+    "Método horizontal": "Suma escribiendo los sumandos en una línea.",
+    "Método vertical": "Suma por columnas de exponentes iguales.",
+    "Polinomio nulo": "Polinomio con todos los coeficientes cero.",
+    "Opuesto": "Polinomio con todos los signos cambiados.",
+    "Clausura": "Resultado que permanece dentro del mismo conjunto.",
+    "Propiedad conmutativa": "El orden de los sumandos no importa.",
+    "Propiedad asociativa": "La agrupación de sumandos no importa.",
+    "Elemento neutro": "Elemento que no altera al sumarse.",
+    "Valor numérico": "Resultado de reemplazar la variable por un número.",
+    "Término independiente": "Término que no contiene la variable."
+  },
+  "theory": [
+    {
+      "titulo": "Adición de polinomios",
+      "puntos": [
+        {
+          "texto": "«Adición de polinomios»: sumar los términos semejantes de ambos",
+          "explicacion": "Sumar dos polinomios consiste en formar un nuevo polinomio cuyos términos resultan de sumar los coeficientes de los términos semejantes de ambos, y de conservar sin cambio los términos que no tienen semejante en el otro. Por ejemplo, $(3x^2+5x)+(2x^2-7)$ da $5x^2+5x-7$: los términos en $x^2$ se suman como $3+2=5$, mientras que $5x$ y $-7$ no tienen pareja y pasan igual. El resultado se llama suma, y los polinomios que se suman se llaman sumandos."
+        },
+        {
+          "texto": "Términos con la misma parte literal ✓ para sumarse",
+          "explicacion": "Solo se pueden reunir en un único término los que tienen exactamente la misma parte literal, es decir, las mismas variables con los mismos exponentes. Así, $4x^2+3x^2=7x^2$ porque ambos son $x^2$, pero $4x^2+3x$ no se reduce, porque $x^2$ y $x$ son potencias distintas. Esta condición es la que organiza todo el procedimiento: se busca, para cada exponente, qué coeficientes hay que sumar."
+        },
+        {
+          "texto": "Sumar coeficientes ⇒ la parte literal no cambia",
+          "explicacion": "Al reunir términos semejantes se suman solo los coeficientes, y la parte literal se escribe una vez, sin modificar. Esto se justifica con la propiedad distributiva: $ax^k+bx^k=(a+b)x^k$. Ejemplo numérico: $-5x^3+2x^3=(-5+2)x^3=-3x^3$. Verificación en $x=2$: $-5(8)+2(8)=-24$ y $-3(8)=-24$. Por el mismo motivo, $x^2+x^2=2x^2$ y no $x^4$: el exponente no se suma, porque sumar no es multiplicar."
+        }
+      ]
+    },
+    {
+      "titulo": "Método horizontal",
+      "puntos": [
+        {
+          "texto": "«Método horizontal»: escribir ambos y agrupar términos semejantes",
+          "explicacion": "En el método horizontal se escriben los sumandos uno a continuación del otro, se eliminan los paréntesis y se agrupan, con ayuda de paréntesis o colores mentales, los términos semejantes, para reducirlos. Se aplica a cualquier cantidad de variables y es el más usado cuando los polinomios son cortos. Se explica con $P(x)=3x^3-2x^2+5x-4$ y $Q(x)=x^3+4x^2-x+7$."
+        },
+        {
+          "texto": "Paréntesis precedidos de signo $+$ se quitan sin cambiar signos",
+          "explicacion": "Cuando un polinomio entre paréntesis está precedido por el signo $+$, se quitan los paréntesis y cada término conserva su signo. Así, $(x^2+3x)+(2x^2-x+5)=x^2+3x+2x^2-x+5=3x^2+2x+5$. Esta regla no vale cuando el paréntesis va precedido de un signo menos: allí los signos cambian, como se estudia en la sustracción."
+        },
+        {
+          "texto": "Ejemplo horizontal: $P(x)+Q(x)$ resuelto",
+          "explicacion": "Con $P(x)=3x^3-2x^2+5x-4$ y $Q(x)=x^3+4x^2-x+7$: $P+Q=3x^3-2x^2+5x-4+x^3+4x^2-x+7$. Se agrupan por exponente: $(3+1)x^3+(-2+4)x^2+(5-1)x+(-4+7)=4x^3+2x^2+4x+3$. Verificación en $x=2$: $P(2)=24-8+10-4=22$, $Q(2)=8+16-2+7=29$, y $22+29=51$; el resultado vale $32+8+8+3=51$. Coinciden. El método horizontal exige cuidar cada signo al agrupar: el término $-2x^2$ se agrupa con $+4x^2$ y da $+2x^2$, y el término $-4$ se agrupa con $+7$ y da $+3$. Un error frecuente es omitir un término al transcribir, por lo que se recomienda revisar que la cantidad de términos escritos sea la suma de los de ambos polinomios, que aquí son cuatro y cuatro."
+        }
+      ]
+    },
+    {
+      "titulo": "Método vertical",
+      "puntos": [
+        {
+          "texto": "«Método vertical»: ordenar, completar y sumar por columnas",
+          "explicacion": "En el método vertical se escribe cada polinomio ordenado en una fila, con los términos semejantes en la misma columna, y se suman las columnas. Si falta algún exponente, se completa con un término de coeficiente cero para que las columnas queden alineadas. Es práctico cuando los polinomios son largos o incompletos, porque evita pasar por alto términos."
+        },
+        {
+          "texto": "Completar con ceros para alinear las columnas",
+          "explicacion": "Para sumar $A(x)=2x^4-x+3$ y $B(x)=x^3+5x^2-6$ se completan: $A(x)=2x^4+0x^3+0x^2-x+3$ y $B(x)=0x^4+x^3+5x^2+0x-6$. Al sumar columna por columna: $x^4$: $2+0=2$; $x^3$: $0+1=1$; $x^2$: $0+5=5$; $x$: $-1+0=-1$; constante: $3-6=-3$. Resulta $2x^4+x^3+5x^2-x-3$. Verificación en $x=1$: $A(1)=4$, $B(1)=0$ y el resultado vale $2+1+5-1-3=4$. Los ceros añadidos no cambian el valor de los polinomios, porque sumar cero es neutro, pero evitan desalinear columnas y confundir exponentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de varios polinomios",
+      "puntos": [
+        {
+          "texto": "Sumar tres o más polinomios: agrupar por exponente",
+          "explicacion": "Con más de dos sumandos se procede igual: se suman todos los coeficientes de cada exponente. Sean $P=x^2+2x+1$, $Q=3x^2-x+4$ y $R=-2x^2+5x-3$. Coeficientes de $x^2$: $1+3-2=2$. De $x$: $2-1+5=6$. Constantes: $1+4-3=2$. La suma es $2x^2+6x+2$. Verificación en $x=1$: $P(1)=4$, $Q(1)=6$, $R(1)=0$ y $4+6+0=10$; el resultado vale $2+6+2=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la adición",
+      "puntos": [
+        {
+          "texto": "Clausura: la suma de polinomios es un polinomio",
+          "explicacion": "Al sumar dos polinomios se obtiene siempre otro polinomio, porque solo se suman coeficientes y los exponentes permanecen enteros no negativos. Por ejemplo, $(x^2+1)+(2x-3)=x^2+2x-2$ es un polinomio. Esta propiedad se llama clausura, y significa que sumar no obliga a salir del conjunto de los polinomios."
+        },
+        {
+          "texto": "Conmutativa: $P+Q=Q+P$",
+          "explicacion": "El orden de los sumandos no cambia la suma, porque la suma de coeficientes reales es conmutativa. Con $P=x^2+1$ y $Q=2x-3$: $P+Q=x^2+2x-2$ y $Q+P=2x-3+x^2+1=x^2+2x-2$. Son iguales. Esta propiedad permite elegir el orden de los sumandos que resulte más cómodo para el cálculo, por ejemplo poner primero el polinomio de mayor grado. Se cumple coeficiente por coeficiente: $a_k+b_k=b_k+a_k$ para todo exponente $k$, y la igualdad de polinomios se comprueba exponente por exponente."
+        },
+        {
+          "texto": "Asociativa: $(P+Q)+R=P+(Q+R)$",
+          "explicacion": "La forma de agrupar los sumandos no altera el resultado. Con $P=x^2+1$, $Q=2x-3$ y $R=x^2-x$: $(P+Q)+R=(x^2+2x-2)+(x^2-x)=2x^2+x-2$. Y $P+(Q+R)=(x^2+1)+(x^2+x-3)=2x^2+x-2$, porque $Q+R=2x-3+x^2-x=x^2+x-3$. Ambos coinciden. La propiedad asegura que una suma de varios polinomios es única, sin importar qué dos se sumen primero. Por eso al sumar tres o más polinomios se pueden agrupar los términos semejantes de todos de una sola vez, sin paréntesis."
+        },
+        {
+          "texto": "Elemento neutro: $P+0=P$",
+          "explicacion": "El polinomio nulo, con todos los coeficientes cero, es el elemento neutro de la adición: sumarlo a cualquier polinomio no lo cambia. Con $P=3x^2-5x+2$: $P+0=3x^2-5x+2+0=3x^2-5x+2=P$. Esto equivale a sumar cero a cada coeficiente. Del mismo modo $0+P=P$, por la propiedad conmutativa. El polinomio nulo es único: si otro polinomio $N$ cumpliera $P+N=P$ para todo $P$, tomando $P=0$ se obtendría $N=0$."
+        },
+        {
+          "texto": "Opuesto: $P+(-P)=0$",
+          "explicacion": "Todo polinomio $P$ tiene un opuesto, $-P$, que se obtiene cambiando el signo de todos sus coeficientes, y su suma es el polinomio nulo. Para $P=3x^2-5x+2$ el opuesto es $-P=-3x^2+5x-2$, y $P+(-P)=(3-3)x^2+(-5+5)x+(2-2)=0$. El opuesto es la base de la sustracción de polinomios."
+        }
+      ]
+    },
+    {
+      "titulo": "Efecto en coeficientes",
+      "puntos": [
+        {
+          "texto": "Coeficiente de $x^k$ en $P+Q$ = $a_k+b_k$",
+          "explicacion": "Si $P(x)=\\sum a_kx^k$ y $Q(x)=\\sum b_kx^k$, el coeficiente de $x^k$ en la suma es $a_k+b_k$, tomando como cero los coeficientes que falten. Para $P=3x^3-2x^2+5x-4$ y $Q=x^3+4x^2-x+7$: $a_3+b_3=3+1=4$; $a_2+b_2=-2+4=2$; $a_1+b_1=5-1=4$; $a_0+b_0=-4+7=3$. Coinciden con $4x^3+2x^2+4x+3$. Cuando un polinomio no tiene el exponente $k$, su coeficiente es cero y el término del otro pasa sin cambio. Esta lectura por exponentes es lo que justifica el método vertical, donde cada columna es un exponente."
+        },
+        {
+          "texto": "Término independiente de $P+Q$ = $P(0)+Q(0)$",
+          "explicacion": "El término independiente de la suma es la suma de los términos independientes. Con $P=3x^3-2x^2+5x-4$ y $Q=x^3+4x^2-x+7$: $P(0)=-4$, $Q(0)=7$, y el término independiente de $P+Q$ es $-4+7=3$, igual al de $4x^3+2x^2+4x+3$. Esta propiedad sirve para comprobar el resultado sin desarrollar nada más: basta evaluar ambos sumandos en cero y sumar. Es el caso $x=0$ de la propiedad general $(P+Q)(a)=P(a)+Q(a)$."
+        },
+        {
+          "texto": "Suma de coeficientes de $P+Q$ = $P(1)+Q(1)$",
+          "explicacion": "Como la suma de coeficientes de un polinomio es su valor en $x=1$, la suma de coeficientes de $P+Q$ es la suma de las sumas de coeficientes. Con los polinomios anteriores: $P(1)=3-2+5-4=2$, $Q(1)=1+4-1+7=11$, y $2+11=13$. En $4x^3+2x^2+4x+3$ los coeficientes suman $4+2+4+3=13$."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de la suma",
+      "puntos": [
+        {
+          "texto": "Grados distintos ⇒ el grado de la suma es el mayor",
+          "explicacion": "Si los sumandos tienen grados diferentes, el término de mayor exponente no se cancela y el grado de la suma es el mayor de los dos. Con $(x^4+x)+(3x^2-1)=x^4+3x^2+x-1$ el grado es 4, el mayor entre 4 y 2. Otro ejemplo con una resta de términos de grados distintos: $(5x^3-2)+(4x^2+x)=5x^3+4x^2+x-2$, de grado 3, el mayor entre 3 y 2, y el coeficiente principal sigue siendo 5."
+        },
+        {
+          "texto": "Grados iguales ⇒ el grado de la suma puede bajar",
+          "explicacion": "Cuando los grados coinciden y los coeficientes principales son opuestos, el término principal desaparece y el grado disminuye. Ejemplo: $(2x^3+x)+(-2x^3+4)=x+4$, de grado 1 aunque ambos sumandos tienen grado 3. Por eso se reduce siempre antes de declarar el grado del resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor de la suma",
+      "puntos": [
+        {
+          "texto": "$(P+Q)(a)=P(a)+Q(a)$",
+          "explicacion": "El valor de la suma en un número es la suma de los valores de los sumandos en ese número, porque sustituir y sumar pueden hacerse en cualquier orden. Con $P=3x^3-2x^2+5x-4$ y $Q=x^3+4x^2-x+7$ en $x=2$: $P(2)=22$, $Q(2)=29$ y $P(2)+Q(2)=51$. Con la suma reducida: $4(8)+2(4)+4(2)+3=32+8+8+3=51$. Esta propiedad sirve para comprobar el resultado de cualquier suma."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma con varias variables",
+      "puntos": [
+        {
+          "texto": "Sumar polinomios en dos variables: igual parte literal",
+          "explicacion": "Con varias variables, se reúnen los términos con la misma parte literal completa. Sean $P=3x^2y-2xy+5$ y $Q=x^2y+4xy^2-5$. Los términos en $x^2y$ suman $3+1=4$; $-2xy$ y $4xy^2$ no tienen pareja; las constantes suman $5-5=0$. Resulta $4x^2y+4xy^2-2xy$. Verificación en $x=1$ y $y=2$: $P=6-4+5=7$, $Q=2+16-5=13$, suma 20; el resultado vale $8+16-4=20$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes fraccionarios",
+      "puntos": [
+        {
+          "texto": "Sumar polinomios con coeficientes fraccionarios",
+          "explicacion": "Los coeficientes fraccionarios se suman como fracciones, con denominador común. Sean $P=\\frac{1}{2}x^2+\\frac{2}{3}x-1$ y $Q=\\frac{3}{2}x^2-\\frac{1}{3}x+\\frac{1}{4}$. Coeficiente de $x^2$: $\\frac{1}{2}+\\frac{3}{2}=2$. De $x$: $\\frac{2}{3}-\\frac{1}{3}=\\frac{1}{3}$. Constantes: $-1+\\frac{1}{4}=-\\frac{3}{4}$. La suma es $2x^2+\\frac{1}{3}x-\\frac{3}{4}$. Verificación en $x=2$: $P(2)=2+\\frac{4}{3}-1=\\frac{7}{3}$ y $Q(2)=6-\\frac{2}{3}+\\frac{1}{4}=\\frac{67}{12}$, de modo que $P(2)+Q(2)=\\frac{28}{12}+\\frac{67}{12}=\\frac{95}{12}$. El resultado vale $8+\\frac{2}{3}-\\frac{3}{4}=\\frac{96+8-9}{12}=\\frac{95}{12}$. Coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar constantes",
+      "puntos": [
+        {
+          "texto": "Suma conocida ⇒ igualar coeficientes para hallar constantes",
+          "explicacion": "Sean $P(x)=ax^2+3x+b$ y $Q(x)=2x^2+cx-1$ con $P+Q=5x^2+x+4$. La suma es $(a+2)x^2+(3+c)x+(b-1)$. Al igualar coeficientes: $a+2=5$ da $a=3$; $3+c=1$ da $c=-2$; $b-1=4$ da $b=5$. Verificación: $P=3x^2+3x+5$ y $Q=2x^2-2x-1$, y $P+Q=5x^2+x+4$. El procedimiento tiene tres pasos: primero se efectúa la suma con las constantes como si fueran números, después se iguala cada coeficiente con el del polinomio dado, y por último se resuelve cada ecuación de primer grado resultante. Cada ecuación contiene una sola constante, por lo que se resuelven por separado."
+        }
+      ]
+    },
+    {
+      "titulo": "Polinomio faltante",
+      "puntos": [
+        {
+          "texto": "Si $P+Q=R$, entonces $Q=R-P$",
+          "explicacion": "Cuando se conoce un sumando y la suma, el otro sumando se obtiene restando. Sea $R=x^3+2x^2-5$ y $P=x^3-x+2$. Entonces $Q=R-P=x^3+2x^2-5-x^3+x-2=2x^2+x-7$. Verificación: $P+Q=x^3-x+2+2x^2+x-7=x^3+2x^2-5=R$. Esta idea conduce directamente a la sustracción de polinomios. El paso clave es cambiar el signo de todos los términos de $P$ al restar: $-(x^3-x+2)=-x^3+x-2$. Si se olvida cambiar algún signo, la verificación final no coincide con $R$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 28 y 29: base de la adición",
+          "explicacion": "La adición usa los conceptos de polinomio, coeficiente, términos semejantes y valor numérico del tema 28, y las propiedades de grado del tema 29, que permiten predecir el grado de la suma antes de calcularla. Por ejemplo, al sumar $x^3+x$ y $-x^3+2$ se sabe por el tema 29 que ambos son de grado 3 con coeficientes principales opuestos, así que el resultado, $x+2$, tendrá grado menor que 3."
+        },
+        {
+          "texto": "Temas 31 y 32: continuación natural",
+          "explicacion": "La sustracción de polinomios se define sumando el opuesto, y la multiplicación de polinomios reúne productos de términos y luego suma los semejantes. Ambas operaciones dependen de saber sumar polinomios correctamente. Por ejemplo, restar $Q$ de $P$ equivale a calcular $P+(-Q)$, y multiplicar $(x+1)(x+2)$ produce $x^2+2x+x+2$, donde los términos $2x$ y $x$ se suman como semejantes para dar $x^2+3x+2$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,472 @@
+{
+  "curso": "Álgebra",
+  "tema": "Expresiones algebraicas",
+  "glosario": {
+    "expresión algebraica": "Letras y números unidos por operaciones finitas",
+    "expresión numérica": "Expresión formada solo por números y operaciones",
+    "constante": "Cantidad cuyo valor no cambia",
+    "constante literal": "Letra que representa un valor fijo",
+    "parámetro": "Otro nombre de constante literal",
+    "variable": "Letra que puede tomar distintos valores",
+    "indeterminada": "Otro nombre de variable",
+    "incógnita": "Letra cuyo valor se busca",
+    "término": "Parte separada por sumas o restas",
+    "signo": "Marca positiva o negativa de un término",
+    "coeficiente": "Factor numérico de un término",
+    "parte literal": "Letras de un término con sus exponentes",
+    "término independiente": "Término sin letras",
+    "términos semejantes": "Términos con la misma parte literal",
+    "reducción": "Unión de términos semejantes en uno solo",
+    "monomio": "Expresión de un solo término",
+    "binomio": "Expresión de dos términos",
+    "trinomio": "Expresión de tres términos",
+    "multinomio": "Expresión de cuatro o más términos",
+    "polinomio": "Suma finita de monomios con exponentes naturales",
+    "expresión racional": "Variables sin radicales ni exponentes fraccionarios",
+    "expresión racional entera": "Racional sin variables en el denominador",
+    "expresión racional fraccionaria": "Racional con variables en el denominador",
+    "expresión irracional": "Expresión con variables bajo radical",
+    "expresión trascendente": "Expresión no algebraica, como exponencial o logarítmica",
+    "radicando": "Expresión bajo el signo radical",
+    "índice": "Número que indica el orden de la raíz",
+    "exponente": "Indica cuántas veces se multiplica la base",
+    "base": "Factor que se repite en una potencia",
+    "denominador": "Parte inferior de una fracción",
+    "valor numérico": "Resultado de reemplazar letras por números",
+    "sustitución": "Reemplazo de letras por valores dados",
+    "valores admisibles": "Valores de las letras que permiten calcular",
+    "expresiones equivalentes": "Expresiones con igual valor para valores admisibles",
+    "grado relativo": "Exponente de una letra en un término",
+    "grado absoluto": "Suma de los exponentes de un término",
+    "signo de agrupación": "Símbolo que encierra operaciones",
+    "vínculo": "Barra horizontal que agrupa expresiones",
+    "propiedad distributiva": "Multiplicar una suma reparte el factor",
+    "propiedad conmutativa": "El orden de los sumandos no altera",
+    "propiedad asociativa": "La agrupación de sumandos no altera",
+    "potencia": "Producto de factores iguales",
+    "raíz": "Operación inversa de la potenciación"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de expresión",
+      "puntos": [
+        {
+          "texto": "«Expresión algebraica» = constantes + variables + operaciones",
+          "explicacion": "Una expresión algebraica es una combinación de números y letras ligados por signos de operación, como $3x^2-5xy+7$. Las letras representan cantidades que pueden cambiar o que aún no se han fijado, de modo que la expresión no tiene un único valor hasta que se les asigna uno. Por eso se estudia su forma (qué operaciones aparecen y sobre qué letras) además de su valor. En $2a+b^3$ aparecen la multiplicación $2a$, la potenciación $b^3$ y la adición entre ambos términos. No contiene un signo igual que la convierta en una afirmación por resolver: una expresión se evalúa o se transforma, mientras que una ecuación se resuelve."
+        },
+        {
+          "texto": "«Expresión numérica» ✗ letras",
+          "explicacion": "Es la que contiene únicamente números y operaciones, por ejemplo $4\\cdot 3+5$. Como no tiene letras, su valor es único y se obtiene operando respetando el orden de las operaciones: $4\\cdot3=12$ y $12+5=17$. La expresión algebraica la generaliza: si en $4x+5$ se reemplaza $x$ por $3$ se obtiene justamente esa expresión numérica. Verificación: $4(3)+5=12+5=17$, el mismo resultado."
+        },
+        {
+          "texto": "«Seis operaciones» ∈ expresiones algebraicas",
+          "explicacion": "Entre constantes y variables se admiten la adición ($x+y$), la sustracción ($x-y$), la multiplicación ($xy$), la división ($\\frac{x}{y}$ con $y\\neq0$), la potenciación ($x^3$) y la radicación ($\\sqrt{x}$). Una misma expresión puede combinar varias de ellas, como $\\frac{x^2+\\sqrt{y}}{3}-xy$. Que una operación aparezca no obliga a que se pueda efectuar: en $x+y$ las letras distintas no se pueden fundir en un solo término, solo se dejan indicadas. Toda la clasificación posterior de las expresiones depende de cuáles de estas operaciones afectan a las variables y de qué manera."
+        },
+        {
+          "texto": "Expresión algebraica ✓ «cantidad finita» de operaciones",
+          "explicacion": "En una expresión algebraica el número de operaciones entre las constantes y las variables es finito. Por ejemplo, $1+x+x^2+x^3$ tiene tres adiciones y dos potenciaciones, así que es algebraica. En cambio, una suma que continúa sin fin ($1+x+x^2+x^3+\\cdots$) ya no es una expresión algebraica, porque no puede escribirse completa con un número finito de operaciones. Esta condición garantiza que cualquier expresión algebraica pueda evaluarse, para un valor admisible de sus letras, con una cantidad limitada de cálculos."
+        }
+      ]
+    },
+    {
+      "titulo": "Constantes",
+      "puntos": [
+        {
+          "texto": "«Constante» = cantidad de valor fijo",
+          "explicacion": "Una constante es una cantidad cuyo valor no cambia dentro de la expresión. Pueden ser números enteros como $7$, fracciones como $-\\frac{3}{4}$, radicales numéricos como $\\sqrt{2}$ o el número $\\pi$. En $7x-\\frac{3}{4}$ las constantes son $7$ y $-\\frac{3}{4}$. Su valor no depende de lo que se le asigne a las variables: aunque $x$ tome muchos valores, el $7$ sigue siendo $7$. Todas las constantes de este curso son números reales."
+        },
+        {
+          "texto": "Constante literal = letra de valor fijo",
+          "explicacion": "Una constante literal es una letra que representa un número fijo, pero cuyo valor concreto no se ha escrito. En $ax+b$ las letras $a$ y $b$ son constantes literales: mientras se trabaja con la expresión sus valores no cambian, y solo $x$ varía. Si se decide que $a=2$ y $b=-1$, la expresión queda $2x+(-1)=2x-1$. Verificación con $x=3$: $a\\cdot3+b=6-1=5$ y $2\\cdot3-1=5$. Permite escribir resultados generales válidos para muchos valores concretos."
+        },
+        {
+          "texto": "«Parámetro» = constante literal",
+          "explicacion": "Parámetro es el nombre alterno que se da a una constante literal, sobre todo cuando se estudia cómo cambia el comportamiento de una expresión al elegir distintos valores fijos para esa letra. En $kx+3$, la letra $k$ es un parámetro: con $k=2$ resulta $2x+3$ y con $k=-5$ resulta $-5x+3$. En cada caso concreto el parámetro se comporta como una constante común, y solo $x$ sigue siendo la letra que varía."
+        },
+        {
+          "texto": "«Convención»: $a,b,c$ = constantes; $x,y,z$ = variables",
+          "explicacion": "Por costumbre de escritura, las primeras letras del alfabeto ($a,b,c,\\ldots$) se reservan para constantes literales y las últimas ($x,y,z$) para variables. Así, en $ax^2+bx+c$ se entiende de inmediato que $a$, $b$ y $c$ son fijas y que $x$ es la letra que cambia. Es solo una convención que facilita la lectura: nada impide usar otras letras, siempre que se indique qué representa cada una."
+        }
+      ]
+    },
+    {
+      "titulo": "Variables",
+      "puntos": [
+        {
+          "texto": "Variable = letra con valores distintos",
+          "explicacion": "Una variable es una letra que puede tomar distintos valores numéricos dentro de un conjunto de valores permitidos. En $3x+1$, si $x=0$ la expresión vale $1$, si $x=2$ vale $7$ y si $x=-1$ vale $-2$. Cada reemplazo produce un resultado distinto, lo que muestra que el valor total depende de la variable. Una expresión puede tener una variable ($x$), dos ($x,y$) o más, y cada una puede tomar valores independientes de las demás."
+        },
+        {
+          "texto": "«Indeterminada» = variable",
+          "explicacion": "Indeterminada es otro nombre para la variable, usado en especial cuando la letra solo sirve como símbolo para construir expresiones y todavía no se le ha asignado ningún número. Así, en $x^2+5x$ la letra $x$ puede llamarse variable o indeterminada: ambas designaciones se refieren al mismo papel, el de una letra que se puede reemplazar por números."
+        },
+        {
+          "texto": "«Incógnita» = variable de valor buscado",
+          "explicacion": "Una incógnita es una letra cuyo valor se desea hallar porque debe cumplir una igualdad. En la ecuación $2x+1=9$, la letra $x$ es la incógnita: se resuelve $2x=8$ y $x=4$. Verificación: $2(4)+1=9$. En una expresión sin signo igual, como $2x+1$, la letra $x$ es variable y no incógnita, porque no hay condición que determine su valor. La diferencia es de papel, no de símbolo."
+        },
+        {
+          "texto": "$E(x)$ = expresión con variable $x$",
+          "explicacion": "La notación $E(x)$ (o $P(x)$, $Q(x)$) indica que la expresión $E$ depende de la variable $x$; con dos variables se escribe $P(x,y)$. Por ejemplo, $E(x)=3x^2-2x+5$ declara la expresión y la letra que se sustituye. Esta notación permite luego escribir $E(2)$ para indicar «el valor de $E$ cuando $x=2$»: $E(2)=3(4)-4+5=13$. Verificación: $12-4+5=13$. Es la forma estándar de nombrar una expresión para evaluarla."
+        }
+      ]
+    },
+    {
+      "titulo": "Término algebraico",
+      "puntos": [
+        {
+          "texto": "«Término» = producto de números y letras",
+          "explicacion": "Un término es la parte de una expresión algebraica que no queda separada por signos de suma o resta: un producto, cociente o potencia de constantes y variables, como $-5x^2y$. En $4x^2-3xy+7$ los términos son $4x^2$, $-3xy$ y $7$. Los signos $+$ y $-$ que están dentro de un paréntesis no separan términos de la expresión exterior: en $5(x+2)$ hay un solo término, porque el producto envuelve a la suma."
+        },
+        {
+          "texto": "Todo término ✓ «signo»: positivo o negativo",
+          "explicacion": "Cada término lleva un signo que lo precede y que forma parte de él: en $4x^2-3xy+7$, el término $-3xy$ es negativo y el $7$ es positivo. El primer término suele escribirse sin signo, y en ese caso se entiende positivo ($4x^2=+4x^2$). Al reducir o cambiar el orden de los términos, el signo viaja con su término: $-3xy+4x^2$ es la misma expresión que $4x^2-3xy$."
+        },
+        {
+          "texto": "«Coeficiente» = factor numérico del término",
+          "explicacion": "El coeficiente es el número que multiplica a la parte literal, con su signo. En $-5x^2y$ el coeficiente es $-5$; en $\\frac{2}{3}ab$ es $\\frac{2}{3}$; en $\\sqrt{2}\\,x$ es $\\sqrt{2}$. Determina cuántas veces se toma la parte literal y en qué sentido. Dos términos con la misma parte literal solo se diferencian por su coeficiente, y por eso este es el número que se opera al reducir términos semejantes."
+        },
+        {
+          "texto": "«Parte literal» = letras con exponentes",
+          "explicacion": "La parte literal de un término es el conjunto de letras con sus exponentes, sin el coeficiente. En $-5x^2y$ la parte literal es $x^2y$. El orden de escritura de las letras no altera la parte literal, porque la multiplicación es conmutativa: $x^2y=yx^2$. Dos letras iguales con exponentes distintos forman partes literales distintas: $x^2y$ no es lo mismo que $xy^2$."
+        },
+        {
+          "texto": "Coeficiente implícito: $x=1x$",
+          "explicacion": "Cuando un término no muestra coeficiente, este vale $1$ si el término es positivo y $-1$ si es negativo: $x=1\\cdot x$, $-y=-1\\cdot y$, $x^2y=1\\cdot x^2y$. Reconocerlo es indispensable al reducir: en $5x-x+2x$ el segundo término tiene coeficiente $-1$, así que $(5-1+2)x=6x$. Verificación con $x=1$: $5-1+2=6$ y $6x=6$."
+        },
+        {
+          "texto": "Exponente implícito: $x=x^1$",
+          "explicacion": "Una letra sin exponente escrito tiene exponente $1$: $x=x^1$ y $3xy^2=3x^1y^2$. Es necesario recordarlo al comparar partes literales, porque $x$ y $x^2$ son distintas, y al multiplicar o dividir monomios, donde se suman o restan exponentes. En $2xy^2$ el exponente de $x$ es $1$ y el de $y$ es $2$."
+        },
+        {
+          "texto": "Término independiente ✗ parte literal",
+          "explicacion": "El término independiente es el que no contiene letras, o sea, una constante. En $3x^2-4x+9$ es el $9$. Su valor no cambia al variar $x$. Puede interpretarse como $9x^0$ para $x\\neq0$, ya que un exponente cero da factor $1$, lo que explica que sea semejante a cualquier otro término sin letras. Si una expresión no tiene constante suelta, su término independiente es $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Términos semejantes",
+      "puntos": [
+        {
+          "texto": "«Términos semejantes» = misma parte literal",
+          "explicacion": "Dos o más términos son semejantes cuando tienen exactamente las mismas letras con los mismos exponentes; solo pueden diferir en el coeficiente. Por ejemplo, $4x^2y$ y $-9x^2y$ son semejantes, porque ambos tienen parte literal $x^2y$. Esta condición es la que permite unirlos en un solo término. Si no se cumple en alguna letra, no es posible reducirlos."
+        },
+        {
+          "texto": "Exponente distinto ⇒ términos no semejantes",
+          "explicacion": "Si una misma letra aparece con exponentes diferentes, los términos no son semejantes: $3x^2$ y $3x^3$ tienen partes literales distintas ($x^2$ y $x^3$). Para comprobar que no se pueden unir, tómese $x=2$: $3x^2+3x^3=12+24=36$, mientras que $6x^2=24$ y $6x^3=48$; ningún término único da $36$ para todos los valores de $x$, lo que confirma que es imposible reducirlos."
+        },
+        {
+          "texto": "Letras distintas ⇒ términos no semejantes",
+          "explicacion": "Si las letras no coinciden, los términos no son semejantes: $3x$ y $3y$ no se pueden unir porque $x$ e $y$ son cantidades independientes. Tampoco son semejantes $2xy$ y $2x$, ya que al primero le aparece una letra más. Con $x=1$ y $y=2$: $3x+3y=9$, valor que no equivale a $6x=6$ ni a $6y=12$; no se puede expresar como un solo término."
+        },
+        {
+          "texto": "Orden de letras ✗ afecta semejanza",
+          "explicacion": "La posición de las letras dentro del término no cambia su parte literal, porque la multiplicación es conmutativa. Por eso $5xy$ y $-2yx$ son semejantes: ambos tienen parte literal $xy$. Su reducción es $5xy-2yx=3xy$. Verificación con $x=2$, $y=3$: $5(6)-2(6)=30-12=18$ y $3(6)=18$."
+        },
+        {
+          "texto": "Términos independientes = semejantes entre sí",
+          "explicacion": "Los términos sin letras tienen parte literal vacía, por lo que todos son semejantes entre sí y se pueden sumar: en $5x+7-2$, los términos $7$ y $-2$ se reducen a $5$, quedando $5x+5$. Verificación con $x=1$: $5+7-2=10$ y $5+5=10$. Un término independiente nunca es semejante a uno con letras, como $5x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción de términos",
+      "puntos": [
+        {
+          "texto": "Reducción: $ax^m+bx^m=(a+b)x^m$",
+          "explicacion": "Para unir términos semejantes se suman los coeficientes y se conserva la parte literal. En la fórmula, $a$ y $b$ son los coeficientes y $x^m$ la parte literal común. Ejemplo: $3x^2-7x^2+5x^2$. Se suman los coeficientes: $3-7+5=1$, y se conserva $x^2$, resultando $x^2$. Verificación con $x=2$: $12-28+20=4$ y $x^2=4$. La regla solo se puede usar cuando la parte literal es idéntica."
+        },
+        {
+          "texto": "Distributiva ⇒ regla de reducción",
+          "explicacion": "La regla de reducción se deduce de la propiedad distributiva leída al revés: $ax+bx=(a+b)x$, porque el factor común $x$ se saca fuera del paréntesis. Ejemplo numérico: $3x+5x=(3+5)x=8x$. Verificación con $x=2$: $3(2)+5(2)=6+10=16$ y $8(2)=16$. Así, sumar términos semejantes no es una regla nueva, sino una consecuencia de las propiedades de los números reales."
+        },
+        {
+          "texto": "Reducción de varios grupos de términos semejantes",
+          "explicacion": "Cuando hay varios tipos de términos, se agrupan los semejantes y se reduce cada grupo. Sea $7a^2b-3ab^2+2a^2b+5ab^2-a^2b$. Con $a^2b$: $7+2-1=8$, obteniendo $8a^2b$. Con $ab^2$: $-3+5=2$, obteniendo $2ab^2$. Resultado: $8a^2b+2ab^2$. Verificación con $a=1$, $b=2$: la original da $14-12+4+20-2=24$, y el resultado da $8(2)+2(4)=16+8=24$."
+        },
+        {
+          "texto": "Términos no semejantes ⇒ ✗ reducción",
+          "explicacion": "Los términos que no son semejantes se dejan indicados con su signo, sin sumar coeficientes ni exponentes. La expresión $3x+2y$ ya está reducida: no puede escribirse como $5xy$ ni como $5x$. Con $x=1$, $y=1$ da $5$, pero con $x=2$, $y=1$ da $8$, mientras $5xy=10$; la igualdad falla, lo que confirma que no se pueden unir."
+        },
+        {
+          "texto": "Términos opuestos = 0",
+          "explicacion": "Dos términos semejantes cuyos coeficientes son opuestos suman cero y desaparecen de la expresión: $5x-5x=(5-5)x=0\\cdot x=0$. Así, $4x^2+3x-4x^2=3x$. Verificación con $x=2$: $16+6-16=6$ y $3(2)=6$. Esta cancelación es habitual al reducir y obliga a revisar el número de términos que queda al final."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación por términos",
+      "puntos": [
+        {
+          "texto": "«Monomio» = un solo término",
+          "explicacion": "Un monomio es una expresión con un solo término, producto de un coeficiente y una parte literal, como $-4x^3y$, $\\frac{2}{3}a$ o el número $7$. No hay sumas ni restas que separen términos. Los monomios son la unidad con la que se construyen las demás expresiones, y por eso el estudio de sus operaciones y de su grado es la base de lo que sigue."
+        },
+        {
+          "texto": "«Binomio» = dos términos",
+          "explicacion": "Un binomio tiene exactamente dos términos no semejantes, como $2x-5$ o $a^2+b^2$. Si los dos términos fueran semejantes, la reducción los convertiría en un monomio: $3x+4x=7x$. El prefijo «bi» alude a que son dos los términos que se suman o restan."
+        },
+        {
+          "texto": "«Trinomio» = tres términos",
+          "explicacion": "Un trinomio tiene tres términos no semejantes, como $x^2-3x+2$ o $a+b+c$. Para decidir si una expresión es trinomio se cuentan los términos después de reducir los semejantes; $x^2+x-x$ parece tener tres, pero se reduce a $x^2$ y es un monomio."
+        },
+        {
+          "texto": "«Multinomio» = cuatro o más términos",
+          "explicacion": "Un multinomio es una expresión con cuatro o más términos no semejantes, como $x^3+x^2-x+1$. Los nombres monomio, binomio y trinomio cubren hasta tres términos; a partir de cuatro se usa este término general, sin prefijo numérico."
+        },
+        {
+          "texto": "«Polinomio» = suma finita de monomios",
+          "explicacion": "Un polinomio es una suma finita de monomios cuyas variables tienen exponentes enteros no negativos y no aparecen en denominadores ni bajo radicales. Los monomios, binomios, trinomios y multinomios son polinomios con uno, dos, tres o más términos. Por ejemplo, $x^2-3x+2$ es un polinomio, mientras que $x^{-1}+2$ y $\\sqrt{x}+1$ no lo son. Su estudio detallado se desarrolla en el tema de polinomios."
+        },
+        {
+          "texto": "Reducir primero ⇒ contar términos",
+          "explicacion": "La cantidad de términos de una expresión se determina después de reducir los semejantes. En $5x^2-2x^2+x$ parecen tres términos, pero $5x^2-2x^2=3x^2$ y queda $3x^2+x$, un binomio. Verificación con $x=2$: $20-8+2=14$ y $12+2=14$. Si no se reduce, se clasificaría erróneamente como trinomio."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación por naturaleza",
+      "puntos": [
+        {
+          "texto": "«Expresión racional» ✗ variables bajo radical",
+          "explicacion": "Una expresión es racional cuando sus variables solo aparecen con exponentes enteros (positivos, negativos o cero) y ninguna variable está dentro de un radical. Incluye las expresiones enteras y las fraccionarias. Ejemplos: $3x^2-5x$ y $\\frac{x+1}{x-3}$ son racionales; $\\sqrt{x}+2$ no lo es. Los radicales que afectan solo a constantes no impiden ser racional."
+        },
+        {
+          "texto": "«Racional entera» ✗ variable en denominador",
+          "explicacion": "Es la expresión racional cuyas variables tienen exponentes enteros no negativos y no aparecen en ningún denominador. Ejemplos: $5x^3-2x+1$; $\\frac{x^2}{4}$, que equivale a $\\frac{1}{4}x^2$ pues el denominador es constante; y $\\sqrt{2}\\,xy$, porque el radical afecta solo a una constante. Los polinomios son las expresiones racionales enteras."
+        },
+        {
+          "texto": "«Racional fraccionaria» ⇒ variable en denominador",
+          "explicacion": "Es la expresión racional en la que alguna variable aparece en un denominador o con exponente negativo. Ejemplos: $\\frac{3}{x}$ y $\\frac{x+1}{x-2}$. El exponente negativo es otra forma de lo mismo: $x^{-3}=\\frac{1}{x^3}$. Verificación con $x=2$: $2^{-3}=\\frac{1}{8}$ y $\\frac{1}{2^3}=\\frac{1}{8}$. Solo tiene sentido para valores que no anulen el denominador."
+        },
+        {
+          "texto": "«Irracional» ⇒ variable bajo radical",
+          "explicacion": "Una expresión es irracional cuando alguna variable aparece dentro de un radical o con exponente fraccionario. Ejemplos: $\\sqrt{x}+3$, $\\frac{1}{\\sqrt{x}}$ y $\\sqrt[3]{x^2}$. El exponente fraccionario es la forma equivalente: $x^{\\frac{1}{2}}=\\sqrt{x}$ y $\\sqrt[3]{x^2}=x^{\\frac{2}{3}}$. Verificación con $x=4$: $4^{\\frac{1}{2}}=2$ y $\\sqrt{4}=2$."
+        },
+        {
+          "texto": "Radical de constante ✗ irracional",
+          "explicacion": "Un radical cuyo radicando no contiene variables no convierte a la expresión en irracional: $\\sqrt{2}\\,x+\\sqrt{3}$ es racional entera, pues $\\sqrt{2}$ y $\\sqrt{3}$ son constantes que cumplen el papel de coeficiente y término independiente. Lo que decide el tipo es dónde están las variables, no si hay radicales. Verificación con $x=1$: $\\sqrt{2}+\\sqrt{3}$ es un número real y se opera sin restricciones."
+        },
+        {
+          "texto": "Denominador constante ✗ fraccionaria",
+          "explicacion": "Dividir entre una constante no vuelve fraccionaria a la expresión: $\\frac{x^2}{5}$ es racional entera, porque equivale a multiplicar por $\\frac{1}{5}$. Con $x=10$: $\\frac{100}{5}=20$ y $\\frac{1}{5}\\cdot100=20$. En cambio, $\\frac{5}{x^2}$ sí es fraccionaria. La clasificación mira si la variable está en el denominador, no si hay división."
+        },
+        {
+          "texto": "«Trascendente» ✗ algebraica",
+          "explicacion": "Una expresión trascendente no es algebraica, porque involucra operaciones que no son las seis básicas: una variable en el exponente ($2^x$), logaritmos ($\\log_2 x$) o funciones trigonométricas ($\\sin x$). No se puede obtener con un número finito de adiciones, multiplicaciones, divisiones y raíces. Esto la separa de $x^2$, donde el exponente es constante. Verificación con $x=3$: $2^x=8$ mientras $x^2=9$; son comportamientos diferentes."
+        },
+        {
+          "texto": "Algebraicas ⊃ racionales ⊃ enteras",
+          "explicacion": "Las expresiones algebraicas se dividen en racionales e irracionales; las racionales, a su vez, en enteras y fraccionarias. Toda expresión entera es racional y toda racional es algebraica. Ejemplo: $3x^2$ es entera, racional y algebraica; $\\frac{1}{x}$ es fraccionaria, racional y algebraica; $\\sqrt{x}$ es irracional y algebraica; $2^x$ es trascendente y no algebraica. La jerarquía permite clasificar con una sola revisión de la expresión."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor numérico",
+      "puntos": [
+        {
+          "texto": "«Valor numérico» = resultado de sustituir",
+          "explicacion": "El valor numérico de una expresión es el número que resulta al reemplazar cada variable por un número dado y efectuar las operaciones. Para $E(x)=3x^2-2x+5$ con $x=2$: $3(2)^2-2(2)+5=3(4)-4+5=12-4+5=13$. Verificación: la suma $12+5=17$ y $17-4=13$. Cambiar el valor de $x$ cambia el valor numérico, y por eso una expresión no tiene un único valor."
+        },
+        {
+          "texto": "Varias variables ⇒ valor numérico con cada una",
+          "explicacion": "Si la expresión tiene varias letras, se reemplaza cada una por su valor. Sea $P(x,y)=x^2-3xy+y^2$ con $x=2$, $y=-1$: $x^2=4$; $-3xy=-3(2)(-1)=6$; $y^2=1$. Suma: $4+6+1=11$. Verificación: $-3\\cdot2=-6$ y $-6\\cdot(-1)=6$, valor que coincide con el obtenido al sustituir."
+        },
+        {
+          "texto": "Valor negativo ⇒ sustituir entre paréntesis",
+          "explicacion": "Al reemplazar una letra por un número negativo se escribe este entre paréntesis para no alterar el signo ni el exponente. Sea $x^2-2x$ con $x=-3$: $(-3)^2-2(-3)=9+6=15$. Sin los paréntesis, $-3^2$ sería $-9$, y el resultado cambiaría a $-9+6=-3$, lo que es erróneo. Verificación: $(-3)(-3)=9$ y $-2\\cdot(-3)=6$."
+        },
+        {
+          "texto": "Orden de operaciones ⇒ potencias, productos, sumas",
+          "explicacion": "Al evaluar se resuelve primero lo que está entre signos de agrupación; después potencias y radicales; luego multiplicaciones y divisiones de izquierda a derecha; y al final sumas y restas. Sea $2+3\\cdot4^2-10\\div5$: $4^2=16$; $3\\cdot16=48$; $10\\div5=2$; $2+48-2=48$. Verificación alternativa: $2-2=0$ y $0+48=48$."
+        },
+        {
+          "texto": "Valor numérico con fracción y radical",
+          "explicacion": "Cuando la expresión mezcla fracciones y radicales, se evalúa cada parte y luego se unen. Sea $E(x)=\\sqrt{x+1}+\\frac{6}{x}$ con $x=3$: $\\sqrt{3+1}=\\sqrt{4}=2$ y $\\frac{6}{3}=2$, de modo que $E(3)=2+2=4$. Verificación: $2^2=4$ y $3\\cdot2=6$, coherentes con los datos. Otro caso: $\\frac{x^2-1}{x+2}$ con $x=3$ da $\\frac{9-1}{5}=\\frac{8}{5}$."
+        },
+        {
+          "texto": "Constante ⇒ valor numérico fijo",
+          "explicacion": "Si la expresión no tiene letras, o si estas se cancelan, su valor no depende de las variables. En $x-x+4$ queda siempre $4$, sea cual sea $x$. Con $x=7$: $7-7+4=4$; con $x=-2$: $-2+2+4=4$. Un término independiente es el ejemplo más sencillo de una cantidad que se mantiene fija."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores admisibles",
+      "puntos": [
+        {
+          "texto": "Denominador ≠ 0 ⇒ valor admisible",
+          "explicacion": "En una expresión fraccionaria solo son admisibles los valores que no anulan ningún denominador, porque la división entre cero no está definida. Para $\\frac{x+1}{x-2}$ debe cumplirse $x-2\\neq0$, o sea $x\\neq2$. Verificación: con $x=5$ resulta $\\frac{6}{3}=2$, válido; con $x=2$ resultaría $\\frac{3}{0}$, no definido."
+        },
+        {
+          "texto": "Radicando de índice par ≥ 0",
+          "explicacion": "En una raíz de índice par (cuadrada, cuarta, ...) el radicando debe ser mayor o igual que cero para que el resultado sea real. En $\\sqrt{x-3}$ se exige $x-3\\geq0$, es decir $x\\geq3$. Verificación: con $x=7$ se tiene $\\sqrt{4}=2$; con $x=2$ se tendría $\\sqrt{-1}$, que no es real. Con índice impar, como $\\sqrt[3]{x-3}$, no hay restricción."
+        },
+        {
+          "texto": "Radicando en denominador ⇒ > 0",
+          "explicacion": "Si la raíz de índice par está en un denominador, el radicando debe ser estrictamente positivo, pues además de ser real no puede valer cero. Para $\\frac{1}{\\sqrt{x-1}}$ se exige $x-1>0$, o sea $x>1$. Verificación: con $x=5$ resulta $\\frac{1}{2}$; con $x=1$ se tendría $\\frac{1}{0}$, indefinido."
+        },
+        {
+          "texto": "Condiciones combinadas ⇒ cumplir todas",
+          "explicacion": "Cuando hay varias restricciones, el valor debe cumplirlas todas a la vez. En $\\frac{\\sqrt{x+4}}{x-1}$ se exige $x+4\\geq0$ (es decir, $x\\geq-4$) y $x-1\\neq0$ (es decir, $x\\neq1$). Verificación: con $x=5$ resulta $\\frac{3}{4}$, válido; con $x=1$ el denominador es $0$; con $x=-5$ el radicando es $-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresiones equivalentes",
+      "puntos": [
+        {
+          "texto": "Expresiones equivalentes = mismo valor admisible",
+          "explicacion": "Dos expresiones son equivalentes si, para todo valor admisible de las letras, tienen el mismo valor numérico. Por ejemplo, $2(x+3)$ y $2x+6$. Con $x=1$: $2(4)=8$ y $2+6=8$. Con $x=-2$: $2(1)=2$ y $-4+6=2$. La equivalencia justifica transformar una expresión en otra más sencilla sin cambiar su comportamiento."
+        },
+        {
+          "texto": "Un solo valor ✗ prueba equivalencia",
+          "explicacion": "Que dos expresiones coincidan en un valor no demuestra que sean equivalentes; hay que verificar muchos valores o justificar la transformación con propiedades. Sean $(x+1)^2$ y $x^2+1$. Con $x=0$ ambas valen $1$, pero con $x=1$ la primera vale $4$ y la segunda $2$. Un solo valor distinto basta para rechazar la equivalencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con monomios",
+      "puntos": [
+        {
+          "texto": "Producto de potencias: $x^m\\cdot x^n=x^{m+n}$",
+          "explicacion": "Al multiplicar potencias de igual base se suman los exponentes, porque se juntan $m$ factores y luego $n$ factores más. Deducción: $x^2\\cdot x^3=(x\\cdot x)(x\\cdot x\\cdot x)=x^5$. Ejemplo con $x=2$: $2^3\\cdot2^4=8\\cdot16=128=2^7$. Verificación: $3+4=7$ y $2^7=128$."
+        },
+        {
+          "texto": "Cociente de potencias: $\\frac{x^m}{x^n}=x^{m-n}$",
+          "explicacion": "Al dividir potencias de igual base ($x\\neq0$) se restan los exponentes, porque $n$ factores del denominador se cancelan con $n$ del numerador. Ejemplo con $x=2$: $\\frac{2^5}{2^2}=\\frac{32}{4}=8=2^3$. Verificación: $5-2=3$ y $2^3=8$."
+        },
+        {
+          "texto": "Potencia de potencia: $(x^m)^n=x^{mn}$",
+          "explicacion": "Elevar una potencia a otra potencia equivale a multiplicar los exponentes, pues se repite $n$ veces el bloque de $m$ factores. Ejemplo con $x=2$: $(2^2)^3=4^3=64$ y $2^6=64$. Verificación: $2\\cdot3=6$."
+        },
+        {
+          "texto": "Potencia de producto: $(xy)^n=x^ny^n$",
+          "explicacion": "Elevar un producto a una potencia equivale a elevar cada factor. Ejemplo con $x=2$, $y=3$, $n=2$: $(2\\cdot3)^2=6^2=36$ y $2^2\\cdot3^2=4\\cdot9=36$. Se usa para elevar monomios, tomando también la potencia del coeficiente."
+        },
+        {
+          "texto": "Multiplicación de monomios = coeficientes × exponentes sumados",
+          "explicacion": "Se multiplican los coeficientes y se suman los exponentes de las letras iguales; las letras distintas se escriben juntas. Sea $(3x^2y)(-4xy^3)$: coeficientes $3\\cdot(-4)=-12$; $x^{2+1}=x^3$; $y^{1+3}=y^4$. Resultado: $-12x^3y^4$. Verificación con $x=1$, $y=2$: $(3\\cdot2)(-4\\cdot8)=6\\cdot(-32)=-192$ y $-12\\cdot1\\cdot16=-192$."
+        },
+        {
+          "texto": "Ley de signos en el producto",
+          "explicacion": "Signos iguales dan producto positivo y signos distintos dan producto negativo. Ejemplos: $(-2a)(-3a)=6a^2$ y $(-2a)(3a)=-6a^2$. Verificación con $a=1$: $(-2)(-3)=6$ y $(-2)(3)=-6$. Se aplica antes de operar las letras, porque el signo pertenece al coeficiente."
+        },
+        {
+          "texto": "División de monomios = cociente de coeficientes × exponentes restados",
+          "explicacion": "Se dividen los coeficientes y se restan los exponentes de las letras iguales ($x\\neq0$, $y\\neq0$). Sea $\\frac{12x^5y^3}{-4x^2y}$: $\\frac{12}{-4}=-3$; $x^{5-2}=x^3$; $y^{3-1}=y^2$. Resultado: $-3x^3y^2$. Verificación con $x=2$, $y=1$: $\\frac{12\\cdot32}{-4\\cdot4}=\\frac{384}{-16}=-24$ y $-3\\cdot8\\cdot1=-24$."
+        },
+        {
+          "texto": "Potenciación de monomio = elevar coeficiente y letras",
+          "explicacion": "Para elevar un monomio se eleva el coeficiente y se multiplican los exponentes de cada letra por el exponente de la potencia. Sea $(-2x^3y)^3$: $(-2)^3=-8$; $x^{3\\cdot3}=x^9$; $y^{1\\cdot3}=y^3$. Resultado: $-8x^9y^3$. Verificación con $x=1$, $y=1$: $(-2)^3=-8$ y $-8\\cdot1\\cdot1=-8$."
+        },
+        {
+          "texto": "Radicación de monomio = raíz de coeficiente y letras",
+          "explicacion": "Para extraer una raíz se halla la raíz del coeficiente y se divide el exponente de cada letra entre el índice. Sea $\\sqrt[3]{-27x^6}$: $\\sqrt[3]{-27}=-3$; $x^{6\\div3}=x^2$. Resultado: $-3x^2$. Verificación: $(-3x^2)^3=-27x^6$. Otro caso: $\\sqrt{16x^4}=4x^2$, pues $(4x^2)^2=16x^4$."
+        },
+        {
+          "texto": "Letras distintas ⇒ exponentes ✗ sumar",
+          "explicacion": "Si las letras son distintas, no se suman los exponentes: se escriben ambas en el producto. Así, $x\\cdot y=xy$ y $(2x)(3y)=6xy$. Verificación con $x=2$, $y=3$: $(4)(9)=36$ y $6\\cdot6=36$. Solo se suman exponentes de una misma letra."
+        }
+      ]
+    },
+    {
+      "titulo": "Grado de monomio",
+      "puntos": [
+        {
+          "texto": "«Grado relativo» = exponente de una letra",
+          "explicacion": "El grado relativo de un monomio respecto de una letra es el exponente de esa letra. En $-5x^3y^2$, el grado relativo respecto de $x$ es $3$ y respecto de $y$ es $2$. Si la letra no aparece, su grado relativo es $0$. Se usa para analizar el comportamiento del monomio frente a una variable específica."
+        },
+        {
+          "texto": "«Grado absoluto» = suma de exponentes",
+          "explicacion": "El grado absoluto de un monomio es la suma de los exponentes de todas sus letras. En $4a^2b^3c$: $2+3+1=6$. Verificación: la letra $c$ tiene exponente implícito $1$. En $-5x^3y^2$ vale $3+2=5$. El coeficiente no influye en el grado."
+        },
+        {
+          "texto": "Constante no nula ⇒ grado 0",
+          "explicacion": "Un número distinto de cero, como $7$, es un monomio de grado $0$, porque $7=7x^0$ para $x\\neq0$. Verificación: $x^0=1$ y $7\\cdot1=7$. El número $0$ no tiene grado definido, ya que $0=0x^n$ para cualquier $n$. El estudio sistemático del grado se amplía en el tema siguiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos de agrupación",
+      "puntos": [
+        {
+          "texto": "Signos de agrupación = paréntesis, corchetes, llaves, vínculo",
+          "explicacion": "Los signos de agrupación encierran operaciones que deben tratarse como un bloque: paréntesis $( )$, corchetes $[ ]$, llaves $\\{ \\}$ y el vínculo, barra horizontal que cubre una expresión. En $5-[2+(3-1)]$ se agrupan niveles: $3-1=2$, luego $2+2=4$, luego $5-4=1$. Se usan para marcar el orden en que se opera y para evitar ambigüedades."
+        },
+        {
+          "texto": "Signo + delante ⇒ términos sin cambio",
+          "explicacion": "Al suprimir un paréntesis precedido de $+$, los términos interiores conservan su signo: $4x+(3x-2)=4x+3x-2=7x-2$. Verificación con $x=1$: $4+(3-2)=5$ y $7-2=5$. El signo $+$ no altera la expresión interior."
+        },
+        {
+          "texto": "Signo − delante ⇒ cambia todos los signos",
+          "explicacion": "Al suprimir un paréntesis precedido de $-$, se cambia el signo de todos los términos interiores: $-(3x-2y+1)=-3x+2y-1$. Verificación con $x=1$, $y=1$: $-(3-2+1)=-2$ y $-3+2-1=-2$. Olvidar cambiar uno solo de los signos produce un resultado distinto."
+        },
+        {
+          "texto": "Factor delante ⇒ distribuir",
+          "explicacion": "Si el paréntesis está multiplicado por un número, se distribuye el factor a cada término interior: $3(2x-5)=6x-15$ y $-2(x^2-3x+4)=-2x^2+6x-8$. Verificación con $x=1$: $3(-3)=-9$ y $6-15=-9$; $-2(2)=-4$ y $-2+6-8=-4$. El signo del factor también se distribuye."
+        },
+        {
+          "texto": "Agrupaciones anidadas ⇒ de adentro hacia afuera",
+          "explicacion": "Cuando hay varios signos, se suprimen primero los más interiores. Sea $5x-\\{2x-[3x-(x-4)]\\}$: $-(x-4)=-x+4$; el corchete queda $3x-x+4=2x+4$; la llave queda $2x-(2x+4)=-4$; resultado $5x-(-4)=5x+4$. Verificación con $x=1$: original $5-\\{2-[3-(-3)]\\}=5-\\{2-6\\}=5+4=9$ y $5+4=9$."
+        },
+        {
+          "texto": "Introducir signos de agrupación",
+          "explicacion": "También se puede agrupar términos, cuidando el cambio de signo si el paréntesis queda precedido de $-$. Ejemplo: $3x-2y+5=3x-(2y-5)$. Verificación: $-(2y-5)=-2y+5$, que coincide con los términos originales. Con $x=1$, $y=1$: $3-2+5=6$ y $3-(2-5)=3+3=6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de operaciones",
+      "puntos": [
+        {
+          "texto": "Conmutativa: $a+b=b+a$",
+          "explicacion": "El orden de los sumandos no cambia la suma, y lo mismo vale para el producto ($ab=ba$). Con $a=3$, $b=5$: $3+5=8=5+3$. Permite reordenar los términos de una expresión, por ejemplo para agrupar los semejantes, y justifica que $xy$ y $yx$ sean la misma parte literal."
+        },
+        {
+          "texto": "Asociativa: $(a+b)+c=a+(b+c)$",
+          "explicacion": "La manera de agrupar tres sumandos no cambia el resultado, y vale también para el producto. Con $a=2$, $b=3$, $c=4$: $(2+3)+4=9$ y $2+(3+4)=9$. Permite sumar términos semejantes en cualquier orden, sin necesidad de efectuar las operaciones de izquierda a derecha."
+        },
+        {
+          "texto": "Distributiva: $a(b+c)=ab+ac$",
+          "explicacion": "Multiplicar una suma por un factor equivale a multiplicar cada sumando. Con $a=2$, $b=3$, $c=4$: $2(3+4)=14$ y $2\\cdot3+2\\cdot4=6+8=14$. Es la propiedad que justifica suprimir paréntesis con factor, y su lectura inversa justifica reducir términos semejantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias y errores",
+      "puntos": [
+        {
+          "texto": "Orden para clasificar una expresión",
+          "explicacion": "Se revisa primero si hay operaciones no algebraicas (trascendente); luego si hay variables bajo radical (irracional); luego si hay variables en denominadores o exponentes negativos (fraccionaria); si ninguna se cumple, es entera. Ejemplo: $\\frac{x^2}{3}+\\sqrt{5}\\,x-\\frac{1}{x}$ no tiene variable bajo radical, pero sí en el denominador, así que es fraccionaria. Y $\\sqrt{x}+\\frac{1}{x}$ es irracional, porque el radical se revisa antes."
+        },
+        {
+          "texto": "Error: $x+x\\neq x^2$",
+          "explicacion": "Sumar dos términos iguales duplica el coeficiente, no el exponente: $x+x=2x$. Verificación con $x=3$: $3+3=6$ y $2x=6$, mientras que $x^2=9$. El exponente solo aumenta al multiplicar, nunca al sumar."
+        },
+        {
+          "texto": "Error: $x\\times x\\neq2x$",
+          "explicacion": "Multiplicar una letra por sí misma suma exponentes, no coeficientes: $x\\cdot x=x^2$. Verificación con $x=3$: $3\\cdot3=9$ y $x^2=9$, mientras que $2x=6$."
+        },
+        {
+          "texto": "Error: no semejantes ⇒ ✗ sumar",
+          "explicacion": "No se pueden sumar términos con exponentes distintos: $3x+2x^2\\neq5x^3$. Verificación con $x=2$: $3(2)+2(4)=6+8=14$, pero $5x^3=5\\cdot8=40$. Para ver si una reducción es válida se prueba con un valor distinto de $1$, que evita coincidencias casuales."
+        },
+        {
+          "texto": "Error: $-(x-3)\\neq-x-3$",
+          "explicacion": "Al suprimir un paréntesis precedido de $-$ se cambian todos los signos, incluido el último: $-(x-3)=-x+3$. Verificación con $x=5$: $-(2)=-2$ y $-5+3=-2$, mientras que $-5-3=-8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Coeficientes ∈ números reales",
+          "explicacion": "Los coeficientes y constantes son números reales (enteros, fracciones, radicales numéricos, $\\pi$), y las operaciones entre ellos obedecen las propiedades estudiadas en los temas de números reales y operaciones reales. Por ejemplo, el coeficiente $\\sqrt{2}$ de $\\sqrt{2}\\,x$ se multiplica con otro: $(\\sqrt{2}x)(\\sqrt{2}x)=2x^2$. Verificación: $\\sqrt{2}\\cdot\\sqrt{2}=2$."
+        },
+        {
+          "texto": "Temas siguientes ⊃ exponentes y raíces",
+          "explicacion": "Este tema usa lo mínimo de exponentes y raíces para operar monomios; los temas de potenciación y radicación desarrollan sus leyes completas, y los temas de polinomios, grado y operaciones con polinomios amplían la clasificación y las operaciones vistas aquí. Con lo aprendido ya se puede reconocer qué es un polinomio, reducir términos, clasificar y evaluar expresiones."
+        }
+      ]
+    }
+  ]
+}

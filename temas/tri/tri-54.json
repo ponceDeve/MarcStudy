@@ -1,0 +1,171 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Gráficas de las líneas trigonométricas",
+  "glosario": {
+    "tangentoide": "Gráfica de la función tangente.",
+    "cotangentoide": "Gráfica de la función cotangente.",
+    "secantoide": "Gráfica de la función secante.",
+    "cosecantoide": "Gráfica de la función cosecante.",
+    "senoide": "Gráfica de la función seno.",
+    "cosenoide": "Gráfica de la función coseno.",
+    "asíntota": "Recta a la que la curva se acerca.",
+    "rama": "Trozo de curva entre dos asíntotas.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "cotangente": "Razón entre abscisa y ordenada.",
+    "secante": "Inverso multiplicativo del coseno.",
+    "cosecante": "Inverso multiplicativo del seno.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "simetría": "Correspondencia de puntos respecto a un eje.",
+    "periodo": "Longitud tras la cual la curva se repite.",
+    "valor absoluto": "Distancia de un número al cero."
+  },
+  "theory": [
+    {
+      "titulo": "Tangentoide",
+      "puntos": [
+        {
+          "texto": "«Tangentoide»: gráfica de $y = \\tan x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\tan x)$, con el arco $x$ en radianes (rad) sobre el eje horizontal y la tangente (tan) sobre el eje vertical. La curva se forma con ramas separadas, una entre cada par de valores donde la tangente no existe."
+        },
+        {
+          "texto": "Asíntotas verticales en $x = \\frac{\\pi}{2} + k\\pi$, con $k$ entero",
+          "explicacion": "Una asíntota es una recta a la que la curva se acerca sin tocarla. Aquí la tangente no existe, y al acercarse el arco a esos valores la curva sube o baja sin límite. Ejemplo: en $x = \\frac{\\pi}{2}$ y en $x = \\frac{3\\pi}{2}$ hay asíntotas."
+        },
+        {
+          "texto": "La rama central pasa por el origen $(0, 0)$",
+          "explicacion": "Con arco 0 el punto $T$ coincide con $A$, y la tangente vale 0. Ejemplo: $\\tan 0 = 0$, y la curva cruza el eje horizontal también en $(\\pi, 0)$."
+        },
+        {
+          "texto": "Punto $\\left(\\frac{\\pi}{4}, 1\\right)$ sobre la rama central",
+          "explicacion": "A $45^\\circ$ la ordenada y la abscisa del extremo son iguales. Ejemplo: $\\tan\\frac{\\pi}{4} = \\frac{\\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{2}}{2}} = 1$."
+        },
+        {
+          "texto": "Punto $\\left(-\\frac{\\pi}{4}, -1\\right)$ sobre la rama central",
+          "explicacion": "El arco negativo tiene tangente de signo contrario. Ejemplo: $\\tan\\left(-\\frac{\\pi}{4}\\right) = -1$."
+        },
+        {
+          "texto": "Cada rama de la tangentoide ↑ de izquierda a derecha",
+          "explicacion": "Entre dos asíntotas consecutivas la curva va desde valores muy negativos hasta valores muy positivos. Ejemplo: en el intervalo de $-\\frac{\\pi}{2}$ a $\\frac{\\pi}{2}$, $\\tan\\left(-\\frac{\\pi}{3}\\right) \\approx -1{,}73$ es menor que $\\tan\\frac{\\pi}{3} \\approx 1{,}73$."
+        },
+        {
+          "texto": "Tangentoide simétrica respecto al origen",
+          "explicacion": "Esto expresa que $\\tan(-x) = -\\tan x$. Ejemplo: el punto $\\left(\\frac{\\pi}{3}, \\sqrt{3}\\right)$ tiene su simétrico en $\\left(-\\frac{\\pi}{3}, -\\sqrt{3}\\right)$."
+        },
+        {
+          "texto": "Tangentoide se repite cada $\\pi$",
+          "explicacion": "La misma rama aparece a la derecha y a la izquierda desplazada $\\pi$. Ejemplo: $\\tan\\frac{5\\pi}{4} = \\tan\\frac{\\pi}{4} = 1$. La medida exacta de esa repetición se estudia como periodo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangentoide",
+      "puntos": [
+        {
+          "texto": "«Cotangentoide»: gráfica de $y = \\cot x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\cot x)$, con la cotangente (cot) sobre el eje vertical. Como la tangentoide, se forma con ramas separadas por asíntotas."
+        },
+        {
+          "texto": "Asíntotas verticales en $x = k\\pi$, con $k$ entero",
+          "explicacion": "La cotangente no existe donde el seno vale 0. Ejemplo: en $x = 0$, $x = \\pi$ y $x = 2\\pi$ hay asíntotas, y la curva se aleja sin límite al acercarse."
+        },
+        {
+          "texto": "Cruces con el eje horizontal en $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "La cotangente vale 0 donde la abscisa del extremo es 0. Ejemplo: $\\cot\\frac{\\pi}{2} = 0$ y $\\cot\\frac{3\\pi}{2} = 0$."
+        },
+        {
+          "texto": "Punto $\\left(\\frac{\\pi}{4}, 1\\right)$ sobre la rama central",
+          "explicacion": "A $45^\\circ$ la abscisa y la ordenada del extremo son iguales. Ejemplo: $\\cot\\frac{\\pi}{4} = 1$, y ahí la cotangentoide corta a la tangentoide."
+        },
+        {
+          "texto": "Punto $\\left(\\frac{3\\pi}{4}, -1\\right)$ sobre la rama central",
+          "explicacion": "El extremo está en el segundo cuadrante, con abscisa y ordenada opuestas. Ejemplo: $\\cot\\frac{3\\pi}{4} = -1$."
+        },
+        {
+          "texto": "Cada rama de la cotangentoide ↓ de izquierda a derecha",
+          "explicacion": "Entre dos asíntotas consecutivas la curva va desde valores muy positivos hasta valores muy negativos. Ejemplo: en el intervalo de $0$ a $\\pi$, $\\cot\\frac{\\pi}{6} \\approx 1{,}73$ es mayor que $\\cot\\frac{5\\pi}{6} \\approx -1{,}73$."
+        },
+        {
+          "texto": "Cotangentoide simétrica respecto al origen",
+          "explicacion": "Esto expresa que $\\cot(-x) = -\\cot x$. Ejemplo: el punto $\\left(\\frac{\\pi}{6}, \\sqrt{3}\\right)$ tiene su simétrico en $\\left(-\\frac{\\pi}{6}, -\\sqrt{3}\\right)$."
+        },
+        {
+          "texto": "Cotangentoide se repite cada $\\pi$",
+          "explicacion": "La misma rama aparece desplazada $\\pi$ a la derecha y a la izquierda. Ejemplo: $\\cot\\frac{5\\pi}{4} = \\cot\\frac{\\pi}{4} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Secantoide",
+      "puntos": [
+        {
+          "texto": "«Secantoide»: gráfica de $y = \\sec x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\sec x)$, con la secante (sec) sobre el eje vertical, y se obtiene tomando el inverso del coseno (cos) de cada arco. Ejemplo: en $x = \\frac{\\pi}{3}$, $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$ y $\\sec\\frac{\\pi}{3} = 2$."
+        },
+        {
+          "texto": "Asíntotas verticales en $x = \\frac{\\pi}{2} + k\\pi$",
+          "explicacion": "La secante no existe donde el coseno vale 0, y la curva se aleja sin límite al acercarse. Ejemplo: $x = \\frac{\\pi}{2}$ y $x = \\frac{3\\pi}{2}$ son asíntotas."
+        },
+        {
+          "texto": "Ramas con $y \\ge 1$ o $y \\le -1$: sin puntos entre $-1$ y $1$",
+          "explicacion": "Como el valor absoluto del coseno no supera 1, el de la secante no baja de 1. Ejemplo: la curva no pasa por el punto $\\left(\\frac{\\pi}{3}, 0{,}5\\right)$, pues la altura en ese arco es 2."
+        },
+        {
+          "texto": "Puntos de contacto con las rectas $y = 1$ y $y = -1$",
+          "explicacion": "Donde el coseno vale $\\pm 1$, la secante vale lo mismo. Ejemplo: la curva pasa por $(0, 1)$ y por $(\\pi, -1)$."
+        },
+        {
+          "texto": "Secantoide simétrica respecto al eje vertical",
+          "explicacion": "Esto expresa que $\\sec(-x) = \\sec x$. Ejemplo: $\\sec\\left(-\\frac{\\pi}{3}\\right) = \\sec\\frac{\\pi}{3} = 2$."
+        },
+        {
+          "texto": "Secantoide se repite cada $2\\pi$",
+          "explicacion": "Como el coseno, vuelve a ocupar la misma posición tras una vuelta completa. Ejemplo: $\\sec\\frac{7\\pi}{3} = \\sec\\left(\\frac{\\pi}{3} + 2\\pi\\right) = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecantoide",
+      "puntos": [
+        {
+          "texto": "«Cosecantoide»: gráfica de $y = \\csc x$",
+          "explicacion": "Cada punto de la curva tiene la forma $(x, \\csc x)$, con la cosecante (csc) sobre el eje vertical, y se obtiene tomando el inverso del seno (sen) de cada arco. Ejemplo: en $x = \\frac{\\pi}{6}$, $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$ y $\\csc\\frac{\\pi}{6} = 2$."
+        },
+        {
+          "texto": "Asíntotas verticales en $x = k\\pi$, con $k$ entero",
+          "explicacion": "La cosecante no existe donde el seno vale 0, y la curva se aleja sin límite al acercarse. Ejemplo: $x = 0$, $x = \\pi$ y $x = 2\\pi$ son asíntotas."
+        },
+        {
+          "texto": "Ramas con $y \\ge 1$ o $y \\le -1$: sin puntos entre $-1$ y $1$",
+          "explicacion": "Como el valor absoluto del seno no supera 1, el de la cosecante no baja de 1. Ejemplo: la curva no pasa por el punto $\\left(\\frac{\\pi}{6}, 1\\right)$, pues la altura en ese arco es 2."
+        },
+        {
+          "texto": "Puntos de contacto en $\\left(\\frac{\\pi}{2}, 1\\right)$ y $\\left(\\frac{3\\pi}{2}, -1\\right)$",
+          "explicacion": "Donde el seno vale $\\pm 1$, la cosecante vale lo mismo. Ejemplo: $\\csc\\frac{\\pi}{2} = 1$ y $\\csc\\frac{3\\pi}{2} = -1$."
+        },
+        {
+          "texto": "Cosecantoide simétrica respecto al origen",
+          "explicacion": "Esto expresa que $\\csc(-x) = -\\csc x$. Ejemplo: $\\csc\\left(-\\frac{\\pi}{6}\\right) = -2$."
+        },
+        {
+          "texto": "Cosecantoide se repite cada $2\\pi$",
+          "explicacion": "Como el seno, vuelve a ocupar la misma posición tras una vuelta completa. Ejemplo: $\\csc\\frac{13\\pi}{6} = \\csc\\left(\\frac{\\pi}{6} + 2\\pi\\right) = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones entre curvas",
+      "puntos": [
+        {
+          "texto": "La tangentoide y la cotangentoide se cortan en $x = \\frac{\\pi}{4}$",
+          "explicacion": "Ahí ambas valen 1. Ejemplo: $\\tan\\frac{\\pi}{4} = \\cot\\frac{\\pi}{4} = 1$."
+        },
+        {
+          "texto": "Las gráficas de seno y coseno ya se construyeron aparte",
+          "explicacion": "La senoide y la cosenoide se estudian en su propio tema y no se repiten aquí. Ejemplo: la secantoide usa como guía la cosenoide, y la cosecantoide usa como guía la senoide."
+        }
+      ]
+    }
+  ]
+}

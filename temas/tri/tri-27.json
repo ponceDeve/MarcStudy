@@ -1,0 +1,174 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Suma y diferencia de ángulos",
+  "glosario": {
+    "Ángulo compuesto": "Ángulo expresado como suma o diferencia de otros",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Racionalizar": "Eliminar raíces del denominador de una fracción",
+    "Ángulo agudo": "Ángulo menor que 90 grados",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Condensar": "Reducir una expresión a una sola razón",
+    "Triángulo": "Figura de tres lados y tres ángulos",
+    "Identidad": "Igualdad que se cumple para todo valor permitido"
+  },
+  "theory": [
+    {
+      "titulo": "Cotangente de la suma",
+      "puntos": [
+        {
+          "texto": "Cotangente de la suma: $\\cot(A+B) = \\frac{\\cot A\\cot B - 1}{\\cot A + \\cot B}$",
+          "explicacion": "Es la fórmula de la tangente de la suma escrita con cotangentes; el denominador debe ser distinto de cero. Ejemplo: para $\\cot75°$ con $75° = 45° + 30°$, se usa $\\cot45° = 1$ y $\\cot30° = \\sqrt{3}$. Entonces $\\cot75° = \\frac{\\sqrt{3} - 1}{1 + \\sqrt{3}}$, y al racionalizar resulta $\\frac{(\\sqrt{3} - 1)^2}{2} = \\frac{4 - 2\\sqrt{3}}{2} = 2 - \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente de la diferencia",
+      "puntos": [
+        {
+          "texto": "Cotangente de la diferencia: $\\cot(A-B) = \\frac{\\cot A\\cot B + 1}{\\cot B - \\cot A}$",
+          "explicacion": "Observa que en el denominador la cotangente de B va primero. Ejemplo: para $\\cot15°$ con $15° = 45° - 30°$, $\\cot15° = \\frac{1 \\cdot \\sqrt{3} + 1}{\\sqrt{3} - 1} = \\frac{(\\sqrt{3} + 1)^2}{2} = \\frac{4 + 2\\sqrt{3}}{2} = 2 + \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de senos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(A+B)\\operatorname{sen}(A-B) = \\operatorname{sen}^2A - \\operatorname{sen}^2B$",
+          "explicacion": "Se obtiene multiplicando las fórmulas del seno de la suma y de la diferencia, que dan una diferencia de cuadrados: $\\operatorname{sen}^2A\\cos^2B - \\cos^2A\\operatorname{sen}^2B$. Luego se reemplaza $\\cos^2B = 1 - \\operatorname{sen}^2B$ y $\\cos^2A = 1 - \\operatorname{sen}^2A$, y los términos se reducen a $\\operatorname{sen}^2A - \\operatorname{sen}^2B$. Ejemplo: con $A = 60°$ y $B = 30°$, $\\operatorname{sen}90° \\cdot \\operatorname{sen}30° = \\frac{1}{2}$, y también $\\operatorname{sen}^260° - \\operatorname{sen}^230° = \\frac{3}{4} - \\frac{1}{4} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de cosenos",
+      "puntos": [
+        {
+          "texto": "$\\cos(A+B)\\cos(A-B) = \\cos^2A - \\operatorname{sen}^2B$",
+          "explicacion": "Se obtiene multiplicando las fórmulas del coseno de la suma y de la diferencia, que dan $\\cos^2A\\cos^2B - \\operatorname{sen}^2A\\operatorname{sen}^2B$, y luego se reemplazan los cuadrados con la relación $\\operatorname{sen}^2 + \\cos^2 = 1$. Ejemplo: con $A = 60°$ y $B = 30°$, $\\cos90° \\cdot \\cos30° = 0$, y también $\\cos^260° - \\operatorname{sen}^230° = \\frac{1}{4} - \\frac{1}{4} = 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de senos compuestos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(A+B) + \\operatorname{sen}(A-B) = 2\\operatorname{sen}A\\cos B$",
+          "explicacion": "Se obtiene sumando las fórmulas del seno de la suma y de la diferencia: los términos $\\cos A\\operatorname{sen}B$ se cancelan y los otros se duplican. Ejemplo: con $A = 60°$ y $B = 30°$, $\\operatorname{sen}90° + \\operatorname{sen}30° = 1 + \\frac{1}{2} = \\frac{3}{2}$, y también $2\\operatorname{sen}60°\\cos30° = 2 \\cdot \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{3}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de senos compuestos",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(A+B) - \\operatorname{sen}(A-B) = 2\\cos A\\operatorname{sen}B$",
+          "explicacion": "Se obtiene restando las dos fórmulas del seno: se cancelan los términos $\\operatorname{sen}A\\cos B$ y los otros se duplican. Ejemplo: con $A = 60°$ y $B = 30°$, $\\operatorname{sen}90° - \\operatorname{sen}30° = 1 - \\frac{1}{2} = \\frac{1}{2}$, y también $2\\cos60°\\operatorname{sen}30° = 2 \\cdot \\frac{1}{2} \\cdot \\frac{1}{2} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cosenos compuestos",
+      "puntos": [
+        {
+          "texto": "$\\cos(A+B) + \\cos(A-B) = 2\\cos A\\cos B$",
+          "explicacion": "Se obtiene sumando las fórmulas del coseno: los términos con producto de senos se cancelan. Ejemplo: con $A = 60°$ y $B = 30°$, $\\cos90° + \\cos30° = 0 + \\frac{\\sqrt{3}}{2}$, y también $2\\cos60°\\cos30° = 2 \\cdot \\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de cosenos compuestos",
+      "puntos": [
+        {
+          "texto": "$\\cos(A-B) - \\cos(A+B) = 2\\operatorname{sen}A\\operatorname{sen}B$",
+          "explicacion": "Se obtiene restando la fórmula del coseno de la suma a la de la diferencia: se cancelan los productos de cosenos y los productos de senos se duplican. Ejemplo: con $A = 60°$ y $B = 30°$, $\\cos30° - \\cos90° = \\frac{\\sqrt{3}}{2} - 0$, y también $2\\operatorname{sen}60°\\operatorname{sen}30° = 2 \\cdot \\frac{\\sqrt{3}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de tangentes",
+      "puntos": [
+        {
+          "texto": "$\\tan A + \\tan B = \\frac{\\operatorname{sen}(A+B)}{\\cos A\\cos B}$",
+          "explicacion": "Se obtiene escribiendo cada tangente como seno entre coseno, sumando las fracciones con denominador común $\\cos A\\cos B$ y reconociendo en el numerador el seno de la suma. Ejemplo: con $A = 45°$ y $B = 30°$, $\\frac{\\operatorname{sen}75°}{\\cos45°\\cos30°} = \\frac{(\\sqrt{6} + \\sqrt{2})/4}{\\sqrt{6}/4} = 1 + \\frac{\\sqrt{3}}{3}$, que es $\\tan45° + \\tan30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de tangentes",
+      "puntos": [
+        {
+          "texto": "$\\tan A - \\tan B = \\frac{\\operatorname{sen}(A-B)}{\\cos A\\cos B}$",
+          "explicacion": "Se obtiene igual que la suma, pero en el numerador queda el seno de la diferencia. Ejemplo: con $A = 45°$ y $B = 30°$, $\\frac{\\operatorname{sen}15°}{\\cos45°\\cos30°} = \\frac{(\\sqrt{6} - \\sqrt{2})/4}{\\sqrt{6}/4} = 1 - \\frac{\\sqrt{3}}{3}$, que es $\\tan45° - \\tan30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma igual a 45°",
+      "puntos": [
+        {
+          "texto": "$A + B = 45°$ ⇒ $(1 + \\tan A)(1 + \\tan B) = 2$",
+          "explicacion": "Como $\\tan45° = 1$, la fórmula de la tangente de la suma da $\\frac{\\tan A + \\tan B}{1 - \\tan A\\tan B} = 1$, de donde $\\tan A + \\tan B = 1 - \\tan A\\tan B$. Al pasar todo a un lado queda $1 + \\tan A + \\tan B + \\tan A\\tan B = 2$, que es el producto indicado. Ejemplo: si $\\tan A = \\frac{1}{2}$, entonces $\\tan B = \\tan(45° - A) = \\frac{1 - 1/2}{1 + 1/2} = \\frac{1}{3}$, y $(1 + \\frac{1}{2})(1 + \\frac{1}{3}) = \\frac{3}{2} \\cdot \\frac{4}{3} = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangentes con suma 90°",
+      "puntos": [
+        {
+          "texto": "$A + B = 90°$ ⇒ $\\tan A \\cdot \\tan B = 1$",
+          "explicacion": "Con $A + B = 90°$ la tangente de la suma no existe, así que su denominador es cero: $1 - \\tan A\\tan B = 0$, y por eso $\\tan A\\tan B = 1$. Ejemplo: con $A = 30°$ y $B = 60°$, $\\tan30° \\cdot \\tan60° = \\frac{\\sqrt{3}}{3} \\cdot \\sqrt{3} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosenos con suma 90°",
+      "puntos": [
+        {
+          "texto": "$A + B = 90°$ ⇒ $\\cos A\\cos B = \\operatorname{sen}A\\operatorname{sen}B$",
+          "explicacion": "Con $A + B = 90°$, el coseno de la suma vale cero: $\\cos A\\cos B - \\operatorname{sen}A\\operatorname{sen}B = 0$, y de ahí sale la igualdad. Ejemplo: con $A = 30°$ y $B = 60°$, $\\cos30°\\cos60° = \\frac{\\sqrt{3}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{3}}{4}$ y $\\operatorname{sen}30°\\operatorname{sen}60° = \\frac{1}{2} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{\\sqrt{3}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tres ángulos de triángulo",
+      "puntos": [
+        {
+          "texto": "$A + B + C = 180°$ ⇒ $\\tan A + \\tan B + \\tan C = \\tan A\\tan B\\tan C$",
+          "explicacion": "Como $C = 180° - (A + B)$ y $\\tan(180° - x) = -\\tan x$, se tiene $\\tan C = -\\tan(A + B)$. Al reemplazar con la fórmula de la suma y despejar, la suma de las tres tangentes resulta igual a su producto. Ejemplo: con $A = 45°$, $B = 60°$ y $C = 75°$, $\\tan A + \\tan B + \\tan C = 1 + \\sqrt{3} + 2 + \\sqrt{3} = 3 + 2\\sqrt{3}$, y $\\tan A\\tan B\\tan C = 1 \\cdot \\sqrt{3} \\cdot (2 + \\sqrt{3}) = 2\\sqrt{3} + 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Condensar fórmulas",
+      "puntos": [
+        {
+          "texto": "Reconocer la fórmula ⇒ condensar en una sola razón",
+          "explicacion": "Cuando una expresión tiene la forma de lado derecho de alguna fórmula de suma o diferencia, se reemplaza por una sola razón de un ángulo compuesto. Ejemplo: $\\operatorname{sen}50°\\cos20° + \\cos50°\\operatorname{sen}20° = \\operatorname{sen}(50° + 20°) = \\operatorname{sen}70°$. Y $\\operatorname{sen}80°\\cos20° - \\cos80°\\operatorname{sen}20° = \\operatorname{sen}(80° - 20°) = \\operatorname{sen}60° = \\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar la suma",
+      "puntos": [
+        {
+          "texto": "Dadas $\\tan A$ y $\\tan B$ ⇒ hallar $A + B$ con la tangente de la suma",
+          "explicacion": "Se calcula $\\tan(A + B)$ con los valores dados y se identifica el ángulo agudo con esa tangente. Ejemplo: si $\\tan A = \\frac{1}{2}$ y $\\tan B = \\frac{1}{3}$, entonces $\\tan(A + B) = \\frac{\\frac{1}{2} + \\frac{1}{3}}{1 - \\frac{1}{6}} = \\frac{5/6}{5/6} = 1$. Como A y B son agudos y pequeños, $A + B = 45°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Producto de senos: $\\operatorname{sen}(A+B)\\operatorname{sen}(A-B) \\neq \\operatorname{sen}^2A + \\operatorname{sen}^2B$",
+          "explicacion": "El resultado es una diferencia de cuadrados de senos, no una suma. Ejemplo: con $A = 60°$ y $B = 30°$, el producto vale $\\frac{1}{2}$; la diferencia $\\operatorname{sen}^260° - \\operatorname{sen}^230° = \\frac{3}{4} - \\frac{1}{4} = \\frac{1}{2}$ coincide, pero la suma $\\frac{3}{4} + \\frac{1}{4} = 1$ no."
+        },
+        {
+          "texto": "Cotangente de la suma: no olvidar el $-1$ del numerador",
+          "explicacion": "El numerador es $\\cot A\\cot B - 1$, no $\\cot A\\cot B$ solo. Ejemplo: con $A = 45°$ y $B = 30°$, usar $\\frac{1 \\cdot \\sqrt{3}}{1 + \\sqrt{3}} \\approx 0{,}634$ da un valor distinto de $\\cot75° = 2 - \\sqrt{3} \\approx 0{,}268$; con el $-1$ se obtiene $\\frac{\\sqrt{3} - 1}{1 + \\sqrt{3}} \\approx 0{,}268$."
+        }
+      ]
+    }
+  ]
+}

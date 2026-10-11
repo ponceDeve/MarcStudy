@@ -1,0 +1,129 @@
+{
+  "curso": "Aritmética",
+  "tema": "MCD y MCM de fracciones",
+  "glosario": {
+    "máximo común divisor de fracciones": "Mayor fracción contenida exactamente en todas",
+    "mínimo común múltiplo de fracciones": "Menor fracción que contiene exactamente a todas",
+    "fracción irreducible": "Fracción cuyos términos son primos entre sí",
+    "máximo común divisor": "Mayor de los divisores comunes de varios números",
+    "mínimo común múltiplo": "Menor de los múltiplos comunes positivos de varios",
+    "denominador común": "Denominador que comparten fracciones ya igualadas"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "Una fracción «divide» a otra si el cociente entre ambas es entero",
+          "explicacion": "Para extender las nociones de divisor y múltiplo a las fracciones se dice que una fracción $f$ es divisor de otra fracción $g$ cuando al dividir $g$ entre $f$ resulta un número entero. En ese caso $g$ es múltiplo de $f$. Por ejemplo, dos quintos divide a seis quintos, porque el cociente es tres. Esta definición reproduce la que se usa con los números enteros."
+        },
+        {
+          "texto": "«Máximo común divisor de fracciones» ⇒ mayor fracción que divide a todas",
+          "explicacion": "El máximo común divisor de varias fracciones es la mayor fracción que divide a cada una de ellas, en el sentido de que el cociente de cada fracción dada entre ella es un entero. Se abrevia MCD, igual que en los enteros. Su cálculo se hace con los numeradores y los denominadores por separado, siempre que las fracciones sean irreducibles."
+        },
+        {
+          "texto": "«Mínimo común múltiplo de fracciones» ⇒ menor fracción que todas dividen",
+          "explicacion": "El mínimo común múltiplo de varias fracciones es la menor fracción positiva que es múltiplo de cada una de ellas, es decir, aquella que al dividirse entre cada fracción dada da un entero. Se abrevia MCM. Al igual que el máximo común divisor, se calcula combinando los numeradores y los denominadores de fracciones irreducibles."
+        },
+        {
+          "texto": "Los conceptos con enteros se estudian en los temas 33 y 35",
+          "explicacion": "El máximo común divisor y el mínimo común múltiplo de números enteros se desarrollan en el tema 33 (Máximo Común Divisor) y en el tema 35 (Mínimo Común Múltiplo). Este tema los aplica a fracciones, de modo que se usan como herramientas los resultados de aquellos: el mayor de los divisores comunes y el menor de los múltiplos comunes de enteros positivos."
+        }
+      ]
+    },
+    {
+      "titulo": "Requisito",
+      "puntos": [
+        {
+          "texto": "Cada dato debe ser una «fracción irreducible» antes de usar las fórmulas",
+          "explicacion": "Las fórmulas del máximo común divisor y del mínimo común múltiplo de fracciones solo son válidas cuando cada fracción está en su forma irreducible, es decir, con numerador y denominador primos entre sí. Si no lo están, el resultado puede ser incorrecto, porque la fracción cambia de escritura pero no de valor y las fórmulas usan los términos escritos. Por eso el primer paso es simplificar."
+        },
+        {
+          "texto": "Ejemplo: dos cuartos y un medio valen lo mismo ⇒ simplificar primero",
+          "explicacion": "Las fracciones dos cuartos y un medio son equivalentes. Si se aplicara la fórmula del máximo común divisor sin simplificar se obtendría un cuarto, que es incorrecto, pues el máximo común divisor de dos números iguales a un medio es un medio. Al simplificar dos cuartos a un medio, la fórmula da el valor correcto."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas",
+      "puntos": [
+        {
+          "texto": "MCD de fracciones ⇒ MCD de numeradores entre MCM de denominadores",
+          "explicacion": "Para hallar el máximo común divisor de fracciones irreducibles se calcula el máximo común divisor de todos los numeradores y el mínimo común múltiplo de todos los denominadores, y se forma la fracción con el primero arriba y el segundo abajo. Se justifica porque para dividir exactamente a cada fracción el numerador debe dividir a todos los numeradores, y el denominador debe ser múltiplo de todos los denominadores."
+        },
+        {
+          "texto": "MCM de fracciones ⇒ MCM de numeradores entre MCD de denominadores",
+          "explicacion": "Para hallar el mínimo común múltiplo de fracciones irreducibles se calcula el mínimo común múltiplo de todos los numeradores y el máximo común divisor de todos los denominadores, y se forma la fracción con el primero arriba y el segundo abajo. Se justifica porque para ser múltiplo de cada fracción el numerador debe ser múltiplo de todos los numeradores y el denominador debe dividir a todos los denominadores."
+        },
+        {
+          "texto": "Pasos: simplificar, calcular numeradores, calcular denominadores, formar la fracción",
+          "explicacion": "El procedimiento consta de cuatro pasos. Primero se simplifican las fracciones hasta que sean irreducibles. Luego se calcula, según el caso, el máximo común divisor o el mínimo común múltiplo de los numeradores. Después se calcula el otro valor con los denominadores. Por último, se escribe la fracción con el resultado de los numeradores arriba y el de los denominadores abajo."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos",
+      "puntos": [
+        {
+          "texto": "Ejemplo: $MCD$ de $\\frac{2}{3}$ y $\\frac{4}{5}$ vale $\\frac{2}{15}$",
+          "explicacion": "El máximo común divisor de los numeradores dos y cuatro es dos, y el mínimo común múltiplo de los denominadores tres y cinco es quince, de modo que el resultado es dos quinceavos. Se comprueba que dos tercios entre dos quinceavos da cinco, y cuatro quintos entre dos quinceavos da seis, ambos enteros."
+        },
+        {
+          "texto": "Ejemplo: $MCM$ de $\\frac{2}{3}$ y $\\frac{4}{5}$ vale $4$",
+          "explicacion": "El mínimo común múltiplo de los numeradores dos y cuatro es cuatro, y el máximo común divisor de los denominadores tres y cinco es uno, de modo que el resultado es cuatro. Se comprueba que cuatro entre dos tercios da seis, y cuatro entre cuatro quintos da cinco, ambos enteros."
+        },
+        {
+          "texto": "Ejemplo: $MCD$ de $\\frac{6}{5}$, $\\frac{9}{10}$, $\\frac{3}{4}$ vale $\\frac{3}{20}$",
+          "explicacion": "Los numeradores seis, nueve y tres tienen máximo común divisor tres, y los denominadores cinco, diez y cuatro tienen mínimo común múltiplo veinte, lo que da tres veinteavos. Se comprueba que seis quintos entre tres veinteavos da ocho, nueve décimos entre tres veinteavos da seis, y tres cuartos entre tres veinteavos da cinco."
+        },
+        {
+          "texto": "Ejemplo: $MCM$ de $\\frac{6}{5}$, $\\frac{9}{10}$, $\\frac{3}{4}$ vale $18$",
+          "explicacion": "Los numeradores seis, nueve y tres tienen mínimo común múltiplo dieciocho, y los denominadores cinco, diez y cuatro tienen máximo común divisor uno, lo que da dieciocho. Se comprueba que dieciocho entre seis quintos da quince, entre nueve décimos da veinte, y entre tres cuartos da veinticuatro."
+        }
+      ]
+    },
+    {
+      "titulo": "Método alternativo",
+      "puntos": [
+        {
+          "texto": "Reducir a «denominador común» ⇒ operar con los numeradores",
+          "explicacion": "Otra forma de resolverlo consiste en reducir las fracciones a un denominador común, usando el mínimo común múltiplo de los denominadores. Entonces el máximo común divisor de las fracciones es el de los numeradores sobre ese denominador, y el mínimo común múltiplo es el de los numeradores sobre ese mismo denominador. Se debe simplificar el resultado al final."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{2}{3}$ y $\\frac{4}{5}$ ⇒ $\\frac{10}{15}$ y $\\frac{12}{15}$",
+          "explicacion": "Con denominador quince, las fracciones son diez quinceavos y doce quinceavos. El máximo común divisor de diez y doce es dos, de modo que el máximo común divisor de las fracciones es dos quinceavos. El mínimo común múltiplo de diez y doce es sesenta, que sobre quince da cuatro. Ambos resultados coinciden con los obtenidos con las fórmulas."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Para dos fracciones: $MCD$ por $MCM$ ⇒ producto de las fracciones",
+          "explicacion": "Igual que con los enteros, el producto del máximo común divisor por el mínimo común múltiplo de dos fracciones irreducibles es igual al producto de las dos fracciones. Ejemplo: dos quinceavos por cuatro da ocho quinceavos, que es dos tercios por cuatro quintos. Esta propiedad no se cumple en general con tres o más fracciones."
+        },
+        {
+          "texto": "Enteros como fracciones de denominador $1$ ⇒ las fórmulas coinciden",
+          "explicacion": "Un número entero se escribe como una fracción de denominador uno. Si todas las fracciones tienen denominador uno, el máximo común divisor de los denominadores y su mínimo común múltiplo valen uno, y las fórmulas se reducen al máximo común divisor y al mínimo común múltiplo de los enteros. Esto muestra que las fórmulas generalizan las anteriores."
+        },
+        {
+          "texto": "MCD de fracciones ⇒ menor o igual que cada fracción dada",
+          "explicacion": "El máximo común divisor de fracciones es menor o igual que cada una de ellas, pues debe caber un número entero de veces en cada una. El mínimo común múltiplo, en cambio, es mayor o igual que cada una. Esta comparación sirve como control del resultado final."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: calcular MCD de denominadores en lugar del MCM",
+          "explicacion": "En el máximo común divisor de fracciones, los denominadores se combinan con el mínimo común múltiplo, y en el mínimo común múltiplo de fracciones, con el máximo común divisor. Es lo contrario de lo que ocurre con los numeradores. Si se invierten, el resultado no divide exactamente a las fracciones, lo cual se detecta con la comprobación del cociente."
+        },
+        {
+          "texto": "Error: no simplificar las fracciones antes de calcular",
+          "explicacion": "Aplicar las fórmulas a fracciones reducibles da un resultado que no corresponde al valor de las fracciones. Por eso, antes de calcular, se debe comprobar que cada fracción sea irreducible y simplificar si es necesario. Es el error más frecuente en este tema, y se evita con el hábito de verificar, para cada fracción, que el máximo común divisor de su numerador y su denominador sea uno antes de iniciar cualquier cálculo."
+        }
+      ]
+    }
+  ]
+}

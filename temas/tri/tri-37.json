@@ -1,0 +1,224 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ecuaciones trigonométricas no elementales",
+  "glosario": {
+    "Ecuación elemental": "Una razón de x igualada a un número",
+    "Ecuación no elemental": "Combina razones, potencias o ángulos distintos",
+    "Incógnita auxiliar": "Letra que reemplaza una expresión desconocida",
+    "Ecuación homogénea": "Todos sus términos tienen el mismo grado",
+    "Solución falsa": "Valor obtenido que no cumple la ecuación original",
+    "Identidad": "Igualdad válida para todos los valores admitidos",
+    "Ángulo de referencia": "Ángulo agudo con la razón sin signo",
+    "Seno": "Razón entre ordenada y distancia al origen",
+    "Coseno": "Razón entre abscisa y distancia al origen",
+    "Tangente": "Cociente entre seno y coseno",
+    "Cotangente": "Inversa de la tangente",
+    "Secante": "Inversa del coseno",
+    "Cosecante": "Inversa del seno",
+    "Posición normal": "Vértice en origen, lado inicial en X positivo",
+    "Lado final": "Lado donde termina el giro",
+    "Entero": "Número sin decimales: positivo, negativo o cero"
+  },
+  "theory": [
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el seno es la ordenada de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 90°, con el punto (0, 3), sen 90° = 3/3 = 1; además sen 30° = 1/2."
+        },
+        {
+          "texto": "«Coseno (cos)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el coseno es la abscisa de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 180°, con el punto (-5, 0), cos 180° = -5/5 = -1; además cos 60° = 1/2."
+        },
+        {
+          "texto": "«Tangente (tan)»: seno entre coseno",
+          "explicacion": "Se calcula como tan θ = sen θ / cos θ, donde θ (theta) es la medida del ángulo. Ejemplo: tan 45° = sen 45° / cos 45° = 1, porque ambos valen $\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "«Secante (sec)»: inversa del coseno",
+          "explicacion": "Se calcula como sec θ = 1 / cos θ y no existe si cos θ = 0. Ejemplo: sec 60° = 1 / (1/2) = 2 y sec 120° = 1 / (-1/2) = -2."
+        },
+        {
+          "texto": "x denota el ángulo desconocido de la ecuación",
+          "explicacion": "Es la incógnita que se busca. Ejemplo: en sen x = 1/2, el valor x = 30° cumple la igualdad porque sen 30° = 1/2."
+        },
+        {
+          "texto": "u denota una incógnita auxiliar que reemplaza una razón",
+          "explicacion": "Se usa para tratar una razón como si fuera un número desconocido y aplicar álgebra. Ejemplo: en 2 $\\text{cos}^2 x$ + cos x - 1 = 0, se escribe u = cos x y la ecuación queda $2u^2$ + u - 1 = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Ecuación elemental»: una razón de x igualada a un número",
+          "explicacion": "Tiene la forma sen x = a, cos x = a o tan x = a, con a un número conocido, y se resuelve directamente con ángulos de referencia. Ejemplo: sen x = 1/2 es elemental y en 0° ≤ x < 360° da x = 30° y x = 150°."
+        },
+        {
+          "texto": "«Ecuación no elemental»: combina razones, potencias o ángulos distintos",
+          "explicacion": "No tiene la forma de una sola razón igual a un número, por lo que no se puede resolver de inmediato. Ejemplos: sen x cos x = 0 (producto de razones), sen x = cos x (dos razones) y cos 2x = sen x (dos ángulos distintos)."
+        },
+        {
+          "texto": "El método reduce la ecuación a ecuaciones elementales",
+          "explicacion": "Con álgebra, identidades y transformaciones se llega a una o varias ecuaciones elementales, y se juntan sus soluciones. Ejemplo: sen x cos x = 0 se reduce a sen x = 0, con x = 0° y 180°, y a cos x = 0, con x = 90° y 270°."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto igual a cero",
+      "puntos": [
+        {
+          "texto": "Un producto igual a 0 ⇒ algún factor vale 0",
+          "explicacion": "Si dos o más cantidades se multiplican y el resultado es 0, al menos una de ellas es 0, así que cada factor da una ecuación aparte. Ejemplo: sen x cos x = 0 en 0° ≤ x < 360°: sen x = 0 da 0° y 180°, y cos x = 0 da 90° y 270°, es decir, x = 0°, 90°, 180° y 270°."
+        },
+        {
+          "texto": "Se pasan todos los términos a un lado y se factoriza",
+          "explicacion": "Para usar la regla del producto, un lado debe quedar en 0 y el otro como producto, sacando el factor común. Ejemplo: sen x = sen x cos x se escribe sen x - sen x cos x = 0, luego sen x (1 - cos x) = 0; sen x = 0 da 0° y 180°, y cos x = 1 da 0°, así que las soluciones son x = 0° y 180°."
+        },
+        {
+          "texto": "Dividir entre una razón puede perder soluciones",
+          "explicacion": "Al dividir ambos lados entre una razón se descartan los ángulos donde esa razón vale 0. Ejemplo: sen x cos x = cos x; si se divide entre cos x, queda sen x = 1 y solo x = 90°, pero al factorizar cos x (sen x - 1) = 0 aparecen también cos x = 0, con x = 90° y 270°. La respuesta correcta es x = 90° y 270°."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones recíprocas",
+      "puntos": [
+        {
+          "texto": "Con tan, cot, sec o csc se reescribe con sen y cos",
+          "explicacion": "Se usan tan x = sen x / cos x, cot x = cos x / sen x, sec x = 1 / cos x y csc x = 1 / sen x para tener solo senos y cosenos. Ejemplo: sen x = tan x se reescribe como sen x = sen x / cos x."
+        },
+        {
+          "texto": "Se excluyen los ángulos donde un divisor vale 0",
+          "explicacion": "Al multiplicar por cos x, solo valen los ángulos con cos x distinto de 0, porque en los demás la tangente no existe. Ejemplo: sen x = tan x se reescribe como sen x cos x = sen x, es decir sen x (cos x - 1) = 0, con x = 0° y 180°; los ángulos 90° y 270° quedan fuera porque tan 90° y tan 270° no existen; comprobación: tan 180° = 0 = sen 180°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación cuadrática",
+      "puntos": [
+        {
+          "texto": "Una razón elevada al cuadrado se trata como incógnita u",
+          "explicacion": "Se reemplaza la razón por u, se resuelve la ecuación de segundo grado y luego se vuelve a la razón. Ejemplo: 2 $\\text{cos}^2 x$ + cos x - 1 = 0 con u = cos x da $2u^2$ + u - 1 = (2u - 1)(u + 1) = 0, con u = 1/2 y u = -1. Entonces cos x = 1/2 da 60° y 300°, y cos x = -1 da 180°, es decir, x = 60°, 180° y 300°."
+        },
+        {
+          "texto": "Se descartan los valores de u fuera de $-1 \\le u \\le 1$",
+          "explicacion": "El seno y el coseno nunca salen de ese intervalo, así que un valor de u fuera de él no produce ángulos. Ejemplo: $\\text{sen}^2 x$ - 2 sen x - 3 = 0 con u = sen x da (u - 3)(u + 1) = 0, con u = 3 y u = -1; sen x = 3 se descarta y sen x = -1 da x = 270°."
+        },
+        {
+          "texto": "$\\text{sen}^2 x = \\frac{1}{4}$ da dos ecuaciones elementales",
+          "explicacion": "Al sacar la raíz cuadrada hay dos signos: sen x = 1/2 y sen x = -1/2. Ejemplo en 0° ≤ x < 360°: sen x = 1/2 da 30° y 150°, y sen x = -1/2 da 210° y 330°, así que hay cuatro soluciones; comprobación: $\\text{sen}^2 210°$ = $\\left(-1/2\\right)^2$ = 1/4."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad pitagórica",
+      "puntos": [
+        {
+          "texto": "Con $\\text{sen}^2 x + \\text{cos}^2 x = 1$ se unifican sen y cos",
+          "explicacion": "Se reemplaza $\\text{sen}^2 x$ por 1 - $\\text{cos}^2 x$ (o al revés) para dejar una sola razón. Ejemplo: 2 $\\text{sen}^2 x$ + 3 cos x = 0 se escribe 2(1 - $\\text{cos}^2 x$) + 3 cos x = 0, es decir 2 $\\text{cos}^2 x$ - 3 cos x - 2 = 0, que factoriza como (2 cos x + 1)(cos x - 2) = 0. Como cos x = 2 se descarta, cos x = -1/2 da x = 120° y 240°; comprobación: 2 $\\text{sen}^2 120°$ + 3 cos 120° = 2 × 3/4 - 3/2 = 0."
+        },
+        {
+          "texto": "Con tan y sec se usa $1 + \\tan^2 x = \\sec^2 x$",
+          "explicacion": "Cuando la ecuación mezcla tangente y secante, la identidad adecuada es la de ellas y no la de seno y coseno. Ejemplo: $\\text{tan}^2 x$ + sec x = 1 se escribe $\\text{sec}^2 x$ - 1 + sec x = 1, es decir $\\text{sec}^2 x$ + sec x - 2 = (sec x + 2)(sec x - 1) = 0. Con sec x = 1 resulta cos x = 1 y x = 0°; con sec x = -2 resulta cos x = -1/2 y x = 120° y 240°; comprobación: $\\text{tan}^2 120°$ + sec 120° = 3 - 2 = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo doble",
+      "puntos": [
+        {
+          "texto": "Si aparece sen 2x, se reemplaza por 2 sen x cos x",
+          "explicacion": "Así la ecuación queda con ángulo x y se puede factorizar. Ejemplo: sen 2x = cos x se escribe 2 sen x cos x - cos x = 0, es decir cos x (2 sen x - 1) = 0; cos x = 0 da 90° y 270°, y sen x = 1/2 da 30° y 150°. Comprobación con x = 150°: sen 300° = -$\\frac{\\sqrt{3}}{2}$ y cos 150° = -$\\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Con cos 2x y sen x, se usa $\\text{cos}\\,2x = 1 - 2\\,\\text{sen}^2 x$",
+          "explicacion": "Esta forma del coseno del ángulo doble deja una sola razón, el seno. Ejemplo: cos 2x = sen x se escribe 1 - 2 $\\text{sen}^2 x$ = sen x, es decir 2 $\\text{sen}^2 x$ + sen x - 1 = (2 sen x - 1)(sen x + 1) = 0; sen x = 1/2 da 30° y 150°, y sen x = -1 da 270°. Comprobación con x = 270°: cos 540° = cos 180° = -1 = sen 270°."
+        },
+        {
+          "texto": "Con cos 2x y cos x, se usa $\\text{cos}\\,2x = 2\\,\\text{cos}^2 x - 1$",
+          "explicacion": "Esta forma del coseno del ángulo doble deja una sola razón, el coseno. Ejemplo: cos 2x = cos x se escribe 2 $\\text{cos}^2 x$ - 1 = cos x, es decir 2 $\\text{cos}^2 x$ - cos x - 1 = (2 cos x + 1)(cos x - 1) = 0; cos x = 1 da 0° y cos x = -1/2 da 120° y 240°. Comprobación con x = 120°: cos 240° = -1/2 = cos 120°."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos razones",
+      "puntos": [
+        {
+          "texto": "sen x = cos x ⇒ tan x = 1 al dividir entre cos x",
+          "explicacion": "Dividir entre cos x es válido aquí, porque si cos x = 0 entonces sen x = 1 o -1 y la igualdad es falsa; no se pierde ninguna solución. Ejemplo en 0° ≤ x < 360°: tan x = 1 da x = 45° y 225°; comprobación: sen 225° = cos 225° = -$\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "Si todos los términos son de grado 2, se divide entre $\\text{cos}^2 x$",
+          "explicacion": "Una ecuación homogénea de grado 2 tiene términos con $\\text{sen}^2 x$, sen x cos x o $\\text{cos}^2 x$; al dividir entre $\\text{cos}^2 x$ solo quedan tangentes. Ejemplo: $\\text{cos}^2 x$ - 3 $\\text{sen}^2 x$ = 0 da 1 - 3 $\\text{tan}^2 x$ = 0, es decir tan x = $\\frac{1}{\\sqrt{3}}$ o tan x = -$\\frac{1}{\\sqrt{3}}$, con x = 30°, 210°, 150° y 330°. Dividir es válido, porque si cos x = 0 entonces -3 $\\text{sen}^2 x$ = -3, que no es 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma a producto",
+      "puntos": [
+        {
+          "texto": "Dos senos o dos cosenos con ángulos distintos se transforman en producto",
+          "explicacion": "Se aplica la transformación de suma o diferencia en producto y luego la regla del producto igual a cero. Ejemplo: sen 3x + sen x = 0 da 2 sen 2x cos x = 0. Con sen 2x = 0 se tiene 2x = 0°, 180°, 360° y 540°, es decir x = 0°, 90°, 180° y 270°; con cos x = 0 se tiene x = 90° y 270°. Las soluciones son x = 0°, 90°, 180° y 270°; comprobación: sen 810° + sen 270° = 1 + (-1) = 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación de soluciones",
+      "puntos": [
+        {
+          "texto": "Elevar al cuadrado puede crear soluciones falsas",
+          "explicacion": "Al elevar al cuadrado se igualan también los casos con signos opuestos, así que cada candidato debe comprobarse en la ecuación original. Ejemplo: sen x + cos x = 1 elevada al cuadrado da 1 + 2 sen x cos x = 1, es decir sen x cos x = 0, con x = 0°, 90°, 180° y 270°. En la original: 0° da 0 + 1 = 1 (sirve), 90° da 1 + 0 = 1 (sirve), 180° da 0 - 1 = -1 (no sirve) y 270° da -1 + 0 = -1 (no sirve)."
+        },
+        {
+          "texto": "Un ángulo que anula un divisor no es solución",
+          "explicacion": "Aunque anule el numerador, si el divisor vale 0 la expresión no existe. Ejemplo: (1 - cos x) / sen x = 0 pide 1 - cos x = 0, es decir cos x = 1 y x = 0°; pero sen 0° = 0 anula el divisor, así que la ecuación no tiene solución en 0° ≤ x < 360°."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "sen x cos x = 1/2 no se resuelve igualando cada factor",
+          "explicacion": "La regla de los factores solo vale cuando el producto es 0. Aquí se usa sen 2x = 2 sen x cos x, que da sen 2x = 1, con 2x = 90° y 450°, es decir x = 45° y 225°; comprobación: sen 45° cos 45° = $\\frac{\\sqrt{2}}{2}$ × $\\frac{\\sqrt{2}}{2}$ = 1/2."
+        },
+        {
+          "texto": "Tomar solo la raíz positiva pierde la mitad de las soluciones",
+          "explicacion": "Al resolver una razón al cuadrado hay siempre dos signos. Ejemplo: $\\text{cos}^2 x$ = 1/4 da cos x = 1/2, con 60° y 300°, y también cos x = -1/2, con 120° y 240°; quedarse con el primero omite 120° y 240°."
+        },
+        {
+          "texto": "Un valor de u fuera del rango no produce ángulos",
+          "explicacion": "Se debe revisar cada raíz de la ecuación cuadrática antes de buscar ángulos. Ejemplo: en 2 $\\text{sen}^2 x$ - sen x - 3 = 0, u = sen x da (2u - 3)(u + 1) = 0; u = 3/2 es mayor que 1 y se descarta, y solo u = -1 da x = 270°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo guiado",
+      "puntos": [
+        {
+          "texto": "Datos: 2 $\\text{cos}^2 x$ + 3 cos x = 2, con 0° ≤ x < 360°",
+          "explicacion": "Es una ecuación no elemental, porque el coseno aparece al cuadrado y también a la primera potencia. Se pide hallar todos los ángulos de una vuelta que la cumplen."
+        },
+        {
+          "texto": "Estrategia: pasar todo a un lado y sustituir u = cos x",
+          "explicacion": "Restando 2 a ambos lados queda 2 $\\text{cos}^2 x$ + 3 cos x - 2 = 0, y con u = cos x se obtiene $2u^2$ + 3u - 2 = 0, una ecuación de segundo grado."
+        },
+        {
+          "texto": "Operación: $(2u - 1)(u + 2) = 0$",
+          "explicacion": "La ecuación $2u^2$ + 3u - 2 = 0 factoriza como (2u - 1)(u + 2) = 0, porque 2u × u = $2u^2$, 2u × 2 = 4u, -1 × u = -u y -1 × 2 = -2, y 4u - u = 3u. Entonces u = 1/2 o u = -2."
+        },
+        {
+          "texto": "Resultado: cos x = 1/2 ⇒ x = 60° o x = 300°",
+          "explicacion": "El valor u = -2 se descarta porque cos x no puede ser menor que -1. Con cos x = 1/2, el ángulo de referencia es 60°, y como el coseno es positivo, x = 60° y x = 360° - 60° = 300°."
+        },
+        {
+          "texto": "Verificación: ambos ángulos cumplen la ecuación original",
+          "explicacion": "Con cos 60° = 1/2: 2 × $\\left(1/2\\right)^2$ + 3 × 1/2 = 2 × 1/4 + 3/2 = 1/2 + 3/2 = 2. Con cos 300° = 1/2 se obtiene el mismo resultado, 2."
+        }
+      ]
+    }
+  ]
+}

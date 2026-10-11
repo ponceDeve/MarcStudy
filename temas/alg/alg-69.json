@@ -1,0 +1,229 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones exponenciales",
+  "glosario": {
+    "ecuación exponencial": "Ecuación con la incógnita en el exponente.",
+    "potencia": "Producto repetido de un mismo factor.",
+    "base": "Número que se multiplica por sí mismo.",
+    "exponente": "Número de veces que se repite la base.",
+    "función exponencial": "Función con la variable en el exponente.",
+    "inyectiva": "Valores distintos dan imágenes distintas.",
+    "monótona": "Que solo crece o solo decrece.",
+    "cambio de variable": "Sustitución de una expresión por una letra.",
+    "factor común": "Factor presente en todos los términos.",
+    "logaritmo": "Exponente al que se eleva la base.",
+    "raíz": "Operación inversa de la potencia.",
+    "discriminante": "Número que indica el tipo de raíces.",
+    "conjunto vacío": "Conjunto sin ningún elemento.",
+    "ecuación cuadrática": "Ecuación de segundo grado.",
+    "propiedad": "Regla que se cumple siempre."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Ecuación exponencial» ⇒ la incógnita está en el exponente",
+          "explicacion": "Una ecuación exponencial es una igualdad en la que la incógnita aparece en el exponente de una potencia cuya base es un número positivo distinto de uno. Esto la distingue de una ecuación polinomial, donde la incógnita está en la base, como $x^2=9$. Resolverla significa hallar los valores de la incógnita que hacen verdadera la igualdad. Ejemplo: $2^x=32$ es exponencial porque $x$ es el exponente; se cumple para $x=5$, ya que $2^5=32$. Verificación: $2\\times2\\times2\\times2\\times2=32$."
+        },
+        {
+          "texto": "Forma básica $a^{f(x)}=b$ con $a>0$ y $a\\ne 1$",
+          "explicacion": "La ecuación exponencial más simple tiene la forma $a^{f(x)}=b$, donde $a$ es la base, $f(x)$ es una expresión en la incógnita y $b$ es un número. La base debe cumplir $a>0$ y $a\\ne 1$ para que $a^x$ sea la función exponencial estudiada en el tema «Función exponencial». Ejemplo: en $3^{x+1}=81$ la base es $3$ y $f(x)=x+1$. Como $81=3^4$, resulta $x+1=4$ y $x=3$. Verificación: $3^{3+1}=3^4=81$."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones de la base",
+      "puntos": [
+        {
+          "texto": "Base $a>0$ y $a\\ne 1$ ⇒ función exponencial definida",
+          "explicacion": "Si $a=1$, entonces $1^x=1$ para todo $x$ y la función es constante; si $a<0$, potencias como $(-2)^{1/2}$ no son números reales. Por ambas razones se exige $a>0$ y $a\\ne 1$. Con esta condición $a^x$ está definida para todo real y es estrictamente monótona. Ejemplo: $2^x$ y $\\left(\\frac{1}{2}\\right)^x$ cumplen la condición; $1^x$ y $(-2)^x$ no. Verificación: $(-2)^{1/2}=\\sqrt{-2}$ no es real."
+        },
+        {
+          "texto": "$a^x>0$ ⇒ toda potencia de base positiva es positiva",
+          "explicacion": "Si $a>0$, entonces $a^x>0$ para cualquier exponente real $x$, ya sea positivo, negativo, cero o fraccionario. Por eso una ecuación exponencial solo puede igualar la potencia a un número positivo. Ejemplos: $2^3=8>0$, $2^{-3}=\\frac{1}{8}>0$ y $2^0=1>0$. Verificación: nunca se obtiene resultado cero ni negativo con base positiva."
+        },
+        {
+          "texto": "$a^x=b$ con $b\\le 0$ ⇒ sin solución",
+          "explicacion": "Como $a^x>0$ siempre, la ecuación $a^x=b$ no tiene solución cuando $b\\le 0$. Ejemplos: $3^x=-9$ no tiene solución porque una potencia de base positiva no puede ser negativa; $2^x=0$ tampoco, porque ninguna potencia de base positiva vale cero. Verificación: para todo $x$ real, $3^x>0$ y $2^x>0$."
+        },
+        {
+          "texto": "Base $a=1$ ⇒ $1^x=1$ para todo $x$",
+          "explicacion": "Con base uno la potencia es constante, por lo que la ecuación $1^{f(x)}=1$ se cumple para todos los valores de $x$ en que $f(x)$ está definida, y $1^{f(x)}=b$ con $b\\ne 1$ no tiene solución. Esta es la razón de excluir $a=1$. Ejemplo: $1^{x+5}=1$ se cumple para todo real, y $1^x=2$ no se cumple para ningún $x$. Verificación: $1^3=1$, $1^{-4}=1$ y $1^{1/2}=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de potencias",
+      "puntos": [
+        {
+          "texto": "$a^m\\times a^n=a^{m+n}$ ⇒ mismas bases se suman exponentes",
+          "explicacion": "Al multiplicar potencias de igual base, se conserva la base y se suman los exponentes, porque $a^m$ es $m$ factores iguales a $a$ y $a^n$ son $n$ más. Es la propiedad que permite escribir $a^{x+k}=a^x\\times a^k$. Ejemplo: $2^3\\times 2^4=2^{3+4}=2^7=128$. Verificación: $8\\times 16=128$."
+        },
+        {
+          "texto": "$\\frac{a^m}{a^n}=a^{m-n}$ ⇒ mismas bases se restan exponentes",
+          "explicacion": "Dividir potencias de igual base equivale a quitar $n$ factores de los $m$ que hay en el numerador, y por eso los exponentes se restan; la propiedad exige base distinta de cero y vale para exponentes enteros, fraccionarios y negativos. Al dividir potencias de igual base, se conserva la base y se restan los exponentes, con $a\\ne 0$. Ejemplo: $\\frac{3^5}{3^2}=3^{5-2}=3^3=27$. Verificación: $\\frac{243}{9}=27$."
+        },
+        {
+          "texto": "$(a^m)^n=a^{m\\times n}$ ⇒ potencia de potencia",
+          "explicacion": "Elevar una potencia a otra potencia repite $n$ veces el grupo de $m$ factores, de modo que el número total de factores es el producto de los exponentes. Se usa para reescribir bases como potencias de un primo, por ejemplo $4=2^2$, antes de igualar exponentes. Una potencia elevada a otro exponente conserva la base y multiplica los exponentes. Se usa para escribir $4^x=(2^2)^x=2^{2x}$. Ejemplo: $(2^3)^2=2^{3\\times 2}=2^6=64$. Verificación: $8^2=64$."
+        },
+        {
+          "texto": "$a^{-n}=\\frac{1}{a^n}$ ⇒ exponente negativo invierte",
+          "explicacion": "El exponente negativo no hace negativa a la potencia, sino que indica el inverso multiplicativo. Esta propiedad conserva la regla de la resta de exponentes, y permite pasar términos del denominador al numerador y viceversa al reescribir una ecuación. Una potencia con exponente negativo es el inverso de la potencia con exponente positivo, con $a\\ne 0$. Ejemplo: $2^{-3}=\\frac{1}{2^3}=\\frac{1}{8}$. Verificación: $2^{-3}\\times 2^3=2^0=1$ y $\\frac{1}{8}\\times 8=1$."
+        },
+        {
+          "texto": "$a^{\\frac{m}{n}}=\\sqrt[n]{a^m}$ ⇒ exponente fraccionario es raíz",
+          "explicacion": "Esta propiedad convierte potencias con exponentes fraccionarios en raíces y permite calcular o simplificar expresiones; el exponente $\\frac{1}{n}$ equivale a la raíz $n$-ésima y la base debe ser positiva para evitar raíces pares de números negativos. Una potencia de exponente fraccionario $\\frac{m}{n}$ equivale a la raíz $n$-ésima de $a^m$, con $a>0$. Ejemplo: $8^{\\frac{2}{3}}=\\sqrt[3]{8^2}=\\sqrt[3]{64}=4$. Verificación: $8^{\\frac{1}{3}}=2$ y $2^2=4$."
+        },
+        {
+          "texto": "$(ab)^n=a^nb^n$ ⇒ potencia de un producto",
+          "explicacion": "Cada factor del producto se multiplica $n$ veces, así que cada uno queda elevado a $n$. Se aplica, por ejemplo, para separar una base compuesta como $6^x=2^x\\times 3^x$ al resolver ecuaciones con bases diferentes. La potencia de un producto es el producto de las potencias de cada factor. Ejemplo: $(2\\times 3)^2=2^2\\times 3^2=4\\times 9=36$. Verificación: $6^2=36$."
+        },
+        {
+          "texto": "$a^0=1$ ⇒ potencia de exponente cero",
+          "explicacion": "Esta propiedad completa la regla de la resta de exponentes y es la razón de que $a^x=1$ tenga como solución $x=0$ cuando $a>0$ y $a\\ne 1$. Se excluye la base cero porque $0^0$ no está definido. Toda base distinta de cero elevada a cero vale uno. Se deduce de $\\frac{a^n}{a^n}=a^{n-n}=a^0$ y de $\\frac{a^n}{a^n}=1$. Ejemplo: $5^0=1$ y $\\left(\\frac{2}{3}\\right)^0=1$. Verificación: $\\frac{5^2}{5^2}=\\frac{25}{25}=1=5^{2-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad de inyectividad",
+      "puntos": [
+        {
+          "texto": "$a^x=a^y$ ⇒ $x=y$ con $a>0$ y $a\\ne 1$",
+          "explicacion": "Con $a>0$ y $a\\ne 1$ la función $a^x$ es estrictamente monótona y por tanto inyectiva: dos exponentes distintos dan potencias distintas. En consecuencia, si dos potencias de la misma base son iguales, sus exponentes también lo son. Es la propiedad que fundamenta el método de igualar bases. Ejemplo: $2^{x-1}=2^5$ implica $x-1=5$, es decir $x=6$. Verificación: $2^{6-1}=2^5$."
+        },
+        {
+          "texto": "$a^{f(x)}=a^{g(x)}$ ⇒ $f(x)=g(x)$",
+          "explicacion": "La inyectividad se aplica también cuando los exponentes son expresiones en la incógnita: se igualan los exponentes y se resuelve la ecuación resultante. Ejemplo: $2^{x^2-3x}=2^{-2}$ da $x^2-3x=-2$, es decir $x^2-3x+2=0$, con $(x-1)(x-2)=0$ y soluciones $x=1$ y $x=2$. Verificación: para $x=1$, $2^{1-3}=2^{-2}$; para $x=2$, $2^{4-6}=2^{-2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualar las bases",
+      "puntos": [
+        {
+          "texto": "Paso 1: expresar ambos miembros con la misma base",
+          "explicacion": "Se factorizan las bases y los términos numéricos hasta escribirlos como potencias de un mismo número, usando las propiedades de las potencias. La base común suele ser un primo como $2$, $3$ o $5$, o un número como $\\frac{1}{2}$. Ejemplo: en $9^x=27$ se escribe $9=3^2$ y $27=3^3$, de modo que $(3^2)^x=3^3$, es decir $3^{2x}=3^3$. Verificación: $3^2=9$ y $3^3=27$."
+        },
+        {
+          "texto": "Paso 2: igualar los exponentes",
+          "explicacion": "Cuando ambos miembros son potencias de la misma base, se aplica la inyectividad y se igualan los exponentes. Ejemplo: de $3^{2x}=3^3$ se obtiene $2x=3$. Verificación: la ecuación de exponentes es de primer grado y se resuelve en el paso siguiente."
+        },
+        {
+          "texto": "Paso 3: resolver la ecuación de exponentes",
+          "explicacion": "La ecuación de exponentes es la que resulta de eliminar las bases; su tipo depende de las expresiones que contenga: lineal si $x$ aparece solo con exponente uno, cuadrática si aparece $x^2$. Se resuelve con las técnicas del tema correspondiente y puede tener una, varias o ninguna solución. La ecuación que resulta puede ser lineal, cuadrática u otra; se resuelve con los métodos conocidos. Ejemplo: $2x=3$ da $x=\\frac{3}{2}$. Verificación: se sustituye en la ecuación original en el paso final."
+        },
+        {
+          "texto": "Paso 4: verificar en la ecuación original",
+          "explicacion": "Verificar es indispensable porque confirma que no se cometió un error al reescribir bases y que la solución tiene sentido en la ecuación original. En las ecuaciones exponenciales por igualación no aparecen soluciones extrañas, pero un error de cálculo sí es posible. Se sustituye cada solución en la ecuación original para confirmar la igualdad. Ejemplo: con $x=\\frac{3}{2}$ en $9^x=27$ resulta $9^{3/2}=\\left(\\sqrt{9}\\right)^3=3^3=27$. Verificación: coincide con el miembro derecho."
+        },
+        {
+          "texto": "Bases con exponentes distintos ⇒ llevar a potencias de un primo",
+          "explicacion": "Cuando las bases son diferentes pero potencias de un mismo número, se reescriben con la base común y se igualan los exponentes. Ejemplo: $3^{2x-1}=27^{x-2}$ se escribe $3^{2x-1}=(3^3)^{x-2}=3^{3x-6}$, de donde $2x-1=3x-6$ y $x=5$. Verificación: el miembro izquierdo es $3^{9}$ y el derecho es $27^3=3^9$."
+        },
+        {
+          "texto": "Base fraccionaria ⇒ usar exponente negativo",
+          "explicacion": "Cuando la base es una fracción con numerador uno, convertirla a potencia negativa de su denominador evita trabajar con fracciones y permite igualar exponentes en la misma base. La transformación es válida porque $\\frac{1}{a}=a^{-1}$ y $(a^{-1})^x=a^{-x}$. Una base fraccionaria $\\frac{1}{a}$ equivale a $a^{-1}$, de modo que $\\left(\\frac{1}{a}\\right)^x=a^{-x}$. Se transforma para tener la misma base en ambos miembros. Ejemplo: $\\left(\\frac{1}{2}\\right)^x=16$ se escribe $2^{-x}=2^4$, de donde $-x=4$ y $x=-4$. Verificación: $\\left(\\frac{1}{2}\\right)^{-4}=2^4=16$."
+        },
+        {
+          "texto": "Exponente negativo ⇒ igualar tras invertir",
+          "explicacion": "Un exponente negativo se convierte aplicando $a^{-n}=\\frac{1}{a^n}$. Si el miembro numérico es una fracción unitaria, se reescribe como potencia negativa de la misma base y se igualan los exponentes, cuidando los signos de cada lado. Un exponente negativo se maneja con $a^{-n}=\\frac{1}{a^n}$, escribiendo el miembro numérico como potencia de la misma base. Ejemplo: $2^{-x}=\\frac{1}{8}$ se escribe $2^{-x}=2^{-3}$, luego $-x=-3$ y $x=3$. Verificación: $2^{-3}=\\frac{1}{8}$."
+        },
+        {
+          "texto": "Exponente fraccionario ⇒ igualar tras escribir potencia",
+          "explicacion": "Cuando el exponente es una fracción de la incógnita, como $\\frac{x}{2}$, la igualdad de bases sigue siendo válida; basta igualar exponentes y despejar. La fracción se elimina multiplicando ambos lados de la ecuación de exponentes por el denominador. Cuando el exponente contiene una fracción de $x$, se iguala igual que otros exponentes y se resuelve la ecuación lineal que aparece. Ejemplo: $2^{x/2}=8$ se escribe $2^{x/2}=2^3$, de donde $\\frac{x}{2}=3$ y $x=6$. Verificación: $2^{6/2}=2^3=8$."
+        },
+        {
+          "texto": "Exponente cuadrático ⇒ ecuación de segundo grado",
+          "explicacion": "Si el exponente contiene $x^2$, la ecuación de exponentes es cuadrática y puede tener dos soluciones. Ejemplo: $4^{x^2}=2^{x+3}$ se escribe $2^{2x^2}=2^{x+3}$, de donde $2x^2=x+3$, es decir $2x^2-x-3=0$, con $(2x-3)(x+1)=0$ y soluciones $x=\\frac{3}{2}$ y $x=-1$. Verificación: para $x=-1$, $4^{1}=4$ y $2^{2}=4$; para $x=\\frac{3}{2}$, $4^{9/4}=2^{9/2}$ y $2^{3/2+3}=2^{9/2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor común",
+      "puntos": [
+        {
+          "texto": "$a^{x+k}=a^x\\times a^k$ ⇒ extraer el factor $a^x$",
+          "explicacion": "Cuando los exponentes difieren en una constante, se escribe cada término como $a^x$ por una potencia numérica, aplicando $a^{x+k}=a^x\\times a^k$, y se saca $a^x$ como factor común. Ejemplo: $2^{x+2}+2^x=20$ se escribe $2^x\\times 2^2+2^x=20$, es decir $2^x(4+1)=20$, de donde $2^x=4$ y $x=2$. Verificación: $2^{4}+2^2=16+4=20$."
+        },
+        {
+          "texto": "Factor común con resta ⇒ misma estrategia",
+          "explicacion": "La diferencia de potencias con exponentes que se diferencian en una constante también se factoriza: se reescribe cada término con $a^x$ y se resta el coeficiente numérico dentro del paréntesis, lo que reduce la ecuación a $a^x=$ número. Con diferencias de potencias la estrategia es la misma: se reescribe cada término con $a^x$ y se factoriza. Ejemplo: $3^{x+1}-3^x=18$ da $3^x(3-1)=18$, es decir $3^x=9$ y $x=2$. Verificación: $3^3-3^2=27-9=18$."
+        },
+        {
+          "texto": "Tres términos consecutivos ⇒ factor común de la suma",
+          "explicacion": "Cuando hay más de dos potencias con exponentes consecutivos se extrae como factor común la de menor exponente, y los coeficientes que quedan dentro del paréntesis son potencias sucesivas de la base. El resultado es una ecuación de la forma $a^x=$ número. Si aparecen tres potencias con exponentes consecutivos, se factoriza la menor y se suman los coeficientes. Ejemplo: $2^x+2^{x+1}+2^{x+2}=56$ da $2^x(1+2+4)=56$, es decir $2^x\\times 7=56$ y $2^x=8$, luego $x=3$. Verificación: $8+16+32=56$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable",
+      "puntos": [
+        {
+          "texto": "$t=a^x$ ⇒ ecuación cuadrática en $t$",
+          "explicacion": "Si la ecuación contiene $a^{2x}$ y $a^x$, se hace $t=a^x$, y como $a^{2x}=(a^x)^2=t^2$ la ecuación se convierte en una ecuación cuadrática en $t$. Después de resolverla se regresa a $a^x=t$. Ejemplo: $4^x-5\\times 2^x+4=0$ con $t=2^x$ da $t^2-5t+4=0$, es decir $(t-1)(t-4)=0$, con $t=1$ o $t=4$. Entonces $2^x=1$ da $x=0$ y $2^x=4$ da $x=2$. Verificación: para $x=0$, $1-5+4=0$; para $x=2$, $16-20+4=0$."
+        },
+        {
+          "texto": "$t=a^x>0$ ⇒ descartar raíces $t\\le 0$",
+          "explicacion": "Como $a^x>0$, las soluciones de la cuadrática en $t$ que sean negativas o cero no tienen solución en $x$ y deben descartarse. Ejemplo: $9^x-2\\times 3^x-3=0$ con $t=3^x$ da $t^2-2t-3=0$, es decir $(t-3)(t+1)=0$, con $t=3$ o $t=-1$. El valor $t=-1$ se descarta porque $3^x>0$; con $t=3$ resulta $x=1$. Verificación: $9-6-3=0$."
+        },
+        {
+          "texto": "$a^x+a^{-x}$ ⇒ multiplicar por $t=a^x$",
+          "explicacion": "Cuando aparecen $a^x$ y $a^{-x}=\\frac{1}{a^x}$, se hace $t=a^x$, se elimina el denominador multiplicando por $t$ y se resuelve la cuadrática. Ejemplo: $2^x+2^{-x}=\\frac{5}{2}$ da $t+\\frac{1}{t}=\\frac{5}{2}$, es decir $2t^2-5t+2=0$, con $(2t-1)(t-2)=0$ y $t=\\frac{1}{2}$ o $t=2$. Entonces $2^x=\\frac{1}{2}$ da $x=-1$ y $2^x=2$ da $x=1$. Verificación: $2+\\frac{1}{2}=\\frac{5}{2}$ y $\\frac{1}{2}+2=\\frac{5}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso de logaritmos",
+      "puntos": [
+        {
+          "texto": "$a^x=b$ con $b>0$ ⇒ $x=\\log_a b$",
+          "explicacion": "Si el miembro derecho no es una potencia exacta de la base, la solución se expresa con el logaritmo en base $a$, definido por $a^x=b\\iff x=\\log_a b$. Con calculadora se usa $\\log_a b=\\frac{\\log b}{\\log a}$. Ejemplo: $2^x=10$ da $x=\\log_2 10=\\frac{\\log 10}{\\log 2}=\\frac{1}{0.30103}\\approx 3.3219$. Verificación: $2^{3.3219}\\approx 10$."
+        },
+        {
+          "texto": "Tomar logaritmos en ambos miembros ⇒ bajar el exponente",
+          "explicacion": "Cuando hay potencias de bases distintas en ambos miembros, se aplica el logaritmo y se usa $\\log(a^n)=n\\log a$. Ejemplo: $2^x=3^{x-1}$ da $x\\log 2=(x-1)\\log 3$, es decir $x(\\log 2-\\log 3)=-\\log 3$, y $x=\\frac{\\log 3}{\\log 3-\\log 2}\\approx\\frac{0.4771}{0.1761}\\approx 2.7095$. Verificación: $2^{2.7095}\\approx 6.54$ y $3^{1.7095}\\approx 6.54$."
+        },
+        {
+          "texto": "$a^x=b^x$ con $a\\ne b$ ⇒ $x=0$",
+          "explicacion": "Si dos bases positivas distintas dan la misma potencia, se divide ambos miembros entre $b^x$ y queda $\\left(\\frac{a}{b}\\right)^x=1$, que solo se cumple para $x=0$ porque $\\frac{a}{b}\\ne 1$. Ejemplo: $2^x=5^x$ da $\\left(\\frac{2}{5}\\right)^x=1$ y $x=0$. Verificación: $2^0=1=5^0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos sin solución",
+      "puntos": [
+        {
+          "texto": "Ecuación con $a^x$ igual a negativo ⇒ $S=\\varnothing$",
+          "explicacion": "Esta es la situación más frecuente de ecuación exponencial sin solución. Se detecta al aislar la potencia: si el valor al que queda igualada es negativo o cero, se concluye de inmediato, sin necesidad de resolver más. Después de aislar la potencia, si el miembro derecho es negativo o cero, el conjunto solución es vacío. Ejemplo: $2\\times 3^x+5=1$ da $3^x=-2$, imposible. Verificación: $3^x>0$ para todo $x$."
+        },
+        {
+          "texto": "Solución de la cuadrática en $t$ sin $t>0$ ⇒ sin solución",
+          "explicacion": "Si tras el cambio de variable ninguna raíz de la cuadrática es positiva, la ecuación original no tiene solución. Ejemplo: $4^x+2^x+1=0$ con $t=2^x$ da $t^2+t+1=0$, cuyo discriminante es $1-4=-3<0$, sin raíces reales. Verificación: la suma de tres potencias positivas no puede valer $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función exponencial (tema 66) ⇒ base de las propiedades",
+          "explicacion": "El tema «Función exponencial» establece que $a^x$ es positiva y estrictamente monótona, propiedades que sustentan la inyectividad. Ejemplo: $2^x$ crece y $\\left(\\frac{1}{2}\\right)^x$ decrece, y en ambos casos $a^x=a^y$ implica $x=y$. Verificación: la gráfica corta a cada recta horizontal $y=b>0$ una sola vez."
+        },
+        {
+          "texto": "Funciones inyectivas (tema 63) ⇒ justifica igualar exponentes",
+          "explicacion": "La propiedad de inyectividad aplicada a $a^x$ es el fundamento del método de igualar bases; sin ella no se podría concluir que dos exponentes son iguales a partir de la igualdad de las potencias. El tema «Funciones inyectivas» explica por qué $f(x_1)=f(x_2)$ implica $x_1=x_2$; aplicado a $a^x$, permite igualar exponentes. Ejemplo: $3^{x}=3^{4}$ da $x=4$. Verificación: dos exponentes distintos darían valores distintos."
+        },
+        {
+          "texto": "Logaritmos y propiedades (tema 68) ⇒ resolver bases distintas",
+          "explicacion": "Cuando no se pueden igualar bases, el logaritmo es la herramienta que transforma la incógnita del exponente en una expresión resoluble; las propiedades del logaritmo de una potencia y de la definición de logaritmo son las que se usan. El tema «Logaritmos y propiedades» proporciona $a^x=b\\iff x=\\log_a b$ y $\\log(a^n)=n\\log a$, necesarios cuando las bases no coinciden. Ejemplo: $5^x=3$ da $x=\\log_5 3$. Verificación: $5^{\\log_5 3}=3$."
+        },
+        {
+          "texto": "Ecuaciones de segundo grado (tema 06) ⇒ resolver la cuadrática en $t$",
+          "explicacion": "Tras el cambio de variable $t=a^x$ queda una ecuación cuadrática, y las raíces se obtienen factorizando o con la fórmula general; luego se regresa a la variable original descartando las raíces que no sean positivas. Tras el cambio de variable se usan los métodos del tema «Ecuaciones de segundo grado»: factorización o fórmula general. Ejemplo: $t^2-5t+4=0$ se factoriza como $(t-1)(t-4)=0$. Verificación: $1-5+4=0$ y $16-20+4=0$."
+        }
+      ]
+    }
+  ]
+}

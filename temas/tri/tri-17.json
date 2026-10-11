@@ -1,0 +1,168 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Razones trigonométricas en posición normal",
+  "glosario": {
+    "Posición normal": "Vértice en origen y lado inicial en eje positivo",
+    "Lado final": "Posición del rayo al terminar el giro",
+    "Abscisa": "Coordenada horizontal de un punto",
+    "Ordenada": "Coordenada vertical de un punto",
+    "Radio vector": "Distancia del origen a un punto del lado final",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Seno": "Cociente de ordenada entre radio vector",
+    "Coseno": "Cociente de abscisa entre radio vector",
+    "Tangente": "Cociente de ordenada entre abscisa",
+    "Cotangente": "Cociente de abscisa entre ordenada",
+    "Secante": "Cociente de radio vector entre abscisa",
+    "Cosecante": "Cociente de radio vector entre ordenada"
+  },
+  "theory": [
+    {
+      "titulo": "Punto del lado final",
+      "puntos": [
+        {
+          "texto": "Punto $P(x; y)$ del lado final, distinto del origen",
+          "explicacion": "Para un ángulo $\\theta$ en posición normal se elige cualquier punto P del lado final que no sea el origen; sus coordenadas x (abscisa) e y (ordenada) alimentan todas las razones. Ejemplo: si el lado final de $\\theta$ pasa por $P(-3; 4)$, se toma x = −3 e y = 4. Con ese punto se calcularán las seis razones de $\\theta$ en las cards siguientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Radio vector",
+      "puntos": [
+        {
+          "texto": "Radio vector: $r = \\sqrt{x^2 + y^2}$",
+          "explicacion": "Aquí r es la distancia del origen al punto $P(x; y)$, y por el teorema de Pitágoras se calcula como la raíz de la suma de los cuadrados de las coordenadas. Siempre es positivo, porque es una distancia. Ejemplo: para $P(-3; 4)$, $r = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$. Para $Q(6; -8)$, $r = \\sqrt{36 + 64} = \\sqrt{100} = 10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno en posición normal",
+      "puntos": [
+        {
+          "texto": "Seno: $\\operatorname{sen}\\theta = \\frac{y}{r}$",
+          "explicacion": "Es el cociente entre la ordenada del punto y el radio vector. Ejemplo: con $P(-3; 4)$ y $r = 5$, $\\operatorname{sen}\\theta = \\frac{4}{5}$. La ordenada positiva hace positivo el seno en este caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno en posición normal",
+      "puntos": [
+        {
+          "texto": "Coseno: $\\cos\\theta = \\frac{x}{r}$",
+          "explicacion": "Es el cociente entre la abscisa del punto y el radio vector. Ejemplo: con $P(-3; 4)$ y $r = 5$, $\\cos\\theta = \\frac{-3}{5} = -\\frac{3}{5}$. La abscisa negativa hace negativo el coseno en este caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente en posición normal",
+      "puntos": [
+        {
+          "texto": "Tangente: $\\tan\\theta = \\frac{y}{x}$",
+          "explicacion": "Es el cociente entre la ordenada y la abscisa del punto; no interviene el radio vector, y la abscisa debe ser distinta de cero. Ejemplo: con $P(-3; 4)$, $\\tan\\theta = \\frac{4}{-3} = -\\frac{4}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente en posición normal",
+      "puntos": [
+        {
+          "texto": "Cotangente: $\\cot\\theta = \\frac{x}{y}$",
+          "explicacion": "Es el cociente entre la abscisa y la ordenada del punto; la ordenada debe ser distinta de cero. Ejemplo: con $P(-3; 4)$, $\\cot\\theta = \\frac{-3}{4} = -\\frac{3}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante en posición normal",
+      "puntos": [
+        {
+          "texto": "Secante: $\\sec\\theta = \\frac{r}{x}$",
+          "explicacion": "Es el cociente entre el radio vector y la abscisa; la abscisa debe ser distinta de cero. Ejemplo: con $P(-3; 4)$ y $r = 5$, $\\sec\\theta = \\frac{5}{-3} = -\\frac{5}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cosecante en posición normal",
+      "puntos": [
+        {
+          "texto": "Cosecante: $\\csc\\theta = \\frac{r}{y}$",
+          "explicacion": "Es el cociente entre el radio vector y la ordenada; la ordenada debe ser distinta de cero. Ejemplo: con $P(-3; 4)$ y $r = 5$, $\\csc\\theta = \\frac{5}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Independencia del punto",
+      "puntos": [
+        {
+          "texto": "Cualquier punto del lado final da las mismas razones",
+          "explicacion": "Los triángulos que se forman al bajar perpendiculares desde distintos puntos del lado final al eje x son semejantes, así que los cocientes no cambian. Ejemplo: sobre el mismo lado final están $P(-3; 4)$ y $Q(-6; 8)$. Con Q, $r = \\sqrt{36 + 64} = 10$, entonces $\\operatorname{sen}\\theta = \\frac{8}{10} = \\frac{4}{5}$ y $\\cos\\theta = \\frac{-6}{10} = -\\frac{3}{5}$, los mismos valores obtenidos con P."
+        }
+      ]
+    },
+    {
+      "titulo": "Compatibilidad con agudos",
+      "puntos": [
+        {
+          "texto": "Ángulo agudo ⇒ las definiciones coinciden con las del triángulo rectángulo",
+          "explicacion": "Si $\\theta$ es agudo, el punto $P(x; y)$ forma con el eje x un triángulo rectángulo donde x es el cateto adyacente, y el cateto opuesto y r la hipotenusa, así que las razones son las mismas ya conocidas. Ejemplo: con $P(4; 3)$ y $r = 5$, $\\operatorname{sen}\\theta = \\frac{3}{5}$, $\\cos\\theta = \\frac{4}{5}$ y $\\tan\\theta = \\frac{3}{4}$, que son las razones del triángulo de catetos 3 y 4 e hipotenusa 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos, cuadrante I",
+      "puntos": [
+        {
+          "texto": "Cuadrante I ⇒ todas las razones positivas",
+          "explicacion": "En el cuadrante I, tanto x como y son positivos, y r siempre lo es, así que ningún cociente resulta negativo. Ejemplo: con $P(3; 4)$ y $r = 5$, $\\operatorname{sen}\\theta = \\frac{4}{5}$, $\\cos\\theta = \\frac{3}{5}$, $\\tan\\theta = \\frac{4}{3}$, $\\cot\\theta = \\frac{3}{4}$, $\\sec\\theta = \\frac{5}{3}$ y $\\csc\\theta = \\frac{5}{4}$; las seis son positivas."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos, cuadrante II",
+      "puntos": [
+        {
+          "texto": "Cuadrante II ⇒ solo seno y cosecante positivos",
+          "explicacion": "Aquí x es negativo e y es positivo. Las razones que usan solo a y y a r, es decir seno y cosecante, resultan positivas; las que usan x, es decir coseno, tangente, cotangente y secante, resultan negativas. Ejemplo: con $P(-3; 4)$ y $r = 5$, $\\operatorname{sen}\\theta = \\frac{4}{5}$ y $\\csc\\theta = \\frac{5}{4}$ son positivos, y $\\cos\\theta = -\\frac{3}{5}$ es negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos, cuadrante III",
+      "puntos": [
+        {
+          "texto": "Cuadrante III ⇒ solo tangente y cotangente positivas",
+          "explicacion": "Aquí x e y son negativos, así que los cocientes entre ambos, tangente y cotangente, son positivos, mientras que los que dividen entre r (seno, coseno, secante y cosecante) son negativos. Ejemplo: con $P(-5; -12)$ y $r = \\sqrt{25 + 144} = 13$, $\\tan\\theta = \\frac{-12}{-5} = \\frac{12}{5}$ es positiva, y $\\operatorname{sen}\\theta = -\\frac{12}{13}$ y $\\cos\\theta = -\\frac{5}{13}$ son negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Signos, cuadrante IV",
+      "puntos": [
+        {
+          "texto": "Cuadrante IV ⇒ solo coseno y secante positivos",
+          "explicacion": "Aquí x es positivo e y es negativo. Las razones que usan solo a x y a r, es decir coseno y secante, resultan positivas; las que usan y resultan negativas. Ejemplo: con $P(8; -15)$ y $r = \\sqrt{64 + 225} = 17$, $\\cos\\theta = \\frac{8}{17}$ y $\\sec\\theta = \\frac{17}{8}$ son positivos, y $\\operatorname{sen}\\theta = -\\frac{15}{17}$ es negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Razón y cuadrante dados",
+      "puntos": [
+        {
+          "texto": "Dato de una razón + cuadrante ⇒ hallar x, y, r con sus signos",
+          "explicacion": "Se toma de la razón el cociente que corresponde, se elige el signo de cada coordenada según el cuadrante y se halla el tercer valor con $r^2 = x^2 + y^2$. Después se forman las demás razones. Ejemplo: si $\\operatorname{sen}\\theta = \\frac{3}{5}$ y $\\theta$ es del cuadrante II, se toma y = 3 y r = 5; entonces $x^2 = 25 - 9 = 16$, y como en el cuadrante II la abscisa es negativa, x = −4. Resultan $\\cos\\theta = -\\frac{4}{5}$ y $\\tan\\theta = -\\frac{3}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Radio vector negativo ⇒ error",
+          "explicacion": "El radio vector es una distancia y siempre es positivo, aunque x o y sean negativos; el signo de las razones viene de las coordenadas, no de r. Ejemplo: con $P(-3; 4)$, escribir $r = -5$ daría $\\operatorname{sen}\\theta = -\\frac{4}{5}$, que es incorrecto; lo correcto es $r = 5$ y $\\operatorname{sen}\\theta = \\frac{4}{5}$."
+        },
+        {
+          "texto": "Olvidar el signo de la coordenada ⇒ razón con signo equivocado",
+          "explicacion": "Al reemplazar las coordenadas hay que conservar su signo y revisar el resultado con la regla del cuadrante. Ejemplo: con $P(-5; -12)$ y $r = 13$, escribir $\\cos\\theta = \\frac{5}{13}$ ignora el signo de x; lo correcto es $\\cos\\theta = -\\frac{5}{13}$, que además es negativo porque el ángulo es del cuadrante III."
+        }
+      ]
+    }
+  ]
+}

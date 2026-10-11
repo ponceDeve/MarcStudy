@@ -1,0 +1,256 @@
+{
+  "curso": "Álgebra",
+  "tema": "Inecuaciones con valor absoluto",
+  "glosario": {
+    "Inecuación": "Desigualdad que contiene una incógnita.",
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Incógnita": "Valor desconocido que se debe hallar.",
+    "Conjunto solución": "Valores de la incógnita que cumplen la desigualdad.",
+    "Desigualdad estricta": "Relación menor o mayor que, sin igualdad.",
+    "Desigualdad no estricta": "Relación menor o mayor o igual que.",
+    "Intervalo": "Conjunto de reales comprendidos entre dos extremos.",
+    "Extremo": "Valor donde empieza o termina un intervalo.",
+    "Unión": "Elementos que están en alguno de los conjuntos.",
+    "Intersección": "Elementos comunes a ambos conjuntos.",
+    "Conjunto vacío": "Conjunto sin ningún elemento.",
+    "Cadena de desigualdades": "Tres miembros unidos por desigualdades.",
+    "Punto crítico": "Valor que anula lo de adentro.",
+    "Zona": "Tramo de la recta entre puntos críticos."
+  },
+  "theory": [
+    {
+      "titulo": "Inecuación con valor absoluto",
+      "puntos": [
+        {
+          "texto": "«Inecuación con valor absoluto»: la incógnita aparece dentro de | |",
+          "explicacion": "Se llama así a toda desigualdad en la que la incógnita está dentro de una o más barras de valor absoluto, como |x - 3| < 5, |2x + 1| ≥ 7 o |x - 1| + |x + 2| > 4. Resolverla consiste en encontrar todos los números reales que, al reemplazar a la incógnita, vuelven verdadera la desigualdad. A diferencia de una inecuación lineal común, las barras obligan a considerar que la expresión interior puede ser positiva o negativa, porque el valor absoluto actúa de manera distinta en cada caso. Por eso las técnicas del tema consisten en quitar las barras de forma correcta: con reglas directas, elevando al cuadrado o analizando por zonas. El resultado suele ser un intervalo, una unión de intervalos, todo ℝ o el conjunto vacío ∅."
+        },
+        {
+          "texto": "«Valor absoluto»: |x| = x si x ≥ 0 y |x| = -x si x < 0",
+          "explicacion": "La definición por partes indica que el valor absoluto deja intacto a un número que ya es positivo o cero, y cambia de signo a un número negativo para convertirlo en positivo. Por esa razón |x| nunca es negativo: siempre es mayor o igual que cero y solo vale cero cuando x = 0. Por ejemplo, |7| = 7 porque 7 ≥ 0; |-7| = -(-7) = 7 porque -7 < 0; y |0| = 0. Con expresiones ocurre lo mismo: |x - 5| vale x - 5 cuando x ≥ 5 y vale -(x - 5) = 5 - x cuando x < 5. Esta definición es la base de todo el tema, pues cualquier inecuación con valor absoluto puede resolverse separando estos dos comportamientos."
+        },
+        {
+          "texto": "|x - a| es la distancia entre x y a en la recta real",
+          "explicacion": "Al ubicar los números reales sobre una recta, |x| mide cuántas unidades separan a x del cero y |x - a| mide cuántas unidades separan a x del punto a, sin importar si x queda a la izquierda o a la derecha. Por ejemplo, |5 - (-2)| = |7| = 7 es la distancia entre 5 y -2, y |-1 - 3| = |-4| = 4 es la distancia entre -1 y 3. Esta lectura geométrica traduce una inecuación en una pregunta sobre distancias: |x - 3| < 2 pide los puntos que están a menos de 2 unidades del 3, es decir, los comprendidos entre 1 y 5. Interpretar así cada inecuación permite anticipar la forma de la respuesta antes de operar."
+        },
+        {
+          "texto": "Conjunto solución (CS): valores reales que cumplen la inecuación",
+          "explicacion": "El conjunto solución, que se abrevia CS, reúne todos los números reales que convierten la desigualdad en una afirmación verdadera. Puede tener cuatro aspectos: un solo intervalo, como en |x| < 2, cuyo CS es ⟨-2; 2⟩; una unión de intervalos separados, como en |x| > 2, cuyo CS es ⟨-∞; -2⟩ ∪ ⟨2; +∞⟩; todos los reales, ℝ, como en |x| ≥ 0; o ningún valor, el conjunto vacío ∅, como en |x| < -1. Escribir el CS con la notación de intervalos y con los extremos abiertos o cerrados que corresponden es parte esencial de la respuesta: un procedimiento correcto con un CS mal escrito queda incompleto."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación de la solución",
+      "puntos": [
+        {
+          "texto": "Desigualdad estricta (< o >) deja el extremo abierto",
+          "explicacion": "Cuando la desigualdad usa < o >, el extremo no pertenece a la solución porque la igualdad no está permitida; por eso se escribe con ⟨ ⟩ (o con paréntesis). Ejemplo: en |x| < 3 la solución es -3 < x < 3, es decir ⟨-3; 3⟩. Comprobación: para x = 3 se obtiene |3| = 3 < 3, que es falso, y para x = -3 se obtiene |-3| = 3 < 3, también falso. Los extremos quedan fuera, mientras que un valor interior como x = 2 sí cumple, pues |2| = 2 < 3."
+        },
+        {
+          "texto": "Desigualdad no estricta (≤ o ≥) deja el extremo cerrado",
+          "explicacion": "Cuando la desigualdad usa ≤ o ≥, el extremo sí pertenece a la solución porque la igualdad está permitida, y se escribe con corchetes [ ]. Ejemplo: en |x| ≤ 3 la solución es -3 ≤ x ≤ 3, es decir [-3; 3]. Comprobación: para x = 3 se obtiene |3| = 3 ≤ 3, que es verdadero, y para x = -3 se obtiene |-3| = 3 ≤ 3, también verdadero. Un valor exterior como x = 4 no cumple, pues |4| = 4 ≤ 3 es falso."
+        },
+        {
+          "texto": "Los extremos infinitos siempre se escriben abiertos",
+          "explicacion": "Los símbolos -∞ y +∞ no son números reales, solo indican que el intervalo continúa sin límite, así que nunca pueden ser un extremo cerrado. Ejemplo: la solución de |x| > 3 es ⟨-∞; -3⟩ ∪ ⟨3; +∞⟩, y la de |x| ≥ 3 es ⟨-∞; -3] ∪ [3; +∞⟩. Observa que en el segundo caso los extremos finitos -3 y 3 sí se cierran porque la desigualdad admite la igualdad, pero los símbolos infinitos conservan siempre el lado abierto."
+        },
+        {
+          "texto": "Unión (∪) reúne las soluciones de varias ramas",
+          "explicacion": "La unión de dos conjuntos contiene los elementos que están en el primero, en el segundo o en ambos. En las inecuaciones con valor absoluto aparece cuando la condición se expresa con la palabra «o», como en x < -3 o x > 3. Ejemplo: ⟨-∞; -3⟩ ∪ ⟨3; +∞⟩ contiene a -5 y a 4, porque cada uno está en alguna de las dos partes, pero no contiene a 0, porque 0 no está en ninguna de ellas. La unión se escribe entre los intervalos ya resueltos de cada rama."
+        },
+        {
+          "texto": "Intersección (∩) conserva solo los valores comunes",
+          "explicacion": "La intersección de dos conjuntos contiene únicamente los elementos que pertenecen a ambos a la vez. Aparece cuando varias condiciones deben cumplirse simultáneamente, como en -a < x y x < a. Ejemplo: ⟨-4; 5⟩ ∩ ⟨1; 8⟩ = ⟨1; 5⟩, porque el mayor de los extremos izquierdos es 1 y el menor de los extremos derechos es 5. Por ejemplo, x = 3 está en ambos intervalos y por eso pertenece al resultado, mientras que x = 0 solo está en el primero y queda excluido."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso menor que",
+      "puntos": [
+        {
+          "texto": "«|x| < a», con a > 0, equivale a -a < x < a",
+          "explicacion": "Se obtiene de la definición: si x ≥ 0, entonces |x| = x y la condición es x < a; si x < 0, entonces |x| = -x y la condición -x < a equivale a x > -a. Al reunir ambos casos, x queda entre -a y a, que son los puntos situados a menos de a unidades del cero. Ejemplo: |x| < 4 equivale a -4 < x < 4, luego CS = ⟨-4; 4⟩. Comprobación: x = 3 cumple porque |3| = 3 < 4; x = -3 cumple porque |-3| = 3 < 4; x = 5 no cumple porque 5 < 4 es falso."
+        },
+        {
+          "texto": "«|x| ≤ a», con a ≥ 0, equivale a -a ≤ x ≤ a",
+          "explicacion": "El razonamiento es el mismo que en el caso estricto, pero ahora la igualdad está permitida, de modo que los extremos -a y a sí cumplen la desigualdad y la solución es el intervalo cerrado [-a; a]. Ejemplo: |x| ≤ 6 equivale a -6 ≤ x ≤ 6, luego CS = [-6; 6]. Comprobación: x = 6 cumple porque |6| = 6 ≤ 6; x = -6 cumple porque |-6| = 6 ≤ 6; x = 0 cumple porque 0 ≤ 6; x = 7 no cumple porque 7 ≤ 6 es falso."
+        },
+        {
+          "texto": "«|f(x)| < a» equivale a -a < f(x) < a",
+          "explicacion": "La regla no cambia cuando dentro de las barras hay una expresión f(x) en lugar de la sola incógnita: la expresión completa debe quedar entre -a y a. Se resuelve la cadena de desigualdades aplicando la misma operación a sus tres miembros. Ejemplo: |2x - 3| < 7 equivale a -7 < 2x - 3 < 7. Sumando 3 a los tres miembros resulta -4 < 2x < 10, y dividiendo entre 2 resulta -2 < x < 5, luego CS = ⟨-2; 5⟩. Comprobación: x = 0 da |-3| = 3 < 7, que es verdadero; x = 5 da |7| = 7 < 7, que es falso; x = -2 da |-7| = 7 < 7, también falso."
+        },
+        {
+          "texto": "«|x - c| < r» equivale a c - r < x < c + r",
+          "explicacion": "Aquí c es el centro y r es el radio: la desigualdad pide los puntos que están a menos de r unidades del centro c, es decir, los que forman el intervalo ⟨c - r; c + r⟩. Esta forma permite escribir la solución sin operar. Ejemplo 1: |x - 3| < 2 tiene centro 3 y radio 2, luego CS = ⟨1; 5⟩. Ejemplo 2: |x + 4| < 3 se lee como |x - (-4)| < 3, con centro -4 y radio 3, luego CS = ⟨-7; -1⟩. Comprobación del segundo ejemplo: x = -5 da |-1| = 1 < 3, que es verdadero; x = 0 da |4| = 4 < 3, que es falso."
+        },
+        {
+          "texto": "Al dividir la cadena entre un negativo se invierten las desigualdades",
+          "explicacion": "Cuando en la cadena queda un coeficiente negativo en la incógnita, hay que dividir los tres miembros entre ese negativo y, por esa razón, cambiar el sentido de ambas desigualdades. Ejemplo: |3 - 2x| ≤ 5 equivale a -5 ≤ 3 - 2x ≤ 5. Restando 3 resulta -8 ≤ -2x ≤ 2. Al dividir entre -2 resulta 4 ≥ x ≥ -1, que se ordena como -1 ≤ x ≤ 4, luego CS = [-1; 4]. Comprobación: x = 4 da |3 - 8| = 5 ≤ 5, verdadero; x = -1 da |3 + 2| = 5 ≤ 5, verdadero; x = 0 da |3| = 3 ≤ 5, verdadero; x = 5 da |-7| = 7 ≤ 5, falso."
+        },
+        {
+          "texto": "|f(x)| < a con a < 0 no tiene solución",
+          "explicacion": "El valor absoluto de cualquier número es mayor o igual que cero, y ningún número no negativo puede ser menor que un número negativo; por lo tanto, la inecuación es imposible y CS = ∅, sin necesidad de operar. Lo mismo ocurre con |f(x)| ≤ a cuando a < 0. Ejemplo: |x + 2| < -3 no tiene solución. Comprobación con valores: x = -2 da |0| = 0 < -3, falso; x = 5 da |7| = 7 < -3, falso; ningún valor de x logra que un número no negativo quede por debajo de -3."
+        },
+        {
+          "texto": "|f(x)| < 0 no tiene solución y |f(x)| ≤ 0 se reduce a f(x) = 0",
+          "explicacion": "Como el valor absoluto no puede ser negativo, que sea menor que 0 es imposible, y entonces CS = ∅. En cambio, que sea menor o igual que 0 solo se logra cuando es exactamente 0, y el valor absoluto es 0 únicamente si la expresión interior es 0. Ejemplo: |x - 4| ≤ 0 equivale a x - 4 = 0, luego x = 4 y CS = {4}. Comprobación: x = 4 da |0| = 0 ≤ 0, verdadero; x = 5 da |1| = 1 ≤ 0, falso. Con la desigualdad estricta, |x - 4| < 0, no existe ningún valor y CS = ∅."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso mayor que",
+      "puntos": [
+        {
+          "texto": "«|x| > a», con a > 0, equivale a x < -a o x > a",
+          "explicacion": "Se obtiene de la definición: si x ≥ 0, entonces |x| = x y la condición es x > a; si x < 0, entonces |x| = -x y la condición -x > a equivale a x < -a. La solución consta de dos partes separadas, las de los puntos que están a más de a unidades del cero, uno a cada lado. Ejemplo: |x| > 3 equivale a x < -3 o x > 3, luego CS = ⟨-∞; -3⟩ ∪ ⟨3; +∞⟩. Comprobación: x = 4 da |4| = 4 > 3, verdadero; x = -4 da |-4| = 4 > 3, verdadero; x = 0 da 0 > 3, falso."
+        },
+        {
+          "texto": "«|x| ≥ a», con a > 0, equivale a x ≤ -a o x ≥ a",
+          "explicacion": "Es la versión con igualdad permitida del caso anterior, de modo que los extremos -a y a sí pertenecen a la solución y los intervalos finitos se cierran. Ejemplo: |x| ≥ 5 equivale a x ≤ -5 o x ≥ 5, luego CS = ⟨-∞; -5] ∪ [5; +∞⟩. Comprobación: x = 5 da |5| = 5 ≥ 5, verdadero; x = -5 da |-5| = 5 ≥ 5, verdadero; x = 6 da 6 ≥ 5, verdadero; x = 2 da 2 ≥ 5, falso."
+        },
+        {
+          "texto": "«|f(x)| > a» equivale a f(x) > a o f(x) < -a",
+          "explicacion": "Con una expresión dentro de las barras se plantean las dos ramas por separado, cada una con su propia inecuación sin valor absoluto, y se unen sus soluciones. Ejemplo: |3x - 2| > 7. Rama 1: 3x - 2 > 7 da 3x > 9, luego x > 3. Rama 2: 3x - 2 < -7 da 3x < -5, luego x < -5/3. Entonces CS = ⟨-∞; -5/3⟩ ∪ ⟨3; +∞⟩. Comprobación: x = 4 da |10| = 10 > 7, verdadero; x = -2 da |-8| = 8 > 7, verdadero; x = 0 da |-2| = 2 > 7, falso; x = 3 da |7| = 7 > 7, falso, por eso el extremo 3 queda abierto."
+        },
+        {
+          "texto": "«|x - c| ≥ r» equivale a x ≤ c - r o x ≥ c + r",
+          "explicacion": "Con c como centro y r como radio, la desigualdad pide los puntos cuya distancia al centro es al menos r, es decir, los que quedan fuera del intervalo abierto ⟨c - r; c + r⟩ junto con sus extremos. Ejemplo: |x + 1| ≥ 5 se lee |x - (-1)| ≥ 5, con c = -1 y r = 5, luego x ≤ -6 o x ≥ 4 y CS = ⟨-∞; -6] ∪ [4; +∞⟩. Comprobación: x = 4 da |5| = 5 ≥ 5, verdadero; x = -6 da |-5| = 5 ≥ 5, verdadero; x = 0 da |1| = 1 ≥ 5, falso."
+        },
+        {
+          "texto": "|f(x)| > a, con a < 0, se cumple para todo real",
+          "explicacion": "Como el valor absoluto es siempre mayor o igual que cero, y cero es mayor que cualquier número negativo, toda la recta real satisface la desigualdad, así que CS = ℝ. Lo mismo ocurre con |f(x)| ≥ a cuando a ≤ 0, ya que |f(x)| ≥ 0 ≥ a. Ejemplo: |x - 5| > -2 se cumple para todo x. Comprobación: x = 5 da |0| = 0 > -2, verdadero; x = -100 da |-105| = 105 > -2, verdadero; x = 20 da |15| = 15 > -2, verdadero."
+        },
+        {
+          "texto": "|f(x)| > 0 se cumple salvo donde f(x) = 0",
+          "explicacion": "El valor absoluto es positivo en todo número excepto en el cero, de modo que |f(x)| > 0 se cumple para todos los reales menos los valores que anulan la expresión interior. Ejemplo: |x - 3| > 0 excluye únicamente x = 3, luego CS = ℝ - {3}. Comprobación: x = 3 da |0| = 0 > 0, falso; x = 4 da |1| = 1 > 0, verdadero; x = -2 da |-5| = 5 > 0, verdadero. Con la desigualdad no estricta, |x - 3| ≥ 0, ya no se excluye ningún valor y CS = ℝ."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos valores absolutos",
+      "puntos": [
+        {
+          "texto": "|a|² = a²",
+          "explicacion": "Elevar al cuadrado un valor absoluto elimina las barras, porque |a| es igual a a o a -a, y ambos números tienen el mismo cuadrado. Esta propiedad es la que permite deshacerse de las barras en comparaciones entre dos valores absolutos. Ejemplo con a = -5: |-5|² = 5² = 25 y (-5)² = 25, así que ambos resultados coinciden. Ejemplo con a = 3: |3|² = 9 y 3² = 9. Con expresiones, |x - 1|² = (x - 1)² para cualquier valor de x, por ejemplo con x = -2: |-3|² = 9 y (-3)² = 9."
+        },
+        {
+          "texto": "«|f| < |g|» equivale a f² < g²",
+          "explicacion": "Si dos números no negativos cumplen p < q, entonces también cumplen p² < q², y viceversa, porque elevar al cuadrado conserva el orden entre números no negativos. Como |f| y |g| no son negativos y |f|² = f², se pueden elevar ambos lados al cuadrado sin invertir la desigualdad. Ejemplo: |x - 1| < |x + 3| equivale a (x - 1)² < (x + 3)², es decir, x² - 2x + 1 < x² + 6x + 9. Al cancelar x² queda -8 < 8x, luego x > -1 y CS = ⟨-1; +∞⟩. Comprobación: x = 0 da 1 < 3, verdadero; x = -2 da 3 < 1, falso; x = -1 da 2 < 2, falso."
+        },
+        {
+          "texto": "f² - g² = (f - g)(f + g) permite estudiar el signo",
+          "explicacion": "Al pasar todo a un lado, la condición f² < g² se escribe f² - g² < 0, y la diferencia de cuadrados la factoriza como (f - g)(f + g) < 0. Un producto es negativo cuando sus dos factores tienen signos opuestos, lo que a veces simplifica el trabajo. Ejemplo con |x - 1| < |x + 3|: f - g = (x - 1) - (x + 3) = -4 y f + g = (x - 1) + (x + 3) = 2x + 2, luego -4(2x + 2) < 0. Al dividir entre -4 se invierte la desigualdad: 2x + 2 > 0, de donde x > -1, el mismo resultado que con el otro procedimiento."
+        },
+        {
+          "texto": "«|f| > |g|» equivale a (f - g)(f + g) > 0",
+          "explicacion": "Es el caso opuesto: f² > g² equivale a f² - g² > 0, es decir, (f - g)(f + g) > 0, y el producto es positivo si ambos factores tienen el mismo signo. Cuando la desigualdad no es estricta, ≥, se incluyen los valores donde el producto es 0. Ejemplo: |2x + 1| ≥ |x - 2|. Aquí f - g = (2x + 1) - (x - 2) = x + 3 y f + g = (2x + 1) + (x - 2) = 3x - 1, luego (x + 3)(3x - 1) ≥ 0. Las raíces son x = -3 y x = 1/3; como la parábola abre hacia arriba, el producto es positivo o cero fuera de las raíces, así que x ≤ -3 o x ≥ 1/3 y CS = ⟨-∞; -3] ∪ [1/3; +∞⟩. Comprobación: x = 0 da 1 ≥ 2, falso; x = 1 da 3 ≥ 1, verdadero; x = -4 da 7 ≥ 6, verdadero."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparar con expresión",
+      "puntos": [
+        {
+          "texto": "En |f(x)| < g(x), la expresión g(x) debe ser positiva",
+          "explicacion": "Como |f(x)| es mayor o igual que cero, para que pueda ser menor que g(x) es indispensable que g(x) sea mayor que cero; si g(x) ≤ 0, la desigualdad estricta no puede cumplirse. Por eso el primer paso es imponer g(x) > 0, y después se resuelve la cadena. Ejemplo: |x| < x - 4. La condición g(x) > 0 da x - 4 > 0, luego x > 4. Con esa condición se plantea -(x - 4) < x < x - 4, y la parte x < x - 4 equivale a 0 < -4, que es falso para todo x. La inecuación no tiene solución: CS = ∅. Comprobación: x = 10 da |10| = 10 < 6, falso."
+        },
+        {
+          "texto": "«|f| < g» equivale a g > 0 y -g < f < g",
+          "explicacion": "La regla del caso menor que se extiende a una expresión g(x) en el lado derecho, con la condición adicional de que g(x) sea positiva. Se resuelven por separado las tres condiciones y se intersectan los resultados. Ejemplo: |x - 2| < 2x + 1. Condición g > 0: 2x + 1 > 0 da x > -1/2. Parte derecha, f < g: x - 2 < 2x + 1 da -3 < x. Parte izquierda, -g < f: -2x - 1 < x - 2 da 1 < 3x, luego x > 1/3. Al intersectar x > -1/2, x > -3 y x > 1/3 queda x > 1/3, así que CS = ⟨1/3; +∞⟩. Comprobación: x = 1 da |-1| = 1 < 3, verdadero; x = 0 da 2 < 1, falso; x = 1/3 da 5/3 < 5/3, falso."
+        },
+        {
+          "texto": "«|f| ≤ g» equivale a g ≥ 0 y -g ≤ f ≤ g",
+          "explicacion": "Con la desigualdad no estricta se permite que g(x) sea cero, y las cotas -g y g se incluyen. Se resuelven las tres condiciones y se intersectan. Ejemplo: |x + 1| ≤ 2x - 3. Condición g ≥ 0: 2x - 3 ≥ 0 da x ≥ 3/2. Parte izquierda, -g ≤ f: -2x + 3 ≤ x + 1 da 2 ≤ 3x, luego x ≥ 2/3. Parte derecha, f ≤ g: x + 1 ≤ 2x - 3 da 4 ≤ x. La intersección de x ≥ 3/2, x ≥ 2/3 y x ≥ 4 es x ≥ 4, luego CS = [4; +∞⟩. Comprobación: x = 4 da |5| = 5 ≤ 5, verdadero; x = 3 da 4 ≤ 3, falso."
+        },
+        {
+          "texto": "«|f| > g» equivale a f > g o f < -g",
+          "explicacion": "Se plantean las dos ramas y se unen sus soluciones, sin necesidad de imponer ninguna condición previa sobre g(x). Ejemplo: |2x - 1| > x + 4. Rama 1: 2x - 1 > x + 4 da x > 5. Rama 2: 2x - 1 < -(x + 4) da 2x - 1 < -x - 4, luego 3x < -3 y x < -1. Entonces CS = ⟨-∞; -1⟩ ∪ ⟨5; +∞⟩. Comprobación: x = 6 da |11| = 11 > 10, verdadero; x = -2 da |-5| = 5 > 2, verdadero; x = 0 da |-1| = 1 > 4, falso, pues 0 queda entre -1 y 5."
+        },
+        {
+          "texto": "Si g(x) < 0, entonces |f(x)| > g(x) se cumple siempre",
+          "explicacion": "Cuando la expresión del lado derecho es negativa, el valor absoluto, que nunca es negativo, la supera de forma automática, así que en esos valores de x la desigualdad es verdadera. La regla de las dos ramas ya lo contempla porque sus soluciones, al unirse, cubren esos valores. Ejemplo: |2x| > x - 5. Rama 1: 2x > x - 5 da x > -5. Rama 2: 2x < -(x - 5) da 3x < 5, luego x < 5/3. La unión de x > -5 con x < 5/3 abarca toda la recta, porque las dos ramas se traslapan, así que CS = ℝ. Comprobación: x = -10 da |-20| = 20 > -15, verdadero; x = 0 da 0 > -5, verdadero; x = 20 da 40 > 15, verdadero."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos críticos",
+      "puntos": [
+        {
+          "texto": "Punto crítico: valor de x que anula lo de adentro",
+          "explicacion": "Es el valor de la incógnita que hace cero a la expresión que está dentro de unas barras de valor absoluto. En ese valor, el signo de la expresión interior cambia de negativo a positivo, de modo que el valor absoluto cambia de comportamiento. Ejemplos: en |x - 4| el punto crítico se halla con x - 4 = 0, luego x = 4; en |2x + 6| se halla con 2x + 6 = 0, luego x = -3; en |x + 2| + |x - 1| hay dos, x = -2 y x = 1, uno por cada par de barras. Para hallarlos basta igualar a cero cada expresión interior y resolver."
+        },
+        {
+          "texto": "Los puntos críticos dividen la recta en zonas",
+          "explicacion": "Los puntos críticos, colocados en la recta real, la separan en tramos llamados zonas; si hay n puntos críticos resultan n + 1 zonas. Por convención, cada punto crítico se asigna a una sola zona, para no repetirlo, y suele incluirse en la zona de su derecha. Ejemplo: con los puntos críticos -2 y 1 se forman tres zonas: x < -2; -2 ≤ x < 1; y x ≥ 1. Entre ellas cubren todos los reales sin traslaparse, lo que garantiza que ningún valor quede sin analizar."
+        },
+        {
+          "texto": "En cada zona, lo de adentro conserva su signo",
+          "explicacion": "Dentro de una misma zona, la expresión interior de cada barra no cambia de signo, porque para hacerlo tendría que pasar por cero, y los ceros son justamente los puntos críticos que limitan la zona. Por eso basta evaluar un valor de prueba por zona. Ejemplo con |x + 2| y |x - 1|: en la zona x < -2, con prueba x = -3, resulta x + 2 = -1 < 0 y x - 1 = -4 < 0; en la zona -2 ≤ x < 1, con prueba x = 0, resulta x + 2 = 2 ≥ 0 y x - 1 = -1 < 0; en la zona x ≥ 1, con prueba x = 2, resulta x + 2 = 4 ≥ 0 y x - 1 = 1 ≥ 0."
+        }
+      ]
+    },
+    {
+      "titulo": "Método por casos",
+      "puntos": [
+        {
+          "texto": "En cada zona se reemplaza | | según el signo interior",
+          "explicacion": "Si lo de adentro es positivo o cero, se quitan las barras sin cambiar nada; si es negativo, se quitan las barras y se cambia el signo de toda la expresión. Ejemplo: |x - 3| vale x - 3 cuando x ≥ 3 y vale 3 - x cuando x < 3. Comprobación con valores: para x = 0 se tiene |-3| = 3 y 3 - 0 = 3; para x = 5 se tiene |2| = 2 y 5 - 3 = 2. Aplicado a |x - 3| < 5: si x < 3, 3 - x < 5 da x > -2 y queda ⟨-2; 3⟩; si x ≥ 3, x - 3 < 5 da x < 8 y queda [3; 8⟩. La unión es ⟨-2; 8⟩, el mismo resultado que da la regla -5 < x - 3 < 5."
+        },
+        {
+          "texto": "El resultado de cada zona se intersecta con esa zona",
+          "explicacion": "La solución obtenida al resolver una zona solo vale dentro de esa zona, porque el valor absoluto se quitó suponiendo esa condición; por eso se intersecta con ella. Ejemplo: en |x + 2| + |x - 1| < 5, para la zona x < -2 las dos expresiones interiores son negativas y la inecuación queda -(x + 2) - (x - 1) < 5, es decir, -2x - 1 < 5. De ahí -2x < 6 y, al dividir entre -2, x > -3. Esta solución se intersecta con la zona x < -2: ⟨-3; +∞⟩ ∩ ⟨-∞; -2⟩ = ⟨-3; -2⟩."
+        },
+        {
+          "texto": "La solución final es la unión de las soluciones de las zonas",
+          "explicacion": "Cada zona aporta una parte de la solución, y la solución completa es la unión de todas esas partes. Se completa el ejemplo |x + 2| + |x - 1| < 5. Zona x < -2: aporta ⟨-3; -2⟩. Zona -2 ≤ x < 1: queda (x + 2) - (x - 1) = 3 < 5, que es verdadero para cualquier valor, así que aporta toda la zona, [-2; 1⟩. Zona x ≥ 1: queda (x + 2) + (x - 1) = 2x + 1 < 5, luego x < 2, y al intersectar con x ≥ 1 aporta [1; 2⟩. La unión ⟨-3; -2⟩ ∪ [-2; 1⟩ ∪ [1; 2⟩ da CS = ⟨-3; 2⟩. Comprobación: x = 0 da 2 + 1 = 3 < 5, verdadero; x = -3 da 1 + 4 = 5 < 5, falso; x = 2 da 4 + 1 = 5 < 5, falso."
+        },
+        {
+          "texto": "«|x - 3| + |x + 1| > 6» se resuelve en tres zonas",
+          "explicacion": "Los puntos críticos son x = 3 y x = -1, que forman las zonas x < -1; -1 ≤ x < 3; y x ≥ 3. Zona x < -1: ambas expresiones son negativas, queda -(x - 3) - (x + 1) = -2x + 2 > 6, luego x < -2, que ya está dentro de la zona. Zona -1 ≤ x < 3: queda (3 - x) + (x + 1) = 4 > 6, que es falso para todo x de la zona, así que no aporta nada. Zona x ≥ 3: queda (x - 3) + (x + 1) = 2x - 2 > 6, luego x > 4, que ya está dentro de la zona. Entonces CS = ⟨-∞; -2⟩ ∪ ⟨4; +∞⟩. Comprobación: x = -3 da 6 + 2 = 8 > 6, verdadero; x = 0 da 3 + 1 = 4 > 6, falso; x = 5 da 2 + 6 = 8 > 6, verdadero; x = 4 da 1 + 5 = 6 > 6, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor absoluto y su expresión",
+      "puntos": [
+        {
+          "texto": "|f(x)| ≥ f(x) se cumple siempre",
+          "explicacion": "Si f(x) ≥ 0, el valor absoluto es igual a f(x), y la desigualdad se cumple con igualdad; si f(x) < 0, el valor absoluto es positivo y f(x) es negativo, así que el valor absoluto es mayor. En ambos casos se cumple, por lo que CS = ℝ. Ejemplo: |x - 2| ≥ x - 2 es verdadera para todo x. Comprobación: x = 5 da |3| = 3 ≥ 3, verdadero; x = -4 da |-6| = 6 ≥ -6, verdadero; x = 2 da 0 ≥ 0, verdadero."
+        },
+        {
+          "texto": "|f(x)| > f(x) equivale a f(x) < 0",
+          "explicacion": "La desigualdad estricta falla justamente cuando hay igualdad, que sucede si f(x) ≥ 0; por eso solo se cumple cuando f(x) es negativa, caso en que el valor absoluto es el opuesto de f(x) y es mayor que ella. Ejemplo: |x - 2| > x - 2 equivale a x - 2 < 0, luego x < 2 y CS = ⟨-∞; 2⟩. Comprobación: x = 0 da |-2| = 2 > -2, verdadero; x = 3 da |1| = 1 > 1, falso; x = 2 da 0 > 0, falso."
+        },
+        {
+          "texto": "|f(x)| ≤ f(x) equivale a f(x) ≥ 0",
+          "explicacion": "Como |f(x)| ≥ f(x) siempre, la única forma de que |f(x)| ≤ f(x) es que se dé la igualdad, y eso ocurre cuando f(x) no es negativa. Ejemplo: |2x - 6| ≤ 2x - 6 equivale a 2x - 6 ≥ 0, luego x ≥ 3 y CS = [3; +∞⟩. Comprobación: x = 3 da |0| = 0 ≤ 0, verdadero; x = 5 da |4| = 4 ≤ 4, verdadero; x = 2 da |-2| = 2 ≤ -2, falso."
+        },
+        {
+          "texto": "|f(x)| < f(x) no se cumple nunca",
+          "explicacion": "Como |f(x)| ≥ f(x) en todos los casos, que el valor absoluto sea estrictamente menor que la expresión es imposible, y CS = ∅. Ejemplo: |x + 1| < x + 1 no tiene solución. Comprobación: x = 3 da |4| = 4 < 4, falso; x = -3 da |-2| = 2 < -2, falso; x = -1 da 0 < 0, falso. En ninguno de los valores probados se cumple la desigualdad, y la propiedad general explica que tampoco ocurrirá en otros."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de resolución",
+      "puntos": [
+        {
+          "texto": "Identificar la forma de la inecuación antes de operar",
+          "explicacion": "Cada forma tiene su método, y reconocerla ahorra errores: si el valor absoluto está solo y se compara con un número, se usa la regla de -a < f < a o la de f < -a o f > a; si hay dos valores absolutos comparados entre sí, se eleva al cuadrado o se usa (f - g)(f + g); si se compara con una expresión que tiene incógnita, se impone su signo y se plantean las ramas; si hay sumas de valores absolutos, se usan puntos críticos y zonas. Ejemplos: |x - 1| ≤ 3 usa la regla directa; |2x| > x + 1 compara con una expresión; |x| ≥ |x - 2| compara dos valores absolutos; |x| + |x - 4| < 6 se resuelve por zonas."
+        },
+        {
+          "texto": "En «menor que» las condiciones se combinan con intersección",
+          "explicacion": "En |f| < a se necesitan a la vez -a < f y f < a, porque f debe estar entre las dos cotas; por eso se intersectan las soluciones de ambas partes. Ejemplo: |2x - 3| < 7. De -7 < 2x - 3 se obtiene 2x > -4, luego x > -2. De 2x - 3 < 7 se obtiene 2x < 10, luego x < 5. La intersección ⟨-2; +∞⟩ ∩ ⟨-∞; 5⟩ es ⟨-2; 5⟩, y esa es la solución."
+        },
+        {
+          "texto": "En «mayor que» las ramas se combinan con unión",
+          "explicacion": "En |f| > a basta con que se cumpla una de las dos condiciones, f > a o f < -a, de modo que se unen las soluciones. Intersectarlas sería un error, pues ningún número cumple las dos a la vez. Ejemplo: |3x - 2| > 7 da x > 3 en una rama y x < -5/3 en la otra; si se intentara intersectar, ningún número es a la vez mayor que 3 y menor que -5/3, y se obtendría ∅, lo cual es falso porque x = 4 sí cumple (|10| = 10 > 7). La respuesta correcta es la unión ⟨-∞; -5/3⟩ ∪ ⟨3; +∞⟩."
+        },
+        {
+          "texto": "Comprobar el CS con valores de prueba",
+          "explicacion": "Al terminar, se prueban valores de cada región para verificar la solución: uno dentro del CS, uno fuera y los extremos. Ejemplo: para |2x - 3| < 7 se obtuvo CS = ⟨-2; 5⟩. Valor interior x = 1: |-1| = 1 < 7, verdadero. Valor exterior x = 6: |9| = 9 < 7, falso. Extremo x = 5: |7| = 7 < 7, falso, lo que confirma que el extremo va abierto. Extremo x = -2: |-7| = 7 < 7, falso, también abierto. Si alguna prueba contradijera lo esperado, habría que revisar el procedimiento."
+        }
+      ]
+    }
+  ]
+}

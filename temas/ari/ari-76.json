@@ -1,0 +1,181 @@
+{
+  "curso": "Aritmética",
+  "tema": "Análisis combinatorio",
+  "glosario": {
+    "Análisis combinatorio": "Técnicas para contar configuraciones",
+    "Combinatoria": "Otro nombre del análisis combinatorio",
+    "Matemática discreta": "Matemática de conjuntos finitos o numerables",
+    "Configuración": "Agrupación de elementos de un conjunto",
+    "Principio de multiplicación": "Total de etapas sucesivas es el producto",
+    "Principio de adición": "Total de alternativas excluyentes es la suma",
+    "Alternativas excluyentes": "Alternativas que no pueden ocurrir juntas",
+    "Diagrama de árbol": "Esquema de ramas que muestra posibilidades",
+    "Conteo por complemento": "Total menos los casos no deseados",
+    "Variaciones": "Agrupaciones donde importa el orden",
+    "Permutaciones": "Ordenaciones de todos los elementos",
+    "Combinaciones": "Elecciones donde no importa el orden",
+    "Factorial": "Producto de enteros consecutivos desde uno"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Análisis combinatorio» = técnicas de conteo de configuraciones",
+          "explicacion": "El análisis combinatorio es la rama de la matemática que estudia cómo contar, sin enumerarlos uno por uno, los modos en que pueden formarse agrupaciones con los elementos de un conjunto finito, respetando ciertas condiciones. Responde preguntas del tipo de cuántas maneras distintas existen de ordenar, elegir o combinar objetos."
+        },
+        {
+          "texto": "Nombre alternativo: combinatoria",
+          "explicacion": "También se denomina combinatoria o matemática del conteo. Forma parte de la matemática discreta, porque trabaja con colecciones finitas de objetos y con resultados que son números naturales, y es la base para el cálculo de probabilidades en espacios finitos (tema 84)."
+        },
+        {
+          "texto": "«Configuración» = agrupación de elementos de un conjunto",
+          "explicacion": "Una configuración es cada una de las agrupaciones que se pueden formar con los elementos disponibles, como una fila ordenada de personas, un grupo elegido de objetos o una clave de varias cifras. El análisis combinatorio cuenta cuántas configuraciones distintas existen bajo las reglas del problema."
+        },
+        {
+          "texto": "Dos configuraciones son distintas según las reglas del problema",
+          "explicacion": "Que dos agrupaciones se consideren distintas depende de si importa el orden de los elementos y de si pueden repetirse. Por ejemplo, la fila A, B y la fila B, A son distintas si el orden importa, pero constituyen el mismo grupo si solo interesa quiénes la integran. Fijar este criterio es el primer paso en la resolución."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio de multiplicación",
+      "puntos": [
+        {
+          "texto": "Principio de multiplicación ⇒ productos de opciones",
+          "explicacion": "Si una tarea se realiza en etapas sucesivas e independientes, de modo que la primera puede hacerse de $m_1$ maneras, la segunda de $m_2$ maneras, y así hasta la última de $m_k$ maneras, el total de maneras de realizar toda la tarea es $m_1 \\cdot m_2 \\cdots m_k$. Se conoce también como principio fundamental del conteo."
+        },
+        {
+          "texto": "Principio de multiplicación ✓ etapas sucesivas",
+          "explicacion": "Se aplica cuando la tarea requiere completar todas las etapas, una después de otra, y la cantidad de opciones en una etapa no depende de la elección hecha en etapas anteriores, o su cantidad es la misma para cada elección previa. La conjunción que lo identifica es y: se elige esto y luego aquello."
+        },
+        {
+          "texto": "Ejemplo: 3 camisas y 4 pantalones ⇒ 12 conjuntos",
+          "explicacion": "Para vestirse con una camisa y un pantalón se eligen primero la camisa, de 3 maneras, y luego el pantalón, de 4 maneras. El total es $3 \\cdot 4 = 12$ conjuntos distintos. Cada camisa se combina con cada uno de los 4 pantalones."
+        },
+        {
+          "texto": "Ejemplo: 3 rutas de A a B, 4 de B a C ⇒ 12 caminos",
+          "explicacion": "Ir de A a C pasando por B requiere recorrer primero un tramo de A a B, con 3 opciones, y luego un tramo de B a C, con 4 opciones. El número de caminos es $3 \\cdot 4 = 12$. Es el mismo razonamiento de las prendas y se aplica a cualquier trayecto por tramos."
+        },
+        {
+          "texto": "Ejemplo: números de 3 cifras ⇒ 900",
+          "explicacion": "Para formar un número de 3 cifras, la primera cifra puede ser cualquiera de 1 a 9, es decir, 9 opciones, pues no puede ser 0; la segunda y la tercera pueden ser cualquiera de 0 a 9, es decir, 10 opciones cada una. El total es $9 \\cdot 10 \\cdot 10 = 900$."
+        },
+        {
+          "texto": "Ejemplo: 3 cifras distintas ⇒ 648",
+          "explicacion": "Si las cifras deben ser todas diferentes, la primera tiene 9 opciones (de 1 a 9); la segunda, 9 opciones, pues puede ser 0 pero no la ya usada; y la tercera, 8 opciones. El total es $9 \\cdot 9 \\cdot 8 = 648$. Cada elección reduce las opciones de las siguientes."
+        },
+        {
+          "texto": "Restricción ⇒ contar primero la posición restringida",
+          "explicacion": "Cuando una posición tiene una condición especial, como la primera cifra que no puede ser cero, se cuenta primero esa posición con sus opciones permitidas y después las demás. Hacerlo en otro orden puede obligar a separar casos y conduce con facilidad a errores."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio de adición",
+      "puntos": [
+        {
+          "texto": "Principio de adición ⇒ suma de opciones",
+          "explicacion": "Si una tarea puede realizarse mediante una de varias alternativas, donde la primera tiene $m_1$ maneras, la segunda $m_2$ maneras, y así sucesivamente, y no hay maneras comunes a dos alternativas, el total de maneras es $m_1 + m_2 + \\dots + m_k$. La palabra que lo identifica es o: se elige esto o aquello."
+        },
+        {
+          "texto": "Principio de adición ✓ alternativas excluyentes",
+          "explicacion": "Las alternativas deben ser excluyentes, es decir, no pueden ocurrir juntas ni compartir ninguna manera de realizarse. Si hay maneras comunes, deben descontarse para no contarlas dos veces, según el principio de inclusión y exclusión de los conjuntos (tema 13)."
+        },
+        {
+          "texto": "Ejemplo: 5 libros de matemática o 3 de física ⇒ 8",
+          "explicacion": "Para elegir un solo libro que sea de matemática o de física, hay 5 opciones del primer tipo y 3 del segundo, sin libros comunes. El total es $5 + 3 = 8$ maneras. No se multiplica porque se elige un único libro y no uno de cada tipo."
+        },
+        {
+          "texto": "Multiplicación ≠ adición: conjunción frente a disyunción",
+          "explicacion": "La multiplicación corresponde a tareas con etapas que se completan todas, y la adición a alternativas entre las cuales se escoge una sola. En un mismo problema se pueden combinar ambos principios: se suman los casos excluyentes y, dentro de cada caso, se multiplican las opciones de sus etapas."
+        }
+      ]
+    },
+    {
+      "titulo": "Diagrama de árbol",
+      "puntos": [
+        {
+          "texto": "«Diagrama de árbol» = esquema que enumera las posibilidades",
+          "explicacion": "El diagrama de árbol es un esquema que representa cada etapa de una tarea con ramas que salen de cada opción de la etapa anterior. Cada camino desde el inicio hasta el extremo de una rama es una configuración, y el número de caminos coincide con el resultado del principio de multiplicación."
+        },
+        {
+          "texto": "Diagrama de árbol ⇒ útil con pocas etapas",
+          "explicacion": "El árbol permite comprobar el conteo de forma visual y conocer las configuraciones explícitamente, pero se vuelve inmanejable cuando hay muchas etapas u opciones. Para cantidades grandes se reemplaza por el principio de multiplicación y las técnicas de los temas siguientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Conteo por complemento",
+      "puntos": [
+        {
+          "texto": "Conteo por complemento: total menos los casos no deseados",
+          "explicacion": "En ocasiones es más sencillo contar los casos que no cumplen una condición y restarlos del total. Si de un total de 900 números de 3 cifras, 648 tienen cifras distintas, los que tienen alguna cifra repetida son $900 - 648 = 252$. El método evita enumerar muchos casos favorables."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de agrupaciones",
+      "puntos": [
+        {
+          "texto": "Criterios para clasificar agrupaciones: orden y repetición",
+          "explicacion": "Las agrupaciones que se estudian en el curso se distinguen por dos criterios: si importa el orden de los elementos y si se permite repetirlos. De la combinación de estos criterios surgen las variaciones (tema 78), las permutaciones (tema 79) y las combinaciones (tema 80)."
+        },
+        {
+          "texto": "Variaciones ⇒ importa el orden y se eligen algunos",
+          "explicacion": "En una variación se forman agrupaciones de algunos elementos del conjunto en las que el orden de los elementos distingue una agrupación de otra. Su estudio y su fórmula corresponden al tema 78. Un ejemplo es formar un podio con los tres primeros lugares de una carrera, donde cambiar el orden de los corredores produce un resultado distinto."
+        },
+        {
+          "texto": "Permutaciones ⇒ importa el orden y se usan todos",
+          "explicacion": "En una permutación se ordenan todos los elementos disponibles y lo que distingue a una agrupación de otra es el orden. Su estudio corresponde al tema 79 y depende del factorial de un número (tema 77)."
+        },
+        {
+          "texto": "Combinaciones ⇒ no importa el orden",
+          "explicacion": "En una combinación se eligen algunos elementos y lo único que importa es cuáles fueron elegidos, no el orden. Su estudio corresponde al tema 80. Un ejemplo es elegir un comité de tres personas entre varias, donde el mismo grupo de tres personas es una sola elección sin importar en qué orden se las nombre."
+        },
+        {
+          "texto": "Factorial ⇒ herramienta de las fórmulas combinatorias",
+          "explicacion": "Las fórmulas de variaciones, permutaciones y combinaciones se expresan con el factorial de un número natural, un producto de enteros consecutivos que se define en el tema 77. Conocerlo es requisito para aplicar esas fórmulas."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen",
+      "puntos": [
+        {
+          "texto": "Pascal y Fermat: correspondencia sobre el juego, 1654",
+          "explicacion": "Blaise Pascal y Pierre de Fermat, matemáticos franceses, intercambiaron cartas en 1654 sobre problemas de reparto en juegos de azar. Esa correspondencia contribuyó al desarrollo de los métodos de conteo y del cálculo de probabilidades."
+        },
+        {
+          "texto": "Leibniz: «Dissertatio de arte combinatoria», 1666",
+          "explicacion": "Gottfried Wilhelm Leibniz, filósofo y matemático alemán, publicó en 1666 la obra Dissertatio de arte combinatoria, en la que estudió de forma sistemática las combinaciones y las ordenaciones. Con ella se difundió el término combinatoria."
+        },
+        {
+          "texto": "Jacob Bernoulli: «Ars conjectandi», 1713",
+          "explicacion": "Jacob Bernoulli, matemático suizo, desarrolló la teoría de las permutaciones y combinaciones en su obra póstuma Ars conjectandi, publicada en 1713, junto con las bases de la teoría de la probabilidad. La obra reunió resultados que su autor había obtenido antes de su fallecimiento en 1705."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: sumar cuando deben multiplicarse las etapas",
+          "explicacion": "Si la tarea exige realizar una etapa y luego otra, las opciones se multiplican; sumarlas subestima el total. En el caso de las 3 camisas y 4 pantalones, la respuesta no es 7, sino 12, pues cada camisa se combina con cada pantalón y no solo se cuentan las prendas sueltas."
+        },
+        {
+          "texto": "Error: multiplicar cuando se trata de alternativas",
+          "explicacion": "Si se escoge una sola entre varias alternativas, las opciones se suman; multiplicarlas sobrestima el total. Con 5 libros de matemática o 3 de física, la respuesta es 8 y no 15, porque no se elige un libro de cada tipo sino un único libro de cualquiera de los dos tipos."
+        },
+        {
+          "texto": "Error: contar dos veces una misma configuración",
+          "explicacion": "Al sumar alternativas que comparten maneras de realizarse, estas se cuentan más de una vez. Antes de sumar se debe verificar que las alternativas sean excluyentes o descontar las comunes. Por ejemplo, al contar los números de dos cifras que son pares o múltiplos de 5, los terminados en 0 pertenecen a ambos grupos y no deben contarse dos veces."
+        },
+        {
+          "texto": "Error: ignorar las restricciones del enunciado",
+          "explicacion": "Olvidar condiciones como que un número de varias cifras no empieza en cero, que las cifras sean diferentes o que dos personas no pueden ocupar el mismo lugar lleva a resultados mayores que los correctos."
+        }
+      ]
+    }
+  ]
+}

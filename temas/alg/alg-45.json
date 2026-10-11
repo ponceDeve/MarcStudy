@@ -1,0 +1,202 @@
+{
+  "curso": "Álgebra",
+  "tema": "Término general de un cociente notable",
+  "glosario": {
+    "término general": "Fórmula que da el término de cualquier lugar",
+    "cociente notable": "División exacta de binomios con desarrollo directo",
+    "término": "Cada sumando de una expresión algebraica",
+    "posición": "Lugar que ocupa un término en el desarrollo",
+    "subíndice": "Número pequeño escrito abajo a la derecha",
+    "binomio": "Polinomio de dos términos",
+    "exponente": "Número de veces que se multiplica la base",
+    "base": "Número o variable que se eleva",
+    "divisor": "Polinomio entre el cual se divide",
+    "dividendo": "Polinomio que se divide",
+    "división exacta": "División cuyo residuo es cero",
+    "desarrollo": "Cociente escrito término por término",
+    "término central": "Término con igual cantidad a cada lado",
+    "cociente generalizado": "Cociente notable con exponentes distintos en el divisor",
+    "razón": "Cociente entre dos cantidades",
+    "potencia de potencia": "Se multiplican los exponentes",
+    "coeficiente binomial": "Número que acompaña a cada término del binomio",
+    "alternado": "Que cambia de signo en cada término"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de término general",
+      "puntos": [
+        {
+          "texto": "«Término general» ⇒ fórmula del término de cualquier posición",
+          "explicacion": "El término general de un cociente notable es una fórmula que permite escribir directamente el término que ocupa una posición dada, sin desarrollar el cociente completo. Se denota $T_k$, donde la letra $T$ abrevia la palabra término y el subíndice $k$ indica la posición. Es útil cuando el cociente tiene muchos términos y solo interesa uno de ellos. Ejemplo: en $\\frac{x^{10} - 1024}{x - 2}$ hay diez términos, pero con la fórmula se obtiene el sexto sin escribir los demás, como se verá en las cards siguientes."
+        },
+        {
+          "texto": "«Término de lugar k» = nombre alternativo del término general",
+          "explicacion": "En muchos textos el término general se llama término de lugar $k$, porque $k$ indica el lugar que ocupa el término en el desarrollo, contando desde el primero. Es la misma fórmula $T_k$. Un enunciado como «halle el término de lugar 4» pide $T_4$, el cuarto término del cociente contado de izquierda a derecha."
+        },
+        {
+          "texto": "«Término k-ésimo» = otro nombre del término general",
+          "explicacion": "También se usa término k-ésimo, que se lee «término número k». Por ejemplo, el término 3-ésimo es el que ocupa el tercer lugar, $T_3$. Los tres nombres (término general, término de lugar $k$ y término $k$-ésimo) se refieren a la misma idea y se resuelven con la misma fórmula."
+        },
+        {
+          "texto": "Posición k ∈ números naturales con 1 ≤ k ≤ n",
+          "explicacion": "La variable $k$ es la posición del término y es un número natural que va de $1$ (primer término) hasta $n$ (último término), donde $n$ es el número de términos del cociente, igual al exponente común del dividendo en la forma básica $\\frac{x^n \\pm a^n}{x \\pm a}$. Un valor de $k$ fuera de ese rango no corresponde a ningún término. Ejemplo: en $\\frac{x^5 - 32}{x - 2}$ hay $n = 5$ términos, así que solo $k = 1, 2, 3, 4, 5$ son válidos; $k = 6$ no existe."
+        },
+        {
+          "texto": "Cociente exacto ✓ requerido para aplicar la fórmula",
+          "explicacion": "El término general solo tiene sentido si el cociente es notable, es decir, si la división es exacta según las condiciones del tema anterior: diferencia entre diferencia siempre; suma entre suma con $n$ impar; diferencia entre suma con $n$ par; suma entre diferencia nunca. Antes de usar la fórmula conviene verificar esa condición. Ejemplo: en $\\frac{x^6 + 64}{x + 2}$ el exponente $6$ es par con suma entre suma, no es exacta y no existe $T_k$; en $\\frac{x^7 + 128}{x + 2}$ sí."
+        },
+        {
+          "texto": "Los términos se cuentan de izquierda a derecha",
+          "explicacion": "Por convención, la posición $k = 1$ corresponde al primer término del cociente, el que tiene la mayor potencia de $x$, y las posiciones crecen hacia la derecha hasta el último término, que contiene la mayor potencia de $a$. Ejemplo: en $x^4 + 2x^3 + 4x^2 + 8x + 16$, el término $x^4$ es $T_1$ y el término $16$ es $T_5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor diferencia",
+      "puntos": [
+        {
+          "texto": "Divisor $x - a$ ⇒ $T_k = x^{n-k}a^{k-1}$",
+          "explicacion": "Cuando el divisor es $x - a$, el término de lugar $k$ del cociente de $\\frac{x^n - a^n}{x - a}$ es $T_k = x^{n-k}a^{k-1}$, con $1 \\le k \\le n$ y signo positivo. Aquí $n$ es el exponente del dividendo, $a$ es la base del segundo término y $k$ es la posición. Ejemplo con $\\frac{x^5 - 32}{x - 2}$, donde $n = 5$ y $a = 2$: $T_3 = x^{5-3}\\,2^{3-1} = x^2 \\times 4 = 4x^2$. Comprobación con el desarrollo $x^4 + 2x^3 + 4x^2 + 8x + 16$: el tercer término es $4x^2$."
+        },
+        {
+          "texto": "Exponente de x en $T_k$ es $n - k$",
+          "explicacion": "Como los exponentes de $x$ bajan de uno en uno desde $n - 1$ hasta $0$, el término de lugar $k$ lleva $x^{n-k}$: para $k = 1$ resulta $n - 1$ y para $k = n$ resulta $0$. Esta parte de la fórmula se obtiene restando de $n$ el lugar del término. Ejemplo con $n = 8$ y $k = 6$: el exponente de $x$ es $8 - 6 = 2$."
+        },
+        {
+          "texto": "Exponente de a en $T_k$ es $k - 1$",
+          "explicacion": "Como los exponentes de $a$ suben de uno en uno desde $0$ hasta $n - 1$, el término de lugar $k$ lleva $a^{k-1}$: para $k = 1$ resulta $0$ y para $k = n$ resulta $n - 1$. Ejemplo con $n = 8$, $a = 2$ y $k = 6$: el exponente de $a$ es $6 - 1 = 5$ y $2^5 = 32$."
+        },
+        {
+          "texto": "Suma de exponentes en $T_k$: $(n-k) + (k-1) = n - 1$",
+          "explicacion": "Al sumar el exponente de $x$ y el de $a$ en el término de lugar $k$ resulta $(n - k) + (k - 1) = n - 1$, constante para todo $k$. Sirve para verificar que una fórmula del término está bien escrita. Ejemplo con $n = 8$ y $k = 6$: $x^2$ y $a^5$ suman exponentes $2 + 5 = 7 = 8 - 1$."
+        },
+        {
+          "texto": "Primer término $T_1 = x^{n-1}$ y último $T_n = a^{n-1}$",
+          "explicacion": "Al sustituir $k = 1$ en la fórmula se obtiene $T_1 = x^{n-1}a^{0} = x^{n-1}$, y al sustituir $k = n$ se obtiene $T_n = x^{0}a^{n-1} = a^{n-1}$. Son los dos extremos del desarrollo. Ejemplo con $\\frac{x^8 - 256}{x - 2}$: $T_1 = x^7$ y $T_8 = 2^7 = 128$."
+        },
+        {
+          "texto": "Ejemplo: sexto término de $\\frac{x^{8} - 256}{x - 2}$",
+          "explicacion": "Se identifica $n = 8$ (porque $256 = 2^8$) y $a = 2$. El divisor es una diferencia, así que el signo es positivo. Con $k = 6$: $T_6 = x^{8-6}\\,2^{6-1} = x^2 \\times 2^5 = 32x^2$. Verificación con el desarrollo $x^7 + 2x^6 + 4x^5 + 8x^4 + 16x^3 + 32x^2 + 64x + 128$: el sexto término es $32x^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisor suma",
+      "puntos": [
+        {
+          "texto": "Divisor $x + a$ ⇒ $T_k = (-1)^{k-1}x^{n-k}a^{k-1}$",
+          "explicacion": "Cuando el divisor es $x + a$, los signos del cociente se alternan comenzando en positivo, lo que se expresa con el factor $(-1)^{k-1}$ en el término general: $T_k = (-1)^{k-1}x^{n-k}a^{k-1}$. Ejemplo con $\\frac{x^7 + 128}{x + 2}$, donde $n = 7$ y $a = 2$: $T_4 = (-1)^{3}x^{7-4}\\,2^{4-1} = -x^3 \\times 8 = -8x^3$. Comprobación con el desarrollo $x^6 - 2x^5 + 4x^4 - 8x^3 + 16x^2 - 32x + 64$: el cuarto término es $-8x^3$."
+        },
+        {
+          "texto": "Signo de $T_k$: k impar ⇒ positivo, k par ⇒ negativo",
+          "explicacion": "El factor $(-1)^{k-1}$ vale $+1$ cuando $k - 1$ es par (es decir, $k$ impar) y vale $-1$ cuando $k - 1$ es impar (es decir, $k$ par). Entonces los términos de lugar impar son positivos y los de lugar par son negativos. Ejemplo con $\\frac{x^6 - 64}{x + 2}$: $T_5$ lleva signo $+$ porque $5$ es impar, y $T_6$ lleva signo $-$ porque $6$ es par; efectivamente $T_5 = 16x$ y $T_6 = -32$."
+        },
+        {
+          "texto": "Último término: signo $(-1)^{n-1}$ en $T_n$",
+          "explicacion": "El último término es $T_n = (-1)^{n-1}a^{n-1}$: es positivo si $n$ es impar y negativo si $n$ es par. Esto concuerda con las condiciones de exactitud: suma entre suma exige $n$ impar (último término positivo) y diferencia entre suma exige $n$ par (último término negativo). Ejemplo: en $\\frac{x^7 + 128}{x + 2}$ el último término es $+2^6 = 64$; en $\\frac{x^6 - 64}{x + 2}$ es $-2^5 = -32$."
+        },
+        {
+          "texto": "Ejemplo: $T_5$ de $\\frac{x^6 - 64}{x + 2}$",
+          "explicacion": "Se identifica $n = 6$ (porque $64 = 2^6$) y $a = 2$. El divisor es una suma y $6$ es par, de modo que el cociente es notable. Con $k = 5$: $T_5 = (-1)^{4}x^{6-5}\\,2^{5-1} = (+1)\\,x \\times 16 = 16x$. Verificación con el desarrollo $x^5 - 2x^4 + 4x^3 - 8x^2 + 16x - 32$: el quinto término es $16x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Término desde el final",
+      "puntos": [
+        {
+          "texto": "Término de lugar k desde el final: $x^{k-1}a^{n-k}$ con signo",
+          "explicacion": "Si la posición se cuenta desde el último término hacia el primero, el término de lugar $k$ contado desde el final es $x^{k-1}a^{n-k}$: ahora es el exponente de $x$ el que aumenta con $k$. El signo es $+$ si el divisor es $x - a$, y es $(-1)^{n-k}$ si el divisor es $x + a$. Ejemplo con $\\frac{x^7 - 128}{x - 2}$: el tercero desde el final es $x^{2}\\,2^{4} = 16x^2$; en el desarrollo $x^6 + 2x^5 + 4x^4 + 8x^3 + 16x^2 + 32x + 64$ los dos últimos son $32x$ y $64$, y el tercero desde el final es $16x^2$."
+        },
+        {
+          "texto": "Lugar k desde el final = lugar $n - k + 1$ desde el inicio",
+          "explicacion": "Un término que ocupa el lugar $k$ contado desde el final ocupa el lugar $n - k + 1$ contado desde el inicio, de modo que se puede pasar de una cuenta a la otra y usar la fórmula de $T_k$ ya conocida. Ejemplo: en un cociente de $n = 7$ términos, el tercero desde el final es el de lugar $7 - 3 + 1 = 5$ desde el inicio; con $\\frac{x^7 - 128}{x - 2}$, $T_5 = x^{2}\\,2^{4} = 16x^2$, igual que arriba."
+        },
+        {
+          "texto": "Ejemplo desde el final: segundo de $\\frac{x^6 - 64}{x + 2}$",
+          "explicacion": "Con $n = 6$, $a = 2$ y divisor suma, el segundo término desde el final tiene $k = 2$: $x^{k-1}a^{n-k} = x^{1}\\,2^{4} = 16x$, con signo $(-1)^{n-k} = (-1)^{4} = +1$, así que vale $16x$. Verificación con el desarrollo $x^5 - 2x^4 + 4x^3 - 8x^2 + 16x - 32$: el último es $-32$ y el penúltimo es $16x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Posición por exponente",
+      "puntos": [
+        {
+          "texto": "Término con $x^e$ ⇒ lugar $k = n - e$",
+          "explicacion": "Si se conoce el exponente $e$ de $x$ en un término, su lugar se obtiene despejando de $e = n - k$, lo que da $k = n - e$. Luego se usa $T_k$ para escribir el término completo. Ejemplo con $\\frac{x^{10} - 1024}{x - 2}$, donde $n = 10$ y $a = 2$: el término con $x^3$ está en el lugar $k = 10 - 3 = 7$, y $T_7 = x^{3}\\,2^{6} = 64x^3$."
+        },
+        {
+          "texto": "Término con $a^f$ ⇒ lugar $k = f + 1$",
+          "explicacion": "Si se conoce el exponente $f$ de $a$ en un término, su lugar se obtiene despejando de $f = k - 1$, lo que da $k = f + 1$. Ejemplo con $\\frac{x^{10} - 1024}{x - 2}$: el término que contiene $2^4$ está en el lugar $k = 4 + 1 = 5$, y $T_5 = x^{10-5}\\,2^{4} = 16x^5$."
+        },
+        {
+          "texto": "Comprobar que k cumple 1 ≤ k ≤ n antes de responder",
+          "explicacion": "Después de calcular $k$ debe verificarse que sea un natural entre $1$ y $n$; si resulta fraccionario, negativo o mayor que $n$, el término pedido no existe en ese cociente. Ejemplo: en $\\frac{x^5 - 32}{x - 2}$, un término con $x^7$ daría $k = 5 - 7 = -2$, que es inválido; el exponente de $x$ máximo es $n - 1 = 4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Término central",
+      "puntos": [
+        {
+          "texto": "$n$ impar ⇒ un término central en el lugar $\\frac{n+1}{2}$",
+          "explicacion": "Cuando el número de términos es impar, hay exactamente un término en el centro, que ocupa el lugar $k = \\frac{n+1}{2}$; tiene igual cantidad de términos a su izquierda que a su derecha. Ejemplo con $\\frac{x^9 - 512}{x - 2}$, donde $n = 9$ y $a = 2$ (porque $512 = 2^9$): $k = \\frac{9+1}{2} = 5$ y $T_5 = x^{9-5}\\,2^{5-1} = 16x^4$; a cada lado quedan $4$ términos."
+        },
+        {
+          "texto": "$n$ par ⇒ dos términos centrales en $\\frac{n}{2}$ y $\\frac{n}{2}+1$",
+          "explicacion": "Cuando el número de términos es par, hay dos términos centrales, en los lugares $k = \\frac{n}{2}$ y $k = \\frac{n}{2} + 1$. Ejemplo con $\\frac{x^6 - 64}{x + 2}$, donde $n = 6$: los lugares son $3$ y $4$; $T_3 = (-1)^{2}x^{3}\\,2^{2} = 4x^3$ y $T_4 = (-1)^{3}x^{2}\\,2^{3} = -8x^2$. Verificación con $x^5 - 2x^4 + 4x^3 - 8x^2 + 16x - 32$: el tercero es $4x^3$ y el cuarto es $-8x^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma generalizada",
+      "puntos": [
+        {
+          "texto": "Cociente generalizado: $r = \\frac{p}{m} = \\frac{q}{n}$ términos",
+          "explicacion": "Para $\\frac{x^p \\pm y^q}{x^m \\pm y^n}$ notable, el número de términos es $r = \\frac{p}{m} = \\frac{q}{n}$. En esta forma generalizada, $n$ es el exponente de $y$ en el divisor (distinto del $n$ de la forma básica), y $r$ es el número de términos. Ejemplo: en $\\frac{x^{15} - y^{10}}{x^3 - y^2}$ se tiene $\\frac{15}{3} = 5$ y $\\frac{10}{2} = 5$, de modo que $r = 5$ términos."
+        },
+        {
+          "texto": "Cociente generalizado ⇒ $T_k = (\\pm)\\,x^{m(r-k)}\\,y^{n(k-1)}$",
+          "explicacion": "El término de lugar $k$ del cociente generalizado es $T_k = x^{m(r-k)}\\,y^{n(k-1)}$ con signo positivo si el divisor es una diferencia, y con el factor $(-1)^{k-1}$ si el divisor es una suma. Se obtiene aplicando la fórmula básica a $u = x^m$ y $v = y^n$: $u^{r-k}v^{k-1} = (x^m)^{r-k}(y^n)^{k-1}$. Ejemplo con $\\frac{x^{15} - y^{10}}{x^3 - y^2}$, donde $m = 3$, $n = 2$ y $r = 5$: $T_3 = x^{3(5-3)}\\,y^{2(3-1)} = x^6y^4$. Comprobación con el desarrollo $x^{12} + x^9y^2 + x^6y^4 + x^3y^6 + y^8$."
+        },
+        {
+          "texto": "Primer y último término generalizado: $x^{m(r-1)}$ y $y^{n(r-1)}$",
+          "explicacion": "Con $k = 1$ se obtiene $T_1 = x^{m(r-1)}$ y con $k = r$ se obtiene $T_r = y^{n(r-1)}$ (con el signo que corresponda). Ejemplo con $\\frac{x^{15} - y^{10}}{x^3 - y^2}$: $T_1 = x^{3 \\times 4} = x^{12}$ y $T_5 = y^{2 \\times 4} = y^8$."
+        },
+        {
+          "texto": "Ejemplo con divisor suma: $T_2$ de $\\frac{x^{8} - y^{12}}{x^2 + y^3}$",
+          "explicacion": "Se halla $r = \\frac{8}{2} = \\frac{12}{3} = 4$ (par) con diferencia entre suma, de modo que es notable; además $m = 2$ y $n = 3$. Con $k = 2$: $T_2 = (-1)^{1}x^{2(4-2)}\\,y^{3(2-1)} = -x^{4}y^{3}$. Verificación con el desarrollo $x^6 - x^4y^3 + x^2y^6 - y^9$: el segundo término es $-x^4y^3$."
+        },
+        {
+          "texto": "Ejemplo de término con exponente dado en $\\frac{x^{40} - y^{20}}{x^4 - y^2}$",
+          "explicacion": "Se halla $r = \\frac{40}{4} = \\frac{20}{2} = 10$, con $m = 4$ y $n = 2$. Se pide el término que contiene $x^{12}$: se resuelve $m(r - k) = 12$, es decir $4(10 - k) = 12$, de donde $10 - k = 3$ y $k = 7$. Entonces $T_7 = x^{4(10-7)}\\,y^{2(7-1)} = x^{12}y^{12}$. Verificación: el exponente de $x$ es $4 \\times 3 = 12$ y el de $y$ es $2 \\times 6 = 12$."
+        },
+        {
+          "texto": "Hallar un exponente desconocido ⇒ imponer $\\frac{p}{m} = \\frac{q}{n}$",
+          "explicacion": "Si un exponente falta, se iguala la razón de exponentes y se despeja. Ejemplo: para que $\\frac{x^{20} - y^{k}}{x^5 - y^2}$ sea notable debe cumplirse $\\frac{20}{5} = \\frac{k}{2}$; como $\\frac{20}{5} = 4$, queda $\\frac{k}{2} = 4$ y $k = 8$. Con ese valor el cociente tiene $r = 4$ términos y su término de lugar $2$ es $x^{5(4-2)}\\,y^{2(2-1)} = x^{10}y^{2}$."
+        },
+        {
+          "texto": "Término central generalizado: $r$ impar ⇒ lugar $\\frac{r+1}{2}$",
+          "explicacion": "Las reglas del término central se trasladan a la forma generalizada reemplazando $n$ por $r$: si $r$ es impar el término central está en el lugar $\\frac{r+1}{2}$, y si $r$ es par hay dos centrales en los lugares $\\frac{r}{2}$ y $\\frac{r}{2} + 1$. Ejemplo con $\\frac{x^{15} - y^{10}}{x^3 - y^2}$, con $r = 5$: el central es $T_3 = x^{3(5-3)}\\,y^{2(3-1)} = x^6y^4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con temas previos",
+      "puntos": [
+        {
+          "texto": "Tema 44 «Cocientes notables» → condiciones y desarrollo del cociente",
+          "explicacion": "El término general nace del patrón de exponentes y signos del desarrollo estudiado en el tema 44: los exponentes de $x$ bajan de $n - 1$ a $0$, los de $a$ suben de $0$ a $n - 1$ y los signos son todos positivos si el divisor es $x - a$ o se alternan si es $x + a$. Ejemplo: en $\\frac{x^5 + 32}{x + 2} = x^4 - 2x^3 + 4x^2 - 8x + 16$, la fórmula da $T_2 = (-1)^{1}x^{3}\\,2^{1} = -2x^3$, igual que en el desarrollo."
+        },
+        {
+          "texto": "Tema 43 «Término general del binomio» → misma idea de fórmula por posición",
+          "explicacion": "El tema 43 enseñó una fórmula que da el término de lugar $k + 1$ de $(a + b)^n$ sin desarrollar todo el binomio. El término general de un cociente notable cumple una función análoga: calcular un término por su posición. La diferencia es que aquí el lugar es $k$ (y no $k + 1$) y no aparecen coeficientes binomiales, porque cada término tiene coeficiente $1$ o $-1$ en las bases $x$ y $a$."
+        },
+        {
+          "texto": "Tema 26 «Potenciación» → leyes de exponentes en $x^{m(r-k)}$",
+          "explicacion": "La fórmula generalizada usa la ley de potencia de potencia, $(x^m)^s = x^{ms}$, que se estudió en potenciación. Ejemplo: $(x^3)^2 = x^{3 \\times 2} = x^6$ y $(y^2)^2 = y^4$, que son exactamente los factores de $T_3 = (x^3)^{2}(y^2)^{2} = x^6y^4$ en $\\frac{x^{15} - y^{10}}{x^3 - y^2}$."
+        }
+      ]
+    }
+  ]
+}

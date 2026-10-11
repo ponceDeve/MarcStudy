@@ -1,0 +1,140 @@
+{
+  "curso": "Aritmética",
+  "tema": "Probabilidad en espacios muestrales finitos equiprobables",
+  "glosario": {
+    "regla de Laplace": "Probabilidad igual a favorables entre posibles",
+    "equiprobable": "Resultados con la misma probabilidad de ocurrir",
+    "casos favorables": "Resultados del espacio que cumplen el evento",
+    "casos posibles": "Total de resultados del espacio muestral",
+    "espacio muestral finito": "Espacio con una cantidad limitada de resultados"
+  },
+  "theory": [
+    {
+      "titulo": "Condiciones de aplicación",
+      "puntos": [
+        {
+          "texto": "La «regla de Laplace» solo aplica a un espacio muestral finito.",
+          "explicacion": "La regla de Laplace permite calcular probabilidades contando resultados, por lo que requiere que el espacio tenga una cantidad limitada de elementos. Con un espacio infinito no es posible contar todos los resultados, y el cociente entre casos favorables y posibles deja de tener un valor finito. Además, debe cumplirse la condición de equiprobabilidad, que se estudia en la siguiente card."
+        },
+        {
+          "texto": "Los resultados «equiprobables» tienen la misma probabilidad de ocurrir.",
+          "explicacion": "Dos resultados son equiprobables cuando, en las condiciones del experimento, ninguno tiene ventaja sobre el otro. Una moneda equilibrada tiene caras equiprobables, y un dado equilibrado tiene sus seis caras equiprobables. La equiprobabilidad es una hipótesis sobre el experimento, y no una propiedad que se deduce de los cálculos."
+        },
+        {
+          "texto": "Verificar la equiprobabilidad es un requisito previo al cálculo.",
+          "explicacion": "Antes de aplicar la regla conviene comprobar, por las características físicas del experimento o por el enunciado, que los resultados son igualmente probables. Si esa hipótesis no se cumple, el cociente de casos no representa la probabilidad real. Por eso la hipótesis debe declararse explícitamente al resolver un problema."
+        },
+        {
+          "texto": "Un espacio no equiprobable requiere asignar probabilidades de otra forma.",
+          "explicacion": "Si un dado está cargado, sus caras no son equiprobables y contar caras no basta para calcular la probabilidad de cada una. En ese caso es necesario asignar a cada resultado su probabilidad, usando datos del experimento. La regla de Laplace no se aplica en estos casos, aunque el espacio siga siendo finito."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de Laplace",
+      "puntos": [
+        {
+          "texto": "La probabilidad de A es favorables entre posibles.",
+          "explicacion": "Si f es el número de casos favorables al evento A y n es el número total de casos posibles, la probabilidad de A es el cociente $\\frac{f}{n}$. Como los casos favorables forman parte de los posibles, este cociente siempre está entre cero y uno. Esta fórmula es la aplicación directa de la definición clásica estudiada en el tema 83."
+        },
+        {
+          "texto": "Los «casos favorables» son los resultados del espacio que cumplen el evento.",
+          "explicacion": "Para contar los casos favorables se identifican los resultados del espacio muestral que hacen que el evento ocurra. Esos resultados forman el evento, es decir, un subconjunto del espacio. Contarlos con cuidado es el paso más delicado del cálculo, porque un error de enumeración altera el valor de la probabilidad."
+        },
+        {
+          "texto": "Los «casos posibles» son todos los resultados del espacio muestral.",
+          "explicacion": "El número de casos posibles coincide con la cardinalidad del espacio muestral, que se escribe $n(\\Omega)$ y se calcula con las reglas de la cardinalidad del tema 10. Este total es el denominador de la regla de Laplace y no depende del evento considerado. Por eso, en un mismo experimento, todos los eventos comparten el mismo denominador."
+        },
+        {
+          "texto": "El cálculo exige contar casos favorables y casos posibles por separado.",
+          "explicacion": "Al resolver un problema conviene contar primero los casos posibles y después los favorables, anotando cada conteo. Para estas cuentas se usan los métodos del análisis combinatorio, desarrollados en los temas 76 a 80. Separar ambos conteos permite revisar el resultado y detectar errores antes de simplificar la fracción."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos resueltos",
+      "puntos": [
+        {
+          "texto": "En un dado equilibrado, sacar un número par tiene probabilidad un medio.",
+          "explicacion": "El espacio tiene seis casos posibles, los números del uno al seis. Los casos favorables son dos, cuatro y seis, es decir, tres casos. La probabilidad es tres sextos, que se simplifica a un medio. El resultado coincide con la intuición de que la mitad de las caras son pares."
+        },
+        {
+          "texto": "Un número mayor que cuatro en un dado tiene probabilidad un tercio.",
+          "explicacion": "Los casos favorables son cinco y seis, es decir, dos casos, mientras que los casos posibles son seis. La probabilidad es dos sextos, que se simplifica a un tercio. Este ejemplo muestra que la simplificación de la fracción es parte del resultado y facilita su comparación con otros eventos."
+        },
+        {
+          "texto": "En dos monedas, obtener al menos una cara tiene probabilidad tres cuartos.",
+          "explicacion": "Los casos posibles son cuatro: cara-cara, cara-sello, sello-cara y sello-sello. Los casos con al menos una cara son tres, pues solo sello-sello queda excluido. La probabilidad es tres cuartos. Este resultado también puede obtenerse con la probabilidad del complementario, estudiada en el tema 83."
+        },
+        {
+          "texto": "Al lanzar dos dados, la suma siete tiene probabilidad un sexto.",
+          "explicacion": "Hay treinta y seis casos posibles, porque cada dado tiene seis resultados. Los pares cuya suma es siete son uno con seis, dos con cinco, tres con cuatro, cuatro con tres, cinco con dos y seis con uno, es decir, seis casos. La probabilidad es seis entre treinta y seis, que se simplifica a un sexto."
+        },
+        {
+          "texto": "En una baraja de cuarenta cartas, un as tiene probabilidad un décimo.",
+          "explicacion": "La baraja tiene cuarenta cartas, de las cuales cuatro son ases. Como cada carta tiene la misma probabilidad de ser extraída, los casos favorables son cuatro y los posibles cuarenta. La probabilidad es cuatro cuarentavos, que se simplifica a un décimo."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento de cálculo",
+      "puntos": [
+        {
+          "texto": "El procedimiento comienza identificando el espacio muestral y el evento.",
+          "explicacion": "Antes de contar conviene describir qué se hace en el experimento y qué resultados se consideran distintos. Después se precisa qué condición define el evento, porque de ella dependen los casos favorables. Este paso evita contar resultados que no pertenecen al espacio."
+        },
+        {
+          "texto": "Después se cuentan los casos posibles y los favorables.",
+          "explicacion": "El conteo de casos posibles se obtiene con las técnicas combinatorias apropiadas, y el de casos favorables con la misma técnica aplicada a la condición del evento. Conviene usar el mismo criterio de orden en ambos conteos, porque mezclar criterios produce cocientes sin sentido. Verificar que los favorables son un subconjunto de los posibles es un control útil."
+        },
+        {
+          "texto": "Finalmente se divide y se simplifica la fracción resultante.",
+          "explicacion": "El cociente entre favorables y posibles se simplifica dividiendo numerador y denominador entre su máximo común divisor, como se estudió en el tema 33. Una fracción irreducible facilita la comparación entre probabilidades. El resultado final debe escribirse como fracción, decimal o porcentaje según lo pida el problema."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "Un evento sin casos favorables tiene probabilidad cero.",
+          "explicacion": "Si ningún resultado del espacio cumple el evento, el número de casos favorables es cero, y el cociente también. Este caso corresponde al evento imposible estudiado en el tema 82. Reconocerlo evita cálculos innecesarios cuando el enunciado describe una situación que no puede ocurrir."
+        },
+        {
+          "texto": "Un evento que contiene todos los resultados tiene probabilidad uno.",
+          "explicacion": "Si los casos favorables coinciden con los casos posibles, el cociente vale uno, lo que corresponde al evento seguro. Este resultado se usa para verificar cálculos, porque la suma de las probabilidades de todos los resultados disjuntos debe dar uno."
+        },
+        {
+          "texto": "Calcular el complementario reduce el trabajo cuando hay muchos casos favorables.",
+          "explicacion": "Si el evento tiene muchos casos favorables, puede ser más sencillo contar los casos del complementario y restar su probabilidad de uno. Esta estrategia se justifica por la propiedad del complementario estudiada en el tema 83. Es especialmente útil con frases como «al menos uno»."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Galileo analizó por qué la suma diez sale más que la nueve.",
+          "explicacion": "Galileo Galilei, científico italiano, escribió sobre este problema en una obra titulada «Sopra le scoperte dei dadi», cuya redacción se sitúa hacia 1620 y que se publicó póstumamente en 1718. Galileo mostró que la diferencia se explica al contar las combinaciones posibles de los tres dados, con resultados considerados igualmente probables. Su análisis es un antecedente temprano del conteo de casos equiprobables."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Suponer equiprobabilidad sin justificarla es un error frecuente.",
+          "explicacion": "Es habitual aplicar la regla de Laplace a experimentos cuyos resultados no son igualmente probables, por ejemplo porque el dado está cargado o porque la moneda es asimétrica. El cálculo resultante se ve correcto, pero no describe el experimento real. Antes de contar, conviene confirmar la hipótesis de equiprobabilidad."
+        },
+        {
+          "texto": "Confundir casos favorables con casos posibles produce cocientes erróneos.",
+          "explicacion": "Dividir entre los favorables en lugar de entre los posibles, o al revés, cambia por completo el resultado. Un cociente de favorables entre favorables siempre vale uno, lo que evidencia el error. Escribir ambos conteos con nombres distintos ayuda a no mezclarlos."
+        },
+        {
+          "texto": "Usar criterios de orden distintos al contar es un error.",
+          "explicacion": "Si el denominador cuenta pares ordenados y el numerador cuenta combinaciones sin orden, el cociente no mide la probabilidad correcta. Ambos conteos deben hacerse con el mismo criterio. Esta coherencia es una de las condiciones más importantes del cálculo clásico de probabilidades."
+        }
+      ]
+    }
+  ]
+}

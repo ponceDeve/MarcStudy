@@ -1,0 +1,142 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Identidades especiales",
+  "glosario": {
+    "Identidad": "Igualdad que se cumple para todo valor permitido",
+    "Ángulo doble": "Ángulo que mide el doble de otro",
+    "Ángulo triple": "Ángulo que mide el triple de otro",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Cosecante": "Cociente de hipotenusa entre cateto opuesto",
+    "Secante": "Cociente de hipotenusa entre cateto adyacente",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Triángulo": "Figura de tres lados y tres ángulos",
+    "Racionalizar": "Eliminar raíces del denominador de una fracción"
+  },
+  "theory": [
+    {
+      "titulo": "Tangente más cotangente",
+      "puntos": [
+        {
+          "texto": "$\\tan x + \\cot x = 2\\csc2x$",
+          "explicacion": "Se demuestra escribiendo $\\frac{\\operatorname{sen}x}{\\cos x} + \\frac{\\cos x}{\\operatorname{sen}x} = \\frac{\\operatorname{sen}^2x + \\cos^2x}{\\operatorname{sen}x\\cos x} = \\frac{1}{\\operatorname{sen}x\\cos x}$ y usando $\\operatorname{sen}x\\cos x = \\frac{1}{2}\\operatorname{sen}2x$. Ejemplo: con $x = 30°$, $\\tan30° + \\cot30° = \\frac{\\sqrt{3}}{3} + \\sqrt{3} = \\frac{4\\sqrt{3}}{3}$, y $2\\csc60° = 2 \\cdot \\frac{2}{\\sqrt{3}} = \\frac{4\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente menos tangente",
+      "puntos": [
+        {
+          "texto": "$\\cot x - \\tan x = 2\\cot2x$",
+          "explicacion": "Se demuestra con $\\frac{\\cos^2x - \\operatorname{sen}^2x}{\\operatorname{sen}x\\cos x} = \\frac{\\cos2x}{\\frac{1}{2}\\operatorname{sen}2x}$. Ejemplo: con $x = 30°$, $\\cot30° - \\tan30° = \\sqrt{3} - \\frac{\\sqrt{3}}{3} = \\frac{2\\sqrt{3}}{3}$, y $2\\cot60° = 2 \\cdot \\frac{\\sqrt{3}}{3} = \\frac{2\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Secante y cosecante",
+      "puntos": [
+        {
+          "texto": "$\\sec^2x + \\csc^2x = 4\\csc^22x$",
+          "explicacion": "Se demuestra sumando $\\frac{1}{\\cos^2x} + \\frac{1}{\\operatorname{sen}^2x} = \\frac{1}{\\operatorname{sen}^2x\\cos^2x}$ y usando $\\operatorname{sen}^2x\\cos^2x = \\frac{1}{4}\\operatorname{sen}^22x$. Ejemplo: con $x = 30°$, $\\sec^230° + \\csc^230° = \\frac{4}{3} + 4 = \\frac{16}{3}$, y $4\\csc^260° = 4 \\cdot \\frac{4}{3} = \\frac{16}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente doble por tangente",
+      "puntos": [
+        {
+          "texto": "$\\tan2x \\cdot \\tan x = \\sec2x - 1$",
+          "explicacion": "Se demuestra con las fórmulas en tangente del ángulo doble: $\\frac{2\\tan^2x}{1 - \\tan^2x} = \\frac{1 + \\tan^2x}{1 - \\tan^2x} - 1$. Ejemplo: con $x = 30°$, $\\tan60° \\cdot \\tan30° = \\sqrt{3} \\cdot \\frac{\\sqrt{3}}{3} = 1$, y $\\sec60° - 1 = 2 - 1 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente doble por cotangente",
+      "puntos": [
+        {
+          "texto": "$\\tan2x \\cdot \\cot x = \\sec2x + 1$",
+          "explicacion": "Se demuestra con $\\frac{2}{1 - \\tan^2x} = \\frac{1 + \\tan^2x}{1 - \\tan^2x} + 1$. Ejemplo: con $x = 30°$, $\\tan60° \\cdot \\cot30° = \\sqrt{3} \\cdot \\sqrt{3} = 3$, y $\\sec60° + 1 = 2 + 1 = 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno triple como producto",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}3x = 4\\operatorname{sen}x\\operatorname{sen}(60° - x)\\operatorname{sen}(60° + x)$",
+          "explicacion": "El producto de los dos últimos senos se transforma en una expresión con $\\operatorname{sen}^2x$ que, multiplicada por $\\operatorname{sen}x$, reproduce el seno triple. Ejemplo: con $x = 15°$, los factores son $\\operatorname{sen}15°$, $\\operatorname{sen}45°$ y $\\operatorname{sen}75° = \\cos15°$. Como $\\operatorname{sen}15°\\cos15° = \\frac{1}{2}\\operatorname{sen}30° = \\frac{1}{4}$, el producto $4 \\cdot \\frac{1}{4} \\cdot \\operatorname{sen}45° = \\operatorname{sen}45°$, que es $\\operatorname{sen}3x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno triple como producto",
+      "puntos": [
+        {
+          "texto": "$\\cos3x = 4\\cos x\\cos(60° - x)\\cos(60° + x)$",
+          "explicacion": "Es la versión del coseno de la identidad anterior. Ejemplo: con $x = 15°$, $\\cos15°\\cos75° = \\cos15°\\operatorname{sen}15° = \\frac{1}{4}$, entonces $4\\cos15°\\cos45°\\cos75° = 4 \\cdot \\frac{1}{4} \\cdot \\cos45° = \\cos45°$, que es $\\cos3x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente triple como producto",
+      "puntos": [
+        {
+          "texto": "$\\tan3x = \\tan x\\tan(60° - x)\\tan(60° + x)$",
+          "explicacion": "Resulta de dividir las dos identidades anteriores. Ejemplo: con $x = 15°$, $\\tan15°\\tan45°\\tan75° = \\tan45° \\cdot (\\tan15°\\tan75°)$. Como $\\tan15° = 2 - \\sqrt{3}$ y $\\tan75° = 2 + \\sqrt{3}$, su producto es $4 - 3 = 1$, y el resultado es $\\tan45° = 1$, que es $\\tan3x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tres tangentes separadas 60°",
+      "puntos": [
+        {
+          "texto": "$\\tan x + \\tan(x + 60°) + \\tan(x + 120°) = 3\\tan3x$",
+          "explicacion": "Es una identidad en la que los tres ángulos están separados por 60°. Ejemplo: con $x = 15°$, $\\tan15° + \\tan75° + \\tan135° = (2 - \\sqrt{3}) + (2 + \\sqrt{3}) + (-1) = 3$, y $3\\tan45° = 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma 90°: productos",
+      "puntos": [
+        {
+          "texto": "$A + B + C = 90°$ ⇒ $\\tan A\\tan B + \\tan B\\tan C + \\tan C\\tan A = 1$",
+          "explicacion": "Aquí A, B y C son tres ángulos agudos que suman un ángulo recto. Ejemplo: con $A = B = C = 30°$, cada producto vale $\\frac{\\sqrt{3}}{3} \\cdot \\frac{\\sqrt{3}}{3} = \\frac{1}{3}$, y la suma de los tres es $3 \\cdot \\frac{1}{3} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma 90°: cotangentes",
+      "puntos": [
+        {
+          "texto": "$A + B + C = 90°$ ⇒ $\\cot A + \\cot B + \\cot C = \\cot A\\cot B\\cot C$",
+          "explicacion": "Es la versión con cotangentes de la identidad anterior. Ejemplo: con $A = B = C = 30°$, $\\cot A + \\cot B + \\cot C = 3\\sqrt{3}$, y $\\cot A\\cot B\\cot C = (\\sqrt{3})^3 = 3\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma 180°: cotangentes",
+      "puntos": [
+        {
+          "texto": "$A + B + C = 180°$ ⇒ $\\cot A\\cot B + \\cot B\\cot C + \\cot C\\cot A = 1$",
+          "explicacion": "Aquí A, B y C son los tres ángulos de un triángulo. Ejemplo: con $A = B = C = 60°$, cada producto vale $\\frac{\\sqrt{3}}{3} \\cdot \\frac{\\sqrt{3}}{3} = \\frac{1}{3}$, y la suma de los tres es $3 \\cdot \\frac{1}{3} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\tan x + \\cot x = 2\\csc x$ ⇒ error",
+          "explicacion": "El argumento de la cosecante es el ángulo doble, $2x$, no $x$. Ejemplo: con $x = 30°$, $2\\csc30° = 4$, pero $\\tan30° + \\cot30° = \\frac{4\\sqrt{3}}{3} \\approx 2{,}309$; en cambio $2\\csc60° = \\frac{4\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "Olvidar el factor 4 en el seno triple como producto ⇒ error",
+          "explicacion": "El producto de tres senos vale un cuarto del seno triple, no el seno triple. Ejemplo: con $x = 15°$, $\\operatorname{sen}15°\\operatorname{sen}45°\\operatorname{sen}75° = \\frac{1}{4} \\cdot \\frac{\\sqrt{2}}{2} \\approx 0{,}177$, mientras que $\\operatorname{sen}45° \\approx 0{,}707$."
+        },
+        {
+          "texto": "Confundir la condición 90° con la de 180°",
+          "explicacion": "Cada identidad de suma de tres ángulos vale solo con su condición. Ejemplo: con $A = B = C = 60°$, que suman 180°, $\\tan A\\tan B + \\tan B\\tan C + \\tan C\\tan A = 3 \\cdot 3 = 9$, y no 1; la igualdad con resultado 1 exige que los ángulos sumen 90°."
+        }
+      ]
+    }
+  ]
+}

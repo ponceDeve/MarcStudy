@@ -1,0 +1,274 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sumatorias y series",
+  "glosario": {
+    "sumatoria": "Suma abreviada de términos con regla común.",
+    "índice": "Variable que recorre valores consecutivos.",
+    "sumando": "Expresión evaluada en cada valor del índice.",
+    "límite inferior": "Valor inicial del índice.",
+    "límite superior": "Valor final del índice.",
+    "productoria": "Producto abreviado de factores con regla común.",
+    "serie": "Suma de los términos de una sucesión.",
+    "suma parcial": "Suma de los primeros términos de una serie.",
+    "serie convergente": "Sumas parciales tienden a valor finito.",
+    "serie divergente": "Sumas parciales sin valor finito límite.",
+    "serie armónica": "Suma de inversos de los naturales.",
+    "telescópica": "Sumatoria donde casi todos los términos se cancelan.",
+    "linealidad": "Propiedad de separar sumas y sacar constantes.",
+    "sucesión": "Lista ordenada de números."
+  },
+  "theory": [
+    {
+      "titulo": "Notación sigma",
+      "puntos": [
+        {
+          "texto": "«Sumatoria» = suma abreviada de términos que siguen una regla",
+          "explicacion": "Una sumatoria es una forma compacta de escribir la suma de varios términos que se obtienen evaluando una misma expresión en valores consecutivos de una variable. Se escribe $$\\sum_{k=m}^{n} a_k = a_m + a_{m+1} + \\cdots + a_n$$ y se lee: suma de $a_k$ desde $k = m$ hasta $k = n$. Evita escribir uno por uno los sumandos y permite enunciar propiedades generales para cualquier cantidad de términos."
+        },
+        {
+          "texto": "Símbolo sigma = letra griega mayúscula inicial de suma",
+          "explicacion": "El símbolo $\\sum$ es la sigma mayúscula del alfabeto griego, equivalente a la letra S, inicial de la palabra suma. Su uso como signo de suma se atribuye a Leonhard Euler, matemático suizo, que lo introdujo en su obra Institutiones calculi differentialis, de 1755. Antes de esa notación, las sumas de muchos términos se indicaban con puntos suspensivos o con palabras."
+        },
+        {
+          "texto": "Índice = variable que recorre los valores consecutivos",
+          "explicacion": "En $\\sum_{k=m}^{n} a_k$, la letra $k$ es el índice de la sumatoria: toma, uno tras otro, todos los valores enteros desde $m$ hasta $n$, y en cada uno se evalúa la expresión $a_k$. El índice solo tiene sentido dentro de la sumatoria y no es una variable que aparezca en el resultado final."
+        },
+        {
+          "texto": "Límite inferior y límite superior = extremos del recorrido del índice",
+          "explicacion": "El número que figura debajo del símbolo sigma, junto al índice, es el límite inferior, valor con que comienza el recorrido; el número que figura encima es el límite superior, valor con que termina. Ambos se incluyen en la suma. Si el límite superior es menor que el inferior, se acuerda que la sumatoria es vacía y vale cero."
+        },
+        {
+          "texto": "Sumando = expresión que se evalúa en cada valor del índice",
+          "explicacion": "La expresión $a_k$ situada a la derecha del símbolo sigma se llama sumando o término general de la sumatoria. Al sustituir el índice por cada valor del recorrido se obtiene cada uno de los términos de la suma. Por ejemplo, en $\\sum_{k=1}^{4} (2k+1)$ el sumando es $2k+1$ y la suma es $3 + 5 + 7 + 9 = 24$."
+        },
+        {
+          "texto": "Cantidad de sumandos = límite superior menos límite inferior + 1",
+          "explicacion": "Una sumatoria desde $k = m$ hasta $k = n$ tiene $n - m + 1$ sumandos, porque se cuentan ambos extremos. Por ejemplo, $\\sum_{k=5}^{12} k$ tiene $12 - 5 + 1 = 8$ sumandos. Contar mal los sumandos, olvidando sumar uno, es una fuente frecuente de error cuando el límite inferior no es 1."
+        },
+        {
+          "texto": "El nombre del índice no cambia el valor",
+          "explicacion": "Se dice que el índice es mudo: $\\sum_{k=1}^{n} a_k$, $\\sum_{i=1}^{n} a_i$ y $\\sum_{j=1}^{n} a_j$ representan exactamente la misma suma. Lo único que importa son los límites y la expresión del sumando. Esta libertad se aprovecha para renombrar el índice cuando se combinan varias sumatorias y se quiere evitar confusiones entre letras."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de sumatorias",
+      "puntos": [
+        {
+          "texto": "Suma de una constante = cantidad de sumandos por la constante",
+          "explicacion": "Si el sumando no depende del índice, todos los términos son iguales y $$\\sum_{k=1}^{n} c = n\\,c$$ En general, con límite inferior $m$, la suma vale $(n - m + 1)\\,c$. Por ejemplo, $\\sum_{k=1}^{7} 5 = 35$. La constante se repite en cada término, aunque el índice no aparezca en la expresión."
+        },
+        {
+          "texto": "Un factor constante sale de la sumatoria",
+          "explicacion": "Se cumple $$\\sum_{k=m}^{n} c\\,a_k = c \\sum_{k=m}^{n} a_k$$ porque al desarrollar la suma el factor $c$ aparece en todos los términos y puede extraerse por factor común. Esta propiedad se llama homogeneidad y se utiliza para separar los coeficientes numéricos de las expresiones que dependen del índice."
+        },
+        {
+          "texto": "«Linealidad»: sumatoria de una suma = suma de sumatorias",
+          "explicacion": "Se cumple $$\\sum_{k=m}^{n} (a_k + b_k) = \\sum_{k=m}^{n} a_k + \\sum_{k=m}^{n} b_k$$ ya que, al reordenar los sumandos, los términos $a_k$ y $b_k$ pueden agruparse por separado. Vale igual con diferencias. Junto con la homogeneidad constituye la linealidad de la sumatoria y permite descomponer sumandos complejos en partes conocidas."
+        },
+        {
+          "texto": "División del rango de una sumatoria en dos partes",
+          "explicacion": "Una sumatoria puede cortarse en un punto intermedio $p$ con $m \\leq p < n$: $$\\sum_{k=m}^{n} a_k = \\sum_{k=m}^{p} a_k + \\sum_{k=p+1}^{n} a_k$$ Consecuentemente, la suma desde $m$ hasta $n$ también se calcula restando: $\\sum_{k=m}^{n} a_k = \\sum_{k=1}^{n} a_k - \\sum_{k=1}^{m-1} a_k$. Por ejemplo, $\\sum_{k=5}^{10} k = 55 - 10 = 45$."
+        },
+        {
+          "texto": "Cambio de índice = desplazar límites y sumando",
+          "explicacion": "Si se sustituye $k = j - s$, la sumatoria $\\sum_{k=m}^{n} a_k$ se convierte en $\\sum_{j=m+s}^{n+s} a_{j-s}$, con la misma cantidad de sumandos y el mismo valor. Es útil para que el límite inferior sea 1 o para alinear los sumandos de dos sumatorias antes de combinarlas."
+        },
+        {
+          "texto": "Sumatoria telescópica = diferencias consecutivas que se cancelan",
+          "explicacion": "Cuando el sumando tiene la forma $a_{k+1} - a_k$, casi todos los términos se cancelan en parejas y queda $$\\sum_{k=1}^{n} (a_{k+1} - a_k) = a_{n+1} - a_1$$ El nombre alude a un telescopio que se pliega. Es el método central para calcular sumas cuyo sumando se puede descomponer como diferencia de dos expresiones del mismo tipo con índices desplazados."
+        },
+        {
+          "texto": "Error frecuente: la sumatoria de un producto ≠ producto de sumatorias",
+          "explicacion": "No se cumple $\\sum a_k\\,b_k = \\left(\\sum a_k\\right)\\left(\\sum b_k\\right)$ ni $\\sum a_k^2 = \\left(\\sum a_k\\right)^2$. Con $a_k = b_k = k$ para $k = 1, 2$, la sumatoria del producto vale $1 + 4 = 5$ y el producto de las sumatorias vale $3 \\cdot 3 = 9$. La linealidad vale solo para sumas y diferencias, no para productos ni potencias."
+        }
+      ]
+    },
+    {
+      "titulo": "Sumas notables",
+      "puntos": [
+        {
+          "texto": "Suma de los primeros naturales = $n(n+1)/2$",
+          "explicacion": "La suma de los primeros $n$ números naturales es $$\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$$ Se demuestra con el procedimiento de Gauss: al escribir la suma en orden creciente y decreciente, cada columna suma $n+1$ y hay $n$ columnas. Es el caso de la suma aritmética con primer término 1 y razón 1, que se estudia en el tema 61. Para $n = 100$ resulta 5050."
+        },
+        {
+          "texto": "Suma de los primeros impares = $n^2$",
+          "explicacion": "La suma de los primeros $n$ números impares es $$\\sum_{k=1}^{n} (2k-1) = n^2$$ Resulta de aplicar la linealidad: $2\\cdot n(n+1)/2 - n = n^2$. Geométricamente, cada impar sucesivo agrega una escuadra de puntos a un cuadrado, de modo que $1 + 3 + 5 + 7 = 16 = 4^2$."
+        },
+        {
+          "texto": "Suma de los primeros pares = $n(n+1)$",
+          "explicacion": "La suma de los primeros $n$ números pares es $$\\sum_{k=1}^{n} 2k = n(n+1)$$ pues $2\\cdot n(n+1)/2 = n(n+1)$. Es el doble de la suma de los primeros naturales y su valor es un número oblongo; los números oblongos se estudian en el tema 62, Sucesiones cuadráticas y de orden superior. Para $n = 5$, $2 + 4 + 6 + 8 + 10 = 30 = 5 \\cdot 6$."
+        },
+        {
+          "texto": "Suma de cuadrados = $n(n+1)(2n+1)/6$",
+          "explicacion": "La suma de los cuadrados de los primeros $n$ números naturales es $$\\sum_{k=1}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}$$ Se demuestra con una suma telescópica: de $(k+1)^3 - k^3 = 3k^2 + 3k + 1$ se obtiene $(n+1)^3 - 1 = 3\\sum k^2 + 3\\sum k + n$, de donde se despeja la suma. Para $n = 10$ vale $10\\cdot 11\\cdot 21/6 = 385$."
+        },
+        {
+          "texto": "Suma de cubos = cuadrado de la suma de naturales",
+          "explicacion": "La suma de los cubos de los primeros $n$ números naturales es $$\\sum_{k=1}^{n} k^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$$ es decir, el cuadrado de la suma de los primeros naturales. Se demuestra con la misma técnica telescópica aplicada a $(k+1)^4 - k^4$. Para $n = 10$ vale $55^2 = 3025$, y para $n = 3$, $1 + 8 + 27 = 36 = 6^2$."
+        },
+        {
+          "texto": "Suma de cuadrados de impares = $n(2n-1)(2n+1)/3$",
+          "explicacion": "La suma de los cuadrados de los primeros $n$ números impares es $$\\sum_{k=1}^{n} (2k-1)^2 = \\frac{n(2n-1)(2n+1)}{3}$$ Se obtiene desarrollando $(2k-1)^2 = 4k^2 - 4k + 1$ y aplicando las sumas de cuadrados y de naturales. Para $n = 2$ vale $1 + 9 = 10 = 2\\cdot 3\\cdot 5/3$."
+        },
+        {
+          "texto": "Suma de cuadrados de pares = $2n(n+1)(2n+1)/3$",
+          "explicacion": "La suma de los cuadrados de los primeros $n$ números pares es $$\\sum_{k=1}^{n} (2k)^2 = 4\\sum_{k=1}^{n} k^2 = \\frac{2n(n+1)(2n+1)}{3}$$ Se calcula extrayendo el factor 4. Para $n = 2$ vale $4 + 16 = 20 = 2\\cdot 2\\cdot 3\\cdot 5/3$."
+        },
+        {
+          "texto": "Suma de productos de dos consecutivos = $n(n+1)(n+2)/3$",
+          "explicacion": "La suma $1\\cdot 2 + 2\\cdot 3 + \\cdots + n(n+1)$ vale $$\\sum_{k=1}^{n} k(k+1) = \\frac{n(n+1)(n+2)}{3}$$ Se obtiene descomponiendo $k(k+1) = k^2 + k$ y sumando las expresiones conocidas; también se comprueba por inducción. Para $n = 2$ vale $2 + 6 = 8 = 2\\cdot 3\\cdot 4/3$."
+        },
+        {
+          "texto": "Suma de productos de tres consecutivos = $n(n+1)(n+2)(n+3)/4$",
+          "explicacion": "La suma $1\\cdot 2\\cdot 3 + 2\\cdot 3\\cdot 4 + \\cdots + n(n+1)(n+2)$ vale $$\\sum_{k=1}^{n} k(k+1)(k+2) = \\frac{n(n+1)(n+2)(n+3)}{4}$$ Se demuestra con una suma telescópica, pues $k(k+1)(k+2) = \\frac{1}{4}\\left[k(k+1)(k+2)(k+3) - (k-1)k(k+1)(k+2)\\right]$. Para $n = 2$ vale $6 + 24 = 30 = 2\\cdot 3\\cdot 4\\cdot 5/4$."
+        },
+        {
+          "texto": "Suma de números triangulares = $n(n+1)(n+2)/6$",
+          "explicacion": "Los números triangulares $k(k+1)/2$ se estudian en el tema 62. Sumar los $n$ primeros da $$\\sum_{k=1}^{n} \\frac{k(k+1)}{2} = \\frac{n(n+1)(n+2)}{6}$$ que es el número tetraédrico de lugar $n$. Para $n = 3$ vale $1 + 3 + 6 = 10 = 3\\cdot 4\\cdot 5/6$."
+        },
+        {
+          "texto": "Suma de una expresión lineal = $a\\,n(n+1)/2 + b\\,n$",
+          "explicacion": "Aplicando linealidad, $$\\sum_{k=1}^{n} (a\\,k + b) = a\\,\\frac{n(n+1)}{2} + b\\,n$$ Por ejemplo, $\\sum_{k=1}^{10} (3k + 2) = 3\\cdot 55 + 20 = 185$. Este es el mismo valor que se obtiene al sumar los diez términos de la progresión aritmética 5, 8, 11, ..., 32 con la fórmula del tema 61."
+        },
+        {
+          "texto": "Suma de un polinomio por descomposición en sumas notables",
+          "explicacion": "Para sumar un sumando polinomial se separa en monomios con la linealidad y se aplica la suma notable de cada potencia. Por ejemplo, $\\sum_{k=1}^{n} (k^2 + k) = \\frac{n(n+1)(2n+1)}{6} + \\frac{n(n+1)}{2} = \\frac{n(n+1)(n+2)}{3}$, resultado que coincide con el de la suma de productos de dos consecutivos."
+        },
+        {
+          "texto": "Sumas de potencias mayores = polinomio de grado una unidad mayor",
+          "explicacion": "La suma de las potencias $k^p$ desde 1 hasta $n$ es siempre un polinomio de grado $p+1$ en $n$: grado 2 para naturales, 3 para cuadrados y 4 para cubos. Esta regularidad es consecuencia de que las sumas parciales de una sucesión de orden $k$ forman una sucesión de orden $k+1$, tema que se ve en el tema 62."
+        }
+      ]
+    },
+    {
+      "titulo": "Productoria",
+      "puntos": [
+        {
+          "texto": "«Productoria» = producto abreviado de términos",
+          "explicacion": "La productoria se escribe con la letra griega pi mayúscula: $$\\prod_{k=m}^{n} a_k = a_m \\cdot a_{m+1} \\cdots a_n$$ y se rige por la misma convención de índice y límites que la sumatoria. Por ejemplo, $\\prod_{k=1}^{4} (k+1) = 2\\cdot 3\\cdot 4\\cdot 5 = 120$."
+        },
+        {
+          "texto": "Productoria de una constante = constante elevada a la cantidad de factores",
+          "explicacion": "Si el factor no depende del índice, $\\prod_{k=1}^{n} c = c^{\\,n}$, y si hay un factor constante $c$ en cada término, $\\prod_{k=1}^{n} c\\,a_k = c^{\\,n}\\prod_{k=1}^{n} a_k$. A diferencia de la sumatoria, la constante sale elevada a la cantidad de factores, no multiplicando."
+        },
+        {
+          "texto": "Productoria de los primeros naturales = factorial",
+          "explicacion": "El producto $\\prod_{k=1}^{n} k$ de los primeros $n$ números naturales define el factorial de $n$, que se estudia en el tema 77, Factorial de un número natural. La productoria generaliza esa noción a cualquier regla de factores."
+        }
+      ]
+    },
+    {
+      "titulo": "Series",
+      "puntos": [
+        {
+          "texto": "«Serie» = suma de los términos de una sucesión",
+          "explicacion": "Dada una sucesión $a_1, a_2, a_3, \\ldots$, la serie es la suma $a_1 + a_2 + a_3 + \\cdots$ de sus términos. Si la sucesión tiene una cantidad finita de términos, la serie es finita y se calcula con una sumatoria; si es infinita, la serie es infinita. La sucesión es una lista ordenada de números, tema 60, Sucesiones; la serie es el resultado de sumarlos."
+        },
+        {
+          "texto": "Sucesión ≠ serie",
+          "explicacion": "Una sucesión es una lista ordenada de términos; una serie es la suma de esos términos. La sucesión 1, 3, 5, 7 y la serie $1 + 3 + 5 + 7 = 16$ son objetos distintos: la primera es una lista y la segunda es un número. En el lenguaje de los problemas, confundir ambos conceptos conduce a calcular el término enésimo cuando se pide la suma."
+        },
+        {
+          "texto": "Suma parcial = suma de los primeros $n$ términos",
+          "explicacion": "La suma parcial de orden $n$ de una serie es $S_n = a_1 + a_2 + \\cdots + a_n$. Las sumas parciales forman a su vez una sucesión $S_1, S_2, S_3, \\ldots$, y el comportamiento de esta sucesión determina qué sucede con la serie infinita. Además, se cumple $a_n = S_n - S_{n-1}$ para $n \\geq 2$."
+        },
+        {
+          "texto": "Serie convergente = sumas parciales se acercan a un valor finito",
+          "explicacion": "Una serie infinita es convergente cuando sus sumas parciales se aproximan, al crecer $n$, a un número finito $S$, llamado suma de la serie. Por ejemplo, $1/2 + 1/4 + 1/8 + \\cdots$ tiene sumas parciales $1/2$, $3/4$, $7/8$, ... que se acercan a 1. Las series geométricas con razón de valor absoluto menor que 1 son convergentes, resultado que se estudia en el tema 61."
+        },
+        {
+          "texto": "Serie divergente = sumas parciales no se estabilizan",
+          "explicacion": "Una serie es divergente cuando sus sumas parciales no se aproximan a un número finito: crecen sin límite, decrecen sin límite u oscilan sin estabilizarse. La serie $1 + 2 + 3 + \\cdots$ es divergente porque sus sumas parciales crecen sin cota, y toda serie divergente carece de suma finita."
+        },
+        {
+          "texto": "Condición necesaria: términos tienden a cero ⇒ no basta",
+          "explicacion": "Si una serie converge, sus términos deben aproximarse a cero; la condición es necesaria. Pero no es suficiente: la serie armónica tiene términos que tienden a cero y aun así diverge. Por ello el comportamiento de los términos solo permite descartar la convergencia cuando no tienden a cero."
+        },
+        {
+          "texto": "Serie armónica = suma de los inversos de los naturales",
+          "explicacion": "La serie armónica es $1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\cdots$. Es divergente aunque sus términos disminuyen: agrupando $\\frac{1}{3} + \\frac{1}{4} > \\frac{1}{2}$, luego $\\frac{1}{5} + \\cdots + \\frac{1}{8} > \\frac{1}{2}$, y así sucesivamente, se obtienen infinitos grupos mayores que $\\frac{1}{2}$. Esta demostración se atribuye a Nicole Oresme, obispo y matemático francés, hacia 1350."
+        },
+        {
+          "texto": "Serie de inversos de cuadrados = $\\pi^2/6$",
+          "explicacion": "La serie $1 + \\frac{1}{4} + \\frac{1}{9} + \\frac{1}{16} + \\cdots$ es convergente y su suma es $\\pi^2/6$, valor que halló Leonhard Euler en 1735 al resolver el llamado problema de Basilea, planteado antes por otros matemáticos, entre ellos Jakob Bernoulli. Se menciona como ejemplo de serie convergente cuya suma no es una fracción simple."
+        },
+        {
+          "texto": "Serie de uno menos uno alternados = divergente",
+          "explicacion": "La serie $1 - 1 + 1 - 1 + \\cdots$ tiene sumas parciales 1, 0, 1, 0, ... que oscilan sin acercarse a ningún valor, por lo que es divergente. Fue estudiada por Guido Grandi, matemático italiano, en 1703. Agrupar los términos de forma distinta da resultados distintos, lo que muestra que las propiedades de las sumas finitas no se extienden sin condiciones a las series infinitas."
+        }
+      ]
+    },
+    {
+      "titulo": "Series telescópicas",
+      "puntos": [
+        {
+          "texto": "Serie telescópica de inversos = $1 - 1/(n+1)$",
+          "explicacion": "Como $\\frac{1}{k} - \\frac{1}{k+1} = \\frac{1}{k(k+1)}$, se cumple $$\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}$$ pues los términos intermedios se cancelan. Para $n = 3$ vale $\\frac{1}{2} + \\frac{1}{6} + \\frac{1}{12} = \\frac{3}{4}$. Cuando $n$ crece, la suma se aproxima a 1, de modo que la serie infinita converge a 1."
+        },
+        {
+          "texto": "Serie con inversos de productos separados por dos",
+          "explicacion": "Con $\\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right)$ se obtiene $$\\sum_{k=1}^{n} \\frac{1}{k(k+2)} = \\frac{1}{2}\\left(1 + \\frac{1}{2} - \\frac{1}{n+1} - \\frac{1}{n+2}\\right)$$ Quedan dos términos iniciales y dos finales, porque la cancelación es de dos en dos. Con $n = 1$ vale $\\frac{1}{3}$ y la serie infinita converge a $\\frac{3}{4}$."
+        },
+        {
+          "texto": "Serie con inversos de tres consecutivos",
+          "explicacion": "Como $\\frac{1}{k(k+1)(k+2)} = \\frac{1}{2}\\left[\\frac{1}{k(k+1)} - \\frac{1}{(k+1)(k+2)}\\right]$, resulta $$\\sum_{k=1}^{n} \\frac{1}{k(k+1)(k+2)} = \\frac{1}{2}\\left[\\frac{1}{2} - \\frac{1}{(n+1)(n+2)}\\right]$$ Con $n = 1$ vale $\\frac{1}{6}$, y la serie infinita converge a $\\frac{1}{4}$. La cancelación deja solo el primer término de la diferencia y el último, porque cada fracción intermedia aparece una vez con signo positivo y otra con signo negativo; por eso la suma depende únicamente de los extremos del recorrido del índice."
+        },
+        {
+          "texto": "Método telescópico = descomponer el sumando en una diferencia",
+          "explicacion": "El procedimiento tiene tres pasos: descomponer el sumando en una diferencia de dos expresiones del mismo tipo con índices desplazados, escribir los primeros y últimos términos para ver qué se cancela y quedarse con los términos que sobreviven. La descomposición suele lograrse con fracciones parciales o con identidades como $k(k+1) = \\frac{1}{3}[k(k+1)(k+2) - (k-1)k(k+1)]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de sumas",
+      "puntos": [
+        {
+          "texto": "Suma de progresión aritmética por sumas notables",
+          "explicacion": "Con la linealidad se puede deducir la fórmula del tema 61: $\\sum_{k=1}^{n} [a_1 + (k-1)r] = n\\,a_1 + r\\,\\frac{n(n-1)}{2}$, que coincide con $n[2a_1 + (n-1)r]/2$. Se muestra así que la suma aritmética es consecuencia de la suma de los primeros naturales y de la suma de una constante."
+        },
+        {
+          "texto": "Sumas geométricas = tema 61",
+          "explicacion": "Las sumas de potencias de una razón, $\\sum r^{\\,k}$, no son sumas notables de este tema: su fórmula y la de la serie infinita convergente se desarrollan en el tema 61, Progresiones aritméticas y geométricas. Aquí solo se las reconoce como un tipo distinto de serie, de sumando exponencial."
+        },
+        {
+          "texto": "Suma desde un límite inferior distinto de uno",
+          "explicacion": "Las sumas notables están dadas para límite inferior 1. Para otro límite, se resta la suma hasta el término anterior: $\\sum_{k=m}^{n} a_k = \\sum_{k=1}^{n} a_k - \\sum_{k=1}^{m-1} a_k$. Por ejemplo, $\\sum_{k=4}^{8} k^2 = \\frac{8\\cdot 9\\cdot 17}{6} - \\frac{3\\cdot 4\\cdot 7}{6} = 204 - 14 = 190$."
+        },
+        {
+          "texto": "Suma de sucesión de orden $k$ = sucesión de orden $k+1$",
+          "explicacion": "Si $a_k$ es una sucesión de orden $k$, la sucesión de sumas parciales $S_n$ es de orden $k+1$, porque sus primeras diferencias son precisamente los términos $a_n$. Esto explica que la suma de una progresión aritmética sea cuadrática y la suma de cuadrados sea cúbica, y permite calcular sumas con la fórmula de Newton del tema 62."
+        },
+        {
+          "texto": "Reconocer el tipo de sumando antes de calcular",
+          "explicacion": "Para resolver una suma conviene clasificar primero el sumando: constante, lineal, cuadrático, producto de consecutivos, fracción telescópica, o potencia de una razón. Cada tipo tiene un método propio: suma de constante, sumas notables, descomposición en notables, método telescópico o suma geométrica. Elegir el método incorrecto es la causa más común de pérdida de tiempo en este tipo de problemas."
+        },
+        {
+          "texto": "Error frecuente: confundir cantidad de términos con último valor",
+          "explicacion": "Al calcular $1 + 3 + 5 + \\cdots + 41$, el error común es aplicar $n^2$ con $n = 41$. En la fórmula $\\sum (2k-1) = n^2$, $n$ es la cantidad de sumandos, no el último impar. Se halla $n$ resolviendo $2n - 1 = 41$, con $n = 21$, y la suma vale $21^2 = 441$."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de sumas",
+      "puntos": [
+        {
+          "texto": "Aryabhata (año 499) → sumas de cuadrados y cubos",
+          "explicacion": "Aryabhata, matemático y astrónomo indio, dio en su obra Aryabhatiya, del año 499 de la era común, reglas para sumar los cuadrados y los cubos de los primeros números naturales, además de progresiones aritméticas. Son de los resultados más antiguos conservados sobre sumas de potencias."
+        },
+        {
+          "texto": "Johann Faulhaber (1631) → sumas de potencias hasta la decimoséptima",
+          "explicacion": "Johann Faulhaber, matemático alemán, publicó en su Academia Algebrae, de 1631, fórmulas para las sumas de potencias de los primeros números naturales, hasta la potencia diecisiete. Mostró que dichas sumas son polinomios en $n$ y observó patrones entre ellas."
+        },
+        {
+          "texto": "Jakob Bernoulli (1713) → fórmula general de sumas de potencias",
+          "explicacion": "Jakob Bernoulli, matemático suizo, expuso en su obra Ars Conjectandi, publicada en 1713 tras su muerte, una regla general para la suma de potencias de los primeros $n$ naturales, basada en una sucesión de números que hoy se llaman números de Bernoulli."
+        },
+        {
+          "texto": "Leonhard Euler (1755) → notación de sumatoria",
+          "explicacion": "Leonhard Euler, matemático suizo, introdujo en 1755 el símbolo sigma mayúscula para indicar sumas en su obra Institutiones calculi differentialis, con lo que la notación de sumatoria pasó a ser de uso corriente en matemática."
+        }
+      ]
+    }
+  ]
+}

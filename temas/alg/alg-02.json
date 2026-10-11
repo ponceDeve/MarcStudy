@@ -1,0 +1,418 @@
+{
+  "curso": "Álgebra",
+  "tema": "Operaciones reales",
+  "glosario": {
+    "Operación": "Regla que asigna un resultado a dos números.",
+    "Axioma": "Propiedad que se acepta sin demostración.",
+    "Teorema": "Propiedad que se demuestra.",
+    "Clausura": "El resultado de operar queda en el conjunto.",
+    "Propiedad conmutativa": "El orden no altera el resultado.",
+    "Propiedad asociativa": "La agrupación no altera el resultado.",
+    "Elemento neutro": "Número que no altera al operar.",
+    "Opuesto aditivo": "Número que sumado da cero.",
+    "Inverso multiplicativo": "Número que multiplicado da uno.",
+    "Propiedad distributiva": "Relaciona el producto con la suma.",
+    "Sustracción": "Suma del opuesto.",
+    "División": "Producto por el inverso.",
+    "Fracción": "Cociente de dos enteros con divisor no nulo.",
+    "Potencia": "Multiplicación repetida de una base.",
+    "Raíz": "Número que elevado al índice da el radicando.",
+    "Jerarquía de operaciones": "Orden en que se resuelven las operaciones."
+  },
+  "theory": [
+    {
+      "titulo": "Operaciones en reales",
+      "puntos": [
+        {
+          "texto": "Adición y multiplicación ⇒ operaciones básicas en $\\mathbb{R}$",
+          "explicacion": "A cada par de reales $a$ y $b$ le asignan un único real: la suma $a+b$ y el producto $a\\cdot b$. Las demás operaciones se definen a partir de ellas."
+        },
+        {
+          "texto": "Axiomas ⇒ propiedades que se aceptan sin demostración",
+          "explicacion": "Las propiedades de la suma y el producto se aceptan como axiomas. A partir de ellos se demuestran los teoremas. Se desarrollan a continuación."
+        }
+      ]
+    },
+    {
+      "titulo": "Clausura de la adición",
+      "puntos": [
+        {
+          "texto": "Clausura ⇒ $a+b\\in\\mathbb{R}$",
+          "explicacion": "La suma de dos reales siempre es un real. No se obtiene un número fuera del conjunto."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\sqrt{2}+3\\in\\mathbb{R}$",
+          "explicacion": "La suma de un irracional y un entero es otro número real: $\\sqrt{2}+3\\approx 4.414$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conmutatividad de la adición",
+      "puntos": [
+        {
+          "texto": "Conmutativa ⇒ $a+b=b+a$",
+          "explicacion": "El orden de los sumandos no altera la suma."
+        },
+        {
+          "texto": "Ejemplo ⇒ $5+(-2)=(-2)+5=3$",
+          "explicacion": "Se verifica sumando en ambos órdenes: $5+(-2)=3$ y $(-2)+5=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Asociatividad de la adición",
+      "puntos": [
+        {
+          "texto": "Asociativa ⇒ $(a+b)+c=a+(b+c)$",
+          "explicacion": "La forma de agrupar los sumandos no cambia el resultado."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(2+3)+4=2+(3+4)=9$",
+          "explicacion": "Se agrupa de dos formas: $(2+3)+4=5+4=9$ y $2+(3+4)=2+7=9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Elemento neutro aditivo",
+      "puntos": [
+        {
+          "texto": "Neutro ⇒ $a+0=a$",
+          "explicacion": "El cero no altera ningún número al sumarse. Por eso se llama elemento neutro de la adición."
+        },
+        {
+          "texto": "Ejemplo ⇒ $-8+0=-8$",
+          "explicacion": "Al sumar cero a $-8$ el resultado es el mismo número."
+        }
+      ]
+    },
+    {
+      "titulo": "Opuesto aditivo",
+      "puntos": [
+        {
+          "texto": "Inverso aditivo ⇒ $a+(-a)=0$",
+          "explicacion": "Todo real $a$ tiene un opuesto $-a$ que, sumado con él, da cero. El opuesto de un número positivo es negativo, y viceversa."
+        },
+        {
+          "texto": "Ejemplo ⇒ el opuesto de $7$ es $-7$",
+          "explicacion": "Se verifica: $7+(-7)=0$. El opuesto de $-3$ es $3$, porque $-3+3=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Clausura de la multiplicación",
+      "puntos": [
+        {
+          "texto": "Clausura ⇒ $a\\cdot b\\in\\mathbb{R}$",
+          "explicacion": "El producto de dos reales siempre es un real."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\pi\\cdot 2=2\\pi\\in\\mathbb{R}$",
+          "explicacion": "El producto de un irracional por un entero es otro número real: $2\\pi\\approx 6.283$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conmutatividad del producto",
+      "puntos": [
+        {
+          "texto": "Conmutativa ⇒ $a\\cdot b=b\\cdot a$",
+          "explicacion": "El orden de los factores no altera el producto."
+        },
+        {
+          "texto": "Ejemplo ⇒ $4\\cdot(-3)=(-3)\\cdot 4=-12$",
+          "explicacion": "Se verifica multiplicando en ambos órdenes: ambos dan $-12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Asociatividad del producto",
+      "puntos": [
+        {
+          "texto": "Asociativa ⇒ $(a\\cdot b)\\cdot c=a\\cdot(b\\cdot c)$",
+          "explicacion": "La forma de agrupar los factores no cambia el resultado."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(2\\cdot3)\\cdot5=2\\cdot(3\\cdot5)=30$",
+          "explicacion": "Se agrupa de dos formas: $(2\\cdot3)\\cdot5=6\\cdot5=30$ y $2\\cdot(3\\cdot5)=2\\cdot15=30$."
+        }
+      ]
+    },
+    {
+      "titulo": "Elemento neutro multiplicativo",
+      "puntos": [
+        {
+          "texto": "Neutro ⇒ $a\\cdot 1=a$",
+          "explicacion": "El uno no altera ningún número al multiplicarse. Por eso se llama elemento neutro de la multiplicación."
+        },
+        {
+          "texto": "Ejemplo ⇒ $-6\\cdot1=-6$",
+          "explicacion": "Al multiplicar $-6$ por uno, el resultado es el mismo número."
+        }
+      ]
+    },
+    {
+      "titulo": "Inverso multiplicativo",
+      "puntos": [
+        {
+          "texto": "Inverso multiplicativo ⇒ $a\\cdot a^{-1}=1$, con $a\\neq0$",
+          "explicacion": "Todo real distinto de cero tiene un inverso, que es $\\frac{1}{a}$. El cero no tiene inverso multiplicativo."
+        },
+        {
+          "texto": "Ejemplo ⇒ el inverso de $5$ es $\\frac{1}{5}$",
+          "explicacion": "Se verifica: $5\\cdot\\frac{1}{5}=1$. El inverso de $\\frac{2}{3}$ es $\\frac{3}{2}$, pues $\\frac{2}{3}\\cdot\\frac{3}{2}=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedad distributiva",
+      "puntos": [
+        {
+          "texto": "Distributiva ⇒ $a(b+c)=ab+ac$",
+          "explicacion": "Relaciona la suma con el producto: multiplicar una suma equivale a multiplicar cada sumando y luego sumar."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3(4+5)=3\\cdot4+3\\cdot5=27$",
+          "explicacion": "Por un lado $3(4+5)=3\\cdot9=27$. Por el otro $3\\cdot4+3\\cdot5=12+15=27$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustracción",
+      "puntos": [
+        {
+          "texto": "Sustracción ⇒ $a-b=a+(-b)$",
+          "explicacion": "Restar es sumar el opuesto. Por eso la sustracción no es conmutativa: en general, $a-b\\neq b-a$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $7-10=7+(-10)=-3$",
+          "explicacion": "Se suma el opuesto de $10$: $7+(-10)=-3$. En cambio, $10-7=3$, distinto de $-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "División",
+      "puntos": [
+        {
+          "texto": "División ⇒ $a\\div b=a\\cdot b^{-1}$, con $b\\neq0$",
+          "explicacion": "Dividir es multiplicar por el inverso. No existe la división entre cero, pues el cero no tiene inverso multiplicativo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $12\\div4=12\\cdot\\frac{1}{4}=3$",
+          "explicacion": "Se multiplica por el inverso de $4$, que es $\\frac{1}{4}$: $12\\cdot\\frac{1}{4}=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto por cero",
+      "puntos": [
+        {
+          "texto": "Teorema ⇒ $a\\cdot0=0$",
+          "explicacion": "Cualquier número multiplicado por cero da cero. Se demuestra con la distributiva: $a\\cdot0=a(0+0)=a\\cdot0+a\\cdot0$, lo que obliga a que $a\\cdot0=0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $-5\\cdot0=0$",
+          "explicacion": "El producto de $-5$ por cero es cero, igual que $\\sqrt{7}\\cdot0=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto igual a cero",
+      "puntos": [
+        {
+          "texto": "Teorema ⇒ si $ab=0$, entonces $a=0$ o $b=0$",
+          "explicacion": "Un producto es cero solo si algún factor lo es. Es la base para resolver ecuaciones factorizadas."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(x-2)(x+3)=0$ da $x=2$ o $x=-3$",
+          "explicacion": "Cada factor puede ser cero. Si $x-2=0$, entonces $x=2$. Si $x+3=0$, entonces $x=-3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley de signos",
+      "puntos": [
+        {
+          "texto": "Ley de signos ⇒ $(-a)(-b)=ab$",
+          "explicacion": "El producto de dos negativos es positivo. Se resumen así las reglas: más por más es más; menos por menos es más; más por menos es menos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(-4)(-3)=12$",
+          "explicacion": "Dos factores negativos dan un producto positivo: $(-4)(-3)=12$."
+        },
+        {
+          "texto": "Teorema ⇒ $(-a)b=-(ab)$",
+          "explicacion": "El producto de un negativo por un positivo es negativo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(-4)(3)=-12$",
+          "explicacion": "Al multiplicar un negativo por un positivo se obtiene un negativo: $(-4)(3)=-12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Opuesto del opuesto",
+      "puntos": [
+        {
+          "texto": "Teorema ⇒ $-(-a)=a$",
+          "explicacion": "El opuesto del opuesto de un número es el mismo número."
+        },
+        {
+          "texto": "Ejemplo ⇒ $-(-7)=7$",
+          "explicacion": "El opuesto de $-7$ es $7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes de cancelación",
+      "puntos": [
+        {
+          "texto": "Cancelación aditiva ⇒ si $a+c=b+c$, entonces $a=b$",
+          "explicacion": "Se puede quitar el mismo sumando en ambos miembros de una igualdad."
+        },
+        {
+          "texto": "Ejemplo ⇒ $x+5=9+5$ da $x=9$",
+          "explicacion": "Al cancelar el sumando $5$ en ambos miembros, queda $x=9$."
+        },
+        {
+          "texto": "Cancelación multiplicativa ⇒ si $ac=bc$ y $c\\neq0$, entonces $a=b$",
+          "explicacion": "Se puede dividir ambos miembros entre el mismo número, siempre que no sea cero."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3x=3\\cdot7$ da $x=7$",
+          "explicacion": "Al cancelar el factor $3$, distinto de cero, queda $x=7$. Error frecuente: cancelar un factor que puede valer cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de fracciones",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$",
+          "explicacion": "Con $b\\neq0$ y $d\\neq0$. Se lleva a común denominador multiplicando en cruz."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\frac{2}{3}+\\frac{1}{4}=\\frac{11}{12}$",
+          "explicacion": "Se calcula $\\frac{2\\cdot4+3\\cdot1}{3\\cdot4}=\\frac{8+3}{12}=\\frac{11}{12}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de fracciones",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ $\\frac{a}{b}\\cdot\\frac{c}{d}=\\frac{ac}{bd}$",
+          "explicacion": "Con $b\\neq0$ y $d\\neq0$. Se multiplican numeradores y denominadores."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\frac{3}{5}\\cdot\\frac{10}{9}=\\frac{2}{3}$",
+          "explicacion": "Se calcula $\\frac{3\\cdot10}{5\\cdot9}=\\frac{30}{45}=\\frac{2}{3}$ al simplificar entre 15."
+        }
+      ]
+    },
+    {
+      "titulo": "División de fracciones",
+      "puntos": [
+        {
+          "texto": "División ⇒ $\\frac{a}{b}\\div\\frac{c}{d}=\\frac{ad}{bc}$",
+          "explicacion": "Con $b$, $c$ y $d$ distintos de cero. Se multiplica por el inverso de la segunda fracción."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\frac{3}{4}\\div\\frac{5}{8}=\\frac{6}{5}$",
+          "explicacion": "Se calcula $\\frac{3\\cdot8}{4\\cdot5}=\\frac{24}{20}=\\frac{6}{5}$ al simplificar entre 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Potenciación",
+      "puntos": [
+        {
+          "texto": "Potencia ⇒ $a^n=a\\cdot a\\cdots a$ ($n$ factores)",
+          "explicacion": "Con $n$ natural, el exponente indica cuántas veces se multiplica la base por sí misma."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2^5=32$",
+          "explicacion": "Se multiplica cinco veces: $2\\cdot2\\cdot2\\cdot2\\cdot2=32$."
+        },
+        {
+          "texto": "Exponente cero ⇒ $a^0=1$, con $a\\neq0$",
+          "explicacion": "Cualquier número distinto de cero elevado a cero vale uno. La expresión $0^0$ no está definida."
+        },
+        {
+          "texto": "Ejemplo ⇒ $5^0=1$",
+          "explicacion": "Al elevar $5$ al exponente cero se obtiene $1$."
+        },
+        {
+          "texto": "Exponente negativo ⇒ $a^{-n}=\\frac{1}{a^n}$, con $a\\neq0$",
+          "explicacion": "Un exponente negativo indica el inverso de la potencia positiva."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2^{-3}=\\frac{1}{8}$",
+          "explicacion": "Se calcula $\\frac{1}{2^3}=\\frac{1}{8}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de potencias",
+      "puntos": [
+        {
+          "texto": "Producto de potencias ⇒ $a^m\\cdot a^n=a^{m+n}$",
+          "explicacion": "Con la misma base se suman los exponentes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2^3\\cdot2^4=2^7=128$",
+          "explicacion": "Se suman los exponentes: $3+4=7$. Y $2^7=128$."
+        },
+        {
+          "texto": "Cociente de potencias ⇒ $\\frac{a^m}{a^n}=a^{m-n}$",
+          "explicacion": "Con la misma base y $a\\neq0$ se restan los exponentes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\frac{5^6}{5^4}=5^2=25$",
+          "explicacion": "Se restan los exponentes: $6-4=2$. Y $5^2=25$."
+        },
+        {
+          "texto": "Potencia de potencia ⇒ $(a^m)^n=a^{mn}$",
+          "explicacion": "Se multiplican los exponentes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(3^2)^3=3^6=729$",
+          "explicacion": "Se multiplican los exponentes: $2\\cdot3=6$. Y $3^6=729$."
+        }
+      ]
+    },
+    {
+      "titulo": "Radicación",
+      "puntos": [
+        {
+          "texto": "Raíz ⇒ $\\sqrt[n]{a}=b$ si $b^n=a$",
+          "explicacion": "La raíz enésima de $a$ es el número que, elevado a $n$, da $a$. Con $n=2$ se llama raíz cuadrada y no se escribe el índice."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\sqrt[3]{27}=3$",
+          "explicacion": "Porque $3^3=27$. También $\\sqrt{16}=4$, ya que $4^2=16$ y la raíz cuadrada principal es positiva."
+        },
+        {
+          "texto": "Raíz como potencia ⇒ $\\sqrt[n]{a}=a^{\\frac{1}{n}}$",
+          "explicacion": "Con $a\\geq0$ si $n$ es par. Permite aplicar las propiedades de las potencias a las raíces."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\sqrt{9}=9^{\\frac{1}{2}}=3$",
+          "explicacion": "Se escribe la raíz como potencia de exponente un medio: $9^{\\frac{1}{2}}=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Jerarquía de operaciones",
+      "puntos": [
+        {
+          "texto": "Orden ⇒ paréntesis, potencias, productos y cocientes, sumas y restas",
+          "explicacion": "Primero se resuelven los signos de agrupación; luego potencias y raíces; después multiplicaciones y divisiones, de izquierda a derecha; al final, sumas y restas. Error frecuente: sumar antes de multiplicar."
+        },
+        {
+          "texto": "Ejemplo ⇒ $5+3\\cdot2^2-8\\div4=15$",
+          "explicacion": "Primero la potencia: $2^2=4$. Luego el producto y el cociente: $3\\cdot4=12$ y $8\\div4=2$. Por último, $5+12-2=15$."
+        }
+      ]
+    }
+  ]
+}

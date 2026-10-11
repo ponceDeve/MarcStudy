@@ -1,0 +1,159 @@
+{
+  "curso": "Aritmética",
+  "tema": "Variaciones",
+  "glosario": {
+    "Variación": "Agrupación ordenada sin repetir elementos",
+    "Variaciones con repetición": "Listas ordenadas donde se repiten elementos",
+    "Análisis combinatorio": "Técnicas para contar configuraciones",
+    "Principio de multiplicación": "Total de etapas sucesivas es el producto",
+    "Factorial": "Producto de enteros consecutivos desde uno",
+    "Permutaciones": "Ordenaciones de todos los elementos",
+    "Combinaciones": "Elecciones donde no importa el orden",
+    "Función inyectiva": "Función con valores distintos para elementos distintos",
+    "Arreglos": "Otro nombre de las variaciones"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Variación» = agrupación ordenada de $k$ entre $n$ elementos",
+          "explicacion": "Una variación de $n$ elementos tomados de $k$ en $k$ es cada agrupación ordenada de $k$ elementos distintos escogidos entre los $n$ elementos de un conjunto. Dos variaciones son distintas si difieren en algún elemento o en el orden en que los elementos están colocados. Es una de las técnicas del análisis combinatorio (tema 76)."
+        },
+        {
+          "texto": "Variación ✓ orden importa ✓ sin repetición",
+          "explicacion": "Los dos rasgos de una variación son que el orden de los elementos distingue una agrupación de otra y que ningún elemento puede aparecer más de una vez en la agrupación. Con las letras A, B, C, las variaciones de 2 en 2 incluyen AB y BA como agrupaciones diferentes, pero no incluyen AA."
+        },
+        {
+          "texto": "Notación: $V_n^k$, $V(n,k)$, $A_n^k$ o $P(n,k)$",
+          "explicacion": "El número de variaciones de $n$ elementos tomados de $k$ en $k$ se escribe $V_n^k$ o $V(n,k)$. También se encuentran $A_n^k$, de arreglos, y $P(n,k)$ o $_nP_k$, de permutaciones parciales. Los números cumplen $0 \\le k \\le n$, con $n$ y $k$ enteros."
+        },
+        {
+          "texto": "Variación ≠ combinación: el orden distingue",
+          "explicacion": "En una variación el orden es parte de la agrupación: la lista A, B es distinta de B, A. Cuando el orden no distingue agrupaciones se trata de combinaciones (tema 80), que cuentan menos agrupaciones para los mismos $n$ y $k$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula",
+      "puntos": [
+        {
+          "texto": "Deducción con el principio de multiplicación",
+          "explicacion": "El primer lugar puede ocuparse de $n$ maneras; el segundo, de $n - 1$ porque ya se usó un elemento; el tercero, de $n - 2$; y así hasta el lugar $k$, que admite $n - k + 1$ maneras. Por el principio de multiplicación (tema 76), el total es el producto $n(n-1)(n-2)\\cdots(n-k+1)$."
+        },
+        {
+          "texto": "Fórmula: $V_n^k = n(n-1)\\cdots(n-k+1)$",
+          "explicacion": "El número de variaciones se expresa como un producto de $k$ factores consecutivos decrecientes que empiezan en $n$. Es la forma más práctica para calcular, porque no requiere factoriales grandes: basta multiplicar los $k$ factores."
+        },
+        {
+          "texto": "Fórmula con factoriales: $V_n^k = \\frac{n!}{(n-k)!}$",
+          "explicacion": "Al multiplicar y dividir por $(n-k)!$ el producto anterior se transforma en $$V_n^k = \\frac{n!}{(n-k)!}$$ con $0 \\le k \\le n$. Es la forma compacta que usa el factorial (tema 77) y es válida cuando $(n-k)!$ está definido."
+        },
+        {
+          "texto": "Ejemplo: $V_5^3 = 60$",
+          "explicacion": "Con 5 elementos tomados de 3 en 3, $V_5^3 = 5 \\cdot 4 \\cdot 3 = 60$. Con factoriales, $\\frac{5!}{2!} = \\frac{120}{2} = 60$. Ambos procedimientos conducen al mismo resultado, por lo que se elige el más cómodo."
+        },
+        {
+          "texto": "Ejemplo: podio con 8 corredores ⇒ 336",
+          "explicacion": "Para asignar el primero, segundo y tercer lugar entre 8 corredores, el orden distingue los resultados y nadie puede ocupar dos lugares. El total es $V_8^3 = 8 \\cdot 7 \\cdot 6 = 336$ podios distintos."
+        },
+        {
+          "texto": "Ejemplo: números de 3 cifras distintas con 1 a 9 ⇒ 504",
+          "explicacion": "Con las cifras 1 a 9, sin repetir y sin cero, cada número de 3 cifras es una variación de 9 elementos tomados de 3 en 3, y el orden cambia el número. Resulta $V_9^3 = 9 \\cdot 8 \\cdot 7 = 504$."
+        },
+        {
+          "texto": "Ejemplo con restricción: números de 3 cifras distintas ⇒ 648",
+          "explicacion": "Si se permite el cero, la fórmula directa $V_{10}^3 = 720$ incluye números que empiezan en 0, que no son de 3 cifras. Se cuentan primero 9 opciones para la primera cifra, luego 9 para la segunda y 8 para la tercera: $9 \\cdot 9 \\cdot 8 = 648$. También es $720 - V_9^2 = 720 - 72 = 648$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "$V_n^1 = n$",
+          "explicacion": "Con $k = 1$ cada variación es un solo elemento, y hay tantas como elementos tiene el conjunto. La fórmula entrega $\\frac{n!}{(n-1)!} = n$, resultado coherente con el sentido del problema: elegir un solo elemento de entre $n$ puede hacerse de $n$ maneras, y el orden no interviene porque hay un único lugar que ocupar."
+        },
+        {
+          "texto": "$V_n^0 = 1$",
+          "explicacion": "Con $k = 0$ existe una única agrupación, la vacía, por lo que $V_n^0 = \\frac{n!}{n!} = 1$. Este caso es coherente con la convención $0! = 1$ y no tiene aplicación práctica directa, pero mantiene la validez de las fórmulas."
+        },
+        {
+          "texto": "$V_n^n = n!$",
+          "explicacion": "Con $k = n$ se usan todos los elementos y la agrupación consiste en ordenarlos, de modo que $V_n^n = \\frac{n!}{0!} = n!$. Este caso son las permutaciones de $n$ elementos, que se estudian en el tema 79."
+        },
+        {
+          "texto": "$k > n$ ⇒ no hay variaciones",
+          "explicacion": "Si se piden más elementos que los disponibles y no se admite repetir, no es posible formar ninguna agrupación y el número de variaciones es 0. La fórmula con factoriales no se aplica en ese caso, porque $(n-k)!$ no está definido."
+        },
+        {
+          "texto": "Recurrencia: $V_n^k = n \\cdot V_{n-1}^{k-1}$",
+          "explicacion": "Se obtiene al elegir primero el elemento del primer lugar, de $n$ maneras, y completar los $k - 1$ lugares restantes con los $n - 1$ elementos que quedan. Es una forma de ver la estructura del producto de la fórmula."
+        },
+        {
+          "texto": "Variaciones = funciones inyectivas de $k$ a $n$ elementos",
+          "explicacion": "Una función inyectiva es la que asigna a cada elemento un valor distinto. Asignar a cada uno de $k$ lugares un elemento diferente de entre $n$ es construir una función inyectiva, y el número de ellas es $V_n^k$. Es una interpretación útil en cursos posteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Variaciones con repetición",
+      "puntos": [
+        {
+          "texto": "«Variaciones con repetición» = el elemento puede repetirse",
+          "explicacion": "En las variaciones con repetición se forman listas ordenadas de $k$ elementos escogidos entre $n$ tipos, y un mismo elemento puede aparecer varias veces. Se las llama también arreglos con repetición y se denotan $VR_n^k$."
+        },
+        {
+          "texto": "Fórmula: $VR_n^k = n^k$",
+          "explicacion": "Cada uno de los $k$ lugares puede ocuparse de $n$ maneras, sin importar lo que se haya elegido antes, por lo que el principio de multiplicación (tema 76) da $n \\cdot n \\cdots n = n^k$. A diferencia del caso sin repetición, los factores no decrecen."
+        },
+        {
+          "texto": "Ejemplo: claves de 4 dígitos ⇒ $10^4 = 10000$",
+          "explicacion": "Con los dígitos de 0 a 9 puede formarse una clave de 4 dígitos en la que se permiten repeticiones, y cada posición tiene 10 opciones. El total es $VR_{10}^4 = 10^4 = 10\\,000$ claves."
+        },
+        {
+          "texto": "Con repetición ⇒ más agrupaciones que sin repetición",
+          "explicacion": "Para los mismos $n$ y $k \\ge 2$, $n^k$ es mayor que $V_n^k$, porque al permitir repeticiones se agregan agrupaciones como AA. Con $n = 5$ y $k = 3$, resultan $125$ frente a $60$. En el caso de $k = 1$ ambas coinciden."
+        },
+        {
+          "texto": "Con repetición ⇒ $k$ puede superar a $n$",
+          "explicacion": "La restricción $k \\le n$ de las variaciones sin repetición no rige en las variaciones con repetición: con 2 símbolos se forman $2^5 = 32$ listas de longitud 5. Es una diferencia importante entre los dos tipos."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación",
+      "puntos": [
+        {
+          "texto": "Variaciones ≠ permutaciones ≠ combinaciones",
+          "explicacion": "Las variaciones ordenan algunos de los elementos, las permutaciones (tema 79) ordenan todos, y las combinaciones (tema 80) no toman en cuenta el orden. Hay una relación entre ellas: $V_n^k = C_n^k \\cdot k!$, donde $C_n^k$ es el número de combinaciones, pues cada combinación puede ordenarse de $k!$ maneras."
+        },
+        {
+          "texto": "Pregunta clave: ¿el orden cambia el resultado?",
+          "explicacion": "Para distinguir el tipo de agrupación se pregunta si cambiar el orden de los elementos da un resultado distinto. Si la respuesta es afirmativa y se usan algunos elementos, se trata de variaciones; si se usan todos, de permutaciones; si es negativa, de combinaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: aplicar variaciones cuando el orden no importa",
+          "explicacion": "Al elegir un comité de 3 personas el orden no distingue resultados, y usar $V_n^3$ cuenta cada comité 6 veces. En ese caso corresponden las combinaciones (tema 80), cuya cantidad se obtiene dividiendo el número de variaciones entre $k!$, el número de ordenaciones de cada grupo elegido."
+        },
+        {
+          "texto": "Error: usar $n^k$ cuando no hay repetición",
+          "explicacion": "Si ningún elemento puede aparecer dos veces, las opciones de cada lugar disminuyen y el producto es $n(n-1)\\cdots(n-k+1)$. Usar $n^k$ sobrestima el resultado, pues cuenta agrupaciones con elementos repetidos que el enunciado no permite. Por ejemplo, con 5 elementos tomados de 3 en 3 se obtiene 125 en lugar de 60."
+        },
+        {
+          "texto": "Error: tomar $k$ factores crecientes",
+          "explicacion": "El producto de la fórmula es decreciente: $n, n-1, n-2, \\dots$. Escribir $n(n+1)(n+2)$ en vez de $n(n-1)(n-2)$ no corresponde a ninguna variación y entrega un valor mayor que el correcto. Los factores deben disminuir porque cada elemento ya colocado deja de estar disponible para los lugares siguientes."
+        },
+        {
+          "texto": "Error: olvidar las restricciones del enunciado",
+          "explicacion": "Condiciones como que una cifra no pueda ser cero en la primera posición o que ciertos elementos deban ocupar lugares específicos obligan a contar por etapas, empezando por las posiciones restringidas, en lugar de aplicar la fórmula directa."
+        }
+      ]
+    }
+  ]
+}

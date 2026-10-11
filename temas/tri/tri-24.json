@@ -1,0 +1,152 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Identidades trigonométricas",
+  "glosario": {
+    "Identidad": "Igualdad cierta para todo valor permitido",
+    "Ecuación": "Igualdad cierta solo para algunos valores",
+    "Miembro": "Cada lado de una igualdad",
+    "Razón trigonométrica": "Cociente entre dos medidas asociadas al ángulo",
+    "Recíproca": "Razón cuyo producto con otra es uno",
+    "Cociente": "Resultado de dividir dos cantidades",
+    "Radio vector": "Distancia del origen al punto",
+    "Abscisa": "Coordenada horizontal de un punto",
+    "Ordenada": "Coordenada vertical de un punto",
+    "Ángulo cuadrantal": "Ángulo múltiplo de noventa grados",
+    "Lado final": "Semirrecta donde termina el giro",
+    "Teorema de Pitágoras": "Cuadrado de hipotenusa igual a suma de catetos",
+    "Identidad pitagórica": "Relación de cuadrados basada en Pitágoras"
+  },
+  "theory": [
+    {
+      "titulo": "Identidad trigonométrica",
+      "puntos": [
+        {
+          "texto": "Identidad ⇒ igualdad cierta para todo ángulo definido",
+          "explicacion": "Una identidad trigonométrica es una igualdad entre razones que se cumple para cualquier valor del ángulo en el que ambos lados tienen sentido; por eso sirve para reemplazar una expresión por otra sin cambiar su valor. Ejemplo: $\\text{sen}^2 x + \\cos^2 x = 1$ da $\\frac{1}{2} + \\frac{1}{2} = 1$ con $x = 45^\\circ$ y también $\\frac{1}{4} + \\frac{3}{4} = 1$ con $x = 30^\\circ$."
+        },
+        {
+          "texto": "Identidad ≠ ecuación trigonométrica",
+          "explicacion": "Una ecuación se cumple solo para algunos valores del ángulo, mientras que una identidad se cumple para todos los permitidos. Ejemplo: $\\text{sen}\\,x = \\frac{1}{2}$ se cumple con $x = 30^\\circ$ pero no con $x = 45^\\circ$, porque $\\text{sen}\\,45^\\circ = \\frac{\\sqrt{2}}{2} \\ne \\frac{1}{2}$; en cambio $\\text{sen}^2 x + \\cos^2 x = 1$ sí se cumple con ambos."
+        },
+        {
+          "texto": "Ambos miembros definidos ✓ para que valga la identidad",
+          "explicacion": "Una identidad solo se afirma para los ángulos donde cada razón que aparece existe; si un denominador se anula, la igualdad no se evalúa ahí. Ejemplo: $1 + \\tan^2 x = \\sec^2 x$ no se puede evaluar con $x = 90^\\circ$, porque $\\cos\\,90^\\circ = 0$ y la tangente y la secante no están definidas."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades recíprocas",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}\\,x \\cdot \\csc x = 1$ con $\\text{sen}\\,x \\ne 0$",
+          "explicacion": "La cosecante se define como el cociente del radio vector entre la ordenada, que es el inverso del seno, así que multiplicarlas da 1. Se exige $\\text{sen}\\,x \\ne 0$ porque con ordenada cero la cosecante no existe. Ejemplo con $x = 30^\\circ$: $\\text{sen}\\,30^\\circ = \\frac{1}{2}$ y $\\csc\\,30^\\circ = 2$, entonces $\\frac{1}{2} \\times 2 = 1$. Con el punto $P(3; 4)$ y $r = 5$: $\\frac{4}{5} \\times \\frac{5}{4} = 1$."
+        },
+        {
+          "texto": "$\\cos x \\cdot \\sec x = 1$ con $\\cos x \\ne 0$",
+          "explicacion": "La secante es el cociente del radio vector entre la abscisa, el inverso del coseno, así que su producto es 1. Se exige $\\cos x \\ne 0$ porque con abscisa cero la secante no existe. Ejemplo con $x = 60^\\circ$: $\\cos\\,60^\\circ = \\frac{1}{2}$ y $\\sec\\,60^\\circ = 2$, entonces $\\frac{1}{2} \\times 2 = 1$."
+        },
+        {
+          "texto": "$\\tan x \\cdot \\cot x = 1$ con $\\text{sen}\\,x \\ne 0$ y $\\cos x \\ne 0$",
+          "explicacion": "La cotangente es el cociente de abscisa entre ordenada, el inverso de la tangente, que es ordenada entre abscisa. Para que ambas existan, ni la abscisa ni la ordenada pueden ser cero. Ejemplo con $x = 30^\\circ$: $\\tan\\,30^\\circ = \\frac{\\sqrt{3}}{3}$ y $\\cot\\,30^\\circ = \\sqrt{3}$, entonces $\\frac{\\sqrt{3}}{3} \\times \\sqrt{3} = \\frac{3}{3} = 1$."
+        },
+        {
+          "texto": "Recíprocas ✓ el mismo ángulo en ambos factores",
+          "explicacion": "La identidad solo vale cuando seno y cosecante (o las otras parejas) tienen el mismo ángulo; con ángulos distintos el producto no es 1. Ejemplo: $\\text{sen}\\,30^\\circ \\times \\csc\\,60^\\circ = \\frac{1}{2} \\times \\frac{2\\sqrt{3}}{3} = \\frac{\\sqrt{3}}{3}$, que es distinto de 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades de cociente",
+      "puntos": [
+        {
+          "texto": "$\\tan x = \\frac{\\text{sen}\\,x}{\\cos x}$ con $\\cos x \\ne 0$",
+          "explicacion": "La tangente es ordenada entre abscisa; al dividir numerador y denominador entre el radio vector aparecen el seno y el coseno. Se exige $\\cos x \\ne 0$ porque no se divide entre cero. Ejemplo con $x = 60^\\circ$: $\\frac{\\text{sen}\\,60^\\circ}{\\cos\\,60^\\circ} = \\frac{\\frac{\\sqrt{3}}{2}}{\\frac{1}{2}} = \\sqrt{3}$, que coincide con $\\tan\\,60^\\circ$. Con $P(3; 4)$: $\\frac{4/5}{3/5} = \\frac{4}{3}$."
+        },
+        {
+          "texto": "$\\cot x = \\frac{\\cos x}{\\text{sen}\\,x}$ con $\\text{sen}\\,x \\ne 0$",
+          "explicacion": "La cotangente es abscisa entre ordenada; al dividir entre el radio vector aparecen el coseno y el seno. Se exige $\\text{sen}\\,x \\ne 0$ porque no se divide entre cero. Ejemplo con $x = 30^\\circ$: $\\frac{\\cos\\,30^\\circ}{\\text{sen}\\,30^\\circ} = \\frac{\\frac{\\sqrt{3}}{2}}{\\frac{1}{2}} = \\sqrt{3}$, que coincide con $\\cot\\,30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad pitagórica fundamental",
+      "puntos": [
+        {
+          "texto": "$\\text{sen}^2 x + \\cos^2 x = 1$",
+          "explicacion": "Se obtiene del teorema de Pitágoras: si un punto $P(a; b)$ del lado final de un ángulo $\\theta$ está a distancia $r$ del origen, entonces $a^2 + b^2 = r^2$; al dividir entre $r^2$ resulta $\\left(\\frac{b}{r}\\right)^2 + \\left(\\frac{a}{r}\\right)^2 = 1$, que es seno al cuadrado más coseno al cuadrado. Vale para todo ángulo, incluso los cuadrantales. Ejemplo con $x = 30^\\circ$: $\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{1}{4} + \\frac{3}{4} = 1$."
+        },
+        {
+          "texto": "Punto $P(3; 4)$ ⇒ $\\left(\\frac{4}{5}\\right)^2 + \\left(\\frac{3}{5}\\right)^2 = 1$",
+          "explicacion": "Comprobación numérica de la deducción: la distancia al origen es $r = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$, así que el seno es $\\frac{4}{5}$ y el coseno es $\\frac{3}{5}$. Entonces $\\frac{16}{25} + \\frac{9}{25} = \\frac{25}{25} = 1$, lo que confirma la identidad."
+        },
+        {
+          "texto": "$\\text{sen}^2 x = 1 - \\cos^2 x$",
+          "explicacion": "Se despeja el seno al cuadrado restando el coseno al cuadrado en ambos lados de la identidad fundamental. Sirve para cambiar un seno al cuadrado por una expresión con coseno. Ejemplo con $x = 60^\\circ$: $1 - \\cos^2 60^\\circ = 1 - \\frac{1}{4} = \\frac{3}{4}$, que es $\\text{sen}^2 60^\\circ = \\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{3}{4}$."
+        },
+        {
+          "texto": "$\\cos^2 x = 1 - \\text{sen}^2 x$",
+          "explicacion": "Se despeja el coseno al cuadrado restando el seno al cuadrado en ambos lados de la identidad fundamental. Sirve para cambiar un coseno al cuadrado por una expresión con seno. Ejemplo con $x = 60^\\circ$: $1 - \\text{sen}^2 60^\\circ = 1 - \\frac{3}{4} = \\frac{1}{4}$, que es $\\cos^2 60^\\circ = \\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pitagórica con tangente",
+      "puntos": [
+        {
+          "texto": "$1 + \\tan^2 x = \\sec^2 x$ con $\\cos x \\ne 0$",
+          "explicacion": "Esta identidad nace de dividir la fundamental entre $\\cos^2 x$, por eso exige $\\cos x \\ne 0$. Ejemplo con $x = 45^\\circ$: $1 + \\tan^2 45^\\circ = 1 + 1^2 = 2$ y $\\sec^2 45^\\circ = \\left(\\sqrt{2}\\right)^2 = 2$, que coinciden."
+        },
+        {
+          "texto": "Deducción de $1 + \\tan^2 x = \\sec^2 x$",
+          "explicacion": "Se parte de $\\text{sen}^2 x + \\cos^2 x = 1$ y se divide cada término entre $\\cos^2 x$: $\\frac{\\text{sen}^2 x}{\\cos^2 x} + \\frac{\\cos^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x}$. El primer término es $\\tan^2 x$, el segundo vale 1 y el tercero es $\\sec^2 x$. Ejemplo con $x = 60^\\circ$: $1 + \\left(\\sqrt{3}\\right)^2 = 4$ y $\\sec^2 60^\\circ = 2^2 = 4$."
+        },
+        {
+          "texto": "$\\sec^2 x - \\tan^2 x = 1$",
+          "explicacion": "Se obtiene de pasar $\\tan^2 x$ al otro lado en la identidad con tangente, y sirve para reemplazar una diferencia de cuadrados por 1. Ejemplo con $x = 60^\\circ$: $\\sec^2 60^\\circ - \\tan^2 60^\\circ = 4 - 3 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pitagórica con cotangente",
+      "puntos": [
+        {
+          "texto": "$1 + \\cot^2 x = \\csc^2 x$ con $\\text{sen}\\,x \\ne 0$",
+          "explicacion": "Esta identidad nace de dividir la fundamental entre $\\text{sen}^2 x$, por eso exige $\\text{sen}\\,x \\ne 0$. Ejemplo con $x = 30^\\circ$: $1 + \\cot^2 30^\\circ = 1 + \\left(\\sqrt{3}\\right)^2 = 4$ y $\\csc^2 30^\\circ = 2^2 = 4$, que coinciden."
+        },
+        {
+          "texto": "Deducción de $1 + \\cot^2 x = \\csc^2 x$",
+          "explicacion": "Se parte de $\\text{sen}^2 x + \\cos^2 x = 1$ y se divide cada término entre $\\text{sen}^2 x$: $\\frac{\\text{sen}^2 x}{\\text{sen}^2 x} + \\frac{\\cos^2 x}{\\text{sen}^2 x} = \\frac{1}{\\text{sen}^2 x}$. El primer término vale 1, el segundo es $\\cot^2 x$ y el tercero es $\\csc^2 x$. Ejemplo con $x = 60^\\circ$: $\\cot\\,60^\\circ = \\frac{\\sqrt{3}}{3}$, luego $1 + \\frac{3}{9} = \\frac{4}{3}$, y $\\csc^2 60^\\circ = \\left(\\frac{2\\sqrt{3}}{3}\\right)^2 = \\frac{12}{9} = \\frac{4}{3}$."
+        },
+        {
+          "texto": "$\\csc^2 x - \\cot^2 x = 1$",
+          "explicacion": "Se obtiene de pasar $\\cot^2 x$ al otro lado en la identidad con cotangente, y sirve para reemplazar una diferencia de cuadrados por 1. Ejemplo con $x = 30^\\circ$: $\\csc^2 30^\\circ - \\cot^2 30^\\circ = 4 - 3 = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias de demostración",
+      "puntos": [
+        {
+          "texto": "Convertir todo a seno y coseno",
+          "explicacion": "Al escribir cada razón con seno y coseno mediante las identidades recíprocas y de cociente, la expresión suele simplificarse sola. Ejemplo: para demostrar $\\tan x \\cdot \\cos x = \\text{sen}\\,x$, se escribe $\\tan x = \\frac{\\text{sen}\\,x}{\\cos x}$, queda $\\frac{\\text{sen}\\,x}{\\cos x} \\cdot \\cos x = \\text{sen}\\,x$. Comprobación con $x = 30^\\circ$: $\\frac{\\sqrt{3}}{3} \\times \\frac{\\sqrt{3}}{2} = \\frac{1}{2} = \\text{sen}\\,30^\\circ$."
+        },
+        {
+          "texto": "Empezar por el miembro más complicado",
+          "explicacion": "Se parte del lado con más términos y se lleva, paso a paso, al aspecto del otro lado; así hay más pasos de simplificación disponibles. Ejemplo: para demostrar $\\frac{1 - \\cos^2 x}{\\text{sen}\\,x} = \\text{sen}\\,x$, se reemplaza $1 - \\cos^2 x$ por $\\text{sen}^2 x$ y queda $\\frac{\\text{sen}^2 x}{\\text{sen}\\,x} = \\text{sen}\\,x$ con $\\text{sen}\\,x \\ne 0$."
+        },
+        {
+          "texto": "Usar una pitagórica para reducir factores",
+          "explicacion": "Cuando aparece $1 - \\text{sen}^2 x$, $1 - \\cos^2 x$ o una diferencia de cuadrados de razones, conviene reemplazarla por la razón al cuadrado correspondiente. Ejemplo: $\\left(1 - \\text{sen}^2 x\\right)\\sec x = \\cos^2 x \\cdot \\frac{1}{\\cos x} = \\cos x$, con $\\cos x \\ne 0$."
+        },
+        {
+          "texto": "Operar en ambos miembros a la vez ✗ demuestra",
+          "explicacion": "Si se opera en los dos lados como si ya fueran iguales, se está suponiendo lo que se quiere probar; una igualdad falsa puede volverse verdadera al operar. Ejemplo: $1 = -1$ es falsa, pero al elevar ambos lados al cuadrado queda $1 = 1$, que es verdadera. Por eso la demostración debe trabajar un solo miembro hasta llegar al otro."
+        },
+        {
+          "texto": "Un valor que cumple ✗ prueba la identidad",
+          "explicacion": "Comprobar con un ángulo no demuestra una identidad, porque la igualdad puede cumplirse solo para algunos valores. Ejemplo: $\\text{sen}\\,x + \\cos x = 1$ se cumple con $x = 0^\\circ$ y con $x = 90^\\circ$, pero con $x = 30^\\circ$ da $\\frac{1}{2} + \\frac{\\sqrt{3}}{2} \\approx 1{,}37 \\ne 1$, así que no es una identidad."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Amplitud",
+  "glosario": {
+    "amplitud": "Distancia de la línea media al máximo.",
+    "línea media": "Recta a igual distancia del máximo y mínimo.",
+    "máximo": "Mayor valor que toma la curva.",
+    "mínimo": "Menor valor que toma la curva.",
+    "coeficiente": "Número que multiplica a una expresión.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "secante": "Inverso multiplicativo del coseno.",
+    "cosecante": "Inverso multiplicativo del seno.",
+    "reflexión": "Imagen simétrica respecto a una recta.",
+    "periodo": "Longitud tras la cual la curva se repite.",
+    "valor absoluto": "Distancia de un número al cero.",
+    "rango": "Conjunto de valores que toma la función.",
+    "onda": "Curva que sube y baja de forma regular."
+  },
+  "theory": [
+    {
+      "titulo": "Amplitud",
+      "puntos": [
+        {
+          "texto": "«Amplitud»: distancia de la línea media al máximo",
+          "explicacion": "Es la mitad de la altura total de la onda, y mide cuánto se aleja la gráfica de su centro. Ejemplo: en una rueda de la fortuna de radio 10 m, la altura de un asiento oscila 10 m por encima y por debajo del nivel del centro, y esa distancia es la amplitud."
+        },
+        {
+          "texto": "Fórmula: $A = \\frac{M - m}{2}$, con $M$ el máximo y $m$ el mínimo",
+          "explicacion": "La altura total es $M - m$ y la amplitud es su mitad. Ejemplo: con $M = 5$ y $m = -1$, $A = \\frac{5 - (-1)}{2} = \\frac{6}{2} = 3$."
+        },
+        {
+          "texto": "Línea media: $y = \\frac{M + m}{2}$",
+          "explicacion": "Es la recta que queda a igual distancia del máximo y del mínimo. Ejemplo: con $M = 5$ y $m = -1$, $\\frac{5 + (-1)}{2} = 2$, así que la línea media es $y = 2$."
+        },
+        {
+          "texto": "La amplitud nunca es negativa",
+          "explicacion": "Es una distancia, de modo que se escribe sin signo. Ejemplo: la función $y = -2\\,\\text{sen}\\,x$, con seno (sen), tiene amplitud 2 y no $-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Amplitud con coeficiente",
+      "puntos": [
+        {
+          "texto": "Para $y = a\\,\\text{sen}\\,x$: $A = |a|$",
+          "explicacion": "El coeficiente $a$ multiplica todas las alturas del seno (sen), cuyo máximo es 1, por lo que el máximo pasa a ser $|a|$. Ejemplo: $y = 3\\,\\text{sen}\\,x$ tiene máximo 3, mínimo $-3$ y amplitud 3."
+        },
+        {
+          "texto": "Para $y = a\\cos x$: $A = |a|$",
+          "explicacion": "El coseno (cos) también oscila entre $-1$ y $1$, así que el coeficiente multiplica el máximo. Ejemplo: $y = 5\\cos x$ tiene amplitud 5, y $y = \\frac{1}{2}\\cos x$ tiene amplitud $\\frac{1}{2}$."
+        },
+        {
+          "texto": "$y = \\text{sen}\\,x$ y $y = \\cos x$ tienen amplitud $1$",
+          "explicacion": "Corresponden al caso $a = 1$. Ejemplo: sus alturas van de $-1$ a $1$, con $A = \\frac{1 - (-1)}{2} = 1$."
+        },
+        {
+          "texto": "Con $|a| > 1$ la curva se estira verticalmente",
+          "explicacion": "Las alturas se multiplican y el máximo sube. Ejemplo: $y = 2\\,\\text{sen}\\,x$ vale $2$ en $x = \\frac{\\pi}{2}$, el doble que $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "Con $0 < |a| < 1$ la curva se comprime verticalmente",
+          "explicacion": "Las alturas se reducen y el máximo baja. Ejemplo: $y = \\frac{1}{2}\\cos x$ vale $\\frac{1}{2}$ en $x = 0$, la mitad que $\\cos 0 = 1$."
+        },
+        {
+          "texto": "El signo de $a$ refleja la curva sin cambiar la amplitud",
+          "explicacion": "Un $a$ negativo invierte las alturas. Ejemplo: $y = -3\\,\\text{sen}\\,x$ vale $3$ en $x = \\frac{3\\pi}{2}$ y $-3$ en $x = \\frac{\\pi}{2}$, con $A = 3$."
+        },
+        {
+          "texto": "Valor de $y = 2\\,\\text{sen}\\,x$ en un arco dado",
+          "explicacion": "Se calcula el seno y se multiplica por 2. Ejemplo: en $x = \\frac{\\pi}{6}$, $y = 2 \\cdot \\frac{1}{2} = 1$, que queda entre $-2$ y $2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Amplitud con desplazamiento",
+      "puntos": [
+        {
+          "texto": "Para $y = a\\,\\text{sen}\\,x + d$: rango $[d - |a|,\\ d + |a|]$",
+          "explicacion": "La constante $d$ sube o baja toda la curva sin cambiar su amplitud $|a|$. Ejemplo: $y = 3\\,\\text{sen}\\,x + 2$ va de $2 - 3 = -1$ a $2 + 3 = 5$."
+        },
+        {
+          "texto": "Para $y = d - a\\cos x$ con $a > 0$: amplitud $a$",
+          "explicacion": "El signo menos solo refleja la curva. Ejemplo: $y = 2 - 4\\cos x$ tiene amplitud 4 y va de $2 - 4 = -2$ a $2 + 4 = 6$."
+        },
+        {
+          "texto": "El desplazamiento $d$ no modifica la amplitud",
+          "explicacion": "La amplitud mide la distancia al centro, y el centro se mueve junto con la curva. Ejemplo: $y = \\text{sen}\\,x$ y $y = \\text{sen}\\,x + 10$ tienen ambas amplitud 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Amplitud y otros parámetros",
+      "puntos": [
+        {
+          "texto": "La amplitud de $y = a\\,\\text{sen}(bx + c)$ sigue siendo $|a|$",
+          "explicacion": "Los parámetros $b$ y $c$ cambian el ancho y la posición horizontal de la onda, pero no su altura. Ejemplo: $y = 4\\,\\text{sen}\\left(3x - \\pi\\right)$ tiene amplitud 4."
+        },
+        {
+          "texto": "La amplitud mide altura; el «periodo» mide longitud",
+          "explicacion": "Son medidas distintas de la onda: la amplitud es vertical y el periodo es horizontal. Ejemplo: $y = 2\\,\\text{sen}\\,x$ y $y = 2\\,\\text{sen}\\,3x$ tienen la misma amplitud 2, pero se repiten con rapidez distinta."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones sin amplitud",
+      "puntos": [
+        {
+          "texto": "La tangente (tan) no tiene amplitud: sin máximo ni mínimo",
+          "explicacion": "Sus valores crecen y decrecen sin límite. Ejemplo: $\\tan x = 100$ y $\\tan x = -100$ tienen solución, así que no existe un valor máximo."
+        },
+        {
+          "texto": "Secante (sec) y cosecante (csc) tampoco tienen amplitud",
+          "explicacion": "Sus valores no están acotados: las ramas se alejan sin límite. Ejemplo: $\\sec x = 50$ tiene solución, por lo que no hay un máximo."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar parámetros",
+      "puntos": [
+        {
+          "texto": "Datos: máximo $7$ y mínimo $-1$; hallar $a$ y $d$ en $y = a\\,\\text{sen}\\,x + d$",
+          "explicacion": "El máximo y el mínimo de una función con $a > 0$ son $d + a$ y $d - a$. Se buscan los valores de $a$ y $d$ que las producen."
+        },
+        {
+          "texto": "Estrategia: la amplitud es la semidiferencia y el centro es el promedio",
+          "explicacion": "Se usa $A = \\frac{M - m}{2}$ y $d = \\frac{M + m}{2}$ con los datos del máximo y del mínimo."
+        },
+        {
+          "texto": "Operación: $a = \\frac{7 - (-1)}{2}$ y $d = \\frac{7 + (-1)}{2}$",
+          "explicacion": "Resulta $a = \\frac{8}{2} = 4$ y $d = \\frac{6}{2} = 3$."
+        },
+        {
+          "texto": "Resultado: $y = 4\\,\\text{sen}\\,x + 3$",
+          "explicacion": "La amplitud es 4 y la línea media es $y = 3$."
+        },
+        {
+          "texto": "Verificación: calcular el máximo y el mínimo con la ecuación",
+          "explicacion": "El máximo es $3 + 4 = 7$ y el mínimo es $3 - 4 = -1$, que coinciden con los datos."
+        }
+      ]
+    }
+  ]
+}

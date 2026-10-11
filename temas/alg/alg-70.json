@@ -1,0 +1,219 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones logarítmicas",
+  "glosario": {
+    "ecuación logarítmica": "Ecuación con la incógnita dentro de un logaritmo.",
+    "logaritmo": "Exponente al que se eleva la base.",
+    "argumento": "Número cuyo logaritmo se calcula.",
+    "base": "Número que se eleva al exponente.",
+    "dominio": "Valores permitidos para la variable.",
+    "solución extraña": "Valor obtenido que no cumple el dominio.",
+    "logaritmo decimal": "Logaritmo de base diez.",
+    "logaritmo natural": "Logaritmo de base e.",
+    "número de Euler": "Constante cercana a 2,71828.",
+    "inyectivo": "Valores distintos dan imágenes distintas.",
+    "cambio de base": "Reescribir un logaritmo con otra base.",
+    "cambio de variable": "Sustitución de una expresión por una letra.",
+    "ecuación cuadrática": "Ecuación de segundo grado.",
+    "monótona": "Que solo crece o solo decrece.",
+    "conjunto vacío": "Conjunto sin ningún elemento.",
+    "exponente": "Número de veces que se repite la base."
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Ecuación logarítmica» ⇒ la incógnita está en un logaritmo",
+          "explicacion": "Una ecuación logarítmica es una igualdad en la que la incógnita aparece en el argumento de uno o más logaritmos, o también en la base del logaritmo. Para resolverla se transforma, con la definición y las propiedades de los logaritmos, en una ecuación sin logaritmos (lineal, cuadrática u otra), se resuelve esa ecuación y se comprueba cada solución en el dominio original. Ejemplo: $\\log_2(x+3)=4$ es logarítmica porque $x$ está en el argumento; su solución es $x=13$. Verificación: $\\log_2(13+3)=\\log_2 16=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones del logaritmo",
+      "puntos": [
+        {
+          "texto": "Argumento $>0$ ⇒ el logaritmo solo existe para positivos",
+          "explicacion": "El logaritmo $\\log_a N$ solo está definido si el argumento $N$ es estrictamente positivo, porque $a^c$ con $a>0$ nunca vale cero ni un número negativo. Por eso, antes de resolver, se plantea la condición de que cada argumento sea mayor que cero. Ejemplo: en $\\log_2(x-1)$ se exige $x-1>0$, es decir $x>1$. Verificación: para $x=0$ el argumento es $-1$, y $\\log_2(-1)$ no existe."
+        },
+        {
+          "texto": "Base $a>0$ y $a\\ne 1$ ⇒ base válida del logaritmo",
+          "explicacion": "La base de un logaritmo debe ser positiva y distinta de uno, ya que $a=1$ da $1^c=1$ para todo $c$ y ninguna otra cantidad sería posible, y una base negativa no define potencias reales de exponente cualquiera. Cuando la incógnita está en la base, se imponen estas dos condiciones sobre ella. Ejemplo: en $\\log_x 9$ se exige $x>0$ y $x\\ne 1$. Verificación: $x=1$ y $x=-3$ quedan excluidos."
+        },
+        {
+          "texto": "Dominio ⇒ intersección de todas las condiciones",
+          "explicacion": "Si la ecuación tiene varios logaritmos, el conjunto de valores permitidos es la intersección de las condiciones de cada argumento y de cada base. Se calcula antes de transformar la ecuación, porque las transformaciones pueden cambiar el dominio. Ejemplo: en $\\log_2(x-1)+\\log_2(x+3)=3$ se exige $x-1>0$ y $x+3>0$, es decir $x>1$ y $x>-3$, y el dominio es $x>1$. Verificación: $x=0$ cumple la segunda condición pero no la primera, de modo que queda fuera."
+        },
+        {
+          "texto": "Soluciones extrañas ⇒ descartar las que salen del dominio",
+          "explicacion": "Al aplicar propiedades como la del producto, la ecuación resultante puede aceptar valores donde algún logaritmo original no existe; esos valores se llaman soluciones extrañas y se descartan. Por eso la comprobación en el dominio es obligatoria. Ejemplo: $\\log_2 x+\\log_2(x-2)=3$ lleva a $x^2-2x-8=0$ con raíces $x=4$ y $x=-2$; el dominio es $x>2$, de modo que $x=-2$ se descarta. Verificación: $\\log_2(-2)$ no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición de logaritmo",
+      "puntos": [
+        {
+          "texto": "$\\log_a b=c\\iff a^c=b$ ⇒ forma logarítmica y exponencial",
+          "explicacion": "El logaritmo en base $a$ de $b$ es el exponente $c$ al que hay que elevar $a$ para obtener $b$, con $a>0$, $a\\ne 1$ y $b>0$. Esta equivalencia permite pasar de una ecuación logarítmica a una exponencial y viceversa. Ejemplo: $\\log_2 8=3$ porque $2^3=8$; $\\log_5 25=2$ porque $5^2=25$. Verificación: $2\\times2\\times2=8$ y $5\\times 5=25$."
+        },
+        {
+          "texto": "$\\log_a 1=0$ y $\\log_a a=1$ ⇒ valores básicos",
+          "explicacion": "Estos dos valores salen directamente de la definición de logaritmo y se usan para simplificar expresiones y para escribir constantes como logaritmos al igualar ecuaciones; valen para toda base $a>0$ con $a\\ne 1$. Como $a^0=1$ y $a^1=a$, se tiene $\\log_a 1=0$ y $\\log_a a=1$ para cualquier base válida. Ejemplo: $\\log_3 1=0$ y $\\log_3 3=1$. Verificación: $3^0=1$ y $3^1=3$."
+        },
+        {
+          "texto": "$a^{\\log_a x}=x$ y $\\log_a a^x=x$ ⇒ operaciones inversas",
+          "explicacion": "La potencia y el logaritmo de igual base se deshacen entre sí: elevar $a$ al logaritmo de $x$ devuelve $x$ (con $x>0$), y el logaritmo de $a^x$ devuelve $x$. Ejemplo: $5^{\\log_5 7}=7$ y $\\log_2 2^6=6$. Verificación: por definición, $\\log_5 7$ es el exponente que da $7$ al elevar $5$, y $\\log_2 2^6=6$ porque $2^6=2^6$."
+        },
+        {
+          "texto": "$\\log x$ ⇒ logaritmo decimal de base $10$",
+          "explicacion": "Es la base más usada en calculadoras y tablas, y por eso se omite al escribirla; hay que recordar que cuando la base no aparece se trata de la base diez, y todas las propiedades de los logaritmos se conservan con ella. Cuando no se escribe la base, $\\log x$ significa el logaritmo en base $10$, llamado logaritmo decimal. Ejemplo: $\\log 1000=3$ porque $10^3=1000$. Verificación: $10\\times10\\times10=1000$."
+        },
+        {
+          "texto": "$\\ln x$ ⇒ logaritmo natural de base $e$",
+          "explicacion": "El logaritmo natural es el de base $e$, constante irracional que aparece en el crecimiento continuo; sus propiedades son las mismas que las de cualquier logaritmo, y su dominio también exige argumento positivo. El logaritmo natural, escrito $\\ln x$, es el logaritmo en base $e\\approx 2.71828$, el número de Euler (por Leonhard Euler). Ejemplo: $\\ln e=1$ y $\\ln 1=0$. Verificación: $e^1=e$ y $e^0=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de logaritmos",
+      "puntos": [
+        {
+          "texto": "$\\log_a(xy)=\\log_a x+\\log_a y$ ⇒ producto",
+          "explicacion": "El logaritmo de un producto es la suma de los logaritmos de los factores, con $x>0$ y $y>0$. Se usa para juntar una suma de logaritmos en uno solo. Ejemplo: $\\log_2(4\\times 8)=\\log_2 4+\\log_2 8=2+3=5$. Verificación: $\\log_2 32=5$ porque $2^5=32$."
+        },
+        {
+          "texto": "$\\log_a\\frac{x}{y}=\\log_a x-\\log_a y$ ⇒ cociente",
+          "explicacion": "Esta propiedad es la inversa de la del producto y sirve para reunir una resta de logaritmos en uno solo, siempre que ambos argumentos sean positivos; si alguno es negativo la propiedad no puede aplicarse. El logaritmo de un cociente es la diferencia de los logaritmos, con $x>0$ y $y>0$. Ejemplo: $\\log_3\\frac{81}{9}=\\log_3 81-\\log_3 9=4-2=2$. Verificación: $\\log_3 9=2$."
+        },
+        {
+          "texto": "$\\log_a x^n=n\\log_a x$ ⇒ potencia",
+          "explicacion": "Esta propiedad permite bajar el exponente de la potencia como coeficiente del logaritmo, o al revés, subir un coeficiente al exponente, y es la clave para resolver ecuaciones exponenciales con bases distintas; requiere argumento positivo. El logaritmo de una potencia es el exponente por el logaritmo de la base de la potencia, con $x>0$. Ejemplo: $\\log_2 8^2=2\\log_2 8=2\\times 3=6$. Verificación: $\\log_2 64=6$."
+        },
+        {
+          "texto": "$\\log_b x=\\frac{\\log_a x}{\\log_a b}$ ⇒ cambio de base",
+          "explicacion": "El cambio de base permite pasar a una base común cuando una ecuación mezcla logaritmos de distintas bases, o calcular logaritmos con una calculadora que solo tiene base diez o base $e$; $a$ puede ser cualquier base válida. Cualquier logaritmo puede escribirse con otra base $a$ válida, dividiendo el logaritmo del argumento entre el de la base. Ejemplo: $\\log_4 8=\\frac{\\log_2 8}{\\log_2 4}=\\frac{3}{2}$. Verificación: $4^{3/2}=8$."
+        },
+        {
+          "texto": "$\\log_a f=\\log_a g$ ⇒ $f=g$ con $f>0$ y $g>0$",
+          "explicacion": "El logaritmo de base $a>0$, $a\\ne 1$ es inyectivo, por lo que dos logaritmos iguales de la misma base tienen argumentos iguales, siempre que ambos sean positivos. Es la propiedad que permite eliminar logaritmos. Ejemplo: $\\log_3(2x-1)=\\log_3(x+4)$ da $2x-1=x+4$ y $x=5$. Verificación: $\\log_3 9=\\log_3 9$."
+        },
+        {
+          "texto": "$\\log x^2\\ne 2\\log x$ ⇒ el dominio cambia",
+          "explicacion": "La propiedad de la potencia exige $x>0$. Mientras $\\log x^2$ está definido para todo $x\\ne 0$, $2\\log x$ solo lo está para $x>0$. Por eso aplicar la propiedad puede perder soluciones negativas. Ejemplo: $\\log_3 x^2=\\log_3 16$ da $x^2=16$ y $x=\\pm 4$ (ambas válidas, pues $x^2>0$), mientras que $2\\log_3 x=\\log_3 16$ exige $x>0$ y solo da $x=4$. Verificación: $\\log_3(-4)^2=\\log_3 16$, pero $\\log_3(-4)$ no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicar la definición",
+      "puntos": [
+        {
+          "texto": "$\\log_a f(x)=c$ ⇒ $f(x)=a^c$",
+          "explicacion": "Si un solo logaritmo está igualado a un número, se pasa a forma exponencial con la definición y se resuelve la ecuación resultante. Se comprueba que el argumento sea positivo. Ejemplo: $\\log_2(x+3)=4$ da $x+3=2^4=16$ y $x=13$. Dominio: $x+3>0$. Verificación: $13+3=16>0$ y $\\log_2 16=4$."
+        },
+        {
+          "texto": "Aislar el logaritmo antes de aplicar la definición",
+          "explicacion": "Antes de usar la equivalencia entre forma logarítmica y exponencial hay que dejar el logaritmo solo en un miembro, con coeficiente uno; de lo contrario se obtienen exponentes incorrectos. Se opera como en una ecuación lineal común sobre la expresión $\\log_a f(x)$. Si el logaritmo tiene coeficiente o términos sumados, se aísla primero. Ejemplo: $3\\log_2(x-1)+2=8$ da $3\\log_2(x-1)=6$, luego $\\log_2(x-1)=2$ y $x-1=2^2=4$, es decir $x=5$. Dominio: $x-1>0$. Verificación: $3\\log_2 4+2=3\\times 2+2=8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualar logaritmos",
+      "puntos": [
+        {
+          "texto": "Un logaritmo en cada miembro ⇒ igualar argumentos",
+          "explicacion": "Si ambos miembros son un solo logaritmo de la misma base, se igualan los argumentos, pero solo si ambos son positivos. Ejemplo: $\\log_3(2x-1)=\\log_3(x+4)$ da $2x-1=x+4$ y $x=5$. Dominio: $2x-1>0$ y $x+4>0$, es decir $x>\\frac{1}{2}$. Verificación: para $x=5$ ambos argumentos valen $9>0$ y $\\log_3 9=2$ en ambos miembros."
+        },
+        {
+          "texto": "Suma de logaritmos igual a constante ⇒ juntar y aplicar definición",
+          "explicacion": "Se usa la propiedad del producto para escribir un solo logaritmo y luego la definición. Ejemplo: $\\log_2 x+\\log_2(x-2)=3$ da $\\log_2[x(x-2)]=3$, luego $x(x-2)=2^3=8$, es decir $x^2-2x-8=0$ con raíces $4$ y $-2$. Dominio: $x>2$. Solo $x=4$ es válida. Verificación: $\\log_2 4+\\log_2 2=2+1=3$."
+        },
+        {
+          "texto": "Suma de logaritmos ⇒ descartar la raíz fuera del dominio",
+          "explicacion": "Este es un caso típico en el que la ecuación transformada es cuadrática y una de sus raíces viola el dominio, por lo que solo una solución es válida; la razón es que la propiedad del producto cambia los valores permitidos de $x$. Ejemplo: $\\log_2 x+\\log_2(x+6)=4$ da $x(x+6)=2^4=16$, es decir $x^2+6x-16=0$, con $(x+8)(x-2)=0$ y raíces $-8$ y $2$. Dominio: $x>0$. Se descarta $-8$. Verificación: $\\log_2 2+\\log_2 8=1+3=4$."
+        },
+        {
+          "texto": "Diferencia de logaritmos igual a constante ⇒ cociente",
+          "explicacion": "Aquí se usa la propiedad del cociente para convertir la diferencia en un solo logaritmo y luego la definición de logaritmo; el resultado es una ecuación racional, que se resuelve multiplicando por el denominador, siempre positivo en el dominio. Se usa la propiedad del cociente y luego la definición. Ejemplo: $\\log x-\\log(x-3)=1$ da $\\log\\frac{x}{x-3}=1$, luego $\\frac{x}{x-3}=10$, es decir $x=10x-30$ y $x=\\frac{10}{3}$. Dominio: $x>3$. Verificación: $x-3=\\frac{1}{3}$ y $\\log\\frac{10/3}{1/3}=\\log 10=1$."
+        },
+        {
+          "texto": "Logaritmos con constante ⇒ escribir el número como logaritmo",
+          "explicacion": "Toda constante $c$ se puede escribir como el logaritmo de $a^c$ en la base elegida, y esto permite igualar ambos miembros como un solo logaritmo cada uno. En el caso de la base diez, $1=\\log 10$, $2=\\log 100$ y así sucesivamente. Un número se escribe como logaritmo usando $c=\\log_a a^c$ para igualar logaritmos. Ejemplo: $\\log x+\\log 3=\\log 12$ da $\\log(3x)=\\log 12$, luego $3x=12$ y $x=4$. Dominio: $x>0$. Verificación: $\\log 4+\\log 3=\\log 12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes y bases",
+      "puntos": [
+        {
+          "texto": "Coeficiente delante del logaritmo ⇒ pasar como exponente",
+          "explicacion": "Si un logaritmo tiene coeficiente $n$, se escribe como exponente del argumento con $n\\log_a x=\\log_a x^n$, atendiendo al dominio original. Ejemplo: $2\\log_3 x=\\log_3 16$ con $x>0$ da $\\log_3 x^2=\\log_3 16$, luego $x^2=16$ y, por el dominio, $x=4$. Verificación: $2\\log_3 4=\\log_3 16$."
+        },
+        {
+          "texto": "Bases distintas ⇒ cambio de base",
+          "explicacion": "Si los logaritmos tienen bases diferentes, se escriben con una misma base. Ejemplo: $\\log_2 x+\\log_4 x=3$ usa $\\log_4 x=\\frac{\\log_2 x}{2}$, de modo que $\\log_2 x+\\frac{1}{2}\\log_2 x=3$, es decir $\\frac{3}{2}\\log_2 x=3$, $\\log_2 x=2$ y $x=4$. Verificación: $\\log_2 4+\\log_4 4=2+1=3$."
+        },
+        {
+          "texto": "Incógnita en la base ⇒ $x^c=N$ con $x>0$, $x\\ne 1$",
+          "explicacion": "Si la incógnita es la base, se pasa a forma exponencial y se resuelve, descartando valores no positivos o iguales a uno. Ejemplo: $\\log_x 9=2$ da $x^2=9$ y $x=\\pm 3$; como la base debe ser positiva, $x=3$. Verificación: $\\log_3 9=2$."
+        },
+        {
+          "texto": "Incógnita en base y argumento ⇒ comprobar ambas condiciones",
+          "explicacion": "Si $x$ aparece en la base y en el argumento, se exigen todas las condiciones. Ejemplo: $\\log_x(2x+3)=2$ da $x^2=2x+3$, es decir $x^2-2x-3=0$ con raíces $3$ y $-1$. La base exige $x>0$ y $x\\ne 1$, por lo que se descarta $-1$. Verificación: $2(3)+3=9>0$ y $\\log_3 9=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable",
+      "puntos": [
+        {
+          "texto": "$t=\\log_a x$ ⇒ ecuación cuadrática en $t$",
+          "explicacion": "Si la ecuación contiene $(\\log_a x)^2$ y $\\log_a x$, se hace $t=\\log_a x$ y se resuelve la cuadrática; después se regresa con $x=a^t$. Ejemplo: $(\\log_2 x)^2-3\\log_2 x+2=0$ da $t^2-3t+2=0$, es decir $(t-1)(t-2)=0$ con $t=1$ o $t=2$. Entonces $x=2^1=2$ o $x=2^2=4$. Dominio: $x>0$. Verificación: para $x=2$, $1-3+2=0$; para $x=4$, $4-6+2=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Inversa del logaritmo",
+      "puntos": [
+        {
+          "texto": "$a^{\\log_a f}=f$ ⇒ eliminar la potencia",
+          "explicacion": "Esta propiedad deriva de que potencia y logaritmo de igual base son operaciones inversas, y simplifica expresiones en que la incógnita aparece dentro del exponente de una potencia cuyo exponente es un logaritmo. Cuando la incógnita aparece en una expresión del tipo $a^{\\log_a f(x)}$, se simplifica con $a^{\\log_a f}=f$, con $f>0$. Ejemplo: $5^{\\log_5(x-1)}=4$ da $x-1=4$ y $x=5$. Dominio: $x-1>0$. Verificación: $5^{\\log_5 4}=4$."
+        },
+        {
+          "texto": "$\\ln f(x)=c$ ⇒ $f(x)=e^c$",
+          "explicacion": "Es la misma equivalencia que la de la definición, aplicada a la base $e$: el logaritmo natural de un número es el exponente al que se eleva $e$ para obtenerlo, y por eso el argumento positivo se calcula con $e^c$. La definición para el logaritmo natural es $\\ln f=c\\iff f=e^c$. Ejemplo: $\\ln x=2$ da $x=e^2\\approx 7.389$. Otro: $\\ln(x-1)=0$ da $x-1=e^0=1$ y $x=2$. Verificación: $\\ln e^2=2$ y $\\ln 1=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos sin solución",
+      "puntos": [
+        {
+          "texto": "Todas las raíces fuera del dominio ⇒ sin solución",
+          "explicacion": "Si al resolver la ecuación transformada todos los valores obtenidos violan el dominio, la ecuación logarítmica no tiene solución. Ejemplo: $\\log(x-1)=\\log(-x)$ da $x-1=-x$ y $x=\\frac{1}{2}$, pero el dominio exige $x-1>0$ y $-x>0$, es decir $x>1$ y $x<0$, imposible. Verificación: para $x=\\frac{1}{2}$ los argumentos son $-\\frac{1}{2}$ y $-\\frac{1}{2}$, negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función logarítmica (tema 67) ⇒ dominio y monotonía",
+          "explicacion": "El tema «Función logarítmica» establece que $\\log_a x$ está definida para $x>0$ y es estrictamente monótona, lo que justifica los requisitos de dominio y la inyectividad. Ejemplo: $\\log_2(x-1)$ tiene dominio $x>1$. Verificación: para $x=1$ el argumento es cero."
+        },
+        {
+          "texto": "Logaritmos y propiedades (tema 68) ⇒ herramientas de resolución",
+          "explicacion": "Las propiedades del producto, el cociente, la potencia y el cambio de base son las que permiten reducir una ecuación con varios logaritmos a una con uno solo, o a una sin logaritmos. Cada propiedad exige argumentos positivos, y de ahí la comprobación en el dominio. Las propiedades del producto, cociente, potencia y cambio de base del tema «Logaritmos y propiedades» son las que transforman la ecuación. Ejemplo: $\\log_2 8+\\log_2 4=\\log_2 32=5$. Verificación: $3+2=5$."
+        },
+        {
+          "texto": "Ecuaciones exponenciales (tema 69) ⇒ ecuaciones inversas",
+          "explicacion": "Ecuación exponencial y ecuación logarítmica son problemas inversos: en la primera la incógnita está en el exponente y se resuelve con logaritmos, y en la segunda está en el logaritmo y se resuelve con una potencia. El tema «Ecuaciones exponenciales» usa $a^x=b\\iff x=\\log_a b$, y las ecuaciones logarítmicas se resuelven con la misma equivalencia en sentido contrario. Ejemplo: $\\log_2 x=3$ da $x=2^3=8$. Verificación: $\\log_2 8=3$."
+        },
+        {
+          "texto": "Ecuaciones de segundo grado (tema 06) ⇒ cuadrática tras transformar",
+          "explicacion": "Al transformar una ecuación logarítmica con productos o cuadrados se obtiene con frecuencia una ecuación cuadrática, que se resuelve por factorización o con la fórmula general, y cuyas raíces se verifican luego en el dominio del logaritmo. Con frecuencia la ecuación transformada es cuadrática y se resuelve con los métodos del tema «Ecuaciones de segundo grado». Ejemplo: $x^2-2x-8=0$ da $(x-4)(x+2)=0$. Verificación: $16-8-8=0$ y $4+4-8=0$."
+        }
+      ]
+    }
+  ]
+}

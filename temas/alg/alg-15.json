@@ -1,0 +1,285 @@
+{
+  "curso": "Álgebra",
+  "tema": "Números complejos",
+  "glosario": {
+    "unidad imaginaria": "Número cuyo cuadrado vale menos uno.",
+    "número complejo": "Par ordenado de números reales.",
+    "par ordenado": "Dos componentes donde importa el orden.",
+    "parte real": "Primer componente de un complejo.",
+    "parte imaginaria": "Segundo componente de un complejo.",
+    "número real": "Número ubicado en la recta numérica.",
+    "número imaginario puro": "Complejo con parte real cero.",
+    "número imaginario": "Complejo con parte imaginaria no nula.",
+    "afijo": "Punto del plano que representa un complejo.",
+    "plano complejo": "Plano donde se ubican los complejos.",
+    "eje real": "Eje horizontal del plano complejo.",
+    "eje imaginario": "Eje vertical del plano complejo.",
+    "discriminante": "Número que indica el tipo de raíces.",
+    "radicando": "Expresión dentro de la raíz.",
+    "raíz cuadrada": "Número que elevado al cuadrado da el radicando.",
+    "potencia": "Producto repetido de un mismo factor.",
+    "exponente": "Número de veces que se repite.",
+    "residuo": "Sobrante de una división entera.",
+    "periodo": "Cantidad de términos antes de repetirse.",
+    "ciclo": "Secuencia que se repite indefinidamente.",
+    "opuesto": "Número que sumado da cero.",
+    "inverso multiplicativo": "Número que multiplicado da uno.",
+    "neutro": "Elemento que no altera el resultado.",
+    "conjunto": "Colección de elementos.",
+    "ecuación": "Igualdad con una incógnita.",
+    "forma binomial": "Escritura de un complejo como a más bi.",
+    "relación de orden": "Comparación mediante menor o mayor.",
+    "contradicción": "Resultado que niega lo supuesto."
+  },
+  "theory": [
+    {
+      "titulo": "Origen",
+      "puntos": [
+        {
+          "texto": "$x^2+1=0$ ⇒ sin solución en $\\mathbb{R}$",
+          "explicacion": "En los números reales el cuadrado de cualquier número es mayor o igual que cero, de modo que ninguna ecuación de la forma $x^2=-k$ con $k>0$ tiene solución real. Esta limitación motiva ampliar el sistema numérico hasta incluir un número cuyo cuadrado sea negativo. El símbolo $\\mathbb{R}$ denota el conjunto de los números reales. Ejemplo: en $x^2+1=0$ se despeja $x^2=-1$; si $x=2$ resulta $4\\ne -1$, si $x=0$ resulta $0\\ne -1$, si $x=-3$ resulta $9\\ne -1$. Verificación general: como $x^2\\ge 0$ para todo real $x$, se cumple $x^2+1\\ge 1>0$, y la expresión nunca vale $0$."
+        },
+        {
+          "texto": "Ampliar $\\mathbb{R}$ ⇒ nuevo conjunto de números",
+          "explicacion": "Cuando un conjunto numérico no resuelve ciertas ecuaciones, se construye otro que lo contiene y sí las resuelve. Los naturales no resuelven $x+5=2$, por lo que se crean los enteros; los enteros no resuelven $2x=1$, por lo que se crean los racionales; los racionales no resuelven $x^2=2$, por lo que se crean los reales; los reales no resuelven $x^2=-1$, y de ahí surgen los números complejos. En cada paso el conjunto nuevo contiene al anterior y conserva sus operaciones. Ejemplo: $x+5=2$ da $x=-3$, que es entero y no natural; $2x=1$ da $x=\\frac{1}{2}$, que es racional y no entero; $x^2=2$ da $x=\\pm\\sqrt{2}$, que es real y no racional. Verificación: $-3+5=2$, $2\\times\\frac{1}{2}=1$ y $(\\sqrt{2})^2=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Unidad imaginaria",
+      "puntos": [
+        {
+          "texto": "«Unidad imaginaria» $i$ ⇒ $i^2=-1$",
+          "explicacion": "La unidad imaginaria, designada con la letra $i$, es el número definido por la condición $i^2=-1$. No pertenece a los números reales, puesto que ningún real elevado al cuadrado da un resultado negativo. Se introduce como un símbolo nuevo con esa única propiedad y a partir de ella se deduce todo lo demás. Ejemplo: $i\\times i=-1$, de donde $i^2+1=0$, es decir, $i$ resuelve la ecuación $x^2+1=0$. Verificación: al sustituir $x=i$ se obtiene $i^2+1=-1+1=0$, igualdad verdadera."
+        },
+        {
+          "texto": "$i=\\sqrt{-1}$ como raíz cuadrada de $-1$",
+          "explicacion": "Por la definición $i^2=-1$, el número $i$ es una raíz cuadrada de $-1$, y por convención se escribe $i=\\sqrt{-1}$ para indicar la raíz principal. Esta notación abreviada es la que permite escribir raíces de números negativos. La igualdad debe leerse como $i^2=-1$ y no como una propiedad de los radicales reales, que solo se definen para radicandos no negativos. Ejemplo: $\\sqrt{-1}\\times\\sqrt{-1}=i\\times i=-1$. Verificación: $i^2=-1$, coincide con el radicando."
+        },
+        {
+          "texto": "$(-i)^2=-1$ ⇒ $-i$ también es raíz de $-1$",
+          "explicacion": "La ecuación $x^2=-1$ tiene dos soluciones, $x=i$ y $x=-i$, de igual modo que $x^2=1$ tiene las soluciones $1$ y $-1$. Se comprueba elevando al cuadrado: $(-i)^2=(-1)^2\\times i^2=1\\times(-1)=-1$. Por tanto $i$ y $-i$ son las dos raíces cuadradas de $-1$. Ejemplo: en $x^2+1=0$ las soluciones son $x=i$ y $x=-i$. Verificación: $i^2+1=-1+1=0$ y $(-i)^2+1=-1+1=0$."
+        },
+        {
+          "texto": "Nombre alternativo: «número imaginario $i$»",
+          "explicacion": "La unidad imaginaria también recibe el nombre de «número imaginario $i$» o simplemente «$i$». Es la base sobre la cual se construyen los números imaginarios puros, que son sus múltiplos reales $bi$. Todos estos nombres hacen referencia al mismo objeto: el número cuyo cuadrado es $-1$. Ejemplo: $3i$ es tres veces la unidad imaginaria y cumple $(3i)^2=9i^2=-9$. Verificación: $9\\times(-1)=-9$."
+        },
+        {
+          "texto": "Notación $i$: introducida por Leonhard Euler",
+          "explicacion": "La letra $i$ como símbolo de la unidad imaginaria se atribuye al matemático suizo Leonhard Euler, y el término «número complejo» se asocia con Carl Friedrich Gauss. La palabra «imaginario» surgió históricamente con un sentido de duda, pero hoy designa simplemente a los números cuyo cuadrado es negativo, con pleno rigor matemático. Ejemplo: en la notación moderna se escribe $i^2=-1$ en lugar de describir el número con palabras. Verificación: la notación $i^2=-1$ condensa en tres símbolos la definición completa."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces de negativos",
+      "puntos": [
+        {
+          "texto": "$\\sqrt{-a}=i\\sqrt{a}$ ⇒ para $a>0$",
+          "explicacion": "La raíz cuadrada principal de un número real negativo $-a$, con $a>0$, es $i\\sqrt{a}$. Demostración: se eleva al cuadrado, $(i\\sqrt{a})^2=i^2\\times(\\sqrt{a})^2=(-1)\\times a=-a$, que es el radicando. Esto permite escribir cualquier raíz cuadrada de un negativo con la unidad imaginaria. Ejemplos: $\\sqrt{-16}=i\\sqrt{16}=4i$, pues $(4i)^2=16i^2=-16$; $\\sqrt{-5}=i\\sqrt{5}$, pues $(i\\sqrt{5})^2=-5$; $\\sqrt{-12}=i\\sqrt{12}=2i\\sqrt{3}$, pues $(2i\\sqrt{3})^2=4\\times i^2\\times 3=-12$."
+        },
+        {
+          "texto": "$\\sqrt{a}\\times\\sqrt{b}=\\sqrt{ab}$ ⇒ solo si $a\\ge 0$ y $b\\ge 0$",
+          "explicacion": "La propiedad del producto de radicales solo es válida cuando ambos radicandos son no negativos. Si se aplica con radicandos negativos se obtienen resultados incorrectos. Para evitar el error, primero se extrae $i$ de cada raíz y después se multiplica. Ejemplo: $\\sqrt{-4}\\times\\sqrt{-9}=(2i)(3i)=6i^2=-6$. El cálculo incorrecto $\\sqrt{(-4)(-9)}=\\sqrt{36}=6$ da otro número. Verificación: $-6\\ne 6$, por lo que la propiedad no puede usarse aquí."
+        },
+        {
+          "texto": "$x^2=-a$ ⇒ $x=\\pm i\\sqrt{a}$",
+          "explicacion": "Una ecuación de la forma $x^2=-a$ con $a>0$ tiene exactamente dos soluciones, $x=i\\sqrt{a}$ y $x=-i\\sqrt{a}$, porque ambas elevadas al cuadrado dan $-a$. Se resuelve extrayendo raíz y anteponiendo el doble signo. Ejemplos: $x^2+9=0$ da $x^2=-9$ y $x=\\pm 3i$; $2x^2+8=0$ da $x^2=-4$ y $x=\\pm 2i$. Verificación: $(3i)^2+9=-9+9=0$ y $2(2i)^2+8=2(-4)+8=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencias de $i$",
+      "puntos": [
+        {
+          "texto": "$i^3=-i$ ⇒ por $i^2\\times i$",
+          "explicacion": "Una potencia con exponente natural es un producto repetido de la base, por lo que $i^3$ equivale a multiplicar $i$ por sí mismo tres veces. Como ya se conoce $i^2=-1$, conviene separar un factor: la tercera potencia de $i$ se obtiene descomponiendo $i^3=i^2\\times i$ y sustituyendo $i^2=-1$. El resultado es un imaginario puro negativo, opuesto de $i$, y no un número real, a diferencia de $i^2$. Ejemplo: $i^3=i^2\\times i=(-1)\\times i=-i$. Verificación: $i^3\\times i=i^4$ debe valer $1$ y se comprueba en la siguiente potencia, pues $(-i)\\times i=-i^2=1$."
+        },
+        {
+          "texto": "$i^4=1$ ⇒ cierre del ciclo",
+          "explicacion": "La cuarta potencia de $i$ es el producto de $i^2$ consigo mismo: $i^4=i^2\\times i^2=(-1)\\times(-1)=1$. Con este resultado las potencias de $i$ comienzan a repetirse, porque multiplicar por $i^4=1$ no altera el valor. Ejemplo: $i^5=i^4\\times i=1\\times i=i$, igual a $i^1$. Verificación: $i^6=i^4\\times i^2=1\\times(-1)=-1$, igual a $i^2$."
+        },
+        {
+          "texto": "Potencias de $i$ se repiten con ciclo de periodo $4$",
+          "explicacion": "Las potencias enteras no negativas de $i$ siguen el ciclo $1,\\ i,\\ -1,\\ -i$, que se repite cada $4$ exponentes: $i^0=1$, $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$, $i^5=i$, y así sucesivamente. Esto ocurre porque $i^{n+4}=i^n\\times i^4=i^n\\times 1=i^n$. Ejemplo: $i^7$ ocupa la misma posición que $i^3$, por lo que $i^7=-i$. Verificación directa: $i^7=i^4\\times i^3=1\\times(-i)=-i$."
+        },
+        {
+          "texto": "$i^n=i^r$ ⇒ $r$ es el residuo de $n$ entre $4$",
+          "explicacion": "Para calcular $i^n$ con $n$ entero no negativo se divide $n$ entre $4$ y se usa el residuo $r$, que vale $0$, $1$, $2$ o $3$. Demostración: si $n=4k+r$, entonces $i^n=(i^4)^k\\times i^r=1^k\\times i^r=i^r$. Ejemplo: $i^{27}$, con $27=4\\times 6+3$, tiene residuo $3$ y vale $i^3=-i$. Otro: $i^{102}$, con $102=4\\times 25+2$, tiene residuo $2$ y vale $i^2=-1$. Verificación: $i^{27}=(i^4)^6\\times i^3=-i$ y $i^{102}=(i^4)^{25}\\times i^2=-1$."
+        },
+        {
+          "texto": "Residuo entre $4$ se obtiene con las dos últimas cifras",
+          "explicacion": "Como $100$ es divisible entre $4$, el residuo de $n$ entre $4$ coincide con el residuo que dejan sus dos últimas cifras. Demostración: si $n=100q+m$ con $m$ formado por las dos últimas cifras, entonces $100q$ es múltiplo de $4$ y el residuo de $n$ depende solo de $m$. Ejemplo: $i^{2026}$ tiene dos últimas cifras $26$; como $26=4\\times 6+2$, el residuo es $2$ y $i^{2026}=i^2=-1$. Verificación: $2026=4\\times 506+2$, que da el mismo residuo $2$."
+        },
+        {
+          "texto": "Exponente negativo ⇒ $i^{-n}=\\frac{1}{i^n}$",
+          "explicacion": "Una potencia negativa de $i$ se define como el inverso de la potencia positiva, $i^{-n}=\\frac{1}{i^n}$. El inverso de $i$ es $-i$, porque $i\\times(-i)=-i^2=1$. La regla del residuo también funciona con exponentes negativos si se usa el residuo no negativo de dividir entre $4$. Ejemplo: $i^{-1}=\\frac{1}{i}=-i$. Otro: $i^{-7}$, con $-7=4\\times(-2)+1$, tiene residuo $1$ y vale $i$. Verificación: $i^{-7}=\\frac{1}{i^7}=\\frac{1}{-i}=\\frac{-1}{i}=-(-i)=i$."
+        },
+        {
+          "texto": "$i^n+i^{n+1}+i^{n+2}+i^{n+3}=0$ ⇒ cuatro potencias seguidas",
+          "explicacion": "Cuando se suman potencias de $i$ cuyos exponentes son enteros consecutivos, los valores del ciclo $1,\\ i,\\ -1,\\ -i$ se compensan por pares: los dos reales se anulan entre sí y los dos imaginarios también, sin importar en qué posición del ciclo se empiece. La suma de cuatro potencias consecutivas de $i$ es cero. Demostración: se factoriza $i^n(1+i+i^2+i^3)=i^n(1+i-1-i)=i^n\\times 0=0$. Ejemplo: $i^5+i^6+i^7+i^8=i+(-1)+(-i)+1=0$. Verificación: se agrupan los términos reales ($-1+1=0$) y los imaginarios ($i-i=0$)."
+        },
+        {
+          "texto": "$i+i^2+i^3+\\ldots+i^m$ ⇒ sumar por bloques de $4$",
+          "explicacion": "Una suma de potencias consecutivas desde $i^1$ se calcula agrupando de cuatro en cuatro, ya que cada grupo suma $0$. Solo contribuyen los términos sobrantes. Ejemplo: $i+i^2+\\ldots+i^{102}$ tiene $102=4\\times 25+2$, es decir, $25$ grupos que suman $0$ y dos términos sobrantes, $i^{101}+i^{102}$. Como $i^{101}=i^1=i$ y $i^{102}=i^2=-1$, el total es $i+(-1)=-1+i$. Verificación: $101=4\\times 25+1$ y $102=4\\times 25+2$ confirman los residuos usados."
+        },
+        {
+          "texto": "$i^n\\times i^{n+1}\\times i^{n+2}\\times i^{n+3}=-1$ ⇒ cuatro seguidas",
+          "explicacion": "Al multiplicar potencias de la misma base se suman los exponentes, y como la suma de cuatro exponentes consecutivos produce un exponente grande, se reduce con el ciclo de periodo $4$. El producto de cuatro potencias consecutivas de $i$ es igual a $-1$ sin importar el valor de $n$. Demostración: se suman exponentes, $i^{n+(n+1)+(n+2)+(n+3)}=i^{4n+6}=(i^4)^n\\times i^6=1\\times i^2=-1$. Ejemplo con $n=1$: $i\\times i^2\\times i^3\\times i^4=i\\times(-1)\\times(-i)\\times 1=(-i)\\times(-i)=i^2=-1$. Verificación: $i^{4\\times 1+6}=i^{10}$ y $10=4\\times 2+2$, con residuo $2$, da $i^2=-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición de complejo",
+      "puntos": [
+        {
+          "texto": "«Número complejo» = par ordenado $(a,b)$ de reales",
+          "explicacion": "Un número complejo es un par ordenado $(a,b)$ en el que $a$ y $b$ son números reales. «Ordenado» significa que importa la posición: $(a,b)$ y $(b,a)$ son distintos salvo que $a=b$. Con esta definición los complejos se construyen a partir de los reales sin recurrir a ninguna raíz de un negativo. Ejemplos: $(3,4)$, $(-1,0)$ y $(0,2)$ son números complejos. Verificación: $(3,4)\\ne(4,3)$, porque el primer componente de uno es $3$ y el del otro es $4$."
+        },
+        {
+          "texto": "$\\mathbb{C}$ = conjunto de los números complejos",
+          "explicacion": "El símbolo $\\mathbb{C}$ denota el conjunto de todos los números complejos, es decir, de todos los pares ordenados de reales: $\\mathbb{C}=\\{(a,b): a\\in\\mathbb{R},\\ b\\in\\mathbb{R}\\}$. Un complejo cualquiera suele designarse con la letra $z$. Ejemplo: $z=(5,-2)$ pertenece a $\\mathbb{C}$ porque $5$ y $-2$ son reales. Verificación: $5\\in\\mathbb{R}$ y $-2\\in\\mathbb{R}$, por lo que el par cumple la definición."
+        },
+        {
+          "texto": "«Parte real» de $(a,b)$ es $a$",
+          "explicacion": "En el par $(a,b)$ el primer componente $a$ se llama parte real. Se denota $\\mathrm{Re}(z)$, donde $\\mathrm{Re}$ abrevia «parte real» y $z$ es el complejo considerado. La parte real es siempre un número real. Ejemplo: para $z=(5,-2)$ se tiene $\\mathrm{Re}(z)=5$. Verificación: $5$ es el primer componente del par."
+        },
+        {
+          "texto": "«Parte imaginaria» de $(a,b)$ es $b$",
+          "explicacion": "El segundo componente $b$ del par $(a,b)$ se llama parte imaginaria. Se denota $\\mathrm{Im}(z)$, donde $\\mathrm{Im}$ abrevia «parte imaginaria». La parte imaginaria es un número real: en el complejo $a+bi$ vale $b$ y no $bi$. Ejemplos: para $z=(5,-2)$ resulta $\\mathrm{Im}(z)=-2$; para $z=(7,0)$ resulta $\\mathrm{Im}(z)=0$; para $z=(0,-3)$ resulta $\\mathrm{Re}(z)=0$ e $\\mathrm{Im}(z)=-3$. Verificación: se leen los componentes del par en el orden en que están escritos."
+        },
+        {
+          "texto": "Nombre alternativo: «componente real» y «componente imaginario»",
+          "explicacion": "Los dos componentes de un complejo también se conocen como componente real (la parte real) y componente imaginario (la parte imaginaria). Los nombres alternativos subrayan que cada uno es una coordenada del par ordenado. Ejemplo: en $(3,4)$ el componente real es $3$ y el componente imaginario es $4$. Verificación: coinciden con $\\mathrm{Re}(z)=3$ e $\\mathrm{Im}(z)=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de complejos",
+      "puntos": [
+        {
+          "texto": "$(a,b)=(c,d)$ ⇒ $a=c$ y $b=d$",
+          "explicacion": "Dos números complejos son iguales cuando coinciden sus partes reales y coinciden sus partes imaginarias. Esta es la definición de igualdad de pares ordenados y, a la vez, la herramienta para resolver ecuaciones con complejos: una igualdad compleja equivale a dos igualdades reales. Ejemplo: $(2x-1,\\ y+3)=(5,\\ -2)$ implica $2x-1=5$, que da $x=3$, y $y+3=-2$, que da $y=-5$. Verificación: con $x=3$ y $y=-5$ el par izquierdo es $(5,-2)$, igual al derecho."
+        },
+        {
+          "texto": "$(a,b)=(0,0)$ ⇒ $a=0$ y $b=0$",
+          "explicacion": "Un complejo es igual al complejo cero solo si ambas partes son cero, como caso particular de la igualdad. Sirve para hallar valores incógnita cuando una expresión compleja se iguala a cero. Ejemplo: $(x-4,\\ x+y)=(0,0)$ da $x-4=0$, es decir $x=4$, y $x+y=0$, es decir $y=-4$. Verificación: con $x=4$ y $y=-4$ el par es $(0,0)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Clases de complejos",
+      "puntos": [
+        {
+          "texto": "«Real» ⇒ complejo $(a,0)$",
+          "explicacion": "Un complejo cuya parte imaginaria es cero se comporta exactamente como el número real $a$; se identifica $(a,0)$ con $a$. La identificación es válida porque la suma y el producto de pares con segundo componente cero reproducen la suma y el producto de reales: $(a,0)+(c,0)=(a+c,0)$ y $(a,0)(c,0)=(ac,0)$. Ejemplo: $(3,0)+(4,0)=(7,0)$ y $(3,0)(4,0)=(12,0)$, que corresponden a $3+4=7$ y $3\\times 4=12$. Verificación: el segundo componente permanece en $0$ y el primero repite el cálculo real."
+        },
+        {
+          "texto": "«Imaginario puro» ⇒ complejo $(0,b)$ con $b\\ne 0$",
+          "explicacion": "Un número imaginario puro es un complejo con parte real cero y parte imaginaria distinta de cero. Se obtiene como múltiplo real de $i$. Ejemplo: $(0,3)$ es imaginario puro, y su cuadrado es $(0,3)(0,3)=(0\\times 0-3\\times 3,\\ 0\\times 3+3\\times 0)=(-9,0)$. Verificación: es un real negativo, que concuerda con $(3i)^2=-9$."
+        },
+        {
+          "texto": "Complejo con $b\\ne 0$ ⇒ imaginario",
+          "explicacion": "Un complejo con parte imaginaria distinta de cero se llama imaginario, tenga o no parte real. Así, los complejos se clasifican en reales ($b=0$) e imaginarios ($b\\ne 0$), y entre los imaginarios, los de parte real cero son los imaginarios puros. Ejemplos: $(2,5)$ es imaginario no puro; $(0,5)$ es imaginario puro; $(2,0)$ es real. Verificación: se comprueba la parte imaginaria de cada par, que vale $5$, $5$ y $0$."
+        },
+        {
+          "texto": "$(0,0)$ ⇒ cero, real",
+          "explicacion": "El complejo $(0,0)$ es el cero. Se considera número real, porque su parte imaginaria es cero, y no se clasifica como imaginario puro, que exige $b\\ne 0$. Ejemplo: $(0,0)+(3,4)=(3,4)$, por lo que se comporta como el neutro de la suma. Verificación: $0+3=3$ y $0+4=4$."
+        },
+        {
+          "texto": "$\\mathbb{N}\\subset\\mathbb{Z}\\subset\\mathbb{Q}\\subset\\mathbb{R}\\subset\\mathbb{C}$",
+          "explicacion": "Los números naturales ($\\mathbb{N}$), enteros ($\\mathbb{Z}$), racionales ($\\mathbb{Q}$), reales ($\\mathbb{R}$) y complejos ($\\mathbb{C}$) forman una cadena de conjuntos, cada uno contenido en el siguiente. Un real $a$ es complejo, pues se identifica con $(a,0)$. Ejemplo: $-3\\in\\mathbb{Z}$ y también $-3\\in\\mathbb{C}$, pues se identifica con $(-3,0)$; $\\frac{1}{2}\\in\\mathbb{Q}$ y se identifica con $\\left(\\frac{1}{2},0\\right)$. Verificación: en cada caso la parte imaginaria es $0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con pares",
+      "puntos": [
+        {
+          "texto": "Suma: $(a,b)+(c,d)=(a+c,\\ b+d)$",
+          "explicacion": "La suma de complejos se define sumando las partes reales entre sí y las partes imaginarias entre sí. El resultado es otro complejo. Ejemplo: $(2,3)+(4,-1)=(2+4,\\ 3+(-1))=(6,2)$. Verificación: la parte real $2+4=6$ y la parte imaginaria $3-1=2$ se calculan por separado."
+        },
+        {
+          "texto": "Opuesto de $(a,b)$ es $(-a,-b)$",
+          "explicacion": "Todo complejo tiene un opuesto, que es el complejo que sumado con él da el neutro de la suma $(0,0)$. Como la suma opera componente a componente, el opuesto se obtiene cambiando el signo de ambas partes, real e imaginaria, y sumado al original da el cero. Esta propiedad es la que permite definir la resta de complejos como suma del opuesto. Demostración: $(a,b)+(-a,-b)=(a-a,\\ b-b)=(0,0)$. Ejemplo: el opuesto de $(2,3)$ es $(-2,-3)$. Verificación: $(2,3)+(-2,-3)=(0,0)$."
+        },
+        {
+          "texto": "Producto: $(a,b)(c,d)=(ac-bd,\\ ad+bc)$",
+          "explicacion": "El producto de complejos no es la multiplicación componente a componente; se define con la regla $(a,b)(c,d)=(ac-bd,\\ ad+bc)$, diseñada para que $(0,1)(0,1)=(-1,0)$. Ejemplo: $(2,3)(4,-1)$ con $a=2$, $b=3$, $c=4$, $d=-1$ da $ac-bd=8-(3)(-1)=8+3=11$ y $ad+bc=2(-1)+3(4)=-2+12=10$, es decir $(11,10)$. Verificación con otro producto: $(1,1)(1,1)=(1-1,\\ 1+1)=(0,2)$, que concuerda con $(1+i)^2=2i$."
+        },
+        {
+          "texto": "$i=(0,1)$ ⇒ $i^2=(-1,0)=-1$",
+          "explicacion": "La unidad imaginaria se identifica con el par $(0,1)$. Al aplicar la regla del producto: $(0,1)(0,1)=(0\\times 0-1\\times 1,\\ 0\\times 1+1\\times 0)=(-1,0)$, que es el real $-1$. Así $i^2=-1$ deja de ser un postulado y pasa a ser un resultado. Ejemplo: $(0,1)(0,1)=(-1,0)$. Verificación: $0\\times 0-1\\times 1=-1$ y $0\\times 1+1\\times 0=0$."
+        },
+        {
+          "texto": "$(1,0)$ ⇒ neutro del producto",
+          "explicacion": "El neutro multiplicativo es el complejo que, al multiplicarse con cualquier otro, lo deja igual; en los reales es el $1$ y en los complejos es el par que se identifica con el real $1$, es decir $(1,0)$. El complejo $(1,0)$ es el neutro multiplicativo porque multiplicar por él no cambia el valor, y su existencia es necesaria para poder hablar de inversos. Demostración: $(a,b)(1,0)=(a\\times 1-b\\times 0,\\ a\\times 0+b\\times 1)=(a,b)$. Ejemplo: $(3,4)(1,0)=(3-0,\\ 0+4)=(3,4)$. Verificación: el resultado coincide con el complejo de partida."
+        },
+        {
+          "texto": "Inverso de $(a,b)\\ne(0,0)$ es $\\left(\\frac{a}{a^2+b^2},\\ \\frac{-b}{a^2+b^2}\\right)$",
+          "explicacion": "Dividir entre un complejo equivale a multiplicar por su inverso, de modo que este resultado garantiza que la división está definida siempre que el divisor no sea cero. Todo complejo distinto de cero tiene inverso multiplicativo, es decir, otro complejo que multiplicado por él da $(1,0)$. La condición $(a,b)\\ne(0,0)$ asegura que $a^2+b^2>0$, por lo que la fracción tiene sentido. Demostración: con $r=a^2+b^2\\ne 0$, $(a,b)\\left(\\frac{a}{r},\\frac{-b}{r}\\right)=\\left(\\frac{a^2+b^2}{r},\\ \\frac{-ab+ab}{r}\\right)=(1,0)$. Ejemplo: para $(3,4)$, $r=9+16=25$ y el inverso es $\\left(\\frac{3}{25},\\ \\frac{-4}{25}\\right)$. Verificación: $(3,4)\\left(\\frac{3}{25},\\frac{-4}{25}\\right)=\\left(\\frac{9+16}{25},\\ \\frac{-12+12}{25}\\right)=(1,0)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma $a+bi$",
+      "puntos": [
+        {
+          "texto": "$(a,b)=a+bi$ ⇒ descomposición del par",
+          "explicacion": "Un par $(a,b)$ se descompone como $(a,0)+(0,b)$ y, como $(0,b)=(b,0)(0,1)$, resulta $(a,b)=(a,0)+(b,0)(0,1)$. Identificando $(a,0)$ con $a$, $(b,0)$ con $b$ y $(0,1)$ con $i$, se obtiene $(a,b)=a+bi$. Esta expresión se denomina forma binomial y se desarrolla en el tema siguiente. Ejemplo: $(3,4)=3+4i$ y $(5,-2)=5-2i$. Verificación: $(3,0)+(4,0)(0,1)=(3,0)+(0,4)=(3,4)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Plano complejo",
+      "puntos": [
+        {
+          "texto": "Plano complejo ⇒ $(a,b)$ como punto del plano",
+          "explicacion": "Cada complejo $(a,b)$ se representa como el punto del plano cuyas coordenadas son $a$ (horizontal) y $b$ (vertical). El plano así usado se llama plano complejo, y el punto asociado a un complejo recibe el nombre de afijo. Ejemplo: $(3,2)$ corresponde al punto situado $3$ unidades a la derecha del origen y $2$ hacia arriba. Verificación: el origen $(0,0)$ representa al cero."
+        },
+        {
+          "texto": "Reales ⇒ eje horizontal; imaginarios puros ⇒ eje vertical",
+          "explicacion": "Los números reales $(a,0)$ se ubican sobre el eje horizontal, llamado eje real, y los imaginarios puros $(0,b)$ sobre el eje vertical, llamado eje imaginario. El resto de complejos están fuera de los ejes. Ejemplos: $(-1,0)$ está en el eje real a la izquierda del origen; $(0,2)$ está en el eje imaginario, $2$ unidades sobre el origen; $(3,2)$ no está en ninguno de los dos ejes. Verificación: se observa el componente que vale cero en cada par."
+        }
+      ]
+    },
+    {
+      "titulo": "Sin relación de orden",
+      "puntos": [
+        {
+          "texto": "$i>0$ y $i<0$ ⇒ ambos conducen a contradicción",
+          "explicacion": "En los complejos no existe una relación de orden compatible con la suma y el producto. Demostración: si $i>0$, entonces $i\\times i>0$, es decir $-1>0$, falso. Si $i<0$, entonces $-i>0$ y $(-i)(-i)>0$, es decir $-1>0$, también falso. Como $i\\ne 0$, no queda otra posibilidad y $i$ no es ni positivo ni negativo. Ejemplo: no se puede decidir si $2+3i$ es mayor que $1+5i$ con los signos $<$ o $>$. Verificación: la contradicción $-1>0$ aparece en los dos casos."
+        },
+        {
+          "texto": "$<$ y $>$ ⇒ solo entre complejos reales",
+          "explicacion": "Los signos $<$ y $>$ solo tienen sentido entre complejos con parte imaginaria cero, porque entonces coinciden con la comparación de los números reales. Entre complejos con parte imaginaria distinta de cero solo se comparan sus partes real e imaginaria por separado. Ejemplo: $(3,0)<(5,0)$ porque $3<5$; en cambio $(2,3)$ y $(1,5)$ no se comparan con $<$. Verificación: la comparación $3<5$ es la usual en $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces complejas cuadráticas",
+      "puntos": [
+        {
+          "texto": "$\\Delta<0$ ⇒ dos raíces complejas con $\\sqrt{-k}=i\\sqrt{k}$",
+          "explicacion": "En la ecuación $ax^2+bx+c=0$ el discriminante es $\\Delta=b^2-4ac$. Si $\\Delta<0$, la fórmula general $x=\\frac{-b\\pm\\sqrt{\\Delta}}{2a}$ contiene la raíz de un negativo, que se expresa con $i$, y la ecuación tiene dos raíces complejas. Ejemplo: $x^2+2x+5=0$ con $a=1$, $b=2$, $c=5$ tiene $\\Delta=4-20=-16$ y $x=\\frac{-2\\pm\\sqrt{-16}}{2}=\\frac{-2\\pm 4i}{2}=-1\\pm 2i$. Verificación con $x=-1+2i$: $(-1+2i)^2=1-4i-4=-3-4i$; sumado a $2(-1+2i)=-2+4i$ y a $5$ da $-3-4i-2+4i+5=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Números reales (tema 01) ⇒ $\\mathbb{R}\\subset\\mathbb{C}$",
+          "explicacion": "El tema «Números reales» define el conjunto $\\mathbb{R}$ que ahora se extiende. Todo real es complejo con parte imaginaria cero, y las operaciones reales se conservan. Ejemplo: $2+3=5$ en $\\mathbb{R}$ coincide con $(2,0)+(3,0)=(5,0)$ en $\\mathbb{C}$. Verificación: el segundo componente se mantiene en cero."
+        },
+        {
+          "texto": "Ecuaciones de segundo grado (tema 06) ⇒ $\\Delta<0$ tiene solución",
+          "explicacion": "En «Ecuaciones de segundo grado» una ecuación con discriminante negativo no tiene soluciones reales. Con los números complejos sí las tiene, expresadas mediante la unidad imaginaria. Ejemplo: $x^2+4=0$ carecía de solución real y ahora tiene $x=\\pm 2i$. Verificación: $(2i)^2+4=-4+4=0$ y $(-2i)^2+4=-4+4=0$."
+        },
+        {
+          "texto": "Relación de orden (tema 03) ⇒ en $\\mathbb{C}$ no hay orden",
+          "explicacion": "El tema «Relación de orden» se aplica a los reales; al pasar a los complejos la propiedad de comparar con $<$ y $>$ deja de valer, salvo entre reales. Ejemplo: en $\\mathbb{R}$ se cumple siempre $x^2\\ge 0$, pero en $\\mathbb{C}$ el número $i$ cumple $i^2=-1<0$. Verificación: $i^2=-1$ no es mayor o igual que cero."
+        }
+      ]
+    }
+  ]
+}

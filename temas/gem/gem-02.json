@@ -1,0 +1,164 @@
+{
+  "curso": "Geometría",
+  "tema": "Medida de un segmento",
+  "glosario": {
+    "Medida de un segmento": "Número que expresa su longitud.",
+    "Postulado": "Propiedad que se acepta sin demostración.",
+    "Segmentos congruentes": "Segmentos de igual medida.",
+    "Adición de segmentos": "El total es la suma de las partes.",
+    "Puntos consecutivos": "Puntos colineales que se suceden en orden.",
+    "Punto medio": "Punto que divide al segmento en dos congruentes.",
+    "Razón": "Cociente entre dos cantidades.",
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Coordenada": "Número que ubica un punto en una recta."
+  },
+  "theory": [
+    {
+      "titulo": "Medida de un segmento",
+      "puntos": [
+        {
+          "texto": "«Medida de un segmento» = número que expresa su longitud en una unidad",
+          "explicacion": "Se obtiene comparando el segmento con una unidad, como el metro o el centímetro. La medida de $\\overline{AB}$ se denota $AB$."
+        },
+        {
+          "texto": "Medida ⇒ siempre es un número positivo",
+          "explicacion": "Todo segmento tiene una medida mayor que cero. Solo si los extremos coinciden, es decir, si hay un solo punto, la longitud es cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Postulado de la regla",
+      "puntos": [
+        {
+          "texto": "Postulado de la regla ⇒ a cada segmento corresponde un número positivo único",
+          "explicacion": "Dada una unidad, cada segmento tiene una sola medida. A la vez, para cada número positivo existe un segmento con esa medida."
+        }
+      ]
+    },
+    {
+      "titulo": "Segmentos congruentes",
+      "puntos": [
+        {
+          "texto": "Congruentes ⇒ tienen igual medida",
+          "explicacion": "Se escribe $\\overline{AB}\\cong\\overline{CD}$ si $AB=CD$. Se diferencia de la igualdad de segmentos, que implica ser el mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de segmentos",
+      "puntos": [
+        {
+          "texto": "Segmentos ⇒ se comparan por su medida",
+          "explicacion": "Se dice que $AB<CD$ si la medida de $\\overline{AB}$ es menor que la de $\\overline{CD}$. Es mayor si su medida es mayor y congruente si coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Adición de segmentos",
+      "puntos": [
+        {
+          "texto": "Postulado ⇒ si $P$ es interior a $\\overline{AB}$, $AB=AP+PB$",
+          "explicacion": "Con puntos colineales y consecutivos $A$, $P$ y $B$, la medida del segmento total es la suma de las medidas de sus partes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $AP=7$ y $PB=5$ da $AB=12$",
+          "explicacion": "Como $P$ está entre $A$ y $B$, se suman las partes: $AB=7+5=12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustracción de segmentos",
+      "puntos": [
+        {
+          "texto": "Resta ⇒ $AP=AB-PB$",
+          "explicacion": "Se despeja de la adición: la medida de una parte es el total menos la otra parte."
+        },
+        {
+          "texto": "Ejemplo ⇒ $AB=20$ y $PB=8$ da $AP=12$",
+          "explicacion": "Se resta la parte conocida del total: $AP=20-8=12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Varios puntos consecutivos",
+      "puntos": [
+        {
+          "texto": "Puntos consecutivos ⇒ $AD=AB+BC+CD$",
+          "explicacion": "La medida total es la suma de las medidas de todos los tramos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $AB=3$, $BC=4$ y $CD=6$ dan $AD=13$",
+          "explicacion": "Se suman los tramos: $3+4+6=13$."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema con ecuación",
+      "puntos": [
+        {
+          "texto": "Planteamiento ⇒ $AB=AP+PB$ con medidas en $x$",
+          "explicacion": "Si $AP=3x+2$, $PB=x+6$ y $AB=28$, se tiene $28=(3x+2)+(x+6)$."
+        },
+        {
+          "texto": "Resolución ⇒ $x=5$",
+          "explicacion": "Se simplifica: $28=4x+8$. Luego $4x=20$ y $x=5$."
+        },
+        {
+          "texto": "Resultado ⇒ $AP=17$ y $PB=11$",
+          "explicacion": "Con $x=5$: $AP=3(5)+2=17$ y $PB=5+6=11$. Se comprueba que $17+11=28$."
+        }
+      ]
+    },
+    {
+      "titulo": "Segmento entre puntos medios",
+      "puntos": [
+        {
+          "texto": "Teorema ⇒ $MN=\\frac{AC}{2}$ para puntos medios de $\\overline{AB}$ y $\\overline{BC}$",
+          "explicacion": "Con $M$ y $N$ puntos medios, y $A$, $B$ y $C$ colineales y consecutivos. La distancia entre los puntos medios es la mitad del segmento total."
+        },
+        {
+          "texto": "Demostración ⇒ $MN=MB+BN=\\frac{AB}{2}+\\frac{BC}{2}$",
+          "explicacion": "Como $M$ y $N$ son puntos medios, $MB=\\frac{AB}{2}$ y $BN=\\frac{BC}{2}$. Al sumar: $MN=\\frac{AB+BC}{2}=\\frac{AC}{2}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $AC=24$ da $MN=12$",
+          "explicacion": "Se aplica el teorema: $MN=\\frac{24}{2}=12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Razón de segmentos",
+      "puntos": [
+        {
+          "texto": "Razón ⇒ $\\frac{AP}{PB}=\\frac{m}{n}$ da $AP=\\frac{m}{m+n}AB$",
+          "explicacion": "Si $P$ divide al segmento en la razón $m:n$, su parte mayor o menor se obtiene repartiendo $AB$ en $m+n$ partes iguales."
+        },
+        {
+          "texto": "Ejemplo ⇒ $AB=18$ y $AP:PB=2:1$ dan $AP=12$",
+          "explicacion": "Se reparte $18$ en $2+1=3$ partes de $6$. Entonces $AP=2\\cdot6=12$ y $PB=6$."
+        }
+      ]
+    },
+    {
+      "titulo": "Segmento en la recta numérica",
+      "puntos": [
+        {
+          "texto": "Distancia ⇒ si $A(a)$ y $B(b)$, $AB=|b-a|$",
+          "explicacion": "La distancia entre dos puntos de una recta numérica es el valor absoluto de la diferencia de sus coordenadas."
+        },
+        {
+          "texto": "Ejemplo ⇒ $A(-3)$ y $B(5)$ dan $AB=8$",
+          "explicacion": "Se calcula $AB=|5-(-3)|=|8|=8$."
+        },
+        {
+          "texto": "Punto medio ⇒ su coordenada es $\\frac{a+b}{2}$",
+          "explicacion": "Es el promedio de las coordenadas de los extremos."
+        },
+        {
+          "texto": "Ejemplo ⇒ el punto medio de $A(-3)$ y $B(5)$ es $1$",
+          "explicacion": "Se calcula $\\frac{-3+5}{2}=\\frac{2}{2}=1$. Comprobación: $1-(-3)=4$ y $5-1=4$."
+        }
+      ]
+    }
+  ]
+}

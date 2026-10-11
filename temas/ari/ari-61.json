@@ -1,0 +1,380 @@
+{
+  "curso": "Aritmética",
+  "tema": "Progresiones aritméticas y geométricas",
+  "glosario": {
+    "progresión aritmética": "Sucesión donde se suma una constante.",
+    "progresión geométrica": "Sucesión donde se multiplica por una constante.",
+    "razón": "Constante que enlaza términos consecutivos.",
+    "término general": "Fórmula que da el término de lugar n.",
+    "término central": "Término del medio en cantidad impar.",
+    "términos equidistantes": "Términos a igual distancia de los extremos.",
+    "progresión creciente": "Cada término es mayor que el anterior.",
+    "progresión decreciente": "Cada término es menor que el anterior.",
+    "progresión oscilante": "Términos que alternan de signo.",
+    "progresión constante": "Todos los términos son iguales.",
+    "interpolar": "Insertar términos entre dos números dados.",
+    "medios aritméticos": "Números insertados que forman progresión aritmética.",
+    "medios geométricos": "Números insertados que forman progresión geométrica.",
+    "suma infinita": "Suma de todos los términos de la progresión.",
+    "términos consecutivos": "Términos que ocupan lugares contiguos."
+  },
+  "theory": [
+    {
+      "titulo": "Progresión aritmética",
+      "puntos": [
+        {
+          "texto": "«Progresión aritmética» = sucesión con diferencia constante entre términos",
+          "explicacion": "Una progresión aritmética es una sucesión de números en la que cada término, a partir del segundo, se obtiene sumando al anterior una cantidad fija. La noción general de sucesión, como lista ordenada de números, se estudia en el tema 60, Sucesiones; la progresión aritmética es el caso más simple de regla de formación, pues la regla es siempre la misma suma. Por ejemplo, 3, 7, 11, 15, 19 es una progresión aritmética porque cada término supera en 4 al anterior. Se llama también sucesión aritmética o progresión por diferencia."
+        },
+        {
+          "texto": "Razón aritmética = diferencia entre dos términos consecutivos",
+          "explicacion": "La cantidad fija que se suma en cada paso recibe el nombre de razón o diferencia común y se representa con la letra $r$. Se calcula restando a cualquier término el término que lo precede: $r = a_{n+1} - a_n$ para todo $n$. Que el resultado sea el mismo en todos los pares consecutivos es precisamente la condición que caracteriza a la progresión; si dos diferencias consecutivas resultan distintas, la lista no es una progresión aritmética. En 3, 7, 11, 15 se tiene $r = 7 - 3 = 11 - 7 = 4$."
+        },
+        {
+          "texto": "Notación: $a_1$ primer término, $a_n$ término enésimo",
+          "explicacion": "Los términos se designan con una letra y un subíndice que indica la posición: $a_1$ es el primer término, $a_2$ el segundo y $a_n$ el que ocupa el lugar $n$, donde $n$ es un número natural positivo. La razón se escribe $r$ y la cantidad de términos de una progresión finita se escribe $n$. Una progresión finita queda determinada por $a_1$, $r$ y $n$; una infinita, solo por $a_1$ y $r$. Estas letras se usan con el mismo significado en todas las fórmulas del tema."
+        },
+        {
+          "texto": "Razón positiva ⇒ progresión creciente",
+          "explicacion": "Cuando $r > 0$, cada término es mayor que el anterior, por lo que la progresión es creciente: sus valores aumentan sin límite si la lista es infinita. Un ejemplo es 5, 8, 11, 14, con $r = 3$. Esta clasificación depende solo del signo de la razón y no del signo de los términos: la progresión $-10, -7, -4, -1$ también es creciente aunque sus términos sean negativos."
+        },
+        {
+          "texto": "Razón negativa ⇒ progresión decreciente",
+          "explicacion": "Cuando $r < 0$, cada término es menor que el anterior y la progresión es decreciente: sus valores disminuyen y, si la lista es infinita, se hacen tan negativos como se quiera. La progresión 20, 15, 10, 5, 0, $-5$ tiene $r = -5$. Al igual que en el caso creciente, lo que decide es el signo de la razón, de modo que una progresión decreciente puede comenzar en un valor positivo y atravesar el cero."
+        },
+        {
+          "texto": "Razón cero = progresión constante",
+          "explicacion": "Si $r = 0$, todos los términos son iguales al primero: $a_n = a_1$ para todo $n$. La lista 7, 7, 7, 7 es una progresión aritmética constante. Es el caso límite entre el crecimiento y el decrecimiento y se acepta como progresión aritmética porque cumple la definición: la diferencia entre términos consecutivos es constante, aunque sea cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Término general aritmético",
+      "puntos": [
+        {
+          "texto": "Término general = $a_1$ + $(n-1)$ veces la razón",
+          "explicacion": "La fórmula del término general permite hallar cualquier término sin escribir los anteriores: $$a_n = a_1 + (n-1)\\,r$$ Se justifica observando que $a_2 = a_1 + r$, $a_3 = a_2 + r = a_1 + 2r$, $a_4 = a_1 + 3r$, y así sucesivamente: para llegar al término de lugar $n$ se han dado $n-1$ pasos de tamaño $r$ desde el primero. Por ejemplo, en 5, 8, 11, ... el término décimo es $a_{10} = 5 + 9\\cdot 3 = 32$."
+        },
+        {
+          "texto": "Fórmula entre dos términos cualesquiera",
+          "explicacion": "No siempre se conoce el primer término. Si se conocen $a_k$ y se pide $a_n$, vale $$a_n = a_k + (n-k)\\,r$$ que resulta de aplicar la fórmula general a ambos términos y restar. El factor $n-k$ es la cantidad de pasos entre las dos posiciones, y puede ser negativo cuando se retrocede. Por ejemplo, si $a_5 = 11$ y $r = 3$, entonces $a_9 = 11 + 4\\cdot 3 = 23$ y $a_1 = 11 - 4\\cdot 3 = -1$."
+        },
+        {
+          "texto": "Razón a partir de dos términos conocidos",
+          "explicacion": "Despejando $r$ de la fórmula entre dos términos se obtiene $$r = \\frac{a_n - a_k}{n-k}$$ es decir, la diferencia de valores repartida entre la cantidad de pasos que los separa. Con $a_5 = 11$ y $a_9 = 23$ resulta $r = (23-11)/(9-5) = 3$. Este procedimiento es el habitual cuando el enunciado entrega dos términos no consecutivos y pide reconstruir la progresión completa."
+        },
+        {
+          "texto": "Cantidad de términos = $(a_n - a_1)/r$ + 1",
+          "explicacion": "Cuando se conocen el primer término, el último y la razón, el número de términos es $$n = \\frac{a_n - a_1}{r} + 1$$ El cociente cuenta los pasos entre el primer y el último término y se suma uno porque hay un término más que pasos. Para la progresión 7, 12, 17, ..., 157 se tiene $r = 5$ y $n = (157-7)/5 + 1 = 31$. Si el cociente no resulta entero, el dato final no pertenece a la progresión."
+        },
+        {
+          "texto": "Un número pertenece si el cociente es entero no negativo",
+          "explicacion": "Para decidir si un valor $x$ es término de una progresión aritmética se calcula $(x - a_1)/r$. El valor pertenece solo si ese cociente es un número entero mayor o igual que cero, y entonces ocupa el lugar $n = (x-a_1)/r + 1$. En la progresión 4, 9, 14, ... el número 99 pertenece, pues $(99-4)/5 = 19$ y es el término vigésimo, mientras que 100 no pertenece, pues $(100-4)/5 = 19{,}2$ no es entero."
+        },
+        {
+          "texto": "Término general = función lineal de la posición",
+          "explicacion": "La fórmula puede reescribirse como $a_n = r\\,n + (a_1 - r)$, una expresión de primer grado en $n$. Por eso los puntos $(n, a_n)$ quedan alineados sobre una recta cuya pendiente es la razón. Esta es la característica que distingue a las progresiones aritméticas de las sucesiones cuadráticas, cuyo término general es de segundo grado y se estudian en el tema 62, Sucesiones cuadráticas y de orden superior."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades aritméticas",
+      "puntos": [
+        {
+          "texto": "Términos equidistantes de los extremos suman lo mismo",
+          "explicacion": "En una progresión aritmética finita de $n$ términos, la suma de dos términos que están a igual distancia de los extremos es constante: $$a_1 + a_n = a_2 + a_{n-1} = a_3 + a_{n-2} = \\cdots$$ La razón es que $a_k + a_{n+1-k} = 2a_1 + (n-1)r$ no depende de $k$: lo que un término gana respecto del primero, el simétrico lo pierde respecto del último. En 2, 5, 8, 11, 14 se cumple $2 + 14 = 5 + 11 = 16$."
+        },
+        {
+          "texto": "Término central = semisuma de los extremos",
+          "explicacion": "Si la cantidad de términos es impar, existe un término central y es el promedio de los dos extremos: $$a_c = \\frac{a_1 + a_n}{2}$$ Se deduce de la propiedad de los equidistantes, pues el término central es equidistante consigo mismo y su doble es $a_1 + a_n$. En 4, 9, 14, 19, 24 el término central es 14 y coincide con $(4+24)/2$. Si la cantidad de términos es par, no existe término central."
+        },
+        {
+          "texto": "Cada término = semisuma de sus vecinos",
+          "explicacion": "Para cualquier término que tenga uno anterior y otro posterior se cumple $$a_k = \\frac{a_{k-1} + a_{k+1}}{2}$$ pues $a_{k-1} = a_k - r$ y $a_{k+1} = a_k + r$, y al sumar se cancelan las razones. De esta propiedad proviene el nombre de la progresión: cada término es la media de los vecinos. Se aplica también a términos más alejados, ya que $a_{k-m} + a_{k+m} = 2a_k$ para cualquier $m$ que mantenga los índices dentro de la lista."
+        },
+        {
+          "texto": "Tres números en progresión aritmética ⇒ doble del medio = suma de extremos",
+          "explicacion": "Tres números $a$, $b$, $c$, dados en ese orden, forman una progresión aritmética si y solo si $2b = a + c$. Equivale a decir que $b - a = c - b$, es decir, que las dos diferencias consecutivas coinciden. Esta condición se usa para plantear ecuaciones cuando un enunciado afirma que tres expresiones están en progresión aritmética."
+        },
+        {
+          "texto": "Tres términos se representan como $x-r$, $x$, $x+r$",
+          "explicacion": "Para resolver problemas donde se conoce la suma de tres términos consecutivos conviene colocar el término central como incógnita $x$ y tomar los vecinos como $x-r$ y $x+r$. Al sumar los tres, las razones se cancelan y la suma vale $3x$, lo que despeja de inmediato el término central. Esta representación evita trabajar con el primer término y la razón por separado."
+        },
+        {
+          "texto": "Cuatro términos se representan con razón doble",
+          "explicacion": "Cuando se trabaja con cuatro términos consecutivos no hay término central, pero la simetría se conserva escribiendo $x-3r$, $x-r$, $x+r$, $x+3r$. En esta representación la razón de la progresión es $2r$, pues la diferencia entre términos consecutivos es $2r$, y la suma total es $4x$. Es útil cuando el enunciado entrega la suma de cuatro términos y alguna relación entre los extremos."
+        },
+        {
+          "texto": "Términos separados por pasos iguales forman otra progresión",
+          "explicacion": "Si de una progresión aritmética de razón $r$ se toman términos separados por el mismo número $m$ de posiciones, por ejemplo $a_k$, $a_{k+m}$, $a_{k+2m}$, ..., se obtiene de nuevo una progresión aritmética, de razón $m\\,r$. De 2, 5, 8, 11, 14, 17, 20, tomando un término de cada dos, resulta 2, 8, 14, 20, cuya razón es $6 = 2 \\cdot 3$."
+        },
+        {
+          "texto": "Sumar una constante a cada término conserva la razón",
+          "explicacion": "Si a todos los términos de una progresión aritmética se les suma un mismo número $c$, la lista resultante sigue siendo progresión aritmética y su razón no cambia, porque la diferencia $(a_{n+1} + c) - (a_n + c)$ sigue valiendo $r$. El primer término sí cambia y pasa a ser $a_1 + c$."
+        },
+        {
+          "texto": "Multiplicar cada término por una constante multiplica la razón",
+          "explicacion": "Si todos los términos se multiplican por un número $c$, la lista $c\\,a_1$, $c\\,a_2$, ... sigue siendo progresión aritmética y su razón es $c\\,r$, pues $c\\,a_{n+1} - c\\,a_n = c\\,(a_{n+1}-a_n)$. Con $c$ negativo, una progresión creciente se vuelve decreciente."
+        },
+        {
+          "texto": "Sumar dos progresiones término a término da otra progresión",
+          "explicacion": "Si dos progresiones aritméticas de razones $r$ y $s$ se suman posición por posición, la sucesión resultante es una progresión aritmética de razón $r + s$. Se comprueba porque la diferencia entre términos consecutivos de la suma es la suma de las diferencias respectivas. La propiedad análoga para el producto no se cumple: el producto término a término de dos progresiones aritméticas deja de ser aritmético."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma aritmética",
+      "puntos": [
+        {
+          "texto": "Suma de $n$ términos = $n$ por la semisuma de los extremos",
+          "explicacion": "La suma de los primeros $n$ términos se denota $S_n$ y vale $$S_n = \\frac{n\\,(a_1 + a_n)}{2}$$ La demostración consiste en escribir la suma dos veces, una en orden creciente y otra en orden inverso, y sumar columna por columna: cada par de términos equidistantes suma $a_1 + a_n$ y hay $n$ pares, de modo que $2S_n = n(a_1+a_n)$. La noción general de serie y la notación de sumatoria se desarrollan en el tema 63, Sumatorias y series."
+        },
+        {
+          "texto": "Suma de $n$ términos en función de la razón",
+          "explicacion": "Si no se conoce el último término, se sustituye $a_n = a_1 + (n-1)r$ en la fórmula anterior y resulta $$S_n = \\frac{n\\,[\\,2a_1 + (n-1)r\\,]}{2}$$ Con $a_1 = 5$, $r = 3$ y $n = 10$ se obtiene $S_{10} = 10\\,(10 + 27)/2 = 185$, que coincide con $10\\,(5 + 32)/2$, pues $a_{10} = 32$."
+        },
+        {
+          "texto": "Suma con cantidad impar = $n$ por el término central",
+          "explicacion": "Cuando $n$ es impar, la semisuma de los extremos es el término central, por lo que $S_n = n\\,a_c$. La suma de 4, 9, 14, 19, 24 es $5 \\cdot 14 = 70$. Esta forma resulta cómoda cuando el término central es dato del problema, como en los enunciados que dan el promedio de los términos."
+        },
+        {
+          "texto": "Gauss sumó los enteros del 1 al 100",
+          "explicacion": "Carl Friedrich Gauss, matemático alemán, protagoniza una anécdota tradicional de su infancia en la que halló casi de inmediato la suma de los enteros del 1 al 100: agrupó los extremos en pares que suman 101 y contó 50 pares, con resultado $50 \\cdot 101 = 5050$. El procedimiento es el mismo de la demostración de la fórmula de la suma aritmética y se conoce desde mucho antes de Gauss; la anécdota es tradicional y sus detalles no están documentados con certeza."
+        },
+        {
+          "texto": "Término enésimo = suma hasta $n$ menos suma hasta $n-1$",
+          "explicacion": "Si se conoce la fórmula de la suma $S_n$ de una progresión aritmética, el término de lugar $n$ se recupera con $a_n = S_n - S_{n-1}$ para $n \\geq 2$, y el primer término es $a_1 = S_1$. Con $S_n = 3n^2 + 2n$ se obtiene $a_1 = 5$ y $a_n = 6n - 1$ para $n \\geq 2$, expresión que también vale para $n = 1$; la razón es $r = 6$."
+        },
+        {
+          "texto": "La suma aritmética es cuadrática en $n$ sin término independiente",
+          "explicacion": "Desarrollando $S_n = n[2a_1 + (n-1)r]/2$ se obtiene $S_n = \\frac{r}{2}\\,n^2 + \\left(a_1 - \\frac{r}{2}\\right)n$, un polinomio de segundo grado en $n$ cuyo término independiente es cero. Recíprocamente, si $S_n$ tiene esa forma, la sucesión de términos es una progresión aritmética de razón igual al doble del coeficiente de $n^2$. Este criterio identifica progresiones a partir de su suma."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpolación aritmética",
+      "puntos": [
+        {
+          "texto": "Interpolar «medios aritméticos» = insertar números en progresión",
+          "explicacion": "Interpolar $m$ medios aritméticos entre dos números $a$ y $b$ es insertar $m$ números entre ellos, de modo que los $m + 2$ números resultantes formen una progresión aritmética con primer término $a$ y último término $b$. Los números insertados se llaman medios aritméticos. El problema consiste en hallar la razón que hace posible esa progresión."
+        },
+        {
+          "texto": "Razón de interpolación aritmética = $(b-a)/(m+1)$",
+          "explicacion": "Como la progresión tiene $m + 2$ términos, entre $a$ y $b$ hay $m + 1$ pasos iguales y por ello $$r = \\frac{b - a}{m + 1}$$ Para interpolar 4 medios aritméticos entre 3 y 28 resulta $r = 25/5 = 5$ y la progresión es 3, 8, 13, 18, 23, 28. La suma de toda la progresión interpolada es $(m+2)(a+b)/2$."
+        },
+        {
+          "texto": "Un medio aritmético ≠ media aritmética estadística",
+          "explicacion": "Cuando $m = 1$ el único medio aritmético entre $a$ y $b$ es $(a+b)/2$, el mismo valor que daría la media aritmética de dos datos. Sin embargo, el medio aritmético es un término insertado en una progresión, mientras que la media aritmética es una medida resumen de un conjunto de datos que se estudia en el tema 66, Media aritmética. La coincidencia numérica en el caso de dos números no borra la diferencia de concepto."
+        }
+      ]
+    },
+    {
+      "titulo": "Progresión geométrica",
+      "puntos": [
+        {
+          "texto": "«Progresión geométrica» = sucesión con cociente constante entre términos",
+          "explicacion": "Una progresión geométrica es una sucesión en la que cada término, a partir del segundo, se obtiene multiplicando al anterior por una cantidad fija distinta de cero. Por ejemplo, 2, 6, 18, 54 es progresión geométrica porque cada término es el triple del anterior. Se llama también sucesión geométrica o progresión por cociente. Es el segundo caso simple de regla de formación de una sucesión, junto con la progresión aritmética."
+        },
+        {
+          "texto": "Razón geométrica = cociente entre dos términos consecutivos",
+          "explicacion": "La cantidad fija por la que se multiplica se llama razón y se escribe $r$. Se obtiene como $r = a_{n+1}/a_n$, cociente que debe ser el mismo para todos los pares de términos consecutivos. Para que el cociente tenga sentido ningún término puede ser cero, lo que obliga a que $a_1 \\neq 0$ y $r \\neq 0$. En 2, 6, 18, 54 se tiene $r = 6/2 = 18/6 = 3$."
+        },
+        {
+          "texto": "Razón cero ✗ y primer término cero ✗ en la progresión geométrica",
+          "explicacion": "A diferencia de la progresión aritmética, que admite razón cero y primer término cero, la progresión geométrica excluye ambos casos. Con $r = 0$ todos los términos desde el segundo serían cero y el cociente $a_{n+1}/a_n$ perdería sentido; con $a_1 = 0$ todos los términos serían cero. Estas listas se consideran degeneradas y no se estudian como progresiones geométricas."
+        },
+        {
+          "texto": "Razón mayor que uno con términos positivos ⇒ creciente",
+          "explicacion": "Si $a_1 > 0$ y $r > 1$, cada término es mayor que el anterior porque se multiplica por un número que lo agranda, y la progresión crece cada vez más deprisa. La progresión 1, 2, 4, 8, 16 tiene $r = 2$. Si el primer término es negativo y $r > 1$, ocurre lo contrario: los términos se hacen cada vez más negativos y la progresión es decreciente."
+        },
+        {
+          "texto": "Razón entre cero y uno con términos positivos ⇒ decreciente",
+          "explicacion": "Si $a_1 > 0$ y $0 < r < 1$, cada término es menor que el anterior y los valores se acercan a cero sin alcanzarlo. La progresión 80, 40, 20, 10 tiene $r = 1/2$. Con primer término negativo y $0 < r < 1$, la progresión es creciente y se acerca a cero por debajo."
+        },
+        {
+          "texto": "Razón negativa ⇒ progresión oscilante",
+          "explicacion": "Si $r < 0$, los términos alternan de signo: positivo, negativo, positivo, etcétera. La progresión no es creciente ni decreciente y se llama oscilante o alternada. En 3, $-6$, 12, $-24$ la razón es $-2$ y los valores absolutos crecen; si $-1 < r < 0$ los valores absolutos disminuyen mientras el signo sigue alternando."
+        },
+        {
+          "texto": "Razón uno = progresión constante",
+          "explicacion": "Si $r = 1$ todos los términos son iguales al primero, de modo que la progresión geométrica es constante y coincide con la progresión aritmética de razón cero. Es el único caso en que una misma lista es a la vez aritmética y geométrica, siempre que el valor repetido sea distinto de cero. Con $r = -1$ la lista alterna entre $a_1$ y $-a_1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Término general geométrico",
+      "puntos": [
+        {
+          "texto": "Término general = $a_1$ por razón elevada a $n-1$",
+          "explicacion": "El término de lugar $n$ de una progresión geométrica es $$a_n = a_1\\, r^{\\,n-1}$$ Se justifica porque $a_2 = a_1 r$, $a_3 = a_1 r^2$, $a_4 = a_1 r^3$: para llegar al lugar $n$ se multiplica $n-1$ veces por la razón. En 5, 10, 20, ... el término octavo es $a_8 = 5 \\cdot 2^7 = 640$."
+        },
+        {
+          "texto": "Fórmula entre dos términos geométricos cualesquiera",
+          "explicacion": "Si se conoce el término $a_k$, cualquier otro término se obtiene con $$a_n = a_k\\, r^{\\,n-k}$$ El exponente cuenta los pasos entre las posiciones y puede ser negativo si se retrocede. Si $a_3 = 12$ y $a_6 = 96$, entonces $r^3 = 96/12 = 8$, de donde $r = 2$ y $a_1 = 12/4 = 3$; la progresión es 3, 6, 12, 24, 48, 96."
+        },
+        {
+          "texto": "Razón con cantidad par de pasos admite dos signos",
+          "explicacion": "Al despejar la razón se obtiene $r^{\\,n-k} = a_n/a_k$. Cuando $n-k$ es impar hay una única razón real. Cuando $n-k$ es par y el cociente es positivo hay dos razones, una positiva y otra negativa, que dan dos progresiones distintas; si el cociente es negativo y $n-k$ es par, no existe razón real. Por ejemplo, si $a_1 = 2$ y $a_3 = 18$, entonces $r^2 = 9$ y $r = 3$ o $r = -3$."
+        },
+        {
+          "texto": "Cantidad de términos geométricos a partir de una potencia de la razón",
+          "explicacion": "Para hallar $n$ conocidos $a_1$, $a_n$ y $r$ se calcula el cociente $a_n/a_1$, que debe ser igual a $r^{\\,n-1}$, y se identifica el exponente. Para 2, 6, 18, ..., 486 el cociente es $486/2 = 243 = 3^5$, por lo que $n - 1 = 5$ y $n = 6$. Si el cociente no es potencia entera de la razón, el último valor no pertenece a la progresión."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades geométricas",
+      "puntos": [
+        {
+          "texto": "Términos equidistantes de los extremos tienen igual producto",
+          "explicacion": "En una progresión geométrica finita, el producto de dos términos equidistantes de los extremos es constante: $$a_1\\,a_n = a_2\\,a_{n-1} = a_3\\,a_{n-2} = \\cdots$$ Se comprueba porque $a_k\\,a_{n+1-k} = a_1^2\\, r^{\\,n-1}$, valor que no depende de $k$. En 2, 4, 8, 16, 32 se tiene $2 \\cdot 32 = 4 \\cdot 16 = 64$."
+        },
+        {
+          "texto": "Cuadrado del término central = producto de los extremos",
+          "explicacion": "Si la cantidad de términos es impar, el término central cumple $a_c^{\\,2} = a_1\\,a_n$. En 2, 4, 8, 16, 32 el término central es 8 y $8^2 = 64 = 2 \\cdot 32$. Al extraer la raíz hay dos signos posibles: el valor del término central queda determinado por los demás datos, por ejemplo por el signo del primer término y de la razón."
+        },
+        {
+          "texto": "Cada término geométrico = media geométrica de sus vecinos",
+          "explicacion": "Para cualquier término con vecinos se cumple $a_k^{\\,2} = a_{k-1}\\,a_{k+1}$, pues $a_{k-1} = a_k/r$ y $a_{k+1} = a_k\\, r$. Por eso el término es la media geométrica de sus vecinos cuando estos son positivos; esa medida se estudia en el tema 67, Media geométrica. Tres números $a$, $b$, $c$ no nulos están en progresión geométrica si y solo si $b^2 = a\\,c$."
+        },
+        {
+          "texto": "Tres términos geométricos se representan como $x/r$, $x$, $xr$",
+          "explicacion": "Para problemas donde se conoce el producto de tres términos consecutivos conviene tomar el término central $x$ y escribir los vecinos como $x/r$ y $x\\,r$. El producto de los tres es $x^3$, pues las razones se cancelan, lo que permite obtener el término central directamente. Es la representación análoga a $x-r$, $x$, $x+r$ de la progresión aritmética."
+        },
+        {
+          "texto": "Términos separados por pasos iguales forman otra progresión geométrica",
+          "explicacion": "Si de una progresión geométrica de razón $r$ se toman términos separados por $m$ posiciones, se obtiene otra progresión geométrica de razón $r^{\\,m}$. De 1, 2, 4, 8, 16, 32, 64, tomando un término de cada dos, resulta 1, 4, 16, 64, de razón $4 = 2^2$."
+        },
+        {
+          "texto": "Multiplicar cada término por una constante conserva la razón",
+          "explicacion": "Si todos los términos de una progresión geométrica se multiplican por una constante $c$ distinta de cero, el cociente entre términos consecutivos no cambia y la nueva lista es progresión geométrica con la misma razón $r$. Solo cambia el primer término, que pasa a ser $c\\,a_1$."
+        },
+        {
+          "texto": "Producto de dos progresiones geométricas = progresión de razón $rs$",
+          "explicacion": "Si dos progresiones geométricas de razones $r$ y $s$ se multiplican término a término, el resultado es una progresión geométrica de razón $r\\,s$. Análogamente, el cociente término a término tiene razón $r/s$, los inversos de los términos forman una progresión de razón $1/r$ y las potencias $a_n^{\\,k}$ forman una de razón $r^{\\,k}$."
+        },
+        {
+          "texto": "Logaritmos de términos positivos forman progresión aritmética",
+          "explicacion": "Si los términos de una progresión geométrica son positivos y se toma el logaritmo de cada uno en una base positiva distinta de uno, resulta una progresión aritmética: $\\log a_n = \\log a_1 + (n-1)\\log r$, con razón $\\log r$. Es el vínculo histórico entre ambas progresiones y el fundamento de las tablas de logaritmos, que transforman productos en sumas."
+        },
+        {
+          "texto": "Exponencial de una progresión aritmética = progresión geométrica",
+          "explicacion": "Recíprocamente, si $a_n$ es una progresión aritmética de razón $r$ y $b$ es un número positivo distinto de uno, los números $b^{\\,a_n}$ forman una progresión geométrica de razón $b^{\\,r}$. Por ejemplo, los exponentes 3, 5, 7 dan $2^3, 2^5, 2^7 = 8, 32, 128$, progresión de razón $4 = 2^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto geométrico",
+      "puntos": [
+        {
+          "texto": "Producto de $n$ términos positivos = $(a_1 a_n)$ elevado a $n/2$",
+          "explicacion": "El producto de los primeros $n$ términos positivos se denota $P_n$ y vale $$P_n = (a_1\\,a_n)^{n/2}$$ Se demuestra agrupando los términos equidistantes de los extremos, cada par de los cuales tiene producto $a_1 a_n$, y hay $n/2$ pares. Para 2, 4, 8, 16, 32 resulta $(64)^{5/2} = 8^5 = 32768$, igual a $2^{1+2+3+4+5} = 2^{15}$. Con términos negativos solo vale la forma $P_n^{\\,2} = (a_1 a_n)^n$ y el signo se decide contando los factores negativos."
+        },
+        {
+          "texto": "Producto de $n$ términos en función de la razón",
+          "explicacion": "Otra forma del producto, válida también con términos negativos, es $$P_n = a_1^{\\,n}\\, r^{\\,n(n-1)/2}$$ Se obtiene multiplicando los términos $a_1 r^{k-1}$ y sumando los exponentes de $r$, que forman la suma $0 + 1 + \\cdots + (n-1) = n(n-1)/2$. Con $a_1 = 2$, $r = 2$ y $n = 5$ resulta $2^5\\cdot 2^{10} = 2^{15} = 32768$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma geométrica",
+      "puntos": [
+        {
+          "texto": "Suma finita geométrica = $a_1$ por $(r^n - 1)/(r - 1)$",
+          "explicacion": "Para $r \\neq 1$, la suma de los primeros $n$ términos es $$S_n = a_1\\,\\frac{r^{\\,n}-1}{r-1}$$ La demostración multiplica la suma por $r$ y resta: $S_n - r\\,S_n = a_1 - a_1 r^{\\,n}$, de donde se despeja $S_n$. Con razón entre cero y uno suele escribirse $a_1(1-r^{\\,n})/(1-r)$, que es equivalente. Para 3, 6, 12, 24, 48 resulta $3\\,(2^5 - 1)/1 = 93$."
+        },
+        {
+          "texto": "Suma geométrica en función del último término",
+          "explicacion": "Como $a_n\\,r = a_1 r^{\\,n}$, la suma finita puede escribirse $$S_n = \\frac{a_n\\,r - a_1}{r - 1}$$ Esta forma es la más cómoda cuando se conoce el último término en lugar del número de términos. Para 3, 6, 12, 24, 48 resulta $(48\\cdot 2 - 3)/(2-1) = 93$, el mismo valor obtenido con la forma anterior."
+        },
+        {
+          "texto": "Razón uno: suma = $n$ por el primer término",
+          "explicacion": "La fórmula de suma geométrica tiene denominador $r-1$, que se anula cuando $r = 1$, de modo que no puede aplicarse. En ese caso todos los términos son iguales a $a_1$ y la suma se calcula directamente: $S_n = n\\,a_1$. Olvidar esta excepción conduce a una división por cero."
+        },
+        {
+          "texto": "Suma infinita = $a_1/(1-r)$ con razón de valor absoluto menor que 1",
+          "explicacion": "Cuando la razón cumple $|r| < 1$, las potencias $r^{\\,n}$ se aproximan a cero al aumentar $n$ y la suma de los infinitos términos se acerca a un valor finito: $$S = \\frac{a_1}{1 - r}$$ La progresión 12, 4, 4/3, ... tiene $a_1 = 12$ y $r = 1/3$, por lo que $S = 12/(1 - 1/3) = 18$. El concepto general de serie se desarrolla en el tema 63, Sumatorias y series."
+        },
+        {
+          "texto": "Razón negativa en la suma infinita",
+          "explicacion": "La fórmula de la suma infinita sirve también con razón negativa, siempre que $|r| < 1$. En $1 - 1/2 + 1/4 - 1/8 + \\cdots$ se tiene $a_1 = 1$ y $r = -1/2$, por lo que $S = 1/(1 + 1/2) = 2/3$. Las sumas parciales oscilan alrededor del valor límite, a diferencia del caso de razón positiva, en que se acercan por un solo lado."
+        },
+        {
+          "texto": "Razón de valor absoluto no menor que 1 ⇒ sin suma finita",
+          "explicacion": "Si $|r| \\geq 1$ y $a_1 \\neq 0$, los términos no se aproximan a cero y las sumas parciales no se estabilizan: con $r = 1$ crecen linealmente, con $r > 1$ crecen sin límite, con $r < -1$ oscilan con amplitud creciente y con $r = -1$ alternan entre $a_1$ y $0$. En todos esos casos la suma infinita no tiene valor finito y la fórmula no se aplica."
+        },
+        {
+          "texto": "Desarrollo decimal periódico = suma infinita geométrica",
+          "explicacion": "El número $0{,}333\\ldots$ puede verse como $3/10 + 3/100 + 3/1000 + \\cdots$, una suma infinita con $a_1 = 3/10$ y $r = 1/10$, cuyo valor es $(3/10)/(1 - 1/10) = 1/3$. El procedimiento sistemático para hallar la fracción de un decimal periódico se estudia en el tema 40, Generatriz."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpolación geométrica",
+      "puntos": [
+        {
+          "texto": "Interpolar «medios geométricos» = insertar números en progresión geométrica",
+          "explicacion": "Interpolar $m$ medios geométricos entre $a$ y $b$ es insertar $m$ números de modo que los $m + 2$ números resultantes formen una progresión geométrica con primer término $a$ y último $b$. Los números insertados se llaman medios geométricos. Se busca la razón $r$ que hace posible la progresión."
+        },
+        {
+          "texto": "Razón de interpolación geométrica: $r^{m+1} = b/a$",
+          "explicacion": "La progresión tiene $m + 1$ pasos entre $a$ y $b$, de modo que $r^{\\,m+1} = b/a$ y $r = \\sqrt[m+1]{b/a}$. Para interpolar 3 medios geométricos entre 2 y 32 se tiene $r^4 = 16$, de donde $r = 2$ y la progresión es 2, 4, 8, 16, 32. Los medios hallados son 4, 8 y 16."
+        },
+        {
+          "texto": "Interpolación geométrica con dos soluciones o ninguna",
+          "explicacion": "Si $m + 1$ es par y $b/a$ es positivo, existen dos razones reales, una positiva y otra negativa; así, entre 2 y 32 también puede interpolarse con $r = -2$, resultando 2, $-4$, 8, $-16$, 32. Si $m + 1$ es par y $b/a$ es negativo, no hay solución real. Si $m + 1$ es impar, la raíz real es única."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación de progresiones",
+      "puntos": [
+        {
+          "texto": "Progresión aritmética suma una constante; geométrica multiplica por una constante",
+          "explicacion": "La diferencia central entre ambas progresiones está en la operación que enlaza un término con el siguiente: la aritmética suma la razón, la geométrica multiplica por la razón. De ahí que la primera tenga un cambio absoluto constante y la segunda un cambio relativo constante, es decir, un mismo porcentaje de variación entre términos consecutivos."
+        },
+        {
+          "texto": "Término general lineal en la aritmética y exponencial en la geométrica",
+          "explicacion": "En la progresión aritmética, $a_n$ es una función de primer grado de $n$ y su gráfica son puntos alineados. En la geométrica, $a_n = a_1 r^{\\,n-1}$ es una función exponencial de $n$, cuya gráfica son puntos sobre una curva que crece o decrece cada vez más deprisa o más despacio. Por ello, con razón mayor que uno, toda progresión geométrica termina superando a cualquier progresión aritmética creciente."
+        },
+        {
+          "texto": "Error frecuente: usar $n$ en lugar de $n-1$ en el término general",
+          "explicacion": "Un error habitual es escribir $a_n = a_1 + n\\,r$ o $a_n = a_1 r^{\\,n}$. En ambas fórmulas el exponente o el factor es $n-1$, porque entre el primer término y el de lugar $n$ hay $n-1$ pasos. Una verificación rápida consiste en comprobar que la fórmula devuelve $a_1$ cuando $n = 1$."
+        },
+        {
+          "texto": "Error frecuente: olvidar que interpolar $m$ medios da $m+2$ términos",
+          "explicacion": "Al interpolar medios, los extremos $a$ y $b$ forman parte de la progresión, por lo que la cantidad total de términos es $m + 2$ y los pasos entre extremos son $m + 1$. Dividir por $m$ en lugar de $m + 1$ al calcular la razón es el error más frecuente en este tipo de problemas."
+        },
+        {
+          "texto": "Error frecuente: aplicar la suma infinita fuera de su condición",
+          "explicacion": "La fórmula $a_1/(1-r)$ solo vale cuando $|r| < 1$. Aplicarla a una razón como 2 produce un número negativo para una suma de términos positivos, resultado absurdo que delata el error. Siempre debe verificarse la condición sobre la razón antes de usar la fórmula de la suma infinita."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de progresiones",
+      "puntos": [
+        {
+          "texto": "Papiro de Rhind (c. 1650 a. C.) → problema con progresión aritmética",
+          "explicacion": "El papiro de Rhind, documento matemático egipcio copiado por el escriba Ahmes hacia 1650 a. C., contiene problemas de reparto de cantidades en progresión aritmética. En el problema 64 se reparten diez medidas de cebada entre diez hombres con una diferencia constante de un octavo de medida entre cada hombre y el siguiente. Es una de las referencias escritas más antiguas de este tipo de progresión."
+        },
+        {
+          "texto": "Papiro de Rhind (c. 1650 a. C.) → problema con progresión geométrica",
+          "explicacion": "En el problema 79 del papiro de Rhind aparece una lista de siete casas, cuarenta y nueve gatos, trescientos cuarenta y tres ratones, dos mil cuatrocientas una espigas y dieciséis mil ochocientas siete medidas de grano. Cada cantidad es siete veces la anterior, es decir, una progresión geométrica de razón 7, y el problema pide la suma total, 19607."
+        },
+        {
+          "texto": "Euclides (siglo III a. C.) → suma de proporciones continuas",
+          "explicacion": "Euclides de Alejandría, matemático griego autor de los Elementos, enunció en la proposición 35 del libro IX una relación equivalente a la fórmula de la suma finita de una progresión geométrica, expresada en lenguaje de proporciones entre segmentos y números, sin usar símbolos algebraicos."
+        },
+        {
+          "texto": "Arquímedes (siglo III a. C.) → suma de razón un cuarto",
+          "explicacion": "Arquímedes de Siracusa, matemático griego, utilizó en su tratado sobre la cuadratura de la parábola la suma de la serie geométrica de razón un cuarto para calcular el área de un segmento de parábola, obteniendo que equivale a cuatro tercios del triángulo inscrito de igual base y altura. Es un uso temprano de la suma de infinitos términos en progresión geométrica."
+        },
+        {
+          "texto": "Aryabhata (año 499) → suma de progresión aritmética",
+          "explicacion": "Aryabhata, matemático y astrónomo indio, expuso en su obra Aryabhatiya, fechada en el año 499 de la era común, reglas para hallar la suma y el número de términos de una progresión aritmética, junto con sumas de cuadrados y cubos de los primeros números naturales. Muestra el desarrollo de estos procedimientos en la matemática india."
+        }
+      ]
+    }
+  ]
+}

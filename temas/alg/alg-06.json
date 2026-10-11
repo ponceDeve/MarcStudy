@@ -1,0 +1,167 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones de segundo grado",
+  "glosario": {
+    "Ecuación de segundo grado": "Ecuación con mayor exponente dos.",
+    "Ecuación cuadrática": "Otro nombre de la de segundo grado.",
+    "Coeficiente": "Número que multiplica a una incógnita.",
+    "Factorización": "Escribir una expresión como producto.",
+    "Fórmula general": "Fórmula que resuelve toda ecuación cuadrática.",
+    "Discriminante": "Expresión b² − 4ac bajo la raíz.",
+    "Raíz doble": "Solución repetida dos veces.",
+    "Ecuación incompleta": "Ecuación a la que le falta un término.",
+    "Raíces recíprocas": "Raíces que son inversas entre sí."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación de segundo grado",
+      "puntos": [
+        {
+          "texto": "Forma general ⇒ $ax^2+bx+c=0$, con $a\\neq0$",
+          "explicacion": "Se llama de segundo grado porque la mayor potencia de $x$ es $2$. También se llama ecuación cuadrática. Tiene a lo más dos soluciones reales."
+        },
+        {
+          "texto": "Ecuación completa ⇒ tiene los tres términos",
+          "explicacion": "Cuando $a$, $b$ y $c$ son distintos de cero. Ejemplo: $x^2-5x+6=0$. Si falta $b$ o $c$, se llama incompleta."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de factorización",
+      "puntos": [
+        {
+          "texto": "Factorización ⇒ se escribe el trinomio como producto y se iguala a cero",
+          "explicacion": "Se usa que si $m\\cdot n=0$, entonces $m=0$ o $n=0$. Es el método más rápido cuando el trinomio se puede factorizar."
+        },
+        {
+          "texto": "Ejemplo ⇒ $x^2-5x+6=0$ da $x=2$ o $x=3$",
+          "explicacion": "Se factoriza como $(x-2)(x-3)=0$. Cada factor puede ser cero: $x-2=0$ da $x=2$ y $x-3=0$ da $x=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula general",
+      "puntos": [
+        {
+          "texto": "Fórmula ⇒ $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$",
+          "explicacion": "Permite resolver cualquier ecuación de segundo grado. Las letras $a$, $b$ y $c$ son los coeficientes de $ax^2+bx+c=0$. El signo $\\pm$ da las dos soluciones."
+        },
+        {
+          "texto": "Ejemplo ⇒ $2x^2+3x-2=0$ da $x=\\frac{1}{2}$ o $x=-2$",
+          "explicacion": "Con $a=2$, $b=3$, $c=-2$: $x=\\frac{-3\\pm\\sqrt{9+16}}{4}=\\frac{-3\\pm5}{4}$. Entonces $x=\\frac{2}{4}=\\frac{1}{2}$ o $x=\\frac{-8}{4}=-2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Discriminante",
+      "puntos": [
+        {
+          "texto": "Discriminante ⇒ $\\Delta=b^2-4ac$",
+          "explicacion": "Es la expresión bajo la raíz de la fórmula general. Su signo indica cuántas soluciones reales tiene la ecuación."
+        },
+        {
+          "texto": "Si $\\Delta>0$ ⇒ dos soluciones reales distintas",
+          "explicacion": "La raíz es un número real positivo y el signo $\\pm$ da dos valores diferentes. Ejemplo: $x^2-5x+6=0$ tiene $\\Delta=1$."
+        },
+        {
+          "texto": "Si $\\Delta=0$ ⇒ una solución real doble",
+          "explicacion": "La raíz vale cero y ambas soluciones coinciden. Ejemplo: $x^2-6x+9=0$ tiene $\\Delta=0$ y su única solución es $x=3$."
+        },
+        {
+          "texto": "Si $\\Delta<0$ ⇒ no tiene soluciones reales",
+          "explicacion": "La raíz de un negativo no es real. Ejemplo: $x^2+2x+5=0$ tiene $\\Delta=4-20=-16$, y no tiene soluciones reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuaciones incompletas",
+      "puntos": [
+        {
+          "texto": "Si $c=0$ ⇒ $ax^2+bx=0$ da $x=0$ o $x=-\\frac{b}{a}$",
+          "explicacion": "Se factoriza $x(ax+b)=0$. Siempre tiene la solución $x=0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $3x^2-12x=0$ da $x=0$ o $x=4$",
+          "explicacion": "Se factoriza $3x(x-4)=0$. Cada factor puede ser cero: $x=0$ o $x=4$."
+        },
+        {
+          "texto": "Si $b=0$ ⇒ $ax^2+c=0$ da $x=\\pm\\sqrt{-\\frac{c}{a}}$",
+          "explicacion": "Tiene soluciones reales solo si $-\\frac{c}{a}\\ge0$. Las dos soluciones son opuestas."
+        },
+        {
+          "texto": "Ejemplo ⇒ $x^2-9=0$ da $x=3$ o $x=-3$",
+          "explicacion": "Se despeja $x^2=9$. Entonces $x=\\pm\\sqrt{9}=\\pm3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de raíces",
+      "puntos": [
+        {
+          "texto": "Suma ⇒ $x_1+x_2=-\\frac{b}{a}$",
+          "explicacion": "Es la suma de las dos raíces de $ax^2+bx+c=0$. Se deduce de la fórmula general: los términos con $\\pm\\sqrt{\\Delta}$ se cancelan."
+        },
+        {
+          "texto": "Ejemplo ⇒ en $x^2-7x+10=0$, la suma es $7$",
+          "explicacion": "Se calcula $-\\frac{-7}{1}=7$. Las raíces son $2$ y $5$, y $2+5=7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de raíces",
+      "puntos": [
+        {
+          "texto": "Producto ⇒ $x_1\\cdot x_2=\\frac{c}{a}$",
+          "explicacion": "Es el producto de las dos raíces de $ax^2+bx+c=0$."
+        },
+        {
+          "texto": "Ejemplo ⇒ en $x^2-7x+10=0$, el producto es $10$",
+          "explicacion": "Se calcula $\\frac{10}{1}=10$. Las raíces son $2$ y $5$, y $2\\cdot5=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de raíces",
+      "puntos": [
+        {
+          "texto": "Diferencia ⇒ $|x_1-x_2|=\\frac{\\sqrt{\\Delta}}{|a|}$",
+          "explicacion": "Da la distancia entre las dos raíces reales."
+        },
+        {
+          "texto": "Ejemplo ⇒ en $x^2-5x+6=0$, la diferencia es $1$",
+          "explicacion": "Con $\\Delta=1$ y $a=1$: $\\frac{\\sqrt{1}}{1}=1$. Las raíces son $2$ y $3$, y $|2-3|=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Formación de la ecuación",
+      "puntos": [
+        {
+          "texto": "Ecuación con raíces $x_1$ y $x_2$ ⇒ $x^2-Sx+P=0$",
+          "explicacion": "Aquí $S=x_1+x_2$ y $P=x_1\\cdot x_2$. Permite construir una ecuación conociendo sus raíces."
+        },
+        {
+          "texto": "Ejemplo ⇒ raíces $3$ y $-4$ dan $x^2+x-12=0$",
+          "explicacion": "Se calcula $S=3+(-4)=-1$ y $P=3\\cdot(-4)=-12$. La ecuación es $x^2-(-1)x+(-12)=0$, es decir, $x^2+x-12=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos de las raíces",
+      "puntos": [
+        {
+          "texto": "Si $b=0$ ⇒ las raíces son opuestas",
+          "explicacion": "Como $x_1+x_2=-\\frac{b}{a}=0$, se tiene $x_2=-x_1$. Ejemplo: $x^2-9=0$."
+        },
+        {
+          "texto": "Si $c=0$ ⇒ una raíz es cero",
+          "explicacion": "Como $x_1\\cdot x_2=\\frac{c}{a}=0$, alguna raíz vale $0$. Ejemplo: $3x^2-12x=0$."
+        },
+        {
+          "texto": "Si $a=c$ ⇒ las raíces son recíprocas",
+          "explicacion": "Como $x_1\\cdot x_2=\\frac{c}{a}=1$, una es la inversa de la otra. Ejemplo: $2x^2-5x+2=0$ tiene raíces $2$ y $\\frac{1}{2}$."
+        }
+      ]
+    }
+  ]
+}

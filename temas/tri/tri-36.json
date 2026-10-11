@@ -1,0 +1,323 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ecuaciones trigonométricas elementales",
+  "glosario": {
+    "Ecuación trigonométrica": "Igualdad con razones de un ángulo desconocido",
+    "Ecuación elemental": "Una razón de x igualada a un número",
+    "Solución particular": "Un ángulo que cumple la ecuación",
+    "Solución general": "Todas las soluciones, usando n entero",
+    "Ángulo de referencia": "Ángulo agudo con la razón sin signo",
+    "Identidad": "Igualdad válida para todos los valores admitidos",
+    "Entero": "Número sin decimales: positivo, negativo o cero",
+    "Periodo": "Giro tras el cual las razones se repiten",
+    "Seno": "Razón entre ordenada y distancia al origen",
+    "Coseno": "Razón entre abscisa y distancia al origen",
+    "Tangente": "Cociente entre seno y coseno",
+    "Cosecante": "Inversa del seno",
+    "Secante": "Inversa del coseno",
+    "Cotangente": "Inversa de la tangente",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Posición normal": "Vértice en origen, lado inicial en X positivo",
+    "Lado final": "Lado donde termina el giro",
+    "Semieje": "Mitad de un eje a partir del origen",
+    "Función par": "No cambia al invertir el ángulo"
+  },
+  "theory": [
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el seno es la ordenada de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 90°, con el punto (0, 3), sen 90° = 3/3 = 1; además sen 30° = 1/2."
+        },
+        {
+          "texto": "«Coseno (cos)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el coseno es la abscisa de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 180°, con el punto (-5, 0), cos 180° = -5/5 = -1; además cos 60° = 1/2."
+        },
+        {
+          "texto": "«Tangente (tan)»: seno entre coseno",
+          "explicacion": "Se calcula como tan θ = sen θ / cos θ, donde θ (theta) es la medida del ángulo. Ejemplo: tan 45° = sen 45° / cos 45° = 1, porque ambos valen $\\frac{\\sqrt{2}}{2}$."
+        },
+        {
+          "texto": "«Cosecante (csc)»: inversa del seno",
+          "explicacion": "Se calcula como csc θ = 1 / sen θ y no existe si sen θ = 0. Ejemplo: csc 30° = 1 / (1/2) = 2."
+        },
+        {
+          "texto": "«Secante (sec)»: inversa del coseno",
+          "explicacion": "Se calcula como sec θ = 1 / cos θ y no existe si cos θ = 0. Ejemplo: sec 60° = 1 / (1/2) = 2."
+        },
+        {
+          "texto": "«Cotangente (cot)»: inversa de la tangente",
+          "explicacion": "Se calcula como cot θ = 1 / tan θ y no existe si tan θ = 0. Ejemplo: cot 45° = 1 / 1 = 1."
+        },
+        {
+          "texto": "x denota el ángulo desconocido de la ecuación",
+          "explicacion": "Es la incógnita que se busca. Ejemplo: en sen x = 1/2, el valor x = 30° cumple la igualdad porque sen 30° = 1/2."
+        },
+        {
+          "texto": "n denota un número entero cualquiera",
+          "explicacion": "Un entero es un número sin decimales: positivo, negativo o cero. Ejemplo: en 180° × n, con n = 2 resulta 360°, con n = 0 resulta 0° y con n = -1 resulta -180°."
+        },
+        {
+          "texto": "α (alfa) denota un ángulo conocido",
+          "explicacion": "Es un ángulo que ya se sabe, usado como valor de comparación en las ecuaciones. Ejemplo: en sen x = sen α con α = 30°, la ecuación es sen x = sen 30° = 1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Ecuación trigonométrica»: igualdad con razones de un ángulo desconocido",
+          "explicacion": "Se cumple solo para ciertos valores del ángulo, a diferencia de una identidad, que se cumple siempre. Ejemplo: sen x = 1/2 se cumple con x = 30° porque sen 30° = 1/2, pero no con x = 45° porque sen 45° ≈ 0,707."
+        },
+        {
+          "texto": "«Ecuación elemental»: una razón de x igualada a un número",
+          "explicacion": "Tiene la forma sen x = a, cos x = a o tan x = a, con a un número conocido. Ejemplo: tan x = 1 es elemental, porque solo aparece una razón y está igualada a una constante."
+        },
+        {
+          "texto": "«Solución particular»: un ángulo que cumple la ecuación",
+          "explicacion": "Es un único valor de x que hace verdadera la igualdad. Ejemplo: en sen x = 1/2, x = 30° es una solución particular, y también lo es x = 150° porque sen 150° = 1/2."
+        },
+        {
+          "texto": "«Solución general»: todas las soluciones con n entero",
+          "explicacion": "Es una expresión con n que, al darle valores enteros, produce todas las soluciones. Ejemplo: para tan x = 1, x = 180° × n + 45° da 45° con n = 0, 225° con n = 1 y -135° con n = -1."
+        },
+        {
+          "texto": "Se resuelve en un intervalo como 0° ≤ x < 360°",
+          "explicacion": "Muchos problemas piden solo las soluciones de una vuelta completa. Ejemplo: para sen x = 1/2 en 0° ≤ x < 360°, las soluciones son 30° y 150°; el valor 390° también cumple la ecuación, pero queda fuera del intervalo."
+        }
+      ]
+    },
+    {
+      "titulo": "Soluciones infinitas",
+      "puntos": [
+        {
+          "texto": "Las razones son periódicas ⇒ hay infinitas soluciones",
+          "explicacion": "Al sumar una vuelta completa, 360°, el ángulo vuelve al mismo lado final y las razones no cambian. Ejemplo: si sen 30° = 1/2, entonces sen 390° = 1/2 y sen 750° = 1/2, y así sucesivamente, lo que da infinitas soluciones de sen x = 1/2."
+        },
+        {
+          "texto": "En una vuelta hay dos soluciones, salvo valores extremos",
+          "explicacion": "En 0° ≤ x < 360°, sen x = a y cos x = a tienen dos soluciones si a está entre -1 y 1 sin tocar los extremos, y tan x = a siempre tiene dos. Ejemplo: sen x = 1/2 da 30° y 150°, mientras que sen x = 1 da solo 90°."
+        }
+      ]
+    },
+    {
+      "titulo": "Existencia de solución",
+      "puntos": [
+        {
+          "texto": "sen x = a tiene solución solo si $-1 \\le a \\le 1$",
+          "explicacion": "El seno de cualquier ángulo es una ordenada dividida entre una distancia mayor o igual que ella, así que no puede salir de ese intervalo. Ejemplo: sen x = 1/3 tiene solución, pero sen x = 2 no tiene ninguna, porque nunca se cumple que sen θ = 2."
+        },
+        {
+          "texto": "cos x = a tiene solución solo si $-1 \\le a \\le 1$",
+          "explicacion": "El coseno de cualquier ángulo es una abscisa dividida entre una distancia mayor o igual que ella, así que no puede salir de ese intervalo. Ejemplo: cos x = -0,8 tiene solución, pero cos x = -3 no tiene ninguna."
+        },
+        {
+          "texto": "tan x = a tiene solución para cualquier número real a",
+          "explicacion": "La tangente toma todos los valores reales, porque crece sin límite al acercarse a 90°. Ejemplo: tan 45° = 1 y tan 89,9° ≈ 573, así que incluso valores grandes como tan x = 500 tienen solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos del seno",
+      "puntos": [
+        {
+          "texto": "sen x = 0 ⇒ x = 180° × n",
+          "explicacion": "El seno vale 0 cuando el lado final está sobre el eje X, que se repite cada media vuelta. En radianes, $x = n\\pi$. Ejemplo en 0° ≤ x < 360°: con n = 0 y n = 1 resultan x = 0° y x = 180°."
+        },
+        {
+          "texto": "sen x = 1 ⇒ x = 90° + 360° × n",
+          "explicacion": "El seno vale 1 solo cuando el lado final está sobre el semieje Y positivo, que se repite cada vuelta completa. En radianes, $x = \\frac{\\pi}{2} + 2n\\pi$. Ejemplo en 0° ≤ x < 360°: solo n = 0 sirve y resulta x = 90°."
+        },
+        {
+          "texto": "sen x = -1 ⇒ x = 270° + 360° × n",
+          "explicacion": "El seno vale -1 solo cuando el lado final está sobre el semieje Y negativo, que se repite cada vuelta completa. En radianes, $x = \\frac{3\\pi}{2} + 2n\\pi$. Ejemplo en 0° ≤ x < 360°: solo n = 0 sirve y resulta x = 270°."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos del coseno",
+      "puntos": [
+        {
+          "texto": "cos x = 0 ⇒ x = 90° + 180° × n",
+          "explicacion": "El coseno vale 0 cuando el lado final está sobre el eje Y, que se repite cada media vuelta. En radianes, $x = \\frac{\\pi}{2} + n\\pi$. Ejemplo en 0° ≤ x < 360°: con n = 0 y n = 1 resultan x = 90° y x = 270°."
+        },
+        {
+          "texto": "cos x = 1 ⇒ x = 360° × n",
+          "explicacion": "El coseno vale 1 solo cuando el lado final está sobre el semieje X positivo, que se repite cada vuelta completa. En radianes, $x = 2n\\pi$. Ejemplo en 0° ≤ x < 360°: solo n = 0 sirve y resulta x = 0°."
+        },
+        {
+          "texto": "cos x = -1 ⇒ x = 180° + 360° × n",
+          "explicacion": "El coseno vale -1 solo cuando el lado final está sobre el semieje X negativo, que se repite cada vuelta completa. En radianes, $x = \\pi + 2n\\pi$. Ejemplo en 0° ≤ x < 360°: solo n = 0 sirve y resulta x = 180°."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso de la tangente",
+      "puntos": [
+        {
+          "texto": "tan x = 0 ⇒ x = 180° × n",
+          "explicacion": "La tangente vale 0 cuando el seno vale 0, es decir, cuando el lado final está sobre el eje X. En radianes, $x = n\\pi$. Ejemplo en 0° ≤ x < 360°: con n = 0 y n = 1 resultan x = 0° y x = 180°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo de referencia",
+      "puntos": [
+        {
+          "texto": "«Ángulo de referencia (α)»: agudo cuya razón es a sin signo",
+          "explicacion": "Se busca el ángulo entre 0° y 90° cuya razón vale el número a sin su signo, usando los valores notables 30°, 45° y 60°. Ejemplo: para sen x = -$\\frac{\\sqrt{2}}{2}$ el valor sin signo es $\\frac{\\sqrt{2}}{2}$, y como sen 45° = $\\frac{\\sqrt{2}}{2}$, el ángulo de referencia es α = 45°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación de seno",
+      "puntos": [
+        {
+          "texto": "sen x = a con a > 0 ⇒ x = α o $x = 180° - \\alpha$",
+          "explicacion": "El seno es positivo en el primer y segundo cuadrantes, y ahí los ángulos con ángulo de referencia α son α y 180° - α. Ejemplo: sen x = 1/2 en 0° ≤ x < 360° tiene α = 30° y soluciones 30° y 180° - 30° = 150°; comprobación: sen 150° = 1/2."
+        },
+        {
+          "texto": "sen x = a con a < 0 ⇒ x = 180° + α o $x = 360° - \\alpha$",
+          "explicacion": "El seno es negativo en el tercer y cuarto cuadrantes, y ahí los ángulos con ángulo de referencia α son 180° + α y 360° - α. Ejemplo: sen x = -1/2 en 0° ≤ x < 360° tiene α = 30° y soluciones 180° + 30° = 210° y 360° - 30° = 330°; comprobación: sen 210° = sen 330° = -1/2."
+        },
+        {
+          "texto": "sen x = sen α ⇒ x = 180° × n + $(-1)^n$ α",
+          "explicacion": "Reúne todas las soluciones en una sola fórmula: con n par se obtiene α más vueltas completas y con n impar se obtiene 180° menos α más vueltas completas. Ejemplo con α = 30°: n = 0 da 30°, n = 1 da 180° - 30° = 150°, n = 2 da 360° + 30° = 390° y n = 3 da 540° - 30° = 510°; los cuatro cumplen sen x = 1/2."
+        },
+        {
+          "texto": "sen x = sen α equivale a dos familias de soluciones",
+          "explicacion": "Otra forma de escribir la solución general es x = 360° × n + α o x = 360° × n + (180° - α), con n entero. Ejemplo con α = 30°: la primera familia da 30°, 390° y -330°, y la segunda da 150°, 510° y -210°; todos cumplen sen x = 1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación de coseno",
+      "puntos": [
+        {
+          "texto": "cos x = a con a > 0 ⇒ x = α o $x = 360° - \\alpha$",
+          "explicacion": "El coseno es positivo en el primer y cuarto cuadrantes, y ahí los ángulos con ángulo de referencia α son α y 360° - α. Ejemplo: cos x = 1/2 en 0° ≤ x < 360° tiene α = 60° y soluciones 60° y 360° - 60° = 300°; comprobación: cos 300° = 1/2."
+        },
+        {
+          "texto": "cos x = a con a < 0 ⇒ $x = 180° - \\alpha$ o x = 180° + α",
+          "explicacion": "El coseno es negativo en el segundo y tercer cuadrantes, y ahí los ángulos con ángulo de referencia α son 180° - α y 180° + α. Ejemplo: cos x = -1/2 en 0° ≤ x < 360° tiene α = 60° y soluciones 180° - 60° = 120° y 180° + 60° = 240°; comprobación: cos 120° = cos 240° = -1/2."
+        },
+        {
+          "texto": "cos x = cos α ⇒ x = 360° × n más o menos α",
+          "explicacion": "Reúne todas las soluciones: α y su opuesto -α tienen el mismo coseno, y cada uno se repite cada vuelta completa. Ejemplo con α = 60°: n = 0 da 60° y -60°; n = 1 da 420° y 300°; los cuatro cumplen cos x = 1/2."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación de tangente",
+      "puntos": [
+        {
+          "texto": "tan x = a, con a positivo ⇒ x = α o x = 180° + α",
+          "explicacion": "La tangente es positiva en el primer y tercer cuadrantes, y ahí los ángulos con ángulo de referencia α son α y 180° + α. Ejemplo: tan x = 1 en 0° ≤ x < 360° tiene α = 45° y soluciones 45° y 180° + 45° = 225°; comprobación: tan 225° = 1."
+        },
+        {
+          "texto": "tan x = a con a < 0 ⇒ $x = 180° - \\alpha$ o $x = 360° - \\alpha$",
+          "explicacion": "La tangente es negativa en el segundo y cuarto cuadrantes, y ahí los ángulos con ángulo de referencia α son 180° - α y 360° - α. Ejemplo: tan x = -1 en 0° ≤ x < 360° tiene α = 45° y soluciones 180° - 45° = 135° y 360° - 45° = 315°; comprobación: tan 135° = tan 315° = -1."
+        },
+        {
+          "texto": "tan x = tan α ⇒ x = 180° × n + α",
+          "explicacion": "Reúne todas las soluciones en una sola familia, porque la tangente se repite cada media vuelta. Ejemplo con α = 45°: n = 0 da 45°, n = 1 da 225° y n = -1 da -135°; los tres cumplen tan x = 1."
+        },
+        {
+          "texto": "La tangente necesita una sola familia de soluciones",
+          "explicacion": "Su periodo es 180°, así que α y 180° + α ya quedan incluidos en x = 180° × n + α. Ejemplo: con α = 60° y n = 0, 1, 2 se obtienen 60°, 240° y 420°, y todos cumplen tan x = $\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo múltiple",
+      "puntos": [
+        {
+          "texto": "Con 2x o 3x se resuelve primero para todo el argumento",
+          "explicacion": "Se trata el argumento completo como una incógnita, se hallan sus valores y luego se divide entre el coeficiente. Ejemplo: sen 2x = 1/2 en 0° ≤ x < 360° da 2x = 30°, 150°, 390° y 510°, y al dividir entre 2 resulta x = 15°, 75°, 195° y 255°."
+        },
+        {
+          "texto": "El intervalo del argumento múltiple se multiplica por el coeficiente",
+          "explicacion": "Si 0° ≤ x < 360° y el argumento es 2x, entonces 0° ≤ 2x < 720°, es decir, dos vueltas, y aparecen el doble de soluciones. Ejemplo: sen x = 1/2 tiene 2 soluciones en una vuelta y sen 2x = 1/2 tiene 4 soluciones en 0° ≤ x < 360°."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo desplazado",
+      "puntos": [
+        {
+          "texto": "Con x + b se resuelve el argumento y luego se resta b",
+          "explicacion": "Se trata x + b como una sola incógnita, cuyo intervalo se desplaza b grados. Ejemplo: sen(x + 10°) = 1/2 en 0° ≤ x < 360° tiene 10° ≤ x + 10° < 370°, con x + 10° = 30° o 150°, y al restar 10° resulta x = 20° y x = 140°; el valor 390° queda fuera de 370°."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones recíprocas",
+      "puntos": [
+        {
+          "texto": "csc x = k ⇒ sen x = 1/k",
+          "explicacion": "Se cambia la cosecante por su inversa para obtener una ecuación de seno, siempre que k no sea 0. Ejemplo: csc x = 2 equivale a sen x = 1/2, con soluciones x = 30° y x = 150° en 0° ≤ x < 360°."
+        },
+        {
+          "texto": "sec x = k ⇒ cos x = 1/k",
+          "explicacion": "Se cambia la secante por su inversa para obtener una ecuación de coseno, siempre que k no sea 0. Ejemplo: sec x = 2 equivale a cos x = 1/2, con soluciones x = 60° y x = 300° en 0° ≤ x < 360°."
+        },
+        {
+          "texto": "cot x = k ⇒ tan x = 1/k",
+          "explicacion": "Se cambia la cotangente por su inversa para obtener una ecuación de tangente, siempre que k no sea 0. Ejemplo: cot x = $\\sqrt{3}$ equivale a tan x = $\\frac{1}{\\sqrt{3}}$, con soluciones x = 30° y x = 210° en 0° ≤ x < 360°."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "sen x = sen α no da solo x = α",
+          "explicacion": "Se olvida la segunda solución de cada vuelta, la de 180° - α. Ejemplo: sen x = sen 30° se cumple con x = 30°, pero también con x = 150°, porque sen 150° = 1/2."
+        },
+        {
+          "texto": "cos x = cos α también se cumple con el opuesto de α",
+          "explicacion": "El coseno es una función par, así que α y -α tienen el mismo coseno. Ejemplo: cos x = 1/2 se cumple con x = 60° y con x = 300°, que equivale a -60° más una vuelta."
+        },
+        {
+          "texto": "El periodo de la tangente es 180°, no 360°",
+          "explicacion": "Usar 360° pierde la mitad de las soluciones. Ejemplo: tan x = 1 con 45° + 360° × n omite 225°, que sí cumple tan 225° = 1; la familia correcta es 45° + 180° × n."
+        },
+        {
+          "texto": "Una razón fuera de su rango no tiene solución",
+          "explicacion": "Se suele responder con un ángulo conocido en vez de concluir que no hay solución. Ejemplo: sen x = 2 no se cumple con x = 90°, porque sen 90° = 1, ni con ningún otro ángulo."
+        },
+        {
+          "texto": "sen x = cos x no es una ecuación elemental",
+          "explicacion": "Tiene dos razones distintas, así que no puede resolverse con las fórmulas de este tema sin transformarla antes. Ejemplo: sen x = 1/2 es elemental, pero sen x = cos x tiene sen y cos a la vez, aunque x = 45° la cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo guiado",
+      "puntos": [
+        {
+          "texto": "Datos: 2 sen x = $\\sqrt{3}$, con 0° ≤ x < 360°",
+          "explicacion": "Se pide hallar todos los ángulos de una vuelta que cumplen la igualdad. Es una ecuación de seno, porque solo aparece sen x multiplicado por un número."
+        },
+        {
+          "texto": "Estrategia: despejar sen x y hallar el ángulo de referencia",
+          "explicacion": "Al dividir ambos lados entre 2 queda sen x = $\\frac{\\sqrt{3}}{2}$, que es positivo. Como sen 60° = $\\frac{\\sqrt{3}}{2}$, el ángulo de referencia es α = 60°."
+        },
+        {
+          "texto": "Operación: x = α o x = 180° menos α",
+          "explicacion": "Como sen x es positivo, las soluciones están en el primer y segundo cuadrantes: x = 60° y x = 180° - 60° = 120°."
+        },
+        {
+          "texto": "Resultado: x = 60° o x = 120°",
+          "explicacion": "Son las dos soluciones en 0° ≤ x < 360°, como corresponde a una ecuación de seno con valor entre 0 y 1."
+        },
+        {
+          "texto": "Verificación: 2 sen 60° y 2 sen 120° valen $\\sqrt{3}$",
+          "explicacion": "Con sen 60° = $\\frac{\\sqrt{3}}{2}$, se obtiene 2 × $\\frac{\\sqrt{3}}{2}$ = $\\sqrt{3}$. Con sen 120° = sen(180° - 60°) = $\\frac{\\sqrt{3}}{2}$, se obtiene también $\\sqrt{3}$. Ambas cumplen la ecuación."
+        }
+      ]
+    }
+  ]
+}

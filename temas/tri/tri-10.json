@@ -1,0 +1,192 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Resolución de triángulos rectángulos",
+  "glosario": {
+    "Triángulo rectángulo": "Triángulo con un ángulo recto",
+    "Ángulo recto": "Ángulo que mide 90°",
+    "Hipotenusa": "Lado opuesto al ángulo recto",
+    "Cateto": "Lado que forma el ángulo recto",
+    "Cateto opuesto": "Cateto frente al ángulo considerado",
+    "Cateto adyacente": "Cateto que forma el ángulo considerado",
+    "Ángulo agudo": "Ángulo mayor que 0° y menor que 90°",
+    "Ángulos complementarios": "Ángulos cuya suma es 90°",
+    "Resolver un triángulo": "Hallar todos sus lados y ángulos",
+    "Altura": "Segmento perpendicular desde un vértice al lado opuesto",
+    "Triángulo isósceles": "Triángulo con dos lados iguales"
+  },
+  "theory": [
+    {
+      "titulo": "Resolver un triángulo",
+      "puntos": [
+        {
+          "texto": "«Resolver» un triángulo rectángulo → hallar sus tres lados y sus tres ángulos",
+          "explicacion": "Un triángulo rectángulo tiene seis elementos: tres lados (la hipotenusa y los dos catetos) y tres ángulos (el ángulo recto de $90^\\circ$ y dos ángulos agudos). Como el ángulo recto ya es dato, resolver consiste en calcular los lados que falten y los dos ángulos agudos. Ejemplo: de un triángulo se sabe que es rectángulo y que sus catetos miden $6$ y $8$; resolverlo significa obtener además la hipotenusa y los dos ángulos agudos."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos mínimos",
+      "puntos": [
+        {
+          "texto": "Bastan dos datos, y al menos uno debe ser un lado",
+          "explicacion": "Además del ángulo recto, hacen falta dos elementos y uno de ellos tiene que ser un lado. Las combinaciones posibles son: los dos catetos, la hipotenusa y un cateto, la hipotenusa y un ángulo agudo, o un cateto y un ángulo agudo. Ejemplo: con hipotenusa $10$ y ángulo agudo $30^\\circ$ ya se pueden calcular todos los demás elementos."
+        },
+        {
+          "texto": "Dos ángulos agudos sin ningún lado no determinan el triángulo",
+          "explicacion": "Los ángulos agudos son complementarios, así que conocer uno ya da el otro y un segundo ángulo no aporta información nueva. Sin ningún lado existen infinitos triángulos rectángulos con esos mismos ángulos, todos de distinto tamaño. Ejemplo: con $A = 30^\\circ$ y $B = 60^\\circ$ la hipotenusa puede ser $2$, $4$ o $10$, y en los tres casos el triángulo es rectángulo con esos ángulos."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación usada",
+      "puntos": [
+        {
+          "texto": "Notación: ángulo recto C = 90°, hipotenusa c, catetos a y b",
+          "explicacion": "Los ángulos se nombran con letras mayúsculas y cada lado con la minúscula del ángulo opuesto: el ángulo agudo $A$ se opone al cateto $a$, el ángulo agudo $B$ se opone al cateto $b$ y el ángulo recto $C$ se opone a la hipotenusa $c$. Con esta convención, para el ángulo $A$ el cateto $a$ es el opuesto y el cateto $b$ es el adyacente. Ejemplo: en un triángulo con catetos $a = 3$ y $b = 4$, la hipotenusa $c$ es el lado que está frente al ángulo recto."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema de Pitágoras",
+      "puntos": [
+        {
+          "texto": "Hipotenusa: «$c^2 = a^2 + b^2$»",
+          "explicacion": "Es la relación entre los tres lados que permite hallar el que falta cuando se conocen los otros dos, siempre que se trate de un triángulo rectángulo. Ejemplo con $a = 6$ y $b = 8$: $c^2 = 6^2 + 8^2 = 36 + 64 = 100$, luego $c = \\sqrt{100} = 10$. La hipotenusa resulta mayor que cada cateto, como corresponde."
+        },
+        {
+          "texto": "Cateto desconocido: «$b = \\sqrt{c^2 - a^2}$»",
+          "explicacion": "Se obtiene despejando $b^2 = c^2 - a^2$ en la relación de Pitágoras, y sirve cuando se conocen la hipotenusa y un cateto. Ejemplo con $c = 13$ y $a = 5$: $b = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12$. El cateto resulta menor que la hipotenusa, como debe ser."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos agudos complementarios",
+      "puntos": [
+        {
+          "texto": "Ángulos agudos: A + B = 90°",
+          "explicacion": "Los tres ángulos de un triángulo suman $180^\\circ$ y el ángulo recto aporta $90^\\circ$, de modo que los dos agudos suman los $90^\\circ$ restantes; por eso uno determina al otro con $B = 90^\\circ - A$. Ejemplo con $A = 40^\\circ$: $B = 90^\\circ - 40^\\circ = 50^\\circ$. Ambos son agudos y suman $90^\\circ$, así que la condición se cumple."
+        }
+      ]
+    },
+    {
+      "titulo": "Elegir la razón",
+      "puntos": [
+        {
+          "texto": "Se elige la razón que une el dato conocido con la incógnita",
+          "explicacion": "Tomando el ángulo agudo $A$ como referencia: si intervienen el cateto opuesto y la hipotenusa se usa el seno; si intervienen el cateto adyacente y la hipotenusa, el coseno; si intervienen el cateto opuesto y el cateto adyacente, la tangente. Ejemplo: se conocen $c = 12$ y $A = 30^\\circ$ y se busca $a$; como $a$ es el cateto opuesto y $c$ la hipotenusa, corresponde el seno."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje con seno",
+      "puntos": [
+        {
+          "texto": "Cateto opuesto con seno: «$a = c \\sin A$»",
+          "explicacion": "Es el despeje del seno de $A$, que relaciona el cateto opuesto con la hipotenusa, y se usa cuando se conocen la hipotenusa y el ángulo $A$. Ejemplo con $c = 12$ y $A = 30^\\circ$: $a = 12 \\sin 30^\\circ = 12 \\times \\frac{1}{2} = 6$. El cateto resulta menor que la hipotenusa, como debe ser."
+        },
+        {
+          "texto": "Hipotenusa con seno: «$c = \\frac{a}{\\sin A}$»",
+          "explicacion": "Es el despeje de la hipotenusa cuando se conocen el cateto opuesto a $A$ y el ángulo $A$. Ejemplo con $a = 5$ y $A = 30^\\circ$: $c = \\frac{5}{\\sin 30^\\circ} = \\frac{5}{1/2} = 10$. La hipotenusa resulta mayor que el cateto, como debe ser."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje con coseno",
+      "puntos": [
+        {
+          "texto": "Cateto adyacente con coseno: «$b = c \\cos A$»",
+          "explicacion": "Es el despeje del coseno de $A$, que relaciona el cateto adyacente con la hipotenusa, y se usa cuando se conocen la hipotenusa y el ángulo $A$. Ejemplo con $c = 8$ y $A = 60^\\circ$: $b = 8 \\cos 60^\\circ = 8 \\times \\frac{1}{2} = 4$."
+        },
+        {
+          "texto": "Hipotenusa con coseno: «$c = \\frac{b}{\\cos A}$»",
+          "explicacion": "Es el despeje de la hipotenusa cuando se conocen el cateto adyacente a $A$ y el ángulo $A$. Ejemplo con $b = 6$ y $A = 30^\\circ$: $c = \\frac{6}{\\cos 30^\\circ} = \\frac{6}{\\sqrt{3}/2} = \\frac{12}{\\sqrt{3}} = 4\\sqrt{3}$. La hipotenusa resulta mayor que el cateto, como debe ser."
+        }
+      ]
+    },
+    {
+      "titulo": "Despeje con tangente",
+      "puntos": [
+        {
+          "texto": "Cateto opuesto con tangente: «$a = b \\tan A$»",
+          "explicacion": "Es el despeje de la tangente de $A$, que relaciona el cateto opuesto con el adyacente, y se usa cuando se conocen el cateto adyacente y el ángulo $A$. Ejemplo con $b = 5$ y $A = 45^\\circ$: $a = 5 \\tan 45^\\circ = 5 \\times 1 = 5$."
+        },
+        {
+          "texto": "Cateto adyacente con tangente: «$b = \\frac{a}{\\tan A}$»",
+          "explicacion": "Es el despeje del cateto adyacente cuando se conocen el cateto opuesto a $A$ y el ángulo $A$. Ejemplo con $a = 6$ y $A = 60^\\circ$: $b = \\frac{6}{\\tan 60^\\circ} = \\frac{6}{\\sqrt{3}} = 2\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos catetos conocidos",
+      "puntos": [
+        {
+          "texto": "Caso de dos catetos: hipotenusa por Pitágoras, ángulo por tangente",
+          "explicacion": "Estrategia: la hipotenusa sale de $c = \\sqrt{a^2 + b^2}$, un ángulo agudo sale de $\\tan A = \\frac{a}{b}$ y el otro ángulo es $B = 90^\\circ - A$. Ejemplo con $a = \\sqrt{3}$ y $b = 1$: $c = \\sqrt{3 + 1} = 2$; $\\tan A = \\frac{\\sqrt{3}}{1} = \\sqrt{3}$, y el ángulo cuya tangente vale $\\sqrt{3}$ es $A = 60^\\circ$; entonces $B = 90^\\circ - 60^\\circ = 30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hipotenusa y cateto",
+      "puntos": [
+        {
+          "texto": "Caso de hipotenusa y cateto: cateto faltante por Pitágoras, ángulo por seno",
+          "explicacion": "Estrategia: el cateto faltante sale de $b = \\sqrt{c^2 - a^2}$, el ángulo $A$ opuesto al cateto conocido sale de $\\sin A = \\frac{a}{c}$ y el otro ángulo es $B = 90^\\circ - A$. Ejemplo con $c = 2$ y $a = 1$: $b = \\sqrt{4 - 1} = \\sqrt{3}$; $\\sin A = \\frac{1}{2}$, y el ángulo cuyo seno vale $\\frac{1}{2}$ es $A = 30^\\circ$; luego $B = 60^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hipotenusa y ángulo",
+      "puntos": [
+        {
+          "texto": "Caso de hipotenusa y ángulo: catetos con seno y coseno",
+          "explicacion": "Estrategia: el ángulo faltante es $B = 90^\\circ - A$, el cateto opuesto a $A$ es $a = c \\sin A$ y el adyacente es $b = c \\cos A$. Ejemplo con $c = 10$ y $A = 30^\\circ$: $B = 60^\\circ$; $a = 10 \\times \\frac{1}{2} = 5$; $b = 10 \\times \\frac{\\sqrt{3}}{2} = 5\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cateto opuesto y ángulo",
+      "puntos": [
+        {
+          "texto": "Caso cateto opuesto y ángulo: hipotenusa con seno, otro cateto con tangente",
+          "explicacion": "Estrategia: se conoce el cateto $a$ opuesto al ángulo $A$; la hipotenusa es $c = \\frac{a}{\\sin A}$, el otro cateto es $b = \\frac{a}{\\tan A}$ y $B = 90^\\circ - A$. Ejemplo con $a = 4$ y $A = 30^\\circ$: $c = \\frac{4}{1/2} = 8$; $b = \\frac{4}{\\sqrt{3}/3} = \\frac{12}{\\sqrt{3}} = 4\\sqrt{3}$; $B = 60^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cateto adyacente y ángulo",
+      "puntos": [
+        {
+          "texto": "Caso cateto adyacente y ángulo: hipotenusa con coseno, otro cateto con tangente",
+          "explicacion": "Estrategia: se conoce el cateto $b$ adyacente al ángulo $A$; la hipotenusa es $c = \\frac{b}{\\cos A}$, el otro cateto es $a = b \\tan A$ y $B = 90^\\circ - A$. Ejemplo con $b = 6$ y $A = 60^\\circ$: $c = \\frac{6}{1/2} = 12$; $a = 6 \\times \\sqrt{3} = 6\\sqrt{3}$; $B = 30^\\circ$."
+        }
+      ]
+    },
+    {
+      "titulo": "Comprobación del resultado",
+      "puntos": [
+        {
+          "texto": "Se comprueba con $a^2 + b^2 = c^2$ y A + B = 90°",
+          "explicacion": "Después de resolver conviene verificar dos condiciones: que los catetos cumplan la relación de Pitágoras con la hipotenusa y que los ángulos agudos sumen $90^\\circ$. Ejemplo con $a = 4$, $b = 4\\sqrt{3}$, $c = 8$, $A = 30^\\circ$ y $B = 60^\\circ$: $a^2 + b^2 = 16 + 48 = 64 = c^2$ y $30^\\circ + 60^\\circ = 90^\\circ$, de modo que los resultados son coherentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura en isósceles",
+      "puntos": [
+        {
+          "texto": "La altura de un triángulo isósceles forma dos triángulos rectángulos iguales",
+          "explicacion": "En un triángulo isósceles la altura sobre la base cae en el punto medio de la base, de modo que lo divide en dos triángulos rectángulos iguales, y cada uno tiene como hipotenusa uno de los lados iguales. Así puede resolverse con las relaciones de este tema. Ejemplo con lados iguales de $10$ y ángulo en la base de $30^\\circ$: la altura es $10 \\sin 30^\\circ = 5$, la mitad de la base es $10 \\cos 30^\\circ = 5\\sqrt{3}$ y la base completa mide $10\\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con otros temas",
+      "puntos": [
+        {
+          "texto": "Los triángulos oblicuángulos y los ángulos de elevación tienen tema propio",
+          "explicacion": "Resolver triángulos que no son rectángulos requiere leyes propias o trazar una altura, y los problemas con ángulos de elevación y de depresión se plantean aparte; al final, todos recurren a las relaciones de este tema."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "curso": "Aritmética",
+  "tema": "Serie de razones iguales y continuas",
+  "glosario": {
+    "serie de razones iguales": "Varias razones geométricas con el mismo valor.",
+    "serie de razones continuas": "Razones iguales encadenadas por consecuente y antecedente.",
+    "razón geométrica": "Cociente entre dos cantidades.",
+    "constante de proporcionalidad": "Valor común de todas las razones.",
+    "antecedente": "Primer término de una razón.",
+    "consecuente": "Segundo término de una razón.",
+    "media proporcional": "Término medio de una proporción continua.",
+    "progresión geométrica": "Sucesión con cociente constante entre consecutivos.",
+    "sumatoria": "Símbolo que indica la suma de varios términos.",
+    "productoria": "Símbolo que indica el producto de varios términos."
+  },
+  "theory": [
+    {
+      "titulo": "Serie de razones iguales",
+      "puntos": [
+        {
+          "texto": "«Serie de razones iguales» = varias razones geométricas de igual valor",
+          "explicacion": "Una serie de razones iguales es una cadena de igualdades entre razones geométricas, escrita como $\\frac{a_1}{b_1}$ igual a $\\frac{a_2}{b_2}$ igual a $\\ldots$ igual a $\\frac{a_n}{b_n}$. Todas las razones, que se definen en el tema 45, tienen el mismo valor. Es una generalización de la proporción, que iguala solo dos razones y se estudia en el tema 47, y sirve para resolver problemas en los que varias cantidades guardan una misma relación con otras."
+        },
+        {
+          "texto": "«Constante de proporcionalidad» $k$ = valor común de las razones",
+          "explicacion": "El valor común de todas las razones de la serie se denomina constante de proporcionalidad y se representa con $k$. Gracias a ella, cada antecedente se expresa como el producto de $k$ por su consecuente, es decir, $a_i$ es igual a $k$ por $b_i$. Esta forma es la herramienta central para resolver problemas, pues reduce todas las incógnitas a una sola, el valor de $k$."
+        },
+        {
+          "texto": "Antecedentes $a_i$ ⊃ numeradores; consecuentes $b_i$ ⊃ denominadores",
+          "explicacion": "En la serie, los términos $a_1, a_2, \\ldots, a_n$ son los antecedentes, y los términos $b_1, b_2, \\ldots, b_n$ son los consecuentes. Cada antecedente está unido con su consecuente por una razón, y las propiedades de la serie se enuncian operando con todos los antecedentes y todos los consecuentes a la vez."
+        },
+        {
+          "texto": "Consecuentes ✓ distintos de cero",
+          "explicacion": "Ninguna razón geométrica puede tener consecuente cero, porque la división entre cero no está definida. Esta condición debe cumplirse para cada razón de la serie, y a ella se añaden condiciones sobre las sumas de los consecuentes en las propiedades que las usan. En los problemas escolares los términos son positivos, lo que garantiza todas las condiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la serie",
+      "puntos": [
+        {
+          "texto": "Suma de antecedentes entre suma de consecuentes = $k$",
+          "explicacion": "El cociente de la suma de todos los antecedentes entre la suma de todos los consecuentes es igual a la constante de proporcionalidad. Con símbolos, $\\frac{\\sum a_i}{\\sum b_i}$ vale $k$, donde el símbolo $\\sum$ es la sumatoria, que indica sumar todos los términos. Se demuestra porque cada antecedente es $k$ por su consecuente, y entonces la suma de antecedentes es $k$ por la suma de consecuentes. Requiere que la suma de consecuentes sea distinta de cero."
+        },
+        {
+          "texto": "Combinaciones con coeficientes cualesquiera ⇒ valor $k$",
+          "explicacion": "La propiedad anterior se generaliza: si se multiplican los antecedentes y los consecuentes por coeficientes cualesquiera $p_i$, usando los mismos coeficientes en cada pareja, el cociente de las combinaciones sigue valiendo $k$, es decir, $\\frac{\\sum p_i a_i}{\\sum p_i b_i}$ vale $k$. Los coeficientes pueden ser negativos, lo que incluye las restas de términos. La única exigencia es que el denominador no sea cero."
+        },
+        {
+          "texto": "Producto de antecedentes entre producto de consecuentes = $k^n$",
+          "explicacion": "Con $n$ razones, el cociente del producto de los antecedentes entre el producto de los consecuentes es la potencia $n$ de la constante, es decir, $\\frac{\\prod a_i}{\\prod b_i}$ vale $k^n$. El símbolo $\\prod$ es la productoria e indica multiplicar todos los términos. La propiedad se deduce multiplicando miembro a miembro las $n$ igualdades de la forma $a_i$ igual a $k$ por $b_i$."
+        },
+        {
+          "texto": "Suma de potencias de antecedentes entre consecuentes = $k^m$",
+          "explicacion": "Si cada término se eleva al mismo exponente natural $m$, la razón de la suma de las potencias de los antecedentes a la suma de las potencias de los consecuentes vale $k^m$. Se deduce porque $a_i^m$ es $k^m$ por $b_i^m$ y se aplica el mismo argumento de la suma. Esta propiedad es útil cuando el dato del problema es una suma de cuadrados o de cubos."
+        },
+        {
+          "texto": "Raíz de antecedentes entre raíz de consecuentes ⇒ raíz de $k$",
+          "explicacion": "Si los términos son positivos, al extraer la raíz de orden $m$ a cada antecedente y a cada consecuente, las razones resultantes siguen siendo iguales y valen la raíz de orden $m$ de $k$. La propiedad se obtiene al aplicar la raíz a ambos miembros de $a_i$ igual a $k$ por $b_i$. Se restringe a términos positivos para evitar ambigüedades con raíces de índice par."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos con propiedades",
+      "puntos": [
+        {
+          "texto": "$\\frac{a}{3}$ = $\\frac{b}{5}$ = $\\frac{c}{7}$ con suma 45 → 9, 15 y 21",
+          "explicacion": "Por la propiedad de la suma, la suma de antecedentes $a$ sumado con $b$ sumado con $c$ vale cuarenta y cinco, y la suma de consecuentes es tres sumado con cinco sumado con siete, o sea quince. La constante $k$ vale cuarenta y cinco entre quince, es decir, tres. Entonces $a$ vale tres por tres, nueve; $b$ vale tres por cinco, quince; y $c$ vale tres por siete, veintiuno. Se comprueba que 9 sumado con 15 sumado con 21 da 45."
+        },
+        {
+          "texto": "$\\frac{a}{2}$ = $\\frac{b}{3}$ = $\\frac{c}{4}$ con producto 192 → 4, 6 y 8",
+          "explicacion": "Por la propiedad del producto, $abc$ entre el producto de los consecuentes, que es dos por tres por cuatro, o sea veinticuatro, vale $k^3$. Como $abc$ vale ciento noventa y dos, $k^3$ vale ocho y $k$ vale dos. Los términos son $a$ igual a dos por dos, cuatro; $b$ igual a dos por tres, seis; y $c$ igual a dos por cuatro, ocho. Se comprueba que cuatro por seis por ocho es ciento noventa y dos."
+        },
+        {
+          "texto": "$\\frac{a}{2}$ = $\\frac{b}{5}$ = $\\frac{c}{9}$ con $c-a$ = 35 → 10, 25 y 45",
+          "explicacion": "Usando coeficientes uno para $c$ y menos uno para $a$, la diferencia $c$ menos $a$ dividida entre nueve menos dos, es decir, siete, vale $k$. Como $c-a$ vale treinta y cinco, $k$ vale cinco. Por tanto, $a$ vale diez, $b$ vale veinticinco y $c$ vale cuarenta y cinco, y se verifica que cuarenta y cinco menos diez es treinta y cinco."
+        },
+        {
+          "texto": "$\\frac{a}{3}$ = $\\frac{b}{4}$ con suma de cuadrados 100 → 6 y 8",
+          "explicacion": "Por la propiedad de las potencias con exponente dos, la suma de los cuadrados de los antecedentes dividida entre la suma de los cuadrados de los consecuentes vale $k^2$. Esta última suma es nueve sumado con dieciséis, o sea veinticinco. Entonces $k^2$ vale cien entre veinticinco, es decir, cuatro, y $k$ vale dos tomando el valor positivo. Los términos son seis y ocho, y se verifica que treinta y seis más sesenta y cuatro es cien."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones y excepciones",
+      "puntos": [
+        {
+          "texto": "Suma de consecuentes nula ⇒ propiedad de la suma no aplicable",
+          "explicacion": "Si la suma de los consecuentes es cero, la expresión del cociente de sumas carece de sentido y la propiedad no puede usarse. Por ejemplo, $\\frac{2}{3}$ y $\\frac{-2}{-3}$ son iguales, pero la suma de los antecedentes es cero y la de los consecuentes también, de modo que el cociente de sumas es una forma indeterminada. En esos casos hay que recurrir a la constante de proporcionalidad directamente."
+        },
+        {
+          "texto": "Constante negativa ⇒ antecedente y consecuente de signos opuestos",
+          "explicacion": "La constante de proporcionalidad puede ser negativa cuando antecedente y consecuente tienen signos contrarios. Las propiedades siguen siendo válidas, aunque algunas, como la de las raíces, exigen términos positivos. En los problemas escolares lo habitual es trabajar con cantidades positivas."
+        }
+      ]
+    },
+    {
+      "titulo": "Serie de razones continuas",
+      "puntos": [
+        {
+          "texto": "«Serie de razones continuas»: consecuente de una = antecedente de la siguiente",
+          "explicacion": "Es una serie de razones iguales en la que el consecuente de cada razón es el antecedente de la siguiente, como en $\\frac{a}{b}$ igual a $\\frac{b}{c}$ igual a $\\frac{c}{d}$ igual a $k$. Los términos forman una cadena $a, b, c, d$ en la que cada uno se compara con el siguiente. Tiene tantos términos como razones más uno, y todas las razones valen lo mismo."
+        },
+        {
+          "texto": "Términos previos al último → $dk$, $dk^2$, $dk^3$",
+          "explicacion": "Como $\\frac{c}{d}$ vale $k$, el término $c$ es $dk$; como $\\frac{b}{c}$ vale $k$, el término $b$ es $ck$, es decir, $dk^2$; y como $\\frac{a}{b}$ vale $k$, el término $a$ es $bk$, es decir, $dk^3$. Así, todos los términos quedan expresados con el último término y la constante. En una serie de $n$ razones, el término $j$ lugares antes del último es el último multiplicado por $k^j$."
+        },
+        {
+          "texto": "Primer término entre último = $k^n$ con $n$ razones",
+          "explicacion": "Al multiplicar las $n$ razones iguales de la serie continua, los términos intermedios se cancelan y queda $\\frac{a}{d}$ igual a $k^3$ para tres razones. En general, el cociente del primer término entre el último es la potencia de $k$ con exponente igual a la cantidad de razones, no a la de términos. Es el resultado más útil para hallar la constante cuando se conocen los extremos."
+        },
+        {
+          "texto": "Término intermedio = «media proporcional» de sus vecinos",
+          "explicacion": "En una serie continua, cada término intermedio es media proporcional entre el anterior y el siguiente: de $\\frac{a}{b}$ igual a $\\frac{b}{c}$ se deduce que el cuadrado de $b$ es el producto de $a$ por $c$. Para términos positivos, $b$ es la raíz cuadrada de $ac$, que es la media geométrica estudiada en el tema 67. La proporción continua de tres términos se desarrolla en el tema 47."
+        },
+        {
+          "texto": "Términos de la serie continua ∈ progresión geométrica",
+          "explicacion": "Los términos $a, b, c, d$ forman una progresión geométrica, pues cada uno resulta de dividir el anterior entre $k$, y la razón de la progresión es $\\frac{1}{k}$. Es la misma estructura que se estudia en el tema 61, Progresiones aritméticas y geométricas. De este modo, la serie continua es una forma de describir una progresión geométrica con razones iguales."
+        },
+        {
+          "texto": "$\\frac{54}{36}$ = $\\frac{36}{24}$ = $\\frac{24}{16}$ → $k$ = $\\frac{3}{2}$",
+          "explicacion": "Cada razón se simplifica a tres medios: cincuenta y cuatro entre treinta y seis, treinta y seis entre veinticuatro y veinticuatro entre dieciséis valen todas uno coma cinco. El primer término entre el último es cincuenta y cuatro entre dieciséis, o sea veintisiete octavos, que coincide con el cubo de tres medios. Además, el cuadrado de treinta y seis, mil doscientos noventa y seis, es igual a cincuenta y cuatro por veinticuatro."
+        },
+        {
+          "texto": "Extremos 48 y 6 con tres razones → 48, 24, 12, 6",
+          "explicacion": "Si la serie continua tiene tres razones iguales y extremos cuarenta y ocho y seis, el primer término entre el último vale ocho, que es $k^3$. Entonces $k$ vale dos, porque dos al cubo es ocho. Los términos intermedios son el último multiplicado por $k$ y por $k^2$, es decir, doce y veinticuatro. Los cuatro términos son cuarenta y ocho, veinticuatro, doce y seis."
+        },
+        {
+          "texto": "Serie continua + propiedad de la suma ⇒ valor $k$",
+          "explicacion": "Como la serie continua es un caso particular de serie de razones iguales, cumple todas sus propiedades. En $\\frac{54}{36}$ igual a $\\frac{36}{24}$ igual a $\\frac{24}{16}$, la suma de los antecedentes es ciento catorce y la suma de los consecuentes es setenta y seis, y su cociente es tres medios, igual a la constante. Esta verificación sirve para comprobar que los datos están bien planteados."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Aplicar la suma sin verificar que los consecuentes no suman cero",
+          "explicacion": "La propiedad de la suma exige que la suma de los consecuentes sea distinta de cero. Aplicarla sin comprobarlo puede llevar a una división entre cero o a conclusiones falsas, sobre todo si hay términos negativos. Conviene verificar la condición antes de usarla."
+        },
+        {
+          "texto": "Usar coeficientes distintos en antecedentes y consecuentes",
+          "explicacion": "En la propiedad con coeficientes, el mismo coeficiente debe multiplicar al antecedente y a su consecuente. Si se emplean coeficientes distintos para cada uno, el cociente no vale $k$. Un error típico es restar un antecedente sin restar el consecuente correspondiente."
+        },
+        {
+          "texto": "Elevar $k$ al número de términos en vez de razones",
+          "explicacion": "En una serie continua, el cociente del primero entre el último es $k$ elevado a la cantidad de razones. Como los términos son una unidad más que las razones, usar el número de términos como exponente da un resultado equivocado. Por ejemplo, con cuatro términos y tres razones el exponente es tres."
+        },
+        {
+          "texto": "Confundir serie de razones iguales con razón o proporción",
+          "explicacion": "Una razón compara dos cantidades, una proporción iguala dos razones y una serie de razones iguales iguala tres o más. Cada una tiene propiedades propias y exige un tratamiento distinto: en una razón solo interesa su valor, en una proporción interesa el producto de los extremos y de los medios, y en una serie de razones iguales interesa la constante común y las combinaciones de sus términos. Las propiedades de las proporciones se estudian en el tema 48."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia",
+      "puntos": [
+        {
+          "texto": "Euclides enunció la suma de antecedentes y consecuentes en los Elementos",
+          "explicacion": "Euclides de Alejandría, matemático griego del siglo III antes de nuestra era, enunció en la proposición 12 del libro VII de los Elementos que, si varios números están en proporción, uno de los antecedentes es a su consecuente como la suma de todos los antecedentes es a la suma de todos los consecuentes. Es el antecedente histórico de la propiedad fundamental de las series de razones iguales."
+        }
+      ]
+    }
+  ]
+}

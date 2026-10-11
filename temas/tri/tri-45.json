@@ -1,0 +1,191 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Círculo trigonométrico",
+  "glosario": {
+    "círculo trigonométrico": "Circunferencia de radio uno centrada en el origen.",
+    "circunferencia": "Puntos a igual distancia de un centro.",
+    "radio": "Distancia del centro a la circunferencia.",
+    "origen": "Punto de coordenadas cero y cero.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "origen de arcos": "Punto donde comienza la medición de arcos.",
+    "extremo": "Punto donde termina el arco.",
+    "semieje": "Mitad de un eje, desde el origen.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "cuadrante": "Cada una de las cuatro regiones del plano.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "ángulo central": "Ángulo con vértice en el centro.",
+    "radio vector": "Distancia del origen a un punto.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "eje de cosenos": "Eje horizontal del círculo trigonométrico.",
+    "eje de senos": "Eje vertical del círculo trigonométrico.",
+    "sentido antihorario": "Giro contrario al de las manecillas.",
+    "sentido horario": "Giro en la dirección de las manecillas."
+  },
+  "theory": [
+    {
+      "titulo": "Círculo trigonométrico",
+      "puntos": [
+        {
+          "texto": "«Círculo trigonométrico»: circunferencia de radio 1 con centro en el origen",
+          "explicacion": "Se usa como escenario fijo para ubicar arcos y leer razones trigonométricas directamente, porque con radio 1 las coordenadas de un punto coinciden con esas razones. Ejemplo: un reloj de pared dibujado con radio de una unidad sirve de modelo, tomando como referencia el punto de las 3."
+        },
+        {
+          "texto": "Circunferencia trigonométrica: otro nombre del círculo trigonométrico",
+          "explicacion": "Ambos nombres se usan indistintamente y se refieren a la circunferencia de radio 1 centrada en el origen, aunque en rigor el círculo incluye su interior. Ejemplo: al decir «punto sobre la circunferencia trigonométrica» se habla de un punto a distancia 1 del origen."
+        },
+        {
+          "texto": "Ecuación: $x^2 + y^2 = 1$",
+          "explicacion": "Todo punto de la circunferencia está a distancia 1 del origen, y esa distancia es $\\sqrt{x^2 + y^2}$. Ejemplo: el punto $\\left(\\frac{3}{5}, \\frac{4}{5}\\right)$ cumple $\\frac{9}{25} + \\frac{16}{25} = \\frac{25}{25} = 1$, así que pertenece a la circunferencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen de arcos",
+      "puntos": [
+        {
+          "texto": "Punto $A(1,0)$: «origen» de arcos",
+          "explicacion": "Es donde empieza a medirse todo arco en la circunferencia trigonométrica y corresponde al semieje positivo de abscisas. Ejemplo: un arco de medida cero tiene su extremo en el mismo punto $A$."
+        }
+      ]
+    },
+    {
+      "titulo": "Puntos sobre los ejes",
+      "puntos": [
+        {
+          "texto": "Punto $B(0,1)$: corte con el semieje positivo de ordenadas",
+          "explicacion": "Está a un cuarto de vuelta antihoraria de $A$, es decir, a $\\frac{\\pi}{2}$ radianes (rad). Ejemplo: $0^2 + 1^2 = 1$, por lo que $B$ pertenece a la circunferencia."
+        },
+        {
+          "texto": "Punto $A'(-1,0)$: corte con el semieje negativo de abscisas",
+          "explicacion": "Está a media vuelta de $A$, a $\\pi$ rad. Ejemplo: $(-1)^2 + 0^2 = 1$ confirma que está sobre la circunferencia."
+        },
+        {
+          "texto": "Punto $B'(0,-1)$: corte con el semieje negativo de ordenadas",
+          "explicacion": "Está a tres cuartos de vuelta antihoraria de $A$, a $\\frac{3\\pi}{2}$ rad. Ejemplo: $0^2 + (-1)^2 = 1$ confirma que está sobre la circunferencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejes del círculo",
+      "puntos": [
+        {
+          "texto": "Eje horizontal = «eje de cosenos»",
+          "explicacion": "Sobre este eje se leen las abscisas de los extremos de los arcos, que son los cosenos. Ejemplo: un extremo con abscisa $0{,}5$ tiene coseno $0{,}5$."
+        },
+        {
+          "texto": "Eje vertical = «eje de senos»",
+          "explicacion": "Sobre este eje se leen las ordenadas de los extremos de los arcos, que son los senos. Ejemplo: un extremo con ordenada $-0{,}5$ tiene seno $-0{,}5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arco y ángulo central",
+      "puntos": [
+        {
+          "texto": "Con radio 1, longitud de arco = medida en radianes (rad): $s = \\theta$",
+          "explicacion": "La longitud de un arco es $s = \\theta\\,r$ y, con $r = 1$, queda $s = \\theta$. Ejemplo: el arco que corresponde a $\\theta = \\frac{\\pi}{3}$ rad mide $\\frac{\\pi}{3} \\approx 1{,}05$ unidades de longitud."
+        },
+        {
+          "texto": "Una vuelta completa mide $2\\pi$ rad",
+          "explicacion": "Es la longitud de la circunferencia de radio 1, pues $2\\pi r = 2\\pi \\cdot 1$. Ejemplo: $2\\pi \\approx 6{,}28$, y por eso un cuarto de vuelta mide $\\frac{6{,}28}{4} \\approx 1{,}57 = \\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coordenadas del extremo",
+      "puntos": [
+        {
+          "texto": "Abscisa del extremo = coseno (cos): $x = \\cos\\theta$",
+          "explicacion": "Como el radio vector es 1, el cociente $\\frac{x}{r}$ es igual a $x$. Ejemplo: para $\\theta = \\frac{\\pi}{6}$, el extremo tiene abscisa $\\frac{\\sqrt{3}}{2}$, y por tanto $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Ordenada del extremo = seno (sen): $y = \\text{sen}\\,\\theta$",
+          "explicacion": "Como el radio vector es 1, el cociente $\\frac{y}{r}$ es igual a $y$. Ejemplo: para $\\theta = \\frac{\\pi}{6}$, el extremo tiene ordenada $\\frac{1}{2}$, y por tanto $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$. Con una rueda de la fortuna de radio 10 m cuyo centro está a 12 m del suelo, un asiento en ese arco está a $12 + 10 \\cdot \\frac{1}{2} = 17$ m de altura."
+        },
+        {
+          "texto": "Extremo del arco $\\theta$: $P(\\cos\\theta, \\text{sen}\\,\\theta)$",
+          "explicacion": "Reúne las dos coordenadas en un solo punto de la circunferencia. Ejemplo: para $\\theta = \\frac{\\pi}{3}$, $P\\left(\\frac{1}{2}, \\frac{\\sqrt{3}}{2}\\right)$, y se comprueba que $\\frac{1}{4} + \\frac{3}{4} = 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos por cuadrante",
+      "puntos": [
+        {
+          "texto": "$0 < \\theta < \\frac{\\pi}{2}$ ⇒ extremo en «cuadrante I»",
+          "explicacion": "El extremo queda arriba del eje horizontal y a la derecha del eje vertical. Ejemplo: $\\theta = 1$ rad, porque $1 < \\frac{\\pi}{2} \\approx 1{,}57$."
+        },
+        {
+          "texto": "$\\frac{\\pi}{2} < \\theta < \\pi$ ⇒ extremo en «cuadrante II»",
+          "explicacion": "El extremo queda arriba del eje horizontal y a la izquierda del eje vertical. Ejemplo: $\\theta = \\frac{2\\pi}{3}$ rad, porque $\\frac{\\pi}{2} < \\frac{2\\pi}{3} < \\pi$."
+        },
+        {
+          "texto": "$\\pi < \\theta < \\frac{3\\pi}{2}$ ⇒ extremo en «cuadrante III»",
+          "explicacion": "El extremo queda debajo del eje horizontal y a la izquierda del eje vertical. Ejemplo: $\\theta = \\frac{5\\pi}{4}$ rad, porque $\\pi < \\frac{5\\pi}{4} < \\frac{3\\pi}{2}$."
+        },
+        {
+          "texto": "$\\frac{3\\pi}{2} < \\theta < 2\\pi$ ⇒ extremo en «cuadrante IV»",
+          "explicacion": "El extremo queda debajo del eje horizontal y a la derecha del eje vertical. Ejemplo: $\\theta = \\frac{5\\pi}{3}$ rad, porque $\\frac{3\\pi}{2} < \\frac{5\\pi}{3} < 2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos cuadrantales",
+      "puntos": [
+        {
+          "texto": "Arco $0$ rad: extremo en $A(1,0)$ con coseno 1 y seno 0",
+          "explicacion": "No hay recorrido, así que el extremo coincide con el origen de arcos. Ejemplo: $\\cos 0 = 1$ y $\\text{sen}\\,0 = 0$."
+        },
+        {
+          "texto": "Arco $\\frac{\\pi}{2}$ rad: extremo en $B(0,1)$ con coseno 0 y seno 1",
+          "explicacion": "Es un cuarto de vuelta antihoraria. Ejemplo: $\\cos\\frac{\\pi}{2} = 0$ y $\\text{sen}\\,\\frac{\\pi}{2} = 1$."
+        },
+        {
+          "texto": "Arco $\\pi$ rad: extremo en $A'(-1,0)$ con coseno $-1$ y seno 0",
+          "explicacion": "Es media vuelta antihoraria. Ejemplo: $\\cos\\pi = -1$ y $\\text{sen}\\,\\pi = 0$."
+        },
+        {
+          "texto": "Arco $\\frac{3\\pi}{2}$ rad: extremo en $B'(0,-1)$ con coseno 0 y seno $-1$",
+          "explicacion": "Es tres cuartos de vuelta antihoraria. Ejemplo: $\\cos\\frac{3\\pi}{2} = 0$ y $\\text{sen}\\,\\frac{3\\pi}{2} = -1$."
+        },
+        {
+          "texto": "Arco $2\\pi$ rad: el extremo regresa a $A(1,0)$",
+          "explicacion": "Una vuelta completa devuelve al punto de partida. Ejemplo: $\\cos 2\\pi = 1$ y $\\text{sen}\\,2\\pi = 0$, iguales a los de $0$ rad."
+        }
+      ]
+    },
+    {
+      "titulo": "Acotación de coordenadas",
+      "puntos": [
+        {
+          "texto": "$-1 \\le \\cos\\theta \\le 1$: la abscisa no sale del círculo",
+          "explicacion": "Como $x^2 + y^2 = 1$, resulta $x^2 \\le 1$ y entonces $-1 \\le x \\le 1$. Ejemplo: no existe un arco con $\\cos\\theta = 1{,}2$, porque $1{,}2 > 1$."
+        },
+        {
+          "texto": "$-1 \\le \\text{sen}\\,\\theta \\le 1$: la ordenada no sale del círculo",
+          "explicacion": "Como $x^2 + y^2 = 1$, resulta $y^2 \\le 1$ y entonces $-1 \\le y \\le 1$. Ejemplo: no existe un arco con $\\text{sen}\\,\\theta = -3$, porque $-3 < -1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación pitagórica",
+      "puntos": [
+        {
+          "texto": "$x^2 + y^2 = 1$ ⇒ $\\text{sen}^2\\theta + \\cos^2\\theta = 1$",
+          "explicacion": "Se sustituye $x = \\cos\\theta$ y $y = \\text{sen}\\,\\theta$ en la ecuación de la circunferencia. Ejemplo: para $\\theta = \\frac{\\pi}{6}$, $\\left(\\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{1}{4} + \\frac{3}{4} = 1$. Esta relación se estudia con las identidades trigonométricas."
+        }
+      ]
+    },
+    {
+      "titulo": "Sentido de los arcos",
+      "puntos": [
+        {
+          "texto": "Sentido antihorario → arco positivo; sentido horario → arco negativo",
+          "explicacion": "Se mantiene la convención de los ángulos. Ejemplo: el arco $\\frac{\\pi}{2}$ lleva de $A$ a $B(0,1)$ y el arco $-\\frac{\\pi}{2}$ lleva de $A$ a $B'(0,-1)$. El detalle de los arcos con sentido se estudia como arcos dirigidos."
+        }
+      ]
+    }
+  ]
+}

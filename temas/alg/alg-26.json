@@ -1,0 +1,258 @@
+{
+  "curso": "Álgebra",
+  "tema": "Potenciación",
+  "glosario": {
+    "potenciación": "Multiplicación repetida de un mismo factor",
+    "base": "Factor que se repite",
+    "exponente": "Indica cuántas veces se repite la base",
+    "potencia": "Resultado de elevar una base a un exponente",
+    "factor": "Número que se multiplica",
+    "cuadrado": "Segunda potencia de un número",
+    "cubo": "Tercera potencia de un número",
+    "exponente natural": "Exponente entero positivo",
+    "exponente cero": "Exponente igual a cero",
+    "exponente negativo": "Exponente menor que cero",
+    "exponente fraccionario": "Exponente escrito como fracción",
+    "exponente racional": "Otro nombre de exponente fraccionario",
+    "inverso multiplicativo": "Número que multiplicado por otro da uno",
+    "indeterminación": "Expresión sin valor único definido",
+    "raíz": "Operación inversa de la potenciación",
+    "radicando": "Expresión bajo el signo radical",
+    "índice": "Número que indica el orden de la raíz",
+    "torre de potencias": "Potencia cuyo exponente es otra potencia",
+    "signo": "Marca positiva o negativa de un número",
+    "número par": "Entero divisible entre dos",
+    "número impar": "Entero no divisible entre dos",
+    "factorización prima": "Producto de números primos igual al número",
+    "número primo": "Natural con solo dos divisores",
+    "expresión algebraica": "Letras y números unidos por operaciones finitas",
+    "monomio": "Expresión de un solo término"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de potenciación",
+      "puntos": [
+        {
+          "texto": "«Potenciación» = multiplicación repetida de un factor",
+          "explicacion": "La potenciación es la operación que abrevia el producto de un mismo número consigo mismo varias veces. Se escribe $a^n$ y se lee «a elevado a la n»; significa $a^n=\\underbrace{a\\cdot a\\cdots a}_{n\\ \\text{factores}}$, con $n$ natural. Ejemplo: $2^4=2\\cdot2\\cdot2\\cdot2=16$. Verificación por pasos: $2\\cdot2=4$, $4\\cdot2=8$ y $8\\cdot2=16$. La notación evita escribir factores repetidos y es la base de las leyes que siguen."
+        },
+        {
+          "texto": "«Base» = factor que se repite",
+          "explicacion": "En $a^n$, la base es el número $a$ que se multiplica por sí mismo. En $5^3$ la base es $5$, y la potencia equivale a $5\\cdot5\\cdot5=125$. La base puede ser positiva, negativa, fracción, radical o una expresión algebraica como $x+1$; cuando es una expresión con varios términos o un número negativo, conviene encerrarla entre paréntesis para dejar claro qué se eleva. Verificación: $5\\cdot5=25$ y $25\\cdot5=125$."
+        },
+        {
+          "texto": "«Exponente» = cantidad de factores iguales",
+          "explicacion": "El exponente es el número pequeño $n$ escrito arriba y a la derecha de la base, e indica cuántas veces se toma la base como factor. En $3^4$ el exponente es $4$ y la potencia es $3\\cdot3\\cdot3\\cdot3=81$. El exponente no multiplica a la base: $3^4$ no es $3\\cdot4=12$. Verificación: $3\\cdot3=9$; $9\\cdot3=27$; $27\\cdot3=81$."
+        },
+        {
+          "texto": "«Potencia» = resultado de elevar la base",
+          "explicacion": "La potencia es el valor que se obtiene al efectuar la potenciación, y también el nombre de toda la expresión $a^n$. En $2^5=32$, el número $32$ es la potencia, $2$ la base y $5$ el exponente. Conocer la potencia y la base permite recuperar el exponente, y conocer la potencia y el exponente permite recuperar la base mediante una raíz, que se estudia en el tema de radicación. Verificación: $2^5=2\\cdot2\\cdot2\\cdot2\\cdot2=32$."
+        },
+        {
+          "texto": "«Cuadrado» = exponente 2",
+          "explicacion": "Cuando el exponente es $2$, la potencia se lee «al cuadrado», pues $a^2$ da el área de un cuadrado de lado $a$. Ejemplo: $7^2=7\\cdot7=49$. Verificación con una base negativa: $(-4)^2=(-4)(-4)=16$. Un cuadrado de un número real nunca es negativo, porque el producto de dos factores con el mismo signo es positivo."
+        },
+        {
+          "texto": "«Cubo» = exponente 3",
+          "explicacion": "Cuando el exponente es $3$, la potencia se lee «al cubo», pues $a^3$ da el volumen de un cubo de arista $a$. Ejemplo: $4^3=4\\cdot4\\cdot4=64$. Verificación: $4\\cdot4=16$ y $16\\cdot4=64$. A diferencia del cuadrado, un cubo conserva el signo de la base: $(-4)^3=-64$, porque tres factores negativos dan un producto negativo."
+        },
+        {
+          "texto": "Exponente 1 ⇒ $a^1=a$",
+          "explicacion": "Elevar a la primera potencia no cambia el número, porque solo hay un factor: $a^1=a$. Ejemplo: $9^1=9$ y $(-6)^1=-6$. Esto explica que una letra sin exponente escrito tenga exponente implícito $1$, como $x=x^1$. Verificación: la potenciación con un solo factor no tiene multiplicaciones por efectuar."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de una potencia",
+      "puntos": [
+        {
+          "texto": "Base positiva ⇒ potencia positiva",
+          "explicacion": "Si la base es positiva, cualquier potencia con exponente natural es positiva, porque el producto de números positivos es positivo. Ejemplo: $6^3=216>0$. Verificación: $6\\cdot6=36$ y $36\\cdot6=216$. Este caso no depende de que el exponente sea par o impar."
+        },
+        {
+          "texto": "Base negativa + exponente par ⇒ potencia positiva",
+          "explicacion": "Con base negativa y exponente par, los factores negativos se emparejan y cada pareja da un producto positivo. Ejemplo: $(-3)^4=(-3)(-3)(-3)(-3)=9\\cdot9=81$. Verificación: $(-3)(-3)=9$, y otra pareja da $9$, de modo que $9\\cdot9=81>0$. Por eso $(-5)^2=25$ y $(-2)^6=64$."
+        },
+        {
+          "texto": "Base negativa + exponente impar ⇒ potencia negativa",
+          "explicacion": "Con base negativa y exponente impar, al emparejar los factores negativos queda uno sin pareja, y el resultado conserva el signo negativo. Ejemplo: $(-2)^3=(-2)(-2)(-2)=4\\cdot(-2)=-8$. Verificación: $(-2)(-2)=4$ y $4\\cdot(-2)=-8<0$. Del mismo modo, $(-3)^5=-243$."
+        },
+        {
+          "texto": "$(-a)^n$ ≠ $-a^n$ si el exponente es par",
+          "explicacion": "Los paréntesis deciden qué se eleva. En $(-a)^n$ la base es $-a$ completa; en $-a^n$ solo se eleva $a$ y luego se cambia el signo. Ejemplo con $a=3$, $n=2$: $(-3)^2=9$, mientras que $-3^2=-(3\\cdot3)=-9$. Verificación: $9\\neq-9$. Con exponente impar ambas escrituras coinciden: $(-3)^3=-27$ y $-3^3=-27$."
+        },
+        {
+          "texto": "$(-1)^n$ = $1$ si $n$ es par; $(-1)^n$ = $-1$ si $n$ es impar",
+          "explicacion": "Como $(-1)^2=1$, cada par de factores se cancela y solo importa si queda un factor suelto. Ejemplos: $(-1)^{10}=1$ porque $10$ es par, y $(-1)^7=-1$ porque $7$ es impar. Verificación: $(-1)^7=(-1)^6\\cdot(-1)=1\\cdot(-1)=-1$. Esta regla permite calcular potencias enormes de $-1$ con solo mirar la paridad."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponente cero",
+      "puntos": [
+        {
+          "texto": "$a^0=1$ si $a\\neq0$",
+          "explicacion": "Toda base distinta de cero elevada al exponente cero vale $1$. Ejemplos: $5^0=1$, $(-7)^0=1$ y $\\left(\\frac{2}{3}\\right)^0=1$. Se justifica con la ley del cociente: $\\frac{a^n}{a^n}=1$ por ser un número dividido entre sí mismo, y también $\\frac{a^n}{a^n}=a^{n-n}=a^0$; luego $a^0=1$. Verificación: $\\frac{3^2}{3^2}=\\frac{9}{9}=1$ y $3^{2-2}=3^0=1$."
+        },
+        {
+          "texto": "$0^0$ = indeterminación",
+          "explicacion": "La expresión $0^0$ no tiene un valor único definido. La regla $a^0=1$ pediría que valga $1$, pero la regla $0^n=0$ (con $n>0$) pediría que valga $0$; ambas no pueden cumplirse a la vez. Por eso la deducción de $a^0=1$ exige $a\\neq0$, ya que depende de dividir entre $a^n$, cantidad que sería cero. En los ejercicios se considera que $0^0$ no está definido."
+        },
+        {
+          "texto": "$0^n$ = $0$ si $n>0$",
+          "explicacion": "Si la base es cero y el exponente es un natural positivo, el producto de ceros es cero. Ejemplo: $0^5=0\\cdot0\\cdot0\\cdot0\\cdot0=0$. Verificación: $0\\cdot0=0$ y se mantiene al seguir multiplicando por $0$. Con exponente negativo, $0^{-n}$ no está definido, pues exigiría dividir entre cero."
+        },
+        {
+          "texto": "$1^n$ = $1$",
+          "explicacion": "Elevar $1$ a cualquier exponente da $1$, porque el producto de unos es uno. Ejemplo: $1^{100}=1$. Verificación: $1\\cdot1=1$, y multiplicar por $1$ no cambia el valor. También vale para exponente cero, $1^0=1$, y para negativos, $1^{-3}=\\frac{1}{1^3}=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponente negativo",
+      "puntos": [
+        {
+          "texto": "$a^{-n}=\\frac{1}{a^n}$ si $a\\neq0$",
+          "explicacion": "Un exponente negativo indica el inverso multiplicativo de la potencia positiva. Se deduce de la ley del cociente: $\\frac{a^0}{a^n}=a^{0-n}=a^{-n}$ y como $a^0=1$, queda $\\frac{1}{a^n}$. Ejemplo: $2^{-3}=\\frac{1}{2^3}=\\frac{1}{8}$. Verificación: $2^{-3}\\cdot2^3=\\frac{1}{8}\\cdot8=1=2^0$, tal como pide la ley del producto."
+        },
+        {
+          "texto": "$a^{-n}$ ✗ cambia el signo de la potencia",
+          "explicacion": "El signo del exponente no afecta el signo del resultado: un exponente negativo invierte la base, no la vuelve negativa. Ejemplo: $2^{-2}=\\frac{1}{4}>0$, y $(-2)^{-3}=\\frac{1}{(-2)^3}=\\frac{1}{-8}=-\\frac{1}{8}$, negativo solo porque la base es negativa y el exponente $3$ es impar. Verificación: $(-2)^{-3}\\cdot(-2)^3=-\\frac{1}{8}\\cdot(-8)=1$."
+        },
+        {
+          "texto": "$\\left(\\frac{a}{b}\\right)^{-n}=\\left(\\frac{b}{a}\\right)^n$",
+          "explicacion": "Una fracción elevada a un exponente negativo se invierte y el exponente pasa a positivo ($a\\neq0$, $b\\neq0$). Se deduce de $\\left(\\frac{a}{b}\\right)^{-n}=\\frac{1}{\\left(\\frac{a}{b}\\right)^n}=\\frac{b^n}{a^n}$. Ejemplo: $\\left(\\frac{2}{3}\\right)^{-2}=\\left(\\frac{3}{2}\\right)^2=\\frac{9}{4}$. Verificación: $\\frac{1}{(2/3)^2}=\\frac{1}{4/9}=\\frac{9}{4}$."
+        },
+        {
+          "texto": "$0^{-n}$ ✗ definido",
+          "explicacion": "Con base cero, un exponente negativo no tiene sentido, porque $0^{-n}=\\frac{1}{0^n}=\\frac{1}{0}$ y la división entre cero no está definida. En una expresión como $x^{-2}$ esto obliga a $x\\neq0$. Verificación: con $x=2$, $2^{-2}=\\frac{1}{4}$ es válido; con $x=0$ no se puede calcular."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes de exponentes",
+      "puntos": [
+        {
+          "texto": "Producto de potencias: $a^m\\cdot a^n=a^{m+n}$",
+          "explicacion": "Al multiplicar potencias de la misma base se suman los exponentes. Se deduce contando factores: $a^m$ tiene $m$ factores $a$, $a^n$ tiene $n$ factores y, al juntarlos, hay $m+n$ factores. Ejemplo: $3^2\\cdot3^4=9\\cdot81=729$ y $3^{2+4}=3^6=729$. Verificación: $3^6=3\\cdot3\\cdot3\\cdot3\\cdot3\\cdot3=729$. Solo se aplica con bases iguales."
+        },
+        {
+          "texto": "Cociente de potencias: $\\frac{a^m}{a^n}=a^{m-n}$",
+          "explicacion": "Al dividir potencias de la misma base ($a\\neq0$) se restan los exponentes. Se deduce porque $\\frac{a^m}{a^n}\\cdot a^n=a^m$ por la ley del producto, de modo que el cociente es $a^{m-n}$. Ejemplo: $\\frac{5^6}{5^4}=\\frac{15625}{625}=25$ y $5^{6-4}=5^2=25$. Si $m<n$ el exponente resulta negativo: $\\frac{5^2}{5^4}=5^{-2}=\\frac{1}{25}$."
+        },
+        {
+          "texto": "Potencia de potencia: $(a^m)^n=a^{mn}$",
+          "explicacion": "Al elevar una potencia a otra potencia se multiplican los exponentes. Se deduce porque $(a^m)^n$ repite $n$ veces el bloque de $m$ factores, dando $m\\cdot n$ factores. Ejemplo: $(2^3)^2=8^2=64$ y $2^{3\\cdot2}=2^6=64$. Verificación: $2^6=2\\cdot2\\cdot2\\cdot2\\cdot2\\cdot2=64$."
+        },
+        {
+          "texto": "Potencia de producto: $(ab)^n=a^nb^n$",
+          "explicacion": "Elevar un producto a una potencia equivale a elevar cada factor a esa potencia. Se deduce porque $(ab)^n$ repite $n$ veces el factor $ab$, y al reordenar quedan $n$ factores $a$ y $n$ factores $b$. Ejemplo: $(2\\cdot5)^3=10^3=1000$ y $2^3\\cdot5^3=8\\cdot125=1000$."
+        },
+        {
+          "texto": "Potencia de cociente: $\\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}$",
+          "explicacion": "Elevar un cociente a una potencia equivale a elevar numerador y denominador, siempre que $b\\neq0$. Se deduce de multiplicar $n$ veces la fracción $\\frac{a}{b}$. Ejemplo: $\\left(\\frac{3}{2}\\right)^3=\\frac{27}{8}$ y $\\frac{3^3}{2^3}=\\frac{27}{8}$. Verificación: $\\frac{3}{2}\\cdot\\frac{3}{2}=\\frac{9}{4}$ y $\\frac{9}{4}\\cdot\\frac{3}{2}=\\frac{27}{8}$."
+        },
+        {
+          "texto": "Torre de potencias ⇒ se calcula de arriba hacia abajo",
+          "explicacion": "En $a^{m^n}$ el exponente es $m^n$, y se calcula primero la potencia superior. Ejemplo: $2^{3^2}=2^9=512$. Es distinto de $(2^3)^2=8^2=64$, que usa la ley de potencia de potencia. Verificación: $3^2=9$ y $2^9=512$; mientras que $2^{3\\cdot2}=2^6=64$. Los paréntesis cambian el resultado."
+        },
+        {
+          "texto": "Leyes combinadas con exponentes negativos",
+          "explicacion": "Las leyes permiten simplificar expresiones largas. Sea $\\frac{2^5\\cdot2^{-2}}{2^4}$: numerador $2^{5-2}=2^3$; cociente $2^{3-4}=2^{-1}=\\frac{1}{2}$. Verificación numérica: $32\\cdot\\frac{1}{4}=8$ y $\\frac{8}{16}=\\frac{1}{2}$. Con productos de bases distintas: $(2^3\\cdot3^2)^2=2^6\\cdot3^4=64\\cdot81=5184$, y directamente $72^2=5184$."
+        },
+        {
+          "texto": "Potencia de monomio con exponentes negativos",
+          "explicacion": "Se aplican las leyes a coeficiente y letras. Sea $(2x^3y^{-2})^2$: $2^2=4$; $x^{3\\cdot2}=x^6$; $y^{-2\\cdot2}=y^{-4}=\\frac{1}{y^4}$. Resultado: $\\frac{4x^6}{y^4}$. Verificación con $x=1$, $y=2$: $(2\\cdot1\\cdot\\frac{1}{4})^2=(\\frac{1}{2})^2=\\frac{1}{4}$ y $\\frac{4}{16}=\\frac{1}{4}$."
+        },
+        {
+          "texto": "Misma base ⇒ exponentes iguales",
+          "explicacion": "Si dos potencias de igual base positiva distinta de $1$ son iguales, sus exponentes son iguales: $a^m=a^n\\Rightarrow m=n$ para $a>0$, $a\\neq1$. Se usa para resolver ecuaciones sencillas. Ejemplo: $2^x=32$; como $32=2^5$, se obtiene $x=5$. Verificación: $2^5=32$. La condición $a\\neq1$ es necesaria, pues $1^m=1^n$ no obliga a $m=n$."
+        },
+        {
+          "texto": "Mismo exponente ⇒ bases iguales",
+          "explicacion": "Si dos potencias positivas con el mismo exponente natural son iguales, sus bases son iguales: $a^n=b^n\\Rightarrow a=b$ para $a,b>0$. Ejemplo: $x^3=27$ con $x>0$; como $27=3^3$, se obtiene $x=3$. Verificación: $3^3=27$. Con bases negativas debe cuidarse el signo, pues $(-3)^2=3^2$ pero $-3\\neq3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Exponente fraccionario",
+      "puntos": [
+        {
+          "texto": "$a^{1/n}=\\sqrt[n]{a}$",
+          "explicacion": "Un exponente de la forma $\\frac{1}{n}$ equivale a la raíz $n$-ésima de la base. Se define para que se cumpla la ley de potencia de potencia: $(a^{1/n})^n=a^1=a$, de modo que $a^{1/n}$ es el número que elevado a $n$ da $a$. Ejemplo: $16^{1/4}=\\sqrt[4]{16}=2$. Verificación: $2^4=16$. Si $n$ es par, se exige $a\\geq0$."
+        },
+        {
+          "texto": "$a^{m/n}=\\sqrt[n]{a^m}$",
+          "explicacion": "Un exponente fraccionario $\\frac{m}{n}$ combina potencia y raíz: el numerador es la potencia y el denominador el índice de la raíz. Ejemplo: $8^{2/3}=\\left(\\sqrt[3]{8}\\right)^2=2^2=4$. Verificación por la otra vía: $8^2=64$ y $\\sqrt[3]{64}=4$. Con índice par se exige base no negativa. Su desarrollo completo pertenece al tema de radicación."
+        },
+        {
+          "texto": "$a^{-m/n}=\\frac{1}{a^{m/n}}$",
+          "explicacion": "Un exponente racional negativo invierte la base y el signo del exponente pasa a positivo. Ejemplo: $27^{-2/3}=\\frac{1}{27^{2/3}}=\\frac{1}{(\\sqrt[3]{27})^2}=\\frac{1}{3^2}=\\frac{1}{9}$. Verificación: $27^{2/3}=9$ y $9\\cdot\\frac{1}{9}=1$."
+        },
+        {
+          "texto": "Leyes de exponentes ⊃ exponentes racionales",
+          "explicacion": "Las leyes de producto, cociente y potencia de potencia siguen valiendo con exponentes racionales cuando la base es positiva. Ejemplo: $4^{1/2}\\cdot4^{3/2}=4^{(1+3)/2}=4^2=16$. Verificación: $4^{1/2}=2$, $4^{3/2}=8$ y $2\\cdot8=16$. La condición de base positiva evita raíces de índice par de números negativos."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategias de cálculo",
+      "puntos": [
+        {
+          "texto": "Igualar bases ⇒ aplicar leyes",
+          "explicacion": "Para operar potencias de bases distintas, se escribe cada base como potencia de una misma base. Ejemplo: $4^3\\cdot8^2$; como $4=2^2$ y $8=2^3$, resulta $(2^2)^3\\cdot(2^3)^2=2^6\\cdot2^6=2^{12}=4096$. Verificación: $4^3=64$, $8^2=64$ y $64\\cdot64=4096$."
+        },
+        {
+          "texto": "Factorización prima ⇒ simplificar potencias",
+          "explicacion": "Cuando las bases no son potencias de un mismo número, se descomponen en factores primos y se aplican las leyes a cada primo. Ejemplo: $\\frac{9^2\\cdot27}{81}$; con $9=3^2$, $27=3^3$ y $81=3^4$ se tiene $\\frac{3^4\\cdot3^3}{3^4}=3^3=27$. Verificación directa: $\\frac{81\\cdot27}{81}=27$."
+        },
+        {
+          "texto": "Potencias de 10",
+          "explicacion": "Las potencias de $10$ siguen el patrón de la cantidad de ceros: $10^3=1000$, $10^1=10$ y $10^0=1$. Con exponentes negativos se obtienen decimales: $10^{-2}=\\frac{1}{100}=0.01$. Verificación: $10^{-2}\\cdot10^2=0.01\\cdot100=1=10^0$. Son útiles porque multiplicar por $10^n$ desplaza la coma $n$ lugares."
+        },
+        {
+          "texto": "Potencias de fracciones negativas",
+          "explicacion": "Con una fracción negativa se aplica primero la regla del signo y luego la de la fracción. Ejemplo: $\\left(-\\frac{2}{3}\\right)^3=-\\frac{8}{27}$, porque el exponente impar mantiene el signo y $2^3=8$, $3^3=27$. Con exponente negativo: $\\left(-\\frac{1}{2}\\right)^{-2}=(-2)^2=4$. Verificación: $\\frac{1}{(-1/2)^2}=\\frac{1}{1/4}=4$."
+        },
+        {
+          "texto": "Simplificar con exponentes negativos",
+          "explicacion": "Para dejar solo exponentes positivos, cada factor con exponente negativo cambia de lado de la fracción. Sea $(x^{-2}y^3)^{-1}$: $x^{(-2)(-1)}y^{3(-1)}=x^2y^{-3}=\\frac{x^2}{y^3}$. Verificación con $x=2$, $y=1$: $(2^{-2}\\cdot1)^{-1}=(\\frac{1}{4})^{-1}=4$ y $\\frac{2^2}{1}=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$(a+b)^n$ ≠ $a^n+b^n$",
+          "explicacion": "La potencia no se distribuye sobre una suma. Con $a=1$, $b=2$, $n=2$: $(1+2)^2=9$, pero $1^2+2^2=5$. La distribución sí vale para productos y cocientes, no para sumas ni restas. El desarrollo correcto de $(a+b)^2$ se estudia en productos notables."
+        },
+        {
+          "texto": "$a^m+a^n$ ≠ $a^{m+n}$",
+          "explicacion": "Los exponentes se suman al multiplicar, no al sumar. Con $a=2$, $m=2$, $n=3$: $2^2+2^3=4+8=12$, mientras que $2^{2+3}=2^5=32$. La ley $a^m\\cdot a^n=a^{m+n}$ se aplica solo con producto."
+        },
+        {
+          "texto": "Producto de potencias ✗ multiplicar bases",
+          "explicacion": "Al multiplicar potencias de igual base, la base se conserva y no se multiplica por sí misma. Ejemplo: $2^3\\cdot2^2=2^5=32$, mientras que $4^5=1024$ sería un error. Verificación: $8\\cdot4=32$."
+        },
+        {
+          "texto": "$a^{-n}$ ≠ $-a^n$",
+          "explicacion": "El exponente negativo no cambia el signo, sino que invierte la base. Con $a=2$, $n=3$: $2^{-3}=\\frac{1}{8}$, mientras que $-2^3=-8$. Verificación: $\\frac{1}{8}\\neq-8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Expresiones algebraicas ⊃ potenciación",
+          "explicacion": "La potenciación es una de las seis operaciones que definen una expresión algebraica; con ella se forman monomios como $3x^2$ y se clasifican expresiones según el tipo de exponente (entero no negativo, negativo o fraccionario). Las leyes de este tema son las usadas antes para operar monomios. Ejemplo: $(x^2)^3=x^6$."
+        },
+        {
+          "texto": "Potenciación → temas siguientes",
+          "explicacion": "Los exponentes fraccionarios conectan con la radicación; los exponentes enteros no negativos definen los polinomios y sus grados; los productos notables y el binomio de Newton desarrollan potencias de sumas; y la función exponencial y las ecuaciones exponenciales aprovechan que $a^m=a^n\\Rightarrow m=n$. Con este tema se dispone de todas las leyes que esos temas usan."
+        }
+      ]
+    }
+  ]
+}

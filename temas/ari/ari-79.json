@@ -1,0 +1,154 @@
+{
+  "curso": "Aritmética",
+  "tema": "Permutaciones",
+  "glosario": {
+    "Permutación": "Ordenación de todos los elementos",
+    "Anagrama": "Palabra formada reordenando letras de otra",
+    "Análisis combinatorio": "Técnicas para contar configuraciones",
+    "Principio de multiplicación": "Total de etapas sucesivas es el producto",
+    "Factorial": "Producto de enteros consecutivos desde uno",
+    "Variaciones": "Agrupaciones donde importa el orden",
+    "Combinaciones": "Elecciones donde no importa el orden",
+    "Conteo por complemento": "Total menos los casos no deseados",
+    "Permutación con repetición": "Ordenación con elementos idénticos",
+    "Permutación circular": "Ordenación de elementos en círculo",
+    "Diagrama de árbol": "Esquema de ramas que muestra posibilidades"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Permutación» = ordenación de todos los elementos",
+          "explicacion": "Una permutación de $n$ elementos distintos es cada manera de ordenarlos todos, una a continuación de otra. Dos permutaciones son diferentes cuando los elementos están colocados en distinto orden, pues contienen siempre los mismos elementos. Es una de las técnicas del análisis combinatorio (tema 76)."
+        },
+        {
+          "texto": "Permutación ✓ usa todos ✓ importa el orden",
+          "explicacion": "Los rasgos de una permutación son que intervienen todos los elementos disponibles y que lo único que distingue a una agrupación de otra es el orden. Con las letras A, B y C, las agrupaciones ABC y ACB son permutaciones distintas formadas por los mismos elementos."
+        },
+        {
+          "texto": "Notación: $P_n$, $P(n)$ o $P_n^n$",
+          "explicacion": "El número de permutaciones de $n$ elementos distintos se escribe $P_n$ o $P(n)$, y también $P_n^n$ porque es el caso de variaciones (tema 78) en que se toman los $n$ elementos de $n$ en $n$. El símbolo $P$ procede de la palabra permutación."
+        }
+      ]
+    },
+    {
+      "titulo": "Permutaciones simples",
+      "puntos": [
+        {
+          "texto": "Fórmula: $P_n = n!$",
+          "explicacion": "Por el principio de multiplicación (tema 76), el primer lugar se llena de $n$ maneras, el segundo de $n - 1$, y así hasta el último lugar, que se llena de una sola manera. El producto es $n(n-1)\\cdots 2 \\cdot 1 = n!$, el factorial de $n$ (tema 77)."
+        },
+        {
+          "texto": "Ejemplo: A, B, C ⇒ 6 permutaciones",
+          "explicacion": "Con tres letras distintas hay $3! = 6$ ordenaciones: ABC, ACB, BAC, BCA, CAB y CBA. Se pueden enumerar con un diagrama de árbol, y el resultado coincide con la fórmula. Esta comprobación en un caso pequeño sirve para verificar que la fórmula se ha entendido, ya que cada rama del árbol corresponde a una de las seis ordenaciones."
+        },
+        {
+          "texto": "Ejemplo: 5 personas en fila ⇒ 120",
+          "explicacion": "Cinco personas distintas pueden formar una fila de $5! = 120$ maneras. Cada una de las 5 puede ocupar el primer lugar, quedan 4 para el segundo, y así sucesivamente. Al llegar al último lugar solo queda una persona disponible, por lo que el producto $5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1$ es exactamente el factorial de 5."
+        },
+        {
+          "texto": "Ejemplo: números con las cifras 1 a 5 ⇒ 120",
+          "explicacion": "Con las cifras 1, 2, 3, 4 y 5, usadas todas una vez, se forman $5! = 120$ números de cinco cifras. Si el número debe ser par, la última cifra se elige entre 2 y 4, de 2 maneras, y las otras cuatro se ordenan de $4!$ maneras: $2 \\cdot 24 = 48$."
+        },
+        {
+          "texto": "Ejemplo: anagramas de LIMA ⇒ 24",
+          "explicacion": "Un anagrama es una palabra, con o sin sentido, formada al reordenar las letras de otra. Como las 4 letras de LIMA son distintas, hay $4! = 24$ anagramas, incluida la palabra original. Si se piden solo los anagramas distintos de la palabra original, se restaría 1 y resultarían 23; sin embargo, la pregunta usual cuenta todas las ordenaciones posibles, incluida la original."
+        },
+        {
+          "texto": "$0! = 1$ y $1! = 1$ ⇒ casos mínimos",
+          "explicacion": "Con un solo elemento existe una única ordenación, y con ninguno también una, la vacía. Esto es coherente con los valores $1! = 1$ y $0! = 1$ del factorial. Estos valores permiten que la fórmula general siga siendo válida en los casos extremos, y evitan tratar por separado el conjunto vacío y el conjunto de un único elemento cuando se aplican las recurrencias."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones",
+      "puntos": [
+        {
+          "texto": "Elementos que van juntos ⇒ tratarlos como un bloque",
+          "explicacion": "Si $k$ elementos deben estar siempre juntos, se considera el bloque como un solo elemento y se ordenan los $n - k + 1$ elementos resultantes, y luego se ordenan los elementos dentro del bloque. El total es $(n-k+1)!\\,k!$."
+        },
+        {
+          "texto": "Ejemplo: 5 personas con 2 siempre juntas ⇒ 48",
+          "explicacion": "El bloque de las 2 personas se cuenta como un elemento, de modo que se ordenan 4 elementos de $4! = 24$ maneras, y las 2 personas se ordenan entre sí de $2! = 2$ maneras. El total es $24 \\cdot 2 = 48$."
+        },
+        {
+          "texto": "Elementos que no van juntos ⇒ total menos juntos",
+          "explicacion": "Para contar las ordenaciones en que dos elementos no quedan juntos se resta del total el número de ordenaciones en que sí están juntos. Con 5 personas, $5! - 48 = 120 - 48 = 72$. Este es un caso del conteo por complemento (tema 76)."
+        },
+        {
+          "texto": "Un elemento fijo ⇒ ordenar los demás",
+          "explicacion": "Si un elemento debe ocupar un lugar determinado, solo se ordenan los $n - 1$ restantes en los otros lugares, y el total es $(n-1)!$. Con 5 personas y una de ellas obligada a ir primera quedan $4! = 24$ filas."
+        }
+      ]
+    },
+    {
+      "titulo": "Permutaciones con repetición",
+      "puntos": [
+        {
+          "texto": "«Permutación con repetición» = ordenar elementos no todos distintos",
+          "explicacion": "Cuando entre los $n$ elementos hay grupos de elementos idénticos, con $n_1$ del primer tipo, $n_2$ del segundo y así hasta $n_k$ del último, con $n_1 + n_2 + \\dots + n_k = n$, las ordenaciones que solo intercambian elementos idénticos no son distintas, y no deben contarse como diferentes."
+        },
+        {
+          "texto": "Fórmula: $\\frac{n!}{n_1!\\,n_2!\\cdots n_k!}$",
+          "explicacion": "El número de ordenaciones distintas es $$\\frac{n!}{n_1!\\,n_2!\\cdots n_k!}$$ Se divide el total $n!$ entre las $n_i!$ maneras de ordenar entre sí los elementos idénticos de cada tipo, que no producen ordenaciones nuevas. Por ejemplo, con las dos letras iguales de una palabra, intercambiarlas deja la palabra sin cambios, de modo que cada ordenación real se cuenta tantas veces como ordenaciones internas existan entre las letras idénticas."
+        },
+        {
+          "texto": "Ejemplo: anagramas de PAPA ⇒ 6",
+          "explicacion": "La palabra PAPA tiene 4 letras, con 2 repetidas de P y 2 repetidas de A. Los anagramas distintos son $\\frac{4!}{2!\\,2!} = \\frac{24}{4} = 6$: PAPA, PAAP, PPAA, APPA, APAP y AAPP. El resultado también puede obtenerse con combinaciones: se eligen las 2 posiciones de las P entre 4, y las restantes quedan para las A."
+        },
+        {
+          "texto": "Ejemplo: anagramas de MISSISSIPPI ⇒ 34 650",
+          "explicacion": "La palabra tiene 11 letras: 1 M, 4 I, 4 S y 2 P. El total es $\\frac{11!}{1!\\,4!\\,4!\\,2!} = \\frac{39\\,916\\,800}{1152} = 34\\,650$. El denominador 1152 resulta de multiplicar $1 \\cdot 24 \\cdot 24 \\cdot 2$. Es un ejemplo clásico para practicar la fórmula, porque combina varias letras repetidas con distintas frecuencias."
+        }
+      ]
+    },
+    {
+      "titulo": "Permutaciones circulares",
+      "puntos": [
+        {
+          "texto": "«Permutación circular» = ordenar en círculo",
+          "explicacion": "En una disposición circular, como personas alrededor de una mesa, no existe un primer lugar y dos ordenaciones que se obtienen girando el círculo se consideran iguales. Por ello el número de permutaciones circulares es menor que el de permutaciones en fila."
+        },
+        {
+          "texto": "Fórmula: $(n-1)!$",
+          "explicacion": "Se fija un elemento como punto de referencia, lo que elimina los giros, y los $n - 1$ restantes se ordenan en fila a partir de él. Resulta $P_c(n) = (n-1)!$. Con 5 personas alrededor de una mesa hay $4! = 24$ disposiciones."
+        },
+        {
+          "texto": "Collares ⇒ $\\frac{(n-1)!}{2}$ al no distinguir el volteo",
+          "explicacion": "Si además se considera igual una disposición y su reflejo, como ocurre en un collar que puede voltearse, el número se reduce a la mitad: $\\frac{(n-1)!}{2}$ para $n \\ge 3$. En la mesa circular, donde la dirección importa, no se divide."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación",
+      "puntos": [
+        {
+          "texto": "Permutaciones = variaciones con $k = n$",
+          "explicacion": "Si se toman todos los elementos, la fórmula $V_n^n = \\frac{n!}{0!}$ da $n!$. Las permutaciones son, entonces, el caso particular de las variaciones (tema 78) en que se usa el conjunto completo. Cuando el orden no importa corresponden las combinaciones (tema 80)."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: no dividir cuando hay elementos repetidos",
+          "explicacion": "Usar $n!$ en palabras como PAPA da 24 en vez de 6, porque cuenta como distintas las ordenaciones que solo intercambian letras idénticas. Se debe dividir entre el factorial de cada grupo de elementos iguales."
+        },
+        {
+          "texto": "Error: usar $n!$ en disposiciones circulares",
+          "explicacion": "En una mesa redonda las rotaciones producen la misma disposición, por lo que $n!$ sobrestima el resultado. Se debe fijar un elemento y calcular $(n-1)!$. Por ejemplo, con 4 personas alrededor de una mesa, $4! = 24$ cuenta cada disposición 4 veces, una por cada giro posible, y el valor correcto es $3! = 6$."
+        },
+        {
+          "texto": "Error: sumar en lugar de multiplicar los bloques",
+          "explicacion": "En las restricciones con bloques, el orden de los bloques y el orden interno de cada bloque son etapas sucesivas y sus resultados se multiplican. Sumarlos subestima el total. Por ejemplo, con 4 bloques se ordenan de $4!$ maneras y cada ordenación admite sus arreglos internos, de modo que los resultados de cada etapa se multiplican para obtener el total, según el principio de multiplicación."
+        },
+        {
+          "texto": "Error: olvidar el orden interno del bloque",
+          "explicacion": "Al agrupar elementos que van juntos, debe incluirse el factor $k!$ de las ordenaciones dentro del bloque. Omitirlo reduce el resultado, como 24 en vez de 48 en el ejemplo de las 5 personas. Es un error frecuente porque el bloque se trata como un único elemento durante todo el cálculo, y se olvida que, al final, sus integrantes pueden intercambiar sus lugares entre sí."
+        }
+      ]
+    }
+  ]
+}

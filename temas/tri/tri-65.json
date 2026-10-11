@@ -1,0 +1,215 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Arco seno",
+  "glosario": {
+    "arco seno": "ángulo del tramo principal con ese seno",
+    "dominio": "valores de entrada permitidos",
+    "rango": "valores de salida posibles",
+    "tramo principal": "intervalo donde la función no repite valores",
+    "función impar": "cambia de signo con x",
+    "creciente": "al aumentar x también aumenta la función",
+    "uno a uno": "cada salida proviene de una sola entrada",
+    "radián": "unidad de ángulo basada en el arco",
+    "recíproca": "número que multiplicado da uno"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "$y=\\operatorname{arcsen} x$ implica $\\operatorname{sen} y=x$ con $y \\in \\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$",
+          "explicacion": "La definición exige dos condiciones a la vez: que el seno del ángulo $y$ valga $x$ y que $y$ esté en el tramo principal. Ejemplo: para $x=\\frac{\\sqrt{2}}{2}$, $y=\\frac{\\pi}{4}$ cumple $\\operatorname{sen}\\frac{\\pi}{4}=\\frac{\\sqrt{2}}{2}$ y está en el tramo. Una rampa de 10 m de largo que sube 5 m tiene $\\operatorname{sen} y=\\frac{5}{10}=\\frac{1}{2}$, luego su ángulo es $y=\\operatorname{arcsen}\\frac{1}{2}=30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\operatorname{arcsen} x$: $[-1,1]$",
+          "explicacion": "Es el rango del seno, porque ningún ángulo tiene seno mayor que 1 ni menor que $-1$. Ejemplo: $\\operatorname{arcsen}(-1)=-\\frac{\\pi}{2}$ existe, mientras que $\\operatorname{arcsen}1{,}5$ no existe; una rampa de 10 m no puede subir 15 m."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango",
+      "puntos": [
+        {
+          "texto": "Rango de $\\operatorname{arcsen} x$: $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$",
+          "explicacion": "El resultado siempre cae entre $-90°$ y $90°$, que es el tramo en el que el seno no repite valores. Ejemplo: $\\operatorname{arcsen}\\left(-\\frac{1}{2}\\right)=-\\frac{\\pi}{6}$ está en el rango; nunca se obtiene 120° ni 150°, aunque su seno sea positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en cero",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}0=0$",
+          "explicacion": "Se busca el ángulo del tramo principal con seno 0: es 0, porque $\\operatorname{sen}0=0$. Es el único del tramo, ya que fuera de él $\\pi$ también tiene seno 0 pero no pertenece a $\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en un medio",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}\\frac{1}{2}=\\frac{\\pi}{6}$",
+          "explicacion": "Equivale a 30°, pues $\\operatorname{sen}30°=\\frac{1}{2}$. El ángulo 150° también tiene seno $\\frac{1}{2}$ pero queda fuera del rango, por eso no es el resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √2/2",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}\\frac{\\sqrt{2}}{2}=\\frac{\\pi}{4}$",
+          "explicacion": "Equivale a 45°, pues $\\operatorname{sen}45°=\\frac{\\sqrt{2}}{2}$, que es aproximadamente 0,7071. Una escalera de 10 m apoyada que alcanza 7,07 m de altura forma 45° con el suelo."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √3/2",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}\\frac{\\sqrt{3}}{2}=\\frac{\\pi}{3}$",
+          "explicacion": "Equivale a 60°, pues $\\operatorname{sen}60°=\\frac{\\sqrt{3}}{2}$, que es aproximadamente 0,866. Una escalera de 10 m que alcanza 8,66 m de altura forma 60° con el suelo."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en uno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}1=\\frac{\\pi}{2}$",
+          "explicacion": "Equivale a 90°, pues $\\operatorname{sen}\\frac{\\pi}{2}=1$. Es el valor máximo del rango y el extremo derecho de la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en menos uno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}(-1)=-\\frac{\\pi}{2}$",
+          "explicacion": "Equivale a $-90°$, pues $\\operatorname{sen}\\left(-\\frac{\\pi}{2}\\right)=-1$. Es el valor mínimo del rango y el extremo izquierdo de la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}(-x)=-\\operatorname{arcsen} x$",
+          "explicacion": "Ocurre porque el seno es impar y el tramo principal es simétrico respecto a 0. Ejemplo: $\\operatorname{arcsen}\\left(-\\frac{\\sqrt{3}}{2}\\right)=-\\operatorname{arcsen}\\frac{\\sqrt{3}}{2}=-\\frac{\\pi}{3}$, y $\\operatorname{arcsen}\\left(-\\frac{1}{2}\\right)=-\\frac{\\pi}{6}$. Basta conocer los valores positivos."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen} x$ ↑ en todo su dominio",
+          "explicacion": "Si $a<b$, ambos en $[-1,1]$, entonces $\\operatorname{arcsen} a<\\operatorname{arcsen} b$, porque el seno restringido también crece. Ejemplo: $-\\frac{1}{2}<\\frac{1}{2}<\\frac{\\sqrt{2}}{2}$ da $-\\frac{\\pi}{6}<\\frac{\\pi}{6}<\\frac{\\pi}{4}$, comprobable con los grados $-30°<30°<45°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica",
+      "puntos": [
+        {
+          "texto": "Gráfica de $y=\\operatorname{arcsen} x$: va de $\\left(-1,-\\frac{\\pi}{2}\\right)$ a $\\left(1,\\frac{\\pi}{2}\\right)$",
+          "explicacion": "Es una curva creciente que pasa por el origen, con extremos en $\\left(-1,-\\frac{\\pi}{2}\\right)$ y $\\left(1,\\frac{\\pi}{2}\\right)$. Puntos intermedios: $\\left(-\\frac{1}{2},-\\frac{\\pi}{6}\\right)$, $(0,0)$ y $\\left(\\frac{1}{2},\\frac{\\pi}{6}\\right)$. Es simétrica respecto al origen, como consecuencia de su paridad."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno de arco seno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(\\operatorname{arcsen} x)=x$ para $-1 \\leq x \\leq 1$",
+          "explicacion": "Es la propiedad básica de la inversa: el ángulo hallado, al evaluarse en el seno, devuelve la razón de partida. Ejemplo: con $x=\\frac{3}{5}$, $\\operatorname{arcsen}\\frac{3}{5}\\approx0{,}6435$ rad (unos 36,87°) y $\\operatorname{sen}0{,}6435\\approx0{,}6=\\frac{3}{5}$. Si $x$ sale de $[-1,1]$, como $x=2$, la expresión no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Arco seno de seno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}(\\operatorname{sen} x)=x$ para $-\\frac{\\pi}{2} \\leq x \\leq \\frac{\\pi}{2}$",
+          "explicacion": "Solo se recupera el ángulo original si este ya está en el tramo principal. Ejemplo: $\\operatorname{arcsen}\\left(\\operatorname{sen}\\frac{\\pi}{6}\\right)=\\operatorname{arcsen}\\frac{1}{2}=\\frac{\\pi}{6}$, y $\\operatorname{arcsen}\\left(\\operatorname{sen}\\left(-\\frac{\\pi}{3}\\right)\\right)=-\\frac{\\pi}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos fuera del tramo",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}(\\operatorname{sen} x)=\\pi-x$ para $\\frac{\\pi}{2} \\leq x \\leq \\frac{3\\pi}{2}$",
+          "explicacion": "En este intervalo el ángulo $\\pi-x$ cae en el tramo principal y tiene el mismo seno que $x$, pues $\\operatorname{sen}(\\pi-x)=\\operatorname{sen} x$. Ejemplos: $x=\\frac{5\\pi}{6}$ da $\\pi-\\frac{5\\pi}{6}=\\frac{\\pi}{6}$; $x=\\pi$ da $0$; $x=\\frac{3\\pi}{2}$ da $-\\frac{\\pi}{2}$, y en cada caso $\\operatorname{arcsen}(\\operatorname{sen} x)\\neq x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno de arco seno",
+      "puntos": [
+        {
+          "texto": "$\\cos(\\operatorname{arcsen} x)=\\sqrt{1-x^{2}}$",
+          "explicacion": "Sale de $\\cos^{2}y=1-\\operatorname{sen}^{2}y$ con $y=\\operatorname{arcsen} x$; la raíz es positiva porque $y$ está entre $-90°$ y $90°$, donde el coseno no es negativo. Ejemplo: con $x=\\frac{3}{5}$, $\\cos(\\operatorname{arcsen} x)=\\sqrt{1-\\frac{9}{25}}=\\sqrt{\\frac{16}{25}}=\\frac{4}{5}$, igual que en un triángulo de lados 3, 4 y 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de arco seno",
+      "puntos": [
+        {
+          "texto": "$\\tan(\\operatorname{arcsen} x)=\\frac{x}{\\sqrt{1-x^{2}}}$ para $-1 < x < 1$",
+          "explicacion": "Se obtiene dividiendo $\\operatorname{sen} y=x$ entre $\\cos y=\\sqrt{1-x^{2}}$; en $x=\\pm1$ el coseno vale 0 y la tangente no existe. Ejemplo: con $x=\\frac{3}{5}$, $\\tan(\\operatorname{arcsen} x)=\\frac{3/5}{4/5}=\\frac{3}{4}$, y con $x=-\\frac{3}{5}$ resulta $-\\frac{3}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio de una composición",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen}(g(x))$ existe si $-1 \\leq g(x) \\leq 1$",
+          "explicacion": "La expresión interior debe quedar dentro del dominio del arco seno, lo que se resuelve como desigualdad. Ejemplo: para $\\operatorname{arcsen}(2x-1)$ se exige $-1\\leq2x-1\\leq1$; sumando 1 queda $0\\leq2x\\leq2$ y dividiendo entre 2, $0\\leq x\\leq1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de arcos seno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen} a=\\operatorname{arcsen} b$ implica $a=b$, con $a,b \\in [-1,1]$",
+          "explicacion": "Como el arco seno es uno a uno, iguales resultados provienen de iguales entradas, pero hay que comprobar que ambas estén en $[-1,1]$. Ejemplo: $\\operatorname{arcsen}(3x-1)=\\operatorname{arcsen}(x+1)$ da $3x-1=x+1$ y $x=1$; sin embargo $3(1)-1=2$ no está en $[-1,1]$, así que no hay solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Conexión con arco coseno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen} x$ se relaciona con $\\arccos x$",
+          "explicacion": "Ambas funciones comparten el dominio $[-1,1]$ y están unidas por una identidad de suma constante, que se desarrolla en el tema del arco coseno."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación y arco seno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen} x=k$ tiene infinitas soluciones; $\\operatorname{arcsen} k$ da una",
+          "explicacion": "La ecuación recorre todos los ángulos con ese seno, mientras que la función entrega solo el del tramo principal. Ejemplo: $\\operatorname{sen} x=\\frac{1}{2}$ se cumple en $\\frac{\\pi}{6}$, $\\frac{5\\pi}{6}$, $\\frac{13\\pi}{6}$, ..., pero $\\operatorname{arcsen}\\frac{1}{2}$ vale únicamente $\\frac{\\pi}{6}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor con la recíproca",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen} x \\neq \\frac{1}{\\operatorname{sen} x}$",
+          "explicacion": "El arco seno devuelve un ángulo y la recíproca del seno devuelve un número que multiplica al seno para dar 1. Ejemplo con $x=\\frac{1}{2}$: $\\operatorname{arcsen}\\frac{1}{2}=\\frac{\\pi}{6}\\approx0{,}5236$, mientras que $\\frac{1}{\\operatorname{sen}\\frac{1}{2}}\\approx\\frac{1}{0{,}4794}\\approx2{,}086$, calculando el seno en radianes."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "curso": "Álgebra",
+  "tema": "Representación tabular de una función",
+  "glosario": {
+    "Tabla de valores": "Lista de entradas con sus salidas.",
+    "Par ordenado": "Pareja de valores con orden fijo.",
+    "Entrada": "Valor de la variable independiente.",
+    "Salida": "Valor de la función para una entrada.",
+    "Dominio": "Conjunto de entradas permitidas.",
+    "Rango": "Conjunto de salidas alcanzadas.",
+    "Pendiente": "Cociente entre cambio vertical y horizontal.",
+    "Diferencia": "Resultado de restar dos valores consecutivos.",
+    "Función lineal": "Función de la forma ax más b.",
+    "Función cuadrática": "Función polinómica de segundo grado.",
+    "Interpolación": "Estimar un valor entre dos valores conocidos.",
+    "Cero de una función": "Entrada cuya salida es cero.",
+    "Intercepto": "Punto donde la gráfica corta un eje.",
+    "Valor frontera": "Valor donde cambia la regla de un tramo.",
+    "Plano cartesiano": "Plano con dos ejes perpendiculares."
+  },
+  "theory": [
+    {
+      "titulo": "Tabla de valores",
+      "puntos": [
+        {
+          "texto": "«Tabla de valores»: pares $(x,f(x))$ organizados en filas o columnas",
+          "explicacion": "Una tabla de valores es una representación de una función en la que se escriben varios valores de la entrada $x$ y, junto a cada uno, la salida $f(x)$ correspondiente. Cada columna, o cada fila, de la tabla es un par ordenado $(x,y)$ de la función. Por ejemplo, para $f(x)=2x-1$ se puede escribir $x:-2,-1,0,1,2$ con $f(x):-5,-3,-1,1,3$. Una tabla muestra solo algunos valores, pero basta para analizar el comportamiento."
+        },
+        {
+          "texto": "Tabla vertical y tabla horizontal",
+          "explicacion": "Las tablas se pueden escribir con las entradas en una columna y las salidas en otra columna, o con las entradas en una fila y las salidas en la fila siguiente. Ambas formas contienen la misma información. La disposición horizontal es cómoda para comparar valores consecutivos y la vertical es cómoda cuando hay varias funciones al mismo tiempo."
+        }
+      ]
+    },
+    {
+      "titulo": "Construcción",
+      "puntos": [
+        {
+          "texto": "Construir una tabla: elegir $x$, evaluar y registrar",
+          "explicacion": "Para construir una tabla de una función se siguen tres pasos: elegir valores de $x$ que pertenezcan al dominio; evaluar la regla en cada valor; y escribir cada par en la tabla. Para $f(x)=x^2-2x$ con $x=-1,0,1,2,3$: $f(-1)=1+2=3$; $f(0)=0$; $f(1)=1-2=-1$; $f(2)=4-4=0$; $f(3)=9-6=3$. Las salidas son $3,0,-1,0,3$."
+        },
+        {
+          "texto": "Los valores de $x$ deben pertenecer al dominio",
+          "explicacion": "No se pueden elegir valores de $x$ donde la regla no esté definida. Para $f(x)=\\frac{1}{x-1}$ el valor $x=1$ no se puede incluir. Una tabla razonable es: $x=-1$ da $-\\frac{1}{2}$; $x=0$ da $-1$; $x=2$ da $1$; $x=3$ da $\\frac{1}{2}$. Si el valor excluido es importante, se anota «no definida» en la tabla."
+        }
+      ]
+    },
+    {
+      "titulo": "Elegir valores de x",
+      "puntos": [
+        {
+          "texto": "Elegir valores equiespaciados, con 0 y negativos",
+          "explicacion": "Conviene tomar valores de $x$ igualmente espaciados, como $-2,-1,0,1,2$, para detectar patrones, e incluir el 0, que da el intercepto con el eje vertical, y valores negativos y positivos para ver el comportamiento a ambos lados. Si el dominio es restringido, se eligen valores dentro de él, por ejemplo para $\\sqrt{x-1}$ se usan $x\\geq1$."
+        },
+        {
+          "texto": "Valores especiales: ceros y extremos",
+          "explicacion": "Además de valores regulares, conviene incluir los ceros de la función, los extremos del dominio y los valores donde la regla cambia. Para $f(x)=x^2-3x+2$, los ceros son $x=1$ y $x=2$, por lo que una tabla informativa incluye 0, 1, 2 y 3, con salidas $2,0,0,2$. Los valores simétricos revelan que la función repite salidas en $x=0$ y $x=3$."
+        },
+        {
+          "texto": "Raíz cuadrada: elegir cuadrados perfectos",
+          "explicacion": "Para $f(x)=\\sqrt{x-1}$ es cómodo elegir $x$ tales que $x-1$ sea un cuadrado perfecto. Con $x=1,2,5,10$: $f(1)=0$; $f(2)=1$; $f(5)=2$; $f(10)=3$. Las salidas son números exactos, y se aprecia que $f$ crece cada vez más despacio, porque para que la salida suba de 0 a 1 basta avanzar 1 unidad en $x$, para que suba de 1 a 2 hay que avanzar 3 unidades y para que suba de 2 a 3 hay que avanzar 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Leer una tabla",
+      "puntos": [
+        {
+          "texto": "Dominio de la tabla = primeras entradas; rango = salidas",
+          "explicacion": "En una tabla de valores, el conjunto de entradas listadas es el dominio de la función tal como la muestra la tabla, y el conjunto de salidas sin repeticiones es su rango. En la tabla $x:1,2,3$ con $y:2,3,2$: el dominio es $\\{1,2,3\\}$ y el rango es $\\{2,3\\}$. El valor 2 se escribe una sola vez en el rango."
+        },
+        {
+          "texto": "Tabla que sí es función",
+          "explicacion": "Una tabla representa una función cuando cada entrada aparece con una sola salida. La tabla $x:1,2,3,4$ con $y:5,5,7,9$ es una función: las entradas son todas distintas, y no importa que la salida 5 se repita. Dos entradas distintas pueden tener la misma salida."
+        },
+        {
+          "texto": "Tabla que no es función",
+          "explicacion": "Una tabla no representa una función cuando una misma entrada aparece con dos salidas distintas. En la tabla $x:1,2,2,3$ con $y:4,5,6,7$, la entrada 2 tiene las salidas 5 y 6, así que no es función. Para reconocerlo basta buscar entradas repetidas y comparar sus salidas."
+        }
+      ]
+    },
+    {
+      "titulo": "Patrones lineales",
+      "puntos": [
+        {
+          "texto": "Diferencias constantes en $y$ ⇒ función lineal",
+          "explicacion": "Si los valores de $x$ están igualmente espaciados y las diferencias entre salidas consecutivas son constantes, la función es lineal. Con $x:0,1,2,3$ y $y:3,5,7,9$ las diferencias son $2,2,2$, así que $f(x)=2x+3$. Verificación: $f(2)=7$ y $f(3)=9$. La diferencia constante es la pendiente cuando $x$ aumenta de 1 en 1."
+        },
+        {
+          "texto": "Hallar la regla lineal desde la tabla",
+          "explicacion": "Con dos pares $(x_1,y_1)$ y $(x_2,y_2)$ de una función lineal se calcula la pendiente $a=\\frac{y_2-y_1}{x_2-x_1}$ y luego $b=y_1-ax_1$. Con los pares $(1,3)$ y $(3,7)$: $a=\\frac{7-3}{3-1}=2$ y $b=3-2\\cdot1=1$. La regla es $f(x)=2x+1$. Verificación: $f(1)=3$ y $f(3)=7$. El método sirve con cualquier par de puntos de la tabla, no solo con entradas consecutivas. Con otros dos pares de la misma función, como $(0,1)$ y $(2,5)$: $a=\\frac{5-1}{2-0}=2$ y $b=1$, el mismo resultado, lo que confirma que la tabla es lineal."
+        },
+        {
+          "texto": "Diferencias no constantes ⇒ no es lineal",
+          "explicacion": "Si las diferencias entre salidas consecutivas no son constantes, la función no es lineal. Con $x:1,2,3,4$ y $y:1,4,9,16$ las diferencias son $3,5,7$, que cambian, así que la función no es lineal. De hecho es $f(x)=x^2$, una función cuadrática."
+        }
+      ]
+    },
+    {
+      "titulo": "Patrones cuadráticos",
+      "puntos": [
+        {
+          "texto": "Segundas diferencias constantes ⇒ función cuadrática",
+          "explicacion": "Si las diferencias de las diferencias son constantes, la función es cuadrática. Con $x:0,1,2,3,4$ y $y:1,2,5,10,17$ las primeras diferencias son $1,3,5,7$ y las segundas son $2,2,2$. La segunda diferencia constante es $2a$, de modo que $a=1$. Con $f(0)=1$ resulta $f(x)=x^2+1$. Verificación: $f(3)=10$ y $f(4)=17$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valores faltantes",
+      "puntos": [
+        {
+          "texto": "Completar una tabla con la regla",
+          "explicacion": "Si se conoce la regla, se completan las entradas o salidas que faltan. Con $f(x)=3x-2$: para $x=4$ se obtiene $f(4)=10$. Si falta la entrada y se conoce la salida 7, se resuelve $3x-2=7$, que da $x=3$. Verificación: $f(3)=9-2=7$. Completar salidas es evaluar, y completar entradas es resolver una ecuación."
+        },
+        {
+          "texto": "Interpolar entre valores de una función lineal",
+          "explicacion": "Si se sabe que la función es lineal, se puede estimar un valor entre dos de la tabla. Con los pares $(1,3)$ y $(3,7)$, el valor en $x=2$, punto medio, es el promedio de las salidas: $\\frac{3+7}{2}=5$. Verificación con $f(x)=2x+1$: $f(2)=5$. Esto es exacto solo para funciones lineales; en otras funciones es una aproximación."
+        }
+      ]
+    },
+    {
+      "titulo": "Funciones por tramos",
+      "puntos": [
+        {
+          "texto": "Tabla de una función por tramos",
+          "explicacion": "Se evalúa cada valor de $x$ con la regla del tramo al que pertenece. Sea $f(x)=x+1$ si $x<0$ y $f(x)=x^2$ si $x\\geq0$. Con $x:-2,-1,0,1,2$: $f(-2)=-1$; $f(-1)=0$; $f(0)=0^2=0$; $f(1)=1$; $f(2)=4$. Las salidas son $-1,0,0,1,4$. En el cambio de tramo conviene incluir el valor frontera, aquí $x=0$, y verificar a qué tramo pertenece."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros en tablas",
+      "puntos": [
+        {
+          "texto": "Cambio de signo entre salidas ⇒ cero entre las entradas",
+          "explicacion": "Si en una tabla la salida cambia de negativa a positiva entre dos entradas consecutivas y la función es continua, hay un cero entre ellas. Para $f(x)=2x-5$: $f(2)=-1$ y $f(3)=1$, de modo que el cero está entre 2 y 3. En efecto $f(2.5)=0$. Cuando una salida de la tabla es exactamente 0, ese valor de $x$ es un cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla y gráfica",
+      "puntos": [
+        {
+          "texto": "Cada columna de la tabla es un punto de la gráfica",
+          "explicacion": "Los pares de la tabla se pueden ubicar como puntos en el plano cartesiano, con $x$ en el eje horizontal y $y$ en el vertical. La tabla de $f(x)=x^2-2x$ da los puntos $(-1,3)$, $(0,0)$, $(1,-1)$, $(2,0)$ y $(3,3)$. Si la función está definida en un intervalo completo, los puntos se unen con una curva continua; si el dominio es un conjunto finito, se dejan como puntos aislados."
+        }
+      ]
+    },
+    {
+      "titulo": "Limitaciones",
+      "puntos": [
+        {
+          "texto": "Una tabla finita no determina la función",
+          "explicacion": "Una tabla solo muestra algunos valores, y varias funciones distintas pueden coincidir en esos valores. Los pares $(0,0)$, $(1,1)$ y $(2,2)$ corresponden a $f(x)=x$, pero también a $g(x)=x+x(x-1)(x-2)$, que difiere de $f$ en otros valores. Por eso para afirmar una regla hace falta información adicional, como saber que la función es lineal."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 51 y 52: base de las tablas",
+          "explicacion": "La tabla usa la noción de función del tema 51, y necesita conocer el dominio del tema 52 para elegir valores válidos y reconocer cuándo una entrada no se puede evaluar. Por ejemplo, para tabular $f(x)=\\sqrt{x-1}$ el dominio $[1,+\\infty)$ indica que valores como $x=0$ no pueden aparecer, y para $f(x)=\\frac{1}{x-1}$ indica que $x=1$ debe excluirse o marcarse como no definido."
+        },
+        {
+          "texto": "Temas 54 al 58: tablas como paso previo a la gráfica",
+          "explicacion": "En los temas de representación gráfica y de funciones particulares, la tabla de valores es el primer paso para dibujar la gráfica de una función lineal, cuadrática, de raíz cuadrada o de valor absoluto. Por ejemplo, la tabla $x:-1,0,1,2,3$ con $y:3,0,-1,0,3$ de $f(x)=x^2-2x$ permite ver que la curva tiene su punto más bajo en $x=1$ y que es simétrica respecto de la recta $x=1$."
+        }
+      ]
+    }
+  ]
+}

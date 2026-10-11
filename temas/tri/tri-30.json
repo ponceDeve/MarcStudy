@@ -1,0 +1,150 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ángulo mitad",
+  "glosario": {
+    "Ángulo mitad": "Ángulo que mide la mitad de otro",
+    "Razón trigonométrica": "Cociente entre coordenadas o radio vector",
+    "Cuadrante": "Cada una de las cuatro regiones del plano",
+    "Ángulos notables": "Ángulos de 30, 45 y 60 grados",
+    "Cosecante": "Cociente de hipotenusa entre cateto opuesto",
+    "Cotangente": "Cociente de cateto adyacente entre opuesto",
+    "Racionalizar": "Eliminar raíces del denominador de una fracción",
+    "Raíz cuadrada": "Número que elevado al cuadrado da el dado"
+  },
+  "theory": [
+    {
+      "titulo": "Origen del ángulo mitad",
+      "puntos": [
+        {
+          "texto": "Ángulo mitad: de $\\cos A = 1 - 2\\operatorname{sen}^2\\frac{A}{2}$",
+          "explicacion": "El ángulo A es el doble de $\\frac{A}{2}$, así que las fórmulas del ángulo doble aplicadas al ángulo $\\frac{A}{2}$ relacionan las razones de A con las de su mitad. Al despejar el seno al cuadrado de $\\cos A = 1 - 2\\operatorname{sen}^2\\frac{A}{2}$ se obtiene $\\operatorname{sen}^2\\frac{A}{2} = \\frac{1 - \\cos A}{2}$, y de $\\cos A = 2\\cos^2\\frac{A}{2} - 1$ se obtiene $\\cos^2\\frac{A}{2} = \\frac{1 + \\cos A}{2}$. Al extraer raíz cuadrada aparece el signo $\\pm$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno del ángulo mitad",
+      "puntos": [
+        {
+          "texto": "Seno mitad: $\\operatorname{sen}\\frac{A}{2} = \\pm\\sqrt{\\frac{1 - \\cos A}{2}}$",
+          "explicacion": "El signo se elige según el cuadrante donde cae $\\frac{A}{2}$. Ejemplo: con $A = 30°$, $\\cos30° = \\frac{\\sqrt{3}}{2}$, y como 15° es agudo el signo es positivo: $\\operatorname{sen}15° = \\sqrt{\\frac{1 - \\frac{\\sqrt{3}}{2}}{2}} = \\frac{\\sqrt{2 - \\sqrt{3}}}{2} = \\frac{\\sqrt{6} - \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno del ángulo mitad",
+      "puntos": [
+        {
+          "texto": "Coseno mitad: $\\cos\\frac{A}{2} = \\pm\\sqrt{\\frac{1 + \\cos A}{2}}$",
+          "explicacion": "El signo se elige según el cuadrante donde cae $\\frac{A}{2}$. Ejemplo: con $A = 30°$, $\\cos15° = \\sqrt{\\frac{1 + \\frac{\\sqrt{3}}{2}}{2}} = \\frac{\\sqrt{2 + \\sqrt{3}}}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente mitad con raíz",
+      "puntos": [
+        {
+          "texto": "Tangente mitad: $\\tan\\frac{A}{2} = \\pm\\sqrt{\\frac{1 - \\cos A}{1 + \\cos A}}$",
+          "explicacion": "Resulta de dividir las fórmulas del seno mitad y del coseno mitad. El signo depende del cuadrante de $\\frac{A}{2}$. Ejemplo: con $\\cos A = \\frac{3}{5}$, $\\tan\\frac{A}{2} = \\sqrt{\\frac{1 - \\frac{3}{5}}{1 + \\frac{3}{5}}} = \\sqrt{\\frac{2/5}{8/5}} = \\sqrt{\\frac{1}{4}} = \\frac{1}{2}$, con signo positivo porque $\\frac{A}{2}$ es agudo."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente mitad sin raíz",
+      "puntos": [
+        {
+          "texto": "Tangente mitad: $\\tan\\frac{A}{2} = \\frac{\\operatorname{sen}A}{1 + \\cos A}$",
+          "explicacion": "Esta forma no lleva raíz ni signo $\\pm$; el signo queda determinado por los valores de A. Ejemplo: con $A = 45°$, $\\tan22{,}5° = \\frac{\\frac{\\sqrt{2}}{2}}{1 + \\frac{\\sqrt{2}}{2}} = \\frac{\\sqrt{2}}{2 + \\sqrt{2}}$, y al racionalizar resulta $\\frac{\\sqrt{2}(2 - \\sqrt{2})}{2} = \\sqrt{2} - 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente mitad alternativa",
+      "puntos": [
+        {
+          "texto": "Tangente mitad: $\\tan\\frac{A}{2} = \\frac{1 - \\cos A}{\\operatorname{sen}A}$",
+          "explicacion": "Es otra forma sin raíz, útil cuando se conocen el seno y el coseno de A. Ejemplo: con $A = 60°$, $\\tan30° = \\frac{1 - \\frac{1}{2}}{\\frac{\\sqrt{3}}{2}} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente del ángulo mitad",
+      "puntos": [
+        {
+          "texto": "Cotangente mitad: $\\cot\\frac{A}{2} = \\frac{1 + \\cos A}{\\operatorname{sen}A}$",
+          "explicacion": "Es la inversa de la tangente mitad. Ejemplo: con $A = 60°$, $\\cot30° = \\frac{1 + \\frac{1}{2}}{\\frac{\\sqrt{3}}{2}} = \\frac{3}{\\sqrt{3}} = \\sqrt{3}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Mitad con cosecante",
+      "puntos": [
+        {
+          "texto": "$\\tan\\frac{A}{2} = \\csc A - \\cot A$",
+          "explicacion": "Resulta de separar en dos fracciones la forma $\\frac{1 - \\cos A}{\\operatorname{sen}A}$. Ejemplo: con $A = 60°$, $\\csc60° = \\frac{2}{\\sqrt{3}}$ y $\\cot60° = \\frac{1}{\\sqrt{3}}$, entonces $\\csc60° - \\cot60° = \\frac{1}{\\sqrt{3}} = \\tan30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cotangente con cosecante",
+      "puntos": [
+        {
+          "texto": "$\\cot\\frac{A}{2} = \\csc A + \\cot A$",
+          "explicacion": "Resulta de separar en dos fracciones la forma $\\frac{1 + \\cos A}{\\operatorname{sen}A}$. Ejemplo: con $A = 60°$, $\\csc60° + \\cot60° = \\frac{2}{\\sqrt{3}} + \\frac{1}{\\sqrt{3}} = \\sqrt{3} = \\cot30°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de la mitad",
+      "puntos": [
+        {
+          "texto": "El signo $\\pm$ lo da el cuadrante de $\\frac{A}{2}$, no el de A",
+          "explicacion": "Primero se calcula $\\frac{A}{2}$ y se decide a qué cuadrante pertenece; luego se asigna el signo que le corresponde a la razón en ese cuadrante. Ejemplo: con $A = 240°$, $\\frac{A}{2} = 120°$ está en el cuadrante II. Como $\\cos240° = -\\frac{1}{2}$, $\\operatorname{sen}120° = +\\sqrt{\\frac{1 + \\frac{1}{2}}{2}} = \\frac{\\sqrt{3}}{2}$ con signo positivo, y $\\cos120° = -\\sqrt{\\frac{1 - \\frac{1}{2}}{2}} = -\\frac{1}{2}$ con signo negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno mitad positivo",
+      "puntos": [
+        {
+          "texto": "$0° < A < 360°$ ⇒ $\\frac{A}{2}$ entre 0° y 180° ⇒ $\\operatorname{sen}\\frac{A}{2} > 0$",
+          "explicacion": "Si A es menor que una vuelta, su mitad está en el cuadrante I o en el II, donde el seno es positivo, y en la fórmula se usa siempre el signo más. El coseno y la tangente sí pueden cambiar de signo. Ejemplo: con $A = 300°$, $\\frac{A}{2} = 150°$ está en el cuadrante II; el seno es positivo y el coseno es $\\cos150° = -\\sqrt{\\frac{1 + \\frac{1}{2}}{2}} = -\\frac{\\sqrt{3}}{2}$, negativo."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato del coseno",
+      "puntos": [
+        {
+          "texto": "Dato de $\\cos A$ con $\\frac{A}{2}$ agudo ⇒ las tres razones mitad",
+          "explicacion": "Se aplican las fórmulas con el signo positivo. Ejemplo: si $\\cos A = \\frac{3}{5}$ y $\\frac{A}{2}$ es agudo, $\\operatorname{sen}\\frac{A}{2} = \\sqrt{\\frac{1 - \\frac{3}{5}}{2}} = \\sqrt{\\frac{1}{5}} = \\frac{\\sqrt{5}}{5}$ y $\\cos\\frac{A}{2} = \\sqrt{\\frac{1 + \\frac{3}{5}}{2}} = \\sqrt{\\frac{4}{5}} = \\frac{2\\sqrt{5}}{5}$, de modo que $\\tan\\frac{A}{2} = \\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dato con A obtuso",
+      "puntos": [
+        {
+          "texto": "A en el cuadrante II ⇒ $\\frac{A}{2}$ en el cuadrante I ⇒ signos positivos",
+          "explicacion": "Un ángulo A entre 90° y 180° tiene su mitad entre 45° y 90°, un ángulo agudo, y todas las razones mitad resultan positivas. Ejemplo: si $\\cos A = -\\frac{3}{5}$, $\\operatorname{sen}\\frac{A}{2} = \\sqrt{\\frac{1 + \\frac{3}{5}}{2}} = \\frac{2\\sqrt{5}}{5}$ y $\\cos\\frac{A}{2} = \\sqrt{\\frac{1 - \\frac{3}{5}}{2}} = \\frac{\\sqrt{5}}{5}$, con $\\tan\\frac{A}{2} = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}\\frac{A}{2} \\neq \\frac{\\operatorname{sen}A}{2}$",
+          "explicacion": "Tomar la mitad del ángulo no es lo mismo que tomar la mitad del seno. Ejemplo: con $A = 60°$, $\\operatorname{sen}30° = \\frac{1}{2}$, pero $\\frac{\\operatorname{sen}60°}{2} = \\frac{\\sqrt{3}}{4} \\approx 0{,}433$."
+        },
+        {
+          "texto": "Olvidar dividir entre 2 dentro de la raíz ⇒ error",
+          "explicacion": "El denominador 2 de la fórmula del seno y del coseno mitad es indispensable. Ejemplo: con $A = 60°$, escribir $\\sqrt{1 - \\frac{1}{2}} = \\frac{\\sqrt{2}}{2} \\approx 0{,}707$ no da $\\operatorname{sen}30°$; la fórmula completa da $\\sqrt{\\frac{1 - \\frac{1}{2}}{2}} = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Elegir el signo con el cuadrante de A en lugar del de $\\frac{A}{2}$",
+          "explicacion": "El signo depende del lugar donde cae el ángulo mitad. Ejemplo: $A = 240°$ está en el cuadrante III, donde el seno es negativo, pero $\\frac{A}{2} = 120°$ está en el cuadrante II, donde el seno es positivo, y por eso $\\operatorname{sen}120° = +\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    }
+  ]
+}

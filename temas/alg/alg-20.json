@@ -1,0 +1,433 @@
+{
+  "curso": "Álgebra",
+  "tema": "Sistema de ecuaciones lineales con tres variables",
+  "glosario": {
+    "Ecuación lineal": "Ecuación con incógnitas de primer grado.",
+    "Incógnita": "Valor desconocido que se desea hallar.",
+    "Coeficiente": "Número que multiplica a una incógnita.",
+    "Término independiente": "Constante que no multiplica a ninguna incógnita.",
+    "Sistema de ecuaciones": "Conjunto de ecuaciones con las mismas incógnitas.",
+    "Terna ordenada": "Tres valores escritos en orden fijo.",
+    "Conjunto solución": "Todas las ternas que resuelven el sistema.",
+    "Sistema compatible": "Sistema con al menos una solución.",
+    "Sistema incompatible": "Sistema sin ninguna solución.",
+    "Compatible determinado": "Sistema con exactamente una solución.",
+    "Compatible indeterminado": "Sistema con infinitas soluciones.",
+    "Sistema equivalente": "Sistema con el mismo conjunto solución.",
+    "Combinación lineal": "Suma de ecuaciones multiplicadas por constantes.",
+    "Sustitución": "Reemplazar una expresión por otra igual.",
+    "Igualación": "Igualar dos expresiones de una misma incógnita.",
+    "Reducción": "Sumar ecuaciones para eliminar una incógnita.",
+    "Eliminación": "Hacer desaparecer una incógnita de las ecuaciones.",
+    "Sistema triangular": "Sistema cuyas ecuaciones pierden una incógnita sucesivamente.",
+    "Sustitución regresiva": "Hallar incógnitas desde la última ecuación hacia arriba.",
+    "Parámetro": "Letra que puede tomar cualquier valor real.",
+    "Incógnita libre": "Incógnita a la que se asigna un parámetro.",
+    "Sistema homogéneo": "Sistema con todos los términos independientes cero.",
+    "Solución trivial": "Solución con todas las incógnitas iguales a cero.",
+    "Plano": "Superficie plana e ilimitada del espacio.",
+    "Mínimo común múltiplo": "Menor múltiplo positivo común de varios números.",
+    "Ecuación independiente": "Ecuación que no sale de combinar las otras.",
+    "Identidad": "Igualdad verdadera para cualesquiera valores.",
+    "Contradicción": "Igualdad que no puede cumplirse nunca.",
+    "Cambio de variable": "Reemplazo de una expresión por una nueva incógnita.",
+    "Conjunto vacío": "Conjunto sin ningún elemento."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación lineal",
+      "puntos": [
+        {
+          "texto": "«Ecuación lineal» con tres incógnitas: $ax+by+cz=d$",
+          "explicacion": "Una ecuación lineal con tres incógnitas es aquella en la que las incógnitas $x$, $y$, $z$ aparecen solo elevadas a la primera potencia, multiplicadas por números fijos y sumadas o restadas entre sí. No admite productos entre incógnitas, potencias mayores que uno, raíces de incógnitas ni incógnitas en un denominador. Por eso $2x-3y+z=7$ es lineal, mientras que $xy+z=3$, $x^2+y+z=1$, $\\sqrt{x}+y+z=2$ y $\\frac{1}{x}+y+z=1$ no lo son. La forma general $ax+by+cz=d$ reúne todas las ecuaciones lineales con tres incógnitas: de una a otra solo cambian los números $a$, $b$, $c$ y $d$."
+        },
+        {
+          "texto": "Coeficientes $a$, $b$, $c$: números que multiplican a las incógnitas",
+          "explicacion": "El coeficiente $a$ multiplica a $x$, el coeficiente $b$ multiplica a $y$ y el coeficiente $c$ multiplica a $z$. Pueden ser enteros, fraccionarios, negativos o incluso cero. Cuando un coeficiente es cero, la incógnita no aparece escrita: 4x + 0y - 5z = 8 se escribe 4x - 5z = 8, pero sigue siendo una ecuación con tres incógnitas dentro de un sistema. Cuando un coeficiente es 1 o -1, el número no se escribe: en x - y + z = 2 se tiene $a=1$, $b=-1$ y $c=1$. Leer bien los coeficientes y sus signos es el primer paso para operar sin errores."
+        },
+        {
+          "texto": "$a$, $b$, $c$ no pueden ser todos iguales a cero",
+          "explicacion": "Si $a=b=c=0$ la ecuación se reduce a $0=d$, que ya no depende de las incógnitas. Si $d=0$ se cumple para cualquier terna, de modo que no restringe nada; si $d\\neq 0$ no se cumple para ninguna terna. Por ejemplo, 0x + 0y + 0z = 5 no tiene solución, y 0x + 0y + 0z = 0 se cumple con (7, -3, 2) y con cualquier otra terna. En ninguno de los dos casos la ecuación representa un plano, por eso la definición exige que al menos uno de los tres coeficientes sea distinto de cero."
+        },
+        {
+          "texto": "«Término independiente» $d$: constante sin incógnitas",
+          "explicacion": "El término independiente es el número que queda solo, sin multiplicar a ninguna incógnita, y por convención se escribe a la derecha del signo igual. En 3x - y + 2z = 9 el término independiente es 9. Si una ecuación llega con constantes en ambos lados, se trasladan los términos con incógnitas a la izquierda y las constantes a la derecha cambiando su signo. Cuando $d=0$ la ecuación se llama homogénea, como 3x - y + 2z = 0, y siempre admite la terna (0, 0, 0) como solución."
+        },
+        {
+          "texto": "Una sola ecuación lineal tiene infinitas soluciones",
+          "explicacion": "Una ecuación lineal con tres incógnitas deja libres dos de ellas: se eligen valores cualesquiera para dos incógnitas y la tercera se despeja. Si $c\\neq 0$, se cumple $z=\\frac{d-ax-by}{c}$. Para 2x + y - z = 5 se obtiene z = 2x + y - 5. Con x = 1 y y = 2 resulta z = 2 + 2 - 5 = -1, y la terna (1, 2, -1) cumple la ecuación porque 2(1) + 2 - (-1) = 5. Con x = 0 y y = 0 resulta z = -5, y la terna (0, 0, -5) también la cumple porque 0 + 0 + 5 = 5. Como x y y pueden tomar infinitos valores, hay infinitas soluciones; por eso se necesitan más ecuaciones para fijar una terna concreta."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema lineal",
+      "puntos": [
+        {
+          "texto": "«Sistema lineal 3×3»: tres ecuaciones lineales con tres incógnitas",
+          "explicacion": "Un sistema lineal de tres ecuaciones con tres incógnitas es un conjunto de tres ecuaciones lineales que comparten las mismas incógnitas $x$, $y$, $z$ y que deben cumplirse al mismo tiempo. Su forma general es: (1) $a_1x+b_1y+c_1z=d_1$; (2) $a_2x+b_2y+c_2z=d_2$; (3) $a_3x+b_3y+c_3z=d_3$. Cada ecuación impone una condición sobre la terna buscada, y se resuelve el sistema cuando se encuentran todas las ternas que satisfacen las tres condiciones a la vez. La notación 3×3 indica el número de ecuaciones multiplicado por el número de incógnitas."
+        },
+        {
+          "texto": "El subíndice $i$ indica el número de ecuación",
+          "explicacion": "En $a_i$, $b_i$, $c_i$, $d_i$ el subíndice $i=1,2,3$ señala a qué ecuación pertenece cada número, y la letra indica la incógnita o el término independiente. Para el sistema (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 se tiene: $a_1=1$, $b_1=1$, $c_1=1$, $d_1=6$; $a_2=2$, $b_2=-1$, $c_2=1$, $d_2=3$; $a_3=1$, $b_3=2$, $c_3=-1$, $d_3=2$. Esta lectura por posición permite comparar coeficientes entre ecuaciones, que es lo que se hace al decidir qué incógnita eliminar."
+        },
+        {
+          "texto": "Ordenar las incógnitas en columnas antes de resolver",
+          "explicacion": "Antes de aplicar cualquier método conviene escribir las tres ecuaciones con las incógnitas en el mismo orden $x$, $y$, $z$ y con los términos independientes a la derecha. Sea el sistema desordenado: x + y = 6 - z; z + 2x = 3 + y; 2y + x - z = 2. Se pasa z al lado izquierdo en la primera ecuación: x + y + z = 6. En la segunda se pasa y al lado izquierdo y se reordena: 2x - y + z = 3. La tercera se reordena a x + 2y - z = 2. El sistema ordenado es (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2, y será el sistema modelo de varios métodos de este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Solución del sistema",
+      "puntos": [
+        {
+          "texto": "«Solución» del sistema: terna que cumple las tres ecuaciones",
+          "explicacion": "Una solución es una terna de números $(x,y,z)$ que, al reemplazar las incógnitas, convierte en verdadera cada una de las tres ecuaciones. Cumplir solo una o dos ecuaciones no basta. Para el sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 se prueba la terna (1, 2, 3): en (1) 1 + 2 + 3 = 6; en (2) 2 - 2 + 3 = 3; en (3) 1 + 4 - 3 = 2. Las tres igualdades son verdaderas, así que es solución. La terna (2, 1, 3) cumple (1) porque 2 + 1 + 3 = 6, pero en (2) da 4 - 1 + 3 = 6, distinto de 3; por tanto no es solución."
+        },
+        {
+          "texto": "«Terna ordenada» $(x,y,z)$: el orden de los valores importa",
+          "explicacion": "Una terna ordenada asigna el primer valor a $x$, el segundo a $y$ y el tercero a $z$; cambiar el orden produce otra terna distinta. Para el sistema modelo, la terna (1, 2, 3) es solución, pero (3, 2, 1) no lo es: en la ecuación (2), 2x - y + z con x = 3, y = 2, z = 1 da 6 - 2 + 1 = 5, y se necesitaba 3. Por eso la respuesta siempre se escribe indicando qué valor corresponde a cada incógnita, por ejemplo x = 1, y = 2, z = 3."
+        },
+        {
+          "texto": "«Conjunto solución»: todas las ternas que resuelven el sistema",
+          "explicacion": "Resolver un sistema significa hallar su conjunto solución, es decir, la totalidad de ternas que cumplen las tres ecuaciones. Puede tener un solo elemento, como $\\{(1,2,3)\\}$ en el sistema modelo; puede tener infinitos elementos, descritos con un parámetro, como $\\{(t,\\,2,\\,4-t)\\;:\\;t\\in\\mathbb{R}\\}$; o puede no tener ninguno, y entonces es el conjunto vacío $\\varnothing$. Escribir el conjunto solución completo evita dar como respuesta una sola terna cuando hay muchas, o dar una terna cuando no hay ninguna."
+        }
+      ]
+    },
+    {
+      "titulo": "Clasificación",
+      "puntos": [
+        {
+          "texto": "«Sistema compatible»: tiene al menos una solución",
+          "explicacion": "Un sistema es compatible cuando existe al menos una terna que cumple las tres ecuaciones a la vez. El sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 es compatible porque (1, 2, 3) lo satisface. La compatibilidad se subdivide según cuántas soluciones haya: una sola o infinitas. Decidir si un sistema es compatible suele ser parte del problema, y se determina al aplicar eliminación hasta llegar a una igualdad."
+        },
+        {
+          "texto": "«Sistema incompatible»: no tiene ninguna solución",
+          "explicacion": "Un sistema es incompatible cuando no existe ninguna terna que cumpla las tres ecuaciones simultáneamente. Un caso evidente es (1) x + y + z = 1; (2) x + y + z = 2; (3) x - y = 0: ninguna terna puede hacer que la suma x + y + z valga 1 y 2 a la vez. En casos menos visibles la contradicción aparece al eliminar incógnitas y llegar a una igualdad falsa como 0 = -2. Su conjunto solución es el conjunto vacío $\\varnothing$."
+        },
+        {
+          "texto": "«Compatible determinado»: exactamente una solución",
+          "explicacion": "Un sistema compatible determinado tiene una sola terna solución. Esto ocurre cuando las tres ecuaciones aportan información independiente, de modo que ninguna se puede obtener combinando las otras dos. El sistema modelo es de este tipo: al eliminar incógnitas se llega a x = 1, y = 2, z = 3 sin libertad en ningún valor. La ausencia de incógnitas libres es lo que caracteriza a un sistema determinado."
+        },
+        {
+          "texto": "«Compatible indeterminado»: infinitas soluciones",
+          "explicacion": "Un sistema compatible indeterminado tiene infinitas ternas solución. Sucede cuando al menos una ecuación es consecuencia de las demás, por lo que el sistema real tiene menos de tres condiciones independientes y queda alguna incógnita libre. Por ejemplo (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8 tiene como soluciones (t, 2, 4 - t) para cualquier número real $t$, porque la ecuación (3) es la suma de (1) y (2): 6 + 2 = 8."
+        },
+        {
+          "texto": "«Sistema consistente» = sistema compatible",
+          "explicacion": "En muchos textos se usa la palabra consistente como sinónimo exacto de compatible: un sistema consistente es el que admite al menos una solución, sea única o infinita. Conviene reconocer ambos nombres porque los problemas y los libros alternan entre ellos. El sistema modelo es consistente porque su conjunto solución $\\{(1,2,3)\\}$ no está vacío."
+        },
+        {
+          "texto": "«Sistema inconsistente» = sistema incompatible",
+          "explicacion": "Inconsistente es el nombre alternativo de incompatible: describe un sistema cuyas ecuaciones se contradicen entre sí y no tienen solución común. El sistema (1) x + y + z = 1; (2) x + y + z = 2; (3) x - y = 0 es inconsistente porque (1) y (2) exigen que la misma suma valga dos números distintos."
+        },
+        {
+          "texto": "«Sistema indeterminado» = compatible indeterminado",
+          "explicacion": "En el lenguaje habitual se abrevia compatible indeterminado como indeterminado, entendiendo que el sistema tiene solución pero no una sola. Se debe distinguir de incompatible: un sistema indeterminado sí tiene soluciones, de hecho infinitas, mientras que uno incompatible no tiene ninguna. El sistema (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8 es indeterminado porque admite todas las ternas (t, 2, 4 - t)."
+        },
+        {
+          "texto": "Todo sistema lineal tiene 0, 1 o infinitas soluciones",
+          "explicacion": "Existen exactamente tres posibilidades para el número de soluciones de un sistema lineal: ninguna (incompatible), una sola (compatible determinado) o infinitas (compatible indeterminado). Nunca puede tener, por ejemplo, dos o tres soluciones. Esta clasificación orienta el trabajo: al eliminar incógnitas se espera llegar a un valor único para cada incógnita, a una igualdad siempre verdadera como 0 = 0 o a una igualdad falsa como 0 = 5, y cada resultado corresponde a uno de los tres casos."
+        },
+        {
+          "texto": "Dos soluciones distintas ⇒ infinitas soluciones",
+          "explicacion": "Sean $P=(x_1,y_1,z_1)$ y $Q=(x_2,y_2,z_2)$ dos soluciones distintas y sea $\\lambda$ un número real cualquiera. Se construye $R=\\big((1-\\lambda)x_1+\\lambda x_2,\\;(1-\\lambda)y_1+\\lambda y_2,\\;(1-\\lambda)z_1+\\lambda z_2\\big)$. En cada ecuación $ax+by+cz=d$ resulta $a x_R+b y_R+c z_R=(1-\\lambda)(ax_1+by_1+cz_1)+\\lambda(ax_2+by_2+cz_2)=(1-\\lambda)d+\\lambda d=d$, así que $R$ también es solución, y distintos valores de $\\lambda$ dan distintos puntos. Ejemplo con el sistema (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8, con P = (0, 2, 4), Q = (1, 2, 3) y $\\lambda=2$: R = (-1)(0, 2, 4) + 2(1, 2, 3) = (2, 2, 2). Verificación: 2 + 2 + 2 = 6; 2 - 2 + 2 = 2; 4 + 4 = 8. Por tanto no existe un sistema lineal con exactamente dos soluciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación geométrica",
+      "puntos": [
+        {
+          "texto": "Cada ecuación lineal con tres incógnitas representa un plano",
+          "explicacion": "Si se interpreta la terna $(x,y,z)$ como un punto del espacio, el conjunto de puntos que cumplen $ax+by+cz=d$ forma un plano, siempre que $a$, $b$, $c$ no sean todos cero. El vector $(a,b,c)$ es perpendicular a ese plano. Por ejemplo, x + y + z = 6 es el plano que corta a los ejes coordenados en (6, 0, 0), (0, 6, 0) y (0, 0, 6): cada punto cumple la ecuación porque 6 + 0 + 0 = 6. Resolver el sistema equivale a buscar los puntos que pertenecen a los tres planos a la vez."
+        },
+        {
+          "texto": "Solución única ⇒ los tres planos se cortan en un punto",
+          "explicacion": "Cuando el sistema es compatible determinado, los tres planos tienen exactamente un punto en común, como tres paredes de una esquina que se encuentran en un vértice. En el sistema modelo ese punto es (1, 2, 3): pertenece a x + y + z = 6, a 2x - y + z = 3 y a x + 2y - z = 2. Los vectores perpendiculares a los planos, (1, 1, 1), (2, -1, 1) y (1, 2, -1), apuntan en direcciones que no están contenidas en un mismo plano, y por eso los planos no pueden compartir una recta."
+        },
+        {
+          "texto": "Infinitas soluciones ⇒ los planos comparten una recta o coinciden",
+          "explicacion": "En un sistema compatible indeterminado los tres planos tienen infinitos puntos comunes. Puede ocurrir que compartan una recta, como en (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8, donde la recta común está formada por los puntos (t, 2, 4 - t). También puede ocurrir que dos planos coincidan y el tercero los corte en una recta, o que los tres planos coincidan y toda la solución sea un plano, como en x + y + z = 3; 2x + 2y + 2z = 6; 3x + 3y + 3z = 9."
+        },
+        {
+          "texto": "Sin solución ⇒ los tres planos no tienen punto común",
+          "explicacion": "Un sistema incompatible corresponde a tres planos sin ningún punto compartido por los tres. Hay varias disposiciones: tres planos paralelos distintos; dos planos paralelos distintos cortados por un tercero; o tres planos que se cortan de dos en dos en rectas paralelas, formando un prisma triangular. Dos planos son paralelos cuando sus coeficientes son proporcionales pero sus términos independientes no lo son, como x + y + z = 1 y 2x + 2y + 2z = 5. El sistema (1) x + y + z = 1; (2) x - y + 2z = 2; (3) 2x + 3z = 5 es del tipo prisma: ningún par de planos es paralelo, pero el lado izquierdo de (3) es la suma de los lados izquierdos de (1) y (2) mientras que 5 es distinto de 1 + 2."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas equivalentes",
+      "puntos": [
+        {
+          "texto": "«Sistemas equivalentes»: tienen el mismo conjunto solución",
+          "explicacion": "Dos sistemas son equivalentes cuando todas las ternas que resuelven uno resuelven también el otro, y viceversa. Los métodos de resolución consisten en transformar el sistema dado en otros equivalentes cada vez más sencillos hasta que las soluciones se leen directamente. Por ejemplo, el sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 es equivalente al sistema escalonado x + y + z = 6; 3y + z = 9; 7z = 21, pues ambos tienen como única solución (1, 2, 3)."
+        },
+        {
+          "texto": "Intercambiar dos ecuaciones ⇒ sistema equivalente",
+          "explicacion": "El orden en que se escriben las ecuaciones no altera las condiciones que debe cumplir una terna, así que intercambiar dos ecuaciones produce un sistema equivalente. Si en el sistema modelo se intercambian (1) y (3), queda x + 2y - z = 2; 2x - y + z = 3; x + y + z = 6, y la terna (1, 2, 3) sigue cumpliendo las tres: 1 + 4 - 3 = 2; 2 - 2 + 3 = 3; 1 + 2 + 3 = 6. Esta operación se usa para colocar al principio la ecuación más cómoda."
+        },
+        {
+          "texto": "Multiplicar una ecuación por $k$ ≠ 0 ⇒ sistema equivalente",
+          "explicacion": "Multiplicar ambos lados de una ecuación por un número $k$ distinto de cero no cambia sus soluciones, porque se puede volver a la ecuación original dividiendo entre $k$. Si en el sistema modelo se multiplica (2) por 2 se obtiene 4x - 2y + 2z = 6, y la terna (1, 2, 3) la cumple: 4 - 4 + 6 = 6. La condición $k\\neq 0$ es indispensable: multiplicar por 0 convierte la ecuación en 0 = 0 y se pierde la restricción que imponía, de modo que el nuevo sistema podría tener más soluciones que el original. También hay que multiplicar todos los términos, incluido el independiente."
+        },
+        {
+          "texto": "Sumar a una ecuación un múltiplo de otra ⇒ sistema equivalente",
+          "explicacion": "Reemplazar una ecuación por la suma de ella misma con un múltiplo de otra ecuación del sistema produce un sistema equivalente, porque la operación se deshace restando el mismo múltiplo. En el sistema modelo se reemplaza (2) por (2) + (-2)(1): (2x - y + z) - 2(x + y + z) = -3y - z en el lado izquierdo y 3 - 2(6) = -9 en el derecho, de donde -3y - z = -9, o también 3y + z = 9. La terna (1, 2, 3) la cumple: 6 + 3 = 9. Esta es la operación básica de la eliminación de incógnitas."
+        },
+        {
+          "texto": "«Combinación lineal» de ecuaciones: suma de ecuaciones multiplicadas por constantes",
+          "explicacion": "Una combinación lineal de ecuaciones se forma multiplicando cada ecuación por un número y sumando los resultados miembro a miembro. Toda terna que cumple las ecuaciones originales cumple la combinación. En el sistema modelo, 2(1) + 3(3) es 2(x + y + z) + 3(x + 2y - z) = 5x + 8y - z en el lado izquierdo y 2(6) + 3(2) = 18 en el derecho. La terna (1, 2, 3) la cumple: 5 + 16 - 3 = 18. Los métodos de reducción buscan combinaciones lineales en las que desaparezca una incógnita."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de sustitución",
+      "puntos": [
+        {
+          "texto": "«Sustitución»: despejar una incógnita y reemplazarla en las otras ecuaciones",
+          "explicacion": "El método de sustitución reduce un sistema 3×3 a uno 2×2: se despeja una incógnita de una ecuación, se reemplaza esa expresión en las otras dos ecuaciones y se obtienen dos ecuaciones con dos incógnitas. Después se resuelve ese sistema 2×2 con los métodos del tema anterior y, por último, se calcula la incógnita despejada al inicio. Es especialmente cómodo cuando alguna incógnita tiene coeficiente 1 o -1, porque el despeje no genera fracciones. Se ilustra con el sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2."
+        },
+        {
+          "texto": "Paso 1: despejar la incógnita de coeficiente más sencillo",
+          "explicacion": "Se elige la incógnita cuyo coeficiente sea 1 o -1 para evitar fracciones. En la ecuación (1) del sistema modelo, x tiene coeficiente 1, así que se despeja: x = 6 - y - z. Esta expresión se llama expresión de x en función de y y z, y se usará en las otras dos ecuaciones. Elegir bien la incógnita y la ecuación ahorra operaciones; despejar una variable con coeficiente como 3 o 5 introduce fracciones que aumentan la probabilidad de errores."
+        },
+        {
+          "texto": "Paso 2: sustituir la expresión en las otras dos ecuaciones",
+          "explicacion": "Se reemplaza x = 6 - y - z en las ecuaciones (2) y (3), cuidando los paréntesis. En (2): 2(6 - y - z) - y + z = 3, que da 12 - 2y - 2z - y + z = 3, es decir -3y - z = -9, o también 3y + z = 9. En (3): (6 - y - z) + 2y - z = 2, que da 6 + y - 2z = 2, es decir y - 2z = -4. Queda el sistema 2×2: 3y + z = 9 y y - 2z = -4, que ya no contiene a x. La ecuación (1) no se vuelve a usar porque ya se empleó para el despeje."
+        },
+        {
+          "texto": "Paso 3: resolver el sistema 2×2 resultante",
+          "explicacion": "Se resuelve 3y + z = 9; y - 2z = -4. De la primera, z = 9 - 3y. Se reemplaza en la segunda: y - 2(9 - 3y) = -4, que da y - 18 + 6y = -4, es decir 7y = 14 y y = 2. Entonces z = 9 - 3(2) = 3. Verificación en las dos ecuaciones: 3(2) + 3 = 9 y 2 - 2(3) = -4. Ambas se cumplen, así que y = 2 y z = 3."
+        },
+        {
+          "texto": "Paso 4: calcular la incógnita despejada al inicio",
+          "explicacion": "Con y = 2 y z = 3 se vuelve a la expresión del paso 1: x = 6 - y - z = 6 - 2 - 3 = 1. La solución del sistema modelo es la terna (1, 2, 3), es decir x = 1, y = 2, z = 3. Se debe sustituir en la expresión despejada y no en otra ecuación cualquiera, porque es la forma más corta de obtener la última incógnita; la comprobación final con las tres ecuaciones originales se hace aparte."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de igualación",
+      "puntos": [
+        {
+          "texto": "«Igualación»: despejar la misma incógnita en las tres ecuaciones",
+          "explicacion": "El método de igualación consiste en despejar una misma incógnita en las tres ecuaciones y luego igualar las expresiones obtenidas en pares, lo que produce dos ecuaciones con dos incógnitas. Después se resuelve ese sistema 2×2 y se halla la incógnita despejada. Es útil cuando la incógnita elegida aparece con coeficientes sencillos en las tres ecuaciones. Se ilustra con el sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2, despejando x."
+        },
+        {
+          "texto": "Despeje de $x$ en cada ecuación",
+          "explicacion": "De (1): x = 6 - y - z. De (2): 2x = 3 + y - z, de donde $x=\\frac{3+y-z}{2}$. De (3): x = 2 - 2y + z. Las tres expresiones valen lo mismo, porque en la solución todas son iguales al valor de x. El despeje debe hacerse en las tres ecuaciones y con la misma incógnita; si se despejan incógnitas diferentes, no hay expresiones comparables."
+        },
+        {
+          "texto": "Igualar dos pares de expresiones",
+          "explicacion": "Se igualan las expresiones de x tomadas en pares distintos, de modo que intervengan las tres ecuaciones. Al igualar (1) con (3): 6 - y - z = 2 - 2y + z, que da y - 2z = -4. Al igualar (1) con (2): $6-y-z=\\frac{3+y-z}{2}$; multiplicando por 2 resulta 12 - 2y - 2z = 3 + y - z, es decir 3y + z = 9. Son las mismas dos ecuaciones que aparecieron por sustitución. Igualar dos veces el mismo par no sirve, porque produciría una sola ecuación nueva."
+        },
+        {
+          "texto": "Resolver el sistema 2×2 y hallar $x$",
+          "explicacion": "Con y - 2z = -4 y 3y + z = 9 se despeja y = 2z - 4 de la primera. Se sustituye en la segunda: 3(2z - 4) + z = 9, que da 6z - 12 + z = 9, es decir 7z = 21 y z = 3. Entonces y = 2(3) - 4 = 2. Finalmente se usa cualquiera de los despejes de x; por ejemplo x = 6 - y - z = 6 - 2 - 3 = 1. La solución es (1, 2, 3), igual que por sustitución, y se comprueba en x = 2 - 2y + z = 2 - 4 + 3 = 1, que da el mismo valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de reducción",
+      "puntos": [
+        {
+          "texto": "«Reducción»: eliminar la misma incógnita en dos pares de ecuaciones",
+          "explicacion": "El método de reducción, también llamado de eliminación, combina las ecuaciones sumándolas o restándolas, con multiplicadores si hace falta, para que desaparezca una incógnita. Se hace dos veces con la misma incógnita, usando dos pares distintos de ecuaciones, y se obtiene un sistema 2×2. Luego se elimina otra incógnita para obtener una ecuación con una sola incógnita, y con ella se calculan las demás. Es el método más general y el que prepara el método de Gauss. Se ilustra con el sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2."
+        },
+        {
+          "texto": "Elegir la incógnita que se elimina",
+          "explicacion": "Conviene eliminar la incógnita cuyos coeficientes ya sean iguales u opuestos en las ecuaciones que se van a combinar, porque así no hace falta multiplicar. En el sistema modelo, la incógnita z tiene coeficientes 1, 1 y -1: en (1) y (3) son opuestos, y en (2) y (3) también. Por eso z se puede eliminar solo con sumas. Si ninguna incógnita presenta esa facilidad, se multiplican las ecuaciones por números que igualen los coeficientes en valor absoluto."
+        },
+        {
+          "texto": "Eliminar $z$ en los pares (1)-(3) y (2)-(3)",
+          "explicacion": "Se suman (1) y (3): (x + y + z) + (x + 2y - z) = 6 + 2, que da 2x + 3y = 8; la llamamos (4). Se suman (2) y (3): (2x - y + z) + (x + 2y - z) = 3 + 2, que da 3x + y = 5; la llamamos (5). Se forma así un sistema 2×2 sin z: (4) 2x + 3y = 8 y (5) 3x + y = 5. Cada par usa una ecuación distinta de la otra, y entre los dos pares aparecen las tres ecuaciones originales."
+        },
+        {
+          "texto": "Resolver el sistema 2×2 por reducción",
+          "explicacion": "Se resuelve (4) 2x + 3y = 8 y (5) 3x + y = 5. Se multiplica (5) por 3: 9x + 3y = 15. Se resta (4): (9x + 3y) - (2x + 3y) = 15 - 8, que da 7x = 7 y x = 1. En (5): 3(1) + y = 5, de donde y = 2. Verificación en (4): 2(1) + 3(2) = 8. Se cumple. Con esto ya se conocen dos de las tres incógnitas."
+        },
+        {
+          "texto": "Hallar la incógnita restante",
+          "explicacion": "Con x = 1 y y = 2 se reemplaza en cualquiera de las ecuaciones originales para obtener z. En (1): 1 + 2 + z = 6, de donde z = 3. Como control, en (3): 1 + 2(2) - z = 2, que da 5 - z = 2 y z = 3, el mismo valor. La solución del sistema modelo es (1, 2, 3). Si dos ecuaciones originales dan valores distintos de z, hay un error en algún paso anterior."
+        },
+        {
+          "texto": "Reducción con multiplicadores: ejemplo resuelto",
+          "explicacion": "Sea (1) 2x + y + z = 6; (2) x - 2y + 3z = 13; (3) 3x + y - 2z = -1. Se elimina y. Restando (3) de (1): (2x - 3x) + (y - y) + (z + 2z) = 6 - (-1), que da -x + 3z = 7; la llamamos (4). Para (1) y (2) se multiplica (1) por 2: 4x + 2y + 2z = 12, y se suma (2): 5x + 5z = 25, es decir x + z = 5; la llamamos (5). Se suman (4) y (5): 4z = 12 y z = 3. Entonces x = 5 - 3 = 2, y de (1): 4 + y + 3 = 6 y y = -1. Verificación: (2) 2 + 2 + 9 = 13; (3) 6 - 1 - 6 = -1. La solución es (2, -1, 3)."
+        },
+        {
+          "texto": "Usar pares distintos de ecuaciones al eliminar",
+          "explicacion": "Las dos ecuaciones sin la incógnita eliminada deben salir de pares diferentes que, en conjunto, involucren las tres ecuaciones originales. Si se combinan dos veces las ecuaciones (1) y (2) para eliminar z, se obtienen dos ecuaciones que son múltiplos una de otra y no determinan nada nuevo: la ecuación (3) nunca habría intervenido. Por ejemplo, en el sistema modelo, usar (1) con (2) y luego (1) con (2) otra vez deja a (3) sin utilizar, y el sistema 2×2 resultante es insuficiente."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema triangular",
+      "puntos": [
+        {
+          "texto": "«Sistema triangular»: cada ecuación pierde una incógnita",
+          "explicacion": "Un sistema triangular tiene la primera ecuación con las tres incógnitas, la segunda con dos y la tercera con una sola, por ejemplo x + y + z = 6; 3y + z = 9; 7z = 21. Se resuelve de abajo hacia arriba y no necesita más eliminaciones. Su valor está en que cualquier sistema 3×3 con solución única puede transformarse en uno triangular equivalente usando solo las operaciones que conservan la equivalencia."
+        },
+        {
+          "texto": "«Sustitución regresiva»: resolver desde la última ecuación",
+          "explicacion": "La sustitución regresiva consiste en despejar la incógnita de la última ecuación y subir reemplazando. En x + y + z = 6; 3y + z = 9; 7z = 21: de la tercera, z = 21 ÷ 7 = 3. En la segunda, 3y + 3 = 9, de donde 3y = 6 y y = 2. En la primera, x + 2 + 3 = 6, de donde x = 1. La solución (1, 2, 3) aparece sin ninguna elaboración adicional, porque en cada paso hay una única incógnita desconocida."
+        },
+        {
+          "texto": "Obtener el sistema triangular por eliminación",
+          "explicacion": "Se parte del sistema modelo (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 y se deja intacta la ecuación (1). A (2) se le suma -2 veces (1): -3y - z = -9, que multiplicada por -1 da 3y + z = 9. A (3) se le resta (1): y - 2z = -4. Para eliminar y de la tercera se multiplica por 3: 3y - 6z = -12, y se resta 3y + z = 9, lo que da -7z = -21, es decir 7z = 21. El sistema triangular es x + y + z = 6; 3y + z = 9; 7z = 21. Este procedimiento sistematizado, aplicado a ecuaciones de cualquier tamaño, es el método de Gauss del tema 22, nombrado en honor a Carl Friedrich Gauss."
+        }
+      ]
+    },
+    {
+      "titulo": "Coeficientes fraccionarios",
+      "puntos": [
+        {
+          "texto": "Eliminar denominadores con el «mínimo común múltiplo»",
+          "explicacion": "Cuando una ecuación tiene coeficientes fraccionarios, se multiplican ambos lados por el mínimo común múltiplo de los denominadores, que es el menor número positivo divisible entre todos ellos. La ecuación resultante es equivalente y tiene coeficientes enteros. Por ejemplo, $\\frac{x}{2}+\\frac{y}{3}-\\frac{z}{6}=\\frac{2}{3}$ tiene denominadores 2, 3, 6 y 3, cuyo mínimo común múltiplo es 6. Al multiplicar por 6: 3x + 2y - z = 4. Verificación con (1, 2, 3): $\\frac{1}{2}+\\frac{2}{3}-\\frac{3}{6}=\\frac{2}{3}$, y también 3 + 4 - 3 = 4."
+        },
+        {
+          "texto": "Sistema con fracciones: ejemplo resuelto",
+          "explicacion": "Sea (1) $\\frac{x}{2}+\\frac{y}{3}-\\frac{z}{6}=\\frac{2}{3}$; (2) $x+\\frac{y}{2}+\\frac{z}{3}=3$; (3) $\\frac{x}{3}-\\frac{y}{2}+\\frac{z}{6}=-\\frac{1}{6}$. Multiplicando cada ecuación por 6: (1') 3x + 2y - z = 4; (2') 6x + 3y + 2z = 18; (3') 2x - 3y + z = -1. Se suman (1') y (3'): 5x - y = 3, de donde y = 5x - 3. Se suma (2') con 2 veces (1'): 12x + 7y = 26. Sustituyendo: 12x + 7(5x - 3) = 26, que da 47x = 47 y x = 1; entonces y = 2. De (1'): 3 + 4 - z = 4, de donde z = 3. Verificación en (2'): 6 + 6 + 6 = 18. La solución es (1, 2, 3)."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas particulares",
+      "puntos": [
+        {
+          "texto": "Sumar las tres ecuaciones cuando hay simetría",
+          "explicacion": "Si cada ecuación contiene solo dos incógnitas y cada incógnita aparece en dos ecuaciones, sumar las tres ecuaciones da el doble de la suma de las incógnitas. Sea x + y = 3; y + z = 5; x + z = 4. Al sumarlas: 2x + 2y + 2z = 12, es decir x + y + z = 6. Restando de este resultado cada ecuación se obtiene una incógnita: z = 6 - 3 = 3, x = 6 - 5 = 1, y = 6 - 4 = 2. Verificación: 1 + 2 = 3; 2 + 3 = 5; 1 + 3 = 4. Se cumple, y la solución es (1, 2, 3)."
+        },
+        {
+          "texto": "Comenzar por la ecuación con menos incógnitas",
+          "explicacion": "Si alguna ecuación contiene solo dos incógnitas, o si una incógnita falta en una ecuación, el trabajo de eliminación ya está parcialmente hecho. Sea (1) x + y = 3; (2) y + z = 5; (3) x + y + z = 6. La ecuación (1) no contiene z, así que se puede eliminar z entre (2) y (3): (3) - (2) da x = 1. Entonces de (1): y = 2, y de (2): z = 3. En lugar de eliminar tres incógnitas se resolvió con una sola resta, porque se aprovechó la forma del sistema."
+        },
+        {
+          "texto": "Cambio de variable con incógnitas en denominadores",
+          "explicacion": "Un sistema con incógnitas en los denominadores se vuelve lineal si se toman como nuevas incógnitas los inversos: $u=\\frac{1}{x}$, $v=\\frac{1}{y}$, $w=\\frac{1}{z}$. Sea $\\frac{1}{x}+\\frac{1}{y}+\\frac{1}{z}=6$; $\\frac{2}{x}-\\frac{1}{y}+\\frac{1}{z}=3$; $\\frac{1}{x}+\\frac{2}{y}-\\frac{1}{z}=2$. Con el cambio resulta u + v + w = 6; 2u - v + w = 3; u + 2v - w = 2, que es el sistema modelo, con solución u = 1, v = 2, w = 3. Se deshace el cambio: x = 1, $y=\\frac{1}{2}$, $z=\\frac{1}{3}$. Las incógnitas originales deben ser distintas de cero. Verificación en la segunda ecuación: 2 - 2 + 3 = 3."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas incompatibles",
+      "puntos": [
+        {
+          "texto": "Igualdad falsa $0=c$ con $c$ ≠ 0 ⇒ sistema incompatible",
+          "explicacion": "Si al combinar las ecuaciones desaparecen todas las incógnitas y queda una igualdad falsa, el sistema no tiene solución. Sea (1) x + y + z = 1; (2) x - y + 2z = 2; (3) 2x + 3z = 5. Se suman (1) y (2): 2x + 3z = 3. Se resta (3): (2x + 3z) - (2x + 3z) = 3 - 5, que da 0 = -2. Es una contradicción, porque 0 no es igual a -2, así que ninguna terna cumple las tres ecuaciones y el conjunto solución es $\\varnothing$. La conclusión es válida aunque no se haya despejado ninguna incógnita."
+        },
+        {
+          "texto": "Dos ecuaciones con lados izquierdos proporcionales y derechos no proporcionales",
+          "explicacion": "Si los coeficientes de dos ecuaciones son proporcionales pero los términos independientes no mantienen esa misma proporción, las ecuaciones se contradicen. En x + y + z = 3 y 2x + 2y + 2z = 5, multiplicar la primera por 2 da 2x + 2y + 2z = 6, que choca con 5. La contradicción es 6 = 5. Cualquier sistema que contenga un par de ecuaciones así es incompatible, sin importar cuál sea la tercera ecuación."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas indeterminados",
+      "puntos": [
+        {
+          "texto": "Identidad $0=0$ ⇒ una ecuación depende de las otras",
+          "explicacion": "Si al eliminar incógnitas una ecuación se reduce a 0 = 0, esa ecuación era consecuencia de las otras y no aportaba información nueva. Sea (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8. Al sumar (1) y (2): 2x + 2z = 8, que restada de (3) da 0 = 0. La identidad es verdadera para cualquier terna, así que solo (1) y (2) imponen condiciones: el sistema tiene dos ecuaciones independientes para tres incógnitas y queda una incógnita libre."
+        },
+        {
+          "texto": "Parámetro $t$: describe las infinitas soluciones",
+          "explicacion": "Se asigna a la incógnita libre una letra, el parámetro $t$, que puede tomar cualquier valor real, y las demás incógnitas se expresan con ella. En el sistema (1) x + y + z = 6; (2) x - y + z = 2; (3) 2x + 2z = 8: restar (2) de (1) da 2y = 4, de donde y = 2. Sustituyendo en (1): x + z = 4. Se toma x = t y entonces z = 4 - t. Las soluciones son (t, 2, 4 - t). Verificación general: (1) t + 2 + 4 - t = 6; (2) t - 2 + 4 - t = 2; (3) 2t + 8 - 2t = 8. Se cumplen para todo $t$."
+        },
+        {
+          "texto": "Cada valor del parámetro da una solución distinta",
+          "explicacion": "Dar valores al parámetro produce ternas concretas del conjunto solución. En (t, 2, 4 - t): con t = 0 se obtiene (0, 2, 4); con t = 1, (1, 2, 3); con t = 2, (2, 2, 2). La última terna se comprueba en las tres ecuaciones: 2 + 2 + 2 = 6; 2 - 2 + 2 = 2; 4 + 4 = 8. Cada valor de t da una terna distinta, por lo que las soluciones son infinitas, y no hay una terna privilegiada. No existe una única forma de elegir el parámetro: tomar z = s lleva a (4 - s, 2, s), que describe exactamente el mismo conjunto."
+        },
+        {
+          "texto": "Dos parámetros cuando solo hay una ecuación independiente",
+          "explicacion": "Si las tres ecuaciones son múltiplos de una sola, quedan dos incógnitas libres y se necesitan dos parámetros. En x + y + z = 3; 2x + 2y + 2z = 6; 3x + 3y + 3z = 9, las dos últimas son 2 y 3 veces la primera. Se toma y = s y z = t, y de la primera x = 3 - s - t. Las soluciones son (3 - s - t, s, t). Con s = 1 y t = 1 se obtiene (1, 1, 1), que cumple 1 + 1 + 1 = 3, 2 + 2 + 2 = 6 y 3 + 3 + 3 = 9. Geométricamente los tres planos coinciden."
+        },
+        {
+          "texto": "Incógnitas libres = 3 menos ecuaciones independientes",
+          "explicacion": "En un sistema compatible, el número de incógnitas libres, o parámetros, es la diferencia entre el número de incógnitas y el de ecuaciones independientes. Con tres incógnitas y tres ecuaciones independientes hay 0 parámetros y la solución es única. Con dos ecuaciones independientes hay 1 parámetro, como en (t, 2, 4 - t), y los planos comparten una recta. Con una sola ecuación independiente hay 2 parámetros, como en (3 - s - t, s, t), y la solución es todo un plano. Una ecuación independiente es la que no se puede obtener combinando las otras."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema con parámetro",
+      "puntos": [
+        {
+          "texto": "Valor de $k$ que determina el tipo de sistema",
+          "explicacion": "Cuando un coeficiente o un término independiente contiene una letra $k$, se eliminan incógnitas igual que siempre y se analiza la igualdad final según el valor de $k$. Sea (1) x + y + z = 3; (2) x - y + z = 1; (3) 2x + 2z = k. Al sumar (1) y (2): 2x + 2z = 4. Al restar de (3): 0 = k - 4. Si k = 4 resulta 0 = 0 y hay infinitas soluciones: de (1) menos (2), y = 1, y x + z = 2, es decir (t, 1, 2 - t). Si k ≠ 4 resulta una igualdad falsa y el sistema es incompatible. Verificación con k = 4 y t = 0: (0, 1, 2) cumple 0 + 1 + 2 = 3; 0 - 1 + 2 = 1; 0 + 4 = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema homogéneo",
+      "puntos": [
+        {
+          "texto": "«Sistema homogéneo»: los tres términos independientes son 0",
+          "explicacion": "Un sistema homogéneo tiene la forma $a_1x+b_1y+c_1z=0$; $a_2x+b_2y+c_2z=0$; $a_3x+b_3y+c_3z=0$, es decir, $d_1=d_2=d_3=0$. Un ejemplo es (1) x + y + z = 0; (2) 2x - y + z = 0; (3) x + 2y - z = 0, que tiene los mismos coeficientes que el sistema modelo. Ser homogéneo es una propiedad de los términos independientes, no de los coeficientes."
+        },
+        {
+          "texto": "Homogéneo ⇒ $(0,0,0)$ es solución",
+          "explicacion": "La terna (0, 0, 0) siempre cumple un sistema homogéneo, porque cada ecuación queda como 0 = 0 al reemplazar. Se llama solución trivial. En el ejemplo anterior: 0 + 0 + 0 = 0; 0 - 0 + 0 = 0; 0 + 0 - 0 = 0. Por esta razón un sistema homogéneo nunca es incompatible: siempre es determinado, con solo la solución trivial, o indeterminado, con otras soluciones además de la trivial."
+        },
+        {
+          "texto": "Homogéneo determinado: solo la solución trivial",
+          "explicacion": "Si las tres ecuaciones homogéneas son independientes, la única solución es la trivial. En (1) x + y + z = 0; (2) 2x - y + z = 0; (3) x + 2y - z = 0, se suman (1) y (3): 2x + 3y = 0. Se suman (2) y (3): 3x + y = 0, de donde y = -3x. Entonces 2x + 3(-3x) = -7x = 0, de modo que x = 0, y = 0 y de (1) z = 0. La solución es (0, 0, 0)."
+        },
+        {
+          "texto": "Homogéneo indeterminado: soluciones no triviales",
+          "explicacion": "Si una ecuación es combinación de las otras, aparecen infinitas soluciones, y entre ellas hay ternas distintas de (0, 0, 0). En (1) x + y + z = 0; (2) x - y + z = 0; (3) 2x + 2z = 0: restar (2) de (1) da 2y = 0, de donde y = 0, y entonces x + z = 0. Con x = t se obtiene z = -t. Las soluciones son (t, 0, -t). Con t = 1 se tiene (1, 0, -1), que cumple 1 + 0 - 1 = 0; 1 - 0 - 1 = 0; 2 - 2 = 0. Las soluciones distintas de la trivial se llaman no triviales."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación",
+      "puntos": [
+        {
+          "texto": "Verificar la terna en las tres ecuaciones originales",
+          "explicacion": "Una vez obtenida una terna, se reemplaza en cada una de las tres ecuaciones del sistema inicial y se comprueba que las tres igualdades sean verdaderas. No basta verificar en ecuaciones obtenidas durante el proceso, porque un error al construirlas pasaría inadvertido. Para el sistema (1) x + y + z = 6; (2) 2x - y + z = 3; (3) x + 2y - z = 2 y la terna (1, 2, 3): (1) 1 + 2 + 3 = 6; (2) 2(1) - 2 + 3 = 3; (3) 1 + 2(2) - 3 = 2. Las tres se cumplen."
+        },
+        {
+          "texto": "Cuidar los signos al restar ecuaciones",
+          "explicacion": "Al restar una ecuación de otra, el signo se aplica a todos los términos de la ecuación que se resta, incluido el término independiente. Por ejemplo, (2x - y + z) - (x + 2y - z) = 2x - y + z - x - 2y + z = x - 3y + 2z: al quitar el paréntesis, +2y pasa a -2y y -z pasa a +z, y olvidar uno de esos cambios daría un resultado distinto. El lado derecho se resta del mismo modo: 3 - 2 = 1. Para evitar errores, conviene encerrar entre paréntesis la ecuación que se resta y distribuir el signo término a término."
+        },
+        {
+          "texto": "Multiplicar todos los términos de la ecuación",
+          "explicacion": "Al multiplicar una ecuación por un número, se multiplican todos sus términos, incluido el independiente. Si se multiplica x - y + 2z = 3 por 2, resulta 2x - 2y + 4z = 6, no 2x - 2y + 4z = 3. El error de olvidar el término independiente produce una ecuación que ya no es equivalente y puede llevar a una terna falsa. Si el número es negativo, cambia el signo de todos los términos, no solo de algunos."
+        }
+      ]
+    },
+    {
+      "titulo": "Elección del método",
+      "puntos": [
+        {
+          "texto": "Coeficiente 1 o -1 ⇒ sustitución cómoda",
+          "explicacion": "Si alguna incógnita tiene coeficiente 1 o -1 en una ecuación, se puede despejar sin producir fracciones, y el método de sustitución resulta directo. En x + y + z = 6, despejar x da x = 6 - y - z, una expresión sin denominadores. Si todos los coeficientes fueran como 3, 5 o 7, el despeje introduciría fracciones, y convendría preferir la reducción."
+        },
+        {
+          "texto": "Coeficientes opuestos ⇒ reducción cómoda",
+          "explicacion": "Si una incógnita tiene coeficientes iguales en valor absoluto y de signos opuestos en dos ecuaciones, se eliminan simplemente sumándolas. En el sistema modelo, z tiene coeficientes 1 en (1) y -1 en (3), de modo que (1) + (3) elimina z de inmediato y da 2x + 3y = 8. La reducción es el método más seguro en general, porque evita fracciones y sirve para cualquier sistema lineal."
+        },
+        {
+          "texto": "Coeficientes con denominadores ⇒ multiplicar antes",
+          "explicacion": "Si el sistema tiene fracciones, primero se transforma cada ecuación en una de coeficientes enteros, multiplicando por el mínimo común múltiplo de sus denominadores, y luego se aplica el método que se prefiera. Resolver con fracciones es posible, pero aumenta el riesgo de errores de cálculo. En el ejemplo con denominadores 2, 3 y 6, multiplicar por 6 reduce todo a números enteros y deja un sistema como (1') 3x + 2y - z = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Tema 19: el sistema 2×2 es un paso interno",
+          "explicacion": "Todos los métodos de este tema reducen un sistema 3×3 a un sistema 2×2 y lo resuelven con los métodos del tema 19: sustitución, igualación y reducción con dos variables. Después se retrocede para obtener la tercera incógnita. En el sistema modelo, la reducción llevó a 2x + 3y = 8 y 3x + y = 5, que se resuelve igual que un sistema de dos ecuaciones con dos incógnitas."
+        },
+        {
+          "texto": "Tema 5: la última incógnita sale de una ecuación de primer grado",
+          "explicacion": "El último paso de cualquier método deja una ecuación lineal con una sola incógnita, como 7z = 21 o 1 + 2 + z = 6, que se resuelve con las técnicas del tema 5 de ecuaciones de primer grado: se aíslan los términos con la incógnita, se agrupan las constantes y se divide entre el coeficiente. Así z = 21 ÷ 7 = 3 en el primer caso y z = 6 - 3 = 3 en el segundo."
+        },
+        {
+          "texto": "Tema 21: el método de Cramer clasifica con determinantes",
+          "explicacion": "El método de Cramer, llamado así por Gabriel Cramer, resuelve sistemas lineales con tantas ecuaciones como incógnitas mediante cocientes de determinantes, y permite decidir si el sistema tiene solución única sin eliminar incógnitas. Es una herramienta alternativa a la reducción vista en este tema y se estudia en el tema 21."
+        },
+        {
+          "texto": "Tema 22: el método de Gauss sistematiza la eliminación",
+          "explicacion": "El método de Gauss, nombrado en honor a Carl Friedrich Gauss, organiza la eliminación vista aquí en un procedimiento ordenado que produce un sistema triangular equivalente y se resuelve por sustitución regresiva. Funciona para sistemas de cualquier tamaño y permite reconocer sistemas incompatibles e indeterminados. Se estudia en el tema 22."
+        }
+      ]
+    }
+  ]
+}

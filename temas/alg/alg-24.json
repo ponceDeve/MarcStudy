@@ -1,0 +1,402 @@
+{
+  "curso": "Álgebra",
+  "tema": "Introducción a la programación lineal",
+  "glosario": {
+    "programación lineal": "Optimiza una función lineal con restricciones lineales",
+    "optimización lineal": "Otro nombre de la programación lineal",
+    "maximizar": "Hallar el mayor valor posible",
+    "minimizar": "Hallar el menor valor posible",
+    "modelo matemático": "Variables, función objetivo y restricciones del problema",
+    "método símplex": "Procedimiento algebraico para optimizar con muchas variables",
+    "variables de decisión": "Incógnitas cuyos valores óptimos se buscan",
+    "función objetivo": "Expresión lineal que se maximiza o minimiza",
+    "función económica": "Otro nombre de la función objetivo",
+    "función a optimizar": "Otro nombre de la función objetivo",
+    "coeficiente": "Número que multiplica a una variable",
+    "restricción": "Condición lineal que deben cumplir las variables",
+    "sistema de restricciones": "Todas las restricciones exigidas a la vez",
+    "no negatividad": "Condición de variables mayores o iguales a cero",
+    "restricción redundante": "No modifica la región factible",
+    "región factible": "Puntos que cumplen todas las restricciones",
+    "conjunto factible": "Otro nombre de la región factible",
+    "región admisible": "Otro nombre de la región factible",
+    "punto factible": "Punto que cumple todas las restricciones",
+    "semiplano": "Región del plano a un lado de recta",
+    "conjunto convexo": "Contiene todo segmento entre dos de sus puntos",
+    "región convexa": "Región que contiene todo segmento entre sus puntos",
+    "región acotada": "Región contenida dentro de una circunferencia finita",
+    "región no acotada": "Región que se extiende indefinidamente",
+    "región vacía": "Región sin ningún punto",
+    "recta frontera": "Recta asociada a una desigualdad lineal",
+    "interceptos": "Puntos donde una recta corta los ejes",
+    "punto de prueba": "Punto usado para decidir el semiplano",
+    "primer cuadrante": "Zona del plano con coordenadas no negativas",
+    "vértice": "Esquina de la región, corte de fronteras",
+    "punto interior": "Punto de la región fuera de su borde",
+    "solución óptima": "Punto factible que da el mejor valor",
+    "valor óptimo": "Mejor valor alcanzado por la función objetivo",
+    "promedio ponderado": "Promedio donde cada valor tiene un peso",
+    "recta de nivel": "Recta donde la función objetivo es constante",
+    "pendiente": "Inclinación de una recta respecto al eje horizontal",
+    "abscisa": "Coordenada horizontal de un punto",
+    "ordenada": "Coordenada vertical de un punto"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de optimización",
+      "puntos": [
+        {
+          "texto": "«Programación lineal» ⇒ optimizar una función lineal con restricciones lineales",
+          "explicacion": "La programación lineal estudia cómo hallar el mejor valor posible, el mayor o el menor, de una expresión de primer grado cuyas variables deben cumplir condiciones que también son de primer grado. Se llama lineal porque las variables aparecen solo a la primera potencia: no hay productos entre ellas, ni raíces, ni potencias mayores que uno, ni variables en denominadores. En este tema se trabaja con dos variables, x e y, de modo que cada posible respuesta es un punto del plano cartesiano y el problema puede resolverse con una gráfica. Por ejemplo, 2x + 3y es lineal, mientras que xy + y no lo es, porque el término xy multiplica las dos variables. Al sustituir x = 3 e y = 1 en 2x + 3y se obtiene 2(3) + 3(1) = 6 + 3 = 9."
+        },
+        {
+          "texto": "«Optimización lineal» = nombre alternativo de la programación lineal",
+          "explicacion": "Optimizar significa buscar el mejor resultado entre muchas posibilidades, y en matemática ese «mejor» se traduce en un máximo o en un mínimo. Cuando la expresión que se optimiza y las condiciones impuestas son todas lineales, la disciplina se llama programación lineal u optimización lineal; ambos nombres designan lo mismo. La palabra programación no se refiere a escribir código de computadora, sino a planificar o programar una decisión. Por eso, resolver un problema de optimización lineal equivale a resolver un problema de programación lineal."
+        },
+        {
+          "texto": "«Maximizar» → hallar el mayor valor posible de la función objetivo",
+          "explicacion": "Maximizar consiste en examinar los puntos permitidos y quedarse con aquel donde la función objetivo toma su valor más grande. Si entre los puntos permitidos la función toma los valores 0, 8, 9 y 6, el máximo es 9, porque ningún otro valor lo supera. Conviene distinguir entre el valor máximo (el número 9) y el punto donde se alcanza (el par de coordenadas que lo produce); ambos forman parte de la respuesta completa. Un enunciado de maximización se reconoce por las palabras máximo, mayor o maximizar."
+        },
+        {
+          "texto": "«Minimizar» → hallar el menor valor posible de la función objetivo",
+          "explicacion": "Minimizar consiste en examinar los puntos permitidos y quedarse con aquel donde la función objetivo toma su valor más pequeño. Si la función toma los valores 0, 8, 9 y 6 en los puntos permitidos, el mínimo es 0, porque ningún otro valor es menor. Igual que en la maximización, la respuesta completa incluye el valor mínimo y el punto donde se alcanza. Un enunciado de minimización se reconoce por las palabras mínimo, menor o minimizar."
+        },
+        {
+          "texto": "«Modelo matemático» = variables + función objetivo + restricciones",
+          "explicacion": "Un modelo matemático de programación lineal es el conjunto formado por tres ingredientes: las variables cuyo valor se busca, la expresión lineal que se desea maximizar o minimizar y el sistema de condiciones lineales que limita los valores permitidos. Una vez escrito el modelo, la resolución es puramente algebraica y gráfica, y ya no depende del contexto del que provino. Por ejemplo, el modelo «maximizar 2x + 3y con x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0» contiene una función objetivo, cuatro restricciones y dos variables; con solo esos datos se puede hallar la respuesta."
+        },
+        {
+          "texto": "Forma general: optimizar $Z = ax + by$ con restricciones lineales y x ≥ 0, y ≥ 0",
+          "explicacion": "La forma general de un problema con dos variables es: optimizar $Z = ax + by$ sujeto a un sistema de restricciones $a_1x + b_1y \\le c_1$, $a_2x + b_2y \\le c_2$, y así sucesivamente (cada una puede ser también con $\\ge$ o con igualdad), junto con $x \\ge 0$ e $y \\ge 0$. Aquí $a$, $b$, $a_i$, $b_i$ y $c_i$ son números reales fijos, y $Z$ representa el valor de la función objetivo. Ejemplo: en «maximizar $Z = 2x + 3y$ sujeto a $x + y \\le 4$, $x + 3y \\le 6$, $x \\ge 0$, $y \\ge 0$» se identifica $a = 2$ y $b = 3$; la primera restricción tiene $a_1 = 1$, $b_1 = 1$, $c_1 = 4$ y la segunda tiene $a_2 = 1$, $b_2 = 3$, $c_2 = 6$."
+        },
+        {
+          "texto": "George Bernard Dantzig formuló el método símplex en 1947",
+          "explicacion": "Este matemático estadounidense presentó en 1947 el método símplex, un procedimiento general para resolver problemas de programación lineal. Ese método, que trabaja con tablas de coeficientes, permite tratar problemas con muchas variables y muchas restricciones, algo imposible de dibujar en un plano. Para dos variables no hace falta usarlo, porque la gráfica de la región permitida basta para encontrar la respuesta, que es el procedimiento desarrollado en este tema."
+        },
+        {
+          "texto": "«Método símplex» → procedimiento algebraico para más de dos variables",
+          "explicacion": "El método símplex es un algoritmo que recorre ordenadamente los vértices de la región permitida, pasando de un vértice a otro vecino que mejore la función objetivo, hasta que ya no es posible mejorarla. Su idea central coincide con la del método gráfico: el óptimo está en un vértice. La diferencia es que el método gráfico exige dibujar, y solo se puede dibujar en el plano (dos variables), mientras que el símplex opera con operaciones entre filas y columnas de números. En este tema se estudia únicamente el método gráfico."
+        }
+      ]
+    },
+    {
+      "titulo": "Variables de decisión",
+      "puntos": [
+        {
+          "texto": "«Variables de decisión» = incógnitas cuyo valor óptimo se busca",
+          "explicacion": "Las variables de decisión, que aquí se llaman x e y, son las incógnitas del problema: cada elección de valores para ellas es una posible decisión, y distintas decisiones producen distintos valores de la función objetivo. Un par ordenado (x, y) se representa como un punto en el plano cartesiano, de modo que decidir equivale a escoger un punto. Por ejemplo, la decisión (3, 1) produce $Z = 2(3) + 3(1) = 9$, mientras que la decisión (1, 1) produce $Z = 2(1) + 3(1) = 5$. Resolver el problema es encontrar entre todos los puntos permitidos aquel que dé el mejor valor."
+        },
+        {
+          "texto": "Cada par (x, y) ∈ plano cartesiano → un punto candidato",
+          "explicacion": "Como el problema tiene dos variables, toda solución candidata es un par ordenado (x, y), donde x es la abscisa (coordenada horizontal) e y es la ordenada (coordenada vertical). Cada candidato puede estar permitido o no, según cumpla o no todas las restricciones. Ejemplo: el par (2, 1) es candidato; al sustituir en x + y ≤ 4 se obtiene 2 + 1 = 3 ≤ 4, que se cumple, y en x + 3y ≤ 6 se obtiene 2 + 3 = 5 ≤ 6, que también se cumple, así que es un candidato permitido."
+        }
+      ]
+    },
+    {
+      "titulo": "Función objetivo",
+      "puntos": [
+        {
+          "texto": "«Función objetivo» $Z = ax + by$",
+          "explicacion": "La función objetivo es la expresión lineal que se desea maximizar o minimizar. Su forma es $Z = ax + by$, donde $Z$ es el valor total de la función objetivo, $x$ e $y$ son las variables de decisión y $a$ y $b$ son los coeficientes. Es el «objetivo» del problema porque indica qué cantidad se quiere llevar al mayor o al menor valor posible. Ejemplo: en $Z = 2x + 3y$ se tiene $a = 2$ y $b = 3$; el valor de $Z$ depende del punto (x, y) elegido."
+        },
+        {
+          "texto": "Coeficientes a y b ∈ números reales constantes",
+          "explicacion": "Los coeficientes $a$ y $b$ son los números que multiplican a $x$ y a $y$ en la función objetivo; permanecen fijos mientras se resuelve el problema. Pueden ser positivos, negativos o cero, y su signo determina hacia dónde crece la función. Por ejemplo, en $Z = 2x + 3y$ ambos son positivos, de modo que $Z$ aumenta cuando $x$ o $y$ aumentan. En $Z = 2x − 3y$, con $a = 2$ y $b = −3$, el valor en (3, 1) es $2(3) − 3(1) = 6 − 3 = 3$, y al aumentar $y$ la función disminuye."
+        },
+        {
+          "texto": "«Función económica» = nombre alternativo de la función objetivo",
+          "explicacion": "En muchos libros de texto en español la función objetivo se llama función económica. Es exactamente la misma expresión lineal $Z = ax + by$: el cambio de nombre no modifica su significado ni el procedimiento. Conocer ambos nombres evita confusiones al consultar distintas fuentes: un enunciado que diga «maximice la función económica $Z = 2x + 3y$» pide lo mismo que «maximice la función objetivo $Z = 2x + 3y$»."
+        },
+        {
+          "texto": "«Función a optimizar» = otro nombre de la función objetivo",
+          "explicacion": "Otra manera de nombrar la función objetivo es función a optimizar, pues es la función cuyo máximo o mínimo se busca. No debe confundirse con las restricciones: las restricciones limitan los puntos que se pueden elegir, mientras que la función a optimizar califica cada punto elegido con un valor. Un problema tiene una sola función a optimizar y puede tener varias restricciones."
+        },
+        {
+          "texto": "Valor de Z en un punto → sustituir x e y",
+          "explicacion": "Para calcular el valor de la función objetivo en un punto (x₀, y₀) se reemplaza x por x₀ y y por y₀ y se efectúan las operaciones. Con $Z = 2x + 3y$ se obtiene: en (4, 0), $Z = 2(4) + 3(0) = 8$; en (3, 1), $Z = 2(3) + 3(1) = 9$; en (0, 2), $Z = 2(0) + 3(2) = 6$; en (0, 0), $Z = 0$. Este cálculo es la operación que se repite en cada vértice durante el método gráfico, por lo que conviene hacerlo con cuidado y ordenar los resultados en una tabla."
+        }
+      ]
+    },
+    {
+      "titulo": "Restricciones lineales",
+      "puntos": [
+        {
+          "texto": "«Restricción» → desigualdad lineal $ax + by \\le c$",
+          "explicacion": "Una restricción es una condición lineal que deben cumplir las variables; normalmente es una desigualdad como $ax + by \\le c$ o $ax + by \\ge c$. Un punto cumple la restricción si, al sustituir sus coordenadas, la desigualdad es verdadera. Ejemplo con $x + 3y \\le 6$: el punto (3, 1) da $3 + 3(1) = 6 \\le 6$, que es verdadero, así que lo cumple; el punto (4, 2) da $4 + 3(2) = 10$, y como $10 > 6$ no lo cumple."
+        },
+        {
+          "texto": "Restricción ≤ ⇒ límite superior para ax + by",
+          "explicacion": "Cuando la restricción usa el signo ≤, la expresión ax + by no puede pasar de cierto valor c: c funciona como un tope. Las soluciones se encuentran en la recta frontera y en uno de los lados de ella. Ejemplo: x + y ≤ 4 permite (2, 2), porque 2 + 2 = 4, y permite (1, 1), porque 1 + 1 = 2 ≤ 4, pero no permite (3, 3), porque 3 + 3 = 6 > 4."
+        },
+        {
+          "texto": "Restricción ≥ ⇒ límite inferior para ax + by",
+          "explicacion": "Cuando la restricción usa el signo ≥, la expresión ax + by debe alcanzar al menos el valor c: c funciona como un piso. Ejemplo: x + 2y ≥ 4 permite (4, 0), porque 4 + 0 = 4, y permite (2, 2), porque 2 + 4 = 6 ≥ 4, pero no permite (1, 1), porque 1 + 2 = 3 < 4. Estas restricciones suelen aparecer en problemas de minimización."
+        },
+        {
+          "texto": "Restricción de igualdad ⇒ puntos solo sobre una recta",
+          "explicacion": "Una restricción de igualdad, como x + y = 4, obliga a los puntos permitidos a estar exactamente sobre la recta correspondiente, de modo que el conjunto permitido deja de ser una región con interior y pasa a ser una recta (o un trozo de ella al combinarse con otras condiciones). Ejemplo: con x + y = 4, el punto (3, 1) cumple porque 3 + 1 = 4, mientras que (2, 1) no cumple porque 2 + 1 = 3 ≠ 4."
+        },
+        {
+          "texto": "«Sistema de restricciones» → todas las condiciones se cumplen a la vez",
+          "explicacion": "El sistema de restricciones es el conjunto de todas las condiciones lineales del problema, y un punto es admisible solo si satisface cada una de ellas simultáneamente; basta que incumpla una para quedar descartado. Ejemplo con el sistema x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0: el punto (3, 1) da 4 ≤ 4, 6 ≤ 6, 3 ≥ 0 y 1 ≥ 0, y cumple las cuatro; el punto (4, 1) da 4 + 1 = 5 > 4, incumple la primera y se descarta aunque cumpla las otras tres."
+        },
+        {
+          "texto": "Restricciones de no negatividad: x ≥ 0, y ≥ 0",
+          "explicacion": "Las condiciones x ≥ 0 e y ≥ 0 se llaman restricciones de no negatividad y exigen que las dos variables sean cero o positivas. Geométricamente limitan la búsqueda al primer cuadrante del plano, es decir, a la zona sobre o a la derecha del eje vertical y sobre o encima del eje horizontal. Ejemplo: el punto (−1, 2) queda descartado porque x = −1 < 0, mientras que (0, 2) es admisible respecto de esta condición porque x = 0 ≥ 0 e y = 2 ≥ 0."
+        },
+        {
+          "texto": "Desigualdad ≤ o ≥ ⇒ la recta frontera también es solución",
+          "explicacion": "Como los signos ≤ y ≥ incluyen la igualdad, los puntos de la recta frontera satisfacen la restricción y pertenecen a la región permitida; por eso la región es cerrada y contiene sus bordes y sus vértices. Esta propiedad es lo que garantiza que el óptimo, que se alcanza en un vértice, sí esté permitido. Ejemplo: en x + 3y ≤ 6 el punto (6, 0) está sobre la frontera porque 6 + 0 = 6, y cumple la restricción."
+        },
+        {
+          "texto": "«Restricción redundante» ⇒ no modifica la región factible",
+          "explicacion": "Una restricción es redundante cuando todos los puntos que cumplen las demás condiciones ya la cumplen; entonces añadirla o quitarla no cambia la región permitida. Se reconoce porque su recta frontera no toca la región. Ejemplo: en el sistema x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0, agregar x + y ≤ 10 es redundante, porque todo punto permitido tiene x + y ≤ 4, y por tanto x + y ≤ 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Región factible",
+      "puntos": [
+        {
+          "texto": "«Región factible» → puntos que cumplen todas las restricciones",
+          "explicacion": "La región factible es el conjunto de todos los puntos (x, y) del plano que satisfacen simultáneamente cada restricción del problema, incluidas las de no negatividad. Es el conjunto donde se permite buscar el óptimo: un punto fuera de ella no puede ser respuesta, por muy bueno que sea su valor de Z. Ejemplo: para x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0, los puntos (0, 0), (2, 1) y (3, 1) pertenecen a la región factible, mientras que (4, 1) y (−1, 2) no pertenecen."
+        },
+        {
+          "texto": "«Conjunto factible» = nombre alternativo de la región factible",
+          "explicacion": "En algunos textos la región factible se denomina conjunto factible, porque es un conjunto de puntos del plano. El adjetivo factible significa posible o realizable bajo las condiciones del problema. Ambos términos se refieren a los mismos puntos y se obtienen con el mismo procedimiento de graficar y sombrear."
+        },
+        {
+          "texto": "«Región admisible» = otro nombre de la región factible",
+          "explicacion": "También se usa región admisible, pues sus puntos son los que el problema admite como respuestas posibles. Una respuesta admisible cumple todas las restricciones; una no admisible incumple al menos una. Esta denominación es equivalente a la de región factible y no cambia el método de resolución."
+        },
+        {
+          "texto": "«Punto factible» ∈ región factible ⇒ cumple todas las restricciones",
+          "explicacion": "Un punto factible es un punto que pertenece a la región factible. Para decidir si un punto lo es, se sustituyen sus coordenadas en todas las restricciones y se verifica cada desigualdad. Ejemplo con x + y ≤ 4 y x + 3y ≤ 6: el punto (2, 1) da 3 ≤ 4 y 5 ≤ 6, por lo que es factible; el punto (1, 2) da 3 ≤ 4 pero 1 + 6 = 7 > 6, por lo que no es factible."
+        },
+        {
+          "texto": "Punto no factible ⇒ incumple alguna restricción",
+          "explicacion": "Un punto no factible es un punto que no pertenece a la región factible porque incumple al menos una restricción. Aunque dé un valor muy favorable de la función objetivo, no puede ser solución del problema. Ejemplo: el punto (5, 0) daría Z = 2(5) + 3(0) = 10, mayor que cualquier valor del problema anterior, pero no es factible porque 5 + 0 = 5 > 4, y por eso se descarta."
+        },
+        {
+          "texto": "Región factible = intersección ∩ de semiplanos",
+          "explicacion": "Cada restricción lineal define un semiplano: la mitad del plano que queda a un lado de su recta frontera. La región factible es el conjunto de puntos que están en todos esos semiplanos a la vez, es decir, su intersección. Ejemplo: el semiplano x + y ≤ 4, el semiplano x + 3y ≤ 6, el semiplano x ≥ 0 y el semiplano y ≥ 0 se intersecan en un cuadrilátero cuyos vértices son (0, 0), (4, 0), (3, 1) y (0, 2)."
+        },
+        {
+          "texto": "«Región convexa» ⇒ contiene todo segmento entre dos de sus puntos",
+          "explicacion": "Un conjunto es convexo si, al tomar dos puntos cualesquiera de él, el segmento que los une queda completamente dentro del conjunto. Como cada semiplano es convexo y la intersección de conjuntos convexos es convexa, la región factible de un problema lineal siempre es convexa; no puede tener «entrantes» ni huecos. Ejemplo: los puntos (0, 0) y (3, 1) son factibles, y el punto medio del segmento que los une es (1,5; 0,5), que cumple 1,5 + 0,5 = 2 ≤ 4 y 1,5 + 1,5 = 3 ≤ 6, por lo que también es factible."
+        },
+        {
+          "texto": "«Región acotada» ⇒ cabe dentro de una circunferencia",
+          "explicacion": "Una región factible es acotada cuando está contenida en alguna circunferencia de radio finito; en otras palabras, no se extiende indefinidamente en ninguna dirección. Si además tiene puntos, es un polígono convexo cerrado. Ejemplo: la región de x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0 es acotada, porque todos sus puntos cumplen x ≤ 4 e y ≤ 2 y quedan dentro del rectángulo de esquinas (0, 0) y (4, 2)."
+        },
+        {
+          "texto": "«Región no acotada» ⇒ se extiende indefinidamente",
+          "explicacion": "Una región factible es no acotada cuando contiene puntos arbitrariamente lejanos del origen, es decir, se prolonga sin fin en alguna dirección. Suele ocurrir cuando todas las restricciones son del tipo ≥. Ejemplo: en x + 2y ≥ 4, 3x + y ≥ 6, x ≥ 0, y ≥ 0 se cumplen las desigualdades en (10, 10), (100, 100), (1000, 1000) y en cualquier punto más alejado en esa dirección, así que la región no tiene límite."
+        },
+        {
+          "texto": "«Región vacía» ⇒ sin puntos que cumplan todas las restricciones",
+          "explicacion": "La región factible es vacía cuando las restricciones son incompatibles entre sí: ningún punto puede satisfacerlas todas a la vez. En ese caso el problema no tiene solución. Ejemplo: las condiciones x + y ≤ 2 y x + y ≥ 5 se contradicen, pues una suma no puede ser a la vez menor o igual que 2 y mayor o igual que 5; por tanto no existe ningún punto factible."
+        }
+      ]
+    },
+    {
+      "titulo": "Trazado de restricciones",
+      "puntos": [
+        {
+          "texto": "Recta frontera → cambiar la desigualdad por una igualdad",
+          "explicacion": "El primer paso para graficar una restricción es reemplazar el signo ≤ o ≥ por =, con lo cual se obtiene la ecuación de una recta: la recta frontera, que separa los puntos que cumplen la restricción de los que no. Esta recta se traza continua, porque está incluida en la solución. Ejemplo: la restricción x + 3y ≤ 6 tiene como recta frontera x + 3y = 6, y la restricción x + y ≤ 4 tiene como recta frontera x + y = 4."
+        },
+        {
+          "texto": "Interceptos: $x = 0 \\Rightarrow y = \\frac{c}{b}$ y $y = 0 \\Rightarrow x = \\frac{c}{a}$",
+          "explicacion": "Para trazar una recta $ax + by = c$ basta ubicar dos de sus puntos, y los más cómodos son los interceptos con los ejes. Con $x = 0$ se obtiene $y = \\frac{c}{b}$ (si $b \\ne 0$), y con $y = 0$ se obtiene $x = \\frac{c}{a}$ (si $a \\ne 0$). Ejemplo con $x + 3y = 6$: si $x = 0$, entonces $3y = 6$ y $y = 2$, que da el punto (0, 2); si $y = 0$, entonces $x = 6$, que da el punto (6, 0). Con $x + y = 4$ se obtienen (0, 4) y (4, 0). Al unir cada par de puntos se traza la recta."
+        },
+        {
+          "texto": "Punto de prueba → decide qué semiplano cumple la restricción",
+          "explicacion": "Una vez trazada la recta frontera, se elige un punto que no esté sobre ella, normalmente el origen (0, 0), y se sustituye en la desigualdad original. Si la desigualdad resulta verdadera, el semiplano que contiene al punto de prueba es la solución; si resulta falsa, lo es el semiplano opuesto. Ejemplo: en x + 3y ≤ 6, el punto (0, 0) da 0 ≤ 6, que es verdadero, así que se sombrea el lado de la recta que contiene al origen."
+        },
+        {
+          "texto": "Prueba con ≥ falsa en (0, 0) ⇒ sombrear el lado opuesto al origen",
+          "explicacion": "Cuando la restricción es de tipo ≥ y la recta frontera deja al origen del lado que no cumple, se sombrea el lado contrario. Ejemplo: en x + 2y ≥ 4, el punto (0, 0) da 0 + 0 = 0 ≥ 4, que es falso, por lo que la solución es el semiplano que no contiene al origen; se comprueba con (4, 4): 4 + 8 = 12 ≥ 4 es verdadero."
+        },
+        {
+          "texto": "Recta frontera por (0, 0) ⇒ elegir otro punto de prueba",
+          "explicacion": "Si la recta frontera pasa por el origen, el punto (0, 0) está sobre ella y no sirve como punto de prueba, porque siempre produciría una igualdad. En ese caso se escoge cualquier otro punto fuera de la recta. Ejemplo: para 2x − y ≥ 0 la frontera 2x − y = 0 pasa por el origen; se prueba (1, 0): 2(1) − 0 = 2 ≥ 0 es verdadero, así que se sombrea el lado donde está (1, 0)."
+        },
+        {
+          "texto": "Región factible = zona sombreada por todas las restricciones",
+          "explicacion": "Después de sombrear el semiplano de cada restricción, la región factible es la zona en la que coinciden todos los sombreados, incluida la que corresponde a x ≥ 0 e y ≥ 0. Para evitar errores conviene numerar las restricciones, trazar todas sobre el mismo plano y marcar con un contorno más grueso el contorno de la zona común. Ejemplo: al superponer x + y ≤ 4, x + 3y ≤ 6 y el primer cuadrante, queda un cuadrilátero con esquinas (0, 0), (4, 0), (3, 1) y (0, 2)."
+        }
+      ]
+    },
+    {
+      "titulo": "Vértices de la región",
+      "puntos": [
+        {
+          "texto": "«Vértice» → esquina de la región, corte de dos rectas frontera",
+          "explicacion": "Un vértice de la región factible es una esquina del polígono: un punto factible donde se cortan dos rectas frontera (dos restricciones, o una restricción y un eje). Los vértices son los candidatos a óptimo según el teorema fundamental, por lo que conocerlos con exactitud es esencial. Ejemplo: la región de x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0 tiene exactamente cuatro vértices: (0, 0), (4, 0), (3, 1) y (0, 2)."
+        },
+        {
+          "texto": "Vértice entre dos restricciones → resolver el sistema de sus rectas",
+          "explicacion": "Para hallar las coordenadas de un vértice se resuelve el sistema formado por las ecuaciones de las dos rectas que se cortan en él, con cualquier método de sistemas de dos ecuaciones (sustitución, igualación o eliminación). Ejemplo con x + y = 4 y x + 3y = 6: al restar la primera de la segunda se obtiene 2y = 2, de donde y = 1; en la primera, x + 1 = 4, de donde x = 3. El vértice es (3, 1). Comprobación: 3 + 1 = 4 y 3 + 3(1) = 6, ambas ecuaciones se cumplen."
+        },
+        {
+          "texto": "Vértices sobre los ejes → sustituir x = 0 o y = 0",
+          "explicacion": "Los vértices que están sobre un eje se hallan sustituyendo x = 0 o y = 0 en la ecuación de la recta frontera correspondiente. Ejemplo: con x = 0 en x + 3y = 6 se obtiene 3y = 6 y y = 2, así que el vértice es (0, 2); con y = 0 en x + y = 4 se obtiene x = 4 y el vértice es (4, 0). El origen (0, 0) es vértice por ser la intersección de los dos ejes, siempre que sea factible; aquí lo es porque 0 ≤ 4 y 0 ≤ 6."
+        },
+        {
+          "texto": "Intersección de rectas ✓ cumplir las demás restricciones para ser vértice",
+          "explicacion": "Que dos rectas frontera se corten no basta para que su punto de corte sea vértice: además debe cumplir todas las demás restricciones, es decir, ser factible. Ejemplo: las rectas x = 0 y x + y = 4 se cortan en (0, 4), pero ese punto no cumple x + 3y ≤ 6, porque 0 + 12 = 12 > 6; por tanto no es vértice. Del mismo modo, y = 0 y x + 3y = 6 se cortan en (6, 0), que no cumple x + y ≤ 4 porque 6 > 4; tampoco es vértice."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema fundamental",
+      "puntos": [
+        {
+          "texto": "Región acotada ⇒ Z alcanza su máximo y su mínimo en vértices",
+          "explicacion": "El teorema fundamental de la programación lineal afirma que, si la región factible es acotada y no vacía, la función objetivo $Z = ax + by$ alcanza su valor máximo y su valor mínimo en vértices de la región. Por ello el problema, que a primera vista exige probar infinitos puntos, se reduce a evaluar $Z$ en un número finito de vértices y comparar. Ejemplo: en la región de vértices (0, 0), (4, 0), (3, 1) y (0, 2) con $Z = 2x + 3y$, los valores en vértices son 0, 8, 9 y 6, de donde el máximo es 9 y el mínimo es 0, ambos en vértices."
+        },
+        {
+          "texto": "Z en un punto ∈ segmento = promedio ponderado de Z en los extremos",
+          "explicacion": "La razón del teorema es que Z es lineal: en un punto intermedio de un segmento, el valor de Z es un promedio ponderado de los valores en los extremos, y un promedio nunca supera al mayor ni es menor que el menor de los valores promediados. Como todo punto de un polígono convexo se obtiene mezclando vértices, su valor de Z queda entre el menor y el mayor valor de los vértices. Ejemplo: el punto (2, 1) es el punto medio del segmento entre (4, 0) y (0, 2); los valores en esos extremos son 8 y 6, cuyo promedio es 7, y en efecto Z(2, 1) = 2(2) + 3(1) = 7, un valor comprendido entre 6 y 8."
+        },
+        {
+          "texto": "Un punto interior ⇒ nunca supera al mejor vértice",
+          "explicacion": "Un punto interior es un punto de la región que no está sobre su borde. Por lo explicado en el promedio ponderado, su valor de Z no puede ser mayor que el del mejor vértice ni menor que el del peor. Ejemplo: el punto (1, 1) es interior, porque 1 + 1 = 2 < 4 y 1 + 3 = 4 < 6, y Z(1, 1) = 2(1) + 3(1) = 5, que es menor que el máximo 9 y mayor que el mínimo 0."
+        },
+        {
+          "texto": "Basta evaluar Z solo en los vértices",
+          "explicacion": "La consecuencia práctica del teorema es una regla de trabajo: se hallan todos los vértices, se calcula Z en cada uno y se compara. El mayor de los valores es el máximo y el menor es el mínimo. No es necesario probar puntos interiores ni puntos de los lados. Ejemplo: con vértices (0, 0), (4, 0), (3, 1) y (0, 2) solo se hacen cuatro cálculos: Z = 0, 8, 9 y 6, y se concluye de inmediato."
+        },
+        {
+          "texto": "«Solución óptima» = punto factible que da el mejor valor",
+          "explicacion": "La solución óptima es el punto (x, y) de la región factible donde la función objetivo alcanza el valor buscado, sea máximo o mínimo. Es un par de coordenadas, no un número aislado. Ejemplo: al maximizar 2x + 3y en la región de vértices (0, 0), (4, 0), (3, 1) y (0, 2), la solución óptima es el punto (3, 1), pues es el punto donde Z es mayor."
+        },
+        {
+          "texto": "«Valor óptimo» = mejor valor alcanzado por la función objetivo",
+          "explicacion": "El valor óptimo es el número que toma la función objetivo en la solución óptima. A diferencia de la solución óptima, que es un punto, el valor óptimo es un número. Ejemplo: para la solución óptima (3, 1), el valor óptimo es Z = 2(3) + 3(1) = 6 + 3 = 9. La respuesta completa de un problema debe indicar ambos: «el máximo es 9 y se alcanza en (3, 1)»."
+        },
+        {
+          "texto": "Región no acotada ⇒ el teorema no garantiza máximo ni mínimo",
+          "explicacion": "El teorema fundamental, en la forma enunciada, exige región acotada. Si la región es no acotada, la función objetivo puede tener un mínimo, un máximo, ambos o ninguno, según la dirección de crecimiento de Z. En esos casos se evalúa Z en los vértices y además se analiza qué ocurre al alejarse indefinidamente en la región. Los ejemplos de regiones no acotadas de este tema muestran un caso con mínimo y sin máximo."
+        }
+      ]
+    },
+    {
+      "titulo": "Rectas de nivel",
+      "puntos": [
+        {
+          "texto": "«Recta de nivel» → $ax + by = k$ con Z constante",
+          "explicacion": "Una recta de nivel es el conjunto de puntos del plano donde la función objetivo toma un mismo valor $k$. Su ecuación es $ax + by = k$, donde $k$ es una constante real que indica el valor de $Z$ en todos los puntos de esa recta. Ejemplo con $Z = 2x + 3y$: si $k = 6$, la recta $2x + 3y = 6$ pasa por (3, 0) y (0, 2), y en ambos $Z = 6$; si $k = 9$, la recta $2x + 3y = 9$ pasa por (3, 1), pues $2(3) + 3(1) = 9$."
+        },
+        {
+          "texto": "Rectas de nivel ⇒ paralelas, con pendiente $-\\frac{a}{b}$",
+          "explicacion": "Todas las rectas de nivel de una misma función objetivo tienen la misma pendiente, $-\\frac{a}{b}$ (cuando $b \\ne 0$), y por eso son paralelas entre sí; solo cambia el valor de $k$, que las desplaza. Ejemplo: para $Z = 2x + 3y$ se despeja $y = -\\frac{2}{3}x + \\frac{k}{3}$, de modo que la pendiente es $-\\frac{2}{3}$ para cualquier $k$. Con $k = 6$ el intercepto es $y = 2$ y con $k = 9$ es $y = 3$: las rectas son paralelas, la segunda más alejada del origen."
+        },
+        {
+          "texto": "Aumentar k ⇒ la recta de nivel se desplaza hacia Z mayor",
+          "explicacion": "Al hacer crecer k, la recta ax + by = k se mueve paralelamente hacia el lado donde Z aumenta; si a y b son positivos, ese lado es el que se aleja del origen. Por eso, para maximizar se desplaza la recta hacia donde Z crece y para minimizar se desplaza hacia donde Z decrece, mientras siga tocando la región factible. Ejemplo: con Z = 2x + 3y, la recta de k = 6 pasa más cerca del origen que la de k = 9."
+        },
+        {
+          "texto": "Método de rectas de nivel → último punto de contacto con la región",
+          "explicacion": "El método de rectas de nivel es una alternativa visual al cálculo en vértices: se dibuja una recta de nivel cualquiera y se la desliza paralelamente en el sentido en que Z mejora. El último punto de la región factible que toca antes de salirse de ella es la solución óptima. Ejemplo: con Z = 2x + 3y, la recta 2x + 3y = 9 toca la región en (3, 1) y si se aumenta k, por ejemplo a 12, la recta 2x + 3y = 12 ya no toca la región (ningún punto factible tiene Z mayor que 9). Por tanto el máximo es 9 y se alcanza en (3, 1)."
+        }
+      ]
+    },
+    {
+      "titulo": "Método gráfico",
+      "puntos": [
+        {
+          "texto": "Paso 1 → definir las variables de decisión",
+          "explicacion": "Se asigna una letra a cada incógnita y se indica qué representa: x e y. Este paso evita confusiones al escribir las condiciones y al interpretar el resultado final. En un problema formulado directamente con ecuaciones, como «maximizar Z = 2x + 3y sujeto a x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0», las variables ya están definidas y se continúa con el paso siguiente."
+        },
+        {
+          "texto": "Paso 2 → escribir la función objetivo Z = ax + by",
+          "explicacion": "Se escribe la expresión lineal a optimizar y se indica si se desea maximizar o minimizar. En el ejemplo, la función objetivo es Z = 2x + 3y y se pide el máximo. Anotar el sentido de la optimización desde el inicio evita elegir al final el valor equivocado entre los calculados en los vértices."
+        },
+        {
+          "texto": "Paso 3 → escribir las restricciones, incluidas x ≥ 0 y y ≥ 0",
+          "explicacion": "Se escribe cada condición como una desigualdad lineal y se añaden las de no negatividad. En el ejemplo, el sistema es x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0. Omitir las condiciones de no negatividad es un error frecuente, porque cambia la región y los vértices."
+        },
+        {
+          "texto": "Paso 4 → graficar la región factible",
+          "explicacion": "Se trazan las rectas frontera mediante sus interceptos, se sombrea el semiplano de cada desigualdad con un punto de prueba y se marca la zona común. En el ejemplo, la recta x + y = 4 pasa por (4, 0) y (0, 4); la recta x + 3y = 6 pasa por (6, 0) y (0, 2); el origen cumple ambas desigualdades, así que la región queda del lado del origen, limitada además por los ejes."
+        },
+        {
+          "texto": "Paso 5 → hallar las coordenadas de los vértices",
+          "explicacion": "Se determinan los puntos de corte entre las rectas frontera y se conservan solo los que cumplen todas las restricciones. En el ejemplo: (0, 0) por la intersección de los ejes; (4, 0) por y = 0 con x + y = 4; (0, 2) por x = 0 con x + 3y = 6; y (3, 1) por la intersección de x + y = 4 con x + 3y = 6, como se resolvió antes."
+        },
+        {
+          "texto": "Paso 6 → evaluar Z en cada vértice",
+          "explicacion": "Se sustituyen las coordenadas de cada vértice en la función objetivo y se ordenan los resultados. Con Z = 2x + 3y: en (0, 0), Z = 0; en (4, 0), Z = 2(4) + 3(0) = 8; en (3, 1), Z = 2(3) + 3(1) = 6 + 3 = 9; en (0, 2), Z = 2(0) + 3(2) = 6. La tabla de valores es 0, 8, 9 y 6."
+        },
+        {
+          "texto": "Paso 7 → elegir el valor óptimo y responder",
+          "explicacion": "Se compara la lista de valores: si se maximiza se elige el mayor y si se minimiza se elige el menor, y se escribe la respuesta indicando el valor y el punto. En el ejemplo, el mayor valor de 0, 8, 9 y 6 es 9, de modo que el máximo de Z es 9 y se alcanza en (3, 1); el mínimo de Z es 0 y se alcanza en (0, 0)."
+        },
+        {
+          "texto": "Verificación del óptimo → comprobar factibilidad y comparar",
+          "explicacion": "Para validar el resultado se comprueba que el punto óptimo cumple todas las restricciones y que ningún otro vértice da un valor mejor. Ejemplo con (3, 1): x + y = 4 ≤ 4 se cumple; x + 3y = 6 ≤ 6 se cumple; x = 3 ≥ 0 y y = 1 ≥ 0 se cumplen. Además, los demás vértices dan 0, 8 y 6, todos menores que 9, y un punto interior como (1, 1) da 5 < 9. El resultado es coherente."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos particulares",
+      "puntos": [
+        {
+          "texto": "Óptimo único ⇒ un solo vértice con el mejor valor",
+          "explicacion": "Lo más habitual es que un solo vértice dé el mejor valor de la función objetivo; entonces la solución óptima es ese punto y es única. Ejemplo: al maximizar 2x + 3y, el valor 9 solo se obtiene en (3, 1), mientras que los otros vértices dan 0, 8 y 6, todos menores. Además, ningún lado de la región es paralelo a las rectas de nivel 2x + 3y = k, cuya pendiente es −2/3: los lados tienen pendientes −1 (de x + y = 4), −1/3 (de x + 3y = 6) y los ejes, y ninguna coincide con −2/3. Por eso el máximo no se repite en un lado completo."
+        },
+        {
+          "texto": "Máximo y mínimo ⇒ en vértices distintos",
+          "explicacion": "El vértice que maximiza la función y el que la minimiza suelen ser distintos, y cada uno se obtiene eligiendo el mayor o el menor de los valores de la tabla. Ejemplo: con 2x + 3y en los vértices (0, 0), (4, 0), (3, 1) y (0, 2), el mínimo 0 está en (0, 0) y el máximo 9 está en (3, 1)."
+        },
+        {
+          "texto": "Origen factible, a > 0, b > 0 ⇒ mínimo Z = 0 en (0, 0)",
+          "explicacion": "Si el origen es un punto factible y los coeficientes de la función objetivo son positivos, todos los demás puntos del primer cuadrante dan Z > 0, así que el mínimo es 0 y se alcanza en el origen. Ejemplo: con Z = 2x + 3y y restricciones x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0, el origen es factible porque 0 ≤ 4 y 0 ≤ 6, y Z(0, 0) = 0 mientras cualquier otro punto factible tiene x > 0 o y > 0 y por tanto Z > 0."
+        },
+        {
+          "texto": "Infinitas soluciones óptimas ⇒ recta de nivel paralela a un lado",
+          "explicacion": "Si la recta de nivel de la función objetivo tiene la misma pendiente que un lado de la región factible, y ese lado es el último en ser tocado, entonces todos los puntos de ese lado son soluciones óptimas: hay infinitas, todas con el mismo valor de Z. En esa situación dos vértices vecinos dan el mismo valor óptimo. La señal para detectarlo es una repetición del mejor valor en la tabla de vértices."
+        },
+        {
+          "texto": "Ejemplo con infinitas soluciones: Z = x + y con $x + y \\le 4$",
+          "explicacion": "Se maximiza Z = x + y sujeto a x + y ≤ 4, x ≤ 3, y ≤ 3, x ≥ 0, y ≥ 0. Los vértices son (0, 0), (3, 0), (3, 1), (1, 3) y (0, 3): por ejemplo, (3, 1) sale de x = 3 con x + y = 4, y (1, 3) sale de y = 3 con x + y = 4. Los valores de Z son 0, 3, 4, 4 y 3. El máximo 4 se repite en (3, 1) y (1, 3); la recta de nivel x + y = k tiene pendiente −1, igual que el lado x + y = 4. Cualquier punto de ese lado, como (2, 2), da Z = 2 + 2 = 4, así que hay infinitas soluciones óptimas."
+        },
+        {
+          "texto": "Región no acotada con mínimo: vértices de $x + 2y \\ge 4$, $3x + y \\ge 6$",
+          "explicacion": "Se minimiza Z = x + y sujeto a x + 2y ≥ 4, 3x + y ≥ 6, x ≥ 0, y ≥ 0. Los vértices son tres. Sobre el eje vertical, x = 0 con 3x + y = 6 da y = 6, y se comprueba 0 + 12 = 12 ≥ 4, así que (0, 6) es vértice. Sobre el eje horizontal, y = 0 con x + 2y = 4 da x = 4, y se comprueba 3(4) = 12 ≥ 6, así que (4, 0) es vértice. Entre las dos rectas, de 3x + y = 6 se tiene y = 6 − 3x; al sustituir en x + 2y = 4 resulta x + 12 − 6x = 4, o sea −5x = −8 y x = $\\frac{8}{5}$; entonces y = 6 − $\\frac{24}{5}$ = $\\frac{6}{5}$. El vértice es $\\left(\\frac{8}{5}, \\frac{6}{5}\\right)$."
+        },
+        {
+          "texto": "Mínimo en región no acotada → evaluar Z en vértices",
+          "explicacion": "Con los vértices (0, 6), $\\left(\\frac{8}{5}, \\frac{6}{5}\\right)$ y (4, 0) y Z = x + y se obtiene: Z(0, 6) = 6; Z$\\left(\\frac{8}{5}, \\frac{6}{5}\\right)$ = $\\frac{8}{5} + \\frac{6}{5} = \\frac{14}{5} = 2{,}8$; Z(4, 0) = 4. El menor valor es $\\frac{14}{5}$, de modo que el mínimo es $\\frac{14}{5}$ y se alcanza en $\\left(\\frac{8}{5}, \\frac{6}{5}\\right)$. Verificación: 3($\\frac{8}{5}$) + $\\frac{6}{5}$ = $\\frac{30}{5}$ = 6 ≥ 6 y $\\frac{8}{5}$ + 2($\\frac{6}{5}$) = $\\frac{20}{5}$ = 4 ≥ 4, ambas se cumplen con igualdad."
+        },
+        {
+          "texto": "Región no acotada sin máximo ⇒ Z crece sin límite",
+          "explicacion": "En una región no acotada, si la función objetivo crece al alejarse en la dirección en que se extiende la región, no existe máximo: para cualquier valor que se proponga hay otro punto factible con Z mayor. En el problema anterior, con Z = x + y, los puntos (10, 10), (100, 100) y (1000, 1000) son factibles y dan Z = 20, 200 y 2000, que crece sin tope. Por tanto, ese problema tiene mínimo pero no tiene máximo, aunque se haya podido evaluar Z en los tres vértices."
+        },
+        {
+          "texto": "Región vacía ⇒ el problema no tiene solución",
+          "explicacion": "Si no existe ningún punto que cumpla todas las restricciones, la región factible es vacía y no hay solución óptima, porque no hay candidatos entre los cuales elegir. Se detecta porque las desigualdades se contradicen o porque los semiplanos sombreados no se intersecan. Ejemplo: x + y ≤ 2 con x + y ≥ 5 exige que una misma suma sea a la vez como máximo 2 y como mínimo 5, lo cual es imposible; el problema carece de solución sin importar la función objetivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con temas previos",
+      "puntos": [
+        {
+          "texto": "Tema 08 «Inecuaciones lineales» → base de cada restricción",
+          "explicacion": "Cada restricción es una inecuación lineal, ahora con dos variables. El tema 08 enseña a resolver una inecuación de una variable y a representarla en la recta real; aquí la misma idea se traslada al plano, donde el conjunto solución de una inecuación es un semiplano. Ejemplo: con y = 0, la restricción x + 3y ≤ 6 se reduce a x ≤ 6, una inecuación lineal de una variable cuyo conjunto solución es todo número menor o igual que 6, coherente con el intercepto (6, 0)."
+        },
+        {
+          "texto": "Tema 19 «Sistema de ecuaciones lineales con dos variables» → hallar vértices",
+          "explicacion": "Los vértices que no están sobre los ejes se calculan resolviendo un sistema de dos ecuaciones lineales con dos variables, como se estudia en el tema 19. Los métodos de sustitución, igualación y eliminación sirven para ello. Ejemplo: el sistema x + y = 4, x + 3y = 6 se resuelve por eliminación y da x = 3, y = 1, que es el vértice (3, 1)."
+        },
+        {
+          "texto": "Tema 23 «Sistema de inecuaciones con dos variables» → región factible",
+          "explicacion": "El tema 23 enseña a graficar un sistema de inecuaciones lineales con dos variables y a identificar su conjunto solución como intersección de semiplanos. La programación lineal parte exactamente de esa región, que aquí se llama región factible, y le añade una función objetivo para elegir el mejor punto. Ejemplo: el sistema x + y ≤ 4, x + 3y ≤ 6, x ≥ 0, y ≥ 0 del tema 23 se convierte en un problema de programación lineal al agregar la función Z = 2x + 3y que se desea maximizar."
+        }
+      ]
+    }
+  ]
+}

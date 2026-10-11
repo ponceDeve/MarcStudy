@@ -1,0 +1,217 @@
+{
+  "curso": "Álgebra",
+  "tema": "Función valor absoluto",
+  "glosario": {
+    "Valor absoluto": "Distancia de un número al cero.",
+    "Función definida por tramos": "Función con fórmulas distintas según el intervalo.",
+    "Vértice": "Punto donde la gráfica cambia de dirección.",
+    "Eje de simetría": "Recta que divide la gráfica en reflejos.",
+    "Función par": "Imágenes iguales para valores opuestos.",
+    "Pendiente": "Inclinación de una recta.",
+    "Traslación": "Desplazamiento de la gráfica sin deformarla.",
+    "Abertura": "Sentido y amplitud de apertura de la gráfica.",
+    "Cero de una función": "Valor de x donde la función vale cero.",
+    "Intersección": "Punto donde dos gráficas se cortan.",
+    "Inyectiva": "Valores distintos tienen imágenes distintas.",
+    "Mínimo absoluto": "Menor valor que toma la función.",
+    "Máximo absoluto": "Mayor valor que toma la función.",
+    "Dominio": "Conjunto de valores permitidos de la variable.",
+    "Rango": "Conjunto de valores que toma la función.",
+    "Desigualdad triangular": "Cota para el valor absoluto de una suma.",
+    "Constante": "Valor que no cambia.",
+    "Raíz cuadrada principal": "Raíz cuadrada no negativa de un número.",
+    "Binomio": "Expresión algebraica de dos términos."
+  },
+  "theory": [
+    {
+      "titulo": "Valor absoluto",
+      "puntos": [
+        {
+          "texto": "Valor absoluto: $|x|=x$ si $x \\geq 0$ y $|x|=-x$ si $x<0$",
+          "explicacion": "El valor absoluto de un número es su distancia al cero en la recta numérica, por lo que nunca es negativo. Si el número ya es no negativo, no cambia; si es negativo, se le cambia el signo. Ejemplos: $|5|=5$, $|0|=0$ y $|-7|=-(-7)=7$. Esta definición por casos es la que permite describir la función con dos fórmulas distintas según el signo de $x$."
+        },
+        {
+          "texto": "$|x| \\geq 0$ y $|x|=0$ ⇒ $x=0$",
+          "explicacion": "El valor absoluto es siempre mayor o igual que cero, y solo vale cero cuando el número es cero. Por ejemplo, $|x-3|=0$ se cumple únicamente con $x=3$. Esta propiedad determina el rango de la función valor absoluto y la posición de su vértice."
+        },
+        {
+          "texto": "$|x-a|$ = distancia entre $x$ y $a$ en la recta numérica",
+          "explicacion": "La expresión $|x-a|$ mide cuántas unidades separan a $x$ de $a$, sin importar quién sea mayor. Por ejemplo, $|7-2|=5$ y $|2-7|=5$. Esta interpretación explica por qué la gráfica de $|x-a|$ tiene su punto más bajo en $x=a$: allí la distancia es $0$."
+        },
+        {
+          "texto": "$|xy|=|x||y|$ para todos los reales $x$ e $y$",
+          "explicacion": "El valor absoluto de un producto es el producto de los valores absolutos. Ejemplo con $x=-3$ e $y=4$: $|(-3)(4)|=|-12|=12$ y $|-3||4|=3 \\cdot 4=12$. Esta propiedad permite sacar factores del valor absoluto, como en $|2x-6|=2|x-3|$. Verificación con $x=5$: $|2(5)-6|=|4|=4$ y $2|5-3|=2 \\cdot 2=4$. La propiedad se aplica solo a productos; no sirve para sumas, y se extiende a cualquier cantidad de factores."
+        },
+        {
+          "texto": "Desigualdad triangular: $|x+y| \\leq |x|+|y|$",
+          "explicacion": "El valor absoluto de una suma nunca supera la suma de los valores absolutos. Con $x=-3$ e $y=4$: $|-3+4|=1$ y $|-3|+|4|=7$, y $1 \\leq 7$. La igualdad se da cuando $x$ e $y$ tienen el mismo signo, como en $|2+5|=7=|2|+|5|$. Por eso $|x+y| \\neq |x|+|y|$ en general."
+        },
+        {
+          "texto": "$|x|=\\sqrt{x^2}$ vincula valor absoluto y raíz cuadrada",
+          "explicacion": "Como la raíz principal es no negativa y $(\\sqrt{x^2})^2=x^2$, el número $\\sqrt{x^2}$ coincide con $|x|$. Ejemplo: $\\sqrt{(-6)^2}=\\sqrt{36}=6=|-6|$. Esta relación permite escribir el valor absoluto de forma algebraica y es la base de varias simplificaciones con radicales."
+        }
+      ]
+    },
+    {
+      "titulo": "Función valor absoluto",
+      "puntos": [
+        {
+          "texto": "Función valor absoluto: $f(x)=|x|$",
+          "explicacion": "Es la función que asigna a cada número real su valor absoluto. Algunos valores: $f(-5)=5$, $f(-1)=1$, $f(0)=0$, $f(3)=3$ y $f(\\dfrac{-1}{2})=\\dfrac{1}{2}$. Cada $x$ tiene una sola imagen, pero valores opuestos como $-5$ y $5$ comparten la misma imagen."
+        },
+        {
+          "texto": "Definición por tramos: $f(x)=-x$ si $x<0$; $f(x)=x$ si $x \\geq 0$",
+          "explicacion": "En cada tramo la función coincide con una función lineal: a la izquierda del origen es $y=-x$, con pendiente $-1$, y a la derecha es $y=x$, con pendiente $1$. Por ejemplo, $f(-4)=-(-4)=4$ usa el primer tramo y $f(4)=4$ usa el segundo. En $x=0$ ambos tramos dan $0$, por lo que la gráfica no tiene saltos."
+        },
+        {
+          "texto": "Dominio de $f(x)=|x|$ = $\\mathbb{R}$",
+          "explicacion": "El valor absoluto está definido para cualquier número real, porque cada número es positivo, negativo o cero y en cada caso la definición da un resultado. No hay restricciones de división ni de raíz, de modo que el dominio es el conjunto de todos los números reales, $(-\\infty, +\\infty)$."
+        },
+        {
+          "texto": "Rango de $f(x)=|x|$ = $[0, +\\infty)$",
+          "explicacion": "Como $|x| \\geq 0$, el rango está contenido en $[0, +\\infty)$. Además, todo $y \\geq 0$ se alcanza, por ejemplo con $x=y$ (o con $x=-y$): para obtener $y=8$ sirven $x=8$ y $x=-8$. Por tanto el rango es exactamente $[0, +\\infty)$."
+        },
+        {
+          "texto": "Gráfica: forma de «V» con vértice en $(0,0)$",
+          "explicacion": "La gráfica consiste en dos semirrectas que parten del origen: la de la izquierda baja con pendiente $-1$ y la de la derecha sube con pendiente $1$. Pasa por $(-2,2)$, $(-1,1)$, $(0,0)$, $(1,1)$ y $(2,2)$. Cada semirrecta forma un ángulo de $45^\\circ$ con el eje horizontal."
+        },
+        {
+          "texto": "Vértice: punto más bajo, $(0,0)$",
+          "explicacion": "El vértice es el punto donde la gráfica cambia de dirección, que en $|x|$ coincide con el mínimo absoluto $0$ alcanzado en $x=0$. Es también el único punto donde la gráfica corta a los ejes, ya que $f(0)=0$ y $|x|=0$ solo si $x=0$."
+        },
+        {
+          "texto": "Función par: $|-x|=|x|$ ⇒ gráfica simétrica respecto del eje vertical",
+          "explicacion": "Al cambiar $x$ por $-x$ el valor absoluto no cambia: $|-x|=|x|$. Por ejemplo, $f(-3)=3=f(3)$. Por eso el eje vertical es un eje de simetría: la rama izquierda es reflejo de la derecha. Esto cumple la definición de función par."
+        },
+        {
+          "texto": "Monotonía: decreciente en $(-\\infty, 0]$ y creciente en $[0, +\\infty)$",
+          "explicacion": "Si $a<b \\leq 0$ entonces $|a|=-a>-b=|b|$, de modo que la función decrece. Por ejemplo, $f(-3)=3>f(-1)=1$. Si $0 \\leq a<b$ entonces $|a|=a<b=|b|$, y la función crece: $f(1)=1<f(4)=4$. El cambio de decrecer a crecer ocurre en el mínimo."
+        },
+        {
+          "texto": "$|x|$ = función no inyectiva en $\\mathbb{R}$",
+          "explicacion": "Existen números distintos con la misma imagen: $f(-2)=2=f(2)$. Gráficamente, la recta horizontal $y=2$ corta la gráfica en dos puntos, $(-2,2)$ y $(2,2)$. Si se restringe el dominio a $[0, +\\infty)$ o a $(-\\infty, 0]$, la función sí es inyectiva, porque en cada una coincide con una función lineal de pendiente no nula."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma general",
+      "puntos": [
+        {
+          "texto": "Forma general: $f(x)=a|x-h|+k$",
+          "explicacion": "Toda función valor absoluto transformada se escribe así, con $a \\neq 0$. El parámetro $h$ desplaza la gráfica horizontalmente, $k$ la desplaza verticalmente y $a$ determina la abertura y el sentido. Con $a=1$, $h=0$ y $k=0$ resulta $|x|$. El vértice es siempre el punto $(h,k)$."
+        },
+        {
+          "texto": "Vértice de $a|x-h|+k$ es $(h,k)$",
+          "explicacion": "Como $|x-h|$ vale $0$ cuando $x=h$, en ese valor la función da $f(h)=k$, y es el punto donde cambia de pendiente. Para $f(x)=2|x-3|+1$ el vértice es $(3,1)$: $f(3)=2(0)+1=1$. Para $f(x)=|x+4|-2$ se tiene $h=-4$ y $k=-2$, con vértice $(-4,-2)$."
+        },
+        {
+          "texto": "Eje de simetría de $a|x-h|+k$: recta $x=h$",
+          "explicacion": "La gráfica es simétrica respecto de la recta vertical que pasa por el vértice. Se comprueba porque $|(h+t)-h|=|t|=|(h-t)-h|$, de modo que $f(h+t)=f(h-t)$. Por ejemplo, en $f(x)=2|x-3|+1$ se cumple $f(5)=2(2)+1=5$ y $f(1)=2(2)+1=5$. La simetría permite graficar solo una rama y reflejarla respecto de la recta $x=h$, ahorrando cálculos: basta hallar los valores a la derecha del vértice y copiarlos a la izquierda a igual distancia."
+        },
+        {
+          "texto": "Traslación: $|x-h|$ mueve $h$ unidades en horizontal",
+          "explicacion": "Con $h>0$ la gráfica se desplaza a la derecha y con $h<0$ a la izquierda. En $f(x)=|x-2|$ el vértice está en $(2,0)$; en $f(x)=|x+2|$, que es $|x-(-2)|$, el vértice está en $(-2,0)$. Verificación: $f(2)=|2-2|=0$ en la primera y $f(-2)=|-2+2|=0$ en la segunda."
+        },
+        {
+          "texto": "Traslación: $|x|+k$ mueve $k$ unidades en vertical",
+          "explicacion": "Sumar $k$ eleva la gráfica si $k>0$ y la baja si $k<0$. En $f(x)=|x|-3$ el vértice es $(0,-3)$ y el rango es $[-3, +\\infty)$. Verificación: $f(0)=-3$, $f(3)=0$ y $f(-3)=0$, de modo que corta el eje horizontal en $x=-3$ y en $x=3$."
+        },
+        {
+          "texto": "Abertura: $a>0$ abre hacia arriba, $a<0$ hacia abajo",
+          "explicacion": "Si $a>0$ el vértice es el mínimo y la gráfica tiene forma de «V». Si $a<0$ el vértice es el máximo y tiene forma de «V» invertida. Por ejemplo, $f(x)=-|x|$ da $f(2)=-2$ y $f(-2)=-2$, y su rango es $(-\\infty, 0]$."
+        },
+        {
+          "texto": "Pendientes de las ramas: $-a$ y $a$ (con $a>0$)",
+          "explicacion": "En $a|x-h|+k$ la rama derecha, para $x \\geq h$, es la recta $y=a(x-h)+k$ con pendiente $a$, y la izquierda, para $x<h$, es $y=-a(x-h)+k$ con pendiente $-a$. Mientras mayor es $|a|$, más cerrada es la «V». En $f(x)=3|x|$, al avanzar una unidad desde el origen la función sube $3$ unidades."
+        },
+        {
+          "texto": "Dominio y rango de $a|x-h|+k$",
+          "explicacion": "El dominio es siempre $\\mathbb{R}$. El rango es $[k, +\\infty)$ si $a>0$ y $(-\\infty, k]$ si $a<0$, porque $k$ es el valor del vértice. Ejemplo: $f(x)=-2|x+1|+5$ tiene dominio $\\mathbb{R}$, vértice $(-1,5)$ y rango $(-\\infty, 5]$; $f(-1)=5$ y $f(1)=-2(2)+5=1$."
+        },
+        {
+          "texto": "Pasar $f(x)=a|x-h|+k$ a tramos",
+          "explicacion": "Se separan los casos $x \\geq h$ y $x<h$. Si $x \\geq h$, $|x-h|=x-h$ y $f(x)=a(x-h)+k$. Si $x<h$, $|x-h|=h-x$ y $f(x)=a(h-x)+k$. Ejemplo: $f(x)=|2x-6|$ es $2x-6$ si $x \\geq 3$ y $6-2x$ si $x<3$. Verificación: $f(5)=4=2(5)-6$ y $f(1)=4=6-2(1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ceros e intersecciones",
+      "puntos": [
+        {
+          "texto": "Intersección con el eje vertical: $f(0)=a|-h|+k$",
+          "explicacion": "Se sustituye $x=0$ en la regla. Para $f(x)=2|x-1|-6$ resulta $f(0)=2|-1|-6=2-6=-4$, y el punto es $(0,-4)$. Para $f(x)=-|x+2|+3$ resulta $f(0)=-2+3=1$. Siempre hay exactamente una intersección con el eje vertical, porque el dominio es todo $\\mathbb{R}$ y $0$ pertenece a él. Esta intersección sirve como punto de control al trazar la gráfica, junto con el vértice y los ceros."
+        },
+        {
+          "texto": "Ceros de $a|x-h|+k$: $|x-h|=-\\dfrac{k}{a}$",
+          "explicacion": "Se aísla el valor absoluto y se compara con cero. Si $-\\dfrac{k}{a}>0$ hay dos ceros, $x=h \\pm \\left(-\\dfrac{k}{a}\\right)$. Si vale $0$ hay un cero, $x=h$, que coincide con el vértice. Si es negativo no hay ceros, pues un valor absoluto no puede ser negativo. Esta discusión determina cuántas veces la gráfica corta el eje horizontal."
+        },
+        {
+          "texto": "Ejemplo: ceros de $f(x)=2|x-1|-6$ son $-2$ y $4$",
+          "explicacion": "Se plantea $2|x-1|-6=0$, luego $|x-1|=3$. Eso da $x-1=3$, con $x=4$, o $x-1=-3$, con $x=-2$. Verificación: $f(4)=2(3)-6=0$ y $f(-2)=2|-3|-6=2(3)-6=0$. El vértice $(1,-6)$ queda entre los dos ceros, por debajo del eje horizontal, lo que explica que existan dos cortes. Además, $f(0)=2(1)-6=-4$ es negativo, coherente con que el origen queda entre los ceros $-2$ y $4$, donde la función es negativa."
+        },
+        {
+          "texto": "Ejemplo: ceros de $f(x)=-|x+2|+3$ son $-5$ y $1$",
+          "explicacion": "Se plantea $-|x+2|+3=0$, de donde $|x+2|=3$. Entonces $x+2=3$ da $x=1$, y $x+2=-3$ da $x=-5$. Verificación: $f(1)=-3+3=0$ y $f(-5)=-|-3|+3=0$. El vértice es $(-2,3)$, el máximo, y la gráfica abre hacia abajo; su rango es $(-\\infty, 3]$."
+        },
+        {
+          "texto": "Sin ceros si el vértice y la abertura apuntan al mismo lado",
+          "explicacion": "Si $a>0$ y $k>0$, el vértice está por encima del eje horizontal y la gráfica abre hacia arriba, así que nunca lo toca: por ejemplo, $f(x)=|x-1|+2$ tiene mínimo $2$ y no tiene ceros. De forma similar, si $a<0$ y $k<0$ el vértice está por debajo y la gráfica abre hacia abajo. Si $k=0$, el único cero es $x=h$."
+        },
+        {
+          "texto": "Interpretación gráfica de $|x|=c$: cortes con la recta $y=c$",
+          "explicacion": "La ecuación $|x|=c$ se resuelve hallando los puntos donde la gráfica de $|x|$ y la recta horizontal $y=c$ se cortan. Si $c>0$ hay dos puntos, $x=-c$ y $x=c$; si $c=0$ hay uno, $x=0$; si $c<0$ no hay ninguno. Por ejemplo, $|x|=5$ da $x=-5$ y $x=5$, mientras que $|x|=-1$ no tiene solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Varios valores absolutos",
+      "puntos": [
+        {
+          "texto": "Suma de dos valores absolutos: se divide la recta en tramos",
+          "explicacion": "Para escribir $f(x)=|x-1|+|x+2|$ sin barras se analizan los signos de $x-1$ y de $x+2$, cuyos ceros $x=1$ y $x=-2$ dividen la recta en tres tramos: $x<-2$, $-2 \\leq x<1$ y $x \\geq 1$. En cada tramo se reemplaza cada valor absoluto por la expresión o su opuesta según el signo, y se simplifica."
+        },
+        {
+          "texto": "Tramo $x<-2$: $f(x)=-2x-1$",
+          "explicacion": "Si $x<-2$ entonces $x-1<0$ y $x+2<0$, de modo que $|x-1|=-(x-1)=-x+1$ y $|x+2|=-(x+2)=-x-2$. La suma es $-x+1-x-2=-2x-1$. Verificación con $x=-3$: $|{-4}|+|{-1}|=5$ y $-2(-3)-1=5$. En este tramo la función es decreciente, pues su pendiente es $-2$: al pasar de $x=-3$ a $x=-2$ el valor baja de $5$ a $3$, calculado como $-2(-2)-1=3$."
+        },
+        {
+          "texto": "Tramo $-2 \\leq x<1$: $f(x)=3$",
+          "explicacion": "Si $-2 \\leq x<1$ entonces $x-1<0$ y $x+2 \\geq 0$, así que $|x-1|=-x+1$ y $|x+2|=x+2$. La suma es $-x+1+x+2=3$, constante. Verificación con $x=0$: $|-1|+|2|=1+2=3$; con $x=-2$: $|-3|+|0|=3$. Al ser constante, la gráfica en este tramo es un segmento horizontal a altura $3$ entre $x=-2$ y $x=1$, que es el valor mínimo de toda la función."
+        },
+        {
+          "texto": "Tramo $x \\geq 1$: $f(x)=2x+1$",
+          "explicacion": "Si $x \\geq 1$ ambos binomios son no negativos y $|x-1|=x-1$, $|x+2|=x+2$. La suma es $x-1+x+2=2x+1$. Verificación con $x=3$: $|2|+|5|=7$ y $2(3)+1=7$. En los puntos de unión los tramos coinciden: en $x=-2$, $-2(-2)-1=3$, y en $x=1$, $2(1)+1=3$."
+        },
+        {
+          "texto": "Rango de $|x-1|+|x+2|$ = $[3, +\\infty)$",
+          "explicacion": "Por los tramos anteriores, el valor mínimo es $3$ y se alcanza en todo el intervalo $[-2,1]$. A la izquierda de $-2$ la función es $-2x-1$, que crece hacia $+\\infty$ cuando $x$ disminuye, y a la derecha de $1$ es $2x+1$, que crece hacia $+\\infty$ cuando $x$ aumenta. Por tanto el rango es $[3, +\\infty)$. Esto coincide con la desigualdad triangular, pues la suma de distancias a $1$ y a $-2$ es al menos la distancia entre ellos, $3$."
+        },
+        {
+          "texto": "$|g(x)|$ refleja hacia arriba las partes negativas de $g$",
+          "explicacion": "La gráfica de $|g(x)|$ se obtiene dibujando $g$ y volteando respecto del eje horizontal todas las porciones que quedan por debajo de él. Por ejemplo, para $g(x)=x^2-4$, negativa en $-2<x<2$, la función $|x^2-4|$ vale $4$ en $x=0$, en lugar de $-4$, y es $x^2-4$ cuando $|x| \\geq 2$. Su rango es $[0, +\\infty)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Ecuaciones con valor absoluto: lectura gráfica",
+          "explicacion": "Resolver una ecuación de valor absoluto equivale a buscar intersecciones entre la gráfica de la función valor absoluto y otra gráfica o recta. Por ejemplo, $|x-1|=2$ se resuelve con $x-1=2$ o $x-1=-2$, es decir $x=3$ o $x=-1$; en la gráfica de $y=|x-1|$ son los puntos donde la altura es $2$. Verificación: $|3-1|=2$ y $|-1-1|=2$."
+        },
+        {
+          "texto": "Inecuaciones con valor absoluto: lectura gráfica",
+          "explicacion": "Resolver $|x|<c$ con $c>0$ equivale a hallar los valores de $x$ para los que la gráfica de $|x|$ queda por debajo de la recta $y=c$, lo que da $-c<x<c$. Por ejemplo, $|x|<3$ se cumple para $x \\in (-3,3)$: $x=2$ da $2<3$, mientras que $x=4$ da $4 \\not< 3$. Si se pide $|x|>c$, la gráfica queda por encima, es decir, $x<-c$ o $x>c$."
+        },
+        {
+          "texto": "Función lineal: cada rama de $|x|$ es una recta",
+          "explicacion": "La función valor absoluto es una función definida por tramos formada por dos funciones lineales con pendientes opuestas. En $f(x)=|x-2|$, la rama $x \\geq 2$ es $y=x-2$ y la rama $x<2$ es $y=2-x$. Conocer la función lineal permite graficar cada rama con dos puntos."
+        },
+        {
+          "texto": "$|x|$ es par; $|x-h|$ con $h \\neq 0$ = función no par",
+          "explicacion": "La función $|x|$ es par porque $|-x|=|x|$. Al trasladarla, el eje de simetría pasa a ser $x=h$ y, si $h \\neq 0$, ya no es el eje vertical, de modo que $f(x)=|x-1|$ no es par: $f(-2)=3$ y $f(2)=1$, que son distintos."
+        }
+      ]
+    }
+  ]
+}

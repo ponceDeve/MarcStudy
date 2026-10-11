@@ -1,0 +1,168 @@
+{
+  "curso": "Aritmética",
+  "tema": "Regla de tres simple",
+  "glosario": {
+    "regla de tres simple": "Método para hallar un cuarto valor proporcional",
+    "dato": "Valor conocido del problema",
+    "incógnita": "Valor desconocido que se busca",
+    "regla de tres simple directa": "Se aplica entre magnitudes directamente proporcionales",
+    "regla de tres simple inversa": "Se aplica entre magnitudes inversamente proporcionales",
+    "multiplicación en aspa": "Producto cruzado de los valores de la tabla",
+    "reducción a la unidad": "Hallar el valor correspondiente a una unidad",
+    "constante de proporcionalidad": "Valor fijo del cociente o del producto",
+    "magnitud": "Propiedad que puede medirse y expresarse en números"
+  },
+  "theory": [
+    {
+      "titulo": "Regla de tres simple",
+      "puntos": [
+        {
+          "texto": "«Regla de tres simple» = hallar el cuarto valor proporcional",
+          "explicacion": "La regla de tres simple es un procedimiento que permite calcular un valor desconocido a partir de tres valores conocidos, cuando todos ellos corresponden a dos magnitudes proporcionales. Se llama de tres porque intervienen tres datos y se busca el cuarto valor, y simple porque solo participan dos magnitudes; cuando participan más se trata de la regla de tres compuesta (se estudia en el tema 56). El procedimiento se basa en que los valores correspondientes de dos magnitudes proporcionales mantienen constante su cociente o su producto, según el tipo de proporcionalidad."
+        },
+        {
+          "texto": "Condición: las magnitudes deben ser proporcionales",
+          "explicacion": "La regla de tres simple solo es válida cuando las dos magnitudes son directamente o inversamente proporcionales (se estudia en el tema 53, Magnitudes proporcionales directa e inversa). Si la relación no es proporcional, el resultado es incorrecto aunque los cálculos sean correctos. Por eso el primer paso de cualquier problema consiste en determinar la clase de relación entre las magnitudes."
+        },
+        {
+          "texto": "Fundamento: propiedad de las proporciones",
+          "explicacion": "Con los valores correspondientes de las magnitudes proporcionales se forma una proporción, y la propiedad fundamental de las proporciones (se estudia en el tema 48) afirma que el producto de los extremos es igual al producto de los medios. Despejando la incógnita de esa igualdad se obtiene la fórmula de resolución. Así, la regla de tres no es un procedimiento aislado, sino una aplicación directa de las razones y proporciones de los temas 45 a 48 a magnitudes proporcionales."
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos",
+      "puntos": [
+        {
+          "texto": "«Dato» = valor conocido del problema",
+          "explicacion": "En una regla de tres simple los datos son los tres valores que el enunciado proporciona. Dos de ellos pertenecen a magnitudes distintas y son valores correspondientes entre sí, es decir, aparecen juntos en una misma situación; el tercero es otro valor de una de las dos magnitudes. La identificación correcta de cuáles son los valores correspondientes es el paso más importante de la resolución, porque de ella depende el orden en que se escribirán en la tabla."
+        },
+        {
+          "texto": "«Incógnita» = valor que se busca",
+          "explicacion": "La incógnita es el cuarto valor de la regla de tres y se representa con la letra $x$. Es el valor que corresponde, en la otra magnitud, al tercer dato conocido. Su posición en la tabla puede variar, pero siempre se encuentra en la misma columna que el dato con el que forma el par correspondiente que se desea calcular, y se halla despejándola de la igualdad de razones o de productos que plantee el tipo de proporcionalidad."
+        },
+        {
+          "texto": "Disposición de datos en dos filas",
+          "explicacion": "Los datos se organizan en una tabla de dos filas, una por magnitud, con los valores correspondientes en la misma columna: $A$: $a$ y $c$; $B$: $b$ y $x$. Aquí $a$ y $b$ son valores correspondientes conocidos, $c$ es el valor de la magnitud $A$ para el que se busca el valor correspondiente $x$ de la magnitud $B$. Colocar los valores de la misma magnitud en la misma fila evita mezclar unidades, y permite reconocer a simple vista el tipo de proporcionalidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de tres directa",
+      "puntos": [
+        {
+          "texto": "«Regla de tres simple directa» → cociente constante",
+          "explicacion": "Se aplica la regla de tres simple directa cuando las magnitudes son directamente proporcionales: al aumentar una, aumenta la otra en la misma proporción. Con los datos dispuestos como $A$: $a$ y $c$; $B$: $b$ y $x$, la proporción es $\\frac{a}{b} = \\frac{c}{x}$, de la que se obtiene $x = \\frac{b\\cdot c}{a}$. Por ejemplo, si 6 unidades de $A$ corresponden a 15 de $B$, a 14 unidades de $A$ les corresponde $x = \\frac{15\\cdot 14}{6} = 35$ de $B$."
+        },
+        {
+          "texto": "«Multiplicación en aspa» en la regla directa",
+          "explicacion": "La multiplicación en aspa es el método mnemotécnico de la regla directa: se multiplican entre sí los dos valores de la diagonal que no contiene a la incógnita y el producto se divide entre el valor que queda en la misma diagonal que ella. Equivale a la propiedad de los productos cruzados, $a\\cdot x = b\\cdot c$, de donde $x = \\frac{b\\cdot c}{a}$. Es un procedimiento rápido, pero solo es correcto cuando la relación es directa; aplicarlo a una relación inversa conduce a resultados erróneos."
+        }
+      ]
+    },
+    {
+      "titulo": "Regla de tres inversa",
+      "puntos": [
+        {
+          "texto": "«Regla de tres simple inversa» → producto constante",
+          "explicacion": "Se aplica la regla de tres simple inversa cuando las magnitudes son inversamente proporcionales: al aumentar una, la otra disminuye en la misma proporción. Con los datos dispuestos como $A$: $a$ y $c$; $B$: $b$ y $x$, se cumple $a\\cdot b = c\\cdot x$, de donde $x = \\frac{a\\cdot b}{c}$. Por ejemplo, si 8 unidades de $A$ corresponden a 15 de $B$, a 12 unidades de $A$ les corresponde $x = \\frac{8\\cdot 15}{12} = 10$ de $B$."
+        },
+        {
+          "texto": "Multiplicación por columnas en la regla inversa",
+          "explicacion": "En la regla inversa se multiplican entre sí los valores de cada columna de la tabla, es decir, $a\\cdot b$ en una columna y $c\\cdot x$ en la otra, y se igualan los productos porque el producto de valores correspondientes es constante. Luego se despeja la incógnita dividiendo el producto conocido entre el dato que acompaña a $x$. Este procedimiento es el análogo de la multiplicación en aspa para magnitudes inversamente proporcionales."
+        },
+        {
+          "texto": "Inversa ⇒ proporción con razón invertida",
+          "explicacion": "La regla inversa también puede resolverse invirtiendo una de las razones: de $\\frac{a}{c} = \\frac{x}{b}$ se obtiene $x = \\frac{a\\cdot b}{c}$, igual que con el producto constante. Es un recurso útil porque convierte un problema inverso en una proporción ordinaria, y se basa en que dos magnitudes son inversamente proporcionales si y solo si una de ellas es directamente proporcional al inverso de la otra."
+        }
+      ]
+    },
+    {
+      "titulo": "Reconocimiento",
+      "puntos": [
+        {
+          "texto": "Criterio para reconocer directa o inversa",
+          "explicacion": "Para decidir si la relación es directa o inversa se pregunta qué sucede con la segunda magnitud cuando la primera se multiplica por un número: si queda multiplicada por el mismo número, es directa; si queda dividida entre él, es inversa. Es un criterio que debe apoyarse en el significado de las magnitudes y no solo en el sentido en que varían."
+        }
+      ]
+    },
+    {
+      "titulo": "Procedimiento",
+      "puntos": [
+        {
+          "texto": "Procedimiento general en seis pasos",
+          "explicacion": "La regla de tres simple se resuelve en seis pasos: identificar las dos magnitudes; ordenar los datos en dos filas con valores correspondientes en la misma columna; decidir si la relación es directa o inversa; plantear la igualdad correspondiente; despejar la incógnita y calcular; y verificar que el resultado sea coherente, es decir, que sea mayor cuando la relación es directa y se aumentó el dato, o menor cuando es inversa. La verificación final evita errores de planteo."
+        }
+      ]
+    },
+    {
+      "titulo": "Reducción a la unidad",
+      "puntos": [
+        {
+          "texto": "«Reducción a la unidad» = hallar el valor de una unidad",
+          "explicacion": "El método de reducción a la unidad consiste en calcular primero el valor correspondiente a una unidad de la magnitud y luego multiplicarlo por la cantidad pedida. En la relación directa, a una unidad de $A$ le corresponden $\\frac{b}{a}$ de $B$, y a $c$ unidades $x = c\\cdot\\frac{b}{a}$. En la relación inversa, a una unidad de $A$ le corresponde $a\\cdot b$ de $B$, y a $c$ unidades $x = \\frac{a\\cdot b}{c}$. Es un método más lento, pero explica por qué funcionan las fórmulas."
+        },
+        {
+          "texto": "«Constante de proporcionalidad» como método de solución",
+          "explicacion": "Otro método consiste en calcular la constante de proporcionalidad con el par conocido y usarla con el valor pedido. En la relación directa, $k = \\frac{b}{a}$ y $x = k\\cdot c$. En la relación inversa, $k = a\\cdot b$ y $x = \\frac{k}{c}$. El método es útil cuando se piden varios valores de la incógnita, pues basta hallar la constante una vez."
+        }
+      ]
+    },
+    {
+      "titulo": "Porcentajes",
+      "puntos": [
+        {
+          "texto": "Porcentaje ⇒ proporción directa con el total",
+          "explicacion": "Los problemas de porcentajes pueden resolverse con una regla de tres simple directa, porque la parte y el total son directamente proporcionales y al total le corresponde el 100 %. Por ejemplo, para hallar qué porcentaje es 35 de 140, se dispone 140 con 100 % y 35 con $x$, y se obtiene $x = \\frac{35\\cdot 100}{140} = 25\\%$. Este método aplica los porcentajes (se estudian en el tema 49) sin memorizar fórmulas adicionales."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Valor pedido igual al dato ⇒ valor correspondiente igual",
+          "explicacion": "Si el valor de la magnitud para el que se pide el correspondiente es igual al dato conocido, es decir, $c = a$, la incógnita coincide con el valor correspondiente conocido, $x = b$, tanto en la relación directa como en la inversa. Sirve como control: si se obtiene un resultado distinto en una situación así, hay un error en el planteo. También sucede que, si $c$ es múltiplo de $a$, el valor $x$ se obtiene directamente multiplicando o dividiendo $b$ por ese múltiplo."
+        },
+        {
+          "texto": "La incógnita puede ocupar cualquier posición",
+          "explicacion": "La incógnita no tiene que estar siempre en la misma posición de la tabla. Puede ocupar el primer o el segundo lugar de cualquiera de las dos filas, y el procedimiento es el mismo: se plantea la igualdad de razones o de productos y se despeja. Lo esencial es respetar que cada columna contenga valores correspondientes, y mantener el tipo de relación, directa o inversa, que le corresponde."
+        },
+        {
+          "texto": "Límite: solo dos magnitudes",
+          "explicacion": "La regla de tres simple se limita a dos magnitudes. Si en el problema intervienen tres o más, relacionadas entre sí con proporcionalidad directa o inversa, ya no se puede resolver con una sola proporción, y hay que usar la regla de tres compuesta (se estudia en el tema 56) o aplicar la regla simple en varias etapas, combinando los efectos de cada magnitud."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: tratar una relación inversa como directa",
+          "explicacion": "El error más frecuente es usar la multiplicación en aspa en una relación inversa. Ocurre porque se piensa solo en el crecimiento de las magnitudes y no en el cociente o el producto constante. El resultado es incorrecto y además incoherente: por ejemplo, un aumento del dato produce un aumento de la incógnita cuando debería producir una disminución. Para evitarlo hay que decidir primero el tipo de relación y comprobar al final la coherencia del resultado."
+        },
+        {
+          "texto": "Error: ubicar valores de distinta magnitud en la misma fila",
+          "explicacion": "Otro error es colocar valores de magnitudes diferentes en una misma fila o columna equivocada, con lo cual las razones que se forman carecen de significado. Cada fila debe contener únicamente valores de una misma magnitud, y cada columna, valores correspondientes. Un orden incorrecto provoca que el resultado sea el inverso del buscado, aunque las operaciones se hayan efectuado sin fallas."
+        },
+        {
+          "texto": "Error: no convertir las unidades",
+          "explicacion": "También es frecuente operar con unidades distintas para una misma magnitud, por ejemplo, horas y minutos, o metros y centímetros. Antes de plantear la regla, todos los valores de una magnitud deben expresarse en la misma unidad, porque el cociente o el producto constante pierde sentido si las unidades difieren. La conversión se hace al principio y no debe olvidarse al expresar la respuesta."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Origen indio: el «trairāśika» aparece en el año 499",
+          "explicacion": "La regla de tres aparece en la matemática india con el nombre de trairāśika. Āryabhaṭa, matemático y astrónomo indio, la describe en su obra Āryabhaṭīya, escrita en el año 499, donde indica multiplicar el fruto por el requerimiento y dividir entre el argumento. Brahmagupta, matemático indio, la presenta en el Brāhmasphuṭasiddhānta, del año 628, con los mismos tres términos. La regla pasó después al mundo islámico y a Europa."
+        },
+        {
+          "texto": "Términos indios: argumento, fruto y requerimiento",
+          "explicacion": "En la formulación india, la regla de tres tiene tres términos: el argumento, que es el valor conocido de la primera magnitud; el fruto, que es el valor correspondiente conocido de la segunda; y el requerimiento, que es el valor de la primera magnitud para el que se busca el correspondiente. El resultado es el fruto multiplicado por el requerimiento y dividido entre el argumento, que es la misma fórmula de la regla directa, $x = \\frac{b\\cdot c}{a}$, con $a$, $b$ y $c$ respectivamente."
+        }
+      ]
+    }
+  ]
+}

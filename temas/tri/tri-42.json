@@ -1,0 +1,166 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ley de tangentes",
+  "glosario": {
+    "Ley de tangentes": "Relación entre lados y tangentes de semiángulos.",
+    "Semisuma": "Mitad de una suma.",
+    "Semidiferencia": "Mitad de una diferencia.",
+    "Tangente": "Razón trigonométrica abreviada tan.",
+    "Cotangente": "Razón inversa de la tangente.",
+    "Lado opuesto": "Lado frente a un ángulo dado.",
+    "Triángulo isósceles": "Triángulo con dos lados iguales.",
+    "Ángulo comprendido": "Ángulo entre dos lados dados.",
+    "Ley de senos": "Lados proporcionales a senos de ángulos opuestos."
+  },
+  "theory": [
+    {
+      "titulo": "Ley de tangentes",
+      "puntos": [
+        {
+          "texto": "«Ley de tangentes»: $\\frac{a-b}{a+b} = \\frac{\\tan\\frac{A-B}{2}}{\\tan\\frac{A+B}{2}}$",
+          "explicacion": "La diferencia de dos lados dividida entre su suma es igual al cociente de la tangente de la semidiferencia de los ángulos opuestos entre la tangente de su semisuma. Aquí A, B y C son los ángulos del triángulo, a, b y c los lados opuestos, y tan es la abreviatura de tangente. Ejemplo con a = 7, b = 5, A = 60° y B ≈ 38,21°: $\\frac{7 - 5}{7 + 5}$ = $\\frac{1}{6}$ ≈ 0,1667, y $\\frac{\\tan 10{,}89°}{\\tan 49{,}11°}$ ≈ $\\frac{0{,}1925}{1{,}1547}$ ≈ 0,1667."
+        }
+      ]
+    },
+    {
+      "titulo": "Segunda forma cíclica",
+      "puntos": [
+        {
+          "texto": "«Ley de tangentes» para b y c: $\\frac{b-c}{b+c} = \\frac{\\tan\\frac{B-C}{2}}{\\tan\\frac{B+C}{2}}$",
+          "explicacion": "Se obtiene cambiando las letras de forma cíclica: los lados que se restan son b y c, y los ángulos son B y C. Ejemplo con b = 5, c = 8, B ≈ 38,21° y C ≈ 81,79°: $\\frac{5 - 8}{5 + 8}$ = $\\frac{-3}{13}$ ≈ -0,2308, y $\\frac{\\tan(-21{,}79°)}{\\tan 60°}$ ≈ $\\frac{-0{,}4}{1{,}732}$ ≈ -0,2309."
+        }
+      ]
+    },
+    {
+      "titulo": "Tercera forma cíclica",
+      "puntos": [
+        {
+          "texto": "«Ley de tangentes» para a y c: $\\frac{a-c}{a+c} = \\frac{\\tan\\frac{A-C}{2}}{\\tan\\frac{A+C}{2}}$",
+          "explicacion": "Los lados que se restan son a y c, y los ángulos son A y C. Ejemplo con a = 7, c = 8, A = 60° y C ≈ 81,79°: $\\frac{7 - 8}{7 + 8}$ = $\\frac{-1}{15}$ ≈ -0,0667, y $\\frac{\\tan(-10{,}89°)}{\\tan 70{,}89°}$ ≈ $\\frac{-0{,}1925}{2{,}8868}$ ≈ -0,0667."
+        }
+      ]
+    },
+    {
+      "titulo": "Mismo orden en cada lado",
+      "puntos": [
+        {
+          "texto": "Si el lado mayor va primero, el ángulo mayor va primero",
+          "explicacion": "El primer lado de la resta debe corresponder al primer ángulo de la resta; si se cambia el orden en un lado pero no en el otro, el signo del resultado es incorrecto. Ejemplo: $\\frac{a - b}{a + b}$ va con $\\frac{\\tan\\frac{A-B}{2}}{\\tan\\frac{A+B}{2}}$, y no con tan de la semidiferencia B - A."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma con cotangente",
+      "puntos": [
+        {
+          "texto": "Forma equivalente: $\\tan\\frac{A-B}{2} = \\frac{a-b}{a+b}\\cot\\frac{C}{2}$",
+          "explicacion": "Como A + B = 180° - C, la semisuma es 90° - C/2, y la tangente de ese ángulo es la cotangente (cot) de C/2; así se evita calcular la semisuma. Ejemplo con a = $\\sqrt{3}+1$, b = $\\sqrt{3}-1$ y C = 60°: $\\frac{a - b}{a + b}$ = $\\frac{2}{2\\sqrt{3}}$ = $\\frac{1}{\\sqrt{3}}$, y cot 30° = $\\sqrt{3}$, así que tan $\\frac{A-B}{2}$ = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Semisuma de ángulos",
+      "puntos": [
+        {
+          "texto": "A + B = 180° - C ⇒ la semisuma es conocida",
+          "explicacion": "La suma de ángulos de un triángulo permite hallar A + B si se conoce C. Ejemplo: con C ≈ 81,79°, A + B = 98,21° y la semisuma es 49,11°."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso LAL",
+      "puntos": [
+        {
+          "texto": "Caso LAL ⇒ ley de tangentes da la semidiferencia",
+          "explicacion": "LAL es la sigla de lado-ángulo-lado: dos lados y el ángulo comprendido. Se halla la semidiferencia (A - B)/2 con la ley de tangentes, y con la semisuma se obtienen A y B sumando y restando; el tercer lado sale con la ley de senos. Ejemplo: a = 7, b = 5 y C ≈ 81,79° dan semisuma 49,11° y semidiferencia 10,89°; entonces A = 49,11° + 10,89° = 60° y B = 49,11° - 10,89° ≈ 38,21°."
+        }
+      ]
+    },
+    {
+      "titulo": "Signo de la diferencia",
+      "puntos": [
+        {
+          "texto": "a > b ⇒ tangente positiva ⇒ A > B",
+          "explicacion": "La semisuma es menor que 90°, así que su tangente es positiva; por eso el signo de la semidiferencia lo decide el signo de a - b, y el lado mayor tiene el ángulo mayor. Ejemplo: con a = 7 y b = 5, a - b = 2 > 0 y A > B, en concreto 60° > 38,21°."
+        }
+      ]
+    },
+    {
+      "titulo": "Triángulo isósceles",
+      "puntos": [
+        {
+          "texto": "a = b ⇒ tangente de la semidiferencia = 0 ⇒ A = B",
+          "explicacion": "Si a = b, el numerador a - b vale 0 y la tangente de la semidiferencia también, por lo que A - B = 0. Ejemplo: en un triángulo con a = b = 5, $\\frac{5 - 5}{5 + 5}$ = 0, y entonces A = B."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción de la ley",
+      "puntos": [
+        {
+          "texto": "Ley de senos y suma a producto ⇒ ley de tangentes",
+          "explicacion": "Con a = k sen A y b = k sen B (ley de senos), $\\frac{a - b}{a + b}$ = $\\frac{\\mathrm{sen}\\,A - \\mathrm{sen}\\,B}{\\mathrm{sen}\\,A + \\mathrm{sen}\\,B}$; al transformar la resta y la suma de senos en productos (transformaciones de suma a producto, que aquí solo se aplican) los factores comunes se simplifican y queda $\\frac{\\tan\\frac{A-B}{2}}{\\tan\\frac{A+B}{2}}$. Comprobación con A = 60° y B = 40°: $\\frac{\\mathrm{sen}\\,60° - \\mathrm{sen}\\,40°}{\\mathrm{sen}\\,60° + \\mathrm{sen}\\,40°}$ ≈ $\\frac{0{,}2232}{1{,}5088}$ ≈ 0,1480, y $\\frac{\\tan 10°}{\\tan 50°}$ ≈ 0,1480."
+        }
+      ]
+    },
+    {
+      "titulo": "Error frecuente",
+      "puntos": [
+        {
+          "texto": "La tangente de la semidiferencia no se reparte entre los ángulos",
+          "explicacion": "La tangente de una semidiferencia no se reparte entre los ángulos, porque la tangente no es una función lineal. Ejemplo: con A = 60° y B = 40°, tan 10° ≈ 0,1763, pero (tan 60° - tan 40°) ÷ 2 ≈ (1,7321 - 0,8391) ÷ 2 ≈ 0,4465."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema exacto",
+      "puntos": [
+        {
+          "texto": "Datos: $a = \\sqrt{3}+1,\\ b = \\sqrt{3}-1$ y C = 60°",
+          "explicacion": "Se pide hallar los ángulos A y B. Se conocen dos lados y el ángulo comprendido entre ellos (LAL), y los lados tienen una diferencia y una suma simples."
+        },
+        {
+          "texto": "Estrategia: forma con cotangente y semisuma",
+          "explicacion": "Se calcula la semidiferencia con la forma tan((A - B)/2) = ((a - b)/(a + b)) cot(C/2), y se combina con A + B = 180° - C."
+        },
+        {
+          "texto": "Operación: hallar A - B y A + B",
+          "explicacion": "a - b = 2 y a + b = $2\\sqrt{3}$, así que la razón vale $\\frac{1}{\\sqrt{3}}$. Como cot 30° = $\\sqrt{3}$, tan $\\frac{A-B}{2}$ = 1, es decir $\\frac{A-B}{2}$ = 45° y A - B = 90°. Además A + B = 120°."
+        },
+        {
+          "texto": "Resultado: A = 105° y B = 15°",
+          "explicacion": "Sumando A + B = 120° y A - B = 90° resulta 2A = 210°, y A = 105°; restando, 2B = 30°, y B = 15°."
+        },
+        {
+          "texto": "Verificación: ley de senos",
+          "explicacion": "$\\frac{a}{\\mathrm{sen}\\,105°}$ = $\\frac{2{,}732}{0{,}9659}$ ≈ 2,828 y $\\frac{b}{\\mathrm{sen}\\,15°}$ = $\\frac{0{,}732}{0{,}2588}$ ≈ 2,828: los cocientes coinciden."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema numérico",
+      "puntos": [
+        {
+          "texto": "Datos: a = 7, b = 5 y C ≈ 81,79°",
+          "explicacion": "Se pide hallar A y B con la ley de tangentes. Los datos son lado-ángulo-lado con el ángulo comprendido C."
+        },
+        {
+          "texto": "Estrategia: semisuma y semidiferencia",
+          "explicacion": "La semisuma es (180° - C)/2; la semidiferencia sale de la ley de tangentes; después A es semisuma más semidiferencia y B es semisuma menos semidiferencia."
+        },
+        {
+          "texto": "Operación: calcular las dos semi",
+          "explicacion": "La semisuma es (180° - 81,79°)/2 ≈ 49,11°. tan $\\frac{A-B}{2}$ = $\\frac{7 - 5}{7 + 5}$ × tan 49,11° ≈ 0,1667 × 1,1547 ≈ 0,1925, y la semidiferencia es arctan 0,1925 ≈ 10,89°."
+        },
+        {
+          "texto": "Resultado: A ≈ 60° y B ≈ 38,21°",
+          "explicacion": "Con más decimales, A ≈ 49,107° + 10,893° = 60° y B ≈ 49,107° - 10,893° = 38,213°, que coincide con 38,21°."
+        },
+        {
+          "texto": "Verificación: ley de cosenos",
+          "explicacion": "cos A = $\\frac{25 + 64 - 49}{80}$ = $\\frac{1}{2}$, así que A = 60°; y A + B + C = 60° + 38,21° + 81,79° = 180°."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Área de trapecio circular",
+  "glosario": {
+    "Trapecio circular": "Región entre dos arcos concéntricos y dos radios",
+    "Sector circular": "Región limitada por dos radios y un arco",
+    "Arco": "Porción de circunferencia entre dos puntos",
+    "Radio": "Distancia del centro a la circunferencia",
+    "Ángulo central": "Ángulo cuyo vértice es el centro",
+    "Concéntricos": "Con el mismo centro",
+    "Radián": "Ángulo cuyo arco mide igual que el radio",
+    "Longitud de arco": "Medida de la curva de un arco",
+    "Base": "Cada arco paralelo del trapecio circular",
+    "Altura": "Distancia entre ambos arcos sobre un radio",
+    "Semisuma": "Suma dividida entre dos",
+    "Perímetro": "Longitud del contorno de una figura",
+    "Corona circular": "Región entre dos circunferencias concéntricas"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Trapecio circular» = sector circular menos otro sector concéntrico del mismo ángulo",
+          "explicacion": "Piensa en un abanico abierto al que se le corta la punta cerca del vértice: lo que sobrevive es una franja curva con dos arcos (uno exterior y otro interior) y dos bordes rectos. Los dos sectores comparten centro y ángulo; lo único que cambia entre ellos es el radio. Un tramo de vereda que rodea en curva una fuente circular, sin llegar al centro, tiene esa forma."
+        },
+        {
+          "texto": "Lados rectos = dos segmentos sobre los radios, de igual longitud",
+          "explicacion": "Cada lado recto es el tramo de radio que queda entre el arco interior y el arco exterior. Los dos radios que limitan el sector son iguales, así que los dos tramos recortados también lo son: ambos miden la diferencia de radios. Esa longitud común es la que luego se llama altura."
+        }
+      ]
+    },
+    {
+      "titulo": "Elementos del trapecio",
+      "puntos": [
+        {
+          "texto": "Radio mayor $R$ = radio del arco exterior",
+          "explicacion": "Es la distancia desde el centro común hasta el arco exterior, el de mayor tamaño. Todo punto de ese arco está a esa misma distancia del centro."
+        },
+        {
+          "texto": "Radio menor $r$ = radio del arco interior",
+          "explicacion": "Es la distancia desde el centro común hasta el arco interior. Siempre es menor que el radio mayor ($R > r$), porque el sector que se recorta es el pequeño."
+        },
+        {
+          "texto": "Ángulo central $\\theta$ = ángulo común a ambos arcos",
+          "explicacion": "Tiene su vértice en el centro común y lo abren los dos radios que limitan la figura. El arco exterior y el interior quedan entre esos mismos radios, así que los dos abren el mismo ángulo. En las fórmulas se usa medido en radianes (rad)."
+        },
+        {
+          "texto": "«Base mayor» $L_1 = \\theta R$ = longitud del arco exterior",
+          "explicacion": "La longitud de un arco es el ángulo en radianes multiplicado por su radio. Con $\\theta = 2$ rad y $R = 7$ m: $L_1 = 2 \\times 7 = 14$ m, es decir, el borde exterior de la vereda mide 14 m."
+        },
+        {
+          "texto": "«Base menor» $L_2 = \\theta r$ = longitud del arco interior",
+          "explicacion": "Se calcula con el mismo ángulo y el radio menor. Con $\\theta = 2$ rad y $r = 4$ m: $L_2 = 2 \\times 4 = 8$ m. El borde interior mide menos que el exterior porque su radio es menor."
+        },
+        {
+          "texto": "«Altura» $h = R - r$ = distancia entre ambos arcos",
+          "explicacion": "Se mide sobre cualquiera de los dos radios, entre el arco interior y el exterior; es la longitud de cada lado recto. Con $R = 7$ m y $r = 4$ m: $h = 7 - 4 = 3$ m, que en la vereda es su ancho."
+        },
+        {
+          "texto": "Área $S$ = superficie encerrada por la franja",
+          "explicacion": "Mide cuánta superficie ocupa la región limitada por los dos arcos y los dos lados rectos. Se expresa en unidades cuadradas (m², cm²), según la unidad de las longitudes. En toda esta teoría $S$ es el área del trapecio circular."
+        }
+      ]
+    },
+    {
+      "titulo": "Área del trapecio",
+      "puntos": [
+        {
+          "texto": "«Área» = $\\frac{L_1 + L_2}{2} \\times h$",
+          "explicacion": "Se usa cuando se conocen las dos bases y la altura. Con $\\theta = 2$ rad, $R = 7$ m y $r = 4$ m: $L_1 = 2 \\times 7 = 14$ m, $L_2 = 2 \\times 4 = 8$ m y $h = 7 - 4 = 3$ m. Semisuma de bases: $\\frac{14 + 8}{2} = 11$ m. Área: $S = 11 \\times 3 = 33$ m². Interpretación: la vereda tiene 11 m de largo medio y 3 m de ancho, así que requiere 33 m² de cemento; a 40 soles por m², el costo es $33 \\times 40 = 1320$ soles."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción del área",
+      "puntos": [
+        {
+          "texto": "Área = sector de radio $R$ menos sector de radio $r$",
+          "explicacion": "Ambos sectores comparten el ángulo $\\theta$. Tomando como conocido que un sector de radio $\\rho$ tiene área $\\frac{\\theta \\rho^2}{2}$ (con $\\theta$ en radianes), la franja es la diferencia: $S = \\frac{\\theta R^2}{2} - \\frac{\\theta r^2}{2}$. Con $\\theta = 2$, $R = 7$ y $r = 4$: sector grande $\\frac{2 \\times 49}{2} = 49$, sector recortado $\\frac{2 \\times 16}{2} = 16$, y $S = 49 - 16 = 33$ m²."
+        },
+        {
+          "texto": "Factor común: $S = \\frac{\\theta}{2}(R^2 - r^2)$",
+          "explicacion": "En la resta anterior, $\\frac{\\theta}{2}$ aparece en los dos términos y sale como factor común. Esta forma sirve cuando los datos son el ángulo y los dos radios. Con $\\theta = 2$, $R = 7$ y $r = 4$: $S = \\frac{2}{2}(49 - 16) = 1 \\times 33 = 33$ m²."
+        },
+        {
+          "texto": "Diferencia de cuadrados: $R^2 - r^2 = (R + r)(R - r)$",
+          "explicacion": "Esta identidad separa la suma y la diferencia de los radios, y la diferencia $R - r$ es justamente la altura $h$. Con $R = 7$ y $r = 4$: $49 - 16 = 33$ y también $(7 + 4)(7 - 4) = 11 \\times 3 = 33$."
+        },
+        {
+          "texto": "Área con el ángulo: $S = \\frac{\\theta}{2}(R + r)\\,h$",
+          "explicacion": "Resulta de reemplazar $R - r$ por $h$ en $S = \\frac{\\theta}{2}(R + r)(R - r)$. Con $\\theta = 2$, $R = 7$, $r = 4$ y $h = 3$: $S = \\frac{2}{2} \\times 11 \\times 3 = 33$ m²."
+        },
+        {
+          "texto": "Suma de bases: $L_1 + L_2 = \\theta(R + r)$",
+          "explicacion": "Se obtiene sumando $L_1 = \\theta R$ y $L_2 = \\theta r$ y sacando $\\theta$ como factor común. Con $\\theta = 2$, $R = 7$ y $r = 4$: $2 \\times 11 = 22$, que coincide con $14 + 8 = 22$."
+        },
+        {
+          "texto": "Reemplazar la suma de bases en el área ⇒ semisuma × altura",
+          "explicacion": "En $S = \\frac{\\theta (R + r)}{2}\\,h$ el numerador $\\theta(R + r)$ es $L_1 + L_2$, de modo que $S = \\frac{L_1 + L_2}{2}\\,h$. La fórmula con ángulo y la de semisuma son entonces la misma. Con números: $\\frac{22}{2} \\times 3 = 11 \\times 3 = 33$ m²."
+        },
+        {
+          "texto": "Semisuma de bases = arco del radio medio $\\frac{R + r}{2}$",
+          "explicacion": "La longitud de un arco crece en proporción a su radio, así que el arco intermedio es el promedio de los dos extremos: $\\frac{\\theta R + \\theta r}{2} = \\theta \\times \\frac{R + r}{2}$. Con $R = 7$ y $r = 4$ el radio medio es 5,5 y el arco medio mide $2 \\times 5{,}5 = 11$ m, igual que la semisuma $\\frac{14 + 8}{2} = 11$ m. Por eso el área equivale a la de una franja «recta» de 11 m de largo y 3 m de ancho."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones útiles",
+      "puntos": [
+        {
+          "texto": "Ángulo central: $\\theta = \\frac{L_1 - L_2}{h}$",
+          "explicacion": "Se deduce restando $L_1 = \\theta R$ y $L_2 = \\theta r$: $L_1 - L_2 = \\theta(R - r) = \\theta h$, y luego se despeja $\\theta$. Sirve cuando el enunciado da las bases y el ancho de la franja pero no el ángulo. Con $L_1 = 14$ m, $L_2 = 8$ m y $h = 3$ m: $\\theta = \\frac{14 - 8}{3} = \\frac{6}{3} = 2$ rad."
+        },
+        {
+          "texto": "Altura: $h = \\frac{2S}{L_1 + L_2}$",
+          "explicacion": "Se despeja $h$ de $S = \\frac{L_1 + L_2}{2}\\,h$: se multiplica por 2 y se divide entre la suma de bases. Sirve cuando se conoce el área y las bases. Con $S = 33$ m², $L_1 = 14$ m y $L_2 = 8$ m: $h = \\frac{2 \\times 33}{14 + 8} = \\frac{66}{22} = 3$ m, el ancho que se puede cubrir con esa superficie."
+        },
+        {
+          "texto": "Bases proporcionales a los radios: $\\frac{L_1}{L_2} = \\frac{R}{r}$",
+          "explicacion": "Como $L_1 = \\theta R$ y $L_2 = \\theta r$, al dividir se simplifica $\\theta$. Con $L_1 = 14$ m y $L_2 = 8$ m: $\\frac{14}{8} = \\frac{7}{4}$, que es justo $\\frac{R}{r} = \\frac{7}{4}$. Permite hallar un radio si se conocen las dos bases y el otro radio."
+        }
+      ]
+    },
+    {
+      "titulo": "Perímetro",
+      "puntos": [
+        {
+          "texto": "Perímetro = $L_1 + L_2 + 2h$",
+          "explicacion": "El contorno recorre los dos arcos y los dos lados rectos, que miden $h$ cada uno. Con $L_1 = 14$ m, $L_2 = 8$ m y $h = 3$ m: $14 + 8 + 2 \\times 3 = 28$ m. Si se cerca el borde de la vereda y el metro de cerca cuesta 15 soles, el costo es $28 \\times 15 = 420$ soles."
+        }
+      ]
+    },
+    {
+      "titulo": "Elegir la fórmula",
+      "puntos": [
+        {
+          "texto": "Datos $L_1$, $L_2$ y $h$ ⇒ semisuma × altura",
+          "explicacion": "Cuando ya están las dos bases y la altura no hace falta el ángulo ni los radios. Con $L_1 = 14$ m, $L_2 = 8$ m y $h = 3$ m: $S = \\frac{14 + 8}{2} \\times 3 = 33$ m²."
+        },
+        {
+          "texto": "Datos $\\theta$, $R$ y $r$ ⇒ $S = \\frac{\\theta}{2}(R^2 - r^2)$",
+          "explicacion": "Cuando solo se dan el ángulo en radianes y los dos radios, esta forma evita calcular primero las bases. Con $\\theta = 1{,}5$ rad, $R = 10$ m y $r = 6$ m: $S = \\frac{1{,}5}{2}(100 - 36) = 0{,}75 \\times 64 = 48$ m². Comprobación con bases: $L_1 = 15$ m, $L_2 = 9$ m, $h = 4$ m y $\\frac{15 + 9}{2} \\times 4 = 48$ m²."
+        }
+      ]
+    },
+    {
+      "titulo": "Condiciones de uso",
+      "puntos": [
+        {
+          "texto": "Fórmulas con $\\theta$ ✓ ángulo en radianes (rad)",
+          "explicacion": "La longitud de arco $\\theta R$ solo es válida si el ángulo está en radianes; si viene en grados hay que convertirlo con $180° = \\pi$ rad. Con $\\theta = 60°$, $R = 6$ m y $r = 3$ m: $\\theta = \\frac{\\pi}{3}$ rad, $L_1 = \\frac{\\pi}{3} \\times 6 = 2\\pi$ m, $L_2 = \\frac{\\pi}{3} \\times 3 = \\pi$ m y $h = 3$ m. Entonces $S = \\frac{2\\pi + \\pi}{2} \\times 3 = \\frac{9\\pi}{2} \\approx 14{,}14$ m². Si se usara 60 en lugar de $\\frac{\\pi}{3}$, saldría $L_1 = 360$ m, un valor absurdo para ese arco."
+        },
+        {
+          "texto": "Bases y altura ✓ la misma unidad ⇒ área en unidad cuadrada",
+          "explicacion": "Las tres longitudes deben estar en la misma unidad antes de operar; el resultado queda en esa unidad al cuadrado. Con $L_1 = 140$ cm, $L_2 = 80$ cm y $h = 30$ cm: $S = \\frac{140 + 80}{2} \\times 30 = 110 \\times 30 = 3300$ cm². Como $1$ m² $= 10000$ cm², equivale a $0{,}33$ m²."
+        },
+        {
+          "texto": "Ambos arcos ✓ mismo centro y mismo ángulo",
+          "explicacion": "Las fórmulas de esta teoría describen solo la franja entre dos arcos concéntricos que abren el mismo ángulo, porque de ahí salen $L_1 = \\theta R$, $L_2 = \\theta r$ y los lados rectos iguales. Si los arcos tuvieran distinto ángulo, no estarían limitados por los mismos radios y la figura no sería un trapecio circular."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "$\\theta = 2\\pi$ ⇒ corona circular: $S = \\pi(R^2 - r^2)$",
+          "explicacion": "Si el ángulo es la vuelta completa, la franja rodea todo el centro y queda la región entre dos circunferencias concéntricas. Con $R = 7$ m y $r = 4$ m: $L_1 = 14\\pi$ m, $L_2 = 8\\pi$ m, $h = 3$ m, y $S = \\frac{14\\pi + 8\\pi}{2} \\times 3 = 33\\pi \\approx 103{,}67$ m². Es el caso de una pista circular de 3 m de ancho alrededor de una plaza de radio 4 m."
+        },
+        {
+          "texto": "$r = 0$ ⇒ el trapecio circular se reduce a un sector circular",
+          "explicacion": "Sin arco interior, $L_2 = 0$ y la altura pasa a ser el radio completo: $h = R$. Con $\\theta = 2$ rad y $R = 7$ m: $L_1 = 14$ m y $S = \\frac{14 + 0}{2} \\times 7 = 49$ m², que coincide con $\\frac{\\theta R^2}{2} = \\frac{2 \\times 49}{2} = 49$ m²."
+        },
+        {
+          "texto": "$R = r$ ⇒ altura nula y área igual a cero",
+          "explicacion": "Si los dos arcos tienen el mismo radio, coinciden y la franja desaparece: queda solo un arco. Con $\\theta = 2$ rad y $R = r = 5$ m: $L_1 = L_2 = 10$ m, $h = 5 - 5 = 0$ y $S = \\frac{10 + 10}{2} \\times 0 = 0$ m²."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación con trapecio",
+      "puntos": [
+        {
+          "texto": "Misma forma de fórmula que el trapecio plano, bases distintas",
+          "explicacion": "En ambos casos el área es la semisuma de las bases por la altura. En el trapecio circular las bases son arcos que dependen del ángulo y de los radios, y la altura se mide sobre un radio, por lo que además se cumple $\\frac{L_1}{L_2} = \\frac{R}{r}$; en un trapecio plano las bases son rectas sin esa relación. Con bases 14 y 8 y altura 3, en los dos casos $\\frac{14 + 8}{2} \\times 3 = 33$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Altura ≠ radio mayor",
+          "explicacion": "La altura es la diferencia de radios $R - r$, no el radio exterior. Con $R = 7$ m y $r = 4$ m, la altura correcta es $h = 3$ m; tomar $h = 7$ daría $\\frac{14 + 8}{2} \\times 7 = 77$ m², que es más del doble del área real de 33 m²."
+        },
+        {
+          "texto": "Omitir la división entre 2 duplica el área",
+          "explicacion": "La semisuma es la suma de bases dividida entre 2; sin esa división se obtiene el doble del área. Con $L_1 = 14$ m, $L_2 = 8$ m y $h = 3$ m: $(14 + 8) \\times 3 = 66$ m², pero el área correcta es $\\frac{22}{2} \\times 3 = 33$ m²."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Triángulos oblicuángulos",
+  "glosario": {
+    "Triángulo oblicuángulo": "Triángulo sin ángulo recto",
+    "Acutángulo": "Triángulo con tres ángulos agudos",
+    "Obtusángulo": "Triángulo con un ángulo obtuso",
+    "Ángulo agudo": "Ángulo menor que 90°",
+    "Ángulo obtuso": "Ángulo mayor que 90° y menor que 180°",
+    "Lado opuesto": "Lado frente a un ángulo",
+    "Ángulo comprendido": "Ángulo formado por dos lados dados",
+    "Semiperímetro": "Mitad de la suma de los tres lados",
+    "Altura": "Distancia de un vértice al lado opuesto",
+    "Caso ambiguo": "Datos que permiten cero, uno o dos triángulos",
+    "Desigualdad triangular": "Cada lado es menor que la suma de los otros",
+    "Seno": "Razón entre ordenada y distancia al origen",
+    "Posición normal": "Vértice en origen, lado inicial en X positivo",
+    "Lado final": "Lado donde termina el giro"
+  },
+  "theory": [
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "«Seno (sen)»: razón trigonométrica de un ángulo",
+          "explicacion": "En un ángulo en posición normal, el seno es la ordenada de un punto del lado final dividida entre su distancia al origen. Ejemplo: en 90°, con el punto (0, 3), sen 90° = 3/3 = 1; además sen 30° = 1/2."
+        },
+        {
+          "texto": "A, B y C denotan los tres ángulos del triángulo",
+          "explicacion": "Cada letra mayúscula nombra el ángulo en un vértice del triángulo. Ejemplo: en un triángulo con A = 40°, B = 60° y C = 80°, el ángulo en el vértice C mide 80°."
+        },
+        {
+          "texto": "a, b y c denotan los lados opuestos a A, B y C",
+          "explicacion": "Cada letra minúscula nombra el lado que está frente al ángulo de la misma letra: a frente a A, b frente a B y c frente a C. Ejemplo: si el ángulo A mide 40°, el lado a es el que no toca el vértice A."
+        },
+        {
+          "texto": "«Semiperímetro (p)»: mitad de la suma de los lados",
+          "explicacion": "Se calcula como p = (a + b + c)/2. Ejemplo: en un triángulo de lados a = 13, b = 14 y c = 15, el perímetro es 13 + 14 + 15 = 42 y p = 42/2 = 21."
+        },
+        {
+          "texto": "«Área (S)»: medida de la superficie del triángulo",
+          "explicacion": "Se expresa en unidades de longitud al cuadrado. Ejemplo: un triángulo con base 14 cm y altura 12 cm tiene S = 14 × 12 / 2 = 84 cm²."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Triángulo oblicuángulo»: triángulo sin ángulo recto",
+          "explicacion": "Todos sus ángulos son distintos de 90°, por lo que no se pueden usar directamente las razones trigonométricas del triángulo rectángulo. Ejemplo: un triángulo con ángulos 40°, 60° y 80° es oblicuángulo, porque ninguno vale 90°."
+        },
+        {
+          "texto": "Un triángulo oblicuángulo puede ser acutángulo",
+          "explicacion": "Es acutángulo cuando sus tres ángulos son agudos, es decir, menores que 90°. Ejemplo: los ángulos 40°, 60° y 80° son los tres menores que 90°, así que el triángulo es acutángulo y oblicuángulo."
+        },
+        {
+          "texto": "Un triángulo oblicuángulo puede ser obtusángulo",
+          "explicacion": "Es obtusángulo cuando uno de sus ángulos es obtuso, es decir, mayor que 90° y menor que 180°. Ejemplo: los ángulos 100°, 50° y 30° forman un triángulo obtusángulo, porque 100° > 90°."
+        },
+        {
+          "texto": "Un triángulo con ángulo recto no es oblicuángulo",
+          "explicacion": "Si un ángulo vale 90°, el triángulo es rectángulo y se resuelve con las razones del triángulo rectángulo. Ejemplo: un triángulo de lados 3, 4 y 5 cumple $3^2$ + $4^2$ = 9 + 16 = 25 = $5^2$, así que es rectángulo."
+        },
+        {
+          "texto": "Con el lado mayor se decide si es acutángulo u obtusángulo",
+          "explicacion": "Se compara el cuadrado del lado mayor con la suma de los cuadrados de los otros dos: si es menor, es acutángulo; si es mayor, es obtusángulo; si es igual, es rectángulo. Ejemplos: lados 5, 6 y 7 dan $5^2$ + $6^2$ = 61 > 49 = $7^2$, acutángulo; lados 3, 4 y 6 dan $3^2$ + $4^2$ = 25 < 36 = $6^2$, obtusángulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de ángulos",
+      "puntos": [
+        {
+          "texto": "A + B + C = 180°",
+          "explicacion": "Los tres ángulos interiores de cualquier triángulo suman media vuelta. Ejemplo: si A = 40° y B = 60°, entonces C = 180° - 40° - 60° = 80°."
+        },
+        {
+          "texto": "Un triángulo tiene como máximo un ángulo obtuso",
+          "explicacion": "Dos ángulos obtusos sumarían más de 180° y no dejarían espacio para el tercero. Ejemplo: 100° + 95° = 195° > 180°, así que no existe un triángulo con ángulos de 100° y 95°."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones entre lados",
+      "puntos": [
+        {
+          "texto": "Desigualdad triangular: cada lado < suma de los otros dos",
+          "explicacion": "Un triángulo solo existe si ningún lado alcanza o supera la suma de los otros dos. Ejemplos: lados 5, 6 y 7 sí forman triángulo, porque 7 < 5 + 6 = 11; lados 3, 4 y 8 no lo forman, porque 3 + 4 = 7 < 8."
+        },
+        {
+          "texto": "Al lado mayor se opone el ángulo mayor",
+          "explicacion": "A lados desiguales les corresponden ángulos opuestos desiguales, en el mismo orden. Ejemplo: en un triángulo de lados 5, 6 y 7, los ángulos opuestos miden aproximadamente 44,4°, 57,1° y 78,5°, y el mayor ángulo, 78,5°, está frente al lado 7."
+        },
+        {
+          "texto": "Dos lados iguales ⇒ ángulos opuestos iguales",
+          "explicacion": "Es el caso del triángulo isósceles: los ángulos frente a los lados iguales miden lo mismo. Ejemplo: si a = b = 8 y C = 40°, entonces A = B = (180° - 40°)/2 = 70°."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos de resolución",
+      "puntos": [
+        {
+          "texto": "«Resolver un triángulo»: hallar sus seis elementos",
+          "explicacion": "Los seis elementos son tres lados y tres ángulos. Con tres datos adecuados se calculan los otros tres. Ejemplo: si se conocen A = 40°, B = 60° y el lado a = 10, se completa con C = 80° y los lados b y c."
+        },
+        {
+          "texto": "Se necesitan tres datos y al menos uno es un lado",
+          "explicacion": "Los datos permiten fijar el tamaño y la forma del triángulo solo si hay una longitud. Ejemplo: con solo A = 40°, B = 60° y C = 80° caben triángulos de cualquier tamaño, uno con a = 1 y otro con a = 2."
+        },
+        {
+          "texto": "Caso ALA o AAL: dos ángulos y un lado",
+          "explicacion": "Se conocen dos ángulos y cualquier lado; el tercer ángulo sale de la suma de 180°. Hay una sola solución. Ejemplo: A = 40°, B = 60° y a = 10 dan C = 180° - 40° - 60° = 80°."
+        },
+        {
+          "texto": "Caso LAL: dos lados y el ángulo comprendido",
+          "explicacion": "El ángulo está entre los dos lados dados. Hay una sola solución. Ejemplo: a = 5, b = 8 y C = 60° fijan un triángulo, donde C es el ángulo formado por los lados a y b."
+        },
+        {
+          "texto": "Caso LLL: tres lados",
+          "explicacion": "Hay una sola solución si los lados cumplen la desigualdad triangular. Ejemplo: lados 5, 6 y 7 fijan un triángulo, mientras que 3, 4 y 8 no, porque 3 + 4 = 7 < 8."
+        },
+        {
+          "texto": "Caso LLA: dos lados y un ángulo no comprendido",
+          "explicacion": "El ángulo está frente a uno de los lados dados y no entre ellos. Es el caso ambiguo, pues puede haber 0, 1 o 2 triángulos. Ejemplo: a = 7, b = 10 y A = 30° admiten dos triángulos distintos."
+        },
+        {
+          "texto": "Ley de senos y ley de cosenos son las herramientas de resolución",
+          "explicacion": "La ley de senos se usa con los casos ALA, AAL y LLA, y la ley de cosenos se usa con los casos LAL y LLL. Cada ley tiene su propio desarrollo aparte; aquí solo se identifica cuál corresponde a cada caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso ambiguo LLA",
+      "puntos": [
+        {
+          "texto": "Con ángulo agudo A, la altura h = b × sen A decide",
+          "explicacion": "La altura es la distancia del vértice C al lado opuesto a ese vértice, y compararla con a indica cuántos triángulos hay. Ejemplo con b = 10 y A = 30°: h = 10 × sen 30° = 10 × 1/2 = 5."
+        },
+        {
+          "texto": "Si a < h, no hay triángulo",
+          "explicacion": "El lado a es demasiado corto para llegar al lado opuesto. Ejemplo con b = 10 y A = 30°, h = 5: para a = 4 se tiene 4 < 5 y no existe ningún triángulo."
+        },
+        {
+          "texto": "Si a = h, hay un triángulo rectángulo",
+          "explicacion": "El lado a llega justo en perpendicular, formando un ángulo recto. Ejemplo con b = 10 y A = 30°, h = 5: para a = 5 hay un único triángulo, rectángulo, con ángulo B = 90°."
+        },
+        {
+          "texto": "Si h < a < b, hay dos triángulos",
+          "explicacion": "El lado a puede llegar al lado opuesto en dos puntos, y da dos valores de B que suman 180°. Ejemplo con b = 10, A = 30° y a = 7: sen B = 10 × 1/2 / 7 = 5/7 ≈ 0,714, de modo que B ≈ 45,6° o B ≈ 134,4°, y en ambos casos A + B < 180°."
+        },
+        {
+          "texto": "Si a ≥ b, hay un solo triángulo",
+          "explicacion": "El segundo valor posible de B resulta demasiado grande y se descarta porque A + B ≥ 180°. Ejemplo con b = 10, A = 30° y a = 12: sen B = 5/12 ≈ 0,417, con B ≈ 24,6° o B ≈ 155,4°; como 30° + 155,4° = 185,4° > 180°, solo sirve B ≈ 24,6°."
+        },
+        {
+          "texto": "Con ángulo A obtuso, hay un triángulo solo si a > b",
+          "explicacion": "Un ángulo obtuso debe estar frente al lado mayor. Ejemplo con A = 120° y b = 10: para a = 15 se tiene 15 > 10 y existe un triángulo, pero para a = 8 se tiene 8 < 10 y no existe ninguno."
+        }
+      ]
+    },
+    {
+      "titulo": "Área con dos lados",
+      "puntos": [
+        {
+          "texto": "S = (1/2) a b sen C, con C comprendido entre a y b",
+          "explicacion": "El área es la mitad del producto de dos lados por el seno del ángulo que forman: $S = \\frac{1}{2}\\,a\\,b\\,\\text{sen}\\,C$. Se obtiene con la altura h = a × sen C sobre la base b, de modo que S = b × h / 2. Ejemplo con a = 6, b = 8 y C = 30°: S = (1/2) × 6 × 8 × sen 30° = 24 × 1/2 = 12."
+        },
+        {
+          "texto": "La altura sobre un lado es h = (lado vecino) × sen del ángulo",
+          "explicacion": "Si se baja la altura desde un vértice sobre el lado opuesto, h es el producto del otro lado del vértice por el seno del ángulo en la base. Ejemplo con c = 10 y A = 30°: la altura sobre el lado b es h = 10 × sen 30° = 5, y con b = 8 el área es S = 8 × 5 / 2 = 20."
+        },
+        {
+          "texto": "En el área con seno, el ángulo debe estar entre los dos lados",
+          "explicacion": "Usar un ángulo que no esté comprendido da un valor distinto del área. Ejemplo: con a = 6, b = 8 y C = 30° el área correcta es 12; usar A = 30° opuesto a a, en lugar de C, no corresponde a esos lados."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula de Herón",
+      "puntos": [
+        {
+          "texto": "«Fórmula de Herón»: $S = \\sqrt{p(p-a)(p-b)(p-c)}$",
+          "explicacion": "Calcula el área solo con los tres lados, usando el semiperímetro p = (a + b + c)/2. Ejemplo con a = 13, b = 14 y c = 15: p = 21 y $S = \\sqrt{21 \\times 8 \\times 7 \\times 6} = \\sqrt{7056} = 84$."
+        },
+        {
+          "texto": "Herón se usa cuando se conocen solo los tres lados",
+          "explicacion": "Es el caso LLL, donde no hay ángulos para usar el seno. Ejemplo: lados 13, 14 y 15 no dan ningún ángulo conocido, pero p = 21 y la fórmula entrega S = 84 directamente."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "No se cumple $c^2$ = $a^2$ + $b^2$ en un oblicuángulo",
+          "explicacion": "El teorema de Pitágoras solo vale con ángulo recto. Ejemplo: lados 5, 6 y 7: $5^2$ + $6^2$ = 61, pero $7^2$ = 49, y 61 ≠ 49."
+        },
+        {
+          "texto": "Los tres ángulos suman 180°, no 360°",
+          "explicacion": "El valor de 360° corresponde a una vuelta completa o a los ángulos exteriores. Ejemplo: A = 40°, B = 60° y C = 80° suman 180°, y no 360°."
+        },
+        {
+          "texto": "Tres ángulos no determinan el tamaño del triángulo",
+          "explicacion": "Los triángulos con los mismos ángulos pueden ser de cualquier tamaño. Ejemplo: A = 40°, B = 60° y C = 80° se cumplen con un lado a = 1 y también con a = 2, que es el doble."
+        },
+        {
+          "texto": "En el caso LLA, un segundo ángulo B se acepta solo si A + B < 180°",
+          "explicacion": "El valor de B = 180° - B1 puede ser imposible. Ejemplo: con A = 30°, b = 10 y a = 12, el segundo valor 155,4° da 30° + 155,4° = 185,4° > 180°, así que se descarta."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo guiado",
+      "puntos": [
+        {
+          "texto": "Datos: a = 13, b = 14 y c = 15",
+          "explicacion": "Se conocen los tres lados, que cumplen la desigualdad triangular, porque 15 < 13 + 14 = 27. Es el caso LLL y se pide el área S del triángulo."
+        },
+        {
+          "texto": "Estrategia: usar la fórmula de Herón",
+          "explicacion": "Como no hay ángulos conocidos, se usa la fórmula con el semiperímetro. El semiperímetro es p = (13 + 14 + 15)/2 = 42/2 = 21."
+        },
+        {
+          "texto": "Operación: S = raíz de 21 × 8 × 7 × 6",
+          "explicacion": "Se calculan las diferencias: p - a = 21 - 13 = 8, p - b = 21 - 14 = 7 y p - c = 21 - 15 = 6. Entonces $S = \\sqrt{21 \\times 8 \\times 7 \\times 6} = \\sqrt{7056}$."
+        },
+        {
+          "texto": "Resultado: S = 84",
+          "explicacion": "Como 84 × 84 = 7056, la raíz cuadrada es 84 y el área del triángulo es 84 unidades cuadradas."
+        },
+        {
+          "texto": "Verificación: la altura sobre el lado 14 es 12",
+          "explicacion": "Con S = 84 y base 14, la altura es h = 2 × 84 / 14 = 12. Comprobación con Pitágoras: $5^2$ + $12^2$ = $13^2$ y $9^2$ + $12^2$ = $15^2$, donde 5 + 9 = 14, así que la altura divide el lado 14 en 5 y 9."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "curso": "Aritmética",
+  "tema": "Máximo Común Divisor",
+  "glosario": {
+    "máximo común divisor": "Mayor de los divisores comunes de varios números",
+    "divisor común": "Número que divide a cada uno de varios",
+    "descomposición canónica": "Producto de primos distintos elevados a exponentes",
+    "factores primos comunes": "Primos que aparecen en todos los números",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es uno",
+    "descomposición simultánea": "Dividir a la vez entre primos comunes",
+    "cantidad de divisores": "Total de divisores positivos de un número",
+    "divisor": "Entero positivo que divide exactamente a otro"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "El «máximo común divisor» es el mayor de los divisores comunes",
+          "explicacion": "Dados dos o más enteros positivos, un divisor común es un número que los divide a todos sin dejar residuo. De todos los divisores comunes, el mayor recibe el nombre de máximo común divisor. Siempre existe, porque el $1$ es divisor común de cualquier conjunto de enteros, y es único, porque entre un conjunto finito de números siempre hay uno que es el mayor."
+        },
+        {
+          "texto": "$MCD(A,B)$ denota el máximo común divisor de $A$ y $B$",
+          "explicacion": "La abreviatura MCD significa máximo común divisor. Se escribe $MCD(A,B)$ para dos números y $MCD(A,B,C)$ para tres, y así sucesivamente. En algunos textos se escribe también con las letras $m.c.d.$ o con la sigla inglesa $\\gcd$, que significa greatest common divisor, es decir, mayor divisor común. Todas son notaciones del mismo concepto."
+        },
+        {
+          "texto": "Todo «divisor común» de varios números divide a su MCD",
+          "explicacion": "Esta es la propiedad fundamental del máximo común divisor: no solo es el mayor de los divisores comunes, sino que todos los demás divisores comunes son divisores suyos. Por ejemplo, los divisores comunes de $24$ y $36$ son $1, 2, 3, 4, 6, 12$, y todos dividen al mayor, que es $12$. Esta propiedad permite describir el conjunto de divisores comunes a partir de un solo número."
+        },
+        {
+          "texto": "Ejemplo: divisores de $24$ y de $36$ ⇒ $MCD(24,36)$ vale $12$",
+          "explicacion": "Los divisores de $24$ son $1, 2, 3, 4, 6, 8, 12, 24$ y los de $36$ son $1, 2, 3, 4, 6, 9, 12, 18, 36$. Los divisores comunes son $1, 2, 3, 4, 6, 12$, y el mayor de ellos es $12$. Este método de listar todos los divisores es válido para números pequeños, pero resulta largo cuando los números crecen."
+        }
+      ]
+    },
+    {
+      "titulo": "Primos entre sí",
+      "puntos": [
+        {
+          "texto": "$MCD$ vale $1$ ⇒ los números son «primos entre sí»",
+          "explicacion": "Si el máximo común divisor de varios números es $1$, el único divisor común positivo es $1$ y los números son primos entre sí. Es la forma más usada de caracterizar la relación. Por ejemplo, $MCD(8,15)$ vale $1$ y por eso $8$ y $15$ son primos entre sí. El tema 31 (Números primos entre sí) desarrolla las propiedades de esta relación."
+        },
+        {
+          "texto": "Los cocientes de dividir entre el $MCD$ son primos entre sí",
+          "explicacion": "Si $d$ es el máximo común divisor de $A$ y $B$, entonces $\\frac{A}{d}$ y $\\frac{B}{d}$ son primos entre sí, pues si compartieran un divisor mayor que uno, ese divisor multiplicado por $d$ daría un divisor común mayor que $d$. Ejemplo: para $24$ y $36$, con máximo común divisor $12$, los cocientes son $2$ y $3$, que son primos entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de factorización",
+      "puntos": [
+        {
+          "texto": "MCD ⇒ producto de los «factores primos comunes» con menor exponente",
+          "explicacion": "Para hallar el máximo común divisor con la descomposición canónica de cada número, se toman únicamente los primos que aparecen en todos los números y cada uno se eleva al menor exponente con que aparece. El producto de esos factores es el máximo común divisor. El procedimiento se justifica porque un divisor común solo puede contener primos presentes en todos los números, con exponentes que no superen el menor."
+        },
+        {
+          "texto": "Ejemplo: $24$ es $2^{3}\\cdot 3$ y $36$ es $2^{2}\\cdot 3^{2}$ ⇒ $MCD$ vale $2^{2}\\cdot 3$",
+          "explicacion": "Los primos comunes son el $2$ y el $3$. El menor exponente del $2$ es dos, pues aparece con exponente tres en el $24$ y con exponente dos en el $36$, y el menor exponente del $3$ es uno. El producto $2^{2}\\cdot 3$ vale $12$, que coincide con el resultado obtenido al listar los divisores comunes."
+        },
+        {
+          "texto": "Ejemplo: $MCD(48,72,120)$ vale $24$",
+          "explicacion": "Las descomposiciones son $48$ igual a $2^{4}\\cdot 3$, $72$ igual a $2^{3}\\cdot 3^{2}$ y $120$ igual a $2^{3}\\cdot 3\\cdot 5$. El primo $5$ no aparece en los tres, así que se excluye. Los menores exponentes son tres para el $2$ y uno para el $3$, y el producto $2^{3}\\cdot 3$ da $24$, resultado que puede comprobarse por cálculo directo."
+        },
+        {
+          "texto": "Primo ausente en algún número ⇒ no interviene en el $MCD$",
+          "explicacion": "Un divisor común debe dividir a todos los números, de modo que no puede contener un primo ausente en uno de ellos. Por eso en la factorización se excluyen los primos no comunes, aunque aparezcan con exponente grande en otros números. Olvidar esta regla es un error frecuente que lleva a resultados mayores que el verdadero máximo común divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "Descomposición simultánea",
+      "puntos": [
+        {
+          "texto": "«Descomposición simultánea»: dividir a la vez entre primos comunes",
+          "explicacion": "Este método consiste en escribir los números en una fila y dividirlos al mismo tiempo entre un primo que divida a todos, anotando los cocientes en la fila siguiente. Se repite el proceso mientras exista un primo que divida a todos los cocientes. El producto de los primos usados es el máximo común divisor, y el proceso termina cuando los cocientes ya son primos entre sí."
+        },
+        {
+          "texto": "Ejemplo: $60$, $90$, $150$ dividen entre $2$, $3$, $5$ ⇒ $MCD$ vale $30$",
+          "explicacion": "Los tres números son pares, así que todos se dividen entre $2$ y dan $30, 45, 75$. Luego entre $3$ dan $10, 15, 25$ y entre $5$ dan $2, 3, 5$, que ya son primos entre sí. El producto de $2$, $3$ y $5$ es $30$, que es el máximo común divisor."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$A$ múltiplo de $B$ ⇒ $MCD(A,B)$ = $B$",
+          "explicacion": "Si $B$ divide a $A$, entonces $B$ es divisor común de ambos y ningún divisor común puede superarlo, pues no puede ser mayor que $B$. Por tanto, el máximo común divisor es $B$. Ejemplo: como $48$ es múltiplo de $12$, $MCD(48,12)$ vale $12$. Es el caso extremo en que uno de los números dados resulta ser el propio máximo común divisor, y permite resolver el cálculo sin descomponer en factores primos ni listar divisores."
+        },
+        {
+          "texto": "$MCD(kA,kB)$ = $k\\cdot MCD(A,B)$",
+          "explicacion": "Si se multiplican todos los números por un mismo factor $k$, el máximo común divisor queda multiplicado por $k$. Ejemplo: como $MCD(4,6)$ vale $2$, $MCD(40,60)$ vale $20$. La propiedad inversa también es cierta: al dividir todos los números entre un divisor común, el máximo común divisor queda dividido entre ese divisor."
+        },
+        {
+          "texto": "$MCD(A,B,C)$ = $MCD(MCD(A,B),C)$",
+          "explicacion": "El máximo común divisor puede calcularse en etapas: primero entre dos números y luego entre ese resultado y el tercero. La propiedad se debe a que los divisores comunes de tres números son los divisores comunes de los dos primeros que además dividen al tercero. Ejemplo: $MCD(48,72)$ es $24$ y $MCD(24,120)$ es $24$, igual que $MCD(48,72,120)$."
+        },
+        {
+          "texto": "Cantidad de divisores comunes ⇒ $CD$ del $MCD$",
+          "explicacion": "Como los divisores comunes de varios números son exactamente los divisores de su máximo común divisor, la cantidad de divisores comunes es la cantidad de divisores, abreviada CD, del máximo común divisor. Ejemplo: $24$ y $36$ tienen como máximo común divisor al $12$, que tiene seis divisores, y en efecto tienen seis divisores comunes. La cantidad de divisores se estudia en el tema 28."
+        },
+        {
+          "texto": "Dos números «consecutivos» ⇒ $MCD$ vale $1$",
+          "explicacion": "Un divisor común de dos enteros consecutivos dividiría a su diferencia, que es $1$, de modo que el único divisor común es $1$ y el máximo común divisor es uno. Ejemplos: $MCD(14,15)$ y $MCD(99,100)$ valen uno. Es un caso particular de la relación entre máximo común divisor y primos entre sí."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones",
+      "puntos": [
+        {
+          "texto": "$MCD$ por $MCM$ vale $A$ por $B$, solo con dos números",
+          "explicacion": "Para dos números, el producto de su máximo común divisor por su mínimo común múltiplo, abreviado MCM, es igual al producto de los dos números. Esta relación se desarrolla en el tema 35 (Mínimo Común Múltiplo) y permite hallar uno de los dos valores si se conocen el otro y los números. No se extiende de forma directa a tres o más números."
+        },
+        {
+          "texto": "El método de divisiones sucesivas ⇒ tema 34",
+          "explicacion": "Existe un procedimiento basado en divisiones sucesivas que calcula el máximo común divisor sin descomponer en factores primos, útil para números grandes. Se estudia en el tema 34 (Algoritmo de Euclides), y aquí solo se señala su existencia para delimitar el contenido de este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: tomar el mayor exponente en lugar del menor",
+          "explicacion": "El máximo común divisor usa el menor exponente de cada primo común, porque un divisor común no puede contener más potencias de un primo que las presentes en el número que menos tiene. Usar el mayor exponente corresponde al mínimo común múltiplo y entrega un número que no divide a todos."
+        },
+        {
+          "texto": "Error: confundir máximo común divisor con mínimo común múltiplo",
+          "explicacion": "El máximo común divisor es un número menor o igual que cada uno de los números dados, mientras que el mínimo común múltiplo es mayor o igual que todos ellos. Al verificar un resultado, el máximo común divisor debe dividir a cada número, y el mínimo común múltiplo debe ser dividido por cada uno."
+        }
+      ]
+    }
+  ]
+}

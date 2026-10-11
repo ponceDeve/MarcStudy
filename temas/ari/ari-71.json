@@ -1,0 +1,179 @@
+{
+  "curso": "Aritmética",
+  "tema": "Terciles",
+  "glosario": {
+    "Terciles": "Valores que dividen los datos en tres partes",
+    "Medidas de posición": "Valores que indican un lugar en la distribución",
+    "Medidas de tendencia central": "Valores que representan el centro de los datos",
+    "Cuantil": "Valor que deja una proporción por debajo",
+    "Percentil": "Valor que deja un porcentaje por debajo",
+    "Cuartil": "Valor que divide los datos en cuatro partes",
+    "Frecuencia acumulada": "Suma de frecuencias hasta un valor",
+    "Tabla de frecuencias": "Tabla de valores con sus repeticiones",
+    "Datos agrupados": "Datos organizados en intervalos de clase",
+    "Clase tercílica": "Clase donde se alcanza el tercil",
+    "Amplitud": "Longitud de un intervalo de clase",
+    "Ojiva": "Polígono de frecuencias acumuladas",
+    "Interpolación": "Estimación de un valor entre dos conocidos",
+    "Medida de dispersión": "Valor que mide la variación de los datos",
+    "Rango": "Diferencia entre el mayor y el menor dato",
+    "Mediana": "Valor central de los datos ordenados"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Terciles» = valores que dividen los datos en tres partes",
+          "explicacion": "Los terciles son los valores que, en un conjunto de datos ordenados, lo separan en tres grupos con aproximadamente la misma cantidad de datos, cada uno con cerca de un tercio del total. Son medidas de posición, es decir, indican un lugar dentro de la distribución y no su centro, a diferencia de las medidas de tendencia central de los temas 65 al 70."
+        },
+        {
+          "texto": "Existen dos terciles: $T_1$ y $T_2$",
+          "explicacion": "Para obtener tres partes se requieren dos puntos de corte, por lo que hay dos terciles. Se simbolizan $T_1$ y $T_2$, o también $T_k$ con $k = 1, 2$, y se expresan en las mismas unidades que los datos. La letra $T$ proviene de la palabra tercil."
+        },
+        {
+          "texto": "$T_1$ deja un tercio de los datos por debajo",
+          "explicacion": "El primer tercil es el valor que deja aproximadamente el 33,3% de los datos por debajo y el 66,7% por encima. Separa el grupo de valores más bajos del resto de la distribución: los datos de ese grupo ocupan las posiciones iniciales de la lista ordenada. Se encuentra siempre por debajo o en el mismo valor que el segundo tercil, y en el caso de datos muy repetidos ambos pueden coincidir."
+        },
+        {
+          "texto": "$T_2$ deja dos tercios de los datos por debajo",
+          "explicacion": "El segundo tercil es el valor que deja aproximadamente el 66,7% de los datos por debajo y el 33,3% por encima. Separa el grupo de valores más altos del resto de la distribución: los datos por encima de este valor ocupan las últimas posiciones de la lista ordenada. Siempre es mayor o igual que el primer tercil, y en el caso de datos muy repetidos ambos pueden coincidir."
+        },
+        {
+          "texto": "Tres grupos: tercio inferior, medio y superior",
+          "explicacion": "Los terciles forman tres grupos de datos: el tercio inferior, con los valores hasta $T_1$; el tercio medio, con los valores comprendidos entre $T_1$ y $T_2$; y el tercio superior, con los valores desde $T_2$. Cada grupo reúne cerca de $\\frac{n}{3}$ datos, donde $n$ es el total."
+        },
+        {
+          "texto": "Ordenamiento previo ✓ para calcular terciles",
+          "explicacion": "Como los terciles se definen por la posición que ocupan los datos, es necesario ordenarlos de menor a mayor antes de ubicarlos. Calcular posiciones sobre una lista sin ordenar entrega valores que no dividen la distribución en tercios."
+        },
+        {
+          "texto": "Tercil = cuantil de orden $\\frac{1}{3}$ o $\\frac{2}{3}$",
+          "explicacion": "Un cuantil es un valor que deja una proporción dada de los datos por debajo. Los terciles son los cuantiles de orden $\\frac{1}{3}$ y $\\frac{2}{3}$; en términos de percentiles, es decir, de valores que dejan un porcentaje por debajo, equivalen aproximadamente a $P_{33{,}3}$ y $P_{66{,}7}$. Los cuartiles son otro caso de cuantiles y se estudian en el tema 72."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "Posición de $T_k$ = $\\frac{k\\,n}{3}$",
+          "explicacion": "La primera convención calcula la posición $p = \\frac{k\\,n}{3}$ con $k = 1, 2$ y $n$ el número de datos. Si $p$ es un número entero, el tercil es el promedio del dato de la posición $p$ y el de la posición $p + 1$; si $p$ no es entero, se toma el dato de la posición siguiente entera, es decir, de $p$ redondeado hacia arriba."
+        },
+        {
+          "texto": "Ejemplo con posición entera: $T_1 = 6$ y $T_2 = 10{,}5$",
+          "explicacion": "Con los datos ordenados 2, 4, 5, 7, 8, 10, 11, 13, 15 se tiene $n = 9$. Las posiciones son $\\frac{9}{3} = 3$ y $\\frac{2 \\cdot 9}{3} = 6$, ambas enteras. Entonces $T_1 = \\frac{5 + 7}{2} = 6$, promedio de los datos tercero y cuarto, y $T_2 = \\frac{10 + 11}{2} = 10{,}5$, promedio de los datos sexto y séptimo."
+        },
+        {
+          "texto": "Ejemplo con posición no entera: $T_1 = 12$ y $T_2 = 20$",
+          "explicacion": "Con los datos ordenados 4, 7, 9, 12, 15, 18, 20, 23, 25, 30 se tiene $n = 10$. Las posiciones son $\\frac{10}{3} \\approx 3{,}33$ y $\\frac{20}{3} \\approx 6{,}67$, que no son enteras y se redondean hacia arriba a 4 y 7. Por tanto $T_1$ es el cuarto dato, 12, y $T_2$ es el séptimo dato, 20."
+        },
+        {
+          "texto": "Otra convención: posición $\\frac{k\\,(n+1)}{3}$ con interpolación",
+          "explicacion": "Algunos textos y programas ubican el tercil en la posición $\\frac{k\\,(n+1)}{3}$ y, si no es entera, interpolan linealmente entre los datos vecinos. Con los datos 2, 4, 5, 7, 8, 10, 11, 13, 15 la posición de $T_1$ es $\\frac{10}{3} \\approx 3{,}33$ y resulta $5 + 0{,}33(7 - 5) \\approx 5{,}67$; la de $T_2$ es $6{,}67$ y resulta $10 + 0{,}67(11 - 10) \\approx 10{,}67$."
+        },
+        {
+          "texto": "Las convenciones difieren ⇒ declarar la usada",
+          "explicacion": "Para un mismo conjunto de datos, la convención de posición $\\frac{k\\,n}{3}$ y la de $\\frac{k\\,(n+1)}{3}$ pueden entregar resultados distintos, como 6 frente a 5,67 en el ejemplo anterior. No existe una definición única universal, por lo que conviene aplicar siempre el mismo criterio dentro de un problema y, en lo posible, indicarlo."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla de frecuencias",
+      "puntos": [
+        {
+          "texto": "Regla: primer valor con $F_i$ no menor que $\\frac{k\\,n}{3}$",
+          "explicacion": "Con datos en tabla de frecuencias, se calcula $\\frac{k\\,n}{3}$ y se busca el primer valor $x_i$ cuya frecuencia acumulada $F_i$ (suma de las frecuencias hasta ese valor) sea mayor o igual que esa cantidad. Si $F_i$ es mayor, el tercil es $x_i$; si es exactamente igual, el tercil es el promedio de $x_i$ y del valor siguiente, igual que en la regla de la mediana (tema 70)."
+        },
+        {
+          "texto": "Ejemplo con tabla: $T_1 = 2$ y $T_2 = 3$",
+          "explicacion": "Los valores $1, 2, 3, 4, 5$ tienen frecuencias $6, 9, 12, 7, 2$, con $n = 36$ y acumuladas $6, 15, 27, 34, 36$. Para $T_1$ se busca $\\frac{36}{3} = 12$: el primer $F_i \\ge 12$ es 15, del valor 2. Para $T_2$ se busca $\\frac{72}{3} = 24$: el primer $F_i \\ge 24$ es 27, del valor 3. Así $T_1 = 2$ y $T_2 = 3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos agrupados",
+      "puntos": [
+        {
+          "texto": "«Clase tercílica» = clase donde se alcanza $\\frac{k\\,n}{3}$",
+          "explicacion": "En datos agrupados en intervalos, la clase tercílica de $T_k$ es el primer intervalo cuya frecuencia acumulada alcanza o supera $\\frac{k\\,n}{3}$. El primer tercil y el segundo tercil pueden estar en la misma clase o en clases distintas, según cómo se repartan las frecuencias."
+        },
+        {
+          "texto": "Fórmula del tercil para datos agrupados",
+          "explicacion": "El tercil $T_k$ de datos agrupados se calcula con $$T_k = L_i + \\frac{\\frac{k\\,n}{3} - F_{i-1}}{f_i}\\, A$$ donde $L_i$ es el límite inferior de la clase tercílica, $F_{i-1}$ la frecuencia acumulada de la clase anterior, $f_i$ su frecuencia absoluta y $A$ su amplitud. Es la misma estructura de la fórmula de la mediana de datos agrupados."
+        },
+        {
+          "texto": "Ejemplo agrupado: $T_1 \\approx 30{,}22$",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$, frecuencias $4, 9, 15, 8, 4$ y acumuladas $4, 13, 28, 36, 40$, se tiene $n = 40$ y $\\frac{n}{3} \\approx 13{,}33$. La clase tercílica es $30-40$, con $F_{i-1} = 13$, $f_i = 15$ y $A = 10$. Entonces $T_1 = 30 + \\frac{13{,}33 - 13}{15}\\cdot 10 \\approx 30{,}22$."
+        },
+        {
+          "texto": "Ejemplo agrupado: $T_2 \\approx 39{,}11$",
+          "explicacion": "Con los mismos datos, $\\frac{2n}{3} \\approx 26{,}67$. El primer $F_i$ que alcanza esa cantidad es 28, de la clase $30-40$, con $F_{i-1} = 13$. Entonces $T_2 = 30 + \\frac{26{,}67 - 13}{15}\\cdot 10 \\approx 39{,}11$. Ambos terciles caen en la misma clase porque en ella se concentra la mayor frecuencia."
+        },
+        {
+          "texto": "Ojiva: leer $T_k$ a la altura de $\\frac{k\\,n}{3}$",
+          "explicacion": "En la ojiva, que es el polígono de frecuencias acumuladas, se ubica en el eje vertical la altura $\\frac{n}{3}$ para el primer tercil, o el 33,3% si la acumulada es relativa, y la altura $\\frac{2n}{3}$, o el 66,7%, para el segundo. Desde esas alturas se baja al eje horizontal para leer el valor de cada tercil."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "$T_1 \\le Me \\le T_2$",
+          "explicacion": "Como un tercio es menor que la mitad y la mitad es menor que dos tercios, la mediana (tema 70) nunca queda fuera del intervalo comprendido entre ambos terciles. La mediana no es un tercil: está dentro del tercio medio y lo divide en dos partes."
+        },
+        {
+          "texto": "Terciles ≠ afectados por valores extremos",
+          "explicacion": "Los terciles dependen de las posiciones de los datos y no de su magnitud, por lo que un dato muy grande o muy pequeño en los extremos no los modifica mientras conserve su posición. Comparten esta característica con la mediana y los cuartiles."
+        },
+        {
+          "texto": "Datos transformados con $a > 0$ ⇒ $T_k$ se transforma igual",
+          "explicacion": "Si cada dato $x$ se convierte en $ax + b$ con $a > 0$, el orden se conserva y los terciles se transforman de la misma forma: $T_k(aX + b) = a\\,T_k(X) + b$. Si $a < 0$, el orden se invierte y los terciles intercambian sus papeles."
+        },
+        {
+          "texto": "Cada tercio reúne cerca de $\\frac{n}{3}$ datos",
+          "explicacion": "Si $n$ es múltiplo de 3, cada grupo contiene exactamente $\\frac{n}{3}$ datos, sin contar los que coinciden con los puntos de corte. Si no lo es, los grupos difieren en uno o dos datos. En datos agrupados la proporción se cumple solo de manera aproximada por la interpolación."
+        },
+        {
+          "texto": "Terciles ✗ miden dispersión por sí solos",
+          "explicacion": "Los terciles indican posiciones dentro de la distribución, pero no son una medida de dispersión. La diferencia $T_2 - T_1$ sí informa sobre la amplitud de la parte media de los datos, aunque no es una medida de dispersión de uso habitual, como la varianza (tema 73)."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso y comparaciones",
+      "puntos": [
+        {
+          "texto": "Uso: clasificar datos en nivel bajo, medio y alto",
+          "explicacion": "Los terciles permiten asignar cada observación a uno de tres niveles: bajo si es menor o igual que $T_1$, medio si está entre $T_1$ y $T_2$, y alto si es mayor o igual que $T_2$. Esta clasificación es útil cuando la cantidad de datos no justifica una división más fina."
+        },
+        {
+          "texto": "Terciles ≠ cuartiles: tres partes frente a cuatro",
+          "explicacion": "Los terciles producen tres grupos con dos puntos de corte, mientras que los cuartiles (tema 72) producen cuatro grupos con tres puntos de corte. Ninguno de los terciles coincide con la mediana, en tanto que el segundo cuartil sí es la mediana."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: dividir el rango en tres partes iguales",
+          "explicacion": "Los terciles dividen la cantidad de datos en tercios y no el intervalo de valores. Si los datos van de 0 a 30, los terciles no son necesariamente 10 y 20; dependen de cómo se distribuyen los datos a lo largo de ese rango."
+        },
+        {
+          "texto": "Error: aplicar posiciones de cuartiles o de la mediana",
+          "explicacion": "Al calcular la posición con $\\frac{k\\,n}{4}$ o $\\frac{n}{2}$ se obtienen cuartiles o la mediana, no terciles. El denominador de la posición debe ser 3, igual al número de partes en que se divide la distribución."
+        },
+        {
+          "texto": "Error: olvidar que hay dos terciles",
+          "explicacion": "Un enunciado que pide los terciles requiere calcular $T_1$ y $T_2$. Calcular solo uno deja incompleta la clasificación, ya que se necesitan ambos puntos de corte para formar tres grupos. Con un solo punto de corte los datos quedarían separados en dos partes y no en tres, lo que corresponde a un planteamiento distinto, como el de la mediana."
+        },
+        {
+          "texto": "Error: mezclar convenciones en un mismo problema",
+          "explicacion": "Calcular $T_1$ con la posición $\\frac{n}{3}$ y $T_2$ con $\\frac{2(n+1)}{3}$ produce resultados incoherentes entre sí. Se debe elegir una convención y mantenerla para ambos terciles, porque cada convención reparte las posiciones de manera distinta y combinarlas deja a un tercil calculado con un criterio y al otro con uno diferente."
+        }
+      ]
+    }
+  ]
+}

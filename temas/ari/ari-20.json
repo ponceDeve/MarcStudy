@@ -1,0 +1,186 @@
+{
+  "curso": "Aritmética",
+  "tema": "Complemento aritmético",
+  "glosario": {
+    "complemento aritmético": "Lo que falta para la potencia de diez",
+    "complemento a nueve": "Resultado de restar cada cifra de nueve",
+    "cifra significativa": "Cifra distinta de cero",
+    "unidad de orden superior": "Potencia de diez inmediata superior al número",
+    "potencia de diez": "Uno seguido de cierta cantidad de ceros",
+    "base": "Cantidad de unidades que forman la unidad siguiente",
+    "numeral": "Representación escrita de un número"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Complemento aritmético»: lo que falta para la unidad de orden superior",
+          "explicacion": "El complemento aritmético de un número natural, que se abrevia CA, es la cantidad que debe sumársele para alcanzar la menor potencia de diez que lo supera, es decir, la unidad formada por un uno seguido de tantos ceros como cifras tiene el número. La idea parte de que todo numeral completa unidades de cierto orden: al número 7 le faltan 3 unidades para formar una decena, y a 85 le faltan 15 para formar una centena. El complemento aritmético sistematiza esa carencia y la expresa como un valor que depende solo del número y de su cantidad de cifras."
+        }
+      ]
+    },
+    {
+      "titulo": "Unidad de referencia",
+      "puntos": [
+        {
+          "texto": "La unidad de orden superior es $10^k$, con $k$ cifras",
+          "explicacion": "Si un número $N$ tiene $k$ cifras, cumple $10^{k-1} \\le N \\le 10^k - 1$; por lo tanto, todo número de $k$ cifras es menor que $10^k$, y esa es la menor potencia de diez que lo supera. Para un número de tres cifras la unidad de referencia es 1000, para uno de cuatro cifras es 10000, y así sucesivamente. La potencia $10^k$ se escribe con un uno seguido de $k$ ceros y es el valor al que el complemento aritmético «completa» al número."
+        }
+      ]
+    },
+    {
+      "titulo": "Conteo de cifras",
+      "puntos": [
+        {
+          "texto": "El valor de $k$ cuenta las cifras sin ceros a la izquierda",
+          "explicacion": "La cantidad de cifras de un numeral se determina a partir de su primera cifra significativa, de modo que los ceros escritos a la izquierda no forman parte del numeral. El número 0045 es simplemente 45, con $k=2$, y su complemento aritmético es $100-45=55$. Si por error se tomara $k=4$ se obtendría $10000-45=9955$, valor que no corresponde al complemento aritmético de 45. Solo en contextos donde se fija de antemano una longitud de escritura se trabaja con un $k$ impuesto desde fuera."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula",
+      "puntos": [
+        {
+          "texto": "Fórmula: $CA(N) = 10^k - N$",
+          "explicacion": "La definición se traduce en la expresión $CA(N)=10^k-N$, donde $N$ es el número, $k$ es su cantidad de cifras y $CA(N)$ es su complemento aritmético. De forma equivalente, $N + CA(N) = 10^k$, lo que expresa que el número y su complemento suman exactamente la unidad de orden superior. Esta igualdad es el punto de partida de todas las propiedades y procedimientos del tema."
+        },
+        {
+          "texto": "Ejemplo: $CA(4625)=5375$",
+          "explicacion": "El número 4625 tiene cuatro cifras, así que $k=4$ y la unidad de referencia es $10^4=10000$. Se calcula $10000-4625=5375$. La comprobación consiste en sumar el número y su complemento: $4625+5375=10000$, resultado que coincide con la unidad de orden superior y confirma el cálculo."
+        }
+      ]
+    },
+    {
+      "titulo": "Método práctico",
+      "puntos": [
+        {
+          "texto": "Regla: 9 menos cada cifra, 10 menos la última cifra significativa",
+          "explicacion": "El complemento aritmético se obtiene sin efectuar la resta completa: se restan de 9 todas las cifras del número, de izquierda a derecha, salvo la última cifra significativa, que se resta de 10. Para 3472 se calcula $9-3=6$, $9-4=5$, $9-7=2$ y $10-2=8$, con lo que $CA(3472)=6528$. La comprobación directa $10000-3472=6528$ confirma el resultado. El procedimiento evita los préstamos de la resta y permite escribir el resultado cifra por cifra."
+        },
+        {
+          "texto": "Los ceros finales se conservan sin restar",
+          "explicacion": "Cuando el número termina en ceros, estos aparecen iguales en el complemento aritmético; la resta de 10 se aplica a la última cifra distinta de cero y las cifras anteriores se restan de 9. Para 58000 resulta $9-5=4$ y $10-8=2$, seguidos de tres ceros, es decir $CA(58000)=42000$, lo que coincide con $100000-58000$. Los ceros finales no se restan de 9 ni de 10 porque su aporte a la diferencia ya está absorbido por el acarreo del procedimiento."
+        },
+        {
+          "texto": "«Complemento a nueve»: 9 menos cada cifra",
+          "explicacion": "El complemento a nueve de un número de $k$ cifras se obtiene restando de 9 cada una de sus cifras, incluida la última, y equivale a $(10^k-1)-N$, ya que $10^k-1$ es el numeral formado por $k$ nueves. Como cada resta es de una cifra menor o igual que 9, no hay préstamos entre cifras. Para 3472 el complemento a nueve es 6527, número que difiere en una unidad del complemento aritmético hallado antes."
+        },
+        {
+          "texto": "CA = complemento a nueve + 1",
+          "explicacion": "Dado que $10^k-N = (10^k-1-N)+1$, el complemento aritmético es siempre el complemento a nueve aumentado en una unidad. Con 3472, el complemento a nueve es 6527 y al sumarle 1 se obtiene 6528. Esta relación ofrece un segundo camino de cálculo y explica por qué la última cifra significativa se resta de 10 en lugar de 9: la unidad añadida se incorpora en esa posición."
+        },
+        {
+          "texto": "Justificación: $10^k - N = (10^k - 1) - N + 1$",
+          "explicacion": "El numeral $10^k-1$ está formado por $k$ nueves, de modo que restarle $N$ cifra por cifra equivale a restar cada cifra de 9 sin préstamos; luego se suma 1. Si la última cifra de $N$ no es cero, el 1 se incorpora en esa posición y da $9-d+1=10-d$. Si el número termina en ceros, estos producen nueves en el complemento a nueve; al sumar 1, esos nueves se convierten en ceros con acarreo hasta la última cifra significativa, que pasa a valer $10-d$. Así queda demostrada la regla práctica."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "El complemento aritmético nunca vale cero",
+          "explicacion": "Como $N \\le 10^k - 1 < 10^k$, la diferencia $10^k - N$ es al menos 1. Un número nunca iguala a la unidad de orden superior que lo supera, de modo que siempre le falta alguna cantidad positiva. Por ello $CA(N) \\ge 1$ para todo número natural de $k$ cifras, y el valor cero no es un complemento aritmético."
+        },
+        {
+          "texto": "Cota superior: $CA(N) \\le 9 \\cdot 10^{k-1}$",
+          "explicacion": "El menor número de $k$ cifras es $10^{k-1}$, de modo que el mayor complemento posible es $10^k - 10^{k-1} = 9 \\cdot 10^{k-1}$. Para tres cifras el complemento no supera 900, valor que se alcanza con $N=100$. Cuanto más pequeño es el número dentro de sus $k$ cifras, mayor es su complemento aritmético."
+        },
+        {
+          "texto": "CA = 1 ⇒ el número está formado solo por cifras 9",
+          "explicacion": "La igualdad $10^k - N = 1$ equivale a $N = 10^k - 1$, que es el numeral con $k$ nueves. Así, $CA(9)=1$, $CA(99)=1$ y $CA(999)=1$. Es el menor valor posible del complemento aritmético y corresponde a los números más cercanos a la unidad de orden superior."
+        },
+        {
+          "texto": "Reciprocidad: el complemento del complemento devuelve $N$",
+          "explicacion": "Si se conserva el mismo valor de $k$, $10^k - (10^k - N) = N$, de modo que aplicar dos veces la operación recupera el número original. Por ejemplo, $CA(3472)=6528$ y $CA(6528)=3472$. La propiedad exige que el complemento se considere con las mismas $k$ cifras; cuando el complemento tiene menos cifras que $N$ la reciprocidad deja de cumplirse, como se muestra en los casos especiales."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos especiales",
+      "puntos": [
+        {
+          "texto": "Potencia de diez: $CA(10^n) = 9 \\cdot 10^n$",
+          "explicacion": "Un número formado por un uno seguido de $n$ ceros tiene $n+1$ cifras, por lo que su complemento es $10^{n+1} - 10^n = 9 \\cdot 10^n$. De aquí $CA(10)=90$, $CA(100)=900$ y $CA(1000)=9000$. Es el caso en que el complemento aritmético alcanza su valor máximo para la cantidad de cifras dada."
+        },
+        {
+          "texto": "Número igual a su complemento: $N = 5 \\cdot 10^{k-1}$",
+          "explicacion": "La condición $N = CA(N)$ conduce a $2N = 10^k$, es decir $N = 5 \\cdot 10^{k-1}$. Así, $CA(5)=5$, $CA(50)=50$ y $CA(500)=500$. Es el único tipo de número que coincide con su propio complemento aritmético, y se obtiene como la mitad exacta de la unidad de orden superior."
+        },
+        {
+          "texto": "El complemento puede tener menos cifras que $N$",
+          "explicacion": "Cuando las primeras cifras de $N$ son nueves, el complemento resulta pequeño y se escribe con menos cifras. Por ejemplo, $CA(9995)=10000-9995=5$, número de una sola cifra. En estos casos el complemento del complemento no recupera el número original: $CA(5)=5$ y no 9995, porque el valor de $k$ cambió de 4 a 1."
+        },
+        {
+          "texto": "Un mismo valor de CA corresponde a varios números",
+          "explicacion": "La ecuación $CA(N) = m$ no determina $N$ si no se conoce $k$, pues $N = 10^k - m$ con $k$ al menos igual al número de cifras de $m$. Para $m = 5$ sirven $N=5$, $N=95$, $N=995$, y todos los números del tipo $10^k - 5$. En los problemas se indica la cantidad de cifras o se deduce de otros datos para que la solución sea única."
+        }
+      ]
+    },
+    {
+      "titulo": "Otras bases",
+      "puntos": [
+        {
+          "texto": "En base $b$: $CA(N) = b^k - N$",
+          "explicacion": "En un sistema de numeración de base $b$, el complemento aritmético de un número de $k$ cifras es lo que le falta para llegar a $b^k$, la unidad de orden superior en esa base. El cálculo se hace en la misma base. Por ejemplo, $324_5 = 89$ en decimal, $5^3 = 125$ y $125 - 89 = 36$, que en base 5 se escribe $121_5$. Los sistemas de numeración y los cambios de base se estudian en los temas 17 a 19."
+        },
+        {
+          "texto": "Regla en base $b$: $(b-1)$ menos cada cifra, $b$ menos la última",
+          "explicacion": "El método práctico se generaliza cambiando 9 por $b-1$ y 10 por $b$. Para $324_5$: $4-3=1$, $4-2=2$ y $5-4=1$, lo que da $121_5$, el mismo resultado hallado por resta directa. La justificación es idéntica a la del caso decimal, porque $b^k - 1$ es el numeral con $k$ cifras iguales a $b-1$."
+        },
+        {
+          "texto": "Base dos: invertir cifras y sumar uno",
+          "explicacion": "En base 2 la cifra $b-1$ es 1, así que restar cada cifra de 1 equivale a invertirla: el 0 pasa a 1 y el 1 pasa a 0. Para $1011_2$, que vale 11, la inversión da $0100_2$ y al sumar 1 se obtiene $0101_2$, que vale 5 y coincide con $16 - 11$. En informática, este procedimiento aplicado a longitudes fijas de bits se conoce como complemento a dos."
+        }
+      ]
+    },
+    {
+      "titulo": "Resta con complemento",
+      "puntos": [
+        {
+          "texto": "Resta: $A - B = A + CA(B) - 10^k$",
+          "explicacion": "Si $B$ tiene $k$ cifras y $A$ tiene a lo sumo $k$ cifras, se cumple $A - B = A + CA(B) - 10^k$, pues $CA(B) = 10^k - B$. Cuando $A \\ge B$, la suma $A + CA(B)$ resulta de $k+1$ cifras y restarle $10^k$ equivale a suprimir el uno de la izquierda. Con $8421 - 3567$: $CA(3567)=6433$, $8421+6433=14854$ y al suprimir el uno queda 4854, resultado que coincide con la resta directa."
+        },
+        {
+          "texto": "Si $A < B$ no aparece la cifra sobrante",
+          "explicacion": "Cuando el minuendo es menor que el sustraendo, la suma $A + CA(B)$ conserva $k$ cifras y no hay uno que suprimir. En ese caso el resultado es negativo y su valor absoluto es el complemento aritmético de la suma obtenida. Con $3567 - 8421$: $CA(8421)=1579$, $3567+1579=5146$ y $CA(5146)=4854$, por lo que la diferencia es $-4854$."
+        },
+        {
+          "texto": "La Pascalina restaba sumando complementos a nueve",
+          "explicacion": "Blaise Pascal, matemático, físico y filósofo francés, construyó a partir de 1642 una calculadora mecánica conocida como la Pascalina. Para restar, la máquina mostraba los complementos a nueve de las cifras del número, de modo que la sustracción se realizaba mediante una adición, que era la operación que el mecanismo ejecutaba directamente. Este uso histórico ilustra la utilidad práctica de los complementos para reducir restas a sumas."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresiones literales",
+      "puntos": [
+        {
+          "texto": "Numeral con letras: $\\overline{ab} + CA(\\overline{ab}) = 100$",
+          "explicacion": "La notación $\\overline{ab}$ representa un numeral de dos cifras $a$ y $b$, no un producto. Su complemento aritmético satisface $\\overline{ab} + CA(\\overline{ab}) = 100$, de modo que si $CA(\\overline{ab}) = 24$ entonces $\\overline{ab} = 100 - 24 = 76$. Para tres cifras la suma característica es 1000, y en general es $10^k$ para $k$ cifras."
+        },
+        {
+          "texto": "Forma literal del método: $CA(\\overline{abc}) = \\overline{(9-a)(9-b)(10-c)}$",
+          "explicacion": "Para un numeral de tres cifras con $c \\ne 0$, las cifras del complemento son $9-a$, $9-b$ y $10-c$, escritas en ese orden. Por ejemplo, para $\\overline{abc}=372$ resulta $\\overline{(9-3)(9-7)(10-2)} = 628$, valor que coincide con $1000 - 372$. Si $c=0$, el cero se conserva y la resta de 10 pasa a la última cifra distinta de cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Restar todas las cifras de 10 ≠ complemento aritmético",
+          "explicacion": "Es un error restar de 10 cada una de las cifras: para 34 se obtendría $\\overline{76}$, pero $CA(34)=100-34=66$. Solo la última cifra significativa se resta de 10; las demás se restan de 9. La razón es que el uno que completa la unidad se suma una única vez, en la posición de las unidades del complemento a nueve."
+        },
+        {
+          "texto": "El cero final no se resta de 10",
+          "explicacion": "En un número como 250, la última cifra es 0 y no debe restarse de 10, porque produciría una cifra de dos dígitos. El procedimiento correcto conserva el cero y resta de 10 la cifra 5, para obtener $9-2=7$, $10-5=5$ y $0$, es decir, $CA(250)=750$. La comprobación $1000-250=750$ confirma la regla."
+        },
+        {
+          "texto": "Complemento aritmético ≠ complemento de un conjunto",
+          "explicacion": "El complemento aritmético es un número natural que se suma a otro para alcanzar una potencia de diez. El complemento de un conjunto, en cambio, es el conjunto de elementos del universo que no pertenecen al conjunto dado, y se estudia en el tema 13, Operaciones con conjuntos. Ambos nombres comparten la idea de completar un todo, pero se refieren a objetos y operaciones distintos."
+        }
+      ]
+    }
+  ]
+}

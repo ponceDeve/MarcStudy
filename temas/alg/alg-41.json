@@ -1,0 +1,326 @@
+{
+  "curso": "Álgebra",
+  "tema": "Productos notables",
+  "glosario": {
+    "producto notable": "Producto que se desarrolla con una fórmula directa",
+    "identidad notable": "Otro nombre de producto notable",
+    "identidad": "Igualdad válida para todo valor de las letras",
+    "binomio": "Expresión de dos términos",
+    "trinomio": "Expresión de tres términos",
+    "trinomio cuadrado perfecto": "Trinomio que es el cuadrado de un binomio",
+    "diferencia de cuadrados": "Resta de dos cuadrados perfectos",
+    "término común": "Término que se repite en ambos factores",
+    "cuadrado perfecto": "Expresión que es el cuadrado de otra",
+    "cubo perfecto": "Expresión que es el cubo de otra",
+    "suma de cubos": "Suma de dos cubos perfectos",
+    "diferencia de cubos": "Resta de dos cubos perfectos",
+    "desarrollo": "Resultado de efectuar el producto indicado",
+    "factorización": "Escritura como producto de factores",
+    "conjugado": "Binomio con el segundo término de signo opuesto",
+    "racionalización": "Eliminar radicales del denominador",
+    "radical": "Raíz indicada de una expresión",
+    "propiedad distributiva": "Multiplicar una suma reparte el factor",
+    "término": "Parte separada por sumas o restas",
+    "coeficiente": "Factor numérico de un término",
+    "doble producto": "Dos veces el producto de los términos",
+    "identidad condicional": "Identidad válida bajo una condición dada",
+    "inverso multiplicativo": "Número que multiplicado por otro da uno",
+    "binomio de Newton": "Desarrollo de la potencia de un binomio",
+    "potencia": "Producto de factores iguales",
+    "exponente": "Indica cuántas veces se repite la base",
+    "cubo": "Tercera potencia de un número",
+    "cuadrado": "Segunda potencia de un número"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de producto notable",
+      "puntos": [
+        {
+          "texto": "«Producto notable» = producto con desarrollo directo",
+          "explicacion": "Un producto notable es una multiplicación de polinomios cuyo resultado se escribe de inmediato con una fórmula, sin multiplicar término a término cada vez. Estas fórmulas surgen porque ciertas multiplicaciones se repiten con frecuencia y su resultado sigue siempre el mismo patrón. Ejemplo: $(x+3)^2$ se desarrolla directamente como $x^2+6x+9$, en vez de efectuar $(x+3)(x+3)$ paso a paso. Verificación con $x=1$: $(1+3)^2=16$ y $1+6+9=16$."
+        },
+        {
+          "texto": "«Identidad notable» = producto notable",
+          "explicacion": "Identidad notable es otro nombre para un producto notable, porque cada fórmula es una igualdad que se cumple para todos los valores de las letras. Ejemplo: $(a+b)^2=a^2+2ab+b^2$ vale con $a=2$ y $b=3$: $25=4+12+9$, y también con cualquier otro par de números."
+        },
+        {
+          "texto": "Producto notable = identidad válida para todo valor",
+          "explicacion": "Una identidad se cumple para cualquier valor de las letras que intervienen, a diferencia de una ecuación, que solo se cumple para algunos valores. Por eso se pueden sustituir letras por números, expresiones o polinomios completos. Ejemplo: en $(a+b)^2=a^2+2ab+b^2$, si $a=2x$ y $b=1$ se obtiene $(2x+1)^2=4x^2+4x+1$. Verificación con $x=1$: $9=4+4+1$."
+        },
+        {
+          "texto": "Fórmulas ⇒ desarrollo y factorización",
+          "explicacion": "Cada fórmula se puede leer en dos sentidos: de izquierda a derecha para desarrollar un producto, y de derecha a izquierda para factorizar un polinomio con ese patrón. Ejemplo: $x^2-9$ se factoriza como $(x+3)(x-3)$ leyendo la diferencia de cuadrados al revés. Verificación: $(x+3)(x-3)=x^2-3x+3x-9=x^2-9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrado de un binomio",
+      "puntos": [
+        {
+          "texto": "Suma: $(a+b)^2=a^2+2ab+b^2$",
+          "explicacion": "El cuadrado de una suma es el cuadrado del primer término, más el doble producto de los dos términos, más el cuadrado del segundo. Ejemplo: $(x+3)^2=x^2+2\\cdot x\\cdot3+3^2=x^2+6x+9$. Verificación con $x=1$: $(1+3)^2=16$ y $1+6+9=16$. Con números: $(2+3)^2=25=4+12+9$."
+        },
+        {
+          "texto": "Diferencia: $(a-b)^2=a^2-2ab+b^2$",
+          "explicacion": "El cuadrado de una diferencia es el cuadrado del primer término, menos el doble producto, más el cuadrado del segundo. El tercer término es siempre positivo. Ejemplo: $(2x-5)^2=(2x)^2-2\\cdot2x\\cdot5+5^2=4x^2-20x+25$. Verificación con $x=1$: $(2-5)^2=9$ y $4-20+25=9$."
+        },
+        {
+          "texto": "Demostración: $(a+b)(a+b)=a^2+ab+ba+b^2$",
+          "explicacion": "Se multiplica el binomio por sí mismo con la propiedad distributiva: $(a+b)(a+b)=a\\cdot a+a\\cdot b+b\\cdot a+b\\cdot b=a^2+ab+ba+b^2$. Como $ab=ba$, los términos del medio se reúnen en $2ab$. Para la diferencia se reemplaza $b$ por $-b$: $(a-b)^2=a^2+2a(-b)+(-b)^2=a^2-2ab+b^2$. Verificación con $a=5$, $b=3$: $(5-3)^2=4$ y $25-30+9=4$."
+        },
+        {
+          "texto": "«Trinomio cuadrado perfecto» = cuadrado de un binomio",
+          "explicacion": "Un trinomio cuadrado perfecto es el resultado de elevar un binomio al cuadrado: sus extremos son cuadrados perfectos y el término central es el doble producto de las raíces de ellos. Ejemplo: $x^2+10x+25$ cumple $x^2=(x)^2$, $25=5^2$ y $2\\cdot x\\cdot5=10x$, así que es $(x+5)^2$. Verificación: $(x+5)^2=x^2+10x+25$."
+        },
+        {
+          "texto": "Signo del término central ⇒ signo dentro del binomio",
+          "explicacion": "Si el término central es positivo, el binomio es una suma; si es negativo, es una resta. Ejemplo: $9x^2-12x+4=(3x-2)^2$, pues $2\\cdot3x\\cdot2=12x$ con signo negativo. Verificación: $(3x-2)^2=9x^2-12x+4$. Los extremos siempre son positivos."
+        },
+        {
+          "texto": "Cuadrado de binomio ≠ suma de cuadrados",
+          "explicacion": "El error más común es olvidar el doble producto: $(a+b)^2\\neq a^2+b^2$. Ejemplo con $a=2$ y $b=3$: $(2+3)^2=25$, mientras que $2^2+3^2=13$; la diferencia es $2ab=12$. Verificación: $13+12=25$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de cuadrados",
+      "puntos": [
+        {
+          "texto": "$(a+b)(a-b)=a^2-b^2$",
+          "explicacion": "El producto de la suma por la diferencia de dos términos es la diferencia de sus cuadrados. Ejemplo: $(3x+4)(3x-4)=(3x)^2-4^2=9x^2-16$. Verificación con $x=1$: $7\\cdot(-1)=-7$ y $9-16=-7$. Los dos binomios, que difieren solo en el signo, se llaman conjugados."
+        },
+        {
+          "texto": "Demostración: los productos cruzados se anulan",
+          "explicacion": "Al multiplicar $(a+b)(a-b)=a^2-ab+ba-b^2$, los términos $-ab$ y $+ba$ son opuestos y se cancelan, quedando $a^2-b^2$. Ejemplo con $a=7$, $b=3$: $(7+3)(7-3)=10\\cdot4=40$ y $49-9=40$."
+        },
+        {
+          "texto": "«Conjugado» de $a+b$ = $a-b$",
+          "explicacion": "Dos binomios son conjugados cuando tienen los mismos términos y difieren en el signo del segundo. Su producto no tiene término central, lo que se aprovecha para simplificar y para racionalizar. Ejemplo: el conjugado de $2x+5$ es $2x-5$, y su producto es $4x^2-25$."
+        },
+        {
+          "texto": "Cálculo numérico con conjugados",
+          "explicacion": "La fórmula permite multiplicar mentalmente números cercanos. Ejemplo: $51\\cdot49=(50+1)(50-1)=50^2-1=2500-1=2499$. Verificación directa: $51\\cdot49=2499$. Otro: $103\\cdot97=(100+3)(100-3)=10000-9=9991$."
+        }
+      ]
+    },
+    {
+      "titulo": "Binomios con término común",
+      "puntos": [
+        {
+          "texto": "$(x+a)(x+b)=x^2+(a+b)x+ab$",
+          "explicacion": "Cuando dos binomios comparten el primer término $x$, el producto es $x^2$, más la suma de los segundos términos por $x$, más el producto de los segundos términos. Ejemplo: $(x+5)(x+2)=x^2+(5+2)x+5\\cdot2=x^2+7x+10$. Verificación con $x=1$: $6\\cdot3=18$ y $1+7+10=18$."
+        },
+        {
+          "texto": "Demostración: $(x+a)(x+b)=x^2+bx+ax+ab$",
+          "explicacion": "Se multiplica con la propiedad distributiva: $(x+a)(x+b)=x\\cdot x+x\\cdot b+a\\cdot x+a\\cdot b$, y los términos $bx$ y $ax$ se reúnen en $(a+b)x$. Ejemplo con $a=-4$, $b=7$: $(x-4)(x+7)=x^2+3x-28$. Verificación con $x=1$: $(-3)(8)=-24$ y $1+3-28=-24$."
+        },
+        {
+          "texto": "Signos de $a$ y $b$ ⇒ signos del resultado",
+          "explicacion": "La fórmula vale con $a$ y $b$ positivos o negativos, usando su signo en la suma y en el producto. Ejemplo: $(x-3)(x-8)=x^2+(-3-8)x+(-3)(-8)=x^2-11x+24$. Verificación con $x=1$: $(-2)(-7)=14$ y $1-11+24=14$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cubo de un binomio",
+      "puntos": [
+        {
+          "texto": "Suma: $(a+b)^3=a^3+3a^2b+3ab^2+b^3$",
+          "explicacion": "El cubo de una suma tiene cuatro términos: el cubo del primero, tres veces el cuadrado del primero por el segundo, tres veces el primero por el cuadrado del segundo, y el cubo del segundo. Ejemplo: $(x+2)^3=x^3+3x^2\\cdot2+3x\\cdot4+8=x^3+6x^2+12x+8$. Verificación con $x=1$: $27$ y $1+6+12+8=27$."
+        },
+        {
+          "texto": "Diferencia: $(a-b)^3=a^3-3a^2b+3ab^2-b^3$",
+          "explicacion": "Se obtiene reemplazando $b$ por $-b$ en la fórmula de la suma, de modo que los signos alternan: $+,-,+,-$. Ejemplo: $(2x-1)^3=8x^3-3\\cdot4x^2+3\\cdot2x-1=8x^3-12x^2+6x-1$. Verificación con $x=1$: $1^3=1$ y $8-12+6-1=1$."
+        },
+        {
+          "texto": "Demostración: $(a+b)^3=(a+b)^2(a+b)$",
+          "explicacion": "Se multiplica el cuadrado del binomio por el binomio: $(a^2+2ab+b^2)(a+b)=a^3+2a^2b+ab^2+a^2b+2ab^2+b^3=a^3+3a^2b+3ab^2+b^3$. Ejemplo con $a=2$, $b=3$: $5^3=125$ y $8+36+54+27=125$."
+        },
+        {
+          "texto": "Forma alterna: $(a+b)^3=a^3+b^3+3ab(a+b)$",
+          "explicacion": "Los dos términos medios $3a^2b+3ab^2$ se factorizan como $3ab(a+b)$, lo que da una forma compacta. Ejemplo: $(2+3)^3=8+27+3\\cdot6\\cdot5=35+90=125$. Para la diferencia, $(a-b)^3=a^3-b^3-3ab(a-b)$. Verificación: $(3-2)^3=1=27-8-3\\cdot6\\cdot1=19-18$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de cubos",
+      "puntos": [
+        {
+          "texto": "$(a+b)(a^2-ab+b^2)=a^3+b^3$",
+          "explicacion": "El producto de un binomio suma por un trinomio con signos alternados da la suma de cubos. Ejemplo: $(x+2)(x^2-2x+4)=x^3+8$. Verificación con $a=3$, $b=2$: $(5)(9-6+4)=35$ y $27+8=35$. Demostración: $a^3-a^2b+ab^2+a^2b-ab^2+b^3=a^3+b^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de cubos",
+      "puntos": [
+        {
+          "texto": "$(a-b)(a^2+ab+b^2)=a^3-b^3$",
+          "explicacion": "El producto de un binomio diferencia por un trinomio con todos los signos positivos da la diferencia de cubos. Ejemplo: $(x-4)(x^2+4x+16)=x^3-64$. Verificación con $a=3$, $b=2$: $(1)(9+6+4)=19$ y $27-8=19$. Demostración: $a^3+a^2b+ab^2-a^2b-ab^2-b^3=a^3-b^3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Factorizar con cubos",
+      "puntos": [
+        {
+          "texto": "Factorizar: $27x^3-1=(3x-1)(9x^2+3x+1)$",
+          "explicacion": "Leyendo las fórmulas al revés, un binomio de cubos se factoriza: se extraen las raíces cúbicas $3x$ y $1$ y se arma el trinomio con los signos indicados. Ejemplo: $27x^3-1=(3x-1)\\left((3x)^2+3x\\cdot1+1^2\\right)=(3x-1)(9x^2+3x+1)$. Verificación: $27x^3+9x^2+3x-9x^2-3x-1=27x^3-1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadrado de un trinomio",
+      "puntos": [
+        {
+          "texto": "$(a+b+c)^2=a^2+b^2+c^2+2ab+2ac+2bc$",
+          "explicacion": "El cuadrado de un trinomio es la suma de los cuadrados de los tres términos más el doble de cada producto de dos términos. Ejemplo con $a=1$, $b=2$, $c=3$: $(1+2+3)^2=36$ y $1+4+9+2\\cdot2+2\\cdot3+2\\cdot6=14+4+6+12=36$. Para un trinomio con signos negativos se usan los signos de cada término en los dobles productos."
+        },
+        {
+          "texto": "Demostración: agrupar $(a+b)+c$",
+          "explicacion": "Se trata $a+b$ como un solo término: $((a+b)+c)^2=(a+b)^2+2(a+b)c+c^2=a^2+2ab+b^2+2ac+2bc+c^2$. Ejemplo con $a=1$, $b=2$, $c=3$: $(3)^2+2\\cdot3\\cdot3+9=9+18+9=36$, que coincide con el valor del trinomio al cuadrado."
+        },
+        {
+          "texto": "$(a+b+c)^3=a^3+b^3+c^3+3(a+b)(b+c)(c+a)$",
+          "explicacion": "El cubo de un trinomio puede escribirse con la suma de cubos y un producto de binomios. Ejemplo con $a=1$, $b=2$, $c=3$: $(6)^3=216$, y $1+8+27+3(3)(5)(4)=36+180=216$. Se usa cuando se conocen las sumas de dos términos."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades de Legendre",
+      "puntos": [
+        {
+          "texto": "$(a+b)^2+(a-b)^2=2(a^2+b^2)$",
+          "explicacion": "Conocida como identidad de Legendre, suma los cuadrados de la suma y la diferencia: los dobles productos se cancelan y quedan dos veces los cuadrados. Demostración: $a^2+2ab+b^2+a^2-2ab+b^2=2a^2+2b^2$. Ejemplo con $a=3$, $b=1$: $16+4=20$ y $2(9+1)=20$."
+        },
+        {
+          "texto": "$(a+b)^2-(a-b)^2=4ab$",
+          "explicacion": "Al restar los cuadrados de la suma y de la diferencia, se anulan los cuadrados y quedan cuatro veces el producto. Demostración: $a^2+2ab+b^2-a^2+2ab-b^2=4ab$. Ejemplo con $a=3$, $b=1$: $16-4=12$ y $4\\cdot3\\cdot1=12$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad de Lagrange",
+      "puntos": [
+        {
+          "texto": "$(a^2+b^2)(x^2+y^2)=(ax+by)^2+(ay-bx)^2$",
+          "explicacion": "La identidad de Lagrange expresa un producto de dos sumas de cuadrados como suma de dos cuadrados. Ejemplo con $a=1$, $b=2$, $x=3$, $y=4$: $(1+4)(9+16)=125$, y $(3+8)^2+(4-6)^2=121+4=125$. También vale $(ax-by)^2+(ay+bx)^2$: $25+100=125$."
+        },
+        {
+          "texto": "Demostración de la identidad de Lagrange",
+          "explicacion": "Se desarrolla el segundo miembro: $(ax+by)^2+(ay-bx)^2=a^2x^2+2abxy+b^2y^2+a^2y^2-2abxy+b^2x^2$. Los términos $2abxy$ se cancelan y queda $a^2x^2+a^2y^2+b^2x^2+b^2y^2=(a^2+b^2)(x^2+y^2)$. Verificación con $a=1$, $b=2$, $x=3$, $y=4$: $9+16+36+64=125$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad de Argand",
+      "puntos": [
+        {
+          "texto": "$(x^2+xy+y^2)(x^2-xy+y^2)=x^4+x^2y^2+y^4$",
+          "explicacion": "Conocida como identidad de Argand, el producto de dos trinomios que difieren en el signo del término central da $x^4+x^2y^2+y^4$. Ejemplo con $x=1$, $y=2$: $(1+2+4)(1-2+4)=7\\cdot3=21$ y $1+4+16=21$. Con $x=2$, $y=1$: $(7)(3)=21$ y $16+4+1=21$."
+        },
+        {
+          "texto": "Demostración: diferencia de cuadrados",
+          "explicacion": "Se agrupan los términos $x^2+y^2$ como un solo bloque, de modo que los factores quedan $(x^2+y^2+xy)(x^2+y^2-xy)$, una suma por su diferencia. Aplicando la diferencia de cuadrados: $(x^2+y^2)^2-(xy)^2=x^4+2x^2y^2+y^4-x^2y^2=x^4+x^2y^2+y^4$. Verificación con $x=1$, $y=2$: $(1+4)^2-(2)^2=25-4=21$, que coincide con el valor de la identidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidad de Gauss",
+      "puntos": [
+        {
+          "texto": "$a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$",
+          "explicacion": "Conocida como identidad de Gauss, factoriza la expresión $a^3+b^3+c^3-3abc$. Ejemplo con $a=1$, $b=2$, $c=3$: $1+8+27-18=18$, y $(6)(14-11)=6\\cdot3=18$, porque $a^2+b^2+c^2=14$ y $ab+bc+ca=2+6+3=11$."
+        },
+        {
+          "texto": "Forma alterna: $\\frac{1}{2}(a+b+c)\\left[(a-b)^2+(b-c)^2+(c-a)^2\\right]$",
+          "explicacion": "Como $a^2+b^2+c^2-ab-bc-ca=\\frac{1}{2}\\left[(a-b)^2+(b-c)^2+(c-a)^2\\right]$, la identidad puede escribirse con cuadrados de diferencias. Ejemplo con $a=1$, $b=2$, $c=3$: $\\frac{1}{2}\\cdot6\\cdot(1+1+4)=3\\cdot6=18$. Esta forma muestra que, para números reales, el segundo factor nunca es negativo."
+        },
+        {
+          "texto": "$a+b+c=0$ ⇒ $a^3+b^3+c^3=3abc$",
+          "explicacion": "Si la suma de tres números es cero, el factor $(a+b+c)$ de la identidad de Gauss se anula, y queda $a^3+b^3+c^3-3abc=0$. Ejemplo con $a=1$, $b=2$, $c=-3$: $1+8-27=-18$ y $3\\cdot1\\cdot2\\cdot(-3)=-18$."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades condicionales",
+      "puntos": [
+        {
+          "texto": "$a+b+c=0$ ⇒ $a^2+b^2+c^2=-2(ab+bc+ca)$",
+          "explicacion": "Se deduce del cuadrado del trinomio: $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)=0$, de donde $a^2+b^2+c^2=-2(ab+bc+ca)$. Ejemplo con $a=1$, $b=2$, $c=-3$: $1+4+9=14$ y $-2(2-6-3)=-2\\cdot(-7)=14$."
+        },
+        {
+          "texto": "$a+\\frac{1}{a}=k$ ⇒ $a^2+\\frac{1}{a^2}=k^2-2$",
+          "explicacion": "Se eleva al cuadrado: $\\left(a+\\frac{1}{a}\\right)^2=a^2+2+\\frac{1}{a^2}$, y se despeja. Ejemplo: si $a+\\frac{1}{a}=3$, entonces $a^2+\\frac{1}{a^2}=9-2=7$. Verificación: $\\left(a+\\frac{1}{a}\\right)^2=9$ y $7+2=9$."
+        },
+        {
+          "texto": "$a+\\frac{1}{a}=k$ ⇒ $a^3+\\frac{1}{a^3}=k^3-3k$",
+          "explicacion": "Se eleva al cubo: $\\left(a+\\frac{1}{a}\\right)^3=a^3+3a+\\frac{3}{a}+\\frac{1}{a^3}=a^3+\\frac{1}{a^3}+3\\left(a+\\frac{1}{a}\\right)$. Ejemplo: si $a+\\frac{1}{a}=3$, entonces $a^3+\\frac{1}{a^3}=27-9=18$. Verificación: $18+3\\cdot3=27$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones auxiliares",
+      "puntos": [
+        {
+          "texto": "$a^2+b^2=(a+b)^2-2ab$",
+          "explicacion": "Despejando el doble producto del cuadrado de una suma se obtiene la suma de cuadrados a partir de la suma y el producto. Ejemplo: si $a+b=5$ y $ab=6$: $a^2+b^2=25-12=13$. Verificación con $a=2$, $b=3$: $4+9=13$."
+        },
+        {
+          "texto": "$(a-b)^2=(a+b)^2-4ab$",
+          "explicacion": "Combina las dos identidades de Legendre: la diferencia de los cuadrados es $4ab$. Ejemplo: si $a+b=8$ y $ab=15$: $(a-b)^2=64-60=4$. Verificación con $a=5$, $b=3$: $(5-3)^2=4$."
+        },
+        {
+          "texto": "$a^3+b^3=(a+b)^3-3ab(a+b)$",
+          "explicacion": "Se despeja de la forma alterna del cubo de una suma. Ejemplo: si $a+b=5$ y $ab=6$: $a^3+b^3=125-3\\cdot6\\cdot5=125-90=35$. Verificación con $a=2$, $b=3$: $8+27=35$."
+        },
+        {
+          "texto": "$a^3-b^3=(a-b)^3+3ab(a-b)$",
+          "explicacion": "Se despeja de la forma alterna del cubo de una diferencia, $(a-b)^3=a^3-b^3-3ab(a-b)$, pasando el último término al otro miembro. Se usa cuando se conocen la diferencia y el producto de dos números. Ejemplo: con $a=3$, $b=2$ se tiene $a-b=1$ y $ab=6$, entonces $a^3-b^3=1+3\\cdot6\\cdot1=19$. Verificación directa: $27-8=19$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aplicaciones numéricas",
+      "puntos": [
+        {
+          "texto": "Cuadrados de números cercanos a $100$",
+          "explicacion": "Se escribe el número como suma o resta de $100$ y se usa el cuadrado de un binomio. Ejemplo: $97^2=(100-3)^2=10000-600+9=9409$. Verificación: $97\\cdot97=9409$. Otro: $52^2=(50+2)^2=2500+200+4=2704$."
+        },
+        {
+          "texto": "Racionalizar con conjugados",
+          "explicacion": "Para eliminar radicales de un denominador del tipo $\\sqrt{a}-\\sqrt{b}$ se multiplica por su conjugado, aprovechando la diferencia de cuadrados. Ejemplo: $\\frac{1}{\\sqrt{5}-\\sqrt{3}}=\\frac{\\sqrt{5}+\\sqrt{3}}{(\\sqrt{5})^2-(\\sqrt{3})^2}=\\frac{\\sqrt{5}+\\sqrt{3}}{2}$. Verificación: $(\\sqrt{5}-\\sqrt{3})(\\sqrt{5}+\\sqrt{3})=5-3=2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "$(a+b)^2\\neq a^2+b^2$",
+          "explicacion": "Falta el doble producto $2ab$. Con $a=1$ y $b=2$: $(1+2)^2=9$ y $1+4=5$. Para la resta, $(a-b)^2\\neq a^2-b^2$: con $a=3$, $b=1$: $4$ y $8$. Verificación: la fórmula correcta da $9-6+1=4$."
+        },
+        {
+          "texto": "$(a+b)^3\\neq a^3+b^3$",
+          "explicacion": "El cubo de una suma no se reparte entre los sumandos, porque faltan los términos mixtos $3a^2b$ y $3ab^2$. Con $a=1$ y $b=2$: $(1+2)^3=27$, mientras que $1^3+2^3=9$; la diferencia $18$ es justamente $3a^2b+3ab^2=6+12$. Verificación: $9+18=27$, lo que confirma la fórmula completa."
+        },
+        {
+          "texto": "Signo del término central en la resta",
+          "explicacion": "En $(a-b)^2$ el término central es $-2ab$, y el último es $+b^2$. Un error típico es escribir $-b^2$. Con $a=5$, $b=2$: $(5-2)^2=9$ y $25-20+4=9$, mientras que $25-20-4=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Productos notables ⊃ multiplicación de polinomios",
+          "explicacion": "Todas las fórmulas son casos de la multiplicación de polinomios, que se verifican con la propiedad distributiva. Ejemplo: $(x+2)(x+3)$ aplicando la fórmula del término común da $x^2+5x+6$, y multiplicando término a término da lo mismo."
+        },
+        {
+          "texto": "Productos notables → binomio de Newton y factorización",
+          "explicacion": "Los coeficientes $1,2,1$ del cuadrado y $1,3,3,1$ del cubo son el inicio del binomio de Newton, que generaliza el desarrollo de $(a+b)^n$. Leídas al revés, las fórmulas son la base de la factorización y de los cocientes notables. Ejemplo: $x^3+8=(x+2)(x^2-2x+4)$."
+        }
+      ]
+    }
+  ]
+}

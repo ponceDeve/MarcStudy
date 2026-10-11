@@ -1,0 +1,348 @@
+{
+  "curso": "Álgebra",
+  "tema": "Factorización",
+  "glosario": {
+    "factorización": "Escribir un polinomio como producto de factores",
+    "factor": "Polinomio que divide exactamente a otro",
+    "factor primo": "Factor que no se descompone en menores",
+    "polinomio irreducible": "Otro nombre del factor primo",
+    "factorización completa": "Descomposición con todos los factores primos",
+    "multiplicidad": "Veces que se repite un factor primo",
+    "factor común": "Factor presente en todos los términos",
+    "agrupación": "Formar grupos de términos con factor común",
+    "binomio": "Polinomio de dos términos",
+    "trinomio": "Polinomio de tres términos",
+    "cuadrado perfecto": "Resultado de elevar una expresión al cuadrado",
+    "cubo perfecto": "Resultado de elevar una expresión al cubo",
+    "diferencia de cuadrados": "Resta de dos cuadrados perfectos",
+    "suma de cubos": "Suma de dos cubos perfectos",
+    "diferencia de cubos": "Resta de dos cubos perfectos",
+    "aspa simple": "Método para factorizar trinomios de segundo grado",
+    "aspa doble": "Método para factorizar con dos variables",
+    "aspa doble especial": "Método para factorizar polinomios de cuarto grado",
+    "productos cruzados": "Multiplicaciones en diagonal entre dos filas",
+    "discriminante": "Expresión que decide el tipo de raíces",
+    "raíz": "Valor que anula el polinomio",
+    "divisores binómicos": "Método de factorizar buscando raíces",
+    "término independiente": "Término sin variable",
+    "coeficiente principal": "Coeficiente del término de mayor grado",
+    "regla de Ruffini": "Método para dividir entre un binomio lineal",
+    "cambio de variable": "Reemplazar una expresión por una letra",
+    "trinomio bicuadrado": "Trinomio con exponentes cuatro, dos y cero",
+    "teorema del factor": "Binomio lineal es factor si evaluación es cero",
+    "cociente notable": "División exacta de binomios con desarrollo directo",
+    "máximo común divisor": "Mayor número que divide a varios"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de factorización",
+      "puntos": [
+        {
+          "texto": "«Factorización» ⇒ escribir un polinomio como producto de factores",
+          "explicacion": "Factorizar un polinomio es expresarlo como una multiplicación de dos o más polinomios de menor grado, llamados factores, de modo que al multiplicarlos se recupere el polinomio original. Es el proceso inverso de efectuar una multiplicación. Ejemplo: $x^2 - 9 = (x + 3)(x - 3)$. Verificación: $(x + 3)(x - 3) = x^2 - 3x + 3x - 9 = x^2 - 9$."
+        },
+        {
+          "texto": "«Factor» → polinomio que divide exactamente a otro",
+          "explicacion": "Un polinomio $d(x)$ es factor de $P(x)$ cuando la división de $P(x)$ entre $d(x)$ es exacta, es decir, con residuo cero. Entonces $P(x) = d(x) \\times q(x)$ para algún cociente $q(x)$. Ejemplo: $x + 3$ es factor de $x^2 - 9$, porque el valor de $x^2 - 9$ en $x = -3$ es $9 - 9 = 0$, y el cociente es $x - 3$."
+        },
+        {
+          "texto": "«Factor primo» → no se descompone en factores de menor grado",
+          "explicacion": "Un factor primo es un polinomio de grado mayor que cero que no puede escribirse como producto de dos polinomios de menor grado con coeficientes del mismo tipo que se está usando (en este tema, coeficientes racionales). Todo polinomio de primer grado es primo. Ejemplos: $x + 3$ y $x^2 + 1$ son primos; en cambio $x^2 - 9$ no es primo, porque es igual a $(x + 3)(x - 3)$. Por ejemplo, $x^2 - 2$ no tiene factores con coeficientes racionales, aunque con coeficientes reales sí se descompone como $(x - \\sqrt{2})(x + \\sqrt{2})$."
+        },
+        {
+          "texto": "«Polinomio irreducible» = nombre alternativo del factor primo",
+          "explicacion": "En muchos textos un factor primo se llama polinomio irreducible: no puede reducirse a un producto de polinomios de menor grado. Ambos nombres designan el mismo concepto. Ejemplo: $x^2 + x + 1$ es irreducible porque no tiene raíces reales (su discriminante $1 - 4 = -3$ es negativo), así que no se descompone en dos factores de primer grado."
+        },
+        {
+          "texto": "«Factorización completa» ⇒ todos los factores son primos",
+          "explicacion": "Una factorización es completa cuando cada factor obtenido es primo; mientras algún factor se pueda seguir descomponiendo, el proceso no ha terminado. Ejemplo: $x^4 - 16 = (x^2 + 4)(x^2 - 4)$ no es completa, porque $x^2 - 4$ aún se descompone; la factorización completa es $x^4 - 16 = (x^2 + 4)(x + 2)(x - 2)$, con tres factores primos."
+        },
+        {
+          "texto": "Factorización completa = única salvo orden y constantes",
+          "explicacion": "Todo polinomio se descompone en factores primos de una sola manera, sin contar el orden en que se escriben ni las constantes que se reparten entre factores. Ejemplo: $x^2 - 9 = (x + 3)(x - 3) = (x - 3)(x + 3)$, y también $(2x + 6)\\left(\\frac{x}{2} - \\frac{3}{2}\\right)$, que es lo mismo repartiendo constantes: $(2x + 6)\\left(\\frac{x}{2} - \\frac{3}{2}\\right) = x^2 - 3x + 3x - 9 = x^2 - 9$."
+        },
+        {
+          "texto": "Verificación → multiplicar los factores y comparar",
+          "explicacion": "Para comprobar una factorización se multiplican todos los factores obtenidos y se compara el resultado con el polinomio original; deben coincidir término a término. Ejemplo: se afirma que $x^3 + 8 = (x + 2)(x^2 - 2x + 4)$. Al multiplicar: $x \\cdot x^2 = x^3$, $x(-2x) = -2x^2$, $x \\cdot 4 = 4x$, $2x^2$, $2(-2x) = -4x$ y $2 \\cdot 4 = 8$; los términos se reducen a $x^3 + 8$, de modo que es correcto."
+        },
+        {
+          "texto": "«Multiplicidad» → veces que un factor primo se repite",
+          "explicacion": "La multiplicidad de un factor primo es el exponente con que aparece en la factorización completa. Ejemplo: en $P(x) = x^2(x - 1)^3$ hay dos factores primos distintos, $x$ y $x - 1$; el primero tiene multiplicidad $2$ y el segundo multiplicidad $3$, y en total hay $2 + 3 = 5$ factores primos contando repeticiones."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor común",
+      "puntos": [
+        {
+          "texto": "«Factor común monomio» ⇒ extraer el mayor monomio que divide a todos",
+          "explicacion": "El factor común monomio de una suma de términos es el mayor monomio que divide a cada término. Se obtiene tomando el máximo común divisor de los coeficientes y cada variable común con su menor exponente. Se escribe ese monomio fuera de un paréntesis y dentro se colocan los cocientes de cada término entre el factor común. Ejemplo: en $6x^3 + 9x^2$, el máximo común divisor de $6$ y $9$ es $3$, y las potencias $x^3$ y $x^2$ dan $x^2$; el factor común es $3x^2$. Cocientes: $\\frac{6x^3}{3x^2} = 2x$ y $\\frac{9x^2}{3x^2} = 3$. Resultado: $6x^3 + 9x^2 = 3x^2(2x + 3)$."
+        },
+        {
+          "texto": "Factor común con varias variables",
+          "explicacion": "Cuando hay varias variables, el factor común incluye cada variable que aparezca en todos los términos, con el menor exponente que tenga en ellos. Ejemplo: en $12a^3b^2 - 18a^2b^3$, el máximo común divisor de $12$ y $18$ es $6$, la variable $a$ aparece con exponentes $3$ y $2$ (menor: $2$) y $b$ con $2$ y $3$ (menor: $2$); el factor común es $6a^2b^2$. Cocientes: $\\frac{12a^3b^2}{6a^2b^2} = 2a$ y $\\frac{18a^2b^3}{6a^2b^2} = 3b$. Resultado: $12a^3b^2 - 18a^2b^3 = 6a^2b^2(2a - 3b)$."
+        },
+        {
+          "texto": "«Factor común polinomio» ⇒ un mismo binomio repetido en los términos",
+          "explicacion": "El factor común puede ser un polinomio completo que aparece en todos los términos, no solo un monomio. Se extrae igual: se escribe como primer factor y el segundo factor reúne lo que queda. Ejemplo: $a(x - 2) + 3(x - 2) = (x - 2)(a + 3)$. Otro: $x^2(x + 1) - 4(x + 1) = (x + 1)(x^2 - 4)$, y como $x^2 - 4 = (x + 2)(x - 2)$, resulta $(x + 1)(x + 2)(x - 2)$."
+        },
+        {
+          "texto": "Factor común con potencias ⇒ elegir el menor exponente",
+          "explicacion": "Si un mismo factor aparece elevado a distintos exponentes, se extrae con el menor de ellos. Ejemplo: en $x^2(x - 1)^3 + x(x - 1)^2$, el factor $x$ aparece con exponentes $2$ y $1$ (menor: $1$) y $x - 1$ con $3$ y $2$ (menor: $2$); el factor común es $x(x - 1)^2$. Lo que queda es $x(x - 1) + 1 = x^2 - x + 1$. Resultado: $x(x - 1)^2(x^2 - x + 1)$."
+        },
+        {
+          "texto": "Tras extraer el factor común ✓ el otro factor ya no lo contiene",
+          "explicacion": "Después de extraer el factor común, el polinomio que queda dentro del paréntesis no debe tener ningún factor común con los demás términos; de lo contrario no se extrajo el máximo. Ejemplo: $6x^3 + 9x^2 = 3(2x^3 + 3x^2)$ está incompleto, porque dentro del paréntesis todavía puede sacarse $x^2$; lo correcto es $3x^2(2x + 3)$, donde $2x + 3$ ya no admite factor común."
+        }
+      ]
+    },
+    {
+      "titulo": "Agrupación de términos",
+      "puntos": [
+        {
+          "texto": "«Agrupación» → formar grupos con factor común y repetir el binomio",
+          "explicacion": "Cuando los términos no tienen un factor común global, se agrupan en parejas o grupos y se extrae el factor común de cada grupo; si en cada grupo queda el mismo binomio, este se extrae como factor común. Para cuatro términos: $ax + ay + bx + by = a(x + y) + b(x + y) = (x + y)(a + b)$. Ejemplo: $x^3 + x^2 + x + 1 = x^2(x + 1) + 1(x + 1) = (x + 1)(x^2 + 1)$."
+        },
+        {
+          "texto": "Agrupación con coeficientes: $2x^3 - 4x^2 + 3x - 6$",
+          "explicacion": "Se agrupa $(2x^3 - 4x^2) + (3x - 6)$. En el primer grupo el factor común es $2x^2$ y queda $2x^2(x - 2)$; en el segundo es $3$ y queda $3(x - 2)$. Como el binomio $x - 2$ se repite, se extrae: $(x - 2)(2x^2 + 3)$. Verificación: $(x - 2)(2x^2 + 3) = 2x^3 + 3x - 4x^2 - 6$, que coincide con el polinomio original."
+        },
+        {
+          "texto": "Agrupación con signo negativo → extraer el factor $-1$",
+          "explicacion": "Si el segundo grupo da un binomio de signos opuestos, se extrae el factor común con signo negativo para igualar los binomios. Ejemplo: $x^3 + 3x^2 - x - 3 = x^2(x + 3) - 1(x + 3) = (x + 3)(x^2 - 1)$, y como $x^2 - 1 = (x + 1)(x - 1)$, la factorización completa es $(x + 3)(x + 1)(x - 1)$. Verificación: $(x + 3)(x^2 - 1) = x^3 - x + 3x^2 - 3$, igual al polinomio dado."
+        },
+        {
+          "texto": "Binomios distintos tras agrupar ⇒ reordenar los términos",
+          "explicacion": "Si al agrupar los binomios que quedan son distintos, se cambia el orden de los términos o la forma de agruparlos hasta que coincidan; si ninguna agrupación funciona, se prueba otro método. Ejemplo: en $xy + 2 + x + 2y$ el agrupamiento $(xy + 2) + (x + 2y)$ no sirve, pero $(xy + x) + (2y + 2) = x(y + 1) + 2(y + 1) = (y + 1)(x + 2)$ sí funciona."
+        }
+      ]
+    },
+    {
+      "titulo": "Identidades de factorización",
+      "puntos": [
+        {
+          "texto": "Diferencia de cuadrados: $a^2 - b^2 = (a + b)(a - b)$",
+          "explicacion": "Una diferencia de dos cuadrados perfectos se factoriza como el producto de la suma por la diferencia de las bases, donde $a$ y $b$ son las raíces cuadradas de cada término. Se obtiene al invertir el producto notable de suma por diferencia. Ejemplo: $49x^2 - 25 = (7x)^2 - 5^2 = (7x + 5)(7x - 5)$. Verificación: $(7x + 5)(7x - 5) = 49x^2 - 35x + 35x - 25 = 49x^2 - 25$."
+        },
+        {
+          "texto": "Diferencia de cuadrados con polinomios en las bases",
+          "explicacion": "Las bases $a$ y $b$ pueden ser polinomios. Ejemplo: $(x + 2)^2 - 9$ tiene $a = x + 2$ y $b = 3$, de modo que $(x + 2)^2 - 9 = (x + 2 + 3)(x + 2 - 3) = (x + 5)(x - 1)$. Otro: $x^2 + 2x + 1 - y^2 = (x + 1)^2 - y^2 = (x + 1 + y)(x + 1 - y)$, tras reconocer que los tres primeros términos forman un cuadrado perfecto."
+        },
+        {
+          "texto": "Diferencia de cuadrados repetida → factorizar hasta que sea primo",
+          "explicacion": "Si tras factorizar aparece otra diferencia de cuadrados, se vuelve a aplicar la identidad. Ejemplo: $x^4 - 16 = (x^2)^2 - 4^2 = (x^2 + 4)(x^2 - 4) = (x^2 + 4)(x + 2)(x - 2)$. El factor $x^2 + 4$ ya es primo porque una suma de cuadrados no se descompone con coeficientes reales."
+        },
+        {
+          "texto": "Suma de cuadrados ✗ factorización con coeficientes reales",
+          "explicacion": "Una suma de cuadrados como $x^2 + 9$ no se descompone en factores de primer grado con coeficientes reales, porque la ecuación $x^2 + 9 = 0$ exigiría $x^2 = -9$, imposible para un número real. Por eso $x^2 + 9$ es un factor primo. Esto distingue la suma de cuadrados de la diferencia de cuadrados, que sí se factoriza."
+        },
+        {
+          "texto": "Trinomio cuadrado perfecto: $a^2 \\pm 2ab + b^2 = (a \\pm b)^2$",
+          "explicacion": "Un trinomio es cuadrado perfecto si dos de sus términos son cuadrados perfectos, $a^2$ y $b^2$, y el tercero es el doble producto de sus raíces, $2ab$ (con el signo que corresponda). Se factoriza como el cuadrado del binomio $(a \\pm b)^2$. Ejemplo: $4x^2 - 20x + 25$ tiene raíces $2x$ y $5$, y el doble producto es $2(2x)(5) = 20x$, así que $4x^2 - 20x + 25 = (2x - 5)^2$. Verificación: $(2x - 5)^2 = 4x^2 - 20x + 25$."
+        },
+        {
+          "texto": "Comprobar el término central en un trinomio cuadrado perfecto",
+          "explicacion": "Para que el trinomio sea cuadrado perfecto, el término central debe ser exactamente $2ab$ en valor absoluto; si no lo es, no se aplica la identidad. Ejemplo: $9x^2 + 12x + 4$ tiene raíces $3x$ y $2$, y el doble producto es $2(3x)(2) = 12x$, que coincide, por lo que $9x^2 + 12x + 4 = (3x + 2)^2$. En cambio, $9x^2 + 10x + 4$ no cumple, porque $10x \\ne 12x$."
+        },
+        {
+          "texto": "Suma de cubos: $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$",
+          "explicacion": "Una suma de dos cubos perfectos se factoriza como el producto de la suma de las raíces cúbicas por un trinomio con signos alternados. Ejemplo: $27x^3 + 8$ tiene $a = 3x$ y $b = 2$, de modo que $27x^3 + 8 = (3x + 2)\\left((3x)^2 - (3x)(2) + 2^2\\right) = (3x + 2)(9x^2 - 6x + 4)$. Verificación: $3x \\cdot 9x^2 = 27x^3$, $3x(-6x) = -18x^2$, $3x \\cdot 4 = 12x$, $2 \\cdot 9x^2 = 18x^2$, $2(-6x) = -12x$ y $2 \\cdot 4 = 8$, que se reducen a $27x^3 + 8$."
+        },
+        {
+          "texto": "Diferencia de cubos: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$",
+          "explicacion": "Una diferencia de dos cubos perfectos se factoriza como el producto de la diferencia de las raíces cúbicas por un trinomio con todos los signos positivos. Ejemplo: $x^3 - 64$ tiene $a = x$ y $b = 4$, así que $x^3 - 64 = (x - 4)(x^2 + 4x + 16)$. Verificación: $x \\cdot x^2 = x^3$, $x \\cdot 4x = 4x^2$, $x \\cdot 16 = 16x$, $-4x^2$, $-16x$ y $-64$; se reducen a $x^3 - 64$."
+        },
+        {
+          "texto": "Trinomio de suma o diferencia de cubos ⇒ ya es primo",
+          "explicacion": "El segundo factor, $a^2 \\mp ab + b^2$, no se descompone con coeficientes reales: como trinomio en la variable $a$ tiene coeficientes $1$, $\\mp b$ y $b^2$, y su discriminante es $(\\mp b)^2 - 4 \\cdot 1 \\cdot b^2 = b^2 - 4b^2 = -3b^2$, que es negativo si $b \\ne 0$. Ejemplo: $9x^2 - 6x + 4$ tiene discriminante $36 - 144 = -108 < 0$, por lo que es primo y la factorización de $27x^3 + 8$ ya es completa."
+        },
+        {
+          "texto": "Diferencia de potencias: $a^n - b^n = (a - b)(a^{n-1} + \\cdots + b^{n-1})$",
+          "explicacion": "La diferencia de dos potencias del mismo exponente natural se factoriza usando el resultado de cocientes notables: es divisible entre $a - b$ y el cociente tiene $n$ términos positivos. Ejemplo: $x^5 - 32 = x^5 - 2^5 = (x - 2)(x^4 + 2x^3 + 4x^2 + 8x + 16)$. Verificación en $x = 1$: el primer miembro vale $1 - 32 = -31$ y el segundo vale $(1 - 2)(1 + 2 + 4 + 8 + 16) = (-1)(31) = -31$."
+        },
+        {
+          "texto": "Suma de potencias con n impar: $a^n + b^n = (a + b)(\\cdots)$",
+          "explicacion": "La suma de dos potencias del mismo exponente impar es divisible entre $a + b$ y el cociente tiene $n$ términos con signos alternados. Ejemplo: $x^5 + 1 = (x + 1)(x^4 - x^3 + x^2 - x + 1)$. Verificación en $x = 1$: el primer miembro vale $2$ y el segundo vale $(2)(1 - 1 + 1 - 1 + 1) = 2 \\times 1 = 2$. Si el exponente es par, la suma de potencias no es divisible entre $a + b$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aspa simple",
+      "puntos": [
+        {
+          "texto": "«Aspa simple» → factorizar trinomios $ax^2 + bx + c$",
+          "explicacion": "El aspa simple es un método para factorizar un trinomio $ax^2 + bx + c$ con coeficientes enteros como producto de dos binomios. Se descompone el primer término $ax^2$ en dos factores, se descompone el término independiente $c$ en dos factores, se colocan en dos filas y se comprueba que la suma de los productos cruzados sea el término central $bx$. Los factores se leen en horizontal. Es una disposición en forma de «X» (de ahí el nombre)."
+        },
+        {
+          "texto": "Aspa simple con coeficiente principal 1: $x^2 + 7x + 12$",
+          "explicacion": "Se busca dos números cuyo producto sea $12$ y cuya suma sea $7$. Los números $3$ y $4$ cumplen: $3 \\times 4 = 12$ y $3 + 4 = 7$. Se coloca $x$ y $3$ en una fila, $x$ y $4$ en otra; los productos cruzados son $x \\cdot 4 = 4x$ y $x \\cdot 3 = 3x$, que suman $7x$. Resultado: $x^2 + 7x + 12 = (x + 3)(x + 4)$."
+        },
+        {
+          "texto": "Aspa simple con término independiente negativo",
+          "explicacion": "Si $c$ es negativo, los dos números tienen signos opuestos, y el de mayor valor absoluto lleva el signo del término central. Ejemplo: $x^2 - 5x - 14$. Se buscan números de producto $-14$ y suma $-5$: son $-7$ y $2$. Los productos cruzados son $x \\cdot 2 + x \\cdot (-7) = 2x - 7x = -5x$. Resultado: $x^2 - 5x - 14 = (x - 7)(x + 2)$."
+        },
+        {
+          "texto": "Aspa simple con coeficiente principal distinto de 1: $6x^2 + 11x - 10$",
+          "explicacion": "Se descompone $6x^2 = 3x \\cdot 2x$ y $-10 = (-2)(5)$. Se prueba la disposición $3x$ con $-2$ y $2x$ con $5$: los productos cruzados son $3x \\cdot 5 = 15x$ y $2x \\cdot (-2) = -4x$, que suman $11x$, igual al término central. Se leen los factores en horizontal: $6x^2 + 11x - 10 = (3x - 2)(2x + 5)$. Verificación: $6x^2 + 15x - 4x - 10 = 6x^2 + 11x - 10$."
+        },
+        {
+          "texto": "Aspa simple por ensayo ⇒ probar otras descomposiciones si la suma falla",
+          "explicacion": "Si la suma de productos cruzados no da el término central, se prueba otra descomposición de $ax^2$ o de $c$, o se cambian de lugar los factores de una fila. Si ninguna prueba funciona, el trinomio no se factoriza con enteros. Ejemplo: en $6x^2 + 11x - 10$, la disposición $3x$ con $5$ y $2x$ con $-2$ da $3x(-2) + 2x(5) = -6x + 10x = 4x$, que no es $11x$; se descarta y se prueba la que sí funciona."
+        },
+        {
+          "texto": "Discriminante: $b^2 - 4ac$ cuadrado perfecto ⇒ factoriza con enteros",
+          "explicacion": "Un trinomio $ax^2 + bx + c$ con coeficientes enteros se factoriza en binomios con coeficientes racionales si y solo si su discriminante $b^2 - 4ac$ es un cuadrado perfecto. Ejemplos: $x^2 + 5x + 6$ tiene discriminante $25 - 24 = 1 = 1^2$ y se factoriza como $(x + 2)(x + 3)$; $2x^2 + x - 1$ tiene $1 + 8 = 9 = 3^2$ y se factoriza como $(2x - 1)(x + 1)$; $x^2 + x + 1$ tiene $1 - 4 = -3$, que no es cuadrado perfecto, y no se factoriza."
+        },
+        {
+          "texto": "Trinomio con raíces $x_1$, $x_2$ ⇒ $ax^2 + bx + c = a(x - x_1)(x - x_2)$",
+          "explicacion": "Si $x_1$ y $x_2$ son las raíces de $ax^2 + bx + c = 0$, el trinomio se escribe como $a(x - x_1)(x - x_2)$. Ejemplo: las raíces de $2x^2 + x - 1 = 0$ son $x = \\frac{-1 \\pm \\sqrt{1 + 8}}{4} = \\frac{-1 \\pm 3}{4}$, es decir $\\frac{1}{2}$ y $-1$. Entonces $2x^2 + x - 1 = 2\\left(x - \\frac{1}{2}\\right)(x + 1) = (2x - 1)(x + 1)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Aspa doble",
+      "puntos": [
+        {
+          "texto": "«Aspa doble» → factorizar polinomios de segundo grado con dos variables",
+          "explicacion": "El aspa doble factoriza polinomios de la forma $ax^2 + bxy + cy^2 + dx + ey + f$ en dos factores de primer grado. Se descompone el término en $x^2$, el término en $y^2$ y el término independiente; se disponen en dos filas de tres columnas y se verifican tres aspas: una entre las columnas de $x$ e $y$ (que debe dar el término en $xy$), otra entre $x$ y el independiente (término en $x$) y otra entre $y$ y el independiente (término en $y$). Los factores se leen en horizontal."
+        },
+        {
+          "texto": "Ejemplo de aspa doble: $6x^2 + 7xy + 2y^2 + 11x + 7y + 3$",
+          "explicacion": "Se descomponen $6x^2 = 2x \\cdot 3x$, $2y^2 = y \\cdot 2y$ y $3 = 3 \\cdot 1$, y se escribe la disposición con filas $(2x, y, 3)$ y $(3x, 2y, 1)$. Primera aspa (término en $xy$): $2x \\cdot 2y + y \\cdot 3x = 4xy + 3xy = 7xy$ ✓. Segunda aspa (término en $x$): $2x \\cdot 1 + 3 \\cdot 3x = 2x + 9x = 11x$ ✓. Tercera aspa (término en $y$): $y \\cdot 1 + 3 \\cdot 2y = y + 6y = 7y$ ✓. Resultado: $(2x + y + 3)(3x + 2y + 1)$."
+        },
+        {
+          "texto": "Aspa doble ✓ las tres aspas deben coincidir con los términos dados",
+          "explicacion": "El método solo es válido si las tres sumas de productos cruzados coinciden con los coeficientes $b$, $d$ y $e$ del polinomio; si alguna falla, se prueba otra descomposición de $ax^2$, $cy^2$ o $f$. Si ninguna funciona, el polinomio no se factoriza en dos factores lineales con enteros. Verificación del ejemplo anterior multiplicando $(2x + y + 3)(3x + 2y + 1)$: se obtienen $6x^2 + 4xy + 2x + 3xy + 2y^2 + y + 9x + 6y + 3$, que se reduce a $6x^2 + 7xy + 2y^2 + 11x + 7y + 3$."
+        },
+        {
+          "texto": "«Aspa doble especial» → factorizar polinomios de cuarto grado",
+          "explicacion": "El aspa doble especial factoriza polinomios de cuarto grado $ax^4 + bx^3 + cx^2 + dx + e$ en dos trinomios cuadráticos. Se descomponen el término en $x^4$ y el término independiente y se hace el aspa entre ellos; la suma de esos productos cruzados se compara con el término en $x^2$ y la diferencia se completa con el producto de los términos del medio; luego se verifican las aspas de $x^3$ y de $x$."
+        },
+        {
+          "texto": "Ejemplo de aspa doble especial: $x^4 + 3x^3 + 4x^2 + 3x + 1$",
+          "explicacion": "Se descomponen $x^4 = x^2 \\cdot x^2$ y $1 = 1 \\cdot 1$. El aspa exterior da $x^2 \\cdot 1 + 1 \\cdot x^2 = 2x^2$, pero el polinomio tiene $4x^2$; faltan $4x^2 - 2x^2 = 2x^2$, que se obtienen como producto de los términos del medio: $x \\cdot 2x = 2x^2$. Se disponen las filas $(x^2, x, 1)$ y $(x^2, 2x, 1)$. Verificación de $x^3$: $x^2 \\cdot 2x + x \\cdot x^2 = 3x^3$ ✓. Verificación de $x$: $x \\cdot 1 + 2x \\cdot 1 = 3x$ ✓. Resultado: $(x^2 + x + 1)(x^2 + 2x + 1)$, y como $x^2 + 2x + 1 = (x + 1)^2$, la factorización completa es $(x^2 + x + 1)(x + 1)^2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisores binómicos",
+      "puntos": [
+        {
+          "texto": "«Raíz» de un polinomio → valor de x que lo anula",
+          "explicacion": "Una raíz de $P(x)$ es un número $r$ tal que $P(r) = 0$. Por el teorema del factor, $r$ es raíz de $P(x)$ si y solo si $x - r$ es factor de $P(x)$. Ejemplo: para $P(x) = x^3 - 6x^2 + 11x - 6$ se tiene $P(1) = 1 - 6 + 11 - 6 = 0$, de modo que $1$ es raíz y $x - 1$ es factor."
+        },
+        {
+          "texto": "«Divisores binómicos» → factorizar buscando raíces racionales",
+          "explicacion": "El método de los divisores binómicos (o de evaluación) factoriza un polinomio de grado mayor que dos buscando raíces: cada raíz encontrada produce un factor $x - r$, y el polinomio se divide con la regla de Ruffini entre ese factor; luego se repite el proceso con el cociente hasta llegar a factores primos. Es el método general cuando no sirven los demás."
+        },
+        {
+          "texto": "Raíz racional $\\frac{p}{q}$ ⇒ p divide al término independiente y q al principal",
+          "explicacion": "Si un polinomio con coeficientes enteros tiene una raíz racional $\\frac{p}{q}$ en forma irreducible, entonces $p$ es divisor del término independiente y $q$ es divisor del coeficiente principal. Con esto se forma la lista de candidatos a raíz. Ejemplo: para $2x^3 - 3x^2 - 3x + 2$, $p \\in \\{\\pm 1, \\pm 2\\}$ y $q \\in \\{\\pm 1, \\pm 2\\}$, así que los candidatos son $\\pm 1$, $\\pm 2$ y $\\pm \\frac{1}{2}$."
+        },
+        {
+          "texto": "Coeficiente principal 1 ⇒ las raíces racionales son enteras y dividen a c",
+          "explicacion": "Si el coeficiente principal es $1$, entonces $q = \\pm 1$ y las únicas raíces racionales posibles son enteros que dividen al término independiente. Ejemplo: en $x^3 - 6x^2 + 11x - 6$ el término independiente es $-6$, cuyos divisores son $\\pm 1, \\pm 2, \\pm 3, \\pm 6$, y entre ellos se buscan las raíces."
+        },
+        {
+          "texto": "Suma de coeficientes = 0 ⇒ $x - 1$ es factor",
+          "explicacion": "El valor de $P(x)$ en $x = 1$ es la suma de todos sus coeficientes; si esa suma es cero, $x - 1$ es factor. Ejemplo: en $x^3 - 6x^2 + 11x - 6$ la suma es $1 - 6 + 11 - 6 = 0$, de modo que $x - 1$ es factor sin necesidad de más pruebas."
+        },
+        {
+          "texto": "$P(-1) = 0$ ⇒ $x + 1$ es factor",
+          "explicacion": "Para saber si $x + 1$ es factor se evalúa el polinomio en $x = -1$: si da cero, lo es. Ejemplo: $P(x) = x^3 + 2x^2 - x - 2$ cumple $P(-1) = -1 + 2 + 1 - 2 = 0$, así que $x + 1$ es factor; por Ruffini con raíz $-1$ (coeficientes $1, 2, -1, -2$) resultan $1, 1, -2$ y residuo $0$, es decir, el cociente $x^2 + x - 2 = (x + 2)(x - 1)$. Factorización: $(x + 1)(x + 2)(x - 1)$."
+        },
+        {
+          "texto": "Ejemplo completo: $x^3 - 6x^2 + 11x - 6$ por Ruffini",
+          "explicacion": "Datos: los candidatos son los divisores de $-6$. Como $P(1) = 0$, se divide entre $x - 1$ con Ruffini sobre los coeficientes $1, -6, 11, -6$: se baja $1$; $1 \\times 1 = 1$ y $-6 + 1 = -5$; $-5 \\times 1 = -5$ y $11 - 5 = 6$; $6 \\times 1 = 6$ y $-6 + 6 = 0$. El cociente es $x^2 - 5x + 6 = (x - 2)(x - 3)$. Resultado: $x^3 - 6x^2 + 11x - 6 = (x - 1)(x - 2)(x - 3)$. Verificación: las raíces $1, 2, 3$ suman $6$ (coeficiente de $-x^2$) y su producto es $6$ (opuesto del independiente)."
+        },
+        {
+          "texto": "Ejemplo con coeficiente principal ≠ 1: $2x^3 - 3x^2 - 3x + 2$",
+          "explicacion": "Se evalúa en los candidatos: $P(1) = 2 - 3 - 3 + 2 = -2$ (no), $P(2) = 16 - 12 - 6 + 2 = 0$ (sí). Ruffini con raíz $2$ sobre $2, -3, -3, 2$: se baja $2$; $2 \\times 2 = 4$ y $-3 + 4 = 1$; $1 \\times 2 = 2$ y $-3 + 2 = -1$; $-1 \\times 2 = -2$ y $2 - 2 = 0$. El cociente es $2x^2 + x - 1 = (2x - 1)(x + 1)$. Resultado: $2x^3 - 3x^2 - 3x + 2 = (x - 2)(2x - 1)(x + 1)$. Verificación: las raíces son $2$, $\\frac{1}{2}$ y $-1$, todas entre los candidatos."
+        },
+        {
+          "texto": "Raíz repetida: $x^3 - 3x + 2 = (x - 1)^2(x + 2)$",
+          "explicacion": "Una raíz puede repetirse; tras dividir, se evalúa de nuevo el cociente en la misma raíz. Ejemplo: $P(x) = x^3 - 3x + 2$ (coeficientes $1, 0, -3, 2$) cumple $P(1) = 1 - 3 + 2 = 0$. Ruffini con raíz $1$: $1$; $0 + 1 = 1$; $-3 + 1 = -2$; $2 - 2 = 0$. El cociente es $x^2 + x - 2 = (x + 2)(x - 1)$, que vuelve a tener la raíz $1$. Resultado: $(x - 1)^2(x + 2)$, con $x - 1$ de multiplicidad $2$."
+        },
+        {
+          "texto": "Término independiente = 0 ⇒ extraer x como factor común",
+          "explicacion": "Si el término independiente es cero, $x = 0$ es raíz y $x$ es factor común; se extrae primero y el polinomio restante tiene menor grado. Ejemplo: $x^4 - 3x^3 + 2x^2 = x^2(x^2 - 3x + 2) = x^2(x - 1)(x - 2)$. Verificación: $x^2 - 3x + 2$ tiene discriminante $9 - 8 = 1$ y raíces $1$ y $2$."
+        },
+        {
+          "texto": "Sin raíces racionales ⇒ no necesariamente primo",
+          "explicacion": "Que un polinomio no tenga raíces racionales no implica que sea irreducible: puede descomponerse en factores de segundo grado sin tener factores de primer grado. Ejemplo: $x^4 + x^2 + 1$ no tiene raíces reales (para todo real, $x^4 + x^2 + 1 \\ge 1$), pero se factoriza como $(x^2 + x + 1)(x^2 - x + 1)$, como se verá en completar cuadrados."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable y trucos",
+      "puntos": [
+        {
+          "texto": "«Cambio de variable» → reemplazar una expresión repetida por una letra",
+          "explicacion": "Cuando una misma expresión se repite en el polinomio, se reemplaza por una letra nueva para obtener un polinomio más sencillo, se factoriza y luego se devuelve la expresión original. Ejemplo: $(x^2 + 3x)^2 - 2(x^2 + 3x) - 8$. Con $u = x^2 + 3x$ queda $u^2 - 2u - 8 = (u - 4)(u + 2)$. Al volver a $x$: $(x^2 + 3x - 4)(x^2 + 3x + 2) = (x + 4)(x - 1)(x + 1)(x + 2)$."
+        },
+        {
+          "texto": "Trinomio bicuadrado: $x^4 + bx^2 + c$ con $u = x^2$",
+          "explicacion": "Un trinomio de la forma $x^4 + bx^2 + c$ se trata con el cambio $u = x^2$ y se factoriza por aspa simple, y luego se siguen factorizando los factores que lo permitan. Ejemplo: $x^4 - 5x^2 + 4 = u^2 - 5u + 4 = (u - 1)(u - 4)$; al volver, $(x^2 - 1)(x^2 - 4) = (x - 1)(x + 1)(x - 2)(x + 2)$. Otro: $x^4 + 5x^2 + 4 = (x^2 + 1)(x^2 + 4)$, que ya es completa."
+        },
+        {
+          "texto": "Completar cuadrados → sumar y restar un término para formar diferencia de cuadrados",
+          "explicacion": "Algunos polinomios se factorizan sumando y restando un mismo término para formar un cuadrado perfecto y luego aplicar la diferencia de cuadrados. Ejemplo: $x^4 + x^2 + 1 = (x^4 + 2x^2 + 1) - x^2 = (x^2 + 1)^2 - x^2 = (x^2 + 1 + x)(x^2 + 1 - x) = (x^2 + x + 1)(x^2 - x + 1)$. Verificación en $x = 1$: el primer miembro vale $3$ y el segundo vale $(3)(1) = 3$."
+        },
+        {
+          "texto": "Identidad de Sophie Germain: $a^4 + 4b^4 = (a^2 + 2b^2 + 2ab)(a^2 + 2b^2 - 2ab)$",
+          "explicacion": "La identidad de Sophie Germain factoriza una suma de una cuarta potencia y cuatro veces otra cuarta potencia. Se obtiene sumando y restando $4a^2b^2$: $a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2$, que es una diferencia de cuadrados. Ejemplo con $a = x$ y $b = 1$: $x^4 + 4 = (x^2 + 2)^2 - (2x)^2 = (x^2 + 2 + 2x)(x^2 + 2 - 2x) = (x^2 + 2x + 2)(x^2 - 2x + 2)$. Verificación en $x = 1$: $1 + 4 = 5$ y $(5)(1) = 5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia general",
+      "puntos": [
+        {
+          "texto": "Paso 1 → extraer el factor común si existe",
+          "explicacion": "Siempre se revisa primero si todos los términos comparten un factor, porque simplifica el resto del polinomio. Ejemplo: $2x^3 - 8x = 2x(x^2 - 4)$, y recién después se factoriza $x^2 - 4$. Si se omite este paso, los otros métodos se vuelven más difíciles."
+        },
+        {
+          "texto": "Paso 2 → elegir el método según el número de términos",
+          "explicacion": "Con dos términos se piensa en diferencia de cuadrados, suma o diferencia de cubos o diferencia de potencias; con tres términos, en trinomio cuadrado perfecto o aspa simple; con cuatro o más, en agrupación; y para grados mayores o cuando nada anterior sirve, en divisores binómicos. Ejemplo: $x^2 - 9$ tiene dos términos (diferencia de cuadrados); $x^2 + 7x + 12$ tiene tres (aspa simple); $x^3 + x^2 + x + 1$ tiene cuatro (agrupación)."
+        },
+        {
+          "texto": "Paso 3 → repetir hasta que todos los factores sean primos",
+          "explicacion": "Después de aplicar un método, se revisa cada factor obtenido y se vuelve a factorizar si es posible, hasta obtener una factorización completa. Ejemplo: $x^4 - 16 = (x^2 + 4)(x^2 - 4)$ no está completa; se continúa con $x^2 - 4$ y se llega a $(x^2 + 4)(x + 2)(x - 2)$."
+        },
+        {
+          "texto": "Paso 4 → verificar multiplicando los factores",
+          "explicacion": "Para terminar se multiplican los factores obtenidos y se comprueba que el producto sea el polinomio original. Ejemplo: $(x + 2)(x - 2)(x^2 + 4) = (x^2 - 4)(x^2 + 4) = x^4 - 16$, que coincide con el polinomio de partida."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con temas previos",
+      "puntos": [
+        {
+          "texto": "Tema 41 «Productos notables» → la factorización es su operación inversa",
+          "explicacion": "Cada producto notable se lee de derecha a izquierda como una identidad de factorización: la suma por diferencia $(a + b)(a - b) = a^2 - b^2$ da la diferencia de cuadrados, y el cuadrado del binomio $(a + b)^2 = a^2 + 2ab + b^2$ da el trinomio cuadrado perfecto. Ejemplo: $(x + 5)^2 = x^2 + 10x + 25$ se invierte a $x^2 + 10x + 25 = (x + 5)^2$."
+        },
+        {
+          "texto": "Tema 32 «Multiplicación de polinomios» → verificar al multiplicar",
+          "explicacion": "La multiplicación de polinomios, estudiada en el tema 32, es el procedimiento que permite comprobar toda factorización: multiplicar los factores debe devolver el polinomio original. Ejemplo: $(x - 1)(x^2 + x + 1) = x^3 + x^2 + x - x^2 - x - 1 = x^3 - 1$, que confirma $x^3 - 1 = (x - 1)(x^2 + x + 1)$."
+        },
+        {
+          "texto": "Tema 37 «Método de Ruffini» → dividir entre cada factor hallado",
+          "explicacion": "El método de Ruffini permite dividir el polinomio entre el factor $x - r$ encontrado y obtener el cociente, que se sigue factorizando. Ejemplo: al dividir $x^3 - 6x^2 + 11x - 6$ entre $x - 1$ se obtiene $x^2 - 5x + 6$ con residuo $0$."
+        },
+        {
+          "texto": "Tema 40 «Teorema del factor» → raíz r ⇒ factor $x - r$",
+          "explicacion": "El teorema del factor establece que $x - r$ es factor de $P(x)$ si y solo si $P(r) = 0$. Es el fundamento del método de divisores binómicos. Ejemplo: como $P(2) = 8 - 8 = 0$ para $P(x) = x^3 - 8$, el binomio $x - 2$ es factor, y $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$."
+        },
+        {
+          "texto": "Tema 44 «Cocientes notables» → factorizar $x^n \\pm a^n$",
+          "explicacion": "Los cocientes notables entregan la factorización de diferencias y sumas de potencias: $x^n - a^n = (x - a) \\times$ cociente notable, y lo mismo para la suma con $n$ impar. Ejemplo: $\\frac{x^5 - 32}{x - 2} = x^4 + 2x^3 + 4x^2 + 8x + 16$ implica $x^5 - 32 = (x - 2)(x^4 + 2x^3 + 4x^2 + 8x + 16)$."
+        },
+        {
+          "texto": "Tema 06 «Ecuaciones de segundo grado» → raíces y factorización del trinomio",
+          "explicacion": "Resolver una ecuación de segundo grado es hallar las raíces del trinomio, y estas determinan su factorización $a(x - x_1)(x - x_2)$. Ejemplo: $x^2 - 5x + 6 = 0$ tiene raíces $2$ y $3$ (porque $4 - 10 + 6 = 0$ y $9 - 15 + 6 = 0$), luego $x^2 - 5x + 6 = (x - 2)(x - 3)$."
+        }
+      ]
+    }
+  ]
+}

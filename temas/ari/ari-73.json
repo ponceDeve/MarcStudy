@@ -1,0 +1,194 @@
+{
+  "curso": "Aritmética",
+  "tema": "Varianza",
+  "glosario": {
+    "Varianza": "Promedio de los cuadrados de las desviaciones",
+    "Medida de dispersión": "Valor que mide la variación de los datos",
+    "Medidas de tendencia central": "Valores que representan el centro de los datos",
+    "Desviación": "Diferencia entre un dato y la media",
+    "Población": "Conjunto completo de elementos estudiados",
+    "Muestra": "Parte de la población que se estudia",
+    "Parámetro": "Medida calculada con toda la población",
+    "Estadístico": "Medida calculada con una muestra",
+    "Corrección de Bessel": "División entre n menos uno",
+    "Estimador sin sesgo": "Estimador que acierta en promedio",
+    "Frecuencias absolutas": "Veces que se repite cada valor",
+    "Marca de clase": "Punto medio de un intervalo",
+    "Datos agrupados": "Datos organizados en intervalos de clase",
+    "Valores extremos": "Datos muy alejados del resto",
+    "Desviación estándar": "Raíz cuadrada positiva de la varianza",
+    "Coeficiente de variación": "Cociente entre dispersión y media"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Varianza» = promedio de los cuadrados de las desviaciones",
+          "explicacion": "La varianza es la medida de dispersión que promedia los cuadrados de las diferencias entre cada dato y la media aritmética. Cuantifica qué tan alejados, en conjunto, se encuentran los datos de su valor medio: si los datos están muy concentrados alrededor de la media, la varianza es pequeña; si están muy dispersos, es grande."
+        },
+        {
+          "texto": "«Medida de dispersión» ≠ medida de tendencia central",
+          "explicacion": "Las medidas de tendencia central, como la media (tema 66), la moda (tema 69) y la mediana (tema 70), resumen en un solo valor el centro de los datos. Las medidas de dispersión describen cuánto varían los datos alrededor de ese centro. Dos conjuntos pueden compartir la misma media y diferir mucho en su dispersión, por lo que se necesitan ambos tipos de medidas."
+        },
+        {
+          "texto": "«Desviación» = diferencia entre un dato y la media",
+          "explicacion": "La desviación de un dato respecto de la media aritmética es la diferencia $d_i = x_i - \\bar{x}$, donde $x_i$ es el dato y $\\bar{x}$ la media. Es positiva si el dato supera a la media, negativa si es menor y nula si coincide con ella. La varianza se construye a partir de estas desviaciones."
+        },
+        {
+          "texto": "Suma de desviaciones respecto de la media = 0",
+          "explicacion": "Por definición de media aritmética, se cumple $\\sum (x_i - \\bar{x}) = 0$: las desviaciones positivas y negativas se compensan exactamente. En el conjunto 2, 4, 9 la media es 5 y las desviaciones $-3, -1, 4$ suman cero. Por ello la suma de desviaciones no sirve para medir la dispersión."
+        },
+        {
+          "texto": "Elevar al cuadrado evita la compensación",
+          "explicacion": "Al elevar cada desviación al cuadrado, todos los términos resultan no negativos y ya no se anulan entre sí. Además, el cuadrado concede mayor peso a las desviaciones grandes. Esta es la razón de que la varianza se defina con cuadrados y no con las desviaciones directas."
+        },
+        {
+          "texto": "Notación: $\\sigma^2$, $s^2$ y $Var(X)$",
+          "explicacion": "La varianza poblacional se simboliza con $\\sigma^2$, donde $\\sigma$ es la letra griega sigma, y la varianza muestral con $s^2$. También se escribe $Var(X)$ o $V(X)$, donde $X$ es la variable. Se expresa en las unidades de los datos elevadas al cuadrado."
+        },
+        {
+          "texto": "«Población» ≠ muestra",
+          "explicacion": "La población es el conjunto completo de elementos de interés, de tamaño $N$, y la muestra es una parte de ella, de tamaño $n$. Una medida calculada con toda la población se llama parámetro, y una calculada con una muestra se llama estadístico. La varianza se calcula de forma distinta en cada caso."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos no agrupados",
+      "puntos": [
+        {
+          "texto": "Varianza poblacional: $\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N}$",
+          "explicacion": "Cuando se dispone de todos los datos de la población, la varianza es $$\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N}$$ donde $\\mu$ es la media poblacional, $x_i$ cada dato y $N$ el número de datos. Se interpreta como el promedio de los cuadrados de las desviaciones."
+        },
+        {
+          "texto": "Fórmula desarrollada: promedio de cuadrados menos cuadrado de la media",
+          "explicacion": "Desarrollando $(x_i - \\mu)^2 = x_i^2 - 2\\mu x_i + \\mu^2$ y promediando, se obtiene $$\\sigma^2 = \\frac{\\sum x_i^2}{N} - \\mu^2$$ Esta forma es más cómoda cuando la media no es un número entero, porque evita calcular cada desviación por separado."
+        },
+        {
+          "texto": "Varianza muestral: $s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$",
+          "explicacion": "Cuando los datos son una muestra y se desea estimar la varianza de la población, se utiliza $$s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$$ donde $\\bar{x}$ es la media de la muestra. Dividir entre $n - 1$ y no entre $n$ se conoce como corrección de Bessel, por Friedrich Wilhelm Bessel, astrónomo y matemático alemán."
+        },
+        {
+          "texto": "Corrección de Bessel ⇒ estimador sin sesgo",
+          "explicacion": "Las desviaciones de una muestra se miden respecto de su propia media, que es el punto más cercano a los datos de la muestra, por lo que tienden a ser menores que las desviaciones respecto de la media poblacional. Dividir entre $n - 1$ compensa esa diferencia y hace que, en promedio, la varianza muestral coincida con la varianza de la población."
+        },
+        {
+          "texto": "Los textos usan dos denominadores: $n$ y $n - 1$",
+          "explicacion": "Muchos textos preuniversitarios definen la varianza de un conjunto de datos dividiendo entre $n$, considerándolo como población, mientras que los textos de estadística inferencial dividen entre $n - 1$ cuando los datos son una muestra. Ambas versiones son correctas en su contexto; la diferencia se reduce cuando $n$ es grande."
+        },
+        {
+          "texto": "Ejemplo: 2, 4, 4, 4, 5, 5, 7, 9 ⇒ $\\sigma^2 = 4$",
+          "explicacion": "La media es $\\frac{40}{8} = 5$. Los cuadrados de las desviaciones son $9, 1, 1, 1, 0, 0, 4, 16$, que suman 32. Dividiendo entre $N = 8$, resulta $\\sigma^2 = 4$. Con la fórmula desarrollada se obtiene el mismo valor: $\\sum x_i^2 = 232$ y $\\frac{232}{8} - 5^2 = 29 - 25 = 4$."
+        },
+        {
+          "texto": "Mismo ejemplo como muestra ⇒ $s^2 \\approx 4{,}57$",
+          "explicacion": "Si los mismos datos se consideran una muestra, la suma de cuadrados de las desviaciones sigue siendo 32, pero se divide entre $n - 1 = 7$. Resulta $s^2 = \\frac{32}{7} \\approx 4{,}57$, valor mayor que la varianza poblacional calculada con el mismo conjunto."
+        }
+      ]
+    },
+    {
+      "titulo": "Tabla y datos agrupados",
+      "puntos": [
+        {
+          "texto": "Fórmula con frecuencias: $\\sigma^2 = \\frac{\\sum f_i (x_i - \\bar{x})^2}{n}$",
+          "explicacion": "Si los valores $x_i$ se presentan con sus frecuencias absolutas $f_i$, cada desviación al cuadrado se multiplica por la frecuencia de su valor: $$\\sigma^2 = \\frac{\\sum f_i (x_i - \\bar{x})^2}{n}$$ donde $n = \\sum f_i$ es el total de datos. Es equivalente a la fórmula básica con los datos repetidos escritos uno por uno."
+        },
+        {
+          "texto": "Fórmula desarrollada con frecuencias",
+          "explicacion": "La forma abreviada para datos con frecuencias es $$\\sigma^2 = \\frac{\\sum f_i x_i^2}{n} - \\bar{x}^2$$ es decir, el promedio ponderado de los cuadrados de los valores menos el cuadrado de la media. Resulta la más práctica porque solo exige las sumas $\\sum f_i x_i$ y $\\sum f_i x_i^2$."
+        },
+        {
+          "texto": "Ejemplo con tabla: valores 1, 2, 3 ⇒ $\\sigma^2 = 0{,}49$",
+          "explicacion": "Los valores $1, 2, 3$ tienen frecuencias $2, 5, 3$, con $n = 10$. La media es $\\frac{2 + 10 + 9}{10} = 2{,}1$. El promedio de los cuadrados es $\\frac{2 + 20 + 27}{10} = 4{,}9$. Entonces $\\sigma^2 = 4{,}9 - 2{,}1^2 = 4{,}9 - 4{,}41 = 0{,}49$."
+        },
+        {
+          "texto": "Datos agrupados ⇒ usar la marca de clase como valor",
+          "explicacion": "En datos agrupados en intervalos de clase se desconocen los valores individuales, de modo que se reemplazan por la marca de clase, el punto medio de cada intervalo, como valor $x_i$ de todos los datos de la clase. Esta suposición hace que la varianza de datos agrupados sea una aproximación."
+        },
+        {
+          "texto": "Ejemplo agrupado: $\\sigma^2 \\approx 122{,}44$",
+          "explicacion": "Con las clases $10-20, 20-30, 30-40, 40-50, 50-60$, marcas $15, 25, 35, 45, 55$ y frecuencias $4, 9, 15, 8, 4$, se tiene $n = 40$. La media es $\\frac{1390}{40} = 34{,}75$. La suma $\\sum f_i x_i^2$ vale $53200$, y su promedio es $1330$. Entonces $\\sigma^2 = 1330 - 34{,}75^2 \\approx 122{,}44$."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "Varianza nunca es negativa",
+          "explicacion": "Como es un promedio de cuadrados, la varianza no puede ser negativa. Si al calcularla se obtiene un valor negativo, hay un error de cálculo, por lo general en la fórmula desarrollada al restar un cuadrado de la media mal calculado."
+        },
+        {
+          "texto": "Varianza = 0 ⇒ todos los datos son iguales",
+          "explicacion": "La varianza es nula si y solo si todos los datos coinciden con la media, es decir, no hay variación alguna. Si existe al menos un dato distinto de los demás, algún término $(x_i - \\bar{x})^2$ es positivo y la varianza también lo es."
+        },
+        {
+          "texto": "Varianza ↑ ⇒ datos más dispersos",
+          "explicacion": "Mientras mayor es la varianza, mayor es el alejamiento promedio entre los datos y su media. Para comparar dos conjuntos con la misma media, el de varianza mayor es el más disperso. Por ejemplo, 4, 5, 6 tiene $\\sigma^2 = \\frac{2}{3}$, mientras que 1, 5, 9 tiene $\\sigma^2 = \\frac{32}{3} \\approx 10{,}67$, aunque ambos promedian 5."
+        },
+        {
+          "texto": "Datos + constante b → varianza sin cambio",
+          "explicacion": "Si a todos los datos se les suma una misma constante $b$, la media se desplaza en $b$ y cada desviación permanece igual. Por tanto $Var(X + b) = Var(X)$: la varianza es invariante bajo traslaciones, porque solo mide distancias entre datos."
+        },
+        {
+          "texto": "Datos multiplicados por $a$ → varianza multiplicada por $a^2$",
+          "explicacion": "Si todos los datos se multiplican por una constante $a$, cada desviación queda multiplicada por $a$ y, al elevarla al cuadrado, por $a^2$. Así, $Var(aX) = a^2\\,Var(X)$ y, en general, $Var(aX + b) = a^2\\,Var(X)$. El signo de $a$ no influye."
+        },
+        {
+          "texto": "Varianza ✓ unidades al cuadrado",
+          "explicacion": "Al elevar al cuadrado las desviaciones, la varianza queda expresada en el cuadrado de las unidades de los datos. Si los datos están en metros, la varianza está en metros cuadrados. Esa unidad no es comparable directamente con los datos, y por esa razón se recurre a la desviación estándar (tema 74)."
+        },
+        {
+          "texto": "Varianza ↑ con valores extremos",
+          "explicacion": "Como las desviaciones se elevan al cuadrado, un dato muy alejado de la media aporta un término muy grande a la suma. La varianza es, por eso, sensible a los valores extremos, a diferencia de la mediana (tema 70) y de los cuartiles (tema 72)."
+        },
+        {
+          "texto": "La media minimiza el promedio de cuadrados de desviaciones",
+          "explicacion": "Para cualquier número $c$ se cumple $\\frac{1}{n}\\sum (x_i - c)^2 = \\sigma^2 + (\\bar{x} - c)^2$. El segundo sumando es no negativo y se anula solo cuando $c = \\bar{x}$, de manera que el valor mínimo del promedio de cuadrados se alcanza en la media y es precisamente la varianza."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Varianza → desviación estándar",
+          "explicacion": "La desviación estándar es la raíz cuadrada positiva de la varianza y se estudia en el tema 74. Se obtiene a partir de ella para recuperar las unidades originales de los datos, por lo que la varianza es un paso previo en su cálculo."
+        },
+        {
+          "texto": "Varianza + media → coeficiente de variación",
+          "explicacion": "El coeficiente de variación (tema 75) compara la dispersión con el tamaño de la media y se obtiene a partir de la varianza, mediante la desviación estándar, y de la media aritmética (tema 66). Permite comparar la variabilidad de conjuntos con medias o unidades distintas."
+        },
+        {
+          "texto": "Origen del término varianza: Ronald Fisher, 1918",
+          "explicacion": "El término varianza fue introducido en 1918 por Ronald Aylmer Fisher, estadístico y genetista británico, en un trabajo sobre la correlación entre parientes bajo la hipótesis de herencia mendeliana. A partir de entonces se utilizó de forma general para designar el promedio de los cuadrados de las desviaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: olvidar elevar las desviaciones al cuadrado",
+          "explicacion": "Promediar las desviaciones sin elevarlas al cuadrado entrega siempre cero, por la propiedad de la media aritmética. Cada desviación debe elevarse al cuadrado antes de sumar, y el resultado no puede ser negativo. Así, en el conjunto 2, 4, 9, con media 5, los cuadrados $9, 1, 16$ suman 26, mientras que las desviaciones sin elevar suman 0 y no dan información sobre la dispersión."
+        },
+        {
+          "texto": "Error: confundir $\\sum x_i^2$ con $(\\sum x_i)^2$",
+          "explicacion": "En la fórmula desarrollada, $\\sum x_i^2$ es la suma de los cuadrados de los datos, mientras que $(\\sum x_i)^2$ es el cuadrado de la suma, y ambas cantidades son distintas. Con 1, 2, 3 la primera vale 14 y la segunda 36."
+        },
+        {
+          "texto": "Error: olvidar restar el cuadrado de la media",
+          "explicacion": "El promedio de los cuadrados de los datos no es la varianza; hay que restarle $\\bar{x}^2$, el cuadrado de la media. Omitir esta resta produce un valor mayor que el correcto, salvo cuando la media es cero."
+        },
+        {
+          "texto": "Error: usar el denominador equivocado",
+          "explicacion": "Dividir entre $n - 1$ cuando se trata de toda la población, o entre $n$ cuando el enunciado exige la varianza muestral, cambia el resultado. Se debe leer en el enunciado si los datos son población o muestra, y, si no lo indica, seguir el criterio del texto de estudio."
+        },
+        {
+          "texto": "Error: ignorar las frecuencias en datos con tabla",
+          "explicacion": "En una tabla con frecuencias, cada valor interviene tantas veces como indica su frecuencia. Calcular la varianza solo con los valores distintos, sin ponderarlos por $f_i$, ignora la repetición de los datos y altera la media y la varianza."
+        }
+      ]
+    }
+  ]
+}

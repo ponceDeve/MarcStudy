@@ -1,0 +1,174 @@
+{
+  "curso": "Aritmética",
+  "tema": "Descuentos y aumentos sucesivos",
+  "glosario": {
+    "descuento sucesivo": "Rebaja aplicada sobre una cantidad ya rebajada",
+    "aumento sucesivo": "Incremento aplicado sobre una cantidad ya aumentada",
+    "descuento único equivalente": "Un solo descuento con el mismo efecto total",
+    "aumento único equivalente": "Un solo aumento con el mismo efecto total",
+    "factor de variación": "Número por el que se multiplica la cantidad",
+    "variación única": "Cambio porcentual total de varias variaciones",
+    "método del cien": "Tomar 100 como valor inicial para operar",
+    "base": "Cantidad sobre la que se calcula el porcentaje"
+  },
+  "theory": [
+    {
+      "titulo": "Variaciones sucesivas",
+      "puntos": [
+        {
+          "texto": "«Variaciones sucesivas» → cambios porcentuales aplicados uno tras otro",
+          "explicacion": "Una cantidad experimenta variaciones sucesivas cuando sobre ella se aplican varios aumentos, varios descuentos o una combinación de ambos, uno después de otro y en un orden dado. Cada variación se expresa como un tanto por ciento y actúa sobre el resultado que dejó la anterior. Se diferencia de la variación porcentual simple (se estudia en el tema 50, Variación porcentual) en que allí se compara un valor inicial con un único valor final, mientras que aquí el proceso consta de varias etapas encadenadas, cada una con su propio tanto por ciento."
+        },
+        {
+          "texto": "Cada porcentaje cambia la «base» del siguiente",
+          "explicacion": "La idea central del tema es que la base de cada porcentaje es el resultado de la etapa previa y no la cantidad original. Por ejemplo, un descuento del 20 % seguido de otro del 10 % no descuenta el 30 % de la cantidad inicial: el segundo 10 % se calcula sobre lo que quedó después del primero, que es menor que la cantidad inicial, por lo que descuenta menos de lo que descontaría sobre ella. Este cambio de base explica por qué los porcentajes sucesivos no pueden sumarse y por qué hace falta un método propio para combinarlos."
+        }
+      ]
+    },
+    {
+      "titulo": "Factor de variación",
+      "puntos": [
+        {
+          "texto": "«Factor de variación» = número que multiplica la cantidad",
+          "explicacion": "Cada variación porcentual puede representarse mediante un factor. Para un aumento del $a\\%$ el factor es $1+\\frac{a}{100}$, porque la cantidad final equivale al $100\\%+a\\%$ de la inicial; para un descuento del $d\\%$ el factor es $1-\\frac{d}{100}$, porque la cantidad final equivale al $100\\%-d\\%$ de la inicial. Aplicar la variación es multiplicar por su factor: un aumento del 25 % multiplica por 1,25 y un descuento del 40 % multiplica por 0,6. Con esta representación, una cadena de variaciones se reduce a una cadena de multiplicaciones."
+        },
+        {
+          "texto": "Resultado final = valor inicial por el producto de factores",
+          "explicacion": "Si una cantidad inicial $N$ sufre $n$ variaciones con factores $f_1, f_2, \\ldots, f_n$, la cantidad final es $N_F = N\\cdot f_1\\cdot f_2\\cdots f_n$. Como la multiplicación de números reales es conmutativa y asociativa, el producto no depende del orden en que se escriban los factores. De aquí se deduce la variación total: el cociente $\\frac{N_F}{N}$ es el producto de factores, y restarle 1 y multiplicar por 100 da el cambio porcentual total, positivo si es aumento y negativo si es descuento."
+        }
+      ]
+    },
+    {
+      "titulo": "Descuentos sucesivos",
+      "puntos": [
+        {
+          "texto": "«Descuento sucesivo» → rebaja sobre una cantidad ya rebajada",
+          "explicacion": "Se llaman descuentos sucesivos a las rebajas que se aplican en cadena: el primero actúa sobre la cantidad inicial y cada uno de los siguientes actúa sobre la cantidad que dejó el descuento anterior. Si los descuentos son del $d_1\\%$ y del $d_2\\%$, tras el primero queda el $(100-d_1)\\%$ de la cantidad y tras el segundo queda el $(100-d_2)\\%$ de eso. El proceso modela, por ejemplo, un precio que primero recibe una rebaja y luego otra adicional sobre el nuevo precio, y su efecto total es siempre menor que la suma de los descuentos."
+        },
+        {
+          "texto": "«Descuento único equivalente» de dos descuentos",
+          "explicacion": "El descuento único equivalente es el descuento que, aplicado una sola vez a la cantidad inicial, produce el mismo resultado final que los descuentos sucesivos. Para dos descuentos del $d_1\\%$ y del $d_2\\%$ vale $D_U = d_1 + d_2 - \\frac{d_1\\, d_2}{100}$, expresado en tanto por ciento. Se deduce del producto de factores: $\\left(1-\\frac{d_1}{100}\\right)\\left(1-\\frac{d_2}{100}\\right) = 1 - D_U/100$. Con descuentos del 20 % y del 10 % resulta $20+10-2 = 28$, es decir, un descuento único equivalente del 28 %, que coincide con el cálculo directo $0{,}8\\times 0{,}9 = 0{,}72$."
+        },
+        {
+          "texto": "Descuento único equivalente de tres o más descuentos",
+          "explicacion": "Para $n$ descuentos sucesivos del $d_1\\%, d_2\\%, \\ldots, d_n\\%$, el descuento único equivalente se calcula como $D_U = 100\\left[1 - \\left(1-\\frac{d_1}{100}\\right)\\left(1-\\frac{d_2}{100}\\right)\\cdots\\left(1-\\frac{d_n}{100}\\right)\\right]$. Es decir, se multiplican todos los factores de descuento, se resta el producto de 1 y el resultado se expresa en porcentaje. Con descuentos del 10 %, 20 % y 30 %, el producto es $0{,}9\\times 0{,}8\\times 0{,}7 = 0{,}504$, y el descuento único equivalente es el 49,6 %, menor que la suma de los tres, que sería 60 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Aumentos sucesivos",
+      "puntos": [
+        {
+          "texto": "«Aumento sucesivo» → incremento sobre una cantidad ya aumentada",
+          "explicacion": "Los aumentos sucesivos son incrementos aplicados en cadena: el primero actúa sobre la cantidad inicial y cada uno de los siguientes actúa sobre la cantidad ya aumentada. Si los aumentos son del $a_1\\%$ y del $a_2\\%$, tras el primero la cantidad equivale al $(100+a_1)\\%$ de la original y tras el segundo equivale al $(100+a_2)\\%$ de eso. Como cada incremento se calcula sobre una base mayor que la anterior, el efecto total supera siempre a la suma simple de los porcentajes."
+        },
+        {
+          "texto": "«Aumento único equivalente» de dos aumentos",
+          "explicacion": "El aumento único equivalente es el aumento que, aplicado una sola vez a la cantidad inicial, produce el mismo resultado final que los aumentos sucesivos. Para dos aumentos del $a_1\\%$ y del $a_2\\%$ vale $A_U = a_1 + a_2 + \\frac{a_1\\, a_2}{100}$, en tanto por ciento. Con aumentos del 20 % y del 10 % resulta $20+10+2 = 32$, un aumento único equivalente del 32 %, que coincide con $1{,}2\\times 1{,}1 = 1{,}32$. El término adicional $\\frac{a_1 a_2}{100}$ procede de que el segundo aumento se calcula también sobre el incremento que dejó el primero."
+        },
+        {
+          "texto": "Aumento único equivalente de tres o más aumentos",
+          "explicacion": "Para $n$ aumentos sucesivos del $a_1\\%, a_2\\%, \\ldots, a_n\\%$, el aumento único equivalente es $A_U = 100\\left[\\left(1+\\frac{a_1}{100}\\right)\\left(1+\\frac{a_2}{100}\\right)\\cdots\\left(1+\\frac{a_n}{100}\\right) - 1\\right]$. Se multiplican los factores de aumento, se resta 1 al producto y se expresa el resultado en porcentaje. Con tres aumentos del 10 %, el producto es $1{,}1^3 = 1{,}331$ y el aumento único equivalente es el 33,1 %, mayor que la suma simple de 30 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Variaciones mixtas",
+      "puntos": [
+        {
+          "texto": "Aumento y descuento sucesivos → «variación única»",
+          "explicacion": "Cuando se combinan un aumento del $a\\%$ y un descuento del $d\\%$, el factor total es $\\left(1+\\frac{a}{100}\\right)\\left(1-\\frac{d}{100}\\right)$ y la variación única, en tanto por ciento, es $V = a - d - \\frac{a\\, d}{100}$. Si el resultado es positivo, equivale a un aumento único; si es negativo, equivale a un descuento único del valor absoluto de $V$. Con un aumento del 30 % y un descuento del 10 % resulta $30-10-3 = 17$, un aumento único equivalente del 17 %, que coincide con $1{,}3\\times 0{,}9 = 1{,}17$."
+        },
+        {
+          "texto": "Cadena general de aumentos y descuentos",
+          "explicacion": "Para una cadena cualquiera de aumentos y descuentos, cada aumento del $a_i\\%$ aporta el factor $1+\\frac{a_i}{100}$ y cada descuento del $d_j\\%$ aporta el factor $1-\\frac{d_j}{100}$. La variación única es $V = 100\\left[\\prod f - 1\\right]$, donde $\\prod f$ es el producto de todos los factores. El signo de $V$ indica si el efecto total es un aumento, un descuento o ninguno de los dos cuando $V$ vale cero. Esta fórmula resume todas las anteriores, que son casos particulares de ella."
+        },
+        {
+          "texto": "Aumento y descuento del 25 % y 20 % ⇒ sin variación",
+          "explicacion": "Un aumento del 25 % seguido de un descuento del 20 % deja la cantidad sin cambio, porque $1{,}25\\times 0{,}8 = 1$ y la variación única es $25-20-5 = 0$. Es un caso notable porque muestra que un aumento y un descuento de porcentajes distintos pueden anularse, hecho que se generaliza en la sección de variación inversa, que da el descuento que revierte un aumento y el aumento que revierte un descuento. Cada pareja de porcentajes que cumple esa condición produce un factor total igual a 1."
+        },
+        {
+          "texto": "Mismo porcentaje de aumento y descuento ⇒ descuento neto",
+          "explicacion": "Si una cantidad aumenta el $a\\%$ y luego se descuenta el mismo $a\\%$, la variación única es $a - a - \\frac{a^2}{100} = -\\frac{a^2}{100}$, es decir, un descuento neto del $\\frac{a^2}{100}\\%$. El resultado es el mismo si se hace primero el descuento y luego el aumento, por la conmutatividad del producto de factores. Con $a = 20$, la cantidad queda en $1{,}2\\times 0{,}8 = 0{,}96$ de la inicial, un descuento neto del 4 %. La causa es que el descuento se calcula sobre una base ya aumentada y por eso resta más de lo que el aumento sumó."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "El orden de las variaciones no altera el resultado",
+          "explicacion": "Como el resultado final es el producto de los factores y la multiplicación es conmutativa, aplicar las mismas variaciones en cualquier orden conduce a la misma cantidad final. Por ejemplo, un descuento del 20 % seguido de un aumento del 10 % da $0{,}8\\times 1{,}1 = 0{,}88$, igual que un aumento del 10 % seguido de un descuento del 20 %. Esta propiedad se refiere solo al resultado final: las cantidades intermedias sí cambian con el orden y, si el problema pregunta por ellas, no pueden intercambiarse."
+        },
+        {
+          "texto": "Descuento único equivalente menor que la suma de descuentos",
+          "explicacion": "Cuando los descuentos sucesivos son positivos y menores que el 100 %, el descuento único equivalente es siempre menor que la suma de los porcentajes. La razón es que, al calcular $d_1 + d_2 - \\frac{d_1 d_2}{100}$, se resta un término positivo a la suma. Intuitivamente, cada descuento posterior actúa sobre una base ya reducida, por lo que quita menos que si se hubiera calculado sobre la cantidad inicial. Con descuentos del 50 % y del 50 %, el efecto total es del 75 % y no del 100 %."
+        },
+        {
+          "texto": "Aumento único equivalente mayor que la suma de aumentos",
+          "explicacion": "Cuando los aumentos sucesivos son positivos, el aumento único equivalente es siempre mayor que la suma de los porcentajes, porque a la suma se agrega el término positivo $\\frac{a_1 a_2}{100}$. Cada aumento posterior actúa sobre una base mayor que la inicial y por eso agrega más de lo que agregaría sobre la cantidad original. Con dos aumentos del 100 %, la cantidad se multiplica por 4, lo que equivale a un aumento único del 300 % y no del 200 %."
+        },
+        {
+          "texto": "Los descuentos sucesivos nunca llegan al 100 %",
+          "explicacion": "Mientras ningún descuento sea del 100 %, la cantidad que queda es el producto de factores positivos y, por tanto, positiva; en consecuencia, el descuento único equivalente es siempre menor que el 100 %, por muchos descuentos que se apliquen. En cambio, los aumentos no tienen tope: pueden superar el 100 % y la cantidad puede multiplicarse tantas veces como se desee. Un descuento individual tampoco puede superar el 100 %, pues el precio no puede volverse negativo."
+        },
+        {
+          "texto": "Variaciones iguales repetidas ⇒ potencia del factor",
+          "explicacion": "Cuando se aplica $n$ veces el mismo aumento del $a\\%$, el aumento único equivalente es $A_U = 100\\left[\\left(1+\\frac{a}{100}\\right)^n - 1\\right]$, y cuando se aplica $n$ veces el mismo descuento del $d\\%$, el descuento único equivalente es $D_U = 100\\left[1 - \\left(1-\\frac{d}{100}\\right)^n\\right]$. La cantidad final es la inicial multiplicada por la potencia $n$ del factor. Con dos descuentos del 10 %, el factor es $0{,}9^2 = 0{,}81$ y el descuento único es el 19 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Método del cien",
+      "puntos": [
+        {
+          "texto": "«Método del cien» = tomar 100 como valor inicial",
+          "explicacion": "Como los porcentajes no dependen de la cantidad concreta sobre la que se aplican, se puede suponer que la cantidad inicial vale 100 y aplicarle las variaciones paso a paso. Con ese valor, la cantidad final coincide numéricamente con el porcentaje que representa respecto de la inicial, y la diferencia con 100 es la variación total. Con descuentos del 20 % y del 10 %: 100 baja a 80 y luego a 72, y el descuento total es 100 menos 72, es decir, el 28 %. El método evita manejar fórmulas, aunque exige conservar el orden y las bases de cada etapa."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación inversa",
+      "puntos": [
+        {
+          "texto": "Para recuperar un descuento hace falta un aumento mayor",
+          "explicacion": "Después de un descuento del $d\\%$, la cantidad vale el $(100-d)\\%$ de la inicial, y para volver a la inicial el aumento necesario es $\\frac{100d}{100-d}\\%$, ya que debe cumplirse $\\left(1-\\frac{d}{100}\\right)\\left(1+\\frac{x}{100}\\right) = 1$. Con $d=20$ el aumento necesario es el 25 %, con $d=50$ es el 100 % y con $d=10$ es aproximadamente el 11,1 %. El aumento es siempre mayor que el descuento porque se aplica sobre una base menor que la inicial."
+        },
+        {
+          "texto": "Para revertir un aumento hace falta un descuento menor",
+          "explicacion": "Después de un aumento del $a\\%$, la cantidad vale el $(100+a)\\%$ de la inicial, y para volver a la inicial el descuento necesario es $\\frac{100a}{100+a}\\%$, que sale de $\\left(1+\\frac{a}{100}\\right)\\left(1-\\frac{x}{100}\\right) = 1$. Con $a=25$ el descuento necesario es el 20 %, con $a=100$ es el 50 % y con $a=50$ es el 33,3 %. El descuento es siempre menor que el aumento porque se aplica sobre una base mayor que la inicial."
+        },
+        {
+          "texto": "Cantidad inicial = cantidad final entre el producto de factores",
+          "explicacion": "Cuando se conoce la cantidad final luego de varias variaciones y se pide la cantidad inicial, se divide la final entre el producto de los factores: $N = \\frac{N_F}{f_1 f_2 \\cdots f_n}$. Con una cantidad final de 72 tras descuentos del 20 % y del 10 %, el producto de factores es 0,72 y la cantidad inicial es $72 \\div 0{,}72 = 100$. Este procedimiento es el recorrido inverso de las variaciones y evita deshacerlas una por una, lo que podría llevar a aplicar los porcentajes sobre bases equivocadas."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con precios",
+      "puntos": [
+        {
+          "texto": "«Precio de venta» tras descuentos sucesivos = fijado por factores",
+          "explicacion": "En la compraventa, los descuentos sucesivos concedidos sobre el precio fijado producen el precio de venta $P_V = P_F\\left(1-\\frac{d_1}{100}\\right)\\left(1-\\frac{d_2}{100}\\right)\\cdots$, donde $P_F$ es el precio fijado y $d_i$ son los descuentos. Con este precio de venta se calculan después la ganancia o la pérdida respecto del costo, según lo visto en el tema 51 (Reglas comerciales). Cuando además el precio fijado resulta de un recargo sobre el costo, ese recargo es un aumento que se encadena con los descuentos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Error: sumar los porcentajes de variación",
+          "explicacion": "El error más habitual es sumar los porcentajes de varios descuentos o de varios aumentos, o restar el descuento del aumento, como si todos actuaran sobre la cantidad inicial. Por ejemplo, un descuento del 20 % seguido de otro del 30 % no equivale al 50 %, sino al 44 %, pues $0{,}8\\times 0{,}7 = 0{,}56$. La suma simple solo coincide con el resultado real cuando alguno de los porcentajes es cero. La corrección es multiplicar siempre los factores."
+        },
+        {
+          "texto": "Error: aplicar el segundo porcentaje sobre la cantidad inicial",
+          "explicacion": "Otro error es calcular el segundo porcentaje sobre la cantidad inicial en lugar de la cantidad resultante de la primera variación. Esto equivale a sumar los porcentajes y produce un resultado inexacto. Debe recordarse que cada variación toma como base lo que quedó de la anterior. Un modo de verificar es comprobar que la cantidad después de cada etapa cumple $N_k = N_{k-1}\\cdot f_k$, es decir, que cada paso usa como valor de partida el valor que dejó el paso anterior."
+        },
+        {
+          "texto": "Error: confundir recuperar con revertir en el mismo porcentaje",
+          "explicacion": "También se suele suponer que, tras un descuento del $d\\%$, un aumento del mismo $d\\%$ devuelve la cantidad inicial, y que después de un aumento del $a\\%$ un descuento del mismo $a\\%$ la devuelve. Ninguna de las dos afirmaciones es correcta, pues las bases son distintas en cada etapa. Con 100 y un descuento del 10 %, queda 90, y un aumento del 10 % da 99, no 100. La cantidad inicial solo se recupera con los porcentajes dados por las fórmulas de variación inversa."
+        }
+      ]
+    }
+  ]
+}

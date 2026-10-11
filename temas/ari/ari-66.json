@@ -1,0 +1,173 @@
+{
+  "curso": "Aritmética",
+  "tema": "Media aritmética",
+  "glosario": {
+    "media aritmética": "Suma de los datos dividida entre su cantidad.",
+    "promedio": "Nombre usual de la media aritmética.",
+    "media ponderada": "Promedio donde cada dato tiene un peso.",
+    "peso": "Importancia relativa asignada a un dato.",
+    "marca de clase": "Punto medio de un intervalo.",
+    "desviación": "Diferencia entre un dato y la media.",
+    "frecuencia absoluta": "Cantidad de veces que aparece un valor.",
+    "media combinada": "Media del conjunto formado por varios grupos.",
+    "media supuesta": "Valor de referencia que simplifica el cálculo.",
+    "punto de equilibrio": "Punto donde los datos quedan equilibrados."
+  },
+  "theory": [
+    {
+      "titulo": "Definición de media",
+      "puntos": [
+        {
+          "texto": "«Media aritmética» = suma de los datos dividida entre su cantidad",
+          "explicacion": "La media aritmética de $n$ datos $x_1, x_2, \\ldots, x_n$ es el cociente entre su suma y su cantidad: $$\\bar{x} = \\frac{x_1 + x_2 + \\cdots + x_n}{n} = \\frac{1}{n}\\sum_{i=1}^{n} x_i$$ Es la medida de tendencia central más usada y la que se entiende por promedio en el lenguaje corriente. La idea general de medida de tendencia central y la comparación con las demás medidas se desarrollan en el tema 65."
+        },
+        {
+          "texto": "Promedio = nombre usual de la media aritmética",
+          "explicacion": "En la vida escolar y en los enunciados de problemas, la palabra promedio designa casi siempre a la media aritmética. Conviene distinguirlo de otros usos de la palabra, pues en sentido amplio también se llama promedio a la media geométrica, a la armónica o a la mediana. Cuando no se especifica, se entiende la media aritmética."
+        },
+        {
+          "texto": "Notación = $\\bar{x}$ para la muestra y $\\mu$ para la población",
+          "explicacion": "La media de una muestra se escribe $\\bar{x}$, que se lee equis barra, y es un estadístico. La media de toda la población se escribe $\\mu$, letra griega mu, y es un parámetro. El cálculo es el mismo, pero la primera varía de una muestra a otra y la segunda es un valor fijo, como se explica en el tema 64."
+        },
+        {
+          "texto": "Cálculo con datos no agrupados = sumar y dividir",
+          "explicacion": "Para datos dados uno por uno se suman todos y se divide entre la cantidad. Con 4, 8, 6, 10 y 12, la suma es 40 y hay 5 datos, de modo que $\\bar{x} = 40/5 = 8$. Cada dato cuenta con el mismo peso, y los datos repetidos se suman tantas veces como aparecen."
+        },
+        {
+          "texto": "Media = punto de equilibrio de los datos",
+          "explicacion": "Si los datos se imaginan como pesos iguales colocados sobre una recta numérica, la media es el punto donde esa recta quedaría en equilibrio. Esa interpretación se expresa en la propiedad de que las desviaciones respecto de la media suman cero, lo cual explica que un dato muy alejado desplace la media hacia él."
+        }
+      ]
+    },
+    {
+      "titulo": "Media con frecuencias",
+      "puntos": [
+        {
+          "texto": "Media con la frecuencia absoluta = suma de productos entre $n$",
+          "explicacion": "Cuando los datos están en una tabla donde el valor $x_i$ aparece $f_i$ veces, la media es $$\\bar{x} = \\frac{\\sum_{i=1}^{k} f_i\\,x_i}{n}, \\qquad n = \\sum f_i$$ Se multiplica cada valor por su frecuencia absoluta, se suman los productos y se divide entre el total. Con las notas 10 (3 veces), 12 (4), 14 (2) y 16 (1): $\\bar{x} = (30 + 48 + 28 + 16)/10 = 12{,}2$."
+        },
+        {
+          "texto": "Media con frecuencias relativas = suma de valores por proporción",
+          "explicacion": "Como $h_i = f_i/n$, la media también es $\\bar{x} = \\sum h_i\\,x_i$. Con las mismas notas, $0{,}3\\cdot 10 + 0{,}4\\cdot 12 + 0{,}2\\cdot 14 + 0{,}1\\cdot 16 = 12{,}2$. Esta forma muestra que la media es un promedio de los valores donde cada uno pesa según la proporción de datos que lo toma."
+        },
+        {
+          "texto": "Media con datos agrupados = usar la marca de clase de cada intervalo",
+          "explicacion": "Si los datos están en intervalos, no se conocen los valores exactos y cada intervalo se representa por su marca de clase $x_i$, el punto medio. Se aplica $\\bar{x} = \\sum f_i x_i/n$ con esas marcas. En los intervalos $[0,10)$, $[10,20)$ y $[20,30)$ con frecuencias 2, 3 y 5 las marcas son 5, 15 y 25, y $\\bar{x} = (10 + 45 + 125)/10 = 18$."
+        },
+        {
+          "texto": "La media agrupada es una aproximación",
+          "explicacion": "Al sustituir cada dato por la marca de clase de su intervalo se supone que los datos se reparten con regularidad dentro de él, lo cual rara vez ocurre exactamente. Por eso la media calculada con intervalos difiere en general de la media de los datos originales. La diferencia disminuye cuando los intervalos son estrechos."
+        }
+      ]
+    },
+    {
+      "titulo": "Media ponderada",
+      "puntos": [
+        {
+          "texto": "«Media ponderada» = promedio donde cada dato tiene un peso",
+          "explicacion": "La media ponderada asigna a cada dato $x_i$ un peso $w_i$ positivo que mide su importancia relativa: $$\\bar{x}_w = \\frac{\\sum w_i\\,x_i}{\\sum w_i}$$ Si todos los pesos son iguales, se reduce a la media aritmética simple. Con las notas 14 (peso 2), 16 (peso 3) y 10 (peso 5), resulta $(28 + 48 + 50)/10 = 12{,}6$."
+        },
+        {
+          "texto": "Frecuencias = pesos de la media ponderada",
+          "explicacion": "El cálculo con tabla de frecuencias es un caso de media ponderada en que el peso de cada valor es su frecuencia absoluta. Así, la fórmula $\\sum f_i x_i / \\sum f_i$ y la fórmula general con pesos son la misma, y el resultado no cambia si los pesos se multiplican por una constante positiva."
+        },
+        {
+          "texto": "Media combinada de dos grupos = ponderar por tamaños",
+          "explicacion": "Si un grupo de $n_1$ datos tiene media $\\bar{x}_1$ y otro de $n_2$ datos tiene media $\\bar{x}_2$, la media del conjunto unido es $$\\bar{x} = \\frac{n_1\\bar{x}_1 + n_2\\bar{x}_2}{n_1 + n_2}$$ Con $n_1 = 10$, $\\bar{x}_1 = 8$, $n_2 = 30$ y $\\bar{x}_2 = 4$ resulta $(80 + 120)/40 = 5$. Solo coincide con $(\\bar{x}_1 + \\bar{x}_2)/2$ si los grupos tienen igual tamaño."
+        },
+        {
+          "texto": "Media combinada de varios grupos = suma de totales entre total de datos",
+          "explicacion": "La media combinada se generaliza a cualquier cantidad de grupos: se suma cada total $n_j\\,\\bar{x}_j$ y se divide entre el total de datos $\\sum n_j$. Es la forma de resolver problemas donde se dan promedios por sección, por turno o por categoría y se pide el promedio general."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la media",
+      "puntos": [
+        {
+          "texto": "Suma de la desviación de cada dato respecto de la media = cero",
+          "explicacion": "La desviación de un dato es su diferencia respecto de la media, $x_i - \\bar{x}$. Se cumple $$\\sum_{i=1}^{n} (x_i - \\bar{x}) = 0$$ porque $\\sum x_i - n\\bar{x} = 0$. Los datos mayores que la media compensan exactamente a los menores. Con 4, 8, 6, 10, 12 y media 8, las desviaciones $-4, 0, -2, 2, 4$ suman cero."
+        },
+        {
+          "texto": "Suma total de los datos = $n$ por la media",
+          "explicacion": "Despejando de la definición, $\\sum x_i = n\\,\\bar{x}$. Esta igualdad permite recuperar la suma de los datos cuando se conoce el promedio y la cantidad, y es la herramienta de la mayoría de los problemas de promedios: la suma se maneja como un total que se puede sumar, restar o repartir."
+        },
+        {
+          "texto": "La media minimiza la suma de cuadrados de las desviaciones",
+          "explicacion": "Para cualquier número $c$, $\\sum (x_i - c)^2 = \\sum (x_i - \\bar{x})^2 + n(\\bar{x} - c)^2$, y el segundo sumando no es negativo y vale cero solo si $c = \\bar{x}$. Por tanto, la media es el valor que hace mínima la suma de los cuadrados de las distancias a los datos. Este criterio se llama de mínimos cuadrados y justifica su uso como valor representativo."
+        },
+        {
+          "texto": "Media de los primeros naturales = $(n+1)/2$",
+          "explicacion": "El promedio de $1, 2, \\ldots, n$ es $\\frac{1}{n}\\cdot\\frac{n(n+1)}{2} = \\frac{n+1}{2}$. Para los números del 1 al 10 es 5,5. El resultado coincide con el término central de la progresión, y en general la media de los términos de una progresión aritmética es la semisuma de sus extremos, resultado del tema 61, Progresiones aritméticas y geométricas."
+        },
+        {
+          "texto": "Media supuesta = referencia que simplifica el cálculo",
+          "explicacion": "Si los datos son grandes y parecidos, se elige un valor de referencia $A$ cercano a ellos y se calcula $\\bar{x} = A + \\frac{1}{n}\\sum (x_i - A)$. Con 102, 104, 101, 105, 103 y $A = 100$, las diferencias 2, 4, 1, 5, 3 suman 15 y $\\bar{x} = 100 + 3 = 103$. El método se apoya en que restar una constante a todos los datos resta esa constante a la media."
+        }
+      ]
+    },
+    {
+      "titulo": "Variación de la media",
+      "puntos": [
+        {
+          "texto": "Agregar un dato = nueva media con el total actualizado",
+          "explicacion": "Si un conjunto de $n$ datos tiene media $\\bar{x}$ y se añade un dato $x$, la nueva media es $$\\frac{n\\,\\bar{x} + x}{n + 1}$$ Con $n = 5$, $\\bar{x} = 8$ y un dato nuevo 14 resulta $(40 + 14)/6 = 9$. La media sube si el dato nuevo supera a la media anterior y baja si es menor."
+        },
+        {
+          "texto": "Quitar un dato = nueva media con el total reducido",
+          "explicacion": "Al retirar un dato $x$ de un conjunto de $n$ datos con media $\\bar{x}$, la nueva media es $(n\\,\\bar{x} - x)/(n - 1)$. Con $n = 5$, $\\bar{x} = 8$ y el dato 18 retirado, resulta $(40 - 18)/4 = 5{,}5$. La media baja si el dato retirado era mayor que ella."
+        },
+        {
+          "texto": "Reemplazar un dato = la media cambia en la diferencia dividida entre $n$",
+          "explicacion": "Si un dato se cambia por otro, el total varía en la diferencia entre el valor nuevo y el antiguo, y la media varía esa diferencia dividida entre $n$. Si en 5 datos un 12 se reemplaza por 22, la suma aumenta en 10 y la media aumenta en $10/5 = 2$."
+        },
+        {
+          "texto": "Dato faltante = $n$ por la media menos la suma conocida",
+          "explicacion": "Cuando se conoce el promedio de $n$ datos y todos menos uno, el dato que falta es $n\\,\\bar{x}$ menos la suma de los conocidos. Si el promedio de 5 datos es 7 y cuatro de ellos son 4, 6, 9 y 8, el total es 35, los cuatro suman 27 y el dato faltante es 8."
+        },
+        {
+          "texto": "Nota necesaria para alcanzar un promedio dado",
+          "explicacion": "Es la aplicación del dato faltante: para obtener un promedio objetivo $m$ con $n$ notas, la última debe ser $n\\,m$ menos la suma de las anteriores. Si se tienen 12, 14 y 15 y se quiere un promedio de 14 con cuatro notas, la nota requerida es $56 - 41 = 15$."
+        }
+      ]
+    },
+    {
+      "titulo": "Límites de la media",
+      "puntos": [
+        {
+          "texto": "Media no siempre es un dato del conjunto",
+          "explicacion": "La media aritmética puede ser un valor que no aparece entre los datos y, en variables discretas, un valor que la variable no puede tomar. El promedio de 2 y 3 es 2,5. Debe interpretarse como un valor de referencia y no como un dato real."
+        },
+        {
+          "texto": "Media = distorsión con valores atípicos",
+          "explicacion": "Al usar todos los datos con el mismo peso, un valor atípico mueve la media hacia él. La comparación con la mediana y la moda frente a los atípicos se trata en el tema 65. Cuando hay datos extremos, conviene examinar si son errores antes de calcular el promedio."
+        },
+        {
+          "texto": "Media aritmética ✗ promedio de razones con numerador fijo",
+          "explicacion": "Promediar con la media aritmética magnitudes como velocidades en tramos de igual distancia da un valor erróneo; allí corresponde la media armónica, del tema 68. Del mismo modo, para factores de crecimiento sucesivos corresponde la media geométrica, del tema 67."
+        },
+        {
+          "texto": "Error frecuente: dividir entre el número de valores distintos",
+          "explicacion": "En una tabla de frecuencias, el divisor es la suma de las frecuencias absolutas, es decir, el total de datos, y no la cantidad de filas de la tabla. Dividir entre el número de filas ignora los valores repetidos y produce un resultado incorrecto."
+        },
+        {
+          "texto": "Error frecuente: omitir los ceros",
+          "explicacion": "Los datos iguales a cero deben contarse en la cantidad $n$ aunque no aporten a la suma. Si una lista tiene 0, 6, 9, el promedio es $15/3 = 5$ y no $15/2$. Omitirlos eleva el promedio."
+        },
+        {
+          "texto": "Error frecuente: usar límites de clase en lugar de marcas",
+          "explicacion": "Con datos agrupados, multiplicar las frecuencias por el límite inferior o superior del intervalo, en lugar de la marca de clase, sesga el resultado hacia un lado. Debe usarse el punto medio de cada intervalo."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de la media",
+      "puntos": [
+        {
+          "texto": "Carl Friedrich Gauss (1809) → justificación de la media",
+          "explicacion": "Carl Friedrich Gauss, matemático alemán, mostró en su obra Theoria motus corporum coelestium, de 1809, que si los errores de medición siguen la distribución que hoy lleva su nombre, el valor más probable de una magnitud medida varias veces es la media aritmética de las mediciones. Este argumento reforzó su uso como valor representativo en las ciencias de la medición."
+        }
+      ]
+    }
+  ]
+}

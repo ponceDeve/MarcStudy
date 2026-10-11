@@ -1,0 +1,200 @@
+{
+  "curso": "Álgebra",
+  "tema": "Modelación del mundo real con funciones",
+  "glosario": {
+    "modelo matemático": "Función que representa una situación real.",
+    "variable independiente": "Variable que se elige libremente.",
+    "variable dependiente": "Variable que resulta de la función.",
+    "pendiente": "Cambio de la salida por unidad de entrada.",
+    "tasa de cambio": "Cambio de una magnitud por unidad.",
+    "valor inicial": "Valor cuando la variable vale cero.",
+    "punto de equilibrio": "Punto donde ingreso y costo coinciden.",
+    "depreciación": "Pérdida de valor con el tiempo.",
+    "vértice": "Punto extremo de una parábola.",
+    "dominio": "Conjunto de valores de entrada.",
+    "ingreso": "Dinero que se recibe por ventas.",
+    "demanda": "Cantidad que los compradores quieren adquirir.",
+    "tolerancia": "Desviación máxima permitida.",
+    "error absoluto": "Valor absoluto de la diferencia medida.",
+    "unidades": "Patrón con que se mide una magnitud.",
+    "inecuación": "Desigualdad con una incógnita."
+  },
+  "theory": [
+    {
+      "titulo": "Modelo matemático",
+      "puntos": [
+        {
+          "texto": "«Modelo matemático» ⇒ función que describe una situación real",
+          "explicacion": "Un modelo matemático es una expresión, en este tema una función, que relaciona magnitudes de una situación real para describirla y hacer predicciones. Modelar consiste en traducir el problema a lenguaje matemático, resolverlo y volver a interpretar el resultado en la situación original. Un modelo es una aproximación y solo vale dentro de ciertas condiciones. Ejemplo: el costo de un viaje en taxi se modela con $C(d)=5+2.5d$, donde $d$ son los kilómetros y $C$ el costo. Verificación: para $d=8$, $C=5+20=25$."
+        },
+        {
+          "texto": "Variable independiente y dependiente ⇒ qué se controla y qué resulta",
+          "explicacion": "La variable independiente es la que se elige o varía libremente (como el tiempo o la distancia) y la dependiente es la que resulta de aplicar la función (como el costo o la altura). Identificarlas con sus unidades es el primer paso de la modelación. Ejemplo: en $C(d)=5+2.5d$, la variable independiente es $d$ en kilómetros y la dependiente es $C$ en soles. Verificación: al cambiar $d$ cambia $C$, pero no al revés."
+        },
+        {
+          "texto": "Dominio del modelo ⇒ restricciones del contexto",
+          "explicacion": "El dominio de un modelo no es solo el de la fórmula, sino el que tiene sentido en el contexto: el tiempo no es negativo, una longitud es positiva, una cantidad de personas es entera. Ejemplo: en $C(d)=5+2.5d$ el dominio es $d\\ge 0$, aunque la fórmula acepte valores negativos. Verificación: $d=-3$ daría una distancia sin sentido."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de modelación",
+      "puntos": [
+        {
+          "texto": "Paso 1: leer el problema e identificar variables y unidades",
+          "explicacion": "Se subrayan los datos, se nombran las magnitudes con letras y se anotan las unidades. Ejemplo: «un taxi cobra una tarifa fija de $5$ soles más $2.5$ soles por kilómetro»: $d$ son kilómetros y $C$ es costo en soles. Verificación: cada dato numérico queda asociado a una magnitud."
+        },
+        {
+          "texto": "Paso 2: elegir el tipo de función",
+          "explicacion": "Si la magnitud cambia una cantidad constante por unidad, el modelo es lineal; si hay un valor máximo o mínimo con simetría, es cuadrático; si crece proporcionalmente a una raíz, es de raíz cuadrada; si interviene la distancia o una desviación, es de valor absoluto. Ejemplo: tarifa fija más cargo por kilómetro es lineal. Verificación: el cambio por kilómetro es constante."
+        },
+        {
+          "texto": "Paso 3: determinar los parámetros con los datos",
+          "explicacion": "Se sustituyen los datos conocidos en la forma general de la función y se resuelven las ecuaciones para hallar los parámetros. Ejemplo: si el costo es $12$ para $d=2$ y $20$ para $d=6$, la pendiente es $\\frac{20-12}{6-2}=2$ y $12=2(2)+b$ da $b=8$, luego $C(d)=2d+8$. Verificación: $C(6)=12+8=20$."
+        },
+        {
+          "texto": "Paso 4: resolver la pregunta del problema",
+          "explicacion": "Según la pregunta, se evalúa la función, se resuelve una ecuación o una inecuación, o se busca un máximo o mínimo. Ejemplo: con $C(d)=5+2.5d$ y presupuesto de $40$, se resuelve $5+2.5d=40$ y $d=14$. Verificación: $5+2.5(14)=40$."
+        },
+        {
+          "texto": "Paso 5: verificar e interpretar en el contexto",
+          "explicacion": "Se comprueba la respuesta en el modelo, se descartan soluciones fuera del dominio y se escribe la respuesta con unidades. Ejemplo: $d=14$ km es válido porque $d\\ge 0$. Verificación: la respuesta se redacta como «con $40$ soles se pueden recorrer $14$ km»."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelo lineal",
+      "puntos": [
+        {
+          "texto": "$f(x)=mx+b$ ⇒ tasa de cambio constante $m$ y valor inicial $b$",
+          "explicacion": "Un modelo lineal describe una magnitud que cambia una cantidad fija $m$ (pendiente, con sus unidades) por cada unidad de la variable independiente, a partir de un valor inicial $b$ cuando $x=0$. Ejemplo: un taxi con tarifa $C(d)=5+2.5d$ tiene $b=5$ soles de tarifa fija y $m=2.5$ soles por kilómetro. Verificación: $C(0)=5$ y $C(1)-C(0)=2.5$."
+        },
+        {
+          "texto": "Dos puntos ⇒ hallar pendiente y término independiente",
+          "explicacion": "En los problemas reales los parámetros suelen venir dados por dos mediciones; la pendiente se calcula como cociente de diferencias y representa la tasa de cambio constante, con unidades de la salida entre unidades de la entrada. Con dos datos $(x_1,y_1)$ y $(x_2,y_2)$ se calcula $m=\\frac{y_2-y_1}{x_2-x_1}$ y luego $b=y_1-mx_1$. Ejemplo: $(2,12)$ y $(6,20)$ dan $m=\\frac{8}{4}=2$ y $b=12-4=8$, así $C(x)=2x+8$. Verificación: $C(6)=12+8=20$."
+        },
+        {
+          "texto": "Depreciación lineal ⇒ pendiente negativa",
+          "explicacion": "Si una magnitud disminuye una cantidad fija por periodo, la pendiente es negativa. Ejemplo: una máquina que vale $12000$ soles y pierde $1500$ por año tiene $V(t)=12000-1500t$; su valor llega a cero cuando $12000-1500t=0$, es decir $t=8$ años. Verificación: $V(8)=12000-12000=0$."
+        },
+        {
+          "texto": "Punto de equilibrio ⇒ ingreso igual a costo",
+          "explicacion": "En el punto de equilibrio no hay ganancia ni pérdida; para cantidades mayores, el ingreso supera al costo y hay ganancia, y para menores hay pérdida, lo que se obtiene al comparar las pendientes de ambas rectas. El punto de equilibrio es la cantidad en que ingreso y costo coinciden, y se halla igualando ambas funciones. Ejemplo: $I(x)=30x$ y $C(x)=1000+10x$ dan $30x=1000+10x$, es decir $x=50$ unidades. Verificación: $I(50)=1500$ y $C(50)=1500$."
+        },
+        {
+          "texto": "Comparar dos planes ⇒ igualar funciones lineales",
+          "explicacion": "Para comparar dos planes lineales se iguala el costo de ambos y se analiza quién es más barato a cada lado del punto de intersección. Ejemplo: el plan A cuesta $30+0.10x$ y el plan B cuesta $0.25x$ por $x$ minutos; son iguales cuando $30+0.10x=0.25x$, es decir $x=200$. Verificación: para $x=200$ ambos cuestan $50$; para $x=100$, A cuesta $40$ y B cuesta $25$."
+        },
+        {
+          "texto": "Restricción de presupuesto ⇒ inecuación lineal",
+          "explicacion": "Las restricciones del mundo real, como «no superar» un presupuesto, se traducen en desigualdades; se resuelven como una inecuación lineal y se interpreta el conjunto solución en el contexto, descartando valores negativos. Cuando el problema pide «no superar» o «al menos», se plantea una inecuación. Ejemplo: $C(d)=5+2.5d\\le 60$ da $2.5d\\le 55$ y $d\\le 22$ km. Verificación: $C(22)=5+55=60\\le 60$ y $C(23)=62.5>60$."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelo cuadrático",
+      "puntos": [
+        {
+          "texto": "$f(x)=ax^2+bx+c$ ⇒ máximo o mínimo en el vértice",
+          "explicacion": "El modelo cuadrático describe magnitudes con un valor extremo: si $a<0$ hay un máximo y si $a>0$ un mínimo, en el vértice $x_v=-\\frac{b}{2a}$. Ejemplo: $A(x)=x(20-x)=-x^2+20x$ es el área de un rectángulo de perímetro $40$ con lado $x$; su máximo está en $x=10$, con $A=100$. Verificación: $A(9)=99$ y $A(11)=99$, menores que $100$."
+        },
+        {
+          "texto": "Altura de un proyectil ⇒ $h(t)=-5t^2+v_0t+h_0$",
+          "explicacion": "La altura de un objeto lanzado hacia arriba se modela con una cuadrática de coeficiente negativo, con $t$ en segundos y $h$ en metros (usando $g\\approx 10$ m/s² para simplificar). Ejemplo: $h(t)=-5t^2+20t+2$ tiene máximo en $t=-\\frac{20}{2(-5)}=2$ s, con $h(2)=-20+40+2=22$ m. Verificación: $h(1)=17$ y $h(3)=17$, menores que $22$."
+        },
+        {
+          "texto": "Tiempo de caída ⇒ resolver $h(t)=0$ y descartar la raíz negativa",
+          "explicacion": "El proyectil toca el suelo cuando $h(t)=0$. Ejemplo: $-5t^2+20t+2=0$ da $t^2-4t-0.4=0$ y $t=\\frac{4\\pm\\sqrt{16+1.6}}{2}=2\\pm 2.098$, es decir $t\\approx 4.10$ s o $t\\approx -0.10$ s; se descarta la negativa por estar fuera del dominio $t\\ge 0$. Verificación: $-5(4.10)^2+20(4.10)+2\\approx -84.05+82+2\\approx -0.05\\approx 0$."
+        },
+        {
+          "texto": "Maximizar un ingreso ⇒ vértice de una cuadrática",
+          "explicacion": "Cuando el ingreso depende del precio y de una demanda que disminuye linealmente con él, el producto es una cuadrática con coeficiente negativo, cuyo máximo se encuentra en el vértice, que indica el precio óptimo. Si el precio $p$ influye en la demanda, el ingreso $I=p\\times q$ es una cuadrática. Ejemplo: con $q=100-2p$, $I(p)=p(100-2p)=-2p^2+100p$, cuyo vértice está en $p=-\\frac{100}{2(-2)}=25$ y vale $I(25)=-1250+2500=1250$. Verificación: $I(20)=1200$ y $I(30)=1200$, menores que $1250$."
+        },
+        {
+          "texto": "Perímetro fijo ⇒ área máxima en el cuadrado",
+          "explicacion": "Para un rectángulo de perímetro $P$, con lados $x$ y $\\frac{P}{2}-x$, el área $A(x)=x\\left(\\frac{P}{2}-x\\right)$ es máxima en $x=\\frac{P}{4}$, es decir cuando es un cuadrado. Ejemplo: con $P=40$, $A(x)=x(20-x)$ es máxima en $x=10$. Verificación: $A(10)=100$ y $A(8)=96$."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelo de raíz cuadrada",
+      "puntos": [
+        {
+          "texto": "$f(x)=k\\sqrt{x}$ ⇒ crecimiento que se frena",
+          "explicacion": "Una magnitud proporcional a la raíz cuadrada de otra crece cada vez más lentamente, y el dominio exige radicando no negativo. Ejemplo: la distancia aproximada al horizonte es $d\\approx 3.57\\sqrt{h}$ kilómetros, con $h$ la altura del observador en metros. Para $h=100$, $d\\approx 3.57\\times 10=35.7$ km. Verificación: $\\sqrt{100}=10$."
+        },
+        {
+          "texto": "Velocidad de caída ⇒ $v=\\sqrt{2gh}$",
+          "explicacion": "La velocidad crece con la raíz cuadrada de la altura: para duplicar la velocidad hay que cuadruplicar la altura. El dominio exige $h\\ge 0$, y las unidades deben ser metros para $h$ y metros por segundo cuadrado para $g$. Un objeto que cae desde una altura $h$ llega con velocidad $v=\\sqrt{2gh}$, con $g\\approx 9.8$ m/s². Ejemplo: para $h=5$ m, $v=\\sqrt{2(9.8)(5)}=\\sqrt{98}\\approx 9.90$ m/s. Verificación: $9.9^2=98.01$."
+        },
+        {
+          "texto": "Radio de un círculo ⇒ $r=\\sqrt{\\frac{A}{\\pi}}$",
+          "explicacion": "La raíz cuadrada es la operación inversa del cuadrado, y aparece al despejar una magnitud lineal a partir de una cuadrática, como el radio a partir del área; en este caso solo se toma la raíz positiva porque un radio es una longitud. Si se conoce el área de un círculo, su radio se obtiene con una raíz cuadrada. Ejemplo: con $A=78.5$ y $\\pi\\approx 3.14$, $r=\\sqrt{\\frac{78.5}{3.14}}=\\sqrt{25}=5$. Verificación: $\\pi\\times 5^2=78.5$."
+        },
+        {
+          "texto": "Despejar con raíz ⇒ elevar al cuadrado y revisar",
+          "explicacion": "Al elevar al cuadrado pueden aparecer soluciones extrañas en ecuaciones con más términos, por lo que se verifica en el modelo original; en un modelo simple de proporcionalidad a la raíz, el valor obtenido es único y válido. Para hallar la variable en un modelo $k\\sqrt{x}=y$ se aísla la raíz y se eleva al cuadrado, comprobando que el resultado respete el dominio. Ejemplo: $3.57\\sqrt{h}=71.4$ da $\\sqrt{h}=20$ y $h=400$ m. Verificación: $3.57\\times 20=71.4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelo de valor absoluto",
+      "puntos": [
+        {
+          "texto": "$f(x)=|x-a|$ ⇒ distancia entre $x$ y $a$",
+          "explicacion": "El valor absoluto de una diferencia mide la distancia entre dos números en la recta real, sin importar el orden. Ejemplo: la distancia de un punto en el kilómetro $x$ a una estación en el kilómetro $7$ es $d(x)=|x-7|$; para $x=3$, $d=4$. Verificación: $|3-7|=4$."
+        },
+        {
+          "texto": "Tolerancia $|x-a|\\le t$ ⇒ intervalo $[a-t,\\ a+t]$",
+          "explicacion": "Una desviación máxima permitida $t$ respecto de un valor objetivo $a$ se modela con $|x-a|\\le t$, cuya solución es $a-t\\le x\\le a+t$. Ejemplo: una temperatura que debe estar a lo más $2^\\circ\\text{C}$ de $20^\\circ\\text{C}$ cumple $|T-20|\\le 2$, es decir $18\\le T\\le 22$. Verificación: $T=22$ da $|2|=2\\le 2$ y $T=23$ da $3>2$."
+        },
+        {
+          "texto": "Error absoluto ⇒ $|\\text{valor medido}-\\text{valor real}|$",
+          "explicacion": "El error absoluto de una medición es el valor absoluto de la diferencia entre lo medido y lo real. Ejemplo: si se mide $4.8$ m una longitud real de $5$ m, el error absoluto es $|4.8-5|=0.2$ m. Verificación: la diferencia es $-0.2$ y el valor absoluto la vuelve positiva."
+        }
+      ]
+    },
+    {
+      "titulo": "Interpretación y verificación",
+      "puntos": [
+        {
+          "texto": "Unidades coherentes ⇒ resultado con sus unidades",
+          "explicacion": "Todo resultado se escribe con sus unidades y estas deben ser coherentes entre los datos. Ejemplo: si la tarifa es por kilómetro, la distancia debe estar en kilómetros. Verificación: $2.5$ soles por km por $8$ km da $20$ soles."
+        },
+        {
+          "texto": "Comprobar el modelo con un dato conocido",
+          "explicacion": "Una buena práctica es contrastar el modelo con datos que no se usaron para hallar los parámetros; si la función reproduce esos datos, confirma que la elección del tipo de función es razonable. Antes de usar un modelo se verifica que reproduzca los datos conocidos. Ejemplo: $C(d)=2d+8$ debe dar $12$ en $d=2$ y $20$ en $d=6$. Verificación: $2(2)+8=12$ y $2(6)+8=20$."
+        },
+        {
+          "texto": "Soluciones fuera del dominio ⇒ descartarlas",
+          "explicacion": "Si la ecuación del modelo da soluciones que violan las restricciones del contexto, como tiempos negativos, se descartan. Ejemplo: la raíz $t\\approx -0.10$ s del proyectil no corresponde a ningún instante del lanzamiento. Verificación: el dominio es $t\\ge 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función lineal (tema 55) ⇒ modelo de cambio constante",
+          "explicacion": "En la modelación, la pendiente se interpreta como la tasa de cambio y la ordenada en el origen como el valor inicial; ambas con sus unidades, lo que ayuda a verificar que la función describa bien el problema. El tema «Función lineal» proporciona la pendiente y la ordenada en el origen que se interpretan como tasa de cambio y valor inicial. Ejemplo: $y=2.5x+5$ tiene pendiente $2.5$. Verificación: cada kilómetro adicional agrega $2.5$."
+        },
+        {
+          "texto": "Función cuadrática (tema 56) ⇒ vértice como extremo",
+          "explicacion": "Las cuadráticas modelan situaciones con máximo o mínimo; el vértice y las raíces tienen interpretación directa: el vértice es el valor extremo y las raíces son los instantes o cantidades donde la magnitud se anula. El tema «Función cuadrática» da la fórmula del vértice, que en los modelos es el máximo o mínimo buscado. Ejemplo: $-5t^2+20t+2$ tiene vértice en $t=2$. Verificación: $-\\frac{b}{2a}=-\\frac{20}{-10}=2$."
+        },
+        {
+          "texto": "Función raíz cuadrada (tema 57) ⇒ dominio $x\\ge 0$",
+          "explicacion": "Los modelos con raíz cuadrada requieren radicando no negativo, lo que determina el dominio del modelo; su gráfica crece cada vez más despacio, lo que describe procesos con rendimiento decreciente. El tema «Función raíz cuadrada» da el dominio y la forma de la gráfica de los modelos con raíz. Ejemplo: $d=3.57\\sqrt{h}$ exige $h\\ge 0$. Verificación: $\\sqrt{-4}$ no es real."
+        },
+        {
+          "texto": "Función valor absoluto (tema 58) ⇒ distancias y tolerancias",
+          "explicacion": "La interpretación del valor absoluto como distancia permite modelar tolerancias y errores, y traducir frases como «a lo más $t$ unidades de $a$» en desigualdades de la forma $|x-a|\\le t$. El tema «Función valor absoluto» da la interpretación de $|x-a|$ como distancia y su solución como intervalo. Ejemplo: $|x-7|\\le 3$ da $4\\le x\\le 10$. Verificación: $|4-7|=3$ y $|10-7|=3$."
+        },
+        {
+          "texto": "Modelación con funciones (II) (tema 73) ⇒ continuación",
+          "explicacion": "El tema 73, «Modelación del mundo real con funciones (II)», continúa con modelos exponenciales y logarítmicos. Ejemplo: allí se modela el crecimiento de bacterias con $N_0\\times 2^t$. Verificación: se usa la misma estrategia de cinco pasos."
+        }
+      ]
+    }
+  ]
+}

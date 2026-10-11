@@ -1,0 +1,118 @@
+{
+  "curso": "Aritmética",
+  "tema": "Conjunto potencia",
+  "glosario": {
+    "conjunto potencia": "Colección de todos los subconjuntos de un conjunto",
+    "subconjunto": "Conjunto cuyos elementos están todos en otro",
+    "teorema de Cantor": "Ningún conjunto admite correspondencia con su potencia"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de conjunto potencia",
+      "puntos": [
+        {
+          "texto": "El «conjunto potencia» de A es la colección de todos sus subconjuntos.",
+          "explicacion": "El conjunto potencia de un conjunto A reúne a todos los subconjuntos de A, incluidos el conjunto vacío y el propio A. Cada uno de sus elementos es, a su vez, un conjunto contenido en A. Esta construcción aplica la relación de inclusión del tema 11 para formar una nueva colección, y su importancia es que permite pensar en conjuntos cuyos elementos son conjuntos, un nivel de abstracción que aparece en todo el desarrollo posterior de la teoría."
+        },
+        {
+          "texto": "El conjunto potencia de A se escribe $\\mathcal{P}(A)$.",
+          "explicacion": "La notación más usada para el conjunto potencia es $\\mathcal{P}(A)$, aunque algunos textos emplean $2^A$ con el mismo significado. La letra P proviene de la palabra potencia, y el paréntesis encierra el conjunto del que se toman los subconjuntos. Esta notación debe distinguirse de la de la cardinalidad $n(A)$ estudiada en el tema 10, porque la potencia es un conjunto, mientras que la cardinalidad es un número."
+        },
+        {
+          "texto": "Los elementos de $\\mathcal{P}(A)$ son conjuntos, no elementos de A.",
+          "explicacion": "Para el conjunto $\\{1, 2\\}$, el número 1 es un elemento de A, pero el conjunto $\\{1\\}$ es un elemento de $\\mathcal{P}(A)$. Esta diferencia de nivel es la que hace que el conjunto potencia sea una estructura distinta del propio conjunto. Confundir ambos niveles lleva a errores al contar elementos o al aplicar la pertenencia del tema 09."
+        }
+      ]
+    },
+    {
+      "titulo": "Cardinal del conjunto potencia",
+      "puntos": [
+        {
+          "texto": "Si A tiene n elementos, $\\mathcal{P}(A)$ tiene $2^n$ elementos.",
+          "explicacion": "Un conjunto con n elementos tiene exactamente $2^n$ subconjuntos, por lo que su conjunto potencia tiene ese mismo número de elementos. Esta fórmula resume el resultado de contar todas las formas posibles de elegir elementos. Su validez se comprueba para casos pequeños y se demuestra en general con el principio de que cada elemento puede elegirse o no, como se verá en el tema de análisis combinatorio."
+        },
+        {
+          "texto": "Cada elemento de A puede estar o no en un subconjunto.",
+          "explicacion": "Al formar un subconjunto de A, cada elemento tiene dos opciones independientes: entrar en el subconjunto o quedar fuera de él. Como hay n elementos, el número total de combinaciones de opciones es dos multiplicado por sí mismo n veces, es decir, $2^n$. Este razonamiento de multiplicación de opciones independientes es la base del principio multiplicativo del análisis combinatorio, que se estudia en el tema 76."
+        },
+        {
+          "texto": "El número de subconjuntos crece muy rápido al aumentar n.",
+          "explicacion": "La potencia $2^n$ aumenta de forma muy acelerada. Un conjunto de diez elementos tiene $2^{10}$ subconjuntos, es decir, mil veinticuatro, mientras que uno de veinte elementos tiene más de un millón. Este crecimiento explica por qué el conjunto potencia de un conjunto grande es difícil de listar por extensión, aunque su cardinal sea fácil de calcular."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos del conjunto potencia",
+      "puntos": [
+        {
+          "texto": "El conjunto vacío tiene exactamente un subconjunto: él mismo.",
+          "explicacion": "El único subconjunto del conjunto vacío es el propio vacío, por lo que su conjunto potencia es $\\mathcal{P}(\\emptyset)$, que se escribe $\\{\\emptyset\\}$, un conjunto con un solo elemento. Como $2^0$ es uno, el resultado coincide con la fórmula del cardinal del conjunto potencia, y muestra que incluso el caso más simple cumple la regla general."
+        },
+        {
+          "texto": "Para $\\{1, 2\\}$, el conjunto potencia tiene cuatro elementos.",
+          "explicacion": "Los subconjuntos de $\\{1, 2\\}$ son el vacío, $\\{1\\}$, $\\{2\\}$ y el propio $\\{1, 2\\}$. Por tanto, $\\mathcal{P}(\\{1, 2\\})$ es el conjunto $\\{\\emptyset, \\{1\\}, \\{2\\}, \\{1, 2\\}\\}$, cuyo cardinal es cuatro, igual a $2^2$. Este ejemplo es el más útil para comprobar que el conjunto potencia incluye tanto el vacío como el conjunto completo."
+        },
+        {
+          "texto": "Para $\\{a, b, c\\}$, el conjunto potencia tiene ocho elementos.",
+          "explicacion": "Los subconjuntos de $\\{a, b, c\\}$ son el vacío, los tres conjuntos unitarios $\\{a\\}$, $\\{b\\}$ y $\\{c\\}$, los tres conjuntos de dos elementos $\\{a, b\\}$, $\\{a, c\\}$ y $\\{b, c\\}$, y el propio conjunto. En total son ocho, que coincide con $2^3$. Al enumerarlos se comprueba que ninguno falta, lo que confirma la fórmula para n igual a tres."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del conjunto potencia",
+      "puntos": [
+        {
+          "texto": "Todo conjunto potencia contiene al conjunto vacío.",
+          "explicacion": "El conjunto vacío es subconjunto de cualquier conjunto A, como se estudia en el tema 11. Por lo tanto, pertenece a $\\mathcal{P}(A)$ como uno de sus elementos. Esta propiedad se cumple incluso si A es vacío, caso en el que $\\mathcal{P}(\\emptyset)$ contiene exactamente el vacío."
+        },
+        {
+          "texto": "Todo conjunto potencia contiene al propio conjunto A.",
+          "explicacion": "El conjunto A es subconjunto de sí mismo, por lo que aparece como uno de los elementos de $\\mathcal{P}(A)$. Esta observación completa la anterior: el conjunto potencia siempre tiene como elementos al vacío y al propio conjunto, y los demás subconjuntos se ubican entre ambos. La presencia de A dentro de su propio potencia es un caso particular de la reflexividad de la inclusión."
+        },
+        {
+          "texto": "Si $A \\subset B$, entonces $\\mathcal{P}(A) \\subset \\mathcal{P}(B)$.",
+          "explicacion": "Si A está contenido en B, todo subconjunto de A también es subconjunto de B, porque sus elementos ya pertenecen a B. Por eso la inclusión entre conjuntos se conserva al pasar a sus conjuntos potencia. Esta propiedad se deriva de la transitividad de la inclusión, estudiada en el tema 11."
+        }
+      ]
+    },
+    {
+      "titulo": "Teorema de Cantor",
+      "puntos": [
+        {
+          "texto": "El «teorema de Cantor» impide correspondencia uno a uno con la potencia.",
+          "explicacion": "Este teorema afirma que, para cualquier conjunto A, no existe una correspondencia uno a uno entre A y su conjunto potencia $\\mathcal{P}(A)$. La demostración muestra que cualquier intento de emparejar elementos de A con subconjuntos de A deja al menos un subconjunto sin pareja. Por tanto, el conjunto potencia es estrictamente más grande que el conjunto original, incluso si A es infinito."
+        },
+        {
+          "texto": "Georg Cantor demostró el teorema del conjunto potencia en 1891.",
+          "explicacion": "Georg Cantor, matemático alemán nacido en 1845 y fallecido en 1918, publicó en 1891 un argumento que prueba la imposibilidad de una correspondencia entre un conjunto y su conjunto potencia. Ese argumento utiliza una construcción diagonal que se estudia en el tema 10, aplicada a los subconjuntos en lugar de a los números reales. Este resultado es uno de los pilares de la teoría de cardinales infinitos."
+        },
+        {
+          "texto": "El conjunto potencia tiene un cardinal estrictamente mayor que el de A.",
+          "explicacion": "Para conjuntos finitos, el cardinal de $\\mathcal{P}(A)$ es $2^n$, que siempre supera a n. Para conjuntos infinitos, el teorema de Cantor garantiza que el conjunto potencia es de un tamaño mayor, por lo que la sucesión de potencias sucesivas produce infinitos cada vez más grandes. Esta afirmación amplía el resultado sobre los números reales estudiado en el tema 10."
+        }
+      ]
+    },
+    {
+      "titulo": "Fundamento axiomático",
+      "puntos": [
+        {
+          "texto": "Ernst Zermelo incluyó el axioma del conjunto potencia en 1908.",
+          "explicacion": "Ernst Zermelo, matemático alemán nacido en 1871 y fallecido en 1953, incluyó en su sistema axiomático de 1908 un axioma que garantiza la existencia del conjunto potencia de cualquier conjunto. Este axioma permite construir la potencia de forma controlada y evita que la colección de subconjuntos quede indefinida. Su presencia es necesaria para que la teoría de conjuntos pueda trabajar con conjuntos de subconjuntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "El conjunto potencia de A no es lo mismo que A.",
+          "explicacion": "Un conjunto potencia tiene como elementos a los subconjuntos de A, mientras que A tiene como elementos a los objetos originales. Por ejemplo, $\\{1, 2\\}$ tiene dos elementos, pero su conjunto potencia tiene cuatro. Confundir ambos conjuntos produce cuentas incorrectas y mezcla los niveles de pertenencia estudiados en el tema 09."
+        },
+        {
+          "texto": "El conjunto potencia nunca está vacío, ni siquiera si A lo está.",
+          "explicacion": "Incluso cuando A es el conjunto vacío, su conjunto potencia contiene al propio vacío como elemento, de modo que $\\mathcal{P}(\\emptyset)$ no está vacío. Afirmar que la potencia de un conjunto vacío es vacía es un error que contradice la definición, porque el subconjunto vacío siempre existe. Esta observación confirma que el conjunto potencia de cualquier conjunto contiene al menos un elemento."
+        }
+      ]
+    }
+  ]
+}

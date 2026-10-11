@@ -1,0 +1,164 @@
+{
+  "curso": "Aritmética",
+  "tema": "Tablas de verdad",
+  "glosario": {
+    "Tabla de verdad": "Cuadro con los valores de una proposición compuesta.",
+    "Valor de verdad": "Condición de verdadero o falso.",
+    "Conectivo principal": "Conectivo que se evalúa al final.",
+    "Negación": "Invierte el valor de verdad.",
+    "Conjunción": "Verdadera solo si ambas son verdaderas.",
+    "Disyunción inclusiva": "Falsa solo si ambas son falsas.",
+    "Disyunción exclusiva": "Verdadera si los valores son distintos.",
+    "Condicional": "Falso solo si V implica F.",
+    "Bicondicional": "Verdadero si ambas tienen igual valor.",
+    "Antecedente": "Parte condicionante de un condicional.",
+    "Consecuente": "Parte condicionada de un condicional.",
+    "Tautología": "Proposición siempre verdadera.",
+    "Contradicción": "Proposición siempre falsa.",
+    "Contingencia": "Verdadera en unos casos y falsa en otros."
+  },
+  "theory": [
+    {
+      "titulo": "Tablas de verdad",
+      "puntos": [
+        {
+          "texto": "«Tabla de verdad» = cuadro que muestra el valor de una proposición compuesta",
+          "explicacion": "Presenta todos los casos posibles de los valores de las proposiciones simples y el valor resultante de la compuesta. Permite analizar el conectivo sin ambigüedad."
+        },
+        {
+          "texto": "Valores ⇒ se escribe $V$ para verdadero y $F$ para falso",
+          "explicacion": "Las dos únicas posibilidades de una proposición. Algunos textos usan $1$ para verdadero y $0$ para falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Número de filas",
+      "puntos": [
+        {
+          "texto": "Filas ⇒ $2^n$ para $n$ proposiciones simples",
+          "explicacion": "Cada proposición simple puede ser $V$ o $F$, por lo que las combinaciones se duplican con cada una. Con una proposición hay dos casos, con dos hay cuatro y con tres hay ocho."
+        },
+        {
+          "texto": "Ejemplo ⇒ con $p$, $q$ y $r$ hay $2^3=8$ filas",
+          "explicacion": "Se calcula $2\\cdot2\\cdot2=8$. Cada fila es una combinación distinta de valores."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden de los valores",
+      "puntos": [
+        {
+          "texto": "Orden habitual ⇒ $VV$, $VF$, $FV$, $FF$ para dos proposiciones",
+          "explicacion": "Se empieza con todos verdaderos y se va alternando. La columna de $p$ tiene primero $V$ en la mitad de las filas y luego $F$; la de $q$ alterna de uno en uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Negación",
+      "puntos": [
+        {
+          "texto": "Negación $\\neg p$ ⇒ si $p$ es $V$, resulta $F$",
+          "explicacion": "Invierte el valor de $p$. La tabla es $p=V$ da $\\neg p=F$ y $p=F$ da $\\neg p=V$."
+        }
+      ]
+    },
+    {
+      "titulo": "Conjunción",
+      "puntos": [
+        {
+          "texto": "Conjunción $p\\wedge q$ ⇒ solo es $V$ si ambas son $V$",
+          "explicacion": "Tabla con los pares $(p,q)$: $VV$ da $V$; $VF$ da $F$; $FV$ da $F$; $FF$ da $F$. Una sola proposición falsa basta para que la conjunción sea falsa."
+        }
+      ]
+    },
+    {
+      "titulo": "Disyunción inclusiva",
+      "puntos": [
+        {
+          "texto": "Disyunción $p\\vee q$ ⇒ solo es $F$ si ambas son $F$",
+          "explicacion": "Tabla con los pares $(p,q)$: $VV$ da $V$; $VF$ da $V$; $FV$ da $V$; $FF$ da $F$. Basta que una sea verdadera para que la disyunción lo sea."
+        }
+      ]
+    },
+    {
+      "titulo": "Disyunción exclusiva",
+      "puntos": [
+        {
+          "texto": "Disyunción exclusiva $p\\,\\Delta\\,q$ ⇒ es $V$ si los valores son distintos",
+          "explicacion": "Tabla con los pares $(p,q)$: $VV$ da $F$; $VF$ da $V$; $FV$ da $V$; $FF$ da $F$. Se diferencia de la inclusiva solo en la primera fila."
+        }
+      ]
+    },
+    {
+      "titulo": "Condicional",
+      "puntos": [
+        {
+          "texto": "Condicional $p\\to q$ ⇒ solo es $F$ con $p=V$ y $q=F$",
+          "explicacion": "Tabla con los pares $(p,q)$: $VV$ da $V$; $VF$ da $F$; $FV$ da $V$; $FF$ da $V$. Si el antecedente es falso, el condicional siempre es verdadero."
+        },
+        {
+          "texto": "Condicional ⇒ no es simétrico",
+          "explicacion": "Los valores de $p\\to q$ y de $q\\to p$ no son iguales en todas las filas. Error frecuente: invertir antecedente y consecuente."
+        }
+      ]
+    },
+    {
+      "titulo": "Bicondicional",
+      "puntos": [
+        {
+          "texto": "Bicondicional $p\\leftrightarrow q$ ⇒ es $V$ si ambas tienen igual valor",
+          "explicacion": "Tabla con los pares $(p,q)$: $VV$ da $V$; $VF$ da $F$; $FV$ da $F$; $FF$ da $V$. Es lo contrario de la disyunción exclusiva."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de la tabla",
+      "puntos": [
+        {
+          "texto": "Método ⇒ se evalúa de adentro hacia afuera",
+          "explicacion": "Se escriben las proposiciones simples, luego sus negaciones y las operaciones entre paréntesis, y por último el conectivo principal. La última columna es el resultado."
+        },
+        {
+          "texto": "Conectivo principal ⇒ el que se evalúa al final",
+          "explicacion": "Es el que une las partes de la fórmula, la más externa. Su columna es la que da el valor de la proposición compuesta."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con negación",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $\\neg p\\to q$ da $V$, $V$, $V$, $F$",
+          "explicacion": "Con los pares $(p,q)$: $VV$: $\\neg p=F$, y $F\\to V$ es $V$. $VF$: $F\\to F$ es $V$. $FV$: $\\neg p=V$ y $V\\to V$ es $V$. $FF$: $V\\to F$ es $F$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con conjunción",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $(p\\wedge q)\\vee\\neg p$ da $V$, $F$, $V$, $V$",
+          "explicacion": "Con los pares $(p,q)$: $VV$: $V\\vee F=V$. $VF$: $F\\vee F=F$. $FV$: $F\\vee V=V$. $FF$: $F\\vee V=V$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con tres proposiciones",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $(p\\wedge q)\\to r$ es $F$ solo en $VVF$",
+          "explicacion": "Hay ocho filas. En $VVV$: $V\\to V=V$. En $VVF$: $V\\to F=F$. En las otras seis filas, $p\\wedge q$ es $F$, y un condicional con antecedente falso es $V$."
+        }
+      ]
+    },
+    {
+      "titulo": "Lectura de la tabla",
+      "puntos": [
+        {
+          "texto": "Columna final ⇒ da el valor de la proposición compuesta en cada caso",
+          "explicacion": "Si todos son verdaderos, es una tautología; si todos son falsos, una contradicción; si hay de ambos, una contingencia. Se estudian en el tema siguiente."
+        }
+      ]
+    }
+  ]
+}

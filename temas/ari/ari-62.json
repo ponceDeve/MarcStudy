@@ -1,0 +1,240 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sucesiones cuadráticas y de orden superior",
+  "glosario": {
+    "sucesión cuadrática": "Sucesión de segunda diferencia constante no nula.",
+    "diferencias sucesivas": "Restas de términos consecutivos repetidas por niveles.",
+    "primera diferencia": "Resta entre términos consecutivos.",
+    "segunda diferencia": "Resta entre primeras diferencias consecutivas.",
+    "esquema de diferencias": "Tabla con una fila por nivel.",
+    "término general": "Fórmula que da el término de lugar n.",
+    "sucesión cúbica": "Sucesión de tercera diferencia constante.",
+    "números figurados": "Números que forman figuras de puntos.",
+    "números triangulares": "Números que forman triángulos de puntos.",
+    "números oblongos": "Números que forman rectángulos de lados consecutivos.",
+    "números pentagonales": "Números que forman pentágonos de puntos.",
+    "números tetraédricos": "Números que forman pirámides triangulares de esferas.",
+    "polinomio": "Expresión suma de potencias de n."
+  },
+  "theory": [
+    {
+      "titulo": "Diferencias sucesivas",
+      "puntos": [
+        {
+          "texto": "«Diferencias sucesivas» = restas de términos consecutivos, repetidas por niveles",
+          "explicacion": "Dada una sucesión $t_1, t_2, t_3, \\ldots$, la primera diferencia de cada par de términos consecutivos es $t_{k+1} - t_k$; estas restas forman una nueva sucesión. Si se restan a su vez los términos consecutivos de esa nueva sucesión, se obtienen las segundas diferencias, y así sucesivamente. El procedimiento reduce la longitud de la lista en una unidad en cada nivel. La noción general de sucesión se estudia en el tema 60, Sucesiones."
+        },
+        {
+          "texto": "Primera diferencia = resta entre términos consecutivos",
+          "explicacion": "La primera diferencia de la sucesión es la lista de números $d_k = t_{k+1} - t_k$. Mide cuánto cambia la sucesión en cada paso. Si todas las primeras diferencias son iguales, la sucesión es una progresión aritmética, caso que se estudia en el tema 61, Progresiones aritméticas y geométricas; si no son iguales, se continúa con el nivel siguiente."
+        },
+        {
+          "texto": "Segunda diferencia = resta entre primeras diferencias consecutivas",
+          "explicacion": "La segunda diferencia se obtiene restando entre sí las primeras diferencias consecutivas. Mide cuánto cambia el cambio de la sucesión y, cuando es constante, caracteriza a las sucesiones cuadráticas. En 2, 5, 10, 17, 26 las primeras diferencias son 3, 5, 7, 9 y las segundas son 2, 2, 2."
+        },
+        {
+          "texto": "Esquema de diferencias = tabla con una fila por nivel",
+          "explicacion": "Las diferencias se organizan en una tabla escalonada: la primera fila contiene la sucesión, la segunda las primeras diferencias, colocadas entre los términos que las originan, y la tercera las segundas diferencias. Cada fila tiene un elemento menos que la anterior. Esta disposición permite ver de inmediato si algún nivel es constante y facilita el cálculo de los coeficientes del término general."
+        },
+        {
+          "texto": "Sucesión de orden $k$ = diferencias de nivel $k$ constantes",
+          "explicacion": "Se dice que una sucesión es de orden $k$ cuando las diferencias del nivel $k$ son todas iguales entre sí y no nulas, y las de los niveles anteriores no lo son. Las progresiones aritméticas de razón no nula son de primer orden, las cuadráticas de segundo orden y las cúbicas de tercer orden. El orden coincide con el grado del polinomio que da el término general."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesión cuadrática",
+      "puntos": [
+        {
+          "texto": "«Sucesión cuadrática» = segunda diferencia constante y no nula",
+          "explicacion": "Una sucesión cuadrática, o de segundo orden, es aquella cuyas primeras diferencias no son constantes pero sí lo son las segundas, con valor distinto de cero. Sus primeras diferencias forman una progresión aritmética cuya razón es esa segunda diferencia constante. Un ejemplo es 3, 8, 15, 24, 35, con primeras diferencias 5, 7, 9, 11 y segundas diferencias 2, 2, 2."
+        },
+        {
+          "texto": "Término general cuadrático = $a n^2 + b n + c$",
+          "explicacion": "El término de lugar $n$ de una sucesión cuadrática es un polinomio de segundo grado en $n$: $$t_n = a\\,n^2 + b\\,n + c$$ con $a \\neq 0$. Los tres coeficientes quedan fijados por tres términos de la sucesión. Esta forma se justifica porque la suma de una progresión aritmética de diferencias es un polinomio de segundo grado en $n$, resultado que se desarrolla en el tema 63, Sumatorias y series."
+        },
+        {
+          "texto": "Coeficiente $a$ = segunda diferencia dividida entre 2",
+          "explicacion": "Si $r$ es la segunda diferencia constante, el coeficiente de $n^2$ vale $$a = \\frac{r}{2}$$ En efecto, al restar términos consecutivos de $a\\,n^2 + b\\,n + c$ resulta $2a\\,n + a + b$ y al restar de nuevo queda $2a$. Por ello el signo de la segunda diferencia es el signo de $a$ y el tamaño de $a$ mide la rapidez de variación de la sucesión."
+        },
+        {
+          "texto": "Coeficiente $b$ = primera diferencia inicial menos $3r/2$",
+          "explicacion": "Con $p = t_2 - t_1$ como primera diferencia inicial y $r$ como segunda diferencia, se cumple $p = 3a + b$, de modo que $$b = p - \\frac{3r}{2}$$ Este valor completa la parte lineal del término general. Con 3, 8, 15, 24 se tiene $p = 5$ y $r = 2$, de donde $b = 5 - 3 = 2$."
+        },
+        {
+          "texto": "Coeficiente $c$ = primer término menos $p$ más $r$",
+          "explicacion": "Como $t_1 = a + b + c$, el término independiente resulta $$c = t_1 - p + r$$ Verificación con 3, 8, 15, 24: $c = 3 - 5 + 2 = 0$. El término general de esta sucesión es $t_n = n^2 + 2n = n(n+2)$, que reproduce 3, 8, 15, 24 al sustituir $n = 1, 2, 3, 4$."
+        },
+        {
+          "texto": "Fórmula de coeficientes = $r/2$, $p - 3r/2$, $t_1 - p + r$",
+          "explicacion": "Reuniendo los tres resultados, el procedimiento práctico es construir el esquema de diferencias, leer $t_1$, $p$ y $r$ y calcular los coeficientes. Para 2, 5, 10, 17 se tiene $t_1 = 2$, $p = 3$ y $r = 2$; entonces $a = 1$, $b = 3 - 3 = 0$ y $c = 2 - 3 + 2 = 1$, y el término general es $t_n = n^2 + 1$."
+        },
+        {
+          "texto": "Término general como suma de pasos acumulados",
+          "explicacion": "Otra forma del término general, sin calcular coeficientes, es $$t_n = t_1 + (n-1)\\,p + \\frac{(n-1)(n-2)}{2}\\,r$$ El segundo sumando acumula $n-1$ primeras diferencias iguales a $p$ y el tercero acumula los aumentos de la primera diferencia, que crece $r$ en cada paso. Con 2, 5, 10, 17 resulta $t_n = 2 + 3(n-1) + (n-1)(n-2) = n^2 + 1$."
+        },
+        {
+          "texto": "Coeficientes por sistema de tres ecuaciones",
+          "explicacion": "Los coeficientes también pueden obtenerse sustituyendo $n = 1, 2, 3$ en $a\\,n^2 + b\\,n + c$, lo que da las ecuaciones $a + b + c = t_1$, $4a + 2b + c = t_2$ y $9a + 3b + c = t_3$. Restando la primera de la segunda y la segunda de la tercera se eliminan $c$ y se llega a $3a + b = p$ y $5a + b = p + r$, con lo cual $2a = r$. Es el método original del que derivan las fórmulas anteriores."
+        },
+        {
+          "texto": "Segunda diferencia nula ⇒ progresión aritmética",
+          "explicacion": "Si la segunda diferencia es cero, las primeras diferencias son todas iguales y el coeficiente $a = r/2$ se anula; el término general se reduce a $b\\,n + c$, de primer grado. Por eso las progresiones aritméticas son el caso límite de las sucesiones cuadráticas, y la hipótesis de que la segunda diferencia sea distinta de cero es la que garantiza que el grado sea exactamente dos."
+        },
+        {
+          "texto": "Coeficiente $a$ positivo ⇒ primeras diferencias aumentan",
+          "explicacion": "Si $a > 0$, la segunda diferencia es positiva y las primeras diferencias crecen paso a paso, de modo que la sucesión se acelera. En 3, 8, 15, 24 las diferencias pasan de 5 a 7, 9 y 11. Con $a > 0$, los términos terminan siendo crecientes aunque al comienzo puedan descender."
+        },
+        {
+          "texto": "Coeficiente $a$ negativo ⇒ primeras diferencias disminuyen",
+          "explicacion": "Si $a < 0$, la segunda diferencia es negativa y las primeras diferencias disminuyen en cada paso, de modo que los términos terminan siendo decrecientes. Para 10, 9, 6, 1, $-6$ las primeras diferencias son $-1, -3, -5, -7$ y las segundas $-2$; resulta $a = -1$, $b = -1 + 3 = 2$ y $c = 10 + 1 - 2 = 9$, y el término general es $t_n = -n^2 + 2n + 9$."
+        }
+      ]
+    },
+    {
+      "titulo": "Uso de la fórmula",
+      "puntos": [
+        {
+          "texto": "Término de cualquier lugar por sustitución",
+          "explicacion": "Una vez conocido el término general, el valor de cualquier término se obtiene sustituyendo la posición en la fórmula. Para $t_n = n^2 + 2n$ el término de lugar 12 es $144 + 24 = 168$. Este procedimiento evita construir toda la tabla de diferencias hasta la posición pedida."
+        },
+        {
+          "texto": "Posición de un valor dado = raíz natural de una ecuación cuadrática",
+          "explicacion": "Para hallar en qué lugar aparece un valor $v$ se resuelve $a\\,n^2 + b\\,n + c = v$ y se conservan solo las soluciones que sean números naturales positivos. En $t_n = n^2 + 2n$, el valor 80 conduce a $n^2 + 2n - 80 = 0$, cuyas raíces son 8 y $-10$; solo 8 es válida y 80 es el término octavo, pues $8\\cdot 10 = 80$."
+        },
+        {
+          "texto": "Un valor no pertenece si no hay raíz natural",
+          "explicacion": "Si la ecuación $a\\,n^2 + b\\,n + c = v$ no tiene soluciones naturales positivas, el valor $v$ no es término de la sucesión. En $t_n = n^2 + 2n$, el valor 50 lleva a $n^2 + 2n - 50 = 0$, de raíces no enteras, de modo que 50 no pertenece. El mismo razonamiento descarta valores que corresponden a posiciones fraccionarias o negativas."
+        },
+        {
+          "texto": "Término mínimo de una sucesión cuadrática con $a$ positivo",
+          "explicacion": "Si $a > 0$ la sucesión tiene un valor mínimo, que se alcanza en la posición natural más cercana a $-b/(2a)$, abscisa del vértice de la parábola asociada. En $t_n = n^2 - 6n + 10$ el vértice está en $n = 3$ y el mínimo es $t_3 = 1$, mientras que $t_2 = t_4 = 2$. Los términos descienden hasta ese lugar y luego ascienden."
+        },
+        {
+          "texto": "Término máximo de una sucesión cuadrática con $a$ negativo",
+          "explicacion": "Si $a < 0$ la sucesión tiene un valor máximo, también en la posición natural más cercana a $-b/(2a)$. En $t_n = -n^2 + 6n - 4$ el vértice está en $n = 3$ y el máximo es $t_3 = 5$, ya que $t_2 = t_4 = 4$. Si el vértice cae entre dos naturales, el máximo está en el más cercano o es compartido por dos posiciones."
+        },
+        {
+          "texto": "Prolongar la tabla de diferencias para hallar el término siguiente",
+          "explicacion": "Como la segunda diferencia es constante, se puede continuar la sucesión sin conocer la fórmula: se repite la segunda diferencia, se suma a la última primera diferencia para obtener la siguiente y esta se suma al último término. En 2, 5, 10, 17 la segunda diferencia es 2, la siguiente primera diferencia es $7 + 2 = 9$ y el siguiente término es $17 + 9 = 26$, valor que coincide con $5^2 + 1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesiones notables",
+      "puntos": [
+        {
+          "texto": "Números cuadrados = $n^2$",
+          "explicacion": "La sucesión de cuadrados perfectos 1, 4, 9, 16, 25 tiene primeras diferencias 3, 5, 7, 9, que son los números impares a partir del 3, y segunda diferencia constante igual a 2. De los coeficientes se obtiene $a = 1$, $b = 3 - 3 = 0$ y $c = 1 - 3 + 2 = 0$, es decir $t_n = n^2$. Es la sucesión cuadrática más simple."
+        },
+        {
+          "texto": "Números triangulares = $n(n+1)/2$",
+          "explicacion": "Los números triangulares 1, 3, 6, 10, 15 cuentan los puntos que forman triángulos equiláteros con $n$ puntos en cada lado. Sus primeras diferencias son 2, 3, 4, 5 y la segunda es 1, de modo que $a = 1/2$, $b = 2 - 3/2 = 1/2$ y $c = 1 - 2 + 1 = 0$, y $$t_n = \\frac{n(n+1)}{2}$$ Son la suma de los primeros $n$ números naturales."
+        },
+        {
+          "texto": "Números oblongos = $n(n+1)$",
+          "explicacion": "Los números oblongos, o rectangulares, 2, 6, 12, 20, 30, cuentan los puntos de un rectángulo con $n$ filas y $n+1$ columnas. Sus primeras diferencias son 4, 6, 8, 10 y la segunda diferencia es 2, por lo que $t_n = n^2 + n$. Cada número oblongo es el doble de un número triangular, pues $n(n+1) = 2\\cdot n(n+1)/2$."
+        },
+        {
+          "texto": "Números pentagonales = $n(3n-1)/2$",
+          "explicacion": "Los números pentagonales 1, 5, 12, 22, 35 cuentan los puntos de pentágonos regulares construidos con $n$ puntos por lado. Las primeras diferencias son 4, 7, 10, 13 y la segunda es 3, de modo que $a = 3/2$, $b = 4 - 9/2 = -1/2$ y $c = 1 - 4 + 3 = 0$. Resulta $$t_n = \\frac{3n^2 - n}{2}$$"
+        },
+        {
+          "texto": "Números figurados = números que forman figuras geométricas de puntos",
+          "explicacion": "Los números figurados son los que pueden disponerse como puntos que forman una figura regular: triángulos, cuadrados, rectángulos, pentágonos. Para cada polígono de $m$ lados el número de lugar $n$ es una sucesión cuadrática, y la segunda diferencia es $m - 2$. En el triangular es 1, en el cuadrado es 2 y en el pentagonal es 3."
+        },
+        {
+          "texto": "Sucesiones de la forma $n$ por término lineal",
+          "explicacion": "Muchas sucesiones cuadráticas se escriben como producto de dos factores lineales en $n$, como $n(n+2)$ o $(n+1)(n+3)$. En general, el producto de dos expresiones de primer grado en $n$ es un polinomio de segundo grado y, por tanto, da una sucesión de segundo orden. Reconocer ese producto permite escribir el término general directamente cuando los términos se factorizan con facilidad."
+        }
+      ]
+    },
+    {
+      "titulo": "Sucesiones de orden superior",
+      "puntos": [
+        {
+          "texto": "Sucesión cúbica = tercera diferencia constante y no nula",
+          "explicacion": "Una sucesión de tercer orden es aquella cuyas terceras diferencias son todas iguales y distintas de cero, y su término general es un polinomio de tercer grado: $$t_n = a\\,n^3 + b\\,n^2 + c\\,n + d$$ Sus segundas diferencias forman una progresión aritmética y sus primeras diferencias son sucesión cuadrática. Un ejemplo es el de los cubos perfectos."
+        },
+        {
+          "texto": "Los cubos perfectos son de tercer orden",
+          "explicacion": "La lista 1, 8, 27, 64, 125 tiene primeras diferencias 7, 19, 37, 61, segundas diferencias 12, 18, 24 y terceras diferencias 6, 6. Como las terceras diferencias son constantes y las segundas no, la sucesión es de tercer orden y su término general es $t_n = n^3$."
+        },
+        {
+          "texto": "Fórmula de Newton = términos iniciales de cada nivel de diferencias",
+          "explicacion": "Si $d_1$, $d_2$, $d_3$ son los primeros elementos de las filas de primeras, segundas y terceras diferencias, el término general es $$t_n = t_1 + d_1(n-1) + d_2\\,\\frac{(n-1)(n-2)}{2} + d_3\\,\\frac{(n-1)(n-2)(n-3)}{6}$$ y se continúa del mismo modo para órdenes mayores, deteniéndose en el nivel constante. Para los cubos: $t_n = 1 + 7(n-1) + 6(n-1)(n-2) + (n-1)(n-2)(n-3)$, que da $t_4 = 64$ y $t_5 = 125$."
+        },
+        {
+          "texto": "Fórmula de Newton en el caso cuadrático",
+          "explicacion": "Cuando solo hay dos niveles, la fórmula de Newton se reduce a $t_n = t_1 + d_1(n-1) + d_2\\,(n-1)(n-2)/2$, que coincide con la expresión del término general en función de $p$ y $r$ vista antes. De esta forma, las fórmulas de coeficientes son un caso particular de un método que sirve para cualquier orden."
+        },
+        {
+          "texto": "Números tetraédricos = $n(n+1)(n+2)/6$",
+          "explicacion": "Los números tetraédricos 1, 4, 10, 20, 35 cuentan las esferas apiladas en forma de tetraedro de $n$ capas. Sus primeras diferencias son 3, 6, 10, 15 (números triangulares), sus segundas 3, 4, 5 y sus terceras 1, 1, de modo que son de tercer orden. Su término general es $$t_n = \\frac{n(n+1)(n+2)}{6}$$"
+        },
+        {
+          "texto": "Sucesión de orden $k$ = polinomio de grado $k$ en $n$",
+          "explicacion": "En general, una sucesión es de orden $k$ si y solo si su término general es un polinomio de grado $k$ en la posición. Cada nivel de diferencias reduce el grado en una unidad, hasta llegar a un nivel constante. Esta equivalencia permite decidir el grado de la fórmula observando en qué nivel de la tabla aparece el primer valor constante."
+        },
+        {
+          "texto": "Diferencia constante de orden $k$ = $k!$ por coeficiente principal",
+          "explicacion": "Si el término general es un polinomio de grado $k$ con coeficiente principal $a$, las diferencias de orden $k$ valen $k!\\cdot a$, donde $k!$ es el producto $1\\cdot 2\\cdots k$ (el factorial se estudia en el tema 77, Factorial de un número natural). Para $n^2$ vale $2$, para $n^3$ vale $6$ y para $n^4$ vale $24$, la cuarta diferencia constante de la lista 1, 16, 81, 256, 625."
+        },
+        {
+          "texto": "Se necesitan $k+1$ términos para fijar un polinomio de grado $k$",
+          "explicacion": "Un polinomio de grado $k$ tiene $k+1$ coeficientes y queda determinado por $k+1$ términos de la sucesión. Para confirmar que la sucesión es realmente de orden $k$ se requiere al menos un término más, porque las diferencias de nivel $k$ solo pueden compararse si hay dos o más. Con 4 términos de una sucesión cuadrática no se puede verificar que la segunda diferencia sea constante."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos que no cumplen",
+      "puntos": [
+        {
+          "texto": "Sucesión geométrica ≠ sucesión polinomial",
+          "explicacion": "En una progresión geométrica de razón distinta de 1, las diferencias sucesivas son a su vez una progresión geométrica con la misma razón y nunca llegan a un nivel constante. Por ejemplo, 1, 2, 4, 8, 16 tiene primeras diferencias 1, 2, 4, 8, que repiten la sucesión original. Por ello el método de diferencias no sirve para sucesiones exponenciales, que se estudian en el tema 61."
+        },
+        {
+          "texto": "Sucesión de Fibonacci ≠ sucesión polinomial",
+          "explicacion": "En la sucesión de Fibonacci 1, 1, 2, 3, 5, 8, 13, cada término es suma de los dos anteriores y las primeras diferencias 0, 1, 1, 2, 3, 5 reproducen la misma sucesión desplazada. Nunca se llega a un nivel constante, de modo que no es de ningún orden finito. Se atribuye su difusión en Europa a Leonardo de Pisa, llamado Fibonacci, quien la presentó en el Liber Abaci, de 1202."
+        },
+        {
+          "texto": "Pocos términos no determinan la regla de forma única",
+          "explicacion": "Un número finito de términos admite infinitas reglas distintas: dados $k+1$ términos siempre existe un polinomio de grado a lo sumo $k$ que los reproduce, pero también hay otras fórmulas. La lista 1, 2, 4, 8, 16 se prolonga con 32 si es geométrica, pero con 31 en el problema de regiones de un círculo con puntos unidos por cuerdas. En los problemas se supone la regla más simple compatible con los datos."
+        },
+        {
+          "texto": "Error frecuente: concluir cuadrática sin verificar segunda diferencia constante",
+          "explicacion": "Un error común es afirmar que una sucesión es cuadrática después de calcular solo una segunda diferencia. Debe comprobarse que todas las segundas diferencias disponibles coincidan; si no coinciden, se pasa al nivel siguiente o se descarta el modelo polinomial. Calcular la segunda diferencia con una lista de solo tres términos no permite verificar la constancia."
+        },
+        {
+          "texto": "Error frecuente: restar en sentido inverso",
+          "explicacion": "Las diferencias se calculan siempre restando el término anterior al siguiente, $t_{k+1} - t_k$. Invertir el orden en algún par cambia el signo de esa diferencia y rompe la constancia de los niveles siguientes, lo que lleva a coeficientes erróneos. Conviene escribir el signo de cada diferencia en la tabla y mantener el mismo sentido en todos los niveles."
+        },
+        {
+          "texto": "Error frecuente: usar $r$ en lugar de $r/2$ como coeficiente",
+          "explicacion": "La segunda diferencia constante no es el coeficiente de $n^2$ sino su doble: $a = r/2$. Un ejemplo es la sucesión $n^2$, cuya segunda diferencia es 2 pero cuyo coeficiente es 1. Omitir la división entre 2 produce fórmulas que no reproducen los términos dados."
+        }
+      ]
+    },
+    {
+      "titulo": "Historia de diferencias",
+      "puntos": [
+        {
+          "texto": "Pitagóricos (siglo VI a. C.) → números figurados",
+          "explicacion": "La escuela pitagórica, fundada por Pitágoras de Samos, estudió los números como disposiciones de puntos que forman figuras geométricas, como los triangulares y los cuadrados. Para los pitagóricos, estas figuras mostraban relaciones entre aritmética y geometría. La tradición posterior atribuye a la escuela el estudio de los números figurados."
+        },
+        {
+          "texto": "Nicómaco de Gerasa (siglo I d. C.) → números poligonales",
+          "explicacion": "Nicómaco de Gerasa, matemático griego, expuso en su Introducción a la aritmética las propiedades de los números poligonales, es decir, triangulares, cuadrados, pentagonales y los siguientes. Su obra fue un texto de referencia sobre aritmética durante la Antigüedad tardía y la Edad Media."
+        },
+        {
+          "texto": "Isaac Newton (1687) → interpolación por diferencias",
+          "explicacion": "Isaac Newton, matemático y físico inglés, presentó en el libro III de los Principia, publicado en 1687, un lema que expresa un polinomio por medio de las diferencias sucesivas de sus valores, y trató el tema en su Methodus Differentialis, publicado en 1711. De ese método proviene la fórmula con los primeros elementos de cada nivel de diferencias."
+        },
+        {
+          "texto": "James Gregory (hacia 1670) → fórmula equivalente",
+          "explicacion": "James Gregory, matemático escocés, obtuvo hacia 1670 una fórmula equivalente a la de Newton, por lo que el método se conoce a veces como fórmula de Gregory y Newton. La coincidencia muestra que el procedimiento de diferencias se desarrolló de manera independiente en el siglo XVII."
+        }
+      ]
+    }
+  ]
+}

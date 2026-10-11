@@ -1,0 +1,457 @@
+{
+  "curso": "Álgebra",
+  "tema": "Método de Gauss",
+  "glosario": {
+    "Sistema lineal": "Conjunto de ecuaciones lineales con las mismas incógnitas.",
+    "Ecuación lineal": "Igualdad con incógnitas a la primera potencia.",
+    "Incógnita": "Valor desconocido que se debe hallar.",
+    "Coeficiente": "Número que multiplica a una incógnita.",
+    "Término independiente": "Constante que no acompaña a ninguna incógnita.",
+    "Solución": "Valores que cumplen todas las ecuaciones.",
+    "Sistemas equivalentes": "Sistemas con exactamente las mismas soluciones.",
+    "Compatible": "Sistema con al menos una solución.",
+    "Determinado": "Sistema compatible con una única solución.",
+    "Indeterminado": "Sistema compatible con infinitas soluciones.",
+    "Incompatible": "Sistema sin ninguna solución.",
+    "Matriz": "Tabla rectangular de números en filas y columnas.",
+    "Fila": "Línea horizontal de una matriz.",
+    "Columna": "Línea vertical de una matriz.",
+    "Matriz de coeficientes": "Matriz formada por los coeficientes de las incógnitas.",
+    "Matriz ampliada": "Matriz de coeficientes más términos independientes.",
+    "Escalar": "Número real que multiplica a una fila.",
+    "Operación elemental": "Operación entre filas que conserva las soluciones.",
+    "Pivote": "Primer elemento no nulo de una fila.",
+    "Matriz escalonada": "Matriz con pivotes desplazados hacia la derecha.",
+    "Matriz triangular superior": "Matriz con ceros bajo la diagonal principal.",
+    "Fila nula": "Fila cuyos elementos son todos cero.",
+    "Multiplicador": "Cociente que anula un elemento bajo el pivote.",
+    "Eliminación hacia adelante": "Fase que anula elementos bajo los pivotes.",
+    "Sustitución regresiva": "Fase que despeja incógnitas de abajo hacia arriba.",
+    "Variable libre": "Incógnita sin pivote que puede tomar cualquier valor.",
+    "Parámetro": "Letra que representa un valor arbitrario.",
+    "Redundante": "Ecuación que no aporta condición nueva.",
+    "Sistema homogéneo": "Sistema con todos los términos independientes cero.",
+    "Solución trivial": "Solución con todas las incógnitas iguales a cero.",
+    "Matriz escalonada reducida": "Escalonada con pivotes uno y ceros arriba.",
+    "Determinante": "Número asociado a una matriz cuadrada.",
+    "Sistema cuadrado": "Sistema con igual número de ecuaciones e incógnitas."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación lineal",
+      "puntos": [
+        {
+          "texto": "Ecuación lineal de $n$ incógnitas: $a_1x_1+a_2x_2+\\dots+a_nx_n=b$",
+          "explicacion": "Una ecuación lineal es una igualdad en la que cada incógnita aparece elevada solo a la primera potencia, multiplicada por un número fijo y sumada con las demás. Los números $a_1, a_2, \\dots, a_n$ acompañan a las incógnitas $x_1, x_2, \\dots, x_n$, y $b$ es una constante que queda sola en el segundo miembro. Por ejemplo, $3x-2y+z=5$ es una ecuación lineal con tres incógnitas. La terna $(3, 2, 0)$ la verifica porque $3(3)-2(2)+0=9-4=5$. Se llama lineal porque, con dos incógnitas, su gráfica es una recta y, con tres, es un plano."
+        },
+        {
+          "texto": "Coeficiente: número que multiplica a una incógnita",
+          "explicacion": "En una ecuación lineal, el coeficiente de una incógnita es el número que la acompaña, incluyendo su signo. En $3x-2y+z=5$ los coeficientes son $3$, $-2$ y $1$; el coeficiente de $z$ es $1$ aunque no se escriba. Estos números son los que se colocan en la matriz de coeficientes y los que se modifican al aplicar operaciones entre filas, por lo que conviene copiarlos con su signo exacto. Si una incógnita no aparece en la ecuación, su coeficiente es $0$."
+        },
+        {
+          "texto": "Término independiente: constante $b$ sin incógnita",
+          "explicacion": "El término independiente es el número que no está multiplicado por ninguna incógnita y que, una vez ordenada la ecuación, queda en el segundo miembro. En $3x-2y+z=5$ el término independiente es $5$. Si una constante aparece en el primer miembro, se pasa al segundo con signo cambiado antes de formar la matriz: $2x+y+4=10$ se reescribe como $2x+y=6$. Los términos independientes de todas las ecuaciones forman la última columna de la matriz ampliada."
+        },
+        {
+          "texto": "Producto de incógnitas o exponente ≠ 1 ⇒ ecuación no lineal",
+          "explicacion": "Una ecuación deja de ser lineal cuando alguna incógnita está elevada a un exponente distinto de $1$, cuando dos incógnitas se multiplican entre sí o cuando una incógnita aparece dentro de una raíz o en un denominador. Son no lineales $xy=4$, $x^2+y=1$, $\\sqrt{x}+y=2$ y $\\dfrac{1}{x}+y=3$. El método de Gauss solo se aplica a sistemas formados por ecuaciones lineales, porque sus operaciones consisten en sumar múltiplos de ecuaciones, y esa suma mantiene la forma lineal únicamente cuando cada incógnita aparece a la primera potencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema lineal",
+      "puntos": [
+        {
+          "texto": "Sistema de $m$ ecuaciones lineales con $n$ incógnitas",
+          "explicacion": "Un sistema lineal es un conjunto de ecuaciones lineales que deben cumplirse al mismo tiempo con las mismas incógnitas. Su forma general es $\\begin{cases} a_{11}x_1+a_{12}x_2+\\dots+a_{1n}x_n=b_1 \\\\ a_{21}x_1+a_{22}x_2+\\dots+a_{2n}x_n=b_2 \\\\ \\vdots \\\\ a_{m1}x_1+a_{m2}x_2+\\dots+a_{mn}x_n=b_m \\end{cases}$, donde $m$ es el número de ecuaciones y $n$ el de incógnitas. El coeficiente $a_{ij}$ es el de la incógnita $x_j$ en la ecuación $i$, y $b_i$ es el término independiente de la ecuación $i$. Cuando $m=n$ el sistema se llama cuadrado; el método de Gauss no exige que lo sea."
+        },
+        {
+          "texto": "Solución de un sistema: valores que verifican todas las ecuaciones",
+          "explicacion": "Una solución es una lista ordenada de valores, uno por incógnita, que al sustituirse hace verdadera cada una de las ecuaciones. Basta que una sola ecuación falle para que la lista no sea solución. En el sistema $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$, la terna $(1, 2, 3)$ es solución porque $1+2+3=6$, $2-2+3=3$ y $1+4-3=2$. En cambio $(2, 2, 2)$ cumple la primera ($2+2+2=6$) pero no la segunda ($4-2+2=4 \\neq 3$), así que no es solución."
+        },
+        {
+          "texto": "Sistemas equivalentes ⇒ mismo conjunto de soluciones",
+          "explicacion": "Dos sistemas son equivalentes cuando toda solución del primero es solución del segundo y recíprocamente. Es la idea central del método de Gauss: se reemplaza el sistema original por otros sistemas cada vez más simples que conservan exactamente las mismas soluciones, hasta que el último puede resolverse de forma directa. Por ejemplo, $\\begin{cases} x+y=3 \\\\ x-y=1 \\end{cases}$ y $\\begin{cases} x+y=3 \\\\ -2y=-2 \\end{cases}$ son equivalentes, y ambos tienen como única solución $(2, 1)$."
+        },
+        {
+          "texto": "Sistema «compatible determinado» → una única solución",
+          "explicacion": "Un sistema compatible tiene al menos una solución; si además esa solución es única, se llama determinado. Geométricamente, dos rectas que se cortan en un solo punto, o tres planos que se cruzan en un solo punto, representan un sistema compatible determinado. Por ejemplo, $x+y=3$ y $x-y=1$ solo se cumplen simultáneamente con $x=2$ e $y=1$: al sumar ambas ecuaciones se obtiene $2x=4$, luego $x=2$, y de la primera $y=1$."
+        },
+        {
+          "texto": "Sistema «compatible indeterminado» → infinitas soluciones",
+          "explicacion": "Un sistema compatible indeterminado tiene solución, pero no una sola: tiene infinitas, que suelen escribirse en función de uno o más parámetros. Ocurre, por ejemplo, con $x+y=3$ y $2x+2y=6$, cuyas ecuaciones representan la misma recta: cada par $(t, 3-t)$ las verifica, como $(0,3)$, $(1,2)$ o $(5,-2)$. Algebraicamente aparece cuando alguna ecuación es consecuencia de las otras y por eso no aporta una condición nueva."
+        },
+        {
+          "texto": "Sistema «incompatible» → ninguna solución",
+          "explicacion": "Un sistema es incompatible cuando no existe ningún conjunto de valores que satisfaga todas las ecuaciones a la vez. Por ejemplo, $x+y=3$ y $x+y=5$ exigen que la misma suma valga dos números distintos, lo cual es imposible; geométricamente son dos rectas paralelas que no se cortan. Al aplicar el método de Gauss, esta situación se reconoce porque aparece una ecuación imposible de la forma $0=c$ con $c \\neq 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Representación matricial",
+      "puntos": [
+        {
+          "texto": "Matriz: arreglo rectangular de números en filas y columnas",
+          "explicacion": "Una matriz es una tabla rectangular de números encerrada entre paréntesis. Las líneas horizontales se llaman filas y las verticales, columnas. Una matriz con $m$ filas y $n$ columnas tiene orden $m \\times n$, y el número que ocupa la fila $i$ y la columna $j$ se denota $a_{ij}$. Por ejemplo, $\\begin{pmatrix}1&0&2\\\\3&1&4\\end{pmatrix}$ es de orden $2 \\times 3$, y en ella $a_{13}=2$ y $a_{21}=3$."
+        },
+        {
+          "texto": "Matriz de coeficientes $A$: solo los coeficientes del sistema",
+          "explicacion": "La matriz de coeficientes, denotada $A$, se forma escribiendo los coeficientes de las incógnitas del sistema: cada fila corresponde a una ecuación y cada columna a una incógnita, siempre en el mismo orden de incógnitas. Para el sistema $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$ resulta $A=\\begin{pmatrix}1&1&1\\\\2&-1&1\\\\1&2&-1\\end{pmatrix}$. Los términos independientes no forman parte de $A$."
+        },
+        {
+          "texto": "Matriz ampliada $(A \\mid b)$ ⊃ coeficientes y términos independientes",
+          "explicacion": "La matriz ampliada se obtiene agregando a la matriz de coeficientes $A$ una última columna con los términos independientes $b_1, b_2, \\dots, b_m$, separada por una línea vertical que reemplaza al signo igual. Para el sistema $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$ se tiene $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\2&-1&1&3\\\\1&2&-1&2\\end{array}\\right)$. Toda la información del sistema está en esta matriz, y el método de Gauss trabaja directamente sobre ella para no escribir las incógnitas en cada paso."
+        },
+        {
+          "texto": "Cada fila de la matriz ampliada = una ecuación",
+          "explicacion": "Leer una matriz ampliada consiste en reconstruir las ecuaciones: la fila $\\left(\\begin{array}{ccc|c}2&-1&3&7\\end{array}\\right)$ equivale a $2x-y+3z=7$, porque los números de las columnas de coeficientes multiplican a $x$, $y$, $z$ en ese orden y el número tras la línea vertical es el segundo miembro. De este modo, cada operación hecha sobre una fila equivale a una operación hecha sobre una ecuación completa, incluido su término independiente."
+        },
+        {
+          "texto": "Notación de fila: $F_i$ = fila $i$ de la matriz",
+          "explicacion": "Para describir las operaciones se usa la letra $F$ seguida de un subíndice: $F_1$ es la primera fila, $F_2$ la segunda, y así sucesivamente. La flecha indica el resultado de la operación: $F_2 \\to F_2 - 2F_1$ se lee «la nueva fila 2 es la fila 2 menos el doble de la fila 1». Esta notación permite registrar cada paso del método de manera ordenada y revisar después cualquier operación."
+        },
+        {
+          "texto": "Incógnita ausente en una ecuación ⇒ coeficiente $0$",
+          "explicacion": "Cuando una ecuación no contiene alguna de las incógnitas, en la matriz debe ocupar su lugar un cero, de modo que cada columna siga correspondiendo a la misma incógnita. La ecuación $3x+2z=9$, dentro de un sistema con incógnitas $x$, $y$, $z$, se escribe como $3x+0y+2z=9$ y su fila es $\\left(\\begin{array}{ccc|c}3&0&2&9\\end{array}\\right)$. Omitir ese cero desplazaría los coeficientes y produciría un sistema distinto."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones elementales",
+      "puntos": [
+        {
+          "texto": "Tres operaciones elementales por filas conservan las soluciones",
+          "explicacion": "Las operaciones elementales por filas son tres: intercambiar dos filas, multiplicar una fila por un número distinto de cero y sumar a una fila un múltiplo de otra. Corresponden a reordenar ecuaciones, multiplicar ambos miembros de una ecuación por un número no nulo y sumar a una ecuación un múltiplo de otra. Al aplicar cualquier sucesión de ellas a la matriz ampliada se obtiene la matriz ampliada de un sistema equivalente, es decir, con las mismas soluciones."
+        },
+        {
+          "texto": "Primera operación: intercambiar dos filas, $F_i \\leftrightarrow F_j$",
+          "explicacion": "Intercambiar las filas $i$ y $j$ equivale a escribir las ecuaciones en otro orden, lo cual no altera el conjunto de condiciones que deben cumplirse. Por ejemplo, en $\\left(\\begin{array}{ccc|c}0&2&-1&1\\\\1&1&1&6\\end{array}\\right)$ la operación $F_1 \\leftrightarrow F_2$ produce $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\0&2&-1&1\\end{array}\\right)$. Se usa sobre todo para llevar a la posición del pivote un elemento distinto de cero o uno igual a $1$."
+        },
+        {
+          "texto": "Segunda operación: $F_i \\to kF_i$ con $k \\neq 0$",
+          "explicacion": "Consiste en multiplicar todos los elementos de una fila, incluido el término independiente, por un número $k$ llamado escalar, siempre distinto de cero. Equivale a multiplicar ambos miembros de una ecuación por $k$. Por ejemplo, con $k=\\dfrac{1}{2}$ la fila $\\left(\\begin{array}{ccc|c}2&-4&6&8\\end{array}\\right)$ se convierte en $\\left(\\begin{array}{ccc|c}1&-2&3&4\\end{array}\\right)$, porque $2\\cdot\\dfrac{1}{2}=1$, $-4\\cdot\\dfrac{1}{2}=-2$, $6\\cdot\\dfrac{1}{2}=3$ y $8\\cdot\\dfrac{1}{2}=4$. Sirve para obtener pivotes iguales a $1$ o para simplificar fracciones."
+        },
+        {
+          "texto": "Tercera operación: $F_i \\to F_i + kF_j$ con $i \\neq j$",
+          "explicacion": "Se suma a la fila $i$ el resultado de multiplicar la fila $j$ por un escalar $k$, elemento a elemento, y el resultado reemplaza a la fila $i$; la fila $j$ no cambia. Es la operación que produce los ceros del método. Por ejemplo, con $F_1=\\left(\\begin{array}{cc|c}3&6&9\\end{array}\\right)$ y $F_2=\\left(\\begin{array}{cc|c}1&1&2\\end{array}\\right)$, la operación $F_1 \\to F_1-3F_2$ da $\\left(\\begin{array}{cc|c}3-3&6-3&9-6\\end{array}\\right)=\\left(\\begin{array}{cc|c}0&3&3\\end{array}\\right)$."
+        },
+        {
+          "texto": "Operación inversa existente ⇒ sistemas equivalentes",
+          "explicacion": "Cada operación elemental puede deshacerse con otra operación elemental: intercambiar dos filas se deshace intercambiándolas otra vez; multiplicar una fila por $k$ se deshace multiplicándola por $\\dfrac{1}{k}$; sumar $kF_j$ a $F_i$ se deshace restando $kF_j$. Por eso, toda solución del sistema original sigue cumpliendo el sistema transformado, y toda solución del transformado cumple también el original. Esa doble implicación es la que garantiza que el método no gana ni pierde soluciones."
+        },
+        {
+          "texto": "Multiplicar una fila por $0$ ✗ es operación elemental",
+          "explicacion": "Multiplicar una fila por cero convierte la ecuación en $0=0$ y borra la información que contenía, por lo que no puede deshacerse: no existe ningún número que devuelva la fila original. Un sistema así obtenido puede tener más soluciones que el original. Por eso la segunda operación exige $k \\neq 0$, y debe tenerse cuidado cuando al combinar filas el multiplicador de la fila que se reemplaza resulta ser cero."
+        },
+        {
+          "texto": "Operaciones solo sobre filas, nunca sobre columnas",
+          "explicacion": "En la matriz ampliada cada fila es una ecuación, de modo que operar sobre filas conserva las soluciones. Una operación entre columnas, en cambio, mezcla coeficientes de incógnitas distintas y cambia el sistema. Solo se permite intercambiar columnas de coeficientes si se renombra al mismo tiempo la incógnita correspondiente, pero en la práctica conviene evitarlo para no confundir las incógnitas. La última columna, la de los términos independientes, nunca se intercambia."
+        },
+        {
+          "texto": "Operación combinada: $F_i \\to aF_i + bF_j$ con $a \\neq 0$",
+          "explicacion": "Para eliminar una incógnita sin introducir fracciones se combinan las dos operaciones anteriores en una sola: se multiplica la fila que se reemplaza por $a \\neq 0$ y se suma un múltiplo de otra fila. Por ejemplo, para anular el $2$ de $F_2=\\left(\\begin{array}{cc|c}2&5&12\\end{array}\\right)$ usando $F_1=\\left(\\begin{array}{cc|c}3&2&7\\end{array}\\right)$ se aplica $F_2 \\to 3F_2-2F_1$: $\\left(\\begin{array}{cc|c}6-6&15-4&36-14\\end{array}\\right)=\\left(\\begin{array}{cc|c}0&11&22\\end{array}\\right)$. La condición $a \\neq 0$ es indispensable para que la operación siga siendo reversible."
+        }
+      ]
+    },
+    {
+      "titulo": "Matriz escalonada",
+      "puntos": [
+        {
+          "texto": "Pivote: primer elemento no nulo de una fila",
+          "explicacion": "El pivote de una fila no nula es el primer número distinto de cero que se encuentra al recorrer la fila de izquierda a derecha. En $\\left(\\begin{array}{cccc|c}0&0&3&1&5\\end{array}\\right)$ el pivote es $3$, que está en la tercera columna. Los pivotes marcan las incógnitas que pueden despejarse directamente al final del proceso y son los elementos que se utilizan para generar ceros en su misma columna."
+        },
+        {
+          "texto": "Matriz escalonada: cada pivote queda a la derecha del anterior",
+          "explicacion": "En una matriz escalonada, al bajar de una fila a la siguiente el pivote se desplaza al menos una columna hacia la derecha, de modo que los elementos situados debajo de cada pivote son ceros y la forma de los elementos no nulos recuerda a una escalera. Por ejemplo, $\\left(\\begin{array}{ccc|c}2&1&-1&3\\\\0&3&2&5\\\\0&0&4&8\\end{array}\\right)$ es escalonada, mientras que $\\left(\\begin{array}{ccc|c}2&1&-1&3\\\\0&0&2&5\\\\0&3&4&8\\end{array}\\right)$ no lo es, porque el pivote de la tercera fila queda a la izquierda del de la segunda."
+        },
+        {
+          "texto": "Filas nulas ⇒ al final de la matriz escalonada",
+          "explicacion": "Una fila nula es aquella cuyos coeficientes son todos cero. En una matriz escalonada estas filas se colocan en la parte inferior, después de todas las filas con pivote. Si una fila nula aparece en medio de la matriz, se intercambia con las filas inferiores no nulas. En la matriz ampliada, una fila de la forma $\\left(\\begin{array}{ccc|c}0&0&0&0\\end{array}\\right)$ corresponde a la ecuación $0=0$, que se cumple siempre y no restringe a las incógnitas."
+        },
+        {
+          "texto": "Sistema cuadrado escalonado ⇒ matriz triangular superior",
+          "explicacion": "Cuando el sistema tiene tantas ecuaciones como incógnitas y todos los pivotes ocupan la diagonal, la matriz de coeficientes escalonada es triangular superior: sus elementos debajo de la diagonal principal son ceros. Para tres incógnitas tiene la forma $\\left(\\begin{array}{ccc|c}u_{11}&u_{12}&u_{13}&c_1\\\\0&u_{22}&u_{23}&c_2\\\\0&0&u_{33}&c_3\\end{array}\\right)$, con $u_{11}, u_{22}, u_{33} \\neq 0$. La última fila contiene una sola incógnita, lo que permite resolver el sistema empezando por ella."
+        }
+      ]
+    },
+    {
+      "titulo": "Método de Gauss",
+      "puntos": [
+        {
+          "texto": "Método de Gauss: escalonar la matriz ampliada y resolver",
+          "explicacion": "El método de Gauss resuelve un sistema lineal en dos etapas: primero transforma la matriz ampliada en una matriz escalonada mediante operaciones elementales por filas, y luego determina las incógnitas a partir de las ecuaciones que resultan, comenzando por la última. Como cada operación produce un sistema equivalente, las soluciones del sistema escalonado son exactamente las del sistema original. Su idea es eliminar sistemáticamente incógnitas de las ecuaciones inferiores."
+        },
+        {
+          "texto": "Carl Friedrich Gauss da nombre al método",
+          "explicacion": "El método lleva el nombre del matemático alemán Carl Friedrich Gauss, una de las figuras más importantes de la historia de las matemáticas. El nombre es honorífico: designa un procedimiento de eliminación sistemática que hoy se enseña en todos los cursos de álgebra. Conviene escribir el nombre completo al citarlo y no abreviarlo con iniciales."
+        },
+        {
+          "texto": "Eliminación gaussiana: otro nombre del método de Gauss",
+          "explicacion": "El mismo procedimiento se conoce como eliminación gaussiana, nombre que subraya que su operación principal es eliminar incógnitas de las ecuaciones situadas debajo del pivote. En los textos puede aparecer con cualquiera de ambas denominaciones, y se refiere a lo mismo: escalonar la matriz ampliada y resolver mediante sustitución regresiva. No debe confundirse con el método de Gauss-Jordan, que continúa la eliminación hacia arriba."
+        },
+        {
+          "texto": "Método de Gauss ⊃ eliminación hacia adelante",
+          "explicacion": "La primera fase del método es la eliminación hacia adelante: se recorren las columnas de izquierda a derecha y, en cada una, se usa el pivote para anular los elementos que quedan debajo. Al terminar, la matriz es escalonada. Esta fase solo emplea operaciones elementales por filas y permite ya decidir si el sistema es incompatible, determinado o indeterminado."
+        },
+        {
+          "texto": "Método de Gauss ⊃ sustitución regresiva",
+          "explicacion": "La segunda fase es la sustitución regresiva: se despeja la última incógnita de la última ecuación no nula y su valor se sustituye en la ecuación anterior, y así hacia arriba hasta la primera ecuación. Se le llama regresiva porque se avanza desde la última ecuación hacia la primera, en sentido contrario al de la eliminación."
+        },
+        {
+          "texto": "Gauss sirve para cualquier $m$ y cualquier $n$",
+          "explicacion": "A diferencia de otros métodos que exigen igual número de ecuaciones e incógnitas, el método de Gauss funciona con cualquier sistema lineal, sea cuadrado, con más ecuaciones que incógnitas o con menos. Además clasifica el sistema durante el proceso: detecta si es incompatible, si tiene solución única o si tiene infinitas soluciones, y en el último caso permite expresarlas con parámetros."
+        },
+        {
+          "texto": "Procedimiento completo en siete pasos",
+          "explicacion": "Primero se escribe el sistema con las incógnitas ordenadas y se construye la matriz ampliada. Segundo, se elige el pivote de la primera columna, intercambiando filas si es necesario. Tercero, se anulan los elementos debajo de ese pivote con la tercera operación elemental. Cuarto, se repite el proceso en la segunda columna usando solo las filas inferiores, y así sucesivamente hasta obtener una matriz escalonada. Quinto, se clasifica el sistema examinando las filas de la matriz. Sexto, si hay solución, se resuelve por sustitución regresiva. Séptimo, se verifica la solución en las ecuaciones originales."
+        }
+      ]
+    },
+    {
+      "titulo": "Eliminación hacia adelante",
+      "puntos": [
+        {
+          "texto": "Primer pivote: $a_{11} \\neq 0$ en la primera fila",
+          "explicacion": "El proceso comienza con el elemento de la primera fila y la primera columna, $a_{11}$, que debe ser distinto de cero para servir de pivote. Si $a_{11}=0$, se intercambia la primera fila con alguna fila inferior cuyo primer elemento no sea cero. Con este pivote se anularán todos los elementos de la primera columna situados debajo de él."
+        },
+        {
+          "texto": "Multiplicador: $m_{i1}=\\dfrac{a_{i1}}{a_{11}}$",
+          "explicacion": "El multiplicador $m_{i1}$ es el número por el cual se multiplica la fila del pivote para que, al restarla de la fila $i$, el primer elemento de esa fila se anule. Se obtiene dividiendo el elemento que se quiere anular entre el pivote. Por ejemplo, con $F_1=\\left(\\begin{array}{ccc|c}2&4&6&8\\end{array}\\right)$ y $F_2=\\left(\\begin{array}{ccc|c}3&5&7&9\\end{array}\\right)$ resulta $m_{21}=\\dfrac{3}{2}$. Entonces $F_2-\\dfrac{3}{2}F_1=\\left(\\begin{array}{ccc|c}3-3&5-6&7-9&9-12\\end{array}\\right)=\\left(\\begin{array}{ccc|c}0&-1&-2&-3\\end{array}\\right)$."
+        },
+        {
+          "texto": "Fórmula de eliminación: $F_i \\to F_i - m_{i1}F_1$",
+          "explicacion": "Al restar a la fila $i$ el producto del multiplicador por la fila del pivote, el nuevo primer elemento es $a_{i1}-m_{i1}a_{11}=a_{i1}-\\dfrac{a_{i1}}{a_{11}}a_{11}=0$, lo que justifica la fórmula. Los demás elementos de la fila, incluido el término independiente, se calculan con la misma resta. Por ejemplo, con $F_1=\\left(\\begin{array}{ccc|c}1&1&1&6\\end{array}\\right)$ y $F_3=\\left(\\begin{array}{ccc|c}1&2&-1&2\\end{array}\\right)$ se tiene $m_{31}=\\dfrac{1}{1}=1$ y $F_3-F_1=\\left(\\begin{array}{ccc|c}0&1&-2&-4\\end{array}\\right)$, pues $2-1=1$, $-1-1=-2$ y $2-6=-4$."
+        },
+        {
+          "texto": "Segundo pivote: usar solo las filas inferiores",
+          "explicacion": "Terminada la primera columna, se pasa al elemento $a_{22}$ de la segunda fila, que se convierte en el nuevo pivote. A partir de aquí la primera fila no se vuelve a modificar, ya que cualquier operación con ella restituiría elementos no nulos en la primera columna. El multiplicador se calcula con los elementos de la segunda columna: $m_{32}=\\dfrac{a_{32}}{a_{22}}$, y se aplica $F_3 \\to F_3-m_{32}F_2$."
+        },
+        {
+          "texto": "Eliminación completa ⇒ matriz triangular superior",
+          "explicacion": "Cuando se ha repetido el proceso en todas las columnas con pivote, los elementos situados debajo de cada pivote son cero y la matriz ampliada es escalonada. En un sistema de tres ecuaciones con tres incógnitas y pivotes en la diagonal, resulta la forma triangular superior, equivalente al sistema original y de resolución inmediata por sustitución regresiva."
+        },
+        {
+          "texto": "Pivote nulo ⇒ intercambiar con una fila inferior",
+          "explicacion": "Si el elemento que debería ser pivote es cero, no puede usarse para dividir ni para generar ceros. Se busca hacia abajo, en la misma columna, una fila cuyo elemento sea distinto de cero y se intercambia con la fila actual. Si todos los elementos de esa columna por debajo de la fila actual son cero, la columna no tiene pivote en ese nivel: se pasa a la columna siguiente conservando la misma fila, y la incógnita de la columna omitida queda como variable libre."
+        },
+        {
+          "texto": "Pivote igual a $1$ ⇒ cálculos sin fracciones",
+          "explicacion": "Si el pivote es $1$, el multiplicador es simplemente el elemento que se quiere anular, de modo que todos los números siguen siendo enteros. Por eso conviene intercambiar filas para que en la posición del pivote quede un $1$ o un $-1$, o dividir la fila por su pivote cuando todos sus elementos son divisibles. Esta elección no cambia el resultado, pero reduce los errores de cálculo."
+        },
+        {
+          "texto": "Orden de eliminación: columnas de izquierda a derecha",
+          "explicacion": "Las columnas se trabajan estrictamente de izquierda a derecha y, dentro de cada una, de arriba hacia abajo. Este orden es necesario porque, al anular un elemento con una operación entre filas, se podrían alterar ceros ya conseguidos en columnas anteriores si se operara con una fila que no tiene ceros allí. Siguiendo el orden, cada nuevo cero respeta los anteriores."
+        }
+      ]
+    },
+    {
+      "titulo": "Sustitución regresiva",
+      "puntos": [
+        {
+          "texto": "Sustitución regresiva: despejar desde la última ecuación",
+          "explicacion": "Una vez obtenida la matriz triangular superior, se lee como un sistema: la última ecuación tiene una sola incógnita, de modo que se despeja directamente; ese valor se sustituye en la penúltima ecuación, que entonces tiene también una sola incógnita nueva, y se continúa hacia arriba hasta la primera. En cada paso la ecuación que se resuelve contiene únicamente incógnitas ya conocidas más una por determinar."
+        },
+        {
+          "texto": "Última incógnita: $z=\\dfrac{c_3}{u_{33}}$",
+          "explicacion": "En la forma triangular de tres incógnitas, la tercera ecuación es $u_{33}z=c_3$, de donde $z=\\dfrac{c_3}{u_{33}}$ siempre que $u_{33} \\neq 0$. Por ejemplo, con la tercera fila $\\left(\\begin{array}{ccc|c}0&0&-7&-21\\end{array}\\right)$ se tiene $-7z=-21$, luego $z=\\dfrac{-21}{-7}=3$. Verificación: $-7(3)=-21$. Esta fórmula es posible porque, en la forma triangular, la tercera ecuación contiene únicamente la incógnita $z$: los coeficientes de $x$ e $y$ valen cero en esa fila gracias a la eliminación. Si $u_{33}$ fuera cero, la ecuación sería $0=c_3$ y el sistema sería incompatible cuando $c_3 \\neq 0$, o tendría a $z$ como variable libre cuando $c_3=0$."
+        },
+        {
+          "texto": "Incógnita central: $y=\\dfrac{c_2-u_{23}z}{u_{22}}$",
+          "explicacion": "La segunda ecuación es $u_{22}y+u_{23}z=c_2$. Una vez conocido $z$, se pasa el término $u_{23}z$ al segundo miembro y se divide entre $u_{22} \\neq 0$. Con la fila $\\left(\\begin{array}{ccc|c}0&-3&-1&-9\\end{array}\\right)$ y $z=3$ resulta $y=\\dfrac{-9-(-1)(3)}{-3}=\\dfrac{-9+3}{-3}=\\dfrac{-6}{-3}=2$. Verificación: $-3(2)-1(3)=-6-3=-9$. La fórmula resulta de despejar $y$ en $u_{22}y+u_{23}z=c_2$: primero se resta $u_{23}z$ en ambos miembros y luego se divide entre $u_{22}$. En esa ecuación la incógnita $x$ no aparece, porque su coeficiente se anuló en la primera eliminación, y por eso solo se necesita el valor de $z$."
+        },
+        {
+          "texto": "Primera incógnita: $x=\\dfrac{c_1-u_{12}y-u_{13}z}{u_{11}}$",
+          "explicacion": "La primera ecuación es $u_{11}x+u_{12}y+u_{13}z=c_1$. Con $y$ y $z$ ya conocidas, se pasan los dos términos al segundo miembro y se divide entre $u_{11} \\neq 0$. Con la fila $\\left(\\begin{array}{ccc|c}1&1&1&6\\end{array}\\right)$, $y=2$ y $z=3$ resulta $x=\\dfrac{6-1(2)-1(3)}{1}=6-2-3=1$. Verificación: $1+2+3=6$."
+        },
+        {
+          "texto": "Pivotes en la diagonal ≠ 0 ⇒ solución única",
+          "explicacion": "La sustitución regresiva puede realizarse sin ambigüedad solo si cada pivote, por el que se divide, es distinto de cero. Cuando las tres incógnitas tienen pivote, cada despeje produce un valor único, y por tanto el sistema es compatible determinado. Si faltara algún pivote, habría una incógnita que no puede despejarse y el sistema no tendría solución única."
+        }
+      ]
+    },
+    {
+      "titulo": "Criterio de clasificación",
+      "puntos": [
+        {
+          "texto": "Fila $(0\\ 0\\ \\dots\\ 0 \\mid c)$ con $c \\neq 0$ ⇒ sistema incompatible",
+          "explicacion": "Esa fila representa la ecuación $0x_1+0x_2+\\dots+0x_n=c$, es decir, $0=c$, que es falsa para cualquier valor de las incógnitas cuando $c \\neq 0$. Como el sistema escalonado es equivalente al original, este último tampoco tiene solución. Basta encontrar una sola fila de este tipo para concluir que el sistema es incompatible, sin necesidad de seguir calculando. Es la única situación en que el método termina sin solución."
+        },
+        {
+          "texto": "Sin fila contradictoria y pivotes = $n$ ⇒ solución única",
+          "explicacion": "Si no aparece ninguna fila contradictoria y el número de pivotes coincide con el número $n$ de incógnitas, cada incógnita tiene un pivote y puede despejarse con la sustitución regresiva, obteniéndose un solo valor para cada una. Si el sistema tiene más ecuaciones que incógnitas, las filas sobrantes se reducen a filas nulas. El sistema es compatible determinado."
+        },
+        {
+          "texto": "Sin fila contradictoria y pivotes < $n$ ⇒ infinitas soluciones",
+          "explicacion": "Si no hay filas contradictorias y el número de pivotes es menor que el número $n$ de incógnitas, quedan $n$ menos el número de pivotes incógnitas sin pivote. Esas incógnitas pueden tomar cualquier valor y las demás se determinan a partir de ellas, de modo que existen infinitas soluciones. El sistema es compatible indeterminado."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo determinado",
+      "puntos": [
+        {
+          "texto": "Planteamiento: sistema $3 \\times 3$ y su matriz ampliada",
+          "explicacion": "Se resuelve $\\begin{cases} x+y+z=6 \\\\ 2x-y+z=3 \\\\ x+2y-z=2 \\end{cases}$. Las incógnitas están ordenadas como $x$, $y$, $z$ en las tres ecuaciones y no falta ninguna, de modo que la matriz ampliada es $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\2&-1&1&3\\\\1&2&-1&2\\end{array}\\right)$. El primer elemento es $1$, buen pivote porque no genera fracciones."
+        },
+        {
+          "texto": "Primera eliminación: ceros bajo el primer pivote",
+          "explicacion": "Para anular el $2$ de la segunda fila se aplica $F_2 \\to F_2-2F_1$: $\\left(\\begin{array}{ccc|c}2-2&-1-2&1-2&3-12\\end{array}\\right)=\\left(\\begin{array}{ccc|c}0&-3&-1&-9\\end{array}\\right)$. Para anular el $1$ de la tercera fila se aplica $F_3 \\to F_3-F_1$: $\\left(\\begin{array}{ccc|c}1-1&2-1&-1-1&2-6\\end{array}\\right)=\\left(\\begin{array}{ccc|c}0&1&-2&-4\\end{array}\\right)$. La matriz queda $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\0&-3&-1&-9\\\\0&1&-2&-4\\end{array}\\right)$. En ambas operaciones el multiplicador es el elemento a anular dividido entre el pivote $1$, es decir, $2$ y $1$ respectivamente, y la primera fila permanece sin cambios. Desde este momento, las filas segunda y tercera forman un sistema de dos ecuaciones con las incógnitas $y$ y $z$."
+        },
+        {
+          "texto": "Segunda eliminación: cero bajo el segundo pivote",
+          "explicacion": "El segundo pivote es $-3$. Para evitar fracciones se aplica la operación combinada $F_3 \\to 3F_3+F_2$: $3(0)+0=0$, $3(1)+(-3)=0$, $3(-2)+(-1)=-7$ y $3(-4)+(-9)=-21$. La tercera fila queda $\\left(\\begin{array}{ccc|c}0&0&-7&-21\\end{array}\\right)$ y la matriz escalonada es $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\0&-3&-1&-9\\\\0&0&-7&-21\\end{array}\\right)$. Los tres pivotes, $1$, $-3$ y $-7$, son distintos de cero."
+        },
+        {
+          "texto": "Resolución del sistema escalonado por sustitución",
+          "explicacion": "De la tercera fila, $-7z=-21$, se obtiene $z=3$. De la segunda, $-3y-z=-9$, se obtiene $-3y-3=-9$, luego $-3y=-6$ e $y=2$. De la primera, $x+y+z=6$, se obtiene $x+2+3=6$, luego $x=1$. La solución es $(x,y,z)=(1,2,3)$, única, porque los tres pivotes existen y no hay fila contradictoria."
+        },
+        {
+          "texto": "Verificación en las ecuaciones originales",
+          "explicacion": "Se sustituye $(1,2,3)$ en cada ecuación del sistema inicial, no en las transformadas. Primera: $1+2+3=6$. Segunda: $2(1)-2+3=2-2+3=3$. Tercera: $1+2(2)-3=1+4-3=2$. Las tres igualdades se cumplen, por lo que la solución es correcta. Esta comprobación detecta errores en cualquiera de los pasos de eliminación."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema dos incógnitas",
+      "puntos": [
+        {
+          "texto": "Método de Gauss en un sistema $2 \\times 2$",
+          "explicacion": "Se resuelve $\\begin{cases} 2x+3y=7 \\\\ x-y=1 \\end{cases}$. La matriz ampliada es $\\left(\\begin{array}{cc|c}2&3&7\\\\1&-1&1\\end{array}\\right)$. Para tener un pivote igual a $1$ se aplica $F_1 \\leftrightarrow F_2$, lo que da $\\left(\\begin{array}{cc|c}1&-1&1\\\\2&3&7\\end{array}\\right)$. Luego $F_2 \\to F_2-2F_1$ produce $\\left(\\begin{array}{cc|c}0&3+2&7-2\\end{array}\\right)=\\left(\\begin{array}{cc|c}0&5&5\\end{array}\\right)$. De $5y=5$ se obtiene $y=1$, y de $x-y=1$ se obtiene $x=2$. Verificación: $2(2)+3(1)=7$ y $2-1=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Pivote nulo",
+      "puntos": [
+        {
+          "texto": "Ejemplo con $a_{11}=0$: intercambio de filas",
+          "explicacion": "Se resuelve $\\begin{cases} 2y-z=1 \\\\ x+y+z=6 \\\\ 2x-y+3z=9 \\end{cases}$, cuya matriz ampliada es $\\left(\\begin{array}{ccc|c}0&2&-1&1\\\\1&1&1&6\\\\2&-1&3&9\\end{array}\\right)$. Como el primer elemento es $0$, se aplica $F_1 \\leftrightarrow F_2$. Luego $F_3 \\to F_3-2F_1$ da $\\left(\\begin{array}{ccc|c}0&-3&1&-3\\end{array}\\right)$, y $F_3 \\to 2F_3+3F_2$ da $\\left(\\begin{array}{ccc|c}0&0&-1&-3\\end{array}\\right)$ porque $2(-3)+3(2)=0$, $2(1)+3(-1)=-1$ y $2(-3)+3(1)=-3$. Entonces $-z=-3$ y $z=3$; de $2y-3=1$ resulta $y=2$; de $x+2+3=6$ resulta $x=1$. Verificación en la primera ecuación original: $2(2)-3=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema incompatible",
+      "puntos": [
+        {
+          "texto": "Ejemplo incompatible resuelto con Gauss",
+          "explicacion": "Se resuelve $\\begin{cases} x+y+z=1 \\\\ 2x+y-z=2 \\\\ 3x+2y=4 \\end{cases}$, con matriz ampliada $\\left(\\begin{array}{ccc|c}1&1&1&1\\\\2&1&-1&2\\\\3&2&0&4\\end{array}\\right)$. Con $F_2 \\to F_2-2F_1$ se obtiene $\\left(\\begin{array}{ccc|c}0&-1&-3&0\\end{array}\\right)$ y con $F_3 \\to F_3-3F_1$ se obtiene $\\left(\\begin{array}{ccc|c}0&-1&-3&1\\end{array}\\right)$. Luego $F_3 \\to F_3-F_2$ da $\\left(\\begin{array}{ccc|c}0&0&0&1\\end{array}\\right)$, es decir, $0=1$. Esa fila contradictoria prueba que el sistema es incompatible."
+        },
+        {
+          "texto": "Causa del caso incompatible: combinación con segundo miembro distinto",
+          "explicacion": "En el ejemplo anterior, los coeficientes de la tercera ecuación son la suma de los de las dos primeras: $(1,1,1)+(2,1,-1)=(3,2,0)$. Si el sistema fuera consistente, el término independiente también tendría que ser la suma, $1+2=3$, pero la ecuación dice $4$. Esa discrepancia entre $3$ y $4$ es la que se manifiesta como $0=1$ al finalizar la eliminación."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema indeterminado",
+      "puntos": [
+        {
+          "texto": "Fila nula $(0\\ 0\\ 0 \\mid 0)$ ⇒ ecuación redundante",
+          "explicacion": "Cuando la eliminación deja una fila con todos los elementos iguales a cero, incluido el término independiente, esa ecuación se cumple para cualquier valor de las incógnitas y puede descartarse sin cambiar las soluciones. Significa que la ecuación original era combinación de las demás y no imponía una condición nueva. Cada fila nula reduce en uno el número de condiciones realmente independientes."
+        },
+        {
+          "texto": "Variable libre: incógnita cuya columna no tiene pivote",
+          "explicacion": "En la matriz escalonada, las columnas con pivote corresponden a incógnitas que quedan determinadas por las demás. Las columnas sin pivote corresponden a variables libres: pueden tomar cualquier valor y las demás se calculan en función de ellas. El número de variables libres es $n$ menos el número de pivotes, donde $n$ es el número de incógnitas."
+        },
+        {
+          "texto": "Parámetro: letra que representa el valor de una variable libre",
+          "explicacion": "Para describir infinitas soluciones se asigna a cada variable libre una letra, como $t$ o $k$, llamada parámetro, que puede valer cualquier número real. Las demás incógnitas se escriben en función de esa letra. Para evitar fracciones suele elegirse el parámetro de modo que los cocientes resulten enteros, por ejemplo $z=3k$ cuando se debe dividir entre $3$."
+        },
+        {
+          "texto": "Ejemplo indeterminado resuelto con Gauss",
+          "explicacion": "Se resuelve $\\begin{cases} x+y+z=6 \\\\ 2x-y+z=3 \\\\ 3x+2z=9 \\end{cases}$, con matriz ampliada $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\2&-1&1&3\\\\3&0&2&9\\end{array}\\right)$. Con $F_2 \\to F_2-2F_1$ resulta $\\left(\\begin{array}{ccc|c}0&-3&-1&-9\\end{array}\\right)$ y con $F_3 \\to F_3-3F_1$ resulta $\\left(\\begin{array}{ccc|c}0&-3&-1&-9\\end{array}\\right)$. Luego $F_3 \\to F_3-F_2$ da $\\left(\\begin{array}{ccc|c}0&0&0&0\\end{array}\\right)$. Quedan dos pivotes y tres incógnitas, así que $z$ es libre. Con $z=3k$: de $-3y-3k=-9$ se obtiene $y=3-k$, y de $x+y+z=6$ se obtiene $x=6-(3-k)-3k=3-2k$. Las soluciones son $(x,y,z)=(3-2k,\\ 3-k,\\ 3k)$ con $k$ cualquier número real."
+        },
+        {
+          "texto": "Verificación de la familia de soluciones",
+          "explicacion": "Se sustituye $(3-2k,\\ 3-k,\\ 3k)$ en las ecuaciones originales y debe obtenerse una identidad en $k$. Primera: $(3-2k)+(3-k)+3k=6$. Segunda: $2(3-2k)-(3-k)+3k=6-4k-3+k+3k=3$. Tercera: $3(3-2k)+2(3k)=9-6k+6k=9$. Los términos con $k$ se cancelan en las tres, por lo que cada valor de $k$ da una solución. Para $k=1$ se obtiene $(1,2,3)$ y para $k=0$ se obtiene $(3,3,0)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidad de ecuaciones",
+      "puntos": [
+        {
+          "texto": "Menos ecuaciones que incógnitas ⇒ nunca solución única",
+          "explicacion": "Si $m < n$, el número de pivotes no puede superar $m$ y por tanto es menor que $n$. Entonces el sistema es incompatible o compatible indeterminado, pero nunca compatible determinado. Por ejemplo, en $x+y+z=3$ y $x-y+2z=2$, la operación $F_2 \\to F_2-F_1$ da $\\left(\\begin{array}{ccc|c}0&-2&1&-1\\end{array}\\right)$. Con $z=t$ libre, $y=\\dfrac{1+t}{2}$ y $x=3-y-t=\\dfrac{5-3t}{2}$. Verificación con $t=3$: $y=2$, $x=-2$, y se cumplen $-2+2+3=3$ y $-2-2+6=2$."
+        },
+        {
+          "texto": "Más ecuaciones que incógnitas ⇒ filas sobrantes se anulan o contradicen",
+          "explicacion": "Si $m > n$, las filas adicionales deben reducirse a filas nulas para que haya solución; si alguna queda como $0=c$ con $c \\neq 0$, el sistema es incompatible. Por ejemplo, en $x+y=3$, $x-y=1$, $2x+y=5$, las operaciones $F_2 \\to F_2-F_1$ y $F_3 \\to F_3-2F_1$ dan $\\left(\\begin{array}{cc|c}0&-2&-2\\end{array}\\right)$ y $\\left(\\begin{array}{cc|c}0&-1&-1\\end{array}\\right)$; con $F_3 \\to 2F_3-F_2$ la tercera fila queda $\\left(\\begin{array}{cc|c}0&0&0\\end{array}\\right)$, y la solución es $(2,1)$. Si el término de la tercera ecuación fuera $6$ en lugar de $5$, esa última fila sería $\\left(\\begin{array}{cc|c}0&0&2\\end{array}\\right)$ y el sistema sería incompatible."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistemas homogéneos",
+      "puntos": [
+        {
+          "texto": "Sistema homogéneo: todos los términos independientes = $0$",
+          "explicacion": "Un sistema es homogéneo cuando cada ecuación tiene la forma $a_1x_1+\\dots+a_nx_n=0$. En la matriz ampliada, la última columna está formada solo por ceros y, como las operaciones elementales no pueden convertir un cero en otro número cuando se combinan filas con término independiente cero, esa columna permanece en cero durante todo el método. Por ello basta trabajar con la matriz de coeficientes."
+        },
+        {
+          "texto": "Solución trivial: todas las incógnitas = $0$",
+          "explicacion": "En un sistema homogéneo, la lista formada por ceros siempre es solución, pues cada ecuación se reduce a $0=0$. Se llama solución trivial. Como siempre existe, un sistema homogéneo nunca es incompatible: solo puede ser determinado, con la solución trivial como única, o indeterminado, con infinitas soluciones. En el sistema $x+y+z=0$, $2x-y+z=0$, $x+2y-z=0$ la eliminación da pivotes $1$, $-3$ y $-7$, de modo que la única solución es $(0,0,0)$."
+        },
+        {
+          "texto": "Homogéneo con pivotes < $n$ ⇒ soluciones no triviales",
+          "explicacion": "Si la eliminación deja menos pivotes que incógnitas, existen variables libres y, con ellas, soluciones distintas de la trivial. Por ejemplo, en $x+y+z=0$, $2x-y+z=0$, $3x+2z=0$, las operaciones $F_2 \\to F_2-2F_1$ y $F_3 \\to F_3-3F_1$ dan filas $\\left(\\begin{array}{ccc|c}0&-3&-1&0\\end{array}\\right)$ en ambos casos, y $F_3 \\to F_3-F_2$ la anula. Con $z=3k$: $-3y-3k=0$ da $y=-k$, y $x=-y-z=k-3k=-2k$. Las soluciones son $(-2k,\\ -k,\\ 3k)$. Verificación: $2(-2k)-(-k)+3k=0$ y $3(-2k)+2(3k)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Método Gauss-Jordan",
+      "puntos": [
+        {
+          "texto": "Matriz escalonada reducida: pivotes iguales a $1$ y ceros arriba",
+          "explicacion": "Una matriz escalonada reducida es una matriz escalonada en la que cada pivote vale $1$ y es el único elemento no nulo de su columna, de modo que también hay ceros por encima de los pivotes. Para un sistema $3 \\times 3$ determinado, su forma es $\\left(\\begin{array}{ccc|c}1&0&0&x\\\\0&1&0&y\\\\0&0&1&z\\end{array}\\right)$, y las incógnitas se leen directamente sin sustitución regresiva."
+        },
+        {
+          "texto": "Wilhelm Jordan da nombre a Gauss-Jordan",
+          "explicacion": "El método de Gauss-Jordan lleva el nombre de Carl Friedrich Gauss y de Wilhelm Jordan. Consiste en continuar la eliminación, después de obtener la forma escalonada, hacia arriba, hasta llegar a la forma reducida. Es la misma eliminación de Gauss con una segunda fase de ceros y con pivotes normalizados a $1$."
+        },
+        {
+          "texto": "Gauss-Jordan: continuar desde la forma escalonada",
+          "explicacion": "Partiendo de $\\left(\\begin{array}{ccc|c}1&1&1&6\\\\0&-3&-1&-9\\\\0&0&-7&-21\\end{array}\\right)$: con $F_3 \\to -\\dfrac{1}{7}F_3$ se obtiene $\\left(\\begin{array}{ccc|c}0&0&1&3\\end{array}\\right)$. Con $F_2 \\to F_2+F_3$ se obtiene $\\left(\\begin{array}{ccc|c}0&-3&0&-6\\end{array}\\right)$ y con $F_2 \\to -\\dfrac{1}{3}F_2$ se obtiene $\\left(\\begin{array}{ccc|c}0&1&0&2\\end{array}\\right)$. Finalmente $F_1 \\to F_1-F_2-F_3$ da $\\left(\\begin{array}{ccc|c}1&0&0&1\\end{array}\\right)$. La solución $(1,2,3)$ aparece en la última columna."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros métodos",
+      "puntos": [
+        {
+          "texto": "Gauss sistematiza el método de reducción",
+          "explicacion": "En los temas de sistemas con dos y con tres variables se resolvía por reducción, sumando múltiplos de ecuaciones para eliminar una incógnita. El método de Gauss realiza esa misma idea en un orden fijo: primero elimina $x$ de todas las ecuaciones inferiores, luego $y$, y así sucesivamente, y registra los pasos en una matriz. Así se evita decidir en cada paso qué incógnita eliminar y el procedimiento puede aplicarse sin cambios a cualquier número de incógnitas."
+        },
+        {
+          "texto": "Cramer ✓ determinante ≠ 0; Gauss ✗ esa condición",
+          "explicacion": "El método de Cramer solo se aplica a sistemas cuadrados cuyo determinante de coeficientes es distinto de cero y exige calcular varios determinantes, uno para cada incógnita más el del sistema. El método de Gauss no requiere esa condición: resuelve sistemas cuadrados o no, y además informa cuándo el sistema es incompatible o indeterminado. A medida que crece el número de incógnitas, Gauss necesita muchas menos operaciones."
+        },
+        {
+          "texto": "Determinante = producto de pivotes, con signo por intercambios",
+          "explicacion": "Si se escalona una matriz cuadrada usando solo la tercera operación y intercambios de filas, su determinante es el producto de los pivotes, multiplicado por $-1$ por cada intercambio de filas. Por ejemplo, con $\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix}$ el determinante es $2(-1)-3(1)=-5$. Se aplica $F_1 \\leftrightarrow F_2$ y luego $F_2 \\to F_2-2F_1$, y resulta $\\begin{pmatrix}1&-1\\\\0&5\\end{pmatrix}$, con producto de pivotes $1 \\times 5=5$. Como hubo un intercambio, el determinante original es $-5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Operar siempre en la fila completa, incluido el término independiente",
+          "explicacion": "Un error habitual es calcular solo los coeficientes de la fila y olvidar la columna de términos independientes. Por ejemplo, al aplicar $F_2 \\to F_2-2F_1$ con $F_1=\\left(\\begin{array}{ccc|c}1&1&1&6\\end{array}\\right)$ y $F_2=\\left(\\begin{array}{ccc|c}2&-1&1&3\\end{array}\\right)$, el término independiente nuevo es $3-2(6)=-9$, no $3$. Cada operación debe aplicarse a todos los elementos de la fila, incluido el último."
+        },
+        {
+          "texto": "Restar una fila cambia el signo de todos sus elementos",
+          "explicacion": "Al restar $mF_1$ a $F_i$, cada elemento de $F_1$ se multiplica por $m$ y se resta, y los signos negativos deben respetarse. Con $F_1=\\left(\\begin{array}{ccc|c}1&1&1&6\\end{array}\\right)$ y $F_3=\\left(\\begin{array}{ccc|c}1&2&-1&2\\end{array}\\right)$, el tercer elemento nuevo es $-1-1=-2$, no $-1+1=0$. Escribir el resultado de cada elemento antes de pasar al siguiente reduce estos descuidos."
+        }
+      ]
+    },
+    {
+      "titulo": "Verificación final",
+      "puntos": [
+        {
+          "texto": "Comprobar la solución en todas las ecuaciones originales",
+          "explicacion": "La comprobación se hace sustituyendo los valores hallados en cada una de las ecuaciones del sistema inicial, no en las del sistema transformado, pues un error al operar filas daría un sistema transformado que la solución errónea sí cumple. Si alguna ecuación no se verifica, hay un error en las operaciones y debe revisarse el proceso desde la matriz ampliada. En sistemas indeterminados se verifica con la familia de soluciones: los términos con parámetro deben cancelarse y dejar el término independiente."
+        }
+      ]
+    }
+  ]
+}

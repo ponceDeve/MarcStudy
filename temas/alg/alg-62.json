@@ -1,0 +1,195 @@
+{
+  "curso": "Álgebra",
+  "tema": "Funciones crecientes y decrecientes",
+  "glosario": {
+    "Función creciente": "Sus valores aumentan al aumentar la variable.",
+    "Función decreciente": "Sus valores disminuyen al aumentar la variable.",
+    "Función constante": "Función con el mismo valor siempre.",
+    "Intervalo": "Conjunto de reales entre dos extremos.",
+    "Monotonía": "Comportamiento de crecer o decrecer.",
+    "Razón de cambio": "Variación de la función entre variación de x.",
+    "Pendiente": "Inclinación de una recta.",
+    "Vértice": "Punto donde la parábola cambia de sentido.",
+    "Abscisa": "Coordenada horizontal de un punto.",
+    "Ordenada": "Coordenada vertical de un punto.",
+    "Mínimo relativo": "Valor menor que los cercanos.",
+    "Máximo relativo": "Valor mayor que los cercanos.",
+    "Mínimo absoluto": "Menor valor que toma la función.",
+    "Máximo absoluto": "Mayor valor que toma la función.",
+    "Composición": "Aplicar una función al resultado de otra.",
+    "Inyectiva": "Valores distintos tienen imágenes distintas.",
+    "Rango": "Conjunto de valores que toma la función.",
+    "Dominio": "Conjunto de valores permitidos de la variable.",
+    "Abertura": "Sentido y amplitud de apertura de la gráfica.",
+    "Función por tramos": "Función con fórmulas distintas según el intervalo.",
+    "Continua": "Gráfica sin saltos ni interrupciones.",
+    "Constante": "Valor que no cambia."
+  },
+  "theory": [
+    {
+      "titulo": "Función creciente",
+      "puntos": [
+        {
+          "texto": "Función creciente en $I$: $x_1<x_2 \\Rightarrow f(x_1)<f(x_2)$",
+          "explicacion": "Sea $I$ un intervalo contenido en el dominio de $f$. La función es creciente en $I$ si, para cualesquiera $x_1$ y $x_2$ de $I$ con $x_1<x_2$, se cumple $f(x_1)<f(x_2)$. Es decir, al avanzar hacia la derecha en el eje horizontal los valores de la función aumentan. Ejemplo: $f(x)=3x-2$ cumple $f(1)=1<f(4)=10$. Esta definición es estricta: la desigualdad entre las imágenes es siempre estricta."
+        },
+        {
+          "texto": "Gráfica creciente: sube de izquierda a derecha",
+          "explicacion": "Al recorrer la gráfica de izquierda a derecha, una función creciente asciende: cada punto está más arriba que los anteriores. No hay tramos horizontales ni descensos dentro del intervalo. Por ejemplo, la recta $y=2x$ pasa por $(0,0)$, $(1,2)$ y $(2,4)$, con alturas cada vez mayores."
+        },
+        {
+          "texto": "Creciente no estricta: $x_1<x_2 \\Rightarrow f(x_1) \\leq f(x_2)$",
+          "explicacion": "En algunos textos se llama no decreciente o creciente en sentido amplio a la función que cumple $f(x_1) \\leq f(x_2)$, permitiendo que los valores se repitan. Una función con un tramo horizontal, como $f(x)=x$ si $x \\leq 0$ y $f(x)=0$ si $x>0$, es no decreciente pero no estrictamente creciente en $\\mathbb{R}$, pues $f(1)=f(2)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Función decreciente",
+      "puntos": [
+        {
+          "texto": "Función decreciente en $I$: $x_1<x_2 \\Rightarrow f(x_1)>f(x_2)$",
+          "explicacion": "La función es decreciente en $I$ si, para cualesquiera $x_1<x_2$ de $I$, se cumple $f(x_1)>f(x_2)$: al avanzar hacia la derecha, los valores disminuyen. Ejemplo: $f(x)=-2x+5$ cumple $f(1)=3>f(4)=-3$. La gráfica desciende de izquierda a derecha, sin tramos horizontales."
+        },
+        {
+          "texto": "Decreciente no estricta: $x_1<x_2 \\Rightarrow f(x_1) \\geq f(x_2)$",
+          "explicacion": "Si se permite que los valores se repitan, la función se llama no creciente o decreciente en sentido amplio. La función definida por $f(x)=1$ si $x \\leq 0$ y $f(x)=1-x$ si $x>0$ es no creciente en $\\mathbb{R}$, pero no estrictamente decreciente, ya que $f(-3)=f(0)=1$."
+        },
+        {
+          "texto": "Función constante: $f(x_1)=f(x_2)$ para todo $x_1,x_2 \\in I$",
+          "explicacion": "Una función constante mantiene el mismo valor en el intervalo, de modo que no es estrictamente creciente ni estrictamente decreciente. Su gráfica es un segmento horizontal. Por ejemplo, $f(x)=4$ tiene $f(-2)=f(0)=f(7)=4$. Es creciente y decreciente solo en sentido amplio."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos de monotonía",
+      "puntos": [
+        {
+          "texto": "La monotonía se afirma sobre un intervalo, no en un punto",
+          "explicacion": "Decir que una función crece o decrece solo tiene sentido en un intervalo, pues la definición compara dos puntos. Una función puede crecer en una parte de su dominio y decrecer en otra, como $f(x)=x^2$, decreciente en $(-\\infty, 0]$ y creciente en $[0, +\\infty)$. Al describirla se indican los intervalos de cada comportamiento."
+        },
+        {
+          "texto": "Para refutar la monotonía basta un par de puntos",
+          "explicacion": "Si existen $x_1<x_2$ en $I$ con $f(x_1) \\geq f(x_2)$, la función no es creciente en $I$. Ejemplo: $f(x)=x^2$ en $\\mathbb{R}$ no es creciente porque $-3<2$ pero $f(-3)=9>f(2)=4$. En cambio, para probar que sí es monótona se necesita demostrar la desigualdad para todos los pares del intervalo."
+        },
+        {
+          "texto": "Razón de cambio: $\\dfrac{f(x_2)-f(x_1)}{x_2-x_1}$ determina el comportamiento",
+          "explicacion": "Como $x_2-x_1>0$ cuando $x_1<x_2$, el signo de la razón de cambio coincide con el de $f(x_2)-f(x_1)$. Si la razón es positiva para todos los pares del intervalo, la función es creciente; si es negativa, decreciente. Ejemplo con $f(x)=x^2$: en $[1,3]$ vale $\\dfrac{9-1}{3-1}=4>0$, y en $[-3,-1]$ vale $\\dfrac{1-9}{-1-(-3)}=\\dfrac{-8}{2}=-4<0$."
+        },
+        {
+          "texto": "Extremo relativo: cambio entre crecer y decrecer",
+          "explicacion": "Un punto donde la función pasa de decrecer a crecer es un mínimo relativo, y uno donde pasa de crecer a decrecer es un máximo relativo. En $f(x)=x^2-4x+3$ el cambio ocurre en $x=2$, con valor $-1$, que es el mínimo. Los extremos relativos aparecen en los puntos de unión de intervalos de monotonía distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Función lineal",
+      "puntos": [
+        {
+          "texto": "$f(x)=mx+b$ con $m>0$ ⇒ creciente en $\\mathbb{R}$",
+          "explicacion": "En una función lineal, la pendiente $m$ es la razón de cambio. Si $x_1<x_2$ entonces $f(x_2)-f(x_1)=m(x_2-x_1)$, producto de dos números positivos cuando $m>0$, por lo que $f(x_2)>f(x_1)$. Ejemplo: $f(x)=3x-2$ da $f(0)=-2$, $f(1)=1$, $f(2)=4$, cada valor mayor que el anterior."
+        },
+        {
+          "texto": "$f(x)=mx+b$ con $m<0$ ⇒ decreciente en $\\mathbb{R}$",
+          "explicacion": "Con $m<0$, la diferencia $f(x_2)-f(x_1)=m(x_2-x_1)$ es el producto de un número negativo por uno positivo, así que es negativa y $f(x_2)<f(x_1)$. Ejemplo: $f(x)=-2x+5$ da $f(0)=5$, $f(1)=3$, $f(2)=1$, cada valor menor que el anterior. Al aumentar $x$ en una unidad, la función disminuye exactamente $|m|$ unidades; por ejemplo, con $m=-2$ baja $2$ en cada paso. Esto prueba que una recta que desciende de izquierda a derecha corresponde a pendiente negativa, sin importar el valor de $b$."
+        },
+        {
+          "texto": "$f(x)=mx+b$ con $m=0$ ⇒ constante",
+          "explicacion": "Si $m=0$, la regla queda $f(x)=b$ y todos los valores son iguales, de modo que la función no es estrictamente creciente ni decreciente. Ejemplo: $f(x)=7$ vale $7$ para todo $x$. Su gráfica es una recta horizontal."
+        }
+      ]
+    },
+    {
+      "titulo": "Función cuadrática",
+      "puntos": [
+        {
+          "texto": "Abscisa del vértice: $x_v=-\\dfrac{b}{2a}$",
+          "explicacion": "En $f(x)=ax^2+bx+c$ con $a \\neq 0$, el vértice tiene abscisa $x_v=-\\dfrac{b}{2a}$, que separa los intervalos de monotonía. Ejemplo: en $f(x)=x^2-4x+3$ se tiene $a=1$ y $b=-4$, de donde $x_v=-\\dfrac{-4}{2(1)}=2$. La ordenada del vértice es $f(2)=4-8+3=-1$. La fórmula se justifica completando cuadrados: $ax^2+bx+c=a\\left(x+\\dfrac{b}{2a}\\right)^2+c-\\dfrac{b^2}{4a}$, y el cuadrado es mínimo (si $a>0$) o máximo (si $a<0$) cuando $x+\\dfrac{b}{2a}=0$, es decir, en $x=-\\dfrac{b}{2a}$."
+        },
+        {
+          "texto": "Con $a>0$: decrece en $(-\\infty, x_v]$ y crece en $[x_v, +\\infty)$",
+          "explicacion": "La parábola que abre hacia arriba baja hasta el vértice y sube desde él. Ejemplo con $f(x)=x^2-4x+3$ y $x_v=2$: $f(0)=3$, $f(1)=0$, $f(2)=-1$, $f(3)=0$, $f(4)=3$. Los valores bajan de $3$ a $-1$ y luego suben a $3$. El vértice $(2,-1)$ es el mínimo absoluto."
+        },
+        {
+          "texto": "Con $a<0$: crece en $(-\\infty, x_v]$ y decrece en $[x_v, +\\infty)$",
+          "explicacion": "La parábola que abre hacia abajo sube hasta el vértice y baja desde él. Ejemplo: $f(x)=-x^2+6x-5$ tiene $x_v=-\\dfrac{6}{2(-1)}=3$ y $f(3)=-9+18-5=4$. Además $f(2)=-4+12-5=3$ y $f(4)=-16+24-5=3$, ambos menores que $4$, de modo que $(3,4)$ es el máximo absoluto."
+        },
+        {
+          "texto": "Estrategia: intervalos de monotonía de una cuadrática",
+          "explicacion": "Primero se identifica el signo de $a$; luego se calcula $x_v=-\\dfrac{b}{2a}$; finalmente se asignan los intervalos $(-\\infty, x_v]$ y $[x_v, +\\infty)$ según la abertura. Para $f(x)=2x^2-8x+1$: $a=2>0$ y $x_v=2$; es decreciente en $(-\\infty,2]$ y creciente en $[2,+\\infty)$. Verificación: $f(1)=-5>f(2)=-7<f(3)=-5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíz y valor absoluto",
+      "puntos": [
+        {
+          "texto": "$f(x)=\\sqrt{x}$ es creciente en $[0, +\\infty)$",
+          "explicacion": "Si $0 \\leq a<b$, entonces $\\sqrt{a}<\\sqrt{b}$, porque de lo contrario, al elevar al cuadrado, se tendría $a \\geq b$. Ejemplo: $\\sqrt{1}=1<\\sqrt{9}=3$. La función $a\\sqrt{x-h}+k$ es creciente si $a>0$ y decreciente si $a<0$, en su dominio $[h, +\\infty)$."
+        },
+        {
+          "texto": "$f(x)=|x|$: decrece en $(-\\infty,0]$ y crece en $[0,+\\infty)$",
+          "explicacion": "Si $a<b \\leq 0$ entonces $|a|=-a>-b=|b|$; ejemplo: $|-3|=3>|-1|=1$. Si $0 \\leq a<b$ entonces $|a|<|b|$; ejemplo: $|1|=1<|4|=4$. En $a|x-h|+k$ con $a>0$ la función decrece en $(-\\infty,h]$ y crece en $[h,+\\infty)$; con $a<0$ ocurre lo contrario. Esto se debe a que la expresión $|x-h|$ es decreciente a la izquierda de $h$ y creciente a la derecha, y multiplicar por un $a$ negativo invierte ambos comportamientos, mientras que sumar $k$ no los modifica."
+        },
+        {
+          "texto": "Ejemplo: $f(x)=-2|x+1|+5$ crece hasta $x=-1$",
+          "explicacion": "Aquí $a=-2<0$ y $h=-1$, de modo que la función crece en $(-\\infty,-1]$ y decrece en $[-1,+\\infty)$. Verificación: $f(-3)=-2(2)+5=1$, $f(-2)=-2(1)+5=3$, $f(-1)=5$, $f(0)=-2(1)+5=3$, $f(1)=-2(2)+5=1$. El máximo es $f(-1)=5$. El comportamiento coincide con el de la forma general: como el coeficiente $a$ es negativo, la gráfica tiene forma de «V» invertida, el vértice $(-1,5)$ es el punto más alto, y a ambos lados de él la función baja con pendientes $2$ a la izquierda y $-2$ a la derecha."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones con funciones",
+      "puntos": [
+        {
+          "texto": "$f$ y $g$ crecientes en $I$ ⇒ $f+g$ creciente en $I$",
+          "explicacion": "Si $x_1<x_2$ en $I$, entonces $f(x_1)<f(x_2)$ y $g(x_1)<g(x_2)$; sumando ambas desigualdades, $f(x_1)+g(x_1)<f(x_2)+g(x_2)$. Ejemplo: $f(x)=x$ y $g(x)=\\sqrt{x}$ en $[0,+\\infty)$; la suma da $0$, $2$ y $6$ en $x=0, 1, 4$, ya que $0+0=0$, $1+1=2$ y $4+2=6$. Igual vale para decrecientes."
+        },
+        {
+          "texto": "$f$ creciente ⇒ $-f$ decreciente",
+          "explicacion": "Multiplicar por $-1$ invierte las desigualdades: si $f(x_1)<f(x_2)$ entonces $-f(x_1)>-f(x_2)$. Ejemplo: $f(x)=2x+1$ es creciente y $-f(x)=-2x-1$ es decreciente: $-f(0)=-1>-f(1)=-3$. Análogamente, si $f$ es decreciente, $-f$ es creciente. Gráficamente, $-f$ es el reflejo de $f$ respecto del eje horizontal, y un reflejo convierte las partes que suben en partes que bajan y viceversa, sin cambiar los intervalos donde ocurre cada comportamiento."
+        },
+        {
+          "texto": "Sumar una constante conserva la monotonía",
+          "explicacion": "La función $f(x)+c$ tiene las mismas diferencias $f(x_2)-f(x_1)$ que $f$, porque la constante se cancela: $(f(x_2)+c)-(f(x_1)+c)=f(x_2)-f(x_1)$. Por ejemplo, $\\sqrt{x}$ y $\\sqrt{x}+10$ son ambas crecientes. Un desplazamiento vertical no cambia los intervalos de monotonía. Por la misma razón, un desplazamiento horizontal solo traslada los intervalos: si $f$ crece en $[0,+\\infty)$, la función $f(x-2)$ crece en $[2,+\\infty)$, como ocurre al pasar de $\\sqrt{x}$ a $\\sqrt{x-2}$."
+        },
+        {
+          "texto": "Composición de crecientes es creciente",
+          "explicacion": "Si $f$ es creciente en $I$ y $g$ es creciente en un conjunto que contiene a $f(I)$, entonces $x_1<x_2$ implica $f(x_1)<f(x_2)$, y esto a su vez $g(f(x_1))<g(f(x_2))$. Ejemplo: $f(x)=x+3$ y $g(x)=\\sqrt{x}$ dan $g(f(x))=\\sqrt{x+3}$, creciente en $[-3,+\\infty)$."
+        },
+        {
+          "texto": "Creciente con decreciente da decreciente",
+          "explicacion": "Si una de las dos funciones compuestas es creciente y la otra decreciente, el orden se invierte una vez y la composición es decreciente. Ejemplo: $h(x)=-x$ es decreciente y $g(x)=\\sqrt{x}$ creciente; $g(h(x))=\\sqrt{-x}$ es decreciente en $(-\\infty,0]$: si $x_1<x_2 \\leq 0$, entonces $-x_1>-x_2 \\geq 0$ y $\\sqrt{-x_1}>\\sqrt{-x_2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango y monotonía",
+      "puntos": [
+        {
+          "texto": "Creciente en $[a,b]$: rango $[f(a), f(b)]$",
+          "explicacion": "Si $f$ es continua y creciente en el intervalo cerrado $[a,b]$, el menor valor ocurre en el extremo izquierdo y el mayor en el derecho. Ejemplo: $f(x)=3x-2$ en $[1,4]$ da $f(1)=1$ y $f(4)=10$, y el rango es $[1,10]$. Esta regla evita evaluar la función en puntos intermedios."
+        },
+        {
+          "texto": "Decreciente en $[a,b]$: rango $[f(b), f(a)]$",
+          "explicacion": "Con una función continua y decreciente, el menor valor ocurre en el extremo derecho y el mayor en el izquierdo. Ejemplo: $f(x)=-2x+5$ en $[1,4]$ da $f(1)=3$ y $f(4)=-3$, y el rango es $[-3,3]$. Si el intervalo fuera abierto, los extremos no se alcanzarían y el rango sería $(-3,3)$."
+        },
+        {
+          "texto": "Función por tramos: estudiar cada tramo por separado",
+          "explicacion": "Para $f(x)=2x$ si $x \\leq 1$ y $f(x)=5-3x$ si $x>1$, el primer tramo es creciente (pendiente $2$) y el segundo decreciente (pendiente $-3$). Los valores son $f(0)=0$, $f(1)=2$, $f(2)=-1$, $f(3)=-4$. La función crece en $(-\\infty,1]$ y decrece en $[1,+\\infty)$, con máximo $2$ en $x=1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con inyectividad",
+      "puntos": [
+        {
+          "texto": "Estrictamente monótona ⇒ inyectiva",
+          "explicacion": "Si $f$ es estrictamente creciente o decreciente en $I$ y $x_1 \\neq x_2$, supongamos $x_1<x_2$: entonces $f(x_1)<f(x_2)$ o $f(x_1)>f(x_2)$, y en ambos casos $f(x_1) \\neq f(x_2)$. Ejemplo: $f(x)=3x-2$ es creciente, y $f(a)=f(b)$ solo ocurre si $a=b$. Esto enlaza con el tema siguiente, las funciones inyectivas."
+        },
+        {
+          "texto": "Función inyectiva ≠ función monótona: caso $\\dfrac{1}{x}$",
+          "explicacion": "La función $f(x)=\\dfrac{1}{x}$ es inyectiva en $\\mathbb{R} \\setminus \\{0\\}$, pues $\\dfrac{1}{a}=\\dfrac{1}{b}$ implica $a=b$. Sin embargo no es monótona en todo su dominio: $f(-1)=-1<f(1)=1$ pero $f(1)=1>f(2)=\\dfrac{1}{2}$ con $1<2$. Es decreciente en $(-\\infty,0)$ y en $(0,+\\infty)$, cada uno por separado."
+        }
+      ]
+    }
+  ]
+}

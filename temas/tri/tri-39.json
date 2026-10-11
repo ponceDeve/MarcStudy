@@ -1,0 +1,222 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Ley de senos",
+  "glosario": {
+    "Ley de senos": "Lados proporcionales a senos de ángulos opuestos.",
+    "Ángulo opuesto": "Ángulo frente a un lado dado.",
+    "Circunradio": "Radio de la circunferencia por los vértices.",
+    "Altura": "Perpendicular desde un vértice al lado opuesto.",
+    "Caso ambiguo": "Datos que permiten dos triángulos.",
+    "Suplemento": "Ángulo que completa 180°.",
+    "Ángulo agudo": "Ángulo menor que 90°.",
+    "Ángulo obtuso": "Ángulo mayor que 90° y menor que 180°.",
+    "Triángulo rectángulo": "Triángulo con un ángulo de 90°.",
+    "Ley de cosenos": "Relación entre tres lados y un ángulo.",
+    "Proporcional": "Con cociente constante entre cantidades."
+  },
+  "theory": [
+    {
+      "titulo": "Ley de senos",
+      "puntos": [
+        {
+          "texto": "«Ley de senos»: $\\frac{a}{\\operatorname{sen}A} = \\frac{b}{\\operatorname{sen}B} = \\frac{c}{\\operatorname{sen}C}$",
+          "explicacion": "En todo triángulo, el cociente entre un lado y el seno de su ángulo opuesto es el mismo para los tres lados; en otras palabras, los lados son proporcionales a los senos de sus ángulos opuestos. Aquí A, B y C son los ángulos del triángulo, a, b y c son los lados opuestos a ellos, y sen es la abreviatura de seno. Ejemplo: con A = 40°, B = 60° y a = 10, el cociente común es $\\frac{10}{\\operatorname{sen}40°} \\approx 15{,}56$."
+        }
+      ]
+    },
+    {
+      "titulo": "Circunradio",
+      "puntos": [
+        {
+          "texto": "«Ley de senos» = 2R, con R el circunradio",
+          "explicacion": "El cociente común vale 2R, donde R es el circunradio, es decir, el radio de la circunferencia que pasa por los tres vértices; así a = 2R sen A, b = 2R sen B y c = 2R sen C. Ejemplo: con R = 5 y A = 30°, a = 2 × 5 × sen 30° = 2 × 5 × $\\frac{1}{2}$ = 5."
+        }
+      ]
+    },
+    {
+      "titulo": "Pares lado-ángulo",
+      "puntos": [
+        {
+          "texto": "Cada lado se empareja con su ángulo opuesto",
+          "explicacion": "El lado a va con A, el lado b con B y el lado c con C; intercambiar un par cambia el resultado. Ejemplo: en un triángulo con A = 40° y B = 60°, la proporción correcta es $\\frac{a}{\\mathrm{sen}\\,40°}$ = $\\frac{b}{\\mathrm{sen}\\,60°}$, y no $\\frac{a}{\\mathrm{sen}\\,60°}$ = $\\frac{b}{\\mathrm{sen}\\,40°}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Forma de dos razones",
+      "puntos": [
+        {
+          "texto": "a sen B = b sen A al multiplicar en cruz",
+          "explicacion": "Al igualar solo dos razones del cociente común y multiplicar en cruz, se evita trabajar con fracciones. Ejemplo: con A = 40°, B = 60° y a = 10, la igualdad 10 sen 60° = b sen 40° da b = $\\frac{10 \\times 0{,}8660}{0{,}6428} \\approx 13{,}47$."
+        }
+      ]
+    },
+    {
+      "titulo": "Deducción con la altura",
+      "puntos": [
+        {
+          "texto": "Altura h = b sen A = a sen B ⇒ ley de senos",
+          "explicacion": "Se traza la altura h desde el vértice C hasta el lado c; en el triángulo rectángulo con vértice A, h = b sen A, y en el triángulo rectángulo con vértice B, h = a sen B. Igualando, b sen A = a sen B, y al dividir entre sen A sen B queda $\\frac{a}{\\mathrm{sen}\\,A}$ = $\\frac{b}{\\mathrm{sen}\\,B}$. Comprobación con A = 40°, B = 60° y a = 10 (entonces b ≈ 13,47): b sen A ≈ 13,47 × 0,6428 ≈ 8,66 y a sen B = 10 × 0,8660 = 8,66."
+        }
+      ]
+    },
+    {
+      "titulo": "Dos ángulos conocidos",
+      "puntos": [
+        {
+          "texto": "Dos ángulos y un lado ⇒ lados restantes con ley de senos",
+          "explicacion": "Con dos ángulos y un lado cualquiera (casos ángulo-lado-ángulo, ALA, y ángulo-ángulo-lado, AAL) la solución es única: el tercer ángulo sale de la suma 180° y cada lado con una razón. Ejemplo: A = 40°, B = 60° y a = 10 dan C = 80°; b = $\\frac{10\\,\\operatorname{sen}60°}{\\operatorname{sen}40°} \\approx 13{,}47$ y c = $\\frac{10\\,\\operatorname{sen}80°}{\\operatorname{sen}40°} \\approx 15{,}32$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar un ángulo",
+      "puntos": [
+        {
+          "texto": "Para un ángulo: $\\operatorname{sen}B = \\frac{b\\operatorname{sen}A}{a}$",
+          "explicacion": "Se despeja el seno del ángulo buscado a partir de la proporción y luego se calcula el ángulo con la función inversa. Ejemplo: con a = 5, b = 8 y A = 30°, sen B = $\\frac{8 \\times 0{,}5}{5}$ = 0,8, y la calculadora da B ≈ 53,13°."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso ambiguo",
+      "puntos": [
+        {
+          "texto": "Caso LLA ⇒ el seno tiene dos ángulos posibles",
+          "explicacion": "LLA es la sigla de lado-lado-ángulo: dos lados y un ángulo opuesto a uno de ellos. Como sen B = sen(180° - B), un seno conocido corresponde a un ángulo agudo y a su suplemento obtuso, y solo se aceptan los que cumplan que la suma de ángulos sea menor que 180°. Resultado: 0, 1 o 2 triángulos."
+        }
+      ]
+    },
+    {
+      "titulo": "Altura en el caso LLA",
+      "puntos": [
+        {
+          "texto": "Con A agudo ⇒ comparar a con h = b sen A",
+          "explicacion": "Para un ángulo agudo A conocido con los lados a y b, se calcula la altura h = b sen A y se compara con a y con b; esa comparación decide cuántos triángulos existen. Ejemplo: con b = 8 y A = 30°, h = 8 × $\\frac{1}{2}$ = 4."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA sin solución",
+      "puntos": [
+        {
+          "texto": "A agudo y a < h ⇒ ningún triángulo",
+          "explicacion": "El lado a no alcanza a llegar al lado opuesto, y en la ley de senos aparece sen B mayor que 1, que es imposible. Ejemplo: a = 3, b = 8 y A = 30° dan h = 4 y sen B = $\\frac{8 \\times 0{,}5}{3}$ ≈ 1,33 > 1: no existe el triángulo."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA rectángulo",
+      "puntos": [
+        {
+          "texto": "A agudo y a = h ⇒ un triángulo rectángulo",
+          "explicacion": "El lado a toca el lado opuesto justo en el pie de la altura, y sen B = 1 da B = 90°, así que el triángulo resultante es rectángulo y no oblicuángulo. Ejemplo: a = 4, b = 8 y A = 30° dan h = 4 y sen B = $\\frac{8 \\times 0{,}5}{4}$ = 1."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA dos soluciones",
+      "puntos": [
+        {
+          "texto": "A agudo y h < a < b ⇒ dos triángulos",
+          "explicacion": "El lado a corta al lado opuesto en dos puntos, uno con B agudo y otro con B obtuso. Ejemplo: a = 5, b = 8 y A = 30° dan h = 4 y sen B = 0,8. Con B ≈ 53,13°, C ≈ 96,87° y c = $\\frac{5\\,\\operatorname{sen}96{,}87°}{\\operatorname{sen}30°} \\approx 9{,}93$. Con B ≈ 126,87°, C ≈ 23,13° y c = $\\frac{5\\,\\operatorname{sen}23{,}13°}{\\operatorname{sen}30°} \\approx 3{,}93$."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA una solución",
+      "puntos": [
+        {
+          "texto": "A agudo y a ≥ b ⇒ un solo triángulo",
+          "explicacion": "El lado a es tan largo que solo hay un ángulo B posible: el obtuso dejaría la suma de ángulos en 180° o más. Ejemplo: a = 8, b = 5 y A = 30° dan sen B = $\\frac{5 \\times 0{,}5}{8}$ = 0,3125, con B ≈ 18,21°; el suplemento 161,79° sumado a 30° da 191,79° > 180°, y se descarta. Entonces C ≈ 131,79° y c = $\\frac{8\\,\\operatorname{sen}131{,}79°}{\\operatorname{sen}30°} \\approx 11{,}93$."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA obtuso imposible",
+      "puntos": [
+        {
+          "texto": "A obtuso o recto y a ≤ b ⇒ ningún triángulo",
+          "explicacion": "Un ángulo obtuso es el mayor del triángulo, así que su lado opuesto debe ser el mayor; si a ≤ b es imposible. Ejemplos: A = 120°, a = 5 y b = 8 dan sen B ≈ 1,39 > 1; A = 120°, a = 8 y b = 8 dan B = 60° y 120° + 60° = 180°, que deja sin ángulo al tercer vértice."
+        }
+      ]
+    },
+    {
+      "titulo": "LLA obtuso posible",
+      "puntos": [
+        {
+          "texto": "A obtuso y a > b ⇒ un solo triángulo",
+          "explicacion": "El lado a es el mayor, y el ángulo B opuesto al lado menor es agudo, así que solo existe un valor posible. Ejemplo: A = 120°, a = 10 y b = 6 dan sen B = $\\frac{6 \\times 0{,}8660}{10}$ ≈ 0,5196, con B ≈ 31,31°; entonces C ≈ 28,69° y c = $\\frac{10\\,\\operatorname{sen}28{,}69°}{\\operatorname{sen}120°} \\approx 5{,}54$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo opuesto al lado menor",
+      "puntos": [
+        {
+          "texto": "Ángulo opuesto al lado menor ⇒ siempre agudo",
+          "explicacion": "Como el ángulo obtuso, si existe, es el mayor, el ángulo opuesto al lado menor nunca puede ser obtuso; por eso, al hallar con la ley de senos el ángulo opuesto al lado menor, solo se acepta el valor agudo. Ejemplo: con a = 8, b = 5 y A = 30°, B está frente al lado menor b y se toma B ≈ 18,21°."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos sin par opuesto",
+      "puntos": [
+        {
+          "texto": "LAL o LLL ✗ par lado-ángulo ⇒ ley de cosenos primero",
+          "explicacion": "LAL es lado-ángulo-lado y LLL es lado-lado-lado. En LAL, el ángulo conocido está entre los dos lados, y en LLL no hay ángulos; en ninguno hay un lado con su ángulo opuesto, así que la ley de senos no puede iniciar el cálculo y se empieza con la ley de cosenos. Ejemplo: b = 6, c = 7 y A = 40° (el ángulo entre b y c) no dan el par a-A."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de distancia",
+      "puntos": [
+        {
+          "texto": "Datos: AB = 50 m, A = 40° y B = 65°",
+          "explicacion": "Desde dos puntos A y B de una orilla, separados 50 m, se mira un árbol C en la otra orilla: el ángulo en A es 40° y el ángulo en B es 65°. Se pide la distancia de A al árbol y de B al árbol."
+        },
+        {
+          "texto": "Estrategia: ángulo C y ley de senos desde el par c-C",
+          "explicacion": "Los datos son dos ángulos y el lado entre ellos (ALA), así que primero se halla C con la suma 180° y luego se usa el lado c = AB, cuyo ángulo opuesto es C, como par conocido."
+        },
+        {
+          "texto": "Operación: hallar C, b y a",
+          "explicacion": "C = 180° - 40° - 65° = 75°. La distancia AC es el lado b: b = $\\frac{50\\,\\operatorname{sen}65°}{\\operatorname{sen}75°} \\approx 46{,}91$. La distancia BC es el lado a: a = $\\frac{50\\,\\operatorname{sen}40°}{\\operatorname{sen}75°} \\approx 33{,}27$."
+        },
+        {
+          "texto": "Resultado: AC ≈ 46,91 m y BC ≈ 33,27 m",
+          "explicacion": "El árbol está a unos 46,91 m de A y a unos 33,27 m de B; con esos datos se conoce su posición sin cruzar la orilla."
+        },
+        {
+          "texto": "Verificación: los tres cocientes coinciden",
+          "explicacion": "El cociente común es $\\frac{50}{\\mathrm{sen}\\,75°}$ ≈ 51,76. Además $\\frac{33{,}27}{\\mathrm{sen}\\,40°}$ ≈ 51,76 y $\\frac{46{,}91}{\\mathrm{sen}\\,65°}$ ≈ 51,76, así que los tres cocientes son iguales."
+        }
+      ]
+    },
+    {
+      "titulo": "Problema de dos triángulos",
+      "puntos": [
+        {
+          "texto": "Datos: a = 5, b = 8 y A = 30°",
+          "explicacion": "Se pide hallar cuántos triángulos cumplen los datos y, en cada uno, el lado c. Los datos son lado-lado-ángulo con A agudo."
+        },
+        {
+          "texto": "Estrategia: sen B, ambos ángulos y cada lado c",
+          "explicacion": "Se halla sen B con la ley de senos, se toman el ángulo agudo y su suplemento, se comprueba que la suma con A sea menor que 180°, y para cada ángulo válido se calcula C y luego c."
+        },
+        {
+          "texto": "Operación: obtener B, C y c en cada caso",
+          "explicacion": "sen B = $\\frac{8 \\times 0{,}5}{5}$ = 0,8, con B ≈ 53,13° o B ≈ 126,87°. Primer caso: C ≈ 96,87° y c ≈ 9,93. Segundo caso: C ≈ 23,13° y c ≈ 3,93; en ambos 30° + B < 180°."
+        },
+        {
+          "texto": "Resultado: dos triángulos, c ≈ 9,93 o c ≈ 3,93",
+          "explicacion": "Existen dos triángulos distintos porque h = 4 < a = 5 < b = 8, que es la condición de dos soluciones."
+        },
+        {
+          "texto": "Verificación: comprobar los lados con otra relación",
+          "explicacion": "Con c ≈ 9,93 y C ≈ 96,87°: $\\frac{9{,}93}{\\mathrm{sen}\\,96{,}87°}$ ≈ 10 y $\\frac{5}{\\mathrm{sen}\\,30°}$ = 10. Con c ≈ 3,93 y C ≈ 23,13°: $\\frac{3{,}93}{\\mathrm{sen}\\,23{,}13°}$ ≈ 10. Ambos cocientes coinciden con 10."
+        }
+      ]
+    }
+  ]
+}

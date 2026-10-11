@@ -1,0 +1,155 @@
+{
+  "curso": "Aritmética",
+  "tema": "Producto cartesiano",
+  "glosario": {
+    "producto cartesiano": "Conjunto de pares ordenados formados por dos conjuntos",
+    "par ordenado": "Pareja de elementos donde importa el orden",
+    "componente": "Elemento que ocupa una posición en el par",
+    "n-upla": "Sucesión ordenada de n elementos",
+    "coordenadas": "Componentes numéricas que localizan un punto",
+    "plano cartesiano": "Representación del producto de dos conjuntos numéricos"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de par ordenado",
+      "puntos": [
+        {
+          "texto": "Un «par ordenado» es una pareja de elementos en la que importa el orden.",
+          "explicacion": "Un par ordenado se escribe entre paréntesis y separado por una coma, como $(a, b)$. A diferencia de un conjunto, en el que el orden no cuenta, en un par ordenado el lugar de cada elemento tiene significado. Esta propiedad permite distinguir situaciones como la de una persona que ocupa una posición en una tabla, donde no basta conocer los dos valores sino también el lugar que ocupa cada uno. El par ordenado es la herramienta básica sobre la que se construye el producto cartesiano."
+        },
+        {
+          "texto": "En el par $(a, b)$, $a$ es la «primera componente» y $b$ la «segunda».",
+          "explicacion": "Las componentes de un par ordenado son los elementos que lo forman, y se identifican por su posición. La primera componente es el elemento que aparece antes de la coma, y la segunda el que aparece después. Esta distinción es la que permite leer correctamente los pares en el producto cartesiano, porque cada posición se asocia con un conjunto distinto."
+        },
+        {
+          "texto": "Dos pares ordenados son iguales si sus primeras y segundas componentes coinciden.",
+          "explicacion": "La igualdad de pares ordenados exige que la primera componente del primer par sea igual a la primera del segundo, y que lo mismo ocurra con las segundas componentes. Así, $(a, b)$ es igual a $(c, d)$ solo cuando a es igual a c y b es igual a d. Esta condición es más estricta que la igualdad de conjuntos, porque en los conjuntos el orden no importa y en los pares sí."
+        },
+        {
+          "texto": "El par $(a, b)$ es distinto de $(b, a)$ cuando $a$ es distinto de $b$.",
+          "explicacion": "Intercambiar las componentes de un par produce, en general, un par diferente. Por ejemplo, $(1, 2)$ y $(2, 1)$ tienen los mismos elementos, pero no son el mismo par, porque en el primero el 1 ocupa la primera posición y en el segundo la segunda. Esta diferencia es la razón por la que el producto cartesiano no es conmutativo, como se verá más adelante."
+        },
+        {
+          "texto": "El conjunto $\\{a, b\\}$ no tiene orden, a diferencia del par.",
+          "explicacion": "Un conjunto de dos elementos se describe por su contenido y no por el lugar que ocupan. Así, $\\{a, b\\}$ y $\\{b, a\\}$ son el mismo conjunto, mientras que los pares $(a, b)$ y $(b, a)$ son distintos. Esta diferencia entre conjuntos y pares ordenados es esencial para entender el producto cartesiano, que se construye con pares y no con conjuntos."
+        }
+      ]
+    },
+    {
+      "titulo": "Definición del producto",
+      "puntos": [
+        {
+          "texto": "El «producto cartesiano» de A y B es el conjunto de pares ordenados $(a, b)$.",
+          "explicacion": "El producto cartesiano de los conjuntos A y B, escrito como $A \\times B$, reúne todos los pares ordenados cuya primera componente pertenece a A y cuya segunda componente pertenece a B. Es una nueva colección cuyos elementos son pares, no elementos de A ni de B. El nombre honra a René Descartes, quien usó pares de números para localizar puntos en el plano."
+        },
+        {
+          "texto": "La primera componente de cada par pertenece a A, y la segunda a B.",
+          "explicacion": "Esta regla define el producto y es la clave para construirlo sin errores. Un par que tenga su primera componente en B, o su segunda en A, no pertenece al producto $A \\times B$, a menos que el elemento también cumpla la condición en el lugar correcto. La regla garantiza que el orden de los conjuntos en el producto determine de qué conjunto proviene cada posición del par."
+        },
+        {
+          "texto": "Ejemplo: $\\{1, 2\\} \\times \\{x, y\\}$ contiene cuatro pares ordenados.",
+          "explicacion": "Los pares de $\\{1, 2\\} \\times \\{x, y\\}$ son $(1, x)$, $(1, y)$, $(2, x)$ y $(2, y)$. Se obtienen combinando cada elemento del primer conjunto con cada elemento del segundo, sin omitir ninguna combinación. Este ejemplo muestra el procedimiento de construcción por extensión, que luego permite calcular cardinales sin listar todos los pares."
+        }
+      ]
+    },
+    {
+      "titulo": "Cardinal del producto",
+      "puntos": [
+        {
+          "texto": "El cardinal de $A \\times B$ es el producto de los cardinales de A y B.",
+          "explicacion": "Como cada elemento de A puede combinarse con cada elemento de B, el número total de pares es $n(A \\times B)$ es igual a $n(A) \\cdot n(B)$. Esta fórmula se justifica con el mismo razonamiento de opciones independientes que se usa para contar subconjuntos en el tema 12. Permite calcular la cantidad de pares sin construir la lista completa."
+        },
+        {
+          "texto": "Si uno de los conjuntos es vacío, el producto también es vacío.",
+          "explicacion": "Si B es el conjunto vacío, no existe ningún elemento que pueda ocupar la segunda componente de un par, de modo que ningún par se forma. Por eso $A \\times \\emptyset$ no tiene elementos, y lo mismo ocurre con $\\emptyset \\times B$. Esta propiedad es coherente con la fórmula del cardinal, porque multiplicar por cero produce cero."
+        },
+        {
+          "texto": "El producto cuenta pares y no suma elementos de los conjuntos.",
+          "explicacion": "El cardinal del producto se obtiene multiplicando los cardinales, no sumándolos, porque cada par es una combinación de una componente de A con una componente de B. Confundir ambas operaciones lleva a resultados muy distintos: con dos conjuntos de tres elementos, el producto tiene nueve pares, mientras que la suma daría seis. La diferencia es fundamental al contar combinaciones de elementos."
+        }
+      ]
+    },
+    {
+      "titulo": "No conmutatividad",
+      "puntos": [
+        {
+          "texto": "El producto cartesiano no es conmutativo: $A \\times B$ y $B \\times A$ son distintos.",
+          "explicacion": "Los conjuntos $A \\times B$ y $B \\times A$ contienen pares con las componentes en posiciones invertidas. Por ejemplo, si A es $\\{1\\}$ y B es $\\{2\\}$, entonces $A \\times B$ contiene el par $(1, 2)$ y $B \\times A$ contiene el par $(2, 1)$, que son distintos. Por tanto, los dos productos no coinciden, aunque se formen con los mismos conjuntos."
+        },
+        {
+          "texto": "Sin embargo, $A \\times B$ y $B \\times A$ tienen el mismo cardinal.",
+          "explicacion": "Aunque los conjuntos sean distintos, sus cardinales son iguales, porque ambos valen $n(A) \\cdot n(B)$ y la multiplicación de números naturales es conmutativa. Por ejemplo, si A tiene dos elementos y B tiene tres, ambos productos tienen seis pares. Esta distinción entre igualdad de conjuntos y de cardinales es importante para no confundir ambas nociones."
+        },
+        {
+          "texto": "Agrupar tres conjuntos produce pares anidados, distintos de las triplas.",
+          "explicacion": "En $(A \\times B) \\times C$ los elementos son pares cuya primera componente es a su vez un par, mientras que en $A \\times (B \\times C)$ la segunda componente es un par. Ambos conjuntos tienen el mismo cardinal, pero sus elementos no son iguales. Para evitar estas diferencias de agrupamiento se usan las n-uplas, que se estudian en una card posterior de este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de un conjunto",
+      "puntos": [
+        {
+          "texto": "El producto $A \\times A$ se escribe también como $A^2$.",
+          "explicacion": "Cuando los dos conjuntos son iguales, el producto se escribe $A^2$ en lugar de $A \\times A$. Sus elementos son todos los pares ordenados formados por elementos de A, incluidos los pares con componentes repetidas, como $(a, a)$. Esta notación es la base para describir el plano numérico, cuyo estudio de los números que lo forman corresponde a otros temas del curso."
+        },
+        {
+          "texto": "El cardinal de $A^2$ es el cuadrado del cardinal de A.",
+          "explicacion": "Como $A^2$ es el producto de A por sí mismo, su cardinal es $n(A)$ elevado al cuadrado. Por ejemplo, si A tiene cuatro elementos, $A^2$ tiene dieciséis pares. Este resultado es un caso particular de la fórmula general del cardinal del producto estudiada en este tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Generalización a n-uplas",
+      "puntos": [
+        {
+          "texto": "Una «n-upla» es una sucesión ordenada de n elementos.",
+          "explicacion": "Una n-upla generaliza el par ordenado a una cantidad cualquiera de componentes, siempre en un orden fijo. Las ternas, con tres componentes, son el caso más usado después de los pares. Como en los pares, dos n-uplas son iguales solo si sus componentes coinciden una por una, en el mismo orden."
+        },
+        {
+          "texto": "El producto de n conjuntos reúne todas las n-uplas posibles.",
+          "explicacion": "El producto de los conjuntos $A_1, A_2, \\ldots, A_n$ se escribe $A_1 \\times A_2 \\times \\cdots \\times A_n$ y contiene todas las n-uplas cuya componente i pertenece al conjunto $A_i$. Su cardinal es el producto de los cardinales de todos los conjuntos, lo que extiende la fórmula de dos conjuntos al caso general."
+        }
+      ]
+    },
+    {
+      "titulo": "Coordenadas y plano",
+      "puntos": [
+        {
+          "texto": "Las «coordenadas» de un punto son las componentes de un par ordenado.",
+          "explicacion": "En el plano, cada punto se identifica con un par de números, llamados coordenadas, que indican su posición respecto de dos ejes perpendiculares. La primera coordenada corresponde al eje horizontal y la segunda al eje vertical. Esta correspondencia convierte el plano en un producto cartesiano de la recta numérica consigo misma."
+        },
+        {
+          "texto": "René Descartes asoció pares de números a los puntos del plano cartesiano en 1637.",
+          "explicacion": "René Descartes, filósofo y matemático francés nacido en 1596 y fallecido en 1650, publicó en 1637 «La Géométrie», obra en la que relacionó la geometría con el álgebra mediante coordenadas. Su propuesta permitió describir curvas con ecuaciones y dio origen al plano cartesiano, nombre que hoy recibe el producto de dos conjuntos numéricos."
+        }
+      ]
+    },
+    {
+      "titulo": "Relaciones y fundamentos",
+      "puntos": [
+        {
+          "texto": "Una relación entre conjuntos es un subconjunto de su producto cartesiano.",
+          "explicacion": "Dados dos conjuntos, una relación entre ellos se describe como un subconjunto del producto, formado por los pares que cumplen cierta condición. Esta idea conecta el producto cartesiano con la inclusión del tema 11. El estudio general de las relaciones excede el alcance de este tema, por lo que aquí solo se presenta su base conjuntista."
+        },
+        {
+          "texto": "Kazimierz Kuratowski definió el par ordenado en 1921 usando solo conjuntos.",
+          "explicacion": "Kazimierz Kuratowski, matemático polaco nacido en 1896 y fallecido en 1980, propuso en 1921 definir el par $(a, b)$ como el conjunto $\\{\\{a\\}, \\{a, b\\}\\}$. Con esta definición, el orden se obtiene de la propia estructura de conjuntos, sin necesidad de una noción primitiva adicional. Esta construcción es la más usada en la teoría axiomática para fundamentar el producto cartesiano."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Sumar los cardinales en lugar de multiplicarlos para el producto es un error.",
+          "explicacion": "Al calcular el cardinal de un producto, algunos estudiantes suman los cardinales por confusión con la unión. Esa suma no cuenta los pares formados, sino los elementos de cada conjunto por separado. El cardinal correcto se obtiene multiplicando, como se estableció en este tema, y conviene revisar siempre la operación antes de dar el resultado."
+        },
+        {
+          "texto": "Olvidar el orden al listar pares produce conteos incorrectos.",
+          "explicacion": "Al escribir los pares de un producto, es fácil invertir las componentes o repetir pares sin darse cuenta. Como $(a, b)$ y $(b, a)$ son distintos cuando a y b son diferentes, omitir uno de ellos altera el conteo. Una forma de evitar el error es completar la lista por filas, fijando la primera componente y variando la segunda."
+        }
+      ]
+    }
+  ]
+}

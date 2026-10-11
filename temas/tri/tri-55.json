@@ -1,0 +1,128 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Funciones trigonométricas",
+  "glosario": {
+    "función trigonométrica": "Regla que asigna a un arco un valor.",
+    "razón trigonométrica": "Cociente entre dos medidas asociadas a un ángulo.",
+    "arco": "Parte de una circunferencia entre dos puntos.",
+    "radián": "Unidad angular basada en la longitud del arco.",
+    "circunferencia trigonométrica": "Circunferencia de radio uno centrada en el origen.",
+    "extremo": "Punto donde termina el arco.",
+    "ordenada": "Coordenada vertical de un punto.",
+    "abscisa": "Coordenada horizontal de un punto.",
+    "seno": "Razón entre ordenada y radio vector.",
+    "coseno": "Razón entre abscisa y radio vector.",
+    "tangente": "Razón entre ordenada y abscisa.",
+    "cotangente": "Razón entre abscisa y ordenada.",
+    "secante": "Inverso multiplicativo del coseno.",
+    "cosecante": "Inverso multiplicativo del seno.",
+    "función impar": "Cambia de signo al invertir la variable.",
+    "función par": "No cambia al invertir el signo.",
+    "periódica": "Que repite sus valores a intervalos regulares.",
+    "ángulo agudo": "Ángulo menor que noventa grados."
+  },
+  "theory": [
+    {
+      "titulo": "Función trigonométrica",
+      "puntos": [
+        {
+          "texto": "«Función trigonométrica»: arco $x$ en radianes (rad) → valor de una razón",
+          "explicacion": "A cada número real $x$, que representa un arco de la circunferencia trigonométrica, le corresponde un único valor de una razón trigonométrica. Ejemplo: al arco $x = \\frac{\\pi}{2} \\approx 1{,}57$ le corresponde un solo valor de la altura del extremo, que es 1."
+        },
+        {
+          "texto": "La variable es un número real, no solo un ángulo agudo",
+          "explicacion": "A diferencia de la razón en un triángulo rectángulo, que exige un ángulo agudo, la función admite arcos positivos, negativos y mayores que una vuelta. Ejemplo: $x = -\\frac{\\pi}{6}$ y $x = \\frac{13\\pi}{6}$ son entradas válidas."
+        },
+        {
+          "texto": "La entrada se mide en radianes, no en grados",
+          "explicacion": "Al escribir una función sin símbolo de grado, el número es un arco en radianes. Ejemplo: el seno (sen) de 30 radianes, escrito $\\text{sen}\\,30$, vale aproximadamente $-0{,}99$, y no el seno de $30^\\circ$, que vale $0{,}5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Las seis funciones",
+      "puntos": [
+        {
+          "texto": "Función seno (sen): $f(x) = \\text{sen}\\,x$",
+          "explicacion": "Asigna a cada arco la ordenada de su extremo en la circunferencia trigonométrica. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$."
+        },
+        {
+          "texto": "Función coseno (cos): $f(x) = \\cos x$",
+          "explicacion": "Asigna a cada arco la abscisa de su extremo. Ejemplo: $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt{3}}{2}$."
+        },
+        {
+          "texto": "Función tangente (tan): $f(x) = \\tan x = \\frac{\\text{sen}\\,x}{\\cos x}$",
+          "explicacion": "Es el cociente entre la ordenada y la abscisa del extremo. Ejemplo: $\\tan\\frac{\\pi}{6} = \\frac{\\frac{1}{2}}{\\frac{\\sqrt{3}}{2}} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "Función cotangente (cot): $f(x) = \\cot x = \\frac{\\cos x}{\\text{sen}\\,x}$",
+          "explicacion": "Es el cociente entre la abscisa y la ordenada del extremo. Ejemplo: $\\cot\\frac{\\pi}{6} = \\frac{\\frac{\\sqrt{3}}{2}}{\\frac{1}{2}} = \\sqrt{3}$."
+        },
+        {
+          "texto": "Función secante (sec): $f(x) = \\sec x = \\frac{1}{\\cos x}$",
+          "explicacion": "Es el inverso de la abscisa del extremo. Ejemplo: $\\sec\\frac{\\pi}{6} = \\frac{1}{\\frac{\\sqrt{3}}{2}} = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}$."
+        },
+        {
+          "texto": "Función cosecante (csc): $f(x) = \\csc x = \\frac{1}{\\text{sen}\\,x}$",
+          "explicacion": "Es el inverso de la ordenada del extremo. Ejemplo: $\\csc\\frac{\\pi}{6} = \\frac{1}{\\frac{1}{2}} = 2$."
+        },
+        {
+          "texto": "Seno y coseno son básicas; las otras cuatro se derivan de ellas",
+          "explicacion": "Tangente, cotangente, secante y cosecante se escriben con cocientes de seno y coseno. Ejemplo: conocido $\\text{sen}\\,x = \\frac{3}{5}$ y $\\cos x = \\frac{4}{5}$, resulta $\\tan x = \\frac{3}{4}$ y $\\sec x = \\frac{5}{4}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Existencia de valores",
+      "puntos": [
+        {
+          "texto": "Seno y coseno existen para todo número real",
+          "explicacion": "El extremo de cualquier arco tiene siempre ordenada y abscisa. Ejemplo: $\\text{sen}\\,100$ y $\\cos(-7)$ tienen valor, aunque no sean notables."
+        },
+        {
+          "texto": "Tangente y secante no existen donde $\\cos x = 0$",
+          "explicacion": "Dividen entre el coseno, que se anula en $x = \\frac{\\pi}{2} + k\\pi$. Ejemplo: $\\tan\\frac{\\pi}{2}$ y $\\sec\\frac{3\\pi}{2}$ no están definidas. El conjunto exacto de entradas se estudia como dominio y rango."
+        },
+        {
+          "texto": "Cotangente y cosecante no existen donde $\\text{sen}\\,x = 0$",
+          "explicacion": "Dividen entre el seno, que se anula en $x = k\\pi$. Ejemplo: $\\cot 0$ y $\\csc\\pi$ no están definidas."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad de las funciones",
+      "puntos": [
+        {
+          "texto": "Seno, tangente, cotangente y cosecante son «impares»",
+          "explicacion": "Cumplen $f(-x) = -f(x)$. Ejemplo: $\\text{sen}\\left(-\\frac{\\pi}{6}\\right) = -\\frac{1}{2}$ y $\\tan\\left(-\\frac{\\pi}{4}\\right) = -1$."
+        },
+        {
+          "texto": "Coseno y secante son «pares»",
+          "explicacion": "Cumplen $f(-x) = f(x)$. Ejemplo: $\\cos\\left(-\\frac{\\pi}{3}\\right) = \\frac{1}{2}$ y $\\sec\\left(-\\frac{\\pi}{3}\\right) = 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Repetición de valores",
+      "puntos": [
+        {
+          "texto": "Todas las funciones trigonométricas son «periódicas»",
+          "explicacion": "Tras una vuelta o media vuelta, el extremo vuelve a una posición equivalente y los valores se repiten. Ejemplo: $\\text{sen}\\,\\frac{13\\pi}{6} = \\text{sen}\\left(\\frac{\\pi}{6} + 2\\pi\\right) = \\frac{1}{2}$. La medida exacta se estudia como periodo."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos vecinos",
+      "puntos": [
+        {
+          "texto": "Función trigonométrica ≠ razón trigonométrica",
+          "explicacion": "La razón es un cociente de lados de un triángulo rectángulo y exige un ángulo agudo; la función extiende esa idea a cualquier número real. Ejemplo: $\\text{sen}\\,\\frac{7\\pi}{6} = -\\frac{1}{2}$ no se puede obtener con un triángulo rectángulo, pero sí con la función."
+        },
+        {
+          "texto": "Funciones trigonométricas ≠ funciones trigonométricas inversas",
+          "explicacion": "La función trigonométrica pasa del arco al valor, y la inversa hace el camino contrario. Ejemplo: $\\text{sen}\\,\\frac{\\pi}{6} = \\frac{1}{2}$ lleva del arco al valor, y la inversa lleva de $\\frac{1}{2}$ de vuelta al arco."
+        }
+      ]
+    }
+  ]
+}

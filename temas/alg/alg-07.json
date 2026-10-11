@@ -1,0 +1,163 @@
+{
+  "curso": "Álgebra",
+  "tema": "Ecuaciones bicuadradas",
+  "glosario": {
+    "Ecuación bicuadrada": "Ecuación de cuarto grado con solo potencias pares.",
+    "Cambio de variable": "Sustituir una expresión por una nueva letra.",
+    "Multiplicidad": "Cantidad de veces que se repite una raíz.",
+    "Raíz real": "Solución que es un número real.",
+    "Raíces opuestas": "Raíces que suman cero.",
+    "Factorización": "Escribir una expresión como producto."
+  },
+  "theory": [
+    {
+      "titulo": "Ecuación bicuadrada",
+      "puntos": [
+        {
+          "texto": "Forma general ⇒ $ax^4+bx^2+c=0$, con $a\\neq0$",
+          "explicacion": "Es una ecuación de cuarto grado en la que solo aparecen potencias pares de $x$. Se puede reducir a una de segundo grado."
+        },
+        {
+          "texto": "Ejemplo ⇒ $x^4-5x^2+4=0$ es bicuadrada",
+          "explicacion": "Tiene $a=1$, $b=-5$ y $c=4$. No tiene términos de $x^3$ ni de $x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cambio de variable",
+      "puntos": [
+        {
+          "texto": "Cambio ⇒ $y=x^2$ transforma la ecuación en $ay^2+by+c=0$",
+          "explicacion": "Como $x^4=(x^2)^2=y^2$, la ecuación bicuadrada se convierte en una de segundo grado en $y$. Se resuelve con factorización o con la fórmula general."
+        },
+        {
+          "texto": "Condición ⇒ solo valen las soluciones $y\\ge0$",
+          "explicacion": "Como $y=x^2$ y un cuadrado real nunca es negativo, los valores negativos de $y$ no dan soluciones reales de $x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Regreso a la variable original",
+      "puntos": [
+        {
+          "texto": "Cada $y>0$ ⇒ da dos soluciones $x=\\pm\\sqrt{y}$",
+          "explicacion": "Si $y=4$, entonces $x=\\pm2$. Si $y=0$, entonces $x=0$. Si $y<0$, no hay soluciones reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con cuatro soluciones",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $x^4-5x^2+4=0$ da $x=\\pm1$ y $x=\\pm2$",
+          "explicacion": "Con $y=x^2$: $y^2-5y+4=0$, es decir, $(y-1)(y-4)=0$. Entonces $y=1$ o $y=4$. Por tanto, $x=\\pm1$ y $x=\\pm2$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $x^4-10x^2+9=0$ da $x=\\pm1$ y $x=\\pm3$",
+          "explicacion": "Con $y=x^2$: $y^2-10y+9=0$, es decir, $(y-1)(y-9)=0$. Entonces $y=1$ o $y=9$. Por tanto, $x=\\pm1$ y $x=\\pm3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con dos soluciones",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $x^4+x^2-6=0$ da $x=\\pm\\sqrt{2}$",
+          "explicacion": "Con $y=x^2$: $y^2+y-6=0$, es decir, $(y-2)(y+3)=0$. Entonces $y=2$ o $y=-3$. Se descarta $y=-3$, porque $x^2$ no puede ser negativo. Queda $x=\\pm\\sqrt{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo sin soluciones reales",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $x^4+5x^2+4=0$ no tiene soluciones reales",
+          "explicacion": "Con $y=x^2$: $y^2+5y+4=0$, es decir, $(y+1)(y+4)=0$. Entonces $y=-1$ o $y=-4$. Ambos son negativos, así que no hay soluciones reales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con raíz doble",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $x^4-6x^2+9=0$ da $x=\\pm\\sqrt{3}$",
+          "explicacion": "Con $y=x^2$: $y^2-6y+9=0$, es decir, $(y-3)^2=0$. Entonces $y=3$ y $x=\\pm\\sqrt{3}$, cada una con multiplicidad dos."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con cero",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $x^4-4x^2=0$ da $x=0$ y $x=\\pm2$",
+          "explicacion": "Se factoriza $x^2(x^2-4)=0$. Entonces $x^2=0$ o $x^2=4$. Por tanto, $x=0$, con multiplicidad dos, y $x=\\pm2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo factorizando",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $(x^2-1)(x^2-4)=0$ da $x=\\pm1$ y $x=\\pm2$",
+          "explicacion": "Es la forma factorizada de $x^4-5x^2+4=0$. Cada factor puede ser cero: $x^2=1$ o $x^2=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Número de soluciones reales",
+      "puntos": [
+        {
+          "texto": "Si $y_1>0$ y $y_2>0$ ⇒ cuatro soluciones reales",
+          "explicacion": "Cada $y$ positivo da dos valores de $x$. Ejemplo: $x^4-5x^2+4=0$."
+        },
+        {
+          "texto": "Si una $y$ es positiva y la otra negativa ⇒ dos soluciones reales",
+          "explicacion": "Solo la $y$ positiva da soluciones. Ejemplo: $x^4+x^2-6=0$."
+        },
+        {
+          "texto": "Si ambas $y$ son negativas ⇒ ninguna solución real",
+          "explicacion": "Ninguna $y$ sirve. Ejemplo: $x^4+5x^2+4=0$."
+        },
+        {
+          "texto": "Si una $y$ es $0$ ⇒ aparece la solución $x=0$",
+          "explicacion": "Ejemplo: $x^4-4x^2=0$ tiene $y=0$ y $y=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma de las raíces",
+      "puntos": [
+        {
+          "texto": "Suma de las cuatro raíces ⇒ siempre es $0$",
+          "explicacion": "Las raíces vienen en pares opuestos, como $x$ y $-x$. Por tanto, se cancelan. Ejemplo: $1+(-1)+2+(-2)=0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Producto de las raíces",
+      "puntos": [
+        {
+          "texto": "Producto de las cuatro raíces ⇒ $\\frac{c}{a}$",
+          "explicacion": "Cada par $\\pm r$ aporta $-r^2$ al producto y sus dos pares multiplican $r_1^2r_2^2=y_1y_2=\\frac{c}{a}$."
+        },
+        {
+          "texto": "Ejemplo ⇒ en $x^4-5x^2+4=0$, el producto es $4$",
+          "explicacion": "Se calcula $\\frac{4}{1}=4$. Las raíces son $1,-1,2,-2$ y su producto es $1\\cdot(-1)\\cdot2\\cdot(-2)=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Formación de la ecuación",
+      "puntos": [
+        {
+          "texto": "Ecuación con $x=\\pm p$ y $x=\\pm q$ ⇒ $x^4-(p^2+q^2)x^2+p^2q^2=0$",
+          "explicacion": "Se deduce de $(x^2-p^2)(x^2-q^2)=0$ al multiplicar."
+        },
+        {
+          "texto": "Ejemplo ⇒ raíces $\\pm1$ y $\\pm3$ dan $x^4-10x^2+9=0$",
+          "explicacion": "Con $p=1$ y $q=3$: $p^2+q^2=10$ y $p^2q^2=9$. Se obtiene $x^4-10x^2+9=0$."
+        }
+      ]
+    }
+  ]
+}

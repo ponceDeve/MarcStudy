@@ -1,0 +1,134 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Longitud de arco",
+  "glosario": {
+    "Arco": "Parte de una circunferencia.",
+    "Longitud de arco": "Medida de un tramo de circunferencia.",
+    "Ángulo central": "Ángulo con vértice en el centro.",
+    "Radio": "Distancia del centro a la circunferencia.",
+    "Circunferencia": "Línea cerrada equidistante del centro.",
+    "Semicircunferencia": "Mitad de una circunferencia.",
+    "Circunferencias concéntricas": "Circunferencias con el mismo centro.",
+    "Circunferencia unitaria": "Circunferencia de radio uno."
+  },
+  "theory": [
+    {
+      "titulo": "Longitud de arco",
+      "puntos": [
+        {
+          "texto": "«Longitud de arco» = medida de un tramo de circunferencia",
+          "explicacion": "Un arco es la parte de la circunferencia comprendida entre dos puntos. Su longitud depende del radio y del ángulo central que lo subtiende."
+        },
+        {
+          "texto": "Fórmula ⇒ $L=\\theta\\cdot R$",
+          "explicacion": "Aquí $L$ es la longitud del arco, $\\theta$ el ángulo central en radianes y $R$ el radio. Sale de la definición de radián $\\theta=\\frac{L}{R}$."
+        },
+        {
+          "texto": "Condición ⇒ $\\theta$ debe estar en radianes",
+          "explicacion": "Si el ángulo está en grados, primero se convierte. Error frecuente: usar grados en la fórmula $L=\\theta R$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo de la longitud",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ $R=5$ y $\\theta=2\\ \\mathrm{rad}$ dan $L=10$",
+          "explicacion": "Se calcula $L=2\\cdot5=10$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $R=6$ y $\\theta=60^\\circ$ dan $L=2\\pi\\approx6.28$",
+          "explicacion": "Primero $60^\\circ=\\frac{\\pi}{3}\\ \\mathrm{rad}$. Luego $L=\\frac{\\pi}{3}\\cdot6=2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo del ángulo",
+      "puntos": [
+        {
+          "texto": "Ángulo ⇒ $\\theta=\\frac{L}{R}$",
+          "explicacion": "Se despeja de $L=\\theta R$. El resultado queda en radianes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $L=12$ y $R=4$ dan $\\theta=3\\ \\mathrm{rad}$",
+          "explicacion": "Se calcula $\\theta=\\frac{12}{4}=3$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cálculo del radio",
+      "puntos": [
+        {
+          "texto": "Radio ⇒ $R=\\frac{L}{\\theta}$",
+          "explicacion": "Se despeja de $L=\\theta R$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $L=\\pi$ y $\\theta=\\frac{\\pi}{4}$ dan $R=4$",
+          "explicacion": "Se calcula $R=\\frac{\\pi}{\\pi/4}=4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmula en grados",
+      "puntos": [
+        {
+          "texto": "En grados ⇒ $L=\\frac{\\pi R\\,\\theta^\\circ}{180}$",
+          "explicacion": "Es la misma fórmula, con el ángulo en grados convertido a radianes dentro de ella."
+        },
+        {
+          "texto": "Ejemplo ⇒ $R=9$ y $\\theta=40^\\circ$ dan $L=2\\pi$",
+          "explicacion": "Se calcula $L=\\frac{\\pi\\cdot9\\cdot40}{180}=\\frac{360\\pi}{180}=2\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Circunferencia completa",
+      "puntos": [
+        {
+          "texto": "Circunferencia ⇒ $L=2\\pi R$",
+          "explicacion": "Es el caso de una vuelta completa, con $\\theta=2\\pi$. Ejemplo: con $R=3$, $L=6\\pi\\approx18.85$."
+        }
+      ]
+    },
+    {
+      "titulo": "Semicircunferencia",
+      "puntos": [
+        {
+          "texto": "Semicircunferencia ⇒ $L=\\pi R$",
+          "explicacion": "Es media vuelta, con $\\theta=\\pi$. Ejemplo: con $R=10$, $L=10\\pi\\approx31.4$."
+        }
+      ]
+    },
+    {
+      "titulo": "Arcos de igual ángulo",
+      "puntos": [
+        {
+          "texto": "Arcos con el mismo ángulo central ⇒ $\\frac{L_1}{R_1}=\\frac{L_2}{R_2}$",
+          "explicacion": "En circunferencias concéntricas, el cociente entre el arco y su radio es el mismo, porque es el ángulo en radianes."
+        },
+        {
+          "texto": "Ejemplo ⇒ $L_1=6$ con $R_1=3$ da $L_2=10$ con $R_2=5$",
+          "explicacion": "Se tiene $\\frac{6}{3}=2$. Entonces $L_2=2\\cdot5=10$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulo en radianes y arco",
+      "puntos": [
+        {
+          "texto": "Si $R=1$ ⇒ la longitud del arco es igual al ángulo en radianes",
+          "explicacion": "En la circunferencia de radio uno, $L=\\theta$. Por eso el radián mide la longitud sobre la circunferencia unitaria."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplo con un reloj",
+      "puntos": [
+        {
+          "texto": "Ejemplo ⇒ un minutero de $10$ recorre $\\frac{10\\pi}{3}$ en $10$ minutos",
+          "explicacion": "En $10$ minutos el minutero gira $60^\\circ=\\frac{\\pi}{3}\\ \\mathrm{rad}$. Entonces $L=\\frac{\\pi}{3}\\cdot10=\\frac{10\\pi}{3}$. Es decir, unos $10.47\\ \\mathrm{cm}$."
+        }
+      ]
+    }
+  ]
+}

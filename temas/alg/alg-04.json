@@ -1,0 +1,215 @@
+{
+  "curso": "Álgebra",
+  "tema": "Intervalos",
+  "glosario": {
+    "Intervalo": "Conjunto de reales entre dos extremos.",
+    "Intervalo abierto": "Intervalo que no incluye sus extremos.",
+    "Intervalo cerrado": "Intervalo que incluye sus extremos.",
+    "Intervalo semiabierto": "Incluye solo uno de sus extremos.",
+    "Infinito": "Símbolo de ausencia de límite, no es número.",
+    "Extremo": "Número que limita un intervalo.",
+    "Intervalo no acotado": "Intervalo sin límite por un lado.",
+    "Unión": "Elementos que están en uno de los conjuntos.",
+    "Intersección": "Elementos comunes a ambos conjuntos.",
+    "Diferencia": "Elementos de un conjunto ausentes en otro.",
+    "Complemento": "Reales que no pertenecen al conjunto.",
+    "Punto medio": "Promedio de los extremos.",
+    "Longitud de un intervalo": "Distancia entre sus extremos."
+  },
+  "theory": [
+    {
+      "titulo": "Intervalos",
+      "puntos": [
+        {
+          "texto": "«Intervalo» = conjunto de reales comprendidos entre dos extremos",
+          "explicacion": "Es un subconjunto de la recta real formado por todos los números que están entre dos valores dados, con o sin los extremos. Se representa con paréntesis o corchetes."
+        },
+        {
+          "texto": "Intervalo ⇒ se describe con desigualdad, extremos y gráfica",
+          "explicacion": "Por ejemplo, $\\{x\\in\\mathbb{R} : 1<x\\le4\\}$ se escribe $(1,4]$ y se dibuja como un segmento en la recta. Las tres formas expresan el mismo conjunto."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalo abierto",
+      "puntos": [
+        {
+          "texto": "Intervalo abierto ⇒ $(a,b)=\\{x : a<x<b\\}$",
+          "explicacion": "No incluye a los extremos $a$ ni $b$. Se escribe con paréntesis y en la recta se marcan los extremos con círculos vacíos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(1,4)$ contiene a $2$, pero no a $1$ ni a $4$",
+          "explicacion": "Los extremos no pertenecen al conjunto, así que $1\\notin(1,4)$ y $4\\notin(1,4)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalo cerrado",
+      "puntos": [
+        {
+          "texto": "Intervalo cerrado ⇒ $[a,b]=\\{x : a\\le x\\le b\\}$",
+          "explicacion": "Incluye a los dos extremos. Se escribe con corchetes y en la recta se marcan los extremos con círculos llenos."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[1,4]$ contiene a $1$, a $2.5$ y a $4$",
+          "explicacion": "Como los extremos pertenecen, $1\\in[1,4]$ y $4\\in[1,4]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos semiabiertos",
+      "puntos": [
+        {
+          "texto": "Semiabierto por la derecha ⇒ $[a,b)=\\{x : a\\le x<b\\}$",
+          "explicacion": "Incluye a $a$, pero no a $b$. El corchete va en el extremo que se incluye y el paréntesis en el que se excluye."
+        },
+        {
+          "texto": "Semiabierto por la izquierda ⇒ $(a,b]=\\{x : a<x\\le b\\}$",
+          "explicacion": "Incluye a $b$, pero no a $a$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[2,5)$ contiene a $2$, pero no a $5$",
+          "explicacion": "El extremo $2$ pertenece y el $5$ no. En cambio, $(2,5]$ contiene a $5$, pero no a $2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Infinito",
+      "puntos": [
+        {
+          "texto": "«Infinito» ($\\infty$) ⇒ no es un número real",
+          "explicacion": "Los símbolos $+\\infty$ y $-\\infty$ indican que el intervalo no tiene límite por ese lado. Por eso siempre se acompañan de paréntesis, nunca de corchetes. Error frecuente: escribir $[a,+\\infty]$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos no acotados",
+      "puntos": [
+        {
+          "texto": "$(a,+\\infty)=\\{x : x>a\\}$",
+          "explicacion": "Son todos los reales mayores que $a$, sin incluirlo. En la recta se marca el extremo con círculo vacío y una flecha hacia la derecha."
+        },
+        {
+          "texto": "$[a,+\\infty)=\\{x : x\\ge a\\}$",
+          "explicacion": "Son todos los reales mayores o iguales que $a$. El extremo $a$ se marca con círculo lleno."
+        },
+        {
+          "texto": "$(-\\infty,b)=\\{x : x<b\\}$",
+          "explicacion": "Son todos los reales menores que $b$, sin incluirlo."
+        },
+        {
+          "texto": "$(-\\infty,b]=\\{x : x\\le b\\}$",
+          "explicacion": "Son todos los reales menores o iguales que $b$."
+        },
+        {
+          "texto": "$(-\\infty,+\\infty)=\\mathbb{R}$",
+          "explicacion": "Es el conjunto de todos los reales. En la recta se marca toda ella."
+        },
+        {
+          "texto": "Ejemplo ⇒ $\\mathbb{R}^+=(0,+\\infty)$ y $\\mathbb{R}^-=(-\\infty,0)$",
+          "explicacion": "Los positivos son los mayores que $0$, y los negativos, los menores que $0$. El cero no pertenece a ninguno."
+        }
+      ]
+    },
+    {
+      "titulo": "De desigualdad a intervalo",
+      "puntos": [
+        {
+          "texto": "Conversión ⇒ $a<x<b$ equivale a $x\\in(a,b)$",
+          "explicacion": "El sentido de cada símbolo indica el tipo de extremo. Con $\\le$ el extremo es cerrado y con $<$ es abierto."
+        },
+        {
+          "texto": "Ejemplo ⇒ $-3\\le x<2$ equivale a $[-3,2)$",
+          "explicacion": "El extremo $-3$ se incluye porque aparece $\\le$. El extremo $2$ no se incluye porque aparece $<$."
+        }
+      ]
+    },
+    {
+      "titulo": "Longitud de un intervalo",
+      "puntos": [
+        {
+          "texto": "Longitud ⇒ $b-a$ para un intervalo con extremos $a$ y $b$",
+          "explicacion": "Es la distancia entre los extremos, sin importar si se incluyen o no."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[-2,5)$ tiene longitud $7$",
+          "explicacion": "Se calcula $5-(-2)=7$."
+        }
+      ]
+    },
+    {
+      "titulo": "Punto medio de un intervalo",
+      "puntos": [
+        {
+          "texto": "Punto medio ⇒ $\\frac{a+b}{2}$",
+          "explicacion": "Es el promedio de los extremos y queda en el centro del intervalo."
+        },
+        {
+          "texto": "Ejemplo ⇒ el punto medio de $(1,9)$ es $5$",
+          "explicacion": "Se calcula $\\frac{1+9}{2}=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Unión de intervalos",
+      "puntos": [
+        {
+          "texto": "Unión ($A\\cup B$) ⇒ elementos que están en $A$ o en $B$",
+          "explicacion": "Se incluyen los números que pertenecen a al menos uno de los intervalos. Si se superponen, se pueden juntar en uno solo."
+        },
+        {
+          "texto": "Ejemplo ⇒ $(-\\infty,2)\\cup[1,4]=(-\\infty,4]$",
+          "explicacion": "Los dos intervalos se solapan entre $1$ y $2$. El conjunto resultante llega hasta $4$, incluido, y se extiende hacia $-\\infty$."
+        }
+      ]
+    },
+    {
+      "titulo": "Intersección de intervalos",
+      "puntos": [
+        {
+          "texto": "Intersección ($A\\cap B$) ⇒ elementos que están en $A$ y en $B$",
+          "explicacion": "Se toman los números que pertenecen a ambos intervalos a la vez. Puede resultar un intervalo, un punto o el conjunto vacío."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[-2,3)\\cap(0,5]=(0,3)$",
+          "explicacion": "Los números comunes están entre $0$ y $3$. El $0$ no se incluye porque no está en $(0,5]$, y el $3$ no se incluye porque no está en $[-2,3)$."
+        }
+      ]
+    },
+    {
+      "titulo": "Diferencia de intervalos",
+      "puntos": [
+        {
+          "texto": "Diferencia ($A-B$) ⇒ elementos de $A$ que no están en $B$",
+          "explicacion": "Se quitan de $A$ los números que también pertenecen a $B$."
+        },
+        {
+          "texto": "Ejemplo ⇒ $[-1,5]-(2,3)=[-1,2]\\cup[3,5]$",
+          "explicacion": "Se retiran los números entre $2$ y $3$, sin incluir los extremos. Quedan los intervalos a cada lado, y los extremos $2$ y $3$ sí pertenecen."
+        }
+      ]
+    },
+    {
+      "titulo": "Complemento de un intervalo",
+      "puntos": [
+        {
+          "texto": "Complemento ($A^c$) ⇒ reales que no están en $A$",
+          "explicacion": "Es la diferencia $\\mathbb{R}-A$. Si $A$ es un intervalo, el complemento suele ser la unión de dos intervalos."
+        },
+        {
+          "texto": "Ejemplo ⇒ el complemento de $[1,3)$ es $(-\\infty,1)\\cup[3,+\\infty)$",
+          "explicacion": "El extremo $1$ pertenece a $[1,3)$, así que no está en el complemento. El extremo $3$ no pertenece a $[1,3)$, así que sí está."
+        }
+      ]
+    },
+    {
+      "titulo": "Intervalos y valor absoluto",
+      "puntos": [
+        {
+          "texto": "$|x|<a$ ⇒ equivale a $x\\in(-a,a)$, con $a>0$",
+          "explicacion": "La distancia de $x$ al cero es menor que $a$ cuando $x$ está entre $-a$ y $a$. Ejemplo: $|x|<3$ equivale a $(-3,3)$. Se desarrolla en su propio tema."
+        }
+      ]
+    }
+  ]
+}

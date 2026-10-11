@@ -1,0 +1,210 @@
+{
+  "curso": "Álgebra",
+  "tema": "Relación entre raíces y coeficientes de un polinomio",
+  "glosario": {
+    "Raíz": "Número que anula el polinomio.",
+    "Multiplicidad": "Número de veces que se repite una raíz.",
+    "Coeficiente principal": "Coeficiente del término de mayor grado.",
+    "Término independiente": "Término que no contiene la variable.",
+    "Forma factorizada": "Polinomio escrito como producto de factores.",
+    "Polinomio mónico": "Polinomio de coeficiente principal uno.",
+    "Progresión aritmética": "Sucesión con diferencia constante entre términos.",
+    "Progresión geométrica": "Sucesión con razón constante entre términos.",
+    "Raíces conjugadas": "Raíces complejas de partes imaginarias opuestas.",
+    "Raíces recíprocas": "Raíces cuyo producto es uno.",
+    "Discriminante": "Expresión b al cuadrado menos cuatro a c.",
+    "Número complejo": "Número de la forma a más bi.",
+    "Ecuación cuadrática": "Ecuación polinómica de segundo grado.",
+    "Ecuación cúbica": "Ecuación polinómica de tercer grado.",
+    "Ecuación cuártica": "Ecuación polinómica de cuarto grado."
+  },
+  "theory": [
+    {
+      "titulo": "Raíces y factorización",
+      "puntos": [
+        {
+          "texto": "«Raíz» de $P$: número $r$ tal que $P(r)=0$",
+          "explicacion": "Una raíz de un polinomio es un número, real o complejo, que al reemplazar la variable da valor cero. Para $P(x)=x^2-5x+6$ los números 2 y 3 son raíces, porque $P(2)=4-10+6=0$ y $P(3)=9-15+6=0$. El tema de las relaciones entre raíces y coeficientes permite obtener información sobre las raíces sin calcularlas una por una."
+        },
+        {
+          "texto": "Teorema fundamental ⇒ $n$ raíces para grado $n$",
+          "explicacion": "Según el teorema fundamental del álgebra, un polinomio de grado $n\\geq1$ tiene exactamente $n$ raíces en los números complejos, contando cada raíz tantas veces como su multiplicidad. Por eso un cuadrático tiene dos raíces, un cúbico tiene tres y un cuártico tiene cuatro. Las relaciones de este tema trabajan con las $n$ raíces a la vez."
+        },
+        {
+          "texto": "Forma factorizada: $P(x)=a_n(x-r_1)(x-r_2)\\cdots(x-r_n)$",
+          "explicacion": "Si $r_1,r_2,\\dots,r_n$ son las raíces de $P$, el polinomio se factoriza como $P(x)=a_n(x-r_1)(x-r_2)\\cdots(x-r_n)$, donde $a_n$ es el coeficiente principal. Ejemplo: las raíces de $x^2-5x+6$ son 2 y 3, y $(x-2)(x-3)=x^2-3x-2x+6=x^2-5x+6$. Al desarrollar esta forma y comparar con la forma general se obtienen las relaciones entre raíces y coeficientes."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación cuadrática",
+      "puntos": [
+        {
+          "texto": "Cuadrática $ax^2+bx+c=0$: $r_1+r_2=-\\frac{b}{a}$",
+          "explicacion": "La suma de las dos raíces de una ecuación cuadrática es el opuesto del coeficiente de $x$ dividido entre el coeficiente de $x^2$. Se deduce de $a(x-r_1)(x-r_2)=ax^2-a(r_1+r_2)x+ar_1r_2$, al comparar el coeficiente de $x$: $b=-a(r_1+r_2)$. Ejemplo: $x^2-5x+6=0$ tiene raíces 2 y 3, con suma $5=-\\frac{-5}{1}$. Otro ejemplo: $2x^2-7x+3=0$ tiene suma $\\frac{7}{2}$, y sus raíces son 3 y $\\frac{1}{2}$, que suman $\\frac{7}{2}$."
+        },
+        {
+          "texto": "Cuadrática: $r_1\\cdot r_2=\\frac{c}{a}$",
+          "explicacion": "El producto de las dos raíces de $ax^2+bx+c=0$ es el término independiente dividido entre el coeficiente de $x^2$. Al comparar con $a(x-r_1)(x-r_2)=ax^2-a(r_1+r_2)x+ar_1r_2$ se tiene $c=ar_1r_2$. Ejemplo: en $x^2-5x+6=0$, el producto es $6$, igual a $2\\cdot3$. En $2x^2-7x+3=0$, el producto es $\\frac{3}{2}$, igual a $3\\cdot\\frac{1}{2}$."
+        },
+        {
+          "texto": "Ecuación con raíces $r_1$ y $r_2$: $x^2-Sx+P=0$",
+          "explicacion": "Si la suma de raíces es $S$ y su producto es $P$, la ecuación cuadrática mónica con esas raíces es $x^2-Sx+P=0$. Ejemplo: raíces 3 y $-2$ dan $S=1$ y $P=-6$, y la ecuación es $x^2-x-6=0$. Verificación: $(x-3)(x+2)=x^2+2x-3x-6=x^2-x-6$. Notar que el coeficiente de $x$ lleva signo contrario a la suma."
+        },
+        {
+          "texto": "Dos números con suma $S$ y producto $P$",
+          "explicacion": "Los números $r_1$ y $r_2$ con $r_1+r_2=S$ y $r_1r_2=P$ son las raíces de $t^2-St+P=0$. Ejemplo: si la suma es 7 y el producto es 12, la ecuación es $t^2-7t+12=0$, cuyas raíces son 3 y 4, y en efecto $3+4=7$ y $3\\cdot4=12$. Esta idea resuelve sistemas simétricos de dos ecuaciones sin sustituir."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación cúbica",
+      "puntos": [
+        {
+          "texto": "Cúbica $ax^3+bx^2+cx+d=0$: $r_1+r_2+r_3=-\\frac{b}{a}$",
+          "explicacion": "La suma de las tres raíces de una ecuación cúbica es el opuesto del coeficiente de $x^2$ dividido entre el coeficiente de $x^3$. Se deduce de $a(x-r_1)(x-r_2)(x-r_3)=a[x^3-(r_1+r_2+r_3)x^2+\\cdots]$. Ejemplo: $x^3-6x^2+11x-6=0$ tiene raíces 1, 2 y 3, con suma $6=-\\frac{-6}{1}$."
+        },
+        {
+          "texto": "Cúbica: suma de productos de dos raíces = $\\frac{c}{a}$",
+          "explicacion": "La suma de los productos de las raíces tomadas de dos en dos es el coeficiente de $x$ dividido entre el coeficiente de $x^3$: $r_1r_2+r_1r_3+r_2r_3=\\frac{c}{a}$. Ejemplo: en $x^3-6x^2+11x-6=0$ con raíces 1, 2 y 3: $1\\cdot2+1\\cdot3+2\\cdot3=2+3+6=11$, que es el coeficiente de $x$."
+        },
+        {
+          "texto": "Cúbica: $r_1r_2r_3=-\\frac{d}{a}$",
+          "explicacion": "El producto de las tres raíces es el opuesto del término independiente dividido entre el coeficiente principal: $r_1r_2r_3=-\\frac{d}{a}$. Ejemplo: en $x^3-6x^2+11x-6=0$ el producto de las raíces es $1\\cdot2\\cdot3=6$, y $-\\frac{-6}{1}=6$. El signo menos aparece porque hay tres factores $(x-r)$, y el producto de tres signos menos es negativo."
+        },
+        {
+          "texto": "Cúbica mónica con raíces dadas: $x^3-S_1x^2+S_2x-S_3$",
+          "explicacion": "Con raíces $r_1,r_2,r_3$, sea $S_1$ su suma, $S_2$ la suma de productos de dos en dos y $S_3$ su producto. El polinomio mónico es $x^3-S_1x^2+S_2x-S_3$, con signos alternados. Ejemplo: raíces $1$, $-2$ y $4$: $S_1=3$; $S_2=1\\cdot(-2)+1\\cdot4+(-2)\\cdot4=-2+4-8=-6$; $S_3=-8$. El polinomio es $x^3-3x^2-6x+8$. Verificación: $(x-1)(x+2)(x-4)=x^3-3x^2-6x+8$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ecuación cuártica",
+      "puntos": [
+        {
+          "texto": "Cuártica: las cuatro relaciones",
+          "explicacion": "Para $ax^4+bx^3+cx^2+dx+e=0$ con raíces $r_1,r_2,r_3,r_4$: la suma de raíces es $-\\frac{b}{a}$; la suma de productos de dos en dos es $\\frac{c}{a}$; la suma de productos de tres en tres es $-\\frac{d}{a}$; y el producto de las cuatro es $\\frac{e}{a}$. Ejemplo con $(x-1)(x-2)(x-3)(x-4)=x^4-10x^3+35x^2-50x+24$: suma $=10$; de dos en dos $=2+3+4+6+8+12=35$; de tres en tres $=6+8+12+24=50$; producto $=24$."
+        }
+      ]
+    },
+    {
+      "titulo": "Caso general",
+      "puntos": [
+        {
+          "texto": "Producto de raíces tomadas de $k$ en $k$ = $(-1)^k\\frac{a_{n-k}}{a_n}$",
+          "explicacion": "En $a_nx^n+a_{n-1}x^{n-1}+\\cdots+a_1x+a_0=0$, la suma de los productos de las raíces tomadas de $k$ en $k$ es $(-1)^k\\frac{a_{n-k}}{a_n}$, para $k=1,2,\\dots,n$. Con $k=1$ resulta la suma de raíces, $-\\frac{a_{n-1}}{a_n}$; con $k=n$ resulta el producto de todas, $(-1)^n\\frac{a_0}{a_n}$. Los signos alternan porque cada raíz aparece en la forma factorizada como $(x-r)$."
+        },
+        {
+          "texto": "Suma de raíces = $-\\frac{a_{n-1}}{a_n}$",
+          "explicacion": "La suma de todas las raíces de un polinomio de grado $n$ es el opuesto del coeficiente de $x^{n-1}$ dividido entre el coeficiente principal. En $x^5-3x^4+2x-7$ la suma de raíces es $-\\frac{-3}{1}=3$. En $2x^4+8x^3-x+1$ es $-\\frac{8}{2}=-4$. Si falta el término de grado $n-1$, la suma de raíces es cero."
+        },
+        {
+          "texto": "Producto de raíces = $(-1)^n\\frac{a_0}{a_n}$",
+          "explicacion": "El producto de todas las raíces es el término independiente dividido entre el coeficiente principal, con signo $(-1)^n$. Para grado par el signo es positivo y para grado impar es negativo. Ejemplo: $x^2-5x+6$ da $\\frac{6}{1}=6$; $x^3-6x^2+11x-6$ da $-\\frac{-6}{1}=6$; $2x^3+x-4$ da $-\\frac{-4}{2}=2$."
+        },
+        {
+          "texto": "Raíz igual a cero: término independiente nulo",
+          "explicacion": "Como el producto de las raíces es $(-1)^n\\frac{a_0}{a_n}$, una de las raíces vale cero si y solo si $a_0=0$. Ejemplo: $x^3-6x^2+5x=x(x^2-6x+5)=x(x-1)(x-5)$ tiene raíces 0, 1 y 5, y su término independiente es 0. Verificación: el producto $0\\cdot1\\cdot5=0$. La afirmación vale en ambos sentidos: si el término independiente es cero, el producto de las raíces es cero y alguna raíz es cero; y si alguna raíz es cero, el producto es cero y el término independiente también lo es. Además, se puede sacar $x$ como factor común."
+        }
+      ]
+    },
+    {
+      "titulo": "Multiplicidad y complejas",
+      "puntos": [
+        {
+          "texto": "Raíces repetidas: se cuentan con su multiplicidad",
+          "explicacion": "Las relaciones consideran cada raíz tantas veces como su multiplicidad. Ejemplo: $x^2-6x+9=(x-3)^2$ tiene la raíz 3 con multiplicidad 2, de modo que las raíces a considerar son 3 y 3: suma $6=-\\frac{-6}{1}$ y producto $9=\\frac{9}{1}$. Si se contara solo una vez, las fórmulas no se cumplirían."
+        },
+        {
+          "texto": "Raíces complejas: las relaciones se cumplen igual",
+          "explicacion": "Las relaciones valen aunque las raíces sean números complejos. Ejemplo: $x^2+4=0$ tiene raíces $2i$ y $-2i$, con suma $0=-\\frac{0}{1}$ y producto $(2i)(-2i)=-4i^2=4=\\frac{4}{1}$. Con coeficientes reales, las raíces complejas aparecen en pares conjugados: $x^2-2x+5=0$ tiene raíces $1+2i$ y $1-2i$, con suma $2$ y producto $1+4=5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Expresiones simétricas",
+      "puntos": [
+        {
+          "texto": "Suma de cuadrados: $r_1^2+r_2^2=S^2-2P$",
+          "explicacion": "Con $S=r_1+r_2$ y $P=r_1r_2$, se cumple $r_1^2+r_2^2=(r_1+r_2)^2-2r_1r_2=S^2-2P$. Ejemplo con $x^2-5x+6=0$: $S=5$ y $P=6$, de modo que la suma de cuadrados es $25-12=13$. Verificación con las raíces 2 y 3: $4+9=13$. La ventaja del método es que se obtiene el valor sin resolver la ecuación. Otro caso: $2x^2-7x+3=0$ tiene $S=\\frac{7}{2}$ y $P=\\frac{3}{2}$, y la suma de cuadrados es $\\frac{49}{4}-3=\\frac{37}{4}$. Verificación con las raíces 3 y $\\frac{1}{2}$: $9+\\frac{1}{4}=\\frac{37}{4}$."
+        },
+        {
+          "texto": "Suma de inversos: $\\frac{1}{r_1}+\\frac{1}{r_2}=\\frac{S}{P}$",
+          "explicacion": "Al sumar fracciones: $\\frac{1}{r_1}+\\frac{1}{r_2}=\\frac{r_1+r_2}{r_1r_2}=\\frac{S}{P}$, siempre que $P\\neq0$. Ejemplo con $x^2-5x+6=0$: $\\frac{5}{6}$. Verificación con las raíces 2 y 3: $\\frac{1}{2}+\\frac{1}{3}=\\frac{5}{6}$. Otro caso: $2x^2-7x+3=0$ tiene $S=\\frac{7}{2}$ y $P=\\frac{3}{2}$, de modo que la suma de inversos es $\\frac{7/2}{3/2}=\\frac{7}{3}$. Verificación con las raíces 3 y $\\frac{1}{2}$: $\\frac{1}{3}+2=\\frac{7}{3}$. La condición $P\\neq0$ asegura que ninguna raíz es cero."
+        },
+        {
+          "texto": "Diferencia de raíces: $(r_1-r_2)^2=S^2-4P$",
+          "explicacion": "El cuadrado de la diferencia se obtiene de $(r_1-r_2)^2=(r_1+r_2)^2-4r_1r_2=S^2-4P$. Ejemplo con $x^2-5x+6=0$: $25-24=1$, de modo que $|r_1-r_2|=1$. Verificación: $3-2=1$. Esta expresión coincide con $\\frac{b^2-4ac}{a^2}$, el discriminante dividido entre $a^2$. Para extraer la diferencia se saca raíz cuadrada y se obtiene su valor absoluto, porque el orden de las raíces no está determinado. Otro caso: $2x^2-7x+3=0$ da $\\frac{49}{4}-6=\\frac{25}{4}$, así que $|r_1-r_2|=\\frac{5}{2}$, y las raíces 3 y $\\frac{1}{2}$ difieren en $\\frac{5}{2}$."
+        },
+        {
+          "texto": "Suma de cubos: $r_1^3+r_2^3=S^3-3SP$",
+          "explicacion": "Se deduce de $(r_1+r_2)^3=r_1^3+r_2^3+3r_1r_2(r_1+r_2)$, de donde $r_1^3+r_2^3=S^3-3SP$. Ejemplo con $x^2-5x+6=0$: $125-3\\cdot5\\cdot6=125-90=35$. Verificación con las raíces 2 y 3: $8+27=35$. Otro caso: $2x^2-7x+3=0$ con $S=\\frac{7}{2}$ y $P=\\frac{3}{2}$: $\\frac{343}{8}-3\\cdot\\frac{7}{2}\\cdot\\frac{3}{2}=\\frac{343}{8}-\\frac{63}{4}=\\frac{217}{8}$. Verificación con las raíces 3 y $\\frac{1}{2}$: $27+\\frac{1}{8}=\\frac{217}{8}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces con condiciones",
+      "puntos": [
+        {
+          "texto": "Una raíz es el doble de la otra",
+          "explicacion": "Si las raíces de $x^2-5x+k=0$ cumplen $r_2=2r_1$, la suma da $3r_1=5$, de donde $r_1=\\frac{5}{3}$ y $r_2=\\frac{10}{3}$. El producto da $k=r_1r_2=\\frac{5}{3}\\cdot\\frac{10}{3}=\\frac{50}{9}$. Verificación: $\\frac{5}{3}+\\frac{10}{3}=5$ y el producto es $\\frac{50}{9}$. El procedimiento es: se escribe la condición entre las raíces, se combina con la suma para hallar cada raíz, y con el producto se obtiene el coeficiente desconocido. No hace falta resolver la ecuación original, que además depende del valor de $k$ que se busca."
+        },
+        {
+          "texto": "Raíces opuestas ⇒ suma cero",
+          "explicacion": "Si las raíces son opuestas, su suma es cero y el coeficiente de $x$ es cero. En $x^2-(m-3)x-4=0$ con raíces opuestas: $m-3=0$ da $m=3$. La ecuación queda $x^2-4=0$, con raíces $2$ y $-2$, y producto $-4$. Verificación: $2+(-2)=0$."
+        },
+        {
+          "texto": "Raíces recíprocas ⇒ producto 1",
+          "explicacion": "Si las raíces son inversas una de la otra, su producto es 1, de modo que el término independiente es igual al coeficiente principal. Si $ax^2+bx+a=0$, el producto es $\\frac{a}{a}=1$. Ejemplo: $2x^2-5x+2=0$ tiene raíces $2$ y $\\frac{1}{2}$, cuyo producto es 1 y cuya suma es $\\frac{5}{2}$."
+        },
+        {
+          "texto": "Tres raíces en progresión aritmética",
+          "explicacion": "Si las raíces están en progresión aritmética se escriben $a-r$, $a$ y $a+r$, y su suma es $3a$, lo que da $a$ de inmediato. Sea $x^3-9x^2+23x-15=0$. La suma $3a=9$ da $a=3$. El producto es $a(a^2-r^2)=15$, o sea $3(9-r^2)=15$, de donde $r^2=4$ y $r=2$. Las raíces son 1, 3 y 5. Verificación: $1\\cdot3+1\\cdot5+3\\cdot5=3+5+15=23$."
+        },
+        {
+          "texto": "Tres raíces en progresión geométrica",
+          "explicacion": "Si las raíces están en progresión geométrica se escriben $\\frac{a}{q}$, $a$ y $aq$, y su producto es $a^3$, lo que da $a$ de inmediato. Sea $x^3-7x^2+14x-8=0$. El producto es $-\\frac{-8}{1}=8=a^3$, de donde $a=2$. La suma $\\frac{2}{q}+2+2q=7$ da $2q^2-5q+2=0$, con $q=2$ o $q=\\frac{1}{2}$. Las raíces son 1, 2 y 4. Verificación: $1\\cdot2+1\\cdot4+2\\cdot4=14$."
+        }
+      ]
+    },
+    {
+      "titulo": "Raíces transformadas",
+      "puntos": [
+        {
+          "texto": "Raíces inversas: invertir los coeficientes",
+          "explicacion": "Si $r$ es raíz de $ax^2+bx+c=0$ y $r\\neq0$, entonces $\\frac{1}{r}$ es raíz de $cx^2+bx+a=0$, que tiene los coeficientes en orden inverso. Ejemplo: $2x^2-7x+3=0$ tiene raíces 3 y $\\frac{1}{2}$, y $3x^2-7x+2=0$ tiene raíces $\\frac{1}{3}$ y 2. Verificación: $3(\\frac{1}{9})-\\frac{7}{3}+2=\\frac{1}{3}-\\frac{7}{3}+2=0$. La razón es que al reemplazar $x$ por $\\frac{1}{x}$ en $ax^2+bx+c=0$ y multiplicar por $x^2$ se obtiene $a+bx+cx^2=0$. Este método funciona para cualquier grado: la ecuación de las raíces inversas se obtiene escribiendo los coeficientes en orden contrario."
+        },
+        {
+          "texto": "Raíces desplazadas: reemplazar $x$ por $x-k$",
+          "explicacion": "Para obtener una ecuación cuyas raíces son las de $P(x)=0$ aumentadas en $k$, se reemplaza $x$ por $x-k$. Ejemplo: $x^2-5x+6=0$ tiene raíces 2 y 3, y para obtener las raíces 3 y 4 se calcula $(x-1)^2-5(x-1)+6=x^2-2x+1-5x+5+6=x^2-7x+12$. Verificación con las relaciones: suma 7 y producto 12."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar coeficientes",
+      "puntos": [
+        {
+          "texto": "Suma de raíces conocida ⇒ hallar un coeficiente",
+          "explicacion": "Sea $2x^3-(k+1)x^2+5x-3=0$ con suma de raíces igual a 4. La suma es $-\\frac{-(k+1)}{2}=\\frac{k+1}{2}=4$, de donde $k+1=8$ y $k=7$. Verificación: la ecuación queda $2x^3-8x^2+5x-3=0$ y su suma de raíces es $\\frac{8}{2}=4$. El procedimiento es: se escribe la suma de raíces en términos de los coeficientes, se iguala al valor dado y se despeja la constante. Se debe cuidar el signo, porque la suma de raíces es el opuesto del coeficiente de $x^2$ dividido entre el coeficiente principal."
+        },
+        {
+          "texto": "Producto de raíces conocido ⇒ hallar el término independiente",
+          "explicacion": "Sea $x^3+2x^2-5x+c=0$ con producto de raíces igual a 6. El producto es $-\\frac{c}{1}=6$, de donde $c=-6$. Verificación: la ecuación queda $x^3+2x^2-5x-6=0$, cuyo producto de raíces es $-\\frac{-6}{1}=6$. Aquí el grado es 3, impar, de modo que el producto lleva signo menos: $-\\frac{c}{1}$. Con grado par el signo habría sido positivo. Confundir este signo es un error frecuente en los problemas de hallar constantes."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Temas 39, 40 y 49: base de las relaciones",
+          "explicacion": "Las relaciones usan la factorización por el teorema del factor del tema 40 y el hecho de que un polinomio de grado $n$ tiene $n$ raíces, que es el teorema fundamental del álgebra del tema 49. El teorema del resto del tema 39 permite verificar raíces."
+        },
+        {
+          "texto": "Temas 56 y siguientes: ecuaciones y funciones cuadráticas",
+          "explicacion": "Para la función cuadrática, las relaciones entre raíces y coeficientes dan la suma y el producto de los puntos donde la gráfica corta al eje horizontal, sin hallarlos individualmente, y permiten ubicar el eje de simetría como el punto medio de las raíces."
+        }
+      ]
+    }
+  ]
+}

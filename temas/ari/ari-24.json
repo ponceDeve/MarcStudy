@@ -1,0 +1,262 @@
+{
+  "curso": "Aritmética",
+  "tema": "Divisibilidad",
+  "glosario": {
+    "divisibilidad": "Relación entre enteros cuya división es exacta",
+    "divisible": "Que se divide con residuo cero",
+    "múltiplo": "Resultado de multiplicar por un entero",
+    "divisor": "Número que divide exactamente a otro",
+    "criterio de divisibilidad": "Regla que usa las cifras para decidir",
+    "transitividad": "Relación que se transmite en cadena",
+    "combinación lineal": "Suma de múltiplos enteros de varios números",
+    "primos entre sí": "Enteros cuyo único divisor común positivo es 1",
+    "número par": "Entero múltiplo de dos",
+    "número impar": "Entero que no es múltiplo de dos",
+    "paridad": "Condición de ser par o impar",
+    "división exacta": "División con residuo cero"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "«Divisibilidad»: $a$ es divisible por $b$ si $a = b \\cdot k$, con $k$ entero",
+          "explicacion": "Un entero $a$ es divisible por un entero no nulo $b$ cuando existe un entero $k$ tal que $a = b \\cdot k$. La relación expresa que $a$ puede repartirse en grupos iguales de tamaño $b$ sin que sobre ninguna unidad. Es la versión formal de la división exacta del tema 22, y su estudio constituye la base de la teoría de números elemental."
+        },
+        {
+          "texto": "Divisible = su «división exacta» tiene residuo cero",
+          "explicacion": "Decir que $a$ es divisible por $b$ equivale a afirmar que, en el algoritmo de la división, el residuo es cero. Si el residuo fuera positivo, no existiría ningún entero $k$ con $a = b \\cdot k$, pues el algoritmo garantiza la unicidad del cociente y del residuo. Por esta razón, la divisibilidad se verifica realizando la división o, de forma más económica, con los criterios del final del tema."
+        },
+        {
+          "texto": "«Múltiplo»: resultado de multiplicar por un entero",
+          "explicacion": "Si $a = b \\cdot k$ con $k$ entero, se dice que $a$ es múltiplo de $b$. Así, 36 es múltiplo de 9 porque $36 = 9 \\cdot 4$, y $-36$ también lo es porque $-36 = 9 \\cdot (-4)$. Todo entero no nulo tiene infinitos múltiplos, positivos, negativos y el cero."
+        },
+        {
+          "texto": "«Divisor»: número que divide exactamente a otro",
+          "explicacion": "Si $a = b \\cdot k$ con $b$ no nulo, el entero $b$ es un divisor de $a$, también llamado factor. Por ejemplo, 9 es divisor de 36. Divisor y múltiplo son nociones recíprocas: $b$ es divisor de $a$ exactamente cuando $a$ es múltiplo de $b$."
+        },
+        {
+          "texto": "El divisor debe ser distinto de cero",
+          "explicacion": "La condición $b \\ne 0$ es necesaria porque la división entre cero no está definida: $a = 0 \\cdot k$ solo sería posible para $a = 0$ y cualquier $k$, lo que no determina un cociente único. Esta restricción vale para los divisores, no para los múltiplos, pues el cero sí puede ser múltiplo de un entero no nulo."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación",
+      "puntos": [
+        {
+          "texto": "$b \\mid a$ se lee: $b$ divide a $a$",
+          "explicacion": "El símbolo $b \\mid a$ es la notación abreviada de la relación de divisibilidad, y se lee «$b$ divide a $a$». Su negación se escribe $b \\nmid a$. La barra vertical no representa una fracción ni una resta, sino la relación entre dos enteros en la que $b$ es divisor de $a$."
+        },
+        {
+          "texto": "Múltiplo de $n$: $\\overset{\\circ}{n}$",
+          "explicacion": "En muchos textos de aritmética, el conjunto de múltiplos de $n$ se denota con un pequeño círculo sobre el número, $\\overset{\\circ}{n}$, y una expresión como $N = \\overset{\\circ}{7}$ afirma que $N$ es múltiplo de 7. La notación se usa también como un valor genérico: $\\overset{\\circ}{n} + r$ representa un número que, al dividirlo entre $n$, deja residuo $r$."
+        },
+        {
+          "texto": "Los múltiplos de $n$ forman un conjunto infinito",
+          "explicacion": "El conjunto de múltiplos de $n$ es $\\{\\ldots, -2n, -n, 0, n, 2n, \\ldots\\}$ y es infinito en ambos sentidos. Contiene al cero, y la diferencia entre dos múltiplos consecutivos es siempre $|n|$, de modo que se distribuyen a intervalos regulares sobre la recta numérica. Por ejemplo, los múltiplos de 5 son $\\ldots, -10, -5, 0, 5, 10, \\ldots$. Aunque cada número tiene una cantidad finita de divisores, la cantidad de sus múltiplos nunca se agota."
+        }
+      ]
+    },
+    {
+      "titulo": "Casos básicos",
+      "puntos": [
+        {
+          "texto": "El cero es múltiplo de todo entero no nulo",
+          "explicacion": "Dado que $0 = n \\cdot 0$ para cualquier $n$, el cero es múltiplo de todo entero no nulo. En cambio, el cero no puede ser divisor de ningún número, porque no se puede dividir entre cero."
+        },
+        {
+          "texto": "El 1 y el $-1$ dividen a todo entero",
+          "explicacion": "Todo entero $a$ cumple $a = 1 \\cdot a = (-1) \\cdot (-a)$, de modo que 1 y $-1$ son divisores universales. Por eso todo número entero tiene, al menos, estos divisores, además de sí mismo y de su opuesto."
+        },
+        {
+          "texto": "Todo entero no nulo se divide a sí mismo",
+          "explicacion": "Para cualquier $a \\ne 0$ se cumple $a = a \\cdot 1$, de manera que $a \\mid a$. La divisibilidad es, por tanto, una relación reflexiva. Todo entero no nulo es, además, múltiplo de sí mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades",
+      "puntos": [
+        {
+          "texto": "«Transitividad»: si $a \\mid b$ y $b \\mid c$ ⇒ $a \\mid c$",
+          "explicacion": "Si $b = a \\cdot m$ y $c = b \\cdot n$, entonces $c = a \\cdot (m \\cdot n)$, que es múltiplo de $a$. Por ejemplo, 3 divide a 12 y 12 divide a 60, luego 3 divide a 60. La propiedad hace que un divisor de un divisor sea también divisor del número original."
+        },
+        {
+          "texto": "Suma y resta de múltiplos de $n$ = múltiplo de $n$",
+          "explicacion": "Si $a = n \\cdot p$ y $b = n \\cdot q$, entonces $a \\pm b = n(p \\pm q)$. En notación de múltiplos, $\\overset{\\circ}{n} \\pm \\overset{\\circ}{n} = \\overset{\\circ}{n}$. Esta propiedad es el fundamento de casi todos los criterios de divisibilidad."
+        },
+        {
+          "texto": "Múltiplo de $n$ por un entero = múltiplo de $n$",
+          "explicacion": "Si $a = n \\cdot p$ y $k$ es cualquier entero, entonces $a \\cdot k = n \\cdot (pk)$. En notación, $\\overset{\\circ}{n} \\cdot k = \\overset{\\circ}{n}$. Multiplicar por cualquier entero conserva la propiedad de ser múltiplo."
+        },
+        {
+          "texto": "Potencia de un múltiplo de $n$ = múltiplo de $n$",
+          "explicacion": "Si $a = \\overset{\\circ}{n}$ y $m$ es un exponente natural positivo, entonces $a^m = \\overset{\\circ}{n}$, ya que $a^m$ contiene al factor $n$ al menos una vez. Se escribe $(\\overset{\\circ}{n})^m = \\overset{\\circ}{n}$. La propiedad no es válida con exponente cero, pues $a^0 = 1$."
+        },
+        {
+          "texto": "«Combinación lineal»: $a \\mid b$ y $a \\mid c$ ⇒ $a \\mid mb + nc$",
+          "explicacion": "Si $a$ divide a $b$ y a $c$, entonces divide a cualquier combinación lineal $mb + nc$ con $m, n$ enteros, pues $mb + nc = a(mp + nq)$ cuando $b = ap$ y $c = aq$. Es una generalización de la suma y el producto de múltiplos y se utiliza con frecuencia en demostraciones de divisibilidad."
+        },
+        {
+          "texto": "Si $a \\mid b$ y $b \\ne 0$, entonces $|a| \\le |b|$",
+          "explicacion": "El divisor de un entero no nulo no puede tener mayor valor absoluto que el propio número, porque $b = a \\cdot k$ con $|k| \\ge 1$. En consecuencia, un entero no nulo tiene una cantidad finita de divisores, aunque tenga infinitos múltiplos."
+        },
+        {
+          "texto": "Si $a \\mid b$ y $b \\mid a$ ⇒ $a = \\pm b$",
+          "explicacion": "Dos enteros que se dividen mutuamente solo pueden diferir en el signo, pues de $|a| \\le |b|$ y $|b| \\le |a|$ se sigue $|a| = |b|$. Entre números naturales, la igualdad $a = b$ es la única posibilidad. Se dice que la divisibilidad es antisimétrica en los naturales."
+        },
+        {
+          "texto": "Si $a \\mid bc$ y $a$ es primo con $b$ ⇒ $a \\mid c$",
+          "explicacion": "Cuando $a$ divide a un producto $bc$ y no tiene divisores comunes con $b$ salvo el 1, entonces $a$ divide al otro factor $c$. Se dice que $a$ y $b$ son primos entre sí, concepto del tema 31. La propiedad, conocida como lema de Euclides en su forma generalizada, es fundamental para demostrar la factorización de enteros."
+        },
+        {
+          "texto": "Divisible por $a$ y por $b$, primos entre sí ⇒ divisible por $ab$",
+          "explicacion": "Si $a$ y $b$ son primos entre sí y un número es divisible por ambos, entonces es divisible por su producto. De ahí que un número divisible por 2 y por 3 lo sea por 6, y que divisible por 4 y por 9 lo sea por 36. Se deduce de la propiedad anterior: si $N = a \\cdot k$ y $b \\mid N$, entonces $b \\mid k$."
+        }
+      ]
+    },
+    {
+      "titulo": "Cantidad de múltiplos",
+      "puntos": [
+        {
+          "texto": "Múltiplos positivos de $n$ hasta $N$: $\\lfloor N \\div n \\rfloor$",
+          "explicacion": "La cantidad de múltiplos positivos de $n$ que no superan $N$ es la parte entera del cociente $N \\div n$. Por ejemplo, entre 1 y 100 hay $\\lfloor 100 \\div 7 \\rfloor = 14$ múltiplos de 7, el último de los cuales es 98. El resultado es el cociente por defecto de $N$ entre $n$."
+        },
+        {
+          "texto": "Múltiplos de $n$ entre $a$ y $b$: $\\lfloor b \\div n \\rfloor - \\lfloor (a-1) \\div n \\rfloor$",
+          "explicacion": "Para contar los múltiplos de $n$ en el intervalo de $a$ a $b$, ambos incluidos y positivos, se resta la cantidad de múltiplos hasta $a - 1$ de la cantidad hasta $b$. Entre 50 y 200 hay $\\lfloor 200 \\div 6 \\rfloor - \\lfloor 49 \\div 6 \\rfloor = 33 - 8 = 25$ múltiplos de 6, el primero 54 y el último 198."
+        }
+      ]
+    },
+    {
+      "titulo": "Paridad",
+      "puntos": [
+        {
+          "texto": "«Número par»: $2k$",
+          "explicacion": "Un entero es par cuando es múltiplo de 2, es decir, cuando puede escribirse como $2k$ con $k$ entero. Su cifra de las unidades es 0, 2, 4, 6 u 8, lo cual permite reconocer la paridad con solo mirar la última cifra. En notación de múltiplos se escribe $\\overset{\\circ}{2}$, y el cero también es un número par, pues $0 = 2 \\cdot 0$."
+        },
+        {
+          "texto": "«Número impar»: $2k + 1$",
+          "explicacion": "Un entero es impar cuando no es múltiplo de 2, esto es, cuando deja residuo 1 al dividirlo entre 2 y puede escribirse como $2k + 1$. Su última cifra es 1, 3, 5, 7 o 9. Se escribe $\\overset{\\circ}{2} + 1$."
+        },
+        {
+          "texto": "«Paridad» de la suma: iguales ⇒ par, distintos ⇒ impar",
+          "explicacion": "La suma de dos pares es par, la suma de dos impares es par y la suma de un par y un impar es impar. Se deduce al escribir $2a + 2b = 2(a+b)$, $(2a+1) + (2b+1) = 2(a+b+1)$ y $2a + (2b+1) = 2(a+b)+1$."
+        },
+        {
+          "texto": "El producto es impar solo si ambos factores son impares",
+          "explicacion": "Basta que un factor sea par para que el producto sea par, porque contiene al factor 2. El producto de dos impares es impar: $(2a+1)(2b+1) = 2(2ab + a + b) + 1$. Por extensión, un producto de varios enteros es impar únicamente si todos son impares."
+        }
+      ]
+    },
+    {
+      "titulo": "Criterios de divisibilidad",
+      "puntos": [
+        {
+          "texto": "«Criterio de divisibilidad»: regla basada en las cifras",
+          "explicacion": "Un criterio de divisibilidad permite decidir si un número es divisible por otro sin efectuar la división, examinando algunas de sus cifras o una combinación de ellas. Se fundamenta en el desarrollo $N = a_0 + a_1 \\cdot 10 + a_2 \\cdot 10^2 + \\cdots$ y en las relaciones entre las potencias de diez y el divisor considerado. Cada criterio que sigue conserva esa justificación en su explicación."
+        },
+        {
+          "texto": "Por 2: la última cifra es par",
+          "explicacion": "Un número es divisible por 2 cuando su última cifra es 0, 2, 4, 6 u 8. Se debe a que $10$ es múltiplo de 2, por lo que todos los términos del desarrollo salvo el último lo son. Por ejemplo, 3846 es divisible por 2."
+        },
+        {
+          "texto": "Por 3: la suma de las cifras es múltiplo de 3",
+          "explicacion": "Un número es divisible por 3 si la suma de sus cifras lo es. Como $10^k = \\overset{\\circ}{9} + 1$ para todo $k$, cada potencia de diez deja resto 1 al dividirla entre 3, y el número deja el mismo resto que la suma de sus cifras. Por ejemplo, 7623 tiene cifras que suman 18, múltiplo de 3."
+        },
+        {
+          "texto": "Por 4: las dos últimas cifras forman múltiplo de 4",
+          "explicacion": "Un número es divisible por 4 si el número formado por sus dos últimas cifras es múltiplo de 4, o si ambas son ceros. Se debe a que $100$ es múltiplo de 4, por lo que solo las dos últimas cifras importan. Por ejemplo, 5372 es divisible por 4 porque 72 lo es."
+        },
+        {
+          "texto": "Por 5: la última cifra es 0 o 5",
+          "explicacion": "Un número es divisible por 5 si termina en 0 o en 5. Como $10$ es múltiplo de 5, solo la cifra de las unidades puede aportar un residuo. Por ejemplo, 2385 es divisible por 5."
+        },
+        {
+          "texto": "Por 6: es divisible por 2 y por 3",
+          "explicacion": "Como 2 y 3 son primos entre sí y $6 = 2 \\cdot 3$, un número es divisible por 6 cuando cumple los criterios del 2 y del 3 a la vez. Por ejemplo, 5418 es par y sus cifras suman 18, luego es divisible por 6."
+        },
+        {
+          "texto": "Por 7: pesos $1, 3, 2, -1, -3, -2$ desde la derecha",
+          "explicacion": "Se multiplican las cifras, de derecha a izquierda, por los pesos 1, 3, 2, $-1$, $-3$, $-2$, repitiendo el ciclo si hace falta, y se suman los productos; el número es divisible por 7 si ese resultado lo es. Los pesos son los restos de $10^k$ al dividir entre 7, con los restos 6, 4 y 5 escritos como $-1$, $-3$ y $-2$. Para 1372, $2 \\cdot 1 + 7 \\cdot 3 + 3 \\cdot 2 + 1 \\cdot (-1) = 28$, múltiplo de 7."
+        },
+        {
+          "texto": "Por 8: las tres últimas cifras forman múltiplo de 8",
+          "explicacion": "Un número es divisible por 8 si el número formado por sus tres últimas cifras es múltiplo de 8, o si son ceros. Como 1000 es múltiplo de 8, las cifras anteriores no influyen. Por ejemplo, 21448 es divisible por 8 porque $448 = 8 \\cdot 56$."
+        },
+        {
+          "texto": "Por 9: la suma de las cifras es múltiplo de 9",
+          "explicacion": "Un número es divisible por 9 si la suma de sus cifras lo es. La justificación es la misma que la del 3: $10^k = \\overset{\\circ}{9} + 1$. Por ejemplo, 7623 tiene suma 18, múltiplo de 9, y en efecto $7623 = 9 \\cdot 847$."
+        },
+        {
+          "texto": "Por 10: la última cifra es 0",
+          "explicacion": "Un número es divisible por 10 si termina en cero, pues $10$ divide a $10^k$ para todo $k \\ge 1$ y la cifra de las unidades debe ser nula. Es equivalente a ser divisible por 2 y por 5 a la vez."
+        },
+        {
+          "texto": "Por 11: suma alternada de cifras múltiplo de 11",
+          "explicacion": "Se suman las cifras con signos alternados, comenzando por la última, que lleva signo positivo; si el resultado es múltiplo de 11, el número lo es. Se fundamenta en que $10^k = \\overset{\\circ}{11} + (-1)^k$. Para 91806, $6 - 0 + 8 - 1 + 9 = 22$, múltiplo de 11, y en efecto $91806 = 11 \\cdot 8346$."
+        },
+        {
+          "texto": "Por 13: pesos $1, -3, -4, -1, 3, 4$ desde la derecha",
+          "explicacion": "Se multiplican las cifras, de derecha a izquierda, por los pesos 1, $-3$, $-4$, $-1$, 3, 4, repitiendo el ciclo, y se suman los productos; el número es divisible por 13 si el resultado lo es. Los pesos provienen de los restos de $10^k$ al dividir entre 13. Para 2457, $7 - 15 - 16 - 2 = -26$, múltiplo de 13."
+        },
+        {
+          "texto": "Por $2^n$ y $5^n$: las últimas $n$ cifras",
+          "explicacion": "Un número es divisible por $2^n$ o por $5^n$ si el número formado por sus últimas $n$ cifras lo es, porque $10^n = 2^n \\cdot 5^n$ es múltiplo de ambos. Con $n=2$ se obtienen los criterios del 4 y del 25; con $n=3$, los del 8 y del 125."
+        },
+        {
+          "texto": "Por 25: terminar en 00, 25, 50 o 75",
+          "explicacion": "Un número es divisible por 25 si sus dos últimas cifras forman 00, 25, 50 o 75, que son los múltiplos de 25 menores que 100. La justificación es que $100 = 4 \\cdot 25$ es múltiplo de 25, de modo que solo las dos últimas cifras determinan la divisibilidad. Por ejemplo, 3475 es divisible por 25, mientras que 3485 no lo es."
+        },
+        {
+          "texto": "Por 125: las tres últimas cifras forman múltiplo de 125",
+          "explicacion": "Un número es divisible por 125 si sus tres últimas cifras forman un múltiplo de 125, es decir, 000, 125, 250, 375, 500, 625, 750 u 875. Se deduce de que $1000 = 8 \\cdot 125$. Por ejemplo, 46375 es divisible por 125."
+        },
+        {
+          "texto": "Criterio compuesto: factores primos entre sí",
+          "explicacion": "Para decidir la divisibilidad por un número compuesto se descompone como producto de factores primos entre sí y se aplican los criterios de cada uno. Por 12 se exige divisibilidad por 3 y por 4; por 15, por 3 y por 5; por 18, por 2 y por 9. Si los factores no son primos entre sí, el método no es válido."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Confundir divisor con múltiplo",
+          "explicacion": "Decir que $a$ es divisible por $b$ significa que $b$ divide a $a$, no al revés. Por ejemplo, 12 es divisible por 3, pero 3 no es divisible por 12. Invertir la relación es un error común al interpretar enunciados."
+        },
+        {
+          "texto": "Divisible por 4 y por 6 ≠ divisible por 24",
+          "explicacion": "El producto de los divisores solo es un divisor del número si estos son primos entre sí. Como 4 y 6 no lo son, un número divisible por ambos solo es divisible por 12, el menor común múltiplo, y no necesariamente por 24. Así, 12 es divisible por 4 y por 6, pero no por 24."
+        },
+        {
+          "texto": "El criterio del 4 usa las dos últimas cifras, no su suma",
+          "explicacion": "Para el 4 se examina el número formado por las dos últimas cifras, no la suma de ellas. En 5372 se estudia 72, no $7 + 2$. La suma de las cifras es el criterio del 3 y del 9, no del 4."
+        },
+        {
+          "texto": "El cero es múltiplo de todo, pero no es divisor",
+          "explicacion": "El cero es múltiplo de cualquier entero no nulo, pero no puede dividir a ningún número porque la división entre cero no está definida. Confundir ambos papeles produce afirmaciones incorrectas como decir que $0 \\mid 5$."
+        }
+      ]
+    },
+    {
+      "titulo": "Divisibilidad en enteros",
+      "puntos": [
+        {
+          "texto": "En $\\mathbb{Z}$ los divisores aparecen en pares $\\pm$",
+          "explicacion": "Si $b \\mid a$, también $-b \\mid a$, de modo que los divisores de un entero incluyen positivos y negativos. Los divisores de 12 en $\\mathbb{Z}$ son $\\pm 1, \\pm 2, \\pm 3, \\pm 4, \\pm 6, \\pm 12$. En los problemas de aritmética se suele considerar solo los divisores positivos, tema 28."
+        }
+      ]
+    },
+    {
+      "titulo": "Reseña histórica",
+      "puntos": [
+        {
+          "texto": "Euclides usó el verbo medir para la divisibilidad",
+          "explicacion": "Euclides de Alejandría, matemático griego del siglo III a. C., expuso en el Libro VII de los Elementos la teoría de los números en términos geométricos: decía que un número mide a otro cuando lo divide exactamente. Este uso es la base histórica del estudio de la divisibilidad."
+        }
+      ]
+    }
+  ]
+}

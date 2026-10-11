@@ -1,0 +1,247 @@
+{
+  "curso": "Trigonometría",
+  "tema": "Arco coseno",
+  "glosario": {
+    "arco coseno": "ángulo del tramo principal con ese coseno",
+    "dominio": "valores de entrada permitidos",
+    "rango": "valores de salida posibles",
+    "tramo principal": "intervalo donde la función no repite valores",
+    "función par": "no cambia al cambiar el signo de x",
+    "decreciente": "al aumentar x la función disminuye",
+    "ángulos complementarios": "ángulos que suman noventa grados",
+    "uno a uno": "cada salida proviene de una sola entrada",
+    "secante": "recíproca del coseno",
+    "radián": "unidad de ángulo basada en el arco"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "$y=\\arccos x$ implica $\\cos y=x$ con $y \\in \\left[0,\\pi\\right]$",
+          "explicacion": "La definición exige dos condiciones: que el coseno del ángulo $y$ valga $x$ y que $y$ esté entre 0 y $\\pi$. Ejemplo: para $x=\\frac{1}{2}$, $y=\\frac{\\pi}{3}$ cumple $\\cos\\frac{\\pi}{3}=\\frac{1}{2}$ y está en el tramo. Si una escalera de 4 m queda con su base a 2 m de la pared, $\\cos y=\\frac{2}{4}=\\frac{1}{2}$ y el ángulo con el suelo es $y=\\arccos\\frac{1}{2}=60°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio",
+      "puntos": [
+        {
+          "texto": "Dominio de $\\arccos x$: $[-1,1]$",
+          "explicacion": "Es el rango del coseno, ya que ningún ángulo tiene coseno mayor que 1 ni menor que $-1$. Ejemplo: $\\arccos(-1)=\\pi$ existe, pero $\\arccos(-3)$ no existe; la base de una escalera de 4 m no puede estar a 12 m de la pared."
+        }
+      ]
+    },
+    {
+      "titulo": "Rango",
+      "puntos": [
+        {
+          "texto": "Rango de $\\arccos x$: $\\left[0,\\pi\\right]$",
+          "explicacion": "El resultado siempre está entre 0° y 180°, el tramo donde el coseno no repite valores. Ejemplo: $\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}$ está en el rango; nunca se obtiene un ángulo negativo como $-\\frac{\\pi}{3}$, aunque su coseno también sea $\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en uno",
+      "puntos": [
+        {
+          "texto": "$\\arccos1=0$",
+          "explicacion": "Equivale a 0°, pues $\\cos0=1$. Es el valor mínimo del rango y el extremo derecho de la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √3/2",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\frac{\\sqrt{3}}{2}=\\frac{\\pi}{6}$",
+          "explicacion": "Equivale a 30°, pues $\\cos30°=\\frac{\\sqrt{3}}{2}$, aproximadamente 0,866."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en √2/2",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\frac{\\sqrt{2}}{2}=\\frac{\\pi}{4}$",
+          "explicacion": "Equivale a 45°, pues $\\cos45°=\\frac{\\sqrt{2}}{2}$, aproximadamente 0,7071."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en un medio",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\frac{1}{2}=\\frac{\\pi}{3}$",
+          "explicacion": "Equivale a 60°, pues $\\cos60°=\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en cero",
+      "puntos": [
+        {
+          "texto": "$\\arccos0=\\frac{\\pi}{2}$",
+          "explicacion": "Equivale a 90°, pues $\\cos\\frac{\\pi}{2}=0$. Está a mitad del rango."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en −1/2",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}$",
+          "explicacion": "Equivale a 120°, pues $\\cos120°=-\\frac{1}{2}$. El ángulo 240° tiene el mismo coseno pero queda fuera del rango."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en −√2/2",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\left(-\\frac{\\sqrt{2}}{2}\\right)=\\frac{3\\pi}{4}$",
+          "explicacion": "Equivale a 135°, pues $\\cos135°=-\\frac{\\sqrt{2}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en −√3/2",
+      "puntos": [
+        {
+          "texto": "$\\arccos\\left(-\\frac{\\sqrt{3}}{2}\\right)=\\frac{5\\pi}{6}$",
+          "explicacion": "Equivale a 150°, pues $\\cos150°=-\\frac{\\sqrt{3}}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Valor en menos uno",
+      "puntos": [
+        {
+          "texto": "$\\arccos(-1)=\\pi$",
+          "explicacion": "Equivale a 180°, pues $\\cos\\pi=-1$. Es el valor máximo del rango y el extremo izquierdo de la gráfica."
+        }
+      ]
+    },
+    {
+      "titulo": "Falta de paridad",
+      "puntos": [
+        {
+          "texto": "$\\arccos(-x)=\\pi-\\arccos x$",
+          "explicacion": "El coseno es par, pero el tramo $[0,\\pi]$ no es simétrico respecto a 0, así que el arco coseno no es impar ni par: el opuesto de la entrada refleja el ángulo respecto a $\\frac{\\pi}{2}$. Ejemplo: $\\arccos\\left(-\\frac{\\sqrt{3}}{2}\\right)=\\pi-\\frac{\\pi}{6}=\\frac{5\\pi}{6}$. Error frecuente: escribir $-\\frac{\\pi}{6}$, que está fuera del rango."
+        }
+      ]
+    },
+    {
+      "titulo": "Monotonía",
+      "puntos": [
+        {
+          "texto": "$\\arccos x$ ↓ en todo su dominio",
+          "explicacion": "Si $a<b$ en $[-1,1]$, entonces $\\arccos a>\\arccos b$, porque el coseno restringido decrece. Ejemplo: $0<\\frac{1}{2}$ da $\\arccos0=\\frac{\\pi}{2}>\\arccos\\frac{1}{2}=\\frac{\\pi}{3}$, es decir, $90°>60°$."
+        }
+      ]
+    },
+    {
+      "titulo": "Gráfica",
+      "puntos": [
+        {
+          "texto": "Gráfica de $y=\\arccos x$: va de $(-1,\\pi)$ a $(1,0)$",
+          "explicacion": "Es una curva decreciente con extremos en $(-1,\\pi)$ y $(1,0)$ que pasa por $\\left(0,\\frac{\\pi}{2}\\right)$. Puntos intermedios: $\\left(-\\frac{1}{2},\\frac{2\\pi}{3}\\right)$ y $\\left(\\frac{1}{2},\\frac{\\pi}{3}\\right)$. Es simétrica respecto al punto $\\left(0,\\frac{\\pi}{2}\\right)$, lo que refleja la relación $\\arccos(-x)=\\pi-\\arccos x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Suma con arco seno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{arcsen} x+\\arccos x=\\frac{\\pi}{2}$ para $-1 \\leq x \\leq 1$",
+          "explicacion": "Los dos ángulos son complementarios para cualquier razón del dominio. Ejemplo: con $x=\\frac{1}{2}$, $\\operatorname{arcsen}\\frac{1}{2}+\\arccos\\frac{1}{2}=\\frac{\\pi}{6}+\\frac{\\pi}{3}=\\frac{\\pi}{2}$; con $x=-\\frac{1}{2}$, $-\\frac{\\pi}{6}+\\frac{2\\pi}{3}=\\frac{\\pi}{2}$. Sirve para pasar de uno al otro: $\\arccos x=\\frac{\\pi}{2}-\\operatorname{arcsen} x$."
+        },
+        {
+          "texto": "Deducción de $\\operatorname{arcsen} x+\\arccos x=\\frac{\\pi}{2}$",
+          "explicacion": "Sea $\\theta=\\operatorname{arcsen} x$, con $\\theta\\in\\left[-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]$ y $\\operatorname{sen}\\theta=x$. Como $\\cos\\left(\\frac{\\pi}{2}-\\theta\\right)=\\operatorname{sen}\\theta=x$ y $\\frac{\\pi}{2}-\\theta$ queda en $[0,\\pi]$, ese ángulo es $\\arccos x$, es decir $\\arccos x=\\frac{\\pi}{2}-\\theta$. Al sumar se obtiene $\\theta+\\arccos x=\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Coseno de arco coseno",
+      "puntos": [
+        {
+          "texto": "$\\cos(\\arccos x)=x$ para $-1 \\leq x \\leq 1$",
+          "explicacion": "El ángulo hallado, evaluado en el coseno, devuelve la razón de partida. Ejemplo: $\\cos\\left(\\arccos\\left(-\\frac{3}{4}\\right)\\right)=-\\frac{3}{4}$. Si $x$ sale de $[-1,1]$, como $x=-3$, la expresión no existe."
+        }
+      ]
+    },
+    {
+      "titulo": "Arco coseno de coseno",
+      "puntos": [
+        {
+          "texto": "$\\arccos(\\cos x)=x$ para $0 \\leq x \\leq \\pi$",
+          "explicacion": "Solo se recupera el ángulo original si ya está en el tramo principal. Ejemplo: $\\arccos\\left(\\cos\\frac{\\pi}{3}\\right)=\\arccos\\frac{1}{2}=\\frac{\\pi}{3}$, y $\\arccos(\\cos\\pi)=\\arccos(-1)=\\pi$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos de segunda vuelta",
+      "puntos": [
+        {
+          "texto": "$\\arccos(\\cos x)=2\\pi-x$ para $\\pi \\leq x \\leq 2\\pi$",
+          "explicacion": "En este intervalo el ángulo $2\\pi-x$ cae en $[0,\\pi]$ y tiene el mismo coseno que $x$. Ejemplos: $x=\\frac{4\\pi}{3}$ da $2\\pi-\\frac{4\\pi}{3}=\\frac{2\\pi}{3}$ y se comprueba con $\\arccos\\left(-\\frac{1}{2}\\right)=\\frac{2\\pi}{3}$; $x=\\frac{3\\pi}{2}$ da $\\frac{\\pi}{2}$."
+        }
+      ]
+    },
+    {
+      "titulo": "Ángulos negativos",
+      "puntos": [
+        {
+          "texto": "$\\arccos(\\cos x)=-x$ para $-\\pi \\leq x \\leq 0$",
+          "explicacion": "El coseno es par, así que $\\cos x=\\cos(-x)$ y $-x$ cae en $[0,\\pi]$. Ejemplo: $x=-\\frac{\\pi}{3}$ da $\\arccos\\left(\\cos\\left(-\\frac{\\pi}{3}\\right)\\right)=\\arccos\\frac{1}{2}=\\frac{\\pi}{3}=-x$."
+        }
+      ]
+    },
+    {
+      "titulo": "Seno de arco coseno",
+      "puntos": [
+        {
+          "texto": "$\\operatorname{sen}(\\arccos x)=\\sqrt{1-x^{2}}$",
+          "explicacion": "Sale de $\\operatorname{sen}^{2}y=1-\\cos^{2}y$ con $y=\\arccos x$; la raíz es positiva porque $y$ está entre 0° y 180°, donde el seno no es negativo. Ejemplo: con $x=\\frac{5}{13}$, $\\operatorname{sen}(\\arccos x)=\\sqrt{1-\\frac{25}{169}}=\\sqrt{\\frac{144}{169}}=\\frac{12}{13}$, igual que en un triángulo de lados 5, 12 y 13."
+        }
+      ]
+    },
+    {
+      "titulo": "Tangente de arco coseno",
+      "puntos": [
+        {
+          "texto": "$\\tan(\\arccos x)=\\frac{\\sqrt{1-x^{2}}}{x}$ para $x \\neq 0$",
+          "explicacion": "Se obtiene dividiendo $\\operatorname{sen} y=\\sqrt{1-x^{2}}$ entre $\\cos y=x$; en $x=0$ el ángulo es 90° y la tangente no existe. Ejemplo: con $x=-\\frac{3}{5}$, $\\tan(\\arccos x)=\\frac{4/5}{-3/5}=-\\frac{4}{3}$, negativa porque el ángulo está en el cuadrante II."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominio de una composición",
+      "puntos": [
+        {
+          "texto": "$\\arccos(g(x))$ existe si $-1 \\leq g(x) \\leq 1$",
+          "explicacion": "La expresión interior debe quedar en el dominio del arco coseno. Ejemplo: para $\\arccos(1-2x)$ se exige $-1\\leq1-2x\\leq1$; restando 1, $-2\\leq-2x\\leq0$, y al dividir entre $-2$ se invierte el sentido: $0\\leq x\\leq1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad de arcos coseno",
+      "puntos": [
+        {
+          "texto": "$\\arccos a=\\arccos b$ implica $a=b$, con $a,b \\in [-1,1]$",
+          "explicacion": "Como el arco coseno es uno a uno, iguales resultados provienen de iguales entradas, comprobando que ambas pertenezcan a $[-1,1]$. Ejemplo: $\\arccos(2x)=\\arccos\\left(x+\\frac{1}{4}\\right)$ da $2x=x+\\frac{1}{4}$ y $x=\\frac{1}{4}$; las entradas valen $\\frac{1}{2}$ y $\\frac{1}{2}$, ambas en $[-1,1]$, luego $x=\\frac{1}{4}$ es solución."
+        }
+      ]
+    },
+    {
+      "titulo": "Distractor con la recíproca",
+      "puntos": [
+        {
+          "texto": "$\\arccos x \\neq \\frac{1}{\\cos x}$",
+          "explicacion": "El arco coseno devuelve un ángulo; la recíproca del coseno es la secante. Ejemplo con $x=0{,}5$: $\\arccos0{,}5=\\frac{\\pi}{3}\\approx1{,}047$ rad, mientras que $\\frac{1}{\\cos0{,}5}\\approx\\frac{1}{0{,}8776}\\approx1{,}139$, calculando el coseno en radianes."
+        }
+      ]
+    }
+  ]
+}

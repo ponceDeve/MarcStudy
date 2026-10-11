@@ -1,0 +1,239 @@
+{
+  "curso": "Álgebra",
+  "tema": "Modelación del mundo real con funciones (II)",
+  "glosario": {
+    "modelo": "Expresión matemática que describe una situación.",
+    "modelo exponencial": "Modelo con factor de cambio constante.",
+    "valor inicial": "Cantidad cuando el tiempo es cero.",
+    "factor de cambio": "Número por el que se multiplica periódicamente.",
+    "tasa": "Porcentaje de cambio por periodo.",
+    "crecimiento": "Aumento de una cantidad con el tiempo.",
+    "decaimiento": "Disminución de una cantidad con el tiempo.",
+    "interés compuesto": "Interés que se suma al capital.",
+    "capital": "Dinero inicial invertido.",
+    "monto": "Capital más intereses acumulados.",
+    "vida media": "Tiempo para reducirse a la mitad.",
+    "escala logarítmica": "Escala donde cada unidad multiplica por diez.",
+    "pH": "Medida de acidez de una solución.",
+    "decibelio": "Unidad del nivel de sonido.",
+    "intensidad": "Potencia del sonido por unidad de área.",
+    "amplitud": "Altura máxima de una onda.",
+    "logaritmo natural": "Logaritmo de base e.",
+    "inecuación exponencial": "Desigualdad con la incógnita en el exponente.",
+    "dominio": "Valores permitidos para la variable.",
+    "parámetro": "Constante que define un modelo."
+  },
+  "theory": [
+    {
+      "titulo": "Modelo exponencial",
+      "puntos": [
+        {
+          "texto": "«Modelo exponencial» $N(t)=N_0\\times a^t$ ⇒ cambio por factor constante",
+          "explicacion": "Un modelo exponencial describe una cantidad que en cada intervalo de tiempo igual se multiplica por el mismo número $a$. En la fórmula $N(t)=N_0\\times a^t$, $t$ es el tiempo transcurrido, $N_0$ es el valor inicial (cuando $t=0$), $a>0$ con $a\\ne 1$ es el factor de cambio por unidad de tiempo y $N(t)$ es la cantidad en el instante $t$. Si $a>1$ la cantidad crece y si $0<a<1$ decrece. Ejemplo: una colonia de bacterias que duplica su número cada hora y comienza con $500$ se modela con $N(t)=500\\times 2^t$, con $t$ en horas. Verificación: $N(0)=500$, $N(1)=1000$, $N(3)=500\\times 8=4000$."
+        },
+        {
+          "texto": "$a>1$ ⇒ la cantidad crece",
+          "explicacion": "Cuando el factor de cambio es mayor que uno, cada periodo multiplica la cantidad por un número mayor que uno y esta aumenta; la función es creciente. Ejemplo: $N(t)=100\\times 1.5^t$ crece, con $N(2)=100\\times 2.25=225>100$. Verificación: $N(1)=150$, $N(2)=225$ y cada valor es mayor que el anterior."
+        },
+        {
+          "texto": "$0<a<1$ ⇒ la cantidad decrece",
+          "explicacion": "Cuando el factor de cambio está entre cero y uno, cada periodo multiplica la cantidad por una fracción y esta disminuye, acercándose a cero sin llegar nunca a él; la función es decreciente. Ejemplo: $N(t)=100\\times 0.5^t$ decrece, con $N(2)=100\\times 0.25=25<100$. Verificación: $N(1)=50$, $N(2)=25$ y cada valor es menor que el anterior."
+        },
+        {
+          "texto": "$a=1+r$ ⇒ tasa de crecimiento $r$ por periodo",
+          "explicacion": "Si la cantidad aumenta un porcentaje $r$ (escrito como decimal) en cada periodo, el factor es $a=1+r$; si disminuye un porcentaje $r$, el factor es $a=1-r$. Ejemplo: un aumento del $5\\%$ anual da $a=1+0.05=1.05$ y una disminución del $10\\%$ anual da $a=1-0.10=0.90$. Verificación: $2000\\times 1.05=2100$, que es $2000$ más el $5\\%$ de $2000$."
+        },
+        {
+          "texto": "Dominio $t\\ge 0$ y rango $N>0$ ⇒ restricciones del modelo",
+          "explicacion": "En los modelos de tiempo transcurrido, la variable $t$ no es negativa, y como $a^t>0$ la cantidad siempre es positiva. En el decaimiento la curva se acerca al eje horizontal pero no lo toca. Ejemplo: en $N(t)=500\\times 2^t$ con $t\\ge 0$, el valor mínimo es $N(0)=500$ y no hay máximo. Verificación: $500\\times 2^t\\ge 500$ para $t\\ge 0$."
+        }
+      ]
+    },
+    {
+      "titulo": "Crecimiento y decaimiento",
+      "puntos": [
+        {
+          "texto": "$P(t)=P_0(1+r)^t$ ⇒ crecimiento porcentual",
+          "explicacion": "Cuando una cantidad inicial $P_0$ aumenta un porcentaje fijo $r$ por periodo, después de $t$ periodos vale $P(t)=P_0(1+r)^t$. Ejemplo: una población de $2000$ habitantes que crece $5\\%$ anual tendrá, en $3$ años, $P(3)=2000\\times 1.05^3=2000\\times 1.157625=2315.25$, es decir unos $2315$ habitantes. Verificación: $1.05\\times 1.05=1.1025$ y $1.1025\\times 1.05=1.157625$."
+        },
+        {
+          "texto": "$P(t)=P_0(1-r)^t$ ⇒ decaimiento porcentual",
+          "explicacion": "Cuando una cantidad disminuye un porcentaje fijo $r$ por periodo, vale $P(t)=P_0(1-r)^t$. Ejemplo: un equipo que vale $1000$ y pierde $10\\%$ de su valor cada año vale, a los $3$ años, $1000\\times 0.9^3=1000\\times 0.729=729$. Verificación: $1000\\to 900\\to 810\\to 729$."
+        },
+        {
+          "texto": "Tiempo de duplicación ⇒ $t=\\frac{\\ln 2}{\\ln(1+r)}$",
+          "explicacion": "El tiempo de duplicación no depende de la cantidad inicial, solo de la tasa: partiendo de cualquier valor, hay que multiplicar por $2$, y la ecuación $(1+r)^t=2$ se resuelve con logaritmos porque la incógnita está en el exponente. El tiempo para duplicar una cantidad con crecimiento porcentual $r$ resuelve $(1+r)^t=2$; al aplicar logaritmo natural, $t\\ln(1+r)=\\ln 2$. Ejemplo: con $r=0.05$, $t=\\frac{\\ln 2}{\\ln 1.05}=\\frac{0.693147}{0.048790}\\approx 14.21$ años. Verificación: $1.05^{14.21}\\approx 2.00$."
+        },
+        {
+          "texto": "Tiempo de reducción a la mitad ⇒ $t=\\frac{\\ln 0.5}{\\ln(1-r)}$",
+          "explicacion": "Igual que la duplicación, el tiempo en que la cantidad se reduce a la mitad no depende del valor inicial, sino solo de la tasa de disminución; la ecuación $(1-r)^t=0.5$ se resuelve con logaritmos, y el cociente es positivo porque ambos logaritmos son negativos. El tiempo para que una cantidad con decaimiento porcentual $r$ se reduzca a la mitad resuelve $(1-r)^t=0.5$. Ejemplo: con $r=0.10$, $t=\\frac{\\ln 0.5}{\\ln 0.9}=\\frac{-0.693147}{-0.105361}\\approx 6.58$ años. Verificación: $0.9^{6.58}\\approx 0.50$."
+        }
+      ]
+    },
+    {
+      "titulo": "Base $e$",
+      "puntos": [
+        {
+          "texto": "$N(t)=N_0e^{kt}$ ⇒ modelo continuo con base $e$",
+          "explicacion": "El modelo continuo usa la base $e\\approx 2.71828$ y una constante $k$ llamada tasa continua: $k>0$ da crecimiento y $k<0$ da decaimiento. Ejemplo: con $N_0=100$ y $k=0.2$, $N(5)=100e^{0.2\\times 5}=100e^{1}\\approx 271.83$. Verificación: $e^{1}\\approx 2.71828$ y $100\\times 2.71828=271.83$."
+        },
+        {
+          "texto": "$a=e^k$ ⇒ $k=\\ln a$",
+          "explicacion": "Esta equivalencia permite pasar entre las dos formas del modelo exponencial: la que usa un factor $a$ por periodo y la que usa la tasa continua $k$. Se obtiene aplicando la identidad $a=e^{\\ln a}$, de modo que $a^t=e^{t\\ln a}$. Un modelo $N_0a^t$ se escribe con base $e$ tomando $k=\\ln a$, pues $a^t=e^{t\\ln a}$. Ejemplo: $N(t)=N_0\\times 2^t$ es lo mismo que $N_0e^{kt}$ con $k=\\ln 2\\approx 0.6931$. Verificación: $e^{0.6931}\\approx 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Hallar parámetros",
+      "puntos": [
+        {
+          "texto": "Dos datos ⇒ determinar $N_0$ y $a$",
+          "explicacion": "Con dos puntos $(t_1,N_1)$ y $(t_2,N_2)$ de un modelo $N_0a^t$ se plantea un sistema: dividiendo las dos ecuaciones se elimina $N_0$ y se despeja $a$. Ejemplo: $(1,6)$ y $(3,54)$ dan $\\frac{54}{6}=a^{3-1}$, es decir $9=a^2$ y $a=3$; luego $N_0=\\frac{6}{3}=2$ y el modelo es $N(t)=2\\times 3^t$. Verificación: $N(1)=6$ y $N(3)=2\\times 27=54$."
+        },
+        {
+          "texto": "Dato en $t=0$ ⇒ valor inicial directo",
+          "explicacion": "Si se conoce el valor en $t=0$, ese valor es $N_0$, y un segundo dato da $a$. Ejemplo: $(0,200)$ y $(3,1600)$ dan $N_0=200$ y $1600=200a^3$, es decir $a^3=8$ y $a=2$. El modelo es $N(t)=200\\times 2^t$. Verificación: $N(3)=200\\times 8=1600$."
+        },
+        {
+          "texto": "Cociente constante ⇒ reconocer un modelo exponencial",
+          "explicacion": "Si los valores sucesivos de una cantidad, en intervalos iguales, tienen cociente constante, el modelo es exponencial con $a$ igual a ese cociente; si tienen diferencia constante, es lineal. Ejemplo: $100,\\ 150,\\ 225$ tienen cocientes $\\frac{150}{100}=1.5$ y $\\frac{225}{150}=1.5$, por lo que $N(t)=100\\times 1.5^t$. Verificación: $N(2)=100\\times 2.25=225$."
+        }
+      ]
+    },
+    {
+      "titulo": "Despejar el tiempo",
+      "puntos": [
+        {
+          "texto": "$N_0a^t=N$ ⇒ $t=\\log_a\\frac{N}{N_0}$",
+          "explicacion": "Para hallar el tiempo en que la cantidad llega a un valor $N$ se despeja $a^t=\\frac{N}{N_0}$ y se aplica el logaritmo en base $a$, o $t=\\frac{\\ln(N/N_0)}{\\ln a}$. Ejemplo: $500\\times 2^t=32000$ da $2^t=64$ y $t=\\log_2 64=6$ horas. Otro: $1000\\times 1.5^t=5000$ da $1.5^t=5$ y $t=\\frac{\\ln 5}{\\ln 1.5}=\\frac{1.6094}{0.4055}\\approx 3.97$. Verificación: $500\\times 2^6=32000$ y $1.5^{3.97}\\approx 5$."
+        },
+        {
+          "texto": "Superar un valor ⇒ inecuación exponencial",
+          "explicacion": "Para saber cuándo la cantidad supera un valor $N$ se plantea una inecuación exponencial, como en el tema «Inecuaciones exponenciales». Ejemplo: $500\\times 2^t>10000$ da $2^t>20$ y, con base $2>1$, $t>\\log_2 20\\approx 4.32$ horas. Verificación: $t=5$ da $500\\times 32=16000>10000$; $t=4$ da $500\\times 16=8000$, falso."
+        }
+      ]
+    },
+    {
+      "titulo": "Interés compuesto",
+      "puntos": [
+        {
+          "texto": "$A=P\\left(1+\\frac{r}{n}\\right)^{nt}$ ⇒ interés compuesto",
+          "explicacion": "El monto $A$ de un capital $P$ con tasa anual $r$ (decimal), capitalizado $n$ veces al año durante $t$ años, es $A=P\\left(1+\\frac{r}{n}\\right)^{nt}$. Ejemplo: con $P=1000$, $r=0.06$, $n=12$ y $t=2$ resulta $A=1000\\left(1+\\frac{0.06}{12}\\right)^{24}=1000\\times 1.005^{24}\\approx 1000\\times 1.12716=1127.16$. Verificación: $1.005^{24}\\approx 1.12716$."
+        },
+        {
+          "texto": "$A=Pe^{rt}$ ⇒ interés compuesto continuamente",
+          "explicacion": "La capitalización continua es el caso límite de capitalizar cada vez más seguido; aquí $r$ es la tasa anual en decimal, $t$ es el tiempo en años, $P$ es el capital inicial y $A$ es el monto acumulado. Cuando la capitalización es continua, el monto es $A=Pe^{rt}$. Ejemplo: con $P=1000$, $r=0.06$ y $t=2$, $A=1000e^{0.12}\\approx 1000\\times 1.127497=1127.50$. Verificación: resulta ligeramente mayor que $1127.16$, el monto con capitalización mensual."
+        },
+        {
+          "texto": "Duplicación con interés continuo ⇒ $t=\\frac{\\ln 2}{r}$",
+          "explicacion": "Para duplicar el capital, se iguala $Pe^{rt}=2P$; el capital $P$ se cancela y queda $e^{rt}=2$, de modo que el tiempo depende solo de la tasa $r$ y no del capital inicial, y se despeja con el logaritmo natural. El tiempo para duplicar el capital con capitalización continua resuelve $e^{rt}=2$, de donde $t=\\frac{\\ln 2}{r}$. Ejemplo: con $r=0.06$, $t=\\frac{0.693147}{0.06}\\approx 11.55$ años. Verificación: $e^{0.06\\times 11.55}=e^{0.693}\\approx 2$."
+        }
+      ]
+    },
+    {
+      "titulo": "Vida media",
+      "puntos": [
+        {
+          "texto": "$N(t)=N_0\\left(\\frac{1}{2}\\right)^{t/T}$ ⇒ vida media $T$",
+          "explicacion": "La vida media $T$ es el tiempo que tarda una sustancia en reducirse a la mitad. Su cantidad después de $t$ unidades de tiempo es $N(t)=N_0\\left(\\frac{1}{2}\\right)^{t/T}$. Ejemplo: con $N_0=80$ gramos y $T=5$ días, a los $15$ días $N(15)=80\\times\\left(\\frac{1}{2}\\right)^{3}=10$ gramos. Verificación: $80\\to 40\\to 20\\to 10$ en tres periodos de $5$ días."
+        },
+        {
+          "texto": "Tiempo para una cantidad dada ⇒ igualar potencias de $\\frac{1}{2}$",
+          "explicacion": "Para hallar cuándo queda una cantidad $N$, se resuelve $\\left(\\frac{1}{2}\\right)^{t/T}=\\frac{N}{N_0}$ escribiendo ambos lados como potencias de $\\frac{1}{2}$ cuando es posible. Ejemplo: de $80$ a $5$ gramos con $T=5$: $\\left(\\frac{1}{2}\\right)^{t/5}=\\frac{5}{80}=\\frac{1}{16}=\\left(\\frac{1}{2}\\right)^4$, luego $\\frac{t}{5}=4$ y $t=20$ días. Verificación: $80\\times\\left(\\frac{1}{2}\\right)^4=5$."
+        },
+        {
+          "texto": "$k=\\frac{\\ln 2}{T}$ ⇒ tasa continua del decaimiento",
+          "explicacion": "La relación entre la vida media $T$ y la tasa continua $k$ surge de exigir $N(T)=\\frac{N_0}{2}$, es decir $e^{-kT}=\\frac{1}{2}$; al aplicar el logaritmo natural resulta $kT=\\ln 2$, que da el valor de $k$. Escrito con base $e$, el decaimiento es $N(t)=N_0e^{-kt}$ con $k=\\frac{\\ln 2}{T}$. Ejemplo: con $T=5$, $k=\\frac{0.693147}{5}\\approx 0.1386$. Verificación: $e^{-0.1386\\times 5}=e^{-0.693}\\approx 0.5$, la mitad."
+        }
+      ]
+    },
+    {
+      "titulo": "Ley de enfriamiento",
+      "puntos": [
+        {
+          "texto": "$T(t)=T_a+(T_0-T_a)e^{-kt}$ ⇒ enfriamiento",
+          "explicacion": "Un objeto con temperatura inicial $T_0$ en un ambiente de temperatura constante $T_a$ se acerca a $T_a$ con $T(t)=T_a+(T_0-T_a)e^{-kt}$, donde $k>0$ depende del objeto. Ejemplo: con $T_0=90$, $T_a=20$ y $k=0.1$, a los $5$ minutos $T(5)=20+70e^{-0.5}\\approx 20+70\\times 0.60653=62.46$. Verificación: $T(0)=20+70=90$ y la temperatura tiende a $20$ cuando $t$ crece."
+        },
+        {
+          "texto": "Tiempo hasta una temperatura ⇒ despejar con $\\ln$",
+          "explicacion": "El procedimiento consiste en aislar la exponencial, restando la temperatura del ambiente y dividiendo entre la diferencia inicial, y luego aplicar el logaritmo natural para bajar el exponente y despejar el tiempo. Para hallar cuándo se llega a una temperatura $T$, se aísla $e^{-kt}$ y se aplica $\\ln$. Ejemplo: $20+70e^{-0.1t}=40$ da $e^{-0.1t}=\\frac{20}{70}=\\frac{2}{7}$, luego $-0.1t=\\ln\\frac{2}{7}$ y $t=10\\ln 3.5\\approx 12.53$ minutos. Verificación: $70e^{-1.2528}\\approx 70\\times 0.2857=20$ y $20+20=40$."
+        }
+      ]
+    },
+    {
+      "titulo": "Escalas logarítmicas",
+      "puntos": [
+        {
+          "texto": "Escala logarítmica ⇒ iguales diferencias son iguales cocientes",
+          "explicacion": "En una escala logarítmica de base $10$, cada aumento de una unidad corresponde a multiplicar la cantidad medida por $10$. Se usa para magnitudes que abarcan muchos órdenes de tamaño. Ejemplo: $\\log 100=2$, $\\log 1000=3$ y $\\log 10000=4$. Verificación: del $100$ al $1000$ la cantidad se multiplica por $10$ y el logaritmo aumenta $1$."
+        },
+        {
+          "texto": "$\\mathrm{pH}=-\\log[\\mathrm{H}^+]$ ⇒ acidez",
+          "explicacion": "El pH, abreviatura de potencial de hidrógeno, mide la acidez de una solución: $[\\mathrm{H}^+]$ es la concentración de iones hidrógeno en moles por litro. Ejemplos: si $[\\mathrm{H}^+]=10^{-3}$, $\\mathrm{pH}=-\\log 10^{-3}=3$; si $[\\mathrm{H}^+]=2\\times 10^{-5}$, $\\mathrm{pH}=-\\log(2\\times 10^{-5})=5-\\log 2\\approx 5-0.3010=4.70$. Verificación: $10^{-4.70}\\approx 2\\times 10^{-5}$."
+        },
+        {
+          "texto": "$\\mathrm{pH}<7$ ⇒ $[\\mathrm{H}^+]>10^{-7}$",
+          "explicacion": "La desigualdad entre pH y concentración se invierte porque el pH usa el signo menos delante del logaritmo; el logaritmo de base diez es creciente, así que $\\log[\\mathrm{H}^+]>-7$ equivale a $[\\mathrm{H}^+]>10^{-7}$. La desigualdad $-\\log[\\mathrm{H}^+]<7$ equivale a $\\log[\\mathrm{H}^+]>-7$ y, con base $10>1$, a $[\\mathrm{H}^+]>10^{-7}$. Una solución con pH menor que $7$ es ácida. Ejemplo: $[\\mathrm{H}^+]=10^{-5}>10^{-7}$ da $\\mathrm{pH}=5<7$. Verificación: $-\\log 10^{-5}=5$."
+        },
+        {
+          "texto": "$L=10\\log\\frac{I}{I_0}$ ⇒ nivel de sonido en decibelios",
+          "explicacion": "El nivel sonoro $L$ en decibelios (dB, unidad de nivel sonoro) es $L=10\\log\\frac{I}{I_0}$, con $I$ la intensidad del sonido y $I_0=10^{-12}$ vatios por metro cuadrado la intensidad de referencia. Ejemplo: con $I=10^{-6}$, $L=10\\log\\frac{10^{-6}}{10^{-12}}=10\\log 10^6=60$ dB. Verificación: multiplicar la intensidad por $10$ suma $10\\log 10=10$ dB, y duplicarla suma $10\\log 2\\approx 3.01$ dB."
+        },
+        {
+          "texto": "$M=\\log\\frac{A}{A_0}$ ⇒ magnitud sísmica de Richter",
+          "explicacion": "En la escala de Richter, nombrada por Charles Richter, la magnitud es $M=\\log\\frac{A}{A_0}$, donde $A$ es la amplitud medida de las ondas sísmicas y $A_0$ una amplitud de referencia. Ejemplo: si $A=1000A_0$, $M=\\log 1000=3$. Verificación: si la amplitud se multiplica por $10$, la magnitud aumenta en $1$."
+        }
+      ]
+    },
+    {
+      "titulo": "Estrategia de modelación",
+      "puntos": [
+        {
+          "texto": "Paso 1: identificar variables y unidades",
+          "explicacion": "Se define qué representa cada variable, en qué unidades se mide (horas, años, gramos) y cuáles son los datos conocidos. Ejemplo: en el problema de bacterias, $t$ son horas y $N$ es el número de bacterias, con $N(0)=500$. Verificación: todas las cantidades deben usar unidades coherentes."
+        },
+        {
+          "texto": "Paso 2: elegir el tipo de modelo",
+          "explicacion": "Si la cantidad se multiplica por un factor constante en cada periodo, se elige un modelo exponencial; si el dato es una cantidad que abarca potencias de diez, como el pH, se elige una escala logarítmica; si el cambio es una suma constante, se elige uno lineal. Ejemplo: duplicar cada hora es un factor constante $2$. Verificación: los cocientes sucesivos son iguales."
+        },
+        {
+          "texto": "Paso 3: determinar los parámetros con los datos",
+          "explicacion": "Los parámetros del modelo son las constantes que lo caracterizan; se calculan reemplazando los datos conocidos en la fórmula y resolviendo las ecuaciones que resultan, que suelen ser sencillas porque casi siempre hay un dato en $t=0$. Se sustituyen los datos en la fórmula para hallar $N_0$, $a$ o $k$. Ejemplo: de $N(0)=500$ y $N(1)=1000$ resulta $N_0=500$ y $a=2$. Verificación: $N(1)=500\\times 2=1000$."
+        },
+        {
+          "texto": "Paso 4: resolver la pregunta del problema",
+          "explicacion": "Si se pide la cantidad en un instante, se evalúa la función; si se pide el instante para una cantidad, se despeja $t$ con logaritmos; si se pide cuándo se supera un valor, se plantea una inecuación. Ejemplo: $N(3)=4000$ evalúa, y $500\\times 2^t=32000$ da $t=6$. Verificación: $500\\times 2^6=32000$."
+        },
+        {
+          "texto": "Paso 5: verificar e interpretar",
+          "explicacion": "Se comprueba la respuesta en el modelo y se interpreta con las unidades y el dominio del problema, como $t\\ge 0$ y cantidad positiva. Ejemplo: $t=6$ horas es un valor válido porque $t\\ge 0$, y $N(6)=32000$ es positivo. Verificación: el resultado respeta las restricciones del modelo."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Función exponencial (tema 66) ⇒ base del modelo",
+          "explicacion": "El comportamiento de crecimiento o decaimiento de la función exponencial, junto con su dominio y su rango, define qué situaciones pueden modelarse con ella y cuáles no; por ejemplo, no puede representar cantidades que lleguen a cero en tiempo finito. El tema «Función exponencial» define $a^x$ y su comportamiento de crecimiento o decaimiento, que es el fundamento del modelo $N_0a^t$. Ejemplo: $2^t$ crece y $\\left(\\frac{1}{2}\\right)^t$ decrece. Verificación: $2^3=8>2^2=4$ y $\\left(\\frac{1}{2}\\right)^3<\\left(\\frac{1}{2}\\right)^2$."
+        },
+        {
+          "texto": "Función logarítmica (tema 67) ⇒ escalas",
+          "explicacion": "El tema «Función logarítmica» da la función $\\log_a x$, que se usa en el pH, el nivel sonoro y la magnitud sísmica. Ejemplo: $\\mathrm{pH}=-\\log[\\mathrm{H}^+]$ es una función logarítmica decreciente de $[\\mathrm{H}^+]$. Verificación: a mayor concentración, menor pH."
+        },
+        {
+          "texto": "Ecuaciones exponenciales (tema 69) ⇒ despejar el tiempo",
+          "explicacion": "En los problemas de modelación la incógnita casi siempre es el tiempo, que está en el exponente; por eso se aplican los métodos de igualar bases cuando es posible y de logaritmos cuando no lo es. Para hallar el tiempo en que se alcanza un valor se resuelven ecuaciones exponenciales como las del tema «Ecuaciones exponenciales», igualando bases o aplicando logaritmos. Ejemplo: $2^t=64$ da $t=6$. Verificación: $2^6=64$."
+        },
+        {
+          "texto": "Ecuaciones logarítmicas (tema 70) ⇒ escalas de magnitud",
+          "explicacion": "En las escalas logarítmicas, la cantidad medida se obtiene resolviendo una ecuación logarítmica con la definición de logaritmo, pasando de la forma logarítmica a la exponencial, y por eso el tema anterior es la herramienta principal. Las ecuaciones del tema «Ecuaciones logarítmicas» permiten despejar la cantidad medida cuando se conoce el valor en la escala. Ejemplo: $\\mathrm{pH}=8$ da $-\\log[\\mathrm{H}^+]=8$, es decir $[\\mathrm{H}^+]=10^{-8}$. Verificación: $-\\log 10^{-8}=8$."
+        },
+        {
+          "texto": "Modelación del mundo real con funciones (tema 60) ⇒ misma metodología",
+          "explicacion": "El tema «Modelación del mundo real con funciones» aplicó modelos lineales, cuadráticos y de raíz cuadrada con la misma metodología: definir variables, elegir modelo, hallar parámetros, resolver e interpretar. Ejemplo: aquí se agregan los modelos exponencial y logarítmico. Verificación: el procedimiento es el mismo."
+        }
+      ]
+    }
+  ]
+}

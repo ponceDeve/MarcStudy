@@ -1,0 +1,153 @@
+{
+  "curso": "Aritmética",
+  "tema": "Sistema de números racionales",
+  "glosario": {
+    "números racionales": "Números que se escriben como cociente de enteros",
+    "numerador": "Entero que indica cuántas partes se toman",
+    "denominador": "Entero distinto de cero que divide la unidad",
+    "fracciones equivalentes": "Fracciones distintas que representan el mismo racional",
+    "opuesto": "Racional que sumado con otro da cero",
+    "inverso multiplicativo": "Racional que multiplicado por otro da uno",
+    "densidad": "Entre dos racionales siempre hay otro racional",
+    "recta numérica": "Recta cuyos puntos representan números ordenados",
+    "números enteros": "Naturales, sus opuestos y el cero",
+    "cuerpo": "Sistema con suma, resta, producto y división"
+  },
+  "theory": [
+    {
+      "titulo": "Definición",
+      "puntos": [
+        {
+          "texto": "Un «número racional» es el cociente de enteros $\\frac{a}{b}$, $b$ ≠ $0$",
+          "explicacion": "Un número racional es todo número que puede escribirse como el cociente de dos números enteros, donde el segundo es distinto de cero. El nombre proviene de la palabra latina ratio, que significa razón o cociente. El conjunto de los racionales, junto con sus operaciones y su orden, forma el sistema de números racionales, que amplía el sistema de los enteros para que la división entre enteros siempre tenga resultado, salvo la división por cero."
+        },
+        {
+          "texto": "$\\mathbb{Q}$ denota el conjunto de los «números racionales»",
+          "explicacion": "La letra $\\mathbb{Q}$ se usa para designar al conjunto de los números racionales. Según la historia de la notación matemática, el símbolo fue introducido por el matemático italiano Giuseppe Peano en 1895, a partir de la palabra italiana quoziente, que significa cociente. Hoy es una convención universal en los textos de matemática, junto con $\\mathbb{N}$ para los naturales y $\\mathbb{Z}$ para los enteros."
+        },
+        {
+          "texto": "En $\\frac{a}{b}$, $a$ es el «numerador» y $b$ el «denominador»",
+          "explicacion": "En la escritura de un racional como cociente, el numerador es el entero que se escribe arriba de la raya fraccionaria e indica cuántas partes se consideran, y el denominador es el entero que se escribe abajo e indica en cuántas partes iguales se divide la unidad. El numerador puede ser cualquier entero, incluso cero, pero el denominador debe ser distinto de cero. El estudio detallado de esta escritura corresponde al tema 37 (Fracción ordinaria)."
+        },
+        {
+          "texto": "El denominador ≠ $0$ porque la división entre cero no está definida",
+          "explicacion": "Dividir entre cero carece de sentido, porque ningún número multiplicado por cero produce un valor distinto de cero. Si el numerador es distinto de cero, no existe ningún número que multiplicado por cero dé ese numerador; si el numerador también es cero, cualquier número serviría y el resultado no sería único. Por ambas razones se excluye el cero del denominador en la definición."
+        },
+        {
+          "texto": "Todo «número entero» $n$ es racional, pues $n$ = $\\frac{n}{1}$",
+          "explicacion": "Cualquier entero puede escribirse como un cociente cuyo denominador es uno, lo que significa que los números enteros forman parte de los racionales. Por tanto, los naturales están incluidos en los enteros y estos en los racionales, con la cadena de inclusiones $\\mathbb{N}$, $\\mathbb{Z}$, $\\mathbb{Q}$ de menor a mayor. La diferencia es que en los racionales la división entre enteros siempre tiene resultado."
+        }
+      ]
+    },
+    {
+      "titulo": "Igualdad",
+      "puntos": [
+        {
+          "texto": "Los racionales tienen infinitas escrituras: son «fracciones equivalentes»",
+          "explicacion": "Un mismo número racional puede escribirse de infinitas formas, multiplicando o dividiendo numerador y denominador por un mismo entero distinto de cero. Las fracciones que resultan se llaman fracciones equivalentes y representan el mismo racional. Por ejemplo, un medio, dos cuartos y tres sextos son escrituras distintas del mismo número. Por eso cada racional corresponde a toda una clase de fracciones y no a una sola."
+        },
+        {
+          "texto": "$\\frac{a}{b}$ = $\\frac{c}{d}$ si y solo si $ad$ = $bc$",
+          "explicacion": "Dos fracciones representan el mismo racional cuando el producto del numerador de la primera por el denominador de la segunda es igual al producto del denominador de la primera por el numerador de la segunda. Es la llamada igualdad por productos cruzados y se aplica con denominadores distintos de cero. Permite decidir sin simplificar si dos escrituras corresponden al mismo número."
+        },
+        {
+          "texto": "Ejemplo: $\\frac{2}{3}$ y $\\frac{4}{6}$ son iguales porque $12$ = $12$",
+          "explicacion": "Los productos cruzados son dos por seis, que es doce, y tres por cuatro, que también es doce. Como ambos coinciden, las fracciones dos tercios y cuatro sextos representan el mismo racional. En cambio, dos tercios y tres cuartos no son iguales, pues sus productos cruzados son ocho y nueve."
+        },
+        {
+          "texto": "Signo: $-\\frac{a}{b}$ = $\\frac{-a}{b}$ = $\\frac{a}{-b}$",
+          "explicacion": "El signo negativo de un racional puede colocarse en el numerador, en el denominador o delante de toda la fracción, sin que el valor cambie. Por convención se prefiere escribir el denominador positivo y llevar el signo al numerador o delante de la fracción. Si ambos términos son negativos, el racional es positivo, porque el cociente de dos enteros negativos es positivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Operaciones",
+      "puntos": [
+        {
+          "texto": "Suma: numerador $ad$ + $bc$ y denominador $bd$",
+          "explicacion": "Para sumar dos racionales con denominadores distintos, el numerador del resultado es el producto de $a$ por $d$ más el producto de $b$ por $c$, y el denominador es el producto de los dos denominadores. El resultado es otro racional. Ejemplo: un medio más un tercio da cinco sextos, porque tres más dos es cinco y dos por tres es seis. La resta se define sumando el opuesto."
+        },
+        {
+          "texto": "Producto: numerador $ac$ y denominador $bd$",
+          "explicacion": "Para multiplicar dos racionales basta multiplicar los numeradores entre sí y los denominadores entre sí, y no se requiere un denominador común. Ejemplo: dos tercios por tres cuartos dan seis doceavos, que es un medio al simplificar. El resultado es siempre un racional, porque el producto de enteros es entero y el producto de denominadores no nulos es no nulo."
+        },
+        {
+          "texto": "División: numerador $ad$ y denominador $bc$ con $c$ ≠ $0$",
+          "explicacion": "Dividir $\\frac{a}{b}$ entre $\\frac{c}{d}$ equivale a multiplicar el primer racional por el inverso multiplicativo del segundo, lo cual da el numerador $ad$ y el denominador $bc$. La condición de que $c$ sea distinto de cero evita dividir entre el racional cero. Ejemplo: un medio entre un tercio da tres medios."
+        },
+        {
+          "texto": "Error: sumar numeradores y denominadores por separado",
+          "explicacion": "Un error muy frecuente es escribir que un medio más un tercio da dos quintos, sumando arriba con arriba y abajo con abajo. Ese resultado es incorrecto, pues dos quintos es menor que un medio. La suma exige expresar ambos racionales con un denominador común, que da cinco sextos."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades de la suma",
+      "puntos": [
+        {
+          "texto": "La suma de racionales es conmutativa y asociativa",
+          "explicacion": "El orden de los sumandos no altera el resultado, y al sumar tres o más racionales no importa cómo se agrupen. Estas dos propiedades se heredan de la suma de enteros y permiten reordenar y agrupar sumandos para simplificar cálculos. Por ejemplo, un medio más un tercio da lo mismo que un tercio más un medio."
+        },
+        {
+          "texto": "El cero es el elemento neutro de la suma",
+          "explicacion": "Al sumar cero a cualquier racional se obtiene el mismo racional. El cero se escribe como cociente de cero entre cualquier entero distinto de cero. Su papel es análogo al que cumple en los enteros, y ningún otro racional cumple esta propiedad, pues si otro número sumado a un racional lo dejara igual, la diferencia entre ambos resultados obligaría a que ese número fuera cero. Gracias a este elemento neutro tiene sentido hablar de racionales positivos, negativos y nulo."
+        },
+        {
+          "texto": "Todo racional tiene un «opuesto» $-\\frac{a}{b}$ ⇒ suma vale $0$",
+          "explicacion": "El opuesto de un racional es el racional que sumado con él da cero. Se obtiene cambiando el signo del numerador. Por ejemplo, el opuesto de tres quintos es menos tres quintos. La existencia del opuesto permite definir la resta como suma del opuesto y garantiza que toda ecuación aditiva tenga solución en los racionales."
+        }
+      ]
+    },
+    {
+      "titulo": "Propiedades del producto",
+      "puntos": [
+        {
+          "texto": "El producto de racionales es conmutativo y asociativo",
+          "explicacion": "El orden de los factores no cambia el producto, y al multiplicar tres o más racionales se pueden agrupar de cualquier manera. Estas propiedades permiten reordenar factores para simplificar antes de calcular. Por ejemplo, dos tercios por tres cuartos da lo mismo que tres cuartos por dos tercios."
+        },
+        {
+          "texto": "El número $1$ es el elemento neutro del producto",
+          "explicacion": "Al multiplicar cualquier racional por uno se obtiene el mismo racional. El uno puede escribirse como cualquier fracción con numerador igual al denominador. Esta propiedad justifica la simplificación y la amplificación de fracciones, que equivalen a multiplicar por una fracción igual a uno. También explica por qué el uno es único: si otro número dejara inalterado el producto con todo racional, al multiplicarlo por el propio uno se concluiría que coincide con él."
+        },
+        {
+          "texto": "Todo racional ≠ $0$ tiene «inverso multiplicativo» $\\frac{b}{a}$",
+          "explicacion": "El inverso multiplicativo de un racional distinto de cero es el racional que multiplicado con él da uno, y se obtiene intercambiando numerador y denominador. Por ejemplo, el inverso de dos tercios es tres medios. El cero no tiene inverso. Esta propiedad no se cumple en los enteros, donde solo uno y menos uno tienen inverso entero."
+        },
+        {
+          "texto": "Distributiva: $r$ por ($s$ + $t$) = $rs$ + $rt$",
+          "explicacion": "El producto de un racional por una suma es igual a la suma de los productos del racional por cada sumando. Esta propiedad conecta las dos operaciones y justifica, por ejemplo, la extracción de factor común. Con ella, el conjunto de los racionales con la suma y el producto forma un cuerpo, es decir, un sistema numérico donde se pueden sumar, restar, multiplicar y dividir salvo entre cero."
+        }
+      ]
+    },
+    {
+      "titulo": "Orden y densidad",
+      "puntos": [
+        {
+          "texto": "Con denominadores positivos, $\\frac{a}{b}$ menor que $\\frac{c}{d}$ si $ad$ menor que $bc$",
+          "explicacion": "Para comparar dos racionales con denominadores positivos se comparan los productos cruzados. El racional cuyo numerador cruzado resulta menor es el menor. Ejemplo: tres cuartos y cinco séptimos tienen productos cruzados veintiuno y veinte, así que tres cuartos es mayor. Este criterio permite ordenar racionales sin buscar denominador común."
+        },
+        {
+          "texto": "Los racionales están ordenados: dos racionales siempre se pueden comparar",
+          "explicacion": "Dados dos racionales cualesquiera, se cumple exactamente una de estas tres relaciones: el primero es menor, igual o mayor que el segundo. Esta propiedad se llama orden total. El orden es compatible con la suma y con el producto por racionales positivos, lo que permite resolver desigualdades con las mismas reglas que se usan con enteros."
+        },
+        {
+          "texto": "«Densidad»: entre dos racionales siempre hay otro racional",
+          "explicacion": "Dados dos racionales distintos, su promedio, que es la mitad de su suma, es un racional ubicado entre ambos. Repitiendo el procedimiento se obtiene una cantidad infinita de racionales entre ellos. Ejemplo: entre un tercio y un medio se encuentra cinco doceavos. Por esta razón, a diferencia de los enteros, los racionales no tienen un racional siguiente ni uno anterior."
+        },
+        {
+          "texto": "Cada racional es un punto de la «recta numérica»",
+          "explicacion": "En la recta numérica se elige un punto como cero y otro como uno, y cada racional queda representado por un punto único determinado por su valor. Los racionales positivos se ubican a la derecha del cero y los negativos a la izquierda. Aunque son densos, los racionales no ocupan todos los puntos de la recta: números como la raíz cuadrada de dos no son racionales, hecho conocido desde la antigua Grecia."
+        }
+      ]
+    },
+    {
+      "titulo": "Representación decimal",
+      "puntos": [
+        {
+          "texto": "Todo racional tiene escritura decimal exacta o periódica",
+          "explicacion": "Al dividir el numerador entre el denominador se obtiene una escritura decimal que termina o que repite indefinidamente un grupo de cifras. Es una característica de los racionales que los distingue de otros números. Cómo se obtiene la escritura decimal se estudia en el tema 39 (Representación decimal de una fracción) y el proceso inverso en el tema 40 (Generatriz)."
+        }
+      ]
+    }
+  ]
+}

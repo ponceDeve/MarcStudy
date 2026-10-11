@@ -1,0 +1,152 @@
+{
+  "curso": "Aritmética",
+  "tema": "Proposiciones compuestas",
+  "glosario": {
+    "proposición": "Oración declarativa con un único valor de verdad",
+    "proposición simple": "Proposición que no contiene conectivos lógicos",
+    "proposición compuesta": "Proposición formada por otras unidas con conectivos",
+    "variables proposicionales": "Letras que representan proposiciones cualesquiera",
+    "bivalencia": "Toda proposición es verdadera o falsa, nunca ambas",
+    "conectivo lógico": "Operador que combina proposiciones y produce otra",
+    "negación": "Conectivo que invierte el valor de verdad",
+    "conjunción": "Verdadera solo si ambas componentes son verdaderas",
+    "disyunción": "Verdadera si al menos una componente es verdadera",
+    "condicional": "Falsa solo si antecedente verdadero y consecuente falso",
+    "antecedente": "Primera proposición de una condicional",
+    "consecuente": "Segunda proposición de una condicional",
+    "bicondicional": "Verdadera solo si ambos valores de verdad coinciden",
+    "paréntesis de alcance": "Signos que indican qué parte afecta un conectivo",
+    "conectivo principal": "Último conectivo aplicado en una fórmula",
+    "fórmula bien formada": "Expresión simbólica construida según reglas sintácticas precisas",
+    "traducción simbólica": "Paso del lenguaje natural a fórmulas"
+  },
+  "theory": [
+    {
+      "titulo": "Concepto de proposición",
+      "puntos": [
+        {
+          "texto": "Una «proposición» es una oración declarativa con valor de verdad.",
+          "explicacion": "Una proposición es una oración del lenguaje que afirma algo y que puede evaluarse como verdadera o como falsa, pero no ambas cosas a la vez. Esta exigencia se toma como punto de partida de la lógica clásica, porque permite asignar a cada enunciado un valor de verdad sin ambigüedad. Las preguntas, las órdenes, los ruegos y las exclamaciones no son proposiciones, ya que no afirman un hecho que pueda ser verdadero o falso. En cambio, «hay números primos mayores que cien» sí lo es, aunque no sepamos de inmediato cuál de los dos valores le corresponde. La lógica estudia la estructura de estas oraciones y se interesa por cómo se combinan sus valores de verdad, no por su contenido particular."
+        },
+        {
+          "texto": "«Bivalencia»: toda proposición es verdadera o falsa, nunca ambas.",
+          "explicacion": "La bivalencia es el principio que sostiene que cada proposición tiene exactamente uno de dos valores posibles: verdadero o falso. Se aplica a cada proposición por separado y no exige que conozcamos su valor, sino únicamente que tenga uno. Los dos valores se representan convencionalmente con las letras V para verdadero y F para falso, que son el lenguaje de las tablas de verdad estudiadas en el tema 03. Gracias a este principio, el valor de una proposición compuesta puede calcularse a partir de los valores de sus partes, algo que no sería posible si una proposición pudiera quedar sin valor."
+        }
+      ]
+    },
+    {
+      "titulo": "Simples y compuestas",
+      "puntos": [
+        {
+          "texto": "«Proposición simple»: ✗ contiene conectivos lógicos.",
+          "explicacion": "Una proposición simple expresa un único enunciado y no contiene ninguna palabra o símbolo que la combine con otra proposición. Dentro del nivel proposicional su estructura interna no se analiza, por lo que se trata como una unidad indivisible. Por ejemplo, «tres es un número primo» es simple, porque afirma un solo hecho sin conectar otra afirmación. Toda proposición simple recibe un valor de verdad directamente, y es el punto de partida para construir cualquier proposición compuesta."
+        },
+        {
+          "texto": "«Proposición compuesta» ✓ requiere al menos un conectivo lógico.",
+          "explicacion": "Una proposición compuesta se forma uniendo dos o más proposiciones mediante conectivos, de modo que su valor de verdad depende de los valores de sus partes. Esa dependencia la diferencia de una simple, cuyo valor se asigna directamente. Por ejemplo, «tres es primo y cuatro es par» es compuesta, porque contiene la palabra y, que funciona como conectivo y une dos proposiciones simples. Una compuesta puede contener muchas proposiciones simples anidadas, y el número de conectivos crece con la complejidad del enunciado."
+        },
+        {
+          "texto": "Las «variables proposicionales» representan proposiciones simples cualesquiera.",
+          "explicacion": "Por convención se usan las letras p, q, r, s y así sucesivamente para representar proposiciones simples. Estas letras se llaman variables proposicionales porque pueden sustituirse por cualquier proposición, y no tienen un significado fijo mientras no se les asigne uno. Asignar una letra a una proposición se llama simbolizar y es el paso previo para construir fórmulas y tablas de verdad. Conviene usar siempre la misma letra para la misma proposición dentro de un mismo ejercicio, porque así se mantiene la coherencia de la fórmula."
+        }
+      ]
+    },
+    {
+      "titulo": "Conectivos y sus roles",
+      "puntos": [
+        {
+          "texto": "Un «conectivo lógico» combina proposiciones → produce otra proposición.",
+          "explicacion": "Un conectivo lógico es un operador que toma una o dos proposiciones y devuelve una nueva proposición, cuyo valor de verdad se determina por una regla fija. Los conectivos se clasifican según el número de proposiciones sobre las que actúan: la negación actúa sobre una sola, mientras que los demás actúan sobre dos. Esta clasificación explica por qué una fórmula con un conectivo binario tiene dos partes principales. Las reglas de cada conectivo, con sus tablas de verdad, se estudian en el tema 02, Conectivos lógicos."
+        },
+        {
+          "texto": "La «negación» invierte el valor de verdad de una proposición.",
+          "explicacion": "La negación es el único conectivo que actúa sobre una sola proposición. Si la proposición original es verdadera, su negación es falsa, y viceversa. En lenguaje natural se expresa con palabras como «no» o «no es cierto que», y en forma simbólica con el signo $\\neg$ antepuesto a la letra, como en $\\neg p$. Su uso en proposiciones compuestas es frecuente, porque permite negar expresiones enteras entre paréntesis, lo que obliga a fijar con cuidado el alcance del signo."
+        },
+        {
+          "texto": "La «conjunción» es verdadera solo si ambas componentes lo son.",
+          "explicacion": "La conjunción une dos proposiciones con la palabra «y» y se simboliza con $\\land$. Para que la proposición compuesta sea verdadera, cada una de sus partes debe serlo, de manera que basta un componente falso para que la conjunción completa sea falsa. Es el conectivo binario más restrictivo y se usa en enunciados donde deben cumplirse varias condiciones a la vez. La tabla completa de la conjunción se estudia en el tema 02."
+        },
+        {
+          "texto": "La «disyunción» es verdadera si al menos una componente lo es.",
+          "explicacion": "La disyunción une dos proposiciones con la palabra «o» y se simboliza con $\\lor$. En lógica se usa la disyunción inclusiva, que es verdadera cuando una, otra o ambas partes son verdaderas, y que solo es falsa cuando ambas son falsas. La disyunción excluyente, en cambio, exige que exactamente una parte sea verdadera. Como el castellano usa «o» en ambos sentidos, la traducción simbólica debe decidir cuál de las dos lecturas corresponde al contexto del enunciado."
+        },
+        {
+          "texto": "«Condicional»: falsa solo si antecedente verdadero y consecuente falso.",
+          "explicacion": "La condicional une dos proposiciones con la estructura «si p, entonces q», donde p es el antecedente y q el consecuente. Es falsa en un único caso: cuando el antecedente es verdadero y el consecuente es falso. En los demás casos es verdadera, incluso si el antecedente es falso, lo que resulta extraño en el lenguaje cotidiano pero es consecuencia directa de la definición. Se simboliza con una flecha, que es el signo estudiado en el tema 02, y no debe confundirse con la bicondicional."
+        },
+        {
+          "texto": "La «bicondicional» es verdadera solo si ambos valores coinciden.",
+          "explicacion": "La bicondicional une dos proposiciones con la expresión «si y solo si» y es verdadera cuando ambas tienen el mismo valor de verdad. Equivale a la conjunción de dos condicionales, una en cada sentido, por lo que expresa una equivalencia entre las dos partes. En fórmulas se escribe con el signo $\\leftrightarrow$. Su tabla completa se estudia en el tema 02, y su uso para comprobar equivalencias lógicas se retoma en el tema 05."
+        }
+      ]
+    },
+    {
+      "titulo": "Paréntesis y alcance",
+      "puntos": [
+        {
+          "texto": "Los «paréntesis de alcance» indican a qué proposiciones afecta cada conectivo.",
+          "explicacion": "Los paréntesis son signos de agrupación que determinan el alcance de un conectivo, es decir, la parte de la fórmula sobre la que actúa. Sin ellos, la expresión $p \\land q \\lor r$ podría leerse de dos maneras distintas con resultados diferentes. Por esta razón una fórmula bien construida debe indicar el orden de aplicación mediante paréntesis, incluso cuando una convención permitiría omitirlos. Cambiar la posición de un paréntesis puede modificar por completo el valor de verdad de una proposición compuesta."
+        },
+        {
+          "texto": "Negar una compuesta ✓ requiere paréntesis de alcance.",
+          "explicacion": "La negación de una proposición compuesta debe escribirse entre paréntesis, porque el signo aplicado a la expresión completa tiene un significado distinto que negar solo una de sus partes. Por ejemplo, $\\neg(p \\land q)$ indica que no se cumplen ambas, mientras que $\\neg p \\land q$ indica que p es falsa y q es verdadera. Ignorar esta diferencia es uno de los errores más frecuentes al traducir enunciados negados, por lo que conviene verificar siempre a qué parte afecta el signo."
+        },
+        {
+          "texto": "Existe un orden de prioridad convencional para los conectivos.",
+          "explicacion": "En la convención usual, la negación tiene la mayor prioridad, seguida de la conjunción y la disyunción, luego la condicional y, por último, la bicondicional. Esta jerarquía permite omitir algunos paréntesis sin ambigüedad, por ejemplo en $\\neg p \\land q$, donde la negación se aplica solo a p. Sin embargo, no todos los textos adoptan la misma jerarquía, por lo que en un examen conviene escribir los paréntesis explícitamente. La regla de prioridad no cambia el valor de verdad de una fórmula bien escrita, solo facilita su lectura."
+        },
+        {
+          "texto": "El «conectivo principal» es el último aplicado en la fórmula.",
+          "explicacion": "El conectivo principal de una fórmula es el que se aplica al final, cuando ya se han evaluado todas las subfórmulas entre paréntesis. Identificarlo es el primer paso para clasificar la fórmula y para construir su tabla de verdad, porque determina la forma general de la proposición. Si el conectivo principal es una condicional, la proposición es una condicional aunque contenga otros conectivos dentro de sus partes. Para encontrarlo se busca el conectivo de menor prioridad que quede fuera de todos los paréntesis."
+        }
+      ]
+    },
+    {
+      "titulo": "Traducción del lenguaje",
+      "puntos": [
+        {
+          "texto": "La «traducción simbólica» empieza identificando proposiciones simples.",
+          "explicacion": "Traducir un enunciado del lenguaje natural a forma simbólica exige primero separar las proposiciones simples que contiene, asignando a cada una una letra. Después se identifican las palabras que funcionan como conectivos, como «y», «o», «no», «si... entonces» y «si y solo si», y se reemplazan por sus signos. Por último se colocan los paréntesis necesarios para reflejar la estructura del enunciado. El proceso debe respetar el sentido original y no añadir información que el enunciado no contiene."
+        },
+        {
+          "texto": "La expresión «a menos que» suele equivaler a una disyunción.",
+          "explicacion": "El enunciado «a menos que p, q» equivale lógicamente a «p o q», porque q se afirma en todos los casos en que p no ocurre. Esta equivalencia permite convertir frases negativas en disyunciones y facilita la simplificación posterior. Se trata de una interpretación habitual y no de una regla universal del lenguaje, por lo que conviene verificarla con el contexto completo del enunciado antes de aplicarla."
+        }
+      ]
+    },
+    {
+      "titulo": "Fórmulas bien formadas",
+      "puntos": [
+        {
+          "texto": "Una «fórmula bien formada» se construye según reglas precisas.",
+          "explicacion": "Una fórmula bien formada es una expresión simbólica construida según reglas sintácticas exactas. La regla base establece que cada variable proposicional es una fórmula. Las reglas de construcción indican que, si A es una fórmula, también lo es su negación, y que si A y B son fórmulas, también lo son sus combinaciones con conectivos binarios entre paréntesis. Por recursión, cualquier fórmula se obtiene aplicando estas reglas un número finito de veces, lo que garantiza que toda expresión tenga una estructura interpretable."
+        },
+        {
+          "texto": "Una cadena mal construida ✗ carece de sentido lógico.",
+          "explicacion": "Una cadena como $p \\land \\lor q$ no es una fórmula bien formada, porque dos conectivos binarios aparecen juntos sin una proposición entre ellos. Tampoco lo es una cadena con paréntesis sin cerrar o una sucesión de conectivos sin variables. Reconocer estos errores de sintaxis es importante antes de evaluar el valor de verdad, porque una fórmula mal construida no tiene un significado definido. La sintaxis y la semántica son, por tanto, niveles distintos del estudio lógico."
+        }
+      ]
+    },
+    {
+      "titulo": "Antecedentes históricos",
+      "puntos": [
+        {
+          "texto": "Aristóteles estudió sobre todo la lógica de términos, en el siglo IV antes de Cristo.",
+          "explicacion": "Aristóteles, filósofo griego nacido en Estagira, desarrolló la lógica de términos y de silogismos en obras reunidas posteriormente bajo el nombre de Órganon. Su sistema se centró en las relaciones entre categorías como «todo» y «algún», y no en la combinación de proposiciones enteras mediante conectivos. Por esa razón la lógica de proposiciones compuestas se consolidó más tarde, con los estoicos y con autores modernos. Sus estudios siguen siendo referencia para comprender la historia de la lógica."
+        },
+        {
+          "texto": "Crisipo de Solos desarrolló una lógica de proposiciones con conectivos.",
+          "explicacion": "Crisipo de Solos, filósofo estoico que vivió aproximadamente entre los años 279 y 206 antes de Cristo, trabajó sobre proposiciones simples y compuestas y sobre sus combinaciones. Según los testimonios antiguos, los estoicos estudiaron sistemáticamente las formas válidas de razonamiento con proposiciones enteras. Casi todos sus textos se perdieron, por lo que su obra se conoce sobre todo a través de referencias de autores posteriores, y los detalles de su sistema siguen siendo objeto de estudio de los historiadores de la lógica."
+        },
+        {
+          "texto": "Gottlob Frege introdujo una notación simbólica para la lógica en 1879.",
+          "explicacion": "Gottlob Frege, matemático y filósofo alemán nacido en 1848 y fallecido en 1925, publicó en 1879 la obra «Begriffsschrift», en la que presentó una notación bidimensional para la lógica que incluía conectivos y cuantificadores. Su propuesta permitió tratar los razonamientos como cálculos formales y no solo como estructuras del lenguaje ordinario. Frege es considerado uno de los fundadores de la lógica moderna. La escritura lineal de fórmulas que se usa hoy se desarrolló después, al simplificar la notación de Frege."
+        },
+        {
+          "texto": "George Boole expresó la lógica mediante un álgebra en el siglo XIX.",
+          "explicacion": "George Boole, matemático británico nacido en 1815 y fallecido en 1864, publicó en 1854 la obra «An Investigation of the Laws of Thought», en la que trató las operaciones lógicas con símbolos algebraicos. Su propuesta mostró que el razonamiento podía representarse mediante un cálculo, lo que dio origen al álgebra de Boole. Esta álgebra es la base del tratamiento moderno de los conectivos y de los conjuntos, y su desarrollo para conjuntos se estudia en el tema 13."
+        }
+      ]
+    }
+  ]
+}
