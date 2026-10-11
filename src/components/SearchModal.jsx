@@ -20,6 +20,16 @@ const TEMAS_ITEMS = manifest.cursos.flatMap(c => c.temas.map(t => ({
   archivo: t.archivo
 })));
 
+// Número del tema dentro de su curso (el mismo que se ve sin buscar),
+// para que el número no cambie ni desaparezca al buscar.
+function numeroDeTemaEnCurso(tema, posicionEnLista) {
+  const curso = manifest.cursos.find(c => c.nombre === tema.curso);
+  const idx = curso
+    ? curso.temas.findIndex(x => x.archivo === tema.archivo)
+    : -1;
+  return idx >= 0 ? idx + 1 : posicionEnLista + 1;
+}
+
 const UMBRAL_SEMANTICO = 0.48;
 const UMBRAL_RELATIVO_SEMANTICO = 0.82;
 const UMBRAL_LEXICO_SEMANTICO = 0.22;
@@ -1137,11 +1147,9 @@ export default function SearchModal({
                     }`}
                 >
                   <p className="search-result-item__tema">
-                    {!esBusqueda && (
-                      <span className="search-topic-number">
-                        {temaIndex + 1}){" "}
-                      </span>
-                    )}
+                    <span className="search-topic-number">
+                      {numeroDeTemaEnCurso(t, temaIndex)}){" "}
+                    </span>
 
                     {esBusqueda ? (
                       <ResaltarCoincidencia

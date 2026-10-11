@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import { useAutoHideHeader } from "../../hooks/useAutoHideHeader";
+import { useMusicaFondo } from "../../lib/musicaFondo";
 import { Cronometro } from "../../components/RelojPared";
 import RelojOculto from "../../components/RelojOculto";
 function SideDrawer({ title, isOpen, onClose, children }) {
@@ -56,6 +57,48 @@ export default function TopBar({
 }) {
   const [menuMobileOpen, setMenuMobileOpen] = useState(false);
   useAutoHideHeader(menuMobileOpen);
+  const { musicaOn, alternarMusica } = useMusicaFondo();
+  const [pantallaCompleta, setPantallaCompleta] = useState(
+    () => !!document.fullscreenElement
+  );
+  useEffect(() => {
+    const onCambio = () =>
+      setPantallaCompleta(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onCambio);
+    return () =>
+      document.removeEventListener("fullscreenchange", onCambio);
+  }, []);
+  function alternarPantallaCompleta() {
+    if (!document.fullscreenElement) {
+      document.documentElement
+        .requestFullscreen?.()
+        .catch(() => {});
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+  // Mismos controles que en el encabezado de Inicio: el atajo se
+  // muestra para que el usuario sepa qué tecla usar.
+  const controlesMedia = [
+    {
+      key: "pantalla",
+      label: pantallaCompleta ? "Minimizar" : "Pantalla completa",
+      atajo: "F",
+      icon: pantallaCompleta
+        ? "fa-solid fa-compress"
+        : "fa-solid fa-expand",
+      onClick: alternarPantallaCompleta
+    },
+    {
+      key: "musica",
+      label: musicaOn ? "Silenciar música" : "Activar música",
+      atajo: "B",
+      icon: musicaOn
+        ? "fa-solid fa-volume-high"
+        : "fa-solid fa-volume-xmark",
+      onClick: alternarMusica
+    }
+  ];
 
   const topbarRef = useRef(null);
   const esPregunta =
@@ -136,17 +179,9 @@ export default function TopBar({
       to: pomodoroTo,
     },
   ];
-  const botonAbandonar = {
-    title: "Abandonar pregunta",
-    label: "Abandonar",
-    fullLabel: "Abandonar pregunta",
-    icon: "fas fa-door-open",
-    onClick: onAbandonarPregunta,
-    className: "topbar__nav-btn--abandonar",
-  };
-  const botonesVisibles = esPregunta
-    ? [botonAbandonar]
-    : [...botonesPrincipales];
+  // Preguntas y examen del tema: sin Abandonar en la barra. La entrega
+  // y Ant./Sig. van abajo (en el examen, dentro de TemaExamenView).
+  const botonesVisibles = esPregunta ? [] : [...botonesPrincipales];
   // En "pregunta" el botón Abandonar ya se muestra
   // directo en el nav; no hace falta el menú de hamburguesa duplicándolo.
   const botonesMenu = esPregunta
@@ -336,7 +371,19 @@ export default function TopBar({
                 )}
               </div>
             )}
-            {botonesMenu.length > 0 && (
+            {controlesMedia.map((c) => (
+              <button
+                key={c.key}
+                type="button"
+                className="topbar__control-btn topbar__control-btn--media"
+                onClick={c.onClick}
+                title={`${c.label} (tecla ${c.atajo})`}
+                aria-label={`${c.label} (tecla ${c.atajo})`}
+              >
+                <i className={c.icon} />
+              </button>
+            ))}
+            {(
               <button
                 type="button"
                 onClick={() =>
@@ -350,23 +397,38 @@ export default function TopBar({
             )}
           </div>
         </div>
-        {botonesMenu.length > 0 && (
-          <SideDrawer
-            title="Menú"
-            isOpen={menuMobileOpen}
-            onClose={() =>
-              setMenuMobileOpen(false)
-            }
-          >
-            {botonesMenu.map((b) =>
-              renderFila(
-                b,
-                () =>
-                  setMenuMobileOpen(false)
-              )
-            )}
-          </SideDrawer>
-        )}
+        <SideDrawer
+          title="Menú"
+          isOpen={menuMobileOpen}
+          onClose={() =>
+            setMenuMobileOpen(false)
+          }
+        >
+          {botonesMenu.map((b) =>
+            renderFila(
+              b,
+              () =>
+                setMenuMobileOpen(false)
+            )
+          )}
+          {controlesMedia.map((c) => (
+            <button
+              key={c.key}
+              type="button"
+              className="topbar__drawer-item"
+              onClick={() => {
+                c.onClick();
+                setMenuMobileOpen(false);
+              }}
+            >
+              <span className="topbar__drawer-item-label">
+                {c.label}
+                <kbd className="topbar__atajo">{c.atajo}</kbd>
+              </span>
+              <i className={`${c.icon} topbar__drawer-item-icon`} />
+            </button>
+          ))}
+        </SideDrawer>
       </div>
     </div>
   );

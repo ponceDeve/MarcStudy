@@ -1,4 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import { createPortal } from "react-dom";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -354,6 +360,8 @@ export default function GlossaryText({
   glosario = {}
 }) {
   const [activo, setActivo] = useState(null);
+  // fijado: abierta con clic/toque (no se cierra al salir con el mouse).
+  const [fijado, setFijado] = useState(false);
   const triggerRefs = useRef({});
   const tooltipRefs = useRef({});
 
@@ -378,21 +386,52 @@ export default function GlossaryText({
     [text, glosarioCombinado]
   );
 
-  const mostrarTooltip = (i) => {
+  const mostrarTooltip = (i, porClic) => {
+    // Si la nube ya está abierta para esta palabra (por hover), solo se
+    // fija. Volver a "mostrarla" la dejaría sin medir y oculta.
+    if (activo === i) {
+      setFijado(porClic);
+      return;
+    }
     setActivo(i);
+    setFijado(porClic);
     mostrarEn();
-    requestAnimationFrame(() => {
-      ajustarPosicion(
-        triggerRefs.current[i],
-        tooltipRefs.current[i]
-      );
-    });
   };
 
   const ocultarTooltip = () => {
     setActivo(null);
+    setFijado(false);
     ocultar();
   };
+
+  // Se posiciona DESPUÉS de que la nube existe en el DOM (antes se
+  // hacía en un requestAnimationFrame que a veces corría antes, y la
+  // nube quedaba oculta hasta volver a tocar la palabra).
+  // Se mide también cada vez que la nube se muestra (visible), no solo
+  // cuando cambia la palabra. Así siempre queda con su posición real.
+  useLayoutEffect(() => {
+    if (activo === null || !visible) return;
+    ajustarPosicion(
+      triggerRefs.current[activo],
+      tooltipRefs.current[activo]
+    );
+  }, [activo, visible, ajustarPosicion]);
+
+  // Con la nube abierta por clic, tocar en cualquier otro lugar la cierra.
+  useEffect(() => {
+    if (activo === null) return;
+    const alPresionar = (e) => {
+      if (e.target.closest && e.target.closest(".glossary-term-wrap")) {
+        return;
+      }
+      setActivo(null);
+      setFijado(false);
+      ocultar();
+    };
+    document.addEventListener("pointerdown", alPresionar);
+    return () =>
+      document.removeEventListener("pointerdown", alPresionar);
+  }, [activo, ocultar]);
 
   // Mientras la nube está abierta: recolocarla si cambia la pantalla
   // y cerrarla al hacer scroll (está fija en pantalla, no sigue a la palabra).
@@ -403,9 +442,23 @@ export default function GlossaryText({
         triggerRefs.current[activo],
         tooltipRefs.current[activo]
       );
+    // Solo se cierra si la palabra de verdad se movió en la pantalla.
+    // Un evento de scroll sin movimiento (p. ej. el que dispara el
+    // propio toque en celular) no debe cerrar la nube recién abierta.
+    const trigger = triggerRefs.current[activo];
+    const posInicial = trigger?.getBoundingClientRect();
     const alScroll = () => {
-      setActivo(null);
-      ocultar();
+      const actual = triggerRefs.current[activo];
+      if (!actual || !posInicial) return;
+      const r = actual.getBoundingClientRect();
+      if (
+        Math.abs(r.top - posInicial.top) > 6 ||
+        Math.abs(r.left - posInicial.left) > 6
+      ) {
+        setActivo(null);
+        setFijado(false);
+        ocultar();
+      }
     };
     window.addEventListener("resize", alResize);
     window.addEventListener("scroll", alScroll, true);
@@ -443,17 +496,35 @@ export default function GlossaryText({
             key={i}
             className="glossary-term-wrap"
             onMouseEnter={() => {
-              mostrarTooltip(i);
+              // Pasar el mouse muestra la nube, también si antes se dejó
+              // otra abierta con clic.
+              if (!(fijado && activo === i)) {
+                mostrarTooltip(i, false);
+              }
+            }}
+            onMouseOver={() => {
+              // Respaldo: si el navegador no envía "entrar", el movimiento
+              // sobre la palabra también la muestra.
+              if (activo !== i && !(fijado && activo === i)) {
+                mostrarTooltip(i, false);
+              }
             }}
             onMouseLeave={() => {
-              ocultarTooltip();
+              if (activo === i && !fijado) {
+                ocultarTooltip();
+              }
             }}
             onClick={(e) => {
               e.stopPropagation();
-              if (activo === i) {
+              // En la teoría la palabra está dentro de un <label>: sin esto,
+              // el clic marca el checkbox del punto y vuelve a dibujarlo.
+              e.preventDefault();
+              // Un solo clic/toque: abre y deja fija la nube;
+              // otro clic sobre la misma palabra la cierra.
+              if (activo === i && fijado) {
                 ocultarTooltip();
               } else {
-                mostrarTooltip(i);
+                mostrarTooltip(i, true);
               }
             }}
           >
@@ -479,8 +550,7 @@ export default function GlossaryText({
                   style={{
                     left: `${pos.left}px`,
                     top: `${pos.top}px`,
-                    "--tt-arrow": `${pos.arrow}px`,
-                    visibility: pos.ready ? "visible" : "hidden"
+                    "--tt-arrow": `${pos.arrow}px`
                   }}
                 >
                   <span className="glossary-tooltip__arrow" />

@@ -31,18 +31,19 @@ export default function AbandonarSimulacroModal({
         <div className="rendirse-modal__actions">
           <button
             type="button"
-            className="rendirse-modal__btn is-cancel"
-            onClick={onConfirmar}
-          >
-            {textoConfirmar}
-          </button>
-          <button
-            type="button"
             className="rendirse-modal__btn is-confirm"
             onClick={onContinuar}
           >
             Continuar
           </button>
+          <button
+            type="button"
+            className="rendirse-modal__btn is-cancel"
+            onClick={onConfirmar}
+          >
+            {textoConfirmar}
+          </button>
+
         </div>
       </div>
     </div>

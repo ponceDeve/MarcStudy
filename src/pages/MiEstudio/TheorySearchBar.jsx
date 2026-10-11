@@ -19,6 +19,20 @@ import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import GlossaryText from "./GlossaryText";
 
 const MIN_LARGO_QUERY_TEXTO = 2;
+
+// Detecta si el texto pide examen, ejercicios o ambos.
+function tipoPedidoExamen(texto) {
+  const t = String(texto || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  const pideExamen = /examen/.test(t);
+  const pideEjercicio = /ejercicio/.test(t);
+  if (pideExamen && pideEjercicio) return "ambos";
+  if (pideExamen) return "examen";
+  if (pideEjercicio) return "ejercicio";
+  return null;
+}
 const MIN_LARGO_QUERY_SEMANTICO = 4;
 const UMBRAL_SIMILITUD = 0.60;
 
@@ -141,6 +155,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     onSelect,
     placeholder = "Buscar título, texto o explicación...",
     modoChat = false,
+    onPedirExamen,
     glosario = {},
   },
   ref
@@ -474,6 +489,16 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
 
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
+    }
+
+    // Pedir examen o ejercicios abre ChatGPT con la teoría del tema.
+    if (modoChat && onPedirExamen) {
+      const tipo = tipoPedidoExamen(queryLimpia);
+      if (tipo) {
+        setQuery("");
+        onPedirExamen(tipo);
+        return;
+      }
     }
 
     setTituloSeleccionado(null);

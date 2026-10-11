@@ -1278,3 +1278,28 @@ body.is-header-oculto .topbar-wrapper {
     display: none !important;
   }
 }
+/* ============================================================
+   CONTROLES DE PANTALLA Y MÚSICA
+   En escritorio van en la barra; en móvil quedan en el menú
+   lateral, donde se muestra la tecla para usar el atajo.
+   ============================================================ */
+@media (max-width: 767px) {
+  .topbar__control-btn--media {
+    display: none;
+  }
+  // En celular no hay teclado: no se muestra el atajo.
+  .topbar__atajo {
+    display: none !important;
+  }
+}
+.topbar__atajo {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}

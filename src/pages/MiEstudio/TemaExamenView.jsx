@@ -210,9 +210,8 @@ function SelectorCurso({
   return (
     <div
       ref={selectorRef}
-      className={`selector-busqueda ${
-        abierto ? "is-abierto" : ""
-      }`}
+      className={`selector-busqueda ${abierto ? "is-abierto" : ""
+        }`}
     >
       {!abierto ? (
         <button
@@ -270,12 +269,11 @@ function SelectorCurso({
                   <button
                     type="button"
                     key={grupo.titulo}
-                    className={`selector-busqueda__opcion ${
-                      grupo.titulo ===
-                      grupoActual?.titulo
+                    className={`selector-busqueda__opcion ${grupo.titulo ===
+                        grupoActual?.titulo
                         ? "is-seleccionado"
                         : ""
-                    }`}
+                      }`}
                     onClick={() =>
                       seleccionar(grupo)
                     }
@@ -290,8 +288,8 @@ function SelectorCurso({
                     </span>
                     {grupo.titulo ===
                       grupoActual?.titulo && (
-                      <i className="fas fa-check" />
-                    )}
+                        <i className="fas fa-check" />
+                      )}
                   </button>
                 ))
               ) : (
@@ -475,11 +473,10 @@ function PreguntaExamenTema({
                   onClick={() =>
                     onCambiar(combinacion)
                   }
-                  className={`question-card__opt ${
-                    seleccionada
+                  className={`question-card__opt ${seleccionada
                       ? "is-selected"
                       : ""
-                  }`}
+                    }`}
                 >
                   <span className="question-card__opt-letter">
                     {LETRAS_ALTERNATIVAS[i] ||
@@ -506,11 +503,11 @@ function PreguntaExamenTema({
   ) {
     const palabrasElegidas =
       respuesta !== null &&
-      respuesta !== undefined
+        respuesta !== undefined
         ? shuffled.find(
-            (o) =>
-              o.originalIndex === respuesta
-          )?.valor
+          (o) =>
+            o.originalIndex === respuesta
+        )?.valor
         : null;
     let espacioIdx = -1;
     return (
@@ -543,9 +540,8 @@ function PreguntaExamenTema({
               return (
                 <span
                   key={i}
-                  className={`question-card__cloze-input ${
-                    texto ? "has-value" : ""
-                  }`}
+                  className={`question-card__cloze-input ${texto ? "has-value" : ""
+                    }`}
                 >
                   {texto ? (
                     <LatexText>
@@ -569,12 +565,11 @@ function PreguntaExamenTema({
                   opt.originalIndex
                 )
               }
-              className={`question-card__opt ${
-                respuesta ===
-                opt.originalIndex
+              className={`question-card__opt ${respuesta ===
+                  opt.originalIndex
                   ? "is-selected"
                   : ""
-              }`}
+                }`}
             >
               <span className="question-card__opt-letter">
                 {LETRAS_ALTERNATIVAS[i] ||
@@ -617,11 +612,10 @@ function PreguntaExamenTema({
                 return (
                   <li
                     key={i}
-                    className={`question-card__match-item${
-                      marcado
+                    className={`question-card__match-item${marcado
                         ? ` is-marcado is-color-${i % 5}`
                         : ""
-                    }`}
+                      }`}
                     onClick={() =>
                       alternarMarcaRel(i)
                     }
@@ -630,7 +624,7 @@ function PreguntaExamenTema({
                       <strong className="question-card__match-letra">
                         {
                           LETRAS_ALTERNATIVAS[
-                            letraIdx
+                          letraIdx
                           ]
                         }
                         )
@@ -679,12 +673,11 @@ function PreguntaExamenTema({
                   opt.originalIndex
                 )
               }
-              className={`question-card__opt ${
-                respuesta ===
-                opt.originalIndex
+              className={`question-card__opt ${respuesta ===
+                  opt.originalIndex
                   ? "is-selected"
                   : ""
-              }`}
+                }`}
             >
               <span className="question-card__opt-letter">
                 {LETRAS_ALTERNATIVAS[i] ||
@@ -739,12 +732,11 @@ function PreguntaExamenTema({
                 opt.originalIndex
               )
             }
-            className={`question-card__opt ${
-              respuesta ===
-              opt.originalIndex
+            className={`question-card__opt ${respuesta ===
+                opt.originalIndex
                 ? "is-selected"
                 : ""
-            }`}
+              }`}
           >
             <span className="question-card__opt-letter">
               {LETRAS_ALTERNATIVAS[i] ||
@@ -796,19 +788,20 @@ function ModalConfirmarRendirse({
           {mensaje}
         </p>
         <div className="rendirse-modal__actions">
-          <button
-            type="button"
-            className="rendirse-modal__btn is-confirm"
-            onClick={onContinuar}
-          >
-            Continuar
-          </button>
+
           <button
             type="button"
             className="rendirse-modal__btn is-cancel"
             onClick={onRendirse}
           >
             Rendirse
+          </button>
+          <button
+            type="button"
+            className="rendirse-modal__btn is-confirm"
+            onClick={onContinuar}
+          >
+            Continuar
           </button>
         </div>
       </div>
@@ -920,36 +913,34 @@ function PreguntaResultadoTema({
                     <button
                       type="button"
                       disabled
-                      className={`question-card__vf-btn ${
-                        marcas[i] === true
+                      className={`question-card__vf-btn ${marcas[i] === true
                           ? "is-selected"
                           : ""
-                      }`}
+                        }`}
                     >
                       V
                     </button>
                     <button
                       type="button"
                       disabled
-                      className={`question-card__vf-btn ${
-                        marcas[i] === false
+                      className={`question-card__vf-btn ${marcas[i] === false
                           ? "is-selected"
                           : ""
-                      }`}
+                        }`}
                     >
                       F
                     </button>
                   </div>
                   {(!respondida ||
                     marcada !==
-                      prop.correct) && (
-                    <span className="question-card__vf-correcta">
-                      Correcta:{" "}
-                      {prop.correct
-                        ? "Verdadero"
-                        : "Falso"}
-                    </span>
-                  )}
+                    prop.correct) && (
+                      <span className="question-card__vf-correcta">
+                        Correcta:{" "}
+                        {prop.correct
+                          ? "Verdadero"
+                          : "Falso"}
+                      </span>
+                    )}
                 </li>
               );
             }
@@ -996,18 +987,17 @@ function PreguntaResultadoTema({
               const idx = espacioIdx;
               const texto =
                 palabrasElegidas &&
-                palabrasElegidas[idx] !==
+                  palabrasElegidas[idx] !==
                   undefined
                   ? palabrasElegidas[idx]
                   : "";
               return (
                 <span
                   key={i}
-                  className={`question-card__cloze-input is-correct ${
-                    texto
+                  className={`question-card__cloze-input is-correct ${texto
                       ? "has-value"
                       : ""
-                  }`}
+                    }`}
                 >
                   {texto ? (
                     <LatexText>
@@ -1033,7 +1023,7 @@ function PreguntaResultadoTema({
                 respuesta === undefined;
               if (
                 respuesta ===
-                  pregunta.correct &&
+                pregunta.correct &&
                 !esCorrecta
               ) {
                 return null;
@@ -1047,7 +1037,7 @@ function PreguntaResultadoTema({
               if (
                 !estaEnBlanco &&
                 respuesta !==
-                  pregunta.correct &&
+                pregunta.correct &&
                 !esCorrecta &&
                 !esMarcada
               ) {
@@ -1137,7 +1127,7 @@ function PreguntaResultadoTema({
                 respuesta === undefined;
               if (
                 respuesta ===
-                  pregunta.correct &&
+                pregunta.correct &&
                 !esCorrecta
               ) {
                 return null;
@@ -1151,7 +1141,7 @@ function PreguntaResultadoTema({
               if (
                 !estaEnBlanco &&
                 respuesta !==
-                  pregunta.correct &&
+                pregunta.correct &&
                 !esCorrecta &&
                 !esMarcada
               ) {
@@ -1228,7 +1218,7 @@ function PreguntaResultadoTema({
               respuesta === undefined;
             if (
               respuesta ===
-                pregunta.correct &&
+              pregunta.correct &&
               !esCorrecta
             ) {
               return null;
@@ -1242,7 +1232,7 @@ function PreguntaResultadoTema({
             if (
               !estaEnBlanco &&
               respuesta !==
-                pregunta.correct &&
+              pregunta.correct &&
               !esCorrecta &&
               !esMarcada
             ) {
@@ -1328,9 +1318,8 @@ function FilaResultado({
   } = item;
   return (
     <li
-      className={`resultados-examen__pregunta is-${estado} ${
-        abierta ? "is-abierta" : ""
-      }`}
+      className={`resultados-examen__pregunta is-${estado} ${abierta ? "is-abierta" : ""
+        }`}
     >
       <button
         type="button"
@@ -1348,18 +1337,16 @@ function FilaResultado({
             : puntos}
         </span>
         <i
-          className={`fas fa-chevron-${
-            abierta ? "up" : "down"
-          }`}
+          className={`fas fa-chevron-${abierta ? "up" : "down"
+            }`}
         />
       </button>
       {abierta && (
         <div className="resultados-examen__explicacion">
           <div
-            className={`question-card resultados-examen__detalle-pregunta question-card--${
-              pregunta.tipo ||
+            className={`question-card resultados-examen__detalle-pregunta question-card--${pregunta.tipo ||
               "opcion_multiple"
-            }`}
+              }`}
           >
             <div className="question-card__inner">
               <PreguntaResultadoTema
@@ -1494,9 +1481,9 @@ const TemaExamenView = forwardRef(
           prev[idx]
             ? prev
             : {
-                ...prev,
-                [idx]: estado
-              }
+              ...prev,
+              [idx]: estado
+            }
       );
     }
     /* ========================================================
@@ -1784,10 +1771,10 @@ const TemaExamenView = forwardRef(
       const puntajeGrupo =
         grupoSeleccionado
           ? grupoSeleccionado.items.reduce(
-              (acc, item) =>
-                acc + item.puntos,
-              0
-            )
+            (acc, item) =>
+              acc + item.puntos,
+            0
+          )
           : 0;
       return (
         <div className="resultados-examen">
@@ -1870,7 +1857,7 @@ const TemaExamenView = forwardRef(
                         setPreguntaAbiertaResultado(
                           (actual) =>
                             actual ===
-                            item.numeroGlobal
+                              item.numeroGlobal
                               ? null
                               : item.numeroGlobal
                         )
@@ -1939,10 +1926,9 @@ const TemaExamenView = forwardRef(
           )}
         </div>
         <div
-          className={`arcade-game-container question-card question-card--${
-            preguntaActual.tipo ||
+          className={`arcade-game-container question-card question-card--${preguntaActual.tipo ||
             "opcion_multiple"
-          }`}
+            }`}
         >
           <div className="arcade-grid" />
           <div className="question-card__inner">
@@ -1952,7 +1938,7 @@ const TemaExamenView = forwardRef(
               }
               respuesta={
                 respuestasPorIndice[
-                  indice
+                indice
                 ] ?? null
               }
               onCambiar={
@@ -1961,7 +1947,7 @@ const TemaExamenView = forwardRef(
               rendido={rendido}
               marcas={
                 marcasPorIndice[
-                  indice
+                indice
                 ] || {}
               }
               onActualizarMarcas={
@@ -1977,7 +1963,7 @@ const TemaExamenView = forwardRef(
                 <i className="fas fa-flag" />{" "}
                 {
                   mensajeRendirsePorIndice[
-                    indice
+                  indice
                   ]
                 }
               </h4>

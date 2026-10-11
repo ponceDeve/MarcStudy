@@ -506,12 +506,54 @@ export default function ExamenPage() {
   }
   /*
    * ============================================================
-   * ABANDONAR EXAMEN
+   * TECLADO
+   * Flechas ← → cambian de curso. Enter abre la confirmación de
+   * entrega; si ya está abierta, Enter entrega el examen.
    * ============================================================
    */
-  function abandonarExamen() {
-    entregarExamen();
-  }
+  const totalCursos = new Set(
+    preguntas.map((p) => p.curso)
+  ).size;
+  useEffect(() => {
+    if (etapa !== "en_curso") return;
+    function onKeyDown(e) {
+      if (e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+      const el = document.activeElement;
+      const tag = el?.tagName;
+      if (
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        el?.isContentEditable
+      ) {
+        return;
+      }
+      if (e.key === "Enter") {
+        // Sobre un botón enfocado, Enter ya lo activa solo.
+        if (tag === "BUTTON" || tag === "A") return;
+        e.preventDefault();
+        if (modal === "entregar") {
+          entregarExamen();
+        } else {
+          setModal("entregar");
+        }
+        return;
+      }
+      if (modal) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        setIndiceCurso((i) => Math.max(0, i - 1));
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        setIndiceCurso((i) =>
+          Math.min(totalCursos - 1, i + 1)
+        );
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () =>
+      window.removeEventListener("keydown", onKeyDown);
+  }, [etapa, modal, totalCursos]);
   /*
    * ============================================================
    * CARGANDO
@@ -886,16 +928,6 @@ export default function ExamenPage() {
           {totalRespondidas}{" "}
           respondidas
         </span>
-        <button
-          type="button"
-          className="examen-page__abandonar-btn"
-          onClick={() =>
-            setModal("abandonar")
-          }
-        >
-          Abandonar
-          <i className="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
-        </button>
       </div>
       {/* ======================================================
           BODY
@@ -999,17 +1031,11 @@ export default function ExamenPage() {
           ====================================================== */}
       <AbandonarSimulacroModal
         abierto={modal !== null}
-        modo={
-          modal || "abandonar"
-        }
+        modo="entregar"
         onContinuar={() =>
           setModal(null)
         }
-        onConfirmar={
-          modal === "entregar"
-            ? entregarExamen
-            : abandonarExamen
-        }
+        onConfirmar={entregarExamen}
       />
     </div>
   );

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
+import { useMusicaFondo } from "../lib/musicaFondo";
 import EditarNombreModal from "./EditarNombreModal";
 function SideDrawer({ title, isOpen, onClose, children }) {
   return createPortal(
@@ -65,6 +66,48 @@ export default function AppHeader({
     }
   });
   const headerRef = useRef(null);
+  const { musicaOn, alternarMusica } = useMusicaFondo();
+  const [pantallaCompleta, setPantallaCompleta] = useState(
+    () => !!document.fullscreenElement
+  );
+  useEffect(() => {
+    const onCambio = () =>
+      setPantallaCompleta(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", onCambio);
+    return () =>
+      document.removeEventListener("fullscreenchange", onCambio);
+  }, []);
+  function alternarPantallaCompleta() {
+    if (!document.fullscreenElement) {
+      document.documentElement
+        .requestFullscreen?.()
+        .catch(() => {});
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+  // Controles visibles (no dependen solo de atajos de teclado). El
+  // atajo se muestra en el texto para que el usuario sepa qué tecla usar.
+  const controlesMedia = [
+    {
+      key: "pantalla",
+      label: pantallaCompleta ? "Minimizar" : "Pantalla completa",
+      atajo: "F",
+      icon: pantallaCompleta
+        ? "fa-solid fa-compress"
+        : "fa-solid fa-expand",
+      onClick: alternarPantallaCompleta
+    },
+    {
+      key: "musica",
+      label: musicaOn ? "Silenciar música" : "Activar música",
+      atajo: "B",
+      icon: musicaOn
+        ? "fa-solid fa-volume-high"
+        : "fa-solid fa-volume-xmark",
+      onClick: alternarMusica
+    }
+  ];
   const location = useLocation();
   useAutoHideHeader(menuMobileOpen);
   // ============================================================
@@ -418,6 +461,18 @@ export default function AppHeader({
                   "topbar__nav-btn topbar__nav-btn--resultados-buscar"
                 )}
             </div>
+            {controlesMedia.map((c) => (
+              <button
+                key={c.key}
+                type="button"
+                className="topbar__control-btn topbar__control-btn--media"
+                onClick={c.onClick}
+                title={`${c.label} (tecla ${c.atajo})`}
+                aria-label={`${c.label} (tecla ${c.atajo})`}
+              >
+                <i className={c.icon} />
+              </button>
+            ))}
             {/* =================================================
                 MENÚ HAMBURGUESA
                 ================================================= */}
@@ -460,6 +515,23 @@ export default function AppHeader({
                 }
               )
             )}
+          {controlesMedia.map((c) => (
+            <button
+              key={c.key}
+              type="button"
+              className="topbar__drawer-item"
+              onClick={() => {
+                c.onClick();
+                setMenuMobileOpen(false);
+              }}
+            >
+              <span className="topbar__drawer-item-label">
+                {c.label}
+                <kbd className="topbar__atajo">{c.atajo}</kbd>
+              </span>
+              <i className={`${c.icon} topbar__drawer-item-icon`} />
+            </button>
+          ))}
         </SideDrawer>
       </div>
       {/* ======================================================

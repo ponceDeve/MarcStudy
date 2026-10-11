@@ -246,45 +246,66 @@
    ============================================================ */
 .glossary-tooltip {
   position: fixed;
-  z-index: 1000;
+  // Por encima de la barra superior, el botón de voz y los paneles
+  // flotantes, para que la nube nunca quede tapada por ellos.
+  z-index: 1200;
   width: max-content;
+  // La nube se ajusta al contenido; el texto va centrado.
+  text-align: center;
   max-width: min(320px, calc(100vw - 24px));
   box-sizing: border-box;
-  padding: 11px 15px;
+  padding: 7px 13px;
   color: var(--ink);
   background: var(--surface);
   border: 1px solid var(--primary);
-  border-radius: 18px 20px 16px 22px;
+  border-radius: 14px;
   box-shadow: var(--shadow-md);
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 400;
-  line-height: 1.45;
-  text-align: left;
+  line-height: 1.3;
   overflow-wrap: anywhere;
   word-break: normal;
   pointer-events: none;
   animation: glossary-tooltip-in 0.2s ease-out;
 }
+/* Punta de la nube: dos triángulos fijos (borde azul y relleno blanco).
+   La unión con el borde queda definida por la forma y no por medidas
+   a ojo. Se posiciona con --tt-arrow (centro de la punta). */
 .glossary-tooltip__arrow {
   position: absolute;
-  bottom: -8px;
+  top: 100%;
   left: var(--tt-arrow, 50%);
-  width: 14px;
-  height: 14px;
-  background: var(--surface);
-  border-right: 1px solid var(--primary);
-  border-bottom: 1px solid var(--primary);
-  transform: translateX(-50%) rotate(45deg);
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid var(--primary);
 }
-/* Si la nube va debajo de la palabra, la flecha va arriba */
+.glossary-tooltip__arrow::after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--surface);
+}
+/* Si la nube va debajo de la palabra, la punta va arriba */
 .glossary-tooltip--below .glossary-tooltip__arrow {
-  bottom: auto;
-  top: -8px;
-  border-right: none;
-  border-bottom: none;
-  border-left: 1px solid var(--primary);
-  border-top: 1px solid var(--primary);
+  top: auto;
+  bottom: 100%;
+  border-top: none;
+  border-bottom: 9px solid var(--primary);
+}
+.glossary-tooltip--below .glossary-tooltip__arrow::after {
+  top: auto;
+  bottom: -9px;
+  border-top: none;
+  border-bottom: 8px solid var(--surface);
 }
 .glossary-tooltip .katex {
   color: var(--ink);

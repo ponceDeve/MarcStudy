@@ -916,11 +916,21 @@
     padding-right: var(--space-2);
   }
 
+  .search-result-item__tema,
+  .search-topic-number {
+    font-size: 16px;
+  }
+
   @media (max-width: 400px) {
     .search-result-item.is-curso,
     .search-result-item.is-tema {
       padding-left: var(--space-1);
       padding-right: var(--space-1);
+    }
+
+    .search-result-item__tema,
+    .search-topic-number {
+      font-size: 15px;
     }
   }
 }

@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import manifest from "../../data/manifest.json";
 import { registrarCursoCompletado } from "../../lib/repasoStorage";
+import { obtenerRecomendacionesHoy } from "../../lib/repasoRecomendado";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useMusicaFondo } from "../../lib/musicaFondo";
 import AppHeader from "../../components/AppHeader";
@@ -15,7 +16,9 @@ import {
 import TemaExamenView from "./TemaExamenView";
 import ExplanationPanel from "./ExplanationPanel";
 import GlossaryText from "./GlossaryText";
+import { construirPromptExamen } from "../../lib/promptsRepaso";
 import TopBar from "./TopBar";
+import WelcomeSection from "./WelcomeSection";
 import TheorySearchBar from "./TheorySearchBar";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
@@ -373,6 +376,9 @@ export default function MiEstudioPage() {
     null
   );
   const [preguntaModoAbierta, setPreguntaModoAbierta] = useState(false);
+  // Se activa cuando el tema se abre desde fuera (p. ej. "regresar"
+  // desde Pomodoro): en ese caso no se pregunta si ver la teoría.
+  const omitirModoEstudioRef = useRef(false);
   const [modoEstudio, setModoEstudio] = useState("completo");
   const [esModoAdicionales, setEsModoAdicionales] = useState(false);
   const [pomodoroAlarmaAbierta, setPomodoroAlarmaAbierta] = useState(false);
@@ -526,6 +532,8 @@ export default function MiEstudioPage() {
     });
   }
   async function abrirTema(item) {
+    const omitirModoEstudio = omitirModoEstudioRef.current;
+    omitirModoEstudioRef.current = false;
     window.scrollTo(0, 0);
     // Quita el foco de cualquier botón/input para que las flechas funcionen sin hacer clic
     document.activeElement?.blur?.();
@@ -634,8 +642,16 @@ export default function MiEstudioPage() {
       setMostrarModalRendirse(false);
       setAlertaVidas(null);
       setSinPreguntaAlerta(false);
-      // Inglés (niveles con secciones/leccion) no pregunta si mostrar la teoría
-      setPreguntaModoAbierta(!(data.secciones || data.leccion));
+      // Inglés (niveles con secciones/leccion) no pregunta si mostrar la teoría.
+      // Sin examen ni ejercicios tampoco hay nada que elegir: se muestra la teoría.
+      const tienePreguntas =
+        (data.examen?.length ?? 0) > 0 ||
+        (data.ejercicios?.length ?? 0) > 0;
+      setPreguntaModoAbierta(
+        !omitirModoEstudio &&
+          !(data.secciones || data.leccion) &&
+          tienePreguntas
+      );
     } catch (e) {
       console.error("Error en abrirTema:", e);
       setError(`No pude cargar "${item.tema}". (${e.message})`);
@@ -643,44 +659,30 @@ export default function MiEstudioPage() {
       setLoading(false);
     }
   }
-  async function generarCuestionarioDECO() {
-    if (!topicData) return;
-    const teoria = (topicData.theory || [])
-      .map((seccion) => {
-        const titulo = seccion?.titulo || "";
-        const puntos = (seccion?.puntos || [])
-          .map((punto) => {
-            const texto = punto?.texto || "";
-            return texto;
-          })
-          .filter(Boolean)
-          .join("\n\n");
-        return [titulo, puntos]
-          .filter(Boolean)
-          .join("\n\n");
-      })
-      .filter(Boolean)
-      .join("\n\n");
-    const prompt = `Actúa como profesor experto en admisión UNMSM.
-Genera 20 preguntas de opción múltiple con estilo DECO utilizando EXCLUSIVAMENTE la teoría proporcionada.
-REGLAS:
-- 20 preguntas.
-- Cada pregunta debe tener 5 alternativas: A, B, C, D y E.
-- Prioriza situaciones, aplicación, análisis, relaciones, causa-efecto, interpretación y comparación.
-- Evita preguntas de definición directa cuando sea posible.
-- Los distractores deben ser plausibles.
-- Distribuye las preguntas por todo el contenido.
-- No repitas innecesariamente un mismo concepto.
-- Nivel preuniversitario.
-- Enfoque tipo examen de admisión UNMSM.
-- Indica la respuesta correcta y una explicación breve después de cada pregunta.
-- No agregues información que no esté respaldada por la teoría.
-CURSO:
-${topicData.curso || ""}
-TEMA:
-${topicData.tema || ""}
-TEORÍA:
-${teoria}`;
+  // Prompt de examen/ejercicios del curso (letras, matemática o ciencias),
+  // con el JSON de teoría del tema como entrada.
+  // tipo: "examen" | "ejercicio" | "ambos"
+  function construirPromptChatGpt(tipo) {
+    const base = construirPromptExamen({
+      curso: topicData?.curso || "",
+      tema: topicData?.tema || ""
+    });
+    let solicitud = "";
+    if (tipo === "examen") {
+      solicitud =
+        "\nSOLICITUD: en el segundo mensaje entrega únicamente la clave «examen» (Bloque A).";
+    } else if (tipo === "ejercicio") {
+      solicitud =
+        "\nSOLICITUD: en el segundo mensaje entrega únicamente la clave «ejercicios» (Bloque B).";
+    }
+    const teoriaJson = JSON.stringify({
+      curso: topicData?.curso || "",
+      tema: topicData?.tema || "",
+      theory: topicData?.theory || []
+    });
+    return `${base}${solicitud}\n\nJSON DE TEORÍA (entrada):\n${teoriaJson}`;
+  }
+  async function abrirChatGptConPrompt(prompt) {
     try {
       await navigator.clipboard.writeText(prompt);
       window.open(
@@ -690,7 +692,7 @@ ${teoria}`;
       );
     } catch (error) {
       console.error(
-        "No se pudo copiar el cuestionario:",
+        "No se pudo copiar el prompt:",
         error
       );
       window.open(
@@ -699,6 +701,19 @@ ${teoria}`;
         "noopener,noreferrer"
       );
     }
+  }
+  async function generarCuestionarioDECO() {
+    if (!topicData) return;
+    await abrirChatGptConPrompt(
+      construirPromptChatGpt("examen")
+    );
+  }
+  // Desde el chat de la teoría: "examen", "ejercicio" o ambos.
+  function pedirExamenChatGpt(tipo) {
+    if (!topicData) return;
+    abrirChatGptConPrompt(
+      construirPromptChatGpt(tipo)
+    );
   }
   function pedirAbrirTema(item) {
     const hayCambiosSinGuardar =
@@ -1112,6 +1127,7 @@ ${teoria}`;
         normalizarTexto(item.nombre) === qNorm
     );
     if (temaMatch) {
+      omitirModoEstudioRef.current = true;
       seleccionarItem(temaMatch);
     } else if (cursoMatch) {
       seleccionarItem(cursoMatch);
@@ -1213,6 +1229,16 @@ ${teoria}`;
       finalizarTema();
     }
   }
+  // Primera pregunta del recorrido actual (según el modo en que se estudia).
+  const esPrimeraPregunta = repasoQuizActivo
+    ? repasoQuizPos === 0
+    : isLevelMode
+      ? nivelIndex === 0
+      : isFlipQuiz
+        ? quizPos === 0
+        : modoEstudio === "solo_preguntas"
+          ? posOrden === 0
+          : cardIndex === 0;
   function retrocederCard() {
     if (stage === "theory") return;
     if (repasoQuizActivo) {
@@ -2466,6 +2492,10 @@ ${teoria}`;
     seccionActual,
     flatPuntos
   ]);
+  const recomendacionesHoyInicio = useMemo(
+    () => obtenerRecomendacionesHoy(),
+    []
+  );
   let ultimoTemaInicio = null;
   try {
     ultimoTemaInicio = JSON.parse(
@@ -2989,35 +3019,7 @@ ${teoria}`;
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">
                     Aprende y domina{" "}
-                    <span
-                      className="mi-estudio__intro-highlight mi-estudio__intro-highlight--continuar"
-                      role="button"
-                      title="Continuar con el ultimo tema"
-                      tabIndex={0}
-                      onClick={() => {
-                        if (!ultimoTemaInicio) {
-                          mostrarAvisoContinuarVacio();
-                          return;
-                        }
-                        seleccionarItem({
-                          type: "tema",
-                          curso:
-                            ultimoTemaInicio.curso,
-                          tema:
-                            ultimoTemaInicio.tema,
-                          archivo:
-                            ultimoTemaInicio.archivo
-                        });
-                      }}
-                      onKeyDown={(e) => {
-                        if (
-                          e.key === "Enter" ||
-                          e.key === " "
-                        ) {
-                          e.currentTarget.click();
-                        }
-                      }}
-                    >
+                    <span className="mi-estudio__intro-highlight">
                       cada tema
                     </span>
                   </h1>
@@ -3029,6 +3031,32 @@ ${teoria}`;
                     )}
                     <button
                       type="button"
+                      className="welcome-section__continuar-btn"
+                      onClick={() => {
+                        if (!ultimoTemaInicio) {
+                          mostrarAvisoContinuarVacio();
+                          return;
+                        }
+                        seleccionarItem({
+                          type: "tema",
+                          curso: ultimoTemaInicio.curso,
+                          tema: ultimoTemaInicio.tema,
+                          archivo: ultimoTemaInicio.archivo
+                        });
+                      }}
+                    >
+                      <span className="welcome-section__continuar-label">
+                        Continuar:
+                      </span>
+                      <span className="welcome-section__continuar-tema">
+                        {ultimoTemaInicio
+                          ? ultimoTemaInicio.tema
+                          : "..."}
+                      </span>
+                      <i className="fa-solid fa-arrow-right welcome-section__continuar-arrow" />
+                    </button>
+                    <button
+                      type="button"
                       className="welcome-section__simulacro-panel"
                       onClick={() =>
                         setSimulacroModalOpen(
@@ -3037,6 +3065,9 @@ ${teoria}`;
                       }
                       aria-label="Rendir simulacro"
                     >
+                      <span className="welcome-section__simulacro-icon">
+                        <i className="bi bi-bullseye"></i>
+                      </span>
                       <span className="welcome-section__simulacro-info">
                         <strong>
                           Rendir simulacro
@@ -3064,6 +3095,44 @@ ${teoria}`;
                     `/examen?area=${area}`
                   );
                 }}
+              />
+            </div>
+            {recomendacionesHoyInicio.length > 0 && (
+              <div className="mi-estudio__recomendados container">
+                <h3 className="mi-estudio__recomendados-title">
+                  Repasos recomendados de hoy
+                </h3>
+                <div className="mi-estudio__recomendados-grid">
+                  {recomendacionesHoyInicio.map((r) => (
+                    <div
+                      key={`${r.curso}-Turno${r.turno}`}
+                      className="mi-estudio__recomendados-curso"
+                    >
+                      <span className="mi-estudio__recomendados-curso-nombre">
+                        {r.curso}
+                      </span>
+                      <ul className="mi-estudio__recomendados-temas">
+                        {r.temas.map((tema, i) => (
+                          <li key={`${tema}-${i}`}>{tema}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            <div className="mi-estudio__below">
+              <WelcomeSection
+                onSelectTema={seleccionarItem}
+                temasCompletadosLista={(() => {
+                  try {
+                    return JSON.parse(
+                      localStorage.getItem("temasCompletados") || "[]"
+                    );
+                  } catch {
+                    return [];
+                  }
+                })()}
               />
             </div>
           </>
@@ -3181,6 +3250,9 @@ ${teoria}`;
                           <div className="teoria-chat__body">
                             <TheorySearchBar
                               modoChat
+                              onPedirExamen={
+                                pedirExamenChatGpt
+                              }
                               placeholder="Escribe lo que buscas..."
                               flatPuntos={
                                 puntosTeoria
@@ -3595,37 +3667,19 @@ ${teoria}`;
                 )}
               {stage === "question" &&
                 !modoExamenTema && (
-                  <div className="mi-estudio__nav">
+                  <div className="mi-estudio__nav mi-estudio__nav--entrega">
+                    <div className="mi-estudio__nav-grupo">
                     <button
-                      onClick={
-                        retrocederCard
-                      }
-                      disabled={
-                        isLevelMode
-                          ? nivelIndex ===
-                            0
-                          : isFlipQuiz
-                            ? quizPos === 0
-                            : cardIndex ===
-                              0
-                      }
-                      className={`mi-estudio__nav-btn ${
-                        (
-                          isLevelMode
-                            ? nivelIndex ===
-                              0
-                            : isFlipQuiz
-                              ? quizPos ===
-                                0
-                              : cardIndex ===
-                                0
-                        )
-                          ? ""
-                          : "is-active"
+                      type="button"
+                      onClick={retrocederCard}
+                      disabled={esPrimeraPregunta}
+                      className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${
+                        esPrimeraPregunta ? "" : "is-active"
                       }`}
                       title="Anterior"
                     >
-                      <i className="fas fa-caret-left" />
+                      <i className="fas fa-arrow-left" />
+                      Ant.
                     </button>
                     <div className="mi-estudio__nav-right">
                       {(() => {
@@ -3662,18 +3716,15 @@ ${teoria}`;
                               aria-disabled={
                                 bloqueado
                               }
-                              className={`mi-estudio__nav-btn ${
-                                bloqueado
-                                  ? ""
-                                  : "is-active"
-                              }`}
+                              className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${bloqueado ? "" : "is-active"}`}
                               title="Siguiente"
                             >
+                              Sig.
                               {esUltimo &&
                               canAdvance ? (
                                 <i className="fas fa-flag-checkered" />
                               ) : (
-                                <i className="fas fa-caret-right" />
+                                <i className="fas fa-arrow-right" />
                               )}
                             </button>
                             {!canAdvance &&
@@ -3687,6 +3738,14 @@ ${teoria}`;
                         );
                       })()}
                     </div>
+                    </div>
+                    <button
+                      type="button"
+                      className="mi-estudio__entregar-btn"
+                      onClick={pedirAbandonarPregunta}
+                    >
+                      Entregar
+                    </button>
                   </div>
                 )}
               {stage === "question" &&

@@ -1,4 +1,4 @@
-import temarioSesiones from "../data/temarioSesiones.json";
+import temarioSesiones from "../data/coursesSemanas.json";
 import { leerLog, leerHistorialRotacion } from "./repasoStorage";
 export const GRUPOS_ROTACION = [
   ["Habilidad Verbal", "Educación Cívica", "Economía"],
@@ -20,7 +20,11 @@ function listaTemasDelCurso(curso) {
     .sort((a, b) => numeroDeSemana(a) - numeroDeSemana(b))
     .flatMap((semanaKey) => {
       const semana = numeroDeSemana(semanaKey);
-      return semanas[semanaKey].flatMap((temasDeLaSesion) =>
+      const contenido = semanas[semanaKey];
+      const bloques = contenido.every(Array.isArray)
+        ? contenido
+        : [contenido];
+      return bloques.flatMap((temasDeLaSesion) =>
         temasDeLaSesion.map((tema) => ({
           tema,
           semana
@@ -52,7 +56,7 @@ function turnoEstaCompleto(log, curso, turno) {
       (entrada) =>
         entrada.subject === curso &&
         entrada.tema === tema &&
-        entrada.day === `Semana ${semana}`
+        (!entrada.day || entrada.day === `Semana ${semana}`)
     )
   );
 }
@@ -64,7 +68,7 @@ function temasPendientesDeTurno(log, curso, turno) {
           (entrada) =>
             entrada.subject === curso &&
             entrada.tema === tema &&
-            entrada.day === `Semana ${semana}`
+            (!entrada.day || entrada.day === `Semana ${semana}`)
         )
     )
     .map(({ tema }) => tema);
@@ -212,7 +216,8 @@ function obtenerRecomendacionesParaDiaRotacion(
         sesionesPendientesEnCurso:
           NUM_TURNOS_POR_CURSO - turnosDados[curso]
       };
-    });
+    })
+    .filter((r) => r.temas.length > 0);
 }
 export function obtenerRecomendacionesDia(
   desplazamiento = 0,

@@ -84,18 +84,19 @@ export default function RendirseModal({
         <div className="rendirse-modal__actions">
           <button
             type="button"
-            className="rendirse-modal__btn is-confirm"
-            onClick={onContinuar}
-          >
-            Continuar
-          </button>
-          <button
-            type="button"
             className="rendirse-modal__btn is-cancel"
             onClick={onRendirse}
           >
             Rendirse
           </button>
+          <button
+            type="button"
+            className="rendirse-modal__btn is-confirm"
+            onClick={onContinuar}
+          >
+            Continuar
+          </button>
+          
         </div>
       </div>
     </div>

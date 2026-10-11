@@ -368,6 +368,12 @@ export default function HorarioPage() {
           : ""
     );
 
+    // Si el pomodoro se inició desde un tema, volver a ese tema. El
+    // cronómetro sigue corriendo en segundo plano (PomodoroContext).
+    if (temaDesdeLink?.tema && retornoTema) {
+      volverAlTema();
+    }
+
     if (cursoRapidoPreparado) {
       setCursoRapidoPreparado(null);
     }
