@@ -1,0 +1,493 @@
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useAutoHideHeader } from "../hooks/useAutoHideHeader";
+import EditarNombreModal from "./EditarNombreModal";
+function SideDrawer({ title, isOpen, onClose, children }) {
+  return createPortal(
+    <>
+      {isOpen && (
+        <div
+          className="offcanvas-backdrop fade show"
+          onClick={onClose}
+        />
+      )}
+      <div
+        className={`offcanvas offcanvas-end topbar__drawer ${isOpen ? "show" : ""
+          }`}
+        tabIndex="-1"
+        aria-hidden={!isOpen}
+      >
+        <div className="offcanvas-header topbar__drawer-header">
+          <h3 className="offcanvas-title topbar__drawer-title">
+            {title}
+          </h3>
+          <button
+            type="button"
+            className="topbar__drawer-close"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
+            <i className="fa-solid fa-times" />
+          </button>
+        </div>
+        <div className="offcanvas-body topbar__drawer-list">
+          {children}
+        </div>
+      </div>
+    </>,
+    document.body
+  );
+}
+export default function AppHeader({
+  onAbrirBuscador,
+  section = "inicio",
+  // Si es true, en pantallas angostas se muestran los botones del header
+  // directamente en vez del menú hamburguesa (útil cuando hay uno solo).
+  sinHamburguesa = false,
+}) {
+  const [nombreUsuario, setNombreUsuario] = useLocalStorage(
+    "miEstudio_nombreUsuario",
+    null
+  );
+  const [fotoUsuario, setFotoUsuario] = useLocalStorage(
+    "miEstudio_fotoUsuario",
+    null
+  );
+  const [menuMobileOpen, setMenuMobileOpen] = useState(false);
+  const [editarPerfilAbierto, setEditarPerfilAbierto] = useState(() => {
+    if (nombreUsuario) return false;
+    try {
+      return sessionStorage.getItem("miEstudio_perfilOmitido") !== "1";
+    } catch {
+      return true;
+    }
+  });
+  const headerRef = useRef(null);
+  const location = useLocation();
+  useAutoHideHeader(menuMobileOpen);
+  // ============================================================
+  // ALTURA DEL HEADER
+  // ============================================================
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const setHeaderVar = () => {
+      document.documentElement.style.setProperty(
+        "--app-header-h",
+        `${el.offsetHeight}px`
+      );
+    };
+    setHeaderVar();
+    const ro = new ResizeObserver(setHeaderVar);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  // ============================================================
+  // SECCIONES
+  // ============================================================
+  const esInicio = section === "inicio";
+  const esResultados = section === "resultados";
+  // ============================================================
+  // BOTONES DEL HEADER
+  // ============================================================
+  const botones = [
+    // ==========================================================
+    // RESULTADOS
+    // En resultados deben existir exactamente:
+    // Inicio, Pomodoro, Repaso y Buscador.
+    // ==========================================================
+    ...(esResultados
+      ? [
+        {
+          title: "Ir a Inicio",
+          label: "Inicio",
+          fullLabel: "Ir a Inicio",
+          icon: "fa-solid fa-house",
+          to: "/",
+        },
+        ...(onAbrirBuscador
+          ? [
+            {
+              title: "Buscar curso o tema",
+              label: "Buscar",
+              fullLabel: "Buscar curso o tema",
+              icon: "fa-solid fa-magnifying-glass",
+              onClick: onAbrirBuscador,
+            },
+          ]
+          : []),
+        {
+          title: "Ir al Pomodoro",
+          label: "Pomodoro",
+          fullLabel: "Pomodoro",
+          icon: "fa-solid fa-hourglass-half",
+          to: "/pomodoro",
+        },
+        {
+          title: "Ir a Mis Repasos",
+          label: "Repaso",
+          fullLabel: "Mis Repasos",
+          icon: "fa-solid fa-calendar-check",
+          to: "/repaso",
+        },
+      ]
+      : [
+        // ========================================================
+        // IR A INICIO
+        // ========================================================
+        ...(!esInicio
+          ? [
+            {
+              title: "Ir a Inicio",
+              label: "Inicio",
+              fullLabel: "Ir a Inicio",
+              icon: "fa-solid fa-house",
+              to: "/",
+            },
+          ]
+          : []),
+        // ========================================================
+        // BUSCADOR
+        // ========================================================
+        ...(onAbrirBuscador
+          ? [
+            {
+              title: "Buscar curso o tema",
+              label: "Buscar",
+              fullLabel: "Buscar curso o tema",
+              icon: "fa-solid fa-magnifying-glass",
+              onClick: onAbrirBuscador,
+            },
+          ]
+          : []),
+        // ========================================================
+        // INICIO
+        // 1. Pomodoro
+        // 2. Repaso
+        // 3. Perfil
+        // ========================================================
+        ...(esInicio
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+            {
+              title: "Ir a Mis Repasos",
+              label: "Repaso",
+              fullLabel: "Mis Repasos",
+              icon: "fa-solid fa-calendar-check",
+              to: "/repaso",
+            },
+          ]
+          : []),
+        // ========================================================
+        // REPASO → POMODORO
+        // ========================================================
+        ...(section === "repaso"
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+          ]
+          : []),
+        // ========================================================
+        // POMODORO → REPASO + EDITAR HORARIO
+        // ========================================================
+        ...(section === "pomodoro"
+          ? [
+            {
+              title: "Ir a Mis Repasos",
+              label: "Repaso",
+              fullLabel: "Mis Repasos",
+              icon: "fa-solid fa-calendar-check",
+              to: "/repaso",
+            },
+          ]
+          : []),
+        // ========================================================
+        // EDITAR HORARIO → POMODORO
+        // ========================================================
+        ...(section === "editar"
+          ? [
+            {
+              title: "Ir al Pomodoro",
+              label: "Pomodoro",
+              fullLabel: "Pomodoro",
+              icon: "fa-solid fa-hourglass-half",
+              to: "/pomodoro",
+            },
+          ]
+          : []),
+      ]),
+  ];
+  // ============================================================
+  // RUTA ACTIVA
+  // ============================================================
+  const esActivo = (b) => {
+    if (!b.to) return false;
+    if (b.to === "/") {
+      return location.pathname === "/";
+    }
+    return (
+      location.pathname === b.to ||
+      location.pathname.startsWith(`${b.to}/`)
+    );
+  };
+  // ============================================================
+  // BOTÓN NORMAL DEL TOPBAR
+  // ============================================================
+  const renderBoton = (b, cls) => {
+    const content = (
+      <>
+        <i className={`${b.icon} topbar__btn-icon`} />
+        <span className="topbar__btn-title">
+          {b.label}
+        </span>
+      </>
+    );
+    const activeClass = esActivo(b)
+      ? " is-active"
+      : "";
+    const handleClick = () => {
+      if (b.onClick) {
+        b.onClick();
+      }
+    };
+    if (b.to) {
+      return (
+        <Link
+          key={b.title}
+          to={b.to}
+          title={b.title}
+          className={`${cls}${activeClass}`}
+          onClick={handleClick}
+        >
+          {content}
+        </Link>
+      );
+    }
+    return (
+      <button
+        key={b.title || b.label}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className={`${cls}${activeClass}`}
+      >
+        {content}
+      </button>
+    );
+  };
+  // ============================================================
+  // FILA NORMAL DEL MENÚ LATERAL
+  // ============================================================
+  const renderFila = (
+    b,
+    closeFn = () => { }
+  ) => {
+    const content = (
+      <>
+        <span className="topbar__drawer-item-label">
+          {b.fullLabel || b.label}
+        </span>
+        <i
+          className={`${b.icon} topbar__drawer-item-icon`}
+        />
+      </>
+    );
+    const activeClass = esActivo(b)
+      ? " is-active"
+      : "";
+    const handleClick = () => {
+      if (b.onClick) {
+        b.onClick();
+      }
+      closeFn();
+    };
+    if (b.to) {
+      return (
+        <Link
+          key={b.title}
+          to={b.to}
+          title={b.title}
+          className={`topbar__drawer-item${activeClass}`}
+          onClick={handleClick}
+        >
+          {content}
+        </Link>
+      );
+    }
+    return (
+      <button
+        key={b.title || b.label}
+        type="button"
+        onClick={handleClick}
+        title={b.title}
+        className={`topbar__drawer-item${activeClass}`}
+      >
+        {content}
+      </button>
+    );
+  };
+  // ============================================================
+  // HEADER
+  // ============================================================
+  return (
+    <div className="topbar-wrapper">
+      <div
+        className={`topbar${sinHamburguesa ? " topbar--sin-menu" : ""}`}
+        ref={headerRef}
+      >
+        <div className="topbar__inner">
+          {/* ==================================================
+              LOGO + NOMBRE DEL USUARIO
+              ================================================== */}
+          <button
+            type="button"
+            className="topbar__brand btn__inicio"
+            onClick={() => setEditarPerfilAbierto(true)}
+            title="Editar perfil"
+          >
+            <img
+              src={
+                fotoUsuario ||
+                `${import.meta.env.BASE_URL}icon.png`
+              }
+              alt="Mi Estudio"
+              className={`topbar__brand-logo${fotoUsuario
+                  ? " topbar__brand-logo--foto"
+                  : ""
+                }`}
+            />
+            <span
+              className="topbar__brand-name"
+              title={nombreUsuario || "Mi Estudio"}
+            >
+              {nombreUsuario || "Mi Estudio"}
+            </span>
+          </button>
+          {/* ==================================================
+              BUSCADOR
+              ================================================== */}
+          {onAbrirBuscador && (
+            <button
+              type="button"
+              className="topbar__search-bar"
+              onClick={onAbrirBuscador}
+              title="Buscar curso o tema"
+            >
+              <i className="fa-solid fa-magnifying-glass topbar__search-icon" />
+              <span className="topbar__search-placeholder">
+                Buscar cursos, temas...
+              </span>
+            </button>
+          )}
+          {/* ==================================================
+              CONTROLES
+              ================================================== */}
+          <div className="topbar__controls">
+            <div className="topbar__nav">
+              {botones
+                .filter(
+                  (b) => b.label !== "Buscar"
+                )
+                .map((b) =>
+                  renderBoton(
+                    b,
+                    "topbar__nav-btn"
+                  )
+                )}
+              {/* Buscador visible como botón del header.
+                  Se mantiene separado del search-bar existente. */}
+              {esResultados &&
+                onAbrirBuscador &&
+                renderBoton(
+                  botones.find(
+                    (b) => b.label === "Buscar"
+                  ),
+                  "topbar__nav-btn topbar__nav-btn--resultados-buscar"
+                )}
+            </div>
+            {/* =================================================
+                MENÚ HAMBURGUESA
+                ================================================= */}
+            <button
+              type="button"
+              onClick={() => {
+                setMenuMobileOpen(true);
+              }}
+              title="Menú"
+              className="topbar__control-btn topbar__control-btn--menu topbar__hamburger"
+            >
+              <i className="fa-solid fa-bars" />
+            </button>
+          </div>
+        </div>
+        {/* ====================================================
+            MENÚ LATERAL
+            ==================================================== */}
+        <SideDrawer
+          title="Menú"
+          isOpen={menuMobileOpen}
+          onClose={() => {
+            setMenuMobileOpen(false);
+          }}
+        >
+          {botones
+            .filter((b) => {
+              // En resultados el drawer debe contener:
+              // Inicio, Pomodoro, Repaso y Buscador.
+              if (esResultados) return true;
+              // En las demás secciones se conserva
+              // exactamente el comportamiento anterior.
+              return b.label !== "Buscar";
+            })
+            .map((b) =>
+              renderFila(
+                b,
+                () => {
+                  setMenuMobileOpen(false);
+                }
+              )
+            )}
+        </SideDrawer>
+      </div>
+      {/* ======================================================
+          MODAL DE PERFIL
+          ====================================================== */}
+      {createPortal(
+        <EditarNombreModal
+          open={editarPerfilAbierto}
+          nombreActual={nombreUsuario || ""}
+          fotoActual={fotoUsuario}
+          onGuardar={(n, f) => {
+            setNombreUsuario(n);
+            setFotoUsuario(f);
+            setEditarPerfilAbierto(false);
+          }}
+          onCancelar={() => {
+            if (!nombreUsuario) {
+              try {
+                sessionStorage.setItem("miEstudio_perfilOmitido", "1");
+              } catch {
+                /* noop */
+              }
+            }
+            setEditarPerfilAbierto(false);
+          }}
+        />,
+        document.body
+      )}
+    </div>
+  );
+}

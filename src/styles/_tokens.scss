@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+:root {
+  /* ============================================================
+     FONDOS Y SUPERFICIES
+     ============================================================ */
+  --bg: #eef1f6;
+  --ink-on-primary: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #f5f7fa;
+  --surface-hover: #e2e7ee;
+  --surface-ts: #ffffff;
+  --border: #dfe5ec;
+  --border-strong: #c5ced9;
+  /* ============================================================
+     TEXTOS
+     ============================================================ */
+  --ink: #18212d;
+  --ink-soft: #465365;
+  --ink-faint: #718096;
+  /* ============================================================
+     PRIMARY
+     Azul de acción principal.
+     CTA, progreso, elementos activos.
+     ============================================================ */
+  --primary: #2563eb;
+  --primary-dark: #1742b6;
+  --primary-light: #60a5fa;
+  --primary-bg: rgba(37, 99, 235, 0.10);
+  /* ============================================================
+     BRAND
+     Violeta de navegación / identidad secundaria.
+     ============================================================ */
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-light: #a78bfa;
+  --brand-bg: rgba(124, 58, 237, 0.10);
+  /* ============================================================
+     SECONDARY
+     Gris neutro.
+     ============================================================ */
+  --secondary: #64748b;
+  --secondary-dark: #475569;
+  --secondary-hover: #e2e8f0;
+  --secondary-bg: rgba(100, 116, 139, 0.10);
+  /* ============================================================
+     ACCENT
+     Rosa/coral.
+     Avisos suaves, recordatorios y atención no crítica.
+     ============================================================ */
+  --accent: #e11d48;
+  --accent-dark: #be123c;
+  --accent-bg: rgba(225, 29, 72, 0.09);
+  /* ============================================================
+     DANGER
+     Exclusivamente errores / acciones destructivas.
+     ============================================================ */
+  --danger: #dc2626;
+  --danger-dark: #b91c1c;
+  --danger-bg: rgba(220, 38, 38, 0.09);
+  /* ============================================================
+     SUCCESS
+     Exclusivamente correcto / completado / progreso positivo.
+     ============================================================ */
+  --success: #16a34a;
+  --success-dark: #15803d;
+  --success-bg: rgba(22, 163, 74, 0.09);
+  /* ============================================================
+     WARNING
+     Advertencias reales.
+     ============================================================ */
+  --warning: #d97706;
+  --warning-dark: #b45309;
+  --warning-bg: rgba(217, 119, 6, 0.10);
+  /* ============================================================
+     HEADER
+     ============================================================ */
+  --header-h: 64px;
+  /* ============================================================
+     BORDERS / OVERLAYS
+     ============================================================ */
+  --nested-border: 1px solid var(--border-strong);
+  --overlay: rgba(15, 23, 42, 0.50);
+  --overlay-strong: rgba(15, 23, 42, 0.76);
+  /* ============================================================
+     SHADOWS
+     ============================================================ */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.12);
+  /* ============================================================
+     BORDER RADIUS
+     ============================================================ */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+  /* ============================================================
+     FONT
+     ============================================================ */
+  --font: "Plus Jakarta Sans", sans-serif;
+  /* ============================================================
+     ESCALA TIPOGRÁFICA
+     ============================================================ */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-body: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+  --fs-title: 2rem;
+  --fs-hero: clamp(1.75rem, 5vw, 3rem);
+  /* ============================================================
+     PESOS TIPOGRÁFICOS
+     ============================================================ */
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  /* ============================================================
+     ESCALA DE ESPACIADO
+     ============================================================ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  /* ============================================================
+     ANCHO DE CONTENIDO
+     ============================================================ */
+  --content-max-width: 42rem;
+}
+/* ================================================================
+   BREAKPOINTS
+   ================================================================= */
+$bp-sm: 30rem; // 480px
+$bp-md: 48rem; // 768px
+$bp-lg: 64rem; // 1024px
+$bp-xl: 90rem; // 1440px
+/* ================================================================
+   RESPONSIVE MIXINS
+   respond($bp)     → @media (min-width: ...)
+   respond-max($bp) → @media (max-width: ...)
+   ================================================================= */
+@mixin respond($bp) {
+  @if $bp == sm {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (min-width: $bp-xl) {
+      @content;
+    }
+  }
+}
+@mixin respond-max($bp) {
+  @if $bp == sm {
+    @media (max-width: $bp-sm) {
+      @content;
+    }
+  } @else if $bp == md {
+    @media (max-width: $bp-md) {
+      @content;
+    }
+  } @else if $bp == lg {
+    @media (max-width: $bp-lg) {
+      @content;
+    }
+  } @else if $bp == xl {
+    @media (max-width: $bp-xl) {
+      @content;
+    }
+  }
+}

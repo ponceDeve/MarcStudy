@@ -1,0 +1,328 @@
+/* ============================================================
+   Tooltips de selección y ayuda
+   ============================================================ */
+/* ============================================================
+   AVISO DE BLOQUEO (burbuja)
+   ------------------------------------------------------------
+   La usa cualquier botón que está bloqueado porque espera una
+   acción previa del usuario (elegir un tema, seleccionar una
+   opción, responder una pregunta, etc). El elemento que la
+   contiene debe tener position: relative.
+   Uso normal (mensaje corto, una línea):
+     <span className="aviso-bloqueo">Elige un tema</span>
+   Mensaje largo que puede necesitar 2 líneas:
+     <span className="aviso-bloqueo aviso-bloqueo--wrap">...</span>
+   ============================================================ */
+.aviso-bloqueo {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: none;
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  pointer-events: none;
+  animation: avisoBloqueoIn 0.18s ease-out;
+}
+.aviso-bloqueo--wrap {
+  max-width: 13.75rem;
+  white-space: normal;
+}
+.aviso-bloqueo::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--ink);
+}
+@keyframes avisoBloqueoIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* ============================================================
+   PomodoroWidget.scss
+   ============================================================ */
+.pomo-widget {
+  position: fixed;
+  top: var(--pomo-top, 90px);
+  left: var(--pomo-left, auto);
+  right: var(--pomo-right, auto);
+  z-index: 9999;
+  width: 160px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  font-family: var(--font-body);
+  color: var(--ink);
+  user-select: none;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s linear, visibility 0s linear 0s;
+}
+.pomo-widget.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s linear, visibility 0s linear 0.2s;
+}
+.pomo-widget.is-collapsed {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--ink);
+  color: var(--ink-on-primary);
+  box-shadow: var(--shadow-md);
+}
+.pomo-widget__collapsed-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  touch-action: none;
+  cursor: grab;
+  i {
+    font-size: 24px;
+  }
+}
+.pomo-widget__header {
+  background: var(--surface-alt);
+  padding: 6px 10px;
+  cursor: grab;
+  touch-action: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+.pomo-widget__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.pomo-widget__header-icon {
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  opacity: 0.8;
+}
+.pomo-widget__header-icon--close {
+  font-size: 16px;
+}
+.pomo-widget__body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  gap: 10px;
+}
+.pomo-widget__time {
+  font-size: var(--fs-lg);
+  padding: 0;
+  font-weight: 800;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+.pomo-widget__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: 100%;
+}
+.pomo-widget__min-btn {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 0;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: background 0.15s linear, border-color 0.15s linear, color 0.15s linear;
+}
+.pomo-widget__min-btn:hover {
+  background: var(--surface-hover);
+}
+.pomo-widget__min-btn.is-active {
+  background: var(--primary);
+  border-color: var(--primary-dark);
+  color: var(--ink-on-primary);
+}
+.pomo-widget__controls {
+  display: flex;
+  gap: 6px;
+}
+.pomo-widget__icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  color: var(--ink);
+  transition: background 0.15s linear;
+}
+.pomo-widget__icon-btn:hover {
+  background: var(--surface-hover);
+}
+.pomo-widget__icon-btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pomo-widget__icon-btn i {
+  font-size: 11px;
+}
+/* ============================================================
+   GLOSARIO
+   ============================================================ */
+.glossary-term-wrap {
+  position: relative;
+  display: inline;
+}
+.glossary-term {
+  position: relative;
+  display: inline;
+  color: var(--primary-dark);
+  text-decoration: dashed underline var(--primary-dark);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  text-underline-offset: 3px;
+  border-radius: 4px;
+  transition: background-color 0.2s linear;
+  white-space: normal;
+  padding: 0 6px;
+}
+/* Símbolos matemáticos/científicos (=, +, ≠, ≈, ↑, ↓, etc.) del
+   glosario: mismo trato (subrayado, tooltip) pero con un color
+   distinto al de las palabras normales, para diferenciar "notación"
+   de "vocabulario" de un vistazo. */
+.glossary-term--simbolo {
+  color: var(--brand);
+  background:transparent;
+  text-decoration: none;
+}
+.glossary-term--simbolo:hover {
+  color: var(--brand-dark);
+}
+/* ============================================================
+   TOOLTIP DEL GLOSARIO
+   Fijo en pantalla: centrado horizontalmente en el viewport.
+   La posición (left/top) la calcula useFloatingTooltip; la flecha
+   apunta a la palabra con --tt-arrow.
+   ============================================================ */
+.glossary-tooltip {
+  position: fixed;
+  z-index: 1000;
+  width: max-content;
+  max-width: min(320px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 11px 15px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 18px 20px 16px 22px;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  pointer-events: none;
+  animation: glossary-tooltip-in 0.2s ease-out;
+}
+.glossary-tooltip__arrow {
+  position: absolute;
+  bottom: -8px;
+  left: var(--tt-arrow, 50%);
+  width: 14px;
+  height: 14px;
+  background: var(--surface);
+  border-right: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
+  transform: translateX(-50%) rotate(45deg);
+}
+/* Si la nube va debajo de la palabra, la flecha va arriba */
+.glossary-tooltip--below .glossary-tooltip__arrow {
+  bottom: auto;
+  top: -8px;
+  border-right: none;
+  border-bottom: none;
+  border-left: 1px solid var(--primary);
+  border-top: 1px solid var(--primary);
+}
+.glossary-tooltip .katex {
+  color: var(--ink);
+  font-size: 1em;
+  font-weight: 400;
+  white-space: normal;
+}
+.glossary-tooltip .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+/* ============================================================
+   ANIMACIÓN DEL TOOLTIP
+   ============================================================ */
+@keyframes glossary-tooltip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 479px) {
+  .glossary-tooltip {
+    padding: 10px 13px;
+    font-size: 0.88rem;
+  }
+}
+/* ============================================================
+   REDUCCIÓN DE MOVIMIENTO
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .glossary-tooltip {
+    animation: none;
+  }
+}

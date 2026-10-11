@@ -1,0 +1,56 @@
+{
+  "version": 3,
+  "descripcion": "Reglas comunes para todos los niveles.",
+  "estructura": "nivel-NN-slug.json → secciones[] → {teoria, ejemplos, vocabulario, ejercicios, dominio}. La última sección de cada nivel es la evaluación (tipo: evaluacion).",
+  "tiposDeEjercicio": {
+    "escribir_palabra": "Escribir una palabra o contracción.",
+    "completar": "Completar un espacio en blanco (___).",
+    "traducir": "Escribir en inglés una frase dada en español.",
+    "transformar": "Cambiar una oración (negativa, pregunta, contracción).",
+    "ordenar_escribir": "Ordenar palabras y escribir la oración completa.",
+    "responder": "Escribir una respuesta corta.",
+    "dictado": "Escuchar el audio (campo audio, con speechSynthesis) y escribir.",
+    "oracion_libre": "Escribir una oración propia; se valida con validacion.debeContener + patron + minimoPalabras.",
+    "deletrear": "Escribir las letras de una palabra separadas por guiones (C-A-T); usa audio.",
+    "verdadero_falso": "Lee la afirmación y responde True o False según el texto.",
+    "responder_texto": "Responder en inglés con una frase corta usando la información del texto."
+  },
+  "evaluacionDeRespuestas": {
+    "ignorarEspaciosExtremos": true,
+    "ignorarMayusculasEnRespuestasDeUnaPalabra": true,
+    "ignorarMayusculaInicial": true,
+    "ignorarPuntoFinal": true,
+    "normalizarApostrofos": [
+      "’",
+      "‘",
+      "`"
+    ],
+    "comparacion": "La respuesta debe coincidir exactamente (tras normalizar) con alguna de 'respuestas'. No se aceptan respuestas semánticamente distintas.",
+    "contracciones": "En 'respuestas' ya vienen las variantes válidas con y sin contracción cuando el ejercicio lo permite."
+  },
+  "dominio": {
+    "umbralAciertos": 0.8,
+    "minimoRespondidas": 8,
+    "estadosSeccion": {
+      "no_iniciado": "0 ejercicios respondidos.",
+      "en_progreso": "Al menos 1 respondido y menos del 50% de aciertos.",
+      "practicando": "50% o más de aciertos, pero sin cumplir aún el umbral o el mínimo.",
+      "dominado": "Aciertos ≥ umbralAciertos con al menos minimoRespondidas respondidos."
+    },
+    "siFallaMucho": "Si aciertos < 50% tras responder todo, ofrecer repetir la sección.",
+    "desbloqueo": "El nivel N+1 se desbloquea cuando la evaluación del nivel N está dominada."
+  },
+  "repaso": {
+    "errores": "Guardar los ids de ejercicios fallados y reinsertarlos en la sección 'Repaso de palabras' del nivel actual.",
+    "acumulativo": "Los ejercicios con campo 'origen' vienen de niveles anteriores."
+  },
+  "audio": {
+    "metodo": "window.speechSynthesis",
+    "idioma": "en-US"
+  },
+  "tiposDeNivel": {
+    "gramatica": "Regla nueva con teoría, ejemplos y ejercicios.",
+    "vocabulario": "12 palabras o frases: 2 secciones de palabras, frases, repaso y evaluación.",
+    "lectura": "Textos cortos con preguntas de comprensión; la evaluación incluye los textos."
+  }
+}

@@ -1,0 +1,262 @@
+/* ============================================================
+   ExplanationPanel.jsx
+   ============================================================ */
+.explanation-panel {
+  max-width: 48rem;
+  width: 100%;
+  margin: 24px auto;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background: var(--primary-bg);
+  border: var(--nested-border);
+}
+.explanation-panel.is-correct {
+  border-left: 4px solid var(--success);
+}
+.explanation-panel.is-wrong {
+  border-left: 4px solid var(--danger);
+}
+.explanation-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0;
+}
+.explanation-panel__title.is-correct {
+  color: var(--success);
+}
+.explanation-panel__title.is-wrong {
+  color: var(--danger);
+}
+.explanation-panel__answer {
+  margin: 10px 0;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.explanation-panel__answer strong {
+  color: var(--accent-dark);
+}
+.explanation-panel__text {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  font-size: 18px;
+}
+.explanation-panel__text i {
+  color: var(--danger);
+  font-size: 20px !important;
+}
+.explanation-panel__text--rendirse {
+  border-top: none;
+  padding-top: 0;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--danger);
+  border-bottom: 1px solid var(--border);
+}
+.explanation-panel__actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.explanation-panel__btn {
+  padding: 8px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  color: var(--ink-on-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.15s linear, transform 0.15s linear, box-shadow 0.15s linear;
+}
+.explanation-panel__btn.is-next {
+  background: var(--primary);
+}
+.explanation-panel__btn.is-next:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+.explanation-panel__btn.is-neutral {
+  background: var(--surface-alt);
+  color: var(--ink);
+  border: 1px solid var(--border-strong);
+}
+.explanation-panel__btn.is-neutral:hover {
+  background: var(--surface-hover);
+}
+.explanation-panel__btn span {
+  opacity: 0.75;
+  font-weight: 400;
+}
+/* ============================================================
+   MODAL — RENDIRSE / VIDEOJUEGO
+   ============================================================ */
+.rendirse-modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background: rgba(45, 47, 58, 0.74);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  animation:rendirseOverlayIn .18s linear-out;
+}
+.rendirse-modal {
+  position: relative;
+  width: min(440px, 100%);
+  padding: 34px 32px 30px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--surface);
+  border-radius: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  animation: rendirseModalIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.rendirse-modal::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+}
+.rendirse-modal__title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.rendirse-modal__text {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.rendirse-modal__divider {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 22px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
+}
+/* ============================================================
+   BOTONES
+   ============================================================ */
+.rendirse-modal__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+}
+.rendirse-modal__btn {
+  flex: 1;
+  min-height: 50px;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: transform 0.12s linear, background-color 0.12s linear, border-color 0.12s linear, box-shadow 0.12s linear, color 0.12s linear;
+}
+.rendirse-modal__btn.is-cancel {
+  background: var(--surface-alt);
+  border: 1px solid var(--border-strong);
+}
+.rendirse-modal__btn.is-cancel:hover {
+  background: var(--surface-hover);
+  transform: translateY(-2px);
+}
+.rendirse-modal__btn.is-confirm {
+  color: #ffffff;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+}
+.rendirse-modal__btn.is-confirm:hover {
+  color: #ffffff;
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+.rendirse-modal__btn:active {
+  transform: scale(0.96);
+}
+.rendirse-modal__btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+/* ============================================================
+   ANIMACIONES
+   ============================================================ */
+@keyframes rendirseOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rendirseModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+  .rendirse-modal {
+    width: 100%;
+    padding: 30px 20px 22px;
+    border-radius: 12px;
+  }
+  .rendirse-modal__icon {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  .rendirse-modal__title {
+    font-size: 25px;
+  }
+  .rendirse-modal__text {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .rendirse-modal__actions {
+    flex-direction: column;
+  }
+  .rendirse-modal__btn {
+    width: 100%;
+    min-height: 50px;
+  }
+}

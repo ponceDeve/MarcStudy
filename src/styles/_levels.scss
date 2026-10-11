@@ -1,0 +1,1237 @@
+/* ============================================================
+   LevelsModal
+   ============================================================ */
+
+.levels-modal {
+  position: fixed;
+  inset: 0;
+  background: var(--ink);
+  z-index: 999;
+  padding: 0 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s linear, visibility 0s linear 0s;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.levels-modal::-webkit-scrollbar {
+  display: none;
+}
+
+.levels-modal.is-closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s linear, visibility 0s linear 0.25s;
+}
+
+.levels-modal__title {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 3.6vw, 34px);
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================================
+   Contenedor
+   ============================================================ */
+
+.levels-modal__inner {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  margin: 0 !important;
+}
+
+/* ============================================================
+   Buscador
+   ============================================================ */
+
+.levels-modal__search-row {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  background: none;
+  padding: 12px 0 0;
+  margin: 0 0 44px;
+}
+
+.levels-modal__search-row::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--ink) 0%,
+    var(--ink) 35%,
+    transparent 100%
+  );
+}
+
+.levels-modal__search {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+}
+
+/* ============================================================
+   Input del buscador
+   ============================================================ */
+
+.levels-modal__search .home-search-input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+  box-sizing: border-box;
+  height: var(--header-h, 64px);
+  padding: 0 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: none;
+}
+
+.levels-modal__search .home-search-input::placeholder {
+  color: var(--ink-faint);
+}
+
+.levels-modal__search .home-search-input:focus {
+  border: none;
+  border-bottom-color: transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.levels-modal__search .home-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 0;
+  padding: 0;
+  z-index: 100;
+  background: var(--surface);
+  border: 1px solid var(--secondary);
+  border-radius: 0;
+  box-shadow: none;
+  max-height: 360px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.levels-modal__search .home-search-results::-webkit-scrollbar {
+  display: none;
+}
+
+.levels-modal__search .home-search-result {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  font-family: var(--font-body);
+  color: var(--ink);
+  padding: 0;
+  transition:
+    background-color 0.15s linear,
+    color 0.15s linear,
+    transform 0.1s linear;
+}
+
+.levels-modal__search .home-search-result:hover,
+.levels-modal__search .home-search-result.is-focused {
+  background-color: var(--primary-bg);
+  color: var(--ink);
+}
+
+.levels-modal__search .home-search-result:active {
+  transform: translateX(1px);
+}
+
+.levels-modal__search .home-search-result p {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ============================================================
+   Botón Buscar / Lupa
+   ============================================================ */
+
+.levels-modal__buscar {
+  position: static !important;
+  flex: 0 0 var(--header-h, 64px);
+  align-self: stretch;
+  width: var(--header-h, 64px);
+  min-width: var(--header-h, 64px);
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 24px;
+  border: none;
+  border-left: 1px solid var(--ink);
+  border-radius: 0;
+  background: transparent !important;
+  color: var(--ink) !important;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background 0.15s linear,
+    color 0.15s linear,
+    opacity 0.15s linear;
+}
+
+.levels-modal__buscar i {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.levels-modal__buscar:hover:not(:disabled) {
+  background: var(--primary) !important;
+  color: var(--ink-on-primary) !important;
+  border-color: var(--primary) !important;
+}
+
+.levels-modal__buscar:active:not(:disabled) {
+  transform: none;
+}
+
+.levels-modal__buscar:disabled {
+  opacity: 0.45;
+  cursor: not-allowed !important;
+}
+
+/* ============================================================
+   Acciones: volver al mapa y cerrar
+   ============================================================ */
+
+.levels-modal__acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+  margin: var(--space-6) auto;
+}
+
+.levels-modal__volver,
+.levels-modal__cerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 16px;
+  font-family: var(--font-body);
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  letter-spacing: var(--space-1);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius-md);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition:
+    background 0.15s linear,
+    border-color 0.15s linear,
+    color 0.15s linear,
+    opacity 0.15s linear,
+    transform 0.1s linear;
+}
+
+/* Botón de volver con flecha dibujada en CSS */
+
+.levels-modal__volver {
+  flex: 0 0 64px;
+  width: 64px;
+  min-width: 64px;
+  padding: 0;
+  color: var(--ink-on-primary);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+/* La flecha queda inmóvil por defecto */
+
+.levels-modal__flecha {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 28px;
+  flex: 0 0 36px;
+}
+
+.levels-modal__flecha-linea {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 29px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 4px;
+  transform: translateY(-50%);
+}
+
+.levels-modal__flecha-punta {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  z-index: 1;
+  width: 17px;
+  height: 17px;
+  box-sizing: border-box;
+  border-left: 7px solid currentColor;
+  border-bottom: 7px solid currentColor;
+  border-radius: 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* La punta se desliza repetidamente al pasar el cursor */
+
+.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
+  animation: flecha-va-y-viene 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes flecha-va-y-viene {
+  from {
+    left: 3px;
+  }
+
+  to {
+    left: -5px;
+  }
+}
+
+.levels-modal__volver:hover:not(:disabled) {
+  background: var(--primary-bg);
+}
+
+/* Al pasar el cursor solo la punta cambia de color */
+
+.levels-modal__volver:hover:not(:disabled) .levels-modal__flecha-punta {
+  color: var(--primary);
+}
+
+.levels-modal__volver:active:not(:disabled),
+.levels-modal__cerrar:active {
+  transform: scale(0.97);
+}
+
+/* La flecha se deshabilita en el mapa normal */
+
+.levels-modal__volver:disabled,
+.levels-modal__volver--deshabilitado {
+  opacity: 0.35;
+  color: var(--ink-faint);
+  background: transparent;
+  cursor: not-allowed !important;
+}
+
+.levels-modal__volver:disabled .levels-modal__flecha-punta {
+  animation: none;
+  border-color: currentColor;
+}
+
+.levels-modal__volver:disabled .levels-modal__flecha-linea {
+  background: currentColor;
+}
+
+.levels-modal__volver:focus-visible,
+.levels-modal__cerrar:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Botón de cerrar */
+
+.levels-modal__cerrar {
+  flex: 1;
+  width: auto;
+  max-width: none;
+  min-width: 0;
+  color: var(--ink-on-primary);
+  background: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.levels-modal__cerrar:hover {
+  background: var(--danger-dark);
+  border-color: var(--danger-dark);
+}
+
+/* ============================================================
+   Buscador dentro del tema elegido
+   ============================================================ */
+
+.levels-modal__search--teoria {
+  .theory-search {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
+
+  .theory-search__wrap {
+    height: 100%;
+    min-width: 0;
+    z-index: auto;
+  }
+
+  .theory-search__input {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    padding: 0 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    &::placeholder {
+      color: var(--ink-faint);
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &.has-results {
+      border: none;
+      border-bottom-color: transparent;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .theory-search__dropdown {
+    border-color: var(--secondary);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    text-align: left;
+    max-height: 22rem;
+  }
+
+  .theory-search__item {
+    padding: 12px 16px;
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .theory-search__item-texto {
+    margin-top: 4px;
+    font-size: 15px;
+  }
+
+  .theory-search__buscando,
+  .theory-search__empty {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   Input con el nombre del tema: más grande
+   ============================================================ */
+
+.levels-modal__search .home-search-input,
+.levels-modal__search--teoria .theory-search__input {
+  height: var(--header-h, 64px);
+  padding: 0 16px;
+  font-size: 20px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================
+   El nombre del tema se ve con color fuerte
+   ============================================================ */
+
+.levels-modal__search--teoria .theory-search__input::placeholder,
+.levels-modal__search .home-search-input::placeholder {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.levels-modal__close-fixed {
+  position: fixed;
+  top: 72px;
+  right: 16px;
+  z-index: 21;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--ink);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+}
+
+.levels-modal__close-fixed:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: var(--ink-on-primary);
+}
+
+/* ============================================================
+   Niveles
+   ============================================================ */
+
+.level-tema-banner {
+  background: var(--bg);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 20px;
+  font-weight: 800;
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto 20px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.level-cell {
+  --star-fs: clamp(0.8rem, 2.2vw, 1.35rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* ============================================================
+   Estrellas de cada nivel
+   ============================================================ */
+
+.level-cell__estrellas {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 0.35em;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1;
+  font-size: var(--star-fs);
+  white-space: nowrap;
+  transition: transform 0.1s linear;
+}
+
+.level-cell__estrellas span {
+  --ty: 0;
+  --rot: 0deg;
+  --s: 1;
+  color: #d5d9e0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 3px rgba(0, 0, 0, 0.55);
+  display: inline-block;
+  transform: translateY(var(--ty)) rotate(var(--rot)) scale(var(--s));
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.level-cell__estrellas span.is-activa {
+  color: #f5b301;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 4px rgba(245, 179, 1, 0.45);
+  --s: 1.25;
+}
+
+.level-cell__estrellas span:nth-child(1) {
+  --ty: 0.7em;
+  --rot: -22deg;
+}
+
+.level-cell__estrellas span:nth-child(2) {
+  --ty: -0.15em;
+}
+
+.level-cell__estrellas span:nth-child(3) {
+  --ty: 0.7em;
+  --rot: 22deg;
+}
+
+.level-tooltip {
+  position: fixed;
+  background: var(--bg);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 20px;
+  font-weight: 800;
+  white-space: normal;
+  max-width: min(220px, 80vw);
+  text-align: center;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition:
+    opacity 0.15s linear,
+    transform 0.15s linear,
+    visibility 0s linear 0.15s;
+  pointer-events: none;
+}
+
+.level-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--accent);
+}
+
+.level-tooltip.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity 0.15s linear,
+    transform 0.15s linear,
+    visibility 0s linear 0s;
+  pointer-events: none;
+}
+
+/* ============================================================
+   Botón circular del nivel
+   ============================================================ */
+
+.level-btn {
+  --grosor: 10px;
+  --cara: var(--surface);
+  --canto: color-mix(in srgb, var(--cara) 45%, black);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--cara);
+  color: var(--ink-soft);
+  font-weight: bolder;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  position: relative;
+  z-index: 100;
+  outline: none;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 var(--grosor) 0 var(--canto),
+    0 calc(var(--grosor) + 6px) 10px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.1s linear,
+    box-shadow 0.1s linear;
+}
+
+.level-btn:not(:disabled):hover {
+  --grosor: 7px;
+  transform: translateY(3px);
+}
+
+.level-btn:not(:disabled):active {
+  --grosor: 3px;
+  transform: translateY(7px);
+}
+
+.level-btn__numero {
+  display: block;
+  line-height: 1;
+}
+
+.level-btn__numero--estrella {
+  font-family: system-ui, "Segoe UI Symbol", sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.level-btn__numero--estrellas-1 {
+  color: #f5b301;
+}
+
+.level-btn__numero--estrellas-2 {
+  color: #ff7a00;
+}
+
+.level-btn__numero--estrellas-3 {
+  color: #b04bff;
+}
+
+/* ============================================================
+   Responsive: número + estrellas
+   ============================================================ */
+
+@media (max-width: 1100px) {
+  .level-btn {
+    font-size: 2.7rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .level-btn {
+    font-size: 2.4rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.2rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .level-btn {
+    font-size: 2.1rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .level-btn {
+    font-size: 1.9rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .level-btn {
+    font-size: 1.7rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .level-btn {
+    font-size: 1.5rem;
+  }
+
+  .level-cell {
+    --star-fs: 1.2rem;
+  }
+}
+
+/* ============================================================
+   Estados
+   ============================================================ */
+
+.level-btn.is-selected {
+  --cara: var(--secondary);
+  --canto: color-mix(in srgb, var(--secondary) 55%, black);
+  color: var(--ink-on-primary);
+}
+
+.level-btn.is-armado {
+  --cara: var(--brand);
+  --canto: color-mix(in srgb, var(--brand) 55%, black);
+  color: var(--ink-on-primary);
+}
+
+.level-btn:disabled {
+  --cara: var(--surface-alt);
+  --canto: color-mix(in srgb, var(--border) 50%, black);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.level-cell:has(.level-btn:not(:disabled):hover) .level-cell__estrellas {
+  transform: translateY(3px);
+}
+
+/* ============================================================
+   Mapa de niveles: 18 por página (3 columnas x 6 filas)
+   ============================================================ */
+
+.levels-map {
+  --map-gap: 64px;
+  --map-gap-y: 110px;
+  --line-w: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--map-gap-y);
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding-top: 28px;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.levels-map--anim-up {
+  animation: levels-page-up 0.3s ease-out;
+}
+
+.levels-map--anim-down {
+  animation: levels-page-down 0.3s ease-out;
+}
+
+@keyframes levels-page-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes levels-page-down {
+  from {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.levels-map__row {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 6), minmax(0, 1fr));
+  gap: var(--map-gap);
+  position: relative;
+}
+
+.levels-map__row--reverse {
+  direction: rtl;
+}
+
+.levels-map__row--reverse .level-cell {
+  direction: ltr;
+}
+
+.level-cell--empty {
+  visibility: hidden;
+}
+
+/* ============================================================
+   Líneas que conectan los niveles
+   ============================================================ */
+
+.level-cell--h::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: var(--map-gap);
+  height: 0;
+  border-top: var(--line-w) dashed var(--border-strong);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.levels-map__row:not(.levels-map__row--reverse) .level-cell--h::after {
+  right: calc(var(--map-gap) * -1);
+}
+
+.levels-map__row--reverse .level-cell--h::after {
+  left: calc(var(--map-gap) * -1);
+}
+
+.level-cell--v::after {
+  --libre-estrellas: calc(var(--star-fs) * 2);
+  content: "";
+  position: absolute;
+  bottom: calc(100% + var(--libre-estrellas));
+  left: calc(50% - var(--line-w) / 2);
+  width: 0;
+  height: calc(50% + var(--map-gap-y) - var(--libre-estrellas));
+  border-left: var(--line-w) dashed var(--border-strong);
+  z-index: 0;
+}
+
+.level-cell--sin-estrellas.level-cell--v::after {
+  --libre-estrellas: 0px;
+}
+
+/* ============================================================
+   Paginación
+   ============================================================ */
+
+.levels-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+  max-width: 440px;
+  margin: var(--space-6) auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.levels-nav__btn {
+  flex: 0 0 34px;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--border);
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: clamp(13px, 3.8vw, 16px);
+  line-height: 1;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+}
+
+.levels-nav__btn.is-activa {
+  background: var(--primary-dark);
+  border-color: var(--primary);
+  color: var(--ink-on-primary);
+}
+
+.levels-nav__btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed !important;
+}
+
+.levels-nav__gap {
+  flex: 0 0 14px;
+  width: 14px;
+  min-width: 14px;
+  max-width: 14px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ============================================================
+   Temas
+   ============================================================ */
+
+.temas-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.tema-arcade-btn {
+  width: 100%;
+  padding: 16px 12px;
+  background: transparent;
+  border: 3px solid var(--border);
+  border-bottom-width: 6px;
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: all 0.1s linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.tema-arcade-btn:hover:not(:disabled) {
+  background: var(--primary-bg);
+  border: var(--nested-border);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+  transform: translateY(3px);
+  border-bottom-width: 3px;
+}
+
+.tema-arcade-btn.is-current {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.tema-arcade-btn:disabled {
+  background: var(--surface-alt);
+  border-color: var(--border);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.topbar__curso--clickable {
+  cursor: url("/cursor_pointer.webp"), pointer !important;
+  transition: opacity 0.2s, background-color 0.2s;
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+@media (min-width: 1280px) {
+  .temas-modal-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .tema-arcade-btn {
+    font-size: 16px;
+    padding: 20px 16px;
+  }
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 639px) {
+  .levels-modal {
+    padding: 0 12px 8px;
+  }
+
+  .levels-map {
+    --map-gap: 56px;
+    --map-gap-y: 90px;
+  }
+
+  .levels-modal__search-row {
+    top: 0;
+    gap: 8px;
+    padding: 8px 0 0;
+    margin-bottom: 32px;
+  }
+
+  .levels-modal__search-row::before {
+    top: 0;
+    bottom: -20px;
+  }
+
+  .levels-modal__buscar {
+    flex: 0 0 52px;
+    width: 52px;
+    min-width: 52px;
+    height: auto;
+    align-self: stretch;
+    font-size: 20px;
+    border-radius: 0;
+  }
+
+  .levels-modal__buscar i {
+    font-size: 20px;
+  }
+
+  .levels-modal__search {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    border-radius: 30px;
+  }
+
+  .levels-modal__search .home-search-input,
+  .levels-modal__search--teoria .theory-search__input {
+    height: 52px;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  .levels-modal__search .home-search-result p {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .levels-modal__search--teoria .theory-search__item {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .levels-modal__search--teoria .theory-search__item-texto {
+    font-size: 14px;
+  }
+
+  .levels-nav {
+    gap: 5px;
+  }
+
+  .levels-nav__btn {
+    width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    height: 32px;
+  }
+
+  .levels-nav__gap {
+    width: 12px;
+    min-width: 12px;
+    max-width: 12px;
+  }
+
+  .levels-modal__acciones {
+    gap: 8px;
+  }
+
+  .levels-modal__volver,
+  .levels-modal__cerrar {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
+  .levels-modal__volver {
+    flex-basis: 58px;
+    width: 58px;
+    min-width: 58px;
+  }
+
+  .levels-modal__flecha {
+    transform: scale(0.9);
+  }
+}
+
+.levels-modal__empty {
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.levels-modal__counter {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.levels-modal--topics {
+  z-index: 1000;
+}
+
+.levels-modal__inner--topics {
+  margin-top: 76px;
+}
+
+/* ============================================================
+   TheorySearchModal.jsx
+   ============================================================ */
+
+.theory-search-modal__results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.theory-search-modal__item {
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+
+.theory-search-modal__item-heading {
+  margin: 0 0 2px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+.theory-search-modal__item-text {
+  margin: 0;
+}
+
+.theory-search-modal__empty {
+  color: var(--ink-soft);
+}
