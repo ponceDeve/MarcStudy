@@ -1,0 +1,51 @@
+{
+  "curso": "Habilidad Lógico Matemático",
+  "tema": "Suficiencia de datos",
+  "glosario": {
+    "dato suficiente": "Información que permite responder la pregunta sin ambigüedad",
+    "pregunta": "Enunciado que pide determinar un valor o condición",
+    "información insuficiente": "Datos que no bastan para dar una respuesta única",
+    "ecuación": "Igualdad que relaciona incógnitas con valores conocidos"
+  },
+  "theory": [
+    {
+      "titulo": "Evaluar cada dato",
+      "puntos": [
+        {
+          "texto": "Evalúa cada dato por separado primero",
+          "explicacion": "Se revisa si cada afirmación, por sí sola, permite responder la pregunta."
+        },
+        {
+          "texto": "Un dato puede bastar solo",
+          "explicacion": "Si x = 4 responde directamente la pregunta sobre x, ese dato es suficiente por sí mismo."
+        }
+      ]
+    },
+    {
+      "titulo": "Datos combinados",
+      "puntos": [
+        {
+          "texto": "Ambos juntos pueden completar la información",
+          "explicacion": "Ejemplo: x + y = 10 y y = 4. Ninguno basta solo, pero juntos dan x = 6."
+        },
+        {
+          "texto": "Verifica que la combinación sea consistente",
+          "explicacion": "Los datos juntos no deben contradecirse; si lo hacen, el planteo está mal construido."
+        }
+      ]
+    },
+    {
+      "titulo": "Información insuficiente",
+      "puntos": [
+        {
+          "texto": "Una sola ecuación con dos incógnitas no basta",
+          "explicacion": "Con solo x + y = 10 hay infinitas parejas, por ejemplo (6, 4) y (7, 3); la pregunta no tiene respuesta única."
+        },
+        {
+          "texto": "Revisa si la pregunta tiene una única respuesta",
+          "explicacion": "Solo cuando el valor pedido queda determinado el dato se considera suficiente."
+        }
+      ]
+    }
+  ]
+}

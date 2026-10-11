@@ -1,0 +1,34 @@
+{
+  "curso": "Habilidad Lógico Matemático",
+  "tema": "Problemas sobre método de suposición",
+  "glosario": {
+    "suposición": "Valor inicial asumido para comenzar el cálculo",
+    "diferencia": "Resultado de restar el dato real del supuesto",
+    "ajuste": "Cambio que corrige el total supuesto",
+    "dato total": "Cantidad final que debe cumplir el enunciado"
+  },
+  "theory": [
+    {
+      "titulo": "Suposición total",
+      "puntos": [
+        { "texto": "Supón que todos cumplen la primera condición", "explicacion": "Se calcula el total como si todos fueran del primer tipo, sin usar aún la otra condición." },
+        { "texto": "La diferencia indica cuánto corregir", "explicacion": "La diferencia entre el total supuesto y el dato real muestra cuántos cambios de tipo se necesitan." }
+      ]
+    },
+    {
+      "titulo": "Gallinas y conejos",
+      "puntos": [
+        { "texto": "Cabezas 35 y patas 94", "explicacion": "Si todos son gallinas: 35 × 2 = 70 patas. Faltan 94 − 70 = 24 patas." },
+        { "texto": "Cada conejo aporta dos patas más", "explicacion": "24 ÷ 2 = 12 conejos y 35 − 12 = 23 gallinas. Comprobación: 23 + 12 = 35 cabezas y 46 + 48 = 94 patas." },
+        { "texto": "Cada cambio altera el total en una cantidad fija", "explicacion": "Cambiar una gallina por un conejo suma siempre la misma diferencia de patas." }
+      ]
+    },
+    {
+      "titulo": "Monedas de dos valores",
+      "puntos": [
+        { "texto": "Monedas de 5 y 10 soles", "explicacion": "Con 30 monedas de 5 soles el total es 150; faltan 70. Cada moneda de 10 agrega 5, así 70 ÷ 5 = 14 monedas de 10 y 16 de 5. Comprobación: 140 + 80 = 220 soles." },
+        { "texto": "Verifica ambas condiciones a la vez", "explicacion": "La respuesta debe cumplir el total de elementos y también el total de valor." }
+      ]
+    }
+  ]
+}

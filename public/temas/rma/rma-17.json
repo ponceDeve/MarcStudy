@@ -1,0 +1,51 @@
+{
+  "curso": "Habilidad Lógico Matemático",
+  "tema": "Certezas",
+  "glosario": {
+    "caso desfavorable": "Resultado de extracción que más retrasa la certeza",
+    "principio del palomar": "Si hay más objetos que casilleros, uno contiene dos",
+    "certeza": "Resultado que se garantiza en cualquier caso posible",
+    "extracción": "Acción de tomar objetos sin mirar"
+  },
+  "theory": [
+    {
+      "titulo": "Caso más desfavorable",
+      "puntos": [
+        {
+          "texto": "Supón la peor combinación posible",
+          "explicacion": "Se imagina la extracción que más tarda en producir el resultado pedido."
+        },
+        {
+          "texto": "Suma los casos desfavorables y agrega uno",
+          "explicacion": "La cantidad mínima para tener certeza es el número de casos desfavorables más uno."
+        }
+      ]
+    },
+    {
+      "titulo": "Principio del palomar",
+      "puntos": [
+        {
+          "texto": "Más objetos que casilleros produce repetición",
+          "explicacion": "Si hay 4 colores y se extraen 5 bolas, al menos dos bolas tienen el mismo color."
+        },
+        {
+          "texto": "Aplica el principio con grupos iguales",
+          "explicacion": "Para garantizar 2 de un color con 3 colores, se necesitan 3 + 1 = 4 bolas."
+        }
+      ]
+    },
+    {
+      "titulo": "Pares de medias",
+      "puntos": [
+        {
+          "texto": "Peor caso: sacar todo un color primero",
+          "explicacion": "Con 5 rojas y 5 azules, la peor extracción saca 5 rojas y luego 1 azul: 6 medias para tener ambos colores."
+        },
+        {
+          "texto": "Con dos colores, tres medias garantizan un par",
+          "explicacion": "Entre tres medias de dos colores, al menos dos son del mismo color."
+        }
+      ]
+    }
+  ]
+}
