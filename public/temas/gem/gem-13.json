@@ -1,0 +1,45 @@
+{
+  "curso": "Geometría",
+  "tema": "Desigualdades geométricas",
+  "glosario": {
+    "Desigualdad triangular": "Condición que relaciona la suma y la diferencia de lados.",
+    "Ángulo comprendido": "Ángulo formado entre dos lados dados.",
+    "Ángulo remoto": "Ángulo interior no adyacente al ángulo exterior.",
+    "Hipotenusa": "Lado mayor, opuesto al ángulo recto.",
+    "Cateto": "Lado que forma el ángulo recto."
+  },
+  "theory": [
+    {
+      "titulo": "Desigualdad triangular",
+      "puntos": [
+        { "texto": "Suma de dos lados > tercer lado", "explicacion": "Si no se cumple, los dos lados no alcanzan a cerrar el triángulo. Ejemplo: lados 2 cm y 3 cm no forman triángulo con un tercer lado de 6 cm, porque 2 + 3 = 5 no es mayor que 6." },
+        { "texto": "Tercer lado entre diferencia y suma", "explicacion": "El tercer lado debe cumplir diferencia < x < suma de los otros dos. Ejemplo: lados 5 cm y 9 cm dan 9 − 5 = 4 < x < 14, así que x está entre 4 cm y 14 cm." }
+      ]
+    },
+    {
+      "titulo": "Relación ángulo lado",
+      "puntos": [
+        { "texto": "Lado mayor se opone al ángulo mayor", "explicacion": "Si un lado es más largo que otro, su ángulo opuesto también es mayor. Ejemplo: en ABC con A = 70°, B = 50° y C = 60°, el ángulo mayor es A, así que BC es el lado mayor." },
+        { "texto": "Ángulo mayor se opone al lado mayor", "explicacion": "La relación también se cumple en sentido inverso. Ejemplo: si BC = 9 cm y AB = 5 cm, el ángulo A, opuesto a BC, es mayor que el ángulo C, opuesto a AB." }
+      ]
+    },
+    {
+      "titulo": "Ángulo exterior mayor",
+      "puntos": [
+        { "texto": "Exterior > cada ángulo remoto", "explicacion": "Se deduce de que el exterior es la suma de los dos remotos, y una suma es mayor que cada sumando. Ejemplo: exterior de 120° frente a remotos de 50° y 70°: 120 > 50 y 120 > 70." }
+      ]
+    },
+    {
+      "titulo": "Teorema de la bisagra",
+      "puntos": [
+        { "texto": "Mismos dos lados: mayor ángulo, mayor tercer lado", "explicacion": "Si dos triángulos tienen dos lados iguales, el que tiene mayor ángulo comprendido tiene mayor tercer lado. Ejemplo: AB = DE = 5 cm, AC = DF = 8 cm y ángulo A = 60° > ángulo D = 40°, luego BC > EF." }
+      ]
+    },
+    {
+      "titulo": "Hipotenusa mayor que catetos",
+      "puntos": [
+        { "texto": "Hipotenusa es mayor que cada cateto", "explicacion": "Está frente al ángulo recto, que es el mayor del triángulo rectángulo. Ejemplo: en un triángulo de lados 3 cm, 4 cm y 5 cm, la hipotenusa 5 cm es mayor que 3 cm y que 4 cm." }
+      ]
+    }
+  ]
+}
