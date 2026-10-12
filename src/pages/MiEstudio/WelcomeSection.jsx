@@ -1,10 +1,12 @@
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import manifest from "../../data/manifest.json";
+
 const DESCRIPCIONES_CURSO = {
   CIV: "Conoce tus derechos, deberes y cómo funciona el país.",
   FIL: "Comprende las grandes preguntas sobre la vida y humanidad.",
   HIS: "Entiende los hechos históricos y cómo transformaron nuestro mundo.",
   HPE: "Comprende los procesos y hechos fundamentales de la historia del Perú.",
+  ING: "Aprende vocabulario, gramática y comprensión del idioma inglés.",
   LEN: "Domina las reglas del idioma y mejora tu comunicación.",
   LIT: "Conoce autores, obras y estilos fundamentales de la literatura.",
   RMV: "Mejora tu lectura, comprensión y velocidad para el examen.",
@@ -20,44 +22,37 @@ const DESCRIPCIONES_CURSO = {
   RMA: "Desarrolla lógica y estrategias para resolver problemas rápidamente.",
   TRI: "Domina ángulos, razones y triángulos de la trigonometría."
 };
-const CATEGORIAS_TEMARIO = [
-  {
-    id: "letras",
-    label: "Letras",
-    cursos: ["RMV", "LEN", "LIT", "HIS", "HPE", "FIL"]
-  },
-  {
-    id: "ciencias",
-    label: "Ciencias",
-    cursos: ["BIO", "FIS", "QUI", "GEO", "CIV", "PSI"]
-  },
-  {
-    id: "matematica",
-    label: "Matemática",
-    cursos: ["RMA", "ARI", "ALG", "GEM", "TRI", "ECO"]
-  }
-];
-const CONFIG_CATEGORIAS = [
+
+// Cada categoría es una diapositiva del carrusel: título, íconos y cursos.
+const CATEGORIAS = [
   {
     id: "letras",
     titulo: "Letras",
     iconoIzquierdo: "bi-book",
-    iconoDerecho: "bi-feather"
+    iconoDerecho: "bi-feather",
+    cursos: ["RMV", "LEN", "LIT", "HIS", "HPE", "FIL", "ING"]
   },
   {
     id: "ciencias",
     titulo: "Ciencias",
     iconoIzquierdo: "bi-beaker",
-    iconoDerecho: "bi-eyedropper"
+    iconoDerecho: "bi-eyedropper",
+    cursos: ["BIO", "FIS", "QUI", "GEO", "CIV", "PSI"]
   },
   {
     id: "matematica",
     titulo: "Matemática",
     iconoIzquierdo: "bi-calculator",
-    iconoDerecho: "bi-rulers"
+    iconoDerecho: "bi-rulers",
+    cursos: ["RMA", "ARI", "ALG", "GEM", "TRI", "ECO"]
   }
 ];
-const TEMAS_POR_PAGINA = 7;
+
+// Fracción del ancho que hay que arrastrar para cambiar de categoría
+const UMBRAL_CAMBIO = 0.18;
+// Movimiento mínimo (px) para considerar que es un arrastre y no un clic
+const DISTANCIA_ARRASTRE = 6;
+
 function FlechaIzquierda() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -72,6 +67,7 @@ function FlechaIzquierda() {
     </svg>
   );
 }
+
 function FlechaDerecha() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -86,51 +82,44 @@ function FlechaDerecha() {
     </svg>
   );
 }
-function FlechaArriba() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path
-        d="M5 14.5L12 8L19 14.5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-function FlechaAbajo() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path
-        d="M5 9.5L12 16L19 9.5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+
 export default function WelcomeSection({
   onSelectTema,
   temasCompletadosLista = []
 }) {
-  const [paginaTemas, setPaginaTemas] = useState({});
-  const [cursoAbierto, setCursoAbierto] = useState(null);
-  const [paginasCursos, setPaginasCursos] = useState({
-    letras: 0,
-    ciencias: 0,
-    matematica: 0
-  });
-  const [columnasPorCategoria, setColumnasPorCategoria] = useState({
-    letras: 3,
-    ciencias: 3,
-    matematica: 3
-  });
-  const carruselRefs = useRef({});
+  const [indice, setIndice] = useState(0);
+  const trackRef = useRef(null);
+  const gestoRef = useRef(null);
+  const bloquearClickRef = useRef(false);
+  const total = CATEGORIAS.length;
+  const indiceRef = useRef(0);
+  indiceRef.current = indice;
+
+  function anchoSlide() {
+    const track = trackRef.current;
+    return track?.firstElementChild?.getBoundingClientRect().width || 0;
+  }
+
+  // Mueve el carrusel directamente en el DOM (en píxeles)
+  function posicionar(i, desfase = 0, animado = true) {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+    track.style.transition = animado ? "" : "none";
+    track.style.transform = `translate3d(${-i * anchoSlide() + desfase}px, 0, 0)`;
+  }
+
+  useEffect(() => {
+    posicionar(indice);
+  }, [indice]);
+
+  useEffect(() => {
+    const alCambiarTamano = () => posicionar(indiceRef.current, 0, false);
+    window.addEventListener("resize", alCambiarTamano);
+    return () => window.removeEventListener("resize", alCambiarTamano);
+  }, []);
+
   const cursos = useMemo(
     () =>
       Array.isArray(manifest.cursos)
@@ -141,173 +130,111 @@ export default function WelcomeSection({
         : [],
     []
   );
+
   const totalTemas = useMemo(
     () =>
-      cursos.reduce(
-        (total, curso) => total + curso.temas.length,
-        0
-      ),
+      cursos.reduce((total, curso) => total + curso.temas.length, 0),
     [cursos]
   );
+
   const cursosPorCategoria = useMemo(() => {
-    const resultado = {
-      letras: [],
-      ciencias: [],
-      matematica: []
-    };
-    CATEGORIAS_TEMARIO.forEach((categoria) => {
-      categoria.cursos.forEach((codigo) => {
-        const curso = cursos.find(
-          (item) => item.codigo === codigo
-        );
-        if (curso) {
-          resultado[categoria.id].push(curso);
-        }
-      });
+    const resultado = {};
+    CATEGORIAS.forEach((categoria) => {
+      resultado[categoria.id] = categoria.cursos
+        .map((codigo) => cursos.find((item) => item.codigo === codigo))
+        .filter(Boolean);
     });
     return resultado;
   }, [cursos]);
-  useEffect(() => {
-    const observers = [];
-    const actualizarColumnas = (categoriaId, ancho) => {
-      let columnas = 1;
-      if (ancho >= 850) {
-        columnas = 3;
-      } else if (ancho >= 560) {
-        columnas = 2;
-      }
-      setColumnasPorCategoria((actuales) => {
-        if (actuales[categoriaId] === columnas) {
-          return actuales;
-        }
-        return {
-          ...actuales,
-          [categoriaId]: columnas
-        };
-      });
-    };
-    CONFIG_CATEGORIAS.forEach(({ id }) => {
-      const elemento = carruselRefs.current[id];
-      if (!elemento) {
-        return;
-      }
-      const observer = new ResizeObserver((entries) => {
-        const entry = entries[0];
-        if (!entry) {
-          return;
-        }
-        actualizarColumnas(id, entry.contentRect.width);
-      });
-      observer.observe(elemento);
-      actualizarColumnas(
-        id,
-        elemento.getBoundingClientRect().width
-      );
-      observers.push(observer);
-    });
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, []);
-  useEffect(() => {
-    setPaginasCursos((actuales) => {
-      const nuevas = { ...actuales };
-      let cambio = false;
-      CONFIG_CATEGORIAS.forEach(({ id }) => {
-        const cursosCategoria = cursosPorCategoria[id] || [];
-        const columnas = columnasPorCategoria[id] || 1;
-        const totalPaginas = Math.max(
-          1,
-          Math.ceil(cursosCategoria.length / columnas)
-        );
-        const paginaActual = actuales[id] || 0;
-        if (paginaActual >= totalPaginas) {
-          nuevas[id] = totalPaginas - 1;
-          cambio = true;
-        }
-      });
-      return cambio ? nuevas : actuales;
-    });
-  }, [columnasPorCategoria, cursosPorCategoria]);
-  function estadoTema(curso, tema) {
-    const id = `${curso.nombre}_${tema.tema}`;
-    if (temasCompletadosLista.includes(id)) {
-      return "completado";
-    }
-    try {
-      const abierto = localStorage.getItem(
-        `ultimaCard_${curso.nombre}_${tema.tema}`
-      );
-      if (abierto !== null) {
-        return "en_curso";
-      }
-    } catch {
-      // localStorage no disponible
-    }
-    return "pendiente";
-  }
+
   function logrosDelCurso(curso) {
-    return temasCompletadosLista.filter(
-      (id) => id.startsWith(`${curso.nombre}_`)
+    return temasCompletadosLista.filter((id) =>
+      id.startsWith(`${curso.nombre}_`)
     ).length;
   }
-  function manejarClickTema(curso, tema) {
-    onSelectTema?.({
-      type: "tema",
-      curso: curso.nombre,
-      tema: tema.tema,
-      archivo: tema.archivo
-    });
+
+  function abrirMapaDeTemas(curso) {
+    // Mismo flujo que la búsqueda: abre el mapa de temas del curso
+    onSelectTema?.({ type: "curso", nombre: curso.nombre });
   }
-  function cambiarPaginaTemas(cursoCodigo, direccion) {
-    setPaginaTemas((prev) => {
-      const paginaActual = prev[cursoCodigo] || 0;
-      const curso = cursos.find(
-        (item) => item.codigo === cursoCodigo
-      );
-      if (!curso) {
-        return prev;
+
+  // Cambio por flechas o puntos (en bucle)
+  function irACategoria(destino) {
+    setIndice(((destino % total) + total) % total);
+  }
+
+  // Gesto de arrastre con mouse o táctil
+  function manejarPointerDown(e) {
+    if (e.pointerType === "mouse" && e.button !== 0) {
+      return;
+    }
+    gestoRef.current = {
+      id: e.pointerId,
+      x: e.clientX,
+      base: indiceRef.current,
+      movido: false
+    };
+  }
+
+  function manejarPointerMove(e) {
+    const gesto = gestoRef.current;
+    if (!gesto || gesto.id !== e.pointerId) {
+      return;
+    }
+    const dx = e.clientX - gesto.x;
+    if (!gesto.movido) {
+      if (Math.abs(dx) < DISTANCIA_ARRASTRE) {
+        return;
       }
-      const totalPaginas = Math.max(
-        1,
-        Math.ceil(
-          curso.temas.length / TEMAS_POR_PAGINA
-        )
-      );
-      const siguiente = Math.min(
-        totalPaginas - 1,
-        Math.max(0, paginaActual + direccion)
-      );
-      return {
-        ...prev,
-        [cursoCodigo]: siguiente
-      };
-    });
+      gesto.movido = true;
+      e.currentTarget.setPointerCapture?.(e.pointerId);
+    }
+    // En el primer y último elemento el contenido se frena un poco
+    const enBorde =
+      (gesto.base === 0 && dx > 0) ||
+      (gesto.base === total - 1 && dx < 0);
+    posicionar(gesto.base, enBorde ? dx * 0.35 : dx, false);
   }
-  function alternarCurso(cursoCodigo) {
-    setCursoAbierto((actual) =>
-      actual === cursoCodigo ? null : cursoCodigo
-    );
+
+  function finalizarGesto(e, cancelado) {
+    const gesto = gestoRef.current;
+    if (!gesto || gesto.id !== e.pointerId) {
+      return;
+    }
+    gestoRef.current = null;
+    if (!gesto.movido) {
+      return;
+    }
+    const dx = cancelado ? 0 : e.clientX - gesto.x;
+    const umbral = anchoSlide() * UMBRAL_CAMBIO;
+    let siguiente = gesto.base;
+    if (dx < -umbral) {
+      siguiente = gesto.base + 1;
+    } else if (dx > umbral) {
+      siguiente = gesto.base - 1;
+    }
+    siguiente = Math.max(0, Math.min(total - 1, siguiente));
+    setIndice(siguiente);
+    posicionar(siguiente, 0, true);
+    // Evita que el clic final del arrastre active un punto
+    bloquearClickRef.current = true;
+    setTimeout(() => {
+      bloquearClickRef.current = false;
+    }, 250);
   }
+
+  function clickPunto(i) {
+    if (bloquearClickRef.current) {
+      return;
+    }
+    setIndice(i);
+  }
+
   function renderCurso(curso) {
-    const paginaActual = paginaTemas[curso.codigo] || 0;
-    const inicio = paginaActual * TEMAS_POR_PAGINA;
-    const temasVisibles = curso.temas.slice(
-      inicio,
-      inicio + TEMAS_POR_PAGINA
-    );
-    const haySiguiente =
-      inicio + TEMAS_POR_PAGINA < curso.temas.length;
-    const hayAnterior = paginaActual > 0;
-    const abierto = cursoAbierto === curso.codigo;
     return (
       <article
         key={curso.codigo}
-        className={`welcome-section__curso${
-          abierto
-            ? " welcome-section__curso--abierto"
-            : ""
-        }`}
+        className="welcome-section__curso"
       >
         <div className="welcome-section__curso-top">
           <div className="welcome-section__curso-info">
@@ -326,8 +253,7 @@ export default function WelcomeSection({
                 >
                   <i className="bi bi-trophy"></i>
                 </span>
-                {logrosDelCurso(curso)}/
-                {curso.temas.length}
+                {logrosDelCurso(curso)}/{curso.temas.length}
               </span>
             </div>
           </div>
@@ -338,180 +264,29 @@ export default function WelcomeSection({
           <button
             type="button"
             className="welcome-section__ver-temas"
-            onClick={() => alternarCurso(curso.codigo)}
+            onClick={() => abrirMapaDeTemas(curso)}
           >
-            <span>
-              {abierto ? "Ocultar temas" : "Ver temas"}
-            </span>
+            <span>Ver temas</span>
             <span
               className="welcome-section__ver-temas-icon"
               aria-hidden="true"
             >
-              {abierto ? (
-                <FlechaArriba />
-              ) : (
-                <FlechaAbajo />
-              )}
+              <FlechaDerecha />
             </span>
           </button>
         </div>
-        {abierto && (
-          <div className="welcome-section__temas-dropdown">
-            {curso.temas.length > 0 ? (
-              <>
-                <ul className="welcome-section__temas">
-                  {temasVisibles.map((tema) => {
-                    const estado = estadoTema(
-                      curso,
-                      tema
-                    );
-                    return (
-                      <li
-                        key={tema.archivo}
-                        className="welcome-section__tema-item"
-                      >
-                        <div className="welcome-section__tema-content">
-                          <button
-                            type="button"
-                            className="welcome-section__tema-btn"
-                            onClick={() =>
-                              manejarClickTema(
-                                curso,
-                                tema
-                              )
-                            }
-                          >
-                            <span
-                              className={`welcome-section__tema-estado welcome-section__tema-estado--${estado}`}
-                              title={
-                                estado === "completado"
-                                  ? "Completado"
-                                  : estado ===
-                                    "en_curso"
-                                  ? "En curso"
-                                  : "No iniciado"
-                              }
-                            >
-                              {estado !== "pendiente" && (
-                                <span className="welcome-section__tema-estado-check" />
-                              )}
-                            </span>
-                            <span>{tema.tema}</span>
-                          </button>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-                {(haySiguiente || hayAnterior) && (
-                  <div className="welcome-section__temas-navigation">
-                    {haySiguiente && (
-                      <button
-                        type="button"
-                        className="welcome-section__mostrar-temas"
-                        onClick={() =>
-                          cambiarPaginaTemas(
-                            curso.codigo,
-                            1
-                          )
-                        }
-                      >
-                        <span>Mostrar más</span>
-                        <span
-                          className="welcome-section__mostrar-temas-icon"
-                          aria-hidden="true"
-                        >
-                          <FlechaAbajo />
-                        </span>
-                      </button>
-                    )}
-                    {hayAnterior && (
-                      <button
-                        type="button"
-                        className="welcome-section__mostrar-temas"
-                        onClick={() =>
-                          cambiarPaginaTemas(
-                            curso.codigo,
-                            -1
-                          )
-                        }
-                      >
-                        <span
-                          className="welcome-section__mostrar-temas-icon"
-                          aria-hidden="true"
-                        >
-                          <FlechaArriba />
-                        </span>
-                        <span>Mostrar menos</span>
-                      </button>
-                    )}
-                  </div>
-                )}
-              </>
-            ) : (
-              <div className="welcome-section__temas-empty">
-                No hay temas disponibles todavía.
-              </div>
-            )}
-          </div>
-        )}
       </article>
     );
   }
-  function cambiarPaginaCurso(categoriaId, direccion) {
-    const cursosCategoria =
-      cursosPorCategoria[categoriaId] || [];
-    const columnas =
-      columnasPorCategoria[categoriaId] || 1;
-    const totalPaginas = Math.max(
-      1,
-      Math.ceil(
-        cursosCategoria.length / columnas
-      )
-    );
-    setPaginasCursos((actuales) => {
-      const actual = actuales[categoriaId] || 0;
-      let siguiente = actual + direccion;
-      if (siguiente < 0) {
-        siguiente = totalPaginas - 1;
-      }
-      if (siguiente >= totalPaginas) {
-        siguiente = 0;
-      }
-      return {
-        ...actuales,
-        [categoriaId]: siguiente
-      };
-    });
-  }
-  function irAPaginaCurso(categoriaId, pagina) {
-    setPaginasCursos((actuales) => ({
-      ...actuales,
-      [categoriaId]: pagina
-    }));
-  }
-  function renderCarruselCategoria(categoria) {
-    const cursosCategoria =
-      cursosPorCategoria[categoria.id] || [];
-    const columnas =
-      columnasPorCategoria[categoria.id] || 1;
-    const paginaActual =
-      paginasCursos[categoria.id] || 0;
-    const totalPaginas = Math.max(
-      1,
-      Math.ceil(
-        cursosCategoria.length / columnas
-      )
-    );
-    const inicio = paginaActual * columnas;
-    const cursosPagina = cursosCategoria.slice(
-      inicio,
-      inicio + columnas
-    );
+
+  function renderCategoria(categoria, posicion) {
+    const cursosCategoria = cursosPorCategoria[categoria.id] || [];
     return (
       <section
         key={categoria.id}
-        className={`welcome-section__category welcome-section__category--${categoria.id}`}
+        className={`welcome-section__slide welcome-section__category welcome-section__category--${categoria.id}`}
+        style={{ flex: `0 0 ${100 / total}%` }}
+        aria-hidden={posicion !== indice}
       >
         <h3 className="welcome-section__category-title">
           <i
@@ -524,91 +299,13 @@ export default function WelcomeSection({
             aria-hidden="true"
           />
         </h3>
-        <div
-          ref={(elemento) => {
-            carruselRefs.current[categoria.id] =
-              elemento;
-          }}
-          className="welcome-section__carousel-row-wrapper"
-        >
-          <div className="welcome-section__carousel-row-container">
-            {totalPaginas > 1 && (
-              <button
-                type="button"
-                className="welcome-section__carousel-arrow welcome-section__carousel-arrow--prev"
-                onClick={() =>
-                  cambiarPaginaCurso(
-                    categoria.id,
-                    -1
-                  )
-                }
-                aria-label={`Cursos anteriores de ${categoria.titulo}`}
-              >
-                <FlechaIzquierda />
-              </button>
-            )}
-            <div className="welcome-section__carousel-viewport">
-              <div className="welcome-section__carousel-row">
-                {cursosPagina.map((curso) =>
-                  renderCurso(curso)
-                )}
-              </div>
-            </div>
-            {totalPaginas > 1 && (
-              <button
-                type="button"
-                className="welcome-section__carousel-arrow welcome-section__carousel-arrow--next"
-                onClick={() =>
-                  cambiarPaginaCurso(
-                    categoria.id,
-                    1
-                  )
-                }
-                aria-label={`Cursos siguientes de ${categoria.titulo}`}
-              >
-                <FlechaDerecha />
-              </button>
-            )}
-          </div>
-          {totalPaginas > 1 && (
-            <div
-              className="welcome-section__carousel-dots"
-              aria-label={`Páginas de ${categoria.titulo}`}
-            >
-              {Array.from(
-                { length: totalPaginas },
-                (_, index) => (
-                  <button
-                    key={`${categoria.id}-dot-${index}`}
-                    type="button"
-                    className={`welcome-section__carousel-dot${
-                      paginaActual === index
-                        ? " welcome-section__carousel-dot--active"
-                        : ""
-                    }`}
-                    onClick={() =>
-                      irAPaginaCurso(
-                        categoria.id,
-                        index
-                      )
-                    }
-                    aria-label={`Ir a página ${
-                      index + 1
-                    } de ${categoria.titulo}`}
-                    aria-current={
-                      paginaActual === index
-                        ? "true"
-                        : undefined
-                    }
-                  />
-                )
-              )}
-            </div>
-          )}
+        <div className="welcome-section__carousel-row">
+          {cursosCategoria.map((curso) => renderCurso(curso))}
         </div>
       </section>
     );
   }
+
   return (
     <div className="welcome-section">
       <section className="welcome-section__courses">
@@ -792,15 +489,69 @@ export default function WelcomeSection({
             <strong>{totalTemas} temas</strong> para
             seguir avanzando.
           </p>
-          <div className="welcome-section__carousel">
-            {CATEGORIAS_TEMARIO.map((categoria) => {
-              const config = CONFIG_CATEGORIAS.find(
-                (item) => item.id === categoria.id
-              );
-              return config
-                ? renderCarruselCategoria(config)
-                : null;
-            })}
+
+          <div
+            className="welcome-section__carousel"
+            onPointerDown={manejarPointerDown}
+            onPointerMove={manejarPointerMove}
+            onPointerUp={(e) => finalizarGesto(e, false)}
+            onPointerCancel={(e) => finalizarGesto(e, true)}
+            onDragStart={(e) => e.preventDefault()}
+          >
+            <div className="welcome-section__stage">
+              <button
+                type="button"
+                className="welcome-section__carousel-arrow welcome-section__carousel-arrow--prev"
+                onClick={() => irACategoria(indice - 1)}
+                aria-label="Categoría anterior"
+              >
+                <FlechaIzquierda />
+              </button>
+
+              <div className="welcome-section__viewport">
+                <div
+                  className="welcome-section__track"
+                  ref={trackRef}
+                  style={{ width: `${total * 100}%` }}
+                >
+                  {CATEGORIAS.map((categoria, posicion) =>
+                    renderCategoria(categoria, posicion)
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="welcome-section__carousel-arrow welcome-section__carousel-arrow--next"
+                onClick={() => irACategoria(indice + 1)}
+                aria-label="Categoría siguiente"
+              >
+                <FlechaDerecha />
+              </button>
+            </div>
+
+            <div
+              className="welcome-section__carousel-dots"
+              role="tablist"
+              aria-label="Categorías"
+            >
+              {CATEGORIAS.map((categoria, posicion) => (
+                <button
+                  key={`${categoria.id}-dot`}
+                  type="button"
+                  role="tab"
+                  className={`welcome-section__carousel-dot${
+                    posicion === indice
+                      ? " welcome-section__carousel-dot--active"
+                      : ""
+                  }`}
+                  onClick={() => clickPunto(posicion)}
+                  aria-label={`Ver categoría ${categoria.titulo}`}
+                  aria-selected={posicion === indice}
+                  title={categoria.titulo}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

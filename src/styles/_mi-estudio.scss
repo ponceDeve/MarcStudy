@@ -185,8 +185,9 @@
   gap: 10px;
 }
 .mi-estudio__recomendados-curso {
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
+  background: var(--ink-on-primary);
+  border: 2px solid var(--border-strong);
+  box-shadow: 0 0 5px var(--border-strong);
   border-radius: var(--radius-md);
   padding: 10px 12px;
 }
@@ -271,7 +272,7 @@
   min-width: 0;
   flex: 1;
   overflow: hidden;
-  color: var(--primary-light);
+  color: var(--primary-dark);
   font-family: var(--font-body);
   font-size: var(--fs-md);
   font-weight: var(--fw-normal);
@@ -3280,7 +3281,6 @@ span.teoria-busqueda-resaltado {
   font-size: var(--fs-xl);
   margin-bottom: var(--space-4);
 }
-
 /* ============================================================
    ÁREA DE ESTUDIO (teoría y preguntas)
    ============================================================ */
@@ -3290,7 +3290,6 @@ span.teoria-busqueda-resaltado {
   margin-left: auto;
   margin-right: auto;
 }
-
 /* Botones Ant./Sig. con texto (igual que en el simulacro) */
 .mi-estudio__nav-btn--texto {
   width: auto;

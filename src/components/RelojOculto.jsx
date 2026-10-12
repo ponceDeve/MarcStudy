@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-
 /**
  * Muestra el reloj del header solo unos segundos y luego lo oculta
  * (opacidad 0, sigue contando por debajo). En su lugar aparece el
@@ -18,7 +17,6 @@ export default function RelojOculto({
 }) {
   const [visible, setVisible] = useState(true);
   const timerRef = useRef(null);
-
   const programarOcultar = useCallback(() => {
     window.clearTimeout(timerRef.current);
     timerRef.current = window.setTimeout(
@@ -26,14 +24,12 @@ export default function RelojOculto({
       ms
     );
   }, [ms]);
-
   // Al entrar / cambiar de pregunta: visible 3 s y luego se oculta.
   useEffect(() => {
     setVisible(true);
     programarOcultar();
     return () => window.clearTimeout(timerRef.current);
   }, [clave, programarOcultar]);
-
   // Clic dentro del header: queda visible (no se vuelve a ocultar solo).
   // Clic fuera: ocultar.
   useEffect(() => {
@@ -54,7 +50,6 @@ export default function RelojOculto({
     return () =>
       document.removeEventListener("pointerdown", onPointerDown);
   }, [contenedorRef, programarOcultar]);
-
   return (
     <div
       className={`reloj-oculto${visible ? " is-visible" : ""}`}

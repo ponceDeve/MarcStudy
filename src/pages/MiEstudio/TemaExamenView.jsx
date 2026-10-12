@@ -788,7 +788,6 @@ function ModalConfirmarRendirse({
           {mensaje}
         </p>
         <div className="rendirse-modal__actions">
-
           <button
             type="button"
             className="rendirse-modal__btn is-cancel"

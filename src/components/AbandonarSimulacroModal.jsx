@@ -43,7 +43,6 @@ export default function AbandonarSimulacroModal({
           >
             {textoConfirmar}
           </button>
-
         </div>
       </div>
     </div>

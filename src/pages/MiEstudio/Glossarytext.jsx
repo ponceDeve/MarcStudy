@@ -364,7 +364,6 @@ export default function GlossaryText({
   const [fijado, setFijado] = useState(false);
   const triggerRefs = useRef({});
   const tooltipRefs = useRef({});
-
   const {
     visible,
     pos,
@@ -372,7 +371,6 @@ export default function GlossaryText({
     ocultar,
     ajustarPosicion
   } = useFloatingTooltip();
-
   const glosarioCombinado = useMemo(
     () => ({
       ...SIMBOLOS_NOTACION,
@@ -380,12 +378,10 @@ export default function GlossaryText({
     }),
     [glosario]
   );
-
   const partes = useMemo(
     () => construirPartes(text, glosarioCombinado),
     [text, glosarioCombinado]
   );
-
   const mostrarTooltip = (i, porClic) => {
     // Si la nube ya está abierta para esta palabra (por hover), solo se
     // fija. Volver a "mostrarla" la dejaría sin medir y oculta.
@@ -397,13 +393,11 @@ export default function GlossaryText({
     setFijado(porClic);
     mostrarEn();
   };
-
   const ocultarTooltip = () => {
     setActivo(null);
     setFijado(false);
     ocultar();
   };
-
   // Se posiciona DESPUÉS de que la nube existe en el DOM (antes se
   // hacía en un requestAnimationFrame que a veces corría antes, y la
   // nube quedaba oculta hasta volver a tocar la palabra).
@@ -416,7 +410,6 @@ export default function GlossaryText({
       tooltipRefs.current[activo]
     );
   }, [activo, visible, ajustarPosicion]);
-
   // Con la nube abierta por clic, tocar en cualquier otro lugar la cierra.
   useEffect(() => {
     if (activo === null) return;
@@ -432,7 +425,6 @@ export default function GlossaryText({
     return () =>
       document.removeEventListener("pointerdown", alPresionar);
   }, [activo, ocultar]);
-
   // Mientras la nube está abierta: recolocarla si cambia la pantalla
   // y cerrarla al hacer scroll (está fija en pantalla, no sigue a la palabra).
   useEffect(() => {
@@ -467,7 +459,6 @@ export default function GlossaryText({
       window.removeEventListener("scroll", alScroll, true);
     };
   }, [activo, ajustarPosicion, ocultar]);
-
   return (
     <span
       onClick={() => {
@@ -487,10 +478,8 @@ export default function GlossaryText({
             <span key={i}>{renderLatex(parte.valor)}</span>
           );
         }
-
         const esVisible = visible && activo === i;
         const simbolo = esSimbolo(parte.valor);
-
         return (
           <span
             key={i}

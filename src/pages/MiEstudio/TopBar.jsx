@@ -99,7 +99,6 @@ export default function TopBar({
       onClick: alternarMusica
     }
   ];
-
   const topbarRef = useRef(null);
   const esPregunta =
     stage === "question" || stage === "exam";

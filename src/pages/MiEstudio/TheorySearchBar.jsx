@@ -17,9 +17,7 @@ import {
 } from "../../lib/semantico";
 import { useArrowKeyList } from "../../hooks/useArrowKeyList";
 import GlossaryText from "./GlossaryText";
-
 const MIN_LARGO_QUERY_TEXTO = 2;
-
 // Detecta si el texto pide examen, ejercicios o ambos.
 function tipoPedidoExamen(texto) {
   const t = String(texto || "")
@@ -35,11 +33,9 @@ function tipoPedidoExamen(texto) {
 }
 const MIN_LARGO_QUERY_SEMANTICO = 4;
 const UMBRAL_SIMILITUD = 0.60;
-
 /* ============================================================
    RESALTAR COINCIDENCIA
    ============================================================ */
-
 function contieneFormula(texto) {
   return (
     /\$\$[\s\S]*?\$\$/.test(texto) ||
@@ -48,7 +44,6 @@ function contieneFormula(texto) {
     /\\\[[\s\S]*?\\\]/.test(texto)
   );
 }
-
 export function ResaltarCoincidencia({
   texto,
   query,
@@ -56,7 +51,6 @@ export function ResaltarCoincidencia({
   glosario,
 }) {
   const textoOriginal = String(texto ?? "");
-
   if (
     !query?.trim() ||
     !match ||
@@ -72,10 +66,8 @@ export function ResaltarCoincidencia({
       />
     );
   }
-
   const { indice, largo } = match;
   const final = indice + largo;
-
   if (final > textoOriginal.length) {
     return (
       <GlossaryText
@@ -84,7 +76,6 @@ export function ResaltarCoincidencia({
       />
     );
   }
-
   // No dividir una fórmula LaTeX: hacerlo podría romper sus delimitadores.
   const formulas = [
     /\$\$[\s\S]*?\$\$/g,
@@ -92,22 +83,17 @@ export function ResaltarCoincidencia({
     /\\\([\s\S]*?\\\)/g,
     /\\\[[\s\S]*?\\\]/g,
   ];
-
   const coincideDentroDeFormula = formulas.some((regex) => {
     let formula;
-
     while ((formula = regex.exec(textoOriginal)) !== null) {
       const inicioFormula = formula.index;
       const finalFormula = inicioFormula + formula[0].length;
-
       if (indice < finalFormula && final > inicioFormula) {
         return true;
       }
     }
-
     return false;
   });
-
   if (coincideDentroDeFormula) {
     return (
       <GlossaryText
@@ -116,11 +102,9 @@ export function ResaltarCoincidencia({
       />
     );
   }
-
   const antes = textoOriginal.slice(0, indice);
   const coincidencia = textoOriginal.slice(indice, final);
   const despues = textoOriginal.slice(final);
-
   return (
     <>
       {antes && (
@@ -144,11 +128,9 @@ export function ResaltarCoincidencia({
     </>
   );
 }
-
 /* ============================================================
    THEORY SEARCH BAR
    ============================================================ */
-
 const TheorySearchBar = forwardRef(function TheorySearchBar(
   {
     flatPuntos = [],
@@ -163,45 +145,34 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   const [query, setQuery] = useState("");
   const [buscadorFocus, setBuscadorFocus] = useState(false);
   const [buscandoSemantico, setBuscandoSemantico] = useState(false);
-
   const cacheEmbeddingsRef = useRef({
     flatPuntos: null,
     promesa: null,
   });
-
   const idPeticionRef = useRef(0);
   const inputRef = useRef(null);
-
   useEffect(() => {
     if (!modoChat) return undefined;
-
     const t = setTimeout(() => inputRef.current?.focus(), 50);
-
     return () => clearTimeout(t);
   }, [modoChat]);
-
   const [queryBuscada, setQueryBuscada] = useState("");
   const [rondaBusqueda, setRondaBusqueda] = useState(0);
   const [resultadoSemantico, setResultadoSemantico] = useState(null);
   const [busquedaLista, setBusquedaLista] = useState(false);
   const [tituloSeleccionado, setTituloSeleccionado] = useState(null);
-
   const hayQuery = queryBuscada.trim() !== "";
-
   /* ============================================================
      BÚSQUEDA TEXTUAL
      ============================================================ */
-
   const candidatosTexto = useMemo(() => {
     const queryLimpia = queryBuscada.trim();
-
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
     ) {
       return [];
     }
-
     if (tituloSeleccionado) {
       return flatPuntos
         .filter(
@@ -224,55 +195,45 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           soloExplicacion: false,
         }));
     }
-
     return flatPuntos
       .map((punto) => {
         const scoreTitulo = puntajeDeTexto(
           punto.seccionTitulo || "",
           queryBuscada
         );
-
         const scoreTexto = puntajeDeTexto(
           punto.texto || "",
           queryBuscada
         );
-
         const scoreExplicacion = puntajeDeTexto(
           punto.explicacion || "",
           queryBuscada
         );
-
         const textScore = Math.max(
           scoreTitulo,
           scoreTexto,
           scoreExplicacion
         );
-
         const matchTitulo = buscarCoincidencia(
           punto.seccionTitulo || "",
           queryLimpia
         );
-
         const matchTexto = buscarCoincidencia(
           punto.texto || "",
           queryLimpia
         );
-
         const matchExplicacion = buscarCoincidencia(
           punto.explicacion || "",
           queryLimpia
         );
-
         const tieneCoincidenciaReal =
           !!matchTitulo ||
           !!matchTexto ||
           !!matchExplicacion;
-
         const soloExplicacion =
           !!matchExplicacion &&
           !matchTitulo &&
           !matchTexto;
-
         return {
           punto,
           textScore,
@@ -293,21 +254,17 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     hayQuery,
     tituloSeleccionado,
   ]);
-
   /* ============================================================
      RESULTADOS VISIBLES
      ============================================================ */
-
   const resultados = useMemo(() => {
     const queryLimpia = queryBuscada.trim();
-
     if (
       !hayQuery ||
       queryLimpia.length < MIN_LARGO_QUERY_TEXTO
     ) {
       return [];
     }
-
     return candidatosTexto
       .map(
         ({
@@ -330,19 +287,15 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       .sort((a, b) => b.finalScore - a.finalScore)
       .slice(0, 8);
   }, [candidatosTexto, queryBuscada, hayQuery]);
-
   /* ============================================================
      BÚSQUEDA SEMÁNTICA
      ============================================================ */
-
   async function buscarSemantico(queryLimpia) {
     if (queryLimpia.length < MIN_LARGO_QUERY_SEMANTICO) {
       return null;
     }
-
     const miPeticion = ++idPeticionRef.current;
     setBuscandoSemantico(true);
-
     try {
       if (
         cacheEmbeddingsRef.current.flatPuntos !== flatPuntos
@@ -359,31 +312,24 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           ),
         };
       }
-
       const [vectoresPuntos, vectorQuery] = await Promise.all([
         cacheEmbeddingsRef.current.promesa,
         embeberTexto(queryLimpia),
       ]);
-
       if (miPeticion !== idPeticionRef.current) {
         return null;
       }
-
       let mejorPunto = null;
       let mejorSimilitud = -Infinity;
-
       flatPuntos.forEach((punto, i) => {
         const vector = vectoresPuntos[i];
-
         if (!vector || !vectorQuery) {
           return;
         }
-
         const similitud = similitudCoseno(
           vectorQuery,
           vector
         );
-
         if (
           similitud >= UMBRAL_SIMILITUD &&
           similitud > mejorSimilitud
@@ -392,11 +338,9 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           mejorPunto = punto;
         }
       });
-
       if (!mejorPunto) {
         return null;
       }
-
       return {
         punto: mejorPunto,
         finalScore: mejorSimilitud * 700,
@@ -412,28 +356,22 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       }
     }
   }
-
   /* ============================================================
      ELEGIR RESULTADO
      ============================================================ */
-
   function elegir(resultado) {
     const { punto } = resultado;
     const queryLimpia = queryBuscada.trim();
-
     const matchTexto = buscarCoincidencia(
       punto.texto || "",
       queryLimpia
     );
-
     const matchExplicacion = buscarCoincidencia(
       punto.explicacion || "",
       queryLimpia
     );
-
     let campo = null;
     let matchText = null;
-
     if (matchTexto) {
       campo = "texto";
       matchText = punto.texto.slice(
@@ -449,24 +387,20 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     } else {
       campo = punto.explicacion ? "explicacion" : "texto";
     }
-
     onSelect({
       puntoId: punto.id,
       campo,
       matchText,
     });
-
     setQuery("");
     setQueryBuscada("");
     setResultadoSemantico(null);
     setBuscadorFocus(false);
     setTituloSeleccionado(null);
   }
-
   /* ============================================================
      SELECCIONAR TÍTULO DEL CHAT
      ============================================================ */
-
   function seleccionarTitulo(titulo) {
     setTituloSeleccionado(titulo);
     setQuery("");
@@ -477,20 +411,16 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     setRondaBusqueda((r) => r + 1);
     setBuscadorFocus(true);
   }
-
   /* ============================================================
      ENTER
      ============================================================ */
-
   function ejecutarBusqueda(texto) {
     const queryLimpia = (
       typeof texto === "string" ? texto : query
     ).trim();
-
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
-
     // Pedir examen o ejercicios abre ChatGPT con la teoría del tema.
     if (modoChat && onPedirExamen) {
       const tipo = tipoPedidoExamen(queryLimpia);
@@ -500,7 +430,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         return;
       }
     }
-
     setTituloSeleccionado(null);
     setQuery(modoChat ? "" : queryLimpia);
     setResultadoSemantico(null);
@@ -509,10 +438,8 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     setRondaBusqueda((r) => r + 1);
     setBuscadorFocus(true);
   }
-
   function buscarConEnter() {
     const queryLimpia = query.trim();
-
     if (modoChat && queryLimpia === "") {
       if (
         resultadosVisibles.length > 0 &&
@@ -520,14 +447,11 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       ) {
         elegir(resultadosVisibles[focusedIdx]);
       }
-
       return;
     }
-
     if (queryLimpia.length < MIN_LARGO_QUERY_TEXTO) {
       return;
     }
-
     if (
       !modoChat &&
       queryLimpia === queryBuscada &&
@@ -538,103 +462,80 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           focusedIdx >= 0 ? focusedIdx : 0
         ]
       );
-
       return;
     }
-
     ejecutarBusqueda();
   }
-
   useImperativeHandle(ref, () => ({
     buscar: () => ejecutarBusqueda(),
   }));
-
   /* ============================================================
      SEMÁNTICO COMO RESPALDO
      ============================================================ */
-
   useEffect(() => {
     if (rondaBusqueda === 0 || !queryBuscada) {
       return undefined;
     }
-
     if (tituloSeleccionado) {
       setBusquedaLista(true);
       setBuscandoSemantico(false);
       return undefined;
     }
-
     if (resultados.length > 0) {
       setBusquedaLista(true);
       return undefined;
     }
-
     if (
       queryBuscada.length < MIN_LARGO_QUERY_SEMANTICO
     ) {
       setBusquedaLista(true);
       return undefined;
     }
-
     let cancelado = false;
-
     buscarSemantico(queryBuscada).then((r) => {
       if (cancelado) return;
-
       setResultadoSemantico(r);
       setBusquedaLista(true);
     });
-
     return () => {
       cancelado = true;
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rondaBusqueda, tituloSeleccionado]);
-
   const resultadosVisibles =
     resultados.length > 0
       ? resultados
       : resultadoSemantico
         ? [resultadoSemantico]
         : [];
-
   /* ============================================================
      NAVEGACIÓN CON FLECHAS
      ============================================================ */
-
   const { focusedIdx, handleKeyDown } = useArrowKeyList(
     resultadosVisibles,
     (resultado) => elegir(resultado)
   );
-
   /* ============================================================
      TECLADO DEL INPUT
      ============================================================ */
-
   function onKeyDownInput(e) {
     if (e.key === "Escape") {
       e.currentTarget.blur();
       setBuscadorFocus(false);
       return;
     }
-
     if (e.key === "Enter") {
       e.preventDefault();
       buscarConEnter();
       return;
     }
-
     handleKeyDown(e);
   }
-
   /* ============================================================
      SUGERENCIAS DE TÍTULOS — SOLO MODO CHAT
      ============================================================ */
-
   const sugerenciasTitulos = useMemo(() => {
     const vistos = [];
-
     for (const p of flatPuntos) {
       if (
         p.seccionTitulo &&
@@ -643,32 +544,25 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         vistos.push(p.seccionTitulo);
       }
     }
-
     return vistos;
   }, [flatPuntos]);
-
   /* ============================================================
      MOSTRAR RESULTADOS
      ============================================================ */
-
   const hayResultadosPendientes =
     resultadosVisibles.length > 0 ||
     buscandoSemantico ||
     busquedaLista;
-
   const mostrarDropdown =
     buscadorFocus &&
     hayQuery &&
     query.trim() === queryBuscada &&
     hayResultadosPendientes;
-
   const mostrarMensajesChat =
     hayQuery && hayResultadosPendientes;
-
   /* ============================================================
      ITEMS — TEXTO Y EXPLICACIÓN COMPLETOS
      ============================================================ */
-
   function renderItems() {
     return resultadosVisibles.map((r, idx) => {
       const {
@@ -677,11 +571,9 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         matchTexto,
         matchExplicacion,
       } = r;
-
       const mostrarExplicacion =
         !!punto.explicacion &&
         (!!matchExplicacion || !punto.texto);
-
       return (
         <button
           key={punto.id}
@@ -704,7 +596,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
               </strong>
             </span>
           )}
-
           {punto.texto && (
             <span className="theory-search__item-seccion">
               <ResaltarCoincidencia
@@ -715,7 +606,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
               />
             </span>
           )}
-
           {mostrarExplicacion && (
             <span className="theory-search__item-texto">
               <ResaltarCoincidencia
@@ -732,7 +622,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       );
     });
   }
-
   const inputEl = (
     <input
       ref={inputRef}
@@ -753,11 +642,9 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       }`}
     />
   );
-
   /* ============================================================
      RENDER — MODO CHAT
      ============================================================ */
-
   if (modoChat) {
     return (
       <div className="theory-search theory-search--chat">
@@ -767,7 +654,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
               <div className="theory-search__burbuja theory-search__burbuja--usuario">
                 {queryBuscada}
               </div>
-
               {resultadosVisibles.length > 0 ? (
                 renderItems()
               ) : busquedaLista && !buscandoSemantico ? (
@@ -775,7 +661,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                   No hay coincidencias
                 </div>
               ) : null}
-
               {buscandoSemantico && (
                 <div className="theory-search__burbuja">
                   Buscando la coincidencia más parecida...
@@ -801,10 +686,8 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
             </>
           )}
         </div>
-
         <div className="theory-search__pie">
           {inputEl}
-
           <button
             type="button"
             className="theory-search__enviar"
@@ -818,16 +701,13 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       </div>
     );
   }
-
   /* ============================================================
      RENDER — MODO NORMAL (MAPA DE TEMAS)
      ============================================================ */
-
   return (
     <div className="theory-search">
       <div className="theory-search__wrap">
         {inputEl}
-
         {mostrarDropdown && (
           <div className="theory-search__dropdown">
             {resultadosVisibles.length > 0 ? (
@@ -837,7 +717,6 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                 No hay coincidencias
               </p>
             ) : null}
-
             {buscandoSemantico && (
               <div className="theory-search__semantic-loading">
                 Buscando la coincidencia más parecida...
@@ -849,5 +728,4 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     </div>
   );
 });
-
 export default TheorySearchBar;

@@ -96,7 +96,6 @@ export default function RendirseModal({
           >
             Continuar
           </button>
-          
         </div>
       </div>
     </div>
