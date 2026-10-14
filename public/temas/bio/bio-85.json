@@ -2,28 +2,330 @@
   "curso": "Biología",
   "tema": "Herencia restringida al sexo",
   "glosario": {
-    "Herencia restringida al sexo": "Rasgo cuyo gen está en un autosoma pero solo se expresa en un sexo.",
-    "Rasgo sexual secundario": "Carácter que diferencia a machos y hembras sin ser un órgano reproductor.",
-    "Autosoma": "Cromosoma que no participa en la determinación del sexo."
+    "autosoma": "Cromosoma que no determina el sexo",
+    "cromosoma sexual": "Cromosoma que determina el sexo",
+    "gónada": "Órgano que produce los gametos",
+    "hormona": "Mensajero químico producido por una glándula",
+    "testosterona": "Principal hormona sexual masculina",
+    "andrógeno": "Hormona sexual masculina",
+    "estrógeno": "Hormona sexual femenina",
+    "progesterona": "Hormona que prepara el útero",
+    "prolactina": "Hormona que estimula la leche",
+    "dimorfismo sexual": "Diferencias de aspecto entre los sexos",
+    "carácter sexual primario": "Órgano reproductor del individuo",
+    "carácter sexual secundario": "Rasgo que distingue los sexos",
+    "receptor": "Proteína que une una hormona",
+    "tejido blanco": "Tejido que responde a una hormona",
+    "penetrancia": "Porcentaje de portadores que expresan el genotipo",
+    "holándrica": "Herencia ligada al cromosoma Y",
+    "prueba de progenie": "Evaluación de un reproductor por sus hijos",
+    "inseminación artificial": "Fecundación con semen colocado artificialmente",
+    "alelo": "Forma alternativa de un mismo gen",
+    "dominante": "Alelo que se expresa en heterocigotos",
+    "recesivo": "Alelo oculto ante el dominante",
+    "genotipo": "Conjunto de alelos de un individuo",
+    "fenotipo": "Rasgos observables de un individuo",
+    "oviducto": "Conducto por donde pasa el óvulo",
+    "laringe": "Órgano de la voz en la garganta"
   },
   "theory": [
     {
-      "titulo": "Concepto",
+      "titulo": "Conceptos previos",
       "puntos": [
-        { "texto": "La herencia restringida al sexo depende de genes que no están en los cromosomas sexuales.", "explicacion": "El gen está en un autosoma, pero solo se manifiesta en uno de los sexos." }
+        {
+          "texto": "«Autosomas» = cromosomas que no determinan el sexo",
+          "explicacion": "Los genes de los autosomas están presentes en machos y en hembras, aunque no siempre se expresen en ambos sexos."
+        },
+        {
+          "texto": "«Cromosomas sexuales» = pareja que determina el sexo",
+          "explicacion": "En mamíferos son X e Y. Su herencia se desarrolla en los temas de genética del sexo (tema 83) y herencia ligada al sexo (tema 84)."
+        },
+        {
+          "texto": "«Gónadas» = órganos que producen los gametos",
+          "explicacion": "Son los testículos en el macho y los ovarios en la hembra, y además producen las hormonas sexuales."
+        },
+        {
+          "texto": "«Hormonas sexuales» = mensajeros químicos producidos por las gónadas",
+          "explicacion": "Los andrógenos, como la testosterona, predominan en el macho. Los estrógenos y la progesterona predominan en la hembra."
+        },
+        {
+          "texto": "«Caracteres sexuales primarios» = órganos reproductores",
+          "explicacion": "Son los testículos, los ovarios y los órganos sexuales internos y externos."
+        },
+        {
+          "texto": "«Caracteres sexuales secundarios» = rasgos que distinguen los sexos",
+          "explicacion": "Aparecen en la madurez sexual por acción de las hormonas y no participan directamente en la reproducción, como la barba o la melena."
+        },
+        {
+          "texto": "«Dimorfismo sexual» = diferencias de aspecto entre machos y hembras",
+          "explicacion": "Se debe en gran parte a genes de herencia restringida al sexo, que se expresan solo en un sexo."
+        },
+        {
+          "texto": "«Fenotipo» = rasgo observable de un individuo",
+          "explicacion": "Resulta de la acción del genotipo y del ambiente."
+        }
       ]
     },
     {
-      "titulo": "Causas de la restricción",
+      "titulo": "Definición básica",
       "puntos": [
-        { "texto": "La restricción puede deberse a diferencias anatómicas entre machos y hembras.", "explicacion": "Un gen para un órgano que solo existe en un sexo solo puede expresarse en ese sexo." },
-        { "texto": "La restricción puede deberse a diferencias hormonales entre los sexos.", "explicacion": "Las hormonas sexuales activan o no la expresión de ciertos genes según el sexo del individuo." }
+        {
+          "texto": "«Herencia restringida al sexo» = genes que se expresan solo en un sexo",
+          "explicacion": "Los genes están presentes en los dos sexos, pero su efecto solo aparece en uno, por diferencias en las hormonas o en la anatomía."
+        },
+        {
+          "texto": "Genes ∈ autosomas, en la mayoría de los casos",
+          "explicacion": "Por estar en cromosomas no sexuales, los llevan tanto machos como hembras. Esto los distingue de los genes ligados al sexo."
+        },
+        {
+          "texto": "Sexo no expresante ⇒ portador del gen sin manifestarlo",
+          "explicacion": "Puede transmitirlo a su descendencia. Es el caso del toro, que tiene genes de producción de leche pero no produce leche."
+        }
       ]
     },
     {
-      "titulo": "Diferencia con la herencia influida por el sexo",
+      "titulo": "Nombres alternativos",
       "puntos": [
-        { "texto": "En la herencia restringida, el rasgo aparece en un solo sexo.", "explicacion": "En la herencia influida por el sexo, en cambio, el rasgo aparece en ambos sexos pero con frecuencia distinta." }
+        {
+          "texto": "«Herencia limitada al sexo» = otro nombre de la herencia restringida",
+          "explicacion": "Es el nombre usado en muchos textos de genética."
+        },
+        {
+          "texto": "«Caracteres limitados al sexo» = rasgos de herencia restringida",
+          "explicacion": "Es el nombre que reciben los fenotipos que solo aparecen en un sexo."
+        }
+      ]
+    },
+    {
+      "titulo": "Mecanismo de expresión",
+      "puntos": [
+        {
+          "texto": "Hormonas sexuales ⇒ activan o reprimen genes",
+          "explicacion": "Los andrógenos, los estrógenos y la progesterona se unen a receptores y regulan la actividad de genes concretos. Así, un mismo gen se expresa en un sexo y no en el otro."
+        },
+        {
+          "texto": "Gen expresado ✓ hormona + receptor + tejido blanco",
+          "explicacion": "Si falta cualquiera de los tres, el efecto no aparece, aunque el individuo tenga el gen."
+        },
+        {
+          "texto": "Anatomía ⇒ limita la expresión del gen",
+          "explicacion": "Un gen que actúa en un órgano que solo existe en un sexo, como la glándula mamaria funcional o la próstata, solo puede manifestarse en ese sexo."
+        }
+      ]
+    },
+    {
+      "titulo": "Transmisión del carácter",
+      "puntos": [
+        {
+          "texto": "Padre ⇒ transmite genes de rasgos propios de la hembra",
+          "explicacion": "El padre tiene los genes y los pasa a sus hijas, en las que sí se expresan. Un toro transmite la capacidad de producir leche a sus hijas."
+        },
+        {
+          "texto": "Madre ⇒ transmite genes de rasgos propios del macho",
+          "explicacion": "La madre tiene los genes y los pasa a sus hijos, en los que sí se expresan. Una madre transmite a sus hijos varones los genes de la barba."
+        },
+        {
+          "texto": "Herencia ≠ ligada a un cromosoma sexual",
+          "explicacion": "Los genes se heredan como los genes autosómicos, con las mismas proporciones de Mendel."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en ganado",
+      "puntos": [
+        {
+          "texto": "Producción de leche en vacas ⇒ carácter restringido a la hembra",
+          "explicacion": "Solo las hembras tienen glándula mamaria funcional que responde a la prolactina, la hormona que estimula la producción de leche."
+        },
+        {
+          "texto": "Toro ⇒ transmite genes de producción de leche",
+          "explicacion": "No produce leche, pero su genotipo influye en la producción de sus hijas."
+        },
+        {
+          "texto": "Cantidad y calidad de la leche ⇒ dependen de genes de ambos progenitores",
+          "explicacion": "El rendimiento de una vaca resulta de los genes heredados del toro y de la vaca."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en aves",
+      "puntos": [
+        {
+          "texto": "Postura de huevos en gallinas ⇒ carácter restringido a la hembra",
+          "explicacion": "Solo la hembra tiene oviducto que forma huevos. Los gallos portan y transmiten genes de la postura."
+        },
+        {
+          "texto": "Plumaje de pavo real macho ⇒ cola vistosa solo en machos",
+          "explicacion": "La cola de plumas cobertoras largas con ojos de colores se desarrolla solo en el macho, por acción de las hormonas sexuales."
+        },
+        {
+          "texto": "Gallo Sebright ⇒ plumaje parecido al de la gallina",
+          "explicacion": "Dato por confirmar: es una raza de gallos con plumaje de tipo hembra, atribuido a un gen autosómico que cambia el efecto de las hormonas en la piel."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en mamíferos silvestres",
+      "puntos": [
+        {
+          "texto": "Melena del león ⇒ rasgo del macho",
+          "explicacion": "Se desarrolla en el macho adulto bajo la acción de la testosterona. La leona tiene los genes, pero no los expresa."
+        },
+        {
+          "texto": "Astas del ciervo ⇒ rasgo del macho",
+          "explicacion": "Crecen en el macho y se renuevan cada año bajo el control de la testosterona."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en humanos",
+      "puntos": [
+        {
+          "texto": "Barba y bigote ⇒ rasgos restringidos al varón",
+          "explicacion": "Los andrógenos activan los genes del crecimiento del vello facial. La mujer tiene los genes, pero produce pocos andrógenos y no desarrolla barba."
+        },
+        {
+          "texto": "Voz grave ⇒ rasgo restringido al varón",
+          "explicacion": "La testosterona hace crecer la laringe y engrosa las cuerdas vocales en la pubertad."
+        },
+        {
+          "texto": "Desarrollo de mamas ⇒ rasgo restringido a la mujer",
+          "explicacion": "Los estrógenos activan los genes del desarrollo de la glándula mamaria en la pubertad."
+        },
+        {
+          "texto": "Cáncer de próstata ⇒ solo en varones",
+          "explicacion": "Solo los varones tienen próstata. La predisposición hereditaria la pueden transmitir también las mujeres."
+        },
+        {
+          "texto": "Endometriosis ⇒ solo en mujeres",
+          "explicacion": "Solo las mujeres tienen útero. Existe un componente hereditario que pueden transmitir también los varones."
+        }
+      ]
+    },
+    {
+      "titulo": "Modelo hipotético de leche",
+      "puntos": [
+        {
+          "texto": "L = alelo dominante de alta producción de leche",
+          "explicacion": "Es un modelo simplificado, porque la producción real de leche depende de muchos genes. La L viene de leche."
+        },
+        {
+          "texto": "l = alelo recesivo de baja producción de leche",
+          "explicacion": "Solo se manifiesta en las hembras con dos copias."
+        },
+        {
+          "texto": "LL + Ll ⇒ vaca de alta producción",
+          "explicacion": "El alelo dominante se manifiesta en la hembra con una o dos copias."
+        },
+        {
+          "texto": "ll ⇒ vaca de baja producción",
+          "explicacion": "Necesita dos copias del alelo recesivo."
+        },
+        {
+          "texto": "Toro LL, Ll, ll ⇒ sin producción de leche",
+          "explicacion": "El genotipo del toro no se manifiesta, aunque sí se transmite."
+        },
+        {
+          "texto": "Toro LL × vaca ll → 100 % hijas Ll de alta producción",
+          "explicacion": "Todas las hijas reciben L del padre y l de la madre. Los hijos varones también son Ll, pero no producen leche."
+        },
+        {
+          "texto": "Toro Ll × vaca Ll → hijas 75 % alta + 25 % baja",
+          "explicacion": "Se cumple la razón 3 : 1 de Mendel en la mitad de la descendencia que puede expresar el rasgo. Los machos tienen los mismos genotipos, pero no se observan."
+        },
+        {
+          "texto": "Razón genotípica ⇒ igual en ambos sexos",
+          "explicacion": "La proporción de LL, Ll y ll es la misma en machos y hembras, 1 : 2 : 1, pero solo se ve en el sexo expresante."
+        }
+      ]
+    },
+    {
+      "titulo": "Penetrancia",
+      "puntos": [
+        {
+          "texto": "«Penetrancia» = proporción de portadores del genotipo que lo expresan",
+          "explicacion": "Se expresa como porcentaje. Un genotipo con penetrancia completa se manifiesta en todos los individuos."
+        },
+        {
+          "texto": "Herencia restringida ⇒ penetrancia 0 % en el sexo no expresante",
+          "explicacion": "El gen está presente en ese sexo, pero nunca se manifiesta."
+        },
+        {
+          "texto": "Herencia restringida ⇒ penetrancia alta en el sexo expresante",
+          "explicacion": "En el sexo con las hormonas y la anatomía adecuadas el gen se manifiesta según su dominancia."
+        }
+      ]
+    },
+    {
+      "titulo": "Genes del cromosoma Y",
+      "puntos": [
+        {
+          "texto": "«Holándrica» = herencia de genes del cromosoma Y",
+          "explicacion": "Se transmite de padre a hijo varón. Se desarrolla en el tema de herencia ligada al sexo (tema 84)."
+        },
+        {
+          "texto": "Según algunos textos ⇒ holándrica ⊂ herencia restringida",
+          "explicacion": "Estos textos la incluyen porque los genes del Y solo se expresan en el varón."
+        },
+        {
+          "texto": "Según otros textos ⇒ holándrica ⊂ herencia ligada al sexo",
+          "explicacion": "Estos textos la incluyen allí porque el gen está en un cromosoma sexual. En esta clasificación, la herencia restringida solo comprende genes autosómicos."
+        }
+      ]
+    },
+    {
+      "titulo": "Mejoramiento animal",
+      "puntos": [
+        {
+          "texto": "«Prueba de progenie» = evaluar al toro por sus hijas",
+          "explicacion": "Como el toro no expresa la producción de leche, se mide la producción de sus hijas para saber qué genes transmite."
+        },
+        {
+          "texto": "Toro con hijas de alta producción ⇒ reproductor de calidad",
+          "explicacion": "Se selecciona para que deje más descendencia."
+        },
+        {
+          "texto": "Inseminación artificial ⇒ difunde los genes del toro probado",
+          "explicacion": "Permite que un solo toro tenga miles de hijas en distintos lugares, y así mejorar rápido la producción de un rebaño."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación con herencias vecinas",
+      "puntos": [
+        {
+          "texto": "Herencia ligada al sexo ≠ herencia restringida al sexo",
+          "explicacion": "En la ligada los genes están en los cromosomas sexuales y se expresan en ambos sexos, aunque con frecuencias distintas. En la restringida los genes suelen estar en autosomas y se expresan en un solo sexo."
+        },
+        {
+          "texto": "Restringida ⇒ fenotipo solo en un sexo",
+          "explicacion": "En la ligada al X recesiva los varones están más afectados, pero las mujeres también pueden manifestar el rasgo."
+        },
+        {
+          "texto": "Herencia influenciada por el sexo (tema 86) ≠ restringida",
+          "explicacion": "En la influenciada el gen se expresa en ambos sexos, pero con dominancia distinta según el sexo. Se desarrolla en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Padre ≠ sin genes del rasgo propio de la hembra",
+          "explicacion": "El padre tiene los genes y los transmite a sus hijas, aunque en él no se expresen."
+        },
+        {
+          "texto": "Herencia restringida ≠ genes en el cromosoma Y",
+          "explicacion": "En la mayoría de los casos, los genes están en autosomas y los llevan los dos sexos."
+        },
+        {
+          "texto": "Rasgo restringido ≠ ausencia del gen en el otro sexo",
+          "explicacion": "El gen está presente, y lo que falta es la hormona, el receptor o el órgano para expresarlo."
+        },
+        {
+          "texto": "Herencia restringida ≠ herencia ligada al sexo",
+          "explicacion": "Son categorías distintas: se diferencian en la ubicación de los genes y en cómo se expresan."
+        }
       ]
     }
   ]

@@ -2,32 +2,197 @@
   "curso": "Biología",
   "tema": "Reino Animal",
   "glosario": {
-    "Reino Animal": "Grupo de organismos eucariotas, pluricelulares y heterótrofos.",
-    "Heterótrofo": "Organismo que obtiene su alimento de otros seres vivos.",
-    "Filo": "Categoría taxonómica que agrupa clases con un plan corporal común.",
-    "Metazoo": "Animal pluricelular cuyas células se organizan en tejidos.",
-    "Simetría": "Disposición regular de las partes del cuerpo alrededor de un eje."
+    "Heterótrofo": "Organismo que obtiene materia orgánica ya formada",
+    "Tejido verdadero": "Conjunto de células especializadas que cumplen una función común",
+    "Blástula": "Embrión temprano en forma de esfera hueca de células",
+    "Simetría bilateral": "Cuerpo dividido en mitades izquierda y derecha simétricas",
+    "Simetría radial": "Cuerpo organizado alrededor de un eje central",
+    "Celoma": "Cavidad interna del cuerpo revestida por mesodermo",
+    "Acelomado": "Organismo sin cavidad corporal verdadera",
+    "Pseudocelomado": "Organismo con cavidad corporal no revestida por mesodermo",
+    "Protostomado": "Animal cuyo blastoporo origina la boca",
+    "Deuterostomado": "Animal cuyo blastoporo origina el ano",
+    "Diblástico": "Embrión con dos capas germinales: ectodermo y endodermo",
+    "Triblástico": "Embrión con tres capas germinales: ectodermo, mesodermo y endodermo",
+    "Cefalización": "Concentración de órganos sensoriales y nerviosos en la cabeza",
+    "Esqueleto hidrostático": "Sostén mediante líquido a presión dentro de una cavidad"
   },
   "theory": [
     {
-      "titulo": "Características generales",
+      "titulo": "Concepto y características generales",
       "puntos": [
-        { "texto": "Los animales son eucariotas, pluricelulares y heterótrofos.", "explicacion": "Obtienen su energía al ingerir otros organismos." },
-        { "texto": "Las células animales carecen de pared celular.", "explicacion": "Esto permite diversidad de formas y movimiento." },
-        { "texto": "La mayoría de los animales se reproduce sexualmente.", "explicacion": "Algunos grupos también pueden reproducirse asexualmente." }
+        {
+          "texto": "Reino Animal: organismos eucariotas pluricelulares heterótrofos",
+          "explicacion": "Pertenecen al dominio Eukarya y sus células carecen de pared celular. Obtienen su alimento ingiriendo materia orgánica de otros seres vivos."
+        },
+        {
+          "texto": "Heterótrofos ⇒ digestión dentro de un tubo o cavidad",
+          "explicacion": "Los animales ingieren su alimento y lo digieren dentro del organismo, a diferencia de los autótrofos. Esta forma de nutrición es el motivo de la existencia de sistemas digestivos en la mayoría de los grupos."
+        },
+        {
+          "texto": "Reproducción sexual predominante en la mayoría de los grupos",
+          "explicacion": "Algunos grupos también se reproducen de forma asexual, como ciertas esponjas y cnidarios. La reproducción sexual produce variabilidad genética en la descendencia."
+        },
+        {
+          "texto": "Desarrollo embrionario con fase de blástula",
+          "explicacion": "Tras la fecundación, el cigoto se divide por mitosis hasta formar una blástula. Esta fase es común a casi todos los animales y precede a la formación de las capas germinales."
+        },
+        {
+          "texto": "Mayoría de animales con movilidad en alguna etapa",
+          "explicacion": "Muchos adultos se desplazan activamente, pero existen formas sésiles como los corales y las esponjas adultas. Esa movilidad está asociada a la presencia de músculos y sistema nervioso."
+        }
       ]
     },
     {
-      "titulo": "Organización corporal",
+      "titulo": "Niveles de organización",
       "puntos": [
-        { "texto": "Los animales tienen tejidos organizados en órganos y sistemas.", "explicacion": "Esto diferencia a los metazoos de otros grupos pluricelulares." },
-        { "texto": "La simetría corporal varía entre los grupos animales.", "explicacion": "Algunos grupos presentan simetría radial y otros simetría bilateral." }
+        {
+          "texto": "Porifera: organización celular sin tejidos verdaderos",
+          "explicacion": "Las esponjas tienen células especializadas que se agrupan de forma poco organizada. No presentan tejidos verdaderos ni órganos definidos."
+        },
+        {
+          "texto": "Cnidaria y resto de animales: tejidos verdaderos",
+          "explicacion": "Los cnidarios presentan tejidos verdaderos, pero no órganos complejos. La mayoría de los demás grupos tiene tejidos organizados en órganos y sistemas."
+        },
+        {
+          "texto": "Organización en tejidos ⇒ órganos ⇒ sistemas",
+          "explicacion": "Los tejidos forman órganos, y los órganos que cumplen una función común forman sistemas. Esta jerarquía es la base de la complejidad corporal animal."
+        }
       ]
     },
     {
-      "titulo": "Diversidad de filos",
+      "titulo": "Simetría corporal",
       "puntos": [
-        { "texto": "El reino Animal se divide en filos como Porifera, Cnidaria, Mollusca, Arthropoda y Chordata.", "explicacion": "Sus características se estudian en el tema siguiente." }
+        {
+          "texto": "Simetría asimétrica: sin eje de simetría definido",
+          "explicacion": "Las esponjas adultas presentan esta forma de cuerpo irregular. No pueden dividirse en mitades semejantes en ningún plano."
+        },
+        {
+          "texto": "Simetría radial: organización alrededor de un eje central",
+          "explicacion": "Se encuentra en cnidarios y equinodermos adultos. Permite captar estímulos del entorno desde todas las direcciones."
+        },
+        {
+          "texto": "Simetría bilateral ⇒ cefalización",
+          "explicacion": "Los animales con simetría bilateral tienen un extremo anterior con cabeza y un extremo posterior. La concentración de órganos sensoriales en la cabeza se llama cefalización y se asocia a la locomoción dirigida."
+        }
+      ]
+    },
+    {
+      "titulo": "Cavidad corporal",
+      "puntos": [
+        {
+          "texto": "Acelomados: sin cavidad corporal verdadera",
+          "explicacion": "El espacio interno está ocupado por tejido sólido, como en los platelmintos. Estos organismos suelen tener un intercambio de sustancias limitado a su superficie."
+        },
+        {
+          "texto": "Pseudocelomados: cavidad no revestida por mesodermo",
+          "explicacion": "La cavidad se ubica entre el mesodermo y el endodermo, por lo que no está revestida completamente por tejido mesodérmico. Los nematodos son un ejemplo representativo."
+        },
+        {
+          "texto": "Celomados: cavidad revestida por mesodermo",
+          "explicacion": "El celoma verdadero está completamente rodeado por mesodermo y permite que los órganos se desarrollen de forma independiente. La mayoría de los grupos complejos son celomados."
+        }
+      ]
+    },
+    {
+      "titulo": "Capas germinales",
+      "puntos": [
+        {
+          "texto": "Diblásticos: ectodermo y endodermo solamente",
+          "explicacion": "El embrión de estos animales forma solo dos capas celulares durante el desarrollo. Los cnidarios son diblásticos y no presentan mesodermo verdadero."
+        },
+        {
+          "texto": "Triblásticos: ectodermo, mesodermo y endodermo",
+          "explicacion": "El mesodermo origina músculos, huesos, sangre y gran parte de los órganos internos. Todos los animales con simetría bilateral son triblásticos."
+        }
+      ]
+    },
+    {
+      "titulo": "Desarrollo embrionario",
+      "puntos": [
+        {
+          "texto": "Protostomados: el blastoporo origina la boca",
+          "explicacion": "En este grupo, la boca del adulto se forma a partir del blastoporo del embrión. Los artrópodos y los moluscos son ejemplos de protostomados."
+        },
+        {
+          "texto": "Deuterostomados: el blastoporo origina el ano",
+          "explicacion": "En estos animales, la boca se forma en un segundo punto del embrión. Los equinodermos y los cordados son deuterostomados."
+        },
+        {
+          "texto": "Segmentación espiral ⇒ protostomados",
+          "explicacion": "Los protostomados presentan con frecuencia una división celular en espiral durante las primeras etapas del desarrollo. En los deuterostomados la segmentación es radial."
+        },
+        {
+          "texto": "Formación del celoma: esquizocelia o enterocelia",
+          "explicacion": "En la esquizocelia el celoma se forma por la separación de células sólidas. En la enterocelia se forma a partir de bolsas que brotan del intestino primitivo."
+        }
+      ]
+    },
+    {
+      "titulo": "Sostén y esqueleto",
+      "puntos": [
+        {
+          "texto": "Esqueleto hidrostático: presión de líquido en una cavidad",
+          "explicacion": "Algunos gusanos y cnidarios usan líquido a presión para mantener su forma y moverse. Es un sostén sin partes duras."
+        },
+        {
+          "texto": "Exoesqueleto: esqueleto externo rígido",
+          "explicacion": "Se encuentra en artrópodos y se forma por una cubierta de quitina con proteínas. Protege el cuerpo, pero limita el crecimiento y obliga a realizar mudas."
+        },
+        {
+          "texto": "Endoesqueleto: esqueleto interno de sostén",
+          "explicacion": "Se presenta en equinodermos y vertebrados, y su crecimiento acompaña al del cuerpo. Los músculos se insertan en su superficie."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Clasificación de los seres vivos (tema 94)",
+          "explicacion": "El reino Animal se ubica dentro del dominio Eukarya, con criterios de clasificación ya estudiados en el tema 94."
+        },
+        {
+          "texto": "Phyla del reino animal (tema 96)",
+          "explicacion": "Las características de cada filo se desarrollan en el tema 96, a partir de las bases aquí descritas."
+        },
+        {
+          "texto": "Animales útiles al hombre (tema 97)",
+          "explicacion": "Su aprovechamiento se desarrolla en el tema 97, sin repetir lo aquí expuesto."
+        },
+        {
+          "texto": "Animales extintos (tema 98)",
+          "explicacion": "Las causas y los casos de extinción de animales se desarrollan en el tema 98."
+        },
+        {
+          "texto": "Animales en peligro de extinción (tema 99)",
+          "explicacion": "Los grupos amenazados y sus causas se desarrollan en el tema 99."
+        },
+        {
+          "texto": "Animales en situación vulnerable (tema 100)",
+          "explicacion": "Los casos de vulnerabilidad se desarrollan en el tema 100."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre el reino animal",
+      "puntos": [
+        {
+          "texto": "Todos los animales tienen simetría bilateral ✗",
+          "explicacion": "Las esponjas no presentan simetría bilateral y los cnidarios tienen simetría radial. La bilateralidad es una característica de los grupos más complejos."
+        },
+        {
+          "texto": "Todos los animales tienen tejidos verdaderos ✗",
+          "explicacion": "Las esponjas carecen de tejidos verdaderos. Esta diferencia separa a los porífero del resto del reino."
+        },
+        {
+          "texto": "Animal no equivale a vertebrado",
+          "explicacion": "Los vertebrados son solo un subgrupo del reino Animal. La mayoría de las especies animales son invertebradas, como los insectos y los gusanos."
+        },
+        {
+          "texto": "Animales adultos siempre se desplazan",
+          "explicacion": "Los corales y las esponjas adultas son sésiles y viven fijos al sustrato. Su movilidad se limita a las etapas larvarias o a ninguna."
+        }
       ]
     }
   ]

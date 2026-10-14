@@ -2,51 +2,331 @@
   "curso": "Biología",
   "tema": "Ciclo celular",
   "glosario": {
-    "Ciclo celular": "Secuencia de eventos en que la célula crece, replica su ADN y se divide.",
-    "Interfase": "Etapa del ciclo celular entre divisiones, formada por G1, S y G2.",
-    "G1": "Fase de crecimiento y actividad metabólica antes de replicar el ADN.",
-    "S": "Fase en que se replica el ADN.",
-    "G2": "Fase de preparación final para la división celular.",
-    "G0": "Estado de reposo en que la célula sale del ciclo.",
-    "Punto de control": "Momento en que el ciclo se detiene para verificar que todo esté listo.",
-    "Ciclina": "Proteína que se acumula y degrada en fases específicas del ciclo.",
-    "Quinasa dependiente de ciclina (CDK)": "Enzima que se activa al unirse a una ciclina.",
-    "Citocinesis": "División del citoplasma que separa las dos células hijas."
+    "Ciclo celular": "Secuencia de eventos entre dos divisiones.",
+    "Interfase": "Período entre dos divisiones celulares.",
+    "Fase M": "Fase de división del núcleo y citoplasma.",
+    "Mitosis": "División del núcleo celular.",
+    "Citocinesis": "División del citoplasma.",
+    "Cromátida": "Copia de un cromosoma duplicado.",
+    "Cromosoma": "Estructura de ADN y proteínas.",
+    "Cromatina": "ADN asociado a proteínas.",
+    "Histona": "Proteína que empaqueta el ADN.",
+    "Centrosoma": "Organizador de microtúbulos.",
+    "Tubulina": "Proteína de los microtúbulos.",
+    "Cohesina": "Proteína que une cromátidas hermanas.",
+    "ADN polimerasa": "Enzima que sintetiza ADN.",
+    "Replicación": "Copia del ADN.",
+    "Ciclina": "Proteína reguladora del ciclo.",
+    "CDK": "Quinasa dependiente de ciclina.",
+    "Quinasa": "Enzima que añade fosfatos.",
+    "Punto de control": "Mecanismo que vigila el ciclo.",
+    "Apoptosis": "Muerte celular programada.",
+    "Oncogén": "Gen que promueve división descontrolada.",
+    "Telómero": "Extremo protector del cromosoma.",
+    "Telomerasa": "Enzima que alarga los telómeros.",
+    "Senescencia": "Detención permanente de la división.",
+    "Tumor": "Masa de células de división descontrolada."
   },
   "theory": [
     {
       "titulo": "Concepto de ciclo celular",
       "puntos": [
-        { "texto": "El ciclo celular es la secuencia de crecimiento, replicación y división celular.", "explicacion": "Termina con la formación de dos células hijas." },
-        { "texto": "El ciclo celular tiene una fase de división llamada fase M.", "explicacion": "Incluye la mitosis y la citocinesis, temas que se estudian más adelante." }
+        {
+          "texto": "El «ciclo celular» es la secuencia entre dos divisiones",
+          "explicacion": "Comprende todos los cambios que ocurren desde que una célula nace por división de otra hasta que se divide para originar dos células hijas. Incluye el crecimiento, la duplicación del material genético y la división, y ocurre en las células eucariotas somáticas."
+        },
+        {
+          "texto": "El ciclo celular ⇒ crecimiento de organismos",
+          "explicacion": "En los organismos pluricelulares permite pasar de una célula inicial a miles de millones de células durante el desarrollo, formando tejidos y órganos."
+        },
+        {
+          "texto": "El ciclo celular ⇒ reposición de células",
+          "explicacion": "Reemplaza las células que mueren por desgaste o daño, como las de la piel, la mucosa intestinal y la sangre, que se renuevan de forma continua."
+        },
+        {
+          "texto": "El ciclo celular ⇒ reparación de tejidos",
+          "explicacion": "Cuando hay una herida, las células vecinas se dividen para cerrar el defecto, como en la cicatrización de la piel."
+        },
+        {
+          "texto": "El ciclo celular ⇒ reproducción de organismos unicelulares",
+          "explicacion": "En los organismos unicelulares eucariotas, como la levadura, cada división origina un nuevo individuo."
+        },
+        {
+          "texto": "Ciclo celular = interfase + fase M",
+          "explicacion": "El ciclo tiene dos grandes períodos: la interfase, en la que la célula crece y duplica su ADN (ácido desoxirribonucleico), y la fase M, en la que se divide el núcleo y el citoplasma."
+        },
+        {
+          "texto": "Una célula humana tarda alrededor de 24 horas en dividirse",
+          "explicacion": "En células de cultivo de crecimiento rápido, el ciclo dura aproximadamente 24 horas, de las cuales la fase M ocupa cerca de una hora. La duración varía mucho según el tipo celular, pues unas células se dividen cada pocas horas y otras casi nunca."
+        },
+        {
+          "texto": "Células procariotas ✗ ciclo celular eucariota",
+          "explicacion": "Las bacterias no tienen núcleo ni mitosis, y se dividen por fisión binaria, un proceso más simple que se estudia en el tema de reproducción asexual."
+        }
       ]
     },
     {
       "titulo": "Interfase",
       "puntos": [
-        { "texto": "La interfase ocupa la mayor parte de la vida de la célula.", "explicacion": "Durante esta etapa la célula crece y prepara la división." },
-        { "texto": "En G1 la célula crece y realiza sus funciones metabólicas.", "explicacion": "Es la fase en que la célula decide si continúa el ciclo." },
-        { "texto": "En la fase S se replica el «Ácido desoxirribonucleico (ADN)».", "explicacion": "Al final de esta fase cada cromosoma tiene dos copias idénticas." },
-        { "texto": "En G2 la célula termina los preparativos para dividirse.", "explicacion": "Se verifica que el ADN esté completo antes de entrar en la fase M." }
+        {
+          "texto": "La «interfase» es el período entre dos divisiones",
+          "explicacion": "Es la etapa más larga del ciclo, que ocupa cerca de nueve décimas partes del tiempo. Aunque parece un reposo, la célula está muy activa: crece, sintetiza proteínas y duplica su material genético."
+        },
+        {
+          "texto": "Interfase ⊃ fase G1",
+          "explicacion": "La fase G1 (del inglés gap 1, intervalo 1) es el período entre el final de la mitosis y el inicio de la síntesis de ADN."
+        },
+        {
+          "texto": "Interfase ⊃ fase S",
+          "explicacion": "La fase S (síntesis) es el período en el que se duplica el ADN."
+        },
+        {
+          "texto": "Interfase ⊃ fase G2",
+          "explicacion": "La fase G2 (gap 2, intervalo 2) es el período entre el final de la síntesis de ADN y el inicio de la mitosis."
+        },
+        {
+          "texto": "En interfase la cromatina está descondensada",
+          "explicacion": "El material genético se encuentra como cromatina laxa, no como cromosomas visibles, lo que permite que se lea el ADN para sintetizar proteínas y se copie durante la fase S."
+        }
       ]
     },
     {
-      "titulo": "Estado de reposo",
+      "titulo": "Fase G1",
       "puntos": [
-        { "texto": "Algunas células entran en la fase G0.", "explicacion": "Salen del ciclo de forma temporal o permanente, como las neuronas." }
+        {
+          "texto": "En G1 la célula crece",
+          "explicacion": "Aumenta su volumen y su masa citoplasmática, y se sintetizan nuevos orgánulos como mitocondrias y ribosomas. Es la fase más variable en duración, y es la que más cambia entre tipos celulares."
+        },
+        {
+          "texto": "En G1 se sintetizan proteínas y ARN",
+          "explicacion": "Se producen las proteínas y las enzimas que la célula necesitará para duplicar su ADN, junto con los distintos tipos de ARN (ácido ribonucleico)."
+        },
+        {
+          "texto": "En G1 cada cromosoma tiene una sola cromátida",
+          "explicacion": "Una cromátida es una de las dos copias de un cromosoma duplicado. En G1 el ADN aún no se ha duplicado, y cada cromosoma tiene una molécula de ADN."
+        },
+        {
+          "texto": "En G1 la célula tiene 2c de ADN",
+          "explicacion": "Si una célula diploide tiene una cantidad de ADN llamada 2c antes de duplicarse, esta cantidad se mantiene durante toda la fase G1."
+        },
+        {
+          "texto": "La célula decide en G1 si se divide",
+          "explicacion": "Hacia el final de G1 hay un punto de restricción, a partir del cual la célula se compromete a completar el ciclo, aunque desaparezcan las señales que lo estimularon."
+        },
+        {
+          "texto": "El «punto de restricción» ocurre en G1 tardía",
+          "explicacion": "En células animales se denomina así al momento después del cual la célula ya no necesita factores de crecimiento externos para seguir con el ciclo."
+        }
       ]
     },
     {
-      "titulo": "Regulación del ciclo",
+      "titulo": "Fase G0",
       "puntos": [
-        { "texto": "Los «puntos de control» verifican que cada fase esté completa.", "explicacion": "Los principales son los de G1, G2 y la metafase." },
-        { "texto": "Las «ciclinas» se unen a las «quinasas dependientes de ciclina (CDK)».", "explicacion": "El complejo formado impulsa la célula a la siguiente fase del ciclo." }
+        {
+          "texto": "La fase «G0» es un estado de reposo",
+          "explicacion": "Es una fase fuera del ciclo en la que la célula sale de G1 y no se divide, aunque sigue viva y cumple sus funciones. Puede ser temporal o permanente."
+        },
+        {
+          "texto": "Células en G0 temporal ⇒ pueden volver al ciclo",
+          "explicacion": "Las células como los linfocitos o los hepatocitos están en G0, pero pueden entrar de nuevo en G1 si reciben las señales adecuadas, como cuando el hígado se regenera tras una lesión."
+        },
+        {
+          "texto": "Células en G0 permanente ⇒ no se dividen",
+          "explicacion": "Las neuronas maduras y las células musculares cardíacas permanecen en G0 de forma irreversible, y por eso su pérdida es difícil de reponer."
+        },
+        {
+          "texto": "La célula en G0 ✗ replicación de ADN",
+          "explicacion": "No duplica su ADN ni se prepara para dividirse, y mantiene solo su actividad metabólica."
+        }
       ]
     },
     {
-      "titulo": "Pérdida de control",
+      "titulo": "Fase S",
       "puntos": [
-        { "texto": "La pérdida de control del ciclo celular puede originar cáncer.", "explicacion": "Las células se dividen sin detenerse en los puntos de control." }
+        {
+          "texto": "En la fase S se duplica el ADN",
+          "explicacion": "Cada cromosoma se copia y pasa de tener una cromátida a tener dos cromátidas hermanas idénticas. Al terminar, la célula tiene el doble de ADN, es decir 4c en una célula diploide."
+        },
+        {
+          "texto": "La replicación del ADN es semiconservativa",
+          "explicacion": "Cada molécula hija conserva una hebra de la molécula original y tiene una hebra nueva. Este mecanismo fue demostrado por Matthew Meselson y Franklin Stahl en 1958."
+        },
+        {
+          "texto": "La replicación ⇒ comienza en múltiples orígenes",
+          "explicacion": "En eucariotas hay muchos orígenes de replicación a lo largo de cada cromosoma, lo que permite copiar un genoma enorme en pocas horas."
+        },
+        {
+          "texto": "La ADN polimerasa sintetiza las hebras nuevas",
+          "explicacion": "Esta enzima une nucleótidos siguiendo la secuencia de la hebra molde, y lo hace en dirección de 5 prima a 3 prima, con una gran fidelidad."
+        },
+        {
+          "texto": "Las cromátidas hermanas permanecen unidas",
+          "explicacion": "Después de copiar, las dos cromátidas hermanas se mantienen unidas por proteínas llamadas cohesinas, especialmente en el centrómero, hasta la anafase."
+        },
+        {
+          "texto": "En fase S se duplican los centrosomas",
+          "explicacion": "El centrosoma, que organiza los microtúbulos, se duplica en esta fase, y así la célula tendrá dos centrosomas que formarán los polos del huso mitótico."
+        },
+        {
+          "texto": "En la fase S se sintetizan histonas",
+          "explicacion": "Las histonas son las proteínas alrededor de las cuales se enrolla el ADN. Se sintetizan junto con el ADN para empaquetar las nuevas moléculas."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase G2",
+      "puntos": [
+        {
+          "texto": "En G2 la célula se prepara para dividirse",
+          "explicacion": "Sigue creciendo, completa la síntesis de los componentes que necesitará durante la mitosis y revisa que el ADN se haya duplicado sin errores."
+        },
+        {
+          "texto": "En G2 se sintetiza tubulina",
+          "explicacion": "La tubulina es la proteína que forma los microtúbulos del huso mitótico, que separarán los cromosomas."
+        },
+        {
+          "texto": "En G2 se reparan errores del ADN",
+          "explicacion": "La célula detecta y corrige errores de la replicación antes de entrar en mitosis, para que no pasen a las células hijas."
+        },
+        {
+          "texto": "En G2 cada cromosoma tiene dos cromátidas",
+          "explicacion": "Los cromosomas duplicados siguen descondensados y la célula contiene 4c de ADN."
+        },
+        {
+          "texto": "La activación del complejo ciclina B-CDK1 ⇒ entrada en mitosis",
+          "explicacion": "Este complejo, conocido como factor promotor de la fase M, fosforila proteínas que provocan la condensación de la cromatina y la ruptura de la envoltura nuclear."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase M",
+      "puntos": [
+        {
+          "texto": "La «fase M» es la fase de división celular",
+          "explicacion": "Es el período en el que la célula distribuye el material genético duplicado y el citoplasma entre dos células hijas. Es la fase más corta del ciclo."
+        },
+        {
+          "texto": "Fase M ⊃ mitosis",
+          "explicacion": "La mitosis es la división del núcleo, que reparte las cromátidas hermanas en dos núcleos iguales. Se desarrolla en el tema de mitosis."
+        },
+        {
+          "texto": "Fase M ⊃ citocinesis",
+          "explicacion": "La citocinesis es la división del citoplasma. En células animales se forma un anillo contráctil de actina y miosina que estrangula la célula, y en células vegetales se forma un fragmoplasto y una placa celular."
+        },
+        {
+          "texto": "Mitosis = profase + metafase + anafase + telofase",
+          "explicacion": "Son las cuatro etapas de la mitosis, que se estudian en el tema de mitosis."
+        },
+        {
+          "texto": "Meiosis ≠ mitosis",
+          "explicacion": "La meiosis es la división que produce gametos con la mitad de cromosomas, y se estudia en el tema de meiosis."
+        }
+      ]
+    },
+    {
+      "titulo": "Control del ciclo",
+      "puntos": [
+        {
+          "texto": "Los «puntos de control» vigilan el ciclo",
+          "explicacion": "Son mecanismos de vigilancia que detienen el ciclo si algo falla, y solo permiten avanzar cuando se cumplen las condiciones necesarias. Funcionan como inspectores de calidad."
+        },
+        {
+          "texto": "El punto de control G1/S verifica el ADN y el tamaño",
+          "explicacion": "Se localiza al final de G1 y comprueba que la célula tenga tamaño adecuado, nutrientes, señales de crecimiento y ADN sin daños antes de entrar a S."
+        },
+        {
+          "texto": "El punto de control G2/M verifica la duplicación",
+          "explicacion": "Se localiza al final de G2 y comprueba que el ADN esté completamente replicado y sin daños antes de iniciar la mitosis."
+        },
+        {
+          "texto": "El punto de control del huso verifica los cromosomas",
+          "explicacion": "Se localiza en la metafase y comprueba que todos los cromosomas estén unidos correctamente al huso antes de permitir la anafase."
+        },
+        {
+          "texto": "Las «ciclinas» regulan el ciclo",
+          "explicacion": "Son proteínas cuya concentración sube y baja de forma cíclica durante el ciclo celular. Se llaman así porque se sintetizan y se degradan en cada ciclo."
+        },
+        {
+          "texto": "Las «CDK» son quinasas dependientes de ciclinas",
+          "explicacion": "Son enzimas que añaden grupos fosfato a otras proteínas (quinasas) y solo funcionan cuando se unen a una ciclina. Su concentración se mantiene constante, pero su actividad depende de la ciclina."
+        },
+        {
+          "texto": "Ciclina + CDK ⇒ complejo activo",
+          "explicacion": "Al unirse, la CDK se activa y fosforila proteínas que impulsan la célula a la siguiente fase. Cada fase tiene complejos ciclina-CDK específicos."
+        },
+        {
+          "texto": "Ciclina D con CDK4 y CDK6 ⇒ impulsa G1",
+          "explicacion": "Responde a señales de crecimiento y favorece la salida de G0 y el avance por G1."
+        },
+        {
+          "texto": "Ciclina E con CDK2 ⇒ impulsa el paso G1/S",
+          "explicacion": "Permite que la célula pase a la fase S e inicie la replicación."
+        },
+        {
+          "texto": "Ciclina A con CDK2 ⇒ mantiene la fase S",
+          "explicacion": "Participa en la replicación del ADN y en el paso a G2."
+        },
+        {
+          "texto": "Ciclina B con CDK1 ⇒ impulsa el paso G2/M",
+          "explicacion": "Es el factor promotor de la fase M y provoca la entrada a mitosis."
+        },
+        {
+          "texto": "La degradación de la ciclina ⇒ salida de mitosis",
+          "explicacion": "Al final de la mitosis, un complejo de degradación marca la ciclina B para destruirla, la actividad de CDK1 cae y la célula sale de la fase M."
+        },
+        {
+          "texto": "La proteína p53 detiene el ciclo",
+          "explicacion": "La proteína p53 se activa por daño en el ADN, y detiene el ciclo en G1 para que la célula repare el daño. Se le llama el guardián del genoma."
+        },
+        {
+          "texto": "La p53 ⇒ apoptosis si el daño no se repara",
+          "explicacion": "Si el daño es irreparable, p53 activa la apoptosis (muerte celular programada), con lo que se evita que la célula dañada se divida."
+        },
+        {
+          "texto": "La proteína Rb frena el paso a la fase S",
+          "explicacion": "La proteína del retinoblastoma (Rb) se une al factor E2F e impide la transcripción de genes necesarios para la fase S. Cuando es fosforilada por ciclina-CDK libera E2F."
+        },
+        {
+          "texto": "Leland Hartwell, Tim Hunt y Paul Nurse descubrieron los reguladores del ciclo",
+          "explicacion": "Recibieron el Premio Nobel de Fisiología o Medicina en 2001 por descubrir las ciclinas y las CDK."
+        }
+      ]
+    },
+    {
+      "titulo": "Alteraciones del ciclo",
+      "puntos": [
+        {
+          "texto": "El «cáncer» ⇒ pérdida del control del ciclo",
+          "explicacion": "Es un conjunto de enfermedades en las que las células se dividen sin control por mutaciones en los genes que regulan el ciclo, y pueden invadir otros tejidos."
+        },
+        {
+          "texto": "Los «protooncogenes» promueven la división",
+          "explicacion": "Son genes normales que estimulan el ciclo celular. Cuando mutan se convierten en oncogenes, que mantienen la división de forma permanente."
+        },
+        {
+          "texto": "Los «genes supresores de tumores» frenan la división",
+          "explicacion": "Son genes como p53 y Rb que detienen el ciclo o inducen apoptosis. Su pérdida de función favorece el cáncer."
+        },
+        {
+          "texto": "Las células cancerosas ✗ inhibición por contacto",
+          "explicacion": "Las células normales dejan de dividirse al tocar a otras células, pero las cancerosas siguen dividiéndose y forman masas llamadas tumores."
+        },
+        {
+          "texto": "La «apoptosis» es la muerte celular programada",
+          "explicacion": "Es un proceso ordenado en el que la célula se desmonta sin dañar a las vecinas. Elimina células dañadas o sobrantes, como las membranas entre los dedos durante el desarrollo embrionario."
+        },
+        {
+          "texto": "Los telómeros se acortan en cada división",
+          "explicacion": "Son secuencias repetidas en los extremos de los cromosomas que se acortan con cada ciclo. Cuando son muy cortos, la célula deja de dividirse y entra en senescencia."
+        },
+        {
+          "texto": "El límite de Hayflick ≈ 50 divisiones",
+          "explicacion": "Leonard Hayflick observó en 1961 que las células humanas normales cultivadas se dividen unas 50 veces y luego dejan de hacerlo."
+        },
+        {
+          "texto": "La «telomerasa» alarga los telómeros",
+          "explicacion": "Es una enzima activa en células madre y en la mayoría de células cancerosas, que repone los telómeros y permite divisiones ilimitadas."
+        }
       ]
     }
   ]

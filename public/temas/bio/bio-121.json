@@ -2,39 +2,179 @@
   "curso": "Biología",
   "tema": "Sucesión y equilibrio ecológico",
   "glosario": {
-    "Sucesión ecológica": "Cambio ordenado de las comunidades en un territorio a lo largo del tiempo.",
-    "Sucesión primaria": "Sucesión en un lugar sin suelo previo, como una roca expuesta.",
-    "Sucesión secundaria": "Sucesión en un lugar donde existía una comunidad que fue destruida.",
-    "Especie pionera": "Especie que coloniza primero un ambiente nuevo o perturbado.",
-    "Comunidad clímax": "Comunidad estable que se mantiene en equilibrio con el ambiente.",
-    "Equilibrio ecológico": "Estado en que las poblaciones de un ecosistema se mantienen relativamente estables."
+    "Sucesión ecológica": "Cambio ordenado de las especies de una comunidad a lo largo del tiempo",
+    "Sucesión primaria": "Sucesión que comienza en un ambiente sin suelo ni comunidad previa",
+    "Sucesión secundaria": "Sucesión que comienza en un ambiente con suelo que conserva vida",
+    "Especie pionera": "Especie que coloniza primero un ambiente perturbado o nuevo",
+    "Comunidad clímax": "Comunidad estable y relativamente duradera al final de la sucesión",
+    "Facilitación": "Proceso en el que una especie crea condiciones para otras especies",
+    "Inhibición": "Proceso en el que una especie impide la llegada de otras",
+    "Tolerancia": "Proceso en el que especies tardías se establecen sin depender de las anteriores",
+    "Resistencia": "Capacidad de un ecosistema para mantenerse sin cambios ante una perturbación",
+    "Resiliencia": "Capacidad de un ecosistema para recuperarse después de una perturbación",
+    "Purma": "Bosque secundario que crece en campos agrícolas abandonados de la Amazonía peruana",
+    "Perturbación": "Evento que altera la estructura de una comunidad"
   },
   "theory": [
     {
-      "titulo": "Concepto de sucesión",
+      "titulo": "Concepto de sucesión ecológica",
       "puntos": [
-        { "texto": "La sucesión es un cambio progresivo y ordenado de las comunidades.", "explicacion": "Cada etapa modifica el ambiente y prepara la llegada de las especies siguientes." },
-        { "texto": "La sucesión termina en una comunidad clímax estable.", "explicacion": "La comunidad clímax se mantiene mientras no ocurran perturbaciones importantes." }
+        {
+          "texto": "Sucesión ecológica ⇒ cambio ordenado de la comunidad",
+          "explicacion": "Las especies se reemplazan de manera predecible a lo largo del tiempo en un mismo lugar. Cada etapa modifica el ambiente y prepara la llegada de la siguiente."
+        },
+        {
+          "texto": "Sucesión ⇒ cambio en la estructura y en la diversidad",
+          "explicacion": "Al avanzar, aumentan la altura de la vegetación, la complejidad del suelo y el número de especies. Estos cambios dependen del clima y del tipo de perturbación inicial."
+        }
       ]
     },
     {
-      "titulo": "Tipos de sucesión",
+      "titulo": "Sucesión primaria",
       "puntos": [
-        { "texto": "La sucesión primaria ocurre en lugares sin suelo, como lava solidificada.", "explicacion": "Es un proceso lento, porque primero deben formarse el suelo y los nutrientes." },
-        { "texto": "La sucesión secundaria ocurre donde ya existía suelo y vida.", "explicacion": "Es más rápida, porque las semillas y los nutrientes ya están presentes." }
+        {
+          "texto": "Sucesión primaria ⇒ comienza sin suelo ni vida previa",
+          "explicacion": "Ocurre en rocas desnudas, lava recién solidificada, dunas o terrenos que el hielo dejó al retirarse. Su desarrollo es lento porque no hay materia orgánica al inicio."
+        },
+        {
+          "texto": "Líquenes pioneros ⇒ inicio de la formación de suelo",
+          "explicacion": "Los líquenes sobreviven sobre la roca y la desgastan con ácidos. Al morir, sus restos forman una capa delgada de materia orgánica donde pueden crecer otras especies."
+        },
+        {
+          "texto": "Musgos y hierbas ⇒ colonización del suelo incipiente",
+          "explicacion": "Los musgos retienen humedad y aportan materia orgánica, lo que permite el establecimiento de hierbas. El suelo se vuelve más profundo y fértil con cada generación de plantas."
+        },
+        {
+          "texto": "Monte Santa Helena: recuperación tras la erupción de 1980",
+          "explicacion": "La erupción de 1980 en el monte Santa Helena, en Estados Unidos, eliminó la vegetación de una gran área. La recuperación posterior ha seguido etapas de colonización por plantas herbáceas, arbustos y después árboles."
+        }
       ]
     },
     {
-      "titulo": "Especies pioneras",
+      "titulo": "Sucesión secundaria",
       "puntos": [
-        { "texto": "Las especies pioneras colonizan primero los ambientes perturbados.", "explicacion": "Son resistentes y crecen rápido, como los líquenes y las hierbas." }
+        {
+          "texto": "Sucesión secundaria ⇒ comienza con suelo que conserva vida",
+          "explicacion": "Ocurre después de incendios, tala, inundaciones o abandono de cultivos. Como el suelo conserva semillas, raíces y microorganismos, la recuperación es más rápida."
+        },
+        {
+          "texto": "Purmas en la Amazonía peruana ⇒ bosques secundarios",
+          "explicacion": "Son bosques que crecen en campos agrícolas abandonados. Pueden recuperar gran parte de su diversidad después de algunas décadas, aunque no siempre igual que el bosque original."
+        },
+        {
+          "texto": "Campos abandonados ⇒ hierbas, arbustos y luego árboles",
+          "explicacion": "Las hierbas invaden primero el terreno, seguidas de arbustos y árboles de crecimiento rápido. Los árboles de crecimiento lento llegan en etapas más avanzadas."
+        }
+      ]
+    },
+    {
+      "titulo": "Especies pioneras y comunidad clímax",
+      "puntos": [
+        {
+          "texto": "Especies pioneras ⇒ colonizan primero un ambiente nuevo",
+          "explicacion": "Tienen semillas o esporas que se dispersan con facilidad y crecen en condiciones pobres. Suelen tener ciclos de vida cortos y tasas de crecimiento altas."
+        },
+        {
+          "texto": "Especies tardías ⇒ dominan en etapas avanzadas",
+          "explicacion": "Son especies de crecimiento lento, con mayor tamaño y tolerancia a la sombra. Su llegada depende de que el ambiente ya haya sido modificado por las especies anteriores."
+        },
+        {
+          "texto": "Comunidad clímax ⇒ etapa final relativamente estable",
+          "explicacion": "Es una comunidad que se mantiene sin grandes cambios mientras el clima y las perturbaciones no cambien. Su composición depende del clima regional."
+        }
+      ]
+    },
+    {
+      "titulo": "Mecanismos de la sucesión",
+      "puntos": [
+        {
+          "texto": "Facilitación ⇒ una especie prepara el terreno para otras",
+          "explicacion": "Los líquenes y musgos aportan materia orgánica y retienen agua que permiten el crecimiento de otras especies. Este es un mecanismo frecuente en sucesiones primarias."
+        },
+        {
+          "texto": "Inhibición ⇒ una especie impide la llegada de otras",
+          "explicacion": "Algunas plantas liberan sustancias que dificultan la germinación de otras especies. Solo se reemplazan cuando las especies inhibidoras desaparecen o disminuyen."
+        },
+        {
+          "texto": "Tolerancia ⇒ especies tardías crecen sin depender de las anteriores",
+          "explicacion": "Las especies tardías pueden establecerse mientras las pioneras aún están presentes. No necesitan que el ambiente sea modificado para sobrevivir."
+        }
       ]
     },
     {
       "titulo": "Equilibrio ecológico",
       "puntos": [
-        { "texto": "El equilibrio ecológico se mantiene cuando las poblaciones se regulan entre sí.", "explicacion": "La depredación, la competencia y los recursos limitados controlan el crecimiento." },
-        { "texto": "Una perturbación fuerte puede romper el equilibrio y reiniciar la sucesión.", "explicacion": "Por ejemplo, un incendio o una inundación pueden reiniciar el proceso." }
+        {
+          "texto": "Equilibrio ecológico ⇒ estabilidad dinámica de la comunidad",
+          "explicacion": "No significa que el ecosistema permanezca idéntico, sino que sus componentes se mantienen dentro de rangos que permiten su funcionamiento. Las poblaciones fluctúan alrededor de valores medios."
+        },
+        {
+          "texto": "Resistencia ⇒ mantenerse sin cambios ante una perturbación",
+          "explicacion": "Un ecosistema resistente sufre poco daño cuando ocurre un evento perturbador. Esta propiedad depende de la diversidad de especies y de sus interacciones."
+        },
+        {
+          "texto": "Resiliencia ⇒ recuperarse después de una perturbación",
+          "explicacion": "Un ecosistema resiliente regresa a su estado anterior en un tiempo razonable. Ambas propiedades, resistencia y resiliencia, determinan la estabilidad del ecosistema."
+        }
+      ]
+    },
+    {
+      "titulo": "Perturbaciones y diversidad",
+      "puntos": [
+        {
+          "texto": "Perturbación ⇒ evento que altera la comunidad",
+          "explicacion": "Pueden ser naturales, como incendios, inundaciones o erupciones, o de origen humano, como la tala y la urbanización. Su intensidad y frecuencia determinan los cambios resultantes."
+        },
+        {
+          "texto": "Perturbación intermedia ⇒ mayor diversidad",
+          "explicacion": "Joseph Connell propuso en 1978 que la diversidad es máxima cuando las perturbaciones son moderadas. Las perturbaciones muy frecuentes impiden el desarrollo de especies tardías, y las muy raras favorecen a las especies dominantes."
+        },
+        {
+          "texto": "Perturbación excesiva ⇒ pérdida de resiliencia",
+          "explicacion": "Cuando las perturbaciones son muy intensas o frecuentes, el ecosistema no logra recuperarse. Puede reemplazarse por una comunidad distinta o degradarse de forma permanente."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con otros temas",
+      "puntos": [
+        {
+          "texto": "Ecosistemas (tema 115)",
+          "explicacion": "La estructura de los ecosistemas y sus componentes se desarrolló en el tema 115."
+        },
+        {
+          "texto": "Relaciones interespecíficas (tema 120)",
+          "explicacion": "Las interacciones entre especies determinan los mecanismos de facilitación, inhibición y tolerancia, estudiados en el tema 120."
+        },
+        {
+          "texto": "Recursos naturales (tema 122) y Áreas Naturales Protegidas (tema 126)",
+          "explicacion": "La conservación de la capacidad de recuperación de los ecosistemas se desarrolla en los temas 122 y 126."
+        },
+        {
+          "texto": "Cambio climático (tema 124)",
+          "explicacion": "El cambio climático altera las perturbaciones y la resiliencia de los ecosistemas, como se desarrolla en el tema 124."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre sucesión y equilibrio",
+      "puntos": [
+        {
+          "texto": "El equilibrio ecológico es un estado fijo ✗",
+          "explicacion": "El equilibrio es dinámico, con cambios permanentes en las poblaciones. Un ecosistema estable sigue variando dentro de límites aceptables."
+        },
+        {
+          "texto": "La sucesión primaria es más rápida que la secundaria ✗",
+          "explicacion": "Ocurre lo contrario. La sucesión secundaria es más rápida porque el suelo conserva semillas, raíces y microorganismos."
+        },
+        {
+          "texto": "La comunidad clímax no cambia nunca ✗",
+          "explicacion": "Aunque es relativamente estable, sufre perturbaciones y cambios graduales. Su composición puede modificarse con el tiempo y con el clima."
+        },
+        {
+          "texto": "Las especies pioneras son las más importantes del ecosistema",
+          "explicacion": "Su papel es iniciar la colonización, pero la estructura final depende de las especies tardías. Ambos grupos cumplen funciones distintas."
+        }
       ]
     }
   ]

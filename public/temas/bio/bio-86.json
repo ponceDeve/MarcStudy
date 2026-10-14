@@ -2,36 +2,362 @@
   "curso": "Biología",
   "tema": "Herencia influenciada por el sexo",
   "glosario": {
-    "Herencia influenciada por el sexo": "Herencia de un gen autosómico cuya dominancia cambia según el sexo.",
-    "Gen autosómico": "Gen situado en un cromosoma que no es sexual.",
-    "Dominancia dependiente del sexo": "Relación de dominancia que cambia entre machos y hembras.",
-    "Calvicie": "Pérdida de cabello, rasgo influido por el sexo en humanos."
+    "autosoma": "Cromosoma que no determina el sexo",
+    "alelo": "Forma alternativa de un mismo gen",
+    "gen": "Unidad hereditaria que determina un carácter",
+    "dominante": "Alelo que se expresa en heterocigotos",
+    "recesivo": "Alelo oculto ante el dominante",
+    "heterocigoto": "Individuo con dos alelos distintos",
+    "homocigoto": "Individuo con dos alelos iguales",
+    "diploide": "Con dos juegos de cromosomas",
+    "hormona": "Mensajero químico producido por una glándula",
+    "gónada": "Órgano que produce los gametos",
+    "testosterona": "Principal hormona sexual masculina",
+    "andrógeno": "Hormona sexual masculina",
+    "estrógeno": "Hormona sexual femenina",
+    "dihidrotestosterona": "Andrógeno derivado de la testosterona",
+    "enzima": "Proteína que acelera reacciones químicas",
+    "folículo piloso": "Estructura de la piel donde nace el pelo",
+    "tejido blanco": "Tejido que responde a una hormona",
+    "alopecia androgenética": "Pérdida de pelo ligada a andrógenos",
+    "receptor": "Proteína que une una hormona",
+    "genotipo": "Conjunto de alelos de un individuo",
+    "fenotipo": "Rasgos observables de un individuo",
+    "herencia poligénica": "Carácter determinado por varios genes"
   },
   "theory": [
     {
-      "titulo": "Concepto",
+      "titulo": "Conceptos previos",
       "puntos": [
-        { "texto": "La herencia influenciada por el sexo depende de genes autosómicos.", "explicacion": "El gen no está en los cromosomas sexuales, pero su expresión depende del sexo del individuo." },
-        { "texto": "En estos genes cambia la relación de dominancia entre machos y hembras.", "explicacion": "Un mismo genotipo puede producir fenotipos distintos según el sexo." }
+        {
+          "texto": "«Autosomas» = cromosomas que no determinan el sexo",
+          "explicacion": "Los genes autosómicos están presentes en machos y en hembras. Se heredan con las proporciones mendelianas habituales."
+        },
+        {
+          "texto": "«Alelo» = forma alternativa de un mismo gen",
+          "explicacion": "Un individuo diploide tiene dos alelos por gen, uno de cada progenitor."
+        },
+        {
+          "texto": "Alelo «dominante» ⇒ se expresa también en el heterocigoto",
+          "explicacion": "Basta una copia para que se vea su fenotipo."
+        },
+        {
+          "texto": "Alelo «recesivo» ⇒ solo se expresa sin alelo dominante",
+          "explicacion": "Se manifiesta únicamente cuando no hay ningún alelo dominante."
+        },
+        {
+          "texto": "«Heterocigoto» = dos alelos distintos para un gen",
+          "explicacion": "Es el genotipo donde se aprecia qué alelo domina. En la herencia influenciada su fenotipo cambia según el sexo."
+        },
+        {
+          "texto": "«Hormonas sexuales» = mensajeros químicos producidos por las gónadas",
+          "explicacion": "Los andrógenos predominan en el macho y los estrógenos predominan en la hembra."
+        },
+        {
+          "texto": "«Testosterona» = principal hormona sexual masculina",
+          "explicacion": "Es un andrógeno producido sobre todo en los testículos. También existe en la mujer, pero en cantidad mucho menor."
+        }
       ]
     },
     {
-      "titulo": "Ejemplo: calvicie",
+      "titulo": "Definición básica",
       "puntos": [
-        { "texto": "El alelo para calvicie es dominante en los varones.", "explicacion": "Un varón heterocigoto presenta calvicie." },
-        { "texto": "El mismo alelo es recesivo en las mujeres.", "explicacion": "Una mujer solo presenta calvicie si es homocigota para el alelo." }
+        {
+          "texto": "«Herencia influenciada por el sexo» = dominancia que depende del sexo",
+          "explicacion": "Los genes están en autosomas y se expresan en ambos sexos, pero el mismo alelo puede ser dominante en un sexo y recesivo en el otro."
+        },
+        {
+          "texto": "Genes ∈ autosomas",
+          "explicacion": "Los llevan machos y hembras por igual y se heredan con las proporciones de Mendel. Esto los distingue de los genes ligados al sexo."
+        },
+        {
+          "texto": "Heterocigoto ⇒ fenotipo distinto según el sexo",
+          "explicacion": "Es el único genotipo cuyo fenotipo cambia entre machos y hembras. Los homocigotos se comportan igual en los dos sexos."
+        },
+        {
+          "texto": "Ambiente hormonal ⇒ decide qué alelo domina",
+          "explicacion": "El nivel de hormonas sexuales determina si el heterocigoto manifiesta el rasgo o no."
+        }
       ]
     },
     {
-      "titulo": "Causa de la diferencia",
+      "titulo": "Nombres alternativos",
       "puntos": [
-        { "texto": "Las hormonas sexuales influyen en la expresión de estos genes.", "explicacion": "La testosterona favorece la expresión del alelo para calvicie, mientras que el estrógeno la reduce." }
+        {
+          "texto": "«Herencia influida por el sexo» = otro nombre de la herencia influenciada",
+          "explicacion": "Es una variante de redacción que aparece en varios textos."
+        },
+        {
+          "texto": "«Herencia controlada por el sexo» = otro nombre de la herencia influenciada",
+          "explicacion": "Destaca que el sexo controla la expresión de los alelos."
+        },
+        {
+          "texto": "«Herencia dependiente del sexo» = otro nombre de la herencia influenciada",
+          "explicacion": "Destaca que la expresión depende del sexo del individuo."
+        }
       ]
     },
     {
-      "titulo": "Diferencia con la herencia ligada al sexo",
+      "titulo": "Mecanismo hormonal",
       "puntos": [
-        { "texto": "En la herencia ligada al sexo el gen está en un cromosoma sexual.", "explicacion": "En la herencia influenciada por el sexo, el gen está en un autosoma y solo cambia su expresión." }
+        {
+          "texto": "Andrógenos altos en varón ⇒ alelo se comporta como dominante",
+          "explicacion": "Con mucha hormona, una sola copia del alelo basta para que el rasgo aparezca."
+        },
+        {
+          "texto": "Andrógenos bajos en mujer ⇒ alelo se comporta como recesivo",
+          "explicacion": "Con poca hormona, el rasgo solo aparece cuando hay dos copias del alelo."
+        },
+        {
+          "texto": "Dihidrotestosterona ⇒ actúa sobre el folículo piloso",
+          "explicacion": "Se forma a partir de la testosterona por acción de la enzima 5-alfa-reductasa. En personas con el alelo de calvicie, reduce de a poco el tamaño del folículo."
+        },
+        {
+          "texto": "Folículo piloso ⇒ tejido blanco de la hormona",
+          "explicacion": "Responde a los andrógenos si tiene receptores sensibles, y por eso la calvicie depende de la hormona y del genotipo."
+        }
+      ]
+    },
+    {
+      "titulo": "Calvicie común",
+      "puntos": [
+        {
+          "texto": "«Calvicie común» = pérdida progresiva de cabello con la edad",
+          "explicacion": "También se llama alopecia androgenética. Aparece de forma característica en la frente y en la coronilla."
+        },
+        {
+          "texto": "C = alelo de calvicie",
+          "explicacion": "Es un modelo simplificado. Su dominancia depende del sexo, así que la letra mayúscula no significa dominante en los dos sexos."
+        },
+        {
+          "texto": "c = alelo de pelo normal",
+          "explicacion": "En el varón es recesivo y en la mujer es dominante."
+        },
+        {
+          "texto": "Varón CC ⇒ calvo",
+          "explicacion": "Con dos copias del alelo de calvicie se manifiesta en cualquier sexo."
+        },
+        {
+          "texto": "Varón Cc ⇒ calvo",
+          "explicacion": "Con la testosterona alta, el alelo C se comporta como dominante."
+        },
+        {
+          "texto": "Varón cc ⇒ no calvo",
+          "explicacion": "No tiene ningún alelo de calvicie."
+        },
+        {
+          "texto": "Mujer CC ⇒ calva",
+          "explicacion": "Necesita dos copias del alelo, porque con poca testosterona solo el homocigoto se manifiesta."
+        },
+        {
+          "texto": "Mujer Cc ⇒ no calva",
+          "explicacion": "Con la testosterona baja, el alelo C se comporta como recesivo y no se manifiesta."
+        },
+        {
+          "texto": "Mujer cc ⇒ no calva",
+          "explicacion": "No tiene ningún alelo de calvicie."
+        }
+      ]
+    },
+    {
+      "titulo": "Cruces con calvicie",
+      "puntos": [
+        {
+          "texto": "Padre CC × madre cc → todos Cc",
+          "explicacion": "Los hijos varones Cc son calvos, y las hijas Cc no son calvas. Es un ejemplo claro del cambio de fenotipo según el sexo."
+        },
+        {
+          "texto": "Padre Cc × madre Cc → varones 75 % calvos + mujeres 25 % calvas",
+          "explicacion": "La descendencia tiene 25 % CC, 50 % Cc y 25 % cc. Entre los varones son calvos CC y Cc, es decir 75 %. Entre las mujeres solo es calva CC, es decir 25 %."
+        },
+        {
+          "texto": "Padre Cc × madre cc → varones 50 % calvos + mujeres 0 % calvas",
+          "explicacion": "La descendencia es 50 % Cc y 50 % cc. Entre los varones es calvo Cc, es decir 50 %. Ninguna mujer es calva, porque no hay CC."
+        },
+        {
+          "texto": "Padre cc × madre Cc → varones 50 % calvos + mujeres 0 % calvas",
+          "explicacion": "Da la misma descendencia que el cruce anterior, porque los genotipos son los mismos aunque los progenitores cambien de sexo."
+        },
+        {
+          "texto": "Padre Cc × madre CC → varones 100 % calvos + mujeres 50 % calvas",
+          "explicacion": "La descendencia es 50 % CC y 50 % Cc. Todos los varones son calvos. Entre las mujeres solo es calva CC, es decir 50 %."
+        },
+        {
+          "texto": "Padre CC × madre Cc → varones 100 % calvos + mujeres 50 % calvas",
+          "explicacion": "Da la misma descendencia que el cruce anterior. Padre y madre pueden intercambiarse sin cambiar los genotipos."
+        },
+        {
+          "texto": "Padre cc × madre cc → 100 % no calvos",
+          "explicacion": "No hay ningún alelo de calvicie en los progenitores."
+        },
+        {
+          "texto": "Padre CC × madre CC → 100 % calvos",
+          "explicacion": "Toda la descendencia es CC, y se manifiesta en ambos sexos."
+        },
+        {
+          "texto": "Madre calva ⇒ hijos varones todos calvos",
+          "explicacion": "Una madre calva es CC y todos sus hijos reciben un alelo C. Los varones con un alelo C son calvos."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuernos en ovejas",
+      "puntos": [
+        {
+          "texto": "Oveja Dorset ⇒ ejemplo clásico de herencia influenciada",
+          "explicacion": "En esta raza de ovejas domésticas, Ovis aries, la presencia de cuernos depende del genotipo y del sexo."
+        },
+        {
+          "texto": "H = alelo de cuernos",
+          "explicacion": "En el macho se comporta como dominante y en la hembra como recesivo."
+        },
+        {
+          "texto": "h = alelo sin cuernos",
+          "explicacion": "En el macho es recesivo y en la hembra es dominante."
+        },
+        {
+          "texto": "HH ⇒ con cuernos en ambos sexos",
+          "explicacion": "Con dos copias del alelo se manifiesta en macho y en hembra."
+        },
+        {
+          "texto": "hh ⇒ sin cuernos en ambos sexos",
+          "explicacion": "No tiene ningún alelo de cuernos."
+        },
+        {
+          "texto": "Hh macho ⇒ con cuernos",
+          "explicacion": "En el macho el alelo H se comporta como dominante."
+        },
+        {
+          "texto": "Hh hembra ⇒ sin cuernos",
+          "explicacion": "En la hembra el alelo H se comporta como recesivo y no se manifiesta."
+        },
+        {
+          "texto": "Macho HH × hembra hh → todos Hh",
+          "explicacion": "Los machos Hh tienen cuernos y las hembras Hh no los tienen."
+        },
+        {
+          "texto": "Hh × Hh → machos 75 % con cuernos + hembras 25 % con cuernos",
+          "explicacion": "La descendencia es 25 % HH, 50 % Hh y 25 % hh. En los machos tienen cuernos HH y Hh. En las hembras solo tiene cuernos HH."
+        }
+      ]
+    },
+    {
+      "titulo": "Ganado Ayrshire",
+      "puntos": [
+        {
+          "texto": "Ayrshire ⇒ ganado vacuno con dos colores de pelaje",
+          "explicacion": "Es una raza lechera con manchas blancas y manchas rojizas, que pueden ser de tono caoba o de tono rojo claro."
+        },
+        {
+          "texto": "Alelo caoba ⇒ dominante en machos",
+          "explicacion": "El heterocigoto macho tiene pelaje caoba."
+        },
+        {
+          "texto": "Alelo rojo ⇒ dominante en hembras",
+          "explicacion": "El heterocigoto hembra tiene pelaje rojo."
+        },
+        {
+          "texto": "Heterocigoto ⇒ macho caoba + hembra roja",
+          "explicacion": "Dos animales con el mismo genotipo se distinguen por el color según el sexo."
+        }
+      ]
+    },
+    {
+      "titulo": "Longitud del dedo índice",
+      "puntos": [
+        {
+          "texto": "Dedo índice más corto que el anular ⇒ ejemplo humano clásico",
+          "explicacion": "Dato por confirmar: algunos textos lo presentan como un caso de herencia influenciada, con alelo dominante en varones y recesivo en mujeres, pero hay discrepancias entre las fuentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones características",
+      "puntos": [
+        {
+          "texto": "Heterocigoto ≠ fenotipo igual en ambos sexos",
+          "explicacion": "En la herencia influenciada el heterocigoto tiene un fenotipo en el macho y otro en la hembra. En la herencia autosómica común es igual."
+        },
+        {
+          "texto": "Cruce Cc × Cc ⇒ razón 3 : 1 en varones",
+          "explicacion": "En los varones el alelo C domina: tres calvos por cada no calvo."
+        },
+        {
+          "texto": "Cruce Cc × Cc ⇒ razón 1 : 3 en mujeres",
+          "explicacion": "En las mujeres el alelo C es recesivo: una calva por cada tres no calvas."
+        },
+        {
+          "texto": "Razón genotípica = 1 : 2 : 1 en ambos sexos",
+          "explicacion": "Los genes se reparten igual en los dos sexos. Solo cambia el fenotipo."
+        }
+      ]
+    },
+    {
+      "titulo": "Complejidad real de la calvicie",
+      "puntos": [
+        {
+          "texto": "Calvicie común ⇒ determinada por varios genes",
+          "explicacion": "El modelo de un solo gen es una simplificación escolar. En la realidad influyen muchos genes y también la edad."
+        },
+        {
+          "texto": "Gen del receptor de andrógenos ⇒ ubicado en el cromosoma X",
+          "explicacion": "Algunas variantes de este gen se asocian a la calvicie, así que la herencia real incluye también una parte ligada al X."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación con herencias vecinas",
+      "puntos": [
+        {
+          "texto": "Herencia restringida al sexo (tema 85) ≠ herencia influenciada",
+          "explicacion": "En la restringida el rasgo solo aparece en un sexo. En la influenciada aparece en los dos, pero el heterocigoto se comporta distinto."
+        },
+        {
+          "texto": "Herencia ligada al sexo (tema 84) ≠ herencia influenciada",
+          "explicacion": "En la ligada los genes están en los cromosomas sexuales. En la influenciada los genes están en autosomas."
+        },
+        {
+          "texto": "Herencia influenciada ≠ herencia autosómica común",
+          "explicacion": "En la autosómica común la dominancia de un alelo es la misma en machos y en hembras. En la influenciada cambia con el sexo."
+        }
+      ]
+    },
+    {
+      "titulo": "Temas relacionados",
+      "puntos": [
+        {
+          "texto": "Genética humana (tema 87) ⊃ rasgos hereditarios humanos",
+          "explicacion": "Se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Herencia ligada al sexo (tema 84) ⊃ genes en cromosomas sexuales",
+          "explicacion": "Se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Herencia restringida al sexo (tema 85) ⊃ genes de expresión en un sexo",
+          "explicacion": "Se desarrolla en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Herencia influenciada ≠ genes en cromosomas sexuales",
+          "explicacion": "Los genes están en autosomas. El sexo solo modifica la dominancia."
+        },
+        {
+          "texto": "Mujer Cc ≠ siempre calva",
+          "explicacion": "Con testosterona baja el alelo C se comporta como recesivo, así que la mujer heterocigota no es calva."
+        },
+        {
+          "texto": "Calvicie ≠ solo heredada del padre",
+          "explicacion": "Los dos progenitores aportan alelos. Una madre CC o Cc transmite el alelo C a sus hijos."
+        },
+        {
+          "texto": "Heterocigoto influenciado ≠ fenotipo intermedio",
+          "explicacion": "En el sexo donde domina el alelo, el heterocigoto es igual al homocigoto dominante, y en el otro sexo es igual al recesivo."
+        }
       ]
     }
   ]

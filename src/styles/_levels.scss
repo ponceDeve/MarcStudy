@@ -92,6 +92,7 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 30px;
+  box-sizing: border-box;
 }
 /* ============================================================
    Input del buscador
@@ -128,7 +129,7 @@
   position: absolute;
   top: 100%;
   left: -1px;
-  right: -1px;
+  right: 0;
   width: auto;
   margin-top: 0;
   padding: 0;

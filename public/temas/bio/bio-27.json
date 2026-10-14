@@ -2,55 +2,205 @@
   "curso": "Biología",
   "tema": "Tejido sanguíneo",
   "glosario": {
-    "Plasma": "Fase líquida de la sangre donde flotan sus células.",
-    "Eritrocito": "Glóbulo rojo sin núcleo que transporta oxígeno.",
-    "Hemoglobina": "Proteína de los eritrocitos que transporta oxígeno.",
+    "Tejido sanguíneo": "Tejido conectivo líquido que circula por los vasos y transporta sustancias por el organismo.",
+    "Plasma": "Parte líquida de la sangre, formada por agua, proteínas y otros solutos.",
+    "Elementos formes": "Células y fragmentos celulares suspendidos en el plasma, como glóbulos rojos, blancos y plaquetas.",
+    "Eritrocito": "Glóbulo rojo sin núcleo que transporta oxígeno gracias a la hemoglobina.",
+    "Hemoglobina": "Proteína de los eritrocitos que se une al oxígeno y al dióxido de carbono.",
     "Leucocito": "Glóbulo blanco que participa en la defensa del organismo.",
-    "Plaqueta": "Fragmento celular que participa en la coagulación.",
-    "Coagulación": "Proceso que forma un coágulo para detener una hemorragia.",
-    "Albúmina": "Proteína más abundante del plasma."
+    "Granulocito": "Leucocito que contiene gránulos citoplasmáticos en su interior.",
+    "Agranulocito": "Leucocito que no presenta gránulos destacables en su citoplasma.",
+    "Plaqueta": "Fragmento celular sin núcleo que participa en la coagulación.",
+    "Hematocrito": "Porcentaje del volumen sanguíneo ocupado por los eritrocitos.",
+    "Eritropoyesis": "Proceso de formación de glóbulos rojos en la médula ósea.",
+    "Hemostasia": "Conjunto de procesos que detienen el sangrado al sellar un vaso dañado.",
+    "Suero": "Plasma sin los factores de coagulación, que quedan en el coágulo.",
+    "Albúmina": "Proteína plasmática que regula el agua en la sangre y transporta sustancias.",
+    "Megacariocito": "Célula grande de la médula ósea que fragmenta su citoplasma para formar plaquetas."
   },
   "theory": [
     {
-      "titulo": "Concepto del tejido sanguíneo",
+      "titulo": "Concepto de tejido sanguíneo",
       "puntos": [
-        { "texto": "La sangre es un tejido conectivo especializado y líquido.", "explicacion": "Circula por arterias, venas y capilares, y se diferencia de otros conectivos por su matriz líquida." },
-        { "texto": "La sangre tiene una fase líquida y una fase celular.", "explicacion": "La fase celular está formada por eritrocitos, leucocitos y plaquetas." }
+        {
+          "texto": "La sangre es un tejido conectivo especializado y líquido",
+          "explicacion": "Tiene una matriz extracelular líquida llamada plasma y células suspendidas en ella."
+        },
+        {
+          "texto": "La sangre circula por el organismo dentro de los vasos sanguíneos",
+          "explicacion": "Su movimiento constante permite transportar sustancias a todas las células del cuerpo."
+        },
+        {
+          "texto": "La sangre representa alrededor del 7 % del peso corporal",
+          "explicacion": "Dato por confirmar: su volumen varía según el tamaño y la condición física de cada persona."
+        }
+      ]
+    },
+    {
+      "titulo": "Componentes de la sangre",
+      "puntos": [
+        {
+          "texto": "La sangre se compone de plasma y elementos formes",
+          "explicacion": "El plasma es la parte líquida, mientras que los elementos formes son las células y sus fragmentos."
+        },
+        {
+          "texto": "El plasma constituye alrededor del 55 % del volumen sanguíneo",
+          "explicacion": "Es la mayor parte de la sangre y contiene agua, proteínas y otros solutos disueltos."
+        },
+        {
+          "texto": "Los elementos formes constituyen alrededor del 45 % del volumen",
+          "explicacion": "Los glóbulos rojos son la mayoría de estos elementos, y los leucocitos y plaquetas son menos del 1 %."
+        },
+        {
+          "texto": "Los elementos formes son glóbulos rojos, glóbulos blancos y plaquetas",
+          "explicacion": "Cada tipo cumple funciones distintas, como transporte de oxígeno, defensa y coagulación."
+        }
       ]
     },
     {
       "titulo": "Plasma",
       "puntos": [
-        { "texto": "El «plasma» es la fase líquida de la sangre.", "explicacion": "Transporta nutrientes, hormonas, desechos y proteínas." },
-        { "texto": "La «albúmina» es la proteína más abundante del plasma.", "explicacion": "Ayuda a mantener el volumen de sangre dentro de los vasos." }
+        {
+          "texto": "El plasma está formado por agua en su mayor proporción",
+          "explicacion": "Dato por confirmar: el agua constituye alrededor del 92 % del plasma y actúa como solvente de los demás componentes."
+        },
+        {
+          "texto": "Las proteínas plasmáticas constituyen alrededor del 7 % del plasma",
+          "explicacion": "Dato por confirmar: entre ellas están la albúmina, las globulinas y el fibrinógeno."
+        },
+        {
+          "texto": "La albúmina regula el nivel de agua en la sangre",
+          "explicacion": "Ayuda a mantener la presión osmótica, de modo que el agua no salga de los vasos hacia los tejidos."
+        },
+        {
+          "texto": "Las proteínas plasmáticas actúan como amortiguadores del pH sanguíneo",
+          "explicacion": "Ayudan a mantener el pH de la sangre en un valor cercano a 7,4."
+        },
+        {
+          "texto": "El plasma transporta nutrientes, hormonas y desechos",
+          "explicacion": "Dato por confirmar: es el medio por el que estas sustancias viajan desde su origen hasta sus destinos en el cuerpo."
+        },
+        {
+          "texto": "El suero es el plasma sin los factores de coagulación",
+          "explicacion": "Se obtiene cuando la sangre se coagula, porque el fibrinógeno queda retenido en el coágulo."
+        }
       ]
     },
     {
       "titulo": "Eritrocitos",
       "puntos": [
-        { "texto": "Los «eritrocitos» son los elementos formes más abundantes.", "explicacion": "Son glóbulos rojos en forma de disco bicóncavo." },
-        { "texto": "Los eritrocitos contienen «hemoglobina».", "explicacion": "Transportan oxígeno desde los pulmones hacia los tejidos." },
-        { "texto": "Los eritrocitos maduros carecen de núcleo y de organelos.", "explicacion": "Así tienen más espacio para transportar hemoglobina." }
+        {
+          "texto": "Los eritrocitos son los elementos formes más abundantes",
+          "explicacion": "Dato por confirmar: en una gota de sangre hay millones de eritrocitos y solo miles de leucocitos."
+        },
+        {
+          "texto": "Los eritrocitos carecen de núcleo y de otros orgánulos",
+          "explicacion": "Esta ausencia deja más espacio para la hemoglobina, que transporta el oxígeno."
+        },
+        {
+          "texto": "Los eritrocitos tienen forma de disco bicóncavo",
+          "explicacion": "Esta forma aumenta la superficie de intercambio de gases y les permite deformarse al pasar por capilares estrechos."
+        },
+        {
+          "texto": "La hemoglobina transporta oxígeno y dióxido de carbono",
+          "explicacion": "Dato por confirmar: el oxígeno se une al hierro del grupo hemo y el dióxido de carbono se transporta en parte unido a la hemoglobina."
+        },
+        {
+          "texto": "Los eritrocitos viven alrededor de 120 días",
+          "explicacion": "Dato por confirmar: después de ese tiempo son destruidos, principalmente en el bazo y en el hígado."
+        }
+      ]
+    },
+    {
+      "titulo": "Eritropoyesis",
+      "puntos": [
+        {
+          "texto": "La eritropoyesis es la formación de glóbulos rojos en la médula ósea",
+          "explicacion": "Durante este proceso las células pierden su núcleo y acumulan hemoglobina antes de salir a la sangre."
+        },
+        {
+          "texto": "El hematocrito mide el porcentaje de eritrocitos en la sangre",
+          "explicacion": "Dato por confirmar: su valor normal es de alrededor de 39 a 50 % en hombres y de 35 a 45 % en mujeres."
+        },
+        {
+          "texto": "El hematocrito disminuye cuando hay pocos eritrocitos",
+          "explicacion": "Puede deberse a que no se fabrican suficientes o a que se destruyen con rapidez."
+        },
+        {
+          "texto": "El hematocrito aumenta cuando hay deshidratación",
+          "explicacion": "Al haber menos plasma, la proporción de eritrocitos en la sangre se incrementa."
+        }
       ]
     },
     {
       "titulo": "Leucocitos",
       "puntos": [
-        { "texto": "Los «leucocitos» participan en la respuesta inmunitaria.", "explicacion": "Pueden salir de los vasos y llegar a los tejidos infectados." },
-        { "texto": "Los leucocitos son menos numerosos que los eritrocitos.", "explicacion": "Su número aumenta cuando el organismo combate una infección." }
+        {
+          "texto": "Los leucocitos participan en la respuesta inmunitaria",
+          "explicacion": "Defienden al organismo de patógenos mediante ataque directo, producción de anticuerpos o liberación de mediadores."
+        },
+        {
+          "texto": "Los leucocitos tienen núcleo, a diferencia de los eritrocitos",
+          "explicacion": "Dato por confirmar: esta característica permite su división y su capacidad de respuesta frente a infecciones."
+        },
+        {
+          "texto": "Los leucocitos se clasifican en granulocitos y agranulocitos",
+          "explicacion": "Los granulocitos tienen gránulos llenos de moléculas inflamatorias, mientras que los agranulocitos no presentan gránulos destacables."
+        },
+        {
+          "texto": "Los leucocitos son de cinco tipos celulares distintos",
+          "explicacion": "Dato por confirmar: neutrófilos, eosinófilos, basófilos, linfocitos y monocitos cumplen funciones diferentes."
+        },
+        {
+          "texto": "La fórmula leucocitaria indica el porcentaje de cada tipo de leucocito",
+          "explicacion": "Este estudio ayuda a diagnosticar infecciones, alergias y otras alteraciones del sistema inmunológico."
+        }
       ]
     },
     {
-      "titulo": "Plaquetas y coagulación",
+      "titulo": "Plaquetas",
       "puntos": [
-        { "texto": "Las «plaquetas» son fragmentos celulares sin núcleo.", "explicacion": "Se concentran en un vaso dañado para iniciar la formación de un coágulo." },
-        { "texto": "La «coagulación» detiene la pérdida de sangre tras una lesión.", "explicacion": "Las plaquetas y los factores del plasma forman un tapón que sella la herida." }
+        {
+          "texto": "Las plaquetas son fragmentos celulares sin núcleo",
+          "explicacion": "Se desprenden de células grandes de la médula ósea llamadas megacariocitos."
+        },
+        {
+          "texto": "Las plaquetas son los elementos formes de menor tamaño",
+          "explicacion": "Dato por confirmar: miden entre 2 y 4 micrómetros de diámetro."
+        },
+        {
+          "texto": "Las plaquetas se agrupan para formar un tapón que sella vasos dañados",
+          "explicacion": "Este proceso forma parte de la hemostasia y evita la pérdida de sangre."
+        },
+        {
+          "texto": "Las plaquetas participan en la coagulación de la sangre",
+          "explicacion": "Dato por confirmar: junto con los factores del plasma forman una malla de fibrina que retiene a los elementos formes."
+        }
       ]
     },
     {
-      "titulo": "Conexiones",
+      "titulo": "Funciones de la sangre",
       "puntos": [
-        { "texto": "La formación de células sanguíneas ocurre en la médula ósea.", "explicacion": "Su papel en la defensa corresponde al tema de sistema inmunológico." }
+        {
+          "texto": "La sangre transporta oxígeno a los tejidos",
+          "explicacion": "Los eritrocitos llevan el oxígeno desde los pulmones hasta las células que lo necesitan para la respiración aeróbica."
+        },
+        {
+          "texto": "La sangre transporta nutrientes y desechos",
+          "explicacion": "El plasma lleva los nutrientes absorbidos en el intestino y los desechos hacia los órganos de eliminación."
+        },
+        {
+          "texto": "La sangre participa en la defensa del organismo",
+          "explicacion": "Los leucocitos y los anticuerpos del plasma protegen frente a infecciones."
+        },
+        {
+          "texto": "La sangre participa en la regulación del pH y de la temperatura",
+          "explicacion": "Las proteínas plasmáticas amortiguan el pH y el agua del plasma ayuda a distribuir el calor por el cuerpo."
+        },
+        {
+          "texto": "La sangre participa en la coagulación y el control de hemorragias",
+          "explicacion": "Las plaquetas y los factores de coagulación sellan las heridas para evitar pérdida excesiva de sangre."
+        }
       ]
     }
   ]

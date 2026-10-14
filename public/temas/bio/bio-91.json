@@ -2,44 +2,668 @@
   "curso": "Biología",
   "tema": "Evidencias de la evolución",
   "glosario": {
-    "Fósil": "Resto o huella de un organismo que vivió en el pasado.",
-    "Estructura homóloga": "Estructura de origen común con la misma organización interna.",
-    "Estructura análoga": "Estructura con la misma función pero origen evolutivo distinto.",
-    "Estructura vestigial": "Estructura reducida que perdió su función original.",
-    "Biogeografía": "Ciencia que estudia la distribución geográfica de los seres vivos.",
-    "Embriología comparada": "Comparación del desarrollo embrionario de distintas especies."
+    "evidencia": "Hecho que apoya una hipótesis",
+    "fósil": "Resto o huella de un organismo antiguo",
+    "fosilización": "Proceso de conservación de un organismo",
+    "mineralización": "Reemplazo del material por minerales",
+    "molde": "Hueco que deja el organismo",
+    "impronta": "Huella de una parte del organismo",
+    "icnofósil": "Huella de actividad de un organismo",
+    "coprolito": "Excremento fósil",
+    "ámbar": "Resina fósil",
+    "fósil guía": "Fósil que indica la edad de la roca",
+    "estrato": "Capa de roca sedimentaria",
+    "datación relativa": "Ordena fósiles sin dar años",
+    "datación absoluta": "Calcula la edad en años",
+    "vida media": "Tiempo en que se desintegra la mitad",
+    "isótopo": "Variante de un elemento químico",
+    "forma de transición": "Fósil con rasgos de dos grupos",
+    "tetrápodo": "Vertebrado de cuatro extremidades",
+    "homología": "Semejanza por origen común",
+    "analogía": "Semejanza por función",
+    "órgano homólogo": "Estructura con igual origen",
+    "órgano análogo": "Estructura con igual función",
+    "evolución divergente": "Estructuras homólogas que cambian de función",
+    "evolución convergente": "Parecido por ambientes semejantes",
+    "órgano vestigial": "Estructura reducida sin función clara",
+    "atavismo": "Reaparición de un rasgo ancestral",
+    "ontogenia": "Desarrollo de un individuo",
+    "filogenia": "Historia evolutiva de un grupo",
+    "cordado": "Animal con notocorda en alguna etapa",
+    "notocorda": "Varilla de sostén del embrión",
+    "biogeografía": "Estudio de la distribución de especies",
+    "endémico": "Exclusivo de una región",
+    "deriva continental": "Movimiento lento de los continentes",
+    "pseudogén": "Gen inactivo por mutaciones",
+    "reloj molecular": "Mide el tiempo con diferencias moleculares",
+    "citocromo c": "Proteína de la cadena respiratoria",
+    "melanismo": "Exceso de pigmento oscuro"
   },
   "theory": [
     {
-      "titulo": "Registro fósil",
+      "titulo": "Concepto de evidencias",
       "puntos": [
-        { "texto": "Los fósiles documentan especies extintas y cambios en el tiempo.", "explicacion": "Muestran formas intermedias que relacionan grupos actuales con antepasados comunes." }
+        {
+          "texto": "«Evidencias de la evolución» = pruebas de que las especies cambian",
+          "explicacion": "Son hechos observables de distintas ciencias que, en conjunto, solo se explican si los seres vivos descienden de antepasados comunes y se han modificado."
+        },
+        {
+          "texto": "Evidencias ⊃ paleontológicas, anatómicas, embriológicas, biogeográficas y moleculares",
+          "explicacion": "Cada tipo estudia un aspecto distinto de los organismos, y todos coinciden en el mismo patrón de parentesco."
+        },
+        {
+          "texto": "Evidencias independientes ⇒ conclusiones coincidentes",
+          "explicacion": "Que ciencias tan distintas lleguen al mismo árbol de parentesco aumenta mucho la confianza en la teoría."
+        },
+        {
+          "texto": "Evolución = hecho respaldado por muchas pruebas",
+          "explicacion": "Lo que se discute entre los científicos no es si las especies evolucionan, sino los detalles de los mecanismos y del ritmo."
+        }
+      ]
+    },
+    {
+      "titulo": "Evidencias paleontológicas",
+      "puntos": [
+        {
+          "texto": "Paleontología = estudio de los fósiles",
+          "explicacion": "Reconstruye la historia de la vida a partir de los restos y huellas de organismos del pasado."
+        },
+        {
+          "texto": "Fósil = resto o huella de un organismo antiguo",
+          "explicacion": "Se conserva en rocas, hielo o ámbar y normalmente tiene más de 10 000 años de antigüedad."
+        },
+        {
+          "texto": "Registro fósil ⇒ sucesión ordenada de organismos",
+          "explicacion": "Los fósiles de rocas antiguas son más sencillos y distintos de los actuales, y los de rocas recientes se parecen cada vez más a los seres vivos de hoy."
+        },
+        {
+          "texto": "Fosilización = proceso de conservación de un organismo",
+          "explicacion": "Requiere un enterramiento rápido, que evite la descomposición y la acción de carroñeros."
+        },
+        {
+          "texto": "Partes duras ⇒ fosilizan con mayor facilidad",
+          "explicacion": "Huesos, dientes, conchas y madera se conservan mejor que los tejidos blandos, por eso el registro fósil es incompleto."
+        },
+        {
+          "texto": "Mineralización = minerales reemplazan al material original",
+          "explicacion": "Con el tiempo el agua deposita minerales en los poros o sustituye el hueso por piedra, y conserva su forma."
+        },
+        {
+          "texto": "Molde = hueco que deja el organismo en la roca",
+          "explicacion": "Se forma cuando el organismo se disuelve y queda su forma marcada en el sedimento."
+        },
+        {
+          "texto": "Impronta = huella de una parte del organismo",
+          "explicacion": "Es la marca que dejan hojas, plumas o la piel en el barro que luego se endureció."
+        },
+        {
+          "texto": "Icnofósil = huella de actividad",
+          "explicacion": "Incluye pisadas, madrigueras y rastros, que informan sobre cómo se movían y vivían los animales."
+        },
+        {
+          "texto": "Coprolito = excremento fósil",
+          "explicacion": "Permite saber qué comía el animal."
+        },
+        {
+          "texto": "Ámbar = resina fósil que atrapa organismos",
+          "explicacion": "Conserva insectos y plumas con detalle, hasta en tres dimensiones."
+        },
+        {
+          "texto": "Congelación ⇒ conserva organismos completos",
+          "explicacion": "Los mamuts hallados en el hielo de Siberia conservan piel, pelo y órganos internos."
+        },
+        {
+          "texto": "Fósil guía = organismo de amplia distribución y corta existencia",
+          "explicacion": "Sirve para reconocer la edad de las rocas y para relacionar estratos de lugares lejanos."
+        },
+        {
+          "texto": "Extinciones masivas ⇒ cortes en el registro fósil",
+          "explicacion": "Han desaparecido grupos enteros, como los trilobites o los dinosaurios no avianos, y luego han aparecido otros."
+        }
+      ]
+    },
+    {
+      "titulo": "Datación de fósiles",
+      "puntos": [
+        {
+          "texto": "Datación relativa = ordena fósiles según su posición",
+          "explicacion": "Establece qué es más antiguo y qué más reciente, sin dar una edad en años."
+        },
+        {
+          "texto": "Ley de superposición ⇒ estratos inferiores más antiguos",
+          "explicacion": "Nicolás Steno la formuló en 1669: en rocas sin alterar, las capas de abajo se depositaron primero."
+        },
+        {
+          "texto": "Datación absoluta = edad en años",
+          "explicacion": "Se calcula con la desintegración de isótopos radiactivos presentes en las rocas o en los restos."
+        },
+        {
+          "texto": "Vida media = tiempo en que se desintegra la mitad de un isótopo",
+          "explicacion": "Es constante para cada isótopo y no depende de la temperatura ni de otras condiciones."
+        },
+        {
+          "texto": "Carbono-14 ⇒ restos orgánicos de hasta unos 50 000 años",
+          "explicacion": "Su vida media es de 5730 años. Willard Frank Libby desarrolló el método en 1949 y recibió el Premio Nobel de Química en 1960."
+        },
+        {
+          "texto": "Uranio-238 ⇒ rocas muy antiguas",
+          "explicacion": "Su vida media es de unos 4470 millones de años y se usa para datar las rocas más antiguas de la Tierra."
+        },
+        {
+          "texto": "Potasio-40 ⇒ rocas volcánicas de millones de años",
+          "explicacion": "Su vida media es de unos 1250 millones de años, y se usa para datar capas de ceniza volcánica que contienen fósiles."
+        },
+        {
+          "texto": "Datación absoluta ⇒ confirma el orden de los estratos",
+          "explicacion": "Las edades radiactivas coinciden con el orden que da la superposición de capas."
+        }
+      ]
+    },
+    {
+      "titulo": "Formas de transición",
+      "puntos": [
+        {
+          "texto": "Forma de transición = fósil con rasgos de dos grupos",
+          "explicacion": "Muestra cómo un grupo de organismos pudo originar otro, y combina caracteres ancestrales y derivados."
+        },
+        {
+          "texto": "Archaeopteryx = transición entre dinosaurios y aves",
+          "explicacion": "Hermann von Meyer lo describió en 1861 a partir de fósiles de unos 150 millones de años hallados en Solnhofen, en Alemania."
+        },
+        {
+          "texto": "Archaeopteryx ⇒ rasgos de reptil",
+          "explicacion": "Tenía dientes, una larga cola con vértebras y garras en las alas."
+        },
+        {
+          "texto": "Archaeopteryx ⇒ rasgos de ave",
+          "explicacion": "Tenía plumas con vuelo y una clavícula fusionada en forma de horquilla."
+        },
+        {
+          "texto": "Tiktaalik = transición entre peces y tetrápodos",
+          "explicacion": "Descubierto en 2004 en el Ártico canadiense por el equipo de Neil Shubin, tiene unos 375 millones de años."
+        },
+        {
+          "texto": "Tiktaalik ⇒ rasgos de pez",
+          "explicacion": "Tenía escamas, branquias y aletas con radios."
+        },
+        {
+          "texto": "Tiktaalik ⇒ rasgos de tetrápodo",
+          "explicacion": "Tenía cuello móvil, costillas fuertes y huesos de aleta parecidos a los del brazo, con húmero, radio y cúbito."
+        },
+        {
+          "texto": "Ichthyostega = tetrápodo primitivo del Devónico",
+          "explicacion": "Tenía cuatro extremidades con dedos, pero conservaba cola de pez y vivía entre el agua y la tierra."
+        },
+        {
+          "texto": "Ambulocetus = transición entre mamíferos terrestres y ballenas",
+          "explicacion": "Hans Thewissen lo halló en 1994 en Pakistán: tenía patas para caminar, pero sus huesos del oído y su dentición ya eran de ballena."
+        },
+        {
+          "texto": "Serie fósil de cetáceos ⇒ de terrestres a acuáticos",
+          "explicacion": "Pakicetus, Ambulocetus y Basilosaurus muestran cómo las patas posteriores se redujeron y la cola se hizo aleta."
+        },
+        {
+          "texto": "Formas de transición ⇒ predichas y halladas",
+          "explicacion": "Los científicos buscaron Tiktaalik en rocas de la edad y tipo de ambiente adecuados y lo encontraron, lo que muestra la capacidad predictiva de la teoría."
+        }
+      ]
+    },
+    {
+      "titulo": "Evolución del caballo",
+      "puntos": [
+        {
+          "texto": "Evolución del caballo = serie fósil mejor documentada",
+          "explicacion": "Othniel Charles Marsh la estudió en la década de 1870 con fósiles de Norteamérica, y es un ejemplo clásico de evolución gradual."
+        },
+        {
+          "texto": "Hyracotherium = caballo más antiguo",
+          "explicacion": "Vivió hace unos 55 millones de años, medía unos 30 centímetros y tenía cuatro dedos en las patas delanteras y tres en las traseras."
+        },
+        {
+          "texto": "Evolución del caballo ⇒ tamaño ↑",
+          "explicacion": "Los caballos pasaron de ser animales del tamaño de un perro pequeño a los grandes caballos actuales."
+        },
+        {
+          "texto": "Evolución del caballo ⇒ dedos ↓",
+          "explicacion": "Se redujo el número de dedos hasta quedar uno solo, el que apoya en el suelo, el casco, lo que favorece la carrera en praderas."
+        },
+        {
+          "texto": "Evolución del caballo ⇒ molares cada vez más altos",
+          "explicacion": "Pasaron de dientes bajos para ramonear hojas blandas a dientes altos y con crestas para moler pasto duro."
+        },
+        {
+          "texto": "Cambio ambiental ⇒ selección de formas de pradera",
+          "explicacion": "El clima se volvió seco y se extendieron las praderas, lo que favoreció a los caballos de patas largas y dientes duros."
+        },
+        {
+          "texto": "Equus = género actual del caballo",
+          "explicacion": "Tiene un solo dedo funcional por pata y comprende caballos, asnos y cebras."
+        }
       ]
     },
     {
       "titulo": "Anatomía comparada",
       "puntos": [
-        { "texto": "Las «estructuras homólogas» tienen el mismo origen evolutivo.", "explicacion": "Los huesos de las extremidades anteriores de mamíferos, aves y reptiles son un ejemplo." },
-        { "texto": "Las «estructuras análogas» cumplen la misma función con origen distinto.", "explicacion": "Las alas de las aves y de los insectos son un ejemplo de este caso." },
-        { "texto": "Las «estructuras vestigiales» perdieron su función en el linaje.", "explicacion": "El cóccix humano y los ojos de algunos animales cavernícolas son ejemplos." }
+        {
+          "texto": "Anatomía comparada = comparación de estructuras de distintos organismos",
+          "explicacion": "Busca semejanzas por origen común y semejanzas por función, para reconstruir el parentesco entre especies."
+        },
+        {
+          "texto": "Homología = semejanza por origen evolutivo común",
+          "explicacion": "Las estructuras homólogas derivan de la misma estructura del antepasado, aunque cumplan funciones diferentes."
+        },
+        {
+          "texto": "Analogía = semejanza por función, no por origen",
+          "explicacion": "Las estructuras análogas cumplen la misma función pero tienen origen y estructura distintos."
+        }
+      ]
+    },
+    {
+      "titulo": "Órganos homólogos",
+      "puntos": [
+        {
+          "texto": "Órgano homólogo = mismo origen, forma y función posiblemente distintas",
+          "explicacion": "Es evidencia de que las especies que los tienen descienden de un ancestro común."
+        },
+        {
+          "texto": "Extremidad anterior de vertebrados = ejemplo clásico de homología",
+          "explicacion": "En personas, gatos, ballenas, murciélagos y aves tiene los mismos huesos: húmero, radio, cúbito, carpos, metacarpos y falanges."
+        },
+        {
+          "texto": "Brazo humano ⇒ función de manipular",
+          "explicacion": "Los huesos son largos y los dedos son móviles."
+        },
+        {
+          "texto": "Ala de murciélago ⇒ función de volar",
+          "explicacion": "Los dedos son muy largos y sostienen una membrana de piel."
+        },
+        {
+          "texto": "Aleta de ballena ⇒ función de nadar",
+          "explicacion": "Los huesos son cortos y los dedos están unidos dentro de una paleta."
+        },
+        {
+          "texto": "Pata de caballo ⇒ función de correr",
+          "explicacion": "Los huesos se alargaron y se redujo el número de dedos."
+        },
+        {
+          "texto": "Evolución divergente = homólogos que cambian de función",
+          "explicacion": "Un mismo órgano heredado se adapta a distintos ambientes y se diversifica."
+        },
+        {
+          "texto": "Radiación adaptativa ⇒ homología",
+          "explicacion": "Una especie ancestral origina muchas especies con estructuras modificadas para distintos modos de vida."
+        }
+      ]
+    },
+    {
+      "titulo": "Órganos análogos",
+      "puntos": [
+        {
+          "texto": "Órgano análogo = misma función, origen distinto",
+          "explicacion": "No indica parentesco cercano, sino adaptación a un mismo modo de vida."
+        },
+        {
+          "texto": "Ala de ave y ala de insecto = análogas",
+          "explicacion": "Ambas permiten volar, pero el ala del ave deriva de una extremidad con huesos y la del insecto es una expansión de la cutícula."
+        },
+        {
+          "texto": "Aleta de tiburón y aleta de delfín = análogas",
+          "explicacion": "Ambas sirven para nadar, pero el tiburón es un pez y el delfín es un mamífero cuya aleta deriva de una pata."
+        },
+        {
+          "texto": "Ojo de pulpo y ojo humano = análogos",
+          "explicacion": "Ambos forman imágenes con cristalino, pero se originaron de manera independiente."
+        },
+        {
+          "texto": "Espinas de cactus y espinas de rosal = análogas",
+          "explicacion": "Las del cactus son hojas modificadas y las del rosal son salientes del tallo."
+        }
+      ]
+    },
+    {
+      "titulo": "Convergencia evolutiva",
+      "puntos": [
+        {
+          "texto": "Evolución convergente = parecido por presión ambiental semejante",
+          "explicacion": "Grupos de origen distinto desarrollan formas parecidas porque la selección natural favorece soluciones similares."
+        },
+        {
+          "texto": "Lobo y tilacino ⇒ convergencia",
+          "explicacion": "El tilacino, un marsupial de Tasmania ya extinto, se parecía a un lobo placentario, pero pertenece a otro grupo de mamíferos."
+        },
+        {
+          "texto": "Topo y topo marsupial ⇒ convergencia",
+          "explicacion": "Ambos tienen garras y cuerpo adaptados a cavar, pero uno es placentario y el otro es marsupial australiano."
+        },
+        {
+          "texto": "Cactus y euforbias ⇒ convergencia",
+          "explicacion": "Plantas de familias distintas de América y de África, con tallos carnosos y espinas, adaptadas a desiertos."
+        },
+        {
+          "texto": "Tiburón, ictiosaurio y delfín ⇒ convergencia",
+          "explicacion": "Un pez, un reptil marino extinto y un mamífero adoptaron un cuerpo parecido para nadar rápido."
+        }
+      ]
+    },
+    {
+      "titulo": "Órganos vestigiales",
+      "puntos": [
+        {
+          "texto": "Órgano vestigial = estructura reducida con poca o ninguna función",
+          "explicacion": "Era funcional en antepasados y en las especies actuales se ha atrofiado, por lo que muestra parentesco con ellos."
+        },
+        {
+          "texto": "Apéndice vermiforme humano = vestigial",
+          "explicacion": "En herbívoros el ciego es grande y digiere celulosa, y en el ser humano quedó reducido, aunque tiene alguna función en la defensa."
+        },
+        {
+          "texto": "Muelas del juicio = vestigiales",
+          "explicacion": "Los antepasados con mandíbulas grandes las usaban para moler vegetales duros, y hoy muchas personas no las desarrollan."
+        },
+        {
+          "texto": "Coxis = vestigio de la cola",
+          "explicacion": "Es el conjunto de vértebras fusionadas al final de la columna, y heredado de antepasados con cola."
+        },
+        {
+          "texto": "Músculos auriculares = vestigiales",
+          "explicacion": "Los antepasados movían las orejas hacia los sonidos, y hoy solo algunas personas pueden mover un poco las orejas."
+        },
+        {
+          "texto": "Pliegue semilunar del ojo = vestigio",
+          "explicacion": "Es el resto del tercer párpado, o membrana nictitante, que tienen aves y reptiles."
+        },
+        {
+          "texto": "Pelvis de ballena = vestigial",
+          "explicacion": "Es un par de huesos sin conexión con la columna, resto de la cintura de los antepasados con patas."
+        },
+        {
+          "texto": "Alas del kiwi = vestigiales",
+          "explicacion": "Son muy pequeñas y no sirven para volar, resto de antepasados que volaban."
+        },
+        {
+          "texto": "Espolones de la pitón = vestigios de patas",
+          "explicacion": "Son restos de la pelvis y las patas traseras, que ayudan en el apareamiento."
+        },
+        {
+          "texto": "Ojos de peces cavernícolas = vestigiales",
+          "explicacion": "Algunos peces que viven en cuevas oscuras tienen ojos reducidos o cubiertos de piel."
+        }
+      ]
+    },
+    {
+      "titulo": "Atavismos",
+      "puntos": [
+        {
+          "texto": "Atavismo = reaparición de un rasgo ancestral",
+          "explicacion": "Ocurre cuando genes presentes pero inactivos se activan de nuevo, y es evidencia de que el rasgo existió en los antepasados."
+        },
+        {
+          "texto": "Cola en un recién nacido humano = atavismo",
+          "explicacion": "Rara vez nace un niño con una cola corta formada por tejido blando, retenida del desarrollo embrionario."
+        },
+        {
+          "texto": "Mamas supernumerarias en humanos = atavismo",
+          "explicacion": "Se forman a lo largo de la línea de las mamas que otros mamíferos tienen."
+        },
+        {
+          "texto": "Dedos adicionales en el caballo = atavismo",
+          "explicacion": "Algunos caballos nacen con dedos extra, que recuerdan a sus antepasados de varios dedos."
+        },
+        {
+          "texto": "Patas posteriores en ballenas = atavismo",
+          "explicacion": "Se han hallado ballenas actuales con pequeñas extremidades traseras, de los antepasados terrestres."
+        },
+        {
+          "texto": "Atavismo ✗ igual que vestigio",
+          "explicacion": "El vestigio es una estructura presente en todos los individuos, y el atavismo aparece solo ocasionalmente."
+        }
       ]
     },
     {
       "titulo": "Embriología comparada",
       "puntos": [
-        { "texto": "La «embriología comparada» revela parentescos entre especies.", "explicacion": "Las etapas tempranas del desarrollo de vertebrados son muy parecidas." }
+        {
+          "texto": "Embriología comparada = comparación del desarrollo embrionario",
+          "explicacion": "Los embriones de grupos distintos se parecen mucho en etapas tempranas, lo que indica ancestros comunes."
+        },
+        {
+          "texto": "Ontogenia = desarrollo de un individuo",
+          "explicacion": "Abarca desde el cigoto hasta el adulto."
+        },
+        {
+          "texto": "Filogenia = historia evolutiva de un grupo",
+          "explicacion": "Se representa como un árbol que muestra el parentesco entre especies."
+        },
+        {
+          "texto": "Karl Ernst von Baer ⇒ leyes de la embriología, 1828",
+          "explicacion": "Observó que los rasgos generales de un grupo aparecen antes que los especializados, y que los embriones de especies distintas divergen con el desarrollo."
+        },
+        {
+          "texto": "Ernst Haeckel ⇒ ley biogenética, 1866",
+          "explicacion": "Propuso que la ontogenia recapitula la filogenia, es decir, que el embrión repite las etapas adultas de sus antepasados."
+        },
+        {
+          "texto": "Ley biogenética ✗ válida en su forma original",
+          "explicacion": "Los embriones no pasan por formas adultas de otros animales, solo conservan rasgos embrionarios comunes."
+        },
+        {
+          "texto": "Cordados ⊃ notocorda, tubo nervioso dorsal, hendiduras faríngeas y cola postanal",
+          "explicacion": "Estos cuatro rasgos aparecen en el embrión de todos los cordados, incluido el ser humano, aunque en el adulto cambian o desaparecen."
+        },
+        {
+          "texto": "Hendiduras faríngeas en el embrión humano",
+          "explicacion": "En peces forman las branquias, y en el humano originan estructuras de la mandíbula, el oído y las glándulas del cuello."
+        },
+        {
+          "texto": "Cola embrionaria humana = evidencia de ancestro común",
+          "explicacion": "Hacia la sexta semana el embrión tiene cola, que luego se reduce y deja el coxis."
+        },
+        {
+          "texto": "Embrión de ballena ⇒ esbozos de patas posteriores",
+          "explicacion": "Se forman yemas de extremidades que luego se reabsorben, lo que muestra su origen terrestre."
+        },
+        {
+          "texto": "Lanugo = vello fino del feto",
+          "explicacion": "Los fetos humanos lo desarrollan en los últimos meses, y se pierde antes o poco después del nacimiento, vestigio de un cuerpo con pelaje."
+        },
+        {
+          "texto": "Genes Hox = genes que organizan el cuerpo",
+          "explicacion": "Su nombre viene de homeobox, una secuencia compartida; son muy parecidos en moscas y mamíferos y controlan dónde se forma cada parte del cuerpo."
+        }
       ]
     },
     {
       "titulo": "Biogeografía",
       "puntos": [
-        { "texto": "La «biogeografía» explica la distribución de las especies.", "explicacion": "Las especies de islas aisladas suelen parecerse más a las del continente más cercano que a las de otras islas lejanas." }
+        {
+          "texto": "Biogeografía = estudio de la distribución de los seres vivos",
+          "explicacion": "Explica por qué cada especie vive donde vive según su historia evolutiva y los cambios de la Tierra."
+        },
+        {
+          "texto": "Especies endémicas = viven solo en una región",
+          "explicacion": "Aparecen sobre todo en islas aisladas, donde las poblaciones evolucionaron separadas."
+        },
+        {
+          "texto": "Islas oceánicas ⇒ especies parecidas a las del continente más cercano",
+          "explicacion": "Las especies de las Galápagos se parecen a las de Sudamérica y no a las de islas con clima similar, lo que indica que descienden de colonizadores."
+        },
+        {
+          "texto": "Islas oceánicas ✗ mamíferos terrestres ni anfibios nativos",
+          "explicacion": "Esos animales no cruzan el mar con facilidad, y por eso su ausencia apoya que las islas se poblaron por dispersión."
+        },
+        {
+          "texto": "Alfred Russel Wallace ⇒ fundador de la biogeografía",
+          "explicacion": "Mostró que la distribución de los animales sigue su historia evolutiva y no solo el clima."
+        },
+        {
+          "texto": "Marsupiales de Australia = evolución aislada",
+          "explicacion": "Australia se separó de los demás continentes y sus marsupiales se diversificaron sin competencia de placentarios."
+        },
+        {
+          "texto": "Alfred Wegener propuso la deriva continental en 1912",
+          "explicacion": "Sostuvo que los continentes estuvieron unidos en un solo continente, Pangea, y luego se separaron."
+        },
+        {
+          "texto": "Glossopteris ⇒ planta fósil en continentes del sur",
+          "explicacion": "Sus fósiles aparecen en Sudamérica, África, India, Australia y la Antártida, que estuvieron unidos."
+        },
+        {
+          "texto": "Mesosaurus ⇒ reptil de agua dulce fósil",
+          "explicacion": "Se encuentra en Brasil y en Sudáfrica, y como no podía cruzar el océano, indica que esos territorios estuvieron unidos."
+        },
+        {
+          "texto": "Tectónica de placas ⇒ explica la distribución",
+          "explicacion": "Los continentes se mueven sobre placas, y su separación aisló poblaciones y favoreció su evolución independiente."
+        }
       ]
     },
     {
-      "titulo": "Evidencias moleculares",
+      "titulo": "Bioquímica comparada",
       "puntos": [
-        { "texto": "Las secuencias de ADN y de proteínas permiten comparar especies.", "explicacion": "Las especies más emparentadas comparten más secuencias similares." }
+        {
+          "texto": "Bioquímica comparada = comparación de moléculas de seres vivos",
+          "explicacion": "Si los organismos comparten ancestros, también comparten moléculas y rutas químicas."
+        },
+        {
+          "texto": "Código genético universal = el mismo en casi todos los seres vivos",
+          "explicacion": "Los mismos tripletes codifican los mismos aminoácidos en bacterias, plantas y animales, lo que indica un ancestro común."
+        },
+        {
+          "texto": "Ácido Desoxirribonucleico (ADN) = material genético de todos los seres vivos",
+          "explicacion": "Es el depósito de la información hereditaria en todas las formas de vida celulares."
+        },
+        {
+          "texto": "Veinte aminoácidos comunes ⇒ proteínas de todos los seres",
+          "explicacion": "Todos los organismos usan los mismos veinte aminoácidos, casi siempre en su forma L."
+        },
+        {
+          "texto": "Adenosín trifosfato (ATP) = moneda energética universal",
+          "explicacion": "Todas las células lo usan para transferir energía, lo que sugiere origen común."
+        },
+        {
+          "texto": "Glucólisis = ruta presente en casi todos los organismos",
+          "explicacion": "Es la forma más antigua de obtener energía de la glucosa, y casi todos los seres vivos la tienen."
+        },
+        {
+          "texto": "Ribosomas ⇒ presentes en todas las células",
+          "explicacion": "Son las estructuras que fabrican proteínas en bacterias, plantas, hongos y animales."
+        },
+        {
+          "texto": "Citocromo c = proteína respiratoria presente en eucariotas",
+          "explicacion": "Sus secuencias de aminoácidos permiten comparar el parentesco entre especies."
+        },
+        {
+          "texto": "Citocromo c humano ≈ citocromo c del chimpancé",
+          "explicacion": "Es idéntico al del chimpancé, difiere en un aminoácido del mono rhesus, en 12 del caballo y en unos 44 de la levadura."
+        },
+        {
+          "texto": "Más diferencias moleculares ⇒ separación más antigua",
+          "explicacion": "Cuanto más tiempo pasó desde el ancestro común, más cambios se acumularon en las proteínas."
+        }
+      ]
+    },
+    {
+      "titulo": "Evidencias genéticas y moleculares",
+      "puntos": [
+        {
+          "texto": "ADN humano ≈ 98,8 % igual al del chimpancé",
+          "explicacion": "Es la diferencia de bases en las secuencias que se pueden alinear, y confirma que son nuestros parientes vivos más cercanos."
+        },
+        {
+          "texto": "Cromosoma 2 humano = fusión de dos cromosomas de chimpancé",
+          "explicacion": "Los chimpancés tienen 48 cromosomas y las personas 46, porque dos cromosomas de simio se unieron en uno humano, con restos de telómeros y un centrómero extra."
+        },
+        {
+          "texto": "Pseudogén = gen inactivo por mutaciones",
+          "explicacion": "Es un resto de un gen que era funcional en un antepasado."
+        },
+        {
+          "texto": "Gen de la vitamina C inactivo en humanos y otros primates",
+          "explicacion": "Muchos mamíferos fabrican vitamina C, pero los humanos y otros primates tienen el gen dañado, con la misma mutación, lo que indica un ancestro común."
+        },
+        {
+          "texto": "Retrovirus endógenos compartidos = marcas de parentesco",
+          "explicacion": "Son restos de virus insertados en el ADN que se encuentran en la misma posición en humanos y chimpancés."
+        },
+        {
+          "texto": "Árbol filogenético molecular ≈ árbol por anatomía",
+          "explicacion": "Las secuencias de ADN y de proteínas dan casi el mismo árbol de parentesco que los fósiles y la anatomía."
+        },
+        {
+          "texto": "Reloj molecular = mide el tiempo desde la separación",
+          "explicacion": "Las diferencias de secuencia se acumulan a ritmo casi constante, y permiten estimar cuándo se separaron dos linajes."
+        },
+        {
+          "texto": "Genes del desarrollo compartidos ⇒ ancestro común",
+          "explicacion": "Genes como Hox se encuentran en grupos muy distintos de animales, lo que indica un origen único."
+        }
+      ]
+    },
+    {
+      "titulo": "Evidencias citológicas",
+      "puntos": [
+        {
+          "texto": "Todos los seres vivos ⇒ formados por células",
+          "explicacion": "La teoría celular indica que la célula es la unidad básica de la vida, lo que apoya un origen único."
+        },
+        {
+          "texto": "Membrana celular ⇒ presente en todas las células",
+          "explicacion": "Todas las células tienen una membrana de fosfolípidos que separa el interior del medio."
+        },
+        {
+          "texto": "Mitocondrias y cloroplastos ⇒ origen bacteriano",
+          "explicacion": "Tienen su propio ADN circular y ribosomas parecidos a los de bacterias, lo que apoya la teoría endosimbiótica."
+        }
+      ]
+    },
+    {
+      "titulo": "Observación directa de la evolución",
+      "puntos": [
+        {
+          "texto": "Evolución ✓ observable en poblaciones actuales",
+          "explicacion": "En especies de ciclo de vida corto, los cambios se pueden medir en pocos años."
+        },
+        {
+          "texto": "Melanismo industrial = cambio de color en la polilla del abedul",
+          "explicacion": "Bernard Kettlewell estudió en la década de 1950 a Biston betularia, cuyas formas oscuras aumentaron en zonas con hollín porque las aves depredadoras las veían menos sobre troncos oscuros."
+        },
+        {
+          "texto": "Resistencia a antibióticos = evolución observada",
+          "explicacion": "Las bacterias con mutaciones de resistencia sobreviven al antibiótico y se multiplican, y por eso la resistencia aumenta."
+        },
+        {
+          "texto": "Resistencia a insecticidas = evolución observada",
+          "explicacion": "El uso de plaguicidas como el diclorodifeniltricloroetano en mosquitos seleccionó a los individuos resistentes."
+        },
+        {
+          "texto": "Experimento de Lenski = evolución de bacterias en laboratorio",
+          "explicacion": "Richard Lenski mantiene desde 1988 poblaciones de Escherichia coli que han pasado por decenas de miles de generaciones."
+        },
+        {
+          "texto": "Escherichia coli ⇒ aprendió a usar citrato",
+          "explicacion": "Tras unas 31 500 generaciones, una población adquirió la capacidad de usar citrato con oxígeno, un rasgo nuevo."
+        },
+        {
+          "texto": "Virus de la gripe ⇒ evolución rápida",
+          "explicacion": "Sus mutaciones frecuentes hacen que cada año surjan variantes nuevas y se necesiten vacunas actualizadas."
+        }
+      ]
+    },
+    {
+      "titulo": "Temas relacionados",
+      "puntos": [
+        {
+          "texto": "Selección natural y artificial se desarrollan en su propio tema",
+          "explicacion": "Allí se explican los mecanismos con ejemplos como el melanismo industrial."
+        },
+        {
+          "texto": "Evolución humana se desarrolla en su propio tema",
+          "explicacion": "Allí se explican los fósiles y la historia de los homínidos."
+        },
+        {
+          "texto": "Teorías sobre la evolución ⇒ explican estas evidencias",
+          "explicacion": "Las evidencias son las pruebas, y las teorías explican el mecanismo por el cual ocurrió."
+        }
       ]
     }
   ]

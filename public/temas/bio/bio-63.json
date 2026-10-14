@@ -2,51 +2,1383 @@
   "curso": "Biología",
   "tema": "Sistema nervioso humano",
   "glosario": {
-    "Encéfalo": "Parte del sistema nervioso central alojada en el cráneo.",
-    "Cerebro": "Porción mayor del encéfalo que procesa información sensorial y controla acciones voluntarias.",
-    "Cerebelo": "Estructura del encéfalo que coordina movimientos y mantiene el equilibrio.",
-    "Tronco encefálico": "Zona que conecta el encéfalo con la médula y controla funciones vitales.",
-    "Médula espinal": "Parte del sistema nervioso central que transmite señales hacia y desde el encéfalo.",
-    "Nervio craneal": "Nervio que emerge del encéfalo; son doce pares.",
-    "Nervio espinal": "Nervio que emerge de la médula espinal; son treinta y un pares.",
-    "Arco reflejo": "Vía nerviosa que produce una respuesta automática.",
-    "Simpático": "División del sistema autónomo que prepara el cuerpo para la acción.",
-    "Parasimpático": "División del sistema autónomo que predomina en reposo y digestión."
+    "Neurona": "Célula nerviosa que conduce impulsos.",
+    "Neuroglía": "Células que sostienen y protegen neuronas.",
+    "Soma": "Cuerpo celular de la neurona.",
+    "Dendrita": "Prolongación que recibe señales.",
+    "Axón": "Prolongación que conduce el impulso.",
+    "Mielina": "Cubierta lipídica aislante del axón.",
+    "Nodo de Ranvier": "Espacio sin mielina entre segmentos.",
+    "Sinapsis": "Unión de comunicación entre células.",
+    "Neurotransmisor": "Mensajero químico liberado en la sinapsis.",
+    "Potencial de reposo": "Carga eléctrica de neurona inactiva.",
+    "Potencial de acción": "Cambio eléctrico que forma el impulso.",
+    "Despolarización": "Membrana se vuelve menos negativa.",
+    "Repolarización": "Membrana recupera su carga negativa.",
+    "Hiperpolarización": "Membrana más negativa que en reposo.",
+    "Umbral": "Nivel mínimo para disparar impulso.",
+    "Periodo refractario": "Tiempo sin poder generar otro impulso.",
+    "Aferente": "Que conduce hacia el sistema central.",
+    "Eferente": "Que conduce desde el sistema central.",
+    "Ganglio": "Grupo de somas fuera del SNC.",
+    "Nervio": "Haz de axones envuelto en tejido conectivo.",
+    "Astrocito": "Célula glial con forma de estrella.",
+    "Oligodendrocito": "Célula glial que forma mielina central.",
+    "Microglía": "Células gliales defensoras del SNC.",
+    "Célula ependimaria": "Célula que reviste cavidades del SNC.",
+    "Célula de Schwann": "Célula que forma mielina periférica.",
+    "Meninges": "Tres membranas que envuelven el SNC.",
+    "Duramadre": "Meninge externa, gruesa y fibrosa.",
+    "Aracnoides": "Meninge intermedia con aspecto de telaraña.",
+    "Piamadre": "Meninge interna adherida al tejido nervioso.",
+    "Líquido cefalorraquídeo": "Líquido que baña encéfalo y médula.",
+    "Plexo coroideo": "Estructura que produce líquido cefalorraquídeo.",
+    "Ventrículo cerebral": "Cavidad del encéfalo con líquido.",
+    "Barrera hematoencefálica": "Filtro entre sangre y tejido nervioso.",
+    "Encéfalo": "Parte del SNC dentro del cráneo.",
+    "Cerebro": "Porción más grande del encéfalo.",
+    "Corteza cerebral": "Capa externa de sustancia gris.",
+    "Cuerpo calloso": "Haz de fibras que une hemisferios.",
+    "Circunvolución": "Pliegue elevado de la corteza.",
+    "Cisura": "Surco profundo de la corteza.",
+    "Sustancia gris": "Tejido con somas y dendritas.",
+    "Sustancia blanca": "Tejido con axones mielínicos.",
+    "Ganglios basales": "Núcleos profundos que regulan el movimiento.",
+    "Sistema límbico": "Conjunto que regula emociones y memoria.",
+    "Hipocampo": "Estructura que forma nuevas memorias.",
+    "Amígdala": "Núcleos que procesan el miedo.",
+    "Diencéfalo": "Región central entre cerebro y tronco.",
+    "Tálamo": "Estación de relevo sensitivo.",
+    "Hipotálamo": "Centro de control de la homeostasis.",
+    "Glándula pineal": "Glándula que secreta melatonina.",
+    "Tronco encefálico": "Une encéfalo con médula espinal.",
+    "Mesencéfalo": "Parte superior del tronco encefálico.",
+    "Puente": "Parte media del tronco encefálico.",
+    "Bulbo raquídeo": "Parte inferior del tronco encefálico.",
+    "Formación reticular": "Red que regula la vigilia.",
+    "Cerebelo": "Estructura que coordina el movimiento.",
+    "Ataxia": "Pérdida de coordinación del movimiento.",
+    "Médula espinal": "Cordón nervioso dentro de la columna.",
+    "Asta": "Prolongación de la sustancia gris medular.",
+    "Plexo nervioso": "Red formada por nervios espinales.",
+    "Sistema nervioso somático": "División voluntaria del SNP.",
+    "Acto reflejo": "Respuesta rápida e involuntaria.",
+    "Arco reflejo": "Vía nerviosa del acto reflejo.",
+    "Sistema nervioso autónomo": "División involuntaria del SNP.",
+    "Simpático": "División que prepara lucha o huida.",
+    "Parasimpático": "División que favorece reposo y digestión.",
+    "Neurona preganglionar": "Neurona autónoma anterior al ganglio.",
+    "Neurona posganglionar": "Neurona autónoma posterior al ganglio.",
+    "Sistema nervioso entérico": "Red neuronal del tubo digestivo.",
+    "Midriasis": "Dilatación de la pupila.",
+    "Miosis": "Contracción de la pupila.",
+    "Acetilcolina": "Neurotransmisor de músculos y parasimpático.",
+    "Dopamina": "Neurotransmisor del movimiento y recompensa.",
+    "Serotonina": "Neurotransmisor del ánimo y sueño.",
+    "Noradrenalina": "Neurotransmisor del simpático.",
+    "Glutamato": "Principal neurotransmisor excitador.",
+    "Endorfina": "Péptido analgésico natural.",
+    "Meningitis": "Inflamación de las meninges.",
+    "Afasia": "Alteración del lenguaje por lesión cerebral."
   },
   "theory": [
     {
-      "titulo": "Sistema nervioso central",
+      "titulo": "Concepto general",
       "puntos": [
-        { "texto": "El sistema nervioso central está formado por el encéfalo y la médula espinal.", "explicacion": "Procesa la información sensorial y genera las respuestas motoras." },
-        { "texto": "El encéfalo tiene cerebro, cerebelo, tronco encefálico y diencéfalo.", "explicacion": "Cada región cumple funciones específicas, como el cerebelo en la coordinación motora." },
-        { "texto": "El tronco encefálico controla la respiración y la frecuencia cardíaca.", "explicacion": "Por eso una lesión grave en esta región compromete la vida." }
+        {
+          "texto": "El «sistema nervioso» controla y coordina el organismo",
+          "explicacion": "Es la red de órganos formada por tejido nervioso que capta información del ambiente y del interior del cuerpo, la procesa y organiza respuestas. A diferencia del sistema endocrino, que actúa con hormonas transportadas por la sangre y con efectos más lentos y duraderos, el sistema nervioso trabaja con señales eléctricas y químicas que producen respuestas en milisegundos. Funciona como una central de mando con cables: los nervios sensitivos llevan avisos, el encéfalo decide y los nervios motores llevan las órdenes."
+        },
+        {
+          "texto": "Tejido nervioso = neuronas + neuroglía",
+          "explicacion": "El tejido nervioso tiene dos tipos de células. Las neuronas generan y transmiten los impulsos nerviosos, mientras que la neuroglía (células gliales) sostiene, nutre, protege y aísla a las neuronas. Ninguno de los dos tipos puede faltar: sin neuroglía las neuronas no sobreviven ni conducen bien la información."
+        },
+        {
+          "texto": "Función sensitiva ⇒ captar estímulos",
+          "explicacion": "Los receptores sensoriales detectan cambios del medio externo (luz, sonido, temperatura, presión) y del medio interno (acidez de la sangre, estiramiento de órganos, dolor). Esa información se convierte en impulsos nerviosos que viajan hacia el sistema nervioso central por las neuronas sensitivas."
+        },
+        {
+          "texto": "Función integradora ⇒ procesar la información",
+          "explicacion": "El sistema nervioso central compara, analiza y almacena la información recibida y decide qué respuesta corresponde. Aquí participan millones de neuronas conectadas entre sí, que pueden sumar, filtrar o ignorar señales según su importancia y según experiencias previas guardadas como memoria."
+        },
+        {
+          "texto": "Función motora ⇒ elaborar respuestas",
+          "explicacion": "Tras integrar la información, el sistema nervioso envía órdenes por las neuronas motoras hacia los órganos efectores, que son los músculos (esqueléticos, lisos y cardíaco) y las glándulas. Así se produce el movimiento, el latido, la secreción de sudor o de jugos digestivos."
+        },
+        {
+          "texto": "Función homeostática ⇒ mantener el equilibrio interno",
+          "explicacion": "El sistema nervioso, junto con el sistema endocrino, mantiene constantes la temperatura, la presión arterial, el ritmo respiratorio y la concentración de gases y glucosa en la sangre. Centros como el hipotálamo y el bulbo raquídeo detectan desviaciones y las corrigen sin que la persona lo decida."
+        },
+        {
+          "texto": "El sistema nervioso hace posibles las funciones superiores",
+          "explicacion": "Además de coordinar el cuerpo, el sistema nervioso permite pensar, razonar, recordar, aprender, hablar y sentir emociones. Estas funciones dependen sobre todo de la corteza cerebral y de sus conexiones con estructuras profundas como el hipocampo y la amígdala."
+        },
+        {
+          "texto": "Encéfalo adulto pesa alrededor de 1,4 kilogramos",
+          "explicacion": "El encéfalo humano adulto tiene una masa aproximada de 1,3 a 1,4 kilogramos, es decir, cerca del dos por ciento del peso corporal de un adulto promedio, pero consume una proporción muy grande de la energía del cuerpo. Su alto consumo de glucosa y oxígeno explica por qué unos minutos sin riego sanguíneo dañan el tejido."
+        },
+        {
+          "texto": "Encéfalo humano ≈ 86 mil millones de neuronas",
+          "explicacion": "Las estimaciones actuales mediante conteo celular indican alrededor de 86 mil millones de neuronas en el encéfalo humano, acompañadas por una cantidad similar de células gliales. Es una cifra aproximada, por eso se escribe con el signo de similitud y no de igualdad exacta."
+        }
+      ]
+    },
+    {
+      "titulo": "División del sistema",
+      "puntos": [
+        {
+          "texto": "Sistema Nervioso Central (SNC) = encéfalo + médula espinal",
+          "explicacion": "El SNC es el centro de integración y control del organismo. Recibe información de todo el cuerpo, la procesa y envía órdenes. El encéfalo se aloja dentro del cráneo y la médula espinal dentro del conducto vertebral (conducto raquídeo) de la columna vertebral."
+        },
+        {
+          "texto": "Sistema Nervioso Periférico (SNP) = nervios + ganglios",
+          "explicacion": "El SNP reúne todo el tejido nervioso que está fuera del encéfalo y de la médula. Está formado por nervios craneales, nervios espinales y ganglios nerviosos, y funciona como la vía de comunicación entre el SNC y el resto del cuerpo, incluidos los receptores sensoriales."
+        },
+        {
+          "texto": "Vía aferente → información hacia el SNC",
+          "explicacion": "Las fibras aferentes o sensitivas conducen los impulsos desde los receptores de la piel, los músculos, las vísceras y los órganos de los sentidos hasta el SNC. El prefijo «a-» de aferente recuerda que la información llega al centro."
+        },
+        {
+          "texto": "Vía eferente → órdenes desde el SNC",
+          "explicacion": "Las fibras eferentes o motoras conducen los impulsos desde el SNC hasta los músculos y las glándulas. La palabra eferente recuerda que la orden sale del centro de control."
+        },
+        {
+          "texto": "División eferente del SNP ⊃ sistema somático",
+          "explicacion": "La rama eferente del SNP tiene un componente voluntario que inerva el músculo esquelético y se llama sistema nervioso somático. Se desarrolla más adelante en su propio apartado."
+        },
+        {
+          "texto": "División eferente del SNP ⊃ sistema autónomo",
+          "explicacion": "La otra parte de la rama eferente es involuntaria, inerva músculo liso, músculo cardíaco y glándulas, y se llama sistema nervioso autónomo (SNA). También se desarrolla en su propio apartado."
+        }
+      ]
+    },
+    {
+      "titulo": "Neurona",
+      "puntos": [
+        {
+          "texto": "La «neurona» es la unidad estructural y funcional del sistema nervioso",
+          "explicacion": "Es la célula especializada en recibir estímulos, generar impulsos nerviosos y transmitirlos a otras neuronas, a músculos o a glándulas. Es estructural porque forma el tejido nervioso y funcional porque realiza la función de conducción de información."
+        },
+        {
+          "texto": "Santiago Ramón y Cajal formuló la doctrina neuronal",
+          "explicacion": "El médico español Santiago Ramón y Cajal propuso que el sistema nervioso está formado por neuronas individuales que se comunican por contacto y no por continuidad. Por este trabajo recibió el Premio Nobel de Fisiología o Medicina en 1906, compartido con Camillo Golgi."
+        },
+        {
+          "texto": "Camillo Golgi desarrolló la tinción de la reacción negra",
+          "explicacion": "El médico italiano Camillo Golgi creó un método de tinción con sales de plata (reacción negra) que permitió ver neuronas completas al microscopio. Él defendía la teoría reticular, según la cual las neuronas formaban una red continua, idea que luego fue reemplazada por la doctrina neuronal."
+        },
+        {
+          "texto": "Heinrich Wilhelm Gottfried von Waldeyer-Hartz propuso el término neurona",
+          "explicacion": "En 1891 este anatomista alemán introdujo la palabra «neurona» para designar la célula nerviosa y resumió los aportes de la doctrina neuronal. La palabra procede del griego neuron, que significa nervio."
+        },
+        {
+          "texto": "Neurona ⇒ excitabilidad",
+          "explicacion": "La excitabilidad (irritabilidad) es la capacidad de responder a un estímulo cambiando el potencial eléctrico de su membrana. Gracias a ella la neurona puede iniciar un impulso nervioso cuando el estímulo supera cierto valor."
+        },
+        {
+          "texto": "Neurona ⇒ conductividad",
+          "explicacion": "La conductividad es la capacidad de propagar el cambio eléctrico a lo largo de la membrana, desde el sitio de estímulo hasta el extremo del axón. Es la propiedad que permite llevar el mensaje a larga distancia."
+        },
+        {
+          "texto": "Neuronas maduras ≈ no se dividen",
+          "explicacion": "En general las neuronas ya diferenciadas pierden la capacidad de dividirse por mitosis, por eso su pérdida por lesión o enfermedad es difícil de reponer. Existen regiones limitadas, como parte del hipocampo, donde se ha descrito formación de nuevas neuronas."
+        },
+        {
+          "texto": "Neurona ⇒ alto consumo de energía",
+          "explicacion": "La neurona gasta mucho trifosfato de adenosina (ATP, la molécula que almacena energía celular) para mantener sus gradientes de iones y para sintetizar neurotransmisores. Obtiene ese ATP principalmente de la glucosa y del oxígeno que llegan por la sangre, y casi no almacena reservas."
+        }
+      ]
+    },
+    {
+      "titulo": "Partes de la neurona",
+      "puntos": [
+        {
+          "texto": "El «soma» contiene el núcleo de la neurona",
+          "explicacion": "El soma es la parte central de la célula donde está el núcleo con su nucléolo y la mayor parte de los orgánulos. Allí se sintetizan proteínas y se coordina el metabolismo de toda la neurona. Recibe señales de las dendritas y las integra antes de que se genere el impulso."
+        },
+        {
+          "texto": "Otro nombre del soma es «pericarion»",
+          "explicacion": "Pericarion procede del griego y significa alrededor del núcleo. Se usa como sinónimo de soma en los textos de histología y es el mismo concepto."
+        },
+        {
+          "texto": "Otro nombre del soma es «cuerpo celular»",
+          "explicacion": "Es la forma más sencilla de llamar a esta región. En el SNC los cuerpos celulares se agrupan formando la sustancia gris y los núcleos, y en el SNP forman los ganglios."
+        },
+        {
+          "texto": "Los «cuerpos de Nissl» son retículo endoplasmático rugoso",
+          "explicacion": "Son acúmulos de retículo endoplasmático rugoso y ribosomas que se tiñen de forma intensa en el soma y en las dendritas, pero no en el axón. Reciben el nombre del neuropatólogo alemán Franz Nissl, y se relacionan con la gran síntesis de proteínas de la neurona."
+        },
+        {
+          "texto": "Las «neurofibrillas» forman el citoesqueleto de la neurona",
+          "explicacion": "Las neurofibrillas están compuestas por neurofilamentos y microtúbulos, que dan forma y sostén a la célula y sirven de vías para transportar sustancias entre el soma y los extremos del axón."
+        },
+        {
+          "texto": "Las «dendritas» reciben información",
+          "explicacion": "Son prolongaciones cortas, ramificadas y numerosas que salen del soma y aumentan la superficie para recibir señales de otras neuronas o de receptores. Conducen el impulso hacia el soma, y en muchas neuronas tienen espinas dendríticas donde se ubican las sinapsis."
+        },
+        {
+          "texto": "El «axón» conduce el impulso lejos del soma",
+          "explicacion": "Es una prolongación única, larga y de diámetro constante, que lleva el impulso nervioso desde el soma hasta los terminales. En el ser humano puede medir más de un metro, como los axones de las neuronas motoras que van desde la médula hasta los músculos del pie."
+        },
+        {
+          "texto": "El «cono axónico» origina el impulso nervioso",
+          "explicacion": "Es la región del soma donde nace el axón, y junto con el segmento inicial posee una alta densidad de canales de sodio dependientes de voltaje. Por eso es la zona con el umbral de excitación más bajo, donde se suman las señales recibidas y se decide si se genera un potencial de acción."
+        },
+        {
+          "texto": "El «axolema» es la membrana del axón",
+          "explicacion": "Es la membrana plasmática que reviste al axón y que contiene los canales iónicos responsables de conducir el potencial de acción. El citoplasma que encierra se llama axoplasma."
+        },
+        {
+          "texto": "El axón puede tener ramas colaterales",
+          "explicacion": "A lo largo de su trayecto el axón puede emitir ramificaciones laterales llamadas colaterales, lo que permite que una neurona transmita la misma señal a varias células a la vez."
+        },
+        {
+          "texto": "Los «terminales axónicos» liberan neurotransmisores",
+          "explicacion": "El extremo del axón se divide en ramas terminales (telodendrón) que acaban en dilataciones llamadas botones sinápticos o terminales. En su interior hay mitocondrias y vesículas sinápticas llenas de neurotransmisor, que se liberan cuando llega el impulso."
+        },
+        {
+          "texto": "Las «vesículas sinápticas» almacenan neurotransmisores",
+          "explicacion": "Son pequeños sacos membranosos del terminal axónico que guardan moléculas de neurotransmisor. Cuando llega el impulso se fusionan con la membrana y vacían su contenido a la hendidura sináptica."
+        },
+        {
+          "texto": "El transporte axónico mueve sustancias por el axón",
+          "explicacion": "El soma fabrica proteínas y orgánulos que deben llegar a los terminales. El transporte anterógrado los lleva hacia el extremo con ayuda de la proteína motora cinesina, y el transporte retrógrado devuelve materiales hacia el soma con la proteína dineína, utilizando los microtúbulos como rieles y gastando ATP."
+        }
+      ]
+    },
+    {
+      "titulo": "Neuronas por función",
+      "puntos": [
+        {
+          "texto": "Las neuronas sensitivas conducen impulsos hacia el SNC",
+          "explicacion": "También se llaman aferentes. Sus extremos están en receptores de la piel, músculos, vísceras u órganos de los sentidos, y llevan la información hasta el SNC. La mayoría son neuronas pseudounipolares con el soma agrupado en ganglios sensitivos, fuera del SNC."
+        },
+        {
+          "texto": "Las neuronas motoras conducen impulsos desde el SNC",
+          "explicacion": "También se llaman eferentes. Sus somas están en el SNC (o en ganglios autónomos) y sus axones llegan a músculos o glándulas. La mayoría son multipolares. Las motoneuronas de la médula, por ejemplo, controlan los músculos esqueléticos."
+        },
+        {
+          "texto": "Las interneuronas conectan neuronas dentro del SNC",
+          "explicacion": "También se llaman neuronas de asociación o intercalares. Están ubicadas entre las neuronas sensitivas y las motoras y forman los circuitos que integran la información. Son las más numerosas del sistema nervioso y participan en los reflejos polisinápticos y en el pensamiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Neuronas por forma",
+      "puntos": [
+        {
+          "texto": "La neurona «multipolar» tiene un axón y varias dendritas",
+          "explicacion": "Presenta muchas prolongaciones que salen del soma, una de las cuales es el axón. Es el tipo más abundante en el SNC. Son ejemplos las motoneuronas de la médula espinal, las células piramidales de la corteza cerebral y las células de Purkinje del cerebelo, descritas por Jan Evangelista Purkyně."
+        },
+        {
+          "texto": "La neurona «bipolar» tiene un axón y una dendrita",
+          "explicacion": "Posee dos prolongaciones que salen de polos opuestos del soma. Es poco frecuente y se halla en órganos de los sentidos: células bipolares de la retina, neuronas del epitelio olfatorio y neuronas de los ganglios del oído interno."
+        },
+        {
+          "texto": "La neurona «pseudounipolar» tiene una sola prolongación",
+          "explicacion": "Desde el soma sale una sola prolongación que se divide en forma de T en dos ramas, una periférica que recibe estímulos y una central que llega al SNC. Se le llama también unipolar. Es típica de las neuronas sensitivas de los ganglios de la raíz dorsal de los nervios espinales."
+        }
+      ]
+    },
+    {
+      "titulo": "Neuroglía",
+      "puntos": [
+        {
+          "texto": "La «neuroglía» no genera impulsos nerviosos",
+          "explicacion": "Las células gliales no conducen potenciales de acción, pero cumplen funciones indispensables: sostén, nutrición, aislamiento, defensa y regulación del medio químico alrededor de las neuronas. Se dividen en neuroglía del SNC y del SNP."
+        },
+        {
+          "texto": "Los «astrocitos» sostienen y nutren a las neuronas",
+          "explicacion": "Son células en forma de estrella, las más abundantes y grandes de la glía del SNC. Rodean los capilares sanguíneos y las sinapsis, aportan nutrientes, captan el exceso de neurotransmisores e iones de potasio, y reparan el tejido formando cicatrices gliales."
+        },
+        {
+          "texto": "Los astrocitos participan en la barrera hematoencefálica",
+          "explicacion": "Sus pies vasculares envuelven los capilares del encéfalo y ayudan a inducir y mantener las uniones estrechas del endotelio, que seleccionan las sustancias que pasan de la sangre al tejido nervioso."
+        },
+        {
+          "texto": "Los «oligodendrocitos» producen mielina en el SNC",
+          "explicacion": "Cada oligodendrocito emite varias prolongaciones y puede envolver segmentos de varios axones a la vez. La mielina que forman aísla eléctricamente al axón y acelera la conducción del impulso."
+        },
+        {
+          "texto": "La «microglía» defiende al SNC",
+          "explicacion": "Son las células más pequeñas de la glía y funcionan como los macrófagos del sistema nervioso: fagocitan restos celulares, microbios y células muertas. Se activan en infecciones y lesiones, y se consideran las células inmunitarias residentes del encéfalo."
+        },
+        {
+          "texto": "Las células «ependimarias» revisten las cavidades del SNC",
+          "explicacion": "Forman una capa epitelial que reviste los ventrículos del encéfalo y el conducto central de la médula. Tienen cilios que ayudan a mover el líquido cefalorraquídeo y participan en su formación en los plexos coroideos."
+        },
+        {
+          "texto": "Las «células de Schwann» producen mielina en el SNP",
+          "explicacion": "Reciben el nombre del fisiólogo alemán Theodor Schwann. Cada célula de Schwann envuelve un solo segmento de un axón del SNP, y su capa externa forma el neurilema, que favorece la regeneración de los axones periféricos dañados."
+        },
+        {
+          "texto": "Las «células satélite» rodean los somas de los ganglios",
+          "explicacion": "Son células gliales pequeñas y aplanadas que rodean los cuerpos neuronales en los ganglios del SNP. Regulan el ambiente químico de la neurona y le proporcionan sostén y protección."
+        }
+      ]
+    },
+    {
+      "titulo": "Mielina",
+      "puntos": [
+        {
+          "texto": "La «vaina de mielina» aísla el axón",
+          "explicacion": "Es una cubierta formada por capas de membrana de células gliales, rica en lípidos (como esfingomielina y colesterol), que funciona como aislante eléctrico. No cubre al axón de forma continua, sino a tramos separados por nodos."
+        },
+        {
+          "texto": "Los «nodos de Ranvier» son interrupciones de la mielina",
+          "explicacion": "Son los pequeños espacios sin mielina entre dos segmentos de vaina, descritos por el histólogo francés Louis-Antoine Ranvier. En ellos el axolema queda expuesto y se concentran los canales de sodio dependientes de voltaje donde se regenera el potencial de acción."
+        },
+        {
+          "texto": "La «sustancia blanca» tiene axones mielínicos",
+          "explicacion": "Su color blanquecino se debe al contenido de mielina. Está formada por haces de axones que conectan regiones del SNC, y se ubica en el interior del cerebro y en la periferia de la médula espinal."
+        },
+        {
+          "texto": "La «sustancia gris» tiene somas y dendritas",
+          "explicacion": "Contiene los cuerpos de las neuronas, dendritas, axones amielínicos y neuroglía, y tiene un color grisáceo por la falta de mielina. Forma la corteza cerebral, la corteza cerebelosa, los núcleos profundos y el centro de la médula espinal."
+        },
+        {
+          "texto": "Fibras amielínicas ✗ vaina de mielina",
+          "explicacion": "Son axones que carecen de mielina o solo están rodeados por glía sin enrollamiento. Conducen el impulso de forma más lenta porque el potencial de acción se propaga punto por punto a lo largo de toda la membrana."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencial de reposo",
+      "puntos": [
+        {
+          "texto": "El «potencial de reposo» es de −70 milivoltios",
+          "explicacion": "Es la diferencia de carga eléctrica entre el interior y el exterior de la membrana de una neurona que no está generando impulsos. Se mide en milivoltios (mV) y el interior es negativo respecto al exterior. En ese estado se dice que la membrana está polarizada."
+        },
+        {
+          "texto": "Reposo ⇒ más sodio fuera que dentro",
+          "explicacion": "Los iones sodio (Na⁺) están mucho más concentrados en el líquido extracelular que dentro de la neurona. Este gradiente es la fuerza que provoca la entrada de sodio cuando se abren sus canales durante un potencial de acción."
+        },
+        {
+          "texto": "Reposo ⇒ más potasio dentro que fuera",
+          "explicacion": "Los iones potasio (K⁺) están mucho más concentrados dentro de la neurona. Como la membrana en reposo es permeable al potasio, parte de este sale por canales de fuga, y esa salida deja el interior más negativo."
+        },
+        {
+          "texto": "La «bomba sodio-potasio» gasta ATP",
+          "explicacion": "La enzima sodio-potasio ATPasa es un transporte activo que saca tres iones sodio de la neurona e introduce dos iones potasio, usando la energía del ATP. Al sacar más cargas positivas de las que entran, contribuye a la negatividad interna y restablece los gradientes después de cada impulso."
+        },
+        {
+          "texto": "Canales de fuga de potasio ⇒ interior negativo",
+          "explicacion": "En reposo la membrana tiene muchos más canales abiertos para el potasio que para el sodio, por lo que sale más carga positiva de la que entra. Las proteínas con carga negativa que permanecen en el interior no pueden salir, y eso mantiene la polaridad."
+        }
+      ]
+    },
+    {
+      "titulo": "Potencial de acción",
+      "puntos": [
+        {
+          "texto": "El «potencial de acción» es el impulso nervioso",
+          "explicacion": "Es un cambio rápido y breve del potencial de membrana que se propaga a lo largo del axón sin perder intensidad. Dura aproximadamente de uno a dos milisegundos y es la señal básica con la que las neuronas transmiten información."
+        },
+        {
+          "texto": "Estímulo ≥ umbral ⇒ potencial de acción",
+          "explicacion": "El umbral es el nivel de despolarización que debe alcanzar la membrana para disparar el impulso, y está entre −55 y −50 milivoltios, unos 15 milivoltios más positivo que el reposo. Un estímulo menor al umbral solo produce un cambio local que desaparece."
+        },
+        {
+          "texto": "Ley del «todo o nada»",
+          "explicacion": "Si el estímulo alcanza el umbral, el potencial de acción se produce con la misma amplitud siempre; si no lo alcanza, no se produce. La intensidad del estímulo no cambia el tamaño del impulso, sino la frecuencia con la que se repite."
+        },
+        {
+          "texto": "Despolarización → entrada de sodio",
+          "explicacion": "Al llegar al umbral se abren los canales de sodio dependientes de voltaje, el sodio entra a favor de su gradiente y el interior se vuelve positivo, hasta alcanzar un pico cercano a +30 o +40 milivoltios. Es una retroalimentación positiva: más sodio que entra abre más canales."
+        },
+        {
+          "texto": "Repolarización → salida de potasio",
+          "explicacion": "En el pico los canales de sodio se inactivan y se abren los canales de potasio dependientes de voltaje. El potasio sale de la célula y el potencial vuelve a ser negativo."
+        },
+        {
+          "texto": "Hiperpolarización → potencial menor al de reposo",
+          "explicacion": "Como los canales de potasio se cierran lentamente, salen más cargas positivas de las necesarias y el potencial baja a unos −75 milivoltios, más negativo que el reposo. Luego la bomba sodio-potasio y los canales de fuga restablecen el reposo."
+        },
+        {
+          "texto": "Periodo refractario absoluto ⇒ ✗ nuevo impulso",
+          "explicacion": "Mientras los canales de sodio están inactivados, no puede generarse otro potencial de acción por fuerte que sea el estímulo. Abarca la despolarización y la mayor parte de la repolarización."
+        },
+        {
+          "texto": "Periodo refractario relativo ⇒ requiere estímulo mayor",
+          "explicacion": "Al final de la repolarización y durante la hiperpolarización puede producirse un nuevo impulso, pero solo con un estímulo más intenso que el normal porque el potencial está más lejos del umbral."
+        },
+        {
+          "texto": "El periodo refractario ⇒ impulso unidireccional",
+          "explicacion": "Como la zona recién activada no puede responder de inmediato, el impulso avanza en una sola dirección, desde el cono axónico hacia el terminal, y no retrocede."
+        },
+        {
+          "texto": "Intensidad del estímulo ↑ ⇒ frecuencia de impulsos ↑",
+          "explicacion": "Un estímulo más fuerte no produce potenciales de mayor amplitud, sino más potenciales por segundo y la activación de más neuronas. Así el sistema nervioso distingue un tacto leve de uno intenso."
+        }
+      ]
+    },
+    {
+      "titulo": "Conducción del impulso",
+      "puntos": [
+        {
+          "texto": "Axón amielínico ⇒ conducción continua",
+          "explicacion": "En los axones sin mielina el potencial de acción se regenera en cada punto contiguo de la membrana, como una onda que avanza paso a paso. Es lenta, con velocidades aproximadas de 0,5 a 2 metros por segundo."
+        },
+        {
+          "texto": "Axón mielínico ⇒ conducción saltatoria",
+          "explicacion": "En los axones con mielina el impulso salta de un nodo de Ranvier al siguiente, porque solo allí se abren canales de sodio. Esto acelera la conducción hasta alrededor de 100 a 120 metros por segundo."
+        },
+        {
+          "texto": "Conducción saltatoria ⇒ ahorro de energía",
+          "explicacion": "Como solo se despolariza la membrana en los nodos, entran y salen menos iones por impulso, y la bomba sodio-potasio gasta menos ATP en restablecer los gradientes."
+        },
+        {
+          "texto": "Diámetro del axón ↑ ⇒ velocidad ↑",
+          "explicacion": "Un axón más grueso ofrece menor resistencia interna al paso de la corriente eléctrica, y por eso conduce más rápido. Las fibras mielínicas gruesas llevan las órdenes motoras y los estímulos de tacto fino, y las fibras delgadas amielínicas llevan, por ejemplo, el dolor lento."
+        }
+      ]
+    },
+    {
+      "titulo": "Sinapsis",
+      "puntos": [
+        {
+          "texto": "La «sinapsis» es el contacto entre una neurona y otra célula",
+          "explicacion": "Es la zona especializada donde una neurona transmite información a otra neurona, a una fibra muscular o a una célula glandular. El término fue propuesto por Charles Scott Sherrington en 1897, y viene del griego synapsis, que significa unión."
+        },
+        {
+          "texto": "Sinapsis eléctrica = uniones comunicantes entre células",
+          "explicacion": "Está formada por canales proteicos llamados conexones que unen el citoplasma de dos células, y permiten que la corriente pase directamente. Es muy rápida y bidireccional, y se presenta en el músculo cardíaco, el músculo liso y algunas neuronas."
+        },
+        {
+          "texto": "Sinapsis química = liberación de neurotransmisor",
+          "explicacion": "Entre las células hay un espacio llamado hendidura sináptica, de unos 20 a 40 nanómetros, y la señal pasa en forma de moléculas químicas. Es unidireccional y la más frecuente en el sistema nervioso humano."
+        },
+        {
+          "texto": "El «terminal presináptico» libera el neurotransmisor",
+          "explicacion": "Es el extremo del axón de la neurona que envía la señal. Contiene mitocondrias, vesículas sinápticas y canales de calcio dependientes de voltaje."
+        },
+        {
+          "texto": "La «hendidura sináptica» separa las dos células",
+          "explicacion": "Es el espacio de unos 20 a 40 nanómetros entre la membrana presináptica y la postsináptica, por donde se difunde el neurotransmisor. En ella hay enzimas que pueden degradarlo."
+        },
+        {
+          "texto": "La «membrana postsináptica» tiene receptores",
+          "explicacion": "Es la membrana de la célula que recibe la señal. Posee receptores específicos para el neurotransmisor, que al unirse abren o cierran canales iónicos o activan procesos dentro de la célula."
+        },
+        {
+          "texto": "Sinapsis axodendrítica ⇒ axón contacta con dendrita",
+          "explicacion": "Es el tipo más frecuente, donde el terminal de un axón se conecta con una dendrita o una espina dendrítica de otra neurona."
+        },
+        {
+          "texto": "Sinapsis axosomática ⇒ axón contacta con soma",
+          "explicacion": "El terminal axónico hace contacto directo con el cuerpo celular de la neurona receptora, y suele tener un efecto fuerte sobre ella."
+        },
+        {
+          "texto": "Sinapsis axoaxónica ⇒ axón contacta con axón",
+          "explicacion": "Un terminal axónico se conecta con otro axón y regula cuánto neurotransmisor libera, por lo que modula la transmisión, sobre todo de forma inhibidora."
+        },
+        {
+          "texto": "Llegada del potencial de acción al terminal ⇒ abre canales de calcio",
+          "explicacion": "Al llegar la despolarización al terminal presináptico se abren canales de calcio dependientes de voltaje, y los iones calcio (Ca²⁺) entran porque su concentración es mayor fuera de la célula. Es el paso que convierte la señal eléctrica en química."
+        },
+        {
+          "texto": "Entrada de calcio ⇒ exocitosis de vesículas",
+          "explicacion": "El calcio permite que las vesículas sinápticas se fusionen con la membrana presináptica y viertan su contenido de neurotransmisor a la hendidura sináptica. A mayor entrada de calcio, mayor cantidad de neurotransmisor liberado."
+        },
+        {
+          "texto": "Neurotransmisor → difunde por la hendidura",
+          "explicacion": "Las moléculas liberadas se mueven por difusión a través del espacio sináptico, un recorrido muy corto que se cumple en una fracción de milisegundo."
+        },
+        {
+          "texto": "Neurotransmisor ✓ receptor específico",
+          "explicacion": "El neurotransmisor se une al receptor de la membrana postsináptica como una llave a su cerradura. Cada receptor reconoce un tipo de neurotransmisor, y el efecto depende del receptor y no solo de la sustancia liberada."
+        },
+        {
+          "texto": "Potencial postsináptico excitador (PPSE) ⇒ despolariza",
+          "explicacion": "Es un cambio local que acerca el potencial de la célula postsináptica al umbral, por ejemplo cuando el glutamato abre canales que dejan entrar sodio. Favorece que se genere un potencial de acción."
+        },
+        {
+          "texto": "Potencial postsináptico inhibidor (PPSI) ⇒ hiperpolariza",
+          "explicacion": "Es un cambio local que aleja el potencial del umbral, por ejemplo cuando el neurotransmisor ácido gamma-aminobutírico (GABA) abre canales de cloro. Dificulta que se genere un potencial de acción."
+        },
+        {
+          "texto": "Sumación espacial ⇒ suma de señales de varias sinapsis",
+          "explicacion": "Una neurona recibe miles de sinapsis a la vez, y en el cono axónico se suman al mismo tiempo los potenciales excitadores e inhibidores de diferentes lugares. Si el resultado alcanza el umbral, dispara el impulso."
+        },
+        {
+          "texto": "Sumación temporal ⇒ suma de señales repetidas",
+          "explicacion": "Cuando una misma sinapsis recibe impulsos muy seguidos, sus efectos se acumulan antes de desaparecer y pueden llegar al umbral aunque cada uno por separado no lo logre."
+        },
+        {
+          "texto": "Fin de la señal ⇒ retirar el neurotransmisor",
+          "explicacion": "La señal debe terminar para que la sinapsis pueda volver a funcionar. El neurotransmisor se elimina por recaptación hacia el terminal o hacia los astrocitos, por degradación enzimática o por difusión fuera de la hendidura."
+        },
+        {
+          "texto": "Acetilcolinesterasa degrada acetilcolina",
+          "explicacion": "Esta enzima de la hendidura sináptica rompe la acetilcolina en colina y acetato, y así termina su efecto. Algunos gases nerviosos y plaguicidas la inhiben, y por eso producen una excitación excesiva y peligrosa."
+        },
+        {
+          "texto": "Placa motora = sinapsis entre neurona motora y músculo esquelético",
+          "explicacion": "También llamada unión neuromuscular, usa acetilcolina como neurotransmisor y provoca la contracción de la fibra muscular. Es un ejemplo de sinapsis que conecta el sistema nervioso con el tejido muscular."
+        }
+      ]
+    },
+    {
+      "titulo": "Neurotransmisores",
+      "puntos": [
+        {
+          "texto": "Un «neurotransmisor» es un mensajero químico de la sinapsis",
+          "explicacion": "Es una molécula sintetizada por la neurona, almacenada en vesículas y liberada al llegar el impulso, que se une a receptores de otra célula y cambia su actividad. Según el receptor, el efecto puede ser excitador o inhibidor."
+        },
+        {
+          "texto": "La «acetilcolina» (ACh) activa músculos y regula el parasimpático",
+          "explicacion": "Es el neurotransmisor de la placa motora, de las neuronas preganglionares autónomas y de las posganglionares parasimpáticas, y participa en la memoria y el aprendizaje en el encéfalo. Otto Loewi demostró en 1921 su acción como mensajero químico al estudiar el nervio vago de la rana."
+        },
+        {
+          "texto": "El curare ⇒ bloquea receptores de acetilcolina",
+          "explicacion": "Esta sustancia de origen vegetal, usada por pueblos amazónicos en flechas, impide que la acetilcolina active el músculo y produce parálisis flácida. Es un caso que muestra la importancia del neurotransmisor en la contracción."
+        },
+        {
+          "texto": "La toxina botulínica ⇒ impide liberar acetilcolina",
+          "explicacion": "Esta toxina producida por la bacteria Clostridium botulinum bloquea la exocitosis de acetilcolina en la placa motora y paraliza el músculo. En dosis controladas se utiliza en medicina para relajar músculos hiperactivos."
+        },
+        {
+          "texto": "La «dopamina» regula movimiento y recompensa",
+          "explicacion": "Es un neurotransmisor producido sobre todo en la sustancia negra y en el área tegmental ventral. Participa en el control del movimiento, la motivación y el sistema de recompensa, y su falta en la sustancia negra provoca la enfermedad de Parkinson."
+        },
+        {
+          "texto": "La «serotonina» regula ánimo y sueño",
+          "explicacion": "Se produce en los núcleos del rafe del tronco encefálico y también en el intestino. Interviene en el estado de ánimo, el sueño, el apetito y la temperatura, y varios antidepresivos aumentan su disponibilidad en la sinapsis."
+        },
+        {
+          "texto": "La «noradrenalina» activa el estado de alerta",
+          "explicacion": "Es el neurotransmisor de las neuronas posganglionares simpáticas y de algunas neuronas del tronco encefálico. Aumenta la atención y prepara al cuerpo para responder ante el peligro."
+        },
+        {
+          "texto": "El «glutamato» es el principal neurotransmisor excitador del SNC",
+          "explicacion": "Abre canales que dejan entrar sodio y calcio, y participa en el aprendizaje y la memoria. En exceso daña a las neuronas, un fenómeno llamado excitotoxicidad que ocurre, por ejemplo, tras un accidente cerebrovascular."
+        },
+        {
+          "texto": "El ácido gamma-aminobutírico (GABA) es el principal inhibidor del encéfalo",
+          "explicacion": "Sus siglas en inglés son GABA. Abre canales de cloro y hiperpolariza la neurona postsináptica, lo que reduce su excitabilidad. Muchos fármacos ansiolíticos y anticonvulsivos aumentan su efecto."
+        },
+        {
+          "texto": "La «glicina» es un neurotransmisor inhibidor de la médula",
+          "explicacion": "Actúa sobre todo en la médula espinal y el tronco encefálico, donde produce inhibición que ayuda a coordinar los reflejos y el movimiento."
+        },
+        {
+          "texto": "Las «endorfinas» reducen el dolor",
+          "explicacion": "Son péptidos producidos por el propio organismo, con efecto parecido al de la morfina, que se liberan ante el dolor intenso y el ejercicio prolongado y producen analgesia y sensación de bienestar."
+        }
+      ]
+    },
+    {
+      "titulo": "Protección del SNC",
+      "puntos": [
+        {
+          "texto": "El cráneo protege al encéfalo",
+          "explicacion": "Es un estuche óseo rígido formado por huesos del cráneo unidos por suturas. Resiste golpes que dañarían al tejido nervioso blando, y su cavidad contiene también las meninges y el líquido cefalorraquídeo."
+        },
+        {
+          "texto": "La columna vertebral protege a la médula espinal",
+          "explicacion": "Las vértebras apiladas forman el conducto vertebral (raquídeo) por donde pasa la médula. Entre cada par de vértebras queda un agujero intervertebral por donde salen los nervios espinales."
+        },
+        {
+          "texto": "La protección del SNC tiene capas sucesivas",
+          "explicacion": "De fuera hacia dentro el SNC está protegido por hueso, meninges y líquido cefalorraquídeo, y además por la barrera hematoencefálica que controla qué sustancias pasan de la sangre al tejido."
+        }
+      ]
+    },
+    {
+      "titulo": "Meninges",
+      "puntos": [
+        {
+          "texto": "Las «meninges» son tres membranas que envuelven al SNC",
+          "explicacion": "Rodean el encéfalo y la médula espinal, sostienen los vasos sanguíneos y contienen el líquido cefalorraquídeo. De afuera hacia adentro son la duramadre, la aracnoides y la piamadre."
+        },
+        {
+          "texto": "La «duramadre» es la meninge externa",
+          "explicacion": "Es gruesa, resistente y fibrosa, y en el cráneo se adhiere al hueso. Forma tabiques como la hoz del cerebro, entre los hemisferios, y la tienda del cerebelo, y aloja los senos venosos que drenan la sangre del encéfalo."
+        },
+        {
+          "texto": "La «aracnoides» es la meninge intermedia",
+          "explicacion": "Es una membrana delgada y avascular que recuerda una tela de araña por las trabéculas que la unen a la piamadre. Bajo ella se encuentra el espacio subaracnoideo, donde circula el líquido cefalorraquídeo."
+        },
+        {
+          "texto": "La «piamadre» es la meninge interna",
+          "explicacion": "Es muy delgada, vascularizada y se adhiere a la superficie del encéfalo y de la médula, siguiendo los surcos y circunvoluciones. Acompaña a los vasos sanguíneos cuando penetran en el tejido nervioso."
+        },
+        {
+          "texto": "El espacio subaracnoideo contiene líquido cefalorraquídeo",
+          "explicacion": "Está entre la aracnoides y la piamadre. Su ubicación explica por qué una punción lumbar que llega a este espacio permite obtener líquido para analizar infecciones del sistema nervioso."
+        },
+        {
+          "texto": "La inflamación de las meninges se llama meningitis",
+          "explicacion": "Puede ser causada por virus, bacterias u otros microorganismos. Produce fiebre, dolor de cabeza intenso y rigidez de nuca, y la forma bacteriana es una urgencia médica."
+        }
+      ]
+    },
+    {
+      "titulo": "Líquido cefalorraquídeo",
+      "puntos": [
+        {
+          "texto": "El líquido cefalorraquídeo (LCR) baña el SNC",
+          "explicacion": "Es un líquido claro e incoloro, con poca proteína, que se encuentra en los ventrículos del encéfalo, en el conducto central de la médula y en el espacio subaracnoideo. Su volumen total es de aproximadamente 150 mililitros en el adulto."
+        },
+        {
+          "texto": "Los «plexos coroideos» producen el LCR",
+          "explicacion": "Son redes de capilares cubiertas por células ependimarias, ubicadas en las paredes de los ventrículos. Producen unos 500 mililitros de líquido al día, por lo que el LCR se renueva varias veces cada día."
+        },
+        {
+          "texto": "LCR ⇒ amortigua los golpes",
+          "explicacion": "El encéfalo flota en el líquido y por el principio de flotación su peso efectivo es mucho menor, lo que reduce la presión sobre la base del cerebro y absorbe impactos, como el líquido protege a un huevo dentro de un recipiente lleno de agua."
+        },
+        {
+          "texto": "LCR ⇒ nutre y retira desechos",
+          "explicacion": "Aporta nutrientes al tejido nervioso, que no tiene vasos linfáticos clásicos, y retira productos de desecho del metabolismo cerebral."
+        },
+        {
+          "texto": "LCR ⇒ regula la presión intracraneal",
+          "explicacion": "Su cantidad se ajusta para mantener estable la presión dentro del cráneo. Si su circulación se bloquea, se acumula y se produce hidrocefalia."
+        },
+        {
+          "texto": "Los «ventrículos» son cavidades del encéfalo con LCR",
+          "explicacion": "Son cuatro: dos ventrículos laterales (uno en cada hemisferio), el tercer ventrículo en el diencéfalo y el cuarto ventrículo entre el tronco encefálico y el cerebelo. Están conectados entre sí y con el conducto central de la médula."
+        },
+        {
+          "texto": "Circulación del LCR → ventrículos laterales hasta el espacio subaracnoideo",
+          "explicacion": "El líquido sale de los ventrículos laterales por los agujeros interventriculares al tercer ventrículo, pasa por el acueducto cerebral al cuarto ventrículo y sale por orificios hacia el espacio subaracnoideo, donde rodea el SNC."
+        },
+        {
+          "texto": "El LCR se reabsorbe hacia la sangre venosa",
+          "explicacion": "Las granulaciones aracnoideas, proyecciones de la aracnoides hacia el seno sagital superior, devuelven el líquido a la sangre venosa. Un desequilibrio entre producción y reabsorción aumenta la presión del cráneo."
+        },
+        {
+          "texto": "La punción lumbar toma LCR de la región lumbar",
+          "explicacion": "Se realiza por debajo del final de la médula espinal del adulto, que termina a la altura de las vértebras primera o segunda lumbar, y por eso la aguja puede entrar al espacio subaracnoideo sin dañar la médula."
+        }
+      ]
+    },
+    {
+      "titulo": "Barrera hematoencefálica",
+      "puntos": [
+        {
+          "texto": "La «barrera hematoencefálica» filtra lo que pasa al encéfalo",
+          "explicacion": "Es una barrera funcional entre la sangre y el tejido nervioso, que deja pasar con facilidad agua, oxígeno, dióxido de carbono y glucosa por transportadores, y restringe toxinas, microbios y muchos fármacos."
+        },
+        {
+          "texto": "Endotelio con uniones estrechas ⇒ barrera",
+          "explicacion": "Las células de los capilares del encéfalo están unidas por uniones estrechas y poseen pocos poros, lo que impide el paso entre células. Los astrocitos y una membrana basal refuerzan esta barrera."
+        },
+        {
+          "texto": "Barrera hematoencefálica ⇒ dificulta tratar infecciones del encéfalo",
+          "explicacion": "Muchos fármacos no la cruzan, por lo que los tratamientos para el sistema nervioso deben ser capaces de atravesarla. En algunas regiones, como el hipotálamo, la barrera es más permeable porque allí se detectan sustancias de la sangre."
+        }
+      ]
+    },
+    {
+      "titulo": "Encéfalo",
+      "puntos": [
+        {
+          "texto": "El «encéfalo» es la parte del SNC dentro del cráneo",
+          "explicacion": "Es el órgano que integra la información sensorial, controla las funciones del cuerpo y sustenta la conciencia, el pensamiento y la memoria. Está formado por sustancia gris y sustancia blanca y recubierto por las meninges."
+        },
+        {
+          "texto": "Encéfalo ⊃ cerebro",
+          "explicacion": "El cerebro es la parte más grande y está formado por dos hemisferios. Se desarrolla en un apartado propio."
+        },
+        {
+          "texto": "Encéfalo ⊃ diencéfalo",
+          "explicacion": "Es la parte central, situada entre los hemisferios cerebrales y el tronco encefálico, que contiene el tálamo y el hipotálamo."
+        },
+        {
+          "texto": "Encéfalo ⊃ tronco encefálico",
+          "explicacion": "Es el tallo que une el encéfalo con la médula espinal, formado por mesencéfalo, puente y bulbo raquídeo."
+        },
+        {
+          "texto": "Encéfalo ⊃ cerebelo",
+          "explicacion": "Es la estructura situada detrás del tronco encefálico, debajo de los lóbulos occipitales, que coordina el movimiento y el equilibrio."
+        },
+        {
+          "texto": "Prosencéfalo ⊃ telencéfalo + diencéfalo",
+          "explicacion": "Según el desarrollo embrionario, el encéfalo se origina de tres vesículas primarias y luego cinco secundarias. El prosencéfalo o encéfalo anterior da origen al telencéfalo (cerebro) y al diencéfalo."
+        },
+        {
+          "texto": "Mesencéfalo = encéfalo medio",
+          "explicacion": "Es la vesícula intermedia y se conserva con el mismo nombre en el adulto como parte superior del tronco encefálico."
+        },
+        {
+          "texto": "Rombencéfalo ⊃ metencéfalo + mielencéfalo",
+          "explicacion": "El rombencéfalo o encéfalo posterior origina el metencéfalo, que forma el puente y el cerebelo, y el mielencéfalo, que forma el bulbo raquídeo."
+        }
+      ]
+    },
+    {
+      "titulo": "Cerebro",
+      "puntos": [
+        {
+          "texto": "El «cerebro» es la porción más grande del encéfalo",
+          "explicacion": "Corresponde al telencéfalo y ocupa la mayor parte de la cavidad craneal. Es el centro de las funciones superiores: sensación consciente, movimiento voluntario, pensamiento, memoria y lenguaje."
+        },
+        {
+          "texto": "El cerebro tiene dos hemisferios",
+          "explicacion": "Se llaman hemisferio derecho y hemisferio izquierdo, y están separados por la cisura longitudinal (interhemisférica) que ocupa la hoz del cerebro. Cada hemisferio controla en gran parte el lado opuesto del cuerpo."
+        },
+        {
+          "texto": "El «cuerpo calloso» une los hemisferios",
+          "explicacion": "Es una gruesa lámina de sustancia blanca con millones de axones que cruzan la línea media, y permite que ambos hemisferios intercambien información y trabajen coordinados."
+        },
+        {
+          "texto": "La «corteza cerebral» es la capa externa de sustancia gris",
+          "explicacion": "Tiene un grosor de unos 2 a 4 milímetros y contiene los somas de miles de millones de neuronas organizadas en capas. Es el sitio de las funciones conscientes y superiores."
+        },
+        {
+          "texto": "Las circunvoluciones aumentan la superficie de la corteza",
+          "explicacion": "La corteza está plegada formando elevaciones llamadas circunvoluciones o giros, separadas por surcos y cisuras. Gracias a ello cabe una gran superficie cortical en un volumen pequeño."
+        },
+        {
+          "texto": "La sustancia blanca del cerebro conecta regiones",
+          "explicacion": "Bajo la corteza hay haces de axones mielínicos que conectan áreas de un mismo hemisferio, comunican ambos hemisferios o enlazan la corteza con estructuras inferiores."
+        },
+        {
+          "texto": "Los «ganglios basales» regulan el movimiento",
+          "explicacion": "Son núcleos de sustancia gris profundos en cada hemisferio, entre ellos el núcleo caudado, el putamen y el globo pálido. Ayudan a iniciar y suavizar los movimientos voluntarios, y su deterioro causa enfermedades como Parkinson y Huntington."
+        },
+        {
+          "texto": "El «sistema límbico» regula emociones y memoria",
+          "explicacion": "Es un conjunto de estructuras interconectadas que rodean el diencéfalo, como el hipocampo, la amígdala y el giro del cíngulo. Relaciona las emociones con la conducta y con la memoria."
+        },
+        {
+          "texto": "El «hipocampo» forma nuevas memorias",
+          "explicacion": "Se ubica en el lóbulo temporal y es fundamental para convertir recuerdos recientes en recuerdos duraderos. Su daño, como en la enfermedad de Alzheimer, produce dificultad para recordar lo reciente."
+        },
+        {
+          "texto": "La «amígdala» procesa el miedo",
+          "explicacion": "Es un conjunto de núcleos del lóbulo temporal que evalúa estímulos con carga emocional y activa respuestas de miedo y agresividad, conectándose con el hipotálamo."
+        }
+      ]
+    },
+    {
+      "titulo": "Lóbulos cerebrales",
+      "puntos": [
+        {
+          "texto": "Cada hemisferio tiene cuatro lóbulos principales",
+          "explicacion": "Los lóbulos frontal, parietal, temporal y occipital llevan el nombre de los huesos del cráneo que los cubren. Algunos autores describen además un lóbulo de la ínsula, oculto en la profundidad de la cisura lateral."
+        },
+        {
+          "texto": "La cisura central separa los lóbulos frontal y parietal",
+          "explicacion": "También llamada cisura de Rolando, es un surco profundo que atraviesa la cara lateral de cada hemisferio, y delimita el giro precentral, motor, y el giro poscentral, sensitivo."
+        },
+        {
+          "texto": "La cisura lateral separa el lóbulo temporal",
+          "explicacion": "También llamada cisura de Silvio, separa el lóbulo temporal de los lóbulos frontal y parietal."
+        },
+        {
+          "texto": "El «lóbulo frontal» controla el movimiento y el razonamiento",
+          "explicacion": "Es el más grande, y se encarga del movimiento voluntario, la planificación, la toma de decisiones, la personalidad y la atención. Su porción anterior, la corteza prefrontal, regula la conducta y el juicio."
+        },
+        {
+          "texto": "El «lóbulo parietal» procesa la sensibilidad",
+          "explicacion": "Recibe información del tacto, la presión, el dolor, la temperatura y la posición del cuerpo, y participa en la orientación en el espacio y en el cálculo."
+        },
+        {
+          "texto": "El «lóbulo temporal» procesa audición y memoria",
+          "explicacion": "Contiene la corteza auditiva, estructuras de la memoria como el hipocampo, y áreas del lenguaje comprensivo. También participa en la identificación de olores y de rostros."
+        },
+        {
+          "texto": "El «lóbulo occipital» procesa la visión",
+          "explicacion": "Está en la parte posterior del cerebro y contiene la corteza visual primaria, donde llegan los impulsos de la retina. Una lesión aquí puede causar ceguera aunque los ojos estén sanos."
+        },
+        {
+          "texto": "El giro precentral = corteza motora primaria",
+          "explicacion": "Es la franja del lóbulo frontal justo delante de la cisura central, que envía órdenes a los músculos esqueléticos del lado opuesto del cuerpo."
+        },
+        {
+          "texto": "El giro poscentral = corteza somatosensorial primaria",
+          "explicacion": "Es la franja del lóbulo parietal justo detrás de la cisura central, que recibe información de tacto, dolor y temperatura de la mitad opuesta del cuerpo."
+        },
+        {
+          "texto": "El «homúnculo» representa el cuerpo en la corteza",
+          "explicacion": "Wilder Penfield mostró que cada parte del cuerpo ocupa un espacio de corteza proporcional a su precisión y sensibilidad, no a su tamaño. Por eso las manos, la cara y la lengua ocupan áreas muy grandes."
+        },
+        {
+          "texto": "El «área de Broca» controla la producción del lenguaje",
+          "explicacion": "Descrita por el médico francés Paul Broca en 1861, se ubica en la parte inferior del lóbulo frontal, en general del hemisferio izquierdo. Su daño causa afasia de Broca: la persona entiende pero habla con dificultad."
+        },
+        {
+          "texto": "El «área de Wernicke» controla la comprensión del lenguaje",
+          "explicacion": "Descrita por el médico alemán Carl Wernicke en 1874, se ubica en la parte posterior del lóbulo temporal izquierdo. Su lesión causa afasia de Wernicke: habla con fluidez pero sin sentido y no comprende."
+        },
+        {
+          "texto": "Hemisferio izquierdo ⇒ lenguaje en la mayoría de personas",
+          "explicacion": "En la mayoría de las personas el hemisferio izquierdo es dominante para el lenguaje y el cálculo. El hemisferio derecho se relaciona más con la percepción espacial, el reconocimiento de rostros y la música."
+        }
+      ]
+    },
+    {
+      "titulo": "Diencéfalo",
+      "puntos": [
+        {
+          "texto": "El «diencéfalo» está entre los hemisferios y el tronco",
+          "explicacion": "Es una región central rodeada por el cerebro que contiene el tercer ventrículo. Está formado por tálamo, hipotálamo, epitálamo y subtálamo."
+        },
+        {
+          "texto": "El «tálamo» es una estación de relevo sensitivo",
+          "explicacion": "Casi toda la información sensitiva, excepto la olfatoria, pasa por el tálamo antes de llegar a la corteza. Filtra y distribuye las señales a las áreas correspondientes y participa en la conciencia y el sueño."
+        },
+        {
+          "texto": "El «hipotálamo» mantiene la homeostasis",
+          "explicacion": "Es una región pequeña bajo el tálamo que regula la temperatura corporal, el hambre, la sed, el sueño y los ritmos circadianos, y coordina las respuestas autónomas y endocrinas."
+        },
+        {
+          "texto": "El hipotálamo controla la hipófisis",
+          "explicacion": "Se conecta con la hipófisis (glándula pituitaria) y regula su secreción hormonal. Además produce la hormona antidiurética y la oxitocina, que la hipófisis posterior libera a la sangre."
+        },
+        {
+          "texto": "El «epitálamo» contiene la glándula pineal",
+          "explicacion": "La glándula pineal secreta melatonina, una hormona que regula el ciclo de sueño y vigilia según la luz y la oscuridad."
+        },
+        {
+          "texto": "El «subtálamo» interviene en el control del movimiento",
+          "explicacion": "Es una región pequeña situada bajo el tálamo y conectada con los ganglios basales, que participa en la regulación del movimiento."
+        }
+      ]
+    },
+    {
+      "titulo": "Tronco encefálico",
+      "puntos": [
+        {
+          "texto": "El «tronco encefálico» conecta el encéfalo con la médula",
+          "explicacion": "Está formado de arriba abajo por el mesencéfalo, el puente y el bulbo raquídeo. Por él pasan todas las vías que suben y bajan entre el cerebro y la médula, y de él salen la mayoría de los nervios craneales."
+        },
+        {
+          "texto": "El «mesencéfalo» controla reflejos visuales y auditivos",
+          "explicacion": "Contiene los tubérculos cuadrigéminos: los superiores intervienen en reflejos visuales y los inferiores en reflejos auditivos. También contiene la sustancia negra, que produce dopamina, y los núcleos de los nervios craneales tercero y cuarto."
+        },
+        {
+          "texto": "El «puente» comunica el cerebro con el cerebelo",
+          "explicacion": "También llamado protuberancia o puente de Varolio, contiene haces de fibras que unen ambos hemisferios del cerebelo y el cerebro con el cerebelo. Participa en el control de la respiración y de nervios craneales."
+        },
+        {
+          "texto": "El «bulbo raquídeo» controla funciones vitales",
+          "explicacion": "Es la parte inferior del tronco y se continúa con la médula espinal. Contiene los centros que regulan la frecuencia cardíaca, la presión arterial y la respiración, y los reflejos de tos, estornudo, vómito y deglución."
+        },
+        {
+          "texto": "Las pirámides del bulbo decusan las vías motoras",
+          "explicacion": "Las fibras motoras que descienden desde la corteza se cruzan en el bulbo, por lo que cada hemisferio controla el lado contrario del cuerpo. Una lesión de un hemisferio produce parálisis en el lado opuesto."
+        },
+        {
+          "texto": "La «formación reticular» regula la vigilia",
+          "explicacion": "Es una red de neuronas que recorre el tronco encefálico, y mantiene el estado de alerta, regula el ciclo de sueño y vigilia y filtra los estímulos que llegan a la corteza."
+        }
+      ]
+    },
+    {
+      "titulo": "Cerebelo",
+      "puntos": [
+        {
+          "texto": "El «cerebelo» coordina el movimiento",
+          "explicacion": "Está detrás del tronco encefálico y debajo de los lóbulos occipitales, separado del cerebro por la tienda del cerebelo. Compara el movimiento planeado con el realizado y corrige los errores, de modo que los movimientos sean suaves y precisos."
+        },
+        {
+          "texto": "Cerebelo ⇒ mantiene el equilibrio",
+          "explicacion": "Recibe información del oído interno y de los músculos y articulaciones, y ajusta el tono muscular para mantener el cuerpo equilibrado, como cuando una persona camina sobre una línea sin caerse."
+        },
+        {
+          "texto": "Cerebelo ⇒ regula el tono muscular",
+          "explicacion": "El cerebelo ajusta de forma automática el grado de contracción de los músculos en reposo y en movimiento, lo que mantiene la postura erguida sin esfuerzo consciente y suaviza los movimientos."
+        },
+        {
+          "texto": "El cerebelo tiene dos hemisferios y un vermis",
+          "explicacion": "Los hemisferios cerebelosos están unidos por una porción central llamada vermis. La corteza es de sustancia gris con muchos pliegues y en el interior la sustancia blanca forma el «árbol de la vida»."
+        },
+        {
+          "texto": "El cerebelo contiene más de la mitad de las neuronas del encéfalo",
+          "explicacion": "Aunque es mucho más pequeño que el cerebro, tiene muchas neuronas muy pequeñas llamadas granos, junto con las células de Purkinje, que son las neuronas de salida de su corteza."
+        },
+        {
+          "texto": "Lesión del cerebelo ⇒ ataxia",
+          "explicacion": "La ataxia es la pérdida de coordinación y del equilibrio, con marcha insegura y temblor al intentar movimientos precisos. Se observa, por ejemplo, tras el consumo excesivo de alcohol, que afecta al cerebelo."
+        }
+      ]
+    },
+    {
+      "titulo": "Médula espinal",
+      "puntos": [
+        {
+          "texto": "La «médula espinal» conecta el encéfalo con el cuerpo",
+          "explicacion": "Es un cordón cilíndrico de tejido nervioso de unos 45 centímetros en el adulto, que se continúa con el bulbo raquídeo desde el agujero magno hasta la altura de las vértebras lumbares primera y segunda."
+        },
+        {
+          "texto": "Médula espinal ⇒ vía de conducción",
+          "explicacion": "Sus tractos ascendentes llevan información sensitiva hacia el encéfalo y los tractos descendentes llevan las órdenes motoras desde el encéfalo hacia el cuerpo."
+        },
+        {
+          "texto": "Médula espinal ⇒ centro de reflejos",
+          "explicacion": "La médula puede integrar respuestas rápidas sin intervención del encéfalo, como retirar la mano de un objeto caliente, lo que protege al cuerpo antes de que se perciba el dolor de forma consciente."
+        },
+        {
+          "texto": "La sustancia gris medular tiene forma de H",
+          "explicacion": "En el centro de la médula, la sustancia gris se ve en un corte como una mariposa o una letra H. Contiene somas de neuronas motoras, interneuronas y neuronas que reciben información sensitiva."
+        },
+        {
+          "texto": "Las «astas posteriores» reciben información sensitiva",
+          "explicacion": "Las astas dorsales de la sustancia gris reciben los axones de las neuronas sensitivas que entran por la raíz dorsal."
+        },
+        {
+          "texto": "Las «astas anteriores» contienen neuronas motoras somáticas",
+          "explicacion": "Las astas ventrales contienen los somas de las motoneuronas que inervan los músculos esqueléticos y sus axones salen por la raíz ventral."
+        },
+        {
+          "texto": "Las «astas laterales» contienen neuronas autónomas",
+          "explicacion": "Se encuentran solo en algunos segmentos: de la región torácica a la lumbar superior contienen neuronas simpáticas, y en la región sacra contienen neuronas parasimpáticas."
+        },
+        {
+          "texto": "La sustancia blanca medular forma cordones",
+          "explicacion": "Rodea la sustancia gris y se divide en cordones anterior, lateral y posterior, formados por tractos de axones mielínicos que suben y bajan."
+        },
+        {
+          "texto": "El conducto ependimario recorre la médula",
+          "explicacion": "Es un conducto central pequeño revestido por células ependimarias, que contiene LCR y se continúa con los ventrículos del encéfalo."
+        },
+        {
+          "texto": "La raíz dorsal es sensitiva",
+          "explicacion": "Cada nervio espinal se forma por la unión de una raíz dorsal sensitiva, que tiene el ganglio de la raíz dorsal con los somas de las neuronas sensitivas, y una raíz ventral motora. Esta distribución se conoce como ley de Bell-Magendie."
+        },
+        {
+          "texto": "La raíz ventral es motora",
+          "explicacion": "Está formada por axones de neuronas motoras cuyos somas están en el asta anterior, y sale de la médula para unirse con la raíz dorsal."
+        },
+        {
+          "texto": "Los engrosamientos cervical y lumbar inervan las extremidades",
+          "explicacion": "La médula es más ancha en las regiones donde salen los nervios de los brazos y de las piernas, porque allí hay más neuronas que inervan los miembros."
+        },
+        {
+          "texto": "La «cola de caballo» está bajo el final de la médula",
+          "explicacion": "La médula termina en el cono medular a nivel lumbar alto, y por debajo el conducto vertebral contiene las raíces nerviosas lumbares y sacras que descienden juntas, como la cola de un caballo."
+        },
+        {
+          "texto": "El daño de la médula espinal ⇒ pérdida de movimiento y sensibilidad",
+          "explicacion": "Una lesión interrumpe los tractos que pasan por ella, y las funciones por debajo del nivel de lesión se pierden. Cuanto más alta es la lesión, más funciones se pierden."
+        }
       ]
     },
     {
       "titulo": "Sistema nervioso periférico",
       "puntos": [
-        { "texto": "Los «nervios craneales» son doce pares que salen del encéfalo.", "explicacion": "Algunos transmiten información sensorial y otros controlan músculos de la cabeza." },
-        { "texto": "Los «nervios espinales» son treinta y un pares que salen de la médula.", "explicacion": "Conectan la médula con los órganos y músculos del tronco y las extremidades." },
-        { "texto": "Los ganglios son acumulaciones de cuerpos neuronales fuera del sistema central.", "explicacion": "Se asocian a los nervios craneales y espinales." }
+        {
+          "texto": "El SNP conecta el SNC con el resto del cuerpo",
+          "explicacion": "Está formado por nervios, ganglios y receptores sensoriales. Sus axones llevan información sensitiva al SNC y órdenes motoras a los efectores, y no está protegido por hueso ni por barrera hematoencefálica, por lo que es más vulnerable a lesiones."
+        },
+        {
+          "texto": "Un «nervio» es un haz de axones",
+          "explicacion": "Es un cordón formado por axones de muchas neuronas, con sus células gliales y vasos sanguíneos, envuelto en capas de tejido conectivo. Según su contenido puede ser sensitivo, motor o mixto."
+        },
+        {
+          "texto": "El «endoneuro» rodea cada axón",
+          "explicacion": "Es la capa de tejido conectivo laxo que envuelve a cada fibra nerviosa individual."
+        },
+        {
+          "texto": "El «perineuro» rodea cada fascículo",
+          "explicacion": "Es una capa de tejido conectivo resistente que agrupa varias fibras en fascículos y funciona como barrera de difusión."
+        },
+        {
+          "texto": "El «epineuro» rodea todo el nervio",
+          "explicacion": "Es la capa externa de tejido conectivo denso que envuelve y protege el nervio completo y contiene los vasos sanguíneos que lo nutren."
+        },
+        {
+          "texto": "Nervio sensitivo ⊃ fibras aferentes",
+          "explicacion": "Conduce solo información que llega al SNC. Por ejemplo, el nervio óptico lleva información visual hacia el encéfalo."
+        },
+        {
+          "texto": "Nervio motor ⊃ fibras eferentes",
+          "explicacion": "Conduce solo órdenes que salen del SNC hacia los músculos o glándulas. Por ejemplo, el nervio hipogloso mueve la lengua."
+        },
+        {
+          "texto": "Nervio mixto ⊃ fibras aferentes + eferentes",
+          "explicacion": "Conduce ambos tipos de información. Todos los nervios espinales son mixtos, así como varios nervios craneales."
+        },
+        {
+          "texto": "Los «ganglios» son grupos de somas fuera del SNC",
+          "explicacion": "Son agrupaciones de cuerpos de neuronas rodeadas de células satélite. Los ganglios sensitivos contienen somas de neuronas sensitivas y los ganglios autónomos contienen somas de neuronas posganglionares."
+        },
+        {
+          "texto": "Los receptores sensoriales ∈ SNP",
+          "explicacion": "Son las terminaciones nerviosas o células especializadas que detectan estímulos y los convierten en impulsos. Incluyen termorreceptores, mecanorreceptores, nociceptores, quimiorreceptores y fotorreceptores."
+        }
       ]
     },
     {
-      "titulo": "Sistema somático",
+      "titulo": "Nervios craneales",
       "puntos": [
-        { "texto": "El sistema somático controla los movimientos voluntarios.", "explicacion": "Transmite la información sensorial consciente hacia el sistema nervioso central." }
+        {
+          "texto": "Los nervios craneales son 12 pares",
+          "explicacion": "Salen del encéfalo, atraviesan agujeros del cráneo y pertenecen al SNP. Se numeran con números romanos de adelante hacia atrás, y pueden ser sensitivos, motores o mixtos."
+        },
+        {
+          "texto": "Los pares I y II no salen del tronco encefálico",
+          "explicacion": "El nervio olfatorio se origina en el bulbo olfatorio del telencéfalo, y el nervio óptico es una prolongación del diencéfalo. Los demás pares nacen de núcleos del tronco encefálico o de los primeros segmentos de la médula."
+        },
+        {
+          "texto": "Par I = nervio olfatorio ⇒ olfato (sensitivo)",
+          "explicacion": "Sus fibras salen del epitelio olfatorio de la cavidad nasal, atraviesan la lámina cribosa del hueso etmoides y llegan al bulbo olfatorio. Es el único sentido que llega a la corteza sin pasar por el tálamo."
+        },
+        {
+          "texto": "Par II = nervio óptico ⇒ visión (sensitivo)",
+          "explicacion": "Transporta los impulsos de la retina hacia el encéfalo, y las fibras se cruzan parcialmente en el quiasma óptico antes de llegar al tálamo y a la corteza visual occipital."
+        },
+        {
+          "texto": "Par III = nervio oculomotor ⇒ mueve el ojo (motor)",
+          "explicacion": "Inerva la mayoría de los músculos que mueven el globo ocular y el que levanta el párpado superior. Sus fibras parasimpáticas contraen la pupila y enfocan el cristalino."
+        },
+        {
+          "texto": "Par IV = nervio troclear ⇒ músculo oblicuo superior (motor)",
+          "explicacion": "Es el más delgado de los nervios craneales y el único que sale por la cara posterior del tronco encefálico. Inerva el músculo oblicuo superior del ojo."
+        },
+        {
+          "texto": "Par V = nervio trigémino ⇒ sensibilidad facial y masticación (mixto)",
+          "explicacion": "Tiene tres ramas: oftálmica, maxilar y mandibular. Recoge la sensibilidad de la cara y de la boca, y su rama mandibular lleva fibras motoras a los músculos de la masticación."
+        },
+        {
+          "texto": "Par VI = nervio abducens ⇒ músculo recto lateral (motor)",
+          "explicacion": "También llamado abducente, inerva el músculo recto lateral que desplaza el ojo hacia afuera. Su lesión impide mirar hacia el lado temporal."
+        },
+        {
+          "texto": "Par VII = nervio facial ⇒ expresión facial y gusto (mixto)",
+          "explicacion": "Inerva los músculos de la expresión facial y lleva el gusto de los dos tercios anteriores de la lengua. Sus fibras parasimpáticas estimulan las glándulas salivales y lagrimales."
+        },
+        {
+          "texto": "Par VIII = nervio vestibulococlear ⇒ audición y equilibrio (sensitivo)",
+          "explicacion": "Tiene dos partes: la coclear, que conduce los impulsos del sonido desde la cóclea, y la vestibular, que conduce información del equilibrio desde el oído interno."
+        },
+        {
+          "texto": "Par IX = nervio glosofaríngeo ⇒ faringe y gusto (mixto)",
+          "explicacion": "Lleva el gusto del tercio posterior de la lengua y la sensibilidad de la faringe, controla la deglución e inerva la glándula parótida con fibras parasimpáticas."
+        },
+        {
+          "texto": "Par X = nervio vago ⇒ control de vísceras (mixto)",
+          "explicacion": "Es el nervio craneal más largo y se extiende desde el cuello hasta el abdomen. Lleva la mayor parte de las fibras parasimpáticas: disminuye la frecuencia cardíaca y aumenta la actividad digestiva."
+        },
+        {
+          "texto": "Par XI = nervio accesorio ⇒ cuello y hombros (motor)",
+          "explicacion": "También llamado nervio espinal accesorio, inerva los músculos trapecio y esternocleidomastoideo, que mueven la cabeza y elevan los hombros."
+        },
+        {
+          "texto": "Par XII = nervio hipogloso ⇒ movimientos de la lengua (motor)",
+          "explicacion": "Inerva los músculos de la lengua, indispensables para hablar, masticar y deglutir."
+        }
       ]
     },
     {
-      "titulo": "Sistema autónomo",
+      "titulo": "Nervios espinales",
       "puntos": [
-        { "texto": "El «simpático» prepara el cuerpo para la acción o el estrés.", "explicacion": "Aumenta la frecuencia cardíaca y dilata las pupilas." },
-        { "texto": "El «parasimpático» predomina en reposo y durante la digestión.", "explicacion": "Disminuye la frecuencia cardíaca y favorece la actividad digestiva." }
+        {
+          "texto": "Los nervios espinales son 31 pares",
+          "explicacion": "Salen de la médula espinal por los agujeros intervertebrales y se nombran según la región de la columna por la que emergen. Todos son nervios mixtos porque se forman por la unión de la raíz dorsal sensitiva y la raíz ventral motora."
+        },
+        {
+          "texto": "Hay 8 pares cervicales",
+          "explicacion": "Se designan de C1 a C8. Aunque solo hay 7 vértebras cervicales, hay 8 nervios porque el primero sale por encima de la primera vértebra y el octavo por debajo de la séptima."
+        },
+        {
+          "texto": "Hay 12 pares torácicos",
+          "explicacion": "Se designan de T1 a T12, y salen entre las vértebras torácicas. Inervan los músculos y la piel del tronco, entre ellos los músculos intercostales."
+        },
+        {
+          "texto": "Hay 5 pares lumbares",
+          "explicacion": "Se designan de L1 a L5 y forman parte del plexo lumbar que inerva la parte baja del abdomen y el muslo."
+        },
+        {
+          "texto": "Hay 5 pares sacros",
+          "explicacion": "Se designan de S1 a S5 y forman parte del plexo sacro que inerva la pelvis y las piernas."
+        },
+        {
+          "texto": "Hay 1 par coccígeo",
+          "explicacion": "Se designa Co1 y es el más pequeño de los nervios espinales; inerva una pequeña región de la piel cerca del cóccix."
+        },
+        {
+          "texto": "Los nervios espinales forman plexos",
+          "explicacion": "Cerca de su salida, los ramos anteriores se entrecruzan y se reorganizan en redes llamadas plexos. Los principales son el cervical, el braquial, el lumbar y el sacro, de los cuales salen nervios para el cuello, los brazos y las piernas."
+        },
+        {
+          "texto": "El nervio frénico inerva el diafragma",
+          "explicacion": "Proviene del plexo cervical (de las raíces C3 a C5) y controla la contracción del diafragma, el principal músculo de la respiración. Por eso una lesión alta de la médula cervical puede detener la respiración."
+        },
+        {
+          "texto": "El nervio ciático es el nervio más grueso y largo del cuerpo",
+          "explicacion": "Nace del plexo sacro, desciende por la parte posterior del muslo e inerva los músculos de la pierna y del pie. Su irritación causa el dolor llamado ciática."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema nervioso somático",
+      "puntos": [
+        {
+          "texto": "El «sistema nervioso somático» controla acciones voluntarias",
+          "explicacion": "Es la parte del SNP que inerva el músculo esquelético y recoge la información de la piel, los músculos y las articulaciones. Permite mover el cuerpo de forma consciente, como escribir o caminar."
+        },
+        {
+          "texto": "Somático ⇒ una sola neurona motora hasta el músculo",
+          "explicacion": "La neurona motora tiene su soma en el SNC y su axón llega sin interrupciones hasta la fibra muscular esquelética, sin ganglios intermedios."
+        },
+        {
+          "texto": "Somático ⇒ acetilcolina excita el músculo",
+          "explicacion": "Las neuronas motoras somáticas liberan acetilcolina en la placa motora, que siempre produce excitación y contracción de la fibra muscular. Para relajar un músculo la neurona deja de estimularlo, pero no lo inhibe directamente."
+        }
       ]
     },
     {
       "titulo": "Arco reflejo",
       "puntos": [
-        { "texto": "El «arco reflejo» produce una respuesta automática sin intervención consciente.", "explicacion": "Sigue la ruta: receptor, neurona sensitiva, centro integrador, neurona motora y efector." }
+        {
+          "texto": "El «acto reflejo» es una respuesta rápida e involuntaria",
+          "explicacion": "Es una respuesta automática del organismo ante un estímulo, sin necesidad de decisión consciente. Su rapidez protege al cuerpo, por ejemplo al apartar el pie al pisar un clavo."
+        },
+        {
+          "texto": "El «arco reflejo» es la vía nerviosa del reflejo",
+          "explicacion": "Es el circuito formado por receptor, neurona sensitiva, centro integrador, neurona motora y efector. Sus cinco componentes siempre actúan en ese orden."
+        },
+        {
+          "texto": "Receptor → detecta el estímulo",
+          "explicacion": "Es la estructura sensible que capta el estímulo y lo convierte en impulso nervioso, como los receptores de dolor de la piel o los husos musculares que detectan estiramiento."
+        },
+        {
+          "texto": "Neurona sensitiva → lleva el impulso al centro integrador",
+          "explicacion": "Es la vía aferente que conduce el impulso desde el receptor hasta el SNC, y entra a la médula por la raíz dorsal."
+        },
+        {
+          "texto": "Centro integrador → procesa la información",
+          "explicacion": "Es la región del SNC, normalmente la médula espinal o el tronco encefálico, donde la neurona sensitiva se conecta con la neurona motora directamente o por una interneurona."
+        },
+        {
+          "texto": "Neurona motora → lleva la orden al efector",
+          "explicacion": "Es la vía eferente que sale del centro integrador por la raíz ventral y conduce el impulso hasta el órgano efector."
+        },
+        {
+          "texto": "Efector → ejecuta la respuesta",
+          "explicacion": "Es el músculo o la glándula que realiza la respuesta, como la contracción del músculo para retirar la mano."
+        },
+        {
+          "texto": "Reflejo monosináptico ⇒ una sola sinapsis en el SNC",
+          "explicacion": "Solo tiene una sinapsis entre la neurona sensitiva y la motora, por lo que es el más rápido. El reflejo rotuliano, en el que el golpe del tendón de la rodilla estira el músculo del muslo y lo contrae, es el ejemplo clásico."
+        },
+        {
+          "texto": "Reflejo polisináptico ⇒ interneuronas entre sensitiva y motora",
+          "explicacion": "Incluye una o más interneuronas, por lo que tiene varias sinapsis. El reflejo flexor o de retirada al tocar algo caliente es polisináptico y activa varios músculos a la vez."
+        },
+        {
+          "texto": "Reflejo medular ⇒ centro en la médula espinal",
+          "explicacion": "Es el reflejo cuyo centro integrador es la médula, como el rotuliano y el de retirada. Se produce sin que el encéfalo intervenga, aunque luego este recibe la información."
+        },
+        {
+          "texto": "Reflejo craneal ⇒ centro en el encéfalo",
+          "explicacion": "Es el reflejo cuyo centro integrador está en el tronco encefálico, como el reflejo pupilar a la luz, el corneal (parpadeo) y el de la tos."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema nervioso autónomo",
+      "puntos": [
+        {
+          "texto": "El «sistema nervioso autónomo» (SNA) controla funciones involuntarias",
+          "explicacion": "Regula el músculo liso, el músculo cardíaco y las glándulas sin intervención de la voluntad. Mantiene la homeostasis controlando la frecuencia cardíaca, la digestión, la respiración, el tamaño de las pupilas y la sudoración."
+        },
+        {
+          "texto": "SNA ⇒ dos neuronas en la vía eferente",
+          "explicacion": "La neurona preganglionar tiene su soma en el SNC y hace sinapsis en un ganglio autónomo con la neurona posganglionar, cuyo axón llega al órgano efector. Esto lo diferencia del sistema somático, que usa una sola neurona."
+        },
+        {
+          "texto": "El SNA está controlado por el hipotálamo y el tronco encefálico",
+          "explicacion": "El hipotálamo coordina las respuestas autónomas, y el bulbo raquídeo contiene los centros cardiovascular y respiratorio. La corteza límbica influye sobre el SNA, y por eso las emociones modifican el pulso y la sudoración."
+        },
+        {
+          "texto": "SNA ⊃ división simpática",
+          "explicacion": "Prepara al organismo para el gasto de energía y la acción. Se desarrolla en su propio apartado."
+        },
+        {
+          "texto": "SNA ⊃ división parasimpática",
+          "explicacion": "Favorece el reposo y el almacenamiento de energía. Se desarrolla en su propio apartado."
+        },
+        {
+          "texto": "SNA ⊃ sistema nervioso entérico",
+          "explicacion": "Es la red de neuronas de la pared del tubo digestivo, a veces considerada una tercera división. Se desarrolla en su propio apartado."
+        },
+        {
+          "texto": "Simpático ≠ parasimpático en sus efectos",
+          "explicacion": "Muchos órganos reciben inervación de ambas divisiones, y actúan de forma antagónica para mantener el equilibrio. Por ejemplo, el simpático acelera el corazón y el parasimpático lo enlentece."
+        }
+      ]
+    },
+    {
+      "titulo": "División simpática",
+      "puntos": [
+        {
+          "texto": "El «sistema simpático» prepara la respuesta de lucha o huida",
+          "explicacion": "Se activa en situaciones de estrés, peligro o ejercicio intenso y moviliza la energía del cuerpo para actuar. Es el sistema que se activa cuando una persona se asusta o corre para tomar un bus."
+        },
+        {
+          "texto": "Simpático ⇒ origen toracolumbar",
+          "explicacion": "Las neuronas preganglionares simpáticas tienen sus somas en las astas laterales de la médula espinal, de los segmentos torácicos primero (T1) al lumbar segundo (L2)."
+        },
+        {
+          "texto": "Simpático ⇒ ganglios cerca de la médula",
+          "explicacion": "Los ganglios simpáticos forman la cadena paravertebral a ambos lados de la columna, y otros ganglios están delante de la columna. Por eso las fibras preganglionares son cortas y las posganglionares largas."
+        },
+        {
+          "texto": "Simpático ⇒ neurona preganglionar usa acetilcolina",
+          "explicacion": "La neurona preganglionar libera acetilcolina en el ganglio, como todas las preganglionares autónomas."
+        },
+        {
+          "texto": "Simpático ⇒ neurona posganglionar usa noradrenalina",
+          "explicacion": "La mayoría de las neuronas posganglionares simpáticas liberan noradrenalina sobre el órgano efector. Una excepción son las que inervan las glándulas sudoríparas, que liberan acetilcolina."
+        },
+        {
+          "texto": "La médula suprarrenal libera adrenalina",
+          "explicacion": "Recibe fibras simpáticas preganglionares directas y actúa como un ganglio modificado, que libera adrenalina y noradrenalina a la sangre y prolonga y refuerza el efecto simpático."
+        },
+        {
+          "texto": "Simpático → frecuencia cardíaca ↑",
+          "explicacion": "Aumenta la frecuencia y la fuerza de las contracciones del corazón, de modo que más sangre llega a los músculos durante el esfuerzo."
+        },
+        {
+          "texto": "Simpático → pupilas dilatadas",
+          "explicacion": "Produce midriasis, al contraer el músculo radial del iris, lo que deja entrar más luz."
+        },
+        {
+          "texto": "Simpático → bronquios dilatados",
+          "explicacion": "Provoca broncodilatación para que entre más aire a los pulmones y aumente el oxígeno disponible."
+        },
+        {
+          "texto": "Simpático → digestión ↓",
+          "explicacion": "Disminuye el peristaltismo y las secreciones digestivas, y contrae los esfínteres, porque la digestión no es prioritaria durante una emergencia."
+        },
+        {
+          "texto": "Simpático → glucosa en sangre ↑",
+          "explicacion": "Estimula en el hígado la liberación de glucosa a partir del glucógeno (glucogenólisis), para disponer de más energía."
+        },
+        {
+          "texto": "Simpático → sudoración ↑",
+          "explicacion": "Activa las glándulas sudoríparas, que ayudan a eliminar el calor generado por el esfuerzo."
+        },
+        {
+          "texto": "Simpático → vasos de la piel y de las vísceras se contraen",
+          "explicacion": "La vasoconstricción desvía la sangre hacia los músculos y el corazón, y en cambio dilata los vasos de los músculos esqueléticos."
+        }
+      ]
+    },
+    {
+      "titulo": "División parasimpática",
+      "puntos": [
+        {
+          "texto": "El «sistema parasimpático» favorece reposo y digestión",
+          "explicacion": "Predomina en situaciones de calma, promueve la digestión, la conservación de energía y la recuperación. Por eso después de una comida abundante una persona se siente tranquila y con sueño."
+        },
+        {
+          "texto": "Parasimpático ⇒ origen craneosacro",
+          "explicacion": "Las neuronas preganglionares salen del tronco encefálico, a través de los nervios craneales tercero, séptimo, noveno y décimo, y de los segmentos sacros segundo a cuarto (S2 a S4) de la médula."
+        },
+        {
+          "texto": "Parasimpático ⇒ ganglios cerca o dentro del órgano",
+          "explicacion": "Los ganglios parasimpáticos están muy cerca del órgano efector, por lo que las fibras preganglionares son largas y las posganglionares cortas."
+        },
+        {
+          "texto": "Parasimpático ⇒ acetilcolina en ambas neuronas",
+          "explicacion": "Tanto la neurona preganglionar como la posganglionar liberan acetilcolina, a diferencia del simpático, donde la posganglionar usa noradrenalina."
+        },
+        {
+          "texto": "Parasimpático → frecuencia cardíaca ↓",
+          "explicacion": "El nervio vago enlentece el corazón y disminuye la fuerza de la contracción, lo que ahorra energía en el reposo."
+        },
+        {
+          "texto": "Parasimpático → pupilas contraídas",
+          "explicacion": "Produce miosis, al contraer el músculo circular del iris, lo que reduce la entrada de luz y favorece la visión cercana."
+        },
+        {
+          "texto": "Parasimpático → bronquios contraídos",
+          "explicacion": "Provoca broncoconstricción, y reduce el calibre de las vías respiratorias en reposo."
+        },
+        {
+          "texto": "Parasimpático → digestión ↑",
+          "explicacion": "Aumenta el peristaltismo y la secreción de saliva, jugo gástrico y enzimas, y relaja los esfínteres para que avance el contenido digestivo."
+        },
+        {
+          "texto": "Parasimpático → vaciamiento de la vejiga",
+          "explicacion": "Contrae el músculo de la pared de la vejiga y relaja el esfínter interno, lo que permite la micción."
+        },
+        {
+          "texto": "Parasimpático → erección ↑",
+          "explicacion": "Dilata los vasos de los órganos eréctiles, función mediada por los nervios sacros."
+        }
+      ]
+    },
+    {
+      "titulo": "Sistema nervioso entérico",
+      "puntos": [
+        {
+          "texto": "El «sistema nervioso entérico» controla el tubo digestivo",
+          "explicacion": "Es una red de millones de neuronas situada en la pared del tubo digestivo, desde el esófago hasta el ano. Puede controlar el peristaltismo y las secreciones aun cuando se corte su conexión con el SNC, y por ello se le llama el segundo cerebro."
+        },
+        {
+          "texto": "El plexo mientérico de Auerbach controla la motilidad",
+          "explicacion": "Se ubica entre las capas musculares de la pared digestiva y regula las contracciones que mueven el alimento."
+        },
+        {
+          "texto": "El plexo submucoso de Meissner controla las secreciones",
+          "explicacion": "Se ubica en la submucosa y regula las secreciones y el flujo de sangre local."
+        },
+        {
+          "texto": "Sistema entérico ⇒ recibe influencia del SNA",
+          "explicacion": "Aunque actúa de forma local, recibe influencia del simpático, que inhibe la digestión, y del parasimpático, que la estimula."
+        }
+      ]
+    },
+    {
+      "titulo": "Enfermedades neurológicas",
+      "puntos": [
+        {
+          "texto": "La «enfermedad de Parkinson» ⇒ pérdida de neuronas dopaminérgicas",
+          "explicacion": "Se produce por la degeneración de neuronas de la sustancia negra que fabrican dopamina. Causa temblor en reposo, rigidez y lentitud de movimientos."
+        },
+        {
+          "texto": "La «enfermedad de Alzheimer» ⇒ deterioro de la memoria",
+          "explicacion": "Es una enfermedad neurodegenerativa con acumulación de placas de proteína beta-amiloide y ovillos de proteína tau dentro de las neuronas. Produce pérdida progresiva de la memoria y de otras funciones cognitivas."
+        },
+        {
+          "texto": "La «esclerosis múltiple» ⇒ pérdida de mielina en el SNC",
+          "explicacion": "Es una enfermedad autoinmune en la que el sistema inmunitario ataca la mielina del encéfalo y de la médula. La conducción del impulso se enlentece y causa debilidad, alteraciones visuales y problemas de coordinación."
+        },
+        {
+          "texto": "La «epilepsia» ⇒ descargas eléctricas anormales",
+          "explicacion": "Se caracteriza por crisis repetidas causadas por una actividad eléctrica excesiva y sincronizada de grupos de neuronas de la corteza cerebral."
+        },
+        {
+          "texto": "El accidente cerebrovascular ⇒ falta de riego en el cerebro",
+          "explicacion": "Ocurre cuando un vaso del encéfalo se tapa (isquémico) o se rompe (hemorrágico). Las neuronas que no reciben oxígeno y glucosa mueren en minutos, y el daño puede causar parálisis o pérdida del habla."
+        },
+        {
+          "texto": "La «poliomielitis» ⇒ virus que destruye motoneuronas",
+          "explicacion": "La causa el poliovirus, que destruye las neuronas motoras del asta anterior de la médula, y produce parálisis flácida. Se previene con vacunas."
+        },
+        {
+          "texto": "La «enfermedad de Huntington» ⇒ degeneración de ganglios basales",
+          "explicacion": "Es una enfermedad hereditaria que causa movimientos involuntarios bruscos y deterioro mental, por la muerte de neuronas de los ganglios basales."
+        },
+        {
+          "texto": "La «miastenia grave» ⇒ falla en la placa motora",
+          "explicacion": "Es una enfermedad autoinmune en la que los anticuerpos atacan los receptores de acetilcolina del músculo y causan debilidad muscular que empeora con el esfuerzo."
+        }
+      ]
+    },
+    {
+      "titulo": "Temas relacionados",
+      "puntos": [
+        {
+          "texto": "Órganos de los sentidos ⊃ receptores sensoriales",
+          "explicacion": "Los órganos de los sentidos contienen los receptores que captan los estímulos y envían la información por los nervios craneales. Se desarrollan en el tema de órganos de los sentidos."
+        },
+        {
+          "texto": "Sistema endocrino ≈ coordinación química",
+          "explicacion": "Trabaja de forma coordinada con el sistema nervioso mediante hormonas, y el hipotálamo conecta ambos sistemas a través de la hipófisis. Se desarrolla en el tema de sistema endocrino humano."
+        },
+        {
+          "texto": "Sistema nervioso en animales ≠ sistema nervioso humano",
+          "explicacion": "El sistema nervioso humano es del tipo central con encéfalo muy desarrollado. Los demás tipos, como el difuso de los cnidarios y el ganglionar de los invertebrados, se desarrollan en el tema de sistema nervioso en animales."
+        }
       ]
     }
   ]

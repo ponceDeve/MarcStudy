@@ -2,43 +2,210 @@
   "curso": "Biología",
   "tema": "Código genético",
   "glosario": {
-    "Código genético": "Conjunto de reglas que relaciona codones con aminoácidos.",
-    "Codón": "Triplete de nucleótidos que especifica un aminoácido.",
-    "Codón de parada": "Codón que termina la síntesis de proteínas.",
-    "Degenerado": "Propiedad de tener varios codones para un mismo aminoácido.",
-    "No solapado": "Propiedad de que cada base pertenece a un solo codón.",
-    "Universal": "Propiedad de usar los mismos codones en casi todos los organismos.",
-    "Mitocondria": "Organelo con código genético propio en algunos casos."
+    "Código genético": "Conjunto de reglas que relaciona cada codón con el aminoácido que especifica.",
+    "Codón": "Secuencia de tres nucleótidos consecutivos del ARN mensajero que codifica un aminoácido o una señal.",
+    "Anticodón": "Secuencia de tres nucleótidos del ARN de transferencia complementaria a un codón.",
+    "Triplete": "Grupo de tres nucleótidos consecutivos que forma un codón.",
+    "Degeneración": "Propiedad por la que un aminoácido puede estar codificado por más de un codón.",
+    "Redundancia": "Otro nombre de la degeneración del código genético.",
+    "Código no solapado": "Código en el que cada nucleótido pertenece a un único codón.",
+    "Código universal": "Código en el que un mismo codón especifica el mismo aminoácido en casi todos los seres vivos.",
+    "Codón de inicio": "Codón AUG que indica el comienzo de la traducción y codifica metionina.",
+    "Codón de terminación": "Codón UAA, UAG o UGA que indica el final de la traducción.",
+    "Metionina": "Aminoácido codificado por el codón AUG.",
+    "Triptófano": "Aminoácido codificado por el codón UGG.",
+    "Mutación": "Cambio en la secuencia de nucleótidos del ADN que puede alterar un codón.",
+    "Código mitocondrial": "Variante del código genético que usan las mitocondrias, con algunas diferencias respecto al código nuclear."
   },
   "theory": [
     {
       "titulo": "Concepto de código genético",
       "puntos": [
-        { "texto": "El código genético relaciona cada codón con un aminoácido.", "explicacion": "Es el conjunto de reglas que traduce la información genética en proteínas." },
-        { "texto": "Un «codón» es un triplete de nucleótidos del «ARN mensajero (ARNm)».", "explicacion": "Con cuatro bases agrupadas de tres en tres se obtienen 64 codones posibles." }
+        {
+          "texto": "El código genético establece la correspondencia entre codones y aminoácidos",
+          "explicacion": "Funciona como un diccionario que permite traducir la secuencia del ARN mensajero en una secuencia de aminoácidos."
+        },
+        {
+          "texto": "El código genético se lee en grupos de tres nucleótidos",
+          "explicacion": "Cada grupo de tres bases forma un codón, que especifica un aminoácido o una señal de inicio o terminación."
+        },
+        {
+          "texto": "El código genético tiene sesenta y cuatro codones",
+          "explicacion": "Resultan de combinar cuatro bases tomadas de tres en tres, es decir, cuatro elevado a la tres."
+        },
+        {
+          "texto": "El código genético especifica veinte aminoácidos",
+          "explicacion": "Son los aminoácidos que forman las proteínas de los seres vivos, aunque algunos casos especiales agregan otros."
+        }
       ]
     },
     {
-      "titulo": "Codones con función",
+      "titulo": "Historia del desciframiento",
       "puntos": [
-        { "texto": "De los 64 codones, 61 codifican aminoácidos.", "explicacion": "Estos 61 tripletes especifican los 20 aminoácidos que forman las proteínas." },
-        { "texto": "Tres son «codones de parada»: UAA, UAG y UGA.", "explicacion": "Terminan la síntesis de proteínas y no codifican ningún aminoácido." },
-        { "texto": "El codón AUG codifica metionina y funciona como inicio.", "explicacion": "Fija el marco de lectura, por eso la síntesis de proteínas comienza con metionina." }
+        {
+          "texto": "En 1961 Nirenberg y Matthaei descifraron el primer codón",
+          "explicacion": "Usaron ARN sintético formado solo por uracilo, lo que permitió asignar el codón UUU al aminoácido fenilalanina."
+        },
+        {
+          "texto": "Har Gobind Khorana sintetizó ARN con secuencias definidas",
+          "explicacion": "Dato por confirmar: con ellos completó la asignación de varios codones, lo que permitió avanzar en la tabla."
+        },
+        {
+          "texto": "Nirenberg y Leder usaron ribosomas para completar la tabla de codones",
+          "explicacion": "Dato por confirmar: detectaron qué ARN de transferencia se unía a cada triplete en el ribosoma."
+        },
+        {
+          "texto": "Holley aisló el primer ARN de transferencia",
+          "explicacion": "Dato por confirmar: este hallazgo permitió comprender el papel de los anticodones en la traducción."
+        },
+        {
+          "texto": "Nirenberg, Holley y Khorana recibieron el Premio Nobel por el desciframiento",
+          "explicacion": "Dato por confirmar: el premio se otorgó en 1968 por la interpretación del código genético."
+        }
       ]
     },
     {
-      "titulo": "Propiedades del código",
+      "titulo": "Código en tripletes",
       "puntos": [
-        { "texto": "El código es «degenerado»: varios codones pueden codificar un mismo aminoácido.", "explicacion": "Por ejemplo, la leucina tiene seis codones, pero cada codón especifica un solo aminoácido." },
-        { "texto": "El código es «no solapado»: cada base pertenece a un solo codón.", "explicacion": "La lectura es continua desde el codón de inicio hasta el de parada." },
-        { "texto": "El código genético es casi «universal».", "explicacion": "Casi todos los organismos usan los mismos codones, lo que sugiere un origen común de la vida." }
+        {
+          "texto": "El código está organizado en tripletes o codones",
+          "explicacion": "Cada triplete se lee de forma consecutiva desde el codón de inicio hasta el de terminación."
+        },
+        {
+          "texto": "Después del codón AUG el siguiente codón comienza en el nucleótido siguiente",
+          "explicacion": "La lectura es continua y sin pausas, por lo que el marco de lectura debe mantenerse para no desplazar el mensaje."
+        }
       ]
     },
     {
-      "titulo": "Excepciones y conexión",
+      "titulo": "Código degenerado",
       "puntos": [
-        { "texto": "Algunas «mitocondrias» tienen excepciones al código universal.", "explicacion": "Por ejemplo, el codón UGA codifica triptófano en mitocondrias de vertebrados." },
-        { "texto": "La lectura del código ocurre durante la traducción.", "explicacion": "Su mecanismo se desarrolla en el tema de síntesis de proteínas." }
+        {
+          "texto": "El código genético es degenerado o redundante",
+          "explicacion": "Hay más codones que aminoácidos, por eso la mayoría de los aminoácidos están codificados por más de un codón."
+        },
+        {
+          "texto": "La mayoría de los aminoácidos tienen más de un codón",
+          "explicacion": "Por ejemplo, la leucina, la serina y la arginina tienen seis codones diferentes cada una."
+        },
+        {
+          "texto": "La metionina y el triptófano tienen un único codón",
+          "explicacion": "Dato por confirmar: la metionina se codifica con AUG y el triptófano con UGG, por lo que son excepciones a la degeneración."
+        },
+        {
+          "texto": "La degeneración suele afectar al tercer nucleótido del codón",
+          "explicacion": "Dato por confirmar: cambios en la tercera base a menudo no alteran el aminoácido, lo que ayuda a reducir el efecto de las mutaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Código no solapado",
+      "puntos": [
+        {
+          "texto": "El código genético es no solapado",
+          "explicacion": "Cada nucleótido pertenece a un único triplete y no se usa en dos codones a la vez."
+        },
+        {
+          "texto": "En un código solapado un mismo nucleótido formaría parte de varios codones",
+          "explicacion": "Si el código fuera solapado, un cambio en una base alteraría varios aminoácidos a la vez, lo que la evidencia no muestra."
+        }
+      ]
+    },
+    {
+      "titulo": "Código universal",
+      "puntos": [
+        {
+          "texto": "El código genético es prácticamente universal",
+          "explicacion": "El mismo codón especifica el mismo aminoácido en bacterias, plantas, animales y hongos."
+        },
+        {
+          "texto": "La universalidad sugiere un origen evolutivo común de la vida",
+          "explicacion": "Todos los seres vivos que conocemos comparten el mismo código, lo que apunta a un antepasado común."
+        },
+        {
+          "texto": "El código mitocondrial tiene algunas diferencias respecto al código nuclear",
+          "explicacion": "Dato por confirmar: en las mitocondrias humanas, el codón UGA codifica triptófano y no actúa como señal de parada."
+        },
+        {
+          "texto": "Algunos ciliados reasignan los codones UAA y UAG a glutamina",
+          "explicacion": "Dato por confirmar: son excepciones menores que no cambian la validez general del código universal."
+        }
+      ]
+    },
+    {
+      "titulo": "Codones de inicio",
+      "puntos": [
+        {
+          "texto": "El codón AUG es la señal de inicio de la traducción",
+          "explicacion": "Además de iniciar la síntesis, codifica el aminoácido metionina dentro de la cadena."
+        },
+        {
+          "texto": "En procariotas el codón de inicio se traduce como formilmetionina",
+          "explicacion": "Dato por confirmar: el ARN de transferencia iniciador aporta una metionina modificada con un grupo formilo."
+        },
+        {
+          "texto": "En eucariotas el codón AUG codifica metionina",
+          "explicacion": "La primera metionina de la proteína se elimina con frecuencia después de la síntesis."
+        }
+      ]
+    },
+    {
+      "titulo": "Codones de terminación",
+      "puntos": [
+        {
+          "texto": "Los codones de terminación son UAA, UAG y UGA",
+          "explicacion": "Señalan el final de la traducción y no tienen un ARN de transferencia que los reconozca."
+        },
+        {
+          "texto": "Los codones de terminación no codifican ningún aminoácido",
+          "explicacion": "Por eso se llaman también codones sin sentido o de parada, porque indican que la cadena debe liberarse."
+        },
+        {
+          "texto": "El codón UAA es el más común en genes procariotas",
+          "explicacion": "Dato por confirmar: entre los tres codones de parada, es el que más se usa en el genoma de las bacterias."
+        },
+        {
+          "texto": "Algunos codones de parada codifican aminoácidos poco frecuentes",
+          "explicacion": "Dato por confirmar: el UGA puede codificar selenocisteína y el UAG puede codificar pirrolisina en casos especiales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de codones",
+      "puntos": [
+        {
+          "texto": "El codón UUU codifica fenilalanina",
+          "explicacion": "Dato por confirmar: fue el primer codón asignado por Nirenberg y Matthaei en 1961."
+        },
+        {
+          "texto": "El codón UGG codifica triptófano",
+          "explicacion": "Dato por confirmar: es el único codón que especifica triptófano en el código estándar."
+        },
+        {
+          "texto": "El codón AUG codifica metionina",
+          "explicacion": "Dato por confirmar: también funciona como señal de inicio de la traducción."
+        },
+        {
+          "texto": "El codón GGU codifica glicina",
+          "explicacion": "Dato por confirmar: forma parte de los cuatro codones que codifican glicina en el código estándar."
+        }
+      ]
+    },
+    {
+      "titulo": "Mutaciones y código",
+      "puntos": [
+        {
+          "texto": "Una mutación puede cambiar un codón y alterar el aminoácido",
+          "explicacion": "Si el nuevo codón codifica otro aminoácido, la proteína resultante puede tener una función distinta."
+        },
+        {
+          "texto": "Una mutación silenciosa no cambia el aminoácido",
+          "explicacion": "Ocurre porque la degeneración del código permite que dos codones distintos especifiquen el mismo aminoácido."
+        },
+        {
+          "texto": "Una mutación sin sentido produce un codón de terminación prematuro",
+          "explicacion": "Dato por confirmar: la traducción se detiene antes de tiempo y la proteína resultante suele quedar incompleta."
+        }
       ]
     }
   ]

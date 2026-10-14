@@ -2,40 +2,241 @@
   "curso": "Biología",
   "tema": "Selección natural y artificial",
   "glosario": {
-    "Selección natural": "Supervivencia y reproducción diferencial de los individuos mejor adaptados.",
-    "Selección artificial": "Selección de individuos por el ser humano para obtener rasgos deseados.",
-    "Selección estabilizadora": "Favorece los valores intermedios de un carácter.",
-    "Selección direccional": "Favorece uno de los extremos de un carácter.",
-    "Selección disruptiva": "Favorece los dos extremos de un carácter.",
-    "Domesticación": "Proceso de adaptación de una especie a la convivencia con el ser humano."
+    "Selección natural": "Supervivencia y reproducción diferencial de variantes hereditarias",
+    "Selección artificial": "Elección humana de individuos para reproducirlos",
+    "Variación hereditaria": "Diferencias genéticas transmitidas de padres a hijos",
+    "Aptitud biológica": "Descendencia fértil que deja un individuo",
+    "Adaptación": "Rasgo que mejora la supervivencia y reproducción",
+    "Fenotipo": "Conjunto de rasgos observables de un individuo",
+    "Alelo": "Forma alternativa de un mismo gen",
+    "Mutación": "Cambio hereditario en la secuencia del ADN",
+    "Recombinación genética": "Reorganización de alelos durante la meiosis",
+    "Deriva genética": "Cambio aleatorio de frecuencias génicas",
+    "Endogamia": "Cruce entre individuos emparentados cercanos",
+    "Teosintle": "Pariente silvestre del maíz"
   },
   "theory": [
     {
-      "titulo": "Selección natural",
+      "titulo": "Concepto de selección natural",
       "puntos": [
-        { "texto": "La selección natural actúa sobre la variación hereditaria de las poblaciones.", "explicacion": "Sin variación no hay diferencias sobre las que actuar." },
-        { "texto": "Los individuos mejor adaptados dejan más descendencia.", "explicacion": "Así sus caracteres se vuelven más frecuentes en las generaciones siguientes." }
+        {
+          "texto": "Selección natural → supervivencia y reproducción diferencial",
+          "explicacion": "Es el proceso por el que ciertas variantes hereditarias dejan más descendencia fértil que otras en un ambiente determinado. Quienes la propusieron fueron Charles Robert Darwin y Alfred Russel Wallace."
+        },
+        {
+          "texto": "Propuesta conjunta de Darwin y Wallace en 1858",
+          "explicacion": "Ambos naturalistas presentaron la idea ante la Sociedad Linneana de Londres el 1 de julio de 1858. Darwin publicó después su obra principal, «On the Origin of Species» (El origen de las especies, 1859), donde amplió los argumentos y las evidencias."
+        },
+        {
+          "texto": "Adaptación ⇒ resultado acumulado de la selección",
+          "explicacion": "Las variantes que mejoran la aptitud biológica aumentan su frecuencia en la población generación tras generación. La adaptación es un resultado de la población, no una respuesta individual del organismo durante su vida."
+        }
+      ]
+    },
+    {
+      "titulo": "Principios de la selección natural",
+      "puntos": [
+        {
+          "texto": "Variación entre individuos de una población",
+          "explicacion": "Los individuos de una misma población nunca son idénticos. Estas diferencias afectan el tamaño, el color, la velocidad, la resistencia y la conducta, entre otros rasgos."
+        },
+        {
+          "texto": "Variación heredable entre padres e hijos",
+          "explicacion": "Solo los rasgos con base genética pasan a la descendencia. Un rasgo adquirido por uso o por influencia del ambiente durante la vida no se transmite por sí mismo y, por eso, no es base de la selección."
+        },
+        {
+          "texto": "Producción de más descendientes de los que sobreviven",
+          "explicacion": "Muchas especies producen más crías de las que llegan a la edad adulta. Thomas Robert Malthus influyó en Darwin al describir el crecimiento de las poblaciones frente a recursos limitados."
+        },
+        {
+          "texto": "Competencia por recursos limitados",
+          "explicacion": "Alimento, agua, refugio, pareja y espacio son limitados, por lo que los individuos compiten entre sí. La competencia entre individuos de la misma especie es la más directa."
+        },
+        {
+          "texto": "Supervivencia diferencial ⇒ reproducción diferencial",
+          "explicacion": "Los individuos con variantes más favorables sobreviven y dejan más descendencia fértil. Herbert Spencer acuñó en 1864 la expresión «supervivencia del más apto», que Darwin incorporó en la quinta edición de su obra, en 1869."
+        },
+        {
+          "texto": "Frecuencia de alelos ↑ en la población",
+          "explicacion": "El resultado acumulado se observa como un cambio en la proporción de alelos de la población. Un alelo es una forma alternativa de un gen y su frecuencia se mide en la población, no en un individuo."
+        },
+        {
+          "texto": "La selección actúa sobre individuos, el cambio ocurre en poblaciones",
+          "explicacion": "La selección actúa sobre los fenotipos de cada individuo, pero la evolución se mide como cambio en las frecuencias génicas de la población a lo largo del tiempo."
+        }
+      ]
+    },
+    {
+      "titulo": "Origen de la variación",
+      "puntos": [
+        {
+          "texto": "Mutaciones: cambios en el ácido desoxirribonucleico (ADN)",
+          "explicacion": "El ADN es la molécula que almacena la información hereditaria de la mayoría de los seres vivos. Una mutación es un cambio hereditario en su secuencia y es la fuente principal de variación nueva. Darwin desconocía su base molecular, que se estableció en el siglo XX."
+        },
+        {
+          "texto": "Gregor Johann Mendel publicó sus experimentos en 1866",
+          "explicacion": "Gregor Johann Mendel presentó su trabajo sobre herencia en 1865 y lo publicó en 1866. Sus principios fueron redescubiertos en 1900, lo que permitió integrar la herencia con la teoría de la evolución."
+        },
+        {
+          "texto": "Recombinación genética ⇒ combinaciones nuevas de alelos",
+          "explicacion": "Durante la meiosis se reorganizan los alelos recibidos de los progenitores. Así cada gameto presenta combinaciones distintas, aunque no se crean alelos nuevos."
+        },
+        {
+          "texto": "La variación aparece al azar",
+          "explicacion": "Las mutaciones ocurren sin relación con las necesidades del ambiente. La variación es aleatoria, pero la selección que la filtra no lo es, porque depende de la aptitud de cada variante."
+        }
       ]
     },
     {
       "titulo": "Tipos de selección natural",
       "puntos": [
-        { "texto": "La selección estabilizadora favorece los valores intermedios de un carácter.", "explicacion": "El peso al nacer en humanos es un ejemplo: los extremos aumentan la mortalidad." },
-        { "texto": "La selección direccional favorece uno de los extremos del carácter.", "explicacion": "Por ejemplo, el aumento de la resistencia de bacterias a un antibiótico." },
-        { "texto": "La selección disruptiva favorece los dos extremos del carácter.", "explicacion": "Puede originar dos poblaciones distintas dentro de una misma especie." }
+        {
+          "texto": "Selección estabilizadora favorece valores intermedios",
+          "explicacion": "Elimina los extremos y mantiene el fenotipo promedio de la población. Es frecuente en poblaciones estables; un ejemplo humano es el peso al nacer, en el que los extremos se asocian con mayor mortalidad."
+        },
+        {
+          "texto": "Selección direccional favorece un extremo",
+          "explicacion": "Desplaza el promedio de un rasgo hacia un valor extremo. Ocurre cuando cambian las condiciones, como una sequía o la aparición de un antibiótico en el ambiente."
+        },
+        {
+          "texto": "Selección disruptiva favorece ambos extremos",
+          "explicacion": "Favorece a los individuos extremos y penaliza los valores intermedios. Si se mantiene en el tiempo, puede dar origen a dos poblaciones con rasgos distintos."
+        },
+        {
+          "texto": "Selección sexual favorece el éxito reproductivo",
+          "explicacion": "Darwin la describió en 1871 en «The Descent of Man» (El origen del hombre). Actúa por la competencia por la pareja, como las luchas entre machos o la elección de las hembras, y puede favorecer rasgos que no aumentan la supervivencia."
+        }
       ]
     },
     {
-      "titulo": "Selección artificial",
+      "titulo": "Ejemplos de selección natural",
       "puntos": [
-        { "texto": "La selección artificial la realiza el ser humano eligiendo qué individuos se reproducen.", "explicacion": "Así se obtienen razas de perros, variedades de maíz y de otros cultivos." },
-        { "texto": "La selección artificial actúa más rápido que la natural.", "explicacion": "El ser humano impone el criterio de selección de forma intencional y en pocas generaciones." }
+        {
+          "texto": "Melanismo industrial en la falena moteada",
+          "explicacion": "Durante la Revolución industrial en Inglaterra, la forma oscura de Biston betularia aumentó porque se camuflaba mejor en troncos ennegrecidos por el hollín. Bernard Kettlewell comprobó esta ventaja con experimentos de marcaje y recaptura en la década de 1950. Cuando disminuyó la contaminación, la forma clara recuperó frecuencia."
+        },
+        {
+          "texto": "Pinzones de Galápagos y la sequía de 1977",
+          "explicacion": "Peter Grant y Rosemary Grant registraron en la isla Daphne Major que sobrevivieron más aves con picos grandes tras la sequía. Ese rasgo permitió consumir las semillas duras que quedaban disponibles, por lo que es un caso de selección direccional."
+        },
+        {
+          "texto": "Resistencia bacteriana a los antibióticos",
+          "explicacion": "Las bacterias con alelos de resistencia sobreviven al tratamiento y se reproducen. Con el tiempo, la población entera presenta resistencia, por lo que el uso excesivo de antibióticos acelera el proceso."
+        },
+        {
+          "texto": "Experimento de Richard Eugene Lenski con Escherichia coli",
+          "explicacion": "Desde 1988, Richard Eugene Lenski cultiva poblaciones de Escherichia coli y registra cambios adaptativos a lo largo de muchas generaciones. Es evidencia directa de evolución observable en el laboratorio."
+        }
       ]
     },
     {
-      "titulo": "Domesticación",
+      "titulo": "Concepto de selección artificial",
       "puntos": [
-        { "texto": "La «domesticación» modifica especies silvestres por la convivencia con el ser humano.", "explicacion": "Es un proceso de selección artificial a lo largo de muchas generaciones." }
+        {
+          "texto": "Selección artificial → elección humana de individuos",
+          "explicacion": "Consiste en reproducir solo a los individuos que las personas consideran útiles o deseables. Darwin la estudió en su obra «Variation under Domestication» (Variación bajo domesticación), publicada en 1868."
+        },
+        {
+          "texto": "Modelo de Darwin para explicar la selección natural",
+          "explicacion": "Darwin usó la selección artificial como analogía para explicar la selección natural. La diferencia está en el agente que elige: la persona en un caso y el ambiente en el otro."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de selección artificial",
+      "puntos": [
+        {
+          "texto": "Selección metódica: elección planificada de rasgos",
+          "explicacion": "El criador elige deliberadamente a los reproductores, suele llevar registros de descendencia y persigue un objetivo concreto. Se usa en la mejora de razas de ganado y de variedades de cultivos."
+        },
+        {
+          "texto": "Selección inconsciente: cría sin objetivo definido",
+          "explicacion": "Ocurre cuando las personas conservan los individuos que les resultan más útiles o atractivos, sin proponerse cambiar la especie. Darwin la consideró la base de muchas razas antiguas."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos de selección artificial",
+      "puntos": [
+        {
+          "texto": "Razas caninas con tamaños muy distintos",
+          "explicacion": "Todas las razas de perros descienden del lobo gris, pero difieren mucho en tamaño, forma y comportamiento. Esa diversidad se obtuvo mediante cruces dirigidos durante siglos."
+        },
+        {
+          "texto": "Maíz derivado del teosintle en Mesoamérica",
+          "explicacion": "El teosintle es un pariente silvestre con pocas mazorcas y granos rodeados de una cubierta dura. La selección humana aumentó el tamaño de la mazorca y dejó los granos expuestos, rasgos que el maíz actual conserva."
+        },
+        {
+          "texto": "Vacas lecheras de alta producción",
+          "explicacion": "Se seleccionan los animales con mayor producción de leche y se cruzan entre sí. Este proceso ha aumentado el rendimiento por animal a lo largo de las últimas décadas."
+        },
+        {
+          "texto": "Brócoli, coliflor y col de una misma especie",
+          "explicacion": "Estas hortalizas derivan de Brassica oleracea. Las personas seleccionaron distintas partes de la planta: yemas florales, hojas o tallos engrosados."
+        }
+      ]
+    },
+    {
+      "titulo": "Consecuencias de la selección artificial",
+      "puntos": [
+        {
+          "texto": "Pérdida de variabilidad genética en las razas",
+          "explicacion": "La selección repetida reduce la diversidad de alelos disponibles en la población. Una menor variabilidad limita la capacidad de respuesta frente a nuevas enfermedades o cambios ambientales."
+        },
+        {
+          "texto": "Mayor riesgo de enfermedades hereditarias",
+          "explicacion": "La endogamia aumenta la probabilidad de expresar alelos recesivos dañinos. Algunas razas caninas presentan problemas como la displasia de cadera, asociados a cruces entre parientes cercanos."
+        },
+        {
+          "texto": "Monocultivos y la hambruna de la papa",
+          "explicacion": "En Irlanda, entre 1845 y 1852, la uniformidad genética de los cultivos de papa favoreció la expansión de Phytophthora infestans, un oomiceto causante del tizón tardío. La falta de variantes resistentes agravó la pérdida de cosechas."
+        }
+      ]
+    },
+    {
+      "titulo": "Comparación entre ambas selecciones",
+      "puntos": [
+        {
+          "texto": "Agente selector: ambiente ≠ persona",
+          "explicacion": "En la selección natural el ambiente determina qué variantes sobreviven. En la artificial la persona decide qué individuos se reproducen según su utilidad o su preferencia."
+        },
+        {
+          "texto": "Objetivo: adaptación ≠ utilidad humana",
+          "explicacion": "La selección natural no tiene una meta prefijada; favorece lo que funciona en cada contexto. La artificial busca rasgos definidos por el criador, aunque a veces reduzca la adaptación al ambiente natural."
+        },
+        {
+          "texto": "Tiempo: larga escala frente a pocas generaciones",
+          "explicacion": "La selección natural actúa durante periodos largos sobre poblaciones enteras. La artificial puede producir cambios visibles en pocas generaciones, porque el criador controla los cruces."
+        },
+        {
+          "texto": "Ambas requieren variación hereditaria previa ✓",
+          "explicacion": "Sin variantes heredables no hay material sobre el cual actuar. Ni el ambiente ni el criador pueden producir un rasgo que no exista en la población."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes sobre selección",
+      "puntos": [
+        {
+          "texto": "Selección natural ✗ genera variación nueva",
+          "explicacion": "Solo filtra variantes ya existentes; la variación nueva llega por mutación y recombinación genética. Confundir estos procesos lleva a suponer que el ambiente produce los rasgos que necesita."
+        },
+        {
+          "texto": "Lamarck propuso herencia de rasgos adquiridos",
+          "explicacion": "Jean-Baptiste de Lamarck planteó que los rasgos adquiridos por uso o desuso se heredan. El ejemplo clásico es el cuello de la jirafa, que hoy se explica por variación y selección, no por esfuerzo individual."
+        },
+        {
+          "texto": "Lo más fuerte no siempre es lo más apto",
+          "explicacion": "La aptitud biológica se mide por la descendencia fértil, no por la fuerza física. Un individuo pequeño pero muy fértil puede tener más aptitud que uno grande y estéril."
+        },
+        {
+          "texto": "La evolución no tiene meta prefijada",
+          "explicacion": "Los cambios dependen de las variantes disponibles y del ambiente en cada momento. Un rasgo útil hoy puede dejar de serlo si el ambiente cambia."
+        },
+        {
+          "texto": "Deriva genética ≠ selección natural",
+          "explicacion": "La deriva genética cambia las frecuencias de alelos por azar, sobre todo en poblaciones pequeñas. A diferencia de la selección, no depende de la aptitud biológica de las variantes."
+        }
       ]
     }
   ]

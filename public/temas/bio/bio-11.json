@@ -2,66 +2,250 @@
   "curso": "Biología",
   "tema": "Ácidos nucleicos",
   "glosario": {
-    "Ácido nucleico": "Polímero de nucleótidos que almacena información genética.",
-    "Nucleótido": "Monómero formado por base nitrogenada, pentosa y fosfato.",
-    "Pentosa": "Azúcar de cinco carbonos presente en los nucleótidos.",
-    "Purina": "Base nitrogenada de doble anillo.",
-    "Pirimidina": "Base nitrogenada de un solo anillo.",
-    "Enlace fosfodiéster": "Unión que une nucleótidos mediante un grupo fosfato.",
-    "Complementariedad de bases": "Emparejamiento específico entre adenina, timina, citosina y guanina.",
-    "Anticodón": "Secuencia del ARNt que reconoce un codón del ARNm.",
-    "Codón": "Secuencia de tres bases que codifica un aminoácido."
+    "Ácido nucleico": "Polímero formado por nucleótidos que almacena y transmite la información genética.",
+    "ADN": "Ácido desoxirribonucleico, portador de la información genética de la mayoría de los seres vivos.",
+    "ARN": "Ácido ribonucleico, que interviene en la expresión de la información genética.",
+    "Nucleótido": "Monómero de los ácidos nucleicos formado por una pentosa, una base nitrogenada y un grupo fosfato.",
+    "Nucleósido": "Unión de una pentosa con una base nitrogenada, sin grupo fosfato.",
+    "Pentosa": "Azúcar de cinco carbonos que forma parte de los nucleótidos.",
+    "Desoxirribosa": "Pentosa del ADN, que carece de un oxígeno en el carbono 2.",
+    "Ribosa": "Pentosa del ARN, que tiene un grupo hidroxilo en el carbono 2.",
+    "Base nitrogenada": "Molécula con nitrógeno que forma parte de los nucleótidos y puede ser púrica o pirimidínica.",
+    "Base púrica": "Base nitrogenada de doble anillo, como la adenina y la guanina.",
+    "Base pirimidínica": "Base nitrogenada de un solo anillo, como la citosina, la timina y el uracilo.",
+    "Enlace fosfodiéster": "Enlace que une nucleótidos mediante el grupo fosfato entre el carbono 3' y el carbono 5'.",
+    "Enlace N-glucosídico": "Enlace que une la base nitrogenada con la pentosa.",
+    "Doble hélice": "Estructura del ADN formada por dos cadenas enrolladas alrededor de un mismo eje.",
+    "Replicación semiconservativa": "Copia del ADN en la que cada nueva molécula conserva una cadena original.",
+    "Histona": "Proteína básica alrededor de la cual se enrolla el ADN en el núcleo.",
+    "ARN mensajero": "ARN que copia la información del ADN y la lleva a los ribosomas.",
+    "ARN ribosómico": "ARN que forma parte de los ribosomas junto con proteínas.",
+    "ARN de transferencia": "ARN que transporta aminoácidos hasta los ribosomas.",
+    "Transcripción": "Síntesis de ARN a partir de una cadena molde de ADN.",
+    "Complementariedad": "Emparejamiento específico de bases: A con T o U, y C con G."
   },
   "theory": [
     {
       "titulo": "Concepto de ácidos nucleicos",
       "puntos": [
-        { "texto": "Los ácidos nucleicos almacenan y transmiten la información genética.", "explicacion": "Sus monómeros son los nucleótidos, que se unen formando polinucleótidos." },
-        { "texto": "El «ácido desoxirribonucleico (ADN)» almacena la información hereditaria.", "explicacion": "Se localiza en el núcleo de las eucariotas y en el nucleoide de las procariotas." },
-        { "texto": "El ácido ribonucleico (ARN) participa en la síntesis de proteínas.", "explicacion": "Generalmente es monocatenario y se origina a partir del ADN mediante transcripción." }
+        {
+          "texto": "Los ácidos nucleicos son polímeros formados por nucleótidos",
+          "explicacion": "Almacenan, transmiten y expresan la información genética de los seres vivos."
+        },
+        {
+          "texto": "Existen dos tipos de ácidos nucleicos: ADN y ARN",
+          "explicacion": "Todos los seres vivos tienen ADN y ARN, salvo algunos virus que tienen solo uno de los dos."
+        },
+        {
+          "texto": "Los ácidos nucleicos están formados por C, H, O, N y P",
+          "explicacion": "El fósforo forma parte del grupo fosfato, que está presente en cada nucleótido."
+        }
       ]
     },
     {
-      "titulo": "Estructura del nucleótido",
+      "titulo": "Componentes del nucleótido",
       "puntos": [
-        { "texto": "Cada nucleótido tiene base nitrogenada, pentosa y fosfato.", "explicacion": "La base se une al carbono 1' de la pentosa y el fosfato, al carbono 5'." },
-        { "texto": "La pentosa del ADN es la «desoxirribosa».", "explicacion": "Carece de un grupo hidroxilo en el carbono 2', a diferencia de la ribosa." },
-        { "texto": "La pentosa del ARN es la ribosa.", "explicacion": "Conserva el grupo hidroxilo en el carbono 2', lo que la hace más reactiva." }
+        {
+          "texto": "Un nucleótido está formado por una pentosa, una base nitrogenada y un fosfato",
+          "explicacion": "Estos tres componentes se unen en un orden fijo para formar la unidad básica de los ácidos nucleicos."
+        },
+        {
+          "texto": "La pentosa de los nucleótidos es la ribosa o la desoxirribosa",
+          "explicacion": "La pentosa es un azúcar de cinco carbonos que define si el nucleótido pertenece al ADN o al ARN."
+        },
+        {
+          "texto": "La base nitrogenada se une a la pentosa mediante un enlace N-glucosídico",
+          "explicacion": "La unión se da entre el carbono 1' de la pentosa y el nitrógeno de la base, y forma un nucleósido."
+        },
+        {
+          "texto": "El nucleósido se une al ácido fosfórico y forma un nucleótido",
+          "explicacion": "Al agregar el fosfato se completa el nucleótido, que puede unirse a otros para formar la cadena."
+        },
+        {
+          "texto": "Algunos nucleótidos no forman ácidos nucleicos y actúan libres en la célula",
+          "explicacion": "Por ejemplo, el AMP cíclico actúa como mensajero, y otros nucleótidos transfieren energía, como el ATP."
+        }
       ]
     },
     {
       "titulo": "Bases nitrogenadas",
       "puntos": [
-        { "texto": "Las «purinas» tienen doble anillo: adenina y guanina.", "explicacion": "Están presentes tanto en el ADN como en el ARN." },
-        { "texto": "Las «pirimidinas» tienen un solo anillo: citosina, timina y uracilo.", "explicacion": "La timina es exclusiva del ADN y el uracilo es exclusivo del ARN." }
+        {
+          "texto": "Las bases púricas son adenina y guanina",
+          "explicacion": "Tienen dos anillos en su estructura, y se encuentran tanto en el ADN como en el ARN."
+        },
+        {
+          "texto": "Las bases pirimidínicas son citosina, timina y uracilo",
+          "explicacion": "Tienen un solo anillo; la timina está en el ADN y el uracilo en el ARN."
+        },
+        {
+          "texto": "La timina es exclusiva del ADN",
+          "explicacion": "En el ARN su lugar lo ocupa el uracilo, que es una base diferente que no aparece en el ADN."
+        },
+        {
+          "texto": "El uracilo es exclusivo del ARN",
+          "explicacion": "Ocupa el lugar de la timina en la cadena de ARN y se aparea con la adenina."
+        }
       ]
     },
     {
-      "titulo": "Unión de nucleótidos",
+      "titulo": "Diferencias entre ADN y ARN",
       "puntos": [
-        { "texto": "Los nucleótidos se unen mediante «enlace fosfodiéster».", "explicacion": "Une el fosfato del carbono 5' con el carbono 3' de la pentosa vecina." }
+        {
+          "texto": "El ADN contiene desoxirribosa y el ARN contiene ribosa",
+          "explicacion": "La ribosa tiene un grupo hidroxilo en el carbono 2, que la desoxirribosa no tiene; esa diferencia afecta a la estabilidad de la molécula."
+        },
+        {
+          "texto": "El ADN es generalmente de doble cadena y el ARN de cadena simple",
+          "explicacion": "El ADN forma una doble hélice estable, mientras que el ARN generalmente es monocatenario."
+        },
+        {
+          "texto": "El ADN contiene timina y el ARN contiene uracilo",
+          "explicacion": "Estas son las bases pirimidínicas que diferencian a los dos ácidos nucleicos."
+        },
+        {
+          "texto": "El ADN se encuentra principalmente en el núcleo celular",
+          "explicacion": "Dato por confirmar: en las células eucariotas, el ADN se localiza en el núcleo y en orgánulos como las mitocondrias."
+        }
       ]
     },
     {
-      "titulo": "Doble hélice del ADN",
+      "titulo": "Enlace fosfodiéster",
       "puntos": [
-        { "texto": "El ADN forma una doble hélice de dos cadenas antiparalelas.", "explicacion": "Las cadenas se mantienen unidas por puentes de hidrógeno entre bases complementarias." },
-        { "texto": "Adenina se empareja con timina; citosina con guanina.", "explicacion": "Adenina y timina forman dos puentes de hidrógeno; citosina y guanina forman tres." },
-        { "texto": "En el ARN, la adenina se empareja con uracilo.", "explicacion": "Esta complementariedad permite copiar la información del ADN durante la transcripción." }
+        {
+          "texto": "Los nucleótidos se unen mediante enlace fosfodiéster",
+          "explicacion": "El grupo fosfato del nuevo nucleótido se une al carbono 5' de una pentosa y al carbono 3' de la pentosa anterior."
+        },
+        {
+          "texto": "El enlace fosfodiéster se forma con liberación de agua",
+          "explicacion": "Es una reacción de condensación, en la que se libera una molécula de agua por cada enlace formado."
+        },
+        {
+          "texto": "El enlace fosfodiéster da polaridad a la cadena de ácido nucleico",
+          "explicacion": "Cada cadena tiene un extremo 5' y un extremo 3', que se diferencian por el grupo fosfato y el grupo hidroxilo libre."
+        }
       ]
     },
     {
-      "titulo": "Tipos de ARN",
+      "titulo": "Modelo de Watson y Crick",
       "puntos": [
-        { "texto": "El «ARN mensajero (ARNm)» copia la información del ADN.", "explicacion": "Lleva el mensaje genético desde el núcleo hasta los ribosomas en el citoplasma." },
-        { "texto": "El «ARN ribosómico (ARNr)» forma parte de los ribosomas.", "explicacion": "Interviene en la unión de aminoácidos durante la síntesis de proteínas." },
-        { "texto": "El «ARN de transferencia (ARNt)» transporta aminoácidos a los ribosomas.", "explicacion": "Cada tipo reconoce un codón específico mediante su anticodón." }
+        {
+          "texto": "Watson y Crick propusieron el modelo de doble hélice del ADN en 1953",
+          "explicacion": "Se basaron en datos de otros investigadores, como la difracción de rayos X de Rosalind Franklin y Maurice Wilkins."
+        },
+        {
+          "texto": "En la doble hélice las dos cadenas son antiparalelas",
+          "explicacion": "Una cadena va en dirección 5' a 3' y la otra en dirección opuesta, lo que permite el apareamiento de las bases."
+        },
+        {
+          "texto": "En la doble hélice las dos cadenas se enrollan alrededor de un mismo eje",
+          "explicacion": "El enrollamiento es dextrógiro, es decir, hacia la derecha, en la forma más común de ADN."
+        },
+        {
+          "texto": "Las bases se unen por puentes de hidrógeno de forma complementaria",
+          "explicacion": "La adenina se une a la timina con dos puentes de hidrógeno, y la citosina a la guanina con tres."
+        },
+        {
+          "texto": "Cada vuelta de la doble hélice contiene diez puntos cinco pares de nucleótidos",
+          "explicacion": "Dato por confirmar: la doble hélice del ADN B tiene un paso de aproximadamente treinta y cuatro angstrom por vuelta."
+        },
+        {
+          "texto": "Existen formas de ADN como la B, la A y la Z",
+          "explicacion": "Dato por confirmar: la forma B es la más común y dextrógira, mientras que la forma Z es levógira."
+        }
+      ]
+    },
+    {
+      "titulo": "Reglas de Chargaff",
+      "puntos": [
+        {
+          "texto": "Chargaff demostró que la cantidad de bases no es igual en todos los ADN",
+          "explicacion": "Dato por confirmar: Erwin Chargaff analizó la composición de bases en 1950 y encontró proporciones constantes para cada especie."
+        },
+        {
+          "texto": "En el ADN la cantidad de adenina es igual a la de timina",
+          "explicacion": "Esto significa que A igual a T, y que la proporción se mantiene en todas las cadenas de la doble hélice."
+        },
+        {
+          "texto": "En el ADN la cantidad de guanina es igual a la de citosina",
+          "explicacion": "Esto significa que G igual a C, por lo que el número de bases púricas es igual al de pirimidínicas."
+        }
       ]
     },
     {
       "titulo": "Replicación del ADN",
       "puntos": [
-        { "texto": "La replicación del ADN es semiconservativa.", "explicacion": "Cada molécula hija conserva una cadena original y sintetiza una cadena nueva." }
+        {
+          "texto": "La replicación del ADN es semiconservativa",
+          "explicacion": "Cada nueva molécula conserva una cadena original y una cadena nueva que se sintetiza a partir de ella."
+        },
+        {
+          "texto": "En la replicación la doble hélice se abre y se separan las cadenas",
+          "explicacion": "Cada cadena original sirve como molde para sintetizar una nueva cadena complementaria."
+        },
+        {
+          "texto": "La replicación del ADN ocurre antes de la división celular",
+          "explicacion": "Así cada célula hija recibe una copia completa de la información genética."
+        }
+      ]
+    },
+    {
+      "titulo": "Organización del ADN en el núcleo",
+      "puntos": [
+        {
+          "texto": "En el núcleo el ADN se enrolla alrededor de proteínas llamadas histonas",
+          "explicacion": "Dos vueltas de ADN se enrollan en torno a un octámero de histonas, formando un nucleosoma."
+        },
+        {
+          "texto": "El ADN se compacta formando la cromatina",
+          "explicacion": "La cromatina es la forma en que el ADN se organiza dentro del núcleo, y se condensa en cromosomas durante la división celular."
+        },
+        {
+          "texto": "La desnaturalización del ADN es la pérdida de la doble hélice",
+          "explicacion": "Ocurre por aumento de temperatura o por cambio de pH, que rompen los puentes de hidrógeno entre las bases."
+        }
+      ]
+    },
+    {
+      "titulo": "Tipos de ARN",
+      "puntos": [
+        {
+          "texto": "El ARN mensajero copia la información del ADN",
+          "explicacion": "Se forma durante la transcripción y lleva el mensaje genético desde el núcleo hasta los ribosomas."
+        },
+        {
+          "texto": "El ARN ribosómico forma parte de los ribosomas",
+          "explicacion": "Se asocia con proteínas para formar los ribosomas, donde se sintetizan las proteínas."
+        },
+        {
+          "texto": "El ARN de transferencia transporta aminoácidos hasta los ribosomas",
+          "explicacion": "Reconoce el codón del ARN mensajero con su anticodón y coloca el aminoácido correspondiente."
+        },
+        {
+          "texto": "Existen otros tipos de ARN además de los tres principales",
+          "explicacion": "Dato por confirmar: el ARN nucleolar participa en la maduración de los ribosomas y se localiza en el nucléolo."
+        }
+      ]
+    },
+    {
+      "titulo": "Transcripción",
+      "puntos": [
+        {
+          "texto": "La transcripción es la síntesis de ARN a partir de un molde de ADN",
+          "explicacion": "La enzima ARN polimerasa abre la doble hélice y sintetiza una cadena de ARN complementaria a una cadena de ADN."
+        },
+        {
+          "texto": "En la transcripción la base C del ADN se aparea con G en el ARN",
+          "explicacion": "La complementariedad de bases determina la secuencia del ARN que se sintetiza."
+        },
+        {
+          "texto": "En la transcripción la base A del ADN se aparea con U en el ARN",
+          "explicacion": "Como el ARN no tiene timina, la adenina del ADN se aparea con uracilo en el ARN."
+        },
+        {
+          "texto": "La transcripción es el paso que permite expresar la información del ADN",
+          "explicacion": "El ARN resultante lleva la información necesaria para sintetizar proteínas en los ribosomas."
+        }
       ]
     }
   ]

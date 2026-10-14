@@ -2,34 +2,539 @@
   "curso": "Biología",
   "tema": "Dominancia incompleta",
   "glosario": {
-    "Dominancia incompleta": "Herencia en la que el heterocigoto presenta un fenotipo intermedio.",
-    "Fenotipo intermedio": "Carácter que resulta de la mezcla de dos alelos.",
-    "Proporción 1:2:1": "Relación fenotípica de la F2 en dominancia incompleta."
+    "alelo": "Forma alternativa de un mismo gen",
+    "gen": "Unidad hereditaria que determina un carácter",
+    "diploide": "Con dos juegos de cromosomas",
+    "haploide": "Con un solo juego de cromosomas",
+    "homocigoto": "Individuo con dos alelos iguales",
+    "heterocigoto": "Individuo con dos alelos distintos",
+    "genotipo": "Conjunto de alelos de un individuo",
+    "fenotipo": "Rasgos observables de un individuo",
+    "dominante": "Alelo que se expresa en heterocigotos",
+    "recesivo": "Alelo oculto ante el dominante",
+    "gameto": "Célula sexual con un solo alelo",
+    "fecundación": "Fusión de dos gametos",
+    "línea pura": "Línea homocigota que repite siempre su rasgo",
+    "cuadro de Punnett": "Tabla que combina gametos de progenitores",
+    "generación parental": "Progenitores que inician el cruzamiento",
+    "generación filial": "Descendencia de la generación parental",
+    "segregación": "Separación de alelos al formar gametos",
+    "herencia mezclada": "Hipótesis antigua de fusión de caracteres",
+    "haploinsuficiencia": "Una copia funcional no basta",
+    "enzima": "Proteína que acelera reacciones químicas",
+    "pigmento": "Sustancia que da color",
+    "codominancia": "Ambos alelos se expresan a la vez",
+    "razón fenotípica": "Proporción de fenotipos en descendientes",
+    "razón genotípica": "Proporción de genotipos en descendientes",
+    "cruce de prueba": "Cruce para descubrir un genotipo",
+    "cromosoma": "Estructura que contiene los genes",
+    "lipoproteína": "Partícula que transporta lípidos en sangre"
   },
   "theory": [
     {
-      "titulo": "Concepto de dominancia incompleta",
+      "titulo": "Conceptos previos",
       "puntos": [
-        { "texto": "En la dominancia incompleta, el heterocigoto presenta un fenotipo intermedio.", "explicacion": "Ninguno de los dos alelos domina por completo sobre el otro." }
+        {
+          "texto": "«Alelo» = forma alternativa de un mismo gen",
+          "explicacion": "Un gen puede existir en versiones distintas, como la que produce flor roja y la que produce flor blanca. Cada individuo diploide recibe un alelo de cada progenitor para cada gen, por eso tiene dos alelos por gen."
+        },
+        {
+          "texto": "«Homocigoto» = dos alelos iguales para un gen",
+          "explicacion": "Por ejemplo, una planta con dos alelos de flor roja. Un homocigoto forma un solo tipo de gameto, porque todos sus gametos llevan el mismo alelo."
+        },
+        {
+          "texto": "«Heterocigoto» = dos alelos distintos para un gen",
+          "explicacion": "Forma dos tipos de gametos en igual proporción, uno con cada alelo, porque los alelos se separan al formarse los gametos. Por eso un cruce entre heterocigotos produce la mayor variedad de descendientes."
+        },
+        {
+          "texto": "«Genotipo» = conjunto de alelos de un individuo",
+          "explicacion": "Es la información genética que se hereda y que no siempre se aprecia a simple vista. Dos individuos con el mismo aspecto pueden tener genotipos distintos."
+        },
+        {
+          "texto": "«Fenotipo» = rasgo observable de un individuo",
+          "explicacion": "Resulta de la acción del genotipo y del ambiente, como el color de una flor o de un plumaje. El fenotipo se observa, mientras que el genotipo muchas veces hay que deducirlo."
+        },
+        {
+          "texto": "Alelo «dominante» ⇒ se expresa también en el heterocigoto",
+          "explicacion": "En la dominancia completa basta una copia del alelo dominante para que se manifieste su fenotipo. Gregor Johann Mendel describió este comportamiento en el guisante."
+        },
+        {
+          "texto": "Alelo «recesivo» ⇒ no se expresa en el heterocigoto",
+          "explicacion": "Si hay un alelo dominante presente, el recesivo queda oculto y no modifica el aspecto del individuo. Solo se manifiesta cuando no hay ningún alelo dominante."
+        },
+        {
+          "texto": "Dominancia completa ⇒ heterocigoto = fenotipo del homocigoto dominante",
+          "explicacion": "En el guisante, la flor púrpura domina sobre la blanca, y un heterocigoto es tan púrpura como el homocigoto dominante. Este es el caso con el que se contrasta la dominancia incompleta."
+        },
+        {
+          "texto": "«Gameto» = célula sexual con un solo alelo por gen",
+          "explicacion": "Los gametos son haploides, porque llevan un solo alelo de cada gen. Al fusionarse en la fecundación se restablece la pareja de alelos."
+        }
       ]
     },
     {
-      "titulo": "Ejemplo clásico",
+      "titulo": "Definición básica",
       "puntos": [
-        { "texto": "Al cruzar plantas de flores rojas con blancas, la F1 tiene flores rosadas.", "explicacion": "Las flores rosadas son heterocigotas y tienen un color intermedio." }
+        {
+          "texto": "«Dominancia incompleta» ⇒ fenotipo intermedio en el heterocigoto",
+          "explicacion": "Ocurre cuando el individuo con dos alelos distintos no se parece a ninguno de los progenitores homocigotos, sino que muestra un rasgo situado entre ambos. Por ejemplo, el cruce de flor roja con flor blanca da flores rosadas."
+        },
+        {
+          "texto": "Ningún alelo oculta por completo al otro",
+          "explicacion": "La relación de dominancia no es de todo o nada: cada alelo aporta una parte del efecto. Por eso en el heterocigoto no hay enmascaramiento de un alelo."
+        },
+        {
+          "texto": "Fenotipo del heterocigoto ≠ fenotipo de ambos homocigotos",
+          "explicacion": "El heterocigoto se distingue a simple vista de los dos homocigotos, lo que da tres fenotipos para dos alelos. En la dominancia completa solo hay dos."
+        },
+        {
+          "texto": "Fenotipo intermedio ≈ punto medio entre los homocigotos",
+          "explicacion": "El heterocigoto no siempre cae exactamente a la mitad, pero queda entre los dos extremos, como el rosado entre el rojo y el blanco."
+        },
+        {
+          "texto": "Cada alelo contribuye parcialmente al fenotipo",
+          "explicacion": "El rasgo final es la suma del aporte de los dos alelos. Cada uno hace una parte del trabajo, así que ninguno logra el efecto completo que tendría en un homocigoto."
+        }
       ]
     },
     {
-      "titulo": "Proporciones de la F2",
+      "titulo": "Nombres alternativos",
       "puntos": [
-        { "texto": "En la F2 la proporción fenotípica es 1:2:1.", "explicacion": "Hay un individuo rojo, dos rosados y un blanco por cada cuatro descendientes." },
-        { "texto": "En la F2 la proporción genotípica también es 1:2:1.", "explicacion": "Coincide con la proporción fenotípica porque cada genotipo tiene un fenotipo distinto." }
+        {
+          "texto": "«Herencia intermedia» = otro nombre de la dominancia incompleta",
+          "explicacion": "Se llama así porque el rasgo del heterocigoto queda entre los dos rasgos de los progenitores homocigotos."
+        },
+        {
+          "texto": "«Dominancia parcial» = otro nombre de la dominancia incompleta",
+          "explicacion": "Resalta que el alelo dominante solo domina en parte, sin llegar a ocultar al otro."
+        },
+        {
+          "texto": "«Semidominancia» = otro nombre de la dominancia incompleta",
+          "explicacion": "El prefijo semi- indica «mitad»: ningún alelo alcanza un dominio total sobre el otro."
+        }
       ]
     },
     {
-      "titulo": "Diferencia con la dominancia completa",
+      "titulo": "Origen histórico",
       "puntos": [
-        { "texto": "En la dominancia completa, la F2 tiene proporción fenotípica 3:1.", "explicacion": "La dominancia incompleta cambia esa proporción porque el heterocigoto ya no tiene el mismo fenotipo que el homocigoto dominante." }
+        {
+          "texto": "Gregor Johann Mendel observó solo dominancia completa en el guisante",
+          "explicacion": "Mendel trabajó con Pisum sativum y, en las siete características que estudió, uno de los dos rasgos desaparecía en la primera generación. Por eso su modelo inicial no incluía fenotipos intermedios."
+        },
+        {
+          "texto": "«Carl Erich Correns» describió la herencia intermedia hacia 1900",
+          "explicacion": "Estudió cruces de la planta Mirabilis jalapa y observó que flores rojas con flores blancas daban descendientes rosados. Así quedó claro que existían casos que no seguían el patrón de dominancia total."
+        },
+        {
+          "texto": "Correns redescubrió las leyes de Mendel en 1900",
+          "explicacion": "Lo hizo de forma independiente a Hugo de Vries y a Erich von Tschermak. Los tres coincidieron en que las leyes de Mendel se cumplían también en otras especies."
+        }
+      ]
+    },
+    {
+      "titulo": "Notación genética",
+      "puntos": [
+        {
+          "texto": "P = generación parental",
+          "explicacion": "Son los progenitores con los que se inicia el cruzamiento. En el ejemplo, una planta de flor roja y una de flor blanca, ambas de línea pura."
+        },
+        {
+          "texto": "F1 = primera generación filial",
+          "explicacion": "Son los hijos directos de la generación parental. La letra F viene del latín filius, que significa hijo."
+        },
+        {
+          "texto": "F2 = segunda generación filial",
+          "explicacion": "Son los nietos de la generación parental, que se obtienen al cruzar entre sí los individuos de la primera generación filial."
+        },
+        {
+          "texto": "R = alelo de flor roja en el ejemplo",
+          "explicacion": "La letra se elige por el color que produce cuando el individuo tiene dos copias de ese alelo."
+        },
+        {
+          "texto": "r = alelo de flor blanca en el ejemplo",
+          "explicacion": "Se escribe en minúscula solo para distinguirlo del alelo rojo, no porque sea recesivo."
+        },
+        {
+          "texto": "Mayúscula y minúscula ≠ dominante y recesivo en este caso",
+          "explicacion": "Como ningún alelo domina, las letras R y r solo distinguen los dos alelos. Algunos textos prefieren dos letras con superíndice, como Cᴿ y Cᵂ, para dejar claro que ambos tienen el mismo rango."
+        }
+      ]
+    },
+    {
+      "titulo": "Dondiego de noche",
+      "puntos": [
+        {
+          "texto": "«Mirabilis jalapa» = planta modelo de la dominancia incompleta",
+          "explicacion": "Se conoce como dondiego de noche o maravilla. Es la especie clásica de los manuales para esta herencia, porque el color de su flor se hereda de forma intermedia."
+        },
+        {
+          "texto": "RR ⇒ flores rojas",
+          "explicacion": "El individuo tiene dos copias del alelo de flor roja, así que forma la cantidad máxima de pigmento rojo."
+        },
+        {
+          "texto": "rr ⇒ flores blancas",
+          "explicacion": "Sin ninguna copia del alelo de flor roja no se forma pigmento rojo, y la flor queda blanca."
+        },
+        {
+          "texto": "Rr ⇒ flores rosadas",
+          "explicacion": "Con una sola copia del alelo rojo se forma menos pigmento y el color se aclara. Este es el fenotipo intermedio."
+        },
+        {
+          "texto": "Rosado = fenotipo intermedio entre rojo y blanco",
+          "explicacion": "Se parece a un rojo diluido porque tiene menos pigmento, no a un color nuevo. Es la señal que permite reconocer una dominancia incompleta."
+        }
+      ]
+    },
+    {
+      "titulo": "Generación parental",
+      "puntos": [
+        {
+          "texto": "Cruce de P = RR × rr",
+          "explicacion": "Se cruzan dos líneas puras: una de flor roja con una de flor blanca. Línea pura significa que todos los descendientes de esa línea heredan siempre el mismo rasgo, porque es homocigota."
+        },
+        {
+          "texto": "RR forma solo gametos R",
+          "explicacion": "Como tiene dos alelos iguales, todos sus gametos llevan el alelo de flor roja."
+        },
+        {
+          "texto": "rr forma solo gametos r",
+          "explicacion": "Como tiene dos alelos iguales, todos sus gametos llevan el alelo de flor blanca."
+        },
+        {
+          "texto": "Fecundación ⇒ todos los hijos Rr",
+          "explicacion": "Cada hijo recibe R de un progenitor y r del otro, así que toda la descendencia es heterocigota."
+        },
+        {
+          "texto": "F1 = 100 % rosado",
+          "explicacion": "Todos los hijos tienen el mismo genotipo, de modo que todos muestran el mismo fenotipo intermedio."
+        },
+        {
+          "texto": "F1 ≠ fenotipo de ambos progenitores",
+          "explicacion": "En la dominancia completa la primera generación filial es idéntica a un progenitor. Aquí no se parece a ninguno de los dos."
+        }
+      ]
+    },
+    {
+      "titulo": "Cruce entre híbridos",
+      "puntos": [
+        {
+          "texto": "Cruce de F1 = Rr × Rr",
+          "explicacion": "Se cruzan entre sí dos plantas rosadas, o una de ellas se autofecunda. Es el cruce que permite ver cómo se separan los alelos."
+        },
+        {
+          "texto": "Rr forma 50 % de gametos R + 50 % de gametos r",
+          "explicacion": "Los alelos se separan al formarse los gametos, de modo que cada gameto lleva solo uno de los dos y ambos tienen la misma probabilidad."
+        },
+        {
+          "texto": "F2 genotípica = 25 % RR + 50 % Rr + 25 % rr",
+          "explicacion": "Resulta de combinar al azar los gametos de ambos progenitores. Dos de las cuatro combinaciones posibles son heterocigotas."
+        },
+        {
+          "texto": "F2 fenotípica = 25 % rojo + 50 % rosado + 25 % blanco",
+          "explicacion": "Como cada genotipo tiene su propio fenotipo, la distribución de fenotipos copia la de genotipos."
+        },
+        {
+          "texto": "Reaparecen rojo y blanco en F2 ⇒ alelos no se mezclan",
+          "explicacion": "Si los alelos se hubieran fundido en la primera generación filial, no podrían volver a separarse en la segunda. Que reaparezcan los fenotipos de los abuelos demuestra que cada alelo se conservó intacto."
+        }
+      ]
+    },
+    {
+      "titulo": "Cuadro de Punnett",
+      "puntos": [
+        {
+          "texto": "«Cuadro de Punnett» ⊃ gametos de cada progenitor en filas y columnas",
+          "explicacion": "Es una tabla propuesta por Reginald Crundall Punnett para predecir los genotipos de la descendencia. Cada casilla resulta de combinar el gameto de la fila con el de la columna."
+        },
+        {
+          "texto": "Cruce Rr × Rr ⇒ cuatro casillas",
+          "explicacion": "Con dos tipos de gameto por progenitor hay 2 × 2 = 4 combinaciones posibles, todas con la misma probabilidad."
+        },
+        {
+          "texto": "Casillas = RR + Rr + Rr + rr",
+          "explicacion": "La combinación de R con r se repite dos veces, según de cuál progenitor venga cada alelo. Por eso el heterocigoto aparece el doble de veces que cada homocigoto."
+        },
+        {
+          "texto": "Cada casilla = 25 % de probabilidad",
+          "explicacion": "Si hay cuatro casillas con la misma probabilidad, cada una vale 1 de 4, es decir 25 %. Las dos casillas heterocigotas suman 50 %."
+        }
+      ]
+    },
+    {
+      "titulo": "Razones características",
+      "puntos": [
+        {
+          "texto": "Razón genotípica F2 = 1 RR : 2 Rr : 1 rr",
+          "explicacion": "Es la proporción de genotipos en la descendencia del cruce entre híbridos, y sale de contar las cuatro casillas del cuadro de Punnett."
+        },
+        {
+          "texto": "Razón fenotípica F2 = 1 rojo : 2 rosado : 1 blanco",
+          "explicacion": "Es la proporción de fenotipos en esa misma descendencia. Si se obtiene en un experimento, indica dominancia incompleta."
+        },
+        {
+          "texto": "Razón genotípica = razón fenotípica = 1 : 2 : 1",
+          "explicacion": "Las dos razones coinciden porque cada genotipo se ve distinto. En la dominancia completa esto no ocurre, pues se ocultan genotipos."
+        },
+        {
+          "texto": "F2 ⇒ 3 fenotipos distintos",
+          "explicacion": "Dos alelos dan tres fenotipos, uno por cada genotipo posible. En un cruce con dominancia completa solo aparecerían dos."
+        }
+      ]
+    },
+    {
+      "titulo": "Otros cruzamientos",
+      "puntos": [
+        {
+          "texto": "RR × RR → 100 % rojo",
+          "explicacion": "Ambos progenitores solo aportan el alelo de flor roja, así que toda la descendencia es RR."
+        },
+        {
+          "texto": "rr × rr → 100 % blanco",
+          "explicacion": "Ambos progenitores solo aportan el alelo de flor blanca, así que toda la descendencia es rr."
+        },
+        {
+          "texto": "RR × Rr → 50 % rojo + 50 % rosado",
+          "explicacion": "El progenitor RR solo aporta R, de modo que la descendencia es RR o Rr según el gameto del otro progenitor, con igual probabilidad."
+        },
+        {
+          "texto": "rr × Rr → 50 % rosado + 50 % blanco",
+          "explicacion": "El progenitor rr solo aporta r, de modo que la descendencia es Rr o rr según el gameto del otro progenitor, con igual probabilidad."
+        },
+        {
+          "texto": "Solo RR × rr → 100 % rosado",
+          "explicacion": "Es el único cruce en que toda la descendencia es heterocigota, porque cada progenitor aporta un alelo distinto."
+        }
+      ]
+    },
+    {
+      "titulo": "Base molecular",
+      "puntos": [
+        {
+          "texto": "Fenotipo ⇒ depende de la cantidad de producto del gen",
+          "explicacion": "Los genes codifican proteínas, y en la dominancia incompleta el rasgo depende de cuánta proteína funcional hay. Dos alelos distintos dan una cantidad intermedia."
+        },
+        {
+          "texto": "Alelo de flor roja ⇒ produce una enzima funcional del pigmento",
+          "explicacion": "En el modelo que usan los manuales, una enzima es una proteína que acelera las reacciones de síntesis del pigmento. Más copias del alelo significan más enzima y más pigmento."
+        },
+        {
+          "texto": "Alelo de flor blanca ⇒ no produce enzima funcional",
+          "explicacion": "Por eso un individuo con dos de estos alelos no fabrica pigmento y su flor es blanca."
+        },
+        {
+          "texto": "RR ⇒ dos copias funcionales ⇒ máximo pigmento",
+          "explicacion": "Con dos copias del gen funcional la síntesis de pigmento es máxima, y la flor alcanza su color más intenso."
+        },
+        {
+          "texto": "Rr ⇒ una copia funcional ⇒ menos pigmento ⇒ rosado",
+          "explicacion": "Una sola copia funcional no alcanza a producir el pigmento que forman dos copias, y la flor queda con color diluido."
+        },
+        {
+          "texto": "rr ⇒ sin copia funcional ⇒ sin pigmento ⇒ blanco",
+          "explicacion": "No hay enzima funcional y la ruta de síntesis del pigmento no se completa."
+        },
+        {
+          "texto": "«Haploinsuficiencia» = una copia funcional no basta para el fenotipo normal",
+          "explicacion": "Es un mecanismo molecular que explica varios casos de dominancia incompleta, porque la cantidad de producto de una sola copia queda por debajo de la que se logra con dos. En la dominancia completa, en cambio, una copia sí alcanza."
+        }
+      ]
+    },
+    {
+      "titulo": "Alelos no se mezclan",
+      "puntos": [
+        {
+          "texto": "Alelos se conservan intactos en el heterocigoto",
+          "explicacion": "El rosado no es un tercer alelo ni resulta de que los alelos se hayan fundido. Es el efecto combinado de dos alelos que siguen siendo distintos y que pasan sin cambio a los gametos."
+        },
+        {
+          "texto": "Alelos se separan al formar los gametos",
+          "explicacion": "Esta separación se llama segregación: el heterocigoto forma gametos con R y gametos con r. Explica por qué reaparecen los rasgos extremos."
+        },
+        {
+          "texto": "«Herencia mezclada» = hipótesis antigua de fusión de caracteres",
+          "explicacion": "Se pensaba que los rasgos de los padres se fundían de forma irreversible, como al mezclar pinturas, y que no podían recuperarse. Los experimentos de Mendel y los posteriores la refutaron."
+        },
+        {
+          "texto": "Herencia mezclada ≠ dominancia incompleta",
+          "explicacion": "En la herencia mezclada los rasgos fundidos no reaparecen. En la dominancia incompleta los rasgos de los abuelos sí reaparecen en la segunda generación filial, y eso se comprueba al cruzar los híbridos."
+        }
+      ]
+    },
+    {
+      "titulo": "Dominancia completa contrastada",
+      "puntos": [
+        {
+          "texto": "Heterocigoto: completa = fenotipo dominante, incompleta = intermedio",
+          "explicacion": "Es la diferencia central. En la dominancia completa el heterocigoto es igual al homocigoto dominante; en la incompleta tiene un aspecto propio."
+        },
+        {
+          "texto": "Razón fenotípica F2: completa = 3 : 1 ≠ incompleta = 1 : 2 : 1",
+          "explicacion": "En la dominancia completa el fenotipo dominante agrupa a dos genotipos distintos y por eso aparece tres veces de cada cuatro. En la incompleta cada genotipo se distingue."
+        },
+        {
+          "texto": "Fenotipos distintos en F2: completa = 2 < incompleta = 3",
+          "explicacion": "El fenotipo intermedio añade una tercera clase que no existe cuando un alelo oculta al otro."
+        },
+        {
+          "texto": "Dominancia incompleta ✗ enmascaramiento de un alelo",
+          "explicacion": "En la dominancia completa el alelo recesivo queda oculto en el heterocigoto. Aquí ambos alelos influyen en el fenotipo."
+        },
+        {
+          "texto": "Dominancia incompleta ✗ jerarquía entre alelos",
+          "explicacion": "Como ninguno domina, no tiene sentido llamar dominante o recesivo a un alelo en este tipo de herencia."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en plantas",
+      "puntos": [
+        {
+          "texto": "«Antirrhinum majus» = boca de dragón, ejemplo en plantas",
+          "explicacion": "Es otra planta que los manuales emplean para mostrar la herencia intermedia del color de la flor."
+        },
+        {
+          "texto": "Boca de dragón: flor roja × flor blanca → F1 100 % rosada",
+          "explicacion": "Igual que en el dondiego, la primera generación filial es uniforme y de color intermedio."
+        },
+        {
+          "texto": "Boca de dragón: F1 × F1 → F2 1 rojo : 2 rosado : 1 blanco",
+          "explicacion": "La razón 1 : 2 : 1 confirma que los alelos se separan y reaparecen los colores originales."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en animales",
+      "puntos": [
+        {
+          "texto": "«Gallina andaluza azul» = ejemplo en aves",
+          "explicacion": "El plumaje azul grisáceo aparece en el heterocigoto entre la variedad negra y la variedad blanca salpicada. Es un caso de herencia intermedia en animales domésticos."
+        },
+        {
+          "texto": "Gallina negra × gallina blanca salpicada → 100 % azul",
+          "explicacion": "Todos los descendientes son heterocigotos, con una copia del alelo del plumaje negro y una copia del alelo del plumaje blanco salpicado."
+        },
+        {
+          "texto": "Azul × azul → 25 % negro + 50 % azul + 25 % blanco salpicado",
+          "explicacion": "Al cruzar aves azules entre sí solo la mitad vuelve a ser azul, y el resto son los extremos. Por eso los criadores no logran una línea pura de plumaje azul."
+        },
+        {
+          "texto": "«Caballo palomino» = ejemplo en equinos",
+          "explicacion": "Su pelaje dorado con crines claras es el fenotipo del heterocigoto para el alelo de dilución crema. El homocigoto para ese alelo es el cremello, de pelaje muy claro."
+        },
+        {
+          "texto": "Palomino × palomino → 25 % alazán + 50 % palomino + 25 % cremello",
+          "explicacion": "El alazán es un caballo de pelaje castaño rojizo sin el alelo de dilución, el palomino tiene una copia y el cremello tiene dos. Es otra vez la razón 1 : 2 : 1."
+        }
+      ]
+    },
+    {
+      "titulo": "Ejemplos en humanos",
+      "puntos": [
+        {
+          "texto": "Cabello ondulado = heterocigoto entre crespo y liso",
+          "explicacion": "Es el modelo simplificado que presentan muchos manuales escolares. En realidad, la forma del cabello depende de varios genes."
+        },
+        {
+          "texto": "Hipercolesterolemia familiar ⇒ colesterol intermedio en heterocigotos",
+          "explicacion": "Se debe a alelos defectuosos del gen del receptor de lipoproteínas de baja densidad, que retiran el colesterol de la sangre. Con una copia defectuosa el colesterol en sangre sube de forma moderada."
+        },
+        {
+          "texto": "Hipercolesterolemia familiar ⇒ colesterol muy alto en homocigotos",
+          "explicacion": "Sin ningún receptor funcional el colesterol se acumula en grado extremo y causa enfermedad cardiovascular desde edades muy tempranas."
+        }
+      ]
+    },
+    {
+      "titulo": "Nivel de análisis",
+      "puntos": [
+        {
+          "texto": "Dominancia ⇒ depende del nivel de análisis",
+          "explicacion": "El mismo alelo puede parecer recesivo en el organismo, intermedio en la bioquímica y codominante a nivel molecular. Por eso las categorías son descripciones útiles y no leyes rígidas."
+        },
+        {
+          "texto": "Tay-Sachs ⇒ recesivo en el organismo",
+          "explicacion": "El portador heterocigoto es sano. La enfermedad solo aparece en el homocigoto, que carece de la enzima hexosaminidasa A y acumula lípidos en las neuronas."
+        },
+        {
+          "texto": "Tay-Sachs ⇒ actividad enzimática intermedia en el heterocigoto",
+          "explicacion": "A nivel bioquímico, el portador tiene aproximadamente la mitad de la actividad enzimática, lo que equivale a una dominancia incompleta."
+        },
+        {
+          "texto": "Tay-Sachs ⇒ ambos alelos producen producto a nivel molecular",
+          "explicacion": "A este nivel el portador fabrica tanto enzima normal como un producto defectuoso, lo que corresponde a una codominancia."
+        }
+      ]
+    },
+    {
+      "titulo": "Genotipo según fenotipo",
+      "puntos": [
+        {
+          "texto": "Cada genotipo ⇒ fenotipo propio",
+          "explicacion": "Con dos alelos y dominancia incompleta hay tres genotipos y tres fenotipos, así que no hay dos genotipos que se vean igual."
+        },
+        {
+          "texto": "Fenotipo intermedio ⇒ heterocigoto seguro",
+          "explicacion": "Una flor rosada siempre es Rr, sin necesidad de ningún cruce adicional."
+        },
+        {
+          "texto": "Fenotipo extremo ⇒ homocigoto seguro",
+          "explicacion": "Una flor roja siempre es RR y una flor blanca siempre es rr."
+        },
+        {
+          "texto": "«Cruce de prueba» (tema 81) ✗ necesario aquí",
+          "explicacion": "El cruce de prueba sirve para descubrir el genotipo de un individuo con fenotipo dominante, algo que en esta herencia se sabe a simple vista. Se desarrolla en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Leyes de Mendel",
+      "puntos": [
+        {
+          "texto": "Ley de uniformidad ⇒ se cumple con F1 intermedia",
+          "explicacion": "Todos los hijos de dos líneas puras son iguales entre sí. Lo único que cambia es que el fenotipo uniforme no coincide con el de ningún progenitor."
+        },
+        {
+          "texto": "Ley de segregación ⇒ se cumple en F2",
+          "explicacion": "Los alelos se separan en los gametos y se recombinan al azar, lo que produce la razón 1 : 2 : 1."
+        },
+        {
+          "texto": "Dos genes con dominancia incompleta ⇒ 9 fenotipos en F2",
+          "explicacion": "Esto ocurre si los genes están en cromosomas distintos. Cada gen da tres clases y se combinan 3 × 3 = 9, con razón 1 : 2 : 1 : 2 : 4 : 2 : 1 : 2 : 1, que sale de multiplicar (1 : 2 : 1) × (1 : 2 : 1)."
+        },
+        {
+          "texto": "Un gen completo + un gen incompleto ⇒ 6 fenotipos en F2",
+          "explicacion": "Se multiplican las razones (3 : 1) × (1 : 2 : 1) y resulta 3 : 6 : 3 : 1 : 2 : 1, con 2 × 3 = 6 clases distintas."
+        },
+        {
+          "texto": "Leyes de la herencia (tema 78) ⊃ marco general de estos cruces",
+          "explicacion": "Las leyes de Mendel siguen valiendo; solo cambia cómo se expresa el heterocigoto. Se desarrollan en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con codominancia",
+      "puntos": [
+        {
+          "texto": "Codominancia (tema 80) ≠ dominancia incompleta",
+          "explicacion": "En la codominancia los dos alelos se expresan por completo y a la vez, y el heterocigoto muestra ambos rasgos. En la dominancia incompleta aparece un rasgo intermedio. La codominancia se desarrolla en su propio tema."
+        }
+      ]
+    },
+    {
+      "titulo": "Errores frecuentes",
+      "puntos": [
+        {
+          "texto": "Rosado ≠ homocigoto",
+          "explicacion": "El color rosado siempre indica Rr. Ninguna combinación homocigota produce flores rosadas."
+        },
+        {
+          "texto": "Rosado × rosado ≠ 100 % rosado",
+          "explicacion": "Los alelos se separan otra vez en los gametos, así que la descendencia vuelve a incluir rojos y blancos. Solo la mitad es rosada."
+        },
+        {
+          "texto": "Esperar 3 : 1 en F2 ⇒ error",
+          "explicacion": "Esa razón corresponde a la dominancia completa. Con dominancia incompleta el resultado esperado es 1 : 2 : 1."
+        }
       ]
     }
   ]

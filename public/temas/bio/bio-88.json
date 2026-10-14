@@ -2,50 +2,618 @@
   "curso": "Biología",
   "tema": "Mutaciones",
   "glosario": {
-    "Mutación": "Cambio hereditario en la secuencia o el número de ADN.",
-    "Mutación somática": "Mutación que no se transmite a la descendencia.",
-    "Mutación gamética": "Mutación presente en gametos que puede transmitirse a la descendencia.",
-    "Mutación puntual": "Cambio de uno o pocos nucleótidos en un gen.",
-    "Transición": "Sustitución de una purina por otra o de una pirimidina por otra.",
-    "Transversión": "Sustitución de una purina por una pirimidina o viceversa.",
-    "Mutágeno": "Agente que aumenta la frecuencia de mutaciones.",
-    "Poliploidía": "Presencia de más de dos juegos completos de cromosomas."
+    "mutación": "Cambio hereditario del material genético",
+    "mutágeno": "Agente que aumenta la frecuencia de mutación",
+    "mutante": "Individuo portador de una mutación",
+    "tipo silvestre": "Forma normal o más frecuente",
+    "mutación somática": "Mutación en una célula no reproductora",
+    "mutación germinal": "Mutación en células que forman gametos",
+    "mutación de novo": "Mutación nueva ausente en los progenitores",
+    "mosaicismo": "Células con distinta constitución genética",
+    "transición": "Cambio entre bases del mismo tipo",
+    "transversión": "Cambio entre purina y pirimidina",
+    "purina": "Base nitrogenada de dos anillos",
+    "pirimidina": "Base nitrogenada de un anillo",
+    "codón": "Tres bases que codifican un aminoácido",
+    "marco de lectura": "Agrupación de bases de tres en tres",
+    "mutación silenciosa": "Cambio sin alteración del aminoácido",
+    "mutación de sentido erróneo": "Cambio que sustituye un aminoácido",
+    "mutación sin sentido": "Cambio que crea un codón de parada",
+    "mutación dinámica": "Repetición de triplete que se expande",
+    "anticipación": "Aparición más temprana en generaciones sucesivas",
+    "deleción": "Pérdida de un segmento",
+    "duplicación": "Repetición de un segmento",
+    "inversión": "Segmento girado 180 grados",
+    "translocación": "Paso de un segmento a otro cromosoma",
+    "euploidía": "Múltiplo exacto del juego haploide",
+    "aneuploidía": "Falta o exceso de cromosomas individuales",
+    "poliploidía": "Más de dos juegos de cromosomas",
+    "autopoliploidía": "Poliploidía con juegos de una especie",
+    "alopoliploidía": "Poliploidía con juegos de especies distintas",
+    "radiación ionizante": "Radiación capaz de arrancar electrones",
+    "dímero de timina": "Dos timinas vecinas unidas entre sí",
+    "análogo de base": "Molécula parecida a una base",
+    "desaminación": "Pérdida de un grupo amino",
+    "agente alquilante": "Sustancia que añade grupos alquilo",
+    "agente intercalante": "Molécula plana entre pares de bases",
+    "transposón": "Segmento de ADN que cambia de lugar",
+    "tautomería": "Forma alternativa de una base",
+    "despurinización": "Pérdida de una base púrica",
+    "fotoliasa": "Enzima que repara dímeros con luz",
+    "glicosilasa": "Enzima que quita una base dañada",
+    "oncogén": "Gen mutado que estimula el cáncer",
+    "protooncogén": "Gen normal que regula la división",
+    "gen supresor de tumores": "Gen que frena la división celular",
+    "retinoblastoma": "Tumor infantil de la retina",
+    "mutación condicional": "Efecto que depende del ambiente"
   },
   "theory": [
     {
-      "titulo": "Concepto y tipos",
+      "titulo": "Concepto de mutación",
       "puntos": [
-        { "texto": "Una mutación es un cambio hereditario en el material genético.", "explicacion": "Puede afectar a un solo gen, a un segmento de cromosoma o al número de cromosomas." },
-        { "texto": "Las mutaciones somáticas no se transmiten a la descendencia.", "explicacion": "Afectan solo a las células del cuerpo en las que se producen." },
-        { "texto": "Las mutaciones gaméticas pueden transmitirse a la descendencia.", "explicacion": "Son la fuente de la variabilidad que actúa sobre la evolución." }
+        {
+          "texto": "«Mutación» = cambio hereditario en el material genético",
+          "explicacion": "Altera la secuencia o la organización del Ácido Desoxirribonucleico (ADN) y, si ocurre en una célula que origina gametos, pasa a los descendientes. Es la fuente original de todos los alelos nuevos."
+        },
+        {
+          "texto": "Hugo Marie de Vries propuso el término mutación en 1901",
+          "explicacion": "Lo usó al observar cambios bruscos y heredables en la planta Oenothera lamarckiana, que lo llevaron a pensar que las especies podían originarse por saltos y no solo por pequeños cambios graduales."
+        },
+        {
+          "texto": "Mutante = individuo que presenta una mutación",
+          "explicacion": "Se compara con el tipo silvestre, que es la forma normal o más frecuente en la naturaleza."
+        },
+        {
+          "texto": "Agente mutágeno = factor que aumenta la frecuencia de mutación",
+          "explicacion": "Puede ser físico, químico o biológico. Sin mutágenos las mutaciones igual ocurren, pero con una frecuencia basal baja."
+        },
+        {
+          "texto": "Mutación génica espontánea ≈ 1 por 100 000 a 1 000 000 gametos",
+          "explicacion": "Es una frecuencia por gen y por generación; es baja, pero como hay miles de genes y millones de células, siempre aparecen variantes nuevas."
+        },
+        {
+          "texto": "Persona ⇒ unas 60 a 70 mutaciones nuevas",
+          "explicacion": "Son mutaciones de novo que no tenían sus padres. Casi todas caen en ADN sin función conocida y no producen efecto visible."
+        },
+        {
+          "texto": "Edad paterna ↑ mutaciones nuevas en los hijos",
+          "explicacion": "Las células que originan espermatozoides se dividen durante toda la vida del varón, y cada división es una oportunidad de error de copia."
+        },
+        {
+          "texto": "Mutación inducida = causada por un mutágeno",
+          "explicacion": "Hermann Joseph Muller la demostró en 1927 al irradiar con rayos X moscas Drosophila melanogaster, y recibió el Premio Nobel de Fisiología o Medicina en 1946."
+        },
+        {
+          "texto": "Charlotte Auerbach demostró mutágenos químicos en 1940",
+          "explicacion": "Descubrió que el gas mostaza produce mutaciones en Drosophila, lo que abrió el estudio de los mutágenos químicos."
+        },
+        {
+          "texto": "Mutación ⇒ materia prima de la evolución",
+          "explicacion": "Genera variabilidad genética sobre la que actúa la selección natural, que se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Mutaciones al azar ✗ dirigidas por el ambiente",
+          "explicacion": "Salvador Luria y Max Delbrück lo demostraron en 1943 con bacterias y virus: las mutaciones de resistencia aparecen antes de la exposición y el ambiente solo selecciona las que ya existen."
+        }
       ]
     },
     {
-      "titulo": "Mutaciones génicas o puntuales",
+      "titulo": "Mutaciones somáticas y germinales",
       "puntos": [
-        { "texto": "Las mutaciones puntuales pueden ser sustituciones, inserciones o deleciones.", "explicacion": "Una sustitución cambia una base por otra; una inserción o deleción agrega o elimina una base." },
-        { "texto": "Una mutación silenciosa no cambia el aminoácido codificado.", "explicacion": "Esto ocurre porque el código genético es degenerado." },
-        { "texto": "Una mutación missense cambia un aminoácido por otro.", "explicacion": "Puede alterar la función de la proteína según la posición del cambio." },
-        { "texto": "Una mutación nonsense crea un codón de parada prematuro.", "explicacion": "La proteína resultante queda incompleta." },
-        { "texto": "Una mutación frameshift desplaza el marco de lectura.", "explicacion": "Todos los codones posteriores se leen de forma errónea." }
+        {
+          "texto": "Mutación somática = ocurre en una célula del cuerpo",
+          "explicacion": "Afecta a esa célula y a sus descendientes por mitosis, formando un clon, pero no se transmite a los hijos."
+        },
+        {
+          "texto": "Mutación germinal = ocurre en células que forman gametos",
+          "explicacion": "Puede pasar a la descendencia, y entonces todas las células del hijo la llevan."
+        },
+        {
+          "texto": "Mutación somática temprana ⇒ mosaicismo",
+          "explicacion": "Si ocurre en las primeras divisiones del embrión, solo una parte del cuerpo tendrá la mutación."
+        },
+        {
+          "texto": "Mutación somática ⇒ origen frecuente del cáncer",
+          "explicacion": "Las células acumulan mutaciones durante la vida, y solo las que afectan genes de control de la división dan tumores."
+        },
+        {
+          "texto": "Mutación de novo = aparece por primera vez en un individuo",
+          "explicacion": "Explica por qué un niño con una enfermedad dominante puede tener padres sanos."
+        }
       ]
     },
     {
-      "titulo": "Mutaciones cromosómicas",
+      "titulo": "Clasificación de las mutaciones",
       "puntos": [
-        { "texto": "Las mutaciones cromosómicas alteran la estructura de un cromosoma.", "explicacion": "Incluyen deleción, duplicación, inversión y translocación de fragmentos." }
+        {
+          "texto": "Criterio por magnitud ⇒ génicas, cromosómicas y genómicas",
+          "explicacion": "Las génicas cambian una o pocas bases, las cromosómicas cambian la estructura de un cromosoma y las genómicas cambian el número de cromosomas."
+        },
+        {
+          "texto": "Mutación génica o puntual = cambio en un gen",
+          "explicacion": "Afecta a una o pocas bases del ADN y no se ve al microscopio."
+        },
+        {
+          "texto": "Mutación cromosómica estructural = cambio en la forma del cromosoma",
+          "explicacion": "Implica segmentos grandes y suele verse en el cariotipo con bandeo."
+        },
+        {
+          "texto": "Mutación genómica = cambio en el número de cromosomas",
+          "explicacion": "Puede afectar a un cromosoma, aneuploidía, o a juegos completos, euploidía."
+        },
+        {
+          "texto": "Mutación dominante = se expresa en heterocigoto",
+          "explicacion": "Un solo alelo mutado basta para alterar el fenotipo."
+        },
+        {
+          "texto": "Mutación recesiva = se expresa solo en homocigoto",
+          "explicacion": "Se mantiene oculta en los portadores durante generaciones."
+        },
+        {
+          "texto": "Mutación letal = causa la muerte antes de reproducirse",
+          "explicacion": "Puede actuar en el embrión o poco después del nacimiento, y la mayoría de las aneuploidías autosómicas lo son."
+        },
+        {
+          "texto": "Mutación de pérdida de función = el producto deja de funcionar",
+          "explicacion": "Es la clase más frecuente y suele ser recesiva, porque el alelo normal compensa la pérdida."
+        },
+        {
+          "texto": "Mutación de ganancia de función = el producto actúa de más o distinto",
+          "explicacion": "Suele ser dominante, y es el mecanismo de varios oncogenes."
+        },
+        {
+          "texto": "Retromutación = vuelve la secuencia original",
+          "explicacion": "Revierte la mutación y restaura el fenotipo normal, aunque es muy poco frecuente."
+        }
       ]
     },
     {
-      "titulo": "Mutaciones genómicas",
+      "titulo": "Mutaciones génicas por sustitución",
       "puntos": [
-        { "texto": "Las mutaciones genómicas cambian el número completo de juegos de cromosomas.", "explicacion": "La poliploidía y la aneuploidía son ejemplos de este tipo." }
+        {
+          "texto": "Sustitución de base = un nucleótido cambia por otro",
+          "explicacion": "Es el tipo más común de mutación puntual, y puede o no cambiar el aminoácido codificado."
+        },
+        {
+          "texto": "Transición = purina por purina o pirimidina por pirimidina",
+          "explicacion": "Por ejemplo, adenina por guanina o citosina por timina. Es más frecuente que la transversión."
+        },
+        {
+          "texto": "Transversión = purina por pirimidina o al revés",
+          "explicacion": "Por ejemplo, adenina por citosina. Cambia el tipo de anillo de la base y es menos frecuente."
+        },
+        {
+          "texto": "Mutación silenciosa o sinónima = mismo aminoácido",
+          "explicacion": "Como el código genético es degenerado, varios codones dan el mismo aminoácido y la proteína no cambia. El código genético se desarrolla en su propio tema."
+        },
+        {
+          "texto": "Mutación de sentido erróneo = otro aminoácido",
+          "explicacion": "El Ácido Ribonucleico (ARN) mensajero tiene un codón que especifica un aminoácido distinto, y el efecto va de nulo a grave según el lugar de la proteína."
+        },
+        {
+          "texto": "Mutación sin sentido = codón de parada prematuro",
+          "explicacion": "Cambia un codón normal por UAA, UAG o UGA, de modo que la proteína se corta y casi siempre pierde su función."
+        },
+        {
+          "texto": "Anemia falciforme = mutación de sentido erróneo",
+          "explicacion": "En el ARN mensajero GAG cambia a GUG, y el ácido glutámico es reemplazado por valina en la posición 6 de la cadena beta de la hemoglobina."
+        },
+        {
+          "texto": "Mutación sin sentido en gen de globina ⇒ talasemia beta",
+          "explicacion": "Un codón de parada prematuro corta la cadena beta de la hemoglobina y la célula deja de fabricarla."
+        }
       ]
     },
     {
-      "titulo": "Causas",
+      "titulo": "Inserciones y deleciones",
       "puntos": [
-        { "texto": "Las mutaciones pueden ser espontáneas o inducidas por mutágenos.", "explicacion": "Los mutágenos incluyen radiaciones ionizantes y ciertas sustancias químicas." }
+        {
+          "texto": "Inserción = se añade una o más bases",
+          "explicacion": "El ADN se alarga, y el efecto depende de cuántas bases se agregan."
+        },
+        {
+          "texto": "Deleción génica = se pierde una o más bases",
+          "explicacion": "El ADN se acorta, y el efecto depende de cuántas bases se pierden."
+        },
+        {
+          "texto": "Inserción o deleción no múltiplo de tres ⇒ cambio del marco de lectura",
+          "explicacion": "El ARN mensajero se lee en grupos de tres bases, así que desde el cambio todos los codones siguientes son distintos y suele haber una proteína inútil."
+        },
+        {
+          "texto": "Inserción o deleción múltiplo de tres ⇒ aminoácidos de más o menos",
+          "explicacion": "El marco de lectura se conserva y la proteína queda con aminoácidos añadidos o faltantes, con efecto variable."
+        },
+        {
+          "texto": "Deleción de tres bases en fibrosis quística",
+          "explicacion": "La mutación llamada delta F508 elimina el aminoácido fenilalanina de la posición 508 del canal de cloruro y es la más frecuente en esa enfermedad."
+        },
+        {
+          "texto": "Agentes intercalantes ⇒ inserciones o deleciones de una base",
+          "explicacion": "Moléculas planas como las acridinas se meten entre las bases del ADN y provocan errores de copia que cambian el marco de lectura."
+        }
+      ]
+    },
+    {
+      "titulo": "Expansión de tripletes",
+      "puntos": [
+        {
+          "texto": "Mutación dinámica = repetición de un triplete que crece",
+          "explicacion": "Un triplete de bases se repite más veces en cada generación, y a partir de cierto número el gen deja de funcionar bien."
+        },
+        {
+          "texto": "Enfermedad de Huntington = repetición CAG expandida",
+          "explicacion": "El triplete citosina, adenina, guanina se repite más de 35 veces en el gen del cromosoma 4, y produce una proteína tóxica para las neuronas."
+        },
+        {
+          "texto": "Síndrome del X frágil = repetición CGG expandida",
+          "explicacion": "El triplete citosina, guanina, guanina se repite más de 200 veces en un gen del cromosoma X, y silencia el gen. Es una causa frecuente de discapacidad intelectual hereditaria."
+        },
+        {
+          "texto": "Anticipación genética = la enfermedad aparece antes y más grave",
+          "explicacion": "Se debe a que la repetición suele crecer al pasar de padres a hijos, y a mayor número de repeticiones, más temprano y severa es la enfermedad."
+        }
+      ]
+    },
+    {
+      "titulo": "Mutaciones cromosómicas estructurales",
+      "puntos": [
+        {
+          "texto": "Deleción cromosómica = pérdida de un segmento del cromosoma",
+          "explicacion": "Los genes de ese segmento quedan en una sola copia, y el desequilibrio de dosis causa el síndrome. Un ejemplo es el síndrome del maullido de gato, por pérdida en el brazo corto del cromosoma 5."
+        },
+        {
+          "texto": "Duplicación cromosómica = un segmento se repite",
+          "explicacion": "Aumenta la dosis de sus genes, y en la evolución sirve como fuente de genes nuevos, pues la copia extra puede cambiar sin dañar la función original."
+        },
+        {
+          "texto": "Inversión = un segmento gira 180 grados",
+          "explicacion": "El orden de los genes se invierte, pero la cantidad de material genético se mantiene, por eso suele pasar sin síntomas."
+        },
+        {
+          "texto": "Inversión paracéntrica = no incluye el centrómero",
+          "explicacion": "El segmento invertido está dentro de un solo brazo del cromosoma."
+        },
+        {
+          "texto": "Inversión pericéntrica = incluye el centrómero",
+          "explicacion": "El segmento invertido abarca ambos brazos, y puede cambiar la proporción entre ellos."
+        },
+        {
+          "texto": "Translocación = un segmento se une a un cromosoma no homólogo",
+          "explicacion": "Se mueve material entre cromosomas distintos, y puede alterar genes en el punto de ruptura."
+        },
+        {
+          "texto": "Translocación recíproca = dos cromosomas intercambian segmentos",
+          "explicacion": "No se pierde material, pero el portador puede producir gametos con material de más o de menos."
+        },
+        {
+          "texto": "Translocación robertsoniana = fusión de dos acrocéntricos",
+          "explicacion": "Se unen por el centrómero y pierden los brazos cortos; es la causa del síndrome de Down por translocación, y se estudia en genética humana."
+        },
+        {
+          "texto": "Cromosoma Filadelfia = translocación entre cromosomas 9 y 22",
+          "explicacion": "Fusiona dos genes y la proteína resultante estimula la división celular sin control, lo que produce leucemia mieloide crónica."
+        },
+        {
+          "texto": "Roturas del cromosoma ⇒ origen de las mutaciones estructurales",
+          "explicacion": "Se producen por radiación o por errores al reparar el ADN, y la reunión equivocada de los extremos genera deleciones, inversiones y translocaciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Mutaciones genómicas numéricas",
+      "puntos": [
+        {
+          "texto": "Euploidía = múltiplo exacto del juego haploide",
+          "explicacion": "Incluye haploidía, diploidía y poliploidía, y mantiene el equilibrio entre cromosomas."
+        },
+        {
+          "texto": "Aneuploidía = falta o sobra un cromosoma",
+          "explicacion": "Rompe el equilibrio de dosis de los genes y suele ser más dañina que la poliploidía. Los síndromes humanos se estudian en genética humana."
+        },
+        {
+          "texto": "Haploidía = un solo juego de cromosomas",
+          "explicacion": "Es normal en los zánganos de las abejas, que nacen de huevos sin fecundar."
+        },
+        {
+          "texto": "Poliploidía = más de dos juegos de cromosomas",
+          "explicacion": "Es frecuente en plantas, y en animales es rara y casi siempre letal."
+        },
+        {
+          "texto": "Autopoliploidía = juegos de una misma especie",
+          "explicacion": "Se origina por duplicación del número de cromosomas de un individuo, como en la papa tetraploide de 48 cromosomas."
+        },
+        {
+          "texto": "Alopoliploidía = juegos de especies distintas",
+          "explicacion": "Resulta de un híbrido interespecífico cuyo número de cromosomas se duplica, lo que le permite formar gametos normales."
+        },
+        {
+          "texto": "Georgi Karpechenko obtuvo Raphanobrassica en 1928",
+          "explicacion": "Cruzó rábano y col, y al duplicar los cromosomas del híbrido consiguió una planta fértil de 36 cromosomas, aunque sin valor comercial."
+        },
+        {
+          "texto": "Trigo harinero = alopoliploide hexaploide de 42 cromosomas",
+          "explicacion": "Reúne juegos de tres especies ancestrales, y su tamaño y calidad de grano se relacionan con la poliploidía."
+        },
+        {
+          "texto": "Triticale = híbrido de trigo y centeno",
+          "explicacion": "Es un alopoliploide creado por el ser humano que combina el rendimiento del trigo con la rusticidad del centeno."
+        },
+        {
+          "texto": "Sandía sin semilla = triploide",
+          "explicacion": "Se obtiene cruzando una planta tetraploide con una diploide, y como el número impar de juegos impide una meiosis normal, no forma semillas."
+        },
+        {
+          "texto": "Banana cultivada = triploide",
+          "explicacion": "Sus tres juegos de cromosomas impiden la formación normal de gametos, por eso el fruto carece de semillas viables."
+        },
+        {
+          "texto": "Colchicina ⇒ inducir poliploidía",
+          "explicacion": "Impide formar el huso mitótico, así que los cromosomas duplicados quedan en una sola célula con el doble de juegos."
+        },
+        {
+          "texto": "Poliploidía vegetal ⇒ plantas más grandes",
+          "explicacion": "El mayor número de copias de genes suele aumentar el tamaño de las células, frutos y flores, lo que se aprovecha en el mejoramiento."
+        },
+        {
+          "texto": "Triploidía y tetraploidía humanas ⇒ letales",
+          "explicacion": "Los embriones humanos poliploides casi siempre terminan en aborto espontáneo."
+        }
+      ]
+    },
+    {
+      "titulo": "Agentes mutágenos físicos",
+      "puntos": [
+        {
+          "texto": "Radiación ionizante ⊃ rayos X, gamma, alfa y beta",
+          "explicacion": "Tiene energía suficiente para arrancar electrones de los átomos y romper el ADN."
+        },
+        {
+          "texto": "Radiación ionizante ⇒ roturas de doble cadena",
+          "explicacion": "Provoca deleciones, inversiones y translocaciones. El daño aumenta con la dosis, sin un umbral claro por debajo del cual sea inofensiva."
+        },
+        {
+          "texto": "Radiación ultravioleta (UV) ⇒ dímeros de timina",
+          "explicacion": "Dos timinas vecinas de una misma cadena se unen entre sí, lo que deforma la hélice y detiene la copia del ADN."
+        },
+        {
+          "texto": "Radiación UV ✗ ionizante",
+          "explicacion": "Tiene menos energía y no rompe el ADN, pero la luz absorbida por las bases basta para unirlas entre sí."
+        },
+        {
+          "texto": "Exposición solar excesiva ⇒ cáncer de piel",
+          "explicacion": "Las mutaciones por radiación UV se acumulan en las células de la piel, y por eso la protección solar reduce el riesgo."
+        },
+        {
+          "texto": "Alta temperatura ↑ mutaciones espontáneas",
+          "explicacion": "El calor favorece la pérdida de bases del ADN, un daño que luego puede producir cambios."
+        }
+      ]
+    },
+    {
+      "titulo": "Agentes mutágenos químicos",
+      "puntos": [
+        {
+          "texto": "Análogos de bases = sustancias parecidas a las bases del ADN",
+          "explicacion": "Se incorporan al ADN en lugar de las bases normales y provocan errores en la copia siguiente."
+        },
+        {
+          "texto": "5-bromouracilo = análogo de la timina",
+          "explicacion": "Puede cambiar de forma y aparearse con guanina, de modo que una pareja adenina con timina pasa a guanina con citosina, que es una transición."
+        },
+        {
+          "texto": "Ácido nitroso ⇒ desaminación de bases",
+          "explicacion": "Quita grupos amino a citosina y adenina, y las convierte en bases que se aparean distinto, produciendo transiciones."
+        },
+        {
+          "texto": "Agentes alquilantes ⇒ añaden grupos alquilo a bases",
+          "explicacion": "Un ejemplo es el gas mostaza. El grupo añadido hace que la guanina se aparee con timina, y también pueden unir cadenas entre sí."
+        },
+        {
+          "texto": "Agentes intercalantes ⇒ inserciones o deleciones",
+          "explicacion": "Un ejemplo es el bromuro de etidio, una molécula plana que se coloca entre pares de bases."
+        },
+        {
+          "texto": "Benzopireno del humo del tabaco ⇒ mutaciones",
+          "explicacion": "Tras ser transformado en el hígado y el pulmón, se une a la guanina del ADN y causa errores de copia, lo que explica la relación del tabaco con el cáncer de pulmón."
+        },
+        {
+          "texto": "Aflatoxina ⇒ cáncer de hígado",
+          "explicacion": "Es una toxina de hongos del género Aspergillus que crecen en cereales y maníes mal almacenados, y daña la guanina del gen p53."
+        },
+        {
+          "texto": "Prueba de Ames = detectar mutágenos con bacterias",
+          "explicacion": "Bruce Nathan Ames la ideó en la década de 1970: usa Salmonella incapaz de fabricar histidina y observa si la sustancia hace que algunas recuperen esa capacidad."
+        },
+        {
+          "texto": "Sustancia mutágena ≈ sustancia cancerígena",
+          "explicacion": "Como muchos cánceres nacen de mutaciones, la mayoría de las sustancias que producen mutaciones también aumentan el riesgo de cáncer."
+        }
+      ]
+    },
+    {
+      "titulo": "Agentes mutágenos biológicos",
+      "puntos": [
+        {
+          "texto": "Virus oncogénicos ⇒ pueden insertar su genoma en el ADN",
+          "explicacion": "Si la inserción cae dentro o cerca de un gen de control de la división celular, puede activarlo o inactivarlo."
+        },
+        {
+          "texto": "Virus del papiloma humano ⇒ cáncer de cuello uterino",
+          "explicacion": "Algunas de sus proteínas inactivan proteínas supresoras de tumores y favorecen la acumulación de mutaciones."
+        },
+        {
+          "texto": "Transposón = segmento de ADN que cambia de lugar",
+          "explicacion": "Al insertarse en un gen lo puede inactivar, y al salirse deja una deleción o un cambio."
+        },
+        {
+          "texto": "Barbara McClintock descubrió los transposones en maíz",
+          "explicacion": "En la década de 1940 vio que ciertos elementos cambiaban de posición y alteraban el color de los granos, y recibió el Premio Nobel en 1983."
+        }
+      ]
+    },
+    {
+      "titulo": "Mutaciones espontáneas",
+      "puntos": [
+        {
+          "texto": "Mutación espontánea = ocurre sin mutágeno externo",
+          "explicacion": "Se debe a procesos propios de la célula, como errores de copia o cambios químicos naturales de las bases."
+        },
+        {
+          "texto": "Error de replicación = base incorrecta en la copia",
+          "explicacion": "La ADN polimerasa inserta una base equivocada con frecuencia cercana a 1 por 100 000, pero la corrección de errores y la reparación la reducen hasta cerca de 1 por 10 000 millones."
+        },
+        {
+          "texto": "Tautomería de bases ⇒ apareamiento equivocado",
+          "explicacion": "Una base cambia por un instante a una forma poco frecuente y se aparea con otra base; fue propuesta por James Watson y Francis Crick en 1953."
+        },
+        {
+          "texto": "Despurinización = pérdida espontánea de adenina o guanina",
+          "explicacion": "El enlace entre la base y el azúcar se rompe por agua, y la copia posterior inserta una base al azar frente al hueco."
+        },
+        {
+          "texto": "Desaminación espontánea de citosina ⇒ uracilo",
+          "explicacion": "El uracilo se aparea con adenina, así que sin reparación una pareja de citosina con guanina pasa a timina con adenina."
+        },
+        {
+          "texto": "Especies reactivas de oxígeno ⇒ daño oxidativo",
+          "explicacion": "El metabolismo normal de las mitocondrias libera moléculas que oxidan las bases, en especial la guanina, y causan errores de apareamiento."
+        },
+        {
+          "texto": "Elementos transponibles ⇒ mutaciones espontáneas",
+          "explicacion": "Su movimiento natural puede interrumpir genes y causa una parte de las mutaciones espontáneas."
+        }
+      ]
+    },
+    {
+      "titulo": "Reparación del ADN",
+      "puntos": [
+        {
+          "texto": "Reparación del ADN = corrección de daños en la molécula",
+          "explicacion": "Sin ella, la frecuencia de mutación sería muy alta; las células tienen varios sistemas para distintos tipos de daño."
+        },
+        {
+          "texto": "Fotorreactivación = la fotoliasa separa dímeros de timina",
+          "explicacion": "Esta enzima usa luz visible para romper la unión entre timinas; los mamíferos placentarios, como el ser humano, no la tienen."
+        },
+        {
+          "texto": "Reparación por escisión de bases = quita una base dañada",
+          "explicacion": "Una enzima glicosilasa elimina la base alterada, y luego otras enzimas llenan el hueco con la base correcta."
+        },
+        {
+          "texto": "Reparación por escisión de nucleótidos = quita un tramo dañado",
+          "explicacion": "Corta un fragmento corto de la cadena que contiene el daño, como un dímero de timina, y la ADN polimerasa lo vuelve a sintetizar."
+        },
+        {
+          "texto": "Reparación de apareamientos erróneos = corrige errores de copia",
+          "explicacion": "Reconoce las bases mal apareadas tras la replicación y quita la base incorrecta de la cadena nueva."
+        },
+        {
+          "texto": "Reparación de roturas de doble cadena",
+          "explicacion": "Se hace por unión de extremos no homólogos, rápida pero con riesgo de pérdida de bases, o por recombinación homóloga, más exacta porque usa como molde la cromátida hermana."
+        },
+        {
+          "texto": "Xeroderma pigmentoso = defecto de reparación por escisión de nucleótidos",
+          "explicacion": "Los afectados son muy sensibles a la luz solar y tienen un riesgo muy alto de cáncer de piel, por la acumulación de dímeros de timina."
+        },
+        {
+          "texto": "Síndrome de Lynch = defecto de reparación de apareamientos erróneos",
+          "explicacion": "Aumenta el riesgo de cáncer colorrectal hereditario sin poliposis, porque los errores de copia se acumulan."
+        },
+        {
+          "texto": "Genes BRCA1 y BRCA2 ⇒ reparación por recombinación homóloga",
+          "explicacion": "BRCA viene de Breast Cancer, cáncer de mama en inglés; sus mutaciones elevan el riesgo de cáncer de mama y de ovario."
+        },
+        {
+          "texto": "Tomas Lindahl, Paul Modrich y Aziz Sancar = Nobel de Química 2015",
+          "explicacion": "Recibieron el premio por describir los mecanismos de reparación del ADN, en concreto reparación por escisión de bases, de apareamientos erróneos y de nucleótidos."
+        }
+      ]
+    },
+    {
+      "titulo": "Mutaciones y cáncer",
+      "puntos": [
+        {
+          "texto": "Cáncer = acumulación de mutaciones en una célula",
+          "explicacion": "La célula pierde el control de la división y de la muerte celular y forma un clon que crece sin freno."
+        },
+        {
+          "texto": "Protooncogén = gen normal que estimula la división",
+          "explicacion": "Participa en el control del crecimiento celular; si muta pasa a ser un oncogén."
+        },
+        {
+          "texto": "Oncogén = protooncogén mutado hiperactivo",
+          "explicacion": "Es una mutación de ganancia de función que empuja a la célula a dividirse sin control, y basta una sola copia alterada, por lo que es dominante."
+        },
+        {
+          "texto": "Gen supresor de tumores = freno de la división",
+          "explicacion": "Detiene el ciclo celular o provoca la muerte de células dañadas, y su mutación es de pérdida de función recesiva a nivel celular."
+        },
+        {
+          "texto": "Gen p53 = guardián del genoma",
+          "explicacion": "Su proteína de 53 kilodaltons detiene el ciclo celular cuando hay daño en el ADN; está mutado en más de la mitad de los cánceres humanos."
+        },
+        {
+          "texto": "Hipótesis de los dos impactos = ambos alelos supresores deben fallar",
+          "explicacion": "Alfred George Knudson la propuso en 1971 al estudiar el retinoblastoma: en el hereditario se nace con un alelo alterado y se necesita una mutación somática del otro."
+        },
+        {
+          "texto": "Retinoblastoma hereditario = tumor de la retina en niños",
+          "explicacion": "Se hereda como rasgo dominante con alta probabilidad de tumor, aunque la célula necesita perder los dos alelos."
+        }
+      ]
+    },
+    {
+      "titulo": "Efectos de las mutaciones",
+      "puntos": [
+        {
+          "texto": "Mutación perjudicial = reduce la capacidad de supervivencia",
+          "explicacion": "Es la mayoría de las mutaciones con efecto visible, porque es más fácil dañar un sistema ordenado que mejorarlo."
+        },
+        {
+          "texto": "Mutación neutra = no cambia la adaptación",
+          "explicacion": "Incluye las silenciosas y las que caen en ADN sin función, y pueden pasar a la población por azar."
+        },
+        {
+          "texto": "Mutación beneficiosa = mejora la adaptación al ambiente",
+          "explicacion": "Es poco frecuente, pero sobre ella actúa la selección natural y favorece su aumento en la población."
+        },
+        {
+          "texto": "Persistencia de la lactasa = ventaja en poblaciones ganaderas",
+          "explicacion": "Una mutación permite seguir produciendo lactasa en la edad adulta y digerir la lactosa de la leche."
+        },
+        {
+          "texto": "Mutación CCR5 con deleción de 32 bases ⇒ resistencia al VIH",
+          "explicacion": "Los homocigotos carecen de una proteína de superficie que el Virus de la Inmunodeficiencia Humana (VIH) usa para entrar en ciertas células."
+        },
+        {
+          "texto": "Resistencia bacteriana a antibióticos ⇒ mutación seleccionada",
+          "explicacion": "Una bacteria con una mutación que le da resistencia sobrevive al antibiótico y se multiplica, por eso el uso excesivo de estos fármacos favorece su aumento."
+        },
+        {
+          "texto": "Mutación condicional = efecto según el ambiente",
+          "explicacion": "Un alelo puede ser dañino en unas condiciones y neutro o útil en otras, como el alelo falciforme en regiones con malaria."
+        },
+        {
+          "texto": "Mutaciones germinales dañinas ⇒ enfermedades hereditarias",
+          "explicacion": "Pueden transmitirse durante generaciones, y sus ejemplos humanos están en la genética humana."
+        }
+      ]
+    },
+    {
+      "titulo": "Temas relacionados",
+      "puntos": [
+        {
+          "texto": "Genética humana ⊃ ejemplos de mutaciones humanas",
+          "explicacion": "Allí se desarrollan las aneuploidías humanas, las enfermedades autosómicas y ligadas al sexo, y el diagnóstico de las alteraciones cromosómicas."
+        },
+        {
+          "texto": "Selección natural se desarrolla en su propio tema",
+          "explicacion": "Allí se explica cómo el ambiente favorece o elimina a los individuos con determinadas mutaciones."
+        },
+        {
+          "texto": "Código genético se desarrolla en su propio tema",
+          "explicacion": "Allí se explica cómo los codones determinan los aminoácidos, base para entender el efecto de las mutaciones génicas."
+        }
       ]
     }
   ]

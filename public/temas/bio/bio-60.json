@@ -2,50 +2,171 @@
   "curso": "Biología",
   "tema": "Coordinación química en animales",
   "glosario": {
-    "Hormona": "Sustancia química que se libera a la sangre para actuar en órganos distantes.",
-    "Glándula endocrina": "Glándula que libera hormonas directamente a la sangre.",
-    "Glándula exocrina": "Glándula que libera sus secreciones por conductos.",
-    "Retroalimentación negativa": "Mecanismo que reduce la producción de una hormona cuando su nivel es alto.",
-    "Hipófisis": "Glándula que controla la actividad de otras glándulas endocrinas.",
-    "Insulina": "Hormona pancreática que disminuye la glucosa en sangre.",
-    "Glucagón": "Hormona pancreática que aumenta la glucosa en sangre.",
-    "Tiroxina": "Hormona tiroidea que regula el metabolismo.",
-    "Glucocorticoide": "Hormona suprarrenal que ayuda al organismo a responder al estrés."
+    "Hormona": "Sustancia química secretada por una glándula endocrina que actúa sobre células diana a distancia.",
+    "Glándula endocrina": "Glándula que vierte sus secreciones directamente a la sangre, sin conducto.",
+    "Glándula exocrina": "Glándula que vierte sus secreciones a través de un conducto, como las glándulas sudoríparas o el páncreas exocrino.",
+    "Célula diana": "Célula que posee receptores específicos para una hormona y responde a ella.",
+    "Receptor hormonal": "Proteína que reconoce una hormona específica y desencadena la respuesta de la célula.",
+    "Hormona peptídica": "Hormona formada por cadenas cortas o largas de aminoácidos, como la insulina y la ACTH.",
+    "Hormona esteroide": "Hormona derivada del colesterol, lipofílica, que atraviesa la membrana y actúa dentro de la célula.",
+    "Hormona tiroidea": "Hormona yodada producida por la tiroides que regula el metabolismo basal.",
+    "Hipotálamo": "Región del encéfalo que controla la hipófisis y coordina la secreción de muchas hormonas.",
+    "Hipófisis": "Glándula endocrina de la base del encéfalo que regula otras glándulas, llamada también glándula maestra.",
+    "Neurohipófisis": "Porción posterior de la hipófisis que almacena y libera la oxitocina y la hormona antidiurética.",
+    "Adenohipófisis": "Porción anterior de la hipófisis que produce hormonas como la ACTH, la TSH y las gonadotropinas.",
+    "Retroalimentación negativa": "Mecanismo en el que el aumento de una hormona inhibe su propia secreción.",
+    "Retroalimentación positiva": "Mecanismo en el que el aumento de una sustancia estimula su propia secreción hasta una respuesta final.",
+    "Segundo mensajero": "Molécula intracelular que transmite la señal de una hormona que actúa desde la membrana.",
+    "Eje hipotálamo-hipófisis": "Conjunto de interacciones entre el hipotálamo y la hipófisis que regulan muchas glándulas del cuerpo."
   },
   "theory": [
     {
-      "titulo": "Concepto de sistema endocrino",
+      "titulo": "Sistema endocrino",
       "puntos": [
-        { "texto": "El sistema endocrino coordina funciones mediante hormonas.", "explicacion": "Las hormonas viajan por la sangre y actúan en órganos alejados de su origen." },
-        { "texto": "El sistema endocrino actúa más lentamente que el sistema nervioso.", "explicacion": "Sus efectos son más duraderos, aunque la señal tarda más en llegar." }
+        {
+          "texto": "El sistema endocrino coordina las funciones del cuerpo mediante hormonas",
+          "explicacion": "Las hormonas viajan por la sangre y actúan sobre células distantes de la glándula que las produce."
+        },
+        {
+          "texto": "Las glándulas endocrinas vierten sus hormonas directamente a la sangre",
+          "explicacion": "A diferencia de las glándulas exocrinas, no tienen conductos que lleven sus productos hasta un lugar concreto."
+        },
+        {
+          "texto": "El sistema endocrino trabaja junto con el sistema nervioso",
+          "explicacion": "El sistema nervioso actúa con rapidez mediante impulsos, y el endocrino con una acción más lenta y prolongada."
+        }
       ]
     },
     {
-      "titulo": "Glándulas principales",
+      "titulo": "Glándulas endocrinas principales",
       "puntos": [
-        { "texto": "La «hipófisis» controla la actividad de otras glándulas endocrinas.", "explicacion": "Está regulada por el hipotálamo, que la conecta con el sistema nervioso." },
-        { "texto": "La «tiroxina» de la tiroides regula el metabolismo.", "explicacion": "Su producción depende de la hormona estimulante de la tiroides, de origen hipofisario." },
-        { "texto": "Las paratiroides regulan el calcio en sangre.", "explicacion": "Su hormona aumenta el calcio sanguíneo al actuar sobre huesos y riñones." },
-        { "texto": "Las glándulas suprarrenales producen glucocorticoides y adrenalina.", "explicacion": "Ayudan al organismo a responder al estrés y a mantener la glucosa." }
+        {
+          "texto": "Las glándulas endocrinas principales son el hipotálamo, la hipófisis, la tiroides, las paratiroides, las suprarrenales, el páncreas y las gónadas",
+          "explicacion": "Cada una produce hormonas con funciones distintas, como el metabolismo, el crecimiento o la reproducción."
+        },
+        {
+          "texto": "La epífisis o glándula pineal produce melatonina",
+          "explicacion": "Dato por confirmar: la melatonina regula los ritmos circadianos según la cantidad de luz que recibe el organismo."
+        },
+        {
+          "texto": "El páncreas tiene función endocrina y exocrina",
+          "explicacion": "Dato por confirmar: sus islotes de Langerhans producen insulina y glucagón, y su parte exocrina produce enzimas digestivas."
+        }
       ]
     },
     {
-      "titulo": "Páncreas endocrino",
+      "titulo": "Clasificación de las hormonas",
       "puntos": [
-        { "texto": "La «insulina» disminuye la glucosa en sangre.", "explicacion": "Facilita que las células incorporen glucosa para usarla o almacenarla." },
-        { "texto": "El «glucagón» aumenta la glucosa en sangre.", "explicacion": "Estimula la liberación de glucosa almacenada en el hígado." }
+        {
+          "texto": "Las hormonas se clasifican según su naturaleza química en peptídicas, esteroides y aminas",
+          "explicacion": "La naturaleza química determina cómo se transportan, cómo actúan y cuánto tardan en eliminarse."
+        },
+        {
+          "texto": "Las hormonas peptídicas son solubles en agua y no atraviesan la membrana",
+          "explicacion": "Se unen a receptores en la superficie de la célula diana y transmiten la señal desde fuera hacia dentro."
+        },
+        {
+          "texto": "Las hormonas esteroides son liposolubles y atraviesan la membrana",
+          "explicacion": "Se unen a receptores dentro de la célula, donde pueden regular la transcripción de genes."
+        },
+        {
+          "texto": "Las hormonas amínicas derivan de aminoácidos como la tirosina",
+          "explicacion": "Dato por confirmar: las catecolaminas, como la adrenalina y la noradrenalina, son ejemplos de este grupo."
+        }
       ]
     },
     {
-      "titulo": "Regulación hormonal",
+      "titulo": "Acción de las hormonas",
       "puntos": [
-        { "texto": "La mayoría de las hormonas se regulan por «retroalimentación negativa».", "explicacion": "Cuando la hormona alcanza un nivel alto, reduce la señal que la estimula." }
+        {
+          "texto": "Las hormonas actúan solo sobre células que tienen receptores específicos",
+          "explicacion": "Una misma hormona puede afectar a muchos tejidos distintos si todos ellos tienen su receptor."
+        },
+        {
+          "texto": "Muchas hormonas peptídicas actúan mediante segundos mensajeros",
+          "explicacion": "Dato por confirmar: el AMP cíclico es uno de los segundos mensajeros más conocidos y amplifica la señal dentro de la célula."
+        },
+        {
+          "texto": "Las hormonas esteroides suelen tener una vida media más larga que las peptídicas",
+          "explicacion": "Dato por confirmar: su unión a proteínas transportadoras en la sangre las protege de la degradación."
+        }
       ]
     },
     {
-      "titulo": "Conexión",
+      "titulo": "Eje hipotálamo-hipófisis",
       "puntos": [
-        { "texto": "Las gónadas producen hormonas sexuales.", "explicacion": "Su papel en la reproducción corresponde al tema de sistema reproductor." }
+        {
+          "texto": "El hipotálamo controla la hipófisis mediante hormonas liberadoras e inhibidoras",
+          "explicacion": "Las neuronas del hipotálamo producen sustancias que llegan a la adenohipófisis por el sistema porta hipofisario."
+        },
+        {
+          "texto": "La neurohipófisis almacena y libera la oxitocina y la hormona antidiurética",
+          "explicacion": "Estas hormonas se producen en el hipotálamo y viajan por axones hasta la neurohipófisis."
+        },
+        {
+          "texto": "La adenohipófisis produce la hormona del crecimiento, la TSH, la ACTH y las gonadotropinas",
+          "explicacion": "Cada una estimula a una glándula diana específica, como la tiroides o las suprarrenales."
+        },
+        {
+          "texto": "La hipófisis se llama glándula maestra porque controla otras glándulas",
+          "explicacion": "Su acción depende de las señales del hipotálamo, por lo que en conjunto forman una unidad funcional."
+        }
+      ]
+    },
+    {
+      "titulo": "Retroalimentación negativa",
+      "puntos": [
+        {
+          "texto": "En la retroalimentación negativa el aumento de una hormona inhibe su propia producción",
+          "explicacion": "Así se mantiene la concentración de la hormona dentro de un rango estrecho."
+        },
+        {
+          "texto": "La hormona tiroidea inhibe la secreción de TSH en la hipófisis",
+          "explicacion": "Cuando la concentración de hormona tiroidea aumenta, la hipófisis disminuye la TSH y la tiroides produce menos hormona."
+        },
+        {
+          "texto": "Los cortisoles inhiben la secreción de ACTH y de CRH",
+          "explicacion": "Dato por confirmar: el cortisol frena al hipotálamo y a la hipófisis cuando su concentración es alta."
+        }
+      ]
+    },
+    {
+      "titulo": "Retroalimentación positiva",
+      "puntos": [
+        {
+          "texto": "En la retroalimentación positiva el aumento de una sustancia estimula su propia liberación",
+          "explicacion": "Este mecanismo es menos frecuente y suele activar procesos que terminan con un evento concreto."
+        },
+        {
+          "texto": "La oxitocina durante el parto es un ejemplo de retroalimentación positiva",
+          "explicacion": "Dato por confirmar: la contracción del útero estimula la liberación de más oxitocina hasta que nace el bebé."
+        }
+      ]
+    },
+    {
+      "titulo": "Hormonas de la tiroides y la suprarrenal",
+      "puntos": [
+        {
+          "texto": "La tiroides produce tiroxina y triyodotironina, hormonas que regulan el metabolismo",
+          "explicacion": "Dato por confirmar: necesitan yodo para su síntesis y su déficit puede causar bocio."
+        },
+        {
+          "texto": "La médula suprarrenal produce adrenalina y noradrenalina",
+          "explicacion": "Dato por confirmar: estas hormonas preparan al cuerpo para situaciones de estrés, aumentando la frecuencia cardíaca."
+        },
+        {
+          "texto": "La corteza suprarrenal produce cortisol y aldosterona",
+          "explicacion": "Dato por confirmar: el cortisol regula el metabolismo de la glucosa y la aldosterona el equilibrio de sodio y potasio."
+        }
+      ]
+    },
+    {
+      "titulo": "Relación con el tema siguiente",
+      "puntos": [
+        {
+          "texto": "El sistema endocrino humano se estudia en el tema 61",
+          "explicacion": "Allí se describen con más detalle las glándulas y las hormonas del cuerpo humano."
+        }
       ]
     }
   ]

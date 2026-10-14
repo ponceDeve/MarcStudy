@@ -2,46 +2,587 @@
   "curso": "Biología",
   "tema": "Metamorfosis",
   "glosario": {
-    "Metamorfosis": "Cambio profundo de forma y función durante el desarrollo de un animal.",
-    "Metamorfosis completa": "Desarrollo con etapas de huevo, larva, pupa y adulto.",
-    "Metamorfosis incompleta": "Desarrollo con etapas de huevo, ninfa y adulto.",
-    "Larva": "Etapa juvenil que difiere morfológicamente del adulto.",
-    "Pupa": "Etapa de reposo en la que ocurre la transformación de la larva.",
-    "Ninfa": "Etapa juvenil de insectos que se parece al adulto sin alas completas.",
-    "Hormona juvenil": "Hormona de insectos que mantiene el estado larval."
+    "Larva": "Forma juvenil distinta del adulto",
+    "Metamorfosis": "Transformación de larva en adulto",
+    "Exoesqueleto": "Cubierta externa rígida de quitina",
+    "Quitina": "Polisacárido resistente del exoesqueleto",
+    "Muda": "Cambio del exoesqueleto",
+    "Ecdisis": "Muda de la cutícula",
+    "Estadio": "Período entre dos mudas",
+    "Ametabolia": "Desarrollo sin metamorfosis",
+    "Hemimetabolia": "Metamorfosis incompleta sin pupa",
+    "Holometabolia": "Metamorfosis completa con pupa",
+    "Ninfa": "Juvenil semejante al adulto sin alas",
+    "Yema alar": "Esbozo de ala en la ninfa",
+    "Pupa": "Estadio inmóvil de reorganización",
+    "Crisálida": "Pupa de las mariposas",
+    "Capullo": "Envoltura de seda de la pupa",
+    "Pupario": "Cutícula endurecida de la larva de mosca",
+    "Histólisis": "Destrucción de tejidos larvales",
+    "Histogénesis": "Formación de tejidos adultos",
+    "Disco imaginal": "Grupo de células que forma estructuras adultas",
+    "Imago": "Insecto adulto",
+    "Diapausa": "Pausa del desarrollo en época desfavorable",
+    "Oruga": "Larva de mariposa o polilla",
+    "Propata": "Falsa pata de las orugas",
+    "Estema": "Ojo simple de larva",
+    "Espiritrompa": "Pieza bucal succionadora de mariposas",
+    "Ecdisona": "Hormona de la muda",
+    "Hormona juvenil": "Hormona que mantiene el estado larval",
+    "Neurosecretora": "Célula nerviosa que libera hormonas",
+    "Cuerpos alados": "Glándulas que producen hormona juvenil",
+    "Glándulas protorácicas": "Glándulas que producen ecdisona",
+    "Renacuajo": "Larva de ranas y sapos",
+    "Opérculo": "Pliegue que cubre las branquias",
+    "Anuros": "Anfibios sin cola en el adulto",
+    "Tiroxina": "Hormona tiroidea",
+    "Tiroides": "Glándula del cuello que produce tiroxina",
+    "Hipotálamo": "Región cerebral que regula la hipófisis",
+    "Hipófisis": "Glándula que regula otras glándulas",
+    "Prolactina": "Hormona hipofisaria que frena la metamorfosis",
+    "Neotenia": "Conservación de rasgos larvales en el adulto",
+    "Pedomorfosis": "Retención de rasgos juveniles",
+    "Plánula": "Larva ciliada de cnidarios",
+    "Trocófora": "Larva ciliada de moluscos y anélidos",
+    "Velígera": "Larva de moluscos con velo ciliado",
+    "Nauplio": "Larva de crustáceos con tres pares de apéndices",
+    "Zoea": "Larva planctónica de cangrejos",
+    "Megalopa": "Larva de cangrejo parecida al adulto",
+    "Pluteus": "Larva del erizo de mar",
+    "Bipinnaria": "Larva de la estrella de mar",
+    "Leptocéfalo": "Larva transparente de anguila",
+    "Planctón": "Organismos que flotan a la deriva",
+    "Apoptosis": "Muerte celular programada"
   },
   "theory": [
     {
       "titulo": "Concepto de metamorfosis",
       "puntos": [
-        { "texto": "La metamorfosis es un cambio profundo de forma durante el desarrollo.", "explicacion": "Transforma una etapa juvenil en un individuo adulto diferente." },
-        { "texto": "Muchos animales presentan un desarrollo indirecto con metamorfosis.", "explicacion": "En el desarrollo directo, en cambio, el juvenil ya se parece al adulto." }
+        {
+          "texto": "«Metamorfosis» = transformación de larva en adulto",
+          "explicacion": "Es un conjunto de cambios profundos de forma, de fisiología y de modo de vida que ocurre después del nacimiento o de la eclosión. La larva y el adulto de un mismo animal pueden parecer especies distintas."
+        },
+        {
+          "texto": "«Larva» = forma juvenil distinta del adulto",
+          "explicacion": "Tiene estructuras, alimentación y hábitat propios. Su función principal es alimentarse y crecer."
+        },
+        {
+          "texto": "Metamorfosis ⇒ cambios morfológicos + fisiológicos + ecológicos",
+          "explicacion": "No solo cambia el aspecto externo, también se modifican órganos internos, la forma de respirar, de alimentarse y de desplazarse. El adulto suele ocupar un ambiente distinto al de la larva."
+        },
+        {
+          "texto": "Metamorfosis ⇒ regulada por hormonas",
+          "explicacion": "Las hormonas determinan cuándo ocurre cada cambio y su intensidad. En los insectos intervienen la ecdisona y la hormona juvenil, y en los anfibios, las hormonas tiroideas."
+        },
+        {
+          "texto": "Metamorfosis ∈ desarrollo posembrionario",
+          "explicacion": "Ocurre una vez que termina el desarrollo dentro del huevo. El estudio del desarrollo dentro del huevo corresponde al tema del desarrollo embrionario."
+        }
       ]
     },
     {
-      "titulo": "Metamorfosis completa",
+      "titulo": "Desarrollo directo",
       "puntos": [
-        { "texto": "La metamorfosis completa tiene cuatro etapas: huevo, larva, pupa y adulto.", "explicacion": "Ejemplos son mariposas, moscas y escarabajos." },
-        { "texto": "En la pupa ocurre la reorganización de los tejidos de la larva.", "explicacion": "Durante este período el animal no se alimenta." }
+        {
+          "texto": "«Desarrollo directo» = el juvenil se parece al adulto",
+          "explicacion": "Del huevo sale un individuo con la forma del adulto, aunque más pequeño y sexualmente inmaduro. Crece sin cambios drásticos."
+        },
+        {
+          "texto": "Desarrollo directo ✗ larva",
+          "explicacion": "No existe una fase larval con vida distinta a la del adulto. Por eso no se considera que haya metamorfosis."
+        },
+        {
+          "texto": "Desarrollo directo ⇒ reptiles + aves + mamíferos",
+          "explicacion": "También ocurre en arañas, caracoles terrestres y lombrices de tierra. Las crías reciben reservas del huevo o de la madre."
+        },
+        {
+          "texto": "Ranas Pristimantis ⇒ desarrollo directo en anfibios",
+          "explicacion": "Muchas ranas de los Andes ponen huevos en tierra húmeda y de ellos salen ranitas completas, sin fase de renacuajo. Es una excepción entre los anfibios."
+        }
       ]
     },
     {
-      "titulo": "Metamorfosis incompleta",
+      "titulo": "Desarrollo indirecto",
       "puntos": [
-        { "texto": "La metamorfosis incompleta tiene tres etapas: huevo, ninfa y adulto.", "explicacion": "Ejemplos son libélulas, saltamontes y cucarachas." },
-        { "texto": "La ninfa se parece al adulto pero aún no tiene alas completas.", "explicacion": "Va creciendo y mudando la cutícula hasta alcanzar la forma adulta." }
+        {
+          "texto": "«Desarrollo indirecto» = con fase larval y metamorfosis",
+          "explicacion": "El huevo origina una larva que debe transformarse para llegar a ser adulto. Es el desarrollo característico de la mayoría de los insectos y de los anfibios."
+        },
+        {
+          "texto": "Desarrollo indirecto ⇒ larva ≠ adulto",
+          "explicacion": "La larva suele vivir en un medio diferente y comer otros alimentos. Por eso no compite con el adulto."
+        },
+        {
+          "texto": "Desarrollo indirecto ⊃ metamorfosis completa + metamorfosis incompleta",
+          "explicacion": "En los insectos se distinguen dos tipos según exista o no un estadio de pupa. En los anfibios hay un solo tipo de metamorfosis."
+        }
+      ]
+    },
+    {
+      "titulo": "Muda en insectos",
+      "puntos": [
+        {
+          "texto": "«Exoesqueleto» = cubierta externa rígida de quitina",
+          "explicacion": "Protege el cuerpo del insecto y sostiene los músculos. Como no crece, limita el aumento de tamaño."
+        },
+        {
+          "texto": "«Muda» = cambio del exoesqueleto",
+          "explicacion": "El insecto se desprende de la cutícula vieja y forma una nueva, más grande. También se llama ecdisis."
+        },
+        {
+          "texto": "Muda ⇒ permite el crecimiento",
+          "explicacion": "Inmediatamente después de la muda, la cutícula nueva es blanda y el insecto se expande. Luego la cutícula se endurece."
+        },
+        {
+          "texto": "«Estadio» = período entre dos mudas",
+          "explicacion": "También se llama instar. El número de estadios varía según la especie."
+        },
+        {
+          "texto": "Muda ⇒ regulada por la ecdisona",
+          "explicacion": "Esta hormona estimula la formación de la cutícula nueva y la separación de la vieja. Su liberación es periódica."
+        }
+      ]
+    },
+    {
+      "titulo": "Ametabolia",
+      "puntos": [
+        {
+          "texto": "«Ametabolia» = desarrollo sin metamorfosis",
+          "explicacion": "Ocurre en insectos primitivos que no tienen alas. El juvenil es igual al adulto, salvo en el tamaño y la madurez sexual."
+        },
+        {
+          "texto": "Ametábolos ⇒ pececillo de plata",
+          "explicacion": "Este insecto, llamado también lepisma, muda varias veces durante toda su vida. Los cambios solo aumentan su tamaño."
+        },
+        {
+          "texto": "Ametabolia ≠ metamorfosis",
+          "explicacion": "Aunque los insectos ametábolos mudan, no hay transformación de estructuras. Por eso se considera desarrollo directo."
+        }
+      ]
+    },
+    {
+      "titulo": "Hemimetabolia",
+      "puntos": [
+        {
+          "texto": "«Hemimetabolia» = metamorfosis incompleta",
+          "explicacion": "Es el desarrollo con tres estadios: huevo, ninfa y adulto. No existe pupa."
+        },
+        {
+          "texto": "Hemimetábolos: huevo → ninfa → adulto",
+          "explicacion": "La ninfa crece con mudas sucesivas hasta convertirse en adulto. La última muda produce el adulto con alas funcionales."
+        },
+        {
+          "texto": "«Ninfa» = juvenil semejante al adulto sin alas funcionales",
+          "explicacion": "Tiene forma parecida a la del adulto. Posee yemas alares, que son esbozos de alas, y madura sexualmente solo en el estadio adulto."
+        },
+        {
+          "texto": "Ninfa ⇒ alimentación parecida a la del adulto",
+          "explicacion": "Suele comer lo mismo que el adulto y vive en un ambiente semejante. Por eso la transformación es gradual."
+        },
+        {
+          "texto": "Hemimetábolos ⇒ saltamontes + cucarachas + chinches",
+          "explicacion": "También se incluyen las termitas, las libélulas y las efímeras. Pertenecen a varios órdenes de insectos."
+        },
+        {
+          "texto": "Libélula ⇒ ninfa acuática",
+          "explicacion": "La ninfa vive en el agua, respira por branquias y es depredadora. El adulto sale del agua, es terrestre y vuela."
+        },
+        {
+          "texto": "Hemimetabolia ⇒ término con distintas definiciones",
+          "explicacion": "Según algunos textos, se llama hemimetabolia solo a los casos con ninfas acuáticas, y paurometabolia a los de ninfas terrestres. Otros textos usan hemimetabolia para ambos casos."
+        }
+      ]
+    },
+    {
+      "titulo": "Holometabolia",
+      "puntos": [
+        {
+          "texto": "«Holometabolia» = metamorfosis completa",
+          "explicacion": "Es el desarrollo con cuatro estadios: huevo, larva, pupa y adulto. Tiene un estadio de pupa."
+        },
+        {
+          "texto": "Holometábolos: huevo → larva → pupa → adulto",
+          "explicacion": "Cada estadio tiene función distinta: la larva crece, la pupa reorganiza el cuerpo y el adulto se reproduce. Los cambios son abruptos."
+        },
+        {
+          "texto": "Holometábolos ⇒ mariposas + moscas + escarabajos + abejas",
+          "explicacion": "Pertenecen a los órdenes de los lepidópteros, dípteros, coleópteros e himenópteros. Es el tipo de desarrollo más frecuente entre los insectos."
+        },
+        {
+          "texto": "Larva ≠ adulto en holometábolos",
+          "explicacion": "La larva no tiene alas ni se parece al adulto. Sus piezas bucales y su alimentación son diferentes."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase huevo",
+      "puntos": [
+        {
+          "texto": "«Huevo» = estadio inicial del insecto",
+          "explicacion": "La hembra lo pone en un lugar adecuado para la larva. Contiene el embrión y las reservas."
+        },
+        {
+          "texto": "Huevo ⇒ puesto sobre la planta hospedera",
+          "explicacion": "En la mariposa, los huevos se depositan sobre la planta de la que se alimentará la oruga. Así la larva encuentra alimento al nacer."
+        },
+        {
+          "texto": "Eclosión = salida de la larva del huevo",
+          "explicacion": "La larva rompe el corion con sus mandíbulas o con una estructura especial. En algunas especies se come el cascarón."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase larval",
+      "puntos": [
+        {
+          "texto": "«Larva» ⇒ estadio de alimentación y crecimiento",
+          "explicacion": "Se alimenta intensamente y acumula reservas para las fases siguientes. Su tamaño puede aumentar miles de veces."
+        },
+        {
+          "texto": "Larva ⇒ muda varias veces",
+          "explicacion": "Cada muda permite aumentar de tamaño. El número de mudas depende de la especie."
+        },
+        {
+          "texto": "«Oruga» = larva de mariposa o polilla",
+          "explicacion": "Tiene cuerpo alargado, mandíbulas masticadoras y se alimenta de hojas. Posee glándulas que producen seda."
+        },
+        {
+          "texto": "Oruga ⊃ patas verdaderas + falsas patas",
+          "explicacion": "Tiene tres pares de patas torácicas articuladas y varios pares de falsas patas, llamadas propatas, en el abdomen. Las propatas no son articuladas."
+        },
+        {
+          "texto": "Larva de mosca ⇒ gusano sin patas",
+          "explicacion": "También se llama asticot. Vive en la materia en descomposición, de la que se alimenta."
+        },
+        {
+          "texto": "Larva de escarabajo ⇒ cuerpo blando con mandíbulas fuertes",
+          "explicacion": "Suele vivir bajo tierra o en la madera. Algunas se conocen como gusano blanco."
+        },
+        {
+          "texto": "Larva de abeja ⇒ cuidada y alimentada por obreras",
+          "explicacion": "Es inmóvil, sin patas y se desarrolla en celdas del panal. Las obreras la alimentan con miel, polen o jalea real."
+        },
+        {
+          "texto": "Larva ⇒ ojos simples + piezas bucales masticadoras",
+          "explicacion": "Los ojos simples se llaman estemas. Estas características difieren de las del adulto."
+        }
+      ]
+    },
+    {
+      "titulo": "Fase pupal",
+      "puntos": [
+        {
+          "texto": "«Pupa» = estadio inmóvil de reorganización",
+          "explicacion": "La pupa no se alimenta ni se desplaza, aunque está viva y activa internamente. Es la fase en que el cuerpo larval se transforma en cuerpo adulto."
+        },
+        {
+          "texto": "«Crisálida» = pupa de las mariposas",
+          "explicacion": "Es una pupa desnuda cubierta por una cutícula endurecida. Suele permanecer fija a una planta."
+        },
+        {
+          "texto": "«Capullo» = envoltura de seda de la pupa",
+          "explicacion": "Lo tejen la larva del gusano de seda y otras polillas antes de pupar. Protege a la pupa."
+        },
+        {
+          "texto": "Pupa de mosca ⇒ pupario",
+          "explicacion": "El pupario es la cutícula endurecida de la última larva, que cubre a la pupa. Dentro se forma la mosca adulta."
+        },
+        {
+          "texto": "«Histólisis» = destrucción de tejidos larvales",
+          "explicacion": "Muchos órganos de la larva se desintegran por acción de enzimas y por muerte celular programada. Sus componentes se reciclan."
+        },
+        {
+          "texto": "«Histogénesis» = formación de tejidos adultos",
+          "explicacion": "Se origina a partir de grupos de células llamados discos imaginales. Estos discos forman las alas, las patas y otros órganos del adulto."
+        },
+        {
+          "texto": "Disco imaginal ⇒ grupo de células de reserva larval",
+          "explicacion": "Permanece sin diferenciar durante la vida larval. Durante la pupa se divide y se diferencia en estructuras del adulto."
+        },
+        {
+          "texto": "Pupa ⇒ fase vulnerable",
+          "explicacion": "Al estar inmóvil no puede huir de los depredadores. Por eso la cutícula, el capullo o el lugar elegido para pupar son importantes."
+        },
+        {
+          "texto": "Diapausa = pausa del desarrollo",
+          "explicacion": "En algunos insectos, la pupa permanece inactiva durante épocas desfavorables, como el invierno. Reanuda su desarrollo cuando mejoran las condiciones."
+        }
+      ]
+    },
+    {
+      "titulo": "Imago",
+      "puntos": [
+        {
+          "texto": "«Imago» = insecto adulto",
+          "explicacion": "Es el estadio final, con alas completas y órganos sexuales maduros. También se llama adulto."
+        },
+        {
+          "texto": "Imago ⇒ función reproductora + dispersión",
+          "explicacion": "El adulto busca pareja y pone huevos. Con sus alas coloniza nuevos lugares."
+        },
+        {
+          "texto": "Imago ✗ muda",
+          "explicacion": "En la mayoría de los insectos, el adulto no vuelve a mudar. Hay excepciones, como las efímeras, que mudan una vez más después de adquirir alas funcionales, en un estadio llamado subimago."
+        },
+        {
+          "texto": "Mariposa adulta ⇒ espiritrompa",
+          "explicacion": "Es una pieza bucal alargada y enrollada que succiona el néctar. Es distinta a las mandíbulas masticadoras de la oruga."
+        },
+        {
+          "texto": "Imago ⇒ alimentación distinta a la de la larva",
+          "explicacion": "En mariposas y abejas, la larva come hojas o miel y el adulto, néctar. En algunas especies, el adulto vive pocos días y casi no se alimenta."
+        }
+      ]
+    },
+    {
+      "titulo": "Control hormonal insectos",
+      "puntos": [
+        {
+          "texto": "Cerebro ⇒ libera hormona protoracicotrópica",
+          "explicacion": "Las células neurosecretoras del cerebro la producen. También se llama hormona cerebral."
+        },
+        {
+          "texto": "Hormona protoracicotrópica → glándulas protorácicas",
+          "explicacion": "Estimula a las glándulas protorácicas, que se ubican en el tórax. Estas responden produciendo ecdisona."
+        },
+        {
+          "texto": "«Ecdisona» = hormona de la muda",
+          "explicacion": "La producen las glándulas protorácicas. Desencadena la muda y el cambio de estadio."
+        },
+        {
+          "texto": "«Hormona juvenil» = hormona que mantiene el estado larval",
+          "explicacion": "La producen los cuerpos alados, que son glándulas ubicadas detrás del cerebro. También se llama neotenina."
+        },
+        {
+          "texto": "Ecdisona + hormona juvenil alta → muda larval",
+          "explicacion": "La larva muda y sigue siendo larva. La hormona juvenil impide que aparezcan rasgos de adulto."
+        },
+        {
+          "texto": "Ecdisona + hormona juvenil baja → pupa",
+          "explicacion": "Cuando el nivel de hormona juvenil disminuye en la última larva, la muda produce la pupa. Es el cambio que inicia la metamorfosis."
+        },
+        {
+          "texto": "Ecdisona sin hormona juvenil → adulto",
+          "explicacion": "La muda de la pupa origina el imago. La ausencia de hormona juvenil permite la aparición de rasgos adultos."
+        },
+        {
+          "texto": "Hormona juvenil ⇒ uso en el control de plagas",
+          "explicacion": "Existen insecticidas que imitan a la hormona juvenil e impiden que las larvas lleguen a adultas. Así no se reproducen."
+        }
       ]
     },
     {
       "titulo": "Metamorfosis en anfibios",
       "puntos": [
-        { "texto": "En los anfibios, el renacuajo respira por branquias y luego desarrolla pulmones.", "explicacion": "La hormona tiroidea controla los cambios de la metamorfosis." }
+        {
+          "texto": "Anfibios ⇒ metamorfosis típica en ranas y sapos",
+          "explicacion": "Los anuros, que son ranas y sapos, pasan de una larva acuática a un adulto semiterrestre. Es una de las metamorfosis más drásticas entre los vertebrados."
+        },
+        {
+          "texto": "Huevo de rana ⇒ masa gelatinosa",
+          "explicacion": "Los huevos se ponen en el agua rodeados de una cubierta de gelatina. Esto los protege y los mantiene hidratados."
+        },
+        {
+          "texto": "«Renacuajo» = larva de ranas y sapos",
+          "explicacion": "Tiene cola, carece de patas y respira por branquias. Su forma recuerda a la de un pez."
+        },
+        {
+          "texto": "Renacuajo ⇒ vida acuática",
+          "explicacion": "Nada con la cola y respira por branquias. Come algas y restos vegetales."
+        },
+        {
+          "texto": "Renacuajo ⇒ branquias externas → branquias internas",
+          "explicacion": "Primero tiene branquias externas que luego son cubiertas por un opérculo. Más tarde se forman los pulmones."
+        },
+        {
+          "texto": "Renacuajo ⇒ corazón de dos cámaras",
+          "explicacion": "La circulación es simple, como en los peces. En el adulto el corazón tiene tres cámaras."
+        },
+        {
+          "texto": "Renacuajo ⇒ intestino largo y espiral",
+          "explicacion": "Es adecuado para digerir plantas. Se acorta durante la metamorfosis."
+        },
+        {
+          "texto": "Renacuajo ⇒ boca con pico córneo",
+          "explicacion": "Raspa algas con dentículos en un pico duro. Luego la boca se ensancha."
+        },
+        {
+          "texto": "Renacuajo ⇒ excreta amoníaco",
+          "explicacion": "Al vivir en el agua, elimina el amoníaco por las branquias y la piel. El adulto pasa a producir urea."
+        }
       ]
     },
     {
-      "titulo": "Control hormonal en insectos",
+      "titulo": "Cambios del renacuajo",
       "puntos": [
-        { "texto": "La hormona juvenil mantiene la forma larval.", "explicacion": "Cuando su concentración disminuye, se produce la transformación hacia el estado adulto." }
+        {
+          "texto": "Patas posteriores ⇒ aparecen primero",
+          "explicacion": "Se ven como pequeñas yemas junto a la base de la cola. Crecen mientras el renacuajo sigue nadando."
+        },
+        {
+          "texto": "Patas anteriores ⇒ emergen después",
+          "explicacion": "Se desarrollan ocultas bajo el opérculo y salen al exterior más tarde. Su aparición indica una etapa avanzada."
+        },
+        {
+          "texto": "Cola → reabsorción",
+          "explicacion": "Se acorta por muerte celular programada y la actividad de células que digieren sus tejidos. Sus nutrientes son aprovechados por el animal."
+        },
+        {
+          "texto": "Branquias → pulmones",
+          "explicacion": "Los pulmones se desarrollan, y las branquias desaparecen. La piel también contribuye a la respiración del adulto."
+        },
+        {
+          "texto": "Intestino → acortamiento",
+          "explicacion": "El adulto es carnívoro y necesita un intestino más corto. Se come insectos y otros animales pequeños."
+        },
+        {
+          "texto": "Boca → ancha con lengua",
+          "explicacion": "Se pierde el pico córneo y aparecen mandíbulas amplias y una lengua que captura presas. Es una adaptación a la caza."
+        },
+        {
+          "texto": "Ojos ⇒ aparecen párpados",
+          "explicacion": "Se desarrollan párpados y glándulas lagrimales. Protegen al ojo fuera del agua."
+        },
+        {
+          "texto": "Oído ⇒ aparece tímpano",
+          "explicacion": "El adulto percibe sonidos aéreos. Es importante para la comunicación sexual."
+        },
+        {
+          "texto": "Piel ⇒ cambios de grosor y glándulas",
+          "explicacion": "Se vuelve glandular y se modifican sus pigmentos. Permite el intercambio de gases y la hidratación."
+        },
+        {
+          "texto": "Hemoglobina larval → hemoglobina adulta",
+          "explicacion": "La hemoglobina del adulto se une al oxígeno de forma distinta a la de la larva. Se adapta a respirar aire."
+        },
+        {
+          "texto": "Corazón ⇒ tres cámaras",
+          "explicacion": "El corazón del adulto tiene dos aurículas y un ventrículo. Aparece una circulación doble incompleta."
+        },
+        {
+          "texto": "Línea lateral ⇒ desaparece",
+          "explicacion": "Es un órgano sensorial acuático que detecta vibraciones del agua. No es necesario en tierra."
+        }
+      ]
+    },
+    {
+      "titulo": "Control hormonal anfibios",
+      "puntos": [
+        {
+          "texto": "«Tiroxina» = hormona tiroidea inductora de la metamorfosis",
+          "explicacion": "La produce la glándula tiroides. Estimula la transformación de los tejidos del renacuajo."
+        },
+        {
+          "texto": "Tiroides ✓ yodo",
+          "explicacion": "El yodo es necesario para fabricar las hormonas tiroideas. Sin yodo no hay metamorfosis."
+        },
+        {
+          "texto": "Hipotálamo + hipófisis ⇒ estimulan la tiroides",
+          "explicacion": "Cuando el renacuajo madura, estas estructuras aumentan la secreción de hormonas tiroideas. Así empieza la metamorfosis."
+        },
+        {
+          "texto": "Sin tiroides ⇒ renacuajo sin metamorfosis",
+          "explicacion": "Si se extirpa la tiroides del renacuajo, este crece, pero no completa la metamorfosis. Se convierte en un renacuajo grande."
+        },
+        {
+          "texto": "Friedrich Gudernatsch ⇒ metamorfosis precoz en 1912",
+          "explicacion": "Alimentó a renacuajos con extractos de tiroides y observó que se transformaban antes de tiempo. Fue una prueba temprana de la acción de la tiroides."
+        },
+        {
+          "texto": "Prolactina ⇒ frena la metamorfosis",
+          "explicacion": "Según experimentos clásicos, esta hormona de la hipófisis se opone a la tiroxina. Mantiene los caracteres larvales."
+        },
+        {
+          "texto": "Tiroxina ⇒ efectos distintos en cada tejido",
+          "explicacion": "Hace crecer las patas y destruye la cola. Un mismo estímulo hormonal provoca respuestas opuestas según el tejido."
+        }
+      ]
+    },
+    {
+      "titulo": "Neotenia",
+      "puntos": [
+        {
+          "texto": "«Neotenia» = conservación de rasgos larvales en el adulto",
+          "explicacion": "El animal alcanza la madurez sexual sin perder las características de la larva. También se llama pedomorfosis."
+        },
+        {
+          "texto": "Ajolote ⇒ ejemplo de neotenia",
+          "explicacion": "Este anfibio mexicano, de nombre científico Ambystoma mexicanum, conserva branquias externas y cola con aleta en la edad adulta. Se reproduce siendo acuático."
+        },
+        {
+          "texto": "Ajolote + tiroxina → metamorfosis",
+          "explicacion": "Si se le administra hormona tiroidea, pierde las branquias y adquiere forma terrestre. Esto sugiere que en el ajolote no hay estímulo hormonal suficiente para iniciar el cambio."
+        }
+      ]
+    },
+    {
+      "titulo": "Otros grupos",
+      "puntos": [
+        {
+          "texto": "Metamorfosis ⇒ presente en muchos invertebrados",
+          "explicacion": "No es exclusiva de insectos y anfibios. Aparece en cnidarios, moluscos, crustáceos, equinodermos y otros grupos."
+        },
+        {
+          "texto": "Cnidarios ⇒ larva plánula",
+          "explicacion": "Es una larva ciliada que nada y luego se fija para convertirse en pólipo. Permite la dispersión de la especie."
+        },
+        {
+          "texto": "Moluscos ⇒ larva trocófora y larva velígera",
+          "explicacion": "Muchos moluscos marinos, como los mejillones, pasan por una trocófora y luego por una velígera. Ambas viven en el plancton."
+        },
+        {
+          "texto": "Crustáceos ⇒ larva nauplio",
+          "explicacion": "Es la larva con tres pares de apéndices que presentan muchos crustáceos, como el camarón y el percebe. Va mudando hasta ser adulto."
+        },
+        {
+          "texto": "Cangrejos ⇒ larvas zoea y megalopa",
+          "explicacion": "La zoea es planctónica y la megalopa se parece más al cangrejo adulto. Después se transforma en un cangrejo juvenil."
+        },
+        {
+          "texto": "Equinodermos ⇒ larvas de simetría bilateral",
+          "explicacion": "El erizo de mar tiene larva pluteus y la estrella de mar, larva bipinnaria. Los adultos tienen simetría radial."
+        },
+        {
+          "texto": "Tunicados ⇒ metamorfosis regresiva",
+          "explicacion": "La larva de la ascidia parece un renacuajo, con cola y notocorda. Al fijarse reabsorbe esas estructuras y pierde complejidad."
+        },
+        {
+          "texto": "Anguila ⇒ larva leptocéfalo",
+          "explicacion": "Es una larva transparente con forma de hoja que cruza el océano. Luego se transforma en angula, una cría con forma de anguila."
+        },
+        {
+          "texto": "Lenguado ⇒ migración de un ojo",
+          "explicacion": "La larva es simétrica, pero al metamorfosearse, uno de los ojos se desplaza al otro lado de la cabeza. El adulto vive tumbado en el fondo."
+        },
+        {
+          "texto": "Lamprea ⇒ larva ammocoetes",
+          "explicacion": "Es una larva que vive enterrada y filtra alimento. Luego se transforma en adulto con boca en forma de ventosa."
+        }
+      ]
+    },
+    {
+      "titulo": "Ventajas de metamorfosis",
+      "puntos": [
+        {
+          "texto": "Metamorfosis ⇒ especialización de las fases",
+          "explicacion": "La larva se especializa en crecer y el adulto, en reproducirse y dispersarse. Cada fase está adaptada a su función."
+        },
+        {
+          "texto": "Metamorfosis ⇒ menos competencia entre larva y adulto",
+          "explicacion": "Al usar alimentos y hábitats distintos, no compiten entre sí. Una especie puede aprovechar más recursos."
+        },
+        {
+          "texto": "Metamorfosis ⇒ aprovecha recursos estacionales",
+          "explicacion": "La larva se desarrolla cuando abunda el alimento, como las hojas tiernas en primavera. El adulto aparece cuando hay néctar o pareja."
+        },
+        {
+          "texto": "Metamorfosis ⇒ dispersión de la especie",
+          "explicacion": "En los organismos que viven fijos como adultos, la larva planctónica coloniza nuevos lugares. En los insectos, el adulto vuela."
+        },
+        {
+          "texto": "Metamorfosis ⇒ costos",
+          "explicacion": "Requiere mucha energía y expone al animal durante los cambios, como la pupa. Por ello se necesita acumular reservas antes."
+        }
       ]
     }
   ]
