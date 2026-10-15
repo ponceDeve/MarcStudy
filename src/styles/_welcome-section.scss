@@ -149,7 +149,8 @@
 }
 
 /* Padding y margen negativo: deja espacio para sombras y elevación
-   de las tarjetas sin que el overflow hidden las recorte */
+   de las tarjetas sin que el overflow hidden las recorte.
+   La altura se ajusta por JS a la de la categoría activa. */
 .welcome-section__viewport {
   position: relative;
   flex: 1 1 auto;
@@ -158,11 +159,13 @@
   padding: 8px 6px 14px;
   margin: -8px -6px -14px;
   box-sizing: border-box;
+  transition: height 0.45s cubic-bezier(0.22, 0.8, 0.25, 1);
 }
 
+/* Las categorías se alinean arriba para conservar su propia altura */
 .welcome-section__track {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   width: 100%;
   box-sizing: border-box;
   transition: transform 0.45s cubic-bezier(0.22, 0.8, 0.25, 1);
@@ -616,6 +619,7 @@
 @media (prefers-reduced-motion: reduce) {
 
   .welcome-section__track,
+  .welcome-section__viewport,
   .welcome-section__carousel-arrow,
   .welcome-section__curso,
   .welcome-section__carousel-dot {

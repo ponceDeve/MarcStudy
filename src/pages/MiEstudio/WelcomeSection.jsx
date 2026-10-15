@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect, useLayoutEffect } from "react";
 import manifest from "../../data/manifest.json";
 
 const DESCRIPCIONES_CURSO = {
@@ -89,6 +89,7 @@ export default function WelcomeSection({
 }) {
   const [indice, setIndice] = useState(0);
   const trackRef = useRef(null);
+  const viewportRef = useRef(null);
   const gestoRef = useRef(null);
   const bloquearClickRef = useRef(false);
   const total = CATEGORIAS.length;
@@ -110,14 +111,50 @@ export default function WelcomeSection({
     track.style.transform = `translate3d(${-i * anchoSlide() + desfase}px, 0, 0)`;
   }
 
+  // Ajusta la altura del viewport a la de la diapositiva activa,
+  // para que las categorías con menos cursos no dejen espacio vacío
+  function ajustarAltura() {
+    const viewport = viewportRef.current;
+    const slide = trackRef.current?.children[indiceRef.current];
+    if (!viewport || !slide) {
+      return;
+    }
+    const estilo = getComputedStyle(viewport);
+    const padding =
+      parseFloat(estilo.paddingTop) + parseFloat(estilo.paddingBottom);
+    viewport.style.height = `${slide.offsetHeight + padding}px`;
+  }
+
   useEffect(() => {
     posicionar(indice);
+  }, [indice]);
+
+  useLayoutEffect(() => {
+    ajustarAltura();
   }, [indice]);
 
   useEffect(() => {
     const alCambiarTamano = () => posicionar(indiceRef.current, 0, false);
     window.addEventListener("resize", alCambiarTamano);
     return () => window.removeEventListener("resize", alCambiarTamano);
+  }, []);
+
+  // Vuelve a medir cuando cambia el tamaño o el contenido de cualquier diapositiva
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) {
+      return undefined;
+    }
+
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", ajustarAltura);
+      return () => window.removeEventListener("resize", ajustarAltura);
+    }
+
+    const observador = new ResizeObserver(() => ajustarAltura());
+    Array.from(track.children).forEach((slide) => observador.observe(slide));
+
+    return () => observador.disconnect();
   }, []);
 
   const cursos = useMemo(
@@ -508,7 +545,10 @@ export default function WelcomeSection({
                 <FlechaIzquierda />
               </button>
 
-              <div className="welcome-section__viewport">
+              <div
+                className="welcome-section__viewport"
+                ref={viewportRef}
+              >
                 <div
                   className="welcome-section__track"
                   ref={trackRef}

@@ -5,16 +5,9 @@ import TheorySearchBar, { ResaltarCoincidencia } from "./TheorySearchBar";
 
 const NIVELES_POR_PAGINA = 18;
 const COLUMNAS = 3;
-const PAG_BTN_MIN = 34;
-const PAG_GAP = 6;
-const PAG_CASILLAS_MIN = 5;
-const PAG_CASILLAS_MAX = 11;
 
-// Si algún tema coincide de forma directa (ej. "India" con "india"), se
-// descartan las coincidencias aproximadas (typos o letras sueltas), que
-// traían temas sin relación como "Segunda Revolución Industrial" o
-// "Primera Guerra Mundial". Las aproximadas solo se muestran cuando no
-// hay ninguna coincidencia directa.
+const MEDICION_INICIAL = { ancho: 0, boton: 34, gap: 14, separacion: 6 };
+
 const PUNTAJE_FUERTE = 400;
 
 function filtrarTemas(items, query) {
@@ -30,49 +23,110 @@ function filtrarTemas(items, query) {
     .map((r) => r.it);
 }
 
-function calcularCasillasNumeros(ancho) {
-  if (!ancho) return PAG_CASILLAS_MIN;
+/*
+  Mide el contenedor real de la paginación (.levels-nav__pages) y los
+  tamaños reales de sus elementos renderizados. Usa offsetWidth en lugar de
+  getBoundingClientRect para no verse afectado por transformaciones (:active).
+  Si todavía no hay botones en el DOM, usa los valores definidos en el SCSS.
+*/
+function medirPaginacion(el) {
+  const movil = window.matchMedia("(max-width: 639px)").matches;
+  const boton = el.querySelector(".levels-nav__btn");
+  const gap = el.querySelector(".levels-nav__gap");
 
-  const botones = Math.floor((ancho + PAG_GAP) / (PAG_BTN_MIN + PAG_GAP));
-
-  return Math.max(PAG_CASILLAS_MIN, Math.min(PAG_CASILLAS_MAX, botones));
+  return {
+    ancho: el.clientWidth,
+    boton: boton?.offsetWidth || (movil ? 32 : 34),
+    gap: gap?.offsetWidth || (movil ? 12 : 14),
+    separacion: parseFloat(getComputedStyle(el).columnGap) || 0,
+  };
 }
 
-function armarPaginacion(total, actual, casillas) {
-  if (total <= casillas) {
-    return Array.from({ length: total }, (_, i) => i);
-  }
+function mismaMedicion(a, b) {
+  return (
+    a.ancho === b.ancho &&
+    a.boton === b.boton &&
+    a.gap === b.gap &&
+    a.separacion === b.separacion
+  );
+}
 
+/* Ventana de `tamano` páginas centrada en `actual`, sin salirse de los límites. */
+function ventanaCentrada(total, actual, tamano) {
+  const inicio = Math.min(
+    Math.max(actual - Math.floor((tamano - 1) / 2), 0),
+    total - tamano
+  );
+
+  return [inicio, inicio + tamano - 1];
+}
+
+/*
+  Construye la lista de elementos: primera página, última página, la ventana
+  visible y los huecos. Si el hueco solo oculta una página, se muestra esa
+  página en lugar de los puntos suspensivos, porque ocupa el mismo lugar.
+*/
+function construirPaginas(total, desde, hasta) {
   const ultima = total - 1;
-  const centro = casillas - 4;
-  const inicio = actual - Math.floor(centro / 2);
+  const items = [];
 
-  if (inicio < 2) {
-    return [
-      ...Array.from({ length: casillas - 2 }, (_, i) => i),
-      "gap-fin",
-      ultima,
-    ];
+  if (desde > 0) items.push(0);
+  if (desde > 1) items.push(desde === 2 ? 1 : "gap-ini");
+
+  for (let i = desde; i <= hasta; i++) {
+    items.push(i);
   }
 
-  if (inicio + centro - 1 > ultima - 2) {
-    return [
-      0,
-      "gap-ini",
-      ...Array.from(
-        { length: casillas - 2 },
-        (_, i) => total - (casillas - 2) + i
-      ),
-    ];
+  if (hasta < ultima - 1) {
+    items.push(hasta === ultima - 2 ? ultima - 1 : "gap-fin");
   }
 
-  return [
-    0,
-    "gap-ini",
-    ...Array.from({ length: centro }, (_, i) => inicio + i),
-    "gap-fin",
-    ultima,
-  ];
+  if (hasta < ultima) items.push(ultima);
+
+  return items;
+}
+
+/* Ancho real que ocupan los elementos, con sus separaciones. */
+function anchoDeItems(items, medidas) {
+  let numeros = 0;
+  let huecos = 0;
+
+  items.forEach((it) => {
+    if (typeof it === "string") huecos++;
+    else numeros++;
+  });
+
+  return (
+    numeros * medidas.boton +
+    huecos * medidas.gap +
+    (items.length - 1) * medidas.separacion
+  );
+}
+
+/*
+  Devuelve la mayor distribución que cabe en `anchoDisponible`, siempre con
+  la página actual visible. Prueba ventanas de mayor a menor tamaño.
+*/
+function armarPaginacion(total, actual, anchoDisponible, medidas) {
+  const minimoItem = Math.min(medidas.boton, medidas.gap);
+  const maximo = Math.min(
+    total,
+    Math.floor(
+      (anchoDisponible + medidas.separacion) /
+        (minimoItem + medidas.separacion)
+    )
+  );
+
+  for (let tamano = Math.max(1, maximo); tamano >= 1; tamano--) {
+    const [desde, hasta] = ventanaCentrada(total, actual, tamano);
+    const items = construirPaginas(total, desde, hasta);
+
+    if (anchoDeItems(items, medidas) <= anchoDisponible) {
+      return items;
+    }
+  }
+
+  return construirPaginas(total, actual, actual);
 }
 
 export default function TopicsModal({
@@ -94,7 +148,7 @@ export default function TopicsModal({
   const [pagina, setPagina] = useState(0);
   const [direccion, setDireccion] = useState(null);
   const [estrellasPorTema, setEstrellasPorTema] = useState({});
-  const [anchoMapa, setAnchoMapa] = useState(0);
+  const [medicion, setMedicion] = useState(MEDICION_INICIAL);
   const [modoTeoria, setModoTeoria] = useState(false);
   const [mostrarNombreTema, setMostrarNombreTema] = useState(false);
   const [aviso, setAviso] = useState(null);
@@ -105,20 +159,15 @@ export default function TopicsModal({
   const avisoActivo = aviso !== null;
   const barraTemaRef = useRef(null);
   const modalRef = useRef(null);
-  const mapaRef = useRef(null);
+  const navPagesRef = useRef(null);
   const puntoInicioToque = useRef(null);
 
   const UMBRAL_ARRASTRE = 10;
   const itemActivo = activeIndex !== null ? listaTemas[activeIndex] : null;
 
-  // La flecha solo se habilita cuando la búsqueda de niveles cambió el mapa
-  // (hay texto en el buscador). Seleccionar un nivel no la habilita.
   const hayBusqueda = busqueda.trim() !== "";
   const puedeVolver = hayBusqueda || itemActivo !== null;
 
-  // Un tema se desbloquea cuando el anterior tiene 3 estrellas.
-  // El primero siempre está abierto y un tema que ya tiene estrellas
-  // nunca se bloquea.
   const UMBRAL_ESTRELLAS = 3;
 
   const esCursoIngles =
@@ -133,7 +182,6 @@ export default function TopicsModal({
   }
 
   function estaBloqueado(index) {
-    // Inglés tiene su propio sistema de niveles: no se bloquea aquí
     if (esCursoIngles || index === 0) return false;
     if (estrellasDe(listaTemas[index]) > 0) return false;
     return estrellasDe(listaTemas[index - 1]) < UMBRAL_ESTRELLAS;
@@ -164,7 +212,6 @@ export default function TopicsModal({
     }
   }, [open]);
 
-  // Mantiene la burbuja dentro de la pantalla en horizontal
   useLayoutEffect(() => {
     const el = avisoRef.current;
     if (!el || !aviso) return;
@@ -176,8 +223,6 @@ export default function TopicsModal({
     const x = Math.min(Math.max(aviso.x, minX), maxX);
 
     el.style.left = `${x}px`;
-
-    // La colita siempre apunta al centro del nivel, aunque el globito se recorra
     el.style.setProperty("--cola-x", `${aviso.x - x}px`);
   }, [aviso]);
 
@@ -189,7 +234,6 @@ export default function TopicsModal({
     return () => clearTimeout(id);
   }, [avisoActivo]);
 
-  // Cualquier scroll cierra el globito de inmediato
   useEffect(() => {
     if (!avisoActivo) return undefined;
 
@@ -248,12 +292,10 @@ export default function TopicsModal({
     setDireccion(null);
   }, [open, listaTemas, temaActual]);
 
-  // Posición del globito según el nivel tocado
   function calcularAviso(elemento, index) {
     const r = elemento?.getBoundingClientRect();
     if (!r) return null;
 
-    // Si el nivel está muy arriba, la burbuja se muestra debajo
     const abajo = r.top < 90;
 
     return {
@@ -271,7 +313,6 @@ export default function TopicsModal({
 
   function manejarClickTema(item, index, elemento) {
     if (estaBloqueado(index)) {
-      // Solo cambia el nombre del buscador y muestra el globito
       setNombreBloqueado(listaTemas[index].tema);
       mostrarAviso(elemento, index);
       return;
@@ -309,7 +350,6 @@ export default function TopicsModal({
   }
 
   function volverAlMapa() {
-    // Si hay un tema seleccionado, la flecha solo lo deselecciona.
     if (itemActivo) {
       setActiveIndex(null);
       setModoTeoria(false);
@@ -403,19 +443,27 @@ export default function TopicsModal({
   }
 
   const hayNavegacion = totalPaginas > 1;
+  const puedeIrPaginaAnterior = paginaActual > 0;
+  const puedeIrPaginaSiguiente = paginaActual < totalPaginas - 1;
 
-  useEffect(() => {
-    const el = mapaRef.current;
-    if (!el) return undefined;
+  /*
+    Mide .levels-nav__pages (el espacio central entre flechas). Su ancho no
+    depende del número de botones, porque es flex:1 con min-width:0, así que
+    no hay bucle de renderizado. Se vuelve a medir al cambiar su tamaño.
+  */
+  useLayoutEffect(() => {
+    const el = navPagesRef.current;
+    if (!el || !hayNavegacion) return undefined;
 
     const medir = () => {
       if (!el.isConnected) return;
 
-      const ancho = el.clientWidth;
+      const siguiente = medirPaginacion(el);
+      if (siguiente.ancho === 0) return;
 
-      if (ancho > 0) {
-        setAnchoMapa(ancho);
-      }
+      setMedicion((prev) =>
+        mismaMedicion(prev, siguiente) ? prev : siguiente
+      );
     };
 
     medir();
@@ -432,12 +480,13 @@ export default function TopicsModal({
     observador.observe(el);
 
     return () => observador.disconnect();
-  }, [hayNavegacion, open, paginaActual]);
+  }, [hayNavegacion, open]);
 
   const elementosPaginacion = armarPaginacion(
     totalPaginas,
     paginaActual,
-    calcularCasillasNumeros(anchoMapa)
+    medicion.ancho,
+    medicion
   );
 
   useEffect(() => {
@@ -608,7 +657,6 @@ export default function TopicsModal({
         </div>
 
         <div
-          ref={mapaRef}
           key={paginaActual}
           className={`levels-map ${
             direccion ? `levels-map--anim-${direccion}` : ""
@@ -724,30 +772,62 @@ export default function TopicsModal({
 
         {totalPaginas > 1 && (
           <div className="levels-nav">
-            {elementosPaginacion.map((n, i) =>
-              typeof n === "string" ? (
-                <span
-                  key={`${n}-${i}`}
-                  className="levels-nav__gap"
-                  aria-hidden="true"
-                >
-                  …
-                </span>
-              ) : (
-                <button
-                  key={n}
-                  type="button"
-                  className={`levels-nav__btn ${
-                    n === paginaActual ? "is-activa" : ""
-                  }`}
-                  aria-label={`Página ${n + 1}`}
-                  aria-current={n === paginaActual ? "page" : undefined}
-                  onClick={() => irAPagina(n)}
-                >
-                  {n + 1}
-                </button>
-              )
-            )}
+            <button
+              type="button"
+              className="levels-nav__arrow"
+              onClick={() => irAPagina(paginaActual - 1)}
+              disabled={!puedeIrPaginaAnterior}
+              aria-label="Ir a los niveles anteriores"
+              title={
+                puedeIrPaginaAnterior
+                  ? "Niveles anteriores"
+                  : "Ya estás en la primera página"
+              }
+            >
+              <i className="fa-solid fa-arrow-down" aria-hidden="true" />
+            </button>
+
+            <div className="levels-nav__pages" ref={navPagesRef}>
+              {elementosPaginacion.map((n, i) =>
+                typeof n === "string" ? (
+                  <span
+                    key={`${n}-${i}`}
+                    className="levels-nav__gap"
+                    aria-hidden="true"
+                  >
+                    …
+                  </span>
+                ) : (
+                  <button
+                    key={n}
+                    type="button"
+                    className={`levels-nav__btn ${
+                      n === paginaActual ? "is-activa" : ""
+                    }`}
+                    aria-label={`Página ${n + 1}`}
+                    aria-current={n === paginaActual ? "page" : undefined}
+                    onClick={() => irAPagina(n)}
+                  >
+                    {n + 1}
+                  </button>
+                )
+              )}
+            </div>
+
+            <button
+              type="button"
+              className="levels-nav__arrow"
+              onClick={() => irAPagina(paginaActual + 1)}
+              disabled={!puedeIrPaginaSiguiente}
+              aria-label="Ir a los niveles siguientes"
+              title={
+                puedeIrPaginaSiguiente
+                  ? "Niveles siguientes"
+                  : "Ya estás en la última página"
+              }
+            >
+              <i className="fa-solid fa-arrow-up" aria-hidden="true" />
+            </button>
           </div>
         )}
 
