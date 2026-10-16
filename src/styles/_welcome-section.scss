@@ -1,3 +1,4 @@
+
 /* ============================================================
    WELCOME SECTION
    ============================================================ */
@@ -20,26 +21,28 @@
 
 .welcome-section__intro {
   width: 100%;
-  max-width: 1500px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 28px;
   box-sizing: border-box;
 }
 
-@media (min-width: 1200px) {
-  .welcome-section__intro {
-    max-width: 1600px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+.mi-estudio__intro-background {
+  background-image: url("/logros.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-3) 10px;
+  box-sizing: border-box;
 }
 
-@media (min-width: 1600px) {
-  .welcome-section__intro {
-    max-width: 1750px;
-    padding-left: 36px;
-    padding-right: 36px;
-  }
+.mi-estudio__intro-container {
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: left;
 }
 
 /* ============================================================
@@ -51,9 +54,6 @@
   gap: 14px;
   padding: 14px 18px;
   margin-bottom: 16px;
-  background: var(--surface);
-  border: var(--nested-border);
-  border-radius: var(--radius-md);
 }
 
 .welcome-section__logros-icon {
@@ -121,13 +121,13 @@
 
 /* ============================================================
    CARRUSEL DE CATEGORÍAS
-   Una categoría visible a la vez. Se cambia con flechas, puntos
-   o arrastrando con mouse / táctil.
+   Una categoría visible a la vez.
    ============================================================ */
 .welcome-section__carousel {
   position: relative;
   width: 100%;
-  margin-top: 50px;
+  max-width: 48rem;
+  margin: 50px auto 0;
   box-sizing: border-box;
   user-select: none;
   -webkit-user-select: none;
@@ -148,25 +148,26 @@
   box-sizing: border-box;
 }
 
-/* Padding y margen negativo: deja espacio para sombras y elevación
-   de las tarjetas sin que el overflow hidden las recorte.
-   La altura se ajusta por JS a la de la categoría activa. */
+/* Ventana: oculta por completo las categorías vecinas */
 .welcome-section__viewport {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-width: 0;
+  width: 100%;
   overflow: hidden;
   padding: 8px 6px 14px;
-  margin: -8px -6px -14px;
+  margin: -8px 0 -14px;
   box-sizing: border-box;
+  isolation: isolate;
   transition: height 0.45s cubic-bezier(0.22, 0.8, 0.25, 1);
 }
 
-/* Las categorías se alinean arriba para conservar su propia altura */
+/* Pista horizontal */
 .welcome-section__track {
   display: flex;
   align-items: flex-start;
   width: 100%;
+  min-width: 0;
   box-sizing: border-box;
   transition: transform 0.45s cubic-bezier(0.22, 0.8, 0.25, 1);
   will-change: transform;
@@ -177,11 +178,15 @@
 }
 
 /* ============================================================
-   CATEGORÍA (diapositiva)
+   CATEGORÍA (DIAPOSITIVA)
+   Cada categoría ocupa exactamente el ancho de la ventana.
    ============================================================ */
 .welcome-section__category {
   position: relative;
+  flex: 0 0 100%;
+  width: 100%;
   min-width: 0;
+  max-width: 100%;
   box-sizing: border-box;
   padding: 0 2px;
 }
@@ -233,6 +238,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
   width: 100%;
+  min-width: 0;
   align-items: stretch;
   box-sizing: border-box;
 }
@@ -250,7 +256,7 @@
   border: none;
   border-top: 3px solid color-mix(in srgb, var(--success), transparent 65%);
   border-radius: 14px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.04);
   padding: 18px 16px;
   transition: background 0.2s linear, box-shadow 0.2s linear, transform 0.2s linear !important;
   z-index: 1;
@@ -347,7 +353,7 @@
 }
 
 /* ============================================================
-   VER TEMAS (abre el mapa de temas)
+   VER TEMAS
    ============================================================ */
 .welcome-section__ver-temas {
   display: inline-flex;
@@ -436,7 +442,7 @@
 }
 
 /* ============================================================
-   PUNTOS (categorías)
+   PUNTOS (CATEGORÍAS)
    ============================================================ */
 .welcome-section__carousel-dots {
   display: flex;
@@ -444,7 +450,7 @@
   justify-content: center;
   gap: 7px;
   width: 100%;
-  margin-top: 16px;
+  margin-top: var(--space-6);
 }
 
 .welcome-section__carousel-dot {
@@ -507,14 +513,9 @@
 }
 
 /* ============================================================
-   MÓVIL: sin flechas, solo puntos y arrastre
+   MÓVIL: SIN FLECHAS, SOLO PUNTOS Y ARRASTRE
    ============================================================ */
 @media (max-width: 639px) {
-  .welcome-section__intro {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
   .welcome-section__lead {
     font-size: 0.98rem;
     line-height: 1.55;
@@ -582,11 +583,6 @@
    MÓVILES MUY PEQUEÑOS
    ============================================================ */
 @media (max-width: 380px) {
-  .welcome-section__intro {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
   .welcome-section__lead {
     font-size: 0.92rem;
   }
@@ -617,7 +613,6 @@
    REDUCIR MOVIMIENTO
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-
   .welcome-section__track,
   .welcome-section__viewport,
   .welcome-section__carousel-arrow,
@@ -628,9 +623,7 @@
 }
 
 /* ============================================================
-   VISTA DE BIENVENIDA: que el contenedor de Mi Estudio no se
-   estire a la altura de la pantalla (dejaba el hueco antes del
-   footer). Solo aplica cuando se muestra WelcomeSection.
+   VISTA DE BIENVENIDA
    ============================================================ */
 .mi-estudio:has(.welcome-section) {
   min-height: 0;

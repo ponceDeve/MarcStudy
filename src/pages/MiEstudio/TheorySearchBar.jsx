@@ -1,3 +1,4 @@
+import { filtrarLiteral, agregarSemanticos } from "../../lib/buscarNombres";
 import {
   useState,
   useRef,
@@ -9,6 +10,8 @@ import {
 import {
   puntajeDeTexto,
   buscarCoincidencia,
+  buscarTypo,
+  extraerFragmento,
 } from "../../lib/buscador";
 import {
   embeberTextos,
@@ -133,15 +136,24 @@ export function ResaltarCoincidencia({
    ============================================================ */
 const TheorySearchBar = forwardRef(function TheorySearchBar(
   {
-    flatPuntos = [],
+    flatPuntos: flatPuntosBase = [],
     onSelect,
     placeholder = "Buscar título, texto o explicación...",
     modoChat = false,
+    encabezado = null,
     onPedirExamen,
     glosario = {},
+    temasDelCurso = null,
+    temaActual = "",
+    onCargarTema = null,
   },
   ref
 ) {
+  const [modoElegirTema, setModoElegirTema] = useState(false);
+  const [temaTemporal, setTemaTemporal] = useState(null);
+  const [temasEncontrados, setTemasEncontrados] = useState([]);
+  const [cargandoTema, setCargandoTema] = useState(false);
+  const flatPuntos = temaTemporal ? temaTemporal.puntos : flatPuntosBase;
   const [query, setQuery] = useState("");
   const [buscadorFocus, setBuscadorFocus] = useState(false);
   const [buscandoSemantico, setBuscandoSemantico] = useState(false);
@@ -214,18 +226,15 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           scoreTexto,
           scoreExplicacion
         );
-        const matchTitulo = buscarCoincidencia(
-          punto.seccionTitulo || "",
-          queryLimpia
-        );
-        const matchTexto = buscarCoincidencia(
-          punto.texto || "",
-          queryLimpia
-        );
-        const matchExplicacion = buscarCoincidencia(
-          punto.explicacion || "",
-          queryLimpia
-        );
+        const matchTitulo =
+          buscarCoincidencia(punto.seccionTitulo || "", queryLimpia) ||
+          buscarTypo(punto.seccionTitulo || "", queryLimpia);
+        const matchTexto =
+          buscarCoincidencia(punto.texto || "", queryLimpia) ||
+          buscarTypo(punto.texto || "", queryLimpia);
+        const matchExplicacion =
+          buscarCoincidencia(punto.explicacion || "", queryLimpia) ||
+          buscarTypo(punto.explicacion || "", queryLimpia);
         const tieneCoincidenciaReal =
           !!matchTitulo ||
           !!matchTexto ||
@@ -362,14 +371,12 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   function elegir(resultado) {
     const { punto } = resultado;
     const queryLimpia = queryBuscada.trim();
-    const matchTexto = buscarCoincidencia(
-      punto.texto || "",
-      queryLimpia
-    );
-    const matchExplicacion = buscarCoincidencia(
-      punto.explicacion || "",
-      queryLimpia
-    );
+    const matchTexto =
+      buscarCoincidencia(punto.texto || "", queryLimpia) ||
+      buscarTypo(punto.texto || "", queryLimpia);
+    const matchExplicacion =
+      buscarCoincidencia(punto.explicacion || "", queryLimpia) ||
+      buscarTypo(punto.explicacion || "", queryLimpia);
     let campo = null;
     let matchText = null;
     if (matchTexto) {
@@ -391,12 +398,61 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
       puntoId: punto.id,
       campo,
       matchText,
+      temaTemporal,
     });
     setQuery("");
     setQueryBuscada("");
     setResultadoSemantico(null);
     setBuscadorFocus(false);
     setTituloSeleccionado(null);
+  }
+  /* ============================================================
+     OTROS TEMAS DEL CURSO (solo modo chat)
+     ============================================================ */
+  useEffect(() => {
+    if (!modoElegirTema) return undefined;
+    const q = query.trim();
+    const lista = temasDelCurso || [];
+    if (!q) {
+      setTemasEncontrados([]);
+      return undefined;
+    }
+    const literales = filtrarLiteral(lista, q, (t) => t.tema);
+    setTemasEncontrados(literales);
+    let vigente = true;
+    agregarSemanticos(lista, q, (t) => t.tema, literales).then((res) => {
+      if (vigente) setTemasEncontrados(res);
+    });
+    return () => {
+      vigente = false;
+    };
+  }, [query, modoElegirTema, temasDelCurso]);
+  async function elegirTemaDelCurso(item) {
+    if (!onCargarTema || cargandoTema) return;
+    setCargandoTema(true);
+    try {
+      const puntos = await onCargarTema(item);
+      setTemaTemporal({ ...item, puntos });
+      setModoElegirTema(false);
+      setTemasEncontrados([]);
+      setTituloSeleccionado(null);
+      setQuery("");
+      setQueryBuscada("");
+      setResultadoSemantico(null);
+      setBusquedaLista(false);
+    } catch {
+      setQuery("");
+    } finally {
+      setCargandoTema(false);
+    }
+  }
+  function volverTemaOriginal() {
+    setTemaTemporal(null);
+    setTituloSeleccionado(null);
+    setQuery("");
+    setQueryBuscada("");
+    setResultadoSemantico(null);
+    setBusquedaLista(false);
   }
   /* ============================================================
      SELECCIONAR TÍTULO DEL CHAT
@@ -440,6 +496,12 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
   }
   function buscarConEnter() {
     const queryLimpia = query.trim();
+    if (modoElegirTema) {
+      if (temasEncontrados.length > 0) {
+        elegirTemaDelCurso(temasEncontrados[0]);
+      }
+      return;
+    }
     if (modoChat && queryLimpia === "") {
       if (
         resultadosVisibles.length > 0 &&
@@ -571,9 +633,25 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         matchTexto,
         matchExplicacion,
       } = r;
+      // Prioridad: si la palabra está en título y texto, se oculta el
+      // título y se muestra el texto. Si además está en la explicación,
+      // se muestra el texto y, debajo, solo un fragmento de la explicación
+      // alrededor de la palabra.
+      const hayTexto = !!matchTexto;
+      const esTriple =
+        !!matchTitulo && hayTexto && !!matchExplicacion;
+      const mostrarTitulo = !!matchTitulo && !hayTexto;
+      const mostrarTexto = !!punto.texto;
       const mostrarExplicacion =
         !!punto.explicacion &&
-        (!!matchExplicacion || !punto.texto);
+        (esTriple || !!matchExplicacion || !punto.texto);
+      const textoExplicacion = esTriple
+        ? extraerFragmento(punto.explicacion, matchExplicacion.indice)
+        : punto.explicacion;
+      const matchExplicacionMostrado = esTriple
+        ? buscarCoincidencia(textoExplicacion, queryBuscada) ||
+          buscarTypo(textoExplicacion, queryBuscada)
+        : matchExplicacion;
       return (
         <button
           key={punto.id}
@@ -584,7 +662,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
             idx === focusedIdx ? "is-focused" : ""
           }`}
         >
-          {matchTitulo && (
+          {mostrarTitulo && (
             <span className="theory-search__item-seccion">
               <strong>
                 <ResaltarCoincidencia
@@ -596,7 +674,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
               </strong>
             </span>
           )}
-          {punto.texto && (
+          {mostrarTexto && (
             <span className="theory-search__item-seccion">
               <ResaltarCoincidencia
                 texto={punto.texto}
@@ -609,10 +687,10 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
           {mostrarExplicacion && (
             <span className="theory-search__item-texto">
               <ResaltarCoincidencia
-                texto={punto.explicacion}
+                texto={textoExplicacion}
                 query={r.esSemantico ? "" : queryBuscada}
                 match={
-                  r.esSemantico ? null : matchExplicacion
+                  r.esSemantico ? null : matchExplicacionMostrado
                 }
                 glosario={glosario}
               />
@@ -621,6 +699,51 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         </button>
       );
     });
+  }
+  function renderElegirTema() {
+    const q = query.trim();
+    const nombreCurso = temasDelCurso?.[0]?.curso;
+    return (
+      <>
+        {nombreCurso && (
+          <p className="teoria-chat__hint">
+            Busca otros temas del curso {nombreCurso}
+          </p>
+        )}
+        {q !== "" && temasEncontrados.length > 0 && (
+          <div className="theory-search__sugerencias">
+            {temasEncontrados.map((t) => (
+              <button
+                key={t.archivo}
+                type="button"
+                className="theory-search__sugerencia"
+                onClick={() => elegirTemaDelCurso(t)}
+              >
+                {t.tema}
+              </button>
+            ))}
+          </div>
+        )}
+        {q !== "" && temasEncontrados.length === 0 && (
+          <div className="theory-search__burbuja">
+            No hay este tema. Intenta con otro tema.
+          </div>
+        )}
+        {cargandoTema && (
+          <div className="theory-search__burbuja">Cargando tema...</div>
+        )}
+        <button
+          type="button"
+          className="theory-search__sugerencia theory-search__sugerencia--secundaria"
+          onClick={() => {
+            setModoElegirTema(false);
+            setQuery("");
+          }}
+        >
+          Cancelar
+        </button>
+      </>
+    );
   }
   const inputEl = (
     <input
@@ -636,7 +759,11 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
         setTimeout(() => setBuscadorFocus(false), 150)
       }
       onKeyDown={onKeyDownInput}
-      placeholder={placeholder}
+      placeholder={
+        modoElegirTema
+          ? "Escribe el nombre de un tema de este curso"
+          : placeholder
+      }
       className={`theory-search__input ${
         mostrarDropdown ? "has-results" : ""
       }`}
@@ -649,7 +776,10 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
     return (
       <div className="theory-search theory-search--chat">
         <div className="theory-search__mensajes">
-          {mostrarMensajesChat ? (
+          {encabezado}
+          {modoElegirTema ? (
+            renderElegirTema()
+          ) : mostrarMensajesChat ? (
             <>
               <div className="theory-search__burbuja theory-search__burbuja--usuario">
                 {queryBuscada}
@@ -658,7 +788,7 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                 renderItems()
               ) : busquedaLista && !buscandoSemantico ? (
                 <div className="theory-search__burbuja">
-                  No hay coincidencias
+                  No hay coincidencias. Intenta con otro tema.
                 </div>
               ) : null}
               {buscandoSemantico && (
@@ -669,9 +799,25 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
             </>
           ) : (
             <>
+              {temaTemporal && (
+                <>
+                  <p className="teoria-chat__hint">
+                    Buscando en: {temaTemporal.tema}
+                  </p>
+                  <div className="theory-search__sugerencias">
+                    <button
+                      type="button"
+                      className="theory-search__sugerencia"
+                      onClick={volverTemaOriginal}
+                    >
+                      Volver a {temaActual}
+                    </button>
+                  </div>
+                </>
+              )}
               {sugerenciasTitulos.length > 0 && (
                 <div className="theory-search__sugerencias">
-                  {sugerenciasTitulos.map((titulo) => (
+                  {sugerenciasTitulos.slice(0, 3).map((titulo) => (
                     <button
                       key={titulo}
                       type="button"
@@ -681,6 +827,18 @@ const TheorySearchBar = forwardRef(function TheorySearchBar(
                       {titulo}
                     </button>
                   ))}
+                  {temasDelCurso && temasDelCurso.length > 0 && (
+                    <button
+                      type="button"
+                      className="theory-search__sugerencia theory-search__sugerencia--secundaria"
+                      onClick={() => {
+                        setModoElegirTema(true);
+                        setQuery("");
+                      }}
+                    >
+                      Otros temas
+                    </button>
+                  )}
                 </div>
               )}
             </>

@@ -86,25 +86,34 @@ function distanciaEdicionAcotada(texto, query, maximo) {
   }
   return mejor <= maximo ? mejor : null;
 }
+// Distancia de edición (Damerau/OSA): una transposición de dos letras
+// cuenta como 1 error (ej. "valro" -> "valor"), no como 2.
 function levenshtein(a, b, maximo) {
-  const filaAnterior = new Array(b.length + 1);
-  for (let j = 0; j <= b.length; j++) filaAnterior[j] = j;
-  for (let i = 1; i <= a.length; i++) {
-    let anteriorDiag = filaAnterior[0];
-    filaAnterior[0] = i;
-    let filaMin = filaAnterior[0];
-    for (let j = 1; j <= b.length; j++) {
-      const temp = filaAnterior[j];
-      filaAnterior[j] =
-        a[i - 1] === b[j - 1]
-          ? anteriorDiag
-          : 1 + Math.min(anteriorDiag, filaAnterior[j], filaAnterior[j - 1]);
-      anteriorDiag = temp;
-      filaMin = Math.min(filaMin, filaAnterior[j]);
+  const m = a.length;
+  const n = b.length;
+  const d = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) d[i][0] = i;
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    let filaMin = Infinity;
+    for (let j = 1; j <= n; j++) {
+      const costo = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(
+        d[i - 1][j] + 1,
+        d[i][j - 1] + 1,
+        d[i - 1][j - 1] + costo
+      );
+      if (
+        i > 1 && j > 1 &&
+        a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]
+      ) {
+        d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+      }
+      filaMin = Math.min(filaMin, d[i][j]);
     }
-    if (filaMin > maximo) return maximo + 1; // corta temprano, ya no sirve
+    if (filaMin > maximo) return maximo + 1; // ya no puede mejorar
   }
-  return filaAnterior[b.length];
+  return d[m][n];
 }
 // Busca "query" contra una lista de items, usando getTexto(item) para
 // saber qué texto de cada item comparar. Devuelve solo los que tienen
@@ -189,6 +198,61 @@ export function buscarCoincidencia(texto, query) {
     if (!regexPalabra) continue;
     const match = texto.match(regexPalabra);
     if (match) return { indice: match.index, largo: match[0].length };
+  }
+  return null;
+}
+// Tolerancia a errores de tipeo palabra por palabra, para buscar dentro
+// de textos largos y nombres. Compara cada palabra del texto contra cada
+// palabra de la búsqueda (sin tildes). Palabras de 4 letras o menos:
+// exactas; desde 5 letras se permite cerca del 30% de errores (5-6 letras:
+// 1 error; 10 letras: 3 errores). Devuelve { indice, largo } de la palabra
+// encontrada en el texto ORIGINAL, o null.
+function errores_permitidos(largo) {
+  if (largo < 5) return 0;
+  return Math.floor(largo * 0.3);
+}
+// Similitud por trigramas (fragmentos de 3 letras): tolera varias letras
+// mal escritas en palabras largas, donde la distancia de edición ya no
+// alcanza (ej. "comicaciopl" ~ "comunicación"). Devuelve 0..1.
+const UMBRAL_TRIGRAMAS = 0.55;
+function trigramas(palabra) {
+  const p = `  ${palabra} `;
+  const set = new Set();
+  for (let i = 0; i < p.length - 2; i++) set.add(p.slice(i, i + 3));
+  return set;
+}
+function similitudTrigramas(a, b) {
+  const A = trigramas(a);
+  const B = trigramas(b);
+  let comunes = 0;
+  for (const t of A) if (B.has(t)) comunes++;
+  return (2 * comunes) / (A.size + B.size);
+}
+export function buscarTypo(texto, query) {
+  const palabrasQuery = normalizarTexto(String(query || ""))
+    .split(/\s+/)
+    .filter((p) => p.length >= 4);
+  if (!palabrasQuery.length || !texto) return null;
+  const regex = /[\p{L}\p{N}]+/gu;
+  let m;
+  while ((m = regex.exec(texto)) !== null) {
+    const palabra = normalizarTexto(m[0]);
+    for (const q of palabrasQuery) {
+      const maximo = errores_permitidos(q.length);
+      const cercaPorLetras =
+        Math.abs(palabra.length - q.length) <= maximo &&
+        levenshtein(palabra, q, maximo) <= maximo;
+      const parecidaPorTrigramas =
+        q.length >= 5 &&
+        palabra.length >= 5 &&
+        similitudTrigramas(palabra, q) >= UMBRAL_TRIGRAMAS;
+      // La búsqueda contiene la palabra del texto y algo más (ej.
+      // "lenguajeeeee" dentro de un texto que dice "lenguaje").
+      const contienePalabra = palabra.length >= 5 && q.includes(palabra);
+      if (cercaPorLetras || parecidaPorTrigramas || contienePalabra) {
+        return { indice: m.index, largo: m[0].length };
+      }
+    }
   }
   return null;
 }

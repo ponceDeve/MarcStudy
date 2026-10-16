@@ -20,6 +20,7 @@ import { construirPromptExamen } from "../../lib/promptsRepaso";
 import TopBar from "./TopBar";
 import WelcomeSection from "./WelcomeSection";
 import TheorySearchBar from "./TheorySearchBar";
+import BuscadorTemaFlotante from "./BuscadorTemaFlotante";
 import Hud from "./Hud";
 import SeenQuestionsModal from "./SeenQuestionsModal";
 import SearchModal from "../../components/SearchModal";
@@ -118,6 +119,18 @@ export default function MiEstudioPage() {
     [flatPuntos]
   );
   const puntosTeoria = puntosBuscables;
+  const temasDelCursoActual = useMemo(() => {
+    const curso = manifest.cursos.find(
+      (c) => c.nombre === topicData?.curso
+    );
+    return curso
+      ? curso.temas.map((t) => ({
+        curso: curso.nombre,
+        tema: t.tema,
+        archivo: t.archivo
+      }))
+      : null;
+  }, [topicData?.curso]);
   const [teoriaVistaIndex, setTeoriaVistaIndex] = useState(0);
   const seccionesAgrupadas = useMemo(() => {
     const grupos = [];
@@ -314,11 +327,10 @@ export default function MiEstudioPage() {
             return (
               <i
                 key={i}
-                className={`vidas-fullscreen__heart ${
-                  corazonRoto
+                className={`vidas-fullscreen__heart ${corazonRoto
                     ? "bi bi-heartbreak is-roto"
                     : "bi bi-heart-fill is-a-punto"
-                }`}
+                  }`}
               />
             );
           }
@@ -531,6 +543,16 @@ export default function MiEstudioPage() {
       return nuevo;
     });
   }
+  async function cargarPuntosTema(item) {
+    const res = await fetch(import.meta.env.BASE_URL + item.archivo);
+    if (!res.ok) {
+      throw new Error("No se encontró el archivo del tema");
+    }
+    const data = adaptarEjerciciosAparte(await res.json());
+    return aplanarTeoria(data).filter(
+      (p) => p.seccionTitulo !== "Ejercicios"
+    );
+  }
   async function abrirTema(item) {
     const omitirModoEstudio = omitirModoEstudioRef.current;
     omitirModoEstudioRef.current = false;
@@ -649,8 +671,8 @@ export default function MiEstudioPage() {
         (data.ejercicios?.length ?? 0) > 0;
       setPreguntaModoAbierta(
         !omitirModoEstudio &&
-          !(data.secciones || data.leccion) &&
-          tienePreguntas
+        !(data.secciones || data.leccion) &&
+        tienePreguntas
       );
     } catch (e) {
       console.error("Error en abrirTema:", e);
@@ -732,6 +754,7 @@ export default function MiEstudioPage() {
   function irADestinoSalida() {
     if (destinoSalida === "inicio") {
       setTopicData(null);
+      setFlatPuntos([]);
       setStage("theory");
     } else if (temaProximoSalida) {
       abrirTema(temaProximoSalida);
@@ -929,7 +952,7 @@ export default function MiEstudioPage() {
             (x) =>
               x.pregunta &&
               x.punto?.seccionTitulo ===
-                "Ejercicios"
+              "Ejercicios"
           );
         preguntasFinales = itemsFinales.map(
           (x) => x.pregunta
@@ -997,8 +1020,8 @@ export default function MiEstudioPage() {
           itemsVinculadosTeoria.length > 0
             ? itemsVinculadosTeoria
             : itemsPuntos.filter(
-                (p) => p.pregunta
-              );
+              (p) => p.pregunta
+            );
         preguntasFinales = itemsFinales.map(
           (p) => p.pregunta
         );
@@ -1401,7 +1424,7 @@ export default function MiEstudioPage() {
       .map(
         ([indice]) =>
           preguntasFinalesIds[
-            Number(indice)
+          Number(indice)
           ]
       )
       .filter(Boolean)
@@ -1412,7 +1435,7 @@ export default function MiEstudioPage() {
         return (
           punto &&
           punto.seccionTitulo !==
-            "Ejercicios"
+          "Ejercicios"
         );
       });
     if (idsAcertados.length > 0) {
@@ -1658,7 +1681,7 @@ export default function MiEstudioPage() {
         juegoTitulo &&
         topicData &&
         modoEstudio ===
-          "solo_preguntas" &&
+        "solo_preguntas" &&
         !isFlipQuiz &&
         !isLevelMode &&
         !repasoQuizActivo
@@ -1684,7 +1707,7 @@ export default function MiEstudioPage() {
       let puntoIdRespondido = null;
       if (
         modoEstudio ===
-          "solo_preguntas" &&
+        "solo_preguntas" &&
         preguntasFinalesIds[cardIndex]
       ) {
         puntoIdRespondido =
@@ -1694,8 +1717,8 @@ export default function MiEstudioPage() {
           quizBatch[quizPos];
         puntoIdRespondido = item
           ? flatPuntos[
-              item.puntoIndex
-            ]?.id || null
+            item.puntoIndex
+          ]?.id || null
           : null;
       } else if (!isLevelMode) {
         puntoIdRespondido =
@@ -1705,15 +1728,15 @@ export default function MiEstudioPage() {
       const puntoRespondido =
         puntoIdRespondido
           ? flatPuntos.find(
-              (p) =>
-                p.id ===
-                puntoIdRespondido
-            )
+            (p) =>
+              p.id ===
+              puntoIdRespondido
+          )
           : null;
       if (
         puntoIdRespondido &&
         puntoRespondido?.seccionTitulo !==
-          "Ejercicios"
+        "Ejercicios"
       ) {
         huboCambiosSinGuardarRef.current =
           true;
@@ -1724,9 +1747,9 @@ export default function MiEstudioPage() {
             )
               ? prev
               : [
-                  ...prev,
-                  puntoIdRespondido
-                ]
+                ...prev,
+                puntoIdRespondido
+              ]
         );
         setTextosSeleccionados(
           (prev) => {
@@ -1751,7 +1774,7 @@ export default function MiEstudioPage() {
                 .map((p) => p.id);
             if (
               idsTeoriaNormal.length >
-                0 &&
+              0 &&
               idsTeoriaNormal.every(
                 (id) =>
                   newSelection.includes(
@@ -1857,7 +1880,7 @@ export default function MiEstudioPage() {
             ceroVidasRef.current.currentTime = 0;
             ceroVidasRef.current
               .play()
-              .catch(() => {});
+              .catch(() => { });
           }
           gameOver();
         }
@@ -1868,7 +1891,7 @@ export default function MiEstudioPage() {
           vidaPerderRef.current.currentTime = 0;
           vidaPerderRef.current
             .play()
-            .catch(() => {});
+            .catch(() => { });
         }
         return nuevasVidas;
       });
@@ -2012,6 +2035,7 @@ export default function MiEstudioPage() {
       return;
     }
     setTopicData(null);
+    setFlatPuntos([]);
     setStage("theory");
   }
   function abandonarJuego() {
@@ -2052,17 +2076,17 @@ export default function MiEstudioPage() {
   }
   const preguntaActual = repasoQuizActivo
     ? repasoQuizBatch[repasoQuizPos]
-        ?.pregunta || null
+      ?.pregunta || null
     : isLevelMode
       ? current
       : isFlipQuiz
         ? quizBatch[quizPos]
-            ?.pregunta || null
+          ?.pregunta || null
         : modoEstudio ===
-            "solo_preguntas"
+          "solo_preguntas"
           ? examenPreguntas[
-              cardIndex
-            ] || null
+          cardIndex
+          ] || null
           : null;
   const [
     modoPruebaAvance,
@@ -2185,7 +2209,7 @@ export default function MiEstudioPage() {
             (i) =>
               Math.min(
                 seccionesAgrupadas.length -
-                  1,
+                1,
                 i + 1
               )
           );
@@ -2350,7 +2374,7 @@ export default function MiEstudioPage() {
             (i) =>
               Math.min(
                 seccionesAgrupadas.length -
-                  1,
+                1,
                 i + 1
               )
           );
@@ -2517,72 +2541,71 @@ export default function MiEstudioPage() {
   const progresoPregunta =
     repasoQuizActivo
       ? {
-          current:
-            repasoQuizPos + 1,
-          total:
-            repasoQuizBatch.length
-        }
+        current:
+          repasoQuizPos + 1,
+        total:
+          repasoQuizBatch.length
+      }
       : isLevelMode
         ? {
-            current:
-              nivelIndex + 1,
-            total:
-              examenPreguntas.length
-          }
+          current:
+            nivelIndex + 1,
+          total:
+            examenPreguntas.length
+        }
         : isFlipQuiz
           ? {
-              current:
-                quizPos + 1,
-              total:
-                quizBatch.length
-            }
+            current:
+              quizPos + 1,
+            total:
+              quizBatch.length
+          }
           : modoEstudio ===
-              "solo_preguntas"
+            "solo_preguntas"
             ? {
-                current:
-                  posOrden + 1,
-                total:
-                  ordenPreguntas.length
-              }
+              current:
+                posOrden + 1,
+              total:
+                ordenPreguntas.length
+            }
             : {
-                current:
-                  cardIndex + 1,
-                total:
-                  flatPuntos.length
-              };
+              current:
+                cardIndex + 1,
+              total:
+                flatPuntos.length
+            };
   // Cronómetro del header: se reinicia con cada pregunta y se congela
   // cuando ya respondiste (o mientras corre la cuenta 3-2-1 del juego).
   const claveCronometro = modoExamenTema
     ? `examen-${indiceExamenTema}`
-    : `${
-        repasoQuizActivo
-          ? "repaso-" + repasoQuizPos
-          : isLevelMode
-            ? "nivel-" + nivelIndex
-            : isFlipQuiz
-              ? "flip-" + cardIndex + "-" + quizPos
-              : "teoria-" + cardIndex
-      }-${attemptKey}`;
+    : `${repasoQuizActivo
+      ? "repaso-" + repasoQuizPos
+      : isLevelMode
+        ? "nivel-" + nivelIndex
+        : isFlipQuiz
+          ? "flip-" + cardIndex + "-" + quizPos
+          : "teoria-" + cardIndex
+    }-${attemptKey}`;
   const cronometroPausado =
     !modoExamenTema &&
     (countdown > 0 || questionResult !== null);
   const juegoConEstrellas =
     Boolean(juegoTitulo) &&
     modoEstudio ===
-      "solo_preguntas" &&
+    "solo_preguntas" &&
     !modoExamenTema &&
     !repasoQuizActivo &&
     !isFlipQuiz &&
     !isLevelMode &&
     preguntasFinalesIds.length >
-      0;
+    0;
   // undefined = el HUD no muestra estrellas (repaso, etc.)
   const estrellasJuegoActuales =
     juegoConEstrellas
       ? calcularEstrellas(
-          juegoAcertadas.length,
-          preguntasFinalesIds.length
-        )
+        juegoAcertadas.length,
+        preguntasFinalesIds.length
+      )
       : undefined;
   const nombreCursoActivo =
     cursoSeleccionado ||
@@ -2601,6 +2624,12 @@ export default function MiEstudioPage() {
       : [];
   return (
     <div className="mi-estudio">
+      {!(stage === "theory" && flatPuntos.length > 0) && (
+        <BuscadorTemaFlotante
+          cargarPuntos={cargarPuntosTema}
+          onAbrirTema={pedirAbrirTema}
+        />
+      )}
       <ModoEstudioModal
         open={preguntaModoAbierta}
         onElegir={elegirModoEstudio}
@@ -2661,7 +2690,7 @@ export default function MiEstudioPage() {
           onIrInicio={irAInicio}
           onVolverTeoria={
             modoExamenTema &&
-            faseExamenTema ===
+              faseExamenTema ===
               "resultados"
               ? volverATeoriaDesdeExamenTema
               : undefined
@@ -2681,11 +2710,10 @@ export default function MiEstudioPage() {
       {false &&
         pantallaToastVisible && (
           <div
-            className={`repaso-toast is-top mi-estudio__pantalla-toast${
-              pantallaToastSaliendo
+            className={`repaso-toast is-top mi-estudio__pantalla-toast${pantallaToastSaliendo
                 ? " is-saliendo"
                 : ""
-            }`}
+              }`}
           >
             <div className="mi-estudio__pantalla-toast-contenido">
               <i className="fas fa-expand" />
@@ -2720,11 +2748,10 @@ export default function MiEstudioPage() {
         )}
       {repasoGuardadoMsg && (
         <div
-          className={`repaso-toast is-success${
-            repasoGuardadoSaliendo
+          className={`repaso-toast is-success${repasoGuardadoSaliendo
               ? " is-saliendo"
               : ""
-          }`}
+            }`}
         >
           <i className="fas fa-bookmark" />{" "}
           Guardado para repasar
@@ -2732,11 +2759,10 @@ export default function MiEstudioPage() {
       )}
       {sinPreguntaAlerta && (
         <div
-          className={`repaso-toast is-top sin-pregunta-alerta${
-            sinPreguntaSaliendo
+          className={`repaso-toast is-top sin-pregunta-alerta${sinPreguntaSaliendo
               ? " is-saliendo"
               : ""
-          }`}
+            }`}
         >
           <div className="sin-pregunta-alerta__contenido">
             <i className="fas fa-circle-info" />
@@ -2854,9 +2880,8 @@ export default function MiEstudioPage() {
         }}
       />
       <div
-        className={`config-overlay ${
-          configOpen ? "" : "is-closed"
-        }`}
+        className={`config-overlay ${configOpen ? "" : "is-closed"
+          }`}
         aria-hidden={!configOpen}
       >
         <div className="config-overlay__panel">
@@ -2882,21 +2907,20 @@ export default function MiEstudioPage() {
                     }
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "continuar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "continuar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-play" />
               </button>
               {botonArmado ===
                 "continuar" && (
-                <span className="config-overlay__label">
-                  Continuar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Continuar
+                  </span>
+                )}
             </div>
             <div className="config-overlay__item">
               <button
@@ -2906,29 +2930,27 @@ export default function MiEstudioPage() {
                     toggleFullscreen
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "pantalla"
+                className={`config-overlay__btn ${botonArmado ===
+                    "pantalla"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i
-                  className={`fas ${
-                    isFullscreen
+                  className={`fas ${isFullscreen
                       ? "fa-compress"
                       : "fa-expand"
-                  }`}
+                    }`}
                 />
               </button>
               {botonArmado ===
                 "pantalla" && (
-                <span className="config-overlay__label">
-                  {isFullscreen
-                    ? "Minimizar"
-                    : "Pantalla Completa"}
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    {isFullscreen
+                      ? "Minimizar"
+                      : "Pantalla Completa"}
+                  </span>
+                )}
             </div>
             <div className="config-overlay__item">
               <button
@@ -2938,21 +2960,20 @@ export default function MiEstudioPage() {
                     verPreguntasVistas
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "repasar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "repasar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-list-check" />
               </button>
               {botonArmado ===
                 "repasar" && (
-                <span className="config-overlay__label">
-                  Repasar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Repasar
+                  </span>
+                )}
             </div>
             <div className="config-overlay__item">
               <button
@@ -2964,11 +2985,10 @@ export default function MiEstudioPage() {
                       true
                     );
                 }}
-                className={`config-overlay__btn ${
-                  confirmLeave
+                className={`config-overlay__btn ${confirmLeave
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-door-open" />
               </button>
@@ -2986,21 +3006,20 @@ export default function MiEstudioPage() {
                     reiniciarTarjetas
                   )
                 }
-                className={`config-overlay__btn ${
-                  botonArmado ===
-                  "reiniciar"
+                className={`config-overlay__btn ${botonArmado ===
+                    "reiniciar"
                     ? "is-armado"
                     : ""
-                }`}
+                  }`}
               >
                 <i className="fas fa-rotate-left" />
               </button>
               {botonArmado ===
                 "reiniciar" && (
-                <span className="config-overlay__label">
-                  Reiniciar
-                </span>
-              )}
+                  <span className="config-overlay__label">
+                    Reiniciar
+                  </span>
+                )}
             </div>
           </div>
         </div>
@@ -3098,26 +3117,28 @@ export default function MiEstudioPage() {
               />
             </div>
             {recomendacionesHoyInicio.length > 0 && (
-              <div className="mi-estudio__recomendados container">
-                <h3 className="mi-estudio__recomendados-title">
-                  Repasos recomendados de hoy
-                </h3>
-                <div className="mi-estudio__recomendados-grid">
-                  {recomendacionesHoyInicio.map((r) => (
-                    <div
-                      key={`${r.curso}-Turno${r.turno}`}
-                      className="mi-estudio__recomendados-curso"
-                    >
-                      <span className="mi-estudio__recomendados-curso-nombre">
-                        {r.curso}
-                      </span>
-                      <ul className="mi-estudio__recomendados-temas">
-                        {r.temas.map((tema, i) => (
-                          <li key={`${tema}-${i}`}>{tema}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+              <div className="mi-estudio__recomendados">
+                <div className="">
+                  <h3 className="mi-estudio__recomendados-title">
+                    temas recomendados 
+                  </h3>
+                  <div className="mi-estudio__recomendados-grid">
+                    {recomendacionesHoyInicio.map((r) => (
+                      <div
+                        key={`${r.curso}-Turno${r.turno}`}
+                        className="mi-estudio__recomendados-curso"
+                      >
+                        <span className="mi-estudio__recomendados-curso-nombre">
+                          {r.curso}
+                        </span>
+                        <ul className="mi-estudio__recomendados-temas">
+                          {r.temas.map((tema, i) => (
+                            <li key={`${tema}-${i}`}>{tema}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
@@ -3175,13 +3196,13 @@ export default function MiEstudioPage() {
                 temasDelCurso[pos + 1];
               return sig
                 ? () =>
-                    abrirTema({
-                      curso:
-                        topicData.curso,
-                      tema: sig.tema,
-                      archivo:
-                        sig.archivo
-                    })
+                  abrirTema({
+                    curso:
+                      topicData.curso,
+                    tema: sig.tema,
+                    archivo:
+                      sig.archivo
+                  })
                 : null;
             })()}
           />
@@ -3257,14 +3278,33 @@ export default function MiEstudioPage() {
                               flatPuntos={
                                 puntosTeoria
                               }
+                              temasDelCurso={
+                                temasDelCursoActual
+                              }
+                              temaActual={
+                                topicData?.tema || ""
+                              }
+                              onCargarTema={
+                                cargarPuntosTema
+                              }
                               onSelect={(sel) => {
+                                setMostrarBarraTeoria(
+                                  false
+                                );
+                                if (
+                                  sel.temaTemporal &&
+                                  sel.temaTemporal.archivo !==
+                                  topicData?.archivo
+                                ) {
+                                  pedirAbrirTema(
+                                    sel.temaTemporal
+                                  );
+                                  return;
+                                }
                                 seleccionarItem({
                                   type: "contenido",
                                   ...sel
                                 });
-                                setMostrarBarraTeoria(
-                                  false
-                                );
                               }}
                             />
                           </div>
@@ -3282,7 +3322,7 @@ export default function MiEstudioPage() {
                           aria-label="Abrir buscador"
                           title="Abrir buscador"
                         >
-                          <i className="fa-solid fa-magnifying-glass" />
+                          <i className="fa-solid fa-robot" />
                         </button>
                       )}
                     </div>
@@ -3310,13 +3350,12 @@ export default function MiEstudioPage() {
                                       <input
                                         type="checkbox"
                                         id={`checkbox-${punto.id}`}
-                                        className={`teoria-etiqueta-checkbox${
-                                          textosCompletados.includes(
-                                            punto.id
-                                          )
+                                        className={`teoria-etiqueta-checkbox${textosCompletados.includes(
+                                          punto.id
+                                        )
                                             ? " is-completado"
                                             : ""
-                                        }`}
+                                          }`}
                                         checked={textosSeleccionados.includes(
                                           punto.id
                                         )}
@@ -3337,16 +3376,16 @@ export default function MiEstudioPage() {
                                                   puntoId
                                                 )
                                                   ? prev.filter(
-                                                      (
-                                                        t
-                                                      ) =>
-                                                        t !==
-                                                        puntoId
-                                                    )
-                                                  : [
-                                                      ...prev,
+                                                    (
+                                                      t
+                                                    ) =>
+                                                      t !==
                                                       puntoId
-                                                    ];
+                                                  )
+                                                  : [
+                                                    ...prev,
+                                                    puntoId
+                                                  ];
                                               const idsTeoriaNormal =
                                                 flatPuntos
                                                   .filter(
@@ -3364,7 +3403,7 @@ export default function MiEstudioPage() {
                                                   );
                                               if (
                                                 idsTeoriaNormal.length >
-                                                  0 &&
+                                                0 &&
                                                 idsTeoriaNormal.every(
                                                   (
                                                     id
@@ -3424,11 +3463,11 @@ export default function MiEstudioPage() {
                                           )
                                             ? punto.imagen
                                             : `${import.meta.env.BASE_URL}${String(
-                                                punto.imagen
-                                              ).replace(
-                                                /^\/+/,
-                                                ""
-                                              )}`
+                                              punto.imagen
+                                            ).replace(
+                                              /^\/+/,
+                                              ""
+                                            )}`
                                         }
                                         alt={
                                           punto.texto ||
@@ -3509,7 +3548,7 @@ export default function MiEstudioPage() {
                                   (i) =>
                                     Math.min(
                                       seccionesAgrupadas.length -
-                                        1,
+                                      1,
                                       i + 1
                                     )
                                 )
@@ -3517,7 +3556,7 @@ export default function MiEstudioPage() {
                               disabled={
                                 teoriaVistaIndex ===
                                 seccionesAgrupadas.length -
-                                  1
+                                1
                               }
                               title="Siguiente"
                               aria-label="Sección siguiente"
@@ -3529,15 +3568,14 @@ export default function MiEstudioPage() {
                       )}
                       <div className="teoria-acciones-final">
                         <button
-                          className={`teoria-boton-examen${
-                            examenPreguntas.length >
-                            0
+                          className={`teoria-boton-examen${examenPreguntas.length >
+                              0
                               ? ""
                               : " is-bloqueado"
-                          }`}
+                            }`}
                           onClick={() =>
                             examenPreguntas.length >
-                              0 &&
+                            0 &&
                             elegirModoEstudio(
                               "solo_preguntas"
                             )
@@ -3550,11 +3588,10 @@ export default function MiEstudioPage() {
                           Examen
                         </button>
                         <button
-                          className={`teoria-boton-examen teoria-boton-completar${
-                            teoriaCompleta
+                          className={`teoria-boton-examen teoria-boton-completar${teoriaCompleta
                               ? ""
                               : " is-bloqueado"
-                          }`}
+                            }`}
                           onClick={
                             intentarCompletarTema
                           }
@@ -3636,17 +3673,17 @@ export default function MiEstudioPage() {
                         <QuestionCard
                           key={`${repasoQuizActivo
                             ? "repaso-" +
-                              repasoQuizPos
+                            repasoQuizPos
                             : isLevelMode
                               ? "nivel-" +
-                                nivelIndex
+                              nivelIndex
                               : isFlipQuiz
                                 ? "flip-" +
-                                  cardIndex +
-                                  "-" +
-                                  quizPos
+                                cardIndex +
+                                "-" +
+                                quizPos
                                 : "teoria-" +
-                                  cardIndex
+                                cardIndex
                             }-${attemptKey}`}
                           pregunta={
                             preguntaActual
@@ -3669,75 +3706,74 @@ export default function MiEstudioPage() {
                 !modoExamenTema && (
                   <div className="mi-estudio__nav mi-estudio__nav--entrega">
                     <div className="mi-estudio__nav-grupo">
-                    <button
-                      type="button"
-                      onClick={retrocederCard}
-                      disabled={esPrimeraPregunta}
-                      className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${
-                        esPrimeraPregunta ? "" : "is-active"
-                      }`}
-                      title="Anterior"
-                    >
-                      <i className="fas fa-arrow-left" />
-                      Ant.
-                    </button>
-                    <div className="mi-estudio__nav-right">
-                      {(() => {
-                        const esUltimo =
-                          repasoQuizActivo
-                            ? repasoQuizPos ===
+                      <button
+                        type="button"
+                        onClick={retrocederCard}
+                        disabled={esPrimeraPregunta}
+                        className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${esPrimeraPregunta ? "" : "is-active"
+                          }`}
+                        title="Anterior"
+                      >
+                        <i className="fas fa-arrow-left" />
+                        Ant.
+                      </button>
+                      <div className="mi-estudio__nav-right">
+                        {(() => {
+                          const esUltimo =
+                            repasoQuizActivo
+                              ? repasoQuizPos ===
                               repasoQuizBatch.length -
-                                1
-                            : isLevelMode
-                              ? nivelIndex ===
+                              1
+                              : isLevelMode
+                                ? nivelIndex ===
                                 examenPreguntas.length -
-                                  1
-                              : isFlipQuiz
-                                ? quizPos ===
+                                1
+                                : isFlipQuiz
+                                  ? quizPos ===
                                   quizBatch.length -
-                                    1
-                                : cardIndex ===
+                                  1
+                                  : cardIndex ===
                                   flatPuntos.length -
-                                    1;
-                        const bloqueado =
-                          !canAdvance;
-                        return (
-                          <>
-                            <button
-                              onClick={() => {
-                                if (
+                                  1;
+                          const bloqueado =
+                            !canAdvance;
+                          return (
+                            <>
+                              <button
+                                onClick={() => {
+                                  if (
+                                    bloqueado
+                                  ) {
+                                    mostrarHintBloqueo();
+                                    return;
+                                  }
+                                  avanzarCard();
+                                }}
+                                aria-disabled={
                                   bloqueado
-                                ) {
-                                  mostrarHintBloqueo();
-                                  return;
                                 }
-                                avanzarCard();
-                              }}
-                              aria-disabled={
-                                bloqueado
-                              }
-                              className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${bloqueado ? "" : "is-active"}`}
-                              title="Siguiente"
-                            >
-                              Sig.
-                              {esUltimo &&
-                              canAdvance ? (
-                                <i className="fas fa-flag-checkered" />
-                              ) : (
-                                <i className="fas fa-arrow-right" />
-                              )}
-                            </button>
-                            {!canAdvance &&
-                              !esUltimo &&
-                              hintBloqueoVisible && (
-                                <span className="aviso-bloqueo aviso-bloqueo--wrap">
-                                  ¡Supera la pregunta para avanzar!
-                                </span>
-                              )}
-                          </>
-                        );
-                      })()}
-                    </div>
+                                className={`mi-estudio__nav-btn mi-estudio__nav-btn--texto ${bloqueado ? "" : "is-active"}`}
+                                title="Siguiente"
+                              >
+                                Sig.
+                                {esUltimo &&
+                                  canAdvance ? (
+                                  <i className="fas fa-flag-checkered" />
+                                ) : (
+                                  <i className="fas fa-arrow-right" />
+                                )}
+                              </button>
+                              {!canAdvance &&
+                                !esUltimo &&
+                                hintBloqueoVisible && (
+                                  <span className="aviso-bloqueo aviso-bloqueo--wrap">
+                                    ¡Supera la pregunta para avanzar!
+                                  </span>
+                                )}
+                            </>
+                          );
+                        })()}
+                      </div>
                     </div>
                     <button
                       type="button"
