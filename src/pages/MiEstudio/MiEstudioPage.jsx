@@ -3033,7 +3033,7 @@ export default function MiEstudioPage() {
                 setSearchOpen(true)
               }
             />
-            <div className="mi-estudio__home-screen container">
+            <div className="mi-estudio__home-screen">
               <section className="mi-estudio__intro">
                 <div className="mi-estudio__intro-content">
                   <h1 className="mi-estudio__intro-title">

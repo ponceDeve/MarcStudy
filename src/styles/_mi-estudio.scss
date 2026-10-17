@@ -50,6 +50,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 10px;
   padding-top: var(--header-h);
   padding-bottom: var(--space-6);
 }
@@ -71,7 +72,6 @@
    ============================================================ */
 .mi-estudio__intro-content {
   width: min(100%, 50rem);
-  padding: 0 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -350,8 +350,8 @@
   font-size: var(--fs-md);
   font-weight: var(--fw-normal);
   line-height: 1.4;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .welcome-section__continuar-arrow {
@@ -430,7 +430,6 @@
     overflow: hidden;
     color: var(--ink-soft);
     line-height: 1.4;
-    white-space: nowrap;
     text-overflow: ellipsis;
   }
 }
@@ -492,10 +491,6 @@
    TABLET
    ============================================================ */
 @media (max-width: 767px) {
-  .mi-estudio__intro-content {
-    padding: 0 18px;
-  }
-
   .mi-estudio__intro-title {
     font-size: clamp(2.15rem, 8vw, 3.5rem);
   }
@@ -509,10 +504,6 @@
     padding: 10px 14px;
   }
 
-  .welcome-section__continuar-label,
-  .welcome-section__continuar-tema {
-    font-size: 0.9rem;
-  }
 }
 
 /* ============================================================
@@ -525,7 +516,6 @@
 
   .mi-estudio__intro-content {
     width: 100%;
-    padding: 0 14px;
   }
 
   .mi-estudio__intro-title {
@@ -566,12 +556,6 @@
   .welcome-section__continuar-indicator {
     font-size: 1rem;
   }
-
-  .welcome-section__continuar-label,
-  .welcome-section__continuar-tema {
-    font-size: 0.88rem;
-  }
-
   .welcome-section__continuar-arrow {
     font-size: 1rem;
   }
@@ -602,11 +586,6 @@
   .mi-estudio__intro {
     padding: 16px 0;
   }
-
-  .mi-estudio__intro-content {
-    padding: 0 10px;
-  }
-
   .mi-estudio__intro-title {
     font-size: 1.9rem;
     line-height: 1.08;
@@ -635,12 +614,6 @@
   .welcome-section__continuar-indicator {
     font-size: 0.95rem;
   }
-
-  .welcome-section__continuar-label,
-  .welcome-section__continuar-tema {
-    font-size: 0.84rem;
-  }
-
   .welcome-section__continuar-arrow {
     font-size: 0.95rem;
   }
@@ -661,13 +634,6 @@
   .welcome-section__simulacro-info {
     gap: 2px;
 
-    strong {
-      font-size: var(--fs-xs);
-    }
-
-    span {
-      font-size: var(--fs-xs);
-    }
   }
 
   .welcome-section__simulacro-btn {
@@ -2031,6 +1997,7 @@
   margin: 0 auto;
   max-width: 800px;
   width: 100%;
+  padding: 15px;
 }
 
 .teoria-aviso-uso {
